@@ -2378,48 +2378,6 @@
         }
       }
     },
-    "com.posthog.error_tracking#ErrorTrackingAssignmentRulesReorderPartialUpdateRequestAssigneeType": {
-      "type": "enum",
-      "members": {
-        "USER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "user"
-          }
-        },
-        "ROLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "role"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#ErrorTrackingAssignmentRulesReorderPartialUpdateRequestAssigneeId": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#Integer"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#ErrorTrackingAssignmentRulesReorderPartialUpdateRequestAssignee": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.error_tracking#ErrorTrackingAssignmentRulesReorderPartialUpdateRequestAssigneeType"
-        },
-        "id": {
-          "target": "com.posthog.error_tracking#ErrorTrackingAssignmentRulesReorderPartialUpdateRequestAssigneeId"
-        }
-      },
-      "traits": {}
-    },
     "com.posthog.error_tracking#ErrorTrackingAssignmentRulesReorderPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -2431,29 +2389,14 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "filters": {
           "target": "smithy.api#Document"
-        },
-        "assignee": {
-          "target": "com.posthog.error_tracking#ErrorTrackingAssignmentRulesReorderPartialUpdateRequestAssignee",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "order_key": {
           "target": "smithy.api#Integer"
         },
         "disabled_data": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -2825,12 +2768,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier of the bypass rule."
-          }
-        },
         "filters": {
           "target": "smithy.api#Document",
           "traits": {
@@ -2847,18 +2784,6 @@
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Populated when the rule has been automatically disabled (for example, after its filters failed to evaluate during ingestion). Null while the rule is active."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the rule was created."
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the rule was last updated."
           }
         }
       },
@@ -2912,7 +2837,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.error_tracking#PaginatedErrorTrackingExternalReferenceResultList": {
+    "com.posthog.error_tracking#PaginatedErrorTrackingExternalReferenceResultListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -2934,7 +2859,7 @@
           }
         },
         "results": {
-          "target": "com.posthog.error_tracking#PaginatedErrorTrackingExternalReferenceResultListResultsList",
+          "target": "com.posthog.error_tracking#PaginatedErrorTrackingExternalReferenceResultListOutputResultsList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -2942,7 +2867,7 @@
       },
       "traits": {}
     },
-    "com.posthog.error_tracking#ErrorTrackingExternalReferenceResult": {
+    "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -2955,24 +2880,6 @@
           "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceIntegrationResult",
           "traits": {
             "smithy.api#documentation": "The connected integration this reference was created through."
-          }
-        },
-        "integration_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "ID of the connected integration to create the external issue with. List the project's integrations to find the right ID and its kind (one of 'github', 'gitlab', 'linear', 'jira')."
-          }
-        },
-        "config": {
-          "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultConfigMap",
-          "traits": {
-            "smithy.api#documentation": "Provider-specific fields describing the external issue to create. Required keys depend on the integration kind: github -> {repository, title, body}; gitlab -> {title, body}; linear -> {team_id, title, description}; jira -> {project_key, title, description}. Examples: github {\"repository\":\"posthog\",\"title\":\"Checkout TypeError\",\"body\":\"Stack trace\"}; linear {\"team_id\":\"team-id\",\"title\":\"Checkout TypeError\",\"description\":\"Stack trace\"}; jira {\"project_key\":\"ENG\",\"title\":\"Checkout TypeError\",\"description\":\"Stack trace\"}."
-          }
-        },
-        "issue": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the error tracking issue to link the reference to."
           }
         },
         "external_url": {
@@ -3008,22 +2915,10 @@
       },
       "traits": {}
     },
-    "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultConfigMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Provider-specific fields describing the external issue to create. Required keys depend on the integration kind: github -> {repository, title, body}; gitlab -> {title, body}; linear -> {team_id, title, description}; jira -> {project_key, title, description}. Examples: github {\"repository\":\"posthog\",\"title\":\"Checkout TypeError\",\"body\":\"Stack trace\"}; linear {\"team_id\":\"team-id\",\"title\":\"Checkout TypeError\",\"description\":\"Stack trace\"}; jira {\"project_key\":\"ENG\",\"title\":\"Checkout TypeError\",\"description\":\"Stack trace\"}."
-      }
-    },
-    "com.posthog.error_tracking#PaginatedErrorTrackingExternalReferenceResultListResultsList": {
+    "com.posthog.error_tracking#PaginatedErrorTrackingExternalReferenceResultListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResult"
+        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultOutput"
       },
       "traits": {}
     },
@@ -3033,7 +2928,7 @@
         "target": "com.posthog.error_tracking#ErrorTrackingExternalReferencesListRequest"
       },
       "output": {
-        "target": "com.posthog.error_tracking#PaginatedErrorTrackingExternalReferenceResultList"
+        "target": "com.posthog.error_tracking#PaginatedErrorTrackingExternalReferenceResultListOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -3066,18 +2961,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique ID of the external reference."
-          }
-        },
-        "integration": {
-          "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceIntegrationResult",
-          "traits": {
-            "smithy.api#documentation": "The connected integration this reference was created through."
-          }
-        },
         "integration_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -3095,12 +2978,6 @@
           "traits": {
             "smithy.api#documentation": "ID of the error tracking issue to link the reference to."
           }
-        },
-        "external_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "URL of the linked external issue in the provider's system."
-          }
         }
       },
       "traits": {
@@ -3113,7 +2990,7 @@
         "target": "com.posthog.error_tracking#ErrorTrackingExternalReferencesCreateRequest"
       },
       "output": {
-        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResult"
+        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -3152,7 +3029,7 @@
         "target": "com.posthog.error_tracking#ErrorTrackingExternalReferencesRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResult"
+        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -3980,60 +3857,6 @@
         }
       }
     },
-    "com.posthog.error_tracking#ErrorTrackingGroupingRulesReorderPartialUpdateRequestAssigneeType": {
-      "type": "enum",
-      "members": {
-        "USER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "user"
-          }
-        },
-        "ROLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "role"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#ErrorTrackingGroupingRulesReorderPartialUpdateRequestAssigneeId": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#Integer"
-        },
-        "Case1": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#ErrorTrackingGroupingRulesReorderPartialUpdateRequestAssignee": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.error_tracking#ErrorTrackingGroupingRulesReorderPartialUpdateRequestAssigneeType"
-        },
-        "id": {
-          "target": "com.posthog.error_tracking#ErrorTrackingGroupingRulesReorderPartialUpdateRequestAssigneeId"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.error_tracking#ErrorTrackingGroupingRulesReorderPartialUpdateRequestIssueMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Issue linked to this rule"
-      }
-    },
     "com.posthog.error_tracking#ErrorTrackingGroupingRulesReorderPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -4045,28 +3868,12 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "filters": {
           "target": "smithy.api#Document"
-        },
-        "assignee": {
-          "target": "com.posthog.error_tracking#ErrorTrackingGroupingRulesReorderPartialUpdateRequestAssignee",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "description": {
           "target": "smithy.api#String",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "issue": {
-          "target": "com.posthog.error_tracking#ErrorTrackingGroupingRulesReorderPartialUpdateRequestIssueMap",
-          "traits": {
-            "smithy.api#documentation": "Issue linked to this rule",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -4075,12 +3882,6 @@
         },
         "disabled_data": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -4133,7 +3934,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.error_tracking#PaginatedErrorTrackingIssueReadList": {
+    "com.posthog.error_tracking#PaginatedErrorTrackingIssueReadListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -4155,7 +3956,7 @@
           }
         },
         "results": {
-          "target": "com.posthog.error_tracking#PaginatedErrorTrackingIssueReadListResultsList",
+          "target": "com.posthog.error_tracking#PaginatedErrorTrackingIssueReadListOutputResultsList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -4163,7 +3964,7 @@
       },
       "traits": {}
     },
-    "com.posthog.error_tracking#ErrorTrackingIssueRead": {
+    "com.posthog.error_tracking#ErrorTrackingIssueReadOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -4207,7 +4008,7 @@
           }
         },
         "external_issues": {
-          "target": "com.posthog.error_tracking#ErrorTrackingIssueReadExternalIssuesList",
+          "target": "com.posthog.error_tracking#ErrorTrackingIssueReadOutputExternalIssuesList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -4255,10 +4056,10 @@
       },
       "traits": {}
     },
-    "com.posthog.error_tracking#ErrorTrackingIssueReadExternalIssuesList": {
+    "com.posthog.error_tracking#ErrorTrackingIssueReadOutputExternalIssuesList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResult"
+        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultOutput"
       },
       "traits": {}
     },
@@ -4280,10 +4081,10 @@
       },
       "traits": {}
     },
-    "com.posthog.error_tracking#PaginatedErrorTrackingIssueReadListResultsList": {
+    "com.posthog.error_tracking#PaginatedErrorTrackingIssueReadListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.error_tracking#ErrorTrackingIssueRead"
+        "target": "com.posthog.error_tracking#ErrorTrackingIssueReadOutput"
       },
       "traits": {}
     },
@@ -4293,7 +4094,7 @@
         "target": "com.posthog.error_tracking#ErrorTrackingIssuesListRequest"
       },
       "output": {
-        "target": "com.posthog.error_tracking#PaginatedErrorTrackingIssueReadList"
+        "target": "com.posthog.error_tracking#PaginatedErrorTrackingIssueReadListOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -4332,7 +4133,7 @@
         "target": "com.posthog.error_tracking#ErrorTrackingIssuesRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.error_tracking#ErrorTrackingIssueRead"
+        "target": "com.posthog.error_tracking#ErrorTrackingIssueReadOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -4417,7 +4218,7 @@
         "target": "com.posthog.error_tracking#ErrorTrackingIssuesUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.error_tracking#ErrorTrackingIssueRead"
+        "target": "com.posthog.error_tracking#ErrorTrackingIssueReadOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -4476,7 +4277,7 @@
         "target": "com.posthog.error_tracking#ErrorTrackingIssuesPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.error_tracking#ErrorTrackingIssueRead"
+        "target": "com.posthog.error_tracking#ErrorTrackingIssueReadOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -4565,10 +4366,58 @@
         }
       }
     },
+    "com.posthog.error_tracking#ErrorTrackingIssueAssigneeReadInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultInput": {
+      "type": "structure",
+      "members": {
+        "integration_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "ID of the connected integration to create the external issue with. List the project's integrations to find the right ID and its kind (one of 'github', 'gitlab', 'linear', 'jira')."
+          }
+        },
+        "config": {
+          "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultInputConfigMap",
+          "traits": {
+            "smithy.api#documentation": "Provider-specific fields describing the external issue to create. Required keys depend on the integration kind: github -> {repository, title, body}; gitlab -> {title, body}; linear -> {team_id, title, description}; jira -> {project_key, title, description}. Examples: github {\"repository\":\"posthog\",\"title\":\"Checkout TypeError\",\"body\":\"Stack trace\"}; linear {\"team_id\":\"team-id\",\"title\":\"Checkout TypeError\",\"description\":\"Stack trace\"}; jira {\"project_key\":\"ENG\",\"title\":\"Checkout TypeError\",\"description\":\"Stack trace\"}."
+          }
+        },
+        "issue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the error tracking issue to link the reference to."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultInputConfigMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Provider-specific fields describing the external issue to create. Required keys depend on the integration kind: github -> {repository, title, body}; gitlab -> {title, body}; linear -> {team_id, title, description}; jira -> {project_key, title, description}. Examples: github {\"repository\":\"posthog\",\"title\":\"Checkout TypeError\",\"body\":\"Stack trace\"}; linear {\"team_id\":\"team-id\",\"title\":\"Checkout TypeError\",\"description\":\"Stack trace\"}; jira {\"project_key\":\"ENG\",\"title\":\"Checkout TypeError\",\"description\":\"Stack trace\"}."
+      }
+    },
     "com.posthog.error_tracking#ErrorTrackingIssuesAssignPartialUpdateRequestExternalIssuesList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResult"
+        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultInput"
       },
       "traits": {}
     },
@@ -4612,7 +4461,7 @@
           }
         },
         "assignee": {
-          "target": "com.posthog.error_tracking#ErrorTrackingIssueAssigneeRead",
+          "target": "com.posthog.error_tracking#ErrorTrackingIssueAssigneeReadInput",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -4650,7 +4499,7 @@
     "com.posthog.error_tracking#ErrorTrackingIssuesCohortUpdateRequestExternalIssuesList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResult"
+        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultInput"
       },
       "traits": {}
     },
@@ -4700,7 +4549,7 @@
           }
         },
         "assignee": {
-          "target": "com.posthog.error_tracking#ErrorTrackingIssueAssigneeRead",
+          "target": "com.posthog.error_tracking#ErrorTrackingIssueAssigneeReadInput",
           "traits": {
             "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
@@ -4946,7 +4795,7 @@
     "com.posthog.error_tracking#ErrorTrackingIssuesBulkCreateRequestExternalIssuesList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResult"
+        "target": "com.posthog.error_tracking#ErrorTrackingExternalReferenceResultInput"
       },
       "traits": {}
     },
@@ -4995,7 +4844,7 @@
           }
         },
         "assignee": {
-          "target": "com.posthog.error_tracking#ErrorTrackingIssueAssigneeRead",
+          "target": "com.posthog.error_tracking#ErrorTrackingIssueAssigneeReadInput",
           "traits": {
             "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
@@ -8422,9 +8271,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "filters": {
           "target": "smithy.api#Document"
         },
@@ -8436,12 +8282,6 @@
         },
         "sampling_rate": {
           "target": "smithy.api#Double"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {

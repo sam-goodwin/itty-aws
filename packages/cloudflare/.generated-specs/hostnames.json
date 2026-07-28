@@ -72,23 +72,61 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsDeleteResponseValue": {
-      "type": "structure",
+    "com.cloudflare.hostnames#SettingsTlsDeleteResponseValueCase0": {
+      "type": "enum",
       "members": {
-        "_1_0__or__1_1__or__1_2__or_3_more": {
-          "target": "smithy.api#Document",
+        "_1_0": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "\"1.0\" or \"1.1\" or \"1.2\" or 3 more"
+            "smithy.api#enumValue": "1.0"
           }
         },
-        "array_of_string": {
-          "target": "smithy.api#Document",
+        "_1_1": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of string"
+            "smithy.api#enumValue": "1.1"
           }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        },
+        "_1_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.3"
+          }
+        },
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsDeleteResponseValueCase1List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsDeleteResponseValue": {
+      "type": "union",
+      "members": {
+        "SettingsTlsDeleteResponseValueCase0": {
+          "target": "com.cloudflare.hostnames#SettingsTlsDeleteResponseValueCase0"
+        },
+        "SettingsTlsDeleteResponseValueCase1List": {
+          "target": "com.cloudflare.hostnames#SettingsTlsDeleteResponseValueCase1List"
         }
       }
     },
@@ -196,23 +234,61 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsGetResultItemValue": {
-      "type": "structure",
+    "com.cloudflare.hostnames#SettingsTlsGetResultItemValueCase0": {
+      "type": "enum",
       "members": {
-        "_1_0__or__1_1__or__1_2__or_3_more": {
-          "target": "smithy.api#Document",
+        "_1_0": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "\"1.0\" or \"1.1\" or \"1.2\" or 3 more"
+            "smithy.api#enumValue": "1.0"
           }
         },
-        "array_of_string": {
-          "target": "smithy.api#Document",
+        "_1_1": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of string"
+            "smithy.api#enumValue": "1.1"
           }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        },
+        "_1_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.3"
+          }
+        },
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsGetResultItemValueCase1List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsGetResultItemValue": {
+      "type": "union",
+      "members": {
+        "SettingsTlsGetResultItemValueCase0": {
+          "target": "com.cloudflare.hostnames#SettingsTlsGetResultItemValueCase0"
+        },
+        "SettingsTlsGetResultItemValueCase1List": {
+          "target": "com.cloudflare.hostnames#SettingsTlsGetResultItemValueCase1List"
         }
       }
     },
@@ -313,23 +389,61 @@
         }
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsUpdateRequestValue": {
-      "type": "structure",
+    "com.cloudflare.hostnames#SettingsTlsUpdateRequestValueCase0": {
+      "type": "enum",
       "members": {
-        "_1_0__or__1_1__or__1_2__or_3_more": {
-          "target": "smithy.api#Document",
+        "_1_0": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "\"1.0\" or \"1.1\" or \"1.2\" or 3 more"
+            "smithy.api#enumValue": "1.0"
           }
         },
-        "array_of_string": {
-          "target": "smithy.api#Document",
+        "_1_1": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of string"
+            "smithy.api#enumValue": "1.1"
           }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        },
+        "_1_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.3"
+          }
+        },
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsUpdateRequestValueCase1List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsUpdateRequestValue": {
+      "type": "union",
+      "members": {
+        "SettingsTlsUpdateRequestValueCase0": {
+          "target": "com.cloudflare.hostnames#SettingsTlsUpdateRequestValueCase0"
+        },
+        "SettingsTlsUpdateRequestValueCase1List": {
+          "target": "com.cloudflare.hostnames#SettingsTlsUpdateRequestValueCase1List"
         }
       }
     },
@@ -372,23 +486,61 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.hostnames#SettingsTlsUpdateResponseValue": {
-      "type": "structure",
+    "com.cloudflare.hostnames#SettingsTlsUpdateResponseValueCase0": {
+      "type": "enum",
       "members": {
-        "_1_0__or__1_1__or__1_2__or_3_more": {
-          "target": "smithy.api#Document",
+        "_1_0": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "\"1.0\" or \"1.1\" or \"1.2\" or 3 more"
+            "smithy.api#enumValue": "1.0"
           }
         },
-        "array_of_string": {
-          "target": "smithy.api#Document",
+        "_1_1": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings.",
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "array of string"
+            "smithy.api#enumValue": "1.1"
           }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        },
+        "_1_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.3"
+          }
+        },
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsUpdateResponseValueCase1List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.hostnames#SettingsTlsUpdateResponseValue": {
+      "type": "union",
+      "members": {
+        "SettingsTlsUpdateResponseValueCase0": {
+          "target": "com.cloudflare.hostnames#SettingsTlsUpdateResponseValueCase0"
+        },
+        "SettingsTlsUpdateResponseValueCase1List": {
+          "target": "com.cloudflare.hostnames#SettingsTlsUpdateResponseValueCase1List"
         }
       }
     },

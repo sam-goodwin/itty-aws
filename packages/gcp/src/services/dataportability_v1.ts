@@ -123,7 +123,7 @@ export const CheckAccessTypeRequest_ = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckAccessTypeRequest_",
 }) as any as S.Schema<CheckAccessTypeRequest_>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -168,8 +168,7 @@ export type PortabilityArchiveStateStateEnum =
   | "IN_PROGRESS"
   | "COMPLETE"
   | "FAILED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const PortabilityArchiveStateStateEnum = /*@__PURE__*/ S.String;
 
 /** Resource that contains the state of an Archive job. */
@@ -237,8 +236,7 @@ export const InitiatePortabilityArchiveRequest_ = /*@__PURE__*/ S.suspend(() =>
 export type InitiatePortabilityArchiveResponseAccessTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "ACCESS_TYPE_ONE_TIME"
-  | "ACCESS_TYPE_TIME_BASED"
-  | (string & {});
+  | "ACCESS_TYPE_TIME_BASED";
 export const InitiatePortabilityArchiveResponseAccessTypeEnum =
   /*@__PURE__*/ S.String;
 

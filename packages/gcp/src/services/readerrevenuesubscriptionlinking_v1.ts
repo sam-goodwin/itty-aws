@@ -128,7 +128,7 @@ export const Entitlement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Entitlement" }) as any as S.Schema<Entitlement>;
 
-export type EntitlementList = Entitlement[];
+export type EntitlementList = ReadonlyArray<Entitlement>;
 export const EntitlementList = /*@__PURE__*/ S.Array(
   Entitlement,
 ) as any as S.Schema<EntitlementList>;

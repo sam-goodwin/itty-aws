@@ -101,8 +101,7 @@ export const CreateProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 export type VariableStateEnum =
   | "VARIABLE_STATE_UNSPECIFIED"
   | "UPDATED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const VariableStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes a single variable within a RuntimeConfig resource. The name denotes the hierarchical variable name. For example, `ports/serving_port` is a valid variable name. The variable value is an opaque string and only leaf variables can have values (that is, variables that do not have any child variables). */
@@ -184,7 +183,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -387,7 +386,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -409,7 +408,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -527,7 +526,7 @@ export const ListProjectsConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsConfigsRequest",
 }) as any as S.Schema<ListProjectsConfigsRequest>;
 
-export type RuntimeConfigList = RuntimeConfig[];
+export type RuntimeConfigList = ReadonlyArray<RuntimeConfig>;
 export const RuntimeConfigList = /*@__PURE__*/ S.Array(
   RuntimeConfig,
 ) as any as S.Schema<RuntimeConfigList>;
@@ -578,7 +577,7 @@ export const ListProjectsConfigsVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsConfigsVariablesRequest",
 }) as any as S.Schema<ListProjectsConfigsVariablesRequest>;
 
-export type VariableList = Variable[];
+export type VariableList = ReadonlyArray<Variable>;
 export const VariableList = /*@__PURE__*/ S.Array(
   Variable,
 ) as any as S.Schema<VariableList>;
@@ -623,7 +622,7 @@ export const ListProjectsConfigsWaitersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsConfigsWaitersRequest",
 }) as any as S.Schema<ListProjectsConfigsWaitersRequest>;
 
-export type WaiterList = Waiter[];
+export type WaiterList = ReadonlyArray<Waiter>;
 export const WaiterList = /*@__PURE__*/ S.Array(
   Waiter,
 ) as any as S.Schema<WaiterList>;

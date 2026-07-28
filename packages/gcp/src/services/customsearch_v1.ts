@@ -41,15 +41,13 @@ export type ListCseImgColorTypeEnum =
   | "mono"
   | "gray"
   | "color"
-  | "trans"
-  | (string & {});
+  | "trans";
 export const ListCseImgColorTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiteSearchFilterEnum =
   | "siteSearchFilterUndefined"
   | "e"
-  | "i"
-  | (string & {});
+  | "i";
 export const ListCseSiteSearchFilterEnum = /*@__PURE__*/ S.String;
 
 export type ListCseImgDominantColorEnum =
@@ -65,14 +63,10 @@ export type ListCseImgDominantColorEnum =
   | "red"
   | "teal"
   | "white"
-  | "yellow"
-  | (string & {});
+  | "yellow";
 export const ListCseImgDominantColorEnum = /*@__PURE__*/ S.String;
 
-export type ListCseSearchTypeEnum =
-  | "searchTypeUndefined"
-  | "image"
-  | (string & {});
+export type ListCseSearchTypeEnum = "searchTypeUndefined" | "image";
 export const ListCseSearchTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSafeEnum =
@@ -80,8 +74,7 @@ export type ListCseSafeEnum =
   | "active"
   | "high"
   | "medium"
-  | "off"
-  | (string & {});
+  | "off";
 export const ListCseSafeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseImgTypeEnum =
@@ -91,8 +84,7 @@ export type ListCseImgTypeEnum =
   | "lineart"
   | "stock"
   | "photo"
-  | "animated"
-  | (string & {});
+  | "animated";
 export const ListCseImgTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseImgSizeEnum =
@@ -103,8 +95,7 @@ export type ListCseImgSizeEnum =
   | "MEDIUM"
   | "SMALL"
   | "XLARGE"
-  | "XXLARGE"
-  | (string & {});
+  | "XXLARGE";
 export const ListCseImgSizeEnum = /*@__PURE__*/ S.String;
 
 export interface ListCseRequest {
@@ -336,7 +327,8 @@ export const SearchQueriesPreviousPageItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchQueriesPreviousPageItem",
 }) as any as S.Schema<SearchQueriesPreviousPageItem>;
 
-export type SearchQueriesPreviousPageItemList = SearchQueriesPreviousPageItem[];
+export type SearchQueriesPreviousPageItemList =
+  ReadonlyArray<SearchQueriesPreviousPageItem>;
 export const SearchQueriesPreviousPageItemList = /*@__PURE__*/ S.Array(
   SearchQueriesPreviousPageItem,
 ) as any as S.Schema<SearchQueriesPreviousPageItemList>;
@@ -458,7 +450,8 @@ export const SearchQueriesNextPageItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchQueriesNextPageItem",
 }) as any as S.Schema<SearchQueriesNextPageItem>;
 
-export type SearchQueriesNextPageItemList = SearchQueriesNextPageItem[];
+export type SearchQueriesNextPageItemList =
+  ReadonlyArray<SearchQueriesNextPageItem>;
 export const SearchQueriesNextPageItemList = /*@__PURE__*/ S.Array(
   SearchQueriesNextPageItem,
 ) as any as S.Schema<SearchQueriesNextPageItemList>;
@@ -580,7 +573,8 @@ export const SearchQueriesRequestItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchQueriesRequestItem",
 }) as any as S.Schema<SearchQueriesRequestItem>;
 
-export type SearchQueriesRequestItemList = SearchQueriesRequestItem[];
+export type SearchQueriesRequestItemList =
+  ReadonlyArray<SearchQueriesRequestItem>;
 export const SearchQueriesRequestItemList = /*@__PURE__*/ S.Array(
   SearchQueriesRequestItem,
 ) as any as S.Schema<SearchQueriesRequestItemList>;
@@ -638,7 +632,7 @@ export const PromotionBodyLinesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PromotionBodyLinesItem",
 }) as any as S.Schema<PromotionBodyLinesItem>;
 
-export type PromotionBodyLinesItemList = PromotionBodyLinesItem[];
+export type PromotionBodyLinesItemList = ReadonlyArray<PromotionBodyLinesItem>;
 export const PromotionBodyLinesItemList = /*@__PURE__*/ S.Array(
   PromotionBodyLinesItem,
 ) as any as S.Schema<PromotionBodyLinesItemList>;
@@ -669,7 +663,7 @@ export const Promotion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Promotion" }) as any as S.Schema<Promotion>;
 
-export type PromotionList = Promotion[];
+export type PromotionList = ReadonlyArray<Promotion>;
 export const PromotionList = /*@__PURE__*/ S.Array(
   Promotion,
 ) as any as S.Schema<PromotionList>;
@@ -752,7 +746,7 @@ export const ResultLabelsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResultLabelsItem",
 }) as any as S.Schema<ResultLabelsItem>;
 
-export type ResultLabelsItemList = ResultLabelsItem[];
+export type ResultLabelsItemList = ReadonlyArray<ResultLabelsItem>;
 export const ResultLabelsItemList = /*@__PURE__*/ S.Array(
   ResultLabelsItem,
 ) as any as S.Schema<ResultLabelsItemList>;
@@ -810,7 +804,7 @@ export const Result = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
 
-export type ResultList = Result[];
+export type ResultList = ReadonlyArray<Result>;
 export const ResultList = /*@__PURE__*/ S.Array(
   Result,
 ) as any as S.Schema<ResultList>;
@@ -873,15 +867,13 @@ export type ListCseSiterestrictImgColorTypeEnum =
   | "mono"
   | "gray"
   | "color"
-  | "trans"
-  | (string & {});
+  | "trans";
 export const ListCseSiterestrictImgColorTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiterestrictSiteSearchFilterEnum =
   | "siteSearchFilterUndefined"
   | "e"
-  | "i"
-  | (string & {});
+  | "i";
 export const ListCseSiterestrictSiteSearchFilterEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiterestrictImgDominantColorEnum =
@@ -897,14 +889,10 @@ export type ListCseSiterestrictImgDominantColorEnum =
   | "red"
   | "teal"
   | "white"
-  | "yellow"
-  | (string & {});
+  | "yellow";
 export const ListCseSiterestrictImgDominantColorEnum = /*@__PURE__*/ S.String;
 
-export type ListCseSiterestrictSearchTypeEnum =
-  | "searchTypeUndefined"
-  | "image"
-  | (string & {});
+export type ListCseSiterestrictSearchTypeEnum = "searchTypeUndefined" | "image";
 export const ListCseSiterestrictSearchTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiterestrictSafeEnum =
@@ -912,8 +900,7 @@ export type ListCseSiterestrictSafeEnum =
   | "active"
   | "high"
   | "medium"
-  | "off"
-  | (string & {});
+  | "off";
 export const ListCseSiterestrictSafeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiterestrictImgTypeEnum =
@@ -923,8 +910,7 @@ export type ListCseSiterestrictImgTypeEnum =
   | "lineart"
   | "stock"
   | "photo"
-  | "animated"
-  | (string & {});
+  | "animated";
 export const ListCseSiterestrictImgTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListCseSiterestrictImgSizeEnum =
@@ -935,8 +921,7 @@ export type ListCseSiterestrictImgSizeEnum =
   | "MEDIUM"
   | "SMALL"
   | "XLARGE"
-  | "XXLARGE"
-  | (string & {});
+  | "XXLARGE";
 export const ListCseSiterestrictImgSizeEnum = /*@__PURE__*/ S.String;
 
 export interface ListCseSiterestrictRequest {

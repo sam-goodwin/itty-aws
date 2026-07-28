@@ -529,16 +529,222 @@
             "smithy.api#documentation": "The name of the order item."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "returnAddress": {
+          "target": "com.azure.edgeorder#AddressPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Customer return address."
+          }
+        },
+        "returnReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Return Reason.",
             "smithy.api#required": {}
+          }
+        },
+        "serviceTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Service tag (located on the bottom-right corner of the device)."
+          }
+        },
+        "shippingBoxRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Shipping Box required."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edgeorder#AddressPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "addressClassification": {
+          "target": "com.azure.edgeorder#AddressClassification",
+          "traits": {
+            "smithy.api#documentation": "Type of address based on its usage context."
+          }
+        },
+        "shippingAddress": {
+          "target": "com.azure.edgeorder#ShippingAddress",
+          "traits": {
+            "smithy.api#documentation": "Shipping details for the address."
+          }
+        },
+        "contactDetails": {
+          "target": "com.azure.edgeorder#ContactDetails",
+          "traits": {
+            "smithy.api#documentation": "Contact details for the address."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Address Properties."
+      }
+    },
+    "com.azure.edgeorder#ContactDetails": {
+      "type": "structure",
+      "members": {
+        "contactName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Contact name of the person."
+          }
+        },
+        "phone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Phone number of the contact person."
+          }
+        },
+        "phoneExtension": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Phone extension number of the contact person."
+          }
+        },
+        "mobile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Mobile number of the contact person."
+          }
+        },
+        "emailList": {
+          "target": "com.azure.edgeorder#ContactDetailsEmailListList",
+          "traits": {
+            "smithy.api#documentation": "List of Email-ids to be notified about job progress."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contact Details."
+      }
+    },
+    "com.azure.edgeorder#ContactDetailsEmailListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Email-ids to be notified about job progress."
+      }
+    },
+    "com.azure.edgeorder#ShippingAddress": {
+      "type": "structure",
+      "members": {
+        "streetAddress1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Street Address line 1."
+          }
+        },
+        "streetAddress2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Street Address line 2."
+          }
+        },
+        "streetAddress3": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Street Address line 3."
+          }
+        },
+        "city": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the City."
+          }
+        },
+        "stateOrProvince": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the State or Province."
+          }
+        },
+        "country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Country.",
+            "smithy.api#required": {}
+          }
+        },
+        "postalCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Postal code."
+          }
+        },
+        "zipExtendedCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Extended Zip Code."
+          }
+        },
+        "companyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the company."
+          }
+        },
+        "addressType": {
+          "target": "com.azure.edgeorder#AddressType",
+          "traits": {
+            "smithy.api#documentation": "Type of address."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Shipping address where customer wishes to receive the device."
+      }
+    },
+    "com.azure.edgeorder#AddressType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "RESIDENTIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Residential"
+          }
+        },
+        "COMMERCIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commercial"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of address."
+      }
+    },
+    "com.azure.edgeorder#AddressClassification": {
+      "type": "enum",
+      "members": {
+        "SHIPPING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Shipping"
+          }
+        },
+        "SITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Site"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of address based on its usage context."
       }
     },
     "com.azure.edgeorder#OrderItemsCancel": {
@@ -587,10 +793,10 @@
             "smithy.api#documentation": "The name of the order item."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "reason": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Reason for cancellation.",
             "smithy.api#required": {}
           }
         }
@@ -946,168 +1152,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Status of address validation."
-      }
-    },
-    "com.azure.edgeorder#ContactDetails": {
-      "type": "structure",
-      "members": {
-        "contactName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Contact name of the person."
-          }
-        },
-        "phone": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Phone number of the contact person."
-          }
-        },
-        "phoneExtension": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Phone extension number of the contact person."
-          }
-        },
-        "mobile": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Mobile number of the contact person."
-          }
-        },
-        "emailList": {
-          "target": "com.azure.edgeorder#ContactDetailsEmailListList",
-          "traits": {
-            "smithy.api#documentation": "List of Email-ids to be notified about job progress."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Contact Details."
-      }
-    },
-    "com.azure.edgeorder#ContactDetailsEmailListList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "List of Email-ids to be notified about job progress."
-      }
-    },
-    "com.azure.edgeorder#ShippingAddress": {
-      "type": "structure",
-      "members": {
-        "streetAddress1": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Street Address line 1."
-          }
-        },
-        "streetAddress2": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Street Address line 2."
-          }
-        },
-        "streetAddress3": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Street Address line 3."
-          }
-        },
-        "city": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the City."
-          }
-        },
-        "stateOrProvince": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the State or Province."
-          }
-        },
-        "country": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the Country.",
-            "smithy.api#required": {}
-          }
-        },
-        "postalCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Postal code."
-          }
-        },
-        "zipExtendedCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Extended Zip Code."
-          }
-        },
-        "companyName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Name of the company."
-          }
-        },
-        "addressType": {
-          "target": "com.azure.edgeorder#AddressType",
-          "traits": {
-            "smithy.api#documentation": "Type of address."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Shipping address where customer wishes to receive the device."
-      }
-    },
-    "com.azure.edgeorder#AddressType": {
-      "type": "enum",
-      "members": {
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "None"
-          }
-        },
-        "RESIDENTIAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Residential"
-          }
-        },
-        "COMMERCIAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Commercial"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Type of address."
-      }
-    },
-    "com.azure.edgeorder#AddressClassification": {
-      "type": "enum",
-      "members": {
-        "SHIPPING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Shipping"
-          }
-        },
-        "SITE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Site"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Type of address based on its usage context."
       }
     },
     "com.azure.edgeorder#OrderItemDetails": {
@@ -2304,16 +2348,222 @@
             "smithy.api#documentation": "The name of the order item."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edgeorder#OrderItemUpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Order item update properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.edgeorder#OrderItemsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups)."
+          }
+        },
+        "identity": {
+          "target": "com.azure.edgeorder#ResourceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Msi identity of the resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edgeorder#ResourceIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identity type"
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.edgeorder#ResourceIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "User Assigned Identities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Msi identity details of the resource"
+      }
+    },
+    "com.azure.edgeorder#ResourceIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.edgeorder#ResourceIdentityInputUserAssignedIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "User Assigned Identities"
+      }
+    },
+    "com.azure.edgeorder#ResourceIdentityInputUserAssignedIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.edgeorder#OrderItemsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups)."
+      }
+    },
+    "com.azure.edgeorder#OrderItemUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "forwardAddress": {
+          "target": "com.azure.edgeorder#AddressPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Updates forward shipping address and contact details."
+          }
+        },
+        "preferences": {
+          "target": "com.azure.edgeorder#Preferences",
+          "traits": {
+            "smithy.api#documentation": "Customer preference."
+          }
+        },
+        "notificationEmailList": {
+          "target": "com.azure.edgeorder#OrderItemUpdatePropertiesInputNotificationEmailListList",
+          "traits": {
+            "smithy.api#documentation": "Additional notification email list."
+          }
+        },
+        "orderItemDetails": {
+          "target": "com.azure.edgeorder#OrderItemDetailsUpdateParameterInput",
+          "traits": {
+            "smithy.api#documentation": "Represents order item details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Order item update properties."
+      }
+    },
+    "com.azure.edgeorder#OrderItemDetailsUpdateParameterInput": {
+      "type": "structure",
+      "members": {
+        "productDetails": {
+          "target": "com.azure.edgeorder#ProductDetailsUpdateParameterInput",
+          "traits": {
+            "smithy.api#documentation": "Represents product details."
+          }
+        },
+        "siteDetails": {
+          "target": "com.azure.edgeorder#SiteDetails",
+          "traits": {
+            "smithy.api#documentation": "Site Related Details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Order item details Patchable Properties."
+      }
+    },
+    "com.azure.edgeorder#ProductDetailsUpdateParameterInput": {
+      "type": "structure",
+      "members": {
+        "parentProvisioningDetails": {
+          "target": "com.azure.edgeorder#ProvisioningDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "Device Provisioning Details for Parent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents product details patchable properties."
+      }
+    },
+    "com.azure.edgeorder#ProvisioningDetailsInput": {
+      "type": "structure",
+      "members": {
+        "quantity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Quantity of the devices."
+          }
+        },
+        "provisioningArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Provisioning Resource Arm ID."
+          }
+        },
+        "provisioningEndPoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Provisioning End Point."
+          }
+        },
+        "serialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Serial Number for the Device."
+          }
+        },
+        "vendorName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Vendor Name for the Device , (for 1P devices - Microsoft)."
+          }
+        },
+        "readyToConnectArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Arc Enabled Resource Arm id."
+          }
+        },
+        "managementResourceArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Management Resource ArmId."
+          }
+        },
+        "autoProvisioningStatus": {
+          "target": "com.azure.edgeorder#AutoProvisioningStatus",
+          "traits": {
+            "smithy.api#documentation": "Auto Provisioning Details."
+          }
+        },
+        "devicePresenceVerification": {
+          "target": "com.azure.edgeorder#DevicePresenceVerificationDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "Proof of possession details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details Related To Provision Resource."
+      }
+    },
+    "com.azure.edgeorder#DevicePresenceVerificationDetailsInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Proof of possession details."
+      }
+    },
+    "com.azure.edgeorder#OrderItemUpdatePropertiesInputNotificationEmailListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional notification email list."
       }
     },
     "com.azure.edgeorder#OrderItemsCreate": {
@@ -2432,16 +2682,244 @@
             "smithy.api#documentation": "The name of the order item."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edgeorder#OrderItemsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.edgeorder#OrderItemPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Order item properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.edgeorder#ResourceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Msi identity of the resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edgeorder#OrderItemPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "orderItemDetails": {
+          "target": "com.azure.edgeorder#OrderItemDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "Represents order item details.",
+            "smithy.api#required": {}
+          }
+        },
+        "addressDetails": {
+          "target": "com.azure.edgeorder#AddressDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "Represents shipping and return address for order item."
+          }
+        },
+        "orderId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the order to which order item belongs to.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents order item properties."
+      }
+    },
+    "com.azure.edgeorder#AddressDetailsInput": {
+      "type": "structure",
+      "members": {
+        "forwardAddress": {
+          "target": "com.azure.edgeorder#AddressPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Customer address and contact details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Address details for an order item."
+      }
+    },
+    "com.azure.edgeorder#OrderItemDetailsInput": {
+      "type": "structure",
+      "members": {
+        "productDetails": {
+          "target": "com.azure.edgeorder#ProductDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "Represents product details.",
+            "smithy.api#required": {}
+          }
+        },
+        "orderItemType": {
+          "target": "com.azure.edgeorder#OrderItemType",
+          "traits": {
+            "smithy.api#documentation": "Order item type.",
+            "smithy.api#required": {}
+          }
+        },
+        "orderItemMode": {
+          "target": "com.azure.edgeorder#OrderMode",
+          "traits": {
+            "smithy.api#documentation": "Defines the mode of the Order item."
+          }
+        },
+        "siteDetails": {
+          "target": "com.azure.edgeorder#SiteDetails",
+          "traits": {
+            "smithy.api#documentation": "Site Related Details."
+          }
+        },
+        "preferences": {
+          "target": "com.azure.edgeorder#Preferences",
+          "traits": {
+            "smithy.api#documentation": "Customer notification Preferences."
+          }
+        },
+        "notificationEmailList": {
+          "target": "com.azure.edgeorder#OrderItemDetailsInputNotificationEmailListList",
+          "traits": {
+            "smithy.api#documentation": "Additional notification email list."
+          }
+        },
+        "error": {
+          "target": "com.azure.edgeorder#OrderItemDetailsInputError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Order item details."
+      }
+    },
+    "com.azure.edgeorder#OrderItemDetailsInputError": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.edgeorder#OrderItemDetailsInputNotificationEmailListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional notification email list."
+      }
+    },
+    "com.azure.edgeorder#ProductDetailsInput": {
+      "type": "structure",
+      "members": {
+        "displayInfo": {
+          "target": "com.azure.edgeorder#DisplayInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Display details of the product."
+          }
+        },
+        "hierarchyInformation": {
+          "target": "com.azure.edgeorder#HierarchyInformation",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy of the product which uniquely identifies the product.",
+            "smithy.api#required": {}
+          }
+        },
+        "parentProvisioningDetails": {
+          "target": "com.azure.edgeorder#ProvisioningDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "Device Provisioning Details for Parent."
+          }
+        },
+        "optInAdditionalConfigurations": {
+          "target": "com.azure.edgeorder#ProductDetailsInputOptInAdditionalConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "List of additional configurations customer wants in the order item apart from the ones included in the base configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents product details."
+      }
+    },
+    "com.azure.edgeorder#ProductDetailsInputOptInAdditionalConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edgeorder#AdditionalConfigurationInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of additional configurations customer wants in the order item apart from the ones included in the base configuration."
+      }
+    },
+    "com.azure.edgeorder#AdditionalConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "hierarchyInformation": {
+          "target": "com.azure.edgeorder#HierarchyInformation",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy of the product which uniquely identifies the configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "quantity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Quantity of the product.",
+            "smithy.api#required": {}
+          }
+        },
+        "provisioningDetails": {
+          "target": "com.azure.edgeorder#AdditionalConfigurationInputProvisioningDetailsList",
+          "traits": {
+            "smithy.api#documentation": "List Provisioning Details for Devices in Additional Config."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Configuration details."
+      }
+    },
+    "com.azure.edgeorder#AdditionalConfigurationInputProvisioningDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edgeorder#ProvisioningDetailsInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List Provisioning Details for Devices in Additional Config."
+      }
+    },
+    "com.azure.edgeorder#DisplayInfoInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Describes product display information."
+      }
+    },
+    "com.azure.edgeorder#OrderItemsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edgeorder#OrderItemsGet": {
@@ -3002,16 +3480,53 @@
             "smithy.api#documentation": "The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edgeorder#AddressUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of an address to be updated."
+          }
+        },
+        "tags": {
+          "target": "com.azure.edgeorder#AddressesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups)."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edgeorder#AddressesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups)."
+      }
+    },
+    "com.azure.edgeorder#AddressUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "shippingAddress": {
+          "target": "com.azure.edgeorder#ShippingAddress",
+          "traits": {
+            "smithy.api#documentation": "Shipping details for the address."
+          }
+        },
+        "contactDetails": {
+          "target": "com.azure.edgeorder#ContactDetails",
+          "traits": {
+            "smithy.api#documentation": "Contact details for the address."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Address Update Properties."
       }
     },
     "com.azure.edgeorder#AddressesCreate": {
@@ -3124,16 +3639,41 @@
             "smithy.api#documentation": "The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edgeorder#AddressesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.edgeorder#AddressPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of an address.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edgeorder#AddressesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edgeorder#AddressesGet": {
@@ -5133,17 +5673,98 @@
             "smithy.api#documentation": "$skipToken is supported on list of product families, which provides the next page in the list of product families."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "filterableProperties": {
+          "target": "com.azure.edgeorder#ProductsAndConfigurationsListProductFamiliesRequestFilterablePropertiesMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Dictionary of filterable properties on product family.",
             "smithy.api#required": {}
+          }
+        },
+        "customerSubscriptionDetails": {
+          "target": "com.azure.edgeorder#CustomerSubscriptionDetails",
+          "traits": {
+            "smithy.api#documentation": "Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.edgeorder#CustomerSubscriptionDetails": {
+      "type": "structure",
+      "members": {
+        "registeredFeatures": {
+          "target": "com.azure.edgeorder#CustomerSubscriptionDetailsRegisteredFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "List of registered feature flags for subscription."
+          }
+        },
+        "locationPlacementId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location placement Id of a subscription."
+          }
+        },
+        "quotaId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Quota ID of a subscription.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Holds Customer subscription details. Clients can display available products to unregistered customers by explicitly passing subscription details."
+      }
+    },
+    "com.azure.edgeorder#CustomerSubscriptionDetailsRegisteredFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edgeorder#CustomerSubscriptionRegisteredFeatures"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of registered feature flags for subscription."
+      }
+    },
+    "com.azure.edgeorder#CustomerSubscriptionRegisteredFeatures": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of subscription registered feature."
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of subscription registered feature."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents subscription registered features."
+      }
+    },
+    "com.azure.edgeorder#ProductsAndConfigurationsListProductFamiliesRequestFilterablePropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.edgeorder#ProductsAndConfigurationsListProductFamiliesRequestFilterablePropertiesValueList"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of filterable properties on product family."
+      }
+    },
+    "com.azure.edgeorder#ProductsAndConfigurationsListProductFamiliesRequestFilterablePropertiesValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edgeorder#FilterableProperty"
+      },
+      "traits": {}
     },
     "com.azure.edgeorder#ProductsAndConfigurationsListConfigurations": {
       "type": "operation",
@@ -5212,16 +5833,95 @@
             "smithy.api#documentation": "$skipToken is supported on list of configurations, which provides the next page in the list of configurations."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "configurationFilter": {
+          "target": "com.azure.edgeorder#ConfigurationFilter",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Holds details about product hierarchy information and filterable property."
+          }
+        },
+        "customerSubscriptionDetails": {
+          "target": "com.azure.edgeorder#CustomerSubscriptionDetails",
+          "traits": {
+            "smithy.api#documentation": "Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edgeorder#ConfigurationFilter": {
+      "type": "structure",
+      "members": {
+        "hierarchyInformation": {
+          "target": "com.azure.edgeorder#HierarchyInformation",
+          "traits": {
+            "smithy.api#documentation": "Product hierarchy information.",
+            "smithy.api#required": {}
+          }
+        },
+        "filterableProperty": {
+          "target": "com.azure.edgeorder#ConfigurationFilterFilterablePropertyList",
+          "traits": {
+            "smithy.api#documentation": "Filters specific to product."
+          }
+        },
+        "childConfigurationFilter": {
+          "target": "com.azure.edgeorder#ChildConfigurationFilter",
+          "traits": {
+            "smithy.api#documentation": "Filter to fetch specific child configurations that exist in the configuration. This must be passed to either fetch a list of specific child configurations, or all child configurations of specific types of child configurations."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration filters."
+      }
+    },
+    "com.azure.edgeorder#ChildConfigurationFilter": {
+      "type": "structure",
+      "members": {
+        "hierarchyInformations": {
+          "target": "com.azure.edgeorder#ChildConfigurationFilterHierarchyInformationsList",
+          "traits": {
+            "smithy.api#documentation": "The list of child configuration hierarchy customer wants to filter for the given configuration."
+          }
+        },
+        "childConfigurationTypes": {
+          "target": "com.azure.edgeorder#ChildConfigurationFilterChildConfigurationTypesList",
+          "traits": {
+            "smithy.api#documentation": "Filter to fetch all child configurations belonging to the given list of configuration types."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Child configuration filter."
+      }
+    },
+    "com.azure.edgeorder#ChildConfigurationFilterChildConfigurationTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edgeorder#ChildConfigurationType"
+      },
+      "traits": {
+        "smithy.api#documentation": "Filter to fetch all child configurations belonging to the given list of configuration types."
+      }
+    },
+    "com.azure.edgeorder#ChildConfigurationFilterHierarchyInformationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edgeorder#HierarchyInformation"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of child configuration hierarchy customer wants to filter for the given configuration."
+      }
+    },
+    "com.azure.edgeorder#ConfigurationFilterFilterablePropertyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edgeorder#FilterableProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "Filters specific to product."
       }
     },
     "com.azure.edgeorder#AddressesListBySubscription": {

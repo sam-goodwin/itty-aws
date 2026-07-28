@@ -57,8 +57,7 @@ export const GetAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProductLimitScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "ADS_NON_EEA"
-  | "ADS_EEA"
-  | (string & {});
+  | "ADS_EEA";
 export const ProductLimitScopeEnum = /*@__PURE__*/ S.String;
 
 /** The limit for products. */
@@ -116,7 +115,7 @@ export const ListAccountsLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsLimitsRequest",
 }) as any as S.Schema<ListAccountsLimitsRequest>;
 
-export type AccountLimitList = AccountLimit[];
+export type AccountLimitList = ReadonlyArray<AccountLimit>;
 export const AccountLimitList = /*@__PURE__*/ S.Array(
   AccountLimit,
 ) as any as S.Schema<AccountLimitList>;
@@ -181,7 +180,7 @@ export const MethodDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MethodDetails" }) as any as S.Schema<MethodDetails>;
 
-export type MethodDetailsList = MethodDetails[];
+export type MethodDetailsList = ReadonlyArray<MethodDetails>;
 export const MethodDetailsList = /*@__PURE__*/ S.Array(
   MethodDetails,
 ) as any as S.Schema<MethodDetailsList>;
@@ -209,7 +208,7 @@ export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaGroup" }) as any as S.Schema<QuotaGroup>;
 
-export type QuotaGroupList = QuotaGroup[];
+export type QuotaGroupList = ReadonlyArray<QuotaGroup>;
 export const QuotaGroupList = /*@__PURE__*/ S.Array(
   QuotaGroup,
 ) as any as S.Schema<QuotaGroupList>;

@@ -12,6 +12,14 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Model that represents the Capability properties model. */
+export interface CapabilityPropertiesInput {}
+export const CapabilityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CapabilityPropertiesInput",
+}) as any as S.Schema<CapabilityPropertiesInput>;
+
 export interface CapabilitiesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -27,7 +35,8 @@ export interface CapabilitiesCreateOrUpdateRequest {
   targetName: string;
   /** String that represents a Capability resource name. */
   capabilityName: string;
-  body: unknown;
+  /** The properties of a capability resource. */
+  properties?: CapabilityPropertiesInput;
 }
 export const CapabilitiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -38,7 +47,7 @@ export const CapabilitiesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     parentResourceName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
     capabilityName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(CapabilityPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -56,8 +65,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -65,8 +73,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -310,7 +317,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
 
 /** The Capability items on this page */
-export type CapabilityListResultValueList = Capability[];
+export type CapabilityListResultValueList = ReadonlyArray<Capability>;
 export const CapabilityListResultValueList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<CapabilityListResultValueList>;
@@ -360,14 +367,16 @@ export const CapabilityTypesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapabilityTypesGetRequest>;
 
 /** Control plane actions necessary to execute capability type. */
-export type CapabilityTypePropertiesAzureRbacActionsList = string[];
+export type CapabilityTypePropertiesAzureRbacActionsList =
+  ReadonlyArray<string>;
 export const CapabilityTypePropertiesAzureRbacActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CapabilityTypePropertiesAzureRbacActionsList>;
 
 /** Data plane actions necessary to execute capability type. */
-export type CapabilityTypePropertiesAzureRbacDataActionsList = string[];
+export type CapabilityTypePropertiesAzureRbacDataActionsList =
+  ReadonlyArray<string>;
 export const CapabilityTypePropertiesAzureRbacDataActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -375,7 +384,7 @@ export const CapabilityTypePropertiesAzureRbacDataActionsList =
 
 /** Required Azure Role Definition Ids to execute capability type. */
 export type CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const CapabilityTypePropertiesRequiredAzureRoleDefinitionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -518,7 +527,7 @@ export const CapabilityType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CapabilityType" }) as any as S.Schema<CapabilityType>;
 
 /** The CapabilityType items on this page */
-export type CapabilityTypeListResultValueList = CapabilityType[];
+export type CapabilityTypeListResultValueList = ReadonlyArray<CapabilityType>;
 export const CapabilityTypeListResultValueList = /*@__PURE__*/ S.Array(
   CapabilityType,
 ) as any as S.Schema<CapabilityTypeListResultValueList>;
@@ -571,6 +580,191 @@ export const ExperimentsCancelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentsCancelResponse",
 }) as any as S.Schema<ExperimentsCancelResponse>;
 
+/** Resource tags. */
+export type ExperimentsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ExperimentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ExperimentsCreateOrUpdateRequestTagsMap>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ExperimentsCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ExperimentsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "ExperimentsCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<ExperimentsCreateOrUpdateRequestIdentity>;
+
+/** Enum union of Chaos experiment action types. */
+export type ExperimentActionType = "delay" | "discrete" | "continuous";
+export const ExperimentActionType = /*@__PURE__*/ S.String;
+
+/** Model that represents the base action model. 9 total per experiment. */
+export interface ChaosExperimentAction {
+  /** String that represents a Capability URN. */
+  name: string;
+  /** Chaos experiment action discriminator type */
+  type: ExperimentActionType;
+}
+export const ChaosExperimentAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: ExperimentActionType,
+  }),
+).annotate({
+  identifier: "ChaosExperimentAction",
+}) as any as S.Schema<ChaosExperimentAction>;
+
+/** List of actions. */
+export type ChaosExperimentBranchActionsList =
+  ReadonlyArray<ChaosExperimentAction>;
+export const ChaosExperimentBranchActionsList = /*@__PURE__*/ S.Array(
+  ChaosExperimentAction,
+) as any as S.Schema<ChaosExperimentBranchActionsList>;
+
+/** Model that represents a branch in the step. 9 total per experiment. */
+export interface ChaosExperimentBranch {
+  /** String of the branch name. */
+  name: string;
+  /** List of actions. */
+  actions: ChaosExperimentBranchActionsList;
+}
+export const ChaosExperimentBranch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    actions: ChaosExperimentBranchActionsList,
+  }),
+).annotate({
+  identifier: "ChaosExperimentBranch",
+}) as any as S.Schema<ChaosExperimentBranch>;
+
+/** List of branches. */
+export type ChaosExperimentStepBranchesList =
+  ReadonlyArray<ChaosExperimentBranch>;
+export const ChaosExperimentStepBranchesList = /*@__PURE__*/ S.Array(
+  ChaosExperimentBranch,
+) as any as S.Schema<ChaosExperimentStepBranchesList>;
+
+/** Model that represents a step in the Experiment resource. */
+export interface ChaosExperimentStep {
+  /** String of the step name. */
+  name: string;
+  /** List of branches. */
+  branches: ChaosExperimentStepBranchesList;
+}
+export const ChaosExperimentStep = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    branches: ChaosExperimentStepBranchesList,
+  }),
+).annotate({
+  identifier: "ChaosExperimentStep",
+}) as any as S.Schema<ChaosExperimentStep>;
+
+/** List of steps. */
+export type ExperimentPropertiesInputStepsList =
+  ReadonlyArray<ChaosExperimentStep>;
+export const ExperimentPropertiesInputStepsList = /*@__PURE__*/ S.Array(
+  ChaosExperimentStep,
+) as any as S.Schema<ExperimentPropertiesInputStepsList>;
+
+/** Enum of the selector type. */
+export type SelectorType = "List" | "Query";
+export const SelectorType = /*@__PURE__*/ S.String;
+
+/** Enum that discriminates between filter types. Currently only `Simple` type is supported. */
+export type FilterType = "Simple";
+export const FilterType = /*@__PURE__*/ S.String;
+
+/** Model that represents available filter types that can be applied to a targets list. */
+export interface ChaosTargetFilter {
+  /** Chaos target filter discriminator type */
+  type: FilterType;
+}
+export const ChaosTargetFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: FilterType,
+  }),
+).annotate({
+  identifier: "ChaosTargetFilter",
+}) as any as S.Schema<ChaosTargetFilter>;
+
+/** Model that represents a selector in the Experiment resource. */
+export interface ChaosTargetSelector {
+  /** String of the selector ID. */
+  id: string;
+  /** Chaos target selector discriminator type */
+  type: SelectorType;
+  /** Model that represents available filter types that can be applied to a targets list. */
+  filter?: ChaosTargetFilter;
+}
+export const ChaosTargetSelector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    type: SelectorType,
+    filter: S.optional(ChaosTargetFilter),
+  }),
+).annotate({
+  identifier: "ChaosTargetSelector",
+}) as any as S.Schema<ChaosTargetSelector>;
+
+/** List of selectors. */
+export type ExperimentPropertiesInputSelectorsList =
+  ReadonlyArray<ChaosTargetSelector>;
+export const ExperimentPropertiesInputSelectorsList = /*@__PURE__*/ S.Array(
+  ChaosTargetSelector,
+) as any as S.Schema<ExperimentPropertiesInputSelectorsList>;
+
+/** Model that represents the Experiment properties model. */
+export interface ExperimentPropertiesInput {
+  /** List of steps. */
+  steps: ExperimentPropertiesInputStepsList;
+  /** List of selectors. */
+  selectors: ExperimentPropertiesInputSelectorsList;
+}
+export const ExperimentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    steps: ExperimentPropertiesInputStepsList,
+    selectors: ExperimentPropertiesInputSelectorsList,
+  }),
+).annotate({
+  identifier: "ExperimentPropertiesInput",
+}) as any as S.Schema<ExperimentPropertiesInput>;
+
 export interface ExperimentsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -578,14 +772,24 @@ export interface ExperimentsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** String that represents a Experiment resource name. */
   experimentName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ExperimentsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ExperimentsCreateOrUpdateRequestIdentity;
+  /** The properties of the experiment resource. */
+  properties: ExperimentPropertiesInput;
 }
 export const ExperimentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     experimentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ExperimentsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    identity: S.optional(ExperimentsCreateOrUpdateRequestIdentity),
+    properties: ExperimentPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -606,15 +810,6 @@ export const ExperimentsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ExperimentsCreateOrUpdateResponseTagsMap>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -669,126 +864,18 @@ export type ProvisioningState =
   | "Canceled"
   | "Creating"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
-/** Enum union of Chaos experiment action types. */
-export type ExperimentActionType =
-  | "delay"
-  | "discrete"
-  | "continuous"
-  | (string & {});
-export const ExperimentActionType = /*@__PURE__*/ S.String;
-
-/** Model that represents the base action model. 9 total per experiment. */
-export interface ChaosExperimentAction {
-  /** String that represents a Capability URN. */
-  name: string;
-  /** Chaos experiment action discriminator type */
-  type: ExperimentActionType;
-}
-export const ChaosExperimentAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: ExperimentActionType,
-  }),
-).annotate({
-  identifier: "ChaosExperimentAction",
-}) as any as S.Schema<ChaosExperimentAction>;
-
-/** List of actions. */
-export type ChaosExperimentBranchActionsList = ChaosExperimentAction[];
-export const ChaosExperimentBranchActionsList = /*@__PURE__*/ S.Array(
-  ChaosExperimentAction,
-) as any as S.Schema<ChaosExperimentBranchActionsList>;
-
-/** Model that represents a branch in the step. 9 total per experiment. */
-export interface ChaosExperimentBranch {
-  /** String of the branch name. */
-  name: string;
-  /** List of actions. */
-  actions: ChaosExperimentBranchActionsList;
-}
-export const ChaosExperimentBranch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    actions: ChaosExperimentBranchActionsList,
-  }),
-).annotate({
-  identifier: "ChaosExperimentBranch",
-}) as any as S.Schema<ChaosExperimentBranch>;
-
-/** List of branches. */
-export type ChaosExperimentStepBranchesList = ChaosExperimentBranch[];
-export const ChaosExperimentStepBranchesList = /*@__PURE__*/ S.Array(
-  ChaosExperimentBranch,
-) as any as S.Schema<ChaosExperimentStepBranchesList>;
-
-/** Model that represents a step in the Experiment resource. */
-export interface ChaosExperimentStep {
-  /** String of the step name. */
-  name: string;
-  /** List of branches. */
-  branches: ChaosExperimentStepBranchesList;
-}
-export const ChaosExperimentStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    branches: ChaosExperimentStepBranchesList,
-  }),
-).annotate({
-  identifier: "ChaosExperimentStep",
-}) as any as S.Schema<ChaosExperimentStep>;
-
 /** List of steps. */
-export type ExperimentPropertiesStepsList = ChaosExperimentStep[];
+export type ExperimentPropertiesStepsList = ReadonlyArray<ChaosExperimentStep>;
 export const ExperimentPropertiesStepsList = /*@__PURE__*/ S.Array(
   ChaosExperimentStep,
 ) as any as S.Schema<ExperimentPropertiesStepsList>;
 
-/** Enum of the selector type. */
-export type SelectorType = "List" | "Query" | (string & {});
-export const SelectorType = /*@__PURE__*/ S.String;
-
-/** Enum that discriminates between filter types. Currently only `Simple` type is supported. */
-export type FilterType = "Simple" | (string & {});
-export const FilterType = /*@__PURE__*/ S.String;
-
-/** Model that represents available filter types that can be applied to a targets list. */
-export interface ChaosTargetFilter {
-  /** Chaos target filter discriminator type */
-  type: FilterType;
-}
-export const ChaosTargetFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: FilterType,
-  }),
-).annotate({
-  identifier: "ChaosTargetFilter",
-}) as any as S.Schema<ChaosTargetFilter>;
-
-/** Model that represents a selector in the Experiment resource. */
-export interface ChaosTargetSelector {
-  /** String of the selector ID. */
-  id: string;
-  /** Chaos target selector discriminator type */
-  type: SelectorType;
-  /** Model that represents available filter types that can be applied to a targets list. */
-  filter?: ChaosTargetFilter;
-}
-export const ChaosTargetSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: SelectorType,
-    filter: S.optional(ChaosTargetFilter),
-  }),
-).annotate({
-  identifier: "ChaosTargetSelector",
-}) as any as S.Schema<ChaosTargetSelector>;
-
 /** List of selectors. */
-export type ExperimentPropertiesSelectorsList = ChaosTargetSelector[];
+export type ExperimentPropertiesSelectorsList =
+  ReadonlyArray<ChaosTargetSelector>;
 export const ExperimentPropertiesSelectorsList = /*@__PURE__*/ S.Array(
   ChaosTargetSelector,
 ) as any as S.Schema<ExperimentPropertiesSelectorsList>;
@@ -950,7 +1037,7 @@ export const ExperimentExecutionActionTargetDetailsProperties =
 
 /** The array of targets. */
 export type ActionStatusTargetsList =
-  ExperimentExecutionActionTargetDetailsProperties[];
+  ReadonlyArray<ExperimentExecutionActionTargetDetailsProperties>;
 export const ActionStatusTargetsList = /*@__PURE__*/ S.Array(
   ExperimentExecutionActionTargetDetailsProperties,
 ) as any as S.Schema<ActionStatusTargetsList>;
@@ -982,7 +1069,7 @@ export const ActionStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionStatus" }) as any as S.Schema<ActionStatus>;
 
 /** The array of actions. */
-export type BranchStatusActionsList = ActionStatus[];
+export type BranchStatusActionsList = ReadonlyArray<ActionStatus>;
 export const BranchStatusActionsList = /*@__PURE__*/ S.Array(
   ActionStatus,
 ) as any as S.Schema<BranchStatusActionsList>;
@@ -1008,7 +1095,7 @@ export const BranchStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BranchStatus" }) as any as S.Schema<BranchStatus>;
 
 /** The array of branches. */
-export type StepStatusBranchesList = BranchStatus[];
+export type StepStatusBranchesList = ReadonlyArray<BranchStatus>;
 export const StepStatusBranchesList = /*@__PURE__*/ S.Array(
   BranchStatus,
 ) as any as S.Schema<StepStatusBranchesList>;
@@ -1035,7 +1122,7 @@ export const StepStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The steps of the experiment run. */
 export type ExperimentExecutionDetailsPropertiesRunInformationStepsList =
-  StepStatus[];
+  ReadonlyArray<StepStatus>;
 export const ExperimentExecutionDetailsPropertiesRunInformationStepsList =
   /*@__PURE__*/ S.Array(
     StepStatus,
@@ -1356,7 +1443,7 @@ export const Experiment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Experiment" }) as any as S.Schema<Experiment>;
 
 /** The Experiment items on this page */
-export type ExperimentListResultValueList = Experiment[];
+export type ExperimentListResultValueList = ReadonlyArray<Experiment>;
 export const ExperimentListResultValueList = /*@__PURE__*/ S.Array(
   Experiment,
 ) as any as S.Schema<ExperimentListResultValueList>;
@@ -1453,7 +1540,8 @@ export const ExperimentExecution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentExecution>;
 
 /** The ExperimentExecution items on this page */
-export type ExperimentExecutionListResultValueList = ExperimentExecution[];
+export type ExperimentExecutionListResultValueList =
+  ReadonlyArray<ExperimentExecution>;
 export const ExperimentExecutionListResultValueList = /*@__PURE__*/ S.Array(
   ExperimentExecution,
 ) as any as S.Schema<ExperimentExecutionListResultValueList>;
@@ -1506,6 +1594,29 @@ export const ExperimentsStartResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentsStartResponse",
 }) as any as S.Schema<ExperimentsStartResponse>;
 
+/** Resource tags. */
+export type ExperimentsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ExperimentsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ExperimentsUpdateRequestTagsMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ExperimentsUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ExperimentsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "ExperimentsUpdateRequestIdentity",
+}) as any as S.Schema<ExperimentsUpdateRequestIdentity>;
+
 export interface ExperimentsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1513,14 +1624,18 @@ export interface ExperimentsUpdateRequest {
   resourceGroupName: string;
   /** String that represents a Experiment resource name. */
   experimentName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ExperimentsUpdateRequestTagsMap;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ExperimentsUpdateRequestIdentity;
 }
 export const ExperimentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     experimentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ExperimentsUpdateRequestTagsMap),
+    identity: S.optional(ExperimentsUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1632,11 +1747,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1663,7 +1778,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListAllResponseValueList = Operation[];
+export type OperationsListAllResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListAllResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListAllResponseValueList>;
@@ -1709,13 +1824,14 @@ export const OperationStatusesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusesGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList = OperationStatusResult[];
+export type OperationStatusResultOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1737,7 +1853,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1804,7 +1920,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusesGetResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusesGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationStatusesGetResponseOperationsList>;
@@ -1845,6 +1961,15 @@ export const OperationStatusesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationStatusesGetResponse",
 }) as any as S.Schema<OperationStatusesGetResponse>;
 
+/** The properties of the target resource. */
+export type TargetsCreateOrUpdateRequestPropertiesMap = {
+  [key: string]: unknown | undefined;
+};
+export const TargetsCreateOrUpdateRequestPropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<TargetsCreateOrUpdateRequestPropertiesMap>;
+
 export interface TargetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1858,7 +1983,10 @@ export interface TargetsCreateOrUpdateRequest {
   parentResourceName: string;
   /** String that represents a Target resource name. */
   targetName: string;
-  body: unknown;
+  /** The properties of the target resource. */
+  properties: TargetsCreateOrUpdateRequestPropertiesMap;
+  /** Azure resource location. */
+  location?: string;
 }
 export const TargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1868,7 +1996,8 @@ export const TargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     parentResourceType: S.String.pipe(T.Label()),
     parentResourceName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: TargetsCreateOrUpdateRequestPropertiesMap,
+    location: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2097,7 +2226,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
 /** The Target items on this page */
-export type TargetListResultValueList = Target[];
+export type TargetListResultValueList = ReadonlyArray<Target>;
 export const TargetListResultValueList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetListResultValueList>;
@@ -2144,7 +2273,7 @@ export const TargetTypesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetTypesGetRequest>;
 
 /** List of resource types this Target Type can extend. */
-export type TargetTypePropertiesResourceTypesList = string[];
+export type TargetTypePropertiesResourceTypesList = ReadonlyArray<string>;
 export const TargetTypePropertiesResourceTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TargetTypePropertiesResourceTypesList>;
@@ -2244,7 +2373,7 @@ export const TargetType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetType" }) as any as S.Schema<TargetType>;
 
 /** The TargetType items on this page */
-export type TargetTypeListResultValueList = TargetType[];
+export type TargetTypeListResultValueList = ReadonlyArray<TargetType>;
 export const TargetTypeListResultValueList = /*@__PURE__*/ S.Array(
   TargetType,
 ) as any as S.Schema<TargetTypeListResultValueList>;

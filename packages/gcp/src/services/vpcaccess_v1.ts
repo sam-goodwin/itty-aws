@@ -66,8 +66,7 @@ export type ConnectorStateEnum =
   | "CREATING"
   | "DELETING"
   | "ERROR"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const ConnectorStateEnum = /*@__PURE__*/ S.String;
 
 /** The subnet in which to house the connector */
@@ -84,7 +83,7 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -161,7 +160,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -322,7 +321,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -368,7 +367,7 @@ export const ListProjectsLocationsConnectorsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsConnectorsRequest",
 }) as any as S.Schema<ListProjectsLocationsConnectorsRequest>;
 
-export type ConnectorList = Connector[];
+export type ConnectorList = ReadonlyArray<Connector>;
 export const ConnectorList = /*@__PURE__*/ S.Array(
   Connector,
 ) as any as S.Schema<ConnectorList>;
@@ -420,7 +419,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

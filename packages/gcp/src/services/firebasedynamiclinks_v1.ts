@@ -255,8 +255,7 @@ export type SuffixOptionEnum =
   | "OPTION_UNSPECIFIED"
   | "UNGUESSABLE"
   | "SHORT"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const SuffixOptionEnum = /*@__PURE__*/ S.String;
 
 /** Short Dynamic Link suffix. */
@@ -346,8 +345,7 @@ export type DynamicLinkWarningWarningCodeEnum =
   | "LINK_LENGTH_TOO_LONG"
   | "LINK_WITH_FRAGMENTS"
   | "NOT_MATCHING_IOS_BUNDLE_ID_AND_STORE_ID"
-  | "API_DEPRECATED"
-  | (string & {});
+  | "API_DEPRECATED";
 export const DynamicLinkWarningWarningCodeEnum = /*@__PURE__*/ S.String;
 
 /** Dynamic Links warning messages. */
@@ -369,19 +367,18 @@ export const DynamicLinkWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicLinkWarning",
 }) as any as S.Schema<DynamicLinkWarning>;
 
-export type DynamicLinkWarningList = DynamicLinkWarning[];
+export type DynamicLinkWarningList = ReadonlyArray<DynamicLinkWarning>;
 export const DynamicLinkWarningList = /*@__PURE__*/ S.Array(
   DynamicLinkWarning,
 ) as any as S.Schema<DynamicLinkWarningList>;
 
 export type ManagedShortLinkFlaggedAttributeItemEnum =
   | "UNSPECIFIED_ATTRIBUTE"
-  | "SPAM"
-  | (string & {});
+  | "SPAM";
 export const ManagedShortLinkFlaggedAttributeItemEnum = /*@__PURE__*/ S.String;
 
 export type ManagedShortLinkFlaggedAttributeItemEnumList =
-  ManagedShortLinkFlaggedAttributeItemEnum[];
+  ReadonlyArray<ManagedShortLinkFlaggedAttributeItemEnum>;
 export const ManagedShortLinkFlaggedAttributeItemEnumList =
   /*@__PURE__*/ S.Array(
     ManagedShortLinkFlaggedAttributeItemEnum,
@@ -391,8 +388,7 @@ export type ManagedShortLinkVisibilityEnum =
   | "UNSPECIFIED_VISIBILITY"
   | "UNARCHIVED"
   | "ARCHIVED"
-  | "NEVER_SHOWN"
-  | (string & {});
+  | "NEVER_SHOWN";
 export const ManagedShortLinkVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Managed Short Link. */
@@ -531,8 +527,7 @@ export type DynamicLinkEventStatEventEnum =
   | "REDIRECT"
   | "APP_INSTALL"
   | "APP_FIRST_OPEN"
-  | "APP_RE_OPEN"
-  | (string & {});
+  | "APP_RE_OPEN";
 export const DynamicLinkEventStatEventEnum = /*@__PURE__*/ S.String;
 
 export type DynamicLinkEventStatPlatformEnum =
@@ -540,8 +535,7 @@ export type DynamicLinkEventStatPlatformEnum =
   | "ANDROID"
   | "IOS"
   | "DESKTOP"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const DynamicLinkEventStatPlatformEnum = /*@__PURE__*/ S.String;
 
 /** Dynamic Link event stat. */
@@ -563,7 +557,7 @@ export const DynamicLinkEventStat = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicLinkEventStat",
 }) as any as S.Schema<DynamicLinkEventStat>;
 
-export type DynamicLinkEventStatList = DynamicLinkEventStat[];
+export type DynamicLinkEventStatList = ReadonlyArray<DynamicLinkEventStat>;
 export const DynamicLinkEventStatList = /*@__PURE__*/ S.Array(
   DynamicLinkEventStat,
 ) as any as S.Schema<DynamicLinkEventStatList>;
@@ -587,8 +581,7 @@ export const DynamicLinkStats = /*@__PURE__*/ S.suspend(() =>
 export type GetIosPostInstallAttributionRequestVisualStyleEnum =
   | "UNKNOWN_VISUAL_STYLE"
   | "DEFAULT_STYLE"
-  | "CUSTOM_STYLE"
-  | (string & {});
+  | "CUSTOM_STYLE";
 export const GetIosPostInstallAttributionRequestVisualStyleEnum =
   /*@__PURE__*/ S.String;
 
@@ -596,8 +589,7 @@ export type GetIosPostInstallAttributionRequestRetrievalMethodEnum =
   | "UNKNOWN_PAYLOAD_RETRIEVAL_METHOD"
   | "IMPLICIT_WEAK_MATCH"
   | "EXPLICIT_WEAK_MATCH"
-  | "EXPLICIT_STRONG_AFTER_WEAK_MATCH"
-  | (string & {});
+  | "EXPLICIT_STRONG_AFTER_WEAK_MATCH";
 export const GetIosPostInstallAttributionRequestRetrievalMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -687,8 +679,7 @@ export const InstallAttributionV1Request = /*@__PURE__*/ S.suspend(() =>
 export type GetIosPostInstallAttributionResponseRequestIpVersionEnum =
   | "UNKNOWN_IP_VERSION"
   | "IP_V4"
-  | "IP_V6"
-  | (string & {});
+  | "IP_V6";
 export const GetIosPostInstallAttributionResponseRequestIpVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -696,8 +687,7 @@ export type GetIosPostInstallAttributionResponseAttributionConfidenceEnum =
   | "UNKNOWN_ATTRIBUTION_CONFIDENCE"
   | "WEAK"
   | "DEFAULT"
-  | "UNIQUE"
-  | (string & {});
+  | "UNIQUE";
 export const GetIosPostInstallAttributionResponseAttributionConfidenceEnum =
   /*@__PURE__*/ S.String;
 

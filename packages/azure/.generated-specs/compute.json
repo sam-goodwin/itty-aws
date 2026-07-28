@@ -472,16 +472,61 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "executionParameters": {
+          "target": "com.azure.compute#ExecutionParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The execution parameters for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.compute#Resources",
+          "traits": {
+            "smithy.api#documentation": "The resources for the request",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#Resources": {
+      "type": "structure",
+      "members": {
+        "ids": {
+          "target": "com.azure.compute#ResourcesIdsList",
+          "traits": {
+            "smithy.api#documentation": "The resource ids used for the request",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resources needed for the user request"
+      }
+    },
+    "com.azure.compute#ResourcesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource ids used for the request"
+      }
+    },
+    "com.azure.compute#ExecutionParameters": {
+      "type": "structure",
+      "members": {
+        "retryPolicy": {
+          "target": "com.azure.compute#RetryPolicy",
+          "traits": {
+            "smithy.api#documentation": "Retry policy the user can pass"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Extra details needed to run the user's request"
       }
     },
     "com.azure.compute#VirtualMachineBulkOperationsBulkHibernate": {
@@ -574,10 +619,17 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "executionParameters": {
+          "target": "com.azure.compute#ExecutionParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The execution parameters for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.compute#Resources",
+          "traits": {
+            "smithy.api#documentation": "The resources for the request",
             "smithy.api#required": {}
           }
         }
@@ -656,16 +708,25 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "operationIds": {
+          "target": "com.azure.compute#VirtualMachineBulkOperationsBulkGetOperationsStatusRequestOperationIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The list of operation ids to get the status of",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#VirtualMachineBulkOperationsBulkGetOperationsStatusRequestOperationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of operation ids to get the status of"
       }
     },
     "com.azure.compute#VirtualMachineBulkOperationsBulkDelete": {
@@ -758,11 +819,24 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "executionParameters": {
+          "target": "com.azure.compute#ExecutionParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The execution parameters for the request",
             "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.compute#Resources",
+          "traits": {
+            "smithy.api#documentation": "The resources for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "forceDeletion": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Forced delete resource item"
           }
         }
       },
@@ -860,10 +934,17 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "executionParameters": {
+          "target": "com.azure.compute#ExecutionParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The execution parameters for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.compute#Resources",
+          "traits": {
+            "smithy.api#documentation": "The resources for the request",
             "smithy.api#required": {}
           }
         }
@@ -942,16 +1023,25 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "operationIds": {
+          "target": "com.azure.compute#VirtualMachineBulkOperationsBulkCancelRequestOperationIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The list of operation ids to cancel operations on",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#VirtualMachineBulkOperationsBulkCancelRequestOperationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of operation ids to cancel operations on"
       }
     },
     "com.azure.compute#OperationsList": {
@@ -2456,10 +2546,17 @@
             "smithy.api#documentation": "The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "immutabilityDurationDays": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The immutability duration for the snapshot, in number of days.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.compute#ImmutabilityPolicyType",
+          "traits": {
+            "smithy.api#documentation": "The type of the immutability policy. 'Unlocked' allows the policy to be modified by privileged users; 'Locked' prevents reduction of the immutability duration but allows extension of the lock period.",
             "smithy.api#required": {}
           }
         }
@@ -2615,10 +2712,17 @@
             "smithy.api#documentation": "The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "immutabilityDurationDays": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The immutability duration for the snapshot, in number of days.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.compute#ImmutabilityPolicyType",
+          "traits": {
+            "smithy.api#documentation": "The type of the immutability policy. 'Unlocked' allows the policy to be modified by privileged users; 'Locked' prevents reduction of the immutability duration but allows extension of the lock period.",
             "smithy.api#required": {}
           }
         }
@@ -2750,16 +2854,81 @@
             "smithy.api#documentation": "The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "access": {
+          "target": "com.azure.compute#AccessLevel",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The Access Level, accepted values include None, Read, Write.",
             "smithy.api#required": {}
+          }
+        },
+        "durationInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time duration in seconds until the SAS access expires.",
+            "smithy.api#required": {}
+          }
+        },
+        "getSecureVMGuestStateSAS": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set this flag to true to get additional SAS for VM guest state"
+          }
+        },
+        "fileFormat": {
+          "target": "com.azure.compute#FileFormat",
+          "traits": {
+            "smithy.api#documentation": "Used to specify the file format when making request for SAS on a VHDX file format snapshot"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#FileFormat": {
+      "type": "enum",
+      "members": {
+        "VHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VHD"
+          }
+        },
+        "VHDX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VHDX"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Used to specify the file format when making request for SAS on a VHDX file format snapshot"
+      }
+    },
+    "com.azure.compute#AccessLevel": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "READ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Read"
+          }
+        },
+        "WRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Write"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Access Level, accepted values include None, Read, Write."
       }
     },
     "com.azure.compute#SnapshotsDelete": {
@@ -2960,16 +3129,121 @@
             "smithy.api#documentation": "The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.compute#SnapshotUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Snapshot resource update properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.compute#SnapshotsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "sku": {
+          "target": "com.azure.compute#SnapshotSkuInput",
+          "traits": {
+            "smithy.api#documentation": "The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#SnapshotSkuInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "com.azure.compute#SnapshotStorageAccountTypes",
+          "traits": {
+            "smithy.api#documentation": "The sku name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot"
+      }
+    },
+    "com.azure.compute#SnapshotsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
+      }
+    },
+    "com.azure.compute#SnapshotUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "osType": {
+          "target": "com.azure.compute#CommonOperatingSystemTypes",
+          "traits": {
+            "smithy.api#documentation": "the Operating System type."
+          }
+        },
+        "diskSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
+          }
+        },
+        "encryptionSettingsCollection": {
+          "target": "com.azure.compute#EncryptionSettingsCollection",
+          "traits": {
+            "smithy.api#documentation": "Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.compute#Encryption",
+          "traits": {
+            "smithy.api#documentation": "Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys."
+          }
+        },
+        "networkAccessPolicy": {
+          "target": "com.azure.compute#NetworkAccessPolicy",
+          "traits": {
+            "smithy.api#documentation": "Policy for accessing the disk via network."
+          }
+        },
+        "diskAccessId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM id of the DiskAccess resource for using private endpoints on disks."
+          }
+        },
+        "supportsHibernation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates the OS on a snapshot supports hibernation."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.compute#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Policy for controlling export on the disk."
+          }
+        },
+        "dataAccessAuthMode": {
+          "target": "com.azure.compute#DataAccessAuthMode",
+          "traits": {
+            "smithy.api#documentation": "Additional authentication requirements when exporting or uploading to a disk or snapshot."
+          }
+        },
+        "supportedCapabilities": {
+          "target": "com.azure.compute#SupportedCapabilities",
+          "traits": {
+            "smithy.api#documentation": "List of supported capabilities for the image from which the OS disk was created."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Snapshot resource update properties."
       }
     },
     "com.azure.compute#SnapshotsCreateOrUpdate": {
@@ -3119,16 +3393,276 @@
             "smithy.api#documentation": "The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.compute#SnapshotsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.compute#SnapshotPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Snapshot resource properties."
+          }
+        },
+        "sku": {
+          "target": "com.azure.compute#SnapshotSkuInput",
+          "traits": {
+            "smithy.api#documentation": "The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot"
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.compute#SnapshotsCreateOrUpdateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#SnapshotsCreateOrUpdateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.compute#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.compute#SnapshotPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "osType": {
+          "target": "com.azure.compute#CommonOperatingSystemTypes",
+          "traits": {
+            "smithy.api#documentation": "The Operating System type."
+          }
+        },
+        "hyperVGeneration": {
+          "target": "com.azure.compute#CommonHyperVGeneration",
+          "traits": {
+            "smithy.api#documentation": "The hypervisor generation of the Virtual Machine. Applicable to OS disks only."
+          }
+        },
+        "purchasePlan": {
+          "target": "com.azure.compute#DiskPurchasePlan",
+          "traits": {
+            "smithy.api#documentation": "Purchase plan information for the image from which the source disk for the snapshot was originally created."
+          }
+        },
+        "supportedCapabilities": {
+          "target": "com.azure.compute#SupportedCapabilities",
+          "traits": {
+            "smithy.api#documentation": "List of supported capabilities for the image from which the source disk from the snapshot was originally created."
+          }
+        },
+        "creationData": {
+          "target": "com.azure.compute#CreationDataInput",
+          "traits": {
+            "smithy.api#documentation": "Disk source information. CreationData information cannot be changed after the disk has been created.",
+            "smithy.api#required": {}
+          }
+        },
+        "diskSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
+          }
+        },
+        "encryptionSettingsCollection": {
+          "target": "com.azure.compute#EncryptionSettingsCollection",
+          "traits": {
+            "smithy.api#documentation": "Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot."
+          }
+        },
+        "incremental": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a snapshot is incremental. Incremental snapshots on the same disk occupy less space than full snapshots and can be diffed."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.compute#Encryption",
+          "traits": {
+            "smithy.api#documentation": "Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys."
+          }
+        },
+        "networkAccessPolicy": {
+          "target": "com.azure.compute#NetworkAccessPolicy",
+          "traits": {
+            "smithy.api#documentation": "Policy for accessing the disk via network."
+          }
+        },
+        "diskAccessId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM id of the DiskAccess resource for using private endpoints on disks."
+          }
+        },
+        "securityProfile": {
+          "target": "com.azure.compute#DiskSecurityProfile",
+          "traits": {
+            "smithy.api#documentation": "Contains the security related information for the resource."
+          }
+        },
+        "supportsHibernation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates the OS on a snapshot supports hibernation."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.compute#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Policy for controlling export on the disk."
+          }
+        },
+        "completionPercent": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage complete for the background copy when a resource is created via the CopyStart operation."
+          }
+        },
+        "copyCompletionError": {
+          "target": "com.azure.compute#CopyCompletionError",
+          "traits": {
+            "smithy.api#documentation": "Indicates the error details if the background copy of a resource created via the CopyStart operation fails."
+          }
+        },
+        "dataAccessAuthMode": {
+          "target": "com.azure.compute#DataAccessAuthMode",
+          "traits": {
+            "smithy.api#documentation": "Additional authentication requirements when exporting or uploading to a disk or snapshot."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Snapshot resource properties."
+      }
+    },
+    "com.azure.compute#CreationDataInput": {
+      "type": "structure",
+      "members": {
+        "createOption": {
+          "target": "com.azure.compute#DiskCreateOption",
+          "traits": {
+            "smithy.api#documentation": "This enumerates the possible sources of a disk's creation.",
+            "smithy.api#required": {}
+          }
+        },
+        "storageAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required if createOption is Import. The Azure Resource Manager identifier of the storage account containing the blob to import as a disk."
+          }
+        },
+        "imageReference": {
+          "target": "com.azure.compute#ImageDiskReference",
+          "traits": {
+            "smithy.api#documentation": "Disk source information for PIR or user images."
+          }
+        },
+        "galleryImageReference": {
+          "target": "com.azure.compute#ImageDiskReference",
+          "traits": {
+            "smithy.api#documentation": "Required if creating from a Gallery Image. The id/sharedGalleryImageId/communityGalleryImageId of the ImageDiskReference will be the ARM id of the shared galley image version from which to create a disk."
+          }
+        },
+        "sourceUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If createOption is Import, this is the URI of a blob to be imported into a managed disk."
+          }
+        },
+        "sourceResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If createOption is Copy, this is the ARM id of the source snapshot or disk."
+          }
+        },
+        "uploadSizeBytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If createOption is Upload, this is the size of the contents of the upload including the VHD footer. This value should be between 20972032 (20 MiB + 512 bytes for the VHD footer) and 35183298347520 bytes (32 TiB + 512 bytes for the VHD footer)."
+          }
+        },
+        "logicalSectorSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Logical sector size in bytes for Ultra disks. Supported values are 512 ad 4096. 4096 is the default."
+          }
+        },
+        "securityDataUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state."
+          }
+        },
+        "securityMetadataUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If createOption is ImportSecure, this is the URI of a blob to be imported into VM metadata for Confidential VM."
+          }
+        },
+        "performancePlus": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set this flag to true to get a boost on the performance target of the disk deployed, see here on the respective performance target. This flag can only be set on disk creation time and cannot be disabled after enabled."
+          }
+        },
+        "elasticSanResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required if createOption is CopyFromSanSnapshot. This is the ARM id of the source elastic san volume snapshot."
+          }
+        },
+        "provisionedBandwidthCopySpeed": {
+          "target": "com.azure.compute#ProvisionedBandwidthCopyOption",
+          "traits": {
+            "smithy.api#documentation": "If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed."
+          }
+        },
+        "instantAccessDurationMinutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "For snapshots created from Premium SSD v2 or Ultra disk, this property determines the time in minutes the snapshot is retained for instant access to enable faster restore."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data used when creating a disk."
+      }
+    },
+    "com.azure.compute#SnapshotsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.compute#SnapshotsGet": {
@@ -3586,11 +4120,30 @@
             "smithy.api#documentation": "The name of the DiskRestorePoint"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "access": {
+          "target": "com.azure.compute#AccessLevel",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The Access Level, accepted values include None, Read, Write.",
             "smithy.api#required": {}
+          }
+        },
+        "durationInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time duration in seconds until the SAS access expires.",
+            "smithy.api#required": {}
+          }
+        },
+        "getSecureVMGuestStateSAS": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set this flag to true to get additional SAS for VM guest state"
+          }
+        },
+        "fileFormat": {
+          "target": "com.azure.compute#FileFormat",
+          "traits": {
+            "smithy.api#documentation": "Used to specify the file format when making request for SAS on a VHDX file format snapshot"
           }
         }
       },
@@ -4049,11 +4602,30 @@
             "smithy.api#documentation": "The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "access": {
+          "target": "com.azure.compute#AccessLevel",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The Access Level, accepted values include None, Read, Write.",
             "smithy.api#required": {}
+          }
+        },
+        "durationInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time duration in seconds until the SAS access expires.",
+            "smithy.api#required": {}
+          }
+        },
+        "getSecureVMGuestStateSAS": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set this flag to true to get additional SAS for VM guest state"
+          }
+        },
+        "fileFormat": {
+          "target": "com.azure.compute#FileFormat",
+          "traits": {
+            "smithy.api#documentation": "Used to specify the file format when making request for SAS on a VHDX file format snapshot"
           }
         }
       },
@@ -4635,16 +5207,181 @@
             "smithy.api#documentation": "The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.compute#DiskUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Disk resource update properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.compute#DisksUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "sku": {
+          "target": "com.azure.compute#DiskSkuInput",
+          "traits": {
+            "smithy.api#documentation": "The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#DiskSkuInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "com.azure.compute#DiskStorageAccountTypes",
+          "traits": {
+            "smithy.api#documentation": "The sku name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS."
+      }
+    },
+    "com.azure.compute#DisksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
+      }
+    },
+    "com.azure.compute#DiskUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "osType": {
+          "target": "com.azure.compute#CommonOperatingSystemTypes",
+          "traits": {
+            "smithy.api#documentation": "the Operating System type."
+          }
+        },
+        "diskSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
+          }
+        },
+        "encryptionSettingsCollection": {
+          "target": "com.azure.compute#EncryptionSettingsCollection",
+          "traits": {
+            "smithy.api#documentation": "Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot."
+          }
+        },
+        "diskIOPSReadWrite": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes."
+          }
+        },
+        "diskMBpsReadWrite": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10."
+          }
+        },
+        "diskIOPSReadOnly": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly. One operation can transfer between 4k and 256k bytes."
+          }
+        },
+        "diskMBpsReadOnly": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10."
+          }
+        },
+        "maxShares": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.compute#Encryption",
+          "traits": {
+            "smithy.api#documentation": "Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys."
+          }
+        },
+        "networkAccessPolicy": {
+          "target": "com.azure.compute#NetworkAccessPolicy",
+          "traits": {
+            "smithy.api#documentation": "Policy for accessing the disk via network."
+          }
+        },
+        "diskAccessId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM id of the DiskAccess resource for using private endpoints on disks."
+          }
+        },
+        "tier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks."
+          }
+        },
+        "burstingEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks."
+          }
+        },
+        "purchasePlan": {
+          "target": "com.azure.compute#DiskPurchasePlan",
+          "traits": {
+            "smithy.api#documentation": "Purchase plan information to be added on the OS disk"
+          }
+        },
+        "supportedCapabilities": {
+          "target": "com.azure.compute#SupportedCapabilities",
+          "traits": {
+            "smithy.api#documentation": "List of supported capabilities to be added on the OS disk."
+          }
+        },
+        "supportsHibernation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates the OS on a disk supports hibernation."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.compute#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Policy for controlling export on the disk."
+          }
+        },
+        "dataAccessAuthMode": {
+          "target": "com.azure.compute#DataAccessAuthMode",
+          "traits": {
+            "smithy.api#documentation": "Additional authentication requirements when exporting or uploading to a disk or snapshot."
+          }
+        },
+        "optimizedForFrequentAttach": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine."
+          }
+        },
+        "availabilityPolicy": {
+          "target": "com.azure.compute#AvailabilityPolicy",
+          "traits": {
+            "smithy.api#documentation": "Determines how platform treats disk failures"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Disk resource update properties."
       }
     },
     "com.azure.compute#DisksCreateOrUpdate": {
@@ -4824,16 +5561,240 @@
             "smithy.api#documentation": "The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.compute#DisksCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.compute#DiskPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Disk resource properties."
+          }
+        },
+        "sku": {
+          "target": "com.azure.compute#DiskSkuInput",
+          "traits": {
+            "smithy.api#documentation": "The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS."
+          }
+        },
+        "zones": {
+          "target": "com.azure.compute#DisksCreateOrUpdateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The Logical zone list for Disk."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.compute#DisksCreateOrUpdateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#DisksCreateOrUpdateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.compute#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.compute#DisksCreateOrUpdateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Logical zone list for Disk."
+      }
+    },
+    "com.azure.compute#DiskPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "osType": {
+          "target": "com.azure.compute#CommonOperatingSystemTypes",
+          "traits": {
+            "smithy.api#documentation": "The Operating System type."
+          }
+        },
+        "hyperVGeneration": {
+          "target": "com.azure.compute#CommonHyperVGeneration",
+          "traits": {
+            "smithy.api#documentation": "The hypervisor generation of the Virtual Machine. Applicable to OS disks only."
+          }
+        },
+        "purchasePlan": {
+          "target": "com.azure.compute#DiskPurchasePlan",
+          "traits": {
+            "smithy.api#documentation": "Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}"
+          }
+        },
+        "supportedCapabilities": {
+          "target": "com.azure.compute#SupportedCapabilities",
+          "traits": {
+            "smithy.api#documentation": "List of supported capabilities for the image from which the OS disk was created."
+          }
+        },
+        "creationData": {
+          "target": "com.azure.compute#CreationDataInput",
+          "traits": {
+            "smithy.api#documentation": "Disk source information. CreationData information cannot be changed after the disk has been created.",
+            "smithy.api#required": {}
+          }
+        },
+        "diskSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size."
+          }
+        },
+        "encryptionSettingsCollection": {
+          "target": "com.azure.compute#EncryptionSettingsCollection",
+          "traits": {
+            "smithy.api#documentation": "Encryption settings collection used for Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot."
+          }
+        },
+        "diskIOPSReadWrite": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes."
+          }
+        },
+        "diskMBpsReadWrite": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10."
+          }
+        },
+        "diskIOPSReadOnly": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly. One operation can transfer between 4k and 256k bytes."
+          }
+        },
+        "diskMBpsReadOnly": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.compute#Encryption",
+          "traits": {
+            "smithy.api#documentation": "Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys."
+          }
+        },
+        "maxShares": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time."
+          }
+        },
+        "networkAccessPolicy": {
+          "target": "com.azure.compute#NetworkAccessPolicy",
+          "traits": {
+            "smithy.api#documentation": "Policy for accessing the disk via network."
+          }
+        },
+        "diskAccessId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM id of the DiskAccess resource for using private endpoints on disks."
+          }
+        },
+        "tier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks."
+          }
+        },
+        "burstingEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks."
+          }
+        },
+        "supportsHibernation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates the OS on a disk supports hibernation."
+          }
+        },
+        "securityProfile": {
+          "target": "com.azure.compute#DiskSecurityProfile",
+          "traits": {
+            "smithy.api#documentation": "Contains the security related information for the resource."
+          }
+        },
+        "completionPercent": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage complete for the background copy when a resource is created via the CopyStart operation."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.compute#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Policy for controlling export on the disk."
+          }
+        },
+        "dataAccessAuthMode": {
+          "target": "com.azure.compute#DataAccessAuthMode",
+          "traits": {
+            "smithy.api#documentation": "Additional authentication requirements when exporting or uploading to a disk or snapshot."
+          }
+        },
+        "optimizedForFrequentAttach": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine."
+          }
+        },
+        "availabilityPolicy": {
+          "target": "com.azure.compute#AvailabilityPolicy",
+          "traits": {
+            "smithy.api#documentation": "Determines how platform treats disk failures"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Disk resource properties."
+      }
+    },
+    "com.azure.compute#DisksCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.compute#DisksGet": {
@@ -5763,16 +6724,108 @@
             "smithy.api#documentation": "The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.compute#DiskEncryptionSetUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "disk encryption set resource update properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.compute#DiskEncryptionSetsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.compute#EncryptionSetIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#EncryptionSetIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.compute#DiskEncryptionSetIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of Managed Identity used by the DiskEncryptionSet. Only SystemAssigned is supported for new creations. Disk Encryption Sets can be updated with Identity type None during migration of subscription to a new Azure Active Directory tenant; it will cause the encrypted resources to lose access to the keys."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.compute#EncryptionSetIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks."
+      }
+    },
+    "com.azure.compute#EncryptionSetIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.compute#CommonUserAssignedIdentitiesValueInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.compute#CommonUserAssignedIdentitiesValueInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
+    },
+    "com.azure.compute#DiskEncryptionSetsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
+      }
+    },
+    "com.azure.compute#DiskEncryptionSetUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "encryptionType": {
+          "target": "com.azure.compute#DiskEncryptionSetType",
+          "traits": {
+            "smithy.api#documentation": "The type of key used to encrypt the data of the disk."
+          }
+        },
+        "activeKey": {
+          "target": "com.azure.compute#KeyForDiskEncryptionSet",
+          "traits": {
+            "smithy.api#documentation": "Key Vault Key Url to be used for server side encryption of Managed Disks and Snapshots"
+          }
+        },
+        "rotationToLatestKeyVersionEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set this flag to true to enable auto-updating of this disk encryption set to the latest key version."
+          }
+        },
+        "federatedClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "disk encryption set resource update properties."
       }
     },
     "com.azure.compute#DiskEncryptionSetsCreateOrUpdate": {
@@ -5887,16 +6940,126 @@
             "smithy.api#documentation": "The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.compute#DiskEncryptionSetsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.compute#EncryptionSetPropertiesInput"
+        },
+        "identity": {
+          "target": "com.azure.compute#EncryptionSetIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#EncryptionSetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "encryptionType": {
+          "target": "com.azure.compute#DiskEncryptionSetType",
+          "traits": {
+            "smithy.api#documentation": "The type of key used to encrypt the data of the disk."
+          }
+        },
+        "activeKey": {
+          "target": "com.azure.compute#KeyForDiskEncryptionSet",
+          "traits": {
+            "smithy.api#documentation": "The key vault key which is currently used by this disk encryption set."
+          }
+        },
+        "rotationToLatestKeyVersionEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set this flag to true to enable auto-updating of this disk encryption set to the latest key version."
+          }
+        },
+        "autoKeyRotationError": {
+          "target": "com.azure.compute#EncryptionSetPropertiesInputAutoKeyRotationError",
+          "traits": {
+            "smithy.api#documentation": "Api error."
+          }
+        },
+        "federatedClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.compute#EncryptionSetPropertiesInputAutoKeyRotationError": {
+      "type": "structure",
+      "members": {
+        "details": {
+          "target": "com.azure.compute#EncryptionSetPropertiesInputAutoKeyRotationErrorDetailsList",
+          "traits": {
+            "smithy.api#documentation": "The Api error details"
+          }
+        },
+        "innererror": {
+          "target": "com.azure.compute#InnerError",
+          "traits": {
+            "smithy.api#documentation": "The Api inner error"
+          }
+        },
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code."
+          }
+        },
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target of the particular error."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Api error."
+      }
+    },
+    "com.azure.compute#EncryptionSetPropertiesInputAutoKeyRotationErrorDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.compute#ApiErrorBase"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Api error details"
+      }
+    },
+    "com.azure.compute#DiskEncryptionSetsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.compute#DiskEncryptionSetsGet": {
@@ -6581,16 +7744,30 @@
             "smithy.api#documentation": "The name of the private endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.compute#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.compute#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between DiskAccess and Virtual Network.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the PrivateEndpointConnectProperties."
       }
     },
     "com.azure.compute#DiskAccessesGetAPrivateEndpointConnection": {
@@ -7025,16 +8202,27 @@
             "smithy.api#documentation": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.compute#DiskAccessesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#DiskAccessesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.compute#DiskAccessesCreateOrUpdate": {
@@ -7169,16 +8357,68 @@
             "smithy.api#documentation": "The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.compute#DiskAccessesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.compute#DiskAccessPropertiesInput"
+        },
+        "extendedLocation": {
+          "target": "com.azure.compute#DiskAccessesCreateOrUpdateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#DiskAccessesCreateOrUpdateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.compute#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.compute#DiskAccessPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
+    },
+    "com.azure.compute#DiskAccessesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.compute#DiskAccessesGet": {
@@ -7772,16 +9012,51 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "desiredLocations": {
+          "target": "com.azure.compute#SpotPlacementScoresPostRequestDesiredLocationsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The desired regions"
+          }
+        },
+        "desiredSizes": {
+          "target": "com.azure.compute#SpotPlacementScoresPostRequestDesiredSizesList",
+          "traits": {
+            "smithy.api#documentation": "The desired virtual machine SKU sizes."
+          }
+        },
+        "desiredCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Desired instance count per region/zone based on the scope."
+          }
+        },
+        "availabilityZones": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Defines if the scope is zonal or regional."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#SpotPlacementScoresPostRequestDesiredSizesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.compute#ResourceSize"
+      },
+      "traits": {
+        "smithy.api#documentation": "The desired virtual machine SKU sizes."
+      }
+    },
+    "com.azure.compute#SpotPlacementScoresPostRequestDesiredLocationsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The desired regions"
       }
     },
     "com.azure.compute#SpotPlacementScoresGet": {
@@ -8506,7 +9781,7 @@
       "type": "structure",
       "members": {
         "count": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.compute#ContainerServiceMasterProfileCount",
           "traits": {
             "smithy.api#documentation": "Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1."
           }
@@ -8527,6 +9802,32 @@
       },
       "traits": {
         "smithy.api#documentation": "Profile for the container service master."
+      }
+    },
+    "com.azure.compute#ContainerServiceMasterProfileCount": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 5
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1."
       }
     },
     "com.azure.compute#ContainerServiceServicePrincipalProfile": {
@@ -8801,16 +10102,506 @@
             "smithy.api#documentation": "The name of the container service in the specified subscription and resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource location",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.compute#ContainerServicesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.compute#ContainerServicePropertiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.compute#ContainerServicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "orchestratorProfile": {
+          "target": "com.azure.compute#ContainerServiceOrchestratorProfile",
+          "traits": {
+            "smithy.api#documentation": "Properties of the orchestrator."
+          }
+        },
+        "customProfile": {
+          "target": "com.azure.compute#ContainerServiceCustomProfile",
+          "traits": {
+            "smithy.api#documentation": "Properties for custom clusters."
+          }
+        },
+        "servicePrincipalProfile": {
+          "target": "com.azure.compute#ContainerServiceServicePrincipalProfile",
+          "traits": {
+            "smithy.api#documentation": "Properties for cluster service principals."
+          }
+        },
+        "masterProfile": {
+          "target": "com.azure.compute#ContainerServiceMasterProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of master agents.",
+            "smithy.api#required": {}
+          }
+        },
+        "agentPoolProfiles": {
+          "target": "com.azure.compute#ContainerServicePropertiesInputAgentPoolProfilesList",
+          "traits": {
+            "smithy.api#documentation": "Properties of the agent pool.",
+            "smithy.api#required": {}
+          }
+        },
+        "windowsProfile": {
+          "target": "com.azure.compute#ContainerServiceWindowsProfile",
+          "traits": {
+            "smithy.api#documentation": "Properties of Windows VMs."
+          }
+        },
+        "linuxProfile": {
+          "target": "com.azure.compute#ContainerServiceLinuxProfile",
+          "traits": {
+            "smithy.api#documentation": "Properties of Linux VMs.",
+            "smithy.api#required": {}
+          }
+        },
+        "diagnosticsProfile": {
+          "target": "com.azure.compute#ContainerServiceDiagnosticsProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the diagnostic agent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the container service."
+      }
+    },
+    "com.azure.compute#ContainerServiceDiagnosticsProfileInput": {
+      "type": "structure",
+      "members": {
+        "vmDiagnostics": {
+          "target": "com.azure.compute#ContainerServiceVMDiagnosticsInput",
+          "traits": {
+            "smithy.api#documentation": "Profile for the container service VM diagnostic agent.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.compute#ContainerServiceVMDiagnosticsInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the VM diagnostic agent is provisioned on the VM.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#input": {}
+        "smithy.api#documentation": "Profile for diagnostics on the container service VMs."
+      }
+    },
+    "com.azure.compute#ContainerServicePropertiesInputAgentPoolProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.compute#ContainerServiceAgentPoolProfileInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the agent pool."
+      }
+    },
+    "com.azure.compute#ContainerServiceAgentPoolProfileInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique name of the agent pool profile in the context of the subscription and resource group.",
+            "smithy.api#required": {}
+          }
+        },
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of agents (VMs) to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. ",
+            "smithy.api#required": {}
+          }
+        },
+        "vmSize": {
+          "target": "com.azure.compute#ContainerServiceAgentPoolProfileInputVmSize",
+          "traits": {
+            "smithy.api#documentation": "Size of agent VMs.",
+            "smithy.api#required": {}
+          }
+        },
+        "dnsPrefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS prefix to be used to create the FQDN for the agent pool.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile for the container service agent pool."
+      }
+    },
+    "com.azure.compute#ContainerServiceAgentPoolProfileInputVmSize": {
+      "type": "enum",
+      "members": {
+        "STANDARD_A0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A0"
+          }
+        },
+        "STANDARD_A1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A1"
+          }
+        },
+        "STANDARD_A2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A2"
+          }
+        },
+        "STANDARD_A3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A3"
+          }
+        },
+        "STANDARD_A4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A4"
+          }
+        },
+        "STANDARD_A5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A5"
+          }
+        },
+        "STANDARD_A6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A6"
+          }
+        },
+        "STANDARD_A7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A7"
+          }
+        },
+        "STANDARD_A8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A8"
+          }
+        },
+        "STANDARD_A9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A9"
+          }
+        },
+        "STANDARD_A10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A10"
+          }
+        },
+        "STANDARD_A11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A11"
+          }
+        },
+        "STANDARD_D1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D1"
+          }
+        },
+        "STANDARD_D2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D2"
+          }
+        },
+        "STANDARD_D3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D3"
+          }
+        },
+        "STANDARD_D4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D4"
+          }
+        },
+        "STANDARD_D11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D11"
+          }
+        },
+        "STANDARD_D12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D12"
+          }
+        },
+        "STANDARD_D13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D13"
+          }
+        },
+        "STANDARD_D14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D14"
+          }
+        },
+        "STANDARD_D1_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D1_v2"
+          }
+        },
+        "STANDARD_D2_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D2_v2"
+          }
+        },
+        "STANDARD_D3_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D3_v2"
+          }
+        },
+        "STANDARD_D4_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D4_v2"
+          }
+        },
+        "STANDARD_D5_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D5_v2"
+          }
+        },
+        "STANDARD_D11_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D11_v2"
+          }
+        },
+        "STANDARD_D12_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D12_v2"
+          }
+        },
+        "STANDARD_D13_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D13_v2"
+          }
+        },
+        "STANDARD_D14_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D14_v2"
+          }
+        },
+        "STANDARD_G1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_G1"
+          }
+        },
+        "STANDARD_G2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_G2"
+          }
+        },
+        "STANDARD_G3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_G3"
+          }
+        },
+        "STANDARD_G4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_G4"
+          }
+        },
+        "STANDARD_G5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_G5"
+          }
+        },
+        "STANDARD_DS1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS1"
+          }
+        },
+        "STANDARD_DS2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS2"
+          }
+        },
+        "STANDARD_DS3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS3"
+          }
+        },
+        "STANDARD_DS4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS4"
+          }
+        },
+        "STANDARD_DS11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS11"
+          }
+        },
+        "STANDARD_DS12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS12"
+          }
+        },
+        "STANDARD_DS13": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS13"
+          }
+        },
+        "STANDARD_DS14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS14"
+          }
+        },
+        "STANDARD_GS1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_GS1"
+          }
+        },
+        "STANDARD_GS2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_GS2"
+          }
+        },
+        "STANDARD_GS3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_GS3"
+          }
+        },
+        "STANDARD_GS4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_GS4"
+          }
+        },
+        "STANDARD_GS5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_GS5"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Size of agent VMs."
+      }
+    },
+    "com.azure.compute#ContainerServiceMasterProfileInput": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "com.azure.compute#ContainerServiceMasterProfileInputCount",
+          "traits": {
+            "smithy.api#documentation": "Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1."
+          }
+        },
+        "dnsPrefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS prefix to be used to create the FQDN for master.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile for the container service master."
+      }
+    },
+    "com.azure.compute#ContainerServiceMasterProfileInputCount": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 5
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1."
+      }
+    },
+    "com.azure.compute#ContainerServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.compute#ContainerServicesGet": {

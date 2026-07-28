@@ -49,7 +49,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.warehouse_saved_query_folders#UserBasic"
+          "target": "com.posthog.warehouse_saved_query_folders#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "view_count": {
           "target": "smithy.api#Integer"
@@ -258,29 +261,10 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Display name for the folder used to organize saved queries in the SQL editor sidebar."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_query_folders#UserBasic"
-        },
-        "view_count": {
-          "target": "smithy.api#Integer"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -386,22 +370,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Display name for the folder used to organize saved queries in the SQL editor sidebar."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_query_folders#UserBasic"
-        },
-        "view_count": {
-          "target": "smithy.api#Integer"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },

@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -69,16 +69,14 @@ export type ScanRunResultStateEnum =
   | "RESULT_STATE_UNSPECIFIED"
   | "SUCCESS"
   | "ERROR"
-  | "KILLED"
-  | (string & {});
+  | "KILLED";
 export const ScanRunResultStateEnum = /*@__PURE__*/ S.String;
 
 export type ScanRunExecutionStateEnum =
   | "EXECUTION_STATE_UNSPECIFIED"
   | "QUEUED"
   | "SCANNING"
-  | "FINISHED"
-  | (string & {});
+  | "FINISHED";
 export const ScanRunExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** A ScanRun is a output-only resource representing an actual run of the scan. */
@@ -121,12 +119,11 @@ export type ScanConfigTargetPlatformsItemEnum =
   | "APP_ENGINE"
   | "COMPUTE"
   | "CLOUD_RUN"
-  | "CLOUD_FUNCTIONS"
-  | (string & {});
+  | "CLOUD_FUNCTIONS";
 export const ScanConfigTargetPlatformsItemEnum = /*@__PURE__*/ S.String;
 
 export type ScanConfigTargetPlatformsItemEnumList =
-  ScanConfigTargetPlatformsItemEnum[];
+  ReadonlyArray<ScanConfigTargetPlatformsItemEnum>;
 export const ScanConfigTargetPlatformsItemEnumList = /*@__PURE__*/ S.Array(
   ScanConfigTargetPlatformsItemEnum,
 ) as any as S.Schema<ScanConfigTargetPlatformsItemEnumList>;
@@ -135,8 +132,7 @@ export type ScanConfigUserAgentEnum =
   | "USER_AGENT_UNSPECIFIED"
   | "CHROME_LINUX"
   | "CHROME_ANDROID"
-  | "SAFARI_IPHONE"
-  | (string & {});
+  | "SAFARI_IPHONE";
 export const ScanConfigUserAgentEnum = /*@__PURE__*/ S.String;
 
 /** Scan schedule configuration. */
@@ -400,8 +396,7 @@ export type FindingFindingTypeEnum =
   | "MISMATCHING_SECURITY_HEADER_VALUES"
   | "ACCESSIBLE_GIT_REPOSITORY"
   | "ACCESSIBLE_SVN_REPOSITORY"
-  | "ACCESSIBLE_ENV_FILE"
-  | (string & {});
+  | "ACCESSIBLE_ENV_FILE";
 export const FindingFindingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes a HTTP Header. */
@@ -418,7 +413,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
-export type HeaderList = Header[];
+export type HeaderList = ReadonlyArray<Header>;
 export const HeaderList = /*@__PURE__*/ S.Array(
   Header,
 ) as any as S.Schema<HeaderList>;
@@ -530,7 +525,7 @@ export const ListProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsScanConfigsRequest",
 }) as any as S.Schema<ListProjectsScanConfigsRequest>;
 
-export type ScanConfigList = ScanConfig[];
+export type ScanConfigList = ReadonlyArray<ScanConfig>;
 export const ScanConfigList = /*@__PURE__*/ S.Array(
   ScanConfig,
 ) as any as S.Schema<ScanConfigList>;
@@ -576,7 +571,7 @@ export const ListProjectsScanConfigsScanRunsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsScanConfigsScanRunsRequest",
 }) as any as S.Schema<ListProjectsScanConfigsScanRunsRequest>;
 
-export type ScanRunList = ScanRun[];
+export type ScanRunList = ReadonlyArray<ScanRun>;
 export const ScanRunList = /*@__PURE__*/ S.Array(
   ScanRun,
 ) as any as S.Schema<ScanRunList>;
@@ -639,7 +634,7 @@ export const CrawledUrl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CrawledUrl" }) as any as S.Schema<CrawledUrl>;
 
-export type CrawledUrlList = CrawledUrl[];
+export type CrawledUrlList = ReadonlyArray<CrawledUrl>;
 export const CrawledUrlList = /*@__PURE__*/ S.Array(
   CrawledUrl,
 ) as any as S.Schema<CrawledUrlList>;
@@ -688,7 +683,7 @@ export const ListProjectsScanConfigsScanRunsFindingsRequest =
     identifier: "ListProjectsScanConfigsScanRunsFindingsRequest",
   }) as any as S.Schema<ListProjectsScanConfigsScanRunsFindingsRequest>;
 
-export type FindingList = Finding[];
+export type FindingList = ReadonlyArray<Finding>;
 export const FindingList = /*@__PURE__*/ S.Array(
   Finding,
 ) as any as S.Schema<FindingList>;
@@ -743,8 +738,7 @@ export type FindingTypeStatsFindingTypeEnum =
   | "MISMATCHING_SECURITY_HEADER_VALUES"
   | "ACCESSIBLE_GIT_REPOSITORY"
   | "ACCESSIBLE_SVN_REPOSITORY"
-  | "ACCESSIBLE_ENV_FILE"
-  | (string & {});
+  | "ACCESSIBLE_ENV_FILE";
 export const FindingTypeStatsFindingTypeEnum = /*@__PURE__*/ S.String;
 
 /** A FindingTypeStats resource represents stats regarding a specific FindingType of Findings under a given ScanRun. */
@@ -763,7 +757,7 @@ export const FindingTypeStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "FindingTypeStats",
 }) as any as S.Schema<FindingTypeStats>;
 
-export type FindingTypeStatsList = FindingTypeStats[];
+export type FindingTypeStatsList = ReadonlyArray<FindingTypeStats>;
 export const FindingTypeStatsList = /*@__PURE__*/ S.Array(
   FindingTypeStats,
 ) as any as S.Schema<FindingTypeStatsList>;

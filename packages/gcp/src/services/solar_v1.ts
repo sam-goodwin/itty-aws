@@ -41,20 +41,18 @@ export type FindClosestBuildingInsightsRequiredQualityEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BASE"
-  | (string & {});
+  | "BASE";
 export const FindClosestBuildingInsightsRequiredQualityEnum =
   /*@__PURE__*/ S.String;
 
 export type FindClosestBuildingInsightsAdditionalInsightsEnum =
   | "ADDITIONAL_INSIGHTS_UNSPECIFIED"
-  | "DETECTED_ARRAYS"
-  | (string & {});
+  | "DETECTED_ARRAYS";
 export const FindClosestBuildingInsightsAdditionalInsightsEnum =
   /*@__PURE__*/ S.String;
 
 export type FindClosestBuildingInsightsAdditionalInsightsEnumList =
-  FindClosestBuildingInsightsAdditionalInsightsEnum[];
+  ReadonlyArray<FindClosestBuildingInsightsAdditionalInsightsEnum>;
 export const FindClosestBuildingInsightsAdditionalInsightsEnumList =
   /*@__PURE__*/ S.Array(
     FindClosestBuildingInsightsAdditionalInsightsEnum,
@@ -62,13 +60,12 @@ export const FindClosestBuildingInsightsAdditionalInsightsEnumList =
 
 export type FindClosestBuildingInsightsExperimentsEnum =
   | "EXPERIMENT_UNSPECIFIED"
-  | "EXPANDED_COVERAGE"
-  | (string & {});
+  | "EXPANDED_COVERAGE";
 export const FindClosestBuildingInsightsExperimentsEnum =
   /*@__PURE__*/ S.String;
 
 export type FindClosestBuildingInsightsExperimentsEnumList =
-  FindClosestBuildingInsightsExperimentsEnum[];
+  ReadonlyArray<FindClosestBuildingInsightsExperimentsEnum>;
 export const FindClosestBuildingInsightsExperimentsEnumList =
   /*@__PURE__*/ S.Array(
     FindClosestBuildingInsightsExperimentsEnum,
@@ -134,8 +131,7 @@ export type BuildingInsightsDetectedArraysDetectionStatusEnum =
   | "DETECTION_STATUS_UNSPECIFIED"
   | "DETECTION_STATUS_DATA_UNAVAILABLE"
   | "DETECTION_STATUS_ARRAYS_DETECTED"
-  | "DETECTION_STATUS_NO_ARRAYS_DETECTED"
-  | (string & {});
+  | "DETECTION_STATUS_NO_ARRAYS_DETECTED";
 export const BuildingInsightsDetectedArraysDetectionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -190,8 +186,7 @@ export type BuildingInsightsImageryQualityEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BASE"
-  | (string & {});
+  | "BASE";
 export const BuildingInsightsImageryQualityEnum = /*@__PURE__*/ S.String;
 
 /** Represents an amount of money with its currency type. */
@@ -380,7 +375,7 @@ export const FinancialAnalysis = /*@__PURE__*/ S.suspend(() =>
   identifier: "FinancialAnalysis",
 }) as any as S.Schema<FinancialAnalysis>;
 
-export type FinancialAnalysisList = FinancialAnalysis[];
+export type FinancialAnalysisList = ReadonlyArray<FinancialAnalysis>;
 export const FinancialAnalysisList = /*@__PURE__*/ S.Array(
   FinancialAnalysis,
 ) as any as S.Schema<FinancialAnalysisList>;
@@ -388,8 +383,7 @@ export const FinancialAnalysisList = /*@__PURE__*/ S.Array(
 export type SolarPanelOrientationEnum =
   | "SOLAR_PANEL_ORIENTATION_UNSPECIFIED"
   | "LANDSCAPE"
-  | "PORTRAIT"
-  | (string & {});
+  | "PORTRAIT";
 export const SolarPanelOrientationEnum = /*@__PURE__*/ S.String;
 
 /** SolarPanel describes the position, orientation, and production of a single solar panel. See the panel_height_meters, panel_width_meters, and panel_capacity_watts fields in SolarPotential for information on the parameters of the panel. */
@@ -412,7 +406,7 @@ export const SolarPanel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SolarPanel" }) as any as S.Schema<SolarPanel>;
 
-export type SolarPanelList = SolarPanel[];
+export type SolarPanelList = ReadonlyArray<SolarPanel>;
 export const SolarPanelList = /*@__PURE__*/ S.Array(
   SolarPanel,
 ) as any as S.Schema<SolarPanelList>;
@@ -442,7 +436,7 @@ export const RoofSegmentSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoofSegmentSummary",
 }) as any as S.Schema<RoofSegmentSummary>;
 
-export type RoofSegmentSummaryList = RoofSegmentSummary[];
+export type RoofSegmentSummaryList = ReadonlyArray<RoofSegmentSummary>;
 export const RoofSegmentSummaryList = /*@__PURE__*/ S.Array(
   RoofSegmentSummary,
 ) as any as S.Schema<RoofSegmentSummaryList>;
@@ -466,12 +460,12 @@ export const SolarPanelConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "SolarPanelConfig",
 }) as any as S.Schema<SolarPanelConfig>;
 
-export type SolarPanelConfigList = SolarPanelConfig[];
+export type SolarPanelConfigList = ReadonlyArray<SolarPanelConfig>;
 export const SolarPanelConfigList = /*@__PURE__*/ S.Array(
   SolarPanelConfig,
 ) as any as S.Schema<SolarPanelConfigList>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -524,7 +518,7 @@ export const RoofSegmentSizeAndSunshineStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoofSegmentSizeAndSunshineStats>;
 
 export type RoofSegmentSizeAndSunshineStatsList =
-  RoofSegmentSizeAndSunshineStats[];
+  ReadonlyArray<RoofSegmentSizeAndSunshineStats>;
 export const RoofSegmentSizeAndSunshineStatsList = /*@__PURE__*/ S.Array(
   RoofSegmentSizeAndSunshineStats,
 ) as any as S.Schema<RoofSegmentSizeAndSunshineStatsList>;
@@ -627,11 +621,11 @@ export const BuildingInsights = /*@__PURE__*/ S.suspend(() =>
 
 export type GetDataLayersExperimentsEnum =
   | "EXPERIMENT_UNSPECIFIED"
-  | "EXPANDED_COVERAGE"
-  | (string & {});
+  | "EXPANDED_COVERAGE";
 export const GetDataLayersExperimentsEnum = /*@__PURE__*/ S.String;
 
-export type GetDataLayersExperimentsEnumList = GetDataLayersExperimentsEnum[];
+export type GetDataLayersExperimentsEnumList =
+  ReadonlyArray<GetDataLayersExperimentsEnum>;
 export const GetDataLayersExperimentsEnumList = /*@__PURE__*/ S.Array(
   GetDataLayersExperimentsEnum,
 ) as any as S.Schema<GetDataLayersExperimentsEnumList>;
@@ -641,8 +635,7 @@ export type GetDataLayersRequiredQualityEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BASE"
-  | (string & {});
+  | "BASE";
 export const GetDataLayersRequiredQualityEnum = /*@__PURE__*/ S.String;
 
 export type GetDataLayersViewEnum =
@@ -651,8 +644,7 @@ export type GetDataLayersViewEnum =
   | "IMAGERY_LAYERS"
   | "IMAGERY_AND_ANNUAL_FLUX_LAYERS"
   | "IMAGERY_AND_ALL_FLUX_LAYERS"
-  | "FULL_LAYERS"
-  | (string & {});
+  | "FULL_LAYERS";
 export const GetDataLayersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetDataLayersRequest {
@@ -701,11 +693,10 @@ export type DataLayersImageryQualityEnum =
   | "HIGH"
   | "MEDIUM"
   | "LOW"
-  | "BASE"
-  | (string & {});
+  | "BASE";
 export const DataLayersImageryQualityEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -769,7 +760,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;

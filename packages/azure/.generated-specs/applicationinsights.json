@@ -811,15 +811,108 @@
             "smithy.api#documentation": "Azure Resource Id that will fetch all linked workbooks."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.applicationinsights#WorkbookUpdateSharedTypeKind",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The kind of workbook. Only valid value is shared."
+          }
+        },
+        "tags": {
+          "target": "com.azure.applicationinsights#WorkbooksUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.applicationinsights#WorkbookPropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "Metadata describing a workbook for an Azure resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.applicationinsights#WorkbookPropertiesUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user-defined name (display name) of the workbook."
+          }
+        },
+        "serializedData": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Configuration of this particular workbook. Configuration data is a string containing valid JSON"
+          }
+        },
+        "category": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Workbook category, as defined by the user at creation time."
+          }
+        },
+        "tags": {
+          "target": "com.azure.applicationinsights#WorkbookPropertiesUpdateParametersTagsList",
+          "traits": {
+            "smithy.api#documentation": "A list of 0 or more tags that are associated with this workbook definition"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the workbook.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "revision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique revision id for this workbook definition",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties that contain a workbook for PATCH operation."
+      }
+    },
+    "com.azure.applicationinsights#WorkbookPropertiesUpdateParametersTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of 0 or more tags that are associated with this workbook definition"
+      }
+    },
+    "com.azure.applicationinsights#WorkbooksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.applicationinsights#WorkbookUpdateSharedTypeKind": {
+      "type": "enum",
+      "members": {
+        "SHARED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "shared"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of workbook. Only valid value is shared."
       }
     },
     "com.azure.applicationinsights#WorkbooksCreateOrUpdate": {
@@ -956,16 +1049,168 @@
             "smithy.api#documentation": "Azure Resource Id that will fetch all linked workbooks."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.applicationinsights#WorkbooksCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.applicationinsights#WorkbookPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Metadata describing a workbook for an Azure resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.applicationinsights#WorkbookResourceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity used for BYOS"
+          }
+        },
+        "kind": {
+          "target": "com.azure.applicationinsights#ApplicationInsightsCommonTypesWorkbookSharedTypeKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of workbook. Only valid value is shared."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource etag"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.applicationinsights#WorkbookResourceIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.applicationinsights#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.applicationinsights#UserAssignedIdentitiesInput",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.applicationinsights#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.applicationinsights#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.applicationinsights#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.applicationinsights#WorkbookPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user-defined name (display name) of the workbook.",
+            "smithy.api#required": {}
+          }
+        },
+        "serializedData": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Configuration of this particular workbook. Configuration data is a string containing valid JSON",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Workbook schema version format, like 'Notebook/1.0', which should match the workbook in serializedData"
+          }
+        },
+        "category": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Workbook category, as defined by the user at creation time.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.applicationinsights#WorkbookPropertiesInputTagsList",
+          "traits": {
+            "smithy.api#documentation": "Being deprecated, please use the other tags field"
+          }
+        },
+        "sourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ResourceId for a source resource."
+          }
+        },
+        "storageUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resourceId to the storage account when bring your own storage is used",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the workbook.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties that contain a workbook."
+      }
+    },
+    "com.azure.applicationinsights#WorkbookPropertiesInputTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Being deprecated, please use the other tags field"
+      }
+    },
+    "com.azure.applicationinsights#WorkbooksCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.applicationinsights#WorkbooksGet": {

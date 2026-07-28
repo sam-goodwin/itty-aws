@@ -92,17 +92,17 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentVariable",
 }) as any as S.Schema<EnvironmentVariable>;
 
-export type EnvironmentVariableList = EnvironmentVariable[];
+export type EnvironmentVariableList = ReadonlyArray<EnvironmentVariable>;
 export const EnvironmentVariableList = /*@__PURE__*/ S.Array(
   EnvironmentVariable,
 ) as any as S.Schema<EnvironmentVariableList>;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -307,10 +307,28 @@ export const CreateContainerRegistryCredentialsRequest =
     identifier: "CreateContainerRegistryCredentialsRequest",
   }) as any as S.Schema<CreateContainerRegistryCredentialsRequest>;
 
-export type CreateContainerRegistryCredentialsResponse = unknown;
+/** Registry credentials (transcribed from the distilled SDK — endpoint is docs-absent). */
+export interface CreateContainerRegistryCredentialsResult {
+  user?: string | null;
+  username?: string | null;
+  password: string;
+}
+export const CreateContainerRegistryCredentialsResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      user: S.optional(S.NullOr(S.String)),
+      username: S.optional(S.NullOr(S.String)),
+      password: S.String,
+    }),
+).annotate({
+  identifier: "CreateContainerRegistryCredentialsResult",
+}) as any as S.Schema<CreateContainerRegistryCredentialsResult>;
+
+export type CreateContainerRegistryCredentialsResponse =
+  CreateContainerRegistryCredentialsResult;
 export const CreateContainerRegistryCredentialsResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Unknown.pipe(T.EnvelopePayloadRoot()),
+    CreateContainerRegistryCredentialsResult.pipe(T.EnvelopePayloadRoot()),
   ).annotate({
     identifier: "CreateContainerRegistryCredentialsResponse",
   }) as any as S.Schema<CreateContainerRegistryCredentialsResponse>;
@@ -408,7 +426,8 @@ export const ListContainerApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListContainerApplicationsRequest",
 }) as any as S.Schema<ListContainerApplicationsRequest>;
 
-export type ContainerApplicationItemList = ContainerApplicationItem[];
+export type ContainerApplicationItemList =
+  ReadonlyArray<ContainerApplicationItem>;
 export const ContainerApplicationItemList = /*@__PURE__*/ S.Array(
   ContainerApplicationItem,
 ) as any as S.Schema<ContainerApplicationItemList>;

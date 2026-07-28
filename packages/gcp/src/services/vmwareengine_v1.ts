@@ -76,7 +76,7 @@ export const GoogleFileService = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleFileService",
 }) as any as S.Schema<GoogleFileService>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -130,8 +130,7 @@ export type DatastoreStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "UPDATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const DatastoreStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a datastore resource. */
@@ -203,7 +202,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -257,8 +256,7 @@ export type NetworkPeeringPeerNetworkTypeEnum =
   | "THIRD_PARTY_SERVICE"
   | "DELL_POWERSCALE"
   | "GOOGLE_CLOUD_NETAPP_VOLUMES"
-  | "GOOGLE_CLOUD_FILESTORE_INSTANCES"
-  | (string & {});
+  | "GOOGLE_CLOUD_FILESTORE_INSTANCES";
 export const NetworkPeeringPeerNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 export type NetworkPeeringStateEnum =
@@ -266,8 +264,7 @@ export type NetworkPeeringStateEnum =
   | "INACTIVE"
   | "ACTIVE"
   | "CREATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const NetworkPeeringStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of a network peering. */
@@ -361,8 +358,7 @@ export type NetworkServiceStateEnum =
   | "STATE_UNSPECIFIED"
   | "UNPROVISIONED"
   | "RECONCILING"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const NetworkServiceStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a network service that is managed by a `NetworkPolicy` resource. A network service provides a way to control an aspect of external access to VMware workloads. For example, whether the VMware workloads in the private clouds governed by a network policy can access or be accessed from the internet. */
@@ -453,15 +449,13 @@ export type ExternalAccessRuleStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "UPDATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const ExternalAccessRuleStateEnum = /*@__PURE__*/ S.String;
 
 export type ExternalAccessRuleActionEnum =
   | "ACTION_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const ExternalAccessRuleActionEnum = /*@__PURE__*/ S.String;
 
 /** An IP range provided in any one of the supported formats. */
@@ -481,7 +475,7 @@ export const IpRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IpRange" }) as any as S.Schema<IpRange>;
 
-export type IpRangeList = IpRange[];
+export type IpRangeList = ReadonlyArray<IpRange>;
 export const IpRangeList = /*@__PURE__*/ S.Array(
   IpRange,
 ) as any as S.Schema<IpRangeList>;
@@ -571,8 +565,7 @@ export type HcxStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "CREATING"
-  | "ACTIVATING"
-  | (string & {});
+  | "ACTIVATING";
 export const HcxStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about a HCX Cloud Manager appliance. */
@@ -595,11 +588,7 @@ export const Hcx = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Hcx" }) as any as S.Schema<Hcx>;
 
-export type NsxStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "CREATING"
-  | (string & {});
+export type NsxStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING";
 export const NsxStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about a NSX Manager appliance. */
@@ -681,8 +670,7 @@ export type EncryptionConfigTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "CMEK"
   | "LEGACY_CMEK"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const EncryptionConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption configuration for a private cloud. */
@@ -708,15 +696,10 @@ export type PrivateCloudStateEnum =
   | "UPDATING"
   | "FAILED"
   | "DELETED"
-  | "PURGING"
-  | (string & {});
+  | "PURGING";
 export const PrivateCloudStateEnum = /*@__PURE__*/ S.String;
 
-export type PrivateCloudTypeEnum =
-  | "STANDARD"
-  | "TIME_LIMITED"
-  | "STRETCHED"
-  | (string & {});
+export type PrivateCloudTypeEnum = "STANDARD" | "TIME_LIMITED" | "STRETCHED";
 export const PrivateCloudTypeEnum = /*@__PURE__*/ S.String;
 
 /** Network configuration in the consumer project with which the peering has to be done. */
@@ -742,11 +725,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type VcenterStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "CREATING"
-  | (string & {});
+export type VcenterStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "CREATING";
 export const VcenterStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about a vCenter Server management appliance. */
@@ -931,21 +910,18 @@ export type ClusterStateEnum =
   | "CREATING"
   | "UPDATING"
   | "DELETING"
-  | "REPAIRING"
-  | (string & {});
+  | "REPAIRING";
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 export type DatastoreMountConfigAccessModeEnum =
   | "ACCESS_MODE_UNSPECIFIED"
   | "READ_ONLY"
-  | "READ_WRITE"
-  | (string & {});
+  | "READ_WRITE";
 export const DatastoreMountConfigAccessModeEnum = /*@__PURE__*/ S.String;
 
 export type DatastoreMountConfigNfsVersionEnum =
   | "NFS_VERSION_UNSPECIFIED"
-  | "NFS_V3"
-  | (string & {});
+  | "NFS_V3";
 export const DatastoreMountConfigNfsVersionEnum = /*@__PURE__*/ S.String;
 
 /** The network configuration for the datastore. */
@@ -998,7 +974,7 @@ export const DatastoreMountConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatastoreMountConfig",
 }) as any as S.Schema<DatastoreMountConfig>;
 
-export type DatastoreMountConfigList = DatastoreMountConfig[];
+export type DatastoreMountConfigList = ReadonlyArray<DatastoreMountConfig>;
 export const DatastoreMountConfigList = /*@__PURE__*/ S.Array(
   DatastoreMountConfig,
 ) as any as S.Schema<DatastoreMountConfigList>;
@@ -1077,8 +1053,7 @@ export type ExternalAddressStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "UPDATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const ExternalAddressStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents an allocated external IP address and its corresponding internal IP address in a private cloud. */
@@ -1150,8 +1125,7 @@ export type HcxActivationKeyStateEnum =
   | "STATE_UNSPECIFIED"
   | "AVAILABLE"
   | "CONSUMED"
-  | "CREATING"
-  | (string & {});
+  | "CREATING";
 export const HcxActivationKeyStateEnum = /*@__PURE__*/ S.String;
 
 /** HCX activation key. A default key is created during private cloud provisioning, but this behavior is subject to change and you should always verify active keys. Use VmwareEngine.ListHcxActivationKeys to retrieve existing keys and VmwareEngine.CreateHcxActivationKey to create new ones. */
@@ -1213,15 +1187,13 @@ export type LoggingServerProtocolEnum =
   | "TCP"
   | "TLS"
   | "SSL"
-  | "RELP"
-  | (string & {});
+  | "RELP";
 export const LoggingServerProtocolEnum = /*@__PURE__*/ S.String;
 
 export type LoggingServerSourceTypeEnum =
   | "SOURCE_TYPE_UNSPECIFIED"
   | "ESXI"
-  | "VCSA"
-  | (string & {});
+  | "VCSA";
 export const LoggingServerSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Logging server to receive vCenter or ESXi logs. */
@@ -1290,8 +1262,7 @@ export type ManagementDnsZoneBindingStateEnum =
   | "CREATING"
   | "UPDATING"
   | "DELETING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ManagementDnsZoneBindingStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a binding between a network and the management DNS zone. A management DNS zone is the Cloud DNS cross-project binding zone that VMware Engine creates for each private cloud. It contains FQDNs and corresponding IP addresses for the private cloud's ESXi hosts and management VM appliances like vCenter and NSX Manager. */
@@ -1360,8 +1331,7 @@ export const CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsReques
 export type PrivateConnectionPeeringStateEnum =
   | "PEERING_STATE_UNSPECIFIED"
   | "PEERING_ACTIVE"
-  | "PEERING_INACTIVE"
-  | (string & {});
+  | "PEERING_INACTIVE";
 export const PrivateConnectionPeeringStateEnum = /*@__PURE__*/ S.String;
 
 export type PrivateConnectionStateEnum =
@@ -1371,8 +1341,7 @@ export type PrivateConnectionStateEnum =
   | "UPDATING"
   | "DELETING"
   | "UNPROVISIONED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const PrivateConnectionStateEnum = /*@__PURE__*/ S.String;
 
 export type PrivateConnectionTypeEnum =
@@ -1380,15 +1349,13 @@ export type PrivateConnectionTypeEnum =
   | "PRIVATE_SERVICE_ACCESS"
   | "NETAPP_CLOUD_VOLUMES"
   | "DELL_POWERSCALE"
-  | "THIRD_PARTY_SERVICE"
-  | (string & {});
+  | "THIRD_PARTY_SERVICE";
 export const PrivateConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type PrivateConnectionRoutingModeEnum =
   | "ROUTING_MODE_UNSPECIFIED"
   | "GLOBAL"
-  | "REGIONAL"
-  | (string & {});
+  | "REGIONAL";
 export const PrivateConnectionRoutingModeEnum = /*@__PURE__*/ S.String;
 
 /** Private connection resource that provides connectivity for VMware Engine private clouds. */
@@ -1476,23 +1443,20 @@ export type VmwareEngineNetworkStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "UPDATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const VmwareEngineNetworkStateEnum = /*@__PURE__*/ S.String;
 
 export type VmwareEngineNetworkTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "LEGACY"
-  | "STANDARD"
-  | (string & {});
+  | "STANDARD";
 export const VmwareEngineNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 export type VpcNetworkTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "INTRANET"
   | "INTERNET"
-  | "GOOGLE_CLOUD"
-  | (string & {});
+  | "GOOGLE_CLOUD";
 export const VpcNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a VMware Engine VPC network that is managed by a VMware Engine network resource. */
@@ -1509,7 +1473,7 @@ export const VpcNetwork = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VpcNetwork" }) as any as S.Schema<VpcNetwork>;
 
-export type VpcNetworkList = VpcNetwork[];
+export type VpcNetworkList = ReadonlyArray<VpcNetwork>;
 export const VpcNetworkList = /*@__PURE__*/ S.Array(
   VpcNetwork,
 ) as any as S.Schema<VpcNetworkList>;
@@ -1888,7 +1852,7 @@ export const FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest =
     identifier: "FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest",
   }) as any as S.Schema<FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest>;
 
-export type ExternalAddressList = ExternalAddress[];
+export type ExternalAddressList = ReadonlyArray<ExternalAddress>;
 export const ExternalAddressList = /*@__PURE__*/ S.Array(
   ExternalAddress,
 ) as any as S.Schema<ExternalAddressList>;
@@ -1943,7 +1907,7 @@ export const Principal = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
 
-export type PrincipalList = Principal[];
+export type PrincipalList = ReadonlyArray<Principal>;
 export const PrincipalList = /*@__PURE__*/ S.Array(
   Principal,
 ) as any as S.Schema<PrincipalList>;
@@ -1997,7 +1961,7 @@ export const ForwardingRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ForwardingRule" }) as any as S.Schema<ForwardingRule>;
 
-export type ForwardingRuleList = ForwardingRule[];
+export type ForwardingRuleList = ReadonlyArray<ForwardingRule>;
 export const ForwardingRuleList = /*@__PURE__*/ S.Array(
   ForwardingRule,
 ) as any as S.Schema<ForwardingRuleList>;
@@ -2081,7 +2045,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2090,8 +2054,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2108,7 +2071,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -2127,7 +2090,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -2268,8 +2231,7 @@ export type AnnouncementStateEnum =
   | "ACTIVE"
   | "INACTIVE"
   | "DELETING"
-  | "CREATING"
-  | (string & {});
+  | "CREATING";
 export const AnnouncementStateEnum = /*@__PURE__*/ S.String;
 
 /** Announcement for the resources of Vmware Engine. */
@@ -2410,23 +2372,19 @@ export const GetProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(
 
 export type NodeTypeCapabilitiesItemEnum =
   | "CAPABILITY_UNSPECIFIED"
-  | "STRETCHED_CLUSTERS"
-  | (string & {});
+  | "STRETCHED_CLUSTERS";
 export const NodeTypeCapabilitiesItemEnum = /*@__PURE__*/ S.String;
 
-export type NodeTypeCapabilitiesItemEnumList = NodeTypeCapabilitiesItemEnum[];
+export type NodeTypeCapabilitiesItemEnumList =
+  ReadonlyArray<NodeTypeCapabilitiesItemEnum>;
 export const NodeTypeCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
   NodeTypeCapabilitiesItemEnum,
 ) as any as S.Schema<NodeTypeCapabilitiesItemEnumList>;
 
-export type NodeTypeKindEnum =
-  | "KIND_UNSPECIFIED"
-  | "STANDARD"
-  | "STORAGE_ONLY"
-  | (string & {});
+export type NodeTypeKindEnum = "KIND_UNSPECIFIED" | "STANDARD" | "STORAGE_ONLY";
 export const NodeTypeKindEnum = /*@__PURE__*/ S.String;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -2553,8 +2511,7 @@ export type NodeStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "FAILED"
-  | "UPGRADING"
-  | (string & {});
+  | "UPGRADING";
 export const NodeStateEnum = /*@__PURE__*/ S.String;
 
 /** Node in a cluster. */
@@ -2689,8 +2646,7 @@ export type SubnetStateEnum =
   | "UPDATING"
   | "DELETING"
   | "RECONCILING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const SubnetStateEnum = /*@__PURE__*/ S.String;
 
 /** Subnet in a private cloud. Either `management` subnets (such as vMotion) that are read-only, or `userDefined`, which can also be updated. */
@@ -2760,8 +2716,7 @@ export type TimeWindowDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const TimeWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -2801,16 +2756,12 @@ export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
 
-export type TimeWindowList = TimeWindow[];
+export type TimeWindowList = ReadonlyArray<TimeWindow>;
 export const TimeWindowList = /*@__PURE__*/ S.Array(
   TimeWindow,
 ) as any as S.Schema<TimeWindowList>;
 
-export type ScheduleLastEditorEnum =
-  | "EDITOR_UNSPECIFIED"
-  | "SYSTEM"
-  | "USER"
-  | (string & {});
+export type ScheduleLastEditorEnum = "EDITOR_UNSPECIFIED" | "SYSTEM" | "USER";
 export const ScheduleLastEditorEnum = /*@__PURE__*/ S.String;
 
 export type WeeklyTimeIntervalStartDayEnum =
@@ -2821,8 +2772,7 @@ export type WeeklyTimeIntervalStartDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const WeeklyTimeIntervalStartDayEnum = /*@__PURE__*/ S.String;
 
 export type WeeklyTimeIntervalEndDayEnum =
@@ -2833,8 +2783,7 @@ export type WeeklyTimeIntervalEndDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const WeeklyTimeIntervalEndDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time interval, spanning across days of the week. Until local timezones are supported, this interval is in UTC. */
@@ -2859,7 +2808,7 @@ export const WeeklyTimeInterval = /*@__PURE__*/ S.suspend(() =>
   identifier: "WeeklyTimeInterval",
 }) as any as S.Schema<WeeklyTimeInterval>;
 
-export type WeeklyTimeIntervalList = WeeklyTimeInterval[];
+export type WeeklyTimeIntervalList = ReadonlyArray<WeeklyTimeInterval>;
 export const WeeklyTimeIntervalList = /*@__PURE__*/ S.Array(
   WeeklyTimeInterval,
 ) as any as S.Schema<WeeklyTimeIntervalList>;
@@ -2915,8 +2864,7 @@ export type UpgradeTypeEnum =
   | "FIRMWARE_UPGRADE"
   | "SWITCH_UPGRADE"
   | "OTHER"
-  | "INFRASTRUCTURE_UPGRADE"
-  | (string & {});
+  | "INFRASTRUCTURE_UPGRADE";
 export const UpgradeTypeEnum = /*@__PURE__*/ S.String;
 
 export type UpgradeStateEnum =
@@ -2928,8 +2876,7 @@ export type UpgradeStateEnum =
   | "FAILED"
   | "CANCELLING"
   | "CANCELLED"
-  | "RESCHEDULING"
-  | (string & {});
+  | "RESCHEDULING";
 export const UpgradeStateEnum = /*@__PURE__*/ S.String;
 
 export type VmwareUpgradeComponentComponentTypeEnum =
@@ -2947,8 +2894,7 @@ export type VmwareUpgradeComponentComponentTypeEnum =
   | "WITNESS_VM"
   | "NSXT"
   | "CLUSTER"
-  | "VM_TOOLS"
-  | (string & {});
+  | "VM_TOOLS";
 export const VmwareUpgradeComponentComponentTypeEnum = /*@__PURE__*/ S.String;
 
 export type VmwareUpgradeComponentStateEnum =
@@ -2958,8 +2904,7 @@ export type VmwareUpgradeComponentStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "NOT_STARTED"
-  | "NOT_APPLICABLE"
-  | (string & {});
+  | "NOT_APPLICABLE";
 export const VmwareUpgradeComponentStateEnum = /*@__PURE__*/ S.String;
 
 /** Per component upgrade resource */
@@ -2978,7 +2923,7 @@ export const VmwareUpgradeComponent = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmwareUpgradeComponent",
 }) as any as S.Schema<VmwareUpgradeComponent>;
 
-export type VmwareUpgradeComponentList = VmwareUpgradeComponent[];
+export type VmwareUpgradeComponentList = ReadonlyArray<VmwareUpgradeComponent>;
 export const VmwareUpgradeComponentList = /*@__PURE__*/ S.Array(
   VmwareUpgradeComponent,
 ) as any as S.Schema<VmwareUpgradeComponentList>;
@@ -3142,7 +3087,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3194,7 +3139,7 @@ export const ListProjectsLocationsAnnouncementsRequest =
     identifier: "ListProjectsLocationsAnnouncementsRequest",
   }) as any as S.Schema<ListProjectsLocationsAnnouncementsRequest>;
 
-export type AnnouncementList = Announcement[];
+export type AnnouncementList = ReadonlyArray<Announcement>;
 export const AnnouncementList = /*@__PURE__*/ S.Array(
   Announcement,
 ) as any as S.Schema<AnnouncementList>;
@@ -3252,7 +3197,7 @@ export const ListProjectsLocationsDatastoresRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDatastoresRequest",
 }) as any as S.Schema<ListProjectsLocationsDatastoresRequest>;
 
-export type DatastoreList = Datastore[];
+export type DatastoreList = ReadonlyArray<Datastore>;
 export const DatastoreList = /*@__PURE__*/ S.Array(
   Datastore,
 ) as any as S.Schema<DatastoreList>;
@@ -3307,7 +3252,7 @@ export const ListProjectsLocationsNetworkPeeringsRequest =
     identifier: "ListProjectsLocationsNetworkPeeringsRequest",
   }) as any as S.Schema<ListProjectsLocationsNetworkPeeringsRequest>;
 
-export type NetworkPeeringList = NetworkPeering[];
+export type NetworkPeeringList = ReadonlyArray<NetworkPeering>;
 export const NetworkPeeringList = /*@__PURE__*/ S.Array(
   NetworkPeering,
 ) as any as S.Schema<NetworkPeeringList>;
@@ -3362,16 +3307,14 @@ export const ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest =
 export type PeeringRouteDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "INCOMING"
-  | "OUTGOING"
-  | (string & {});
+  | "OUTGOING";
 export const PeeringRouteDirectionEnum = /*@__PURE__*/ S.String;
 
 export type PeeringRouteTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "DYNAMIC_PEERING_ROUTE"
   | "STATIC_PEERING_ROUTE"
-  | "SUBNET_PEERING_ROUTE"
-  | (string & {});
+  | "SUBNET_PEERING_ROUTE";
 export const PeeringRouteTypeEnum = /*@__PURE__*/ S.String;
 
 /** Exchanged network peering route. */
@@ -3400,7 +3343,7 @@ export const PeeringRoute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PeeringRoute" }) as any as S.Schema<PeeringRoute>;
 
-export type PeeringRouteList = PeeringRoute[];
+export type PeeringRouteList = ReadonlyArray<PeeringRoute>;
 export const PeeringRouteList = /*@__PURE__*/ S.Array(
   PeeringRoute,
 ) as any as S.Schema<PeeringRouteList>;
@@ -3452,7 +3395,7 @@ export const ListProjectsLocationsNetworkPoliciesRequest =
     identifier: "ListProjectsLocationsNetworkPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsNetworkPoliciesRequest>;
 
-export type NetworkPolicyList = NetworkPolicy[];
+export type NetworkPolicyList = ReadonlyArray<NetworkPolicy>;
 export const NetworkPolicyList = /*@__PURE__*/ S.Array(
   NetworkPolicy,
 ) as any as S.Schema<NetworkPolicyList>;
@@ -3508,7 +3451,7 @@ export const ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest =
       "ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest",
   }) as any as S.Schema<ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest>;
 
-export type ExternalAccessRuleList = ExternalAccessRule[];
+export type ExternalAccessRuleList = ReadonlyArray<ExternalAccessRule>;
 export const ExternalAccessRuleList = /*@__PURE__*/ S.Array(
   ExternalAccessRule,
 ) as any as S.Schema<ExternalAccessRuleList>;
@@ -3560,7 +3503,7 @@ export const ListProjectsLocationsNodeTypesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsNodeTypesRequest",
 }) as any as S.Schema<ListProjectsLocationsNodeTypesRequest>;
 
-export type NodeTypeList = NodeType[];
+export type NodeTypeList = ReadonlyArray<NodeType>;
 export const NodeTypeList = /*@__PURE__*/ S.Array(
   NodeType,
 ) as any as S.Schema<NodeTypeList>;
@@ -3615,7 +3558,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -3670,7 +3613,7 @@ export const ListProjectsLocationsPrivateCloudsRequest =
     identifier: "ListProjectsLocationsPrivateCloudsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsRequest>;
 
-export type PrivateCloudList = PrivateCloud[];
+export type PrivateCloudList = ReadonlyArray<PrivateCloud>;
 export const PrivateCloudList = /*@__PURE__*/ S.Array(
   PrivateCloud,
 ) as any as S.Schema<PrivateCloudList>;
@@ -3725,7 +3668,7 @@ export const ListProjectsLocationsPrivateCloudsClustersRequest =
     identifier: "ListProjectsLocationsPrivateCloudsClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersRequest>;
 
-export type ClusterList = Cluster[];
+export type ClusterList = ReadonlyArray<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -3774,7 +3717,7 @@ export const ListProjectsLocationsPrivateCloudsClustersNodesRequest =
     identifier: "ListProjectsLocationsPrivateCloudsClustersNodesRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsClustersNodesRequest>;
 
-export type NodeList = Node[];
+export type NodeList = ReadonlyArray<Node>;
 export const NodeList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeList>;
@@ -3870,7 +3813,7 @@ export const ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest =
     identifier: "ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest>;
 
-export type HcxActivationKeyList = HcxActivationKey[];
+export type HcxActivationKeyList = ReadonlyArray<HcxActivationKey>;
 export const HcxActivationKeyList = /*@__PURE__*/ S.Array(
   HcxActivationKey,
 ) as any as S.Schema<HcxActivationKeyList>;
@@ -3925,7 +3868,7 @@ export const ListProjectsLocationsPrivateCloudsLoggingServersRequest =
     identifier: "ListProjectsLocationsPrivateCloudsLoggingServersRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsLoggingServersRequest>;
 
-export type LoggingServerList = LoggingServer[];
+export type LoggingServerList = ReadonlyArray<LoggingServer>;
 export const LoggingServerList = /*@__PURE__*/ S.Array(
   LoggingServer,
 ) as any as S.Schema<LoggingServerList>;
@@ -3981,7 +3924,8 @@ export const ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest 
       "ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest>;
 
-export type ManagementDnsZoneBindingList = ManagementDnsZoneBinding[];
+export type ManagementDnsZoneBindingList =
+  ReadonlyArray<ManagementDnsZoneBinding>;
 export const ManagementDnsZoneBindingList = /*@__PURE__*/ S.Array(
   ManagementDnsZoneBinding,
 ) as any as S.Schema<ManagementDnsZoneBindingList>;
@@ -4031,7 +3975,7 @@ export const ListProjectsLocationsPrivateCloudsSubnetsRequest =
     identifier: "ListProjectsLocationsPrivateCloudsSubnetsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsSubnetsRequest>;
 
-export type SubnetList = Subnet[];
+export type SubnetList = ReadonlyArray<Subnet>;
 export const SubnetList = /*@__PURE__*/ S.Array(
   Subnet,
 ) as any as S.Schema<SubnetList>;
@@ -4086,7 +4030,7 @@ export const ListProjectsLocationsPrivateCloudsUpgradesRequest =
     identifier: "ListProjectsLocationsPrivateCloudsUpgradesRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateCloudsUpgradesRequest>;
 
-export type UpgradeList = Upgrade[];
+export type UpgradeList = ReadonlyArray<Upgrade>;
 export const UpgradeList = /*@__PURE__*/ S.Array(
   Upgrade,
 ) as any as S.Schema<UpgradeList>;
@@ -4141,7 +4085,7 @@ export const ListProjectsLocationsPrivateConnectionsRequest =
     identifier: "ListProjectsLocationsPrivateConnectionsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
 
-export type PrivateConnectionList = PrivateConnection[];
+export type PrivateConnectionList = ReadonlyArray<PrivateConnection>;
 export const PrivateConnectionList = /*@__PURE__*/ S.Array(
   PrivateConnection,
 ) as any as S.Schema<PrivateConnectionList>;
@@ -4238,7 +4182,7 @@ export const ListProjectsLocationsVmwareEngineNetworksRequest =
     identifier: "ListProjectsLocationsVmwareEngineNetworksRequest",
   }) as any as S.Schema<ListProjectsLocationsVmwareEngineNetworksRequest>;
 
-export type VmwareEngineNetworkList = VmwareEngineNetwork[];
+export type VmwareEngineNetworkList = ReadonlyArray<VmwareEngineNetwork>;
 export const VmwareEngineNetworkList = /*@__PURE__*/ S.Array(
   VmwareEngineNetwork,
 ) as any as S.Schema<VmwareEngineNetworkList>;

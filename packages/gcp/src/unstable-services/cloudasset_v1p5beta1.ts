@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -46,8 +46,7 @@ export type ListAssetsContentTypeEnum =
   | "RESOURCE"
   | "IAM_POLICY"
   | "ORG_POLICY"
-  | "ACCESS_POLICY"
-  | (string & {});
+  | "ACCESS_POLICY";
 export const ListAssetsContentTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListAssetsRequest {
@@ -151,7 +150,7 @@ export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSource =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
 
 export type GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList =
-  GoogleIdentityAccesscontextmanagerV1VpcNetworkSource[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource>;
 export const GoogleIdentityAccesscontextmanagerV1VpcNetworkSourceList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1VpcNetworkSource,
@@ -161,25 +160,24 @@ export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionSta
     | "ENCRYPTION_UNSPECIFIED"
     | "ENCRYPTION_UNSUPPORTED"
     | "UNENCRYPTED"
-    | "ENCRYPTED"
-    | (string & {});
+    | "ENCRYPTED";
 export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList =
-  GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum>;
 export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum,
   ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnumList>;
 
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum =
-  "MANAGEMENT_UNSPECIFIED" | "NONE" | "BASIC" | "COMPLETE" | (string & {});
+  "MANAGEMENT_UNSPECIFIED" | "NONE" | "BASIC" | "COMPLETE";
 export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
-  GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum>;
 export const GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItemEnum,
@@ -192,8 +190,7 @@ export type GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum =
   | "DESKTOP_LINUX"
   | "DESKTOP_CHROME_OS"
   | "ANDROID"
-  | "IOS"
-  | (string & {});
+  | "IOS";
 export const GoogleIdentityAccesscontextmanagerV1OsConstraintOsTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -220,7 +217,7 @@ export const GoogleIdentityAccesscontextmanagerV1OsConstraint =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1OsConstraint>;
 
 export type GoogleIdentityAccesscontextmanagerV1OsConstraintList =
-  GoogleIdentityAccesscontextmanagerV1OsConstraint[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1OsConstraint>;
 export const GoogleIdentityAccesscontextmanagerV1OsConstraintList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1OsConstraint,
@@ -298,14 +295,14 @@ export const GoogleIdentityAccesscontextmanagerV1Condition =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1Condition>;
 
 export type GoogleIdentityAccesscontextmanagerV1ConditionList =
-  GoogleIdentityAccesscontextmanagerV1Condition[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1Condition>;
 export const GoogleIdentityAccesscontextmanagerV1ConditionList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1Condition,
   ) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ConditionList>;
 
 export type GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum =
-  "AND" | "OR" | (string & {});
+  "AND" | "OR";
 export const GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunctionEnum =
   /*@__PURE__*/ S.String;
 
@@ -357,8 +354,7 @@ export const GoogleIdentityAccesscontextmanagerV1AccessLevel =
 export type GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum =
     | "SOURCE_RESTRICTION_UNSPECIFIED"
     | "SOURCE_RESTRICTION_ENABLED"
-    | "SOURCE_RESTRICTION_DISABLED"
-    | (string & {});
+    | "SOURCE_RESTRICTION_DISABLED";
 export const GoogleIdentityAccesscontextmanagerV1EgressFromSourceRestrictionEnum =
   /*@__PURE__*/ S.String;
 
@@ -366,8 +362,7 @@ export type GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
-  | "ANY_SERVICE_ACCOUNT"
-  | (string & {});
+  | "ANY_SERVICE_ACCOUNT";
 export const GoogleIdentityAccesscontextmanagerV1EgressFromIdentityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -409,7 +404,7 @@ export const GoogleIdentityAccesscontextmanagerV1EgressSource =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressSource>;
 
 export type GoogleIdentityAccesscontextmanagerV1EgressSourceList =
-  GoogleIdentityAccesscontextmanagerV1EgressSource[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1EgressSource>;
 export const GoogleIdentityAccesscontextmanagerV1EgressSourceList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1EgressSource,
@@ -460,7 +455,7 @@ export const GoogleIdentityAccesscontextmanagerV1MethodSelector =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
 
 export type GoogleIdentityAccesscontextmanagerV1MethodSelectorList =
-  GoogleIdentityAccesscontextmanagerV1MethodSelector[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1MethodSelector>;
 export const GoogleIdentityAccesscontextmanagerV1MethodSelectorList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1MethodSelector,
@@ -486,7 +481,7 @@ export const GoogleIdentityAccesscontextmanagerV1ApiOperation =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
 
 export type GoogleIdentityAccesscontextmanagerV1ApiOperationList =
-  GoogleIdentityAccesscontextmanagerV1ApiOperation[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1ApiOperation>;
 export const GoogleIdentityAccesscontextmanagerV1ApiOperationList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1ApiOperation,
@@ -538,7 +533,7 @@ export const GoogleIdentityAccesscontextmanagerV1EgressPolicy =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1EgressPolicy>;
 
 export type GoogleIdentityAccesscontextmanagerV1EgressPolicyList =
-  GoogleIdentityAccesscontextmanagerV1EgressPolicy[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1EgressPolicy>;
 export const GoogleIdentityAccesscontextmanagerV1EgressPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1EgressPolicy,
@@ -546,13 +541,12 @@ export const GoogleIdentityAccesscontextmanagerV1EgressPolicyList =
 
 export type GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
     | "SERVICE_PATTERNS_ENFORCEMENT_SCOPE_UNSPECIFIED"
-    | "GOOGLE_APIS_VIA_PRIVATE_PATH"
-    | (string & {});
+    | "GOOGLE_APIS_VIA_PRIVATE_PATH";
 export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
-  GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum>;
 export const GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum,
@@ -592,7 +586,7 @@ export const GoogleIdentityAccesscontextmanagerV1Modifier =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1Modifier>;
 
 export type GoogleIdentityAccesscontextmanagerV1ModifierList =
-  GoogleIdentityAccesscontextmanagerV1Modifier[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1Modifier>;
 export const GoogleIdentityAccesscontextmanagerV1ModifierList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1Modifier,
@@ -619,7 +613,7 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePattern =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ServicePattern>;
 
 export type GoogleIdentityAccesscontextmanagerV1ServicePatternList =
-  GoogleIdentityAccesscontextmanagerV1ServicePattern[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1ServicePattern>;
 export const GoogleIdentityAccesscontextmanagerV1ServicePatternList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1ServicePattern,
@@ -675,7 +669,7 @@ export const GoogleIdentityAccesscontextmanagerV1IngressSource =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1IngressSource>;
 
 export type GoogleIdentityAccesscontextmanagerV1IngressSourceList =
-  GoogleIdentityAccesscontextmanagerV1IngressSource[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1IngressSource>;
 export const GoogleIdentityAccesscontextmanagerV1IngressSourceList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1IngressSource,
@@ -685,8 +679,7 @@ export type GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
-  | "ANY_SERVICE_ACCOUNT"
-  | (string & {});
+  | "ANY_SERVICE_ACCOUNT";
 export const GoogleIdentityAccesscontextmanagerV1IngressFromIdentityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -757,7 +750,7 @@ export const GoogleIdentityAccesscontextmanagerV1IngressPolicy =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1IngressPolicy>;
 
 export type GoogleIdentityAccesscontextmanagerV1IngressPolicyList =
-  GoogleIdentityAccesscontextmanagerV1IngressPolicy[];
+  ReadonlyArray<GoogleIdentityAccesscontextmanagerV1IngressPolicy>;
 export const GoogleIdentityAccesscontextmanagerV1IngressPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleIdentityAccesscontextmanagerV1IngressPolicy,
@@ -799,7 +792,7 @@ export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig =
   }) as any as S.Schema<GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig>;
 
 export type GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum =
-  "PERIMETER_TYPE_REGULAR" | "PERIMETER_TYPE_BRIDGE" | (string & {});
+  "PERIMETER_TYPE_REGULAR" | "PERIMETER_TYPE_BRIDGE";
 export const GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -861,7 +854,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -870,8 +863,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -888,7 +880,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -907,7 +899,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -948,8 +940,7 @@ export const GoogleCloudOrgpolicyV1BooleanPolicy = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum =
   | "ALL_VALUES_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const GoogleCloudOrgpolicyV1ListPolicyAllValuesEnum =
   /*@__PURE__*/ S.String;
 
@@ -1017,7 +1008,8 @@ export const GoogleCloudOrgpolicyV1Policy = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudOrgpolicyV1Policy",
 }) as any as S.Schema<GoogleCloudOrgpolicyV1Policy>;
 
-export type GoogleCloudOrgpolicyV1PolicyList = GoogleCloudOrgpolicyV1Policy[];
+export type GoogleCloudOrgpolicyV1PolicyList =
+  ReadonlyArray<GoogleCloudOrgpolicyV1Policy>;
 export const GoogleCloudOrgpolicyV1PolicyList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV1Policy,
 ) as any as S.Schema<GoogleCloudOrgpolicyV1PolicyList>;
@@ -1117,7 +1109,7 @@ export const Asset = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Asset" }) as any as S.Schema<Asset>;
 
-export type AssetList = Asset[];
+export type AssetList = ReadonlyArray<Asset>;
 export const AssetList = /*@__PURE__*/ S.Array(
   Asset,
 ) as any as S.Schema<AssetList>;

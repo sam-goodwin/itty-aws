@@ -89,7 +89,7 @@ export const CancelProjectsPatchJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelProjectsPatchJobsRequest",
 }) as any as S.Schema<CancelProjectsPatchJobsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -113,7 +113,8 @@ export const PatchInstanceFilterGroupLabel = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchInstanceFilterGroupLabel",
 }) as any as S.Schema<PatchInstanceFilterGroupLabel>;
 
-export type PatchInstanceFilterGroupLabelList = PatchInstanceFilterGroupLabel[];
+export type PatchInstanceFilterGroupLabelList =
+  ReadonlyArray<PatchInstanceFilterGroupLabel>;
 export const PatchInstanceFilterGroupLabelList = /*@__PURE__*/ S.Array(
   PatchInstanceFilterGroupLabel,
 ) as any as S.Schema<PatchInstanceFilterGroupLabelList>;
@@ -143,7 +144,7 @@ export const PatchInstanceFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchInstanceFilter",
 }) as any as S.Schema<PatchInstanceFilter>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -152,8 +153,7 @@ export type ExecStepConfigInterpreterEnum =
   | "INTERPRETER_UNSPECIFIED"
   | "NONE"
   | "SHELL"
-  | "POWERSHELL"
-  | (string & {});
+  | "POWERSHELL";
 export const ExecStepConfigInterpreterEnum = /*@__PURE__*/ S.String;
 
 /** Google Cloud Storage object representation. */
@@ -217,13 +217,12 @@ export type WindowsUpdateSettingsClassificationsItemEnum =
   | "SERVICE_PACK"
   | "TOOL"
   | "UPDATE_ROLLUP"
-  | "UPDATE"
-  | (string & {});
+  | "UPDATE";
 export const WindowsUpdateSettingsClassificationsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type WindowsUpdateSettingsClassificationsItemEnumList =
-  WindowsUpdateSettingsClassificationsItemEnum[];
+  ReadonlyArray<WindowsUpdateSettingsClassificationsItemEnum>;
 export const WindowsUpdateSettingsClassificationsItemEnumList =
   /*@__PURE__*/ S.Array(
     WindowsUpdateSettingsClassificationsItemEnum,
@@ -286,8 +285,7 @@ export type PatchConfigRebootConfigEnum =
   | "REBOOT_CONFIG_UNSPECIFIED"
   | "DEFAULT"
   | "ALWAYS"
-  | "NEVER"
-  | (string & {});
+  | "NEVER";
 export const PatchConfigRebootConfigEnum = /*@__PURE__*/ S.String;
 
 /** Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms. */
@@ -310,11 +308,7 @@ export const YumSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "YumSettings" }) as any as S.Schema<YumSettings>;
 
-export type AptSettingsTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "DIST"
-  | "UPGRADE"
-  | (string & {});
+export type AptSettingsTypeEnum = "TYPE_UNSPECIFIED" | "DIST" | "UPGRADE";
 export const AptSettingsTypeEnum = /*@__PURE__*/ S.String;
 
 /** Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed. */
@@ -375,8 +369,7 @@ export const PatchConfig = /*@__PURE__*/ S.suspend(() =>
 export type PatchRolloutModeEnum =
   | "MODE_UNSPECIFIED"
   | "ZONE_BY_ZONE"
-  | "CONCURRENT_ZONES"
-  | (string & {});
+  | "CONCURRENT_ZONES";
 export const PatchRolloutModeEnum = /*@__PURE__*/ S.String;
 
 /** Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value. */
@@ -416,8 +409,7 @@ export type PatchJobStateEnum =
   | "COMPLETED_WITH_INACTIVE_VMS"
   | "COMPLETED_WITH_ERRORS"
   | "CANCELED"
-  | "TIMED_OUT"
-  | (string & {});
+  | "TIMED_OUT";
 export const PatchJobStateEnum = /*@__PURE__*/ S.String;
 
 /** A summary of the current patch state across all instances that this patch job affects. Contains counts of instances in different states. These states map to `InstancePatchState`. List patch job instance details to see the specific states of each instance. */
@@ -550,7 +542,7 @@ export const AssignmentOsType = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssignmentOsType",
 }) as any as S.Schema<AssignmentOsType>;
 
-export type AssignmentOsTypeList = AssignmentOsType[];
+export type AssignmentOsTypeList = ReadonlyArray<AssignmentOsType>;
 export const AssignmentOsTypeList = /*@__PURE__*/ S.Array(
   AssignmentOsType,
 ) as any as S.Schema<AssignmentOsTypeList>;
@@ -568,7 +560,7 @@ export const AssignmentGroupLabel = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssignmentGroupLabel",
 }) as any as S.Schema<AssignmentGroupLabel>;
 
-export type AssignmentGroupLabelList = AssignmentGroupLabel[];
+export type AssignmentGroupLabelList = ReadonlyArray<AssignmentGroupLabel>;
 export const AssignmentGroupLabelList = /*@__PURE__*/ S.Array(
   AssignmentGroupLabel,
 ) as any as S.Schema<AssignmentGroupLabelList>;
@@ -648,8 +640,7 @@ export type SoftwareRecipeStepExtractArchiveTypeEnum =
   | "TAR_BZIP"
   | "TAR_LZMA"
   | "TAR_XZ"
-  | "ZIP"
-  | (string & {});
+  | "ZIP";
 export const SoftwareRecipeStepExtractArchiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Extracts an archive of the type specified in the specified directory. */
@@ -718,8 +709,7 @@ export const SoftwareRecipeStepCopyFile = /*@__PURE__*/ S.suspend(() =>
 export type SoftwareRecipeStepRunScriptInterpreterEnum =
   | "INTERPRETER_UNSPECIFIED"
   | "SHELL"
-  | "POWERSHELL"
-  | (string & {});
+  | "POWERSHELL";
 export const SoftwareRecipeStepRunScriptInterpreterEnum =
   /*@__PURE__*/ S.String;
 
@@ -773,7 +763,7 @@ export const SoftwareRecipeStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "SoftwareRecipeStep",
 }) as any as S.Schema<SoftwareRecipeStep>;
 
-export type SoftwareRecipeStepList = SoftwareRecipeStep[];
+export type SoftwareRecipeStepList = ReadonlyArray<SoftwareRecipeStep>;
 export const SoftwareRecipeStepList = /*@__PURE__*/ S.Array(
   SoftwareRecipeStep,
 ) as any as S.Schema<SoftwareRecipeStepList>;
@@ -782,8 +772,7 @@ export type SoftwareRecipeDesiredStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "INSTALLED"
   | "UPDATED"
-  | "REMOVED"
-  | (string & {});
+  | "REMOVED";
 export const SoftwareRecipeDesiredStateEnum = /*@__PURE__*/ S.String;
 
 /** Specifies an artifact available via some URI. */
@@ -843,7 +832,7 @@ export const SoftwareRecipeArtifact = /*@__PURE__*/ S.suspend(() =>
   identifier: "SoftwareRecipeArtifact",
 }) as any as S.Schema<SoftwareRecipeArtifact>;
 
-export type SoftwareRecipeArtifactList = SoftwareRecipeArtifact[];
+export type SoftwareRecipeArtifactList = ReadonlyArray<SoftwareRecipeArtifact>;
 export const SoftwareRecipeArtifactList = /*@__PURE__*/ S.Array(
   SoftwareRecipeArtifact,
 ) as any as S.Schema<SoftwareRecipeArtifactList>;
@@ -874,7 +863,7 @@ export const SoftwareRecipe = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SoftwareRecipe" }) as any as S.Schema<SoftwareRecipe>;
 
-export type SoftwareRecipeList = SoftwareRecipe[];
+export type SoftwareRecipeList = ReadonlyArray<SoftwareRecipe>;
 export const SoftwareRecipeList = /*@__PURE__*/ S.Array(
   SoftwareRecipe,
 ) as any as S.Schema<SoftwareRecipeList>;
@@ -885,16 +874,14 @@ export type PackageManagerEnum =
   | "APT"
   | "YUM"
   | "ZYPPER"
-  | "GOO"
-  | (string & {});
+  | "GOO";
 export const PackageManagerEnum = /*@__PURE__*/ S.String;
 
 export type PackageDesiredStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "INSTALLED"
   | "UPDATED"
-  | "REMOVED"
-  | (string & {});
+  | "REMOVED";
 export const PackageDesiredStateEnum = /*@__PURE__*/ S.String;
 
 /** Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3` */
@@ -914,7 +901,7 @@ export const Package = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Package" }) as any as S.Schema<Package>;
 
-export type PackageList = Package[];
+export type PackageList = ReadonlyArray<Package>;
 export const PackageList = /*@__PURE__*/ S.Array(
   Package,
 ) as any as S.Schema<PackageList>;
@@ -978,8 +965,7 @@ export const ZypperRepository = /*@__PURE__*/ S.suspend(() =>
 export type AptRepositoryArchiveTypeEnum =
   | "ARCHIVE_TYPE_UNSPECIFIED"
   | "DEB"
-  | "DEB_SRC"
-  | (string & {});
+  | "DEB_SRC";
 export const AptRepositoryArchiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`. */
@@ -1027,7 +1013,7 @@ export const PackageRepository = /*@__PURE__*/ S.suspend(() =>
   identifier: "PackageRepository",
 }) as any as S.Schema<PackageRepository>;
 
-export type PackageRepositoryList = PackageRepository[];
+export type PackageRepositoryList = ReadonlyArray<PackageRepository>;
 export const PackageRepositoryList = /*@__PURE__*/ S.Array(
   PackageRepository,
 ) as any as S.Schema<PackageRepositoryList>;
@@ -1094,16 +1080,14 @@ export const CreateProjectsGuestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PatchDeploymentStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const PatchDeploymentStateEnum = /*@__PURE__*/ S.String;
 
 export type RecurringScheduleFrequencyEnum =
   | "FREQUENCY_UNSPECIFIED"
   | "WEEKLY"
   | "MONTHLY"
-  | "DAILY"
-  | (string & {});
+  | "DAILY";
 export const RecurringScheduleFrequencyEnum = /*@__PURE__*/ S.String;
 
 export type WeekDayOfMonthDayOfWeekEnum =
@@ -1114,8 +1098,7 @@ export type WeekDayOfMonthDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const WeekDayOfMonthDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents one week day in a month. An example is "the 4th Sunday". */
@@ -1159,8 +1142,7 @@ export type WeeklyScheduleDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const WeeklyScheduleDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents a weekly schedule. */
@@ -1502,7 +1484,7 @@ export const ListProjectsGuestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsGuestPoliciesRequest",
 }) as any as S.Schema<ListProjectsGuestPoliciesRequest>;
 
-export type GuestPolicyList = GuestPolicy[];
+export type GuestPolicyList = ReadonlyArray<GuestPolicy>;
 export const GuestPolicyList = /*@__PURE__*/ S.Array(
   GuestPolicy,
 ) as any as S.Schema<GuestPolicyList>;
@@ -1547,7 +1529,7 @@ export const ListProjectsPatchDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsPatchDeploymentsRequest",
 }) as any as S.Schema<ListProjectsPatchDeploymentsRequest>;
 
-export type PatchDeploymentList = PatchDeployment[];
+export type PatchDeploymentList = ReadonlyArray<PatchDeployment>;
 export const PatchDeploymentList = /*@__PURE__*/ S.Array(
   PatchDeployment,
 ) as any as S.Schema<PatchDeploymentList>;
@@ -1595,7 +1577,7 @@ export const ListProjectsPatchJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsPatchJobsRequest",
 }) as any as S.Schema<ListProjectsPatchJobsRequest>;
 
-export type PatchJobList = PatchJob[];
+export type PatchJobList = ReadonlyArray<PatchJob>;
 export const PatchJobList = /*@__PURE__*/ S.Array(
   PatchJob,
 ) as any as S.Schema<PatchJobList>;
@@ -1661,8 +1643,7 @@ export type PatchJobInstanceDetailsStateEnum =
   | "RUNNING_PRE_PATCH_STEP"
   | "RUNNING_POST_PATCH_STEP"
   | "NO_AGENT_DETECTED"
-  | "SKIPPED"
-  | (string & {});
+  | "SKIPPED";
 export const PatchJobInstanceDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** Patch details for a VM instance. For more information about reviewing VM instance details, see [Listing all VM instance details for a specific patch job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details). */
@@ -1690,7 +1671,8 @@ export const PatchJobInstanceDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchJobInstanceDetails",
 }) as any as S.Schema<PatchJobInstanceDetails>;
 
-export type PatchJobInstanceDetailsList = PatchJobInstanceDetails[];
+export type PatchJobInstanceDetailsList =
+  ReadonlyArray<PatchJobInstanceDetails>;
 export const PatchJobInstanceDetailsList = /*@__PURE__*/ S.Array(
   PatchJobInstanceDetails,
 ) as any as S.Schema<PatchJobInstanceDetailsList>;
@@ -1769,7 +1751,7 @@ export const EffectiveGuestPolicySourcedPackage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EffectiveGuestPolicySourcedPackage>;
 
 export type EffectiveGuestPolicySourcedPackageList =
-  EffectiveGuestPolicySourcedPackage[];
+  ReadonlyArray<EffectiveGuestPolicySourcedPackage>;
 export const EffectiveGuestPolicySourcedPackageList = /*@__PURE__*/ S.Array(
   EffectiveGuestPolicySourcedPackage,
 ) as any as S.Schema<EffectiveGuestPolicySourcedPackageList>;
@@ -1792,7 +1774,7 @@ export const EffectiveGuestPolicySourcedPackageRepository =
   }) as any as S.Schema<EffectiveGuestPolicySourcedPackageRepository>;
 
 export type EffectiveGuestPolicySourcedPackageRepositoryList =
-  EffectiveGuestPolicySourcedPackageRepository[];
+  ReadonlyArray<EffectiveGuestPolicySourcedPackageRepository>;
 export const EffectiveGuestPolicySourcedPackageRepositoryList =
   /*@__PURE__*/ S.Array(
     EffectiveGuestPolicySourcedPackageRepository,
@@ -1816,7 +1798,7 @@ export const EffectiveGuestPolicySourcedSoftwareRecipe =
   }) as any as S.Schema<EffectiveGuestPolicySourcedSoftwareRecipe>;
 
 export type EffectiveGuestPolicySourcedSoftwareRecipeList =
-  EffectiveGuestPolicySourcedSoftwareRecipe[];
+  ReadonlyArray<EffectiveGuestPolicySourcedSoftwareRecipe>;
 export const EffectiveGuestPolicySourcedSoftwareRecipeList =
   /*@__PURE__*/ S.Array(
     EffectiveGuestPolicySourcedSoftwareRecipe,

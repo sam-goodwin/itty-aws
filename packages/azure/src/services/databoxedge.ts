@@ -13,6 +13,10 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Addon type. */
+export type AddonType = "IotEdge" | "ArcForKubernetes";
+export const AddonType = /*@__PURE__*/ S.String;
+
 export interface AddonsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -24,7 +28,8 @@ export interface AddonsCreateOrUpdateRequest {
   roleName: string;
   /** The name of the addon. */
   addonName: string;
-  body: unknown;
+  /** Addon type. */
+  kind: AddonType;
 }
 export const AddonsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -33,7 +38,7 @@ export const AddonsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     deviceName: S.String.pipe(T.Label()),
     roleName: S.String.pipe(T.Label()),
     addonName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: AddonType,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -51,8 +56,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -60,8 +64,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -89,10 +92,6 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
     lastModifiedAt: S.optional(S.String),
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-/** Addon type. */
-export type AddonType = "IotEdge" | "ArcForKubernetes" | (string & {});
-export const AddonType = /*@__PURE__*/ S.String;
 
 export interface AddonsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -263,7 +262,7 @@ export const Addon = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Addon" }) as any as S.Schema<Addon>;
 
 /** The Addon items on this page */
-export type AddonListValueList = Addon[];
+export type AddonListValueList = ReadonlyArray<Addon>;
 export const AddonListValueList = /*@__PURE__*/ S.Array(
   Addon,
 ) as any as S.Schema<AddonListValueList>;
@@ -311,11 +310,7 @@ export const AlertsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertsGetRequest>;
 
 /** Severity of the alert. */
-export type AlertSeverity =
-  | "Informational"
-  | "Warning"
-  | "Critical"
-  | (string & {});
+export type AlertSeverity = "Informational" | "Warning" | "Critical";
 export const AlertSeverity = /*@__PURE__*/ S.String;
 
 /** Error details for the alert. */
@@ -451,7 +446,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 /** The Alert items on this page */
-export type AlertListValueList = Alert[];
+export type AlertListValueList = ReadonlyArray<Alert>;
 export const AlertListValueList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertListValueList>;
@@ -519,34 +514,33 @@ export type SkuName =
   | "EP2_64_Mx1_W"
   | "EP2_128_GPU1_Mx1_W"
   | "EP2_256_GPU2_Mx1"
-  | "EdgeMR_TCP"
-  | (string & {});
+  | "EdgeMR_TCP";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The Sku tier. */
-export type SkuTier = "Standard" | (string & {});
+export type SkuTier = "Standard";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** Availability of the Sku for the region. */
-export type DataBoxEdgeSkuLocationsList = string[];
+export type DataBoxEdgeSkuLocationsList = ReadonlyArray<string>;
 export const DataBoxEdgeSkuLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataBoxEdgeSkuLocationsList>;
 
 /** The API versions in which Sku is available. */
-export type DataBoxEdgeSkuApiVersionsList = string[];
+export type DataBoxEdgeSkuApiVersionsList = ReadonlyArray<string>;
 export const DataBoxEdgeSkuApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataBoxEdgeSkuApiVersionsList>;
 
 /** The zones. */
-export type SkuLocationInfoZonesList = string[];
+export type SkuLocationInfoZonesList = ReadonlyArray<string>;
 export const SkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuLocationInfoZonesList>;
 
 /** The sites. */
-export type SkuLocationInfoSitesList = string[];
+export type SkuLocationInfoSitesList = ReadonlyArray<string>;
 export const SkuLocationInfoSitesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuLocationInfoSitesList>;
@@ -571,7 +565,7 @@ export const SkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuLocationInfo>;
 
 /** Availability of the Sku for the location/zone/site. */
-export type DataBoxEdgeSkuLocationInfoList = SkuLocationInfo[];
+export type DataBoxEdgeSkuLocationInfoList = ReadonlyArray<SkuLocationInfo>;
 export const DataBoxEdgeSkuLocationInfoList = /*@__PURE__*/ S.Array(
   SkuLocationInfo,
 ) as any as S.Schema<DataBoxEdgeSkuLocationInfoList>;
@@ -594,32 +588,28 @@ export const SkuCost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCost" }) as any as S.Schema<SkuCost>;
 
 /** The pricing info of the Sku. */
-export type DataBoxEdgeSkuCostsList = SkuCost[];
+export type DataBoxEdgeSkuCostsList = ReadonlyArray<SkuCost>;
 export const DataBoxEdgeSkuCostsList = /*@__PURE__*/ S.Array(
   SkuCost,
 ) as any as S.Schema<DataBoxEdgeSkuCostsList>;
 
 /** Sku can be signed up by customer or not. */
-export type SkuSignupOption = "None" | "Available" | (string & {});
+export type SkuSignupOption = "None" | "Available";
 export const SkuSignupOption = /*@__PURE__*/ S.String;
 
 /** Availability of the Sku as preview/stable. */
-export type SkuVersion = "Stable" | "Preview" | (string & {});
+export type SkuVersion = "Stable" | "Preview";
 export const SkuVersion = /*@__PURE__*/ S.String;
 
 /** Links to the next set of results */
-export type SkuAvailability = "Available" | "Unavailable" | (string & {});
+export type SkuAvailability = "Available" | "Unavailable";
 export const SkuAvailability = /*@__PURE__*/ S.String;
 
-export type ShipmentType =
-  | "NotApplicable"
-  | "ShippedToCustomer"
-  | "SelfPickup"
-  | (string & {});
+export type ShipmentType = "NotApplicable" | "ShippedToCustomer" | "SelfPickup";
 export const ShipmentType = /*@__PURE__*/ S.String;
 
 /** List of Shipment Types supported by this SKU */
-export type DataBoxEdgeSkuShipmentTypesList = ShipmentType[];
+export type DataBoxEdgeSkuShipmentTypesList = ReadonlyArray<ShipmentType>;
 export const DataBoxEdgeSkuShipmentTypesList = /*@__PURE__*/ S.Array(
   ShipmentType,
 ) as any as S.Schema<DataBoxEdgeSkuShipmentTypesList>;
@@ -639,7 +629,7 @@ export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
 
 /** The capability info of the SKU. */
-export type DataBoxEdgeSkuCapabilitiesList = SkuCapability[];
+export type DataBoxEdgeSkuCapabilitiesList = ReadonlyArray<SkuCapability>;
 export const DataBoxEdgeSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<DataBoxEdgeSkuCapabilitiesList>;
@@ -698,7 +688,7 @@ export const DataBoxEdgeSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataBoxEdgeSku" }) as any as S.Schema<DataBoxEdgeSku>;
 
 /** The DataBoxEdgeSku items on this page */
-export type DataBoxEdgeSkuListValueList = DataBoxEdgeSku[];
+export type DataBoxEdgeSkuListValueList = ReadonlyArray<DataBoxEdgeSku>;
 export const DataBoxEdgeSkuListValueList = /*@__PURE__*/ S.Array(
   DataBoxEdgeSku,
 ) as any as S.Schema<DataBoxEdgeSkuListValueList>;
@@ -719,37 +709,6 @@ export const DataBoxEdgeSkuList = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataBoxEdgeSkuList",
 }) as any as S.Schema<DataBoxEdgeSkuList>;
 
-export interface BandwidthSchedulesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The device name. */
-  deviceName: string;
-  /** The bandwidth schedule name. */
-  name: string;
-  body: unknown;
-}
-export const BandwidthSchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      deviceName: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
-        code: 200,
-        apiVersion: "2023-12-01",
-      }),
-    ),
-).annotate({
-  identifier: "BandwidthSchedulesCreateOrUpdateRequest",
-}) as any as S.Schema<BandwidthSchedulesCreateOrUpdateRequest>;
-
 export type DayOfWeek =
   | "Sunday"
   | "Monday"
@@ -757,12 +716,11 @@ export type DayOfWeek =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday"
-  | (string & {});
+  | "Saturday";
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 /** The days of the week when this schedule is applicable. */
-export type BandwidthSchedulePropertiesDaysList = DayOfWeek[];
+export type BandwidthSchedulePropertiesDaysList = ReadonlyArray<DayOfWeek>;
 export const BandwidthSchedulePropertiesDaysList = /*@__PURE__*/ S.Array(
   DayOfWeek,
 ) as any as S.Schema<BandwidthSchedulePropertiesDaysList>;
@@ -788,6 +746,38 @@ export const BandwidthScheduleProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BandwidthScheduleProperties",
 }) as any as S.Schema<BandwidthScheduleProperties>;
+
+export interface BandwidthSchedulesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The device name. */
+  deviceName: string;
+  /** The bandwidth schedule name. */
+  name: string;
+  /** The properties of the bandwidth schedule. */
+  properties: BandwidthScheduleProperties;
+}
+export const BandwidthSchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      deviceName: S.String.pipe(T.Label()),
+      name: S.String.pipe(T.Label()),
+      properties: BandwidthScheduleProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/bandwidthSchedules/{name}",
+        code: 200,
+        apiVersion: "2023-12-01",
+      }),
+    ),
+).annotate({
+  identifier: "BandwidthSchedulesCreateOrUpdateRequest",
+}) as any as S.Schema<BandwidthSchedulesCreateOrUpdateRequest>;
 
 export interface BandwidthSchedulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -953,7 +943,7 @@ export const BandwidthSchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BandwidthSchedule>;
 
 /** The BandwidthSchedule items on this page */
-export type BandwidthSchedulesListValueList = BandwidthSchedule[];
+export type BandwidthSchedulesListValueList = ReadonlyArray<BandwidthSchedule>;
 export const BandwidthSchedulesListValueList = /*@__PURE__*/ S.Array(
   BandwidthSchedule,
 ) as any as S.Schema<BandwidthSchedulesListValueList>;
@@ -974,6 +964,23 @@ export const BandwidthSchedulesList = /*@__PURE__*/ S.suspend(() =>
   identifier: "BandwidthSchedulesList",
 }) as any as S.Schema<BandwidthSchedulesList>;
 
+/** Storage format used for the file represented by the share. */
+export type AzureContainerDataFormat = "BlockBlob" | "PageBlob" | "AzureFile";
+export const AzureContainerDataFormat = /*@__PURE__*/ S.String;
+
+/** The container properties. */
+export interface ContainerPropertiesInput {
+  /** DataFormat for Container */
+  dataFormat: AzureContainerDataFormat;
+}
+export const ContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataFormat: AzureContainerDataFormat,
+  }),
+).annotate({
+  identifier: "ContainerPropertiesInput",
+}) as any as S.Schema<ContainerPropertiesInput>;
+
 export interface ContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -985,7 +992,8 @@ export interface ContainersCreateOrUpdateRequest {
   storageAccountName: string;
   /** The container Name */
   containerName: string;
-  body: unknown;
+  /** The container properties. */
+  properties: ContainerPropertiesInput;
 }
 export const ContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -994,7 +1002,7 @@ export const ContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     deviceName: S.String.pipe(T.Label()),
     storageAccountName: S.String.pipe(T.Label()),
     containerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: ContainerPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1013,17 +1021,8 @@ export type ContainerStatus =
   | "Offline"
   | "Unknown"
   | "Updating"
-  | "NeedsAttention"
-  | (string & {});
+  | "NeedsAttention";
 export const ContainerStatus = /*@__PURE__*/ S.String;
-
-/** Storage format used for the file represented by the share. */
-export type AzureContainerDataFormat =
-  | "BlockBlob"
-  | "PageBlob"
-  | "AzureFile"
-  | (string & {});
-export const AzureContainerDataFormat = /*@__PURE__*/ S.String;
 
 /** Fields for tracking refresh job on the share or container. */
 export interface RefreshDetails {
@@ -1237,7 +1236,7 @@ export const Container = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
 
 /** The Container items on this page */
-export type ContainerListValueList = Container[];
+export type ContainerListValueList = ReadonlyArray<Container>;
 export const ContainerListValueList = /*@__PURE__*/ S.Array(
   Container,
 ) as any as S.Schema<ContainerListValueList>;
@@ -1294,6 +1293,75 @@ export const ContainersRefreshResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContainersRefreshResponse",
 }) as any as S.Schema<ContainersRefreshResponse>;
 
+export type DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList =
+  ReadonlyArray<string>;
+export const DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList>;
+
+/** Array containing the sizes of the VMs for checking if its feasible to create them on the appliance. */
+export type DeviceCapacityRequestInfoPropertiesVmPlacementQueryList =
+  ReadonlyArray<DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList>;
+export const DeviceCapacityRequestInfoPropertiesVmPlacementQueryList =
+  /*@__PURE__*/ S.Array(
+    DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList,
+  ) as any as S.Schema<DeviceCapacityRequestInfoPropertiesVmPlacementQueryList>;
+
+/** List of VM sizes being checked. */
+export type VmPlacementRequestResultVmSizeList = ReadonlyArray<string>;
+export const VmPlacementRequestResultVmSizeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<VmPlacementRequestResultVmSizeList>;
+
+/** List of VM sizes being checked for creation on appliance along with corresponding result. */
+export interface VmPlacementRequestResult {
+  /** List of VM sizes being checked. */
+  vmSize?: VmPlacementRequestResultVmSizeList;
+  /** Boolean value indicating if the VM(s) in VmSize can be created. */
+  isFeasible?: boolean;
+  /** MessageCode indicating reason for success or failure. */
+  messageCode?: string;
+  /** Localized message to be displayed to the user to explain the check result. */
+  message?: string;
+}
+export const VmPlacementRequestResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vmSize: S.optional(VmPlacementRequestResultVmSizeList),
+    isFeasible: S.optional(S.Boolean),
+    messageCode: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VmPlacementRequestResult",
+}) as any as S.Schema<VmPlacementRequestResult>;
+
+/** Array of the VMs of the sizes in VmSizes can be provisioned on the appliance. */
+export type DeviceCapacityRequestInfoPropertiesVmPlacementResultsList =
+  ReadonlyArray<VmPlacementRequestResult>;
+export const DeviceCapacityRequestInfoPropertiesVmPlacementResultsList =
+  /*@__PURE__*/ S.Array(
+    VmPlacementRequestResult,
+  ) as any as S.Schema<DeviceCapacityRequestInfoPropertiesVmPlacementResultsList>;
+
+/** Properties of Device Capacity Request Info containing VM's to be checked and their corresponding results. */
+export interface DeviceCapacityRequestInfoProperties {
+  /** Array containing the sizes of the VMs for checking if its feasible to create them on the appliance. */
+  vmPlacementQuery: DeviceCapacityRequestInfoPropertiesVmPlacementQueryList;
+  /** Array of the VMs of the sizes in VmSizes can be provisioned on the appliance. */
+  vmPlacementResults?: DeviceCapacityRequestInfoPropertiesVmPlacementResultsList;
+}
+export const DeviceCapacityRequestInfoProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vmPlacementQuery: DeviceCapacityRequestInfoPropertiesVmPlacementQueryList,
+    vmPlacementResults: S.optional(
+      DeviceCapacityRequestInfoPropertiesVmPlacementResultsList,
+    ),
+  }),
+).annotate({
+  identifier: "DeviceCapacityRequestInfoProperties",
+}) as any as S.Schema<DeviceCapacityRequestInfoProperties>;
+
 export interface DeviceCapacityCheckCheckResourceCreationFeasibilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1303,7 +1371,8 @@ export interface DeviceCapacityCheckCheckResourceCreationFeasibilityRequest {
   deviceName: string;
   /** The capacity name. */
   capacityName?: string;
-  body: unknown;
+  /** The properties of the Device Capacity Request. */
+  properties: DeviceCapacityRequestInfoProperties;
 }
 export const DeviceCapacityCheckCheckResourceCreationFeasibilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1312,7 +1381,7 @@ export const DeviceCapacityCheckCheckResourceCreationFeasibilityRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       deviceName: S.String.pipe(T.Label()),
       capacityName: S.optional(S.String.pipe(T.Query())),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: DeviceCapacityRequestInfoProperties,
     }).pipe(
       T.Http({
         method: "POST",
@@ -1484,19 +1553,19 @@ export const HostCapacityVmUsedMemoryMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HostCapacityVmUsedMemoryMap>;
 
 /** The free VCPU indices for the Hpn VMs. */
-export type NumaNodeDataFreeVCpuIndexesForHpnList = number[];
+export type NumaNodeDataFreeVCpuIndexesForHpnList = ReadonlyArray<number>;
 export const NumaNodeDataFreeVCpuIndexesForHpnList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<NumaNodeDataFreeVCpuIndexesForHpnList>;
 
 /** The VCPU indices for Hpn VMs */
-export type NumaNodeDataVCpuIndexesForHpnList = number[];
+export type NumaNodeDataVCpuIndexesForHpnList = ReadonlyArray<number>;
 export const NumaNodeDataVCpuIndexesForHpnList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<NumaNodeDataVCpuIndexesForHpnList>;
 
 /** The VCPU indices for the root. */
-export type NumaNodeDataVCpuIndexesForRootList = number[];
+export type NumaNodeDataVCpuIndexesForRootList = ReadonlyArray<number>;
 export const NumaNodeDataVCpuIndexesForRootList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<NumaNodeDataVCpuIndexesForRootList>;
@@ -1531,7 +1600,7 @@ export const NumaNodeData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NumaNodeData" }) as any as S.Schema<NumaNodeData>;
 
 /** The numa nodes information for Hpn VMs. */
-export type HostCapacityNumaNodesDataList = NumaNodeData[];
+export type HostCapacityNumaNodesDataList = ReadonlyArray<NumaNodeData>;
 export const HostCapacityNumaNodesDataList = /*@__PURE__*/ S.Array(
   NumaNodeData,
 ) as any as S.Schema<HostCapacityNumaNodesDataList>;
@@ -1621,6 +1690,74 @@ export const DeviceCapacityInfoGetDeviceCapacityInfoResponse =
     identifier: "DeviceCapacityInfoGetDeviceCapacityInfoResponse",
   }) as any as S.Schema<DeviceCapacityInfoGetDeviceCapacityInfoResponse>;
 
+/** Resource tags. */
+export type DevicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DevicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DevicesCreateOrUpdateRequestTagsMap>;
+
+/** DataResidencyType enum */
+export type DataResidencyType = "GeoZoneReplication" | "ZoneReplication";
+export const DataResidencyType = /*@__PURE__*/ S.String;
+
+/** Wraps data-residency related information for edge-resource and this should be used with ARM layer. */
+export interface DataResidency {
+  /** DataResidencyType enum */
+  type?: DataResidencyType;
+}
+export const DataResidency = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(DataResidencyType),
+  }),
+).annotate({ identifier: "DataResidency" }) as any as S.Schema<DataResidency>;
+
+/** The properties of the Data Box Edge/Gateway device. */
+export interface DataBoxEdgeDevicePropertiesInput {
+  /** The details of data-residency related properties for this resource */
+  dataResidency?: DataResidency;
+}
+export const DataBoxEdgeDevicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataResidency: S.optional(DataResidency),
+  }),
+).annotate({
+  identifier: "DataBoxEdgeDevicePropertiesInput",
+}) as any as S.Schema<DataBoxEdgeDevicePropertiesInput>;
+
+/** The SKU type. */
+export interface Sku {
+  /** SKU name. */
+  name?: SkuName;
+  /** The SKU tier. This is based on the SKU name. */
+  tier?: SkuTier;
+}
+export const Sku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(SkuName),
+    tier: S.optional(SkuTier),
+  }),
+).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+
+/** Identity type */
+export type MsiIdentityType = "None" | "SystemAssigned" | "UserAssigned";
+export const MsiIdentityType = /*@__PURE__*/ S.String;
+
+/** Msi identity details of the resource */
+export interface ResourceIdentityInput {
+  /** Identity type */
+  type?: MsiIdentityType;
+}
+export const ResourceIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(MsiIdentityType),
+  }),
+).annotate({
+  identifier: "ResourceIdentityInput",
+}) as any as S.Schema<ResourceIdentityInput>;
+
 export interface DevicesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1628,14 +1765,30 @@ export interface DevicesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DevicesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The properties of the Data Box Edge/Gateway device. */
+  properties?: DataBoxEdgeDevicePropertiesInput;
+  /** The SKU type. */
+  sku?: Sku;
+  /** The etag for the devices. */
+  etag?: string;
+  /** Msi identity of the resource */
+  identity?: ResourceIdentityInput;
 }
 export const DevicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     deviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DevicesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(DataBoxEdgeDevicePropertiesInput),
+    sku: S.optional(Sku),
+    etag: S.optional(S.String),
+    identity: S.optional(ResourceIdentityInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1662,8 +1815,7 @@ export type DataBoxEdgeDevicePropertiesSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DataBoxEdgeDevicePropertiesSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1672,8 +1824,7 @@ export type DataBoxEdgeDevicePropertiesSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DataBoxEdgeDevicePropertiesSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1718,12 +1869,11 @@ export type DataBoxEdgeDeviceStatus =
   | "NeedsAttention"
   | "Disconnected"
   | "PartiallyDisconnected"
-  | "Maintenance"
-  | (string & {});
+  | "Maintenance";
 export const DataBoxEdgeDeviceStatus = /*@__PURE__*/ S.String;
 
 /** The type of the Data Box Edge/Gateway device. */
-export type DeviceType = "DataBoxEdgeDevice" | (string & {});
+export type DeviceType = "DataBoxEdgeDevice";
 export const DeviceType = /*@__PURE__*/ S.String;
 
 export type RoleTypes =
@@ -1733,12 +1883,12 @@ export type RoleTypes =
   | "Cognitive"
   | "MEC"
   | "CloudEdgeManagement"
-  | "Kubernetes"
-  | (string & {});
+  | "Kubernetes";
 export const RoleTypes = /*@__PURE__*/ S.String;
 
 /** Type of compute roles configured. */
-export type DataBoxEdgeDevicePropertiesConfiguredRoleTypesList = RoleTypes[];
+export type DataBoxEdgeDevicePropertiesConfiguredRoleTypesList =
+  ReadonlyArray<RoleTypes>;
 export const DataBoxEdgeDevicePropertiesConfiguredRoleTypesList =
   /*@__PURE__*/ S.Array(
     RoleTypes,
@@ -1748,8 +1898,7 @@ export const DataBoxEdgeDevicePropertiesConfiguredRoleTypesList =
 export type ResourceMoveStatus =
   | "None"
   | "ResourceMoveInProgress"
-  | "ResourceMoveFailed"
-  | (string & {});
+  | "ResourceMoveFailed";
 export const ResourceMoveStatus = /*@__PURE__*/ S.String;
 
 /** Fields for tracking resource move */
@@ -1773,8 +1922,7 @@ export type SubscriptionState =
   | "Warned"
   | "Suspended"
   | "Deleted"
-  | "Unregistered"
-  | (string & {});
+  | "Unregistered";
 export const SubscriptionState = /*@__PURE__*/ S.String;
 
 export interface SubscriptionRegisteredFeatures {
@@ -1791,7 +1939,7 @@ export const SubscriptionRegisteredFeatures = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionRegisteredFeatures>;
 
 export type SubscriptionPropertiesRegisteredFeaturesList =
-  SubscriptionRegisteredFeatures[];
+  ReadonlyArray<SubscriptionRegisteredFeatures>;
 export const SubscriptionPropertiesRegisteredFeaturesList =
   /*@__PURE__*/ S.Array(
     SubscriptionRegisteredFeatures,
@@ -1852,24 +2000,6 @@ export const EdgeProfile = /*@__PURE__*/ S.suspend(() =>
     subscription: S.optional(EdgeProfileSubscription),
   }),
 ).annotate({ identifier: "EdgeProfile" }) as any as S.Schema<EdgeProfile>;
-
-/** DataResidencyType enum */
-export type DataResidencyType =
-  | "GeoZoneReplication"
-  | "ZoneReplication"
-  | (string & {});
-export const DataResidencyType = /*@__PURE__*/ S.String;
-
-/** Wraps data-residency related information for edge-resource and this should be used with ARM layer. */
-export interface DataResidency {
-  /** DataResidencyType enum */
-  type?: DataResidencyType;
-}
-export const DataResidency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(DataResidencyType),
-  }),
-).annotate({ identifier: "DataResidency" }) as any as S.Schema<DataResidency>;
 
 /** The properties of the Data Box Edge/Gateway device. */
 export interface DataBoxEdgeDeviceProperties {
@@ -1940,28 +2070,6 @@ export const DataBoxEdgeDeviceProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataBoxEdgeDeviceProperties",
 }) as any as S.Schema<DataBoxEdgeDeviceProperties>;
 
-/** The SKU type. */
-export interface Sku {
-  /** SKU name. */
-  name?: SkuName;
-  /** The SKU tier. This is based on the SKU name. */
-  tier?: SkuTier;
-}
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(SkuName),
-    tier: S.optional(SkuTier),
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
-
-/** Identity type */
-export type MsiIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
-export const MsiIdentityType = /*@__PURE__*/ S.String;
-
 /** Msi identity details of the resource */
 export interface ResourceIdentity {
   /** Identity type */
@@ -1986,8 +2094,7 @@ export type DataBoxEdgeDeviceKind =
   | "AzureDataBoxGateway"
   | "AzureStackEdge"
   | "AzureStackHub"
-  | "AzureModularDataCentre"
-  | (string & {});
+  | "AzureModularDataCentre";
 export const DataBoxEdgeDeviceKind = /*@__PURE__*/ S.String;
 
 export interface DevicesCreateOrUpdateResponse {
@@ -2032,6 +2139,42 @@ export const DevicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DevicesCreateOrUpdateResponse",
 }) as any as S.Schema<DevicesCreateOrUpdateResponse>;
 
+/** The algorithm used to encrypt "Value". */
+export type EncryptionAlgorithm = "None" | "AES256" | "RSAES_PKCS1_v_1_5";
+export const EncryptionAlgorithm = /*@__PURE__*/ S.String;
+
+/** Represent the secrets intended for encryption with asymmetric key pair. */
+export interface AsymmetricEncryptedSecret {
+  /** The value of the secret. */
+  value: string;
+  /** Thumbprint certificate used to encrypt \"Value\". If the value is unencrypted, it will be null. */
+  encryptionCertThumbprint?: string;
+  /** The algorithm used to encrypt "Value". */
+  encryptionAlgorithm: EncryptionAlgorithm;
+}
+export const AsymmetricEncryptedSecret = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.String,
+    encryptionCertThumbprint: S.optional(S.String),
+    encryptionAlgorithm: EncryptionAlgorithm,
+  }),
+).annotate({
+  identifier: "AsymmetricEncryptedSecret",
+}) as any as S.Schema<AsymmetricEncryptedSecret>;
+
+/** The properties of security settings. */
+export interface SecuritySettingsProperties {
+  /** Device administrator password as an encrypted string (encrypted using RSA PKCS #1) is used to sign into the local web UI of the device. The Actual password should have at least 8 characters that are a combination of uppercase, lowercase, numeric, and special characters. */
+  deviceAdminPassword: AsymmetricEncryptedSecret;
+}
+export const SecuritySettingsProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deviceAdminPassword: AsymmetricEncryptedSecret,
+  }),
+).annotate({
+  identifier: "SecuritySettingsProperties",
+}) as any as S.Schema<SecuritySettingsProperties>;
+
 export interface DevicesCreateOrUpdateSecuritySettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2039,7 +2182,8 @@ export interface DevicesCreateOrUpdateSecuritySettingsRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
-  body: unknown;
+  /** Properties of the security settings. */
+  properties: SecuritySettingsProperties;
 }
 export const DevicesCreateOrUpdateSecuritySettingsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2047,7 +2191,7 @@ export const DevicesCreateOrUpdateSecuritySettingsRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       deviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: SecuritySettingsProperties,
     }).pipe(
       T.Http({
         method: "POST",
@@ -2281,36 +2425,8 @@ export type KeyVaultSyncStatus =
   | "KeyVaultNotConfigured"
   | "KeyVaultSyncPending"
   | "KeyVaultSyncing"
-  | "KeyVaultNotSynced"
-  | (string & {});
+  | "KeyVaultNotSynced";
 export const KeyVaultSyncStatus = /*@__PURE__*/ S.String;
-
-/** The algorithm used to encrypt "Value". */
-export type EncryptionAlgorithm =
-  | "None"
-  | "AES256"
-  | "RSAES_PKCS1_v_1_5"
-  | (string & {});
-export const EncryptionAlgorithm = /*@__PURE__*/ S.String;
-
-/** Represent the secrets intended for encryption with asymmetric key pair. */
-export interface AsymmetricEncryptedSecret {
-  /** The value of the secret. */
-  value: string;
-  /** Thumbprint certificate used to encrypt \"Value\". If the value is unencrypted, it will be null. */
-  encryptionCertThumbprint?: string;
-  /** The algorithm used to encrypt "Value". */
-  encryptionAlgorithm: EncryptionAlgorithm;
-}
-export const AsymmetricEncryptedSecret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-    encryptionCertThumbprint: S.optional(S.String),
-    encryptionAlgorithm: EncryptionAlgorithm,
-  }),
-).annotate({
-  identifier: "AsymmetricEncryptedSecret",
-}) as any as S.Schema<AsymmetricEncryptedSecret>;
 
 /** Holds device secret either as a KeyVault reference or as an encrypted value. */
 export interface Secret {
@@ -2337,7 +2453,7 @@ export const DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap =
   ) as any as S.Schema<DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap>;
 
 /** Cluster Witness Type */
-export type ClusterWitnessType = "None" | "Cloud" | "FileShare" | (string & {});
+export type ClusterWitnessType = "None" | "Cloud" | "FileShare";
 export const ClusterWitnessType = /*@__PURE__*/ S.String;
 
 /** The properties of the Data Box Edge/Gateway device extended info. */
@@ -2403,8 +2519,7 @@ export type DevicesGetExtendedInformationResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DevicesGetExtendedInformationResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2413,8 +2528,7 @@ export type DevicesGetExtendedInformationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DevicesGetExtendedInformationResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2502,7 +2616,7 @@ export const DevicesGetNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevicesGetNetworkSettingsRequest>;
 
 /** The network group. */
-export type NetworkGroup = "None" | "NonRDMA" | "RDMA" | (string & {});
+export type NetworkGroup = "None" | "NonRDMA" | "RDMA";
 export const NetworkGroup = /*@__PURE__*/ S.String;
 
 /** The network adapter position. */
@@ -2522,15 +2636,15 @@ export const NetworkAdapterPosition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkAdapterPosition>;
 
 /** Value indicating whether this adapter is valid. */
-export type NetworkAdapterStatus = "Inactive" | "Active" | (string & {});
+export type NetworkAdapterStatus = "Inactive" | "Active";
 export const NetworkAdapterStatus = /*@__PURE__*/ S.String;
 
 /** Value indicating whether this adapter is RDMA capable. */
-export type NetworkAdapterRDMAStatus = "Incapable" | "Capable" | (string & {});
+export type NetworkAdapterRDMAStatus = "Incapable" | "Capable";
 export const NetworkAdapterRDMAStatus = /*@__PURE__*/ S.String;
 
 /** Value indicating whether this adapter has DHCP enabled. */
-export type NetworkAdapterDHCPStatus = "Disabled" | "Enabled" | (string & {});
+export type NetworkAdapterDHCPStatus = "Disabled" | "Enabled";
 export const NetworkAdapterDHCPStatus = /*@__PURE__*/ S.String;
 
 /** Details related to the IPv4 address configuration. */
@@ -2568,7 +2682,7 @@ export const Ipv6Config = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Ipv6Config" }) as any as S.Schema<Ipv6Config>;
 
 /** The list of DNS Servers of the device. */
-export type NetworkAdapterDnsServersList = string[];
+export type NetworkAdapterDnsServersList = ReadonlyArray<string>;
 export const NetworkAdapterDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkAdapterDnsServersList>;
@@ -2627,7 +2741,8 @@ export const NetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkAdapter" }) as any as S.Schema<NetworkAdapter>;
 
 /** The network adapter list on the device. */
-export type NetworkSettingsPropertiesNetworkAdaptersList = NetworkAdapter[];
+export type NetworkSettingsPropertiesNetworkAdaptersList =
+  ReadonlyArray<NetworkAdapter>;
 export const NetworkSettingsPropertiesNetworkAdaptersList =
   /*@__PURE__*/ S.Array(
     NetworkAdapter,
@@ -2703,43 +2818,35 @@ export type JobStatus =
   | "Failed"
   | "Canceled"
   | "Paused"
-  | "Scheduled"
-  | (string & {});
+  | "Scheduled";
 export const JobStatus = /*@__PURE__*/ S.String;
 
 /** Indicates if updates are available and at least one of the updates needs a reboot. */
 export type InstallRebootBehavior =
   | "NeverReboots"
   | "RequiresReboot"
-  | "RequestReboot"
-  | (string & {});
+  | "RequestReboot";
 export const InstallRebootBehavior = /*@__PURE__*/ S.String;
 
 /** The current update operation. */
-export type UpdateOperation =
-  | "None"
-  | "Scan"
-  | "Download"
-  | "Install"
-  | (string & {});
+export type UpdateOperation = "None" | "Scan" | "Download" | "Install";
 export const UpdateOperation = /*@__PURE__*/ S.String;
 
 /** The list of updates available for install. */
-export type UpdateSummaryPropertiesUpdateTitlesList = string[];
+export type UpdateSummaryPropertiesUpdateTitlesList = ReadonlyArray<string>;
 export const UpdateSummaryPropertiesUpdateTitlesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateSummaryPropertiesUpdateTitlesList>;
 
 /** Type of the Update */
-export type UpdateType = "Software" | "Kubernetes" | "Firmware" | (string & {});
+export type UpdateType = "Software" | "Kubernetes" | "Firmware";
 export const UpdateType = /*@__PURE__*/ S.String;
 
 /** Impact of Installing an updateType */
 export type InstallationImpact =
   | "None"
   | "DeviceRebooted"
-  | "KubernetesWorkloadsDown"
-  | (string & {});
+  | "KubernetesWorkloadsDown";
 export const InstallationImpact = /*@__PURE__*/ S.String;
 
 /** Status of the update. */
@@ -2748,8 +2855,7 @@ export type UpdateStatus =
   | "DownloadStarted"
   | "DownloadCompleted"
   | "InstallStarted"
-  | "InstallCompleted"
-  | (string & {});
+  | "InstallCompleted";
 export const UpdateStatus = /*@__PURE__*/ S.String;
 
 /** Update Specific attributes */
@@ -2788,7 +2894,7 @@ export const UpdateDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDetails" }) as any as S.Schema<UpdateDetails>;
 
 /** The list of updates available for install. */
-export type UpdateSummaryPropertiesUpdatesList = UpdateDetails[];
+export type UpdateSummaryPropertiesUpdatesList = ReadonlyArray<UpdateDetails>;
 export const UpdateSummaryPropertiesUpdatesList = /*@__PURE__*/ S.Array(
   UpdateDetails,
 ) as any as S.Schema<UpdateSummaryPropertiesUpdatesList>;
@@ -3010,7 +3116,7 @@ export const DataBoxEdgeDevice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataBoxEdgeDevice>;
 
 /** The DataBoxEdgeDevice items on this page */
-export type DataBoxEdgeDeviceListValueList = DataBoxEdgeDevice[];
+export type DataBoxEdgeDeviceListValueList = ReadonlyArray<DataBoxEdgeDevice>;
 export const DataBoxEdgeDeviceListValueList = /*@__PURE__*/ S.Array(
   DataBoxEdgeDevice,
 ) as any as S.Schema<DataBoxEdgeDeviceListValueList>;
@@ -3085,6 +3191,52 @@ export const DevicesScanForUpdatesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DevicesScanForUpdatesResponse",
 }) as any as S.Schema<DevicesScanForUpdatesResponse>;
 
+/** The tags attached to the Data Box Edge/Gateway resource. */
+export type DevicesUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const DevicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DevicesUpdateRequestTagsMap>;
+
+/** The Data Box Edge/Gateway Edge Profile Subscription patch. */
+export interface EdgeProfileSubscriptionPatch {
+  /** The path ID that uniquely identifies the subscription of the edge profile. */
+  id?: string;
+}
+export const EdgeProfileSubscriptionPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EdgeProfileSubscriptionPatch",
+}) as any as S.Schema<EdgeProfileSubscriptionPatch>;
+
+/** The Data Box Edge/Gateway Edge Profile patch. */
+export interface EdgeProfilePatch {
+  /** The Data Box Edge/Gateway Edge Profile Subscription patch */
+  subscription?: EdgeProfileSubscriptionPatch;
+}
+export const EdgeProfilePatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscription: S.optional(EdgeProfileSubscriptionPatch),
+  }),
+).annotate({
+  identifier: "EdgeProfilePatch",
+}) as any as S.Schema<EdgeProfilePatch>;
+
+/** The Data Box Edge/Gateway device properties patch. */
+export interface DataBoxEdgeDevicePropertiesPatch {
+  /** Edge Profile property of the Data Box Edge/Gateway device */
+  edgeProfile?: EdgeProfilePatch;
+}
+export const DataBoxEdgeDevicePropertiesPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    edgeProfile: S.optional(EdgeProfilePatch),
+  }),
+).annotate({
+  identifier: "DataBoxEdgeDevicePropertiesPatch",
+}) as any as S.Schema<DataBoxEdgeDevicePropertiesPatch>;
+
 export interface DevicesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3092,14 +3244,21 @@ export interface DevicesUpdateRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
-  body: unknown;
+  /** The tags attached to the Data Box Edge/Gateway resource. */
+  tags?: DevicesUpdateRequestTagsMap;
+  /** Msi identity of the resource */
+  identity?: ResourceIdentityInput;
+  /** The properties associated with the Data Box Edge/Gateway resource */
+  properties?: DataBoxEdgeDevicePropertiesPatch;
 }
 export const DevicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     deviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DevicesUpdateRequestTagsMap),
+    identity: S.optional(ResourceIdentityInput),
+    properties: S.optional(DataBoxEdgeDevicePropertiesPatch),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3170,7 +3329,16 @@ export interface DevicesUpdateExtendedInformationRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
-  body: unknown;
+  /** The Key Vault ARM Id for client secrets */
+  clientSecretStoreId?: string;
+  /** The url to access the Client Key Vault */
+  clientSecretStoreUrl?: string;
+  /** The name for Channel Integrity Key stored in the Client Key Vault */
+  channelIntegrityKeyName?: string;
+  /** The version of Channel Integrity Key stored in the Client Key Vault */
+  channelIntegrityKeyVersion?: string;
+  /** For changing or to initiate the resync to key-vault set the status to KeyVaultSyncPending, rest of the status will not be applicable. */
+  syncStatus?: KeyVaultSyncStatus;
 }
 export const DevicesUpdateExtendedInformationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3178,7 +3346,11 @@ export const DevicesUpdateExtendedInformationRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       deviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      clientSecretStoreId: S.optional(S.String),
+      clientSecretStoreUrl: S.optional(S.String),
+      channelIntegrityKeyName: S.optional(S.String),
+      channelIntegrityKeyVersion: S.optional(S.String),
+      syncStatus: S.optional(KeyVaultSyncStatus),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3196,14 +3368,13 @@ export type DevicesUpdateExtendedInformationResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DevicesUpdateExtendedInformationResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type DevicesUpdateExtendedInformationResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const DevicesUpdateExtendedInformationResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3267,6 +3438,26 @@ export const DevicesUpdateExtendedInformationResponse = /*@__PURE__*/ S.suspend(
   identifier: "DevicesUpdateExtendedInformationResponse",
 }) as any as S.Schema<DevicesUpdateExtendedInformationResponse>;
 
+/** The authentication type. */
+export type AuthenticationType = "Invalid" | "AzureActiveDirectory";
+export const AuthenticationType = /*@__PURE__*/ S.String;
+
+/** Raw Certificate Data. */
+export interface RawCertificateData {
+  /** The authentication type. */
+  authenticationType?: AuthenticationType;
+  /** The base64 encoded certificate raw data. */
+  certificate: string;
+}
+export const RawCertificateData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authenticationType: S.optional(AuthenticationType),
+    certificate: S.String,
+  }),
+).annotate({
+  identifier: "RawCertificateData",
+}) as any as S.Schema<RawCertificateData>;
+
 export interface DevicesUploadCertificateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3274,14 +3465,15 @@ export interface DevicesUploadCertificateRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
-  body: unknown;
+  /** The Base 64 encoded certificate raw data. */
+  properties: RawCertificateData;
 }
 export const DevicesUploadCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     deviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: RawCertificateData,
   }).pipe(
     T.Http({
       method: "POST",
@@ -3293,13 +3485,6 @@ export const DevicesUploadCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DevicesUploadCertificateRequest",
 }) as any as S.Schema<DevicesUploadCertificateRequest>;
-
-/** The authentication type. */
-export type AuthenticationType =
-  | "Invalid"
-  | "AzureActiveDirectory"
-  | (string & {});
-export const AuthenticationType = /*@__PURE__*/ S.String;
 
 /** The upload registration certificate response. */
 export interface UploadCertificateResponse {
@@ -3363,10 +3548,7 @@ export const DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsReques
   }) as any as S.Schema<DiagnosticSettingsGetDiagnosticProactiveLogCollectionSettingsRequest>;
 
 /** Proactive diagnostic collection consent flag */
-export type ProactiveDiagnosticsConsent =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type ProactiveDiagnosticsConsent = "Enabled" | "Disabled";
 export const ProactiveDiagnosticsConsent = /*@__PURE__*/ S.String;
 
 /** The properties of proactive log collection settings. */
@@ -3440,17 +3622,11 @@ export type RemoteApplicationType =
   | "Powershell"
   | "WAC"
   | "LocalUI"
-  | "AllApplications"
-  | (string & {});
+  | "AllApplications";
 export const RemoteApplicationType = /*@__PURE__*/ S.String;
 
 /** Access level allowed for this remote application type */
-export type AccessLevel =
-  | "None"
-  | "ReadOnly"
-  | "ReadWrite"
-  | "FullAccess"
-  | (string & {});
+export type AccessLevel = "None" | "ReadOnly" | "ReadWrite" | "FullAccess";
 export const AccessLevel = /*@__PURE__*/ S.String;
 
 /** RemoteApplicationType for which remote support settings is being modified */
@@ -3474,7 +3650,7 @@ export const RemoteSupportSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Remote support settings list according to the RemoteApplicationType */
 export type DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList =
-  RemoteSupportSettings[];
+  ReadonlyArray<RemoteSupportSettings>;
 export const DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList =
   /*@__PURE__*/ S.Array(
     RemoteSupportSettings,
@@ -3528,7 +3704,8 @@ export interface DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSetting
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
-  body: unknown;
+  /** Properties of the diagnostic proactive log collection settings. */
+  properties: ProactiveLogCollectionSettingsProperties;
 }
 export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3536,7 +3713,7 @@ export const DiagnosticSettingsUpdateDiagnosticProactiveLogCollectionSettingsReq
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       deviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: ProactiveLogCollectionSettingsProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3583,7 +3760,8 @@ export interface DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsRequest 
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
-  body: unknown;
+  /** Properties of the remote support settings. */
+  properties: DiagnosticRemoteSupportSettingsProperties;
 }
 export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3591,7 +3769,7 @@ export const DiagnosticSettingsUpdateDiagnosticRemoteSupportSettingsRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       deviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: DiagnosticRemoteSupportSettingsProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3667,8 +3845,7 @@ export type JobType =
   | "RefreshContainer"
   | "Backup"
   | "Restore"
-  | "TriggerSupportPackage"
-  | (string & {});
+  | "TriggerSupportPackage";
 export const JobType = /*@__PURE__*/ S.String;
 
 /** Current stage of the update operation. */
@@ -3689,8 +3866,7 @@ export type UpdateOperationStage =
   | "Failure"
   | "RescanStarted"
   | "RescanComplete"
-  | "RescanFailed"
-  | (string & {});
+  | "RescanFailed";
 export const UpdateOperationStage = /*@__PURE__*/ S.String;
 
 /** The download phase. */
@@ -3698,8 +3874,7 @@ export type DownloadPhase =
   | "Unknown"
   | "Initializing"
   | "Downloading"
-  | "Verifying"
-  | (string & {});
+  | "Verifying";
 export const DownloadPhase = /*@__PURE__*/ S.String;
 
 /** Details about the download progress of update. */
@@ -3782,7 +3957,7 @@ export const JobProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobProperties" }) as any as S.Schema<JobProperties>;
 
 /** The recommended actions. */
-export type JobErrorItemRecommendationsList = string[];
+export type JobErrorItemRecommendationsList = ReadonlyArray<string>;
 export const JobErrorItemRecommendationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobErrorItemRecommendationsList>;
@@ -3805,7 +3980,7 @@ export const JobErrorItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobErrorItem" }) as any as S.Schema<JobErrorItem>;
 
 /** The error details. */
-export type JobErrorDetailsErrorDetailsList = JobErrorItem[];
+export type JobErrorDetailsErrorDetailsList = ReadonlyArray<JobErrorItem>;
 export const JobErrorDetailsErrorDetailsList = /*@__PURE__*/ S.Array(
   JobErrorItem,
 ) as any as S.Schema<JobErrorDetailsErrorDetailsList>;
@@ -3868,37 +4043,6 @@ export const JobsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsGetResponse",
 }) as any as S.Schema<JobsGetResponse>;
 
-export interface MonitoringConfigCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the device. */
-  deviceName: string;
-  /** The name of the role. */
-  roleName: string;
-  body: unknown;
-}
-export const MonitoringConfigCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      deviceName: S.String.pipe(T.Label()),
-      roleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
-        code: 200,
-        apiVersion: "2023-12-01",
-      }),
-    ),
-).annotate({
-  identifier: "MonitoringConfigCreateOrUpdateRequest",
-}) as any as S.Schema<MonitoringConfigCreateOrUpdateRequest>;
-
 /** The metric dimension */
 export interface MetricDimension {
   /** The dimension type. */
@@ -3916,13 +4060,14 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimension>;
 
 /** The dimension filter. */
-export type MetricCounterDimensionFilterList = MetricDimension[];
+export type MetricCounterDimensionFilterList = ReadonlyArray<MetricDimension>;
 export const MetricCounterDimensionFilterList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricCounterDimensionFilterList>;
 
 /** The additional dimensions to be added to metric. */
-export type MetricCounterAdditionalDimensionsList = MetricDimension[];
+export type MetricCounterAdditionalDimensionsList =
+  ReadonlyArray<MetricDimension>;
 export const MetricCounterAdditionalDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricCounterAdditionalDimensionsList>;
@@ -3948,7 +4093,7 @@ export const MetricCounter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricCounter" }) as any as S.Schema<MetricCounter>;
 
 /** The counters that should be collected in this set. */
-export type MetricCounterSetCountersList = MetricCounter[];
+export type MetricCounterSetCountersList = ReadonlyArray<MetricCounter>;
 export const MetricCounterSetCountersList = /*@__PURE__*/ S.Array(
   MetricCounter,
 ) as any as S.Schema<MetricCounterSetCountersList>;
@@ -3967,7 +4112,8 @@ export const MetricCounterSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricCounterSet>;
 
 /** Host name for the IoT hub associated to the device. */
-export type MetricConfigurationCounterSetsList = MetricCounterSet[];
+export type MetricConfigurationCounterSetsList =
+  ReadonlyArray<MetricCounterSet>;
 export const MetricConfigurationCounterSetsList = /*@__PURE__*/ S.Array(
   MetricCounterSet,
 ) as any as S.Schema<MetricConfigurationCounterSetsList>;
@@ -3996,7 +4142,7 @@ export const MetricConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The metrics configuration details */
 export type MonitoringMetricConfigurationPropertiesMetricConfigurationsList =
-  MetricConfiguration[];
+  ReadonlyArray<MetricConfiguration>;
 export const MonitoringMetricConfigurationPropertiesMetricConfigurationsList =
   /*@__PURE__*/ S.Array(
     MetricConfiguration,
@@ -4016,6 +4162,38 @@ export const MonitoringMetricConfigurationProperties = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "MonitoringMetricConfigurationProperties",
 }) as any as S.Schema<MonitoringMetricConfigurationProperties>;
+
+export interface MonitoringConfigCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the device. */
+  deviceName: string;
+  /** The name of the role. */
+  roleName: string;
+  /** The metric setting properties. */
+  properties: MonitoringMetricConfigurationProperties;
+}
+export const MonitoringConfigCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      deviceName: S.String.pipe(T.Label()),
+      roleName: S.String.pipe(T.Label()),
+      properties: MonitoringMetricConfigurationProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/roles/{roleName}/monitoringConfig/default",
+        code: 200,
+        apiVersion: "2023-12-01",
+      }),
+    ),
+).annotate({
+  identifier: "MonitoringConfigCreateOrUpdateRequest",
+}) as any as S.Schema<MonitoringConfigCreateOrUpdateRequest>;
 
 export interface MonitoringConfigCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4184,7 +4362,7 @@ export const MonitoringMetricConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The MonitoringMetricConfiguration items on this page */
 export type MonitoringMetricConfigurationListValueList =
-  MonitoringMetricConfiguration[];
+  ReadonlyArray<MonitoringMetricConfiguration>;
 export const MonitoringMetricConfigurationListValueList = /*@__PURE__*/ S.Array(
   MonitoringMetricConfiguration,
 ) as any as S.Schema<MonitoringMetricConfigurationListValueList>;
@@ -4236,8 +4414,7 @@ export type NodeStatus =
   | "Up"
   | "Down"
   | "Rebooting"
-  | "ShuttingDown"
-  | (string & {});
+  | "ShuttingDown";
 export const NodeStatus = /*@__PURE__*/ S.String;
 
 /** This class represents the nodes in a highly available cluster */
@@ -4290,7 +4467,7 @@ export const Node = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Node" }) as any as S.Schema<Node>;
 
 /** The Node items on this page */
-export type NodeListValueList = Node[];
+export type NodeListValueList = ReadonlyArray<Node>;
 export const NodeListValueList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeListValueList>;
@@ -4354,8 +4531,7 @@ export type MetricUnit =
   | "Milliseconds"
   | "Bytes"
   | "BytesPerSecond"
-  | "CountPerSecond"
-  | (string & {});
+  | "CountPerSecond";
 export const MetricUnit = /*@__PURE__*/ S.String;
 
 /** Metric aggregation type. */
@@ -4366,8 +4542,7 @@ export type MetricAggregationType =
   | "Minimum"
   | "Maximum"
   | "Total"
-  | "Count"
-  | (string & {});
+  | "Count";
 export const MetricAggregationType = /*@__PURE__*/ S.String;
 
 /** Metric Dimension v1. */
@@ -4390,13 +4565,14 @@ export const MetricDimensionV1 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimensionV1>;
 
 /** Metric dimensions, other than default dimension which is resource. */
-export type MetricSpecificationV1DimensionsList = MetricDimensionV1[];
+export type MetricSpecificationV1DimensionsList =
+  ReadonlyArray<MetricDimensionV1>;
 export const MetricSpecificationV1DimensionsList = /*@__PURE__*/ S.Array(
   MetricDimensionV1,
 ) as any as S.Schema<MetricSpecificationV1DimensionsList>;
 
 /** Metric category. */
-export type MetricCategory = "Capacity" | "Transaction" | (string & {});
+export type MetricCategory = "Capacity" | "Transaction";
 export const MetricCategory = /*@__PURE__*/ S.String;
 
 export type TimeGrain =
@@ -4407,19 +4583,19 @@ export type TimeGrain =
   | "PT1H"
   | "PT6H"
   | "PT12H"
-  | "PT1D"
-  | (string & {});
+  | "PT1D";
 export const TimeGrain = /*@__PURE__*/ S.String;
 
 /** Support granularity of metrics. */
-export type MetricSpecificationV1SupportedTimeGrainTypesList = TimeGrain[];
+export type MetricSpecificationV1SupportedTimeGrainTypesList =
+  ReadonlyArray<TimeGrain>;
 export const MetricSpecificationV1SupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     TimeGrain,
   ) as any as S.Schema<MetricSpecificationV1SupportedTimeGrainTypesList>;
 
 export type MetricSpecificationV1SupportedAggregationTypesList =
-  MetricAggregationType[];
+  ReadonlyArray<MetricAggregationType>;
 export const MetricSpecificationV1SupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     MetricAggregationType,
@@ -4473,7 +4649,7 @@ export const MetricSpecificationV1 = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specification as defined by shoebox. */
 export type ServiceSpecificationMetricSpecificationsList =
-  MetricSpecificationV1[];
+  ReadonlyArray<MetricSpecificationV1>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecificationV1,
@@ -4531,7 +4707,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The list of operations. */
-export type OperationsListValueList = Operation[];
+export type OperationsListValueList = ReadonlyArray<Operation>;
 export const OperationsListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListValueList>;
@@ -4617,35 +4793,8 @@ export const OperationsStatusGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsStatusGetResponse",
 }) as any as S.Schema<OperationsStatusGetResponse>;
 
-export interface OrdersCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The device name. */
-  deviceName: string;
-  body: unknown;
-}
-export const OrdersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    deviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
-      code: 200,
-      apiVersion: "2023-12-01",
-    }),
-  ),
-).annotate({
-  identifier: "OrdersCreateOrUpdateRequest",
-}) as any as S.Schema<OrdersCreateOrUpdateRequest>;
-
 /** The email list. */
-export type ContactDetailsEmailListList = string[];
+export type ContactDetailsEmailListList = ReadonlyArray<string>;
 export const ContactDetailsEmailListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContactDetailsEmailListList>;
@@ -4699,6 +4848,53 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
+/** Order properties. */
+export interface OrderPropertiesInput {
+  /** The contact details. */
+  contactInformation: ContactDetails;
+  /** The shipping address. */
+  shippingAddress?: Address;
+  /** ShipmentType of the order */
+  shipmentType?: ShipmentType;
+}
+export const OrderPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contactInformation: ContactDetails,
+    shippingAddress: S.optional(Address),
+    shipmentType: S.optional(ShipmentType),
+  }),
+).annotate({
+  identifier: "OrderPropertiesInput",
+}) as any as S.Schema<OrderPropertiesInput>;
+
+export interface OrdersCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The device name. */
+  deviceName: string;
+  /** The order properties. */
+  properties?: OrderPropertiesInput;
+}
+export const OrdersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    deviceName: S.String.pipe(T.Label()),
+    properties: S.optional(OrderPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/orders/default",
+      code: 200,
+      apiVersion: "2023-12-01",
+    }),
+  ),
+).annotate({
+  identifier: "OrdersCreateOrUpdateRequest",
+}) as any as S.Schema<OrdersCreateOrUpdateRequest>;
+
 /** Status of the order as per the allowed status types. */
 export type OrderState =
   | "Untracked"
@@ -4717,8 +4913,7 @@ export type OrderState =
   | "CollectedAtMicrosoft"
   | "AwaitingPickup"
   | "PickupCompleted"
-  | "AwaitingDrop"
-  | (string & {});
+  | "AwaitingDrop";
 export const OrderState = /*@__PURE__*/ S.String;
 
 /** Tracking courier information. */
@@ -4774,19 +4969,20 @@ export const OrderStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrderStatus" }) as any as S.Schema<OrderStatus>;
 
 /** List of status changes in the order. */
-export type OrderPropertiesOrderHistoryList = OrderStatus[];
+export type OrderPropertiesOrderHistoryList = ReadonlyArray<OrderStatus>;
 export const OrderPropertiesOrderHistoryList = /*@__PURE__*/ S.Array(
   OrderStatus,
 ) as any as S.Schema<OrderPropertiesOrderHistoryList>;
 
 /** Tracking information for the package delivered to the customer whether it has an original or a replacement device. */
-export type OrderPropertiesDeliveryTrackingInfoList = TrackingInfo[];
+export type OrderPropertiesDeliveryTrackingInfoList =
+  ReadonlyArray<TrackingInfo>;
 export const OrderPropertiesDeliveryTrackingInfoList = /*@__PURE__*/ S.Array(
   TrackingInfo,
 ) as any as S.Schema<OrderPropertiesDeliveryTrackingInfoList>;
 
 /** Tracking information for the package returned from the customer whether it has an original or a replacement device. */
-export type OrderPropertiesReturnTrackingInfoList = TrackingInfo[];
+export type OrderPropertiesReturnTrackingInfoList = ReadonlyArray<TrackingInfo>;
 export const OrderPropertiesReturnTrackingInfoList = /*@__PURE__*/ S.Array(
   TrackingInfo,
 ) as any as S.Schema<OrderPropertiesReturnTrackingInfoList>;
@@ -4992,7 +5188,7 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
 /** The Order items on this page */
-export type OrderListValueList = Order[];
+export type OrderListValueList = ReadonlyArray<Order>;
 export const OrderListValueList = /*@__PURE__*/ S.Array(
   Order,
 ) as any as S.Schema<OrderListValueList>;
@@ -5069,7 +5265,8 @@ export interface RolesCreateOrUpdateRequest {
   deviceName: string;
   /** The role name. */
   name: string;
-  body: unknown;
+  /** Role type. */
+  kind: RoleTypes;
 }
 export const RolesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5077,7 +5274,7 @@ export const RolesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     deviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: RoleTypes,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5250,7 +5447,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
 /** The Role items on this page */
-export type RoleListValueList = Role[];
+export type RoleListValueList = ReadonlyArray<Role>;
 export const RoleListValueList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<RoleListValueList>;
@@ -5269,48 +5466,17 @@ export const RoleList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RoleList" }) as any as S.Schema<RoleList>;
 
-export interface SharesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The device name. */
-  deviceName: string;
-  /** The share name. */
-  name: string;
-  body: unknown;
-}
-export const SharesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    deviceName: S.String.pipe(T.Label()),
-    name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
-      code: 200,
-      apiVersion: "2023-12-01",
-    }),
-  ),
-).annotate({
-  identifier: "SharesCreateOrUpdateRequest",
-}) as any as S.Schema<SharesCreateOrUpdateRequest>;
-
 /** Current status of the share. */
 export type ShareStatus =
   | "Offline"
   | "Unknown"
   | "OK"
   | "Updating"
-  | "NeedsAttention"
-  | (string & {});
+  | "NeedsAttention";
 export const ShareStatus = /*@__PURE__*/ S.String;
 
 /** Current monitoring status of the share. */
-export type MonitoringStatus = "Enabled" | "Disabled" | (string & {});
+export type MonitoringStatus = "Enabled" | "Disabled";
 export const MonitoringStatus = /*@__PURE__*/ S.String;
 
 /** Azure container mapping of the endpoint. */
@@ -5333,11 +5499,11 @@ export const AzureContainerInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureContainerInfo>;
 
 /** Access protocol to be used by the share. */
-export type ShareAccessProtocol = "SMB" | "NFS" | (string & {});
+export type ShareAccessProtocol = "SMB" | "NFS";
 export const ShareAccessProtocol = /*@__PURE__*/ S.String;
 
 /** Type of access to be allowed on the share for this user. */
-export type ShareAccessType = "Change" | "Read" | "Custom" | (string & {});
+export type ShareAccessType = "Change" | "Read" | "Custom";
 export const ShareAccessType = /*@__PURE__*/ S.String;
 
 /** The mapping between a particular user and the access type on the SMB share. */
@@ -5357,17 +5523,14 @@ export const UserAccessRight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserAccessRight>;
 
 /** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
-export type SharePropertiesUserAccessRightsList = UserAccessRight[];
-export const SharePropertiesUserAccessRightsList = /*@__PURE__*/ S.Array(
+export type SharePropertiesInputUserAccessRightsList =
+  ReadonlyArray<UserAccessRight>;
+export const SharePropertiesInputUserAccessRightsList = /*@__PURE__*/ S.Array(
   UserAccessRight,
-) as any as S.Schema<SharePropertiesUserAccessRightsList>;
+) as any as S.Schema<SharePropertiesInputUserAccessRightsList>;
 
 /** Type of access to be allowed for the client. */
-export type ClientPermissionType =
-  | "NoAccess"
-  | "ReadOnly"
-  | "ReadWrite"
-  | (string & {});
+export type ClientPermissionType = "NoAccess" | "ReadOnly" | "ReadWrite";
 export const ClientPermissionType = /*@__PURE__*/ S.String;
 
 /** The mapping between a particular client IP and the type of access client has on the NFS share. */
@@ -5387,13 +5550,100 @@ export const ClientAccessRight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClientAccessRight>;
 
 /** List of IP addresses and corresponding access rights on the share(required for NFS protocol). */
-export type SharePropertiesClientAccessRightsList = ClientAccessRight[];
+export type SharePropertiesInputClientAccessRightsList =
+  ReadonlyArray<ClientAccessRight>;
+export const SharePropertiesInputClientAccessRightsList = /*@__PURE__*/ S.Array(
+  ClientAccessRight,
+) as any as S.Schema<SharePropertiesInputClientAccessRightsList>;
+
+/** Data policy of the share. */
+export type DataPolicy = "Cloud" | "Local";
+export const DataPolicy = /*@__PURE__*/ S.String;
+
+/** The share properties. */
+export interface SharePropertiesInput {
+  /** Description for the share. */
+  description?: string;
+  /** Current status of the share. */
+  shareStatus: ShareStatus;
+  /** Current monitoring status of the share. */
+  monitoringStatus: MonitoringStatus;
+  /** Azure container mapping for the share. */
+  azureContainerInfo?: AzureContainerInfo;
+  /** Access protocol to be used by the share. */
+  accessProtocol: ShareAccessProtocol;
+  /** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
+  userAccessRights?: SharePropertiesInputUserAccessRightsList;
+  /** List of IP addresses and corresponding access rights on the share(required for NFS protocol). */
+  clientAccessRights?: SharePropertiesInputClientAccessRightsList;
+  /** Details of the refresh job on this share. */
+  refreshDetails?: RefreshDetails;
+  /** Data policy of the share. */
+  dataPolicy?: DataPolicy;
+}
+export const SharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    shareStatus: ShareStatus,
+    monitoringStatus: MonitoringStatus,
+    azureContainerInfo: S.optional(AzureContainerInfo),
+    accessProtocol: ShareAccessProtocol,
+    userAccessRights: S.optional(SharePropertiesInputUserAccessRightsList),
+    clientAccessRights: S.optional(SharePropertiesInputClientAccessRightsList),
+    refreshDetails: S.optional(RefreshDetails),
+    dataPolicy: S.optional(DataPolicy),
+  }),
+).annotate({
+  identifier: "SharePropertiesInput",
+}) as any as S.Schema<SharePropertiesInput>;
+
+export interface SharesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The device name. */
+  deviceName: string;
+  /** The share name. */
+  name: string;
+  /** The share properties. */
+  properties: SharePropertiesInput;
+}
+export const SharesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    deviceName: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    properties: SharePropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
+      code: 200,
+      apiVersion: "2023-12-01",
+    }),
+  ),
+).annotate({
+  identifier: "SharesCreateOrUpdateRequest",
+}) as any as S.Schema<SharesCreateOrUpdateRequest>;
+
+/** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
+export type SharePropertiesUserAccessRightsList =
+  ReadonlyArray<UserAccessRight>;
+export const SharePropertiesUserAccessRightsList = /*@__PURE__*/ S.Array(
+  UserAccessRight,
+) as any as S.Schema<SharePropertiesUserAccessRightsList>;
+
+/** List of IP addresses and corresponding access rights on the share(required for NFS protocol). */
+export type SharePropertiesClientAccessRightsList =
+  ReadonlyArray<ClientAccessRight>;
 export const SharePropertiesClientAccessRightsList = /*@__PURE__*/ S.Array(
   ClientAccessRight,
 ) as any as S.Schema<SharePropertiesClientAccessRightsList>;
 
 /** Mounting type. */
-export type MountType = "Volume" | "HostPath" | (string & {});
+export type MountType = "Volume" | "HostPath";
 export const MountType = /*@__PURE__*/ S.String;
 
 /** The share mount point. */
@@ -5420,14 +5670,10 @@ export const MountPointMap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MountPointMap" }) as any as S.Schema<MountPointMap>;
 
 /** Share mount point to the role. */
-export type SharePropertiesShareMappingsList = MountPointMap[];
+export type SharePropertiesShareMappingsList = ReadonlyArray<MountPointMap>;
 export const SharePropertiesShareMappingsList = /*@__PURE__*/ S.Array(
   MountPointMap,
 ) as any as S.Schema<SharePropertiesShareMappingsList>;
-
-/** Data policy of the share. */
-export type DataPolicy = "Cloud" | "Local" | (string & {});
-export const DataPolicy = /*@__PURE__*/ S.String;
 
 /** The share properties. */
 export interface ShareProperties {
@@ -5630,7 +5876,7 @@ export const Share = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Share" }) as any as S.Schema<Share>;
 
 /** The Share items on this page */
-export type ShareListValueList = Share[];
+export type ShareListValueList = ReadonlyArray<Share>;
 export const ShareListValueList = /*@__PURE__*/ S.Array(
   Share,
 ) as any as S.Schema<ShareListValueList>;
@@ -5684,46 +5930,12 @@ export const SharesRefreshResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharesRefreshResponse",
 }) as any as S.Schema<SharesRefreshResponse>;
 
-export interface StorageAccountCredentialsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The device name. */
-  deviceName: string;
-  /** The storage account credential name. */
-  name: string;
-  body: unknown;
-}
-export const StorageAccountCredentialsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      deviceName: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials/{name}",
-        code: 200,
-        apiVersion: "2023-12-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "StorageAccountCredentialsCreateOrUpdateRequest",
-  }) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateRequest>;
-
 /** Signifies whether SSL needs to be enabled or not. */
-export type SSLStatus = "Enabled" | "Disabled" | (string & {});
+export type SSLStatus = "Enabled" | "Disabled";
 export const SSLStatus = /*@__PURE__*/ S.String;
 
 /** Type of storage accessed on the storage account. */
-export type AccountType =
-  | "GeneralPurposeStorage"
-  | "BlobStorage"
-  | (string & {});
+export type AccountType = "GeneralPurposeStorage" | "BlobStorage";
 export const AccountType = /*@__PURE__*/ S.String;
 
 /** The storage account credential properties. */
@@ -5759,6 +5971,38 @@ export const StorageAccountCredentialProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StorageAccountCredentialProperties",
 }) as any as S.Schema<StorageAccountCredentialProperties>;
+
+export interface StorageAccountCredentialsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The device name. */
+  deviceName: string;
+  /** The storage account credential name. */
+  name: string;
+  /** The storage account credential properties. */
+  properties: StorageAccountCredentialProperties;
+}
+export const StorageAccountCredentialsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      deviceName: S.String.pipe(T.Label()),
+      name: S.String.pipe(T.Label()),
+      properties: StorageAccountCredentialProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccountCredentials/{name}",
+        code: 200,
+        apiVersion: "2023-12-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "StorageAccountCredentialsCreateOrUpdateRequest",
+  }) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateRequest>;
 
 export interface StorageAccountCredentialsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5926,7 +6170,8 @@ export const StorageAccountCredential = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageAccountCredential>;
 
 /** The StorageAccountCredential items on this page */
-export type StorageAccountCredentialListValueList = StorageAccountCredential[];
+export type StorageAccountCredentialListValueList =
+  ReadonlyArray<StorageAccountCredential>;
 export const StorageAccountCredentialListValueList = /*@__PURE__*/ S.Array(
   StorageAccountCredential,
 ) as any as S.Schema<StorageAccountCredentialListValueList>;
@@ -5947,6 +6192,37 @@ export const StorageAccountCredentialList = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageAccountCredentialList",
 }) as any as S.Schema<StorageAccountCredentialList>;
 
+/** Current status of the storage account */
+export type StorageAccountStatus =
+  | "OK"
+  | "Offline"
+  | "Unknown"
+  | "Updating"
+  | "NeedsAttention";
+export const StorageAccountStatus = /*@__PURE__*/ S.String;
+
+/** The storage account properties. */
+export interface StorageAccountPropertiesInput {
+  /** Description for the storage Account. */
+  description?: string;
+  /** Current status of the storage account */
+  storageAccountStatus?: StorageAccountStatus;
+  /** Data policy of the storage Account. */
+  dataPolicy: DataPolicy;
+  /** Storage Account Credential Id */
+  storageAccountCredentialId?: string;
+}
+export const StorageAccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    storageAccountStatus: S.optional(StorageAccountStatus),
+    dataPolicy: DataPolicy,
+    storageAccountCredentialId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StorageAccountPropertiesInput",
+}) as any as S.Schema<StorageAccountPropertiesInput>;
+
 export interface StorageAccountsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5956,7 +6232,8 @@ export interface StorageAccountsCreateOrUpdateRequest {
   deviceName: string;
   /** The storage account name. */
   storageAccountName: string;
-  body: unknown;
+  /** The Storage Account properties. */
+  properties: StorageAccountPropertiesInput;
 }
 export const StorageAccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5965,7 +6242,7 @@ export const StorageAccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       deviceName: S.String.pipe(T.Label()),
       storageAccountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: StorageAccountPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5977,16 +6254,6 @@ export const StorageAccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "StorageAccountsCreateOrUpdateRequest",
 }) as any as S.Schema<StorageAccountsCreateOrUpdateRequest>;
-
-/** Current status of the storage account */
-export type StorageAccountStatus =
-  | "OK"
-  | "Offline"
-  | "Unknown"
-  | "Updating"
-  | "NeedsAttention"
-  | (string & {});
-export const StorageAccountStatus = /*@__PURE__*/ S.String;
 
 /** The storage account properties. */
 export interface StorageAccountProperties {
@@ -6178,7 +6445,7 @@ export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageAccount" }) as any as S.Schema<StorageAccount>;
 
 /** The StorageAccount items on this page */
-export type StorageAccountListValueList = StorageAccount[];
+export type StorageAccountListValueList = ReadonlyArray<StorageAccount>;
 export const StorageAccountListValueList = /*@__PURE__*/ S.Array(
   StorageAccount,
 ) as any as S.Schema<StorageAccountListValueList>;
@@ -6199,6 +6466,25 @@ export const StorageAccountList = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageAccountList",
 }) as any as S.Schema<StorageAccountList>;
 
+/** The share properties. */
+export interface SupportPackageRequestProperties {
+  /** MinimumTimeStamp from where logs need to be collected */
+  minimumTimeStamp?: string;
+  /** Start of the timespan of the log collection */
+  maximumTimeStamp?: string;
+  /** Type of files, which need to be included in the logs This will contain the type of logs (Default/DefaultWithDumps/None/All/DefaultWithArchived) or a comma separated list of log types that are required */
+  include?: string;
+}
+export const SupportPackageRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minimumTimeStamp: S.optional(S.String),
+    maximumTimeStamp: S.optional(S.String),
+    include: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SupportPackageRequestProperties",
+}) as any as S.Schema<SupportPackageRequestProperties>;
+
 export interface SupportPackagesTriggerSupportPackageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6206,7 +6492,8 @@ export interface SupportPackagesTriggerSupportPackageRequest {
   resourceGroupName: string;
   /** The device name. */
   deviceName: string;
-  body: unknown;
+  /** The TriggerSupportPackageRequest properties. */
+  properties: SupportPackageRequestProperties;
 }
 export const SupportPackagesTriggerSupportPackageRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6214,7 +6501,7 @@ export const SupportPackagesTriggerSupportPackageRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       deviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: SupportPackageRequestProperties,
     }).pipe(
       T.Http({
         method: "POST",
@@ -6233,6 +6520,10 @@ export const SupportPackagesTriggerSupportPackageResponse =
     identifier: "SupportPackagesTriggerSupportPackageResponse",
   }) as any as S.Schema<SupportPackagesTriggerSupportPackageResponse>;
 
+/** Trigger Kind. */
+export type TriggerEventType = "FileEvent" | "PeriodicTimerEvent";
+export const TriggerEventType = /*@__PURE__*/ S.String;
+
 export interface TriggersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6242,7 +6533,8 @@ export interface TriggersCreateOrUpdateRequest {
   deviceName: string;
   /** The trigger name. */
   name: string;
-  body: unknown;
+  /** Trigger Kind. */
+  kind: TriggerEventType;
 }
 export const TriggersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6250,7 +6542,7 @@ export const TriggersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     deviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: TriggerEventType,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6262,13 +6554,6 @@ export const TriggersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TriggersCreateOrUpdateRequest",
 }) as any as S.Schema<TriggersCreateOrUpdateRequest>;
-
-/** Trigger Kind. */
-export type TriggerEventType =
-  | "FileEvent"
-  | "PeriodicTimerEvent"
-  | (string & {});
-export const TriggerEventType = /*@__PURE__*/ S.String;
 
 export interface TriggersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6434,7 +6719,7 @@ export const Trigger = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
 
 /** The Trigger items on this page */
-export type TriggerListValueList = Trigger[];
+export type TriggerListValueList = ReadonlyArray<Trigger>;
 export const TriggerListValueList = /*@__PURE__*/ S.Array(
   Trigger,
 ) as any as S.Schema<TriggerListValueList>;
@@ -6453,6 +6738,26 @@ export const TriggerList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TriggerList" }) as any as S.Schema<TriggerList>;
 
+/** Type of the user. */
+export type UserType = "Share" | "LocalManagement" | "ARM";
+export const UserType = /*@__PURE__*/ S.String;
+
+/** The user properties. */
+export interface UserPropertiesInput {
+  /** The password details. */
+  encryptedPassword?: AsymmetricEncryptedSecret;
+  /** Type of the user. */
+  userType: UserType;
+}
+export const UserPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encryptedPassword: S.optional(AsymmetricEncryptedSecret),
+    userType: UserType,
+  }),
+).annotate({
+  identifier: "UserPropertiesInput",
+}) as any as S.Schema<UserPropertiesInput>;
+
 export interface UsersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6462,7 +6767,8 @@ export interface UsersCreateOrUpdateRequest {
   deviceName: string;
   /** The user name. */
   name: string;
-  body: unknown;
+  /** The storage account credential properties. */
+  properties: UserPropertiesInput;
 }
 export const UsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6470,7 +6776,7 @@ export const UsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     deviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: UserPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6500,14 +6806,11 @@ export const ShareAccessRight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ShareAccessRight>;
 
 /** List of shares that the user has rights on. This field should not be specified during user creation. */
-export type UserPropertiesShareAccessRightsList = ShareAccessRight[];
+export type UserPropertiesShareAccessRightsList =
+  ReadonlyArray<ShareAccessRight>;
 export const UserPropertiesShareAccessRightsList = /*@__PURE__*/ S.Array(
   ShareAccessRight,
 ) as any as S.Schema<UserPropertiesShareAccessRightsList>;
-
-/** Type of the user. */
-export type UserType = "Share" | "LocalManagement" | "ARM" | (string & {});
-export const UserType = /*@__PURE__*/ S.String;
 
 /** The user properties. */
 export interface UserProperties {
@@ -6689,7 +6992,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 /** The User items on this page */
-export type UserListValueList = User[];
+export type UserListValueList = ReadonlyArray<User>;
 export const UserListValueList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserListValueList>;

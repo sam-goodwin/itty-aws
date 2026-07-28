@@ -116,13 +116,10 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export type DatastoreName = string;
-export type FHIRVersion = "R4" | (string & {});
+export type FHIRVersion = "R4";
 export const FHIRVersion = /*@__PURE__*/ S.String;
 
-export type CmkType =
-  | "CUSTOMER_MANAGED_KMS_KEY"
-  | "AWS_OWNED_KMS_KEY"
-  | (string & {});
+export type CmkType = "CUSTOMER_MANAGED_KMS_KEY" | "AWS_OWNED_KMS_KEY";
 export const CmkType = /*@__PURE__*/ S.String;
 
 export type EncryptionKeyID = string;
@@ -143,7 +140,7 @@ export const SseConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SseConfiguration",
 }) as any as S.Schema<SseConfiguration>;
-export type PreloadDataType = "SYNTHEA" | (string & {});
+export type PreloadDataType = "SYNTHEA";
 export const PreloadDataType = /*@__PURE__*/ S.String;
 
 export interface PreloadDataConfig {
@@ -169,8 +166,7 @@ export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type AuthorizationStrategy =
   | "SMART_ON_FHIR_V1"
   | "SMART_ON_FHIR"
-  | "AWS_AUTH"
-  | (string & {});
+  | "AWS_AUTH";
 export const AuthorizationStrategy = /*@__PURE__*/ S.String;
 
 export type ConfigurationMetadata = string;
@@ -197,8 +193,7 @@ export type AnalyticsStatus =
   | "DISABLED"
   | "DISABLING"
   | "PAUSING"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const AnalyticsStatus = /*@__PURE__*/ S.String;
 
 export interface AnalyticsConfiguration {
@@ -209,12 +204,7 @@ export const AnalyticsConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AnalyticsConfiguration",
 }) as any as S.Schema<AnalyticsConfiguration>;
-export type NlpStatus =
-  | "ENABLED"
-  | "DISABLED"
-  | "ENABLING"
-  | "DISABLING"
-  | (string & {});
+export type NlpStatus = "ENABLED" | "DISABLED" | "ENABLING" | "DISABLING";
 export const NlpStatus = /*@__PURE__*/ S.String;
 
 export interface NlpConfiguration {
@@ -274,8 +264,7 @@ export type DatastoreStatus =
   | "DELETED"
   | "CREATE_FAILED"
   | "UPDATING"
-  | "UPDATE_FAILED"
-  | (string & {});
+  | "UPDATE_FAILED";
 export const DatastoreStatus = /*@__PURE__*/ S.String;
 
 export type BoundedLengthString = string;
@@ -332,10 +321,7 @@ export const DescribeFHIRDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeFHIRDatastoreRequest",
 }) as any as S.Schema<DescribeFHIRDatastoreRequest>;
 export type ErrorMessage = string;
-export type ErrorCategory =
-  | "RETRYABLE_ERROR"
-  | "NON_RETRYABLE_ERROR"
-  | (string & {});
+export type ErrorCategory = "RETRYABLE_ERROR" | "NON_RETRYABLE_ERROR";
 export const ErrorCategory = /*@__PURE__*/ S.String;
 
 export interface ErrorCause {
@@ -415,8 +401,7 @@ export type JobStatus =
   | "CANCEL_SUBMITTED"
   | "CANCEL_IN_PROGRESS"
   | "CANCEL_COMPLETED"
-  | "CANCEL_FAILED"
-  | (string & {});
+  | "CANCEL_FAILED";
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type S3Uri = string;
@@ -508,11 +493,7 @@ export const JobProgressReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JobProgressReport",
 }) as any as S.Schema<JobProgressReport>;
-export type ValidationLevel =
-  | "strict"
-  | "structure-only"
-  | "minimal"
-  | (string & {});
+export type ValidationLevel = "strict" | "structure-only" | "minimal";
 export const ValidationLevel = /*@__PURE__*/ S.String;
 
 export interface ImportJobProperties {

@@ -20,14 +20,15 @@ export interface AmlFilesystemsArchiveRequest {
   resourceGroupName: string;
   /** Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   amlFilesystemName: string;
-  body?: unknown;
+  /** Lustre file system path to archive relative to the file system root. Specify '/' to archive all modified data. */
+  filesystemPath?: string;
 }
 export const AmlFilesystemsArchiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     amlFilesystemName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    filesystemPath: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -79,171 +80,15 @@ export const AmlFilesystemsCancelArchiveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AmlFilesystemsCancelArchiveResponse",
 }) as any as S.Schema<AmlFilesystemsCancelArchiveResponse>;
 
-export interface AmlFilesystemsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
-  amlFilesystemName: string;
-  body: unknown;
-}
-export const AmlFilesystemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    amlFilesystemName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AmlFilesystemsCreateOrUpdateRequest",
-}) as any as S.Schema<AmlFilesystemsCreateOrUpdateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
-export type AmlFilesystemsCreateOrUpdateResponseTagsMap = {
+export type AmlFilesystemsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const AmlFilesystemsCreateOrUpdateResponseTagsMap =
+export const AmlFilesystemsCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<AmlFilesystemsCreateOrUpdateResponseTagsMap>;
-
-/** List of AML file system health states. */
-export type AmlFilesystemHealthStateType =
-  | "Unavailable"
-  | "Available"
-  | "Degraded"
-  | "Transitioning"
-  | "Maintenance"
-  | "Expanding"
-  | (string & {});
-export const AmlFilesystemHealthStateType = /*@__PURE__*/ S.String;
-
-/** An indication of AML file system health. Gives more information about health than just that related to provisioning. */
-export interface AmlFilesystemHealth {
-  /** List of AML file system health states. */
-  state?: AmlFilesystemHealthStateType;
-  /** Server-defined error code for the AML file system health */
-  statusCode?: string;
-  /** Describes the health state. */
-  statusDescription?: string;
-}
-export const AmlFilesystemHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(AmlFilesystemHealthStateType),
-    statusCode: S.optional(S.String),
-    statusDescription: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AmlFilesystemHealth",
-}) as any as S.Schema<AmlFilesystemHealth>;
-
-/** ARM provisioning state. */
-export type AmlFilesystemProvisioningStateType =
-  | "Succeeded"
-  | "Failed"
-  | "Creating"
-  | "Deleting"
-  | "Updating"
-  | "Canceled"
-  | (string & {});
-export const AmlFilesystemProvisioningStateType = /*@__PURE__*/ S.String;
-
-/** AML file system container storage interface information */
-export interface AmlFilesystemContainerStorageInterface {
-  /** Recommended AKS Persistent Volume Claim for the CSI driver, in Base64 encoded YAML */
-  persistentVolumeClaim?: string;
-  /** Recommended AKS Persistent Volume for the CSI driver, in Base64 encoded YAML */
-  persistentVolume?: string;
-  /** Recommended AKS Storage Class for the CSI driver, in Base64 encoded YAML */
-  storageClass?: string;
-}
-export const AmlFilesystemContainerStorageInterface = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      persistentVolumeClaim: S.optional(S.String),
-      persistentVolume: S.optional(S.String),
-      storageClass: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AmlFilesystemContainerStorageInterface",
-}) as any as S.Schema<AmlFilesystemContainerStorageInterface>;
-
-/** AML file system client information */
-export interface AmlFilesystemClientInfo {
-  /** The IPv4 address used by clients to mount the AML file system's Lustre Management Service (MGS). */
-  mgsAddress?: string;
-  /** Recommended command to mount the AML file system */
-  mountCommand?: string;
-  /** The version of Lustre running in the AML file system */
-  lustreVersion?: string;
-  /** Container Storage Interface information for the AML file system. */
-  containerStorageInterface?: AmlFilesystemContainerStorageInterface;
-}
-export const AmlFilesystemClientInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mgsAddress: S.optional(S.String),
-    mountCommand: S.optional(S.String),
-    lustreVersion: S.optional(S.String),
-    containerStorageInterface: S.optional(
-      AmlFilesystemContainerStorageInterface,
-    ),
-  }),
-).annotate({
-  identifier: "AmlFilesystemClientInfo",
-}) as any as S.Schema<AmlFilesystemClientInfo>;
+  ) as any as S.Schema<AmlFilesystemsCreateOrUpdateRequestTagsMap>;
 
 /** Describes a resource Id to source key vault. */
 export interface KeyVaultKeyReferenceSourceVault {
@@ -295,8 +140,7 @@ export type MaintenanceDayOfWeekType =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday"
-  | (string & {});
+  | "Sunday";
 export const MaintenanceDayOfWeekType = /*@__PURE__*/ S.String;
 
 /** Start time of a 30-minute weekly maintenance window. */
@@ -317,7 +161,8 @@ export const AmlFilesystemPropertiesMaintenanceWindow = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AmlFilesystemPropertiesMaintenanceWindow>;
 
 /** Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted. */
-export type AmlFilesystemHsmSettingsImportPrefixesInitialList = string[];
+export type AmlFilesystemHsmSettingsImportPrefixesInitialList =
+  ReadonlyArray<string>;
 export const AmlFilesystemHsmSettingsImportPrefixesInitialList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -347,6 +192,310 @@ export const AmlFilesystemHsmSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "AmlFilesystemHsmSettings",
 }) as any as S.Schema<AmlFilesystemHsmSettings>;
 
+/** Hydration and archive settings and status */
+export interface AmlFilesystemPropertiesHsmInput {
+  /** Specifies HSM settings of the AML file system. */
+  settings?: AmlFilesystemHsmSettings;
+}
+export const AmlFilesystemPropertiesHsmInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    settings: S.optional(AmlFilesystemHsmSettings),
+  }),
+).annotate({
+  identifier: "AmlFilesystemPropertiesHsmInput",
+}) as any as S.Schema<AmlFilesystemPropertiesHsmInput>;
+
+/** Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems. */
+export type AmlFilesystemSquashMode = "None" | "RootOnly" | "All";
+export const AmlFilesystemSquashMode = /*@__PURE__*/ S.String;
+
+/** AML file system squash settings. */
+export interface AmlFilesystemRootSquashSettingsInput {
+  /** Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems. */
+  mode?: AmlFilesystemSquashMode;
+  /** Semicolon separated NID IP Address list(s) to be added to the TrustedSystems. */
+  noSquashNidLists?: string;
+  /** User ID to squash to. */
+  squashUID?: number;
+  /** Group ID to squash to. */
+  squashGID?: number;
+}
+export const AmlFilesystemRootSquashSettingsInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      mode: S.optional(AmlFilesystemSquashMode),
+      noSquashNidLists: S.optional(S.String),
+      squashUID: S.optional(S.Number),
+      squashGID: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "AmlFilesystemRootSquashSettingsInput",
+}) as any as S.Schema<AmlFilesystemRootSquashSettingsInput>;
+
+/** Properties of the AML file system. */
+export interface AmlFilesystemPropertiesInput {
+  /** The size of the AML file system, in TiB. This might be rounded up. */
+  storageCapacityTiB: number;
+  /** Subnet used for managing the AML file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the VNET's address space. */
+  filesystemSubnet: string;
+  /** Specifies encryption settings of the AML file system. */
+  encryptionSettings?: AmlFilesystemEncryptionSettings;
+  /** Start time of a 30-minute weekly maintenance window. */
+  maintenanceWindow: AmlFilesystemPropertiesMaintenanceWindow;
+  /** Hydration and archive settings and status */
+  hsm?: AmlFilesystemPropertiesHsmInput;
+  /** Specifies root squash settings of the AML file system. */
+  rootSquashSettings?: AmlFilesystemRootSquashSettingsInput;
+}
+export const AmlFilesystemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageCapacityTiB: S.Number,
+    filesystemSubnet: S.String,
+    encryptionSettings: S.optional(AmlFilesystemEncryptionSettings),
+    maintenanceWindow: AmlFilesystemPropertiesMaintenanceWindow,
+    hsm: S.optional(AmlFilesystemPropertiesHsmInput),
+    rootSquashSettings: S.optional(AmlFilesystemRootSquashSettingsInput),
+  }),
+).annotate({
+  identifier: "AmlFilesystemPropertiesInput",
+}) as any as S.Schema<AmlFilesystemPropertiesInput>;
+
+/** The type of identity used for the resource. */
+export type AmlFilesystemIdentityType = "UserAssigned" | "None";
+export const AmlFilesystemIdentityType = /*@__PURE__*/ S.String;
+
+export interface UserAssignedIdentitiesValueInput {}
+export const UserAssignedIdentitiesValueInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentitiesValueInput",
+}) as any as S.Schema<UserAssignedIdentitiesValueInput>;
+
+/** A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary. */
+export type AmlFilesystemIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentitiesValueInput | undefined;
+};
+export const AmlFilesystemIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentitiesValueInput,
+  ) as any as S.Schema<AmlFilesystemIdentityInputUserAssignedIdentitiesMap>;
+
+/** Managed Identity properties. */
+export interface AmlFilesystemIdentityInput {
+  /** The type of identity used for the resource. */
+  type?: AmlFilesystemIdentityType;
+  /** A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary. */
+  userAssignedIdentities?: AmlFilesystemIdentityInputUserAssignedIdentitiesMap;
+}
+export const AmlFilesystemIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(AmlFilesystemIdentityType),
+    userAssignedIdentities: S.optional(
+      AmlFilesystemIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "AmlFilesystemIdentityInput",
+}) as any as S.Schema<AmlFilesystemIdentityInput>;
+
+/** SKU for the resource. */
+export interface SkuName {
+  /** SKU name for this resource. */
+  name?: string;
+}
+export const SkuName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({ identifier: "SkuName" }) as any as S.Schema<SkuName>;
+
+/** The availability zones. */
+export type AmlFilesystemsCreateOrUpdateRequestZonesList =
+  ReadonlyArray<string>;
+export const AmlFilesystemsCreateOrUpdateRequestZonesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AmlFilesystemsCreateOrUpdateRequestZonesList>;
+
+export interface AmlFilesystemsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
+  amlFilesystemName: string;
+  /** Resource tags. */
+  tags?: AmlFilesystemsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the AML file system. */
+  properties?: AmlFilesystemPropertiesInput;
+  /** The managed identity used by the AML file system, if configured. */
+  identity?: AmlFilesystemIdentityInput;
+  /** SKU for the resource. */
+  sku?: SkuName;
+  /** The availability zones. */
+  zones?: AmlFilesystemsCreateOrUpdateRequestZonesList;
+}
+export const AmlFilesystemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    amlFilesystemName: S.String.pipe(T.Label()),
+    tags: S.optional(AmlFilesystemsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(AmlFilesystemPropertiesInput),
+    identity: S.optional(AmlFilesystemIdentityInput),
+    sku: S.optional(SkuName),
+    zones: S.optional(AmlFilesystemsCreateOrUpdateRequestZonesList),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "AmlFilesystemsCreateOrUpdateRequest",
+}) as any as S.Schema<AmlFilesystemsCreateOrUpdateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** Resource tags. */
+export type AmlFilesystemsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AmlFilesystemsCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AmlFilesystemsCreateOrUpdateResponseTagsMap>;
+
+/** List of AML file system health states. */
+export type AmlFilesystemHealthStateType =
+  | "Unavailable"
+  | "Available"
+  | "Degraded"
+  | "Transitioning"
+  | "Maintenance"
+  | "Expanding";
+export const AmlFilesystemHealthStateType = /*@__PURE__*/ S.String;
+
+/** An indication of AML file system health. Gives more information about health than just that related to provisioning. */
+export interface AmlFilesystemHealth {
+  /** List of AML file system health states. */
+  state?: AmlFilesystemHealthStateType;
+  /** Server-defined error code for the AML file system health */
+  statusCode?: string;
+  /** Describes the health state. */
+  statusDescription?: string;
+}
+export const AmlFilesystemHealth = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: S.optional(AmlFilesystemHealthStateType),
+    statusCode: S.optional(S.String),
+    statusDescription: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AmlFilesystemHealth",
+}) as any as S.Schema<AmlFilesystemHealth>;
+
+/** ARM provisioning state. */
+export type AmlFilesystemProvisioningStateType =
+  | "Succeeded"
+  | "Failed"
+  | "Creating"
+  | "Deleting"
+  | "Updating"
+  | "Canceled";
+export const AmlFilesystemProvisioningStateType = /*@__PURE__*/ S.String;
+
+/** AML file system container storage interface information */
+export interface AmlFilesystemContainerStorageInterface {
+  /** Recommended AKS Persistent Volume Claim for the CSI driver, in Base64 encoded YAML */
+  persistentVolumeClaim?: string;
+  /** Recommended AKS Persistent Volume for the CSI driver, in Base64 encoded YAML */
+  persistentVolume?: string;
+  /** Recommended AKS Storage Class for the CSI driver, in Base64 encoded YAML */
+  storageClass?: string;
+}
+export const AmlFilesystemContainerStorageInterface = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      persistentVolumeClaim: S.optional(S.String),
+      persistentVolume: S.optional(S.String),
+      storageClass: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AmlFilesystemContainerStorageInterface",
+}) as any as S.Schema<AmlFilesystemContainerStorageInterface>;
+
+/** AML file system client information */
+export interface AmlFilesystemClientInfo {
+  /** The IPv4 address used by clients to mount the AML file system's Lustre Management Service (MGS). */
+  mgsAddress?: string;
+  /** Recommended command to mount the AML file system */
+  mountCommand?: string;
+  /** The version of Lustre running in the AML file system */
+  lustreVersion?: string;
+  /** Container Storage Interface information for the AML file system. */
+  containerStorageInterface?: AmlFilesystemContainerStorageInterface;
+}
+export const AmlFilesystemClientInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mgsAddress: S.optional(S.String),
+    mountCommand: S.optional(S.String),
+    lustreVersion: S.optional(S.String),
+    containerStorageInterface: S.optional(
+      AmlFilesystemContainerStorageInterface,
+    ),
+  }),
+).annotate({
+  identifier: "AmlFilesystemClientInfo",
+}) as any as S.Schema<AmlFilesystemClientInfo>;
+
 /** The state of the archive operation */
 export type ArchiveStatusType =
   | "NotConfigured"
@@ -356,8 +505,7 @@ export type ArchiveStatusType =
   | "Completed"
   | "Failed"
   | "Cancelling"
-  | "FSScanInProgress"
-  | (string & {});
+  | "FSScanInProgress";
 export const ArchiveStatusType = /*@__PURE__*/ S.String;
 
 /** The status of the archive */
@@ -406,7 +554,7 @@ export const AmlFilesystemArchive = /*@__PURE__*/ S.suspend(() =>
 
 /** Archive status */
 export type AmlFilesystemPropertiesHsmArchiveStatusList =
-  AmlFilesystemArchive[];
+  ReadonlyArray<AmlFilesystemArchive>;
 export const AmlFilesystemPropertiesHsmArchiveStatusList =
   /*@__PURE__*/ S.Array(
     AmlFilesystemArchive,
@@ -427,14 +575,6 @@ export const AmlFilesystemPropertiesHsm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AmlFilesystemPropertiesHsm",
 }) as any as S.Schema<AmlFilesystemPropertiesHsm>;
-
-/** Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems. */
-export type AmlFilesystemSquashMode =
-  | "None"
-  | "RootOnly"
-  | "All"
-  | (string & {});
-export const AmlFilesystemSquashMode = /*@__PURE__*/ S.String;
 
 /** AML file system squash settings. */
 export interface AmlFilesystemRootSquashSettings {
@@ -507,10 +647,6 @@ export const AmlFilesystemProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "AmlFilesystemProperties",
 }) as any as S.Schema<AmlFilesystemProperties>;
 
-/** The type of identity used for the resource. */
-export type AmlFilesystemIdentityType = "UserAssigned" | "None" | (string & {});
-export const AmlFilesystemIdentityType = /*@__PURE__*/ S.String;
-
 export interface UserAssignedIdentitiesValue {
   /** The principal ID of the user-assigned identity. */
   principalId?: string;
@@ -560,19 +696,9 @@ export const AmlFilesystemIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "AmlFilesystemIdentity",
 }) as any as S.Schema<AmlFilesystemIdentity>;
 
-/** SKU for the resource. */
-export interface SkuName {
-  /** SKU name for this resource. */
-  name?: string;
-}
-export const SkuName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "SkuName" }) as any as S.Schema<SkuName>;
-
 /** The availability zones. */
-export type AmlFilesystemsCreateOrUpdateResponseZonesList = string[];
+export type AmlFilesystemsCreateOrUpdateResponseZonesList =
+  ReadonlyArray<string>;
 export const AmlFilesystemsCreateOrUpdateResponseZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -685,7 +811,7 @@ export const AmlFilesystemsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AmlFilesystemsGetResponseTagsMap>;
 
 /** The availability zones. */
-export type AmlFilesystemsGetResponseZonesList = string[];
+export type AmlFilesystemsGetResponseZonesList = ReadonlyArray<string>;
 export const AmlFilesystemsGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AmlFilesystemsGetResponseZonesList>;
@@ -756,7 +882,7 @@ export const AmlFilesystemTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AmlFilesystemTagsMap>;
 
 /** The availability zones. */
-export type AmlFilesystemZonesList = string[];
+export type AmlFilesystemZonesList = ReadonlyArray<string>;
 export const AmlFilesystemZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AmlFilesystemZonesList>;
@@ -800,7 +926,7 @@ export const AmlFilesystem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AmlFilesystem" }) as any as S.Schema<AmlFilesystem>;
 
 /** List of AML file systems. */
-export type AmlFilesystemsListResultValueList = AmlFilesystem[];
+export type AmlFilesystemsListResultValueList = ReadonlyArray<AmlFilesystem>;
 export const AmlFilesystemsListResultValueList = /*@__PURE__*/ S.Array(
   AmlFilesystem,
 ) as any as S.Schema<AmlFilesystemsListResultValueList>;
@@ -844,6 +970,53 @@ export const AmlFilesystemsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
   identifier: "AmlFilesystemsListByResourceGroupRequest",
 }) as any as S.Schema<AmlFilesystemsListByResourceGroupRequest>;
 
+/** Resource tags. */
+export type AmlFilesystemsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AmlFilesystemsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AmlFilesystemsUpdateRequestTagsMap>;
+
+/** Start time of a 30-minute weekly maintenance window. */
+export interface AmlFilesystemUpdatePropertiesMaintenanceWindow {
+  /** Day of the week on which the maintenance window will occur. */
+  dayOfWeek?: MaintenanceDayOfWeekType;
+  /** The time of day (in UTC) to start the maintenance window. */
+  timeOfDayUTC?: string;
+}
+export const AmlFilesystemUpdatePropertiesMaintenanceWindow =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dayOfWeek: S.optional(MaintenanceDayOfWeekType),
+      timeOfDayUTC: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AmlFilesystemUpdatePropertiesMaintenanceWindow",
+  }) as any as S.Schema<AmlFilesystemUpdatePropertiesMaintenanceWindow>;
+
+/** Properties of the AML file system. */
+export interface AmlFilesystemUpdatePropertiesInput {
+  /** Specifies encryption settings of the AML file system. */
+  encryptionSettings?: AmlFilesystemEncryptionSettings;
+  /** Start time of a 30-minute weekly maintenance window. */
+  maintenanceWindow?: AmlFilesystemUpdatePropertiesMaintenanceWindow;
+  /** Specifies root squash settings of the AML file system. */
+  rootSquashSettings?: AmlFilesystemRootSquashSettingsInput;
+}
+export const AmlFilesystemUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encryptionSettings: S.optional(AmlFilesystemEncryptionSettings),
+    maintenanceWindow: S.optional(
+      AmlFilesystemUpdatePropertiesMaintenanceWindow,
+    ),
+    rootSquashSettings: S.optional(AmlFilesystemRootSquashSettingsInput),
+  }),
+).annotate({
+  identifier: "AmlFilesystemUpdatePropertiesInput",
+}) as any as S.Schema<AmlFilesystemUpdatePropertiesInput>;
+
 export interface AmlFilesystemsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -851,14 +1024,18 @@ export interface AmlFilesystemsUpdateRequest {
   resourceGroupName: string;
   /** Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   amlFilesystemName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AmlFilesystemsUpdateRequestTagsMap;
+  /** Properties of the AML file system. */
+  properties?: AmlFilesystemUpdatePropertiesInput;
 }
 export const AmlFilesystemsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     amlFilesystemName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AmlFilesystemsUpdateRequestTagsMap),
+    properties: S.optional(AmlFilesystemUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -881,7 +1058,7 @@ export const AmlFilesystemsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AmlFilesystemsUpdateResponseTagsMap>;
 
 /** The availability zones. */
-export type AmlFilesystemsUpdateResponseZonesList = string[];
+export type AmlFilesystemsUpdateResponseZonesList = ReadonlyArray<string>;
 export const AmlFilesystemsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AmlFilesystemsUpdateResponseZonesList>;
@@ -1076,7 +1253,7 @@ export const ResourceUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceUsage" }) as any as S.Schema<ResourceUsage>;
 
 /** List of usages and limits for resources controlled by the Microsoft.StorageCache resource provider. */
-export type ResourceUsagesListResultValueList = ResourceUsage[];
+export type ResourceUsagesListResultValueList = ReadonlyArray<ResourceUsage>;
 export const ResourceUsagesListResultValueList = /*@__PURE__*/ S.Array(
   ResourceUsage,
 ) as any as S.Schema<ResourceUsagesListResultValueList>;
@@ -1097,6 +1274,46 @@ export const ResourceUsagesListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceUsagesListResult",
 }) as any as S.Schema<ResourceUsagesListResult>;
 
+/** Resource tags. */
+export type AutoExportJobsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AutoExportJobsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AutoExportJobsCreateOrUpdateRequestTagsMap>;
+
+/** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
+export type AutoExportJobPropertiesInputAdminStatus = "Enable" | "Disable";
+export const AutoExportJobPropertiesInputAdminStatus = /*@__PURE__*/ S.String;
+
+/** An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1. */
+export type AutoExportJobPropertiesInputAutoExportPrefixesList =
+  ReadonlyArray<string>;
+export const AutoExportJobPropertiesInputAutoExportPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AutoExportJobPropertiesInputAutoExportPrefixesList>;
+
+/** Properties of the auto export job. */
+export interface AutoExportJobPropertiesInput {
+  /** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
+  adminStatus?: AutoExportJobPropertiesInputAdminStatus;
+  /** An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1. */
+  autoExportPrefixes?: AutoExportJobPropertiesInputAutoExportPrefixesList;
+}
+export const AutoExportJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adminStatus: S.optional(AutoExportJobPropertiesInputAdminStatus),
+    autoExportPrefixes: S.optional(
+      AutoExportJobPropertiesInputAutoExportPrefixesList,
+    ),
+  }),
+).annotate({
+  identifier: "AutoExportJobPropertiesInput",
+}) as any as S.Schema<AutoExportJobPropertiesInput>;
+
 export interface AutoExportJobsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1106,7 +1323,12 @@ export interface AutoExportJobsCreateOrUpdateRequest {
   amlFilesystemName: string;
   /** Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   autoExportJobName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AutoExportJobsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the auto export job. */
+  properties?: AutoExportJobPropertiesInput;
 }
 export const AutoExportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1114,7 +1336,9 @@ export const AutoExportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     amlFilesystemName: S.String.pipe(T.Label()),
     autoExportJobName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AutoExportJobsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(AutoExportJobPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1144,19 +1368,16 @@ export type AutoExportJobProvisioningStateType =
   | "Creating"
   | "Deleting"
   | "Updating"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AutoExportJobProvisioningStateType = /*@__PURE__*/ S.String;
 
 /** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
-export type AutoExportJobPropertiesAdminStatus =
-  | "Enable"
-  | "Disable"
-  | (string & {});
+export type AutoExportJobPropertiesAdminStatus = "Enable" | "Disable";
 export const AutoExportJobPropertiesAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1. */
-export type AutoExportJobPropertiesAutoExportPrefixesList = string[];
+export type AutoExportJobPropertiesAutoExportPrefixesList =
+  ReadonlyArray<string>;
 export const AutoExportJobPropertiesAutoExportPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1168,8 +1389,7 @@ export type AutoExportStatusType =
   | "Disabling"
   | "Disabled"
   | "DisableFailed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const AutoExportStatusType = /*@__PURE__*/ S.String;
 
 /** The status of the auto export */
@@ -1447,7 +1667,7 @@ export const AutoExportJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoExportJob" }) as any as S.Schema<AutoExportJob>;
 
 /** List of auto export jobs. */
-export type AutoExportJobsListResultValueList = AutoExportJob[];
+export type AutoExportJobsListResultValueList = ReadonlyArray<AutoExportJob>;
 export const AutoExportJobsListResultValueList = /*@__PURE__*/ S.Array(
   AutoExportJob,
 ) as any as S.Schema<AutoExportJobsListResultValueList>;
@@ -1468,6 +1688,31 @@ export const AutoExportJobsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoExportJobsListResult",
 }) as any as S.Schema<AutoExportJobsListResult>;
 
+/** Resource tags. */
+export type AutoExportJobsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AutoExportJobsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AutoExportJobsUpdateRequestTagsMap>;
+
+/** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
+export type AutoExportJobAdminStatus = "Enable" | "Disable";
+export const AutoExportJobAdminStatus = /*@__PURE__*/ S.String;
+
+export interface AutoExportJobUpdateProperties {
+  /** The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'. */
+  adminStatus?: AutoExportJobAdminStatus;
+}
+export const AutoExportJobUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adminStatus: S.optional(AutoExportJobAdminStatus),
+  }),
+).annotate({
+  identifier: "AutoExportJobUpdateProperties",
+}) as any as S.Schema<AutoExportJobUpdateProperties>;
+
 export interface AutoExportJobsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1477,7 +1722,9 @@ export interface AutoExportJobsUpdateRequest {
   amlFilesystemName: string;
   /** Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   autoExportJobName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AutoExportJobsUpdateRequestTagsMap;
+  properties?: AutoExportJobUpdateProperties;
 }
 export const AutoExportJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1485,7 +1732,8 @@ export const AutoExportJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     amlFilesystemName: S.String.pipe(T.Label()),
     autoExportJobName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AutoExportJobsUpdateRequestTagsMap),
+    properties: S.optional(AutoExportJobUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1537,6 +1785,66 @@ export const AutoExportJobsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoExportJobsUpdateResponse",
 }) as any as S.Schema<AutoExportJobsUpdateResponse>;
 
+/** Resource tags. */
+export type AutoImportJobsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AutoImportJobsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AutoImportJobsCreateOrUpdateRequestTagsMap>;
+
+/** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
+export type AutoImportJobPropertiesInputAdminStatus = "Enable" | "Disable";
+export const AutoImportJobPropertiesInputAdminStatus = /*@__PURE__*/ S.String;
+
+/** An array of blob paths/prefixes that get auto imported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths is 100. */
+export type AutoImportJobPropertiesInputAutoImportPrefixesList =
+  ReadonlyArray<string>;
+export const AutoImportJobPropertiesInputAutoImportPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AutoImportJobPropertiesInputAutoImportPrefixesList>;
+
+/** How the auto import job will handle conflicts. For example, if the auto import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the auto import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the auto import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or is currently released. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/blob-integration#conflict-resolution-mode for a thorough explanation of these resolution modes. */
+export type AutoImportJobPropertiesInputConflictResolutionMode =
+  | "Fail"
+  | "Skip"
+  | "OverwriteIfDirty"
+  | "OverwriteAlways";
+export const AutoImportJobPropertiesInputConflictResolutionMode =
+  /*@__PURE__*/ S.String;
+
+/** Properties of the auto import job. */
+export interface AutoImportJobPropertiesInput {
+  /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
+  adminStatus?: AutoImportJobPropertiesInputAdminStatus;
+  /** An array of blob paths/prefixes that get auto imported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths is 100. */
+  autoImportPrefixes?: AutoImportJobPropertiesInputAutoImportPrefixesList;
+  /** How the auto import job will handle conflicts. For example, if the auto import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the auto import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the auto import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or is currently released. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/blob-integration#conflict-resolution-mode for a thorough explanation of these resolution modes. */
+  conflictResolutionMode?: AutoImportJobPropertiesInputConflictResolutionMode;
+  /** Whether or not to enable deletions during auto import. This only affects overwrite-dirty. */
+  enableDeletions?: boolean;
+  /** Total non-conflict-oriented errors (e.g., OS errors) Import will tolerate before exiting with failure. -1 means infinite. 0 means exit immediately on any error. */
+  maximumErrors?: number;
+}
+export const AutoImportJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adminStatus: S.optional(AutoImportJobPropertiesInputAdminStatus),
+    autoImportPrefixes: S.optional(
+      AutoImportJobPropertiesInputAutoImportPrefixesList,
+    ),
+    conflictResolutionMode: S.optional(
+      AutoImportJobPropertiesInputConflictResolutionMode,
+    ),
+    enableDeletions: S.optional(S.Boolean),
+    maximumErrors: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AutoImportJobPropertiesInput",
+}) as any as S.Schema<AutoImportJobPropertiesInput>;
+
 export interface AutoImportJobsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1546,7 +1854,12 @@ export interface AutoImportJobsCreateOrUpdateRequest {
   amlFilesystemName: string;
   /** Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   autoImportJobName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AutoImportJobsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the auto import job. */
+  properties?: AutoImportJobPropertiesInput;
 }
 export const AutoImportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1554,7 +1867,9 @@ export const AutoImportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     amlFilesystemName: S.String.pipe(T.Label()),
     autoImportJobName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AutoImportJobsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(AutoImportJobPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1584,19 +1899,16 @@ export type AutoImportJobPropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Updating"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AutoImportJobPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
-export type AutoImportJobPropertiesAdminStatus =
-  | "Enable"
-  | "Disable"
-  | (string & {});
+export type AutoImportJobPropertiesAdminStatus = "Enable" | "Disable";
 export const AutoImportJobPropertiesAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get auto imported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths is 100. */
-export type AutoImportJobPropertiesAutoImportPrefixesList = string[];
+export type AutoImportJobPropertiesAutoImportPrefixesList =
+  ReadonlyArray<string>;
 export const AutoImportJobPropertiesAutoImportPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1607,8 +1919,7 @@ export type AutoImportJobPropertiesConflictResolutionMode =
   | "Fail"
   | "Skip"
   | "OverwriteIfDirty"
-  | "OverwriteAlways"
-  | (string & {});
+  | "OverwriteAlways";
 export const AutoImportJobPropertiesConflictResolutionMode =
   /*@__PURE__*/ S.String;
 
@@ -1617,8 +1928,7 @@ export type AutoImportJobState =
   | "InProgress"
   | "Failed"
   | "Disabling"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const AutoImportJobState = /*@__PURE__*/ S.String;
 
 /** The storage account blob change feed status of the auto import job. */
@@ -1972,7 +2282,7 @@ export const AutoImportJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoImportJob" }) as any as S.Schema<AutoImportJob>;
 
 /** List of auto import jobs. */
-export type AutoImportJobsListResultValueList = AutoImportJob[];
+export type AutoImportJobsListResultValueList = ReadonlyArray<AutoImportJob>;
 export const AutoImportJobsListResultValueList = /*@__PURE__*/ S.Array(
   AutoImportJob,
 ) as any as S.Schema<AutoImportJobsListResultValueList>;
@@ -1993,6 +2303,31 @@ export const AutoImportJobsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoImportJobsListResult",
 }) as any as S.Schema<AutoImportJobsListResult>;
 
+/** Resource tags. */
+export type AutoImportJobsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AutoImportJobsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AutoImportJobsUpdateRequestTagsMap>;
+
+/** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
+export type AutoImportJobUpdatePropertiesAdminStatus = "Enable" | "Disable";
+export const AutoImportJobUpdatePropertiesAdminStatus = /*@__PURE__*/ S.String;
+
+export interface AutoImportJobUpdateProperties {
+  /** The administrative status of the auto import job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto import job. By default it is set to 'Enable'. */
+  adminStatus?: AutoImportJobUpdatePropertiesAdminStatus;
+}
+export const AutoImportJobUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adminStatus: S.optional(AutoImportJobUpdatePropertiesAdminStatus),
+  }),
+).annotate({
+  identifier: "AutoImportJobUpdateProperties",
+}) as any as S.Schema<AutoImportJobUpdateProperties>;
+
 export interface AutoImportJobsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2002,7 +2337,9 @@ export interface AutoImportJobsUpdateRequest {
   amlFilesystemName: string;
   /** Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   autoImportJobName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AutoImportJobsUpdateRequestTagsMap;
+  properties?: AutoImportJobUpdateProperties;
 }
 export const AutoImportJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2010,7 +2347,8 @@ export const AutoImportJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     amlFilesystemName: S.String.pipe(T.Label()),
     autoImportJobName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AutoImportJobsUpdateRequestTagsMap),
+    properties: S.optional(AutoImportJobUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2062,133 +2400,6 @@ export const AutoImportJobsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoImportJobsUpdateResponse",
 }) as any as S.Schema<AutoImportJobsUpdateResponse>;
 
-export interface CachesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
-  cacheName: string;
-  body: unknown;
-}
-export const CachesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    cacheName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "CachesCreateOrUpdateRequest",
-}) as any as S.Schema<CachesCreateOrUpdateRequest>;
-
-/** List of cache health states. Down is when the cluster is not responding. Degraded is when its functioning but has some alerts. Transitioning when it is creating or deleting. Unknown will be returned in old api versions when a new value is added in future versions. WaitingForKey is when the create is waiting for the system assigned identity to be given access to the encryption key in the encryption settings. */
-export type HealthStateType =
-  | "Unknown"
-  | "Healthy"
-  | "Degraded"
-  | "Down"
-  | "Transitioning"
-  | "Stopping"
-  | "Stopped"
-  | "Upgrading"
-  | "Flushing"
-  | "WaitingForKey"
-  | "StartFailed"
-  | "UpgradeFailed"
-  | (string & {});
-export const HealthStateType = /*@__PURE__*/ S.String;
-
-/** Outstanding conditions that will need to be resolved. */
-export interface Condition {
-  /** The time when the condition was raised. */
-  timestamp?: string;
-  /** The issue requiring attention. */
-  message?: string;
-}
-export const Condition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
-
-/** Outstanding conditions that need to be investigated and resolved. */
-export type CacheHealthConditionsList = Condition[];
-export const CacheHealthConditionsList = /*@__PURE__*/ S.Array(
-  Condition,
-) as any as S.Schema<CacheHealthConditionsList>;
-
-/** An indication of cache health. Gives more information about health than just that related to provisioning. */
-export interface CacheHealth {
-  /** List of cache health states. Down is when the cluster is not responding. Degraded is when its functioning but has some alerts. Transitioning when it is creating or deleting. Unknown will be returned in old api versions when a new value is added in future versions. WaitingForKey is when the create is waiting for the system assigned identity to be given access to the encryption key in the encryption settings. */
-  state?: HealthStateType;
-  /** Describes explanation of state. */
-  statusDescription?: string;
-  /** Outstanding conditions that need to be investigated and resolved. */
-  conditions?: CacheHealthConditionsList;
-}
-export const CacheHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(HealthStateType),
-    statusDescription: S.optional(S.String),
-    conditions: S.optional(CacheHealthConditionsList),
-  }),
-).annotate({ identifier: "CacheHealth" }) as any as S.Schema<CacheHealth>;
-
-/** Array of IPv4 addresses that can be used by clients mounting this cache. */
-export type CachePropertiesMountAddressesList = string[];
-export const CachePropertiesMountAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CachePropertiesMountAddressesList>;
-
-/** ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property */
-export type ProvisioningStateType =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Creating"
-  | "Deleting"
-  | "Updating"
-  | (string & {});
-export const ProvisioningStateType = /*@__PURE__*/ S.String;
-
-/** True if there is a firmware update ready to install on this cache. The firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation. */
-export type FirmwareStatusType = "available" | "unavailable" | (string & {});
-export const FirmwareStatusType = /*@__PURE__*/ S.String;
-
-/** Properties describing the software upgrade state of the cache. */
-export interface CacheUpgradeStatus {
-  /** Version string of the firmware currently installed on this cache. */
-  currentFirmwareVersion?: string;
-  /** True if there is a firmware update ready to install on this cache. The firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation. */
-  firmwareUpdateStatus?: FirmwareStatusType;
-  /** Time at which the pending firmware update will automatically be installed on the cache. */
-  firmwareUpdateDeadline?: string;
-  /** Time of the last successful firmware update. */
-  lastFirmwareUpdate?: string;
-  /** When firmwareUpdateAvailable is true, this field holds the version string for the update. */
-  pendingFirmwareVersion?: string;
-}
-export const CacheUpgradeStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currentFirmwareVersion: S.optional(S.String),
-    firmwareUpdateStatus: S.optional(FirmwareStatusType),
-    firmwareUpdateDeadline: S.optional(S.String),
-    lastFirmwareUpdate: S.optional(S.String),
-    pendingFirmwareVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CacheUpgradeStatus",
-}) as any as S.Schema<CacheUpgradeStatus>;
-
 /** Cache Upgrade Settings. */
 export interface CacheUpgradeSettings {
   /** True if the user chooses to select an installation time between now and firmwareUpdateDeadline. Else the firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation. */
@@ -2205,42 +2416,33 @@ export const CacheUpgradeSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "CacheUpgradeSettings",
 }) as any as S.Schema<CacheUpgradeSettings>;
 
-/** Array of additional IP addresses used by this cache. */
-export type CacheNetworkSettingsUtilityAddressesList = string[];
-export const CacheNetworkSettingsUtilityAddressesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CacheNetworkSettingsUtilityAddressesList>;
-
 /** DNS servers for the cache to use. It will be set from the network configuration if no value is provided. */
-export type CacheNetworkSettingsDnsServersList = string[];
-export const CacheNetworkSettingsDnsServersList = /*@__PURE__*/ S.Array(
+export type CacheNetworkSettingsInputDnsServersList = ReadonlyArray<string>;
+export const CacheNetworkSettingsInputDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<CacheNetworkSettingsDnsServersList>;
+) as any as S.Schema<CacheNetworkSettingsInputDnsServersList>;
 
 /** Cache network settings. */
-export interface CacheNetworkSettings {
+export interface CacheNetworkSettingsInput {
   /** The IPv4 maximum transmission unit configured for the subnet. */
   mtu?: number;
-  /** Array of additional IP addresses used by this cache. */
-  utilityAddresses?: CacheNetworkSettingsUtilityAddressesList;
   /** DNS servers for the cache to use. It will be set from the network configuration if no value is provided. */
-  dnsServers?: CacheNetworkSettingsDnsServersList;
+  dnsServers?: CacheNetworkSettingsInputDnsServersList;
   /** DNS search domain */
   dnsSearchDomain?: string;
   /** NTP server IP Address or FQDN for the cache to use. The default is time.windows.com. */
   ntpServer?: string;
 }
-export const CacheNetworkSettings = /*@__PURE__*/ S.suspend(() =>
+export const CacheNetworkSettingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mtu: S.optional(S.Number),
-    utilityAddresses: S.optional(CacheNetworkSettingsUtilityAddressesList),
-    dnsServers: S.optional(CacheNetworkSettingsDnsServersList),
+    dnsServers: S.optional(CacheNetworkSettingsInputDnsServersList),
     dnsSearchDomain: S.optional(S.String),
     ntpServer: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "CacheNetworkSettings",
-}) as any as S.Schema<CacheNetworkSettings>;
+  identifier: "CacheNetworkSettingsInput",
+}) as any as S.Schema<CacheNetworkSettingsInput>;
 
 /** Cache encryption settings. */
 export interface CacheEncryptionSettings {
@@ -2259,11 +2461,11 @@ export const CacheEncryptionSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheEncryptionSettings>;
 
 /** Scope for this rule. The scope and filter determine which clients match the rule. */
-export type NfsAccessRuleScope = "default" | "network" | "host" | (string & {});
+export type NfsAccessRuleScope = "default" | "network" | "host";
 export const NfsAccessRuleScope = /*@__PURE__*/ S.String;
 
 /** Access allowed by this rule. */
-export type NfsAccessRuleAccess = "no" | "ro" | "rw" | (string & {});
+export type NfsAccessRuleAccess = "no" | "ro" | "rw";
 export const NfsAccessRuleAccess = /*@__PURE__*/ S.String;
 
 /** Rule to place restrictions on portions of the cache namespace being presented to clients. */
@@ -2299,7 +2501,7 @@ export const NfsAccessRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NfsAccessRule" }) as any as S.Schema<NfsAccessRule>;
 
 /** The set of rules describing client accesses allowed under this policy. */
-export type NfsAccessPolicyAccessRulesList = NfsAccessRule[];
+export type NfsAccessPolicyAccessRulesList = ReadonlyArray<NfsAccessRule>;
 export const NfsAccessPolicyAccessRulesList = /*@__PURE__*/ S.Array(
   NfsAccessRule,
 ) as any as S.Schema<NfsAccessPolicyAccessRulesList>;
@@ -2321,7 +2523,8 @@ export const NfsAccessPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NfsAccessPolicy>;
 
 /** NFS access policies defined for this cache. */
-export type CacheSecuritySettingsAccessPoliciesList = NfsAccessPolicy[];
+export type CacheSecuritySettingsAccessPoliciesList =
+  ReadonlyArray<NfsAccessPolicy>;
 export const CacheSecuritySettingsAccessPoliciesList = /*@__PURE__*/ S.Array(
   NfsAccessPolicy,
 ) as any as S.Schema<CacheSecuritySettingsAccessPoliciesList>;
@@ -2340,7 +2543,7 @@ export const CacheSecuritySettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheSecuritySettings>;
 
 /** True if the HPC Cache is joined to the Active Directory domain. */
-export type DomainJoinedType = "Yes" | "No" | "Error" | (string & {});
+export type DomainJoinedType = "Yes" | "No" | "Error";
 export const DomainJoinedType = /*@__PURE__*/ S.String;
 
 /** Active Directory admin credentials used to join the HPC Cache to a domain. */
@@ -2396,13 +2599,12 @@ export type CacheUsernameDownloadSettingsUsernameSource =
   | "AD"
   | "LDAP"
   | "File"
-  | "None"
-  | (string & {});
+  | "None";
 export const CacheUsernameDownloadSettingsUsernameSource =
   /*@__PURE__*/ S.String;
 
 /** Indicates whether or not the HPC Cache has performed the username download successfully. */
-export type UsernameDownloadedType = "Yes" | "No" | "Error" | (string & {});
+export type UsernameDownloadedType = "Yes" | "No" | "Error";
 export const UsernameDownloadedType = /*@__PURE__*/ S.String;
 
 /** When present, these are the credentials for the secure LDAP connection. */
@@ -2485,18 +2687,310 @@ export const CacheDirectorySettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheDirectorySettings>;
 
 /** Availability zones for resources. This field should only contain a single element in the array. */
-export type CachePropertiesZonesList = string[];
+export type CachePropertiesInputZonesList = ReadonlyArray<string>;
+export const CachePropertiesInputZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CachePropertiesInputZonesList>;
+
+/** A priming job instance. */
+export interface PrimingJobInput {
+  /** The priming job name. */
+  primingJobName: string;
+  /** The URL for the priming manifest file to download. This file must be readable from the HPC Cache. When the file is in Azure blob storage the URL should include a Shared Access Signature (SAS) granting read permissions on the blob. */
+  primingManifestUrl: string;
+}
+export const PrimingJobInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    primingJobName: S.String,
+    primingManifestUrl: S.String,
+  }),
+).annotate({
+  identifier: "PrimingJobInput",
+}) as any as S.Schema<PrimingJobInput>;
+
+/** Specifies the priming jobs defined in the cache. */
+export type CachePropertiesInputPrimingJobsList =
+  ReadonlyArray<PrimingJobInput>;
+export const CachePropertiesInputPrimingJobsList = /*@__PURE__*/ S.Array(
+  PrimingJobInput,
+) as any as S.Schema<CachePropertiesInputPrimingJobsList>;
+
+/** Properties of the cache. */
+export interface CachePropertiesInput {
+  /** The size of this Cache, in GB. */
+  cacheSizeGB?: number;
+  /** Subnet used for the cache. */
+  subnet?: string;
+  /** Upgrade settings of the cache. */
+  upgradeSettings?: CacheUpgradeSettings;
+  /** Specifies network settings of the cache. */
+  networkSettings?: CacheNetworkSettingsInput;
+  /** Specifies encryption settings of the cache. */
+  encryptionSettings?: CacheEncryptionSettings;
+  /** Specifies security settings of the cache. */
+  securitySettings?: CacheSecuritySettings;
+  /** Specifies Directory Services settings of the cache. */
+  directoryServicesSettings?: CacheDirectorySettings;
+  /** Availability zones for resources. This field should only contain a single element in the array. */
+  zones?: CachePropertiesInputZonesList;
+  /** Specifies the priming jobs defined in the cache. */
+  primingJobs?: CachePropertiesInputPrimingJobsList;
+}
+export const CachePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cacheSizeGB: S.optional(S.Number),
+    subnet: S.optional(S.String),
+    upgradeSettings: S.optional(CacheUpgradeSettings),
+    networkSettings: S.optional(CacheNetworkSettingsInput),
+    encryptionSettings: S.optional(CacheEncryptionSettings),
+    securitySettings: S.optional(CacheSecuritySettings),
+    directoryServicesSettings: S.optional(CacheDirectorySettings),
+    zones: S.optional(CachePropertiesInputZonesList),
+    primingJobs: S.optional(CachePropertiesInputPrimingJobsList),
+  }),
+).annotate({
+  identifier: "CachePropertiesInput",
+}) as any as S.Schema<CachePropertiesInput>;
+
+/** Resource tags. */
+export type CachesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CachesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CachesCreateOrUpdateRequestTagsMap>;
+
+/** The type of identity used for the cache */
+export type CacheIdentityType =
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned, UserAssigned"
+  | "None";
+export const CacheIdentityType = /*@__PURE__*/ S.String;
+
+/** A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary. */
+export type CacheIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentitiesValueInput | undefined;
+};
+export const CacheIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentitiesValueInput,
+  ) as any as S.Schema<CacheIdentityInputUserAssignedIdentitiesMap>;
+
+/** Cache identity properties. */
+export interface CacheIdentityInput {
+  /** The type of identity used for the cache */
+  type?: CacheIdentityType;
+  /** A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary. */
+  userAssignedIdentities?: CacheIdentityInputUserAssignedIdentitiesMap;
+}
+export const CacheIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(CacheIdentityType),
+    userAssignedIdentities: S.optional(
+      CacheIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "CacheIdentityInput",
+}) as any as S.Schema<CacheIdentityInput>;
+
+/** SKU for the cache. */
+export interface CacheSku {
+  /** SKU name for this cache. */
+  name?: string;
+}
+export const CacheSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({ identifier: "CacheSku" }) as any as S.Schema<CacheSku>;
+
+export interface CachesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
+  cacheName: string;
+  /** Properties of the cache. */
+  properties?: CachePropertiesInput;
+  /** Resource tags. */
+  tags?: CachesCreateOrUpdateRequestTagsMap;
+  /** Region name string. */
+  location?: string;
+  /** The identity of the cache, if configured. */
+  identity?: CacheIdentityInput;
+  /** SKU for the cache. */
+  sku?: CacheSku;
+}
+export const CachesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    cacheName: S.String.pipe(T.Label()),
+    properties: S.optional(CachePropertiesInput),
+    tags: S.optional(CachesCreateOrUpdateRequestTagsMap),
+    location: S.optional(S.String),
+    identity: S.optional(CacheIdentityInput),
+    sku: S.optional(CacheSku),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "CachesCreateOrUpdateRequest",
+}) as any as S.Schema<CachesCreateOrUpdateRequest>;
+
+/** List of cache health states. Down is when the cluster is not responding. Degraded is when its functioning but has some alerts. Transitioning when it is creating or deleting. Unknown will be returned in old api versions when a new value is added in future versions. WaitingForKey is when the create is waiting for the system assigned identity to be given access to the encryption key in the encryption settings. */
+export type HealthStateType =
+  | "Unknown"
+  | "Healthy"
+  | "Degraded"
+  | "Down"
+  | "Transitioning"
+  | "Stopping"
+  | "Stopped"
+  | "Upgrading"
+  | "Flushing"
+  | "WaitingForKey"
+  | "StartFailed"
+  | "UpgradeFailed";
+export const HealthStateType = /*@__PURE__*/ S.String;
+
+/** Outstanding conditions that will need to be resolved. */
+export interface Condition {
+  /** The time when the condition was raised. */
+  timestamp?: string;
+  /** The issue requiring attention. */
+  message?: string;
+}
+export const Condition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timestamp: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
+).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
+
+/** Outstanding conditions that need to be investigated and resolved. */
+export type CacheHealthConditionsList = ReadonlyArray<Condition>;
+export const CacheHealthConditionsList = /*@__PURE__*/ S.Array(
+  Condition,
+) as any as S.Schema<CacheHealthConditionsList>;
+
+/** An indication of cache health. Gives more information about health than just that related to provisioning. */
+export interface CacheHealth {
+  /** List of cache health states. Down is when the cluster is not responding. Degraded is when its functioning but has some alerts. Transitioning when it is creating or deleting. Unknown will be returned in old api versions when a new value is added in future versions. WaitingForKey is when the create is waiting for the system assigned identity to be given access to the encryption key in the encryption settings. */
+  state?: HealthStateType;
+  /** Describes explanation of state. */
+  statusDescription?: string;
+  /** Outstanding conditions that need to be investigated and resolved. */
+  conditions?: CacheHealthConditionsList;
+}
+export const CacheHealth = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: S.optional(HealthStateType),
+    statusDescription: S.optional(S.String),
+    conditions: S.optional(CacheHealthConditionsList),
+  }),
+).annotate({ identifier: "CacheHealth" }) as any as S.Schema<CacheHealth>;
+
+/** Array of IPv4 addresses that can be used by clients mounting this cache. */
+export type CachePropertiesMountAddressesList = ReadonlyArray<string>;
+export const CachePropertiesMountAddressesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CachePropertiesMountAddressesList>;
+
+/** ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property */
+export type ProvisioningStateType =
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Creating"
+  | "Deleting"
+  | "Updating";
+export const ProvisioningStateType = /*@__PURE__*/ S.String;
+
+/** True if there is a firmware update ready to install on this cache. The firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation. */
+export type FirmwareStatusType = "available" | "unavailable";
+export const FirmwareStatusType = /*@__PURE__*/ S.String;
+
+/** Properties describing the software upgrade state of the cache. */
+export interface CacheUpgradeStatus {
+  /** Version string of the firmware currently installed on this cache. */
+  currentFirmwareVersion?: string;
+  /** True if there is a firmware update ready to install on this cache. The firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation. */
+  firmwareUpdateStatus?: FirmwareStatusType;
+  /** Time at which the pending firmware update will automatically be installed on the cache. */
+  firmwareUpdateDeadline?: string;
+  /** Time of the last successful firmware update. */
+  lastFirmwareUpdate?: string;
+  /** When firmwareUpdateAvailable is true, this field holds the version string for the update. */
+  pendingFirmwareVersion?: string;
+}
+export const CacheUpgradeStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currentFirmwareVersion: S.optional(S.String),
+    firmwareUpdateStatus: S.optional(FirmwareStatusType),
+    firmwareUpdateDeadline: S.optional(S.String),
+    lastFirmwareUpdate: S.optional(S.String),
+    pendingFirmwareVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CacheUpgradeStatus",
+}) as any as S.Schema<CacheUpgradeStatus>;
+
+/** Array of additional IP addresses used by this cache. */
+export type CacheNetworkSettingsUtilityAddressesList = ReadonlyArray<string>;
+export const CacheNetworkSettingsUtilityAddressesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CacheNetworkSettingsUtilityAddressesList>;
+
+/** DNS servers for the cache to use. It will be set from the network configuration if no value is provided. */
+export type CacheNetworkSettingsDnsServersList = ReadonlyArray<string>;
+export const CacheNetworkSettingsDnsServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CacheNetworkSettingsDnsServersList>;
+
+/** Cache network settings. */
+export interface CacheNetworkSettings {
+  /** The IPv4 maximum transmission unit configured for the subnet. */
+  mtu?: number;
+  /** Array of additional IP addresses used by this cache. */
+  utilityAddresses?: CacheNetworkSettingsUtilityAddressesList;
+  /** DNS servers for the cache to use. It will be set from the network configuration if no value is provided. */
+  dnsServers?: CacheNetworkSettingsDnsServersList;
+  /** DNS search domain */
+  dnsSearchDomain?: string;
+  /** NTP server IP Address or FQDN for the cache to use. The default is time.windows.com. */
+  ntpServer?: string;
+}
+export const CacheNetworkSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mtu: S.optional(S.Number),
+    utilityAddresses: S.optional(CacheNetworkSettingsUtilityAddressesList),
+    dnsServers: S.optional(CacheNetworkSettingsDnsServersList),
+    dnsSearchDomain: S.optional(S.String),
+    ntpServer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CacheNetworkSettings",
+}) as any as S.Schema<CacheNetworkSettings>;
+
+/** Availability zones for resources. This field should only contain a single element in the array. */
+export type CachePropertiesZonesList = ReadonlyArray<string>;
 export const CachePropertiesZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CachePropertiesZonesList>;
 
 /** The state of the priming operation. */
-export type PrimingJobState =
-  | "Queued"
-  | "Running"
-  | "Paused"
-  | "Complete"
-  | (string & {});
+export type PrimingJobState = "Queued" | "Running" | "Paused" | "Complete";
 export const PrimingJobState = /*@__PURE__*/ S.String;
 
 /** A priming job instance. */
@@ -2529,7 +3023,7 @@ export const PrimingJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrimingJob" }) as any as S.Schema<PrimingJob>;
 
 /** Specifies the priming jobs defined in the cache. */
-export type CachePropertiesPrimingJobsList = PrimingJob[];
+export type CachePropertiesPrimingJobsList = ReadonlyArray<PrimingJob>;
 export const CachePropertiesPrimingJobsList = /*@__PURE__*/ S.Array(
   PrimingJob,
 ) as any as S.Schema<CachePropertiesPrimingJobsList>;
@@ -2551,7 +3045,8 @@ export const StorageTargetSpaceAllocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageTargetSpaceAllocation>;
 
 /** Specifies the space allocation percentage for each storage target in the cache. */
-export type CachePropertiesSpaceAllocationList = StorageTargetSpaceAllocation[];
+export type CachePropertiesSpaceAllocationList =
+  ReadonlyArray<StorageTargetSpaceAllocation>;
 export const CachePropertiesSpaceAllocationList = /*@__PURE__*/ S.Array(
   StorageTargetSpaceAllocation,
 ) as any as S.Schema<CachePropertiesSpaceAllocationList>;
@@ -2617,15 +3112,6 @@ export const CachesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<CachesCreateOrUpdateResponseTagsMap>;
 
-/** The type of identity used for the cache */
-export type CacheIdentityType =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
-export const CacheIdentityType = /*@__PURE__*/ S.String;
-
 /** A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary. */
 export type CacheIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentitiesValue | undefined;
@@ -2654,17 +3140,6 @@ export const CacheIdentity = /*@__PURE__*/ S.suspend(() =>
     userAssignedIdentities: S.optional(CacheIdentityUserAssignedIdentitiesMap),
   }),
 ).annotate({ identifier: "CacheIdentity" }) as any as S.Schema<CacheIdentity>;
-
-/** SKU for the cache. */
-export interface CacheSku {
-  /** SKU name for this cache. */
-  name?: string;
-}
-export const CacheSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "CacheSku" }) as any as S.Schema<CacheSku>;
 
 export interface CachesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2928,7 +3403,7 @@ export const Cache = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cache" }) as any as S.Schema<Cache>;
 
 /** List of caches. */
-export type CachesListResultValueList = Cache[];
+export type CachesListResultValueList = ReadonlyArray<Cache>;
 export const CachesListResultValueList = /*@__PURE__*/ S.Array(
   Cache,
 ) as any as S.Schema<CachesListResultValueList>;
@@ -2978,14 +3453,15 @@ export interface CachesPausePrimingJobRequest {
   resourceGroupName: string;
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
-  body?: unknown;
+  /** The unique identifier of the priming job. */
+  primingJobId: string;
 }
 export const CachesPausePrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     cacheName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    primingJobId: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -3012,14 +3488,15 @@ export interface CachesResumePrimingJobRequest {
   resourceGroupName: string;
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
-  body?: unknown;
+  /** The unique identifier of the priming job. */
+  primingJobId: string;
 }
 export const CachesResumePrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     cacheName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    primingJobId: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -3039,6 +3516,12 @@ export const CachesResumePrimingJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CachesResumePrimingJobResponse",
 }) as any as S.Schema<CachesResumePrimingJobResponse>;
 
+export type CachesSpaceAllocationRequestBodyList =
+  ReadonlyArray<StorageTargetSpaceAllocation>;
+export const CachesSpaceAllocationRequestBodyList = /*@__PURE__*/ S.Array(
+  StorageTargetSpaceAllocation,
+) as any as S.Schema<CachesSpaceAllocationRequestBodyList>;
+
 export interface CachesSpaceAllocationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3046,14 +3529,14 @@ export interface CachesSpaceAllocationRequest {
   resourceGroupName: string;
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
-  body?: unknown;
+  body?: CachesSpaceAllocationRequestBodyList;
 }
 export const CachesSpaceAllocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     cacheName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    body: S.optional(CachesSpaceAllocationRequestBodyList.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3112,14 +3595,18 @@ export interface CachesStartPrimingJobRequest {
   resourceGroupName: string;
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
-  body?: unknown;
+  /** The priming job name. */
+  primingJobName: string;
+  /** The URL for the priming manifest file to download. This file must be readable from the HPC Cache. When the file is in Azure blob storage the URL should include a Shared Access Signature (SAS) granting read permissions on the blob. */
+  primingManifestUrl: string;
 }
 export const CachesStartPrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     cacheName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    primingJobName: S.String,
+    primingManifestUrl: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -3178,14 +3665,15 @@ export interface CachesStopPrimingJobRequest {
   resourceGroupName: string;
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
-  body?: unknown;
+  /** The unique identifier of the priming job. */
+  primingJobId: string;
 }
 export const CachesStopPrimingJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     cacheName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    primingJobId: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -3205,6 +3693,13 @@ export const CachesStopPrimingJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CachesStopPrimingJobResponse",
 }) as any as S.Schema<CachesStopPrimingJobResponse>;
 
+/** Resource tags. */
+export type CachesUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const CachesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CachesUpdateRequestTagsMap>;
+
 export interface CachesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3212,14 +3707,27 @@ export interface CachesUpdateRequest {
   resourceGroupName: string;
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
-  body?: unknown;
+  /** Properties of the cache. */
+  properties?: CachePropertiesInput;
+  /** Resource tags. */
+  tags?: CachesUpdateRequestTagsMap;
+  /** Region name string. */
+  location?: string;
+  /** The identity of the cache, if configured. */
+  identity?: CacheIdentityInput;
+  /** SKU for the cache. */
+  sku?: CacheSku;
 }
 export const CachesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     cacheName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(CachePropertiesInput),
+    tags: S.optional(CachesUpdateRequestTagsMap),
+    location: S.optional(S.String),
+    identity: S.optional(CacheIdentityInput),
+    sku: S.optional(CacheSku),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3310,12 +3818,22 @@ export const CachesUpgradeFirmwareResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CheckAmlFSSubnetsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body?: unknown;
+  /** Subnet used for managing the AML file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the VNET's address space. */
+  filesystemSubnet?: string;
+  /** The size of the AML file system, in TiB. */
+  storageCapacityTiB?: number;
+  /** SKU for the resource. */
+  sku?: SkuName;
+  /** Region that the AML file system will be created in. */
+  location?: string;
 }
 export const CheckAmlFSSubnetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    filesystemSubnet: S.optional(S.String),
+    storageCapacityTiB: S.optional(S.Number),
+    sku: S.optional(SkuName),
+    location: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3335,6 +3853,28 @@ export const CheckAmlFSSubnetsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckAmlFSSubnetsResponse",
 }) as any as S.Schema<CheckAmlFSSubnetsResponse>;
 
+/** Resource tags. */
+export type ExpansionJobsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ExpansionJobsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ExpansionJobsCreateOrUpdateRequestTagsMap>;
+
+/** Properties of the expansion job. */
+export interface ExpansionJobPropertiesInput {
+  /** The new storage capacity in TiB for the AML file system after expansion. This must be a multiple of the Sku step size, and greater than the current storage capacity of the AML file system. */
+  newStorageCapacityTiB?: number;
+}
+export const ExpansionJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    newStorageCapacityTiB: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ExpansionJobPropertiesInput",
+}) as any as S.Schema<ExpansionJobPropertiesInput>;
+
 export interface ExpansionJobsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3344,7 +3884,12 @@ export interface ExpansionJobsCreateOrUpdateRequest {
   amlFilesystemName: string;
   /** Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   expansionJobName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ExpansionJobsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the expansion job. */
+  properties?: ExpansionJobPropertiesInput;
 }
 export const ExpansionJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3352,7 +3897,9 @@ export const ExpansionJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     amlFilesystemName: S.String.pipe(T.Label()),
     expansionJobName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ExpansionJobsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ExpansionJobPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3382,8 +3929,7 @@ export type ExpansionJobPropertiesProvisioningState =
   | "Creating"
   | "Deleting"
   | "Updating"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ExpansionJobPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The operational state of the expansion job. InProgress indicates the expansion is still running. Completed indicates expansion finished successfully. Failed means the expansion was unable to complete due to a fatal error. Deleting indicates the expansion is being rolled back. */
@@ -3392,8 +3938,7 @@ export type ExpansionJobStatusType =
   | "Completed"
   | "Failed"
   | "Deleting"
-  | "RollingBack"
-  | (string & {});
+  | "RollingBack";
 export const ExpansionJobStatusType = /*@__PURE__*/ S.String;
 
 /** The status of the expansion job. */
@@ -3638,7 +4183,7 @@ export const ExpansionJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExpansionJob" }) as any as S.Schema<ExpansionJob>;
 
 /** List of expansion jobs. */
-export type ExpansionJobsListResultValueList = ExpansionJob[];
+export type ExpansionJobsListResultValueList = ReadonlyArray<ExpansionJob>;
 export const ExpansionJobsListResultValueList = /*@__PURE__*/ S.Array(
   ExpansionJob,
 ) as any as S.Schema<ExpansionJobsListResultValueList>;
@@ -3659,6 +4204,15 @@ export const ExpansionJobsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExpansionJobsListResult",
 }) as any as S.Schema<ExpansionJobsListResult>;
 
+/** Resource tags. */
+export type ExpansionJobsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ExpansionJobsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ExpansionJobsUpdateRequestTagsMap>;
+
 export interface ExpansionJobsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3668,7 +4222,8 @@ export interface ExpansionJobsUpdateRequest {
   amlFilesystemName: string;
   /** Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   expansionJobName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ExpansionJobsUpdateRequestTagsMap;
 }
 export const ExpansionJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3676,7 +4231,7 @@ export const ExpansionJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     amlFilesystemName: S.String.pipe(T.Label()),
     expansionJobName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ExpansionJobsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3731,12 +4286,16 @@ export const ExpansionJobsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetRequiredAmlFSSubnetsSizeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body?: unknown;
+  /** The size of the AML file system, in TiB. */
+  storageCapacityTiB?: number;
+  /** SKU for the resource. */
+  sku?: SkuName;
 }
 export const GetRequiredAmlFSSubnetsSizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    storageCapacityTiB: S.optional(S.Number),
+    sku: S.optional(SkuName),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3762,6 +4321,58 @@ export const RequiredAmlFilesystemSubnetsSize = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequiredAmlFilesystemSubnetsSize",
 }) as any as S.Schema<RequiredAmlFilesystemSubnetsSize>;
 
+/** Resource tags. */
+export type ImportJobsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ImportJobsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ImportJobsCreateOrUpdateRequestTagsMap>;
+
+/** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'. */
+export type ImportJobPropertiesInputAdminStatus = "Active" | "Cancel";
+export const ImportJobPropertiesInputAdminStatus = /*@__PURE__*/ S.String;
+
+/** An array of blob paths/prefixes that get imported into the cluster namespace. It has '/' as the default value. */
+export type ImportJobPropertiesInputImportPrefixesList = ReadonlyArray<string>;
+export const ImportJobPropertiesInputImportPrefixesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ImportJobPropertiesInputImportPrefixesList>;
+
+/** How the import job will handle conflicts. For example, if the import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or was not previously imported. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/ for a thorough explanation of these resolution modes. */
+export type ImportJobPropertiesInputConflictResolutionMode =
+  | "Fail"
+  | "Skip"
+  | "OverwriteIfDirty"
+  | "OverwriteAlways";
+export const ImportJobPropertiesInputConflictResolutionMode =
+  /*@__PURE__*/ S.String;
+
+/** Properties of the import job. */
+export interface ImportJobPropertiesInput {
+  /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'. */
+  adminStatus?: ImportJobPropertiesInputAdminStatus;
+  /** An array of blob paths/prefixes that get imported into the cluster namespace. It has '/' as the default value. */
+  importPrefixes?: ImportJobPropertiesInputImportPrefixesList;
+  /** How the import job will handle conflicts. For example, if the import job is trying to bring in a directory, but a file is at that path, how it handles it. Fail indicates that the import job should stop immediately and not do anything with the conflict. Skip indicates that it should pass over the conflict. OverwriteIfDirty causes the import job to delete and re-import the file or directory if it is a conflicting type, is dirty, or was not previously imported. OverwriteAlways extends OverwriteIfDirty to include releasing files that had been restored but were not dirty. Please reference https://learn.microsoft.com/en-us/azure/azure-managed-lustre/ for a thorough explanation of these resolution modes. */
+  conflictResolutionMode?: ImportJobPropertiesInputConflictResolutionMode;
+  /** Total non-conflict oriented errors the import job will tolerate before exiting with failure. -1 means infinite. 0 means exit immediately and is the default. */
+  maximumErrors?: number;
+}
+export const ImportJobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adminStatus: S.optional(ImportJobPropertiesInputAdminStatus),
+    importPrefixes: S.optional(ImportJobPropertiesInputImportPrefixesList),
+    conflictResolutionMode: S.optional(
+      ImportJobPropertiesInputConflictResolutionMode,
+    ),
+    maximumErrors: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ImportJobPropertiesInput",
+}) as any as S.Schema<ImportJobPropertiesInput>;
+
 export interface ImportJobsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3771,7 +4382,12 @@ export interface ImportJobsCreateOrUpdateRequest {
   amlFilesystemName: string;
   /** Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   importJobName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ImportJobsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the import job. */
+  properties?: ImportJobPropertiesInput;
 }
 export const ImportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3779,7 +4395,9 @@ export const ImportJobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     amlFilesystemName: S.String.pipe(T.Label()),
     importJobName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ImportJobsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ImportJobPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3808,19 +4426,15 @@ export type ImportJobProvisioningStateType =
   | "Creating"
   | "Deleting"
   | "Updating"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ImportJobProvisioningStateType = /*@__PURE__*/ S.String;
 
 /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'. */
-export type ImportJobPropertiesAdminStatus =
-  | "Active"
-  | "Cancel"
-  | (string & {});
+export type ImportJobPropertiesAdminStatus = "Active" | "Cancel";
 export const ImportJobPropertiesAdminStatus = /*@__PURE__*/ S.String;
 
 /** An array of blob paths/prefixes that get imported into the cluster namespace. It has '/' as the default value. */
-export type ImportJobPropertiesImportPrefixesList = string[];
+export type ImportJobPropertiesImportPrefixesList = ReadonlyArray<string>;
 export const ImportJobPropertiesImportPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImportJobPropertiesImportPrefixesList>;
@@ -3830,8 +4444,7 @@ export type ImportJobPropertiesConflictResolutionMode =
   | "Fail"
   | "Skip"
   | "OverwriteIfDirty"
-  | "OverwriteAlways"
-  | (string & {});
+  | "OverwriteAlways";
 export const ImportJobPropertiesConflictResolutionMode = /*@__PURE__*/ S.String;
 
 /** The operational state of the import job. InProgress indicates the import is still running. Canceled indicates it has been canceled by the user. Completed indicates import finished, successfully importing all discovered blobs into the Lustre namespace. CompletedPartial indicates the import finished but some blobs either were found to be conflicting and could not be imported or other errors were encountered. Failed means the import was unable to complete due to a fatal error. */
@@ -3841,8 +4454,7 @@ export type ImportStatusType =
   | "Canceled"
   | "Completed"
   | "CompletedPartial"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ImportStatusType = /*@__PURE__*/ S.String;
 
 /** The status of the import */
@@ -4128,7 +4740,7 @@ export const ImportJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportJob" }) as any as S.Schema<ImportJob>;
 
 /** List of import jobs. */
-export type ImportJobsListResultValueList = ImportJob[];
+export type ImportJobsListResultValueList = ReadonlyArray<ImportJob>;
 export const ImportJobsListResultValueList = /*@__PURE__*/ S.Array(
   ImportJob,
 ) as any as S.Schema<ImportJobsListResultValueList>;
@@ -4149,6 +4761,31 @@ export const ImportJobsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportJobsListResult",
 }) as any as S.Schema<ImportJobsListResult>;
 
+/** Resource tags. */
+export type ImportJobsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ImportJobsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ImportJobsUpdateRequestTagsMap>;
+
+/** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. By default it is set to 'Active'. */
+export type ImportJobAdminStatus = "Active" | "Cancel";
+export const ImportJobAdminStatus = /*@__PURE__*/ S.String;
+
+export interface ImportJobUpdateProperties {
+  /** The administrative status of the import job. Possible values: 'Active', 'Cancel'. Passing in a value of 'Cancel' will cancel the current active import job. */
+  adminStatus?: ImportJobAdminStatus;
+}
+export const ImportJobUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adminStatus: S.optional(ImportJobAdminStatus),
+  }),
+).annotate({
+  identifier: "ImportJobUpdateProperties",
+}) as any as S.Schema<ImportJobUpdateProperties>;
+
 export interface ImportJobsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4158,7 +4795,9 @@ export interface ImportJobsUpdateRequest {
   amlFilesystemName: string;
   /** Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   importJobName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ImportJobsUpdateRequestTagsMap;
+  properties?: ImportJobUpdateProperties;
 }
 export const ImportJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4166,7 +4805,8 @@ export const ImportJobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     amlFilesystemName: S.String.pipe(T.Label()),
     importJobName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ImportJobsUpdateRequestTagsMap),
+    properties: S.optional(ImportJobUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4261,13 +4901,12 @@ export type MetricAggregationType =
   | "Minimum"
   | "Maximum"
   | "Total"
-  | "Count"
-  | (string & {});
+  | "Count";
 export const MetricAggregationType = /*@__PURE__*/ S.String;
 
 /** Support metric aggregation type. */
 export type MetricSpecificationSupportedAggregationTypesList =
-  MetricAggregationType[];
+  ReadonlyArray<MetricAggregationType>;
 export const MetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     MetricAggregationType,
@@ -4296,7 +4935,7 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDimension>;
 
 /** Dimensions of the metric */
-export type MetricSpecificationDimensionsList = MetricDimension[];
+export type MetricSpecificationDimensionsList = ReadonlyArray<MetricDimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -4339,7 +4978,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about operations related to metrics. */
 export type ApiOperationPropertiesServiceSpecificationMetricSpecificationsList =
-  MetricSpecification[];
+  ReadonlyArray<MetricSpecification>;
 export const ApiOperationPropertiesServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -4363,7 +5002,7 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about operations related to logs. */
 export type ApiOperationPropertiesServiceSpecificationLogSpecificationsList =
-  LogSpecification[];
+  ReadonlyArray<LogSpecification>;
 export const ApiOperationPropertiesServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     LogSpecification,
@@ -4429,7 +5068,7 @@ export const ApiOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiOperation" }) as any as S.Schema<ApiOperation>;
 
 /** List of Resource Provider operations supported by the Microsoft.StorageCache resource provider. */
-export type ApiOperationListResultValueList = ApiOperation[];
+export type ApiOperationListResultValueList = ReadonlyArray<ApiOperation>;
 export const ApiOperationListResultValueList = /*@__PURE__*/ S.Array(
   ApiOperation,
 ) as any as S.Schema<ApiOperationListResultValueList>;
@@ -4486,19 +5125,20 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuCapabilities>;
 
 /** A list of capabilities of this SKU, such as throughput or ops/sec. */
-export type ResourceSkuCapabilitiesList = ResourceSkuCapabilities[];
+export type ResourceSkuCapabilitiesList =
+  ReadonlyArray<ResourceSkuCapabilities>;
 export const ResourceSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuCapabilitiesList>;
 
 /** The set of locations where the SKU is available. This is the supported and registered Azure Geo Regions (e.g., West US, East US, Southeast Asia, etc.). */
-export type ResourceSkuLocationsList = string[];
+export type ResourceSkuLocationsList = ReadonlyArray<string>;
 export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationsList>;
 
 /** Zones if any. */
-export type ResourceSkuLocationInfoZonesList = string[];
+export type ResourceSkuLocationInfoZonesList = ReadonlyArray<string>;
 export const ResourceSkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationInfoZonesList>;
@@ -4520,22 +5160,20 @@ export const ResourceSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuLocationInfo>;
 
 /** The set of locations where the SKU is available. */
-export type ResourceSkuLocationInfoList = ResourceSkuLocationInfo[];
+export type ResourceSkuLocationInfoList =
+  ReadonlyArray<ResourceSkuLocationInfo>;
 export const ResourceSkuLocationInfoList = /*@__PURE__*/ S.Array(
   ResourceSkuLocationInfo,
 ) as any as S.Schema<ResourceSkuLocationInfoList>;
 
 /** The value of restrictions. If the restriction type is set to location, then this would be the different locations where the SKU is restricted. */
-export type RestrictionValuesList = string[];
+export type RestrictionValuesList = ReadonlyArray<string>;
 export const RestrictionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RestrictionValuesList>;
 
 /** The reason for the restriction. As of now this can be "QuotaId" or "NotAvailableForSubscription". "QuotaId" is set when the SKU has requiredQuotas parameter as the subscription does not belong to that quota. "NotAvailableForSubscription" is related to capacity at the datacenter. */
-export type ReasonCode =
-  | "QuotaId"
-  | "NotAvailableForSubscription"
-  | (string & {});
+export type ReasonCode = "QuotaId" | "NotAvailableForSubscription";
 export const ReasonCode = /*@__PURE__*/ S.String;
 
 /** The restrictions preventing this SKU from being used. */
@@ -4556,7 +5194,7 @@ export const Restriction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Restriction" }) as any as S.Schema<Restriction>;
 
 /** The restrictions preventing this SKU from being used. This is empty if there are no restrictions. */
-export type ResourceSkuRestrictionsList = Restriction[];
+export type ResourceSkuRestrictionsList = ReadonlyArray<Restriction>;
 export const ResourceSkuRestrictionsList = /*@__PURE__*/ S.Array(
   Restriction,
 ) as any as S.Schema<ResourceSkuRestrictionsList>;
@@ -4588,7 +5226,7 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** The list of SKUs available for the subscription. */
-export type ResourceSkusResultValueList = ResourceSku[];
+export type ResourceSkusResultValueList = ReadonlyArray<ResourceSku>;
 export const ResourceSkusResultValueList = /*@__PURE__*/ S.Array(
   ResourceSku,
 ) as any as S.Schema<ResourceSkusResultValueList>;
@@ -4714,36 +5352,6 @@ export const StorageTargetResumeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageTargetResumeResponse",
 }) as any as S.Schema<StorageTargetResumeResponse>;
 
-export interface StorageTargetsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
-  cacheName: string;
-  /** Name of Storage Target. */
-  storageTargetName: string;
-  body: unknown;
-}
-export const StorageTargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    cacheName: S.String.pipe(T.Label()),
-    storageTargetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "StorageTargetsCreateOrUpdateRequest",
-}) as any as S.Schema<StorageTargetsCreateOrUpdateRequest>;
-
 /** A namespace junction. */
 export interface NamespaceJunction {
   /** Namespace path on a cache for a Storage Target. */
@@ -4767,27 +5375,18 @@ export const NamespaceJunction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceJunction>;
 
 /** List of cache namespace junctions to target for namespace associations. */
-export type StorageTargetPropertiesJunctionsList = NamespaceJunction[];
-export const StorageTargetPropertiesJunctionsList = /*@__PURE__*/ S.Array(
+export type StorageTargetPropertiesInputJunctionsList =
+  ReadonlyArray<NamespaceJunction>;
+export const StorageTargetPropertiesInputJunctionsList = /*@__PURE__*/ S.Array(
   NamespaceJunction,
-) as any as S.Schema<StorageTargetPropertiesJunctionsList>;
+) as any as S.Schema<StorageTargetPropertiesInputJunctionsList>;
 
 /** Type of the Storage Target. */
-export type StorageTargetType =
-  | "nfs3"
-  | "clfs"
-  | "unknown"
-  | "blobNfs"
-  | (string & {});
+export type StorageTargetType = "nfs3" | "clfs" | "unknown" | "blobNfs";
 export const StorageTargetType = /*@__PURE__*/ S.String;
 
 /** Storage target operational state. */
-export type OperationalStateType =
-  | "Ready"
-  | "Busy"
-  | "Suspended"
-  | "Flushing"
-  | (string & {});
+export type OperationalStateType = "Ready" | "Busy" | "Suspended" | "Flushing";
 export const OperationalStateType = /*@__PURE__*/ S.String;
 
 /** Properties pertaining to the Nfs3Target */
@@ -4858,6 +5457,75 @@ export const BlobNfsTarget = /*@__PURE__*/ S.suspend(() =>
     writeBackTimer: S.optional(S.Number),
   }),
 ).annotate({ identifier: "BlobNfsTarget" }) as any as S.Schema<BlobNfsTarget>;
+
+/** Properties of the Storage Target. */
+export interface StorageTargetPropertiesInput {
+  /** List of cache namespace junctions to target for namespace associations. */
+  junctions?: StorageTargetPropertiesInputJunctionsList;
+  /** Type of the Storage Target. */
+  targetType: StorageTargetType;
+  /** Storage target operational state. */
+  state?: OperationalStateType;
+  /** Properties when targetType is nfs3. */
+  nfs3?: Nfs3Target;
+  /** Properties when targetType is clfs. */
+  clfs?: ClfsTarget;
+  /** Properties when targetType is unknown. */
+  unknown?: UnknownTarget;
+  /** Properties when targetType is blobNfs. */
+  blobNfs?: BlobNfsTarget;
+}
+export const StorageTargetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    junctions: S.optional(StorageTargetPropertiesInputJunctionsList),
+    targetType: StorageTargetType,
+    state: S.optional(OperationalStateType),
+    nfs3: S.optional(Nfs3Target),
+    clfs: S.optional(ClfsTarget),
+    unknown: S.optional(UnknownTarget),
+    blobNfs: S.optional(BlobNfsTarget),
+  }),
+).annotate({
+  identifier: "StorageTargetPropertiesInput",
+}) as any as S.Schema<StorageTargetPropertiesInput>;
+
+export interface StorageTargetsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
+  cacheName: string;
+  /** Name of Storage Target. */
+  storageTargetName: string;
+  /** StorageTarget properties */
+  properties?: StorageTargetPropertiesInput;
+}
+export const StorageTargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    cacheName: S.String.pipe(T.Label()),
+    storageTargetName: S.String.pipe(T.Label()),
+    properties: S.optional(StorageTargetPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/caches/{cacheName}/storageTargets/{storageTargetName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "StorageTargetsCreateOrUpdateRequest",
+}) as any as S.Schema<StorageTargetsCreateOrUpdateRequest>;
+
+/** List of cache namespace junctions to target for namespace associations. */
+export type StorageTargetPropertiesJunctionsList =
+  ReadonlyArray<NamespaceJunction>;
+export const StorageTargetPropertiesJunctionsList = /*@__PURE__*/ S.Array(
+  NamespaceJunction,
+) as any as S.Schema<StorageTargetPropertiesJunctionsList>;
 
 /** Properties of the Storage Target. */
 export interface StorageTargetProperties {
@@ -5104,7 +5772,7 @@ export const StorageTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageTarget" }) as any as S.Schema<StorageTarget>;
 
 /** The list of Storage Targets defined for the cache. */
-export type StorageTargetsResultValueList = StorageTarget[];
+export type StorageTargetsResultValueList = ReadonlyArray<StorageTarget>;
 export const StorageTargetsResultValueList = /*@__PURE__*/ S.Array(
   StorageTarget,
 ) as any as S.Schema<StorageTargetsResultValueList>;
@@ -5246,7 +5914,7 @@ export const UsageModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageModel" }) as any as S.Schema<UsageModel>;
 
 /** The list of usage models available for the subscription. */
-export type UsageModelsResultValueList = UsageModel[];
+export type UsageModelsResultValueList = ReadonlyArray<UsageModel>;
 export const UsageModelsResultValueList = /*@__PURE__*/ S.Array(
   UsageModel,
 ) as any as S.Schema<UsageModelsResultValueList>;

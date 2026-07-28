@@ -35,7 +35,7 @@ export const WarehouseModelPathsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WarehouseModelPathsListRequest",
 }) as any as S.Schema<WarehouseModelPathsListRequest>;
 
-export type DataWarehouseModelPathPathList = string[];
+export type DataWarehouseModelPathPathList = ReadonlyArray<string>;
 export const DataWarehouseModelPathPathList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataWarehouseModelPathPathList>;
@@ -55,11 +55,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -117,7 +116,7 @@ export const DataWarehouseModelPath = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataWarehouseModelPath>;
 
 export type PaginatedDataWarehouseModelPathListResultsList =
-  DataWarehouseModelPath[];
+  ReadonlyArray<DataWarehouseModelPath>;
 export const PaginatedDataWarehouseModelPathListResultsList =
   /*@__PURE__*/ S.Array(
     DataWarehouseModelPath,

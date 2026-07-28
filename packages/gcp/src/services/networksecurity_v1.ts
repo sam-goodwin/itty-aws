@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -109,7 +109,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -294,21 +294,17 @@ export const CloneItemsProjectsLocationsAddressGroupsRequest =
     identifier: "CloneItemsProjectsLocationsAddressGroupsRequest",
   }) as any as S.Schema<CloneItemsProjectsLocationsAddressGroupsRequest>;
 
-export type AddressGroupTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "IPV4"
-  | "IPV6"
-  | (string & {});
+export type AddressGroupTypeEnum = "TYPE_UNSPECIFIED" | "IPV4" | "IPV6";
 export const AddressGroupTypeEnum = /*@__PURE__*/ S.String;
 
 export type AddressGroupPurposeItemEnum =
   | "PURPOSE_UNSPECIFIED"
   | "DEFAULT"
-  | "CLOUD_ARMOR"
-  | (string & {});
+  | "CLOUD_ARMOR";
 export const AddressGroupPurposeItemEnum = /*@__PURE__*/ S.String;
 
-export type AddressGroupPurposeItemEnumList = AddressGroupPurposeItemEnum[];
+export type AddressGroupPurposeItemEnumList =
+  ReadonlyArray<AddressGroupPurposeItemEnum>;
 export const AddressGroupPurposeItemEnumList = /*@__PURE__*/ S.Array(
   AddressGroupPurposeItemEnum,
 ) as any as S.Schema<AddressGroupPurposeItemEnumList>;
@@ -403,8 +399,7 @@ export type FirewallEndpointStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const FirewallEndpointStateEnum = /*@__PURE__*/ S.String;
 
 /** This is a subset of the FirewallEndpointAssociation message, containing fields to be used by the consumer. */
@@ -425,7 +420,7 @@ export const FirewallEndpointAssociationReference = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FirewallEndpointAssociationReference>;
 
 export type FirewallEndpointAssociationReferenceList =
-  FirewallEndpointAssociationReference[];
+  ReadonlyArray<FirewallEndpointAssociationReference>;
 export const FirewallEndpointAssociationReferenceList = /*@__PURE__*/ S.Array(
   FirewallEndpointAssociationReference,
 ) as any as S.Schema<FirewallEndpointAssociationReferenceList>;
@@ -593,8 +588,7 @@ export type SecurityProfileTypeEnum =
   | "THREAT_PREVENTION"
   | "CUSTOM_MIRRORING"
   | "CUSTOM_INTERCEPT"
-  | "URL_FILTERING"
-  | (string & {});
+  | "URL_FILTERING";
 export const SecurityProfileTypeEnum = /*@__PURE__*/ S.String;
 
 export type ThreatOverrideTypeEnum =
@@ -603,8 +597,7 @@ export type ThreatOverrideTypeEnum =
   | "VULNERABILITY"
   | "ANTIVIRUS"
   | "SPYWARE"
-  | "DNS"
-  | (string & {});
+  | "DNS";
 export const ThreatOverrideTypeEnum = /*@__PURE__*/ S.String;
 
 export type ThreatOverrideActionEnum =
@@ -612,8 +605,7 @@ export type ThreatOverrideActionEnum =
   | "DEFAULT_ACTION"
   | "ALLOW"
   | "ALERT"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const ThreatOverrideActionEnum = /*@__PURE__*/ S.String;
 
 /** Defines what action to take for a specific threat_id match. */
@@ -633,7 +625,7 @@ export const ThreatOverride = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ThreatOverride" }) as any as S.Schema<ThreatOverride>;
 
-export type ThreatOverrideList = ThreatOverride[];
+export type ThreatOverrideList = ReadonlyArray<ThreatOverride>;
 export const ThreatOverrideList = /*@__PURE__*/ S.Array(
   ThreatOverride,
 ) as any as S.Schema<ThreatOverrideList>;
@@ -646,8 +638,7 @@ export type AntivirusOverrideProtocolEnum =
   | "IMAP"
   | "HTTP2"
   | "HTTP"
-  | "FTP"
-  | (string & {});
+  | "FTP";
 export const AntivirusOverrideProtocolEnum = /*@__PURE__*/ S.String;
 
 export type AntivirusOverrideActionEnum =
@@ -655,8 +646,7 @@ export type AntivirusOverrideActionEnum =
   | "DEFAULT_ACTION"
   | "ALLOW"
   | "ALERT"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const AntivirusOverrideActionEnum = /*@__PURE__*/ S.String;
 
 /** Defines what action to take for antivirus threats per protocol. */
@@ -675,7 +665,7 @@ export const AntivirusOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "AntivirusOverride",
 }) as any as S.Schema<AntivirusOverride>;
 
-export type AntivirusOverrideList = AntivirusOverride[];
+export type AntivirusOverrideList = ReadonlyArray<AntivirusOverride>;
 export const AntivirusOverrideList = /*@__PURE__*/ S.Array(
   AntivirusOverride,
 ) as any as S.Schema<AntivirusOverrideList>;
@@ -686,8 +676,7 @@ export type SeverityOverrideSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const SeverityOverrideSeverityEnum = /*@__PURE__*/ S.String;
 
 export type SeverityOverrideActionEnum =
@@ -695,8 +684,7 @@ export type SeverityOverrideActionEnum =
   | "DEFAULT_ACTION"
   | "ALLOW"
   | "ALERT"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const SeverityOverrideActionEnum = /*@__PURE__*/ S.String;
 
 /** Defines what action to take for a specific severity match. */
@@ -715,7 +703,7 @@ export const SeverityOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "SeverityOverride",
 }) as any as S.Schema<SeverityOverride>;
 
-export type SeverityOverrideList = SeverityOverride[];
+export type SeverityOverrideList = ReadonlyArray<SeverityOverride>;
 export const SeverityOverrideList = /*@__PURE__*/ S.Array(
   SeverityOverride,
 ) as any as S.Schema<SeverityOverrideList>;
@@ -742,8 +730,7 @@ export const ThreatPreventionProfile = /*@__PURE__*/ S.suspend(() =>
 export type UrlFilterFilteringActionEnum =
   | "URL_FILTERING_ACTION_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const UrlFilterFilteringActionEnum = /*@__PURE__*/ S.String;
 
 /** A URL filter defines an action to take for some URL match. */
@@ -763,7 +750,7 @@ export const UrlFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UrlFilter" }) as any as S.Schema<UrlFilter>;
 
-export type UrlFilterList = UrlFilter[];
+export type UrlFilterList = ReadonlyArray<UrlFilter>;
 export const UrlFilterList = /*@__PURE__*/ S.Array(
   UrlFilter,
 ) as any as S.Schema<UrlFilterList>;
@@ -906,7 +893,7 @@ export const HttpHeaderMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpHeaderMatch",
 }) as any as S.Schema<HttpHeaderMatch>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -931,7 +918,7 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
-export type DestinationList = Destination[];
+export type DestinationList = ReadonlyArray<Destination>;
 export const DestinationList = /*@__PURE__*/ S.Array(
   Destination,
 ) as any as S.Schema<DestinationList>;
@@ -950,7 +937,7 @@ export const Source = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
-export type SourceList = Source[];
+export type SourceList = ReadonlyArray<Source>;
 export const SourceList = /*@__PURE__*/ S.Array(
   Source,
 ) as any as S.Schema<SourceList>;
@@ -969,7 +956,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 
-export type RuleList = Rule[];
+export type RuleList = ReadonlyArray<Rule>;
 export const RuleList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<RuleList>;
@@ -977,8 +964,7 @@ export const RuleList = /*@__PURE__*/ S.Array(
 export type AuthorizationPolicyActionEnum =
   | "ACTION_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const AuthorizationPolicyActionEnum = /*@__PURE__*/ S.String;
 
 /** AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource. */
@@ -1040,8 +1026,7 @@ export const CreateProjectsLocationsAuthorizationPoliciesRequest =
 export type AuthzPolicyPolicyProfileEnum =
   | "POLICY_PROFILE_UNSPECIFIED"
   | "REQUEST_AUTHZ"
-  | "CONTENT_AUTHZ"
-  | (string & {});
+  | "CONTENT_AUTHZ";
 export const AuthzPolicyPolicyProfileEnum = /*@__PURE__*/ S.String;
 
 /** Optional. Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places. */
@@ -1138,7 +1123,7 @@ export const AuthzPolicyAuthzRuleRequestResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRuleRequestResource>;
 
 export type AuthzPolicyAuthzRuleRequestResourceList =
-  AuthzPolicyAuthzRuleRequestResource[];
+  ReadonlyArray<AuthzPolicyAuthzRuleRequestResource>;
 export const AuthzPolicyAuthzRuleRequestResourceList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleRequestResource,
 ) as any as S.Schema<AuthzPolicyAuthzRuleRequestResourceList>;
@@ -1159,7 +1144,8 @@ export const AuthzPolicyAuthzRuleIpBlock = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthzPolicyAuthzRuleIpBlock",
 }) as any as S.Schema<AuthzPolicyAuthzRuleIpBlock>;
 
-export type AuthzPolicyAuthzRuleIpBlockList = AuthzPolicyAuthzRuleIpBlock[];
+export type AuthzPolicyAuthzRuleIpBlockList =
+  ReadonlyArray<AuthzPolicyAuthzRuleIpBlock>;
 export const AuthzPolicyAuthzRuleIpBlockList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleIpBlock,
 ) as any as S.Schema<AuthzPolicyAuthzRuleIpBlockList>;
@@ -1168,8 +1154,7 @@ export type AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum =
   | "PRINCIPAL_SELECTOR_UNSPECIFIED"
   | "CLIENT_CERT_URI_SAN"
   | "CLIENT_CERT_DNS_NAME_SAN"
-  | "CLIENT_CERT_COMMON_NAME"
-  | (string & {});
+  | "CLIENT_CERT_COMMON_NAME";
 export const AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum =
   /*@__PURE__*/ S.String;
 
@@ -1191,7 +1176,8 @@ export const AuthzPolicyAuthzRulePrincipal = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthzPolicyAuthzRulePrincipal",
 }) as any as S.Schema<AuthzPolicyAuthzRulePrincipal>;
 
-export type AuthzPolicyAuthzRulePrincipalList = AuthzPolicyAuthzRulePrincipal[];
+export type AuthzPolicyAuthzRulePrincipalList =
+  ReadonlyArray<AuthzPolicyAuthzRulePrincipal>;
 export const AuthzPolicyAuthzRulePrincipalList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRulePrincipal,
 ) as any as S.Schema<AuthzPolicyAuthzRulePrincipalList>;
@@ -1217,7 +1203,7 @@ export const AuthzPolicyAuthzRuleFromRequestSource = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuthzPolicyAuthzRuleFromRequestSource>;
 
 export type AuthzPolicyAuthzRuleFromRequestSourceList =
-  AuthzPolicyAuthzRuleFromRequestSource[];
+  ReadonlyArray<AuthzPolicyAuthzRuleFromRequestSource>;
 export const AuthzPolicyAuthzRuleFromRequestSourceList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleFromRequestSource,
 ) as any as S.Schema<AuthzPolicyAuthzRuleFromRequestSourceList>;
@@ -1239,7 +1225,7 @@ export const AuthzPolicyAuthzRuleFrom = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRuleFrom>;
 
 export type AuthzPolicyAuthzRuleStringMatchList =
-  AuthzPolicyAuthzRuleStringMatch[];
+  ReadonlyArray<AuthzPolicyAuthzRuleStringMatch>;
 export const AuthzPolicyAuthzRuleStringMatchList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleStringMatch,
 ) as any as S.Schema<AuthzPolicyAuthzRuleStringMatchList>;
@@ -1247,8 +1233,7 @@ export const AuthzPolicyAuthzRuleStringMatchList = /*@__PURE__*/ S.Array(
 export type AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum =
     | "BASE_PROTOCOL_METHODS_OPTION_UNSPECIFIED"
     | "SKIP_BASE_PROTOCOL_METHODS"
-    | "MATCH_BASE_PROTOCOL_METHODS"
-    | (string & {});
+    | "MATCH_BASE_PROTOCOL_METHODS";
 export const AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1270,7 +1255,7 @@ export const AuthzPolicyAuthzRuleToRequestOperationMCPMethod =
   }) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperationMCPMethod>;
 
 export type AuthzPolicyAuthzRuleToRequestOperationMCPMethodList =
-  AuthzPolicyAuthzRuleToRequestOperationMCPMethod[];
+  ReadonlyArray<AuthzPolicyAuthzRuleToRequestOperationMCPMethod>;
 export const AuthzPolicyAuthzRuleToRequestOperationMCPMethodList =
   /*@__PURE__*/ S.Array(
     AuthzPolicyAuthzRuleToRequestOperationMCPMethod,
@@ -1312,7 +1297,7 @@ export const AuthzPolicyAuthzRuleHeaderMatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthzPolicyAuthzRuleHeaderMatch>;
 
 export type AuthzPolicyAuthzRuleHeaderMatchList =
-  AuthzPolicyAuthzRuleHeaderMatch[];
+  ReadonlyArray<AuthzPolicyAuthzRuleHeaderMatch>;
 export const AuthzPolicyAuthzRuleHeaderMatchList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleHeaderMatch,
 ) as any as S.Schema<AuthzPolicyAuthzRuleHeaderMatchList>;
@@ -1361,7 +1346,7 @@ export const AuthzPolicyAuthzRuleToRequestOperation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperation>;
 
 export type AuthzPolicyAuthzRuleToRequestOperationList =
-  AuthzPolicyAuthzRuleToRequestOperation[];
+  ReadonlyArray<AuthzPolicyAuthzRuleToRequestOperation>;
 export const AuthzPolicyAuthzRuleToRequestOperationList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRuleToRequestOperation,
 ) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperationList>;
@@ -1401,7 +1386,7 @@ export const AuthzPolicyAuthzRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthzPolicyAuthzRule",
 }) as any as S.Schema<AuthzPolicyAuthzRule>;
 
-export type AuthzPolicyAuthzRuleList = AuthzPolicyAuthzRule[];
+export type AuthzPolicyAuthzRuleList = ReadonlyArray<AuthzPolicyAuthzRule>;
 export const AuthzPolicyAuthzRuleList = /*@__PURE__*/ S.Array(
   AuthzPolicyAuthzRule,
 ) as any as S.Schema<AuthzPolicyAuthzRuleList>;
@@ -1410,8 +1395,7 @@ export type AuthzPolicyTargetLoadBalancingSchemeEnum =
   | "LOAD_BALANCING_SCHEME_UNSPECIFIED"
   | "INTERNAL_MANAGED"
   | "EXTERNAL_MANAGED"
-  | "INTERNAL_SELF_MANAGED"
-  | (string & {});
+  | "INTERNAL_SELF_MANAGED";
 export const AuthzPolicyTargetLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the set of targets to which this policy should be applied to. */
@@ -1434,8 +1418,7 @@ export type AuthzPolicyActionEnum =
   | "AUTHZ_ACTION_UNSPECIFIED"
   | "ALLOW"
   | "DENY"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const AuthzPolicyActionEnum = /*@__PURE__*/ S.String;
 
 /** `AuthzPolicy` is a resource that allows to forward traffic to a callout backend designed to scan the traffic for security purposes. */
@@ -1510,8 +1493,7 @@ export const CreateProjectsLocationsAuthzPoliciesRequest =
 export type BackendAuthenticationConfigWellKnownRootsEnum =
   | "WELL_KNOWN_ROOTS_UNSPECIFIED"
   | "NONE"
-  | "PUBLIC_ROOTS"
-  | (string & {});
+  | "PUBLIC_ROOTS";
 export const BackendAuthenticationConfigWellKnownRootsEnum =
   /*@__PURE__*/ S.String;
 
@@ -1635,7 +1617,7 @@ export const ValidationCA = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ValidationCA" }) as any as S.Schema<ValidationCA>;
 
-export type ValidationCAList = ValidationCA[];
+export type ValidationCAList = ReadonlyArray<ValidationCA>;
 export const ValidationCAList = /*@__PURE__*/ S.Array(
   ValidationCA,
 ) as any as S.Schema<ValidationCAList>;
@@ -1701,10 +1683,7 @@ export const CreateProjectsLocationsClientTlsPoliciesRequest =
     identifier: "CreateProjectsLocationsClientTlsPoliciesRequest",
   }) as any as S.Schema<CreateProjectsLocationsClientTlsPoliciesRequest>;
 
-export type DnsThreatDetectorProviderEnum =
-  | "PROVIDER_UNSPECIFIED"
-  | "INFOBLOX"
-  | (string & {});
+export type DnsThreatDetectorProviderEnum = "PROVIDER_UNSPECIFIED" | "INFOBLOX";
 export const DnsThreatDetectorProviderEnum = /*@__PURE__*/ S.String;
 
 /** A DNS threat detector sends DNS query logs to a _provider_ that then analyzes the logs to identify threat events in the DNS queries. By default, all VPC networks in your projects are included. You can exclude specific networks by supplying `excluded_networks`. */
@@ -1766,8 +1745,7 @@ export type FirewallEndpointAssociationStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "INACTIVE"
-  | "ORPHAN"
-  | (string & {});
+  | "ORPHAN";
 export const FirewallEndpointAssociationStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing Association object */
@@ -1919,8 +1897,7 @@ export const CreateProjectsLocationsGatewaySecurityPoliciesRequest =
 export type GatewaySecurityPolicyRuleBasicProfileEnum =
   | "BASIC_PROFILE_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const GatewaySecurityPolicyRuleBasicProfileEnum = /*@__PURE__*/ S.String;
 
 /** The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents a traffic matching condition and associated action to perform. */
@@ -1991,8 +1968,7 @@ export const CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest =
 export type InterceptLocationStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "OUT_OF_SYNC"
-  | (string & {});
+  | "OUT_OF_SYNC";
 export const InterceptLocationStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about intercept in a specific cloud location. */
@@ -2011,7 +1987,7 @@ export const InterceptLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "InterceptLocation",
 }) as any as S.Schema<InterceptLocation>;
 
-export type InterceptLocationList = InterceptLocation[];
+export type InterceptLocationList = ReadonlyArray<InterceptLocation>;
 export const InterceptLocationList = /*@__PURE__*/ S.Array(
   InterceptLocation,
 ) as any as S.Schema<InterceptLocationList>;
@@ -2020,8 +1996,7 @@ export type InterceptDeploymentGroupStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "CREATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const InterceptDeploymentGroupStateEnum = /*@__PURE__*/ S.String;
 
 export type InterceptDeploymentGroupDeploymentStateEnum =
@@ -2030,8 +2005,7 @@ export type InterceptDeploymentGroupDeploymentStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const InterceptDeploymentGroupDeploymentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2052,7 +2026,7 @@ export const InterceptDeploymentGroupDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterceptDeploymentGroupDeployment>;
 
 export type InterceptDeploymentGroupDeploymentList =
-  InterceptDeploymentGroupDeployment[];
+  ReadonlyArray<InterceptDeploymentGroupDeployment>;
 export const InterceptDeploymentGroupDeploymentList = /*@__PURE__*/ S.Array(
   InterceptDeploymentGroupDeployment,
 ) as any as S.Schema<InterceptDeploymentGroupDeploymentList>;
@@ -2072,7 +2046,7 @@ export const InterceptDeploymentGroupConnectedEndpointGroup =
   }) as any as S.Schema<InterceptDeploymentGroupConnectedEndpointGroup>;
 
 export type InterceptDeploymentGroupConnectedEndpointGroupList =
-  InterceptDeploymentGroupConnectedEndpointGroup[];
+  ReadonlyArray<InterceptDeploymentGroupConnectedEndpointGroup>;
 export const InterceptDeploymentGroupConnectedEndpointGroupList =
   /*@__PURE__*/ S.Array(
     InterceptDeploymentGroupConnectedEndpointGroup,
@@ -2157,8 +2131,7 @@ export type InterceptDeploymentStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const InterceptDeploymentStateEnum = /*@__PURE__*/ S.String;
 
 /** A deployment represents a zonal intercept backend ready to accept GENEVE-encapsulated traffic, e.g. a zonal instance group fronted by an internal passthrough load balancer. Deployments are always part of a global deployment group which represents a global intercept service. */
@@ -2233,16 +2206,14 @@ export type InterceptEndpointGroupAssociationStateEnum =
   | "DELETING"
   | "CLOSED"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const InterceptEndpointGroupAssociationStateEnum =
   /*@__PURE__*/ S.String;
 
 export type InterceptEndpointGroupAssociationLocationDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "OUT_OF_SYNC"
-  | (string & {});
+  | "OUT_OF_SYNC";
 export const InterceptEndpointGroupAssociationLocationDetailsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2266,7 +2237,7 @@ export const InterceptEndpointGroupAssociationLocationDetails =
   }) as any as S.Schema<InterceptEndpointGroupAssociationLocationDetails>;
 
 export type InterceptEndpointGroupAssociationLocationDetailsList =
-  InterceptEndpointGroupAssociationLocationDetails[];
+  ReadonlyArray<InterceptEndpointGroupAssociationLocationDetails>;
 export const InterceptEndpointGroupAssociationLocationDetailsList =
   /*@__PURE__*/ S.Array(
     InterceptEndpointGroupAssociationLocationDetails,
@@ -2353,8 +2324,7 @@ export type InterceptEndpointGroupAssociationDetailsStateEnum =
   | "DELETING"
   | "CLOSED"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const InterceptEndpointGroupAssociationDetailsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2379,7 +2349,7 @@ export const InterceptEndpointGroupAssociationDetails = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InterceptEndpointGroupAssociationDetails>;
 
 export type InterceptEndpointGroupAssociationDetailsList =
-  InterceptEndpointGroupAssociationDetails[];
+  ReadonlyArray<InterceptEndpointGroupAssociationDetails>;
 export const InterceptEndpointGroupAssociationDetailsList =
   /*@__PURE__*/ S.Array(
     InterceptEndpointGroupAssociationDetails,
@@ -2409,8 +2379,7 @@ export type InterceptEndpointGroupStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const InterceptEndpointGroupStateEnum = /*@__PURE__*/ S.String;
 
 /** An endpoint group is a consumer frontend for a deployment group (backend). In order to configure intercept for a network, consumers must create: - An association between their network and the endpoint group. - A security profile that points to the endpoint group. - A firewall rule that references the security profile (group). */
@@ -2486,8 +2455,7 @@ export const CreateProjectsLocationsInterceptEndpointGroupsRequest =
 export type MirroringLocationStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "OUT_OF_SYNC"
-  | (string & {});
+  | "OUT_OF_SYNC";
 export const MirroringLocationStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about mirroring in a specific cloud location. */
@@ -2506,7 +2474,7 @@ export const MirroringLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "MirroringLocation",
 }) as any as S.Schema<MirroringLocation>;
 
-export type MirroringLocationList = MirroringLocation[];
+export type MirroringLocationList = ReadonlyArray<MirroringLocation>;
 export const MirroringLocationList = /*@__PURE__*/ S.Array(
   MirroringLocation,
 ) as any as S.Schema<MirroringLocationList>;
@@ -2516,8 +2484,7 @@ export type MirroringDeploymentGroupStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "DELETING"
-  | "CLOSED"
-  | (string & {});
+  | "CLOSED";
 export const MirroringDeploymentGroupStateEnum = /*@__PURE__*/ S.String;
 
 export type MirroringDeploymentGroupDeploymentStateEnum =
@@ -2526,8 +2493,7 @@ export type MirroringDeploymentGroupDeploymentStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const MirroringDeploymentGroupDeploymentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2548,7 +2514,7 @@ export const MirroringDeploymentGroupDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MirroringDeploymentGroupDeployment>;
 
 export type MirroringDeploymentGroupDeploymentList =
-  MirroringDeploymentGroupDeployment[];
+  ReadonlyArray<MirroringDeploymentGroupDeployment>;
 export const MirroringDeploymentGroupDeploymentList = /*@__PURE__*/ S.Array(
   MirroringDeploymentGroupDeployment,
 ) as any as S.Schema<MirroringDeploymentGroupDeploymentList>;
@@ -2568,7 +2534,7 @@ export const MirroringDeploymentGroupConnectedEndpointGroup =
   }) as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroup>;
 
 export type MirroringDeploymentGroupConnectedEndpointGroupList =
-  MirroringDeploymentGroupConnectedEndpointGroup[];
+  ReadonlyArray<MirroringDeploymentGroupConnectedEndpointGroup>;
 export const MirroringDeploymentGroupConnectedEndpointGroupList =
   /*@__PURE__*/ S.Array(
     MirroringDeploymentGroupConnectedEndpointGroup,
@@ -2653,8 +2619,7 @@ export type MirroringDeploymentStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const MirroringDeploymentStateEnum = /*@__PURE__*/ S.String;
 
 /** A deployment represents a zonal mirroring backend ready to accept GENEVE-encapsulated replica traffic, e.g. a zonal instance group fronted by an internal passthrough load balancer. Deployments are always part of a global deployment group which represents a global mirroring service. */
@@ -2729,16 +2694,14 @@ export type MirroringEndpointGroupAssociationStateEnum =
   | "DELETING"
   | "CLOSED"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const MirroringEndpointGroupAssociationStateEnum =
   /*@__PURE__*/ S.String;
 
 export type MirroringEndpointGroupAssociationLocationDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "OUT_OF_SYNC"
-  | (string & {});
+  | "OUT_OF_SYNC";
 export const MirroringEndpointGroupAssociationLocationDetailsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2762,7 +2725,7 @@ export const MirroringEndpointGroupAssociationLocationDetails =
   }) as any as S.Schema<MirroringEndpointGroupAssociationLocationDetails>;
 
 export type MirroringEndpointGroupAssociationLocationDetailsList =
-  MirroringEndpointGroupAssociationLocationDetails[];
+  ReadonlyArray<MirroringEndpointGroupAssociationLocationDetails>;
 export const MirroringEndpointGroupAssociationLocationDetailsList =
   /*@__PURE__*/ S.Array(
     MirroringEndpointGroupAssociationLocationDetails,
@@ -2842,10 +2805,7 @@ export const CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest =
       "CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest",
   }) as any as S.Schema<CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
 
-export type MirroringEndpointGroupTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "DIRECT"
-  | (string & {});
+export type MirroringEndpointGroupTypeEnum = "TYPE_UNSPECIFIED" | "DIRECT";
 export const MirroringEndpointGroupTypeEnum = /*@__PURE__*/ S.String;
 
 export type MirroringEndpointGroupAssociationDetailsStateEnum =
@@ -2855,8 +2815,7 @@ export type MirroringEndpointGroupAssociationDetailsStateEnum =
   | "DELETING"
   | "CLOSED"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const MirroringEndpointGroupAssociationDetailsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2881,7 +2840,7 @@ export const MirroringEndpointGroupAssociationDetails = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MirroringEndpointGroupAssociationDetails>;
 
 export type MirroringEndpointGroupAssociationDetailsList =
-  MirroringEndpointGroupAssociationDetails[];
+  ReadonlyArray<MirroringEndpointGroupAssociationDetails>;
 export const MirroringEndpointGroupAssociationDetailsList =
   /*@__PURE__*/ S.Array(
     MirroringEndpointGroupAssociationDetails,
@@ -2894,8 +2853,7 @@ export type MirroringEndpointGroupStateEnum =
   | "CREATING"
   | "DELETING"
   | "OUT_OF_SYNC"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const MirroringEndpointGroupStateEnum = /*@__PURE__*/ S.String;
 
 /** The endpoint group's view of a connected deployment group. */
@@ -2916,7 +2874,7 @@ export const MirroringEndpointGroupConnectedDeploymentGroup =
   }) as any as S.Schema<MirroringEndpointGroupConnectedDeploymentGroup>;
 
 export type MirroringEndpointGroupConnectedDeploymentGroupList =
-  MirroringEndpointGroupConnectedDeploymentGroup[];
+  ReadonlyArray<MirroringEndpointGroupConnectedDeploymentGroup>;
 export const MirroringEndpointGroupConnectedDeploymentGroupList =
   /*@__PURE__*/ S.Array(
     MirroringEndpointGroupConnectedDeploymentGroup,
@@ -2999,8 +2957,7 @@ export type SACAttachmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING_PARTNER_ATTACHMENT"
   | "PARTNER_ATTACHED"
-  | "PARTNER_DETACHED"
-  | (string & {});
+  | "PARTNER_DETACHED";
 export const SACAttachmentStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Secure Access Connect (SAC) attachment resource. A Secure Access Connect attachment enables NCC Gateway to process traffic with an SSE product. */
@@ -3081,14 +3038,12 @@ export type SACRealmStateEnum =
   | "PENDING_PARTNER_ATTACHMENT"
   | "PARTNER_ATTACHED"
   | "PARTNER_DETACHED"
-  | "KEY_EXPIRED"
-  | (string & {});
+  | "KEY_EXPIRED";
 export const SACRealmStateEnum = /*@__PURE__*/ S.String;
 
 export type SACRealmSecurityServiceEnum =
   | "SECURITY_SERVICE_UNSPECIFIED"
-  | "PALO_ALTO_PRISMA_ACCESS"
-  | (string & {});
+  | "PALO_ALTO_PRISMA_ACCESS";
 export const SACRealmSecurityServiceEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Secure Access Connect (SAC) realm resource. A Secure Access Connect realm establishes a connection between your Google Cloud project and an SSE service. */
@@ -3201,8 +3156,7 @@ export const CreateProjectsLocationsSecurityProfilesRequest =
 export type MTLSPolicyClientValidationModeEnum =
   | "CLIENT_VALIDATION_MODE_UNSPECIFIED"
   | "ALLOW_INVALID_OR_MISSING_CLIENT_CERT"
-  | "REJECT_INVALID"
-  | (string & {});
+  | "REJECT_INVALID";
 export const MTLSPolicyClientValidationModeEnum = /*@__PURE__*/ S.String;
 
 /** Specification of the MTLSPolicy. */
@@ -3288,8 +3242,7 @@ export type TlsInspectionPolicyTlsFeatureProfileEnum =
   | "PROFILE_COMPATIBLE"
   | "PROFILE_MODERN"
   | "PROFILE_RESTRICTED"
-  | "PROFILE_CUSTOM"
-  | (string & {});
+  | "PROFILE_CUSTOM";
 export const TlsInspectionPolicyTlsFeatureProfileEnum = /*@__PURE__*/ S.String;
 
 export type TlsInspectionPolicyMinTlsVersionEnum =
@@ -3297,8 +3250,7 @@ export type TlsInspectionPolicyMinTlsVersionEnum =
   | "TLS_1_0"
   | "TLS_1_1"
   | "TLS_1_2"
-  | "TLS_1_3"
-  | (string & {});
+  | "TLS_1_3";
 export const TlsInspectionPolicyMinTlsVersionEnum = /*@__PURE__*/ S.String;
 
 /** The TlsInspectionPolicy resource contains references to CA pools in Certificate Authority Service and associated metadata. */
@@ -4132,7 +4084,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = GoogleIamV1Binding[];
+export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -4141,8 +4093,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -4161,7 +4112,8 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList = GoogleIamV1AuditLogConfig[];
+export type GoogleIamV1AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -4182,7 +4134,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = GoogleIamV1AuditConfig[];
+export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -4974,7 +4926,7 @@ export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsLocationsRequest",
 }) as any as S.Schema<ListOrganizationsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -5023,7 +4975,7 @@ export const ListOrganizationsLocationsAddressGroupsRequest =
     identifier: "ListOrganizationsLocationsAddressGroupsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsAddressGroupsRequest>;
 
-export type AddressGroupList = AddressGroup[];
+export type AddressGroupList = ReadonlyArray<AddressGroup>;
 export const AddressGroupList = /*@__PURE__*/ S.Array(
   AddressGroup,
 ) as any as S.Schema<AddressGroupList>;
@@ -5078,7 +5030,7 @@ export const ListOrganizationsLocationsFirewallEndpointsRequest =
     identifier: "ListOrganizationsLocationsFirewallEndpointsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsFirewallEndpointsRequest>;
 
-export type FirewallEndpointList = FirewallEndpoint[];
+export type FirewallEndpointList = ReadonlyArray<FirewallEndpoint>;
 export const FirewallEndpointList = /*@__PURE__*/ S.Array(
   FirewallEndpoint,
 ) as any as S.Schema<FirewallEndpointList>;
@@ -5133,7 +5085,7 @@ export const ListOrganizationsLocationsOperationsRequest =
     identifier: "ListOrganizationsLocationsOperationsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -5182,7 +5134,7 @@ export const ListOrganizationsLocationsSecurityProfileGroupsRequest =
     identifier: "ListOrganizationsLocationsSecurityProfileGroupsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsSecurityProfileGroupsRequest>;
 
-export type SecurityProfileGroupList = SecurityProfileGroup[];
+export type SecurityProfileGroupList = ReadonlyArray<SecurityProfileGroup>;
 export const SecurityProfileGroupList = /*@__PURE__*/ S.Array(
   SecurityProfileGroup,
 ) as any as S.Schema<SecurityProfileGroupList>;
@@ -5228,7 +5180,7 @@ export const ListOrganizationsLocationsSecurityProfilesRequest =
     identifier: "ListOrganizationsLocationsSecurityProfilesRequest",
   }) as any as S.Schema<ListOrganizationsLocationsSecurityProfilesRequest>;
 
-export type SecurityProfileList = SecurityProfile[];
+export type SecurityProfileList = ReadonlyArray<SecurityProfile>;
 export const SecurityProfileList = /*@__PURE__*/ S.Array(
   SecurityProfile,
 ) as any as S.Schema<SecurityProfileList>;
@@ -5332,7 +5284,7 @@ export const ListProjectsLocationsAuthorizationPoliciesRequest =
     identifier: "ListProjectsLocationsAuthorizationPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsAuthorizationPoliciesRequest>;
 
-export type AuthorizationPolicyList = AuthorizationPolicy[];
+export type AuthorizationPolicyList = ReadonlyArray<AuthorizationPolicy>;
 export const AuthorizationPolicyList = /*@__PURE__*/ S.Array(
   AuthorizationPolicy,
 ) as any as S.Schema<AuthorizationPolicyList>;
@@ -5384,7 +5336,7 @@ export const ListProjectsLocationsAuthzPoliciesRequest =
     identifier: "ListProjectsLocationsAuthzPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsAuthzPoliciesRequest>;
 
-export type AuthzPolicyList = AuthzPolicy[];
+export type AuthzPolicyList = ReadonlyArray<AuthzPolicy>;
 export const AuthzPolicyList = /*@__PURE__*/ S.Array(
   AuthzPolicy,
 ) as any as S.Schema<AuthzPolicyList>;
@@ -5433,7 +5385,8 @@ export const ListProjectsLocationsBackendAuthenticationConfigsRequest =
     identifier: "ListProjectsLocationsBackendAuthenticationConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackendAuthenticationConfigsRequest>;
 
-export type BackendAuthenticationConfigList = BackendAuthenticationConfig[];
+export type BackendAuthenticationConfigList =
+  ReadonlyArray<BackendAuthenticationConfig>;
 export const BackendAuthenticationConfigList = /*@__PURE__*/ S.Array(
   BackendAuthenticationConfig,
 ) as any as S.Schema<BackendAuthenticationConfigList>;
@@ -5483,7 +5436,7 @@ export const ListProjectsLocationsClientTlsPoliciesRequest =
     identifier: "ListProjectsLocationsClientTlsPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsClientTlsPoliciesRequest>;
 
-export type ClientTlsPolicyList = ClientTlsPolicy[];
+export type ClientTlsPolicyList = ReadonlyArray<ClientTlsPolicy>;
 export const ClientTlsPolicyList = /*@__PURE__*/ S.Array(
   ClientTlsPolicy,
 ) as any as S.Schema<ClientTlsPolicyList>;
@@ -5529,7 +5482,7 @@ export const ListProjectsLocationsDnsThreatDetectorsRequest =
     identifier: "ListProjectsLocationsDnsThreatDetectorsRequest",
   }) as any as S.Schema<ListProjectsLocationsDnsThreatDetectorsRequest>;
 
-export type DnsThreatDetectorList = DnsThreatDetector[];
+export type DnsThreatDetectorList = ReadonlyArray<DnsThreatDetector>;
 export const DnsThreatDetectorList = /*@__PURE__*/ S.Array(
   DnsThreatDetector,
 ) as any as S.Schema<DnsThreatDetectorList>;
@@ -5584,7 +5537,8 @@ export const ListProjectsLocationsFirewallEndpointAssociationsRequest =
     identifier: "ListProjectsLocationsFirewallEndpointAssociationsRequest",
   }) as any as S.Schema<ListProjectsLocationsFirewallEndpointAssociationsRequest>;
 
-export type FirewallEndpointAssociationList = FirewallEndpointAssociation[];
+export type FirewallEndpointAssociationList =
+  ReadonlyArray<FirewallEndpointAssociation>;
 export const FirewallEndpointAssociationList = /*@__PURE__*/ S.Array(
   FirewallEndpointAssociation,
 ) as any as S.Schema<FirewallEndpointAssociationList>;
@@ -5665,7 +5619,7 @@ export const ListProjectsLocationsGatewaySecurityPoliciesRequest =
     identifier: "ListProjectsLocationsGatewaySecurityPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsGatewaySecurityPoliciesRequest>;
 
-export type GatewaySecurityPolicyList = GatewaySecurityPolicy[];
+export type GatewaySecurityPolicyList = ReadonlyArray<GatewaySecurityPolicy>;
 export const GatewaySecurityPolicyList = /*@__PURE__*/ S.Array(
   GatewaySecurityPolicy,
 ) as any as S.Schema<GatewaySecurityPolicyList>;
@@ -5714,7 +5668,8 @@ export const ListProjectsLocationsGatewaySecurityPoliciesRulesRequest =
     identifier: "ListProjectsLocationsGatewaySecurityPoliciesRulesRequest",
   }) as any as S.Schema<ListProjectsLocationsGatewaySecurityPoliciesRulesRequest>;
 
-export type GatewaySecurityPolicyRuleList = GatewaySecurityPolicyRule[];
+export type GatewaySecurityPolicyRuleList =
+  ReadonlyArray<GatewaySecurityPolicyRule>;
 export const GatewaySecurityPolicyRuleList = /*@__PURE__*/ S.Array(
   GatewaySecurityPolicyRule,
 ) as any as S.Schema<GatewaySecurityPolicyRuleList>;
@@ -5770,7 +5725,8 @@ export const ListProjectsLocationsInterceptDeploymentGroupsRequest =
     identifier: "ListProjectsLocationsInterceptDeploymentGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsInterceptDeploymentGroupsRequest>;
 
-export type InterceptDeploymentGroupList = InterceptDeploymentGroup[];
+export type InterceptDeploymentGroupList =
+  ReadonlyArray<InterceptDeploymentGroup>;
 export const InterceptDeploymentGroupList = /*@__PURE__*/ S.Array(
   InterceptDeploymentGroup,
 ) as any as S.Schema<InterceptDeploymentGroupList>;
@@ -5823,7 +5779,7 @@ export const ListProjectsLocationsInterceptDeploymentsRequest =
     identifier: "ListProjectsLocationsInterceptDeploymentsRequest",
   }) as any as S.Schema<ListProjectsLocationsInterceptDeploymentsRequest>;
 
-export type InterceptDeploymentList = InterceptDeployment[];
+export type InterceptDeploymentList = ReadonlyArray<InterceptDeployment>;
 export const InterceptDeploymentList = /*@__PURE__*/ S.Array(
   InterceptDeployment,
 ) as any as S.Schema<InterceptDeploymentList>;
@@ -5880,7 +5836,7 @@ export const ListProjectsLocationsInterceptEndpointGroupAssociationsRequest =
   }) as any as S.Schema<ListProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
 
 export type InterceptEndpointGroupAssociationList =
-  InterceptEndpointGroupAssociation[];
+  ReadonlyArray<InterceptEndpointGroupAssociation>;
 export const InterceptEndpointGroupAssociationList = /*@__PURE__*/ S.Array(
   InterceptEndpointGroupAssociation,
 ) as any as S.Schema<InterceptEndpointGroupAssociationList>;
@@ -5935,7 +5891,7 @@ export const ListProjectsLocationsInterceptEndpointGroupsRequest =
     identifier: "ListProjectsLocationsInterceptEndpointGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsInterceptEndpointGroupsRequest>;
 
-export type InterceptEndpointGroupList = InterceptEndpointGroup[];
+export type InterceptEndpointGroupList = ReadonlyArray<InterceptEndpointGroup>;
 export const InterceptEndpointGroupList = /*@__PURE__*/ S.Array(
   InterceptEndpointGroup,
 ) as any as S.Schema<InterceptEndpointGroupList>;
@@ -5987,7 +5943,8 @@ export const ListProjectsLocationsMirroringDeploymentGroupsRequest =
     identifier: "ListProjectsLocationsMirroringDeploymentGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsMirroringDeploymentGroupsRequest>;
 
-export type MirroringDeploymentGroupList = MirroringDeploymentGroup[];
+export type MirroringDeploymentGroupList =
+  ReadonlyArray<MirroringDeploymentGroup>;
 export const MirroringDeploymentGroupList = /*@__PURE__*/ S.Array(
   MirroringDeploymentGroup,
 ) as any as S.Schema<MirroringDeploymentGroupList>;
@@ -6040,7 +5997,7 @@ export const ListProjectsLocationsMirroringDeploymentsRequest =
     identifier: "ListProjectsLocationsMirroringDeploymentsRequest",
   }) as any as S.Schema<ListProjectsLocationsMirroringDeploymentsRequest>;
 
-export type MirroringDeploymentList = MirroringDeployment[];
+export type MirroringDeploymentList = ReadonlyArray<MirroringDeployment>;
 export const MirroringDeploymentList = /*@__PURE__*/ S.Array(
   MirroringDeployment,
 ) as any as S.Schema<MirroringDeploymentList>;
@@ -6097,7 +6054,7 @@ export const ListProjectsLocationsMirroringEndpointGroupAssociationsRequest =
   }) as any as S.Schema<ListProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
 
 export type MirroringEndpointGroupAssociationList =
-  MirroringEndpointGroupAssociation[];
+  ReadonlyArray<MirroringEndpointGroupAssociation>;
 export const MirroringEndpointGroupAssociationList = /*@__PURE__*/ S.Array(
   MirroringEndpointGroupAssociation,
 ) as any as S.Schema<MirroringEndpointGroupAssociationList>;
@@ -6152,7 +6109,7 @@ export const ListProjectsLocationsMirroringEndpointGroupsRequest =
     identifier: "ListProjectsLocationsMirroringEndpointGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsMirroringEndpointGroupsRequest>;
 
-export type MirroringEndpointGroupList = MirroringEndpointGroup[];
+export type MirroringEndpointGroupList = ReadonlyArray<MirroringEndpointGroup>;
 export const MirroringEndpointGroupList = /*@__PURE__*/ S.Array(
   MirroringEndpointGroup,
 ) as any as S.Schema<MirroringEndpointGroupList>;
@@ -6235,7 +6192,7 @@ export const ListProjectsLocationsSacAttachmentsRequest =
     identifier: "ListProjectsLocationsSacAttachmentsRequest",
   }) as any as S.Schema<ListProjectsLocationsSacAttachmentsRequest>;
 
-export type SACAttachmentList = SACAttachment[];
+export type SACAttachmentList = ReadonlyArray<SACAttachment>;
 export const SACAttachmentList = /*@__PURE__*/ S.Array(
   SACAttachment,
 ) as any as S.Schema<SACAttachmentList>;
@@ -6290,7 +6247,7 @@ export const ListProjectsLocationsSacRealmsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsSacRealmsRequest",
 }) as any as S.Schema<ListProjectsLocationsSacRealmsRequest>;
 
-export type SACRealmList = SACRealm[];
+export type SACRealmList = ReadonlyArray<SACRealm>;
 export const SACRealmList = /*@__PURE__*/ S.Array(
   SACRealm,
 ) as any as S.Schema<SACRealmList>;
@@ -6392,7 +6349,7 @@ export const ListProjectsLocationsServerTlsPoliciesRequest =
     identifier: "ListProjectsLocationsServerTlsPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsServerTlsPoliciesRequest>;
 
-export type ServerTlsPolicyList = ServerTlsPolicy[];
+export type ServerTlsPolicyList = ReadonlyArray<ServerTlsPolicy>;
 export const ServerTlsPolicyList = /*@__PURE__*/ S.Array(
   ServerTlsPolicy,
 ) as any as S.Schema<ServerTlsPolicyList>;
@@ -6441,7 +6398,7 @@ export const ListProjectsLocationsTlsInspectionPoliciesRequest =
     identifier: "ListProjectsLocationsTlsInspectionPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsTlsInspectionPoliciesRequest>;
 
-export type TlsInspectionPolicyList = TlsInspectionPolicy[];
+export type TlsInspectionPolicyList = ReadonlyArray<TlsInspectionPolicy>;
 export const TlsInspectionPolicyList = /*@__PURE__*/ S.Array(
   TlsInspectionPolicy,
 ) as any as S.Schema<TlsInspectionPolicyList>;
@@ -6490,7 +6447,7 @@ export const ListProjectsLocationsUrlListsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsUrlListsRequest",
 }) as any as S.Schema<ListProjectsLocationsUrlListsRequest>;
 
-export type UrlListList = UrlList[];
+export type UrlListList = ReadonlyArray<UrlList>;
 export const UrlListList = /*@__PURE__*/ S.Array(
   UrlList,
 ) as any as S.Schema<UrlListList>;
@@ -6560,7 +6517,7 @@ export const ListAddressGroupReferencesResponseAddressGroupReference =
   }) as any as S.Schema<ListAddressGroupReferencesResponseAddressGroupReference>;
 
 export type ListAddressGroupReferencesResponseAddressGroupReferenceList =
-  ListAddressGroupReferencesResponseAddressGroupReference[];
+  ReadonlyArray<ListAddressGroupReferencesResponseAddressGroupReference>;
 export const ListAddressGroupReferencesResponseAddressGroupReferenceList =
   /*@__PURE__*/ S.Array(
     ListAddressGroupReferencesResponseAddressGroupReference,

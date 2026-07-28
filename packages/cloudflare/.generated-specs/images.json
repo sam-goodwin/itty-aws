@@ -134,22 +134,16 @@
     "com.cloudflare.images#V1DeleteResponse": {
       "type": "structure",
       "members": {
-        "unknown": {
+        "result": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "string": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.images#V1Delete": {
@@ -857,6 +851,18 @@
           "traits": {
             "smithy.api#enumValue": "cover"
           }
+        },
+        "CROP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crop"
+          }
+        },
+        "PAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pad"
+          }
         }
       }
     },
@@ -970,6 +976,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cover"
+          }
+        },
+        "CROP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crop"
+          }
+        },
+        "PAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pad"
           }
         }
       }
@@ -1109,22 +1127,16 @@
     "com.cloudflare.images#V1VariantsDeleteResponse": {
       "type": "structure",
       "members": {
-        "unknown": {
+        "result": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "string": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.images#V1VariantsDelete": {
@@ -1164,6 +1176,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cover"
+          }
+        },
+        "CROP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crop"
+          }
+        },
+        "PAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pad"
           }
         }
       }
@@ -1279,6 +1303,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cover"
+          }
+        },
+        "CROP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crop"
+          }
+        },
+        "PAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pad"
           }
         }
       }
@@ -1435,6 +1471,18 @@
           "traits": {
             "smithy.api#enumValue": "cover"
           }
+        },
+        "CROP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crop"
+          }
+        },
+        "PAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pad"
+          }
         }
       }
     },
@@ -1583,6 +1631,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "cover"
+          }
+        },
+        "CROP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crop"
+          }
+        },
+        "PAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pad"
           }
         }
       }
@@ -1747,10 +1807,11 @@
             "smithy.api#httpQuery": "creator"
           }
         },
-        "meta": {
+        "meta__field___operator__": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "meta"
+            "smithy.api#documentation": "Optional metadata filter(s). Multiple filters can be combined with AND logic.",
+            "smithy.api#httpQuery": "meta.<field>[<operator>]"
           }
         },
         "per_page": {

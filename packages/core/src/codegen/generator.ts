@@ -726,7 +726,9 @@ export const generateService = (
         }),
       );
     } else if (d.type === "list") {
-      out.push(`export type ${name} = ${tsRef(d.member.target)}[];`);
+      out.push(
+        `export type ${name} = ReadonlyArray<${tsRef(d.member.target)}>;`,
+      );
       out.push(
         `export const ${name} = ${pure}S.Array(${ref(d.member.target, i)}) as any as S.Schema<${name}>;\n`,
       );
@@ -764,6 +766,16 @@ export const generateService = (
         .map((m: any) => m.traits?.["smithy.api#enumValue"])
         .filter((v: unknown): v is string => typeof v === "string");
       out.push(...enumDecl({ name, values, pure }));
+    } else if (d.type === "intEnum") {
+      // Closed numeric literal union; schema stays S.Number (protocols never
+      // validate enum membership).
+      const values = Object.values(d.members ?? {})
+        .map((m: any) => m.traits?.["smithy.api#enumValue"])
+        .filter((v: unknown): v is number => typeof v === "number");
+      out.push(
+        `export type ${name} = ${values.join(" | ") || "number"};`,
+        `export const ${name} = ${pure}S.Number;\n`,
+      );
     }
   });
 

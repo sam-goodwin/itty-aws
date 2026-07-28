@@ -36,10 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type InsightsActivityRetrieveRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type InsightsActivityRetrieveRequestFormat = "csv" | "json";
 export const InsightsActivityRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsActivityRetrieveRequest {
@@ -88,7 +85,7 @@ export const Change = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
 
-export type DetailChangesList = Change[];
+export type DetailChangesList = ReadonlyArray<Change>;
 export const DetailChangesList = /*@__PURE__*/ S.Array(
   Change,
 ) as any as S.Schema<DetailChangesList>;
@@ -163,7 +160,8 @@ export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActivityLogEntry",
 }) as any as S.Schema<ActivityLogEntry>;
 
-export type ActivityLogPaginatedResponseResultsList = ActivityLogEntry[];
+export type ActivityLogPaginatedResponseResultsList =
+  ReadonlyArray<ActivityLogEntry>;
 export const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ S.Array(
   ActivityLogEntry,
 ) as any as S.Schema<ActivityLogPaginatedResponseResultsList>;
@@ -186,10 +184,7 @@ export const ActivityLogPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActivityLogPaginatedResponse",
 }) as any as S.Schema<ActivityLogPaginatedResponse>;
 
-export type InsightsAllActivityRetrieveRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type InsightsAllActivityRetrieveRequestFormat = "csv" | "json";
 export const InsightsAllActivityRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsAllActivityRetrieveRequest {
@@ -220,10 +215,7 @@ export const InsightsAllActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsAllActivityRetrieveRequest",
 }) as any as S.Schema<InsightsAllActivityRetrieveRequest>;
 
-export type InsightsAnalyzeRetrieveRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type InsightsAnalyzeRetrieveRequestFormat = "csv" | "json";
 export const InsightsAnalyzeRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsAnalyzeRetrieveRequest {
@@ -256,14 +248,11 @@ export const InsightsAnalyzeRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsAnalyzeRetrieveResponse",
 }) as any as S.Schema<InsightsAnalyzeRetrieveResponse>;
 
-export type InsightsBulkDeleteCreateRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type InsightsBulkDeleteCreateRequestFormat = "csv" | "json";
 export const InsightsBulkDeleteCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
-export type InsightsBulkDeleteCreateRequestIdsList = number[];
+export type InsightsBulkDeleteCreateRequestIdsList = ReadonlyArray<number>;
 export const InsightsBulkDeleteCreateRequestIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<InsightsBulkDeleteCreateRequestIdsList>;
@@ -307,7 +296,8 @@ export const InsightBulkOperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsightBulkOperationResult>;
 
 /** Insights that were successfully soft-deleted. */
-export type InsightBulkDeleteResponseDeletedList = InsightBulkOperationResult[];
+export type InsightBulkDeleteResponseDeletedList =
+  ReadonlyArray<InsightBulkOperationResult>;
 export const InsightBulkDeleteResponseDeletedList = /*@__PURE__*/ S.Array(
   InsightBulkOperationResult,
 ) as any as S.Schema<InsightBulkDeleteResponseDeletedList>;
@@ -329,7 +319,7 @@ export const InsightBulkOperationSkipped = /*@__PURE__*/ S.suspend(() =>
 
 /** Insights that were not deleted, with the reason for each. */
 export type InsightBulkDeleteResponseSkippedList =
-  InsightBulkOperationSkipped[];
+  ReadonlyArray<InsightBulkOperationSkipped>;
 export const InsightBulkDeleteResponseSkippedList = /*@__PURE__*/ S.Array(
   InsightBulkOperationSkipped,
 ) as any as S.Schema<InsightBulkDeleteResponseSkippedList>;
@@ -349,14 +339,11 @@ export const InsightBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightBulkDeleteResponse",
 }) as any as S.Schema<InsightBulkDeleteResponse>;
 
-export type InsightsBulkRestoreCreateRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type InsightsBulkRestoreCreateRequestFormat = "csv" | "json";
 export const InsightsBulkRestoreCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** Insight IDs to soft-delete (or restore). At most 1000 ids per request. Soft-deleted insights can be brought back via the bulk_restore endpoint. */
-export type InsightsBulkRestoreCreateRequestIdsList = number[];
+export type InsightsBulkRestoreCreateRequestIdsList = ReadonlyArray<number>;
 export const InsightsBulkRestoreCreateRequestIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<InsightsBulkRestoreCreateRequestIdsList>;
@@ -386,14 +373,14 @@ export const InsightsBulkRestoreCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Insights that were successfully restored. */
 export type InsightBulkRestoreResponseRestoredList =
-  InsightBulkOperationResult[];
+  ReadonlyArray<InsightBulkOperationResult>;
 export const InsightBulkRestoreResponseRestoredList = /*@__PURE__*/ S.Array(
   InsightBulkOperationResult,
 ) as any as S.Schema<InsightBulkRestoreResponseRestoredList>;
 
 /** Insights that were not restored, with the reason for each. */
 export type InsightBulkRestoreResponseSkippedList =
-  InsightBulkOperationSkipped[];
+  ReadonlyArray<InsightBulkOperationSkipped>;
 export const InsightBulkRestoreResponseSkippedList = /*@__PURE__*/ S.Array(
   InsightBulkOperationSkipped,
 ) as any as S.Schema<InsightBulkRestoreResponseSkippedList>;
@@ -413,24 +400,21 @@ export const InsightBulkRestoreResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightBulkRestoreResponse",
 }) as any as S.Schema<InsightBulkRestoreResponse>;
 
-export type InsightsBulkUpdateTagsCreateRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type InsightsBulkUpdateTagsCreateRequestFormat = "csv" | "json";
 export const InsightsBulkUpdateTagsCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** List of object IDs to update tags on. */
-export type InsightsBulkUpdateTagsCreateRequestIdsList = number[];
+export type InsightsBulkUpdateTagsCreateRequestIdsList = ReadonlyArray<number>;
 export const InsightsBulkUpdateTagsCreateRequestIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<InsightsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
-export type BulkUpdateTagsActionEnum = "add" | "remove" | "set" | (string & {});
+export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
 export const BulkUpdateTagsActionEnum = /*@__PURE__*/ S.String;
 
 /** Tag names to add, remove, or set. */
-export type InsightsBulkUpdateTagsCreateRequestTagsList = string[];
+export type InsightsBulkUpdateTagsCreateRequestTagsList = ReadonlyArray<string>;
 export const InsightsBulkUpdateTagsCreateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -467,7 +451,7 @@ export const InsightsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsBulkUpdateTagsCreateRequest",
 }) as any as S.Schema<InsightsBulkUpdateTagsCreateRequest>;
 
-export type BulkUpdateTagsItemTagsList = string[];
+export type BulkUpdateTagsItemTagsList = ReadonlyArray<string>;
 export const BulkUpdateTagsItemTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkUpdateTagsItemTagsList>;
@@ -485,7 +469,8 @@ export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsItem",
 }) as any as S.Schema<BulkUpdateTagsItem>;
 
-export type BulkUpdateTagsResponseUpdatedList = BulkUpdateTagsItem[];
+export type BulkUpdateTagsResponseUpdatedList =
+  ReadonlyArray<BulkUpdateTagsItem>;
 export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsItem,
 ) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
@@ -503,7 +488,8 @@ export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsError",
 }) as any as S.Schema<BulkUpdateTagsError>;
 
-export type BulkUpdateTagsResponseSkippedList = BulkUpdateTagsError[];
+export type BulkUpdateTagsResponseSkippedList =
+  ReadonlyArray<BulkUpdateTagsError>;
 export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsError,
 ) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
@@ -521,7 +507,7 @@ export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateTagsResponse",
 }) as any as S.Schema<BulkUpdateTagsResponse>;
 
-export type InsightsCancelCreateRequestFormat = "csv" | "json" | (string & {});
+export type InsightsCancelCreateRequestFormat = "csv" | "json";
 export const InsightsCancelCreateRequestFormat = /*@__PURE__*/ S.String;
 
 export type BreakdownFilterBreakdownCase1Item = string | number;
@@ -529,7 +515,7 @@ export const BreakdownFilterBreakdownCase1Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<BreakdownFilterBreakdownCase1Item>;
 
 export type BreakdownFilterBreakdownCase1List =
-  BreakdownFilterBreakdownCase1Item[];
+  ReadonlyArray<BreakdownFilterBreakdownCase1Item>;
 export const BreakdownFilterBreakdownCase1List = /*@__PURE__*/ S.Array(
   BreakdownFilterBreakdownCase1Item,
 ) as any as S.Schema<BreakdownFilterBreakdownCase1List>;
@@ -551,8 +537,7 @@ export type BreakdownType =
   | "hogql"
   | "data_warehouse"
   | "data_warehouse_person_property"
-  | "revenue_analytics"
-  | (string & {});
+  | "revenue_analytics";
 export const BreakdownType = /*@__PURE__*/ S.String;
 
 export type BreakdownProperty = string | number;
@@ -569,8 +554,7 @@ export type MultipleBreakdownType =
   | "cohort"
   | "revenue_analytics"
   | "data_warehouse"
-  | "data_warehouse_person_property"
-  | (string & {});
+  | "data_warehouse_person_property";
 export const MultipleBreakdownType = /*@__PURE__*/ S.String;
 
 export interface Breakdown {
@@ -590,7 +574,7 @@ export const Breakdown = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
-export type BreakdownFilterBreakdownsList = Breakdown[];
+export type BreakdownFilterBreakdownsList = ReadonlyArray<Breakdown>;
 export const BreakdownFilterBreakdownsList = /*@__PURE__*/ S.Array(
   Breakdown,
 ) as any as S.Schema<BreakdownFilterBreakdownsList>;
@@ -676,9 +660,12 @@ export type TrendsQueryConversionGoal =
 export const TrendsQueryConversionGoal =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQueryConversionGoal>;
 
-export type DateRangeDaysOfWeekList = number[];
+export type DaysOfWeekEnum = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+export const DaysOfWeekEnum = /*@__PURE__*/ S.Number;
+
+export type DateRangeDaysOfWeekList = ReadonlyArray<DaysOfWeekEnum>;
 export const DateRangeDaysOfWeekList = /*@__PURE__*/ S.Array(
-  S.Number,
+  DaysOfWeekEnum,
 ) as any as S.Schema<DateRangeDaysOfWeekList>;
 
 export interface DateRange {
@@ -711,18 +698,16 @@ export type IntervalType =
   | "week"
   | "month"
   | "quarter"
-  | "year"
-  | (string & {});
+  | "year";
 export const IntervalType = /*@__PURE__*/ S.String;
 
 export type BounceRatePageViewMode =
   | "count_pageviews"
   | "uniq_urls"
-  | "uniq_page_screen_autocaptures"
-  | (string & {});
+  | "uniq_page_screen_autocaptures";
 export const BounceRatePageViewMode = /*@__PURE__*/ S.String;
 
-export type FilterLogicalOperator = "AND" | "OR" | (string & {});
+export type FilterLogicalOperator = "AND" | "OR";
 export const FilterLogicalOperator = /*@__PURE__*/ S.String;
 
 export type CustomChannelField =
@@ -732,8 +717,7 @@ export type CustomChannelField =
   | "referring_domain"
   | "url"
   | "pathname"
-  | "hostname"
-  | (string & {});
+  | "hostname";
 export const CustomChannelField = /*@__PURE__*/ S.String;
 
 export type CustomChannelOperator =
@@ -744,11 +728,10 @@ export type CustomChannelOperator =
   | "icontains"
   | "not_icontains"
   | "regex"
-  | "not_regex"
-  | (string & {});
+  | "not_regex";
 export const CustomChannelOperator = /*@__PURE__*/ S.String;
 
-export type CustomChannelConditionValueCase1List = string[];
+export type CustomChannelConditionValueCase1List = ReadonlyArray<string>;
 export const CustomChannelConditionValueCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomChannelConditionValueCase1List>;
@@ -776,7 +759,7 @@ export const CustomChannelCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomChannelCondition",
 }) as any as S.Schema<CustomChannelCondition>;
 
-export type CustomChannelRuleItemsList = CustomChannelCondition[];
+export type CustomChannelRuleItemsList = ReadonlyArray<CustomChannelCondition>;
 export const CustomChannelRuleItemsList = /*@__PURE__*/ S.Array(
   CustomChannelCondition,
 ) as any as S.Schema<CustomChannelRuleItemsList>;
@@ -798,7 +781,8 @@ export const CustomChannelRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomChannelRule",
 }) as any as S.Schema<CustomChannelRule>;
 
-export type HogQLQueryModifiersCustomChannelTypeRulesList = CustomChannelRule[];
+export type HogQLQueryModifiersCustomChannelTypeRulesList =
+  ReadonlyArray<CustomChannelRule>;
 export const HogQLQueryModifiersCustomChannelTypeRulesList =
   /*@__PURE__*/ S.Array(
     CustomChannelRule,
@@ -822,14 +806,14 @@ export const DataWarehouseEventsModifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataWarehouseEventsModifier>;
 
 export type HogQLQueryModifiersDataWarehouseEventsModifiersList =
-  DataWarehouseEventsModifier[];
+  ReadonlyArray<DataWarehouseEventsModifier>;
 export const HogQLQueryModifiersDataWarehouseEventsModifiersList =
   /*@__PURE__*/ S.Array(
     DataWarehouseEventsModifier,
   ) as any as S.Schema<HogQLQueryModifiersDataWarehouseEventsModifiersList>;
 
 export type HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
-  string[];
+  ReadonlyArray<string>;
 export const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -839,25 +823,20 @@ export type InCohortVia =
   | "auto"
   | "leftjoin"
   | "subquery"
-  | "leftjoin_conjoined"
-  | (string & {});
+  | "leftjoin_conjoined";
 export const InCohortVia = /*@__PURE__*/ S.String;
 
-export type InlineCohortCalculation = "off" | "auto" | "always" | (string & {});
+export type InlineCohortCalculation = "off" | "auto" | "always";
 export const InlineCohortCalculation = /*@__PURE__*/ S.String;
 
 export type MaterializationMode =
   | "auto"
   | "legacy_null_as_string"
   | "legacy_null_as_null"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const MaterializationMode = /*@__PURE__*/ S.String;
 
-export type MaterializedColumnsOptimizationMode =
-  | "disabled"
-  | "optimized"
-  | (string & {});
+export type MaterializedColumnsOptimizationMode = "disabled" | "optimized";
 export const MaterializedColumnsOptimizationMode = /*@__PURE__*/ S.String;
 
 export type ParserMode =
@@ -867,35 +846,29 @@ export type ParserMode =
   | "rust_with_cpp_shadow"
   | "rust_only"
   | "rust_py_only"
-  | "rust_py_with_cpp_shadow"
-  | (string & {});
+  | "rust_py_with_cpp_shadow";
 export const ParserMode = /*@__PURE__*/ S.String;
 
-export type PersonsArgMaxVersion = "auto" | "v1" | "v2" | (string & {});
+export type PersonsArgMaxVersion = "auto" | "v1" | "v2";
 export const PersonsArgMaxVersion = /*@__PURE__*/ S.String;
 
-export type PersonsJoinMode = "inner" | "left" | (string & {});
+export type PersonsJoinMode = "inner" | "left";
 export const PersonsJoinMode = /*@__PURE__*/ S.String;
 
 export type PersonsOnEventsMode =
   | "disabled"
   | "person_id_no_override_properties_on_events"
   | "person_id_override_properties_on_events"
-  | "person_id_override_properties_joined"
-  | (string & {});
+  | "person_id_override_properties_joined";
 export const PersonsOnEventsMode = /*@__PURE__*/ S.String;
 
-export type PropertyGroupsMode =
-  | "enabled"
-  | "disabled"
-  | "optimized"
-  | (string & {});
+export type PropertyGroupsMode = "enabled" | "disabled" | "optimized";
 export const PropertyGroupsMode = /*@__PURE__*/ S.String;
 
-export type SessionTableVersion = "auto" | "v1" | "v2" | "v3" | (string & {});
+export type SessionTableVersion = "auto" | "v1" | "v2" | "v3";
 export const SessionTableVersion = /*@__PURE__*/ S.String;
 
-export type SessionsV2JoinMode = "string" | "uuid" | (string & {});
+export type SessionsV2JoinMode = "string" | "uuid";
 export const SessionsV2JoinMode = /*@__PURE__*/ S.String;
 
 export interface HogQLQueryModifiers {
@@ -1014,8 +987,7 @@ export type PropertyOperator =
   | "semver_caret"
   | "semver_wildcard"
   | "icontains_multi"
-  | "not_icontains_multi"
-  | (string & {});
+  | "not_icontains_multi";
 export const PropertyOperator = /*@__PURE__*/ S.String;
 
 export type EventPropertyFilterValueCase0Item = string | number | boolean;
@@ -1023,7 +995,7 @@ export const EventPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventPropertyFilterValueCase0Item>;
 
 export type EventPropertyFilterValueCase0List =
-  EventPropertyFilterValueCase0Item[];
+  ReadonlyArray<EventPropertyFilterValueCase0Item>;
 export const EventPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventPropertyFilterValueCase0List>;
@@ -1061,7 +1033,7 @@ export const PersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonPropertyFilterValueCase0Item>;
 
 export type PersonPropertyFilterValueCase0List =
-  PersonPropertyFilterValueCase0Item[];
+  ReadonlyArray<PersonPropertyFilterValueCase0Item>;
 export const PersonPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonPropertyFilterValueCase0List>;
@@ -1102,7 +1074,7 @@ export const PersonMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonMetadataPropertyFilterValueCase0Item>;
 
 export type PersonMetadataPropertyFilterValueCase0List =
-  PersonMetadataPropertyFilterValueCase0Item[];
+  ReadonlyArray<PersonMetadataPropertyFilterValueCase0Item>;
 export const PersonMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   PersonMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<PersonMetadataPropertyFilterValueCase0List>;
@@ -1135,7 +1107,7 @@ export const PersonMetadataPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonMetadataPropertyFilter",
 }) as any as S.Schema<PersonMetadataPropertyFilter>;
 
-export type Key10 = "tag_name" | "text" | "href" | "selector" | (string & {});
+export type Key10 = "tag_name" | "text" | "href" | "selector";
 export const Key10 = /*@__PURE__*/ S.String;
 
 export type ElementPropertyFilterValueCase0Item = string | number | boolean;
@@ -1143,7 +1115,7 @@ export const ElementPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ElementPropertyFilterValueCase0Item>;
 
 export type ElementPropertyFilterValueCase0List =
-  ElementPropertyFilterValueCase0Item[];
+  ReadonlyArray<ElementPropertyFilterValueCase0Item>;
 export const ElementPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   ElementPropertyFilterValueCase0Item,
 ) as any as S.Schema<ElementPropertyFilterValueCase0List>;
@@ -1183,7 +1155,7 @@ export const EventMetadataPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventMetadataPropertyFilterValueCase0Item>;
 
 export type EventMetadataPropertyFilterValueCase0List =
-  EventMetadataPropertyFilterValueCase0Item[];
+  ReadonlyArray<EventMetadataPropertyFilterValueCase0Item>;
 export const EventMetadataPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   EventMetadataPropertyFilterValueCase0Item,
 ) as any as S.Schema<EventMetadataPropertyFilterValueCase0List>;
@@ -1220,7 +1192,7 @@ export const SessionPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionPropertyFilterValueCase0Item>;
 
 export type SessionPropertyFilterValueCase0List =
-  SessionPropertyFilterValueCase0Item[];
+  ReadonlyArray<SessionPropertyFilterValueCase0Item>;
 export const SessionPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SessionPropertyFilterValueCase0Item,
 ) as any as S.Schema<SessionPropertyFilterValueCase0List>;
@@ -1273,11 +1245,7 @@ export const CohortPropertyFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "CohortPropertyFilter",
 }) as any as S.Schema<CohortPropertyFilter>;
 
-export type DurationType =
-  | "duration"
-  | "active_seconds"
-  | "inactive_seconds"
-  | (string & {});
+export type DurationType = "duration" | "active_seconds" | "inactive_seconds";
 export const DurationType = /*@__PURE__*/ S.String;
 
 export type RecordingPropertyFilterKey = DurationType | string;
@@ -1289,7 +1257,7 @@ export const RecordingPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RecordingPropertyFilterValueCase0Item>;
 
 export type RecordingPropertyFilterValueCase0List =
-  RecordingPropertyFilterValueCase0Item[];
+  ReadonlyArray<RecordingPropertyFilterValueCase0Item>;
 export const RecordingPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   RecordingPropertyFilterValueCase0Item,
 ) as any as S.Schema<RecordingPropertyFilterValueCase0List>;
@@ -1326,7 +1294,7 @@ export const LogEntryPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogEntryPropertyFilterValueCase0Item>;
 
 export type LogEntryPropertyFilterValueCase0List =
-  LogEntryPropertyFilterValueCase0Item[];
+  ReadonlyArray<LogEntryPropertyFilterValueCase0Item>;
 export const LogEntryPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogEntryPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogEntryPropertyFilterValueCase0List>;
@@ -1371,7 +1339,7 @@ export const GroupPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupPropertyFilterValueCase0Item>;
 
 export type GroupPropertyFilterValueCase0List =
-  GroupPropertyFilterValueCase0Item[];
+  ReadonlyArray<GroupPropertyFilterValueCase0Item>;
 export const GroupPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   GroupPropertyFilterValueCase0Item,
 ) as any as S.Schema<GroupPropertyFilterValueCase0List>;
@@ -1412,7 +1380,7 @@ export const FeaturePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FeaturePropertyFilterValueCase0Item>;
 
 export type FeaturePropertyFilterValueCase0List =
-  FeaturePropertyFilterValueCase0Item[];
+  ReadonlyArray<FeaturePropertyFilterValueCase0Item>;
 export const FeaturePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   FeaturePropertyFilterValueCase0Item,
 ) as any as S.Schema<FeaturePropertyFilterValueCase0List>;
@@ -1478,7 +1446,7 @@ export const HogQLPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLPropertyFilterValueCase0Item>;
 
 export type HogQLPropertyFilterValueCase0List =
-  HogQLPropertyFilterValueCase0Item[];
+  ReadonlyArray<HogQLPropertyFilterValueCase0Item>;
 export const HogQLPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   HogQLPropertyFilterValueCase0Item,
 ) as any as S.Schema<HogQLPropertyFilterValueCase0List>;
@@ -1527,7 +1495,7 @@ export const DataWarehousePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePropertyFilterValueCase0Item>;
 
 export type DataWarehousePropertyFilterValueCase0List =
-  DataWarehousePropertyFilterValueCase0Item[];
+  ReadonlyArray<DataWarehousePropertyFilterValueCase0Item>;
 export const DataWarehousePropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   DataWarehousePropertyFilterValueCase0Item,
 ) as any as S.Schema<DataWarehousePropertyFilterValueCase0List>;
@@ -1567,7 +1535,7 @@ export const DataWarehousePersonPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehousePersonPropertyFilterValueCase0Item>;
 
 export type DataWarehousePersonPropertyFilterValueCase0List =
-  DataWarehousePersonPropertyFilterValueCase0Item[];
+  ReadonlyArray<DataWarehousePersonPropertyFilterValueCase0Item>;
 export const DataWarehousePersonPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     DataWarehousePersonPropertyFilterValueCase0Item,
@@ -1605,7 +1573,7 @@ export const ErrorTrackingIssueFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingIssueFilterValueCase0Item>;
 
 export type ErrorTrackingIssueFilterValueCase0List =
-  ErrorTrackingIssueFilterValueCase0Item[];
+  ReadonlyArray<ErrorTrackingIssueFilterValueCase0Item>;
 export const ErrorTrackingIssueFilterValueCase0List = /*@__PURE__*/ S.Array(
   ErrorTrackingIssueFilterValueCase0Item,
 ) as any as S.Schema<ErrorTrackingIssueFilterValueCase0List>;
@@ -1640,15 +1608,15 @@ export const ErrorTrackingIssueFilter = /*@__PURE__*/ S.suspend(() =>
 export type LogPropertyFilterType =
   | "log"
   | "log_attribute"
-  | "log_resource_attribute"
-  | (string & {});
+  | "log_resource_attribute";
 export const LogPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type LogPropertyFilterValueCase0Item = string | number | boolean;
 export const LogPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LogPropertyFilterValueCase0Item>;
 
-export type LogPropertyFilterValueCase0List = LogPropertyFilterValueCase0Item[];
+export type LogPropertyFilterValueCase0List =
+  ReadonlyArray<LogPropertyFilterValueCase0Item>;
 export const LogPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   LogPropertyFilterValueCase0Item,
 ) as any as S.Schema<LogPropertyFilterValueCase0List>;
@@ -1685,7 +1653,7 @@ export const MetricPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MetricPropertyFilterValueCase0Item>;
 
 export type MetricPropertyFilterValueCase0List =
-  MetricPropertyFilterValueCase0Item[];
+  ReadonlyArray<MetricPropertyFilterValueCase0Item>;
 export const MetricPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   MetricPropertyFilterValueCase0Item,
 ) as any as S.Schema<MetricPropertyFilterValueCase0List>;
@@ -1720,8 +1688,7 @@ export const MetricPropertyFilter = /*@__PURE__*/ S.suspend(() =>
 export type SpanPropertyFilterType =
   | "span"
   | "span_attribute"
-  | "span_resource_attribute"
-  | (string & {});
+  | "span_resource_attribute";
 export const SpanPropertyFilterType = /*@__PURE__*/ S.String;
 
 export type SpanPropertyFilterValueCase0Item = string | number | boolean;
@@ -1729,7 +1696,7 @@ export const SpanPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SpanPropertyFilterValueCase0Item>;
 
 export type SpanPropertyFilterValueCase0List =
-  SpanPropertyFilterValueCase0Item[];
+  ReadonlyArray<SpanPropertyFilterValueCase0Item>;
 export const SpanPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   SpanPropertyFilterValueCase0Item,
 ) as any as S.Schema<SpanPropertyFilterValueCase0List>;
@@ -1769,7 +1736,7 @@ export const RevenueAnalyticsPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsPropertyFilterValueCase0Item>;
 
 export type RevenueAnalyticsPropertyFilterValueCase0List =
-  RevenueAnalyticsPropertyFilterValueCase0Item[];
+  ReadonlyArray<RevenueAnalyticsPropertyFilterValueCase0Item>;
 export const RevenueAnalyticsPropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilterValueCase0Item,
@@ -1810,7 +1777,7 @@ export const AccountCustomPropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<AccountCustomPropertyFilterValueCase0Item>;
 
 export type AccountCustomPropertyFilterValueCase0List =
-  AccountCustomPropertyFilterValueCase0Item[];
+  ReadonlyArray<AccountCustomPropertyFilterValueCase0Item>;
 export const AccountCustomPropertyFilterValueCase0List = /*@__PURE__*/ S.Array(
   AccountCustomPropertyFilterValueCase0Item,
 ) as any as S.Schema<AccountCustomPropertyFilterValueCase0List>;
@@ -1851,7 +1818,7 @@ export const WorkflowVariablePropertyFilterValueCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WorkflowVariablePropertyFilterValueCase0Item>;
 
 export type WorkflowVariablePropertyFilterValueCase0List =
-  WorkflowVariablePropertyFilterValueCase0Item[];
+  ReadonlyArray<WorkflowVariablePropertyFilterValueCase0Item>;
 export const WorkflowVariablePropertyFilterValueCase0List =
   /*@__PURE__*/ S.Array(
     WorkflowVariablePropertyFilterValueCase0Item,
@@ -1911,7 +1878,8 @@ export type TrendsQueryPropertiesCase0Item =
 export const TrendsQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQueryPropertiesCase0Item>;
 
-export type TrendsQueryPropertiesCase0List = TrendsQueryPropertiesCase0Item[];
+export type TrendsQueryPropertiesCase0List =
+  ReadonlyArray<TrendsQueryPropertiesCase0Item>;
 export const TrendsQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   TrendsQueryPropertiesCase0Item,
 ) as any as S.Schema<TrendsQueryPropertiesCase0List>;
@@ -1945,7 +1913,7 @@ export const PropertyGroupFilterValueValuesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyGroupFilterValueValuesItem>;
 
 export type PropertyGroupFilterValueValuesList =
-  PropertyGroupFilterValueValuesItem[];
+  ReadonlyArray<PropertyGroupFilterValueValuesItem>;
 export const PropertyGroupFilterValueValuesList = /*@__PURE__*/ S.Array(
   PropertyGroupFilterValueValuesItem,
 ) as any as S.Schema<PropertyGroupFilterValueValuesList>;
@@ -1963,7 +1931,8 @@ export const PropertyGroupFilterValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyGroupFilterValue",
 }) as any as S.Schema<PropertyGroupFilterValue>;
 
-export type PropertyGroupFilterValuesList = PropertyGroupFilterValue[];
+export type PropertyGroupFilterValuesList =
+  ReadonlyArray<PropertyGroupFilterValue>;
 export const PropertyGroupFilterValuesList = /*@__PURE__*/ S.Array(
   PropertyGroupFilterValue,
 ) as any as S.Schema<PropertyGroupFilterValuesList>;
@@ -2015,12 +1984,12 @@ export const BoxPlotDatum = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BoxPlotDatum" }) as any as S.Schema<BoxPlotDatum>;
 
-export type TrendsQueryResponseBoxplotDataList = BoxPlotDatum[];
+export type TrendsQueryResponseBoxplotDataList = ReadonlyArray<BoxPlotDatum>;
 export const TrendsQueryResponseBoxplotDataList = /*@__PURE__*/ S.Array(
   BoxPlotDatum,
 ) as any as S.Schema<TrendsQueryResponseBoxplotDataList>;
 
-export type QueryStatusLabelsList = string[];
+export type QueryStatusLabelsList = ReadonlyArray<string>;
 export const QueryStatusLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryStatusLabelsList>;
@@ -2114,7 +2083,7 @@ export const TrendsQueryResponseResultsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TrendsQueryResponseResultsItemMap>;
 
 export type TrendsQueryResponseResultsList =
-  TrendsQueryResponseResultsItemMap[];
+  ReadonlyArray<TrendsQueryResponseResultsItemMap>;
 export const TrendsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   TrendsQueryResponseResultsItemMap,
 ) as any as S.Schema<TrendsQueryResponseResultsList>;
@@ -2132,7 +2101,7 @@ export const QueryTiming = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryTiming" }) as any as S.Schema<QueryTiming>;
 
-export type TrendsQueryResponseTimingsList = QueryTiming[];
+export type TrendsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const TrendsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<TrendsQueryResponseTimingsList>;
@@ -2156,7 +2125,7 @@ export const DataWarehouseSourceUsage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataWarehouseSourceUsage>;
 
 export type TrendsQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const TrendsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -2193,7 +2162,7 @@ export const DataWarehouseSyncWarning = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataWarehouseSyncWarning>;
 
 /** Resource types the user has access restrictions on, referenced by the query, e.g. ["insight", "dashboard"] */
-export type AccessControlFilterWarningResourcesList = string[];
+export type AccessControlFilterWarningResourcesList = ReadonlyArray<string>;
 export const AccessControlFilterWarningResourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessControlFilterWarningResourcesList>;
@@ -2222,7 +2191,8 @@ export type TrendsQueryResponseWarningsItem =
 export const TrendsQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQueryResponseWarningsItem>;
 
-export type TrendsQueryResponseWarningsList = TrendsQueryResponseWarningsItem[];
+export type TrendsQueryResponseWarningsList =
+  ReadonlyArray<TrendsQueryResponseWarningsItem>;
 export const TrendsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   TrendsQueryResponseWarningsItem,
 ) as any as S.Schema<TrendsQueryResponseWarningsList>;
@@ -2301,7 +2271,8 @@ export type EventsNodeFixedPropertiesItem =
 export const EventsNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsNodeFixedPropertiesItem>;
 
-export type EventsNodeFixedPropertiesList = EventsNodeFixedPropertiesItem[];
+export type EventsNodeFixedPropertiesList =
+  ReadonlyArray<EventsNodeFixedPropertiesItem>;
 export const EventsNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
   EventsNodeFixedPropertiesItem,
 ) as any as S.Schema<EventsNodeFixedPropertiesList>;
@@ -2313,15 +2284,13 @@ export type BaseMathType =
   | "monthly_active"
   | "unique_session"
   | "first_time_for_user"
-  | "first_matching_event_for_user"
-  | (string & {});
+  | "first_matching_event_for_user";
 export const BaseMathType = /*@__PURE__*/ S.String;
 
 export type FunnelMathType =
   | "total"
   | "first_time_for_user"
-  | "first_time_for_user_with_filters"
-  | (string & {});
+  | "first_time_for_user_with_filters";
 export const FunnelMathType = /*@__PURE__*/ S.String;
 
 export type PropertyMathType =
@@ -2333,8 +2302,7 @@ export type PropertyMathType =
   | "p75"
   | "p90"
   | "p95"
-  | "p99"
-  | (string & {});
+  | "p99";
 export const PropertyMathType = /*@__PURE__*/ S.String;
 
 export type CountPerActorMathType =
@@ -2345,8 +2313,7 @@ export type CountPerActorMathType =
   | "p75_count_per_actor"
   | "p90_count_per_actor"
   | "p95_count_per_actor"
-  | "p99_count_per_actor"
-  | (string & {});
+  | "p99_count_per_actor";
 export const CountPerActorMathType = /*@__PURE__*/ S.String;
 
 export type ExperimentMetricMathType =
@@ -2358,11 +2325,10 @@ export type ExperimentMetricMathType =
   | "avg"
   | "dau"
   | "unique_group"
-  | "hogql"
-  | (string & {});
+  | "hogql";
 export const ExperimentMetricMathType = /*@__PURE__*/ S.String;
 
-export type CalendarHeatmapMathType = "total" | "dau" | (string & {});
+export type CalendarHeatmapMathType = "total" | "dau";
 export const CalendarHeatmapMathType = /*@__PURE__*/ S.String;
 
 export type EventsNodeMath =
@@ -2375,6 +2341,9 @@ export type EventsNodeMath =
   | string;
 export const EventsNodeMath =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsNodeMath>;
+
+export type MathGroupTypeIndex = 0 | 1 | 2 | 3 | 4;
+export const MathGroupTypeIndex = /*@__PURE__*/ S.Number;
 
 export type CurrencyCode =
   | "AED"
@@ -2528,8 +2497,7 @@ export type CurrencyCode =
   | "XPF"
   | "YER"
   | "ZAR"
-  | "ZMW"
-  | (string & {});
+  | "ZMW";
 export const CurrencyCode = /*@__PURE__*/ S.String;
 
 export interface RevenueCurrencyPropertyConfig {
@@ -2545,7 +2513,7 @@ export const RevenueCurrencyPropertyConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueCurrencyPropertyConfig",
 }) as any as S.Schema<RevenueCurrencyPropertyConfig>;
 
-export type EventsNodeOrderByList = string[];
+export type EventsNodeOrderByList = ReadonlyArray<string>;
 export const EventsNodeOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsNodeOrderByList>;
@@ -2577,7 +2545,7 @@ export type EventsNodePropertiesItem =
 export const EventsNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsNodePropertiesItem>;
 
-export type EventsNodePropertiesList = EventsNodePropertiesItem[];
+export type EventsNodePropertiesList = ReadonlyArray<EventsNodePropertiesItem>;
 export const EventsNodePropertiesList = /*@__PURE__*/ S.Array(
   EventsNodePropertiesItem,
 ) as any as S.Schema<EventsNodePropertiesList>;
@@ -2597,7 +2565,7 @@ export interface EventsNode {
   kind?: string;
   limit?: number | null;
   math?: EventsNodeMath | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -2621,7 +2589,7 @@ export const EventsNode = /*@__PURE__*/ S.suspend(() =>
     kind: S.optional(S.String),
     limit: S.optional(S.NullOr(S.Number)),
     math: S.optional(S.NullOr(EventsNodeMath)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -2665,7 +2633,8 @@ export type ActionsNodeFixedPropertiesItem =
 export const ActionsNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ActionsNodeFixedPropertiesItem>;
 
-export type ActionsNodeFixedPropertiesList = ActionsNodeFixedPropertiesItem[];
+export type ActionsNodeFixedPropertiesList =
+  ReadonlyArray<ActionsNodeFixedPropertiesItem>;
 export const ActionsNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
   ActionsNodeFixedPropertiesItem,
 ) as any as S.Schema<ActionsNodeFixedPropertiesList>;
@@ -2708,7 +2677,8 @@ export type ActionsNodePropertiesItem =
 export const ActionsNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ActionsNodePropertiesItem>;
 
-export type ActionsNodePropertiesList = ActionsNodePropertiesItem[];
+export type ActionsNodePropertiesList =
+  ReadonlyArray<ActionsNodePropertiesItem>;
 export const ActionsNodePropertiesList = /*@__PURE__*/ S.Array(
   ActionsNodePropertiesItem,
 ) as any as S.Schema<ActionsNodePropertiesList>;
@@ -2726,7 +2696,7 @@ export interface ActionsNode {
   id?: number;
   kind?: string;
   math?: ActionsNodeMath | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -2747,7 +2717,7 @@ export const ActionsNode = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.Number),
     kind: S.optional(S.String),
     math: S.optional(S.NullOr(ActionsNodeMath)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -2791,7 +2761,7 @@ export const DataWarehouseNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehouseNodeFixedPropertiesItem>;
 
 export type DataWarehouseNodeFixedPropertiesList =
-  DataWarehouseNodeFixedPropertiesItem[];
+  ReadonlyArray<DataWarehouseNodeFixedPropertiesItem>;
 export const DataWarehouseNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
   DataWarehouseNodeFixedPropertiesItem,
 ) as any as S.Schema<DataWarehouseNodeFixedPropertiesList>;
@@ -2834,7 +2804,8 @@ export type DataWarehouseNodePropertiesItem =
 export const DataWarehouseNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataWarehouseNodePropertiesItem>;
 
-export type DataWarehouseNodePropertiesList = DataWarehouseNodePropertiesItem[];
+export type DataWarehouseNodePropertiesList =
+  ReadonlyArray<DataWarehouseNodePropertiesItem>;
 export const DataWarehouseNodePropertiesList = /*@__PURE__*/ S.Array(
   DataWarehouseNodePropertiesItem,
 ) as any as S.Schema<DataWarehouseNodePropertiesList>;
@@ -2857,7 +2828,7 @@ export interface DataWarehouseNode {
   id_field?: string;
   kind?: string;
   math?: DataWarehouseNodeMath | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -2883,7 +2854,7 @@ export const DataWarehouseNode = /*@__PURE__*/ S.suspend(() =>
     id_field: S.optional(S.String),
     kind: S.optional(S.String),
     math: S.optional(S.NullOr(DataWarehouseNodeMath)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -2930,7 +2901,8 @@ export type GroupNodeFixedPropertiesItem =
 export const GroupNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodeFixedPropertiesItem>;
 
-export type GroupNodeFixedPropertiesList = GroupNodeFixedPropertiesItem[];
+export type GroupNodeFixedPropertiesList =
+  ReadonlyArray<GroupNodeFixedPropertiesItem>;
 export const GroupNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
   GroupNodeFixedPropertiesItem,
 ) as any as S.Schema<GroupNodeFixedPropertiesList>;
@@ -2951,12 +2923,12 @@ export const GroupNodeNodesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodeNodesItem>;
 
 /** Entities to combine in this group */
-export type GroupNodeNodesList = GroupNodeNodesItem[];
+export type GroupNodeNodesList = ReadonlyArray<GroupNodeNodesItem>;
 export const GroupNodeNodesList = /*@__PURE__*/ S.Array(
   GroupNodeNodesItem,
 ) as any as S.Schema<GroupNodeNodesList>;
 
-export type GroupNodeOrderByList = string[];
+export type GroupNodeOrderByList = ReadonlyArray<string>;
 export const GroupNodeOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupNodeOrderByList>;
@@ -2988,7 +2960,7 @@ export type GroupNodePropertiesItem =
 export const GroupNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupNodePropertiesItem>;
 
-export type GroupNodePropertiesList = GroupNodePropertiesItem[];
+export type GroupNodePropertiesList = ReadonlyArray<GroupNodePropertiesItem>;
 export const GroupNodePropertiesList = /*@__PURE__*/ S.Array(
   GroupNodePropertiesItem,
 ) as any as S.Schema<GroupNodePropertiesList>;
@@ -3006,7 +2978,7 @@ export interface GroupNode {
   kind?: string;
   limit?: number | null;
   math?: GroupNodeMath | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -3033,7 +3005,7 @@ export const GroupNode = /*@__PURE__*/ S.suspend(() =>
     kind: S.optional(S.String),
     limit: S.optional(S.NullOr(S.Number)),
     math: S.optional(S.NullOr(GroupNodeMath)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -3061,7 +3033,7 @@ export const TrendsQuerySeriesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsQuerySeriesItem>;
 
 /** Events and actions to include */
-export type TrendsQuerySeriesList = TrendsQuerySeriesItem[];
+export type TrendsQuerySeriesList = ReadonlyArray<TrendsQuerySeriesItem>;
 export const TrendsQuerySeriesList = /*@__PURE__*/ S.Array(
   TrendsQuerySeriesItem,
 ) as any as S.Schema<TrendsQuerySeriesList>;
@@ -3090,11 +3062,10 @@ export type AggregationAxisFormat =
   | "percentage"
   | "percentage_scaled"
   | "currency"
-  | "short"
-  | (string & {});
+  | "short";
 export const AggregationAxisFormat = /*@__PURE__*/ S.String;
 
-export type Curve = "linear" | "smooth" | (string & {});
+export type Curve = "linear" | "smooth";
 export const Curve = /*@__PURE__*/ S.String;
 
 export interface ChartStyle {
@@ -3107,11 +3078,7 @@ export const ChartStyle = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChartStyle" }) as any as S.Schema<ChartStyle>;
 
-export type DetailedResultsAggregationType =
-  | "total"
-  | "average"
-  | "median"
-  | (string & {});
+export type DetailedResultsAggregationType = "total" | "average" | "median";
 export const DetailedResultsAggregationType = /*@__PURE__*/ S.String;
 
 export type ChartDisplayType =
@@ -3131,8 +3098,7 @@ export type ChartDisplayType =
   | "CalendarHeatmap"
   | "TwoDimensionalHeatmap"
   | "BoxPlot"
-  | "SlopeGraph"
-  | (string & {});
+  | "SlopeGraph";
 export const ChartDisplayType = /*@__PURE__*/ S.String;
 
 export interface TrendsFormulaNode {
@@ -3149,17 +3115,17 @@ export const TrendsFormulaNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrendsFormulaNode",
 }) as any as S.Schema<TrendsFormulaNode>;
 
-export type TrendsFilterFormulaNodesList = TrendsFormulaNode[];
+export type TrendsFilterFormulaNodesList = ReadonlyArray<TrendsFormulaNode>;
 export const TrendsFilterFormulaNodesList = /*@__PURE__*/ S.Array(
   TrendsFormulaNode,
 ) as any as S.Schema<TrendsFilterFormulaNodesList>;
 
-export type TrendsFilterFormulasList = string[];
+export type TrendsFilterFormulasList = ReadonlyArray<string>;
 export const TrendsFilterFormulasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TrendsFilterFormulasList>;
 
-export type Position = "start" | "end" | (string & {});
+export type Position = "start" | "end";
 export const Position = /*@__PURE__*/ S.String;
 
 export interface GoalLine {
@@ -3181,28 +3147,23 @@ export const GoalLine = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GoalLine" }) as any as S.Schema<GoalLine>;
 
-export type TrendsFilterGoalLinesList = GoalLine[];
+export type TrendsFilterGoalLinesList = ReadonlyArray<GoalLine>;
 export const TrendsFilterGoalLinesList = /*@__PURE__*/ S.Array(
   GoalLine,
 ) as any as S.Schema<TrendsFilterGoalLinesList>;
 
-export type TrendsFilterHiddenLegendIndexesList = number[];
+export type TrendsFilterHiddenLegendIndexesList = ReadonlyArray<number>;
 export const TrendsFilterHiddenLegendIndexesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<TrendsFilterHiddenLegendIndexesList>;
 
-export type LegendPosition =
-  | "top"
-  | "bottom"
-  | "left"
-  | "right"
-  | (string & {});
+export type LegendPosition = "top" | "bottom" | "left" | "right";
 export const LegendPosition = /*@__PURE__*/ S.String;
 
-export type MetricSummary = "total" | "average" | "latest" | (string & {});
+export type MetricSummary = "total" | "average" | "latest";
 export const MetricSummary = /*@__PURE__*/ S.String;
 
-export type ResultCustomizationBy = "value" | "position" | (string & {});
+export type ResultCustomizationBy = "value" | "position";
 export const ResultCustomizationBy = /*@__PURE__*/ S.String;
 
 export type DataColorToken =
@@ -3220,8 +3181,7 @@ export type DataColorToken =
   | "preset-12"
   | "preset-13"
   | "preset-14"
-  | "preset-15"
-  | (string & {});
+  | "preset-15";
 export const DataColorToken = /*@__PURE__*/ S.String;
 
 export interface ResultCustomizationByValue {
@@ -3277,7 +3237,7 @@ export type TrendsFilterResultCustomizations =
 export const TrendsFilterResultCustomizations =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TrendsFilterResultCustomizations>;
 
-export type YAxisScaleType = "log10" | "linear" | (string & {});
+export type YAxisScaleType = "log10" | "linear";
 export const YAxisScaleType = /*@__PURE__*/ S.String;
 
 export interface TrendsFilter {
@@ -3463,8 +3423,7 @@ export type BreakdownAttributionType =
   | "first_touch"
   | "last_touch"
   | "all_events"
-  | "step"
-  | (string & {});
+  | "step";
 export const BreakdownAttributionType = /*@__PURE__*/ S.String;
 
 export type FunnelExclusionEventsNodeFixedPropertiesItem =
@@ -3495,7 +3454,7 @@ export const FunnelExclusionEventsNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionEventsNodeFixedPropertiesItem>;
 
 export type FunnelExclusionEventsNodeFixedPropertiesList =
-  FunnelExclusionEventsNodeFixedPropertiesItem[];
+  ReadonlyArray<FunnelExclusionEventsNodeFixedPropertiesItem>;
 export const FunnelExclusionEventsNodeFixedPropertiesList =
   /*@__PURE__*/ S.Array(
     FunnelExclusionEventsNodeFixedPropertiesItem,
@@ -3512,7 +3471,7 @@ export type FunnelExclusionEventsNodeMath =
 export const FunnelExclusionEventsNodeMath =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionEventsNodeMath>;
 
-export type FunnelExclusionEventsNodeOrderByList = string[];
+export type FunnelExclusionEventsNodeOrderByList = ReadonlyArray<string>;
 export const FunnelExclusionEventsNodeOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FunnelExclusionEventsNodeOrderByList>;
@@ -3545,7 +3504,7 @@ export const FunnelExclusionEventsNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionEventsNodePropertiesItem>;
 
 export type FunnelExclusionEventsNodePropertiesList =
-  FunnelExclusionEventsNodePropertiesItem[];
+  ReadonlyArray<FunnelExclusionEventsNodePropertiesItem>;
 export const FunnelExclusionEventsNodePropertiesList = /*@__PURE__*/ S.Array(
   FunnelExclusionEventsNodePropertiesItem,
 ) as any as S.Schema<FunnelExclusionEventsNodePropertiesList>;
@@ -3569,7 +3528,7 @@ export interface FunnelExclusionEventsNode {
   kind?: string;
   limit?: number | null;
   math?: FunnelExclusionEventsNodeMath | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -3597,7 +3556,7 @@ export const FunnelExclusionEventsNode = /*@__PURE__*/ S.suspend(() =>
     kind: S.optional(S.String),
     limit: S.optional(S.NullOr(S.Number)),
     math: S.optional(S.NullOr(FunnelExclusionEventsNodeMath)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -3644,7 +3603,7 @@ export const FunnelExclusionActionsNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionActionsNodeFixedPropertiesItem>;
 
 export type FunnelExclusionActionsNodeFixedPropertiesList =
-  FunnelExclusionActionsNodeFixedPropertiesItem[];
+  ReadonlyArray<FunnelExclusionActionsNodeFixedPropertiesItem>;
 export const FunnelExclusionActionsNodeFixedPropertiesList =
   /*@__PURE__*/ S.Array(
     FunnelExclusionActionsNodeFixedPropertiesItem,
@@ -3689,7 +3648,7 @@ export const FunnelExclusionActionsNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelExclusionActionsNodePropertiesItem>;
 
 export type FunnelExclusionActionsNodePropertiesList =
-  FunnelExclusionActionsNodePropertiesItem[];
+  ReadonlyArray<FunnelExclusionActionsNodePropertiesItem>;
 export const FunnelExclusionActionsNodePropertiesList = /*@__PURE__*/ S.Array(
   FunnelExclusionActionsNodePropertiesItem,
 ) as any as S.Schema<FunnelExclusionActionsNodePropertiesList>;
@@ -3711,7 +3670,7 @@ export interface FunnelExclusionActionsNode {
   id?: number;
   kind?: string;
   math?: FunnelExclusionActionsNodeMath | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -3736,7 +3695,7 @@ export const FunnelExclusionActionsNode = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.Number),
     kind: S.optional(S.String),
     math: S.optional(S.NullOr(FunnelExclusionActionsNodeMath)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -3760,23 +3719,19 @@ export type FunnelsFilterExclusionsItem =
 export const FunnelsFilterExclusionsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsFilterExclusionsItem>;
 
-export type FunnelsFilterExclusionsList = FunnelsFilterExclusionsItem[];
+export type FunnelsFilterExclusionsList =
+  ReadonlyArray<FunnelsFilterExclusionsItem>;
 export const FunnelsFilterExclusionsList = /*@__PURE__*/ S.Array(
   FunnelsFilterExclusionsItem,
 ) as any as S.Schema<FunnelsFilterExclusionsList>;
 
-export type StepOrderValue = "strict" | "unordered" | "ordered" | (string & {});
+export type StepOrderValue = "strict" | "unordered" | "ordered";
 export const StepOrderValue = /*@__PURE__*/ S.String;
 
-export type FunnelStepReference = "total" | "previous" | (string & {});
+export type FunnelStepReference = "total" | "previous";
 export const FunnelStepReference = /*@__PURE__*/ S.String;
 
-export type FunnelVizType =
-  | "steps"
-  | "time_to_convert"
-  | "trends"
-  | "flow"
-  | (string & {});
+export type FunnelVizType = "steps" | "time_to_convert" | "trends" | "flow";
 export const FunnelVizType = /*@__PURE__*/ S.String;
 
 export type FunnelConversionWindowTimeUnit =
@@ -3785,21 +3740,20 @@ export type FunnelConversionWindowTimeUnit =
   | "hour"
   | "day"
   | "week"
-  | "month"
-  | (string & {});
+  | "month";
 export const FunnelConversionWindowTimeUnit = /*@__PURE__*/ S.String;
 
-export type FunnelsFilterGoalLinesList = GoalLine[];
+export type FunnelsFilterGoalLinesList = ReadonlyArray<GoalLine>;
 export const FunnelsFilterGoalLinesList = /*@__PURE__*/ S.Array(
   GoalLine,
 ) as any as S.Schema<FunnelsFilterGoalLinesList>;
 
-export type FunnelsFilterHiddenLegendBreakdownsList = string[];
+export type FunnelsFilterHiddenLegendBreakdownsList = ReadonlyArray<string>;
 export const FunnelsFilterHiddenLegendBreakdownsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FunnelsFilterHiddenLegendBreakdownsList>;
 
-export type FunnelLayout = "horizontal" | "vertical" | (string & {});
+export type FunnelLayout = "horizontal" | "vertical";
 export const FunnelLayout = /*@__PURE__*/ S.String;
 
 export type FunnelsFilterResultCustomizationsMap = {
@@ -3913,7 +3867,8 @@ export type FunnelsQueryPropertiesCase0Item =
 export const FunnelsQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsQueryPropertiesCase0Item>;
 
-export type FunnelsQueryPropertiesCase0List = FunnelsQueryPropertiesCase0Item[];
+export type FunnelsQueryPropertiesCase0List =
+  ReadonlyArray<FunnelsQueryPropertiesCase0Item>;
 export const FunnelsQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   FunnelsQueryPropertiesCase0Item,
 ) as any as S.Schema<FunnelsQueryPropertiesCase0List>;
@@ -3925,13 +3880,13 @@ export type FunnelsQueryProperties =
 export const FunnelsQueryProperties =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsQueryProperties>;
 
-export type FunnelsQueryResponseTimingsList = QueryTiming[];
+export type FunnelsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const FunnelsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<FunnelsQueryResponseTimingsList>;
 
 export type FunnelsQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const FunnelsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -3944,7 +3899,7 @@ export const FunnelsQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsQueryResponseWarningsItem>;
 
 export type FunnelsQueryResponseWarningsList =
-  FunnelsQueryResponseWarningsItem[];
+  ReadonlyArray<FunnelsQueryResponseWarningsItem>;
 export const FunnelsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   FunnelsQueryResponseWarningsItem,
 ) as any as S.Schema<FunnelsQueryResponseWarningsList>;
@@ -4022,7 +3977,7 @@ export const FunnelsDataWarehouseNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsDataWarehouseNodeFixedPropertiesItem>;
 
 export type FunnelsDataWarehouseNodeFixedPropertiesList =
-  FunnelsDataWarehouseNodeFixedPropertiesItem[];
+  ReadonlyArray<FunnelsDataWarehouseNodeFixedPropertiesItem>;
 export const FunnelsDataWarehouseNodeFixedPropertiesList =
   /*@__PURE__*/ S.Array(
     FunnelsDataWarehouseNodeFixedPropertiesItem,
@@ -4067,7 +4022,7 @@ export const FunnelsDataWarehouseNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsDataWarehouseNodePropertiesItem>;
 
 export type FunnelsDataWarehouseNodePropertiesList =
-  FunnelsDataWarehouseNodePropertiesItem[];
+  ReadonlyArray<FunnelsDataWarehouseNodePropertiesItem>;
 export const FunnelsDataWarehouseNodePropertiesList = /*@__PURE__*/ S.Array(
   FunnelsDataWarehouseNodePropertiesItem,
 ) as any as S.Schema<FunnelsDataWarehouseNodePropertiesList>;
@@ -4090,7 +4045,7 @@ export interface FunnelsDataWarehouseNode {
   id_field?: string;
   kind?: string;
   math?: FunnelsDataWarehouseNodeMath | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -4118,7 +4073,7 @@ export const FunnelsDataWarehouseNode = /*@__PURE__*/ S.suspend(() =>
     id_field: S.optional(S.String),
     kind: S.optional(S.String),
     math: S.optional(S.NullOr(FunnelsDataWarehouseNodeMath)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -4147,7 +4102,7 @@ export const FunnelsQuerySeriesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsQuerySeriesItem>;
 
 /** Events and actions to include */
-export type FunnelsQuerySeriesList = FunnelsQuerySeriesItem[];
+export type FunnelsQuerySeriesList = ReadonlyArray<FunnelsQuerySeriesItem>;
 export const FunnelsQuerySeriesList = /*@__PURE__*/ S.Array(
   FunnelsQuerySeriesItem,
 ) as any as S.Schema<FunnelsQuerySeriesList>;
@@ -4233,7 +4188,7 @@ export const RetentionQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionQueryPropertiesCase0Item>;
 
 export type RetentionQueryPropertiesCase0List =
-  RetentionQueryPropertiesCase0Item[];
+  ReadonlyArray<RetentionQueryPropertiesCase0Item>;
 export const RetentionQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   RetentionQueryPropertiesCase0Item,
 ) as any as S.Schema<RetentionQueryPropertiesCase0List>;
@@ -4263,7 +4218,7 @@ export const RetentionValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RetentionValue" }) as any as S.Schema<RetentionValue>;
 
-export type RetentionResultValuesList = RetentionValue[];
+export type RetentionResultValuesList = ReadonlyArray<RetentionValue>;
 export const RetentionResultValuesList = /*@__PURE__*/ S.Array(
   RetentionValue,
 ) as any as S.Schema<RetentionResultValuesList>;
@@ -4286,18 +4241,18 @@ export const RetentionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetentionResult",
 }) as any as S.Schema<RetentionResult>;
 
-export type RetentionQueryResponseResultsList = RetentionResult[];
+export type RetentionQueryResponseResultsList = ReadonlyArray<RetentionResult>;
 export const RetentionQueryResponseResultsList = /*@__PURE__*/ S.Array(
   RetentionResult,
 ) as any as S.Schema<RetentionQueryResponseResultsList>;
 
-export type RetentionQueryResponseTimingsList = QueryTiming[];
+export type RetentionQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const RetentionQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<RetentionQueryResponseTimingsList>;
 
 export type RetentionQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const RetentionQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -4310,7 +4265,7 @@ export const RetentionQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionQueryResponseWarningsItem>;
 
 export type RetentionQueryResponseWarningsList =
-  RetentionQueryResponseWarningsItem[];
+  ReadonlyArray<RetentionQueryResponseWarningsItem>;
 export const RetentionQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   RetentionQueryResponseWarningsItem,
 ) as any as S.Schema<RetentionQueryResponseWarningsList>;
@@ -4357,58 +4312,45 @@ export const RetentionQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetentionQueryResponse",
 }) as any as S.Schema<RetentionQueryResponse>;
 
-export type AggregationPropertyType =
-  | "event"
-  | "person"
-  | "data_warehouse"
-  | (string & {});
+export type AggregationPropertyType = "event" | "person" | "data_warehouse";
 export const AggregationPropertyType = /*@__PURE__*/ S.String;
 
-export type AggregationType = "count" | "sum" | "avg" | (string & {});
+export type AggregationType = "count" | "sum" | "avg";
 export const AggregationType = /*@__PURE__*/ S.String;
 
-export type RetentionDashboardDisplayType =
-  | "table_only"
-  | "graph_only"
-  | "all"
-  | (string & {});
+export type RetentionDashboardDisplayType = "table_only" | "graph_only" | "all";
 export const RetentionDashboardDisplayType = /*@__PURE__*/ S.String;
 
-export type RetentionFilterGoalLinesList = GoalLine[];
+export type RetentionFilterGoalLinesList = ReadonlyArray<GoalLine>;
 export const RetentionFilterGoalLinesList = /*@__PURE__*/ S.Array(
   GoalLine,
 ) as any as S.Schema<RetentionFilterGoalLinesList>;
 
-export type MeanRetentionCalculation =
-  | "simple"
-  | "weighted"
-  | "none"
-  | (string & {});
+export type MeanRetentionCalculation = "simple" | "weighted" | "none";
 export const MeanRetentionCalculation = /*@__PURE__*/ S.String;
 
-export type RetentionPeriod = "Hour" | "Day" | "Week" | "Month" | (string & {});
+export type RetentionPeriod = "Hour" | "Day" | "Week" | "Month";
 export const RetentionPeriod = /*@__PURE__*/ S.String;
 
-export type RetentionFilterRetentionCustomBracketsList = number[];
+export type RetentionFilterRetentionCustomBracketsList = ReadonlyArray<number>;
 export const RetentionFilterRetentionCustomBracketsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RetentionFilterRetentionCustomBracketsList>;
 
-export type RetentionReference = "total" | "previous" | (string & {});
+export type RetentionReference = "total" | "previous";
 export const RetentionReference = /*@__PURE__*/ S.String;
 
 export type RetentionType =
   | "retention_recurring"
   | "retention_first_time"
-  | "retention_first_ever_occurrence"
-  | (string & {});
+  | "retention_first_ever_occurrence";
 export const RetentionType = /*@__PURE__*/ S.String;
 
 export type RetentionEntityId = string | number;
 export const RetentionEntityId =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionEntityId>;
 
-export type RetentionEntityKind = "ActionsNode" | "EventsNode" | (string & {});
+export type RetentionEntityKind = "ActionsNode" | "EventsNode";
 export const RetentionEntityKind = /*@__PURE__*/ S.String;
 
 export type RetentionEntityPropertiesItem =
@@ -4438,7 +4380,8 @@ export type RetentionEntityPropertiesItem =
 export const RetentionEntityPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionEntityPropertiesItem>;
 
-export type RetentionEntityPropertiesList = RetentionEntityPropertiesItem[];
+export type RetentionEntityPropertiesList =
+  ReadonlyArray<RetentionEntityPropertiesItem>;
 export const RetentionEntityPropertiesList = /*@__PURE__*/ S.Array(
   RetentionEntityPropertiesItem,
 ) as any as S.Schema<RetentionEntityPropertiesList>;
@@ -4448,8 +4391,7 @@ export type EntityType =
   | "events"
   | "data_warehouse"
   | "new_entity"
-  | "groups"
-  | (string & {});
+  | "groups";
 export const EntityType = /*@__PURE__*/ S.String;
 
 export interface RetentionEntity {
@@ -4487,10 +4429,7 @@ export const RetentionEntity = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetentionEntity",
 }) as any as S.Schema<RetentionEntity>;
 
-export type TimeWindowMode =
-  | "strict_calendar_dates"
-  | "24_hour_windows"
-  | (string & {});
+export type TimeWindowMode = "strict_calendar_dates" | "24_hour_windows";
 export const TimeWindowMode = /*@__PURE__*/ S.String;
 
 export interface RetentionFilter {
@@ -4606,8 +4545,7 @@ export const RetentionQuery = /*@__PURE__*/ S.suspend(() =>
 export type FunnelPathType =
   | "funnel_path_before_step"
   | "funnel_path_between_steps"
-  | "funnel_path_after_step"
-  | (string & {});
+  | "funnel_path_after_step";
 export const FunnelPathType = /*@__PURE__*/ S.String;
 
 export interface FunnelPathsFilter {
@@ -4625,20 +4563,15 @@ export const FunnelPathsFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelPathsFilter",
 }) as any as S.Schema<FunnelPathsFilter>;
 
-export type PathsFilterExcludeEventsList = string[];
+export type PathsFilterExcludeEventsList = ReadonlyArray<string>;
 export const PathsFilterExcludeEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PathsFilterExcludeEventsList>;
 
-export type PathType =
-  | "$pageview"
-  | "$screen"
-  | "custom_event"
-  | "hogql"
-  | (string & {});
+export type PathType = "$pageview" | "$screen" | "custom_event" | "hogql";
 export const PathType = /*@__PURE__*/ S.String;
 
-export type PathsFilterIncludeEventTypesList = PathType[];
+export type PathsFilterIncludeEventTypesList = ReadonlyArray<PathType>;
 export const PathsFilterIncludeEventTypesList = /*@__PURE__*/ S.Array(
   PathType,
 ) as any as S.Schema<PathsFilterIncludeEventTypesList>;
@@ -4658,12 +4591,13 @@ export const PathCleaningFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PathCleaningFilter",
 }) as any as S.Schema<PathCleaningFilter>;
 
-export type PathsFilterLocalPathCleaningFiltersList = PathCleaningFilter[];
+export type PathsFilterLocalPathCleaningFiltersList =
+  ReadonlyArray<PathCleaningFilter>;
 export const PathsFilterLocalPathCleaningFiltersList = /*@__PURE__*/ S.Array(
   PathCleaningFilter,
 ) as any as S.Schema<PathsFilterLocalPathCleaningFiltersList>;
 
-export type PathsFilterPathGroupingsList = string[];
+export type PathsFilterPathGroupingsList = ReadonlyArray<string>;
 export const PathsFilterPathGroupingsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PathsFilterPathGroupingsList>;
@@ -4739,7 +4673,8 @@ export type PathsQueryPropertiesCase0Item =
 export const PathsQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PathsQueryPropertiesCase0Item>;
 
-export type PathsQueryPropertiesCase0List = PathsQueryPropertiesCase0Item[];
+export type PathsQueryPropertiesCase0List =
+  ReadonlyArray<PathsQueryPropertiesCase0Item>;
 export const PathsQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   PathsQueryPropertiesCase0Item,
 ) as any as S.Schema<PathsQueryPropertiesCase0List>;
@@ -4766,18 +4701,18 @@ export const PathsLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathsLink" }) as any as S.Schema<PathsLink>;
 
-export type PathsQueryResponseResultsList = PathsLink[];
+export type PathsQueryResponseResultsList = ReadonlyArray<PathsLink>;
 export const PathsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   PathsLink,
 ) as any as S.Schema<PathsQueryResponseResultsList>;
 
-export type PathsQueryResponseTimingsList = QueryTiming[];
+export type PathsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const PathsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<PathsQueryResponseTimingsList>;
 
 export type PathsQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const PathsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -4789,7 +4724,8 @@ export type PathsQueryResponseWarningsItem =
 export const PathsQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PathsQueryResponseWarningsItem>;
 
-export type PathsQueryResponseWarningsList = PathsQueryResponseWarningsItem[];
+export type PathsQueryResponseWarningsList =
+  ReadonlyArray<PathsQueryResponseWarningsItem>;
 export const PathsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   PathsQueryResponseWarningsItem,
 ) as any as S.Schema<PathsQueryResponseWarningsList>;
@@ -4908,7 +4844,7 @@ export const StickinessQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<StickinessQueryPropertiesCase0Item>;
 
 export type StickinessQueryPropertiesCase0List =
-  StickinessQueryPropertiesCase0Item[];
+  ReadonlyArray<StickinessQueryPropertiesCase0Item>;
 export const StickinessQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   StickinessQueryPropertiesCase0Item,
 ) as any as S.Schema<StickinessQueryPropertiesCase0List>;
@@ -4929,18 +4865,18 @@ export const StickinessQueryResponseResultsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StickinessQueryResponseResultsItemMap>;
 
 export type StickinessQueryResponseResultsList =
-  StickinessQueryResponseResultsItemMap[];
+  ReadonlyArray<StickinessQueryResponseResultsItemMap>;
 export const StickinessQueryResponseResultsList = /*@__PURE__*/ S.Array(
   StickinessQueryResponseResultsItemMap,
 ) as any as S.Schema<StickinessQueryResponseResultsList>;
 
-export type StickinessQueryResponseTimingsList = QueryTiming[];
+export type StickinessQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const StickinessQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<StickinessQueryResponseTimingsList>;
 
 export type StickinessQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const StickinessQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -4953,7 +4889,7 @@ export const StickinessQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<StickinessQueryResponseWarningsItem>;
 
 export type StickinessQueryResponseWarningsList =
-  StickinessQueryResponseWarningsItem[];
+  ReadonlyArray<StickinessQueryResponseWarningsItem>;
 export const StickinessQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   StickinessQueryResponseWarningsItem,
 ) as any as S.Schema<StickinessQueryResponseWarningsList>;
@@ -5008,18 +4944,16 @@ export const StickinessQuerySeriesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<StickinessQuerySeriesItem>;
 
 /** Events and actions to include */
-export type StickinessQuerySeriesList = StickinessQuerySeriesItem[];
+export type StickinessQuerySeriesList =
+  ReadonlyArray<StickinessQuerySeriesItem>;
 export const StickinessQuerySeriesList = /*@__PURE__*/ S.Array(
   StickinessQuerySeriesItem,
 ) as any as S.Schema<StickinessQuerySeriesList>;
 
-export type StickinessComputationMode =
-  | "non_cumulative"
-  | "cumulative"
-  | (string & {});
+export type StickinessComputationMode = "non_cumulative" | "cumulative";
 export const StickinessComputationMode = /*@__PURE__*/ S.String;
 
-export type StickinessFilterHiddenLegendIndexesList = number[];
+export type StickinessFilterHiddenLegendIndexesList = ReadonlyArray<number>;
 export const StickinessFilterHiddenLegendIndexesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<StickinessFilterHiddenLegendIndexesList>;
@@ -5049,7 +4983,7 @@ export type StickinessFilterResultCustomizations =
 export const StickinessFilterResultCustomizations =
   /*@__PURE__*/ S.Unknown as any as S.Schema<StickinessFilterResultCustomizations>;
 
-export type StickinessOperator = "gte" | "lte" | "exact" | (string & {});
+export type StickinessOperator = "gte" | "lte" | "exact";
 export const StickinessOperator = /*@__PURE__*/ S.String;
 
 export interface StickinessCriteria {
@@ -5156,15 +5090,11 @@ export const StickinessQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "StickinessQuery",
 }) as any as S.Schema<StickinessQuery>;
 
-export type LifecycleToggle =
-  | "new"
-  | "resurrecting"
-  | "returning"
-  | "dormant"
-  | (string & {});
+export type LifecycleToggle = "new" | "resurrecting" | "returning" | "dormant";
 export const LifecycleToggle = /*@__PURE__*/ S.String;
 
-export type LifecycleFilterToggledLifecyclesList = LifecycleToggle[];
+export type LifecycleFilterToggledLifecyclesList =
+  ReadonlyArray<LifecycleToggle>;
 export const LifecycleFilterToggledLifecyclesList = /*@__PURE__*/ S.Array(
   LifecycleToggle,
 ) as any as S.Schema<LifecycleFilterToggledLifecyclesList>;
@@ -5222,7 +5152,7 @@ export const LifecycleQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleQueryPropertiesCase0Item>;
 
 export type LifecycleQueryPropertiesCase0List =
-  LifecycleQueryPropertiesCase0Item[];
+  ReadonlyArray<LifecycleQueryPropertiesCase0Item>;
 export const LifecycleQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   LifecycleQueryPropertiesCase0Item,
 ) as any as S.Schema<LifecycleQueryPropertiesCase0List>;
@@ -5243,18 +5173,18 @@ export const LifecycleQueryResponseResultsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LifecycleQueryResponseResultsItemMap>;
 
 export type LifecycleQueryResponseResultsList =
-  LifecycleQueryResponseResultsItemMap[];
+  ReadonlyArray<LifecycleQueryResponseResultsItemMap>;
 export const LifecycleQueryResponseResultsList = /*@__PURE__*/ S.Array(
   LifecycleQueryResponseResultsItemMap,
 ) as any as S.Schema<LifecycleQueryResponseResultsList>;
 
-export type LifecycleQueryResponseTimingsList = QueryTiming[];
+export type LifecycleQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const LifecycleQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<LifecycleQueryResponseTimingsList>;
 
 export type LifecycleQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const LifecycleQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -5267,7 +5197,7 @@ export const LifecycleQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleQueryResponseWarningsItem>;
 
 export type LifecycleQueryResponseWarningsList =
-  LifecycleQueryResponseWarningsItem[];
+  ReadonlyArray<LifecycleQueryResponseWarningsItem>;
 export const LifecycleQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   LifecycleQueryResponseWarningsItem,
 ) as any as S.Schema<LifecycleQueryResponseWarningsList>;
@@ -5342,7 +5272,7 @@ export const LifecycleDataWarehouseNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleDataWarehouseNodeFixedPropertiesItem>;
 
 export type LifecycleDataWarehouseNodeFixedPropertiesList =
-  LifecycleDataWarehouseNodeFixedPropertiesItem[];
+  ReadonlyArray<LifecycleDataWarehouseNodeFixedPropertiesItem>;
 export const LifecycleDataWarehouseNodeFixedPropertiesList =
   /*@__PURE__*/ S.Array(
     LifecycleDataWarehouseNodeFixedPropertiesItem,
@@ -5387,7 +5317,7 @@ export const LifecycleDataWarehouseNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleDataWarehouseNodePropertiesItem>;
 
 export type LifecycleDataWarehouseNodePropertiesList =
-  LifecycleDataWarehouseNodePropertiesItem[];
+  ReadonlyArray<LifecycleDataWarehouseNodePropertiesItem>;
 export const LifecycleDataWarehouseNodePropertiesList = /*@__PURE__*/ S.Array(
   LifecycleDataWarehouseNodePropertiesItem,
 ) as any as S.Schema<LifecycleDataWarehouseNodePropertiesList>;
@@ -5409,7 +5339,7 @@ export interface LifecycleDataWarehouseNode {
   id?: string;
   kind?: string;
   math?: LifecycleDataWarehouseNodeMath | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -5436,7 +5366,7 @@ export const LifecycleDataWarehouseNode = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     kind: S.optional(S.String),
     math: S.optional(S.NullOr(LifecycleDataWarehouseNodeMath)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -5464,7 +5394,7 @@ export const LifecycleQuerySeriesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<LifecycleQuerySeriesItem>;
 
 /** Events and actions to include */
-export type LifecycleQuerySeriesList = LifecycleQuerySeriesItem[];
+export type LifecycleQuerySeriesList = ReadonlyArray<LifecycleQuerySeriesItem>;
 export const LifecycleQuerySeriesList = /*@__PURE__*/ S.Array(
   LifecycleQuerySeriesItem,
 ) as any as S.Schema<LifecycleQuerySeriesList>;
@@ -5544,8 +5474,7 @@ export type WebStatsBreakdown =
   | "City"
   | "Timezone"
   | "Language"
-  | "FrustrationMetrics"
-  | (string & {});
+  | "FrustrationMetrics";
 export const WebStatsBreakdown = /*@__PURE__*/ S.String;
 
 export type WebStatsTableQueryConversionGoal =
@@ -5568,11 +5497,10 @@ export type WebAnalyticsOrderByFields =
   | "ConvertingUsers"
   | "RageClicks"
   | "DeadClicks"
-  | "Errors"
-  | (string & {});
+  | "Errors";
 export const WebAnalyticsOrderByFields = /*@__PURE__*/ S.String;
 
-export type WebAnalyticsOrderByDirection = "ASC" | "DESC" | (string & {});
+export type WebAnalyticsOrderByDirection = "ASC" | "DESC";
 export const WebAnalyticsOrderByDirection = /*@__PURE__*/ S.String;
 
 export type WebStatsTableQueryOrderByItem =
@@ -5581,7 +5509,8 @@ export type WebStatsTableQueryOrderByItem =
 export const WebStatsTableQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebStatsTableQueryOrderByItem>;
 
-export type WebStatsTableQueryOrderByList = WebStatsTableQueryOrderByItem[];
+export type WebStatsTableQueryOrderByList =
+  ReadonlyArray<WebStatsTableQueryOrderByItem>;
 export const WebStatsTableQueryOrderByList = /*@__PURE__*/ S.Array(
   WebStatsTableQueryOrderByItem,
 ) as any as S.Schema<WebStatsTableQueryOrderByList>;
@@ -5595,12 +5524,12 @@ export const WebStatsTableQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebStatsTableQueryPropertiesItem>;
 
 export type WebStatsTableQueryPropertiesList =
-  WebStatsTableQueryPropertiesItem[];
+  ReadonlyArray<WebStatsTableQueryPropertiesItem>;
 export const WebStatsTableQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebStatsTableQueryPropertiesItem,
 ) as any as S.Schema<WebStatsTableQueryPropertiesList>;
 
-export type WebStatsTableQueryResponseColumnsList = unknown[];
+export type WebStatsTableQueryResponseColumnsList = ReadonlyArray<unknown>;
 export const WebStatsTableQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebStatsTableQueryResponseColumnsList>;
@@ -5608,11 +5537,10 @@ export const WebStatsTableQueryResponseColumnsList = /*@__PURE__*/ S.Array(
 export type WebAnalyticsPreComputeStrategy =
   | "pre_aggregated"
   | "lazy_precompute"
-  | "live"
-  | (string & {});
+  | "live";
 export const WebAnalyticsPreComputeStrategy = /*@__PURE__*/ S.String;
 
-export type WebStatsTableQueryResponseResultsList = unknown[];
+export type WebStatsTableQueryResponseResultsList = ReadonlyArray<unknown>;
 export const WebStatsTableQueryResponseResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebStatsTableQueryResponseResultsList>;
@@ -5628,18 +5556,18 @@ export const SamplingRate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SamplingRate" }) as any as S.Schema<SamplingRate>;
 
-export type WebStatsTableQueryResponseTimingsList = QueryTiming[];
+export type WebStatsTableQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const WebStatsTableQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<WebStatsTableQueryResponseTimingsList>;
 
-export type WebStatsTableQueryResponseTypesList = unknown[];
+export type WebStatsTableQueryResponseTypesList = ReadonlyArray<unknown>;
 export const WebStatsTableQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebStatsTableQueryResponseTypesList>;
 
 export type WebStatsTableQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const WebStatsTableQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -5652,7 +5580,7 @@ export const WebStatsTableQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebStatsTableQueryResponseWarningsItem>;
 
 export type WebStatsTableQueryResponseWarningsList =
-  WebStatsTableQueryResponseWarningsItem[];
+  ReadonlyArray<WebStatsTableQueryResponseWarningsItem>;
 export const WebStatsTableQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   WebStatsTableQueryResponseWarningsItem,
 ) as any as S.Schema<WebStatsTableQueryResponseWarningsList>;
@@ -5811,7 +5739,8 @@ export type WebOverviewQueryOrderByItem =
 export const WebOverviewQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebOverviewQueryOrderByItem>;
 
-export type WebOverviewQueryOrderByList = WebOverviewQueryOrderByItem[];
+export type WebOverviewQueryOrderByList =
+  ReadonlyArray<WebOverviewQueryOrderByItem>;
 export const WebOverviewQueryOrderByList = /*@__PURE__*/ S.Array(
   WebOverviewQueryOrderByItem,
 ) as any as S.Schema<WebOverviewQueryOrderByList>;
@@ -5824,7 +5753,8 @@ export type WebOverviewQueryPropertiesItem =
 export const WebOverviewQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebOverviewQueryPropertiesItem>;
 
-export type WebOverviewQueryPropertiesList = WebOverviewQueryPropertiesItem[];
+export type WebOverviewQueryPropertiesList =
+  ReadonlyArray<WebOverviewQueryPropertiesItem>;
 export const WebOverviewQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebOverviewQueryPropertiesItem,
 ) as any as S.Schema<WebOverviewQueryPropertiesList>;
@@ -5833,8 +5763,7 @@ export type WebAnalyticsItemKind =
   | "unit"
   | "duration_s"
   | "percentage"
-  | "currency"
-  | (string & {});
+  | "currency";
 export const WebAnalyticsItemKind = /*@__PURE__*/ S.String;
 
 export interface WebOverviewItem {
@@ -5858,18 +5787,19 @@ export const WebOverviewItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebOverviewItem",
 }) as any as S.Schema<WebOverviewItem>;
 
-export type WebOverviewQueryResponseResultsList = WebOverviewItem[];
+export type WebOverviewQueryResponseResultsList =
+  ReadonlyArray<WebOverviewItem>;
 export const WebOverviewQueryResponseResultsList = /*@__PURE__*/ S.Array(
   WebOverviewItem,
 ) as any as S.Schema<WebOverviewQueryResponseResultsList>;
 
-export type WebOverviewQueryResponseTimingsList = QueryTiming[];
+export type WebOverviewQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const WebOverviewQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<WebOverviewQueryResponseTimingsList>;
 
 export type WebOverviewQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const WebOverviewQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -5882,7 +5812,7 @@ export const WebOverviewQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebOverviewQueryResponseWarningsItem>;
 
 export type WebOverviewQueryResponseWarningsList =
-  WebOverviewQueryResponseWarningsItem[];
+  ReadonlyArray<WebOverviewQueryResponseWarningsItem>;
 export const WebOverviewQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   WebOverviewQueryResponseWarningsItem,
 ) as any as S.Schema<WebOverviewQueryResponseWarningsList>;
@@ -6084,15 +6014,14 @@ export const InsightVizNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InsightVizNode" }) as any as S.Schema<InsightVizNode>;
 
-export type DataTableNodeColumnsList = string[];
+export type DataTableNodeColumnsList = ReadonlyArray<string>;
 export const DataTableNodeColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataTableNodeColumnsList>;
 
 export type DataTableNodeViewPropsContextType =
   | "event_definition"
-  | "team_columns"
-  | (string & {});
+  | "team_columns";
 export const DataTableNodeViewPropsContextType = /*@__PURE__*/ S.String;
 
 export interface DataTableNodeViewPropsContext {
@@ -6108,17 +6037,17 @@ export const DataTableNodeViewPropsContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataTableNodeViewPropsContext",
 }) as any as S.Schema<DataTableNodeViewPropsContext>;
 
-export type DataTableNodeDefaultColumnsList = string[];
+export type DataTableNodeDefaultColumnsList = ReadonlyArray<string>;
 export const DataTableNodeDefaultColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataTableNodeDefaultColumnsList>;
 
-export type DataTableNodeHiddenColumnsList = string[];
+export type DataTableNodeHiddenColumnsList = ReadonlyArray<string>;
 export const DataTableNodeHiddenColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataTableNodeHiddenColumnsList>;
 
-export type DataTableNodePinnedColumnsList = string[];
+export type DataTableNodePinnedColumnsList = ReadonlyArray<string>;
 export const DataTableNodePinnedColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataTableNodePinnedColumnsList>;
@@ -6131,32 +6060,33 @@ export const DataTableNodeResponseCase0Map = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DataTableNodeResponseCase0Map>;
 
-export type ResponseColumnsList = unknown[];
+export type ResponseColumnsList = ReadonlyArray<unknown>;
 export const ResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ResponseColumnsList>;
 
-export type ResponseResultsItemList = unknown[];
+export type ResponseResultsItemList = ReadonlyArray<unknown>;
 export const ResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ResponseResultsItemList>;
 
-export type ResponseResultsList = ResponseResultsItemList[];
+export type ResponseResultsList = ReadonlyArray<ResponseResultsItemList>;
 export const ResponseResultsList = /*@__PURE__*/ S.Array(
   ResponseResultsItemList,
 ) as any as S.Schema<ResponseResultsList>;
 
-export type ResponseTimingsList = QueryTiming[];
+export type ResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const ResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<ResponseTimingsList>;
 
-export type ResponseTypesList = string[];
+export type ResponseTypesList = ReadonlyArray<string>;
 export const ResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResponseTypesList>;
 
-export type ResponseUsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type ResponseUsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const ResponseUsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<ResponseUsedDataWarehouseSourcesList>;
@@ -6167,7 +6097,7 @@ export type ResponseWarningsItem =
 export const ResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ResponseWarningsItem>;
 
-export type ResponseWarningsList = ResponseWarningsItem[];
+export type ResponseWarningsList = ReadonlyArray<ResponseWarningsItem>;
 export const ResponseWarningsList = /*@__PURE__*/ S.Array(
   ResponseWarningsItem,
 ) as any as S.Schema<ResponseWarningsList>;
@@ -6225,32 +6155,33 @@ export const Response = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
-export type Response1ColumnsList = unknown[];
+export type Response1ColumnsList = ReadonlyArray<unknown>;
 export const Response1ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response1ColumnsList>;
 
-export type Response1ResultsItemList = unknown[];
+export type Response1ResultsItemList = ReadonlyArray<unknown>;
 export const Response1ResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response1ResultsItemList>;
 
-export type Response1ResultsList = Response1ResultsItemList[];
+export type Response1ResultsList = ReadonlyArray<Response1ResultsItemList>;
 export const Response1ResultsList = /*@__PURE__*/ S.Array(
   Response1ResultsItemList,
 ) as any as S.Schema<Response1ResultsList>;
 
-export type Response1TimingsList = QueryTiming[];
+export type Response1TimingsList = ReadonlyArray<QueryTiming>;
 export const Response1TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response1TimingsList>;
 
-export type Response1TypesList = string[];
+export type Response1TypesList = ReadonlyArray<string>;
 export const Response1TypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response1TypesList>;
 
-export type Response1UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response1UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response1UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response1UsedDataWarehouseSourcesList>;
@@ -6261,7 +6192,7 @@ export type Response1WarningsItem =
 export const Response1WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response1WarningsItem>;
 
-export type Response1WarningsList = Response1WarningsItem[];
+export type Response1WarningsList = ReadonlyArray<Response1WarningsItem>;
 export const Response1WarningsList = /*@__PURE__*/ S.Array(
   Response1WarningsItem,
 ) as any as S.Schema<Response1WarningsList>;
@@ -6318,32 +6249,33 @@ export const Response1 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response1" }) as any as S.Schema<Response1>;
 
-export type Response2ColumnsList = unknown[];
+export type Response2ColumnsList = ReadonlyArray<unknown>;
 export const Response2ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response2ColumnsList>;
 
-export type Response2ResultsItemList = unknown[];
+export type Response2ResultsItemList = ReadonlyArray<unknown>;
 export const Response2ResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response2ResultsItemList>;
 
-export type Response2ResultsList = Response2ResultsItemList[];
+export type Response2ResultsList = ReadonlyArray<Response2ResultsItemList>;
 export const Response2ResultsList = /*@__PURE__*/ S.Array(
   Response2ResultsItemList,
 ) as any as S.Schema<Response2ResultsList>;
 
-export type Response2TimingsList = QueryTiming[];
+export type Response2TimingsList = ReadonlyArray<QueryTiming>;
 export const Response2TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response2TimingsList>;
 
-export type Response2TypesList = string[];
+export type Response2TypesList = ReadonlyArray<string>;
 export const Response2TypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response2TypesList>;
 
-export type Response2UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response2UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response2UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response2UsedDataWarehouseSourcesList>;
@@ -6354,7 +6286,7 @@ export type Response2WarningsItem =
 export const Response2WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response2WarningsItem>;
 
-export type Response2WarningsList = Response2WarningsItem[];
+export type Response2WarningsList = ReadonlyArray<Response2WarningsItem>;
 export const Response2WarningsList = /*@__PURE__*/ S.Array(
   Response2WarningsItem,
 ) as any as S.Schema<Response2WarningsList>;
@@ -6411,17 +6343,17 @@ export const Response2 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response2" }) as any as S.Schema<Response2>;
 
-export type Response3ColumnsList = unknown[];
+export type Response3ColumnsList = ReadonlyArray<unknown>;
 export const Response3ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response3ColumnsList>;
 
-export type Response3ExplainList = string[];
+export type Response3ExplainList = ReadonlyArray<string>;
 export const Response3ExplainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response3ExplainList>;
 
-export type HogQLMetadataResponseChTableNamesList = string[];
+export type HogQLMetadataResponseChTableNamesList = ReadonlyArray<string>;
 export const HogQLMetadataResponseChTableNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogQLMetadataResponseChTableNamesList>;
@@ -6441,30 +6373,25 @@ export const HogQLNotice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HogQLNotice" }) as any as S.Schema<HogQLNotice>;
 
-export type HogQLMetadataResponseErrorsList = HogQLNotice[];
+export type HogQLMetadataResponseErrorsList = ReadonlyArray<HogQLNotice>;
 export const HogQLMetadataResponseErrorsList = /*@__PURE__*/ S.Array(
   HogQLNotice,
 ) as any as S.Schema<HogQLMetadataResponseErrorsList>;
 
-export type QueryIndexUsage =
-  | "undecisive"
-  | "no"
-  | "partial"
-  | "yes"
-  | (string & {});
+export type QueryIndexUsage = "undecisive" | "no" | "partial" | "yes";
 export const QueryIndexUsage = /*@__PURE__*/ S.String;
 
-export type HogQLMetadataResponseNoticesList = HogQLNotice[];
+export type HogQLMetadataResponseNoticesList = ReadonlyArray<HogQLNotice>;
 export const HogQLMetadataResponseNoticesList = /*@__PURE__*/ S.Array(
   HogQLNotice,
 ) as any as S.Schema<HogQLMetadataResponseNoticesList>;
 
-export type HogQLMetadataResponseTableNamesList = string[];
+export type HogQLMetadataResponseTableNamesList = ReadonlyArray<string>;
 export const HogQLMetadataResponseTableNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogQLMetadataResponseTableNamesList>;
 
-export type HogQLMetadataResponseWarningsList = HogQLNotice[];
+export type HogQLMetadataResponseWarningsList = ReadonlyArray<HogQLNotice>;
 export const HogQLMetadataResponseWarningsList = /*@__PURE__*/ S.Array(
   HogQLNotice,
 ) as any as S.Schema<HogQLMetadataResponseWarningsList>;
@@ -6494,22 +6421,23 @@ export const HogQLMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogQLMetadataResponse",
 }) as any as S.Schema<HogQLMetadataResponse>;
 
-export type Response3ResultsList = unknown[];
+export type Response3ResultsList = ReadonlyArray<unknown>;
 export const Response3ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response3ResultsList>;
 
-export type Response3TimingsList = QueryTiming[];
+export type Response3TimingsList = ReadonlyArray<QueryTiming>;
 export const Response3TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response3TimingsList>;
 
-export type Response3TypesList = unknown[];
+export type Response3TypesList = ReadonlyArray<unknown>;
 export const Response3TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response3TypesList>;
 
-export type Response3UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response3UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response3UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response3UsedDataWarehouseSourcesList>;
@@ -6520,7 +6448,7 @@ export type Response3WarningsItem =
 export const Response3WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response3WarningsItem>;
 
-export type Response3WarningsList = Response3WarningsItem[];
+export type Response3WarningsList = ReadonlyArray<Response3WarningsItem>;
 export const Response3WarningsList = /*@__PURE__*/ S.Array(
   Response3WarningsItem,
 ) as any as S.Schema<Response3WarningsList>;
@@ -6589,17 +6517,18 @@ export const Response3 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response3" }) as any as S.Schema<Response3>;
 
-export type Response4ResultsList = WebOverviewItem[];
+export type Response4ResultsList = ReadonlyArray<WebOverviewItem>;
 export const Response4ResultsList = /*@__PURE__*/ S.Array(
   WebOverviewItem,
 ) as any as S.Schema<Response4ResultsList>;
 
-export type Response4TimingsList = QueryTiming[];
+export type Response4TimingsList = ReadonlyArray<QueryTiming>;
 export const Response4TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response4TimingsList>;
 
-export type Response4UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response4UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response4UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response4UsedDataWarehouseSourcesList>;
@@ -6610,7 +6539,7 @@ export type Response4WarningsItem =
 export const Response4WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response4WarningsItem>;
 
-export type Response4WarningsList = Response4WarningsItem[];
+export type Response4WarningsList = ReadonlyArray<Response4WarningsItem>;
 export const Response4WarningsList = /*@__PURE__*/ S.Array(
   Response4WarningsItem,
 ) as any as S.Schema<Response4WarningsList>;
@@ -6663,27 +6592,28 @@ export const Response4 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response4" }) as any as S.Schema<Response4>;
 
-export type Response5ColumnsList = unknown[];
+export type Response5ColumnsList = ReadonlyArray<unknown>;
 export const Response5ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response5ColumnsList>;
 
-export type Response5ResultsList = unknown[];
+export type Response5ResultsList = ReadonlyArray<unknown>;
 export const Response5ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response5ResultsList>;
 
-export type Response5TimingsList = QueryTiming[];
+export type Response5TimingsList = ReadonlyArray<QueryTiming>;
 export const Response5TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response5TimingsList>;
 
-export type Response5TypesList = unknown[];
+export type Response5TypesList = ReadonlyArray<unknown>;
 export const Response5TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response5TypesList>;
 
-export type Response5UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response5UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response5UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response5UsedDataWarehouseSourcesList>;
@@ -6694,7 +6624,7 @@ export type Response5WarningsItem =
 export const Response5WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response5WarningsItem>;
 
-export type Response5WarningsList = Response5WarningsItem[];
+export type Response5WarningsList = ReadonlyArray<Response5WarningsItem>;
 export const Response5WarningsList = /*@__PURE__*/ S.Array(
   Response5WarningsItem,
 ) as any as S.Schema<Response5WarningsList>;
@@ -6756,27 +6686,28 @@ export const Response5 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response5" }) as any as S.Schema<Response5>;
 
-export type Response6ColumnsList = unknown[];
+export type Response6ColumnsList = ReadonlyArray<unknown>;
 export const Response6ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response6ColumnsList>;
 
-export type Response6ResultsList = unknown[];
+export type Response6ResultsList = ReadonlyArray<unknown>;
 export const Response6ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response6ResultsList>;
 
-export type Response6TimingsList = QueryTiming[];
+export type Response6TimingsList = ReadonlyArray<QueryTiming>;
 export const Response6TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response6TimingsList>;
 
-export type Response6TypesList = unknown[];
+export type Response6TypesList = ReadonlyArray<unknown>;
 export const Response6TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response6TypesList>;
 
-export type Response6UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response6UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response6UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response6UsedDataWarehouseSourcesList>;
@@ -6787,7 +6718,7 @@ export type Response6WarningsItem =
 export const Response6WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response6WarningsItem>;
 
-export type Response6WarningsList = Response6WarningsItem[];
+export type Response6WarningsList = ReadonlyArray<Response6WarningsItem>;
 export const Response6WarningsList = /*@__PURE__*/ S.Array(
   Response6WarningsItem,
 ) as any as S.Schema<Response6WarningsList>;
@@ -6844,27 +6775,28 @@ export const Response6 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response6" }) as any as S.Schema<Response6>;
 
-export type Response7ColumnsList = unknown[];
+export type Response7ColumnsList = ReadonlyArray<unknown>;
 export const Response7ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response7ColumnsList>;
 
-export type Response7ResultsList = unknown[];
+export type Response7ResultsList = ReadonlyArray<unknown>;
 export const Response7ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response7ResultsList>;
 
-export type Response7TimingsList = QueryTiming[];
+export type Response7TimingsList = ReadonlyArray<QueryTiming>;
 export const Response7TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response7TimingsList>;
 
-export type Response7TypesList = unknown[];
+export type Response7TypesList = ReadonlyArray<unknown>;
 export const Response7TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response7TypesList>;
 
-export type Response7UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response7UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response7UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response7UsedDataWarehouseSourcesList>;
@@ -6875,7 +6807,7 @@ export type Response7WarningsItem =
 export const Response7WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response7WarningsItem>;
 
-export type Response7WarningsList = Response7WarningsItem[];
+export type Response7WarningsList = ReadonlyArray<Response7WarningsItem>;
 export const Response7WarningsList = /*@__PURE__*/ S.Array(
   Response7WarningsItem,
 ) as any as S.Schema<Response7WarningsList>;
@@ -6948,20 +6880,20 @@ export const WebVitalsPathBreakdownResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebVitalsPathBreakdownResultItem>;
 
 export type WebVitalsPathBreakdownResultGoodList =
-  WebVitalsPathBreakdownResultItem[];
+  ReadonlyArray<WebVitalsPathBreakdownResultItem>;
 export const WebVitalsPathBreakdownResultGoodList = /*@__PURE__*/ S.Array(
   WebVitalsPathBreakdownResultItem,
 ) as any as S.Schema<WebVitalsPathBreakdownResultGoodList>;
 
 export type WebVitalsPathBreakdownResultNeedsImprovementsList =
-  WebVitalsPathBreakdownResultItem[];
+  ReadonlyArray<WebVitalsPathBreakdownResultItem>;
 export const WebVitalsPathBreakdownResultNeedsImprovementsList =
   /*@__PURE__*/ S.Array(
     WebVitalsPathBreakdownResultItem,
   ) as any as S.Schema<WebVitalsPathBreakdownResultNeedsImprovementsList>;
 
 export type WebVitalsPathBreakdownResultPoorList =
-  WebVitalsPathBreakdownResultItem[];
+  ReadonlyArray<WebVitalsPathBreakdownResultItem>;
 export const WebVitalsPathBreakdownResultPoorList = /*@__PURE__*/ S.Array(
   WebVitalsPathBreakdownResultItem,
 ) as any as S.Schema<WebVitalsPathBreakdownResultPoorList>;
@@ -6983,17 +6915,18 @@ export const WebVitalsPathBreakdownResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebVitalsPathBreakdownResult",
 }) as any as S.Schema<WebVitalsPathBreakdownResult>;
 
-export type Response8ResultsList = WebVitalsPathBreakdownResult[];
+export type Response8ResultsList = ReadonlyArray<WebVitalsPathBreakdownResult>;
 export const Response8ResultsList = /*@__PURE__*/ S.Array(
   WebVitalsPathBreakdownResult,
 ) as any as S.Schema<Response8ResultsList>;
 
-export type Response8TimingsList = QueryTiming[];
+export type Response8TimingsList = ReadonlyArray<QueryTiming>;
 export const Response8TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response8TimingsList>;
 
-export type Response8UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response8UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response8UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response8UsedDataWarehouseSourcesList>;
@@ -7004,7 +6937,7 @@ export type Response8WarningsItem =
 export const Response8WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response8WarningsItem>;
 
-export type Response8WarningsList = Response8WarningsItem[];
+export type Response8WarningsList = ReadonlyArray<Response8WarningsItem>;
 export const Response8WarningsList = /*@__PURE__*/ S.Array(
   Response8WarningsItem,
 ) as any as S.Schema<Response8WarningsList>;
@@ -7051,22 +6984,23 @@ export const Response8 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response8" }) as any as S.Schema<Response8>;
 
-export type Response9ColumnsList = unknown[];
+export type Response9ColumnsList = ReadonlyArray<unknown>;
 export const Response9ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response9ColumnsList>;
 
-export type Response9TimingsList = QueryTiming[];
+export type Response9TimingsList = ReadonlyArray<QueryTiming>;
 export const Response9TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response9TimingsList>;
 
-export type Response9TypesList = unknown[];
+export type Response9TypesList = ReadonlyArray<unknown>;
 export const Response9TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response9TypesList>;
 
-export type Response9UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response9UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response9UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response9UsedDataWarehouseSourcesList>;
@@ -7077,7 +7011,7 @@ export type Response9WarningsItem =
 export const Response9WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response9WarningsItem>;
 
-export type Response9WarningsList = Response9WarningsItem[];
+export type Response9WarningsList = ReadonlyArray<Response9WarningsItem>;
 export const Response9WarningsList = /*@__PURE__*/ S.Array(
   Response9WarningsItem,
 ) as any as S.Schema<Response9WarningsList>;
@@ -7132,32 +7066,33 @@ export const Response9 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response9" }) as any as S.Schema<Response9>;
 
-export type Response10ColumnsList = unknown[];
+export type Response10ColumnsList = ReadonlyArray<unknown>;
 export const Response10ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response10ColumnsList>;
 
-export type Response10ResultsItemList = unknown[];
+export type Response10ResultsItemList = ReadonlyArray<unknown>;
 export const Response10ResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response10ResultsItemList>;
 
-export type Response10ResultsList = Response10ResultsItemList[];
+export type Response10ResultsList = ReadonlyArray<Response10ResultsItemList>;
 export const Response10ResultsList = /*@__PURE__*/ S.Array(
   Response10ResultsItemList,
 ) as any as S.Schema<Response10ResultsList>;
 
-export type Response10TimingsList = QueryTiming[];
+export type Response10TimingsList = ReadonlyArray<QueryTiming>;
 export const Response10TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response10TimingsList>;
 
-export type Response10TypesList = string[];
+export type Response10TypesList = ReadonlyArray<string>;
 export const Response10TypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response10TypesList>;
 
-export type Response10UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response10UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response10UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response10UsedDataWarehouseSourcesList>;
@@ -7168,7 +7103,7 @@ export type Response10WarningsItem =
 export const Response10WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response10WarningsItem>;
 
-export type Response10WarningsList = Response10WarningsItem[];
+export type Response10WarningsList = ReadonlyArray<Response10WarningsItem>;
 export const Response10WarningsList = /*@__PURE__*/ S.Array(
   Response10WarningsItem,
 ) as any as S.Schema<Response10WarningsList>;
@@ -7223,22 +7158,23 @@ export const Response10 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response10" }) as any as S.Schema<Response10>;
 
-export type Response11ColumnsList = string[];
+export type Response11ColumnsList = ReadonlyArray<string>;
 export const Response11ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response11ColumnsList>;
 
-export type Response11ResultsList = unknown[];
+export type Response11ResultsList = ReadonlyArray<unknown>;
 export const Response11ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response11ResultsList>;
 
-export type Response11TimingsList = QueryTiming[];
+export type Response11TimingsList = ReadonlyArray<QueryTiming>;
 export const Response11TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response11TimingsList>;
 
-export type Response11UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response11UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response11UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response11UsedDataWarehouseSourcesList>;
@@ -7249,7 +7185,7 @@ export type Response11WarningsItem =
 export const Response11WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response11WarningsItem>;
 
-export type Response11WarningsList = Response11WarningsItem[];
+export type Response11WarningsList = ReadonlyArray<Response11WarningsItem>;
 export const Response11WarningsList = /*@__PURE__*/ S.Array(
   Response11WarningsItem,
 ) as any as S.Schema<Response11WarningsList>;
@@ -7296,17 +7232,18 @@ export const Response11 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response11" }) as any as S.Schema<Response11>;
 
-export type Response12ColumnsList = string[];
+export type Response12ColumnsList = ReadonlyArray<string>;
 export const Response12ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response12ColumnsList>;
 
-export type Response12TimingsList = QueryTiming[];
+export type Response12TimingsList = ReadonlyArray<QueryTiming>;
 export const Response12TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response12TimingsList>;
 
-export type Response12UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response12UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response12UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response12UsedDataWarehouseSourcesList>;
@@ -7317,7 +7254,7 @@ export type Response12WarningsItem =
 export const Response12WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response12WarningsItem>;
 
-export type Response12WarningsList = Response12WarningsItem[];
+export type Response12WarningsList = ReadonlyArray<Response12WarningsItem>;
 export const Response12WarningsList = /*@__PURE__*/ S.Array(
   Response12WarningsItem,
 ) as any as S.Schema<Response12WarningsList>;
@@ -7364,7 +7301,7 @@ export const Response12 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response12" }) as any as S.Schema<Response12>;
 
-export type Response13ColumnsList = string[];
+export type Response13ColumnsList = ReadonlyArray<string>;
 export const Response13ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response13ColumnsList>;
@@ -7388,17 +7325,19 @@ export const RevenueAnalyticsMRRQueryResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueAnalyticsMRRQueryResultItem",
 }) as any as S.Schema<RevenueAnalyticsMRRQueryResultItem>;
 
-export type Response13ResultsList = RevenueAnalyticsMRRQueryResultItem[];
+export type Response13ResultsList =
+  ReadonlyArray<RevenueAnalyticsMRRQueryResultItem>;
 export const Response13ResultsList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsMRRQueryResultItem,
 ) as any as S.Schema<Response13ResultsList>;
 
-export type Response13TimingsList = QueryTiming[];
+export type Response13TimingsList = ReadonlyArray<QueryTiming>;
 export const Response13TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response13TimingsList>;
 
-export type Response13UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response13UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response13UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response13UsedDataWarehouseSourcesList>;
@@ -7409,7 +7348,7 @@ export type Response13WarningsItem =
 export const Response13WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response13WarningsItem>;
 
-export type Response13WarningsList = Response13WarningsItem[];
+export type Response13WarningsList = ReadonlyArray<Response13WarningsItem>;
 export const Response13WarningsList = /*@__PURE__*/ S.Array(
   Response13WarningsItem,
 ) as any as S.Schema<Response13WarningsList>;
@@ -7459,8 +7398,7 @@ export const Response13 = /*@__PURE__*/ S.suspend(() =>
 export type RevenueAnalyticsOverviewItemKey =
   | "revenue"
   | "paying_customer_count"
-  | "avg_revenue_per_customer"
-  | (string & {});
+  | "avg_revenue_per_customer";
 export const RevenueAnalyticsOverviewItemKey = /*@__PURE__*/ S.String;
 
 export interface RevenueAnalyticsOverviewItem {
@@ -7476,17 +7414,18 @@ export const RevenueAnalyticsOverviewItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueAnalyticsOverviewItem",
 }) as any as S.Schema<RevenueAnalyticsOverviewItem>;
 
-export type Response14ResultsList = RevenueAnalyticsOverviewItem[];
+export type Response14ResultsList = ReadonlyArray<RevenueAnalyticsOverviewItem>;
 export const Response14ResultsList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsOverviewItem,
 ) as any as S.Schema<Response14ResultsList>;
 
-export type Response14TimingsList = QueryTiming[];
+export type Response14TimingsList = ReadonlyArray<QueryTiming>;
 export const Response14TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response14TimingsList>;
 
-export type Response14UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response14UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response14UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response14UsedDataWarehouseSourcesList>;
@@ -7497,7 +7436,7 @@ export type Response14WarningsItem =
 export const Response14WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response14WarningsItem>;
 
-export type Response14WarningsList = Response14WarningsItem[];
+export type Response14WarningsList = ReadonlyArray<Response14WarningsItem>;
 export const Response14WarningsList = /*@__PURE__*/ S.Array(
   Response14WarningsItem,
 ) as any as S.Schema<Response14WarningsList>;
@@ -7542,17 +7481,18 @@ export const Response14 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response14" }) as any as S.Schema<Response14>;
 
-export type Response15ColumnsList = string[];
+export type Response15ColumnsList = ReadonlyArray<string>;
 export const Response15ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response15ColumnsList>;
 
-export type Response15TimingsList = QueryTiming[];
+export type Response15TimingsList = ReadonlyArray<QueryTiming>;
 export const Response15TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response15TimingsList>;
 
-export type Response15UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response15UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response15UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response15UsedDataWarehouseSourcesList>;
@@ -7563,7 +7503,7 @@ export type Response15WarningsItem =
 export const Response15WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response15WarningsItem>;
 
-export type Response15WarningsList = Response15WarningsItem[];
+export type Response15WarningsList = ReadonlyArray<Response15WarningsItem>;
 export const Response15WarningsList = /*@__PURE__*/ S.Array(
   Response15WarningsItem,
 ) as any as S.Schema<Response15WarningsList>;
@@ -7610,22 +7550,23 @@ export const Response15 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response15" }) as any as S.Schema<Response15>;
 
-export type Response16ColumnsList = unknown[];
+export type Response16ColumnsList = ReadonlyArray<unknown>;
 export const Response16ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response16ColumnsList>;
 
-export type Response16TimingsList = QueryTiming[];
+export type Response16TimingsList = ReadonlyArray<QueryTiming>;
 export const Response16TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response16TimingsList>;
 
-export type Response16TypesList = unknown[];
+export type Response16TypesList = ReadonlyArray<unknown>;
 export const Response16TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response16TypesList>;
 
-export type Response16UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response16UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response16UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response16UsedDataWarehouseSourcesList>;
@@ -7636,7 +7577,7 @@ export type Response16WarningsItem =
 export const Response16WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response16WarningsItem>;
 
-export type Response16WarningsList = Response16WarningsItem[];
+export type Response16WarningsList = ReadonlyArray<Response16WarningsItem>;
 export const Response16WarningsList = /*@__PURE__*/ S.Array(
   Response16WarningsItem,
 ) as any as S.Schema<Response16WarningsList>;
@@ -7691,7 +7632,7 @@ export const Response16 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response16" }) as any as S.Schema<Response16>;
 
-export type Response18ColumnsList = unknown[];
+export type Response18ColumnsList = ReadonlyArray<unknown>;
 export const Response18ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response18ColumnsList>;
@@ -7727,27 +7668,28 @@ export const MarketingAnalyticsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarketingAnalyticsItem",
 }) as any as S.Schema<MarketingAnalyticsItem>;
 
-export type Response18ResultsItemList = MarketingAnalyticsItem[];
+export type Response18ResultsItemList = ReadonlyArray<MarketingAnalyticsItem>;
 export const Response18ResultsItemList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsItem,
 ) as any as S.Schema<Response18ResultsItemList>;
 
-export type Response18ResultsList = Response18ResultsItemList[];
+export type Response18ResultsList = ReadonlyArray<Response18ResultsItemList>;
 export const Response18ResultsList = /*@__PURE__*/ S.Array(
   Response18ResultsItemList,
 ) as any as S.Schema<Response18ResultsList>;
 
-export type Response18TimingsList = QueryTiming[];
+export type Response18TimingsList = ReadonlyArray<QueryTiming>;
 export const Response18TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response18TimingsList>;
 
-export type Response18TypesList = unknown[];
+export type Response18TypesList = ReadonlyArray<unknown>;
 export const Response18TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response18TypesList>;
 
-export type Response18UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response18UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response18UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response18UsedDataWarehouseSourcesList>;
@@ -7758,7 +7700,7 @@ export type Response18WarningsItem =
 export const Response18WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response18WarningsItem>;
 
-export type Response18WarningsList = Response18WarningsItem[];
+export type Response18WarningsList = ReadonlyArray<Response18WarningsItem>;
 export const Response18WarningsList = /*@__PURE__*/ S.Array(
   Response18WarningsItem,
 ) as any as S.Schema<Response18WarningsList>;
@@ -7823,12 +7765,13 @@ export const Response19ResultsMap = /*@__PURE__*/ S.Record(
   MarketingAnalyticsItem,
 ) as any as S.Schema<Response19ResultsMap>;
 
-export type Response19TimingsList = QueryTiming[];
+export type Response19TimingsList = ReadonlyArray<QueryTiming>;
 export const Response19TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response19TimingsList>;
 
-export type Response19UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response19UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response19UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response19UsedDataWarehouseSourcesList>;
@@ -7839,7 +7782,7 @@ export type Response19WarningsItem =
 export const Response19WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response19WarningsItem>;
 
-export type Response19WarningsList = Response19WarningsItem[];
+export type Response19WarningsList = ReadonlyArray<Response19WarningsItem>;
 export const Response19WarningsList = /*@__PURE__*/ S.Array(
   Response19WarningsItem,
 ) as any as S.Schema<Response19WarningsList>;
@@ -7886,32 +7829,33 @@ export const Response19 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response19" }) as any as S.Schema<Response19>;
 
-export type Response20ColumnsList = unknown[];
+export type Response20ColumnsList = ReadonlyArray<unknown>;
 export const Response20ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response20ColumnsList>;
 
-export type Response20ResultsItemList = MarketingAnalyticsItem[];
+export type Response20ResultsItemList = ReadonlyArray<MarketingAnalyticsItem>;
 export const Response20ResultsItemList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsItem,
 ) as any as S.Schema<Response20ResultsItemList>;
 
-export type Response20ResultsList = Response20ResultsItemList[];
+export type Response20ResultsList = ReadonlyArray<Response20ResultsItemList>;
 export const Response20ResultsList = /*@__PURE__*/ S.Array(
   Response20ResultsItemList,
 ) as any as S.Schema<Response20ResultsList>;
 
-export type Response20TimingsList = QueryTiming[];
+export type Response20TimingsList = ReadonlyArray<QueryTiming>;
 export const Response20TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response20TimingsList>;
 
-export type Response20TypesList = unknown[];
+export type Response20TypesList = ReadonlyArray<unknown>;
 export const Response20TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response20TypesList>;
 
-export type Response20UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response20UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response20UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response20UsedDataWarehouseSourcesList>;
@@ -7922,7 +7866,7 @@ export type Response20WarningsItem =
 export const Response20WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response20WarningsItem>;
 
-export type Response20WarningsList = Response20WarningsItem[];
+export type Response20WarningsList = ReadonlyArray<Response20WarningsItem>;
 export const Response20WarningsList = /*@__PURE__*/ S.Array(
   Response20WarningsItem,
 ) as any as S.Schema<Response20WarningsList>;
@@ -7979,12 +7923,13 @@ export const Response20 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response20" }) as any as S.Schema<Response20>;
 
-export type Response21ColumnsList = string[];
+export type Response21ColumnsList = ReadonlyArray<string>;
 export const Response21ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response21ColumnsList>;
 
-export type ErrorTrackingIssueAggregationsVolumeRangeList = number[];
+export type ErrorTrackingIssueAggregationsVolumeRangeList =
+  ReadonlyArray<number>;
 export const ErrorTrackingIssueAggregationsVolumeRangeList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -8001,7 +7946,8 @@ export const VolumeBucket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VolumeBucket" }) as any as S.Schema<VolumeBucket>;
 
-export type ErrorTrackingIssueAggregationsVolumeBucketsList = VolumeBucket[];
+export type ErrorTrackingIssueAggregationsVolumeBucketsList =
+  ReadonlyArray<VolumeBucket>;
 export const ErrorTrackingIssueAggregationsVolumeBucketsList =
   /*@__PURE__*/ S.Array(
     VolumeBucket,
@@ -8032,7 +7978,7 @@ export type ErrorTrackingIssueAssigneeId = string | number;
 export const ErrorTrackingIssueAssigneeId =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingIssueAssigneeId>;
 
-export type ErrorTrackingIssueAssigneeType = "user" | "role" | (string & {});
+export type ErrorTrackingIssueAssigneeType = "user" | "role";
 export const ErrorTrackingIssueAssigneeType = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingIssueAssignee {
@@ -8099,8 +8045,7 @@ export type IntegrationKind =
   | "postgresql"
   | "aws-s3"
   | "s3-compatible"
-  | "snowflake"
-  | (string & {});
+  | "snowflake";
 export const IntegrationKind = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingExternalReferenceIntegration {
@@ -8135,7 +8080,7 @@ export const ErrorTrackingExternalReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorTrackingExternalReference>;
 
 export type ErrorTrackingIssueExternalIssuesList =
-  ErrorTrackingExternalReference[];
+  ReadonlyArray<ErrorTrackingExternalReference>;
 export const ErrorTrackingIssueExternalIssuesList = /*@__PURE__*/ S.Array(
   ErrorTrackingExternalReference,
 ) as any as S.Schema<ErrorTrackingIssueExternalIssuesList>;
@@ -8175,8 +8120,7 @@ export type ErrorTrackingIssueStatus =
   | "active"
   | "resolved"
   | "pending_release"
-  | "suppressed"
-  | (string & {});
+  | "suppressed";
 export const ErrorTrackingIssueStatus = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingIssue {
@@ -8218,17 +8162,18 @@ export const ErrorTrackingIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ErrorTrackingIssue",
 }) as any as S.Schema<ErrorTrackingIssue>;
 
-export type Response21ResultsList = ErrorTrackingIssue[];
+export type Response21ResultsList = ReadonlyArray<ErrorTrackingIssue>;
 export const Response21ResultsList = /*@__PURE__*/ S.Array(
   ErrorTrackingIssue,
 ) as any as S.Schema<Response21ResultsList>;
 
-export type Response21TimingsList = QueryTiming[];
+export type Response21TimingsList = ReadonlyArray<QueryTiming>;
 export const Response21TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response21TimingsList>;
 
-export type Response21UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response21UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response21UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response21UsedDataWarehouseSourcesList>;
@@ -8239,7 +8184,7 @@ export type Response21WarningsItem =
 export const Response21WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response21WarningsItem>;
 
-export type Response21WarningsList = Response21WarningsItem[];
+export type Response21WarningsList = ReadonlyArray<Response21WarningsItem>;
 export const Response21WarningsList = /*@__PURE__*/ S.Array(
   Response21WarningsItem,
 ) as any as S.Schema<Response21WarningsList>;
@@ -8292,13 +8237,13 @@ export const Response21 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response21" }) as any as S.Schema<Response21>;
 
-export type Response22ColumnsList = string[];
+export type Response22ColumnsList = ReadonlyArray<string>;
 export const Response22ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response22ColumnsList>;
 
 export type ErrorTrackingCorrelatedIssueExternalIssuesList =
-  ErrorTrackingExternalReference[];
+  ReadonlyArray<ErrorTrackingExternalReference>;
 export const ErrorTrackingCorrelatedIssueExternalIssuesList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingExternalReference,
@@ -8356,17 +8301,18 @@ export const ErrorTrackingCorrelatedIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ErrorTrackingCorrelatedIssue",
 }) as any as S.Schema<ErrorTrackingCorrelatedIssue>;
 
-export type Response22ResultsList = ErrorTrackingCorrelatedIssue[];
+export type Response22ResultsList = ReadonlyArray<ErrorTrackingCorrelatedIssue>;
 export const Response22ResultsList = /*@__PURE__*/ S.Array(
   ErrorTrackingCorrelatedIssue,
 ) as any as S.Schema<Response22ResultsList>;
 
-export type Response22TimingsList = QueryTiming[];
+export type Response22TimingsList = ReadonlyArray<QueryTiming>;
 export const Response22TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response22TimingsList>;
 
-export type Response22UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response22UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response22UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response22UsedDataWarehouseSourcesList>;
@@ -8377,7 +8323,7 @@ export type Response22WarningsItem =
 export const Response22WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response22WarningsItem>;
 
-export type Response22WarningsList = Response22WarningsItem[];
+export type Response22WarningsList = ReadonlyArray<Response22WarningsItem>;
 export const Response22WarningsList = /*@__PURE__*/ S.Array(
   Response22WarningsItem,
 ) as any as S.Schema<Response22WarningsList>;
@@ -8430,7 +8376,7 @@ export const Response22 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response22" }) as any as S.Schema<Response22>;
 
-export type Response23CredibleIntervalsValueList = number[];
+export type Response23CredibleIntervalsValueList = ReadonlyArray<number>;
 export const Response23CredibleIntervalsValueList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<Response23CredibleIntervalsValueList>;
@@ -8451,12 +8397,13 @@ export const Response23InsightItemItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<Response23InsightItemItemMap>;
 
-export type Response23InsightItemList = Response23InsightItemItemMap[];
+export type Response23InsightItemList =
+  ReadonlyArray<Response23InsightItemItemMap>;
 export const Response23InsightItemList = /*@__PURE__*/ S.Array(
   Response23InsightItemItemMap,
 ) as any as S.Schema<Response23InsightItemList>;
 
-export type Response23InsightList = Response23InsightItemList[];
+export type Response23InsightList = ReadonlyArray<Response23InsightItemList>;
 export const Response23InsightList = /*@__PURE__*/ S.Array(
   Response23InsightItemList,
 ) as any as S.Schema<Response23InsightList>;
@@ -8472,8 +8419,7 @@ export type ExperimentSignificanceCode =
   | "not_enough_exposure"
   | "low_win_probability"
   | "high_loss"
-  | "high_p_value"
-  | (string & {});
+  | "high_p_value";
 export const ExperimentSignificanceCode = /*@__PURE__*/ S.String;
 
 export interface ExperimentVariantFunnelsBaseStats {
@@ -8491,12 +8437,13 @@ export const ExperimentVariantFunnelsBaseStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentVariantFunnelsBaseStats",
 }) as any as S.Schema<ExperimentVariantFunnelsBaseStats>;
 
-export type Response23VariantsList = ExperimentVariantFunnelsBaseStats[];
+export type Response23VariantsList =
+  ReadonlyArray<ExperimentVariantFunnelsBaseStats>;
 export const Response23VariantsList = /*@__PURE__*/ S.Array(
   ExperimentVariantFunnelsBaseStats,
 ) as any as S.Schema<Response23VariantsList>;
 
-export type Response23WarningsList = DataWarehouseSyncWarning[];
+export type Response23WarningsList = ReadonlyArray<DataWarehouseSyncWarning>;
 export const Response23WarningsList = /*@__PURE__*/ S.Array(
   DataWarehouseSyncWarning,
 ) as any as S.Schema<Response23WarningsList>;
@@ -8531,7 +8478,7 @@ export const Response23 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response23" }) as any as S.Schema<Response23>;
 
-export type Response24CredibleIntervalsValueList = number[];
+export type Response24CredibleIntervalsValueList = ReadonlyArray<number>;
 export const Response24CredibleIntervalsValueList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<Response24CredibleIntervalsValueList>;
@@ -8550,7 +8497,7 @@ export const Response24InsightItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<Response24InsightItemMap>;
 
-export type Response24InsightList = Response24InsightItemMap[];
+export type Response24InsightList = ReadonlyArray<Response24InsightItemMap>;
 export const Response24InsightList = /*@__PURE__*/ S.Array(
   Response24InsightItemMap,
 ) as any as S.Schema<Response24InsightList>;
@@ -8578,12 +8525,13 @@ export const ExperimentVariantTrendsBaseStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentVariantTrendsBaseStats",
 }) as any as S.Schema<ExperimentVariantTrendsBaseStats>;
 
-export type Response24VariantsList = ExperimentVariantTrendsBaseStats[];
+export type Response24VariantsList =
+  ReadonlyArray<ExperimentVariantTrendsBaseStats>;
 export const Response24VariantsList = /*@__PURE__*/ S.Array(
   ExperimentVariantTrendsBaseStats,
 ) as any as S.Schema<Response24VariantsList>;
 
-export type Response24WarningsList = DataWarehouseSyncWarning[];
+export type Response24WarningsList = ReadonlyArray<DataWarehouseSyncWarning>;
 export const Response24WarningsList = /*@__PURE__*/ S.Array(
   DataWarehouseSyncWarning,
 ) as any as S.Schema<Response24WarningsList>;
@@ -8620,7 +8568,7 @@ export const Response24 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response24" }) as any as S.Schema<Response24>;
 
-export type Response25ColumnsList = string[];
+export type Response25ColumnsList = ReadonlyArray<string>;
 export const Response25ColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response25ColumnsList>;
@@ -8637,8 +8585,7 @@ export type AIEventType =
   | "$ai_trace_summary"
   | "$ai_generation_summary"
   | "$ai_trace_clusters"
-  | "$ai_generation_clusters"
-  | (string & {});
+  | "$ai_generation_clusters";
 export const AIEventType = /*@__PURE__*/ S.String;
 
 export type LLMTraceEventEvent = AIEventType | string;
@@ -8724,7 +8671,7 @@ export const LLMTraceEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMTraceEvent" }) as any as S.Schema<LLMTraceEvent>;
 
-export type LLMTraceEventsList = LLMTraceEvent[];
+export type LLMTraceEventsList = ReadonlyArray<LLMTraceEvent>;
 export const LLMTraceEventsList = /*@__PURE__*/ S.Array(
   LLMTraceEvent,
 ) as any as S.Schema<LLMTraceEventsList>;
@@ -8752,7 +8699,7 @@ export const LLMTracePerson = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMTracePerson" }) as any as S.Schema<LLMTracePerson>;
 
-export type LLMTraceToolsList = string[];
+export type LLMTraceToolsList = ReadonlyArray<string>;
 export const LLMTraceToolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LLMTraceToolsList>;
@@ -8806,17 +8753,18 @@ export const LLMTrace = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMTrace" }) as any as S.Schema<LLMTrace>;
 
-export type Response25ResultsList = LLMTrace[];
+export type Response25ResultsList = ReadonlyArray<LLMTrace>;
 export const Response25ResultsList = /*@__PURE__*/ S.Array(
   LLMTrace,
 ) as any as S.Schema<Response25ResultsList>;
 
-export type Response25TimingsList = QueryTiming[];
+export type Response25TimingsList = ReadonlyArray<QueryTiming>;
 export const Response25TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response25TimingsList>;
 
-export type Response25UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response25UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response25UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response25UsedDataWarehouseSourcesList>;
@@ -8827,7 +8775,7 @@ export type Response25WarningsItem =
 export const Response25WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response25WarningsItem>;
 
-export type Response25WarningsList = Response25WarningsItem[];
+export type Response25WarningsList = ReadonlyArray<Response25WarningsItem>;
 export const Response25WarningsList = /*@__PURE__*/ S.Array(
   Response25WarningsItem,
 ) as any as S.Schema<Response25WarningsList>;
@@ -8880,27 +8828,28 @@ export const Response25 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response25" }) as any as S.Schema<Response25>;
 
-export type Response27ColumnsList = unknown[];
+export type Response27ColumnsList = ReadonlyArray<unknown>;
 export const Response27ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response27ColumnsList>;
 
-export type Response27ResultsList = unknown[];
+export type Response27ResultsList = ReadonlyArray<unknown>;
 export const Response27ResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response27ResultsList>;
 
-export type Response27TimingsList = QueryTiming[];
+export type Response27TimingsList = ReadonlyArray<QueryTiming>;
 export const Response27TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response27TimingsList>;
 
-export type Response27TypesList = unknown[];
+export type Response27TypesList = ReadonlyArray<unknown>;
 export const Response27TypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response27TypesList>;
 
-export type Response27UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response27UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response27UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response27UsedDataWarehouseSourcesList>;
@@ -8911,7 +8860,7 @@ export type Response27WarningsItem =
 export const Response27WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response27WarningsItem>;
 
-export type Response27WarningsList = Response27WarningsItem[];
+export type Response27WarningsList = ReadonlyArray<Response27WarningsItem>;
 export const Response27WarningsList = /*@__PURE__*/ S.Array(
   Response27WarningsItem,
 ) as any as S.Schema<Response27WarningsList>;
@@ -8966,37 +8915,38 @@ export const Response27 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response27" }) as any as S.Schema<Response27>;
 
-export type Response28ColumnsList = unknown[];
+export type Response28ColumnsList = ReadonlyArray<unknown>;
 export const Response28ColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response28ColumnsList>;
 
-export type Response28MetricsResultsList = number[];
+export type Response28MetricsResultsList = ReadonlyArray<number>;
 export const Response28MetricsResultsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<Response28MetricsResultsList>;
 
-export type Response28ResultsItemList = unknown[];
+export type Response28ResultsItemList = ReadonlyArray<unknown>;
 export const Response28ResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<Response28ResultsItemList>;
 
-export type Response28ResultsList = Response28ResultsItemList[];
+export type Response28ResultsList = ReadonlyArray<Response28ResultsItemList>;
 export const Response28ResultsList = /*@__PURE__*/ S.Array(
   Response28ResultsItemList,
 ) as any as S.Schema<Response28ResultsList>;
 
-export type Response28TimingsList = QueryTiming[];
+export type Response28TimingsList = ReadonlyArray<QueryTiming>;
 export const Response28TimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<Response28TimingsList>;
 
-export type Response28TypesList = string[];
+export type Response28TypesList = ReadonlyArray<string>;
 export const Response28TypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<Response28TypesList>;
 
-export type Response28UsedDataWarehouseSourcesList = DataWarehouseSourceUsage[];
+export type Response28UsedDataWarehouseSourcesList =
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const Response28UsedDataWarehouseSourcesList = /*@__PURE__*/ S.Array(
   DataWarehouseSourceUsage,
 ) as any as S.Schema<Response28UsedDataWarehouseSourcesList>;
@@ -9007,7 +8957,7 @@ export type Response28WarningsItem =
 export const Response28WarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<Response28WarningsItem>;
 
-export type Response28WarningsList = Response28WarningsItem[];
+export type Response28WarningsList = ReadonlyArray<Response28WarningsItem>;
 export const Response28WarningsList = /*@__PURE__*/ S.Array(
   Response28WarningsItem,
 ) as any as S.Schema<Response28WarningsList>;
@@ -9159,12 +9109,11 @@ export type TaxonomicFilterGroupType =
   | "suggested_filters"
   | "recent_filters"
   | "pinned_filters"
-  | "empty"
-  | (string & {});
+  | "empty";
 export const TaxonomicFilterGroupType = /*@__PURE__*/ S.String;
 
 export type DataTableNodeShowPropertyFilterCase1List =
-  TaxonomicFilterGroupType[];
+  ReadonlyArray<TaxonomicFilterGroupType>;
 export const DataTableNodeShowPropertyFilterCase1List = /*@__PURE__*/ S.Array(
   TaxonomicFilterGroupType,
 ) as any as S.Schema<DataTableNodeShowPropertyFilterCase1List>;
@@ -9176,7 +9125,7 @@ export type DataTableNodeShowPropertyFilter =
 export const DataTableNodeShowPropertyFilter =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DataTableNodeShowPropertyFilter>;
 
-export type HrefMatching = "contains" | "exact" | "regex" | (string & {});
+export type HrefMatching = "contains" | "exact" | "regex";
 export const HrefMatching = /*@__PURE__*/ S.String;
 
 export type EventsQueryActionStepPropertiesItem =
@@ -9207,15 +9156,15 @@ export const EventsQueryActionStepPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryActionStepPropertiesItem>;
 
 export type EventsQueryActionStepPropertiesList =
-  EventsQueryActionStepPropertiesItem[];
+  ReadonlyArray<EventsQueryActionStepPropertiesItem>;
 export const EventsQueryActionStepPropertiesList = /*@__PURE__*/ S.Array(
   EventsQueryActionStepPropertiesItem,
 ) as any as S.Schema<EventsQueryActionStepPropertiesList>;
 
-export type TextMatching = "contains" | "exact" | "regex" | (string & {});
+export type TextMatching = "contains" | "exact" | "regex";
 export const TextMatching = /*@__PURE__*/ S.String;
 
-export type UrlMatching = "contains" | "exact" | "regex" | (string & {});
+export type UrlMatching = "contains" | "exact" | "regex";
 export const UrlMatching = /*@__PURE__*/ S.String;
 
 export interface EventsQueryActionStep {
@@ -9247,12 +9196,12 @@ export const EventsQueryActionStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventsQueryActionStep",
 }) as any as S.Schema<EventsQueryActionStep>;
 
-export type EventsQueryActionStepsList = EventsQueryActionStep[];
+export type EventsQueryActionStepsList = ReadonlyArray<EventsQueryActionStep>;
 export const EventsQueryActionStepsList = /*@__PURE__*/ S.Array(
   EventsQueryActionStep,
 ) as any as S.Schema<EventsQueryActionStepsList>;
 
-export type EventsQueryEventsList = string[];
+export type EventsQueryEventsList = ReadonlyArray<string>;
 export const EventsQueryEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryEventsList>;
@@ -9291,12 +9240,13 @@ export type EventsQueryFixedPropertiesItem =
 export const EventsQueryFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryFixedPropertiesItem>;
 
-export type EventsQueryFixedPropertiesList = EventsQueryFixedPropertiesItem[];
+export type EventsQueryFixedPropertiesList =
+  ReadonlyArray<EventsQueryFixedPropertiesItem>;
 export const EventsQueryFixedPropertiesList = /*@__PURE__*/ S.Array(
   EventsQueryFixedPropertiesItem,
 ) as any as S.Schema<EventsQueryFixedPropertiesList>;
 
-export type EventsQueryOrderByList = string[];
+export type EventsQueryOrderByList = ReadonlyArray<string>;
 export const EventsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryOrderByList>;
@@ -9328,39 +9278,40 @@ export type EventsQueryPropertiesItem =
 export const EventsQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryPropertiesItem>;
 
-export type EventsQueryPropertiesList = EventsQueryPropertiesItem[];
+export type EventsQueryPropertiesList =
+  ReadonlyArray<EventsQueryPropertiesItem>;
 export const EventsQueryPropertiesList = /*@__PURE__*/ S.Array(
   EventsQueryPropertiesItem,
 ) as any as S.Schema<EventsQueryPropertiesList>;
 
-export type EventsQueryResponseColumnsList = unknown[];
+export type EventsQueryResponseColumnsList = ReadonlyArray<unknown>;
 export const EventsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventsQueryResponseColumnsList>;
 
-export type EventsQueryResponseResultsItemList = unknown[];
+export type EventsQueryResponseResultsItemList = ReadonlyArray<unknown>;
 export const EventsQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventsQueryResponseResultsItemList>;
 
 export type EventsQueryResponseResultsList =
-  EventsQueryResponseResultsItemList[];
+  ReadonlyArray<EventsQueryResponseResultsItemList>;
 export const EventsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   EventsQueryResponseResultsItemList,
 ) as any as S.Schema<EventsQueryResponseResultsList>;
 
-export type EventsQueryResponseTimingsList = QueryTiming[];
+export type EventsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const EventsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<EventsQueryResponseTimingsList>;
 
-export type EventsQueryResponseTypesList = string[];
+export type EventsQueryResponseTypesList = ReadonlyArray<string>;
 export const EventsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryResponseTypesList>;
 
 export type EventsQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const EventsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -9372,7 +9323,8 @@ export type EventsQueryResponseWarningsItem =
 export const EventsQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EventsQueryResponseWarningsItem>;
 
-export type EventsQueryResponseWarningsList = EventsQueryResponseWarningsItem[];
+export type EventsQueryResponseWarningsList =
+  ReadonlyArray<EventsQueryResponseWarningsItem>;
 export const EventsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   EventsQueryResponseWarningsItem,
 ) as any as S.Schema<EventsQueryResponseWarningsList>;
@@ -9433,12 +9385,12 @@ export const EventsQueryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventsQueryResponse>;
 
 /** Return a limited set of data. Required. */
-export type EventsQuerySelectList = string[];
+export type EventsQuerySelectList = ReadonlyArray<string>;
 export const EventsQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQuerySelectList>;
 
-export type InsightActorsQueryBreakdownCase1List = string[];
+export type InsightActorsQueryBreakdownCase1List = ReadonlyArray<string>;
 export const InsightActorsQueryBreakdownCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InsightActorsQueryBreakdownCase1List>;
@@ -9450,41 +9402,41 @@ export type InsightActorsQueryBreakdown =
 export const InsightActorsQueryBreakdown =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InsightActorsQueryBreakdown>;
 
-export type Compare = "current" | "previous" | (string & {});
+export type Compare = "current" | "previous";
 export const Compare = /*@__PURE__*/ S.String;
 
 export type InsightActorsQueryDay = string | number;
 export const InsightActorsQueryDay =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InsightActorsQueryDay>;
 
-export type ActorsQueryResponseColumnsList = unknown[];
+export type ActorsQueryResponseColumnsList = ReadonlyArray<unknown>;
 export const ActorsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ActorsQueryResponseColumnsList>;
 
-export type ActorsQueryResponseResultsItemList = unknown[];
+export type ActorsQueryResponseResultsItemList = ReadonlyArray<unknown>;
 export const ActorsQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ActorsQueryResponseResultsItemList>;
 
 export type ActorsQueryResponseResultsList =
-  ActorsQueryResponseResultsItemList[];
+  ReadonlyArray<ActorsQueryResponseResultsItemList>;
 export const ActorsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   ActorsQueryResponseResultsItemList,
 ) as any as S.Schema<ActorsQueryResponseResultsList>;
 
-export type ActorsQueryResponseTimingsList = QueryTiming[];
+export type ActorsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const ActorsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<ActorsQueryResponseTimingsList>;
 
-export type ActorsQueryResponseTypesList = string[];
+export type ActorsQueryResponseTypesList = ReadonlyArray<string>;
 export const ActorsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActorsQueryResponseTypesList>;
 
 export type ActorsQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const ActorsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -9496,7 +9448,8 @@ export type ActorsQueryResponseWarningsItem =
 export const ActorsQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ActorsQueryResponseWarningsItem>;
 
-export type ActorsQueryResponseWarningsList = ActorsQueryResponseWarningsItem[];
+export type ActorsQueryResponseWarningsList =
+  ReadonlyArray<ActorsQueryResponseWarningsItem>;
 export const ActorsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   ActorsQueryResponseWarningsItem,
 ) as any as S.Schema<ActorsQueryResponseWarningsList>;
@@ -9605,7 +9558,7 @@ export const InsightActorsQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightActorsQuery",
 }) as any as S.Schema<InsightActorsQuery>;
 
-export type EventsQueryWhereList = string[];
+export type EventsQueryWhereList = ReadonlyArray<string>;
 export const EventsQueryWhereList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsQueryWhereList>;
@@ -9704,7 +9657,8 @@ export type PersonsNodeFixedPropertiesItem =
 export const PersonsNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonsNodeFixedPropertiesItem>;
 
-export type PersonsNodeFixedPropertiesList = PersonsNodeFixedPropertiesItem[];
+export type PersonsNodeFixedPropertiesList =
+  ReadonlyArray<PersonsNodeFixedPropertiesItem>;
 export const PersonsNodeFixedPropertiesList = /*@__PURE__*/ S.Array(
   PersonsNodeFixedPropertiesItem,
 ) as any as S.Schema<PersonsNodeFixedPropertiesList>;
@@ -9736,7 +9690,8 @@ export type PersonsNodePropertiesItem =
 export const PersonsNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PersonsNodePropertiesItem>;
 
-export type PersonsNodePropertiesList = PersonsNodePropertiesItem[];
+export type PersonsNodePropertiesList =
+  ReadonlyArray<PersonsNodePropertiesItem>;
 export const PersonsNodePropertiesList = /*@__PURE__*/ S.Array(
   PersonsNodePropertiesItem,
 ) as any as S.Schema<PersonsNodePropertiesList>;
@@ -9791,12 +9746,13 @@ export type ActorsQueryFixedPropertiesItem =
 export const ActorsQueryFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ActorsQueryFixedPropertiesItem>;
 
-export type ActorsQueryFixedPropertiesList = ActorsQueryFixedPropertiesItem[];
+export type ActorsQueryFixedPropertiesList =
+  ReadonlyArray<ActorsQueryFixedPropertiesItem>;
 export const ActorsQueryFixedPropertiesList = /*@__PURE__*/ S.Array(
   ActorsQueryFixedPropertiesItem,
 ) as any as S.Schema<ActorsQueryFixedPropertiesList>;
 
-export type ActorsQueryOrderByList = string[];
+export type ActorsQueryOrderByList = ReadonlyArray<string>;
 export const ActorsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActorsQueryOrderByList>;
@@ -9810,7 +9766,8 @@ export type ActorsQueryPropertiesCase0Item =
 export const ActorsQueryPropertiesCase0Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ActorsQueryPropertiesCase0Item>;
 
-export type ActorsQueryPropertiesCase0List = ActorsQueryPropertiesCase0Item[];
+export type ActorsQueryPropertiesCase0List =
+  ReadonlyArray<ActorsQueryPropertiesCase0Item>;
 export const ActorsQueryPropertiesCase0List = /*@__PURE__*/ S.Array(
   ActorsQueryPropertiesCase0Item,
 ) as any as S.Schema<ActorsQueryPropertiesCase0List>;
@@ -9822,7 +9779,7 @@ export type ActorsQueryProperties =
 export const ActorsQueryProperties =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ActorsQueryProperties>;
 
-export type ActorsQuerySelectList = string[];
+export type ActorsQuerySelectList = ReadonlyArray<string>;
 export const ActorsQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActorsQuerySelectList>;
@@ -9835,7 +9792,7 @@ export const FunnelsActorsQueryFunnelStepBreakdownCase3Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelsActorsQueryFunnelStepBreakdownCase3Item>;
 
 export type FunnelsActorsQueryFunnelStepBreakdownCase3List =
-  FunnelsActorsQueryFunnelStepBreakdownCase3Item[];
+  ReadonlyArray<FunnelsActorsQueryFunnelStepBreakdownCase3Item>;
 export const FunnelsActorsQueryFunnelStepBreakdownCase3List =
   /*@__PURE__*/ S.Array(
     FunnelsActorsQueryFunnelStepBreakdownCase3Item,
@@ -9926,39 +9883,42 @@ export const FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem>;
 
 export type FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesList =
-  FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem[];
+  ReadonlyArray<FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem>;
 export const FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesList =
   /*@__PURE__*/ S.Array(
     FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesItem,
   ) as any as S.Schema<FunnelCorrelationActorsQueryFunnelCorrelationPropertyValuesList>;
 
 export type FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FunnelCorrelationQueryFunnelCorrelationEventExcludePropertyNamesList>;
 
-export type FunnelCorrelationQueryFunnelCorrelationEventNamesList = string[];
+export type FunnelCorrelationQueryFunnelCorrelationEventNamesList =
+  ReadonlyArray<string>;
 export const FunnelCorrelationQueryFunnelCorrelationEventNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FunnelCorrelationQueryFunnelCorrelationEventNamesList>;
 
 export type FunnelCorrelationQueryFunnelCorrelationExcludeEventNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const FunnelCorrelationQueryFunnelCorrelationExcludeEventNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FunnelCorrelationQueryFunnelCorrelationExcludeEventNamesList>;
 
-export type FunnelCorrelationQueryFunnelCorrelationExcludeNamesList = string[];
+export type FunnelCorrelationQueryFunnelCorrelationExcludeNamesList =
+  ReadonlyArray<string>;
 export const FunnelCorrelationQueryFunnelCorrelationExcludeNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<FunnelCorrelationQueryFunnelCorrelationExcludeNamesList>;
 
-export type FunnelCorrelationQueryFunnelCorrelationNamesList = string[];
+export type FunnelCorrelationQueryFunnelCorrelationNamesList =
+  ReadonlyArray<string>;
 export const FunnelCorrelationQueryFunnelCorrelationNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9967,19 +9927,18 @@ export const FunnelCorrelationQueryFunnelCorrelationNamesList =
 export type FunnelCorrelationResultsType =
   | "events"
   | "properties"
-  | "event_with_properties"
-  | (string & {});
+  | "event_with_properties";
 export const FunnelCorrelationResultsType = /*@__PURE__*/ S.String;
 
-export type FunnelCorrelationResponseColumnsList = unknown[];
+export type FunnelCorrelationResponseColumnsList = ReadonlyArray<unknown>;
 export const FunnelCorrelationResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FunnelCorrelationResponseColumnsList>;
 
-export type CorrelationType = "success" | "failure" | (string & {});
+export type CorrelationType = "success" | "failure";
 export const CorrelationType = /*@__PURE__*/ S.String;
 
-export type EventDefinitionElementsList = unknown[];
+export type EventDefinitionElementsList = ReadonlyArray<unknown>;
 export const EventDefinitionElementsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EventDefinitionElementsList>;
@@ -10026,7 +9985,8 @@ export const EventOddsRatioSerialized = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventOddsRatioSerialized",
 }) as any as S.Schema<EventOddsRatioSerialized>;
 
-export type FunnelCorrelationResultEventsList = EventOddsRatioSerialized[];
+export type FunnelCorrelationResultEventsList =
+  ReadonlyArray<EventOddsRatioSerialized>;
 export const FunnelCorrelationResultEventsList = /*@__PURE__*/ S.Array(
   EventOddsRatioSerialized,
 ) as any as S.Schema<FunnelCorrelationResultEventsList>;
@@ -10044,18 +10004,18 @@ export const FunnelCorrelationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunnelCorrelationResult",
 }) as any as S.Schema<FunnelCorrelationResult>;
 
-export type FunnelCorrelationResponseTimingsList = QueryTiming[];
+export type FunnelCorrelationResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const FunnelCorrelationResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<FunnelCorrelationResponseTimingsList>;
 
-export type FunnelCorrelationResponseTypesList = unknown[];
+export type FunnelCorrelationResponseTypesList = ReadonlyArray<unknown>;
 export const FunnelCorrelationResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FunnelCorrelationResponseTypesList>;
 
 export type FunnelCorrelationResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const FunnelCorrelationResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -10068,7 +10028,7 @@ export const FunnelCorrelationResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<FunnelCorrelationResponseWarningsItem>;
 
 export type FunnelCorrelationResponseWarningsList =
-  FunnelCorrelationResponseWarningsItem[];
+  ReadonlyArray<FunnelCorrelationResponseWarningsItem>;
 export const FunnelCorrelationResponseWarningsList = /*@__PURE__*/ S.Array(
   FunnelCorrelationResponseWarningsItem,
 ) as any as S.Schema<FunnelCorrelationResponseWarningsList>;
@@ -10230,7 +10190,7 @@ export const ExperimentEventExposureConfigPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentEventExposureConfigPropertiesItem>;
 
 export type ExperimentEventExposureConfigPropertiesList =
-  ExperimentEventExposureConfigPropertiesItem[];
+  ReadonlyArray<ExperimentEventExposureConfigPropertiesItem>;
 export const ExperimentEventExposureConfigPropertiesList =
   /*@__PURE__*/ S.Array(
     ExperimentEventExposureConfigPropertiesItem,
@@ -10279,7 +10239,7 @@ export const ExperimentActorsQueryFunnelStepBreakdownCase3Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentActorsQueryFunnelStepBreakdownCase3Item>;
 
 export type ExperimentActorsQueryFunnelStepBreakdownCase3List =
-  ExperimentActorsQueryFunnelStepBreakdownCase3Item[];
+  ReadonlyArray<ExperimentActorsQueryFunnelStepBreakdownCase3Item>;
 export const ExperimentActorsQueryFunnelStepBreakdownCase3List =
   /*@__PURE__*/ S.Array(
     ExperimentActorsQueryFunnelStepBreakdownCase3Item,
@@ -10294,10 +10254,10 @@ export type ExperimentActorsQueryFunnelStepBreakdown =
 export const ExperimentActorsQueryFunnelStepBreakdown =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentActorsQueryFunnelStepBreakdown>;
 
-export type MultipleVariantHandling = "exclude" | "first_seen" | (string & {});
+export type MultipleVariantHandling = "exclude" | "first_seen";
 export const MultipleVariantHandling = /*@__PURE__*/ S.String;
 
-export type ExperimentMetricGoal = "increase" | "decrease" | (string & {});
+export type ExperimentMetricGoal = "increase" | "decrease";
 export const ExperimentMetricGoal = /*@__PURE__*/ S.String;
 
 export type ExperimentMeanMetricResponseMap = {
@@ -10336,7 +10296,7 @@ export const ExperimentDataWarehouseNodeFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentDataWarehouseNodeFixedPropertiesItem>;
 
 export type ExperimentDataWarehouseNodeFixedPropertiesList =
-  ExperimentDataWarehouseNodeFixedPropertiesItem[];
+  ReadonlyArray<ExperimentDataWarehouseNodeFixedPropertiesItem>;
 export const ExperimentDataWarehouseNodeFixedPropertiesList =
   /*@__PURE__*/ S.Array(
     ExperimentDataWarehouseNodeFixedPropertiesItem,
@@ -10381,7 +10341,7 @@ export const ExperimentDataWarehouseNodePropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentDataWarehouseNodePropertiesItem>;
 
 export type ExperimentDataWarehouseNodePropertiesList =
-  ExperimentDataWarehouseNodePropertiesItem[];
+  ReadonlyArray<ExperimentDataWarehouseNodePropertiesItem>;
 export const ExperimentDataWarehouseNodePropertiesList = /*@__PURE__*/ S.Array(
   ExperimentDataWarehouseNodePropertiesItem,
 ) as any as S.Schema<ExperimentDataWarehouseNodePropertiesList>;
@@ -10402,7 +10362,7 @@ export interface ExperimentDataWarehouseNode {
   fixedProperties?: ExperimentDataWarehouseNodeFixedPropertiesList | null;
   kind?: string;
   math?: ExperimentDataWarehouseNodeMath | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -10428,7 +10388,7 @@ export const ExperimentDataWarehouseNode = /*@__PURE__*/ S.suspend(() =>
     ),
     kind: S.optional(S.String),
     math: S.optional(S.NullOr(ExperimentDataWarehouseNodeMath)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -10522,7 +10482,7 @@ export const ExperimentFunnelMetricSeriesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentFunnelMetricSeriesItem>;
 
 export type ExperimentFunnelMetricSeriesList =
-  ExperimentFunnelMetricSeriesItem[];
+  ReadonlyArray<ExperimentFunnelMetricSeriesItem>;
 export const ExperimentFunnelMetricSeriesList = /*@__PURE__*/ S.Array(
   ExperimentFunnelMetricSeriesItem,
 ) as any as S.Schema<ExperimentFunnelMetricSeriesList>;
@@ -10680,7 +10640,7 @@ export type ExperimentRetentionMetricStartEvent =
 export const ExperimentRetentionMetricStartEvent =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentRetentionMetricStartEvent>;
 
-export type StartHandling = "first_seen" | "last_seen" | (string & {});
+export type StartHandling = "first_seen" | "last_seen";
 export const StartHandling = /*@__PURE__*/ S.String;
 
 export interface ExperimentRetentionMetric {
@@ -10741,10 +10701,10 @@ export type ExperimentQueryMetric =
 export const ExperimentQueryMetric =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentQueryMetric>;
 
-export type PrecomputationMode = "precomputed" | "direct" | (string & {});
+export type PrecomputationMode = "precomputed" | "direct";
 export const PrecomputationMode = /*@__PURE__*/ S.String;
 
-export type ExperimentStatsBaseValidatedStepCountsList = number[];
+export type ExperimentStatsBaseValidatedStepCountsList = ReadonlyArray<number>;
 export const ExperimentStatsBaseValidatedStepCountsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ExperimentStatsBaseValidatedStepCountsList>;
@@ -10764,14 +10724,15 @@ export const SessionData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SessionData" }) as any as S.Schema<SessionData>;
 
-export type ExperimentStatsBaseValidatedStepSessionsItemList = SessionData[];
+export type ExperimentStatsBaseValidatedStepSessionsItemList =
+  ReadonlyArray<SessionData>;
 export const ExperimentStatsBaseValidatedStepSessionsItemList =
   /*@__PURE__*/ S.Array(
     SessionData,
   ) as any as S.Schema<ExperimentStatsBaseValidatedStepSessionsItemList>;
 
 export type ExperimentStatsBaseValidatedStepSessionsList =
-  ExperimentStatsBaseValidatedStepSessionsItemList[];
+  ReadonlyArray<ExperimentStatsBaseValidatedStepSessionsItemList>;
 export const ExperimentStatsBaseValidatedStepSessionsList =
   /*@__PURE__*/ S.Array(
     ExperimentStatsBaseValidatedStepSessionsItemList,
@@ -10780,12 +10741,11 @@ export const ExperimentStatsBaseValidatedStepSessionsList =
 export type ExperimentStatsValidationFailure =
   | "not-enough-exposures"
   | "baseline-mean-is-zero"
-  | "not-enough-metric-data"
-  | (string & {});
+  | "not-enough-metric-data";
 export const ExperimentStatsValidationFailure = /*@__PURE__*/ S.String;
 
 export type ExperimentStatsBaseValidatedValidationFailuresList =
-  ExperimentStatsValidationFailure[];
+  ReadonlyArray<ExperimentStatsValidationFailure>;
 export const ExperimentStatsBaseValidatedValidationFailuresList =
   /*@__PURE__*/ S.Array(
     ExperimentStatsValidationFailure,
@@ -10841,40 +10801,42 @@ export const ExperimentBreakdownResultBreakdownValueItem =
 
 /** The breakdown values as an array (e.g., ["MacOS", "Chrome"] for multi-breakdown, ["Chrome"] for single) Although `BreakdownKeyType` could be an array, we only use the array form for the breakdown_value. The way `BreakdownKeyType` is defined is problematic. It should be treated as a primitive and allow for the types using it to define if it's and array or an optional value. */
 export type ExperimentBreakdownResultBreakdownValueList =
-  ExperimentBreakdownResultBreakdownValueItem[];
+  ReadonlyArray<ExperimentBreakdownResultBreakdownValueItem>;
 export const ExperimentBreakdownResultBreakdownValueList =
   /*@__PURE__*/ S.Array(
     ExperimentBreakdownResultBreakdownValueItem,
   ) as any as S.Schema<ExperimentBreakdownResultBreakdownValueList>;
 
-export type ExperimentVariantResultFrequentistConfidenceIntervalList = number[];
+export type ExperimentVariantResultFrequentistConfidenceIntervalList =
+  ReadonlyArray<number>;
 export const ExperimentVariantResultFrequentistConfidenceIntervalList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<ExperimentVariantResultFrequentistConfidenceIntervalList>;
 
-export type ExperimentVariantResultFrequentistStepCountsList = number[];
+export type ExperimentVariantResultFrequentistStepCountsList =
+  ReadonlyArray<number>;
 export const ExperimentVariantResultFrequentistStepCountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<ExperimentVariantResultFrequentistStepCountsList>;
 
 export type ExperimentVariantResultFrequentistStepSessionsItemList =
-  SessionData[];
+  ReadonlyArray<SessionData>;
 export const ExperimentVariantResultFrequentistStepSessionsItemList =
   /*@__PURE__*/ S.Array(
     SessionData,
   ) as any as S.Schema<ExperimentVariantResultFrequentistStepSessionsItemList>;
 
 export type ExperimentVariantResultFrequentistStepSessionsList =
-  ExperimentVariantResultFrequentistStepSessionsItemList[];
+  ReadonlyArray<ExperimentVariantResultFrequentistStepSessionsItemList>;
 export const ExperimentVariantResultFrequentistStepSessionsList =
   /*@__PURE__*/ S.Array(
     ExperimentVariantResultFrequentistStepSessionsItemList,
   ) as any as S.Schema<ExperimentVariantResultFrequentistStepSessionsList>;
 
 export type ExperimentVariantResultFrequentistValidationFailuresList =
-  ExperimentStatsValidationFailure[];
+  ReadonlyArray<ExperimentStatsValidationFailure>;
 export const ExperimentVariantResultFrequentistValidationFailuresList =
   /*@__PURE__*/ S.Array(
     ExperimentStatsValidationFailure,
@@ -10932,38 +10894,41 @@ export const ExperimentVariantResultFrequentist = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentVariantResultFrequentist>;
 
 export type ExperimentBreakdownResultVariantsCase0List =
-  ExperimentVariantResultFrequentist[];
+  ReadonlyArray<ExperimentVariantResultFrequentist>;
 export const ExperimentBreakdownResultVariantsCase0List = /*@__PURE__*/ S.Array(
   ExperimentVariantResultFrequentist,
 ) as any as S.Schema<ExperimentBreakdownResultVariantsCase0List>;
 
-export type ExperimentVariantResultBayesianCredibleIntervalList = number[];
+export type ExperimentVariantResultBayesianCredibleIntervalList =
+  ReadonlyArray<number>;
 export const ExperimentVariantResultBayesianCredibleIntervalList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<ExperimentVariantResultBayesianCredibleIntervalList>;
 
-export type ExperimentVariantResultBayesianStepCountsList = number[];
+export type ExperimentVariantResultBayesianStepCountsList =
+  ReadonlyArray<number>;
 export const ExperimentVariantResultBayesianStepCountsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<ExperimentVariantResultBayesianStepCountsList>;
 
-export type ExperimentVariantResultBayesianStepSessionsItemList = SessionData[];
+export type ExperimentVariantResultBayesianStepSessionsItemList =
+  ReadonlyArray<SessionData>;
 export const ExperimentVariantResultBayesianStepSessionsItemList =
   /*@__PURE__*/ S.Array(
     SessionData,
   ) as any as S.Schema<ExperimentVariantResultBayesianStepSessionsItemList>;
 
 export type ExperimentVariantResultBayesianStepSessionsList =
-  ExperimentVariantResultBayesianStepSessionsItemList[];
+  ReadonlyArray<ExperimentVariantResultBayesianStepSessionsItemList>;
 export const ExperimentVariantResultBayesianStepSessionsList =
   /*@__PURE__*/ S.Array(
     ExperimentVariantResultBayesianStepSessionsItemList,
   ) as any as S.Schema<ExperimentVariantResultBayesianStepSessionsList>;
 
 export type ExperimentVariantResultBayesianValidationFailuresList =
-  ExperimentStatsValidationFailure[];
+  ReadonlyArray<ExperimentStatsValidationFailure>;
 export const ExperimentVariantResultBayesianValidationFailuresList =
   /*@__PURE__*/ S.Array(
     ExperimentStatsValidationFailure,
@@ -11021,7 +10986,7 @@ export const ExperimentVariantResultBayesian = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentVariantResultBayesian>;
 
 export type ExperimentBreakdownResultVariantsCase1List =
-  ExperimentVariantResultBayesian[];
+  ReadonlyArray<ExperimentVariantResultBayesian>;
 export const ExperimentBreakdownResultVariantsCase1List = /*@__PURE__*/ S.Array(
   ExperimentVariantResultBayesian,
 ) as any as S.Schema<ExperimentBreakdownResultVariantsCase1List>;
@@ -11052,13 +11017,14 @@ export const ExperimentBreakdownResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentBreakdownResult>;
 
 export type ExperimentQueryResponseBreakdownResultsList =
-  ExperimentBreakdownResult[];
+  ReadonlyArray<ExperimentBreakdownResult>;
 export const ExperimentQueryResponseBreakdownResultsList =
   /*@__PURE__*/ S.Array(
     ExperimentBreakdownResult,
   ) as any as S.Schema<ExperimentQueryResponseBreakdownResultsList>;
 
-export type ExperimentQueryResponseCredibleIntervalsValueList = number[];
+export type ExperimentQueryResponseCredibleIntervalsValueList =
+  ReadonlyArray<number>;
 export const ExperimentQueryResponseCredibleIntervalsValueList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -11082,7 +11048,7 @@ export const ExperimentQueryResponseInsightItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExperimentQueryResponseInsightItemMap>;
 
 export type ExperimentQueryResponseInsightList =
-  ExperimentQueryResponseInsightItemMap[];
+  ReadonlyArray<ExperimentQueryResponseInsightItemMap>;
 export const ExperimentQueryResponseInsightList = /*@__PURE__*/ S.Array(
   ExperimentQueryResponseInsightItemMap,
 ) as any as S.Schema<ExperimentQueryResponseInsightList>;
@@ -11104,14 +11070,14 @@ export const ExperimentQueryResponseProbabilityMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExperimentQueryResponseProbabilityMap>;
 
 export type ExperimentQueryResponseVariantResultsCase0List =
-  ExperimentVariantResultFrequentist[];
+  ReadonlyArray<ExperimentVariantResultFrequentist>;
 export const ExperimentQueryResponseVariantResultsCase0List =
   /*@__PURE__*/ S.Array(
     ExperimentVariantResultFrequentist,
   ) as any as S.Schema<ExperimentQueryResponseVariantResultsCase0List>;
 
 export type ExperimentQueryResponseVariantResultsCase1List =
-  ExperimentVariantResultBayesian[];
+  ReadonlyArray<ExperimentVariantResultBayesian>;
 export const ExperimentQueryResponseVariantResultsCase1List =
   /*@__PURE__*/ S.Array(
     ExperimentVariantResultBayesian,
@@ -11124,13 +11090,13 @@ export const ExperimentQueryResponseVariantResults =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentQueryResponseVariantResults>;
 
 export type ExperimentQueryResponseVariantsCase0List =
-  ExperimentVariantTrendsBaseStats[];
+  ReadonlyArray<ExperimentVariantTrendsBaseStats>;
 export const ExperimentQueryResponseVariantsCase0List = /*@__PURE__*/ S.Array(
   ExperimentVariantTrendsBaseStats,
 ) as any as S.Schema<ExperimentQueryResponseVariantsCase0List>;
 
 export type ExperimentQueryResponseVariantsCase1List =
-  ExperimentVariantFunnelsBaseStats[];
+  ReadonlyArray<ExperimentVariantFunnelsBaseStats>;
 export const ExperimentQueryResponseVariantsCase1List = /*@__PURE__*/ S.Array(
   ExperimentVariantFunnelsBaseStats,
 ) as any as S.Schema<ExperimentQueryResponseVariantsCase1List>;
@@ -11141,7 +11107,8 @@ export type ExperimentQueryResponseVariants =
 export const ExperimentQueryResponseVariants =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ExperimentQueryResponseVariants>;
 
-export type ExperimentQueryResponseWarningsList = DataWarehouseSyncWarning[];
+export type ExperimentQueryResponseWarningsList =
+  ReadonlyArray<DataWarehouseSyncWarning>;
 export const ExperimentQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   DataWarehouseSyncWarning,
 ) as any as S.Schema<ExperimentQueryResponseWarningsList>;
@@ -11333,7 +11300,8 @@ export type HogQLFiltersPropertiesItem =
 export const HogQLFiltersPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLFiltersPropertiesItem>;
 
-export type HogQLFiltersPropertiesList = HogQLFiltersPropertiesItem[];
+export type HogQLFiltersPropertiesList =
+  ReadonlyArray<HogQLFiltersPropertiesItem>;
 export const HogQLFiltersPropertiesList = /*@__PURE__*/ S.Array(
   HogQLFiltersPropertiesItem,
 ) as any as S.Schema<HogQLFiltersPropertiesList>;
@@ -11351,33 +11319,33 @@ export const HogQLFilters = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HogQLFilters" }) as any as S.Schema<HogQLFilters>;
 
-export type HogQLQueryResponseColumnsList = unknown[];
+export type HogQLQueryResponseColumnsList = ReadonlyArray<unknown>;
 export const HogQLQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogQLQueryResponseColumnsList>;
 
-export type HogQLQueryResponseExplainList = string[];
+export type HogQLQueryResponseExplainList = ReadonlyArray<string>;
 export const HogQLQueryResponseExplainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogQLQueryResponseExplainList>;
 
-export type HogQLQueryResponseResultsList = unknown[];
+export type HogQLQueryResponseResultsList = ReadonlyArray<unknown>;
 export const HogQLQueryResponseResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogQLQueryResponseResultsList>;
 
-export type HogQLQueryResponseTimingsList = QueryTiming[];
+export type HogQLQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const HogQLQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<HogQLQueryResponseTimingsList>;
 
-export type HogQLQueryResponseTypesList = unknown[];
+export type HogQLQueryResponseTypesList = ReadonlyArray<unknown>;
 export const HogQLQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogQLQueryResponseTypesList>;
 
 export type HogQLQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const HogQLQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -11389,7 +11357,8 @@ export type HogQLQueryResponseWarningsItem =
 export const HogQLQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<HogQLQueryResponseWarningsItem>;
 
-export type HogQLQueryResponseWarningsList = HogQLQueryResponseWarningsItem[];
+export type HogQLQueryResponseWarningsList =
+  ReadonlyArray<HogQLQueryResponseWarningsItem>;
 export const HogQLQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   HogQLQueryResponseWarningsItem,
 ) as any as S.Schema<HogQLQueryResponseWarningsList>;
@@ -11576,7 +11545,7 @@ export const ActorsQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActorsQuery" }) as any as S.Schema<ActorsQuery>;
 
-export type GroupsQueryOrderByList = string[];
+export type GroupsQueryOrderByList = ReadonlyArray<string>;
 export const GroupsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupsQueryOrderByList>;
@@ -11587,39 +11556,40 @@ export type GroupsQueryPropertiesItem =
 export const GroupsQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupsQueryPropertiesItem>;
 
-export type GroupsQueryPropertiesList = GroupsQueryPropertiesItem[];
+export type GroupsQueryPropertiesList =
+  ReadonlyArray<GroupsQueryPropertiesItem>;
 export const GroupsQueryPropertiesList = /*@__PURE__*/ S.Array(
   GroupsQueryPropertiesItem,
 ) as any as S.Schema<GroupsQueryPropertiesList>;
 
-export type GroupsQueryResponseColumnsList = unknown[];
+export type GroupsQueryResponseColumnsList = ReadonlyArray<unknown>;
 export const GroupsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GroupsQueryResponseColumnsList>;
 
-export type GroupsQueryResponseResultsItemList = unknown[];
+export type GroupsQueryResponseResultsItemList = ReadonlyArray<unknown>;
 export const GroupsQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GroupsQueryResponseResultsItemList>;
 
 export type GroupsQueryResponseResultsList =
-  GroupsQueryResponseResultsItemList[];
+  ReadonlyArray<GroupsQueryResponseResultsItemList>;
 export const GroupsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   GroupsQueryResponseResultsItemList,
 ) as any as S.Schema<GroupsQueryResponseResultsList>;
 
-export type GroupsQueryResponseTimingsList = QueryTiming[];
+export type GroupsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const GroupsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<GroupsQueryResponseTimingsList>;
 
-export type GroupsQueryResponseTypesList = string[];
+export type GroupsQueryResponseTypesList = ReadonlyArray<string>;
 export const GroupsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupsQueryResponseTypesList>;
 
 export type GroupsQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const GroupsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -11631,7 +11601,8 @@ export type GroupsQueryResponseWarningsItem =
 export const GroupsQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<GroupsQueryResponseWarningsItem>;
 
-export type GroupsQueryResponseWarningsList = GroupsQueryResponseWarningsItem[];
+export type GroupsQueryResponseWarningsList =
+  ReadonlyArray<GroupsQueryResponseWarningsItem>;
 export const GroupsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   GroupsQueryResponseWarningsItem,
 ) as any as S.Schema<GroupsQueryResponseWarningsList>;
@@ -11690,7 +11661,7 @@ export const GroupsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupsQueryResponse",
 }) as any as S.Schema<GroupsQueryResponse>;
 
-export type GroupsQuerySelectList = string[];
+export type GroupsQuerySelectList = ReadonlyArray<string>;
 export const GroupsQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupsQuerySelectList>;
@@ -11741,7 +11712,7 @@ export const WebExternalClicksTableQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebExternalClicksTableQueryOrderByItem>;
 
 export type WebExternalClicksTableQueryOrderByList =
-  WebExternalClicksTableQueryOrderByItem[];
+  ReadonlyArray<WebExternalClicksTableQueryOrderByItem>;
 export const WebExternalClicksTableQueryOrderByList = /*@__PURE__*/ S.Array(
   WebExternalClicksTableQueryOrderByItem,
 ) as any as S.Schema<WebExternalClicksTableQueryOrderByList>;
@@ -11755,37 +11726,41 @@ export const WebExternalClicksTableQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebExternalClicksTableQueryPropertiesItem>;
 
 export type WebExternalClicksTableQueryPropertiesList =
-  WebExternalClicksTableQueryPropertiesItem[];
+  ReadonlyArray<WebExternalClicksTableQueryPropertiesItem>;
 export const WebExternalClicksTableQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebExternalClicksTableQueryPropertiesItem,
 ) as any as S.Schema<WebExternalClicksTableQueryPropertiesList>;
 
-export type WebExternalClicksTableQueryResponseColumnsList = unknown[];
+export type WebExternalClicksTableQueryResponseColumnsList =
+  ReadonlyArray<unknown>;
 export const WebExternalClicksTableQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<WebExternalClicksTableQueryResponseColumnsList>;
 
-export type WebExternalClicksTableQueryResponseResultsList = unknown[];
+export type WebExternalClicksTableQueryResponseResultsList =
+  ReadonlyArray<unknown>;
 export const WebExternalClicksTableQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<WebExternalClicksTableQueryResponseResultsList>;
 
-export type WebExternalClicksTableQueryResponseTimingsList = QueryTiming[];
+export type WebExternalClicksTableQueryResponseTimingsList =
+  ReadonlyArray<QueryTiming>;
 export const WebExternalClicksTableQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<WebExternalClicksTableQueryResponseTimingsList>;
 
-export type WebExternalClicksTableQueryResponseTypesList = unknown[];
+export type WebExternalClicksTableQueryResponseTypesList =
+  ReadonlyArray<unknown>;
 export const WebExternalClicksTableQueryResponseTypesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<WebExternalClicksTableQueryResponseTypesList>;
 
 export type WebExternalClicksTableQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const WebExternalClicksTableQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -11798,7 +11773,7 @@ export const WebExternalClicksTableQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebExternalClicksTableQueryResponseWarningsItem>;
 
 export type WebExternalClicksTableQueryResponseWarningsList =
-  WebExternalClicksTableQueryResponseWarningsItem[];
+  ReadonlyArray<WebExternalClicksTableQueryResponseWarningsItem>;
 export const WebExternalClicksTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     WebExternalClicksTableQueryResponseWarningsItem,
@@ -11935,7 +11910,7 @@ export type WebGoalsQueryOrderByItem =
 export const WebGoalsQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebGoalsQueryOrderByItem>;
 
-export type WebGoalsQueryOrderByList = WebGoalsQueryOrderByItem[];
+export type WebGoalsQueryOrderByList = ReadonlyArray<WebGoalsQueryOrderByItem>;
 export const WebGoalsQueryOrderByList = /*@__PURE__*/ S.Array(
   WebGoalsQueryOrderByItem,
 ) as any as S.Schema<WebGoalsQueryOrderByList>;
@@ -11948,33 +11923,34 @@ export type WebGoalsQueryPropertiesItem =
 export const WebGoalsQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebGoalsQueryPropertiesItem>;
 
-export type WebGoalsQueryPropertiesList = WebGoalsQueryPropertiesItem[];
+export type WebGoalsQueryPropertiesList =
+  ReadonlyArray<WebGoalsQueryPropertiesItem>;
 export const WebGoalsQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebGoalsQueryPropertiesItem,
 ) as any as S.Schema<WebGoalsQueryPropertiesList>;
 
-export type WebGoalsQueryResponseColumnsList = unknown[];
+export type WebGoalsQueryResponseColumnsList = ReadonlyArray<unknown>;
 export const WebGoalsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebGoalsQueryResponseColumnsList>;
 
-export type WebGoalsQueryResponseResultsList = unknown[];
+export type WebGoalsQueryResponseResultsList = ReadonlyArray<unknown>;
 export const WebGoalsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebGoalsQueryResponseResultsList>;
 
-export type WebGoalsQueryResponseTimingsList = QueryTiming[];
+export type WebGoalsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const WebGoalsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<WebGoalsQueryResponseTimingsList>;
 
-export type WebGoalsQueryResponseTypesList = unknown[];
+export type WebGoalsQueryResponseTypesList = ReadonlyArray<unknown>;
 export const WebGoalsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WebGoalsQueryResponseTypesList>;
 
 export type WebGoalsQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const WebGoalsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -11987,7 +11963,7 @@ export const WebGoalsQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebGoalsQueryResponseWarningsItem>;
 
 export type WebGoalsQueryResponseWarningsList =
-  WebGoalsQueryResponseWarningsItem[];
+  ReadonlyArray<WebGoalsQueryResponseWarningsItem>;
 export const WebGoalsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   WebGoalsQueryResponseWarningsItem,
 ) as any as S.Schema<WebGoalsQueryResponseWarningsList>;
@@ -12116,7 +12092,8 @@ export type WebVitalsQueryOrderByItem =
 export const WebVitalsQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsQueryOrderByItem>;
 
-export type WebVitalsQueryOrderByList = WebVitalsQueryOrderByItem[];
+export type WebVitalsQueryOrderByList =
+  ReadonlyArray<WebVitalsQueryOrderByItem>;
 export const WebVitalsQueryOrderByList = /*@__PURE__*/ S.Array(
   WebVitalsQueryOrderByItem,
 ) as any as S.Schema<WebVitalsQueryOrderByList>;
@@ -12129,7 +12106,8 @@ export type WebVitalsQueryPropertiesItem =
 export const WebVitalsQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsQueryPropertiesItem>;
 
-export type WebVitalsQueryPropertiesList = WebVitalsQueryPropertiesItem[];
+export type WebVitalsQueryPropertiesList =
+  ReadonlyArray<WebVitalsQueryPropertiesItem>;
 export const WebVitalsQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebVitalsQueryPropertiesItem,
 ) as any as S.Schema<WebVitalsQueryPropertiesList>;
@@ -12205,7 +12183,7 @@ export type WebVitalsPathBreakdownQueryConversionGoal =
 export const WebVitalsPathBreakdownQueryConversionGoal =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsPathBreakdownQueryConversionGoal>;
 
-export type WebVitalsMetric = "INP" | "LCP" | "CLS" | "FCP" | (string & {});
+export type WebVitalsMetric = "INP" | "LCP" | "CLS" | "FCP";
 export const WebVitalsMetric = /*@__PURE__*/ S.String;
 
 export type WebVitalsPathBreakdownQueryOrderByItem =
@@ -12215,12 +12193,12 @@ export const WebVitalsPathBreakdownQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsPathBreakdownQueryOrderByItem>;
 
 export type WebVitalsPathBreakdownQueryOrderByList =
-  WebVitalsPathBreakdownQueryOrderByItem[];
+  ReadonlyArray<WebVitalsPathBreakdownQueryOrderByItem>;
 export const WebVitalsPathBreakdownQueryOrderByList = /*@__PURE__*/ S.Array(
   WebVitalsPathBreakdownQueryOrderByItem,
 ) as any as S.Schema<WebVitalsPathBreakdownQueryOrderByList>;
 
-export type WebVitalsPercentile = "p75" | "p90" | "p99" | (string & {});
+export type WebVitalsPercentile = "p75" | "p90" | "p99";
 export const WebVitalsPercentile = /*@__PURE__*/ S.String;
 
 export type WebVitalsPathBreakdownQueryPropertiesItem =
@@ -12232,26 +12210,27 @@ export const WebVitalsPathBreakdownQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsPathBreakdownQueryPropertiesItem>;
 
 export type WebVitalsPathBreakdownQueryPropertiesList =
-  WebVitalsPathBreakdownQueryPropertiesItem[];
+  ReadonlyArray<WebVitalsPathBreakdownQueryPropertiesItem>;
 export const WebVitalsPathBreakdownQueryPropertiesList = /*@__PURE__*/ S.Array(
   WebVitalsPathBreakdownQueryPropertiesItem,
 ) as any as S.Schema<WebVitalsPathBreakdownQueryPropertiesList>;
 
 export type WebVitalsPathBreakdownQueryResponseResultsList =
-  WebVitalsPathBreakdownResult[];
+  ReadonlyArray<WebVitalsPathBreakdownResult>;
 export const WebVitalsPathBreakdownQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     WebVitalsPathBreakdownResult,
   ) as any as S.Schema<WebVitalsPathBreakdownQueryResponseResultsList>;
 
-export type WebVitalsPathBreakdownQueryResponseTimingsList = QueryTiming[];
+export type WebVitalsPathBreakdownQueryResponseTimingsList =
+  ReadonlyArray<QueryTiming>;
 export const WebVitalsPathBreakdownQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<WebVitalsPathBreakdownQueryResponseTimingsList>;
 
 export type WebVitalsPathBreakdownQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const WebVitalsPathBreakdownQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -12264,7 +12243,7 @@ export const WebVitalsPathBreakdownQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<WebVitalsPathBreakdownQueryResponseWarningsItem>;
 
 export type WebVitalsPathBreakdownQueryResponseWarningsList =
-  WebVitalsPathBreakdownQueryResponseWarningsItem[];
+  ReadonlyArray<WebVitalsPathBreakdownQueryResponseWarningsItem>;
 export const WebVitalsPathBreakdownQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     WebVitalsPathBreakdownQueryResponseWarningsItem,
@@ -12318,7 +12297,7 @@ export const WebVitalsPathBreakdownQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebVitalsPathBreakdownQueryResponse",
 }) as any as S.Schema<WebVitalsPathBreakdownQueryResponse>;
 
-export type WebVitalsPathBreakdownQueryThresholdsList = number[];
+export type WebVitalsPathBreakdownQueryThresholdsList = ReadonlyArray<number>;
 export const WebVitalsPathBreakdownQueryThresholdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<WebVitalsPathBreakdownQueryThresholdsList>;
@@ -12387,7 +12366,7 @@ export const WebVitalsPathBreakdownQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebVitalsPathBreakdownQuery",
 }) as any as S.Schema<WebVitalsPathBreakdownQuery>;
 
-export type FiltersPropertiesList = SessionPropertyFilter[];
+export type FiltersPropertiesList = ReadonlyArray<SessionPropertyFilter>;
 export const FiltersPropertiesList = /*@__PURE__*/ S.Array(
   SessionPropertyFilter,
 ) as any as S.Schema<FiltersPropertiesList>;
@@ -12410,36 +12389,38 @@ export type SessionAttributionGroupBy =
   | "Campaign"
   | "AdIds"
   | "ReferringDomain"
-  | "InitialURL"
-  | (string & {});
+  | "InitialURL";
 export const SessionAttributionGroupBy = /*@__PURE__*/ S.String;
 
 export type SessionAttributionExplorerQueryGroupByList =
-  SessionAttributionGroupBy[];
+  ReadonlyArray<SessionAttributionGroupBy>;
 export const SessionAttributionExplorerQueryGroupByList = /*@__PURE__*/ S.Array(
   SessionAttributionGroupBy,
 ) as any as S.Schema<SessionAttributionExplorerQueryGroupByList>;
 
-export type SessionAttributionExplorerQueryResponseColumnsList = unknown[];
+export type SessionAttributionExplorerQueryResponseColumnsList =
+  ReadonlyArray<unknown>;
 export const SessionAttributionExplorerQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<SessionAttributionExplorerQueryResponseColumnsList>;
 
-export type SessionAttributionExplorerQueryResponseTimingsList = QueryTiming[];
+export type SessionAttributionExplorerQueryResponseTimingsList =
+  ReadonlyArray<QueryTiming>;
 export const SessionAttributionExplorerQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<SessionAttributionExplorerQueryResponseTimingsList>;
 
-export type SessionAttributionExplorerQueryResponseTypesList = unknown[];
+export type SessionAttributionExplorerQueryResponseTypesList =
+  ReadonlyArray<unknown>;
 export const SessionAttributionExplorerQueryResponseTypesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<SessionAttributionExplorerQueryResponseTypesList>;
 
 export type SessionAttributionExplorerQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const SessionAttributionExplorerQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -12452,7 +12433,7 @@ export const SessionAttributionExplorerQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionAttributionExplorerQueryResponseWarningsItem>;
 
 export type SessionAttributionExplorerQueryResponseWarningsList =
-  SessionAttributionExplorerQueryResponseWarningsItem[];
+  ReadonlyArray<SessionAttributionExplorerQueryResponseWarningsItem>;
 export const SessionAttributionExplorerQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     SessionAttributionExplorerQueryResponseWarningsItem,
@@ -12578,7 +12559,7 @@ export const SessionsQueryEventPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryEventPropertiesItem>;
 
 export type SessionsQueryEventPropertiesList =
-  SessionsQueryEventPropertiesItem[];
+  ReadonlyArray<SessionsQueryEventPropertiesItem>;
 export const SessionsQueryEventPropertiesList = /*@__PURE__*/ S.Array(
   SessionsQueryEventPropertiesItem,
 ) as any as S.Schema<SessionsQueryEventPropertiesList>;
@@ -12618,12 +12599,12 @@ export const SessionsQueryFixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryFixedPropertiesItem>;
 
 export type SessionsQueryFixedPropertiesList =
-  SessionsQueryFixedPropertiesItem[];
+  ReadonlyArray<SessionsQueryFixedPropertiesItem>;
 export const SessionsQueryFixedPropertiesList = /*@__PURE__*/ S.Array(
   SessionsQueryFixedPropertiesItem,
 ) as any as S.Schema<SessionsQueryFixedPropertiesList>;
 
-export type SessionsQueryOrderByList = string[];
+export type SessionsQueryOrderByList = ReadonlyArray<string>;
 export const SessionsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionsQueryOrderByList>;
@@ -12655,39 +12636,40 @@ export type SessionsQueryPropertiesItem =
 export const SessionsQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryPropertiesItem>;
 
-export type SessionsQueryPropertiesList = SessionsQueryPropertiesItem[];
+export type SessionsQueryPropertiesList =
+  ReadonlyArray<SessionsQueryPropertiesItem>;
 export const SessionsQueryPropertiesList = /*@__PURE__*/ S.Array(
   SessionsQueryPropertiesItem,
 ) as any as S.Schema<SessionsQueryPropertiesList>;
 
-export type SessionsQueryResponseColumnsList = unknown[];
+export type SessionsQueryResponseColumnsList = ReadonlyArray<unknown>;
 export const SessionsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SessionsQueryResponseColumnsList>;
 
-export type SessionsQueryResponseResultsItemList = unknown[];
+export type SessionsQueryResponseResultsItemList = ReadonlyArray<unknown>;
 export const SessionsQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SessionsQueryResponseResultsItemList>;
 
 export type SessionsQueryResponseResultsList =
-  SessionsQueryResponseResultsItemList[];
+  ReadonlyArray<SessionsQueryResponseResultsItemList>;
 export const SessionsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   SessionsQueryResponseResultsItemList,
 ) as any as S.Schema<SessionsQueryResponseResultsList>;
 
-export type SessionsQueryResponseTimingsList = QueryTiming[];
+export type SessionsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const SessionsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<SessionsQueryResponseTimingsList>;
 
-export type SessionsQueryResponseTypesList = string[];
+export type SessionsQueryResponseTypesList = ReadonlyArray<string>;
 export const SessionsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionsQueryResponseTypesList>;
 
 export type SessionsQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const SessionsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -12700,7 +12682,7 @@ export const SessionsQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionsQueryResponseWarningsItem>;
 
 export type SessionsQueryResponseWarningsList =
-  SessionsQueryResponseWarningsItem[];
+  ReadonlyArray<SessionsQueryResponseWarningsItem>;
 export const SessionsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   SessionsQueryResponseWarningsItem,
 ) as any as S.Schema<SessionsQueryResponseWarningsList>;
@@ -12758,12 +12740,12 @@ export const SessionsQueryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionsQueryResponse>;
 
 /** Return a limited set of data. Required. */
-export type SessionsQuerySelectList = string[];
+export type SessionsQuerySelectList = ReadonlyArray<string>;
 export const SessionsQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionsQuerySelectList>;
 
-export type SessionsQueryWhereList = string[];
+export type SessionsQueryWhereList = ReadonlyArray<string>;
 export const SessionsQueryWhereList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionsQueryWhereList>;
@@ -12843,43 +12825,45 @@ export const RevenueAnalyticsBreakdown = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevenueAnalyticsBreakdown>;
 
 export type RevenueAnalyticsGrossRevenueQueryBreakdownList =
-  RevenueAnalyticsBreakdown[];
+  ReadonlyArray<RevenueAnalyticsBreakdown>;
 export const RevenueAnalyticsGrossRevenueQueryBreakdownList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsBreakdown,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryBreakdownList>;
 
-export type SimpleIntervalType = "day" | "month" | (string & {});
+export type SimpleIntervalType = "day" | "month";
 export const SimpleIntervalType = /*@__PURE__*/ S.String;
 
 export type RevenueAnalyticsGrossRevenueQueryPropertiesList =
-  RevenueAnalyticsPropertyFilter[];
+  ReadonlyArray<RevenueAnalyticsPropertyFilter>;
 export const RevenueAnalyticsGrossRevenueQueryPropertiesList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilter,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryPropertiesList>;
 
-export type RevenueAnalyticsGrossRevenueQueryResponseColumnsList = string[];
+export type RevenueAnalyticsGrossRevenueQueryResponseColumnsList =
+  ReadonlyArray<string>;
 export const RevenueAnalyticsGrossRevenueQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseColumnsList>;
 
-export type RevenueAnalyticsGrossRevenueQueryResponseResultsList = unknown[];
+export type RevenueAnalyticsGrossRevenueQueryResponseResultsList =
+  ReadonlyArray<unknown>;
 export const RevenueAnalyticsGrossRevenueQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseResultsList>;
 
 export type RevenueAnalyticsGrossRevenueQueryResponseTimingsList =
-  QueryTiming[];
+  ReadonlyArray<QueryTiming>;
 export const RevenueAnalyticsGrossRevenueQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseTimingsList>;
 
 export type RevenueAnalyticsGrossRevenueQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const RevenueAnalyticsGrossRevenueQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -12892,7 +12876,7 @@ export const RevenueAnalyticsGrossRevenueQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsGrossRevenueQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsGrossRevenueQueryResponseWarningsList =
-  RevenueAnalyticsGrossRevenueQueryResponseWarningsItem[];
+  ReadonlyArray<RevenueAnalyticsGrossRevenueQueryResponseWarningsItem>;
 export const RevenueAnalyticsGrossRevenueQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsGrossRevenueQueryResponseWarningsItem,
@@ -12981,31 +12965,33 @@ export const RevenueAnalyticsGrossRevenueQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevenueAnalyticsGrossRevenueQuery>;
 
 export type RevenueAnalyticsMetricsQueryBreakdownList =
-  RevenueAnalyticsBreakdown[];
+  ReadonlyArray<RevenueAnalyticsBreakdown>;
 export const RevenueAnalyticsMetricsQueryBreakdownList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsBreakdown,
 ) as any as S.Schema<RevenueAnalyticsMetricsQueryBreakdownList>;
 
 export type RevenueAnalyticsMetricsQueryPropertiesList =
-  RevenueAnalyticsPropertyFilter[];
+  ReadonlyArray<RevenueAnalyticsPropertyFilter>;
 export const RevenueAnalyticsMetricsQueryPropertiesList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsPropertyFilter,
 ) as any as S.Schema<RevenueAnalyticsMetricsQueryPropertiesList>;
 
-export type RevenueAnalyticsMetricsQueryResponseColumnsList = string[];
+export type RevenueAnalyticsMetricsQueryResponseColumnsList =
+  ReadonlyArray<string>;
 export const RevenueAnalyticsMetricsQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RevenueAnalyticsMetricsQueryResponseColumnsList>;
 
-export type RevenueAnalyticsMetricsQueryResponseTimingsList = QueryTiming[];
+export type RevenueAnalyticsMetricsQueryResponseTimingsList =
+  ReadonlyArray<QueryTiming>;
 export const RevenueAnalyticsMetricsQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsMetricsQueryResponseTimingsList>;
 
 export type RevenueAnalyticsMetricsQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const RevenueAnalyticsMetricsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -13018,7 +13004,7 @@ export const RevenueAnalyticsMetricsQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsMetricsQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsMetricsQueryResponseWarningsList =
-  RevenueAnalyticsMetricsQueryResponseWarningsItem[];
+  ReadonlyArray<RevenueAnalyticsMetricsQueryResponseWarningsItem>;
 export const RevenueAnalyticsMetricsQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsMetricsQueryResponseWarningsItem,
@@ -13106,38 +13092,40 @@ export const RevenueAnalyticsMetricsQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueAnalyticsMetricsQuery",
 }) as any as S.Schema<RevenueAnalyticsMetricsQuery>;
 
-export type RevenueAnalyticsMRRQueryBreakdownList = RevenueAnalyticsBreakdown[];
+export type RevenueAnalyticsMRRQueryBreakdownList =
+  ReadonlyArray<RevenueAnalyticsBreakdown>;
 export const RevenueAnalyticsMRRQueryBreakdownList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsBreakdown,
 ) as any as S.Schema<RevenueAnalyticsMRRQueryBreakdownList>;
 
 export type RevenueAnalyticsMRRQueryPropertiesList =
-  RevenueAnalyticsPropertyFilter[];
+  ReadonlyArray<RevenueAnalyticsPropertyFilter>;
 export const RevenueAnalyticsMRRQueryPropertiesList = /*@__PURE__*/ S.Array(
   RevenueAnalyticsPropertyFilter,
 ) as any as S.Schema<RevenueAnalyticsMRRQueryPropertiesList>;
 
-export type RevenueAnalyticsMRRQueryResponseColumnsList = string[];
+export type RevenueAnalyticsMRRQueryResponseColumnsList = ReadonlyArray<string>;
 export const RevenueAnalyticsMRRQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RevenueAnalyticsMRRQueryResponseColumnsList>;
 
 export type RevenueAnalyticsMRRQueryResponseResultsList =
-  RevenueAnalyticsMRRQueryResultItem[];
+  ReadonlyArray<RevenueAnalyticsMRRQueryResultItem>;
 export const RevenueAnalyticsMRRQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsMRRQueryResultItem,
   ) as any as S.Schema<RevenueAnalyticsMRRQueryResponseResultsList>;
 
-export type RevenueAnalyticsMRRQueryResponseTimingsList = QueryTiming[];
+export type RevenueAnalyticsMRRQueryResponseTimingsList =
+  ReadonlyArray<QueryTiming>;
 export const RevenueAnalyticsMRRQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsMRRQueryResponseTimingsList>;
 
 export type RevenueAnalyticsMRRQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const RevenueAnalyticsMRRQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -13150,7 +13138,7 @@ export const RevenueAnalyticsMRRQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsMRRQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsMRRQueryResponseWarningsList =
-  RevenueAnalyticsMRRQueryResponseWarningsItem[];
+  ReadonlyArray<RevenueAnalyticsMRRQueryResponseWarningsItem>;
 export const RevenueAnalyticsMRRQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsMRRQueryResponseWarningsItem,
@@ -13232,27 +13220,28 @@ export const RevenueAnalyticsMRRQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevenueAnalyticsMRRQuery>;
 
 export type RevenueAnalyticsOverviewQueryPropertiesList =
-  RevenueAnalyticsPropertyFilter[];
+  ReadonlyArray<RevenueAnalyticsPropertyFilter>;
 export const RevenueAnalyticsOverviewQueryPropertiesList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilter,
   ) as any as S.Schema<RevenueAnalyticsOverviewQueryPropertiesList>;
 
 export type RevenueAnalyticsOverviewQueryResponseResultsList =
-  RevenueAnalyticsOverviewItem[];
+  ReadonlyArray<RevenueAnalyticsOverviewItem>;
 export const RevenueAnalyticsOverviewQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsOverviewItem,
   ) as any as S.Schema<RevenueAnalyticsOverviewQueryResponseResultsList>;
 
-export type RevenueAnalyticsOverviewQueryResponseTimingsList = QueryTiming[];
+export type RevenueAnalyticsOverviewQueryResponseTimingsList =
+  ReadonlyArray<QueryTiming>;
 export const RevenueAnalyticsOverviewQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsOverviewQueryResponseTimingsList>;
 
 export type RevenueAnalyticsOverviewQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const RevenueAnalyticsOverviewQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -13265,7 +13254,7 @@ export const RevenueAnalyticsOverviewQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsOverviewQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsOverviewQueryResponseWarningsList =
-  RevenueAnalyticsOverviewQueryResponseWarningsItem[];
+  ReadonlyArray<RevenueAnalyticsOverviewQueryResponseWarningsItem>;
 export const RevenueAnalyticsOverviewQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsOverviewQueryResponseWarningsItem,
@@ -13345,34 +13334,32 @@ export const RevenueAnalyticsOverviewQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueAnalyticsOverviewQuery",
 }) as any as S.Schema<RevenueAnalyticsOverviewQuery>;
 
-export type RevenueAnalyticsTopCustomersGroupBy =
-  | "month"
-  | "all"
-  | (string & {});
+export type RevenueAnalyticsTopCustomersGroupBy = "month" | "all";
 export const RevenueAnalyticsTopCustomersGroupBy = /*@__PURE__*/ S.String;
 
 export type RevenueAnalyticsTopCustomersQueryPropertiesList =
-  RevenueAnalyticsPropertyFilter[];
+  ReadonlyArray<RevenueAnalyticsPropertyFilter>;
 export const RevenueAnalyticsTopCustomersQueryPropertiesList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsPropertyFilter,
   ) as any as S.Schema<RevenueAnalyticsTopCustomersQueryPropertiesList>;
 
-export type RevenueAnalyticsTopCustomersQueryResponseColumnsList = string[];
+export type RevenueAnalyticsTopCustomersQueryResponseColumnsList =
+  ReadonlyArray<string>;
 export const RevenueAnalyticsTopCustomersQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseColumnsList>;
 
 export type RevenueAnalyticsTopCustomersQueryResponseTimingsList =
-  QueryTiming[];
+  ReadonlyArray<QueryTiming>;
 export const RevenueAnalyticsTopCustomersQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseTimingsList>;
 
 export type RevenueAnalyticsTopCustomersQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const RevenueAnalyticsTopCustomersQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -13385,7 +13372,7 @@ export const RevenueAnalyticsTopCustomersQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueAnalyticsTopCustomersQueryResponseWarningsItem>;
 
 export type RevenueAnalyticsTopCustomersQueryResponseWarningsList =
-  RevenueAnalyticsTopCustomersQueryResponseWarningsItem[];
+  ReadonlyArray<RevenueAnalyticsTopCustomersQueryResponseWarningsItem>;
 export const RevenueAnalyticsTopCustomersQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueAnalyticsTopCustomersQueryResponseWarningsItem,
@@ -13471,25 +13458,27 @@ export const RevenueAnalyticsTopCustomersQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevenueAnalyticsTopCustomersQuery",
 }) as any as S.Schema<RevenueAnalyticsTopCustomersQuery>;
 
-export type RevenueExampleEventsQueryResponseColumnsList = unknown[];
+export type RevenueExampleEventsQueryResponseColumnsList =
+  ReadonlyArray<unknown>;
 export const RevenueExampleEventsQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<RevenueExampleEventsQueryResponseColumnsList>;
 
-export type RevenueExampleEventsQueryResponseTimingsList = QueryTiming[];
+export type RevenueExampleEventsQueryResponseTimingsList =
+  ReadonlyArray<QueryTiming>;
 export const RevenueExampleEventsQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueExampleEventsQueryResponseTimingsList>;
 
-export type RevenueExampleEventsQueryResponseTypesList = unknown[];
+export type RevenueExampleEventsQueryResponseTypesList = ReadonlyArray<unknown>;
 export const RevenueExampleEventsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RevenueExampleEventsQueryResponseTypesList>;
 
 export type RevenueExampleEventsQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const RevenueExampleEventsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -13502,7 +13491,7 @@ export const RevenueExampleEventsQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueExampleEventsQueryResponseWarningsItem>;
 
 export type RevenueExampleEventsQueryResponseWarningsList =
-  RevenueExampleEventsQueryResponseWarningsItem[];
+  ReadonlyArray<RevenueExampleEventsQueryResponseWarningsItem>;
 export const RevenueExampleEventsQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueExampleEventsQueryResponseWarningsItem,
@@ -13588,27 +13577,28 @@ export const RevenueExampleEventsQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevenueExampleEventsQuery>;
 
 export type RevenueExampleDataWarehouseTablesQueryResponseColumnsList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const RevenueExampleDataWarehouseTablesQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseColumnsList>;
 
 export type RevenueExampleDataWarehouseTablesQueryResponseTimingsList =
-  QueryTiming[];
+  ReadonlyArray<QueryTiming>;
 export const RevenueExampleDataWarehouseTablesQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseTimingsList>;
 
-export type RevenueExampleDataWarehouseTablesQueryResponseTypesList = unknown[];
+export type RevenueExampleDataWarehouseTablesQueryResponseTypesList =
+  ReadonlyArray<unknown>;
 export const RevenueExampleDataWarehouseTablesQueryResponseTypesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseTypesList>;
 
 export type RevenueExampleDataWarehouseTablesQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const RevenueExampleDataWarehouseTablesQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -13621,7 +13611,7 @@ export const RevenueExampleDataWarehouseTablesQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RevenueExampleDataWarehouseTablesQueryResponseWarningsItem>;
 
 export type RevenueExampleDataWarehouseTablesQueryResponseWarningsList =
-  RevenueExampleDataWarehouseTablesQueryResponseWarningsItem[];
+  ReadonlyArray<RevenueExampleDataWarehouseTablesQueryResponseWarningsItem>;
 export const RevenueExampleDataWarehouseTablesQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     RevenueExampleDataWarehouseTablesQueryResponseWarningsItem,
@@ -13752,7 +13742,7 @@ export const ConversionGoalFilter1FixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter1FixedPropertiesItem>;
 
 export type ConversionGoalFilter1FixedPropertiesList =
-  ConversionGoalFilter1FixedPropertiesItem[];
+  ReadonlyArray<ConversionGoalFilter1FixedPropertiesItem>;
 export const ConversionGoalFilter1FixedPropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter1FixedPropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter1FixedPropertiesList>;
@@ -13768,7 +13758,7 @@ export type ConversionGoalFilter1Math =
 export const ConversionGoalFilter1Math =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter1Math>;
 
-export type ConversionGoalFilter1OrderByList = string[];
+export type ConversionGoalFilter1OrderByList = ReadonlyArray<string>;
 export const ConversionGoalFilter1OrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConversionGoalFilter1OrderByList>;
@@ -13801,7 +13791,7 @@ export const ConversionGoalFilter1PropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter1PropertiesItem>;
 
 export type ConversionGoalFilter1PropertiesList =
-  ConversionGoalFilter1PropertiesItem[];
+  ReadonlyArray<ConversionGoalFilter1PropertiesItem>;
 export const ConversionGoalFilter1PropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter1PropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter1PropertiesList>;
@@ -13837,7 +13827,7 @@ export interface ConversionGoalFilter1 {
   kind?: string;
   limit?: number | null;
   math?: ConversionGoalFilter1Math | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -13866,7 +13856,7 @@ export const ConversionGoalFilter1 = /*@__PURE__*/ S.suspend(() =>
     kind: S.optional(S.String),
     limit: S.optional(S.NullOr(S.Number)),
     math: S.optional(S.NullOr(ConversionGoalFilter1Math)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -13914,7 +13904,7 @@ export const ConversionGoalFilter2FixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter2FixedPropertiesItem>;
 
 export type ConversionGoalFilter2FixedPropertiesList =
-  ConversionGoalFilter2FixedPropertiesItem[];
+  ReadonlyArray<ConversionGoalFilter2FixedPropertiesItem>;
 export const ConversionGoalFilter2FixedPropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter2FixedPropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter2FixedPropertiesList>;
@@ -13958,7 +13948,7 @@ export const ConversionGoalFilter2PropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter2PropertiesItem>;
 
 export type ConversionGoalFilter2PropertiesList =
-  ConversionGoalFilter2PropertiesItem[];
+  ReadonlyArray<ConversionGoalFilter2PropertiesItem>;
 export const ConversionGoalFilter2PropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter2PropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter2PropertiesList>;
@@ -13992,7 +13982,7 @@ export interface ConversionGoalFilter2 {
   id?: number;
   kind?: string;
   math?: ConversionGoalFilter2Math | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -14018,7 +14008,7 @@ export const ConversionGoalFilter2 = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.Number),
     kind: S.optional(S.String),
     math: S.optional(S.NullOr(ConversionGoalFilter2Math)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -14065,7 +14055,7 @@ export const ConversionGoalFilter3FixedPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter3FixedPropertiesItem>;
 
 export type ConversionGoalFilter3FixedPropertiesList =
-  ConversionGoalFilter3FixedPropertiesItem[];
+  ReadonlyArray<ConversionGoalFilter3FixedPropertiesItem>;
 export const ConversionGoalFilter3FixedPropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter3FixedPropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter3FixedPropertiesList>;
@@ -14109,7 +14099,7 @@ export const ConversionGoalFilter3PropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoalFilter3PropertiesItem>;
 
 export type ConversionGoalFilter3PropertiesList =
-  ConversionGoalFilter3PropertiesItem[];
+  ReadonlyArray<ConversionGoalFilter3PropertiesItem>;
 export const ConversionGoalFilter3PropertiesList = /*@__PURE__*/ S.Array(
   ConversionGoalFilter3PropertiesItem,
 ) as any as S.Schema<ConversionGoalFilter3PropertiesList>;
@@ -14146,7 +14136,7 @@ export interface ConversionGoalFilter3 {
   id_field?: string;
   kind?: string;
   math?: ConversionGoalFilter3Math | null;
-  math_group_type_index?: number | null;
+  math_group_type_index?: MathGroupTypeIndex | null;
   math_hogql?: string | null;
   math_multiplier?: number | null;
   math_property?: string | null;
@@ -14177,7 +14167,7 @@ export const ConversionGoalFilter3 = /*@__PURE__*/ S.suspend(() =>
     id_field: S.optional(S.String),
     kind: S.optional(S.String),
     math: S.optional(S.NullOr(ConversionGoalFilter3Math)),
-    math_group_type_index: S.optional(S.NullOr(S.Number)),
+    math_group_type_index: S.optional(S.NullOr(MathGroupTypeIndex)),
     math_hogql: S.optional(S.NullOr(S.String)),
     math_multiplier: S.optional(S.NullOr(S.Number)),
     math_property: S.optional(S.NullOr(S.String)),
@@ -14214,11 +14204,10 @@ export type MarketingAnalyticsDrillDownLevel =
   | "ad"
   | "medium"
   | "content"
-  | "term"
-  | (string & {});
+  | "term";
 export const MarketingAnalyticsDrillDownLevel = /*@__PURE__*/ S.String;
 
-export type IntegrationFilterIntegrationSourceIdsList = string[];
+export type IntegrationFilterIntegrationSourceIdsList = ReadonlyArray<string>;
 export const IntegrationFilterIntegrationSourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IntegrationFilterIntegrationSourceIdsList>;
@@ -14237,7 +14226,7 @@ export const IntegrationFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "IntegrationFilter",
 }) as any as S.Schema<IntegrationFilter>;
 
-export type MarketingAnalyticsOrderByEnum = "ASC" | "DESC" | (string & {});
+export type MarketingAnalyticsOrderByEnum = "ASC" | "DESC";
 export const MarketingAnalyticsOrderByEnum = /*@__PURE__*/ S.String;
 
 export type MarketingAnalyticsTableQueryOrderByItemItem =
@@ -14247,14 +14236,14 @@ export const MarketingAnalyticsTableQueryOrderByItemItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryOrderByItemItem>;
 
 export type MarketingAnalyticsTableQueryOrderByItemList =
-  MarketingAnalyticsTableQueryOrderByItemItem[];
+  ReadonlyArray<MarketingAnalyticsTableQueryOrderByItemItem>;
 export const MarketingAnalyticsTableQueryOrderByItemList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsTableQueryOrderByItemItem,
   ) as any as S.Schema<MarketingAnalyticsTableQueryOrderByItemList>;
 
 export type MarketingAnalyticsTableQueryOrderByList =
-  MarketingAnalyticsTableQueryOrderByItemList[];
+  ReadonlyArray<MarketingAnalyticsTableQueryOrderByItemList>;
 export const MarketingAnalyticsTableQueryOrderByList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsTableQueryOrderByItemList,
 ) as any as S.Schema<MarketingAnalyticsTableQueryOrderByList>;
@@ -14268,45 +14257,48 @@ export const MarketingAnalyticsTableQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryPropertiesItem>;
 
 export type MarketingAnalyticsTableQueryPropertiesList =
-  MarketingAnalyticsTableQueryPropertiesItem[];
+  ReadonlyArray<MarketingAnalyticsTableQueryPropertiesItem>;
 export const MarketingAnalyticsTableQueryPropertiesList = /*@__PURE__*/ S.Array(
   MarketingAnalyticsTableQueryPropertiesItem,
 ) as any as S.Schema<MarketingAnalyticsTableQueryPropertiesList>;
 
-export type MarketingAnalyticsTableQueryResponseColumnsList = unknown[];
+export type MarketingAnalyticsTableQueryResponseColumnsList =
+  ReadonlyArray<unknown>;
 export const MarketingAnalyticsTableQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseColumnsList>;
 
 export type MarketingAnalyticsTableQueryResponseResultsItemList =
-  MarketingAnalyticsItem[];
+  ReadonlyArray<MarketingAnalyticsItem>;
 export const MarketingAnalyticsTableQueryResponseResultsItemList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsItem,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseResultsItemList>;
 
 export type MarketingAnalyticsTableQueryResponseResultsList =
-  MarketingAnalyticsTableQueryResponseResultsItemList[];
+  ReadonlyArray<MarketingAnalyticsTableQueryResponseResultsItemList>;
 export const MarketingAnalyticsTableQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsTableQueryResponseResultsItemList,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseResultsList>;
 
-export type MarketingAnalyticsTableQueryResponseTimingsList = QueryTiming[];
+export type MarketingAnalyticsTableQueryResponseTimingsList =
+  ReadonlyArray<QueryTiming>;
 export const MarketingAnalyticsTableQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseTimingsList>;
 
-export type MarketingAnalyticsTableQueryResponseTypesList = unknown[];
+export type MarketingAnalyticsTableQueryResponseTypesList =
+  ReadonlyArray<unknown>;
 export const MarketingAnalyticsTableQueryResponseTypesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<MarketingAnalyticsTableQueryResponseTypesList>;
 
 export type MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const MarketingAnalyticsTableQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -14319,7 +14311,7 @@ export const MarketingAnalyticsTableQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsTableQueryResponseWarningsItem>;
 
 export type MarketingAnalyticsTableQueryResponseWarningsList =
-  MarketingAnalyticsTableQueryResponseWarningsItem[];
+  ReadonlyArray<MarketingAnalyticsTableQueryResponseWarningsItem>;
 export const MarketingAnalyticsTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsTableQueryResponseWarningsItem,
@@ -14390,7 +14382,7 @@ export const MarketingAnalyticsTableQueryResponse = /*@__PURE__*/ S.suspend(
   identifier: "MarketingAnalyticsTableQueryResponse",
 }) as any as S.Schema<MarketingAnalyticsTableQueryResponse>;
 
-export type MarketingAnalyticsTableQuerySelectList = string[];
+export type MarketingAnalyticsTableQuerySelectList = ReadonlyArray<string>;
 export const MarketingAnalyticsTableQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MarketingAnalyticsTableQuerySelectList>;
@@ -14496,7 +14488,7 @@ export const MarketingAnalyticsAggregatedQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsAggregatedQueryPropertiesItem>;
 
 export type MarketingAnalyticsAggregatedQueryPropertiesList =
-  MarketingAnalyticsAggregatedQueryPropertiesItem[];
+  ReadonlyArray<MarketingAnalyticsAggregatedQueryPropertiesItem>;
 export const MarketingAnalyticsAggregatedQueryPropertiesList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsAggregatedQueryPropertiesItem,
@@ -14512,14 +14504,14 @@ export const MarketingAnalyticsAggregatedQueryResponseResultsMap =
   ) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseResultsMap>;
 
 export type MarketingAnalyticsAggregatedQueryResponseTimingsList =
-  QueryTiming[];
+  ReadonlyArray<QueryTiming>;
 export const MarketingAnalyticsAggregatedQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseTimingsList>;
 
 export type MarketingAnalyticsAggregatedQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const MarketingAnalyticsAggregatedQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -14532,7 +14524,7 @@ export const MarketingAnalyticsAggregatedQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MarketingAnalyticsAggregatedQueryResponseWarningsItem>;
 
 export type MarketingAnalyticsAggregatedQueryResponseWarningsList =
-  MarketingAnalyticsAggregatedQueryResponseWarningsItem[];
+  ReadonlyArray<MarketingAnalyticsAggregatedQueryResponseWarningsItem>;
 export const MarketingAnalyticsAggregatedQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsAggregatedQueryResponseWarningsItem,
@@ -14589,7 +14581,7 @@ export const MarketingAnalyticsAggregatedQueryResponse =
     identifier: "MarketingAnalyticsAggregatedQueryResponse",
   }) as any as S.Schema<MarketingAnalyticsAggregatedQueryResponse>;
 
-export type MarketingAnalyticsAggregatedQuerySelectList = string[];
+export type MarketingAnalyticsAggregatedQuerySelectList = ReadonlyArray<string>;
 export const MarketingAnalyticsAggregatedQuerySelectList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14683,14 +14675,14 @@ export const NonIntegratedConversionsTableQueryOrderByItemItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<NonIntegratedConversionsTableQueryOrderByItemItem>;
 
 export type NonIntegratedConversionsTableQueryOrderByItemList =
-  NonIntegratedConversionsTableQueryOrderByItemItem[];
+  ReadonlyArray<NonIntegratedConversionsTableQueryOrderByItemItem>;
 export const NonIntegratedConversionsTableQueryOrderByItemList =
   /*@__PURE__*/ S.Array(
     NonIntegratedConversionsTableQueryOrderByItemItem,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryOrderByItemList>;
 
 export type NonIntegratedConversionsTableQueryOrderByList =
-  NonIntegratedConversionsTableQueryOrderByItemList[];
+  ReadonlyArray<NonIntegratedConversionsTableQueryOrderByItemList>;
 export const NonIntegratedConversionsTableQueryOrderByList =
   /*@__PURE__*/ S.Array(
     NonIntegratedConversionsTableQueryOrderByItemList,
@@ -14705,47 +14697,49 @@ export const NonIntegratedConversionsTableQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<NonIntegratedConversionsTableQueryPropertiesItem>;
 
 export type NonIntegratedConversionsTableQueryPropertiesList =
-  NonIntegratedConversionsTableQueryPropertiesItem[];
+  ReadonlyArray<NonIntegratedConversionsTableQueryPropertiesItem>;
 export const NonIntegratedConversionsTableQueryPropertiesList =
   /*@__PURE__*/ S.Array(
     NonIntegratedConversionsTableQueryPropertiesItem,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryPropertiesList>;
 
-export type NonIntegratedConversionsTableQueryResponseColumnsList = unknown[];
+export type NonIntegratedConversionsTableQueryResponseColumnsList =
+  ReadonlyArray<unknown>;
 export const NonIntegratedConversionsTableQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseColumnsList>;
 
 export type NonIntegratedConversionsTableQueryResponseResultsItemList =
-  MarketingAnalyticsItem[];
+  ReadonlyArray<MarketingAnalyticsItem>;
 export const NonIntegratedConversionsTableQueryResponseResultsItemList =
   /*@__PURE__*/ S.Array(
     MarketingAnalyticsItem,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseResultsItemList>;
 
 export type NonIntegratedConversionsTableQueryResponseResultsList =
-  NonIntegratedConversionsTableQueryResponseResultsItemList[];
+  ReadonlyArray<NonIntegratedConversionsTableQueryResponseResultsItemList>;
 export const NonIntegratedConversionsTableQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     NonIntegratedConversionsTableQueryResponseResultsItemList,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseResultsList>;
 
 export type NonIntegratedConversionsTableQueryResponseTimingsList =
-  QueryTiming[];
+  ReadonlyArray<QueryTiming>;
 export const NonIntegratedConversionsTableQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseTimingsList>;
 
-export type NonIntegratedConversionsTableQueryResponseTypesList = unknown[];
+export type NonIntegratedConversionsTableQueryResponseTypesList =
+  ReadonlyArray<unknown>;
 export const NonIntegratedConversionsTableQueryResponseTypesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<NonIntegratedConversionsTableQueryResponseTypesList>;
 
 export type NonIntegratedConversionsTableQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const NonIntegratedConversionsTableQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -14758,7 +14752,7 @@ export const NonIntegratedConversionsTableQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<NonIntegratedConversionsTableQueryResponseWarningsItem>;
 
 export type NonIntegratedConversionsTableQueryResponseWarningsList =
-  NonIntegratedConversionsTableQueryResponseWarningsItem[];
+  ReadonlyArray<NonIntegratedConversionsTableQueryResponseWarningsItem>;
 export const NonIntegratedConversionsTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     NonIntegratedConversionsTableQueryResponseWarningsItem,
@@ -14831,7 +14825,8 @@ export const NonIntegratedConversionsTableQueryResponse =
     identifier: "NonIntegratedConversionsTableQueryResponse",
   }) as any as S.Schema<NonIntegratedConversionsTableQueryResponse>;
 
-export type NonIntegratedConversionsTableQuerySelectList = string[];
+export type NonIntegratedConversionsTableQuerySelectList =
+  ReadonlyArray<string>;
 export const NonIntegratedConversionsTableQuerySelectList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14916,11 +14911,10 @@ export type ErrorTrackingOrderBy =
   | "first_seen"
   | "occurrences"
   | "users"
-  | "sessions"
-  | (string & {});
+  | "sessions";
 export const ErrorTrackingOrderBy = /*@__PURE__*/ S.String;
 
-export type OrderDirection2 = "ASC" | "DESC" | (string & {});
+export type OrderDirection2 = "ASC" | "DESC";
 export const OrderDirection2 = /*@__PURE__*/ S.String;
 
 export interface ErrorTrackingPendingFingerprintIssueStateUpdate {
@@ -14956,29 +14950,30 @@ export const ErrorTrackingPendingFingerprintIssueStateUpdate =
   }) as any as S.Schema<ErrorTrackingPendingFingerprintIssueStateUpdate>;
 
 export type ErrorTrackingQueryPendingFingerprintIssueStateUpdatesList =
-  ErrorTrackingPendingFingerprintIssueStateUpdate[];
+  ReadonlyArray<ErrorTrackingPendingFingerprintIssueStateUpdate>;
 export const ErrorTrackingQueryPendingFingerprintIssueStateUpdatesList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingPendingFingerprintIssueStateUpdate,
   ) as any as S.Schema<ErrorTrackingQueryPendingFingerprintIssueStateUpdatesList>;
 
-export type ErrorTrackingQueryResponseColumnsList = string[];
+export type ErrorTrackingQueryResponseColumnsList = ReadonlyArray<string>;
 export const ErrorTrackingQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ErrorTrackingQueryResponseColumnsList>;
 
-export type ErrorTrackingQueryResponseResultsList = ErrorTrackingIssue[];
+export type ErrorTrackingQueryResponseResultsList =
+  ReadonlyArray<ErrorTrackingIssue>;
 export const ErrorTrackingQueryResponseResultsList = /*@__PURE__*/ S.Array(
   ErrorTrackingIssue,
 ) as any as S.Schema<ErrorTrackingQueryResponseResultsList>;
 
-export type ErrorTrackingQueryResponseTimingsList = QueryTiming[];
+export type ErrorTrackingQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const ErrorTrackingQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<ErrorTrackingQueryResponseTimingsList>;
 
 export type ErrorTrackingQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const ErrorTrackingQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -14991,7 +14986,7 @@ export const ErrorTrackingQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingQueryResponseWarningsItem>;
 
 export type ErrorTrackingQueryResponseWarningsList =
-  ErrorTrackingQueryResponseWarningsItem[];
+  ReadonlyArray<ErrorTrackingQueryResponseWarningsItem>;
 export const ErrorTrackingQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   ErrorTrackingQueryResponseWarningsItem,
 ) as any as S.Schema<ErrorTrackingQueryResponseWarningsList>;
@@ -15124,34 +15119,36 @@ export const ErrorTrackingQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "ErrorTrackingQuery",
 }) as any as S.Schema<ErrorTrackingQuery>;
 
-export type ErrorTrackingIssueCorrelationQueryEventsList = string[];
+export type ErrorTrackingIssueCorrelationQueryEventsList =
+  ReadonlyArray<string>;
 export const ErrorTrackingIssueCorrelationQueryEventsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryEventsList>;
 
-export type ErrorTrackingIssueCorrelationQueryResponseColumnsList = string[];
+export type ErrorTrackingIssueCorrelationQueryResponseColumnsList =
+  ReadonlyArray<string>;
 export const ErrorTrackingIssueCorrelationQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseColumnsList>;
 
 export type ErrorTrackingIssueCorrelationQueryResponseResultsList =
-  ErrorTrackingCorrelatedIssue[];
+  ReadonlyArray<ErrorTrackingCorrelatedIssue>;
 export const ErrorTrackingIssueCorrelationQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingCorrelatedIssue,
   ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseResultsList>;
 
 export type ErrorTrackingIssueCorrelationQueryResponseTimingsList =
-  QueryTiming[];
+  ReadonlyArray<QueryTiming>;
 export const ErrorTrackingIssueCorrelationQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseTimingsList>;
 
 export type ErrorTrackingIssueCorrelationQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const ErrorTrackingIssueCorrelationQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -15164,7 +15161,7 @@ export const ErrorTrackingIssueCorrelationQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ErrorTrackingIssueCorrelationQueryResponseWarningsItem>;
 
 export type ErrorTrackingIssueCorrelationQueryResponseWarningsList =
-  ErrorTrackingIssueCorrelationQueryResponseWarningsItem[];
+  ReadonlyArray<ErrorTrackingIssueCorrelationQueryResponseWarningsItem>;
 export const ErrorTrackingIssueCorrelationQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     ErrorTrackingIssueCorrelationQueryResponseWarningsItem,
@@ -15254,7 +15251,8 @@ export const ErrorTrackingIssueCorrelationQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "ErrorTrackingIssueCorrelationQuery",
 }) as any as S.Schema<ErrorTrackingIssueCorrelationQuery>;
 
-export type ExperimentFunnelsQueryResponseCredibleIntervalsValueList = number[];
+export type ExperimentFunnelsQueryResponseCredibleIntervalsValueList =
+  ReadonlyArray<number>;
 export const ExperimentFunnelsQueryResponseCredibleIntervalsValueList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -15281,14 +15279,14 @@ export const ExperimentFunnelsQueryResponseInsightItemItemMap =
   ) as any as S.Schema<ExperimentFunnelsQueryResponseInsightItemItemMap>;
 
 export type ExperimentFunnelsQueryResponseInsightItemList =
-  ExperimentFunnelsQueryResponseInsightItemItemMap[];
+  ReadonlyArray<ExperimentFunnelsQueryResponseInsightItemItemMap>;
 export const ExperimentFunnelsQueryResponseInsightItemList =
   /*@__PURE__*/ S.Array(
     ExperimentFunnelsQueryResponseInsightItemItemMap,
   ) as any as S.Schema<ExperimentFunnelsQueryResponseInsightItemList>;
 
 export type ExperimentFunnelsQueryResponseInsightList =
-  ExperimentFunnelsQueryResponseInsightItemList[];
+  ReadonlyArray<ExperimentFunnelsQueryResponseInsightItemList>;
 export const ExperimentFunnelsQueryResponseInsightList = /*@__PURE__*/ S.Array(
   ExperimentFunnelsQueryResponseInsightItemList,
 ) as any as S.Schema<ExperimentFunnelsQueryResponseInsightList>;
@@ -15303,13 +15301,13 @@ export const ExperimentFunnelsQueryResponseProbabilityMap =
   ) as any as S.Schema<ExperimentFunnelsQueryResponseProbabilityMap>;
 
 export type ExperimentFunnelsQueryResponseVariantsList =
-  ExperimentVariantFunnelsBaseStats[];
+  ReadonlyArray<ExperimentVariantFunnelsBaseStats>;
 export const ExperimentFunnelsQueryResponseVariantsList = /*@__PURE__*/ S.Array(
   ExperimentVariantFunnelsBaseStats,
 ) as any as S.Schema<ExperimentFunnelsQueryResponseVariantsList>;
 
 export type ExperimentFunnelsQueryResponseWarningsList =
-  DataWarehouseSyncWarning[];
+  ReadonlyArray<DataWarehouseSyncWarning>;
 export const ExperimentFunnelsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   DataWarehouseSyncWarning,
 ) as any as S.Schema<ExperimentFunnelsQueryResponseWarningsList>;
@@ -15379,7 +15377,8 @@ export const ExperimentFunnelsQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentFunnelsQuery",
 }) as any as S.Schema<ExperimentFunnelsQuery>;
 
-export type ExperimentTrendsQueryResponseCredibleIntervalsValueList = number[];
+export type ExperimentTrendsQueryResponseCredibleIntervalsValueList =
+  ReadonlyArray<number>;
 export const ExperimentTrendsQueryResponseCredibleIntervalsValueList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -15406,7 +15405,7 @@ export const ExperimentTrendsQueryResponseInsightItemMap =
   ) as any as S.Schema<ExperimentTrendsQueryResponseInsightItemMap>;
 
 export type ExperimentTrendsQueryResponseInsightList =
-  ExperimentTrendsQueryResponseInsightItemMap[];
+  ReadonlyArray<ExperimentTrendsQueryResponseInsightItemMap>;
 export const ExperimentTrendsQueryResponseInsightList = /*@__PURE__*/ S.Array(
   ExperimentTrendsQueryResponseInsightItemMap,
 ) as any as S.Schema<ExperimentTrendsQueryResponseInsightList>;
@@ -15421,13 +15420,13 @@ export const ExperimentTrendsQueryResponseProbabilityMap =
   ) as any as S.Schema<ExperimentTrendsQueryResponseProbabilityMap>;
 
 export type ExperimentTrendsQueryResponseVariantsList =
-  ExperimentVariantTrendsBaseStats[];
+  ReadonlyArray<ExperimentVariantTrendsBaseStats>;
 export const ExperimentTrendsQueryResponseVariantsList = /*@__PURE__*/ S.Array(
   ExperimentVariantTrendsBaseStats,
 ) as any as S.Schema<ExperimentTrendsQueryResponseVariantsList>;
 
 export type ExperimentTrendsQueryResponseWarningsList =
-  DataWarehouseSyncWarning[];
+  ReadonlyArray<DataWarehouseSyncWarning>;
 export const ExperimentTrendsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   DataWarehouseSyncWarning,
 ) as any as S.Schema<ExperimentTrendsQueryResponseWarningsList>;
@@ -15528,28 +15527,29 @@ export type TracesQueryPropertiesItem =
 export const TracesQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TracesQueryPropertiesItem>;
 
-export type TracesQueryPropertiesList = TracesQueryPropertiesItem[];
+export type TracesQueryPropertiesList =
+  ReadonlyArray<TracesQueryPropertiesItem>;
 export const TracesQueryPropertiesList = /*@__PURE__*/ S.Array(
   TracesQueryPropertiesItem,
 ) as any as S.Schema<TracesQueryPropertiesList>;
 
-export type TracesQueryResponseColumnsList = string[];
+export type TracesQueryResponseColumnsList = ReadonlyArray<string>;
 export const TracesQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TracesQueryResponseColumnsList>;
 
-export type TracesQueryResponseResultsList = LLMTrace[];
+export type TracesQueryResponseResultsList = ReadonlyArray<LLMTrace>;
 export const TracesQueryResponseResultsList = /*@__PURE__*/ S.Array(
   LLMTrace,
 ) as any as S.Schema<TracesQueryResponseResultsList>;
 
-export type TracesQueryResponseTimingsList = QueryTiming[];
+export type TracesQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const TracesQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<TracesQueryResponseTimingsList>;
 
 export type TracesQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const TracesQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -15561,7 +15561,8 @@ export type TracesQueryResponseWarningsItem =
 export const TracesQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TracesQueryResponseWarningsItem>;
 
-export type TracesQueryResponseWarningsList = TracesQueryResponseWarningsItem[];
+export type TracesQueryResponseWarningsList =
+  ReadonlyArray<TracesQueryResponseWarningsItem>;
 export const TracesQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   TracesQueryResponseWarningsItem,
 ) as any as S.Schema<TracesQueryResponseWarningsList>;
@@ -15692,28 +15693,28 @@ export type TraceQueryPropertiesItem =
 export const TraceQueryPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TraceQueryPropertiesItem>;
 
-export type TraceQueryPropertiesList = TraceQueryPropertiesItem[];
+export type TraceQueryPropertiesList = ReadonlyArray<TraceQueryPropertiesItem>;
 export const TraceQueryPropertiesList = /*@__PURE__*/ S.Array(
   TraceQueryPropertiesItem,
 ) as any as S.Schema<TraceQueryPropertiesList>;
 
-export type TraceQueryResponseColumnsList = string[];
+export type TraceQueryResponseColumnsList = ReadonlyArray<string>;
 export const TraceQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TraceQueryResponseColumnsList>;
 
-export type TraceQueryResponseResultsList = LLMTrace[];
+export type TraceQueryResponseResultsList = ReadonlyArray<LLMTrace>;
 export const TraceQueryResponseResultsList = /*@__PURE__*/ S.Array(
   LLMTrace,
 ) as any as S.Schema<TraceQueryResponseResultsList>;
 
-export type TraceQueryResponseTimingsList = QueryTiming[];
+export type TraceQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const TraceQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<TraceQueryResponseTimingsList>;
 
 export type TraceQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const TraceQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -15725,7 +15726,8 @@ export type TraceQueryResponseWarningsItem =
 export const TraceQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TraceQueryResponseWarningsItem>;
 
-export type TraceQueryResponseWarningsList = TraceQueryResponseWarningsItem[];
+export type TraceQueryResponseWarningsList =
+  ReadonlyArray<TraceQueryResponseWarningsItem>;
 export const TraceQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   TraceQueryResponseWarningsItem,
 ) as any as S.Schema<TraceQueryResponseWarningsList>;
@@ -15809,23 +15811,23 @@ export const TraceQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TraceQuery" }) as any as S.Schema<TraceQuery>;
 
-export type SessionQueryResponseColumnsList = string[];
+export type SessionQueryResponseColumnsList = ReadonlyArray<string>;
 export const SessionQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionQueryResponseColumnsList>;
 
-export type SessionQueryResponseResultsList = LLMTrace[];
+export type SessionQueryResponseResultsList = ReadonlyArray<LLMTrace>;
 export const SessionQueryResponseResultsList = /*@__PURE__*/ S.Array(
   LLMTrace,
 ) as any as S.Schema<SessionQueryResponseResultsList>;
 
-export type SessionQueryResponseTimingsList = QueryTiming[];
+export type SessionQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const SessionQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<SessionQueryResponseTimingsList>;
 
 export type SessionQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const SessionQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -15838,7 +15840,7 @@ export const SessionQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<SessionQueryResponseWarningsItem>;
 
 export type SessionQueryResponseWarningsList =
-  SessionQueryResponseWarningsItem[];
+  ReadonlyArray<SessionQueryResponseWarningsItem>;
 export const SessionQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   SessionQueryResponseWarningsItem,
 ) as any as S.Schema<SessionQueryResponseWarningsList>;
@@ -15927,16 +15929,15 @@ export type EndpointsUsageBreakdown =
   | "Endpoint"
   | "MaterializationType"
   | "ApiKey"
-  | "Status"
-  | (string & {});
+  | "Status";
 export const EndpointsUsageBreakdown = /*@__PURE__*/ S.String;
 
-export type EndpointsUsageTableQueryEndpointNamesList = string[];
+export type EndpointsUsageTableQueryEndpointNamesList = ReadonlyArray<string>;
 export const EndpointsUsageTableQueryEndpointNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointsUsageTableQueryEndpointNamesList>;
 
-export type MaterializationType = "materialized" | "inline" | (string & {});
+export type MaterializationType = "materialized" | "inline";
 export const MaterializationType = /*@__PURE__*/ S.String;
 
 export type EndpointsUsageOrderByField =
@@ -15944,11 +15945,10 @@ export type EndpointsUsageOrderByField =
   | "bytes_read"
   | "cpu_seconds"
   | "avg_query_duration_ms"
-  | "error_rate"
-  | (string & {});
+  | "error_rate";
 export const EndpointsUsageOrderByField = /*@__PURE__*/ S.String;
 
-export type EndpointsUsageOrderByDirection = "ASC" | "DESC" | (string & {});
+export type EndpointsUsageOrderByDirection = "ASC" | "DESC";
 export const EndpointsUsageOrderByDirection = /*@__PURE__*/ S.String;
 
 export type EndpointsUsageTableQueryOrderByItem =
@@ -15958,36 +15958,39 @@ export const EndpointsUsageTableQueryOrderByItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EndpointsUsageTableQueryOrderByItem>;
 
 export type EndpointsUsageTableQueryOrderByList =
-  EndpointsUsageTableQueryOrderByItem[];
+  ReadonlyArray<EndpointsUsageTableQueryOrderByItem>;
 export const EndpointsUsageTableQueryOrderByList = /*@__PURE__*/ S.Array(
   EndpointsUsageTableQueryOrderByItem,
 ) as any as S.Schema<EndpointsUsageTableQueryOrderByList>;
 
-export type EndpointsUsageTableQueryResponseColumnsList = unknown[];
+export type EndpointsUsageTableQueryResponseColumnsList =
+  ReadonlyArray<unknown>;
 export const EndpointsUsageTableQueryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EndpointsUsageTableQueryResponseColumnsList>;
 
-export type EndpointsUsageTableQueryResponseResultsList = unknown[];
+export type EndpointsUsageTableQueryResponseResultsList =
+  ReadonlyArray<unknown>;
 export const EndpointsUsageTableQueryResponseResultsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EndpointsUsageTableQueryResponseResultsList>;
 
-export type EndpointsUsageTableQueryResponseTimingsList = QueryTiming[];
+export type EndpointsUsageTableQueryResponseTimingsList =
+  ReadonlyArray<QueryTiming>;
 export const EndpointsUsageTableQueryResponseTimingsList =
   /*@__PURE__*/ S.Array(
     QueryTiming,
   ) as any as S.Schema<EndpointsUsageTableQueryResponseTimingsList>;
 
-export type EndpointsUsageTableQueryResponseTypesList = unknown[];
+export type EndpointsUsageTableQueryResponseTypesList = ReadonlyArray<unknown>;
 export const EndpointsUsageTableQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EndpointsUsageTableQueryResponseTypesList>;
 
 export type EndpointsUsageTableQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const EndpointsUsageTableQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -16000,7 +16003,7 @@ export const EndpointsUsageTableQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EndpointsUsageTableQueryResponseWarningsItem>;
 
 export type EndpointsUsageTableQueryResponseWarningsList =
-  EndpointsUsageTableQueryResponseWarningsItem[];
+  ReadonlyArray<EndpointsUsageTableQueryResponseWarningsItem>;
 export const EndpointsUsageTableQueryResponseWarningsList =
   /*@__PURE__*/ S.Array(
     EndpointsUsageTableQueryResponseWarningsItem,
@@ -16099,54 +16102,54 @@ export const EndpointsUsageTableQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointsUsageTableQuery",
 }) as any as S.Schema<EndpointsUsageTableQuery>;
 
-export type AccountsQueryAssignedToUserIdsList = number[];
+export type AccountsQueryAssignedToUserIdsList = ReadonlyArray<number>;
 export const AccountsQueryAssignedToUserIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AccountsQueryAssignedToUserIdsList>;
 
-export type AccountsQueryMetricsList = string[];
+export type AccountsQueryMetricsList = ReadonlyArray<string>;
 export const AccountsQueryMetricsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsQueryMetricsList>;
 
-export type AccountsQueryOrderByList = string[];
+export type AccountsQueryOrderByList = ReadonlyArray<string>;
 export const AccountsQueryOrderByList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsQueryOrderByList>;
 
-export type AccountsQueryResponseColumnsList = unknown[];
+export type AccountsQueryResponseColumnsList = ReadonlyArray<unknown>;
 export const AccountsQueryResponseColumnsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AccountsQueryResponseColumnsList>;
 
-export type AccountsQueryResponseMetricsResultsList = number[];
+export type AccountsQueryResponseMetricsResultsList = ReadonlyArray<number>;
 export const AccountsQueryResponseMetricsResultsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AccountsQueryResponseMetricsResultsList>;
 
-export type AccountsQueryResponseResultsItemList = unknown[];
+export type AccountsQueryResponseResultsItemList = ReadonlyArray<unknown>;
 export const AccountsQueryResponseResultsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AccountsQueryResponseResultsItemList>;
 
 export type AccountsQueryResponseResultsList =
-  AccountsQueryResponseResultsItemList[];
+  ReadonlyArray<AccountsQueryResponseResultsItemList>;
 export const AccountsQueryResponseResultsList = /*@__PURE__*/ S.Array(
   AccountsQueryResponseResultsItemList,
 ) as any as S.Schema<AccountsQueryResponseResultsList>;
 
-export type AccountsQueryResponseTimingsList = QueryTiming[];
+export type AccountsQueryResponseTimingsList = ReadonlyArray<QueryTiming>;
 export const AccountsQueryResponseTimingsList = /*@__PURE__*/ S.Array(
   QueryTiming,
 ) as any as S.Schema<AccountsQueryResponseTimingsList>;
 
-export type AccountsQueryResponseTypesList = string[];
+export type AccountsQueryResponseTypesList = ReadonlyArray<string>;
 export const AccountsQueryResponseTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsQueryResponseTypesList>;
 
 export type AccountsQueryResponseUsedDataWarehouseSourcesList =
-  DataWarehouseSourceUsage[];
+  ReadonlyArray<DataWarehouseSourceUsage>;
 export const AccountsQueryResponseUsedDataWarehouseSourcesList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSourceUsage,
@@ -16159,7 +16162,7 @@ export const AccountsQueryResponseWarningsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<AccountsQueryResponseWarningsItem>;
 
 export type AccountsQueryResponseWarningsList =
-  AccountsQueryResponseWarningsItem[];
+  ReadonlyArray<AccountsQueryResponseWarningsItem>;
 export const AccountsQueryResponseWarningsList = /*@__PURE__*/ S.Array(
   AccountsQueryResponseWarningsItem,
 ) as any as S.Schema<AccountsQueryResponseWarningsList>;
@@ -16223,12 +16226,12 @@ export const AccountsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsQueryResponse",
 }) as any as S.Schema<AccountsQueryResponse>;
 
-export type AccountsQuerySelectList = string[];
+export type AccountsQuerySelectList = ReadonlyArray<string>;
 export const AccountsQuerySelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsQuerySelectList>;
 
-export type AccountsQueryTagNamesList = string[];
+export type AccountsQueryTagNamesList = ReadonlyArray<string>;
 export const AccountsQueryTagNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsQueryTagNamesList>;
@@ -16435,7 +16438,7 @@ export const DataTableNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataTableNode" }) as any as S.Schema<DataTableNode>;
 
-export type ChartSettingsGoalLinesList = GoalLine[];
+export type ChartSettingsGoalLinesList = ReadonlyArray<GoalLine>;
 export const ChartSettingsGoalLinesList = /*@__PURE__*/ S.Array(
   GoalLine,
 ) as any as S.Schema<ChartSettingsGoalLinesList>;
@@ -16453,15 +16456,15 @@ export const HeatmapGradientStop = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapGradientStop",
 }) as any as S.Schema<HeatmapGradientStop>;
 
-export type HeatmapSettingsGradientList = HeatmapGradientStop[];
+export type HeatmapSettingsGradientList = ReadonlyArray<HeatmapGradientStop>;
 export const HeatmapSettingsGradientList = /*@__PURE__*/ S.Array(
   HeatmapGradientStop,
 ) as any as S.Schema<HeatmapSettingsGradientList>;
 
-export type GradientScaleMode = "absolute" | "relative" | (string & {});
+export type GradientScaleMode = "absolute" | "relative";
 export const GradientScaleMode = /*@__PURE__*/ S.String;
 
-export type HeatmapSortOrder = "asc" | "desc" | (string & {});
+export type HeatmapSortOrder = "asc" | "desc";
 export const HeatmapSortOrder = /*@__PURE__*/ S.String;
 
 export interface HeatmapSettings {
@@ -16497,7 +16500,7 @@ export const HeatmapSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapSettings",
 }) as any as S.Schema<HeatmapSettings>;
 
-export type Scale = "linear" | "logarithmic" | (string & {});
+export type Scale = "linear" | "logarithmic";
 export const Scale = /*@__PURE__*/ S.String;
 
 export interface YAxisSettings {
@@ -16518,10 +16521,10 @@ export const YAxisSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "YAxisSettings" }) as any as S.Schema<YAxisSettings>;
 
-export type SliceContent = "labels" | "values" | "none" | (string & {});
+export type SliceContent = "labels" | "values" | "none";
 export const SliceContent = /*@__PURE__*/ S.String;
 
-export type ValueDisplay = "absolute" | "percentage" | (string & {});
+export type ValueDisplay = "absolute" | "percentage";
 export const ValueDisplay = /*@__PURE__*/ S.String;
 
 export interface PieChartSettings {
@@ -16550,10 +16553,10 @@ export const ChartSettingsResultCustomizationsMap = /*@__PURE__*/ S.Record(
   ResultCustomizationByValue,
 ) as any as S.Schema<ChartSettingsResultCustomizationsMap>;
 
-export type DisplayType = "auto" | "line" | "bar" | "area" | (string & {});
+export type DisplayType = "auto" | "line" | "bar" | "area";
 export const DisplayType = /*@__PURE__*/ S.String;
 
-export type YAxisPosition = "left" | "right" | (string & {});
+export type YAxisPosition = "left" | "right";
 export const YAxisPosition = /*@__PURE__*/ S.String;
 
 export interface ChartSettingsDisplay {
@@ -16575,7 +16578,7 @@ export const ChartSettingsDisplay = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChartSettingsDisplay",
 }) as any as S.Schema<ChartSettingsDisplay>;
 
-export type Style = "none" | "number" | "short" | "percent" | (string & {});
+export type Style = "none" | "number" | "short" | "percent";
 export const Style = /*@__PURE__*/ S.String;
 
 export interface ChartSettingsFormatting {
@@ -16617,7 +16620,7 @@ export const ChartAxis = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChartAxis" }) as any as S.Schema<ChartAxis>;
 
-export type ChartSettingsYAxisList = ChartAxis[];
+export type ChartSettingsYAxisList = ReadonlyArray<ChartAxis>;
 export const ChartSettingsYAxisList = /*@__PURE__*/ S.Array(
   ChartAxis,
 ) as any as S.Schema<ChartSettingsYAxisList>;
@@ -16674,17 +16677,17 @@ export const ChartSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChartSettings" }) as any as S.Schema<ChartSettings>;
 
-export type TableSettingsColumnsList = ChartAxis[];
+export type TableSettingsColumnsList = ReadonlyArray<ChartAxis>;
 export const TableSettingsColumnsList = /*@__PURE__*/ S.Array(
   ChartAxis,
 ) as any as S.Schema<TableSettingsColumnsList>;
 
-export type ConditionalFormattingRuleBytecodeList = unknown[];
+export type ConditionalFormattingRuleBytecodeList = ReadonlyArray<unknown>;
 export const ConditionalFormattingRuleBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ConditionalFormattingRuleBytecodeList>;
 
-export type ColorMode = "light" | "dark" | (string & {});
+export type ColorMode = "light" | "dark";
 export const ColorMode = /*@__PURE__*/ S.String;
 
 export interface ConditionalFormattingRule {
@@ -16711,12 +16714,12 @@ export const ConditionalFormattingRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConditionalFormattingRule>;
 
 export type TableSettingsConditionalFormattingList =
-  ConditionalFormattingRule[];
+  ReadonlyArray<ConditionalFormattingRule>;
 export const TableSettingsConditionalFormattingList = /*@__PURE__*/ S.Array(
   ConditionalFormattingRule,
 ) as any as S.Schema<TableSettingsConditionalFormattingList>;
 
-export type TableSettingsPinnedColumnsList = string[];
+export type TableSettingsPinnedColumnsList = ReadonlyArray<string>;
 export const TableSettingsPinnedColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TableSettingsPinnedColumnsList>;
@@ -16760,12 +16763,12 @@ export const DataVisualizationNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataVisualizationNode",
 }) as any as S.Schema<DataVisualizationNode>;
 
-export type HogQueryResponseBytecodeList = unknown[];
+export type HogQueryResponseBytecodeList = ReadonlyArray<unknown>;
 export const HogQueryResponseBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogQueryResponseBytecodeList>;
 
-export type HogQueryResponseColoredBytecodeList = unknown[];
+export type HogQueryResponseColoredBytecodeList = ReadonlyArray<unknown>;
 export const HogQueryResponseColoredBytecodeList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<HogQueryResponseColoredBytecodeList>;
@@ -16818,10 +16821,127 @@ export const InsightQuerySchema =
   /*@__PURE__*/ S.Unknown as any as S.Schema<InsightQuerySchema>;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
-export type InsightsCancelCreateRequestDashboardsList = number[];
+export type InsightsCancelCreateRequestDashboardsList = ReadonlyArray<number>;
 export const InsightsCancelCreateRequestDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<InsightsCancelCreateRequestDashboardsList>;
+
+export type InsightsCancelCreateRequestTagsList = ReadonlyArray<unknown>;
+export const InsightsCancelCreateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<InsightsCancelCreateRequestTagsList>;
+
+export interface InsightsCancelCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: InsightsCancelCreateRequestFormat;
+  name?: string | null;
+  derived_name?: string | null;
+  query?: InsightQuerySchema | null;
+  order?: number | null;
+  deleted?: boolean;
+  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
+  dashboards?: InsightsCancelCreateRequestDashboardsList;
+  description?: string | null;
+  tags?: InsightsCancelCreateRequestTagsList;
+  favorited?: boolean;
+  _create_in_folder?: string;
+}
+export const InsightsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(InsightsCancelCreateRequestFormat.pipe(T.Query())),
+    name: S.optional(S.NullOr(S.String)),
+    derived_name: S.optional(S.NullOr(S.String)),
+    query: S.optional(S.NullOr(InsightQuerySchema)),
+    order: S.optional(S.NullOr(S.Number)),
+    deleted: S.optional(S.Boolean),
+    dashboards: S.optional(InsightsCancelCreateRequestDashboardsList),
+    description: S.optional(S.NullOr(S.String)),
+    tags: S.optional(InsightsCancelCreateRequestTagsList),
+    favorited: S.optional(S.Boolean),
+    _create_in_folder: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/insights/cancel/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InsightsCancelCreateRequest",
+}) as any as S.Schema<InsightsCancelCreateRequest>;
+
+export interface InsightsCancelCreateResponse {}
+export const InsightsCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "InsightsCancelCreateResponse",
+}) as any as S.Schema<InsightsCancelCreateResponse>;
+
+export type InsightsCreateRequestFormat = "csv" | "json";
+export const InsightsCreateRequestFormat = /*@__PURE__*/ S.String;
+
+/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
+export type InsightsCreateRequestDashboardsList = ReadonlyArray<number>;
+export const InsightsCreateRequestDashboardsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<InsightsCreateRequestDashboardsList>;
+
+export type InsightsCreateRequestTagsList = ReadonlyArray<unknown>;
+export const InsightsCreateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<InsightsCreateRequestTagsList>;
+
+export interface InsightsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  format?: InsightsCreateRequestFormat;
+  /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
+  include_dashboards?: boolean;
+  name?: string | null;
+  derived_name?: string | null;
+  query?: InsightQuerySchema | null;
+  order?: number | null;
+  deleted?: boolean;
+  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
+  dashboards?: InsightsCreateRequestDashboardsList;
+  description?: string | null;
+  tags?: InsightsCreateRequestTagsList;
+  favorited?: boolean;
+  _create_in_folder?: string;
+}
+export const InsightsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    format: S.optional(InsightsCreateRequestFormat.pipe(T.Query())),
+    include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.optional(S.NullOr(S.String)),
+    derived_name: S.optional(S.NullOr(S.String)),
+    query: S.optional(S.NullOr(InsightQuerySchema)),
+    order: S.optional(S.NullOr(S.Number)),
+    deleted: S.optional(S.Boolean),
+    dashboards: S.optional(InsightsCreateRequestDashboardsList),
+    description: S.optional(S.NullOr(S.String)),
+    tags: S.optional(InsightsCreateRequestTagsList),
+    favorited: S.optional(S.Boolean),
+    _create_in_folder: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/insights/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InsightsCreateRequest",
+}) as any as S.Schema<InsightsCreateRequest>;
+
+/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
+export type InsightOutputDashboardsList = ReadonlyArray<number>;
+export const InsightOutputDashboardsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<InsightOutputDashboardsList>;
 
 export interface DashboardTileBasic {
   id?: number;
@@ -16839,17 +16959,15 @@ export const DashboardTileBasic = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DashboardTileBasic>;
 
 /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-export type InsightsCancelCreateRequestDashboardTilesList =
-  DashboardTileBasic[];
-export const InsightsCancelCreateRequestDashboardTilesList =
-  /*@__PURE__*/ S.Array(
-    DashboardTileBasic,
-  ) as any as S.Schema<InsightsCancelCreateRequestDashboardTilesList>;
+export type InsightOutputDashboardTilesList = ReadonlyArray<DashboardTileBasic>;
+export const InsightOutputDashboardTilesList = /*@__PURE__*/ S.Array(
+  DashboardTileBasic,
+) as any as S.Schema<InsightOutputDashboardTilesList>;
 
-export type InsightsCancelCreateRequestColumnsList = string[];
-export const InsightsCancelCreateRequestColumnsList = /*@__PURE__*/ S.Array(
+export type InsightOutputColumnsList = ReadonlyArray<string>;
+export const InsightOutputColumnsList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<InsightsCancelCreateRequestColumnsList>;
+) as any as S.Schema<InsightOutputColumnsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -16866,11 +16984,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -16902,34 +17019,36 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export type InsightsCancelCreateRequestTagsList = unknown[];
-export const InsightsCancelCreateRequestTagsList = /*@__PURE__*/ S.Array(
+export type InsightOutputTagsList = ReadonlyArray<unknown>;
+export const InsightOutputTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<InsightsCancelCreateRequestTagsList>;
+) as any as S.Schema<InsightOutputTagsList>;
 
-export type InsightsCancelCreateRequestTypesList = unknown[];
-export const InsightsCancelCreateRequestTypesList = /*@__PURE__*/ S.Array(
+export type EffectivePrivilegeLevelEnum = 21 | 37;
+export const EffectivePrivilegeLevelEnum = /*@__PURE__*/ S.Number;
+
+export type InsightOutputTypesList = ReadonlyArray<unknown>;
+export const InsightOutputTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<InsightsCancelCreateRequestTypesList>;
+) as any as S.Schema<InsightOutputTypesList>;
 
-export interface InsightsCancelCreateRequestResolvedDateRange {
+export interface InsightOutputResolvedDateRange {
   date_from?: string;
   date_to?: string;
 }
-export const InsightsCancelCreateRequestResolvedDateRange =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      date_from: S.optional(S.String),
-      date_to: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InsightsCancelCreateRequestResolvedDateRange",
-  }) as any as S.Schema<InsightsCancelCreateRequestResolvedDateRange>;
+export const InsightOutputResolvedDateRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    date_from: S.optional(S.String),
+    date_to: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InsightOutputResolvedDateRange",
+}) as any as S.Schema<InsightOutputResolvedDateRange>;
 
-export type InsightsCancelCreateRequestAlertsList = unknown[];
-export const InsightsCancelCreateRequestAlertsList = /*@__PURE__*/ S.Array(
+export type InsightOutputAlertsList = ReadonlyArray<unknown>;
+export const InsightOutputAlertsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<InsightsCancelCreateRequestAlertsList>;
+) as any as S.Schema<InsightOutputAlertsList>;
 
 export type DashboardFilterPropertiesItem =
   | EventPropertyFilter
@@ -16958,7 +17077,8 @@ export type DashboardFilterPropertiesItem =
 export const DashboardFilterPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DashboardFilterPropertiesItem>;
 
-export type DashboardFilterPropertiesList = DashboardFilterPropertiesItem[];
+export type DashboardFilterPropertiesList =
+  ReadonlyArray<DashboardFilterPropertiesItem>;
 export const DashboardFilterPropertiesList = /*@__PURE__*/ S.Array(
   DashboardFilterPropertiesItem,
 ) as any as S.Schema<DashboardFilterPropertiesList>;
@@ -17015,7 +17135,8 @@ export type TileFiltersPropertiesItem =
 export const TileFiltersPropertiesItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<TileFiltersPropertiesItem>;
 
-export type TileFiltersPropertiesList = TileFiltersPropertiesItem[];
+export type TileFiltersPropertiesList =
+  ReadonlyArray<TileFiltersPropertiesItem>;
 export const TileFiltersPropertiesList = /*@__PURE__*/ S.Array(
   TileFiltersPropertiesItem,
 ) as any as S.Schema<TileFiltersPropertiesList>;
@@ -17062,329 +17183,11 @@ export const InsightFilterOverrideContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightFilterOverrideContext",
 }) as any as S.Schema<InsightFilterOverrideContext>;
 
-export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
+export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
-export interface InsightsCancelCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  format?: InsightsCancelCreateRequestFormat;
-  id?: number;
-  short_id?: string;
-  name?: string | null;
-  derived_name?: string | null;
-  query?: InsightQuerySchema | null;
-  order?: number | null;
-  deleted?: boolean;
-  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
-  dashboards?: InsightsCancelCreateRequestDashboardsList;
-  /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-  dashboard_tiles?: InsightsCancelCreateRequestDashboardTilesList;
-  /** The datetime this insight's results were generated. If added to one or more dashboards the insight can be refreshed separately on each. Returns the appropriate last_refresh datetime for the context the insight is viewed in (see from_dashboard query parameter). */
-  last_refresh?: string | null;
-  /** The target age of the cached results for this insight. */
-  cache_target_age?: string | null;
-  /** The earliest possible datetime at which we'll allow the cached results for this insight to be refreshed by querying the database. */
-  next_allowed_client_refresh?: string | null;
-  result?: unknown;
-  hasMore?: boolean | null;
-  columns?: InsightsCancelCreateRequestColumnsList | null;
-  created_at?: string | null;
-  created_by?: UserBasic;
-  description?: string | null;
-  updated_at?: string;
-  tags?: InsightsCancelCreateRequestTagsList;
-  favorited?: boolean;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  is_sample?: boolean;
-  effective_restriction_level?: number;
-  effective_privilege_level?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** The timezone this chart is displayed in. */
-  timezone?: string | null;
-  is_cached?: boolean;
-  query_status?: unknown;
-  hogql?: string | null;
-  types?: InsightsCancelCreateRequestTypesList | null;
-  resolved_date_range?: InsightsCancelCreateRequestResolvedDateRange | null;
-  _create_in_folder?: string;
-  alerts?: InsightsCancelCreateRequestAlertsList;
-  /** Resolved dashboard and tile filter layers used to explain filter precedence in the UI. */
-  filter_override_context?: InsightFilterOverrideContext | null;
-  last_viewed_at?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
-}
-export const InsightsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    format: S.optional(InsightsCancelCreateRequestFormat.pipe(T.Query())),
-    id: S.optional(S.Number),
-    short_id: S.optional(S.String),
-    name: S.optional(S.NullOr(S.String)),
-    derived_name: S.optional(S.NullOr(S.String)),
-    query: S.optional(S.NullOr(InsightQuerySchema)),
-    order: S.optional(S.NullOr(S.Number)),
-    deleted: S.optional(S.Boolean),
-    dashboards: S.optional(InsightsCancelCreateRequestDashboardsList),
-    dashboard_tiles: S.optional(InsightsCancelCreateRequestDashboardTilesList),
-    last_refresh: S.optional(S.NullOr(S.String)),
-    cache_target_age: S.optional(S.NullOr(S.String)),
-    next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
-    result: S.optional(S.Unknown),
-    hasMore: S.optional(S.NullOr(S.Boolean)),
-    columns: S.optional(S.NullOr(InsightsCancelCreateRequestColumnsList)),
-    created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-    description: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.String),
-    tags: S.optional(InsightsCancelCreateRequestTagsList),
-    favorited: S.optional(S.Boolean),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    is_sample: S.optional(S.Boolean),
-    effective_restriction_level: S.optional(S.Number),
-    effective_privilege_level: S.optional(S.Number),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    timezone: S.optional(S.NullOr(S.String)),
-    is_cached: S.optional(S.Boolean),
-    query_status: S.optional(S.Unknown),
-    hogql: S.optional(S.NullOr(S.String)),
-    types: S.optional(S.NullOr(InsightsCancelCreateRequestTypesList)),
-    resolved_date_range: S.optional(
-      S.NullOr(InsightsCancelCreateRequestResolvedDateRange),
-    ),
-    _create_in_folder: S.optional(S.String),
-    alerts: S.optional(InsightsCancelCreateRequestAlertsList),
-    filter_override_context: S.optional(S.NullOr(InsightFilterOverrideContext)),
-    last_viewed_at: S.optional(S.NullOr(S.String)),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/insights/cancel/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsCancelCreateRequest",
-}) as any as S.Schema<InsightsCancelCreateRequest>;
-
-export interface InsightsCancelCreateResponse {}
-export const InsightsCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "InsightsCancelCreateResponse",
-}) as any as S.Schema<InsightsCancelCreateResponse>;
-
-export type InsightsCreateRequestFormat = "csv" | "json" | (string & {});
-export const InsightsCreateRequestFormat = /*@__PURE__*/ S.String;
-
-/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
-export type InsightsCreateRequestDashboardsList = number[];
-export const InsightsCreateRequestDashboardsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<InsightsCreateRequestDashboardsList>;
-
-/** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-export type InsightsCreateRequestDashboardTilesList = DashboardTileBasic[];
-export const InsightsCreateRequestDashboardTilesList = /*@__PURE__*/ S.Array(
-  DashboardTileBasic,
-) as any as S.Schema<InsightsCreateRequestDashboardTilesList>;
-
-export type InsightsCreateRequestColumnsList = string[];
-export const InsightsCreateRequestColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsCreateRequestColumnsList>;
-
-export type InsightsCreateRequestTagsList = unknown[];
-export const InsightsCreateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsCreateRequestTagsList>;
-
-export type InsightsCreateRequestTypesList = unknown[];
-export const InsightsCreateRequestTypesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsCreateRequestTypesList>;
-
-export interface InsightsCreateRequestResolvedDateRange {
-  date_from?: string;
-  date_to?: string;
-}
-export const InsightsCreateRequestResolvedDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      date_from: S.optional(S.String),
-      date_to: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "InsightsCreateRequestResolvedDateRange",
-}) as any as S.Schema<InsightsCreateRequestResolvedDateRange>;
-
-export type InsightsCreateRequestAlertsList = unknown[];
-export const InsightsCreateRequestAlertsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsCreateRequestAlertsList>;
-
-export interface InsightsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  format?: InsightsCreateRequestFormat;
-  /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
-  include_dashboards?: boolean;
-  id?: number;
-  short_id?: string;
-  name?: string | null;
-  derived_name?: string | null;
-  query?: InsightQuerySchema | null;
-  order?: number | null;
-  deleted?: boolean;
-  /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
-  dashboards?: InsightsCreateRequestDashboardsList;
-  /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-  dashboard_tiles?: InsightsCreateRequestDashboardTilesList;
-  /** The datetime this insight's results were generated. If added to one or more dashboards the insight can be refreshed separately on each. Returns the appropriate last_refresh datetime for the context the insight is viewed in (see from_dashboard query parameter). */
-  last_refresh?: string | null;
-  /** The target age of the cached results for this insight. */
-  cache_target_age?: string | null;
-  /** The earliest possible datetime at which we'll allow the cached results for this insight to be refreshed by querying the database. */
-  next_allowed_client_refresh?: string | null;
-  result?: unknown;
-  hasMore?: boolean | null;
-  columns?: InsightsCreateRequestColumnsList | null;
-  created_at?: string | null;
-  created_by?: UserBasic;
-  description?: string | null;
-  updated_at?: string;
-  tags?: InsightsCreateRequestTagsList;
-  favorited?: boolean;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  is_sample?: boolean;
-  effective_restriction_level?: number;
-  effective_privilege_level?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** The timezone this chart is displayed in. */
-  timezone?: string | null;
-  is_cached?: boolean;
-  query_status?: unknown;
-  hogql?: string | null;
-  types?: InsightsCreateRequestTypesList | null;
-  resolved_date_range?: InsightsCreateRequestResolvedDateRange | null;
-  _create_in_folder?: string;
-  alerts?: InsightsCreateRequestAlertsList;
-  /** Resolved dashboard and tile filter layers used to explain filter precedence in the UI. */
-  filter_override_context?: InsightFilterOverrideContext | null;
-  last_viewed_at?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
-}
-export const InsightsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    format: S.optional(InsightsCreateRequestFormat.pipe(T.Query())),
-    include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
-    id: S.optional(S.Number),
-    short_id: S.optional(S.String),
-    name: S.optional(S.NullOr(S.String)),
-    derived_name: S.optional(S.NullOr(S.String)),
-    query: S.optional(S.NullOr(InsightQuerySchema)),
-    order: S.optional(S.NullOr(S.Number)),
-    deleted: S.optional(S.Boolean),
-    dashboards: S.optional(InsightsCreateRequestDashboardsList),
-    dashboard_tiles: S.optional(InsightsCreateRequestDashboardTilesList),
-    last_refresh: S.optional(S.NullOr(S.String)),
-    cache_target_age: S.optional(S.NullOr(S.String)),
-    next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
-    result: S.optional(S.Unknown),
-    hasMore: S.optional(S.NullOr(S.Boolean)),
-    columns: S.optional(S.NullOr(InsightsCreateRequestColumnsList)),
-    created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-    description: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.String),
-    tags: S.optional(InsightsCreateRequestTagsList),
-    favorited: S.optional(S.Boolean),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    is_sample: S.optional(S.Boolean),
-    effective_restriction_level: S.optional(S.Number),
-    effective_privilege_level: S.optional(S.Number),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    timezone: S.optional(S.NullOr(S.String)),
-    is_cached: S.optional(S.Boolean),
-    query_status: S.optional(S.Unknown),
-    hogql: S.optional(S.NullOr(S.String)),
-    types: S.optional(S.NullOr(InsightsCreateRequestTypesList)),
-    resolved_date_range: S.optional(
-      S.NullOr(InsightsCreateRequestResolvedDateRange),
-    ),
-    _create_in_folder: S.optional(S.String),
-    alerts: S.optional(InsightsCreateRequestAlertsList),
-    filter_override_context: S.optional(S.NullOr(InsightFilterOverrideContext)),
-    last_viewed_at: S.optional(S.NullOr(S.String)),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/insights/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsCreateRequest",
-}) as any as S.Schema<InsightsCreateRequest>;
-
-/** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
-export type InsightDashboardsList = number[];
-export const InsightDashboardsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<InsightDashboardsList>;
-
-/** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-export type InsightDashboardTilesList = DashboardTileBasic[];
-export const InsightDashboardTilesList = /*@__PURE__*/ S.Array(
-  DashboardTileBasic,
-) as any as S.Schema<InsightDashboardTilesList>;
-
-export type InsightColumnsList = string[];
-export const InsightColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightColumnsList>;
-
-export type InsightTagsList = unknown[];
-export const InsightTagsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightTagsList>;
-
-export type InsightTypesList = unknown[];
-export const InsightTypesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightTypesList>;
-
-export interface InsightResolvedDateRange {
-  date_from?: string;
-  date_to?: string;
-}
-export const InsightResolvedDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date_from: S.optional(S.String),
-    date_to: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsightResolvedDateRange",
-}) as any as S.Schema<InsightResolvedDateRange>;
-
-export type InsightAlertsList = unknown[];
-export const InsightAlertsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightAlertsList>;
-
 /** Simplified serializer to speed response times when loading large amounts of objects. */
-export interface Insight {
+export interface InsightOutput {
   id?: number;
   short_id?: string;
   name?: string | null;
@@ -17393,9 +17196,9 @@ export interface Insight {
   order?: number | null;
   deleted?: boolean;
   /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
-  dashboards?: InsightDashboardsList;
+  dashboards?: InsightOutputDashboardsList;
   /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-  dashboard_tiles?: InsightDashboardTilesList;
+  dashboard_tiles?: InsightOutputDashboardTilesList;
   /** The datetime this insight's results were generated. If added to one or more dashboards the insight can be refreshed separately on each. Returns the appropriate last_refresh datetime for the context the insight is viewed in (see from_dashboard query parameter). */
   last_refresh?: string | null;
   /** The target age of the cached results for this insight. */
@@ -17404,18 +17207,18 @@ export interface Insight {
   next_allowed_client_refresh?: string | null;
   result?: unknown;
   hasMore?: boolean | null;
-  columns?: InsightColumnsList | null;
+  columns?: InsightOutputColumnsList | null;
   created_at?: string | null;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   description?: string | null;
   updated_at?: string;
-  tags?: InsightTagsList;
+  tags?: InsightOutputTagsList;
   favorited?: boolean;
   last_modified_at?: string;
-  last_modified_by?: UserBasic;
+  last_modified_by?: UserBasic | null;
   is_sample?: boolean;
-  effective_restriction_level?: number;
-  effective_privilege_level?: number;
+  effective_restriction_level?: EffectivePrivilegeLevelEnum;
+  effective_privilege_level?: EffectivePrivilegeLevelEnum;
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
   /** The timezone this chart is displayed in. */
@@ -17423,17 +17226,16 @@ export interface Insight {
   is_cached?: boolean;
   query_status?: unknown;
   hogql?: string | null;
-  types?: InsightTypesList | null;
-  resolved_date_range?: InsightResolvedDateRange | null;
-  _create_in_folder?: string;
-  alerts?: InsightAlertsList;
+  types?: InsightOutputTypesList | null;
+  resolved_date_range?: InsightOutputResolvedDateRange | null;
+  alerts?: InsightOutputAlertsList;
   /** Resolved dashboard and tile filter layers used to explain filter precedence in the UI. */
   filter_override_context?: InsightFilterOverrideContext | null;
   last_viewed_at?: string | null;
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
-export const Insight = /*@__PURE__*/ S.suspend(() =>
+export const InsightOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     short_id: S.optional(S.String),
@@ -17442,41 +17244,40 @@ export const Insight = /*@__PURE__*/ S.suspend(() =>
     query: S.optional(S.NullOr(InsightQuerySchema)),
     order: S.optional(S.NullOr(S.Number)),
     deleted: S.optional(S.Boolean),
-    dashboards: S.optional(InsightDashboardsList),
-    dashboard_tiles: S.optional(InsightDashboardTilesList),
+    dashboards: S.optional(InsightOutputDashboardsList),
+    dashboard_tiles: S.optional(InsightOutputDashboardTilesList),
     last_refresh: S.optional(S.NullOr(S.String)),
     cache_target_age: S.optional(S.NullOr(S.String)),
     next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
     result: S.optional(S.Unknown),
     hasMore: S.optional(S.NullOr(S.Boolean)),
-    columns: S.optional(S.NullOr(InsightColumnsList)),
+    columns: S.optional(S.NullOr(InsightOutputColumnsList)),
     created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     description: S.optional(S.NullOr(S.String)),
     updated_at: S.optional(S.String),
-    tags: S.optional(InsightTagsList),
+    tags: S.optional(InsightOutputTagsList),
     favorited: S.optional(S.Boolean),
     last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
+    last_modified_by: S.optional(S.NullOr(UserBasic)),
     is_sample: S.optional(S.Boolean),
-    effective_restriction_level: S.optional(S.Number),
-    effective_privilege_level: S.optional(S.Number),
+    effective_restriction_level: S.optional(EffectivePrivilegeLevelEnum),
+    effective_privilege_level: S.optional(EffectivePrivilegeLevelEnum),
     user_access_level: S.optional(S.NullOr(S.String)),
     timezone: S.optional(S.NullOr(S.String)),
     is_cached: S.optional(S.Boolean),
     query_status: S.optional(S.Unknown),
     hogql: S.optional(S.NullOr(S.String)),
-    types: S.optional(S.NullOr(InsightTypesList)),
-    resolved_date_range: S.optional(S.NullOr(InsightResolvedDateRange)),
-    _create_in_folder: S.optional(S.String),
-    alerts: S.optional(InsightAlertsList),
+    types: S.optional(S.NullOr(InsightOutputTypesList)),
+    resolved_date_range: S.optional(S.NullOr(InsightOutputResolvedDateRange)),
+    alerts: S.optional(InsightOutputAlertsList),
     filter_override_context: S.optional(S.NullOr(InsightFilterOverrideContext)),
     last_viewed_at: S.optional(S.NullOr(S.String)),
     search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }),
-).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
+).annotate({ identifier: "InsightOutput" }) as any as S.Schema<InsightOutput>;
 
-export type InsightsDestroyRequestFormat = "csv" | "json" | (string & {});
+export type InsightsDestroyRequestFormat = "csv" | "json";
 export const InsightsDestroyRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsDestroyRequest {
@@ -17509,72 +17310,29 @@ export const InsightsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsDestroyResponse",
 }) as any as S.Schema<InsightsDestroyResponse>;
 
-export type InsightsGenerateMetadataCreateRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type InsightsGenerateMetadataCreateRequestFormat = "csv" | "json";
 export const InsightsGenerateMetadataCreateRequestFormat =
   /*@__PURE__*/ S.String;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
-export type InsightsGenerateMetadataCreateRequestDashboardsList = number[];
+export type InsightsGenerateMetadataCreateRequestDashboardsList =
+  ReadonlyArray<number>;
 export const InsightsGenerateMetadataCreateRequestDashboardsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<InsightsGenerateMetadataCreateRequestDashboardsList>;
 
-/** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-export type InsightsGenerateMetadataCreateRequestDashboardTilesList =
-  DashboardTileBasic[];
-export const InsightsGenerateMetadataCreateRequestDashboardTilesList =
-  /*@__PURE__*/ S.Array(
-    DashboardTileBasic,
-  ) as any as S.Schema<InsightsGenerateMetadataCreateRequestDashboardTilesList>;
-
-export type InsightsGenerateMetadataCreateRequestColumnsList = string[];
-export const InsightsGenerateMetadataCreateRequestColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsGenerateMetadataCreateRequestColumnsList>;
-
-export type InsightsGenerateMetadataCreateRequestTagsList = unknown[];
+export type InsightsGenerateMetadataCreateRequestTagsList =
+  ReadonlyArray<unknown>;
 export const InsightsGenerateMetadataCreateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<InsightsGenerateMetadataCreateRequestTagsList>;
 
-export type InsightsGenerateMetadataCreateRequestTypesList = unknown[];
-export const InsightsGenerateMetadataCreateRequestTypesList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<InsightsGenerateMetadataCreateRequestTypesList>;
-
-export interface InsightsGenerateMetadataCreateRequestResolvedDateRange {
-  date_from?: string;
-  date_to?: string;
-}
-export const InsightsGenerateMetadataCreateRequestResolvedDateRange =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      date_from: S.optional(S.String),
-      date_to: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InsightsGenerateMetadataCreateRequestResolvedDateRange",
-  }) as any as S.Schema<InsightsGenerateMetadataCreateRequestResolvedDateRange>;
-
-export type InsightsGenerateMetadataCreateRequestAlertsList = unknown[];
-export const InsightsGenerateMetadataCreateRequestAlertsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<InsightsGenerateMetadataCreateRequestAlertsList>;
-
 export interface InsightsGenerateMetadataCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   format?: InsightsGenerateMetadataCreateRequestFormat;
-  id?: number;
-  short_id?: string;
   name?: string | null;
   derived_name?: string | null;
   query?: InsightQuerySchema | null;
@@ -17582,44 +17340,10 @@ export interface InsightsGenerateMetadataCreateRequest {
   deleted?: boolean;
   /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
   dashboards?: InsightsGenerateMetadataCreateRequestDashboardsList;
-  /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-  dashboard_tiles?: InsightsGenerateMetadataCreateRequestDashboardTilesList;
-  /** The datetime this insight's results were generated. If added to one or more dashboards the insight can be refreshed separately on each. Returns the appropriate last_refresh datetime for the context the insight is viewed in (see from_dashboard query parameter). */
-  last_refresh?: string | null;
-  /** The target age of the cached results for this insight. */
-  cache_target_age?: string | null;
-  /** The earliest possible datetime at which we'll allow the cached results for this insight to be refreshed by querying the database. */
-  next_allowed_client_refresh?: string | null;
-  result?: unknown;
-  hasMore?: boolean | null;
-  columns?: InsightsGenerateMetadataCreateRequestColumnsList | null;
-  created_at?: string | null;
-  created_by?: UserBasic;
   description?: string | null;
-  updated_at?: string;
   tags?: InsightsGenerateMetadataCreateRequestTagsList;
   favorited?: boolean;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  is_sample?: boolean;
-  effective_restriction_level?: number;
-  effective_privilege_level?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** The timezone this chart is displayed in. */
-  timezone?: string | null;
-  is_cached?: boolean;
-  query_status?: unknown;
-  hogql?: string | null;
-  types?: InsightsGenerateMetadataCreateRequestTypesList | null;
-  resolved_date_range?: InsightsGenerateMetadataCreateRequestResolvedDateRange | null;
   _create_in_folder?: string;
-  alerts?: InsightsGenerateMetadataCreateRequestAlertsList;
-  /** Resolved dashboard and tile filter layers used to explain filter precedence in the UI. */
-  filter_override_context?: InsightFilterOverrideContext | null;
-  last_viewed_at?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const InsightsGenerateMetadataCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -17628,8 +17352,6 @@ export const InsightsGenerateMetadataCreateRequest = /*@__PURE__*/ S.suspend(
       format: S.optional(
         InsightsGenerateMetadataCreateRequestFormat.pipe(T.Query()),
       ),
-      id: S.optional(S.Number),
-      short_id: S.optional(S.String),
       name: S.optional(S.NullOr(S.String)),
       derived_name: S.optional(S.NullOr(S.String)),
       query: S.optional(S.NullOr(InsightQuerySchema)),
@@ -17638,46 +17360,10 @@ export const InsightsGenerateMetadataCreateRequest = /*@__PURE__*/ S.suspend(
       dashboards: S.optional(
         InsightsGenerateMetadataCreateRequestDashboardsList,
       ),
-      dashboard_tiles: S.optional(
-        InsightsGenerateMetadataCreateRequestDashboardTilesList,
-      ),
-      last_refresh: S.optional(S.NullOr(S.String)),
-      cache_target_age: S.optional(S.NullOr(S.String)),
-      next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
-      result: S.optional(S.Unknown),
-      hasMore: S.optional(S.NullOr(S.Boolean)),
-      columns: S.optional(
-        S.NullOr(InsightsGenerateMetadataCreateRequestColumnsList),
-      ),
-      created_at: S.optional(S.NullOr(S.String)),
-      created_by: S.optional(UserBasic),
       description: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
       tags: S.optional(InsightsGenerateMetadataCreateRequestTagsList),
       favorited: S.optional(S.Boolean),
-      last_modified_at: S.optional(S.String),
-      last_modified_by: S.optional(UserBasic),
-      is_sample: S.optional(S.Boolean),
-      effective_restriction_level: S.optional(S.Number),
-      effective_privilege_level: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      timezone: S.optional(S.NullOr(S.String)),
-      is_cached: S.optional(S.Boolean),
-      query_status: S.optional(S.Unknown),
-      hogql: S.optional(S.NullOr(S.String)),
-      types: S.optional(
-        S.NullOr(InsightsGenerateMetadataCreateRequestTypesList),
-      ),
-      resolved_date_range: S.optional(
-        S.NullOr(InsightsGenerateMetadataCreateRequestResolvedDateRange),
-      ),
       _create_in_folder: S.optional(S.String),
-      alerts: S.optional(InsightsGenerateMetadataCreateRequestAlertsList),
-      filter_override_context: S.optional(
-        S.NullOr(InsightFilterOverrideContext),
-      ),
-      last_viewed_at: S.optional(S.NullOr(S.String)),
-      search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -17696,7 +17382,7 @@ export const InsightsGenerateMetadataCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "InsightsGenerateMetadataCreateResponse",
 }) as any as S.Schema<InsightsGenerateMetadataCreateResponse>;
 
-export type InsightsListRequestFormat = "csv" | "json" | (string & {});
+export type InsightsListRequestFormat = "csv" | "json";
 export const InsightsListRequestFormat = /*@__PURE__*/ S.String;
 
 export type InsightsListRequestInsight =
@@ -17707,8 +17393,7 @@ export type InsightsListRequestInsight =
   | "RETENTION"
   | "SQL"
   | "STICKINESS"
-  | "TRENDS"
-  | (string & {});
+  | "TRENDS";
 export const InsightsListRequestInsight = /*@__PURE__*/ S.String;
 
 export type InsightsListRequestRefresh =
@@ -17718,8 +17403,7 @@ export type InsightsListRequestRefresh =
   | "force_async"
   | "force_blocking"
   | "force_cache"
-  | "lazy_async"
-  | (string & {});
+  | "lazy_async";
 export const InsightsListRequestRefresh = /*@__PURE__*/ S.String;
 
 export interface InsightsListRequest {
@@ -17801,32 +17485,30 @@ export const InsightsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsListRequest",
 }) as any as S.Schema<InsightsListRequest>;
 
-export type PaginatedInsightListResultsList = Insight[];
-export const PaginatedInsightListResultsList = /*@__PURE__*/ S.Array(
-  Insight,
-) as any as S.Schema<PaginatedInsightListResultsList>;
+export type PaginatedInsightListOutputResultsList =
+  ReadonlyArray<InsightOutput>;
+export const PaginatedInsightListOutputResultsList = /*@__PURE__*/ S.Array(
+  InsightOutput,
+) as any as S.Schema<PaginatedInsightListOutputResultsList>;
 
-export interface PaginatedInsightList {
+export interface PaginatedInsightListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
-  results?: PaginatedInsightListResultsList;
+  results?: PaginatedInsightListOutputResultsList;
 }
-export const PaginatedInsightList = /*@__PURE__*/ S.suspend(() =>
+export const PaginatedInsightListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedInsightListResultsList),
+    results: S.optional(PaginatedInsightListOutputResultsList),
   }),
 ).annotate({
-  identifier: "PaginatedInsightList",
-}) as any as S.Schema<PaginatedInsightList>;
+  identifier: "PaginatedInsightListOutput",
+}) as any as S.Schema<PaginatedInsightListOutput>;
 
-export type InsightsMyLastViewedRetrieveRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type InsightsMyLastViewedRetrieveRequestFormat = "csv" | "json";
 export const InsightsMyLastViewedRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsMyLastViewedRetrieveRequest {
@@ -17858,56 +17540,19 @@ export const InsightsMyLastViewedRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "InsightsMyLastViewedRetrieveResponse",
 }) as any as S.Schema<InsightsMyLastViewedRetrieveResponse>;
 
-export type InsightsPartialUpdateRequestFormat = "csv" | "json" | (string & {});
+export type InsightsPartialUpdateRequestFormat = "csv" | "json";
 export const InsightsPartialUpdateRequestFormat = /*@__PURE__*/ S.String;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
-export type InsightsPartialUpdateRequestDashboardsList = number[];
+export type InsightsPartialUpdateRequestDashboardsList = ReadonlyArray<number>;
 export const InsightsPartialUpdateRequestDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<InsightsPartialUpdateRequestDashboardsList>;
 
-/** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-export type InsightsPartialUpdateRequestDashboardTilesList =
-  DashboardTileBasic[];
-export const InsightsPartialUpdateRequestDashboardTilesList =
-  /*@__PURE__*/ S.Array(
-    DashboardTileBasic,
-  ) as any as S.Schema<InsightsPartialUpdateRequestDashboardTilesList>;
-
-export type InsightsPartialUpdateRequestColumnsList = string[];
-export const InsightsPartialUpdateRequestColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsPartialUpdateRequestColumnsList>;
-
-export type InsightsPartialUpdateRequestTagsList = unknown[];
+export type InsightsPartialUpdateRequestTagsList = ReadonlyArray<unknown>;
 export const InsightsPartialUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightsPartialUpdateRequestTagsList>;
-
-export type InsightsPartialUpdateRequestTypesList = unknown[];
-export const InsightsPartialUpdateRequestTypesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsPartialUpdateRequestTypesList>;
-
-export interface InsightsPartialUpdateRequestResolvedDateRange {
-  date_from?: string;
-  date_to?: string;
-}
-export const InsightsPartialUpdateRequestResolvedDateRange =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      date_from: S.optional(S.String),
-      date_to: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InsightsPartialUpdateRequestResolvedDateRange",
-  }) as any as S.Schema<InsightsPartialUpdateRequestResolvedDateRange>;
-
-export type InsightsPartialUpdateRequestAlertsList = unknown[];
-export const InsightsPartialUpdateRequestAlertsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsPartialUpdateRequestAlertsList>;
 
 export interface InsightsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -17917,7 +17562,6 @@ export interface InsightsPartialUpdateRequest {
   format?: InsightsPartialUpdateRequestFormat;
   /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
   include_dashboards?: boolean;
-  short_id?: string;
   name?: string | null;
   derived_name?: string | null;
   query?: InsightQuerySchema | null;
@@ -17925,44 +17569,10 @@ export interface InsightsPartialUpdateRequest {
   deleted?: boolean;
   /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
   dashboards?: InsightsPartialUpdateRequestDashboardsList;
-  /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-  dashboard_tiles?: InsightsPartialUpdateRequestDashboardTilesList;
-  /** The datetime this insight's results were generated. If added to one or more dashboards the insight can be refreshed separately on each. Returns the appropriate last_refresh datetime for the context the insight is viewed in (see from_dashboard query parameter). */
-  last_refresh?: string | null;
-  /** The target age of the cached results for this insight. */
-  cache_target_age?: string | null;
-  /** The earliest possible datetime at which we'll allow the cached results for this insight to be refreshed by querying the database. */
-  next_allowed_client_refresh?: string | null;
-  result?: unknown;
-  hasMore?: boolean | null;
-  columns?: InsightsPartialUpdateRequestColumnsList | null;
-  created_at?: string | null;
-  created_by?: UserBasic;
   description?: string | null;
-  updated_at?: string;
   tags?: InsightsPartialUpdateRequestTagsList;
   favorited?: boolean;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  is_sample?: boolean;
-  effective_restriction_level?: number;
-  effective_privilege_level?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** The timezone this chart is displayed in. */
-  timezone?: string | null;
-  is_cached?: boolean;
-  query_status?: unknown;
-  hogql?: string | null;
-  types?: InsightsPartialUpdateRequestTypesList | null;
-  resolved_date_range?: InsightsPartialUpdateRequestResolvedDateRange | null;
   _create_in_folder?: string;
-  alerts?: InsightsPartialUpdateRequestAlertsList;
-  /** Resolved dashboard and tile filter layers used to explain filter precedence in the UI. */
-  filter_override_context?: InsightFilterOverrideContext | null;
-  last_viewed_at?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const InsightsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17970,45 +17580,16 @@ export const InsightsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     format: S.optional(InsightsPartialUpdateRequestFormat.pipe(T.Query())),
     include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
-    short_id: S.optional(S.String),
     name: S.optional(S.NullOr(S.String)),
     derived_name: S.optional(S.NullOr(S.String)),
     query: S.optional(S.NullOr(InsightQuerySchema)),
     order: S.optional(S.NullOr(S.Number)),
     deleted: S.optional(S.Boolean),
     dashboards: S.optional(InsightsPartialUpdateRequestDashboardsList),
-    dashboard_tiles: S.optional(InsightsPartialUpdateRequestDashboardTilesList),
-    last_refresh: S.optional(S.NullOr(S.String)),
-    cache_target_age: S.optional(S.NullOr(S.String)),
-    next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
-    result: S.optional(S.Unknown),
-    hasMore: S.optional(S.NullOr(S.Boolean)),
-    columns: S.optional(S.NullOr(InsightsPartialUpdateRequestColumnsList)),
-    created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
     description: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.String),
     tags: S.optional(InsightsPartialUpdateRequestTagsList),
     favorited: S.optional(S.Boolean),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    is_sample: S.optional(S.Boolean),
-    effective_restriction_level: S.optional(S.Number),
-    effective_privilege_level: S.optional(S.Number),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    timezone: S.optional(S.NullOr(S.String)),
-    is_cached: S.optional(S.Boolean),
-    query_status: S.optional(S.Unknown),
-    hogql: S.optional(S.NullOr(S.String)),
-    types: S.optional(S.NullOr(InsightsPartialUpdateRequestTypesList)),
-    resolved_date_range: S.optional(
-      S.NullOr(InsightsPartialUpdateRequestResolvedDateRange),
-    ),
     _create_in_folder: S.optional(S.String),
-    alerts: S.optional(InsightsPartialUpdateRequestAlertsList),
-    filter_override_context: S.optional(S.NullOr(InsightFilterOverrideContext)),
-    last_viewed_at: S.optional(S.NullOr(S.String)),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -18020,7 +17601,7 @@ export const InsightsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsPartialUpdateRequest",
 }) as any as S.Schema<InsightsPartialUpdateRequest>;
 
-export type InsightsRetrieveRequestFormat = "csv" | "json" | (string & {});
+export type InsightsRetrieveRequestFormat = "csv" | "json";
 export const InsightsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export type InsightsRetrieveRequestRefresh =
@@ -18030,8 +17611,7 @@ export type InsightsRetrieveRequestRefresh =
   | "force_async"
   | "force_blocking"
   | "force_cache"
-  | "lazy_async"
-  | (string & {});
+  | "lazy_async";
 export const InsightsRetrieveRequestRefresh = /*@__PURE__*/ S.String;
 
 export interface InsightsRetrieveRequest {
@@ -18109,7 +17689,8 @@ export const SharePassword = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SharePassword" }) as any as S.Schema<SharePassword>;
 
-export type SharingConfigurationSharePasswordsList = SharePassword[];
+export type SharingConfigurationSharePasswordsList =
+  ReadonlyArray<SharePassword>;
 export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
   SharePassword,
 ) as any as S.Schema<SharingConfigurationSharePasswordsList>;
@@ -18139,7 +17720,8 @@ export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharingConfiguration",
 }) as any as S.Schema<SharingConfiguration>;
 
-export type InsightsSharingListResponseBodyList = SharingConfiguration[];
+export type InsightsSharingListResponseBodyList =
+  ReadonlyArray<SharingConfiguration>;
 export const InsightsSharingListResponseBodyList = /*@__PURE__*/ S.Array(
   SharingConfiguration,
 ) as any as S.Schema<InsightsSharingListResponseBodyList>;
@@ -18151,40 +17733,22 @@ export const InsightsSharingListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsSharingListResponse",
 }) as any as S.Schema<InsightsSharingListResponse>;
 
-export type InsightsSharingPasswordsCreateRequestSharePasswordsList =
-  SharePassword[];
-export const InsightsSharingPasswordsCreateRequestSharePasswordsList =
-  /*@__PURE__*/ S.Array(
-    SharePassword,
-  ) as any as S.Schema<InsightsSharingPasswordsCreateRequestSharePasswordsList>;
-
 export interface InsightsSharingPasswordsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   insight_id: number;
-  created_at?: string;
   enabled?: boolean;
-  access_token?: string | Redacted.Redacted<string> | null;
   settings?: unknown;
   password_required?: boolean;
-  share_passwords?: InsightsSharingPasswordsCreateRequestSharePasswordsList;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const InsightsSharingPasswordsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       insight_id: S.Number.pipe(T.Label()),
-      created_at: S.optional(S.String),
       enabled: S.optional(S.Boolean),
-      access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
       settings: S.optional(S.Unknown),
       password_required: S.optional(S.Boolean),
-      share_passwords: S.optional(
-        InsightsSharingPasswordsCreateRequestSharePasswordsList,
-      ),
-      user_access_level: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -18226,39 +17790,21 @@ export const InsightsSharingPasswordsDestroyResponse = /*@__PURE__*/ S.suspend(
   identifier: "InsightsSharingPasswordsDestroyResponse",
 }) as any as S.Schema<InsightsSharingPasswordsDestroyResponse>;
 
-export type InsightsSharingRefreshCreateRequestSharePasswordsList =
-  SharePassword[];
-export const InsightsSharingRefreshCreateRequestSharePasswordsList =
-  /*@__PURE__*/ S.Array(
-    SharePassword,
-  ) as any as S.Schema<InsightsSharingRefreshCreateRequestSharePasswordsList>;
-
 export interface InsightsSharingRefreshCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   insight_id: number;
-  created_at?: string;
   enabled?: boolean;
-  access_token?: string | Redacted.Redacted<string> | null;
   settings?: unknown;
   password_required?: boolean;
-  share_passwords?: InsightsSharingRefreshCreateRequestSharePasswordsList;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const InsightsSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     insight_id: S.Number.pipe(T.Label()),
-    created_at: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
     settings: S.optional(S.Unknown),
     password_required: S.optional(S.Boolean),
-    share_passwords: S.optional(
-      InsightsSharingRefreshCreateRequestSharePasswordsList,
-    ),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -18270,61 +17816,21 @@ export const InsightsSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsSharingRefreshCreateRequest",
 }) as any as S.Schema<InsightsSharingRefreshCreateRequest>;
 
-export type InsightsSuggestionsCreateRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type InsightsSuggestionsCreateRequestFormat = "csv" | "json";
 export const InsightsSuggestionsCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
-export type InsightsSuggestionsCreateRequestDashboardsList = number[];
+export type InsightsSuggestionsCreateRequestDashboardsList =
+  ReadonlyArray<number>;
 export const InsightsSuggestionsCreateRequestDashboardsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<InsightsSuggestionsCreateRequestDashboardsList>;
 
-/** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-export type InsightsSuggestionsCreateRequestDashboardTilesList =
-  DashboardTileBasic[];
-export const InsightsSuggestionsCreateRequestDashboardTilesList =
-  /*@__PURE__*/ S.Array(
-    DashboardTileBasic,
-  ) as any as S.Schema<InsightsSuggestionsCreateRequestDashboardTilesList>;
-
-export type InsightsSuggestionsCreateRequestColumnsList = string[];
-export const InsightsSuggestionsCreateRequestColumnsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InsightsSuggestionsCreateRequestColumnsList>;
-
-export type InsightsSuggestionsCreateRequestTagsList = unknown[];
+export type InsightsSuggestionsCreateRequestTagsList = ReadonlyArray<unknown>;
 export const InsightsSuggestionsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightsSuggestionsCreateRequestTagsList>;
-
-export type InsightsSuggestionsCreateRequestTypesList = unknown[];
-export const InsightsSuggestionsCreateRequestTypesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsSuggestionsCreateRequestTypesList>;
-
-export interface InsightsSuggestionsCreateRequestResolvedDateRange {
-  date_from?: string;
-  date_to?: string;
-}
-export const InsightsSuggestionsCreateRequestResolvedDateRange =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      date_from: S.optional(S.String),
-      date_to: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InsightsSuggestionsCreateRequestResolvedDateRange",
-  }) as any as S.Schema<InsightsSuggestionsCreateRequestResolvedDateRange>;
-
-export type InsightsSuggestionsCreateRequestAlertsList = unknown[];
-export const InsightsSuggestionsCreateRequestAlertsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsSuggestionsCreateRequestAlertsList>;
 
 export interface InsightsSuggestionsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -18332,7 +17838,6 @@ export interface InsightsSuggestionsCreateRequest {
   /** A unique integer value identifying this insight. */
   id: number;
   format?: InsightsSuggestionsCreateRequestFormat;
-  short_id?: string;
   name?: string | null;
   derived_name?: string | null;
   query?: InsightQuerySchema | null;
@@ -18340,91 +17845,26 @@ export interface InsightsSuggestionsCreateRequest {
   deleted?: boolean;
   /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
   dashboards?: InsightsSuggestionsCreateRequestDashboardsList;
-  /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-  dashboard_tiles?: InsightsSuggestionsCreateRequestDashboardTilesList;
-  /** The datetime this insight's results were generated. If added to one or more dashboards the insight can be refreshed separately on each. Returns the appropriate last_refresh datetime for the context the insight is viewed in (see from_dashboard query parameter). */
-  last_refresh?: string | null;
-  /** The target age of the cached results for this insight. */
-  cache_target_age?: string | null;
-  /** The earliest possible datetime at which we'll allow the cached results for this insight to be refreshed by querying the database. */
-  next_allowed_client_refresh?: string | null;
-  result?: unknown;
-  hasMore?: boolean | null;
-  columns?: InsightsSuggestionsCreateRequestColumnsList | null;
-  created_at?: string | null;
-  created_by?: UserBasic;
   description?: string | null;
-  updated_at?: string;
   tags?: InsightsSuggestionsCreateRequestTagsList;
   favorited?: boolean;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  is_sample?: boolean;
-  effective_restriction_level?: number;
-  effective_privilege_level?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** The timezone this chart is displayed in. */
-  timezone?: string | null;
-  is_cached?: boolean;
-  query_status?: unknown;
-  hogql?: string | null;
-  types?: InsightsSuggestionsCreateRequestTypesList | null;
-  resolved_date_range?: InsightsSuggestionsCreateRequestResolvedDateRange | null;
   _create_in_folder?: string;
-  alerts?: InsightsSuggestionsCreateRequestAlertsList;
-  /** Resolved dashboard and tile filter layers used to explain filter precedence in the UI. */
-  filter_override_context?: InsightFilterOverrideContext | null;
-  last_viewed_at?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const InsightsSuggestionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
     format: S.optional(InsightsSuggestionsCreateRequestFormat.pipe(T.Query())),
-    short_id: S.optional(S.String),
     name: S.optional(S.NullOr(S.String)),
     derived_name: S.optional(S.NullOr(S.String)),
     query: S.optional(S.NullOr(InsightQuerySchema)),
     order: S.optional(S.NullOr(S.Number)),
     deleted: S.optional(S.Boolean),
     dashboards: S.optional(InsightsSuggestionsCreateRequestDashboardsList),
-    dashboard_tiles: S.optional(
-      InsightsSuggestionsCreateRequestDashboardTilesList,
-    ),
-    last_refresh: S.optional(S.NullOr(S.String)),
-    cache_target_age: S.optional(S.NullOr(S.String)),
-    next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
-    result: S.optional(S.Unknown),
-    hasMore: S.optional(S.NullOr(S.Boolean)),
-    columns: S.optional(S.NullOr(InsightsSuggestionsCreateRequestColumnsList)),
-    created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
     description: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.String),
     tags: S.optional(InsightsSuggestionsCreateRequestTagsList),
     favorited: S.optional(S.Boolean),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    is_sample: S.optional(S.Boolean),
-    effective_restriction_level: S.optional(S.Number),
-    effective_privilege_level: S.optional(S.Number),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    timezone: S.optional(S.NullOr(S.String)),
-    is_cached: S.optional(S.Boolean),
-    query_status: S.optional(S.Unknown),
-    hogql: S.optional(S.NullOr(S.String)),
-    types: S.optional(S.NullOr(InsightsSuggestionsCreateRequestTypesList)),
-    resolved_date_range: S.optional(
-      S.NullOr(InsightsSuggestionsCreateRequestResolvedDateRange),
-    ),
     _create_in_folder: S.optional(S.String),
-    alerts: S.optional(InsightsSuggestionsCreateRequestAlertsList),
-    filter_override_context: S.optional(S.NullOr(InsightFilterOverrideContext)),
-    last_viewed_at: S.optional(S.NullOr(S.String)),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -18443,10 +17883,7 @@ export const InsightsSuggestionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsSuggestionsCreateResponse",
 }) as any as S.Schema<InsightsSuggestionsCreateResponse>;
 
-export type InsightsSuggestionsRetrieveRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type InsightsSuggestionsRetrieveRequestFormat = "csv" | "json";
 export const InsightsSuggestionsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsSuggestionsRetrieveRequest {
@@ -18522,7 +17959,7 @@ export const InsightsThresholdBounds = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsThresholdBounds",
 }) as any as S.Schema<InsightsThresholdBounds>;
 
-export type InsightThresholdType = "absolute" | "percentage" | (string & {});
+export type InsightThresholdType = "absolute" | "percentage";
 export const InsightThresholdType = /*@__PURE__*/ S.String;
 
 export interface InsightThreshold {
@@ -18540,7 +17977,7 @@ export const InsightThreshold = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsightThreshold>;
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
-export type AlertSubscribedUsersList = number[];
+export type AlertSubscribedUsersList = ReadonlyArray<number>;
 export const AlertSubscribedUsersList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertSubscribedUsersList>;
@@ -18565,8 +18002,7 @@ export const Threshold = /*@__PURE__*/ S.suspend(() =>
 export type AlertConditionType =
   | "absolute_value"
   | "relative_increase"
-  | "relative_decrease"
-  | (string & {});
+  | "relative_decrease";
 export const AlertConditionType = /*@__PURE__*/ S.String;
 
 export interface AlertCondition {
@@ -18583,8 +18019,7 @@ export type AlertCheckStateEnum =
   | "Firing"
   | "Not firing"
   | "Errored"
-  | "Snoozed"
-  | (string & {});
+  | "Snoozed";
 export const AlertCheckStateEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - pending * `running` - running * `done` - done * `failed` - failed * `skipped` - skipped */
@@ -18593,16 +18028,14 @@ export type InvestigationStatusEnum =
   | "running"
   | "done"
   | "failed"
-  | "skipped"
-  | (string & {});
+  | "skipped";
 export const InvestigationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `true_positive` - true_positive * `false_positive` - false_positive * `inconclusive` - inconclusive */
 export type InvestigationVerdictEnum =
   | "true_positive"
   | "false_positive"
-  | "inconclusive"
-  | (string & {});
+  | "inconclusive";
 export const InvestigationVerdictEnum = /*@__PURE__*/ S.String;
 
 export interface AlertCheck {
@@ -18646,7 +18079,7 @@ export const AlertCheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertCheck" }) as any as S.Schema<AlertCheck>;
 
 /** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
-export type AlertChecksList = AlertCheck[];
+export type AlertChecksList = ReadonlyArray<AlertCheck>;
 export const AlertChecksList = /*@__PURE__*/ S.Array(
   AlertCheck,
 ) as any as S.Schema<AlertChecksList>;
@@ -18668,11 +18101,7 @@ export const TrendsAlertConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrendsAlertConfig",
 }) as any as S.Schema<TrendsAlertConfig>;
 
-export type HogQLAlertEvaluation =
-  | "last_row"
-  | "first_row"
-  | "any_row"
-  | (string & {});
+export type HogQLAlertEvaluation = "last_row" | "first_row" | "any_row";
 export const HogQLAlertEvaluation = /*@__PURE__*/ S.String;
 
 export interface HogQLAlertConfig {
@@ -18697,8 +18126,7 @@ export const HogQLAlertConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type FunnelConversionMetric =
   | "conversion_from_start"
-  | "conversion_from_previous"
-  | (string & {});
+  | "conversion_from_previous";
 export const FunnelConversionMetric = /*@__PURE__*/ S.String;
 
 export interface FunnelsAlertConfig {
@@ -18904,7 +18332,7 @@ export const IsolationForestDetectorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "IsolationForestDetectorConfig",
 }) as any as S.Schema<IsolationForestDetectorConfig>;
 
-export type Method = "largest" | "mean" | "median" | (string & {});
+export type Method = "largest" | "mean" | "median";
 export const Method = /*@__PURE__*/ S.String;
 
 export interface KNNDetectorConfig {
@@ -19043,12 +18471,12 @@ export const EnsembleDetectorConfigDetectorsItem =
 
 /** Sub-detector configurations (minimum 2) */
 export type EnsembleDetectorConfigDetectorsList =
-  EnsembleDetectorConfigDetectorsItem[];
+  ReadonlyArray<EnsembleDetectorConfigDetectorsItem>;
 export const EnsembleDetectorConfigDetectorsList = /*@__PURE__*/ S.Array(
   EnsembleDetectorConfigDetectorsItem,
 ) as any as S.Schema<EnsembleDetectorConfigDetectorsList>;
 
-export type EnsembleOperator = "and" | "or" | (string & {});
+export type EnsembleOperator = "and" | "or";
 export const EnsembleOperator = /*@__PURE__*/ S.String;
 
 export interface EnsembleDetectorConfig {
@@ -19093,8 +18521,7 @@ export type CalculationIntervalEnum =
   | "hourly"
   | "daily"
   | "weekly"
-  | "monthly"
-  | (string & {});
+  | "monthly";
 export const CalculationIntervalEnum = /*@__PURE__*/ S.String;
 
 export interface AlertScheduleRestrictionWindow {
@@ -19114,7 +18541,7 @@ export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
 export type AlertScheduleRestrictionBlockedWindowsList =
-  AlertScheduleRestrictionWindow[];
+  ReadonlyArray<AlertScheduleRestrictionWindow>;
 export const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ S.Array(
   AlertScheduleRestrictionWindow,
 ) as any as S.Schema<AlertScheduleRestrictionBlockedWindowsList>;
@@ -19132,15 +18559,12 @@ export const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertScheduleRestriction>;
 
 /** * `notify` - Notify * `suppress` - Suppress */
-export type InvestigationInconclusiveActionEnum =
-  | "notify"
-  | "suppress"
-  | (string & {});
+export type InvestigationInconclusiveActionEnum = "notify" | "suppress";
 export const InvestigationInconclusiveActionEnum = /*@__PURE__*/ S.String;
 
 export interface Alert {
   id?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   created_at?: string;
   /** Insight ID monitored by this alert. Note: Response returns full InsightBasicSerializer object. */
   insight?: number;
@@ -19188,7 +18612,7 @@ export interface Alert {
 export const Alert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.String),
     insight: S.optional(S.Number),
     name: S.optional(S.String),
@@ -19218,7 +18642,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
-export type ThresholdWithAlertAlertsList = Alert[];
+export type ThresholdWithAlertAlertsList = ReadonlyArray<Alert>;
 export const ThresholdWithAlertAlertsList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<ThresholdWithAlertAlertsList>;
@@ -19244,7 +18668,8 @@ export const ThresholdWithAlert = /*@__PURE__*/ S.suspend(() =>
   identifier: "ThresholdWithAlert",
 }) as any as S.Schema<ThresholdWithAlert>;
 
-export type PaginatedThresholdWithAlertListResultsList = ThresholdWithAlert[];
+export type PaginatedThresholdWithAlertListResultsList =
+  ReadonlyArray<ThresholdWithAlert>;
 export const PaginatedThresholdWithAlertListResultsList = /*@__PURE__*/ S.Array(
   ThresholdWithAlert,
 ) as any as S.Schema<PaginatedThresholdWithAlertListResultsList>;
@@ -19289,10 +18714,7 @@ export const InsightsThresholdsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsThresholdsRetrieveRequest",
 }) as any as S.Schema<InsightsThresholdsRetrieveRequest>;
 
-export type InsightsTrendingRetrieveRequestFormat =
-  | "csv"
-  | "json"
-  | (string & {});
+export type InsightsTrendingRetrieveRequestFormat = "csv" | "json";
 export const InsightsTrendingRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface InsightsTrendingRetrieveRequest {
@@ -19327,23 +18749,24 @@ export const InsightsTrendingRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsTrendingRetrieveRequest",
 }) as any as S.Schema<InsightsTrendingRetrieveRequest>;
 
-export type TrendingInsightDashboardsList = number[];
+export type TrendingInsightDashboardsList = ReadonlyArray<number>;
 export const TrendingInsightDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<TrendingInsightDashboardsList>;
 
-export type TrendingInsightDashboardTilesList = DashboardTileBasic[];
+export type TrendingInsightDashboardTilesList =
+  ReadonlyArray<DashboardTileBasic>;
 export const TrendingInsightDashboardTilesList = /*@__PURE__*/ S.Array(
   DashboardTileBasic,
 ) as any as S.Schema<TrendingInsightDashboardTilesList>;
 
-export type TrendingInsightTagsList = unknown[];
+export type TrendingInsightTagsList = ReadonlyArray<unknown>;
 export const TrendingInsightTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<TrendingInsightTagsList>;
 
 /** Up to 3 of the most recent users who viewed this insight in the time window. */
-export type TrendingInsightViewersList = UserBasic[];
+export type TrendingInsightViewersList = ReadonlyArray<UserBasic>;
 export const TrendingInsightViewersList = /*@__PURE__*/ S.Array(
   UserBasic,
 ) as any as S.Schema<TrendingInsightViewersList>;
@@ -19407,7 +18830,8 @@ export const TrendingInsight = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrendingInsight",
 }) as any as S.Schema<TrendingInsight>;
 
-export type PaginatedTrendingInsightListResultsList = TrendingInsight[];
+export type PaginatedTrendingInsightListResultsList =
+  ReadonlyArray<TrendingInsight>;
 export const PaginatedTrendingInsightListResultsList = /*@__PURE__*/ S.Array(
   TrendingInsight,
 ) as any as S.Schema<PaginatedTrendingInsightListResultsList>;
@@ -19429,54 +18853,19 @@ export const PaginatedTrendingInsightList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedTrendingInsightList",
 }) as any as S.Schema<PaginatedTrendingInsightList>;
 
-export type InsightsUpdateRequestFormat = "csv" | "json" | (string & {});
+export type InsightsUpdateRequestFormat = "csv" | "json";
 export const InsightsUpdateRequestFormat = /*@__PURE__*/ S.String;
 
 /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
-export type InsightsUpdateRequestDashboardsList = number[];
+export type InsightsUpdateRequestDashboardsList = ReadonlyArray<number>;
 export const InsightsUpdateRequestDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<InsightsUpdateRequestDashboardsList>;
 
-/** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-export type InsightsUpdateRequestDashboardTilesList = DashboardTileBasic[];
-export const InsightsUpdateRequestDashboardTilesList = /*@__PURE__*/ S.Array(
-  DashboardTileBasic,
-) as any as S.Schema<InsightsUpdateRequestDashboardTilesList>;
-
-export type InsightsUpdateRequestColumnsList = string[];
-export const InsightsUpdateRequestColumnsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InsightsUpdateRequestColumnsList>;
-
-export type InsightsUpdateRequestTagsList = unknown[];
+export type InsightsUpdateRequestTagsList = ReadonlyArray<unknown>;
 export const InsightsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightsUpdateRequestTagsList>;
-
-export type InsightsUpdateRequestTypesList = unknown[];
-export const InsightsUpdateRequestTypesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsUpdateRequestTypesList>;
-
-export interface InsightsUpdateRequestResolvedDateRange {
-  date_from?: string;
-  date_to?: string;
-}
-export const InsightsUpdateRequestResolvedDateRange = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      date_from: S.optional(S.String),
-      date_to: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "InsightsUpdateRequestResolvedDateRange",
-}) as any as S.Schema<InsightsUpdateRequestResolvedDateRange>;
-
-export type InsightsUpdateRequestAlertsList = unknown[];
-export const InsightsUpdateRequestAlertsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InsightsUpdateRequestAlertsList>;
 
 export interface InsightsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -19486,7 +18875,6 @@ export interface InsightsUpdateRequest {
   format?: InsightsUpdateRequestFormat;
   /** Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead. */
   include_dashboards?: boolean;
-  short_id?: string;
   name?: string | null;
   derived_name?: string | null;
   query?: InsightQuerySchema | null;
@@ -19494,44 +18882,10 @@ export interface InsightsUpdateRequest {
   deleted?: boolean;
   /** DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead. A dashboard ID for each of the dashboards that this insight is displayed on. This field may be omitted from responses: once opt-in enforcement is enabled, API-token callers (personal API keys, OAuth) only receive it when passing the `include_dashboards=true` query parameter. Do not rely on it being present. */
   dashboards?: InsightsUpdateRequestDashboardsList;
-  /** A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on. */
-  dashboard_tiles?: InsightsUpdateRequestDashboardTilesList;
-  /** The datetime this insight's results were generated. If added to one or more dashboards the insight can be refreshed separately on each. Returns the appropriate last_refresh datetime for the context the insight is viewed in (see from_dashboard query parameter). */
-  last_refresh?: string | null;
-  /** The target age of the cached results for this insight. */
-  cache_target_age?: string | null;
-  /** The earliest possible datetime at which we'll allow the cached results for this insight to be refreshed by querying the database. */
-  next_allowed_client_refresh?: string | null;
-  result?: unknown;
-  hasMore?: boolean | null;
-  columns?: InsightsUpdateRequestColumnsList | null;
-  created_at?: string | null;
-  created_by?: UserBasic;
   description?: string | null;
-  updated_at?: string;
   tags?: InsightsUpdateRequestTagsList;
   favorited?: boolean;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  is_sample?: boolean;
-  effective_restriction_level?: number;
-  effective_privilege_level?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** The timezone this chart is displayed in. */
-  timezone?: string | null;
-  is_cached?: boolean;
-  query_status?: unknown;
-  hogql?: string | null;
-  types?: InsightsUpdateRequestTypesList | null;
-  resolved_date_range?: InsightsUpdateRequestResolvedDateRange | null;
   _create_in_folder?: string;
-  alerts?: InsightsUpdateRequestAlertsList;
-  /** Resolved dashboard and tile filter layers used to explain filter precedence in the UI. */
-  filter_override_context?: InsightFilterOverrideContext | null;
-  last_viewed_at?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const InsightsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19539,45 +18893,16 @@ export const InsightsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     format: S.optional(InsightsUpdateRequestFormat.pipe(T.Query())),
     include_dashboards: S.optional(S.Boolean.pipe(T.Query())),
-    short_id: S.optional(S.String),
     name: S.optional(S.NullOr(S.String)),
     derived_name: S.optional(S.NullOr(S.String)),
     query: S.optional(S.NullOr(InsightQuerySchema)),
     order: S.optional(S.NullOr(S.Number)),
     deleted: S.optional(S.Boolean),
     dashboards: S.optional(InsightsUpdateRequestDashboardsList),
-    dashboard_tiles: S.optional(InsightsUpdateRequestDashboardTilesList),
-    last_refresh: S.optional(S.NullOr(S.String)),
-    cache_target_age: S.optional(S.NullOr(S.String)),
-    next_allowed_client_refresh: S.optional(S.NullOr(S.String)),
-    result: S.optional(S.Unknown),
-    hasMore: S.optional(S.NullOr(S.Boolean)),
-    columns: S.optional(S.NullOr(InsightsUpdateRequestColumnsList)),
-    created_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
     description: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.String),
     tags: S.optional(InsightsUpdateRequestTagsList),
     favorited: S.optional(S.Boolean),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    is_sample: S.optional(S.Boolean),
-    effective_restriction_level: S.optional(S.Number),
-    effective_privilege_level: S.optional(S.Number),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    timezone: S.optional(S.NullOr(S.String)),
-    is_cached: S.optional(S.Boolean),
-    query_status: S.optional(S.Unknown),
-    hogql: S.optional(S.NullOr(S.String)),
-    types: S.optional(S.NullOr(InsightsUpdateRequestTypesList)),
-    resolved_date_range: S.optional(
-      S.NullOr(InsightsUpdateRequestResolvedDateRange),
-    ),
     _create_in_folder: S.optional(S.String),
-    alerts: S.optional(InsightsUpdateRequestAlertsList),
-    filter_override_context: S.optional(S.NullOr(InsightFilterOverrideContext)),
-    last_viewed_at: S.optional(S.NullOr(S.String)),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -19589,11 +18914,11 @@ export const InsightsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsUpdateRequest",
 }) as any as S.Schema<InsightsUpdateRequest>;
 
-export type InsightsViewedCreateRequestFormat = "csv" | "json" | (string & {});
+export type InsightsViewedCreateRequestFormat = "csv" | "json";
 export const InsightsViewedCreateRequestFormat = /*@__PURE__*/ S.String;
 
 /** Insight IDs that were just viewed by the current user. At most 2500 ids per request. */
-export type InsightsViewedCreateRequestInsightIdsList = number[];
+export type InsightsViewedCreateRequestInsightIdsList = ReadonlyArray<number>;
 export const InsightsViewedCreateRequestInsightIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<InsightsViewedCreateRequestInsightIdsList>;
@@ -19761,12 +19086,12 @@ export type InsightsCreateError =
 /** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
 export const insightsCreate: API.OperationMethod<
   InsightsCreateRequest,
-  Insight,
+  InsightOutput,
   InsightsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsCreateRequest,
-  output: Insight,
+  output: InsightOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -19818,12 +19143,12 @@ export type InsightsListError =
 /** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
 export const insightsList: API.OperationMethod<
   InsightsListRequest,
-  PaginatedInsightList,
+  PaginatedInsightListOutput,
   InsightsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsListRequest,
-  output: PaginatedInsightList,
+  output: PaginatedInsightListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -19856,12 +19181,12 @@ export type InsightsPartialUpdateError =
 /** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
 export const insightsPartialUpdate: API.OperationMethod<
   InsightsPartialUpdateRequest,
-  Insight,
+  InsightOutput,
   InsightsPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsPartialUpdateRequest,
-  output: Insight,
+  output: InsightOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -19875,12 +19200,12 @@ export type InsightsRetrieveError =
 /** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
 export const insightsRetrieve: API.OperationMethod<
   InsightsRetrieveRequest,
-  Insight,
+  InsightOutput,
   InsightsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsRetrieveRequest,
-  output: Insight,
+  output: InsightOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -20055,12 +19380,12 @@ export type InsightsUpdateError =
 /** DRF ViewSet mixin that gates coalesced responses behind permission checks. The QueryCoalescingMiddleware attaches cached response data to request.META["_coalesced_response"] for followers. This mixin runs DRF's initial() (auth + permissions + throttling) before returning the cached response, ensuring the request is authorized. */
 export const insightsUpdate: API.OperationMethod<
   InsightsUpdateRequest,
-  Insight,
+  InsightOutput,
   InsightsUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsUpdateRequest,
-  output: Insight,
+  output: InsightOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

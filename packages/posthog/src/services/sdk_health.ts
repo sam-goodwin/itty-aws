@@ -33,11 +33,11 @@ export const SdkHealthReportRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SdkHealthReportRetrieveRequest>;
 
 /** * `healthy` - healthy * `needs_attention` - needs_attention */
-export type OverallHealthEnum = "healthy" | "needs_attention" | (string & {});
+export type OverallHealthEnum = "healthy" | "needs_attention";
 export const OverallHealthEnum = /*@__PURE__*/ S.String;
 
 /** * `success` - success * `warning` - warning * `danger` - danger */
-export type HealthEnum = "success" | "warning" | "danger" | (string & {});
+export type HealthEnum = "success" | "warning" | "danger";
 export const HealthEnum = /*@__PURE__*/ S.String;
 
 /** * `web` - web * `posthog-ios` - posthog-ios * `posthog-android` - posthog-android * `posthog-java` - posthog-java * `posthog-server` - posthog-server * `posthog-node` - posthog-node * `posthog-python` - posthog-python * `posthog-php` - posthog-php * `posthog-ruby` - posthog-ruby * `posthog-go` - posthog-go * `posthog-flutter` - posthog-flutter * `posthog-react-native` - posthog-react-native * `posthog-kmp` - posthog-kmp * `posthog-dotnet` - posthog-dotnet * `posthog-elixir` - posthog-elixir */
@@ -56,20 +56,15 @@ export type LibEnum =
   | "posthog-react-native"
   | "posthog-kmp"
   | "posthog-dotnet"
-  | "posthog-elixir"
-  | (string & {});
+  | "posthog-elixir";
 export const LibEnum = /*@__PURE__*/ S.String;
 
 /** * `none` - none * `warning` - warning * `danger` - danger */
-export type SdkAssessmentSeverityEnum =
-  | "none"
-  | "warning"
-  | "danger"
-  | (string & {});
+export type SdkAssessmentSeverityEnum = "none" | "warning" | "danger";
 export const SdkAssessmentSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Top-level alert sentences matching the SDK Health UI's 'Time for an update!' banner — one per outdated version with significant traffic. Quote verbatim when surfacing the headline to users. */
-export type SdkAssessmentBannersList = string[];
+export type SdkAssessmentBannersList = ReadonlyArray<string>;
 export const SdkAssessmentBannersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SdkAssessmentBannersList>;
@@ -123,7 +118,7 @@ export const SdkReleaseAssessment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SdkReleaseAssessment>;
 
 /** Per-version assessment for all versions seen in the last 7 days. */
-export type SdkAssessmentReleasesList = SdkReleaseAssessment[];
+export type SdkAssessmentReleasesList = ReadonlyArray<SdkReleaseAssessment>;
 export const SdkAssessmentReleasesList = /*@__PURE__*/ S.Array(
   SdkReleaseAssessment,
 ) as any as S.Schema<SdkAssessmentReleasesList>;
@@ -144,7 +139,8 @@ export const OutdatedTrafficAlert = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutdatedTrafficAlert>;
 
 /** Outdated versions that handle a significant share of traffic (above the threshold). Not populated for mobile SDKs. */
-export type SdkAssessmentOutdatedTrafficAlertsList = OutdatedTrafficAlert[];
+export type SdkAssessmentOutdatedTrafficAlertsList =
+  ReadonlyArray<OutdatedTrafficAlert>;
 export const SdkAssessmentOutdatedTrafficAlertsList = /*@__PURE__*/ S.Array(
   OutdatedTrafficAlert,
 ) as any as S.Schema<SdkAssessmentOutdatedTrafficAlertsList>;
@@ -193,7 +189,7 @@ export const SdkAssessment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SdkAssessment" }) as any as S.Schema<SdkAssessment>;
 
 /** Per-SDK health assessments. */
-export type SdkHealthReportSdksList = SdkAssessment[];
+export type SdkHealthReportSdksList = ReadonlyArray<SdkAssessment>;
 export const SdkHealthReportSdksList = /*@__PURE__*/ S.Array(
   SdkAssessment,
 ) as any as S.Schema<SdkHealthReportSdksList>;

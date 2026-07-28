@@ -26,15 +26,12 @@ const KEY_DICTIONARY: Record<string, string> = {
   totalCount: "total_count",
 };
 
-export type CreateForAccountRequestSansList = string[];
+export type CreateForAccountRequestSansList = ReadonlyArray<string>;
 export const CreateForAccountRequestSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateForAccountRequestSansList>;
 
-export type CreateForAccountRequestKeyType =
-  | "rsa2048"
-  | "p256v1"
-  | (string & {});
+export type CreateForAccountRequestKeyType = "rsa2048" | "p256v1";
 export const CreateForAccountRequestKeyType = /*@__PURE__*/ S.String;
 
 export interface CreateCustomCsrForAccountRequest {
@@ -91,13 +88,10 @@ export const CreateCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomCsrForAccountRequest",
 }) as any as S.Schema<CreateCustomCsrForAccountRequest>;
 
-export type CreateForAccountResponseKeyType =
-  | "rsa2048"
-  | "p256v1"
-  | (string & {});
+export type CreateForAccountResponseKeyType = "rsa2048" | "p256v1";
 export const CreateForAccountResponseKeyType = /*@__PURE__*/ S.String;
 
-export type CreateForAccountResponseSansList = string[];
+export type CreateForAccountResponseSansList = ReadonlyArray<string>;
 export const CreateForAccountResponseSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateForAccountResponseSansList>;
@@ -156,12 +150,12 @@ export const CreateCustomCsrForAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomCsrForAccountResponse",
 }) as any as S.Schema<CreateCustomCsrForAccountResponse>;
 
-export type CreateForZoneRequestSansList = string[];
+export type CreateForZoneRequestSansList = ReadonlyArray<string>;
 export const CreateForZoneRequestSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateForZoneRequestSansList>;
 
-export type CreateForZoneRequestKeyType = "rsa2048" | "p256v1" | (string & {});
+export type CreateForZoneRequestKeyType = "rsa2048" | "p256v1";
 export const CreateForZoneRequestKeyType = /*@__PURE__*/ S.String;
 
 export interface CreateCustomCsrForZoneRequest {
@@ -216,10 +210,10 @@ export const CreateCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomCsrForZoneRequest",
 }) as any as S.Schema<CreateCustomCsrForZoneRequest>;
 
-export type CreateForZoneResponseKeyType = "rsa2048" | "p256v1" | (string & {});
+export type CreateForZoneResponseKeyType = "rsa2048" | "p256v1";
 export const CreateForZoneResponseKeyType = /*@__PURE__*/ S.String;
 
-export type CreateForZoneResponseSansList = string[];
+export type CreateForZoneResponseSansList = ReadonlyArray<string>;
 export const CreateForZoneResponseSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateForZoneResponseSansList>;
@@ -373,10 +367,10 @@ export const GetCustomCsrForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomCsrForAccountRequest",
 }) as any as S.Schema<GetCustomCsrForAccountRequest>;
 
-export type GetForAccountResponseKeyType = "rsa2048" | "p256v1" | (string & {});
+export type GetForAccountResponseKeyType = "rsa2048" | "p256v1";
 export const GetForAccountResponseKeyType = /*@__PURE__*/ S.String;
 
-export type GetForAccountResponseSansList = string[];
+export type GetForAccountResponseSansList = ReadonlyArray<string>;
 export const GetForAccountResponseSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetForAccountResponseSansList>;
@@ -458,10 +452,10 @@ export const GetCustomCsrForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomCsrForZoneRequest",
 }) as any as S.Schema<GetCustomCsrForZoneRequest>;
 
-export type GetForZoneResponseKeyType = "rsa2048" | "p256v1" | (string & {});
+export type GetForZoneResponseKeyType = "rsa2048" | "p256v1";
 export const GetForZoneResponseKeyType = /*@__PURE__*/ S.String;
 
-export type GetForZoneResponseSansList = string[];
+export type GetForZoneResponseSansList = ReadonlyArray<string>;
 export const GetForZoneResponseSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetForZoneResponseSansList>;
@@ -546,13 +540,10 @@ export const ListCustomCsrsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomCsrsForAccountRequest",
 }) as any as S.Schema<ListCustomCsrsForAccountRequest>;
 
-export type ListForAccountResultItemKeyType =
-  | "rsa2048"
-  | "p256v1"
-  | (string & {});
+export type ListForAccountResultItemKeyType = "rsa2048" | "p256v1";
 export const ListForAccountResultItemKeyType = /*@__PURE__*/ S.String;
 
-export type ListForAccountResultItemSansList = string[];
+export type ListForAccountResultItemSansList = ReadonlyArray<string>;
 export const ListForAccountResultItemSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListForAccountResultItemSansList>;
@@ -610,7 +601,7 @@ export const ListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListForAccountResultItem",
 }) as any as S.Schema<ListForAccountResultItem>;
 
-export type ListForAccountResultList = ListForAccountResultItem[];
+export type ListForAccountResultList = ReadonlyArray<ListForAccountResultItem>;
 export const ListForAccountResultList = /*@__PURE__*/ S.Array(
   ListForAccountResultItem,
 ) as any as S.Schema<ListForAccountResultList>;
@@ -652,10 +643,10 @@ export const ListCustomCsrsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomCsrsForZoneRequest",
 }) as any as S.Schema<ListCustomCsrsForZoneRequest>;
 
-export type ListForZoneResultItemKeyType = "rsa2048" | "p256v1" | (string & {});
+export type ListForZoneResultItemKeyType = "rsa2048" | "p256v1";
 export const ListForZoneResultItemKeyType = /*@__PURE__*/ S.String;
 
-export type ListForZoneResultItemSansList = string[];
+export type ListForZoneResultItemSansList = ReadonlyArray<string>;
 export const ListForZoneResultItemSansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListForZoneResultItemSansList>;
@@ -713,7 +704,7 @@ export const ListForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListForZoneResultItem",
 }) as any as S.Schema<ListForZoneResultItem>;
 
-export type ListForZoneResultList = ListForZoneResultItem[];
+export type ListForZoneResultList = ReadonlyArray<ListForZoneResultItem>;
 export const ListForZoneResultList = /*@__PURE__*/ S.Array(
   ListForZoneResultItem,
 ) as any as S.Schema<ListForZoneResultList>;

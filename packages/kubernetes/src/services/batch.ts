@@ -47,7 +47,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
-export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = string[];
+export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -97,7 +98,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry =
 
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
-  IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
@@ -134,7 +135,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference =
 
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
-  IoK8sApimachineryPkgApisMetaV1OwnerReference[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1OwnerReference,
@@ -206,7 +207,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(
 
 /** Specifies the set of values. Each returned container exit code (might be multiple in case of multiple containers) is checked against this set of values with respect to the operator. The list of values must be ordered and must not contain duplicates. Value '0' cannot be used for the In operator. At least one element is required. At most 255 elements are allowed. */
 export type IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirementValuesList =
-  number[];
+  ReadonlyArray<number>;
 export const IoK8sApiBatchV1PodFailurePolicyOnExitCodesRequirementValuesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -251,7 +252,7 @@ export const IoK8sApiBatchV1PodFailurePolicyOnPodConditionsPattern =
 
 /** Represents the requirement on the pod conditions. The requirement is represented as a list of pod condition patterns. The requirement is satisfied if at least one pattern matches an actual pod condition. At most 20 elements are allowed. */
 export type IoK8sApiBatchV1PodFailurePolicyRuleOnPodConditionsList =
-  IoK8sApiBatchV1PodFailurePolicyOnPodConditionsPattern[];
+  ReadonlyArray<IoK8sApiBatchV1PodFailurePolicyOnPodConditionsPattern>;
 export const IoK8sApiBatchV1PodFailurePolicyRuleOnPodConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiBatchV1PodFailurePolicyOnPodConditionsPattern,
@@ -282,7 +283,7 @@ export const IoK8sApiBatchV1PodFailurePolicyRule = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of pod failure policy rules. The rules are evaluated in order. Once a rule matches a Pod failure, the remaining of the rules are ignored. When no rule matches the Pod failure, the default handling applies - the counter of pod failures is incremented and it is checked against the backoffLimit. At most 20 elements are allowed. */
 export type IoK8sApiBatchV1PodFailurePolicyRulesList =
-  IoK8sApiBatchV1PodFailurePolicyRule[];
+  ReadonlyArray<IoK8sApiBatchV1PodFailurePolicyRule>;
 export const IoK8sApiBatchV1PodFailurePolicyRulesList = /*@__PURE__*/ S.Array(
   IoK8sApiBatchV1PodFailurePolicyRule,
 ) as any as S.Schema<IoK8sApiBatchV1PodFailurePolicyRulesList>;
@@ -339,7 +340,7 @@ export const IoK8sApiSchedulingV1alpha3WorkloadPodGroupResourceClaim =
 
 /** ResourceClaims defines which ResourceClaims may be shared among Pods in the Job. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. At most 4 claims may be set, matching the limit on the resulting PodGroup. This list is immutable after creation: entries may neither be added, removed, nor modified. */
 export type IoK8sApiBatchV1JobSchedulingConfigurationResourceClaimsList =
-  IoK8sApiSchedulingV1alpha3WorkloadPodGroupResourceClaim[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3WorkloadPodGroupResourceClaim>;
 export const IoK8sApiBatchV1JobSchedulingConfigurationResourceClaimsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3WorkloadPodGroupResourceClaim,
@@ -361,7 +362,7 @@ export const IoK8sApiSchedulingV1alpha3TopologyConstraint =
 
 /** topology specifies desired topological placements for all pods within the pod group. If unset, no topology placement is requested. */
 export type IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraintsTopologyList =
-  IoK8sApiSchedulingV1alpha3TopologyConstraint[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
 export const IoK8sApiSchedulingV1alpha3WorkloadPodGroupSchedulingConstraintsTopologyList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3TopologyConstraint,
@@ -451,7 +452,7 @@ export const IoK8sApiBatchV1JobSchedulingConfiguration =
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
-  string[];
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -481,7 +482,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement =
 
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
-  IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
@@ -536,7 +537,7 @@ export const IoK8sApiBatchV1SuccessPolicyRule = /*@__PURE__*/ S.suspend(() =>
 
 /** rules represents the list of alternative rules for the declaring the Jobs as successful before `.status.succeeded >= .spec.completions`. Once any of the rules are met, the "SuccessCriteriaMet" condition is added, and the lingering pods are removed. The terminal state for such a Job has the "Complete" condition. Additionally, these rules are evaluated in order; Once the Job meets one of the rules, other rules are ignored. At most 20 elements are allowed. */
 export type IoK8sApiBatchV1SuccessPolicyRulesList =
-  IoK8sApiBatchV1SuccessPolicyRule[];
+  ReadonlyArray<IoK8sApiBatchV1SuccessPolicyRule>;
 export const IoK8sApiBatchV1SuccessPolicyRulesList = /*@__PURE__*/ S.Array(
   IoK8sApiBatchV1SuccessPolicyRule,
 ) as any as S.Schema<IoK8sApiBatchV1SuccessPolicyRulesList>;
@@ -555,7 +556,8 @@ export const IoK8sApiBatchV1SuccessPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiBatchV1SuccessPolicy>;
 
 /** An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch. */
-export type IoK8sApiCoreV1NodeSelectorRequirementValuesList = string[];
+export type IoK8sApiCoreV1NodeSelectorRequirementValuesList =
+  ReadonlyArray<string>;
 export const IoK8sApiCoreV1NodeSelectorRequirementValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -583,7 +585,7 @@ export const IoK8sApiCoreV1NodeSelectorRequirement = /*@__PURE__*/ S.suspend(
 
 /** A list of node selector requirements by node's labels. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList =
-  IoK8sApiCoreV1NodeSelectorRequirement[];
+  ReadonlyArray<IoK8sApiCoreV1NodeSelectorRequirement>;
 export const IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1NodeSelectorRequirement,
@@ -591,7 +593,7 @@ export const IoK8sApiCoreV1NodeSelectorTermMatchExpressionsList =
 
 /** A list of node selector requirements by node's fields. */
 export type IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
-  IoK8sApiCoreV1NodeSelectorRequirement[];
+  ReadonlyArray<IoK8sApiCoreV1NodeSelectorRequirement>;
 export const IoK8sApiCoreV1NodeSelectorTermMatchFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1NodeSelectorRequirement,
@@ -634,7 +636,7 @@ export const IoK8sApiCoreV1PreferredSchedulingTerm = /*@__PURE__*/ S.suspend(
 
 /** The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding "weight" to the sum if the node matches the corresponding matchExpressions; the node(s) with the highest sum are the most preferred. */
 export type IoK8sApiCoreV1NodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
-  IoK8sApiCoreV1PreferredSchedulingTerm[];
+  ReadonlyArray<IoK8sApiCoreV1PreferredSchedulingTerm>;
 export const IoK8sApiCoreV1NodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1PreferredSchedulingTerm,
@@ -642,7 +644,7 @@ export const IoK8sApiCoreV1NodeAffinityPreferredDuringSchedulingIgnoredDuringExe
 
 /** Required. A list of node selector terms. The terms are ORed. */
 export type IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList =
-  IoK8sApiCoreV1NodeSelectorTerm[];
+  ReadonlyArray<IoK8sApiCoreV1NodeSelectorTerm>;
 export const IoK8sApiCoreV1NodeSelectorNodeSelectorTermsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1NodeSelectorTerm,
@@ -682,21 +684,23 @@ export const IoK8sApiCoreV1NodeAffinity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1NodeAffinity>;
 
 /** MatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key in (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both matchLabelKeys and labelSelector. Also, matchLabelKeys cannot be set when labelSelector isn't set. */
-export type IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList = string[];
+export type IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList =
+  ReadonlyArray<string>;
 export const IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiCoreV1PodAffinityTermMatchLabelKeysList>;
 
 /** MismatchLabelKeys is a set of pod label keys to select which pods will be taken into consideration. The keys are used to lookup values from the incoming pod labels, those key-value labels are merged with `labelSelector` as `key notin (value)` to select the group of existing pods which pods will be taken into consideration for the incoming pod's pod (anti) affinity. Keys that don't exist in the incoming pod labels will be ignored. The default value is empty. The same key is forbidden to exist in both mismatchLabelKeys and labelSelector. Also, mismatchLabelKeys cannot be set when labelSelector isn't set. */
-export type IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList = string[];
+export type IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList =
+  ReadonlyArray<string>;
 export const IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiCoreV1PodAffinityTermMismatchLabelKeysList>;
 
 /** namespaces specifies a static list of namespace names that the term applies to. The term is applied to the union of the namespaces listed in this field and the ones selected by namespaceSelector. null or empty namespaces list and null namespaceSelector means "this pod's namespace". */
-export type IoK8sApiCoreV1PodAffinityTermNamespacesList = string[];
+export type IoK8sApiCoreV1PodAffinityTermNamespacesList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1PodAffinityTermNamespacesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -751,7 +755,7 @@ export const IoK8sApiCoreV1WeightedPodAffinityTerm = /*@__PURE__*/ S.suspend(
 
 /** The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding "weight" to the sum if the node has pods which matches the corresponding podAffinityTerm; the node(s) with the highest sum are the most preferred. */
 export type IoK8sApiCoreV1PodAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
-  IoK8sApiCoreV1WeightedPodAffinityTerm[];
+  ReadonlyArray<IoK8sApiCoreV1WeightedPodAffinityTerm>;
 export const IoK8sApiCoreV1PodAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1WeightedPodAffinityTerm,
@@ -759,7 +763,7 @@ export const IoK8sApiCoreV1PodAffinityPreferredDuringSchedulingIgnoredDuringExec
 
 /** If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied. */
 export type IoK8sApiCoreV1PodAffinityRequiredDuringSchedulingIgnoredDuringExecutionList =
-  IoK8sApiCoreV1PodAffinityTerm[];
+  ReadonlyArray<IoK8sApiCoreV1PodAffinityTerm>;
 export const IoK8sApiCoreV1PodAffinityRequiredDuringSchedulingIgnoredDuringExecutionList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1PodAffinityTerm,
@@ -787,7 +791,7 @@ export const IoK8sApiCoreV1PodAffinity = /*@__PURE__*/ S.suspend(() =>
 
 /** The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and subtracting "weight" from the sum if the node has pods which matches the corresponding podAffinityTerm; the node(s) with the highest sum are the most preferred. */
 export type IoK8sApiCoreV1PodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
-  IoK8sApiCoreV1WeightedPodAffinityTerm[];
+  ReadonlyArray<IoK8sApiCoreV1WeightedPodAffinityTerm>;
 export const IoK8sApiCoreV1PodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1WeightedPodAffinityTerm,
@@ -795,7 +799,7 @@ export const IoK8sApiCoreV1PodAntiAffinityPreferredDuringSchedulingIgnoredDuring
 
 /** If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied. */
 export type IoK8sApiCoreV1PodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionList =
-  IoK8sApiCoreV1PodAffinityTerm[];
+  ReadonlyArray<IoK8sApiCoreV1PodAffinityTerm>;
 export const IoK8sApiCoreV1PodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1PodAffinityTerm,
@@ -841,13 +845,13 @@ export const IoK8sApiCoreV1Affinity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1Affinity>;
 
 /** Arguments to the entrypoint. The container image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
-export type IoK8sApiCoreV1ContainerArgsList = string[];
+export type IoK8sApiCoreV1ContainerArgsList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1ContainerArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1ContainerArgsList>;
 
 /** Entrypoint array. Not executed within a shell. The container image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
-export type IoK8sApiCoreV1ContainerCommandList = string[];
+export type IoK8sApiCoreV1ContainerCommandList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1ContainerCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1ContainerCommandList>;
@@ -992,7 +996,8 @@ export const IoK8sApiCoreV1EnvVar = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1EnvVar>;
 
 /** List of environment variables to set in the container. Cannot be updated. */
-export type IoK8sApiCoreV1ContainerEnvList = IoK8sApiCoreV1EnvVar[];
+export type IoK8sApiCoreV1ContainerEnvList =
+  ReadonlyArray<IoK8sApiCoreV1EnvVar>;
 export const IoK8sApiCoreV1ContainerEnvList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1EnvVar,
 ) as any as S.Schema<IoK8sApiCoreV1ContainerEnvList>;
@@ -1049,13 +1054,14 @@ export const IoK8sApiCoreV1EnvFromSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1EnvFromSource>;
 
 /** List of sources to populate environment variables in the container. The keys defined within a source may consist of any printable ASCII characters except '='. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. */
-export type IoK8sApiCoreV1ContainerEnvFromList = IoK8sApiCoreV1EnvFromSource[];
+export type IoK8sApiCoreV1ContainerEnvFromList =
+  ReadonlyArray<IoK8sApiCoreV1EnvFromSource>;
 export const IoK8sApiCoreV1ContainerEnvFromList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1EnvFromSource,
 ) as any as S.Schema<IoK8sApiCoreV1ContainerEnvFromList>;
 
 /** Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. */
-export type IoK8sApiCoreV1ExecActionCommandList = string[];
+export type IoK8sApiCoreV1ExecActionCommandList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1ExecActionCommandList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1ExecActionCommandList>;
@@ -1091,7 +1097,7 @@ export const IoK8sApiCoreV1HTTPHeader = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom headers to set in the request. HTTP allows repeated headers. */
 export type IoK8sApiCoreV1HTTPGetActionHttpHeadersList =
-  IoK8sApiCoreV1HTTPHeader[];
+  ReadonlyArray<IoK8sApiCoreV1HTTPHeader>;
 export const IoK8sApiCoreV1HTTPGetActionHttpHeadersList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1HTTPHeader,
 ) as any as S.Schema<IoK8sApiCoreV1HTTPGetActionHttpHeadersList>;
@@ -1279,7 +1285,8 @@ export const IoK8sApiCoreV1ContainerPort = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1ContainerPort>;
 
 /** List of ports to expose from the container. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default "0.0.0.0" address inside a container will be accessible from the network. Modifying this array with strategic merge patch may corrupt the data. For more information See https://github.com/kubernetes/kubernetes/issues/108255. Cannot be updated. */
-export type IoK8sApiCoreV1ContainerPortsList = IoK8sApiCoreV1ContainerPort[];
+export type IoK8sApiCoreV1ContainerPortsList =
+  ReadonlyArray<IoK8sApiCoreV1ContainerPort>;
 export const IoK8sApiCoreV1ContainerPortsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1ContainerPort,
 ) as any as S.Schema<IoK8sApiCoreV1ContainerPortsList>;
@@ -1302,7 +1309,7 @@ export const IoK8sApiCoreV1ContainerResizePolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** Resources resize policy for the container. This field cannot be set on ephemeral containers. */
 export type IoK8sApiCoreV1ContainerResizePolicyList =
-  IoK8sApiCoreV1ContainerResizePolicy[];
+  ReadonlyArray<IoK8sApiCoreV1ContainerResizePolicy>;
 export const IoK8sApiCoreV1ContainerResizePolicyList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1ContainerResizePolicy,
 ) as any as S.Schema<IoK8sApiCoreV1ContainerResizePolicyList>;
@@ -1325,7 +1332,7 @@ export const IoK8sApiCoreV1ResourceClaim = /*@__PURE__*/ S.suspend(() =>
 
 /** Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. This field depends on the DynamicResourceAllocation feature gate. This field is immutable. It can only be set for containers. */
 export type IoK8sApiCoreV1ResourceRequirementsClaimsList =
-  IoK8sApiCoreV1ResourceClaim[];
+  ReadonlyArray<IoK8sApiCoreV1ResourceClaim>;
 export const IoK8sApiCoreV1ResourceRequirementsClaimsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1ResourceClaim,
@@ -1371,7 +1378,8 @@ export const IoK8sApiCoreV1ResourceRequirements = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1ResourceRequirements>;
 
 /** Specifies the set of values to check for container exit codes. At most 255 elements are allowed. */
-export type IoK8sApiCoreV1ContainerRestartRuleOnExitCodesValuesList = number[];
+export type IoK8sApiCoreV1ContainerRestartRuleOnExitCodesValuesList =
+  ReadonlyArray<number>;
 export const IoK8sApiCoreV1ContainerRestartRuleOnExitCodesValuesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -1414,7 +1422,7 @@ export const IoK8sApiCoreV1ContainerRestartRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents a list of rules to be checked to determine if the container should be restarted on exit. The rules are evaluated in order. Once a rule matches a container exit condition, the remaining rules are ignored. If no rule matches the container exit condition, the Container-level restart policy determines the whether the container is restarted or not. Constraints on the rules: - At most 20 rules are allowed. - Rules can have the same action. - Identical rules are not forbidden in validations. When rules are specified, container MUST set RestartPolicy explicitly even it if matches the Pod's RestartPolicy. */
 export type IoK8sApiCoreV1ContainerRestartPolicyRulesList =
-  IoK8sApiCoreV1ContainerRestartRule[];
+  ReadonlyArray<IoK8sApiCoreV1ContainerRestartRule>;
 export const IoK8sApiCoreV1ContainerRestartPolicyRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1ContainerRestartRule,
@@ -1437,13 +1445,13 @@ export const IoK8sApiCoreV1AppArmorProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1AppArmorProfile>;
 
 /** Added capabilities */
-export type IoK8sApiCoreV1CapabilitiesAddList = string[];
+export type IoK8sApiCoreV1CapabilitiesAddList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1CapabilitiesAddList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1CapabilitiesAddList>;
 
 /** Removed capabilities */
-export type IoK8sApiCoreV1CapabilitiesDropList = string[];
+export type IoK8sApiCoreV1CapabilitiesDropList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1CapabilitiesDropList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1CapabilitiesDropList>;
@@ -1589,13 +1597,14 @@ export const IoK8sApiCoreV1VolumeDevice = /*@__PURE__*/ S.suspend(() =>
 
 /** volumeDevices is the list of block devices to be used by the container. */
 export type IoK8sApiCoreV1ContainerVolumeDevicesList =
-  IoK8sApiCoreV1VolumeDevice[];
+  ReadonlyArray<IoK8sApiCoreV1VolumeDevice>;
 export const IoK8sApiCoreV1ContainerVolumeDevicesList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1VolumeDevice,
 ) as any as S.Schema<IoK8sApiCoreV1ContainerVolumeDevicesList>;
 
 /** bindMountOptions is the list of additional bind mount options to apply when mounting this volume into the container. Allowed values are noexec, nodev, and nosuid. These are Linux mount options and have no effect on Windows nodes. This field is not supported with image volumes. This is an alpha field and requires enabling the VolumeBindMountOptions feature gate. */
-export type IoK8sApiCoreV1VolumeMountBindMountOptionsList = string[];
+export type IoK8sApiCoreV1VolumeMountBindMountOptionsList =
+  ReadonlyArray<string>;
 export const IoK8sApiCoreV1VolumeMountBindMountOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1637,7 +1646,7 @@ export const IoK8sApiCoreV1VolumeMount = /*@__PURE__*/ S.suspend(() =>
 
 /** Pod volumes to mount into the container's filesystem. Cannot be updated. */
 export type IoK8sApiCoreV1ContainerVolumeMountsList =
-  IoK8sApiCoreV1VolumeMount[];
+  ReadonlyArray<IoK8sApiCoreV1VolumeMount>;
 export const IoK8sApiCoreV1ContainerVolumeMountsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1VolumeMount,
 ) as any as S.Schema<IoK8sApiCoreV1ContainerVolumeMountsList>;
@@ -1730,13 +1739,14 @@ export const IoK8sApiCoreV1Container = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1Container>;
 
 /** List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. */
-export type IoK8sApiCoreV1PodSpecContainersList = IoK8sApiCoreV1Container[];
+export type IoK8sApiCoreV1PodSpecContainersList =
+  ReadonlyArray<IoK8sApiCoreV1Container>;
 export const IoK8sApiCoreV1PodSpecContainersList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1Container,
 ) as any as S.Schema<IoK8sApiCoreV1PodSpecContainersList>;
 
 /** A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed. */
-export type IoK8sApiCoreV1PodDNSConfigNameserversList = string[];
+export type IoK8sApiCoreV1PodDNSConfigNameserversList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1PodDNSConfigNameserversList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1PodDNSConfigNameserversList>;
@@ -1759,13 +1769,13 @@ export const IoK8sApiCoreV1PodDNSConfigOption = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy. */
 export type IoK8sApiCoreV1PodDNSConfigOptionsList =
-  IoK8sApiCoreV1PodDNSConfigOption[];
+  ReadonlyArray<IoK8sApiCoreV1PodDNSConfigOption>;
 export const IoK8sApiCoreV1PodDNSConfigOptionsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1PodDNSConfigOption,
 ) as any as S.Schema<IoK8sApiCoreV1PodDNSConfigOptionsList>;
 
 /** A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed. */
-export type IoK8sApiCoreV1PodDNSConfigSearchesList = string[];
+export type IoK8sApiCoreV1PodDNSConfigSearchesList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1PodDNSConfigSearchesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1PodDNSConfigSearchesList>;
@@ -1790,27 +1800,28 @@ export const IoK8sApiCoreV1PodDNSConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1PodDNSConfig>;
 
 /** Arguments to the entrypoint. The image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
-export type IoK8sApiCoreV1EphemeralContainerArgsList = string[];
+export type IoK8sApiCoreV1EphemeralContainerArgsList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1EphemeralContainerArgsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerArgsList>;
 
 /** Entrypoint array. Not executed within a shell. The image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. "$$(VAR_NAME)" will produce the string literal "$(VAR_NAME)". Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell */
-export type IoK8sApiCoreV1EphemeralContainerCommandList = string[];
+export type IoK8sApiCoreV1EphemeralContainerCommandList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1EphemeralContainerCommandList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerCommandList>;
 
 /** List of environment variables to set in the container. Cannot be updated. */
-export type IoK8sApiCoreV1EphemeralContainerEnvList = IoK8sApiCoreV1EnvVar[];
+export type IoK8sApiCoreV1EphemeralContainerEnvList =
+  ReadonlyArray<IoK8sApiCoreV1EnvVar>;
 export const IoK8sApiCoreV1EphemeralContainerEnvList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1EnvVar,
 ) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerEnvList>;
 
 /** List of sources to populate environment variables in the container. The keys defined within a source may consist of any printable ASCII characters except '='. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated. */
 export type IoK8sApiCoreV1EphemeralContainerEnvFromList =
-  IoK8sApiCoreV1EnvFromSource[];
+  ReadonlyArray<IoK8sApiCoreV1EnvFromSource>;
 export const IoK8sApiCoreV1EphemeralContainerEnvFromList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1EnvFromSource,
@@ -1818,14 +1829,14 @@ export const IoK8sApiCoreV1EphemeralContainerEnvFromList =
 
 /** Ports are not allowed for ephemeral containers. */
 export type IoK8sApiCoreV1EphemeralContainerPortsList =
-  IoK8sApiCoreV1ContainerPort[];
+  ReadonlyArray<IoK8sApiCoreV1ContainerPort>;
 export const IoK8sApiCoreV1EphemeralContainerPortsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1ContainerPort,
 ) as any as S.Schema<IoK8sApiCoreV1EphemeralContainerPortsList>;
 
 /** Resources resize policy for the container. */
 export type IoK8sApiCoreV1EphemeralContainerResizePolicyList =
-  IoK8sApiCoreV1ContainerResizePolicy[];
+  ReadonlyArray<IoK8sApiCoreV1ContainerResizePolicy>;
 export const IoK8sApiCoreV1EphemeralContainerResizePolicyList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1ContainerResizePolicy,
@@ -1833,7 +1844,7 @@ export const IoK8sApiCoreV1EphemeralContainerResizePolicyList =
 
 /** Represents a list of rules to be checked to determine if the container should be restarted on exit. You cannot set this field on ephemeral containers. */
 export type IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList =
-  IoK8sApiCoreV1ContainerRestartRule[];
+  ReadonlyArray<IoK8sApiCoreV1ContainerRestartRule>;
 export const IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1ContainerRestartRule,
@@ -1841,7 +1852,7 @@ export const IoK8sApiCoreV1EphemeralContainerRestartPolicyRulesList =
 
 /** volumeDevices is the list of block devices to be used by the container. */
 export type IoK8sApiCoreV1EphemeralContainerVolumeDevicesList =
-  IoK8sApiCoreV1VolumeDevice[];
+  ReadonlyArray<IoK8sApiCoreV1VolumeDevice>;
 export const IoK8sApiCoreV1EphemeralContainerVolumeDevicesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1VolumeDevice,
@@ -1849,7 +1860,7 @@ export const IoK8sApiCoreV1EphemeralContainerVolumeDevicesList =
 
 /** Pod volumes to mount into the container's filesystem. Subpath mounts are not allowed for ephemeral containers. Cannot be updated. */
 export type IoK8sApiCoreV1EphemeralContainerVolumeMountsList =
-  IoK8sApiCoreV1VolumeMount[];
+  ReadonlyArray<IoK8sApiCoreV1VolumeMount>;
 export const IoK8sApiCoreV1EphemeralContainerVolumeMountsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1VolumeMount,
@@ -1949,7 +1960,7 @@ export const IoK8sApiCoreV1EphemeralContainer = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ephemeral containers run in this pod. Ephemeral containers may be run in an existing pod to perform user-initiated actions such as debugging. This list cannot be specified when creating a pod, and it cannot be modified by updating the pod spec. In order to add an ephemeral container to an existing pod, use the pod's ephemeralcontainers subresource. */
 export type IoK8sApiCoreV1PodSpecEphemeralContainersList =
-  IoK8sApiCoreV1EphemeralContainer[];
+  ReadonlyArray<IoK8sApiCoreV1EphemeralContainer>;
 export const IoK8sApiCoreV1PodSpecEphemeralContainersList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1EphemeralContainer,
@@ -1973,14 +1984,14 @@ export const IoK8sApiCoreV1EvictionResponder = /*@__PURE__*/ S.suspend(() =>
 
 /** evictionResponders reference responders that react to Evictions based on EvictionRequests. Responders should observe and communicate through the Eviction Resource API to help with the graceful termination of a pod. The responders are selected sequentially, according to their specified priority. Responders should periodically report on an eviction progress by updating the .status.responders[].heartbeatTime field of the Eviction object. If this field is not updated within the heartbeat deadline defined by the Eviction API (currently 20 minutes), the eviction is passed over to the next responder with a lower priority. If there is no other responder, the last default imperative-eviction.k8s.io/evictor responder with a priority of 100 will evict the pod using the imperative Eviction API (pods/<name>/eviction subresource). The maximum length of the responders list is 10. Responders are not supported when the pod is part of a PodGroup (.spec.schedulingGroup is set). This field can only be set on creation and is immutable afterwards. */
 export type IoK8sApiCoreV1PodSpecEvictionRespondersList =
-  IoK8sApiCoreV1EvictionResponder[];
+  ReadonlyArray<IoK8sApiCoreV1EvictionResponder>;
 export const IoK8sApiCoreV1PodSpecEvictionRespondersList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1EvictionResponder,
   ) as any as S.Schema<IoK8sApiCoreV1PodSpecEvictionRespondersList>;
 
 /** Hostnames for the above IP address. */
-export type IoK8sApiCoreV1HostAliasHostnamesList = string[];
+export type IoK8sApiCoreV1HostAliasHostnamesList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1HostAliasHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1HostAliasHostnamesList>;
@@ -2002,7 +2013,8 @@ export const IoK8sApiCoreV1HostAlias = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1HostAlias>;
 
 /** HostAliases is an optional list of hosts and IPs that will be injected into the pod's hosts file if specified. */
-export type IoK8sApiCoreV1PodSpecHostAliasesList = IoK8sApiCoreV1HostAlias[];
+export type IoK8sApiCoreV1PodSpecHostAliasesList =
+  ReadonlyArray<IoK8sApiCoreV1HostAlias>;
 export const IoK8sApiCoreV1PodSpecHostAliasesList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1HostAlias,
 ) as any as S.Schema<IoK8sApiCoreV1PodSpecHostAliasesList>;
@@ -2022,13 +2034,14 @@ export const IoK8sApiCoreV1LocalObjectReference = /*@__PURE__*/ S.suspend(() =>
 
 /** ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. More info: https://kubernetes.io/docs/concepts/containers/images#specifying-imagepullsecrets-on-a-pod */
 export type IoK8sApiCoreV1PodSpecImagePullSecretsList =
-  IoK8sApiCoreV1LocalObjectReference[];
+  ReadonlyArray<IoK8sApiCoreV1LocalObjectReference>;
 export const IoK8sApiCoreV1PodSpecImagePullSecretsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1LocalObjectReference,
 ) as any as S.Schema<IoK8sApiCoreV1PodSpecImagePullSecretsList>;
 
 /** List of initialization containers belonging to the pod. Init containers are executed in order prior to containers being started. If any init container fails, the pod is considered to have failed and is handled according to its restartPolicy. The name for an init container or normal container must be unique among all containers. Init containers may not have Lifecycle actions, Readiness probes, Liveness probes, or Startup probes. The resourceRequirements of an init container are taken into account during scheduling by finding the highest request/limit for each resource type, and then using the max of that value or the sum of the normal containers. Limits are applied to init containers in a similar fashion. Init containers cannot currently be added or removed. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/ */
-export type IoK8sApiCoreV1PodSpecInitContainersList = IoK8sApiCoreV1Container[];
+export type IoK8sApiCoreV1PodSpecInitContainersList =
+  ReadonlyArray<IoK8sApiCoreV1Container>;
 export const IoK8sApiCoreV1PodSpecInitContainersList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1Container,
 ) as any as S.Schema<IoK8sApiCoreV1PodSpecInitContainersList>;
@@ -2079,7 +2092,7 @@ export const IoK8sApiCoreV1PodReadinessGate = /*@__PURE__*/ S.suspend(() =>
 
 /** If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to "True" More info: https://git.k8s.io/enhancements/keps/sig-network/580-pod-readiness-gates */
 export type IoK8sApiCoreV1PodSpecReadinessGatesList =
-  IoK8sApiCoreV1PodReadinessGate[];
+  ReadonlyArray<IoK8sApiCoreV1PodReadinessGate>;
 export const IoK8sApiCoreV1PodSpecReadinessGatesList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1PodReadinessGate,
 ) as any as S.Schema<IoK8sApiCoreV1PodSpecReadinessGatesList>;
@@ -2105,7 +2118,7 @@ export const IoK8sApiCoreV1PodResourceClaim = /*@__PURE__*/ S.suspend(() =>
 
 /** ResourceClaims defines which ResourceClaims must be allocated and reserved before the Pod is allowed to start. The resources will be made available to those containers which consume them by name. This is a stable field but requires that the DynamicResourceAllocation feature gate is enabled. This field is immutable. */
 export type IoK8sApiCoreV1PodSpecResourceClaimsList =
-  IoK8sApiCoreV1PodResourceClaim[];
+  ReadonlyArray<IoK8sApiCoreV1PodResourceClaim>;
 export const IoK8sApiCoreV1PodSpecResourceClaimsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1PodResourceClaim,
 ) as any as S.Schema<IoK8sApiCoreV1PodSpecResourceClaimsList>;
@@ -2125,7 +2138,7 @@ export const IoK8sApiCoreV1PodSchedulingGate = /*@__PURE__*/ S.suspend(() =>
 
 /** SchedulingGates is an opaque list of values that if specified will block scheduling the pod. If schedulingGates is not empty, the pod will stay in the SchedulingGated state and the scheduler will not attempt to schedule the pod. SchedulingGates can only be set at pod creation time, and be removed only afterwards. */
 export type IoK8sApiCoreV1PodSpecSchedulingGatesList =
-  IoK8sApiCoreV1PodSchedulingGate[];
+  ReadonlyArray<IoK8sApiCoreV1PodSchedulingGate>;
 export const IoK8sApiCoreV1PodSpecSchedulingGatesList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1PodSchedulingGate,
 ) as any as S.Schema<IoK8sApiCoreV1PodSpecSchedulingGatesList>;
@@ -2144,7 +2157,8 @@ export const IoK8sApiCoreV1PodSchedulingGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1PodSchedulingGroup>;
 
 /** A list of groups applied to the first process run in each container, in addition to the container's primary GID and fsGroup (if specified). If the SupplementalGroupsPolicy feature is enabled, the supplementalGroupsPolicy field determines whether these are in addition to or instead of any group memberships defined in the container image. If unspecified, no additional groups are added, though group memberships defined in the container image may still be used, depending on the supplementalGroupsPolicy field. Note that this field cannot be set when spec.os.name is windows. */
-export type IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList = number[];
+export type IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList =
+  ReadonlyArray<number>;
 export const IoK8sApiCoreV1PodSecurityContextSupplementalGroupsList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -2168,7 +2182,7 @@ export const IoK8sApiCoreV1Sysctl = /*@__PURE__*/ S.suspend(() =>
 
 /** Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. Note that this field cannot be set when spec.os.name is windows. */
 export type IoK8sApiCoreV1PodSecurityContextSysctlsList =
-  IoK8sApiCoreV1Sysctl[];
+  ReadonlyArray<IoK8sApiCoreV1Sysctl>;
 export const IoK8sApiCoreV1PodSecurityContextSysctlsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1Sysctl,
@@ -2251,13 +2265,15 @@ export const IoK8sApiCoreV1Toleration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1Toleration>;
 
 /** If specified, the pod's tolerations. */
-export type IoK8sApiCoreV1PodSpecTolerationsList = IoK8sApiCoreV1Toleration[];
+export type IoK8sApiCoreV1PodSpecTolerationsList =
+  ReadonlyArray<IoK8sApiCoreV1Toleration>;
 export const IoK8sApiCoreV1PodSpecTolerationsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1Toleration,
 ) as any as S.Schema<IoK8sApiCoreV1PodSpecTolerationsList>;
 
 /** MatchLabelKeys is a set of pod label keys to select the pods over which spreading will be calculated. The keys are used to lookup values from the incoming pod labels, those key-value labels are ANDed with labelSelector to select the group of existing pods over which spreading will be calculated for the incoming pod. The same key is forbidden to exist in both MatchLabelKeys and LabelSelector. MatchLabelKeys cannot be set when LabelSelector isn't set. Keys that don't exist in the incoming pod labels will be ignored. A null or empty list means only match against labelSelector. This is a beta field and requires the MatchLabelKeysInPodTopologySpread feature gate to be enabled (enabled by default). */
-export type IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList = string[];
+export type IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList =
+  ReadonlyArray<string>;
 export const IoK8sApiCoreV1TopologySpreadConstraintMatchLabelKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2302,7 +2318,7 @@ export const IoK8sApiCoreV1TopologySpreadConstraint = /*@__PURE__*/ S.suspend(
 
 /** TopologySpreadConstraints describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints. All topologySpreadConstraints are ANDed. */
 export type IoK8sApiCoreV1PodSpecTopologySpreadConstraintsList =
-  IoK8sApiCoreV1TopologySpreadConstraint[];
+  ReadonlyArray<IoK8sApiCoreV1TopologySpreadConstraint>;
 export const IoK8sApiCoreV1PodSpecTopologySpreadConstraintsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1TopologySpreadConstraint,
@@ -2379,7 +2395,8 @@ export const IoK8sApiCoreV1AzureFileVolumeSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1AzureFileVolumeSource>;
 
 /** monitors is Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it */
-export type IoK8sApiCoreV1CephFSVolumeSourceMonitorsList = string[];
+export type IoK8sApiCoreV1CephFSVolumeSourceMonitorsList =
+  ReadonlyArray<string>;
 export const IoK8sApiCoreV1CephFSVolumeSourceMonitorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2459,7 +2476,7 @@ export const IoK8sApiCoreV1KeyToPath = /*@__PURE__*/ S.suspend(() =>
 
 /** items if unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
 export type IoK8sApiCoreV1ConfigMapVolumeSourceItemsList =
-  IoK8sApiCoreV1KeyToPath[];
+  ReadonlyArray<IoK8sApiCoreV1KeyToPath>;
 export const IoK8sApiCoreV1ConfigMapVolumeSourceItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1KeyToPath,
@@ -2554,7 +2571,7 @@ export const IoK8sApiCoreV1DownwardAPIVolumeFile = /*@__PURE__*/ S.suspend(() =>
 
 /** Items is a list of downward API volume file */
 export type IoK8sApiCoreV1DownwardAPIVolumeSourceItemsList =
-  IoK8sApiCoreV1DownwardAPIVolumeFile[];
+  ReadonlyArray<IoK8sApiCoreV1DownwardAPIVolumeFile>;
 export const IoK8sApiCoreV1DownwardAPIVolumeSourceItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1DownwardAPIVolumeFile,
@@ -2600,7 +2617,8 @@ export const IoK8sApiCoreV1EmptyDirVolumeSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1EmptyDirVolumeSource>;
 
 /** accessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 */
-export type IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList = string[];
+export type IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList =
+  ReadonlyArray<string>;
 export const IoK8sApiCoreV1PersistentVolumeClaimSpecAccessModesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2758,13 +2776,13 @@ export const IoK8sApiCoreV1EphemeralVolumeSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1EphemeralVolumeSource>;
 
 /** targetWWNs is Optional: FC target worldwide names (WWNs) */
-export type IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = string[];
+export type IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1FCVolumeSourceTargetWWNsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceTargetWWNsList>;
 
 /** wwids Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously. */
-export type IoK8sApiCoreV1FCVolumeSourceWwidsList = string[];
+export type IoK8sApiCoreV1FCVolumeSourceWwidsList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1FCVolumeSourceWwidsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1FCVolumeSourceWwidsList>;
@@ -2938,7 +2956,7 @@ export const IoK8sApiCoreV1ImageVolumeSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1ImageVolumeSource>;
 
 /** portals is the iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260). */
-export type IoK8sApiCoreV1ISCSIVolumeSourcePortalsList = string[];
+export type IoK8sApiCoreV1ISCSIVolumeSourcePortalsList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1ISCSIVolumeSourcePortalsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1ISCSIVolumeSourcePortalsList>;
@@ -3089,7 +3107,7 @@ export const IoK8sApiCoreV1ClusterTrustBundleProjection =
 
 /** items if unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
 export type IoK8sApiCoreV1ConfigMapProjectionItemsList =
-  IoK8sApiCoreV1KeyToPath[];
+  ReadonlyArray<IoK8sApiCoreV1KeyToPath>;
 export const IoK8sApiCoreV1ConfigMapProjectionItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1KeyToPath,
 ) as any as S.Schema<IoK8sApiCoreV1ConfigMapProjectionItemsList>;
@@ -3115,7 +3133,7 @@ export const IoK8sApiCoreV1ConfigMapProjection = /*@__PURE__*/ S.suspend(() =>
 
 /** Items is a list of DownwardAPIVolume file */
 export type IoK8sApiCoreV1DownwardAPIProjectionItemsList =
-  IoK8sApiCoreV1DownwardAPIVolumeFile[];
+  ReadonlyArray<IoK8sApiCoreV1DownwardAPIVolumeFile>;
 export const IoK8sApiCoreV1DownwardAPIProjectionItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1DownwardAPIVolumeFile,
@@ -3182,7 +3200,8 @@ export const IoK8sApiCoreV1PodCertificateProjection = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IoK8sApiCoreV1PodCertificateProjection>;
 
 /** items if unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
-export type IoK8sApiCoreV1SecretProjectionItemsList = IoK8sApiCoreV1KeyToPath[];
+export type IoK8sApiCoreV1SecretProjectionItemsList =
+  ReadonlyArray<IoK8sApiCoreV1KeyToPath>;
 export const IoK8sApiCoreV1SecretProjectionItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1KeyToPath,
 ) as any as S.Schema<IoK8sApiCoreV1SecretProjectionItemsList>;
@@ -3261,7 +3280,7 @@ export const IoK8sApiCoreV1VolumeProjection = /*@__PURE__*/ S.suspend(() =>
 
 /** sources is the list of volume projections. Each entry in this list handles one source. */
 export type IoK8sApiCoreV1ProjectedVolumeSourceSourcesList =
-  IoK8sApiCoreV1VolumeProjection[];
+  ReadonlyArray<IoK8sApiCoreV1VolumeProjection>;
 export const IoK8sApiCoreV1ProjectedVolumeSourceSourcesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiCoreV1VolumeProjection,
@@ -3315,7 +3334,7 @@ export const IoK8sApiCoreV1QuobyteVolumeSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1QuobyteVolumeSource>;
 
 /** monitors is a collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it */
-export type IoK8sApiCoreV1RBDVolumeSourceMonitorsList = string[];
+export type IoK8sApiCoreV1RBDVolumeSourceMonitorsList = ReadonlyArray<string>;
 export const IoK8sApiCoreV1RBDVolumeSourceMonitorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiCoreV1RBDVolumeSourceMonitorsList>;
@@ -3396,7 +3415,7 @@ export const IoK8sApiCoreV1ScaleIOVolumeSource = /*@__PURE__*/ S.suspend(() =>
 
 /** items If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'. */
 export type IoK8sApiCoreV1SecretVolumeSourceItemsList =
-  IoK8sApiCoreV1KeyToPath[];
+  ReadonlyArray<IoK8sApiCoreV1KeyToPath>;
 export const IoK8sApiCoreV1SecretVolumeSourceItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1KeyToPath,
 ) as any as S.Schema<IoK8sApiCoreV1SecretVolumeSourceItemsList>;
@@ -3584,7 +3603,8 @@ export const IoK8sApiCoreV1Volume = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IoK8sApiCoreV1Volume>;
 
 /** List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes */
-export type IoK8sApiCoreV1PodSpecVolumesList = IoK8sApiCoreV1Volume[];
+export type IoK8sApiCoreV1PodSpecVolumesList =
+  ReadonlyArray<IoK8sApiCoreV1Volume>;
 export const IoK8sApiCoreV1PodSpecVolumesList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1Volume,
 ) as any as S.Schema<IoK8sApiCoreV1PodSpecVolumesList>;
@@ -3892,7 +3912,7 @@ export const IoK8sApiCoreV1ObjectReference = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of pointers to currently running jobs. */
 export type IoK8sApiBatchV1CronJobStatusActiveList =
-  IoK8sApiCoreV1ObjectReference[];
+  ReadonlyArray<IoK8sApiCoreV1ObjectReference>;
 export const IoK8sApiBatchV1CronJobStatusActiveList = /*@__PURE__*/ S.Array(
   IoK8sApiCoreV1ObjectReference,
 ) as any as S.Schema<IoK8sApiBatchV1CronJobStatusActiveList>;
@@ -4017,20 +4037,22 @@ export const IoK8sApiBatchV1JobCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** The latest available observations of an object's current state. When a Job fails, one of the conditions will have type "Failed" and status true. When a Job is suspended, one of the conditions will have type "Suspended" and status true; when the Job is resumed, the status of this condition will become false. When a Job is completed, one of the conditions will have type "Complete" and status true. A job is considered finished when it is in a terminal condition, either "Complete" or "Failed". A Job cannot have both the "Complete" and "Failed" conditions. Additionally, it cannot be in the "Complete" and "FailureTarget" conditions. The "Complete", "Failed" and "FailureTarget" conditions cannot be disabled. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ */
 export type IoK8sApiBatchV1JobStatusConditionsList =
-  IoK8sApiBatchV1JobCondition[];
+  ReadonlyArray<IoK8sApiBatchV1JobCondition>;
 export const IoK8sApiBatchV1JobStatusConditionsList = /*@__PURE__*/ S.Array(
   IoK8sApiBatchV1JobCondition,
 ) as any as S.Schema<IoK8sApiBatchV1JobStatusConditionsList>;
 
 /** failed holds UIDs of failed Pods. */
-export type IoK8sApiBatchV1UncountedTerminatedPodsFailedList = string[];
+export type IoK8sApiBatchV1UncountedTerminatedPodsFailedList =
+  ReadonlyArray<string>;
 export const IoK8sApiBatchV1UncountedTerminatedPodsFailedList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiBatchV1UncountedTerminatedPodsFailedList>;
 
 /** succeeded holds UIDs of succeeded Pods. */
-export type IoK8sApiBatchV1UncountedTerminatedPodsSucceededList = string[];
+export type IoK8sApiBatchV1UncountedTerminatedPodsSucceededList =
+  ReadonlyArray<string>;
 export const IoK8sApiBatchV1UncountedTerminatedPodsSucceededList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4282,7 +4304,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause =
 
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
-  IoK8sApimachineryPkgApisMetaV1StatusCause[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1StatusCause>;
 export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1StatusCause,
@@ -4611,7 +4633,7 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR =
 
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
@@ -4619,7 +4641,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsLis
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
-  IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
@@ -4668,21 +4690,24 @@ export const GetBatchV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBatchV1APIResourcesRequest>;
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4735,7 +4760,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource =
 
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
-  IoK8sApimachineryPkgApisMetaV1APIResource[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1APIResource>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1APIResource,
@@ -4813,7 +4838,8 @@ export const ListBatchV1CronJobForAllNamespacesRequest =
   }) as any as S.Schema<ListBatchV1CronJobForAllNamespacesRequest>;
 
 /** items is the list of CronJobs. */
-export type IoK8sApiBatchV1CronJobListItemsList = IoK8sApiBatchV1CronJob[];
+export type IoK8sApiBatchV1CronJobListItemsList =
+  ReadonlyArray<IoK8sApiBatchV1CronJob>;
 export const IoK8sApiBatchV1CronJobListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiBatchV1CronJob,
 ) as any as S.Schema<IoK8sApiBatchV1CronJobListItemsList>;
@@ -4887,7 +4913,7 @@ export const ListBatchV1JobForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListBatchV1JobForAllNamespacesRequest>;
 
 /** items is the list of Jobs. */
-export type IoK8sApiBatchV1JobListItemsList = IoK8sApiBatchV1Job[];
+export type IoK8sApiBatchV1JobListItemsList = ReadonlyArray<IoK8sApiBatchV1Job>;
 export const IoK8sApiBatchV1JobListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiBatchV1Job,
 ) as any as S.Schema<IoK8sApiBatchV1JobListItemsList>;

@@ -55,8 +55,7 @@ export class Web3HostnameNotFound extends T.applyErrorMatchers(
 export type HostnamesCreateRequestTarget =
   | "ethereum"
   | "ipfs"
-  | "ipfs_universal_path"
-  | (string & {});
+  | "ipfs_universal_path";
 export const HostnamesCreateRequestTarget = /*@__PURE__*/ S.String;
 
 export interface CreateHostnameRequest {
@@ -95,15 +94,13 @@ export type HostnamesCreateResponseStatus =
   | "active"
   | "pending"
   | "deleting"
-  | "error"
-  | (string & {});
+  | "error";
 export const HostnamesCreateResponseStatus = /*@__PURE__*/ S.String;
 
 export type HostnamesCreateResponseTarget =
   | "ethereum"
   | "ipfs"
-  | "ipfs_universal_path"
-  | (string & {});
+  | "ipfs_universal_path";
 export const HostnamesCreateResponseTarget = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -140,8 +137,7 @@ export const CreateHostnameResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType =
   | "cid"
-  | "content_path"
-  | (string & {});
+  | "content_path";
 export const HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType =
   /*@__PURE__*/ S.String;
 
@@ -180,8 +176,7 @@ export const CreateHostnameIpfsUniversalPathContentListEntryRequest =
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType =
   | "cid"
-  | "content_path"
-  | (string & {});
+  | "content_path";
 export const HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType =
   /*@__PURE__*/ S.String;
 
@@ -320,15 +315,13 @@ export type HostnamesGetResponseStatus =
   | "active"
   | "pending"
   | "deleting"
-  | "error"
-  | (string & {});
+  | "error";
 export const HostnamesGetResponseStatus = /*@__PURE__*/ S.String;
 
 export type HostnamesGetResponseTarget =
   | "ethereum"
   | "ipfs"
-  | "ipfs_universal_path"
-  | (string & {});
+  | "ipfs_universal_path";
 export const HostnamesGetResponseTarget = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -387,9 +380,7 @@ export const GetHostnameIpfsUniversalPathContentListRequest =
     identifier: "GetHostnameIpfsUniversalPathContentListRequest",
   }) as any as S.Schema<GetHostnameIpfsUniversalPathContentListRequest>;
 
-export type HostnamesIpfsUniversalPathsContentListsGetResponseAction =
-  | "block"
-  | (string & {});
+export type HostnamesIpfsUniversalPathsContentListsGetResponseAction = "block";
 export const HostnamesIpfsUniversalPathsContentListsGetResponseAction =
   /*@__PURE__*/ S.String;
 
@@ -440,8 +431,7 @@ export const GetHostnameIpfsUniversalPathContentListEntryRequest =
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType =
   | "cid"
-  | "content_path"
-  | (string & {});
+  | "content_path";
 export const HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType =
   /*@__PURE__*/ S.String;
 
@@ -499,7 +489,7 @@ export const ListHostnameIpfsUniversalPathContentListEntriesRequest =
   }) as any as S.Schema<ListHostnameIpfsUniversalPathContentListEntriesRequest>;
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItemType =
-  "cid" | "content_path" | (string & {});
+  "cid" | "content_path";
 export const HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItemType =
   /*@__PURE__*/ S.String;
 
@@ -533,7 +523,7 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesIt
   }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItem>;
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesList =
-  HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItem[];
+  ReadonlyArray<HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItem>;
 export const HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesList =
   /*@__PURE__*/ S.Array(
     HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItem,
@@ -579,15 +569,13 @@ export type HostnamesListResultItemStatus =
   | "active"
   | "pending"
   | "deleting"
-  | "error"
-  | (string & {});
+  | "error";
 export const HostnamesListResultItemStatus = /*@__PURE__*/ S.String;
 
 export type HostnamesListResultItemTarget =
   | "ethereum"
   | "ipfs"
-  | "ipfs_universal_path"
-  | (string & {});
+  | "ipfs_universal_path";
 export const HostnamesListResultItemTarget = /*@__PURE__*/ S.String;
 
 export interface HostnamesListResultItem {
@@ -621,7 +609,7 @@ export const HostnamesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HostnamesListResultItem",
 }) as any as S.Schema<HostnamesListResultItem>;
 
-export type HostnamesListResultList = HostnamesListResultItem[];
+export type HostnamesListResultList = ReadonlyArray<HostnamesListResultItem>;
 export const HostnamesListResultList = /*@__PURE__*/ S.Array(
   HostnamesListResultItem,
 ) as any as S.Schema<HostnamesListResultList>;
@@ -674,15 +662,13 @@ export type HostnamesEditResponseStatus =
   | "active"
   | "pending"
   | "deleting"
-  | "error"
-  | (string & {});
+  | "error";
 export const HostnamesEditResponseStatus = /*@__PURE__*/ S.String;
 
 export type HostnamesEditResponseTarget =
   | "ethereum"
   | "ipfs"
-  | "ipfs_universal_path"
-  | (string & {});
+  | "ipfs_universal_path";
 export const HostnamesEditResponseTarget = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -718,13 +704,12 @@ export const PatchHostnameResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchHostnameResponse>;
 
 export type HostnamesIpfsUniversalPathsContentListsUpdateRequestAction =
-  | "block"
-  | (string & {});
+  "block";
 export const HostnamesIpfsUniversalPathsContentListsUpdateRequestAction =
   /*@__PURE__*/ S.String;
 
 export type HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType =
-  "cid" | "content_path" | (string & {});
+  "cid" | "content_path";
 export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType =
   /*@__PURE__*/ S.String;
 
@@ -758,7 +743,7 @@ export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem =
   }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem>;
 
 export type HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList =
-  HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem[];
+  ReadonlyArray<HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem>;
 export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList =
   /*@__PURE__*/ S.Array(
     HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem,
@@ -795,8 +780,7 @@ export const PutHostnameIpfsUniversalPathContentListRequest =
   }) as any as S.Schema<PutHostnameIpfsUniversalPathContentListRequest>;
 
 export type HostnamesIpfsUniversalPathsContentListsUpdateResponseAction =
-  | "block"
-  | (string & {});
+  "block";
 export const HostnamesIpfsUniversalPathsContentListsUpdateResponseAction =
   /*@__PURE__*/ S.String;
 
@@ -818,8 +802,7 @@ export const PutHostnameIpfsUniversalPathContentListResponse =
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType =
   | "cid"
-  | "content_path"
-  | (string & {});
+  | "content_path";
 export const HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType =
   /*@__PURE__*/ S.String;
 
@@ -863,8 +846,7 @@ export const UpdateHostnameIpfsUniversalPathContentListEntryRequest =
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType =
   | "cid"
-  | "content_path"
-  | (string & {});
+  | "content_path";
 export const HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType =
   /*@__PURE__*/ S.String;
 

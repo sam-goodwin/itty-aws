@@ -23,6 +23,23 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.addressing#AddressMapsCreateRequestMembershipsItemKind": {
+      "type": "enum",
+      "members": {
+        "ZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zone"
+          }
+        },
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account"
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#AddressMapsCreateRequestMembershipsItem": {
       "type": "structure",
       "members": {
@@ -33,7 +50,7 @@
           }
         },
         "kind": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.addressing#AddressMapsCreateRequestMembershipsItemKind",
           "traits": {
             "smithy.api#documentation": "The type of the membership."
           }
@@ -97,6 +114,23 @@
         }
       }
     },
+    "com.cloudflare.addressing#AddressMapsCreateResponseMembershipsItemKind": {
+      "type": "enum",
+      "members": {
+        "ZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zone"
+          }
+        },
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account"
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#AddressMapsCreateResponseMembershipsItem": {
       "type": "structure",
       "members": {
@@ -116,7 +150,7 @@
           }
         },
         "kind": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.addressing#AddressMapsCreateResponseMembershipsItemKind",
           "traits": {
             "smithy.api#documentation": "The type of the membership."
           }
@@ -399,6 +433,23 @@
         }
       }
     },
+    "com.cloudflare.addressing#AddressMapsGetResponseMembershipsItemKind": {
+      "type": "enum",
+      "members": {
+        "ZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zone"
+          }
+        },
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account"
+          }
+        }
+      }
+    },
     "com.cloudflare.addressing#AddressMapsGetResponseMembershipsItem": {
       "type": "structure",
       "members": {
@@ -418,7 +469,7 @@
           }
         },
         "kind": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.addressing#AddressMapsGetResponseMembershipsItemKind",
           "traits": {
             "smithy.api#documentation": "The type of the membership."
           }
@@ -690,13 +741,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
-          }
         }
       },
       "traits": {
@@ -797,13 +841,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
-          }
         }
       },
       "traits": {
@@ -903,13 +940,6 @@
             "smithy.api#documentation": "Identifier of a zone.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
           }
         }
       },

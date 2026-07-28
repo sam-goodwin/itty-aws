@@ -42,8 +42,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -51,8 +50,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -82,7 +80,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Direction of communication. */
-export type CommunicationDirection = "inbound" | "outbound" | (string & {});
+export type CommunicationDirection = "inbound" | "outbound";
 export const CommunicationDirection = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a Message Details resource. */
@@ -111,7 +109,8 @@ export const MessageProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessageProperties>;
 
 /** List of chat transcript communication resources. */
-export type ChatTranscriptDetailsPropertiesMessagesList = MessageProperties[];
+export type ChatTranscriptDetailsPropertiesMessagesList =
+  ReadonlyArray<MessageProperties>;
 export const ChatTranscriptDetailsPropertiesMessagesList =
   /*@__PURE__*/ S.Array(
     MessageProperties,
@@ -205,7 +204,8 @@ export const ChatTranscriptDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChatTranscriptDetails>;
 
 /** [Placeholder] Description for value property */
-export type ChatTranscriptsListResultValueList = ChatTranscriptDetails[];
+export type ChatTranscriptsListResultValueList =
+  ReadonlyArray<ChatTranscriptDetails>;
 export const ChatTranscriptsListResultValueList = /*@__PURE__*/ S.Array(
   ChatTranscriptDetails,
 ) as any as S.Schema<ChatTranscriptsListResultValueList>;
@@ -294,19 +294,29 @@ export const ChatTranscriptsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
   identifier: "ChatTranscriptsNoSubscriptionListRequest",
 }) as any as S.Schema<ChatTranscriptsNoSubscriptionListRequest>;
 
+/** The type of resource. */
+export type Type =
+  | "Microsoft.Support/supportTickets"
+  | "Microsoft.Support/communications";
+export const Type = /*@__PURE__*/ S.String;
+
 export interface CommunicationsCheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
-  body: unknown;
+  /** The resource name to validate. */
+  name: string;
+  /** The type of resource. */
+  type: Type;
 }
 export const CommunicationsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       supportTicketName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: Type,
     }).pipe(
       T.Http({
         method: "POST",
@@ -338,6 +348,25 @@ export const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckNameAvailabilityOutput",
 }) as any as S.Schema<CheckNameAvailabilityOutput>;
 
+/** Describes the properties of a communication resource. */
+export interface CommunicationDetailsPropertiesInput {
+  /** Email address of the sender. This property is required if called by a service principal. */
+  sender?: string;
+  /** Subject of the communication. */
+  subject: string;
+  /** Body of the communication. */
+  body: string;
+}
+export const CommunicationDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sender: S.optional(S.String),
+    subject: S.String,
+    body: S.String,
+  }),
+).annotate({
+  identifier: "CommunicationDetailsPropertiesInput",
+}) as any as S.Schema<CommunicationDetailsPropertiesInput>;
+
 export interface CommunicationsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -345,14 +374,15 @@ export interface CommunicationsCreateRequest {
   supportTicketName: string;
   /** The name of the CommunicationDetails */
   communicationName: string;
-  body: unknown;
+  /** Properties of the resource. */
+  properties: CommunicationDetailsPropertiesInput;
 }
 export const CommunicationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
     communicationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: CommunicationDetailsPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -366,7 +396,7 @@ export const CommunicationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunicationsCreateRequest>;
 
 /** Communication type. */
-export type CommunicationType = "web" | "phone" | (string & {});
+export type CommunicationType = "web" | "phone";
 export const CommunicationType = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a communication resource. */
@@ -524,7 +554,8 @@ export const CommunicationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CommunicationDetails>;
 
 /** [Placeholder] Description for value property */
-export type CommunicationsListResultValueList = CommunicationDetails[];
+export type CommunicationsListResultValueList =
+  ReadonlyArray<CommunicationDetails>;
 export const CommunicationsListResultValueList = /*@__PURE__*/ S.Array(
   CommunicationDetails,
 ) as any as S.Schema<CommunicationsListResultValueList>;
@@ -548,13 +579,17 @@ export const CommunicationsListResult = /*@__PURE__*/ S.suspend(() =>
 export interface CommunicationsNoSubscriptionCheckNameAvailabilityRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
-  body: unknown;
+  /** The resource name to validate. */
+  name: string;
+  /** The type of resource. */
+  type: Type;
 }
 export const CommunicationsNoSubscriptionCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       supportTicketName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: Type,
     }).pipe(
       T.Http({
         method: "POST",
@@ -572,14 +607,15 @@ export interface CommunicationsNoSubscriptionCreateRequest {
   supportTicketName: string;
   /** The name of the CommunicationDetails */
   communicationName: string;
-  body: unknown;
+  /** Properties of the resource. */
+  properties: CommunicationDetailsPropertiesInput;
 }
 export const CommunicationsNoSubscriptionCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       supportTicketName: S.String.pipe(T.Label()),
       communicationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: CommunicationDetailsPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -691,6 +727,25 @@ export const CommunicationsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
   identifier: "CommunicationsNoSubscriptionListRequest",
 }) as any as S.Schema<CommunicationsNoSubscriptionListRequest>;
 
+/** Describes the properties of a file. */
+export interface FileDetailsPropertiesInput {
+  /** Size of each chunk. The size of each chunk should be provided in bytes and must not exceed 2.5 megabytes (MB). */
+  chunkSize?: number;
+  /** Size of the file to be uploaded. The file size must not exceed 5 MB and should be provided in bytes. */
+  fileSize?: number;
+  /** Number of chunks to be uploaded. The maximum number of allowed chunks is 2. */
+  numberOfChunks?: number;
+}
+export const FileDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    chunkSize: S.optional(S.Number),
+    fileSize: S.optional(S.Number),
+    numberOfChunks: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "FileDetailsPropertiesInput",
+}) as any as S.Schema<FileDetailsPropertiesInput>;
+
 export interface FilesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -698,14 +753,15 @@ export interface FilesCreateRequest {
   fileWorkspaceName: string;
   /** The name of the FileDetails */
   fileName: string;
-  body: unknown;
+  /** Properties of the resource */
+  properties?: FileDetailsPropertiesInput;
 }
 export const FilesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     fileWorkspaceName: S.String.pipe(T.Label()),
     fileName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(FileDetailsPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -859,7 +915,7 @@ export const FileDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileDetails" }) as any as S.Schema<FileDetails>;
 
 /** [Placeholder] Description for value property */
-export type FilesListResultValueList = FileDetails[];
+export type FilesListResultValueList = ReadonlyArray<FileDetails>;
 export const FilesListResultValueList = /*@__PURE__*/ S.Array(
   FileDetails,
 ) as any as S.Schema<FilesListResultValueList>;
@@ -885,13 +941,14 @@ export interface FilesNoSubscriptionCreateRequest {
   fileWorkspaceName: string;
   /** The name of the FileDetails */
   fileName: string;
-  body: unknown;
+  /** Properties of the resource */
+  properties?: FileDetailsPropertiesInput;
 }
 export const FilesNoSubscriptionCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileWorkspaceName: S.String.pipe(T.Label()),
     fileName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(FileDetailsPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -998,13 +1055,17 @@ export interface FilesNoSubscriptionUploadRequest {
   fileWorkspaceName: string;
   /** The name of the FileDetails */
   fileName: string;
-  body: unknown;
+  /** File Content in base64 encoded format */
+  content?: string;
+  /** Index of the uploaded chunk (Index starts at 0) */
+  chunkIndex?: number;
 }
 export const FilesNoSubscriptionUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileWorkspaceName: S.String.pipe(T.Label()),
     fileName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    content: S.optional(S.String),
+    chunkIndex: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1031,14 +1092,18 @@ export interface FilesUploadRequest {
   fileWorkspaceName: string;
   /** The name of the FileDetails */
   fileName: string;
-  body: unknown;
+  /** File Content in base64 encoded format */
+  content?: string;
+  /** Index of the uploaded chunk (Index starts at 0) */
+  chunkIndex?: number;
 }
 export const FilesUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     fileWorkspaceName: S.String.pipe(T.Label()),
     fileName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    content: S.optional(S.String),
+    chunkIndex: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1256,12 +1321,21 @@ export const FileWorkspacesNoSubscriptionGetResponse = /*@__PURE__*/ S.suspend(
   identifier: "FileWorkspacesNoSubscriptionGetResponse",
 }) as any as S.Schema<FileWorkspacesNoSubscriptionGetResponse>;
 
+/** The type of resource. */
+export type LookUpResourceIdPostRequestType =
+  "Microsoft.Support/supportTickets";
+export const LookUpResourceIdPostRequestType = /*@__PURE__*/ S.String;
+
 export interface LookUpResourceIdPostRequest {
-  body: unknown;
+  /** The System generated Id that is unique. Use supportTicketId property for Microsoft.Support/supportTickets resource type. */
+  identifier?: string;
+  /** The type of resource. */
+  type?: LookUpResourceIdPostRequestType;
 }
 export const LookUpResourceIdPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    identifier: S.optional(S.String),
+    type: S.optional(LookUpResourceIdPostRequestType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1324,11 +1398,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1355,7 +1429,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1380,14 +1454,18 @@ export interface ProblemClassificationsClassifyProblemsRequest {
   subscriptionId: string;
   /** Name of the Azure service for which the problem classifications need to be retrieved. */
   problemServiceName: string;
-  body: unknown;
+  /** Natural language description of the customer’s issue. */
+  issueSummary: string;
+  /** ARM resource Id of the resource that is having the issue. */
+  resourceId?: string;
 }
 export const ProblemClassificationsClassifyProblemsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       problemServiceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      issueSummary: S.String,
+      resourceId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1401,7 +1479,7 @@ export const ProblemClassificationsClassifyProblemsRequest =
   }) as any as S.Schema<ProblemClassificationsClassifyProblemsRequest>;
 
 /** List of applicable ARM resource types for this service. */
-export type ClassificationServiceResourceTypesList = string[];
+export type ClassificationServiceResourceTypesList = ReadonlyArray<string>;
 export const ClassificationServiceResourceTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClassificationServiceResourceTypesList>;
@@ -1459,7 +1537,7 @@ export const ProblemClassificationsClassificationResult =
 
 /** Set of problem classification objects classified. */
 export type ProblemClassificationsClassificationOutputProblemClassificationResultsList =
-  ProblemClassificationsClassificationResult[];
+  ReadonlyArray<ProblemClassificationsClassificationResult>;
 export const ProblemClassificationsClassificationOutputProblemClassificationResultsList =
   /*@__PURE__*/ S.Array(
     ProblemClassificationsClassificationResult,
@@ -1521,7 +1599,7 @@ export const SecondaryConsentEnabled = /*@__PURE__*/ S.suspend(() =>
 
 /** This property indicates whether secondary consent is present for problem classification */
 export type ProblemClassificationPropertiesSecondaryConsentEnabledList =
-  SecondaryConsentEnabled[];
+  ReadonlyArray<SecondaryConsentEnabled>;
 export const ProblemClassificationPropertiesSecondaryConsentEnabledList =
   /*@__PURE__*/ S.Array(
     SecondaryConsentEnabled,
@@ -1614,7 +1692,8 @@ export const ProblemClassification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProblemClassification>;
 
 /** List of ProblemClassification resources. */
-export type ProblemClassificationsListResultValueList = ProblemClassification[];
+export type ProblemClassificationsListResultValueList =
+  ReadonlyArray<ProblemClassification>;
 export const ProblemClassificationsListResultValueList = /*@__PURE__*/ S.Array(
   ProblemClassification,
 ) as any as S.Schema<ProblemClassificationsListResultValueList>;
@@ -1638,13 +1717,17 @@ export const ProblemClassificationsListResult = /*@__PURE__*/ S.suspend(() =>
 export interface ProblemClassificationsNoSubscriptionClassifyProblemsRequest {
   /** Name of the Azure service for which the problem classifications need to be retrieved. */
   problemServiceName: string;
-  body: unknown;
+  /** Natural language description of the customer’s issue. */
+  issueSummary: string;
+  /** ARM resource Id of the resource that is having the issue. */
+  resourceId?: string;
 }
 export const ProblemClassificationsNoSubscriptionClassifyProblemsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       problemServiceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      issueSummary: S.String,
+      resourceId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1660,13 +1743,20 @@ export const ProblemClassificationsNoSubscriptionClassifyProblemsRequest =
 export interface ServiceClassificationsClassifyServicesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** Natural language description of the customer’s issue. */
+  issueSummary?: string;
+  /** ARM resource Id of the resource that is having the issue. */
+  resourceId?: string;
+  /** Additional information in the form of a string. */
+  additionalContext?: string;
 }
 export const ServiceClassificationsClassifyServicesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      issueSummary: S.optional(S.String),
+      resourceId: S.optional(S.String),
+      additionalContext: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1680,7 +1770,8 @@ export const ServiceClassificationsClassifyServicesRequest =
   }) as any as S.Schema<ServiceClassificationsClassifyServicesRequest>;
 
 /** List of applicable ARM resource types for this service. */
-export type ServiceClassificationAnswerResourceTypesList = string[];
+export type ServiceClassificationAnswerResourceTypesList =
+  ReadonlyArray<string>;
 export const ServiceClassificationAnswerResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1710,7 +1801,7 @@ export const ServiceClassificationAnswer = /*@__PURE__*/ S.suspend(() =>
 
 /** Set of problem classification objects classified. */
 export type ServiceClassificationOutputServiceClassificationResultsList =
-  ServiceClassificationAnswer[];
+  ReadonlyArray<ServiceClassificationAnswer>;
 export const ServiceClassificationOutputServiceClassificationResultsList =
   /*@__PURE__*/ S.Array(
     ServiceClassificationAnswer,
@@ -1732,12 +1823,19 @@ export const ServiceClassificationOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceClassificationOutput>;
 
 export interface ServiceClassificationsNoSubscriptionClassifyServicesRequest {
-  body: unknown;
+  /** Natural language description of the customer’s issue. */
+  issueSummary?: string;
+  /** ARM resource Id of the resource that is having the issue. */
+  resourceId?: string;
+  /** Additional information in the form of a string. */
+  additionalContext?: string;
 }
 export const ServiceClassificationsNoSubscriptionClassifyServicesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      issueSummary: S.optional(S.String),
+      resourceId: S.optional(S.String),
+      additionalContext: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1770,7 +1868,7 @@ export const ServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesGetRequest>;
 
 /** ARM Resource types. */
-export type ServicePropertiesResourceTypesList = string[];
+export type ServicePropertiesResourceTypesList = ReadonlyArray<string>;
 export const ServicePropertiesResourceTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServicePropertiesResourceTypesList>;
@@ -1853,7 +1951,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 /** List of Service resources. */
-export type ServicesListResultValueList = Service[];
+export type ServicesListResultValueList = ReadonlyArray<Service>;
 export const ServicesListResultValueList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServicesListResultValueList>;
@@ -1877,13 +1975,17 @@ export const ServicesListResult = /*@__PURE__*/ S.suspend(() =>
 export interface SupportTicketsCheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** The resource name to validate. */
+  name: string;
+  /** The type of resource. */
+  type: Type;
 }
 export const SupportTicketsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: Type,
     }).pipe(
       T.Http({
         method: "POST",
@@ -1896,49 +1998,24 @@ export const SupportTicketsCheckNameAvailabilityRequest =
     identifier: "SupportTicketsCheckNameAvailabilityRequest",
   }) as any as S.Schema<SupportTicketsCheckNameAvailabilityRequest>;
 
-export interface SupportTicketsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-  body: unknown;
-}
-export const SupportTicketsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    supportTicketName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SupportTicketsCreateRequest",
-}) as any as S.Schema<SupportTicketsCreateRequest>;
-
 /** A value that indicates the urgency of the case, which in turn determines the response time according to the service level agreement of the technical support plan you have with Azure. Note: 'Highest critical impact', also known as the 'Emergency - Severe impact' level in the Azure portal is reserved only for our Premium customers. */
 export type SeverityLevel =
   | "minimal"
   | "moderate"
   | "critical"
-  | "highestcriticalimpact"
-  | (string & {});
+  | "highestcriticalimpact";
 export const SeverityLevel = /*@__PURE__*/ S.String;
 
 /** Advanced diagnostic consent to be updated on the support ticket. */
-export type Consent = "Yes" | "No" | (string & {});
+export type Consent = "Yes" | "No";
 export const Consent = /*@__PURE__*/ S.String;
 
 /** Preferred contact method. */
-export type PreferredContactMethod = "email" | "phone" | (string & {});
+export type PreferredContactMethod = "email" | "phone";
 export const PreferredContactMethod = /*@__PURE__*/ S.String;
 
 /** Additional email addresses listed will be copied on any correspondence about the support ticket. */
-export type ContactProfileAdditionalEmailAddressesList = string[];
+export type ContactProfileAdditionalEmailAddressesList = ReadonlyArray<string>;
 export const ContactProfileAdditionalEmailAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContactProfileAdditionalEmailAddressesList>;
@@ -1981,6 +2058,241 @@ export const ContactProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContactProfile" }) as any as S.Schema<ContactProfile>;
 
 /** Service Level Agreement details for a support ticket. */
+export interface ServiceLevelAgreementInput {}
+export const ServiceLevelAgreementInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ServiceLevelAgreementInput",
+}) as any as S.Schema<ServiceLevelAgreementInput>;
+
+/** Support engineer information. */
+export interface SupportEngineerInput {}
+export const SupportEngineerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SupportEngineerInput",
+}) as any as S.Schema<SupportEngineerInput>;
+
+/** Additional information for technical support ticket. */
+export interface TechnicalTicketDetails {
+  /** This is the resource Id of the Azure service resource (For example: A virtual machine resource or an HDInsight resource) for which the support ticket is created. */
+  resourceId?: string;
+}
+export const TechnicalTicketDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TechnicalTicketDetails",
+}) as any as S.Schema<TechnicalTicketDetails>;
+
+/** This property is required for providing the region and new quota limits. */
+export interface QuotaChangeRequest {
+  /** Region for which the quota increase request is being made. */
+  region?: string;
+  /** Payload of the quota increase request. */
+  payload?: string;
+}
+export const QuotaChangeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(S.String),
+    payload: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QuotaChangeRequest",
+}) as any as S.Schema<QuotaChangeRequest>;
+
+/** This property is required for providing the region and new quota limits. */
+export type QuotaTicketDetailsQuotaChangeRequestsList =
+  ReadonlyArray<QuotaChangeRequest>;
+export const QuotaTicketDetailsQuotaChangeRequestsList = /*@__PURE__*/ S.Array(
+  QuotaChangeRequest,
+) as any as S.Schema<QuotaTicketDetailsQuotaChangeRequestsList>;
+
+/** Additional set of information required for quota increase support ticket for certain quota types, e.g.: Virtual machine cores. Get complete details about Quota payload support request along with examples at [Support quota request](https://aka.ms/supportrpquotarequestpayload). */
+export interface QuotaTicketDetails {
+  /** Required for certain quota types when there is a sub type, such as Batch, for which you are requesting a quota increase. */
+  quotaChangeRequestSubType?: string;
+  /** Quota change request version. */
+  quotaChangeRequestVersion?: string;
+  /** This property is required for providing the region and new quota limits. */
+  quotaChangeRequests?: QuotaTicketDetailsQuotaChangeRequestsList;
+}
+export const QuotaTicketDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    quotaChangeRequestSubType: S.optional(S.String),
+    quotaChangeRequestVersion: S.optional(S.String),
+    quotaChangeRequests: S.optional(QuotaTicketDetailsQuotaChangeRequestsList),
+  }),
+).annotate({
+  identifier: "QuotaTicketDetails",
+}) as any as S.Schema<QuotaTicketDetails>;
+
+/** User consent value provided */
+export type UserConsent = "Yes" | "No";
+export const UserConsent = /*@__PURE__*/ S.String;
+
+/** This property indicates secondary consent for the support ticket. */
+export interface SecondaryConsent {
+  /** User consent value provided */
+  userConsent?: UserConsent;
+  /** The service name for which the secondary consent is being provided. The value needs to be retrieved from the Problem Classification API response. */
+  type?: string;
+}
+export const SecondaryConsent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userConsent: S.optional(UserConsent),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SecondaryConsent",
+}) as any as S.Schema<SecondaryConsent>;
+
+/** This property indicates secondary consents for the support ticket */
+export type SupportTicketDetailsPropertiesInputSecondaryConsentList =
+  ReadonlyArray<SecondaryConsent>;
+export const SupportTicketDetailsPropertiesInputSecondaryConsentList =
+  /*@__PURE__*/ S.Array(
+    SecondaryConsent,
+  ) as any as S.Schema<SupportTicketDetailsPropertiesInputSecondaryConsentList>;
+
+/** Status of Direct Connect Escalation. */
+export type EscalationStatus =
+  | "EscalationAvailable"
+  | "EscalationInitiated"
+  | "EscalationProcessed"
+  | "EscalationUnsupported"
+  | "EscalationUnavailable";
+export const EscalationStatus = /*@__PURE__*/ S.String;
+
+/** An array containing the allowed severities for direct connect escalation. */
+export type DirectConnectEscalationAllowedSeveritiesList =
+  ReadonlyArray<SeverityLevel>;
+export const DirectConnectEscalationAllowedSeveritiesList =
+  /*@__PURE__*/ S.Array(
+    SeverityLevel,
+  ) as any as S.Schema<DirectConnectEscalationAllowedSeveritiesList>;
+
+/** Direct Connect Escalation details for a support ticket. */
+export interface DirectConnectEscalation {
+  /** Status of Direct Connect Escalation. */
+  azureEEStatus?: EscalationStatus;
+  /** An array containing the allowed severities for direct connect escalation. */
+  allowedSeverities?: DirectConnectEscalationAllowedSeveritiesList;
+  /** Reason for escalation / business impact. */
+  reasonForEscalation?: string;
+}
+export const DirectConnectEscalation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    azureEEStatus: S.optional(EscalationStatus),
+    allowedSeverities: S.optional(DirectConnectEscalationAllowedSeveritiesList),
+    reasonForEscalation: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DirectConnectEscalation",
+}) as any as S.Schema<DirectConnectEscalation>;
+
+/** Describes the properties of a support ticket. */
+export interface SupportTicketDetailsPropertiesInput {
+  /** System generated support ticket Id that is unique. */
+  supportTicketId?: string;
+  /** Detailed description of the question or issue. */
+  description: string;
+  /** Each Azure service has its own set of issue categories, also known as problem classification. This parameter is the unique Id for the type of problem you are experiencing. */
+  problemClassificationId: string;
+  /** A value that indicates the urgency of the case, which in turn determines the response time according to the service level agreement of the technical support plan you have with Azure. Note: 'Highest critical impact', also known as the 'Emergency - Severe impact' level in the Azure portal is reserved only for our Premium customers. */
+  severity: SeverityLevel;
+  /** Enrollment Id associated with the support ticket. */
+  enrollmentId?: string;
+  /** Indicates if this requires a 24x7 response from Azure. */
+  require24X7Response?: boolean;
+  /** Advanced diagnostic consent to be updated on the support ticket. */
+  advancedDiagnosticConsent: Consent;
+  /** Problem scoping questions associated with the support ticket. */
+  problemScopingQuestions?: string;
+  /** Support plan id associated with the support ticket. */
+  supportPlanId?: string;
+  /** Contact information of the user requesting to create a support ticket. */
+  contactDetails: ContactProfile;
+  /** Service Level Agreement information for this support ticket. */
+  serviceLevelAgreement?: ServiceLevelAgreementInput;
+  /** Information about the support engineer working on this support ticket. */
+  supportEngineer?: SupportEngineerInput;
+  /** Title of the support ticket. */
+  title: string;
+  /** Time in UTC (ISO 8601 format) when the problem started. */
+  problemStartTime?: string;
+  /** This is the resource Id of the Azure service resource associated with the support ticket. */
+  serviceId: string;
+  /** File workspace name. */
+  fileWorkspaceName?: string;
+  /** Additional ticket details associated with a technical support ticket request. */
+  technicalTicketDetails?: TechnicalTicketDetails;
+  /** Additional ticket details associated with a quota support ticket request. */
+  quotaTicketDetails?: QuotaTicketDetails;
+  /** This property indicates secondary consents for the support ticket */
+  secondaryConsent?: SupportTicketDetailsPropertiesInputSecondaryConsentList;
+  /** Direct Connect Escalation details for a support ticket. */
+  directConnectEscalation?: DirectConnectEscalation;
+  /** Contains a link to the post on the community forum. */
+  communityForumPost?: string;
+}
+export const SupportTicketDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    supportTicketId: S.optional(S.String),
+    description: S.String,
+    problemClassificationId: S.String,
+    severity: SeverityLevel,
+    enrollmentId: S.optional(S.String),
+    require24X7Response: S.optional(S.Boolean),
+    advancedDiagnosticConsent: Consent,
+    problemScopingQuestions: S.optional(S.String),
+    supportPlanId: S.optional(S.String),
+    contactDetails: ContactProfile,
+    serviceLevelAgreement: S.optional(ServiceLevelAgreementInput),
+    supportEngineer: S.optional(SupportEngineerInput),
+    title: S.String,
+    problemStartTime: S.optional(S.String),
+    serviceId: S.String,
+    fileWorkspaceName: S.optional(S.String),
+    technicalTicketDetails: S.optional(TechnicalTicketDetails),
+    quotaTicketDetails: S.optional(QuotaTicketDetails),
+    secondaryConsent: S.optional(
+      SupportTicketDetailsPropertiesInputSecondaryConsentList,
+    ),
+    directConnectEscalation: S.optional(DirectConnectEscalation),
+    communityForumPost: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SupportTicketDetailsPropertiesInput",
+}) as any as S.Schema<SupportTicketDetailsPropertiesInput>;
+
+export interface SupportTicketsCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+  /** Properties of the resource. */
+  properties: SupportTicketDetailsPropertiesInput;
+}
+export const SupportTicketsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    supportTicketName: S.String.pipe(T.Label()),
+    properties: SupportTicketDetailsPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "SupportTicketsCreateRequest",
+}) as any as S.Schema<SupportTicketsCreateRequest>;
+
+/** Service Level Agreement details for a support ticket. */
 export interface ServiceLevelAgreement {
   /** Time in UTC (ISO 8601 format) when the service level agreement starts. */
   startTime?: string;
@@ -2013,133 +2325,23 @@ export const SupportEngineer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportEngineer>;
 
 /** This property indicates if support ticket is a temporary ticket. */
-export type IsTemporaryTicket = "Yes" | "No" | (string & {});
+export type IsTemporaryTicket = "Yes" | "No";
 export const IsTemporaryTicket = /*@__PURE__*/ S.String;
-
-/** Additional information for technical support ticket. */
-export interface TechnicalTicketDetails {
-  /** This is the resource Id of the Azure service resource (For example: A virtual machine resource or an HDInsight resource) for which the support ticket is created. */
-  resourceId?: string;
-}
-export const TechnicalTicketDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TechnicalTicketDetails",
-}) as any as S.Schema<TechnicalTicketDetails>;
-
-/** This property is required for providing the region and new quota limits. */
-export interface QuotaChangeRequest {
-  /** Region for which the quota increase request is being made. */
-  region?: string;
-  /** Payload of the quota increase request. */
-  payload?: string;
-}
-export const QuotaChangeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.optional(S.String),
-    payload: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "QuotaChangeRequest",
-}) as any as S.Schema<QuotaChangeRequest>;
-
-/** This property is required for providing the region and new quota limits. */
-export type QuotaTicketDetailsQuotaChangeRequestsList = QuotaChangeRequest[];
-export const QuotaTicketDetailsQuotaChangeRequestsList = /*@__PURE__*/ S.Array(
-  QuotaChangeRequest,
-) as any as S.Schema<QuotaTicketDetailsQuotaChangeRequestsList>;
-
-/** Additional set of information required for quota increase support ticket for certain quota types, e.g.: Virtual machine cores. Get complete details about Quota payload support request along with examples at [Support quota request](https://aka.ms/supportrpquotarequestpayload). */
-export interface QuotaTicketDetails {
-  /** Required for certain quota types when there is a sub type, such as Batch, for which you are requesting a quota increase. */
-  quotaChangeRequestSubType?: string;
-  /** Quota change request version. */
-  quotaChangeRequestVersion?: string;
-  /** This property is required for providing the region and new quota limits. */
-  quotaChangeRequests?: QuotaTicketDetailsQuotaChangeRequestsList;
-}
-export const QuotaTicketDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    quotaChangeRequestSubType: S.optional(S.String),
-    quotaChangeRequestVersion: S.optional(S.String),
-    quotaChangeRequests: S.optional(QuotaTicketDetailsQuotaChangeRequestsList),
-  }),
-).annotate({
-  identifier: "QuotaTicketDetails",
-}) as any as S.Schema<QuotaTicketDetails>;
-
-/** User consent value provided */
-export type UserConsent = "Yes" | "No" | (string & {});
-export const UserConsent = /*@__PURE__*/ S.String;
-
-/** This property indicates secondary consent for the support ticket. */
-export interface SecondaryConsent {
-  /** User consent value provided */
-  userConsent?: UserConsent;
-  /** The service name for which the secondary consent is being provided. The value needs to be retrieved from the Problem Classification API response. */
-  type?: string;
-}
-export const SecondaryConsent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userConsent: S.optional(UserConsent),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecondaryConsent",
-}) as any as S.Schema<SecondaryConsent>;
 
 /** This property indicates secondary consents for the support ticket */
 export type SupportTicketDetailsPropertiesSecondaryConsentList =
-  SecondaryConsent[];
+  ReadonlyArray<SecondaryConsent>;
 export const SupportTicketDetailsPropertiesSecondaryConsentList =
   /*@__PURE__*/ S.Array(
     SecondaryConsent,
   ) as any as S.Schema<SupportTicketDetailsPropertiesSecondaryConsentList>;
 
-/** Status of Direct Connect Escalation. */
-export type EscalationStatus =
-  | "EscalationAvailable"
-  | "EscalationInitiated"
-  | "EscalationProcessed"
-  | "EscalationUnsupported"
-  | "EscalationUnavailable"
-  | (string & {});
-export const EscalationStatus = /*@__PURE__*/ S.String;
-
-/** An array containing the allowed severities for direct connect escalation. */
-export type DirectConnectEscalationAllowedSeveritiesList = SeverityLevel[];
-export const DirectConnectEscalationAllowedSeveritiesList =
-  /*@__PURE__*/ S.Array(
-    SeverityLevel,
-  ) as any as S.Schema<DirectConnectEscalationAllowedSeveritiesList>;
-
-/** Direct Connect Escalation details for a support ticket. */
-export interface DirectConnectEscalation {
-  /** Status of Direct Connect Escalation. */
-  azureEEStatus?: EscalationStatus;
-  /** An array containing the allowed severities for direct connect escalation. */
-  allowedSeverities?: DirectConnectEscalationAllowedSeveritiesList;
-  /** Reason for escalation / business impact. */
-  reasonForEscalation?: string;
-}
-export const DirectConnectEscalation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    azureEEStatus: S.optional(EscalationStatus),
-    allowedSeverities: S.optional(DirectConnectEscalationAllowedSeveritiesList),
-    reasonForEscalation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DirectConnectEscalation",
-}) as any as S.Schema<DirectConnectEscalation>;
-
 /** Support channel type for the support ticket. */
-export type SupportChannel = "Chat" | "Web" | (string & {});
+export type SupportChannel = "Chat" | "Web";
 export const SupportChannel = /*@__PURE__*/ S.String;
 
 /** Status of the chat conversation associated with the support ticket. */
-export type ChatConversationStatus = "Active" | "Closed" | (string & {});
+export type ChatConversationStatus = "Active" | "Closed";
 export const ChatConversationStatus = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a support ticket. */
@@ -2368,7 +2570,8 @@ export const SupportTicketDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportTicketDetails>;
 
 /** [Placeholder] Description for value property */
-export type SupportTicketsListResultValueList = SupportTicketDetails[];
+export type SupportTicketsListResultValueList =
+  ReadonlyArray<SupportTicketDetails>;
 export const SupportTicketsListResultValueList = /*@__PURE__*/ S.Array(
   SupportTicketDetails,
 ) as any as S.Schema<SupportTicketsListResultValueList>;
@@ -2390,12 +2593,16 @@ export const SupportTicketsListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportTicketsListResult>;
 
 export interface SupportTicketsNoSubscriptionCheckNameAvailabilityRequest {
-  body: unknown;
+  /** The resource name to validate. */
+  name: string;
+  /** The type of resource. */
+  type: Type;
 }
 export const SupportTicketsNoSubscriptionCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: Type,
     }).pipe(
       T.Http({
         method: "POST",
@@ -2411,13 +2618,14 @@ export const SupportTicketsNoSubscriptionCheckNameAvailabilityRequest =
 export interface SupportTicketsNoSubscriptionCreateRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
-  body: unknown;
+  /** Properties of the resource. */
+  properties: SupportTicketDetailsPropertiesInput;
 }
 export const SupportTicketsNoSubscriptionCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       supportTicketName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: SupportTicketDetailsPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2523,16 +2731,93 @@ export const SupportTicketsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
   identifier: "SupportTicketsNoSubscriptionListRequest",
 }) as any as S.Schema<SupportTicketsNoSubscriptionListRequest>;
 
+/** Status to be updated on the ticket. */
+export type Status = "open" | "closed";
+export const Status = /*@__PURE__*/ S.String;
+
+/** Email addresses listed will be copied on any correspondence about the support ticket. */
+export type UpdateContactProfileAdditionalEmailAddressesList =
+  ReadonlyArray<string>;
+export const UpdateContactProfileAdditionalEmailAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateContactProfileAdditionalEmailAddressesList>;
+
+/** Contact information associated with the support ticket. */
+export interface UpdateContactProfile {
+  /** First name. */
+  firstName?: string;
+  /** Last name. */
+  lastName?: string;
+  /** Preferred contact method. */
+  preferredContactMethod?: PreferredContactMethod;
+  /** Primary email address. */
+  primaryEmailAddress?: string;
+  /** Email addresses listed will be copied on any correspondence about the support ticket. */
+  additionalEmailAddresses?: UpdateContactProfileAdditionalEmailAddressesList;
+  /** Phone number. This is required if preferred contact method is phone. It is also required when submitting 'critical' or 'highestcriticalimpact' severity cases. */
+  phoneNumber?: string;
+  /** Time zone of the user. This is the name of the time zone from [Microsoft Time Zone Index Values](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). */
+  preferredTimeZone?: string;
+  /** Country of the user. This is the ISO 3166-1 alpha-3 code. */
+  country?: string;
+  /** Preferred language of support from Azure. Support languages vary based on the severity you choose for your support ticket. Learn more at [Azure Severity and responsiveness](https://azure.microsoft.com/support/plans/response/). Use the standard language-country code. Valid values are 'en-us' for English, 'zh-hans' for Chinese, 'es-es' for Spanish, 'fr-fr' for French, 'ja-jp' for Japanese, 'ko-kr' for Korean, 'ru-ru' for Russian, 'pt-br' for Portuguese, 'it-it' for Italian, 'zh-tw' for Chinese and 'de-de' for German. */
+  preferredSupportLanguage?: string;
+}
+export const UpdateContactProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    firstName: S.optional(S.String),
+    lastName: S.optional(S.String),
+    preferredContactMethod: S.optional(PreferredContactMethod),
+    primaryEmailAddress: S.optional(S.String),
+    additionalEmailAddresses: S.optional(
+      UpdateContactProfileAdditionalEmailAddressesList,
+    ),
+    phoneNumber: S.optional(S.String),
+    preferredTimeZone: S.optional(S.String),
+    country: S.optional(S.String),
+    preferredSupportLanguage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateContactProfile",
+}) as any as S.Schema<UpdateContactProfile>;
+
+/** This property indicates secondary consents for the support ticket */
+export type SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList =
+  ReadonlyArray<SecondaryConsent>;
+export const SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList =
+  /*@__PURE__*/ S.Array(
+    SecondaryConsent,
+  ) as any as S.Schema<SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList>;
+
 export interface SupportTicketsNoSubscriptionUpdateRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
-  body: unknown;
+  /** Severity level. */
+  severity?: SeverityLevel;
+  /** Status to be updated on the ticket. */
+  status?: Status;
+  /** Contact details to be updated on the support ticket. */
+  contactDetails?: UpdateContactProfile;
+  /** Advanced diagnostic consent to be updated on the support ticket. */
+  advancedDiagnosticConsent?: Consent;
+  /** This property indicates secondary consents for the support ticket */
+  secondaryConsent?: SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList;
+  /** Direct Connect Escalation details for a support ticket. */
+  directConnectEscalation?: DirectConnectEscalation;
 }
 export const SupportTicketsNoSubscriptionUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       supportTicketName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      severity: S.optional(SeverityLevel),
+      status: S.optional(Status),
+      contactDetails: S.optional(UpdateContactProfile),
+      advancedDiagnosticConsent: S.optional(Consent),
+      secondaryConsent: S.optional(
+        SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList,
+      ),
+      directConnectEscalation: S.optional(DirectConnectEscalation),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -2570,18 +2855,44 @@ export const SupportTicketsNoSubscriptionUpdateResponse =
     identifier: "SupportTicketsNoSubscriptionUpdateResponse",
   }) as any as S.Schema<SupportTicketsNoSubscriptionUpdateResponse>;
 
+/** This property indicates secondary consents for the support ticket */
+export type SupportTicketsUpdateRequestSecondaryConsentList =
+  ReadonlyArray<SecondaryConsent>;
+export const SupportTicketsUpdateRequestSecondaryConsentList =
+  /*@__PURE__*/ S.Array(
+    SecondaryConsent,
+  ) as any as S.Schema<SupportTicketsUpdateRequestSecondaryConsentList>;
+
 export interface SupportTicketsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
-  body: unknown;
+  /** Severity level. */
+  severity?: SeverityLevel;
+  /** Status to be updated on the ticket. */
+  status?: Status;
+  /** Contact details to be updated on the support ticket. */
+  contactDetails?: UpdateContactProfile;
+  /** Advanced diagnostic consent to be updated on the support ticket. */
+  advancedDiagnosticConsent?: Consent;
+  /** This property indicates secondary consents for the support ticket */
+  secondaryConsent?: SupportTicketsUpdateRequestSecondaryConsentList;
+  /** Direct Connect Escalation details for a support ticket. */
+  directConnectEscalation?: DirectConnectEscalation;
 }
 export const SupportTicketsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    severity: S.optional(SeverityLevel),
+    status: S.optional(Status),
+    contactDetails: S.optional(UpdateContactProfile),
+    advancedDiagnosticConsent: S.optional(Consent),
+    secondaryConsent: S.optional(
+      SupportTicketsUpdateRequestSecondaryConsentList,
+    ),
+    directConnectEscalation: S.optional(DirectConnectEscalation),
   }).pipe(
     T.Http({
       method: "PATCH",

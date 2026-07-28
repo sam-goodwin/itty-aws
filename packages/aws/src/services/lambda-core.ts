@@ -131,10 +131,10 @@ export const NetworkConnectorSubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type NetworkConnectorSecurityGroupId = string;
 export type NetworkConnectorSecurityGroupIds = string[];
 export const NetworkConnectorSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
-export type NetworkProtocol = "IPv4" | "DualStack" | (string & {});
+export type NetworkProtocol = "IPv4" | "DualStack";
 export const NetworkProtocol = /*@__PURE__*/ S.String;
 
-export type ComputeResourceType = "MicroVm" | (string & {});
+export type ComputeResourceType = "MicroVm";
 export const ComputeResourceType = /*@__PURE__*/ S.String;
 
 export type AssociatedComputeResourceTypesList = ComputeResourceType[];
@@ -209,8 +209,7 @@ export type NetworkConnectorState =
   | "INACTIVE"
   | "FAILED"
   | "DELETING"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const NetworkConnectorState = /*@__PURE__*/ S.String;
 
 export interface CreateNetworkConnectorResponse {
@@ -302,15 +301,13 @@ export type NetworkConnectorStateReasonCode =
   | "InternalError"
   | "InvalidSecurityGroup"
   | "InvalidSubnet"
-  | "SubnetOutOfIPAddresses"
-  | (string & {});
+  | "SubnetOutOfIPAddresses";
 export const NetworkConnectorStateReasonCode = /*@__PURE__*/ S.String;
 
 export type NetworkConnectorLastUpdateStatus =
   | "Successful"
   | "Failed"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const NetworkConnectorLastUpdateStatus = /*@__PURE__*/ S.String;
 
 export type NetworkConnectorLastUpdateStatusReason = string;
@@ -321,8 +318,7 @@ export type NetworkConnectorLastUpdateStatusReasonCode =
   | "InternalError"
   | "InvalidSecurityGroup"
   | "InvalidSubnet"
-  | "SubnetOutOfIPAddresses"
-  | (string & {});
+  | "SubnetOutOfIPAddresses";
 export const NetworkConnectorLastUpdateStatusReasonCode =
   /*@__PURE__*/ S.String;
 
@@ -389,7 +385,7 @@ export const ListNetworkConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListNetworkConnectorsRequest",
 }) as any as S.Schema<ListNetworkConnectorsRequest>;
-export type NetworkConnectorType = "VPC_EGRESS" | (string & {});
+export type NetworkConnectorType = "VPC_EGRESS";
 export const NetworkConnectorType = /*@__PURE__*/ S.String;
 
 export interface NetworkConnectorSummary {
@@ -492,8 +488,7 @@ export type ThrottleReason =
   | "ReservedFunctionConcurrentInvocationLimitExceeded"
   | "ReservedFunctionInvocationRateLimitExceeded"
   | "CallerRateLimitExceeded"
-  | "ConcurrentSnapshotCreateLimitExceeded"
-  | (string & {});
+  | "ConcurrentSnapshotCreateLimitExceeded";
 export const ThrottleReason = /*@__PURE__*/ S.String;
 
 export type CreateNetworkConnectorError =

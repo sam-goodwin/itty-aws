@@ -1291,16 +1291,261 @@
             "smithy.api#documentation": "The name of the domain service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "tags": {
+          "target": "com.azure.domainservices#DomainServicesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource etag"
+          }
+        },
+        "properties": {
+          "target": "com.azure.domainservices#DomainServicePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Domain service properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.domainservices#DomainServicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "domainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Azure domain that the user would like to deploy Domain Services to."
+          }
+        },
+        "replicaSets": {
+          "target": "com.azure.domainservices#DomainServicePropertiesInputReplicaSetsList",
+          "traits": {
+            "smithy.api#documentation": "List of ReplicaSets"
+          }
+        },
+        "ldapsSettings": {
+          "target": "com.azure.domainservices#LdapsSettingsInput",
+          "traits": {
+            "smithy.api#documentation": "Secure LDAP Settings"
+          }
+        },
+        "resourceForestSettings": {
+          "target": "com.azure.domainservices#ResourceForestSettings",
+          "traits": {
+            "smithy.api#documentation": "Resource Forest Settings"
+          }
+        },
+        "domainSecuritySettings": {
+          "target": "com.azure.domainservices#DomainSecuritySettings",
+          "traits": {
+            "smithy.api#documentation": "DomainSecurity Settings"
+          }
+        },
+        "domainConfigurationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Domain Configuration Type"
+          }
+        },
+        "sku": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sku Type"
+          }
+        },
+        "filteredSync": {
+          "target": "com.azure.domainservices#DomainServicePropertiesInputFilteredSync",
+          "traits": {
+            "smithy.api#documentation": "Enabled or Disabled flag to turn on Group-based filtered sync"
+          }
+        },
+        "syncScope": {
+          "target": "com.azure.domainservices#DomainServicePropertiesInputSyncScope",
+          "traits": {
+            "smithy.api#documentation": "All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud"
+          }
+        },
+        "notificationSettings": {
+          "target": "com.azure.domainservices#NotificationSettings",
+          "traits": {
+            "smithy.api#documentation": "Notification Settings"
+          }
+        },
+        "configDiagnostics": {
+          "target": "com.azure.domainservices#ConfigDiagnostics",
+          "traits": {
+            "smithy.api#documentation": "Configuration diagnostics data containing latest execution from client."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Domain Service."
+      }
+    },
+    "com.azure.domainservices#DomainServicePropertiesInputSyncScope": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "All"
+          }
+        },
+        "CLOUDONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudOnly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud"
+      }
+    },
+    "com.azure.domainservices#DomainServicePropertiesInputFilteredSync": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enabled or Disabled flag to turn on Group-based filtered sync"
+      }
+    },
+    "com.azure.domainservices#LdapsSettingsInput": {
+      "type": "structure",
+      "members": {
+        "ldaps": {
+          "target": "com.azure.domainservices#LdapsSettingsInputLdaps",
+          "traits": {
+            "smithy.api#documentation": "A flag to determine whether or not Secure LDAP is enabled or disabled."
+          }
+        },
+        "pfxCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file."
+          }
+        },
+        "pfxCertificatePassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password to decrypt the provided Secure LDAP certificate pfx file.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "externalAccess": {
+          "target": "com.azure.domainservices#LdapsSettingsInputExternalAccess",
+          "traits": {
+            "smithy.api#documentation": "A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Secure LDAP Settings"
+      }
+    },
+    "com.azure.domainservices#LdapsSettingsInputExternalAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled."
+      }
+    },
+    "com.azure.domainservices#LdapsSettingsInputLdaps": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A flag to determine whether or not Secure LDAP is enabled or disabled."
+      }
+    },
+    "com.azure.domainservices#DomainServicePropertiesInputReplicaSetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.domainservices#ReplicaSetInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of ReplicaSets"
+      }
+    },
+    "com.azure.domainservices#ReplicaSetInput": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Virtual network location"
+          }
+        },
+        "subnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Replica Set Definition"
+      }
+    },
+    "com.azure.domainservices#DomainServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.domainservices#DomainServicesCreateOrUpdate": {
@@ -1525,16 +1770,45 @@
             "smithy.api#documentation": "The name of the domain service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "tags": {
+          "target": "com.azure.domainservices#DomainServicesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource etag"
+          }
+        },
+        "properties": {
+          "target": "com.azure.domainservices#DomainServicePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Domain service properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.domainservices#DomainServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.domainservices#DomainServicesGet": {
@@ -2534,11 +2808,23 @@
             "smithy.api#documentation": "The name of the OuContainer."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "accountName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The account name"
+          }
+        },
+        "spn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account spn"
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account password",
+            "smithy.api#sensitive": {}
           }
         }
       },
@@ -2776,11 +3062,23 @@
             "smithy.api#documentation": "The name of the OuContainer."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "accountName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The account name"
+          }
+        },
+        "spn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account spn"
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The account password",
+            "smithy.api#sensitive": {}
           }
         }
       },

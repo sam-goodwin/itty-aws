@@ -153,7 +153,7 @@ export const ResourceProfileInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceProfileInfo",
 }) as any as S.Schema<ResourceProfileInfo>;
 
-export type ResourceProfileInfoList = ResourceProfileInfo[];
+export type ResourceProfileInfoList = ReadonlyArray<ResourceProfileInfo>;
 export const ResourceProfileInfoList = /*@__PURE__*/ S.Array(
   ResourceProfileInfo,
 ) as any as S.Schema<ResourceProfileInfoList>;
@@ -273,7 +273,7 @@ export const AccessJobProjectsLocationsBatchesSparkApplicationsRequest =
     identifier: "AccessJobProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<AccessJobProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -283,11 +283,10 @@ export type JobDataStatusEnum =
   | "JOB_EXECUTION_STATUS_RUNNING"
   | "JOB_EXECUTION_STATUS_SUCCEEDED"
   | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN"
-  | (string & {});
+  | "JOB_EXECUTION_STATUS_UNKNOWN";
 export const JobDataStatusEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -427,14 +426,12 @@ export const AccessProjectsLocationsBatchesSparkApplicationsRequest =
 export type ApplicationInfoQuantileDataStatusEnum =
   | "QUANTILE_DATA_STATUS_UNSPECIFIED"
   | "QUANTILE_DATA_STATUS_COMPLETED"
-  | "QUANTILE_DATA_STATUS_FAILED"
-  | (string & {});
+  | "QUANTILE_DATA_STATUS_FAILED";
 export const ApplicationInfoQuantileDataStatusEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationInfoApplicationContextIngestionStatusEnum =
   | "APPLICATION_CONTEXT_INGESTION_STATUS_UNSPECIFIED"
-  | "APPLICATION_CONTEXT_INGESTION_STATUS_COMPLETED"
-  | (string & {});
+  | "APPLICATION_CONTEXT_INGESTION_STATUS_COMPLETED";
 export const ApplicationInfoApplicationContextIngestionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -464,7 +461,7 @@ export const ApplicationAttemptInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationAttemptInfo",
 }) as any as S.Schema<ApplicationAttemptInfo>;
 
-export type ApplicationAttemptInfoList = ApplicationAttemptInfo[];
+export type ApplicationAttemptInfoList = ReadonlyArray<ApplicationAttemptInfo>;
 export const ApplicationAttemptInfoList = /*@__PURE__*/ S.Array(
   ApplicationAttemptInfo,
 ) as any as S.Schema<ApplicationAttemptInfoList>;
@@ -587,7 +584,7 @@ export const SqlPlanMetric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SqlPlanMetric" }) as any as S.Schema<SqlPlanMetric>;
 
-export type SqlPlanMetricList = SqlPlanMetric[];
+export type SqlPlanMetricList = ReadonlyArray<SqlPlanMetric>;
 export const SqlPlanMetricList = /*@__PURE__*/ S.Array(
   SqlPlanMetric,
 ) as any as S.Schema<SqlPlanMetricList>;
@@ -650,7 +647,8 @@ export const SparkPlanGraphNodeWrapper = /*@__PURE__*/ S.suspend(() =>
   identifier: "SparkPlanGraphNodeWrapper",
 }) as any as S.Schema<SparkPlanGraphNodeWrapper>;
 
-export type SparkPlanGraphNodeWrapperList = SparkPlanGraphNodeWrapper[];
+export type SparkPlanGraphNodeWrapperList =
+  ReadonlyArray<SparkPlanGraphNodeWrapper>;
 export const SparkPlanGraphNodeWrapperList = /*@__PURE__*/ S.Array(
   SparkPlanGraphNodeWrapper,
 ) as any as S.Schema<SparkPlanGraphNodeWrapperList>;
@@ -669,7 +667,7 @@ export const SparkPlanGraphEdge = /*@__PURE__*/ S.suspend(() =>
   identifier: "SparkPlanGraphEdge",
 }) as any as S.Schema<SparkPlanGraphEdge>;
 
-export type SparkPlanGraphEdgeList = SparkPlanGraphEdge[];
+export type SparkPlanGraphEdgeList = ReadonlyArray<SparkPlanGraphEdge>;
 export const SparkPlanGraphEdgeList = /*@__PURE__*/ S.Array(
   SparkPlanGraphEdge,
 ) as any as S.Schema<SparkPlanGraphEdgeList>;
@@ -779,8 +777,7 @@ export type SqlExecutionUiDataJobsValueEnum =
   | "JOB_EXECUTION_STATUS_RUNNING"
   | "JOB_EXECUTION_STATUS_SUCCEEDED"
   | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN"
-  | (string & {});
+  | "JOB_EXECUTION_STATUS_UNKNOWN";
 export const SqlExecutionUiDataJobsValueEnum = /*@__PURE__*/ S.String;
 
 export type SqlExecutionUiDataJobsValueEnumMap = {
@@ -1248,7 +1245,7 @@ export const AccumulableInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccumulableInfo",
 }) as any as S.Schema<AccumulableInfo>;
 
-export type AccumulableInfoList = AccumulableInfo[];
+export type AccumulableInfoList = ReadonlyArray<AccumulableInfo>;
 export const AccumulableInfoList = /*@__PURE__*/ S.Array(
   AccumulableInfo,
 ) as any as S.Schema<AccumulableInfoList>;
@@ -1446,8 +1443,7 @@ export type StageDataStatusEnum =
   | "STAGE_STATUS_COMPLETE"
   | "STAGE_STATUS_FAILED"
   | "STAGE_STATUS_PENDING"
-  | "STAGE_STATUS_SKIPPED"
-  | (string & {});
+  | "STAGE_STATUS_SKIPPED";
 export const StageDataStatusEnum = /*@__PURE__*/ S.String;
 
 /** Executor resources consumed by a stage. */
@@ -1506,12 +1502,12 @@ export const ExecutorStageSummaryMap = /*@__PURE__*/ S.Record(
   ExecutorStageSummary,
 ) as any as S.Schema<ExecutorStageSummaryMap>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
 
-export type ExecutorMetricsList = ExecutorMetrics[];
+export type ExecutorMetricsList = ReadonlyArray<ExecutorMetrics>;
 export const ExecutorMetricsList = /*@__PURE__*/ S.Array(
   ExecutorMetrics,
 ) as any as S.Schema<ExecutorMetricsList>;
@@ -1755,7 +1751,7 @@ export const AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest
       "AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type RddOperationClusterList = RddOperationCluster[];
+export type RddOperationClusterList = ReadonlyArray<RddOperationCluster>;
 export const RddOperationClusterList = /*@__PURE__*/ S.Array(
   S.suspend(() => RddOperationCluster),
 ) as any as S.Schema<RddOperationClusterList>;
@@ -1764,8 +1760,7 @@ export type RddOperationNodeOutputDeterministicLevelEnum =
   | "DETERMINISTIC_LEVEL_UNSPECIFIED"
   | "DETERMINISTIC_LEVEL_DETERMINATE"
   | "DETERMINISTIC_LEVEL_UNORDERED"
-  | "DETERMINISTIC_LEVEL_INDETERMINATE"
-  | (string & {});
+  | "DETERMINISTIC_LEVEL_INDETERMINATE";
 export const RddOperationNodeOutputDeterministicLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1793,7 +1788,7 @@ export const RddOperationNode = /*@__PURE__*/ S.suspend(() =>
   identifier: "RddOperationNode",
 }) as any as S.Schema<RddOperationNode>;
 
-export type RddOperationNodeList = RddOperationNode[];
+export type RddOperationNodeList = ReadonlyArray<RddOperationNode>;
 export const RddOperationNodeList = /*@__PURE__*/ S.Array(
   RddOperationNode,
 ) as any as S.Schema<RddOperationNodeList>;
@@ -1830,7 +1825,7 @@ export const RddOperationEdge = /*@__PURE__*/ S.suspend(() =>
   identifier: "RddOperationEdge",
 }) as any as S.Schema<RddOperationEdge>;
 
-export type RddOperationEdgeList = RddOperationEdge[];
+export type RddOperationEdgeList = ReadonlyArray<RddOperationEdge>;
 export const RddOperationEdgeList = /*@__PURE__*/ S.Array(
   RddOperationEdge,
 ) as any as S.Schema<RddOperationEdgeList>;
@@ -1953,7 +1948,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2104,8 +2099,7 @@ export type LoggingConfigDriverLogLevelsValueEnum =
   | "WARN"
   | "ERROR"
   | "FATAL"
-  | "OFF"
-  | (string & {});
+  | "OFF";
 export const LoggingConfigDriverLogLevelsValueEnum = /*@__PURE__*/ S.String;
 
 export type LoggingConfigDriverLogLevelsValueEnumMap = {
@@ -2289,8 +2283,7 @@ export type JobStatusSubstateEnum =
   | "UNSPECIFIED"
   | "SUBMITTED"
   | "QUEUED"
-  | "STALE_STATUS"
-  | (string & {});
+  | "STALE_STATUS";
 export const JobStatusSubstateEnum = /*@__PURE__*/ S.String;
 
 export type JobStatusStateEnum =
@@ -2303,8 +2296,7 @@ export type JobStatusStateEnum =
   | "CANCELLED"
   | "DONE"
   | "ERROR"
-  | "ATTEMPT_FAILURE"
-  | (string & {});
+  | "ATTEMPT_FAILURE";
 export const JobStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Dataproc job status. */
@@ -2327,7 +2319,7 @@ export const JobStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobStatus" }) as any as S.Schema<JobStatus>;
 
-export type JobStatusList = JobStatus[];
+export type JobStatusList = ReadonlyArray<JobStatus>;
 export const JobStatusList = /*@__PURE__*/ S.Array(
   JobStatus,
 ) as any as S.Schema<JobStatusList>;
@@ -2494,8 +2486,7 @@ export type YarnApplicationStateEnum =
   | "RUNNING"
   | "FINISHED"
   | "FAILED"
-  | "KILLED"
-  | (string & {});
+  | "KILLED";
 export const YarnApplicationStateEnum = /*@__PURE__*/ S.String;
 
 /** A YARN application created by a job. Application information is a subset of org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature: This report is available for testing purposes only. It may be changed before final release. */
@@ -2526,7 +2517,7 @@ export const YarnApplication = /*@__PURE__*/ S.suspend(() =>
   identifier: "YarnApplication",
 }) as any as S.Schema<YarnApplication>;
 
-export type YarnApplicationList = YarnApplication[];
+export type YarnApplicationList = ReadonlyArray<YarnApplication>;
 export const YarnApplicationList = /*@__PURE__*/ S.Array(
   YarnApplication,
 ) as any as S.Schema<YarnApplicationList>;
@@ -2713,8 +2704,7 @@ export const BasicAutoscalingAlgorithm = /*@__PURE__*/ S.suspend(() =>
 export type AutoscalingPolicyClusterTypeEnum =
   | "CLUSTER_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "ZERO_SCALE"
-  | (string & {});
+  | "ZERO_SCALE";
 export const AutoscalingPolicyClusterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for the size bounds of an instance group, including its proportional size to other groups. */
@@ -2824,8 +2814,7 @@ export type BatchStateEnum =
   | "CANCELLING"
   | "CANCELLED"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const BatchStateEnum = /*@__PURE__*/ S.String;
 
 /** A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload. */
@@ -2861,8 +2850,7 @@ export type StateHistoryStateEnum =
   | "CANCELLING"
   | "CANCELLED"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const StateHistoryStateEnum = /*@__PURE__*/ S.String;
 
 /** Historical state information. */
@@ -2882,7 +2870,7 @@ export const StateHistory = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StateHistory" }) as any as S.Schema<StateHistory>;
 
-export type StateHistoryList = StateHistory[];
+export type StateHistoryList = ReadonlyArray<StateHistory>;
 export const StateHistoryList = /*@__PURE__*/ S.Array(
   StateHistory,
 ) as any as S.Schema<StateHistoryList>;
@@ -2893,12 +2881,11 @@ export type AutotuningConfigScenariosItemEnum =
   | "BROADCAST_HASH_JOIN"
   | "MEMORY"
   | "NONE"
-  | "AUTO"
-  | (string & {});
+  | "AUTO";
 export const AutotuningConfigScenariosItemEnum = /*@__PURE__*/ S.String;
 
 export type AutotuningConfigScenariosItemEnumList =
-  AutotuningConfigScenariosItemEnum[];
+  ReadonlyArray<AutotuningConfigScenariosItemEnum>;
 export const AutotuningConfigScenariosItemEnumList = /*@__PURE__*/ S.Array(
   AutotuningConfigScenariosItemEnum,
 ) as any as S.Schema<AutotuningConfigScenariosItemEnumList>;
@@ -2971,8 +2958,7 @@ export const RuntimeConfig = /*@__PURE__*/ S.suspend(() =>
 export type AuthenticationConfigUserWorkloadAuthenticationTypeEnum =
   | "AUTHENTICATION_TYPE_UNSPECIFIED"
   | "SERVICE_ACCOUNT"
-  | "END_USER_CREDENTIALS"
-  | (string & {});
+  | "END_USER_CREDENTIALS";
 export const AuthenticationConfigUserWorkloadAuthenticationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3149,8 +3135,7 @@ export const UsageMetrics = /*@__PURE__*/ S.suspend(() =>
 export type CohortInfoCohortSourceEnum =
   | "COHORT_SOURCE_UNSPECIFIED"
   | "USER_PROVIDED"
-  | "AIRFLOW"
-  | (string & {});
+  | "AIRFLOW";
 export const CohortInfoCohortSourceEnum = /*@__PURE__*/ S.String;
 
 /** Information about the cohort that the workload belongs to. */
@@ -3397,8 +3382,7 @@ export type SessionStateHistoryStateEnum =
   | "ACTIVE"
   | "TERMINATING"
   | "TERMINATED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const SessionStateHistoryStateEnum = /*@__PURE__*/ S.String;
 
 /** Historical state information. */
@@ -3420,16 +3404,12 @@ export const SessionStateHistory = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionStateHistory",
 }) as any as S.Schema<SessionStateHistory>;
 
-export type SessionStateHistoryList = SessionStateHistory[];
+export type SessionStateHistoryList = ReadonlyArray<SessionStateHistory>;
 export const SessionStateHistoryList = /*@__PURE__*/ S.Array(
   SessionStateHistory,
 ) as any as S.Schema<SessionStateHistoryList>;
 
-export type JupyterConfigKernelEnum =
-  | "KERNEL_UNSPECIFIED"
-  | "PYTHON"
-  | "SCALA"
-  | (string & {});
+export type JupyterConfigKernelEnum = "KERNEL_UNSPECIFIED" | "PYTHON" | "SCALA";
 export const JupyterConfigKernelEnum = /*@__PURE__*/ S.String;
 
 /** Jupyter configuration for an interactive session. */
@@ -3452,8 +3432,7 @@ export type SessionStateEnum =
   | "ACTIVE"
   | "TERMINATING"
   | "TERMINATED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const SessionStateEnum = /*@__PURE__*/ S.String;
 
 /** A representation of a session. */
@@ -3669,7 +3648,7 @@ export const TemplateParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateParameter",
 }) as any as S.Schema<TemplateParameter>;
 
-export type TemplateParameterList = TemplateParameter[];
+export type TemplateParameterList = ReadonlyArray<TemplateParameter>;
 export const TemplateParameterList = /*@__PURE__*/ S.Array(
   TemplateParameter,
 ) as any as S.Schema<TemplateParameterList>;
@@ -3706,7 +3685,7 @@ export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorConfig",
 }) as any as S.Schema<AcceleratorConfig>;
 
-export type AcceleratorConfigList = AcceleratorConfig[];
+export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
 export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
@@ -3738,7 +3717,8 @@ export const InstanceSelectionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceSelectionResult",
 }) as any as S.Schema<InstanceSelectionResult>;
 
-export type InstanceSelectionResultList = InstanceSelectionResult[];
+export type InstanceSelectionResultList =
+  ReadonlyArray<InstanceSelectionResult>;
 export const InstanceSelectionResultList = /*@__PURE__*/ S.Array(
   InstanceSelectionResult,
 ) as any as S.Schema<InstanceSelectionResultList>;
@@ -3764,8 +3744,7 @@ export type AttachedDiskConfigDiskTypeEnum =
   | "HYPERDISK_BALANCED"
   | "HYPERDISK_EXTREME"
   | "HYPERDISK_ML"
-  | "HYPERDISK_THROUGHPUT"
-  | (string & {});
+  | "HYPERDISK_THROUGHPUT";
 export const AttachedDiskConfigDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the config of attached disk options for single VM instance. */
@@ -3790,7 +3769,7 @@ export const AttachedDiskConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttachedDiskConfig",
 }) as any as S.Schema<AttachedDiskConfig>;
 
-export type AttachedDiskConfigList = AttachedDiskConfig[];
+export type AttachedDiskConfigList = ReadonlyArray<AttachedDiskConfig>;
 export const AttachedDiskConfigList = /*@__PURE__*/ S.Array(
   AttachedDiskConfig,
 ) as any as S.Schema<AttachedDiskConfigList>;
@@ -3843,7 +3822,7 @@ export const InstanceSelection = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceSelection",
 }) as any as S.Schema<InstanceSelection>;
 
-export type InstanceSelectionList = InstanceSelection[];
+export type InstanceSelectionList = ReadonlyArray<InstanceSelection>;
 export const InstanceSelectionList = /*@__PURE__*/ S.Array(
   InstanceSelection,
 ) as any as S.Schema<InstanceSelectionList>;
@@ -3892,7 +3871,7 @@ export const InstanceReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceReference",
 }) as any as S.Schema<InstanceReference>;
 
-export type InstanceReferenceList = InstanceReference[];
+export type InstanceReferenceList = ReadonlyArray<InstanceReference>;
 export const InstanceReferenceList = /*@__PURE__*/ S.Array(
   InstanceReference,
 ) as any as S.Schema<InstanceReferenceList>;
@@ -3920,8 +3899,7 @@ export type InstanceGroupConfigPreemptibilityEnum =
   | "PREEMPTIBILITY_UNSPECIFIED"
   | "NON_PREEMPTIBLE"
   | "PREEMPTIBLE"
-  | "SPOT"
-  | (string & {});
+  | "SPOT";
 export const InstanceGroupConfigPreemptibilityEnum = /*@__PURE__*/ S.String;
 
 /** The config settings for Compute Engine resources in an instance group, such as a master or worker group. */
@@ -3992,7 +3970,8 @@ export const NodeInitializationAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeInitializationAction",
 }) as any as S.Schema<NodeInitializationAction>;
 
-export type NodeInitializationActionList = NodeInitializationAction[];
+export type NodeInitializationActionList =
+  ReadonlyArray<NodeInitializationAction>;
 export const NodeInitializationActionList = /*@__PURE__*/ S.Array(
   NodeInitializationAction,
 ) as any as S.Schema<NodeInitializationActionList>;
@@ -4000,16 +3979,14 @@ export const NodeInitializationActionList = /*@__PURE__*/ S.Array(
 export type ClusterConfigEngineEnum =
   | "ENGINE_UNSPECIFIED"
   | "DEFAULT"
-  | "LIGHTNING"
-  | (string & {});
+  | "LIGHTNING";
 export const ClusterConfigEngineEnum = /*@__PURE__*/ S.String;
 
 export type ClusterConfigClusterTypeEnum =
   | "CLUSTER_TYPE_UNSPECIFIED"
   | "STANDARD"
   | "SINGLE_NODE"
-  | "ZERO_SCALE"
-  | (string & {});
+  | "ZERO_SCALE";
 export const ClusterConfigClusterTypeEnum = /*@__PURE__*/ S.String;
 
 export type MetricMetricSourceEnum =
@@ -4021,8 +3998,7 @@ export type MetricMetricSourceEnum =
   | "SPARK_HISTORY_SERVER"
   | "HIVESERVER2"
   | "HIVEMETASTORE"
-  | "FLINK"
-  | (string & {});
+  | "FLINK";
 export const MetricMetricSourceEnum = /*@__PURE__*/ S.String;
 
 /** A custom metric. */
@@ -4039,7 +4015,7 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
-export type MetricList = Metric[];
+export type MetricList = ReadonlyArray<Metric>;
 export const MetricList = /*@__PURE__*/ S.Array(
   Metric,
 ) as any as S.Schema<MetricList>;
@@ -4074,8 +4050,7 @@ export type ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
   | "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"
   | "SEV"
   | "SEV_SNP"
-  | "TDX"
-  | (string & {});
+  | "TDX";
 export const ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4101,8 +4076,7 @@ export type ReservationAffinityConsumeReservationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NO_RESERVATION"
   | "ANY_RESERVATION"
-  | "SPECIFIC_RESERVATION"
-  | (string & {});
+  | "SPECIFIC_RESERVATION";
 export const ReservationAffinityConsumeReservationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4131,8 +4105,7 @@ export type GceClusterConfigPrivateIpv6GoogleAccessEnum =
   | "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"
   | "INHERIT_FROM_SUBNETWORK"
   | "OUTBOUND"
-  | "BIDIRECTIONAL"
-  | (string & {});
+  | "BIDIRECTIONAL";
 export const GceClusterConfigPrivateIpv6GoogleAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -4243,13 +4216,10 @@ export const LifecycleConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "LifecycleConfig",
 }) as any as S.Schema<LifecycleConfig>;
 
-export type NodeGroupRolesItemEnum =
-  | "ROLE_UNSPECIFIED"
-  | "DRIVER"
-  | (string & {});
+export type NodeGroupRolesItemEnum = "ROLE_UNSPECIFIED" | "DRIVER";
 export const NodeGroupRolesItemEnum = /*@__PURE__*/ S.String;
 
-export type NodeGroupRolesItemEnumList = NodeGroupRolesItemEnum[];
+export type NodeGroupRolesItemEnumList = ReadonlyArray<NodeGroupRolesItemEnum>;
 export const NodeGroupRolesItemEnumList = /*@__PURE__*/ S.Array(
   NodeGroupRolesItemEnum,
 ) as any as S.Schema<NodeGroupRolesItemEnumList>;
@@ -4290,7 +4260,7 @@ export const AuxiliaryNodeGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuxiliaryNodeGroup",
 }) as any as S.Schema<AuxiliaryNodeGroup>;
 
-export type AuxiliaryNodeGroupList = AuxiliaryNodeGroup[];
+export type AuxiliaryNodeGroupList = ReadonlyArray<AuxiliaryNodeGroup>;
 export const AuxiliaryNodeGroupList = /*@__PURE__*/ S.Array(
   AuxiliaryNodeGroup,
 ) as any as S.Schema<AuxiliaryNodeGroupList>;
@@ -4314,12 +4284,11 @@ export type SoftwareConfigOptionalComponentsItemEnum =
   | "SOLR"
   | "ZEPPELIN"
   | "ZOOKEEPER"
-  | "JUPYTER_KERNEL_GATEWAY"
-  | (string & {});
+  | "JUPYTER_KERNEL_GATEWAY";
 export const SoftwareConfigOptionalComponentsItemEnum = /*@__PURE__*/ S.String;
 
 export type SoftwareConfigOptionalComponentsItemEnumList =
-  SoftwareConfigOptionalComponentsItemEnum[];
+  ReadonlyArray<SoftwareConfigOptionalComponentsItemEnum>;
 export const SoftwareConfigOptionalComponentsItemEnumList =
   /*@__PURE__*/ S.Array(
     SoftwareConfigOptionalComponentsItemEnum,
@@ -4347,8 +4316,7 @@ export const SoftwareConfig = /*@__PURE__*/ S.suspend(() =>
 export type ClusterConfigClusterTierEnum =
   | "CLUSTER_TIER_UNSPECIFIED"
   | "CLUSTER_TIER_STANDARD"
-  | "CLUSTER_TIER_PREMIUM"
-  | (string & {});
+  | "CLUSTER_TIER_PREMIUM";
 export const ClusterConfigClusterTierEnum = /*@__PURE__*/ S.String;
 
 /** Encryption settings for the cluster. */
@@ -4428,12 +4396,11 @@ export type GkeNodePoolTargetRolesItemEnum =
   | "DEFAULT"
   | "CONTROLLER"
   | "SPARK_DRIVER"
-  | "SPARK_EXECUTOR"
-  | (string & {});
+  | "SPARK_EXECUTOR";
 export const GkeNodePoolTargetRolesItemEnum = /*@__PURE__*/ S.String;
 
 export type GkeNodePoolTargetRolesItemEnumList =
-  GkeNodePoolTargetRolesItemEnum[];
+  ReadonlyArray<GkeNodePoolTargetRolesItemEnum>;
 export const GkeNodePoolTargetRolesItemEnumList = /*@__PURE__*/ S.Array(
   GkeNodePoolTargetRolesItemEnum,
 ) as any as S.Schema<GkeNodePoolTargetRolesItemEnumList>;
@@ -4473,7 +4440,8 @@ export const GkeNodePoolAcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GkeNodePoolAcceleratorConfig",
 }) as any as S.Schema<GkeNodePoolAcceleratorConfig>;
 
-export type GkeNodePoolAcceleratorConfigList = GkeNodePoolAcceleratorConfig[];
+export type GkeNodePoolAcceleratorConfigList =
+  ReadonlyArray<GkeNodePoolAcceleratorConfig>;
 export const GkeNodePoolAcceleratorConfigList = /*@__PURE__*/ S.Array(
   GkeNodePoolAcceleratorConfig,
 ) as any as S.Schema<GkeNodePoolAcceleratorConfigList>;
@@ -4548,7 +4516,7 @@ export const GkeNodePoolTarget = /*@__PURE__*/ S.suspend(() =>
   identifier: "GkeNodePoolTarget",
 }) as any as S.Schema<GkeNodePoolTarget>;
 
-export type GkeNodePoolTargetList = GkeNodePoolTarget[];
+export type GkeNodePoolTargetList = ReadonlyArray<GkeNodePoolTarget>;
 export const GkeNodePoolTargetList = /*@__PURE__*/ S.Array(
   GkeNodePoolTarget,
 ) as any as S.Schema<GkeNodePoolTargetList>;
@@ -4804,7 +4772,7 @@ export const OrderedJob = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OrderedJob" }) as any as S.Schema<OrderedJob>;
 
-export type OrderedJobList = OrderedJob[];
+export type OrderedJobList = ReadonlyArray<OrderedJob>;
 export const OrderedJobList = /*@__PURE__*/ S.Array(
   OrderedJob,
 ) as any as S.Schema<OrderedJobList>;
@@ -4914,16 +4882,14 @@ export const CreateProjectsRegionsAutoscalingPoliciesRequest =
 export type CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum =
   | "FAILURE_ACTION_UNSPECIFIED"
   | "NO_ACTION"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const CreateProjectsRegionsClustersActionOnFailedPrimaryWorkersEnum =
   /*@__PURE__*/ S.String;
 
 export type ClusterStatusSubstateEnum =
   | "UNSPECIFIED"
   | "UNHEALTHY"
-  | "STALE_STATUS"
-  | (string & {});
+  | "STALE_STATUS";
 export const ClusterStatusSubstateEnum = /*@__PURE__*/ S.String;
 
 export type ClusterStatusStateEnum =
@@ -4938,8 +4904,7 @@ export type ClusterStatusStateEnum =
   | "STOPPED"
   | "STARTING"
   | "REPAIRING"
-  | "SCHEDULED"
-  | (string & {});
+  | "SCHEDULED";
 export const ClusterStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The status of a cluster and its instances. */
@@ -5032,7 +4997,7 @@ export const VirtualClusterConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "VirtualClusterConfig",
 }) as any as S.Schema<VirtualClusterConfig>;
 
-export type ClusterStatusList = ClusterStatus[];
+export type ClusterStatusList = ReadonlyArray<ClusterStatus>;
 export const ClusterStatusList = /*@__PURE__*/ S.Array(
   ClusterStatus,
 ) as any as S.Schema<ClusterStatusList>;
@@ -5415,8 +5380,7 @@ export const DeleteProjectsRegionsWorkflowTemplatesRequest =
 export type DiagnoseClusterRequestTarballAccessEnum =
   | "TARBALL_ACCESS_UNSPECIFIED"
   | "GOOGLE_CLOUD_SUPPORT"
-  | "GOOGLE_DATAPROC_DIAGNOSE"
-  | (string & {});
+  | "GOOGLE_DATAPROC_DIAGNOSE";
 export const DiagnoseClusterRequestTarballAccessEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
@@ -5577,7 +5541,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -6154,7 +6118,7 @@ export const ListProjectsLocationsAutoscalingPoliciesRequest =
     identifier: "ListProjectsLocationsAutoscalingPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsAutoscalingPoliciesRequest>;
 
-export type AutoscalingPolicyList = AutoscalingPolicy[];
+export type AutoscalingPolicyList = ReadonlyArray<AutoscalingPolicy>;
 export const AutoscalingPolicyList = /*@__PURE__*/ S.Array(
   AutoscalingPolicy,
 ) as any as S.Schema<AutoscalingPolicyList>;
@@ -6205,7 +6169,7 @@ export const ListProjectsLocationsBatchesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsBatchesRequest",
 }) as any as S.Schema<ListProjectsLocationsBatchesRequest>;
 
-export type BatchList = Batch[];
+export type BatchList = ReadonlyArray<Batch>;
 export const BatchList = /*@__PURE__*/ S.Array(
   Batch,
 ) as any as S.Schema<BatchList>;
@@ -6260,7 +6224,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -6312,7 +6276,7 @@ export const ListProjectsLocationsSessionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsSessionsRequest",
 }) as any as S.Schema<ListProjectsLocationsSessionsRequest>;
 
-export type SessionList = Session[];
+export type SessionList = ReadonlyArray<Session>;
 export const SessionList = /*@__PURE__*/ S.Array(
   Session,
 ) as any as S.Schema<SessionList>;
@@ -6361,7 +6325,7 @@ export const ListProjectsLocationsSessionTemplatesRequest =
     identifier: "ListProjectsLocationsSessionTemplatesRequest",
   }) as any as S.Schema<ListProjectsLocationsSessionTemplatesRequest>;
 
-export type SessionTemplateList = SessionTemplate[];
+export type SessionTemplateList = ReadonlyArray<SessionTemplate>;
 export const SessionTemplateList = /*@__PURE__*/ S.Array(
   SessionTemplate,
 ) as any as S.Schema<SessionTemplateList>;
@@ -6407,7 +6371,7 @@ export const ListProjectsLocationsWorkflowTemplatesRequest =
     identifier: "ListProjectsLocationsWorkflowTemplatesRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkflowTemplatesRequest>;
 
-export type WorkflowTemplateList = WorkflowTemplate[];
+export type WorkflowTemplateList = ReadonlyArray<WorkflowTemplate>;
 export const WorkflowTemplateList = /*@__PURE__*/ S.Array(
   WorkflowTemplate,
 ) as any as S.Schema<WorkflowTemplateList>;
@@ -6486,7 +6450,7 @@ export const ListProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsRegionsClustersRequest",
 }) as any as S.Schema<ListProjectsRegionsClustersRequest>;
 
-export type ClusterList = Cluster[];
+export type ClusterList = ReadonlyArray<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -6510,8 +6474,7 @@ export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsRegionsJobsJobStateMatcherEnum =
   | "ALL"
   | "ACTIVE"
-  | "NON_ACTIVE"
-  | (string & {});
+  | "NON_ACTIVE";
 export const ListProjectsRegionsJobsJobStateMatcherEnum =
   /*@__PURE__*/ S.String;
 
@@ -6553,7 +6516,7 @@ export const ListProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsRegionsJobsRequest",
 }) as any as S.Schema<ListProjectsRegionsJobsRequest>;
 
-export type JobList = Job[];
+export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** A list of jobs in a project. */
@@ -6719,10 +6682,7 @@ export const PatchProjectsRegionsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchProjectsRegionsJobsRequest",
 }) as any as S.Schema<PatchProjectsRegionsJobsRequest>;
 
-export type NodePoolRepairActionEnum =
-  | "REPAIR_ACTION_UNSPECIFIED"
-  | "DELETE"
-  | (string & {});
+export type NodePoolRepairActionEnum = "REPAIR_ACTION_UNSPECIFIED" | "DELETE";
 export const NodePoolRepairActionEnum = /*@__PURE__*/ S.String;
 
 /** indicating a list of workers of same type */
@@ -6742,15 +6702,14 @@ export const NodePool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodePool" }) as any as S.Schema<NodePool>;
 
-export type NodePoolList = NodePool[];
+export type NodePoolList = ReadonlyArray<NodePool>;
 export const NodePoolList = /*@__PURE__*/ S.Array(
   NodePool,
 ) as any as S.Schema<NodePoolList>;
 
 export type ClusterToRepairClusterRepairActionEnum =
   | "CLUSTER_REPAIR_ACTION_UNSPECIFIED"
-  | "REPAIR_ERROR_DUE_TO_UPDATE_CLUSTER"
-  | (string & {});
+  | "REPAIR_ERROR_DUE_TO_UPDATE_CLUSTER";
 export const ClusterToRepairClusterRepairActionEnum = /*@__PURE__*/ S.String;
 
 /** Cluster to be repaired */
@@ -6827,8 +6786,7 @@ export const RepairProjectsRegionsClustersRequest = /*@__PURE__*/ S.suspend(
 
 export type RepairNodeGroupRequestRepairActionEnum =
   | "REPAIR_ACTION_UNSPECIFIED"
-  | "REPLACE"
-  | (string & {});
+  | "REPLACE";
 export const RepairNodeGroupRequestRepairActionEnum = /*@__PURE__*/ S.String;
 
 export interface RepairNodeGroupRequest {
@@ -6918,8 +6876,7 @@ export const ResizeProjectsRegionsClustersNodeGroupsRequest =
 export type SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum =
     | "EXECUTOR_STATUS_UNSPECIFIED"
     | "EXECUTOR_STATUS_ACTIVE"
-    | "EXECUTOR_STATUS_DEAD"
-    | (string & {});
+    | "EXECUTOR_STATUS_DEAD";
 export const SearchExecutorsProjectsLocationsBatchesSparkApplicationsExecutorStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7063,7 +7020,7 @@ export const ExecutorSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutorSummary",
 }) as any as S.Schema<ExecutorSummary>;
 
-export type ExecutorSummaryList = ExecutorSummary[];
+export type ExecutorSummaryList = ReadonlyArray<ExecutorSummary>;
 export const ExecutorSummaryList = /*@__PURE__*/ S.Array(
   ExecutorSummary,
 ) as any as S.Schema<ExecutorSummaryList>;
@@ -7088,8 +7045,7 @@ export const SearchSparkApplicationExecutorsResponse = /*@__PURE__*/ S.suspend(
 export type SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum =
     | "EXECUTOR_STATUS_UNSPECIFIED"
     | "EXECUTOR_STATUS_ACTIVE"
-    | "EXECUTOR_STATUS_DEAD"
-    | (string & {});
+    | "EXECUTOR_STATUS_DEAD";
 export const SearchExecutorsProjectsLocationsSessionsSparkApplicationsExecutorStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7181,7 +7137,7 @@ export const SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplications
       "SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type ExecutorStageSummaryList = ExecutorStageSummary[];
+export type ExecutorStageSummaryList = ReadonlyArray<ExecutorStageSummary>;
 export const ExecutorStageSummaryList = /*@__PURE__*/ S.Array(
   ExecutorStageSummary,
 ) as any as S.Schema<ExecutorStageSummaryList>;
@@ -7260,8 +7216,7 @@ export type SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum =
   | "JOB_EXECUTION_STATUS_RUNNING"
   | "JOB_EXECUTION_STATUS_SUCCEEDED"
   | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN"
-  | (string & {});
+  | "JOB_EXECUTION_STATUS_UNKNOWN";
 export const SearchJobsProjectsLocationsBatchesSparkApplicationsJobStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7300,7 +7255,7 @@ export const SearchJobsProjectsLocationsBatchesSparkApplicationsRequest =
     identifier: "SearchJobsProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<SearchJobsProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type JobDataList = JobData[];
+export type JobDataList = ReadonlyArray<JobData>;
 export const JobDataList = /*@__PURE__*/ S.Array(
   JobData,
 ) as any as S.Schema<JobDataList>;
@@ -7326,8 +7281,7 @@ export type SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum =
   | "JOB_EXECUTION_STATUS_RUNNING"
   | "JOB_EXECUTION_STATUS_SUCCEEDED"
   | "JOB_EXECUTION_STATUS_FAILED"
-  | "JOB_EXECUTION_STATUS_UNKNOWN"
-  | (string & {});
+  | "JOB_EXECUTION_STATUS_UNKNOWN";
 export const SearchJobsProjectsLocationsSessionsSparkApplicationsJobStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7389,8 +7343,7 @@ export const SearchSessionSparkApplicationJobsResponse =
 export type SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum =
     | "APPLICATION_STATUS_UNSPECIFIED"
     | "APPLICATION_STATUS_RUNNING"
-    | "APPLICATION_STATUS_COMPLETED"
-    | (string & {});
+    | "APPLICATION_STATUS_COMPLETED";
 export const SearchProjectsLocationsBatchesSparkApplicationsApplicationStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7454,7 +7407,7 @@ export const SparkApplication = /*@__PURE__*/ S.suspend(() =>
   identifier: "SparkApplication",
 }) as any as S.Schema<SparkApplication>;
 
-export type SparkApplicationList = SparkApplication[];
+export type SparkApplicationList = ReadonlyArray<SparkApplication>;
 export const SparkApplicationList = /*@__PURE__*/ S.Array(
   SparkApplication,
 ) as any as S.Schema<SparkApplicationList>;
@@ -7478,8 +7431,7 @@ export const SearchSparkApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum =
     | "APPLICATION_STATUS_UNSPECIFIED"
     | "APPLICATION_STATUS_RUNNING"
-    | "APPLICATION_STATUS_COMPLETED"
-    | (string & {});
+    | "APPLICATION_STATUS_COMPLETED";
 export const SearchProjectsLocationsSessionsSparkApplicationsApplicationStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7579,7 +7531,7 @@ export const SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest =
       "SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type SqlExecutionUiDataList = SqlExecutionUiData[];
+export type SqlExecutionUiDataList = ReadonlyArray<SqlExecutionUiData>;
 export const SqlExecutionUiDataList = /*@__PURE__*/ S.Array(
   SqlExecutionUiData,
 ) as any as S.Schema<SqlExecutionUiDataList>;
@@ -7691,7 +7643,7 @@ export const SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest
       "SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type StageDataList = StageData[];
+export type StageDataList = ReadonlyArray<StageData>;
 export const StageDataList = /*@__PURE__*/ S.Array(
   StageData,
 ) as any as S.Schema<StageDataList>;
@@ -7771,8 +7723,7 @@ export type SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTask
     | "TASK_STATUS_SUCCESS"
     | "TASK_STATUS_FAILED"
     | "TASK_STATUS_KILLED"
-    | "TASK_STATUS_PENDING"
-    | (string & {});
+    | "TASK_STATUS_PENDING";
 export const SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsTaskStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7821,7 +7772,7 @@ export const SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsReq
       "SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest",
   }) as any as S.Schema<SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest>;
 
-export type TaskDataList = TaskData[];
+export type TaskDataList = ReadonlyArray<TaskData>;
 export const TaskDataList = /*@__PURE__*/ S.Array(
   TaskData,
 ) as any as S.Schema<TaskDataList>;
@@ -7849,8 +7800,7 @@ export type SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTas
     | "TASK_STATUS_SUCCESS"
     | "TASK_STATUS_FAILED"
     | "TASK_STATUS_KILLED"
-    | "TASK_STATUS_PENDING"
-    | (string & {});
+    | "TASK_STATUS_PENDING";
 export const SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsTaskStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7922,8 +7872,7 @@ export type SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum
     | "STAGE_STATUS_COMPLETE"
     | "STAGE_STATUS_FAILED"
     | "STAGE_STATUS_PENDING"
-    | "STAGE_STATUS_SKIPPED"
-    | (string & {});
+    | "STAGE_STATUS_SKIPPED";
 export const SearchStagesProjectsLocationsBatchesSparkApplicationsStageStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7988,8 +7937,7 @@ export type SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnu
     | "STAGE_STATUS_COMPLETE"
     | "STAGE_STATUS_FAILED"
     | "STAGE_STATUS_PENDING"
-    | "STAGE_STATUS_SKIPPED"
-    | (string & {});
+    | "STAGE_STATUS_SKIPPED";
 export const SearchStagesProjectsLocationsSessionsSparkApplicationsStageStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -9135,7 +9083,7 @@ export const FallbackReason = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FallbackReason" }) as any as S.Schema<FallbackReason>;
 
-export type FallbackReasonList = FallbackReason[];
+export type FallbackReasonList = ReadonlyArray<FallbackReason>;
 export const FallbackReasonList = /*@__PURE__*/ S.Array(
   FallbackReason,
 ) as any as S.Schema<FallbackReasonList>;
@@ -9213,7 +9161,7 @@ export const RddPartitionInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "RddPartitionInfo",
 }) as any as S.Schema<RddPartitionInfo>;
 
-export type RddPartitionInfoList = RddPartitionInfo[];
+export type RddPartitionInfoList = ReadonlyArray<RddPartitionInfo>;
 export const RddPartitionInfoList = /*@__PURE__*/ S.Array(
   RddPartitionInfo,
 ) as any as S.Schema<RddPartitionInfoList>;
@@ -9244,7 +9192,7 @@ export const RddDataDistribution = /*@__PURE__*/ S.suspend(() =>
   identifier: "RddDataDistribution",
 }) as any as S.Schema<RddDataDistribution>;
 
-export type RddDataDistributionList = RddDataDistribution[];
+export type RddDataDistributionList = ReadonlyArray<RddDataDistribution>;
 export const RddDataDistributionList = /*@__PURE__*/ S.Array(
   RddDataDistribution,
 ) as any as S.Schema<RddDataDistributionList>;
@@ -9308,7 +9256,7 @@ export const StateOperatorProgress = /*@__PURE__*/ S.suspend(() =>
   identifier: "StateOperatorProgress",
 }) as any as S.Schema<StateOperatorProgress>;
 
-export type StateOperatorProgressList = StateOperatorProgress[];
+export type StateOperatorProgressList = ReadonlyArray<StateOperatorProgress>;
 export const StateOperatorProgressList = /*@__PURE__*/ S.Array(
   StateOperatorProgress,
 ) as any as S.Schema<StateOperatorProgressList>;
@@ -9336,7 +9284,7 @@ export const SourceProgress = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceProgress" }) as any as S.Schema<SourceProgress>;
 
-export type SourceProgressList = SourceProgress[];
+export type SourceProgressList = ReadonlyArray<SourceProgress>;
 export const SourceProgressList = /*@__PURE__*/ S.Array(
   SourceProgress,
 ) as any as S.Schema<SourceProgressList>;
@@ -9498,7 +9446,7 @@ export const BuildInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BuildInfo" }) as any as S.Schema<BuildInfo>;
 
-export type BuildInfoList = BuildInfo[];
+export type BuildInfoList = ReadonlyArray<BuildInfo>;
 export const BuildInfoList = /*@__PURE__*/ S.Array(
   BuildInfo,
 ) as any as S.Schema<BuildInfoList>;
@@ -9526,8 +9474,7 @@ export type SparkConnectExecutionInfoStateEnum =
   | "EXECUTION_STATE_CANCELED"
   | "EXECUTION_STATE_FAILED"
   | "EXECUTION_STATE_FINISHED"
-  | "EXECUTION_STATE_CLOSED"
-  | (string & {});
+  | "EXECUTION_STATE_CLOSED";
 export const SparkConnectExecutionInfoStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the lifecycle and details of an Execution via Spark Connect */
@@ -9645,7 +9592,7 @@ export const SparkWrapperObject = /*@__PURE__*/ S.suspend(() =>
   identifier: "SparkWrapperObject",
 }) as any as S.Schema<SparkWrapperObject>;
 
-export type SparkWrapperObjectList = SparkWrapperObject[];
+export type SparkWrapperObjectList = ReadonlyArray<SparkWrapperObject>;
 export const SparkWrapperObjectList = /*@__PURE__*/ S.Array(
   SparkWrapperObject,
 ) as any as S.Schema<SparkWrapperObjectList>;

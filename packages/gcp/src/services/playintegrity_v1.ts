@@ -98,11 +98,10 @@ export type AppIntegrityAppRecognitionVerdictEnum =
   | "UNKNOWN"
   | "PLAY_RECOGNIZED"
   | "UNRECOGNIZED_VERSION"
-  | "UNEVALUATED"
-  | (string & {});
+  | "UNEVALUATED";
 export const AppIntegrityAppRecognitionVerdictEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -145,13 +144,12 @@ export type DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum =
   | "MEETS_BASIC_INTEGRITY"
   | "MEETS_DEVICE_INTEGRITY"
   | "MEETS_STRONG_INTEGRITY"
-  | "MEETS_VIRTUAL_INTEGRITY"
-  | (string & {});
+  | "MEETS_VIRTUAL_INTEGRITY";
 export const DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList =
-  DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum[];
+  ReadonlyArray<DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum>;
 export const DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnumList =
   /*@__PURE__*/ S.Array(
     DeviceIntegrityLegacyDeviceRecognitionVerdictItemEnum,
@@ -163,8 +161,7 @@ export type RecentDeviceActivityDeviceActivityLevelEnum =
   | "LEVEL_1"
   | "LEVEL_2"
   | "LEVEL_3"
-  | "LEVEL_4"
-  | (string & {});
+  | "LEVEL_4";
 export const RecentDeviceActivityDeviceActivityLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -236,13 +233,12 @@ export type DeviceIntegrityDeviceRecognitionVerdictItemEnum =
   | "MEETS_BASIC_INTEGRITY"
   | "MEETS_DEVICE_INTEGRITY"
   | "MEETS_STRONG_INTEGRITY"
-  | "MEETS_VIRTUAL_INTEGRITY"
-  | (string & {});
+  | "MEETS_VIRTUAL_INTEGRITY";
 export const DeviceIntegrityDeviceRecognitionVerdictItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DeviceIntegrityDeviceRecognitionVerdictItemEnumList =
-  DeviceIntegrityDeviceRecognitionVerdictItemEnum[];
+  ReadonlyArray<DeviceIntegrityDeviceRecognitionVerdictItemEnum>;
 export const DeviceIntegrityDeviceRecognitionVerdictItemEnumList =
   /*@__PURE__*/ S.Array(
     DeviceIntegrityDeviceRecognitionVerdictItemEnum,
@@ -283,8 +279,7 @@ export type AccountActivityActivityLevelEnum =
   | "UNUSUAL"
   | "UNKNOWN"
   | "TYPICAL_BASIC"
-  | "TYPICAL_STRONG"
-  | (string & {});
+  | "TYPICAL_STRONG";
 export const AccountActivityActivityLevelEnum = /*@__PURE__*/ S.String;
 
 /** (Restricted Access) Contains a signal helping apps differentiating between likely genuine and likely non-genuine user traffic. */
@@ -304,8 +299,7 @@ export type AccountDetailsAppLicensingVerdictEnum =
   | "UNKNOWN"
   | "LICENSED"
   | "UNLICENSED"
-  | "UNEVALUATED"
-  | (string & {});
+  | "UNEVALUATED";
 export const AccountDetailsAppLicensingVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Contains the account information such as the licensing status for the user in the scope. */
@@ -360,8 +354,7 @@ export type EnvironmentDetailsPlayProtectVerdictEnum =
   | "NO_DATA"
   | "MEDIUM_RISK"
   | "HIGH_RISK"
-  | "POSSIBLE_RISK"
-  | (string & {});
+  | "POSSIBLE_RISK";
 export const EnvironmentDetailsPlayProtectVerdictEnum = /*@__PURE__*/ S.String;
 
 export type AppAccessRiskVerdictAppsDetectedItemEnum =
@@ -373,12 +366,11 @@ export type AppAccessRiskVerdictAppsDetectedItemEnum =
   | "UNKNOWN_INSTALLED"
   | "UNKNOWN_CAPTURING"
   | "UNKNOWN_OVERLAYS"
-  | "UNKNOWN_CONTROLLING"
-  | (string & {});
+  | "UNKNOWN_CONTROLLING";
 export const AppAccessRiskVerdictAppsDetectedItemEnum = /*@__PURE__*/ S.String;
 
 export type AppAccessRiskVerdictAppsDetectedItemEnumList =
-  AppAccessRiskVerdictAppsDetectedItemEnum[];
+  ReadonlyArray<AppAccessRiskVerdictAppsDetectedItemEnum>;
 export const AppAccessRiskVerdictAppsDetectedItemEnumList =
   /*@__PURE__*/ S.Array(
     AppAccessRiskVerdictAppsDetectedItemEnum,
@@ -509,13 +501,12 @@ export const PcRequestDetails = /*@__PURE__*/ S.suspend(() =>
 
 export type PcDeviceIntegrityDeviceRecognitionVerdictItemEnum =
   | "DEVICE_RECOGNITION_VERDICT_UNSPECIFIED"
-  | "MEETS_PC_INTEGRITY"
-  | (string & {});
+  | "MEETS_PC_INTEGRITY";
 export const PcDeviceIntegrityDeviceRecognitionVerdictItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList =
-  PcDeviceIntegrityDeviceRecognitionVerdictItemEnum[];
+  ReadonlyArray<PcDeviceIntegrityDeviceRecognitionVerdictItemEnum>;
 export const PcDeviceIntegrityDeviceRecognitionVerdictItemEnumList =
   /*@__PURE__*/ S.Array(
     PcDeviceIntegrityDeviceRecognitionVerdictItemEnum,
@@ -540,8 +531,7 @@ export type PcAccountDetailsAppLicensingVerdictEnum =
   | "UNKNOWN"
   | "LICENSED"
   | "UNLICENSED"
-  | "UNEVALUATED"
-  | (string & {});
+  | "UNEVALUATED";
 export const PcAccountDetailsAppLicensingVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Contains the account information such as the licensing status for the user in the scope. */

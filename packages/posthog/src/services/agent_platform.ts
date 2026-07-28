@@ -20,7 +20,7 @@ export class Conflict extends T.applyErrorMatchers(
 ) {}
 
 /** * `approve` - approve * `reject` - reject */
-export type DecisionEnum = "approve" | "reject" | (string & {});
+export type DecisionEnum = "approve" | "reject";
 export const DecisionEnum = /*@__PURE__*/ S.String;
 
 /** Approver-edited tool arguments. Only honoured when the tool's `approval_policy.allow_edit` is `true`; otherwise the janitor returns 422. */
@@ -156,8 +156,7 @@ export type AgentApprovalRequestStateEnum =
   | "dispatched"
   | "dispatched_failed"
   | "rejected"
-  | "expired"
-  | (string & {});
+  | "expired";
 export const AgentApprovalRequestStateEnum = /*@__PURE__*/ S.String;
 
 /** `{result: ...}` on a successful approved dispatch, `{error: "..."}` when the tool threw. Null until the runner has finalised. */
@@ -237,7 +236,7 @@ export const AgentApprovalRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Approval requests for this application, newest first. */
 export type AgentApplicationApprovalsListResponseResultsList =
-  AgentApprovalRequest[];
+  ReadonlyArray<AgentApprovalRequest>;
 export const AgentApplicationApprovalsListResponseResultsList =
   /*@__PURE__*/ S.Array(
     AgentApprovalRequest,
@@ -287,65 +286,22 @@ export const AgentApplicationsApprovalsRetrieveResponse =
     identifier: "AgentApplicationsApprovalsRetrieveResponse",
   }) as any as S.Schema<AgentApplicationsApprovalsRetrieveResponse>;
 
-/** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-export interface AgentApplicationsCreateRequestCreatedBy {
-  id?: number;
-  first_name?: string;
-  email?: string;
-}
-export const AgentApplicationsCreateRequestCreatedBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.Number),
-      first_name: S.optional(S.String),
-      email: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AgentApplicationsCreateRequestCreatedBy",
-}) as any as S.Schema<AgentApplicationsCreateRequestCreatedBy>;
-
 export interface AgentApplicationsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id: string;
-  team_id: number;
   name: string;
   /** Globally-unique URL identifier. Server-minted as an opaque random slug on create; only allowlisted first-party teams may set it explicitly. Slugs live in one global namespace (domain-mode ingress routing carries no team). */
   slug?: string;
   description?: string;
-  live_revision: string | null;
   archived?: boolean;
-  archived_at: string | null;
-  created_by_id: number | null;
-  /** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-  created_by: AgentApplicationsCreateRequestCreatedBy | null;
-  created_at: string;
-  updated_at: string;
-  /** Public URL to paste into the Slack app dashboard under Event Subscriptions → Request URL. Computed from the agent slug and the deployment's ingress routing mode (`AGENT_INGRESS_DOMAIN_SUFFIX` in domain mode, `AGENT_INGRESS_PUBLIC_URL` in path mode). Null when no public agent-ingress URL is configured (e.g. local dev without a tunnel). */
-  slack_events_url: string | null;
-  /** Public URL to paste into the Slack app dashboard under Interactivity & Shortcuts → Request URL. Same source + null behaviour as `slack_events_url`. */
-  slack_interactivity_url: string | null;
-  /** Mode-aware base URL the agent's trigger routes hang off — append `/webhook`, `/run`, `/mcp`, etc. Domain mode: `https://<slug><suffix>`; path mode: `<public_url>/agents/<slug>`. Same source + null behaviour as `slack_events_url` (null when no public ingress URL is configured). */
-  ingress_base_url: string | null;
 }
 export const AgentApplicationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.String,
-    team_id: S.Number,
     name: S.String,
     slug: S.optional(S.String),
     description: S.optional(S.String),
-    live_revision: S.NullOr(S.String),
     archived: S.optional(S.Boolean),
-    archived_at: S.NullOr(S.String),
-    created_by_id: S.NullOr(S.Number),
-    created_by: S.NullOr(AgentApplicationsCreateRequestCreatedBy),
-    created_at: S.String,
-    updated_at: S.String,
-    slack_events_url: S.NullOr(S.String),
-    slack_interactivity_url: S.NullOr(S.String),
-    ingress_base_url: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -479,8 +435,7 @@ export type AgentSessionStateEnum =
   | "completed"
   | "closed"
   | "cancelled"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const AgentSessionStateEnum = /*@__PURE__*/ S.String;
 
 export interface AgentInvokeResponse {
@@ -525,7 +480,8 @@ export const AgentApplicationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentApplicationsListRequest",
 }) as any as S.Schema<AgentApplicationsListRequest>;
 
-export type PaginatedAgentApplicationListResultsList = AgentApplication[];
+export type PaginatedAgentApplicationListResultsList =
+  ReadonlyArray<AgentApplication>;
 export const PaginatedAgentApplicationListResultsList = /*@__PURE__*/ S.Array(
   AgentApplication,
 ) as any as S.Schema<PaginatedAgentApplicationListResultsList>;
@@ -623,69 +579,26 @@ export const AgentApplicationsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentApplicationsModelsRequest",
 }) as any as S.Schema<AgentApplicationsModelsRequest>;
 
-/** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-export interface AgentApplicationsPartialUpdateRequestCreatedBy {
-  id?: number;
-  first_name?: string;
-  email?: string;
-}
-export const AgentApplicationsPartialUpdateRequestCreatedBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.Number),
-      first_name: S.optional(S.String),
-      email: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AgentApplicationsPartialUpdateRequestCreatedBy",
-  }) as any as S.Schema<AgentApplicationsPartialUpdateRequestCreatedBy>;
-
 export interface AgentApplicationsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this agent application. */
   id: string;
-  team_id?: number;
   name?: string;
   /** Globally-unique URL identifier. Server-minted as an opaque random slug on create; only allowlisted first-party teams may set it explicitly. Slugs live in one global namespace (domain-mode ingress routing carries no team). */
   slug?: string;
   description?: string;
-  live_revision?: string | null;
   archived?: boolean;
-  archived_at?: string | null;
-  created_by_id?: number | null;
-  /** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-  created_by?: AgentApplicationsPartialUpdateRequestCreatedBy | null;
-  created_at?: string;
-  updated_at?: string;
-  /** Public URL to paste into the Slack app dashboard under Event Subscriptions → Request URL. Computed from the agent slug and the deployment's ingress routing mode (`AGENT_INGRESS_DOMAIN_SUFFIX` in domain mode, `AGENT_INGRESS_PUBLIC_URL` in path mode). Null when no public agent-ingress URL is configured (e.g. local dev without a tunnel). */
-  slack_events_url?: string | null;
-  /** Public URL to paste into the Slack app dashboard under Interactivity & Shortcuts → Request URL. Same source + null behaviour as `slack_events_url`. */
-  slack_interactivity_url?: string | null;
-  /** Mode-aware base URL the agent's trigger routes hang off — append `/webhook`, `/run`, `/mcp`, etc. Domain mode: `https://<slug><suffix>`; path mode: `<public_url>/agents/<slug>`. Same source + null behaviour as `slack_events_url` (null when no public ingress URL is configured). */
-  ingress_base_url?: string | null;
 }
 export const AgentApplicationsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      team_id: S.optional(S.Number),
       name: S.optional(S.String),
       slug: S.optional(S.String),
       description: S.optional(S.String),
-      live_revision: S.optional(S.NullOr(S.String)),
       archived: S.optional(S.Boolean),
-      archived_at: S.optional(S.NullOr(S.String)),
-      created_by_id: S.optional(S.NullOr(S.Number)),
-      created_by: S.optional(
-        S.NullOr(AgentApplicationsPartialUpdateRequestCreatedBy),
-      ),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
-      slack_events_url: S.optional(S.NullOr(S.String)),
-      slack_interactivity_url: S.optional(S.NullOr(S.String)),
-      ingress_base_url: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -697,10 +610,7 @@ export const AgentApplicationsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   identifier: "AgentApplicationsPartialUpdateRequest",
 }) as any as S.Schema<AgentApplicationsPartialUpdateRequest>;
 
-export type AgentApplicationsPreviewProxyRequestFormat =
-  | "json"
-  | "sse"
-  | (string & {});
+export type AgentApplicationsPreviewProxyRequestFormat = "json" | "sse";
 export const AgentApplicationsPreviewProxyRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -749,10 +659,7 @@ export const AgentApplicationsPreviewProxyResponse = /*@__PURE__*/ S.suspend(
   identifier: "AgentApplicationsPreviewProxyResponse",
 }) as any as S.Schema<AgentApplicationsPreviewProxyResponse>;
 
-export type AgentApplicationsPreviewProxyGetRequestFormat =
-  | "json"
-  | "sse"
-  | (string & {});
+export type AgentApplicationsPreviewProxyGetRequestFormat = "json" | "sse";
 export const AgentApplicationsPreviewProxyGetRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -914,12 +821,7 @@ export const AgentApplicationsRevisionsAgentMdUpdateRequest =
   }) as any as S.Schema<AgentApplicationsRevisionsAgentMdUpdateRequest>;
 
 /** * `draft` - draft * `ready` - ready * `live` - live * `archived` - archived */
-export type AgentRevisionStateEnum =
-  | "draft"
-  | "ready"
-  | "live"
-  | "archived"
-  | (string & {});
+export type AgentRevisionStateEnum = "draft" | "ready" | "live" | "archived";
 export const AgentRevisionStateEnum = /*@__PURE__*/ S.String;
 
 /** One reference to a versioned skill in the llma-skill store, pinned into this agent's bundle at freeze. */
@@ -940,7 +842,7 @@ export const SkillRef = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkillRef" }) as any as S.Schema<SkillRef>;
 
 /** Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`. */
-export type AgentRevisionSkillRefsList = SkillRef[];
+export type AgentRevisionSkillRefsList = ReadonlyArray<SkillRef>;
 export const AgentRevisionSkillRefsList = /*@__PURE__*/ S.Array(
   SkillRef,
 ) as any as S.Schema<AgentRevisionSkillRefsList>;
@@ -1070,7 +972,7 @@ export const ImportBundleSkill = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-skill payloads merged into the skill store by id and pinned onto the draft's skill references. When omitted, no skills are touched. */
 export type AgentApplicationsRevisionsBundleImportCreateRequestSkillsList =
-  ImportBundleSkill[];
+  ReadonlyArray<ImportBundleSkill>;
 export const AgentApplicationsRevisionsBundleImportCreateRequestSkillsList =
   /*@__PURE__*/ S.Array(
     ImportBundleSkill,
@@ -1157,7 +1059,7 @@ export const WriteToolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WriteToolRequest>;
 
 export type AgentApplicationsRevisionsBundleUpdateRequestToolsList =
-  WriteToolRequest[];
+  ReadonlyArray<WriteToolRequest>;
 export const AgentApplicationsRevisionsBundleUpdateRequestToolsList =
   /*@__PURE__*/ S.Array(
     WriteToolRequest,
@@ -1228,67 +1130,23 @@ export const AgentApplicationsRevisionsCloneFromCreateRequest =
     identifier: "AgentApplicationsRevisionsCloneFromCreateRequest",
   }) as any as S.Schema<AgentApplicationsRevisionsCloneFromCreateRequest>;
 
-/** Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`. */
-export type AgentApplicationsRevisionsCreateRequestSkillRefsList = SkillRef[];
-export const AgentApplicationsRevisionsCreateRequestSkillRefsList =
-  /*@__PURE__*/ S.Array(
-    SkillRef,
-  ) as any as S.Schema<AgentApplicationsRevisionsCreateRequestSkillRefsList>;
-
-/** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-export interface AgentApplicationsRevisionsCreateRequestCreatedBy {
-  id?: number;
-  first_name?: string;
-  email?: string;
-}
-export const AgentApplicationsRevisionsCreateRequestCreatedBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.Number),
-      first_name: S.optional(S.String),
-      email: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AgentApplicationsRevisionsCreateRequestCreatedBy",
-  }) as any as S.Schema<AgentApplicationsRevisionsCreateRequestCreatedBy>;
-
 export interface AgentApplicationsRevisionsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   application_id: string;
-  id: string;
-  application: string;
   parent_revision?: string | null;
-  state: AgentRevisionStateEnum;
   /** Storage-prefix metadata for the bundle, e.g. `fs://my-agent/`. Optional — leave blank and the server fills `fs://<application-slug>/`. Bundles are addressed by revision id regardless, so this is only a prefix hint. */
   bundle_uri?: string;
-  bundle_sha256: string | null;
   spec?: unknown;
-  /** Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`. */
-  skill_refs: AgentApplicationsRevisionsCreateRequestSkillRefsList;
-  created_by_id: number | null;
-  /** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-  created_by: AgentApplicationsRevisionsCreateRequestCreatedBy | null;
-  created_at: string;
-  updated_at: string;
 }
 export const AgentApplicationsRevisionsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       application_id: S.String.pipe(T.Label()),
-      id: S.String,
-      application: S.String,
       parent_revision: S.optional(S.NullOr(S.String)),
-      state: AgentRevisionStateEnum,
       bundle_uri: S.optional(S.String),
-      bundle_sha256: S.NullOr(S.String),
       spec: S.optional(S.Unknown),
-      skill_refs: AgentApplicationsRevisionsCreateRequestSkillRefsList,
-      created_by_id: S.NullOr(S.Number),
-      created_by: S.NullOr(AgentApplicationsRevisionsCreateRequestCreatedBy),
-      created_at: S.String,
-      updated_at: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -1434,7 +1292,8 @@ export const AgentApplicationsRevisionsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "AgentApplicationsRevisionsListRequest",
 }) as any as S.Schema<AgentApplicationsRevisionsListRequest>;
 
-export type PaginatedAgentRevisionListResultsList = AgentRevision[];
+export type PaginatedAgentRevisionListResultsList =
+  ReadonlyArray<AgentRevision>;
 export const PaginatedAgentRevisionListResultsList = /*@__PURE__*/ S.Array(
   AgentRevision,
 ) as any as S.Schema<PaginatedAgentRevisionListResultsList>;
@@ -1503,51 +1362,16 @@ export const AgentApplicationsRevisionsNewDraftCreateRequest =
     identifier: "AgentApplicationsRevisionsNewDraftCreateRequest",
   }) as any as S.Schema<AgentApplicationsRevisionsNewDraftCreateRequest>;
 
-/** Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`. */
-export type AgentApplicationsRevisionsPartialUpdateRequestSkillRefsList =
-  SkillRef[];
-export const AgentApplicationsRevisionsPartialUpdateRequestSkillRefsList =
-  /*@__PURE__*/ S.Array(
-    SkillRef,
-  ) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestSkillRefsList>;
-
-/** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-export interface AgentApplicationsRevisionsPartialUpdateRequestCreatedBy {
-  id?: number;
-  first_name?: string;
-  email?: string;
-}
-export const AgentApplicationsRevisionsPartialUpdateRequestCreatedBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.Number),
-      first_name: S.optional(S.String),
-      email: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AgentApplicationsRevisionsPartialUpdateRequestCreatedBy",
-  }) as any as S.Schema<AgentApplicationsRevisionsPartialUpdateRequestCreatedBy>;
-
 export interface AgentApplicationsRevisionsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   application_id: string;
   /** A UUID string identifying this agent revision. */
   id: string;
-  application?: string;
   parent_revision?: string | null;
-  state?: AgentRevisionStateEnum;
   /** Storage-prefix metadata for the bundle, e.g. `fs://my-agent/`. Optional — leave blank and the server fills `fs://<application-slug>/`. Bundles are addressed by revision id regardless, so this is only a prefix hint. */
   bundle_uri?: string;
-  bundle_sha256?: string | null;
   spec?: unknown;
-  /** Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`. */
-  skill_refs?: AgentApplicationsRevisionsPartialUpdateRequestSkillRefsList;
-  created_by_id?: number | null;
-  /** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-  created_by?: AgentApplicationsRevisionsPartialUpdateRequestCreatedBy | null;
-  created_at?: string;
-  updated_at?: string;
 }
 export const AgentApplicationsRevisionsPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1555,21 +1379,9 @@ export const AgentApplicationsRevisionsPartialUpdateRequest =
       project_id: S.String.pipe(T.Label()),
       application_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      application: S.optional(S.String),
       parent_revision: S.optional(S.NullOr(S.String)),
-      state: S.optional(AgentRevisionStateEnum),
       bundle_uri: S.optional(S.String),
-      bundle_sha256: S.optional(S.NullOr(S.String)),
       spec: S.optional(S.Unknown),
-      skill_refs: S.optional(
-        AgentApplicationsRevisionsPartialUpdateRequestSkillRefsList,
-      ),
-      created_by_id: S.optional(S.NullOr(S.Number)),
-      created_by: S.optional(
-        S.NullOr(AgentApplicationsRevisionsPartialUpdateRequestCreatedBy),
-      ),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1666,7 +1478,7 @@ export const AgentApplicationsRevisionsSetEnvCreateRequest =
 
 /** The complete set of store-skill references for this draft; replaces any existing references. */
 export type AgentApplicationsRevisionsSkillRefsUpdateRequestSkillRefsList =
-  SkillRef[];
+  ReadonlyArray<SkillRef>;
 export const AgentApplicationsRevisionsSkillRefsUpdateRequestSkillRefsList =
   /*@__PURE__*/ S.Array(
     SkillRef,
@@ -1724,7 +1536,7 @@ export const AgentApplicationsRevisionsSlackManifestRequest =
   }) as any as S.Schema<AgentApplicationsRevisionsSlackManifestRequest>;
 
 /** Reminders the manifest can't enforce (e.g. invite the bot to its channels). */
-export type AgentRevisionSlackManifestResponseNotesList = string[];
+export type AgentRevisionSlackManifestResponseNotesList = ReadonlyArray<string>;
 export const AgentRevisionSlackManifestResponseNotesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1985,50 +1797,16 @@ export const AgentApplicationsRevisionsToolsUpdateRequest =
     identifier: "AgentApplicationsRevisionsToolsUpdateRequest",
   }) as any as S.Schema<AgentApplicationsRevisionsToolsUpdateRequest>;
 
-/** Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`. */
-export type AgentApplicationsRevisionsUpdateRequestSkillRefsList = SkillRef[];
-export const AgentApplicationsRevisionsUpdateRequestSkillRefsList =
-  /*@__PURE__*/ S.Array(
-    SkillRef,
-  ) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestSkillRefsList>;
-
-/** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-export interface AgentApplicationsRevisionsUpdateRequestCreatedBy {
-  id?: number;
-  first_name?: string;
-  email?: string;
-}
-export const AgentApplicationsRevisionsUpdateRequestCreatedBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.Number),
-      first_name: S.optional(S.String),
-      email: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AgentApplicationsRevisionsUpdateRequestCreatedBy",
-  }) as any as S.Schema<AgentApplicationsRevisionsUpdateRequestCreatedBy>;
-
 export interface AgentApplicationsRevisionsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   application_id: string;
   /** A UUID string identifying this agent revision. */
   id: string;
-  application: string;
   parent_revision?: string | null;
-  state: AgentRevisionStateEnum;
   /** Storage-prefix metadata for the bundle, e.g. `fs://my-agent/`. Optional — leave blank and the server fills `fs://<application-slug>/`. Bundles are addressed by revision id regardless, so this is only a prefix hint. */
   bundle_uri?: string;
-  bundle_sha256: string | null;
   spec?: unknown;
-  /** Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`. */
-  skill_refs: AgentApplicationsRevisionsUpdateRequestSkillRefsList;
-  created_by_id: number | null;
-  /** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-  created_by: AgentApplicationsRevisionsUpdateRequestCreatedBy | null;
-  created_at: string;
-  updated_at: string;
 }
 export const AgentApplicationsRevisionsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2036,17 +1814,9 @@ export const AgentApplicationsRevisionsUpdateRequest = /*@__PURE__*/ S.suspend(
       project_id: S.String.pipe(T.Label()),
       application_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      application: S.String,
       parent_revision: S.optional(S.NullOr(S.String)),
-      state: AgentRevisionStateEnum,
       bundle_uri: S.optional(S.String),
-      bundle_sha256: S.NullOr(S.String),
       spec: S.optional(S.Unknown),
-      skill_refs: AgentApplicationsRevisionsUpdateRequestSkillRefsList,
-      created_by_id: S.NullOr(S.Number),
-      created_by: S.NullOr(AgentApplicationsRevisionsUpdateRequestCreatedBy),
-      created_at: S.String,
-      updated_at: S.String,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2098,12 +1868,13 @@ export const AgentRevisionValidationError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentRevisionValidationError>;
 
 export type AgentRevisionValidateResponseErrorsList =
-  AgentRevisionValidationError[];
+  ReadonlyArray<AgentRevisionValidationError>;
 export const AgentRevisionValidateResponseErrorsList = /*@__PURE__*/ S.Array(
   AgentRevisionValidationError,
 ) as any as S.Schema<AgentRevisionValidateResponseErrorsList>;
 
-export type AgentRevisionValidateResponseResolvedNativesList = string[];
+export type AgentRevisionValidateResponseResolvedNativesList =
+  ReadonlyArray<string>;
 export const AgentRevisionValidateResponseResolvedNativesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2226,7 +1997,8 @@ export const LogEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogEntry" }) as any as S.Schema<LogEntry>;
 
-export type AgentApplicationSessionLogsResponseResultsList = LogEntry[];
+export type AgentApplicationSessionLogsResponseResultsList =
+  ReadonlyArray<LogEntry>;
 export const AgentApplicationSessionLogsResponseResultsList =
   /*@__PURE__*/ S.Array(
     LogEntry,
@@ -2314,8 +2086,7 @@ export type AgentSessionPrincipalKindEnum =
   | "service"
   | "internal"
   | "shared_secret"
-  | "slack"
-  | (string & {});
+  | "slack";
 export const AgentSessionPrincipalKindEnum = /*@__PURE__*/ S.String;
 
 export interface AgentSessionPrincipal {
@@ -2386,7 +2157,7 @@ export const AgentSessionSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentSessionSummary>;
 
 export type AgentApplicationSessionsListResponseResultsList =
-  AgentSessionSummary[];
+  ReadonlyArray<AgentSessionSummary>;
 export const AgentApplicationSessionsListResponseResultsList =
   /*@__PURE__*/ S.Array(
     AgentSessionSummary,
@@ -2446,7 +2217,7 @@ export const AgentApplicationSessionsRetrieveResponseTriggerMetadataMap =
   ) as any as S.Schema<AgentApplicationSessionsRetrieveResponseTriggerMetadataMap>;
 
 /** * `user` - user */
-export type AgentConversationUserMessageRoleEnum = "user" | (string & {});
+export type AgentConversationUserMessageRoleEnum = "user";
 export const AgentConversationUserMessageRoleEnum = /*@__PURE__*/ S.String;
 
 export interface AgentConversationUserMessage {
@@ -2467,13 +2238,12 @@ export const AgentConversationUserMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentConversationUserMessage>;
 
 /** * `assistant` - assistant */
-export type AgentConversationAssistantMessageRoleEnum =
-  | "assistant"
-  | (string & {});
+export type AgentConversationAssistantMessageRoleEnum = "assistant";
 export const AgentConversationAssistantMessageRoleEnum = /*@__PURE__*/ S.String;
 
 /** Array of text/thinking/toolCall parts. */
-export type AgentConversationAssistantMessageContentList = unknown[];
+export type AgentConversationAssistantMessageContentList =
+  ReadonlyArray<unknown>;
 export const AgentConversationAssistantMessageContentList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2493,8 +2263,7 @@ export type StopReasonEnum =
   | "length"
   | "toolUse"
   | "error"
-  | "aborted"
-  | (string & {});
+  | "aborted";
 export const StopReasonEnum = /*@__PURE__*/ S.String;
 
 export interface AgentConversationAssistantMessage {
@@ -2527,14 +2296,13 @@ export const AgentConversationAssistantMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentConversationAssistantMessage>;
 
 /** * `toolResult` - toolResult */
-export type AgentConversationToolResultMessageRoleEnum =
-  | "toolResult"
-  | (string & {});
+export type AgentConversationToolResultMessageRoleEnum = "toolResult";
 export const AgentConversationToolResultMessageRoleEnum =
   /*@__PURE__*/ S.String;
 
 /** Array of {type:'text'|'image', ...} parts. */
-export type AgentConversationToolResultMessageContentList = unknown[];
+export type AgentConversationToolResultMessageContentList =
+  ReadonlyArray<unknown>;
 export const AgentConversationToolResultMessageContentList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2572,7 +2340,7 @@ export const AgentConversationMessage =
 
 /** Full transcript, or the trailing `last_n` messages if `?last_n=` was supplied. */
 export type AgentApplicationSessionsRetrieveResponseConversationList =
-  AgentConversationMessage[];
+  ReadonlyArray<AgentConversationMessage>;
 export const AgentApplicationSessionsRetrieveResponseConversationList =
   /*@__PURE__*/ S.Array(
     AgentConversationMessage,
@@ -2580,7 +2348,7 @@ export const AgentApplicationSessionsRetrieveResponseConversationList =
 
 /** Messages that arrived while a turn was in flight; drained into `conversation` at the start of the next turn. */
 export type AgentApplicationSessionsRetrieveResponsePendingInputsList =
-  AgentConversationMessage[];
+  ReadonlyArray<AgentConversationMessage>;
 export const AgentApplicationSessionsRetrieveResponsePendingInputsList =
   /*@__PURE__*/ S.Array(
     AgentConversationMessage,
@@ -2708,66 +2476,25 @@ export const AgentAggregateStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentAggregateStats",
 }) as any as S.Schema<AgentAggregateStats>;
 
-/** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-export interface AgentApplicationsUpdateRequestCreatedBy {
-  id?: number;
-  first_name?: string;
-  email?: string;
-}
-export const AgentApplicationsUpdateRequestCreatedBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.Number),
-      first_name: S.optional(S.String),
-      email: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AgentApplicationsUpdateRequestCreatedBy",
-}) as any as S.Schema<AgentApplicationsUpdateRequestCreatedBy>;
-
 export interface AgentApplicationsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this agent application. */
   id: string;
-  team_id: number;
   name: string;
   /** Globally-unique URL identifier. Server-minted as an opaque random slug on create; only allowlisted first-party teams may set it explicitly. Slugs live in one global namespace (domain-mode ingress routing carries no team). */
   slug?: string;
   description?: string;
-  live_revision: string | null;
   archived?: boolean;
-  archived_at: string | null;
-  created_by_id: number | null;
-  /** Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted. */
-  created_by: AgentApplicationsUpdateRequestCreatedBy | null;
-  created_at: string;
-  updated_at: string;
-  /** Public URL to paste into the Slack app dashboard under Event Subscriptions → Request URL. Computed from the agent slug and the deployment's ingress routing mode (`AGENT_INGRESS_DOMAIN_SUFFIX` in domain mode, `AGENT_INGRESS_PUBLIC_URL` in path mode). Null when no public agent-ingress URL is configured (e.g. local dev without a tunnel). */
-  slack_events_url: string | null;
-  /** Public URL to paste into the Slack app dashboard under Interactivity & Shortcuts → Request URL. Same source + null behaviour as `slack_events_url`. */
-  slack_interactivity_url: string | null;
-  /** Mode-aware base URL the agent's trigger routes hang off — append `/webhook`, `/run`, `/mcp`, etc. Domain mode: `https://<slug><suffix>`; path mode: `<public_url>/agents/<slug>`. Same source + null behaviour as `slack_events_url` (null when no public ingress URL is configured). */
-  ingress_base_url: string | null;
 }
 export const AgentApplicationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    team_id: S.Number,
     name: S.String,
     slug: S.optional(S.String),
     description: S.optional(S.String),
-    live_revision: S.NullOr(S.String),
     archived: S.optional(S.Boolean),
-    archived_at: S.NullOr(S.String),
-    created_by_id: S.NullOr(S.Number),
-    created_by: S.NullOr(AgentApplicationsUpdateRequestCreatedBy),
-    created_at: S.String,
-    updated_at: S.String,
-    slack_events_url: S.NullOr(S.String),
-    slack_interactivity_url: S.NullOr(S.String),
-    ingress_base_url: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2833,7 +2560,7 @@ export const AgentApplicationsUsersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentApplicationsUsersListRequest",
 }) as any as S.Schema<AgentApplicationsUsersListRequest>;
 
-export type AgentUserConnectionScopesList = string[];
+export type AgentUserConnectionScopesList = ReadonlyArray<string>;
 export const AgentUserConnectionScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentUserConnectionScopesList>;
@@ -2866,7 +2593,8 @@ export const AgentUserConnection = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentUserConnection",
 }) as any as S.Schema<AgentUserConnection>;
 
-export type AgentUserWithConnectionsConnectionsList = AgentUserConnection[];
+export type AgentUserWithConnectionsConnectionsList =
+  ReadonlyArray<AgentUserConnection>;
 export const AgentUserWithConnectionsConnectionsList = /*@__PURE__*/ S.Array(
   AgentUserConnection,
 ) as any as S.Schema<AgentUserWithConnectionsConnectionsList>;
@@ -2893,7 +2621,7 @@ export const AgentUserWithConnections = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentUserWithConnections",
 }) as any as S.Schema<AgentUserWithConnections>;
 
-export type AgentUsersListResultsList = AgentUserWithConnections[];
+export type AgentUsersListResultsList = ReadonlyArray<AgentUserWithConnections>;
 export const AgentUsersListResultsList = /*@__PURE__*/ S.Array(
   AgentUserWithConnections,
 ) as any as S.Schema<AgentUsersListResultsList>;
@@ -3016,7 +2744,7 @@ export const AgentFleetLiveSessionSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentFleetLiveSessionSummary>;
 
 export type AgentFleetLiveSessionsResponseResultsList =
-  AgentFleetLiveSessionSummary[];
+  ReadonlyArray<AgentFleetLiveSessionSummary>;
 export const AgentFleetLiveSessionsResponseResultsList = /*@__PURE__*/ S.Array(
   AgentFleetLiveSessionSummary,
 ) as any as S.Schema<AgentFleetLiveSessionsResponseResultsList>;
@@ -3054,7 +2782,7 @@ export const AgentFleetStatsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentFleetStatsRequest>;
 
 /** Optional flat tags for search ranking. Lowercase a-z 0-9 _ - only. */
-export type AgentMemoryCreateFileRequestTagsList = string[];
+export type AgentMemoryCreateFileRequestTagsList = ReadonlyArray<string>;
 export const AgentMemoryCreateFileRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentMemoryCreateFileRequestTagsList>;
@@ -3180,7 +2908,7 @@ export const AgentMemoryListFilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentMemoryListFilesRequest>;
 
 /** Frontmatter tags (lowercase a-z 0-9 _ - only). */
-export type AgentMemoryHeaderTagsList = string[];
+export type AgentMemoryHeaderTagsList = ReadonlyArray<string>;
 export const AgentMemoryHeaderTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentMemoryHeaderTagsList>;
@@ -3210,7 +2938,8 @@ export const AgentMemoryHeader = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentMemoryHeader>;
 
 /** Headers (frontmatter only) — no file bodies. Use the read endpoint for the body. */
-export type AgentMemoryListResponseEntriesList = AgentMemoryHeader[];
+export type AgentMemoryListResponseEntriesList =
+  ReadonlyArray<AgentMemoryHeader>;
 export const AgentMemoryListResponseEntriesList = /*@__PURE__*/ S.Array(
   AgentMemoryHeader,
 ) as any as S.Schema<AgentMemoryListResponseEntriesList>;
@@ -3266,7 +2995,7 @@ export const AgentTableHeader = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentTableHeader>;
 
 /** Tabular-reference tables for this agent (the @posthog/table-* JSONL tables). */
-export type AgentTablesListResponseTablesList = AgentTableHeader[];
+export type AgentTablesListResponseTablesList = ReadonlyArray<AgentTableHeader>;
 export const AgentTablesListResponseTablesList = /*@__PURE__*/ S.Array(
   AgentTableHeader,
 ) as any as S.Schema<AgentTablesListResponseTablesList>;
@@ -3321,7 +3050,7 @@ export const AgentTableRowsResponseRowsItemMap = /*@__PURE__*/ S.Record(
 
 /** The rows (arbitrary JSON objects). */
 export type AgentTableRowsResponseRowsList =
-  AgentTableRowsResponseRowsItemMap[];
+  ReadonlyArray<AgentTableRowsResponseRowsItemMap>;
 export const AgentTableRowsResponseRowsList = /*@__PURE__*/ S.Array(
   AgentTableRowsResponseRowsItemMap,
 ) as any as S.Schema<AgentTableRowsResponseRowsList>;
@@ -3377,7 +3106,7 @@ export const AgentMemorySearchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentMemorySearchRequest",
 }) as any as S.Schema<AgentMemorySearchRequest>;
 
-export type AgentMemorySearchResultTagsList = string[];
+export type AgentMemorySearchResultTagsList = ReadonlyArray<string>;
 export const AgentMemorySearchResultTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentMemorySearchResultTagsList>;
@@ -3403,7 +3132,8 @@ export const AgentMemorySearchResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentMemorySearchResult",
 }) as any as S.Schema<AgentMemorySearchResult>;
 
-export type AgentMemorySearchResponseResultsList = AgentMemorySearchResult[];
+export type AgentMemorySearchResponseResultsList =
+  ReadonlyArray<AgentMemorySearchResult>;
 export const AgentMemorySearchResponseResultsList = /*@__PURE__*/ S.Array(
   AgentMemorySearchResult,
 ) as any as S.Schema<AgentMemorySearchResponseResultsList>;
@@ -3465,7 +3195,7 @@ export const AgentMemoryTreeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentMemoryTreeResponse",
 }) as any as S.Schema<AgentMemoryTreeResponse>;
 
-export type AgentMemoryUpdateFileRequestTagsList = string[];
+export type AgentMemoryUpdateFileRequestTagsList = ReadonlyArray<string>;
 export const AgentMemoryUpdateFileRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentMemoryUpdateFileRequestTagsList>;
@@ -3538,7 +3268,8 @@ export const AgentNativeToolEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentNativeToolEntry",
 }) as any as S.Schema<AgentNativeToolEntry>;
 
-export type AgentNativeToolsListResponseToolsList = AgentNativeToolEntry[];
+export type AgentNativeToolsListResponseToolsList =
+  ReadonlyArray<AgentNativeToolEntry>;
 export const AgentNativeToolsListResponseToolsList = /*@__PURE__*/ S.Array(
   AgentNativeToolEntry,
 ) as any as S.Schema<AgentNativeToolsListResponseToolsList>;
@@ -3555,7 +3286,7 @@ export const AgentNativeToolsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentNativeToolsListResponse>;
 
 export type AgentNativeToolsListResponseBodyList =
-  AgentNativeToolsListResponse[];
+  ReadonlyArray<AgentNativeToolsListResponse>;
 export const AgentNativeToolsListResponseBodyList = /*@__PURE__*/ S.Array(
   AgentNativeToolsListResponse,
 ) as any as S.Schema<AgentNativeToolsListResponseBodyList>;
@@ -3665,7 +3396,7 @@ export const AgentRevisionsEnvKeysListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentRevisionsEnvKeysListRequest>;
 
 /** Names of env variables currently set on the revision. Values are never returned. */
-export type AgentRevisionEnvKeysResponseKeysList = string[];
+export type AgentRevisionEnvKeysResponseKeysList = ReadonlyArray<string>;
 export const AgentRevisionEnvKeysResponseKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentRevisionEnvKeysResponseKeysList>;

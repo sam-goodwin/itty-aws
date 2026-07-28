@@ -192,7 +192,7 @@ export const NotebooksCollabPresenceCreateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NotebooksCollabPresenceCreateResponse>;
 
 /** List of ProseMirror step JSON objects to apply. */
-export type NotebooksCollabSaveCreateRequestStepsList = unknown[];
+export type NotebooksCollabSaveCreateRequestStepsList = ReadonlyArray<unknown>;
 export const NotebooksCollabSaveCreateRequestStepsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<NotebooksCollabSaveCreateRequestStepsList>;
@@ -273,6 +273,41 @@ export const NotebooksCollabStreamRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksCollabStreamRetrieveResponse",
 }) as any as S.Schema<NotebooksCollabStreamRetrieveResponse>;
 
+export interface NotebooksCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Title of the notebook. */
+  title?: string | null;
+  /** Notebook content as a ProseMirror JSON document structure. */
+  content?: unknown;
+  /** Plain text representation of the notebook content for search. */
+  text_content?: string | null;
+  /** Version number for optimistic concurrency control. Must match the current version when updating content. */
+  version?: number;
+  /** Whether the notebook has been soft-deleted. */
+  deleted?: boolean;
+  _create_in_folder?: string;
+}
+export const NotebooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    title: S.optional(S.NullOr(S.String)),
+    content: S.optional(S.Unknown),
+    text_content: S.optional(S.NullOr(S.String)),
+    version: S.optional(S.Number),
+    deleted: S.optional(S.Boolean),
+    _create_in_folder: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/notebooks/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "NotebooksCreateRequest",
+}) as any as S.Schema<NotebooksCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -288,11 +323,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -324,99 +358,24 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export type NotebooksCreateRequestParentResourceType =
-  | "account"
-  | (string & {});
-export const NotebooksCreateRequestParentResourceType = /*@__PURE__*/ S.String;
+export type NotebookOutputParentResourceType = "account";
+export const NotebookOutputParentResourceType = /*@__PURE__*/ S.String;
 
 /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-export interface NotebooksCreateRequestParentResource {
-  type: NotebooksCreateRequestParentResourceType;
+export interface NotebookOutputParentResource {
+  type: NotebookOutputParentResourceType;
   id: string;
 }
-export const NotebooksCreateRequestParentResource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: NotebooksCreateRequestParentResourceType,
-      id: S.String,
-    }),
-).annotate({
-  identifier: "NotebooksCreateRequestParentResource",
-}) as any as S.Schema<NotebooksCreateRequestParentResource>;
-
-export interface NotebooksCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** UUID of the notebook. */
-  id?: string;
-  /** Short alphanumeric identifier used in URLs and API lookups. */
-  short_id?: string;
-  /** Title of the notebook. */
-  title?: string | null;
-  /** Notebook content as a ProseMirror JSON document structure. */
-  content?: unknown;
-  /** Plain text representation of the notebook content for search. */
-  text_content?: string | null;
-  /** Version number for optimistic concurrency control. Must match the current version when updating content. */
-  version?: number;
-  /** Whether the notebook has been soft-deleted. */
-  deleted?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-  parent_resource?: NotebooksCreateRequestParentResource | null;
-  _create_in_folder?: string;
-}
-export const NotebooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const NotebookOutputParentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    short_id: S.optional(S.String),
-    title: S.optional(S.NullOr(S.String)),
-    content: S.optional(S.Unknown),
-    text_content: S.optional(S.NullOr(S.String)),
-    version: S.optional(S.Number),
-    deleted: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    parent_resource: S.optional(S.NullOr(NotebooksCreateRequestParentResource)),
-    _create_in_folder: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/notebooks/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NotebooksCreateRequest",
-}) as any as S.Schema<NotebooksCreateRequest>;
-
-export type NotebookParentResourceType = "account" | (string & {});
-export const NotebookParentResourceType = /*@__PURE__*/ S.String;
-
-/** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-export interface NotebookParentResource {
-  type: NotebookParentResourceType;
-  id: string;
-}
-export const NotebookParentResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: NotebookParentResourceType,
+    type: NotebookOutputParentResourceType,
     id: S.String,
   }),
 ).annotate({
-  identifier: "NotebookParentResource",
-}) as any as S.Schema<NotebookParentResource>;
+  identifier: "NotebookOutputParentResource",
+}) as any as S.Schema<NotebookOutputParentResource>;
 
-export interface Notebook {
+export interface NotebookOutput {
   /** UUID of the notebook. */
   id?: string;
   /** Short alphanumeric identifier used in URLs and API lookups. */
@@ -432,16 +391,15 @@ export interface Notebook {
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   last_modified_at?: string;
-  last_modified_by?: UserBasic;
+  last_modified_by?: UserBasic | null;
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
   /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-  parent_resource?: NotebookParentResource | null;
-  _create_in_folder?: string;
+  parent_resource?: NotebookOutputParentResource | null;
 }
-export const Notebook = /*@__PURE__*/ S.suspend(() =>
+export const NotebookOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     short_id: S.optional(S.String),
@@ -451,14 +409,13 @@ export const Notebook = /*@__PURE__*/ S.suspend(() =>
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
+    last_modified_by: S.optional(S.NullOr(UserBasic)),
     user_access_level: S.optional(S.NullOr(S.String)),
-    parent_resource: S.optional(S.NullOr(NotebookParentResource)),
-    _create_in_folder: S.optional(S.String),
+    parent_resource: S.optional(S.NullOr(NotebookOutputParentResource)),
   }),
-).annotate({ identifier: "Notebook" }) as any as S.Schema<Notebook>;
+).annotate({ identifier: "NotebookOutput" }) as any as S.Schema<NotebookOutput>;
 
 export interface NotebooksDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -487,33 +444,10 @@ export const NotebooksDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotebooksDestroyResponse",
 }) as any as S.Schema<NotebooksDestroyResponse>;
 
-export type NotebooksHogqlExecuteCreateRequestParentResourceType =
-  | "account"
-  | (string & {});
-export const NotebooksHogqlExecuteCreateRequestParentResourceType =
-  /*@__PURE__*/ S.String;
-
-/** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-export interface NotebooksHogqlExecuteCreateRequestParentResource {
-  type: NotebooksHogqlExecuteCreateRequestParentResourceType;
-  id: string;
-}
-export const NotebooksHogqlExecuteCreateRequestParentResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: NotebooksHogqlExecuteCreateRequestParentResourceType,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "NotebooksHogqlExecuteCreateRequestParentResource",
-  }) as any as S.Schema<NotebooksHogqlExecuteCreateRequestParentResource>;
-
 export interface NotebooksHogqlExecuteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** UUID of the notebook. */
-  id?: string;
   /** Title of the notebook. */
   title?: string | null;
   /** Notebook content as a ProseMirror JSON document structure. */
@@ -524,34 +458,17 @@ export interface NotebooksHogqlExecuteCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-  parent_resource?: NotebooksHogqlExecuteCreateRequestParentResource | null;
   _create_in_folder?: string;
 }
 export const NotebooksHogqlExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
     content: S.optional(S.Unknown),
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    parent_resource: S.optional(
-      S.NullOr(NotebooksHogqlExecuteCreateRequestParentResource),
-    ),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -571,33 +488,10 @@ export const NotebooksHogqlExecuteCreateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotebooksHogqlExecuteCreateResponse",
 }) as any as S.Schema<NotebooksHogqlExecuteCreateResponse>;
 
-export type NotebooksKernelConfigCreateRequestParentResourceType =
-  | "account"
-  | (string & {});
-export const NotebooksKernelConfigCreateRequestParentResourceType =
-  /*@__PURE__*/ S.String;
-
-/** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-export interface NotebooksKernelConfigCreateRequestParentResource {
-  type: NotebooksKernelConfigCreateRequestParentResourceType;
-  id: string;
-}
-export const NotebooksKernelConfigCreateRequestParentResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: NotebooksKernelConfigCreateRequestParentResourceType,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "NotebooksKernelConfigCreateRequestParentResource",
-  }) as any as S.Schema<NotebooksKernelConfigCreateRequestParentResource>;
-
 export interface NotebooksKernelConfigCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** UUID of the notebook. */
-  id?: string;
   /** Title of the notebook. */
   title?: string | null;
   /** Notebook content as a ProseMirror JSON document structure. */
@@ -608,34 +502,17 @@ export interface NotebooksKernelConfigCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-  parent_resource?: NotebooksKernelConfigCreateRequestParentResource | null;
   _create_in_folder?: string;
 }
 export const NotebooksKernelConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
     content: S.optional(S.Unknown),
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    parent_resource: S.optional(
-      S.NullOr(NotebooksKernelConfigCreateRequestParentResource),
-    ),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -683,33 +560,10 @@ export const NotebooksKernelDataframeRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksKernelDataframeRetrieveResponse",
 }) as any as S.Schema<NotebooksKernelDataframeRetrieveResponse>;
 
-export type NotebooksKernelExecuteCreateRequestParentResourceType =
-  | "account"
-  | (string & {});
-export const NotebooksKernelExecuteCreateRequestParentResourceType =
-  /*@__PURE__*/ S.String;
-
-/** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-export interface NotebooksKernelExecuteCreateRequestParentResource {
-  type: NotebooksKernelExecuteCreateRequestParentResourceType;
-  id: string;
-}
-export const NotebooksKernelExecuteCreateRequestParentResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: NotebooksKernelExecuteCreateRequestParentResourceType,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "NotebooksKernelExecuteCreateRequestParentResource",
-  }) as any as S.Schema<NotebooksKernelExecuteCreateRequestParentResource>;
-
 export interface NotebooksKernelExecuteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** UUID of the notebook. */
-  id?: string;
   /** Title of the notebook. */
   title?: string | null;
   /** Notebook content as a ProseMirror JSON document structure. */
@@ -720,34 +574,17 @@ export interface NotebooksKernelExecuteCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-  parent_resource?: NotebooksKernelExecuteCreateRequestParentResource | null;
   _create_in_folder?: string;
 }
 export const NotebooksKernelExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
     content: S.optional(S.Unknown),
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    parent_resource: S.optional(
-      S.NullOr(NotebooksKernelExecuteCreateRequestParentResource),
-    ),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -767,33 +604,10 @@ export const NotebooksKernelExecuteCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksKernelExecuteCreateResponse",
 }) as any as S.Schema<NotebooksKernelExecuteCreateResponse>;
 
-export type NotebooksKernelExecuteStreamCreateRequestParentResourceType =
-  | "account"
-  | (string & {});
-export const NotebooksKernelExecuteStreamCreateRequestParentResourceType =
-  /*@__PURE__*/ S.String;
-
-/** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-export interface NotebooksKernelExecuteStreamCreateRequestParentResource {
-  type: NotebooksKernelExecuteStreamCreateRequestParentResourceType;
-  id: string;
-}
-export const NotebooksKernelExecuteStreamCreateRequestParentResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: NotebooksKernelExecuteStreamCreateRequestParentResourceType,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "NotebooksKernelExecuteStreamCreateRequestParentResource",
-  }) as any as S.Schema<NotebooksKernelExecuteStreamCreateRequestParentResource>;
-
 export interface NotebooksKernelExecuteStreamCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** UUID of the notebook. */
-  id?: string;
   /** Title of the notebook. */
   title?: string | null;
   /** Notebook content as a ProseMirror JSON document structure. */
@@ -804,14 +618,6 @@ export interface NotebooksKernelExecuteStreamCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-  parent_resource?: NotebooksKernelExecuteStreamCreateRequestParentResource | null;
   _create_in_folder?: string;
 }
 export const NotebooksKernelExecuteStreamCreateRequest =
@@ -819,20 +625,11 @@ export const NotebooksKernelExecuteStreamCreateRequest =
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       short_id: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
       title: S.optional(S.NullOr(S.String)),
       content: S.optional(S.Unknown),
       text_content: S.optional(S.NullOr(S.String)),
       version: S.optional(S.Number),
       deleted: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      last_modified_at: S.optional(S.String),
-      last_modified_by: S.optional(UserBasic),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      parent_resource: S.optional(
-        S.NullOr(NotebooksKernelExecuteStreamCreateRequestParentResource),
-      ),
       _create_in_folder: S.optional(S.String),
     }).pipe(
       T.Http({
@@ -851,33 +648,10 @@ export const NotebooksKernelExecuteStreamCreateResponse =
     identifier: "NotebooksKernelExecuteStreamCreateResponse",
   }) as any as S.Schema<NotebooksKernelExecuteStreamCreateResponse>;
 
-export type NotebooksKernelRestartCreateRequestParentResourceType =
-  | "account"
-  | (string & {});
-export const NotebooksKernelRestartCreateRequestParentResourceType =
-  /*@__PURE__*/ S.String;
-
-/** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-export interface NotebooksKernelRestartCreateRequestParentResource {
-  type: NotebooksKernelRestartCreateRequestParentResourceType;
-  id: string;
-}
-export const NotebooksKernelRestartCreateRequestParentResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: NotebooksKernelRestartCreateRequestParentResourceType,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "NotebooksKernelRestartCreateRequestParentResource",
-  }) as any as S.Schema<NotebooksKernelRestartCreateRequestParentResource>;
-
 export interface NotebooksKernelRestartCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** UUID of the notebook. */
-  id?: string;
   /** Title of the notebook. */
   title?: string | null;
   /** Notebook content as a ProseMirror JSON document structure. */
@@ -888,34 +662,17 @@ export interface NotebooksKernelRestartCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-  parent_resource?: NotebooksKernelRestartCreateRequestParentResource | null;
   _create_in_folder?: string;
 }
 export const NotebooksKernelRestartCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
     content: S.optional(S.Unknown),
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    parent_resource: S.optional(
-      S.NullOr(NotebooksKernelRestartCreateRequestParentResource),
-    ),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -935,33 +692,10 @@ export const NotebooksKernelRestartCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksKernelRestartCreateResponse",
 }) as any as S.Schema<NotebooksKernelRestartCreateResponse>;
 
-export type NotebooksKernelStartCreateRequestParentResourceType =
-  | "account"
-  | (string & {});
-export const NotebooksKernelStartCreateRequestParentResourceType =
-  /*@__PURE__*/ S.String;
-
-/** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-export interface NotebooksKernelStartCreateRequestParentResource {
-  type: NotebooksKernelStartCreateRequestParentResourceType;
-  id: string;
-}
-export const NotebooksKernelStartCreateRequestParentResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: NotebooksKernelStartCreateRequestParentResourceType,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "NotebooksKernelStartCreateRequestParentResource",
-  }) as any as S.Schema<NotebooksKernelStartCreateRequestParentResource>;
-
 export interface NotebooksKernelStartCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** UUID of the notebook. */
-  id?: string;
   /** Title of the notebook. */
   title?: string | null;
   /** Notebook content as a ProseMirror JSON document structure. */
@@ -972,34 +706,17 @@ export interface NotebooksKernelStartCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-  parent_resource?: NotebooksKernelStartCreateRequestParentResource | null;
   _create_in_folder?: string;
 }
 export const NotebooksKernelStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
     content: S.optional(S.Unknown),
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    parent_resource: S.optional(
-      S.NullOr(NotebooksKernelStartCreateRequestParentResource),
-    ),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -1047,33 +764,10 @@ export const NotebooksKernelStatusRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksKernelStatusRetrieveResponse",
 }) as any as S.Schema<NotebooksKernelStatusRetrieveResponse>;
 
-export type NotebooksKernelStopCreateRequestParentResourceType =
-  | "account"
-  | (string & {});
-export const NotebooksKernelStopCreateRequestParentResourceType =
-  /*@__PURE__*/ S.String;
-
-/** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-export interface NotebooksKernelStopCreateRequestParentResource {
-  type: NotebooksKernelStopCreateRequestParentResourceType;
-  id: string;
-}
-export const NotebooksKernelStopCreateRequestParentResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: NotebooksKernelStopCreateRequestParentResourceType,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "NotebooksKernelStopCreateRequestParentResource",
-  }) as any as S.Schema<NotebooksKernelStopCreateRequestParentResource>;
-
 export interface NotebooksKernelStopCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** UUID of the notebook. */
-  id?: string;
   /** Title of the notebook. */
   title?: string | null;
   /** Notebook content as a ProseMirror JSON document structure. */
@@ -1084,34 +778,17 @@ export interface NotebooksKernelStopCreateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-  parent_resource?: NotebooksKernelStopCreateRequestParentResource | null;
   _create_in_folder?: string;
 }
 export const NotebooksKernelStopCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
     content: S.optional(S.Unknown),
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    parent_resource: S.optional(
-      S.NullOr(NotebooksKernelStopCreateRequestParentResource),
-    ),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -1170,7 +847,7 @@ export const NotebooksListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotebooksListRequest",
 }) as any as S.Schema<NotebooksListRequest>;
 
-export interface NotebookMinimal {
+export interface NotebookMinimalOutput {
   /** UUID of the notebook. */
   id?: string;
   /** Short alphanumeric identifier used in URLs and API lookups. */
@@ -1180,79 +857,56 @@ export interface NotebookMinimal {
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   last_modified_at?: string;
-  last_modified_by?: UserBasic;
+  last_modified_by?: UserBasic | null;
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
-  _create_in_folder?: string;
 }
-export const NotebookMinimal = /*@__PURE__*/ S.suspend(() =>
+export const NotebookMinimalOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     short_id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
     deleted: S.optional(S.Boolean),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
+    last_modified_by: S.optional(S.NullOr(UserBasic)),
     user_access_level: S.optional(S.NullOr(S.String)),
-    _create_in_folder: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "NotebookMinimal",
-}) as any as S.Schema<NotebookMinimal>;
+  identifier: "NotebookMinimalOutput",
+}) as any as S.Schema<NotebookMinimalOutput>;
 
-export type PaginatedNotebookMinimalListResultsList = NotebookMinimal[];
-export const PaginatedNotebookMinimalListResultsList = /*@__PURE__*/ S.Array(
-  NotebookMinimal,
-) as any as S.Schema<PaginatedNotebookMinimalListResultsList>;
+export type PaginatedNotebookMinimalListOutputResultsList =
+  ReadonlyArray<NotebookMinimalOutput>;
+export const PaginatedNotebookMinimalListOutputResultsList =
+  /*@__PURE__*/ S.Array(
+    NotebookMinimalOutput,
+  ) as any as S.Schema<PaginatedNotebookMinimalListOutputResultsList>;
 
-export interface PaginatedNotebookMinimalList {
+export interface PaginatedNotebookMinimalListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
-  results?: PaginatedNotebookMinimalListResultsList;
+  results?: PaginatedNotebookMinimalListOutputResultsList;
 }
-export const PaginatedNotebookMinimalList = /*@__PURE__*/ S.suspend(() =>
+export const PaginatedNotebookMinimalListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedNotebookMinimalListResultsList),
+    results: S.optional(PaginatedNotebookMinimalListOutputResultsList),
   }),
 ).annotate({
-  identifier: "PaginatedNotebookMinimalList",
-}) as any as S.Schema<PaginatedNotebookMinimalList>;
-
-export type NotebooksPartialUpdateRequestParentResourceType =
-  | "account"
-  | (string & {});
-export const NotebooksPartialUpdateRequestParentResourceType =
-  /*@__PURE__*/ S.String;
-
-/** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-export interface NotebooksPartialUpdateRequestParentResource {
-  type: NotebooksPartialUpdateRequestParentResourceType;
-  id: string;
-}
-export const NotebooksPartialUpdateRequestParentResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: NotebooksPartialUpdateRequestParentResourceType,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "NotebooksPartialUpdateRequestParentResource",
-  }) as any as S.Schema<NotebooksPartialUpdateRequestParentResource>;
+  identifier: "PaginatedNotebookMinimalListOutput",
+}) as any as S.Schema<PaginatedNotebookMinimalListOutput>;
 
 export interface NotebooksPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** UUID of the notebook. */
-  id?: string;
   /** Title of the notebook. */
   title?: string | null;
   /** Notebook content as a ProseMirror JSON document structure. */
@@ -1263,34 +917,17 @@ export interface NotebooksPartialUpdateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-  parent_resource?: NotebooksPartialUpdateRequestParentResource | null;
   _create_in_folder?: string;
 }
 export const NotebooksPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
     content: S.optional(S.Unknown),
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    parent_resource: S.optional(
-      S.NullOr(NotebooksPartialUpdateRequestParentResource),
-    ),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -1385,7 +1022,8 @@ export const SharePassword = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SharePassword" }) as any as S.Schema<SharePassword>;
 
-export type SharingConfigurationSharePasswordsList = SharePassword[];
+export type SharingConfigurationSharePasswordsList =
+  ReadonlyArray<SharePassword>;
 export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
   SharePassword,
 ) as any as S.Schema<SharingConfigurationSharePasswordsList>;
@@ -1415,7 +1053,8 @@ export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharingConfiguration",
 }) as any as S.Schema<SharingConfiguration>;
 
-export type NotebooksSharingListResponseBodyList = SharingConfiguration[];
+export type NotebooksSharingListResponseBodyList =
+  ReadonlyArray<SharingConfiguration>;
 export const NotebooksSharingListResponseBodyList = /*@__PURE__*/ S.Array(
   SharingConfiguration,
 ) as any as S.Schema<NotebooksSharingListResponseBodyList>;
@@ -1427,40 +1066,22 @@ export const NotebooksSharingListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotebooksSharingListResponse",
 }) as any as S.Schema<NotebooksSharingListResponse>;
 
-export type NotebooksSharingPasswordsCreateRequestSharePasswordsList =
-  SharePassword[];
-export const NotebooksSharingPasswordsCreateRequestSharePasswordsList =
-  /*@__PURE__*/ S.Array(
-    SharePassword,
-  ) as any as S.Schema<NotebooksSharingPasswordsCreateRequestSharePasswordsList>;
-
 export interface NotebooksSharingPasswordsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   notebook_id: string;
-  created_at?: string;
   enabled?: boolean;
-  access_token?: string | Redacted.Redacted<string> | null;
   settings?: unknown;
   password_required?: boolean;
-  share_passwords?: NotebooksSharingPasswordsCreateRequestSharePasswordsList;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const NotebooksSharingPasswordsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       notebook_id: S.String.pipe(T.Label()),
-      created_at: S.optional(S.String),
       enabled: S.optional(S.Boolean),
-      access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
       settings: S.optional(S.Unknown),
       password_required: S.optional(S.Boolean),
-      share_passwords: S.optional(
-        NotebooksSharingPasswordsCreateRequestSharePasswordsList,
-      ),
-      user_access_level: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1502,40 +1123,22 @@ export const NotebooksSharingPasswordsDestroyResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksSharingPasswordsDestroyResponse",
 }) as any as S.Schema<NotebooksSharingPasswordsDestroyResponse>;
 
-export type NotebooksSharingRefreshCreateRequestSharePasswordsList =
-  SharePassword[];
-export const NotebooksSharingRefreshCreateRequestSharePasswordsList =
-  /*@__PURE__*/ S.Array(
-    SharePassword,
-  ) as any as S.Schema<NotebooksSharingRefreshCreateRequestSharePasswordsList>;
-
 export interface NotebooksSharingRefreshCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   notebook_id: string;
-  created_at?: string;
   enabled?: boolean;
-  access_token?: string | Redacted.Redacted<string> | null;
   settings?: unknown;
   password_required?: boolean;
-  share_passwords?: NotebooksSharingRefreshCreateRequestSharePasswordsList;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const NotebooksSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       notebook_id: S.String.pipe(T.Label()),
-      created_at: S.optional(S.String),
       enabled: S.optional(S.Boolean),
-      access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
       settings: S.optional(S.Unknown),
       password_required: S.optional(S.Boolean),
-      share_passwords: S.optional(
-        NotebooksSharingRefreshCreateRequestSharePasswordsList,
-      ),
-      user_access_level: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1547,32 +1150,10 @@ export const NotebooksSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(
   identifier: "NotebooksSharingRefreshCreateRequest",
 }) as any as S.Schema<NotebooksSharingRefreshCreateRequest>;
 
-export type NotebooksUpdateRequestParentResourceType =
-  | "account"
-  | (string & {});
-export const NotebooksUpdateRequestParentResourceType = /*@__PURE__*/ S.String;
-
-/** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-export interface NotebooksUpdateRequestParentResource {
-  type: NotebooksUpdateRequestParentResourceType;
-  id: string;
-}
-export const NotebooksUpdateRequestParentResource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: NotebooksUpdateRequestParentResourceType,
-      id: S.String,
-    }),
-).annotate({
-  identifier: "NotebooksUpdateRequestParentResource",
-}) as any as S.Schema<NotebooksUpdateRequestParentResource>;
-
 export interface NotebooksUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
-  /** UUID of the notebook. */
-  id?: string;
   /** Title of the notebook. */
   title?: string | null;
   /** Notebook content as a ProseMirror JSON document structure. */
@@ -1583,32 +1164,17 @@ export interface NotebooksUpdateRequest {
   version?: number;
   /** Whether the notebook has been soft-deleted. */
   deleted?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_modified_at?: string;
-  last_modified_by?: UserBasic;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
-  parent_resource?: NotebooksUpdateRequestParentResource | null;
   _create_in_folder?: string;
 }
 export const NotebooksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
     content: S.optional(S.Unknown),
     text_content: S.optional(S.NullOr(S.String)),
     version: S.optional(S.Number),
     deleted: S.optional(S.Boolean),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    last_modified_at: S.optional(S.String),
-    last_modified_by: S.optional(UserBasic),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    parent_resource: S.optional(S.NullOr(NotebooksUpdateRequestParentResource)),
     _create_in_folder: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -1732,12 +1298,12 @@ export type NotebooksCreateError =
 /** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
 export const notebooksCreate: API.OperationMethod<
   NotebooksCreateRequest,
-  Notebook,
+  NotebookOutput,
   NotebooksCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: NotebooksCreateRequest,
-  output: Notebook,
+  output: NotebookOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1935,12 +1501,12 @@ export type NotebooksListError =
 /** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
 export const notebooksList: API.OperationMethod<
   NotebooksListRequest,
-  PaginatedNotebookMinimalList,
+  PaginatedNotebookMinimalListOutput,
   NotebooksListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: NotebooksListRequest,
-  output: PaginatedNotebookMinimalList,
+  output: PaginatedNotebookMinimalListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1954,12 +1520,12 @@ export type NotebooksPartialUpdateError =
 /** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
 export const notebooksPartialUpdate: API.OperationMethod<
   NotebooksPartialUpdateRequest,
-  Notebook,
+  NotebookOutput,
   NotebooksPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: NotebooksPartialUpdateRequest,
-  output: Notebook,
+  output: NotebookOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1987,12 +1553,12 @@ export type NotebooksRetrieveError = Forbidden | NotFound | PosthogOpError;
 /** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
 export const notebooksRetrieve: API.OperationMethod<
   NotebooksRetrieveRequest,
-  Notebook,
+  NotebookOutput,
   NotebooksRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: NotebooksRetrieveRequest,
-  output: Notebook,
+  output: NotebookOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2064,12 +1630,12 @@ export type NotebooksUpdateError =
 /** The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement. */
 export const notebooksUpdate: API.OperationMethod<
   NotebooksUpdateRequest,
-  Notebook,
+  NotebookOutput,
   NotebooksUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: NotebooksUpdateRequest,
-  output: Notebook,
+  output: NotebookOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

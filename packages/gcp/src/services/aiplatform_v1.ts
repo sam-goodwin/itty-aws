@@ -99,7 +99,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -148,7 +148,7 @@ export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleLongrunningOperation",
 }) as any as S.Schema<GoogleLongrunningOperation>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -255,8 +255,7 @@ export const GoogleCloudAiplatformV1AddContextChildrenResponse =
 export type GoogleCloudAiplatformV1EventTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "INPUT"
-  | "OUTPUT"
-  | (string & {});
+  | "OUTPUT";
 export const GoogleCloudAiplatformV1EventTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -290,7 +289,8 @@ export const GoogleCloudAiplatformV1Event = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1Event",
 }) as any as S.Schema<GoogleCloudAiplatformV1Event>;
 
-export type GoogleCloudAiplatformV1EventList = GoogleCloudAiplatformV1Event[];
+export type GoogleCloudAiplatformV1EventList =
+  ReadonlyArray<GoogleCloudAiplatformV1Event>;
 export const GoogleCloudAiplatformV1EventList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Event,
 ) as any as S.Schema<GoogleCloudAiplatformV1EventList>;
@@ -359,7 +359,7 @@ export const GoogleCloudAiplatformV1MeasurementMetric = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1MeasurementMetric>;
 
 export type GoogleCloudAiplatformV1MeasurementMetricList =
-  GoogleCloudAiplatformV1MeasurementMetric[];
+  ReadonlyArray<GoogleCloudAiplatformV1MeasurementMetric>;
 export const GoogleCloudAiplatformV1MeasurementMetricList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MeasurementMetric,
@@ -423,7 +423,7 @@ export const AddTrialMeasurementProjectsLocationsStudiesTrialsRequest =
   }) as any as S.Schema<AddTrialMeasurementProjectsLocationsStudiesTrialsRequest>;
 
 export type GoogleCloudAiplatformV1MeasurementList =
-  GoogleCloudAiplatformV1Measurement[];
+  ReadonlyArray<GoogleCloudAiplatformV1Measurement>;
 export const GoogleCloudAiplatformV1MeasurementList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Measurement,
 ) as any as S.Schema<GoogleCloudAiplatformV1MeasurementList>;
@@ -446,7 +446,7 @@ export const GoogleCloudAiplatformV1TrialParameter = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1TrialParameter>;
 
 export type GoogleCloudAiplatformV1TrialParameterList =
-  GoogleCloudAiplatformV1TrialParameter[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrialParameter>;
 export const GoogleCloudAiplatformV1TrialParameterList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1TrialParameter,
 ) as any as S.Schema<GoogleCloudAiplatformV1TrialParameterList>;
@@ -457,8 +457,7 @@ export type GoogleCloudAiplatformV1TrialStateEnum =
   | "ACTIVE"
   | "STOPPING"
   | "SUCCEEDED"
-  | "INFEASIBLE"
-  | (string & {});
+  | "INFEASIBLE";
 export const GoogleCloudAiplatformV1TrialStateEnum = /*@__PURE__*/ S.String;
 
 /** A message representing a Trial. A Trial contains a unique set of Parameters that has been or will be evaluated, along with the objective metrics got by running the Trial. */
@@ -507,9 +506,7 @@ export const GoogleCloudAiplatformV1Trial = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1Trial",
 }) as any as S.Schema<GoogleCloudAiplatformV1Trial>;
 
-export type GoogleCloudAiplatformV1PartialArgNullValueEnum =
-  | "NULL_VALUE"
-  | (string & {});
+export type GoogleCloudAiplatformV1PartialArgNullValueEnum = "NULL_VALUE";
 export const GoogleCloudAiplatformV1PartialArgNullValueEnum =
   /*@__PURE__*/ S.String;
 
@@ -542,7 +539,7 @@ export const GoogleCloudAiplatformV1PartialArg = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1PartialArg>;
 
 export type GoogleCloudAiplatformV1PartialArgList =
-  GoogleCloudAiplatformV1PartialArg[];
+  ReadonlyArray<GoogleCloudAiplatformV1PartialArg>;
 export const GoogleCloudAiplatformV1PartialArgList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1PartialArg,
 ) as any as S.Schema<GoogleCloudAiplatformV1PartialArgList>;
@@ -573,8 +570,7 @@ export type GoogleCloudAiplatformV1FunctionResponseSchedulingEnum =
   | "SCHEDULING_UNSPECIFIED"
   | "SILENT"
   | "WHEN_IDLE"
-  | "INTERRUPT"
-  | (string & {});
+  | "INTERRUPT";
 export const GoogleCloudAiplatformV1FunctionResponseSchedulingEnum =
   /*@__PURE__*/ S.String;
 
@@ -636,7 +632,7 @@ export const GoogleCloudAiplatformV1FunctionResponsePart =
   }) as any as S.Schema<GoogleCloudAiplatformV1FunctionResponsePart>;
 
 export type GoogleCloudAiplatformV1FunctionResponsePartList =
-  GoogleCloudAiplatformV1FunctionResponsePart[];
+  ReadonlyArray<GoogleCloudAiplatformV1FunctionResponsePart>;
 export const GoogleCloudAiplatformV1FunctionResponsePartList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FunctionResponsePart,
@@ -688,8 +684,7 @@ export const GoogleCloudAiplatformV1FileData = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudAiplatformV1ExecutableCodeLanguageEnum =
   | "LANGUAGE_UNSPECIFIED"
-  | "PYTHON"
-  | (string & {});
+  | "PYTHON";
 export const GoogleCloudAiplatformV1ExecutableCodeLanguageEnum =
   /*@__PURE__*/ S.String;
 
@@ -714,8 +709,7 @@ export type GoogleCloudAiplatformV1CodeExecutionResultOutcomeEnum =
   | "OUTCOME_UNSPECIFIED"
   | "OUTCOME_OK"
   | "OUTCOME_FAILED"
-  | "OUTCOME_DEADLINE_EXCEEDED"
-  | (string & {});
+  | "OUTCOME_DEADLINE_EXCEEDED";
 export const GoogleCloudAiplatformV1CodeExecutionResultOutcomeEnum =
   /*@__PURE__*/ S.String;
 
@@ -743,8 +737,7 @@ export type GoogleCloudAiplatformV1PartMediaResolutionLevelEnum =
   | "MEDIA_RESOLUTION_LOW"
   | "MEDIA_RESOLUTION_MEDIUM"
   | "MEDIA_RESOLUTION_HIGH"
-  | "MEDIA_RESOLUTION_ULTRA_HIGH"
-  | (string & {});
+  | "MEDIA_RESOLUTION_ULTRA_HIGH";
 export const GoogleCloudAiplatformV1PartMediaResolutionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -844,7 +837,8 @@ export const GoogleCloudAiplatformV1Part = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1Part",
 }) as any as S.Schema<GoogleCloudAiplatformV1Part>;
 
-export type GoogleCloudAiplatformV1PartList = GoogleCloudAiplatformV1Part[];
+export type GoogleCloudAiplatformV1PartList =
+  ReadonlyArray<GoogleCloudAiplatformV1Part>;
 export const GoogleCloudAiplatformV1PartList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Part,
 ) as any as S.Schema<GoogleCloudAiplatformV1PartList>;
@@ -1020,7 +1014,7 @@ export const GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSn
   }) as any as S.Schema<GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet>;
 
 export type GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippetList =
-  GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet[];
+  ReadonlyArray<GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet>;
 export const GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesReviewSnippet,
@@ -1119,7 +1113,7 @@ export const GoogleCloudAiplatformV1GroundingChunk = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1GroundingChunk>;
 
 export type GoogleCloudAiplatformV1GroundingChunkList =
-  GoogleCloudAiplatformV1GroundingChunk[];
+  ReadonlyArray<GoogleCloudAiplatformV1GroundingChunk>;
 export const GoogleCloudAiplatformV1GroundingChunkList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1GroundingChunk,
 ) as any as S.Schema<GoogleCloudAiplatformV1GroundingChunkList>;
@@ -1142,7 +1136,7 @@ export const GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri =
   }) as any as S.Schema<GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri>;
 
 export type GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUriList =
-  GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri[];
+  ReadonlyArray<GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri>;
 export const GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUriList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1GroundingMetadataSourceFlaggingUri,
@@ -1165,7 +1159,7 @@ export const GoogleCloudAiplatformV1SearchEntryPoint = /*@__PURE__*/ S.suspend(
   identifier: "GoogleCloudAiplatformV1SearchEntryPoint",
 }) as any as S.Schema<GoogleCloudAiplatformV1SearchEntryPoint>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1192,7 +1186,7 @@ export const GoogleCloudAiplatformV1Segment = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1Segment",
 }) as any as S.Schema<GoogleCloudAiplatformV1Segment>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -1221,7 +1215,7 @@ export const GoogleCloudAiplatformV1GroundingSupport = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1GroundingSupport>;
 
 export type GoogleCloudAiplatformV1GroundingSupportList =
-  GoogleCloudAiplatformV1GroundingSupport[];
+  ReadonlyArray<GoogleCloudAiplatformV1GroundingSupport>;
 export const GoogleCloudAiplatformV1GroundingSupportList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1GroundingSupport,
@@ -1522,8 +1516,7 @@ export type GoogleCloudAiplatformV1EnterpriseWebSearchBlockingConfidenceEnum =
   | "BLOCK_HIGH_AND_ABOVE"
   | "BLOCK_HIGHER_AND_ABOVE"
   | "BLOCK_VERY_HIGH_AND_ABOVE"
-  | "BLOCK_ONLY_EXTREMELY_HIGH"
-  | (string & {});
+  | "BLOCK_ONLY_EXTREMELY_HIGH";
 export const GoogleCloudAiplatformV1EnterpriseWebSearchBlockingConfidenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1548,8 +1541,7 @@ export const GoogleCloudAiplatformV1EnterpriseWebSearch =
 
 export type GoogleCloudAiplatformV1DynamicRetrievalConfigModeEnum =
   | "MODE_UNSPECIFIED"
-  | "MODE_DYNAMIC"
-  | (string & {});
+  | "MODE_DYNAMIC";
 export const GoogleCloudAiplatformV1DynamicRetrievalConfigModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1599,7 +1591,8 @@ export const GoogleCloudAiplatformV1GoogleMaps = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1GoogleMaps",
 }) as any as S.Schema<GoogleCloudAiplatformV1GoogleMaps>;
 
-export type GoogleCloudAiplatformV1SchemaList = GoogleCloudAiplatformV1Schema[];
+export type GoogleCloudAiplatformV1SchemaList =
+  ReadonlyArray<GoogleCloudAiplatformV1Schema>;
 export const GoogleCloudAiplatformV1SchemaList = /*@__PURE__*/ S.Array(
   S.suspend(() => GoogleCloudAiplatformV1Schema),
 ) as any as S.Schema<GoogleCloudAiplatformV1SchemaList>;
@@ -1620,8 +1613,7 @@ export type GoogleCloudAiplatformV1SchemaTypeEnum =
   | "BOOLEAN"
   | "ARRAY"
   | "OBJECT"
-  | "NULL"
-  | (string & {});
+  | "NULL";
 export const GoogleCloudAiplatformV1SchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). */
@@ -1712,8 +1704,7 @@ export const GoogleCloudAiplatformV1Schema = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudAiplatformV1FunctionDeclarationBehaviorEnum =
   | "UNSPECIFIED"
   | "BLOCKING"
-  | "NON_BLOCKING"
-  | (string & {});
+  | "NON_BLOCKING";
 export const GoogleCloudAiplatformV1FunctionDeclarationBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -1752,7 +1743,7 @@ export const GoogleCloudAiplatformV1FunctionDeclaration =
   }) as any as S.Schema<GoogleCloudAiplatformV1FunctionDeclaration>;
 
 export type GoogleCloudAiplatformV1FunctionDeclarationList =
-  GoogleCloudAiplatformV1FunctionDeclaration[];
+  ReadonlyArray<GoogleCloudAiplatformV1FunctionDeclaration>;
 export const GoogleCloudAiplatformV1FunctionDeclarationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FunctionDeclaration,
@@ -1765,8 +1756,7 @@ export type GoogleCloudAiplatformV1ToolGoogleSearchBlockingConfidenceEnum =
   | "BLOCK_HIGH_AND_ABOVE"
   | "BLOCK_HIGHER_AND_ABOVE"
   | "BLOCK_VERY_HIGH_AND_ABOVE"
-  | "BLOCK_ONLY_EXTREMELY_HIGH"
-  | (string & {});
+  | "BLOCK_ONLY_EXTREMELY_HIGH";
 export const GoogleCloudAiplatformV1ToolGoogleSearchBlockingConfidenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1853,7 +1843,7 @@ export const GoogleCloudAiplatformV1VertexAISearchDataStoreSpec =
   }) as any as S.Schema<GoogleCloudAiplatformV1VertexAISearchDataStoreSpec>;
 
 export type GoogleCloudAiplatformV1VertexAISearchDataStoreSpecList =
-  GoogleCloudAiplatformV1VertexAISearchDataStoreSpec[];
+  ReadonlyArray<GoogleCloudAiplatformV1VertexAISearchDataStoreSpec>;
 export const GoogleCloudAiplatformV1VertexAISearchDataStoreSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1VertexAISearchDataStoreSpec,
@@ -1905,7 +1895,7 @@ export const GoogleCloudAiplatformV1VertexRagStoreRagResource =
   }) as any as S.Schema<GoogleCloudAiplatformV1VertexRagStoreRagResource>;
 
 export type GoogleCloudAiplatformV1VertexRagStoreRagResourceList =
-  GoogleCloudAiplatformV1VertexRagStoreRagResource[];
+  ReadonlyArray<GoogleCloudAiplatformV1VertexRagStoreRagResource>;
 export const GoogleCloudAiplatformV1VertexRagStoreRagResourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1VertexRagStoreRagResource,
@@ -1939,8 +1929,7 @@ export const GoogleCloudAiplatformV1VertexRagStore = /*@__PURE__*/ S.suspend(
 export type GoogleCloudAiplatformV1ExternalApiApiSpecEnum =
   | "API_SPEC_UNSPECIFIED"
   | "SIMPLE_SEARCH"
-  | "ELASTIC_SEARCH"
-  | (string & {});
+  | "ELASTIC_SEARCH";
 export const GoogleCloudAiplatformV1ExternalApiApiSpecEnum =
   /*@__PURE__*/ S.String;
 
@@ -1957,8 +1946,7 @@ export type GoogleCloudAiplatformV1AuthConfigApiKeyConfigHttpElementLocationEnum
     | "HTTP_IN_HEADER"
     | "HTTP_IN_PATH"
     | "HTTP_IN_BODY"
-    | "HTTP_IN_COOKIE"
-    | (string & {});
+    | "HTTP_IN_COOKIE";
 export const GoogleCloudAiplatformV1AuthConfigApiKeyConfigHttpElementLocationEnum =
   /*@__PURE__*/ S.String;
 
@@ -2011,8 +1999,7 @@ export type GoogleCloudAiplatformV1AuthConfigAuthTypeEnum =
   | "HTTP_BASIC_AUTH"
   | "GOOGLE_SERVICE_ACCOUNT_AUTH"
   | "OAUTH"
-  | "OIDC_AUTH"
-  | (string & {});
+  | "OIDC_AUTH";
 export const GoogleCloudAiplatformV1AuthConfigAuthTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2224,8 +2211,7 @@ export type GoogleCloudAiplatformV1ToolComputerUseEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_BROWSER"
   | "ENVIRONMENT_MOBILE"
-  | "ENVIRONMENT_DESKTOP"
-  | (string & {});
+  | "ENVIRONMENT_DESKTOP";
 export const GoogleCloudAiplatformV1ToolComputerUseEnvironmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -2323,7 +2309,8 @@ export const GoogleCloudAiplatformV1Tool = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1Tool",
 }) as any as S.Schema<GoogleCloudAiplatformV1Tool>;
 
-export type GoogleCloudAiplatformV1ToolList = GoogleCloudAiplatformV1Tool[];
+export type GoogleCloudAiplatformV1ToolList =
+  ReadonlyArray<GoogleCloudAiplatformV1Tool>;
 export const GoogleCloudAiplatformV1ToolList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Tool,
 ) as any as S.Schema<GoogleCloudAiplatformV1ToolList>;
@@ -2395,7 +2382,7 @@ export const GoogleCloudAiplatformV1RagContextsContext =
   }) as any as S.Schema<GoogleCloudAiplatformV1RagContextsContext>;
 
 export type GoogleCloudAiplatformV1RagContextsContextList =
-  GoogleCloudAiplatformV1RagContextsContext[];
+  ReadonlyArray<GoogleCloudAiplatformV1RagContextsContext>;
 export const GoogleCloudAiplatformV1RagContextsContextList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1RagContextsContext,
@@ -2450,8 +2437,7 @@ export type GoogleCloudAiplatformV1MachineSpecAcceleratorTypeEnum =
   | "TPU_V2"
   | "TPU_V3"
   | "TPU_V4_POD"
-  | "TPU_V5_LITEPOD"
-  | (string & {});
+  | "TPU_V5_LITEPOD";
 export const GoogleCloudAiplatformV1MachineSpecAcceleratorTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2459,8 +2445,7 @@ export type GoogleCloudAiplatformV1ReservationAffinityReservationAffinityTypeEnu
     | "TYPE_UNSPECIFIED"
     | "NO_RESERVATION"
     | "ANY_RESERVATION"
-    | "SPECIFIC_RESERVATION"
-    | (string & {});
+    | "SPECIFIC_RESERVATION";
 export const GoogleCloudAiplatformV1ReservationAffinityReservationAffinityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2550,8 +2535,7 @@ export const GoogleCloudAiplatformV1EncryptionSpec = /*@__PURE__*/ S.suspend(
 export type GoogleCloudAiplatformV1NotebookRuntimeHealthStateEnum =
   | "HEALTH_STATE_UNSPECIFIED"
   | "HEALTHY"
-  | "UNHEALTHY"
-  | (string & {});
+  | "UNHEALTHY";
 export const GoogleCloudAiplatformV1NotebookRuntimeHealthStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2559,8 +2543,7 @@ export type GoogleCloudAiplatformV1NotebookReservationAffinityConsumeReservation
     | "RESERVATION_AFFINITY_TYPE_UNSPECIFIED"
     | "RESERVATION_NONE"
     | "RESERVATION_ANY"
-    | "RESERVATION_SPECIFIC"
-    | (string & {});
+    | "RESERVATION_SPECIFIC";
 export const GoogleCloudAiplatformV1NotebookReservationAffinityConsumeReservationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2594,16 +2577,14 @@ export type GoogleCloudAiplatformV1NotebookRuntimeRuntimeStateEnum =
   | "STOPPED"
   | "BEING_UPGRADED"
   | "ERROR"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const GoogleCloudAiplatformV1NotebookRuntimeRuntimeStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1NotebookRuntimeNotebookRuntimeTypeEnum =
   | "NOTEBOOK_RUNTIME_TYPE_UNSPECIFIED"
   | "USER_DEFINED"
-  | "ONE_CLICK"
-  | (string & {});
+  | "ONE_CLICK";
 export const GoogleCloudAiplatformV1NotebookRuntimeNotebookRuntimeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2661,8 +2642,7 @@ export type GoogleCloudAiplatformV1PostStartupScriptConfigPostStartupScriptBehav
     | "POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED"
     | "RUN_ONCE"
     | "RUN_EVERY_START"
-    | "DOWNLOAD_AND_RUN_EVERY_START"
-    | (string & {});
+    | "DOWNLOAD_AND_RUN_EVERY_START";
 export const GoogleCloudAiplatformV1PostStartupScriptConfigPostStartupScriptBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -2720,7 +2700,8 @@ export const GoogleCloudAiplatformV1EnvVar = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1EnvVar",
 }) as any as S.Schema<GoogleCloudAiplatformV1EnvVar>;
 
-export type GoogleCloudAiplatformV1EnvVarList = GoogleCloudAiplatformV1EnvVar[];
+export type GoogleCloudAiplatformV1EnvVarList =
+  ReadonlyArray<GoogleCloudAiplatformV1EnvVar>;
 export const GoogleCloudAiplatformV1EnvVarList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1EnvVar,
 ) as any as S.Schema<GoogleCloudAiplatformV1EnvVarList>;
@@ -3041,7 +3022,7 @@ export const AsyncRetrieveContextsProjectsLocationsRequest =
   }) as any as S.Schema<AsyncRetrieveContextsProjectsLocationsRequest>;
 
 export type GoogleCloudAiplatformV1ContentList =
-  GoogleCloudAiplatformV1Content[];
+  ReadonlyArray<GoogleCloudAiplatformV1Content>;
 export const GoogleCloudAiplatformV1ContentList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Content,
 ) as any as S.Schema<GoogleCloudAiplatformV1ContentList>;
@@ -3138,7 +3119,8 @@ export const GoogleCloudAiplatformV1Fact = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1Fact",
 }) as any as S.Schema<GoogleCloudAiplatformV1Fact>;
 
-export type GoogleCloudAiplatformV1FactList = GoogleCloudAiplatformV1Fact[];
+export type GoogleCloudAiplatformV1FactList =
+  ReadonlyArray<GoogleCloudAiplatformV1Fact>;
 export const GoogleCloudAiplatformV1FactList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Fact,
 ) as any as S.Schema<GoogleCloudAiplatformV1FactList>;
@@ -3211,16 +3193,14 @@ export type GoogleCloudAiplatformV1FeatureValueTypeEnum =
   | "STRING"
   | "STRING_ARRAY"
   | "BYTES"
-  | "STRUCT"
-  | (string & {});
+  | "STRUCT";
 export const GoogleCloudAiplatformV1FeatureValueTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyObjectiveEnum =
   | "OBJECTIVE_UNSPECIFIED"
   | "IMPORT_FEATURE_ANALYSIS"
-  | "SNAPSHOT_ANALYSIS"
-  | (string & {});
+  | "SNAPSHOT_ANALYSIS";
 export const GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyObjectiveEnum =
   /*@__PURE__*/ S.String;
 
@@ -3278,7 +3258,7 @@ export const GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly =
   }) as any as S.Schema<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly>;
 
 export type GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList =
-  GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly>;
 export const GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FeatureMonitoringStatsAnomaly,
@@ -3350,7 +3330,7 @@ export const GoogleCloudAiplatformV1CreateFeatureRequest =
   }) as any as S.Schema<GoogleCloudAiplatformV1CreateFeatureRequest>;
 
 export type GoogleCloudAiplatformV1CreateFeatureRequestList =
-  GoogleCloudAiplatformV1CreateFeatureRequest[];
+  ReadonlyArray<GoogleCloudAiplatformV1CreateFeatureRequest>;
 export const GoogleCloudAiplatformV1CreateFeatureRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1CreateFeatureRequest,
@@ -3423,8 +3403,7 @@ export type GoogleCloudAiplatformV1TensorboardTimeSeriesValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"
   | "SCALAR"
   | "TENSOR"
-  | "BLOB_SEQUENCE"
-  | (string & {});
+  | "BLOB_SEQUENCE";
 export const GoogleCloudAiplatformV1TensorboardTimeSeriesValueTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3516,7 +3495,7 @@ export const GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest =
   }) as any as S.Schema<GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest>;
 
 export type GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList =
-  GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest[];
+  ReadonlyArray<GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest>;
 export const GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1CreateTensorboardTimeSeriesRequest,
@@ -3566,7 +3545,7 @@ export const BatchCreateProjectsLocationsTensorboardsExperimentsRequest =
   }) as any as S.Schema<BatchCreateProjectsLocationsTensorboardsExperimentsRequest>;
 
 export type GoogleCloudAiplatformV1TensorboardTimeSeriesList =
-  GoogleCloudAiplatformV1TensorboardTimeSeries[];
+  ReadonlyArray<GoogleCloudAiplatformV1TensorboardTimeSeries>;
 export const GoogleCloudAiplatformV1TensorboardTimeSeriesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TensorboardTimeSeries,
@@ -3642,7 +3621,7 @@ export const GoogleCloudAiplatformV1CreateTensorboardRunRequest =
   }) as any as S.Schema<GoogleCloudAiplatformV1CreateTensorboardRunRequest>;
 
 export type GoogleCloudAiplatformV1CreateTensorboardRunRequestList =
-  GoogleCloudAiplatformV1CreateTensorboardRunRequest[];
+  ReadonlyArray<GoogleCloudAiplatformV1CreateTensorboardRunRequest>;
 export const GoogleCloudAiplatformV1CreateTensorboardRunRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1CreateTensorboardRunRequest,
@@ -3692,7 +3671,7 @@ export const BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest =
   }) as any as S.Schema<BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest>;
 
 export type GoogleCloudAiplatformV1TensorboardRunList =
-  GoogleCloudAiplatformV1TensorboardRun[];
+  ReadonlyArray<GoogleCloudAiplatformV1TensorboardRun>;
 export const GoogleCloudAiplatformV1TensorboardRunList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1TensorboardRun,
 ) as any as S.Schema<GoogleCloudAiplatformV1TensorboardRunList>;
@@ -3755,8 +3734,7 @@ export type GoogleCloudAiplatformV1EvaluatedAnnotationTypeEnum =
   | "EVALUATED_ANNOTATION_TYPE_UNSPECIFIED"
   | "TRUE_POSITIVE"
   | "FALSE_POSITIVE"
-  | "FALSE_NEGATIVE"
-  | (string & {});
+  | "FALSE_NEGATIVE";
 export const GoogleCloudAiplatformV1EvaluatedAnnotationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3778,7 +3756,7 @@ export const GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem =
   }) as any as S.Schema<GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem>;
 
 export type GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItemList =
-  GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem[];
+  ReadonlyArray<GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem>;
 export const GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItemList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ErrorAnalysisAnnotationAttributedItem,
@@ -3788,8 +3766,7 @@ export type GoogleCloudAiplatformV1ErrorAnalysisAnnotationQueryTypeEnum =
   | "QUERY_TYPE_UNSPECIFIED"
   | "ALL_SIMILAR"
   | "SAME_CLASS_SIMILAR"
-  | "SAME_CLASS_DISSIMILAR"
-  | (string & {});
+  | "SAME_CLASS_DISSIMILAR";
 export const GoogleCloudAiplatformV1ErrorAnalysisAnnotationQueryTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3821,13 +3798,13 @@ export const GoogleCloudAiplatformV1ErrorAnalysisAnnotation =
   }) as any as S.Schema<GoogleCloudAiplatformV1ErrorAnalysisAnnotation>;
 
 export type GoogleCloudAiplatformV1ErrorAnalysisAnnotationList =
-  GoogleCloudAiplatformV1ErrorAnalysisAnnotation[];
+  ReadonlyArray<GoogleCloudAiplatformV1ErrorAnalysisAnnotation>;
 export const GoogleCloudAiplatformV1ErrorAnalysisAnnotationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ErrorAnalysisAnnotation,
   ) as any as S.Schema<GoogleCloudAiplatformV1ErrorAnalysisAnnotationList>;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -3864,7 +3841,7 @@ export const GoogleCloudAiplatformV1Attribution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1Attribution>;
 
 export type GoogleCloudAiplatformV1AttributionList =
-  GoogleCloudAiplatformV1Attribution[];
+  ReadonlyArray<GoogleCloudAiplatformV1Attribution>;
 export const GoogleCloudAiplatformV1AttributionList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Attribution,
 ) as any as S.Schema<GoogleCloudAiplatformV1AttributionList>;
@@ -3886,7 +3863,7 @@ export const GoogleCloudAiplatformV1Neighbor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1Neighbor>;
 
 export type GoogleCloudAiplatformV1NeighborList =
-  GoogleCloudAiplatformV1Neighbor[];
+  ReadonlyArray<GoogleCloudAiplatformV1Neighbor>;
 export const GoogleCloudAiplatformV1NeighborList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Neighbor,
 ) as any as S.Schema<GoogleCloudAiplatformV1NeighborList>;
@@ -3925,7 +3902,7 @@ export const GoogleCloudAiplatformV1EvaluatedAnnotationExplanation =
   }) as any as S.Schema<GoogleCloudAiplatformV1EvaluatedAnnotationExplanation>;
 
 export type GoogleCloudAiplatformV1EvaluatedAnnotationExplanationList =
-  GoogleCloudAiplatformV1EvaluatedAnnotationExplanation[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluatedAnnotationExplanation>;
 export const GoogleCloudAiplatformV1EvaluatedAnnotationExplanationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1EvaluatedAnnotationExplanation,
@@ -3968,7 +3945,7 @@ export const GoogleCloudAiplatformV1EvaluatedAnnotation =
   }) as any as S.Schema<GoogleCloudAiplatformV1EvaluatedAnnotation>;
 
 export type GoogleCloudAiplatformV1EvaluatedAnnotationList =
-  GoogleCloudAiplatformV1EvaluatedAnnotation[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluatedAnnotation>;
 export const GoogleCloudAiplatformV1EvaluatedAnnotationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1EvaluatedAnnotation,
@@ -4104,7 +4081,7 @@ export const GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDat
   }) as any as S.Schema<GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfig>;
 
 export type GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfigList =
-  GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfig[];
+  ReadonlyArray<GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfig>;
 export const GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MigrateResourceRequestMigrateDataLabelingDatasetConfigMigrateDataLabelingAnnotatedDatasetConfig,
@@ -4165,7 +4142,7 @@ export const GoogleCloudAiplatformV1MigrateResourceRequest =
   }) as any as S.Schema<GoogleCloudAiplatformV1MigrateResourceRequest>;
 
 export type GoogleCloudAiplatformV1MigrateResourceRequestList =
-  GoogleCloudAiplatformV1MigrateResourceRequest[];
+  ReadonlyArray<GoogleCloudAiplatformV1MigrateResourceRequest>;
 export const GoogleCloudAiplatformV1MigrateResourceRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MigrateResourceRequest,
@@ -4335,7 +4312,7 @@ export const GoogleCloudAiplatformV1DestinationFeatureSetting =
   }) as any as S.Schema<GoogleCloudAiplatformV1DestinationFeatureSetting>;
 
 export type GoogleCloudAiplatformV1DestinationFeatureSettingList =
-  GoogleCloudAiplatformV1DestinationFeatureSetting[];
+  ReadonlyArray<GoogleCloudAiplatformV1DestinationFeatureSetting>;
 export const GoogleCloudAiplatformV1DestinationFeatureSettingList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1DestinationFeatureSetting,
@@ -4365,7 +4342,7 @@ export const GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeSpec 
   }) as any as S.Schema<GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeSpec>;
 
 export type GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeSpecList =
-  GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeSpec[];
+  ReadonlyArray<GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeSpec>;
 export const GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1BatchReadFeatureValuesRequestEntityTypeSpec,
@@ -4401,7 +4378,7 @@ export const GoogleCloudAiplatformV1BatchReadFeatureValuesRequestPassThroughFiel
   }) as any as S.Schema<GoogleCloudAiplatformV1BatchReadFeatureValuesRequestPassThroughField>;
 
 export type GoogleCloudAiplatformV1BatchReadFeatureValuesRequestPassThroughFieldList =
-  GoogleCloudAiplatformV1BatchReadFeatureValuesRequestPassThroughField[];
+  ReadonlyArray<GoogleCloudAiplatformV1BatchReadFeatureValuesRequestPassThroughField>;
 export const GoogleCloudAiplatformV1BatchReadFeatureValuesRequestPassThroughFieldList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1BatchReadFeatureValuesRequestPassThroughField,
@@ -4516,8 +4493,7 @@ export type GoogleCloudAiplatformV1TimeSeriesDataValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"
   | "SCALAR"
   | "TENSOR"
-  | "BLOB_SEQUENCE"
-  | (string & {});
+  | "BLOB_SEQUENCE";
 export const GoogleCloudAiplatformV1TimeSeriesDataValueTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4569,7 +4545,7 @@ export const GoogleCloudAiplatformV1TensorboardBlob = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1TensorboardBlob>;
 
 export type GoogleCloudAiplatformV1TensorboardBlobList =
-  GoogleCloudAiplatformV1TensorboardBlob[];
+  ReadonlyArray<GoogleCloudAiplatformV1TensorboardBlob>;
 export const GoogleCloudAiplatformV1TensorboardBlobList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1TensorboardBlob,
 ) as any as S.Schema<GoogleCloudAiplatformV1TensorboardBlobList>;
@@ -4615,7 +4591,7 @@ export const GoogleCloudAiplatformV1TimeSeriesDataPoint =
   }) as any as S.Schema<GoogleCloudAiplatformV1TimeSeriesDataPoint>;
 
 export type GoogleCloudAiplatformV1TimeSeriesDataPointList =
-  GoogleCloudAiplatformV1TimeSeriesDataPoint[];
+  ReadonlyArray<GoogleCloudAiplatformV1TimeSeriesDataPoint>;
 export const GoogleCloudAiplatformV1TimeSeriesDataPointList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TimeSeriesDataPoint,
@@ -4642,7 +4618,7 @@ export const GoogleCloudAiplatformV1TimeSeriesData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1TimeSeriesData>;
 
 export type GoogleCloudAiplatformV1TimeSeriesDataList =
-  GoogleCloudAiplatformV1TimeSeriesData[];
+  ReadonlyArray<GoogleCloudAiplatformV1TimeSeriesData>;
 export const GoogleCloudAiplatformV1TimeSeriesDataList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1TimeSeriesData,
 ) as any as S.Schema<GoogleCloudAiplatformV1TimeSeriesDataList>;
@@ -7277,7 +7253,7 @@ export const GoogleCloudAiplatformV1TokensInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1TokensInfo>;
 
 export type GoogleCloudAiplatformV1TokensInfoList =
-  GoogleCloudAiplatformV1TokensInfo[];
+  ReadonlyArray<GoogleCloudAiplatformV1TokensInfo>;
 export const GoogleCloudAiplatformV1TokensInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1TokensInfo,
 ) as any as S.Schema<GoogleCloudAiplatformV1TokensInfoList>;
@@ -7499,7 +7475,8 @@ export const GoogleCloudAiplatformV1Claim = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1Claim",
 }) as any as S.Schema<GoogleCloudAiplatformV1Claim>;
 
-export type GoogleCloudAiplatformV1ClaimList = GoogleCloudAiplatformV1Claim[];
+export type GoogleCloudAiplatformV1ClaimList =
+  ReadonlyArray<GoogleCloudAiplatformV1Claim>;
 export const GoogleCloudAiplatformV1ClaimList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Claim,
 ) as any as S.Schema<GoogleCloudAiplatformV1ClaimList>;
@@ -7526,13 +7503,12 @@ export type GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnum =
   | "TEXT"
   | "IMAGE"
   | "AUDIO"
-  | "VIDEO"
-  | (string & {});
+  | "VIDEO";
 export const GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnumList =
-  GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnum[];
+  ReadonlyArray<GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnum>;
 export const GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnum,
@@ -7541,8 +7517,7 @@ export const GoogleCloudAiplatformV1GenerationConfigResponseModalitiesItemEnumLi
 export type GoogleCloudAiplatformV1TextResponseFormatMimeTypeEnum =
   | "MIME_TYPE_UNSPECIFIED"
   | "APPLICATION_JSON"
-  | "TEXT_PLAIN"
-  | (string & {});
+  | "TEXT_PLAIN";
 export const GoogleCloudAiplatformV1TextResponseFormatMimeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7572,16 +7547,14 @@ export type GoogleCloudAiplatformV1AudioResponseFormatMimeTypeEnum =
   | "AUDIO_L16"
   | "AUDIO_WAV"
   | "AUDIO_ALAW"
-  | "AUDIO_MULAW"
-  | (string & {});
+  | "AUDIO_MULAW";
 export const GoogleCloudAiplatformV1AudioResponseFormatMimeTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1AudioResponseFormatDeliveryEnum =
   | "DELIVERY_UNSPECIFIED"
   | "INLINE"
-  | "URI"
-  | (string & {});
+  | "URI";
 export const GoogleCloudAiplatformV1AudioResponseFormatDeliveryEnum =
   /*@__PURE__*/ S.String;
 
@@ -7614,8 +7587,7 @@ export const GoogleCloudAiplatformV1AudioResponseFormat =
 
 export type GoogleCloudAiplatformV1ImageResponseFormatMimeTypeEnum =
   | "MIME_TYPE_UNSPECIFIED"
-  | "IMAGE_JPEG"
-  | (string & {});
+  | "IMAGE_JPEG";
 export const GoogleCloudAiplatformV1ImageResponseFormatMimeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7634,16 +7606,14 @@ export type GoogleCloudAiplatformV1ImageResponseFormatAspectRatioEnum =
   | "ASPECT_RATIO_ONE_BY_EIGHT"
   | "ASPECT_RATIO_EIGHT_BY_ONE"
   | "ASPECT_RATIO_ONE_BY_FOUR"
-  | "ASPECT_RATIO_FOUR_BY_ONE"
-  | (string & {});
+  | "ASPECT_RATIO_FOUR_BY_ONE";
 export const GoogleCloudAiplatformV1ImageResponseFormatAspectRatioEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1ImageResponseFormatDeliveryEnum =
   | "DELIVERY_UNSPECIFIED"
   | "INLINE"
-  | "URI"
-  | (string & {});
+  | "URI";
 export const GoogleCloudAiplatformV1ImageResponseFormatDeliveryEnum =
   /*@__PURE__*/ S.String;
 
@@ -7652,8 +7622,7 @@ export type GoogleCloudAiplatformV1ImageResponseFormatImageSizeEnum =
   | "IMAGE_SIZE_FIVE_TWELVE"
   | "IMAGE_SIZE_ONE_K"
   | "IMAGE_SIZE_TWO_K"
-  | "IMAGE_SIZE_FOUR_K"
-  | (string & {});
+  | "IMAGE_SIZE_FOUR_K";
 export const GoogleCloudAiplatformV1ImageResponseFormatImageSizeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7691,16 +7660,14 @@ export const GoogleCloudAiplatformV1ImageResponseFormat =
 export type GoogleCloudAiplatformV1VideoResponseFormatDeliveryEnum =
   | "DELIVERY_UNSPECIFIED"
   | "INLINE"
-  | "URI"
-  | (string & {});
+  | "URI";
 export const GoogleCloudAiplatformV1VideoResponseFormatDeliveryEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1VideoResponseFormatAspectRatioEnum =
   | "ASPECT_RATIO_UNSPECIFIED"
   | "ASPECT_RATIO_SIXTEEN_BY_NINE"
-  | "ASPECT_RATIO_NINE_BY_SIXTEEN"
-  | (string & {});
+  | "ASPECT_RATIO_NINE_BY_SIXTEEN";
 export const GoogleCloudAiplatformV1VideoResponseFormatAspectRatioEnum =
   /*@__PURE__*/ S.String;
 
@@ -7755,7 +7722,7 @@ export const GoogleCloudAiplatformV1ResponseFormat = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1ResponseFormat>;
 
 export type GoogleCloudAiplatformV1ResponseFormatList =
-  GoogleCloudAiplatformV1ResponseFormat[];
+  ReadonlyArray<GoogleCloudAiplatformV1ResponseFormat>;
 export const GoogleCloudAiplatformV1ResponseFormatList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1ResponseFormat,
 ) as any as S.Schema<GoogleCloudAiplatformV1ResponseFormatList>;
@@ -7764,17 +7731,12 @@ export type GoogleCloudAiplatformV1GenerationConfigMediaResolutionEnum =
   | "MEDIA_RESOLUTION_UNSPECIFIED"
   | "MEDIA_RESOLUTION_LOW"
   | "MEDIA_RESOLUTION_MEDIUM"
-  | "MEDIA_RESOLUTION_HIGH"
-  | (string & {});
+  | "MEDIA_RESOLUTION_HIGH";
 export const GoogleCloudAiplatformV1GenerationConfigMediaResolutionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingModeModelRoutingPreferenceEnum =
-    | "UNKNOWN"
-    | "PRIORITIZE_QUALITY"
-    | "BALANCED"
-    | "PRIORITIZE_COST"
-    | (string & {});
+  "UNKNOWN" | "PRIORITIZE_QUALITY" | "BALANCED" | "PRIORITIZE_COST";
 export const GoogleCloudAiplatformV1GenerationConfigRoutingConfigAutoRoutingModeModelRoutingPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -7835,8 +7797,7 @@ export type GoogleCloudAiplatformV1ImageConfigPersonGenerationEnum =
   | "PERSON_GENERATION_UNSPECIFIED"
   | "ALLOW_ALL"
   | "ALLOW_ADULT"
-  | "ALLOW_NONE"
-  | (string & {});
+  | "ALLOW_NONE";
 export const GoogleCloudAiplatformV1ImageConfigPersonGenerationEnum =
   /*@__PURE__*/ S.String;
 
@@ -7860,8 +7821,7 @@ export const GoogleCloudAiplatformV1ImageConfigImageOutputOptions =
 export type GoogleCloudAiplatformV1ImageConfigProminentPeopleEnum =
   | "PROMINENT_PEOPLE_UNSPECIFIED"
   | "ALLOW_PROMINENT_PEOPLE"
-  | "BLOCK_PROMINENT_PEOPLE"
-  | (string & {});
+  | "BLOCK_PROMINENT_PEOPLE";
 export const GoogleCloudAiplatformV1ImageConfigProminentPeopleEnum =
   /*@__PURE__*/ S.String;
 
@@ -7897,12 +7857,7 @@ export const GoogleCloudAiplatformV1ImageConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1ImageConfig>;
 
 export type GoogleCloudAiplatformV1GenerationConfigThinkingConfigThinkingLevelEnum =
-    | "THINKING_LEVEL_UNSPECIFIED"
-    | "LOW"
-    | "MEDIUM"
-    | "HIGH"
-    | "MINIMAL"
-    | (string & {});
+  "THINKING_LEVEL_UNSPECIFIED" | "LOW" | "MEDIUM" | "HIGH" | "MINIMAL";
 export const GoogleCloudAiplatformV1GenerationConfigThinkingConfigThinkingLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -7995,7 +7950,7 @@ export const GoogleCloudAiplatformV1SpeakerVoiceConfig =
   }) as any as S.Schema<GoogleCloudAiplatformV1SpeakerVoiceConfig>;
 
 export type GoogleCloudAiplatformV1SpeakerVoiceConfigList =
-  GoogleCloudAiplatformV1SpeakerVoiceConfig[];
+  ReadonlyArray<GoogleCloudAiplatformV1SpeakerVoiceConfig>;
 export const GoogleCloudAiplatformV1SpeakerVoiceConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SpeakerVoiceConfig,
@@ -8184,8 +8139,7 @@ export type GoogleCloudAiplatformV1ModalityTokenCountModalityEnum =
   | "IMAGE"
   | "VIDEO"
   | "AUDIO"
-  | "DOCUMENT"
-  | (string & {});
+  | "DOCUMENT";
 export const GoogleCloudAiplatformV1ModalityTokenCountModalityEnum =
   /*@__PURE__*/ S.String;
 
@@ -8209,7 +8163,7 @@ export const GoogleCloudAiplatformV1ModalityTokenCount =
   }) as any as S.Schema<GoogleCloudAiplatformV1ModalityTokenCount>;
 
 export type GoogleCloudAiplatformV1ModalityTokenCountList =
-  GoogleCloudAiplatformV1ModalityTokenCount[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModalityTokenCount>;
 export const GoogleCloudAiplatformV1ModalityTokenCountList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModalityTokenCount,
@@ -8428,7 +8382,7 @@ export const GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig =
     identifier: "GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig",
   }) as any as S.Schema<GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig>;
 
-export type GoogleRpcStatusList = GoogleRpcStatus[];
+export type GoogleRpcStatusList = ReadonlyArray<GoogleRpcStatus>;
 export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
   GoogleRpcStatus,
 ) as any as S.Schema<GoogleRpcStatusList>;
@@ -8465,22 +8419,17 @@ export const GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataMap =
   ) as any as S.Schema<GoogleCloudAiplatformV1ExplanationMetadataOutputMetadataMap>;
 
 export type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityEnum =
-  "POLARITY_UNSPECIFIED" | "POSITIVE" | "NEGATIVE" | "BOTH" | (string & {});
+  "POLARITY_UNSPECIFIED" | "POSITIVE" | "NEGATIVE" | "BOTH";
 export const GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationPolarityEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeEnum =
-  "TYPE_UNSPECIFIED" | "PIXELS" | "OUTLINES" | (string & {});
+  "TYPE_UNSPECIFIED" | "PIXELS" | "OUTLINES";
 export const GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeEnum =
-    | "OVERLAY_TYPE_UNSPECIFIED"
-    | "NONE"
-    | "ORIGINAL"
-    | "GRAYSCALE"
-    | "MASK_BLACK"
-    | (string & {});
+  "OVERLAY_TYPE_UNSPECIFIED" | "NONE" | "ORIGINAL" | "GRAYSCALE" | "MASK_BLACK";
 export const GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationOverlayTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8491,8 +8440,7 @@ export type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualization
     | "RED"
     | "GREEN"
     | "RED_GREEN"
-    | "PINK_WHITE_GREEN"
-    | (string & {});
+    | "PINK_WHITE_GREEN";
 export const GoogleCloudAiplatformV1ExplanationMetadataInputMetadataVisualizationColorMapEnum =
   /*@__PURE__*/ S.String;
 
@@ -8541,8 +8489,7 @@ export type GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingEnum 
     | "BAG_OF_FEATURES_SPARSE"
     | "INDICATOR"
     | "COMBINED_EMBEDDING"
-    | "CONCAT_EMBEDDING"
-    | (string & {});
+    | "CONCAT_EMBEDDING";
 export const GoogleCloudAiplatformV1ExplanationMetadataInputMetadataEncodingEnum =
   /*@__PURE__*/ S.String;
 
@@ -8663,8 +8610,7 @@ export const GoogleCloudAiplatformV1ExplanationMetadata =
 
 export type GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormatEnum =
   | "DATA_FORMAT_UNSPECIFIED"
-  | "JSONL"
-  | (string & {});
+  | "JSONL";
 export const GoogleCloudAiplatformV1ExamplesExampleGcsSourceDataFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -8687,18 +8633,14 @@ export const GoogleCloudAiplatformV1ExamplesExampleGcsSource =
     identifier: "GoogleCloudAiplatformV1ExamplesExampleGcsSource",
   }) as any as S.Schema<GoogleCloudAiplatformV1ExamplesExampleGcsSource>;
 
-export type GoogleCloudAiplatformV1PresetsQueryEnum =
-  | "PRECISE"
-  | "FAST"
-  | (string & {});
+export type GoogleCloudAiplatformV1PresetsQueryEnum = "PRECISE" | "FAST";
 export const GoogleCloudAiplatformV1PresetsQueryEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1PresetsModalityEnum =
   | "MODALITY_UNSPECIFIED"
   | "IMAGE"
   | "TEXT"
-  | "TABULAR"
-  | (string & {});
+  | "TABULAR";
 export const GoogleCloudAiplatformV1PresetsModalityEnum =
   /*@__PURE__*/ S.String;
 
@@ -8760,7 +8702,7 @@ export const GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature =
   }) as any as S.Schema<GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature>;
 
 export type GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeatureList =
-  GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature>;
 export const GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeatureList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature,
@@ -8971,8 +8913,7 @@ export type GoogleCloudAiplatformV1BatchPredictionJobStateEnum =
   | "JOB_STATE_PAUSED"
   | "JOB_STATE_EXPIRED"
   | "JOB_STATE_UPDATING"
-  | "JOB_STATE_PARTIALLY_SUCCEEDED"
-  | (string & {});
+  | "JOB_STATE_PARTIALLY_SUCCEEDED";
 export const GoogleCloudAiplatformV1BatchPredictionJobStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -9009,7 +8950,8 @@ export const GoogleCloudAiplatformV1Port = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1Port",
 }) as any as S.Schema<GoogleCloudAiplatformV1Port>;
 
-export type GoogleCloudAiplatformV1PortList = GoogleCloudAiplatformV1Port[];
+export type GoogleCloudAiplatformV1PortList =
+  ReadonlyArray<GoogleCloudAiplatformV1Port>;
 export const GoogleCloudAiplatformV1PortList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Port,
 ) as any as S.Schema<GoogleCloudAiplatformV1PortList>;
@@ -9049,7 +8991,7 @@ export const GoogleCloudAiplatformV1ProbeHttpHeader = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1ProbeHttpHeader>;
 
 export type GoogleCloudAiplatformV1ProbeHttpHeaderList =
-  GoogleCloudAiplatformV1ProbeHttpHeader[];
+  ReadonlyArray<GoogleCloudAiplatformV1ProbeHttpHeader>;
 export const GoogleCloudAiplatformV1ProbeHttpHeaderList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1ProbeHttpHeader,
 ) as any as S.Schema<GoogleCloudAiplatformV1ProbeHttpHeaderList>;
@@ -9440,7 +9382,7 @@ export const GoogleCloudAiplatformV1SavedQuery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1SavedQuery>;
 
 export type GoogleCloudAiplatformV1SavedQueryList =
-  GoogleCloudAiplatformV1SavedQuery[];
+  ReadonlyArray<GoogleCloudAiplatformV1SavedQuery>;
 export const GoogleCloudAiplatformV1SavedQueryList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1SavedQuery,
 ) as any as S.Schema<GoogleCloudAiplatformV1SavedQueryList>;
@@ -9612,7 +9554,7 @@ export const GoogleCloudAiplatformV1AgentTool = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1AgentTool>;
 
 export type GoogleCloudAiplatformV1AgentToolList =
-  GoogleCloudAiplatformV1AgentTool[];
+  ReadonlyArray<GoogleCloudAiplatformV1AgentTool>;
 export const GoogleCloudAiplatformV1AgentToolList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1AgentTool,
 ) as any as S.Schema<GoogleCloudAiplatformV1AgentToolList>;
@@ -9770,8 +9712,7 @@ export type GoogleCloudAiplatformV1FunctionCallingConfigModeEnum =
   | "AUTO"
   | "ANY"
   | "NONE"
-  | "VALIDATED"
-  | (string & {});
+  | "VALIDATED";
 export const GoogleCloudAiplatformV1FunctionCallingConfigModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9899,8 +9840,7 @@ export type GoogleCloudAiplatformV1CustomJobStateEnum =
   | "JOB_STATE_PAUSED"
   | "JOB_STATE_EXPIRED"
   | "JOB_STATE_UPDATING"
-  | "JOB_STATE_PARTIALLY_SUCCEEDED"
-  | (string & {});
+  | "JOB_STATE_PARTIALLY_SUCCEEDED";
 export const GoogleCloudAiplatformV1CustomJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a mount configuration for Network File System (NFS) to mount. */
@@ -9923,7 +9863,7 @@ export const GoogleCloudAiplatformV1NfsMount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1NfsMount>;
 
 export type GoogleCloudAiplatformV1NfsMountList =
-  GoogleCloudAiplatformV1NfsMount[];
+  ReadonlyArray<GoogleCloudAiplatformV1NfsMount>;
 export const GoogleCloudAiplatformV1NfsMountList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1NfsMount,
 ) as any as S.Schema<GoogleCloudAiplatformV1NfsMountList>;
@@ -9990,7 +9930,7 @@ export const GoogleCloudAiplatformV1LustreMount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1LustreMount>;
 
 export type GoogleCloudAiplatformV1LustreMountList =
-  GoogleCloudAiplatformV1LustreMount[];
+  ReadonlyArray<GoogleCloudAiplatformV1LustreMount>;
 export const GoogleCloudAiplatformV1LustreMountList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1LustreMount,
 ) as any as S.Schema<GoogleCloudAiplatformV1LustreMountList>;
@@ -10054,7 +9994,7 @@ export const GoogleCloudAiplatformV1WorkerPoolSpec = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1WorkerPoolSpec>;
 
 export type GoogleCloudAiplatformV1WorkerPoolSpecList =
-  GoogleCloudAiplatformV1WorkerPoolSpec[];
+  ReadonlyArray<GoogleCloudAiplatformV1WorkerPoolSpec>;
 export const GoogleCloudAiplatformV1WorkerPoolSpecList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1WorkerPoolSpec,
 ) as any as S.Schema<GoogleCloudAiplatformV1WorkerPoolSpecList>;
@@ -10065,8 +10005,7 @@ export type GoogleCloudAiplatformV1SchedulingStrategyEnum =
   | "LOW_COST"
   | "STANDARD"
   | "SPOT"
-  | "FLEX_START"
-  | (string & {});
+  | "FLEX_START";
 export const GoogleCloudAiplatformV1SchedulingStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -10116,7 +10055,7 @@ export const GoogleCloudAiplatformV1DnsPeeringConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1DnsPeeringConfig>;
 
 export type GoogleCloudAiplatformV1DnsPeeringConfigList =
-  GoogleCloudAiplatformV1DnsPeeringConfig[];
+  ReadonlyArray<GoogleCloudAiplatformV1DnsPeeringConfig>;
 export const GoogleCloudAiplatformV1DnsPeeringConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1DnsPeeringConfig,
@@ -10283,8 +10222,7 @@ export type GoogleCloudAiplatformV1DataLabelingJobStateEnum =
   | "JOB_STATE_PAUSED"
   | "JOB_STATE_EXPIRED"
   | "JOB_STATE_UPDATING"
-  | "JOB_STATE_PARTIALLY_SUCCEEDED"
-  | (string & {});
+  | "JOB_STATE_PARTIALLY_SUCCEEDED";
 export const GoogleCloudAiplatformV1DataLabelingJobStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -10309,8 +10247,7 @@ export const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudAiplatformV1SampleConfigSampleStrategyEnum =
   | "SAMPLE_STRATEGY_UNSPECIFIED"
-  | "UNCERTAINTY"
-  | (string & {});
+  | "UNCERTAINTY";
 export const GoogleCloudAiplatformV1SampleConfigSampleStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -10527,7 +10464,7 @@ export const GoogleCloudAiplatformV1AutoscalingMetricSpec =
   }) as any as S.Schema<GoogleCloudAiplatformV1AutoscalingMetricSpec>;
 
 export type GoogleCloudAiplatformV1AutoscalingMetricSpecList =
-  GoogleCloudAiplatformV1AutoscalingMetricSpec[];
+  ReadonlyArray<GoogleCloudAiplatformV1AutoscalingMetricSpec>;
 export const GoogleCloudAiplatformV1AutoscalingMetricSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1AutoscalingMetricSpec,
@@ -10647,8 +10584,7 @@ export const CreateProjectsLocationsDeploymentResourcePoolsRequest =
 export type GoogleCloudAiplatformV1PSCAutomationConfigStateEnum =
   | "PSC_AUTOMATION_STATE_UNSPECIFIED"
   | "PSC_AUTOMATION_STATE_SUCCESSFUL"
-  | "PSC_AUTOMATION_STATE_FAILED"
-  | (string & {});
+  | "PSC_AUTOMATION_STATE_FAILED";
 export const GoogleCloudAiplatformV1PSCAutomationConfigStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -10682,7 +10618,7 @@ export const GoogleCloudAiplatformV1PSCAutomationConfig =
   }) as any as S.Schema<GoogleCloudAiplatformV1PSCAutomationConfig>;
 
 export type GoogleCloudAiplatformV1PSCAutomationConfigList =
-  GoogleCloudAiplatformV1PSCAutomationConfig[];
+  ReadonlyArray<GoogleCloudAiplatformV1PSCAutomationConfig>;
 export const GoogleCloudAiplatformV1PSCAutomationConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1PSCAutomationConfig,
@@ -10930,7 +10866,7 @@ export const GoogleCloudAiplatformV1DeployedModel = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1DeployedModel>;
 
 export type GoogleCloudAiplatformV1DeployedModelList =
-  GoogleCloudAiplatformV1DeployedModel[];
+  ReadonlyArray<GoogleCloudAiplatformV1DeployedModel>;
 export const GoogleCloudAiplatformV1DeployedModelList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1DeployedModel,
 ) as any as S.Schema<GoogleCloudAiplatformV1DeployedModelList>;
@@ -11113,8 +11049,7 @@ export const CreateProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
 export type GoogleCloudAiplatformV1EvaluationItemEvaluationItemTypeEnum =
   | "EVALUATION_ITEM_TYPE_UNSPECIFIED"
   | "REQUEST"
-  | "RESULT"
-  | (string & {});
+  | "RESULT";
 export const GoogleCloudAiplatformV1EvaluationItemEvaluationItemTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -11150,8 +11085,7 @@ export type GoogleCloudAiplatformV1RubricImportanceEnum =
   | "IMPORTANCE_UNSPECIFIED"
   | "HIGH"
   | "MEDIUM"
-  | "LOW"
-  | (string & {});
+  | "LOW";
 export const GoogleCloudAiplatformV1RubricImportanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -11177,7 +11111,8 @@ export const GoogleCloudAiplatformV1Rubric = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1Rubric",
 }) as any as S.Schema<GoogleCloudAiplatformV1Rubric>;
 
-export type GoogleCloudAiplatformV1RubricList = GoogleCloudAiplatformV1Rubric[];
+export type GoogleCloudAiplatformV1RubricList =
+  ReadonlyArray<GoogleCloudAiplatformV1Rubric>;
 export const GoogleCloudAiplatformV1RubricList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Rubric,
 ) as any as S.Schema<GoogleCloudAiplatformV1RubricList>;
@@ -11271,7 +11206,7 @@ export const GoogleCloudAiplatformV1AgentEvent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1AgentEvent>;
 
 export type GoogleCloudAiplatformV1AgentEventList =
-  GoogleCloudAiplatformV1AgentEvent[];
+  ReadonlyArray<GoogleCloudAiplatformV1AgentEvent>;
 export const GoogleCloudAiplatformV1AgentEventList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1AgentEvent,
 ) as any as S.Schema<GoogleCloudAiplatformV1AgentEventList>;
@@ -11297,7 +11232,7 @@ export const GoogleCloudAiplatformV1ConversationTurn = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1ConversationTurn>;
 
 export type GoogleCloudAiplatformV1ConversationTurnList =
-  GoogleCloudAiplatformV1ConversationTurn[];
+  ReadonlyArray<GoogleCloudAiplatformV1ConversationTurn>;
 export const GoogleCloudAiplatformV1ConversationTurnList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ConversationTurn,
@@ -11346,7 +11281,7 @@ export const GoogleCloudAiplatformV1CandidateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1CandidateResponse>;
 
 export type GoogleCloudAiplatformV1CandidateResponseList =
-  GoogleCloudAiplatformV1CandidateResponse[];
+  ReadonlyArray<GoogleCloudAiplatformV1CandidateResponse>;
 export const GoogleCloudAiplatformV1CandidateResponseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1CandidateResponse,
@@ -11467,7 +11402,7 @@ export const GoogleCloudAiplatformV1RubricVerdict = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1RubricVerdict>;
 
 export type GoogleCloudAiplatformV1RubricVerdictList =
-  GoogleCloudAiplatformV1RubricVerdict[];
+  ReadonlyArray<GoogleCloudAiplatformV1RubricVerdict>;
 export const GoogleCloudAiplatformV1RubricVerdictList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1RubricVerdict,
 ) as any as S.Schema<GoogleCloudAiplatformV1RubricVerdictList>;
@@ -11505,7 +11440,7 @@ export const GoogleCloudAiplatformV1CandidateResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1CandidateResult>;
 
 export type GoogleCloudAiplatformV1CandidateResultList =
-  GoogleCloudAiplatformV1CandidateResult[];
+  ReadonlyArray<GoogleCloudAiplatformV1CandidateResult>;
 export const GoogleCloudAiplatformV1CandidateResultList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1CandidateResult,
 ) as any as S.Schema<GoogleCloudAiplatformV1CandidateResultList>;
@@ -11730,8 +11665,7 @@ export type GoogleCloudAiplatformV1ComputationBasedMetricSpecTypeEnum =
   | "COMPUTATION_BASED_METRIC_TYPE_UNSPECIFIED"
   | "EXACT_MATCH"
   | "BLEU"
-  | "ROUGE"
-  | (string & {});
+  | "ROUGE";
 export const GoogleCloudAiplatformV1ComputationBasedMetricSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -11778,13 +11712,12 @@ export type GoogleCloudAiplatformV1MetricAggregationMetricsItemEnum =
   | "MEDIAN"
   | "PERCENTILE_P90"
   | "PERCENTILE_P95"
-  | "PERCENTILE_P99"
-  | (string & {});
+  | "PERCENTILE_P99";
 export const GoogleCloudAiplatformV1MetricAggregationMetricsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1MetricAggregationMetricsItemEnumList =
-  GoogleCloudAiplatformV1MetricAggregationMetricsItemEnum[];
+  ReadonlyArray<GoogleCloudAiplatformV1MetricAggregationMetricsItemEnum>;
 export const GoogleCloudAiplatformV1MetricAggregationMetricsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MetricAggregationMetricsItemEnum,
@@ -11862,8 +11795,7 @@ export type GoogleCloudAiplatformV1RubricGenerationSpecRubricContentTypeEnum =
   | "RUBRIC_CONTENT_TYPE_UNSPECIFIED"
   | "PROPERTY"
   | "NL_QUESTION_ANSWER"
-  | "PYTHON_CODE_ASSERTION"
-  | (string & {});
+  | "PYTHON_CODE_ASSERTION";
 export const GoogleCloudAiplatformV1RubricGenerationSpecRubricContentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -12081,7 +12013,7 @@ export const CreateProjectsLocationsEvaluationMetricsRequest =
   }) as any as S.Schema<CreateProjectsLocationsEvaluationMetricsRequest>;
 
 export type GoogleCloudAiplatformV1BigQueryRequestSetSamplingConfigSamplingMethodEnum =
-  "SAMPLING_METHOD_UNSPECIFIED" | "RANDOM" | (string & {});
+  "SAMPLING_METHOD_UNSPECIFIED" | "RANDOM";
 export const GoogleCloudAiplatformV1BigQueryRequestSetSamplingConfigSamplingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -12161,8 +12093,7 @@ export type GoogleCloudAiplatformV1EvaluationRunStateEnum =
   | "CANCELLED"
   | "INFERENCE"
   | "GENERATING_RUBRICS"
-  | "GENERATING_LOSS_CLUSTERS"
-  | (string & {});
+  | "GENERATING_LOSS_CLUSTERS";
 export const GoogleCloudAiplatformV1EvaluationRunStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -12419,8 +12350,7 @@ export type GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpecRubric
     | "RUBRIC_CONTENT_TYPE_UNSPECIFIED"
     | "PROPERTY"
     | "NL_QUESTION_ANSWER"
-    | "PYTHON_CODE_ASSERTION"
-    | (string & {});
+    | "PYTHON_CODE_ASSERTION";
 export const GoogleCloudAiplatformV1EvaluationRunMetricRubricGenerationSpecRubricContentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -12501,7 +12431,7 @@ export const GoogleCloudAiplatformV1EvaluationRubricConfig =
   }) as any as S.Schema<GoogleCloudAiplatformV1EvaluationRubricConfig>;
 
 export type GoogleCloudAiplatformV1EvaluationRubricConfigList =
-  GoogleCloudAiplatformV1EvaluationRubricConfig[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluationRubricConfig>;
 export const GoogleCloudAiplatformV1EvaluationRubricConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1EvaluationRubricConfig,
@@ -12511,8 +12441,7 @@ export type GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpec
     | "COMPUTATION_BASED_METRIC_TYPE_UNSPECIFIED"
     | "EXACT_MATCH"
     | "BLEU"
-    | "ROUGE"
-    | (string & {});
+    | "ROUGE";
 export const GoogleCloudAiplatformV1EvaluationRunMetricComputationBasedMetricSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -12663,7 +12592,7 @@ export const GoogleCloudAiplatformV1EvaluationRunMetric =
   }) as any as S.Schema<GoogleCloudAiplatformV1EvaluationRunMetric>;
 
 export type GoogleCloudAiplatformV1EvaluationRunMetricList =
-  GoogleCloudAiplatformV1EvaluationRunMetric[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluationRunMetric>;
 export const GoogleCloudAiplatformV1EvaluationRunMetricList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1EvaluationRunMetric,
@@ -12687,7 +12616,7 @@ export const GoogleCloudAiplatformV1DatasetCustomMetric =
   }) as any as S.Schema<GoogleCloudAiplatformV1DatasetCustomMetric>;
 
 export type GoogleCloudAiplatformV1DatasetCustomMetricList =
-  GoogleCloudAiplatformV1DatasetCustomMetric[];
+  ReadonlyArray<GoogleCloudAiplatformV1DatasetCustomMetric>;
 export const GoogleCloudAiplatformV1DatasetCustomMetricList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1DatasetCustomMetric,
@@ -12711,7 +12640,7 @@ export const GoogleCloudAiplatformV1LossAnalysisConfig =
   }) as any as S.Schema<GoogleCloudAiplatformV1LossAnalysisConfig>;
 
 export type GoogleCloudAiplatformV1LossAnalysisConfigList =
-  GoogleCloudAiplatformV1LossAnalysisConfig[];
+  ReadonlyArray<GoogleCloudAiplatformV1LossAnalysisConfig>;
 export const GoogleCloudAiplatformV1LossAnalysisConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1LossAnalysisConfig,
@@ -12897,8 +12826,7 @@ export const CreateProjectsLocationsEvaluationSetsRequest =
 export type GoogleCloudAiplatformV1FeatureGroupServiceAgentTypeEnum =
   | "SERVICE_AGENT_TYPE_UNSPECIFIED"
   | "SERVICE_AGENT_TYPE_PROJECT"
-  | "SERVICE_AGENT_TYPE_FEATURE_GROUP"
-  | (string & {});
+  | "SERVICE_AGENT_TYPE_FEATURE_GROUP";
 export const GoogleCloudAiplatformV1FeatureGroupServiceAgentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -13042,8 +12970,7 @@ export const GoogleCloudAiplatformV1FeatureOnlineStoreOptimized =
 export type GoogleCloudAiplatformV1FeatureOnlineStoreStateEnum =
   | "STATE_UNSPECIFIED"
   | "STABLE"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const GoogleCloudAiplatformV1FeatureOnlineStoreStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -13248,8 +13175,7 @@ export const GoogleCloudAiplatformV1FeatureViewBigQuerySource =
 export type GoogleCloudAiplatformV1FeatureViewServiceAgentTypeEnum =
   | "SERVICE_AGENT_TYPE_UNSPECIFIED"
   | "SERVICE_AGENT_TYPE_PROJECT"
-  | "SERVICE_AGENT_TYPE_FEATURE_VIEW"
-  | (string & {});
+  | "SERVICE_AGENT_TYPE_FEATURE_VIEW";
 export const GoogleCloudAiplatformV1FeatureViewServiceAgentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -13302,8 +13228,7 @@ export type GoogleCloudAiplatformV1FeatureViewIndexConfigDistanceMeasureTypeEnum
     | "DISTANCE_MEASURE_TYPE_UNSPECIFIED"
     | "SQUARED_L2_DISTANCE"
     | "COSINE_DISTANCE"
-    | "DOT_PRODUCT_DISTANCE"
-    | (string & {});
+    | "DOT_PRODUCT_DISTANCE";
 export const GoogleCloudAiplatformV1FeatureViewIndexConfigDistanceMeasureTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -13385,7 +13310,7 @@ export const GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup
   }) as any as S.Schema<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup>;
 
 export type GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupList =
-  GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup>;
 export const GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup,
@@ -13550,8 +13475,7 @@ export const GoogleCloudAiplatformV1FeaturestoreOnlineServingConfig =
 export type GoogleCloudAiplatformV1FeaturestoreStateEnum =
   | "STATE_UNSPECIFIED"
   | "STABLE"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const GoogleCloudAiplatformV1FeaturestoreStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -13647,7 +13571,7 @@ export const GoogleCloudAiplatformV1FeaturestoreMonitoringConfigSnapshotAnalysis
   }) as any as S.Schema<GoogleCloudAiplatformV1FeaturestoreMonitoringConfigSnapshotAnalysis>;
 
 export type GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateEnum =
-  "STATE_UNSPECIFIED" | "DEFAULT" | "ENABLED" | "DISABLED" | (string & {});
+  "STATE_UNSPECIFIED" | "DEFAULT" | "ENABLED" | "DISABLED";
 export const GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -13655,8 +13579,7 @@ export type GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAna
     | "BASELINE_UNSPECIFIED"
     | "LATEST_STATS"
     | "MOST_RECENT_SNAPSHOT_STATS"
-    | "PREVIOUS_IMPORT_FEATURES_STATS"
-    | (string & {});
+    | "PREVIOUS_IMPORT_FEATURES_STATS";
 export const GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaselineEnum =
   /*@__PURE__*/ S.String;
 
@@ -13821,7 +13744,8 @@ export const CreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest =
       "CreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest",
   }) as any as S.Schema<CreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest>;
 
-export type GoogleCloudAiplatformV1TrialList = GoogleCloudAiplatformV1Trial[];
+export type GoogleCloudAiplatformV1TrialList =
+  ReadonlyArray<GoogleCloudAiplatformV1Trial>;
 export const GoogleCloudAiplatformV1TrialList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Trial,
 ) as any as S.Schema<GoogleCloudAiplatformV1TrialList>;
@@ -13838,8 +13762,7 @@ export type GoogleCloudAiplatformV1HyperparameterTuningJobStateEnum =
   | "JOB_STATE_PAUSED"
   | "JOB_STATE_EXPIRED"
   | "JOB_STATE_UPDATING"
-  | "JOB_STATE_PARTIALLY_SUCCEEDED"
-  | (string & {});
+  | "JOB_STATE_PARTIALLY_SUCCEEDED";
 export const GoogleCloudAiplatformV1HyperparameterTuningJobStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -13941,7 +13864,7 @@ export const GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSp
   }) as any as S.Schema<GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec>;
 
 export type GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecList =
-  GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec[];
+  ReadonlyArray<GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec>;
 export const GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpec,
@@ -14007,8 +13930,7 @@ export type GoogleCloudAiplatformV1StudySpecParameterSpecScaleTypeEnum =
   | "SCALE_TYPE_UNSPECIFIED"
   | "UNIT_LINEAR_SCALE"
   | "UNIT_LOG_SCALE"
-  | "UNIT_REVERSE_LOG_SCALE"
-  | (string & {});
+  | "UNIT_REVERSE_LOG_SCALE";
 export const GoogleCloudAiplatformV1StudySpecParameterSpecScaleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -14057,7 +13979,7 @@ export const GoogleCloudAiplatformV1StudySpecParameterSpec =
   }) as any as S.Schema<GoogleCloudAiplatformV1StudySpecParameterSpec>;
 
 export type GoogleCloudAiplatformV1StudySpecParameterSpecList =
-  GoogleCloudAiplatformV1StudySpecParameterSpec[];
+  ReadonlyArray<GoogleCloudAiplatformV1StudySpecParameterSpec>;
 export const GoogleCloudAiplatformV1StudySpecParameterSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1StudySpecParameterSpec,
@@ -14066,24 +13988,21 @@ export const GoogleCloudAiplatformV1StudySpecParameterSpecList =
 export type GoogleCloudAiplatformV1StudySpecObservationNoiseEnum =
   | "OBSERVATION_NOISE_UNSPECIFIED"
   | "LOW"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const GoogleCloudAiplatformV1StudySpecObservationNoiseEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1StudySpecMeasurementSelectionTypeEnum =
   | "MEASUREMENT_SELECTION_TYPE_UNSPECIFIED"
   | "LAST_MEASUREMENT"
-  | "BEST_MEASUREMENT"
-  | (string & {});
+  | "BEST_MEASUREMENT";
 export const GoogleCloudAiplatformV1StudySpecMeasurementSelectionTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1StudySpecMetricSpecGoalEnum =
   | "GOAL_TYPE_UNSPECIFIED"
   | "MAXIMIZE"
-  | "MINIMIZE"
-  | (string & {});
+  | "MINIMIZE";
 export const GoogleCloudAiplatformV1StudySpecMetricSpecGoalEnum =
   /*@__PURE__*/ S.String;
 
@@ -14127,7 +14046,7 @@ export const GoogleCloudAiplatformV1StudySpecMetricSpec =
   }) as any as S.Schema<GoogleCloudAiplatformV1StudySpecMetricSpec>;
 
 export type GoogleCloudAiplatformV1StudySpecMetricSpecList =
-  GoogleCloudAiplatformV1StudySpecMetricSpec[];
+  ReadonlyArray<GoogleCloudAiplatformV1StudySpecMetricSpec>;
 export const GoogleCloudAiplatformV1StudySpecMetricSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1StudySpecMetricSpec,
@@ -14204,8 +14123,7 @@ export const GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec =
 export type GoogleCloudAiplatformV1StudySpecAlgorithmEnum =
   | "ALGORITHM_UNSPECIFIED"
   | "GRID_SEARCH"
-  | "RANDOM_SEARCH"
-  | (string & {});
+  | "RANDOM_SEARCH";
 export const GoogleCloudAiplatformV1StudySpecAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -14446,7 +14364,7 @@ export const GoogleCloudAiplatformV1PscAutomatedEndpoints =
   }) as any as S.Schema<GoogleCloudAiplatformV1PscAutomatedEndpoints>;
 
 export type GoogleCloudAiplatformV1PscAutomatedEndpointsList =
-  GoogleCloudAiplatformV1PscAutomatedEndpoints[];
+  ReadonlyArray<GoogleCloudAiplatformV1PscAutomatedEndpoints>;
 export const GoogleCloudAiplatformV1PscAutomatedEndpointsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1PscAutomatedEndpoints,
@@ -14476,8 +14394,7 @@ export const GoogleCloudAiplatformV1IndexPrivateEndpoints =
 
 export type GoogleCloudAiplatformV1DeployedIndexDeploymentTierEnum =
   | "DEPLOYMENT_TIER_UNSPECIFIED"
-  | "STORAGE"
-  | (string & {});
+  | "STORAGE";
 export const GoogleCloudAiplatformV1DeployedIndexDeploymentTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -14546,7 +14463,7 @@ export const GoogleCloudAiplatformV1DeployedIndex = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1DeployedIndex>;
 
 export type GoogleCloudAiplatformV1DeployedIndexList =
-  GoogleCloudAiplatformV1DeployedIndex[];
+  ReadonlyArray<GoogleCloudAiplatformV1DeployedIndex>;
 export const GoogleCloudAiplatformV1DeployedIndexList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1DeployedIndex,
 ) as any as S.Schema<GoogleCloudAiplatformV1DeployedIndexList>;
@@ -14655,7 +14572,7 @@ export const GoogleCloudAiplatformV1DeployedIndexRef = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1DeployedIndexRef>;
 
 export type GoogleCloudAiplatformV1DeployedIndexRefList =
-  GoogleCloudAiplatformV1DeployedIndexRef[];
+  ReadonlyArray<GoogleCloudAiplatformV1DeployedIndexRef>;
 export const GoogleCloudAiplatformV1DeployedIndexRefList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1DeployedIndexRef,
@@ -14683,8 +14600,7 @@ export const GoogleCloudAiplatformV1IndexStats = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudAiplatformV1IndexIndexUpdateMethodEnum =
   | "INDEX_UPDATE_METHOD_UNSPECIFIED"
   | "BATCH_UPDATE"
-  | "STREAM_UPDATE"
-  | (string & {});
+  | "STREAM_UPDATE";
 export const GoogleCloudAiplatformV1IndexIndexUpdateMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -14804,8 +14720,7 @@ export type GoogleCloudAiplatformV1MemoryTopicIdManagedMemoryTopicEnum =
   | "USER_PERSONAL_INFO"
   | "USER_PREFERENCES"
   | "KEY_CONVERSATION_DETAILS"
-  | "EXPLICIT_INSTRUCTIONS"
-  | (string & {});
+  | "EXPLICIT_INSTRUCTIONS";
 export const GoogleCloudAiplatformV1MemoryTopicIdManagedMemoryTopicEnum =
   /*@__PURE__*/ S.String;
 
@@ -14829,7 +14744,7 @@ export const GoogleCloudAiplatformV1MemoryTopicId = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1MemoryTopicId>;
 
 export type GoogleCloudAiplatformV1MemoryTopicIdList =
-  GoogleCloudAiplatformV1MemoryTopicId[];
+  ReadonlyArray<GoogleCloudAiplatformV1MemoryTopicId>;
 export const GoogleCloudAiplatformV1MemoryTopicIdList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1MemoryTopicId,
 ) as any as S.Schema<GoogleCloudAiplatformV1MemoryTopicIdList>;
@@ -15004,8 +14919,7 @@ export const CreateProjectsLocationsMetadataStoresRequest =
 export type GoogleCloudAiplatformV1ArtifactStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
-  | "LIVE"
-  | (string & {});
+  | "LIVE";
 export const GoogleCloudAiplatformV1ArtifactStateEnum = /*@__PURE__*/ S.String;
 
 /** Instance of a general artifact. */
@@ -15154,8 +15068,7 @@ export type GoogleCloudAiplatformV1ExecutionStateEnum =
   | "COMPLETE"
   | "FAILED"
   | "CACHED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const GoogleCloudAiplatformV1ExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** Instance of a general execution. */
@@ -15230,8 +15143,7 @@ export type GoogleCloudAiplatformV1MetadataSchemaSchemaTypeEnum =
   | "METADATA_SCHEMA_TYPE_UNSPECIFIED"
   | "ARTIFACT_TYPE"
   | "EXECUTION_TYPE"
-  | "CONTEXT_TYPE"
-  | (string & {});
+  | "CONTEXT_TYPE";
 export const GoogleCloudAiplatformV1MetadataSchemaSchemaTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -15323,8 +15235,7 @@ export type GoogleCloudAiplatformV1ModelDeploymentMonitoringJobStateEnum =
   | "JOB_STATE_PAUSED"
   | "JOB_STATE_EXPIRED"
   | "JOB_STATE_UPDATING"
-  | "JOB_STATE_PARTIALLY_SUCCEEDED"
-  | (string & {});
+  | "JOB_STATE_PARTIALLY_SUCCEEDED";
 export const GoogleCloudAiplatformV1ModelDeploymentMonitoringJobStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -15347,7 +15258,7 @@ export const GoogleCloudAiplatformV1ModelDeploymentMonitoringJobLatestMonitoring
   }) as any as S.Schema<GoogleCloudAiplatformV1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadata>;
 
 export type GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatEnum =
-  "PREDICTION_FORMAT_UNSPECIFIED" | "JSONL" | "BIGQUERY" | (string & {});
+  "PREDICTION_FORMAT_UNSPECIFIED" | "JSONL" | "BIGQUERY";
 export const GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -15576,7 +15487,7 @@ export const GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig =
   }) as any as S.Schema<GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig>;
 
 export type GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfigList =
-  GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig>;
 export const GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModelDeploymentMonitoringObjectiveConfig,
@@ -15620,21 +15531,17 @@ export const GoogleCloudAiplatformV1ModelMonitoringAlertConfig =
   }) as any as S.Schema<GoogleCloudAiplatformV1ModelMonitoringAlertConfig>;
 
 export type GoogleCloudAiplatformV1ModelDeploymentMonitoringJobScheduleStateEnum =
-    | "MONITORING_SCHEDULE_STATE_UNSPECIFIED"
-    | "PENDING"
-    | "OFFLINE"
-    | "RUNNING"
-    | (string & {});
+  "MONITORING_SCHEDULE_STATE_UNSPECIFIED" | "PENDING" | "OFFLINE" | "RUNNING";
 export const GoogleCloudAiplatformV1ModelDeploymentMonitoringJobScheduleStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableLogTypeEnum =
-  "LOG_TYPE_UNSPECIFIED" | "PREDICT" | "EXPLAIN" | (string & {});
+  "LOG_TYPE_UNSPECIFIED" | "PREDICT" | "EXPLAIN";
 export const GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableLogTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableLogSourceEnum =
-  "LOG_SOURCE_UNSPECIFIED" | "TRAINING" | "SERVING" | (string & {});
+  "LOG_SOURCE_UNSPECIFIED" | "TRAINING" | "SERVING";
 export const GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableLogSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -15666,7 +15573,7 @@ export const GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable =
   }) as any as S.Schema<GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable>;
 
 export type GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableList =
-  GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable>;
 export const GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTable,
@@ -15812,8 +15719,7 @@ export type GoogleCloudAiplatformV1NasJobStateEnum =
   | "JOB_STATE_PAUSED"
   | "JOB_STATE_EXPIRED"
   | "JOB_STATE_UPDATING"
-  | "JOB_STATE_PARTIALLY_SUCCEEDED"
-  | (string & {});
+  | "JOB_STATE_PARTIALLY_SUCCEEDED";
 export const GoogleCloudAiplatformV1NasJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Represent spec for search trials. */
@@ -15864,13 +15770,12 @@ export const GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialS
 export type GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmEnum =
     | "MULTI_TRIAL_ALGORITHM_UNSPECIFIED"
     | "REINFORCEMENT_LEARNING"
-    | "GRID_SEARCH"
-    | (string & {});
+    | "GRID_SEARCH";
 export const GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalEnum =
-  "GOAL_TYPE_UNSPECIFIED" | "MAXIMIZE" | "MINIMIZE" | (string & {});
+  "GOAL_TYPE_UNSPECIFIED" | "MAXIMIZE" | "MINIMIZE";
 export const GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpecGoalEnum =
   /*@__PURE__*/ S.String;
 
@@ -15952,8 +15857,7 @@ export type GoogleCloudAiplatformV1NasTrialStateEnum =
   | "ACTIVE"
   | "STOPPING"
   | "SUCCEEDED"
-  | "INFEASIBLE"
-  | (string & {});
+  | "INFEASIBLE";
 export const GoogleCloudAiplatformV1NasTrialStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a uCAIP NasJob trial. */
@@ -15982,7 +15886,7 @@ export const GoogleCloudAiplatformV1NasTrial = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1NasTrial>;
 
 export type GoogleCloudAiplatformV1NasTrialList =
-  GoogleCloudAiplatformV1NasTrial[];
+  ReadonlyArray<GoogleCloudAiplatformV1NasTrial>;
 export const GoogleCloudAiplatformV1NasTrialList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1NasTrial,
 ) as any as S.Schema<GoogleCloudAiplatformV1NasTrialList>;
@@ -16186,8 +16090,7 @@ export type GoogleCloudAiplatformV1NotebookExecutionJobJobStateEnum =
   | "JOB_STATE_PAUSED"
   | "JOB_STATE_EXPIRED"
   | "JOB_STATE_UPDATING"
-  | "JOB_STATE_PARTIALLY_SUCCEEDED"
-  | (string & {});
+  | "JOB_STATE_PARTIALLY_SUCCEEDED";
 export const GoogleCloudAiplatformV1NotebookExecutionJobJobStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -16302,10 +16205,7 @@ export const CreateProjectsLocationsNotebookExecutionJobsRequest =
   }) as any as S.Schema<CreateProjectsLocationsNotebookExecutionJobsRequest>;
 
 export type GoogleCloudAiplatformV1NotebookRuntimeTemplateNotebookRuntimeTypeEnum =
-    | "NOTEBOOK_RUNTIME_TYPE_UNSPECIFIED"
-    | "USER_DEFINED"
-    | "ONE_CLICK"
-    | (string & {});
+  "NOTEBOOK_RUNTIME_TYPE_UNSPECIFIED" | "USER_DEFINED" | "ONE_CLICK";
 export const GoogleCloudAiplatformV1NotebookRuntimeTemplateNotebookRuntimeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -16420,8 +16320,7 @@ export type GoogleCloudAiplatformV1OnlineEvaluatorStateEnum =
   | "ACTIVE"
   | "SUSPENDED"
   | "FAILED"
-  | "WARNING"
-  | (string & {});
+  | "WARNING";
 export const GoogleCloudAiplatformV1OnlineEvaluatorStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -16432,8 +16331,7 @@ export type GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredi
     | "EQUAL"
     | "NOT_EQUAL"
     | "GREATER_OR_EQUAL"
-    | "GREATER"
-    | (string & {});
+    | "GREATER";
 export const GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityNumericPredicateComparisonOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -16480,7 +16378,7 @@ export const GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScopeP
   }) as any as S.Schema<GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScopePredicate>;
 
 export type GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScopePredicateList =
-  GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScopePredicate[];
+  ReadonlyArray<GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScopePredicate>;
 export const GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScopePredicateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1OnlineEvaluatorCloudObservabilityTraceScopePredicate,
@@ -16562,7 +16460,7 @@ export const GoogleCloudAiplatformV1MetricSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1MetricSource>;
 
 export type GoogleCloudAiplatformV1MetricSourceList =
-  GoogleCloudAiplatformV1MetricSource[];
+  ReadonlyArray<GoogleCloudAiplatformV1MetricSource>;
 export const GoogleCloudAiplatformV1MetricSourceList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1MetricSource,
 ) as any as S.Schema<GoogleCloudAiplatformV1MetricSourceList>;
@@ -16582,7 +16480,7 @@ export const GoogleCloudAiplatformV1OnlineEvaluatorStateDetails =
   }) as any as S.Schema<GoogleCloudAiplatformV1OnlineEvaluatorStateDetails>;
 
 export type GoogleCloudAiplatformV1OnlineEvaluatorStateDetailsList =
-  GoogleCloudAiplatformV1OnlineEvaluatorStateDetails[];
+  ReadonlyArray<GoogleCloudAiplatformV1OnlineEvaluatorStateDetails>;
 export const GoogleCloudAiplatformV1OnlineEvaluatorStateDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1OnlineEvaluatorStateDetails,
@@ -16752,7 +16650,7 @@ export const GoogleCloudAiplatformV1ResourcePool = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1ResourcePool>;
 
 export type GoogleCloudAiplatformV1ResourcePoolList =
-  GoogleCloudAiplatformV1ResourcePool[];
+  ReadonlyArray<GoogleCloudAiplatformV1ResourcePool>;
 export const GoogleCloudAiplatformV1ResourcePoolList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1ResourcePool,
 ) as any as S.Schema<GoogleCloudAiplatformV1ResourcePoolList>;
@@ -16850,8 +16748,7 @@ export type GoogleCloudAiplatformV1PersistentResourceStateEnum =
   | "STOPPING"
   | "ERROR"
   | "REBOOTING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const GoogleCloudAiplatformV1PersistentResourceStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -16961,7 +16858,7 @@ export const GoogleCloudAiplatformV1PipelineTemplateMetadata =
   }) as any as S.Schema<GoogleCloudAiplatformV1PipelineTemplateMetadata>;
 
 export type GoogleCloudAiplatformV1ArtifactList =
-  GoogleCloudAiplatformV1Artifact[];
+  ReadonlyArray<GoogleCloudAiplatformV1Artifact>;
 export const GoogleCloudAiplatformV1ArtifactList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Artifact,
 ) as any as S.Schema<GoogleCloudAiplatformV1ArtifactList>;
@@ -17064,8 +16961,7 @@ export type GoogleCloudAiplatformV1PipelineTaskDetailStateEnum =
   | "CANCELLED"
   | "FAILED"
   | "SKIPPED"
-  | "NOT_TRIGGERED"
-  | (string & {});
+  | "NOT_TRIGGERED";
 export const GoogleCloudAiplatformV1PipelineTaskDetailStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -17079,8 +16975,7 @@ export type GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusStateEnum
     | "CANCELLED"
     | "FAILED"
     | "SKIPPED"
-    | "NOT_TRIGGERED"
-    | (string & {});
+    | "NOT_TRIGGERED";
 export const GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -17107,7 +17002,7 @@ export const GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus =
   }) as any as S.Schema<GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus>;
 
 export type GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusList =
-  GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus[];
+  ReadonlyArray<GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus>;
 export const GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatus,
@@ -17175,7 +17070,7 @@ export const GoogleCloudAiplatformV1PipelineTaskDetail =
   }) as any as S.Schema<GoogleCloudAiplatformV1PipelineTaskDetail>;
 
 export type GoogleCloudAiplatformV1PipelineTaskDetailList =
-  GoogleCloudAiplatformV1PipelineTaskDetail[];
+  ReadonlyArray<GoogleCloudAiplatformV1PipelineTaskDetail>;
 export const GoogleCloudAiplatformV1PipelineTaskDetailList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1PipelineTaskDetail,
@@ -17210,16 +17105,14 @@ export type GoogleCloudAiplatformV1PipelineJobStateEnum =
   | "PIPELINE_STATE_FAILED"
   | "PIPELINE_STATE_CANCELLING"
   | "PIPELINE_STATE_CANCELLED"
-  | "PIPELINE_STATE_PAUSED"
-  | (string & {});
+  | "PIPELINE_STATE_PAUSED";
 export const GoogleCloudAiplatformV1PipelineJobStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicyEnum =
   | "PIPELINE_FAILURE_POLICY_UNSPECIFIED"
   | "PIPELINE_FAILURE_POLICY_FAIL_SLOW"
-  | "PIPELINE_FAILURE_POLICY_FAIL_FAST"
-  | (string & {});
+  | "PIPELINE_FAILURE_POLICY_FAIL_FAST";
 export const GoogleCloudAiplatformV1PipelineJobRuntimeConfigFailurePolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -17564,8 +17457,7 @@ export type GoogleCloudAiplatformV1CorpusStatusStateEnum =
   | "UNKNOWN"
   | "INITIALIZED"
   | "ACTIVE"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GoogleCloudAiplatformV1CorpusStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -17787,7 +17679,7 @@ export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemorie
   }) as any as S.Schema<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent>;
 
 export type GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEventList =
-  GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent[];
+  ReadonlyArray<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent>;
 export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEventList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleConversationSourceEvent,
@@ -17829,7 +17721,7 @@ export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemorie
   }) as any as S.Schema<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory>;
 
 export type GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemoryList =
-  GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory[];
+  ReadonlyArray<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory>;
 export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemoryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleGeneratedMemory,
@@ -17858,7 +17750,7 @@ export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemorie
   }) as any as S.Schema<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExample>;
 
 export type GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleList =
-  GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExample[];
+  ReadonlyArray<GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExample>;
 export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExampleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MemoryBankCustomizationConfigGenerateMemoriesExample,
@@ -17887,8 +17779,7 @@ export type GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicManag
     | "USER_PERSONAL_INFO"
     | "USER_PREFERENCES"
     | "KEY_CONVERSATION_DETAILS"
-    | "EXPLICIT_INSTRUCTIONS"
-    | (string & {});
+    | "EXPLICIT_INSTRUCTIONS";
 export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicManagedMemoryTopicManagedTopicEnumEnum =
   /*@__PURE__*/ S.String;
 
@@ -17932,7 +17823,7 @@ export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic =
   }) as any as S.Schema<GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic>;
 
 export type GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicList =
-  GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic[];
+  ReadonlyArray<GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic>;
 export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopicList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MemoryBankCustomizationConfigMemoryTopic,
@@ -17989,7 +17880,7 @@ export const GoogleCloudAiplatformV1MemoryBankCustomizationConfig =
   }) as any as S.Schema<GoogleCloudAiplatformV1MemoryBankCustomizationConfig>;
 
 export type GoogleCloudAiplatformV1MemoryBankCustomizationConfigList =
-  GoogleCloudAiplatformV1MemoryBankCustomizationConfig[];
+  ReadonlyArray<GoogleCloudAiplatformV1MemoryBankCustomizationConfig>;
 export const GoogleCloudAiplatformV1MemoryBankCustomizationConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MemoryBankCustomizationConfig,
@@ -18079,7 +17970,7 @@ export const GoogleCloudAiplatformV1SecretEnvVar = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1SecretEnvVar>;
 
 export type GoogleCloudAiplatformV1SecretEnvVarList =
-  GoogleCloudAiplatformV1SecretEnvVar[];
+  ReadonlyArray<GoogleCloudAiplatformV1SecretEnvVar>;
 export const GoogleCloudAiplatformV1SecretEnvVarList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1SecretEnvVar,
 ) as any as S.Schema<GoogleCloudAiplatformV1SecretEnvVarList>;
@@ -18250,8 +18141,7 @@ export const GoogleCloudAiplatformV1ReasoningEngineSpecContainerSpec =
 export type GoogleCloudAiplatformV1ReasoningEngineSpecIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "SERVICE_ACCOUNT"
-  | "AGENT_IDENTITY"
-  | (string & {});
+  | "AGENT_IDENTITY";
 export const GoogleCloudAiplatformV1ReasoningEngineSpecIdentityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -18603,15 +18493,12 @@ export const GoogleCloudAiplatformV1SandboxEnvironmentConnectionInfo =
   }) as any as S.Schema<GoogleCloudAiplatformV1SandboxEnvironmentConnectionInfo>;
 
 export type GoogleCloudAiplatformV1SandboxEnvironmentSpecCodeExecutionEnvironmentMachineConfigEnum =
-  "MACHINE_CONFIG_UNSPECIFIED" | "MACHINE_CONFIG_VCPU4_RAM4GIB" | (string & {});
+  "MACHINE_CONFIG_UNSPECIFIED" | "MACHINE_CONFIG_VCPU4_RAM4GIB";
 export const GoogleCloudAiplatformV1SandboxEnvironmentSpecCodeExecutionEnvironmentMachineConfigEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1SandboxEnvironmentSpecCodeExecutionEnvironmentCodeLanguageEnum =
-    | "LANGUAGE_UNSPECIFIED"
-    | "LANGUAGE_PYTHON"
-    | "LANGUAGE_JAVASCRIPT"
-    | (string & {});
+  "LANGUAGE_UNSPECIFIED" | "LANGUAGE_PYTHON" | "LANGUAGE_JAVASCRIPT";
 export const GoogleCloudAiplatformV1SandboxEnvironmentSpecCodeExecutionEnvironmentCodeLanguageEnum =
   /*@__PURE__*/ S.String;
 
@@ -18659,8 +18546,7 @@ export type GoogleCloudAiplatformV1SandboxEnvironmentStateEnum =
   | "STATE_RUNNING"
   | "STATE_DEPROVISIONING"
   | "STATE_TERMINATED"
-  | "STATE_DELETED"
-  | (string & {});
+  | "STATE_DELETED";
 export const GoogleCloudAiplatformV1SandboxEnvironmentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -18761,8 +18647,7 @@ export const GoogleCloudAiplatformV1SandboxEnvironmentTemplateResourceRequiremen
 
 export type GoogleCloudAiplatformV1SandboxEnvironmentTemplateDefaultContainerEnvironmentDefaultContainerCategoryEnum =
     | "DEFAULT_CONTAINER_CATEGORY_UNSPECIFIED"
-    | "DEFAULT_CONTAINER_CATEGORY_COMPUTER_USE"
-    | (string & {});
+    | "DEFAULT_CONTAINER_CATEGORY_COMPUTER_USE";
 export const GoogleCloudAiplatformV1SandboxEnvironmentTemplateDefaultContainerEnvironmentDefaultContainerCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -18789,7 +18674,7 @@ export const GoogleCloudAiplatformV1SandboxEnvironmentTemplateDefaultContainerEn
   }) as any as S.Schema<GoogleCloudAiplatformV1SandboxEnvironmentTemplateDefaultContainerEnvironment>;
 
 export type GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPortProtocolEnum =
-  "PROTOCOL_UNSPECIFIED" | "TCP" | "UDP" | (string & {});
+  "PROTOCOL_UNSPECIFIED" | "TCP" | "UDP";
 export const GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPortProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -18813,7 +18698,7 @@ export const GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort =
   }) as any as S.Schema<GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort>;
 
 export type GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPortList =
-  GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort[];
+  ReadonlyArray<GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort>;
 export const GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPortList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SandboxEnvironmentTemplateNetworkPort,
@@ -18882,8 +18767,7 @@ export type GoogleCloudAiplatformV1SandboxEnvironmentTemplateStateEnum =
   | "ACTIVE"
   | "DEPROVISIONING"
   | "DELETED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const GoogleCloudAiplatformV1SandboxEnvironmentTemplateStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -19021,8 +18905,7 @@ export type GoogleCloudAiplatformV1ScheduleStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "PAUSED"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const GoogleCloudAiplatformV1ScheduleStateEnum = /*@__PURE__*/ S.String;
 
 /** Status of a scheduled run. */
@@ -19200,7 +19083,7 @@ export const GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool =
   }) as any as S.Schema<GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool>;
 
 export type GoogleCloudAiplatformV1SemanticGovernancePolicyMcpToolList =
-  GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool[];
+  ReadonlyArray<GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool>;
 export const GoogleCloudAiplatformV1SemanticGovernancePolicyMcpToolList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SemanticGovernancePolicyMcpTool,
@@ -19333,8 +19216,7 @@ export type GoogleCloudAiplatformV1StudyStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const GoogleCloudAiplatformV1StudyStateEnum = /*@__PURE__*/ S.String;
 
 /** A message representing a Study. */
@@ -19754,8 +19636,7 @@ export type GoogleCloudAiplatformV1TrainingPipelineStateEnum =
   | "PIPELINE_STATE_FAILED"
   | "PIPELINE_STATE_CANCELLING"
   | "PIPELINE_STATE_CANCELLED"
-  | "PIPELINE_STATE_PAUSED"
-  | (string & {});
+  | "PIPELINE_STATE_PAUSED";
 export const GoogleCloudAiplatformV1TrainingPipelineStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -19780,7 +19661,7 @@ export const GoogleCloudAiplatformV1DeployedModelRef = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1DeployedModelRef>;
 
 export type GoogleCloudAiplatformV1DeployedModelRefList =
-  GoogleCloudAiplatformV1DeployedModelRef[];
+  ReadonlyArray<GoogleCloudAiplatformV1DeployedModelRef>;
 export const GoogleCloudAiplatformV1DeployedModelRefList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1DeployedModelRef,
@@ -19790,13 +19671,12 @@ export type GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnu
     | "DEPLOYMENT_RESOURCES_TYPE_UNSPECIFIED"
     | "DEDICATED_RESOURCES"
     | "AUTOMATIC_RESOURCES"
-    | "SHARED_RESOURCES"
-    | (string & {});
+    | "SHARED_RESOURCES";
 export const GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnumList =
-  GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnum[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnum>;
 export const GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModelSupportedDeploymentResourcesTypesItemEnum,
@@ -19896,12 +19776,12 @@ export const GoogleCloudAiplatformV1ModelOriginalModelInfo =
   }) as any as S.Schema<GoogleCloudAiplatformV1ModelOriginalModelInfo>;
 
 export type GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnum =
-  "EXPORTABLE_CONTENT_UNSPECIFIED" | "ARTIFACT" | "IMAGE" | (string & {});
+  "EXPORTABLE_CONTENT_UNSPECIFIED" | "ARTIFACT" | "IMAGE";
 export const GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnumList =
-  GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnum[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnum>;
 export const GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModelExportFormatExportableContentsItemEnum,
@@ -19927,7 +19807,7 @@ export const GoogleCloudAiplatformV1ModelExportFormat = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1ModelExportFormat>;
 
 export type GoogleCloudAiplatformV1ModelExportFormatList =
-  GoogleCloudAiplatformV1ModelExportFormat[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelExportFormat>;
 export const GoogleCloudAiplatformV1ModelExportFormatList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModelExportFormat,
@@ -19941,8 +19821,7 @@ export type GoogleCloudAiplatformV1ModelSourceInfoSourceTypeEnum =
   | "MODEL_GARDEN"
   | "GENIE"
   | "CUSTOM_TEXT_EMBEDDING"
-  | "MARKETPLACE"
-  | (string & {});
+  | "MARKETPLACE";
 export const GoogleCloudAiplatformV1ModelSourceInfoSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -19985,7 +19864,7 @@ export const GoogleCloudAiplatformV1Checkpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1Checkpoint>;
 
 export type GoogleCloudAiplatformV1CheckpointList =
-  GoogleCloudAiplatformV1Checkpoint[];
+  ReadonlyArray<GoogleCloudAiplatformV1Checkpoint>;
 export const GoogleCloudAiplatformV1CheckpointList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Checkpoint,
 ) as any as S.Schema<GoogleCloudAiplatformV1CheckpointList>;
@@ -20209,8 +20088,7 @@ export type GoogleCloudAiplatformV1TuningJobStateEnum =
   | "JOB_STATE_PAUSED"
   | "JOB_STATE_EXPIRED"
   | "JOB_STATE_UPDATING"
-  | "JOB_STATE_PARTIALLY_SUCCEEDED"
-  | (string & {});
+  | "JOB_STATE_PARTIALLY_SUCCEEDED";
 export const GoogleCloudAiplatformV1TuningJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Dataset bucket used to create a histogram for the distribution given a population of values. */
@@ -20235,7 +20113,7 @@ export const GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBu
   }) as any as S.Schema<GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket>;
 
 export type GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucketList =
-  GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket[];
+  ReadonlyArray<GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket>;
 export const GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucketList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket,
@@ -20355,7 +20233,7 @@ export const GoogleCloudAiplatformV1DatasetDistributionDistributionBucket =
   }) as any as S.Schema<GoogleCloudAiplatformV1DatasetDistributionDistributionBucket>;
 
 export type GoogleCloudAiplatformV1DatasetDistributionDistributionBucketList =
-  GoogleCloudAiplatformV1DatasetDistributionDistributionBucket[];
+  ReadonlyArray<GoogleCloudAiplatformV1DatasetDistributionDistributionBucket>;
 export const GoogleCloudAiplatformV1DatasetDistributionDistributionBucketList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1DatasetDistributionDistributionBucket,
@@ -20416,7 +20294,7 @@ export const GoogleCloudAiplatformV1GeminiPreferenceExampleCompletion =
   }) as any as S.Schema<GoogleCloudAiplatformV1GeminiPreferenceExampleCompletion>;
 
 export type GoogleCloudAiplatformV1GeminiPreferenceExampleCompletionList =
-  GoogleCloudAiplatformV1GeminiPreferenceExampleCompletion[];
+  ReadonlyArray<GoogleCloudAiplatformV1GeminiPreferenceExampleCompletion>;
 export const GoogleCloudAiplatformV1GeminiPreferenceExampleCompletionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1GeminiPreferenceExampleCompletion,
@@ -20442,7 +20320,7 @@ export const GoogleCloudAiplatformV1GeminiPreferenceExample =
   }) as any as S.Schema<GoogleCloudAiplatformV1GeminiPreferenceExample>;
 
 export type GoogleCloudAiplatformV1GeminiPreferenceExampleList =
-  GoogleCloudAiplatformV1GeminiPreferenceExample[];
+  ReadonlyArray<GoogleCloudAiplatformV1GeminiPreferenceExample>;
 export const GoogleCloudAiplatformV1GeminiPreferenceExampleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1GeminiPreferenceExample,
@@ -20568,8 +20446,7 @@ export type GoogleCloudAiplatformV1AggregationResultAggregationMetricEnum =
   | "MEDIAN"
   | "PERCENTILE_P90"
   | "PERCENTILE_P95"
-  | "PERCENTILE_P99"
-  | (string & {});
+  | "PERCENTILE_P99";
 export const GoogleCloudAiplatformV1AggregationResultAggregationMetricEnum =
   /*@__PURE__*/ S.String;
 
@@ -20605,8 +20482,7 @@ export type GoogleCloudAiplatformV1PairwiseMetricResultPairwiseChoiceEnum =
   | "PAIRWISE_CHOICE_UNSPECIFIED"
   | "BASELINE"
   | "CANDIDATE"
-  | "TIE"
-  | (string & {});
+  | "TIE";
 export const GoogleCloudAiplatformV1PairwiseMetricResultPairwiseChoiceEnum =
   /*@__PURE__*/ S.String;
 
@@ -20749,7 +20625,7 @@ export const GoogleCloudAiplatformV1AggregationResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1AggregationResult>;
 
 export type GoogleCloudAiplatformV1AggregationResultList =
-  GoogleCloudAiplatformV1AggregationResult[];
+  ReadonlyArray<GoogleCloudAiplatformV1AggregationResult>;
 export const GoogleCloudAiplatformV1AggregationResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1AggregationResult,
@@ -20833,7 +20709,7 @@ export const GoogleCloudAiplatformV1EvaluateDatasetRun =
   }) as any as S.Schema<GoogleCloudAiplatformV1EvaluateDatasetRun>;
 
 export type GoogleCloudAiplatformV1EvaluateDatasetRunList =
-  GoogleCloudAiplatformV1EvaluateDatasetRun[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluateDatasetRun>;
 export const GoogleCloudAiplatformV1EvaluateDatasetRunList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1EvaluateDatasetRun,
@@ -20846,8 +20722,7 @@ export type GoogleCloudAiplatformV1PreferenceOptimizationHyperParametersAdapterS
     | "ADAPTER_SIZE_FOUR"
     | "ADAPTER_SIZE_EIGHT"
     | "ADAPTER_SIZE_SIXTEEN"
-    | "ADAPTER_SIZE_THIRTY_TWO"
-    | (string & {});
+    | "ADAPTER_SIZE_THIRTY_TWO";
 export const GoogleCloudAiplatformV1PreferenceOptimizationHyperParametersAdapterSizeEnum =
   /*@__PURE__*/ S.String;
 
@@ -20914,7 +20789,8 @@ export const GoogleCloudAiplatformV1OutputConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1OutputConfig",
 }) as any as S.Schema<GoogleCloudAiplatformV1OutputConfig>;
 
-export type GoogleCloudAiplatformV1MetricList = GoogleCloudAiplatformV1Metric[];
+export type GoogleCloudAiplatformV1MetricList =
+  ReadonlyArray<GoogleCloudAiplatformV1Metric>;
 export const GoogleCloudAiplatformV1MetricList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Metric,
 ) as any as S.Schema<GoogleCloudAiplatformV1MetricList>;
@@ -20956,8 +20832,7 @@ export type GoogleCloudAiplatformV1SupervisedHyperParametersAdapterSizeEnum =
   | "ADAPTER_SIZE_FOUR"
   | "ADAPTER_SIZE_EIGHT"
   | "ADAPTER_SIZE_SIXTEEN"
-  | "ADAPTER_SIZE_THIRTY_TWO"
-  | (string & {});
+  | "ADAPTER_SIZE_THIRTY_TWO";
 export const GoogleCloudAiplatformV1SupervisedHyperParametersAdapterSizeEnum =
   /*@__PURE__*/ S.String;
 
@@ -21035,7 +20910,7 @@ export const GoogleCloudAiplatformV1TunedModelCheckpoint =
   }) as any as S.Schema<GoogleCloudAiplatformV1TunedModelCheckpoint>;
 
 export type GoogleCloudAiplatformV1TunedModelCheckpointList =
-  GoogleCloudAiplatformV1TunedModelCheckpoint[];
+  ReadonlyArray<GoogleCloudAiplatformV1TunedModelCheckpoint>;
 export const GoogleCloudAiplatformV1TunedModelCheckpointList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TunedModelCheckpoint,
@@ -25021,12 +24896,13 @@ export const GoogleCloudAiplatformV1TensorMap = /*@__PURE__*/ S.Record(
   S.suspend(() => GoogleCloudAiplatformV1Tensor),
 ) as any as S.Schema<GoogleCloudAiplatformV1TensorMap>;
 
-export type GoogleCloudAiplatformV1TensorList = GoogleCloudAiplatformV1Tensor[];
+export type GoogleCloudAiplatformV1TensorList =
+  ReadonlyArray<GoogleCloudAiplatformV1Tensor>;
 export const GoogleCloudAiplatformV1TensorList = /*@__PURE__*/ S.Array(
   S.suspend(() => GoogleCloudAiplatformV1Tensor),
 ) as any as S.Schema<GoogleCloudAiplatformV1TensorList>;
 
-export type BooleanList = boolean[];
+export type BooleanList = ReadonlyArray<boolean>;
 export const BooleanList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<BooleanList>;
@@ -25044,8 +24920,7 @@ export type GoogleCloudAiplatformV1TensorDtypeEnum =
   | "UINT8"
   | "UINT16"
   | "UINT32"
-  | "UINT64"
-  | (string & {});
+  | "UINT64";
 export const GoogleCloudAiplatformV1TensorDtypeEnum = /*@__PURE__*/ S.String;
 
 /** A tensor value type. */
@@ -25277,7 +25152,7 @@ export const GoogleCloudAiplatformV1StructFieldValue = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1StructFieldValue>;
 
 export type GoogleCloudAiplatformV1StructFieldValueList =
-  GoogleCloudAiplatformV1StructFieldValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1StructFieldValue>;
 export const GoogleCloudAiplatformV1StructFieldValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1StructFieldValue,
@@ -25411,7 +25286,7 @@ export const GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatu
   }) as any as S.Schema<GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeature>;
 
 export type GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeatureList =
-  GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeature[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeature>;
 export const GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeatureList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesFeature,
@@ -25438,7 +25313,7 @@ export const GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatu
   }) as any as S.Schema<GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValues>;
 
 export type GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesList =
-  GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValues[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValues>;
 export const GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValuesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FeatureViewDirectWriteRequestDataKeyAndFeatureValues,
@@ -25504,7 +25379,7 @@ export const GoogleCloudAiplatformV1FeatureViewDirectWriteResponseWriteResponse 
   }) as any as S.Schema<GoogleCloudAiplatformV1FeatureViewDirectWriteResponseWriteResponse>;
 
 export type GoogleCloudAiplatformV1FeatureViewDirectWriteResponseWriteResponseList =
-  GoogleCloudAiplatformV1FeatureViewDirectWriteResponseWriteResponse[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureViewDirectWriteResponseWriteResponse>;
 export const GoogleCloudAiplatformV1FeatureViewDirectWriteResponseWriteResponseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FeatureViewDirectWriteResponseWriteResponse,
@@ -25538,8 +25413,7 @@ export type GoogleCloudAiplatformV1EmbedContentRequestTaskTypeEnum =
   | "CLUSTERING"
   | "QUESTION_ANSWERING"
   | "FACT_VERIFICATION"
-  | "CODE_RETRIEVAL_QUERY"
-  | (string & {});
+  | "CODE_RETRIEVAL_QUERY";
 export const GoogleCloudAiplatformV1EmbedContentRequestTaskTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -25552,8 +25426,7 @@ export type GoogleCloudAiplatformV1EmbedContentRequestEmbedContentConfigTaskType
     | "CLUSTERING"
     | "QUESTION_ANSWERING"
     | "FACT_VERIFICATION"
-    | "CODE_RETRIEVAL_QUERY"
-    | (string & {});
+    | "CODE_RETRIEVAL_QUERY";
 export const GoogleCloudAiplatformV1EmbedContentRequestEmbedContentConfigTaskTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -25650,8 +25523,7 @@ export type GoogleCloudAiplatformV1UsageMetadataTrafficTypeEnum =
   | "ON_DEMAND"
   | "ON_DEMAND_PRIORITY"
   | "ON_DEMAND_FLEX"
-  | "PROVISIONED_THROUGHPUT"
-  | (string & {});
+  | "PROVISIONED_THROUGHPUT";
 export const GoogleCloudAiplatformV1UsageMetadataTrafficTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -26126,7 +25998,7 @@ export const GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEv
   }) as any as S.Schema<GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEvent>;
 
 export type GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEventList =
-  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEvent[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEvent>;
 export const GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEventList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataAgentEvent,
@@ -26156,7 +26028,7 @@ export const GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConvers
   }) as any as S.Schema<GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn>;
 
 export type GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurnList =
-  GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn>;
 export const GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurnList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1EvaluationInstanceDeprecatedAgentDataConversationTurn,
@@ -26260,7 +26132,7 @@ export const GoogleCloudAiplatformV1BleuInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1BleuInstance>;
 
 export type GoogleCloudAiplatformV1BleuInstanceList =
-  GoogleCloudAiplatformV1BleuInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1BleuInstance>;
 export const GoogleCloudAiplatformV1BleuInstanceList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1BleuInstance,
 ) as any as S.Schema<GoogleCloudAiplatformV1BleuInstanceList>;
@@ -26358,7 +26230,7 @@ export const GoogleCloudAiplatformV1ToolNameMatchInstance =
   }) as any as S.Schema<GoogleCloudAiplatformV1ToolNameMatchInstance>;
 
 export type GoogleCloudAiplatformV1ToolNameMatchInstanceList =
-  GoogleCloudAiplatformV1ToolNameMatchInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1ToolNameMatchInstance>;
 export const GoogleCloudAiplatformV1ToolNameMatchInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ToolNameMatchInstance,
@@ -26414,7 +26286,7 @@ export const GoogleCloudAiplatformV1ToolParameterKeyMatchInstance =
   }) as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKeyMatchInstance>;
 
 export type GoogleCloudAiplatformV1ToolParameterKeyMatchInstanceList =
-  GoogleCloudAiplatformV1ToolParameterKeyMatchInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1ToolParameterKeyMatchInstance>;
 export const GoogleCloudAiplatformV1ToolParameterKeyMatchInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ToolParameterKeyMatchInstance,
@@ -26457,7 +26329,7 @@ export const GoogleCloudAiplatformV1ExactMatchInstance =
   }) as any as S.Schema<GoogleCloudAiplatformV1ExactMatchInstance>;
 
 export type GoogleCloudAiplatformV1ExactMatchInstanceList =
-  GoogleCloudAiplatformV1ExactMatchInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1ExactMatchInstance>;
 export const GoogleCloudAiplatformV1ExactMatchInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ExactMatchInstance,
@@ -26547,7 +26419,7 @@ export const GoogleCloudAiplatformV1ToolCall = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1ToolCall>;
 
 export type GoogleCloudAiplatformV1ToolCallList =
-  GoogleCloudAiplatformV1ToolCall[];
+  ReadonlyArray<GoogleCloudAiplatformV1ToolCall>;
 export const GoogleCloudAiplatformV1ToolCallList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1ToolCall,
 ) as any as S.Schema<GoogleCloudAiplatformV1ToolCallList>;
@@ -26583,7 +26455,7 @@ export const GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance>;
 
 export type GoogleCloudAiplatformV1TrajectoryInOrderMatchInstanceList =
-  GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance>;
 export const GoogleCloudAiplatformV1TrajectoryInOrderMatchInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectoryInOrderMatchInstance,
@@ -26630,8 +26502,7 @@ export const GoogleCloudAiplatformV1CometInstance = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudAiplatformV1CometSpecVersionEnum =
   | "COMET_VERSION_UNSPECIFIED"
-  | "COMET_22_SRC_REF"
-  | (string & {});
+  | "COMET_22_SRC_REF";
 export const GoogleCloudAiplatformV1CometSpecVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -26688,7 +26559,7 @@ export const GoogleCloudAiplatformV1TrajectoryRecallInstance =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryRecallInstance>;
 
 export type GoogleCloudAiplatformV1TrajectoryRecallInstanceList =
-  GoogleCloudAiplatformV1TrajectoryRecallInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectoryRecallInstance>;
 export const GoogleCloudAiplatformV1TrajectoryRecallInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectoryRecallInstance,
@@ -26928,7 +26799,7 @@ export const GoogleCloudAiplatformV1ToolParameterKVMatchInstance =
   }) as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKVMatchInstance>;
 
 export type GoogleCloudAiplatformV1ToolParameterKVMatchInstanceList =
-  GoogleCloudAiplatformV1ToolParameterKVMatchInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1ToolParameterKVMatchInstance>;
 export const GoogleCloudAiplatformV1ToolParameterKVMatchInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ToolParameterKVMatchInstance,
@@ -26985,7 +26856,7 @@ export const GoogleCloudAiplatformV1TrajectoryExactMatchInstance =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryExactMatchInstance>;
 
 export type GoogleCloudAiplatformV1TrajectoryExactMatchInstanceList =
-  GoogleCloudAiplatformV1TrajectoryExactMatchInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectoryExactMatchInstance>;
 export const GoogleCloudAiplatformV1TrajectoryExactMatchInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectoryExactMatchInstance,
@@ -27041,8 +26912,7 @@ export type GoogleCloudAiplatformV1MetricxSpecVersionEnum =
   | "METRICX_VERSION_UNSPECIFIED"
   | "METRICX_24_REF"
   | "METRICX_24_SRC"
-  | "METRICX_24_SRC_REF"
-  | (string & {});
+  | "METRICX_24_SRC_REF";
 export const GoogleCloudAiplatformV1MetricxSpecVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -27160,7 +27030,7 @@ export const GoogleCloudAiplatformV1RougeInstance = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1RougeInstance>;
 
 export type GoogleCloudAiplatformV1RougeInstanceList =
-  GoogleCloudAiplatformV1RougeInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1RougeInstance>;
 export const GoogleCloudAiplatformV1RougeInstanceList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1RougeInstance,
 ) as any as S.Schema<GoogleCloudAiplatformV1RougeInstanceList>;
@@ -27317,7 +27187,7 @@ export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance>;
 
 export type GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstanceList =
-  GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance>;
 export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectoryAnyOrderMatchInstance,
@@ -27451,7 +27321,7 @@ export const GoogleCloudAiplatformV1ToolCallValidInstance =
   }) as any as S.Schema<GoogleCloudAiplatformV1ToolCallValidInstance>;
 
 export type GoogleCloudAiplatformV1ToolCallValidInstanceList =
-  GoogleCloudAiplatformV1ToolCallValidInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1ToolCallValidInstance>;
 export const GoogleCloudAiplatformV1ToolCallValidInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ToolCallValidInstance,
@@ -27511,7 +27381,7 @@ export const GoogleCloudAiplatformV1TrajectorySingleToolUseInstance =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectorySingleToolUseInstance>;
 
 export type GoogleCloudAiplatformV1TrajectorySingleToolUseInstanceList =
-  GoogleCloudAiplatformV1TrajectorySingleToolUseInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectorySingleToolUseInstance>;
 export const GoogleCloudAiplatformV1TrajectorySingleToolUseInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectorySingleToolUseInstance,
@@ -27617,7 +27487,7 @@ export const GoogleCloudAiplatformV1TrajectoryPrecisionInstance =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryPrecisionInstance>;
 
 export type GoogleCloudAiplatformV1TrajectoryPrecisionInstanceList =
-  GoogleCloudAiplatformV1TrajectoryPrecisionInstance[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectoryPrecisionInstance>;
 export const GoogleCloudAiplatformV1TrajectoryPrecisionInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectoryPrecisionInstance,
@@ -28096,7 +27966,7 @@ export const GoogleCloudAiplatformV1MetricxResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1MetricxResult>;
 
 export type GoogleCloudAiplatformV1ExactMatchMetricValueList =
-  GoogleCloudAiplatformV1ExactMatchMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1ExactMatchMetricValue>;
 export const GoogleCloudAiplatformV1ExactMatchMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ExactMatchMetricValue,
@@ -28133,7 +28003,7 @@ export const GoogleCloudAiplatformV1TrajectoryRecallMetricValue =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryRecallMetricValue>;
 
 export type GoogleCloudAiplatformV1TrajectoryRecallMetricValueList =
-  GoogleCloudAiplatformV1TrajectoryRecallMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectoryRecallMetricValue>;
 export const GoogleCloudAiplatformV1TrajectoryRecallMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectoryRecallMetricValue,
@@ -28156,7 +28026,7 @@ export const GoogleCloudAiplatformV1TrajectoryRecallResults =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryRecallResults>;
 
 export type GoogleCloudAiplatformV1BleuMetricValueList =
-  GoogleCloudAiplatformV1BleuMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1BleuMetricValue>;
 export const GoogleCloudAiplatformV1BleuMetricValueList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1BleuMetricValue,
 ) as any as S.Schema<GoogleCloudAiplatformV1BleuMetricValueList>;
@@ -28257,13 +28127,13 @@ export const GoogleCloudAiplatformV1MetricResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1MetricResult>;
 
 export type GoogleCloudAiplatformV1MetricResultList =
-  GoogleCloudAiplatformV1MetricResult[];
+  ReadonlyArray<GoogleCloudAiplatformV1MetricResult>;
 export const GoogleCloudAiplatformV1MetricResultList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1MetricResult,
 ) as any as S.Schema<GoogleCloudAiplatformV1MetricResultList>;
 
 export type GoogleCloudAiplatformV1RougeMetricValueList =
-  GoogleCloudAiplatformV1RougeMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1RougeMetricValue>;
 export const GoogleCloudAiplatformV1RougeMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1RougeMetricValue,
@@ -28337,7 +28207,7 @@ export const GoogleCloudAiplatformV1ToolCallValidMetricValue =
   }) as any as S.Schema<GoogleCloudAiplatformV1ToolCallValidMetricValue>;
 
 export type GoogleCloudAiplatformV1ToolCallValidMetricValueList =
-  GoogleCloudAiplatformV1ToolCallValidMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1ToolCallValidMetricValue>;
 export const GoogleCloudAiplatformV1ToolCallValidMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ToolCallValidMetricValue,
@@ -28399,11 +28269,7 @@ export const GoogleCloudAiplatformV1SummarizationQualityResult =
   }) as any as S.Schema<GoogleCloudAiplatformV1SummarizationQualityResult>;
 
 export type GoogleCloudAiplatformV1PairwiseSummarizationQualityResultPairwiseChoiceEnum =
-    | "PAIRWISE_CHOICE_UNSPECIFIED"
-    | "BASELINE"
-    | "CANDIDATE"
-    | "TIE"
-    | (string & {});
+  "PAIRWISE_CHOICE_UNSPECIFIED" | "BASELINE" | "CANDIDATE" | "TIE";
 export const GoogleCloudAiplatformV1PairwiseSummarizationQualityResultPairwiseChoiceEnum =
   /*@__PURE__*/ S.String;
 
@@ -28444,7 +28310,7 @@ export const GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue =
   }) as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValueList =
-  GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue>;
 export const GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ToolParameterKeyMatchMetricValue,
@@ -28517,7 +28383,7 @@ export const GoogleCloudAiplatformV1RubricCritiqueResult =
   }) as any as S.Schema<GoogleCloudAiplatformV1RubricCritiqueResult>;
 
 export type GoogleCloudAiplatformV1RubricCritiqueResultList =
-  GoogleCloudAiplatformV1RubricCritiqueResult[];
+  ReadonlyArray<GoogleCloudAiplatformV1RubricCritiqueResult>;
 export const GoogleCloudAiplatformV1RubricCritiqueResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1RubricCritiqueResult,
@@ -28597,7 +28463,7 @@ export const GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue =
   }) as any as S.Schema<GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1ToolParameterKVMatchMetricValueList =
-  GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue>;
 export const GoogleCloudAiplatformV1ToolParameterKVMatchMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ToolParameterKVMatchMetricValue,
@@ -28634,7 +28500,7 @@ export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValueList =
-  GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue>;
 export const GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectoryAnyOrderMatchMetricValue,
@@ -28671,7 +28537,7 @@ export const GoogleCloudAiplatformV1ToolNameMatchMetricValue =
   }) as any as S.Schema<GoogleCloudAiplatformV1ToolNameMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1ToolNameMatchMetricValueList =
-  GoogleCloudAiplatformV1ToolNameMatchMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1ToolNameMatchMetricValue>;
 export const GoogleCloudAiplatformV1ToolNameMatchMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ToolNameMatchMetricValue,
@@ -28708,7 +28574,7 @@ export const GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1TrajectoryExactMatchMetricValueList =
-  GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue>;
 export const GoogleCloudAiplatformV1TrajectoryExactMatchMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectoryExactMatchMetricValue,
@@ -28731,11 +28597,7 @@ export const GoogleCloudAiplatformV1TrajectoryExactMatchResults =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryExactMatchResults>;
 
 export type GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResultPairwiseChoiceEnum =
-    | "PAIRWISE_CHOICE_UNSPECIFIED"
-    | "BASELINE"
-    | "CANDIDATE"
-    | "TIE"
-    | (string & {});
+  "PAIRWISE_CHOICE_UNSPECIFIED" | "BASELINE" | "CANDIDATE" | "TIE";
 export const GoogleCloudAiplatformV1PairwiseQuestionAnsweringQualityResultPairwiseChoiceEnum =
   /*@__PURE__*/ S.String;
 
@@ -28776,7 +28638,7 @@ export const GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue>;
 
 export type GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValueList =
-  GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue>;
 export const GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectoryInOrderMatchMetricValue,
@@ -28813,7 +28675,7 @@ export const GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue>;
 
 export type GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValueList =
-  GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue>;
 export const GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectorySingleToolUseMetricValue,
@@ -28850,7 +28712,7 @@ export const GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue =
   }) as any as S.Schema<GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue>;
 
 export type GoogleCloudAiplatformV1TrajectoryPrecisionMetricValueList =
-  GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue>;
 export const GoogleCloudAiplatformV1TrajectoryPrecisionMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrajectoryPrecisionMetricValue,
@@ -29078,7 +28940,8 @@ export const GoogleCloudAiplatformV1Chunk = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudAiplatformV1Chunk",
 }) as any as S.Schema<GoogleCloudAiplatformV1Chunk>;
 
-export type GoogleCloudAiplatformV1ChunkList = GoogleCloudAiplatformV1Chunk[];
+export type GoogleCloudAiplatformV1ChunkList =
+  ReadonlyArray<GoogleCloudAiplatformV1Chunk>;
 export const GoogleCloudAiplatformV1ChunkList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Chunk,
 ) as any as S.Schema<GoogleCloudAiplatformV1ChunkList>;
@@ -29260,7 +29123,7 @@ export const GoogleCloudAiplatformV1ExamplesRestrictionsNamespace =
   }) as any as S.Schema<GoogleCloudAiplatformV1ExamplesRestrictionsNamespace>;
 
 export type GoogleCloudAiplatformV1ExamplesRestrictionsNamespaceList =
-  GoogleCloudAiplatformV1ExamplesRestrictionsNamespace[];
+  ReadonlyArray<GoogleCloudAiplatformV1ExamplesRestrictionsNamespace>;
 export const GoogleCloudAiplatformV1ExamplesRestrictionsNamespaceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ExamplesRestrictionsNamespace,
@@ -29269,8 +29132,7 @@ export const GoogleCloudAiplatformV1ExamplesRestrictionsNamespaceList =
 export type GoogleCloudAiplatformV1ExamplesOverrideDataFormatEnum =
   | "DATA_FORMAT_UNSPECIFIED"
   | "INSTANCES"
-  | "EMBEDDINGS"
-  | (string & {});
+  | "EMBEDDINGS";
 export const GoogleCloudAiplatformV1ExamplesOverrideDataFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -29417,7 +29279,7 @@ export const ExplainProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExplainProjectsLocationsEndpointsRequest>;
 
 export type GoogleCloudAiplatformV1ExplanationList =
-  GoogleCloudAiplatformV1Explanation[];
+  ReadonlyArray<GoogleCloudAiplatformV1Explanation>;
 export const GoogleCloudAiplatformV1ExplanationList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Explanation,
 ) as any as S.Schema<GoogleCloudAiplatformV1ExplanationList>;
@@ -29576,8 +29438,7 @@ export const GoogleCloudAiplatformV1ExportFractionSplit =
 
 export type GoogleCloudAiplatformV1ExportDataConfigExportUseEnum =
   | "EXPORT_USE_UNSPECIFIED"
-  | "CUSTOM_CODE_TRAINING"
-  | (string & {});
+  | "CUSTOM_CODE_TRAINING";
 export const GoogleCloudAiplatformV1ExportDataConfigExportUseEnum =
   /*@__PURE__*/ S.String;
 
@@ -29802,8 +29663,7 @@ export const GoogleCloudAiplatformV1ExportTensorboardTimeSeriesDataResponse =
 export type GoogleCloudAiplatformV1FetchFeatureValuesRequestDataFormatEnum =
   | "FEATURE_VIEW_DATA_FORMAT_UNSPECIFIED"
   | "KEY_VALUE"
-  | "PROTO_STRUCT"
-  | (string & {});
+  | "PROTO_STRUCT";
 export const GoogleCloudAiplatformV1FetchFeatureValuesRequestDataFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -29870,7 +29730,7 @@ export const GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePa
   }) as any as S.Schema<GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair>;
 
 export type GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePairList =
-  GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair[];
+  ReadonlyArray<GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair>;
 export const GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePairList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FetchFeatureValuesResponseFeatureNameValuePairListFeatureNameValuePair,
@@ -30077,7 +29937,7 @@ export const GoogleCloudAiplatformV1IndexDatapointRestriction =
   }) as any as S.Schema<GoogleCloudAiplatformV1IndexDatapointRestriction>;
 
 export type GoogleCloudAiplatformV1IndexDatapointRestrictionList =
-  GoogleCloudAiplatformV1IndexDatapointRestriction[];
+  ReadonlyArray<GoogleCloudAiplatformV1IndexDatapointRestriction>;
 export const GoogleCloudAiplatformV1IndexDatapointRestrictionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1IndexDatapointRestriction,
@@ -30104,8 +29964,7 @@ export type GoogleCloudAiplatformV1IndexDatapointNumericRestrictionOpEnum =
   | "EQUAL"
   | "GREATER_EQUAL"
   | "GREATER"
-  | "NOT_EQUAL"
-  | (string & {});
+  | "NOT_EQUAL";
 export const GoogleCloudAiplatformV1IndexDatapointNumericRestrictionOpEnum =
   /*@__PURE__*/ S.String;
 
@@ -30138,7 +29997,7 @@ export const GoogleCloudAiplatformV1IndexDatapointNumericRestriction =
   }) as any as S.Schema<GoogleCloudAiplatformV1IndexDatapointNumericRestriction>;
 
 export type GoogleCloudAiplatformV1IndexDatapointNumericRestrictionList =
-  GoogleCloudAiplatformV1IndexDatapointNumericRestriction[];
+  ReadonlyArray<GoogleCloudAiplatformV1IndexDatapointNumericRestriction>;
 export const GoogleCloudAiplatformV1IndexDatapointNumericRestrictionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1IndexDatapointNumericRestriction,
@@ -30212,7 +30071,7 @@ export const GoogleCloudAiplatformV1FindNeighborsRequestQuery =
   }) as any as S.Schema<GoogleCloudAiplatformV1FindNeighborsRequestQuery>;
 
 export type GoogleCloudAiplatformV1FindNeighborsRequestQueryList =
-  GoogleCloudAiplatformV1FindNeighborsRequestQuery[];
+  ReadonlyArray<GoogleCloudAiplatformV1FindNeighborsRequestQuery>;
 export const GoogleCloudAiplatformV1FindNeighborsRequestQueryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FindNeighborsRequestQuery,
@@ -30283,7 +30142,7 @@ export const GoogleCloudAiplatformV1FindNeighborsResponseNeighbor =
   }) as any as S.Schema<GoogleCloudAiplatformV1FindNeighborsResponseNeighbor>;
 
 export type GoogleCloudAiplatformV1FindNeighborsResponseNeighborList =
-  GoogleCloudAiplatformV1FindNeighborsResponseNeighbor[];
+  ReadonlyArray<GoogleCloudAiplatformV1FindNeighborsResponseNeighbor>;
 export const GoogleCloudAiplatformV1FindNeighborsResponseNeighborList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FindNeighborsResponseNeighbor,
@@ -30309,7 +30168,7 @@ export const GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors =
   }) as any as S.Schema<GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors>;
 
 export type GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighborsList =
-  GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors[];
+  ReadonlyArray<GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors>;
 export const GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighborsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FindNeighborsResponseNearestNeighbors,
@@ -30334,8 +30193,7 @@ export const GoogleCloudAiplatformV1FindNeighborsResponse =
 export type GoogleCloudAiplatformV1SafetySettingMethodEnum =
   | "HARM_BLOCK_METHOD_UNSPECIFIED"
   | "SEVERITY"
-  | "PROBABILITY"
-  | (string & {});
+  | "PROBABILITY";
 export const GoogleCloudAiplatformV1SafetySettingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -30350,8 +30208,7 @@ export type GoogleCloudAiplatformV1SafetySettingCategoryEnum =
   | "HARM_CATEGORY_IMAGE_DANGEROUS_CONTENT"
   | "HARM_CATEGORY_IMAGE_HARASSMENT"
   | "HARM_CATEGORY_IMAGE_SEXUALLY_EXPLICIT"
-  | "HARM_CATEGORY_JAILBREAK"
-  | (string & {});
+  | "HARM_CATEGORY_JAILBREAK";
 export const GoogleCloudAiplatformV1SafetySettingCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -30361,8 +30218,7 @@ export type GoogleCloudAiplatformV1SafetySettingThresholdEnum =
   | "BLOCK_MEDIUM_AND_ABOVE"
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
-  | "OFF"
-  | (string & {});
+  | "OFF";
 export const GoogleCloudAiplatformV1SafetySettingThresholdEnum =
   /*@__PURE__*/ S.String;
 
@@ -30387,7 +30243,7 @@ export const GoogleCloudAiplatformV1SafetySetting = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1SafetySetting>;
 
 export type GoogleCloudAiplatformV1SafetySettingList =
-  GoogleCloudAiplatformV1SafetySetting[];
+  ReadonlyArray<GoogleCloudAiplatformV1SafetySetting>;
 export const GoogleCloudAiplatformV1SafetySettingList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1SafetySetting,
 ) as any as S.Schema<GoogleCloudAiplatformV1SafetySettingList>;
@@ -30487,8 +30343,7 @@ export type GoogleCloudAiplatformV1CandidateFinishReasonEnum =
   | "IMAGE_RECITATION"
   | "IMAGE_OTHER"
   | "UNEXPECTED_TOOL_CALL"
-  | "NO_IMAGE"
-  | (string & {});
+  | "NO_IMAGE";
 export const GoogleCloudAiplatformV1CandidateFinishReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -30503,8 +30358,7 @@ export type GoogleCloudAiplatformV1SafetyRatingCategoryEnum =
   | "HARM_CATEGORY_IMAGE_DANGEROUS_CONTENT"
   | "HARM_CATEGORY_IMAGE_HARASSMENT"
   | "HARM_CATEGORY_IMAGE_SEXUALLY_EXPLICIT"
-  | "HARM_CATEGORY_JAILBREAK"
-  | (string & {});
+  | "HARM_CATEGORY_JAILBREAK";
 export const GoogleCloudAiplatformV1SafetyRatingCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -30514,8 +30368,7 @@ export type GoogleCloudAiplatformV1SafetyRatingOverwrittenThresholdEnum =
   | "BLOCK_MEDIUM_AND_ABOVE"
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
-  | "OFF"
-  | (string & {});
+  | "OFF";
 export const GoogleCloudAiplatformV1SafetyRatingOverwrittenThresholdEnum =
   /*@__PURE__*/ S.String;
 
@@ -30524,8 +30377,7 @@ export type GoogleCloudAiplatformV1SafetyRatingProbabilityEnum =
   | "NEGLIGIBLE"
   | "LOW"
   | "MEDIUM"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const GoogleCloudAiplatformV1SafetyRatingProbabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -30534,8 +30386,7 @@ export type GoogleCloudAiplatformV1SafetyRatingSeverityEnum =
   | "HARM_SEVERITY_NEGLIGIBLE"
   | "HARM_SEVERITY_LOW"
   | "HARM_SEVERITY_MEDIUM"
-  | "HARM_SEVERITY_HIGH"
-  | (string & {});
+  | "HARM_SEVERITY_HIGH";
 export const GoogleCloudAiplatformV1SafetyRatingSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -30573,7 +30424,7 @@ export const GoogleCloudAiplatformV1SafetyRating = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1SafetyRating>;
 
 export type GoogleCloudAiplatformV1SafetyRatingList =
-  GoogleCloudAiplatformV1SafetyRating[];
+  ReadonlyArray<GoogleCloudAiplatformV1SafetyRating>;
 export const GoogleCloudAiplatformV1SafetyRatingList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1SafetyRating,
 ) as any as S.Schema<GoogleCloudAiplatformV1SafetyRatingList>;
@@ -30624,7 +30475,7 @@ export const GoogleCloudAiplatformV1Citation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1Citation>;
 
 export type GoogleCloudAiplatformV1CitationList =
-  GoogleCloudAiplatformV1Citation[];
+  ReadonlyArray<GoogleCloudAiplatformV1Citation>;
 export const GoogleCloudAiplatformV1CitationList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Citation,
 ) as any as S.Schema<GoogleCloudAiplatformV1CitationList>;
@@ -30664,7 +30515,7 @@ export const GoogleCloudAiplatformV1LogprobsResultCandidate =
   }) as any as S.Schema<GoogleCloudAiplatformV1LogprobsResultCandidate>;
 
 export type GoogleCloudAiplatformV1LogprobsResultCandidateList =
-  GoogleCloudAiplatformV1LogprobsResultCandidate[];
+  ReadonlyArray<GoogleCloudAiplatformV1LogprobsResultCandidate>;
 export const GoogleCloudAiplatformV1LogprobsResultCandidateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1LogprobsResultCandidate,
@@ -30687,7 +30538,7 @@ export const GoogleCloudAiplatformV1LogprobsResultTopCandidates =
   }) as any as S.Schema<GoogleCloudAiplatformV1LogprobsResultTopCandidates>;
 
 export type GoogleCloudAiplatformV1LogprobsResultTopCandidatesList =
-  GoogleCloudAiplatformV1LogprobsResultTopCandidates[];
+  ReadonlyArray<GoogleCloudAiplatformV1LogprobsResultTopCandidates>;
 export const GoogleCloudAiplatformV1LogprobsResultTopCandidatesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1LogprobsResultTopCandidates,
@@ -30717,8 +30568,7 @@ export const GoogleCloudAiplatformV1LogprobsResult = /*@__PURE__*/ S.suspend(
 export type GoogleCloudAiplatformV1UrlMetadataUrlRetrievalStatusEnum =
   | "URL_RETRIEVAL_STATUS_UNSPECIFIED"
   | "URL_RETRIEVAL_STATUS_SUCCESS"
-  | "URL_RETRIEVAL_STATUS_ERROR"
-  | (string & {});
+  | "URL_RETRIEVAL_STATUS_ERROR";
 export const GoogleCloudAiplatformV1UrlMetadataUrlRetrievalStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -30741,7 +30591,7 @@ export const GoogleCloudAiplatformV1UrlMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1UrlMetadata>;
 
 export type GoogleCloudAiplatformV1UrlMetadataList =
-  GoogleCloudAiplatformV1UrlMetadata[];
+  ReadonlyArray<GoogleCloudAiplatformV1UrlMetadata>;
 export const GoogleCloudAiplatformV1UrlMetadataList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1UrlMetadata,
 ) as any as S.Schema<GoogleCloudAiplatformV1UrlMetadataList>;
@@ -30801,7 +30651,7 @@ export const GoogleCloudAiplatformV1Candidate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1Candidate>;
 
 export type GoogleCloudAiplatformV1CandidateList =
-  GoogleCloudAiplatformV1Candidate[];
+  ReadonlyArray<GoogleCloudAiplatformV1Candidate>;
 export const GoogleCloudAiplatformV1CandidateList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Candidate,
 ) as any as S.Schema<GoogleCloudAiplatformV1CandidateList>;
@@ -30814,8 +30664,7 @@ export type GoogleCloudAiplatformV1GenerateContentResponsePromptFeedbackBlockRea
     | "PROHIBITED_CONTENT"
     | "MODEL_ARMOR"
     | "IMAGE_SAFETY"
-    | "JAILBREAK"
-    | (string & {});
+    | "JAILBREAK";
 export const GoogleCloudAiplatformV1GenerateContentResponsePromptFeedbackBlockReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -30846,8 +30695,7 @@ export type GoogleCloudAiplatformV1GenerateContentResponseUsageMetadataTrafficTy
     | "ON_DEMAND"
     | "ON_DEMAND_PRIORITY"
     | "ON_DEMAND_FLEX"
-    | "PROVISIONED_THROUGHPUT"
-    | (string & {});
+    | "PROVISIONED_THROUGHPUT";
 export const GoogleCloudAiplatformV1GenerateContentResponseUsageMetadataTrafficTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -31157,7 +31005,7 @@ export const GenerateInstanceRubricsV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateInstanceRubricsV1Request>;
 
 export type GoogleCloudAiplatformV1EvaluationResultList =
-  GoogleCloudAiplatformV1EvaluationResult[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluationResult>;
 export const GoogleCloudAiplatformV1EvaluationResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1EvaluationResult,
@@ -31251,8 +31099,7 @@ export type GoogleCloudAiplatformV1GenerateMemoriesRequestMetadataMergeStrategyE
     | "METADATA_MERGE_STRATEGY_UNSPECIFIED"
     | "OVERWRITE"
     | "MERGE"
-    | "REQUIRE_EXACT_MATCH"
-    | (string & {});
+    | "REQUIRE_EXACT_MATCH";
 export const GoogleCloudAiplatformV1GenerateMemoriesRequestMetadataMergeStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -31275,7 +31122,7 @@ export const GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSourceD
   }) as any as S.Schema<GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSourceDirectMemory>;
 
 export type GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSourceDirectMemoryList =
-  GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSourceDirectMemory[];
+  ReadonlyArray<GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSourceDirectMemory>;
 export const GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSourceDirectMemoryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1GenerateMemoriesRequestDirectMemoriesSourceDirectMemory,
@@ -31314,7 +31161,7 @@ export const GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSourceE
   }) as any as S.Schema<GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSourceEvent>;
 
 export type GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSourceEventList =
-  GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSourceEvent[];
+  ReadonlyArray<GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSourceEvent>;
 export const GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSourceEventList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1GenerateMemoriesRequestDirectContentsSourceEvent,
@@ -31458,7 +31305,7 @@ export const GoogleCloudAiplatformV1SyntheticField = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1SyntheticField>;
 
 export type GoogleCloudAiplatformV1SyntheticFieldList =
-  GoogleCloudAiplatformV1SyntheticField[];
+  ReadonlyArray<GoogleCloudAiplatformV1SyntheticField>;
 export const GoogleCloudAiplatformV1SyntheticFieldList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1SyntheticField,
 ) as any as S.Schema<GoogleCloudAiplatformV1SyntheticFieldList>;
@@ -31478,7 +31325,7 @@ export const GoogleCloudAiplatformV1SyntheticExample = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1SyntheticExample>;
 
 export type GoogleCloudAiplatformV1SyntheticExampleList =
-  GoogleCloudAiplatformV1SyntheticExample[];
+  ReadonlyArray<GoogleCloudAiplatformV1SyntheticExample>;
 export const GoogleCloudAiplatformV1SyntheticExampleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SyntheticExample,
@@ -31503,8 +31350,7 @@ export type GoogleCloudAiplatformV1OutputFieldSpecFieldTypeEnum =
   | "CONTENT"
   | "TEXT"
   | "IMAGE"
-  | "AUDIO"
-  | (string & {});
+  | "AUDIO";
 export const GoogleCloudAiplatformV1OutputFieldSpecFieldTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -31531,7 +31377,7 @@ export const GoogleCloudAiplatformV1OutputFieldSpec = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1OutputFieldSpec>;
 
 export type GoogleCloudAiplatformV1OutputFieldSpecList =
-  GoogleCloudAiplatformV1OutputFieldSpec[];
+  ReadonlyArray<GoogleCloudAiplatformV1OutputFieldSpec>;
 export const GoogleCloudAiplatformV1OutputFieldSpecList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1OutputFieldSpec,
 ) as any as S.Schema<GoogleCloudAiplatformV1OutputFieldSpecList>;
@@ -31693,7 +31539,7 @@ export const GoogleCloudAiplatformV1UserScenario = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1UserScenario>;
 
 export type GoogleCloudAiplatformV1UserScenarioList =
-  GoogleCloudAiplatformV1UserScenario[];
+  ReadonlyArray<GoogleCloudAiplatformV1UserScenario>;
 export const GoogleCloudAiplatformV1UserScenarioList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1UserScenario,
 ) as any as S.Schema<GoogleCloudAiplatformV1UserScenarioList>;
@@ -32185,7 +32031,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = GoogleIamV1Binding[];
+export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -33787,7 +33633,7 @@ export const GoogleCloudAiplatformV1IntermediateExtractedMemory =
   }) as any as S.Schema<GoogleCloudAiplatformV1IntermediateExtractedMemory>;
 
 export type GoogleCloudAiplatformV1IntermediateExtractedMemoryList =
-  GoogleCloudAiplatformV1IntermediateExtractedMemory[];
+  ReadonlyArray<GoogleCloudAiplatformV1IntermediateExtractedMemory>;
 export const GoogleCloudAiplatformV1IntermediateExtractedMemoryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1IntermediateExtractedMemory,
@@ -34144,7 +33990,7 @@ export const GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpe
   }) as any as S.Schema<GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpec>;
 
 export type GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpecList =
-  GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpec[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpec>;
 export const GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModelEvaluationModelEvaluationExplanationSpec,
@@ -34456,8 +34302,7 @@ export const GoogleCloudAiplatformV1NasTrialDetail = /*@__PURE__*/ S.suspend(
 export type GetProjectsLocationsNotebookExecutionJobsViewEnum =
   | "NOTEBOOK_EXECUTION_JOB_VIEW_UNSPECIFIED"
   | "NOTEBOOK_EXECUTION_JOB_VIEW_BASIC"
-  | "NOTEBOOK_EXECUTION_JOB_VIEW_FULL"
-  | (string & {});
+  | "NOTEBOOK_EXECUTION_JOB_VIEW_FULL";
 export const GetProjectsLocationsNotebookExecutionJobsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -34809,7 +34654,7 @@ export const GoogleCloudAiplatformV1SharePointSourcesSharePointSource =
   }) as any as S.Schema<GoogleCloudAiplatformV1SharePointSourcesSharePointSource>;
 
 export type GoogleCloudAiplatformV1SharePointSourcesSharePointSourceList =
-  GoogleCloudAiplatformV1SharePointSourcesSharePointSource[];
+  ReadonlyArray<GoogleCloudAiplatformV1SharePointSourcesSharePointSource>;
 export const GoogleCloudAiplatformV1SharePointSourcesSharePointSourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SharePointSourcesSharePointSource,
@@ -34858,7 +34703,7 @@ export const GoogleCloudAiplatformV1JiraSourceJiraQueries =
   }) as any as S.Schema<GoogleCloudAiplatformV1JiraSourceJiraQueries>;
 
 export type GoogleCloudAiplatformV1JiraSourceJiraQueriesList =
-  GoogleCloudAiplatformV1JiraSourceJiraQueries[];
+  ReadonlyArray<GoogleCloudAiplatformV1JiraSourceJiraQueries>;
 export const GoogleCloudAiplatformV1JiraSourceJiraQueriesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1JiraSourceJiraQueries,
@@ -34878,10 +34723,7 @@ export const GoogleCloudAiplatformV1JiraSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1JiraSource>;
 
 export type GoogleCloudAiplatformV1GoogleDriveSourceResourceIdResourceTypeEnum =
-    | "RESOURCE_TYPE_UNSPECIFIED"
-    | "RESOURCE_TYPE_FILE"
-    | "RESOURCE_TYPE_FOLDER"
-    | (string & {});
+  "RESOURCE_TYPE_UNSPECIFIED" | "RESOURCE_TYPE_FILE" | "RESOURCE_TYPE_FOLDER";
 export const GoogleCloudAiplatformV1GoogleDriveSourceResourceIdResourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -34905,7 +34747,7 @@ export const GoogleCloudAiplatformV1GoogleDriveSourceResourceId =
   }) as any as S.Schema<GoogleCloudAiplatformV1GoogleDriveSourceResourceId>;
 
 export type GoogleCloudAiplatformV1GoogleDriveSourceResourceIdList =
-  GoogleCloudAiplatformV1GoogleDriveSourceResourceId[];
+  ReadonlyArray<GoogleCloudAiplatformV1GoogleDriveSourceResourceId>;
 export const GoogleCloudAiplatformV1GoogleDriveSourceResourceIdList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1GoogleDriveSourceResourceId,
@@ -34948,7 +34790,7 @@ export const GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel =
   }) as any as S.Schema<GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel>;
 
 export type GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannelList =
-  GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel[];
+  ReadonlyArray<GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel>;
 export const GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannelList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SlackSourceSlackChannelsSlackChannel,
@@ -34974,7 +34816,7 @@ export const GoogleCloudAiplatformV1SlackSourceSlackChannels =
   }) as any as S.Schema<GoogleCloudAiplatformV1SlackSourceSlackChannels>;
 
 export type GoogleCloudAiplatformV1SlackSourceSlackChannelsList =
-  GoogleCloudAiplatformV1SlackSourceSlackChannels[];
+  ReadonlyArray<GoogleCloudAiplatformV1SlackSourceSlackChannels>;
 export const GoogleCloudAiplatformV1SlackSourceSlackChannelsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SlackSourceSlackChannels,
@@ -35003,8 +34845,7 @@ export const GoogleCloudAiplatformV1DirectUploadSource =
 export type GoogleCloudAiplatformV1FileStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GoogleCloudAiplatformV1FileStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -35247,7 +35088,7 @@ export const GetProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsRequ
   }) as any as S.Schema<GetProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsRequest>;
 
 export type GoogleCloudAiplatformV1SandboxEnvironmentSnapshotPostSnapshotActionEnum =
-  "POST_SNAPSHOT_ACTION_UNSPECIFIED" | "RUNNING" | "PAUSE" | (string & {});
+  "POST_SNAPSHOT_ACTION_UNSPECIFIED" | "RUNNING" | "PAUSE";
 export const GoogleCloudAiplatformV1SandboxEnvironmentSnapshotPostSnapshotActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -35859,8 +35700,7 @@ export type GetPublishersModelsViewEnum =
   | "PUBLISHER_MODEL_VIEW_UNSPECIFIED"
   | "PUBLISHER_MODEL_VIEW_BASIC"
   | "PUBLISHER_MODEL_VIEW_FULL"
-  | "PUBLISHER_MODEL_VERSION_VIEW_BASIC"
-  | (string & {});
+  | "PUBLISHER_MODEL_VERSION_VIEW_BASIC";
 export const GetPublishersModelsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetPublishersModelsRequest {
@@ -35899,8 +35739,7 @@ export type GoogleCloudAiplatformV1PublisherModelOpenSourceCategoryEnum =
   | "GOOGLE_OWNED_OSS_WITH_GOOGLE_CHECKPOINT"
   | "THIRD_PARTY_OWNED_OSS_WITH_GOOGLE_CHECKPOINT"
   | "GOOGLE_OWNED_OSS"
-  | "THIRD_PARTY_OWNED_OSS"
-  | (string & {});
+  | "THIRD_PARTY_OWNED_OSS";
 export const GoogleCloudAiplatformV1PublisherModelOpenSourceCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -35985,7 +35824,7 @@ export const GoogleCloudAiplatformV1PublisherModelCallToActionDeploy =
   }) as any as S.Schema<GoogleCloudAiplatformV1PublisherModelCallToActionDeploy>;
 
 export type GoogleCloudAiplatformV1PublisherModelCallToActionDeployList =
-  GoogleCloudAiplatformV1PublisherModelCallToActionDeploy[];
+  ReadonlyArray<GoogleCloudAiplatformV1PublisherModelCallToActionDeploy>;
 export const GoogleCloudAiplatformV1PublisherModelCallToActionDeployList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1PublisherModelCallToActionDeploy,
@@ -36077,7 +35916,7 @@ export const GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceRe
   }) as any as S.Schema<GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>;
 
 export type GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferencesList =
-  GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences[];
+  ReadonlyArray<GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences>;
 export const GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferencesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences,
@@ -36118,7 +35957,7 @@ export const GoogleCloudAiplatformV1PublisherModelDocumentation =
   }) as any as S.Schema<GoogleCloudAiplatformV1PublisherModelDocumentation>;
 
 export type GoogleCloudAiplatformV1PublisherModelDocumentationList =
-  GoogleCloudAiplatformV1PublisherModelDocumentation[];
+  ReadonlyArray<GoogleCloudAiplatformV1PublisherModelDocumentation>;
 export const GoogleCloudAiplatformV1PublisherModelDocumentationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1PublisherModelDocumentation,
@@ -36260,16 +36099,14 @@ export type GoogleCloudAiplatformV1PublisherModelLaunchStageEnum =
   | "EXPERIMENTAL"
   | "PRIVATE_PREVIEW"
   | "PUBLIC_PREVIEW"
-  | "GA"
-  | (string & {});
+  | "GA";
 export const GoogleCloudAiplatformV1PublisherModelLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1PublisherModelVersionStateEnum =
   | "VERSION_STATE_UNSPECIFIED"
   | "VERSION_STATE_STABLE"
-  | "VERSION_STATE_UNSTABLE"
-  | (string & {});
+  | "VERSION_STATE_UNSTABLE";
 export const GoogleCloudAiplatformV1PublisherModelVersionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -36743,8 +36580,7 @@ export type GoogleCloudAiplatformV1SemanticGovernancePolicyEngineStateEnum =
   | "ACTIVE"
   | "DEPROVISIONING"
   | "INACTIVE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const GoogleCloudAiplatformV1SemanticGovernancePolicyEngineStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -36754,8 +36590,7 @@ export type GoogleCloudAiplatformV1GatewayConfigStateEnum =
   | "ACTIVE"
   | "DEPROVISIONING"
   | "INACTIVE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const GoogleCloudAiplatformV1GatewayConfigStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -37038,7 +36873,7 @@ export const GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec =
   }) as any as S.Schema<GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec>;
 
 export type GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpecList =
-  GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec[];
+  ReadonlyArray<GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec>;
 export const GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ImportFeatureValuesRequestFeatureSpec,
@@ -37146,7 +36981,7 @@ export const GoogleCloudAiplatformV1ImportDataConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudAiplatformV1ImportDataConfig>;
 
 export type GoogleCloudAiplatformV1ImportDataConfigList =
-  GoogleCloudAiplatformV1ImportDataConfig[];
+  ReadonlyArray<GoogleCloudAiplatformV1ImportDataConfig>;
 export const GoogleCloudAiplatformV1ImportDataConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ImportDataConfig,
@@ -37191,11 +37026,7 @@ export const ImportProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ImportProjectsLocationsDatasetsRequest>;
 
 export type GoogleCloudAiplatformV1ImportEvaluationSetRequestImportSchemaConfigDataFormatEnum =
-    | "DATA_FORMAT_UNSPECIFIED"
-    | "OTEL_PROTO"
-    | "OTEL_JSON"
-    | "JSONL"
-    | (string & {});
+  "DATA_FORMAT_UNSPECIFIED" | "OTEL_PROTO" | "OTEL_JSON" | "JSONL";
 export const GoogleCloudAiplatformV1ImportEvaluationSetRequestImportSchemaConfigDataFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -37656,7 +37487,7 @@ export const GoogleCloudAiplatformV1IngestionDirectContentsSourceEvent =
   }) as any as S.Schema<GoogleCloudAiplatformV1IngestionDirectContentsSourceEvent>;
 
 export type GoogleCloudAiplatformV1IngestionDirectContentsSourceEventList =
-  GoogleCloudAiplatformV1IngestionDirectContentsSourceEvent[];
+  ReadonlyArray<GoogleCloudAiplatformV1IngestionDirectContentsSourceEvent>;
 export const GoogleCloudAiplatformV1IngestionDirectContentsSourceEventList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1IngestionDirectContentsSourceEvent,
@@ -37682,8 +37513,7 @@ export type GoogleCloudAiplatformV1IngestEventsRequestMetadataMergeStrategyEnum 
     | "METADATA_MERGE_STRATEGY_UNSPECIFIED"
     | "OVERWRITE"
     | "MERGE"
-    | "REQUIRE_EXACT_MATCH"
-    | (string & {});
+    | "REQUIRE_EXACT_MATCH";
 export const GoogleCloudAiplatformV1IngestEventsRequestMetadataMergeStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -37884,7 +37714,7 @@ export const ListBatchPredictionJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBatchPredictionJobsRequest>;
 
 export type GoogleCloudAiplatformV1BatchPredictionJobList =
-  GoogleCloudAiplatformV1BatchPredictionJob[];
+  ReadonlyArray<GoogleCloudAiplatformV1BatchPredictionJob>;
 export const GoogleCloudAiplatformV1BatchPredictionJobList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1BatchPredictionJob,
@@ -37955,7 +37785,7 @@ export const GoogleCloudAiplatformV1ModelVersionCheckpoint =
   }) as any as S.Schema<GoogleCloudAiplatformV1ModelVersionCheckpoint>;
 
 export type GoogleCloudAiplatformV1ModelVersionCheckpointList =
-  GoogleCloudAiplatformV1ModelVersionCheckpoint[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelVersionCheckpoint>;
 export const GoogleCloudAiplatformV1ModelVersionCheckpointList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModelVersionCheckpoint,
@@ -38010,7 +37840,8 @@ export const ListCustomJobsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomJobsOperationsRequest",
 }) as any as S.Schema<ListCustomJobsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -38100,7 +37931,7 @@ export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatasetsRequest>;
 
 export type GoogleCloudAiplatformV1DatasetList =
-  GoogleCloudAiplatformV1Dataset[];
+  ReadonlyArray<GoogleCloudAiplatformV1Dataset>;
 export const GoogleCloudAiplatformV1DatasetList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Dataset,
 ) as any as S.Schema<GoogleCloudAiplatformV1DatasetList>;
@@ -38249,7 +38080,7 @@ export const ListDatasetsDatasetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatasetsDatasetVersionsRequest>;
 
 export type GoogleCloudAiplatformV1DatasetVersionList =
-  GoogleCloudAiplatformV1DatasetVersion[];
+  ReadonlyArray<GoogleCloudAiplatformV1DatasetVersion>;
 export const GoogleCloudAiplatformV1DatasetVersionList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1DatasetVersion,
 ) as any as S.Schema<GoogleCloudAiplatformV1DatasetVersionList>;
@@ -39173,7 +39004,8 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type GoogleCloudLocationLocationList = GoogleCloudLocationLocation[];
+export type GoogleCloudLocationLocationList =
+  ReadonlyArray<GoogleCloudLocationLocation>;
 export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
@@ -39222,7 +39054,8 @@ export const ListProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsAgentsRequest",
 }) as any as S.Schema<ListProjectsLocationsAgentsRequest>;
 
-export type GoogleCloudAiplatformV1AgentList = GoogleCloudAiplatformV1Agent[];
+export type GoogleCloudAiplatformV1AgentList =
+  ReadonlyArray<GoogleCloudAiplatformV1Agent>;
 export const GoogleCloudAiplatformV1AgentList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Agent,
 ) as any as S.Schema<GoogleCloudAiplatformV1AgentList>;
@@ -39301,7 +39134,7 @@ export const ListProjectsLocationsCachedContentsRequest =
   }) as any as S.Schema<ListProjectsLocationsCachedContentsRequest>;
 
 export type GoogleCloudAiplatformV1CachedContentList =
-  GoogleCloudAiplatformV1CachedContent[];
+  ReadonlyArray<GoogleCloudAiplatformV1CachedContent>;
 export const GoogleCloudAiplatformV1CachedContentList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1CachedContent,
 ) as any as S.Schema<GoogleCloudAiplatformV1CachedContentList>;
@@ -39355,7 +39188,7 @@ export const ListProjectsLocationsCustomJobsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsCustomJobsRequest>;
 
 export type GoogleCloudAiplatformV1CustomJobList =
-  GoogleCloudAiplatformV1CustomJob[];
+  ReadonlyArray<GoogleCloudAiplatformV1CustomJob>;
 export const GoogleCloudAiplatformV1CustomJobList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1CustomJob,
 ) as any as S.Schema<GoogleCloudAiplatformV1CustomJobList>;
@@ -39443,7 +39276,7 @@ export const ListProjectsLocationsDataLabelingJobsRequest =
   }) as any as S.Schema<ListProjectsLocationsDataLabelingJobsRequest>;
 
 export type GoogleCloudAiplatformV1DataLabelingJobList =
-  GoogleCloudAiplatformV1DataLabelingJob[];
+  ReadonlyArray<GoogleCloudAiplatformV1DataLabelingJob>;
 export const GoogleCloudAiplatformV1DataLabelingJobList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1DataLabelingJob,
 ) as any as S.Schema<GoogleCloudAiplatformV1DataLabelingJobList>;
@@ -39630,7 +39463,7 @@ export const GoogleCloudAiplatformV1DataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1DataItem>;
 
 export type GoogleCloudAiplatformV1DataItemList =
-  GoogleCloudAiplatformV1DataItem[];
+  ReadonlyArray<GoogleCloudAiplatformV1DataItem>;
 export const GoogleCloudAiplatformV1DataItemList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1DataItem,
 ) as any as S.Schema<GoogleCloudAiplatformV1DataItemList>;
@@ -39741,7 +39574,7 @@ export const GoogleCloudAiplatformV1Annotation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1Annotation>;
 
 export type GoogleCloudAiplatformV1AnnotationList =
-  GoogleCloudAiplatformV1Annotation[];
+  ReadonlyArray<GoogleCloudAiplatformV1Annotation>;
 export const GoogleCloudAiplatformV1AnnotationList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Annotation,
 ) as any as S.Schema<GoogleCloudAiplatformV1AnnotationList>;
@@ -39999,7 +39832,7 @@ export const ListProjectsLocationsDeploymentResourcePoolsRequest =
   }) as any as S.Schema<ListProjectsLocationsDeploymentResourcePoolsRequest>;
 
 export type GoogleCloudAiplatformV1DeploymentResourcePoolList =
-  GoogleCloudAiplatformV1DeploymentResourcePool[];
+  ReadonlyArray<GoogleCloudAiplatformV1DeploymentResourcePool>;
 export const GoogleCloudAiplatformV1DeploymentResourcePoolList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1DeploymentResourcePool,
@@ -40093,7 +39926,7 @@ export const ListProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsEndpointsRequest>;
 
 export type GoogleCloudAiplatformV1EndpointList =
-  GoogleCloudAiplatformV1Endpoint[];
+  ReadonlyArray<GoogleCloudAiplatformV1Endpoint>;
 export const GoogleCloudAiplatformV1EndpointList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Endpoint,
 ) as any as S.Schema<GoogleCloudAiplatformV1EndpointList>;
@@ -40178,7 +40011,7 @@ export const ListProjectsLocationsEvaluationItemsRequest =
   }) as any as S.Schema<ListProjectsLocationsEvaluationItemsRequest>;
 
 export type GoogleCloudAiplatformV1EvaluationItemList =
-  GoogleCloudAiplatformV1EvaluationItem[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluationItem>;
 export const GoogleCloudAiplatformV1EvaluationItemList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1EvaluationItem,
 ) as any as S.Schema<GoogleCloudAiplatformV1EvaluationItemList>;
@@ -40232,7 +40065,7 @@ export const ListProjectsLocationsEvaluationMetricsRequest =
   }) as any as S.Schema<ListProjectsLocationsEvaluationMetricsRequest>;
 
 export type GoogleCloudAiplatformV1EvaluationMetricList =
-  GoogleCloudAiplatformV1EvaluationMetric[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluationMetric>;
 export const GoogleCloudAiplatformV1EvaluationMetricList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1EvaluationMetric,
@@ -40289,7 +40122,7 @@ export const ListProjectsLocationsEvaluationRunsRequest =
   }) as any as S.Schema<ListProjectsLocationsEvaluationRunsRequest>;
 
 export type GoogleCloudAiplatformV1EvaluationRunList =
-  GoogleCloudAiplatformV1EvaluationRun[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluationRun>;
 export const GoogleCloudAiplatformV1EvaluationRunList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1EvaluationRun,
 ) as any as S.Schema<GoogleCloudAiplatformV1EvaluationRunList>;
@@ -40343,7 +40176,7 @@ export const ListProjectsLocationsEvaluationSetsRequest =
   }) as any as S.Schema<ListProjectsLocationsEvaluationSetsRequest>;
 
 export type GoogleCloudAiplatformV1EvaluationSetList =
-  GoogleCloudAiplatformV1EvaluationSet[];
+  ReadonlyArray<GoogleCloudAiplatformV1EvaluationSet>;
 export const GoogleCloudAiplatformV1EvaluationSetList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1EvaluationSet,
 ) as any as S.Schema<GoogleCloudAiplatformV1EvaluationSetList>;
@@ -40397,7 +40230,7 @@ export const ListProjectsLocationsFeatureGroupsRequest =
   }) as any as S.Schema<ListProjectsLocationsFeatureGroupsRequest>;
 
 export type GoogleCloudAiplatformV1FeatureGroupList =
-  GoogleCloudAiplatformV1FeatureGroup[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureGroup>;
 export const GoogleCloudAiplatformV1FeatureGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1FeatureGroup,
 ) as any as S.Schema<GoogleCloudAiplatformV1FeatureGroupList>;
@@ -40457,7 +40290,7 @@ export const ListProjectsLocationsFeatureGroupsFeaturesRequest =
   }) as any as S.Schema<ListProjectsLocationsFeatureGroupsFeaturesRequest>;
 
 export type GoogleCloudAiplatformV1FeatureList =
-  GoogleCloudAiplatformV1Feature[];
+  ReadonlyArray<GoogleCloudAiplatformV1Feature>;
 export const GoogleCloudAiplatformV1FeatureList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Feature,
 ) as any as S.Schema<GoogleCloudAiplatformV1FeatureList>;
@@ -40511,7 +40344,7 @@ export const ListProjectsLocationsFeatureOnlineStoresRequest =
   }) as any as S.Schema<ListProjectsLocationsFeatureOnlineStoresRequest>;
 
 export type GoogleCloudAiplatformV1FeatureOnlineStoreList =
-  GoogleCloudAiplatformV1FeatureOnlineStore[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureOnlineStore>;
 export const GoogleCloudAiplatformV1FeatureOnlineStoreList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FeatureOnlineStore,
@@ -40568,7 +40401,7 @@ export const ListProjectsLocationsFeatureOnlineStoresFeatureViewsRequest =
   }) as any as S.Schema<ListProjectsLocationsFeatureOnlineStoresFeatureViewsRequest>;
 
 export type GoogleCloudAiplatformV1FeatureViewList =
-  GoogleCloudAiplatformV1FeatureView[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureView>;
 export const GoogleCloudAiplatformV1FeatureViewList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1FeatureView,
 ) as any as S.Schema<GoogleCloudAiplatformV1FeatureViewList>;
@@ -40623,7 +40456,7 @@ export const ListProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSync
   }) as any as S.Schema<ListProjectsLocationsFeatureOnlineStoresFeatureViewsFeatureViewSyncsRequest>;
 
 export type GoogleCloudAiplatformV1FeatureViewSyncList =
-  GoogleCloudAiplatformV1FeatureViewSync[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureViewSync>;
 export const GoogleCloudAiplatformV1FeatureViewSyncList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1FeatureViewSync,
 ) as any as S.Schema<GoogleCloudAiplatformV1FeatureViewSyncList>;
@@ -40680,7 +40513,7 @@ export const ListProjectsLocationsFeaturestoresRequest =
   }) as any as S.Schema<ListProjectsLocationsFeaturestoresRequest>;
 
 export type GoogleCloudAiplatformV1FeaturestoreList =
-  GoogleCloudAiplatformV1Featurestore[];
+  ReadonlyArray<GoogleCloudAiplatformV1Featurestore>;
 export const GoogleCloudAiplatformV1FeaturestoreList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Featurestore,
 ) as any as S.Schema<GoogleCloudAiplatformV1FeaturestoreList>;
@@ -40737,7 +40570,7 @@ export const ListProjectsLocationsFeaturestoresEntityTypesRequest =
   }) as any as S.Schema<ListProjectsLocationsFeaturestoresEntityTypesRequest>;
 
 export type GoogleCloudAiplatformV1EntityTypeList =
-  GoogleCloudAiplatformV1EntityType[];
+  ReadonlyArray<GoogleCloudAiplatformV1EntityType>;
 export const GoogleCloudAiplatformV1EntityTypeList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1EntityType,
 ) as any as S.Schema<GoogleCloudAiplatformV1EntityTypeList>;
@@ -40923,7 +40756,7 @@ export const ListProjectsLocationsHyperparameterTuningJobsRequest =
   }) as any as S.Schema<ListProjectsLocationsHyperparameterTuningJobsRequest>;
 
 export type GoogleCloudAiplatformV1HyperparameterTuningJobList =
-  GoogleCloudAiplatformV1HyperparameterTuningJob[];
+  ReadonlyArray<GoogleCloudAiplatformV1HyperparameterTuningJob>;
 export const GoogleCloudAiplatformV1HyperparameterTuningJobList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1HyperparameterTuningJob,
@@ -41012,7 +40845,7 @@ export const ListProjectsLocationsIndexEndpointsRequest =
   }) as any as S.Schema<ListProjectsLocationsIndexEndpointsRequest>;
 
 export type GoogleCloudAiplatformV1IndexEndpointList =
-  GoogleCloudAiplatformV1IndexEndpoint[];
+  ReadonlyArray<GoogleCloudAiplatformV1IndexEndpoint>;
 export const GoogleCloudAiplatformV1IndexEndpointList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1IndexEndpoint,
 ) as any as S.Schema<GoogleCloudAiplatformV1IndexEndpointList>;
@@ -41095,7 +40928,8 @@ export const ListProjectsLocationsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsIndexesRequest",
 }) as any as S.Schema<ListProjectsLocationsIndexesRequest>;
 
-export type GoogleCloudAiplatformV1IndexList = GoogleCloudAiplatformV1Index[];
+export type GoogleCloudAiplatformV1IndexList =
+  ReadonlyArray<GoogleCloudAiplatformV1Index>;
 export const GoogleCloudAiplatformV1IndexList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Index,
 ) as any as S.Schema<GoogleCloudAiplatformV1IndexList>;
@@ -41179,7 +41013,8 @@ export const ListProjectsLocationsMemoryBanksMemoriesRequest =
     identifier: "ListProjectsLocationsMemoryBanksMemoriesRequest",
   }) as any as S.Schema<ListProjectsLocationsMemoryBanksMemoriesRequest>;
 
-export type GoogleCloudAiplatformV1MemoryList = GoogleCloudAiplatformV1Memory[];
+export type GoogleCloudAiplatformV1MemoryList =
+  ReadonlyArray<GoogleCloudAiplatformV1Memory>;
 export const GoogleCloudAiplatformV1MemoryList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Memory,
 ) as any as S.Schema<GoogleCloudAiplatformV1MemoryList>;
@@ -41261,7 +41096,7 @@ export const ListProjectsLocationsMemoryBanksMemoriesRevisionsRequest =
   }) as any as S.Schema<ListProjectsLocationsMemoryBanksMemoriesRevisionsRequest>;
 
 export type GoogleCloudAiplatformV1MemoryRevisionList =
-  GoogleCloudAiplatformV1MemoryRevision[];
+  ReadonlyArray<GoogleCloudAiplatformV1MemoryRevision>;
 export const GoogleCloudAiplatformV1MemoryRevisionList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1MemoryRevision,
 ) as any as S.Schema<GoogleCloudAiplatformV1MemoryRevisionList>;
@@ -41340,7 +41175,7 @@ export const ListProjectsLocationsMetadataStoresRequest =
   }) as any as S.Schema<ListProjectsLocationsMetadataStoresRequest>;
 
 export type GoogleCloudAiplatformV1MetadataStoreList =
-  GoogleCloudAiplatformV1MetadataStore[];
+  ReadonlyArray<GoogleCloudAiplatformV1MetadataStore>;
 export const GoogleCloudAiplatformV1MetadataStoreList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1MetadataStore,
 ) as any as S.Schema<GoogleCloudAiplatformV1MetadataStoreList>;
@@ -41473,7 +41308,7 @@ export const ListProjectsLocationsMetadataStoresContextsRequest =
   }) as any as S.Schema<ListProjectsLocationsMetadataStoresContextsRequest>;
 
 export type GoogleCloudAiplatformV1ContextList =
-  GoogleCloudAiplatformV1Context[];
+  ReadonlyArray<GoogleCloudAiplatformV1Context>;
 export const GoogleCloudAiplatformV1ContextList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Context,
 ) as any as S.Schema<GoogleCloudAiplatformV1ContextList>;
@@ -41558,7 +41393,7 @@ export const ListProjectsLocationsMetadataStoresExecutionsRequest =
   }) as any as S.Schema<ListProjectsLocationsMetadataStoresExecutionsRequest>;
 
 export type GoogleCloudAiplatformV1ExecutionList =
-  GoogleCloudAiplatformV1Execution[];
+  ReadonlyArray<GoogleCloudAiplatformV1Execution>;
 export const GoogleCloudAiplatformV1ExecutionList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Execution,
 ) as any as S.Schema<GoogleCloudAiplatformV1ExecutionList>;
@@ -41641,7 +41476,7 @@ export const ListProjectsLocationsMetadataStoresMetadataSchemasRequest =
   }) as any as S.Schema<ListProjectsLocationsMetadataStoresMetadataSchemasRequest>;
 
 export type GoogleCloudAiplatformV1MetadataSchemaList =
-  GoogleCloudAiplatformV1MetadataSchema[];
+  ReadonlyArray<GoogleCloudAiplatformV1MetadataSchema>;
 export const GoogleCloudAiplatformV1MetadataSchemaList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1MetadataSchema,
 ) as any as S.Schema<GoogleCloudAiplatformV1MetadataSchemaList>;
@@ -41757,7 +41592,7 @@ export const ListProjectsLocationsModelDeploymentMonitoringJobsRequest =
   }) as any as S.Schema<ListProjectsLocationsModelDeploymentMonitoringJobsRequest>;
 
 export type GoogleCloudAiplatformV1ModelDeploymentMonitoringJobList =
-  GoogleCloudAiplatformV1ModelDeploymentMonitoringJob[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelDeploymentMonitoringJob>;
 export const GoogleCloudAiplatformV1ModelDeploymentMonitoringJobList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModelDeploymentMonitoringJob,
@@ -41848,7 +41683,8 @@ export const ListProjectsLocationsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsModelsRequest",
 }) as any as S.Schema<ListProjectsLocationsModelsRequest>;
 
-export type GoogleCloudAiplatformV1ModelList = GoogleCloudAiplatformV1Model[];
+export type GoogleCloudAiplatformV1ModelList =
+  ReadonlyArray<GoogleCloudAiplatformV1Model>;
 export const GoogleCloudAiplatformV1ModelList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Model,
 ) as any as S.Schema<GoogleCloudAiplatformV1ModelList>;
@@ -41902,7 +41738,7 @@ export const ListProjectsLocationsModelsEvaluationsRequest =
   }) as any as S.Schema<ListProjectsLocationsModelsEvaluationsRequest>;
 
 export type GoogleCloudAiplatformV1ModelEvaluationList =
-  GoogleCloudAiplatformV1ModelEvaluation[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelEvaluation>;
 export const GoogleCloudAiplatformV1ModelEvaluationList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1ModelEvaluation,
 ) as any as S.Schema<GoogleCloudAiplatformV1ModelEvaluationList>;
@@ -41987,7 +41823,7 @@ export const ListProjectsLocationsModelsEvaluationsSlicesRequest =
   }) as any as S.Schema<ListProjectsLocationsModelsEvaluationsSlicesRequest>;
 
 export type GoogleCloudAiplatformV1ModelEvaluationSliceList =
-  GoogleCloudAiplatformV1ModelEvaluationSlice[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelEvaluationSlice>;
 export const GoogleCloudAiplatformV1ModelEvaluationSliceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModelEvaluationSlice,
@@ -42073,7 +41909,8 @@ export const ListProjectsLocationsNasJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsNasJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsNasJobsRequest>;
 
-export type GoogleCloudAiplatformV1NasJobList = GoogleCloudAiplatformV1NasJob[];
+export type GoogleCloudAiplatformV1NasJobList =
+  ReadonlyArray<GoogleCloudAiplatformV1NasJob>;
 export const GoogleCloudAiplatformV1NasJobList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1NasJob,
 ) as any as S.Schema<GoogleCloudAiplatformV1NasJobList>;
@@ -42121,7 +41958,7 @@ export const ListProjectsLocationsNasJobsNasTrialDetailsRequest =
   }) as any as S.Schema<ListProjectsLocationsNasJobsNasTrialDetailsRequest>;
 
 export type GoogleCloudAiplatformV1NasTrialDetailList =
-  GoogleCloudAiplatformV1NasTrialDetail[];
+  ReadonlyArray<GoogleCloudAiplatformV1NasTrialDetail>;
 export const GoogleCloudAiplatformV1NasTrialDetailList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1NasTrialDetail,
 ) as any as S.Schema<GoogleCloudAiplatformV1NasTrialDetailList>;
@@ -42146,8 +41983,7 @@ export const GoogleCloudAiplatformV1ListNasTrialDetailsResponse =
 export type ListProjectsLocationsNotebookExecutionJobsViewEnum =
   | "NOTEBOOK_EXECUTION_JOB_VIEW_UNSPECIFIED"
   | "NOTEBOOK_EXECUTION_JOB_VIEW_BASIC"
-  | "NOTEBOOK_EXECUTION_JOB_VIEW_FULL"
-  | (string & {});
+  | "NOTEBOOK_EXECUTION_JOB_VIEW_FULL";
 export const ListProjectsLocationsNotebookExecutionJobsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -42188,7 +42024,7 @@ export const ListProjectsLocationsNotebookExecutionJobsRequest =
   }) as any as S.Schema<ListProjectsLocationsNotebookExecutionJobsRequest>;
 
 export type GoogleCloudAiplatformV1NotebookExecutionJobList =
-  GoogleCloudAiplatformV1NotebookExecutionJob[];
+  ReadonlyArray<GoogleCloudAiplatformV1NotebookExecutionJob>;
 export const GoogleCloudAiplatformV1NotebookExecutionJobList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1NotebookExecutionJob,
@@ -42279,7 +42115,7 @@ export const ListProjectsLocationsNotebookRuntimesRequest =
   }) as any as S.Schema<ListProjectsLocationsNotebookRuntimesRequest>;
 
 export type GoogleCloudAiplatformV1NotebookRuntimeList =
-  GoogleCloudAiplatformV1NotebookRuntime[];
+  ReadonlyArray<GoogleCloudAiplatformV1NotebookRuntime>;
 export const GoogleCloudAiplatformV1NotebookRuntimeList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1NotebookRuntime,
 ) as any as S.Schema<GoogleCloudAiplatformV1NotebookRuntimeList>;
@@ -42367,7 +42203,7 @@ export const ListProjectsLocationsNotebookRuntimeTemplatesRequest =
   }) as any as S.Schema<ListProjectsLocationsNotebookRuntimeTemplatesRequest>;
 
 export type GoogleCloudAiplatformV1NotebookRuntimeTemplateList =
-  GoogleCloudAiplatformV1NotebookRuntimeTemplate[];
+  ReadonlyArray<GoogleCloudAiplatformV1NotebookRuntimeTemplate>;
 export const GoogleCloudAiplatformV1NotebookRuntimeTemplateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1NotebookRuntimeTemplate,
@@ -42456,7 +42292,7 @@ export const ListProjectsLocationsOnlineEvaluatorsRequest =
   }) as any as S.Schema<ListProjectsLocationsOnlineEvaluatorsRequest>;
 
 export type GoogleCloudAiplatformV1OnlineEvaluatorList =
-  GoogleCloudAiplatformV1OnlineEvaluator[];
+  ReadonlyArray<GoogleCloudAiplatformV1OnlineEvaluator>;
 export const GoogleCloudAiplatformV1OnlineEvaluatorList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1OnlineEvaluator,
 ) as any as S.Schema<GoogleCloudAiplatformV1OnlineEvaluatorList>;
@@ -42566,7 +42402,7 @@ export const ListProjectsLocationsPersistentResourcesRequest =
   }) as any as S.Schema<ListProjectsLocationsPersistentResourcesRequest>;
 
 export type GoogleCloudAiplatformV1PersistentResourceList =
-  GoogleCloudAiplatformV1PersistentResource[];
+  ReadonlyArray<GoogleCloudAiplatformV1PersistentResource>;
 export const GoogleCloudAiplatformV1PersistentResourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1PersistentResource,
@@ -42656,7 +42492,7 @@ export const ListProjectsLocationsPipelineJobsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsPipelineJobsRequest>;
 
 export type GoogleCloudAiplatformV1PipelineJobList =
-  GoogleCloudAiplatformV1PipelineJob[];
+  ReadonlyArray<GoogleCloudAiplatformV1PipelineJob>;
 export const GoogleCloudAiplatformV1PipelineJobList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1PipelineJob,
 ) as any as S.Schema<GoogleCloudAiplatformV1PipelineJobList>;
@@ -42735,7 +42571,7 @@ export const ListProjectsLocationsRagCorporaRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsRagCorporaRequest>;
 
 export type GoogleCloudAiplatformV1RagCorpusList =
-  GoogleCloudAiplatformV1RagCorpus[];
+  ReadonlyArray<GoogleCloudAiplatformV1RagCorpus>;
 export const GoogleCloudAiplatformV1RagCorpusList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1RagCorpus,
 ) as any as S.Schema<GoogleCloudAiplatformV1RagCorpusList>;
@@ -42814,7 +42650,7 @@ export const ListProjectsLocationsRagCorporaRagFilesRequest =
   }) as any as S.Schema<ListProjectsLocationsRagCorporaRagFilesRequest>;
 
 export type GoogleCloudAiplatformV1RagFileList =
-  GoogleCloudAiplatformV1RagFile[];
+  ReadonlyArray<GoogleCloudAiplatformV1RagFile>;
 export const GoogleCloudAiplatformV1RagFileList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1RagFile,
 ) as any as S.Schema<GoogleCloudAiplatformV1RagFileList>;
@@ -42927,7 +42763,7 @@ export const ListProjectsLocationsReasoningEnginesRequest =
   }) as any as S.Schema<ListProjectsLocationsReasoningEnginesRequest>;
 
 export type GoogleCloudAiplatformV1ReasoningEngineList =
-  GoogleCloudAiplatformV1ReasoningEngine[];
+  ReadonlyArray<GoogleCloudAiplatformV1ReasoningEngine>;
 export const GoogleCloudAiplatformV1ReasoningEngineList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1ReasoningEngine,
 ) as any as S.Schema<GoogleCloudAiplatformV1ReasoningEngineList>;
@@ -43101,7 +42937,7 @@ export const ListProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest =
   }) as any as S.Schema<ListProjectsLocationsReasoningEnginesSandboxEnvironmentsRequest>;
 
 export type GoogleCloudAiplatformV1SandboxEnvironmentList =
-  GoogleCloudAiplatformV1SandboxEnvironment[];
+  ReadonlyArray<GoogleCloudAiplatformV1SandboxEnvironment>;
 export const GoogleCloudAiplatformV1SandboxEnvironmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SandboxEnvironment,
@@ -43156,7 +42992,7 @@ export const ListProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsReq
   }) as any as S.Schema<ListProjectsLocationsReasoningEnginesSandboxEnvironmentSnapshotsRequest>;
 
 export type GoogleCloudAiplatformV1SandboxEnvironmentSnapshotList =
-  GoogleCloudAiplatformV1SandboxEnvironmentSnapshot[];
+  ReadonlyArray<GoogleCloudAiplatformV1SandboxEnvironmentSnapshot>;
 export const GoogleCloudAiplatformV1SandboxEnvironmentSnapshotList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SandboxEnvironmentSnapshot,
@@ -43212,7 +43048,7 @@ export const ListProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesReq
   }) as any as S.Schema<ListProjectsLocationsReasoningEnginesSandboxEnvironmentTemplatesRequest>;
 
 export type GoogleCloudAiplatformV1SandboxEnvironmentTemplateList =
-  GoogleCloudAiplatformV1SandboxEnvironmentTemplate[];
+  ReadonlyArray<GoogleCloudAiplatformV1SandboxEnvironmentTemplate>;
 export const GoogleCloudAiplatformV1SandboxEnvironmentTemplateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SandboxEnvironmentTemplate,
@@ -43270,7 +43106,7 @@ export const ListProjectsLocationsReasoningEnginesSessionsRequest =
   }) as any as S.Schema<ListProjectsLocationsReasoningEnginesSessionsRequest>;
 
 export type GoogleCloudAiplatformV1SessionList =
-  GoogleCloudAiplatformV1Session[];
+  ReadonlyArray<GoogleCloudAiplatformV1Session>;
 export const GoogleCloudAiplatformV1SessionList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Session,
 ) as any as S.Schema<GoogleCloudAiplatformV1SessionList>;
@@ -43324,7 +43160,7 @@ export const ListProjectsLocationsReasoningEnginesSessionsEventsRequest =
   }) as any as S.Schema<ListProjectsLocationsReasoningEnginesSessionsEventsRequest>;
 
 export type GoogleCloudAiplatformV1SessionEventList =
-  GoogleCloudAiplatformV1SessionEvent[];
+  ReadonlyArray<GoogleCloudAiplatformV1SessionEvent>;
 export const GoogleCloudAiplatformV1SessionEventList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1SessionEvent,
 ) as any as S.Schema<GoogleCloudAiplatformV1SessionEventList>;
@@ -43410,7 +43246,7 @@ export const ListProjectsLocationsSchedulesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsSchedulesRequest>;
 
 export type GoogleCloudAiplatformV1ScheduleList =
-  GoogleCloudAiplatformV1Schedule[];
+  ReadonlyArray<GoogleCloudAiplatformV1Schedule>;
 export const GoogleCloudAiplatformV1ScheduleList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Schedule,
 ) as any as S.Schema<GoogleCloudAiplatformV1ScheduleList>;
@@ -43489,7 +43325,7 @@ export const ListProjectsLocationsSemanticGovernancePoliciesRequest =
   }) as any as S.Schema<ListProjectsLocationsSemanticGovernancePoliciesRequest>;
 
 export type GoogleCloudAiplatformV1SemanticGovernancePolicyList =
-  GoogleCloudAiplatformV1SemanticGovernancePolicy[];
+  ReadonlyArray<GoogleCloudAiplatformV1SemanticGovernancePolicy>;
 export const GoogleCloudAiplatformV1SemanticGovernancePolicyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SemanticGovernancePolicy,
@@ -43606,7 +43442,7 @@ export const ListProjectsLocationsSpecialistPoolsRequest =
   }) as any as S.Schema<ListProjectsLocationsSpecialistPoolsRequest>;
 
 export type GoogleCloudAiplatformV1SpecialistPoolList =
-  GoogleCloudAiplatformV1SpecialistPool[];
+  ReadonlyArray<GoogleCloudAiplatformV1SpecialistPool>;
 export const GoogleCloudAiplatformV1SpecialistPoolList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1SpecialistPool,
 ) as any as S.Schema<GoogleCloudAiplatformV1SpecialistPoolList>;
@@ -43683,7 +43519,8 @@ export const ListProjectsLocationsStudiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsStudiesRequest",
 }) as any as S.Schema<ListProjectsLocationsStudiesRequest>;
 
-export type GoogleCloudAiplatformV1StudyList = GoogleCloudAiplatformV1Study[];
+export type GoogleCloudAiplatformV1StudyList =
+  ReadonlyArray<GoogleCloudAiplatformV1Study>;
 export const GoogleCloudAiplatformV1StudyList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Study,
 ) as any as S.Schema<GoogleCloudAiplatformV1StudyList>;
@@ -43844,7 +43681,7 @@ export const ListProjectsLocationsTensorboardsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsTensorboardsRequest>;
 
 export type GoogleCloudAiplatformV1TensorboardList =
-  GoogleCloudAiplatformV1Tensorboard[];
+  ReadonlyArray<GoogleCloudAiplatformV1Tensorboard>;
 export const GoogleCloudAiplatformV1TensorboardList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1Tensorboard,
 ) as any as S.Schema<GoogleCloudAiplatformV1TensorboardList>;
@@ -43901,7 +43738,7 @@ export const ListProjectsLocationsTensorboardsExperimentsRequest =
   }) as any as S.Schema<ListProjectsLocationsTensorboardsExperimentsRequest>;
 
 export type GoogleCloudAiplatformV1TensorboardExperimentList =
-  GoogleCloudAiplatformV1TensorboardExperiment[];
+  ReadonlyArray<GoogleCloudAiplatformV1TensorboardExperiment>;
 export const GoogleCloudAiplatformV1TensorboardExperimentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TensorboardExperiment,
@@ -44189,7 +44026,7 @@ export const ListProjectsLocationsTrainingPipelinesRequest =
   }) as any as S.Schema<ListProjectsLocationsTrainingPipelinesRequest>;
 
 export type GoogleCloudAiplatformV1TrainingPipelineList =
-  GoogleCloudAiplatformV1TrainingPipeline[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrainingPipeline>;
 export const GoogleCloudAiplatformV1TrainingPipelineList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1TrainingPipeline,
@@ -44274,7 +44111,7 @@ export const ListProjectsLocationsTuningJobsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsTuningJobsRequest>;
 
 export type GoogleCloudAiplatformV1TuningJobList =
-  GoogleCloudAiplatformV1TuningJob[];
+  ReadonlyArray<GoogleCloudAiplatformV1TuningJob>;
 export const GoogleCloudAiplatformV1TuningJobList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1TuningJob,
 ) as any as S.Schema<GoogleCloudAiplatformV1TuningJobList>;
@@ -46815,8 +46652,7 @@ export type GoogleCloudAiplatformV1MemoryFilterOpEnum =
   | "OPERATOR_UNSPECIFIED"
   | "EQUAL"
   | "GREATER_THAN"
-  | "LESS_THAN"
-  | (string & {});
+  | "LESS_THAN";
 export const GoogleCloudAiplatformV1MemoryFilterOpEnum = /*@__PURE__*/ S.String;
 
 /** Filter to apply when retrieving memories. */
@@ -46842,7 +46678,7 @@ export const GoogleCloudAiplatformV1MemoryFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1MemoryFilter>;
 
 export type GoogleCloudAiplatformV1MemoryFilterList =
-  GoogleCloudAiplatformV1MemoryFilter[];
+  ReadonlyArray<GoogleCloudAiplatformV1MemoryFilter>;
 export const GoogleCloudAiplatformV1MemoryFilterList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1MemoryFilter,
 ) as any as S.Schema<GoogleCloudAiplatformV1MemoryFilterList>;
@@ -46862,7 +46698,7 @@ export const GoogleCloudAiplatformV1MemoryConjunctionFilter =
   }) as any as S.Schema<GoogleCloudAiplatformV1MemoryConjunctionFilter>;
 
 export type GoogleCloudAiplatformV1MemoryConjunctionFilterList =
-  GoogleCloudAiplatformV1MemoryConjunctionFilter[];
+  ReadonlyArray<GoogleCloudAiplatformV1MemoryConjunctionFilter>;
 export const GoogleCloudAiplatformV1MemoryConjunctionFilterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MemoryConjunctionFilter,
@@ -47484,7 +47320,7 @@ export const GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor =
   }) as any as S.Schema<GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor>;
 
 export type GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptorList =
-  GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor[];
+  ReadonlyArray<GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor>;
 export const GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptorList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ReadFeatureValuesResponseFeatureDescriptor,
@@ -47510,7 +47346,7 @@ export const GoogleCloudAiplatformV1ReadFeatureValuesResponseHeader =
   }) as any as S.Schema<GoogleCloudAiplatformV1ReadFeatureValuesResponseHeader>;
 
 export type GoogleCloudAiplatformV1FeatureValueList_ =
-  GoogleCloudAiplatformV1FeatureValue[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureValue>;
 export const GoogleCloudAiplatformV1FeatureValueList_ = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1FeatureValue,
 ) as any as S.Schema<GoogleCloudAiplatformV1FeatureValueList_>;
@@ -47548,7 +47384,7 @@ export const GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData =
   }) as any as S.Schema<GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData>;
 
 export type GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewDataList =
-  GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData[];
+  ReadonlyArray<GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData>;
 export const GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewDataList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ReadFeatureValuesResponseEntityViewData,
@@ -47636,7 +47472,7 @@ export const ReadIndexDatapointsProjectsLocationsIndexEndpointsRequest =
   }) as any as S.Schema<ReadIndexDatapointsProjectsLocationsIndexEndpointsRequest>;
 
 export type GoogleCloudAiplatformV1IndexDatapointList =
-  GoogleCloudAiplatformV1IndexDatapoint[];
+  ReadonlyArray<GoogleCloudAiplatformV1IndexDatapoint>;
 export const GoogleCloudAiplatformV1IndexDatapointList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1IndexDatapoint,
 ) as any as S.Schema<GoogleCloudAiplatformV1IndexDatapointList>;
@@ -47766,7 +47602,7 @@ export const GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData
   }) as any as S.Schema<GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData>;
 
 export type GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageDataList =
-  GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData[];
+  ReadonlyArray<GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData>;
 export const GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageDataList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ReadTensorboardUsageResponsePerUserUsageData,
@@ -48247,7 +48083,7 @@ export const GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagReso
   }) as any as S.Schema<GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource>;
 
 export type GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResourceList =
-  GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource[];
+  ReadonlyArray<GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource>;
 export const GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1RetrieveContextsRequestVertexRagStoreRagResource,
@@ -48350,13 +48186,12 @@ export const GoogleCloudAiplatformV1RetrieveMemoriesRequestSimpleRetrievalParams
 export type GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnum =
   | "MEMORY_TYPE_UNSPECIFIED"
   | "NATURAL_LANGUAGE_COLLECTION"
-  | "STRUCTURED_PROFILE"
-  | (string & {});
+  | "STRUCTURED_PROFILE";
 export const GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnumList =
-  GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnum[];
+  ReadonlyArray<GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnum>;
 export const GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1RetrieveMemoriesRequestMemoryTypesItemEnum,
@@ -48460,7 +48295,7 @@ export const GoogleCloudAiplatformV1RetrieveMemoriesResponseRetrievedMemory =
   }) as any as S.Schema<GoogleCloudAiplatformV1RetrieveMemoriesResponseRetrievedMemory>;
 
 export type GoogleCloudAiplatformV1RetrieveMemoriesResponseRetrievedMemoryList =
-  GoogleCloudAiplatformV1RetrieveMemoriesResponseRetrievedMemory[];
+  ReadonlyArray<GoogleCloudAiplatformV1RetrieveMemoriesResponseRetrievedMemory>;
 export const GoogleCloudAiplatformV1RetrieveMemoriesResponseRetrievedMemoryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1RetrieveMemoriesResponseRetrievedMemory,
@@ -48649,7 +48484,7 @@ export const GoogleCloudAiplatformV1DataItemView = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1DataItemView>;
 
 export type GoogleCloudAiplatformV1DataItemViewList =
-  GoogleCloudAiplatformV1DataItemView[];
+  ReadonlyArray<GoogleCloudAiplatformV1DataItemView>;
 export const GoogleCloudAiplatformV1DataItemViewList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1DataItemView,
 ) as any as S.Schema<GoogleCloudAiplatformV1DataItemViewList>;
@@ -48721,8 +48556,7 @@ export type GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomalies
     | "RAW_FEATURE_SKEW"
     | "RAW_FEATURE_DRIFT"
     | "FEATURE_ATTRIBUTION_SKEW"
-    | "FEATURE_ATTRIBUTION_DRIFT"
-    | (string & {});
+    | "FEATURE_ATTRIBUTION_DRIFT";
 export const GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjectiveTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -48746,7 +48580,7 @@ export const GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomalie
   }) as any as S.Schema<GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjective>;
 
 export type GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjectiveList =
-  GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjective[];
+  ReadonlyArray<GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjective>;
 export const GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjectiveList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1SearchModelDeploymentMonitoringStatsAnomaliesRequestStatsAnomaliesObjective,
@@ -48815,7 +48649,7 @@ export const SearchModelDeploymentMonitoringStatsAnomaliesProjectsLocationsModel
   }) as any as S.Schema<SearchModelDeploymentMonitoringStatsAnomaliesProjectsLocationsModelDeploymentMonitoringJobsRequest>;
 
 export type GoogleCloudAiplatformV1FeatureStatsAnomalyList =
-  GoogleCloudAiplatformV1FeatureStatsAnomaly[];
+  ReadonlyArray<GoogleCloudAiplatformV1FeatureStatsAnomaly>;
 export const GoogleCloudAiplatformV1FeatureStatsAnomalyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1FeatureStatsAnomaly,
@@ -48848,7 +48682,7 @@ export const GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoric
   }) as any as S.Schema<GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>;
 
 export type GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesList =
-  GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>;
 export const GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomaliesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies,
@@ -48859,8 +48693,7 @@ export type GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesObjectiveEnum =
   | "RAW_FEATURE_SKEW"
   | "RAW_FEATURE_DRIFT"
   | "FEATURE_ATTRIBUTION_SKEW"
-  | "FEATURE_ATTRIBUTION_DRIFT"
-  | (string & {});
+  | "FEATURE_ATTRIBUTION_DRIFT";
 export const GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesObjectiveEnum =
   /*@__PURE__*/ S.String;
 
@@ -48892,7 +48725,7 @@ export const GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies =
   }) as any as S.Schema<GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies>;
 
 export type GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesList =
-  GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies[];
+  ReadonlyArray<GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies>;
 export const GoogleCloudAiplatformV1ModelMonitoringStatsAnomaliesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1ModelMonitoringStatsAnomalies,
@@ -48939,7 +48772,7 @@ export const GoogleCloudAiplatformV1NearestNeighborQueryStringFilter =
   }) as any as S.Schema<GoogleCloudAiplatformV1NearestNeighborQueryStringFilter>;
 
 export type GoogleCloudAiplatformV1NearestNeighborQueryStringFilterList =
-  GoogleCloudAiplatformV1NearestNeighborQueryStringFilter[];
+  ReadonlyArray<GoogleCloudAiplatformV1NearestNeighborQueryStringFilter>;
 export const GoogleCloudAiplatformV1NearestNeighborQueryStringFilterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1NearestNeighborQueryStringFilter,
@@ -48952,8 +48785,7 @@ export type GoogleCloudAiplatformV1NearestNeighborQueryNumericFilterOpEnum =
   | "EQUAL"
   | "GREATER_EQUAL"
   | "GREATER"
-  | "NOT_EQUAL"
-  | (string & {});
+  | "NOT_EQUAL";
 export const GoogleCloudAiplatformV1NearestNeighborQueryNumericFilterOpEnum =
   /*@__PURE__*/ S.String;
 
@@ -48986,7 +48818,7 @@ export const GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter =
   }) as any as S.Schema<GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter>;
 
 export type GoogleCloudAiplatformV1NearestNeighborQueryNumericFilterList =
-  GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter[];
+  ReadonlyArray<GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter>;
 export const GoogleCloudAiplatformV1NearestNeighborQueryNumericFilterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter,
@@ -49128,7 +48960,7 @@ export const GoogleCloudAiplatformV1NearestNeighborsNeighbor =
   }) as any as S.Schema<GoogleCloudAiplatformV1NearestNeighborsNeighbor>;
 
 export type GoogleCloudAiplatformV1NearestNeighborsNeighborList =
-  GoogleCloudAiplatformV1NearestNeighborsNeighbor[];
+  ReadonlyArray<GoogleCloudAiplatformV1NearestNeighborsNeighbor>;
 export const GoogleCloudAiplatformV1NearestNeighborsNeighborList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1NearestNeighborsNeighbor,
@@ -49263,7 +49095,7 @@ export const GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLab
   }) as any as S.Schema<GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDataset>;
 
 export type GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDatasetList =
-  GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDataset[];
+  ReadonlyArray<GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDataset>;
 export const GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDatasetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MigratableResourceDataLabelingDatasetDataLabelingAnnotatedDataset,
@@ -49346,7 +49178,7 @@ export const GoogleCloudAiplatformV1MigratableResource =
   }) as any as S.Schema<GoogleCloudAiplatformV1MigratableResource>;
 
 export type GoogleCloudAiplatformV1MigratableResourceList =
-  GoogleCloudAiplatformV1MigratableResource[];
+  ReadonlyArray<GoogleCloudAiplatformV1MigratableResource>;
 export const GoogleCloudAiplatformV1MigratableResourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1MigratableResource,
@@ -50148,7 +49980,7 @@ export const GoogleCloudAiplatformV1TrialContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudAiplatformV1TrialContext>;
 
 export type GoogleCloudAiplatformV1TrialContextList =
-  GoogleCloudAiplatformV1TrialContext[];
+  ReadonlyArray<GoogleCloudAiplatformV1TrialContext>;
 export const GoogleCloudAiplatformV1TrialContextList = /*@__PURE__*/ S.Array(
   GoogleCloudAiplatformV1TrialContext,
 ) as any as S.Schema<GoogleCloudAiplatformV1TrialContextList>;
@@ -53455,7 +53287,7 @@ export const GoogleCloudAiplatformV1WriteFeatureValuesPayload =
   }) as any as S.Schema<GoogleCloudAiplatformV1WriteFeatureValuesPayload>;
 
 export type GoogleCloudAiplatformV1WriteFeatureValuesPayloadList =
-  GoogleCloudAiplatformV1WriteFeatureValuesPayload[];
+  ReadonlyArray<GoogleCloudAiplatformV1WriteFeatureValuesPayload>;
 export const GoogleCloudAiplatformV1WriteFeatureValuesPayloadList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1WriteFeatureValuesPayload,
@@ -53527,7 +53359,7 @@ export const GoogleCloudAiplatformV1WriteTensorboardRunDataRequest =
   }) as any as S.Schema<GoogleCloudAiplatformV1WriteTensorboardRunDataRequest>;
 
 export type GoogleCloudAiplatformV1WriteTensorboardRunDataRequestList =
-  GoogleCloudAiplatformV1WriteTensorboardRunDataRequest[];
+  ReadonlyArray<GoogleCloudAiplatformV1WriteTensorboardRunDataRequest>;
 export const GoogleCloudAiplatformV1WriteTensorboardRunDataRequestList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAiplatformV1WriteTensorboardRunDataRequest,

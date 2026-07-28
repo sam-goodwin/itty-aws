@@ -76,7 +76,8 @@ export const PinnedSceneTab = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PinnedSceneTab" }) as any as S.Schema<PinnedSceneTab>;
 
 /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
-export type UserHomeSettingsPartialUpdateRequestTabsList = PinnedSceneTab[];
+export type UserHomeSettingsPartialUpdateRequestTabsList =
+  ReadonlyArray<PinnedSceneTab>;
 export const UserHomeSettingsPartialUpdateRequestTabsList =
   /*@__PURE__*/ S.Array(
     PinnedSceneTab,
@@ -107,7 +108,7 @@ export const UserHomeSettingsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UserHomeSettingsPartialUpdateRequest>;
 
 /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
-export type PinnedSceneTabsTabsList = PinnedSceneTab[];
+export type PinnedSceneTabsTabsList = ReadonlyArray<PinnedSceneTab>;
 export const PinnedSceneTabsTabsList = /*@__PURE__*/ S.Array(
   PinnedSceneTab,
 ) as any as S.Schema<PinnedSceneTabsTabsList>;

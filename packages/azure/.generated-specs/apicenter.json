@@ -478,11 +478,10 @@
             "smithy.api#documentation": "The name of the environment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.apicenter#EnvironmentProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -807,16 +806,67 @@
             "smithy.api#documentation": "The name of the API definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Value of the API specification source."
+          }
+        },
+        "format": {
+          "target": "com.azure.apicenter#ApiSpecImportSourceFormat",
+          "traits": {
+            "smithy.api#documentation": "Format of the API specification source."
+          }
+        },
+        "specification": {
+          "target": "com.azure.apicenter#ApiSpecImportRequestSpecification",
+          "traits": {
+            "smithy.api#documentation": "API specification details."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.apicenter#ApiSpecImportRequestSpecification": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specification name."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specification version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "API specification details."
+      }
+    },
+    "com.azure.apicenter#ApiSpecImportSourceFormat": {
+      "type": "enum",
+      "members": {
+        "INLINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inline"
+          }
+        },
+        "LINK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "link"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Source format for imported Api spec"
       }
     },
     "com.azure.apicenter#ApiDefinitionsExportSpecification": {
@@ -1188,11 +1238,10 @@
             "smithy.api#documentation": "The name of the API definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.apicenter#ApiDefinitionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -1726,11 +1775,10 @@
             "smithy.api#documentation": "The name of the API version."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.apicenter#ApiVersionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -2269,11 +2317,10 @@
             "smithy.api#documentation": "The name of the API deployment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.apicenter#DeploymentProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -2929,11 +2976,10 @@
             "smithy.api#documentation": "The name of the API."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.apicenter#ApiProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -3352,11 +3398,10 @@
             "smithy.api#documentation": "The name of the workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.apicenter#WorkspaceProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -3820,11 +3865,10 @@
             "smithy.api#documentation": "The name of the metadata schema."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.apicenter#MetadataSchemaProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -4141,11 +4185,10 @@
             "smithy.api#documentation": "The name of Azure API Center service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "assignedTo": {
+          "target": "com.azure.apicenter#MetadataAssignmentEntity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "An entity the metadata schema is requested for."
           }
         }
       },
@@ -4452,16 +4495,69 @@
             "smithy.api#documentation": "The name of Azure API Center service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.apicenter#ServicesUpdateRequestIdentity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "tags": {
+          "target": "com.azure.apicenter#ServicesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.apicenter#ServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.apicenter#ServicesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.apicenter#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.apicenter#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.apicenter#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.apicenter#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.apicenter#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
       }
     },
     "com.azure.apicenter#ServicesCreateOrUpdate": {
@@ -4608,16 +4704,70 @@
             "smithy.api#documentation": "The name of Azure API Center service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.apicenter#ServicesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.apicenter#ServicePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.apicenter#ServicesCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.apicenter#ServicesCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.apicenter#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.apicenter#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.apicenter#ServicePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The properties of the service."
+      }
+    },
+    "com.azure.apicenter#ServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.apicenter#ServicesGet": {

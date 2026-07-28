@@ -88,7 +88,7 @@ export const AccountIdentifier = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountIdentifier",
 }) as any as S.Schema<AccountIdentifier>;
 
-export type AccountIdentifierList = AccountIdentifier[];
+export type AccountIdentifierList = ReadonlyArray<AccountIdentifier>;
 export const AccountIdentifierList = /*@__PURE__*/ S.Array(
   AccountIdentifier,
 ) as any as S.Schema<AccountIdentifierList>;
@@ -147,8 +147,7 @@ export const AccountsClaimWebsiteResponse = /*@__PURE__*/ S.suspend(() =>
 export type AccountCredentialsPurposeEnum =
   | "ACCOUNT_CREDENTIALS_PURPOSE_UNSPECIFIED"
   | "SHOPIFY_ORDER_MANAGEMENT"
-  | "SHOPIFY_INTEGRATION"
-  | (string & {});
+  | "SHOPIFY_INTEGRATION";
 export const AccountCredentialsPurposeEnum = /*@__PURE__*/ S.String;
 
 /** Credentials allowing Google to call a partner's API on behalf of a merchant. */
@@ -194,8 +193,7 @@ export const CreateAccountsCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 export type AccountLabelLabelTypeEnum =
   | "LABEL_TYPE_UNSPECIFIED"
   | "MANUAL"
-  | "AUTOMATIC"
-  | (string & {});
+  | "AUTOMATIC";
 export const AccountLabelLabelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Label assigned by CSS domain or CSS group to one of its sub-accounts. */
@@ -245,8 +243,7 @@ export const CreateAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 export type AccountReturnCarrierCarrierCodeEnum =
   | "CARRIER_CODE_UNSPECIFIED"
   | "FEDEX"
-  | "UPS"
-  | (string & {});
+  | "UPS";
 export const AccountReturnCarrierCarrierCodeEnum = /*@__PURE__*/ S.String;
 
 /** The return carrier information. This service is designed for merchants enrolled in the Buy on Google program. */
@@ -292,7 +289,7 @@ export const CreateAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAccountsReturncarrierRequest",
 }) as any as S.Schema<CreateAccountsReturncarrierRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -316,7 +313,8 @@ export const CollectionFeaturedProduct = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectionFeaturedProduct",
 }) as any as S.Schema<CollectionFeaturedProduct>;
 
-export type CollectionFeaturedProductList = CollectionFeaturedProduct[];
+export type CollectionFeaturedProductList =
+  ReadonlyArray<CollectionFeaturedProduct>;
 export const CollectionFeaturedProductList = /*@__PURE__*/ S.Array(
   CollectionFeaturedProduct,
 ) as any as S.Schema<CollectionFeaturedProductList>;
@@ -393,8 +391,7 @@ export type ConversionSourceStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ARCHIVED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConversionSourceStateEnum = /*@__PURE__*/ S.String;
 
 export type AttributionSettingsAttributionModelEnum =
@@ -405,8 +402,7 @@ export type AttributionSettingsAttributionModelEnum =
   | "CROSS_CHANNEL_FIRST_CLICK"
   | "CROSS_CHANNEL_LINEAR"
   | "CROSS_CHANNEL_POSITION_BASED"
-  | "CROSS_CHANNEL_TIME_DECAY"
-  | (string & {});
+  | "CROSS_CHANNEL_TIME_DECAY";
 export const AttributionSettingsAttributionModelEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a types of conversion events */
@@ -426,7 +422,7 @@ export const AttributionSettingsConversionType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttributionSettingsConversionType>;
 
 export type AttributionSettingsConversionTypeList =
-  AttributionSettingsConversionType[];
+  ReadonlyArray<AttributionSettingsConversionType>;
 export const AttributionSettingsConversionTypeList = /*@__PURE__*/ S.Array(
   AttributionSettingsConversionType,
 ) as any as S.Schema<AttributionSettingsConversionTypeList>;
@@ -588,8 +584,7 @@ export const DateTime = /*@__PURE__*/ S.suspend(() =>
 export type OrderTrackingSignalShippingInfoShippingStatusEnum =
   | "SHIPPING_STATE_UNSPECIFIED"
   | "SHIPPED"
-  | "DELIVERED"
-  | (string & {});
+  | "DELIVERED";
 export const OrderTrackingSignalShippingInfoShippingStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -639,7 +634,7 @@ export const OrderTrackingSignalShippingInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrderTrackingSignalShippingInfo>;
 
 export type OrderTrackingSignalShippingInfoList =
-  OrderTrackingSignalShippingInfo[];
+  ReadonlyArray<OrderTrackingSignalShippingInfo>;
 export const OrderTrackingSignalShippingInfoList = /*@__PURE__*/ S.Array(
   OrderTrackingSignalShippingInfo,
 ) as any as S.Schema<OrderTrackingSignalShippingInfoList>;
@@ -685,7 +680,7 @@ export const OrderTrackingSignalLineItemDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrderTrackingSignalLineItemDetails>;
 
 export type OrderTrackingSignalLineItemDetailsList =
-  OrderTrackingSignalLineItemDetails[];
+  ReadonlyArray<OrderTrackingSignalLineItemDetails>;
 export const OrderTrackingSignalLineItemDetailsList = /*@__PURE__*/ S.Array(
   OrderTrackingSignalLineItemDetails,
 ) as any as S.Schema<OrderTrackingSignalLineItemDetailsList>;
@@ -711,7 +706,7 @@ export const OrderTrackingSignalShipmentLineItemMapping =
   }) as any as S.Schema<OrderTrackingSignalShipmentLineItemMapping>;
 
 export type OrderTrackingSignalShipmentLineItemMappingList =
-  OrderTrackingSignalShipmentLineItemMapping[];
+  ReadonlyArray<OrderTrackingSignalShipmentLineItemMapping>;
 export const OrderTrackingSignalShipmentLineItemMappingList =
   /*@__PURE__*/ S.Array(
     OrderTrackingSignalShipmentLineItemMapping,
@@ -878,7 +873,7 @@ export const ProductDeliveryTimeAreaDeliveryTime = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTime>;
 
 export type ProductDeliveryTimeAreaDeliveryTimeList =
-  ProductDeliveryTimeAreaDeliveryTime[];
+  ReadonlyArray<ProductDeliveryTimeAreaDeliveryTime>;
 export const ProductDeliveryTimeAreaDeliveryTimeList = /*@__PURE__*/ S.Array(
   ProductDeliveryTimeAreaDeliveryTime,
 ) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTimeList>;
@@ -927,19 +922,17 @@ export type PromotionRedemptionRestrictionEnum =
   | "SIGN_UP_FOR_EMAIL"
   | "SIGN_UP_FOR_TEXT"
   | "FORMS_OF_PAYMENT"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const PromotionRedemptionRestrictionEnum = /*@__PURE__*/ S.String;
 
 export type PromotionRedemptionChannelItemEnum =
   | "REDEMPTION_CHANNEL_UNSPECIFIED"
   | "IN_STORE"
-  | "ONLINE"
-  | (string & {});
+  | "ONLINE";
 export const PromotionRedemptionChannelItemEnum = /*@__PURE__*/ S.String;
 
 export type PromotionRedemptionChannelItemEnumList =
-  PromotionRedemptionChannelItemEnum[];
+  ReadonlyArray<PromotionRedemptionChannelItemEnum>;
 export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
   PromotionRedemptionChannelItemEnum,
 ) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
@@ -947,8 +940,7 @@ export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
 export type PromotionOfferTypeEnum =
   | "OFFER_TYPE_UNSPECIFIED"
   | "NO_CODE"
-  | "GENERIC_CODE"
-  | (string & {});
+  | "GENERIC_CODE";
 export const PromotionOfferTypeEnum = /*@__PURE__*/ S.String;
 
 /** A message that represents a time period. */
@@ -968,15 +960,13 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
 export type PromotionProductApplicabilityEnum =
   | "PRODUCT_APPLICABILITY_UNSPECIFIED"
   | "ALL_PRODUCTS"
-  | "SPECIFIC_PRODUCTS"
-  | (string & {});
+  | "SPECIFIC_PRODUCTS";
 export const PromotionProductApplicabilityEnum = /*@__PURE__*/ S.String;
 
 export type PromotionStoreApplicabilityEnum =
   | "STORE_APPLICABILITY_UNSPECIFIED"
   | "ALL_STORES"
-  | "SPECIFIC_STORES"
-  | (string & {});
+  | "SPECIFIC_STORES";
 export const PromotionStoreApplicabilityEnum = /*@__PURE__*/ S.String;
 
 export type PromotionCouponValueTypeEnum =
@@ -992,8 +982,7 @@ export type PromotionCouponValueTypeEnum =
   | "FREE_GIFT_WITH_ITEM_ID"
   | "FREE_SHIPPING_STANDARD"
   | "FREE_SHIPPING_OVERNIGHT"
-  | "FREE_SHIPPING_TWO_DAY"
-  | (string & {});
+  | "FREE_SHIPPING_TWO_DAY";
 export const PromotionCouponValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type PromotionPromotionStatusDestinationStatusStatusEnum =
@@ -1003,8 +992,7 @@ export type PromotionPromotionStatusDestinationStatusStatusEnum =
   | "LIVE"
   | "STOPPED"
   | "EXPIRED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const PromotionPromotionStatusDestinationStatusStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1026,7 +1014,7 @@ export const PromotionPromotionStatusDestinationStatus =
   }) as any as S.Schema<PromotionPromotionStatusDestinationStatus>;
 
 export type PromotionPromotionStatusDestinationStatusList =
-  PromotionPromotionStatusDestinationStatus[];
+  ReadonlyArray<PromotionPromotionStatusDestinationStatus>;
 export const PromotionPromotionStatusDestinationStatusList =
   /*@__PURE__*/ S.Array(
     PromotionPromotionStatusDestinationStatus,
@@ -1050,7 +1038,7 @@ export const PromotionPromotionStatusPromotionIssue = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PromotionPromotionStatusPromotionIssue>;
 
 export type PromotionPromotionStatusPromotionIssueList =
-  PromotionPromotionStatusPromotionIssue[];
+  ReadonlyArray<PromotionPromotionStatusPromotionIssue>;
 export const PromotionPromotionStatusPromotionIssueList = /*@__PURE__*/ S.Array(
   PromotionPromotionStatusPromotionIssue,
 ) as any as S.Schema<PromotionPromotionStatusPromotionIssueList>;
@@ -1257,7 +1245,7 @@ export const RegionPostalCodeAreaPostalCodeRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionPostalCodeAreaPostalCodeRange>;
 
 export type RegionPostalCodeAreaPostalCodeRangeList =
-  RegionPostalCodeAreaPostalCodeRange[];
+  ReadonlyArray<RegionPostalCodeAreaPostalCodeRange>;
 export const RegionPostalCodeAreaPostalCodeRangeList = /*@__PURE__*/ S.Array(
   RegionPostalCodeAreaPostalCodeRange,
 ) as any as S.Schema<RegionPostalCodeAreaPostalCodeRangeList>;
@@ -1348,8 +1336,7 @@ export type ReturnPolicyOnlinePolicyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NUMBER_OF_DAYS_AFTER_DELIVERY"
   | "NO_RETURNS"
-  | "LIFETIME_RETURNS"
-  | (string & {});
+  | "LIFETIME_RETURNS";
 export const ReturnPolicyOnlinePolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** The available policies. */
@@ -1372,12 +1359,11 @@ export type ReturnPolicyOnlineReturnMethodsItemEnum =
   | "RETURN_METHOD_UNSPECIFIED"
   | "BY_MAIL"
   | "IN_STORE"
-  | "AT_A_KIOSK"
-  | (string & {});
+  | "AT_A_KIOSK";
 export const ReturnPolicyOnlineReturnMethodsItemEnum = /*@__PURE__*/ S.String;
 
 export type ReturnPolicyOnlineReturnMethodsItemEnumList =
-  ReturnPolicyOnlineReturnMethodsItemEnum[];
+  ReadonlyArray<ReturnPolicyOnlineReturnMethodsItemEnum>;
 export const ReturnPolicyOnlineReturnMethodsItemEnumList =
   /*@__PURE__*/ S.Array(
     ReturnPolicyOnlineReturnMethodsItemEnum,
@@ -1386,12 +1372,11 @@ export const ReturnPolicyOnlineReturnMethodsItemEnumList =
 export type ReturnPolicyOnlineItemConditionsItemEnum =
   | "ITEM_CONDITION_UNSPECIFIED"
   | "NEW"
-  | "USED"
-  | (string & {});
+  | "USED";
 export const ReturnPolicyOnlineItemConditionsItemEnum = /*@__PURE__*/ S.String;
 
 export type ReturnPolicyOnlineItemConditionsItemEnumList =
-  ReturnPolicyOnlineItemConditionsItemEnum[];
+  ReadonlyArray<ReturnPolicyOnlineItemConditionsItemEnum>;
 export const ReturnPolicyOnlineItemConditionsItemEnumList =
   /*@__PURE__*/ S.Array(
     ReturnPolicyOnlineItemConditionsItemEnum,
@@ -1414,10 +1399,7 @@ export const ReturnPolicyOnlineRestockingFee = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReturnPolicyOnlineRestockingFee>;
 
 export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum =
-    | "RETURN_REASON_CATEGORY_UNSPECIFIED"
-    | "BUYER_REMORSE"
-    | "ITEM_DEFECT"
-    | (string & {});
+  "RETURN_REASON_CATEGORY_UNSPECIFIED" | "BUYER_REMORSE" | "ITEM_DEFECT";
 export const ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -1425,16 +1407,14 @@ export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum =
   | "RETURN_LABEL_SOURCE_UNSPECIFIED"
   | "DOWNLOAD_AND_PRINT"
   | "IN_THE_BOX"
-  | "CUSTOMER_RESPONSIBILITY"
-  | (string & {});
+  | "CUSTOMER_RESPONSIBILITY";
 export const ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum =
   /*@__PURE__*/ S.String;
 
 export type ReturnPolicyOnlineReturnShippingFeeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "FIXED"
-  | "CUSTOMER_PAYING_ACTUAL_FEE"
-  | (string & {});
+  | "CUSTOMER_PAYING_ACTUAL_FEE";
 export const ReturnPolicyOnlineReturnShippingFeeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1479,7 +1459,7 @@ export const ReturnPolicyOnlineReturnReasonCategoryInfo =
   }) as any as S.Schema<ReturnPolicyOnlineReturnReasonCategoryInfo>;
 
 export type ReturnPolicyOnlineReturnReasonCategoryInfoList =
-  ReturnPolicyOnlineReturnReasonCategoryInfo[];
+  ReadonlyArray<ReturnPolicyOnlineReturnReasonCategoryInfo>;
 export const ReturnPolicyOnlineReturnReasonCategoryInfoList =
   /*@__PURE__*/ S.Array(
     ReturnPolicyOnlineReturnReasonCategoryInfo,
@@ -1598,7 +1578,7 @@ export const AccountUser = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountUser" }) as any as S.Schema<AccountUser>;
 
-export type AccountUserList = AccountUser[];
+export type AccountUserList = ReadonlyArray<AccountUser>;
 export const AccountUserList = /*@__PURE__*/ S.Array(
   AccountUser,
 ) as any as S.Schema<AccountUserList>;
@@ -1670,7 +1650,7 @@ export const AccountAdsLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountAdsLink" }) as any as S.Schema<AccountAdsLink>;
 
-export type AccountAdsLinkList = AccountAdsLink[];
+export type AccountAdsLinkList = ReadonlyArray<AccountAdsLink>;
 export const AccountAdsLinkList = /*@__PURE__*/ S.Array(
   AccountAdsLink,
 ) as any as S.Schema<AccountAdsLinkList>;
@@ -1800,7 +1780,8 @@ export const AccountYouTubeChannelLink = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountYouTubeChannelLink",
 }) as any as S.Schema<AccountYouTubeChannelLink>;
 
-export type AccountYouTubeChannelLinkList = AccountYouTubeChannelLink[];
+export type AccountYouTubeChannelLinkList =
+  ReadonlyArray<AccountYouTubeChannelLink>;
 export const AccountYouTubeChannelLinkList = /*@__PURE__*/ S.Array(
   AccountYouTubeChannelLink,
 ) as any as S.Schema<AccountYouTubeChannelLinkList>;
@@ -1990,7 +1971,7 @@ export const AccountsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsCustomBatchRequestEntry>;
 
 export type AccountsCustomBatchRequestEntryList =
-  AccountsCustomBatchRequestEntry[];
+  ReadonlyArray<AccountsCustomBatchRequestEntry>;
 export const AccountsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   AccountsCustomBatchRequestEntry,
 ) as any as S.Schema<AccountsCustomBatchRequestEntryList>;
@@ -2042,7 +2023,7 @@ export const Content_Error = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Content_Error" }) as any as S.Schema<Content_Error>;
 
-export type Content_ErrorList = Content_Error[];
+export type Content_ErrorList = ReadonlyArray<Content_Error>;
 export const Content_ErrorList = /*@__PURE__*/ S.Array(
   Content_Error,
 ) as any as S.Schema<Content_ErrorList>;
@@ -2087,7 +2068,7 @@ export const AccountsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsCustomBatchResponseEntry>;
 
 export type AccountsCustomBatchResponseEntryList =
-  AccountsCustomBatchResponseEntry[];
+  ReadonlyArray<AccountsCustomBatchResponseEntry>;
 export const AccountsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   AccountsCustomBatchResponseEntry,
 ) as any as S.Schema<AccountsCustomBatchResponseEntryList>;
@@ -2134,7 +2115,7 @@ export const AccountstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountstatusesCustomBatchRequestEntry>;
 
 export type AccountstatusesCustomBatchRequestEntryList =
-  AccountstatusesCustomBatchRequestEntry[];
+  ReadonlyArray<AccountstatusesCustomBatchRequestEntry>;
 export const AccountstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   AccountstatusesCustomBatchRequestEntry,
 ) as any as S.Schema<AccountstatusesCustomBatchRequestEntryList>;
@@ -2200,7 +2181,7 @@ export const AccountStatusAccountLevelIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountStatusAccountLevelIssue>;
 
 export type AccountStatusAccountLevelIssueList =
-  AccountStatusAccountLevelIssue[];
+  ReadonlyArray<AccountStatusAccountLevelIssue>;
 export const AccountStatusAccountLevelIssueList = /*@__PURE__*/ S.Array(
   AccountStatusAccountLevelIssue,
 ) as any as S.Schema<AccountStatusAccountLevelIssueList>;
@@ -2259,7 +2240,8 @@ export const AccountStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountStatusItemLevelIssue",
 }) as any as S.Schema<AccountStatusItemLevelIssue>;
 
-export type AccountStatusItemLevelIssueList = AccountStatusItemLevelIssue[];
+export type AccountStatusItemLevelIssueList =
+  ReadonlyArray<AccountStatusItemLevelIssue>;
 export const AccountStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
   AccountStatusItemLevelIssue,
 ) as any as S.Schema<AccountStatusItemLevelIssueList>;
@@ -2288,7 +2270,7 @@ export const AccountStatusProducts = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountStatusProducts",
 }) as any as S.Schema<AccountStatusProducts>;
 
-export type AccountStatusProductsList = AccountStatusProducts[];
+export type AccountStatusProductsList = ReadonlyArray<AccountStatusProducts>;
 export const AccountStatusProductsList = /*@__PURE__*/ S.Array(
   AccountStatusProducts,
 ) as any as S.Schema<AccountStatusProductsList>;
@@ -2340,7 +2322,7 @@ export const AccountstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountstatusesCustomBatchResponseEntry>;
 
 export type AccountstatusesCustomBatchResponseEntryList =
-  AccountstatusesCustomBatchResponseEntry[];
+  ReadonlyArray<AccountstatusesCustomBatchResponseEntry>;
 export const AccountstatusesCustomBatchResponseEntryList =
   /*@__PURE__*/ S.Array(
     AccountstatusesCustomBatchResponseEntry,
@@ -2386,7 +2368,7 @@ export const AccountTaxTaxRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountTaxTaxRule",
 }) as any as S.Schema<AccountTaxTaxRule>;
 
-export type AccountTaxTaxRuleList = AccountTaxTaxRule[];
+export type AccountTaxTaxRuleList = ReadonlyArray<AccountTaxTaxRule>;
 export const AccountTaxTaxRuleList = /*@__PURE__*/ S.Array(
   AccountTaxTaxRule,
 ) as any as S.Schema<AccountTaxTaxRuleList>;
@@ -2434,7 +2416,7 @@ export const AccounttaxCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccounttaxCustomBatchRequestEntry>;
 
 export type AccounttaxCustomBatchRequestEntryList =
-  AccounttaxCustomBatchRequestEntry[];
+  ReadonlyArray<AccounttaxCustomBatchRequestEntry>;
 export const AccounttaxCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   AccounttaxCustomBatchRequestEntry,
 ) as any as S.Schema<AccounttaxCustomBatchRequestEntryList>;
@@ -2492,7 +2474,7 @@ export const AccounttaxCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccounttaxCustomBatchResponseEntry>;
 
 export type AccounttaxCustomBatchResponseEntryList =
-  AccounttaxCustomBatchResponseEntry[];
+  ReadonlyArray<AccounttaxCustomBatchResponseEntry>;
 export const AccounttaxCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   AccounttaxCustomBatchResponseEntry,
 ) as any as S.Schema<AccounttaxCustomBatchResponseEntryList>;
@@ -2574,7 +2556,7 @@ export const DatafeedTarget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatafeedTarget" }) as any as S.Schema<DatafeedTarget>;
 
-export type DatafeedTargetList = DatafeedTarget[];
+export type DatafeedTargetList = ReadonlyArray<DatafeedTarget>;
 export const DatafeedTargetList = /*@__PURE__*/ S.Array(
   DatafeedTarget,
 ) as any as S.Schema<DatafeedTargetList>;
@@ -2656,7 +2638,7 @@ export const DatafeedsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatafeedsCustomBatchRequestEntry>;
 
 export type DatafeedsCustomBatchRequestEntryList =
-  DatafeedsCustomBatchRequestEntry[];
+  ReadonlyArray<DatafeedsCustomBatchRequestEntry>;
 export const DatafeedsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   DatafeedsCustomBatchRequestEntry,
 ) as any as S.Schema<DatafeedsCustomBatchRequestEntryList>;
@@ -2711,7 +2693,7 @@ export const DatafeedsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatafeedsCustomBatchResponseEntry>;
 
 export type DatafeedsCustomBatchResponseEntryList =
-  DatafeedsCustomBatchResponseEntry[];
+  ReadonlyArray<DatafeedsCustomBatchResponseEntry>;
 export const DatafeedsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   DatafeedsCustomBatchResponseEntry,
 ) as any as S.Schema<DatafeedsCustomBatchResponseEntryList>;
@@ -2764,7 +2746,7 @@ export const DatafeedstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatafeedstatusesCustomBatchRequestEntry>;
 
 export type DatafeedstatusesCustomBatchRequestEntryList =
-  DatafeedstatusesCustomBatchRequestEntry[];
+  ReadonlyArray<DatafeedstatusesCustomBatchRequestEntry>;
 export const DatafeedstatusesCustomBatchRequestEntryList =
   /*@__PURE__*/ S.Array(
     DatafeedstatusesCustomBatchRequestEntry,
@@ -2819,7 +2801,7 @@ export const DatafeedStatusExample = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatafeedStatusExample",
 }) as any as S.Schema<DatafeedStatusExample>;
 
-export type DatafeedStatusExampleList = DatafeedStatusExample[];
+export type DatafeedStatusExampleList = ReadonlyArray<DatafeedStatusExample>;
 export const DatafeedStatusExampleList = /*@__PURE__*/ S.Array(
   DatafeedStatusExample,
 ) as any as S.Schema<DatafeedStatusExampleList>;
@@ -2846,7 +2828,7 @@ export const DatafeedStatusError = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatafeedStatusError",
 }) as any as S.Schema<DatafeedStatusError>;
 
-export type DatafeedStatusErrorList = DatafeedStatusError[];
+export type DatafeedStatusErrorList = ReadonlyArray<DatafeedStatusError>;
 export const DatafeedStatusErrorList = /*@__PURE__*/ S.Array(
   DatafeedStatusError,
 ) as any as S.Schema<DatafeedStatusErrorList>;
@@ -2913,7 +2895,7 @@ export const DatafeedstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatafeedstatusesCustomBatchResponseEntry>;
 
 export type DatafeedstatusesCustomBatchResponseEntryList =
-  DatafeedstatusesCustomBatchResponseEntry[];
+  ReadonlyArray<DatafeedstatusesCustomBatchResponseEntry>;
 export const DatafeedstatusesCustomBatchResponseEntryList =
   /*@__PURE__*/ S.Array(
     DatafeedstatusesCustomBatchResponseEntry,
@@ -3052,7 +3034,7 @@ export const LiaCountrySettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "LiaCountrySettings",
 }) as any as S.Schema<LiaCountrySettings>;
 
-export type LiaCountrySettingsList = LiaCountrySettings[];
+export type LiaCountrySettingsList = ReadonlyArray<LiaCountrySettings>;
 export const LiaCountrySettingsList = /*@__PURE__*/ S.Array(
   LiaCountrySettings,
 ) as any as S.Schema<LiaCountrySettingsList>;
@@ -3120,7 +3102,7 @@ export const LiasettingsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiasettingsCustomBatchRequestEntry>;
 
 export type LiasettingsCustomBatchRequestEntryList =
-  LiasettingsCustomBatchRequestEntry[];
+  ReadonlyArray<LiasettingsCustomBatchRequestEntry>;
 export const LiasettingsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   LiasettingsCustomBatchRequestEntry,
 ) as any as S.Schema<LiasettingsCustomBatchRequestEntryList>;
@@ -3176,7 +3158,7 @@ export const GmbAccountsGmbAccount = /*@__PURE__*/ S.suspend(() =>
   identifier: "GmbAccountsGmbAccount",
 }) as any as S.Schema<GmbAccountsGmbAccount>;
 
-export type GmbAccountsGmbAccountList = GmbAccountsGmbAccount[];
+export type GmbAccountsGmbAccountList = ReadonlyArray<GmbAccountsGmbAccount>;
 export const GmbAccountsGmbAccountList = /*@__PURE__*/ S.Array(
   GmbAccountsGmbAccount,
 ) as any as S.Schema<GmbAccountsGmbAccountList>;
@@ -3213,7 +3195,7 @@ export const PosDataProvidersPosDataProvider = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PosDataProvidersPosDataProvider>;
 
 export type PosDataProvidersPosDataProviderList =
-  PosDataProvidersPosDataProvider[];
+  ReadonlyArray<PosDataProvidersPosDataProvider>;
 export const PosDataProvidersPosDataProviderList = /*@__PURE__*/ S.Array(
   PosDataProvidersPosDataProvider,
 ) as any as S.Schema<PosDataProvidersPosDataProviderList>;
@@ -3233,7 +3215,7 @@ export const PosDataProviders = /*@__PURE__*/ S.suspend(() =>
   identifier: "PosDataProviders",
 }) as any as S.Schema<PosDataProviders>;
 
-export type PosDataProvidersList = PosDataProviders[];
+export type PosDataProvidersList = ReadonlyArray<PosDataProviders>;
 export const PosDataProvidersList = /*@__PURE__*/ S.Array(
   PosDataProviders,
 ) as any as S.Schema<PosDataProvidersList>;
@@ -3269,7 +3251,7 @@ export const LiasettingsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiasettingsCustomBatchResponseEntry>;
 
 export type LiasettingsCustomBatchResponseEntryList =
-  LiasettingsCustomBatchResponseEntry[];
+  ReadonlyArray<LiasettingsCustomBatchResponseEntry>;
 export const LiasettingsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   LiasettingsCustomBatchResponseEntry,
 ) as any as S.Schema<LiasettingsCustomBatchResponseEntryList>;
@@ -3321,7 +3303,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = CustomAttribute[];
+export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -3394,7 +3376,7 @@ export const LocalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LocalinventoryCustomBatchRequestEntry>;
 
 export type LocalinventoryCustomBatchRequestEntryList =
-  LocalinventoryCustomBatchRequestEntry[];
+  ReadonlyArray<LocalinventoryCustomBatchRequestEntry>;
 export const LocalinventoryCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   LocalinventoryCustomBatchRequestEntry,
 ) as any as S.Schema<LocalinventoryCustomBatchRequestEntryList>;
@@ -3450,7 +3432,7 @@ export const LocalinventoryCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LocalinventoryCustomBatchResponseEntry>;
 
 export type LocalinventoryCustomBatchResponseEntryList =
-  LocalinventoryCustomBatchResponseEntry[];
+  ReadonlyArray<LocalinventoryCustomBatchResponseEntry>;
 export const LocalinventoryCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   LocalinventoryCustomBatchResponseEntry,
 ) as any as S.Schema<LocalinventoryCustomBatchResponseEntryList>;
@@ -3620,7 +3602,8 @@ export const PosCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "PosCustomBatchRequestEntry",
 }) as any as S.Schema<PosCustomBatchRequestEntry>;
 
-export type PosCustomBatchRequestEntryList = PosCustomBatchRequestEntry[];
+export type PosCustomBatchRequestEntryList =
+  ReadonlyArray<PosCustomBatchRequestEntry>;
 export const PosCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   PosCustomBatchRequestEntry,
 ) as any as S.Schema<PosCustomBatchRequestEntryList>;
@@ -3682,7 +3665,8 @@ export const PosCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "PosCustomBatchResponseEntry",
 }) as any as S.Schema<PosCustomBatchResponseEntry>;
 
-export type PosCustomBatchResponseEntryList = PosCustomBatchResponseEntry[];
+export type PosCustomBatchResponseEntryList =
+  ReadonlyArray<PosCustomBatchResponseEntry>;
 export const PosCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   PosCustomBatchResponseEntry,
 ) as any as S.Schema<PosCustomBatchResponseEntryList>;
@@ -3717,7 +3701,7 @@ export const ProductShippingDimension = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductShippingDimension",
 }) as any as S.Schema<ProductShippingDimension>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -3757,7 +3741,7 @@ export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudExportAdditionalProperties>;
 
 export type CloudExportAdditionalPropertiesList =
-  CloudExportAdditionalProperties[];
+  ReadonlyArray<CloudExportAdditionalProperties>;
 export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
   CloudExportAdditionalProperties,
 ) as any as S.Schema<CloudExportAdditionalPropertiesList>;
@@ -3780,7 +3764,7 @@ export const ProductProductDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductProductDetail",
 }) as any as S.Schema<ProductProductDetail>;
 
-export type ProductProductDetailList = ProductProductDetail[];
+export type ProductProductDetailList = ReadonlyArray<ProductProductDetail>;
 export const ProductProductDetailList = /*@__PURE__*/ S.Array(
   ProductProductDetail,
 ) as any as S.Schema<ProductProductDetailList>;
@@ -3814,7 +3798,7 @@ export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
-export type LoyaltyProgramList = LoyaltyProgram[];
+export type LoyaltyProgramList = ReadonlyArray<LoyaltyProgram>;
 export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
   LoyaltyProgram,
 ) as any as S.Schema<LoyaltyProgramList>;
@@ -3853,8 +3837,7 @@ export const ProductStructuredDescription = /*@__PURE__*/ S.suspend(() =>
 export type ProductSustainabilityIncentiveTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EV_TAX_CREDIT"
-  | "EV_PRICE_DISCOUNT"
-  | (string & {});
+  | "EV_PRICE_DISCOUNT";
 export const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information regarding sustainability related incentive programs such as rebates or tax relief. */
@@ -3877,7 +3860,7 @@ export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductSustainabilityIncentive>;
 
 export type ProductSustainabilityIncentiveList =
-  ProductSustainabilityIncentive[];
+  ReadonlyArray<ProductSustainabilityIncentive>;
 export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
   ProductSustainabilityIncentive,
 ) as any as S.Schema<ProductSustainabilityIncentiveList>;
@@ -3954,7 +3937,7 @@ export const ProductShipping = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductShipping",
 }) as any as S.Schema<ProductShipping>;
 
-export type ProductShippingList = ProductShipping[];
+export type ProductShippingList = ReadonlyArray<ProductShipping>;
 export const ProductShippingList = /*@__PURE__*/ S.Array(
   ProductShipping,
 ) as any as S.Schema<ProductShippingList>;
@@ -3975,7 +3958,7 @@ export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreeShippingThreshold",
 }) as any as S.Schema<FreeShippingThreshold>;
 
-export type FreeShippingThresholdList = FreeShippingThreshold[];
+export type FreeShippingThresholdList = ReadonlyArray<FreeShippingThreshold>;
 export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
   FreeShippingThreshold,
 ) as any as S.Schema<FreeShippingThresholdList>;
@@ -4005,7 +3988,7 @@ export const ProductTax = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductTax" }) as any as S.Schema<ProductTax>;
 
-export type ProductTaxList = ProductTax[];
+export type ProductTaxList = ReadonlyArray<ProductTax>;
 export const ProductTaxList = /*@__PURE__*/ S.Array(
   ProductTax,
 ) as any as S.Schema<ProductTaxList>;
@@ -4068,7 +4051,7 @@ export const ProductCertification = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductCertification",
 }) as any as S.Schema<ProductCertification>;
 
-export type ProductCertificationList = ProductCertification[];
+export type ProductCertificationList = ReadonlyArray<ProductCertification>;
 export const ProductCertificationList = /*@__PURE__*/ S.Array(
   ProductCertification,
 ) as any as S.Schema<ProductCertificationList>;
@@ -4473,7 +4456,7 @@ export const ProductsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductsCustomBatchRequestEntry>;
 
 export type ProductsCustomBatchRequestEntryList =
-  ProductsCustomBatchRequestEntry[];
+  ReadonlyArray<ProductsCustomBatchRequestEntry>;
 export const ProductsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   ProductsCustomBatchRequestEntry,
 ) as any as S.Schema<ProductsCustomBatchRequestEntryList>;
@@ -4531,7 +4514,7 @@ export const ProductsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductsCustomBatchResponseEntry>;
 
 export type ProductsCustomBatchResponseEntryList =
-  ProductsCustomBatchResponseEntry[];
+  ReadonlyArray<ProductsCustomBatchResponseEntry>;
 export const ProductsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   ProductsCustomBatchResponseEntry,
 ) as any as S.Schema<ProductsCustomBatchResponseEntryList>;
@@ -4581,7 +4564,7 @@ export const ProductstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProductstatusesCustomBatchRequestEntry>;
 
 export type ProductstatusesCustomBatchRequestEntryList =
-  ProductstatusesCustomBatchRequestEntry[];
+  ReadonlyArray<ProductstatusesCustomBatchRequestEntry>;
 export const ProductstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   ProductstatusesCustomBatchRequestEntry,
 ) as any as S.Schema<ProductstatusesCustomBatchRequestEntryList>;
@@ -4644,7 +4627,7 @@ export const ProductStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductStatusDestinationStatus>;
 
 export type ProductStatusDestinationStatusList =
-  ProductStatusDestinationStatus[];
+  ReadonlyArray<ProductStatusDestinationStatus>;
 export const ProductStatusDestinationStatusList = /*@__PURE__*/ S.Array(
   ProductStatusDestinationStatus,
 ) as any as S.Schema<ProductStatusDestinationStatusList>;
@@ -4685,7 +4668,8 @@ export const ProductStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductStatusItemLevelIssue",
 }) as any as S.Schema<ProductStatusItemLevelIssue>;
 
-export type ProductStatusItemLevelIssueList = ProductStatusItemLevelIssue[];
+export type ProductStatusItemLevelIssueList =
+  ReadonlyArray<ProductStatusItemLevelIssue>;
 export const ProductStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
   ProductStatusItemLevelIssue,
 ) as any as S.Schema<ProductStatusItemLevelIssueList>;
@@ -4749,7 +4733,7 @@ export const ProductstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProductstatusesCustomBatchResponseEntry>;
 
 export type ProductstatusesCustomBatchResponseEntryList =
-  ProductstatusesCustomBatchResponseEntry[];
+  ReadonlyArray<ProductstatusesCustomBatchResponseEntry>;
 export const ProductstatusesCustomBatchResponseEntryList =
   /*@__PURE__*/ S.Array(
     ProductstatusesCustomBatchResponseEntry,
@@ -4828,7 +4812,7 @@ export const RegionalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegionalinventoryCustomBatchRequestEntry>;
 
 export type RegionalinventoryCustomBatchRequestEntryList =
-  RegionalinventoryCustomBatchRequestEntry[];
+  ReadonlyArray<RegionalinventoryCustomBatchRequestEntry>;
 export const RegionalinventoryCustomBatchRequestEntryList =
   /*@__PURE__*/ S.Array(
     RegionalinventoryCustomBatchRequestEntry,
@@ -4888,7 +4872,7 @@ export const RegionalinventoryCustomBatchResponseEntry =
   }) as any as S.Schema<RegionalinventoryCustomBatchResponseEntry>;
 
 export type RegionalinventoryCustomBatchResponseEntryList =
-  RegionalinventoryCustomBatchResponseEntry[];
+  ReadonlyArray<RegionalinventoryCustomBatchResponseEntry>;
 export const RegionalinventoryCustomBatchResponseEntryList =
   /*@__PURE__*/ S.Array(
     RegionalinventoryCustomBatchResponseEntry,
@@ -5005,7 +4989,7 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
-export type ValueList = Value[];
+export type ValueList = ReadonlyArray<Value>;
 export const ValueList = /*@__PURE__*/ S.Array(
   Value,
 ) as any as S.Schema<ValueList>;
@@ -5020,7 +5004,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
-export type RowList = Row[];
+export type RowList = ReadonlyArray<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 export interface Weight {
@@ -5036,7 +5020,7 @@ export const Weight = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Weight" }) as any as S.Schema<Weight>;
 
-export type WeightList = Weight[];
+export type WeightList = ReadonlyArray<Weight>;
 export const WeightList = /*@__PURE__*/ S.Array(
   Weight,
 ) as any as S.Schema<WeightList>;
@@ -5051,12 +5035,12 @@ export const LocationIdSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocationIdSet" }) as any as S.Schema<LocationIdSet>;
 
-export type LocationIdSetList = LocationIdSet[];
+export type LocationIdSetList = ReadonlyArray<LocationIdSet>;
 export const LocationIdSetList = /*@__PURE__*/ S.Array(
   LocationIdSet,
 ) as any as S.Schema<LocationIdSetList>;
 
-export type PriceList = Price[];
+export type PriceList = ReadonlyArray<Price>;
 export const PriceList = /*@__PURE__*/ S.Array(
   Price,
 ) as any as S.Schema<PriceList>;
@@ -5103,7 +5087,7 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
-export type TableList = Table[];
+export type TableList = ReadonlyArray<Table>;
 export const TableList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<TableList>;
@@ -5133,7 +5117,7 @@ export const CarrierRate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CarrierRate" }) as any as S.Schema<CarrierRate>;
 
-export type CarrierRateList = CarrierRate[];
+export type CarrierRateList = ReadonlyArray<CarrierRate>;
 export const CarrierRateList = /*@__PURE__*/ S.Array(
   CarrierRate,
 ) as any as S.Schema<CarrierRateList>;
@@ -5163,7 +5147,7 @@ export const RateGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RateGroup" }) as any as S.Schema<RateGroup>;
 
-export type RateGroupList = RateGroup[];
+export type RateGroupList = ReadonlyArray<RateGroup>;
 export const RateGroupList = /*@__PURE__*/ S.Array(
   RateGroup,
 ) as any as S.Schema<RateGroupList>;
@@ -5186,7 +5170,7 @@ export const MinimumOrderValueTableStoreCodeSetWithMov =
   }) as any as S.Schema<MinimumOrderValueTableStoreCodeSetWithMov>;
 
 export type MinimumOrderValueTableStoreCodeSetWithMovList =
-  MinimumOrderValueTableStoreCodeSetWithMov[];
+  ReadonlyArray<MinimumOrderValueTableStoreCodeSetWithMov>;
 export const MinimumOrderValueTableStoreCodeSetWithMovList =
   /*@__PURE__*/ S.Array(
     MinimumOrderValueTableStoreCodeSetWithMov,
@@ -5227,7 +5211,7 @@ export const HolidayCutoff = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HolidayCutoff" }) as any as S.Schema<HolidayCutoff>;
 
-export type HolidayCutoffList = HolidayCutoff[];
+export type HolidayCutoffList = ReadonlyArray<HolidayCutoff>;
 export const HolidayCutoffList = /*@__PURE__*/ S.Array(
   HolidayCutoff,
 ) as any as S.Schema<HolidayCutoffList>;
@@ -5265,7 +5249,8 @@ export const WarehouseBasedDeliveryTime = /*@__PURE__*/ S.suspend(() =>
   identifier: "WarehouseBasedDeliveryTime",
 }) as any as S.Schema<WarehouseBasedDeliveryTime>;
 
-export type WarehouseBasedDeliveryTimeList = WarehouseBasedDeliveryTime[];
+export type WarehouseBasedDeliveryTimeList =
+  ReadonlyArray<WarehouseBasedDeliveryTime>;
 export const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ S.Array(
   WarehouseBasedDeliveryTime,
 ) as any as S.Schema<WarehouseBasedDeliveryTimeList>;
@@ -5315,7 +5300,7 @@ export const TransitTableTransitTimeRowTransitTimeValue =
   }) as any as S.Schema<TransitTableTransitTimeRowTransitTimeValue>;
 
 export type TransitTableTransitTimeRowTransitTimeValueList =
-  TransitTableTransitTimeRowTransitTimeValue[];
+  ReadonlyArray<TransitTableTransitTimeRowTransitTimeValue>;
 export const TransitTableTransitTimeRowTransitTimeValueList =
   /*@__PURE__*/ S.Array(
     TransitTableTransitTimeRowTransitTimeValue,
@@ -5332,7 +5317,8 @@ export const TransitTableTransitTimeRow = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransitTableTransitTimeRow",
 }) as any as S.Schema<TransitTableTransitTimeRow>;
 
-export type TransitTableTransitTimeRowList = TransitTableTransitTimeRow[];
+export type TransitTableTransitTimeRowList =
+  ReadonlyArray<TransitTableTransitTimeRow>;
 export const TransitTableTransitTimeRowList = /*@__PURE__*/ S.Array(
   TransitTableTransitTimeRow,
 ) as any as S.Schema<TransitTableTransitTimeRowList>;
@@ -5447,7 +5433,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
-export type ServiceList = Service[];
+export type ServiceList = ReadonlyArray<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -5512,7 +5498,7 @@ export const Warehouse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Warehouse" }) as any as S.Schema<Warehouse>;
 
-export type WarehouseList = Warehouse[];
+export type WarehouseList = ReadonlyArray<Warehouse>;
 export const WarehouseList = /*@__PURE__*/ S.Array(
   Warehouse,
 ) as any as S.Schema<WarehouseList>;
@@ -5532,7 +5518,7 @@ export const PostalCodeRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostalCodeRange",
 }) as any as S.Schema<PostalCodeRange>;
 
-export type PostalCodeRangeList = PostalCodeRange[];
+export type PostalCodeRangeList = ReadonlyArray<PostalCodeRange>;
 export const PostalCodeRangeList = /*@__PURE__*/ S.Array(
   PostalCodeRange,
 ) as any as S.Schema<PostalCodeRangeList>;
@@ -5555,7 +5541,7 @@ export const PostalCodeGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostalCodeGroup",
 }) as any as S.Schema<PostalCodeGroup>;
 
-export type PostalCodeGroupList = PostalCodeGroup[];
+export type PostalCodeGroupList = ReadonlyArray<PostalCodeGroup>;
 export const PostalCodeGroupList = /*@__PURE__*/ S.Array(
   PostalCodeGroup,
 ) as any as S.Schema<PostalCodeGroupList>;
@@ -5609,7 +5595,7 @@ export const ShippingsettingsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ShippingsettingsCustomBatchRequestEntry>;
 
 export type ShippingsettingsCustomBatchRequestEntryList =
-  ShippingsettingsCustomBatchRequestEntry[];
+  ReadonlyArray<ShippingsettingsCustomBatchRequestEntry>;
 export const ShippingsettingsCustomBatchRequestEntryList =
   /*@__PURE__*/ S.Array(
     ShippingsettingsCustomBatchRequestEntry,
@@ -5669,7 +5655,7 @@ export const ShippingsettingsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ShippingsettingsCustomBatchResponseEntry>;
 
 export type ShippingsettingsCustomBatchResponseEntryList =
-  ShippingsettingsCustomBatchResponseEntry[];
+  ReadonlyArray<ShippingsettingsCustomBatchResponseEntry>;
 export const ShippingsettingsCustomBatchResponseEntryList =
   /*@__PURE__*/ S.Array(
     ShippingsettingsCustomBatchResponseEntry,
@@ -6111,8 +6097,7 @@ export const RecommendationCallToAction = /*@__PURE__*/ S.suspend(() =>
 export type RecommendationDescriptionTypeEnum =
   | "DESCRIPTION_TYPE_UNSPECIFIED"
   | "SHORT"
-  | "LONG"
-  | (string & {});
+  | "LONG";
 export const RecommendationDescriptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Google-provided description for the recommendation. */
@@ -6131,7 +6116,8 @@ export const RecommendationDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecommendationDescription",
 }) as any as S.Schema<RecommendationDescription>;
 
-export type RecommendationDescriptionList = RecommendationDescription[];
+export type RecommendationDescriptionList =
+  ReadonlyArray<RecommendationDescription>;
 export const RecommendationDescriptionList = /*@__PURE__*/ S.Array(
   RecommendationDescription,
 ) as any as S.Schema<RecommendationDescriptionList>;
@@ -6139,8 +6125,7 @@ export const RecommendationDescriptionList = /*@__PURE__*/ S.Array(
 export type RecommendationCreativeTypeEnum =
   | "CREATIVE_TYPE_UNSPECIFIED"
   | "VIDEO"
-  | "PHOTO"
-  | (string & {});
+  | "PHOTO";
 export const RecommendationCreativeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creative is a multimedia attachment to recommendation that can be used on the frontend. */
@@ -6159,12 +6144,13 @@ export const RecommendationCreative = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecommendationCreative",
 }) as any as S.Schema<RecommendationCreative>;
 
-export type RecommendationCreativeList = RecommendationCreative[];
+export type RecommendationCreativeList = ReadonlyArray<RecommendationCreative>;
 export const RecommendationCreativeList = /*@__PURE__*/ S.Array(
   RecommendationCreative,
 ) as any as S.Schema<RecommendationCreativeList>;
 
-export type RecommendationCallToActionList = RecommendationCallToAction[];
+export type RecommendationCallToActionList =
+  ReadonlyArray<RecommendationCallToAction>;
 export const RecommendationCallToActionList = /*@__PURE__*/ S.Array(
   RecommendationCallToAction,
 ) as any as S.Schema<RecommendationCallToActionList>;
@@ -6210,7 +6196,7 @@ export const Recommendation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 
-export type RecommendationList = Recommendation[];
+export type RecommendationList = ReadonlyArray<Recommendation>;
 export const RecommendationList = /*@__PURE__*/ S.Array(
   Recommendation,
 ) as any as S.Schema<RecommendationList>;
@@ -6272,7 +6258,7 @@ export const LiasettingsGetAccessibleGmbAccountsResponse =
     identifier: "LiasettingsGetAccessibleGmbAccountsResponse",
   }) as any as S.Schema<LiasettingsGetAccessibleGmbAccountsResponse>;
 
-export type GetAccountsViewEnum = "MERCHANT" | "CSS" | (string & {});
+export type GetAccountsViewEnum = "MERCHANT" | "CSS";
 export const GetAccountsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAccountsRequest {
@@ -6412,7 +6398,7 @@ export const CollectionStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectionStatusDestinationStatus>;
 
 export type CollectionStatusDestinationStatusList =
-  CollectionStatusDestinationStatus[];
+  ReadonlyArray<CollectionStatusDestinationStatus>;
 export const CollectionStatusDestinationStatusList = /*@__PURE__*/ S.Array(
   CollectionStatusDestinationStatus,
 ) as any as S.Schema<CollectionStatusDestinationStatusList>;
@@ -6455,7 +6441,7 @@ export const CollectionStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectionStatusItemLevelIssue>;
 
 export type CollectionStatusItemLevelIssueList =
-  CollectionStatusItemLevelIssue[];
+  ReadonlyArray<CollectionStatusItemLevelIssue>;
 export const CollectionStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
   CollectionStatusItemLevelIssue,
 ) as any as S.Schema<CollectionStatusItemLevelIssueList>;
@@ -6643,8 +6629,7 @@ export type FreeListingsProgramStatusRegionStatusEligibilityStatusEnum =
   | "WARNING"
   | "UNDER_REVIEW"
   | "PENDING_REVIEW"
-  | "ONBOARDING"
-  | (string & {});
+  | "ONBOARDING";
 export const FreeListingsProgramStatusRegionStatusEligibilityStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -6657,16 +6642,14 @@ export type FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
     | "NO_REVIEW_REQUIRED"
     | "WILL_BE_REVIEWED_AUTOMATICALLY"
     | "IS_RETIRED"
-    | "ALREADY_REVIEWED"
-    | (string & {});
+    | "ALREADY_REVIEWED";
 export const FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   /*@__PURE__*/ S.String;
 
 export type FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   | "REVIEW_ELIGIBILITY_UNSPECIFIED"
   | "ELIGIBLE"
-  | "INELIGIBLE"
-  | (string & {});
+  | "INELIGIBLE";
 export const FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -6717,7 +6700,7 @@ export const FreeListingsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FreeListingsProgramStatusRegionStatus>;
 
 export type FreeListingsProgramStatusRegionStatusList =
-  FreeListingsProgramStatusRegionStatus[];
+  ReadonlyArray<FreeListingsProgramStatusRegionStatus>;
 export const FreeListingsProgramStatusRegionStatusList = /*@__PURE__*/ S.Array(
   FreeListingsProgramStatusRegionStatus,
 ) as any as S.Schema<FreeListingsProgramStatusRegionStatusList>;
@@ -6726,8 +6709,7 @@ export type FreeListingsProgramStatusGlobalStateEnum =
   | "PROGRAM_STATE_UNSPECIFIED"
   | "NOT_ENABLED"
   | "NO_OFFERS_UPLOADED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const FreeListingsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
 
 /** Response message for GetFreeListingsProgramStatus. */
@@ -6783,16 +6765,14 @@ export type CheckoutSettingsReviewStateEnum =
   | "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED"
   | "IN_REVIEW"
   | "APPROVED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const CheckoutSettingsReviewStateEnum = /*@__PURE__*/ S.String;
 
 export type CheckoutSettingsEffectiveEnrollmentStateEnum =
   | "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ENROLLED"
-  | "OPT_OUT"
-  | (string & {});
+  | "OPT_OUT";
 export const CheckoutSettingsEffectiveEnrollmentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6800,16 +6780,14 @@ export type CheckoutSettingsEffectiveReviewStateEnum =
   | "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED"
   | "IN_REVIEW"
   | "APPROVED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const CheckoutSettingsEffectiveReviewStateEnum = /*@__PURE__*/ S.String;
 
 export type CheckoutSettingsEnrollmentStateEnum =
   | "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ENROLLED"
-  | "OPT_OUT"
-  | (string & {});
+  | "OPT_OUT";
 export const CheckoutSettingsEnrollmentStateEnum = /*@__PURE__*/ S.String;
 
 /** `CheckoutSettings` for a specific merchant ID. */
@@ -7098,8 +7076,7 @@ export type ShoppingAdsProgramStatusGlobalStateEnum =
   | "PROGRAM_STATE_UNSPECIFIED"
   | "NOT_ENABLED"
   | "NO_OFFERS_UPLOADED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const ShoppingAdsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
 
 export type ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum =
@@ -7109,8 +7086,7 @@ export type ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum =
   | "WARNING"
   | "UNDER_REVIEW"
   | "PENDING_REVIEW"
-  | "ONBOARDING"
-  | (string & {});
+  | "ONBOARDING";
 export const ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7131,8 +7107,7 @@ export const ShoppingAdsProgramStatusReviewIneligibilityReasonDetails =
 export type ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   | "REVIEW_ELIGIBILITY_UNSPECIFIED"
   | "ELIGIBLE"
-  | "INELIGIBLE"
-  | (string & {});
+  | "INELIGIBLE";
 export const ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -7145,8 +7120,7 @@ export type ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   | "NO_REVIEW_REQUIRED"
   | "WILL_BE_REVIEWED_AUTOMATICALLY"
   | "IS_RETIRED"
-  | "ALREADY_REVIEWED"
-  | (string & {});
+  | "ALREADY_REVIEWED";
 export const ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -7197,7 +7171,7 @@ export const ShoppingAdsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ShoppingAdsProgramStatusRegionStatus>;
 
 export type ShoppingAdsProgramStatusRegionStatusList =
-  ShoppingAdsProgramStatusRegionStatus[];
+  ReadonlyArray<ShoppingAdsProgramStatusRegionStatus>;
 export const ShoppingAdsProgramStatusRegionStatusList = /*@__PURE__*/ S.Array(
   ShoppingAdsProgramStatusRegionStatus,
 ) as any as S.Schema<ShoppingAdsProgramStatusRegionStatusList>;
@@ -7258,7 +7232,7 @@ export const CarriersCarrier = /*@__PURE__*/ S.suspend(() =>
   identifier: "CarriersCarrier",
 }) as any as S.Schema<CarriersCarrier>;
 
-export type CarriersCarrierList = CarriersCarrier[];
+export type CarriersCarrierList = ReadonlyArray<CarriersCarrier>;
 export const CarriersCarrierList = /*@__PURE__*/ S.Array(
   CarriersCarrier,
 ) as any as S.Schema<CarriersCarrierList>;
@@ -7325,7 +7299,7 @@ export const HolidaysHoliday = /*@__PURE__*/ S.suspend(() =>
   identifier: "HolidaysHoliday",
 }) as any as S.Schema<HolidaysHoliday>;
 
-export type HolidaysHolidayList = HolidaysHoliday[];
+export type HolidaysHolidayList = ReadonlyArray<HolidaysHoliday>;
 export const HolidaysHolidayList = /*@__PURE__*/ S.Array(
   HolidaysHoliday,
 ) as any as S.Schema<HolidaysHolidayList>;
@@ -7383,7 +7357,8 @@ export const PickupServicesPickupService = /*@__PURE__*/ S.suspend(() =>
   identifier: "PickupServicesPickupService",
 }) as any as S.Schema<PickupServicesPickupService>;
 
-export type PickupServicesPickupServiceList = PickupServicesPickupService[];
+export type PickupServicesPickupServiceList =
+  ReadonlyArray<PickupServicesPickupService>;
 export const PickupServicesPickupServiceList = /*@__PURE__*/ S.Array(
   PickupServicesPickupService,
 ) as any as S.Schema<PickupServicesPickupServiceList>;
@@ -7774,7 +7749,7 @@ export const AccountsLinkResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsLinkResponse",
 }) as any as S.Schema<AccountsLinkResponse>;
 
-export type ListAccountsViewEnum = "MERCHANT" | "CSS" | (string & {});
+export type ListAccountsViewEnum = "MERCHANT" | "CSS";
 export const ListAccountsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountsRequest {
@@ -7810,7 +7785,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type AccountList = Account[];
+export type AccountList = ReadonlyArray<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -7856,7 +7831,7 @@ export const ListAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsLabelsRequest",
 }) as any as S.Schema<ListAccountsLabelsRequest>;
 
-export type AccountLabelList = AccountLabel[];
+export type AccountLabelList = ReadonlyArray<AccountLabel>;
 export const AccountLabelList = /*@__PURE__*/ S.Array(
   AccountLabel,
 ) as any as S.Schema<AccountLabelList>;
@@ -7895,7 +7870,7 @@ export const ListAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsReturncarrierRequest",
 }) as any as S.Schema<ListAccountsReturncarrierRequest>;
 
-export type AccountReturnCarrierList = AccountReturnCarrier[];
+export type AccountReturnCarrierList = ReadonlyArray<AccountReturnCarrier>;
 export const AccountReturnCarrierList = /*@__PURE__*/ S.Array(
   AccountReturnCarrier,
 ) as any as S.Schema<AccountReturnCarrierList>;
@@ -7943,7 +7918,7 @@ export const ListAccountstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountstatusesRequest",
 }) as any as S.Schema<ListAccountstatusesRequest>;
 
-export type AccountStatusList = AccountStatus[];
+export type AccountStatusList = ReadonlyArray<AccountStatus>;
 export const AccountStatusList = /*@__PURE__*/ S.Array(
   AccountStatus,
 ) as any as S.Schema<AccountStatusList>;
@@ -7989,7 +7964,7 @@ export const ListAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccounttaxRequest",
 }) as any as S.Schema<ListAccounttaxRequest>;
 
-export type AccountTaxList = AccountTax[];
+export type AccountTaxList = ReadonlyArray<AccountTax>;
 export const AccountTaxList = /*@__PURE__*/ S.Array(
   AccountTax,
 ) as any as S.Schema<AccountTaxList>;
@@ -8035,7 +8010,7 @@ export const ListCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCollectionsRequest",
 }) as any as S.Schema<ListCollectionsRequest>;
 
-export type CollectionList = Collection[];
+export type CollectionList = ReadonlyArray<Collection>;
 export const CollectionList = /*@__PURE__*/ S.Array(
   Collection,
 ) as any as S.Schema<CollectionList>;
@@ -8080,7 +8055,7 @@ export const ListCollectionstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCollectionstatusesRequest",
 }) as any as S.Schema<ListCollectionstatusesRequest>;
 
-export type CollectionStatusList = CollectionStatus[];
+export type CollectionStatusList = ReadonlyArray<CollectionStatus>;
 export const CollectionStatusList = /*@__PURE__*/ S.Array(
   CollectionStatus,
 ) as any as S.Schema<CollectionStatusList>;
@@ -8128,7 +8103,7 @@ export const ListConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConversionsourcesRequest",
 }) as any as S.Schema<ListConversionsourcesRequest>;
 
-export type ConversionSourceList = ConversionSource[];
+export type ConversionSourceList = ReadonlyArray<ConversionSource>;
 export const ConversionSourceList = /*@__PURE__*/ S.Array(
   ConversionSource,
 ) as any as S.Schema<ConversionSourceList>;
@@ -8173,7 +8148,7 @@ export const ListCssesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCssesRequest",
 }) as any as S.Schema<ListCssesRequest>;
 
-export type CssList = Css[];
+export type CssList = ReadonlyArray<Css>;
 export const CssList = /*@__PURE__*/ S.Array(Css) as any as S.Schema<CssList>;
 
 /** The response message for the `ListCsses` method */
@@ -8216,7 +8191,7 @@ export const ListDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDatafeedsRequest",
 }) as any as S.Schema<ListDatafeedsRequest>;
 
-export type DatafeedList = Datafeed[];
+export type DatafeedList = ReadonlyArray<Datafeed>;
 export const DatafeedList = /*@__PURE__*/ S.Array(
   Datafeed,
 ) as any as S.Schema<DatafeedList>;
@@ -8262,7 +8237,7 @@ export const ListDatafeedstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDatafeedstatusesRequest",
 }) as any as S.Schema<ListDatafeedstatusesRequest>;
 
-export type DatafeedStatusList = DatafeedStatus[];
+export type DatafeedStatusList = ReadonlyArray<DatafeedStatus>;
 export const DatafeedStatusList = /*@__PURE__*/ S.Array(
   DatafeedStatus,
 ) as any as S.Schema<DatafeedStatusList>;
@@ -8308,7 +8283,7 @@ export const ListLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiasettingsRequest",
 }) as any as S.Schema<ListLiasettingsRequest>;
 
-export type LiaSettingsList = LiaSettings[];
+export type LiaSettingsList = ReadonlyArray<LiaSettings>;
 export const LiaSettingsList = /*@__PURE__*/ S.Array(
   LiaSettings,
 ) as any as S.Schema<LiaSettingsList>;
@@ -8370,7 +8345,7 @@ export const LinkService = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LinkService" }) as any as S.Schema<LinkService>;
 
-export type LinkServiceList = LinkService[];
+export type LinkServiceList = ReadonlyArray<LinkService>;
 export const LinkServiceList = /*@__PURE__*/ S.Array(
   LinkService,
 ) as any as S.Schema<LinkServiceList>;
@@ -8388,7 +8363,7 @@ export const LinkedAccount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LinkedAccount" }) as any as S.Schema<LinkedAccount>;
 
-export type LinkedAccountList = LinkedAccount[];
+export type LinkedAccountList = ReadonlyArray<LinkedAccount>;
 export const LinkedAccountList = /*@__PURE__*/ S.Array(
   LinkedAccount,
 ) as any as S.Schema<LinkedAccountList>;
@@ -8430,7 +8405,7 @@ export const ListPosRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListPosRequest" }) as any as S.Schema<ListPosRequest>;
 
-export type PosStoreList = PosStore[];
+export type PosStoreList = ReadonlyArray<PosStore>;
 export const PosStoreList = /*@__PURE__*/ S.Array(
   PosStore,
 ) as any as S.Schema<PosStoreList>;
@@ -8503,7 +8478,7 @@ export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProductsRequest",
 }) as any as S.Schema<ListProductsRequest>;
 
-export type ProductList = Product[];
+export type ProductList = ReadonlyArray<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;
@@ -8552,7 +8527,7 @@ export const ListProductstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProductstatusesRequest",
 }) as any as S.Schema<ListProductstatusesRequest>;
 
-export type ProductStatusList = ProductStatus[];
+export type ProductStatusList = ReadonlyArray<ProductStatus>;
 export const ProductStatusList = /*@__PURE__*/ S.Array(
   ProductStatus,
 ) as any as S.Schema<ProductStatusList>;
@@ -8604,7 +8579,7 @@ export const ListPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPromotionsRequest",
 }) as any as S.Schema<ListPromotionsRequest>;
 
-export type PromotionList = Promotion[];
+export type PromotionList = ReadonlyArray<Promotion>;
 export const PromotionList = /*@__PURE__*/ S.Array(
   Promotion,
 ) as any as S.Schema<PromotionList>;
@@ -8669,7 +8644,7 @@ export const MethodQuota = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MethodQuota" }) as any as S.Schema<MethodQuota>;
 
-export type MethodQuotaList = MethodQuota[];
+export type MethodQuotaList = ReadonlyArray<MethodQuota>;
 export const MethodQuotaList = /*@__PURE__*/ S.Array(
   MethodQuota,
 ) as any as S.Schema<MethodQuotaList>;
@@ -8714,7 +8689,7 @@ export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRegionsRequest",
 }) as any as S.Schema<ListRegionsRequest>;
 
-export type RegionList = Region[];
+export type RegionList = ReadonlyArray<Region>;
 export const RegionList = /*@__PURE__*/ S.Array(
   Region,
 ) as any as S.Schema<RegionList>;
@@ -8753,7 +8728,7 @@ export const ListReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReturnpolicyonlineRequest",
 }) as any as S.Schema<ListReturnpolicyonlineRequest>;
 
-export type ReturnPolicyOnlineList = ReturnPolicyOnline[];
+export type ReturnPolicyOnlineList = ReadonlyArray<ReturnPolicyOnline>;
 export const ReturnPolicyOnlineList = /*@__PURE__*/ S.Array(
   ReturnPolicyOnline,
 ) as any as S.Schema<ReturnPolicyOnlineList>;
@@ -8795,7 +8770,7 @@ export const ListShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListShippingsettingsRequest",
 }) as any as S.Schema<ListShippingsettingsRequest>;
 
-export type ShippingSettingsList = ShippingSettings[];
+export type ShippingSettingsList = ReadonlyArray<ShippingSettings>;
 export const ShippingSettingsList = /*@__PURE__*/ S.Array(
   ShippingSettings,
 ) as any as S.Schema<ShippingSettingsList>;
@@ -8945,16 +8920,14 @@ export const PatchReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type RenderAccountIssuesRequestPayloadContentOptionEnum =
   | "CONTENT_OPTION_UNSPECIFIED"
-  | "PRE_RENDERED_HTML"
-  | (string & {});
+  | "PRE_RENDERED_HTML";
 export const RenderAccountIssuesRequestPayloadContentOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type RenderAccountIssuesRequestPayloadUserInputActionOptionEnum =
   | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
   | "REDIRECT_TO_MERCHANT_CENTER"
-  | "BUILT_IN_USER_INPUT_ACTIONS"
-  | (string & {});
+  | "BUILT_IN_USER_INPUT_ACTIONS";
 export const RenderAccountIssuesRequestPayloadUserInputActionOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -9022,7 +8995,7 @@ export const BreakdownRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "BreakdownRegion",
 }) as any as S.Schema<BreakdownRegion>;
 
-export type BreakdownRegionList = BreakdownRegion[];
+export type BreakdownRegionList = ReadonlyArray<BreakdownRegion>;
 export const BreakdownRegionList = /*@__PURE__*/ S.Array(
   BreakdownRegion,
 ) as any as S.Schema<BreakdownRegionList>;
@@ -9041,7 +9014,7 @@ export const Breakdown = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
-export type BreakdownList = Breakdown[];
+export type BreakdownList = ReadonlyArray<Breakdown>;
 export const BreakdownList = /*@__PURE__*/ S.Array(
   Breakdown,
 ) as any as S.Schema<BreakdownList>;
@@ -9050,8 +9023,7 @@ export type AccountIssueImpactSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const AccountIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Overall impact of the issue. */
@@ -9078,8 +9050,7 @@ export type ExternalActionTypeEnum =
   | "REVIEW_PRODUCT_ISSUE_IN_MERCHANT_CENTER"
   | "REVIEW_ACCOUNT_ISSUE_IN_MERCHANT_CENTER"
   | "LEGAL_APPEAL_IN_HELP_CENTER"
-  | "VERIFY_IDENTITY_IN_MERCHANT_CENTER"
-  | (string & {});
+  | "VERIFY_IDENTITY_IN_MERCHANT_CENTER";
 export const ExternalActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Action that is implemented and performed outside of the third-party application. It should redirect the merchant to the provided URL of an external system where they can perform the action. For example to request a review in the Merchant Center. */
@@ -9113,7 +9084,7 @@ export const ActionReason = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActionReason" }) as any as S.Schema<ActionReason>;
 
-export type ActionReasonList = ActionReason[];
+export type ActionReasonList = ReadonlyArray<ActionReason>;
 export const ActionReasonList = /*@__PURE__*/ S.Array(
   ActionReason,
 ) as any as S.Schema<ActionReasonList>;
@@ -9122,15 +9093,13 @@ export type CalloutStyleHintEnum =
   | "CALLOUT_STYLE_HINT_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const CalloutStyleHintEnum = /*@__PURE__*/ S.String;
 
 export type TextWithTooltipTooltipIconStyleEnum =
   | "TOOLTIP_ICON_STYLE_UNSPECIFIED"
   | "INFO"
-  | "QUESTION"
-  | (string & {});
+  | "QUESTION";
 export const TextWithTooltipTooltipIconStyleEnum = /*@__PURE__*/ S.String;
 
 /** Block of text that may contain a tooltip with more information. */
@@ -9195,7 +9164,7 @@ export const InputFieldChoiceInputChoiceInputOption = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InputFieldChoiceInputChoiceInputOption>;
 
 export type InputFieldChoiceInputChoiceInputOptionList =
-  InputFieldChoiceInputChoiceInputOption[];
+  ReadonlyArray<InputFieldChoiceInputChoiceInputOption>;
 export const InputFieldChoiceInputChoiceInputOptionList = /*@__PURE__*/ S.Array(
   InputFieldChoiceInputChoiceInputOption,
 ) as any as S.Schema<InputFieldChoiceInputChoiceInputOptionList>;
@@ -9216,8 +9185,7 @@ export const InputFieldChoiceInput = /*@__PURE__*/ S.suspend(() =>
 export type InputFieldTextInputTypeEnum =
   | "TEXT_INPUT_TYPE_UNSPECIFIED"
   | "GENERIC_SHORT_TEXT"
-  | "GENERIC_LONG_TEXT"
-  | (string & {});
+  | "GENERIC_LONG_TEXT";
 export const InputFieldTextInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Text input allows merchants to provide a text value. */
@@ -9268,7 +9236,7 @@ export const InputField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputField" }) as any as S.Schema<InputField>;
 
-export type InputFieldList = InputField[];
+export type InputFieldList = ReadonlyArray<InputField>;
 export const InputFieldList = /*@__PURE__*/ S.Array(
   InputField,
 ) as any as S.Schema<InputFieldList>;
@@ -9302,7 +9270,7 @@ export const ActionFlow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActionFlow" }) as any as S.Schema<ActionFlow>;
 
-export type ActionFlowList = ActionFlow[];
+export type ActionFlowList = ReadonlyArray<ActionFlow>;
 export const ActionFlowList = /*@__PURE__*/ S.Array(
   ActionFlow,
 ) as any as S.Schema<ActionFlowList>;
@@ -9333,8 +9301,7 @@ export type BuiltInSimpleActionTypeEnum =
   | "ADD_BUSINESS_REGISTRATION_NUMBER"
   | "EDIT_ITEM_ATTRIBUTE"
   | "FIX_ACCOUNT_ISSUE"
-  | "SHOW_ADDITIONAL_CONTENT"
-  | (string & {});
+  | "SHOW_ADDITIONAL_CONTENT";
 export const BuiltInSimpleActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Long text from external source. */
@@ -9399,7 +9366,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
-export type ActionList = Action[];
+export type ActionList = ReadonlyArray<Action>;
 export const ActionList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<ActionList>;
@@ -9427,7 +9394,7 @@ export const AccountIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountIssue" }) as any as S.Schema<AccountIssue>;
 
-export type AccountIssueList = AccountIssue[];
+export type AccountIssueList = ReadonlyArray<AccountIssue>;
 export const AccountIssueList = /*@__PURE__*/ S.Array(
   AccountIssue,
 ) as any as S.Schema<AccountIssueList>;
@@ -9466,16 +9433,14 @@ export const RenderAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type RenderProductIssuesRequestPayloadContentOptionEnum =
   | "CONTENT_OPTION_UNSPECIFIED"
-  | "PRE_RENDERED_HTML"
-  | (string & {});
+  | "PRE_RENDERED_HTML";
 export const RenderProductIssuesRequestPayloadContentOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type RenderProductIssuesRequestPayloadUserInputActionOptionEnum =
   | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
   | "REDIRECT_TO_MERCHANT_CENTER"
-  | "BUILT_IN_USER_INPUT_ACTIONS"
-  | (string & {});
+  | "BUILT_IN_USER_INPUT_ACTIONS";
 export const RenderProductIssuesRequestPayloadUserInputActionOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -9534,8 +9499,7 @@ export type ProductIssueImpactSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const ProductIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Overall impact of product issue. */
@@ -9580,7 +9544,7 @@ export const ProductIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductIssue" }) as any as S.Schema<ProductIssue>;
 
-export type ProductIssueList = ProductIssue[];
+export type ProductIssueList = ReadonlyArray<ProductIssue>;
 export const ProductIssueList = /*@__PURE__*/ S.Array(
   ProductIssue,
 ) as any as S.Schema<ProductIssueList>;
@@ -9604,8 +9568,7 @@ export const RenderProductIssuesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ReportInteractionRequestInteractionTypeEnum =
   | "INTERACTION_TYPE_UNSPECIFIED"
   | "INTERACTION_DISMISS"
-  | "INTERACTION_CLICK"
-  | (string & {});
+  | "INTERACTION_CLICK";
 export const ReportInteractionRequestInteractionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9737,8 +9700,7 @@ export const LiasettingsRequestInventoryVerificationResponse =
 export type RequestPhoneVerificationRequestPhoneVerificationMethodEnum =
   | "PHONE_VERIFICATION_METHOD_UNSPECIFIED"
   | "SMS"
-  | "PHONE_CALL"
-  | (string & {});
+  | "PHONE_CALL";
 export const RequestPhoneVerificationRequestPhoneVerificationMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -10027,23 +9989,20 @@ export type BestSellersRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH"
-  | (string & {});
+  | "VERY_HIGH";
 export const BestSellersRelativeDemandEnum = /*@__PURE__*/ S.String;
 
 export type BestSellersReportGranularityEnum =
   | "REPORT_GRANULARITY_UNSPECIFIED"
   | "WEEKLY"
-  | "MONTHLY"
-  | (string & {});
+  | "MONTHLY";
 export const BestSellersReportGranularityEnum = /*@__PURE__*/ S.String;
 
 export type BestSellersRelativeDemandChangeEnum =
   | "RELATIVE_DEMAND_CHANGE_TYPE_UNSPECIFIED"
   | "SINKER"
   | "FLAT"
-  | "RISER"
-  | (string & {});
+  | "RISER";
 export const BestSellersRelativeDemandChangeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -10069,8 +10028,7 @@ export type BestSellersPreviousRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH"
-  | (string & {});
+  | "VERY_HIGH";
 export const BestSellersPreviousRelativeDemandEnum = /*@__PURE__*/ S.String;
 
 /** Fields related to the [Best sellers reports](https://support.google.com/merchants/answer/9488679). */
@@ -10124,8 +10082,7 @@ export type SegmentsProgramEnum =
   | "SHOPPING_ADS"
   | "FREE_PRODUCT_LISTING"
   | "FREE_LOCAL_PRODUCT_LISTING"
-  | "BUY_ON_GOOGLE_LISTING"
-  | (string & {});
+  | "BUY_ON_GOOGLE_LISTING";
 export const SegmentsProgramEnum = /*@__PURE__*/ S.String;
 
 /** Dimensions according to which metrics are segmented in the response. Values of product dimensions, such as `offer_id`, reflect the state of a product at the time of the corresponding event, for example, impression or order. Segment fields cannot be selected in queries without also selecting at least one metric field. Values are only set for dimensions requested explicitly in the request's search query. */
@@ -10228,8 +10185,7 @@ export type CompetitiveVisibilityTrafficSourceEnum =
   | "UNKNOWN"
   | "ORGANIC"
   | "ADS"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const CompetitiveVisibilityTrafficSourceEnum = /*@__PURE__*/ S.String;
 
 /** Fields related to [competitive visibility reports] (https://support.google.com/merchants/answer/11366442). */
@@ -10286,24 +10242,18 @@ export type ProductViewAggregatedDestinationStatusEnum =
   | "NOT_ELIGIBLE_OR_DISAPPROVED"
   | "PENDING"
   | "ELIGIBLE_LIMITED"
-  | "ELIGIBLE"
-  | (string & {});
+  | "ELIGIBLE";
 export const ProductViewAggregatedDestinationStatusEnum =
   /*@__PURE__*/ S.String;
 
-export type ProductViewChannelEnum =
-  | "CHANNEL_UNSPECIFIED"
-  | "LOCAL"
-  | "ONLINE"
-  | (string & {});
+export type ProductViewChannelEnum = "CHANNEL_UNSPECIFIED" | "LOCAL" | "ONLINE";
 export const ProductViewChannelEnum = /*@__PURE__*/ S.String;
 
 export type ProductViewClickPotentialEnum =
   | "CLICK_POTENTIAL_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const ProductViewClickPotentialEnum = /*@__PURE__*/ S.String;
 
 /** Type of the item issue. */
@@ -10325,8 +10275,7 @@ export const ProductViewItemIssueItemIssueType = /*@__PURE__*/ S.suspend(() =>
 export type ProductViewItemIssueResolutionEnum =
   | "UNKNOWN"
   | "MERCHANT_ACTION"
-  | "PENDING_PROCESSING"
-  | (string & {});
+  | "PENDING_PROCESSING";
 export const ProductViewItemIssueResolutionEnum = /*@__PURE__*/ S.String;
 
 /** Issue severity for all affected regions in a destination. */
@@ -10350,7 +10299,7 @@ export const ProductViewItemIssueIssueSeverityPerDestination =
   }) as any as S.Schema<ProductViewItemIssueIssueSeverityPerDestination>;
 
 export type ProductViewItemIssueIssueSeverityPerDestinationList =
-  ProductViewItemIssueIssueSeverityPerDestination[];
+  ReadonlyArray<ProductViewItemIssueIssueSeverityPerDestination>;
 export const ProductViewItemIssueIssueSeverityPerDestinationList =
   /*@__PURE__*/ S.Array(
     ProductViewItemIssueIssueSeverityPerDestination,
@@ -10360,8 +10309,7 @@ export type ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum =
   | "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED"
   | "DISAPPROVED"
   | "DEMOTED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -10405,7 +10353,7 @@ export const ProductViewItemIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductViewItemIssue",
 }) as any as S.Schema<ProductViewItemIssue>;
 
-export type ProductViewItemIssueList = ProductViewItemIssue[];
+export type ProductViewItemIssueList = ReadonlyArray<ProductViewItemIssue>;
 export const ProductViewItemIssueList = /*@__PURE__*/ S.Array(
   ProductViewItemIssue,
 ) as any as S.Schema<ProductViewItemIssueList>;
@@ -10623,16 +10571,14 @@ export type ProductClusterBrandInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
-  | "NOT_IN_INVENTORY"
-  | (string & {});
+  | "NOT_IN_INVENTORY";
 export const ProductClusterBrandInventoryStatusEnum = /*@__PURE__*/ S.String;
 
 export type ProductClusterInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
-  | "NOT_IN_INVENTORY"
-  | (string & {});
+  | "NOT_IN_INVENTORY";
 export const ProductClusterInventoryStatusEnum = /*@__PURE__*/ S.String;
 
 /** Product cluster fields. A product cluster is a grouping for different offers that represent the same product. Values are only set for fields requested explicitly in the request's search query. */
@@ -10677,8 +10623,7 @@ export type PriceInsightsEffectivenessEnum =
   | "EFFECTIVENESS_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const PriceInsightsEffectivenessEnum = /*@__PURE__*/ S.String;
 
 /** Price insights fields requested by the merchant in the query. Field values are only set if the merchant queries `PriceInsightsProductView`. https://support.google.com/merchants/answer/11916926 */
@@ -10754,7 +10699,7 @@ export const ReportRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportRow" }) as any as S.Schema<ReportRow>;
 
-export type ReportRowList = ReportRow[];
+export type ReportRowList = ReadonlyArray<ReportRow>;
 export const ReportRowList = /*@__PURE__*/ S.Array(
   ReportRow,
 ) as any as S.Schema<ReportRowList>;
@@ -10954,7 +10899,7 @@ export const InputValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputValue" }) as any as S.Schema<InputValue>;
 
-export type InputValueList = InputValue[];
+export type InputValueList = ReadonlyArray<InputValue>;
 export const InputValueList = /*@__PURE__*/ S.Array(
   InputValue,
 ) as any as S.Schema<InputValueList>;
@@ -11320,8 +11265,7 @@ export const UpdateShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export type VerifyPhoneNumberRequestPhoneVerificationMethodEnum =
   | "PHONE_VERIFICATION_METHOD_UNSPECIFIED"
   | "SMS"
-  | "PHONE_CALL"
-  | (string & {});
+  | "PHONE_CALL";
 export const VerifyPhoneNumberRequestPhoneVerificationMethodEnum =
   /*@__PURE__*/ S.String;
 

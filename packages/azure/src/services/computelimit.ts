@@ -38,13 +38,14 @@ export const FeaturesDisableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeaturesDisableRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList = OperationStatusResult[];
+export type OperationStatusResultOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -66,7 +67,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -132,7 +133,8 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusResult>;
 
 /** The operations list. */
-export type FeaturesDisableResponseOperationsList = OperationStatusResult[];
+export type FeaturesDisableResponseOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const FeaturesDisableResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<FeaturesDisableResponseOperationsList>;
@@ -180,14 +182,15 @@ export interface FeaturesEnableRequest {
   location: string;
   /** The name of the Feature */
   featureName: string;
-  body?: unknown;
+  /** The Service Tree identifier associated with this feature action. */
+  serviceTreeId?: string;
 }
 export const FeaturesEnableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
     featureName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    serviceTreeId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -201,7 +204,8 @@ export const FeaturesEnableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeaturesEnableRequest>;
 
 /** The operations list. */
-export type FeaturesEnableResponseOperationsList = OperationStatusResult[];
+export type FeaturesEnableResponseOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const FeaturesEnableResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<FeaturesEnableResponseOperationsList>;
@@ -272,8 +276,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -281,8 +284,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -312,15 +314,14 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** The allowed states for a compute limit feature. */
-export type FeatureState = "Enabled" | "Disabled" | (string & {});
+export type FeatureState = "Enabled" | "Disabled";
 export const FeatureState = /*@__PURE__*/ S.String;
 
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -413,7 +414,7 @@ export const Feature = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Feature" }) as any as S.Schema<Feature>;
 
 /** The Feature items on this page */
-export type FeatureListResultValueList = Feature[];
+export type FeatureListResultValueList = ReadonlyArray<Feature>;
 export const FeatureListResultValueList = /*@__PURE__*/ S.Array(
   Feature,
 ) as any as S.Schema<FeatureListResultValueList>;
@@ -434,6 +435,14 @@ export const FeatureListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "FeatureListResult",
 }) as any as S.Schema<FeatureListResult>;
 
+/** Properties for guest subscription. */
+export interface GuestSubscriptionPropertiesInput {}
+export const GuestSubscriptionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "GuestSubscriptionPropertiesInput",
+}) as any as S.Schema<GuestSubscriptionPropertiesInput>;
+
 export interface GuestSubscriptionsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -441,14 +450,15 @@ export interface GuestSubscriptionsCreateRequest {
   location: string;
   /** The name of the GuestSubscription */
   guestSubscriptionId: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: GuestSubscriptionPropertiesInput;
 }
 export const GuestSubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
     guestSubscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(GuestSubscriptionPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -630,7 +640,8 @@ export const GuestSubscription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuestSubscription>;
 
 /** The GuestSubscription items on this page */
-export type GuestSubscriptionListResultValueList = GuestSubscription[];
+export type GuestSubscriptionListResultValueList =
+  ReadonlyArray<GuestSubscription>;
 export const GuestSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   GuestSubscription,
 ) as any as S.Schema<GuestSubscriptionListResultValueList>;
@@ -651,6 +662,19 @@ export const GuestSubscriptionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "GuestSubscriptionListResult",
 }) as any as S.Schema<GuestSubscriptionListResult>;
 
+/** Properties of a per-member cap override. */
+export interface MemberCapOverridePropertiesInput {
+  /** The cap value in count units for this member subscription. */
+  cap: number;
+}
+export const MemberCapOverridePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cap: S.Number,
+  }),
+).annotate({
+  identifier: "MemberCapOverridePropertiesInput",
+}) as any as S.Schema<MemberCapOverridePropertiesInput>;
+
 export interface MemberCapOverridesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -660,7 +684,8 @@ export interface MemberCapOverridesCreateOrUpdateRequest {
   vmFamilyName: string;
   /** The name of the MemberCapOverride */
   memberSubscriptionId: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: MemberCapOverridePropertiesInput;
 }
 export const MemberCapOverridesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -669,7 +694,7 @@ export const MemberCapOverridesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       location: S.String.pipe(T.Label()),
       vmFamilyName: S.String.pipe(T.Label()),
       memberSubscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(MemberCapOverridePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -864,7 +889,8 @@ export const MemberCapOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MemberCapOverride>;
 
 /** The MemberCapOverride items on this page */
-export type MemberCapOverrideListResultValueList = MemberCapOverride[];
+export type MemberCapOverrideListResultValueList =
+  ReadonlyArray<MemberCapOverride>;
 export const MemberCapOverrideListResultValueList = /*@__PURE__*/ S.Array(
   MemberCapOverride,
 ) as any as S.Schema<MemberCapOverrideListResultValueList>;
@@ -922,11 +948,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -953,7 +979,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -973,6 +999,22 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** Properties of a shared limit cap resource. */
+export interface SharedLimitCapPropertiesInput {
+  /** The default member cap value (in count units). Set to a non-negative integer to apply a cap to all member subscriptions that do not have a per-member override. Omit the property to leave no default cap in effect. */
+  defaultMemberCap?: number;
+  /** Controls whether the service validates the aggregate cap against the group limit for the VM family. SUM(caps) is the sum of all per-member overrides' cap values plus `defaultMemberCap` multiplied by the number of member subscriptions without an override. When true, the service rejects any configuration where SUM(caps) exceeds the group limit. When false, SUM(caps) is permitted to exceed the group limit. Enabling this flag is rejected if the current configuration already breaches the group limit; reduce caps first, then enable. */
+  isBoundedCap: boolean;
+}
+export const SharedLimitCapPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultMemberCap: S.optional(S.Number),
+    isBoundedCap: S.Boolean,
+  }),
+).annotate({
+  identifier: "SharedLimitCapPropertiesInput",
+}) as any as S.Schema<SharedLimitCapPropertiesInput>;
+
 export interface SharedLimitCapsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -980,7 +1022,8 @@ export interface SharedLimitCapsCreateOrUpdateRequest {
   location: string;
   /** The name of the SharedLimitCap */
   vmFamilyName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SharedLimitCapPropertiesInput;
 }
 export const SharedLimitCapsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -988,7 +1031,7 @@ export const SharedLimitCapsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
       vmFamilyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SharedLimitCapPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1175,7 +1218,7 @@ export const SharedLimitCap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharedLimitCap" }) as any as S.Schema<SharedLimitCap>;
 
 /** The SharedLimitCap items on this page */
-export type SharedLimitCapListResultValueList = SharedLimitCap[];
+export type SharedLimitCapListResultValueList = ReadonlyArray<SharedLimitCap>;
 export const SharedLimitCapListResultValueList = /*@__PURE__*/ S.Array(
   SharedLimitCap,
 ) as any as S.Schema<SharedLimitCapListResultValueList>;
@@ -1196,34 +1239,6 @@ export const SharedLimitCapListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharedLimitCapListResult",
 }) as any as S.Schema<SharedLimitCapListResult>;
 
-export interface SharedLimitCapsSetMemberCapOverridesRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure region. */
-  location: string;
-  /** The name of the SharedLimitCap */
-  vmFamilyName: string;
-  body: unknown;
-}
-export const SharedLimitCapsSetMemberCapOverridesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-      vmFamilyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/setMemberCapOverrides",
-        code: 200,
-        apiVersion: "2026-07-31",
-      }),
-    ),
-  ).annotate({
-    identifier: "SharedLimitCapsSetMemberCapOverridesRequest",
-  }) as any as S.Schema<SharedLimitCapsSetMemberCapOverridesRequest>;
-
 /** Per-member cap override. Pairs a member subscription with its cap value. */
 export interface MemberCap {
   /** The member subscription identifier this cap applies to. */
@@ -1238,8 +1253,47 @@ export const MemberCap = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemberCap" }) as any as S.Schema<MemberCap>;
 
+/** The full set of per-member cap overrides to persist for this resource. This call replaces the existing set entirely; supply an empty array (`[]`) to clear all overrides. */
+export type SharedLimitCapsSetMemberCapOverridesRequestMemberCapOverridesList =
+  ReadonlyArray<MemberCap>;
+export const SharedLimitCapsSetMemberCapOverridesRequestMemberCapOverridesList =
+  /*@__PURE__*/ S.Array(
+    MemberCap,
+  ) as any as S.Schema<SharedLimitCapsSetMemberCapOverridesRequestMemberCapOverridesList>;
+
+export interface SharedLimitCapsSetMemberCapOverridesRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure region. */
+  location: string;
+  /** The name of the SharedLimitCap */
+  vmFamilyName: string;
+  /** The full set of per-member cap overrides to persist for this resource. This call replaces the existing set entirely; supply an empty array (`[]`) to clear all overrides. */
+  memberCapOverrides: SharedLimitCapsSetMemberCapOverridesRequestMemberCapOverridesList;
+}
+export const SharedLimitCapsSetMemberCapOverridesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      location: S.String.pipe(T.Label()),
+      vmFamilyName: S.String.pipe(T.Label()),
+      memberCapOverrides:
+        SharedLimitCapsSetMemberCapOverridesRequestMemberCapOverridesList,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/sharedLimitCaps/{vmFamilyName}/setMemberCapOverrides",
+        code: 200,
+        apiVersion: "2026-07-31",
+      }),
+    ),
+  ).annotate({
+    identifier: "SharedLimitCapsSetMemberCapOverridesRequest",
+  }) as any as S.Schema<SharedLimitCapsSetMemberCapOverridesRequest>;
+
 /** The per-member cap overrides as persisted after the action completed. */
-export type SetMemberCapOverridesResultMemberCapOverridesList = MemberCap[];
+export type SetMemberCapOverridesResultMemberCapOverridesList =
+  ReadonlyArray<MemberCap>;
 export const SetMemberCapOverridesResultMemberCapOverridesList =
   /*@__PURE__*/ S.Array(
     MemberCap,
@@ -1258,6 +1312,14 @@ export const SetMemberCapOverridesResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetMemberCapOverridesResult",
 }) as any as S.Schema<SetMemberCapOverridesResult>;
 
+/** Properties of the compute shared limit. */
+export interface SharedLimitPropertiesInput {}
+export const SharedLimitPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SharedLimitPropertiesInput",
+}) as any as S.Schema<SharedLimitPropertiesInput>;
+
 export interface SharedLimitsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1265,14 +1327,15 @@ export interface SharedLimitsCreateRequest {
   location: string;
   /** The name of the SharedLimit */
   name: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SharedLimitPropertiesInput;
 }
 export const SharedLimitsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SharedLimitPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1475,7 +1538,7 @@ export const SharedLimit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharedLimit" }) as any as S.Schema<SharedLimit>;
 
 /** The SharedLimit items on this page */
-export type SharedLimitListResultValueList = SharedLimit[];
+export type SharedLimitListResultValueList = ReadonlyArray<SharedLimit>;
 export const SharedLimitListResultValueList = /*@__PURE__*/ S.Array(
   SharedLimit,
 ) as any as S.Schema<SharedLimitListResultValueList>;
@@ -1503,7 +1566,6 @@ export interface TrustedHostSubscriptionsCreateRequest {
   location: string;
   /** The name of the TrustedHostSubscription */
   hostSubscriptionId: string;
-  body: unknown;
 }
 export const TrustedHostSubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1511,7 +1573,6 @@ export const TrustedHostSubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
       hostSubscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1670,7 +1731,8 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 /** The TrustedHostSubscription items on this page */
-export type TrustedHostSubscriptionListResultValueList = Resource[];
+export type TrustedHostSubscriptionListResultValueList =
+  ReadonlyArray<Resource>;
 export const TrustedHostSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<TrustedHostSubscriptionListResultValueList>;
@@ -1808,7 +1870,7 @@ export const VmFamily = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmFamily" }) as any as S.Schema<VmFamily>;
 
 /** The VmFamily items on this page */
-export type VmFamilyListResultValueList = VmFamily[];
+export type VmFamilyListResultValueList = ReadonlyArray<VmFamily>;
 export const VmFamilyListResultValueList = /*@__PURE__*/ S.Array(
   VmFamily,
 ) as any as S.Schema<VmFamilyListResultValueList>;

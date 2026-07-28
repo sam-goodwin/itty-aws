@@ -220,7 +220,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.logs#UserBasic"
+          "target": "com.posthog.logs#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "updated_at": {
           "target": "smithy.api#String",
@@ -2564,24 +2567,6 @@
         }
       }
     },
-    "com.posthog.logs#LogsAlertsCreateRequestStateTimelineList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.logs#LogsAlertStateInterval"
-      },
-      "traits": {
-        "smithy.api#documentation": "Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list."
-      }
-    },
-    "com.posthog.logs#LogsAlertsCreateRequestDestinationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.logs#NotificationDestinationTypeEnum"
-      },
-      "traits": {
-        "smithy.api#documentation": "Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert."
-      }
-    },
     "com.posthog.logs#LogsAlertsCreateRequest": {
       "type": "structure",
       "members": {
@@ -2591,12 +2576,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier for this alert."
           }
         },
         "name": {
@@ -2635,18 +2614,6 @@
             "smithy.api#documentation": "Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60."
           }
         },
-        "check_interval_minutes": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "How often the alert is evaluated, in minutes. Server-managed."
-          }
-        },
-        "state": {
-          "target": "com.posthog.logs#LogsAlertConfigurationStateEnum",
-          "traits": {
-            "smithy.api#documentation": "Current alert state: not_firing, firing, pending_resolve, errored, or snoozed. Server-managed.\n\n* `not_firing` - Not firing\n* `firing` - Firing\n* `pending_resolve` - Pending resolve\n* `errored` - Errored\n* `snoozed` - Snoozed\n* `broken` - Broken"
-          }
-        },
         "evaluation_periods": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -2669,75 +2636,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "next_check_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the next evaluation is scheduled. Server-managed.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_notified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the last notification was sent. Server-managed.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_checked_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was last evaluated. Server-managed.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "consecutive_failures": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of consecutive evaluation failures. Resets on success. Server-managed."
-          }
-        },
-        "last_error_message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Error message from the most recent errored check, or null if the alert's most recent check was successful. Sourced from LogsAlertEvent without denormalization so retention-aware cleanup rules stay the only source of truth.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "state_timeline": {
-          "target": "com.posthog.logs#LogsAlertsCreateRequestStateTimelineList",
-          "traits": {
-            "smithy.api#documentation": "Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list."
-          }
-        },
-        "destination_types": {
-          "target": "com.posthog.logs#LogsAlertsCreateRequestDestinationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert."
-          }
-        },
-        "first_enabled_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was first enabled. Null means the alert is still in draft state.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was created."
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.logs#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was last modified.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -2821,24 +2719,6 @@
         }
       }
     },
-    "com.posthog.logs#LogsAlertsUpdateRequestStateTimelineList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.logs#LogsAlertStateInterval"
-      },
-      "traits": {
-        "smithy.api#documentation": "Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list."
-      }
-    },
-    "com.posthog.logs#LogsAlertsUpdateRequestDestinationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.logs#NotificationDestinationTypeEnum"
-      },
-      "traits": {
-        "smithy.api#documentation": "Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert."
-      }
-    },
     "com.posthog.logs#LogsAlertsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -2894,18 +2774,6 @@
             "smithy.api#documentation": "Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60."
           }
         },
-        "check_interval_minutes": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "How often the alert is evaluated, in minutes. Server-managed."
-          }
-        },
-        "state": {
-          "target": "com.posthog.logs#LogsAlertConfigurationStateEnum",
-          "traits": {
-            "smithy.api#documentation": "Current alert state: not_firing, firing, pending_resolve, errored, or snoozed. Server-managed.\n\n* `not_firing` - Not firing\n* `firing` - Firing\n* `pending_resolve` - Pending resolve\n* `errored` - Errored\n* `snoozed` - Snoozed\n* `broken` - Broken"
-          }
-        },
         "evaluation_periods": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -2928,75 +2796,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "next_check_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the next evaluation is scheduled. Server-managed.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_notified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the last notification was sent. Server-managed.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_checked_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was last evaluated. Server-managed.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "consecutive_failures": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of consecutive evaluation failures. Resets on success. Server-managed."
-          }
-        },
-        "last_error_message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Error message from the most recent errored check, or null if the alert's most recent check was successful. Sourced from LogsAlertEvent without denormalization so retention-aware cleanup rules stay the only source of truth.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "state_timeline": {
-          "target": "com.posthog.logs#LogsAlertsUpdateRequestStateTimelineList",
-          "traits": {
-            "smithy.api#documentation": "Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list."
-          }
-        },
-        "destination_types": {
-          "target": "com.posthog.logs#LogsAlertsUpdateRequestDestinationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert."
-          }
-        },
-        "first_enabled_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was first enabled. Null means the alert is still in draft state.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was created."
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.logs#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was last modified.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -3030,24 +2829,6 @@
           "uri": "/api/projects/{project_id}/logs/alerts/{id}/",
           "code": 200
         }
-      }
-    },
-    "com.posthog.logs#LogsAlertsPartialUpdateRequestStateTimelineList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.logs#LogsAlertStateInterval"
-      },
-      "traits": {
-        "smithy.api#documentation": "Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list."
-      }
-    },
-    "com.posthog.logs#LogsAlertsPartialUpdateRequestDestinationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.logs#NotificationDestinationTypeEnum"
-      },
-      "traits": {
-        "smithy.api#documentation": "Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert."
       }
     },
     "com.posthog.logs#LogsAlertsPartialUpdateRequest": {
@@ -3105,18 +2886,6 @@
             "smithy.api#documentation": "Time window in minutes over which log entries are counted. Allowed values: 5, 10, 15, 30, 60."
           }
         },
-        "check_interval_minutes": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "How often the alert is evaluated, in minutes. Server-managed."
-          }
-        },
-        "state": {
-          "target": "com.posthog.logs#LogsAlertConfigurationStateEnum",
-          "traits": {
-            "smithy.api#documentation": "Current alert state: not_firing, firing, pending_resolve, errored, or snoozed. Server-managed.\n\n* `not_firing` - Not firing\n* `firing` - Firing\n* `pending_resolve` - Pending resolve\n* `errored` - Errored\n* `snoozed` - Snoozed\n* `broken` - Broken"
-          }
-        },
         "evaluation_periods": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -3139,75 +2908,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "next_check_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the next evaluation is scheduled. Server-managed.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_notified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the last notification was sent. Server-managed.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_checked_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was last evaluated. Server-managed.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "consecutive_failures": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of consecutive evaluation failures. Resets on success. Server-managed."
-          }
-        },
-        "last_error_message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Error message from the most recent errored check, or null if the alert's most recent check was successful. Sourced from LogsAlertEvent without denormalization so retention-aware cleanup rules stay the only source of truth.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "state_timeline": {
-          "target": "com.posthog.logs#LogsAlertsPartialUpdateRequestStateTimelineList",
-          "traits": {
-            "smithy.api#documentation": "Continuous state intervals over the last 24h, ordered oldest-first. Each interval covers a span during which (state, enabled) was constant. Derived from LogsAlertEvent rows walked in chronological order; consecutive identical intervals are collapsed. Drives the 'Last 24h' status bar on the alert list."
-          }
-        },
-        "destination_types": {
-          "target": "com.posthog.logs#LogsAlertsPartialUpdateRequestDestinationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Notification destination types configured for this alert — e.g. 'slack', 'webhook'. Empty list means no notifications will fire. One or more destinations should be added after creating an alert."
-          }
-        },
-        "first_enabled_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was first enabled. Null means the alert is still in draft state.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was created."
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.logs#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the alert was last modified.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -4682,11 +4382,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.logs#LogsExportCreateResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.logs#LogsExportCreateResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.logs#LogsExportCreateResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -5226,11 +4936,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.logs#LogsHasLogsRetrieveResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.logs#LogsHasLogsRetrieveResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.logs#LogsHasLogsRetrieveResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -5455,13 +5175,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier for this metric rule.",
-            "smithy.api#required": {}
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -5499,32 +5212,6 @@
           "target": "com.posthog.logs#LogsMetricRulesCreateRequestGroupByList",
           "traits": {
             "smithy.api#documentation": "Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion."
-          }
-        },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Incremented on each update for worker cache coherency.",
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -5654,32 +5341,6 @@
           "traits": {
             "smithy.api#documentation": "Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion."
           }
-        },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Incremented on each update for worker cache coherency.",
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -5765,24 +5426,6 @@
           "target": "com.posthog.logs#LogsMetricRulesPartialUpdateRequestGroupByList",
           "traits": {
             "smithy.api#documentation": "Up to 5 dimension keys; each distinct value combination becomes its own metric series. Allowed: service_name, severity_text, event_name, or map keys prefixed with `attributes.` / `resource_attributes.`. Avoid high-cardinality keys (user IDs, request IDs) — excess series are dropped at ingestion."
-          }
-        },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Incremented on each update for worker cache coherency."
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -7016,13 +6659,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier for this sampling rule.",
-            "smithy.api#required": {}
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -7075,32 +6711,6 @@
           "traits": {
             "smithy.api#documentation": "Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.",
             "smithy.api#required": {}
-          }
-        },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Incremented on each update for worker cache coherency.",
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -7255,32 +6865,6 @@
             "smithy.api#documentation": "Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.",
             "smithy.api#required": {}
           }
-        },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Incremented on each update for worker cache coherency.",
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -7390,24 +6974,6 @@
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{\"type\":\"AND\",\"values\":[{\"type\":\"AND\",\"values\":[{\"key\":\"service.name\",\"operator\":\"exact\",\"value\":\"api\"}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes."
-          }
-        },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Incremented on each update for worker cache coherency."
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -8345,7 +7911,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.logs#UserBasic"
+          "target": "com.posthog.logs#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "updated_at": {
           "target": "smithy.api#String",
@@ -8520,12 +8089,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "short_id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
@@ -8544,18 +8107,6 @@
         },
         "pinned": {
           "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.logs#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -8656,9 +8207,6 @@
             "smithy.api#required": {}
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
@@ -8677,18 +8225,6 @@
         },
         "pinned": {
           "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.logs#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -8750,9 +8286,6 @@
             "smithy.api#required": {}
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
@@ -8771,18 +8304,6 @@
         },
         "pinned": {
           "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.logs#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {

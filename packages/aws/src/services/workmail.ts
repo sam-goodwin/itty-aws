@@ -402,14 +402,14 @@ export const CreateIdentityCenterApplicationResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateIdentityCenterApplicationResponse",
 }) as any as S.Schema<CreateIdentityCenterApplicationResponse>;
 export type ImpersonationRoleName = string;
-export type ImpersonationRoleType = "FULL_ACCESS" | "READ_ONLY" | (string & {});
+export type ImpersonationRoleType = "FULL_ACCESS" | "READ_ONLY";
 export const ImpersonationRoleType = /*@__PURE__*/ S.String;
 
 export type ImpersonationRoleDescription = string;
 export type ImpersonationRuleId = string;
 export type ImpersonationRuleName = string;
 export type ImpersonationRuleDescription = string;
-export type AccessEffect = "ALLOW" | "DENY" | (string & {});
+export type AccessEffect = "ALLOW" | "DENY";
 export const AccessEffect = /*@__PURE__*/ S.String;
 
 export type TargetUsers = string[];
@@ -468,7 +468,7 @@ export const CreateImpersonationRoleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateImpersonationRoleResponse>;
 export type MobileDeviceAccessRuleName = string;
 export type MobileDeviceAccessRuleDescription = string;
-export type MobileDeviceAccessRuleEffect = "ALLOW" | "DENY" | (string & {});
+export type MobileDeviceAccessRuleEffect = "ALLOW" | "DENY";
 export const MobileDeviceAccessRuleEffect = /*@__PURE__*/ S.String;
 
 export type DeviceType = string;
@@ -572,7 +572,7 @@ export const CreateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOrganizationResponse",
 }) as any as S.Schema<CreateOrganizationResponse>;
 export type ResourceName = string;
-export type ResourceType = "ROOM" | "EQUIPMENT" | (string & {});
+export type ResourceType = "ROOM" | "EQUIPMENT";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type ResourceDescription = string | redacted.Redacted<string>;
@@ -607,12 +607,7 @@ export const CreateResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResourceResponse>;
 export type UserName = string;
 export type UserAttribute = string | redacted.Redacted<string>;
-export type UserRole =
-  | "USER"
-  | "RESOURCE"
-  | "SYSTEM_USER"
-  | "REMOTE_USER"
-  | (string & {});
+export type UserRole = "USER" | "RESOURCE" | "SYSTEM_USER" | "REMOTE_USER";
 export const UserRole = /*@__PURE__*/ S.String;
 
 export type IdentityProviderUserId = string;
@@ -1033,7 +1028,7 @@ export const DescribeEntityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEntityRequest",
 }) as any as S.Schema<DescribeEntityRequest>;
-export type EntityType = "GROUP" | "USER" | "RESOURCE" | (string & {});
+export type EntityType = "GROUP" | "USER" | "RESOURCE";
 export const EntityType = /*@__PURE__*/ S.String;
 
 export interface DescribeEntityResponse {
@@ -1061,7 +1056,7 @@ export const DescribeGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeGroupRequest",
 }) as any as S.Schema<DescribeGroupRequest>;
-export type EntityState = "ENABLED" | "DISABLED" | "DELETED" | (string & {});
+export type EntityState = "ENABLED" | "DISABLED" | "DELETED";
 export const EntityState = /*@__PURE__*/ S.String;
 
 export interface DescribeGroupResponse {
@@ -1099,8 +1094,7 @@ export const DescribeIdentityProviderConfigurationRequest =
   }) as any as S.Schema<DescribeIdentityProviderConfigurationRequest>;
 export type IdentityProviderAuthenticationMode =
   | "IDENTITY_PROVIDER_ONLY"
-  | "IDENTITY_PROVIDER_AND_DIRECTORY"
-  | (string & {});
+  | "IDENTITY_PROVIDER_AND_DIRECTORY";
 export const IdentityProviderAuthenticationMode = /*@__PURE__*/ S.String;
 
 export interface IdentityCenterConfiguration {
@@ -1112,10 +1106,7 @@ export const IdentityCenterConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IdentityCenterConfiguration",
 }) as any as S.Schema<IdentityCenterConfiguration>;
-export type PersonalAccessTokenConfigurationStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type PersonalAccessTokenConfigurationStatus = "ACTIVE" | "INACTIVE";
 export const PersonalAccessTokenConfigurationStatus = /*@__PURE__*/ S.String;
 
 export type PersonalAccessTokenLifetimeInDays = number;
@@ -1185,8 +1176,7 @@ export type MailboxExportJobState =
   | "RUNNING"
   | "COMPLETED"
   | "FAILED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const MailboxExportJobState = /*@__PURE__*/ S.String;
 
 export type MailboxExportErrorInfo = string;
@@ -1455,7 +1445,7 @@ export const GetAccessControlEffectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccessControlEffectRequest",
 }) as any as S.Schema<GetAccessControlEffectRequest>;
-export type AccessControlRuleEffect = "ALLOW" | "DENY" | (string & {});
+export type AccessControlRuleEffect = "ALLOW" | "DENY";
 export const AccessControlRuleEffect = /*@__PURE__*/ S.String;
 
 export type AccessControlRuleNameList = string[];
@@ -1487,15 +1477,10 @@ export type FolderName =
   | "DELETED_ITEMS"
   | "SENT_ITEMS"
   | "DRAFTS"
-  | "JUNK_EMAIL"
-  | (string & {});
+  | "JUNK_EMAIL";
 export const FolderName = /*@__PURE__*/ S.String;
 
-export type RetentionAction =
-  | "NONE"
-  | "DELETE"
-  | "PERMANENTLY_DELETE"
-  | (string & {});
+export type RetentionAction = "NONE" | "DELETE" | "PERMANENTLY_DELETE";
 export const RetentionAction = /*@__PURE__*/ S.String;
 
 export type RetentionPeriod = number;
@@ -1660,11 +1645,7 @@ export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsRecord" }) as any as S.Schema<DnsRecord>;
 export type DnsRecords = DnsRecord[];
 export const DnsRecords = /*@__PURE__*/ S.Array(DnsRecord);
-export type DnsRecordVerificationStatus =
-  | "PENDING"
-  | "VERIFIED"
-  | "FAILED"
-  | (string & {});
+export type DnsRecordVerificationStatus = "PENDING" | "VERIFIED" | "FAILED";
 export const DnsRecordVerificationStatus = /*@__PURE__*/ S.String;
 
 export interface GetMailDomainResponse {
@@ -1925,7 +1906,7 @@ export const ListAvailabilityConfigurationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListAvailabilityConfigurationsRequest",
 }) as any as S.Schema<ListAvailabilityConfigurationsRequest>;
-export type AvailabilityProviderType = "EWS" | "LAMBDA" | (string & {});
+export type AvailabilityProviderType = "EWS" | "LAMBDA";
 export const AvailabilityProviderType = /*@__PURE__*/ S.String;
 
 export interface RedactedEwsAvailabilityProvider {
@@ -1995,7 +1976,7 @@ export const ListGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGroupMembersRequest",
 }) as any as S.Schema<ListGroupMembersRequest>;
-export type MemberType = "GROUP" | "USER" | (string & {});
+export type MemberType = "GROUP" | "USER";
 export const MemberType = /*@__PURE__*/ S.String;
 
 export interface Member {
@@ -2258,11 +2239,7 @@ export const ListMailboxPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMailboxPermissionsRequest",
 }) as any as S.Schema<ListMailboxPermissionsRequest>;
-export type PermissionType =
-  | "FULL_ACCESS"
-  | "SEND_AS"
-  | "SEND_ON_BEHALF"
-  | (string & {});
+export type PermissionType = "FULL_ACCESS" | "SEND_AS" | "SEND_ON_BEHALF";
 export const PermissionType = /*@__PURE__*/ S.String;
 
 export type PermissionValues = PermissionType[];

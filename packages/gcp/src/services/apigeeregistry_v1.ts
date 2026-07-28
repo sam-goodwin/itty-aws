@@ -572,8 +572,7 @@ export type InstanceStateEnum =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** An Instance represents the instance resources of the Registry. Currently, only one instance is allowed for each project. */
@@ -636,7 +635,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1092,7 +1091,7 @@ export const GetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetIamPolicyProjectsLocationsApisRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsApisRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -1134,7 +1133,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1653,7 +1652,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1704,7 +1703,7 @@ export const ListProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsApisRequest",
 }) as any as S.Schema<ListProjectsLocationsApisRequest>;
 
-export type ApiList = Api[];
+export type ApiList = ReadonlyArray<Api>;
 export const ApiList = /*@__PURE__*/ S.Array(Api) as any as S.Schema<ApiList>;
 
 /** Response message for ListApis. */
@@ -1754,7 +1753,7 @@ export const ListProjectsLocationsApisArtifactsRequest =
     identifier: "ListProjectsLocationsApisArtifactsRequest",
   }) as any as S.Schema<ListProjectsLocationsApisArtifactsRequest>;
 
-export type ArtifactList = Artifact[];
+export type ArtifactList = ReadonlyArray<Artifact>;
 export const ArtifactList = /*@__PURE__*/ S.Array(
   Artifact,
 ) as any as S.Schema<ArtifactList>;
@@ -1806,7 +1805,7 @@ export const ListProjectsLocationsApisDeploymentsRequest =
     identifier: "ListProjectsLocationsApisDeploymentsRequest",
   }) as any as S.Schema<ListProjectsLocationsApisDeploymentsRequest>;
 
-export type ApiDeploymentList = ApiDeployment[];
+export type ApiDeploymentList = ReadonlyArray<ApiDeployment>;
 export const ApiDeploymentList = /*@__PURE__*/ S.Array(
   ApiDeployment,
 ) as any as S.Schema<ApiDeploymentList>;
@@ -1889,7 +1888,7 @@ export const ListProjectsLocationsApisVersionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsApisVersionsRequest",
 }) as any as S.Schema<ListProjectsLocationsApisVersionsRequest>;
 
-export type ApiVersionList = ApiVersion[];
+export type ApiVersionList = ReadonlyArray<ApiVersion>;
 export const ApiVersionList = /*@__PURE__*/ S.Array(
   ApiVersion,
 ) as any as S.Schema<ApiVersionList>;
@@ -1972,7 +1971,7 @@ export const ListProjectsLocationsApisVersionsSpecsRequest =
     identifier: "ListProjectsLocationsApisVersionsSpecsRequest",
   }) as any as S.Schema<ListProjectsLocationsApisVersionsSpecsRequest>;
 
-export type ApiSpecList = ApiSpec[];
+export type ApiSpecList = ReadonlyArray<ApiSpec>;
 export const ApiSpecList = /*@__PURE__*/ S.Array(
   ApiSpec,
 ) as any as S.Schema<ApiSpecList>;
@@ -2083,7 +2082,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

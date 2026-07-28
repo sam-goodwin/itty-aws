@@ -45,9 +45,17 @@ export const UploadedMediaCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UploadedMediaCreateRequest",
 }) as any as S.Schema<UploadedMediaCreateRequest>;
 
-export type UploadedMediaCreateResponse = unknown;
+export type UploadedMediaCreateResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const UploadedMediaCreateResponseBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UploadedMediaCreateResponseBodyMap>;
+
+export type UploadedMediaCreateResponse = UploadedMediaCreateResponseBodyMap;
 export const UploadedMediaCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  UploadedMediaCreateResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UploadedMediaCreateResponse",
 }) as any as S.Schema<UploadedMediaCreateResponse>;

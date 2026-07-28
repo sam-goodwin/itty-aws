@@ -93,7 +93,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.data_color_themes#UserBasic"
+          "target": "com.posthog.data_color_themes#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {}
@@ -278,26 +281,11 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "colors": {
           "target": "smithy.api#Document"
-        },
-        "is_global": {
-          "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.data_color_themes#UserBasic"
         }
       },
       "traits": {
@@ -403,18 +391,6 @@
         },
         "colors": {
           "target": "smithy.api#Document"
-        },
-        "is_global": {
-          "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.data_color_themes#UserBasic"
         }
       },
       "traits": {
@@ -472,18 +448,6 @@
         },
         "colors": {
           "target": "smithy.api#Document"
-        },
-        "is_global": {
-          "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.data_color_themes#UserBasic"
         }
       },
       "traits": {

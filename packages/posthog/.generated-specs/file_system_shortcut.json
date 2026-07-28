@@ -167,9 +167,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "path": {
           "target": "smithy.api#String",
           "traits": {
@@ -200,16 +197,6 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Display order within the user's shortcut list, ascending."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -342,16 +329,6 @@
           "traits": {
             "smithy.api#documentation": "Display order within the user's shortcut list, ascending."
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -434,16 +411,6 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Display order within the user's shortcut list, ascending."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },

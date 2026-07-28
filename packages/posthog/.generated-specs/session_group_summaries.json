@@ -90,7 +90,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.session_group_summaries#UserBasic"
+          "target": "com.posthog.session_group_summaries#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {}
@@ -265,15 +268,6 @@
         "smithy.api#documentation": "API for retrieving and managing stored group session summaries."
       }
     },
-    "com.posthog.session_group_summaries#SessionGroupSummariesCreateRequestSessionIdsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "List of session replay IDs included in this group summary"
-      }
-    },
     "com.posthog.session_group_summaries#SessionGroupSummariesCreateRequest": {
       "type": "structure",
       "members": {
@@ -284,48 +278,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Title of the group session summary"
-          }
-        },
-        "session_ids": {
-          "target": "com.posthog.session_group_summaries#SessionGroupSummariesCreateRequestSessionIdsList",
-          "traits": {
-            "smithy.api#documentation": "List of session replay IDs included in this group summary"
-          }
-        },
-        "summary": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Group summary in JSON format (EnrichedSessionGroupSummaryPatternsList schema)"
-          }
-        },
-        "extra_summary_context": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Additional context passed to the summary (ExtraSummaryContext schema)"
-          }
-        },
-        "run_metadata": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Summary run metadata (SessionSummaryRunMeta schema)"
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.session_group_summaries#UserBasic"
-        },
-        "team": {
-          "target": "smithy.api#Integer"
         }
       },
       "traits": {
@@ -372,7 +324,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.session_group_summaries#UserBasic"
+          "target": "com.posthog.session_group_summaries#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "team": {
           "target": "smithy.api#Integer"
@@ -466,15 +421,6 @@
         "smithy.api#documentation": "API for retrieving and managing stored group session summaries."
       }
     },
-    "com.posthog.session_group_summaries#SessionGroupSummariesUpdateRequestSessionIdsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "List of session replay IDs included in this group summary"
-      }
-    },
     "com.posthog.session_group_summaries#SessionGroupSummariesUpdateRequest": {
       "type": "structure",
       "members": {
@@ -493,45 +439,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this session group summary."
           }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Title of the group session summary"
-          }
-        },
-        "session_ids": {
-          "target": "com.posthog.session_group_summaries#SessionGroupSummariesUpdateRequestSessionIdsList",
-          "traits": {
-            "smithy.api#documentation": "List of session replay IDs included in this group summary"
-          }
-        },
-        "summary": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Group summary in JSON format (EnrichedSessionGroupSummaryPatternsList schema)"
-          }
-        },
-        "extra_summary_context": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Additional context passed to the summary (ExtraSummaryContext schema)"
-          }
-        },
-        "run_metadata": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Summary run metadata (SessionSummaryRunMeta schema)"
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.session_group_summaries#UserBasic"
-        },
-        "team": {
-          "target": "smithy.api#Integer"
         }
       },
       "traits": {
@@ -566,15 +473,6 @@
         "smithy.api#documentation": "API for retrieving and managing stored group session summaries."
       }
     },
-    "com.posthog.session_group_summaries#SessionGroupSummariesPartialUpdateRequestSessionIdsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "List of session replay IDs included in this group summary"
-      }
-    },
     "com.posthog.session_group_summaries#SessionGroupSummariesPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -593,45 +491,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this session group summary."
           }
-        },
-        "title": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Title of the group session summary"
-          }
-        },
-        "session_ids": {
-          "target": "com.posthog.session_group_summaries#SessionGroupSummariesPartialUpdateRequestSessionIdsList",
-          "traits": {
-            "smithy.api#documentation": "List of session replay IDs included in this group summary"
-          }
-        },
-        "summary": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Group summary in JSON format (EnrichedSessionGroupSummaryPatternsList schema)"
-          }
-        },
-        "extra_summary_context": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Additional context passed to the summary (ExtraSummaryContext schema)"
-          }
-        },
-        "run_metadata": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Summary run metadata (SessionSummaryRunMeta schema)"
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.session_group_summaries#UserBasic"
-        },
-        "team": {
-          "target": "smithy.api#Integer"
         }
       },
       "traits": {

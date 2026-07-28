@@ -193,14 +193,27 @@ const enumMemberName = (value: string): string => {
 
 const MAX_SCHEMA_DEPTH = 40;
 
+/**
+ * Conversion direction: `"in"` for request-position schemas (drop
+ * `readOnly: true` members), `"out"` for response-position schemas (drop
+ * `writeOnly: true` members).
+ */
+type Dir = "in" | "out";
+
 interface Ctx {
   readonly spec: any;
   readonly version: "2.0" | "3.0" | "3.1";
   readonly ns: string;
   readonly shapes: Record<string, any>;
   readonly names: Set<string>;
-  /** `$ref` string → converted result (cycle-safe; mutated in place). */
+  /**
+   * Variant-keyed `$ref` cache (`"*:<ref>"` for direction-agnostic schemas,
+   * `"in:<ref>"`/`"out:<ref>"` for direction-sensitive ones) → converted
+   * result (cycle-safe; mutated in place).
+   */
   readonly refs: Map<string, { target: string; nullable: boolean }>;
+  /** Memo for {@link dirSensitive}: `"<dir>:<ref>"` → sensitivity. */
+  readonly dirSensitivity: Map<string, boolean>;
   readonly sensitivePatterns: readonly RegExp[];
 }
 
@@ -263,11 +276,17 @@ interface FlatObject {
   properties: Record<string, any>;
   required: Set<string>;
   isObject: boolean;
+  /** First `additionalProperties` schema seen (allOf-merged map bodies). */
+  additionalProperties?: any;
 }
 
 /**
  * Flatten a schema into a property bag: `$ref`s resolved, `allOf` merged
- * (properties + required unioned across resolved subschemas).
+ * (properties + required unioned across resolved subschemas). A
+ * `oneOf`/`anyOf` encountered INSIDE an `allOf` merges its branches'
+ * properties as OPTIONAL members — the loosest satisfiable reading of the
+ * intersection — rather than dropping them; a top-level union is left to
+ * the union conversion path.
  */
 const flattenObject = (ctx: Ctx, def: any, depth = 0): FlatObject => {
   const out: FlatObject = {
@@ -275,12 +294,25 @@ const flattenObject = (ctx: Ctx, def: any, depth = 0): FlatObject => {
     required: new Set(),
     isObject: false,
   };
-  const visit = (d: any, dep: number): void => {
+  const visit = (
+    d: any,
+    dep: number,
+    inAllOf: boolean,
+    inUnion: boolean,
+  ): void => {
     if (dep > MAX_SCHEMA_DEPTH) return;
     const r = deref(ctx, d);
     if (!r || typeof r !== "object") return;
     if (Array.isArray(r.allOf)) {
-      for (const sub of r.allOf) visit(sub, dep + 1);
+      for (const sub of r.allOf) visit(sub, dep + 1, true, inUnion);
+    }
+    if (inAllOf) {
+      const branches = r.oneOf ?? r.anyOf;
+      if (Array.isArray(branches)) {
+        for (const b of branches) {
+          if (!isNullBranch(ctx, b)) visit(b, dep + 1, inAllOf, true);
+        }
+      }
     }
     if (r.properties && typeof r.properties === "object") {
       out.isObject = true;
@@ -289,11 +321,18 @@ const flattenObject = (ctx: Ctx, def: any, depth = 0): FlatObject => {
       }
     }
     if (r.type === "object") out.isObject = true;
-    if (Array.isArray(r.required)) {
+    if (
+      out.additionalProperties === undefined &&
+      r.additionalProperties !== undefined &&
+      r.additionalProperties !== false
+    ) {
+      out.additionalProperties = r.additionalProperties;
+    }
+    if (!inUnion && Array.isArray(r.required)) {
       for (const k of r.required) out.required.add(k);
     }
   };
-  visit(def, depth);
+  visit(def, depth, false, false);
   return out;
 };
 
@@ -318,10 +357,77 @@ const isNullBranch = (ctx: Ctx, branch: any): boolean => {
 /** Intrinsic nullability flags on a schema node (not union null branches). */
 const ownNullable = (ctx: Ctx, def: any): boolean => {
   if (!def || typeof def !== "object") return false;
-  if (def.nullable === true && ctx.version === "3.0") return true;
+  // `nullable: true` is 3.0 vocabulary but appears in real 3.1 (and even
+  // 2.0) documents — honor it everywhere rather than silently dropping the
+  // null arm.
+  if (def.nullable === true) return true;
   if (def["x-nullable"] === true) return true;
   if (Array.isArray(def.type) && def.type.includes("null")) return true;
   return false;
+};
+
+/**
+ * Whether a property schema is excluded from the given direction:
+ * `readOnly: true` properties never appear in requests, `writeOnly: true`
+ * properties never appear in responses. Checks the property node itself and
+ * its `$ref` resolution.
+ */
+const dirExcluded = (ctx: Ctx, prop: any, dir: Dir): boolean => {
+  const flag = dir === "in" ? "readOnly" : "writeOnly";
+  if (prop && typeof prop === "object" && prop[flag] === true) return true;
+  const r = deref(ctx, prop);
+  return !!r && typeof r === "object" && r[flag] === true;
+};
+
+/**
+ * Whether a schema subtree is direction-sensitive — contains
+ * `readOnly: true` (request direction) or `writeOnly: true` (response
+ * direction) anywhere, following local `$ref`s. Direction-sensitive named
+ * components convert to separate request/response shape variants
+ * (`<Name>Input`/`<Name>Output`); everything else is shared.
+ */
+const dirSensitive = (ctx: Ctx, def: any, dir: Dir): boolean => {
+  const flag = dir === "in" ? "readOnly" : "writeOnly";
+  const seenRefs = new Set<string>();
+  // Memoizing `false` is only sound when the walk below a ref completed
+  // without skipping an already-seen ref (a skip means the result may
+  // depend on a node whose evaluation is still in progress).
+  let skips = 0;
+  const visit = (d: any, dep: number): boolean => {
+    if (dep > MAX_SCHEMA_DEPTH || !d || typeof d !== "object") return false;
+    if (typeof d.$ref === "string") {
+      const memoKey = `${dir}:${d.$ref}`;
+      const memo = ctx.dirSensitivity.get(memoKey);
+      if (memo !== undefined) return memo;
+      if (seenRefs.has(d.$ref)) {
+        skips++;
+        return false;
+      }
+      seenRefs.add(d.$ref);
+      const before = skips;
+      const res = visit(resolvePointer(ctx.spec, d.$ref), dep + 1);
+      if (res || skips === before) ctx.dirSensitivity.set(memoKey, res);
+      return res;
+    }
+    if (d[flag] === true) return true;
+    const subs = [
+      ...(Array.isArray(d.allOf) ? d.allOf : []),
+      ...(Array.isArray(d.oneOf) ? d.oneOf : []),
+      ...(Array.isArray(d.anyOf) ? d.anyOf : []),
+      ...(d.properties && typeof d.properties === "object"
+        ? Object.values(d.properties)
+        : []),
+      ...(d.items ? [d.items] : []),
+      ...(d.additionalProperties && typeof d.additionalProperties === "object"
+        ? [d.additionalProperties]
+        : []),
+    ];
+    for (const sub of subs) {
+      if (visit(sub, dep + 1)) return true;
+    }
+    return false;
+  };
+  return visit(def, 0);
 };
 
 /** Single non-array type from a possibly 3.1-style `type` value. */
@@ -348,9 +454,11 @@ const isNameable = (ctx: Ctx, def: any): boolean => {
   if (!def || typeof def !== "object") return false;
   if (def.$ref) return isNameable(ctx, deref(ctx, def));
   if (Array.isArray(def.enum)) {
+    const values = def.enum.filter((v: unknown) => v !== null);
     return (
-      def.enum.length > 0 &&
-      def.enum.every((v: unknown) => typeof v === "string")
+      values.length > 0 &&
+      (values.every((v: unknown) => typeof v === "string") ||
+        values.every((v: unknown) => typeof v === "number"))
     );
   }
   if (Array.isArray(def.allOf)) return true;
@@ -365,15 +473,18 @@ const isNameable = (ctx: Ctx, def: any): boolean => {
 };
 
 /**
- * Convert one schema to a shape target. `reservedId` names the top-level
- * shape when the caller pre-registered it (named `$ref` targets); otherwise
- * anonymous shapes synthesize names from `hint`.
+ * Convert one schema to a shape target. `dir` is the conversion direction
+ * (request vs response position — readOnly/writeOnly members are dropped
+ * accordingly). `reservedId` names the top-level shape when the caller
+ * pre-registered it (named `$ref` targets); otherwise anonymous shapes
+ * synthesize names from `hint`.
  */
 const convertSchema = (
   ctx: Ctx,
   def: any,
   hint: string,
   depth: number,
+  dir: Dir,
   reservedId?: string,
 ): Converted => {
   const emit = (shapeDef: any, base: string): string => {
@@ -398,29 +509,39 @@ const convertSchema = (
 
   // --- $ref → named (or cached inline) shape --------------------------------
   if (def.$ref) {
-    const cached = ctx.refs.get(def.$ref);
-    if (cached) return inline(cached.target, cached.nullable);
+    // Sibling nullability next to the $ref (common tool output even where
+    // the spec says siblings are ignored) survives onto the member.
+    const siteNullable = ownNullable(ctx, def);
+    // Direction-sensitive components (readOnly members in request position,
+    // writeOnly in response position) get per-direction variants; the rest
+    // share one shape across both directions.
+    const sensitive = dirSensitive(ctx, def, dir);
+    const cacheKey = sensitive ? `${dir}:${def.$ref}` : `*:${def.$ref}`;
+    const cached = ctx.refs.get(cacheKey);
+    if (cached) return inline(cached.target, cached.nullable || siteNullable);
     const resolved = resolvePointer(ctx.spec, def.$ref);
-    if (resolved === undefined) return inline(PRELUDE.Document, false);
-    const refName = String(def.$ref).split("/").pop() ?? "Shape";
+    if (resolved === undefined) return inline(PRELUDE.Document, siteNullable);
+    const refName =
+      (String(def.$ref).split("/").pop() ?? "Shape") +
+      (sensitive ? (dir === "in" ? "Input" : "Output") : "");
     if (!isNameable(ctx, resolved)) {
       // Scalars and aliases can't cycle — convert inline and cache.
       const entry: Converted = { target: PRELUDE.Document, nullable: false };
-      ctx.refs.set(def.$ref, entry);
-      const r = convertSchema(ctx, resolved, pascal(refName), depth + 1);
+      ctx.refs.set(cacheKey, entry);
+      const r = convertSchema(ctx, resolved, pascal(refName), depth + 1, dir);
       entry.target = r.target;
       entry.nullable = r.nullable;
-      return inline(r.target, r.nullable);
+      return inline(r.target, r.nullable || siteNullable);
     }
     // Reserve the component name before converting so cycles resolve.
     const id = `${ctx.ns}#${uniqueName(ctx, refName)}`;
     const entry: Converted = { target: id, nullable: false };
-    ctx.refs.set(def.$ref, entry);
+    ctx.refs.set(cacheKey, entry);
     ctx.shapes[id] = { type: "structure", members: {} }; // placeholder
-    const r = convertSchema(ctx, resolved, pascal(refName), depth + 1, id);
+    const r = convertSchema(ctx, resolved, pascal(refName), depth + 1, dir, id);
     entry.target = r.target;
     entry.nullable = r.nullable;
-    return inline(r.target, r.nullable);
+    return inline(r.target, r.nullable || siteNullable);
   }
 
   let nullable = ownNullable(ctx, def);
@@ -437,7 +558,7 @@ const convertSchema = (
     }
     if (real.length === 0) return inline(PRELUDE.Document, nullable);
     if (real.length === 1) {
-      const r = convertSchema(ctx, real[0], hint, depth + 1, reservedId);
+      const r = convertSchema(ctx, real[0], hint, depth + 1, dir, reservedId);
       return { target: r.target, nullable: nullable || r.nullable };
     }
     // Distinct branches → a union shape. Members are synthesized case names;
@@ -449,7 +570,7 @@ const convertSchema = (
         typeof b?.$ref === "string"
           ? pascal(String(b.$ref).split("/").pop() ?? `Case${i}`)
           : `Case${i}`;
-      const r = convertSchema(ctx, b, `${hint}${branchName}`, depth + 1);
+      const r = convertSchema(ctx, b, `${hint}${branchName}`, depth + 1, dir);
       if (seenTargets.has(r.target)) return;
       seenTargets.add(r.target);
       let mn = memberIdent(branchName);
@@ -472,12 +593,32 @@ const convertSchema = (
     // Single-entry allOf over a $ref: passthrough (v0 semantics), carrying
     // the parent's nullability/description.
     if (def.allOf.length === 1 && !def.properties) {
-      const r = convertSchema(ctx, def.allOf[0], hint, depth + 1, reservedId);
+      const r = convertSchema(
+        ctx,
+        def.allOf[0],
+        hint,
+        depth + 1,
+        dir,
+        reservedId,
+      );
       return { target: r.target, nullable: nullable || r.nullable };
     }
     const flat = flattenObject(ctx, def, depth);
-    if (!flat.isObject && Object.keys(flat.properties).length === 0) {
-      return inline(PRELUDE.Document, nullable);
+    if (Object.keys(flat.properties).length === 0) {
+      // A property-less intersection of map schemas is a map, not an empty
+      // struct.
+      if (flat.additionalProperties !== undefined) {
+        const r = convertSchema(
+          ctx,
+          { type: "object", additionalProperties: flat.additionalProperties },
+          hint,
+          depth + 1,
+          dir,
+          reservedId,
+        );
+        return { target: r.target, nullable: nullable || r.nullable };
+      }
+      if (!flat.isObject) return inline(PRELUDE.Document, nullable);
     }
     const members = buildMembers(
       ctx,
@@ -485,6 +626,7 @@ const convertSchema = (
       flat.required,
       hint,
       depth + 1,
+      dir,
     );
     return {
       target: emit({ type: "structure", members, traits: docTraits }, hint),
@@ -515,9 +657,25 @@ const convertSchema = (
         nullable,
       };
     }
-    // Numeric / boolean / mixed enums degrade to their scalar baseline.
+    // Numeric enums → intEnum shapes (closed numeric literal unions in the
+    // generated TS; the schema stays a plain number).
     if (values.every((v: unknown) => typeof v === "number")) {
-      return inline(PRELUDE.Double, nullable);
+      const members: Record<string, any> = {};
+      const used = new Set<string>();
+      for (const lit of values as number[]) {
+        let mn = enumMemberName(String(lit));
+        let k = 2;
+        while (used.has(mn)) mn = `${enumMemberName(String(lit))}_${k++}`;
+        used.add(mn);
+        members[mn] = {
+          target: PRELUDE.Unit,
+          traits: { "smithy.api#enumValue": lit },
+        };
+      }
+      return {
+        target: emit({ type: "intEnum", members, traits: docTraits }, hint),
+        nullable,
+      };
     }
     if (values.every((v: unknown) => typeof v === "boolean")) {
       return inline(PRELUDE.Boolean, nullable);
@@ -529,7 +687,7 @@ const convertSchema = (
 
   // --- array ----------------------------------------------------------------
   if (t === "array") {
-    const item = convertSchema(ctx, def.items, `${hint}Item`, depth + 1);
+    const item = convertSchema(ctx, def.items, `${hint}Item`, depth + 1, dir);
     return {
       target: emit(
         { type: "list", member: { target: item.target }, traits: docTraits },
@@ -551,6 +709,7 @@ const convertSchema = (
         required,
         hint,
         depth + 1,
+        dir,
       );
       return {
         target: emit({ type: "structure", members, traits: docTraits }, hint),
@@ -562,7 +721,7 @@ const convertSchema = (
       const value =
         ap === true || (typeof ap === "object" && Object.keys(ap).length === 0)
           ? { target: PRELUDE.Document, nullable: false }
-          : convertSchema(ctx, ap, `${hint}Value`, depth + 1);
+          : convertSchema(ctx, ap, `${hint}Value`, depth + 1, dir);
       return {
         target: emit(
           {
@@ -606,20 +765,26 @@ const isSensitiveProperty = (ctx: Ctx, name: string, def: any): boolean => {
   return ctx.sensitivePatterns.some((p) => p.test(name));
 };
 
-/** Build a structure's members from an OpenAPI property map. */
+/**
+ * Build a structure's members from an OpenAPI property map. Direction-
+ * excluded properties (`readOnly` in requests, `writeOnly` in responses)
+ * are dropped — along with any response-side `required` they carried.
+ */
 const buildMembers = (
   ctx: Ctx,
   properties: Record<string, any>,
   required: ReadonlySet<string>,
   hint: string,
   depth: number,
+  dir: Dir,
 ): Record<string, any> => {
   const members: Record<string, any> = {};
   for (const [name, prop] of Object.entries(properties)) {
+    if (dirExcluded(ctx, prop, dir)) continue;
     let mn = memberIdent(name);
     let k = 2;
     while (mn in members) mn = `${memberIdent(name)}_${k++}`;
-    const conv = convertSchema(ctx, prop, `${hint}${pascal(name)}`, depth);
+    const conv = convertSchema(ctx, prop, `${hint}${pascal(name)}`, depth, dir);
     const traits: Record<string, any> = {};
     const doc =
       prop && typeof prop === "object" && typeof prop.description === "string"
@@ -658,15 +823,20 @@ const normalizeParam = (ctx: Ctx, raw: any): Param | undefined => {
   if (!p || typeof p !== "object" || typeof p.name !== "string") {
     return undefined;
   }
+  // Swagger 2.0: `in: body` parameters carry their (usually `$ref`'d)
+  // schema under `schema`; all other locations describe the type inline on
+  // the parameter itself.
   const schema =
     ctx.version === "2.0"
-      ? {
-          type: p.type,
-          enum: p.enum,
-          items: p.items,
-          format: p.format,
-          "x-nullable": p["x-nullable"],
-        }
+      ? p.in === "body"
+        ? (p.schema ?? {})
+        : {
+            type: p.type,
+            enum: p.enum,
+            items: p.items,
+            format: p.format,
+            "x-nullable": p["x-nullable"],
+          }
       : (p.schema ?? { type: "string" });
   return {
     in: p.in,
@@ -710,7 +880,7 @@ const labelTarget = (ctx: Ctx, schema: any, hint: string): string => {
     r.enum.length > 0 &&
     r.enum.every((v: unknown) => typeof v === "string")
   ) {
-    return convertSchema(ctx, r, hint, 0).target;
+    return convertSchema(ctx, r, hint, 0, "in").target;
   }
   switch (typeOf(r)) {
     case "integer":
@@ -879,6 +1049,7 @@ export const convertOpenApiToSmithy = (
     shapes: {},
     names: new Set(),
     refs: new Map(),
+    dirSensitivity: new Map(),
     sensitivePatterns: options.sensitivePatterns ?? SENSITIVE_FIELD_PATTERNS,
   };
   const statusToErrorClass =
@@ -954,6 +1125,7 @@ export const convertOpenApiToSmithy = (
           p.schema,
           `${opName}Request${pascal(p.name)}`,
           0,
+          "in",
         );
         addMember(san, {
           target: conv.target,
@@ -1000,25 +1172,33 @@ export const convertOpenApiToSmithy = (
             flat.required,
             `${opName}Request`,
             0,
+            "in",
           );
           for (const [mn, m] of Object.entries(bodyMembers)) {
             addMember(mn, m); // labels win, then query, then body
           }
-        } else if (!flat.isObject) {
-          // Non-object body (bare array/scalar) → sole `body` member sent as
-          // the entire request body (`smithy.api#httpPayload`).
+        } else {
+          // Non-flattenable body (bare array/scalar/map/union) → sole TYPED
+          // `body` member sent as the entire request body
+          // (`smithy.api#httpPayload`). A schema-less JSON body (empty or
+          // bare-object schema → Document) gets NO body member at all — the
+          // runtime's unknown-key passthrough is the escape hatch, and an
+          // opaque `body: unknown` payload member would swallow the typed
+          // surface.
           const conv = convertSchema(
             ctx,
             bodySchema,
             `${opName}RequestBody`,
             0,
+            "in",
           );
-          if (conv.target !== PRELUDE.Document || deref(ctx, bodySchema)) {
+          if (conv.target !== PRELUDE.Document) {
             addMember("body", {
               target: conv.target,
               traits: {
                 "smithy.api#httpPayload": {},
                 ...(bodyRequired ? { "smithy.api#required": {} } : {}),
+                ...(conv.nullable ? { [NULLABLE_TRAIT]: {} } : {}),
               },
             });
           }
@@ -1048,7 +1228,13 @@ export const convertOpenApiToSmithy = (
             isNameable(ctx, resolved);
           if (isPlainRef) {
             // Reuse the named component shape as the output directly.
-            outputTarget = convertSchema(ctx, respSchema, opName, 0).target;
+            outputTarget = convertSchema(
+              ctx,
+              respSchema,
+              opName,
+              0,
+              "out",
+            ).target;
           } else {
             outputTarget = addShape(ctx, `${opName}Response`, {
               type: "structure",
@@ -1058,20 +1244,23 @@ export const convertOpenApiToSmithy = (
                 flat.required,
                 `${opName}Response`,
                 0,
+                "out",
               ),
               traits: { "smithy.api#output": {} },
             });
           }
-        } else if (!flat.isObject) {
+        } else {
+          // Non-flattenable response (bare array/scalar/map/union, or an
+          // opaque object) → wrapper whose sole TYPED member IS the payload;
+          // the SdkSpec's rootPipe collapses the wrapper.
           const conv = convertSchema(
             ctx,
             respSchema,
             `${opName}ResponseBody`,
             0,
+            "out",
           );
           if (conv.target !== PRELUDE.Document || deref(ctx, respSchema)) {
-            // Bare array/scalar response → wrapper whose sole member IS the
-            // payload; the SdkSpec's rootPipe collapses the wrapper.
             outputTarget = addShape(ctx, `${opName}Response`, {
               type: "structure",
               members: {
@@ -1080,30 +1269,13 @@ export const convertOpenApiToSmithy = (
                   traits: {
                     [RAW_RESPONSE_TRAIT]: {},
                     "smithy.api#required": {},
+                    ...(conv.nullable ? { [NULLABLE_TRAIT]: {} } : {}),
                   },
                 },
               },
               traits: { "smithy.api#output": {} },
             });
           }
-        }
-        // flat.isObject with no properties → opaque object; Unit is wrong,
-        // Document-typed raw wrapper is closer:
-        if (
-          outputTarget === PRELUDE.Unit &&
-          flat.isObject &&
-          Object.keys(flat.properties).length === 0
-        ) {
-          outputTarget = addShape(ctx, `${opName}Response`, {
-            type: "structure",
-            members: {
-              body: {
-                target: PRELUDE.Document,
-                traits: { [RAW_RESPONSE_TRAIT]: {}, "smithy.api#required": {} },
-              },
-            },
-            traits: { "smithy.api#output": {} },
-          });
         }
       }
 

@@ -15,46 +15,12 @@ export type { AzureOpError, AzureOpContext };
 export type EndpointsCreateOrUpdateRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
-  | "NestedEndpoints"
-  | (string & {});
+  | "NestedEndpoints";
 export const EndpointsCreateOrUpdateRequestEndpointType =
   /*@__PURE__*/ S.String;
 
-export interface EndpointsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Traffic Manager profile. */
-  profileName: string;
-  /** The type of the Traffic Manager endpoint. */
-  endpointType: EndpointsCreateOrUpdateRequestEndpointType;
-  /** The name of the Traffic Manager endpoint. */
-  endpointName: string;
-  body: unknown;
-}
-export const EndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointType: EndpointsCreateOrUpdateRequestEndpointType.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
-      code: 200,
-      apiVersion: "2022-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "EndpointsCreateOrUpdateRequest",
-}) as any as S.Schema<EndpointsCreateOrUpdateRequest>;
-
 /** The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method. */
-export type EndpointStatus = "Enabled" | "Disabled" | (string & {});
+export type EndpointStatus = "Enabled" | "Disabled";
 export const EndpointStatus = /*@__PURE__*/ S.String;
 
 /** The monitoring status of the endpoint. */
@@ -65,12 +31,11 @@ export type EndpointMonitorStatus =
   | "Disabled"
   | "Inactive"
   | "Stopped"
-  | "Unmonitored"
-  | (string & {});
+  | "Unmonitored";
 export const EndpointMonitorStatus = /*@__PURE__*/ S.String;
 
 /** The list of countries/regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager Geographic documentation for a full list of accepted values. */
-export type EndpointPropertiesGeoMappingList = string[];
+export type EndpointPropertiesGeoMappingList = ReadonlyArray<string>;
 export const EndpointPropertiesGeoMappingList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EndpointPropertiesGeoMappingList>;
@@ -95,7 +60,8 @@ export const EndpointPropertiesSubnetsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointPropertiesSubnetsItem>;
 
 /** The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints. */
-export type EndpointPropertiesSubnetsList = EndpointPropertiesSubnetsItem[];
+export type EndpointPropertiesSubnetsList =
+  ReadonlyArray<EndpointPropertiesSubnetsItem>;
 export const EndpointPropertiesSubnetsList = /*@__PURE__*/ S.Array(
   EndpointPropertiesSubnetsItem,
 ) as any as S.Schema<EndpointPropertiesSubnetsList>;
@@ -118,13 +84,13 @@ export const EndpointPropertiesCustomHeadersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom headers. */
 export type EndpointPropertiesCustomHeadersList =
-  EndpointPropertiesCustomHeadersItem[];
+  ReadonlyArray<EndpointPropertiesCustomHeadersItem>;
 export const EndpointPropertiesCustomHeadersList = /*@__PURE__*/ S.Array(
   EndpointPropertiesCustomHeadersItem,
 ) as any as S.Schema<EndpointPropertiesCustomHeadersList>;
 
 /** If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method. */
-export type AlwaysServe = "Enabled" | "Disabled" | (string & {});
+export type AlwaysServe = "Enabled" | "Disabled";
 export const AlwaysServe = /*@__PURE__*/ S.String;
 
 /** Class representing a Traffic Manager endpoint properties. */
@@ -179,6 +145,49 @@ export const EndpointProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointProperties",
 }) as any as S.Schema<EndpointProperties>;
 
+export interface EndpointsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Traffic Manager profile. */
+  profileName: string;
+  /** The type of the Traffic Manager endpoint. */
+  endpointType: EndpointsCreateOrUpdateRequestEndpointType;
+  /** The name of the Traffic Manager endpoint. */
+  endpointName: string;
+  /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles. */
+  type?: string;
+  /** The properties of the Traffic Manager endpoint. */
+  properties?: EndpointProperties;
+}
+export const EndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointType: EndpointsCreateOrUpdateRequestEndpointType.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(EndpointProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}/{endpointType}/{endpointName}",
+      code: 200,
+      apiVersion: "2022-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "EndpointsCreateOrUpdateRequest",
+}) as any as S.Schema<EndpointsCreateOrUpdateRequest>;
+
 export interface EndpointsCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
   id?: string;
@@ -203,8 +212,7 @@ export const EndpointsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type EndpointsDeleteRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
-  | "NestedEndpoints"
-  | (string & {});
+  | "NestedEndpoints";
 export const EndpointsDeleteRequestEndpointType = /*@__PURE__*/ S.String;
 
 export interface EndpointsDeleteRequest {
@@ -254,8 +262,7 @@ export const DeleteOperationResult = /*@__PURE__*/ S.suspend(() =>
 export type EndpointsGetRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
-  | "NestedEndpoints"
-  | (string & {});
+  | "NestedEndpoints";
 export const EndpointsGetRequestEndpointType = /*@__PURE__*/ S.String;
 
 export interface EndpointsGetRequest {
@@ -313,8 +320,7 @@ export const EndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type EndpointsUpdateRequestEndpointType =
   | "AzureEndpoints"
   | "ExternalEndpoints"
-  | "NestedEndpoints"
-  | (string & {});
+  | "NestedEndpoints";
 export const EndpointsUpdateRequestEndpointType = /*@__PURE__*/ S.String;
 
 export interface EndpointsUpdateRequest {
@@ -328,7 +334,14 @@ export interface EndpointsUpdateRequest {
   endpointType: EndpointsUpdateRequestEndpointType;
   /** The name of the Traffic Manager endpoint. */
   endpointName: string;
-  body: unknown;
+  /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles. */
+  type?: string;
+  /** The properties of the Traffic Manager endpoint. */
+  properties?: EndpointProperties;
 }
 export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -337,7 +350,10 @@ export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     profileName: S.String.pipe(T.Label()),
     endpointType: EndpointsUpdateRequestEndpointType.pipe(T.Label()),
     endpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(EndpointProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -387,7 +403,7 @@ export const GeographicHierarchiesGetDefaultRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GeographicHierarchiesGetDefaultRequest>;
 
 /** The list of Regions grouped under this Region in the Geographic Hierarchy. */
-export type RegionRegionsList = Region[];
+export type RegionRegionsList = ReadonlyArray<Region>;
 export const RegionRegionsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Region),
 ) as any as S.Schema<RegionRegionsList>;
@@ -444,15 +460,15 @@ export const GeographicHierarchiesGetDefaultResponse = /*@__PURE__*/ S.suspend(
   identifier: "GeographicHierarchiesGetDefaultResponse",
 }) as any as S.Schema<GeographicHierarchiesGetDefaultResponse>;
 
-export type HeatMapGetRequestHeatMapType = "default" | (string & {});
+export type HeatMapGetRequestHeatMapType = "default";
 export const HeatMapGetRequestHeatMapType = /*@__PURE__*/ S.String;
 
-export type HeatMapGetRequestTopLeftList = number[];
+export type HeatMapGetRequestTopLeftList = ReadonlyArray<number>;
 export const HeatMapGetRequestTopLeftList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<HeatMapGetRequestTopLeftList>;
 
-export type HeatMapGetRequestBotRightList = number[];
+export type HeatMapGetRequestBotRightList = ReadonlyArray<number>;
 export const HeatMapGetRequestBotRightList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<HeatMapGetRequestBotRightList>;
@@ -508,7 +524,7 @@ export const HeatMapEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HeatMapEndpoint>;
 
 /** The endpoints used in this HeatMap calculation. */
-export type HeatMapPropertiesEndpointsList = HeatMapEndpoint[];
+export type HeatMapPropertiesEndpointsList = ReadonlyArray<HeatMapEndpoint>;
 export const HeatMapPropertiesEndpointsList = /*@__PURE__*/ S.Array(
   HeatMapEndpoint,
 ) as any as S.Schema<HeatMapPropertiesEndpointsList>;
@@ -533,7 +549,7 @@ export const QueryExperience = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryExperience>;
 
 /** The query experiences produced in this HeatMap calculation. */
-export type TrafficFlowQueryExperiencesList = QueryExperience[];
+export type TrafficFlowQueryExperiencesList = ReadonlyArray<QueryExperience>;
 export const TrafficFlowQueryExperiencesList = /*@__PURE__*/ S.Array(
   QueryExperience,
 ) as any as S.Schema<TrafficFlowQueryExperiencesList>;
@@ -559,7 +575,7 @@ export const TrafficFlow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrafficFlow" }) as any as S.Schema<TrafficFlow>;
 
 /** The traffic flows produced in this HeatMap calculation. */
-export type HeatMapPropertiesTrafficFlowsList = TrafficFlow[];
+export type HeatMapPropertiesTrafficFlowsList = ReadonlyArray<TrafficFlow>;
 export const HeatMapPropertiesTrafficFlowsList = /*@__PURE__*/ S.Array(
   TrafficFlow,
 ) as any as S.Schema<HeatMapPropertiesTrafficFlowsList>;
@@ -610,13 +626,17 @@ export const HeatMapGetResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ProfilesCheckTrafficManagerNameAvailabilityV2Request {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body: unknown;
+  /** The name of the resource. */
+  name?: string;
+  /** The type of the resource. */
+  type?: string;
 }
 export const ProfilesCheckTrafficManagerNameAvailabilityV2Request =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -655,12 +675,16 @@ export const TrafficManagerNameAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrafficManagerNameAvailability>;
 
 export interface ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityRequest {
-  body: unknown;
+  /** The name of the resource. */
+  name?: string;
+  /** The type of the resource. */
+  type?: string;
 }
 export const ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -673,44 +697,17 @@ export const ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityRequest =
     identifier: "ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityRequest",
   }) as any as S.Schema<ProfilesCheckTrafficManagerRelativeDnsNameAvailabilityRequest>;
 
-export interface ProfilesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Traffic Manager profile. */
-  profileName: string;
-  body: unknown;
-}
-export const ProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
-      code: 200,
-      apiVersion: "2022-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesCreateOrUpdateRequest",
-}) as any as S.Schema<ProfilesCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type ProfilesCreateOrUpdateResponseTagsMap = {
+export type ProfilesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ProfilesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const ProfilesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<ProfilesCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<ProfilesCreateOrUpdateRequestTagsMap>;
 
 /** The status of the Traffic Manager profile. */
-export type ProfileStatus = "Enabled" | "Disabled" | (string & {});
+export type ProfileStatus = "Enabled" | "Disabled";
 export const ProfileStatus = /*@__PURE__*/ S.String;
 
 /** The traffic routing method of the Traffic Manager profile. */
@@ -720,26 +717,22 @@ export type TrafficRoutingMethod =
   | "Weighted"
   | "Geographic"
   | "MultiValue"
-  | "Subnet"
-  | (string & {});
+  | "Subnet";
 export const TrafficRoutingMethod = /*@__PURE__*/ S.String;
 
 /** Class containing DNS settings in a Traffic Manager profile. */
-export interface DnsConfig {
+export interface DnsConfigInput {
   /** The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile. */
   relativeName?: string;
-  /** The fully-qualified domain name (FQDN) of the Traffic Manager profile. This is formed from the concatenation of the RelativeName with the DNS domain used by Azure Traffic Manager. */
-  fqdn?: string;
   /** The DNS Time-To-Live (TTL), in seconds. This informs the local DNS resolvers and DNS clients how long to cache DNS responses provided by this Traffic Manager profile. */
   ttl?: number;
 }
-export const DnsConfig = /*@__PURE__*/ S.suspend(() =>
+export const DnsConfigInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relativeName: S.optional(S.String),
-    fqdn: S.optional(S.String),
     ttl: S.optional(S.Number),
   }),
-).annotate({ identifier: "DnsConfig" }) as any as S.Schema<DnsConfig>;
+).annotate({ identifier: "DnsConfigInput" }) as any as S.Schema<DnsConfigInput>;
 
 /** The profile-level monitoring status of the Traffic Manager profile. */
 export type ProfileMonitorStatus =
@@ -747,12 +740,11 @@ export type ProfileMonitorStatus =
   | "Online"
   | "Degraded"
   | "Disabled"
-  | "Inactive"
-  | (string & {});
+  | "Inactive";
 export const ProfileMonitorStatus = /*@__PURE__*/ S.String;
 
 /** The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health. */
-export type MonitorProtocol = "HTTP" | "HTTPS" | "TCP" | (string & {});
+export type MonitorProtocol = "HTTP" | "HTTPS" | "TCP";
 export const MonitorProtocol = /*@__PURE__*/ S.String;
 
 /** Custom header name and value. */
@@ -772,7 +764,8 @@ export const MonitorConfigCustomHeadersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorConfigCustomHeadersItem>;
 
 /** List of custom headers. */
-export type MonitorConfigCustomHeadersList = MonitorConfigCustomHeadersItem[];
+export type MonitorConfigCustomHeadersList =
+  ReadonlyArray<MonitorConfigCustomHeadersItem>;
 export const MonitorConfigCustomHeadersList = /*@__PURE__*/ S.Array(
   MonitorConfigCustomHeadersItem,
 ) as any as S.Schema<MonitorConfigCustomHeadersList>;
@@ -796,7 +789,7 @@ export const MonitorConfigExpectedStatusCodeRangesItem =
 
 /** List of expected status code ranges. */
 export type MonitorConfigExpectedStatusCodeRangesList =
-  MonitorConfigExpectedStatusCodeRangesItem[];
+  ReadonlyArray<MonitorConfigExpectedStatusCodeRangesItem>;
 export const MonitorConfigExpectedStatusCodeRangesList = /*@__PURE__*/ S.Array(
   MonitorConfigExpectedStatusCodeRangesItem,
 ) as any as S.Schema<MonitorConfigExpectedStatusCodeRangesList>;
@@ -859,16 +852,13 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
 /** The list of endpoints in the Traffic Manager profile. */
-export type ProfilePropertiesEndpointsList = Endpoint[];
-export const ProfilePropertiesEndpointsList = /*@__PURE__*/ S.Array(
+export type ProfilePropertiesInputEndpointsList = ReadonlyArray<Endpoint>;
+export const ProfilePropertiesInputEndpointsList = /*@__PURE__*/ S.Array(
   Endpoint,
-) as any as S.Schema<ProfilePropertiesEndpointsList>;
+) as any as S.Schema<ProfilePropertiesInputEndpointsList>;
 
 /** Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile. */
-export type TrafficViewEnrollmentStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type TrafficViewEnrollmentStatus = "Enabled" | "Disabled";
 export const TrafficViewEnrollmentStatus = /*@__PURE__*/ S.String;
 
 /** The allowed type DNS record types for this profile. */
@@ -876,13 +866,131 @@ export type AllowedEndpointRecordType =
   | "DomainName"
   | "IPv4Address"
   | "IPv6Address"
-  | "Any"
-  | (string & {});
+  | "Any";
 export const AllowedEndpointRecordType = /*@__PURE__*/ S.String;
 
 /** The list of allowed endpoint record types. */
+export type ProfilePropertiesInputAllowedEndpointRecordTypesList =
+  ReadonlyArray<AllowedEndpointRecordType>;
+export const ProfilePropertiesInputAllowedEndpointRecordTypesList =
+  /*@__PURE__*/ S.Array(
+    AllowedEndpointRecordType,
+  ) as any as S.Schema<ProfilePropertiesInputAllowedEndpointRecordTypesList>;
+
+/** Class representing the Traffic Manager profile properties. */
+export interface ProfilePropertiesInput {
+  /** The status of the Traffic Manager profile. */
+  profileStatus?: ProfileStatus;
+  /** The traffic routing method of the Traffic Manager profile. */
+  trafficRoutingMethod?: TrafficRoutingMethod;
+  /** The DNS settings of the Traffic Manager profile. */
+  dnsConfig?: DnsConfigInput;
+  /** The endpoint monitoring settings of the Traffic Manager profile. */
+  monitorConfig?: MonitorConfig;
+  /** The list of endpoints in the Traffic Manager profile. */
+  endpoints?: ProfilePropertiesInputEndpointsList;
+  /** Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile. */
+  trafficViewEnrollmentStatus?: TrafficViewEnrollmentStatus;
+  /** The list of allowed endpoint record types. */
+  allowedEndpointRecordTypes?: ProfilePropertiesInputAllowedEndpointRecordTypesList;
+  /** Maximum number of endpoints to be returned for MultiValue routing type. */
+  maxReturn?: number;
+}
+export const ProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileStatus: S.optional(ProfileStatus),
+    trafficRoutingMethod: S.optional(TrafficRoutingMethod),
+    dnsConfig: S.optional(DnsConfigInput),
+    monitorConfig: S.optional(MonitorConfig),
+    endpoints: S.optional(ProfilePropertiesInputEndpointsList),
+    trafficViewEnrollmentStatus: S.optional(TrafficViewEnrollmentStatus),
+    allowedEndpointRecordTypes: S.optional(
+      ProfilePropertiesInputAllowedEndpointRecordTypesList,
+    ),
+    maxReturn: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ProfilePropertiesInput",
+}) as any as S.Schema<ProfilePropertiesInput>;
+
+export interface ProfilesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Traffic Manager profile. */
+  profileName: string;
+  /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles. */
+  type?: string;
+  /** Resource tags. */
+  tags?: ProfilesCreateOrUpdateRequestTagsMap;
+  /** The Azure Region where the resource lives */
+  location?: string;
+  /** The properties of the Traffic Manager profile. */
+  properties?: ProfilePropertiesInput;
+}
+export const ProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(ProfilesCreateOrUpdateRequestTagsMap),
+    location: S.optional(S.String),
+    properties: S.optional(ProfilePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficmanagerprofiles/{profileName}",
+      code: 200,
+      apiVersion: "2022-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ProfilesCreateOrUpdateRequest",
+}) as any as S.Schema<ProfilesCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type ProfilesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProfilesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProfilesCreateOrUpdateResponseTagsMap>;
+
+/** Class containing DNS settings in a Traffic Manager profile. */
+export interface DnsConfig {
+  /** The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile. */
+  relativeName?: string;
+  /** The fully-qualified domain name (FQDN) of the Traffic Manager profile. This is formed from the concatenation of the RelativeName with the DNS domain used by Azure Traffic Manager. */
+  fqdn?: string;
+  /** The DNS Time-To-Live (TTL), in seconds. This informs the local DNS resolvers and DNS clients how long to cache DNS responses provided by this Traffic Manager profile. */
+  ttl?: number;
+}
+export const DnsConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relativeName: S.optional(S.String),
+    fqdn: S.optional(S.String),
+    ttl: S.optional(S.Number),
+  }),
+).annotate({ identifier: "DnsConfig" }) as any as S.Schema<DnsConfig>;
+
+/** The list of endpoints in the Traffic Manager profile. */
+export type ProfilePropertiesEndpointsList = ReadonlyArray<Endpoint>;
+export const ProfilePropertiesEndpointsList = /*@__PURE__*/ S.Array(
+  Endpoint,
+) as any as S.Schema<ProfilePropertiesEndpointsList>;
+
+/** The list of allowed endpoint record types. */
 export type ProfilePropertiesAllowedEndpointRecordTypesList =
-  AllowedEndpointRecordType[];
+  ReadonlyArray<AllowedEndpointRecordType>;
 export const ProfilePropertiesAllowedEndpointRecordTypesList =
   /*@__PURE__*/ S.Array(
     AllowedEndpointRecordType,
@@ -1091,7 +1199,7 @@ export const Profile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
 
 /** The Profile items on this page */
-export type ProfileListResultValueList = Profile[];
+export type ProfileListResultValueList = ReadonlyArray<Profile>;
 export const ProfileListResultValueList = /*@__PURE__*/ S.Array(
   Profile,
 ) as any as S.Schema<ProfileListResultValueList>;
@@ -1131,6 +1239,15 @@ export const ProfilesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfilesListBySubscriptionRequest",
 }) as any as S.Schema<ProfilesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type ProfilesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProfilesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProfilesUpdateRequestTagsMap>;
+
 export interface ProfilesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1138,14 +1255,30 @@ export interface ProfilesUpdateRequest {
   resourceGroupName: string;
   /** The name of the Traffic Manager profile. */
   profileName: string;
-  body: unknown;
+  /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles. */
+  type?: string;
+  /** Resource tags. */
+  tags?: ProfilesUpdateRequestTagsMap;
+  /** The Azure Region where the resource lives */
+  location?: string;
+  /** The properties of the Traffic Manager profile. */
+  properties?: ProfilePropertiesInput;
 }
 export const ProfilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     profileName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(ProfilesUpdateRequestTagsMap),
+    location: S.optional(S.String),
+    properties: S.optional(ProfilePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

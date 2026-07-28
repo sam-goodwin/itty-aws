@@ -125,7 +125,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -155,8 +155,7 @@ export type AppEngineHttpTargetHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS"
-  | (string & {});
+  | "OPTIONS";
 export const AppEngineHttpTargetHttpMethodEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -220,8 +219,7 @@ export type HttpTargetHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS"
-  | (string & {});
+  | "OPTIONS";
 export const HttpTargetHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself. */
@@ -300,8 +298,7 @@ export type JobStateEnum =
   | "ENABLED"
   | "PAUSED"
   | "DISABLED"
-  | "UPDATE_FAILED"
-  | (string & {});
+  | "UPDATE_FAILED";
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a job. The maximum allowed size for a job is 1MB. */
@@ -549,7 +546,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -584,7 +581,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -629,7 +626,7 @@ export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
-export type JobList = Job[];
+export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Response message for listing jobs using ListJobs. */
@@ -679,7 +676,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

@@ -70,13 +70,12 @@ export type GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequestFeaturesItem
     | "TEXT_DETECTION"
     | "OBJECT_TRACKING"
     | "LOGO_RECOGNITION"
-    | "PERSON_DETECTION"
-    | (string & {});
+    | "PERSON_DETECTION";
 export const GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequestFeaturesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequestFeaturesItemEnumList =
-  GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequestFeaturesItemEnum[];
+  ReadonlyArray<GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequestFeaturesItemEnum>;
 export const GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequestFeaturesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVideointelligenceV1beta2_AnnotateVideoRequestFeaturesItemEnum,
@@ -100,13 +99,13 @@ export const GoogleCloudVideointelligenceV1beta2_VideoSegment =
   }) as any as S.Schema<GoogleCloudVideointelligenceV1beta2_VideoSegment>;
 
 export type GoogleCloudVideointelligenceV1beta2_VideoSegmentList =
-  GoogleCloudVideointelligenceV1beta2_VideoSegment[];
+  ReadonlyArray<GoogleCloudVideointelligenceV1beta2_VideoSegment>;
 export const GoogleCloudVideointelligenceV1beta2_VideoSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVideointelligenceV1beta2_VideoSegment,
   ) as any as S.Schema<GoogleCloudVideointelligenceV1beta2_VideoSegmentList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -181,8 +180,7 @@ export type GoogleCloudVideointelligenceV1beta2_LabelDetectionConfigLabelDetecti
     | "LABEL_DETECTION_MODE_UNSPECIFIED"
     | "SHOT_MODE"
     | "FRAME_MODE"
-    | "SHOT_AND_FRAME_MODE"
-    | (string & {});
+    | "SHOT_AND_FRAME_MODE";
 export const GoogleCloudVideointelligenceV1beta2_LabelDetectionConfigLabelDetectionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -229,13 +227,13 @@ export const GoogleCloudVideointelligenceV1beta2_SpeechContext =
   }) as any as S.Schema<GoogleCloudVideointelligenceV1beta2_SpeechContext>;
 
 export type GoogleCloudVideointelligenceV1beta2_SpeechContextList =
-  GoogleCloudVideointelligenceV1beta2_SpeechContext[];
+  ReadonlyArray<GoogleCloudVideointelligenceV1beta2_SpeechContext>;
 export const GoogleCloudVideointelligenceV1beta2_SpeechContextList =
   /*@__PURE__*/ S.Array(
     GoogleCloudVideointelligenceV1beta2_SpeechContext,
   ) as any as S.Schema<GoogleCloudVideointelligenceV1beta2_SpeechContextList>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -434,7 +432,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;

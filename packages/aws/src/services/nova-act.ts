@@ -216,8 +216,7 @@ export type ActStatus =
   | "PENDING_HUMAN_ACTION"
   | "SUCCEEDED"
   | "FAILED"
-  | "TIMED_OUT"
-  | (string & {});
+  | "TIMED_OUT";
 export const ActStatus = /*@__PURE__*/ S.String;
 
 export interface CreateActResponse {
@@ -302,7 +301,7 @@ export const CreateWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWorkflowDefinitionRequest",
 }) as any as S.Schema<CreateWorkflowDefinitionRequest>;
-export type WorkflowDefinitionStatus = "ACTIVE" | "DELETING" | (string & {});
+export type WorkflowDefinitionStatus = "ACTIVE" | "DELETING";
 export const WorkflowDefinitionStatus = /*@__PURE__*/ S.String;
 
 export interface CreateWorkflowDefinitionResponse {
@@ -363,8 +362,7 @@ export type WorkflowRunStatus =
   | "SUCCEEDED"
   | "FAILED"
   | "TIMED_OUT"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const WorkflowRunStatus = /*@__PURE__*/ S.String;
 
 export interface CreateWorkflowRunResponse {
@@ -608,7 +606,7 @@ export const InvokeActStepResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvokeActStepResponse>;
 export type MaxResults = number;
 export type NextToken = string;
-export type SortOrder = "Ascending" | "Descending" | (string & {});
+export type SortOrder = "Ascending" | "Descending";
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface ListActsRequest {
@@ -645,7 +643,7 @@ export const ListActsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListActsRequest",
 }) as any as S.Schema<ListActsRequest>;
-export type TraceLocationType = "S3" | (string & {});
+export type TraceLocationType = "S3";
 export const TraceLocationType = /*@__PURE__*/ S.String;
 
 export interface TraceLocation {
@@ -707,12 +705,7 @@ export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListModelsRequest",
 }) as any as S.Schema<ListModelsRequest>;
-export type ModelStatus =
-  | "ACTIVE"
-  | "LEGACY"
-  | "DEPRECATED"
-  | "PREVIEW"
-  | (string & {});
+export type ModelStatus = "ACTIVE" | "LEGACY" | "DEPRECATED" | "PREVIEW";
 export const ModelStatus = /*@__PURE__*/ S.String;
 
 export interface ModelLifecycle {
@@ -1034,15 +1027,13 @@ export const UpdateWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateWorkflowRunResponse>;
 export type InternalServerExceptionReason =
   | "InvalidModelGeneration"
-  | "RequestTokenLimitExceeded"
-  | (string & {});
+  | "RequestTokenLimitExceeded";
 export const InternalServerExceptionReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionReason =
   | "FieldValidationFailed"
   | "InvalidStatus"
-  | "GuardrailIntervened"
-  | (string & {});
+  | "GuardrailIntervened";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

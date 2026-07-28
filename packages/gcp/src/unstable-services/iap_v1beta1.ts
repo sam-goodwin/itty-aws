@@ -107,7 +107,7 @@ export const GetIamPolicyV1beta1Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIamPolicyV1beta1Request",
 }) as any as S.Schema<GetIamPolicyV1beta1Request>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -149,7 +149,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;

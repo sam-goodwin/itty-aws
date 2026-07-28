@@ -113,8 +113,7 @@ export type BlockchainNodeStateEnum =
   | "UPDATING"
   | "REPAIRING"
   | "RECONCILING"
-  | "SYNCING"
-  | (string & {});
+  | "SYNCING";
 export const BlockchainNodeStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains endpoint information through which to interact with a blockchain node. */
@@ -147,18 +146,16 @@ export const ConnectionInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type BlockchainNodeBlockchainTypeEnum =
   | "BLOCKCHAIN_TYPE_UNSPECIFIED"
-  | "ETHEREUM"
-  | (string & {});
+  | "ETHEREUM";
 export const BlockchainNodeBlockchainTypeEnum = /*@__PURE__*/ S.String;
 
 export type EthereumDetailsConsensusClientEnum =
   | "CONSENSUS_CLIENT_UNSPECIFIED"
   | "LIGHTHOUSE"
-  | "ERIGON_EMBEDDED_CONSENSUS_LAYER"
-  | (string & {});
+  | "ERIGON_EMBEDDED_CONSENSUS_LAYER";
 export const EthereumDetailsConsensusClientEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -186,22 +183,19 @@ export type EthereumDetailsNodeTypeEnum =
   | "NODE_TYPE_UNSPECIFIED"
   | "LIGHT"
   | "FULL"
-  | "ARCHIVE"
-  | (string & {});
+  | "ARCHIVE";
 export const EthereumDetailsNodeTypeEnum = /*@__PURE__*/ S.String;
 
 export type EthereumDetailsExecutionClientEnum =
   | "EXECUTION_CLIENT_UNSPECIFIED"
   | "GETH"
-  | "ERIGON"
-  | (string & {});
+  | "ERIGON";
 export const EthereumDetailsExecutionClientEnum = /*@__PURE__*/ S.String;
 
 export type GethDetailsGarbageCollectionModeEnum =
   | "GARBAGE_COLLECTION_MODE_UNSPECIFIED"
   | "FULL"
-  | "ARCHIVE"
-  | (string & {});
+  | "ARCHIVE";
 export const GethDetailsGarbageCollectionModeEnum = /*@__PURE__*/ S.String;
 
 /** Options for the Geth execution client. See [Command-line Options](https://geth.ethereum.org/docs/fundamentals/command-line-options) for more details. */
@@ -220,8 +214,7 @@ export type EthereumDetailsNetworkEnum =
   | "MAINNET"
   | "TESTNET_GOERLI_PRATER"
   | "TESTNET_SEPOLIA"
-  | "TESTNET_HOLESKY"
-  | (string & {});
+  | "TESTNET_HOLESKY";
 export const EthereumDetailsNetworkEnum = /*@__PURE__*/ S.String;
 
 /** Contains endpoint information specific to Ethereum nodes. */
@@ -349,7 +342,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -544,7 +537,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -596,7 +589,7 @@ export const ListProjectsLocationsBlockchainNodesRequest =
     identifier: "ListProjectsLocationsBlockchainNodesRequest",
   }) as any as S.Schema<ListProjectsLocationsBlockchainNodesRequest>;
 
-export type BlockchainNodeList = BlockchainNode[];
+export type BlockchainNodeList = ReadonlyArray<BlockchainNode>;
 export const BlockchainNodeList = /*@__PURE__*/ S.Array(
   BlockchainNode,
 ) as any as S.Schema<BlockchainNodeList>;
@@ -648,7 +641,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

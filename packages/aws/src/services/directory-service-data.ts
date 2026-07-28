@@ -188,15 +188,14 @@ export const AddGroupMemberResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddGroupMemberResult",
 }) as any as S.Schema<AddGroupMemberResult>;
-export type GroupType = "Distribution" | "Security" | (string & {});
+export type GroupType = "Distribution" | "Security";
 export const GroupType = /*@__PURE__*/ S.String;
 
 export type GroupScope =
   | "DomainLocal"
   | "Global"
   | "Universal"
-  | "BuiltinLocal"
-  | (string & {});
+  | "BuiltinLocal";
 export const GroupScope = /*@__PURE__*/ S.String;
 
 export type LdapDisplayName = string;
@@ -558,7 +557,7 @@ export const ListGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGroupMembersRequest",
 }) as any as S.Schema<ListGroupMembersRequest>;
-export type MemberType = "USER" | "GROUP" | "COMPUTER" | (string & {});
+export type MemberType = "USER" | "GROUP" | "COMPUTER";
 export const MemberType = /*@__PURE__*/ S.String;
 
 export interface Member {
@@ -928,7 +927,7 @@ export const SearchUsersResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchUsersResult",
 }) as any as S.Schema<SearchUsersResult>;
-export type UpdateType = "ADD" | "REPLACE" | "REMOVE" | (string & {});
+export type UpdateType = "ADD" | "REPLACE" | "REMOVE";
 export const UpdateType = /*@__PURE__*/ S.String;
 
 export interface UpdateGroupRequest {
@@ -1013,8 +1012,7 @@ export type ExceptionMessage = string;
 export type AccessDeniedReason =
   | "IAM_AUTH"
   | "DIRECTORY_AUTH"
-  | "DATA_DISABLED"
-  | (string & {});
+  | "DATA_DISABLED";
 export const AccessDeniedReason = /*@__PURE__*/ S.String;
 
 export type DirectoryUnavailableReason =
@@ -1022,8 +1020,7 @@ export type DirectoryUnavailableReason =
   | "DIRECTORY_TIMEOUT"
   | "DIRECTORY_RESOURCES_EXCEEDED"
   | "NO_DISK_SPACE"
-  | "TRUST_AUTH_FAILURE"
-  | (string & {});
+  | "TRUST_AUTH_FAILURE";
 export const DirectoryUnavailableReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionReason =
@@ -1041,8 +1038,7 @@ export type ValidationExceptionReason =
   | "MISSING_ATTRIBUTE"
   | "ATTRIBUTE_EXISTS"
   | "LDAP_SIZE_LIMIT_EXCEEDED"
-  | "LDAP_UNSUPPORTED_OPERATION"
-  | (string & {});
+  | "LDAP_UNSUPPORTED_OPERATION";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type AddGroupMemberError =

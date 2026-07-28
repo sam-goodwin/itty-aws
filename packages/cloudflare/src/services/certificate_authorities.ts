@@ -50,10 +50,11 @@ export const GetHostnameAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetHostnameAssociationRequest",
 }) as any as S.Schema<GetHostnameAssociationRequest>;
 
-export type HostnameAssociationsGetResponseHostnamesList = unknown[];
+export type HostnameAssociationsGetResponseHostnamesList =
+  ReadonlyArray<string>;
 export const HostnameAssociationsGetResponseHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<HostnameAssociationsGetResponseHostnamesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -68,10 +69,11 @@ export const GetHostnameAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetHostnameAssociationResponse",
 }) as any as S.Schema<GetHostnameAssociationResponse>;
 
-export type HostnameAssociationsUpdateRequestHostnamesList = unknown[];
+export type HostnameAssociationsUpdateRequestHostnamesList =
+  ReadonlyArray<string>;
 export const HostnameAssociationsUpdateRequestHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<HostnameAssociationsUpdateRequestHostnamesList>;
 
 export interface PutHostnameAssociationRequest {
@@ -99,10 +101,11 @@ export const PutHostnameAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutHostnameAssociationRequest",
 }) as any as S.Schema<PutHostnameAssociationRequest>;
 
-export type HostnameAssociationsUpdateResponseHostnamesList = unknown[];
+export type HostnameAssociationsUpdateResponseHostnamesList =
+  ReadonlyArray<string>;
 export const HostnameAssociationsUpdateResponseHostnamesList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<HostnameAssociationsUpdateResponseHostnamesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

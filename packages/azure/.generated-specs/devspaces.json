@@ -107,10 +107,10 @@
             "smithy.api#documentation": "Name of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targetContainerHostResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource ID of the target container host mapped to the Azure Dev Spaces Controller.",
             "smithy.api#required": {}
           }
         }
@@ -588,16 +588,42 @@
             "smithy.api#documentation": "Name of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devspaces#ControllersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags for the Azure Dev Spaces Controller."
           }
+        },
+        "properties": {
+          "target": "com.azure.devspaces#ControllerUpdateParametersProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devspaces#ControllerUpdateParametersProperties": {
+      "type": "structure",
+      "members": {
+        "targetContainerHostCredentialsBase64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Credentials of the target container host (base64)."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.devspaces#ControllersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for the Azure Dev Spaces Controller."
       }
     },
     "com.azure.devspaces#ControllersCreate": {
@@ -709,16 +735,66 @@
             "smithy.api#documentation": "Name of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devspaces#ControllersCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Tags for the Azure resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region where the Azure resource is located.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.devspaces#ControllerPropertiesInput",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.devspaces#Sku",
+          "traits": {
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devspaces#ControllerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "targetContainerHostResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of the target container host",
+            "smithy.api#required": {}
+          }
+        },
+        "targetContainerHostCredentialsBase64": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Credentials of the target container host (base64).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.devspaces#ControllersCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for the Azure resource."
       }
     },
     "com.azure.devspaces#ControllersGet": {
@@ -992,11 +1068,10 @@
             "smithy.api#documentation": "Location of the container host."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "containerHostResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ARM ID of the Container Host resource"
           }
         }
       },

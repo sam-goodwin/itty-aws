@@ -152,7 +152,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.subscriptions#PaginatedSubscriptionList": {
+    "com.posthog.subscriptions#PaginatedSubscriptionListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -171,12 +171,12 @@
           }
         },
         "results": {
-          "target": "com.posthog.subscriptions#PaginatedSubscriptionListResultsList"
+          "target": "com.posthog.subscriptions#PaginatedSubscriptionListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.subscriptions#Subscription": {
+    "com.posthog.subscriptions#SubscriptionOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -215,7 +215,7 @@
           }
         },
         "dashboard_export_insights": {
-          "target": "com.posthog.subscriptions#SubscriptionDashboardExportInsightsList",
+          "target": "com.posthog.subscriptions#SubscriptionOutputDashboardExportInsightsList",
           "traits": {
             "smithy.api#documentation": "List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 6."
           }
@@ -258,7 +258,7 @@
           }
         },
         "byweekday": {
-          "target": "com.posthog.subscriptions#SubscriptionByweekdayList",
+          "target": "com.posthog.subscriptions#SubscriptionOutputByweekdayList",
           "traits": {
             "smithy.api#documentation": "Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday.",
             "com.distilled.openapi#nullable": {}
@@ -295,7 +295,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.subscriptions#UserBasic"
+          "target": "com.posthog.subscriptions#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "deleted": {
           "target": "smithy.api#Boolean",
@@ -342,12 +345,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "send_test_now": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether to immediately deliver the subscription once on save so the editor can confirm it looks right. Defaults to true on create. When omitted on update, a delivery is sent only if the edit changed what gets delivered (recipient, channel, source) or re-enabled the subscription. The recurring schedule is unaffected."
-          }
-        },
         "summary_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -391,7 +388,7 @@
         "smithy.api#documentation": "* `insight` - Insight\n* `dashboard` - Dashboard\n* `ai_prompt` - AI prompt"
       }
     },
-    "com.posthog.subscriptions#SubscriptionDashboardExportInsightsList": {
+    "com.posthog.subscriptions#SubscriptionOutputDashboardExportInsightsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
@@ -516,7 +513,7 @@
         "smithy.api#documentation": "* `daily` - Daily\n* `weekly` - Weekly\n* `monthly` - Monthly\n* `yearly` - Yearly"
       }
     },
-    "com.posthog.subscriptions#SubscriptionByweekdayItem": {
+    "com.posthog.subscriptions#SubscriptionOutputByweekdayItem": {
       "type": "enum",
       "members": {
         "MONDAY": {
@@ -566,10 +563,10 @@
         "smithy.api#documentation": "* `monday` - Monday\n* `tuesday` - Tuesday\n* `wednesday` - Wednesday\n* `thursday` - Thursday\n* `friday` - Friday\n* `saturday` - Saturday\n* `sunday` - Sunday"
       }
     },
-    "com.posthog.subscriptions#SubscriptionByweekdayList": {
+    "com.posthog.subscriptions#SubscriptionOutputByweekdayList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.subscriptions#SubscriptionByweekdayItem"
+        "target": "com.posthog.subscriptions#SubscriptionOutputByweekdayItem"
       },
       "traits": {
         "smithy.api#documentation": "Days of week for weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday."
@@ -710,10 +707,10 @@
       },
       "traits": {}
     },
-    "com.posthog.subscriptions#PaginatedSubscriptionListResultsList": {
+    "com.posthog.subscriptions#PaginatedSubscriptionListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.subscriptions#Subscription"
+        "target": "com.posthog.subscriptions#SubscriptionOutput"
       },
       "traits": {}
     },
@@ -723,7 +720,7 @@
         "target": "com.posthog.subscriptions#SubscriptionsListRequest"
       },
       "output": {
-        "target": "com.posthog.subscriptions#PaginatedSubscriptionList"
+        "target": "com.posthog.subscriptions#PaginatedSubscriptionListOutput"
       },
       "errors": [
         {
@@ -823,15 +820,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
-        "resource_type": {
-          "target": "com.posthog.subscriptions#ResourceTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "What the subscription delivers: 'insight' (snapshot of one insight), 'dashboard' (snapshot of one dashboard), or 'ai_prompt' (LLM-generated report). Read-only — derived from the populated target (insight → insight, dashboard → dashboard, prompt → ai_prompt).\n\n* `insight` - Insight\n* `dashboard` - Dashboard\n* `ai_prompt` - AI prompt"
-          }
-        },
         "dashboard": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -843,18 +831,6 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Insight ID to subscribe to (mutually exclusive with dashboard on create).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_short_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "resource_name": {
-          "target": "smithy.api#String",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -935,12 +911,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.subscriptions#UserBasic"
-        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -957,18 +927,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable name for this subscription.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "summary": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Human-readable schedule summary, e.g. 'sent daily'."
-          }
-        },
-        "next_delivery_date": {
-          "target": "smithy.api#String",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1015,7 +973,7 @@
         "target": "com.posthog.subscriptions#SubscriptionsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.subscriptions#Subscription"
+        "target": "com.posthog.subscriptions#SubscriptionOutput"
       },
       "errors": [
         {
@@ -1066,7 +1024,7 @@
         "target": "com.posthog.subscriptions#SubscriptionsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.subscriptions#Subscription"
+        "target": "com.posthog.subscriptions#SubscriptionOutput"
       },
       "errors": [
         {
@@ -1171,12 +1129,6 @@
             "smithy.api#documentation": "A unique integer value identifying this subscription."
           }
         },
-        "resource_type": {
-          "target": "com.posthog.subscriptions#ResourceTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "What the subscription delivers: 'insight' (snapshot of one insight), 'dashboard' (snapshot of one dashboard), or 'ai_prompt' (LLM-generated report). Read-only — derived from the populated target (insight → insight, dashboard → dashboard, prompt → ai_prompt).\n\n* `insight` - Insight\n* `dashboard` - Dashboard\n* `ai_prompt` - AI prompt"
-          }
-        },
         "dashboard": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -1188,18 +1140,6 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Insight ID to subscribe to (mutually exclusive with dashboard on create).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_short_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "resource_name": {
-          "target": "smithy.api#String",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1280,12 +1220,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.subscriptions#UserBasic"
-        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -1302,18 +1236,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable name for this subscription.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "summary": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Human-readable schedule summary, e.g. 'sent daily'."
-          }
-        },
-        "next_delivery_date": {
-          "target": "smithy.api#String",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1360,7 +1282,7 @@
         "target": "com.posthog.subscriptions#SubscriptionsUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.subscriptions#Subscription"
+        "target": "com.posthog.subscriptions#SubscriptionOutput"
       },
       "errors": [
         {
@@ -1468,12 +1390,6 @@
             "smithy.api#documentation": "A unique integer value identifying this subscription."
           }
         },
-        "resource_type": {
-          "target": "com.posthog.subscriptions#ResourceTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "What the subscription delivers: 'insight' (snapshot of one insight), 'dashboard' (snapshot of one dashboard), or 'ai_prompt' (LLM-generated report). Read-only — derived from the populated target (insight → insight, dashboard → dashboard, prompt → ai_prompt).\n\n* `insight` - Insight\n* `dashboard` - Dashboard\n* `ai_prompt` - AI prompt"
-          }
-        },
         "dashboard": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -1485,18 +1401,6 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Insight ID to subscribe to (mutually exclusive with dashboard on create).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_short_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "resource_name": {
-          "target": "smithy.api#String",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1577,12 +1481,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.subscriptions#UserBasic"
-        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -1599,18 +1497,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Human-readable name for this subscription.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "summary": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Human-readable schedule summary, e.g. 'sent daily'."
-          }
-        },
-        "next_delivery_date": {
-          "target": "smithy.api#String",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1657,7 +1543,7 @@
         "target": "com.posthog.subscriptions#SubscriptionsPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.subscriptions#Subscription"
+        "target": "com.posthog.subscriptions#SubscriptionOutput"
       },
       "errors": [
         {

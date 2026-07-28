@@ -484,16 +484,27 @@
             "smithy.api#documentation": "The name of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.graphservicesprod#AccountsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of key value pairs that describe the resource. This will overwrite the existing tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.graphservicesprod#AccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of key value pairs that describe the resource. This will overwrite the existing tags."
       }
     },
     "com.azure.graphservicesprod#AccountsCreateAndUpdate": {
@@ -754,16 +765,55 @@
             "smithy.api#documentation": "The name of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.graphservicesprod#AccountsCreateAndUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.graphservicesprod#AccountsCreateAndUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Property bag from billing account",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.graphservicesprod#AccountsCreateAndUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "appId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer owned application ID",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property bag from billing account"
+      }
+    },
+    "com.azure.graphservicesprod#AccountsCreateAndUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "resource tags."
       }
     },
     "com.azure.graphservicesprod#AccountsGet": {

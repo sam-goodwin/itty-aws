@@ -31,41 +31,95 @@ export const ListIpsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListIpsRequest" }) as any as S.Schema<ListIpsRequest>;
 
-export type ListResponseIpv4CidrsList = string[];
-export const ListResponseIpv4CidrsList = /*@__PURE__*/ S.Array(
+export type ListResultPublicIPIPsIpv4CidrsList = ReadonlyArray<string>;
+export const ListResultPublicIPIPsIpv4CidrsList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<ListResponseIpv4CidrsList>;
+) as any as S.Schema<ListResultPublicIPIPsIpv4CidrsList>;
 
-export type ListResponseIpv6CidrsList = string[];
-export const ListResponseIpv6CidrsList = /*@__PURE__*/ S.Array(
+export type ListResultPublicIPIPsIpv6CidrsList = ReadonlyArray<string>;
+export const ListResultPublicIPIPsIpv6CidrsList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<ListResponseIpv6CidrsList>;
+) as any as S.Schema<ListResultPublicIPIPsIpv6CidrsList>;
 
-export type ListResponseJdcloudCidrsList = string[];
-export const ListResponseJdcloudCidrsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResponseJdcloudCidrsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ListIpsResponse {
+export interface ListResultPublicIPIPs {
   /** A digest of the IP data. Useful for determining if the data has changed. */
   etag?: string;
   /** List of Cloudflare IPv4 CIDR addresses. */
-  ipv4Cidrs?: ListResponseIpv4CidrsList;
+  ipv4Cidrs?: ListResultPublicIPIPsIpv4CidrsList;
   /** List of Cloudflare IPv6 CIDR addresses. */
-  ipv6Cidrs?: ListResponseIpv6CidrsList;
-  /** List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used. */
-  jdcloudCidrs?: ListResponseJdcloudCidrsList;
+  ipv6Cidrs?: ListResultPublicIPIPsIpv6CidrsList;
 }
-export const ListIpsResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListResultPublicIPIPs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
-    ipv4Cidrs: S.optional(ListResponseIpv4CidrsList.pipe(T.Body("ipv4_cidrs"))),
-    ipv6Cidrs: S.optional(ListResponseIpv6CidrsList.pipe(T.Body("ipv6_cidrs"))),
-    jdcloudCidrs: S.optional(
-      ListResponseJdcloudCidrsList.pipe(T.Body("jdcloud_cidrs")),
+    ipv4Cidrs: S.optional(
+      ListResultPublicIPIPsIpv4CidrsList.pipe(T.Body("ipv4_cidrs")),
     ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    ipv6Cidrs: S.optional(
+      ListResultPublicIPIPsIpv6CidrsList.pipe(T.Body("ipv6_cidrs")),
+    ),
+  }),
+).annotate({
+  identifier: "ListResultPublicIPIPs",
+}) as any as S.Schema<ListResultPublicIPIPs>;
+
+export type ListResultPublicIPIPsJDCloudIpv4CidrsList = ReadonlyArray<string>;
+export const ListResultPublicIPIPsJDCloudIpv4CidrsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultPublicIPIPsJDCloudIpv4CidrsList>;
+
+export type ListResultPublicIPIPsJDCloudIpv6CidrsList = ReadonlyArray<string>;
+export const ListResultPublicIPIPsJDCloudIpv6CidrsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultPublicIPIPsJDCloudIpv6CidrsList>;
+
+export type ListResultPublicIPIPsJDCloudJdcloudCidrsList =
+  ReadonlyArray<string>;
+export const ListResultPublicIPIPsJDCloudJdcloudCidrsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ListResultPublicIPIPsJDCloudJdcloudCidrsList>;
+
+export interface ListResultPublicIPIPsJDCloud {
+  /** A digest of the IP data. Useful for determining if the data has changed. */
+  etag?: string;
+  /** List of Cloudflare IPv4 CIDR addresses. */
+  ipv4Cidrs?: ListResultPublicIPIPsJDCloudIpv4CidrsList;
+  /** List of Cloudflare IPv6 CIDR addresses. */
+  ipv6Cidrs?: ListResultPublicIPIPsJDCloudIpv6CidrsList;
+  /** List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used. */
+  jdcloudCidrs?: ListResultPublicIPIPsJDCloudJdcloudCidrsList;
+}
+export const ListResultPublicIPIPsJDCloud = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    etag: S.optional(S.String),
+    ipv4Cidrs: S.optional(
+      ListResultPublicIPIPsJDCloudIpv4CidrsList.pipe(T.Body("ipv4_cidrs")),
+    ),
+    ipv6Cidrs: S.optional(
+      ListResultPublicIPIPsJDCloudIpv6CidrsList.pipe(T.Body("ipv6_cidrs")),
+    ),
+    jdcloudCidrs: S.optional(
+      ListResultPublicIPIPsJDCloudJdcloudCidrsList.pipe(
+        T.Body("jdcloud_cidrs"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "ListResultPublicIPIPsJDCloud",
+}) as any as S.Schema<ListResultPublicIPIPsJDCloud>;
+
+export type ListResult = ListResultPublicIPIPs | ListResultPublicIPIPsJDCloud;
+export const ListResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["etag", "ipv4Cidrs", "ipv6Cidrs"],
+    ["etag", "ipv4Cidrs", "ipv6Cidrs", "jdcloudCidrs"],
+  ]),
+);
+
+export type ListIpsResponse = ListResult;
+export const ListIpsResponse = /*@__PURE__*/ S.suspend(() =>
+  ListResult.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListIpsResponse",
 }) as any as S.Schema<ListIpsResponse>;

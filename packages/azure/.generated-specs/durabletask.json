@@ -346,16 +346,22 @@
             "smithy.api#documentation": "The name of the TaskHub"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.durabletask#TaskHubPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.durabletask#TaskHubPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The properties of Task Hub"
       }
     },
     "com.azure.durabletask#TaskHubsGet": {
@@ -791,16 +797,38 @@
             "smithy.api#documentation": "The name of the Scheduler"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.durabletask#RetentionPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.durabletask#RetentionPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "retentionPolicies": {
+          "target": "com.azure.durabletask#RetentionPolicyPropertiesInputRetentionPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "The orchestration retention policies"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The retention policy settings for the resource"
+      }
+    },
+    "com.azure.durabletask#RetentionPolicyPropertiesInputRetentionPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.durabletask#RetentionPolicyDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "The orchestration retention policies"
       }
     },
     "com.azure.durabletask#RetentionPoliciesCreateOrReplace": {
@@ -887,11 +915,10 @@
             "smithy.api#documentation": "The name of the Scheduler"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.durabletask#RetentionPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -1658,16 +1685,68 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.durabletask#SchedulersUpdatePrivateEndpointConnectionRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The private endpoint connection properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.durabletask#SchedulersUpdatePrivateEndpointConnectionRequestProperties": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.durabletask#SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateEndpoint",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.durabletask#SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private endpoint connection properties"
+      }
+    },
+    "com.azure.durabletask#SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.durabletask#PrivateEndpointServiceConnectionStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The reason for approval/rejection of the connection."
+          }
+        },
+        "actionsRequired": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A message indicating if changes on the service provider require any updates on the consumer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider."
+      }
+    },
+    "com.azure.durabletask#SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateEndpoint": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.durabletask#SchedulersCreateOrUpdatePrivateEndpointConnection": {
@@ -1762,16 +1841,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.durabletask#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.durabletask#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.durabletask#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.durabletask#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.durabletask#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.durabletask#SchedulersGetPrivateEndpointConnection": {
@@ -2339,16 +2445,88 @@
             "smithy.api#documentation": "The name of the Scheduler"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.durabletask#SchedulerPropertiesUpdateInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.durabletask#SchedulersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.durabletask#SchedulersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.durabletask#SchedulerPropertiesUpdateInput": {
+      "type": "structure",
+      "members": {
+        "ipAllowlist": {
+          "target": "com.azure.durabletask#SchedulerPropertiesUpdateInputIpAllowlistList",
+          "traits": {
+            "smithy.api#documentation": "IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR"
+          }
+        },
+        "sku": {
+          "target": "com.azure.durabletask#SchedulerSkuUpdate",
+          "traits": {
+            "smithy.api#documentation": "SKU of the durable task scheduler"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.durabletask#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Allow or disallow public network access to durable task scheduler"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Scheduler resource properties to be updated"
+      }
+    },
+    "com.azure.durabletask#SchedulerSkuUpdate": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "com.azure.durabletask#SchedulerSkuName",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU"
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SKU (Stock Keeping Unit) properties to be updated"
+      }
+    },
+    "com.azure.durabletask#SchedulerPropertiesUpdateInputIpAllowlistList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR"
       }
     },
     "com.azure.durabletask#SchedulersCreateOrUpdate": {
@@ -2460,16 +2638,77 @@
             "smithy.api#documentation": "The name of the Scheduler"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.durabletask#SchedulersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.durabletask#SchedulerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.durabletask#SchedulerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "ipAllowlist": {
+          "target": "com.azure.durabletask#SchedulerPropertiesInputIpAllowlistList",
+          "traits": {
+            "smithy.api#documentation": "IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR",
+            "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.durabletask#SchedulerSku",
+          "traits": {
+            "smithy.api#documentation": "SKU of the durable task scheduler",
+            "smithy.api#required": {}
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.durabletask#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Allow or disallow public network access to durable task scheduler"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the Scheduler"
+      }
+    },
+    "com.azure.durabletask#SchedulerPropertiesInputIpAllowlistList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR"
+      }
+    },
+    "com.azure.durabletask#SchedulersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.durabletask#SchedulersGet": {

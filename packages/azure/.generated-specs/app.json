@@ -934,16 +934,122 @@
             "smithy.api#documentation": "Name of the session pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ContainerAppsSessionPoolsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.app#ContainerAppsSessionPoolsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#SessionPoolUpdatablePropertiesProperties",
+          "traits": {
+            "smithy.api#documentation": "Session pool resource specific updatable properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#SessionPoolUpdatablePropertiesProperties": {
+      "type": "structure",
+      "members": {
+        "scaleConfiguration": {
+          "target": "com.azure.app#ScaleConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The scale configuration of the session pool."
+          }
+        },
+        "secrets": {
+          "target": "com.azure.app#SessionPoolUpdatablePropertiesPropertiesSecretsList",
+          "traits": {
+            "smithy.api#documentation": "The secrets of the session pool."
+          }
+        },
+        "dynamicPoolConfiguration": {
+          "target": "com.azure.app#DynamicPoolConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The pool configuration if the poolManagementType is dynamic."
+          }
+        },
+        "customContainerTemplate": {
+          "target": "com.azure.app#CustomContainerTemplate",
+          "traits": {
+            "smithy.api#documentation": "The custom container configuration if the containerType is CustomContainer."
+          }
+        },
+        "sessionNetworkConfiguration": {
+          "target": "com.azure.app#SessionNetworkConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The network configuration of the sessions in the session pool."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Session pool resource specific updatable properties."
+      }
+    },
+    "com.azure.app#SessionPoolUpdatablePropertiesPropertiesSecretsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#SessionPoolSecret"
+      },
+      "traits": {
+        "smithy.api#documentation": "The secrets of the session pool."
+      }
+    },
+    "com.azure.app#ContainerAppsSessionPoolsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.app#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.app#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.app#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.app#ContainerAppsSessionPoolsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#ContainerAppsSessionPoolsCreateOrUpdate": {
@@ -1090,16 +1196,143 @@
             "smithy.api#documentation": "Name of the session pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ContainerAppsSessionPoolsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#SessionPoolPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Container App session pool resource specific properties"
+          }
+        },
+        "identity": {
+          "target": "com.azure.app#ContainerAppsSessionPoolsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ContainerAppsSessionPoolsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.app#SessionPoolPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "environmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of the session pool's environment."
+          }
+        },
+        "containerType": {
+          "target": "com.azure.app#ContainerType",
+          "traits": {
+            "smithy.api#documentation": "The container type of the sessions. You can use your own container to build the session pool, or you can use a predefined container to run workload with specific language."
+          }
+        },
+        "poolManagementType": {
+          "target": "com.azure.app#PoolManagementType",
+          "traits": {
+            "smithy.api#documentation": "The pool management type of the session pool."
+          }
+        },
+        "scaleConfiguration": {
+          "target": "com.azure.app#ScaleConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The scale configuration of the session pool."
+          }
+        },
+        "secrets": {
+          "target": "com.azure.app#SessionPoolPropertiesInputSecretsList",
+          "traits": {
+            "smithy.api#documentation": "The secrets of the session pool."
+          }
+        },
+        "dynamicPoolConfiguration": {
+          "target": "com.azure.app#DynamicPoolConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The pool configuration if the poolManagementType is dynamic."
+          }
+        },
+        "customContainerTemplate": {
+          "target": "com.azure.app#CustomContainerTemplate",
+          "traits": {
+            "smithy.api#documentation": "The custom container configuration if the containerType is CustomContainer."
+          }
+        },
+        "sessionNetworkConfiguration": {
+          "target": "com.azure.app#SessionNetworkConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The network configuration of the sessions in the session pool."
+          }
+        },
+        "managedIdentitySettings": {
+          "target": "com.azure.app#SessionPoolPropertiesInputManagedIdentitySettingsList",
+          "traits": {
+            "smithy.api#documentation": "Optional settings for a Managed Identity that is assigned to the Session pool."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container App session pool resource specific properties"
+      }
+    },
+    "com.azure.app#SessionPoolPropertiesInputManagedIdentitySettingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#ManagedIdentitySetting"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional settings for a Managed Identity that is assigned to the Session pool."
+      }
+    },
+    "com.azure.app#SessionPoolPropertiesInputSecretsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#SessionPoolSecret"
+      },
+      "traits": {
+        "smithy.api#documentation": "The secrets of the session pool."
+      }
+    },
+    "com.azure.app#ContainerAppsSessionPoolsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#ContainerAppsSessionPoolsGet": {
@@ -1993,11 +2226,10 @@
             "smithy.api#documentation": "Name of the storage."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#ManagedEnvironmentStorageProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Storage properties"
           }
         }
       },
@@ -2693,16 +2925,43 @@
             "smithy.api#documentation": "Name of the Private Endpoint Connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.app#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The resource of private end point."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.app#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.app#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
     "com.azure.app#ManagedEnvironmentPrivateEndpointConnectionsGet": {
@@ -3205,16 +3464,27 @@
             "smithy.api#documentation": "Name of the Managed Certificate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ManagedCertificatesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ManagedCertificatesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
       }
     },
     "com.azure.app#ManagedCertificatesCreateOrUpdate": {
@@ -3334,15 +3604,60 @@
             "smithy.api#documentation": "Name of the Managed Certificate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ManagedCertificatesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#ManagedCertificatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Certificate resource specific properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ManagedCertificatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "subjectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subject name of the certificate."
+          }
+        },
+        "domainControlValidation": {
+          "target": "com.azure.app#ManagedCertificateDomainControlValidation",
+          "traits": {
+            "smithy.api#documentation": "Selected type of domain control validation for managed certificates."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Certificate resource specific properties"
+      }
+    },
+    "com.azure.app#ManagedCertificatesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#ManagedCertificatesGet": {
@@ -3865,11 +4180,10 @@
             "smithy.api#documentation": "Name of the Maintenance Configuration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#ScheduledEntries",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -4425,11 +4739,10 @@
             "smithy.api#documentation": "Name of the Java Component."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#JavaComponentProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Java Component resource specific properties"
           }
         }
       },
@@ -4529,11 +4842,10 @@
             "smithy.api#documentation": "Name of the Java Component."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#JavaComponentProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Java Component resource specific properties"
           }
         }
       },
@@ -5233,16 +5545,53 @@
             "smithy.api#documentation": "Name of the Http Route Config Resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#HttpRouteConfigPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Http Route Config properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#HttpRouteConfigPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "customDomains": {
+          "target": "com.azure.app#HttpRouteConfigPropertiesInputCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain bindings for http Routes' hostnames."
+          }
+        },
+        "rules": {
+          "target": "com.azure.app#HttpRouteConfigPropertiesInputRulesList",
+          "traits": {
+            "smithy.api#documentation": "Routing Rules for http route resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Http Route Config properties"
+      }
+    },
+    "com.azure.app#HttpRouteConfigPropertiesInputRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#HttpRouteRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "Routing Rules for http route resource."
+      }
+    },
+    "com.azure.app#HttpRouteConfigPropertiesInputCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#CustomDomain"
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom domain bindings for http Routes' hostnames."
       }
     },
     "com.azure.app#HttpRouteConfigCreateOrUpdate": {
@@ -5337,10 +5686,10 @@
             "smithy.api#documentation": "Name of the Http Route Config."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#HttpRouteConfigPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Http Route Config properties"
           }
         }
       },
@@ -7385,16 +7734,98 @@
             "smithy.api#documentation": "Name of the Dapr Component."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#DaprComponentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Dapr Component resource specific properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#DaprComponentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "componentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Component type"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Component version"
+          }
+        },
+        "ignoreErrors": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Boolean describing if the component errors are ignores"
+          }
+        },
+        "initTimeout": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Initialization timeout"
+          }
+        },
+        "secrets": {
+          "target": "com.azure.app#DaprComponentPropertiesInputSecretsList",
+          "traits": {
+            "smithy.api#documentation": "Collection of secrets used by a Dapr component"
+          }
+        },
+        "secretStoreComponent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a Dapr component to retrieve component secrets from"
+          }
+        },
+        "metadata": {
+          "target": "com.azure.app#DaprComponentPropertiesInputMetadataList",
+          "traits": {
+            "smithy.api#documentation": "Component metadata"
+          }
+        },
+        "scopes": {
+          "target": "com.azure.app#DaprComponentPropertiesInputScopesList",
+          "traits": {
+            "smithy.api#documentation": "Names of container apps that can use this Dapr component"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dapr Component resource specific properties"
+      }
+    },
+    "com.azure.app#DaprComponentPropertiesInputScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Names of container apps that can use this Dapr component"
+      }
+    },
+    "com.azure.app#DaprComponentPropertiesInputMetadataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#DaprMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "Component metadata"
+      }
+    },
+    "com.azure.app#DaprComponentPropertiesInputSecretsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#Secret"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of secrets used by a Dapr component"
       }
     },
     "com.azure.app#DaprComponentsGet": {
@@ -7705,11 +8136,16 @@
             "smithy.api#documentation": "Name of the Environment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },
@@ -7989,16 +8425,27 @@
             "smithy.api#documentation": "Name of the Certificate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#CertificatesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#CertificatesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
       }
     },
     "com.azure.app#CertificatesCreateOrUpdate": {
@@ -8118,15 +8565,67 @@
             "smithy.api#documentation": "Name of the Certificate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#CertificatesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#CertificatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Certificate resource specific properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#CertificatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "certificateKeyVaultProperties": {
+          "target": "com.azure.app#CertificateKeyVaultProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties for a certificate stored in a Key Vault."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate password.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "PFX or PEM blob"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Certificate resource specific properties"
+      }
+    },
+    "com.azure.app#CertificatesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#CertificatesGet": {
@@ -8596,16 +9095,217 @@
             "smithy.api#documentation": "Name of the Environment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ManagedEnvironmentsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#ManagedEnvironmentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Managed environment resource specific properties"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of the Environment."
+          }
+        },
+        "identity": {
+          "target": "com.azure.app#ManagedEnvironmentsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ManagedEnvironmentsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.app#ManagedEnvironmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "daprAIInstrumentationKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry"
+          }
+        },
+        "daprAIConnectionString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Application Insights connection string used by Dapr to export Service to Service communication telemetry"
+          }
+        },
+        "vnetConfiguration": {
+          "target": "com.azure.app#VnetConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Vnet configuration for the environment"
+          }
+        },
+        "appLogsConfiguration": {
+          "target": "com.azure.app#AppLogsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Cluster configuration which enables the log daemon to export app logs to configured destination"
+          }
+        },
+        "zoneRedundant": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this Managed Environment is zone-redundant."
+          }
+        },
+        "customDomainConfiguration": {
+          "target": "com.azure.app#CustomDomainConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "Custom domain configuration for the environment"
+          }
+        },
+        "workloadProfiles": {
+          "target": "com.azure.app#ManagedEnvironmentPropertiesInputWorkloadProfilesList",
+          "traits": {
+            "smithy.api#documentation": "Workload profiles configured for the Managed Environment."
+          }
+        },
+        "kedaConfiguration": {
+          "target": "com.azure.app#KedaConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "The configuration of Keda component."
+          }
+        },
+        "daprConfiguration": {
+          "target": "com.azure.app#DaprConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "The configuration of Dapr component."
+          }
+        },
+        "infrastructureResourceGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet."
+          }
+        },
+        "peerAuthentication": {
+          "target": "com.azure.app#ManagedEnvironmentPropertiesPeerAuthentication",
+          "traits": {
+            "smithy.api#documentation": "Peer authentication settings for the Managed Environment"
+          }
+        },
+        "peerTrafficConfiguration": {
+          "target": "com.azure.app#ManagedEnvironmentPropertiesPeerTrafficConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Peer traffic settings for the Managed Environment"
+          }
+        },
+        "ingressConfiguration": {
+          "target": "com.azure.app#IngressConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Ingress configuration for the Managed Environment."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.app#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed environment resource specific properties"
+      }
+    },
+    "com.azure.app#DaprConfigurationInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Configuration properties Dapr component"
+      }
+    },
+    "com.azure.app#KedaConfigurationInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Configuration properties Keda component"
+      }
+    },
+    "com.azure.app#ManagedEnvironmentPropertiesInputWorkloadProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#WorkloadProfile"
+      },
+      "traits": {
+        "smithy.api#documentation": "Workload profiles configured for the Managed Environment."
+      }
+    },
+    "com.azure.app#CustomDomainConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "dnsSuffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Dns suffix for the environment domain"
+          }
+        },
+        "certificateKeyVaultProperties": {
+          "target": "com.azure.app#CertificateKeyVaultProperties",
+          "traits": {
+            "smithy.api#documentation": "Certificate stored in Azure Key Vault."
+          }
+        },
+        "certificateValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "PFX or PEM blob"
+          }
+        },
+        "certificatePassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate password",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration properties for apps environment custom domain"
+      }
+    },
+    "com.azure.app#ManagedEnvironmentsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#ManagedEnvironmentsCreateOrUpdate": {
@@ -8758,16 +9458,69 @@
             "smithy.api#documentation": "Name of the Environment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ManagedEnvironmentsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#ManagedEnvironmentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Managed environment resource specific properties"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of the Environment."
+          }
+        },
+        "identity": {
+          "target": "com.azure.app#ManagedEnvironmentsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ManagedEnvironmentsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.app#ManagedEnvironmentsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#ManagedEnvironmentsGet": {
@@ -9504,15 +10257,130 @@
             "smithy.api#documentation": "Job Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "containers": {
+          "target": "com.azure.app#JobsStartRequestContainersList",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "List of container definitions for the Container Apps Job."
+          }
+        },
+        "initContainers": {
+          "target": "com.azure.app#JobsStartRequestInitContainersList",
+          "traits": {
+            "smithy.api#documentation": "List of specialized containers that run before job containers."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#JobsStartRequestInitContainersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#JobExecutionContainerInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of specialized containers that run before job containers."
+      }
+    },
+    "com.azure.app#JobExecutionContainerInput": {
+      "type": "structure",
+      "members": {
+        "image": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Container image tag."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom container name."
+          }
+        },
+        "command": {
+          "target": "com.azure.app#JobExecutionContainerInputCommandList",
+          "traits": {
+            "smithy.api#documentation": "Container start command."
+          }
+        },
+        "args": {
+          "target": "com.azure.app#JobExecutionContainerInputArgsList",
+          "traits": {
+            "smithy.api#documentation": "Container start command arguments."
+          }
+        },
+        "env": {
+          "target": "com.azure.app#JobExecutionContainerInputEnvList",
+          "traits": {
+            "smithy.api#documentation": "Container environment variables."
+          }
+        },
+        "resources": {
+          "target": "com.azure.app#ContainerResourcesInput",
+          "traits": {
+            "smithy.api#documentation": "Container resource requirements."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container Apps Jobs execution container definition."
+      }
+    },
+    "com.azure.app#ContainerResourcesInput": {
+      "type": "structure",
+      "members": {
+        "cpu": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Required CPU in cores, e.g. 0.5"
+          }
+        },
+        "memory": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required memory, e.g. \"250Mb\""
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container App container resource requirements."
+      }
+    },
+    "com.azure.app#JobExecutionContainerInputEnvList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#EnvironmentVar"
+      },
+      "traits": {
+        "smithy.api#documentation": "Container environment variables."
+      }
+    },
+    "com.azure.app#JobExecutionContainerInputArgsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Container start command arguments."
+      }
+    },
+    "com.azure.app#JobExecutionContainerInputCommandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Container start command."
+      }
+    },
+    "com.azure.app#JobsStartRequestContainersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#JobExecutionContainerInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of container definitions for the Container Apps Job."
       }
     },
     "com.azure.app#JobsListSecrets": {
@@ -11349,16 +12217,338 @@
             "smithy.api#documentation": "Job Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.app#JobsUpdateRequestIdentity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
+        },
+        "tags": {
+          "target": "com.azure.app#JobsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#JobPatchPropertiesPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#JobPatchPropertiesPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "environmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of environment."
+          }
+        },
+        "configuration": {
+          "target": "com.azure.app#JobConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Container Apps Job configuration properties."
+          }
+        },
+        "template": {
+          "target": "com.azure.app#JobTemplateInput",
+          "traits": {
+            "smithy.api#documentation": "Container Apps job definition."
+          }
+        },
+        "outboundIpAddresses": {
+          "target": "com.azure.app#JobPatchPropertiesPropertiesInputOutboundIpAddressesList",
+          "traits": {
+            "smithy.api#documentation": "Outbound IP Addresses of a container apps job."
+          }
+        },
+        "eventStreamEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint of the eventstream of the container apps job."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.app#JobPatchPropertiesPropertiesInputOutboundIpAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Outbound IP Addresses of a container apps job."
+      }
+    },
+    "com.azure.app#JobTemplateInput": {
+      "type": "structure",
+      "members": {
+        "initContainers": {
+          "target": "com.azure.app#JobTemplateInputInitContainersList",
+          "traits": {
+            "smithy.api#documentation": "List of specialized containers that run before app containers."
+          }
+        },
+        "containers": {
+          "target": "com.azure.app#JobTemplateInputContainersList",
+          "traits": {
+            "smithy.api#documentation": "List of container definitions for the Container App."
+          }
+        },
+        "volumes": {
+          "target": "com.azure.app#JobTemplateInputVolumesList",
+          "traits": {
+            "smithy.api#documentation": "List of volume definitions for the Container App."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container Apps Job versioned application definition. Defines the desired state of an immutable revision. Any changes to this section Will result in a new revision being created"
+      }
+    },
+    "com.azure.app#JobTemplateInputVolumesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#Volume"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of volume definitions for the Container App."
+      }
+    },
+    "com.azure.app#JobTemplateInputContainersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#ContainerInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of container definitions for the Container App."
+      }
+    },
+    "com.azure.app#ContainerInput": {
+      "type": "structure",
+      "members": {
+        "image": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Container image tag."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom container name."
+          }
+        },
+        "command": {
+          "target": "com.azure.app#ContainerInputCommandList",
+          "traits": {
+            "smithy.api#documentation": "Container start command."
+          }
+        },
+        "args": {
+          "target": "com.azure.app#ContainerInputArgsList",
+          "traits": {
+            "smithy.api#documentation": "Container start command arguments."
+          }
+        },
+        "env": {
+          "target": "com.azure.app#ContainerInputEnvList",
+          "traits": {
+            "smithy.api#documentation": "Container environment variables."
+          }
+        },
+        "resources": {
+          "target": "com.azure.app#ContainerResourcesInput",
+          "traits": {
+            "smithy.api#documentation": "Container resource requirements."
+          }
+        },
+        "volumeMounts": {
+          "target": "com.azure.app#ContainerInputVolumeMountsList",
+          "traits": {
+            "smithy.api#documentation": "Container volume mounts."
+          }
+        },
+        "probes": {
+          "target": "com.azure.app#ContainerInputProbesList",
+          "traits": {
+            "smithy.api#documentation": "List of probes for the container."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container App container definition"
+      }
+    },
+    "com.azure.app#ContainerInputProbesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#ContainerAppProbe"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of probes for the container."
+      }
+    },
+    "com.azure.app#ContainerInputVolumeMountsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#VolumeMount"
+      },
+      "traits": {
+        "smithy.api#documentation": "Container volume mounts."
+      }
+    },
+    "com.azure.app#ContainerInputEnvList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#EnvironmentVar"
+      },
+      "traits": {
+        "smithy.api#documentation": "Container environment variables."
+      }
+    },
+    "com.azure.app#ContainerInputArgsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Container start command arguments."
+      }
+    },
+    "com.azure.app#ContainerInputCommandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Container start command."
+      }
+    },
+    "com.azure.app#JobTemplateInputInitContainersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#BaseContainerInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of specialized containers that run before app containers."
+      }
+    },
+    "com.azure.app#BaseContainerInput": {
+      "type": "structure",
+      "members": {
+        "image": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Container image tag."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom container name."
+          }
+        },
+        "command": {
+          "target": "com.azure.app#BaseContainerInputCommandList",
+          "traits": {
+            "smithy.api#documentation": "Container start command."
+          }
+        },
+        "args": {
+          "target": "com.azure.app#BaseContainerInputArgsList",
+          "traits": {
+            "smithy.api#documentation": "Container start command arguments."
+          }
+        },
+        "env": {
+          "target": "com.azure.app#BaseContainerInputEnvList",
+          "traits": {
+            "smithy.api#documentation": "Container environment variables."
+          }
+        },
+        "resources": {
+          "target": "com.azure.app#ContainerResourcesInput",
+          "traits": {
+            "smithy.api#documentation": "Container resource requirements."
+          }
+        },
+        "volumeMounts": {
+          "target": "com.azure.app#BaseContainerInputVolumeMountsList",
+          "traits": {
+            "smithy.api#documentation": "Container volume mounts."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container App base container definition."
+      }
+    },
+    "com.azure.app#BaseContainerInputVolumeMountsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#VolumeMount"
+      },
+      "traits": {
+        "smithy.api#documentation": "Container volume mounts."
+      }
+    },
+    "com.azure.app#BaseContainerInputEnvList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#EnvironmentVar"
+      },
+      "traits": {
+        "smithy.api#documentation": "Container environment variables."
+      }
+    },
+    "com.azure.app#BaseContainerInputArgsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Container start command arguments."
+      }
+    },
+    "com.azure.app#BaseContainerInputCommandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Container start command."
+      }
+    },
+    "com.azure.app#JobsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.app#JobsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
     "com.azure.app#JobsCreateOrUpdate": {
@@ -11505,16 +12695,95 @@
             "smithy.api#documentation": "Job Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#JobsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#JobPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Container Apps Job resource specific properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.app#JobsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#JobsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.app#JobPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "environmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of environment."
+          }
+        },
+        "workloadProfileName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Workload profile name to pin for container apps job execution."
+          }
+        },
+        "configuration": {
+          "target": "com.azure.app#JobConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Container Apps Job configuration properties."
+          }
+        },
+        "template": {
+          "target": "com.azure.app#JobTemplateInput",
+          "traits": {
+            "smithy.api#documentation": "Container Apps job definition."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container Apps Job resource specific properties."
+      }
+    },
+    "com.azure.app#JobsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#JobsGet": {
@@ -13844,11 +15113,10 @@
             "smithy.api#documentation": "Name of the Container App SourceControl."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#SourceControlProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "SourceControl resource specific properties"
           }
         }
       },
@@ -15772,12 +17040,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Name of the Logic App, the extension resource."
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {}
           }
         }
       },
@@ -18193,11 +19455,10 @@
             "smithy.api#documentation": "Name of the Container App AuthConfig."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#AuthConfigProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "AuthConfig resource specific properties"
           }
         }
       },
@@ -18634,16 +19895,462 @@
             "smithy.api#documentation": "Name of the Container App."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ContainerAppsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#ContainerAppPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "ContainerApp resource specific properties"
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.app#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
+          }
+        },
+        "identity": {
+          "target": "com.azure.app#ContainerAppsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.app#Kind",
+          "traits": {
+            "smithy.api#documentation": "Metadata to represent the container app kind, representing if a container app is workflowapp or functionapp."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ContainerAppsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.app#ContainerAppPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "managedEnvironmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deprecated. Resource ID of the Container App's environment."
+          }
+        },
+        "environmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of environment."
+          }
+        },
+        "workloadProfileName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Workload profile name to pin for container app execution."
+          }
+        },
+        "configuration": {
+          "target": "com.azure.app#ConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "Non versioned Container App configuration properties."
+          }
+        },
+        "template": {
+          "target": "com.azure.app#TemplateInput",
+          "traits": {
+            "smithy.api#documentation": "Container App versioned application definition."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ContainerApp resource specific properties"
+      }
+    },
+    "com.azure.app#TemplateInput": {
+      "type": "structure",
+      "members": {
+        "revisionSuffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User friendly suffix that is appended to the revision name"
+          }
+        },
+        "terminationGracePeriodSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds."
+          }
+        },
+        "initContainers": {
+          "target": "com.azure.app#TemplateInputInitContainersList",
+          "traits": {
+            "smithy.api#documentation": "List of specialized containers that run before app containers."
+          }
+        },
+        "containers": {
+          "target": "com.azure.app#TemplateInputContainersList",
+          "traits": {
+            "smithy.api#documentation": "List of container definitions for the Container App."
+          }
+        },
+        "scale": {
+          "target": "com.azure.app#Scale",
+          "traits": {
+            "smithy.api#documentation": "Scaling properties for the Container App."
+          }
+        },
+        "volumes": {
+          "target": "com.azure.app#TemplateInputVolumesList",
+          "traits": {
+            "smithy.api#documentation": "List of volume definitions for the Container App."
+          }
+        },
+        "serviceBinds": {
+          "target": "com.azure.app#TemplateInputServiceBindsList",
+          "traits": {
+            "smithy.api#documentation": "List of container app services bound to the app"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container App versioned application definition.\nDefines the desired state of an immutable revision.\nAny changes to this section Will result in a new revision being created"
+      }
+    },
+    "com.azure.app#TemplateInputServiceBindsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#ServiceBind"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of container app services bound to the app"
+      }
+    },
+    "com.azure.app#TemplateInputVolumesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#Volume"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of volume definitions for the Container App."
+      }
+    },
+    "com.azure.app#TemplateInputContainersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#ContainerInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of container definitions for the Container App."
+      }
+    },
+    "com.azure.app#TemplateInputInitContainersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#BaseContainerInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of specialized containers that run before app containers."
+      }
+    },
+    "com.azure.app#ConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "secrets": {
+          "target": "com.azure.app#ConfigurationInputSecretsList",
+          "traits": {
+            "smithy.api#documentation": "Collection of secrets used by a Container app"
+          }
+        },
+        "activeRevisionsMode": {
+          "target": "com.azure.app#ConfigurationInputActiveRevisionsMode",
+          "traits": {
+            "smithy.api#documentation": "ActiveRevisionsMode controls how active revisions are handled for the Container app:\n<list><item>Multiple: multiple revisions can be active.</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode. If no value if provided, this is the default.</item></list>"
+          }
+        },
+        "ingress": {
+          "target": "com.azure.app#IngressInput",
+          "traits": {
+            "smithy.api#documentation": "Ingress configurations."
+          }
+        },
+        "registries": {
+          "target": "com.azure.app#ConfigurationInputRegistriesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of private container registry credentials for containers used by the Container app"
+          }
+        },
+        "dapr": {
+          "target": "com.azure.app#Dapr",
+          "traits": {
+            "smithy.api#documentation": "Dapr configuration for the Container App."
+          }
+        },
+        "runtime": {
+          "target": "com.azure.app#Runtime",
+          "traits": {
+            "smithy.api#documentation": "App runtime configuration for the Container App."
+          }
+        },
+        "maxInactiveRevisions": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Optional. Max inactive revisions a Container App can have."
+          }
+        },
+        "service": {
+          "target": "com.azure.app#Service",
+          "traits": {
+            "smithy.api#documentation": "Container App to be a dev Container App Service"
+          }
+        },
+        "identitySettings": {
+          "target": "com.azure.app#ConfigurationInputIdentitySettingsList",
+          "traits": {
+            "smithy.api#documentation": "Optional settings for Managed Identities that are assigned to the Container App. If a Managed Identity is not specified here, default settings will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Non versioned Container App configuration properties that define the mutable settings of a Container app"
+      }
+    },
+    "com.azure.app#ConfigurationInputIdentitySettingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#IdentitySettings"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional settings for Managed Identities that are assigned to the Container App. If a Managed Identity is not specified here, default settings will be used."
+      }
+    },
+    "com.azure.app#ConfigurationInputRegistriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#RegistryCredentials"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of private container registry credentials for containers used by the Container app"
+      }
+    },
+    "com.azure.app#IngressInput": {
+      "type": "structure",
+      "members": {
+        "external": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Bool indicating if app exposes an external http endpoint"
+          }
+        },
+        "targetPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Target Port in containers for traffic from ingress"
+          }
+        },
+        "exposedPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Exposed Port in containers for TCP traffic from ingress"
+          }
+        },
+        "transport": {
+          "target": "com.azure.app#IngressInputTransport",
+          "traits": {
+            "smithy.api#documentation": "Ingress transport protocol"
+          }
+        },
+        "traffic": {
+          "target": "com.azure.app#IngressInputTrafficList",
+          "traits": {
+            "smithy.api#documentation": "Traffic weights for app's revisions"
+          }
+        },
+        "customDomains": {
+          "target": "com.azure.app#IngressInputCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "custom domain bindings for Container Apps' hostnames."
+          }
+        },
+        "allowInsecure": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections"
+          }
+        },
+        "ipSecurityRestrictions": {
+          "target": "com.azure.app#IngressInputIpSecurityRestrictionsList",
+          "traits": {
+            "smithy.api#documentation": "Rules to restrict incoming IP address."
+          }
+        },
+        "stickySessions": {
+          "target": "com.azure.app#IngressStickySessions",
+          "traits": {
+            "smithy.api#documentation": "Sticky Sessions for Single Revision Mode"
+          }
+        },
+        "clientCertificateMode": {
+          "target": "com.azure.app#IngressClientCertificateMode",
+          "traits": {
+            "smithy.api#documentation": "Client certificate mode for mTLS authentication. Ignore indicates server drops client certificate on forwarding. Accept indicates server forwards client certificate but does not require a client certificate. Require indicates server requires a client certificate."
+          }
+        },
+        "corsPolicy": {
+          "target": "com.azure.app#CorsPolicy",
+          "traits": {
+            "smithy.api#documentation": "CORS policy for container app"
+          }
+        },
+        "additionalPortMappings": {
+          "target": "com.azure.app#IngressInputAdditionalPortMappingsList",
+          "traits": {
+            "smithy.api#documentation": "Settings to expose additional ports on container app"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container App Ingress configuration."
+      }
+    },
+    "com.azure.app#IngressInputAdditionalPortMappingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#IngressPortMapping"
+      },
+      "traits": {
+        "smithy.api#documentation": "Settings to expose additional ports on container app"
+      }
+    },
+    "com.azure.app#IngressInputIpSecurityRestrictionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#IpSecurityRestrictionRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "Rules to restrict incoming IP address."
+      }
+    },
+    "com.azure.app#IngressInputCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#CustomDomain"
+      },
+      "traits": {
+        "smithy.api#documentation": "custom domain bindings for Container Apps' hostnames."
+      }
+    },
+    "com.azure.app#IngressInputTrafficList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#TrafficWeight"
+      },
+      "traits": {
+        "smithy.api#documentation": "Traffic weights for app's revisions"
+      }
+    },
+    "com.azure.app#IngressInputTransport": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTP2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http2"
+          }
+        },
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Ingress transport protocol"
+      }
+    },
+    "com.azure.app#ConfigurationInputActiveRevisionsMode": {
+      "type": "enum",
+      "members": {
+        "MULTIPLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Multiple"
+          }
+        },
+        "SINGLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Single"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ActiveRevisionsMode controls how active revisions are handled for the Container app:\n<list><item>Multiple: multiple revisions can be active.</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode. If no value if provided, this is the default.</item></list>"
+      }
+    },
+    "com.azure.app#ConfigurationInputSecretsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#Secret"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of secrets used by a Container app"
+      }
+    },
+    "com.azure.app#ContainerAppsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#ContainerAppsCreateOrUpdate": {
@@ -18808,16 +20515,81 @@
             "smithy.api#documentation": "Name of the Container App."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ContainerAppsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#ContainerAppPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "ContainerApp resource specific properties"
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.app#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
+          }
+        },
+        "identity": {
+          "target": "com.azure.app#ContainerAppsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.app#Kind",
+          "traits": {
+            "smithy.api#documentation": "Metadata to represent the container app kind, representing if a container app is workflowapp or functionapp."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ContainerAppsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.app#ContainerAppsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#ContainerAppsGet": {
@@ -19391,16 +21163,29 @@
             "smithy.api#documentation": "Name of the storage."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#ConnectedEnvironmentStoragePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Storage properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ConnectedEnvironmentStoragePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "azureFile": {
+          "target": "com.azure.app#AzureFileProperties",
+          "traits": {
+            "smithy.api#documentation": "Azure file properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage properties"
       }
     },
     "com.azure.app#ConnectedEnvironmentsStoragesGet": {
@@ -19823,11 +21608,10 @@
             "smithy.api#documentation": "Name of the Dapr Component."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#DaprComponentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Dapr Component resource specific properties"
           }
         }
       },
@@ -20075,11 +21859,16 @@
             "smithy.api#documentation": "Name of the connectedEnvironment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },
@@ -20263,16 +22052,27 @@
             "smithy.api#documentation": "Name of the Certificate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ConnectedEnvironmentsCertificatesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ConnectedEnvironmentsCertificatesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
       }
     },
     "com.azure.app#ConnectedEnvironmentsCertificatesCreateOrUpdate": {
@@ -20392,15 +22192,40 @@
             "smithy.api#documentation": "Name of the Certificate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ConnectedEnvironmentsCertificatesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#CertificatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Certificate resource specific properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ConnectedEnvironmentsCertificatesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#ConnectedEnvironmentsCertificatesGet": {
@@ -20842,16 +22667,27 @@
             "smithy.api#documentation": "Name of the connectedEnvironment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ConnectedEnvironmentsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ConnectedEnvironmentsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#ConnectedEnvironmentsCreateOrUpdate": {
@@ -20969,16 +22805,72 @@
             "smithy.api#documentation": "Name of the connectedEnvironment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#ConnectedEnvironmentsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#ConnectedEnvironmentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "ConnectedEnvironment resource specific properties"
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.app#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#ConnectedEnvironmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "staticIp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Static IP of the connectedEnvironment"
+          }
+        },
+        "daprAIConnectionString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Application Insights connection string used by Dapr to export Service to Service communication telemetry"
+          }
+        },
+        "customDomainConfiguration": {
+          "target": "com.azure.app#CustomDomainConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "Custom domain configuration for the environment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ConnectedEnvironment resource specific properties"
+      }
+    },
+    "com.azure.app#ConnectedEnvironmentsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#ConnectedEnvironmentsGet": {
@@ -23122,16 +25014,65 @@
             "smithy.api#documentation": "The name of the AgentConnector"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#AgentConnectorPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#AgentConnectorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint of the connector"
+          }
+        },
+        "dataSource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Data source connection string or endpoint"
+          }
+        },
+        "identity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identity used to access the data source"
+          }
+        },
+        "extendedProperties": {
+          "target": "com.azure.app#AgentConnectorPropertiesInputExtendedPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "Additional properties for the data connector which can be used to store custom key-value pairs"
+          }
+        },
+        "dataConnectorType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the data connector"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Agent Connector Properties"
+      }
+    },
+    "com.azure.app#AgentConnectorPropertiesInputExtendedPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional properties for the data connector which can be used to store custom key-value pairs"
       }
     },
     "com.azure.app#AgentsConnectorsGet": {
@@ -23522,16 +25463,141 @@
             "smithy.api#documentation": "The name of the Agent"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#AgentsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.app#AgentsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#AgentPatchProperties",
+          "traits": {
+            "smithy.api#documentation": "Agent specific properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#AgentPatchProperties": {
+      "type": "structure",
+      "members": {
+        "agentSpaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The agent space ID referenced by the agent"
+          }
+        },
+        "knowledgeGraphConfiguration": {
+          "target": "com.azure.app#KnowledgeGraphConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Knowledge graph configuration for agent"
+          }
+        },
+        "actionConfiguration": {
+          "target": "com.azure.app#ActionConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Configuration for action"
+          }
+        },
+        "logConfiguration": {
+          "target": "com.azure.app#LogConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Log configurations"
+          }
+        },
+        "incidentManagementConfiguration": {
+          "target": "com.azure.app#IncidentManagementConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Incident management configurations"
+          }
+        },
+        "upgradeChannel": {
+          "target": "com.azure.app#UpgradeChannel",
+          "traits": {
+            "smithy.api#documentation": "The upgrade channel of the agent"
+          }
+        },
+        "agentIdentity": {
+          "target": "com.azure.app#AgentIdentityPatch",
+          "traits": {
+            "smithy.api#documentation": "Agent identity configuration for accessing resources"
+          }
+        },
+        "defaultModel": {
+          "target": "com.azure.app#DefaultModel",
+          "traits": {
+            "smithy.api#documentation": "Default AI model configuration for the agent"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Agent specific properties for PATCH requests.\n\nPATCH request bodies must not include required properties and should not include read-only properties."
+      }
+    },
+    "com.azure.app#AgentIdentityPatch": {
+      "type": "structure",
+      "members": {
+        "initialSponsorGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Initial sponsor group ID (required for PUT but optional for PATCH)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Agent identity configuration for PATCH requests"
+      }
+    },
+    "com.azure.app#AgentsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#AgentsUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.app#AgentsUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.app#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.app#AgentsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.app#AgentsCreateOrUpdate": {
@@ -23693,16 +25759,149 @@
             "smithy.api#documentation": "The name of the Agent"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#AgentsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#AgentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.app#AgentsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#AgentsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#AgentsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.app#AgentsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.app#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.app#AgentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "agentSpaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The agent space ID referenced by the agent"
+          }
+        },
+        "knowledgeGraphConfiguration": {
+          "target": "com.azure.app#KnowledgeGraphConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Knowledge graph configuration for agent"
+          }
+        },
+        "actionConfiguration": {
+          "target": "com.azure.app#ActionConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Configuration for action"
+          }
+        },
+        "logConfiguration": {
+          "target": "com.azure.app#LogConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Log configurations"
+          }
+        },
+        "incidentManagementConfiguration": {
+          "target": "com.azure.app#IncidentManagementConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Incident management configurations"
+          }
+        },
+        "upgradeChannel": {
+          "target": "com.azure.app#UpgradeChannel",
+          "traits": {
+            "smithy.api#documentation": "The upgrade channel of the agent"
+          }
+        },
+        "agentIdentity": {
+          "target": "com.azure.app#AgentIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Agent identity configuration for accessing resources"
+          }
+        },
+        "defaultModel": {
+          "target": "com.azure.app#DefaultModel",
+          "traits": {
+            "smithy.api#documentation": "Default AI model configuration for the agent"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Agent"
+      }
+    },
+    "com.azure.app#AgentIdentityInput": {
+      "type": "structure",
+      "members": {
+        "initialSponsorGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Initial sponsor group ID (required for agent identity)",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Agent identity configuration"
+      }
+    },
+    "com.azure.app#AgentsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#AgentsGet": {
@@ -24484,16 +26683,65 @@
             "smithy.api#documentation": "The name of the AgentSpaceConnector"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.app#AgentSpaceConnectorPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#AgentSpaceConnectorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint of the connector"
+          }
+        },
+        "dataSource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Data source connection string or endpoint"
+          }
+        },
+        "identity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identity used to access the data source"
+          }
+        },
+        "extendedProperties": {
+          "target": "com.azure.app#AgentSpaceConnectorPropertiesInputExtendedPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "Additional properties for the data connector which can be used to store custom key-value pairs"
+          }
+        },
+        "dataConnectorType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the data connector"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Agent Space Connector Properties"
+      }
+    },
+    "com.azure.app#AgentSpaceConnectorPropertiesInputExtendedPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional properties for the data connector which can be used to store custom key-value pairs"
       }
     },
     "com.azure.app#AgentSpacesConnectorsGet": {
@@ -25184,16 +27432,170 @@
             "smithy.api#documentation": "The name of the AgentSpace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#AgentSpacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.app#AgentSpacesUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#AgentSpacePatchProperties",
+          "traits": {
+            "smithy.api#documentation": "Agent Space specific properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#AgentSpacePatchProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the Agent Space"
+          }
+        },
+        "policies": {
+          "target": "com.azure.app#AgentSpacePoliciesPatch",
+          "traits": {
+            "smithy.api#documentation": "Policy configurations for the Agent Space"
+          }
+        },
+        "maxAgentCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of agents allowed in the Agent Space"
+          }
+        },
+        "serviceTreeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Universal unique ID (UUID) of the Service Tree associated with this Agent Space"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Agent Space specific properties for PATCH requests.\n\nPATCH request bodies must not include required properties and should not include read-only properties."
+      }
+    },
+    "com.azure.app#AgentSpacePoliciesPatch": {
+      "type": "structure",
+      "members": {
+        "genevaActionsConfiguration": {
+          "target": "com.azure.app#GenevaActionsPolicyPatch",
+          "traits": {
+            "smithy.api#documentation": "Configuration for Geneva Actions policy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Policy configurations for an Agent Space (PATCH request model)"
+      }
+    },
+    "com.azure.app#GenevaActionsPolicyPatch": {
+      "type": "structure",
+      "members": {
+        "acisEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ACIS (Azure Container Instance Service) endpoint URL"
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Client ID for authentication"
+          }
+        },
+        "certificateSubjectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subject name of the certificate used for authentication"
+          }
+        },
+        "authenticationMode": {
+          "target": "com.azure.app#GenevaActionAuthenticationMode",
+          "traits": {
+            "smithy.api#documentation": "Authentication mode for Geneva Actions"
+          }
+        },
+        "extensionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Geneva extension"
+          }
+        },
+        "allowedActions": {
+          "target": "com.azure.app#GenevaActionsPolicyPatchAllowedActionsList",
+          "traits": {
+            "smithy.api#documentation": "Collection of allowed Geneva actions"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Geneva Actions policy configuration for Agent Space (PATCH request model)"
+      }
+    },
+    "com.azure.app#GenevaActionsPolicyPatchAllowedActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#GenevaActionConfig"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of allowed Geneva actions"
+      }
+    },
+    "com.azure.app#AgentSpacesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#AgentSpacesUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.app#AgentSpacesUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.app#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.app#AgentSpacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.app#AgentSpacesCreateOrUpdate": {
@@ -25355,16 +27757,178 @@
             "smithy.api#documentation": "The name of the AgentSpace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.app#AgentSpacesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.app#AgentSpacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.app#AgentSpacesCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.app#AgentSpacesCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.app#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.app#AgentSpacesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.app#AgentSpacesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.app#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.app#AgentSpacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the Agent Space"
+          }
+        },
+        "policies": {
+          "target": "com.azure.app#AgentSpacePoliciesInput",
+          "traits": {
+            "smithy.api#documentation": "Policy configurations for the Agent Space"
+          }
+        },
+        "maxAgentCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of agents allowed in the Agent Space"
+          }
+        },
+        "serviceTreeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Universal unique ID (UUID) of the Service Tree associated with this Agent Space"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Agent Space specific properties"
+      }
+    },
+    "com.azure.app#AgentSpacePoliciesInput": {
+      "type": "structure",
+      "members": {
+        "genevaActionsConfiguration": {
+          "target": "com.azure.app#GenevaActionsPolicyInput",
+          "traits": {
+            "smithy.api#documentation": "Configuration for Geneva Actions policy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Policy configurations for an Agent Space"
+      }
+    },
+    "com.azure.app#GenevaActionsPolicyInput": {
+      "type": "structure",
+      "members": {
+        "acisEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ACIS (Azure Container Instance Service) endpoint URL"
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Client ID for authentication"
+          }
+        },
+        "certificateSubjectName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subject name of the certificate used for authentication"
+          }
+        },
+        "authenticationMode": {
+          "target": "com.azure.app#GenevaActionAuthenticationMode",
+          "traits": {
+            "smithy.api#documentation": "Authentication mode for Geneva Actions"
+          }
+        },
+        "extensionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Geneva extension",
+            "smithy.api#required": {}
+          }
+        },
+        "allowedActions": {
+          "target": "com.azure.app#GenevaActionsPolicyInputAllowedActionsList",
+          "traits": {
+            "smithy.api#documentation": "Collection of allowed Geneva actions"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Geneva Actions policy configuration for Agent Space"
+      }
+    },
+    "com.azure.app#GenevaActionsPolicyInputAllowedActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.app#GenevaActionConfig"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of allowed Geneva actions"
+      }
+    },
+    "com.azure.app#AgentSpacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.app#AgentSpacesGet": {

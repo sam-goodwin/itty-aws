@@ -76,8 +76,7 @@ export type PlatformPlatformTypeEnum =
   | "CHROMEOS"
   | "LACROS_ARM64"
   | "FUCHSIA"
-  | "WIN_ARM64"
-  | (string & {});
+  | "WIN_ARM64";
 export const PlatformPlatformTypeEnum = /*@__PURE__*/ S.String;
 
 /** Each Platform is owned by a Product and owns a collection of channels. Available platforms are listed in Platform enum below. Not all Channels are available for every Platform (e.g. CANARY does not exist for LINUX). */
@@ -94,7 +93,7 @@ export const Platform = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Platform" }) as any as S.Schema<Platform>;
 
-export type PlatformList = Platform[];
+export type PlatformList = ReadonlyArray<Platform>;
 export const PlatformList = /*@__PURE__*/ S.Array(
   Platform,
 ) as any as S.Schema<PlatformList>;
@@ -149,8 +148,7 @@ export type ChannelChannelTypeEnum =
   | "ALL"
   | "EXTENDED"
   | "LTS"
-  | "LTC"
-  | (string & {});
+  | "LTC";
 export const ChannelChannelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Each Channel is owned by a Platform and owns a collection of versions. Possible Channels are listed in the Channel enum below. Not all Channels are available for every Platform (e.g. CANARY does not exist for LINUX). */
@@ -167,7 +165,7 @@ export const Channel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
-export type ChannelList = Channel[];
+export type ChannelList = ReadonlyArray<Channel>;
 export const ChannelList = /*@__PURE__*/ S.Array(
   Channel,
 ) as any as S.Schema<ChannelList>;
@@ -233,7 +231,7 @@ export const Version = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
-export type VersionList = Version[];
+export type VersionList = ReadonlyArray<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -285,7 +283,7 @@ export const ListPlatformsChannelsVersionsReleasesRequest =
     identifier: "ListPlatformsChannelsVersionsReleasesRequest",
   }) as any as S.Schema<ListPlatformsChannelsVersionsReleasesRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -304,7 +302,7 @@ export const RolloutData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RolloutData" }) as any as S.Schema<RolloutData>;
 
-export type RolloutDataList = RolloutData[];
+export type RolloutDataList = ReadonlyArray<RolloutData>;
 export const RolloutDataList = /*@__PURE__*/ S.Array(
   RolloutData,
 ) as any as S.Schema<RolloutDataList>;
@@ -352,7 +350,7 @@ export const Release = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Release" }) as any as S.Schema<Release>;
 
-export type ReleaseList = Release[];
+export type ReleaseList = ReadonlyArray<Release>;
 export const ReleaseList = /*@__PURE__*/ S.Array(
   Release,
 ) as any as S.Schema<ReleaseList>;

@@ -114,10 +114,7 @@ export const TaskChannelsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskChannelsDestroyResponse>;
 
 /** * `context_created` - context_created * `context_md_building` - context_md_building */
-export type EventEnum =
-  | "context_created"
-  | "context_md_building"
-  | (string & {});
+export type EventEnum = "context_created" | "context_md_building";
 export const EventEnum = /*@__PURE__*/ S.String;
 
 export interface TaskChannelsFeedCreateRequest {
@@ -210,7 +207,7 @@ export const TaskChannelsFeedListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskChannelsFeedListRequest>;
 
 export type PaginatedChannelFeedMessageDTOListResultsList =
-  ChannelFeedMessageDTO[];
+  ReadonlyArray<ChannelFeedMessageDTO>;
 export const PaginatedChannelFeedMessageDTOListResultsList =
   /*@__PURE__*/ S.Array(
     ChannelFeedMessageDTO,
@@ -257,7 +254,7 @@ export const TaskChannelsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaskChannelsListRequest",
 }) as any as S.Schema<TaskChannelsListRequest>;
 
-export type PaginatedChannelDTOListResultsList = ChannelDTO[];
+export type PaginatedChannelDTOListResultsList = ReadonlyArray<ChannelDTO>;
 export const PaginatedChannelDTOListResultsList = /*@__PURE__*/ S.Array(
   ChannelDTO,
 ) as any as S.Schema<PaginatedChannelDTOListResultsList>;

@@ -115,8 +115,7 @@ export type CheckStatusResponseStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ERROR"
-  | "AUTH_ERROR"
-  | (string & {});
+  | "AUTH_ERROR";
 export const CheckStatusResponseStateEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -246,7 +245,7 @@ export const DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest =
     identifier: "DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest",
   }) as any as S.Schema<DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -381,8 +380,7 @@ export type ExecuteHttpRequestRequestHttpMethodEnum =
   | "HTTP_METHOD_PATCH"
   | "HTTP_METHOD_DELETE"
   | "HTTP_METHOD_HEAD"
-  | "HTTP_METHOD_OPTIONS"
-  | (string & {});
+  | "HTTP_METHOD_OPTIONS";
 export const ExecuteHttpRequestRequestHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** A single HTTP header. Keys are case-insensitive. Multiple headers with the same key may be present. */
@@ -399,7 +397,7 @@ export const HttpHeader = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HttpHeader" }) as any as S.Schema<HttpHeader>;
 
-export type HttpHeaderList = HttpHeader[];
+export type HttpHeaderList = ReadonlyArray<HttpHeader>;
 export const HttpHeaderList = /*@__PURE__*/ S.Array(
   HttpHeader,
 ) as any as S.Schema<HttpHeaderList>;
@@ -506,7 +504,7 @@ export const ExecuteProjectsLocationsConnectionsActionsRequest =
     identifier: "ExecuteProjectsLocationsConnectionsActionsRequest",
   }) as any as S.Schema<ExecuteProjectsLocationsConnectionsActionsRequest>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -632,8 +630,7 @@ export type QueryParameterDataTypeEnum =
   | "SQLXML"
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE"
-  | (string & {});
+  | "TIMESTAMP_WITH_TIMEZONE";
 export const QueryParameterDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Query parameter definition */
@@ -648,7 +645,7 @@ export const QueryParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryParameter" }) as any as S.Schema<QueryParameter>;
 
-export type QueryParameterList = QueryParameter[];
+export type QueryParameterList = ReadonlyArray<QueryParameter>;
 export const QueryParameterList = /*@__PURE__*/ S.Array(
   QueryParameter,
 ) as any as S.Schema<QueryParameterList>;
@@ -727,8 +724,7 @@ export type ToolNameOperationEnum =
   | "GET"
   | "CREATE"
   | "UPDATE"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const ToolNameOperationEnum = /*@__PURE__*/ S.String;
 
 export interface ToolName {
@@ -747,7 +743,7 @@ export const ToolName = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ToolName" }) as any as S.Schema<ToolName>;
 
-export type ToolNameList = ToolName[];
+export type ToolNameList = ReadonlyArray<ToolName>;
 export const ToolNameList = /*@__PURE__*/ S.Array(
   ToolName,
 ) as any as S.Schema<ToolNameList>;
@@ -815,8 +811,7 @@ export const GenerateCustomToolspecResponse = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsConnectionsActionsViewEnum =
   | "ACTION_SCHEMA_VIEW_UNSPECIFIED"
   | "ACTION_SCHEMA_VIEW_BASIC"
-  | "ACTION_SCHEMA_VIEW_ENRICHED"
-  | (string & {});
+  | "ACTION_SCHEMA_VIEW_ENRICHED";
 export const GetProjectsLocationsConnectionsActionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -892,11 +887,10 @@ export type InputParameterDataTypeEnum =
   | "SQLXML"
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE"
-  | (string & {});
+  | "TIMESTAMP_WITH_TIMEZONE";
 export const InputParameterDataTypeEnum = /*@__PURE__*/ S.String;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -907,7 +901,7 @@ export const JsonSchemaMap = /*@__PURE__*/ S.Record(
   S.suspend(() => JsonSchema),
 ) as any as S.Schema<JsonSchemaMap>;
 
-export type JsonSchemaList = JsonSchema[];
+export type JsonSchemaList = ReadonlyArray<JsonSchema>;
 export const JsonSchemaList = /*@__PURE__*/ S.Array(
   S.suspend(() => JsonSchema),
 ) as any as S.Schema<JsonSchemaList>;
@@ -957,8 +951,7 @@ export type JsonSchemaJdbcTypeEnum =
   | "SQLXML"
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE"
-  | (string & {});
+  | "TIMESTAMP_WITH_TIMEZONE";
 export const JsonSchemaJdbcTypeEnum = /*@__PURE__*/ S.String;
 
 /** JsonSchema representation of schema metadata */
@@ -1145,7 +1138,7 @@ export const InputParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputParameter" }) as any as S.Schema<InputParameter>;
 
-export type InputParameterList = InputParameter[];
+export type InputParameterList = ReadonlyArray<InputParameter>;
 export const InputParameterList = /*@__PURE__*/ S.Array(
   InputParameter,
 ) as any as S.Schema<InputParameterList>;
@@ -1195,8 +1188,7 @@ export type ResultMetadataDataTypeEnum =
   | "SQLXML"
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE"
-  | (string & {});
+  | "TIMESTAMP_WITH_TIMEZONE";
 export const ResultMetadataDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Result Metadata message contains metadata about the result returned after executing an Action. */
@@ -1225,7 +1217,7 @@ export const ResultMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResultMetadata" }) as any as S.Schema<ResultMetadata>;
 
-export type ResultMetadataList = ResultMetadata[];
+export type ResultMetadataList = ReadonlyArray<ResultMetadata>;
 export const ResultMetadataList = /*@__PURE__*/ S.Array(
   ResultMetadata,
 ) as any as S.Schema<ResultMetadataList>;
@@ -1265,8 +1257,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsConnectionsEntityTypesViewEnum =
   | "ENTITY_TYPE_SCHEMA_VIEW_UNSPECIFIED"
   | "ENTITY_TYPE_SCHEMA_VIEW_BASIC"
-  | "ENTITY_TYPE_SCHEMA_VIEW_ENRICHED"
-  | (string & {});
+  | "ENTITY_TYPE_SCHEMA_VIEW_ENRICHED";
 export const GetProjectsLocationsConnectionsEntityTypesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1358,8 +1349,7 @@ export type FieldDataTypeEnum =
   | "SQLXML"
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
-  | "TIMESTAMP_WITH_TIMEZONE"
-  | (string & {});
+  | "TIMESTAMP_WITH_TIMEZONE";
 export const FieldDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message contains EntityType's Field metadata. */
@@ -1397,7 +1387,7 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
-export type FieldList = Field[];
+export type FieldList = ReadonlyArray<Field>;
 export const FieldList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<FieldList>;
@@ -1408,11 +1398,11 @@ export type EntityTypeOperationsItemEnum =
   | "GET"
   | "CREATE"
   | "UPDATE"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const EntityTypeOperationsItemEnum = /*@__PURE__*/ S.String;
 
-export type EntityTypeOperationsItemEnumList = EntityTypeOperationsItemEnum[];
+export type EntityTypeOperationsItemEnumList =
+  ReadonlyArray<EntityTypeOperationsItemEnum>;
 export const EntityTypeOperationsItemEnumList = /*@__PURE__*/ S.Array(
   EntityTypeOperationsItemEnum,
 ) as any as S.Schema<EntityTypeOperationsItemEnumList>;
@@ -1578,8 +1568,7 @@ export const ListCustomToolNamesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsConnectionsActionsViewEnum =
   | "ACTION_VIEW_UNSPECIFIED"
   | "ACTION_VIEW_BASIC"
-  | "ACTION_VIEW_FULL"
-  | (string & {});
+  | "ACTION_VIEW_FULL";
 export const ListProjectsLocationsConnectionsActionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1616,7 +1605,7 @@ export const ListProjectsLocationsConnectionsActionsRequest =
     identifier: "ListProjectsLocationsConnectionsActionsRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionsActionsRequest>;
 
-export type ActionList = Action[];
+export type ActionList = ReadonlyArray<Action>;
 export const ActionList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<ActionList>;
@@ -1646,8 +1635,7 @@ export const ListActionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsConnectionsEntityTypesViewEnum =
   | "ENTITY_TYPE_VIEW_UNSPECIFIED"
   | "ENTITY_TYPE_VIEW_BASIC"
-  | "ENTITY_TYPE_VIEW_FULL"
-  | (string & {});
+  | "ENTITY_TYPE_VIEW_FULL";
 export const ListProjectsLocationsConnectionsEntityTypesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1684,7 +1672,7 @@ export const ListProjectsLocationsConnectionsEntityTypesRequest =
     identifier: "ListProjectsLocationsConnectionsEntityTypesRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesRequest>;
 
-export type EntityTypeList = EntityType[];
+export type EntityTypeList = ReadonlyArray<EntityType>;
 export const EntityTypeList = /*@__PURE__*/ S.Array(
   EntityType,
 ) as any as S.Schema<EntityTypeList>;
@@ -1748,7 +1736,7 @@ export const ListProjectsLocationsConnectionsEntityTypesEntitiesRequest =
     identifier: "ListProjectsLocationsConnectionsEntityTypesEntitiesRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
 
-export type EntityList = Entity[];
+export type EntityList = ReadonlyArray<Entity>;
 export const EntityList = /*@__PURE__*/ S.Array(
   Entity,
 ) as any as S.Schema<EntityList>;
@@ -1825,7 +1813,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
-export type ResourceList = Resource[];
+export type ResourceList = ReadonlyArray<Resource>;
 export const ResourceList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<ResourceList>;
@@ -1933,7 +1921,7 @@ export const Tool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tool" }) as any as S.Schema<Tool>;
 
-export type ToolList = Tool[];
+export type ToolList = ReadonlyArray<Tool>;
 export const ToolList = /*@__PURE__*/ S.Array(
   Tool,
 ) as any as S.Schema<ToolList>;

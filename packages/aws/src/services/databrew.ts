@@ -188,13 +188,7 @@ export const BatchDeleteRecipeVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDeleteRecipeVersionResponse",
 }) as any as S.Schema<BatchDeleteRecipeVersionResponse>;
 export type DatasetName = string;
-export type InputFormat =
-  | "CSV"
-  | "JSON"
-  | "PARQUET"
-  | "EXCEL"
-  | "ORC"
-  | (string & {});
+export type InputFormat = "CSV" | "JSON" | "PARQUET" | "EXCEL" | "ORC";
 export const InputFormat = /*@__PURE__*/ S.String;
 
 export type MultiLine = boolean;
@@ -338,10 +332,10 @@ export const FilterExpression = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilterExpression",
 }) as any as S.Schema<FilterExpression>;
 export type MaxFiles = number;
-export type OrderedBy = "LAST_MODIFIED_DATE" | (string & {});
+export type OrderedBy = "LAST_MODIFIED_DATE";
 export const OrderedBy = /*@__PURE__*/ S.String;
 
-export type Order = "DESCENDING" | "ASCENDING" | (string & {});
+export type Order = "DESCENDING" | "ASCENDING";
 export const Order = /*@__PURE__*/ S.String;
 
 export interface FilesLimit {
@@ -357,7 +351,7 @@ export const FilesLimit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FilesLimit" }) as any as S.Schema<FilesLimit>;
 export type PathParameterName = string;
-export type ParameterType = "Datetime" | "Number" | "String" | (string & {});
+export type ParameterType = "Datetime" | "Number" | "String";
 export const ParameterType = /*@__PURE__*/ S.String;
 
 export type DatetimeFormat = string;
@@ -458,11 +452,11 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
 export type EncryptionKeyArn = string;
-export type EncryptionMode = "SSE-KMS" | "SSE-S3" | (string & {});
+export type EncryptionMode = "SSE-KMS" | "SSE-S3";
 export const EncryptionMode = /*@__PURE__*/ S.String;
 
 export type JobName = string;
-export type LogSubscription = "ENABLE" | "DISABLE" | (string & {});
+export type LogSubscription = "ENABLE" | "DISABLE";
 export const LogSubscription = /*@__PURE__*/ S.String;
 
 export type MaxCapacity = number;
@@ -569,7 +563,7 @@ export const ProfileConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProfileConfiguration",
 }) as any as S.Schema<ProfileConfiguration>;
-export type ValidationMode = "CHECK_ALL" | (string & {});
+export type ValidationMode = "CHECK_ALL";
 export const ValidationMode = /*@__PURE__*/ S.String;
 
 export interface ValidationConfiguration {
@@ -589,7 +583,7 @@ export const ValidationConfigurationList = /*@__PURE__*/ S.Array(
   ValidationConfiguration,
 );
 export type Timeout = number;
-export type SampleMode = "FULL_DATASET" | "CUSTOM_ROWS" | (string & {});
+export type SampleMode = "FULL_DATASET" | "CUSTOM_ROWS";
 export const SampleMode = /*@__PURE__*/ S.String;
 
 export type JobSize = number;
@@ -655,7 +649,7 @@ export const CreateProfileJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProfileJobResponse>;
 export type ProjectName = string;
 export type SampleSize = number;
-export type SampleType = "FIRST_N" | "LAST_N" | "RANDOM" | (string & {});
+export type SampleType = "FIRST_N" | "LAST_N" | "RANDOM";
 export const SampleType = /*@__PURE__*/ S.String;
 
 export interface Sample {
@@ -784,8 +778,7 @@ export type CompressionFormat =
   | "LZO"
   | "BROTLI"
   | "ZSTD"
-  | "ZLIB"
-  | (string & {});
+  | "ZLIB";
 export const CompressionFormat = /*@__PURE__*/ S.String;
 
 export type OutputFormat =
@@ -796,8 +789,7 @@ export type OutputFormat =
   | "AVRO"
   | "ORC"
   | "XML"
-  | "TABLEAUHYPER"
-  | (string & {});
+  | "TABLEAUHYPER";
 export const OutputFormat = /*@__PURE__*/ S.String;
 
 export type ColumnNameList = string[];
@@ -881,7 +873,7 @@ export const DataCatalogOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataCatalogOutput>;
 export type DataCatalogOutputList = DataCatalogOutput[];
 export const DataCatalogOutputList = /*@__PURE__*/ S.Array(DataCatalogOutput);
-export type DatabaseOutputMode = "NEW_TABLE" | (string & {});
+export type DatabaseOutputMode = "NEW_TABLE";
 export const DatabaseOutputMode = /*@__PURE__*/ S.String;
 
 export interface DatabaseOutput {
@@ -971,11 +963,10 @@ export type ThresholdType =
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN_OR_EQUAL"
   | "GREATER_THAN"
-  | "LESS_THAN"
-  | (string & {});
+  | "LESS_THAN";
 export const ThresholdType = /*@__PURE__*/ S.String;
 
-export type ThresholdUnit = "COUNT" | "PERCENTAGE" | (string & {});
+export type ThresholdUnit = "COUNT" | "PERCENTAGE";
 export const ThresholdUnit = /*@__PURE__*/ S.String;
 
 export interface Threshold {
@@ -1259,7 +1250,7 @@ export const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDatasetRequest>;
 export type CreatedBy = string;
 export type LastModifiedBy = string;
-export type Source = "S3" | "DATA-CATALOG" | "DATABASE" | (string & {});
+export type Source = "S3" | "DATA-CATALOG" | "DATABASE";
 export const Source = /*@__PURE__*/ S.String;
 
 export interface DescribeDatasetResponse {
@@ -1313,7 +1304,7 @@ export const DescribeJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeJobRequest",
 }) as any as S.Schema<DescribeJobRequest>;
-export type JobType = "PROFILE" | "RECIPE" | (string & {});
+export type JobType = "PROFILE" | "RECIPE";
 export const JobType = /*@__PURE__*/ S.String;
 
 export interface DescribeJobResponse {
@@ -1406,8 +1397,7 @@ export type JobRunState =
   | "STOPPED"
   | "SUCCEEDED"
   | "FAILED"
-  | "TIMEOUT"
-  | (string & {});
+  | "TIMEOUT";
 export const JobRunState = /*@__PURE__*/ S.String;
 
 export type LogGroupName = string;
@@ -1485,8 +1475,7 @@ export type SessionStatus =
   | "ROTATING"
   | "TERMINATED"
   | "TERMINATING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const SessionStatus = /*@__PURE__*/ S.String;
 
 export type OpenedBy = string;
@@ -2273,7 +2262,7 @@ export type HiddenColumnList = string[];
 export const HiddenColumnList = /*@__PURE__*/ S.Array(S.String);
 export type StartRowIndex = number;
 export type RowRange = number;
-export type AnalyticsMode = "ENABLE" | "DISABLE" | (string & {});
+export type AnalyticsMode = "ENABLE" | "DISABLE";
 export const AnalyticsMode = /*@__PURE__*/ S.String;
 
 export interface ViewFrame {

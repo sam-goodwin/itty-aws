@@ -131,7 +131,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.product_tours#UserBasic"
+          "target": "com.posthog.product_tours#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "updated_at": {
           "target": "smithy.api#String"
@@ -529,20 +532,11 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "description": {
           "target": "smithy.api#String"
-        },
-        "internal_targeting_flag": {
-          "target": "com.posthog.product_tours#MinimalFeatureFlag"
-        },
-        "linked_flag": {
-          "target": "com.posthog.product_tours#MinimalFeatureFlag"
         },
         "linked_flag_id": {
           "target": "smithy.api#Integer",
@@ -571,15 +565,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.product_tours#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
         "archived": {
           "target": "smithy.api#Boolean"
         },
@@ -594,7 +579,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.product_tours#ProductTourSerializerCreateUpdateOnly": {
+    "com.posthog.product_tours#ProductTourSerializerCreateUpdateOnlyOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -612,15 +597,6 @@
         "linked_flag": {
           "target": "com.posthog.product_tours#MinimalFeatureFlag"
         },
-        "linked_flag_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "targeting_flag_filters": {
-          "target": "smithy.api#Document"
-        },
         "content": {
           "target": "smithy.api#Document"
         },
@@ -643,19 +619,16 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.product_tours#UserBasic"
+          "target": "com.posthog.product_tours#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "updated_at": {
           "target": "smithy.api#String"
         },
         "archived": {
           "target": "smithy.api#Boolean"
-        },
-        "creation_context": {
-          "target": "com.posthog.product_tours#ProductTourSerializerCreateUpdateOnlyCreationContextEnum",
-          "traits": {
-            "smithy.api#documentation": "Where the tour was created/updated from\n\n* `app` - app\n* `toolbar` - toolbar"
-          }
         }
       },
       "traits": {
@@ -668,7 +641,7 @@
         "target": "com.posthog.product_tours#ProductToursCreateRequest"
       },
       "output": {
-        "target": "com.posthog.product_tours#ProductTourSerializerCreateUpdateOnly"
+        "target": "com.posthog.product_tours#ProductTourSerializerCreateUpdateOnlyOutput"
       },
       "errors": [
         {
@@ -739,18 +712,6 @@
         "smithy.api#documentation": "Create, read, update, and manage product tours and their targeting."
       }
     },
-    "com.posthog.product_tours#ProductToursUpdateRequestTargetingFlagFiltersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {
-        "smithy.api#documentation": "Return the targeting flag filters, excluding the base exclusion properties."
-      }
-    },
     "com.posthog.product_tours#ProductToursUpdateRequest": {
       "type": "structure",
       "members": {
@@ -776,27 +737,8 @@
         "description": {
           "target": "smithy.api#String"
         },
-        "internal_targeting_flag": {
-          "target": "com.posthog.product_tours#MinimalFeatureFlag"
-        },
-        "linked_flag": {
-          "target": "com.posthog.product_tours#MinimalFeatureFlag"
-        },
-        "targeting_flag_filters": {
-          "target": "com.posthog.product_tours#ProductToursUpdateRequestTargetingFlagFiltersMap",
-          "traits": {
-            "smithy.api#documentation": "Return the targeting flag filters, excluding the base exclusion properties.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "content": {
           "target": "smithy.api#Document"
-        },
-        "draft_content": {
-          "target": "smithy.api#Document"
-        },
-        "has_draft": {
-          "target": "smithy.api#Boolean"
         },
         "auto_launch": {
           "target": "smithy.api#Boolean"
@@ -813,24 +755,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.product_tours#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
         "archived": {
           "target": "smithy.api#Boolean"
-        },
-        "search_match_type": {
-          "target": "com.posthog.product_tours#SearchMatchTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -890,12 +816,6 @@
         "description": {
           "target": "smithy.api#String"
         },
-        "internal_targeting_flag": {
-          "target": "com.posthog.product_tours#MinimalFeatureFlag"
-        },
-        "linked_flag": {
-          "target": "com.posthog.product_tours#MinimalFeatureFlag"
-        },
         "linked_flag_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -923,15 +843,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.product_tours#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
         "archived": {
           "target": "smithy.api#Boolean"
         },
@@ -952,7 +863,7 @@
         "target": "com.posthog.product_tours#ProductToursPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.product_tours#ProductTourSerializerCreateUpdateOnly"
+        "target": "com.posthog.product_tours#ProductTourSerializerCreateUpdateOnlyOutput"
       },
       "errors": [
         {
@@ -1097,12 +1008,6 @@
         "description": {
           "target": "smithy.api#String"
         },
-        "internal_targeting_flag": {
-          "target": "com.posthog.product_tours#MinimalFeatureFlag"
-        },
-        "linked_flag": {
-          "target": "com.posthog.product_tours#MinimalFeatureFlag"
-        },
         "linked_flag_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -1129,15 +1034,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.product_tours#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         },
         "archived": {
           "target": "smithy.api#Boolean"
@@ -1376,12 +1272,6 @@
         "description": {
           "target": "smithy.api#String"
         },
-        "internal_targeting_flag": {
-          "target": "com.posthog.product_tours#MinimalFeatureFlag"
-        },
-        "linked_flag": {
-          "target": "com.posthog.product_tours#MinimalFeatureFlag"
-        },
         "linked_flag_id": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -1408,15 +1298,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.product_tours#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         },
         "archived": {
           "target": "smithy.api#Boolean"

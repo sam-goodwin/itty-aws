@@ -424,9 +424,6 @@
             "smithy.api#required": {}
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -856,12 +853,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "group_type": {
-          "target": "smithy.api#String"
-        },
-        "group_type_index": {
-          "target": "smithy.api#Integer"
-        },
         "name_singular": {
           "target": "smithy.api#String",
           "traits": {
@@ -942,12 +933,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "group_type": {
-          "target": "smithy.api#String"
-        },
-        "group_type_index": {
-          "target": "smithy.api#Integer"
-        },
         "name_singular": {
           "target": "smithy.api#String",
           "traits": {
@@ -1027,12 +1012,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "group_type": {
-          "target": "smithy.api#String"
-        },
-        "group_type_index": {
-          "target": "smithy.api#Integer"
         },
         "name_singular": {
           "target": "smithy.api#String",

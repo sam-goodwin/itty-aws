@@ -1484,16 +1484,588 @@
             "smithy.api#documentation": "The constant value for the application name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The ETag for the application"
+          }
+        },
+        "tags": {
+          "target": "com.azure.hdinsight#ApplicationsCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags for the application."
+          }
+        },
+        "properties": {
+          "target": "com.azure.hdinsight#ApplicationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the application."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "computeProfile": {
+          "target": "com.azure.hdinsight#ApplicationPropertiesInputComputeProfile",
+          "traits": {
+            "smithy.api#documentation": "Describes the compute profile."
+          }
+        },
+        "installScriptActions": {
+          "target": "com.azure.hdinsight#ApplicationPropertiesInputInstallScriptActionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of install script actions."
+          }
+        },
+        "uninstallScriptActions": {
+          "target": "com.azure.hdinsight#ApplicationPropertiesInputUninstallScriptActionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of uninstall script actions."
+          }
+        },
+        "httpsEndpoints": {
+          "target": "com.azure.hdinsight#ApplicationPropertiesInputHttpsEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "The list of application HTTPS endpoints."
+          }
+        },
+        "sshEndpoints": {
+          "target": "com.azure.hdinsight#ApplicationPropertiesInputSshEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "The list of application SSH endpoints."
+          }
+        },
+        "applicationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The application type."
+          }
+        },
+        "errors": {
+          "target": "com.azure.hdinsight#ApplicationPropertiesInputErrorsList",
+          "traits": {
+            "smithy.api#documentation": "The list of errors."
+          }
+        },
+        "privateLinkConfigurations": {
+          "target": "com.azure.hdinsight#ApplicationPropertiesInputPrivateLinkConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "The private link configurations."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The HDInsight cluster application GET response."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputPrivateLinkConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#ApplicationPropertiesInputPrivateLinkConfigurationsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The private link configurations."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputPrivateLinkConfigurationsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of private link configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hdinsight#PrivateLinkConfigurationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The private link configuration properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private link configuration."
+      }
+    },
+    "com.azure.hdinsight#PrivateLinkConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The HDInsight private linkable sub-resource name to apply the private link configuration to. For example, 'headnode', 'gateway', 'edgenode'.",
+            "smithy.api#required": {}
+          }
+        },
+        "ipConfigurations": {
+          "target": "com.azure.hdinsight#PrivateLinkConfigurationPropertiesInputIpConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "The IP configurations for the private link service.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private link configuration properties."
+      }
+    },
+    "com.azure.hdinsight#PrivateLinkConfigurationPropertiesInputIpConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#IPConfigurationInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IP configurations for the private link service."
+      }
+    },
+    "com.azure.hdinsight#IPConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of private link IP configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hdinsight#IPConfigurationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The private link ip configuration properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The ip configurations for the private link service."
+      }
+    },
+    "com.azure.hdinsight#IPConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "primary": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether this IP configuration is primary for the corresponding NIC."
+          }
+        },
+        "privateIPAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address."
+          }
+        },
+        "privateIPAllocationMethod": {
+          "target": "com.azure.hdinsight#IPConfigurationPropertiesInputPrivateIPAllocationMethod",
+          "traits": {
+            "smithy.api#documentation": "The method that private IP address is allocated."
+          }
+        },
+        "subnet": {
+          "target": "com.azure.hdinsight#ResourceId",
+          "traits": {
+            "smithy.api#documentation": "The subnet resource id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private link ip configuration properties."
+      }
+    },
+    "com.azure.hdinsight#IPConfigurationPropertiesInputPrivateIPAllocationMethod": {
+      "type": "enum",
+      "members": {
+        "DYNAMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic"
+          }
+        },
+        "STATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "static"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The method that private IP address is allocated."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#ApplicationPropertiesInputErrorsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of errors."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputErrorsItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error code."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The error message associated with the cluster creation."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputSshEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#ApplicationGetEndpoint"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of application SSH endpoints."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputHttpsEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#ApplicationGetHttpsEndpointInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of application HTTPS endpoints."
+      }
+    },
+    "com.azure.hdinsight#ApplicationGetHttpsEndpointInput": {
+      "type": "structure",
+      "members": {
+        "accessModes": {
+          "target": "com.azure.hdinsight#ApplicationGetHttpsEndpointInputAccessModesList",
+          "traits": {
+            "smithy.api#documentation": "The list of access modes for the application."
+          }
+        },
+        "destinationPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The destination port to connect to."
+          }
+        },
+        "privateIPAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private ip address of the endpoint."
+          }
+        },
+        "subDomainSuffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subdomain suffix of the application."
+          }
+        },
+        "disableGatewayAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value indicates whether to disable GatewayAuth."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets the application HTTP endpoints."
+      }
+    },
+    "com.azure.hdinsight#ApplicationGetHttpsEndpointInputAccessModesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of access modes for the application."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputUninstallScriptActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#ApplicationPropertiesInputUninstallScriptActionsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of uninstall script actions."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputUninstallScriptActionsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the script action.",
+            "smithy.api#required": {}
+          }
+        },
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI to the script.",
+            "smithy.api#required": {}
+          }
+        },
+        "parameters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The parameters for the script"
+          }
+        },
+        "roles": {
+          "target": "com.azure.hdinsight#ApplicationPropertiesInputUninstallScriptActionsItemRolesList",
+          "traits": {
+            "smithy.api#documentation": "The list of roles where script will be executed.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a script action on a running cluster."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputUninstallScriptActionsItemRolesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of roles where script will be executed."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputInstallScriptActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#ApplicationPropertiesInputInstallScriptActionsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of install script actions."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputInstallScriptActionsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the script action.",
+            "smithy.api#required": {}
+          }
+        },
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI to the script.",
+            "smithy.api#required": {}
+          }
+        },
+        "parameters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The parameters for the script"
+          }
+        },
+        "roles": {
+          "target": "com.azure.hdinsight#ApplicationPropertiesInputInstallScriptActionsItemRolesList",
+          "traits": {
+            "smithy.api#documentation": "The list of roles where script will be executed.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a script action on a running cluster."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputInstallScriptActionsItemRolesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of roles where script will be executed."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputComputeProfile": {
+      "type": "structure",
+      "members": {
+        "roles": {
+          "target": "com.azure.hdinsight#ApplicationPropertiesInputComputeProfileRolesList",
+          "traits": {
+            "smithy.api#documentation": "The list of roles in the cluster."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the compute profile."
+      }
+    },
+    "com.azure.hdinsight#ApplicationPropertiesInputComputeProfileRolesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#RoleInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of roles in the cluster."
+      }
+    },
+    "com.azure.hdinsight#RoleInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the role."
+          }
+        },
+        "minInstanceCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum instance count of the cluster."
+          }
+        },
+        "targetInstanceCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The instance count of the cluster."
+          }
+        },
+        "VMGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the virtual machine group."
+          }
+        },
+        "autoscale": {
+          "target": "com.azure.hdinsight#Autoscale",
+          "traits": {
+            "smithy.api#documentation": "The autoscale configurations."
+          }
+        },
+        "hardwareProfile": {
+          "target": "com.azure.hdinsight#HardwareProfile",
+          "traits": {
+            "smithy.api#documentation": "The hardware profile."
+          }
+        },
+        "osProfile": {
+          "target": "com.azure.hdinsight#OsProfile",
+          "traits": {
+            "smithy.api#documentation": "The operating system profile."
+          }
+        },
+        "virtualNetworkProfile": {
+          "target": "com.azure.hdinsight#VirtualNetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "The virtual network profile."
+          }
+        },
+        "dataDisksGroups": {
+          "target": "com.azure.hdinsight#RoleInputDataDisksGroupsList",
+          "traits": {
+            "smithy.api#documentation": "The data disks groups for the role."
+          }
+        },
+        "scriptActions": {
+          "target": "com.azure.hdinsight#RoleInputScriptActionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of script actions on the role."
+          }
+        },
+        "encryptDataDisks": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether encrypt the data disks."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a role on the cluster."
+      }
+    },
+    "com.azure.hdinsight#RoleInputScriptActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#RoleInputScriptActionsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of script actions on the role."
+      }
+    },
+    "com.azure.hdinsight#RoleInputScriptActionsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the script action.",
+            "smithy.api#required": {}
+          }
+        },
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI to the script.",
+            "smithy.api#required": {}
+          }
+        },
+        "parameters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The parameters for the script provided.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a script action on role on the cluster."
+      }
+    },
+    "com.azure.hdinsight#RoleInputDataDisksGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#DataDisksGroupsInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The data disks groups for the role."
+      }
+    },
+    "com.azure.hdinsight#DataDisksGroupsInput": {
+      "type": "structure",
+      "members": {
+        "disksPerNode": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of disks per node."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The data disks groups for the role."
+      }
+    },
+    "com.azure.hdinsight#ApplicationsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags for the application."
       }
     },
     "com.azure.hdinsight#ApplicationsGet": {
@@ -2021,11 +2593,23 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "applicationId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The application id."
+          }
+        },
+        "certificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate in base64 encoded format."
+          }
+        },
+        "certificatePassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password of the certificate.",
+            "smithy.api#sensitive": {}
           }
         }
       },
@@ -2184,11 +2768,26 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "restAuthCredential_isEnabled": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Indicates whether or not the gateway settings based authorization is enabled.",
+            "smithy.api#jsonName": "restAuthCredential.isEnabled"
+          }
+        },
+        "restAuthCredential_username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The gateway settings user name.",
+            "smithy.api#jsonName": "restAuthCredential.username"
+          }
+        },
+        "restAuthCredential_password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The gateway settings user password.",
+            "smithy.api#jsonName": "restAuthCredential.password",
+            "smithy.api#sensitive": {}
           }
         }
       },
@@ -2323,11 +2922,22 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "vaultUri": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Base key vault URI where the customers key is located eg. https://myvault.vault.azure.net"
+          }
+        },
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key name that is used for enabling disk encryption."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specific key version that is used for enabling disk encryption."
           }
         }
       },
@@ -3886,11 +4496,10 @@
             "smithy.api#documentation": "The constant value for the roleName"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "autoscale": {
+          "target": "com.azure.hdinsight#Autoscale",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The autoscale configuration."
           }
         }
       },
@@ -3964,11 +4573,10 @@
             "smithy.api#documentation": "The constant value for the roleName"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targetInstanceCount": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The target instance count for the operation."
           }
         }
       },
@@ -4326,16 +4934,28 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hdinsight#ClustersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource tags.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hdinsight#ClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.hdinsight#ClustersCreate": {
@@ -4582,16 +5202,324 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The location of the cluster."
+          }
+        },
+        "tags": {
+          "target": "com.azure.hdinsight#ClustersCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "zones": {
+          "target": "com.azure.hdinsight#ClustersCreateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The availability zones."
+          }
+        },
+        "properties": {
+          "target": "com.azure.hdinsight#ClusterCreatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The cluster create parameters."
+          }
+        },
+        "identity": {
+          "target": "com.azure.hdinsight#ClusterIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the cluster, if configured."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hdinsight#ClusterIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.hdinsight#ClusterIdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.hdinsight#ClusterIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the cluster."
+      }
+    },
+    "com.azure.hdinsight#ClusterIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.hdinsight#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.hdinsight#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant id of user assigned identity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The User Assigned Identity"
+      }
+    },
+    "com.azure.hdinsight#ClusterIdentityInputType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        },
+        "SYSTEMASSIGNED_USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned, UserAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of identity used for the cluster. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities."
+      }
+    },
+    "com.azure.hdinsight#ClusterCreatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "clusterVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the cluster."
+          }
+        },
+        "osType": {
+          "target": "com.azure.hdinsight#ClusterCreatePropertiesInputOsType",
+          "traits": {
+            "smithy.api#documentation": "The type of operating system."
+          }
+        },
+        "tier": {
+          "target": "com.azure.hdinsight#ClusterCreatePropertiesInputTier",
+          "traits": {
+            "smithy.api#documentation": "The cluster tier."
+          }
+        },
+        "clusterDefinition": {
+          "target": "com.azure.hdinsight#ClusterDefinition",
+          "traits": {
+            "smithy.api#documentation": "The cluster definition."
+          }
+        },
+        "kafkaRestProperties": {
+          "target": "com.azure.hdinsight#KafkaRestProperties",
+          "traits": {
+            "smithy.api#documentation": "The cluster kafka rest proxy configuration."
+          }
+        },
+        "securityProfile": {
+          "target": "com.azure.hdinsight#SecurityProfile",
+          "traits": {
+            "smithy.api#documentation": "The security profile."
+          }
+        },
+        "computeProfile": {
+          "target": "com.azure.hdinsight#ComputeProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The compute profile."
+          }
+        },
+        "storageProfile": {
+          "target": "com.azure.hdinsight#StorageProfile",
+          "traits": {
+            "smithy.api#documentation": "The storage profile."
+          }
+        },
+        "diskEncryptionProperties": {
+          "target": "com.azure.hdinsight#DiskEncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "The disk encryption properties."
+          }
+        },
+        "encryptionInTransitProperties": {
+          "target": "com.azure.hdinsight#EncryptionInTransitProperties",
+          "traits": {
+            "smithy.api#documentation": "The encryption-in-transit properties."
+          }
+        },
+        "minSupportedTlsVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The minimal supported tls version."
+          }
+        },
+        "networkProperties": {
+          "target": "com.azure.hdinsight#NetworkProperties",
+          "traits": {
+            "smithy.api#documentation": "The network properties."
+          }
+        },
+        "computeIsolationProperties": {
+          "target": "com.azure.hdinsight#ComputeIsolationProperties",
+          "traits": {
+            "smithy.api#documentation": "The compute isolation properties."
+          }
+        },
+        "privateLinkConfigurations": {
+          "target": "com.azure.hdinsight#ClusterCreatePropertiesInputPrivateLinkConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "The private link configurations."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The cluster create parameters."
+      }
+    },
+    "com.azure.hdinsight#ClusterCreatePropertiesInputPrivateLinkConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#PrivateLinkConfigurationInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The private link configurations."
+      }
+    },
+    "com.azure.hdinsight#PrivateLinkConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of private link configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hdinsight#PrivateLinkConfigurationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The private link configuration properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private link configuration."
+      }
+    },
+    "com.azure.hdinsight#ComputeProfileInput": {
+      "type": "structure",
+      "members": {
+        "roles": {
+          "target": "com.azure.hdinsight#ComputeProfileInputRolesList",
+          "traits": {
+            "smithy.api#documentation": "The list of roles in the cluster."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the compute profile."
+      }
+    },
+    "com.azure.hdinsight#ComputeProfileInputRolesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#RoleInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of roles in the cluster."
+      }
+    },
+    "com.azure.hdinsight#ClusterCreatePropertiesInputTier": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "PREMIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Premium"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The cluster tier."
+      }
+    },
+    "com.azure.hdinsight#ClusterCreatePropertiesInputOsType": {
+      "type": "enum",
+      "members": {
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        },
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of operating system."
+      }
+    },
+    "com.azure.hdinsight#ClustersCreateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The availability zones."
+      }
+    },
+    "com.azure.hdinsight#ClustersCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.hdinsight#ClustersGet": {
@@ -4866,7 +5794,7 @@
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.hdinsight#ClusterConfiguration",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -4875,6 +5803,18 @@
       },
       "traits": {
         "smithy.api#output": {}
+      }
+    },
+    "com.azure.hdinsight#ClusterConfiguration": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration object for the specified configuration for the specified cluster."
       }
     },
     "com.azure.hdinsight#ConfigurationsGetRequest": {
@@ -4957,18 +5897,6 @@
       },
       "value": {
         "target": "com.azure.hdinsight#ClusterConfiguration"
-      },
-      "traits": {
-        "smithy.api#documentation": "The configuration object for the specified configuration for the specified cluster."
-      }
-    },
-    "com.azure.hdinsight#ClusterConfiguration": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
       },
       "traits": {
         "smithy.api#documentation": "The configuration object for the specified configuration for the specified cluster."
@@ -5232,11 +6160,16 @@
             "smithy.api#documentation": "The name of the cluster extension."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "workspaceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The workspace ID for the cluster monitoring extension."
+          }
+        },
+        "primaryKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The certificate for the cluster monitoring extensions."
           }
         }
       },
@@ -5420,50 +6353,16 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.azure.hdinsight#ExtensionsGetAzureMonitorStatus": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.hdinsight#ExtensionsGetAzureMonitorStatusRequest"
-      },
-      "output": {
-        "target": "com.azure.hdinsight#AzureMonitorResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor",
-          "code": 200,
-          "apiVersion": "2021-06-01"
-        },
-        "smithy.api#documentation": "Gets the status of Azure Monitor on the HDInsight cluster.",
-        "com.distilled.openapi#apiVersion": "2021-06-01"
-      }
-    },
-    "com.azure.hdinsight#AzureMonitorResponse": {
-      "type": "structure",
-      "members": {
-        "clusterMonitoringEnabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "The status of the monitor on the HDInsight cluster."
-          }
-        },
         "workspaceId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The workspace ID of the monitor on the HDInsight cluster."
+            "smithy.api#documentation": "The Log Analytics workspace ID."
+          }
+        },
+        "primaryKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Log Analytics workspace key."
           }
         },
         "selectedConfigurations": {
@@ -5474,7 +6373,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The azure monitor status response."
+        "smithy.api#input": {}
       }
     },
     "com.azure.hdinsight#AzureMonitorSelectedConfigurations": {
@@ -5536,6 +6435,51 @@
       },
       "traits": {
         "smithy.api#documentation": "The global configurations of selected configurations."
+      }
+    },
+    "com.azure.hdinsight#ExtensionsGetAzureMonitorStatus": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.hdinsight#ExtensionsGetAzureMonitorStatusRequest"
+      },
+      "output": {
+        "target": "com.azure.hdinsight#AzureMonitorResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/extensions/azureMonitor",
+          "code": 200,
+          "apiVersion": "2021-06-01"
+        },
+        "smithy.api#documentation": "Gets the status of Azure Monitor on the HDInsight cluster.",
+        "com.distilled.openapi#apiVersion": "2021-06-01"
+      }
+    },
+    "com.azure.hdinsight#AzureMonitorResponse": {
+      "type": "structure",
+      "members": {
+        "clusterMonitoringEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The status of the monitor on the HDInsight cluster."
+          }
+        },
+        "workspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The workspace ID of the monitor on the HDInsight cluster."
+          }
+        },
+        "selectedConfigurations": {
+          "target": "com.azure.hdinsight#AzureMonitorSelectedConfigurations",
+          "traits": {
+            "smithy.api#documentation": "The selected configurations."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The azure monitor status response."
       }
     },
     "com.azure.hdinsight#ExtensionsGetAzureMonitorStatusRequest": {
@@ -5667,11 +6611,16 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "workspaceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The cluster monitor workspace ID."
+          }
+        },
+        "primaryKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cluster monitor workspace key."
           }
         }
       },
@@ -5918,16 +6867,78 @@
             "smithy.api#documentation": "The Azure location (region) for which to make the request."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hdinsight#LocationsValidateClusterCreateRequestRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "zones": {
+          "target": "com.azure.hdinsight#LocationsValidateClusterCreateRequestRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The availability zones."
+          }
+        },
+        "properties": {
+          "target": "com.azure.hdinsight#ClusterCreatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The cluster create parameters."
+          }
+        },
+        "identity": {
+          "target": "com.azure.hdinsight#ClusterIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the cluster, if configured."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cluster name."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant id."
+          }
+        },
+        "fetchAaddsResource": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This indicates whether fetch Aadds resource or not."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hdinsight#LocationsValidateClusterCreateRequestRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The availability zones."
+      }
+    },
+    "com.azure.hdinsight#LocationsValidateClusterCreateRequestRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.hdinsight#LocationsCheckNameAvailability": {
@@ -5994,11 +7005,16 @@
             "smithy.api#documentation": "The Azure location (region) for which to make the request."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource name."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type"
           }
         }
       },
@@ -7528,16 +8544,31 @@
             "smithy.api#documentation": "The name of the private endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.hdinsight#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The private endpoint connection properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hdinsight#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.hdinsight#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection state.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private endpoint connection properties."
       }
     },
     "com.azure.hdinsight#PrivateEndpointConnectionsGet": {
@@ -9238,16 +10269,75 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "scriptActions": {
+          "target": "com.azure.hdinsight#ClustersExecuteScriptActionsRequestScriptActionsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The list of run time script actions."
+          }
+        },
+        "persistOnSuccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets if the scripts needs to be persisted.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hdinsight#ClustersExecuteScriptActionsRequestScriptActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hdinsight#RuntimeScriptActionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of run time script actions."
+      }
+    },
+    "com.azure.hdinsight#RuntimeScriptActionInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the script action.",
+            "smithy.api#required": {}
+          }
+        },
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI to the script.",
+            "smithy.api#required": {}
+          }
+        },
+        "parameters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The parameters for the script"
+          }
+        },
+        "roles": {
+          "target": "com.azure.hdinsight#RuntimeScriptActionInputRolesList",
+          "traits": {
+            "smithy.api#documentation": "The list of roles where script will be executed.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a script action on a running cluster."
+      }
+    },
+    "com.azure.hdinsight#RuntimeScriptActionInputRolesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of roles where script will be executed."
       }
     },
     "com.azure.hdinsight#ScriptActionsDelete": {
@@ -9461,7 +10551,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.hdinsight#RestartHostsParameters",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -9470,6 +10560,15 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hdinsight#RestartHostsParameters": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of hosts which need to be restarted."
       }
     },
     "com.azure.hdinsight#VirtualMachinesListHosts": {

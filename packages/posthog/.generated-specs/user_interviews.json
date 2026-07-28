@@ -60,7 +60,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.user_interviews#PaginatedUserInterviewList": {
+    "com.posthog.user_interviews#PaginatedUserInterviewListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -79,25 +79,28 @@
           }
         },
         "results": {
-          "target": "com.posthog.user_interviews#PaginatedUserInterviewListResultsList"
+          "target": "com.posthog.user_interviews#PaginatedUserInterviewListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.user_interviews#UserInterview": {
+    "com.posthog.user_interviews#UserInterviewOutput": {
       "type": "structure",
       "members": {
         "id": {
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.user_interviews#UserBasic"
+          "target": "com.posthog.user_interviews#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
         },
         "interviewee_emails": {
-          "target": "com.posthog.user_interviews#UserInterviewIntervieweeEmailsList"
+          "target": "com.posthog.user_interviews#UserInterviewOutputIntervieweeEmailsList"
         },
         "interviewee_identifier": {
           "target": "smithy.api#String"
@@ -115,13 +118,10 @@
           "target": "smithy.api#String"
         },
         "classifications": {
-          "target": "com.posthog.user_interviews#UserInterviewClassificationsList",
+          "target": "com.posthog.user_interviews#UserInterviewOutputClassificationsList",
           "traits": {
             "smithy.api#documentation": "Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta."
           }
-        },
-        "audio": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {}
@@ -261,7 +261,7 @@
       },
       "traits": {}
     },
-    "com.posthog.user_interviews#UserInterviewIntervieweeEmailsList": {
+    "com.posthog.user_interviews#UserInterviewOutputIntervieweeEmailsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -288,7 +288,7 @@
         "smithy.api#documentation": "* `abandoned` - Abandoned\n* `off-topic` - Off-topic"
       }
     },
-    "com.posthog.user_interviews#UserInterviewClassificationsList": {
+    "com.posthog.user_interviews#UserInterviewOutputClassificationsList": {
       "type": "list",
       "member": {
         "target": "com.posthog.user_interviews#ClassificationsEnum"
@@ -297,10 +297,10 @@
         "smithy.api#documentation": "Searchable classifications on the response. `abandoned` is auto-derived from the transcript when the interview is recorded; `off-topic` is set manually. Sending `classifications` on an update replaces the whole list — pass the full desired set, not a delta."
       }
     },
-    "com.posthog.user_interviews#PaginatedUserInterviewListResultsList": {
+    "com.posthog.user_interviews#PaginatedUserInterviewListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.user_interviews#UserInterview"
+        "target": "com.posthog.user_interviews#UserInterviewOutput"
       },
       "traits": {}
     },
@@ -310,7 +310,7 @@
         "target": "com.posthog.user_interviews#UserInterviewsListRequest"
       },
       "output": {
-        "target": "com.posthog.user_interviews#PaginatedUserInterviewList"
+        "target": "com.posthog.user_interviews#PaginatedUserInterviewListOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -347,29 +347,8 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.user_interviews#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "interviewee_emails": {
           "target": "com.posthog.user_interviews#UserInterviewsCreateRequestIntervieweeEmailsList"
-        },
-        "interviewee_identifier": {
-          "target": "smithy.api#String"
-        },
-        "topic": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "transcript": {
-          "target": "smithy.api#String"
         },
         "summary": {
           "target": "smithy.api#String"
@@ -394,7 +373,7 @@
         "target": "com.posthog.user_interviews#UserInterviewsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.user_interviews#UserInterview"
+        "target": "com.posthog.user_interviews#UserInterviewOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -434,7 +413,7 @@
         "target": "com.posthog.user_interviews#UserInterviewsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.user_interviews#UserInterview"
+        "target": "com.posthog.user_interviews#UserInterviewOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -479,26 +458,8 @@
             "smithy.api#documentation": "A UUID string identifying this user interview."
           }
         },
-        "created_by": {
-          "target": "com.posthog.user_interviews#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "interviewee_emails": {
           "target": "com.posthog.user_interviews#UserInterviewsUpdateRequestIntervieweeEmailsList"
-        },
-        "interviewee_identifier": {
-          "target": "smithy.api#String"
-        },
-        "topic": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "transcript": {
-          "target": "smithy.api#String"
         },
         "summary": {
           "target": "smithy.api#String"
@@ -523,7 +484,7 @@
         "target": "com.posthog.user_interviews#UserInterviewsUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.user_interviews#UserInterview"
+        "target": "com.posthog.user_interviews#UserInterviewOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -568,26 +529,8 @@
             "smithy.api#documentation": "A UUID string identifying this user interview."
           }
         },
-        "created_by": {
-          "target": "com.posthog.user_interviews#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "interviewee_emails": {
           "target": "com.posthog.user_interviews#UserInterviewsPartialUpdateRequestIntervieweeEmailsList"
-        },
-        "interviewee_identifier": {
-          "target": "smithy.api#String"
-        },
-        "topic": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "transcript": {
-          "target": "smithy.api#String"
         },
         "summary": {
           "target": "smithy.api#String"
@@ -612,7 +555,7 @@
         "target": "com.posthog.user_interviews#UserInterviewsPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.user_interviews#UserInterview"
+        "target": "com.posthog.user_interviews#UserInterviewOutput"
       },
       "traits": {
         "smithy.api#http": {

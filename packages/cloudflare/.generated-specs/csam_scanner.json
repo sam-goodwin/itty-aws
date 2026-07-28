@@ -34,7 +34,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#Boolean"
       }
     },
     "com.cloudflare.csam_scanner#EditRequestValue": {
@@ -134,7 +134,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#Boolean"
       }
     },
     "com.cloudflare.csam_scanner#EditResponseValue": {
@@ -278,7 +278,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#Boolean"
       }
     },
     "com.cloudflare.csam_scanner#GetResponseValue": {

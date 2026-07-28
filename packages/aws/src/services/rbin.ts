@@ -139,7 +139,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export type RetentionPeriodValue = number;
-export type RetentionPeriodUnit = "DAYS" | (string & {});
+export type RetentionPeriodUnit = "DAYS";
 export const RetentionPeriodUnit = /*@__PURE__*/ S.String;
 
 export interface RetentionPeriod {
@@ -166,11 +166,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
-export type ResourceType =
-  | "EBS_SNAPSHOT"
-  | "EC2_IMAGE"
-  | "EBS_VOLUME"
-  | (string & {});
+export type ResourceType = "EBS_SNAPSHOT" | "EC2_IMAGE" | "EBS_VOLUME";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type ResourceTagKey = string;
@@ -188,7 +184,7 @@ export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
 export type ResourceTags = ResourceTag[];
 export const ResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
 export type UnlockDelayValue = number;
-export type UnlockDelayUnit = "DAYS" | (string & {});
+export type UnlockDelayUnit = "DAYS";
 export const UnlockDelayUnit = /*@__PURE__*/ S.String;
 
 export interface UnlockDelay {
@@ -240,14 +236,10 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
 export type RuleIdentifier = string;
-export type RuleStatus = "pending" | "available" | (string & {});
+export type RuleStatus = "pending" | "available";
 export const RuleStatus = /*@__PURE__*/ S.String;
 
-export type LockState =
-  | "locked"
-  | "pending_unlock"
-  | "unlocked"
-  | (string & {});
+export type LockState = "locked" | "pending_unlock" | "unlocked";
 export const LockState = /*@__PURE__*/ S.String;
 
 export type RuleArn = string;
@@ -645,21 +637,18 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRuleResponse",
 }) as any as S.Schema<UpdateRuleResponse>;
 export type ErrorMessage = string;
-export type ServiceQuotaExceededExceptionReason =
-  | "SERVICE_QUOTA_EXCEEDED"
-  | (string & {});
+export type ServiceQuotaExceededExceptionReason = "SERVICE_QUOTA_EXCEEDED";
 export const ServiceQuotaExceededExceptionReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionReason =
   | "INVALID_PAGE_TOKEN"
-  | "INVALID_PARAMETER_VALUE"
-  | (string & {});
+  | "INVALID_PARAMETER_VALUE";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-export type ConflictExceptionReason = "INVALID_RULE_STATE" | (string & {});
+export type ConflictExceptionReason = "INVALID_RULE_STATE";
 export const ConflictExceptionReason = /*@__PURE__*/ S.String;
 
-export type ResourceNotFoundExceptionReason = "RULE_NOT_FOUND" | (string & {});
+export type ResourceNotFoundExceptionReason = "RULE_NOT_FOUND";
 export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
 
 export type CreateRuleError =

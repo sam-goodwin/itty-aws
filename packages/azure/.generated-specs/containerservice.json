@@ -457,16 +457,27 @@
             "smithy.api#documentation": "The name of the managed cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerservice#SnapshotsUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#SnapshotsUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerservice#SnapshotsCreateOrUpdate": {
@@ -578,16 +589,74 @@
             "smithy.api#documentation": "The name of the managed cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerservice#SnapshotsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#SnapshotPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of a snapshot."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#SnapshotPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "creationData": {
+          "target": "com.azure.containerservice#CreationData",
+          "traits": {
+            "smithy.api#documentation": "CreationData to be used to specify the source agent pool resource ID to create this snapshot."
+          }
+        },
+        "snapshotType": {
+          "target": "com.azure.containerservice#SnapshotPropertiesInputSnapshotType",
+          "traits": {
+            "smithy.api#documentation": "The type of a snapshot. The default is NodePool."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties used to configure a node pool snapshot."
+      }
+    },
+    "com.azure.containerservice#SnapshotPropertiesInputSnapshotType": {
+      "type": "enum",
+      "members": {
+        "NODEPOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NodePool"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of a snapshot. The default is NodePool."
+      }
+    },
+    "com.azure.containerservice#SnapshotsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerservice#SnapshotsGet": {
@@ -1271,16 +1340,47 @@
             "smithy.api#documentation": "The name of trusted access role binding."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerservice#TrustedAccessRoleBindingPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties for trusted access role binding",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#TrustedAccessRoleBindingPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sourceResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource ID of source resource that trusted access is configured for.",
+            "smithy.api#required": {}
+          }
+        },
+        "roles": {
+          "target": "com.azure.containerservice#TrustedAccessRoleBindingPropertiesInputRolesList",
+          "traits": {
+            "smithy.api#documentation": "A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for trusted access role binding"
+      }
+    },
+    "com.azure.containerservice#TrustedAccessRoleBindingPropertiesInputRolesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'."
       }
     },
     "com.azure.containerservice#TrustedAccessRoleBindingsGet": {
@@ -1713,11 +1813,23 @@
             "smithy.api#documentation": "The name of the managed cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "command": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The command to run.",
             "smithy.api#required": {}
+          }
+        },
+        "context": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A base64 encoded zip file containing the files required by the command."
+          }
+        },
+        "clusterToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "AuthToken issued for AKS AAD Server App."
           }
         }
       },
@@ -1926,16 +2038,48 @@
             "smithy.api#documentation": "The name of the managed cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The ID of the private link resource."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the private link resource. See [naming rules](https://aka.ms/search-naming-rules) for more details."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group ID of the resource."
+          }
+        },
+        "requiredMembers": {
+          "target": "com.azure.containerservice#ResolvePrivateLinkServiceIdPOSTRequestRequiredMembersList",
+          "traits": {
+            "smithy.api#documentation": "The RequiredMembers of the resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#ResolvePrivateLinkServiceIdPOSTRequestRequiredMembersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The RequiredMembers of the resource"
       }
     },
     "com.azure.containerservice#ManagedClustersResetServicePrincipalProfile": {
@@ -1984,11 +2128,18 @@
             "smithy.api#documentation": "The name of the managed cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "clientId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The ID for the service principal.",
             "smithy.api#required": {}
+          }
+        },
+        "secret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The secret password associated with the service principal in plain text.",
+            "smithy.api#sensitive": {}
           }
         }
       },
@@ -2352,16 +2503,36 @@
             "smithy.api#documentation": "The name of the private endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerservice#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a private endpoint connection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.containerservice#PrivateEndpoint",
+          "traits": {
+            "smithy.api#documentation": "The resource of private endpoint."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.containerservice#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a private endpoint connection."
       }
     },
     "com.azure.containerservice#PrivateEndpointConnectionsGet": {
@@ -3591,16 +3762,27 @@
             "smithy.api#documentation": "The name of the managed namespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerservice#ManagedNamespacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#ManagedNamespacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerservice#ManagedNamespacesCreateOrUpdate": {
@@ -3726,16 +3908,108 @@
             "smithy.api#documentation": "The name of the managed namespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerservice#ManagedNamespacesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#NamespacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of a namespace."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#NamespacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "labels": {
+          "target": "com.azure.containerservice#NamespacePropertiesInputLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "The labels of managed namespace."
+          }
+        },
+        "annotations": {
+          "target": "com.azure.containerservice#NamespacePropertiesInputAnnotationsMap",
+          "traits": {
+            "smithy.api#documentation": "The annotations of managed namespace."
+          }
+        },
+        "defaultResourceQuota": {
+          "target": "com.azure.containerservice#ResourceQuota",
+          "traits": {
+            "smithy.api#documentation": "The default resource quota enforced upon the namespace. Customers can have other Kubernetes resource quota objects under the namespace. Resource quotas are additive; if multiple resource quotas are applied to a given namespace, then the effective limit will be one such that all quotas on the namespace can be satisfied."
+          }
+        },
+        "defaultNetworkPolicy": {
+          "target": "com.azure.containerservice#NetworkPolicies",
+          "traits": {
+            "smithy.api#documentation": "The default network policy enforced upon the namespace. Customers can have other Kubernetes network policy objects under the namespace. Network policies are additive; if a policy or policies apply to a given pod for a given direction, the connections allowed in that direction for the pod is the union of what all applicable policies allow."
+          }
+        },
+        "adoptionPolicy": {
+          "target": "com.azure.containerservice#AdoptionPolicy",
+          "traits": {
+            "smithy.api#documentation": "Action if Kubernetes namespace with same name already exists."
+          }
+        },
+        "deletePolicy": {
+          "target": "com.azure.containerservice#DeletePolicy",
+          "traits": {
+            "smithy.api#documentation": "Delete options of a namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a namespace managed by ARM"
+      }
+    },
+    "com.azure.containerservice#NamespacePropertiesInputAnnotationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The annotations of managed namespace."
+      }
+    },
+    "com.azure.containerservice#NamespacePropertiesInputLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The labels of managed namespace."
+      }
+    },
+    "com.azure.containerservice#ManagedNamespacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerservice#ManagedNamespacesGet": {
@@ -4546,11 +4820,10 @@
             "smithy.api#documentation": "The name of the maintenance configuration. Supported values are 'default', 'aksManagedAutoUpgradeSchedule', or 'aksManagedNodeOSUpgradeSchedule'."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerservice#MaintenanceConfigurationProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a default maintenance configuration."
           }
         }
       },
@@ -5248,16 +5521,45 @@
             "smithy.api#documentation": "The name of the identity binding."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerservice#IdentityBindingPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#IdentityBindingPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "managedIdentity": {
+          "target": "com.azure.containerservice#IdentityBindingManagedIdentityProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Managed identity profile for the identity binding.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "IdentityBinding properties."
+      }
+    },
+    "com.azure.containerservice#IdentityBindingManagedIdentityProfileInput": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the managed identity.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed identity profile for the identity binding."
       }
     },
     "com.azure.containerservice#IdentityBindingsGet": {
@@ -6360,16 +6662,25 @@
             "smithy.api#documentation": "The name of the agent pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machineNames": {
+          "target": "com.azure.containerservice#AgentPoolsDeleteMachinesRequestMachineNamesList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The agent pool machine names.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#AgentPoolsDeleteMachinesRequestMachineNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The agent pool machine names."
       }
     },
     "com.azure.containerservice#AgentPoolsAbortLatestOperation": {
@@ -8392,16 +8703,467 @@
             "smithy.api#documentation": "The name of the agent pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of an agent pool."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1."
+          }
+        },
+        "vmSize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The size of the agent pool VMs. VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions"
+          }
+        },
+        "osDiskSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "OS Disk Size in GB to be used to specify the disk size for every machine in the master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified."
+          }
+        },
+        "osDiskType": {
+          "target": "com.azure.containerservice#OSDiskType",
+          "traits": {
+            "smithy.api#documentation": "The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os)."
+          }
+        },
+        "kubeletDiskType": {
+          "target": "com.azure.containerservice#KubeletDiskType",
+          "traits": {
+            "smithy.api#documentation": "Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage."
+          }
+        },
+        "workloadRuntime": {
+          "target": "com.azure.containerservice#WorkloadRuntime",
+          "traits": {
+            "smithy.api#documentation": "Determines the type of workload a node can run."
+          }
+        },
+        "messageOfTheDay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script)."
+          }
+        },
+        "vnetSubnetID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the subnet which agent pool nodes and optionally pods will join on startup. If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}"
+          }
+        },
+        "podSubnetID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the subnet which pods will join when launched. If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}"
+          }
+        },
+        "podIPAllocationMode": {
+          "target": "com.azure.containerservice#PodIPAllocationMode",
+          "traits": {
+            "smithy.api#documentation": "Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'."
+          }
+        },
+        "maxPods": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of pods that can run on a node."
+          }
+        },
+        "osType": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputOsType",
+          "traits": {
+            "smithy.api#documentation": "The operating system type. The default is Linux."
+          }
+        },
+        "osSKU": {
+          "target": "com.azure.containerservice#OSSKU",
+          "traits": {
+            "smithy.api#documentation": "Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows."
+          }
+        },
+        "maxCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of nodes for auto-scaling"
+          }
+        },
+        "minCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of nodes for auto-scaling"
+          }
+        },
+        "enableAutoScaling": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable auto-scaler"
+          }
+        },
+        "scaleDownMode": {
+          "target": "com.azure.containerservice#ScaleDownMode",
+          "traits": {
+            "smithy.api#documentation": "The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete."
+          }
+        },
+        "type": {
+          "target": "com.azure.containerservice#AgentPoolType",
+          "traits": {
+            "smithy.api#documentation": "The type of Agent Pool."
+          }
+        },
+        "mode": {
+          "target": "com.azure.containerservice#AgentPoolMode",
+          "traits": {
+            "smithy.api#documentation": "The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools"
+          }
+        },
+        "orchestratorVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor version must be within two minor versions of the control plane version. The node pool version cannot be greater than the control plane version. For more information see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool)."
+          }
+        },
+        "nodeImageVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the node image. Setting this value triggers an agentPool rollback.\nOnly values from `recentlyUsedVersions` are allowed."
+          }
+        },
+        "upgradeSettings": {
+          "target": "com.azure.containerservice#AgentPoolUpgradeSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for upgrading the agentpool"
+          }
+        },
+        "powerState": {
+          "target": "com.azure.containerservice#PowerState",
+          "traits": {
+            "smithy.api#documentation": "Whether the Agent Pool is running or stopped. When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded"
+          }
+        },
+        "availabilityZones": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputAvailabilityZonesList",
+          "traits": {
+            "smithy.api#documentation": "The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'."
+          }
+        },
+        "enableNodePublicIP": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether each node is allocated its own public IP. Some scenarios may require nodes in a node pool to receive their own dedicated public IP addresses. A common scenario is for gaming workloads, where a console needs to make a direct connection to a cloud virtual machine to minimize hops. For more information see [assigning a public IP per node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools). The default is false."
+          }
+        },
+        "nodePublicIPPrefixID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The public IP prefix ID which VM nodes should use IPs from. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}"
+          }
+        },
+        "scaleSetPriority": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputScaleSetPriority",
+          "traits": {
+            "smithy.api#documentation": "The Virtual Machine Scale Set priority."
+          }
+        },
+        "scaleSetEvictionPolicy": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputScaleSetEvictionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms)"
+          }
+        },
+        "spotMaxPrice": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand. Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)"
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags to be persisted on the agent pool virtual machine scale set."
+          }
+        },
+        "nodeLabels": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputNodeLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "The node labels to be persisted across all nodes in agent pool."
+          }
+        },
+        "nodeTaints": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList",
+          "traits": {
+            "smithy.api#documentation": "The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule."
+          }
+        },
+        "proximityPlacementGroupID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID for Proximity Placement Group."
+          }
+        },
+        "kubeletConfig": {
+          "target": "com.azure.containerservice#KubeletConfig",
+          "traits": {
+            "smithy.api#documentation": "The Kubelet configuration on the agent pool nodes."
+          }
+        },
+        "linuxOSConfig": {
+          "target": "com.azure.containerservice#LinuxOSConfig",
+          "traits": {
+            "smithy.api#documentation": "The OS configuration of Linux agent nodes."
+          }
+        },
+        "enableEncryptionAtHost": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable host based OS and data drive encryption. This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption"
+          }
+        },
+        "enableUltraSSD": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable UltraSSD"
+          }
+        },
+        "enableFIPS": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to use a FIPS-enabled OS. See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview) for more details."
+          }
+        },
+        "gpuInstanceProfile": {
+          "target": "com.azure.containerservice#GPUInstanceProfile",
+          "traits": {
+            "smithy.api#documentation": "GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU."
+          }
+        },
+        "creationData": {
+          "target": "com.azure.containerservice#CreationData",
+          "traits": {
+            "smithy.api#documentation": "CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot."
+          }
+        },
+        "capacityReservationGroupID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the Capacity Reservation Group to provide virtual machines from a reserved group of Virtual Machines. This is of the form: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Compute/capacityreservationgroups/{capacityReservationGroupName}' Customers use it to create an agentpool with a specified CRG. For more information see [Capacity Reservation](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-overview)"
+          }
+        },
+        "hostGroupID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}. For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts)."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.containerservice#AgentPoolNetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "Network-related settings of an agent pool."
+          }
+        },
+        "windowsProfile": {
+          "target": "com.azure.containerservice#AgentPoolWindowsProfile",
+          "traits": {
+            "smithy.api#documentation": "The Windows agent pool's specific profile."
+          }
+        },
+        "securityProfile": {
+          "target": "com.azure.containerservice#AgentPoolSecurityProfile",
+          "traits": {
+            "smithy.api#documentation": "The security settings of an agent pool."
+          }
+        },
+        "gpuProfile": {
+          "target": "com.azure.containerservice#GPUProfile",
+          "traits": {
+            "smithy.api#documentation": "GPU settings for the Agent Pool."
+          }
+        },
+        "gatewayProfile": {
+          "target": "com.azure.containerservice#AgentPoolGatewayProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile specific to a managed agent pool in Gateway mode. This field cannot be set if agent pool mode is not Gateway."
+          }
+        },
+        "artifactStreamingProfile": {
+          "target": "com.azure.containerservice#AgentPoolArtifactStreamingProfile",
+          "traits": {
+            "smithy.api#documentation": "Configuration for using artifact streaming on AKS."
+          }
+        },
+        "virtualMachinesProfile": {
+          "target": "com.azure.containerservice#VirtualMachinesProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifications on VirtualMachines agent pool."
+          }
+        },
+        "virtualMachineNodesStatus": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputVirtualMachineNodesStatusList",
+          "traits": {
+            "smithy.api#documentation": "The status of nodes in a VirtualMachines agent pool."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerservice#AgentPoolStatusInput",
+          "traits": {
+            "smithy.api#documentation": "Contains read-only information about the Agent Pool."
+          }
+        },
+        "localDNSProfile": {
+          "target": "com.azure.containerservice#LocalDNSProfile",
+          "traits": {
+            "smithy.api#documentation": "Configures the per-node local DNS, with VnetDNS and KubeDNS overrides. LocalDNS helps improve performance and reliability of DNS resolution in an AKS cluster. For more details see aka.ms/aks/localdns."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for the container service agent pool profile."
+      }
+    },
+    "com.azure.containerservice#AgentPoolStatusInput": {
+      "type": "structure",
+      "members": {
+        "provisioningError": {
+          "target": "com.azure.containerservice#AgentPoolStatusInputProvisioningError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains read-only information about the Agent Pool."
+      }
+    },
+    "com.azure.containerservice#AgentPoolStatusInputProvisioningError": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputVirtualMachineNodesStatusList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#VirtualMachineNodes"
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of nodes in a VirtualMachines agent pool."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputNodeLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The node labels to be persisted across all nodes in agent pool."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags to be persisted on the agent pool virtual machine scale set."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputScaleSetEvictionPolicy": {
+      "type": "enum",
+      "members": {
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Delete"
+          }
+        },
+        "DEALLOCATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deallocate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms)"
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputScaleSetPriority": {
+      "type": "enum",
+      "members": {
+        "SPOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Spot"
+          }
+        },
+        "REGULAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Regular"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Virtual Machine Scale Set priority."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputAvailabilityZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfilePropertiesInputOsType": {
+      "type": "enum",
+      "members": {
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        },
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The operating system type. The default is Linux."
       }
     },
     "com.azure.containerservice#AgentPoolsGet": {
@@ -12861,16 +13623,27 @@
             "smithy.api#documentation": "The name of the managed cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerservice#ManagedClustersUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#ManagedClustersUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerservice#ManagedClustersCreateOrUpdate": {
@@ -13012,16 +13785,1307 @@
             "smithy.api#documentation": "The name of the managed cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerservice#ManagedClustersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#ManagedClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of a managed cluster."
+          }
+        },
+        "sku": {
+          "target": "com.azure.containerservice#ManagedClusterSKU",
+          "traits": {
+            "smithy.api#documentation": "The managed cluster SKU."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.containerservice#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location of the Virtual Machine."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerservice#ManagedClusterIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the managed cluster, if configured."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is primarily used to expose different UI experiences in the portal for different kinds"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#ManagedClusterIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerservice#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity)."
+          }
+        },
+        "delegatedResources": {
+          "target": "com.azure.containerservice#ManagedClusterIdentityInputDelegatedResourcesMap",
+          "traits": {
+            "smithy.api#documentation": "The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.containerservice#ManagedClusterIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the managed cluster."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.containerservice#ManagedServiceIdentityUserAssignedIdentitiesValueInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.containerservice#ManagedServiceIdentityUserAssignedIdentitiesValueInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterIdentityInputDelegatedResourcesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.containerservice#ManagedClusterIdentityInputDelegatedResourcesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterIdentityInputDelegatedResourcesValue": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource id of the delegated resource - internal use only."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant id of the delegated resource - internal use only."
+          }
+        },
+        "referralResource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The delegation id of the referral delegation (optional) - internal use only."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The source resource location - internal use only."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Delegated resource properties - internal use only."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "kubernetesVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details."
+          }
+        },
+        "dnsPrefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The DNS prefix of the Managed Cluster. This cannot be updated once the Managed Cluster has been created."
+          }
+        },
+        "fqdnSubdomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The FQDN subdomain of the private cluster with custom private dns zone. This cannot be updated once the Managed Cluster has been created."
+          }
+        },
+        "agentPoolProfiles": {
+          "target": "com.azure.containerservice#ManagedClusterPropertiesInputAgentPoolProfilesList",
+          "traits": {
+            "smithy.api#documentation": "The agent pool properties."
+          }
+        },
+        "linuxProfile": {
+          "target": "com.azure.containerservice#ContainerServiceLinuxProfile",
+          "traits": {
+            "smithy.api#documentation": "The profile for Linux VMs in the Managed Cluster."
+          }
+        },
+        "windowsProfile": {
+          "target": "com.azure.containerservice#ManagedClusterWindowsProfile",
+          "traits": {
+            "smithy.api#documentation": "The profile for Windows VMs in the Managed Cluster."
+          }
+        },
+        "servicePrincipalProfile": {
+          "target": "com.azure.containerservice#ManagedClusterServicePrincipalProfile",
+          "traits": {
+            "smithy.api#documentation": "Information about a service principal identity for the cluster to use for manipulating Azure APIs."
+          }
+        },
+        "addonProfiles": {
+          "target": "com.azure.containerservice#ManagedClusterPropertiesInputAddonProfilesMap",
+          "traits": {
+            "smithy.api#documentation": "The profile of managed cluster add-on."
+          }
+        },
+        "podIdentityProfile": {
+          "target": "com.azure.containerservice#ManagedClusterPodIdentityProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod identity integration."
+          }
+        },
+        "oidcIssuerProfile": {
+          "target": "com.azure.containerservice#ManagedClusterOIDCIssuerProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The OIDC issuer profile of the Managed Cluster."
+          }
+        },
+        "nodeResourceGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource group containing agent pool nodes."
+          }
+        },
+        "nodeResourceGroupProfile": {
+          "target": "com.azure.containerservice#ManagedClusterNodeResourceGroupProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile of the node resource group configuration."
+          }
+        },
+        "enableRBAC": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable Kubernetes Role-Based Access Control."
+          }
+        },
+        "supportPlan": {
+          "target": "com.azure.containerservice#KubernetesSupportPlan",
+          "traits": {
+            "smithy.api#documentation": "The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.containerservice#ContainerServiceNetworkProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The network configuration profile."
+          }
+        },
+        "aadProfile": {
+          "target": "com.azure.containerservice#ManagedClusterAADProfile",
+          "traits": {
+            "smithy.api#documentation": "The Azure Active Directory configuration."
+          }
+        },
+        "autoUpgradeProfile": {
+          "target": "com.azure.containerservice#ManagedClusterAutoUpgradeProfile",
+          "traits": {
+            "smithy.api#documentation": "The auto upgrade configuration."
+          }
+        },
+        "upgradeSettings": {
+          "target": "com.azure.containerservice#ClusterUpgradeSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for upgrading a cluster."
+          }
+        },
+        "autoScalerProfile": {
+          "target": "com.azure.containerservice#ManagedClusterPropertiesAutoScalerProfile",
+          "traits": {
+            "smithy.api#documentation": "Parameters to be applied to the cluster-autoscaler when enabled"
+          }
+        },
+        "apiServerAccessProfile": {
+          "target": "com.azure.containerservice#ManagedClusterAPIServerAccessProfile",
+          "traits": {
+            "smithy.api#documentation": "The access profile for managed cluster API server."
+          }
+        },
+        "diskEncryptionSetID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Resource ID of the disk encryption set to use for enabling encryption at rest. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'"
+          }
+        },
+        "identityProfile": {
+          "target": "com.azure.containerservice#ManagedClusterPropertiesInputIdentityProfileMap",
+          "traits": {
+            "smithy.api#documentation": "The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is \"kubeletidentity\", with value of \"resourceId\": \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}\"."
+          }
+        },
+        "privateLinkResources": {
+          "target": "com.azure.containerservice#ManagedClusterPropertiesInputPrivateLinkResourcesList",
+          "traits": {
+            "smithy.api#documentation": "Private link resources associated with the cluster."
+          }
+        },
+        "disableLocalAccounts": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If local accounts should be disabled on the Managed Cluster. If set to true, getting static credentials will be disabled for this cluster. This must only be used on Managed Clusters that are AAD enabled. For more details see [disable local accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview)."
+          }
+        },
+        "httpProxyConfig": {
+          "target": "com.azure.containerservice#ManagedClusterHTTPProxyConfig",
+          "traits": {
+            "smithy.api#documentation": "Configurations for provisioning the cluster with HTTP proxy servers."
+          }
+        },
+        "securityProfile": {
+          "target": "com.azure.containerservice#ManagedClusterSecurityProfile",
+          "traits": {
+            "smithy.api#documentation": "Security profile for the managed cluster."
+          }
+        },
+        "storageProfile": {
+          "target": "com.azure.containerservice#ManagedClusterStorageProfile",
+          "traits": {
+            "smithy.api#documentation": "Storage profile for the managed cluster."
+          }
+        },
+        "ingressProfile": {
+          "target": "com.azure.containerservice#ManagedClusterIngressProfile",
+          "traits": {
+            "smithy.api#documentation": "Ingress profile for the managed cluster."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.containerservice#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "PublicNetworkAccess of the managedCluster. Allow or deny public network access for AKS"
+          }
+        },
+        "workloadAutoScalerProfile": {
+          "target": "com.azure.containerservice#ManagedClusterWorkloadAutoScalerProfile",
+          "traits": {
+            "smithy.api#documentation": "Workload Auto-scaler profile for the managed cluster."
+          }
+        },
+        "azureMonitorProfile": {
+          "target": "com.azure.containerservice#ManagedClusterAzureMonitorProfile",
+          "traits": {
+            "smithy.api#documentation": "Azure Monitor addon profiles for monitoring the managed cluster."
+          }
+        },
+        "serviceMeshProfile": {
+          "target": "com.azure.containerservice#ServiceMeshProfile",
+          "traits": {
+            "smithy.api#documentation": "Service mesh profile for a managed cluster."
+          }
+        },
+        "metricsProfile": {
+          "target": "com.azure.containerservice#ManagedClusterMetricsProfile",
+          "traits": {
+            "smithy.api#documentation": "Optional cluster metrics configuration."
+          }
+        },
+        "nodeProvisioningProfile": {
+          "target": "com.azure.containerservice#ManagedClusterNodeProvisioningProfile",
+          "traits": {
+            "smithy.api#documentation": "Node provisioning settings that apply to the whole cluster."
+          }
+        },
+        "bootstrapProfile": {
+          "target": "com.azure.containerservice#ManagedClusterBootstrapProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile of the cluster bootstrap configuration."
+          }
+        },
+        "aiToolchainOperatorProfile": {
+          "target": "com.azure.containerservice#ManagedClusterAIToolchainOperatorProfile",
+          "traits": {
+            "smithy.api#documentation": "AI toolchain operator settings that apply to the whole cluster."
+          }
+        },
+        "schedulerProfile": {
+          "target": "com.azure.containerservice#SchedulerProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile with scheduler-related settings, like the configuration mode for each scheduler managed by AKS. See https://aka.ms/aks/scheduler-profile."
+          }
+        },
+        "hostedSystemProfile": {
+          "target": "com.azure.containerservice#ManagedClusterHostedSystemProfile",
+          "traits": {
+            "smithy.api#documentation": "Settings for hosted system addons. For more information, see https://aka.ms/aks/automatic/systemcomponents."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerservice#ManagedClusterStatusInput",
+          "traits": {
+            "smithy.api#documentation": "Contains read-only information about the Managed Cluster."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the managed cluster."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterStatusInput": {
+      "type": "structure",
+      "members": {
+        "provisioningError": {
+          "target": "com.azure.containerservice#ManagedClusterStatusInputProvisioningError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains read-only information about the Managed Cluster."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterStatusInputProvisioningError": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterPropertiesInputPrivateLinkResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#PrivateLinkResourceInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Private link resources associated with the cluster."
+      }
+    },
+    "com.azure.containerservice#PrivateLinkResourceInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the private link resource."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the private link resource. See [naming rules](https://aka.ms/search-naming-rules) for more details."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group ID of the resource."
+          }
+        },
+        "requiredMembers": {
+          "target": "com.azure.containerservice#PrivateLinkResourceInputRequiredMembersList",
+          "traits": {
+            "smithy.api#documentation": "The RequiredMembers of the resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A private link resource"
+      }
+    },
+    "com.azure.containerservice#PrivateLinkResourceInputRequiredMembersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The RequiredMembers of the resource"
+      }
+    },
+    "com.azure.containerservice#ManagedClusterPropertiesInputIdentityProfileMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.containerservice#UserAssignedIdentity"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is \"kubeletidentity\", with value of \"resourceId\": \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}\"."
+      }
+    },
+    "com.azure.containerservice#ContainerServiceNetworkProfileInput": {
+      "type": "structure",
+      "members": {
+        "networkPlugin": {
+          "target": "com.azure.containerservice#NetworkPlugin",
+          "traits": {
+            "smithy.api#documentation": "Network plugin used for building the Kubernetes network."
+          }
+        },
+        "networkPluginMode": {
+          "target": "com.azure.containerservice#NetworkPluginMode",
+          "traits": {
+            "smithy.api#documentation": "The mode the network plugin should use."
+          }
+        },
+        "networkPolicy": {
+          "target": "com.azure.containerservice#NetworkPolicy",
+          "traits": {
+            "smithy.api#documentation": "Network policy used for building the Kubernetes network."
+          }
+        },
+        "networkMode": {
+          "target": "com.azure.containerservice#NetworkMode",
+          "traits": {
+            "smithy.api#documentation": "The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'."
+          }
+        },
+        "networkDataplane": {
+          "target": "com.azure.containerservice#NetworkDataplane",
+          "traits": {
+            "smithy.api#documentation": "Network dataplane used in the Kubernetes cluster."
+          }
+        },
+        "advancedNetworking": {
+          "target": "com.azure.containerservice#AdvancedNetworking",
+          "traits": {
+            "smithy.api#documentation": "Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking."
+          }
+        },
+        "podCidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A CIDR notation IP range from which to assign pod IPs when kubenet is used."
+          }
+        },
+        "serviceCidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges."
+          }
+        },
+        "dnsServiceIP": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr."
+          }
+        },
+        "outboundType": {
+          "target": "com.azure.containerservice#ContainerServiceNetworkProfileInputOutboundType",
+          "traits": {
+            "smithy.api#documentation": "The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype)."
+          }
+        },
+        "loadBalancerSku": {
+          "target": "com.azure.containerservice#LoadBalancerSku",
+          "traits": {
+            "smithy.api#documentation": "The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs."
+          }
+        },
+        "loadBalancerProfile": {
+          "target": "com.azure.containerservice#ManagedClusterLoadBalancerProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Profile of the cluster load balancer."
+          }
+        },
+        "natGatewayProfile": {
+          "target": "com.azure.containerservice#ManagedClusterNATGatewayProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Profile of the cluster NAT gateway."
+          }
+        },
+        "staticEgressGatewayProfile": {
+          "target": "com.azure.containerservice#ManagedClusterStaticEgressGatewayProfile",
+          "traits": {
+            "smithy.api#documentation": "The profile for Static Egress Gateway addon. For more details about Static Egress Gateway, see https://aka.ms/aks/static-egress-gateway."
+          }
+        },
+        "podCidrs": {
+          "target": "com.azure.containerservice#ContainerServiceNetworkProfileInputPodCidrsList",
+          "traits": {
+            "smithy.api#documentation": "The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking."
+          }
+        },
+        "serviceCidrs": {
+          "target": "com.azure.containerservice#ContainerServiceNetworkProfileInputServiceCidrsList",
+          "traits": {
+            "smithy.api#documentation": "The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges."
+          }
+        },
+        "ipFamilies": {
+          "target": "com.azure.containerservice#ContainerServiceNetworkProfileInputIpFamiliesList",
+          "traits": {
+            "smithy.api#documentation": "The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile of network configuration."
+      }
+    },
+    "com.azure.containerservice#ContainerServiceNetworkProfileInputIpFamiliesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#IPFamily"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6."
+      }
+    },
+    "com.azure.containerservice#ContainerServiceNetworkProfileInputServiceCidrsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges."
+      }
+    },
+    "com.azure.containerservice#ContainerServiceNetworkProfileInputPodCidrsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterNATGatewayProfileInput": {
+      "type": "structure",
+      "members": {
+        "managedOutboundIPProfile": {
+          "target": "com.azure.containerservice#ManagedClusterManagedOutboundIPProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile of the managed outbound IP resources of the cluster NAT gateway."
+          }
+        },
+        "idleTimeoutInMinutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value is 4 minutes."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile of the managed cluster NAT gateway."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterLoadBalancerProfileInput": {
+      "type": "structure",
+      "members": {
+        "managedOutboundIPs": {
+          "target": "com.azure.containerservice#ManagedClusterLoadBalancerProfileManagedOutboundIPs",
+          "traits": {
+            "smithy.api#documentation": "Desired managed outbound IPs for the cluster load balancer."
+          }
+        },
+        "outboundIPPrefixes": {
+          "target": "com.azure.containerservice#ManagedClusterLoadBalancerProfileOutboundIPPrefixes",
+          "traits": {
+            "smithy.api#documentation": "Desired outbound IP Prefix resources for the cluster load balancer."
+          }
+        },
+        "outboundIPs": {
+          "target": "com.azure.containerservice#ManagedClusterLoadBalancerProfileOutboundIPs",
+          "traits": {
+            "smithy.api#documentation": "Desired outbound IP resources for the cluster load balancer."
+          }
+        },
+        "allocatedOutboundPorts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The desired number of allocated SNAT ports per VM. Allowed values are in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports."
+          }
+        },
+        "idleTimeoutInMinutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value is 30 minutes."
+          }
+        },
+        "enableMultipleStandardLoadBalancers": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable multiple standard load balancers per AKS cluster or not."
+          }
+        },
+        "backendPoolType": {
+          "target": "com.azure.containerservice#ManagedClusterLoadBalancerProfileInputBackendPoolType",
+          "traits": {
+            "smithy.api#documentation": "The type of the managed inbound Load Balancer BackendPool."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile of the managed cluster load balancer."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterLoadBalancerProfileInputBackendPoolType": {
+      "type": "enum",
+      "members": {
+        "NODEIPCONFIGURATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NodeIPConfiguration"
+          }
+        },
+        "NODEIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NodeIP"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the managed inbound Load Balancer BackendPool."
+      }
+    },
+    "com.azure.containerservice#ContainerServiceNetworkProfileInputOutboundType": {
+      "type": "enum",
+      "members": {
+        "LOADBALANCER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "loadBalancer"
+          }
+        },
+        "USERDEFINEDROUTING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "userDefinedRouting"
+          }
+        },
+        "MANAGEDNATGATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managedNATGateway"
+          }
+        },
+        "USERASSIGNEDNATGATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "userAssignedNATGateway"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype)."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterOIDCIssuerProfileInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the OIDC issuer is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The OIDC issuer profile of the Managed Cluster."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterPodIdentityProfileInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the pod identity addon is enabled."
+          }
+        },
+        "allowNetworkPluginKubenet": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether pod identity is allowed to run on clusters with Kubenet networking. Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities) for more information."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.containerservice#ManagedClusterPodIdentityProfileInputUserAssignedIdentitiesList",
+          "traits": {
+            "smithy.api#documentation": "The pod identities to use in the cluster."
+          }
+        },
+        "userAssignedIdentityExceptions": {
+          "target": "com.azure.containerservice#ManagedClusterPodIdentityProfileInputUserAssignedIdentityExceptionsList",
+          "traits": {
+            "smithy.api#documentation": "The pod identity exceptions to allow."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity integration."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterPodIdentityProfileInputUserAssignedIdentityExceptionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#ManagedClusterPodIdentityException"
+      },
+      "traits": {
+        "smithy.api#documentation": "The pod identity exceptions to allow."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterPodIdentityProfileInputUserAssignedIdentitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#ManagedClusterPodIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The pod identities to use in the cluster."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterPodIdentityInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the pod identity.",
+            "smithy.api#required": {}
+          }
+        },
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The namespace of the pod identity.",
+            "smithy.api#required": {}
+          }
+        },
+        "bindingSelector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The binding selector to use for the AzureIdentityBinding resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerservice#UserAssignedIdentity",
+          "traits": {
+            "smithy.api#documentation": "The user assigned identity details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details about the pod identity assigned to the Managed Cluster."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterPropertiesInputAddonProfilesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.containerservice#ManagedClusterAddonProfile"
+      },
+      "traits": {
+        "smithy.api#documentation": "The profile of managed cluster add-on."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterPropertiesInputAgentPoolProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#ManagedClusterAgentPoolProfileInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The agent pool properties."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfileInput": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1."
+          }
+        },
+        "vmSize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The size of the agent pool VMs. VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions"
+          }
+        },
+        "osDiskSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "OS Disk Size in GB to be used to specify the disk size for every machine in the master/agent pool. If you specify 0, it will apply the default osDisk size according to the vmSize specified."
+          }
+        },
+        "osDiskType": {
+          "target": "com.azure.containerservice#OSDiskType",
+          "traits": {
+            "smithy.api#documentation": "The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os)."
+          }
+        },
+        "kubeletDiskType": {
+          "target": "com.azure.containerservice#KubeletDiskType",
+          "traits": {
+            "smithy.api#documentation": "Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage."
+          }
+        },
+        "workloadRuntime": {
+          "target": "com.azure.containerservice#WorkloadRuntime",
+          "traits": {
+            "smithy.api#documentation": "Determines the type of workload a node can run."
+          }
+        },
+        "messageOfTheDay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Message of the day for Linux nodes, base64-encoded. A base64-encoded string which will be written to /etc/motd after decoding. This allows customization of the message of the day for Linux nodes. It must not be specified for Windows nodes. It must be a static string (i.e., will be printed raw and not be executed as a script)."
+          }
+        },
+        "vnetSubnetID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the subnet which agent pool nodes and optionally pods will join on startup. If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}"
+          }
+        },
+        "podSubnetID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the subnet which pods will join when launched. If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}"
+          }
+        },
+        "podIPAllocationMode": {
+          "target": "com.azure.containerservice#PodIPAllocationMode",
+          "traits": {
+            "smithy.api#documentation": "Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'."
+          }
+        },
+        "maxPods": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of pods that can run on a node."
+          }
+        },
+        "osType": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfileInputOsType",
+          "traits": {
+            "smithy.api#documentation": "The operating system type. The default is Linux."
+          }
+        },
+        "osSKU": {
+          "target": "com.azure.containerservice#OSSKU",
+          "traits": {
+            "smithy.api#documentation": "Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows."
+          }
+        },
+        "maxCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of nodes for auto-scaling"
+          }
+        },
+        "minCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of nodes for auto-scaling"
+          }
+        },
+        "enableAutoScaling": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable auto-scaler"
+          }
+        },
+        "scaleDownMode": {
+          "target": "com.azure.containerservice#ScaleDownMode",
+          "traits": {
+            "smithy.api#documentation": "The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete."
+          }
+        },
+        "type": {
+          "target": "com.azure.containerservice#AgentPoolType",
+          "traits": {
+            "smithy.api#documentation": "The type of Agent Pool."
+          }
+        },
+        "mode": {
+          "target": "com.azure.containerservice#AgentPoolMode",
+          "traits": {
+            "smithy.api#documentation": "The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools"
+          }
+        },
+        "orchestratorVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of Kubernetes specified by the user. Both patch version <major.minor.patch> (e.g. 1.20.13) and <major.minor> (e.g. 1.20) are supported. When <major.minor> is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same <major.minor> once it has been created (e.g. 1.14.x -> 1.14) will not trigger an upgrade, even if a newer patch version is available. As a best practice, you should upgrade all node pools in an AKS cluster to the same Kubernetes version. The node pool version must have the same major version as the control plane. The node pool minor version must be within two minor versions of the control plane version. The node pool version cannot be greater than the control plane version. For more information see [upgrading a node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-node-pool)."
+          }
+        },
+        "nodeImageVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the node image. Setting this value triggers an agentPool rollback.\nOnly values from `recentlyUsedVersions` are allowed."
+          }
+        },
+        "upgradeSettings": {
+          "target": "com.azure.containerservice#AgentPoolUpgradeSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for upgrading the agentpool"
+          }
+        },
+        "powerState": {
+          "target": "com.azure.containerservice#PowerState",
+          "traits": {
+            "smithy.api#documentation": "Whether the Agent Pool is running or stopped. When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded"
+          }
+        },
+        "availabilityZones": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfileInputAvailabilityZonesList",
+          "traits": {
+            "smithy.api#documentation": "The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'."
+          }
+        },
+        "enableNodePublicIP": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether each node is allocated its own public IP. Some scenarios may require nodes in a node pool to receive their own dedicated public IP addresses. A common scenario is for gaming workloads, where a console needs to make a direct connection to a cloud virtual machine to minimize hops. For more information see [assigning a public IP per node](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#assign-a-public-ip-per-node-for-your-node-pools). The default is false."
+          }
+        },
+        "nodePublicIPPrefixID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The public IP prefix ID which VM nodes should use IPs from. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}"
+          }
+        },
+        "scaleSetPriority": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfileInputScaleSetPriority",
+          "traits": {
+            "smithy.api#documentation": "The Virtual Machine Scale Set priority."
+          }
+        },
+        "scaleSetEvictionPolicy": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfileInputScaleSetEvictionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms)"
+          }
+        },
+        "spotMaxPrice": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The max price (in US Dollars) you are willing to pay for spot instances. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand. Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)"
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfileInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags to be persisted on the agent pool virtual machine scale set."
+          }
+        },
+        "nodeLabels": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfileInputNodeLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "The node labels to be persisted across all nodes in agent pool."
+          }
+        },
+        "nodeTaints": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfileInputNodeTaintsList",
+          "traits": {
+            "smithy.api#documentation": "The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule."
+          }
+        },
+        "proximityPlacementGroupID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID for Proximity Placement Group."
+          }
+        },
+        "kubeletConfig": {
+          "target": "com.azure.containerservice#KubeletConfig",
+          "traits": {
+            "smithy.api#documentation": "The Kubelet configuration on the agent pool nodes."
+          }
+        },
+        "linuxOSConfig": {
+          "target": "com.azure.containerservice#LinuxOSConfig",
+          "traits": {
+            "smithy.api#documentation": "The OS configuration of Linux agent nodes."
+          }
+        },
+        "enableEncryptionAtHost": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable host based OS and data drive encryption. This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption"
+          }
+        },
+        "enableUltraSSD": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable UltraSSD"
+          }
+        },
+        "enableFIPS": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to use a FIPS-enabled OS. See [Add a FIPS-enabled node pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview) for more details."
+          }
+        },
+        "gpuInstanceProfile": {
+          "target": "com.azure.containerservice#GPUInstanceProfile",
+          "traits": {
+            "smithy.api#documentation": "GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU."
+          }
+        },
+        "creationData": {
+          "target": "com.azure.containerservice#CreationData",
+          "traits": {
+            "smithy.api#documentation": "CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot."
+          }
+        },
+        "capacityReservationGroupID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the Capacity Reservation Group to provide virtual machines from a reserved group of Virtual Machines. This is of the form: '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Compute/capacityreservationgroups/{capacityReservationGroupName}' Customers use it to create an agentpool with a specified CRG. For more information see [Capacity Reservation](https://learn.microsoft.com/en-us/azure/virtual-machines/capacity-reservation-overview)"
+          }
+        },
+        "hostGroupID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}. For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts)."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.containerservice#AgentPoolNetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "Network-related settings of an agent pool."
+          }
+        },
+        "windowsProfile": {
+          "target": "com.azure.containerservice#AgentPoolWindowsProfile",
+          "traits": {
+            "smithy.api#documentation": "The Windows agent pool's specific profile."
+          }
+        },
+        "securityProfile": {
+          "target": "com.azure.containerservice#AgentPoolSecurityProfile",
+          "traits": {
+            "smithy.api#documentation": "The security settings of an agent pool."
+          }
+        },
+        "gpuProfile": {
+          "target": "com.azure.containerservice#GPUProfile",
+          "traits": {
+            "smithy.api#documentation": "GPU settings for the Agent Pool."
+          }
+        },
+        "gatewayProfile": {
+          "target": "com.azure.containerservice#AgentPoolGatewayProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile specific to a managed agent pool in Gateway mode. This field cannot be set if agent pool mode is not Gateway."
+          }
+        },
+        "artifactStreamingProfile": {
+          "target": "com.azure.containerservice#AgentPoolArtifactStreamingProfile",
+          "traits": {
+            "smithy.api#documentation": "Configuration for using artifact streaming on AKS."
+          }
+        },
+        "virtualMachinesProfile": {
+          "target": "com.azure.containerservice#VirtualMachinesProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifications on VirtualMachines agent pool."
+          }
+        },
+        "virtualMachineNodesStatus": {
+          "target": "com.azure.containerservice#ManagedClusterAgentPoolProfileInputVirtualMachineNodesStatusList",
+          "traits": {
+            "smithy.api#documentation": "The status of nodes in a VirtualMachines agent pool."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerservice#AgentPoolStatusInput",
+          "traits": {
+            "smithy.api#documentation": "Contains read-only information about the Agent Pool."
+          }
+        },
+        "localDNSProfile": {
+          "target": "com.azure.containerservice#LocalDNSProfile",
+          "traits": {
+            "smithy.api#documentation": "Configures the per-node local DNS, with VnetDNS and KubeDNS overrides. LocalDNS helps improve performance and reliability of DNS resolution in an AKS cluster. For more details see aka.ms/aks/localdns."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique name of the agent pool profile in the context of the subscription and resource group. Windows agent pool names must be 6 characters or less.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile for the container service agent pool."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfileInputVirtualMachineNodesStatusList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#VirtualMachineNodes"
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of nodes in a VirtualMachines agent pool."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfileInputNodeTaintsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfileInputNodeLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The node labels to be persisted across all nodes in agent pool."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfileInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags to be persisted on the agent pool virtual machine scale set."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfileInputScaleSetEvictionPolicy": {
+      "type": "enum",
+      "members": {
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Delete"
+          }
+        },
+        "DEALLOCATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deallocate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms)"
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfileInputScaleSetPriority": {
+      "type": "enum",
+      "members": {
+        "SPOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Spot"
+          }
+        },
+        "REGULAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Regular"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Virtual Machine Scale Set priority."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfileInputAvailabilityZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterAgentPoolProfileInputOsType": {
+      "type": "enum",
+      "members": {
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        },
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The operating system type. The default is Linux."
+      }
+    },
+    "com.azure.containerservice#ManagedClustersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerservice#ManagedClustersGet": {
@@ -14344,16 +16408,51 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerservice#DeploymentSafeguardsPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#DeploymentSafeguardsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "level": {
+          "target": "com.azure.containerservice#DeploymentSafeguardsLevel",
+          "traits": {
+            "smithy.api#documentation": "The deployment safeguards level. Possible values are Warn and Enforce",
+            "smithy.api#required": {}
+          }
+        },
+        "excludedNamespaces": {
+          "target": "com.azure.containerservice#DeploymentSafeguardsPropertiesInputExcludedNamespacesList",
+          "traits": {
+            "smithy.api#documentation": "User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards"
+          }
+        },
+        "podSecurityStandardsLevel": {
+          "target": "com.azure.containerservice#PodSecurityStandardsLevel",
+          "traits": {
+            "smithy.api#documentation": "The pod security standards level"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DeploymentSafeguards Properties"
+      }
+    },
+    "com.azure.containerservice#DeploymentSafeguardsPropertiesInputExcludedNamespacesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards"
       }
     },
     "com.azure.containerservice#DeploymentSafeguardsGet": {
@@ -14823,16 +16922,30 @@
             "smithy.api#documentation": "The name of the UpdateStrategy resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerservice#FleetUpdateStrategyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#FleetUpdateStrategyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "strategy": {
+          "target": "com.azure.containerservice#UpdateRunStrategy",
+          "traits": {
+            "smithy.api#documentation": "Defines the update sequence of the clusters.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the UpdateStrategy."
       }
     },
     "com.azure.containerservice#FleetUpdateStrategiesGet": {
@@ -15926,16 +18039,79 @@
             "smithy.api#documentation": "The name of the UpdateRun resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targets": {
+          "target": "com.azure.containerservice#UpdateRunsSkipRequestTargetsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The targets to skip.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#UpdateRunsSkipRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#SkipTarget"
+      },
+      "traits": {
+        "smithy.api#documentation": "The targets to skip."
+      }
+    },
+    "com.azure.containerservice#SkipTarget": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerservice#TargetType",
+          "traits": {
+            "smithy.api#documentation": "The skip target type.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The skip target's name. \nTo skip a member/group/stage, use the member/group/stage's name;\nTp skip an after stage wait, use the parent stage's name.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The definition of a single skip request."
+      }
+    },
+    "com.azure.containerservice#TargetType": {
+      "type": "enum",
+      "members": {
+        "MEMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Member"
+          }
+        },
+        "GROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Group"
+          }
+        },
+        "STAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Stage"
+          }
+        },
+        "AFTERSTAGEWAIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AfterStageWait"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The target type of a skip request."
       }
     },
     "com.azure.containerservice#UpdateRunsDelete": {
@@ -16095,16 +18271,100 @@
             "smithy.api#documentation": "The name of the UpdateRun resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerservice#UpdateRunPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#UpdateRunPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "updateStrategyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the FleetUpdateStrategy resource to reference.\n\nWhen creating a new run, there are three ways to define a strategy for the run:\n1. Define a new strategy in place: Set the \"strategy\" field.\n2. Use an existing strategy: Set the \"updateStrategyId\" field. (since 2023-08-15-preview)\n3. Use the default strategy to update all the members one by one: Leave both \"updateStrategyId\" and \"strategy\" unset. (since 2023-08-15-preview)\n\nSetting both \"updateStrategyId\" and \"strategy\" is invalid.\n\nUpdateRuns created by \"updateStrategyId\" snapshot the referenced UpdateStrategy at the time of creation and store it in the \"strategy\" field. \nSubsequent changes to the referenced FleetUpdateStrategy resource do not propagate.\nUpdateRunStrategy changes can be made directly on the \"strategy\" field before launching the UpdateRun."
+          }
+        },
+        "strategy": {
+          "target": "com.azure.containerservice#UpdateRunStrategy",
+          "traits": {
+            "smithy.api#documentation": "The strategy defines the order in which the clusters will be updated.\nIf not set, all members will be updated sequentially. The UpdateRun status will show a single UpdateStage and a single UpdateGroup targeting all members.\nThe strategy of the UpdateRun can be modified until the run is started."
+          }
+        },
+        "managedClusterUpdate": {
+          "target": "com.azure.containerservice#ManagedClusterUpdateInput",
+          "traits": {
+            "smithy.api#documentation": "The update to be applied to all clusters in the UpdateRun. The managedClusterUpdate can be modified until the run is started.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the UpdateRun."
+      }
+    },
+    "com.azure.containerservice#ManagedClusterUpdateInput": {
+      "type": "structure",
+      "members": {
+        "upgrade": {
+          "target": "com.azure.containerservice#ManagedClusterUpgradeSpec",
+          "traits": {
+            "smithy.api#documentation": "The upgrade to apply to the ManagedClusters.",
+            "smithy.api#required": {}
+          }
+        },
+        "nodeImageSelection": {
+          "target": "com.azure.containerservice#NodeImageSelectionInput",
+          "traits": {
+            "smithy.api#documentation": "The node image upgrade to be applied to the target nodes in update run."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The update to be applied to the ManagedClusters."
+      }
+    },
+    "com.azure.containerservice#NodeImageSelectionInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerservice#NodeImageSelectionType",
+          "traits": {
+            "smithy.api#documentation": "The node image upgrade type.",
+            "smithy.api#required": {}
+          }
+        },
+        "customNodeImageVersions": {
+          "target": "com.azure.containerservice#NodeImageSelectionInputCustomNodeImageVersionsList",
+          "traits": {
+            "smithy.api#documentation": "Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The node image upgrade to be applied to the target nodes in update run."
+      }
+    },
+    "com.azure.containerservice#NodeImageSelectionInputCustomNodeImageVersionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerservice#NodeImageVersionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded."
+      }
+    },
+    "com.azure.containerservice#NodeImageVersionInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The node upgrade image version."
       }
     },
     "com.azure.containerservice#UpdateRunsGet": {
@@ -16659,16 +18919,29 @@
             "smithy.api#documentation": "The name of the Fleet member resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerservice#FleetMemberUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#FleetMemberUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group this member belongs to for multi-cluster update management."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the FleetMember."
       }
     },
     "com.azure.containerservice#FleetMembersCreate": {
@@ -16769,16 +19042,36 @@
             "smithy.api#documentation": "The name of the Fleet member resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerservice#FleetMemberPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#FleetMemberPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "clusterResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.",
+            "smithy.api#required": {}
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group this member belongs to for multi-cluster update management."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure."
       }
     },
     "com.azure.containerservice#FleetMembersGet": {
@@ -17604,16 +19897,75 @@
             "smithy.api#documentation": "The name of the AutoUpgradeProfile resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerservice#AutoUpgradeProfilePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#AutoUpgradeProfilePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "updateStrategyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the UpdateStrategy resource to reference. If not specified, the auto upgrade will run on all clusters which are members of the fleet."
+          }
+        },
+        "channel": {
+          "target": "com.azure.containerservice#UpgradeChannel_2",
+          "traits": {
+            "smithy.api#documentation": "Configures how auto-upgrade will be run.",
+            "smithy.api#required": {}
+          }
+        },
+        "nodeImageSelection": {
+          "target": "com.azure.containerservice#AutoUpgradeNodeImageSelection",
+          "traits": {
+            "smithy.api#documentation": "The node image upgrade to be applied to the target clusters in auto upgrade."
+          }
+        },
+        "disabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If set to False: the auto upgrade has effect - target managed clusters will be upgraded on schedule.\nIf set to True: the auto upgrade has no effect - no upgrade will be run on the target managed clusters.\nThis is a boolean and not an enum because enabled/disabled are all available states of the auto upgrade profile.\nBy default, this is set to False."
+          }
+        },
+        "autoUpgradeProfileStatus": {
+          "target": "com.azure.containerservice#AutoUpgradeProfileStatusInput",
+          "traits": {
+            "smithy.api#documentation": "The status of the auto upgrade profile."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the AutoUpgradeProfile."
+      }
+    },
+    "com.azure.containerservice#AutoUpgradeProfileStatusInput": {
+      "type": "structure",
+      "members": {
+        "lastTriggerError": {
+          "target": "com.azure.containerservice#AutoUpgradeProfileStatusInputLastTriggerError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "AutoUpgradeProfileStatus is the status of an auto upgrade profile."
+      }
+    },
+    "com.azure.containerservice#AutoUpgradeProfileStatusInputLastTriggerError": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
       }
     },
     "com.azure.containerservice#AutoUpgradeProfilesGet": {
@@ -18359,16 +20711,69 @@
             "smithy.api#documentation": "The name of the Fleet resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerservice#FleetsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerservice#FleetsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#FleetsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerservice#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.containerservice#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.containerservice#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.containerservice#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.containerservice#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.containerservice#FleetsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerservice#FleetsCreateOrUpdate": {
@@ -18521,16 +20926,103 @@
             "smithy.api#documentation": "The name of the Fleet resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerservice#FleetsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerservice#FleetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerservice#FleetsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerservice#FleetsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerservice#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.containerservice#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.containerservice#FleetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "hubProfile": {
+          "target": "com.azure.containerservice#FleetHubProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The FleetHubProfile configures the Fleet's hub."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Fleet properties."
+      }
+    },
+    "com.azure.containerservice#FleetHubProfileInput": {
+      "type": "structure",
+      "members": {
+        "dnsPrefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS prefix used to create the FQDN for the Fleet hub."
+          }
+        },
+        "apiServerAccessProfile": {
+          "target": "com.azure.containerservice#APIServerAccessProfile",
+          "traits": {
+            "smithy.api#documentation": "The access profile for the Fleet hub API server."
+          }
+        },
+        "agentProfile": {
+          "target": "com.azure.containerservice#AgentProfile",
+          "traits": {
+            "smithy.api#documentation": "The agent profile for the Fleet hub."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The FleetHubProfile configures the fleet hub."
+      }
+    },
+    "com.azure.containerservice#FleetsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerservice#FleetsGet": {

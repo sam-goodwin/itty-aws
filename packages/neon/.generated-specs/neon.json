@@ -5864,11 +5864,78 @@
         "smithy.api#input": {}
       }
     },
+    "com.neon.api#NeonAuthEmailServerConfig": {
+      "type": "union",
+      "members": {
+        "StandardEmailServer": {
+          "target": "com.neon.api#StandardEmailServer"
+        },
+        "SharedEmailServer": {
+          "target": "com.neon.api#SharedEmailServer"
+        }
+      },
+      "traits": {}
+    },
+    "com.neon.api#StandardEmailServer": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "sender_email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sender_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.neon.api#SharedEmailServer": {
+      "type": "structure",
+      "members": {
+        "sender_email": {
+          "target": "smithy.api#String"
+        },
+        "sender_name": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
     "com.neon.api#GetNeonAuthEmailProviderResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.neon.api#NeonAuthEmailServerConfig",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -5914,6 +5981,13 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The Neon branch ID"
           }
+        },
+        "body": {
+          "target": "com.neon.api#NeonAuthEmailServerConfig",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -5924,7 +5998,7 @@
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.neon.api#NeonAuthEmailServerConfig",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -6298,73 +6372,6 @@
           "traits": {
             "smithy.api#documentation": "Time in seconds before the OTP expires"
           }
-        }
-      },
-      "traits": {}
-    },
-    "com.neon.api#NeonAuthEmailServerConfig": {
-      "type": "union",
-      "members": {
-        "StandardEmailServer": {
-          "target": "com.neon.api#StandardEmailServer"
-        },
-        "SharedEmailServer": {
-          "target": "com.neon.api#SharedEmailServer"
-        }
-      },
-      "traits": {}
-    },
-    "com.neon.api#StandardEmailServer": {
-      "type": "structure",
-      "members": {
-        "host": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "port": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "username": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "password": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#sensitive": {}
-          }
-        },
-        "sender_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "sender_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.neon.api#SharedEmailServer": {
-      "type": "structure",
-      "members": {
-        "sender_email": {
-          "target": "smithy.api#String"
-        },
-        "sender_name": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {}

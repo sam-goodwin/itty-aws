@@ -63,16 +63,14 @@ export class NotFound extends T.applyErrorMatchers(
 export type DatabaseInstanceTypeEnum =
   | "DATABASE_INSTANCE_TYPE_UNSPECIFIED"
   | "DEFAULT_DATABASE"
-  | "USER_DATABASE"
-  | (string & {});
+  | "USER_DATABASE";
 export const DatabaseInstanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type DatabaseInstanceStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "ACTIVE"
   | "DISABLED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const DatabaseInstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of a Realtime Database instance. Details on interacting with contents of a DatabaseInstance can be found at: https://firebase.google.com/docs/database/rest/start. */
@@ -224,7 +222,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type DatabaseInstanceList = DatabaseInstance[];
+export type DatabaseInstanceList = ReadonlyArray<DatabaseInstance>;
 export const DatabaseInstanceList = /*@__PURE__*/ S.Array(
   DatabaseInstance,
 ) as any as S.Schema<DatabaseInstanceList>;

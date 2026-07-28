@@ -98,6 +98,13 @@ export const CreateResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseCertificateAuthority",
 }) as any as S.Schema<CreateResponseCertificateAuthority>;
 
+export type CreateResponseStatus =
+  | "active"
+  | "pending_reactivation"
+  | "pending_revocation"
+  | "revoked";
+export const CreateResponseStatus = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateClientCertificateResponse {
   /** Identifier. */
@@ -133,7 +140,7 @@ export interface CreateClientCertificateResponse {
   /** State, provided by the CSR. */
   state?: string;
   /** Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions. */
-  status?: unknown;
+  status?: CreateResponseStatus;
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number;
 }
@@ -159,7 +166,7 @@ export const CreateClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     ski: S.optional(S.String),
     state: S.optional(S.String),
-    status: S.optional(S.Unknown),
+    status: S.optional(CreateResponseStatus),
     validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -202,6 +209,13 @@ export const DeleteResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResponseCertificateAuthority",
 }) as any as S.Schema<DeleteResponseCertificateAuthority>;
 
+export type DeleteResponseStatus =
+  | "active"
+  | "pending_reactivation"
+  | "pending_revocation"
+  | "revoked";
+export const DeleteResponseStatus = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteClientCertificateResponse {
   /** Identifier. */
@@ -237,7 +251,7 @@ export interface DeleteClientCertificateResponse {
   /** State, provided by the CSR. */
   state?: string;
   /** Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions. */
-  status?: unknown;
+  status?: DeleteResponseStatus;
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number;
 }
@@ -263,7 +277,7 @@ export const DeleteClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     ski: S.optional(S.String),
     state: S.optional(S.String),
-    status: S.optional(S.Unknown),
+    status: S.optional(DeleteResponseStatus),
     validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -306,6 +320,13 @@ export const GetResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseCertificateAuthority",
 }) as any as S.Schema<GetResponseCertificateAuthority>;
 
+export type GetResponseStatus =
+  | "active"
+  | "pending_reactivation"
+  | "pending_revocation"
+  | "revoked";
+export const GetResponseStatus = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetClientCertificateResponse {
   /** Identifier. */
@@ -341,7 +362,7 @@ export interface GetClientCertificateResponse {
   /** State, provided by the CSR. */
   state?: string;
   /** Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions. */
-  status?: unknown;
+  status?: GetResponseStatus;
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number;
 }
@@ -367,7 +388,7 @@ export const GetClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     ski: S.optional(S.String),
     state: S.optional(S.String),
-    status: S.optional(S.Unknown),
+    status: S.optional(GetResponseStatus),
     validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -378,7 +399,8 @@ export type ListRequestStatus =
   | "all"
   | "active"
   | "pending_reactivation"
-  | (string & {});
+  | "pending_revocation"
+  | "revoked";
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListClientCertificatesRequest {
@@ -429,6 +451,13 @@ export const ListResultItemCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemCertificateAuthority",
 }) as any as S.Schema<ListResultItemCertificateAuthority>;
 
+export type ListResultItemStatus =
+  | "active"
+  | "pending_reactivation"
+  | "pending_revocation"
+  | "revoked";
+export const ListResultItemStatus = /*@__PURE__*/ S.String;
+
 export interface ListResultItem {
   /** Identifier. */
   id?: string;
@@ -463,7 +492,7 @@ export interface ListResultItem {
   /** State, provided by the CSR. */
   state?: string;
   /** Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions. */
-  status?: unknown;
+  status?: ListResultItemStatus;
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number;
 }
@@ -489,12 +518,12 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     ski: S.optional(S.String),
     state: S.optional(S.String),
-    status: S.optional(S.Unknown),
+    status: S.optional(ListResultItemStatus),
     validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ListResultItem[];
+export type ListResultList = ReadonlyArray<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -552,6 +581,13 @@ export const EditResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseCertificateAuthority",
 }) as any as S.Schema<EditResponseCertificateAuthority>;
 
+export type EditResponseStatus =
+  | "active"
+  | "pending_reactivation"
+  | "pending_revocation"
+  | "revoked";
+export const EditResponseStatus = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchClientCertificateResponse {
   /** Identifier. */
@@ -587,7 +623,7 @@ export interface PatchClientCertificateResponse {
   /** State, provided by the CSR. */
   state?: string;
   /** Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions. */
-  status?: unknown;
+  status?: EditResponseStatus;
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number;
 }
@@ -613,7 +649,7 @@ export const PatchClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
     signature: S.optional(S.String),
     ski: S.optional(S.String),
     state: S.optional(S.String),
-    status: S.optional(S.Unknown),
+    status: S.optional(EditResponseStatus),
     validityDays: S.optional(S.Number.pipe(T.Body("validity_days"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({

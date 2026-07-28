@@ -66,7 +66,8 @@ export const ReviewBlindSpotsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReviewBlindSpotsConfig",
 }) as any as S.Schema<ReviewBlindSpotsConfig>;
 
-export type ReviewHogBlindSpotsListResponseBodyList = ReviewBlindSpotsConfig[];
+export type ReviewHogBlindSpotsListResponseBodyList =
+  ReadonlyArray<ReviewBlindSpotsConfig>;
 export const ReviewHogBlindSpotsListResponseBodyList = /*@__PURE__*/ S.Array(
   ReviewBlindSpotsConfig,
 ) as any as S.Schema<ReviewHogBlindSpotsListResponseBodyList>;
@@ -143,7 +144,7 @@ export const ReviewPerspectiveConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReviewPerspectiveConfig>;
 
 export type ReviewHogPerspectivesListResponseBodyList =
-  ReviewPerspectiveConfig[];
+  ReadonlyArray<ReviewPerspectiveConfig>;
 export const ReviewHogPerspectivesListResponseBodyList = /*@__PURE__*/ S.Array(
   ReviewPerspectiveConfig,
 ) as any as S.Schema<ReviewHogPerspectivesListResponseBodyList>;
@@ -219,7 +220,8 @@ export const ReviewValidatorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReviewValidatorConfig",
 }) as any as S.Schema<ReviewValidatorConfig>;
 
-export type ReviewHogValidatorsListResponseBodyList = ReviewValidatorConfig[];
+export type ReviewHogValidatorsListResponseBodyList =
+  ReadonlyArray<ReviewValidatorConfig>;
 export const ReviewHogValidatorsListResponseBodyList = /*@__PURE__*/ S.Array(
   ReviewValidatorConfig,
 ) as any as S.Schema<ReviewHogValidatorsListResponseBodyList>;

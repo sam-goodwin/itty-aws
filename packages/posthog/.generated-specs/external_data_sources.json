@@ -54,7 +54,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.external_data_sources#PaginatedExternalDataSourceSerializersList": {
+    "com.posthog.external_data_sources#PaginatedExternalDataSourceSerializersListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -73,12 +73,12 @@
           }
         },
         "results": {
-          "target": "com.posthog.external_data_sources#PaginatedExternalDataSourceSerializersListResultsList"
+          "target": "com.posthog.external_data_sources#PaginatedExternalDataSourceSerializersListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.external_data_sources#ExternalDataSourceSerializers": {
+    "com.posthog.external_data_sources#ExternalDataSourceSerializersOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -101,15 +101,6 @@
           }
         },
         "status": {
-          "target": "smithy.api#String"
-        },
-        "client_secret": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "account_id": {
           "target": "smithy.api#String"
         },
         "source_type": {
@@ -149,7 +140,7 @@
           }
         },
         "auto_sync_schema_patterns": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersAutoSyncSchemaPatternsList",
+          "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList",
           "traits": {
             "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true.",
             "com.distilled.openapi#nullable": {}
@@ -169,7 +160,7 @@
           }
         },
         "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersSchemasList"
+          "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersOutputSchemasList"
         },
         "job_inputs": {
           "target": "smithy.api#Document"
@@ -7754,7 +7745,7 @@
         "smithy.api#documentation": "* `warehouse` - warehouse\n* `direct` - direct"
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourceSerializersAutoSyncSchemaPatternsList": {
+    "com.posthog.external_data_sources#ExternalDataSourceSerializersOutputAutoSyncSchemaPatternsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -7801,7 +7792,7 @@
         "smithy.api#documentation": "* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift"
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourceSerializersSchemasItemMap": {
+    "com.posthog.external_data_sources#ExternalDataSourceSerializersOutputSchemasItemMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7811,10 +7802,10 @@
       },
       "traits": {}
     },
-    "com.posthog.external_data_sources#ExternalDataSourceSerializersSchemasList": {
+    "com.posthog.external_data_sources#ExternalDataSourceSerializersOutputSchemasList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersSchemasItemMap"
+        "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersOutputSchemasItemMap"
       },
       "traits": {}
     },
@@ -7858,10 +7849,10 @@
       },
       "traits": {}
     },
-    "com.posthog.external_data_sources#PaginatedExternalDataSourceSerializersListResultsList": {
+    "com.posthog.external_data_sources#PaginatedExternalDataSourceSerializersListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourceSerializers"
+        "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersOutput"
       },
       "traits": {}
     },
@@ -7871,7 +7862,7 @@
         "target": "com.posthog.external_data_sources#ExternalDataSourcesListRequest"
       },
       "output": {
-        "target": "com.posthog.external_data_sources#PaginatedExternalDataSourceSerializersList"
+        "target": "com.posthog.external_data_sources#PaginatedExternalDataSourceSerializersListOutput"
       },
       "errors": [
         {
@@ -8062,7 +8053,7 @@
         "target": "com.posthog.external_data_sources#ExternalDataSourcesRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourceSerializers"
+        "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersOutput"
       },
       "errors": [
         {
@@ -8090,23 +8081,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesUpdateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesUpdateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesUpdateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesUpdateRequest": {
       "type": "structure",
       "members": {
@@ -8126,24 +8100,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -8153,15 +8115,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -8174,9 +8127,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -8197,57 +8147,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesUpdateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -8260,7 +8161,7 @@
         "target": "com.posthog.external_data_sources#ExternalDataSourcesUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourceSerializers"
+        "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersOutput"
       },
       "errors": [
         {
@@ -8291,23 +8192,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesPartialUpdateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesPartialUpdateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesPartialUpdateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -8327,24 +8211,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -8354,15 +8226,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -8375,9 +8238,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -8398,57 +8258,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesPartialUpdateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -8461,7 +8272,7 @@
         "target": "com.posthog.external_data_sources#ExternalDataSourcesPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourceSerializers"
+        "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersOutput"
       },
       "errors": [
         {
@@ -9303,23 +9114,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesCheckCdcPrerequisitesForSourceCreateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesCheckCdcPrerequisitesForSourceCreateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesCheckCdcPrerequisitesForSourceCreateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesCheckCdcPrerequisitesForSourceCreateRequest": {
       "type": "structure",
       "members": {
@@ -9339,24 +9133,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -9366,15 +9148,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -9387,9 +9160,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -9410,57 +9180,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesCheckCdcPrerequisitesForSourceCreateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -9493,23 +9214,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesCreateWebhookCreateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesCreateWebhookCreateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesCreateWebhookCreateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesCreateWebhookCreateRequest": {
       "type": "structure",
       "members": {
@@ -9529,24 +9233,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -9556,15 +9248,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -9577,9 +9260,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -9600,57 +9280,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesCreateWebhookCreateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -9694,23 +9325,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesDeleteWebhookCreateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesDeleteWebhookCreateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesDeleteWebhookCreateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesDeleteWebhookCreateRequest": {
       "type": "structure",
       "members": {
@@ -9730,24 +9344,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -9757,15 +9359,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -9778,9 +9371,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -9801,57 +9391,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesDeleteWebhookCreateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -9895,23 +9436,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesDisableCdcCreateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesDisableCdcCreateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesDisableCdcCreateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesDisableCdcCreateRequest": {
       "type": "structure",
       "members": {
@@ -9931,24 +9455,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -9958,15 +9470,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -9979,9 +9482,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -10002,57 +9502,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesDisableCdcCreateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -10085,23 +9536,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesEnableCdcCreateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesEnableCdcCreateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesEnableCdcCreateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesEnableCdcCreateRequest": {
       "type": "structure",
       "members": {
@@ -10121,24 +9555,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -10148,15 +9570,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -10169,9 +9582,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -10192,57 +9602,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesEnableCdcCreateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -10324,23 +9685,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesRefreshSchemasCreateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesRefreshSchemasCreateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesRefreshSchemasCreateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesRefreshSchemasCreateRequest": {
       "type": "structure",
       "members": {
@@ -10360,24 +9704,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -10387,15 +9719,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -10408,9 +9731,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -10431,57 +9751,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesRefreshSchemasCreateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -10525,23 +9796,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesReloadCreateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesReloadCreateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesReloadCreateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesReloadCreateRequest": {
       "type": "structure",
       "members": {
@@ -10561,24 +9815,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -10588,15 +9830,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -10609,9 +9842,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -10632,57 +9862,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesReloadCreateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -10846,23 +10027,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -10882,24 +10046,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -10909,15 +10061,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -10930,9 +10073,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -10953,57 +10093,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesRevenueAnalyticsConfigPartialUpdateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -11047,23 +10138,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesUpdateCdcSettingsCreateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesUpdateCdcSettingsCreateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesUpdateCdcSettingsCreateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesUpdateCdcSettingsCreateRequest": {
       "type": "structure",
       "members": {
@@ -11083,24 +10157,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -11110,15 +10172,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -11131,9 +10184,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -11154,57 +10204,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesUpdateCdcSettingsCreateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -11237,23 +10238,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesUpdateWebhookInputsCreateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesUpdateWebhookInputsCreateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesUpdateWebhookInputsCreateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesUpdateWebhookInputsCreateRequest": {
       "type": "structure",
       "members": {
@@ -11273,24 +10257,12 @@
             "smithy.api#documentation": "A UUID string identifying this external data source."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -11300,15 +10272,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -11321,9 +10284,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -11344,57 +10304,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesUpdateWebhookInputsCreateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -12367,23 +11278,6 @@
         "smithy.api#documentation": "Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true."
       }
     },
-    "com.posthog.external_data_sources#ExternalDataSourcesSourcePrefixCreateRequestSchemasItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.external_data_sources#ExternalDataSourcesSourcePrefixCreateRequestSchemasList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.external_data_sources#ExternalDataSourcesSourcePrefixCreateRequestSchemasItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.external_data_sources#ExternalDataSourcesSourcePrefixCreateRequest": {
       "type": "structure",
       "members": {
@@ -12395,27 +11289,12 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "created_via": {
           "target": "com.posthog.external_data_sources#ExternalDataSourceSerializersCreatedViaEnum",
           "traits": {
             "smithy.api#documentation": "How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Code app (both derived server-side from the caller's user agent). Ignored on update.\n\n* `web` - web\n* `api` - api\n* `mcp` - mcp\n* `wizard` - wizard\n* `self_driving` - self_driving",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "client_secret": {
           "target": "smithy.api#String",
@@ -12425,15 +11304,6 @@
         },
         "account_id": {
           "target": "smithy.api#String"
-        },
-        "source_type": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceTypeEnum"
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "prefix": {
           "target": "smithy.api#String",
@@ -12446,9 +11316,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "access_method": {
-          "target": "com.posthog.external_data_sources#AccessMethodEnum"
         },
         "direct_query_enabled": {
           "target": "smithy.api#Boolean",
@@ -12469,57 +11336,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "engine": {
-          "target": "com.posthog.external_data_sources#EngineEnum",
-          "traits": {
-            "smithy.api#documentation": "Backend engine detected for the direct connection.\n\n* `duckdb` - duckdb\n* `postgres` - postgres\n* `mysql` - mysql\n* `snowflake` - snowflake\n* `redshift` - redshift",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "schemas": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourcesSourcePrefixCreateRequestSchemasList"
-        },
         "job_inputs": {
           "target": "smithy.api#Document"
-        },
-        "revenue_analytics_config": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceRevenueAnalyticsConfig"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "supports_webhooks": {
-          "target": "smithy.api#Boolean"
-        },
-        "supports_column_selection": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this source supports per-column sync selection via `enabled_columns`."
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Vendor API version this source is pinned to (an opaque vendor label, e.g. a Stripe date version). Null resolves to the source type's default version at sync time.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_deprecation": {
-          "target": "com.posthog.external_data_sources#ExternalDataSourceApiVersionDeprecation",
-          "traits": {
-            "smithy.api#documentation": "Set when the vendor has deprecated the API version this source is pinned to; null otherwise. Drives the in-product deprecation warning.",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {

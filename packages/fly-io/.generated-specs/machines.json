@@ -4325,11 +4325,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.flyio.machines#MachinesShowMetadataResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
     "com.flyio.machines#MachinesShowMetadataResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.flyio.machines#MachinesShowMetadataResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -8067,7 +8077,7 @@
       "type": "structure",
       "members": {
         "action": {
-          "target": "smithy.api#Double",
+          "target": "com.flyio.machines#RessetAction",
           "traits": {
             "smithy.api#documentation": "Action is the action being taken on the specified resource. This is the\ncombination of individual action characters (e.g \"rw\")\n  - r: read\n  - w: write\n  - c: create\n  - d: delete\n  - C: control"
           }
@@ -8141,6 +8151,54 @@
       },
       "traits": {}
     },
+    "com.flyio.machines#RessetAction": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 8
+          }
+        },
+        "_16": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 16
+          }
+        },
+        "_31": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 31
+          }
+        },
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.flyio.machines#MainTokenAccessCommandList": {
       "type": "list",
       "member": {
@@ -8180,7 +8238,7 @@
       "type": "structure",
       "members": {
         "action": {
-          "target": "smithy.api#Double"
+          "target": "com.flyio.machines#RessetAction"
         },
         "app_feature": {
           "target": "smithy.api#String"

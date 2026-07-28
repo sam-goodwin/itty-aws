@@ -125,11 +125,10 @@ export type VpcFlowLogsConfigAggregationIntervalEnum =
   | "INTERVAL_1_MIN"
   | "INTERVAL_5_MIN"
   | "INTERVAL_10_MIN"
-  | "INTERVAL_15_MIN"
-  | (string & {});
+  | "INTERVAL_15_MIN";
 export const VpcFlowLogsConfigAggregationIntervalEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -137,30 +136,26 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type VpcFlowLogsConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const VpcFlowLogsConfigStateEnum = /*@__PURE__*/ S.String;
 
 export type VpcFlowLogsConfigTargetResourceStateEnum =
   | "TARGET_RESOURCE_STATE_UNSPECIFIED"
   | "TARGET_RESOURCE_EXISTS"
-  | "TARGET_RESOURCE_DOES_NOT_EXIST"
-  | (string & {});
+  | "TARGET_RESOURCE_DOES_NOT_EXIST";
 export const VpcFlowLogsConfigTargetResourceStateEnum = /*@__PURE__*/ S.String;
 
 export type VpcFlowLogsConfigMetadataEnum =
   | "METADATA_UNSPECIFIED"
   | "INCLUDE_ALL_METADATA"
   | "EXCLUDE_ALL_METADATA"
-  | "CUSTOM_METADATA"
-  | (string & {});
+  | "CUSTOM_METADATA";
 export const VpcFlowLogsConfigMetadataEnum = /*@__PURE__*/ S.String;
 
 export type VpcFlowLogsConfigCrossProjectMetadataEnum =
   | "CROSS_PROJECT_METADATA_UNSPECIFIED"
   | "CROSS_PROJECT_METADATA_ENABLED"
-  | "CROSS_PROJECT_METADATA_DISABLED"
-  | (string & {});
+  | "CROSS_PROJECT_METADATA_DISABLED";
 export const VpcFlowLogsConfigCrossProjectMetadataEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -261,7 +256,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -310,8 +305,7 @@ export type EndpointNetworkTypeEnum =
   | "NETWORK_TYPE_UNSPECIFIED"
   | "GCP_NETWORK"
   | "NON_GCP_NETWORK"
-  | "INTERNET"
-  | (string & {});
+  | "INTERNET";
 export const EndpointNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Wrapper for Cloud Run revision attributes. */
@@ -367,8 +361,7 @@ export type EndpointLoadBalancerTypeEnum =
   | "INTERNAL_TCP_PROXY_LOAD_BALANCER"
   | "NETWORK_LOAD_BALANCER"
   | "LEGACY_NETWORK_LOAD_BALANCER"
-  | "TCP_UDP_INTERNAL_LOAD_BALANCER"
-  | (string & {});
+  | "TCP_UDP_INTERNAL_LOAD_BALANCER";
 export const EndpointLoadBalancerTypeEnum = /*@__PURE__*/ S.String;
 
 export type EndpointForwardingRuleTargetEnum =
@@ -376,8 +369,7 @@ export type EndpointForwardingRuleTargetEnum =
   | "INSTANCE"
   | "LOAD_BALANCER"
   | "VPN_GATEWAY"
-  | "PSC"
-  | (string & {});
+  | "PSC";
 export const EndpointForwardingRuleTargetEnum = /*@__PURE__*/ S.String;
 
 /** Source or destination of the Connectivity Test. */
@@ -470,7 +462,7 @@ export const LatencyPercentile = /*@__PURE__*/ S.suspend(() =>
   identifier: "LatencyPercentile",
 }) as any as S.Schema<LatencyPercentile>;
 
-export type LatencyPercentileList = LatencyPercentile[];
+export type LatencyPercentileList = ReadonlyArray<LatencyPercentile>;
 export const LatencyPercentileList = /*@__PURE__*/ S.Array(
   LatencyPercentile,
 ) as any as S.Schema<LatencyPercentileList>;
@@ -493,8 +485,7 @@ export type ProbingDetailsResultEnum =
   | "REACHABLE"
   | "UNREACHABLE"
   | "REACHABILITY_INCONSISTENT"
-  | "UNDETERMINED"
-  | (string & {});
+  | "UNDETERMINED";
 export const ProbingDetailsResultEnum = /*@__PURE__*/ S.String;
 
 /** Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations. */
@@ -513,8 +504,7 @@ export type SingleEdgeResponseResultEnum =
   | "REACHABLE"
   | "UNREACHABLE"
   | "REACHABILITY_INCONSISTENT"
-  | "UNDETERMINED"
-  | (string & {});
+  | "UNDETERMINED";
 export const SingleEdgeResponseResultEnum = /*@__PURE__*/ S.String;
 
 /** Probing results for a single edge device. */
@@ -545,7 +535,7 @@ export const SingleEdgeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SingleEdgeResponse",
 }) as any as S.Schema<SingleEdgeResponse>;
 
-export type SingleEdgeResponseList = SingleEdgeResponse[];
+export type SingleEdgeResponseList = ReadonlyArray<SingleEdgeResponse>;
 export const SingleEdgeResponseList = /*@__PURE__*/ S.Array(
   SingleEdgeResponse,
 ) as any as S.Schema<SingleEdgeResponseList>;
@@ -553,8 +543,7 @@ export const SingleEdgeResponseList = /*@__PURE__*/ S.Array(
 export type ProbingDetailsAbortCauseEnum =
   | "PROBING_ABORT_CAUSE_UNSPECIFIED"
   | "PERMISSION_DENIED"
-  | "NO_SOURCE_LOCATION"
-  | (string & {});
+  | "NO_SOURCE_LOCATION";
 export const ProbingDetailsAbortCauseEnum = /*@__PURE__*/ S.String;
 
 /** For display only. The specification of the endpoints for the test. EndpointInfo is derived from source and destination Endpoint and validated by the backend data plane model. */
@@ -675,8 +664,7 @@ export type AbortInfoCauseEnum =
   | "NO_SERVERLESS_IP_RANGES"
   | "IP_VERSION_PROTOCOL_MISMATCH"
   | "GKE_POD_UNKNOWN_ENDPOINT_LOCATION"
-  | "RESPONSE_TOO_LARGE"
-  | (string & {});
+  | "RESPONSE_TOO_LARGE";
 export const AbortInfoCauseEnum = /*@__PURE__*/ S.String;
 
 /** Details of the final state "abort" and associated resource. */
@@ -721,8 +709,7 @@ export type DeliverInfoTargetEnum =
   | "GKE_POD"
   | "CLOUD_RUN_JOB"
   | "DMS_PRIVATE_CONNECTION"
-  | "DATASTREAM_PRIVATE_CONNECTION"
-  | (string & {});
+  | "DATASTREAM_PRIVATE_CONNECTION";
 export const DeliverInfoTargetEnum = /*@__PURE__*/ S.String;
 
 export type DeliverInfoGoogleServiceTypeEnum =
@@ -731,8 +718,7 @@ export type DeliverInfoGoogleServiceTypeEnum =
   | "GFE_PROXY_OR_HEALTH_CHECK_PROBER"
   | "CLOUD_DNS"
   | "PRIVATE_GOOGLE_ACCESS"
-  | "SERVERLESS_VPC_ACCESS"
-  | (string & {});
+  | "SERVERLESS_VPC_ACCESS";
 export const DeliverInfoGoogleServiceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details of the final state "deliver" and associated resource. */
@@ -810,8 +796,7 @@ export type NatInfoTypeEnum =
   | "EXTERNAL_TO_INTERNAL"
   | "CLOUD_NAT"
   | "PRIVATE_SERVICE_CONNECT"
-  | "GKE_POD_IP_MASQUERADING"
-  | (string & {});
+  | "GKE_POD_IP_MASQUERADING";
 export const NatInfoTypeEnum = /*@__PURE__*/ S.String;
 
 export type NatInfoCloudNatGatewayTypeEnum =
@@ -820,8 +805,7 @@ export type NatInfoCloudNatGatewayTypeEnum =
   | "PUBLIC_NAT64"
   | "PRIVATE_NAT_NCC"
   | "PRIVATE_NAT_HYBRID"
-  | "PRIVATE_NAT64"
-  | (string & {});
+  | "PRIVATE_NAT64";
 export const NatInfoCloudNatGatewayTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with NAT. */
@@ -939,8 +923,7 @@ export type ForwardInfoTargetEnum =
   | "ANOTHER_PROJECT"
   | "NCC_HUB"
   | "ROUTER_APPLIANCE"
-  | "SECURE_WEB_PROXY_GATEWAY"
-  | (string & {});
+  | "SECURE_WEB_PROXY_GATEWAY";
 export const ForwardInfoTargetEnum = /*@__PURE__*/ S.String;
 
 /** Details of the final state "forward" and associated resource. */
@@ -1038,8 +1021,7 @@ export type RouteInfoNextHopTypeEnum =
   | "NEXT_HOP_ILB"
   | "NEXT_HOP_ROUTER_APPLIANCE"
   | "NEXT_HOP_NCC_HUB"
-  | "SECURE_WEB_PROXY_GATEWAY"
-  | (string & {});
+  | "SECURE_WEB_PROXY_GATEWAY";
 export const RouteInfoNextHopTypeEnum = /*@__PURE__*/ S.String;
 
 export type RouteInfoRouteTypeEnum =
@@ -1051,15 +1033,13 @@ export type RouteInfoRouteTypeEnum =
   | "PEERING_STATIC"
   | "PEERING_DYNAMIC"
   | "POLICY_BASED"
-  | "ADVERTISED"
-  | (string & {});
+  | "ADVERTISED";
 export const RouteInfoRouteTypeEnum = /*@__PURE__*/ S.String;
 
 export type RouteInfoRouteScopeEnum =
   | "ROUTE_SCOPE_UNSPECIFIED"
   | "NETWORK"
-  | "NCC_HUB"
-  | (string & {});
+  | "NCC_HUB";
 export const RouteInfoRouteScopeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with a Compute Engine route. */
@@ -1173,8 +1153,7 @@ export type InterconnectAttachmentInfoTypeEnum =
   | "DEDICATED"
   | "PARTNER"
   | "PARTNER_PROVIDER"
-  | "L2_DEDICATED"
-  | (string & {});
+  | "L2_DEDICATED";
 export const InterconnectAttachmentInfoTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with an Interconnect attachment. */
@@ -1228,8 +1207,7 @@ export const GkePodInfo = /*@__PURE__*/ S.suspend(() =>
 export type FirewallInfoTargetTypeEnum =
   | "TARGET_TYPE_UNSPECIFIED"
   | "INSTANCES"
-  | "INTERNAL_MANAGED_LB"
-  | (string & {});
+  | "INTERNAL_MANAGED_LB";
 export const FirewallInfoTargetTypeEnum = /*@__PURE__*/ S.String;
 
 export type FirewallInfoFirewallRuleTypeEnum =
@@ -1244,8 +1222,7 @@ export type FirewallInfoFirewallRuleTypeEnum =
   | "SYSTEM_REGIONAL_NETWORK_FIREWALL_POLICY_RULE"
   | "UNSUPPORTED_FIREWALL_POLICY_RULE"
   | "TRACKING_STATE"
-  | "ANALYSIS_SKIPPED"
-  | (string & {});
+  | "ANALYSIS_SKIPPED";
 export const FirewallInfoFirewallRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with a VPC firewall rule, an implied VPC firewall rule, or a firewall policy rule. */
@@ -1321,8 +1298,7 @@ export type VpnTunnelInfoRoutingTypeEnum =
   | "ROUTING_TYPE_UNSPECIFIED"
   | "ROUTE_BASED"
   | "POLICY_BASED"
-  | "DYNAMIC"
-  | (string & {});
+  | "DYNAMIC";
 export const VpnTunnelInfoRoutingTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with a Compute Engine VPN tunnel. */
@@ -1419,8 +1395,7 @@ export type LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum =
   | "FIREWALLS_CONFIGURED"
   | "FIREWALLS_PARTIALLY_CONFIGURED"
   | "FIREWALLS_NOT_CONFIGURED"
-  | "FIREWALLS_UNSUPPORTED"
-  | (string & {});
+  | "FIREWALLS_UNSUPPORTED";
 export const LoadBalancerBackendInfoHealthCheckFirewallsConfigStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1587,8 +1562,7 @@ export type StepStateEnum =
   | "DROP"
   | "FORWARD"
   | "ABORT"
-  | "VIEWER_PERMISSION_MISSING"
-  | (string & {});
+  | "VIEWER_PERMISSION_MISSING";
 export const StepStateEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with Storage Bucket. */
@@ -1612,8 +1586,7 @@ export type IpMasqueradingSkippedInfoReasonEnum =
   | "DEFAULT_SNAT_DISABLED"
   | "NO_MASQUERADING_FOR_IPV6"
   | "POD_USES_NODE_NETWORK_NAMESPACE"
-  | "NO_MASQUERADING_FOR_RETURN_PACKET"
-  | (string & {});
+  | "NO_MASQUERADING_FOR_RETURN_PACKET";
 export const IpMasqueradingSkippedInfoReasonEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Contains information about why IP masquerading was skipped for the packet. */
@@ -1676,8 +1649,7 @@ export type GkeNetworkPolicySkippedInfoReasonEnum =
   | "INGRESS_SOURCE_ON_SAME_NODE"
   | "EGRESS_FROM_NODE_NETWORK_NAMESPACE_POD"
   | "NETWORK_POLICY_NOT_APPLIED_TO_RESPONSE_TRAFFIC"
-  | "NETWORK_POLICY_ANALYSIS_UNSUPPORTED"
-  | (string & {});
+  | "NETWORK_POLICY_ANALYSIS_UNSUPPORTED";
 export const GkeNetworkPolicySkippedInfoReasonEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Contains information about why GKE Network Policy evaluation was skipped. */
@@ -1699,15 +1671,13 @@ export type LoadBalancerInfoLoadBalancerTypeEnum =
   | "NETWORK_TCP_UDP"
   | "HTTP_PROXY"
   | "TCP_PROXY"
-  | "SSL_PROXY"
-  | (string & {});
+  | "SSL_PROXY";
 export const LoadBalancerInfoLoadBalancerTypeEnum = /*@__PURE__*/ S.String;
 
 export type LoadBalancerBackendHealthCheckFirewallStateEnum =
   | "HEALTH_CHECK_FIREWALL_STATE_UNSPECIFIED"
   | "CONFIGURED"
-  | "MISCONFIGURED"
-  | (string & {});
+  | "MISCONFIGURED";
 export const LoadBalancerBackendHealthCheckFirewallStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1738,7 +1708,7 @@ export const LoadBalancerBackend = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoadBalancerBackend",
 }) as any as S.Schema<LoadBalancerBackend>;
 
-export type LoadBalancerBackendList = LoadBalancerBackend[];
+export type LoadBalancerBackendList = ReadonlyArray<LoadBalancerBackend>;
 export const LoadBalancerBackendList = /*@__PURE__*/ S.Array(
   LoadBalancerBackend,
 ) as any as S.Schema<LoadBalancerBackendList>;
@@ -1747,8 +1717,7 @@ export type LoadBalancerInfoBackendTypeEnum =
   | "BACKEND_TYPE_UNSPECIFIED"
   | "BACKEND_SERVICE"
   | "TARGET_POOL"
-  | "TARGET_INSTANCE"
-  | (string & {});
+  | "TARGET_INSTANCE";
 export const LoadBalancerInfoBackendTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with a load balancer. */
@@ -1784,8 +1753,7 @@ export type GoogleServiceInfoGoogleServiceTypeEnum =
   | "GOOGLE_API"
   | "GOOGLE_API_PSC"
   | "GOOGLE_API_VPC_SC"
-  | "SERVERLESS_VPC_ACCESS"
-  | (string & {});
+  | "SERVERLESS_VPC_ACCESS";
 export const GoogleServiceInfoGoogleServiceTypeEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be a publicly routable address, some Google Services use special routes within Google production infrastructure to reach Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#special_return_paths */
@@ -1916,8 +1884,7 @@ export type DropInfoCauseEnum =
   | "HYBRID_SUBNET_NO_ROUTE"
   | "GKE_NETWORK_POLICY"
   | "NO_VALID_ROUTE_FROM_GOOGLE_MANAGED_NETWORK_TO_DESTINATION"
-  | "PRIVATE_CONNECTION_NO_RUNNING_INSTANCE"
-  | (string & {});
+  | "PRIVATE_CONNECTION_NO_RUNNING_INSTANCE";
 export const DropInfoCauseEnum = /*@__PURE__*/ S.String;
 
 /** Details of the final state "drop" and associated resource. */
@@ -2020,8 +1987,7 @@ export const DirectVpcEgressConnectionInfo = /*@__PURE__*/ S.suspend(() =>
 export type InstanceInfoStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "RUNNING"
-  | "NOT_RUNNING"
-  | (string & {});
+  | "NOT_RUNNING";
 export const InstanceInfoStatusEnum = /*@__PURE__*/ S.String;
 
 /** For display only. Metadata associated with a Compute Engine instance. */
@@ -2225,7 +2191,7 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
-export type StepList = Step[];
+export type StepList = ReadonlyArray<Step>;
 export const StepList = /*@__PURE__*/ S.Array(
   Step,
 ) as any as S.Schema<StepList>;
@@ -2247,7 +2213,7 @@ export const Trace = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Trace" }) as any as S.Schema<Trace>;
 
-export type TraceList = Trace[];
+export type TraceList = ReadonlyArray<Trace>;
 export const TraceList = /*@__PURE__*/ S.Array(
   Trace,
 ) as any as S.Schema<TraceList>;
@@ -2257,8 +2223,7 @@ export type ReachabilityDetailsResultEnum =
   | "REACHABLE"
   | "UNREACHABLE"
   | "AMBIGUOUS"
-  | "UNDETERMINED"
-  | (string & {});
+  | "UNDETERMINED";
 export const ReachabilityDetailsResultEnum = /*@__PURE__*/ S.String;
 
 /** Results of the configuration analysis from the last run of the test. */
@@ -2542,7 +2507,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2551,8 +2516,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2569,7 +2533,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -2588,7 +2552,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -2797,7 +2761,7 @@ export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsLocationsRequest",
 }) as any as S.Schema<ListOrganizationsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2849,7 +2813,7 @@ export const ListOrganizationsLocationsGlobalOperationsRequest =
     identifier: "ListOrganizationsLocationsGlobalOperationsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsGlobalOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2904,7 +2868,7 @@ export const ListOrganizationsLocationsVpcFlowLogsConfigsRequest =
     identifier: "ListOrganizationsLocationsVpcFlowLogsConfigsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsVpcFlowLogsConfigsRequest>;
 
-export type VpcFlowLogsConfigList = VpcFlowLogsConfig[];
+export type VpcFlowLogsConfigList = ReadonlyArray<VpcFlowLogsConfig>;
 export const VpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
   VpcFlowLogsConfig,
 ) as any as S.Schema<VpcFlowLogsConfigList>;
@@ -2989,7 +2953,7 @@ export const ListProjectsLocationsGlobalConnectivityTestsRequest =
     identifier: "ListProjectsLocationsGlobalConnectivityTestsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalConnectivityTestsRequest>;
 
-export type ConnectivityTestList = ConnectivityTest[];
+export type ConnectivityTestList = ReadonlyArray<ConnectivityTest>;
 export const ConnectivityTestList = /*@__PURE__*/ S.Array(
   ConnectivityTest,
 ) as any as S.Schema<ConnectivityTestList>;
@@ -3305,24 +3269,21 @@ export type EffectiveVpcFlowLogsConfigAggregationIntervalEnum =
   | "INTERVAL_1_MIN"
   | "INTERVAL_5_MIN"
   | "INTERVAL_10_MIN"
-  | "INTERVAL_15_MIN"
-  | (string & {});
+  | "INTERVAL_15_MIN";
 export const EffectiveVpcFlowLogsConfigAggregationIntervalEnum =
   /*@__PURE__*/ S.String;
 
 export type EffectiveVpcFlowLogsConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const EffectiveVpcFlowLogsConfigStateEnum = /*@__PURE__*/ S.String;
 
 export type EffectiveVpcFlowLogsConfigMetadataEnum =
   | "METADATA_UNSPECIFIED"
   | "INCLUDE_ALL_METADATA"
   | "EXCLUDE_ALL_METADATA"
-  | "CUSTOM_METADATA"
-  | (string & {});
+  | "CUSTOM_METADATA";
 export const EffectiveVpcFlowLogsConfigMetadataEnum = /*@__PURE__*/ S.String;
 
 export type EffectiveVpcFlowLogsConfigScopeEnum =
@@ -3332,15 +3293,13 @@ export type EffectiveVpcFlowLogsConfigScopeEnum =
   | "NETWORK"
   | "VPN_TUNNEL"
   | "INTERCONNECT_ATTACHMENT"
-  | "ORGANIZATION"
-  | (string & {});
+  | "ORGANIZATION";
 export const EffectiveVpcFlowLogsConfigScopeEnum = /*@__PURE__*/ S.String;
 
 export type EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum =
   | "CROSS_PROJECT_METADATA_UNSPECIFIED"
   | "CROSS_PROJECT_METADATA_ENABLED"
-  | "CROSS_PROJECT_METADATA_DISABLED"
-  | (string & {});
+  | "CROSS_PROJECT_METADATA_DISABLED";
 export const EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum =
   /*@__PURE__*/ S.String;
 
@@ -3397,7 +3356,8 @@ export const EffectiveVpcFlowLogsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "EffectiveVpcFlowLogsConfig",
 }) as any as S.Schema<EffectiveVpcFlowLogsConfig>;
 
-export type EffectiveVpcFlowLogsConfigList = EffectiveVpcFlowLogsConfig[];
+export type EffectiveVpcFlowLogsConfigList =
+  ReadonlyArray<EffectiveVpcFlowLogsConfig>;
 export const EffectiveVpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
   EffectiveVpcFlowLogsConfig,
 ) as any as S.Schema<EffectiveVpcFlowLogsConfigList>;

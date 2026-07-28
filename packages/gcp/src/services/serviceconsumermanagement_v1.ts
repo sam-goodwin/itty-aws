@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -95,7 +95,7 @@ export const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyBinding" }) as any as S.Schema<PolicyBinding>;
 
-export type PolicyBindingList = PolicyBinding[];
+export type PolicyBindingList = ReadonlyArray<PolicyBinding>;
 export const PolicyBindingList = /*@__PURE__*/ S.Array(
   PolicyBinding,
 ) as any as S.Schema<PolicyBindingList>;
@@ -202,7 +202,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -401,8 +401,7 @@ export type TenantResourceStatusEnum =
   | "ACTIVE"
   | "PENDING_DELETE"
   | "FAILED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const TenantResourceStatusEnum = /*@__PURE__*/ S.String;
 
 /** Resource constituting the TenancyUnit. */
@@ -428,7 +427,7 @@ export const TenantResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TenantResource" }) as any as S.Schema<TenantResource>;
 
-export type TenantResourceList = TenantResource[];
+export type TenantResourceList = ReadonlyArray<TenantResource>;
 export const TenantResourceList = /*@__PURE__*/ S.Array(
   TenantResource,
 ) as any as S.Schema<TenantResourceList>;
@@ -575,7 +574,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -626,7 +625,7 @@ export const ListServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesTenancyUnitsRequest",
 }) as any as S.Schema<ListServicesTenancyUnitsRequest>;
 
-export type TenancyUnitList = TenancyUnit[];
+export type TenancyUnitList = ReadonlyArray<TenancyUnit>;
 export const TenancyUnitList = /*@__PURE__*/ S.Array(
   TenancyUnit,
 ) as any as S.Schema<TenancyUnitList>;

@@ -584,11 +584,16 @@
             "smithy.api#documentation": "The region name which the operation will lookup into."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name for checking availability."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type of azure analysis services."
           }
         }
       },
@@ -670,7 +675,7 @@
       "type": "structure",
       "members": {
         "status": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.analysisservices#GatewayListStatusLiveStatus",
           "traits": {
             "smithy.api#documentation": "Live message of list gateway. Status: 0 - Live"
           }
@@ -678,6 +683,20 @@
       },
       "traits": {
         "smithy.api#documentation": "Status of gateway is live."
+      }
+    },
+    "com.azure.analysisservices#GatewayListStatusLiveStatus": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Live message of list gateway. Status: 0 - Live"
       }
     },
     "com.azure.analysisservices#ServersListGatewayStatusRequest": {
@@ -1046,13 +1065,13 @@
           }
         },
         "managedMode": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.analysisservices#AnalysisServicesServerPropertiesManagedMode",
           "traits": {
             "smithy.api#documentation": "The managed mode of the server (0 = not managed, 1 = managed)."
           }
         },
         "serverMonitorMode": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.analysisservices#AnalysisServicesServerPropertiesServerMonitorMode",
           "traits": {
             "smithy.api#documentation": "The server monitor mode for AS server"
           }
@@ -1244,6 +1263,46 @@
       },
       "traits": {
         "smithy.api#documentation": "The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning."
+      }
+    },
+    "com.azure.analysisservices#AnalysisServicesServerPropertiesServerMonitorMode": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The server monitor mode for AS server"
+      }
+    },
+    "com.azure.analysisservices#AnalysisServicesServerPropertiesManagedMode": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The managed mode of the server (0 = not managed, 1 = managed)."
       }
     },
     "com.azure.analysisservices#AnalysisServicesServerPropertiesQuerypoolConnectionMode": {
@@ -1704,16 +1763,163 @@
             "smithy.api#documentation": "The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.analysisservices#ResourceSku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The SKU of the Analysis Services resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.analysisservices#ServersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs of additional provisioning properties."
+          }
+        },
+        "properties": {
+          "target": "com.azure.analysisservices#AnalysisServicesServerMutablePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the provision operation request."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.analysisservices#AnalysisServicesServerMutablePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "asAdministrators": {
+          "target": "com.azure.analysisservices#ServerAdministrators",
+          "traits": {
+            "smithy.api#documentation": "A collection of AS server administrators"
+          }
+        },
+        "backupBlobContainerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SAS container URI to the backup container."
+          }
+        },
+        "gatewayDetails": {
+          "target": "com.azure.analysisservices#GatewayDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "The gateway details configured for the AS server."
+          }
+        },
+        "ipV4FirewallSettings": {
+          "target": "com.azure.analysisservices#IPv4FirewallSettings",
+          "traits": {
+            "smithy.api#documentation": "The firewall settings for the AS server."
+          }
+        },
+        "querypoolConnectionMode": {
+          "target": "com.azure.analysisservices#AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode",
+          "traits": {
+            "smithy.api#documentation": "How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error."
+          }
+        },
+        "managedMode": {
+          "target": "com.azure.analysisservices#AnalysisServicesServerMutablePropertiesInputManagedMode",
+          "traits": {
+            "smithy.api#documentation": "The managed mode of the server (0 = not managed, 1 = managed)."
+          }
+        },
+        "serverMonitorMode": {
+          "target": "com.azure.analysisservices#AnalysisServicesServerMutablePropertiesInputServerMonitorMode",
+          "traits": {
+            "smithy.api#documentation": "The server monitor mode for AS server"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object that represents a set of mutable Analysis Services resource properties."
+      }
+    },
+    "com.azure.analysisservices#AnalysisServicesServerMutablePropertiesInputServerMonitorMode": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The server monitor mode for AS server"
+      }
+    },
+    "com.azure.analysisservices#AnalysisServicesServerMutablePropertiesInputManagedMode": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The managed mode of the server (0 = not managed, 1 = managed)."
+      }
+    },
+    "com.azure.analysisservices#AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "All"
+          }
+        },
+        "READONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ReadOnly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error."
+      }
+    },
+    "com.azure.analysisservices#GatewayDetailsInput": {
+      "type": "structure",
+      "members": {
+        "gatewayResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gateway resource to be associated with the server."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The gateway details."
+      }
+    },
+    "com.azure.analysisservices#ServersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional provisioning properties."
       }
     },
     "com.azure.analysisservices#ServersCreate": {
@@ -1826,16 +2032,163 @@
             "smithy.api#documentation": "The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Location of the Analysis Services resource.",
             "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.analysisservices#ResourceSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the Analysis Services resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.analysisservices#ServersCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs of additional resource provisioning properties."
+          }
+        },
+        "properties": {
+          "target": "com.azure.analysisservices#AnalysisServicesServerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the provision operation request."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.analysisservices#AnalysisServicesServerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "asAdministrators": {
+          "target": "com.azure.analysisservices#ServerAdministrators",
+          "traits": {
+            "smithy.api#documentation": "A collection of AS server administrators"
+          }
+        },
+        "backupBlobContainerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SAS container URI to the backup container."
+          }
+        },
+        "gatewayDetails": {
+          "target": "com.azure.analysisservices#GatewayDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "The gateway details configured for the AS server."
+          }
+        },
+        "ipV4FirewallSettings": {
+          "target": "com.azure.analysisservices#IPv4FirewallSettings",
+          "traits": {
+            "smithy.api#documentation": "The firewall settings for the AS server."
+          }
+        },
+        "querypoolConnectionMode": {
+          "target": "com.azure.analysisservices#AnalysisServicesServerPropertiesInputQuerypoolConnectionMode",
+          "traits": {
+            "smithy.api#documentation": "How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error."
+          }
+        },
+        "managedMode": {
+          "target": "com.azure.analysisservices#AnalysisServicesServerPropertiesInputManagedMode",
+          "traits": {
+            "smithy.api#documentation": "The managed mode of the server (0 = not managed, 1 = managed)."
+          }
+        },
+        "serverMonitorMode": {
+          "target": "com.azure.analysisservices#AnalysisServicesServerPropertiesInputServerMonitorMode",
+          "traits": {
+            "smithy.api#documentation": "The server monitor mode for AS server"
+          }
+        },
+        "sku": {
+          "target": "com.azure.analysisservices#ResourceSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the Analysis Services resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Analysis Services resource."
+      }
+    },
+    "com.azure.analysisservices#AnalysisServicesServerPropertiesInputServerMonitorMode": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The server monitor mode for AS server"
+      }
+    },
+    "com.azure.analysisservices#AnalysisServicesServerPropertiesInputManagedMode": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The managed mode of the server (0 = not managed, 1 = managed)."
+      }
+    },
+    "com.azure.analysisservices#AnalysisServicesServerPropertiesInputQuerypoolConnectionMode": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "All"
+          }
+        },
+        "READONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ReadOnly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error."
+      }
+    },
+    "com.azure.analysisservices#ServersCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional resource provisioning properties."
       }
     },
     "com.azure.analysisservices#ServersGetDetails": {

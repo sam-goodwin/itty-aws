@@ -65,12 +65,11 @@ export type GoogleCloudPolicysimulatorV1ReplayStateEnum =
   | "PENDING"
   | "RUNNING"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const GoogleCloudPolicysimulatorV1ReplayStateEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -114,7 +113,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = GoogleIamV1Binding[];
+export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -123,8 +122,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -143,7 +141,8 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList = GoogleIamV1AuditLogConfig[];
+export type GoogleIamV1AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -164,7 +163,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = GoogleIamV1AuditConfig[];
+export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -201,8 +200,7 @@ export const GoogleIamV1PolicyMap = /*@__PURE__*/ S.Record(
 
 export type GoogleCloudPolicysimulatorV1ReplayConfigLogSourceEnum =
   | "LOG_SOURCE_UNSPECIFIED"
-  | "RECENT_ACCESSES"
-  | (string & {});
+  | "RECENT_ACCESSES";
 export const GoogleCloudPolicysimulatorV1ReplayConfigLogSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -323,7 +321,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -377,8 +375,7 @@ export type GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewStateEnum =
   | "PREVIEW_PENDING"
   | "PREVIEW_RUNNING"
   | "PREVIEW_SUCCEEDED"
-  | "PREVIEW_FAILED"
-  | (string & {});
+  | "PREVIEW_FAILED";
 export const GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -431,7 +428,7 @@ export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule =
   }) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
 
 export type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList =
-  GoogleCloudOrgpolicyV2PolicySpecPolicyRule[];
+  ReadonlyArray<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
 export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOrgpolicyV2PolicySpecPolicyRule,
@@ -522,7 +519,7 @@ export const GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay =
   }) as any as S.Schema<GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay>;
 
 export type GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayList =
-  GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay[];
+  ReadonlyArray<GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay>;
 export const GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlayList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay,
@@ -534,13 +531,12 @@ export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   | "UPDATE"
   | "DELETE"
   | "REMOVE_GRANT"
-  | "GOVERN_TAGS"
-  | (string & {});
+  | "GOVERN_TAGS";
 export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
-  GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum[];
+  ReadonlyArray<GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum>;
 export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum,
@@ -549,8 +545,7 @@ export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
 export type GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -612,7 +607,7 @@ export const GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay
   }) as any as S.Schema<GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay>;
 
 export type GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayList =
-  GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay[];
+  ReadonlyArray<GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay>;
 export const GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlayList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay,
@@ -1074,7 +1069,8 @@ export const ListFoldersLocationsReplaysOperationsRequest =
     identifier: "ListFoldersLocationsReplaysOperationsRequest",
   }) as any as S.Schema<ListFoldersLocationsReplaysOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -1129,12 +1125,11 @@ export type GoogleCloudPolicysimulatorV1ExplainedAccessAccessStateEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED"
-  | (string & {});
+  | "UNKNOWN_INFO_DENIED";
 export const GoogleCloudPolicysimulatorV1ExplainedAccessAccessStateEnum =
   /*@__PURE__*/ S.String;
 
-export type GoogleRpcStatusList = GoogleRpcStatus[];
+export type GoogleRpcStatusList = ReadonlyArray<GoogleRpcStatus>;
 export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
   GoogleRpcStatus,
 ) as any as S.Schema<GoogleRpcStatusList>;
@@ -1142,8 +1137,7 @@ export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
 export type GoogleCloudPolicysimulatorV1ExplainedPolicyRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const GoogleCloudPolicysimulatorV1ExplainedPolicyRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1152,21 +1146,19 @@ export type GoogleCloudPolicysimulatorV1BindingExplanationAccessEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED"
-  | (string & {});
+  | "UNKNOWN_INFO_DENIED";
 export const GoogleCloudPolicysimulatorV1BindingExplanationAccessEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicysimulatorV1BindingExplanationRolePermissionRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
 export const GoogleCloudPolicysimulatorV1BindingExplanationRolePermissionRelevanceEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicysimulatorV1BindingExplanationRelevanceEnum =
   | "HEURISTIC_RELEVANCE_UNSPECIFIED"
   | "NORMAL"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const GoogleCloudPolicysimulatorV1BindingExplanationRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1174,8 +1166,7 @@ export type GoogleCloudPolicysimulatorV1BindingExplanationRolePermissionEnum =
   | "ROLE_PERMISSION_UNSPECIFIED"
   | "ROLE_PERMISSION_INCLUDED"
   | "ROLE_PERMISSION_NOT_INCLUDED"
-  | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED"
-  | (string & {});
+  | "ROLE_PERMISSION_UNKNOWN_INFO_DENIED";
 export const GoogleCloudPolicysimulatorV1BindingExplanationRolePermissionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1184,13 +1175,12 @@ export type GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembershipMem
     | "MEMBERSHIP_INCLUDED"
     | "MEMBERSHIP_NOT_INCLUDED"
     | "MEMBERSHIP_UNKNOWN_INFO_DENIED"
-    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED"
-    | (string & {});
+    | "MEMBERSHIP_UNKNOWN_UNSUPPORTED";
 export const GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembershipMembershipEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembershipRelevanceEnum =
-  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH" | (string & {});
+  "HEURISTIC_RELEVANCE_UNSPECIFIED" | "NORMAL" | "HIGH";
 export const GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembershipRelevanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1271,7 +1261,7 @@ export const GoogleCloudPolicysimulatorV1BindingExplanation =
   }) as any as S.Schema<GoogleCloudPolicysimulatorV1BindingExplanation>;
 
 export type GoogleCloudPolicysimulatorV1BindingExplanationList =
-  GoogleCloudPolicysimulatorV1BindingExplanation[];
+  ReadonlyArray<GoogleCloudPolicysimulatorV1BindingExplanation>;
 export const GoogleCloudPolicysimulatorV1BindingExplanationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1BindingExplanation,
@@ -1282,8 +1272,7 @@ export type GoogleCloudPolicysimulatorV1ExplainedPolicyAccessEnum =
   | "GRANTED"
   | "NOT_GRANTED"
   | "UNKNOWN_CONDITIONAL"
-  | "UNKNOWN_INFO_DENIED"
-  | (string & {});
+  | "UNKNOWN_INFO_DENIED";
 export const GoogleCloudPolicysimulatorV1ExplainedPolicyAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -1318,7 +1307,7 @@ export const GoogleCloudPolicysimulatorV1ExplainedPolicy =
   }) as any as S.Schema<GoogleCloudPolicysimulatorV1ExplainedPolicy>;
 
 export type GoogleCloudPolicysimulatorV1ExplainedPolicyList =
-  GoogleCloudPolicysimulatorV1ExplainedPolicy[];
+  ReadonlyArray<GoogleCloudPolicysimulatorV1ExplainedPolicy>;
 export const GoogleCloudPolicysimulatorV1ExplainedPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1ExplainedPolicy,
@@ -1353,8 +1342,7 @@ export type GoogleCloudPolicysimulatorV1AccessStateDiffAccessChangeEnum =
   | "ACCESS_REVOKED"
   | "ACCESS_GAINED"
   | "ACCESS_MAYBE_REVOKED"
-  | "ACCESS_MAYBE_GAINED"
-  | (string & {});
+  | "ACCESS_MAYBE_GAINED";
 export const GoogleCloudPolicysimulatorV1AccessStateDiffAccessChangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1444,7 +1432,7 @@ export const GoogleCloudPolicysimulatorV1ReplayResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudPolicysimulatorV1ReplayResult>;
 
 export type GoogleCloudPolicysimulatorV1ReplayResultList =
-  GoogleCloudPolicysimulatorV1ReplayResult[];
+  ReadonlyArray<GoogleCloudPolicysimulatorV1ReplayResult>;
 export const GoogleCloudPolicysimulatorV1ReplayResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1ReplayResult,
@@ -1523,7 +1511,7 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest>;
 
 export type GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewList =
-  GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview[];
+  ReadonlyArray<GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview>;
 export const GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview,
@@ -1619,7 +1607,7 @@ export const GoogleCloudPolicysimulatorV1OrgPolicyViolation =
   }) as any as S.Schema<GoogleCloudPolicysimulatorV1OrgPolicyViolation>;
 
 export type GoogleCloudPolicysimulatorV1OrgPolicyViolationList =
-  GoogleCloudPolicysimulatorV1OrgPolicyViolation[];
+  ReadonlyArray<GoogleCloudPolicysimulatorV1OrgPolicyViolation>;
 export const GoogleCloudPolicysimulatorV1OrgPolicyViolationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudPolicysimulatorV1OrgPolicyViolation,

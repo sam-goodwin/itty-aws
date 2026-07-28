@@ -55,17 +55,26 @@
             "smithy.api#documentation": "Azure resource group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targetResourceGroup": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name of the resource group the Power BI workspace collections will be migrated to."
           }
+        },
+        "resources": {
+          "target": "com.azure.powerbiembedded#WorkspaceCollectionsMigrateRequestResourcesList"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.powerbiembedded#WorkspaceCollectionsMigrateRequestResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.powerbiembedded#WorkspacesList": {
       "type": "operation",
@@ -314,16 +323,35 @@
             "smithy.api#documentation": "Power BI Embedded Workspace Collection name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "com.azure.powerbiembedded#WorkspaceCollectionsRegenerateKeyRequestKeyName",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Key name"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.powerbiembedded#WorkspaceCollectionsRegenerateKeyRequestKeyName": {
+      "type": "enum",
+      "members": {
+        "KEY1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key1"
+          }
+        },
+        "KEY2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Key name"
       }
     },
     "com.azure.powerbiembedded#WorkspaceCollectionsGetAccessKeys": {
@@ -653,11 +681,16 @@
             "smithy.api#documentation": "Azure location"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Workspace collection name"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource type"
           }
         }
       },
@@ -762,17 +795,26 @@
             "smithy.api#documentation": "Power BI Embedded Workspace Collection name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "tags": {
+          "target": "com.azure.powerbiembedded#WorkspaceCollectionsUpdateRequestTagsMap"
+        },
+        "sku": {
+          "target": "com.azure.powerbiembedded#AzureSku"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.powerbiembedded#WorkspaceCollectionsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.powerbiembedded#WorkspaceCollectionsCreate": {
       "type": "operation",
@@ -820,17 +862,32 @@
             "smithy.api#documentation": "Power BI Embedded Workspace Collection name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Azure location"
           }
+        },
+        "tags": {
+          "target": "com.azure.powerbiembedded#WorkspaceCollectionsCreateRequestTagsMap"
+        },
+        "sku": {
+          "target": "com.azure.powerbiembedded#AzureSku"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.powerbiembedded#WorkspaceCollectionsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.powerbiembedded#WorkspaceCollectionsGetByName": {
       "type": "operation",

@@ -1603,16 +1603,118 @@
             "smithy.api#documentation": "The name of the role assignment. It can be any valid GUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.authorization#RoleAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Role assignment properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.authorization#RoleAssignmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role definition ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "principalType": {
+          "target": "com.azure.authorization#RoleAssignmentPropertiesInputPrincipalType",
+          "traits": {
+            "smithy.api#documentation": "The principal type of the assigned principal ID."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of role assignment"
+          }
+        },
+        "condition": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'"
+          }
+        },
+        "conditionVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of the condition. Currently the only accepted value is '2.0'"
+          }
+        },
+        "delegatedManagedIdentityResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the delegated managed identity resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Role assignment properties."
+      }
+    },
+    "com.azure.authorization#RoleAssignmentPropertiesInputPrincipalType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "User"
+          }
+        },
+        "GROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Group"
+          }
+        },
+        "SERVICEPRINCIPAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServicePrincipal"
+          }
+        },
+        "FOREIGNGROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ForeignGroup"
+          }
+        },
+        "DEVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Device"
+          }
+        },
+        "AGENTUSER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AgentUser"
+          }
+        },
+        "AGENTSERVICEPRINCIPAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AgentServicePrincipal"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The principal type of the assigned principal ID."
       }
     },
     "com.azure.authorization#RoleAssignmentsGet": {
@@ -1907,10 +2009,10 @@
             "smithy.api#documentation": "The fully qualified ID of the role assignment including scope, resource name, and resource type. Format: /{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}. Example: /subscriptions/<SUB_ID>/resourcegroups/<RESOURCE_GROUP>/providers/Microsoft.Authorization/roleAssignments/<ROLE_ASSIGNMENT_NAME>"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.authorization#RoleAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Role assignment properties.",
             "smithy.api#required": {}
           }
         }
@@ -2331,16 +2433,71 @@
             "smithy.api#documentation": "The ID of the role definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.authorization#RoleDefinitionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Role definition properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.authorization#RoleDefinitionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "roleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role definition description."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The role type."
+          }
+        },
+        "permissions": {
+          "target": "com.azure.authorization#RoleDefinitionPropertiesInputPermissionsList",
+          "traits": {
+            "smithy.api#documentation": "Role definition permissions."
+          }
+        },
+        "assignableScopes": {
+          "target": "com.azure.authorization#RoleDefinitionPropertiesInputAssignableScopesList",
+          "traits": {
+            "smithy.api#documentation": "Role definition assignable scopes."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Role definition properties."
+      }
+    },
+    "com.azure.authorization#RoleDefinitionPropertiesInputAssignableScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Role definition assignable scopes."
+      }
+    },
+    "com.azure.authorization#RoleDefinitionPropertiesInputPermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.authorization#Permission"
+      },
+      "traits": {
+        "smithy.api#documentation": "Role definition permissions."
       }
     },
     "com.azure.authorization#RoleDefinitionsGet": {

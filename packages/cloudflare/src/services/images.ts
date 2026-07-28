@@ -104,7 +104,7 @@ export const CreateV1Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateV1Request",
 }) as any as S.Schema<CreateV1Request>;
 
-export type V1CreateResponseVariantsList = string[];
+export type V1CreateResponseVariantsList = ReadonlyArray<string>;
 export const V1CreateResponseVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1CreateResponseVariantsList>;
@@ -144,14 +144,14 @@ export type V1VariantsCreateRequestOptionsFit =
   | "scale-down"
   | "contain"
   | "cover"
-  | (string & {});
+  | "crop"
+  | "pad";
 export const V1VariantsCreateRequestOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsCreateRequestOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsCreateRequestOptionsMetadata = /*@__PURE__*/ S.String;
 
 export interface V1VariantsCreateRequestOptions {
@@ -207,14 +207,14 @@ export type V1VariantsCreateResponseVariantOptionsFit =
   | "scale-down"
   | "contain"
   | "cover"
-  | (string & {});
+  | "crop"
+  | "pad";
 export const V1VariantsCreateResponseVariantOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsCreateResponseVariantOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsCreateResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 
@@ -328,16 +328,9 @@ export const DeleteV1Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteV1Request",
 }) as any as S.Schema<DeleteV1Request>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteV1Response {
-  unknown: unknown;
-  string: unknown;
-}
+export type DeleteV1Response = unknown;
 export const DeleteV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unknown: S.Unknown,
-    string: S.Unknown,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteV1Response",
 }) as any as S.Schema<DeleteV1Response>;
@@ -379,7 +372,8 @@ export const V1KeysDeleteResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1KeysDeleteResponseKeysItem",
 }) as any as S.Schema<V1KeysDeleteResponseKeysItem>;
 
-export type V1KeysDeleteResponseKeysList = V1KeysDeleteResponseKeysItem[];
+export type V1KeysDeleteResponseKeysList =
+  ReadonlyArray<V1KeysDeleteResponseKeysItem>;
 export const V1KeysDeleteResponseKeysList = /*@__PURE__*/ S.Array(
   V1KeysDeleteResponseKeysItem,
 ) as any as S.Schema<V1KeysDeleteResponseKeysList>;
@@ -418,16 +412,9 @@ export const DeleteV1VariantRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteV1VariantRequest",
 }) as any as S.Schema<DeleteV1VariantRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteV1VariantResponse {
-  unknown: unknown;
-  string: unknown;
-}
+export type DeleteV1VariantResponse = unknown;
 export const DeleteV1VariantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unknown: S.Unknown,
-    string: S.Unknown,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteV1VariantResponse",
 }) as any as S.Schema<DeleteV1VariantResponse>;
@@ -453,7 +440,7 @@ export const GetV1Request = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetV1Request" }) as any as S.Schema<GetV1Request>;
 
-export type V1GetResponseVariantsList = string[];
+export type V1GetResponseVariantsList = ReadonlyArray<string>;
 export const V1GetResponseVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1GetResponseVariantsList>;
@@ -590,14 +577,14 @@ export type V1VariantsGetResponseVariantOptionsFit =
   | "scale-down"
   | "contain"
   | "cover"
-  | (string & {});
+  | "crop"
+  | "pad";
 export const V1VariantsGetResponseVariantOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsGetResponseVariantOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsGetResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 
@@ -686,7 +673,8 @@ export const V1KeysListResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1KeysListResponseKeysItem",
 }) as any as S.Schema<V1KeysListResponseKeysItem>;
 
-export type V1KeysListResponseKeysList = V1KeysListResponseKeysItem[];
+export type V1KeysListResponseKeysList =
+  ReadonlyArray<V1KeysListResponseKeysItem>;
 export const V1KeysListResponseKeysList = /*@__PURE__*/ S.Array(
   V1KeysListResponseKeysItem,
 ) as any as S.Schema<V1KeysListResponseKeysList>;
@@ -730,7 +718,7 @@ export const ListV1sRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListV1sRequest" }) as any as S.Schema<ListV1sRequest>;
 
-export type V1ListResponseImagesItemVariantsList = string[];
+export type V1ListResponseImagesItemVariantsList = ReadonlyArray<string>;
 export const V1ListResponseImagesItemVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1ListResponseImagesItemVariantsList>;
@@ -765,7 +753,7 @@ export const V1ListResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1ListResponseImagesItem",
 }) as any as S.Schema<V1ListResponseImagesItem>;
 
-export type V1ListResponseImagesList = V1ListResponseImagesItem[];
+export type V1ListResponseImagesList = ReadonlyArray<V1ListResponseImagesItem>;
 export const V1ListResponseImagesList = /*@__PURE__*/ S.Array(
   V1ListResponseImagesItem,
 ) as any as S.Schema<V1ListResponseImagesList>;
@@ -806,15 +794,15 @@ export type V1VariantsListResponseVariantsHeroOptionsFit =
   | "scale-down"
   | "contain"
   | "cover"
-  | (string & {});
+  | "crop"
+  | "pad";
 export const V1VariantsListResponseVariantsHeroOptionsFit =
   /*@__PURE__*/ S.String;
 
 export type V1VariantsListResponseVariantsHeroOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsListResponseVariantsHeroOptionsMetadata =
   /*@__PURE__*/ S.String;
 
@@ -880,7 +868,7 @@ export const ListV1VariantsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListV1VariantsResponse",
 }) as any as S.Schema<ListV1VariantsResponse>;
 
-export type V2ListRequestSortOrder = "asc" | "desc" | (string & {});
+export type V2ListRequestSortOrder = "asc" | "desc";
 export const V2ListRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListV2sRequest {
@@ -890,7 +878,8 @@ export interface ListV2sRequest {
   continuationToken?: string;
   /** Internal user ID set within the creator field. Setting to empty string "" will return images where creator field is not set */
   creator?: string;
-  meta?: string;
+  /** Optional metadata filter(s). Multiple filters can be combined with AND logic. */
+  metaFieldOperator__?: string;
   /** Number of items per page */
   perPage?: number;
   /** Sorting order by upload time */
@@ -901,7 +890,9 @@ export const ListV2sRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     continuationToken: S.optional(S.String.pipe(T.Query("continuation_token"))),
     creator: S.optional(S.String.pipe(T.Query())),
-    meta: S.optional(S.String.pipe(T.Query())),
+    metaFieldOperator__: S.optional(
+      S.String.pipe(T.Query("meta.<field>[<operator>]")),
+    ),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     sortOrder: S.optional(V2ListRequestSortOrder.pipe(T.Query("sort_order"))),
   })
@@ -915,7 +906,7 @@ export const ListV2sRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListV2sRequest" }) as any as S.Schema<ListV2sRequest>;
 
-export type V2ListResponseImagesItemVariantsList = string[];
+export type V2ListResponseImagesItemVariantsList = ReadonlyArray<string>;
 export const V2ListResponseImagesItemVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V2ListResponseImagesItemVariantsList>;
@@ -950,7 +941,7 @@ export const V2ListResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V2ListResponseImagesItem",
 }) as any as S.Schema<V2ListResponseImagesItem>;
 
-export type V2ListResponseImagesList = V2ListResponseImagesItem[];
+export type V2ListResponseImagesList = ReadonlyArray<V2ListResponseImagesItem>;
 export const V2ListResponseImagesList = /*@__PURE__*/ S.Array(
   V2ListResponseImagesItem,
 ) as any as S.Schema<V2ListResponseImagesList>;
@@ -1000,7 +991,7 @@ export const PatchV1Request = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "PatchV1Request" }) as any as S.Schema<PatchV1Request>;
 
-export type V1EditResponseVariantsList = string[];
+export type V1EditResponseVariantsList = ReadonlyArray<string>;
 export const V1EditResponseVariantsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V1EditResponseVariantsList>;
@@ -1040,14 +1031,14 @@ export type V1VariantsEditRequestOptionsFit =
   | "scale-down"
   | "contain"
   | "cover"
-  | (string & {});
+  | "crop"
+  | "pad";
 export const V1VariantsEditRequestOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsEditRequestOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsEditRequestOptionsMetadata = /*@__PURE__*/ S.String;
 
 export interface V1VariantsEditRequestOptions {
@@ -1103,14 +1094,14 @@ export type V1VariantsEditResponseVariantOptionsFit =
   | "scale-down"
   | "contain"
   | "cover"
-  | (string & {});
+  | "crop"
+  | "pad";
 export const V1VariantsEditResponseVariantOptionsFit = /*@__PURE__*/ S.String;
 
 export type V1VariantsEditResponseVariantOptionsMetadata =
   | "keep"
   | "copyright"
-  | "none"
-  | (string & {});
+  | "none";
 export const V1VariantsEditResponseVariantOptionsMetadata =
   /*@__PURE__*/ S.String;
 
@@ -1202,7 +1193,8 @@ export const V1KeysUpdateResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1KeysUpdateResponseKeysItem",
 }) as any as S.Schema<V1KeysUpdateResponseKeysItem>;
 
-export type V1KeysUpdateResponseKeysList = V1KeysUpdateResponseKeysItem[];
+export type V1KeysUpdateResponseKeysList =
+  ReadonlyArray<V1KeysUpdateResponseKeysItem>;
 export const V1KeysUpdateResponseKeysList = /*@__PURE__*/ S.Array(
   V1KeysUpdateResponseKeysItem,
 ) as any as S.Schema<V1KeysUpdateResponseKeysList>;

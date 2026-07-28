@@ -86,8 +86,7 @@ export const AcceptTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type TermsOfServiceAgreementStateTermsOfServiceKindEnum =
   | "TERMS_OF_SERVICE_KIND_UNSPECIFIED"
-  | "MERCHANT_CENTER"
-  | (string & {});
+  | "MERCHANT_CENTER";
 export const TermsOfServiceAgreementStateTermsOfServiceKindEnum =
   /*@__PURE__*/ S.String;
 
@@ -213,8 +212,7 @@ export const ApproveAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
 export type AccountServiceMutabilityEnum =
   | "MUTABILITY_UNSPECIFIED"
   | "MUTABLE"
-  | "IMMUTABLE"
-  | (string & {});
+  | "IMMUTABLE";
 export const AccountServiceMutabilityEnum = /*@__PURE__*/ S.String;
 
 /** `UcpCheckoutManagement` payload. */
@@ -270,15 +268,13 @@ export type HandshakeApprovalStateEnum =
   | "PENDING"
   | "WAITING"
   | "ESTABLISHED"
-  | "REJECTED"
-  | (string & {});
+  | "REJECTED";
 export const HandshakeApprovalStateEnum = /*@__PURE__*/ S.String;
 
 export type HandshakeActorEnum =
   | "ACTOR_UNSPECIFIED"
   | "ACCOUNT"
-  | "OTHER_PARTY"
-  | (string & {});
+  | "OTHER_PARTY";
 export const HandshakeActorEnum = /*@__PURE__*/ S.String;
 
 /** The current status of establishing of the service. (for example, pending approval, approved, established). */
@@ -366,7 +362,7 @@ export const PostalCodeRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostalCodeRange",
 }) as any as S.Schema<PostalCodeRange>;
 
-export type PostalCodeRangeList = PostalCodeRange[];
+export type PostalCodeRangeList = ReadonlyArray<PostalCodeRange>;
 export const PostalCodeRangeList = /*@__PURE__*/ S.Array(
   PostalCodeRange,
 ) as any as S.Schema<PostalCodeRangeList>;
@@ -385,7 +381,7 @@ export const PostalCodeArea = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PostalCodeArea" }) as any as S.Schema<PostalCodeArea>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -418,8 +414,7 @@ export const LatLng = /*@__PURE__*/ S.suspend(() =>
 export type RadiusAreaRadiusUnitsEnum =
   | "RADIUS_UNITS_UNSPECIFIED"
   | "MILES"
-  | "KILOMETERS"
-  | (string & {});
+  | "KILOMETERS";
 export const RadiusAreaRadiusUnitsEnum = /*@__PURE__*/ S.String;
 
 /** A radius area that defines the region area. */
@@ -490,7 +485,7 @@ export const CreateRegionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRegionRequest",
 }) as any as S.Schema<CreateRegionRequest>;
 
-export type CreateRegionRequestList = CreateRegionRequest[];
+export type CreateRegionRequestList = ReadonlyArray<CreateRegionRequest>;
 export const CreateRegionRequestList = /*@__PURE__*/ S.Array(
   CreateRegionRequest,
 ) as any as S.Schema<CreateRegionRequestList>;
@@ -529,7 +524,7 @@ export const BatchCreateAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateAccountsRegionsRequest",
 }) as any as S.Schema<BatchCreateAccountsRegionsRequest>;
 
-export type RegionList = Region[];
+export type RegionList = ReadonlyArray<Region>;
 export const RegionList = /*@__PURE__*/ S.Array(
   Region,
 ) as any as S.Schema<RegionList>;
@@ -560,7 +555,7 @@ export const DeleteRegionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRegionRequest",
 }) as any as S.Schema<DeleteRegionRequest>;
 
-export type DeleteRegionRequestList = DeleteRegionRequest[];
+export type DeleteRegionRequestList = ReadonlyArray<DeleteRegionRequest>;
 export const DeleteRegionRequestList = /*@__PURE__*/ S.Array(
   DeleteRegionRequest,
 ) as any as S.Schema<DeleteRegionRequestList>;
@@ -621,7 +616,7 @@ export const UpdateRegionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRegionRequest",
 }) as any as S.Schema<UpdateRegionRequest>;
 
-export type UpdateRegionRequestList = UpdateRegionRequest[];
+export type UpdateRegionRequestList = ReadonlyArray<UpdateRegionRequest>;
 export const UpdateRegionRequestList = /*@__PURE__*/ S.Array(
   UpdateRegionRequest,
 ) as any as S.Schema<UpdateRegionRequestList>;
@@ -729,8 +724,7 @@ export type InStockStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+  | "ACTION_REQUIRED";
 export const InStockStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to InStock. */
@@ -752,8 +746,7 @@ export type LfpLinkStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+  | "ACTION_REQUIRED";
 export const LfpLinkStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to the LFP link. */
@@ -779,8 +772,7 @@ export type InventoryVerificationStateEnum =
   | "INACTIVE"
   | "RUNNING"
   | "SUCCEEDED"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const InventoryVerificationStateEnum = /*@__PURE__*/ S.String;
 
 export type InventoryVerificationContactStateEnum =
@@ -788,8 +780,7 @@ export type InventoryVerificationContactStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+  | "ACTION_REQUIRED";
 export const InventoryVerificationContactStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to [inventory verification](https://support.google.com/merchants/answer/14684499?ref_topic=15145634&sjid=6892280366904591178-NC). */
@@ -819,8 +810,7 @@ export type PickupStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+  | "ACTION_REQUIRED";
 export const PickupStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to Pickup. */
@@ -842,8 +832,7 @@ export type OnDisplayToOrderStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+  | "ACTION_REQUIRED";
 export const OnDisplayToOrderStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to the on display to order ([ODO](https://support.google.com/merchants/answer/14615056?ref_topic=15145747&sjid=6892280366904591178-NC)). */
@@ -866,8 +855,7 @@ export type OmnichannelSettingLsfTypeEnum =
   | "LSF_TYPE_UNSPECIFIED"
   | "GHLSF"
   | "MHLSF_BASIC"
-  | "MHLSF_FULL"
-  | (string & {});
+  | "MHLSF_FULL";
 export const OmnichannelSettingLsfTypeEnum = /*@__PURE__*/ S.String;
 
 export type AboutStateEnum =
@@ -875,8 +863,7 @@ export type AboutStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "RUNNING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+  | "ACTION_REQUIRED";
 export const AboutStateEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to the about page ([impressum](https://support.google.com/merchants/answer/14675634?ref_topic=15145634&sjid=6892280366904591178-NC)). */
@@ -1004,7 +991,7 @@ export const SeasonalOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "SeasonalOverride",
 }) as any as S.Schema<SeasonalOverride>;
 
-export type SeasonalOverrideList = SeasonalOverride[];
+export type SeasonalOverrideList = ReadonlyArray<SeasonalOverride>;
 export const SeasonalOverrideList = /*@__PURE__*/ S.Array(
   SeasonalOverride,
 ) as any as S.Schema<SeasonalOverrideList>;
@@ -1013,8 +1000,7 @@ export type PolicyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NUMBER_OF_DAYS_AFTER_DELIVERY"
   | "NO_RETURNS"
-  | "LIFETIME_RETURNS"
-  | (string & {});
+  | "LIFETIME_RETURNS";
 export const PolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** The available policies. */
@@ -1035,20 +1021,18 @@ export type OnlineReturnPolicyReturnLabelSourceEnum =
   | "RETURN_LABEL_SOURCE_UNSPECIFIED"
   | "DOWNLOAD_AND_PRINT"
   | "IN_THE_PACKAGE"
-  | "CUSTOMER_RESPONSIBILITY"
-  | (string & {});
+  | "CUSTOMER_RESPONSIBILITY";
 export const OnlineReturnPolicyReturnLabelSourceEnum = /*@__PURE__*/ S.String;
 
 export type OnlineReturnPolicyReturnMethodsItemEnum =
   | "RETURN_METHOD_UNSPECIFIED"
   | "BY_MAIL"
   | "IN_STORE"
-  | "AT_A_KIOSK"
-  | (string & {});
+  | "AT_A_KIOSK";
 export const OnlineReturnPolicyReturnMethodsItemEnum = /*@__PURE__*/ S.String;
 
 export type OnlineReturnPolicyReturnMethodsItemEnumList =
-  OnlineReturnPolicyReturnMethodsItemEnum[];
+  ReadonlyArray<OnlineReturnPolicyReturnMethodsItemEnum>;
 export const OnlineReturnPolicyReturnMethodsItemEnumList =
   /*@__PURE__*/ S.Array(
     OnlineReturnPolicyReturnMethodsItemEnum,
@@ -1057,12 +1041,11 @@ export const OnlineReturnPolicyReturnMethodsItemEnumList =
 export type OnlineReturnPolicyItemConditionsItemEnum =
   | "ITEM_CONDITION_UNSPECIFIED"
   | "NEW"
-  | "USED"
-  | (string & {});
+  | "USED";
 export const OnlineReturnPolicyItemConditionsItemEnum = /*@__PURE__*/ S.String;
 
 export type OnlineReturnPolicyItemConditionsItemEnumList =
-  OnlineReturnPolicyItemConditionsItemEnum[];
+  ReadonlyArray<OnlineReturnPolicyItemConditionsItemEnum>;
 export const OnlineReturnPolicyItemConditionsItemEnumList =
   /*@__PURE__*/ S.Array(
     OnlineReturnPolicyItemConditionsItemEnum,
@@ -1071,8 +1054,7 @@ export const OnlineReturnPolicyItemConditionsItemEnumList =
 export type ReturnShippingFeeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "FIXED"
-  | "CUSTOMER_PAYING_ACTUAL_FEE"
-  | (string & {});
+  | "CUSTOMER_PAYING_ACTUAL_FEE";
 export const ReturnShippingFeeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The return shipping fee. This can either be a fixed fee or a boolean to indicate that the customer pays the actual shipping cost. */
@@ -1186,8 +1168,7 @@ export type CheckoutSettingsEnrollmentStateEnum =
   | "CHECKOUT_ENROLLMENT_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ENROLLED"
-  | "OPTED_OUT"
-  | (string & {});
+  | "OPTED_OUT";
 export const CheckoutSettingsEnrollmentStateEnum = /*@__PURE__*/ S.String;
 
 export type CheckoutSettingsEligibleDestinationsItemEnum =
@@ -1203,13 +1184,12 @@ export type CheckoutSettingsEligibleDestinationsItemEnum =
   | "FREE_VEHICLE_LISTINGS"
   | "VEHICLE_ADS"
   | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | (string & {});
+  | "LOCAL_CLOUD_RETAIL";
 export const CheckoutSettingsEligibleDestinationsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type CheckoutSettingsEligibleDestinationsItemEnumList =
-  CheckoutSettingsEligibleDestinationsItemEnum[];
+  ReadonlyArray<CheckoutSettingsEligibleDestinationsItemEnum>;
 export const CheckoutSettingsEligibleDestinationsItemEnumList =
   /*@__PURE__*/ S.Array(
     CheckoutSettingsEligibleDestinationsItemEnum,
@@ -1219,16 +1199,14 @@ export type CheckoutSettingsReviewStateEnum =
   | "CHECKOUT_REVIEW_STATE_UNSPECIFIED"
   | "IN_REVIEW"
   | "APPROVED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const CheckoutSettingsReviewStateEnum = /*@__PURE__*/ S.String;
 
 export type CheckoutSettingsEffectiveEnrollmentStateEnum =
   | "CHECKOUT_ENROLLMENT_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ENROLLED"
-  | "OPTED_OUT"
-  | (string & {});
+  | "OPTED_OUT";
 export const CheckoutSettingsEffectiveEnrollmentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1236,8 +1214,7 @@ export type CheckoutSettingsEffectiveReviewStateEnum =
   | "CHECKOUT_REVIEW_STATE_UNSPECIFIED"
   | "IN_REVIEW"
   | "APPROVED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const CheckoutSettingsEffectiveReviewStateEnum = /*@__PURE__*/ S.String;
 
 /** [CheckoutSettings](https://support.google.com/merchants/answer/13945960) for a specific merchant. */
@@ -1330,20 +1307,16 @@ export type UserAccessRightsItemEnum =
   | "READ_ONLY"
   | "ADMIN"
   | "PERFORMANCE_REPORTING"
-  | "API_DEVELOPER"
-  | (string & {});
+  | "API_DEVELOPER";
 export const UserAccessRightsItemEnum = /*@__PURE__*/ S.String;
 
-export type UserAccessRightsItemEnumList = UserAccessRightsItemEnum[];
+export type UserAccessRightsItemEnumList =
+  ReadonlyArray<UserAccessRightsItemEnum>;
 export const UserAccessRightsItemEnumList = /*@__PURE__*/ S.Array(
   UserAccessRightsItemEnum,
 ) as any as S.Schema<UserAccessRightsItemEnumList>;
 
-export type UserStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PENDING"
-  | "VERIFIED"
-  | (string & {});
+export type UserStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "VERIFIED";
 export const UserStateEnum = /*@__PURE__*/ S.String;
 
 /** The `User` resource represents a user associated with a Merchant Center account. It is used to manage user permissions and access rights within the account. For more information, see [Frequently asked questions about people and access levels](//support.google.com/merchants/answer/12160472). */
@@ -1433,8 +1406,7 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
 export type VerificationMailSettingsVerificationMailModeEnum =
   | "VERIFICATION_MAIL_MODE_UNSPECIFIED"
   | "SEND_VERIFICATION_MAIL"
-  | "SUPPRESS_VERIFICATION_MAIL"
-  | (string & {});
+  | "SUPPRESS_VERIFICATION_MAIL";
 export const VerificationMailSettingsVerificationMailModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1470,7 +1442,7 @@ export const AddUser = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AddUser" }) as any as S.Schema<AddUser>;
 
-export type AddUserList = AddUser[];
+export type AddUserList = ReadonlyArray<AddUser>;
 export const AddUserList = /*@__PURE__*/ S.Array(
   AddUser,
 ) as any as S.Schema<AddUserList>;
@@ -1506,7 +1478,7 @@ export const AddAccountService = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddAccountService",
 }) as any as S.Schema<AddAccountService>;
 
-export type AddAccountServiceList = AddAccountService[];
+export type AddAccountServiceList = ReadonlyArray<AddAccountService>;
 export const AddAccountServiceList = /*@__PURE__*/ S.Array(
   AddAccountService,
 ) as any as S.Schema<AddAccountServiceList>;
@@ -1527,7 +1499,8 @@ export const SetAliasForRelationship = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetAliasForRelationship",
 }) as any as S.Schema<SetAliasForRelationship>;
 
-export type SetAliasForRelationshipList = SetAliasForRelationship[];
+export type SetAliasForRelationshipList =
+  ReadonlyArray<SetAliasForRelationship>;
 export const SetAliasForRelationshipList = /*@__PURE__*/ S.Array(
   SetAliasForRelationship,
 ) as any as S.Schema<SetAliasForRelationshipList>;
@@ -1721,8 +1694,7 @@ export type ProgramStateEnum =
   | "STATE_UNSPECIFIED"
   | "NOT_ELIGIBLE"
   | "ELIGIBLE"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const ProgramStateEnum = /*@__PURE__*/ S.String;
 
 /** Defines a requirement specified for participation in the program. */
@@ -1742,7 +1714,7 @@ export const Requirement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Requirement" }) as any as S.Schema<Requirement>;
 
-export type RequirementList = Requirement[];
+export type RequirementList = ReadonlyArray<Requirement>;
 export const RequirementList = /*@__PURE__*/ S.Array(
   Requirement,
 ) as any as S.Schema<RequirementList>;
@@ -1841,7 +1813,7 @@ export const LfpProvider = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LfpProvider" }) as any as S.Schema<LfpProvider>;
 
-export type LfpProviderList = LfpProvider[];
+export type LfpProviderList = ReadonlyArray<LfpProvider>;
 export const LfpProviderList = /*@__PURE__*/ S.Array(
   LfpProvider,
 ) as any as S.Schema<LfpProviderList>;
@@ -2271,15 +2243,13 @@ export const GetBusinessIdentityAccountsBusinessIdentityRequest =
 export type BusinessIdentityPromotionsConsentEnum =
   | "PROMOTIONS_CONSENT_UNSPECIFIED"
   | "PROMOTIONS_CONSENT_GIVEN"
-  | "PROMOTIONS_CONSENT_DENIED"
-  | (string & {});
+  | "PROMOTIONS_CONSENT_DENIED";
 export const BusinessIdentityPromotionsConsentEnum = /*@__PURE__*/ S.String;
 
 export type IdentityAttributeIdentityDeclarationEnum =
   | "IDENTITY_DECLARATION_UNSPECIFIED"
   | "SELF_IDENTIFIES_AS"
-  | "DOES_NOT_SELF_IDENTIFY_AS"
-  | (string & {});
+  | "DOES_NOT_SELF_IDENTIFY_AS";
 export const IdentityAttributeIdentityDeclarationEnum = /*@__PURE__*/ S.String;
 
 /** All information related to an identity attribute. */
@@ -2348,8 +2318,7 @@ export const GetBusinessInfoAccountsBusinessInfoRequest =
 export type BusinessInfoPhoneVerificationStateEnum =
   | "PHONE_VERIFICATION_STATE_UNSPECIFIED"
   | "PHONE_VERIFICATION_STATE_VERIFIED"
-  | "PHONE_VERIFICATION_STATE_UNVERIFIED"
-  | (string & {});
+  | "PHONE_VERIFICATION_STATE_UNVERIFIED";
 export const BusinessInfoPhoneVerificationStateEnum = /*@__PURE__*/ S.String;
 
 /** An object representing a short code, which is a phone number that is typically much shorter than regular phone numbers and can be used to address messages in MMS and SMS systems, as well as for abbreviated dialing (For example "Text 611 to see how many minutes you have remaining on your plan."). Short codes are restricted to a region and are not internationally dialable, which means the same short code can exist in different regions, with different usage and pricing, even if those regions share the same country calling code (For example: US and CA). */
@@ -2546,8 +2515,7 @@ export type EmailPreferencesNewsAndTipsEnum =
   | "OPT_IN_STATE_UNSPECIFIED"
   | "OPTED_OUT"
   | "OPTED_IN"
-  | "UNCONFIRMED"
-  | (string & {});
+  | "UNCONFIRMED";
 export const EmailPreferencesNewsAndTipsEnum = /*@__PURE__*/ S.String;
 
 /** The categories of notifications the user opted into / opted out of. The email preferences do not include mandatory announcements as users can't opt out of them. */
@@ -2611,12 +2579,11 @@ export type BusinessDayConfigBusinessDaysItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const BusinessDayConfigBusinessDaysItemEnum = /*@__PURE__*/ S.String;
 
 export type BusinessDayConfigBusinessDaysItemEnumList =
-  BusinessDayConfigBusinessDaysItemEnum[];
+  ReadonlyArray<BusinessDayConfigBusinessDaysItemEnum>;
 export const BusinessDayConfigBusinessDaysItemEnumList = /*@__PURE__*/ S.Array(
   BusinessDayConfigBusinessDaysItemEnum,
 ) as any as S.Schema<BusinessDayConfigBusinessDaysItemEnumList>;
@@ -2696,7 +2663,7 @@ export const Warehouse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Warehouse" }) as any as S.Schema<Warehouse>;
 
-export type WarehouseList = Warehouse[];
+export type WarehouseList = ReadonlyArray<Warehouse>;
 export const WarehouseList = /*@__PURE__*/ S.Array(
   Warehouse,
 ) as any as S.Schema<WarehouseList>;
@@ -2717,7 +2684,7 @@ export const StoreCodeSetWithMov = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoreCodeSetWithMov",
 }) as any as S.Schema<StoreCodeSetWithMov>;
 
-export type StoreCodeSetWithMovList = StoreCodeSetWithMov[];
+export type StoreCodeSetWithMovList = ReadonlyArray<StoreCodeSetWithMov>;
 export const StoreCodeSetWithMovList = /*@__PURE__*/ S.Array(
   StoreCodeSetWithMov,
 ) as any as S.Schema<StoreCodeSetWithMovList>;
@@ -2751,7 +2718,7 @@ export const TransitTimeValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransitTimeValue",
 }) as any as S.Schema<TransitTimeValue>;
 
-export type TransitTimeValueList = TransitTimeValue[];
+export type TransitTimeValueList = ReadonlyArray<TransitTimeValue>;
 export const TransitTimeValueList = /*@__PURE__*/ S.Array(
   TransitTimeValue,
 ) as any as S.Schema<TransitTimeValueList>;
@@ -2767,7 +2734,7 @@ export const TransitTimeRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TransitTimeRow" }) as any as S.Schema<TransitTimeRow>;
 
-export type TransitTimeRowList = TransitTimeRow[];
+export type TransitTimeRowList = ReadonlyArray<TransitTimeRow>;
 export const TransitTimeRowList = /*@__PURE__*/ S.Array(
   TransitTimeRow,
 ) as any as S.Schema<TransitTimeRowList>;
@@ -2808,7 +2775,8 @@ export const WarehouseBasedDeliveryTime = /*@__PURE__*/ S.suspend(() =>
   identifier: "WarehouseBasedDeliveryTime",
 }) as any as S.Schema<WarehouseBasedDeliveryTime>;
 
-export type WarehouseBasedDeliveryTimeList = WarehouseBasedDeliveryTime[];
+export type WarehouseBasedDeliveryTimeList =
+  ReadonlyArray<WarehouseBasedDeliveryTime>;
 export const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ S.Array(
   WarehouseBasedDeliveryTime,
 ) as any as S.Schema<WarehouseBasedDeliveryTimeList>;
@@ -2878,7 +2846,7 @@ export const LoyaltyProgramTiers = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoyaltyProgramTiers",
 }) as any as S.Schema<LoyaltyProgramTiers>;
 
-export type LoyaltyProgramTiersList = LoyaltyProgramTiers[];
+export type LoyaltyProgramTiersList = ReadonlyArray<LoyaltyProgramTiers>;
 export const LoyaltyProgramTiersList = /*@__PURE__*/ S.Array(
   LoyaltyProgramTiers,
 ) as any as S.Schema<LoyaltyProgramTiersList>;
@@ -2897,7 +2865,7 @@ export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
-export type LoyaltyProgramList = LoyaltyProgram[];
+export type LoyaltyProgramList = ReadonlyArray<LoyaltyProgram>;
 export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
   LoyaltyProgram,
 ) as any as S.Schema<LoyaltyProgramList>;
@@ -2936,21 +2904,17 @@ export const LocationIdSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocationIdSet" }) as any as S.Schema<LocationIdSet>;
 
-export type LocationIdSetList = LocationIdSet[];
+export type LocationIdSetList = ReadonlyArray<LocationIdSet>;
 export const LocationIdSetList = /*@__PURE__*/ S.Array(
   LocationIdSet,
 ) as any as S.Schema<LocationIdSetList>;
 
-export type PriceList = Price[];
+export type PriceList = ReadonlyArray<Price>;
 export const PriceList = /*@__PURE__*/ S.Array(
   Price,
 ) as any as S.Schema<PriceList>;
 
-export type WeightUnitEnum =
-  | "WEIGHT_UNIT_UNSPECIFIED"
-  | "POUND"
-  | "KILOGRAM"
-  | (string & {});
+export type WeightUnitEnum = "WEIGHT_UNIT_UNSPECIFIED" | "POUND" | "KILOGRAM";
 export const WeightUnitEnum = /*@__PURE__*/ S.String;
 
 /** The weight represented as the value in string and the unit. */
@@ -2967,7 +2931,7 @@ export const Weight = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Weight" }) as any as S.Schema<Weight>;
 
-export type WeightList = Weight[];
+export type WeightList = ReadonlyArray<Weight>;
 export const WeightList = /*@__PURE__*/ S.Array(
   Weight,
 ) as any as S.Schema<WeightList>;
@@ -2995,7 +2959,7 @@ export const Headers = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Headers" }) as any as S.Schema<Headers>;
 
-export type ValueList = Value[];
+export type ValueList = ReadonlyArray<Value>;
 export const ValueList = /*@__PURE__*/ S.Array(
   Value,
 ) as any as S.Schema<ValueList>;
@@ -3011,7 +2975,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
-export type RowList = Row[];
+export type RowList = ReadonlyArray<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** A table defining the rate group, when `single_value` is not expressive enough. */
@@ -3034,7 +2998,7 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
-export type TableList = Table[];
+export type TableList = ReadonlyArray<Table>;
 export const TableList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<TableList>;
@@ -3065,7 +3029,7 @@ export const CarrierRate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CarrierRate" }) as any as S.Schema<CarrierRate>;
 
-export type CarrierRateList = CarrierRate[];
+export type CarrierRateList = ReadonlyArray<CarrierRate>;
 export const CarrierRateList = /*@__PURE__*/ S.Array(
   CarrierRate,
 ) as any as S.Schema<CarrierRateList>;
@@ -3096,7 +3060,7 @@ export const RateGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RateGroup" }) as any as S.Schema<RateGroup>;
 
-export type RateGroupList = RateGroup[];
+export type RateGroupList = ReadonlyArray<RateGroup>;
 export const RateGroupList = /*@__PURE__*/ S.Array(
   RateGroup,
 ) as any as S.Schema<RateGroupList>;
@@ -3137,15 +3101,10 @@ export const CutoffConfig = /*@__PURE__*/ S.suspend(() =>
 export type StoreConfigStoreServiceTypeEnum =
   | "STORE_SERVICE_TYPE_UNSPECIFIED"
   | "ALL_STORES"
-  | "SELECTED_STORES"
-  | (string & {});
+  | "SELECTED_STORES";
 export const StoreConfigStoreServiceTypeEnum = /*@__PURE__*/ S.String;
 
-export type DistanceUnitEnum =
-  | "UNIT_UNSPECIFIED"
-  | "MILES"
-  | "KILOMETERS"
-  | (string & {});
+export type DistanceUnitEnum = "UNIT_UNSPECIFIED" | "MILES" | "KILOMETERS";
 export const DistanceUnitEnum = /*@__PURE__*/ S.String;
 
 /** Maximum delivery radius. This is only required for the local delivery shipment type. */
@@ -3186,8 +3145,7 @@ export type ServiceShipmentTypeEnum =
   | "SHIPMENT_TYPE_UNSPECIFIED"
   | "DELIVERY"
   | "LOCAL_DELIVERY"
-  | "COLLECTION_POINT"
-  | (string & {});
+  | "COLLECTION_POINT";
 export const ServiceShipmentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Shipping service. */
@@ -3231,7 +3189,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
-export type ServiceList = Service[];
+export type ServiceList = ReadonlyArray<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -3278,8 +3236,7 @@ export const GetTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type TermsOfServiceKindEnum =
   | "TERMS_OF_SERVICE_KIND_UNSPECIFIED"
-  | "MERCHANT_CENTER"
-  | (string & {});
+  | "MERCHANT_CENTER";
 export const TermsOfServiceKindEnum = /*@__PURE__*/ S.String;
 
 /** The `TermsOfService` message represents a specific version of the terms of service that merchants must accept to access certain features or services. For more information, see [Terms of Service](https://support.google.com/merchants/answer/160173). This message is important for the onboarding process, ensuring that merchants agree to the necessary legal agreements for using the service. Merchants can retrieve the latest terms of service for a given `kind` and `region` through `RetrieveLatestTermsOfService`, and accept them as required through `AcceptTermsOfService`. */
@@ -3447,7 +3404,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type AccountList = Account[];
+export type AccountList = ReadonlyArray<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -3495,8 +3452,7 @@ export const ListAccountsGbpAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GbpAccountTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "USER"
-  | "BUSINESS_ACCOUNT"
-  | (string & {});
+  | "BUSINESS_ACCOUNT";
 export const GbpAccountTypeEnum = /*@__PURE__*/ S.String;
 
 /** Collection of information related to a Google Business Profile (GBP) account. */
@@ -3522,7 +3478,7 @@ export const GbpAccount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GbpAccount" }) as any as S.Schema<GbpAccount>;
 
-export type GbpAccountList = GbpAccount[];
+export type GbpAccountList = ReadonlyArray<GbpAccount>;
 export const GbpAccountList = /*@__PURE__*/ S.Array(
   GbpAccount,
 ) as any as S.Schema<GbpAccountList>;
@@ -3593,16 +3549,14 @@ export type ImpactedDestinationReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const ImpactedDestinationReportingContextEnum = /*@__PURE__*/ S.String;
 
 export type ImpactSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "CRITICAL"
   | "ERROR"
-  | "SUGGESTION"
-  | (string & {});
+  | "SUGGESTION";
 export const ImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The impact of the issue on a region. */
@@ -3619,7 +3573,7 @@ export const Impact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Impact" }) as any as S.Schema<Impact>;
 
-export type ImpactList = Impact[];
+export type ImpactList = ReadonlyArray<Impact>;
 export const ImpactList = /*@__PURE__*/ S.Array(
   Impact,
 ) as any as S.Schema<ImpactList>;
@@ -3640,7 +3594,7 @@ export const ImpactedDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImpactedDestination",
 }) as any as S.Schema<ImpactedDestination>;
 
-export type ImpactedDestinationList = ImpactedDestination[];
+export type ImpactedDestinationList = ReadonlyArray<ImpactedDestination>;
 export const ImpactedDestinationList = /*@__PURE__*/ S.Array(
   ImpactedDestination,
 ) as any as S.Schema<ImpactedDestinationList>;
@@ -3649,8 +3603,7 @@ export type AccountIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "CRITICAL"
   | "ERROR"
-  | "SUGGESTION"
-  | (string & {});
+  | "SUGGESTION";
 export const AccountIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Issues with your Merchant Center account that can impact all your products. For more information, see [Account-level issues in Merchant Center](https://support.google.com/merchants/answer/12153802?sjid=17798438912526418908-EU#account). */
@@ -3679,7 +3632,7 @@ export const AccountIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountIssue" }) as any as S.Schema<AccountIssue>;
 
-export type AccountIssueList = AccountIssue[];
+export type AccountIssueList = ReadonlyArray<AccountIssue>;
 export const AccountIssueList = /*@__PURE__*/ S.Array(
   AccountIssue,
 ) as any as S.Schema<AccountIssueList>;
@@ -3725,7 +3678,7 @@ export const ListAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountsOmnichannelSettingsRequest",
 }) as any as S.Schema<ListAccountsOmnichannelSettingsRequest>;
 
-export type OmnichannelSettingList = OmnichannelSetting[];
+export type OmnichannelSettingList = ReadonlyArray<OmnichannelSetting>;
 export const OmnichannelSettingList = /*@__PURE__*/ S.Array(
   OmnichannelSetting,
 ) as any as S.Schema<OmnichannelSettingList>;
@@ -3771,7 +3724,7 @@ export const ListAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountsOnlineReturnPoliciesRequest",
 }) as any as S.Schema<ListAccountsOnlineReturnPoliciesRequest>;
 
-export type OnlineReturnPolicyList = OnlineReturnPolicy[];
+export type OnlineReturnPolicyList = ReadonlyArray<OnlineReturnPolicy>;
 export const OnlineReturnPolicyList = /*@__PURE__*/ S.Array(
   OnlineReturnPolicy,
 ) as any as S.Schema<OnlineReturnPolicyList>;
@@ -3816,7 +3769,7 @@ export const ListAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsProgramsRequest",
 }) as any as S.Schema<ListAccountsProgramsRequest>;
 
-export type ProgramList = Program[];
+export type ProgramList = ReadonlyArray<Program>;
 export const ProgramList = /*@__PURE__*/ S.Array(
   Program,
 ) as any as S.Schema<ProgramList>;
@@ -3901,7 +3854,7 @@ export const ListAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRelationshipsRequest",
 }) as any as S.Schema<ListAccountsRelationshipsRequest>;
 
-export type AccountRelationshipList = AccountRelationship[];
+export type AccountRelationshipList = ReadonlyArray<AccountRelationship>;
 export const AccountRelationshipList = /*@__PURE__*/ S.Array(
   AccountRelationship,
 ) as any as S.Schema<AccountRelationshipList>;
@@ -3946,7 +3899,7 @@ export const ListAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsServicesRequest",
 }) as any as S.Schema<ListAccountsServicesRequest>;
 
-export type AccountServiceList = AccountService[];
+export type AccountServiceList = ReadonlyArray<AccountService>;
 export const AccountServiceList = /*@__PURE__*/ S.Array(
   AccountService,
 ) as any as S.Schema<AccountServiceList>;
@@ -3991,7 +3944,7 @@ export const ListAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsUsersRequest",
 }) as any as S.Schema<ListAccountsUsersRequest>;
 
-export type UserList = User[];
+export type UserList = ReadonlyArray<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -4341,8 +4294,7 @@ export const RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest 
 
 export type RetrieveLatestTermsOfServiceKindEnum =
   | "TERMS_OF_SERVICE_KIND_UNSPECIFIED"
-  | "MERCHANT_CENTER"
-  | (string & {});
+  | "MERCHANT_CENTER";
 export const RetrieveLatestTermsOfServiceKindEnum = /*@__PURE__*/ S.String;
 
 export interface RetrieveLatestTermsOfServiceRequest {

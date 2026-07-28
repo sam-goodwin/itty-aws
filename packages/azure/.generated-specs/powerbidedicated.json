@@ -788,16 +788,59 @@
             "smithy.api#documentation": "The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.powerbidedicated#CapacitySku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The SKU of the Dedicated capacity resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.powerbidedicated#CapacitiesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs of additional provisioning properties."
+          }
+        },
+        "properties": {
+          "target": "com.azure.powerbidedicated#DedicatedCapacityMutablePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the provision operation request."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.powerbidedicated#DedicatedCapacityMutablePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "administration": {
+          "target": "com.azure.powerbidedicated#DedicatedCapacityAdministrators",
+          "traits": {
+            "smithy.api#documentation": "A collection of Dedicated capacity administrators"
+          }
+        },
+        "mode": {
+          "target": "com.azure.powerbidedicated#Mode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object that represents a set of mutable Dedicated capacity resource properties."
+      }
+    },
+    "com.azure.powerbidedicated#CapacitiesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional provisioning properties."
       }
     },
     "com.azure.powerbidedicated#CapacitiesCreate": {
@@ -916,16 +959,67 @@
             "smithy.api#documentation": "The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.powerbidedicated#CapacitiesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.powerbidedicated#DedicatedCapacityPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the provision operation request."
+          }
+        },
+        "sku": {
+          "target": "com.azure.powerbidedicated#CapacitySku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the PowerBI Dedicated capacity resource.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.powerbidedicated#DedicatedCapacityPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "administration": {
+          "target": "com.azure.powerbidedicated#DedicatedCapacityAdministrators",
+          "traits": {
+            "smithy.api#documentation": "A collection of Dedicated capacity administrators"
+          }
+        },
+        "mode": {
+          "target": "com.azure.powerbidedicated#Mode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Dedicated Capacity resource."
+      }
+    },
+    "com.azure.powerbidedicated#CapacitiesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.powerbidedicated#CapacitiesGetDetails": {
@@ -1440,16 +1534,53 @@
             "smithy.api#documentation": "The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.powerbidedicated#AutoScaleVCoreSku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The SKU of the auto scale v-core resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.powerbidedicated#AutoScaleVCoresUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs of additional provisioning properties."
+          }
+        },
+        "properties": {
+          "target": "com.azure.powerbidedicated#AutoScaleVCoreMutableProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the update operation request."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.powerbidedicated#AutoScaleVCoreMutableProperties": {
+      "type": "structure",
+      "members": {
+        "capacityLimit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum capacity of an auto scale v-core resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object that represents a set of mutable auto scale v-core resource properties."
+      }
+    },
+    "com.azure.powerbidedicated#AutoScaleVCoresUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional provisioning properties."
       }
     },
     "com.azure.powerbidedicated#AutoScaleVCoresCreate": {
@@ -1568,16 +1699,47 @@
             "smithy.api#documentation": "The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.powerbidedicated#AutoScaleVCoresCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.powerbidedicated#AutoScaleVCoreProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of an auto scale v-core resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.powerbidedicated#AutoScaleVCoreSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the auto scale v-core resource.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.powerbidedicated#AutoScaleVCoresCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.powerbidedicated#AutoScaleVCoresGet": {
@@ -1963,11 +2125,16 @@
             "smithy.api#documentation": "The name of Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name for checking availability."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type of PowerBI dedicated."
           }
         }
       },

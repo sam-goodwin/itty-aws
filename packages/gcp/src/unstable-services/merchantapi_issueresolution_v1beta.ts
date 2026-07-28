@@ -112,15 +112,13 @@ export type ItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DEMOTED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type ItemLevelIssueResolutionEnum =
   | "RESOLUTION_UNSPECIFIED"
   | "MERCHANT_ACTION"
-  | "PENDING_PROCESSING"
-  | (string & {});
+  | "PENDING_PROCESSING";
 export const ItemLevelIssueResolutionEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product status. */
@@ -155,7 +153,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
-export type ItemLevelIssueList = ItemLevelIssue[];
+export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
 export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
@@ -180,8 +178,7 @@ export type AggregateProductStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const AggregateProductStatusReportingContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -210,7 +207,7 @@ export const AggregateProductStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregateProductStatus",
 }) as any as S.Schema<AggregateProductStatus>;
 
-export type AggregateProductStatusList = AggregateProductStatus[];
+export type AggregateProductStatusList = ReadonlyArray<AggregateProductStatus>;
 export const AggregateProductStatusList = /*@__PURE__*/ S.Array(
   AggregateProductStatus,
 ) as any as S.Schema<AggregateProductStatusList>;
@@ -234,16 +231,14 @@ export const ListAggregateProductStatusesResponse = /*@__PURE__*/ S.suspend(
 
 export type RenderIssuesRequestPayloadContentOptionEnum =
   | "CONTENT_OPTION_UNSPECIFIED"
-  | "PRE_RENDERED_HTML"
-  | (string & {});
+  | "PRE_RENDERED_HTML";
 export const RenderIssuesRequestPayloadContentOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type RenderIssuesRequestPayloadUserInputActionOptionEnum =
   | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
   | "REDIRECT_TO_MERCHANT_CENTER"
-  | "BUILT_IN_USER_INPUT_ACTIONS"
-  | (string & {});
+  | "BUILT_IN_USER_INPUT_ACTIONS";
 export const RenderIssuesRequestPayloadUserInputActionOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -297,8 +292,7 @@ export type ImpactSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const ImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Region with code and localized name. */
@@ -315,12 +309,12 @@ export const Region = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
-export type RegionList = Region[];
+export type RegionList = ReadonlyArray<Region>;
 export const RegionList = /*@__PURE__*/ S.Array(
   Region,
 ) as any as S.Schema<RegionList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -339,7 +333,7 @@ export const Breakdown = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
-export type BreakdownList = Breakdown[];
+export type BreakdownList = ReadonlyArray<Breakdown>;
 export const BreakdownList = /*@__PURE__*/ S.Array(
   Breakdown,
 ) as any as S.Schema<BreakdownList>;
@@ -387,8 +381,7 @@ export type BuiltInSimpleActionTypeEnum =
   | "ADD_BUSINESS_REGISTRATION_NUMBER"
   | "EDIT_ITEM_ATTRIBUTE"
   | "FIX_ACCOUNT_ISSUE"
-  | "SHOW_ADDITIONAL_CONTENT"
-  | (string & {});
+  | "SHOW_ADDITIONAL_CONTENT";
 export const BuiltInSimpleActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Action that is implemented and performed in (your) third-party application. Represents various functionality that is expected to be available to business and will help them with resolving the issue. The application should point the business to the place, where they can access the corresponding functionality. If the functionality is not supported, it is recommended to explain the situation to the business and provide them with instructions how to solve the issue. */
@@ -416,8 +409,7 @@ export type ExternalActionTypeEnum =
   | "REVIEW_ACCOUNT_ISSUE_IN_MERCHANT_CENTER"
   | "LEGAL_APPEAL_IN_HELP_CENTER"
   | "VERIFY_IDENTITY_IN_MERCHANT_CENTER"
-  | "VERIFY_BUSINESS_VIDEO_IN_MERCHANT_CENTER"
-  | (string & {});
+  | "VERIFY_BUSINESS_VIDEO_IN_MERCHANT_CENTER";
 export const ExternalActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Action that is implemented and performed outside of the third-party application. It should redirect the business to the provided URL of an external system where they can perform the action. For example to request a review in the Merchant Center. */
@@ -437,8 +429,7 @@ export const ExternalAction = /*@__PURE__*/ S.suspend(() =>
 export type TextWithTooltipTooltipIconStyleEnum =
   | "TOOLTIP_ICON_STYLE_UNSPECIFIED"
   | "INFO"
-  | "QUESTION"
-  | (string & {});
+  | "QUESTION";
 export const TextWithTooltipTooltipIconStyleEnum = /*@__PURE__*/ S.String;
 
 /** Block of text that may contain a tooltip with more information. */
@@ -464,8 +455,7 @@ export type CalloutStyleHintEnum =
   | "CALLOUT_STYLE_HINT_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const CalloutStyleHintEnum = /*@__PURE__*/ S.String;
 
 /** An important message that should be highlighted. Usually displayed as a banner. */
@@ -491,8 +481,7 @@ export const CheckboxInput = /*@__PURE__*/ S.suspend(() =>
 export type TextInputTypeEnum =
   | "TEXT_INPUT_TYPE_UNSPECIFIED"
   | "GENERIC_SHORT_TEXT"
-  | "GENERIC_LONG_TEXT"
-  | (string & {});
+  | "GENERIC_LONG_TEXT";
 export const TextInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Text input allows the business to provide a text value. */
@@ -534,7 +523,7 @@ export const ChoiceInputOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChoiceInputOption",
 }) as any as S.Schema<ChoiceInputOption>;
 
-export type ChoiceInputOptionList = ChoiceInputOption[];
+export type ChoiceInputOptionList = ReadonlyArray<ChoiceInputOption>;
 export const ChoiceInputOptionList = /*@__PURE__*/ S.Array(
   ChoiceInputOption,
 ) as any as S.Schema<ChoiceInputOptionList>;
@@ -576,7 +565,7 @@ export const InputField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputField" }) as any as S.Schema<InputField>;
 
-export type InputFieldList = InputField[];
+export type InputFieldList = ReadonlyArray<InputField>;
 export const InputFieldList = /*@__PURE__*/ S.Array(
   InputField,
 ) as any as S.Schema<InputFieldList>;
@@ -610,7 +599,7 @@ export const ActionFlow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActionFlow" }) as any as S.Schema<ActionFlow>;
 
-export type ActionFlowList = ActionFlow[];
+export type ActionFlowList = ReadonlyArray<ActionFlow>;
 export const ActionFlowList = /*@__PURE__*/ S.Array(
   ActionFlow,
 ) as any as S.Schema<ActionFlowList>;
@@ -648,7 +637,7 @@ export const Reason = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reason" }) as any as S.Schema<Reason>;
 
-export type ReasonList = Reason[];
+export type ReasonList = ReadonlyArray<Reason>;
 export const ReasonList = /*@__PURE__*/ S.Array(
   Reason,
 ) as any as S.Schema<ReasonList>;
@@ -679,7 +668,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
-export type ActionList = Action[];
+export type ActionList = ReadonlyArray<Action>;
 export const ActionList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<ActionList>;
@@ -707,7 +696,7 @@ export const RenderedIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RenderedIssue" }) as any as S.Schema<RenderedIssue>;
 
-export type RenderedIssueList = RenderedIssue[];
+export type RenderedIssueList = ReadonlyArray<RenderedIssue>;
 export const RenderedIssueList = /*@__PURE__*/ S.Array(
   RenderedIssue,
 ) as any as S.Schema<RenderedIssueList>;
@@ -823,7 +812,7 @@ export const InputValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InputValue" }) as any as S.Schema<InputValue>;
 
-export type InputValueList = InputValue[];
+export type InputValueList = ReadonlyArray<InputValue>;
 export const InputValueList = /*@__PURE__*/ S.Array(
   InputValue,
 ) as any as S.Schema<InputValueList>;

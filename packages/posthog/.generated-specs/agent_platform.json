@@ -219,23 +219,6 @@
         "smithy.api#documentation": "Agent applications — the deployable unit of the platform.\n\nURLs:\n    GET    /api/projects/<team>/agent_applications/             list\n    POST   /api/projects/<team>/agent_applications/             create\n    GET    /api/projects/<team>/agent_applications/<id|slug>/   retrieve\n    PATCH  /api/projects/<team>/agent_applications/<id|slug>/   update\n    DELETE /api/projects/<team>/agent_applications/<id|slug>/   archive\n    POST   /api/projects/<team>/agent_applications/<id|slug>/set_env/        bulk replace env\n    GET    /api/projects/<team>/agent_applications/<id|slug>/env_keys/        list set keys\n    GET    /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/  is one key set?\n    PUT    /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/  set one key\n    DELETE /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/  clear one key"
       }
     },
-    "com.posthog.agent_platform#AgentApplicationsCreateRequestCreatedBy": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#Integer"
-        },
-        "first_name": {
-          "target": "smithy.api#String"
-        },
-        "email": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted."
-      }
-    },
     "com.posthog.agent_platform#AgentApplicationsCreateRequest": {
       "type": "structure",
       "members": {
@@ -245,18 +228,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "team_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {}
           }
         },
         "name": {
@@ -274,73 +245,8 @@
         "description": {
           "target": "smithy.api#String"
         },
-        "live_revision": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "archived": {
           "target": "smithy.api#Boolean"
-        },
-        "archived_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.agent_platform#AgentApplicationsCreateRequestCreatedBy",
-          "traits": {
-            "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "slack_events_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Public URL to paste into the Slack app dashboard under Event Subscriptions → Request URL. Computed from the agent slug and the deployment's ingress routing mode (`AGENT_INGRESS_DOMAIN_SUFFIX` in domain mode, `AGENT_INGRESS_PUBLIC_URL` in path mode). Null when no public agent-ingress URL is configured (e.g. local dev without a tunnel).",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_interactivity_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Public URL to paste into the Slack app dashboard under Interactivity & Shortcuts → Request URL. Same source + null behaviour as `slack_events_url`.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "ingress_base_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Mode-aware base URL the agent's trigger routes hang off — append `/webhook`, `/run`, `/mcp`, etc. Domain mode: `https://<slug><suffix>`; path mode: `<public_url>/agents/<slug>`. Same source + null behaviour as `slack_events_url` (null when no public ingress URL is configured).",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -1404,32 +1310,6 @@
         "smithy.api#documentation": "Revisions of an agent. Created in `draft`, promoted through\n`ready → live` once the bundle has been uploaded + frozen.\n\nURLs (nested under an application):\n\n    Model CRUD:\n        GET   .../revisions/                       list\n        POST  .../revisions/                       create draft\n        GET   .../revisions/<id>/                  retrieve\n        PATCH .../revisions/<id>/                  update spec (draft only)\n\n    Lifecycle:\n        POST  .../revisions/<id>/promote/          ready → live\n        POST  .../revisions/<id>/archive/          → archived\n        POST  .../revisions/<id>/freeze/           draft → ready (stamps sha256)\n        POST  .../revisions/<id>/clone_from/       copy bundle from another rev\n        POST  .../revisions/new_draft/             create draft + clone_from atomically\n\n    Bundle authoring (proxied to the janitor):\n        GET    .../revisions/<id>/manifest/        list paths + sha256\n        GET    .../revisions/<id>/file/?path=…     read one file\n        PUT    .../revisions/<id>/file/?path=…     write one file (draft)\n        DELETE .../revisions/<id>/file/?path=…     delete one file (draft)\n        GET    .../revisions/<id>/bundle/          bulk pull all files\n        PUT    .../revisions/<id>/bundle/          bulk push (replace|merge)"
       }
     },
-    "com.posthog.agent_platform#AgentApplicationsRevisionsCreateRequestSkillRefsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.agent_platform#SkillRef"
-      },
-      "traits": {
-        "smithy.api#documentation": "Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`."
-      }
-    },
-    "com.posthog.agent_platform#AgentApplicationsRevisionsCreateRequestCreatedBy": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#Integer"
-        },
-        "first_name": {
-          "target": "smithy.api#String"
-        },
-        "email": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted."
-      }
-    },
     "com.posthog.agent_platform#AgentApplicationsRevisionsCreateRequest": {
       "type": "structure",
       "members": {
@@ -1448,28 +1328,10 @@
             "smithy.api#required": {}
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "application": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "parent_revision": {
           "target": "smithy.api#String",
           "traits": {
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "state": {
-          "target": "com.posthog.agent_platform#AgentRevisionStateEnum",
-          "traits": {
-            "smithy.api#required": {}
           }
         },
         "bundle_uri": {
@@ -1478,49 +1340,8 @@
             "smithy.api#documentation": "Storage-prefix metadata for the bundle, e.g. `fs://my-agent/`. Optional — leave blank and the server fills `fs://<application-slug>/`. Bundles are addressed by revision id regardless, so this is only a prefix hint."
           }
         },
-        "bundle_sha256": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "spec": {
           "target": "smithy.api#Document"
-        },
-        "skill_refs": {
-          "target": "com.posthog.agent_platform#AgentApplicationsRevisionsCreateRequestSkillRefsList",
-          "traits": {
-            "smithy.api#documentation": "Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`.",
-            "smithy.api#required": {}
-          }
-        },
-        "created_by_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.agent_platform#AgentApplicationsRevisionsCreateRequestCreatedBy",
-          "traits": {
-            "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -1592,32 +1413,6 @@
         "smithy.api#documentation": "Revisions of an agent. Created in `draft`, promoted through\n`ready → live` once the bundle has been uploaded + frozen.\n\nURLs (nested under an application):\n\n    Model CRUD:\n        GET   .../revisions/                       list\n        POST  .../revisions/                       create draft\n        GET   .../revisions/<id>/                  retrieve\n        PATCH .../revisions/<id>/                  update spec (draft only)\n\n    Lifecycle:\n        POST  .../revisions/<id>/promote/          ready → live\n        POST  .../revisions/<id>/archive/          → archived\n        POST  .../revisions/<id>/freeze/           draft → ready (stamps sha256)\n        POST  .../revisions/<id>/clone_from/       copy bundle from another rev\n        POST  .../revisions/new_draft/             create draft + clone_from atomically\n\n    Bundle authoring (proxied to the janitor):\n        GET    .../revisions/<id>/manifest/        list paths + sha256\n        GET    .../revisions/<id>/file/?path=…     read one file\n        PUT    .../revisions/<id>/file/?path=…     write one file (draft)\n        DELETE .../revisions/<id>/file/?path=…     delete one file (draft)\n        GET    .../revisions/<id>/bundle/          bulk pull all files\n        PUT    .../revisions/<id>/bundle/          bulk push (replace|merge)"
       }
     },
-    "com.posthog.agent_platform#AgentApplicationsRevisionsUpdateRequestSkillRefsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.agent_platform#SkillRef"
-      },
-      "traits": {
-        "smithy.api#documentation": "Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`."
-      }
-    },
-    "com.posthog.agent_platform#AgentApplicationsRevisionsUpdateRequestCreatedBy": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#Integer"
-        },
-        "first_name": {
-          "target": "smithy.api#String"
-        },
-        "email": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted."
-      }
-    },
     "com.posthog.agent_platform#AgentApplicationsRevisionsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1644,22 +1439,10 @@
             "smithy.api#documentation": "A UUID string identifying this agent revision."
           }
         },
-        "application": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "parent_revision": {
           "target": "smithy.api#String",
           "traits": {
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "state": {
-          "target": "com.posthog.agent_platform#AgentRevisionStateEnum",
-          "traits": {
-            "smithy.api#required": {}
           }
         },
         "bundle_uri": {
@@ -1668,49 +1451,8 @@
             "smithy.api#documentation": "Storage-prefix metadata for the bundle, e.g. `fs://my-agent/`. Optional — leave blank and the server fills `fs://<application-slug>/`. Bundles are addressed by revision id regardless, so this is only a prefix hint."
           }
         },
-        "bundle_sha256": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "spec": {
           "target": "smithy.api#Document"
-        },
-        "skill_refs": {
-          "target": "com.posthog.agent_platform#AgentApplicationsRevisionsUpdateRequestSkillRefsList",
-          "traits": {
-            "smithy.api#documentation": "Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`.",
-            "smithy.api#required": {}
-          }
-        },
-        "created_by_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.agent_platform#AgentApplicationsRevisionsUpdateRequestCreatedBy",
-          "traits": {
-            "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -1732,32 +1474,6 @@
           "code": 200
         },
         "smithy.api#documentation": "Spec edits are only allowed while state='draft'. Once promoted to\nready/live the spec is frozen — change requires a new revision."
-      }
-    },
-    "com.posthog.agent_platform#AgentApplicationsRevisionsPartialUpdateRequestSkillRefsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.agent_platform#SkillRef"
-      },
-      "traits": {
-        "smithy.api#documentation": "Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`."
-      }
-    },
-    "com.posthog.agent_platform#AgentApplicationsRevisionsPartialUpdateRequestCreatedBy": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#Integer"
-        },
-        "first_name": {
-          "target": "smithy.api#String"
-        },
-        "email": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted."
       }
     },
     "com.posthog.agent_platform#AgentApplicationsRevisionsPartialUpdateRequest": {
@@ -1786,17 +1502,11 @@
             "smithy.api#documentation": "A UUID string identifying this agent revision."
           }
         },
-        "application": {
-          "target": "smithy.api#String"
-        },
         "parent_revision": {
           "target": "smithy.api#String",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "state": {
-          "target": "com.posthog.agent_platform#AgentRevisionStateEnum"
         },
         "bundle_uri": {
           "target": "smithy.api#String",
@@ -1804,39 +1514,8 @@
             "smithy.api#documentation": "Storage-prefix metadata for the bundle, e.g. `fs://my-agent/`. Optional — leave blank and the server fills `fs://<application-slug>/`. Bundles are addressed by revision id regardless, so this is only a prefix hint."
           }
         },
-        "bundle_sha256": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "spec": {
           "target": "smithy.api#Document"
-        },
-        "skill_refs": {
-          "target": "com.posthog.agent_platform#AgentApplicationsRevisionsPartialUpdateRequestSkillRefsList",
-          "traits": {
-            "smithy.api#documentation": "Store-skill references for this draft, set via the `skill_refs` action and resolved into the bundle at freeze. Preserved as the authoring record on the frozen revision (and carried forward when forking a new draft); resolved provenance is stamped onto `spec.skills[].source_version_id`."
-          }
-        },
-        "created_by_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.agent_platform#AgentApplicationsRevisionsPartialUpdateRequestCreatedBy",
-          "traits": {
-            "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -3755,23 +3434,6 @@
         "smithy.api#documentation": "Agent applications — the deployable unit of the platform.\n\nURLs:\n    GET    /api/projects/<team>/agent_applications/             list\n    POST   /api/projects/<team>/agent_applications/             create\n    GET    /api/projects/<team>/agent_applications/<id|slug>/   retrieve\n    PATCH  /api/projects/<team>/agent_applications/<id|slug>/   update\n    DELETE /api/projects/<team>/agent_applications/<id|slug>/   archive\n    POST   /api/projects/<team>/agent_applications/<id|slug>/set_env/        bulk replace env\n    GET    /api/projects/<team>/agent_applications/<id|slug>/env_keys/        list set keys\n    GET    /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/  is one key set?\n    PUT    /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/  set one key\n    DELETE /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/  clear one key"
       }
     },
-    "com.posthog.agent_platform#AgentApplicationsUpdateRequestCreatedBy": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#Integer"
-        },
-        "first_name": {
-          "target": "smithy.api#String"
-        },
-        "email": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted."
-      }
-    },
     "com.posthog.agent_platform#AgentApplicationsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -3791,12 +3453,6 @@
             "smithy.api#documentation": "A UUID string identifying this agent application."
           }
         },
-        "team_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -3812,73 +3468,8 @@
         "description": {
           "target": "smithy.api#String"
         },
-        "live_revision": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "archived": {
           "target": "smithy.api#Boolean"
-        },
-        "archived_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.agent_platform#AgentApplicationsUpdateRequestCreatedBy",
-          "traits": {
-            "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "slack_events_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Public URL to paste into the Slack app dashboard under Event Subscriptions → Request URL. Computed from the agent slug and the deployment's ingress routing mode (`AGENT_INGRESS_DOMAIN_SUFFIX` in domain mode, `AGENT_INGRESS_PUBLIC_URL` in path mode). Null when no public agent-ingress URL is configured (e.g. local dev without a tunnel).",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_interactivity_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Public URL to paste into the Slack app dashboard under Interactivity & Shortcuts → Request URL. Same source + null behaviour as `slack_events_url`.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "ingress_base_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Mode-aware base URL the agent's trigger routes hang off — append `/webhook`, `/run`, `/mcp`, etc. Domain mode: `https://<slug><suffix>`; path mode: `<public_url>/agents/<slug>`. Same source + null behaviour as `slack_events_url` (null when no public ingress URL is configured).",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -3902,23 +3493,6 @@
         "smithy.api#documentation": "Agent applications — the deployable unit of the platform.\n\nURLs:\n    GET    /api/projects/<team>/agent_applications/             list\n    POST   /api/projects/<team>/agent_applications/             create\n    GET    /api/projects/<team>/agent_applications/<id|slug>/   retrieve\n    PATCH  /api/projects/<team>/agent_applications/<id|slug>/   update\n    DELETE /api/projects/<team>/agent_applications/<id|slug>/   archive\n    POST   /api/projects/<team>/agent_applications/<id|slug>/set_env/        bulk replace env\n    GET    /api/projects/<team>/agent_applications/<id|slug>/env_keys/        list set keys\n    GET    /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/  is one key set?\n    PUT    /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/  set one key\n    DELETE /api/projects/<team>/agent_applications/<id|slug>/env_keys/<KEY>/  clear one key"
       }
     },
-    "com.posthog.agent_platform#AgentApplicationsPartialUpdateRequestCreatedBy": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#Integer"
-        },
-        "first_name": {
-          "target": "smithy.api#String"
-        },
-        "email": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted."
-      }
-    },
     "com.posthog.agent_platform#AgentApplicationsPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -3938,9 +3512,6 @@
             "smithy.api#documentation": "A UUID string identifying this agent application."
           }
         },
-        "team_id": {
-          "target": "smithy.api#Integer"
-        },
         "name": {
           "target": "smithy.api#String"
         },
@@ -3953,60 +3524,8 @@
         "description": {
           "target": "smithy.api#String"
         },
-        "live_revision": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "archived": {
           "target": "smithy.api#Boolean"
-        },
-        "archived_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.agent_platform#AgentApplicationsPartialUpdateRequestCreatedBy",
-          "traits": {
-            "smithy.api#documentation": "Resolved creator (id, first_name, email) from `created_by_id`, or null if unset or the user was deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "slack_events_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Public URL to paste into the Slack app dashboard under Event Subscriptions → Request URL. Computed from the agent slug and the deployment's ingress routing mode (`AGENT_INGRESS_DOMAIN_SUFFIX` in domain mode, `AGENT_INGRESS_PUBLIC_URL` in path mode). Null when no public agent-ingress URL is configured (e.g. local dev without a tunnel).",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_interactivity_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Public URL to paste into the Slack app dashboard under Interactivity & Shortcuts → Request URL. Same source + null behaviour as `slack_events_url`.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "ingress_base_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Mode-aware base URL the agent's trigger routes hang off — append `/webhook`, `/run`, `/mcp`, etc. Domain mode: `https://<slug><suffix>`; path mode: `<public_url>/agents/<slug>`. Same source + null behaviour as `slack_events_url` (null when no public ingress URL is configured).",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {

@@ -88,15 +88,13 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type UpcomingMaintenanceTypeEnum =
   | "UNKNOWN_TYPE"
   | "SCHEDULED"
-  | "UNSCHEDULED"
-  | (string & {});
+  | "UNSCHEDULED";
 export const UpcomingMaintenanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type UpcomingMaintenanceMaintenanceStatusEnum =
   | "UNKNOWN"
   | "PENDING"
-  | "ONGOING"
-  | (string & {});
+  | "ONGOING";
 export const UpcomingMaintenanceMaintenanceStatusEnum = /*@__PURE__*/ S.String;
 
 /** Upcoming Maintenance notification information. */
@@ -131,16 +129,14 @@ export type NodeApiVersionEnum =
   | "API_VERSION_UNSPECIFIED"
   | "V1_ALPHA1"
   | "V1"
-  | "V2_ALPHA1"
-  | (string & {});
+  | "V2_ALPHA1";
 export const NodeApiVersionEnum = /*@__PURE__*/ S.String;
 
 export type SchedulingConfigProvisioningModelEnum =
   | "PROVISIONING_MODEL_UNSPECIFIED"
   | "STANDARD"
   | "SPOT"
-  | "RESERVATION_BOUND"
-  | (string & {});
+  | "RESERVATION_BOUND";
 export const SchedulingConfigProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** Sets the scheduling options for this node. */
@@ -178,8 +174,7 @@ export type AcceleratorConfigTypeEnum =
   | "V4"
   | "V5LITE_POD"
   | "V5P"
-  | "V6E"
-  | (string & {});
+  | "V6E";
 export const AcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** A TPU accelerator configuration. */
@@ -228,7 +223,7 @@ export const NetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkEndpoint",
 }) as any as S.Schema<NetworkEndpoint>;
 
-export type NetworkEndpointList = NetworkEndpoint[];
+export type NetworkEndpointList = ReadonlyArray<NetworkEndpoint>;
 export const NetworkEndpointList = /*@__PURE__*/ S.Array(
   NetworkEndpoint,
 ) as any as S.Schema<NetworkEndpointList>;
@@ -275,7 +270,7 @@ export const BootDiskConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BootDiskConfig" }) as any as S.Schema<BootDiskConfig>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -299,8 +294,7 @@ export type NodeHealthEnum =
   | "HEALTHY"
   | "TIMEOUT"
   | "UNHEALTHY_TENSORFLOW"
-  | "UNHEALTHY_MAINTENANCE"
-  | (string & {});
+  | "UNHEALTHY_MAINTENANCE";
 export const NodeHealthEnum = /*@__PURE__*/ S.String;
 
 /** A set of Shielded Instance options. */
@@ -339,7 +333,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type NetworkConfigList = NetworkConfig[];
+export type NetworkConfigList = ReadonlyArray<NetworkConfig>;
 export const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
@@ -366,8 +360,7 @@ export type NodeStateEnum =
   | "HIDING"
   | "HIDDEN"
   | "UNHIDING"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const NodeStateEnum = /*@__PURE__*/ S.String;
 
 export type SymptomSymptomTypeEnum =
@@ -377,8 +370,7 @@ export type SymptomSymptomTypeEnum =
   | "EXECUTE_TIMED_OUT"
   | "MESH_BUILD_FAIL"
   | "HBM_OUT_OF_MEMORY"
-  | "PROJECT_ABUSE"
-  | (string & {});
+  | "PROJECT_ABUSE";
 export const SymptomSymptomTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Symptom instance. */
@@ -401,7 +393,7 @@ export const Symptom = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Symptom" }) as any as S.Schema<Symptom>;
 
-export type SymptomList = Symptom[];
+export type SymptomList = ReadonlyArray<Symptom>;
 export const SymptomList = /*@__PURE__*/ S.Array(
   Symptom,
 ) as any as S.Schema<SymptomList>;
@@ -409,8 +401,7 @@ export const SymptomList = /*@__PURE__*/ S.Array(
 export type AttachedDiskModeEnum =
   | "DISK_MODE_UNSPECIFIED"
   | "READ_WRITE"
-  | "READ_ONLY"
-  | (string & {});
+  | "READ_ONLY";
 export const AttachedDiskModeEnum = /*@__PURE__*/ S.String;
 
 /** A node-attached disk resource. */
@@ -430,7 +421,7 @@ export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AttachedDisk" }) as any as S.Schema<AttachedDisk>;
 
-export type AttachedDiskList = AttachedDisk[];
+export type AttachedDiskList = ReadonlyArray<AttachedDisk>;
 export const AttachedDiskList = /*@__PURE__*/ S.Array(
   AttachedDisk,
 ) as any as S.Schema<AttachedDiskList>;
@@ -560,7 +551,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -608,8 +599,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type MultiNodeParamsWorkloadTypeEnum =
   | "WORKLOAD_TYPE_UNSPECIFIED"
   | "THROUGHPUT_OPTIMIZED"
-  | "AVAILABILITY_OPTIMIZED"
-  | (string & {});
+  | "AVAILABILITY_OPTIMIZED";
 export const MultiNodeParamsWorkloadTypeEnum = /*@__PURE__*/ S.String;
 
 /** Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node requests instead of node_id. It's an error to specify both node_id and multi_node_params. */
@@ -651,7 +641,7 @@ export const NodeSpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeSpec" }) as any as S.Schema<NodeSpec>;
 
-export type NodeSpecList = NodeSpec[];
+export type NodeSpecList = ReadonlyArray<NodeSpec>;
 export const NodeSpecList = /*@__PURE__*/ S.Array(
   NodeSpec,
 ) as any as S.Schema<NodeSpecList>;
@@ -678,8 +668,7 @@ export type QueuedResourceProvisioningModelEnum =
   | "STANDARD"
   | "SPOT"
   | "RESERVATION_BOUND"
-  | "FLEX_START"
-  | (string & {});
+  | "FLEX_START";
 export const QueuedResourceProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** Guaranteed tier definition. */
@@ -783,8 +772,7 @@ export type QueuedResourceStateStateEnum =
   | "ACTIVE"
   | "SUSPENDING"
   | "SUSPENDED"
-  | "WAITING_FOR_RESOURCES"
-  | (string & {});
+  | "WAITING_FOR_RESOURCES";
 export const QueuedResourceStateStateEnum = /*@__PURE__*/ S.String;
 
 /** Further data for the deleting state. */
@@ -819,8 +807,7 @@ export const FailedData = /*@__PURE__*/ S.suspend(() =>
 export type QueuedResourceStateStateInitiatorEnum =
   | "STATE_INITIATOR_UNSPECIFIED"
   | "USER"
-  | "SERVICE"
-  | (string & {});
+  | "SERVICE";
 export const QueuedResourceStateStateInitiatorEnum = /*@__PURE__*/ S.String;
 
 /** QueuedResourceState defines the details of the QueuedResource request. */
@@ -1116,7 +1103,7 @@ export const GuestAttributesEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "GuestAttributesEntry",
 }) as any as S.Schema<GuestAttributesEntry>;
 
-export type GuestAttributesEntryList = GuestAttributesEntry[];
+export type GuestAttributesEntryList = ReadonlyArray<GuestAttributesEntry>;
 export const GuestAttributesEntryList = /*@__PURE__*/ S.Array(
   GuestAttributesEntry,
 ) as any as S.Schema<GuestAttributesEntryList>;
@@ -1150,7 +1137,7 @@ export const GuestAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "GuestAttributes",
 }) as any as S.Schema<GuestAttributes>;
 
-export type GuestAttributesList = GuestAttributes[];
+export type GuestAttributesList = ReadonlyArray<GuestAttributes>;
 export const GuestAttributesList = /*@__PURE__*/ S.Array(
   GuestAttributes,
 ) as any as S.Schema<GuestAttributesList>;
@@ -1206,7 +1193,8 @@ export const NodeUpcomingMaintenanceInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeUpcomingMaintenanceInfo",
 }) as any as S.Schema<NodeUpcomingMaintenanceInfo>;
 
-export type NodeUpcomingMaintenanceInfoList = NodeUpcomingMaintenanceInfo[];
+export type NodeUpcomingMaintenanceInfoList =
+  ReadonlyArray<NodeUpcomingMaintenanceInfo>;
 export const NodeUpcomingMaintenanceInfoList = /*@__PURE__*/ S.Array(
   NodeUpcomingMaintenanceInfo,
 ) as any as S.Schema<NodeUpcomingMaintenanceInfoList>;
@@ -1284,7 +1272,7 @@ export const GetProjectsLocationsAcceleratorTypesRequest =
     identifier: "GetProjectsLocationsAcceleratorTypesRequest",
   }) as any as S.Schema<GetProjectsLocationsAcceleratorTypesRequest>;
 
-export type AcceleratorConfigList = AcceleratorConfig[];
+export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
 export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
@@ -1427,7 +1415,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1479,7 +1467,7 @@ export const ListProjectsLocationsAcceleratorTypesRequest =
     identifier: "ListProjectsLocationsAcceleratorTypesRequest",
   }) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
 
-export type AcceleratorTypeList = AcceleratorType[];
+export type AcceleratorTypeList = ReadonlyArray<AcceleratorType>;
 export const AcceleratorTypeList = /*@__PURE__*/ S.Array(
   AcceleratorType,
 ) as any as S.Schema<AcceleratorTypeList>;
@@ -1527,7 +1515,7 @@ export const ListProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsNodesRequest",
 }) as any as S.Schema<ListProjectsLocationsNodesRequest>;
 
-export type NodeList = Node[];
+export type NodeList = ReadonlyArray<Node>;
 export const NodeList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeList>;
@@ -1582,7 +1570,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1631,7 +1619,7 @@ export const ListProjectsLocationsQueuedResourcesRequest =
     identifier: "ListProjectsLocationsQueuedResourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsQueuedResourcesRequest>;
 
-export type QueuedResourceList = QueuedResource[];
+export type QueuedResourceList = ReadonlyArray<QueuedResource>;
 export const QueuedResourceList = /*@__PURE__*/ S.Array(
   QueuedResource,
 ) as any as S.Schema<QueuedResourceList>;
@@ -1683,8 +1671,7 @@ export const ListProjectsLocationsReservationsRequest = /*@__PURE__*/ S.suspend(
 export type StandardCapacityUnitsEnum =
   | "CAPACITY_UNITS_UNSPECIFIED"
   | "CORES"
-  | "CHIPS"
-  | (string & {});
+  | "CHIPS";
 export const StandardCapacityUnitsEnum = /*@__PURE__*/ S.String;
 
 /** Usage details of a reservation. */
@@ -1728,8 +1715,7 @@ export type ReservationStateEnum =
   | "ACTIVE"
   | "DEPROVISIONING"
   | "EXPIRED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ReservationStateEnum = /*@__PURE__*/ S.String;
 
 /** A reservation describes the amount of a resource 'allotted' for a defined period of time. */
@@ -1749,7 +1735,7 @@ export const Reservation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reservation" }) as any as S.Schema<Reservation>;
 
-export type ReservationList = Reservation[];
+export type ReservationList = ReadonlyArray<Reservation>;
 export const ReservationList = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationList>;
@@ -1801,7 +1787,7 @@ export const ListProjectsLocationsRuntimeVersionsRequest =
     identifier: "ListProjectsLocationsRuntimeVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsRuntimeVersionsRequest>;
 
-export type RuntimeVersionList = RuntimeVersion[];
+export type RuntimeVersionList = ReadonlyArray<RuntimeVersion>;
 export const RuntimeVersionList = /*@__PURE__*/ S.Array(
   RuntimeVersion,
 ) as any as S.Schema<RuntimeVersionList>;

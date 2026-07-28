@@ -181,17 +181,8 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "path": {
           "target": "smithy.api#String"
-        },
-        "depth": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "type": {
           "target": "smithy.api#String"
@@ -214,22 +205,6 @@
         "shortcut": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "last_viewed_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -335,12 +310,6 @@
         "path": {
           "target": "smithy.api#String"
         },
-        "depth": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "type": {
           "target": "smithy.api#String"
         },
@@ -362,22 +331,6 @@
         "shortcut": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "last_viewed_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -435,12 +388,6 @@
         "path": {
           "target": "smithy.api#String"
         },
-        "depth": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "type": {
           "target": "smithy.api#String"
         },
@@ -462,22 +409,6 @@
         "shortcut": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "last_viewed_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type.",
             "com.distilled.openapi#nullable": {}
           }
         }
@@ -572,17 +503,8 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "path": {
           "target": "smithy.api#String"
-        },
-        "depth": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "type": {
           "target": "smithy.api#String"
@@ -605,22 +527,6 @@
         "shortcut": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "last_viewed_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type.",
             "com.distilled.openapi#nullable": {}
           }
         }

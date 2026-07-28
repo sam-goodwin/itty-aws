@@ -80,8 +80,7 @@ export type PkixPublicKeySignatureAlgorithmEnum =
   | "EC_SIGN_P384_SHA384"
   | "ECDSA_P521_SHA512"
   | "EC_SIGN_P521_SHA512"
-  | "ML_DSA_65"
-  | (string & {});
+  | "ML_DSA_65";
 export const PkixPublicKeySignatureAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** A public key in the PkixPublicKey [format](https://tools.ietf.org/html/rfc5280#section-4.1.2.7). Public keys of this type are typically textually encoded using the PEM format. */
@@ -123,7 +122,7 @@ export const AttestorPublicKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttestorPublicKey",
 }) as any as S.Schema<AttestorPublicKey>;
 
-export type AttestorPublicKeyList = AttestorPublicKey[];
+export type AttestorPublicKeyList = ReadonlyArray<AttestorPublicKey>;
 export const AttestorPublicKeyList = /*@__PURE__*/ S.Array(
   AttestorPublicKey,
 ) as any as S.Schema<AttestorPublicKeyList>;
@@ -194,7 +193,7 @@ export const CreateProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectsAttestorsRequest",
 }) as any as S.Schema<CreateProjectsAttestorsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -237,7 +236,7 @@ export const SigstorePublicKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "SigstorePublicKey",
 }) as any as S.Schema<SigstorePublicKey>;
 
-export type SigstorePublicKeyList = SigstorePublicKey[];
+export type SigstorePublicKeyList = ReadonlyArray<SigstorePublicKey>;
 export const SigstorePublicKeyList = /*@__PURE__*/ S.Array(
   SigstorePublicKey,
 ) as any as S.Schema<SigstorePublicKeyList>;
@@ -271,7 +270,7 @@ export const SigstoreAuthority = /*@__PURE__*/ S.suspend(() =>
   identifier: "SigstoreAuthority",
 }) as any as S.Schema<SigstoreAuthority>;
 
-export type SigstoreAuthorityList = SigstoreAuthority[];
+export type SigstoreAuthorityList = ReadonlyArray<SigstoreAuthority>;
 export const SigstoreAuthorityList = /*@__PURE__*/ S.Array(
   SigstoreAuthority,
 ) as any as S.Schema<SigstoreAuthorityList>;
@@ -289,7 +288,7 @@ export const SigstoreSignatureCheck = /*@__PURE__*/ S.suspend(() =>
   identifier: "SigstoreSignatureCheck",
 }) as any as S.Schema<SigstoreSignatureCheck>;
 
-export type PkixPublicKeyList = PkixPublicKey[];
+export type PkixPublicKeyList = ReadonlyArray<PkixPublicKey>;
 export const PkixPublicKeyList = /*@__PURE__*/ S.Array(
   PkixPublicKey,
 ) as any as S.Schema<PkixPublicKeyList>;
@@ -323,7 +322,8 @@ export const AttestationAuthenticator = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttestationAuthenticator",
 }) as any as S.Schema<AttestationAuthenticator>;
 
-export type AttestationAuthenticatorList = AttestationAuthenticator[];
+export type AttestationAuthenticatorList =
+  ReadonlyArray<AttestationAuthenticator>;
 export const AttestationAuthenticatorList = /*@__PURE__*/ S.Array(
   AttestationAuthenticator,
 ) as any as S.Schema<AttestationAuthenticatorList>;
@@ -359,8 +359,7 @@ export const TrustedDirectoryCheck = /*@__PURE__*/ S.suspend(() =>
 
 export type VerificationRuleTrustedBuilderEnum =
   | "BUILDER_UNSPECIFIED"
-  | "GOOGLE_CLOUD_BUILD"
-  | (string & {});
+  | "GOOGLE_CLOUD_BUILD";
 export const VerificationRuleTrustedBuilderEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the locations for fetching the provenance attestations. */
@@ -401,7 +400,7 @@ export const VerificationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerificationRule",
 }) as any as S.Schema<VerificationRule>;
 
-export type VerificationRuleList = VerificationRule[];
+export type VerificationRuleList = ReadonlyArray<VerificationRule>;
 export const VerificationRuleList = /*@__PURE__*/ S.Array(
   VerificationRule,
 ) as any as S.Schema<VerificationRuleList>;
@@ -438,8 +437,7 @@ export type VulnerabilityCheckMaximumUnfixableSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL"
-  | "ALLOW_ALL"
-  | (string & {});
+  | "ALLOW_ALL";
 export const VulnerabilityCheckMaximumUnfixableSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -451,8 +449,7 @@ export type VulnerabilityCheckMaximumFixableSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL"
-  | "ALLOW_ALL"
-  | (string & {});
+  | "ALLOW_ALL";
 export const VulnerabilityCheckMaximumFixableSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -520,7 +517,7 @@ export const Check = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Check" }) as any as S.Schema<Check>;
 
-export type CheckList = Check[];
+export type CheckList = ReadonlyArray<Check>;
 export const CheckList = /*@__PURE__*/ S.Array(
   Check,
 ) as any as S.Schema<CheckList>;
@@ -545,7 +542,7 @@ export const CheckSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckSet" }) as any as S.Schema<CheckSet>;
 
-export type CheckSetList = CheckSet[];
+export type CheckSetList = ReadonlyArray<CheckSet>;
 export const CheckSetList = /*@__PURE__*/ S.Array(
   CheckSet,
 ) as any as S.Schema<CheckSetList>;
@@ -703,16 +700,14 @@ export type EvaluateGkePolicyResponseVerdictEnum =
   | "VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const EvaluateGkePolicyResponseVerdictEnum = /*@__PURE__*/ S.String;
 
 export type PodResultVerdictEnum =
   | "POD_VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const PodResultVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Result of evaluating an image name allowlist. */
@@ -732,8 +727,7 @@ export type EvaluationResultVerdictEnum =
   | "CHECK_VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const EvaluationResultVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Result of evaluating one check. */
@@ -775,7 +769,7 @@ export const CheckResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckResult" }) as any as S.Schema<CheckResult>;
 
-export type CheckResultList = CheckResult[];
+export type CheckResultList = ReadonlyArray<CheckResult>;
 export const CheckResultList = /*@__PURE__*/ S.Array(
   CheckResult,
 ) as any as S.Schema<CheckResultList>;
@@ -821,8 +815,7 @@ export type ImageResultVerdictEnum =
   | "IMAGE_VERDICT_UNSPECIFIED"
   | "CONFORMANT"
   | "NON_CONFORMANT"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const ImageResultVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Result of evaluating one image. */
@@ -848,7 +841,7 @@ export const ImageResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageResult" }) as any as S.Schema<ImageResult>;
 
-export type ImageResultList = ImageResult[];
+export type ImageResultList = ReadonlyArray<ImageResult>;
 export const ImageResultList = /*@__PURE__*/ S.Array(
   ImageResult,
 ) as any as S.Schema<ImageResultList>;
@@ -876,7 +869,7 @@ export const PodResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PodResult" }) as any as S.Schema<PodResult>;
 
-export type PodResultList = PodResult[];
+export type PodResultList = ReadonlyArray<PodResult>;
 export const PodResultList = /*@__PURE__*/ S.Array(
   PodResult,
 ) as any as S.Schema<PodResultList>;
@@ -956,7 +949,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1020,23 +1013,20 @@ export const GetPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PolicyGlobalPolicyEvaluationModeEnum =
   | "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED"
   | "ENABLE"
-  | "DISABLE"
-  | (string & {});
+  | "DISABLE";
 export const PolicyGlobalPolicyEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 export type AdmissionRuleEvaluationModeEnum =
   | "EVALUATION_MODE_UNSPECIFIED"
   | "ALWAYS_ALLOW"
   | "REQUIRE_ATTESTATION"
-  | "ALWAYS_DENY"
-  | (string & {});
+  | "ALWAYS_DENY";
 export const AdmissionRuleEvaluationModeEnum = /*@__PURE__*/ S.String;
 
 export type AdmissionRuleEnforcementModeEnum =
   | "ENFORCEMENT_MODE_UNSPECIFIED"
   | "ENFORCED_BLOCK_AND_AUDIT_LOG"
-  | "DRYRUN_AUDIT_LOG_ONLY"
-  | (string & {});
+  | "DRYRUN_AUDIT_LOG_ONLY";
 export const AdmissionRuleEnforcementModeEnum = /*@__PURE__*/ S.String;
 
 /** An admission rule specifies either that all container images used in a pod creation request must be attested to by one or more attestors, that all pod creations will be allowed, or that all pod creations will be denied. Images matching an admission allowlist pattern are exempted from admission rules and will never block a pod creation. */
@@ -1075,7 +1065,8 @@ export const AdmissionWhitelistPattern = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdmissionWhitelistPattern",
 }) as any as S.Schema<AdmissionWhitelistPattern>;
 
-export type AdmissionWhitelistPatternList = AdmissionWhitelistPattern[];
+export type AdmissionWhitelistPatternList =
+  ReadonlyArray<AdmissionWhitelistPattern>;
 export const AdmissionWhitelistPatternList = /*@__PURE__*/ S.Array(
   AdmissionWhitelistPattern,
 ) as any as S.Schema<AdmissionWhitelistPatternList>;
@@ -1201,7 +1192,7 @@ export const ListProjectsAttestorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAttestorsRequest",
 }) as any as S.Schema<ListProjectsAttestorsRequest>;
 
-export type AttestorList = Attestor[];
+export type AttestorList = ReadonlyArray<Attestor>;
 export const AttestorList = /*@__PURE__*/ S.Array(
   Attestor,
 ) as any as S.Schema<AttestorList>;
@@ -1247,7 +1238,7 @@ export const ListProjectsPlatformsPoliciesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsPlatformsPoliciesRequest",
 }) as any as S.Schema<ListProjectsPlatformsPoliciesRequest>;
 
-export type PlatformPolicyList = PlatformPolicy[];
+export type PlatformPolicyList = ReadonlyArray<PlatformPolicy>;
 export const PlatformPolicyList = /*@__PURE__*/ S.Array(
   PlatformPolicy,
 ) as any as S.Schema<PlatformPolicyList>;
@@ -1468,7 +1459,7 @@ export const Jwt = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Jwt" }) as any as S.Schema<Jwt>;
 
-export type JwtList = Jwt[];
+export type JwtList = ReadonlyArray<Jwt>;
 export const JwtList = /*@__PURE__*/ S.Array(Jwt) as any as S.Schema<JwtList>;
 
 /** Verifiers (e.g. Kritis implementations) MUST verify signatures with respect to the trust anchors defined in policy (e.g. a Kritis policy). Typically this means that the verifier has been configured with a map from `public_key_id` to public key material (and any required parameters, e.g. signing algorithm). In particular, verification implementations MUST NOT treat the signature `public_key_id` as anything more than a key lookup hint. The `public_key_id` DOES NOT validate or authenticate a public key; it only provides a mechanism for quickly selecting a public key ALREADY CONFIGURED on the verifier through a trusted channel. Verification implementations MUST reject signatures in any of the following circumstances: * The `public_key_id` is not recognized by the verifier. * The public key that `public_key_id` refers to does not verify the signature with respect to the payload. The `signature` contents SHOULD NOT be "attached" (where the payload is included with the serialized `signature` bytes). Verifiers MUST ignore any "attached" payload and only verify signatures with respect to explicitly provided payload (e.g. a `payload` field on the proto message that holds this Signature, or the canonical serialization of the proto message that holds this signature). */
@@ -1485,7 +1476,7 @@ export const Signature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Signature" }) as any as S.Schema<Signature>;
 
-export type SignatureList = Signature[];
+export type SignatureList = ReadonlyArray<Signature>;
 export const SignatureList = /*@__PURE__*/ S.Array(
   Signature,
 ) as any as S.Schema<SignatureList>;
@@ -1554,8 +1545,7 @@ export const ValidateAttestationOccurrenceProjectsAttestorsRequest =
 export type ValidateAttestationOccurrenceResponseResultEnum =
   | "RESULT_UNSPECIFIED"
   | "VERIFIED"
-  | "ATTESTATION_NOT_VERIFIABLE"
-  | (string & {});
+  | "ATTESTATION_NOT_VERIFIABLE";
 export const ValidateAttestationOccurrenceResponseResultEnum =
   /*@__PURE__*/ S.String;
 

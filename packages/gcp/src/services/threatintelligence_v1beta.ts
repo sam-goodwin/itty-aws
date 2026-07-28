@@ -89,7 +89,7 @@ export const BenignProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BenignProjectsAlertsRequest",
 }) as any as S.Schema<BenignProjectsAlertsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -155,13 +155,12 @@ export type VulnerabilityMatchExploitationConsequencesItemEnum =
   | "SANDBOX_ESCAPE"
   | "SECURITY_BYPASS"
   | "CONTAINER_ESCAPE"
-  | "SPOOFING"
-  | (string & {});
+  | "SPOOFING";
 export const VulnerabilityMatchExploitationConsequencesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type VulnerabilityMatchExploitationConsequencesItemEnumList =
-  VulnerabilityMatchExploitationConsequencesItemEnum[];
+  ReadonlyArray<VulnerabilityMatchExploitationConsequencesItemEnum>;
 export const VulnerabilityMatchExploitationConsequencesItemEnumList =
   /*@__PURE__*/ S.Array(
     VulnerabilityMatchExploitationConsequencesItemEnum,
@@ -185,13 +184,12 @@ export type VulnerabilityMatchExploitationVectorsItemEnum =
   | "UNSPECIFIED_LOCAL_VECTOR"
   | "UNSPECIFIED_REMOTE_VECTOR"
   | "VPN_ACCESS"
-  | "WIFI_ACCESS"
-  | (string & {});
+  | "WIFI_ACCESS";
 export const VulnerabilityMatchExploitationVectorsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type VulnerabilityMatchExploitationVectorsItemEnumList =
-  VulnerabilityMatchExploitationVectorsItemEnum[];
+  ReadonlyArray<VulnerabilityMatchExploitationVectorsItemEnum>;
 export const VulnerabilityMatchExploitationVectorsItemEnumList =
   /*@__PURE__*/ S.Array(
     VulnerabilityMatchExploitationVectorsItemEnum,
@@ -203,8 +201,7 @@ export type VulnerabilityMatchExploitationStateEnum =
   | "EXPLOITATION_STATE_REPORTED"
   | "EXPLOITATION_STATE_SUSPECTED"
   | "EXPLOITATION_STATE_CONFIRMED"
-  | "EXPLOITATION_STATE_WIDESPREAD"
-  | (string & {});
+  | "EXPLOITATION_STATE_WIDESPREAD";
 export const VulnerabilityMatchExploitationStateEnum = /*@__PURE__*/ S.String;
 
 export type VulnerabilityMatchPriorityEnum =
@@ -213,8 +210,7 @@ export type VulnerabilityMatchPriorityEnum =
   | "P1"
   | "P2"
   | "P3"
-  | "P4"
-  | (string & {});
+  | "P4";
 export const VulnerabilityMatchPriorityEnum = /*@__PURE__*/ S.String;
 
 export type VulnerabilityMatchRiskRatingEnum =
@@ -223,8 +219,7 @@ export type VulnerabilityMatchRiskRatingEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL"
-  | "UNRATED"
-  | (string & {});
+  | "UNRATED";
 export const VulnerabilityMatchRiskRatingEnum = /*@__PURE__*/ S.String;
 
 /** Contains details about a product fix. */
@@ -247,7 +242,7 @@ export const ProductFix = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductFix" }) as any as S.Schema<ProductFix>;
 
-export type ProductFixList = ProductFix[];
+export type ProductFixList = ReadonlyArray<ProductFix>;
 export const ProductFixList = /*@__PURE__*/ S.Array(
   ProductFix,
 ) as any as S.Schema<ProductFixList>;
@@ -260,8 +255,7 @@ export type AssociationTypeEnum =
   | "THREAT_INTEL_OBJECT_TYPE_CAMPAIGN"
   | "THREAT_INTEL_OBJECT_TYPE_IOC_COLLECTION"
   | "THREAT_INTEL_OBJECT_TYPE_SOFTWARE_AND_TOOLKITS"
-  | "THREAT_INTEL_OBJECT_TYPE_VULNERABILITY"
-  | (string & {});
+  | "THREAT_INTEL_OBJECT_TYPE_VULNERABILITY";
 export const AssociationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an association with a vulnerability. */
@@ -278,7 +272,7 @@ export const Association = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Association" }) as any as S.Schema<Association>;
 
-export type AssociationList = Association[];
+export type AssociationList = ReadonlyArray<Association>;
 export const AssociationList = /*@__PURE__*/ S.Array(
   Association,
 ) as any as S.Schema<AssociationList>;
@@ -287,8 +281,7 @@ export type PublicExploitExploitReliabilityEnum =
   | "EXPLOIT_RELIABILITY_UNSPECIFIED"
   | "UNREVIEWED"
   | "REVIEWED"
-  | "TESTED"
-  | (string & {});
+  | "TESTED";
 export const PublicExploitExploitReliabilityEnum = /*@__PURE__*/ S.String;
 
 export type PublicExploitExploitGradeEnum =
@@ -298,8 +291,7 @@ export type PublicExploitExploitGradeEnum =
   | "NON_WEAPONIZED"
   | "WEAPONIZED"
   | "SCANNER"
-  | "FAKE"
-  | (string & {});
+  | "FAKE";
 export const PublicExploitExploitGradeEnum = /*@__PURE__*/ S.String;
 
 /** Contains details about a public exploit. */
@@ -328,7 +320,7 @@ export const PublicExploit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PublicExploit" }) as any as S.Schema<PublicExploit>;
 
-export type PublicExploitList = PublicExploit[];
+export type PublicExploitList = ReadonlyArray<PublicExploit>;
 export const PublicExploitList = /*@__PURE__*/ S.Array(
   PublicExploit,
 ) as any as S.Schema<PublicExploitList>;
@@ -452,16 +444,14 @@ export type RelevanceAnalysisRelevanceLevelEnum =
   | "RELEVANCE_LEVEL_UNSPECIFIED"
   | "RELEVANCE_LEVEL_LOW"
   | "RELEVANCE_LEVEL_MEDIUM"
-  | "RELEVANCE_LEVEL_HIGH"
-  | (string & {});
+  | "RELEVANCE_LEVEL_HIGH";
 export const RelevanceAnalysisRelevanceLevelEnum = /*@__PURE__*/ S.String;
 
 export type RelevanceAnalysisConfidenceEnum =
   | "CONFIDENCE_LEVEL_UNSPECIFIED"
   | "CONFIDENCE_LEVEL_LOW"
   | "CONFIDENCE_LEVEL_MEDIUM"
-  | "CONFIDENCE_LEVEL_HIGH"
-  | (string & {});
+  | "CONFIDENCE_LEVEL_HIGH";
 export const RelevanceAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
 
 /** Structured relevance analysis for a threat. */
@@ -493,8 +483,7 @@ export type PriorityAnalysisConfidenceEnum =
   | "CONFIDENCE_LEVEL_UNSPECIFIED"
   | "CONFIDENCE_LEVEL_LOW"
   | "CONFIDENCE_LEVEL_MEDIUM"
-  | "CONFIDENCE_LEVEL_HIGH"
-  | (string & {});
+  | "CONFIDENCE_LEVEL_HIGH";
 export const PriorityAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
 
 export type PriorityAnalysisPriorityLevelEnum =
@@ -502,8 +491,7 @@ export type PriorityAnalysisPriorityLevelEnum =
   | "PRIORITY_LEVEL_LOW"
   | "PRIORITY_LEVEL_MEDIUM"
   | "PRIORITY_LEVEL_HIGH"
-  | "PRIORITY_LEVEL_CRITICAL"
-  | (string & {});
+  | "PRIORITY_LEVEL_CRITICAL";
 export const PriorityAnalysisPriorityLevelEnum = /*@__PURE__*/ S.String;
 
 /** Structured priority analysis for a threat. */
@@ -556,24 +544,21 @@ export type AlertStateEnum =
   | "FALSE_POSITIVE"
   | "NOT_ACTIONABLE"
   | "BENIGN"
-  | "TRACKED_EXTERNALLY"
-  | (string & {});
+  | "TRACKED_EXTERNALLY";
 export const AlertStateEnum = /*@__PURE__*/ S.String;
 
 export type SeverityAnalysisSeverityLevelEnum =
   | "SEVERITY_LEVEL_UNSPECIFIED"
   | "SEVERITY_LEVEL_LOW"
   | "SEVERITY_LEVEL_MEDIUM"
-  | "SEVERITY_LEVEL_HIGH"
-  | (string & {});
+  | "SEVERITY_LEVEL_HIGH";
 export const SeverityAnalysisSeverityLevelEnum = /*@__PURE__*/ S.String;
 
 export type SeverityAnalysisConfidenceEnum =
   | "CONFIDENCE_LEVEL_UNSPECIFIED"
   | "CONFIDENCE_LEVEL_LOW"
   | "CONFIDENCE_LEVEL_MEDIUM"
-  | "CONFIDENCE_LEVEL_HIGH"
-  | (string & {});
+  | "CONFIDENCE_LEVEL_HIGH";
 export const SeverityAnalysisConfidenceEnum = /*@__PURE__*/ S.String;
 
 /** Structured severity analysis for a threat. */
@@ -721,7 +706,7 @@ export const FacetCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FacetCount" }) as any as S.Schema<FacetCount>;
 
-export type FacetCountList = FacetCount[];
+export type FacetCountList = ReadonlyArray<FacetCount>;
 export const FacetCountList = /*@__PURE__*/ S.Array(
   FacetCount,
 ) as any as S.Schema<FacetCountList>;
@@ -752,7 +737,7 @@ export const Facet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Facet" }) as any as S.Schema<Facet>;
 
-export type FacetList = Facet[];
+export type FacetList = ReadonlyArray<Facet>;
 export const FacetList = /*@__PURE__*/ S.Array(
   Facet,
 ) as any as S.Schema<FacetList>;
@@ -872,7 +857,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1056,8 +1041,7 @@ export type ConfigurationStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const ConfigurationStateEnum = /*@__PURE__*/ S.String;
 
 /** A string with citation ids. */
@@ -1138,7 +1122,8 @@ export const CustomerProfileIndustry = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileIndustry",
 }) as any as S.Schema<CustomerProfileIndustry>;
 
-export type CustomerProfileIndustryList = CustomerProfileIndustry[];
+export type CustomerProfileIndustryList =
+  ReadonlyArray<CustomerProfileIndustry>;
 export const CustomerProfileIndustryList = /*@__PURE__*/ S.Array(
   CustomerProfileIndustry,
 ) as any as S.Schema<CustomerProfileIndustryList>;
@@ -1185,7 +1170,8 @@ export const CustomerProfileCitation = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileCitation",
 }) as any as S.Schema<CustomerProfileCitation>;
 
-export type CustomerProfileCitationList = CustomerProfileCitation[];
+export type CustomerProfileCitationList =
+  ReadonlyArray<CustomerProfileCitation>;
 export const CustomerProfileCitationList = /*@__PURE__*/ S.Array(
   CustomerProfileCitation,
 ) as any as S.Schema<CustomerProfileCitationList>;
@@ -1206,7 +1192,8 @@ export const CustomerProfileWebPresence = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileWebPresence",
 }) as any as S.Schema<CustomerProfileWebPresence>;
 
-export type CustomerProfileWebPresenceList = CustomerProfileWebPresence[];
+export type CustomerProfileWebPresenceList =
+  ReadonlyArray<CustomerProfileWebPresence>;
 export const CustomerProfileWebPresenceList = /*@__PURE__*/ S.Array(
   CustomerProfileWebPresence,
 ) as any as S.Schema<CustomerProfileWebPresenceList>;
@@ -1227,7 +1214,7 @@ export const CustomerProfileCompany = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileCompany",
 }) as any as S.Schema<CustomerProfileCompany>;
 
-export type CustomerProfileCompanyList = CustomerProfileCompany[];
+export type CustomerProfileCompanyList = ReadonlyArray<CustomerProfileCompany>;
 export const CustomerProfileCompanyList = /*@__PURE__*/ S.Array(
   CustomerProfileCompany,
 ) as any as S.Schema<CustomerProfileCompanyList>;
@@ -1251,7 +1238,7 @@ export const CustomerProfilePerson = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfilePerson",
 }) as any as S.Schema<CustomerProfilePerson>;
 
-export type CustomerProfilePersonList = CustomerProfilePerson[];
+export type CustomerProfilePersonList = ReadonlyArray<CustomerProfilePerson>;
 export const CustomerProfilePersonList = /*@__PURE__*/ S.Array(
   CustomerProfilePerson,
 ) as any as S.Schema<CustomerProfilePersonList>;
@@ -1275,7 +1262,7 @@ export const CustomerProfileProduct = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileProduct",
 }) as any as S.Schema<CustomerProfileProduct>;
 
-export type CustomerProfileProductList = CustomerProfileProduct[];
+export type CustomerProfileProductList = ReadonlyArray<CustomerProfileProduct>;
 export const CustomerProfileProductList = /*@__PURE__*/ S.Array(
   CustomerProfileProduct,
 ) as any as S.Schema<CustomerProfileProductList>;
@@ -1302,7 +1289,8 @@ export const CustomerProfileLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileLocation",
 }) as any as S.Schema<CustomerProfileLocation>;
 
-export type CustomerProfileLocationList = CustomerProfileLocation[];
+export type CustomerProfileLocationList =
+  ReadonlyArray<CustomerProfileLocation>;
 export const CustomerProfileLocationList = /*@__PURE__*/ S.Array(
   CustomerProfileLocation,
 ) as any as S.Schema<CustomerProfileLocationList>;
@@ -1335,7 +1323,8 @@ export const CustomerProfileContactInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerProfileContactInfo",
 }) as any as S.Schema<CustomerProfileContactInfo>;
 
-export type CustomerProfileContactInfoList = CustomerProfileContactInfo[];
+export type CustomerProfileContactInfoList =
+  ReadonlyArray<CustomerProfileContactInfo>;
 export const CustomerProfileContactInfoList = /*@__PURE__*/ S.Array(
   CustomerProfileContactInfo,
 ) as any as S.Schema<CustomerProfileContactInfoList>;
@@ -1395,13 +1384,12 @@ export type TechnologyWatchListAlertThresholdExploitationStatesItemEnum =
   | "EXPLOITATION_STATE_REPORTED"
   | "EXPLOITATION_STATE_SUSPECTED"
   | "EXPLOITATION_STATE_CONFIRMED"
-  | "EXPLOITATION_STATE_WIDESPREAD"
-  | (string & {});
+  | "EXPLOITATION_STATE_WIDESPREAD";
 export const TechnologyWatchListAlertThresholdExploitationStatesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type TechnologyWatchListAlertThresholdExploitationStatesItemEnumList =
-  TechnologyWatchListAlertThresholdExploitationStatesItemEnum[];
+  ReadonlyArray<TechnologyWatchListAlertThresholdExploitationStatesItemEnum>;
 export const TechnologyWatchListAlertThresholdExploitationStatesItemEnumList =
   /*@__PURE__*/ S.Array(
     TechnologyWatchListAlertThresholdExploitationStatesItemEnum,
@@ -1413,8 +1401,7 @@ export type TechnologyWatchListAlertThresholdPriorityMinimumEnum =
   | "P1"
   | "P2"
   | "P3"
-  | "P4"
-  | (string & {});
+  | "P4";
 export const TechnologyWatchListAlertThresholdPriorityMinimumEnum =
   /*@__PURE__*/ S.String;
 
@@ -1424,8 +1411,7 @@ export type TechnologyWatchListAlertThresholdRiskRatingMinimumEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL"
-  | "UNRATED"
-  | (string & {});
+  | "UNRATED";
 export const TechnologyWatchListAlertThresholdRiskRatingMinimumEnum =
   /*@__PURE__*/ S.String;
 
@@ -1566,8 +1552,7 @@ export type DataLeakFindingDetailSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const DataLeakFindingDetailSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A detail object for a Data Leak finding. */
@@ -1594,8 +1579,7 @@ export type InitialAccessBrokerFindingDetailSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const InitialAccessBrokerFindingDetailSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -1623,8 +1607,7 @@ export type InsiderThreatFindingDetailSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const InsiderThreatFindingDetailSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A detail object for a InsiderThreat finding. */
@@ -1743,7 +1726,7 @@ export const ListProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAlertsRequest",
 }) as any as S.Schema<ListProjectsAlertsRequest>;
 
-export type AlertList = Alert[];
+export type AlertList = ReadonlyArray<Alert>;
 export const AlertList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertList>;
@@ -1794,7 +1777,7 @@ export const ListProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsConfigurationsRequest",
 }) as any as S.Schema<ListProjectsConfigurationsRequest>;
 
-export type ConfigurationList = Configuration[];
+export type ConfigurationList = ReadonlyArray<Configuration>;
 export const ConfigurationList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationList>;
@@ -1865,7 +1848,7 @@ export const ConfigurationRevision = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationRevision",
 }) as any as S.Schema<ConfigurationRevision>;
 
-export type ConfigurationRevisionList = ConfigurationRevision[];
+export type ConfigurationRevisionList = ReadonlyArray<ConfigurationRevision>;
 export const ConfigurationRevisionList = /*@__PURE__*/ S.Array(
   ConfigurationRevision,
 ) as any as S.Schema<ConfigurationRevisionList>;
@@ -1916,7 +1899,7 @@ export const ListProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsFindingsRequest",
 }) as any as S.Schema<ListProjectsFindingsRequest>;
 
-export type FindingList = Finding[];
+export type FindingList = ReadonlyArray<Finding>;
 export const FindingList = /*@__PURE__*/ S.Array(
   Finding,
 ) as any as S.Schema<FindingList>;

@@ -911,18 +911,6 @@
             "smithy.api#documentation": "UUID of the parent account."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "short_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "title": {
           "target": "smithy.api#String",
           "traits": {
@@ -941,30 +929,6 @@
           "traits": {
             "smithy.api#documentation": "Plain text representation of the notebook content for search.",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.customer_analytics#UserBasic",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "last_modified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "last_modified_by": {
-          "target": "com.posthog.customer_analytics#UserBasic",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       },

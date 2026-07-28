@@ -101,7 +101,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -188,8 +188,7 @@ export type BackupPlanAssociationStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "INACTIVE"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const BackupPlanAssociationStateEnum = /*@__PURE__*/ S.String;
 
 export type RuleConfigInfoLastBackupStateEnum =
@@ -197,8 +196,7 @@ export type RuleConfigInfoLastBackupStateEnum =
   | "FIRST_BACKUP_PENDING"
   | "PERMISSION_DENIED"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const RuleConfigInfoLastBackupStateEnum = /*@__PURE__*/ S.String;
 
 /** Message for rules config info. */
@@ -221,7 +219,7 @@ export const RuleConfigInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleConfigInfo" }) as any as S.Schema<RuleConfigInfo>;
 
-export type RuleConfigInfoList = RuleConfigInfo[];
+export type RuleConfigInfoList = ReadonlyArray<RuleConfigInfo>;
 export const RuleConfigInfoList = /*@__PURE__*/ S.Array(
   RuleConfigInfo,
 ) as any as S.Schema<RuleConfigInfoList>;
@@ -394,12 +392,11 @@ export type StandardScheduleMonthsItemEnum =
   | "SEPTEMBER"
   | "OCTOBER"
   | "NOVEMBER"
-  | "DECEMBER"
-  | (string & {});
+  | "DECEMBER";
 export const StandardScheduleMonthsItemEnum = /*@__PURE__*/ S.String;
 
 export type StandardScheduleMonthsItemEnumList =
-  StandardScheduleMonthsItemEnum[];
+  ReadonlyArray<StandardScheduleMonthsItemEnum>;
 export const StandardScheduleMonthsItemEnumList = /*@__PURE__*/ S.Array(
   StandardScheduleMonthsItemEnum,
 ) as any as S.Schema<StandardScheduleMonthsItemEnumList>;
@@ -412,12 +409,11 @@ export type StandardScheduleDaysOfWeekItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const StandardScheduleDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
 export type StandardScheduleDaysOfWeekItemEnumList =
-  StandardScheduleDaysOfWeekItemEnum[];
+  ReadonlyArray<StandardScheduleDaysOfWeekItemEnum>;
 export const StandardScheduleDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
   StandardScheduleDaysOfWeekItemEnum,
 ) as any as S.Schema<StandardScheduleDaysOfWeekItemEnumList>;
@@ -428,8 +424,7 @@ export type WeekDayOfMonthWeekOfMonthEnum =
   | "SECOND"
   | "THIRD"
   | "FOURTH"
-  | "LAST"
-  | (string & {});
+  | "LAST";
 export const WeekDayOfMonthWeekOfMonthEnum = /*@__PURE__*/ S.String;
 
 export type WeekDayOfMonthDayOfWeekEnum =
@@ -440,8 +435,7 @@ export type WeekDayOfMonthDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const WeekDayOfMonthDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** `WeekDayOfMonth` defines the week day of the month on which the backups will run. The message combines a `WeekOfMonth` and `DayOfWeek` to produce values like `FIRST`/`MONDAY` or `LAST`/`FRIDAY`. */
@@ -464,11 +458,10 @@ export type StandardScheduleRecurrenceTypeEnum =
   | "DAILY"
   | "WEEKLY"
   | "MONTHLY"
-  | "YEARLY"
-  | (string & {});
+  | "YEARLY";
 export const StandardScheduleRecurrenceTypeEnum = /*@__PURE__*/ S.String;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -524,7 +517,7 @@ export const BackupRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackupRule" }) as any as S.Schema<BackupRule>;
 
-export type BackupRuleList = BackupRule[];
+export type BackupRuleList = ReadonlyArray<BackupRule>;
 export const BackupRuleList = /*@__PURE__*/ S.Array(
   BackupRule,
 ) as any as S.Schema<BackupRuleList>;
@@ -542,7 +535,7 @@ export const DiskBackupPlanProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskBackupPlanProperties",
 }) as any as S.Schema<DiskBackupPlanProperties>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -553,8 +546,7 @@ export type BackupPlanStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "INACTIVE"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const BackupPlanStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -660,15 +652,13 @@ export type BackupVaultAccessRestrictionEnum =
   | "WITHIN_PROJECT"
   | "WITHIN_ORGANIZATION"
   | "UNRESTRICTED"
-  | "WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA"
-  | (string & {});
+  | "WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA";
 export const BackupVaultAccessRestrictionEnum = /*@__PURE__*/ S.String;
 
 export type BackupVaultBackupRetentionInheritanceEnum =
   | "BACKUP_RETENTION_INHERITANCE_UNSPECIFIED"
   | "INHERIT_VAULT_RETENTION"
-  | "MATCH_BACKUP_EXPIRE_TIME"
-  | (string & {});
+  | "MATCH_BACKUP_EXPIRE_TIME";
 export const BackupVaultBackupRetentionInheritanceEnum = /*@__PURE__*/ S.String;
 
 export type BackupVaultStateEnum =
@@ -677,8 +667,7 @@ export type BackupVaultStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "ERROR"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const BackupVaultStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing the EncryptionConfig of backup vault. This determines how data within the vault is encrypted at rest. */
@@ -791,8 +780,7 @@ export const CreateProjectsLocationsBackupVaultsRequest =
 
 export type ManagementServerTypeEnum =
   | "INSTANCE_TYPE_UNSPECIFIED"
-  | "BACKUP_RESTORE"
-  | (string & {});
+  | "BACKUP_RESTORE";
 export const ManagementServerTypeEnum = /*@__PURE__*/ S.String;
 
 export type ManagementServerStateEnum =
@@ -803,14 +791,12 @@ export type ManagementServerStateEnum =
   | "DELETING"
   | "REPAIRING"
   | "MAINTENANCE"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const ManagementServerStateEnum = /*@__PURE__*/ S.String;
 
 export type NetworkConfigPeeringModeEnum =
   | "PEERING_MODE_UNSPECIFIED"
-  | "PRIVATE_SERVICE_ACCESS"
-  | (string & {});
+  | "PRIVATE_SERVICE_ACCESS";
 export const NetworkConfigPeeringModeEnum = /*@__PURE__*/ S.String;
 
 /** Network configuration for ManagementServer instance. */
@@ -827,7 +813,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type NetworkConfigList = NetworkConfig[];
+export type NetworkConfigList = ReadonlyArray<NetworkConfig>;
 export const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
@@ -1116,8 +1102,7 @@ export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 export type EndTrialRequestEndReasonEnum =
   | "END_REASON_UNSPECIFIED"
   | "MOVE_TO_PAID"
-  | "DISCONTINUED"
-  | (string & {});
+  | "DISCONTINUED";
 export const EndTrialRequestEndReasonEnum = /*@__PURE__*/ S.String;
 
 /** Request message for ending a trial. */
@@ -1160,15 +1145,13 @@ export type TrialStateEnum =
   | "UNSUBSCRIBED"
   | "EXPIRED"
   | "ELIGIBLE"
-  | "NOT_ELIGIBLE"
-  | (string & {});
+  | "NOT_ELIGIBLE";
 export const TrialStateEnum = /*@__PURE__*/ S.String;
 
 export type TrialEndReasonEnum =
   | "END_REASON_UNSPECIFIED"
   | "MOVE_TO_PAID"
-  | "DISCONTINUED"
-  | (string & {});
+  | "DISCONTINUED";
 export const TrialEndReasonEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Trial for a project. */
@@ -1315,7 +1298,7 @@ export const BackupDrPlanRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupDrPlanRule",
 }) as any as S.Schema<BackupDrPlanRule>;
 
-export type BackupDrPlanRuleList = BackupDrPlanRule[];
+export type BackupDrPlanRuleList = ReadonlyArray<BackupDrPlanRule>;
 export const BackupDrPlanRuleList = /*@__PURE__*/ S.Array(
   BackupDrPlanRule,
 ) as any as S.Schema<BackupDrPlanRuleList>;
@@ -1337,8 +1320,7 @@ export type BackupConfigDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const BackupConfigDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** Point in time recovery settings of the backup configuration resource. */
@@ -1357,16 +1339,14 @@ export type BackupConfigDetailsTypeEnum =
   | "CLOUD_SQL_INSTANCE_BACKUP_CONFIG"
   | "COMPUTE_ENGINE_RESOURCE_POLICY"
   | "BACKUPDR_BACKUP_PLAN"
-  | "BACKUPDR_TEMPLATE"
-  | (string & {});
+  | "BACKUPDR_TEMPLATE";
 export const BackupConfigDetailsTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackupLocationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ZONAL"
   | "REGIONAL"
-  | "MULTI_REGIONAL"
-  | (string & {});
+  | "MULTI_REGIONAL";
 export const BackupLocationTypeEnum = /*@__PURE__*/ S.String;
 
 /** BackupLocation represents a cloud location where a backup can be stored. */
@@ -1383,7 +1363,7 @@ export const BackupLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackupLocation" }) as any as S.Schema<BackupLocation>;
 
-export type BackupLocationList = BackupLocation[];
+export type BackupLocationList = ReadonlyArray<BackupLocation>;
 export const BackupLocationList = /*@__PURE__*/ S.Array(
   BackupLocation,
 ) as any as S.Schema<BackupLocationList>;
@@ -1431,7 +1411,7 @@ export const BackupConfigDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupConfigDetails",
 }) as any as S.Schema<BackupConfigDetails>;
 
-export type BackupConfigDetailsList = BackupConfigDetails[];
+export type BackupConfigDetailsList = ReadonlyArray<BackupConfigDetails>;
 export const BackupConfigDetailsList = /*@__PURE__*/ S.Array(
   BackupConfigDetails,
 ) as any as S.Schema<BackupConfigDetailsList>;
@@ -1442,8 +1422,7 @@ export type ResourceBackupConfigTargetResourceTypeEnum =
   | "COMPUTE_ENGINE_VM"
   | "COMPUTE_ENGINE_DISK"
   | "COMPUTE_ENGINE_REGIONAL_DISK"
-  | "FILESTORE_INSTANCE"
-  | (string & {});
+  | "FILESTORE_INSTANCE";
 export const ResourceBackupConfigTargetResourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1484,7 +1463,7 @@ export const ResourceBackupConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceBackupConfig",
 }) as any as S.Schema<ResourceBackupConfig>;
 
-export type ResourceBackupConfigList = ResourceBackupConfig[];
+export type ResourceBackupConfigList = ReadonlyArray<ResourceBackupConfig>;
 export const ResourceBackupConfigList = /*@__PURE__*/ S.Array(
   ResourceBackupConfig,
 ) as any as S.Schema<ResourceBackupConfigList>;
@@ -1540,7 +1519,7 @@ export const FetchForResourceTypeProjectsLocationsBackupPlanAssociationsRequest 
       "FetchForResourceTypeProjectsLocationsBackupPlanAssociationsRequest",
   }) as any as S.Schema<FetchForResourceTypeProjectsLocationsBackupPlanAssociationsRequest>;
 
-export type BackupPlanAssociationList = BackupPlanAssociation[];
+export type BackupPlanAssociationList = ReadonlyArray<BackupPlanAssociation>;
 export const BackupPlanAssociationList = /*@__PURE__*/ S.Array(
   BackupPlanAssociation,
 ) as any as S.Schema<BackupPlanAssociationList>;
@@ -1563,10 +1542,7 @@ export const FetchBackupPlanAssociationsForResourceTypeResponse =
   }) as any as S.Schema<FetchBackupPlanAssociationsForResourceTypeResponse>;
 
 export type FetchForResourceTypeProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
-    | "BACKUP_VIEW_UNSPECIFIED"
-    | "BACKUP_VIEW_BASIC"
-    | "BACKUP_VIEW_FULL"
-    | (string & {});
+  "BACKUP_VIEW_UNSPECIFIED" | "BACKUP_VIEW_BASIC" | "BACKUP_VIEW_FULL";
 export const FetchForResourceTypeProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1629,8 +1605,7 @@ export type BackupBackupTypeEnum =
   | "BACKUP_TYPE_UNSPECIFIED"
   | "SCHEDULED"
   | "ON_DEMAND"
-  | "ON_DEMAND_OPERATIONAL"
-  | (string & {});
+  | "ON_DEMAND_OPERATIONAL";
 export const BackupBackupTypeEnum = /*@__PURE__*/ S.String;
 
 /** Minimum details to identify a Google Cloud resource for a backup. */
@@ -1732,7 +1707,7 @@ export const BackupLock = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackupLock" }) as any as S.Schema<BackupLock>;
 
-export type BackupLockList = BackupLock[];
+export type BackupLockList = ReadonlyArray<BackupLock>;
 export const BackupLockList = /*@__PURE__*/ S.Array(
   BackupLock,
 ) as any as S.Schema<BackupLockList>;
@@ -1752,8 +1727,7 @@ export type GuestOsFeatureTypeEnum =
   | "SEV_SNP_CAPABLE"
   | "TDX_CAPABLE"
   | "IDPF"
-  | "SEV_LIVE_MIGRATABLE_V2"
-  | (string & {});
+  | "SEV_LIVE_MIGRATABLE_V2";
 export const GuestOsFeatureTypeEnum = /*@__PURE__*/ S.String;
 
 /** Feature type of the Guest OS. */
@@ -1767,7 +1741,7 @@ export const GuestOsFeature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GuestOsFeature" }) as any as S.Schema<GuestOsFeature>;
 
-export type GuestOsFeatureList = GuestOsFeature[];
+export type GuestOsFeatureList = ReadonlyArray<GuestOsFeature>;
 export const GuestOsFeatureList = /*@__PURE__*/ S.Array(
   GuestOsFeature,
 ) as any as S.Schema<GuestOsFeatureList>;
@@ -1775,8 +1749,7 @@ export const GuestOsFeatureList = /*@__PURE__*/ S.Array(
 export type DiskBackupPropertiesArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "X86_64"
-  | "ARM64"
-  | (string & {});
+  | "ARM64";
 export const DiskBackupPropertiesArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** DiskBackupProperties represents the properties of a Disk backup. */
@@ -1846,15 +1819,13 @@ export const DiskBackupProperties = /*@__PURE__*/ S.suspend(() =>
 export type SchedulingInstanceTerminationActionEnum =
   | "INSTANCE_TERMINATION_ACTION_UNSPECIFIED"
   | "DELETE"
-  | "STOP"
-  | (string & {});
+  | "STOP";
 export const SchedulingInstanceTerminationActionEnum = /*@__PURE__*/ S.String;
 
 export type SchedulingOnHostMaintenanceEnum =
   | "ON_HOST_MAINTENANCE_UNSPECIFIED"
   | "TERMINATE"
-  | "MIGRATE"
-  | (string & {});
+  | "MIGRATE";
 export const SchedulingOnHostMaintenanceEnum = /*@__PURE__*/ S.String;
 
 /** A SchedulingDuration represents a fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". Range is approximately 10,000 years. */
@@ -1873,11 +1844,7 @@ export const SchedulingDuration = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchedulingDuration",
 }) as any as S.Schema<SchedulingDuration>;
 
-export type NodeAffinityOperatorEnum =
-  | "OPERATOR_UNSPECIFIED"
-  | "IN"
-  | "NOT_IN"
-  | (string & {});
+export type NodeAffinityOperatorEnum = "OPERATOR_UNSPECIFIED" | "IN" | "NOT_IN";
 export const NodeAffinityOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. */
@@ -1897,7 +1864,7 @@ export const NodeAffinity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeAffinity" }) as any as S.Schema<NodeAffinity>;
 
-export type NodeAffinityList = NodeAffinity[];
+export type NodeAffinityList = ReadonlyArray<NodeAffinity>;
 export const NodeAffinityList = /*@__PURE__*/ S.Array(
   NodeAffinity,
 ) as any as S.Schema<NodeAffinityList>;
@@ -1905,8 +1872,7 @@ export const NodeAffinityList = /*@__PURE__*/ S.Array(
 export type SchedulingProvisioningModelEnum =
   | "PROVISIONING_MODEL_UNSPECIFIED"
   | "STANDARD"
-  | "SPOT"
-  | (string & {});
+  | "SPOT";
 export const SchedulingProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** Sets the scheduling options for an Instance. */
@@ -1957,7 +1923,7 @@ export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
-export type ServiceAccountList = ServiceAccount[];
+export type ServiceAccountList = ReadonlyArray<ServiceAccount>;
 export const ServiceAccountList = /*@__PURE__*/ S.Array(
   ServiceAccount,
 ) as any as S.Schema<ServiceAccountList>;
@@ -1976,7 +1942,7 @@ export const Entry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Entry" }) as any as S.Schema<Entry>;
 
-export type EntryList = Entry[];
+export type EntryList = ReadonlyArray<Entry>;
 export const EntryList = /*@__PURE__*/ S.Array(
   Entry,
 ) as any as S.Schema<EntryList>;
@@ -2008,7 +1974,7 @@ export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorConfig",
 }) as any as S.Schema<AcceleratorConfig>;
 
-export type AcceleratorConfigList = AcceleratorConfig[];
+export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
 export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
@@ -2016,22 +1982,19 @@ export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
 export type NetworkInterfaceStackTypeEnum =
   | "STACK_TYPE_UNSPECIFIED"
   | "IPV4_ONLY"
-  | "IPV4_IPV6"
-  | (string & {});
+  | "IPV4_IPV6";
 export const NetworkInterfaceStackTypeEnum = /*@__PURE__*/ S.String;
 
 export type AccessConfigNetworkTierEnum =
   | "NETWORK_TIER_UNSPECIFIED"
   | "PREMIUM"
-  | "STANDARD"
-  | (string & {});
+  | "STANDARD";
 export const AccessConfigNetworkTierEnum = /*@__PURE__*/ S.String;
 
 export type AccessConfigTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "ONE_TO_ONE_NAT"
-  | "DIRECT_IPV6"
-  | (string & {});
+  | "DIRECT_IPV6";
 export const AccessConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** An access configuration attached to an instance's network interface. Only one access config per instance is supported. */
@@ -2066,7 +2029,7 @@ export const AccessConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessConfig" }) as any as S.Schema<AccessConfig>;
 
-export type AccessConfigList = AccessConfig[];
+export type AccessConfigList = ReadonlyArray<AccessConfig>;
 export const AccessConfigList = /*@__PURE__*/ S.Array(
   AccessConfig,
 ) as any as S.Schema<AccessConfigList>;
@@ -2085,7 +2048,7 @@ export const AliasIpRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AliasIpRange" }) as any as S.Schema<AliasIpRange>;
 
-export type AliasIpRangeList = AliasIpRange[];
+export type AliasIpRangeList = ReadonlyArray<AliasIpRange>;
 export const AliasIpRangeList = /*@__PURE__*/ S.Array(
   AliasIpRange,
 ) as any as S.Schema<AliasIpRangeList>;
@@ -2093,15 +2056,13 @@ export const AliasIpRangeList = /*@__PURE__*/ S.Array(
 export type NetworkInterfaceNicTypeEnum =
   | "NIC_TYPE_UNSPECIFIED"
   | "VIRTIO_NET"
-  | "GVNIC"
-  | (string & {});
+  | "GVNIC";
 export const NetworkInterfaceNicTypeEnum = /*@__PURE__*/ S.String;
 
 export type NetworkInterfaceIpv6AccessTypeEnum =
   | "UNSPECIFIED_IPV6_ACCESS_TYPE"
   | "INTERNAL"
-  | "EXTERNAL"
-  | (string & {});
+  | "EXTERNAL";
 export const NetworkInterfaceIpv6AccessTypeEnum = /*@__PURE__*/ S.String;
 
 /** A network interface resource attached to an instance. s */
@@ -2156,7 +2117,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkInterface",
 }) as any as S.Schema<NetworkInterface>;
 
-export type NetworkInterfaceList = NetworkInterface[];
+export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
 export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfaceList>;
@@ -2164,8 +2125,7 @@ export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
 export type ComputeInstanceBackupPropertiesKeyRevocationActionTypeEnum =
   | "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
   | "NONE"
-  | "STOP"
-  | (string & {});
+  | "STOP";
 export const ComputeInstanceBackupPropertiesKeyRevocationActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2195,15 +2155,13 @@ export type AttachedDiskModeEnum =
   | "DISK_MODE_UNSPECIFIED"
   | "READ_WRITE"
   | "READ_ONLY"
-  | "LOCKED"
-  | (string & {});
+  | "LOCKED";
 export const AttachedDiskModeEnum = /*@__PURE__*/ S.String;
 
 export type AttachedDiskDiskTypeDeprecatedEnum =
   | "DISK_TYPE_UNSPECIFIED"
   | "SCRATCH"
-  | "PERSISTENT"
-  | (string & {});
+  | "PERSISTENT";
 export const AttachedDiskDiskTypeDeprecatedEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the parameters to initialize this disk. */
@@ -2225,8 +2183,7 @@ export const InitializeParams = /*@__PURE__*/ S.suspend(() =>
 export type AttachedDiskTypeEnum =
   | "DISK_TYPE_UNSPECIFIED"
   | "SCRATCH"
-  | "PERSISTENT"
-  | (string & {});
+  | "PERSISTENT";
 export const AttachedDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type AttachedDiskDiskInterfaceEnum =
@@ -2234,14 +2191,12 @@ export type AttachedDiskDiskInterfaceEnum =
   | "SCSI"
   | "NVME"
   | "NVDIMM"
-  | "ISCSI"
-  | (string & {});
+  | "ISCSI";
 export const AttachedDiskDiskInterfaceEnum = /*@__PURE__*/ S.String;
 
 export type AttachedDiskSavedStateEnum =
   | "DISK_SAVED_STATE_UNSPECIFIED"
-  | "PRESERVED"
-  | (string & {});
+  | "PRESERVED";
 export const AttachedDiskSavedStateEnum = /*@__PURE__*/ S.String;
 
 /** An instance-attached disk resource. */
@@ -2303,7 +2258,7 @@ export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AttachedDisk" }) as any as S.Schema<AttachedDisk>;
 
-export type AttachedDiskList = AttachedDisk[];
+export type AttachedDiskList = ReadonlyArray<AttachedDisk>;
 export const AttachedDiskList = /*@__PURE__*/ S.Array(
   AttachedDisk,
 ) as any as S.Schema<AttachedDiskList>;
@@ -2404,8 +2359,7 @@ export type BackupStateEnum =
   | "ACTIVE"
   | "DELETING"
   | "ERROR"
-  | "UPLOADING"
-  | (string & {});
+  | "UPLOADING";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** CloudSqlInstanceBackupProperties represents Cloud SQL Instance Backup properties. */
@@ -2461,8 +2415,7 @@ export const AlloyDbClusterBackupProperties = /*@__PURE__*/ S.suspend(() =>
 export type BackupBackupRetentionInheritanceEnum =
   | "BACKUP_RETENTION_INHERITANCE_UNSPECIFIED"
   | "INHERIT_VAULT_RETENTION"
-  | "MATCH_BACKUP_EXPIRE_TIME"
-  | (string & {});
+  | "MATCH_BACKUP_EXPIRE_TIME";
 export const BackupBackupRetentionInheritanceEnum = /*@__PURE__*/ S.String;
 
 /** Message describing a Backup object. */
@@ -2561,7 +2514,7 @@ export const Backup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
-export type BackupList = Backup[];
+export type BackupList = ReadonlyArray<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -2620,8 +2573,7 @@ export const FetchForResourceTypeProjectsLocationsDataSourceReferencesRequest =
 export type DataSourceReferenceDataSourceBackupConfigStateEnum =
   | "BACKUP_CONFIG_STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "PASSIVE"
-  | (string & {});
+  | "PASSIVE";
 export const DataSourceReferenceDataSourceBackupConfigStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2630,8 +2582,7 @@ export type DataSourceBackupConfigInfoLastBackupStateEnum =
   | "FIRST_BACKUP_PENDING"
   | "SUCCEEDED"
   | "FAILED"
-  | "PERMISSION_DENIED"
-  | (string & {});
+  | "PERMISSION_DENIED";
 export const DataSourceBackupConfigInfoLastBackupStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2775,7 +2726,7 @@ export const DataSourceReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceReference",
 }) as any as S.Schema<DataSourceReference>;
 
-export type DataSourceReferenceList = DataSourceReference[];
+export type DataSourceReferenceList = ReadonlyArray<DataSourceReference>;
 export const DataSourceReferenceList = /*@__PURE__*/ S.Array(
   DataSourceReference,
 ) as any as S.Schema<DataSourceReferenceList>;
@@ -2890,7 +2841,7 @@ export const FetchUsableProjectsLocationsBackupVaultsRequest =
     identifier: "FetchUsableProjectsLocationsBackupVaultsRequest",
   }) as any as S.Schema<FetchUsableProjectsLocationsBackupVaultsRequest>;
 
-export type BackupVaultList = BackupVault[];
+export type BackupVaultList = ReadonlyArray<BackupVault>;
 export const BackupVaultList = /*@__PURE__*/ S.Array(
   BackupVault,
 ) as any as S.Schema<BackupVaultList>;
@@ -3026,7 +2977,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -3035,8 +2986,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -3053,7 +3003,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -3072,7 +3022,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -3200,8 +3150,7 @@ export type BackupPlanRevisionStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const BackupPlanRevisionStateEnum = /*@__PURE__*/ S.String;
 
 /** `BackupPlanRevision` represents a snapshot of a `BackupPlan` at a point in time. */
@@ -3232,8 +3181,7 @@ export const BackupPlanRevision = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsBackupVaultsViewEnum =
   | "BACKUP_VAULT_VIEW_UNSPECIFIED"
   | "BACKUP_VAULT_VIEW_BASIC"
-  | "BACKUP_VAULT_VIEW_FULL"
-  | (string & {});
+  | "BACKUP_VAULT_VIEW_FULL";
 export const GetProjectsLocationsBackupVaultsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsBackupVaultsRequest {
@@ -3282,8 +3230,7 @@ export const GetProjectsLocationsBackupVaultsDataSourcesRequest =
 export type DataSourceConfigStateEnum =
   | "BACKUP_CONFIG_STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "PASSIVE"
-  | (string & {});
+  | "PASSIVE";
 export const DataSourceConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** BackupApplianceApplication describes a Source Resource when it is an application backed up by a BackupAppliance. */
@@ -3384,7 +3331,7 @@ export const AlloyDbPitrWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlloyDbPitrWindow",
 }) as any as S.Schema<AlloyDbPitrWindow>;
 
-export type AlloyDbPitrWindowList = AlloyDbPitrWindow[];
+export type AlloyDbPitrWindowList = ReadonlyArray<AlloyDbPitrWindow>;
 export const AlloyDbPitrWindowList = /*@__PURE__*/ S.Array(
   AlloyDbPitrWindow,
 ) as any as S.Schema<AlloyDbPitrWindowList>;
@@ -3495,8 +3442,7 @@ export type BackupConfigInfoLastBackupStateEnum =
   | "FIRST_BACKUP_PENDING"
   | "SUCCEEDED"
   | "FAILED"
-  | "PERMISSION_DENIED"
-  | (string & {});
+  | "PERMISSION_DENIED";
 export const BackupConfigInfoLastBackupStateEnum = /*@__PURE__*/ S.String;
 
 /** GcpBackupConfig captures the Backup configuration details for Google Cloud resources. All Google Cloud resources regardless of type are protected with backup plan associations. */
@@ -3588,8 +3534,7 @@ export type DataSourceStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const DataSourceStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing a DataSource object. Datasource object used to represent Datasource details for both admin and basic view. */
@@ -3644,8 +3589,7 @@ export const DataSource = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
   | "BACKUP_VIEW_UNSPECIFIED"
   | "BACKUP_VIEW_BASIC"
-  | "BACKUP_VIEW_FULL"
-  | (string & {});
+  | "BACKUP_VIEW_FULL";
 export const GetProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3753,8 +3697,7 @@ export const GetTrialProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type CloudSqlInstanceInitializationConfigEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS"
-  | (string & {});
+  | "ENTERPRISE_PLUS";
 export const CloudSqlInstanceInitializationConfigEditionEnum =
   /*@__PURE__*/ S.String;
 
@@ -3908,7 +3851,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -4007,7 +3950,7 @@ export const ListProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsBackupPlansRequest",
 }) as any as S.Schema<ListProjectsLocationsBackupPlansRequest>;
 
-export type BackupPlanList = BackupPlan[];
+export type BackupPlanList = ReadonlyArray<BackupPlan>;
 export const BackupPlanList = /*@__PURE__*/ S.Array(
   BackupPlan,
 ) as any as S.Schema<BackupPlanList>;
@@ -4056,7 +3999,7 @@ export const ListProjectsLocationsBackupPlansRevisionsRequest =
     identifier: "ListProjectsLocationsBackupPlansRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupPlansRevisionsRequest>;
 
-export type BackupPlanRevisionList = BackupPlanRevision[];
+export type BackupPlanRevisionList = ReadonlyArray<BackupPlanRevision>;
 export const BackupPlanRevisionList = /*@__PURE__*/ S.Array(
   BackupPlanRevision,
 ) as any as S.Schema<BackupPlanRevisionList>;
@@ -4083,8 +4026,7 @@ export const ListBackupPlanRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsBackupVaultsViewEnum =
   | "BACKUP_VAULT_VIEW_UNSPECIFIED"
   | "BACKUP_VAULT_VIEW_BASIC"
-  | "BACKUP_VAULT_VIEW_FULL"
-  | (string & {});
+  | "BACKUP_VAULT_VIEW_FULL";
 export const ListProjectsLocationsBackupVaultsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsBackupVaultsRequest {
@@ -4173,7 +4115,7 @@ export const ListProjectsLocationsBackupVaultsDataSourcesRequest =
     identifier: "ListProjectsLocationsBackupVaultsDataSourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupVaultsDataSourcesRequest>;
 
-export type DataSourceList = DataSource[];
+export type DataSourceList = ReadonlyArray<DataSource>;
 export const DataSourceList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceList>;
@@ -4200,8 +4142,7 @@ export const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
   | "BACKUP_VIEW_UNSPECIFIED"
   | "BACKUP_VIEW_BASIC"
-  | "BACKUP_VIEW_FULL"
-  | (string & {});
+  | "BACKUP_VIEW_FULL";
 export const ListProjectsLocationsBackupVaultsDataSourcesBackupsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4343,7 +4284,7 @@ export const ListProjectsLocationsManagementServersRequest =
     identifier: "ListProjectsLocationsManagementServersRequest",
   }) as any as S.Schema<ListProjectsLocationsManagementServersRequest>;
 
-export type ManagementServerList = ManagementServer[];
+export type ManagementServerList = ReadonlyArray<ManagementServer>;
 export const ManagementServerList = /*@__PURE__*/ S.Array(
   ManagementServer,
 ) as any as S.Schema<ManagementServerList>;
@@ -4398,7 +4339,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4707,15 +4648,13 @@ export const RemoveProjectsLocationsBackupVaultsDataSourcesRequest =
 export type DiskRestorePropertiesArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "X86_64"
-  | "ARM64"
-  | (string & {});
+  | "ARM64";
 export const DiskRestorePropertiesArchitectureEnum = /*@__PURE__*/ S.String;
 
 export type DiskRestorePropertiesAccessModeEnum =
   | "READ_WRITE_SINGLE"
   | "READ_WRITE_MANY"
-  | "READ_ONLY_MANY"
-  | (string & {});
+  | "READ_ONLY_MANY";
 export const DiskRestorePropertiesAccessModeEnum = /*@__PURE__*/ S.String;
 
 /** DiskRestoreProperties represents the properties of a Disk restore. */
@@ -4783,8 +4722,7 @@ export type AllocationAffinityConsumeReservationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NO_RESERVATION"
   | "ANY_RESERVATION"
-  | "SPECIFIC_RESERVATION"
-  | (string & {});
+  | "SPECIFIC_RESERVATION";
 export const AllocationAffinityConsumeReservationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4812,8 +4750,7 @@ export const AllocationAffinity = /*@__PURE__*/ S.suspend(() =>
 export type NetworkPerformanceConfigTotalEgressBandwidthTierEnum =
   | "TIER_UNSPECIFIED"
   | "DEFAULT"
-  | "TIER_1"
-  | (string & {});
+  | "TIER_1";
 export const NetworkPerformanceConfigTotalEgressBandwidthTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -4857,8 +4794,7 @@ export const AdvancedMachineFeatures = /*@__PURE__*/ S.suspend(() =>
 export type ComputeInstanceRestorePropertiesKeyRevocationActionTypeEnum =
   | "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
   | "NONE"
-  | "STOP"
-  | (string & {});
+  | "STOP";
 export const ComputeInstanceRestorePropertiesKeyRevocationActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4888,8 +4824,7 @@ export type ComputeInstanceRestorePropertiesPrivateIpv6GoogleAccessEnum =
   | "INSTANCE_PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"
   | "INHERIT_FROM_SUBNETWORK"
   | "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
-  | "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
-  | (string & {});
+  | "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE";
 export const ComputeInstanceRestorePropertiesPrivateIpv6GoogleAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -5153,8 +5088,7 @@ export const SetIamPolicyProjectsLocationsManagementServersRequest =
 export type SetInternalStatusRequestBackupConfigStateEnum =
   | "BACKUP_CONFIG_STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "PASSIVE"
-  | (string & {});
+  | "PASSIVE";
 export const SetInternalStatusRequestBackupConfigStateEnum =
   /*@__PURE__*/ S.String;
 

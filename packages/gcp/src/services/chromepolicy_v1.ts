@@ -101,7 +101,7 @@ export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest =
   }) as any as S.Schema<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>;
 
 export type GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList =
-  GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>;
 export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest,
@@ -175,7 +175,7 @@ export const GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest =
   }) as any as S.Schema<GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest>;
 
 export type GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequestList =
-  GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest>;
 export const GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequestList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest,
@@ -268,7 +268,7 @@ export const GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest =
   }) as any as S.Schema<GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest>;
 
 export type GoogleChromePolicyVersionsV1ModifyGroupPolicyRequestList =
-  GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest>;
 export const GoogleChromePolicyVersionsV1ModifyGroupPolicyRequestList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest,
@@ -337,7 +337,7 @@ export const GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest =
   }) as any as S.Schema<GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest>;
 
 export type GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequestList =
-  GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest>;
 export const GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequestList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest,
@@ -403,7 +403,7 @@ export const GoogleChromePolicyVersionsV1NetworkSetting =
   }) as any as S.Schema<GoogleChromePolicyVersionsV1NetworkSetting>;
 
 export type GoogleChromePolicyVersionsV1NetworkSettingList =
-  GoogleChromePolicyVersionsV1NetworkSetting[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1NetworkSetting>;
 export const GoogleChromePolicyVersionsV1NetworkSettingList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1NetworkSetting,
@@ -576,25 +576,25 @@ export const GoogleChromePolicyVersionsV1AdditionalTargetKeyName =
   }) as any as S.Schema<GoogleChromePolicyVersionsV1AdditionalTargetKeyName>;
 
 export type GoogleChromePolicyVersionsV1AdditionalTargetKeyNameList =
-  GoogleChromePolicyVersionsV1AdditionalTargetKeyName[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1AdditionalTargetKeyName>;
 export const GoogleChromePolicyVersionsV1AdditionalTargetKeyNameList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1AdditionalTargetKeyName,
   ) as any as S.Schema<GoogleChromePolicyVersionsV1AdditionalTargetKeyNameList>;
 
 export type GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnum =
-  "TARGET_RESOURCE_UNSPECIFIED" | "ORG_UNIT" | "GROUP" | (string & {});
+  "TARGET_RESOURCE_UNSPECIFIED" | "ORG_UNIT" | "GROUP";
 export const GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnumList =
-  GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnum[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnum>;
 export const GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnum,
   ) as any as S.Schema<GoogleChromePolicyVersionsV1PolicySchemaValidTargetResourcesItemEnumList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -602,8 +602,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type Proto2EnumDescriptorProtoVisibilityEnum =
   | "VISIBILITY_UNSET"
   | "VISIBILITY_LOCAL"
-  | "VISIBILITY_EXPORT"
-  | (string & {});
+  | "VISIBILITY_EXPORT";
 export const Proto2EnumDescriptorProtoVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Describes a value within an enum. */
@@ -621,7 +620,7 @@ export const Proto2EnumValueDescriptorProto = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<Proto2EnumValueDescriptorProto>;
 
 export type Proto2EnumValueDescriptorProtoList =
-  Proto2EnumValueDescriptorProto[];
+  ReadonlyArray<Proto2EnumValueDescriptorProto>;
 export const Proto2EnumValueDescriptorProtoList = /*@__PURE__*/ S.Array(
   Proto2EnumValueDescriptorProto,
 ) as any as S.Schema<Proto2EnumValueDescriptorProtoList>;
@@ -643,7 +642,8 @@ export const Proto2EnumDescriptorProto = /*@__PURE__*/ S.suspend(() =>
   identifier: "Proto2EnumDescriptorProto",
 }) as any as S.Schema<Proto2EnumDescriptorProto>;
 
-export type Proto2EnumDescriptorProtoList = Proto2EnumDescriptorProto[];
+export type Proto2EnumDescriptorProtoList =
+  ReadonlyArray<Proto2EnumDescriptorProto>;
 export const Proto2EnumDescriptorProtoList = /*@__PURE__*/ S.Array(
   Proto2EnumDescriptorProto,
 ) as any as S.Schema<Proto2EnumDescriptorProtoList>;
@@ -660,7 +660,8 @@ export const Proto2OneofDescriptorProto = /*@__PURE__*/ S.suspend(() =>
   identifier: "Proto2OneofDescriptorProto",
 }) as any as S.Schema<Proto2OneofDescriptorProto>;
 
-export type Proto2OneofDescriptorProtoList = Proto2OneofDescriptorProto[];
+export type Proto2OneofDescriptorProtoList =
+  ReadonlyArray<Proto2OneofDescriptorProto>;
 export const Proto2OneofDescriptorProtoList = /*@__PURE__*/ S.Array(
   Proto2OneofDescriptorProto,
 ) as any as S.Schema<Proto2OneofDescriptorProtoList>;
@@ -683,15 +684,13 @@ export type Proto2FieldDescriptorProtoTypeEnum =
   | "TYPE_SFIXED32"
   | "TYPE_SFIXED64"
   | "TYPE_SINT32"
-  | "TYPE_SINT64"
-  | (string & {});
+  | "TYPE_SINT64";
 export const Proto2FieldDescriptorProtoTypeEnum = /*@__PURE__*/ S.String;
 
 export type Proto2FieldDescriptorProtoLabelEnum =
   | "LABEL_OPTIONAL"
   | "LABEL_REPEATED"
-  | "LABEL_REQUIRED"
-  | (string & {});
+  | "LABEL_REQUIRED";
 export const Proto2FieldDescriptorProtoLabelEnum = /*@__PURE__*/ S.String;
 
 /** Describes a field within a message. */
@@ -728,7 +727,8 @@ export const Proto2FieldDescriptorProto = /*@__PURE__*/ S.suspend(() =>
   identifier: "Proto2FieldDescriptorProto",
 }) as any as S.Schema<Proto2FieldDescriptorProto>;
 
-export type Proto2FieldDescriptorProtoList = Proto2FieldDescriptorProto[];
+export type Proto2FieldDescriptorProtoList =
+  ReadonlyArray<Proto2FieldDescriptorProto>;
 export const Proto2FieldDescriptorProtoList = /*@__PURE__*/ S.Array(
   Proto2FieldDescriptorProto,
 ) as any as S.Schema<Proto2FieldDescriptorProtoList>;
@@ -736,8 +736,7 @@ export const Proto2FieldDescriptorProtoList = /*@__PURE__*/ S.Array(
 export type Proto2DescriptorProtoVisibilityEnum =
   | "VISIBILITY_UNSET"
   | "VISIBILITY_LOCAL"
-  | "VISIBILITY_EXPORT"
-  | (string & {});
+  | "VISIBILITY_EXPORT";
 export const Proto2DescriptorProtoVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Describes a message type. */
@@ -763,7 +762,7 @@ export const Proto2DescriptorProto = /*@__PURE__*/ S.suspend(() =>
   identifier: "Proto2DescriptorProto",
 }) as any as S.Schema<Proto2DescriptorProto>;
 
-export type Proto2DescriptorProtoList = Proto2DescriptorProto[];
+export type Proto2DescriptorProtoList = ReadonlyArray<Proto2DescriptorProto>;
 export const Proto2DescriptorProtoList = /*@__PURE__*/ S.Array(
   Proto2DescriptorProto,
 ) as any as S.Schema<Proto2DescriptorProtoList>;
@@ -816,7 +815,7 @@ export const GoogleChromePolicyVersionsV1PolicySchemaRequiredItems =
   }) as any as S.Schema<GoogleChromePolicyVersionsV1PolicySchemaRequiredItems>;
 
 export type GoogleChromePolicyVersionsV1PolicySchemaRequiredItemsList =
-  GoogleChromePolicyVersionsV1PolicySchemaRequiredItems[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1PolicySchemaRequiredItems>;
 export const GoogleChromePolicyVersionsV1PolicySchemaRequiredItemsList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1PolicySchemaRequiredItems,
@@ -840,7 +839,7 @@ export const GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies =
   }) as any as S.Schema<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>;
 
 export type GoogleChromePolicyVersionsV1PolicySchemaFieldDependenciesList =
-  GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>;
 export const GoogleChromePolicyVersionsV1PolicySchemaFieldDependenciesList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies,
@@ -870,7 +869,7 @@ export const GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription 
   }) as any as S.Schema<GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription>;
 
 export type GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescriptionList =
-  GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription>;
 export const GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescriptionList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription,
@@ -888,13 +887,12 @@ export type GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentT
     | "CONTENT_TYPE_GZIP"
     | "CONTENT_TYPE_CSV"
     | "CONTENT_TYPE_YAML"
-    | "CONTENT_TYPE_IMAGE_WEBP"
-    | (string & {});
+    | "CONTENT_TYPE_IMAGE_WEBP";
 export const GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnumList =
-  GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnum[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnum>;
 export const GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1UploadedFileConstraintsSupportedContentTypesItemEnum,
@@ -1014,7 +1012,7 @@ export const GoogleChromePolicyVersionsV1PolicySchemaFieldDescription =
   }) as any as S.Schema<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>;
 
 export type GoogleChromePolicyVersionsV1PolicySchemaFieldDescriptionList =
-  GoogleChromePolicyVersionsV1PolicySchemaFieldDescription[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription>;
 export const GoogleChromePolicyVersionsV1PolicySchemaFieldDescriptionList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1PolicySchemaFieldDescription,
@@ -1025,13 +1023,12 @@ export type GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnum =
     | "CHROME_OS"
     | "CHROME_BROWSER"
     | "CHROME_BROWSER_FOR_ANDROID"
-    | "CHROME_BROWSER_FOR_IOS"
-    | (string & {});
+    | "CHROME_BROWSER_FOR_IOS";
 export const GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnumList =
-  GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnum[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnum>;
 export const GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1PolicySchemaSupportedPlatformsItemEnum,
@@ -1061,7 +1058,7 @@ export const GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription =
   }) as any as S.Schema<GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription>;
 
 export type GoogleChromePolicyVersionsV1PolicySchemaNoticeDescriptionList =
-  GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription>;
 export const GoogleChromePolicyVersionsV1PolicySchemaNoticeDescriptionList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription,
@@ -1089,8 +1086,7 @@ export type GoogleChromePolicyVersionsV1PolicyApiLifecyclePolicyApiLifecycleStag
     | "API_PREVIEW"
     | "API_DEVELOPMENT"
     | "API_CURRENT"
-    | "API_DEPRECATED"
-    | (string & {});
+    | "API_DEPRECATED";
 export const GoogleChromePolicyVersionsV1PolicyApiLifecyclePolicyApiLifecycleStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -1212,7 +1208,7 @@ export const ListCustomersPolicySchemasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersPolicySchemasRequest>;
 
 export type GoogleChromePolicyVersionsV1PolicySchemaList =
-  GoogleChromePolicyVersionsV1PolicySchema[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1PolicySchema>;
 export const GoogleChromePolicyVersionsV1PolicySchemaList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1PolicySchema,
@@ -1470,7 +1466,7 @@ export const GoogleChromePolicyVersionsV1ResolvedPolicy =
   }) as any as S.Schema<GoogleChromePolicyVersionsV1ResolvedPolicy>;
 
 export type GoogleChromePolicyVersionsV1ResolvedPolicyList =
-  GoogleChromePolicyVersionsV1ResolvedPolicy[];
+  ReadonlyArray<GoogleChromePolicyVersionsV1ResolvedPolicy>;
 export const GoogleChromePolicyVersionsV1ResolvedPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleChromePolicyVersionsV1ResolvedPolicy,

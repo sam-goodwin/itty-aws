@@ -136,8 +136,7 @@ export type VerifyChallengeResponseResultKeyTrustLevelEnum =
   | "CHROME_BROWSER_HW_KEY"
   | "CHROME_BROWSER_OS_KEY"
   | "CHROME_BROWSER_NO_KEY"
-  | "CHROME_OS_NO_KEY"
-  | (string & {});
+  | "CHROME_OS_NO_KEY";
 export const VerifyChallengeResponseResultKeyTrustLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -148,12 +147,11 @@ export type VerifyChallengeResponseResultProfileKeyTrustLevelEnum =
   | "CHROME_BROWSER_HW_KEY"
   | "CHROME_BROWSER_OS_KEY"
   | "CHROME_BROWSER_NO_KEY"
-  | "CHROME_OS_NO_KEY"
-  | (string & {});
+  | "CHROME_OS_NO_KEY";
 export const VerifyChallengeResponseResultProfileKeyTrustLevelEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -178,16 +176,14 @@ export type DeviceSignalsOsFirewallEnum =
   | "OS_FIREWALL_UNSPECIFIED"
   | "OS_FIREWALL_UNKNOWN"
   | "OS_FIREWALL_DISABLED"
-  | "OS_FIREWALL_ENABLED"
-  | (string & {});
+  | "OS_FIREWALL_ENABLED";
 export const DeviceSignalsOsFirewallEnum = /*@__PURE__*/ S.String;
 
 export type DeviceSignalsDiskEncryptionEnum =
   | "DISK_ENCRYPTION_UNSPECIFIED"
   | "DISK_ENCRYPTION_UNKNOWN"
   | "DISK_ENCRYPTION_DISABLED"
-  | "DISK_ENCRYPTION_ENCRYPTED"
-  | (string & {});
+  | "DISK_ENCRYPTION_ENCRYPTED";
 export const DeviceSignalsDiskEncryptionEnum = /*@__PURE__*/ S.String;
 
 export type DeviceSignalsOperatingSystemEnum =
@@ -196,16 +192,14 @@ export type DeviceSignalsOperatingSystemEnum =
   | "CHROMIUM_OS"
   | "WINDOWS"
   | "MAC_OS_X"
-  | "LINUX"
-  | (string & {});
+  | "LINUX";
 export const DeviceSignalsOperatingSystemEnum = /*@__PURE__*/ S.String;
 
 export type AntivirusStateEnum =
   | "STATE_UNSPECIFIED"
   | "MISSING"
   | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const AntivirusStateEnum = /*@__PURE__*/ S.String;
 
 /** Antivirus information on a device. */
@@ -223,24 +217,21 @@ export type DeviceSignalsSecureBootModeEnum =
   | "SECURE_BOOT_MODE_UNSPECIFIED"
   | "SECURE_BOOT_MODE_UNKNOWN"
   | "SECURE_BOOT_MODE_DISABLED"
-  | "SECURE_BOOT_MODE_ENABLED"
-  | (string & {});
+  | "SECURE_BOOT_MODE_ENABLED";
 export const DeviceSignalsSecureBootModeEnum = /*@__PURE__*/ S.String;
 
 export type DeviceSignalsScreenLockSecuredEnum =
   | "SCREEN_LOCK_SECURED_UNSPECIFIED"
   | "SCREEN_LOCK_SECURED_UNKNOWN"
   | "SCREEN_LOCK_SECURED_DISABLED"
-  | "SCREEN_LOCK_SECURED_ENABLED"
-  | (string & {});
+  | "SCREEN_LOCK_SECURED_ENABLED";
 export const DeviceSignalsScreenLockSecuredEnum = /*@__PURE__*/ S.String;
 
 export type DeviceSignalsSafeBrowsingProtectionLevelEnum =
   | "SAFE_BROWSING_PROTECTION_LEVEL_UNSPECIFIED"
   | "INACTIVE"
   | "STANDARD"
-  | "ENHANCED"
-  | (string & {});
+  | "ENHANCED";
 export const DeviceSignalsSafeBrowsingProtectionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -249,23 +240,20 @@ export type DeviceSignalsPasswordProtectionWarningTriggerEnum =
   | "POLICY_UNSET"
   | "PASSWORD_PROTECTION_OFF"
   | "PASSWORD_REUSE"
-  | "PHISHING_REUSE"
-  | (string & {});
+  | "PHISHING_REUSE";
 export const DeviceSignalsPasswordProtectionWarningTriggerEnum =
   /*@__PURE__*/ S.String;
 
 export type DeviceSignalsRealtimeUrlCheckModeEnum =
   | "REALTIME_URL_CHECK_MODE_UNSPECIFIED"
   | "REALTIME_URL_CHECK_MODE_DISABLED"
-  | "REALTIME_URL_CHECK_MODE_ENABLED_MAIN_FRAME"
-  | (string & {});
+  | "REALTIME_URL_CHECK_MODE_ENABLED_MAIN_FRAME";
 export const DeviceSignalsRealtimeUrlCheckModeEnum = /*@__PURE__*/ S.String;
 
 export type DeviceSignalsTriggerEnum =
   | "TRIGGER_UNSPECIFIED"
   | "TRIGGER_BROWSER_NAVIGATION"
-  | "TRIGGER_LOGIN_SCREEN"
-  | (string & {});
+  | "TRIGGER_LOGIN_SCREEN";
 export const DeviceSignalsTriggerEnum = /*@__PURE__*/ S.String;
 
 /** The device signals as reported by Chrome. Unless otherwise specified, signals are available on all platforms. */

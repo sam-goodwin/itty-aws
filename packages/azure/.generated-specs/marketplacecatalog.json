@@ -976,7 +976,7 @@
           }
         },
         "applicableStoreFronts": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.marketplacecatalog#StoreFrontOptions",
           "traits": {
             "smithy.api#documentation": "A value indicating which storefront this offer should surface on",
             "com.distilled.openapi#nullable": {}
@@ -1011,7 +1011,7 @@
           }
         },
         "offerEnvironment": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.marketplacecatalog#EnvironmentInfo",
           "traits": {
             "smithy.api#documentation": "A value indicating offer's environment"
           }
@@ -1331,10 +1331,84 @@
     "com.azure.marketplacecatalog#CatalogItemCapabilitiesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Double"
+        "target": "com.azure.marketplacecatalog#OfficeCapabilityType"
       },
       "traits": {
         "smithy.api#documentation": "Office capabilities"
+      }
+    },
+    "com.azure.marketplacecatalog#OfficeCapabilityType": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 5
+          }
+        },
+        "_6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 6
+          }
+        },
+        "_7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 7
+          }
+        },
+        "_8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 8
+          }
+        },
+        "_9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 9
+          }
+        },
+        "_10": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 10
+          }
+        },
+        "_11": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 11
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "1 = Capability1\n2 = Capability2\n3 = Capability3\n4 = Capability4\n5 = Capability5\n6 = Capability6\n7 = Capability7\n8 = Capability8\n9 = Capability9\n10 = Capability10\n11 = Capability11"
       }
     },
     "com.azure.marketplacecatalog#EnrichedData": {
@@ -1542,7 +1616,7 @@
       "type": "structure",
       "members": {
         "pricingOptions": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.marketplacecatalog#PricingOptions",
           "traits": {
             "smithy.api#documentation": "A value indicating what pricing options are available on the application"
           }
@@ -1557,11 +1631,49 @@
       },
       "traits": {}
     },
+    "com.azure.marketplacecatalog#PricingOptions": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 8
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "0 = None\n1 = Free\n2 = FreeTrial\n4 = Paid\n8 = Byol"
+      }
+    },
     "com.azure.marketplacecatalog#M365CertificationInfo": {
       "type": "structure",
       "members": {
         "m365CertificationType": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.marketplacecatalog#CertificationType",
           "traits": {
             "smithy.api#documentation": "M365 Certification Type"
           }
@@ -1582,6 +1694,38 @@
         }
       },
       "traits": {}
+    },
+    "com.azure.marketplacecatalog#CertificationType": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "0 = Undefined\n1 = None\n2 = SelfAttested\n3 = MicrosoftCertified"
+      }
     },
     "com.azure.marketplacecatalog#CatalogItemPbiServicePrincipalIdsList": {
       "type": "list",
@@ -1609,6 +1753,44 @@
       },
       "traits": {
         "smithy.api#documentation": "List of linked Add Ins provided for the item"
+      }
+    },
+    "com.azure.marketplacecatalog#EnvironmentInfo": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 5
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "1 = DogFood\n2 = Canary\n3 = Production\n4 = FairFax\n5 = Unknown"
       }
     },
     "com.azure.marketplacecatalog#CatalogItemDocumentLinksList": {
@@ -1646,6 +1828,44 @@
         }
       },
       "traits": {}
+    },
+    "com.azure.marketplacecatalog#StoreFrontOptions": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 8
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "0 = None\n1 = Azure\n2 = AMP\n4 = AppSource\n8 = Any"
+      }
     },
     "com.azure.marketplacecatalog#CatalogItemKeywordsList": {
       "type": "list",
@@ -3634,7 +3854,7 @@
           }
         },
         "currencyDecorator": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.marketplacecatalog#CurrencyDecorator",
           "traits": {
             "smithy.api#documentation": "Currency decorator"
           }
@@ -3647,6 +3867,26 @@
         }
       },
       "traits": {}
+    },
+    "com.azure.marketplacecatalog#CurrencyDecorator": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "0 = Fixed\n1 = Estimated"
+      }
     },
     "com.azure.marketplacecatalog#MarketStartPrice": {
       "type": "structure",
@@ -7834,17 +8074,216 @@
     "com.azure.marketplacecatalog#SearchPostArmRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "searchQuery": {
+          "target": "smithy.api#String"
+        },
+        "publisherName": {
+          "target": "smithy.api#String"
+        },
+        "skip": {
+          "target": "smithy.api#Integer"
+        },
+        "take": {
+          "target": "smithy.api#Integer"
+        },
+        "isAzureBenefitEligible": {
+          "target": "smithy.api#Boolean"
+        },
+        "isMicrosoftProduct": {
+          "target": "smithy.api#Boolean"
+        },
+        "isThirdParty": {
+          "target": "smithy.api#Boolean"
+        },
+        "isCoreVm": {
+          "target": "smithy.api#Boolean"
+        },
+        "isPreferredSolution": {
+          "target": "smithy.api#Boolean"
+        },
+        "isAdditionalPurchaseRequired": {
+          "target": "smithy.api#Boolean"
+        },
+        "isPowerBICertified": {
+          "target": "smithy.api#Boolean"
+        },
+        "isIndustryCloud": {
+          "target": "smithy.api#Boolean"
+        },
+        "languages": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestLanguagesList",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
+        },
+        "stores": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestStoresList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "select": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestSelectList"
+        },
+        "sortBy": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestSortByList"
+        },
+        "offerTypes": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestOfferTypesList"
+        },
+        "pricingTypes": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestPricingTypesList"
+        },
+        "privateStoreAllowances": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestPrivateStoreAllowancesList"
+        },
+        "appSourceIndustries": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestAppSourceIndustriesList"
+        },
+        "operatingSystems": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestOperatingSystemsList"
+        },
+        "appSourceCategories": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestAppSourceCategoriesList"
+        },
+        "azureIndustries": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestAzureIndustriesList"
+        },
+        "azureCategories": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestAzureCategoriesList"
+        },
+        "azurePortalCategories": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestAzurePortalCategoriesList"
+        },
+        "facets": {
+          "target": "com.azure.marketplacecatalog#SearchPostArmRequestFacetsList"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestFacetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestAzurePortalCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestAzureCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestAzureIndustriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestAppSourceCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestOperatingSystemsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestAppSourceIndustriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestPrivateStoreAllowancesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.marketplacecatalog#PrivateStoreAllow"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#PrivateStoreAllow": {
+      "type": "enum",
+      "members": {
+        "ALLOWEDBYADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllowedByAdmin"
+          }
+        },
+        "ALLOWEDBYDEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AllowedByDefault"
+          }
+        },
+        "NONALLOWED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NonAllowed"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestPricingTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.marketplacecatalog#PricingType"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestOfferTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestSortByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestSelectList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestStoresList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.marketplacecatalog#Store"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplacecatalog#SearchPostArmRequestLanguagesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.marketplacecatalog#SkusGetByBillingAccount": {
       "type": "operation",

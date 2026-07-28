@@ -175,11 +175,7 @@ export const DescribeAffectedAccountsForOrganizationRequest =
 export type AccountId = string;
 export type AffectedAccountsList = string[];
 export const AffectedAccountsList = /*@__PURE__*/ S.Array(S.String);
-export type EventScopeCode =
-  | "PUBLIC"
-  | "ACCOUNT_SPECIFIC"
-  | "NONE"
-  | (string & {});
+export type EventScopeCode = "PUBLIC" | "ACCOUNT_SPECIFIC" | "NONE";
 export const EventScopeCode = /*@__PURE__*/ S.String;
 
 export interface DescribeAffectedAccountsForOrganizationResponse {
@@ -231,8 +227,7 @@ export type EntityStatusCode =
   | "UNIMPAIRED"
   | "UNKNOWN"
   | "PENDING"
-  | "RESOLVED"
-  | (string & {});
+  | "RESOLVED";
 export const EntityStatusCode = /*@__PURE__*/ S.String;
 
 export type EntityStatusCodeList = EntityStatusCode[];
@@ -526,8 +521,7 @@ export const DescribeEntityAggregatesForOrganizationResponse =
 export type EventActionability =
   | "ACTION_REQUIRED"
   | "ACTION_MAY_BE_REQUIRED"
-  | "INFORMATIONAL"
-  | (string & {});
+  | "INFORMATIONAL";
 export const EventActionability = /*@__PURE__*/ S.String;
 
 export type EventActionabilityList = EventActionability[];
@@ -548,22 +542,17 @@ export type EventTypeCategory =
   | "issue"
   | "accountNotification"
   | "scheduledChange"
-  | "investigation"
-  | (string & {});
+  | "investigation";
 export const EventTypeCategory = /*@__PURE__*/ S.String;
 
 export type EventTypeCategoryList2 = EventTypeCategory[];
 export const EventTypeCategoryList2 = /*@__PURE__*/ S.Array(EventTypeCategory);
-export type EventStatusCode = "open" | "closed" | "upcoming" | (string & {});
+export type EventStatusCode = "open" | "closed" | "upcoming";
 export const EventStatusCode = /*@__PURE__*/ S.String;
 
 export type EventStatusCodeList = EventStatusCode[];
 export const EventStatusCodeList = /*@__PURE__*/ S.Array(EventStatusCode);
-export type EventPersona =
-  | "OPERATIONS"
-  | "SECURITY"
-  | "BILLING"
-  | (string & {});
+export type EventPersona = "OPERATIONS" | "SECURITY" | "BILLING";
 export const EventPersona = /*@__PURE__*/ S.String;
 
 export type EventPersonaList = EventPersona[];
@@ -604,7 +593,7 @@ export const EventFilter = /*@__PURE__*/ S.suspend(() =>
     personas: S.optional(EventPersonaList),
   }),
 ).annotate({ identifier: "EventFilter" }) as any as S.Schema<EventFilter>;
-export type EventAggregateField = "eventTypeCategory" | (string & {});
+export type EventAggregateField = "eventTypeCategory";
 export const EventAggregateField = /*@__PURE__*/ S.String;
 
 export interface DescribeEventAggregatesRequest {
@@ -970,19 +959,14 @@ export const EventTypeCategoryList = /*@__PURE__*/ S.Array(EventTypeCategory);
 export type EventTypeActionability =
   | "ACTION_REQUIRED"
   | "ACTION_MAY_BE_REQUIRED"
-  | "INFORMATIONAL"
-  | (string & {});
+  | "INFORMATIONAL";
 export const EventTypeActionability = /*@__PURE__*/ S.String;
 
 export type EventTypeActionabilityList = EventTypeActionability[];
 export const EventTypeActionabilityList = /*@__PURE__*/ S.Array(
   EventTypeActionability,
 );
-export type EventTypePersona =
-  | "OPERATIONS"
-  | "SECURITY"
-  | "BILLING"
-  | (string & {});
+export type EventTypePersona = "OPERATIONS" | "SECURITY" | "BILLING";
 export const EventTypePersona = /*@__PURE__*/ S.String;
 
 export type EventTypePersonaList = EventTypePersona[];

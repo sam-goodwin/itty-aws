@@ -111,7 +111,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.experiment_saved_metrics#UserBasic"
+          "target": "com.posthog.experiment_saved_metrics#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -328,9 +331,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -350,24 +350,8 @@
             "smithy.api#documentation": "ExperimentMetric JSON. Must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics."
           }
         },
-        "created_by": {
-          "target": "com.posthog.experiment_saved_metrics#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
         "tags": {
           "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsCreateRequestTagsList"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -494,24 +478,8 @@
             "smithy.api#documentation": "ExperimentMetric JSON. Must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics."
           }
         },
-        "created_by": {
-          "target": "com.posthog.experiment_saved_metrics#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
         "tags": {
           "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsUpdateRequestTagsList"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -590,24 +558,8 @@
             "smithy.api#documentation": "ExperimentMetric JSON. Must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics."
           }
         },
-        "created_by": {
-          "target": "com.posthog.experiment_saved_metrics#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
         "tags": {
           "target": "com.posthog.experiment_saved_metrics#ExperimentSavedMetricsPartialUpdateRequestTagsList"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {

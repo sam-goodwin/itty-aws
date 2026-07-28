@@ -146,8 +146,7 @@ export type GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum
     | "COMPLETED"
     | "FAILED"
     | "CANCELLED"
-    | "UNKNOWN"
-    | (string & {});
+    | "UNKNOWN";
 export const GoogleCloudOsconfigV2beta_PolicyOrchestrator_IterationStateStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -157,7 +156,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -244,7 +243,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -303,7 +302,7 @@ export const GoogleCloudOsconfigV2beta_OrchestrationScope_Selector =
   }) as any as S.Schema<GoogleCloudOsconfigV2beta_OrchestrationScope_Selector>;
 
 export type GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList =
-  GoogleCloudOsconfigV2beta_OrchestrationScope_Selector[];
+  ReadonlyArray<GoogleCloudOsconfigV2beta_OrchestrationScope_Selector>;
 export const GoogleCloudOsconfigV2beta_OrchestrationScope_SelectorList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOsconfigV2beta_OrchestrationScope_Selector,
@@ -328,8 +327,7 @@ export const GoogleCloudOsconfigV2beta__OrchestrationScope =
 export type OSPolicyModeEnum =
   | "MODE_UNSPECIFIED"
   | "VALIDATION"
-  | "ENFORCEMENT"
-  | (string & {});
+  | "ENFORCEMENT";
 export const OSPolicyModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Goo package repository. These are added to a repo file that is managed at `C:/ProgramData/GooGet/repos/google_osconfig.repo`. */
@@ -352,8 +350,7 @@ export const OSPolicyResourceRepositoryResourceGooRepository =
 export type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum =
   | "ARCHIVE_TYPE_UNSPECIFIED"
   | "DEB"
-  | "DEB_SRC"
-  | (string & {});
+  | "DEB_SRC";
 export const OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -585,8 +582,7 @@ export const OSPolicyResourcePackageResourceAPT = /*@__PURE__*/ S.suspend(() =>
 export type OSPolicyResourcePackageResourceDesiredStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "INSTALLED"
-  | "REMOVED"
-  | (string & {});
+  | "REMOVED";
 export const OSPolicyResourcePackageResourceDesiredStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -658,8 +654,7 @@ export type OSPolicyResourceExecResourceExecInterpreterEnum =
   | "INTERPRETER_UNSPECIFIED"
   | "NONE"
   | "SHELL"
-  | "POWERSHELL"
-  | (string & {});
+  | "POWERSHELL";
 export const OSPolicyResourceExecResourceExecInterpreterEnum =
   /*@__PURE__*/ S.String;
 
@@ -708,8 +703,7 @@ export type OSPolicyResourceFileResourceStateEnum =
   | "DESIRED_STATE_UNSPECIFIED"
   | "PRESENT"
   | "ABSENT"
-  | "CONTENTS_MATCH"
-  | (string & {});
+  | "CONTENTS_MATCH";
 export const OSPolicyResourceFileResourceStateEnum = /*@__PURE__*/ S.String;
 
 /** A resource that manages the state of a file. */
@@ -762,7 +756,7 @@ export const OSPolicyResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyResource",
 }) as any as S.Schema<OSPolicyResource>;
 
-export type OSPolicyResourceList = OSPolicyResource[];
+export type OSPolicyResourceList = ReadonlyArray<OSPolicyResource>;
 export const OSPolicyResourceList = /*@__PURE__*/ S.Array(
   OSPolicyResource,
 ) as any as S.Schema<OSPolicyResourceList>;
@@ -783,7 +777,8 @@ export const OSPolicyInventoryFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyInventoryFilter",
 }) as any as S.Schema<OSPolicyInventoryFilter>;
 
-export type OSPolicyInventoryFilterList = OSPolicyInventoryFilter[];
+export type OSPolicyInventoryFilterList =
+  ReadonlyArray<OSPolicyInventoryFilter>;
 export const OSPolicyInventoryFilterList = /*@__PURE__*/ S.Array(
   OSPolicyInventoryFilter,
 ) as any as S.Schema<OSPolicyInventoryFilterList>;
@@ -804,7 +799,7 @@ export const OSPolicyResourceGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyResourceGroup",
 }) as any as S.Schema<OSPolicyResourceGroup>;
 
-export type OSPolicyResourceGroupList = OSPolicyResourceGroup[];
+export type OSPolicyResourceGroupList = ReadonlyArray<OSPolicyResourceGroup>;
 export const OSPolicyResourceGroupList = /*@__PURE__*/ S.Array(
   OSPolicyResourceGroup,
 ) as any as S.Schema<OSPolicyResourceGroupList>;
@@ -832,7 +827,7 @@ export const OSPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OSPolicy" }) as any as S.Schema<OSPolicy>;
 
-export type OSPolicyList = OSPolicy[];
+export type OSPolicyList = ReadonlyArray<OSPolicy>;
 export const OSPolicyList = /*@__PURE__*/ S.Array(
   OSPolicy,
 ) as any as S.Schema<OSPolicyList>;
@@ -842,8 +837,7 @@ export type OSPolicyAssignmentRolloutStateEnum =
   | "IN_PROGRESS"
   | "CANCELLING"
   | "CANCELLED"
-  | "SUCCEEDED"
-  | (string & {});
+  | "SUCCEEDED";
 export const OSPolicyAssignmentRolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** Message representing label set. * A label is a key value pair set for a VM. * A LabelSet is a set of labels. * Labels within a LabelSet are ANDed. In other words, a LabelSet is applicable for a VM only if it matches all the labels in the LabelSet. * Example: A LabelSet with 2 labels: `env=prod` and `type=webserver` will only be applicable for those VMs with both labels present. */
@@ -859,7 +853,8 @@ export const OSPolicyAssignmentLabelSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "OSPolicyAssignmentLabelSet",
 }) as any as S.Schema<OSPolicyAssignmentLabelSet>;
 
-export type OSPolicyAssignmentLabelSetList = OSPolicyAssignmentLabelSet[];
+export type OSPolicyAssignmentLabelSetList =
+  ReadonlyArray<OSPolicyAssignmentLabelSet>;
 export const OSPolicyAssignmentLabelSetList = /*@__PURE__*/ S.Array(
   OSPolicyAssignmentLabelSet,
 ) as any as S.Schema<OSPolicyAssignmentLabelSetList>;
@@ -882,7 +877,7 @@ export const OSPolicyAssignmentInstanceFilterInventory =
   }) as any as S.Schema<OSPolicyAssignmentInstanceFilterInventory>;
 
 export type OSPolicyAssignmentInstanceFilterInventoryList =
-  OSPolicyAssignmentInstanceFilterInventory[];
+  ReadonlyArray<OSPolicyAssignmentInstanceFilterInventory>;
 export const OSPolicyAssignmentInstanceFilterInventoryList =
   /*@__PURE__*/ S.Array(
     OSPolicyAssignmentInstanceFilterInventory,
@@ -1450,7 +1445,7 @@ export const ListFoldersLocationsGlobalPolicyOrchestratorsRequest =
   }) as any as S.Schema<ListFoldersLocationsGlobalPolicyOrchestratorsRequest>;
 
 export type GoogleCloudOsconfigV2beta__PolicyOrchestratorList =
-  GoogleCloudOsconfigV2beta__PolicyOrchestrator[];
+  ReadonlyArray<GoogleCloudOsconfigV2beta__PolicyOrchestrator>;
 export const GoogleCloudOsconfigV2beta__PolicyOrchestratorList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOsconfigV2beta__PolicyOrchestrator,
@@ -1509,7 +1504,7 @@ export const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListFoldersLocationsOperationsRequest",
 }) as any as S.Schema<ListFoldersLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

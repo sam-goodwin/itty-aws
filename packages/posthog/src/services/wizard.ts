@@ -20,12 +20,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `idle` - IDLE * `running` - RUNNING * `completed` - COMPLETED * `error` - ERROR */
-export type RunPhaseEnum =
-  | "idle"
-  | "running"
-  | "completed"
-  | "error"
-  | (string & {});
+export type RunPhaseEnum = "idle" | "running" | "completed" | "error";
 export const RunPhaseEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - PENDING * `in_progress` - IN_PROGRESS * `completed` - COMPLETED * `failed` - FAILED * `canceled` - CANCELED */
@@ -34,8 +29,7 @@ export type WizardTaskDTOStatusEnum =
   | "in_progress"
   | "completed"
   | "failed"
-  | "canceled"
-  | (string & {});
+  | "canceled";
 export const WizardTaskDTOStatusEnum = /*@__PURE__*/ S.String;
 
 export interface WizardTaskDTO {
@@ -51,7 +45,7 @@ export const WizardTaskDTO = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WizardTaskDTO" }) as any as S.Schema<WizardTaskDTO>;
 
-export type WizardSessionsCreateRequestTasksList = WizardTaskDTO[];
+export type WizardSessionsCreateRequestTasksList = ReadonlyArray<WizardTaskDTO>;
 export const WizardSessionsCreateRequestTasksList = /*@__PURE__*/ S.Array(
   WizardTaskDTO,
 ) as any as S.Schema<WizardSessionsCreateRequestTasksList>;
@@ -115,7 +109,7 @@ export const WizardSessionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WizardSessionsCreateRequest",
 }) as any as S.Schema<WizardSessionsCreateRequest>;
 
-export type WizardSessionDTOTasksList = WizardTaskDTO[];
+export type WizardSessionDTOTasksList = ReadonlyArray<WizardTaskDTO>;
 export const WizardSessionDTOTasksList = /*@__PURE__*/ S.Array(
   WizardTaskDTO,
 ) as any as S.Schema<WizardSessionDTOTasksList>;
@@ -222,7 +216,8 @@ export const WizardSessionsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WizardSessionsListRequest",
 }) as any as S.Schema<WizardSessionsListRequest>;
 
-export type PaginatedWizardSessionDTOListResultsList = WizardSessionDTO[];
+export type PaginatedWizardSessionDTOListResultsList =
+  ReadonlyArray<WizardSessionDTO>;
 export const PaginatedWizardSessionDTOListResultsList = /*@__PURE__*/ S.Array(
   WizardSessionDTO,
 ) as any as S.Schema<PaginatedWizardSessionDTOListResultsList>;

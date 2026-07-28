@@ -33,11 +33,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.js_snippet#JsSnippetResolveRetrieveResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.js_snippet#JsSnippetResolveRetrieveResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.js_snippet#JsSnippetResolveRetrieveResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -89,11 +99,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.js_snippet#JsSnippetVersionRetrieveResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.js_snippet#JsSnippetVersionRetrieveResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.js_snippet#JsSnippetVersionRetrieveResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -152,11 +172,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.js_snippet#JsSnippetVersionPartialUpdateResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.js_snippet#JsSnippetVersionPartialUpdateResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.js_snippet#JsSnippetVersionPartialUpdateResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}

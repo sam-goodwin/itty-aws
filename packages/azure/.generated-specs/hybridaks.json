@@ -691,12 +691,8 @@
             "smithy.api#documentation": "The fully qualified Azure Resource Manager identifier of the custom location resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "extendedLocation": {
+          "target": "com.azure.hybridaks#ExtendedLocation"
         }
       },
       "traits": {
@@ -1196,12 +1192,8 @@
             "smithy.api#documentation": "The fully qualified Azure Resource Manager identifier of the custom location resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "extendedLocation": {
+          "target": "com.azure.hybridaks#ExtendedLocation"
         }
       },
       "traits": {
@@ -1889,16 +1881,166 @@
             "smithy.api#documentation": "Parameter for the name of the agent pool in the provisioned cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.hybridaks#AgentPoolPropertiesInput"
+        },
+        "tags": {
+          "target": "com.azure.hybridaks#AgentPoolCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
+        },
+        "extendedLocation": {
+          "target": "com.azure.hybridaks#ExtendedLocation"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridaks#AgentPoolCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
+      }
+    },
+    "com.azure.hybridaks#AgentPoolPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "osType": {
+          "target": "com.azure.hybridaks#OSType"
+        },
+        "osSKU": {
+          "target": "com.azure.hybridaks#OSSKU"
+        },
+        "nodeLabels": {
+          "target": "com.azure.hybridaks#AgentPoolPropertiesInputNodeLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "The node labels to be persisted across all nodes in agent pool."
+          }
+        },
+        "nodeTaints": {
+          "target": "com.azure.hybridaks#AgentPoolPropertiesInputNodeTaintsList",
+          "traits": {
+            "smithy.api#documentation": "Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule."
+          }
+        },
+        "maxCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of nodes for auto-scaling"
+          }
+        },
+        "minCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of nodes for auto-scaling"
+          }
+        },
+        "enableAutoScaling": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable auto-scaler. Default value is false"
+          }
+        },
+        "maxPods": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of pods that can run on a node."
+          }
+        },
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of nodes in the agent pool. The default value is 1."
+          }
+        },
+        "vmSize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The VM sku size of the agent pool node VMs."
+          }
+        },
+        "status": {
+          "target": "com.azure.hybridaks#AgentPoolPropertiesInputStatus",
+          "traits": {
+            "smithy.api#documentation": "The observed status of the agent pool."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the agent pool resource"
+      }
+    },
+    "com.azure.hybridaks#AgentPoolPropertiesInputStatus": {
+      "type": "structure",
+      "members": {
+        "errorMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error messages during an agent pool operation or steady state."
+          }
+        },
+        "readyReplicas": {
+          "target": "com.azure.hybridaks#AgentPoolPropertiesInputStatusReadyReplicasList"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The observed status of the agent pool."
+      }
+    },
+    "com.azure.hybridaks#AgentPoolPropertiesInputStatusReadyReplicasList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridaks#AgentPoolUpdateProfileInput"
+      },
+      "traits": {}
+    },
+    "com.azure.hybridaks#AgentPoolUpdateProfileInput": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of nodes in the agent pool. The default value is 1."
+          }
+        },
+        "vmSize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The VM sku size of the agent pool node VMs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile for agent pool properties that can be updated"
+      }
+    },
+    "com.azure.hybridaks#AgentPoolPropertiesInputNodeTaintsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule."
+      }
+    },
+    "com.azure.hybridaks#AgentPoolPropertiesInputNodeLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The node labels to be persisted across all nodes in agent pool."
       }
     },
     "com.azure.hybridaks#AgentPoolGet": {
@@ -2231,16 +2373,36 @@
             "smithy.api#documentation": "The fully qualified Azure Resource Manager identifier of the connected cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.hybridaks#HybridIdentityMetadataPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridaks#HybridIdentityMetadataPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "resourceUid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique id of the parent provisioned cluster resource."
+          }
+        },
+        "publicKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Onboarding public key for provisioning the Managed identity for the connected cluster."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties for the hybrid identity metadata."
       }
     },
     "com.azure.hybridaks#HybridIdentityMetadataGet": {
@@ -3405,16 +3567,339 @@
             "smithy.api#documentation": "The fully qualified Azure Resource Manager identifier of the connected cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.hybridaks#ProvisionedClusterPropertiesInput"
+        },
+        "extendedLocation": {
+          "target": "com.azure.hybridaks#ExtendedLocation"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridaks#ProvisionedClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "linuxProfile": {
+          "target": "com.azure.hybridaks#LinuxProfileProperties",
+          "traits": {
+            "smithy.api#documentation": "The profile for Linux VMs in the provisioned cluster."
+          }
+        },
+        "controlPlane": {
+          "target": "com.azure.hybridaks#ControlPlaneProfile",
+          "traits": {
+            "smithy.api#documentation": "The profile for control plane of the provisioned cluster."
+          }
+        },
+        "kubernetesVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of Kubernetes in use by the provisioned cluster."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.hybridaks#NetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "The network configuration profile for the provisioned cluster."
+          }
+        },
+        "storageProfile": {
+          "target": "com.azure.hybridaks#StorageProfile",
+          "traits": {
+            "smithy.api#documentation": "The storage configuration profile for the provisioned cluster."
+          }
+        },
+        "clusterVMAccessProfile": {
+          "target": "com.azure.hybridaks#ClusterVMAccessProfile",
+          "traits": {
+            "smithy.api#documentation": "The SSH restricted access profile for the VMs in the provisioned cluster."
+          }
+        },
+        "agentPoolProfiles": {
+          "target": "com.azure.hybridaks#ProvisionedClusterPropertiesInputAgentPoolProfilesList",
+          "traits": {
+            "smithy.api#documentation": "The agent pool properties for the provisioned cluster."
+          }
+        },
+        "cloudProviderProfile": {
+          "target": "com.azure.hybridaks#CloudProviderProfile",
+          "traits": {
+            "smithy.api#documentation": "The profile for the underlying cloud infrastructure provider for the provisioned cluster."
+          }
+        },
+        "licenseProfile": {
+          "target": "com.azure.hybridaks#ProvisionedClusterLicenseProfile",
+          "traits": {
+            "smithy.api#documentation": "The license profile of the provisioned cluster."
+          }
+        },
+        "autoScalerProfile": {
+          "target": "com.azure.hybridaks#ProvisionedClusterPropertiesInputAutoScalerProfile",
+          "traits": {
+            "smithy.api#documentation": "Parameters to be applied to the cluster-autoscaler when auto scaling is enabled for the provisioned cluster."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the provisioned cluster."
+      }
+    },
+    "com.azure.hybridaks#ProvisionedClusterPropertiesInputAutoScalerProfile": {
+      "type": "structure",
+      "members": {
+        "balance_similar_node_groups": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Valid values are 'true' and 'false'",
+            "smithy.api#jsonName": "balance-similar-node-groups"
+          }
+        },
+        "expander": {
+          "target": "com.azure.hybridaks#ProvisionedClusterPropertiesInputAutoScalerProfileExpander",
+          "traits": {
+            "smithy.api#documentation": "If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information."
+          }
+        },
+        "max_empty_bulk_delete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is 10.",
+            "smithy.api#jsonName": "max-empty-bulk-delete"
+          }
+        },
+        "max_graceful_termination_sec": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is 600.",
+            "smithy.api#jsonName": "max-graceful-termination-sec"
+          }
+        },
+        "max_node_provision_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is '15m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+            "smithy.api#jsonName": "max-node-provision-time"
+          }
+        },
+        "max_total_unready_percentage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is 45. The maximum is 100 and the minimum is 0.",
+            "smithy.api#jsonName": "max-total-unready-percentage"
+          }
+        },
+        "new_pod_scale_up_delay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For scenarios like burst/batch scale where you don't want CA to act before the kubernetes scheduler could schedule all the pods, you can tell CA to ignore unscheduled pods before they're a certain age. The default is '0s'. Values must be an integer followed by a unit ('s' for seconds, 'm' for minutes, 'h' for hours, etc).",
+            "smithy.api#jsonName": "new-pod-scale-up-delay"
+          }
+        },
+        "ok_total_unready_count": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This must be an integer. The default is 3.",
+            "smithy.api#jsonName": "ok-total-unready-count"
+          }
+        },
+        "scan_interval": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is '10'. Values must be an integer number of seconds.",
+            "smithy.api#jsonName": "scan-interval"
+          }
+        },
+        "scale_down_delay_after_add": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+            "smithy.api#jsonName": "scale-down-delay-after-add"
+          }
+        },
+        "scale_down_delay_after_delete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is the scan-interval. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+            "smithy.api#jsonName": "scale-down-delay-after-delete"
+          }
+        },
+        "scale_down_delay_after_failure": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is '3m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+            "smithy.api#jsonName": "scale-down-delay-after-failure"
+          }
+        },
+        "scale_down_unneeded_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is '10m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+            "smithy.api#jsonName": "scale-down-unneeded-time"
+          }
+        },
+        "scale_down_unready_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is '20m'. Values must be an integer followed by an 'm'. No unit of time other than minutes (m) is supported.",
+            "smithy.api#jsonName": "scale-down-unready-time"
+          }
+        },
+        "scale_down_utilization_threshold": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is '0.5'.",
+            "smithy.api#jsonName": "scale-down-utilization-threshold"
+          }
+        },
+        "skip_nodes_with_local_storage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is true.",
+            "smithy.api#jsonName": "skip-nodes-with-local-storage"
+          }
+        },
+        "skip_nodes_with_system_pods": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default is true.",
+            "smithy.api#jsonName": "skip-nodes-with-system-pods"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters to be applied to the cluster-autoscaler when auto scaling is enabled for the provisioned cluster."
+      }
+    },
+    "com.azure.hybridaks#ProvisionedClusterPropertiesInputAutoScalerProfileExpander": {
+      "type": "enum",
+      "members": {
+        "LEAST_WASTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least-waste"
+          }
+        },
+        "MOST_PODS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "most-pods"
+          }
+        },
+        "PRIORITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "priority"
+          }
+        },
+        "RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "random"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information."
+      }
+    },
+    "com.azure.hybridaks#ProvisionedClusterPropertiesInputAgentPoolProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridaks#NamedAgentPoolProfileInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The agent pool properties for the provisioned cluster."
+      }
+    },
+    "com.azure.hybridaks#NamedAgentPoolProfileInput": {
+      "type": "structure",
+      "members": {
+        "osType": {
+          "target": "com.azure.hybridaks#OSType"
+        },
+        "osSKU": {
+          "target": "com.azure.hybridaks#OSSKU"
+        },
+        "nodeLabels": {
+          "target": "com.azure.hybridaks#NamedAgentPoolProfileInputNodeLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "The node labels to be persisted across all nodes in agent pool."
+          }
+        },
+        "nodeTaints": {
+          "target": "com.azure.hybridaks#NamedAgentPoolProfileInputNodeTaintsList",
+          "traits": {
+            "smithy.api#documentation": "Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule."
+          }
+        },
+        "maxCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of nodes for auto-scaling"
+          }
+        },
+        "minCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of nodes for auto-scaling"
+          }
+        },
+        "enableAutoScaling": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable auto-scaler. Default value is false"
+          }
+        },
+        "maxPods": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of pods that can run on a node."
+          }
+        },
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of nodes in the agent pool. The default value is 1."
+          }
+        },
+        "vmSize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The VM sku size of the agent pool node VMs."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique name of the default agent pool in the context of the provisioned cluster. Default value is <clusterName>-nodepool1"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile of the default agent pool along with a name parameter"
+      }
+    },
+    "com.azure.hybridaks#NamedAgentPoolProfileInputNodeTaintsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule."
+      }
+    },
+    "com.azure.hybridaks#NamedAgentPoolProfileInputNodeLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The node labels to be persisted across all nodes in agent pool."
       }
     },
     "com.azure.hybridaks#ProvisionedClusterInstancesGet": {
@@ -4157,16 +4642,27 @@
             "smithy.api#documentation": "Parameter for the name of the virtual network"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridaks#VirtualNetworksUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridaks#VirtualNetworksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.hybridaks#VirtualNetworksCreateOrUpdate": {
@@ -4315,16 +4811,225 @@
             "smithy.api#documentation": "Parameter for the name of the virtual network"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridaks#VirtualNetworksCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridaks#VirtualNetworkPropertiesInput"
+        },
+        "extendedLocation": {
+          "target": "com.azure.hybridaks#VirtualNetworksCreateOrUpdateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Extended location pointing to the underlying infrastructure"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridaks#VirtualNetworksCreateOrUpdateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.hybridaks#VirtualNetworksCreateOrUpdateRequestExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The extended location type. Allowed value: 'CustomLocation'"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM Id of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Extended location pointing to the underlying infrastructure"
+      }
+    },
+    "com.azure.hybridaks#VirtualNetworksCreateOrUpdateRequestExtendedLocationType": {
+      "type": "enum",
+      "members": {
+        "CUSTOMLOCATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomLocation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The extended location type. Allowed value: 'CustomLocation'"
+      }
+    },
+    "com.azure.hybridaks#VirtualNetworkPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "infraVnetProfile": {
+          "target": "com.azure.hybridaks#VirtualNetworkPropertiesInputInfraVnetProfile"
+        },
+        "vipPool": {
+          "target": "com.azure.hybridaks#VirtualNetworkPropertiesInputVipPoolList",
+          "traits": {
+            "smithy.api#documentation": "Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer"
+          }
+        },
+        "vmipPool": {
+          "target": "com.azure.hybridaks#VirtualNetworkPropertiesInputVmipPoolList",
+          "traits": {
+            "smithy.api#documentation": "Range of IP Addresses for Kubernetes node VMs"
+          }
+        },
+        "dnsServers": {
+          "target": "com.azure.hybridaks#VirtualNetworkPropertiesInputDnsServersList",
+          "traits": {
+            "smithy.api#documentation": "List of DNS server IP Addresses associated with the network"
+          }
+        },
+        "gateway": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Address of the Gateway associated with the network"
+          }
+        },
+        "ipAddressPrefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP Address Prefix of the network"
+          }
+        },
+        "vlanID": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "VLAN Id used by the network"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the virtual network resource"
+      }
+    },
+    "com.azure.hybridaks#VirtualNetworkPropertiesInputDnsServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of DNS server IP Addresses associated with the network"
+      }
+    },
+    "com.azure.hybridaks#VirtualNetworkPropertiesInputVmipPoolList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridaks#VirtualNetworkPropertiesInputVmipPoolItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Range of IP Addresses for Kubernetes node VMs"
+      }
+    },
+    "com.azure.hybridaks#VirtualNetworkPropertiesInputVmipPoolItem": {
+      "type": "structure",
+      "members": {
+        "endIP": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Ending IP address for the IP Pool"
+          }
+        },
+        "startIP": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Starting IP address for the IP Pool"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.hybridaks#VirtualNetworkPropertiesInputVipPoolList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridaks#VirtualNetworkPropertiesInputVipPoolItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer"
+      }
+    },
+    "com.azure.hybridaks#VirtualNetworkPropertiesInputVipPoolItem": {
+      "type": "structure",
+      "members": {
+        "endIP": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Ending IP address for the IP Pool"
+          }
+        },
+        "startIP": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Starting IP address for the IP Pool"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.hybridaks#VirtualNetworkPropertiesInputInfraVnetProfile": {
+      "type": "structure",
+      "members": {
+        "hci": {
+          "target": "com.azure.hybridaks#VirtualNetworkPropertiesInputInfraVnetProfileHci",
+          "traits": {
+            "smithy.api#documentation": "Infrastructure network profile for HCI platform"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.hybridaks#VirtualNetworkPropertiesInputInfraVnetProfileHci": {
+      "type": "structure",
+      "members": {
+        "mocGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Group in MOC(Microsoft On-premises Cloud)"
+          }
+        },
+        "mocLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location in MOC(Microsoft On-premises Cloud)"
+          }
+        },
+        "mocVnetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Virtual Network name in MOC(Microsoft On-premises Cloud)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Infrastructure network profile for HCI platform"
+      }
+    },
+    "com.azure.hybridaks#VirtualNetworksCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridaks#VirtualNetworksRetrieve": {

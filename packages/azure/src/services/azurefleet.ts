@@ -13,108 +13,24 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface FleetsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Compute Fleet */
-  fleetName: string;
-  body: unknown;
-}
-export const FleetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    fleetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}",
-      code: 200,
-      apiVersion: "2024-11-01",
-    }),
-  ),
-).annotate({
-  identifier: "FleetsCreateOrUpdateRequest",
-}) as any as S.Schema<FleetsCreateOrUpdateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
-export type FleetsCreateOrUpdateResponseTagsMap = {
+export type FleetsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const FleetsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const FleetsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<FleetsCreateOrUpdateResponseTagsMap>;
-
-/** The status of the current operation. */
-export type ProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Creating"
-  | "Updating"
-  | "Deleting"
-  | "Migrating"
-  | (string & {});
-export const ProvisioningState = /*@__PURE__*/ S.String;
+) as any as S.Schema<FleetsCreateOrUpdateRequestTagsMap>;
 
 /** Different kind of eviction policies */
-export type EvictionPolicy = "Delete" | "Deallocate" | (string & {});
+export type EvictionPolicy = "Delete" | "Deallocate";
 export const EvictionPolicy = /*@__PURE__*/ S.String;
 
 /** Spot allocation strategy types for Compute Fleet */
 export type SpotAllocationStrategy =
   | "PriceCapacityOptimized"
   | "LowestPrice"
-  | "CapacityOptimized"
-  | (string & {});
+  | "CapacityOptimized";
 export const SpotAllocationStrategy = /*@__PURE__*/ S.String;
 
 /** Configuration Options for Spot instances in Compute Fleet. */
@@ -146,10 +62,7 @@ export const SpotPriorityProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpotPriorityProfile>;
 
 /** Regular VM Allocation strategy types for Compute Fleet */
-export type RegularPriorityAllocationStrategy =
-  | "LowestPrice"
-  | "Prioritized"
-  | (string & {});
+export type RegularPriorityAllocationStrategy = "LowestPrice" | "Prioritized";
 export const RegularPriorityAllocationStrategy = /*@__PURE__*/ S.String;
 
 /** Configuration Options for Regular instances in Compute Fleet. */
@@ -186,10 +99,11 @@ export const VmSizeProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VmSizeProfile" }) as any as S.Schema<VmSizeProfile>;
 
 /** List of VM sizes supported for Compute Fleet */
-export type FleetPropertiesVmSizesProfileList = VmSizeProfile[];
-export const FleetPropertiesVmSizesProfileList = /*@__PURE__*/ S.Array(
+export type FleetPropertiesInputVmSizesProfileList =
+  ReadonlyArray<VmSizeProfile>;
+export const FleetPropertiesInputVmSizesProfileList = /*@__PURE__*/ S.Array(
   VmSizeProfile,
-) as any as S.Schema<FleetPropertiesVmSizesProfileList>;
+) as any as S.Schema<FleetPropertiesInputVmSizesProfileList>;
 
 /** While retrieving VMSizes from CRS, Min = 0 (uint.MinValue) if not specified, Max = 4294967295 (uint.MaxValue) if not specified. This allows to filter VMAttributes on all available VMSizes. */
 export interface VMAttributeMinMaxInteger {
@@ -224,44 +138,37 @@ export const VMAttributeMinMaxDouble = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VMAttributeMinMaxDouble>;
 
 /** VMSizes supported by Azure VMs. Included is a union of Excluded and Required. */
-export type VMAttributeSupport =
-  | "Excluded"
-  | "Included"
-  | "Required"
-  | (string & {});
+export type VMAttributeSupport = "Excluded" | "Included" | "Required";
 export const VMAttributeSupport = /*@__PURE__*/ S.String;
 
 /** Different kind of Local storage disk types supported by Azure VMs. */
-export type LocalStorageDiskType = "HDD" | "SSD" | (string & {});
+export type LocalStorageDiskType = "HDD" | "SSD";
 export const LocalStorageDiskType = /*@__PURE__*/ S.String;
 
 /** The local storage disk types specified as a list. LocalStorageSupport should be set to "Included" or "Required" to use this VMAttribute. If localStorageSupport is "Excluded", this VMAttribute can not be used. */
-export type VMAttributesLocalStorageDiskTypesList = LocalStorageDiskType[];
+export type VMAttributesLocalStorageDiskTypesList =
+  ReadonlyArray<LocalStorageDiskType>;
 export const VMAttributesLocalStorageDiskTypesList = /*@__PURE__*/ S.Array(
   LocalStorageDiskType,
 ) as any as S.Schema<VMAttributesLocalStorageDiskTypesList>;
 
 /** Accelerator manufacturers supported by Azure VMs. */
-export type AcceleratorManufacturer =
-  | "AMD"
-  | "Nvidia"
-  | "Xilinx"
-  | (string & {});
+export type AcceleratorManufacturer = "AMD" | "Nvidia" | "Xilinx";
 export const AcceleratorManufacturer = /*@__PURE__*/ S.String;
 
 /** The accelerator manufacturers specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. If acceleratorSupport is "Excluded", this VMAttribute can not be used. */
 export type VMAttributesAcceleratorManufacturersList =
-  AcceleratorManufacturer[];
+  ReadonlyArray<AcceleratorManufacturer>;
 export const VMAttributesAcceleratorManufacturersList = /*@__PURE__*/ S.Array(
   AcceleratorManufacturer,
 ) as any as S.Schema<VMAttributesAcceleratorManufacturersList>;
 
 /** Accelerator types supported by Azure VMs. */
-export type AcceleratorType = "GPU" | "FPGA" | (string & {});
+export type AcceleratorType = "GPU" | "FPGA";
 export const AcceleratorType = /*@__PURE__*/ S.String;
 
 /** The accelerator types specified as a list. acceleratorSupport should be set to "Included" or "Required" to use this VMAttribute. If acceleratorSupport is "Excluded", this VMAttribute can not be used. */
-export type VMAttributesAcceleratorTypesList = AcceleratorType[];
+export type VMAttributesAcceleratorTypesList = ReadonlyArray<AcceleratorType>;
 export const VMAttributesAcceleratorTypesList = /*@__PURE__*/ S.Array(
   AcceleratorType,
 ) as any as S.Schema<VMAttributesAcceleratorTypesList>;
@@ -274,43 +181,37 @@ export type VMCategory =
   | "StorageOptimized"
   | "GpuAccelerated"
   | "FpgaAccelerated"
-  | "HighPerformanceCompute"
-  | (string & {});
+  | "HighPerformanceCompute";
 export const VMCategory = /*@__PURE__*/ S.String;
 
 /** The VM category specified as a list. Optional parameter. */
-export type VMAttributesVmCategoriesList = VMCategory[];
+export type VMAttributesVmCategoriesList = ReadonlyArray<VMCategory>;
 export const VMAttributesVmCategoriesList = /*@__PURE__*/ S.Array(
   VMCategory,
 ) as any as S.Schema<VMAttributesVmCategoriesList>;
 
 /** Architecture types supported by Azure VMs. */
-export type ArchitectureType = "ARM64" | "X64" | (string & {});
+export type ArchitectureType = "ARM64" | "X64";
 export const ArchitectureType = /*@__PURE__*/ S.String;
 
 /** The VM architecture types specified as a list. Optional parameter. */
-export type VMAttributesArchitectureTypesList = ArchitectureType[];
+export type VMAttributesArchitectureTypesList = ReadonlyArray<ArchitectureType>;
 export const VMAttributesArchitectureTypesList = /*@__PURE__*/ S.Array(
   ArchitectureType,
 ) as any as S.Schema<VMAttributesArchitectureTypesList>;
 
 /** Cpu Manufacturers supported by Azure VMs. */
-export type CpuManufacturer =
-  | "Intel"
-  | "AMD"
-  | "Microsoft"
-  | "Ampere"
-  | (string & {});
+export type CpuManufacturer = "Intel" | "AMD" | "Microsoft" | "Ampere";
 export const CpuManufacturer = /*@__PURE__*/ S.String;
 
 /** The VM CPU manufacturers specified as a list. Optional parameter. */
-export type VMAttributesCpuManufacturersList = CpuManufacturer[];
+export type VMAttributesCpuManufacturersList = ReadonlyArray<CpuManufacturer>;
 export const VMAttributesCpuManufacturersList = /*@__PURE__*/ S.Array(
   CpuManufacturer,
 ) as any as S.Schema<VMAttributesCpuManufacturersList>;
 
 /** Specifies which VMSizes should be excluded while building Fleet. Optional parameter. */
-export type VMAttributesExcludedVMSizesList = string[];
+export type VMAttributesExcludedVMSizesList = ReadonlyArray<string>;
 export const VMAttributesExcludedVMSizesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VMAttributesExcludedVMSizesList>;
@@ -386,17 +287,16 @@ export const VMAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VMAttributes" }) as any as S.Schema<VMAttributes>;
 
 /** The pass name. Currently, the only allowable value is OobeSystem. */
-export type AdditionalUnattendContentPassName = "OobeSystem" | (string & {});
+export type AdditionalUnattendContentPassName = "OobeSystem";
 export const AdditionalUnattendContentPassName = /*@__PURE__*/ S.String;
 
 /** The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup. */
 export type AdditionalUnattendContentComponentName =
-  | "Microsoft-Windows-Shell-Setup"
-  | (string & {});
+  "Microsoft-Windows-Shell-Setup";
 export const AdditionalUnattendContentComponentName = /*@__PURE__*/ S.String;
 
 /** Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon. */
-export type SettingNames = "AutoLogon" | "FirstLogonCommands" | (string & {});
+export type SettingNames = "AutoLogon" | "FirstLogonCommands";
 export const SettingNames = /*@__PURE__*/ S.String;
 
 /** Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied. */
@@ -423,7 +323,7 @@ export const AdditionalUnattendContent = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. */
 export type WindowsConfigurationAdditionalUnattendContentList =
-  AdditionalUnattendContent[];
+  ReadonlyArray<AdditionalUnattendContent>;
 export const WindowsConfigurationAdditionalUnattendContentList =
   /*@__PURE__*/ S.Array(
     AdditionalUnattendContent,
@@ -433,15 +333,11 @@ export const WindowsConfigurationAdditionalUnattendContentList =
 export type WindowsVMGuestPatchMode =
   | "Manual"
   | "AutomaticByOS"
-  | "AutomaticByPlatform"
-  | (string & {});
+  | "AutomaticByPlatform";
 export const WindowsVMGuestPatchMode = /*@__PURE__*/ S.String;
 
 /** Specifies the mode of VM Guest patch assessment for the IaaS virtual machine. */
-export type WindowsPatchAssessmentMode =
-  | "ImageDefault"
-  | "AutomaticByPlatform"
-  | (string & {});
+export type WindowsPatchAssessmentMode = "ImageDefault" | "AutomaticByPlatform";
 export const WindowsPatchAssessmentMode = /*@__PURE__*/ S.String;
 
 /** Specifies the reboot setting for all AutomaticByPlatform patch installation operations. */
@@ -449,8 +345,7 @@ export type WindowsVMGuestPatchAutomaticByPlatformRebootSetting =
   | "Unknown"
   | "IfRequired"
   | "Never"
-  | "Always"
-  | (string & {});
+  | "Always";
 export const WindowsVMGuestPatchAutomaticByPlatformRebootSetting =
   /*@__PURE__*/ S.String;
 
@@ -496,7 +391,7 @@ export const PatchSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchSettings" }) as any as S.Schema<PatchSettings>;
 
 /** Specifies the protocol of WinRM listener. Possible values are: **http,** **https.** */
-export type ProtocolTypes = "Http" | "Https" | (string & {});
+export type ProtocolTypes = "Http" | "Https";
 export const ProtocolTypes = /*@__PURE__*/ S.String;
 
 /** Describes Protocol and thumbprint of Windows Remote Management listener */
@@ -514,7 +409,7 @@ export const WinRMListener = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WinRMListener" }) as any as S.Schema<WinRMListener>;
 
 /** The list of Windows Remote Management listeners */
-export type WinRMConfigurationListenersList = WinRMListener[];
+export type WinRMConfigurationListenersList = ReadonlyArray<WinRMListener>;
 export const WinRMConfigurationListenersList = /*@__PURE__*/ S.Array(
   WinRMListener,
 ) as any as S.Schema<WinRMConfigurationListenersList>;
@@ -580,7 +475,7 @@ export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SshPublicKey" }) as any as S.Schema<SshPublicKey>;
 
 /** The list of SSH public keys used to authenticate with linux based VMs. */
-export type SshConfigurationPublicKeysList = SshPublicKey[];
+export type SshConfigurationPublicKeysList = ReadonlyArray<SshPublicKey>;
 export const SshConfigurationPublicKeysList = /*@__PURE__*/ S.Array(
   SshPublicKey,
 ) as any as S.Schema<SshConfigurationPublicKeysList>;
@@ -599,17 +494,11 @@ export const SshConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SshConfiguration>;
 
 /** Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible. */
-export type LinuxVMGuestPatchMode =
-  | "ImageDefault"
-  | "AutomaticByPlatform"
-  | (string & {});
+export type LinuxVMGuestPatchMode = "ImageDefault" | "AutomaticByPlatform";
 export const LinuxVMGuestPatchMode = /*@__PURE__*/ S.String;
 
 /** Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true. */
-export type LinuxPatchAssessmentMode =
-  | "ImageDefault"
-  | "AutomaticByPlatform"
-  | (string & {});
+export type LinuxPatchAssessmentMode = "ImageDefault" | "AutomaticByPlatform";
 export const LinuxPatchAssessmentMode = /*@__PURE__*/ S.String;
 
 /** Specifies the reboot setting for all AutomaticByPlatform patch installation operations. */
@@ -617,8 +506,7 @@ export type LinuxVMGuestPatchAutomaticByPlatformRebootSetting =
   | "Unknown"
   | "IfRequired"
   | "Never"
-  | "Always"
-  | (string & {});
+  | "Always";
 export const LinuxVMGuestPatchAutomaticByPlatformRebootSetting =
   /*@__PURE__*/ S.String;
 
@@ -715,7 +603,8 @@ export const VaultCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VaultCertificate>;
 
 /** The list of key vault references in SourceVault which contain certificates. */
-export type VaultSecretGroupVaultCertificatesList = VaultCertificate[];
+export type VaultSecretGroupVaultCertificatesList =
+  ReadonlyArray<VaultCertificate>;
 export const VaultSecretGroupVaultCertificatesList = /*@__PURE__*/ S.Array(
   VaultCertificate,
 ) as any as S.Schema<VaultSecretGroupVaultCertificatesList>;
@@ -737,7 +626,8 @@ export const VaultSecretGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VaultSecretGroup>;
 
 /** Specifies set of certificates that should be installed onto the virtual machines in the scale set. To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows). */
-export type VirtualMachineScaleSetOSProfileSecretsList = VaultSecretGroup[];
+export type VirtualMachineScaleSetOSProfileSecretsList =
+  ReadonlyArray<VaultSecretGroup>;
 export const VirtualMachineScaleSetOSProfileSecretsList = /*@__PURE__*/ S.Array(
   VaultSecretGroup,
 ) as any as S.Schema<VirtualMachineScaleSetOSProfileSecretsList>;
@@ -780,7 +670,7 @@ export const VirtualMachineScaleSetOSProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineScaleSetOSProfile>;
 
 /** Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set. */
-export interface ImageReference {
+export interface ImageReferenceInput {
   /** Resource Id */
   id?: string;
   /** The image publisher. */
@@ -791,28 +681,27 @@ export interface ImageReference {
   sku?: string;
   /** Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input. */
   version?: string;
-  /** Specifies in decimal numbers, the version of platform image or marketplace image used to create the virtual machine. This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'. */
-  exactVersion?: string;
   /** Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call. */
   sharedGalleryImageId?: string;
   /** Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call. */
   communityGalleryImageId?: string;
 }
-export const ImageReference = /*@__PURE__*/ S.suspend(() =>
+export const ImageReferenceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     publisher: S.optional(S.String),
     offer: S.optional(S.String),
     sku: S.optional(S.String),
     version: S.optional(S.String),
-    exactVersion: S.optional(S.String),
     sharedGalleryImageId: S.optional(S.String),
     communityGalleryImageId: S.optional(S.String),
   }),
-).annotate({ identifier: "ImageReference" }) as any as S.Schema<ImageReference>;
+).annotate({
+  identifier: "ImageReferenceInput",
+}) as any as S.Schema<ImageReferenceInput>;
 
 /** Specifies the caching requirements. */
-export type CachingTypes = "None" | "ReadOnly" | "ReadWrite" | (string & {});
+export type CachingTypes = "None" | "ReadOnly" | "ReadWrite";
 export const CachingTypes = /*@__PURE__*/ S.String;
 
 /** Specifies how the virtual machine should be created. */
@@ -821,20 +710,15 @@ export type DiskCreateOptionTypes =
   | "Empty"
   | "Attach"
   | "Copy"
-  | "Restore"
-  | (string & {});
+  | "Restore";
 export const DiskCreateOptionTypes = /*@__PURE__*/ S.String;
 
 /** Specifies the ephemeral disk option for operating system disk. */
-export type DiffDiskOptions = "Local" | (string & {});
+export type DiffDiskOptions = "Local";
 export const DiffDiskOptions = /*@__PURE__*/ S.String;
 
 /** Specifies the ephemeral disk placement for operating system disk. This property can be used by user in the request to choose the location i.e, cache disk or resource disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer Ephemeral OS disk size requirements for Windows VM at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VM at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements Minimum api-version for NvmeDisk: 2024-03-01. */
-export type DiffDiskPlacement =
-  | "CacheDisk"
-  | "ResourceDisk"
-  | "NvmeDisk"
-  | (string & {});
+export type DiffDiskPlacement = "CacheDisk" | "ResourceDisk" | "NvmeDisk";
 export const DiffDiskPlacement = /*@__PURE__*/ S.String;
 
 /** Describes the parameters of ephemeral disk settings that can be specified for operating system disk. **Note:** The ephemeral disk settings can only be specified for managed disk. */
@@ -854,7 +738,7 @@ export const DiffDiskSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiffDiskSettings>;
 
 /** This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.** */
-export type OperatingSystemTypes = "Windows" | "Linux" | (string & {});
+export type OperatingSystemTypes = "Windows" | "Linux";
 export const OperatingSystemTypes = /*@__PURE__*/ S.String;
 
 /** Describes the uri of a disk. */
@@ -871,7 +755,8 @@ export const VirtualHardDisk = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualHardDisk>;
 
 /** Specifies the container urls that are used to store operating system disks for the scale set. */
-export type VirtualMachineScaleSetOSDiskVhdContainersList = string[];
+export type VirtualMachineScaleSetOSDiskVhdContainersList =
+  ReadonlyArray<string>;
 export const VirtualMachineScaleSetOSDiskVhdContainersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -885,8 +770,7 @@ export type StorageAccountTypes =
   | "UltraSSD_LRS"
   | "Premium_ZRS"
   | "StandardSSD_ZRS"
-  | "PremiumV2_LRS"
-  | (string & {});
+  | "PremiumV2_LRS";
 export const StorageAccountTypes = /*@__PURE__*/ S.String;
 
 /** Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. **Note:** The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details. */
@@ -906,8 +790,7 @@ export const DiskEncryptionSetParameters = /*@__PURE__*/ S.suspend(() =>
 export type SecurityEncryptionTypes =
   | "VMGuestStateOnly"
   | "DiskWithVMGuestState"
-  | "NonPersistedTPM"
-  | (string & {});
+  | "NonPersistedTPM";
 export const SecurityEncryptionTypes = /*@__PURE__*/ S.String;
 
 /** Specifies the security profile settings for the managed disk. **Note:** It can only be set for Confidential VMs. */
@@ -947,7 +830,7 @@ export const VirtualMachineScaleSetManagedDiskParameters =
   }) as any as S.Schema<VirtualMachineScaleSetManagedDiskParameters>;
 
 /** Specifies the behavior of the managed disk when the VM gets deleted, for example whether the managed disk is deleted or detached. Supported values are: **Delete.** If this value is used, the managed disk is deleted when VM gets deleted. **Detach.** If this value is used, the managed disk is retained after VM gets deleted. Minimum api-version: 2021-03-01. */
-export type DiskDeleteOptionTypes = "Delete" | "Detach" | (string & {});
+export type DiskDeleteOptionTypes = "Delete" | "Detach";
 export const DiskDeleteOptionTypes = /*@__PURE__*/ S.String;
 
 /** Describes a virtual machine scale set operating system disk. */
@@ -1034,39 +917,41 @@ export const VirtualMachineScaleSetDataDisk = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineScaleSetDataDisk>;
 
 /** Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview). */
-export type VirtualMachineScaleSetStorageProfileDataDisksList =
-  VirtualMachineScaleSetDataDisk[];
-export const VirtualMachineScaleSetStorageProfileDataDisksList =
+export type VirtualMachineScaleSetStorageProfileInputDataDisksList =
+  ReadonlyArray<VirtualMachineScaleSetDataDisk>;
+export const VirtualMachineScaleSetStorageProfileInputDataDisksList =
   /*@__PURE__*/ S.Array(
     VirtualMachineScaleSetDataDisk,
-  ) as any as S.Schema<VirtualMachineScaleSetStorageProfileDataDisksList>;
+  ) as any as S.Schema<VirtualMachineScaleSetStorageProfileInputDataDisksList>;
 
 /** Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://learn.microsoft.com/rest/api/compute/resourceskus/list). For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes. */
-export type DiskControllerTypes = "SCSI" | "NVMe" | (string & {});
+export type DiskControllerTypes = "SCSI" | "NVMe";
 export const DiskControllerTypes = /*@__PURE__*/ S.String;
 
 /** Describes a virtual machine scale set storage profile. */
-export interface VirtualMachineScaleSetStorageProfile {
+export interface VirtualMachineScaleSetStorageProfileInput {
   /** Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. */
-  imageReference?: ImageReference;
+  imageReference?: ImageReferenceInput;
   /** Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview). */
   osDisk?: VirtualMachineScaleSetOSDisk;
   /** Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview). */
-  dataDisks?: VirtualMachineScaleSetStorageProfileDataDisksList;
+  dataDisks?: VirtualMachineScaleSetStorageProfileInputDataDisksList;
   /** Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01 */
   diskControllerType?: DiskControllerTypes;
 }
-export const VirtualMachineScaleSetStorageProfile = /*@__PURE__*/ S.suspend(
-  () =>
+export const VirtualMachineScaleSetStorageProfileInput =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      imageReference: S.optional(ImageReference),
+      imageReference: S.optional(ImageReferenceInput),
       osDisk: S.optional(VirtualMachineScaleSetOSDisk),
-      dataDisks: S.optional(VirtualMachineScaleSetStorageProfileDataDisksList),
+      dataDisks: S.optional(
+        VirtualMachineScaleSetStorageProfileInputDataDisksList,
+      ),
       diskControllerType: S.optional(DiskControllerTypes),
     }),
-).annotate({
-  identifier: "VirtualMachineScaleSetStorageProfile",
-}) as any as S.Schema<VirtualMachineScaleSetStorageProfile>;
+  ).annotate({
+    identifier: "VirtualMachineScaleSetStorageProfileInput",
+  }) as any as S.Schema<VirtualMachineScaleSetStorageProfileInput>;
 
 /** The API entity reference. */
 export interface ApiEntityReference {
@@ -1083,7 +968,7 @@ export const ApiEntityReference = /*@__PURE__*/ S.suspend(() =>
 
 /** List of DNS servers IP addresses */
 export type VirtualMachineScaleSetNetworkConfigurationDnsSettingsDnsServersList =
-  string[];
+  ReadonlyArray<string>;
 export const VirtualMachineScaleSetNetworkConfigurationDnsSettingsDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1110,8 +995,7 @@ export type DomainNameLabelScopeTypes =
   | "TenantReuse"
   | "SubscriptionReuse"
   | "ResourceGroupReuse"
-  | "NoReuse"
-  | (string & {});
+  | "NoReuse";
 export const DomainNameLabelScopeTypes = /*@__PURE__*/ S.String;
 
 /** Describes a virtual machines scale sets network configuration's DNS settings. */
@@ -1149,18 +1033,18 @@ export const VirtualMachineScaleSetIpTag = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of IP tags associated with the public IP address. */
 export type VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesIpTagsList =
-  VirtualMachineScaleSetIpTag[];
+  ReadonlyArray<VirtualMachineScaleSetIpTag>;
 export const VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesIpTagsList =
   /*@__PURE__*/ S.Array(
     VirtualMachineScaleSetIpTag,
   ) as any as S.Schema<VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesIpTagsList>;
 
 /** Available from Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'. */
-export type IPVersion = "IPv4" | "IPv6" | (string & {});
+export type IPVersion = "IPv4" | "IPv6";
 export const IPVersion = /*@__PURE__*/ S.String;
 
 /** Specify what happens to the network interface when the VM is deleted */
-export type DeleteOptions = "Delete" | "Detach" | (string & {});
+export type DeleteOptions = "Delete" | "Detach";
 export const DeleteOptions = /*@__PURE__*/ S.String;
 
 /** Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration */
@@ -1197,11 +1081,11 @@ export const VirtualMachineScaleSetPublicIPAddressConfigurationProperties =
   }) as any as S.Schema<VirtualMachineScaleSetPublicIPAddressConfigurationProperties>;
 
 /** Specify public IP sku name. */
-export type PublicIPAddressSkuName = "Basic" | "Standard" | (string & {});
+export type PublicIPAddressSkuName = "Basic" | "Standard";
 export const PublicIPAddressSkuName = /*@__PURE__*/ S.String;
 
 /** Specify public IP sku tier */
-export type PublicIPAddressSkuTier = "Regional" | "Global" | (string & {});
+export type PublicIPAddressSkuTier = "Regional" | "Global";
 export const PublicIPAddressSkuTier = /*@__PURE__*/ S.String;
 
 /** Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible. */
@@ -1244,7 +1128,7 @@ export const VirtualMachineScaleSetPublicIPAddressConfiguration =
 
 /** Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets cannot use the same application gateway. */
 export type VirtualMachineScaleSetIPConfigurationPropertiesApplicationGatewayBackendAddressPoolsList =
-  SubResource[];
+  ReadonlyArray<SubResource>;
 export const VirtualMachineScaleSetIPConfigurationPropertiesApplicationGatewayBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     SubResource,
@@ -1252,7 +1136,7 @@ export const VirtualMachineScaleSetIPConfigurationPropertiesApplicationGatewayBa
 
 /** Specifies an array of references to application security group. */
 export type VirtualMachineScaleSetIPConfigurationPropertiesApplicationSecurityGroupsList =
-  SubResource[];
+  ReadonlyArray<SubResource>;
 export const VirtualMachineScaleSetIPConfigurationPropertiesApplicationSecurityGroupsList =
   /*@__PURE__*/ S.Array(
     SubResource,
@@ -1260,7 +1144,7 @@ export const VirtualMachineScaleSetIPConfigurationPropertiesApplicationSecurityG
 
 /** Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer. */
 export type VirtualMachineScaleSetIPConfigurationPropertiesLoadBalancerBackendAddressPoolsList =
-  SubResource[];
+  ReadonlyArray<SubResource>;
 export const VirtualMachineScaleSetIPConfigurationPropertiesLoadBalancerBackendAddressPoolsList =
   /*@__PURE__*/ S.Array(
     SubResource,
@@ -1268,7 +1152,7 @@ export const VirtualMachineScaleSetIPConfigurationPropertiesLoadBalancerBackendA
 
 /** Specifies an array of references to inbound Nat pools of the load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer. */
 export type VirtualMachineScaleSetIPConfigurationPropertiesLoadBalancerInboundNatPoolsList =
-  SubResource[];
+  ReadonlyArray<SubResource>;
 export const VirtualMachineScaleSetIPConfigurationPropertiesLoadBalancerInboundNatPoolsList =
   /*@__PURE__*/ S.Array(
     SubResource,
@@ -1338,7 +1222,7 @@ export const VirtualMachineScaleSetIPConfiguration = /*@__PURE__*/ S.suspend(
 
 /** Specifies the IP configurations of the network interface. */
 export type VirtualMachineScaleSetNetworkConfigurationPropertiesIpConfigurationsList =
-  VirtualMachineScaleSetIPConfiguration[];
+  ReadonlyArray<VirtualMachineScaleSetIPConfiguration>;
 export const VirtualMachineScaleSetNetworkConfigurationPropertiesIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     VirtualMachineScaleSetIPConfiguration,
@@ -1348,18 +1232,11 @@ export const VirtualMachineScaleSetNetworkConfigurationPropertiesIpConfiguration
 export type NetworkInterfaceAuxiliaryMode =
   | "None"
   | "AcceleratedConnections"
-  | "Floating"
-  | (string & {});
+  | "Floating";
 export const NetworkInterfaceAuxiliaryMode = /*@__PURE__*/ S.String;
 
 /** Specifies whether the Auxiliary sku is enabled for the Network Interface resource. */
-export type NetworkInterfaceAuxiliarySku =
-  | "None"
-  | "A1"
-  | "A2"
-  | "A4"
-  | "A8"
-  | (string & {});
+export type NetworkInterfaceAuxiliarySku = "None" | "A1" | "A2" | "A4" | "A8";
 export const NetworkInterfaceAuxiliarySku = /*@__PURE__*/ S.String;
 
 /** Describes a virtual machine scale set network profile's IP configuration. */
@@ -1430,14 +1307,14 @@ export const VirtualMachineScaleSetNetworkConfiguration =
 
 /** The list of network configurations. */
 export type VirtualMachineScaleSetNetworkProfileNetworkInterfaceConfigurationsList =
-  VirtualMachineScaleSetNetworkConfiguration[];
+  ReadonlyArray<VirtualMachineScaleSetNetworkConfiguration>;
 export const VirtualMachineScaleSetNetworkProfileNetworkInterfaceConfigurationsList =
   /*@__PURE__*/ S.Array(
     VirtualMachineScaleSetNetworkConfiguration,
   ) as any as S.Schema<VirtualMachineScaleSetNetworkProfileNetworkInterfaceConfigurationsList>;
 
 /** specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible' */
-export type NetworkApiVersion = "2020-11-01" | (string & {});
+export type NetworkApiVersion = "2020-11-01";
 export const NetworkApiVersion = /*@__PURE__*/ S.String;
 
 /** Describes a virtual machine scale set network profile. */
@@ -1477,7 +1354,7 @@ export const UefiSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UefiSettings" }) as any as S.Schema<UefiSettings>;
 
 /** Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set. */
-export type SecurityTypes = "TrustedLaunch" | "ConfidentialVM" | (string & {});
+export type SecurityTypes = "TrustedLaunch" | "ConfidentialVM";
 export const SecurityTypes = /*@__PURE__*/ S.String;
 
 /** Specifies the Managed Identity used by ADE to get access token for keyvault operations. */
@@ -1494,7 +1371,7 @@ export const EncryptionIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionIdentity>;
 
 /** Specifies the mode that ProxyAgent will execute on if the feature is enabled. ProxyAgent will start to audit or monitor but not enforce access control over requests to host endpoints in Audit mode, while in Enforce mode it will enforce access control. The default value is Enforce mode. */
-export type Mode = "Audit" | "Enforce" | (string & {});
+export type Mode = "Audit" | "Enforce";
 export const Mode = /*@__PURE__*/ S.String;
 
 /** Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01. */
@@ -1571,32 +1448,31 @@ export const DiagnosticsProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiagnosticsProfile>;
 
 /** Json formatted public settings for the extension. */
-export type VirtualMachineScaleSetExtensionPropertiesSettingsMap = {
+export type VirtualMachineScaleSetExtensionPropertiesInputSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const VirtualMachineScaleSetExtensionPropertiesSettingsMap =
+export const VirtualMachineScaleSetExtensionPropertiesInputSettingsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
-  ) as any as S.Schema<VirtualMachineScaleSetExtensionPropertiesSettingsMap>;
+  ) as any as S.Schema<VirtualMachineScaleSetExtensionPropertiesInputSettingsMap>;
 
 /** The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. */
-export type VirtualMachineScaleSetExtensionPropertiesProtectedSettingsMap = {
-  [key: string]: unknown | undefined;
-};
-export const VirtualMachineScaleSetExtensionPropertiesProtectedSettingsMap =
+export type VirtualMachineScaleSetExtensionPropertiesInputProtectedSettingsMap =
+  { [key: string]: unknown | undefined };
+export const VirtualMachineScaleSetExtensionPropertiesInputProtectedSettingsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
-  ) as any as S.Schema<VirtualMachineScaleSetExtensionPropertiesProtectedSettingsMap>;
+  ) as any as S.Schema<VirtualMachineScaleSetExtensionPropertiesInputProtectedSettingsMap>;
 
 /** Collection of extension names after which this extension needs to be provisioned. */
-export type VirtualMachineScaleSetExtensionPropertiesProvisionAfterExtensionsList =
-  string[];
-export const VirtualMachineScaleSetExtensionPropertiesProvisionAfterExtensionsList =
+export type VirtualMachineScaleSetExtensionPropertiesInputProvisionAfterExtensionsList =
+  ReadonlyArray<string>;
+export const VirtualMachineScaleSetExtensionPropertiesInputProvisionAfterExtensionsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<VirtualMachineScaleSetExtensionPropertiesProvisionAfterExtensionsList>;
+  ) as any as S.Schema<VirtualMachineScaleSetExtensionPropertiesInputProvisionAfterExtensionsList>;
 
 /** Describes a reference to Key Vault Secret */
 export interface KeyVaultSecretReference {
@@ -1615,7 +1491,7 @@ export const KeyVaultSecretReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyVaultSecretReference>;
 
 /** Describes the properties of a Virtual Machine Scale Set Extension. */
-export interface VirtualMachineScaleSetExtensionProperties {
+export interface VirtualMachineScaleSetExtensionPropertiesInput {
   /** If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed. */
   forceUpdateTag?: string;
   /** The name of the extension handler publisher. */
@@ -1629,19 +1505,17 @@ export interface VirtualMachineScaleSetExtensionProperties {
   /** Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available. */
   enableAutomaticUpgrade?: boolean;
   /** Json formatted public settings for the extension. */
-  settings?: VirtualMachineScaleSetExtensionPropertiesSettingsMap;
+  settings?: VirtualMachineScaleSetExtensionPropertiesInputSettingsMap;
   /** The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. */
-  protectedSettings?: VirtualMachineScaleSetExtensionPropertiesProtectedSettingsMap;
-  /** The provisioning state, which only appears in the response. */
-  provisioningState?: string;
+  protectedSettings?: VirtualMachineScaleSetExtensionPropertiesInputProtectedSettingsMap;
   /** Collection of extension names after which this extension needs to be provisioned. */
-  provisionAfterExtensions?: VirtualMachineScaleSetExtensionPropertiesProvisionAfterExtensionsList;
+  provisionAfterExtensions?: VirtualMachineScaleSetExtensionPropertiesInputProvisionAfterExtensionsList;
   /** Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false. */
   suppressFailures?: boolean;
   /** The extensions protected settings that are passed by reference, and consumed from key vault */
   protectedSettingsFromKeyVault?: KeyVaultSecretReference;
 }
-export const VirtualMachineScaleSetExtensionProperties =
+export const VirtualMachineScaleSetExtensionPropertiesInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       forceUpdateTag: S.optional(S.String),
@@ -1651,70 +1525,64 @@ export const VirtualMachineScaleSetExtensionProperties =
       autoUpgradeMinorVersion: S.optional(S.Boolean),
       enableAutomaticUpgrade: S.optional(S.Boolean),
       settings: S.optional(
-        VirtualMachineScaleSetExtensionPropertiesSettingsMap,
+        VirtualMachineScaleSetExtensionPropertiesInputSettingsMap,
       ),
       protectedSettings: S.optional(
-        VirtualMachineScaleSetExtensionPropertiesProtectedSettingsMap,
+        VirtualMachineScaleSetExtensionPropertiesInputProtectedSettingsMap,
       ),
-      provisioningState: S.optional(S.String),
       provisionAfterExtensions: S.optional(
-        VirtualMachineScaleSetExtensionPropertiesProvisionAfterExtensionsList,
+        VirtualMachineScaleSetExtensionPropertiesInputProvisionAfterExtensionsList,
       ),
       suppressFailures: S.optional(S.Boolean),
       protectedSettingsFromKeyVault: S.optional(KeyVaultSecretReference),
     }),
   ).annotate({
-    identifier: "VirtualMachineScaleSetExtensionProperties",
-  }) as any as S.Schema<VirtualMachineScaleSetExtensionProperties>;
+    identifier: "VirtualMachineScaleSetExtensionPropertiesInput",
+  }) as any as S.Schema<VirtualMachineScaleSetExtensionPropertiesInput>;
 
 /** Describes a Virtual Machine Scale Set Extension. */
-export interface VirtualMachineScaleSetExtension {
-  /** Resource Id */
-  id?: string;
+export interface VirtualMachineScaleSetExtensionInput {
   /** The name of the extension. */
   name?: string;
-  /** Resource type */
-  type?: string;
   /** Describes the properties of a Virtual Machine Scale Set Extension. */
-  properties?: VirtualMachineScaleSetExtensionProperties;
+  properties?: VirtualMachineScaleSetExtensionPropertiesInput;
 }
-export const VirtualMachineScaleSetExtension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(VirtualMachineScaleSetExtensionProperties),
-  }),
+export const VirtualMachineScaleSetExtensionInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.optional(S.String),
+      properties: S.optional(VirtualMachineScaleSetExtensionPropertiesInput),
+    }),
 ).annotate({
-  identifier: "VirtualMachineScaleSetExtension",
-}) as any as S.Schema<VirtualMachineScaleSetExtension>;
+  identifier: "VirtualMachineScaleSetExtensionInput",
+}) as any as S.Schema<VirtualMachineScaleSetExtensionInput>;
 
 /** The virtual machine scale set child extension resources. */
-export type VirtualMachineScaleSetExtensionProfileExtensionsList =
-  VirtualMachineScaleSetExtension[];
-export const VirtualMachineScaleSetExtensionProfileExtensionsList =
+export type VirtualMachineScaleSetExtensionProfileInputExtensionsList =
+  ReadonlyArray<VirtualMachineScaleSetExtensionInput>;
+export const VirtualMachineScaleSetExtensionProfileInputExtensionsList =
   /*@__PURE__*/ S.Array(
-    VirtualMachineScaleSetExtension,
-  ) as any as S.Schema<VirtualMachineScaleSetExtensionProfileExtensionsList>;
+    VirtualMachineScaleSetExtensionInput,
+  ) as any as S.Schema<VirtualMachineScaleSetExtensionProfileInputExtensionsList>;
 
 /** Describes a virtual machine scale set extension profile. */
-export interface VirtualMachineScaleSetExtensionProfile {
+export interface VirtualMachineScaleSetExtensionProfileInput {
   /** The virtual machine scale set child extension resources. */
-  extensions?: VirtualMachineScaleSetExtensionProfileExtensionsList;
+  extensions?: VirtualMachineScaleSetExtensionProfileInputExtensionsList;
   /** Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01. */
   extensionsTimeBudget?: string;
 }
-export const VirtualMachineScaleSetExtensionProfile = /*@__PURE__*/ S.suspend(
-  () =>
+export const VirtualMachineScaleSetExtensionProfileInput =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       extensions: S.optional(
-        VirtualMachineScaleSetExtensionProfileExtensionsList,
+        VirtualMachineScaleSetExtensionProfileInputExtensionsList,
       ),
       extensionsTimeBudget: S.optional(S.String),
     }),
-).annotate({
-  identifier: "VirtualMachineScaleSetExtensionProfile",
-}) as any as S.Schema<VirtualMachineScaleSetExtensionProfile>;
+  ).annotate({
+    identifier: "VirtualMachineScaleSetExtensionProfileInput",
+  }) as any as S.Schema<VirtualMachineScaleSetExtensionProfileInput>;
 
 /** Specifies Terminate Scheduled Event related configurations. */
 export interface TerminateNotificationProfile {
@@ -1806,7 +1674,8 @@ export const VMGalleryApplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VMGalleryApplication>;
 
 /** Specifies the gallery applications that should be made available to the VM/VMSS */
-export type ApplicationProfileGalleryApplicationsList = VMGalleryApplication[];
+export type ApplicationProfileGalleryApplicationsList =
+  ReadonlyArray<VMGalleryApplication>;
 export const ApplicationProfileGalleryApplicationsList = /*@__PURE__*/ S.Array(
   VMGalleryApplication,
 ) as any as S.Schema<ApplicationProfileGalleryApplicationsList>;
@@ -1868,7 +1737,8 @@ export const ServiceArtifactReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceArtifactReference>;
 
 /** List of virtual machine extension names to exclude when applying the security posture. */
-export type SecurityPostureReferenceExcludeExtensionsList = string[];
+export type SecurityPostureReferenceExcludeExtensionsList =
+  ReadonlyArray<string>;
 export const SecurityPostureReferenceExcludeExtensionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1894,6 +1764,535 @@ export const SecurityPostureReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SecurityPostureReference",
 }) as any as S.Schema<SecurityPostureReference>;
+
+/** Describes the base virtual machine profile for fleet */
+export interface BaseVirtualMachineProfileInput {
+  /** Specifies the operating system settings for the virtual machines in the scale set. */
+  osProfile?: VirtualMachineScaleSetOSProfile;
+  /** Specifies the storage settings for the virtual machine disks. */
+  storageProfile?: VirtualMachineScaleSetStorageProfileInput;
+  /** Specifies properties of the network interfaces of the virtual machines in the scale set. */
+  networkProfile?: VirtualMachineScaleSetNetworkProfile;
+  /** Specifies the Security related profile settings for the virtual machines in the scale set. */
+  securityProfile?: SecurityProfile;
+  /** Specifies the boot diagnostic settings state. */
+  diagnosticsProfile?: DiagnosticsProfile;
+  /** Specifies a collection of settings for extensions installed on virtual machines in the scale set. */
+  extensionProfile?: VirtualMachineScaleSetExtensionProfileInput;
+  /** Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15 */
+  licenseType?: string;
+  /** Specifies Scheduled Event related configurations. */
+  scheduledEventsProfile?: ScheduledEventsProfile;
+  /** UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01. */
+  userData?: string;
+  /** Specifies the capacity reservation related details of a scale set. Minimum api-version: 2021-04-01. */
+  capacityReservation?: CapacityReservationProfile;
+  /** Specifies the gallery applications that should be made available to the VM/VMSS */
+  applicationProfile?: ApplicationProfile;
+  /** Specifies the hardware profile related details of a scale set. Minimum api-version: 2021-11-01. */
+  hardwareProfile?: VirtualMachineScaleSetHardwareProfile;
+  /** Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01 */
+  serviceArtifactReference?: ServiceArtifactReference;
+  /** Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01 */
+  securityPostureReference?: SecurityPostureReference;
+}
+export const BaseVirtualMachineProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    osProfile: S.optional(VirtualMachineScaleSetOSProfile),
+    storageProfile: S.optional(VirtualMachineScaleSetStorageProfileInput),
+    networkProfile: S.optional(VirtualMachineScaleSetNetworkProfile),
+    securityProfile: S.optional(SecurityProfile),
+    diagnosticsProfile: S.optional(DiagnosticsProfile),
+    extensionProfile: S.optional(VirtualMachineScaleSetExtensionProfileInput),
+    licenseType: S.optional(S.String),
+    scheduledEventsProfile: S.optional(ScheduledEventsProfile),
+    userData: S.optional(S.String),
+    capacityReservation: S.optional(CapacityReservationProfile),
+    applicationProfile: S.optional(ApplicationProfile),
+    hardwareProfile: S.optional(VirtualMachineScaleSetHardwareProfile),
+    serviceArtifactReference: S.optional(ServiceArtifactReference),
+    securityPostureReference: S.optional(SecurityPostureReference),
+  }),
+).annotate({
+  identifier: "BaseVirtualMachineProfileInput",
+}) as any as S.Schema<BaseVirtualMachineProfileInput>;
+
+/** Represents the profile for a single additional location in the Fleet. The location and the virtualMachineProfileOverride (optional). */
+export interface LocationProfileInput {
+  /** The ARM location name of the additional region. If LocationProfile is specified, then location is required. */
+  location: string;
+  /** An override for computeProfile.baseVirtualMachineProfile specific to this region. This override is merged with the base virtual machine profile to define the final virtual machine profile for the resources deployed in this location. */
+  virtualMachineProfileOverride?: BaseVirtualMachineProfileInput;
+}
+export const LocationProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.String,
+    virtualMachineProfileOverride: S.optional(BaseVirtualMachineProfileInput),
+  }),
+).annotate({
+  identifier: "LocationProfileInput",
+}) as any as S.Schema<LocationProfileInput>;
+
+/** The list of location profiles. */
+export type AdditionalLocationsProfileInputLocationProfilesList =
+  ReadonlyArray<LocationProfileInput>;
+export const AdditionalLocationsProfileInputLocationProfilesList =
+  /*@__PURE__*/ S.Array(
+    LocationProfileInput,
+  ) as any as S.Schema<AdditionalLocationsProfileInputLocationProfilesList>;
+
+/** Represents the configuration for additional locations where Fleet resources may be deployed. */
+export interface AdditionalLocationsProfileInput {
+  /** The list of location profiles. */
+  locationProfiles: AdditionalLocationsProfileInputLocationProfilesList;
+}
+export const AdditionalLocationsProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    locationProfiles: AdditionalLocationsProfileInputLocationProfilesList,
+  }),
+).annotate({
+  identifier: "AdditionalLocationsProfileInput",
+}) as any as S.Schema<AdditionalLocationsProfileInput>;
+
+/** AdditionalCapabilities for VM. */
+export interface AdditionalCapabilities {
+  /** The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled. */
+  ultraSSDEnabled?: boolean;
+  /** The flag that enables or disables hibernation capability on the VM. */
+  hibernationEnabled?: boolean;
+}
+export const AdditionalCapabilities = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ultraSSDEnabled: S.optional(S.Boolean),
+    hibernationEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AdditionalCapabilities",
+}) as any as S.Schema<AdditionalCapabilities>;
+
+/** Compute Profile to use for running user's workloads. */
+export interface ComputeProfileInput {
+  /** Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile" */
+  baseVirtualMachineProfile: BaseVirtualMachineProfileInput;
+  /** Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines. The default value will be the latest supported computeApiVersion by Compute Fleet. */
+  computeApiVersion?: string;
+  /** Specifies the number of fault domains to use when creating the underlying VMSS. A fault domain is a logical group of hardware within an Azure datacenter. VMs in the same fault domain share a common power source and network switch. If not specified, defaults to 1, which represents "Max Spreading" (using as many fault domains as possible). This property cannot be updated. */
+  platformFaultDomainCount?: number;
+  /** Specifies VMSS and VM API entity models support two additional capabilities as of today: ultraSSDEnabled and hibernationEnabled. ultraSSDEnabled: Enables UltraSSD_LRS storage account type on the VMSS VMs. hibernationEnabled: Enables the hibernation capability on the VMSS VMs. Default value is null if not specified. This property cannot be updated once set. */
+  additionalVirtualMachineCapabilities?: AdditionalCapabilities;
+}
+export const ComputeProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseVirtualMachineProfile: BaseVirtualMachineProfileInput,
+    computeApiVersion: S.optional(S.String),
+    platformFaultDomainCount: S.optional(S.Number),
+    additionalVirtualMachineCapabilities: S.optional(AdditionalCapabilities),
+  }),
+).annotate({
+  identifier: "ComputeProfileInput",
+}) as any as S.Schema<ComputeProfileInput>;
+
+/** Details of the Compute Fleet. */
+export interface FleetPropertiesInput {
+  /** Configuration Options for Spot instances in Compute Fleet. */
+  spotPriorityProfile?: SpotPriorityProfile;
+  /** Configuration Options for Regular instances in Compute Fleet. */
+  regularPriorityProfile?: RegularPriorityProfile;
+  /** List of VM sizes supported for Compute Fleet */
+  vmSizesProfile: FleetPropertiesInputVmSizesProfileList;
+  /** Attribute based Fleet. */
+  vmAttributes?: VMAttributes;
+  /** Represents the configuration for additional locations where Fleet resources may be deployed. */
+  additionalLocationsProfile?: AdditionalLocationsProfileInput;
+  /** Compute Profile to use for running user's workloads. */
+  computeProfile: ComputeProfileInput;
+}
+export const FleetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spotPriorityProfile: S.optional(SpotPriorityProfile),
+    regularPriorityProfile: S.optional(RegularPriorityProfile),
+    vmSizesProfile: FleetPropertiesInputVmSizesProfileList,
+    vmAttributes: S.optional(VMAttributes),
+    additionalLocationsProfile: S.optional(AdditionalLocationsProfileInput),
+    computeProfile: ComputeProfileInput,
+  }),
+).annotate({
+  identifier: "FleetPropertiesInput",
+}) as any as S.Schema<FleetPropertiesInput>;
+
+/** Zones in which the Compute Fleet is available */
+export type FleetsCreateOrUpdateRequestZonesList = ReadonlyArray<string>;
+export const FleetsCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FleetsCreateOrUpdateRequestZonesList>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface FleetsCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const FleetsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "FleetsCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<FleetsCreateOrUpdateRequestIdentity>;
+
+/** Plan for the resource. */
+export interface FleetsCreateOrUpdateRequestPlan {
+  /** A user defined name of the 3rd Party Artifact that is being procured. */
+  name: string;
+  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
+  publisher: string;
+  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
+  product: string;
+  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
+  promotionCode?: string;
+  /** The version of the desired product/artifact. */
+  version?: string;
+}
+export const FleetsCreateOrUpdateRequestPlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    publisher: S.String,
+    product: S.String,
+    promotionCode: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FleetsCreateOrUpdateRequestPlan",
+}) as any as S.Schema<FleetsCreateOrUpdateRequestPlan>;
+
+export interface FleetsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Compute Fleet */
+  fleetName: string;
+  /** Resource tags. */
+  tags?: FleetsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: FleetPropertiesInput;
+  /** Zones in which the Compute Fleet is available */
+  zones?: FleetsCreateOrUpdateRequestZonesList;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: FleetsCreateOrUpdateRequestIdentity;
+  /** Plan for the resource. */
+  plan?: FleetsCreateOrUpdateRequestPlan;
+}
+export const FleetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    fleetName: S.String.pipe(T.Label()),
+    tags: S.optional(FleetsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(FleetPropertiesInput),
+    zones: S.optional(FleetsCreateOrUpdateRequestZonesList),
+    identity: S.optional(FleetsCreateOrUpdateRequestIdentity),
+    plan: S.optional(FleetsCreateOrUpdateRequestPlan),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureFleet/fleets/{fleetName}",
+      code: 200,
+      apiVersion: "2024-11-01",
+    }),
+  ),
+).annotate({
+  identifier: "FleetsCreateOrUpdateRequest",
+}) as any as S.Schema<FleetsCreateOrUpdateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** Resource tags. */
+export type FleetsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FleetsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FleetsCreateOrUpdateResponseTagsMap>;
+
+/** The status of the current operation. */
+export type ProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Creating"
+  | "Updating"
+  | "Deleting"
+  | "Migrating";
+export const ProvisioningState = /*@__PURE__*/ S.String;
+
+/** List of VM sizes supported for Compute Fleet */
+export type FleetPropertiesVmSizesProfileList = ReadonlyArray<VmSizeProfile>;
+export const FleetPropertiesVmSizesProfileList = /*@__PURE__*/ S.Array(
+  VmSizeProfile,
+) as any as S.Schema<FleetPropertiesVmSizesProfileList>;
+
+/** Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set. */
+export interface ImageReference {
+  /** Resource Id */
+  id?: string;
+  /** The image publisher. */
+  publisher?: string;
+  /** Specifies the offer of the platform image or marketplace image used to create the virtual machine. */
+  offer?: string;
+  /** The image SKU. */
+  sku?: string;
+  /** Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input. */
+  version?: string;
+  /** Specifies in decimal numbers, the version of platform image or marketplace image used to create the virtual machine. This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'. */
+  exactVersion?: string;
+  /** Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call. */
+  sharedGalleryImageId?: string;
+  /** Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call. */
+  communityGalleryImageId?: string;
+}
+export const ImageReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    publisher: S.optional(S.String),
+    offer: S.optional(S.String),
+    sku: S.optional(S.String),
+    version: S.optional(S.String),
+    exactVersion: S.optional(S.String),
+    sharedGalleryImageId: S.optional(S.String),
+    communityGalleryImageId: S.optional(S.String),
+  }),
+).annotate({ identifier: "ImageReference" }) as any as S.Schema<ImageReference>;
+
+/** Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview). */
+export type VirtualMachineScaleSetStorageProfileDataDisksList =
+  ReadonlyArray<VirtualMachineScaleSetDataDisk>;
+export const VirtualMachineScaleSetStorageProfileDataDisksList =
+  /*@__PURE__*/ S.Array(
+    VirtualMachineScaleSetDataDisk,
+  ) as any as S.Schema<VirtualMachineScaleSetStorageProfileDataDisksList>;
+
+/** Describes a virtual machine scale set storage profile. */
+export interface VirtualMachineScaleSetStorageProfile {
+  /** Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. */
+  imageReference?: ImageReference;
+  /** Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview). */
+  osDisk?: VirtualMachineScaleSetOSDisk;
+  /** Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview). */
+  dataDisks?: VirtualMachineScaleSetStorageProfileDataDisksList;
+  /** Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01 */
+  diskControllerType?: DiskControllerTypes;
+}
+export const VirtualMachineScaleSetStorageProfile = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      imageReference: S.optional(ImageReference),
+      osDisk: S.optional(VirtualMachineScaleSetOSDisk),
+      dataDisks: S.optional(VirtualMachineScaleSetStorageProfileDataDisksList),
+      diskControllerType: S.optional(DiskControllerTypes),
+    }),
+).annotate({
+  identifier: "VirtualMachineScaleSetStorageProfile",
+}) as any as S.Schema<VirtualMachineScaleSetStorageProfile>;
+
+/** Json formatted public settings for the extension. */
+export type VirtualMachineScaleSetExtensionPropertiesSettingsMap = {
+  [key: string]: unknown | undefined;
+};
+export const VirtualMachineScaleSetExtensionPropertiesSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<VirtualMachineScaleSetExtensionPropertiesSettingsMap>;
+
+/** The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. */
+export type VirtualMachineScaleSetExtensionPropertiesProtectedSettingsMap = {
+  [key: string]: unknown | undefined;
+};
+export const VirtualMachineScaleSetExtensionPropertiesProtectedSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<VirtualMachineScaleSetExtensionPropertiesProtectedSettingsMap>;
+
+/** Collection of extension names after which this extension needs to be provisioned. */
+export type VirtualMachineScaleSetExtensionPropertiesProvisionAfterExtensionsList =
+  ReadonlyArray<string>;
+export const VirtualMachineScaleSetExtensionPropertiesProvisionAfterExtensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<VirtualMachineScaleSetExtensionPropertiesProvisionAfterExtensionsList>;
+
+/** Describes the properties of a Virtual Machine Scale Set Extension. */
+export interface VirtualMachineScaleSetExtensionProperties {
+  /** If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed. */
+  forceUpdateTag?: string;
+  /** The name of the extension handler publisher. */
+  publisher?: string;
+  /** Specifies the type of the extension; an example is "CustomScriptExtension". */
+  type?: string;
+  /** Specifies the version of the script handler. */
+  typeHandlerVersion?: string;
+  /** Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true. */
+  autoUpgradeMinorVersion?: boolean;
+  /** Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available. */
+  enableAutomaticUpgrade?: boolean;
+  /** Json formatted public settings for the extension. */
+  settings?: VirtualMachineScaleSetExtensionPropertiesSettingsMap;
+  /** The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. */
+  protectedSettings?: VirtualMachineScaleSetExtensionPropertiesProtectedSettingsMap;
+  /** The provisioning state, which only appears in the response. */
+  provisioningState?: string;
+  /** Collection of extension names after which this extension needs to be provisioned. */
+  provisionAfterExtensions?: VirtualMachineScaleSetExtensionPropertiesProvisionAfterExtensionsList;
+  /** Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false. */
+  suppressFailures?: boolean;
+  /** The extensions protected settings that are passed by reference, and consumed from key vault */
+  protectedSettingsFromKeyVault?: KeyVaultSecretReference;
+}
+export const VirtualMachineScaleSetExtensionProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      forceUpdateTag: S.optional(S.String),
+      publisher: S.optional(S.String),
+      type: S.optional(S.String),
+      typeHandlerVersion: S.optional(S.String),
+      autoUpgradeMinorVersion: S.optional(S.Boolean),
+      enableAutomaticUpgrade: S.optional(S.Boolean),
+      settings: S.optional(
+        VirtualMachineScaleSetExtensionPropertiesSettingsMap,
+      ),
+      protectedSettings: S.optional(
+        VirtualMachineScaleSetExtensionPropertiesProtectedSettingsMap,
+      ),
+      provisioningState: S.optional(S.String),
+      provisionAfterExtensions: S.optional(
+        VirtualMachineScaleSetExtensionPropertiesProvisionAfterExtensionsList,
+      ),
+      suppressFailures: S.optional(S.Boolean),
+      protectedSettingsFromKeyVault: S.optional(KeyVaultSecretReference),
+    }),
+  ).annotate({
+    identifier: "VirtualMachineScaleSetExtensionProperties",
+  }) as any as S.Schema<VirtualMachineScaleSetExtensionProperties>;
+
+/** Describes a Virtual Machine Scale Set Extension. */
+export interface VirtualMachineScaleSetExtension {
+  /** Resource Id */
+  id?: string;
+  /** The name of the extension. */
+  name?: string;
+  /** Resource type */
+  type?: string;
+  /** Describes the properties of a Virtual Machine Scale Set Extension. */
+  properties?: VirtualMachineScaleSetExtensionProperties;
+}
+export const VirtualMachineScaleSetExtension = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(VirtualMachineScaleSetExtensionProperties),
+  }),
+).annotate({
+  identifier: "VirtualMachineScaleSetExtension",
+}) as any as S.Schema<VirtualMachineScaleSetExtension>;
+
+/** The virtual machine scale set child extension resources. */
+export type VirtualMachineScaleSetExtensionProfileExtensionsList =
+  ReadonlyArray<VirtualMachineScaleSetExtension>;
+export const VirtualMachineScaleSetExtensionProfileExtensionsList =
+  /*@__PURE__*/ S.Array(
+    VirtualMachineScaleSetExtension,
+  ) as any as S.Schema<VirtualMachineScaleSetExtensionProfileExtensionsList>;
+
+/** Describes a virtual machine scale set extension profile. */
+export interface VirtualMachineScaleSetExtensionProfile {
+  /** The virtual machine scale set child extension resources. */
+  extensions?: VirtualMachineScaleSetExtensionProfileExtensionsList;
+  /** Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01. */
+  extensionsTimeBudget?: string;
+}
+export const VirtualMachineScaleSetExtensionProfile = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      extensions: S.optional(
+        VirtualMachineScaleSetExtensionProfileExtensionsList,
+      ),
+      extensionsTimeBudget: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "VirtualMachineScaleSetExtensionProfile",
+}) as any as S.Schema<VirtualMachineScaleSetExtensionProfile>;
 
 /** Describes the base virtual machine profile for fleet */
 export interface BaseVirtualMachineProfile {
@@ -1967,7 +2366,8 @@ export const LocationProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationProfile>;
 
 /** The list of location profiles. */
-export type AdditionalLocationsProfileLocationProfilesList = LocationProfile[];
+export type AdditionalLocationsProfileLocationProfilesList =
+  ReadonlyArray<LocationProfile>;
 export const AdditionalLocationsProfileLocationProfilesList =
   /*@__PURE__*/ S.Array(
     LocationProfile,
@@ -1985,22 +2385,6 @@ export const AdditionalLocationsProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdditionalLocationsProfile",
 }) as any as S.Schema<AdditionalLocationsProfile>;
-
-/** AdditionalCapabilities for VM. */
-export interface AdditionalCapabilities {
-  /** The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled. */
-  ultraSSDEnabled?: boolean;
-  /** The flag that enables or disables hibernation capability on the VM. */
-  hibernationEnabled?: boolean;
-}
-export const AdditionalCapabilities = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ultraSSDEnabled: S.optional(S.Boolean),
-    hibernationEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AdditionalCapabilities",
-}) as any as S.Schema<AdditionalCapabilities>;
 
 /** Compute Profile to use for running user's workloads. */
 export interface ComputeProfile {
@@ -2060,19 +2444,10 @@ export const FleetProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetProperties>;
 
 /** Zones in which the Compute Fleet is available */
-export type FleetsCreateOrUpdateResponseZonesList = string[];
+export type FleetsCreateOrUpdateResponseZonesList = ReadonlyArray<string>;
 export const FleetsCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FleetsCreateOrUpdateResponseZonesList>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -2249,7 +2624,7 @@ export const FleetsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FleetsGetResponseTagsMap>;
 
 /** Zones in which the Compute Fleet is available */
-export type FleetsGetResponseZonesList = string[];
+export type FleetsGetResponseZonesList = ReadonlyArray<string>;
 export const FleetsGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FleetsGetResponseZonesList>;
@@ -2368,7 +2743,7 @@ export const FleetTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FleetTagsMap>;
 
 /** Zones in which the Compute Fleet is available */
-export type FleetZonesList = string[];
+export type FleetZonesList = ReadonlyArray<string>;
 export const FleetZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FleetZonesList>;
@@ -2453,7 +2828,7 @@ export const Fleet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Fleet" }) as any as S.Schema<Fleet>;
 
 /** The Fleet items on this page */
-export type FleetListResultValueList = Fleet[];
+export type FleetListResultValueList = ReadonlyArray<Fleet>;
 export const FleetListResultValueList = /*@__PURE__*/ S.Array(
   Fleet,
 ) as any as S.Schema<FleetListResultValueList>;
@@ -2537,7 +2912,7 @@ export const ApiErrorBase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiErrorBase" }) as any as S.Schema<ApiErrorBase>;
 
 /** The API error details */
-export type ApiErrorDetailsList = ApiErrorBase[];
+export type ApiErrorDetailsList = ReadonlyArray<ApiErrorBase>;
 export const ApiErrorDetailsList = /*@__PURE__*/ S.Array(
   ApiErrorBase,
 ) as any as S.Schema<ApiErrorDetailsList>;
@@ -2606,7 +2981,7 @@ export const VirtualMachineScaleSet = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualMachineScaleSet items on this page */
 export type VirtualMachineScaleSetListResultValueList =
-  VirtualMachineScaleSet[];
+  ReadonlyArray<VirtualMachineScaleSet>;
 export const VirtualMachineScaleSetListResultValueList = /*@__PURE__*/ S.Array(
   VirtualMachineScaleSet,
 ) as any as S.Schema<VirtualMachineScaleSetListResultValueList>;
@@ -2627,6 +3002,83 @@ export const VirtualMachineScaleSetListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "VirtualMachineScaleSetListResult",
 }) as any as S.Schema<VirtualMachineScaleSetListResult>;
 
+/** Resource tags. */
+export type FleetsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const FleetsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FleetsUpdateRequestTagsMap>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityUpdateInputType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityUpdateInputType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue {}
+export const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue",
+  }) as any as S.Schema<ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue>;
+
+/** The identities assigned to this resource by the user. */
+export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap = {
+  [key: string]:
+    | ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue
+    | undefined;
+};
+export const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue,
+  ) as any as S.Schema<ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap>;
+
+/** The template for adding optional properties. */
+export interface ManagedServiceIdentityUpdateInput {
+  /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+  type?: ManagedServiceIdentityUpdateInputType;
+  /** The identities assigned to this resource by the user. */
+  userAssignedIdentities?: ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap;
+}
+export const ManagedServiceIdentityUpdateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ManagedServiceIdentityUpdateInputType),
+    userAssignedIdentities: S.optional(
+      ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ManagedServiceIdentityUpdateInput",
+}) as any as S.Schema<ManagedServiceIdentityUpdateInput>;
+
+/** The template for adding optional properties. */
+export interface ResourcePlanUpdate {
+  /** A user defined name of the 3rd Party Artifact that is being procured. */
+  name?: string;
+  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
+  publisher?: string;
+  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
+  product?: string;
+  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
+  promotionCode?: string;
+  /** The version of the desired product/artifact. */
+  version?: string;
+}
+export const ResourcePlanUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    publisher: S.optional(S.String),
+    product: S.optional(S.String),
+    promotionCode: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourcePlanUpdate",
+}) as any as S.Schema<ResourcePlanUpdate>;
+
 export interface FleetsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2634,14 +3086,24 @@ export interface FleetsUpdateRequest {
   resourceGroupName: string;
   /** The name of the Compute Fleet */
   fleetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: FleetsUpdateRequestTagsMap;
+  /** Updatable managed service identity */
+  identity?: ManagedServiceIdentityUpdateInput;
+  /** Updatable resource plan */
+  plan?: ResourcePlanUpdate;
+  /** RP-specific updatable properties */
+  properties?: FleetPropertiesInput;
 }
 export const FleetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     fleetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(FleetsUpdateRequestTagsMap),
+    identity: S.optional(ManagedServiceIdentityUpdateInput),
+    plan: S.optional(ResourcePlanUpdate),
+    properties: S.optional(FleetPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2662,7 +3124,7 @@ export const FleetsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FleetsUpdateResponseTagsMap>;
 
 /** Zones in which the Compute Fleet is available */
-export type FleetsUpdateResponseZonesList = string[];
+export type FleetsUpdateResponseZonesList = ReadonlyArray<string>;
 export const FleetsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FleetsUpdateResponseZonesList>;
@@ -2788,11 +3250,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2819,7 +3281,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

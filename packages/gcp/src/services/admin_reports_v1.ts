@@ -117,7 +117,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -149,7 +149,8 @@ export const UsageReportParametersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsageReportParametersItem",
 }) as any as S.Schema<UsageReportParametersItem>;
 
-export type UsageReportParametersItemList = UsageReportParametersItem[];
+export type UsageReportParametersItemList =
+  ReadonlyArray<UsageReportParametersItem>;
 export const UsageReportParametersItemList = /*@__PURE__*/ S.Array(
   UsageReportParametersItem,
 ) as any as S.Schema<UsageReportParametersItemList>;
@@ -177,7 +178,7 @@ export const UsageReport = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsageReport" }) as any as S.Schema<UsageReport>;
 
-export type UsageReportList = UsageReport[];
+export type UsageReportList = ReadonlyArray<UsageReport>;
 export const UsageReportList = /*@__PURE__*/ S.Array(
   UsageReport,
 ) as any as S.Schema<UsageReportList>;
@@ -198,7 +199,7 @@ export const UsageReportsWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageReportsWarningsItemDataItem>;
 
 export type UsageReportsWarningsItemDataItemList =
-  UsageReportsWarningsItemDataItem[];
+  ReadonlyArray<UsageReportsWarningsItemDataItem>;
 export const UsageReportsWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   UsageReportsWarningsItemDataItem,
 ) as any as S.Schema<UsageReportsWarningsItemDataItemList>;
@@ -221,7 +222,8 @@ export const UsageReportsWarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsageReportsWarningsItem",
 }) as any as S.Schema<UsageReportsWarningsItem>;
 
-export type UsageReportsWarningsItemList = UsageReportsWarningsItem[];
+export type UsageReportsWarningsItemList =
+  ReadonlyArray<UsageReportsWarningsItem>;
 export const UsageReportsWarningsItemList = /*@__PURE__*/ S.Array(
   UsageReportsWarningsItem,
 ) as any as S.Schema<UsageReportsWarningsItemList>;
@@ -248,9 +250,7 @@ export const UsageReports = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsageReports" }) as any as S.Schema<UsageReports>;
 
-export type GetEntityUsageReportsEntityTypeEnum =
-  | "gplus_communities"
-  | (string & {});
+export type GetEntityUsageReportsEntityTypeEnum = "gplus_communities";
 export const GetEntityUsageReportsEntityTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetEntityUsageReportsRequest {
@@ -374,8 +374,7 @@ export type ListActivitiesApplicationNameEnum =
   | "takeout"
   | "graduation"
   | "voice"
-  | "chrome_sync"
-  | (string & {});
+  | "chrome_sync";
 export const ListActivitiesApplicationNameEnum = /*@__PURE__*/ S.String;
 
 export interface ListActivitiesRequest {
@@ -463,7 +462,7 @@ export const ActivityUserDeviceInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActivityUserDeviceInfo",
 }) as any as S.Schema<ActivityUserDeviceInfo>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -564,7 +563,7 @@ export const OwnerIdentity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OwnerIdentity" }) as any as S.Schema<OwnerIdentity>;
 
-export type OwnerIdentityList = OwnerIdentity[];
+export type OwnerIdentityList = ReadonlyArray<OwnerIdentity>;
 export const OwnerIdentityList = /*@__PURE__*/ S.Array(
   OwnerIdentity,
 ) as any as S.Schema<OwnerIdentityList>;
@@ -613,7 +612,7 @@ export const FieldValueUserValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "FieldValueUserValue",
 }) as any as S.Schema<FieldValueUserValue>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -661,7 +660,8 @@ export const FieldValueSelectionValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "FieldValueSelectionValue",
 }) as any as S.Schema<FieldValueSelectionValue>;
 
-export type FieldValueSelectionValueList = FieldValueSelectionValue[];
+export type FieldValueSelectionValueList =
+  ReadonlyArray<FieldValueSelectionValue>;
 export const FieldValueSelectionValueList = /*@__PURE__*/ S.Array(
   FieldValueSelectionValue,
 ) as any as S.Schema<FieldValueSelectionValueList>;
@@ -679,7 +679,7 @@ export const FieldValueSelectionListValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "FieldValueSelectionListValue",
 }) as any as S.Schema<FieldValueSelectionListValue>;
 
-export type FieldValueUserValueList = FieldValueUserValue[];
+export type FieldValueUserValueList = ReadonlyArray<FieldValueUserValue>;
 export const FieldValueUserValueList = /*@__PURE__*/ S.Array(
   FieldValueUserValue,
 ) as any as S.Schema<FieldValueUserValueList>;
@@ -747,7 +747,7 @@ export const FieldValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldValue" }) as any as S.Schema<FieldValue>;
 
-export type FieldValueList = FieldValue[];
+export type FieldValueList = ReadonlyArray<FieldValue>;
 export const FieldValueList = /*@__PURE__*/ S.Array(
   FieldValue,
 ) as any as S.Schema<FieldValueList>;
@@ -772,7 +772,7 @@ export const AppliedLabel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppliedLabel" }) as any as S.Schema<AppliedLabel>;
 
-export type AppliedLabelList = AppliedLabel[];
+export type AppliedLabelList = ReadonlyArray<AppliedLabel>;
 export const AppliedLabelList = /*@__PURE__*/ S.Array(
   AppliedLabel,
 ) as any as S.Schema<AppliedLabelList>;
@@ -805,12 +805,12 @@ export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceDetails",
 }) as any as S.Schema<ResourceDetails>;
 
-export type ResourceDetailsList = ResourceDetails[];
+export type ResourceDetailsList = ReadonlyArray<ResourceDetails>;
 export const ResourceDetailsList = /*@__PURE__*/ S.Array(
   ResourceDetails,
 ) as any as S.Schema<ResourceDetailsList>;
 
-export type BooleanList = boolean[];
+export type BooleanList = ReadonlyArray<boolean>;
 export const BooleanList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<BooleanList>;
@@ -846,7 +846,7 @@ export const NestedParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "NestedParameter",
 }) as any as S.Schema<NestedParameter>;
 
-export type NestedParameterList = NestedParameter[];
+export type NestedParameterList = ReadonlyArray<NestedParameter>;
 export const NestedParameterList = /*@__PURE__*/ S.Array(
   NestedParameter,
 ) as any as S.Schema<NestedParameterList>;
@@ -878,7 +878,7 @@ export const ActivityEventsItemParametersItemMultiMessageValueItem =
   }) as any as S.Schema<ActivityEventsItemParametersItemMultiMessageValueItem>;
 
 export type ActivityEventsItemParametersItemMultiMessageValueItemList =
-  ActivityEventsItemParametersItemMultiMessageValueItem[];
+  ReadonlyArray<ActivityEventsItemParametersItemMultiMessageValueItem>;
 export const ActivityEventsItemParametersItemMultiMessageValueItemList =
   /*@__PURE__*/ S.Array(
     ActivityEventsItemParametersItemMultiMessageValueItem,
@@ -920,7 +920,7 @@ export const ActivityEventsItemParametersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityEventsItemParametersItem>;
 
 export type ActivityEventsItemParametersItemList =
-  ActivityEventsItemParametersItem[];
+  ReadonlyArray<ActivityEventsItemParametersItem>;
 export const ActivityEventsItemParametersItemList = /*@__PURE__*/ S.Array(
   ActivityEventsItemParametersItem,
 ) as any as S.Schema<ActivityEventsItemParametersItemList>;
@@ -953,7 +953,7 @@ export const ActivityEventsItemSensitiveParametersItemMultiMessageValueItem =
   }) as any as S.Schema<ActivityEventsItemSensitiveParametersItemMultiMessageValueItem>;
 
 export type ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList =
-  ActivityEventsItemSensitiveParametersItemMultiMessageValueItem[];
+  ReadonlyArray<ActivityEventsItemSensitiveParametersItemMultiMessageValueItem>;
 export const ActivityEventsItemSensitiveParametersItemMultiMessageValueItemList =
   /*@__PURE__*/ S.Array(
     ActivityEventsItemSensitiveParametersItemMultiMessageValueItem,
@@ -998,7 +998,7 @@ export const ActivityEventsItemSensitiveParametersItem =
   }) as any as S.Schema<ActivityEventsItemSensitiveParametersItem>;
 
 export type ActivityEventsItemSensitiveParametersItemList =
-  ActivityEventsItemSensitiveParametersItem[];
+  ReadonlyArray<ActivityEventsItemSensitiveParametersItem>;
 export const ActivityEventsItemSensitiveParametersItemList =
   /*@__PURE__*/ S.Array(
     ActivityEventsItemSensitiveParametersItem,
@@ -1055,7 +1055,7 @@ export const ActivityEventsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActivityEventsItem",
 }) as any as S.Schema<ActivityEventsItem>;
 
-export type ActivityEventsItemList = ActivityEventsItem[];
+export type ActivityEventsItemList = ReadonlyArray<ActivityEventsItem>;
 export const ActivityEventsItemList = /*@__PURE__*/ S.Array(
   ActivityEventsItem,
 ) as any as S.Schema<ActivityEventsItemList>;
@@ -1179,7 +1179,7 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
-export type ActivityList = Activity[];
+export type ActivityList = ReadonlyArray<Activity>;
 export const ActivityList = /*@__PURE__*/ S.Array(
   Activity,
 ) as any as S.Schema<ActivityList>;
@@ -1295,8 +1295,7 @@ export type WatchActivitiesApplicationNameEnum =
   | "chrome"
   | "data_studio"
   | "keep"
-  | "classroom"
-  | (string & {});
+  | "classroom";
 export const WatchActivitiesApplicationNameEnum = /*@__PURE__*/ S.String;
 
 export interface WatchActivitiesRequest {

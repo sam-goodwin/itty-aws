@@ -242,16 +242,124 @@
             "smithy.api#documentation": "The name of the console"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cloudshell#ConsoleCreateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cloudshell#ConsoleCreateProperties": {
+      "type": "structure",
+      "members": {
+        "osType": {
+          "target": "com.azure.cloudshell#ConsoleCreatePropertiesOsType",
+          "traits": {
+            "smithy.api#documentation": "The operating system type of the cloud shell.",
+            "smithy.api#required": {}
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.cloudshell#ConsoleCreatePropertiesProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "Provisioning state of the console."
+          }
+        },
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Uri of the console."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cloud shell properties for creating a console."
+      }
+    },
+    "com.azure.cloudshell#ConsoleCreatePropertiesProvisioningState": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Accepted"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pending"
+          }
+        },
+        "UPDATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Updating"
+          }
+        },
+        "CREATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Creating"
+          }
+        },
+        "REPAIRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Repairing"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provisioning state of the console."
+      }
+    },
+    "com.azure.cloudshell#ConsoleCreatePropertiesOsType": {
+      "type": "enum",
+      "members": {
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        },
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The operating system type of the cloud shell."
       }
     },
     "com.azure.cloudshell#GetConsole": {
@@ -573,12 +681,8 @@
             "smithy.api#documentation": "The name of the user settings"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.cloudshell#UserProperties"
         }
       },
       "traits": {
@@ -629,10 +733,9 @@
             "smithy.api#documentation": "The name of the user settings"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cloudshell#UserProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
@@ -985,12 +1088,8 @@
             "smithy.api#documentation": "The name of the user settings"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.cloudshell#UserProperties"
         }
       },
       "traits": {
@@ -1049,10 +1148,9 @@
             "smithy.api#documentation": "The name of the user settings"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cloudshell#UserProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }

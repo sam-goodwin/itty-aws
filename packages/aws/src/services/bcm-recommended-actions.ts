@@ -118,10 +118,10 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     T.HttpError(400),
   ),
 ).pipe(C.withBadRequestError) {}
-export type FilterName = "FEATURE" | "SEVERITY" | "TYPE" | (string & {});
+export type FilterName = "FEATURE" | "SEVERITY" | "TYPE";
 export const FilterName = /*@__PURE__*/ S.String;
 
-export type MatchOption = "EQUALS" | "NOT_EQUALS" | (string & {});
+export type MatchOption = "EQUALS" | "NOT_EQUALS";
 export const MatchOption = /*@__PURE__*/ S.String;
 
 export type FilterValue = string;
@@ -181,12 +181,11 @@ export type ActionType =
   | "UPDATE_EXPIRED_PAYMENT_METHOD"
   | "UPDATE_INVALID_PAYMENT_METHOD"
   | "UPDATE_TAX_EXEMPTION_CERTIFICATE"
-  | "UPDATE_TAX_REGISTRATION_NUMBER"
-  | (string & {});
+  | "UPDATE_TAX_REGISTRATION_NUMBER";
 export const ActionType = /*@__PURE__*/ S.String;
 
 export type AccountId = string;
-export type Severity = "INFO" | "WARNING" | "CRITICAL" | (string & {});
+export type Severity = "INFO" | "WARNING" | "CRITICAL";
 export const Severity = /*@__PURE__*/ S.String;
 
 export type Feature =
@@ -199,8 +198,7 @@ export type Feature =
   | "PAYMENTS"
   | "RESERVATIONS"
   | "SAVINGS_PLANS"
-  | "TAX_SETTINGS"
-  | (string & {});
+  | "TAX_SETTINGS";
 export const Feature = /*@__PURE__*/ S.String;
 
 export type Context = { [key: string]: string | undefined };
@@ -253,8 +251,7 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other"
-  | (string & {});
+  | "other";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

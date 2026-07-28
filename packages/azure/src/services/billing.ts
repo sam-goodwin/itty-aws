@@ -13,11 +13,54 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 export interface AddressValidateRequest {
-  body: unknown;
+  /** Address line 1. */
+  addressLine1: string;
+  /** Address line 2. */
+  addressLine2?: string;
+  /** Address line 3. */
+  addressLine3?: string;
+  /** Address city. */
+  city?: string;
+  /** Company name. Optional for MCA Individual (Pay-as-you-go). */
+  companyName?: string;
+  /** Country code uses ISO 3166-1 Alpha-2 format. */
+  country: string;
+  /** Address district. */
+  district?: string;
+  /** Email address. */
+  email?: string;
+  /** First name. Optional for MCA Enterprise. */
+  firstName?: string;
+  /** Last name. Optional for MCA Enterprise. */
+  lastName?: string;
+  /** Middle name. */
+  middleName?: string;
+  /** Phone number. */
+  phoneNumber?: string;
+  /** Postal code. */
+  postalCode?: string;
+  /** Address region. */
+  region?: string;
+  /** Indicates if the address is incomplete. */
+  isValidAddress?: boolean;
 }
 export const AddressValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    addressLine1: S.String,
+    addressLine2: S.optional(S.String),
+    addressLine3: S.optional(S.String),
+    city: S.optional(S.String),
+    companyName: S.optional(S.String),
+    country: S.String,
+    district: S.optional(S.String),
+    email: S.optional(S.String),
+    firstName: S.optional(S.String),
+    lastName: S.optional(S.String),
+    middleName: S.optional(S.String),
+    phoneNumber: S.optional(S.String),
+    postalCode: S.optional(S.String),
+    region: S.optional(S.String),
+    isValidAddress: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -31,11 +74,7 @@ export const AddressValidateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressValidateRequest>;
 
 /** Status of the address validation. */
-export type AddressValidationStatus =
-  | "Other"
-  | "Valid"
-  | "Invalid"
-  | (string & {});
+export type AddressValidationStatus = "Other" | "Valid" | "Invalid";
 export const AddressValidationStatus = /*@__PURE__*/ S.String;
 
 /** Address details. */
@@ -92,7 +131,8 @@ export const AddressDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddressDetails" }) as any as S.Schema<AddressDetails>;
 
 /** The list of suggested addresses. */
-export type AddressValidationResponseSuggestedAddressesList = AddressDetails[];
+export type AddressValidationResponseSuggestedAddressesList =
+  ReadonlyArray<AddressDetails>;
 export const AddressValidationResponseSuggestedAddressesList =
   /*@__PURE__*/ S.Array(
     AddressDetails,
@@ -146,8 +186,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -155,8 +194,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -193,8 +231,7 @@ export type AcceptanceMode =
   | "ESignOffline"
   | "Implicit"
   | "Offline"
-  | "PhysicalSign"
-  | (string & {});
+  | "PhysicalSign";
 export const AcceptanceMode = /*@__PURE__*/ S.String;
 
 /** Details about billing profile associated with agreement and available only for specific agreements. */
@@ -223,7 +260,8 @@ export const BillingProfileInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingProfileInfo>;
 
 /** The list of billing profiles associated with agreement and present only for specific agreements. */
-export type AgreementPropertiesBillingProfileInfoList = BillingProfileInfo[];
+export type AgreementPropertiesBillingProfileInfoList =
+  ReadonlyArray<BillingProfileInfo>;
 export const AgreementPropertiesBillingProfileInfoList = /*@__PURE__*/ S.Array(
   BillingProfileInfo,
 ) as any as S.Schema<AgreementPropertiesBillingProfileInfoList>;
@@ -235,8 +273,7 @@ export type Category =
   | "IndirectForGovernmentAgreement"
   | "MicrosoftCustomerAgreement"
   | "MicrosoftPartnerAgreement"
-  | "UKCloudComputeFramework"
-  | (string & {});
+  | "UKCloudComputeFramework";
 export const Category = /*@__PURE__*/ S.String;
 
 /** Billing account name. Available for a specific type of agreement. */
@@ -257,7 +294,7 @@ export const Participant = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Participant" }) as any as S.Schema<Participant>;
 
 /** The list of participants that participates in acceptance of an agreement. */
-export type AgreementPropertiesParticipantsList = Participant[];
+export type AgreementPropertiesParticipantsList = ReadonlyArray<Participant>;
 export const AgreementPropertiesParticipantsList = /*@__PURE__*/ S.Array(
   Participant,
 ) as any as S.Schema<AgreementPropertiesParticipantsList>;
@@ -395,7 +432,7 @@ export const Agreement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Agreement" }) as any as S.Schema<Agreement>;
 
 /** The Agreement items on this page */
-export type AgreementListResultValueList = Agreement[];
+export type AgreementListResultValueList = ReadonlyArray<Agreement>;
 export const AgreementListResultValueList = /*@__PURE__*/ S.Array(
   Agreement,
 ) as any as S.Schema<AgreementListResultValueList>;
@@ -416,19 +453,74 @@ export const AgreementListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgreementListResult",
 }) as any as S.Schema<AgreementListResult>;
 
+/** The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases. */
+export type BillingManagementTenantState =
+  | "Other"
+  | "NotAllowed"
+  | "Active"
+  | "Revoked";
+export const BillingManagementTenantState = /*@__PURE__*/ S.String;
+
+/** The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request. */
+export type ProvisioningTenantState =
+  | "Other"
+  | "NotRequested"
+  | "Active"
+  | "Pending"
+  | "BillingRequestExpired"
+  | "BillingRequestDeclined"
+  | "Revoked";
+export const ProvisioningTenantState = /*@__PURE__*/ S.String;
+
+/** An associated tenant. */
+export interface AssociatedTenantPropertiesInput {
+  /** The name of the associated tenant. */
+  displayName?: string;
+  /** The ID that uniquely identifies a tenant. */
+  tenantId?: string;
+  /** The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases. */
+  billingManagementState?: BillingManagementTenantState;
+  /** The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request. */
+  provisioningManagementState?: ProvisioningTenantState;
+}
+export const AssociatedTenantPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    billingManagementState: S.optional(BillingManagementTenantState),
+    provisioningManagementState: S.optional(ProvisioningTenantState),
+  }),
+).annotate({
+  identifier: "AssociatedTenantPropertiesInput",
+}) as any as S.Schema<AssociatedTenantPropertiesInput>;
+
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type AssociatedTenantsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AssociatedTenantsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AssociatedTenantsCreateOrUpdateRequestTagsMap>;
+
 export interface AssociatedTenantsCreateOrUpdateRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The ID that uniquely identifies a tenant. */
   associatedTenantName: string;
-  body: unknown;
+  /** An associated tenant. */
+  properties?: AssociatedTenantPropertiesInput;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: AssociatedTenantsCreateOrUpdateRequestTagsMap;
 }
 export const AssociatedTenantsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
       associatedTenantName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AssociatedTenantPropertiesInput),
+      tags: S.optional(AssociatedTenantsCreateOrUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -453,30 +545,8 @@ export type ProvisioningState =
   | "ConfirmedBilling"
   | "Creating"
   | "Created"
-  | "Expired"
-  | (string & {});
+  | "Expired";
 export const ProvisioningState = /*@__PURE__*/ S.String;
-
-/** The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases. */
-export type BillingManagementTenantState =
-  | "Other"
-  | "NotAllowed"
-  | "Active"
-  | "Revoked"
-  | (string & {});
-export const BillingManagementTenantState = /*@__PURE__*/ S.String;
-
-/** The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request. */
-export type ProvisioningTenantState =
-  | "Other"
-  | "NotRequested"
-  | "Active"
-  | "Pending"
-  | "BillingRequestExpired"
-  | "BillingRequestDeclined"
-  | "Revoked"
-  | (string & {});
-export const ProvisioningTenantState = /*@__PURE__*/ S.String;
 
 /** An associated tenant. */
 export interface AssociatedTenantProperties {
@@ -708,7 +778,8 @@ export const AssociatedTenant = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociatedTenant>;
 
 /** The AssociatedTenant items on this page */
-export type AssociatedTenantListResultValueList = AssociatedTenant[];
+export type AssociatedTenantListResultValueList =
+  ReadonlyArray<AssociatedTenant>;
 export const AssociatedTenantListResultValueList = /*@__PURE__*/ S.Array(
   AssociatedTenant,
 ) as any as S.Schema<AssociatedTenantListResultValueList>;
@@ -772,8 +843,7 @@ export type PaymentMethodFamily =
   | "CheckWire"
   | "EWallet"
   | "TaskOrder"
-  | "DirectDebit"
-  | (string & {});
+  | "DirectDebit";
 export const PaymentMethodFamily = /*@__PURE__*/ S.String;
 
 /** A Payment on Account. */
@@ -809,7 +879,7 @@ export const PaymentOnAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of payments on accounts. */
 export type AvailableBalancePropertiesPaymentsOnAccountList =
-  PaymentOnAccount[];
+  ReadonlyArray<PaymentOnAccount>;
 export const AvailableBalancePropertiesPaymentsOnAccountList =
   /*@__PURE__*/ S.Array(
     PaymentOnAccount,
@@ -935,16 +1005,42 @@ export const AvailableBalancesGetByBillingProfileResponse =
     identifier: "AvailableBalancesGetByBillingProfileResponse",
   }) as any as S.Schema<AvailableBalancesGetByBillingProfileResponse>;
 
+/** The properties of payment term. */
+export interface PaymentTermInput {
+  /** Represents duration in netXX format. Always in days. */
+  term?: string;
+  /** The date on when the defined 'Payment Term' will be effective from and is always in UTC. */
+  startDate?: string;
+  /** The date on when the defined 'Payment Term' will end and is always in UTC. */
+  endDate?: string;
+}
+export const PaymentTermInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    term: S.optional(S.String),
+    startDate: S.optional(S.String),
+    endDate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PaymentTermInput",
+}) as any as S.Schema<PaymentTermInput>;
+
+export type BillingAccountsAddPaymentTermsRequestBodyList =
+  ReadonlyArray<PaymentTermInput>;
+export const BillingAccountsAddPaymentTermsRequestBodyList =
+  /*@__PURE__*/ S.Array(
+    PaymentTermInput,
+  ) as any as S.Schema<BillingAccountsAddPaymentTermsRequestBodyList>;
+
 export interface BillingAccountsAddPaymentTermsRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
-  body: unknown;
+  body: BillingAccountsAddPaymentTermsRequestBodyList;
 }
 export const BillingAccountsAddPaymentTermsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      body: BillingAccountsAddPaymentTermsRequestBodyList.pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "POST",
@@ -969,8 +1065,7 @@ export type AccountStatus =
   | "New"
   | "Expired"
   | "Terminated"
-  | "Transferred"
-  | (string & {});
+  | "Transferred";
 export const AccountStatus = /*@__PURE__*/ S.String;
 
 /** The type of customer. */
@@ -983,8 +1078,7 @@ export type AccountType =
   | "ClassicPartner"
   | "Internal"
   | "Tenant"
-  | "Business"
-  | (string & {});
+  | "Business";
 export const AccountType = /*@__PURE__*/ S.String;
 
 /** The tier of the account. */
@@ -993,8 +1087,7 @@ export type AccountSubType =
   | "None"
   | "Individual"
   | "Professional"
-  | "Enterprise"
-  | (string & {});
+  | "Enterprise";
 export const AccountSubType = /*@__PURE__*/ S.String;
 
 /** Reason for the specified billing account status. */
@@ -1004,8 +1097,7 @@ export type BillingAccountStatusReasonCode =
   | "ManuallyTerminated"
   | "Expired"
   | "Transferred"
-  | "TerminateProcessing"
-  | (string & {});
+  | "TerminateProcessing";
 export const BillingAccountStatusReasonCode = /*@__PURE__*/ S.String;
 
 /** The type of agreement. */
@@ -1014,25 +1106,15 @@ export type AgreementType =
   | "MicrosoftCustomerAgreement"
   | "EnterpriseAgreement"
   | "MicrosoftOnlineServicesProgram"
-  | "MicrosoftPartnerAgreement"
-  | (string & {});
+  | "MicrosoftPartnerAgreement";
 export const AgreementType = /*@__PURE__*/ S.String;
 
 /** The billing account extension opted by the company. */
-export type ExtendedTermOption =
-  | "Other"
-  | "Opted-In"
-  | "Opted-Out"
-  | (string & {});
+export type ExtendedTermOption = "Other" | "Opted-In" | "Opted-Out";
 export const ExtendedTermOption = /*@__PURE__*/ S.String;
 
 /** The support level offer associated with an enrollment. */
-export type SupportLevel =
-  | "Other"
-  | "Standard"
-  | "Pro-Direct"
-  | "Developer"
-  | (string & {});
+export type SupportLevel = "Other" | "Standard" | "Pro-Direct" | "Developer";
 export const SupportLevel = /*@__PURE__*/ S.String;
 
 /** Markup status of enrollment, applicable only for indirect enrollments. */
@@ -1041,8 +1123,7 @@ export type MarkupStatus =
   | "Disabled"
   | "Preview"
   | "Published"
-  | "Locked"
-  | (string & {});
+  | "Locked";
 export const MarkupStatus = /*@__PURE__*/ S.String;
 
 /** Identifies the billing profile that is linked to another billing profile in indirect purchase motion. */
@@ -1120,7 +1201,7 @@ export const EnrollmentDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnrollmentDetails>;
 
 /** The types of registration number allowed based on the country of the billing account. */
-export type RegistrationNumberTypeList = string[];
+export type RegistrationNumberTypeList = ReadonlyArray<string>;
 export const RegistrationNumberTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RegistrationNumberTypeList>;
@@ -1151,20 +1232,19 @@ export type BillingRelationshipType =
   | "IndirectCustomer"
   | "IndirectPartner"
   | "CSPPartner"
-  | "CSPCustomer"
-  | (string & {});
+  | "CSPCustomer";
 export const BillingRelationshipType = /*@__PURE__*/ S.String;
 
 /** Identifies the billing relationships represented by a billing account. The billing relationship may be between Microsoft, the customer, and/or a third-party. */
 export type BillingAccountPropertiesBillingRelationshipTypesList =
-  BillingRelationshipType[];
+  ReadonlyArray<BillingRelationshipType>;
 export const BillingAccountPropertiesBillingRelationshipTypesList =
   /*@__PURE__*/ S.Array(
     BillingRelationshipType,
   ) as any as S.Schema<BillingAccountPropertiesBillingRelationshipTypesList>;
 
 /** Qualifications for pricing on a billing account. Values may be Commercial, Education, Charity or Government. */
-export type BillingAccountPropertiesQualificationsList = string[];
+export type BillingAccountPropertiesQualificationsList = ReadonlyArray<string>;
 export const BillingAccountPropertiesQualificationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingAccountPropertiesQualificationsList>;
@@ -1190,12 +1270,11 @@ export type TaxIdentifierType =
   | "LoveCode"
   | "MobileBarCode"
   | "NationalIdentificationNumber"
-  | "PublicSectorId"
-  | (string & {});
+  | "PublicSectorId";
 export const TaxIdentifierType = /*@__PURE__*/ S.String;
 
 /** The status of the tax identifier. */
-export type TaxIdentifierStatus = "Other" | "Valid" | "Invalid" | (string & {});
+export type TaxIdentifierStatus = "Other" | "Valid" | "Invalid";
 export const TaxIdentifierStatus = /*@__PURE__*/ S.String;
 
 /** A tax identifier for the billing account. */
@@ -1222,7 +1301,7 @@ export const TaxIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaxIdentifier" }) as any as S.Schema<TaxIdentifier>;
 
 /** A list of tax identifiers for the billing account. */
-export type BillingAccountPropertiesTaxIdsList = TaxIdentifier[];
+export type BillingAccountPropertiesTaxIdsList = ReadonlyArray<TaxIdentifier>;
 export const BillingAccountPropertiesTaxIdsList = /*@__PURE__*/ S.Array(
   TaxIdentifier,
 ) as any as S.Schema<BillingAccountPropertiesTaxIdsList>;
@@ -1331,13 +1410,13 @@ export const BillingAccountsAddPaymentTermsResponse = /*@__PURE__*/ S.suspend(
 export interface BillingAccountsCancelPaymentTermsRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
-  body: unknown;
+  body: string;
 }
 export const BillingAccountsCancelPaymentTermsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      body: S.String.pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1565,7 +1644,7 @@ export const BillingAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingAccount" }) as any as S.Schema<BillingAccount>;
 
 /** The BillingAccount items on this page */
-export type BillingAccountListResultValueList = BillingAccount[];
+export type BillingAccountListResultValueList = ReadonlyArray<BillingAccount>;
 export const BillingAccountListResultValueList = /*@__PURE__*/ S.Array(
   BillingAccount,
 ) as any as S.Schema<BillingAccountListResultValueList>;
@@ -1617,8 +1696,7 @@ export type BillingProfileStatus =
   | "Disabled"
   | "Warned"
   | "Deleted"
-  | "UnderReview"
-  | (string & {});
+  | "UnderReview";
 export const BillingProfileStatus = /*@__PURE__*/ S.String;
 
 /** Reason for the specified billing profile status. */
@@ -1627,12 +1705,11 @@ export type BillingProfileStatusReasonCode =
   | "PastDue"
   | "UnusualActivity"
   | "SpendingLimitReached"
-  | "SpendingLimitExpired"
-  | (string & {});
+  | "SpendingLimitExpired";
 export const BillingProfileStatusReasonCode = /*@__PURE__*/ S.String;
 
 /** The billing profile spending limit. */
-export type SpendingLimit = "Off" | "On" | (string & {});
+export type SpendingLimit = "Off" | "On";
 export const SpendingLimit = /*@__PURE__*/ S.String;
 
 /** Details of the Azure plan. */
@@ -1654,7 +1731,7 @@ export const AzurePlan = /*@__PURE__*/ S.suspend(() =>
 
 /** Enabled azure plans for the associated billing profile. */
 export type InvoiceSectionWithCreateSubPermissionEnabledAzurePlansList =
-  AzurePlan[];
+  ReadonlyArray<AzurePlan>;
 export const InvoiceSectionWithCreateSubPermissionEnabledAzurePlansList =
   /*@__PURE__*/ S.Array(
     AzurePlan,
@@ -1707,7 +1784,7 @@ export const InvoiceSectionWithCreateSubPermission = /*@__PURE__*/ S.suspend(
 
 /** The InvoiceSectionWithCreateSubPermission items on this page */
 export type InvoiceSectionWithCreateSubPermissionListResultValueList =
-  InvoiceSectionWithCreateSubPermission[];
+  ReadonlyArray<InvoiceSectionWithCreateSubPermission>;
 export const InvoiceSectionWithCreateSubPermissionListResultValueList =
   /*@__PURE__*/ S.Array(
     InvoiceSectionWithCreateSubPermission,
@@ -1730,15 +1807,107 @@ export const InvoiceSectionWithCreateSubPermissionListResult =
     identifier: "InvoiceSectionWithCreateSubPermissionListResult",
   }) as any as S.Schema<InvoiceSectionWithCreateSubPermissionListResult>;
 
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type BillingAccountsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BillingAccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BillingAccountsUpdateRequestTagsMap>;
+
+/** The properties of an enrollment. */
+export interface EnrollmentDetailsInput {
+  /** The start date of the enrollment. */
+  startDate?: string;
+  /** The end date of the enrollment. */
+  endDate?: string;
+  /** The purchase order number of the enrollment. */
+  poNumber?: string;
+  /** The properties of an enrollment which are applicable only for indirect enrollments. */
+  indirectRelationshipInfo?: IndirectRelationshipInfo;
+}
+export const EnrollmentDetailsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startDate: S.optional(S.String),
+    endDate: S.optional(S.String),
+    poNumber: S.optional(S.String),
+    indirectRelationshipInfo: S.optional(IndirectRelationshipInfo),
+  }),
+).annotate({
+  identifier: "EnrollmentDetailsInput",
+}) as any as S.Schema<EnrollmentDetailsInput>;
+
+/** Describes the registration number of the organization linked with the billing account. */
+export interface RegistrationNumberInput {
+  /** The unique identification number of the organization linked with the billing account. */
+  id?: string;
+}
+export const RegistrationNumberInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RegistrationNumberInput",
+}) as any as S.Schema<RegistrationNumberInput>;
+
+/** A list of tax identifiers for the billing account. */
+export type BillingAccountPropertiesInputTaxIdsList =
+  ReadonlyArray<TaxIdentifier>;
+export const BillingAccountPropertiesInputTaxIdsList = /*@__PURE__*/ S.Array(
+  TaxIdentifier,
+) as any as S.Schema<BillingAccountPropertiesInputTaxIdsList>;
+
+/** A billing account. */
+export interface BillingAccountPropertiesInput {
+  /** The billing account name. */
+  displayName?: string;
+  /** The properties of an enrollment. */
+  enrollmentDetails?: EnrollmentDetailsInput;
+  /** Indicates whether user has read access to the billing account. */
+  hasReadAccess?: boolean;
+  /** Indicates whether or not the billing account has any billing profiles. */
+  hasNoBillingProfiles?: boolean;
+  /** Notification email address for legacy account. Available for agreement type Microsoft Online Services Program. */
+  notificationEmailAddress?: string;
+  /** The tenant that was used to set up the billing account. By default, only users from this tenant can get role assignments on the billing account and all purchases are provisioned in this tenant. */
+  primaryBillingTenantId?: string;
+  /** The address of the individual or organization that is responsible for the billing account. */
+  soldTo?: AddressDetails;
+  /** Describes the registration number of the organization linked with the billing account. */
+  registrationNumber?: RegistrationNumberInput;
+  /** A list of tax identifiers for the billing account. */
+  taxIds?: BillingAccountPropertiesInputTaxIdsList;
+}
+export const BillingAccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    enrollmentDetails: S.optional(EnrollmentDetailsInput),
+    hasReadAccess: S.optional(S.Boolean),
+    hasNoBillingProfiles: S.optional(S.Boolean),
+    notificationEmailAddress: S.optional(S.String),
+    primaryBillingTenantId: S.optional(S.String),
+    soldTo: S.optional(AddressDetails),
+    registrationNumber: S.optional(RegistrationNumberInput),
+    taxIds: S.optional(BillingAccountPropertiesInputTaxIdsList),
+  }),
+).annotate({
+  identifier: "BillingAccountPropertiesInput",
+}) as any as S.Schema<BillingAccountPropertiesInput>;
+
 export interface BillingAccountsUpdateRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
-  body: unknown;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: BillingAccountsUpdateRequestTagsMap;
+  /** A billing account. */
+  properties?: BillingAccountPropertiesInput;
 }
 export const BillingAccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(BillingAccountsUpdateRequestTagsMap),
+    properties: S.optional(BillingAccountPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1787,16 +1956,25 @@ export const BillingAccountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingAccountsUpdateResponse",
 }) as any as S.Schema<BillingAccountsUpdateResponse>;
 
+export type BillingAccountsValidatePaymentTermsRequestBodyList =
+  ReadonlyArray<PaymentTermInput>;
+export const BillingAccountsValidatePaymentTermsRequestBodyList =
+  /*@__PURE__*/ S.Array(
+    PaymentTermInput,
+  ) as any as S.Schema<BillingAccountsValidatePaymentTermsRequestBodyList>;
+
 export interface BillingAccountsValidatePaymentTermsRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
-  body: unknown;
+  body: BillingAccountsValidatePaymentTermsRequestBodyList;
 }
 export const BillingAccountsValidatePaymentTermsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      body: BillingAccountsValidatePaymentTermsRequestBodyList.pipe(
+        T.HttpBody(),
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1810,11 +1988,7 @@ export const BillingAccountsValidatePaymentTermsRequest =
   }) as any as S.Schema<BillingAccountsValidatePaymentTermsRequest>;
 
 /** Indicates the eligibility status of the payment terms. */
-export type PaymentTermsEligibilityStatus =
-  | "Other"
-  | "Valid"
-  | "Invalid"
-  | (string & {});
+export type PaymentTermsEligibilityStatus = "Other" | "Valid" | "Invalid";
 export const PaymentTermsEligibilityStatus = /*@__PURE__*/ S.String;
 
 /** Indicates the reason for the ineligibility of the payment terms. */
@@ -1828,8 +2002,7 @@ export type PaymentTermsEligibilityCode =
   | "NullOrEmptyPaymentTerms"
   | "BillingAccountNotFound"
   | "IneligibleBillingAccountStatus"
-  | "InvalidTerms"
-  | (string & {});
+  | "InvalidTerms";
 export const PaymentTermsEligibilityCode = /*@__PURE__*/ S.String;
 
 /** Details of the payment terms eligibility. */
@@ -1850,7 +2023,7 @@ export const PaymentTermsEligibilityDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the payment terms eligibility. */
 export type PaymentTermsEligibilityResultEligibilityDetailsList =
-  PaymentTermsEligibilityDetail[];
+  ReadonlyArray<PaymentTermsEligibilityDetail>;
 export const PaymentTermsEligibilityResultEligibilityDetailsList =
   /*@__PURE__*/ S.Array(
     PaymentTermsEligibilityDetail,
@@ -1874,16 +2047,27 @@ export const PaymentTermsEligibilityResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaymentTermsEligibilityResult",
 }) as any as S.Schema<PaymentTermsEligibilityResult>;
 
+/** List of actions passed in the request body against which the permissions will be checked. */
+export type BillingPermissionsCheckAccessByBillingAccountRequestActionsList =
+  ReadonlyArray<string>;
+export const BillingPermissionsCheckAccessByBillingAccountRequestActionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BillingPermissionsCheckAccessByBillingAccountRequestActionsList>;
+
 export interface BillingPermissionsCheckAccessByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
-  body: unknown;
+  /** List of actions passed in the request body against which the permissions will be checked. */
+  actions?: BillingPermissionsCheckAccessByBillingAccountRequestActionsList;
 }
 export const BillingPermissionsCheckAccessByBillingAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      actions: S.optional(
+        BillingPermissionsCheckAccessByBillingAccountRequestActionsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1897,7 +2081,7 @@ export const BillingPermissionsCheckAccessByBillingAccountRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByBillingAccountRequest>;
 
 /** Access Decision, specifies access is allowed or not. */
-export type AccessDecision = "Other" | "Allowed" | "NotAllowed" | (string & {});
+export type AccessDecision = "Other" | "Allowed" | "NotAllowed";
 export const AccessDecision = /*@__PURE__*/ S.String;
 
 /** The properties of a check access response. */
@@ -1917,7 +2101,7 @@ export const CheckAccessResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckAccessResponse>;
 
 export type BillingPermissionsCheckAccessByBillingAccountResponseBodyList =
-  CheckAccessResponse[];
+  ReadonlyArray<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByBillingAccountResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -1934,19 +2118,30 @@ export const BillingPermissionsCheckAccessByBillingAccountResponse =
     identifier: "BillingPermissionsCheckAccessByBillingAccountResponse",
   }) as any as S.Schema<BillingPermissionsCheckAccessByBillingAccountResponse>;
 
+/** List of actions passed in the request body against which the permissions will be checked. */
+export type BillingPermissionsCheckAccessByBillingProfileRequestActionsList =
+  ReadonlyArray<string>;
+export const BillingPermissionsCheckAccessByBillingProfileRequestActionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BillingPermissionsCheckAccessByBillingProfileRequestActionsList>;
+
 export interface BillingPermissionsCheckAccessByBillingProfileRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The ID that uniquely identifies a billing profile. */
   billingProfileName: string;
-  body: unknown;
+  /** List of actions passed in the request body against which the permissions will be checked. */
+  actions?: BillingPermissionsCheckAccessByBillingProfileRequestActionsList;
 }
 export const BillingPermissionsCheckAccessByBillingProfileRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
       billingProfileName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      actions: S.optional(
+        BillingPermissionsCheckAccessByBillingProfileRequestActionsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1960,7 +2155,7 @@ export const BillingPermissionsCheckAccessByBillingProfileRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByBillingProfileRequest>;
 
 export type BillingPermissionsCheckAccessByBillingProfileResponseBodyList =
-  CheckAccessResponse[];
+  ReadonlyArray<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByBillingProfileResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -1977,6 +2172,14 @@ export const BillingPermissionsCheckAccessByBillingProfileResponse =
     identifier: "BillingPermissionsCheckAccessByBillingProfileResponse",
   }) as any as S.Schema<BillingPermissionsCheckAccessByBillingProfileResponse>;
 
+/** List of actions passed in the request body against which the permissions will be checked. */
+export type BillingPermissionsCheckAccessByCustomerRequestActionsList =
+  ReadonlyArray<string>;
+export const BillingPermissionsCheckAccessByCustomerRequestActionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BillingPermissionsCheckAccessByCustomerRequestActionsList>;
+
 export interface BillingPermissionsCheckAccessByCustomerRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -1984,7 +2187,8 @@ export interface BillingPermissionsCheckAccessByCustomerRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies a customer. */
   customerName: string;
-  body: unknown;
+  /** List of actions passed in the request body against which the permissions will be checked. */
+  actions?: BillingPermissionsCheckAccessByCustomerRequestActionsList;
 }
 export const BillingPermissionsCheckAccessByCustomerRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1992,7 +2196,9 @@ export const BillingPermissionsCheckAccessByCustomerRequest =
       billingAccountName: S.String.pipe(T.Label()),
       billingProfileName: S.String.pipe(T.Label()),
       customerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      actions: S.optional(
+        BillingPermissionsCheckAccessByCustomerRequestActionsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2006,7 +2212,7 @@ export const BillingPermissionsCheckAccessByCustomerRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByCustomerRequest>;
 
 export type BillingPermissionsCheckAccessByCustomerResponseBodyList =
-  CheckAccessResponse[];
+  ReadonlyArray<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByCustomerResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -2023,19 +2229,30 @@ export const BillingPermissionsCheckAccessByCustomerResponse =
     identifier: "BillingPermissionsCheckAccessByCustomerResponse",
   }) as any as S.Schema<BillingPermissionsCheckAccessByCustomerResponse>;
 
+/** List of actions passed in the request body against which the permissions will be checked. */
+export type BillingPermissionsCheckAccessByDepartmentRequestActionsList =
+  ReadonlyArray<string>;
+export const BillingPermissionsCheckAccessByDepartmentRequestActionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BillingPermissionsCheckAccessByDepartmentRequestActionsList>;
+
 export interface BillingPermissionsCheckAccessByDepartmentRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The name of the department. */
   departmentName: string;
-  body: unknown;
+  /** List of actions passed in the request body against which the permissions will be checked. */
+  actions?: BillingPermissionsCheckAccessByDepartmentRequestActionsList;
 }
 export const BillingPermissionsCheckAccessByDepartmentRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
       departmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      actions: S.optional(
+        BillingPermissionsCheckAccessByDepartmentRequestActionsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2049,7 +2266,7 @@ export const BillingPermissionsCheckAccessByDepartmentRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByDepartmentRequest>;
 
 export type BillingPermissionsCheckAccessByDepartmentResponseBodyList =
-  CheckAccessResponse[];
+  ReadonlyArray<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByDepartmentResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -2066,19 +2283,30 @@ export const BillingPermissionsCheckAccessByDepartmentResponse =
     identifier: "BillingPermissionsCheckAccessByDepartmentResponse",
   }) as any as S.Schema<BillingPermissionsCheckAccessByDepartmentResponse>;
 
+/** List of actions passed in the request body against which the permissions will be checked. */
+export type BillingPermissionsCheckAccessByEnrollmentAccountRequestActionsList =
+  ReadonlyArray<string>;
+export const BillingPermissionsCheckAccessByEnrollmentAccountRequestActionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BillingPermissionsCheckAccessByEnrollmentAccountRequestActionsList>;
+
 export interface BillingPermissionsCheckAccessByEnrollmentAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The name of the enrollment account. */
   enrollmentAccountName: string;
-  body: unknown;
+  /** List of actions passed in the request body against which the permissions will be checked. */
+  actions?: BillingPermissionsCheckAccessByEnrollmentAccountRequestActionsList;
 }
 export const BillingPermissionsCheckAccessByEnrollmentAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
       enrollmentAccountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      actions: S.optional(
+        BillingPermissionsCheckAccessByEnrollmentAccountRequestActionsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2092,7 +2320,7 @@ export const BillingPermissionsCheckAccessByEnrollmentAccountRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByEnrollmentAccountRequest>;
 
 export type BillingPermissionsCheckAccessByEnrollmentAccountResponseBodyList =
-  CheckAccessResponse[];
+  ReadonlyArray<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByEnrollmentAccountResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -2109,6 +2337,14 @@ export const BillingPermissionsCheckAccessByEnrollmentAccountResponse =
     identifier: "BillingPermissionsCheckAccessByEnrollmentAccountResponse",
   }) as any as S.Schema<BillingPermissionsCheckAccessByEnrollmentAccountResponse>;
 
+/** List of actions passed in the request body against which the permissions will be checked. */
+export type BillingPermissionsCheckAccessByInvoiceSectionRequestActionsList =
+  ReadonlyArray<string>;
+export const BillingPermissionsCheckAccessByInvoiceSectionRequestActionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BillingPermissionsCheckAccessByInvoiceSectionRequestActionsList>;
+
 export interface BillingPermissionsCheckAccessByInvoiceSectionRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -2116,7 +2352,8 @@ export interface BillingPermissionsCheckAccessByInvoiceSectionRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies an invoice section. */
   invoiceSectionName: string;
-  body: unknown;
+  /** List of actions passed in the request body against which the permissions will be checked. */
+  actions?: BillingPermissionsCheckAccessByInvoiceSectionRequestActionsList;
 }
 export const BillingPermissionsCheckAccessByInvoiceSectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2124,7 +2361,9 @@ export const BillingPermissionsCheckAccessByInvoiceSectionRequest =
       billingAccountName: S.String.pipe(T.Label()),
       billingProfileName: S.String.pipe(T.Label()),
       invoiceSectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      actions: S.optional(
+        BillingPermissionsCheckAccessByInvoiceSectionRequestActionsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2138,7 +2377,7 @@ export const BillingPermissionsCheckAccessByInvoiceSectionRequest =
   }) as any as S.Schema<BillingPermissionsCheckAccessByInvoiceSectionRequest>;
 
 export type BillingPermissionsCheckAccessByInvoiceSectionResponseBodyList =
-  CheckAccessResponse[];
+  ReadonlyArray<CheckAccessResponse>;
 export const BillingPermissionsCheckAccessByInvoiceSectionResponseBodyList =
   /*@__PURE__*/ S.Array(
     CheckAccessResponse,
@@ -2176,13 +2415,13 @@ export const BillingPermissionsListByBillingAccountRequest =
   }) as any as S.Schema<BillingPermissionsListByBillingAccountRequest>;
 
 /** The set of actions that the caller is allowed to perform. */
-export type BillingPermissionActionsList = string[];
+export type BillingPermissionActionsList = ReadonlyArray<string>;
 export const BillingPermissionActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingPermissionActionsList>;
 
 /** The set of actions that the caller is not allowed to perform. */
-export type BillingPermissionNotActionsList = string[];
+export type BillingPermissionNotActionsList = ReadonlyArray<string>;
 export const BillingPermissionNotActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingPermissionNotActionsList>;
@@ -2204,7 +2443,8 @@ export const BillingPermission = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingPermission>;
 
 /** The BillingPermission items on this page */
-export type BillingPermissionListResultValueList = BillingPermission[];
+export type BillingPermissionListResultValueList =
+  ReadonlyArray<BillingPermission>;
 export const BillingPermissionListResultValueList = /*@__PURE__*/ S.Array(
   BillingPermission,
 ) as any as S.Schema<BillingPermissionListResultValueList>;
@@ -2369,19 +2609,105 @@ export const BillingPermissionsListByInvoiceSectionRequest =
     identifier: "BillingPermissionsListByInvoiceSectionRequest",
   }) as any as S.Schema<BillingPermissionsListByInvoiceSectionRequest>;
 
+/** Information about the enabled azure plans. */
+export type BillingProfilePropertiesInputEnabledAzurePlansList =
+  ReadonlyArray<AzurePlan>;
+export const BillingProfilePropertiesInputEnabledAzurePlansList =
+  /*@__PURE__*/ S.Array(
+    AzurePlan,
+  ) as any as S.Schema<BillingProfilePropertiesInputEnabledAzurePlansList>;
+
+/** The list of email addresses to receive invoices by email for the billing profile. */
+export type BillingProfilePropertiesInputInvoiceRecipientsList =
+  ReadonlyArray<string>;
+export const BillingProfilePropertiesInputInvoiceRecipientsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BillingProfilePropertiesInputInvoiceRecipientsList>;
+
+/** Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type BillingProfilePropertiesInputTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BillingProfilePropertiesInputTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BillingProfilePropertiesInputTagsMap>;
+
+/** A billing profile. */
+export interface BillingProfilePropertiesInput {
+  /** Billing address. */
+  billTo?: AddressDetails;
+  /** The name of the billing profile. */
+  displayName?: string;
+  /** Information about the enabled azure plans. */
+  enabledAzurePlans?: BillingProfilePropertiesInputEnabledAzurePlansList;
+  /** Identifies the billing profile that is linked to another billing profile in indirect purchase motion. */
+  indirectRelationshipInfo?: IndirectRelationshipInfo;
+  /** Flag controlling whether the invoices for the billing profile are sent through email. */
+  invoiceEmailOptIn?: boolean;
+  /** The list of email addresses to receive invoices by email for the billing profile. */
+  invoiceRecipients?: BillingProfilePropertiesInputInvoiceRecipientsList;
+  /** The default purchase order number that will appear on the invoices generated for the billing profile. */
+  poNumber?: string;
+  /** The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used. */
+  shipTo?: AddressDetails;
+  /** The address of the individual or organization that is responsible for the billing account. */
+  soldTo?: AddressDetails;
+  /** Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: BillingProfilePropertiesInputTagsMap;
+  /** The current payment term of the billing profile. */
+  currentPaymentTerm?: PaymentTermInput;
+}
+export const BillingProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billTo: S.optional(AddressDetails),
+    displayName: S.optional(S.String),
+    enabledAzurePlans: S.optional(
+      BillingProfilePropertiesInputEnabledAzurePlansList,
+    ),
+    indirectRelationshipInfo: S.optional(IndirectRelationshipInfo),
+    invoiceEmailOptIn: S.optional(S.Boolean),
+    invoiceRecipients: S.optional(
+      BillingProfilePropertiesInputInvoiceRecipientsList,
+    ),
+    poNumber: S.optional(S.String),
+    shipTo: S.optional(AddressDetails),
+    soldTo: S.optional(AddressDetails),
+    tags: S.optional(BillingProfilePropertiesInputTagsMap),
+    currentPaymentTerm: S.optional(PaymentTermInput),
+  }),
+).annotate({
+  identifier: "BillingProfilePropertiesInput",
+}) as any as S.Schema<BillingProfilePropertiesInput>;
+
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type BillingProfilesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BillingProfilesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BillingProfilesCreateOrUpdateRequestTagsMap>;
+
 export interface BillingProfilesCreateOrUpdateRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The ID that uniquely identifies a billing profile. */
   billingProfileName: string;
-  body: unknown;
+  /** A billing profile. */
+  properties?: BillingProfilePropertiesInput;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: BillingProfilesCreateOrUpdateRequestTagsMap;
 }
 export const BillingProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
       billingProfileName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(BillingProfilePropertiesInput),
+      tags: S.optional(BillingProfilesCreateOrUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2395,14 +2721,16 @@ export const BillingProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BillingProfilesCreateOrUpdateRequest>;
 
 /** Information about the enabled azure plans. */
-export type BillingProfilePropertiesEnabledAzurePlansList = AzurePlan[];
+export type BillingProfilePropertiesEnabledAzurePlansList =
+  ReadonlyArray<AzurePlan>;
 export const BillingProfilePropertiesEnabledAzurePlansList =
   /*@__PURE__*/ S.Array(
     AzurePlan,
   ) as any as S.Schema<BillingProfilePropertiesEnabledAzurePlansList>;
 
 /** The list of email addresses to receive invoices by email for the billing profile. */
-export type BillingProfilePropertiesInvoiceRecipientsList = string[];
+export type BillingProfilePropertiesInvoiceRecipientsList =
+  ReadonlyArray<string>;
 export const BillingProfilePropertiesInvoiceRecipientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2424,8 +2752,7 @@ export type SpendingLimitType =
   | "Sponsorship"
   | "StartupSponsorship"
   | "AzureForStudentsStarter"
-  | "VisualStudio"
-  | (string & {});
+  | "VisualStudio";
 export const SpendingLimitType = /*@__PURE__*/ S.String;
 
 /** The status of current spending limit. */
@@ -2435,8 +2762,7 @@ export type SpendingLimitStatus =
   | "Active"
   | "Expired"
   | "LimitReached"
-  | "LimitRemoved"
-  | (string & {});
+  | "LimitRemoved";
 export const SpendingLimitStatus = /*@__PURE__*/ S.String;
 
 /** The billing profile spending limit. */
@@ -2469,7 +2795,7 @@ export const SpendingLimitDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The details of billing profile spending limit. */
 export type BillingProfilePropertiesSpendingLimitDetailsList =
-  SpendingLimitDetails[];
+  ReadonlyArray<SpendingLimitDetails>;
 export const BillingProfilePropertiesSpendingLimitDetailsList =
   /*@__PURE__*/ S.Array(
     SpendingLimitDetails,
@@ -2485,7 +2811,7 @@ export const BillingProfilePropertiesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BillingProfilePropertiesTagsMap>;
 
 /** Identifies the cloud environments that are associated with a billing profile. This is a system managed optional field and gets updated as the billing profile gets associated with accounts in various clouds. */
-export type BillingProfilePropertiesTargetCloudsList = string[];
+export type BillingProfilePropertiesTargetCloudsList = ReadonlyArray<string>;
 export const BillingProfilePropertiesTargetCloudsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingProfilePropertiesTargetCloudsList>;
@@ -2511,7 +2837,8 @@ export const PaymentTerm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentTerm" }) as any as S.Schema<PaymentTerm>;
 
 /** The other payment terms of the billing profile. */
-export type BillingProfilePropertiesOtherPaymentTermsList = PaymentTerm[];
+export type BillingProfilePropertiesOtherPaymentTermsList =
+  ReadonlyArray<PaymentTerm>;
 export const BillingProfilePropertiesOtherPaymentTermsList =
   /*@__PURE__*/ S.Array(
     PaymentTerm,
@@ -2804,7 +3131,7 @@ export const BillingProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingProfile" }) as any as S.Schema<BillingProfile>;
 
 /** The BillingProfile items on this page */
-export type BillingProfileListResultValueList = BillingProfile[];
+export type BillingProfileListResultValueList = ReadonlyArray<BillingProfile>;
 export const BillingProfileListResultValueList = /*@__PURE__*/ S.Array(
   BillingProfile,
 ) as any as S.Schema<BillingProfileListResultValueList>;
@@ -2849,10 +3176,7 @@ export const BillingProfilesValidateDeleteEligibilityRequest =
   }) as any as S.Schema<BillingProfilesValidateDeleteEligibilityRequest>;
 
 /** Status describing if billing profile is eligible to be deleted. */
-export type DeleteBillingProfileEligibilityStatus =
-  | "Allowed"
-  | "NotAllowed"
-  | (string & {});
+export type DeleteBillingProfileEligibilityStatus = "Allowed" | "NotAllowed";
 export const DeleteBillingProfileEligibilityStatus = /*@__PURE__*/ S.String;
 
 /** Code of the delete invoice section eligibility response. */
@@ -2865,8 +3189,7 @@ export type DeleteBillingProfileEligibilityCode =
   | "OutstandingCharges"
   | "PendingCharges"
   | "ReservedInstances"
-  | "ActiveBillingSubscriptions"
-  | (string & {});
+  | "ActiveBillingSubscriptions";
 export const DeleteBillingProfileEligibilityCode = /*@__PURE__*/ S.String;
 
 /** Validation details of delete billing profile eligibility. */
@@ -2888,7 +3211,7 @@ export const DeleteBillingProfileEligibilityDetail = /*@__PURE__*/ S.suspend(
 
 /** Validation details of delete billing profile eligibility. */
 export type DeleteBillingProfileEligibilityResultEligibilityDetailsList =
-  DeleteBillingProfileEligibilityDetail[];
+  ReadonlyArray<DeleteBillingProfileEligibilityDetail>;
 export const DeleteBillingProfileEligibilityResultEligibilityDetailsList =
   /*@__PURE__*/ S.Array(
     DeleteBillingProfileEligibilityDetail,
@@ -2940,7 +3263,7 @@ export const BillingPropertyGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The details of billing profile spending limit. */
 export type BillingPropertyPropertiesBillingProfileSpendingLimitDetailsList =
-  SpendingLimitDetails[];
+  ReadonlyArray<SpendingLimitDetails>;
 export const BillingPropertyPropertiesBillingProfileSpendingLimitDetailsList =
   /*@__PURE__*/ S.Array(
     SpendingLimitDetails,
@@ -2954,8 +3277,7 @@ export type CustomerStatus =
   | "Disabled"
   | "Warned"
   | "Deleted"
-  | "UnderReview"
-  | (string & {});
+  | "UnderReview";
 export const CustomerStatus = /*@__PURE__*/ S.String;
 
 /** Identifies the status of an invoice section. */
@@ -2966,8 +3288,7 @@ export type InvoiceSectionState =
   | "Disabled"
   | "UnderReview"
   | "Warned"
-  | "Restricted"
-  | (string & {});
+  | "Restricted";
 export const InvoiceSectionState = /*@__PURE__*/ S.String;
 
 /** Reason for the specified invoice section status. */
@@ -2976,8 +3297,7 @@ export type InvoiceSectionStateReasonCode =
   | "PastDue"
   | "UnusualActivity"
   | "SpendingLimitReached"
-  | "SpendingLimitExpired"
-  | (string & {});
+  | "SpendingLimitExpired";
 export const InvoiceSectionStateReasonCode = /*@__PURE__*/ S.String;
 
 /** The subscription status. */
@@ -2993,8 +3313,7 @@ export type BillingSubscriptionStatus =
   | "AutoRenew"
   | "Cancelled"
   | "Suspended"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const BillingSubscriptionStatus = /*@__PURE__*/ S.String;
 
 /** The suspension reason for a subscription. This field is not available for Enterprise Agreement billing accounts. */
@@ -3007,8 +3326,7 @@ export type SubscriptionStatusReason =
   | "Transferred"
   | "PolicyViolation"
   | "SpendingLimitReached"
-  | "Expired"
-  | (string & {});
+  | "Expired";
 export const SubscriptionStatusReason = /*@__PURE__*/ S.String;
 
 /** The suspension details for a subscription. This field is not available for Enterprise Agreement billing accounts. */
@@ -3029,7 +3347,7 @@ export const BillingSubscriptionStatusDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason codes for the subscription status. */
 export type BillingPropertyPropertiesSubscriptionBillingStatusDetailsList =
-  BillingSubscriptionStatusDetails[];
+  ReadonlyArray<BillingSubscriptionStatusDetails>;
 export const BillingPropertyPropertiesSubscriptionBillingStatusDetailsList =
   /*@__PURE__*/ S.Array(
     BillingSubscriptionStatusDetails,
@@ -3041,8 +3359,7 @@ export type SubscriptionBillingType =
   | "Benefit"
   | "Free"
   | "Paid"
-  | "PrePaid"
-  | (string & {});
+  | "PrePaid";
 export const SubscriptionBillingType = /*@__PURE__*/ S.String;
 
 /** The Azure workload type of the subscription. */
@@ -3050,8 +3367,7 @@ export type SubscriptionWorkloadType =
   | "None"
   | "Production"
   | "DevTest"
-  | "Internal"
-  | (string & {});
+  | "Internal";
 export const SubscriptionWorkloadType = /*@__PURE__*/ S.String;
 
 /** The enrollment details for the subscription. Available for billing accounts with agreement type Enterprise Agreement. */
@@ -3246,15 +3562,47 @@ export const BillingPropertyGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingPropertyGetResponse",
 }) as any as S.Schema<BillingPropertyGetResponse>;
 
+/** A billing property. */
+export interface BillingPropertyPropertiesInput {
+  /** The cost center applied to the subscription. Available for agreement type Microsoft Customer Agreement and Microsoft Partner Agreement. This property can be updated via patch. */
+  costCenter?: string;
+  /** The address of the individual or organization where service subscription is being used. Available for agreement type Microsoft Online Services Program. This property can be updated via patch. */
+  subscriptionServiceUsageAddress?: AddressDetails;
+  /** The enrollment details for the subscription. Available for billing accounts with agreement type Enterprise Agreement. */
+  enrollmentDetails?: SubscriptionEnrollmentDetails;
+}
+export const BillingPropertyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    costCenter: S.optional(S.String),
+    subscriptionServiceUsageAddress: S.optional(AddressDetails),
+    enrollmentDetails: S.optional(SubscriptionEnrollmentDetails),
+  }),
+).annotate({
+  identifier: "BillingPropertyPropertiesInput",
+}) as any as S.Schema<BillingPropertyPropertiesInput>;
+
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type BillingPropertyUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BillingPropertyUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BillingPropertyUpdateRequestTagsMap>;
+
 export interface BillingPropertyUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** A billing property. */
+  properties?: BillingPropertyPropertiesInput;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: BillingPropertyUpdateRequestTagsMap;
 }
 export const BillingPropertyUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(BillingPropertyPropertiesInput),
+    tags: S.optional(BillingPropertyUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3303,16 +3651,127 @@ export const BillingPropertyUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingPropertyUpdateResponse",
 }) as any as S.Schema<BillingPropertyUpdateResponse>;
 
+/** Additional information for the billing request. */
+export type BillingRequestPropertiesInputAdditionalInformationMap = {
+  [key: string]: string | undefined;
+};
+export const BillingRequestPropertiesInputAdditionalInformationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BillingRequestPropertiesInputAdditionalInformationMap>;
+
+/** A principal who has interacted with a billing entity. */
+export interface Principal {
+  /** The tenant id of the principal who has interacted with a billing entity. */
+  tenantId?: string;
+  /** The object id of the principal who has interacted with a billing entity. */
+  objectId?: string;
+  /** The user principal name of the principal who has interacted with a billing entity. */
+  upn?: string;
+}
+export const Principal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenantId: S.optional(S.String),
+    objectId: S.optional(S.String),
+    upn: S.optional(S.String),
+  }),
+).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
+
+/** The recipients of the billing request. */
+export type BillingRequestPropertiesInputRecipientsList =
+  ReadonlyArray<Principal>;
+export const BillingRequestPropertiesInputRecipientsList =
+  /*@__PURE__*/ S.Array(
+    Principal,
+  ) as any as S.Schema<BillingRequestPropertiesInputRecipientsList>;
+
+/** Status of billing request. */
+export type BillingRequestStatus =
+  | "Other"
+  | "Pending"
+  | "Approved"
+  | "Declined"
+  | "Cancelled"
+  | "Completed"
+  | "Expired";
+export const BillingRequestStatus = /*@__PURE__*/ S.String;
+
+/** Type of billing request. */
+export type BillingRequestType =
+  | "Other"
+  | "InvoiceAccess"
+  | "ProvisioningAccess"
+  | "RoleAssignment"
+  | "UpdateBillingPolicy";
+export const BillingRequestType = /*@__PURE__*/ S.String;
+
+/** A request submitted by a user to manage billing. Users with an owner role on the scope can approve or decline these requests. */
+export interface BillingRequestPropertiesInput {
+  /** Additional information for the billing request. */
+  additionalInformation?: BillingRequestPropertiesInputAdditionalInformationMap;
+  /** The principal of the request reviewer. Will only be set if request is approved. */
+  reviewedBy?: Principal;
+  /** The principal of the entity who created the request. */
+  createdBy?: Principal;
+  /** The reason to approve or decline the request. */
+  decisionReason?: string;
+  /** Justification for submitting request. */
+  justification?: string;
+  /** The recipients of the billing request. */
+  recipients?: BillingRequestPropertiesInputRecipientsList;
+  /** The billing scope for which the request was submitted (ex. '/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}'). */
+  requestScope?: string;
+  /** Status of billing request. */
+  status?: BillingRequestStatus;
+  /** Type of billing request. */
+  type?: BillingRequestType;
+  /** The principal of the entity who last updated the request. */
+  lastUpdatedBy?: Principal;
+}
+export const BillingRequestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    additionalInformation: S.optional(
+      BillingRequestPropertiesInputAdditionalInformationMap,
+    ),
+    reviewedBy: S.optional(Principal),
+    createdBy: S.optional(Principal),
+    decisionReason: S.optional(S.String),
+    justification: S.optional(S.String),
+    recipients: S.optional(BillingRequestPropertiesInputRecipientsList),
+    requestScope: S.optional(S.String),
+    status: S.optional(BillingRequestStatus),
+    type: S.optional(BillingRequestType),
+    lastUpdatedBy: S.optional(Principal),
+  }),
+).annotate({
+  identifier: "BillingRequestPropertiesInput",
+}) as any as S.Schema<BillingRequestPropertiesInput>;
+
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type BillingRequestsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BillingRequestsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BillingRequestsCreateOrUpdateRequestTagsMap>;
+
 export interface BillingRequestsCreateOrUpdateRequest {
   /** The ID that uniquely identifies a billing request. */
   billingRequestName: string;
-  body: unknown;
+  /** A request submitted by a user to manage billing. Users with an owner role on the scope can approve or decline these requests. */
+  properties?: BillingRequestPropertiesInput;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: BillingRequestsCreateOrUpdateRequestTagsMap;
 }
 export const BillingRequestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       billingRequestName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(BillingRequestPropertiesInput),
+      tags: S.optional(BillingRequestsCreateOrUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3335,50 +3794,11 @@ export const BillingRequestPropertiesAdditionalInformationMap =
     S.String,
   ) as any as S.Schema<BillingRequestPropertiesAdditionalInformationMap>;
 
-/** A principal who has interacted with a billing entity. */
-export interface Principal {
-  /** The tenant id of the principal who has interacted with a billing entity. */
-  tenantId?: string;
-  /** The object id of the principal who has interacted with a billing entity. */
-  objectId?: string;
-  /** The user principal name of the principal who has interacted with a billing entity. */
-  upn?: string;
-}
-export const Principal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tenantId: S.optional(S.String),
-    objectId: S.optional(S.String),
-    upn: S.optional(S.String),
-  }),
-).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
-
 /** The recipients of the billing request. */
-export type BillingRequestPropertiesRecipientsList = Principal[];
+export type BillingRequestPropertiesRecipientsList = ReadonlyArray<Principal>;
 export const BillingRequestPropertiesRecipientsList = /*@__PURE__*/ S.Array(
   Principal,
 ) as any as S.Schema<BillingRequestPropertiesRecipientsList>;
-
-/** Status of billing request. */
-export type BillingRequestStatus =
-  | "Other"
-  | "Pending"
-  | "Approved"
-  | "Declined"
-  | "Cancelled"
-  | "Completed"
-  | "Expired"
-  | (string & {});
-export const BillingRequestStatus = /*@__PURE__*/ S.String;
-
-/** Type of billing request. */
-export type BillingRequestType =
-  | "Other"
-  | "InvoiceAccess"
-  | "ProvisioningAccess"
-  | "RoleAssignment"
-  | "UpdateBillingPolicy"
-  | (string & {});
-export const BillingRequestType = /*@__PURE__*/ S.String;
 
 /** A request submitted by a user to manage billing. Users with an owner role on the scope can approve or decline these requests. */
 export interface BillingRequestProperties {
@@ -3653,7 +4073,7 @@ export const BillingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingRequest" }) as any as S.Schema<BillingRequest>;
 
 /** The BillingRequest items on this page */
-export type BillingRequestListResultValueList = BillingRequest[];
+export type BillingRequestListResultValueList = ReadonlyArray<BillingRequest>;
 export const BillingRequestListResultValueList = /*@__PURE__*/ S.Array(
   BillingRequest,
 ) as any as S.Schema<BillingRequestListResultValueList>;
@@ -3840,13 +4260,32 @@ export const BillingRequestsListByUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BillingRoleAssignmentsCreateByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
-  body: unknown;
+  /** The principal PUID of the user to whom the role was assigned. */
+  principalPuid?: string;
+  /** The object id of the user to whom the role was assigned. */
+  principalId?: string;
+  /** The principal tenant id of the user to whom the role was assigned. */
+  principalTenantId?: string;
+  /** The ID of the role definition. */
+  roleDefinitionId: string;
+  /** The scope at which the role was assigned. */
+  scope?: string;
+  /** The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement. */
+  userAuthenticationType?: string;
+  /** The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement. */
+  userEmailAddress?: string;
 }
 export const BillingRoleAssignmentsCreateByBillingAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      principalPuid: S.optional(S.String),
+      principalId: S.optional(S.String),
+      principalTenantId: S.optional(S.String),
+      roleDefinitionId: S.String,
+      scope: S.optional(S.String),
+      userAuthenticationType: S.optional(S.String),
+      userEmailAddress: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3867,8 +4306,7 @@ export type PrincipalType =
   | "Group"
   | "DirectoryRole"
   | "ServicePrincipal"
-  | "Everyone"
-  | (string & {});
+  | "Everyone";
 export const PrincipalType = /*@__PURE__*/ S.String;
 
 /** The properties of the billing role assignment. */
@@ -4016,14 +4454,33 @@ export interface BillingRoleAssignmentsCreateByBillingProfileRequest {
   billingAccountName: string;
   /** The ID that uniquely identifies a billing profile. */
   billingProfileName: string;
-  body: unknown;
+  /** The principal PUID of the user to whom the role was assigned. */
+  principalPuid?: string;
+  /** The object id of the user to whom the role was assigned. */
+  principalId?: string;
+  /** The principal tenant id of the user to whom the role was assigned. */
+  principalTenantId?: string;
+  /** The ID of the role definition. */
+  roleDefinitionId: string;
+  /** The scope at which the role was assigned. */
+  scope?: string;
+  /** The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement. */
+  userAuthenticationType?: string;
+  /** The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement. */
+  userEmailAddress?: string;
 }
 export const BillingRoleAssignmentsCreateByBillingProfileRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
       billingProfileName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      principalPuid: S.optional(S.String),
+      principalId: S.optional(S.String),
+      principalTenantId: S.optional(S.String),
+      roleDefinitionId: S.String,
+      scope: S.optional(S.String),
+      userAuthenticationType: S.optional(S.String),
+      userEmailAddress: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -4083,7 +4540,20 @@ export interface BillingRoleAssignmentsCreateByCustomerRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies a customer. */
   customerName: string;
-  body: unknown;
+  /** The principal PUID of the user to whom the role was assigned. */
+  principalPuid?: string;
+  /** The object id of the user to whom the role was assigned. */
+  principalId?: string;
+  /** The principal tenant id of the user to whom the role was assigned. */
+  principalTenantId?: string;
+  /** The ID of the role definition. */
+  roleDefinitionId: string;
+  /** The scope at which the role was assigned. */
+  scope?: string;
+  /** The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement. */
+  userAuthenticationType?: string;
+  /** The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement. */
+  userEmailAddress?: string;
 }
 export const BillingRoleAssignmentsCreateByCustomerRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4091,7 +4561,13 @@ export const BillingRoleAssignmentsCreateByCustomerRequest =
       billingAccountName: S.String.pipe(T.Label()),
       billingProfileName: S.String.pipe(T.Label()),
       customerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      principalPuid: S.optional(S.String),
+      principalId: S.optional(S.String),
+      principalTenantId: S.optional(S.String),
+      roleDefinitionId: S.String,
+      scope: S.optional(S.String),
+      userAuthenticationType: S.optional(S.String),
+      userEmailAddress: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -4149,7 +4625,20 @@ export interface BillingRoleAssignmentsCreateByInvoiceSectionRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies an invoice section. */
   invoiceSectionName: string;
-  body: unknown;
+  /** The principal PUID of the user to whom the role was assigned. */
+  principalPuid?: string;
+  /** The object id of the user to whom the role was assigned. */
+  principalId?: string;
+  /** The principal tenant id of the user to whom the role was assigned. */
+  principalTenantId?: string;
+  /** The ID of the role definition. */
+  roleDefinitionId: string;
+  /** The scope at which the role was assigned. */
+  scope?: string;
+  /** The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement. */
+  userAuthenticationType?: string;
+  /** The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement. */
+  userEmailAddress?: string;
 }
 export const BillingRoleAssignmentsCreateByInvoiceSectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4157,7 +4646,13 @@ export const BillingRoleAssignmentsCreateByInvoiceSectionRequest =
       billingAccountName: S.String.pipe(T.Label()),
       billingProfileName: S.String.pipe(T.Label()),
       invoiceSectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      principalPuid: S.optional(S.String),
+      principalId: S.optional(S.String),
+      principalTenantId: S.optional(S.String),
+      roleDefinitionId: S.String,
+      scope: S.optional(S.String),
+      userAuthenticationType: S.optional(S.String),
+      userEmailAddress: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -4210,19 +4705,66 @@ export const BillingRoleAssignmentsCreateByInvoiceSectionResponse =
     identifier: "BillingRoleAssignmentsCreateByInvoiceSectionResponse",
   }) as any as S.Schema<BillingRoleAssignmentsCreateByInvoiceSectionResponse>;
 
+/** The properties of the billing role assignment. */
+export interface BillingRoleAssignmentPropertiesInput {
+  /** The principal PUID of the user to whom the role was assigned. */
+  principalPuid?: string;
+  /** The object id of the user to whom the role was assigned. */
+  principalId?: string;
+  /** The principal tenant id of the user to whom the role was assigned. */
+  principalTenantId?: string;
+  /** The ID of the role definition. */
+  roleDefinitionId: string;
+  /** The scope at which the role was assigned. */
+  scope?: string;
+  /** The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement. */
+  userAuthenticationType?: string;
+  /** The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement. */
+  userEmailAddress?: string;
+}
+export const BillingRoleAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      principalPuid: S.optional(S.String),
+      principalId: S.optional(S.String),
+      principalTenantId: S.optional(S.String),
+      roleDefinitionId: S.String,
+      scope: S.optional(S.String),
+      userAuthenticationType: S.optional(S.String),
+      userEmailAddress: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "BillingRoleAssignmentPropertiesInput",
+}) as any as S.Schema<BillingRoleAssignmentPropertiesInput>;
+
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap =
+  { [key: string]: string | undefined };
+export const BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap>;
+
 export interface BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The ID that uniquely identifies a role assignment. */
   billingRoleAssignmentName: string;
-  body: unknown;
+  /** The properties of the billing role assignment. */
+  properties?: BillingRoleAssignmentPropertiesInput;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap;
 }
 export const BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
       billingRoleAssignmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(BillingRoleAssignmentPropertiesInput),
+      tags: S.optional(
+        BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4274,6 +4816,16 @@ export const BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponse =
     identifier: "BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponse",
   }) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByBillingAccountResponse>;
 
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap>;
+
 export interface BillingRoleAssignmentsCreateOrUpdateByDepartmentRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -4281,7 +4833,10 @@ export interface BillingRoleAssignmentsCreateOrUpdateByDepartmentRequest {
   departmentName: string;
   /** The ID that uniquely identifies a role assignment. */
   billingRoleAssignmentName: string;
-  body: unknown;
+  /** The properties of the billing role assignment. */
+  properties?: BillingRoleAssignmentPropertiesInput;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap;
 }
 export const BillingRoleAssignmentsCreateOrUpdateByDepartmentRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4289,7 +4844,10 @@ export const BillingRoleAssignmentsCreateOrUpdateByDepartmentRequest =
       billingAccountName: S.String.pipe(T.Label()),
       departmentName: S.String.pipe(T.Label()),
       billingRoleAssignmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(BillingRoleAssignmentPropertiesInput),
+      tags: S.optional(
+        BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4342,6 +4900,15 @@ export const BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse =
     identifier: "BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse",
   }) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByDepartmentResponse>;
 
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap =
+  { [key: string]: string | undefined };
+export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap>;
+
 export interface BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -4349,7 +4916,10 @@ export interface BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequest 
   enrollmentAccountName: string;
   /** The ID that uniquely identifies a role assignment. */
   billingRoleAssignmentName: string;
-  body: unknown;
+  /** The properties of the billing role assignment. */
+  properties?: BillingRoleAssignmentPropertiesInput;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap;
 }
 export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4357,7 +4927,10 @@ export const BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequest =
       billingAccountName: S.String.pipe(T.Label()),
       enrollmentAccountName: S.String.pipe(T.Label()),
       billingRoleAssignmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(BillingRoleAssignmentPropertiesInput),
+      tags: S.optional(
+        BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5068,7 +5641,8 @@ export const BillingRoleAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingRoleAssignment>;
 
 /** The BillingRoleAssignment items on this page */
-export type BillingRoleAssignmentListResultValueList = BillingRoleAssignment[];
+export type BillingRoleAssignmentListResultValueList =
+  ReadonlyArray<BillingRoleAssignment>;
 export const BillingRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   BillingRoleAssignment,
 ) as any as S.Schema<BillingRoleAssignmentListResultValueList>;
@@ -5381,7 +5955,7 @@ export const BillingRoleDefinitionGetByBillingAccountRequest =
 
 /** The billingPermissions the role has. */
 export type BillingRoleDefinitionPropertiesPermissionsList =
-  BillingPermission[];
+  ReadonlyArray<BillingPermission>;
 export const BillingRoleDefinitionPropertiesPermissionsList =
   /*@__PURE__*/ S.Array(
     BillingPermission,
@@ -5830,7 +6404,8 @@ export const BillingRoleDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingRoleDefinition>;
 
 /** The BillingRoleDefinition items on this page */
-export type BillingRoleDefinitionListResultValueList = BillingRoleDefinition[];
+export type BillingRoleDefinitionListResultValueList =
+  ReadonlyArray<BillingRoleDefinition>;
 export const BillingRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   BillingRoleDefinition,
 ) as any as S.Schema<BillingRoleDefinitionListResultValueList>;
@@ -5972,33 +6547,8 @@ export const BillingRoleDefinitionListByInvoiceSectionRequest =
     identifier: "BillingRoleDefinitionListByInvoiceSectionRequest",
   }) as any as S.Schema<BillingRoleDefinitionListByInvoiceSectionRequest>;
 
-export interface BillingSubscriptionsAliasesCreateOrUpdateRequest {
-  /** The ID that uniquely identifies a billing account. */
-  billingAccountName: string;
-  /** The ID that uniquely identifies a subscription alias. */
-  aliasName: string;
-  body: unknown;
-}
-export const BillingSubscriptionsAliasesCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccountName: S.String.pipe(T.Label()),
-      aliasName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptionAliases/{aliasName}",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "BillingSubscriptionsAliasesCreateOrUpdateRequest",
-  }) as any as S.Schema<BillingSubscriptionsAliasesCreateOrUpdateRequest>;
-
 /** Indicates whether auto renewal is turned on or off for a product. */
-export type AutoRenew = "Off" | "On" | (string & {});
+export type AutoRenew = "Off" | "On";
 export const AutoRenew = /*@__PURE__*/ S.String;
 
 /** Details of the beneficiary. */
@@ -6014,6 +6564,109 @@ export const Beneficiary = /*@__PURE__*/ S.suspend(() =>
     objectId: S.optional(S.String),
   }),
 ).annotate({ identifier: "Beneficiary" }) as any as S.Schema<Beneficiary>;
+
+/** System imposed policies that regulate behavior of the subscription. */
+export interface SystemOverridesInput {}
+export const SystemOverridesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SystemOverridesInput",
+}) as any as S.Schema<SystemOverridesInput>;
+
+/** A billing subscription alias. */
+export interface BillingSubscriptionAliasPropertiesInput {
+  /** Indicates whether auto renewal is turned on or off for a product. */
+  autoRenew?: AutoRenew;
+  /** The provisioning tenant of the subscription. */
+  beneficiaryTenantId?: string;
+  /** The beneficiary of the billing subscription. */
+  beneficiary?: Beneficiary;
+  /** The billing frequency in ISO8601 format of product in the subscription. Example: P1M, P3M, P1Y */
+  billingFrequency?: string;
+  /** The fully qualified ID that uniquely identifies a billing profile. */
+  billingProfileId?: string;
+  /** The cost center applied to the subscription. This field is only available for consumption subscriptions of Microsoft Customer Agreement or Enterprise Agreement Type billing accounts. */
+  consumptionCostCenter?: string;
+  /** The fully qualified ID that uniquely identifies a customer. */
+  customerId?: string;
+  /** The name of the billing subscription. */
+  displayName?: string;
+  /** The fully qualified ID that uniquely identifies an invoice section. */
+  invoiceSectionId?: string;
+  /** Id of the product for which the subscription is purchased. */
+  productTypeId?: string;
+  /** The quantity of licenses or fulfillment units for the subscription. */
+  quantity?: number;
+  /** The SKU ID of the product for which the subscription is purchased. This field is is only available for Microsoft Customer Agreement billing accounts. */
+  skuId?: string;
+  /** System imposed policies that regulate behavior of the subscription. */
+  systemOverrides?: SystemOverridesInput;
+  /** The duration in ISO8601 format for which you can use the subscription. Example: P1M, P3M, P1Y */
+  termDuration?: string;
+  /** The tenant in which the subscription is provisioned. */
+  provisioningTenantId?: string;
+}
+export const BillingSubscriptionAliasPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      autoRenew: S.optional(AutoRenew),
+      beneficiaryTenantId: S.optional(S.String),
+      beneficiary: S.optional(Beneficiary),
+      billingFrequency: S.optional(S.String),
+      billingProfileId: S.optional(S.String),
+      consumptionCostCenter: S.optional(S.String),
+      customerId: S.optional(S.String),
+      displayName: S.optional(S.String),
+      invoiceSectionId: S.optional(S.String),
+      productTypeId: S.optional(S.String),
+      quantity: S.optional(S.Number),
+      skuId: S.optional(S.String),
+      systemOverrides: S.optional(SystemOverridesInput),
+      termDuration: S.optional(S.String),
+      provisioningTenantId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "BillingSubscriptionAliasPropertiesInput",
+}) as any as S.Schema<BillingSubscriptionAliasPropertiesInput>;
+
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap>;
+
+export interface BillingSubscriptionsAliasesCreateOrUpdateRequest {
+  /** The ID that uniquely identifies a billing account. */
+  billingAccountName: string;
+  /** The ID that uniquely identifies a subscription alias. */
+  aliasName: string;
+  /** The properties of a(n) BillingSubscriptionAlias */
+  properties?: BillingSubscriptionAliasPropertiesInput;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap;
+}
+export const BillingSubscriptionsAliasesCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      billingAccountName: S.String.pipe(T.Label()),
+      aliasName: S.String.pipe(T.Label()),
+      properties: S.optional(BillingSubscriptionAliasPropertiesInput),
+      tags: S.optional(BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingSubscriptionAliases/{aliasName}",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "BillingSubscriptionsAliasesCreateOrUpdateRequest",
+  }) as any as S.Schema<BillingSubscriptionsAliasesCreateOrUpdateRequest>;
 
 /** Dictionary of billing policies associated with the subscription. */
 export type BillingSubscriptionAliasPropertiesBillingPoliciesMap = {
@@ -6033,8 +6686,7 @@ export type SubscriptionEnrollmentAccountStatus =
   | "Deleted"
   | "TransferredOut"
   | "Transferring"
-  | "Inactive"
-  | (string & {});
+  | "Inactive";
 export const SubscriptionEnrollmentAccountStatus = /*@__PURE__*/ S.String;
 
 /** The billing properties that can be modified. Available only for the Enterprise Agreement Type. */
@@ -6115,7 +6767,7 @@ export const RenewalTermDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RenewalTermDetails>;
 
 /** The policy override for the subscription indicates whether the self-serve cancellation or seat reduction is allowed. */
-export type Cancellation = "NotAllowed" | "Allowed" | (string & {});
+export type Cancellation = "NotAllowed" | "Allowed";
 export const Cancellation = /*@__PURE__*/ S.String;
 
 /** System imposed policies that regulate behavior of the subscription. */
@@ -6138,12 +6790,12 @@ export const SystemOverrides = /*@__PURE__*/ S.suspend(() =>
 export type BillingSubscriptionOperationStatus =
   | "Other"
   | "None"
-  | "LockedForUpdate"
-  | (string & {});
+  | "LockedForUpdate";
 export const BillingSubscriptionOperationStatus = /*@__PURE__*/ S.String;
 
 /** The suspension reason for a subscription. This field is not available for Enterprise Agreement billing accounts. */
-export type BillingSubscriptionAliasPropertiesSuspensionReasonsList = string[];
+export type BillingSubscriptionAliasPropertiesSuspensionReasonsList =
+  ReadonlyArray<string>;
 export const BillingSubscriptionAliasPropertiesSuspensionReasonsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6151,7 +6803,7 @@ export const BillingSubscriptionAliasPropertiesSuspensionReasonsList =
 
 /** The suspension details for a subscription. This field is not available for Enterprise Agreement billing accounts. */
 export type BillingSubscriptionAliasPropertiesSuspensionReasonDetailsList =
-  BillingSubscriptionStatusDetails[];
+  ReadonlyArray<BillingSubscriptionStatusDetails>;
 export const BillingSubscriptionAliasPropertiesSuspensionReasonDetailsList =
   /*@__PURE__*/ S.Array(
     BillingSubscriptionStatusDetails,
@@ -6491,7 +7143,7 @@ export const BillingSubscriptionAlias = /*@__PURE__*/ S.suspend(() =>
 
 /** The BillingSubscriptionAlias items on this page */
 export type BillingSubscriptionAliasListResultValueList =
-  BillingSubscriptionAlias[];
+  ReadonlyArray<BillingSubscriptionAlias>;
 export const BillingSubscriptionAliasListResultValueList =
   /*@__PURE__*/ S.Array(
     BillingSubscriptionAlias,
@@ -6513,18 +7165,26 @@ export const BillingSubscriptionAliasListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingSubscriptionAliasListResult",
 }) as any as S.Schema<BillingSubscriptionAliasListResult>;
 
+/** Cancellation reason. */
+export type CancellationReason = "Other" | "Compromise" | "Dispute";
+export const CancellationReason = /*@__PURE__*/ S.String;
+
 export interface BillingSubscriptionsCancelRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The ID that uniquely identifies a subscription. */
   billingSubscriptionName: string;
-  body: unknown;
+  /** Cancellation reason. */
+  cancellationReason: CancellationReason;
+  /** The fully qualified ID that uniquely identifies a customer. */
+  customerId?: string;
 }
 export const BillingSubscriptionsCancelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     billingSubscriptionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    cancellationReason: CancellationReason,
+    customerId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -6609,7 +7269,8 @@ export const BillingSubscriptionPropertiesBillingPoliciesMap =
   ) as any as S.Schema<BillingSubscriptionPropertiesBillingPoliciesMap>;
 
 /** The suspension reason for a subscription. This field is not available for Enterprise Agreement billing accounts. */
-export type BillingSubscriptionPropertiesSuspensionReasonsList = string[];
+export type BillingSubscriptionPropertiesSuspensionReasonsList =
+  ReadonlyArray<string>;
 export const BillingSubscriptionPropertiesSuspensionReasonsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6617,7 +7278,7 @@ export const BillingSubscriptionPropertiesSuspensionReasonsList =
 
 /** The suspension details for a subscription. This field is not available for Enterprise Agreement billing accounts. */
 export type BillingSubscriptionPropertiesSuspensionReasonDetailsList =
-  BillingSubscriptionStatusDetails[];
+  ReadonlyArray<BillingSubscriptionStatusDetails>;
 export const BillingSubscriptionPropertiesSuspensionReasonDetailsList =
   /*@__PURE__*/ S.Array(
     BillingSubscriptionStatusDetails,
@@ -6962,7 +7623,8 @@ export const BillingSubscription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingSubscription>;
 
 /** The list of resources. */
-export type BillingSubscriptionListResultValueList = BillingSubscription[];
+export type BillingSubscriptionListResultValueList =
+  ReadonlyArray<BillingSubscription>;
 export const BillingSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   BillingSubscription,
 ) as any as S.Schema<BillingSubscriptionListResultValueList>;
@@ -7226,13 +7888,17 @@ export interface BillingSubscriptionsMergeRequest {
   billingAccountName: string;
   /** The ID that uniquely identifies a subscription. */
   billingSubscriptionName: string;
-  body: unknown;
+  /** The ID of the target billing subscription that will be merged with the source subscription provided in the request. */
+  targetBillingSubscriptionName?: string;
+  /** The quantity of the source billing subscription that will be merged with the target billing subscription. */
+  quantity?: number;
 }
 export const BillingSubscriptionsMergeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     billingSubscriptionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    targetBillingSubscriptionName: S.optional(S.String),
+    quantity: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -7286,13 +7952,17 @@ export interface BillingSubscriptionsMoveRequest {
   billingAccountName: string;
   /** The ID that uniquely identifies a subscription. */
   billingSubscriptionName: string;
-  body: unknown;
+  /** The destination invoice section id. */
+  destinationInvoiceSectionId?: string;
+  /** The destination enrollment account id. */
+  destinationEnrollmentAccountId?: string;
 }
 export const BillingSubscriptionsMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     billingSubscriptionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    destinationInvoiceSectionId: S.optional(S.String),
+    destinationEnrollmentAccountId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -7346,13 +8016,26 @@ export interface BillingSubscriptionsSplitRequest {
   billingAccountName: string;
   /** The ID that uniquely identifies a subscription. */
   billingSubscriptionName: string;
-  body: unknown;
+  /** The ID of the target product to which the subscription needs to be split into. This value is not same as the value returned in Get API call and can be retrieved from Catalog API to know the product id to split into. */
+  targetProductTypeId?: string;
+  /** The ID of the target product to which the subscription needs to be split into. This value is not same as the value returned in Get API call and can be retrieved from Catalog API to know the sku id to split into. */
+  targetSkuId?: string;
+  /** The quantity of the target product to which the subscription needs to be split into. */
+  quantity?: number;
+  /** The term duration of the target in ISO8601 format product to which the subscription needs to be split into. Example: P1M, P1Y */
+  termDuration?: string;
+  /** The billing frequency of the target subscription in the ISO8601 format. Example: P1M, P3M, P1Y" */
+  billingFrequency?: string;
 }
 export const BillingSubscriptionsSplitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     billingSubscriptionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    targetProductTypeId: S.optional(S.String),
+    targetSkuId: S.optional(S.String),
+    quantity: S.optional(S.Number),
+    termDuration: S.optional(S.String),
+    billingFrequency: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -7401,18 +8084,86 @@ export const BillingSubscriptionsSplitResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingSubscriptionsSplitResponse",
 }) as any as S.Schema<BillingSubscriptionsSplitResponse>;
 
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type BillingSubscriptionsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BillingSubscriptionsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BillingSubscriptionsUpdateRequestTagsMap>;
+
+/** The billing properties of a subscription. */
+export interface BillingSubscriptionPropertiesInput {
+  /** Indicates whether auto renewal is turned on or off for a product. */
+  autoRenew?: AutoRenew;
+  /** The provisioning tenant of the subscription. */
+  beneficiaryTenantId?: string;
+  /** The beneficiary of the billing subscription. */
+  beneficiary?: Beneficiary;
+  /** The billing frequency in ISO8601 format of product in the subscription. Example: P1M, P3M, P1Y */
+  billingFrequency?: string;
+  /** The fully qualified ID that uniquely identifies a billing profile. */
+  billingProfileId?: string;
+  /** The cost center applied to the subscription. This field is only available for consumption subscriptions of Microsoft Customer Agreement or Enterprise Agreement Type billing accounts. */
+  consumptionCostCenter?: string;
+  /** The fully qualified ID that uniquely identifies a customer. */
+  customerId?: string;
+  /** The name of the billing subscription. */
+  displayName?: string;
+  /** The fully qualified ID that uniquely identifies an invoice section. */
+  invoiceSectionId?: string;
+  /** Id of the product for which the subscription is purchased. */
+  productTypeId?: string;
+  /** The quantity of licenses or fulfillment units for the subscription. */
+  quantity?: number;
+  /** The SKU ID of the product for which the subscription is purchased. This field is is only available for Microsoft Customer Agreement billing accounts. */
+  skuId?: string;
+  /** System imposed policies that regulate behavior of the subscription. */
+  systemOverrides?: SystemOverridesInput;
+  /** The duration in ISO8601 format for which you can use the subscription. Example: P1M, P3M, P1Y */
+  termDuration?: string;
+  /** The tenant in which the subscription is provisioned. */
+  provisioningTenantId?: string;
+}
+export const BillingSubscriptionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoRenew: S.optional(AutoRenew),
+    beneficiaryTenantId: S.optional(S.String),
+    beneficiary: S.optional(Beneficiary),
+    billingFrequency: S.optional(S.String),
+    billingProfileId: S.optional(S.String),
+    consumptionCostCenter: S.optional(S.String),
+    customerId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    invoiceSectionId: S.optional(S.String),
+    productTypeId: S.optional(S.String),
+    quantity: S.optional(S.Number),
+    skuId: S.optional(S.String),
+    systemOverrides: S.optional(SystemOverridesInput),
+    termDuration: S.optional(S.String),
+    provisioningTenantId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BillingSubscriptionPropertiesInput",
+}) as any as S.Schema<BillingSubscriptionPropertiesInput>;
+
 export interface BillingSubscriptionsUpdateRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The ID that uniquely identifies a subscription. */
   billingSubscriptionName: string;
-  body: unknown;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: BillingSubscriptionsUpdateRequestTagsMap;
+  /** The properties of a(n) BillingSubscription */
+  properties?: BillingSubscriptionPropertiesInput;
 }
 export const BillingSubscriptionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     billingSubscriptionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(BillingSubscriptionsUpdateRequestTagsMap),
+    properties: S.optional(BillingSubscriptionPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7466,14 +8217,18 @@ export interface BillingSubscriptionsValidateMoveEligibilityRequest {
   billingAccountName: string;
   /** The ID that uniquely identifies a subscription. */
   billingSubscriptionName: string;
-  body: unknown;
+  /** The destination invoice section id. */
+  destinationInvoiceSectionId?: string;
+  /** The destination enrollment account id. */
+  destinationEnrollmentAccountId?: string;
 }
 export const BillingSubscriptionsValidateMoveEligibilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
       billingSubscriptionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      destinationInvoiceSectionId: S.optional(S.String),
+      destinationEnrollmentAccountId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -7515,8 +8270,7 @@ export type SubscriptionTransferValidationErrorCode =
   | "SubscriptionNotActive"
   | "SubscriptionHasReservations"
   | "SubscriptionTypeNotSupported"
-  | "InvoiceSectionIsRestricted"
-  | (string & {});
+  | "InvoiceSectionIsRestricted";
 export const SubscriptionTransferValidationErrorCode = /*@__PURE__*/ S.String;
 
 /** Error details of the transfer eligibility validation. */
@@ -7581,13 +8335,13 @@ export const CustomersGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomersGetRequest>;
 
 /** Azure plans enabled for the customer. */
-export type CustomerPropertiesEnabledAzurePlansList = AzurePlan[];
+export type CustomerPropertiesEnabledAzurePlansList = ReadonlyArray<AzurePlan>;
 export const CustomerPropertiesEnabledAzurePlansList = /*@__PURE__*/ S.Array(
   AzurePlan,
 ) as any as S.Schema<CustomerPropertiesEnabledAzurePlansList>;
 
 /** The list of resellers for which an Azure plan is enabled for the customer. */
-export type CustomerPropertiesResellersList = Reseller[];
+export type CustomerPropertiesResellersList = ReadonlyArray<Reseller>;
 export const CustomerPropertiesResellersList = /*@__PURE__*/ S.Array(
   Reseller,
 ) as any as S.Schema<CustomerPropertiesResellersList>;
@@ -7802,7 +8556,7 @@ export const Customer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Customer" }) as any as S.Schema<Customer>;
 
 /** The Customer items on this page */
-export type CustomerListResultValueList = Customer[];
+export type CustomerListResultValueList = ReadonlyArray<Customer>;
 export const CustomerListResultValueList = /*@__PURE__*/ S.Array(
   Customer,
 ) as any as S.Schema<CustomerListResultValueList>;
@@ -8016,7 +8770,7 @@ export const Department = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Department" }) as any as S.Schema<Department>;
 
 /** The Department items on this page */
-export type DepartmentListResultValueList = Department[];
+export type DepartmentListResultValueList = ReadonlyArray<Department>;
 export const DepartmentListResultValueList = /*@__PURE__*/ S.Array(
   Department,
 ) as any as S.Schema<DepartmentListResultValueList>;
@@ -8273,7 +9027,8 @@ export const EnrollmentAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnrollmentAccount>;
 
 /** The EnrollmentAccount items on this page */
-export type EnrollmentAccountListResultValueList = EnrollmentAccount[];
+export type EnrollmentAccountListResultValueList =
+  ReadonlyArray<EnrollmentAccount>;
 export const EnrollmentAccountListResultValueList = /*@__PURE__*/ S.Array(
   EnrollmentAccount,
 ) as any as S.Schema<EnrollmentAccountListResultValueList>;
@@ -8432,16 +9187,41 @@ export const InvoicesDownloadByBillingSubscriptionRequest =
     identifier: "InvoicesDownloadByBillingSubscriptionRequest",
   }) as any as S.Schema<InvoicesDownloadByBillingSubscriptionRequest>;
 
+/** A list of download details for individual documents. */
+export interface DocumentDownloadRequest {
+  /** The ID that uniquely identifies an invoice document. This ID may be an identifier for an invoice PDF, a credit note, or a tax receipt. If omitted, the most recent invoice PDF for the invoice will be returned. */
+  documentName?: string;
+  /** The ID that uniquely identifies an invoice. */
+  invoiceName?: string;
+}
+export const DocumentDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    documentName: S.optional(S.String),
+    invoiceName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DocumentDownloadRequest",
+}) as any as S.Schema<DocumentDownloadRequest>;
+
+export type InvoicesDownloadDocumentsByBillingAccountRequestBodyList =
+  ReadonlyArray<DocumentDownloadRequest>;
+export const InvoicesDownloadDocumentsByBillingAccountRequestBodyList =
+  /*@__PURE__*/ S.Array(
+    DocumentDownloadRequest,
+  ) as any as S.Schema<InvoicesDownloadDocumentsByBillingAccountRequestBodyList>;
+
 export interface InvoicesDownloadDocumentsByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
-  body: unknown;
+  body: InvoicesDownloadDocumentsByBillingAccountRequestBodyList;
 }
 export const InvoicesDownloadDocumentsByBillingAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      body: InvoicesDownloadDocumentsByBillingAccountRequestBodyList.pipe(
+        T.HttpBody(),
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -8454,16 +9234,25 @@ export const InvoicesDownloadDocumentsByBillingAccountRequest =
     identifier: "InvoicesDownloadDocumentsByBillingAccountRequest",
   }) as any as S.Schema<InvoicesDownloadDocumentsByBillingAccountRequest>;
 
+export type InvoicesDownloadDocumentsByBillingSubscriptionRequestBodyList =
+  ReadonlyArray<DocumentDownloadRequest>;
+export const InvoicesDownloadDocumentsByBillingSubscriptionRequestBodyList =
+  /*@__PURE__*/ S.Array(
+    DocumentDownloadRequest,
+  ) as any as S.Schema<InvoicesDownloadDocumentsByBillingSubscriptionRequestBodyList>;
+
 export interface InvoicesDownloadDocumentsByBillingSubscriptionRequest {
   /** The ID that uniquely identifies a billing subscription. */
   subscriptionId: string;
-  body: unknown;
+  body: InvoicesDownloadDocumentsByBillingSubscriptionRequestBodyList;
 }
 export const InvoicesDownloadDocumentsByBillingSubscriptionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      body: InvoicesDownloadDocumentsByBillingSubscriptionRequestBodyList.pipe(
+        T.HttpBody(),
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -8499,6 +9288,50 @@ export const InvoicesDownloadSummaryByBillingAccountRequest =
     identifier: "InvoicesDownloadSummaryByBillingAccountRequest",
   }) as any as S.Schema<InvoicesDownloadSummaryByBillingAccountRequest>;
 
+/** Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type InvoiceSectionPropertiesInputTagsMap = {
+  [key: string]: string | undefined;
+};
+export const InvoiceSectionPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<InvoiceSectionPropertiesInputTagsMap>;
+
+/** An invoice section. */
+export interface InvoiceSectionPropertiesInput {
+  /** The name of the invoice section. */
+  displayName?: string;
+  /** Identifies the status of an invoice section. */
+  state?: InvoiceSectionState;
+  /** Reason for the specified invoice section status. */
+  reasonCode?: InvoiceSectionStateReasonCode;
+  /** Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds. */
+  targetCloud?: string;
+  /** Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: InvoiceSectionPropertiesInputTagsMap;
+}
+export const InvoiceSectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    state: S.optional(InvoiceSectionState),
+    reasonCode: S.optional(InvoiceSectionStateReasonCode),
+    targetCloud: S.optional(S.String),
+    tags: S.optional(InvoiceSectionPropertiesInputTagsMap),
+  }),
+).annotate({
+  identifier: "InvoiceSectionPropertiesInput",
+}) as any as S.Schema<InvoiceSectionPropertiesInput>;
+
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type InvoiceSectionsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const InvoiceSectionsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<InvoiceSectionsCreateOrUpdateRequestTagsMap>;
+
 export interface InvoiceSectionsCreateOrUpdateRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -8506,7 +9339,10 @@ export interface InvoiceSectionsCreateOrUpdateRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies an invoice section. */
   invoiceSectionName: string;
-  body: unknown;
+  /** An invoice section. */
+  properties?: InvoiceSectionPropertiesInput;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: InvoiceSectionsCreateOrUpdateRequestTagsMap;
 }
 export const InvoiceSectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -8514,7 +9350,8 @@ export const InvoiceSectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       billingAccountName: S.String.pipe(T.Label()),
       billingProfileName: S.String.pipe(T.Label()),
       invoiceSectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(InvoiceSectionPropertiesInput),
+      tags: S.optional(InvoiceSectionsCreateOrUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -8776,7 +9613,7 @@ export const InvoiceSection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvoiceSection" }) as any as S.Schema<InvoiceSection>;
 
 /** The InvoiceSection items on this page */
-export type InvoiceSectionListResultValueList = InvoiceSection[];
+export type InvoiceSectionListResultValueList = ReadonlyArray<InvoiceSection>;
 export const InvoiceSectionListResultValueList = /*@__PURE__*/ S.Array(
   InvoiceSection,
 ) as any as S.Schema<InvoiceSectionListResultValueList>;
@@ -8824,10 +9661,7 @@ export const InvoiceSectionsValidateDeleteEligibilityRequest =
   }) as any as S.Schema<InvoiceSectionsValidateDeleteEligibilityRequest>;
 
 /** Status describing if invoice section is eligible to be deleted. */
-export type DeleteInvoiceSectionEligibilityStatus =
-  | "Allowed"
-  | "NotAllowed"
-  | (string & {});
+export type DeleteInvoiceSectionEligibilityStatus = "Allowed" | "NotAllowed";
 export const DeleteInvoiceSectionEligibilityStatus = /*@__PURE__*/ S.String;
 
 /** Code for the delete invoice section validation. */
@@ -8836,8 +9670,7 @@ export type DeleteInvoiceSectionEligibilityCode =
   | "LastInvoiceSection"
   | "ActiveAzurePlans"
   | "ReservedInstances"
-  | "ActiveBillingSubscriptions"
-  | (string & {});
+  | "ActiveBillingSubscriptions";
 export const DeleteInvoiceSectionEligibilityCode = /*@__PURE__*/ S.String;
 
 /** The details of delete invoice section eligibility result. */
@@ -8859,7 +9692,7 @@ export const DeleteInvoiceSectionEligibilityDetail = /*@__PURE__*/ S.suspend(
 
 /** A list of delete invoice section eligibility result details. */
 export type DeleteInvoiceSectionEligibilityResultEligibilityDetailsList =
-  DeleteInvoiceSectionEligibilityDetail[];
+  ReadonlyArray<DeleteInvoiceSectionEligibilityDetail>;
 export const DeleteInvoiceSectionEligibilityResultEligibilityDetailsList =
   /*@__PURE__*/ S.Array(
     DeleteInvoiceSectionEligibilityDetail,
@@ -8904,7 +9737,7 @@ export const InvoicesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvoicesGetRequest>;
 
 /** The document numbers for the invoice document. */
-export type InvoiceDocumentDocumentNumbersList = string[];
+export type InvoiceDocumentDocumentNumbersList = ReadonlyArray<string>;
 export const InvoiceDocumentDocumentNumbersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvoiceDocumentDocumentNumbersList>;
@@ -8917,12 +9750,11 @@ export type InvoiceDocumentType =
   | "TaxReceipt"
   | "CreditNote"
   | "Summary"
-  | "Transactions"
-  | (string & {});
+  | "Transactions";
 export const InvoiceDocumentType = /*@__PURE__*/ S.String;
 
 /** The source of the document. ENF for Brazil and DRS for rest of the world. */
-export type DocumentSource = "Other" | "DRS" | "ENF" | (string & {});
+export type DocumentSource = "Other" | "DRS" | "ENF";
 export const DocumentSource = /*@__PURE__*/ S.String;
 
 /** The properties of a document. */
@@ -8954,7 +9786,7 @@ export const InvoiceDocument = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvoiceDocument>;
 
 /** List of documents available to download and view such as invoice, credit note, or tax receipt. */
-export type InvoicePropertiesDocumentsList = InvoiceDocument[];
+export type InvoicePropertiesDocumentsList = ReadonlyArray<InvoiceDocument>;
 export const InvoicePropertiesDocumentsList = /*@__PURE__*/ S.Array(
   InvoiceDocument,
 ) as any as S.Schema<InvoicePropertiesDocumentsList>;
@@ -8964,8 +9796,7 @@ export type FailedPaymentReason =
   | "Other"
   | "BankDeclined"
   | "CardExpired"
-  | "IncorrectCardDetails"
-  | (string & {});
+  | "IncorrectCardDetails";
 export const FailedPaymentReason = /*@__PURE__*/ S.String;
 
 /** A failed payment. */
@@ -8983,7 +9814,7 @@ export const FailedPayment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FailedPayment" }) as any as S.Schema<FailedPayment>;
 
 /** List of failed payments. */
-export type InvoicePropertiesFailedPaymentsList = FailedPayment[];
+export type InvoicePropertiesFailedPaymentsList = ReadonlyArray<FailedPayment>;
 export const InvoicePropertiesFailedPaymentsList = /*@__PURE__*/ S.Array(
   FailedPayment,
 ) as any as S.Schema<InvoicePropertiesFailedPaymentsList>;
@@ -8993,8 +9824,7 @@ export type InvoiceType =
   | "Other"
   | "AzureServices"
   | "AzureMarketplace"
-  | "AzureSupport"
-  | (string & {});
+  | "AzureSupport";
 export const InvoiceType = /*@__PURE__*/ S.String;
 
 /** An invoice payment. */
@@ -9024,7 +9854,7 @@ export const Payment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Payment" }) as any as S.Schema<Payment>;
 
 /** List of payments. */
-export type InvoicePropertiesPaymentsList = Payment[];
+export type InvoicePropertiesPaymentsList = ReadonlyArray<Payment>;
 export const InvoicePropertiesPaymentsList = /*@__PURE__*/ S.Array(
   Payment,
 ) as any as S.Schema<InvoicePropertiesPaymentsList>;
@@ -9053,15 +9883,11 @@ export type InvoiceStatus =
   | "OverDue"
   | "Paid"
   | "Void"
-  | "Locked"
-  | (string & {});
+  | "Locked";
 export const InvoiceStatus = /*@__PURE__*/ S.String;
 
 /** Identifies the type of tax calculation used for the invoice. The field is applicable only to invoices with special tax calculation logic. */
-export type SpecialTaxationType =
-  | "SubtotalLevel"
-  | "InvoiceLevel"
-  | (string & {});
+export type SpecialTaxationType = "SubtotalLevel" | "InvoiceLevel";
 export const SpecialTaxationType = /*@__PURE__*/ S.String;
 
 /** The status of refund request. */
@@ -9072,8 +9898,7 @@ export type RefundStatus =
   | "Declined"
   | "Cancelled"
   | "Completed"
-  | "Expired"
-  | (string & {});
+  | "Expired";
 export const RefundStatus = /*@__PURE__*/ S.String;
 
 /** The reason for refund. */
@@ -9083,8 +9908,7 @@ export type RefundReasonCode =
   | "UnclearPricing"
   | "AccidentalPurchase"
   | "ForgotToCancel"
-  | "UnclearDocumentation"
-  | (string & {});
+  | "UnclearDocumentation";
 export const RefundReasonCode = /*@__PURE__*/ S.String;
 
 /** The details of refund request. */
@@ -9455,7 +10279,7 @@ export const Invoice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Invoice" }) as any as S.Schema<Invoice>;
 
 /** The Invoice items on this page */
-export type InvoiceListResultValueList = Invoice[];
+export type InvoiceListResultValueList = ReadonlyArray<Invoice>;
 export const InvoiceListResultValueList = /*@__PURE__*/ S.Array(
   Invoice,
 ) as any as S.Schema<InvoiceListResultValueList>;
@@ -9620,7 +10444,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of billing operations supported by the Microsoft.Billing resource provider. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -9678,12 +10502,11 @@ export type TransferStatus =
   | "CompletedWithErrors"
   | "Failed"
   | "Canceled"
-  | "Declined"
-  | (string & {});
+  | "Declined";
 export const TransferStatus = /*@__PURE__*/ S.String;
 
 /** The type of customer of the transfer initiator. */
-export type InitiatorCustomerType = "Partner" | "EA" | (string & {});
+export type InitiatorCustomerType = "Partner" | "EA";
 export const InitiatorCustomerType = /*@__PURE__*/ S.String;
 
 /** The type of product that is transferred. */
@@ -9692,8 +10515,7 @@ export type ProductType =
   | "AzureReservation"
   | "Department"
   | "SavingsPlan"
-  | "SAAS"
-  | (string & {});
+  | "SAAS";
 export const ProductType = /*@__PURE__*/ S.String;
 
 /** The status of a transfer. */
@@ -9701,8 +10523,7 @@ export type ProductTransferStatus =
   | "NotStarted"
   | "InProgress"
   | "Completed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProductTransferStatus = /*@__PURE__*/ S.String;
 
 /** Error details for transfer execution. */
@@ -9749,7 +10570,7 @@ export const DetailedTransferStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed transfer status. */
 export type PartnerTransferPropertiesDetailedTransferStatusList =
-  DetailedTransferStatus[];
+  ReadonlyArray<DetailedTransferStatus>;
 export const PartnerTransferPropertiesDetailedTransferStatusList =
   /*@__PURE__*/ S.Array(
     DetailedTransferStatus,
@@ -9894,6 +10715,22 @@ export const PartnerTransfersGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PartnerTransfersGetResponse",
 }) as any as S.Schema<PartnerTransfersGetResponse>;
 
+/** Request parameters to initiate transfer. */
+export interface PartnerInitiateTransferProperties {
+  /** The email ID of the recipient to whom the transfer request is sent. */
+  recipientEmailId?: string;
+  /** Optional MPN ID of the reseller for transfer requests that are sent from a Microsoft Partner Agreement billing account. */
+  resellerId?: string;
+}
+export const PartnerInitiateTransferProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recipientEmailId: S.optional(S.String),
+    resellerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PartnerInitiateTransferProperties",
+}) as any as S.Schema<PartnerInitiateTransferProperties>;
+
 export interface PartnerTransfersInitiateRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -9903,7 +10740,8 @@ export interface PartnerTransfersInitiateRequest {
   customerName: string;
   /** The ID that uniquely identifies a transfer request. */
   transferName: string;
-  body: unknown;
+  /** Request parameters to initiate partner transfer. */
+  properties?: PartnerInitiateTransferProperties;
 }
 export const PartnerTransfersInitiateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9911,7 +10749,7 @@ export const PartnerTransfersInitiateRequest = /*@__PURE__*/ S.suspend(() =>
     billingProfileName: S.String.pipe(T.Label()),
     customerName: S.String.pipe(T.Label()),
     transferName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(PartnerInitiateTransferProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -10024,7 +10862,7 @@ export const PartnerTransferDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The PartnerTransferDetails items on this page */
 export type PartnerTransferDetailsListResultValueList =
-  PartnerTransferDetails[];
+  ReadonlyArray<PartnerTransferDetails>;
 export const PartnerTransferDetailsListResultValueList = /*@__PURE__*/ S.Array(
   PartnerTransferDetails,
 ) as any as S.Schema<PartnerTransferDetailsListResultValueList>;
@@ -10111,13 +10949,13 @@ export const PaymentMethodLogo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodLogo>;
 
 /** The list of logos for the payment method. */
-export type PaymentMethodPropertiesLogosList = PaymentMethodLogo[];
+export type PaymentMethodPropertiesLogosList = ReadonlyArray<PaymentMethodLogo>;
 export const PaymentMethodPropertiesLogosList = /*@__PURE__*/ S.Array(
   PaymentMethodLogo,
 ) as any as S.Schema<PaymentMethodPropertiesLogosList>;
 
 /** Status of the payment method. */
-export type PaymentMethodStatus = "active" | "inactive" | (string & {});
+export type PaymentMethodStatus = "active" | "inactive";
 export const PaymentMethodStatus = /*@__PURE__*/ S.String;
 
 /** The properties of a payment method. */
@@ -10222,7 +11060,8 @@ export const PaymentMethodsGetByBillingProfileRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaymentMethodsGetByBillingProfileRequest>;
 
 /** The list of logos for the payment method. */
-export type PaymentMethodLinkPropertiesLogosList = PaymentMethodLogo[];
+export type PaymentMethodLinkPropertiesLogosList =
+  ReadonlyArray<PaymentMethodLogo>;
 export const PaymentMethodLinkPropertiesLogosList = /*@__PURE__*/ S.Array(
   PaymentMethodLogo,
 ) as any as S.Schema<PaymentMethodLinkPropertiesLogosList>;
@@ -10414,7 +11253,7 @@ export const PaymentMethod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaymentMethod" }) as any as S.Schema<PaymentMethod>;
 
 /** The PaymentMethod items on this page */
-export type PaymentMethodsListResultValueList = PaymentMethod[];
+export type PaymentMethodsListResultValueList = ReadonlyArray<PaymentMethod>;
 export const PaymentMethodsListResultValueList = /*@__PURE__*/ S.Array(
   PaymentMethod,
 ) as any as S.Schema<PaymentMethodsListResultValueList>;
@@ -10494,7 +11333,8 @@ export const PaymentMethodLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentMethodLink>;
 
 /** The PaymentMethodLink items on this page */
-export type PaymentMethodLinksListResultValueList = PaymentMethodLink[];
+export type PaymentMethodLinksListResultValueList =
+  ReadonlyArray<PaymentMethodLink>;
 export const PaymentMethodLinksListResultValueList = /*@__PURE__*/ S.Array(
   PaymentMethodLink,
 ) as any as S.Schema<PaymentMethodLinksListResultValueList>;
@@ -10529,36 +11369,13 @@ export const PaymentMethodsListByUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaymentMethodsListByUserRequest",
 }) as any as S.Schema<PaymentMethodsListByUserRequest>;
 
-export interface PoliciesCreateOrUpdateByBillingAccountRequest {
-  /** The ID that uniquely identifies a billing account. */
-  billingAccountName: string;
-  body: unknown;
-}
-export const PoliciesCreateOrUpdateByBillingAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/policies/default",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PoliciesCreateOrUpdateByBillingAccountRequest",
-  }) as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountRequest>;
-
 /** The state showing the enrollment auth level. */
 export type EnrollmentAuthLevelState =
   | "Other"
   | "MicrosoftAccountOnly"
   | "MixedAccount"
   | "OrganizationalAccountCrossTenant"
-  | "OrganizationalAccountOnly"
-  | (string & {});
+  | "OrganizationalAccountOnly";
 export const EnrollmentAuthLevelState = /*@__PURE__*/ S.String;
 
 /** The policy that controls whether account owner can view charges. */
@@ -10566,8 +11383,7 @@ export type EnrollmentAccountOwnerViewCharges =
   | "Other"
   | "Allowed"
   | "Disabled"
-  | "NotAllowed"
-  | (string & {});
+  | "NotAllowed";
 export const EnrollmentAccountOwnerViewCharges = /*@__PURE__*/ S.String;
 
 /** The policy that controls whether department admin can view charges. */
@@ -10575,8 +11391,7 @@ export type EnrollmentDepartmentAdminViewCharges =
   | "Other"
   | "Allowed"
   | "Disabled"
-  | "NotAllowed"
-  | (string & {});
+  | "NotAllowed";
 export const EnrollmentDepartmentAdminViewCharges = /*@__PURE__*/ S.String;
 
 /** The policies for Enterprise Agreement enrollments. */
@@ -10606,8 +11421,7 @@ export type MarketplacePurchasesPolicy =
   | "AllAllowed"
   | "Disabled"
   | "NotAllowed"
-  | "OnlyFreeAllowed"
-  | (string & {});
+  | "OnlyFreeAllowed";
 export const MarketplacePurchasesPolicy = /*@__PURE__*/ S.String;
 
 /** The policy that controls whether Azure reservation purchases are allowed. */
@@ -10615,8 +11429,7 @@ export type ReservationPurchasesPolicy =
   | "Other"
   | "Allowed"
   | "Disabled"
-  | "NotAllowed"
-  | (string & {});
+  | "NotAllowed";
 export const ReservationPurchasesPolicy = /*@__PURE__*/ S.String;
 
 /** The policy that controls whether users with Azure savings plan purchase are allowed. */
@@ -10624,16 +11437,11 @@ export type SavingsPlanPurchasesPolicy =
   | "Other"
   | "Allowed"
   | "Disabled"
-  | "NotAllowed"
-  | (string & {});
+  | "NotAllowed";
 export const SavingsPlanPurchasesPolicy = /*@__PURE__*/ S.String;
 
 /** The type of the policy. */
-export type PolicyType =
-  | "Other"
-  | "UserControlled"
-  | "SystemControlled"
-  | (string & {});
+export type PolicyType = "Other" | "UserControlled" | "SystemControlled";
 export const PolicyType = /*@__PURE__*/ S.String;
 
 /** The summary of the policy. */
@@ -10657,7 +11465,8 @@ export const PolicySummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicySummary" }) as any as S.Schema<PolicySummary>;
 
 /** List of all policies defined at the billing scope. */
-export type BillingAccountPolicyPropertiesPoliciesList = PolicySummary[];
+export type BillingAccountPolicyPropertiesPoliciesList =
+  ReadonlyArray<PolicySummary>;
 export const BillingAccountPolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   PolicySummary,
 ) as any as S.Schema<BillingAccountPolicyPropertiesPoliciesList>;
@@ -10689,6 +11498,42 @@ export const BillingAccountPolicyProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BillingAccountPolicyProperties",
 }) as any as S.Schema<BillingAccountPolicyProperties>;
+
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type PoliciesCreateOrUpdateByBillingAccountRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PoliciesCreateOrUpdateByBillingAccountRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountRequestTagsMap>;
+
+export interface PoliciesCreateOrUpdateByBillingAccountRequest {
+  /** The ID that uniquely identifies a billing account. */
+  billingAccountName: string;
+  /** A policy at billing account scope. */
+  properties?: BillingAccountPolicyProperties;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: PoliciesCreateOrUpdateByBillingAccountRequestTagsMap;
+}
+export const PoliciesCreateOrUpdateByBillingAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      billingAccountName: S.String.pipe(T.Label()),
+      properties: S.optional(BillingAccountPolicyProperties),
+      tags: S.optional(PoliciesCreateOrUpdateByBillingAccountRequestTagsMap),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/policies/default",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "PoliciesCreateOrUpdateByBillingAccountRequest",
+  }) as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountRequest>;
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PoliciesCreateOrUpdateByBillingAccountResponseTagsMap = {
@@ -10728,49 +11573,20 @@ export const PoliciesCreateOrUpdateByBillingAccountResponse =
     identifier: "PoliciesCreateOrUpdateByBillingAccountResponse",
   }) as any as S.Schema<PoliciesCreateOrUpdateByBillingAccountResponse>;
 
-export interface PoliciesCreateOrUpdateByBillingProfileRequest {
-  /** The ID that uniquely identifies a billing account. */
-  billingAccountName: string;
-  /** The ID that uniquely identifies a billing profile. */
-  billingProfileName: string;
-  body: unknown;
-}
-export const PoliciesCreateOrUpdateByBillingProfileRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccountName: S.String.pipe(T.Label()),
-      billingProfileName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/policies/default",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PoliciesCreateOrUpdateByBillingProfileRequest",
-  }) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileRequest>;
-
 /** The policy that controls invoice section label management at invoice section scope. This is allowed by default. */
 export type InvoiceSectionLabelManagementPolicy =
   | "Other"
   | "Allowed"
-  | "NotAllowed"
-  | (string & {});
+  | "NotAllowed";
 export const InvoiceSectionLabelManagementPolicy = /*@__PURE__*/ S.String;
 
 /** The policy that controls whether the users in customer's organization can view charges at pay-as-you-go prices. */
-export type ViewChargesPolicy =
-  | "Other"
-  | "Allowed"
-  | "NotAllowed"
-  | (string & {});
+export type ViewChargesPolicy = "Other" | "Allowed" | "NotAllowed";
 export const ViewChargesPolicy = /*@__PURE__*/ S.String;
 
 /** List of all policies defined at the billing scope. */
-export type BillingProfilePolicyPropertiesPoliciesList = PolicySummary[];
+export type BillingProfilePolicyPropertiesPoliciesList =
+  ReadonlyArray<PolicySummary>;
 export const BillingProfilePolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   PolicySummary,
 ) as any as S.Schema<BillingProfilePolicyPropertiesPoliciesList>;
@@ -10812,6 +11628,45 @@ export const BillingProfilePolicyProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingProfilePolicyProperties>;
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type PoliciesCreateOrUpdateByBillingProfileRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PoliciesCreateOrUpdateByBillingProfileRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileRequestTagsMap>;
+
+export interface PoliciesCreateOrUpdateByBillingProfileRequest {
+  /** The ID that uniquely identifies a billing account. */
+  billingAccountName: string;
+  /** The ID that uniquely identifies a billing profile. */
+  billingProfileName: string;
+  /** A policy at billing profile scope. */
+  properties?: BillingProfilePolicyProperties;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: PoliciesCreateOrUpdateByBillingProfileRequestTagsMap;
+}
+export const PoliciesCreateOrUpdateByBillingProfileRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      billingAccountName: S.String.pipe(T.Label()),
+      billingProfileName: S.String.pipe(T.Label()),
+      properties: S.optional(BillingProfilePolicyProperties),
+      tags: S.optional(PoliciesCreateOrUpdateByBillingProfileRequestTagsMap),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/policies/default",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "PoliciesCreateOrUpdateByBillingProfileRequest",
+  }) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileRequest>;
+
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PoliciesCreateOrUpdateByBillingProfileResponseTagsMap = {
   [key: string]: string | undefined;
 };
@@ -10849,36 +11704,8 @@ export const PoliciesCreateOrUpdateByBillingProfileResponse =
     identifier: "PoliciesCreateOrUpdateByBillingProfileResponse",
   }) as any as S.Schema<PoliciesCreateOrUpdateByBillingProfileResponse>;
 
-export interface PoliciesCreateOrUpdateByCustomerRequest {
-  /** The ID that uniquely identifies a billing account. */
-  billingAccountName: string;
-  /** The ID that uniquely identifies a billing profile. */
-  billingProfileName: string;
-  /** The ID that uniquely identifies a customer. */
-  customerName: string;
-  body: unknown;
-}
-export const PoliciesCreateOrUpdateByCustomerRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingAccountName: S.String.pipe(T.Label()),
-      billingProfileName: S.String.pipe(T.Label()),
-      customerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/policies/default",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "PoliciesCreateOrUpdateByCustomerRequest",
-}) as any as S.Schema<PoliciesCreateOrUpdateByCustomerRequest>;
-
 /** List of all policies defined at the billing scope. */
-export type CustomerPolicyPropertiesPoliciesList = PolicySummary[];
+export type CustomerPolicyPropertiesPoliciesList = ReadonlyArray<PolicySummary>;
 export const CustomerPolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   PolicySummary,
 ) as any as S.Schema<CustomerPolicyPropertiesPoliciesList>;
@@ -10901,6 +11728,48 @@ export const CustomerPolicyProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomerPolicyProperties",
 }) as any as S.Schema<CustomerPolicyProperties>;
+
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type PoliciesCreateOrUpdateByCustomerRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PoliciesCreateOrUpdateByCustomerRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<PoliciesCreateOrUpdateByCustomerRequestTagsMap>;
+
+export interface PoliciesCreateOrUpdateByCustomerRequest {
+  /** The ID that uniquely identifies a billing account. */
+  billingAccountName: string;
+  /** The ID that uniquely identifies a billing profile. */
+  billingProfileName: string;
+  /** The ID that uniquely identifies a customer. */
+  customerName: string;
+  /** A policy at customer scope. */
+  properties?: CustomerPolicyProperties;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: PoliciesCreateOrUpdateByCustomerRequestTagsMap;
+}
+export const PoliciesCreateOrUpdateByCustomerRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      billingAccountName: S.String.pipe(T.Label()),
+      billingProfileName: S.String.pipe(T.Label()),
+      customerName: S.String.pipe(T.Label()),
+      properties: S.optional(CustomerPolicyProperties),
+      tags: S.optional(PoliciesCreateOrUpdateByCustomerRequestTagsMap),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/customers/{customerName}/policies/default",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "PoliciesCreateOrUpdateByCustomerRequest",
+}) as any as S.Schema<PoliciesCreateOrUpdateByCustomerRequest>;
 
 /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
 export type PoliciesCreateOrUpdateByCustomerResponseTagsMap = {
@@ -10940,19 +11809,35 @@ export const PoliciesCreateOrUpdateByCustomerResponse = /*@__PURE__*/ S.suspend(
   identifier: "PoliciesCreateOrUpdateByCustomerResponse",
 }) as any as S.Schema<PoliciesCreateOrUpdateByCustomerResponse>;
 
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap>;
+
 export interface PoliciesCreateOrUpdateByCustomerAtBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The ID that uniquely identifies a customer. */
   customerName: string;
-  body: unknown;
+  /** A policy at customer scope. */
+  properties?: CustomerPolicyProperties;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap;
 }
 export const PoliciesCreateOrUpdateByCustomerAtBillingAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
       customerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(CustomerPolicyProperties),
+      tags: S.optional(
+        PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -11120,7 +12005,7 @@ export const PoliciesGetByBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesGetByBillingProfileResponse",
 }) as any as S.Schema<PoliciesGetByBillingProfileResponse>;
 
-export type PoliciesGetByCustomerRequestPolicyName = "default" | (string & {});
+export type PoliciesGetByCustomerRequestPolicyName = "default";
 export const PoliciesGetByCustomerRequestPolicyName = /*@__PURE__*/ S.String;
 
 export interface PoliciesGetByCustomerRequest {
@@ -11268,7 +12153,8 @@ export const PoliciesGetBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesGetBySubscriptionRequest>;
 
 /** List of all policies defined at the billing scope. */
-export type SubscriptionPolicyPropertiesPoliciesList = PolicySummary[];
+export type SubscriptionPolicyPropertiesPoliciesList =
+  ReadonlyArray<PolicySummary>;
 export const SubscriptionPolicyPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   PolicySummary,
 ) as any as S.Schema<SubscriptionPolicyPropertiesPoliciesList>;
@@ -11358,8 +12244,7 @@ export type ProductStatus =
   | "Expired"
   | "AutoRenew"
   | "Canceled"
-  | "Suspended"
-  | (string & {});
+  | "Suspended";
 export const ProductStatus = /*@__PURE__*/ S.String;
 
 /** A product. */
@@ -11543,7 +12428,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** The Product items on this page */
-export type ProductListResultValueList = Product[];
+export type ProductListResultValueList = ReadonlyArray<Product>;
 export const ProductListResultValueList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductListResultValueList>;
@@ -11692,13 +12577,14 @@ export interface ProductsMoveRequest {
   billingAccountName: string;
   /** The ID that uniquely identifies a product. */
   productName: string;
-  body: unknown;
+  /** The destination invoice section id. */
+  destinationInvoiceSectionId: string;
 }
 export const ProductsMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     productName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    destinationInvoiceSectionId: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -11745,18 +12631,62 @@ export const ProductsMoveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductsMoveResponse",
 }) as any as S.Schema<ProductsMoveResponse>;
 
+/** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+export type ProductsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProductsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProductsUpdateRequestTagsMap>;
+
+/** The amount. */
+export interface AmountInput {}
+export const AmountInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  { identifier: "AmountInput" },
+) as any as S.Schema<AmountInput>;
+
+/** Details of the reseller. */
+export interface ResellerInput {}
+export const ResellerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({ identifier: "ResellerInput" }) as any as S.Schema<ResellerInput>;
+
+/** A product. */
+export interface ProductPropertiesInput {
+  /** Indicates whether auto renewal is turned on or off for a product. */
+  autoRenew?: AutoRenew;
+  /** The last month charges. */
+  lastCharge?: AmountInput;
+  /** Reseller for this product. The fields is not available for Microsoft Partner Agreement products. */
+  reseller?: ResellerInput;
+}
+export const ProductPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoRenew: S.optional(AutoRenew),
+    lastCharge: S.optional(AmountInput),
+    reseller: S.optional(ResellerInput),
+  }),
+).annotate({
+  identifier: "ProductPropertiesInput",
+}) as any as S.Schema<ProductPropertiesInput>;
+
 export interface ProductsUpdateRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
   /** The ID that uniquely identifies a product. */
   productName: string;
-  body: unknown;
+  /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
+  tags?: ProductsUpdateRequestTagsMap;
+  /** A product. */
+  properties?: ProductPropertiesInput;
 }
 export const ProductsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     productName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ProductsUpdateRequestTagsMap),
+    properties: S.optional(ProductPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -11810,14 +12740,15 @@ export interface ProductsValidateMoveEligibilityRequest {
   billingAccountName: string;
   /** The ID that uniquely identifies a product. */
   productName: string;
-  body: unknown;
+  /** The destination invoice section id. */
+  destinationInvoiceSectionId: string;
 }
 export const ProductsValidateMoveEligibilityRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       billingAccountName: S.String.pipe(T.Label()),
       productName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      destinationInvoiceSectionId: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -11848,8 +12779,7 @@ export type MoveValidationErrorCode =
   | "ProductNotFound"
   | "ProductTypeNotSupported"
   | "SourceBillingProfilePastDue"
-  | "SourceInvoiceSectionInactive"
-  | (string & {});
+  | "SourceInvoiceSectionInactive";
 export const MoveValidationErrorCode = /*@__PURE__*/ S.String;
 
 /** Error details of the transfer eligibility validation. */
@@ -11887,15 +12817,50 @@ export const MoveProductEligibilityResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "MoveProductEligibilityResult",
 }) as any as S.Schema<MoveProductEligibilityResult>;
 
+/** Details of the product that is transferred. */
+export interface ProductDetails {
+  /** Type of the product that is transferred. */
+  productType?: ProductType;
+  /** The ID of the product that is transferred. */
+  productId?: string;
+}
+export const ProductDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productType: S.optional(ProductType),
+    productId: S.optional(S.String),
+  }),
+).annotate({ identifier: "ProductDetails" }) as any as S.Schema<ProductDetails>;
+
+/** Request parameters to accept transfer. */
+export type AcceptTransferPropertiesProductDetailsList =
+  ReadonlyArray<ProductDetails>;
+export const AcceptTransferPropertiesProductDetailsList = /*@__PURE__*/ S.Array(
+  ProductDetails,
+) as any as S.Schema<AcceptTransferPropertiesProductDetailsList>;
+
+/** Request parameters to accept transfer. */
+export interface AcceptTransferProperties {
+  /** Request parameters to accept transfer. */
+  productDetails?: AcceptTransferPropertiesProductDetailsList;
+}
+export const AcceptTransferProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productDetails: S.optional(AcceptTransferPropertiesProductDetailsList),
+  }),
+).annotate({
+  identifier: "AcceptTransferProperties",
+}) as any as S.Schema<AcceptTransferProperties>;
+
 export interface RecipientTransfersAcceptRequest {
   /** The ID that uniquely identifies a transfer request. */
   transferName: string;
-  body: unknown;
+  /** Request parameters to accept transfer. */
+  properties?: AcceptTransferProperties;
 }
 export const RecipientTransfersAcceptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transferName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(AcceptTransferProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -11912,13 +12877,12 @@ export const RecipientTransfersAcceptRequest = /*@__PURE__*/ S.suspend(() =>
 export type EligibleProductType =
   | "DevTestAzureSubscription"
   | "StandardAzureSubscription"
-  | "AzureReservation"
-  | (string & {});
+  | "AzureReservation";
 export const EligibleProductType = /*@__PURE__*/ S.String;
 
 /** Type of subscriptions that can be transferred. */
 export type RecipientTransferPropertiesAllowedProductTypeList =
-  EligibleProductType[];
+  ReadonlyArray<EligibleProductType>;
 export const RecipientTransferPropertiesAllowedProductTypeList =
   /*@__PURE__*/ S.Array(
     EligibleProductType,
@@ -11926,7 +12890,7 @@ export const RecipientTransferPropertiesAllowedProductTypeList =
 
 /** Detailed transfer status. */
 export type RecipientTransferPropertiesDetailedTransferStatusList =
-  DetailedTransferStatus[];
+  ReadonlyArray<DetailedTransferStatus>;
 export const RecipientTransferPropertiesDetailedTransferStatusList =
   /*@__PURE__*/ S.Array(
     DetailedTransferStatus,
@@ -11937,13 +12901,12 @@ export type SupportedAccountType =
   | "None"
   | "Partner"
   | "Individual"
-  | "Enterprise"
-  | (string & {});
+  | "Enterprise";
 export const SupportedAccountType = /*@__PURE__*/ S.String;
 
 /** List of supported account types. */
 export type RecipientTransferPropertiesSupportedAccountsList =
-  SupportedAccountType[];
+  ReadonlyArray<SupportedAccountType>;
 export const RecipientTransferPropertiesSupportedAccountsList =
   /*@__PURE__*/ S.Array(
     SupportedAccountType,
@@ -12200,7 +13163,7 @@ export const RecipientTransferDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The RecipientTransferDetails items on this page */
 export type RecipientTransferDetailsListResultValueList =
-  RecipientTransferDetails[];
+  ReadonlyArray<RecipientTransferDetails>;
 export const RecipientTransferDetailsListResultValueList =
   /*@__PURE__*/ S.Array(
     RecipientTransferDetails,
@@ -12225,12 +13188,13 @@ export const RecipientTransferDetailsListResult = /*@__PURE__*/ S.suspend(() =>
 export interface RecipientTransfersValidateRequest {
   /** The ID that uniquely identifies a transfer request. */
   transferName: string;
-  body: unknown;
+  /** Request parameters to accept transfer. */
+  properties?: AcceptTransferProperties;
 }
 export const RecipientTransfersValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transferName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(AcceptTransferProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -12264,7 +13228,7 @@ export const ValidationResultProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of validation results. */
 export type ValidateTransferResponsePropertiesResultsList =
-  ValidationResultProperties[];
+  ReadonlyArray<ValidationResultProperties>;
 export const ValidateTransferResponsePropertiesResultsList =
   /*@__PURE__*/ S.Array(
     ValidationResultProperties,
@@ -12303,7 +13267,8 @@ export const ValidateTransferResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidateTransferResponse>;
 
 /** The list of transfer validation results. */
-export type ValidateTransferListResponseValueList = ValidateTransferResponse[];
+export type ValidateTransferListResponseValueList =
+  ReadonlyArray<ValidateTransferResponse>;
 export const ValidateTransferListResponseValueList = /*@__PURE__*/ S.Array(
   ValidateTransferResponse,
 ) as any as S.Schema<ValidateTransferListResponseValueList>;
@@ -12348,7 +13313,7 @@ export const ReservationOrdersGetByBillingAccountRequest =
   }) as any as S.Schema<ReservationOrdersGetByBillingAccountRequest>;
 
 /** Represent the billing plans. */
-export type ReservationBillingPlan = "Upfront" | "Monthly" | (string & {});
+export type ReservationBillingPlan = "Upfront" | "Monthly";
 export const ReservationBillingPlan = /*@__PURE__*/ S.String;
 
 /** The price. */
@@ -12371,8 +13336,7 @@ export type PaymentStatus =
   | "Scheduled"
   | "Cancelled"
   | "Completed"
-  | "Pending"
-  | (string & {});
+  | "Pending";
 export const PaymentStatus = /*@__PURE__*/ S.String;
 
 /** The status of the reservation. */
@@ -12396,8 +13360,7 @@ export type ReservationStatusCode =
   | "Warning"
   | "NoBenefitDueToSubscriptionTransfer"
   | "NoBenefitDueToSubscriptionDeletion"
-  | "NoBenefit"
-  | (string & {});
+  | "NoBenefit";
 export const ReservationStatusCode = /*@__PURE__*/ S.String;
 
 /** Extended status definition properties */
@@ -12464,7 +13427,7 @@ export const ReservationPaymentDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationPaymentDetail>;
 
 export type ReservationOrderBillingPlanInformationTransactionsList =
-  ReservationPaymentDetail[];
+  ReadonlyArray<ReservationPaymentDetail>;
 export const ReservationOrderBillingPlanInformationTransactionsList =
   /*@__PURE__*/ S.Array(
     ReservationPaymentDetail,
@@ -12495,17 +13458,18 @@ export const ReservationOrderBillingPlanInformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReservationOrderBillingPlanInformation>;
 
 /** Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type. */
-export type InstanceFlexibility = "On" | "Off" | (string & {});
+export type InstanceFlexibility = "On" | "Off";
 export const InstanceFlexibility = /*@__PURE__*/ S.String;
 
 /** The array of applied scopes of a reservation. Will be null if the reservation is in Shared scope */
-export type ReservationPropertyAppliedScopesList = string[];
+export type ReservationPropertyAppliedScopesList = ReadonlyArray<string>;
 export const ReservationPropertyAppliedScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReservationPropertyAppliedScopesList>;
 
 /** List of destination resource id that are created due to split. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
-export type ReservationSplitPropertiesSplitDestinationsList = string[];
+export type ReservationSplitPropertiesSplitDestinationsList =
+  ReadonlyArray<string>;
 export const ReservationSplitPropertiesSplitDestinationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12530,7 +13494,7 @@ export const ReservationSplitProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationSplitProperties>;
 
 /** Resource ids of the source reservation's merged to form this reservation. Format of the resource id is /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId} */
-export type ReservationMergePropertiesMergeSourcesList = string[];
+export type ReservationMergePropertiesMergeSourcesList = ReadonlyArray<string>;
 export const ReservationMergePropertiesMergeSourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReservationMergePropertiesMergeSourcesList>;
@@ -12603,15 +13567,12 @@ export const SkuName = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuName" }) as any as S.Schema<SkuName>;
 
 /** Type of the Applied Scope. */
-export type AppliedScopeType =
-  | "Single"
-  | "Shared"
-  | "ManagementGroup"
-  | (string & {});
+export type AppliedScopeType = "Single" | "Shared" | "ManagementGroup";
 export const AppliedScopeType = /*@__PURE__*/ S.String;
 
 /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. */
-export type ReservationPurchaseRequestPropertiesAppliedScopesList = string[];
+export type ReservationPurchaseRequestPropertiesAppliedScopesList =
+  ReadonlyArray<string>;
 export const ReservationPurchaseRequestPropertiesAppliedScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12748,7 +13709,7 @@ export const ReservationUtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
 
 /** The array of aggregates of a reservation's utilization */
 export type ReservationPropertyUtilizationAggregatesList =
-  ReservationUtilizationAggregates[];
+  ReadonlyArray<ReservationUtilizationAggregates>;
 export const ReservationPropertyUtilizationAggregatesList =
   /*@__PURE__*/ S.Array(
     ReservationUtilizationAggregates,
@@ -12942,7 +13903,8 @@ export const Reservation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reservation" }) as any as S.Schema<Reservation>;
 
-export type ReservationOrderPropertyReservationsList = Reservation[];
+export type ReservationOrderPropertyReservationsList =
+  ReadonlyArray<Reservation>;
 export const ReservationOrderPropertyReservationsList = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationOrderPropertyReservationsList>;
@@ -13120,7 +14082,7 @@ export const ReservationOrder = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationOrder>;
 
 /** The ReservationOrder items on this page */
-export type ReservationOrderListValueList = ReservationOrder[];
+export type ReservationOrderListValueList = ReadonlyArray<ReservationOrder>;
 export const ReservationOrderListValueList = /*@__PURE__*/ S.Array(
   ReservationOrder,
 ) as any as S.Schema<ReservationOrderListValueList>;
@@ -13292,7 +14254,7 @@ export const ReservationSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationSummary>;
 
 /** The list of reservations. */
-export type ReservationsListResultValueList = Reservation[];
+export type ReservationsListResultValueList = ReadonlyArray<Reservation>;
 export const ReservationsListResultValueList = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationsListResultValueList>;
@@ -13381,7 +14343,7 @@ export const ReservationsListByReservationOrderRequest =
   }) as any as S.Schema<ReservationsListByReservationOrderRequest>;
 
 /** The Reservation items on this page */
-export type ReservationListValueList = Reservation[];
+export type ReservationListValueList = ReadonlyArray<Reservation>;
 export const ReservationListValueList = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationListValueList>;
@@ -13402,6 +14364,138 @@ export const ReservationList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReservationList",
 }) as any as S.Schema<ReservationList>;
 
+/** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. */
+export type ReservationPurchaseRequestPropertiesInputAppliedScopesList =
+  ReadonlyArray<string>;
+export const ReservationPurchaseRequestPropertiesInputAppliedScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ReservationPurchaseRequestPropertiesInputAppliedScopesList>;
+
+/** Properties of reservation purchase request */
+export interface ReservationPurchaseRequestPropertiesInput {
+  /** Represent the billing plans. */
+  billingPlan?: ReservationBillingPlan;
+  /** Quantity of the skus that are part of the reservation. Must be greater than zero. */
+  quantity?: number;
+  /** Friendly name of the reservation */
+  displayName?: string;
+  /** Type of the Applied Scope. */
+  appliedScopeType?: AppliedScopeType;
+  /** List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. */
+  appliedScopes?: ReservationPurchaseRequestPropertiesInputAppliedScopesList;
+  /** Properties specific to applied scope type. Not required if not applicable. Required and need to provide tenantId and managementGroupId if AppliedScopeType is ManagementGroup */
+  appliedScopeProperties?: ReservationAppliedScopeProperties;
+  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
+  renew?: boolean;
+  /** Properties specific to each reserved resource type. Not required if not applicable. */
+  reservedResourceProperties?: ReservationPurchaseRequestPropertiesReservedResourceProperties;
+  /** Allows reservation discount to be applied across skus within the same auto fit group. Not all skus support instance size flexibility. */
+  instanceFlexibility?: InstanceFlexibility;
+  /** This is the date-time when the Azure hybrid benefit needs to be reviewed. */
+  reviewDateTime?: string;
+}
+export const ReservationPurchaseRequestPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      billingPlan: S.optional(ReservationBillingPlan),
+      quantity: S.optional(S.Number),
+      displayName: S.optional(S.String),
+      appliedScopeType: S.optional(AppliedScopeType),
+      appliedScopes: S.optional(
+        ReservationPurchaseRequestPropertiesInputAppliedScopesList,
+      ),
+      appliedScopeProperties: S.optional(ReservationAppliedScopeProperties),
+      renew: S.optional(S.Boolean),
+      reservedResourceProperties: S.optional(
+        ReservationPurchaseRequestPropertiesReservedResourceProperties,
+      ),
+      instanceFlexibility: S.optional(InstanceFlexibility),
+      reviewDateTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ReservationPurchaseRequestPropertiesInput",
+  }) as any as S.Schema<ReservationPurchaseRequestPropertiesInput>;
+
+/** The request for reservation purchase */
+export interface ReservationPurchaseRequestInput {
+  /** The name of sku */
+  sku?: SkuName;
+  /** The Azure region where the reserved resource lives. */
+  location?: string;
+  /** Properties of reservation purchase request */
+  properties?: ReservationPurchaseRequestPropertiesInput;
+}
+export const ReservationPurchaseRequestInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sku: S.optional(SkuName),
+    location: S.optional(S.String),
+    properties: S.optional(ReservationPurchaseRequestPropertiesInput),
+  }),
+).annotate({
+  identifier: "ReservationPurchaseRequestInput",
+}) as any as S.Schema<ReservationPurchaseRequestInput>;
+
+export interface PatchPropertiesRenewPropertiesInput {
+  /** The request for reservation purchase */
+  purchaseProperties?: ReservationPurchaseRequestInput;
+}
+export const PatchPropertiesRenewPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    purchaseProperties: S.optional(ReservationPurchaseRequestInput),
+  }),
+).annotate({
+  identifier: "PatchPropertiesRenewPropertiesInput",
+}) as any as S.Schema<PatchPropertiesRenewPropertiesInput>;
+
+/** Properties for reservation patch */
+export interface PatchPropertiesInput {
+  /** Type of the Applied Scope. */
+  appliedScopeType?: AppliedScopeType;
+  /** Properties specific to applied scope type. Not required if not applicable. Required and need to provide tenantId and managementGroupId if AppliedScopeType is ManagementGroup */
+  appliedScopeProperties?: ReservationAppliedScopeProperties;
+  /** Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type. */
+  instanceFlexibility?: InstanceFlexibility;
+  /** Display name of the reservation */
+  displayName?: string;
+  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
+  renew?: boolean;
+  renewProperties?: PatchPropertiesRenewPropertiesInput;
+  /** This is the date-time when the Azure hybrid benefit needs to be reviewed. */
+  reviewDateTime?: string;
+}
+export const PatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appliedScopeType: S.optional(AppliedScopeType),
+    appliedScopeProperties: S.optional(ReservationAppliedScopeProperties),
+    instanceFlexibility: S.optional(InstanceFlexibility),
+    displayName: S.optional(S.String),
+    renew: S.optional(S.Boolean),
+    renewProperties: S.optional(PatchPropertiesRenewPropertiesInput),
+    reviewDateTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PatchPropertiesInput",
+}) as any as S.Schema<PatchPropertiesInput>;
+
+/** The property of reservation sku object. */
+export interface ReservationSkuPropertyInput {}
+export const ReservationSkuPropertyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ReservationSkuPropertyInput",
+}) as any as S.Schema<ReservationSkuPropertyInput>;
+
+/** Tags for this reservation */
+export type ReservationsUpdateByBillingAccountRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ReservationsUpdateByBillingAccountRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ReservationsUpdateByBillingAccountRequestTagsMap>;
+
 export interface ReservationsUpdateByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -13409,7 +14503,12 @@ export interface ReservationsUpdateByBillingAccountRequest {
   reservationOrderId: string;
   /** Id of the reservation item */
   reservationId: string;
-  body: unknown;
+  /** Properties for reservation patch */
+  properties?: PatchPropertiesInput;
+  /** The sku information associated to this reservation */
+  sku?: ReservationSkuPropertyInput;
+  /** Tags for this reservation */
+  tags?: ReservationsUpdateByBillingAccountRequestTagsMap;
 }
 export const ReservationsUpdateByBillingAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -13417,7 +14516,9 @@ export const ReservationsUpdateByBillingAccountRequest =
       billingAccountName: S.String.pipe(T.Label()),
       reservationOrderId: S.String.pipe(T.Label()),
       reservationId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PatchPropertiesInput),
+      sku: S.optional(ReservationSkuPropertyInput),
+      tags: S.optional(ReservationsUpdateByBillingAccountRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -13503,11 +14604,11 @@ export const SavingsPlanOrdersGetByBillingAccountRequest =
   }) as any as S.Schema<SavingsPlanOrdersGetByBillingAccountRequest>;
 
 /** Represents the Savings plan term in ISO 8601 format. */
-export type SavingsPlanTerm = "P1Y" | "P3Y" | "P5Y" | (string & {});
+export type SavingsPlanTerm = "P1Y" | "P3Y" | "P5Y";
 export const SavingsPlanTerm = /*@__PURE__*/ S.String;
 
 /** Represents the billing plan in ISO 8601 format. Required only for monthly purchases. */
-export type BillingPlan = "P1M" | (string & {});
+export type BillingPlan = "P1M";
 export const BillingPlan = /*@__PURE__*/ S.String;
 
 /** Properties specific to credit line check failure */
@@ -13568,7 +14669,8 @@ export const PaymentDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PaymentDetail" }) as any as S.Schema<PaymentDetail>;
 
-export type BillingPlanInformationTransactionsList = PaymentDetail[];
+export type BillingPlanInformationTransactionsList =
+  ReadonlyArray<PaymentDetail>;
 export const BillingPlanInformationTransactionsList = /*@__PURE__*/ S.Array(
   PaymentDetail,
 ) as any as S.Schema<BillingPlanInformationTransactionsList>;
@@ -13594,7 +14696,8 @@ export const BillingPlanInformation = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingPlanInformation",
 }) as any as S.Schema<BillingPlanInformation>;
 
-export type SavingsPlanOrderModelPropertiesSavingsPlansList = string[];
+export type SavingsPlanOrderModelPropertiesSavingsPlansList =
+  ReadonlyArray<string>;
 export const SavingsPlanOrderModelPropertiesSavingsPlansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13773,7 +14876,8 @@ export const SavingsPlanOrderModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanOrderModel>;
 
 /** The SavingsPlanOrderModel items on this page */
-export type SavingsPlanOrderModelListValueList = SavingsPlanOrderModel[];
+export type SavingsPlanOrderModelListValueList =
+  ReadonlyArray<SavingsPlanOrderModel>;
 export const SavingsPlanOrderModelListValueList = /*@__PURE__*/ S.Array(
   SavingsPlanOrderModel,
 ) as any as S.Schema<SavingsPlanOrderModelListValueList>;
@@ -13824,7 +14928,7 @@ export const SavingsPlansGetByBillingAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SavingsPlansGetByBillingAccountRequest>;
 
 /** Commitment grain. */
-export type CommitmentGrain = "Hourly" | (string & {});
+export type CommitmentGrain = "Hourly";
 export const CommitmentGrain = /*@__PURE__*/ S.String;
 
 /** Commitment towards the benefit. */
@@ -13954,7 +15058,7 @@ export const UtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UtilizationAggregates>;
 
 /** The array of aggregates of a savings plan's utilization */
-export type UtilizationAggregatesList = UtilizationAggregates[];
+export type UtilizationAggregatesList = ReadonlyArray<UtilizationAggregates>;
 export const UtilizationAggregatesList = /*@__PURE__*/ S.Array(
   UtilizationAggregates,
 ) as any as S.Schema<UtilizationAggregatesList>;
@@ -14174,7 +15278,7 @@ export const SavingsPlanModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The SavingsPlanModel items on this page */
 export type SavingsPlansListByBillingAccountResponseValueList =
-  SavingsPlanModel[];
+  ReadonlyArray<SavingsPlanModel>;
 export const SavingsPlansListByBillingAccountResponseValueList =
   /*@__PURE__*/ S.Array(
     SavingsPlanModel,
@@ -14260,7 +15364,7 @@ export const SavingsPlansListBySavingsPlanOrderRequest =
   }) as any as S.Schema<SavingsPlansListBySavingsPlanOrderRequest>;
 
 /** The SavingsPlanModel items on this page */
-export type SavingsPlanModelListValueList = SavingsPlanModel[];
+export type SavingsPlanModelListValueList = ReadonlyArray<SavingsPlanModel>;
 export const SavingsPlanModelListValueList = /*@__PURE__*/ S.Array(
   SavingsPlanModel,
 ) as any as S.Schema<SavingsPlanModelListValueList>;
@@ -14281,6 +15385,41 @@ export const SavingsPlanModelList = /*@__PURE__*/ S.suspend(() =>
   identifier: "SavingsPlanModelList",
 }) as any as S.Schema<SavingsPlanModelList>;
 
+/** Savings plan patch request */
+export interface SavingsPlanUpdateRequestProperties {
+  /** Display name */
+  displayName?: string;
+  /** Type of the Applied Scope. */
+  appliedScopeType?: AppliedScopeType;
+  /** Properties specific to applied scope type. Not required if not applicable. */
+  appliedScopeProperties?: AppliedScopeProperties;
+  /** Setting this to true will automatically purchase a new benefit on the expiration date time. */
+  renew?: boolean;
+  /** Properties specific to renew. */
+  renewProperties?: RenewProperties;
+}
+export const SavingsPlanUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    appliedScopeType: S.optional(AppliedScopeType),
+    appliedScopeProperties: S.optional(AppliedScopeProperties),
+    renew: S.optional(S.Boolean),
+    renewProperties: S.optional(RenewProperties),
+  }),
+).annotate({
+  identifier: "SavingsPlanUpdateRequestProperties",
+}) as any as S.Schema<SavingsPlanUpdateRequestProperties>;
+
+/** Tags for this reservation */
+export type SavingsPlansUpdateByBillingAccountRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SavingsPlansUpdateByBillingAccountRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SavingsPlansUpdateByBillingAccountRequestTagsMap>;
+
 export interface SavingsPlansUpdateByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -14288,7 +15427,12 @@ export interface SavingsPlansUpdateByBillingAccountRequest {
   savingsPlanOrderId: string;
   /** ID of the savings plan */
   savingsPlanId: string;
-  body: unknown;
+  /** Savings plan patch request */
+  properties?: SavingsPlanUpdateRequestProperties;
+  /** The SKU to be applied for this resource */
+  sku?: Sku;
+  /** Tags for this reservation */
+  tags?: SavingsPlansUpdateByBillingAccountRequestTagsMap;
 }
 export const SavingsPlansUpdateByBillingAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -14296,7 +15440,9 @@ export const SavingsPlansUpdateByBillingAccountRequest =
       billingAccountName: S.String.pipe(T.Label()),
       savingsPlanOrderId: S.String.pipe(T.Label()),
       savingsPlanId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SavingsPlanUpdateRequestProperties),
+      sku: S.optional(Sku),
+      tags: S.optional(SavingsPlansUpdateByBillingAccountRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -14350,6 +15496,14 @@ export const SavingsPlansUpdateByBillingAccountResponse =
     identifier: "SavingsPlansUpdateByBillingAccountResponse",
   }) as any as S.Schema<SavingsPlansUpdateByBillingAccountResponse>;
 
+/** The benefits of a savings plan. */
+export type SavingsPlansValidateUpdateByBillingAccountRequestBenefitsList =
+  ReadonlyArray<SavingsPlanUpdateRequestProperties>;
+export const SavingsPlansValidateUpdateByBillingAccountRequestBenefitsList =
+  /*@__PURE__*/ S.Array(
+    SavingsPlanUpdateRequestProperties,
+  ) as any as S.Schema<SavingsPlansValidateUpdateByBillingAccountRequestBenefitsList>;
+
 export interface SavingsPlansValidateUpdateByBillingAccountRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -14357,7 +15511,8 @@ export interface SavingsPlansValidateUpdateByBillingAccountRequest {
   savingsPlanOrderId: string;
   /** ID of the savings plan */
   savingsPlanId: string;
-  body: unknown;
+  /** The benefits of a savings plan. */
+  benefits?: SavingsPlansValidateUpdateByBillingAccountRequestBenefitsList;
 }
 export const SavingsPlansValidateUpdateByBillingAccountRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -14365,7 +15520,9 @@ export const SavingsPlansValidateUpdateByBillingAccountRequest =
       billingAccountName: S.String.pipe(T.Label()),
       savingsPlanOrderId: S.String.pipe(T.Label()),
       savingsPlanId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      benefits: S.optional(
+        SavingsPlansValidateUpdateByBillingAccountRequestBenefitsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -14398,7 +15555,7 @@ export const SavingsPlanValidResponseProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavingsPlanValidResponseProperty>;
 
 export type SavingsPlanValidateResponseBenefitsList =
-  SavingsPlanValidResponseProperty[];
+  ReadonlyArray<SavingsPlanValidResponseProperty>;
 export const SavingsPlanValidateResponseBenefitsList = /*@__PURE__*/ S.Array(
   SavingsPlanValidResponseProperty,
 ) as any as S.Schema<SavingsPlanValidateResponseBenefitsList>;
@@ -14478,8 +15635,7 @@ export const TransactionSummary = /*@__PURE__*/ S.suspend(() =>
 export type TransactionsListByBillingProfileRequestType =
   | "Other"
   | "Billed"
-  | "Unbilled"
-  | (string & {});
+  | "Unbilled";
 export const TransactionsListByBillingProfileRequestType =
   /*@__PURE__*/ S.String;
 
@@ -14546,12 +15702,11 @@ export type CreditType =
   | "AzureFreeCredit"
   | "AzureCreditOffer"
   | "ServiceInterruption"
-  | "Refund"
-  | (string & {});
+  | "Refund";
 export const CreditType = /*@__PURE__*/ S.String;
 
 /** Type of the transaction, billed or unbilled. */
-export type TransactionKind = "Other" | "All" | "Reservation" | (string & {});
+export type TransactionKind = "Other" | "All" | "Reservation";
 export const TransactionKind = /*@__PURE__*/ S.String;
 
 /** The refund details of a transaction. */
@@ -14727,7 +15882,7 @@ export const Transaction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Transaction" }) as any as S.Schema<Transaction>;
 
 /** The Transaction items on this page */
-export type TransactionListResultValueList = Transaction[];
+export type TransactionListResultValueList = ReadonlyArray<Transaction>;
 export const TransactionListResultValueList = /*@__PURE__*/ S.Array(
   Transaction,
 ) as any as S.Schema<TransactionListResultValueList>;
@@ -14751,8 +15906,7 @@ export const TransactionListResult = /*@__PURE__*/ S.suspend(() =>
 export type TransactionsListByCustomerRequestType =
   | "Other"
   | "Billed"
-  | "Unbilled"
-  | (string & {});
+  | "Unbilled";
 export const TransactionsListByCustomerRequestType = /*@__PURE__*/ S.String;
 
 export interface TransactionsListByCustomerRequest {
@@ -14850,8 +16004,7 @@ export const TransactionsListByInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 export type TransactionsListByInvoiceSectionRequestType =
   | "Other"
   | "Billed"
-  | "Unbilled"
-  | (string & {});
+  | "Unbilled";
 export const TransactionsListByInvoiceSectionRequestType =
   /*@__PURE__*/ S.String;
 
@@ -14961,7 +16114,7 @@ export const TransfersCancelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed transfer status. */
 export type TransferPropertiesDetailedTransferStatusList =
-  DetailedTransferStatus[];
+  ReadonlyArray<DetailedTransferStatus>;
 export const TransferPropertiesDetailedTransferStatusList =
   /*@__PURE__*/ S.Array(
     DetailedTransferStatus,
@@ -15095,6 +16248,19 @@ export const TransfersGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransfersGetResponse",
 }) as any as S.Schema<TransfersGetResponse>;
 
+/** Request parameters to initiate transfer. */
+export interface InitiateTransferProperties {
+  /** The email ID of the recipient to whom the transfer request is sent. */
+  recipientEmailId?: string;
+}
+export const InitiateTransferProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recipientEmailId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InitiateTransferProperties",
+}) as any as S.Schema<InitiateTransferProperties>;
+
 export interface TransfersInitiateRequest {
   /** The ID that uniquely identifies a billing account. */
   billingAccountName: string;
@@ -15104,7 +16270,8 @@ export interface TransfersInitiateRequest {
   invoiceSectionName: string;
   /** The ID that uniquely identifies a transfer request. */
   transferName: string;
-  body: unknown;
+  /** Request parameters to initiate transfer. */
+  properties?: InitiateTransferProperties;
 }
 export const TransfersInitiateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15112,7 +16279,7 @@ export const TransfersInitiateRequest = /*@__PURE__*/ S.suspend(() =>
     billingProfileName: S.String.pipe(T.Label()),
     invoiceSectionName: S.String.pipe(T.Label()),
     transferName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(InitiateTransferProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -15222,7 +16389,7 @@ export const TransferDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransferDetails>;
 
 /** The TransferDetails items on this page */
-export type TransferDetailsListResultValueList = TransferDetails[];
+export type TransferDetailsListResultValueList = ReadonlyArray<TransferDetails>;
 export const TransferDetailsListResultValueList = /*@__PURE__*/ S.Array(
   TransferDetails,
 ) as any as S.Schema<TransferDetailsListResultValueList>;

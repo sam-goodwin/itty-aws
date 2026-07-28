@@ -124,11 +124,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export type Sbom = unknown;
-export type OutputFormat =
-  | "CYCLONE_DX_1_5"
-  | "INSPECTOR"
-  | "INSPECTOR_ALT"
-  | (string & {});
+export type OutputFormat = "CYCLONE_DX_1_5" | "INSPECTOR" | "INSPECTOR_ALT";
 export const OutputFormat = /*@__PURE__*/ S.String;
 
 export interface ScanSbomRequest {
@@ -157,10 +153,7 @@ export const ScanSbomResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScanSbomResponse",
 }) as any as S.Schema<ScanSbomResponse>;
-export type InternalServerExceptionReason =
-  | "FAILED_TO_GENERATE_SBOM"
-  | "OTHER"
-  | (string & {});
+export type InternalServerExceptionReason = "FAILED_TO_GENERATE_SBOM" | "OTHER";
 export const InternalServerExceptionReason = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionReason =
@@ -168,8 +161,7 @@ export type ValidationExceptionReason =
   | "CANNOT_PARSE"
   | "FIELD_VALIDATION_FAILED"
   | "UNSUPPORTED_SBOM_TYPE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

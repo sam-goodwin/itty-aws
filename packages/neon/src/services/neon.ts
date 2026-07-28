@@ -89,8 +89,7 @@ export type NeonAuthOauthProviderId =
   | "google"
   | "github"
   | "microsoft"
-  | "vercel"
-  | (string & {});
+  | "vercel";
 export const NeonAuthOauthProviderId = /*@__PURE__*/ S.String;
 
 export interface AddBranchNeonAuthOauthProviderRequest {
@@ -123,7 +122,7 @@ export const AddBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(
   identifier: "AddBranchNeonAuthOauthProviderRequest",
 }) as any as S.Schema<AddBranchNeonAuthOauthProviderRequest>;
 
-export type NeonAuthOauthProviderType = "standard" | "shared" | (string & {});
+export type NeonAuthOauthProviderType = "standard" | "shared";
 export const NeonAuthOauthProviderType = /*@__PURE__*/ S.String;
 
 export interface NeonAuthOauthProvider {
@@ -143,11 +142,7 @@ export const NeonAuthOauthProvider = /*@__PURE__*/ S.suspend(() =>
   identifier: "NeonAuthOauthProvider",
 }) as any as S.Schema<NeonAuthOauthProvider>;
 
-export type NeonAuthSupportedAuthProvider =
-  | "mock"
-  | "stack"
-  | "better_auth"
-  | (string & {});
+export type NeonAuthSupportedAuthProvider = "mock" | "stack" | "better_auth";
 export const NeonAuthSupportedAuthProvider = /*@__PURE__*/ S.String;
 
 export interface AddBranchNeonAuthTrustedDomainRequest {
@@ -184,7 +179,7 @@ export const AddBranchNeonAuthTrustedDomainResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddBranchNeonAuthTrustedDomainResponse>;
 
 /** DEPRECATED. This field should only be used when using Neon RLS. The roles the JWKS should be mapped to. By default, the JWKS is mapped to the `authenticator`, `authenticated` and `anonymous` roles. */
-export type AddProjectJWKSRequestRoleNamesList = string[];
+export type AddProjectJWKSRequestRoleNamesList = ReadonlyArray<string>;
 export const AddProjectJWKSRequestRoleNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddProjectJWKSRequestRoleNamesList>;
@@ -221,7 +216,7 @@ export const AddProjectJWKSRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddProjectJWKSRequest",
 }) as any as S.Schema<AddProjectJWKSRequest>;
 
-export type JWKSRoleNamesList = string[];
+export type JWKSRoleNamesList = ReadonlyArray<string>;
 export const JWKSRoleNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JWKSRoleNamesList>;
@@ -296,8 +291,7 @@ export type OperationAction =
   | "finalize_migration"
   | "mark_migration_prepared"
   | "update_catalog"
-  | "epc_sync"
-  | (string & {});
+  | "epc_sync";
 export const OperationAction = /*@__PURE__*/ S.String;
 
 /** The status of the operation */
@@ -309,8 +303,7 @@ export type OperationStatus =
   | "error"
   | "cancelling"
   | "cancelled"
-  | "skipped"
-  | (string & {});
+  | "skipped";
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 export interface Operation {
@@ -354,7 +347,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type AddProjectJWKSResponseOperationsList = Operation[];
+export type AddProjectJWKSResponseOperationsList = ReadonlyArray<Operation>;
 export const AddProjectJWKSResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<AddProjectJWKSResponseOperationsList>;
@@ -546,17 +539,16 @@ export type CredentialScope =
   | "storage:read"
   | "storage:write"
   | "ai_gateway:invoke"
-  | "functions:invoke"
-  | (string & {});
+  | "functions:invoke";
 export const CredentialScope = /*@__PURE__*/ S.String;
 
-export type CreateCredentialRequestScopesList = CredentialScope[];
+export type CreateCredentialRequestScopesList = ReadonlyArray<CredentialScope>;
 export const CreateCredentialRequestScopesList = /*@__PURE__*/ S.Array(
   CredentialScope,
 ) as any as S.Schema<CreateCredentialRequestScopesList>;
 
 /** Principal type for the credential. Only `user` is customer-managed and accepted here. `function` and `system` credentials are platform-internal (e.g. function-serve auto-mint, presign signer) and are never issued through the customer-facing API. */
-export type CreateCredentialRequestPrincipalType = "user" | (string & {});
+export type CreateCredentialRequestPrincipalType = "user";
 export const CreateCredentialRequestPrincipalType = /*@__PURE__*/ S.String;
 
 export interface CreateCredentialRequest {
@@ -588,7 +580,7 @@ export const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCredentialRequest",
 }) as any as S.Schema<CreateCredentialRequest>;
 
-export type CreateCredentialResponseScopesList = CredentialScope[];
+export type CreateCredentialResponseScopesList = ReadonlyArray<CredentialScope>;
 export const CreateCredentialResponseScopesList = /*@__PURE__*/ S.Array(
   CredentialScope,
 ) as any as S.Schema<CreateCredentialResponseScopesList>;
@@ -696,8 +688,7 @@ export type MemberRole =
   | "member"
   | "editor"
   | "viewer"
-  | "collaborator"
-  | (string & {});
+  | "collaborator";
 export const MemberRole = /*@__PURE__*/ S.String;
 
 export interface OrganizationInviteCreateRequest {
@@ -714,7 +705,7 @@ export const OrganizationInviteCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationInviteCreateRequest>;
 
 export type CreateOrganizationInvitationsRequestInvitationsList =
-  OrganizationInviteCreateRequest[];
+  ReadonlyArray<OrganizationInviteCreateRequest>;
 export const CreateOrganizationInvitationsRequestInvitationsList =
   /*@__PURE__*/ S.Array(
     OrganizationInviteCreateRequest,
@@ -764,7 +755,8 @@ export const Invitation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
 
-export type OrganizationInvitationsResponseInvitationsList = Invitation[];
+export type OrganizationInvitationsResponseInvitationsList =
+  ReadonlyArray<Invitation>;
 export const OrganizationInvitationsResponseInvitationsList =
   /*@__PURE__*/ S.Array(
     Invitation,
@@ -856,7 +848,7 @@ export const ProjectQuota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectQuota" }) as any as S.Schema<ProjectQuota>;
 
 /** A list of IP addresses that are allowed to connect to the endpoint. */
-export type AllowedIpsIpsList = string[];
+export type AllowedIpsIpsList = ReadonlyArray<string>;
 export const AllowedIpsIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AllowedIpsIpsList>;
@@ -876,7 +868,7 @@ export const AllowedIps = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllowedIps" }) as any as S.Schema<AllowedIps>;
 
 /** A list of weekdays when the maintenance window is active. Encoded as ints, where 1 - Monday, and 7 - Sunday. */
-export type MaintenanceWindowWeekdaysList = number[];
+export type MaintenanceWindowWeekdaysList = ReadonlyArray<number>;
 export const MaintenanceWindowWeekdaysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<MaintenanceWindowWeekdaysList>;
@@ -900,10 +892,10 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceWindow",
 }) as any as S.Schema<MaintenanceWindow>;
 
-export type ProjectAuditLogLevel = "base" | "extended" | "full" | (string & {});
+export type ProjectAuditLogLevel = "base" | "extended" | "full";
 export const ProjectAuditLogLevel = /*@__PURE__*/ S.String;
 
-export type PreloadLibrariesEnabledLibrariesList = string[];
+export type PreloadLibrariesEnabledLibrariesList = ReadonlyArray<string>;
 export const PreloadLibrariesEnabledLibrariesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PreloadLibrariesEnabledLibrariesList>;
@@ -1081,8 +1073,7 @@ export type BillingSubscriptionType =
   | "scale"
   | "scale_v3"
   | "business"
-  | "vercel_pg_legacy"
-  | (string & {});
+  | "vercel_pg_legacy";
 export const BillingSubscriptionType = /*@__PURE__*/ S.String;
 
 export interface ProjectOwnerData {
@@ -1103,11 +1094,7 @@ export const ProjectOwnerData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectOwnerData>;
 
 /** The caller's effective permission for a project when per-project permissions are enabled. `VIEWER` grants read access, `EDITOR` adds update access, and `ADMIN` grants full management. Omitted for personal projects, flag-off organizations, and non-user subjects. */
-export type ProjectPermissionLevel =
-  | "VIEWER"
-  | "EDITOR"
-  | "ADMIN"
-  | (string & {});
+export type ProjectPermissionLevel = "VIEWER" | "EDITOR" | "ADMIN";
 export const ProjectPermissionLevel = /*@__PURE__*/ S.String;
 
 export interface Project {
@@ -1249,7 +1236,8 @@ export const ConnectionDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionDetails",
 }) as any as S.Schema<ConnectionDetails>;
 
-export type CreateProjectResponseConnectionUrisList = ConnectionDetails[];
+export type CreateProjectResponseConnectionUrisList =
+  ReadonlyArray<ConnectionDetails>;
 export const CreateProjectResponseConnectionUrisList = /*@__PURE__*/ S.Array(
   ConnectionDetails,
 ) as any as S.Schema<CreateProjectResponseConnectionUrisList>;
@@ -1282,7 +1270,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
-export type CreateProjectResponseRolesList = Role[];
+export type CreateProjectResponseRolesList = ReadonlyArray<Role>;
 export const CreateProjectResponseRolesList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<CreateProjectResponseRolesList>;
@@ -1312,12 +1300,12 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
-export type CreateProjectResponseDatabasesList = Database[];
+export type CreateProjectResponseDatabasesList = ReadonlyArray<Database>;
 export const CreateProjectResponseDatabasesList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<CreateProjectResponseDatabasesList>;
 
-export type CreateProjectResponseOperationsList = Operation[];
+export type CreateProjectResponseOperationsList = ReadonlyArray<Operation>;
 export const CreateProjectResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<CreateProjectResponseOperationsList>;
@@ -1355,13 +1343,13 @@ export const BranchRestrictedAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BranchRestrictedAction>;
 
 /** A list of actions that are currently restricted for this branch and the reason why. */
-export type BranchRestrictedActionsList = BranchRestrictedAction[];
+export type BranchRestrictedActionsList = ReadonlyArray<BranchRestrictedAction>;
 export const BranchRestrictedActionsList = /*@__PURE__*/ S.Array(
   BranchRestrictedAction,
 ) as any as S.Schema<BranchRestrictedActionsList>;
 
 /** How the branch was deleted: 'user' for manual deletion, 'ttl' for TTL expiration */
-export type BranchRecoveryInfoDeletionMethod = "user" | "ttl" | (string & {});
+export type BranchRecoveryInfoDeletionMethod = "user" | "ttl";
 export const BranchRecoveryInfoDeletionMethod = /*@__PURE__*/ S.String;
 
 /** Recovery information for a deleted branch. Only present when listing deleted branches with `include_deleted=true`. This is part of the Branch Recovery feature, which is in preview and not available to all users. */
@@ -1476,11 +1464,11 @@ export const Branch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Branch" }) as any as S.Schema<Branch>;
 
 /** The compute endpoint type. Either `read_write` or `read_only`. */
-export type EndpointType = "read_only" | "read_write" | (string & {});
+export type EndpointType = "read_only" | "read_write";
 export const EndpointType = /*@__PURE__*/ S.String;
 
 /** The state of the compute endpoint */
-export type EndpointState = "init" | "active" | "idle" | (string & {});
+export type EndpointState = "init" | "active" | "idle";
 export const EndpointState = /*@__PURE__*/ S.String;
 
 /** A collection of settings for a compute endpoint */
@@ -1501,7 +1489,7 @@ export const EndpointSettingsData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointSettingsData>;
 
 /** DEPRECATED. The connection pooler mode. Neon supports PgBouncer in `transaction` mode only. This schema is deprecated and will be removed after 2026-06-20. */
-export type EndpointPoolerMode = "transaction" | (string & {});
+export type EndpointPoolerMode = "transaction";
 export const EndpointPoolerMode = /*@__PURE__*/ S.String;
 
 export interface Endpoint {
@@ -1583,7 +1571,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
-export type CreateProjectResponseEndpointsList = Endpoint[];
+export type CreateProjectResponseEndpointsList = ReadonlyArray<Endpoint>;
 export const CreateProjectResponseEndpointsList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<CreateProjectResponseEndpointsList>;
@@ -1635,7 +1623,7 @@ export const BranchCreateRequestEndpointOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BranchCreateRequestEndpointOptions>;
 
 export type CreateProjectBranchRequestEndpointsList =
-  BranchCreateRequestEndpointOptions[];
+  ReadonlyArray<BranchCreateRequestEndpointOptions>;
 export const CreateProjectBranchRequestEndpointsList = /*@__PURE__*/ S.Array(
   BranchCreateRequestEndpointOptions,
 ) as any as S.Schema<CreateProjectBranchRequestEndpointsList>;
@@ -1697,27 +1685,29 @@ export const CreateProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectBranchRequest",
 }) as any as S.Schema<CreateProjectBranchRequest>;
 
-export type CreateProjectBranchResponseEndpointsList = Endpoint[];
+export type CreateProjectBranchResponseEndpointsList = ReadonlyArray<Endpoint>;
 export const CreateProjectBranchResponseEndpointsList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<CreateProjectBranchResponseEndpointsList>;
 
-export type CreateProjectBranchResponseOperationsList = Operation[];
+export type CreateProjectBranchResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const CreateProjectBranchResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<CreateProjectBranchResponseOperationsList>;
 
-export type CreateProjectBranchResponseRolesList = Role[];
+export type CreateProjectBranchResponseRolesList = ReadonlyArray<Role>;
 export const CreateProjectBranchResponseRolesList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<CreateProjectBranchResponseRolesList>;
 
-export type CreateProjectBranchResponseDatabasesList = Database[];
+export type CreateProjectBranchResponseDatabasesList = ReadonlyArray<Database>;
 export const CreateProjectBranchResponseDatabasesList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<CreateProjectBranchResponseDatabasesList>;
 
-export type CreateProjectBranchResponseConnectionUrisList = ConnectionDetails[];
+export type CreateProjectBranchResponseConnectionUrisList =
+  ReadonlyArray<ConnectionDetails>;
 export const CreateProjectBranchResponseConnectionUrisList =
   /*@__PURE__*/ S.Array(
     ConnectionDetails,
@@ -1745,7 +1735,7 @@ export const CreateProjectBranchResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectBranchResponse>;
 
 export type BranchCreateRequestEndpointsList =
-  BranchCreateRequestEndpointOptions[];
+  ReadonlyArray<BranchCreateRequestEndpointOptions>;
 export const BranchCreateRequestEndpointsList = /*@__PURE__*/ S.Array(
   BranchCreateRequestEndpointOptions,
 ) as any as S.Schema<BranchCreateRequestEndpointsList>;
@@ -1823,7 +1813,7 @@ export const MaskingRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of masking rules to apply to the branch. */
 export type CreateProjectBranchAnonymizedRequestMaskingRulesList =
-  MaskingRule[];
+  ReadonlyArray<MaskingRule>;
 export const CreateProjectBranchAnonymizedRequestMaskingRulesList =
   /*@__PURE__*/ S.Array(
     MaskingRule,
@@ -1860,32 +1850,36 @@ export const CreateProjectBranchAnonymizedRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateProjectBranchAnonymizedRequest",
 }) as any as S.Schema<CreateProjectBranchAnonymizedRequest>;
 
-export type CreateProjectBranchAnonymizedResponseEndpointsList = Endpoint[];
+export type CreateProjectBranchAnonymizedResponseEndpointsList =
+  ReadonlyArray<Endpoint>;
 export const CreateProjectBranchAnonymizedResponseEndpointsList =
   /*@__PURE__*/ S.Array(
     Endpoint,
   ) as any as S.Schema<CreateProjectBranchAnonymizedResponseEndpointsList>;
 
-export type CreateProjectBranchAnonymizedResponseOperationsList = Operation[];
+export type CreateProjectBranchAnonymizedResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const CreateProjectBranchAnonymizedResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
   ) as any as S.Schema<CreateProjectBranchAnonymizedResponseOperationsList>;
 
-export type CreateProjectBranchAnonymizedResponseRolesList = Role[];
+export type CreateProjectBranchAnonymizedResponseRolesList =
+  ReadonlyArray<Role>;
 export const CreateProjectBranchAnonymizedResponseRolesList =
   /*@__PURE__*/ S.Array(
     Role,
   ) as any as S.Schema<CreateProjectBranchAnonymizedResponseRolesList>;
 
-export type CreateProjectBranchAnonymizedResponseDatabasesList = Database[];
+export type CreateProjectBranchAnonymizedResponseDatabasesList =
+  ReadonlyArray<Database>;
 export const CreateProjectBranchAnonymizedResponseDatabasesList =
   /*@__PURE__*/ S.Array(
     Database,
   ) as any as S.Schema<CreateProjectBranchAnonymizedResponseDatabasesList>;
 
 export type CreateProjectBranchAnonymizedResponseConnectionUrisList =
-  ConnectionDetails[];
+  ReadonlyArray<ConnectionDetails>;
 export const CreateProjectBranchAnonymizedResponseConnectionUrisList =
   /*@__PURE__*/ S.Array(
     ConnectionDetails,
@@ -1918,8 +1912,7 @@ export const CreateProjectBranchAnonymizedResponse = /*@__PURE__*/ S.suspend(
 /** Access level for the bucket. Defaults to `private`. Set to `public_read` to allow anonymous `GetObject`/`HeadObject` on objects in this bucket. */
 export type CreateProjectBranchBucketRequestAccessLevel =
   | "private"
-  | "public_read"
-  | (string & {});
+  | "public_read";
 export const CreateProjectBranchBucketRequestAccessLevel =
   /*@__PURE__*/ S.String;
 
@@ -1951,7 +1944,7 @@ export const CreateProjectBranchBucketRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectBranchBucketRequest>;
 
 /** Controls anonymous access to objects in the bucket. - `private`: all reads and writes require authenticated requests (default). - `public_read`: anonymous `GetObject`/`HeadObject` requests succeed; listing, writes, and deletes still require authenticated requests. */
-export type BucketAccessLevel = "private" | "public_read" | (string & {});
+export type BucketAccessLevel = "private" | "public_read";
 export const BucketAccessLevel = /*@__PURE__*/ S.String;
 
 export interface Bucket {
@@ -1981,13 +1974,12 @@ export const BucketResponse = /*@__PURE__*/ S.suspend(() =>
 /** The authentication provider to use for the Neon Data API */
 export type CreateProjectBranchDataAPIRequestAuthProvider =
   | "neon_auth"
-  | "external"
-  | (string & {});
+  | "external";
 export const CreateProjectBranchDataAPIRequestAuthProvider =
   /*@__PURE__*/ S.String;
 
 /** List of schemas to expose via the API. Default: ["public"] */
-export type DataAPISettingsDbSchemasList = string[];
+export type DataAPISettingsDbSchemasList = ReadonlyArray<string>;
 export const DataAPISettingsDbSchemasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataAPISettingsDbSchemasList>;
@@ -2128,7 +2120,8 @@ export const CreateProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectBranchDatabaseRequest",
 }) as any as S.Schema<CreateProjectBranchDatabaseRequest>;
 
-export type CreateProjectBranchDatabaseResponseOperationsList = Operation[];
+export type CreateProjectBranchDatabaseResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const CreateProjectBranchDatabaseResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -2147,9 +2140,7 @@ export const CreateProjectBranchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectBranchDatabaseResponse",
 }) as any as S.Schema<CreateProjectBranchDatabaseResponse>;
 
-export type CreateProjectBranchFunctionDeploymentRequestRuntime =
-  | "nodejs24"
-  | (string & {});
+export type CreateProjectBranchFunctionDeploymentRequestRuntime = "nodejs24";
 export const CreateProjectBranchFunctionDeploymentRequestRuntime =
   /*@__PURE__*/ S.String;
 
@@ -2192,12 +2183,11 @@ export type NeonFunctionDeploymentStatus =
   | "pending"
   | "building"
   | "completed"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const NeonFunctionDeploymentStatus = /*@__PURE__*/ S.String;
 
 /** The NAMES of the deployment's environment variables, sorted. Values are encrypted at rest and are never returned — they are write-only. To change a value, deploy the variable with the new value; to remove a variable, deploy it with an empty value. */
-export type NeonFunctionDeploymentEnvironmentList = string[];
+export type NeonFunctionDeploymentEnvironmentList = ReadonlyArray<string>;
 export const NeonFunctionDeploymentEnvironmentList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NeonFunctionDeploymentEnvironmentList>;
@@ -2278,7 +2268,8 @@ export const CreateProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectBranchRoleRequest",
 }) as any as S.Schema<CreateProjectBranchRoleRequest>;
 
-export type CreateProjectBranchRoleResponseOperationsList = Operation[];
+export type CreateProjectBranchRoleResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const CreateProjectBranchRoleResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -2362,7 +2353,8 @@ export const CreateProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectEndpointRequest",
 }) as any as S.Schema<CreateProjectEndpointRequest>;
 
-export type CreateProjectEndpointResponseOperationsList = Operation[];
+export type CreateProjectEndpointResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const CreateProjectEndpointResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -2485,7 +2477,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
-export type CreateSnapshotResponseOperationsList = Operation[];
+export type CreateSnapshotResponseOperationsList = ReadonlyArray<Operation>;
 export const CreateSnapshotResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<CreateSnapshotResponseOperationsList>;
@@ -2507,8 +2499,7 @@ export type DeleteBranchNeonAuthOauthProviderRequestOauthProviderId =
   | "google"
   | "github"
   | "microsoft"
-  | "vercel"
-  | (string & {});
+  | "vercel";
 export const DeleteBranchNeonAuthOauthProviderRequestOauthProviderId =
   /*@__PURE__*/ S.String;
 
@@ -2557,7 +2548,7 @@ export const NeonAuthDeleteDomainFromRedirectURIWhitelistItem =
   }) as any as S.Schema<NeonAuthDeleteDomainFromRedirectURIWhitelistItem>;
 
 export type DeleteBranchNeonAuthTrustedDomainRequestDomainsList =
-  NeonAuthDeleteDomainFromRedirectURIWhitelistItem[];
+  ReadonlyArray<NeonAuthDeleteDomainFromRedirectURIWhitelistItem>;
 export const DeleteBranchNeonAuthTrustedDomainRequestDomainsList =
   /*@__PURE__*/ S.Array(
     NeonAuthDeleteDomainFromRedirectURIWhitelistItem,
@@ -2733,7 +2724,8 @@ export const DeleteProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProjectBranchRequest",
 }) as any as S.Schema<DeleteProjectBranchRequest>;
 
-export type DeleteProjectBranchResponseOperationsList = Operation[];
+export type DeleteProjectBranchResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const DeleteProjectBranchResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<DeleteProjectBranchResponseOperationsList>;
@@ -2912,7 +2904,8 @@ export const DeleteProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProjectBranchDatabaseRequest",
 }) as any as S.Schema<DeleteProjectBranchDatabaseRequest>;
 
-export type DeleteProjectBranchDatabaseResponseOperationsList = Operation[];
+export type DeleteProjectBranchDatabaseResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const DeleteProjectBranchDatabaseResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -2986,7 +2979,8 @@ export const DeleteProjectBranchRoleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProjectBranchRoleRequest",
 }) as any as S.Schema<DeleteProjectBranchRoleRequest>;
 
-export type DeleteProjectBranchRoleResponseOperationsList = Operation[];
+export type DeleteProjectBranchRoleResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const DeleteProjectBranchRoleResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -3026,7 +3020,8 @@ export const DeleteProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteProjectEndpointRequest",
 }) as any as S.Schema<DeleteProjectEndpointRequest>;
 
-export type DeleteProjectEndpointResponseOperationsList = Operation[];
+export type DeleteProjectEndpointResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const DeleteProjectEndpointResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -3177,7 +3172,7 @@ export const FinalizeRestoreBranchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FinalizeRestoreBranchRequest",
 }) as any as S.Schema<FinalizeRestoreBranchRequest>;
 
-export type OperationsResponseOperationsList = Operation[];
+export type OperationsResponseOperationsList = ReadonlyArray<Operation>;
 export const OperationsResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsResponseOperationsList>;
@@ -3228,7 +3223,7 @@ export const RegionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionResponse" }) as any as S.Schema<RegionResponse>;
 
 /** The list of active regions */
-export type ActiveRegionsResponseRegionsList = RegionResponse[];
+export type ActiveRegionsResponseRegionsList = ReadonlyArray<RegionResponse>;
 export const ActiveRegionsResponseRegionsList = /*@__PURE__*/ S.Array(
   RegionResponse,
 ) as any as S.Schema<ActiveRegionsResponseRegionsList>;
@@ -3335,8 +3330,7 @@ export type AuthDetailsResponseAuthMethod =
   | "session_cookie"
   | "api_key_user"
   | "api_key_org"
-  | "oauth"
-  | (string & {});
+  | "oauth";
 export const AuthDetailsResponseAuthMethod = /*@__PURE__*/ S.String;
 
 export interface AuthDetailsResponse {
@@ -3390,7 +3384,8 @@ export const AvailablePreloadLibrary = /*@__PURE__*/ S.suspend(() =>
   identifier: "AvailablePreloadLibrary",
 }) as any as S.Schema<AvailablePreloadLibrary>;
 
-export type AvailablePreloadLibrariesLibrariesList = AvailablePreloadLibrary[];
+export type AvailablePreloadLibrariesLibrariesList =
+  ReadonlyArray<AvailablePreloadLibrary>;
 export const AvailablePreloadLibrariesLibrariesList = /*@__PURE__*/ S.Array(
   AvailablePreloadLibrary,
 ) as any as S.Schema<AvailablePreloadLibrariesLibrariesList>;
@@ -3451,26 +3446,24 @@ export const ConnectionURIResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionURIResponse",
 }) as any as S.Schema<ConnectionURIResponse>;
 
-export type GetConsumptionHistoryPerBranchV2RequestProjectIdsList = string[];
+export type GetConsumptionHistoryPerBranchV2RequestProjectIdsList =
+  ReadonlyArray<string>;
 export const GetConsumptionHistoryPerBranchV2RequestProjectIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetConsumptionHistoryPerBranchV2RequestProjectIdsList>;
 
-export type GetConsumptionHistoryPerBranchV2RequestBranchIdsList = string[];
+export type GetConsumptionHistoryPerBranchV2RequestBranchIdsList =
+  ReadonlyArray<string>;
 export const GetConsumptionHistoryPerBranchV2RequestBranchIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetConsumptionHistoryPerBranchV2RequestBranchIdsList>;
 
-export type ConsumptionHistoryGranularity =
-  | "hourly"
-  | "daily"
-  | "monthly"
-  | (string & {});
+export type ConsumptionHistoryGranularity = "hourly" | "daily" | "monthly";
 export const ConsumptionHistoryGranularity = /*@__PURE__*/ S.String;
 
-export type ConsumptionHistoryQueryMetrics = string[];
+export type ConsumptionHistoryQueryMetrics = ReadonlyArray<string>;
 export const ConsumptionHistoryQueryMetrics = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConsumptionHistoryQueryMetrics>;
@@ -3536,7 +3529,7 @@ export const ConsumptionMetricValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumptionMetricValue>;
 
 export type ConsumptionHistoryPerTimeframeV2MetricsList =
-  ConsumptionMetricValue[];
+  ReadonlyArray<ConsumptionMetricValue>;
 export const ConsumptionHistoryPerTimeframeV2MetricsList =
   /*@__PURE__*/ S.Array(
     ConsumptionMetricValue,
@@ -3560,7 +3553,7 @@ export const ConsumptionHistoryPerTimeframeV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumptionHistoryPerTimeframeV2>;
 
 export type ConsumptionHistoryPerPeriodV2ConsumptionList =
-  ConsumptionHistoryPerTimeframeV2[];
+  ReadonlyArray<ConsumptionHistoryPerTimeframeV2>;
 export const ConsumptionHistoryPerPeriodV2ConsumptionList =
   /*@__PURE__*/ S.Array(
     ConsumptionHistoryPerTimeframeV2,
@@ -3590,7 +3583,7 @@ export const ConsumptionHistoryPerPeriodV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumptionHistoryPerPeriodV2>;
 
 export type ConsumptionHistoryPerBranchV2PeriodsList =
-  ConsumptionHistoryPerPeriodV2[];
+  ReadonlyArray<ConsumptionHistoryPerPeriodV2>;
 export const ConsumptionHistoryPerBranchV2PeriodsList = /*@__PURE__*/ S.Array(
   ConsumptionHistoryPerPeriodV2,
 ) as any as S.Schema<ConsumptionHistoryPerBranchV2PeriodsList>;
@@ -3613,7 +3606,7 @@ export const ConsumptionHistoryPerBranchV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumptionHistoryPerBranchV2>;
 
 export type GetConsumptionHistoryPerBranchV2ResponseBranchesList =
-  ConsumptionHistoryPerBranchV2[];
+  ReadonlyArray<ConsumptionHistoryPerBranchV2>;
 export const GetConsumptionHistoryPerBranchV2ResponseBranchesList =
   /*@__PURE__*/ S.Array(
     ConsumptionHistoryPerBranchV2,
@@ -3643,7 +3636,8 @@ export const GetConsumptionHistoryPerBranchV2Response = /*@__PURE__*/ S.suspend(
   identifier: "GetConsumptionHistoryPerBranchV2Response",
 }) as any as S.Schema<GetConsumptionHistoryPerBranchV2Response>;
 
-export type GetConsumptionHistoryPerProjectRequestProjectIdsList = string[];
+export type GetConsumptionHistoryPerProjectRequestProjectIdsList =
+  ReadonlyArray<string>;
 export const GetConsumptionHistoryPerProjectRequestProjectIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3731,7 +3725,7 @@ export const ConsumptionHistoryPerTimeframe = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumptionHistoryPerTimeframe>;
 
 export type ConsumptionHistoryPerPeriodConsumptionList =
-  ConsumptionHistoryPerTimeframe[];
+  ReadonlyArray<ConsumptionHistoryPerTimeframe>;
 export const ConsumptionHistoryPerPeriodConsumptionList = /*@__PURE__*/ S.Array(
   ConsumptionHistoryPerTimeframe,
 ) as any as S.Schema<ConsumptionHistoryPerPeriodConsumptionList>;
@@ -3760,7 +3754,7 @@ export const ConsumptionHistoryPerPeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumptionHistoryPerPeriod>;
 
 export type ConsumptionHistoryPerProjectPeriodsList =
-  ConsumptionHistoryPerPeriod[];
+  ReadonlyArray<ConsumptionHistoryPerPeriod>;
 export const ConsumptionHistoryPerProjectPeriodsList = /*@__PURE__*/ S.Array(
   ConsumptionHistoryPerPeriod,
 ) as any as S.Schema<ConsumptionHistoryPerProjectPeriodsList>;
@@ -3780,7 +3774,7 @@ export const ConsumptionHistoryPerProject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumptionHistoryPerProject>;
 
 export type GetConsumptionHistoryPerProjectResponseProjectsList =
-  ConsumptionHistoryPerProject[];
+  ReadonlyArray<ConsumptionHistoryPerProject>;
 export const GetConsumptionHistoryPerProjectResponseProjectsList =
   /*@__PURE__*/ S.Array(
     ConsumptionHistoryPerProject,
@@ -3800,7 +3794,8 @@ export const GetConsumptionHistoryPerProjectResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetConsumptionHistoryPerProjectResponse",
 }) as any as S.Schema<GetConsumptionHistoryPerProjectResponse>;
 
-export type GetConsumptionHistoryPerProjectV2RequestProjectIdsList = string[];
+export type GetConsumptionHistoryPerProjectV2RequestProjectIdsList =
+  ReadonlyArray<string>;
 export const GetConsumptionHistoryPerProjectV2RequestProjectIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3849,7 +3844,7 @@ export const GetConsumptionHistoryPerProjectV2Request = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetConsumptionHistoryPerProjectV2Request>;
 
 export type ConsumptionHistoryPerProjectV2PeriodsList =
-  ConsumptionHistoryPerPeriodV2[];
+  ReadonlyArray<ConsumptionHistoryPerPeriodV2>;
 export const ConsumptionHistoryPerProjectV2PeriodsList = /*@__PURE__*/ S.Array(
   ConsumptionHistoryPerPeriodV2,
 ) as any as S.Schema<ConsumptionHistoryPerProjectV2PeriodsList>;
@@ -3869,7 +3864,7 @@ export const ConsumptionHistoryPerProjectV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumptionHistoryPerProjectV2>;
 
 export type GetConsumptionHistoryPerProjectV2ResponseProjectsList =
-  ConsumptionHistoryPerProjectV2[];
+  ReadonlyArray<ConsumptionHistoryPerProjectV2>;
 export const GetConsumptionHistoryPerProjectV2ResponseProjectsList =
   /*@__PURE__*/ S.Array(
     ConsumptionHistoryPerProjectV2,
@@ -3902,8 +3897,7 @@ export type BillingAccountState =
   | "active"
   | "suspended"
   | "deactivated"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const BillingAccountState = /*@__PURE__*/ S.String;
 
 /** Brand of credit card. */
@@ -3915,8 +3909,7 @@ export type PaymentSourceBankCardBrand =
   | "mastercard"
   | "unionpay"
   | "unknown"
-  | "visa"
-  | (string & {});
+  | "visa";
 export const PaymentSourceBankCardBrand = /*@__PURE__*/ S.String;
 
 export interface PaymentSourceBankCard {
@@ -3964,8 +3957,7 @@ export type BillingPaymentMethod =
   | "staff"
   | "trial"
   | "sponsorship"
-  | "shared_payment_token"
-  | (string & {});
+  | "shared_payment_token";
 export const BillingPaymentMethod = /*@__PURE__*/ S.String;
 
 export interface PlanVersion {
@@ -4057,8 +4049,7 @@ export type IdentityProviderId =
   | "microsoft"
   | "microsoftv2"
   | "vercelmp"
-  | "keycloak"
-  | (string & {});
+  | "keycloak";
 export const IdentityProviderId = /*@__PURE__*/ S.String;
 
 export interface CurrentUserAuthAccount {
@@ -4081,7 +4072,8 @@ export const CurrentUserAuthAccount = /*@__PURE__*/ S.suspend(() =>
   identifier: "CurrentUserAuthAccount",
 }) as any as S.Schema<CurrentUserAuthAccount>;
 
-export type CurrentUserInfoResponseAuthAccountsList = CurrentUserAuthAccount[];
+export type CurrentUserInfoResponseAuthAccountsList =
+  ReadonlyArray<CurrentUserAuthAccount>;
 export const CurrentUserInfoResponseAuthAccountsList = /*@__PURE__*/ S.Array(
   CurrentUserAuthAccount,
 ) as any as S.Schema<CurrentUserInfoResponseAuthAccountsList>;
@@ -4165,7 +4157,8 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
-export type OrganizationsResponseOrganizationsList = Organization[];
+export type OrganizationsResponseOrganizationsList =
+  ReadonlyArray<Organization>;
 export const OrganizationsResponseOrganizationsList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationsResponseOrganizationsList>;
@@ -4203,7 +4196,7 @@ export const GetMaskingRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMaskingRulesRequest>;
 
 /** List of masking rules for the branch */
-export type MaskingRulesResponseMaskingRulesList = MaskingRule[];
+export type MaskingRulesResponseMaskingRulesList = ReadonlyArray<MaskingRule>;
 export const MaskingRulesResponseMaskingRulesList = /*@__PURE__*/ S.Array(
   MaskingRule,
 ) as any as S.Schema<MaskingRulesResponseMaskingRulesList>;
@@ -4241,13 +4234,10 @@ export const GetNeonAuthRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNeonAuthRequest",
 }) as any as S.Schema<GetNeonAuthRequest>;
 
-export type NeonAuthProviderProjectOwnedBy = "user" | "neon" | (string & {});
+export type NeonAuthProviderProjectOwnedBy = "user" | "neon";
 export const NeonAuthProviderProjectOwnedBy = /*@__PURE__*/ S.String;
 
-export type NeonAuthProviderProjectTransferStatus =
-  | "initiated"
-  | "finished"
-  | (string & {});
+export type NeonAuthProviderProjectTransferStatus = "initiated" | "finished";
 export const NeonAuthProviderProjectTransferStatus = /*@__PURE__*/ S.String;
 
 export interface NeonAuthIntegration {
@@ -4336,7 +4326,7 @@ export const GetNeonAuthEmailAndPasswordConfigRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetNeonAuthEmailAndPasswordConfigRequest>;
 
 /** The email verification method to use. - `link`: Sends a verification link via email - `otp`: Sends a one-time password (OTP) via email */
-export type NeonAuthEmailVerificationMethod = "link" | "otp" | (string & {});
+export type NeonAuthEmailVerificationMethod = "link" | "otp";
 export const NeonAuthEmailVerificationMethod = /*@__PURE__*/ S.String;
 
 export interface NeonAuthEmailAndPasswordConfig {
@@ -4390,9 +4380,47 @@ export const GetNeonAuthEmailProviderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNeonAuthEmailProviderRequest",
 }) as any as S.Schema<GetNeonAuthEmailProviderRequest>;
 
-export type GetNeonAuthEmailProviderResponse = unknown;
+export interface StandardEmailServer {
+  host: string;
+  port: number;
+  username: string;
+  password: string | Redacted.Redacted<string>;
+  sender_email: string;
+  sender_name: string;
+}
+export const StandardEmailServer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    host: S.String,
+    port: S.Number,
+    username: S.String,
+    password: S.String.pipe(T.SensitiveValue({})),
+    sender_email: S.String,
+    sender_name: S.String,
+  }),
+).annotate({
+  identifier: "StandardEmailServer",
+}) as any as S.Schema<StandardEmailServer>;
+
+export interface SharedEmailServer {
+  sender_email?: string;
+  sender_name?: string;
+}
+export const SharedEmailServer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sender_email: S.optional(S.String),
+    sender_name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SharedEmailServer",
+}) as any as S.Schema<SharedEmailServer>;
+
+export type NeonAuthEmailServerConfig = StandardEmailServer | SharedEmailServer;
+export const NeonAuthEmailServerConfig =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<NeonAuthEmailServerConfig>;
+
+export type GetNeonAuthEmailProviderResponse = NeonAuthEmailServerConfig;
 export const GetNeonAuthEmailProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  NeonAuthEmailServerConfig.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetNeonAuthEmailProviderResponse",
 }) as any as S.Schema<GetNeonAuthEmailProviderResponse>;
@@ -4455,10 +4483,7 @@ export const GetNeonAuthPluginConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNeonAuthPluginConfigsRequest>;
 
 /** The role assigned to the user who creates an organization */
-export type NeonAuthOrganizationConfigCreatorRole =
-  | "admin"
-  | "owner"
-  | (string & {});
+export type NeonAuthOrganizationConfigCreatorRole = "admin" | "owner";
 export const NeonAuthOrganizationConfigCreatorRole = /*@__PURE__*/ S.String;
 
 export interface NeonAuthOrganizationConfig {
@@ -4503,45 +4528,8 @@ export const NeonAuthMagicLinkConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "NeonAuthMagicLinkConfig",
 }) as any as S.Schema<NeonAuthMagicLinkConfig>;
 
-export interface StandardEmailServer {
-  host: string;
-  port: number;
-  username: string;
-  password: string | Redacted.Redacted<string>;
-  sender_email: string;
-  sender_name: string;
-}
-export const StandardEmailServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    port: S.Number,
-    username: S.String,
-    password: S.String.pipe(T.SensitiveValue({})),
-    sender_email: S.String,
-    sender_name: S.String,
-  }),
-).annotate({
-  identifier: "StandardEmailServer",
-}) as any as S.Schema<StandardEmailServer>;
-
-export interface SharedEmailServer {
-  sender_email?: string;
-  sender_name?: string;
-}
-export const SharedEmailServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sender_email: S.optional(S.String),
-    sender_name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SharedEmailServer",
-}) as any as S.Schema<SharedEmailServer>;
-
-export type NeonAuthEmailServerConfig = StandardEmailServer | SharedEmailServer;
-export const NeonAuthEmailServerConfig =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<NeonAuthEmailServerConfig>;
-
-export type NeonAuthPluginConfigsOauthProvidersList = NeonAuthOauthProvider[];
+export type NeonAuthPluginConfigsOauthProvidersList =
+  ReadonlyArray<NeonAuthOauthProvider>;
 export const NeonAuthPluginConfigsOauthProvidersList = /*@__PURE__*/ S.Array(
   NeonAuthOauthProvider,
 ) as any as S.Schema<NeonAuthPluginConfigsOauthProvidersList>;
@@ -4598,12 +4586,11 @@ export type NeonAuthWebhookConfigEnabledEventsItem =
   | "send.magic_link"
   | "organization.invitation.created"
   | "organization.invitation.accepted"
-  | "phone_number.verified"
-  | (string & {});
+  | "phone_number.verified";
 export const NeonAuthWebhookConfigEnabledEventsItem = /*@__PURE__*/ S.String;
 
 export type NeonAuthWebhookConfigEnabledEventsList =
-  NeonAuthWebhookConfigEnabledEventsItem[];
+  ReadonlyArray<NeonAuthWebhookConfigEnabledEventsItem>;
 export const NeonAuthWebhookConfigEnabledEventsList = /*@__PURE__*/ S.Array(
   NeonAuthWebhookConfigEnabledEventsItem,
 ) as any as S.Schema<NeonAuthWebhookConfigEnabledEventsList>;
@@ -4696,14 +4683,10 @@ export const Member = /*@__PURE__*/ S.suspend(() =>
 export type GetOrganizationMembersRequestSortBy =
   | "email"
   | "role"
-  | "joined_at"
-  | (string & {});
+  | "joined_at";
 export const GetOrganizationMembersRequestSortBy = /*@__PURE__*/ S.String;
 
-export type GetOrganizationMembersRequestSortOrder =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type GetOrganizationMembersRequestSortOrder = "asc" | "desc";
 export const GetOrganizationMembersRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface GetOrganizationMembersRequest {
@@ -4764,7 +4747,8 @@ export const MemberWithUser = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemberWithUser" }) as any as S.Schema<MemberWithUser>;
 
-export type GetOrganizationMembersResponseMembersList = MemberWithUser[];
+export type GetOrganizationMembersResponseMembersList =
+  ReadonlyArray<MemberWithUser>;
 export const GetOrganizationMembersResponseMembersList = /*@__PURE__*/ S.Array(
   MemberWithUser,
 ) as any as S.Schema<GetOrganizationMembersResponseMembersList>;
@@ -4854,7 +4838,8 @@ export const GetOrganizationVPCEndpointDetailsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetOrganizationVPCEndpointDetailsRequest>;
 
 /** A list of example projects that are restricted to use this VPC endpoint. There are at most 3 projects in the list, even if more projects are restricted. */
-export type VPCEndpointDetailsExampleRestrictedProjectsList = string[];
+export type VPCEndpointDetailsExampleRestrictedProjectsList =
+  ReadonlyArray<string>;
 export const VPCEndpointDetailsExampleRestrictedProjectsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4898,14 +4883,13 @@ export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectRequest>;
 
 /** Category of an advisor issue */
-export type AdvisorCategory = "SECURITY" | "PERFORMANCE" | (string & {});
+export type AdvisorCategory = "SECURITY" | "PERFORMANCE";
 export const AdvisorCategory = /*@__PURE__*/ S.String;
 
 export type GetProjectAdvisorSecurityIssuesRequestMinSeverity =
   | "INFO"
   | "WARN"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GetProjectAdvisorSecurityIssuesRequestMinSeverity =
   /*@__PURE__*/ S.String;
 
@@ -4943,11 +4927,11 @@ export const GetProjectAdvisorSecurityIssuesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetProjectAdvisorSecurityIssuesRequest>;
 
 /** Whether this issue affects external API exposure or is internal only */
-export type AdvisorIssueFacing = "EXTERNAL" | "INTERNAL" | (string & {});
+export type AdvisorIssueFacing = "EXTERNAL" | "INTERNAL";
 export const AdvisorIssueFacing = /*@__PURE__*/ S.String;
 
 /** Categories this issue belongs to */
-export type AdvisorIssueCategoriesList = AdvisorCategory[];
+export type AdvisorIssueCategoriesList = ReadonlyArray<AdvisorCategory>;
 export const AdvisorIssueCategoriesList = /*@__PURE__*/ S.Array(
   AdvisorCategory,
 ) as any as S.Schema<AdvisorIssueCategoriesList>;
@@ -4996,7 +4980,8 @@ export const AdvisorIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdvisorIssue" }) as any as S.Schema<AdvisorIssue>;
 
-export type GetProjectAdvisorSecurityIssuesResponseIssuesList = AdvisorIssue[];
+export type GetProjectAdvisorSecurityIssuesResponseIssuesList =
+  ReadonlyArray<AdvisorIssue>;
 export const GetProjectAdvisorSecurityIssuesResponseIssuesList =
   /*@__PURE__*/ S.Array(
     AdvisorIssue,
@@ -5171,7 +5156,7 @@ export const GetProjectBranchDataAPIRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectBranchDataAPIRequest>;
 
 /** List of available database schemas (SubZero only) */
-export type DataAPIReponseAvailableSchemasList = string[];
+export type DataAPIReponseAvailableSchemasList = ReadonlyArray<string>;
 export const DataAPIReponseAvailableSchemasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataAPIReponseAvailableSchemasList>;
@@ -5416,13 +5401,14 @@ export const BranchSchemaJSONTablesItemColumnsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BranchSchemaJSONTablesItemColumnsItem>;
 
 export type BranchSchemaJSONTablesItemColumnsList =
-  BranchSchemaJSONTablesItemColumnsItem[];
+  ReadonlyArray<BranchSchemaJSONTablesItemColumnsItem>;
 export const BranchSchemaJSONTablesItemColumnsList = /*@__PURE__*/ S.Array(
   BranchSchemaJSONTablesItemColumnsItem,
 ) as any as S.Schema<BranchSchemaJSONTablesItemColumnsList>;
 
 /** Column names participating in this constraint */
-export type BranchSchemaJSONTablesItemConstraintsItemColumnsList = string[];
+export type BranchSchemaJSONTablesItemConstraintsItemColumnsList =
+  ReadonlyArray<string>;
 export const BranchSchemaJSONTablesItemConstraintsItemColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5430,7 +5416,7 @@ export const BranchSchemaJSONTablesItemConstraintsItemColumnsList =
 
 /** Names of the referenced columns */
 export type BranchSchemaJSONTablesItemConstraintsItemReferencedTableColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const BranchSchemaJSONTablesItemConstraintsItemReferencedTableColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5482,7 +5468,7 @@ export const BranchSchemaJSONTablesItemConstraintsItem =
   }) as any as S.Schema<BranchSchemaJSONTablesItemConstraintsItem>;
 
 export type BranchSchemaJSONTablesItemConstraintsList =
-  BranchSchemaJSONTablesItemConstraintsItem[];
+  ReadonlyArray<BranchSchemaJSONTablesItemConstraintsItem>;
 export const BranchSchemaJSONTablesItemConstraintsList = /*@__PURE__*/ S.Array(
   BranchSchemaJSONTablesItemConstraintsItem,
 ) as any as S.Schema<BranchSchemaJSONTablesItemConstraintsList>;
@@ -5504,7 +5490,8 @@ export const BranchSchemaJSONTablesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BranchSchemaJSONTablesItem",
 }) as any as S.Schema<BranchSchemaJSONTablesItem>;
 
-export type BranchSchemaJSONTablesList = BranchSchemaJSONTablesItem[];
+export type BranchSchemaJSONTablesList =
+  ReadonlyArray<BranchSchemaJSONTablesItem>;
 export const BranchSchemaJSONTablesList = /*@__PURE__*/ S.Array(
   BranchSchemaJSONTablesItem,
 ) as any as S.Schema<BranchSchemaJSONTablesList>;
@@ -5670,7 +5657,7 @@ export const GetProjectJWKSRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProjectJWKSRequest",
 }) as any as S.Schema<GetProjectJWKSRequest>;
 
-export type ProjectJWKSResponseJwksList = JWKS[];
+export type ProjectJWKSResponseJwksList = ReadonlyArray<JWKS>;
 export const ProjectJWKSResponseJwksList = /*@__PURE__*/ S.Array(
   JWKS,
 ) as any as S.Schema<ProjectJWKSResponseJwksList>;
@@ -5764,7 +5751,7 @@ export const BackupScheduleItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupScheduleItem",
 }) as any as S.Schema<BackupScheduleItem>;
 
-export type BackupScheduleScheduleList = BackupScheduleItem[];
+export type BackupScheduleScheduleList = ReadonlyArray<BackupScheduleItem>;
 export const BackupScheduleScheduleList = /*@__PURE__*/ S.Array(
   BackupScheduleItem,
 ) as any as S.Schema<BackupScheduleScheduleList>;
@@ -5866,7 +5853,8 @@ export const ApiKeysListResponseItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiKeysListResponseItem",
 }) as any as S.Schema<ApiKeysListResponseItem>;
 
-export type ListApiKeysResponseBodyList = ApiKeysListResponseItem[];
+export type ListApiKeysResponseBodyList =
+  ReadonlyArray<ApiKeysListResponseItem>;
 export const ListApiKeysResponseBodyList = /*@__PURE__*/ S.Array(
   ApiKeysListResponseItem,
 ) as any as S.Schema<ListApiKeysResponseBodyList>;
@@ -5901,7 +5889,7 @@ export const ListBranchNeonAuthOauthProvidersRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListBranchNeonAuthOauthProvidersRequest>;
 
 export type ListNeonAuthOauthProvidersResponseProvidersList =
-  NeonAuthOauthProvider[];
+  ReadonlyArray<NeonAuthOauthProvider>;
 export const ListNeonAuthOauthProvidersResponseProvidersList =
   /*@__PURE__*/ S.Array(
     NeonAuthOauthProvider,
@@ -5954,7 +5942,7 @@ export const NeonAuthRedirectURIWhitelistDomain = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NeonAuthRedirectURIWhitelistDomain>;
 
 export type NeonAuthRedirectURIWhitelistResponseDomainsList =
-  NeonAuthRedirectURIWhitelistDomain[];
+  ReadonlyArray<NeonAuthRedirectURIWhitelistDomain>;
 export const NeonAuthRedirectURIWhitelistResponseDomainsList =
   /*@__PURE__*/ S.Array(
     NeonAuthRedirectURIWhitelistDomain,
@@ -5993,7 +5981,7 @@ export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCredentialsRequest",
 }) as any as S.Schema<ListCredentialsRequest>;
 
-export type CredentialMetaScopesList = CredentialScope[];
+export type CredentialMetaScopesList = ReadonlyArray<CredentialScope>;
 export const CredentialMetaScopesList = /*@__PURE__*/ S.Array(
   CredentialScope,
 ) as any as S.Schema<CredentialMetaScopesList>;
@@ -6030,7 +6018,8 @@ export const CredentialMeta = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CredentialMeta" }) as any as S.Schema<CredentialMeta>;
 
-export type ListCredentialsResponseCredentialsList = CredentialMeta[];
+export type ListCredentialsResponseCredentialsList =
+  ReadonlyArray<CredentialMeta>;
 export const ListCredentialsResponseCredentialsList = /*@__PURE__*/ S.Array(
   CredentialMeta,
 ) as any as S.Schema<ListCredentialsResponseCredentialsList>;
@@ -6080,7 +6069,7 @@ export const VPCEndpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VPCEndpoint" }) as any as S.Schema<VPCEndpoint>;
 
-export type VPCEndpointsResponseEndpointsList = VPCEndpoint[];
+export type VPCEndpointsResponseEndpointsList = ReadonlyArray<VPCEndpoint>;
 export const VPCEndpointsResponseEndpointsList = /*@__PURE__*/ S.Array(
   VPCEndpoint,
 ) as any as S.Schema<VPCEndpointsResponseEndpointsList>;
@@ -6134,7 +6123,7 @@ export const VPCEndpointWithRegion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VPCEndpointWithRegion>;
 
 export type VPCEndpointsWithRegionResponseEndpointsList =
-  VPCEndpointWithRegion[];
+  ReadonlyArray<VPCEndpointWithRegion>;
 export const VPCEndpointsWithRegionResponseEndpointsList =
   /*@__PURE__*/ S.Array(
     VPCEndpointWithRegion,
@@ -6198,7 +6187,8 @@ export const OrgApiKeysListResponseItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrgApiKeysListResponseItem",
 }) as any as S.Schema<OrgApiKeysListResponseItem>;
 
-export type ListOrgApiKeysResponseBodyList = OrgApiKeysListResponseItem[];
+export type ListOrgApiKeysResponseBodyList =
+  ReadonlyArray<OrgApiKeysListResponseItem>;
 export const ListOrgApiKeysResponseBodyList = /*@__PURE__*/ S.Array(
   OrgApiKeysListResponseItem,
 ) as any as S.Schema<ListOrgApiKeysResponseBodyList>;
@@ -6248,7 +6238,7 @@ export const ListProjectBranchBucketObjectsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectBranchBucketObjectsRequest>;
 
 /** Common prefixes (folder names) collapsed under the requested `delimiter`. Empty when no `delimiter` was supplied. */
-export type BucketObjectsListResponseFoldersList = string[];
+export type BucketObjectsListResponseFoldersList = ReadonlyArray<string>;
 export const BucketObjectsListResponseFoldersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BucketObjectsListResponseFoldersList>;
@@ -6273,7 +6263,7 @@ export const BucketObject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BucketObject" }) as any as S.Schema<BucketObject>;
 
 /** Objects whose keys did not collapse into a folder. */
-export type BucketObjectsListResponseObjectsList = BucketObject[];
+export type BucketObjectsListResponseObjectsList = ReadonlyArray<BucketObject>;
 export const BucketObjectsListResponseObjectsList = /*@__PURE__*/ S.Array(
   BucketObject,
 ) as any as S.Schema<BucketObjectsListResponseObjectsList>;
@@ -6323,7 +6313,7 @@ export const ListProjectBranchBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectBranchBucketsRequest",
 }) as any as S.Schema<ListProjectBranchBucketsRequest>;
 
-export type BucketsListResponseBucketsList = Bucket[];
+export type BucketsListResponseBucketsList = ReadonlyArray<Bucket>;
 export const BucketsListResponseBucketsList = /*@__PURE__*/ S.Array(
   Bucket,
 ) as any as S.Schema<BucketsListResponseBucketsList>;
@@ -6360,7 +6350,7 @@ export const ListProjectBranchDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectBranchDatabasesRequest",
 }) as any as S.Schema<ListProjectBranchDatabasesRequest>;
 
-export type DatabasesResponseDatabasesList = Database[];
+export type DatabasesResponseDatabasesList = ReadonlyArray<Database>;
 export const DatabasesResponseDatabasesList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabasesResponseDatabasesList>;
@@ -6397,7 +6387,7 @@ export const ListProjectBranchEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectBranchEndpointsRequest",
 }) as any as S.Schema<ListProjectBranchEndpointsRequest>;
 
-export type EndpointsResponseEndpointsList = Endpoint[];
+export type EndpointsResponseEndpointsList = ReadonlyArray<Endpoint>;
 export const EndpointsResponseEndpointsList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointsResponseEndpointsList>;
@@ -6416,14 +6406,10 @@ export const EndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectBranchesRequestSortBy =
   | "name"
   | "created_at"
-  | "updated_at"
-  | (string & {});
+  | "updated_at";
 export const ListProjectBranchesRequestSortBy = /*@__PURE__*/ S.String;
 
-export type ListProjectBranchesRequestSortOrder =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type ListProjectBranchesRequestSortOrder = "asc" | "desc";
 export const ListProjectBranchesRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListProjectBranchesRequest {
@@ -6462,7 +6448,7 @@ export const ListProjectBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectBranchesRequest",
 }) as any as S.Schema<ListProjectBranchesRequest>;
 
-export type ListProjectBranchesResponseBranchesList = Branch[];
+export type ListProjectBranchesResponseBranchesList = ReadonlyArray<Branch>;
 export const ListProjectBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
   Branch,
 ) as any as S.Schema<ListProjectBranchesResponseBranchesList>;
@@ -6517,7 +6503,8 @@ export const ListProjectBranchFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectBranchFunctionsRequest",
 }) as any as S.Schema<ListProjectBranchFunctionsRequest>;
 
-export type ListProjectBranchFunctionsResponseFunctionsList = NeonFunction[];
+export type ListProjectBranchFunctionsResponseFunctionsList =
+  ReadonlyArray<NeonFunction>;
 export const ListProjectBranchFunctionsResponseFunctionsList =
   /*@__PURE__*/ S.Array(
     NeonFunction,
@@ -6557,7 +6544,7 @@ export const ListProjectBranchRolesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectBranchRolesRequest",
 }) as any as S.Schema<ListProjectBranchRolesRequest>;
 
-export type RolesResponseRolesList = Role[];
+export type RolesResponseRolesList = ReadonlyArray<Role>;
 export const RolesResponseRolesList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<RolesResponseRolesList>;
@@ -6613,7 +6600,8 @@ export const ListProjectOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectOperationsRequest",
 }) as any as S.Schema<ListProjectOperationsRequest>;
 
-export type ListProjectOperationsResponseOperationsList = Operation[];
+export type ListProjectOperationsResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const ListProjectOperationsResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -6649,7 +6637,8 @@ export const ListProjectPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectPermissionsRequest",
 }) as any as S.Schema<ListProjectPermissionsRequest>;
 
-export type ProjectPermissionsProjectPermissionsList = ProjectPermission[];
+export type ProjectPermissionsProjectPermissionsList =
+  ReadonlyArray<ProjectPermission>;
 export const ProjectPermissionsProjectPermissionsList = /*@__PURE__*/ S.Array(
   ProjectPermission,
 ) as any as S.Schema<ProjectPermissionsProjectPermissionsList>;
@@ -6783,28 +6772,25 @@ export const ProjectListItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectListItem",
 }) as any as S.Schema<ProjectListItem>;
 
-export type ListProjectsResponseProjectsList = ProjectListItem[];
+export type ListProjectsResponseProjectsList = ReadonlyArray<ProjectListItem>;
 export const ListProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
   ProjectListItem,
 ) as any as S.Schema<ListProjectsResponseProjectsList>;
 
 /** A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit */
-export type ListProjectsResponseUnavailableProjectIdsList = string[];
+export type ListProjectsResponseUnavailableProjectIdsList =
+  ReadonlyArray<string>;
 export const ListProjectsResponseUnavailableProjectIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ListProjectsResponseUnavailableProjectIdsList>;
 
 /** Type of application integration */
-export type ApplicationType =
-  | "vercel"
-  | "github"
-  | "datadog"
-  | "opentelemetry"
-  | (string & {});
+export type ApplicationType = "vercel" | "github" | "datadog" | "opentelemetry";
 export const ApplicationType = /*@__PURE__*/ S.String;
 
-export type ListProjectsResponseApplicationsValueList = ApplicationType[];
+export type ListProjectsResponseApplicationsValueList =
+  ReadonlyArray<ApplicationType>;
 export const ListProjectsResponseApplicationsValueList = /*@__PURE__*/ S.Array(
   ApplicationType,
 ) as any as S.Schema<ListProjectsResponseApplicationsValueList>;
@@ -6817,7 +6803,8 @@ export const ListProjectsResponseApplicationsMap = /*@__PURE__*/ S.Record(
   ListProjectsResponseApplicationsValueList,
 ) as any as S.Schema<ListProjectsResponseApplicationsMap>;
 
-export type ListProjectsResponseIntegrationsValueList = ApplicationType[];
+export type ListProjectsResponseIntegrationsValueList =
+  ReadonlyArray<ApplicationType>;
 export const ListProjectsResponseIntegrationsValueList = /*@__PURE__*/ S.Array(
   ApplicationType,
 ) as any as S.Schema<ListProjectsResponseIntegrationsValueList>;
@@ -6891,13 +6878,15 @@ export const ListSharedProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSharedProjectsRequest",
 }) as any as S.Schema<ListSharedProjectsRequest>;
 
-export type ListSharedProjectsResponseProjectsList = ProjectListItem[];
+export type ListSharedProjectsResponseProjectsList =
+  ReadonlyArray<ProjectListItem>;
 export const ListSharedProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
   ProjectListItem,
 ) as any as S.Schema<ListSharedProjectsResponseProjectsList>;
 
 /** A list of project IDs indicating which projects are known to exist, but whose details could not be fetched within the requested (or implicit) time limit */
-export type ListSharedProjectsResponseUnavailableProjectIdsList = string[];
+export type ListSharedProjectsResponseUnavailableProjectIdsList =
+  ReadonlyArray<string>;
 export const ListSharedProjectsResponseUnavailableProjectIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6939,7 +6928,7 @@ export const ListSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSnapshotsRequest",
 }) as any as S.Schema<ListSnapshotsRequest>;
 
-export type ListSnapshotsResponseSnapshotsList = Snapshot[];
+export type ListSnapshotsResponseSnapshotsList = ReadonlyArray<Snapshot>;
 export const ListSnapshotsResponseSnapshotsList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<ListSnapshotsResponseSnapshotsList>;
@@ -6958,8 +6947,7 @@ export const ListSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
 /** The transfer direction. `upload` returns a presigned `PUT` URL; `download` returns a presigned `GET` URL. */
 export type PresignProjectBranchBucketObjectRequestOperation =
   | "upload"
-  | "download"
-  | (string & {});
+  | "download";
 export const PresignProjectBranchBucketObjectRequestOperation =
   /*@__PURE__*/ S.String;
 
@@ -7046,7 +7034,7 @@ export const RecoverProjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecoverProjectRequest",
 }) as any as S.Schema<RecoverProjectRequest>;
 
-export type RecoverProjectResponseBranchesList = Branch[];
+export type RecoverProjectResponseBranchesList = ReadonlyArray<Branch>;
 export const RecoverProjectResponseBranchesList = /*@__PURE__*/ S.Array(
   Branch,
 ) as any as S.Schema<RecoverProjectResponseBranchesList>;
@@ -7085,7 +7073,7 @@ export const RecoverProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecoverProjectBranchRequest",
 }) as any as S.Schema<RecoverProjectBranchRequest>;
 
-export type RecoverProjectBranchResponseEndpointsList = Endpoint[];
+export type RecoverProjectBranchResponseEndpointsList = ReadonlyArray<Endpoint>;
 export const RecoverProjectBranchResponseEndpointsList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<RecoverProjectBranchResponseEndpointsList>;
@@ -7156,7 +7144,8 @@ export const ResetProjectBranchRolePasswordRequest = /*@__PURE__*/ S.suspend(
   identifier: "ResetProjectBranchRolePasswordRequest",
 }) as any as S.Schema<ResetProjectBranchRolePasswordRequest>;
 
-export type ResetProjectBranchRolePasswordResponseOperationsList = Operation[];
+export type ResetProjectBranchRolePasswordResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const ResetProjectBranchRolePasswordResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -7197,7 +7186,8 @@ export const RestartProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestartProjectEndpointRequest",
 }) as any as S.Schema<RestartProjectEndpointRequest>;
 
-export type RestartProjectEndpointResponseOperationsList = Operation[];
+export type RestartProjectEndpointResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const RestartProjectEndpointResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -7249,7 +7239,8 @@ export const RestoreProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreProjectBranchRequest",
 }) as any as S.Schema<RestoreProjectBranchRequest>;
 
-export type RestoreProjectBranchResponseOperationsList = Operation[];
+export type RestoreProjectBranchResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const RestoreProjectBranchResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<RestoreProjectBranchResponseOperationsList>;
@@ -7297,12 +7288,12 @@ export const RestoreSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreSnapshotRequest",
 }) as any as S.Schema<RestoreSnapshotRequest>;
 
-export type RestoreSnapshotResponseEndpointsList = Endpoint[];
+export type RestoreSnapshotResponseEndpointsList = ReadonlyArray<Endpoint>;
 export const RestoreSnapshotResponseEndpointsList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<RestoreSnapshotResponseEndpointsList>;
 
-export type RestoreSnapshotResponseOperationsList = Operation[];
+export type RestoreSnapshotResponseOperationsList = ReadonlyArray<Operation>;
 export const RestoreSnapshotResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<RestoreSnapshotResponseOperationsList>;
@@ -7540,7 +7531,8 @@ export const SetDefaultProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetDefaultProjectBranchRequest",
 }) as any as S.Schema<SetDefaultProjectBranchRequest>;
 
-export type SetDefaultProjectBranchResponseOperationsList = Operation[];
+export type SetDefaultProjectBranchResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const SetDefaultProjectBranchResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -7580,7 +7572,8 @@ export const SetOrganizationSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetOrganizationSpendingLimitRequest",
 }) as any as S.Schema<SetOrganizationSpendingLimitRequest>;
 
-export type SetSnapshotScheduleRequestScheduleList = BackupScheduleItem[];
+export type SetSnapshotScheduleRequestScheduleList =
+  ReadonlyArray<BackupScheduleItem>;
 export const SetSnapshotScheduleRequestScheduleList = /*@__PURE__*/ S.Array(
   BackupScheduleItem,
 ) as any as S.Schema<SetSnapshotScheduleRequestScheduleList>;
@@ -7657,7 +7650,8 @@ export const StartProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartProjectEndpointRequest",
 }) as any as S.Schema<StartProjectEndpointRequest>;
 
-export type StartProjectEndpointResponseOperationsList = Operation[];
+export type StartProjectEndpointResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const StartProjectEndpointResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<StartProjectEndpointResponseOperationsList>;
@@ -7696,7 +7690,8 @@ export const SuspendProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuspendProjectEndpointRequest",
 }) as any as S.Schema<SuspendProjectEndpointRequest>;
 
-export type SuspendProjectEndpointResponseOperationsList = Operation[];
+export type SuspendProjectEndpointResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const SuspendProjectEndpointResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -7749,7 +7744,8 @@ export const NeonAuthTransferAuthProviderProjectResponse =
   }) as any as S.Schema<NeonAuthTransferAuthProviderProjectResponse>;
 
 /** The list of projects ids to transfer. Maximum of 400 project ids */
-export type TransferProjectsFromOrgToOrgRequestProjectIdsList = string[];
+export type TransferProjectsFromOrgToOrgRequestProjectIdsList =
+  ReadonlyArray<string>;
 export const TransferProjectsFromOrgToOrgRequestProjectIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7790,8 +7786,7 @@ export type UpdateBranchNeonAuthOauthProviderRequestOauthProviderId =
   | "google"
   | "github"
   | "microsoft"
-  | "vercel"
-  | (string & {});
+  | "vercel";
 export const UpdateBranchNeonAuthOauthProviderRequestOauthProviderId =
   /*@__PURE__*/ S.String;
 
@@ -7828,7 +7823,8 @@ export const UpdateBranchNeonAuthOauthProviderRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateBranchNeonAuthOauthProviderRequest>;
 
 /** List of masking rules to apply to the branch. This will replace all existing masking rules for the branch. */
-export type UpdateMaskingRulesRequestMaskingRulesList = MaskingRule[];
+export type UpdateMaskingRulesRequestMaskingRulesList =
+  ReadonlyArray<MaskingRule>;
 export const UpdateMaskingRulesRequestMaskingRulesList = /*@__PURE__*/ S.Array(
   MaskingRule,
 ) as any as S.Schema<UpdateMaskingRulesRequestMaskingRulesList>;
@@ -7965,11 +7961,13 @@ export interface UpdateNeonAuthEmailProviderRequest {
   project_id: string;
   /** The Neon branch ID */
   branch_id: string;
+  body: NeonAuthEmailServerConfig;
 }
 export const UpdateNeonAuthEmailProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     branch_id: S.String.pipe(T.Label()),
+    body: NeonAuthEmailServerConfig.pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7981,9 +7979,9 @@ export const UpdateNeonAuthEmailProviderRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateNeonAuthEmailProviderRequest",
 }) as any as S.Schema<UpdateNeonAuthEmailProviderRequest>;
 
-export type UpdateNeonAuthEmailProviderResponse = unknown;
+export type UpdateNeonAuthEmailProviderResponse = NeonAuthEmailServerConfig;
 export const UpdateNeonAuthEmailProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  NeonAuthEmailServerConfig.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UpdateNeonAuthEmailProviderResponse",
 }) as any as S.Schema<UpdateNeonAuthEmailProviderResponse>;
@@ -8022,8 +8020,7 @@ export const UpdateNeonAuthMagicLinkPluginRequest = /*@__PURE__*/ S.suspend(
 /** The role assigned to the user who creates an organization */
 export type UpdateNeonAuthOrganizationPluginRequestCreatorRole =
   | "admin"
-  | "owner"
-  | (string & {});
+  | "owner";
 export const UpdateNeonAuthOrganizationPluginRequestCreatorRole =
   /*@__PURE__*/ S.String;
 
@@ -8095,7 +8092,7 @@ export const UpdateNeonAuthPhoneNumberPluginRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateNeonAuthPhoneNumberPluginRequest>;
 
 /** Array of roles to assign to the user */
-export type UpdateNeonAuthUserRoleRequestRolesList = string[];
+export type UpdateNeonAuthUserRoleRequestRolesList = ReadonlyArray<string>;
 export const UpdateNeonAuthUserRoleRequestRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateNeonAuthUserRoleRequestRolesList>;
@@ -8146,13 +8143,12 @@ export type UpdateNeonAuthWebhookConfigRequestEnabledEventsItem =
   | "send.magic_link"
   | "organization.invitation.created"
   | "organization.invitation.accepted"
-  | "phone_number.verified"
-  | (string & {});
+  | "phone_number.verified";
 export const UpdateNeonAuthWebhookConfigRequestEnabledEventsItem =
   /*@__PURE__*/ S.String;
 
 export type UpdateNeonAuthWebhookConfigRequestEnabledEventsList =
-  UpdateNeonAuthWebhookConfigRequestEnabledEventsItem[];
+  ReadonlyArray<UpdateNeonAuthWebhookConfigRequestEnabledEventsItem>;
 export const UpdateNeonAuthWebhookConfigRequestEnabledEventsList =
   /*@__PURE__*/ S.Array(
     UpdateNeonAuthWebhookConfigRequestEnabledEventsItem,
@@ -8247,7 +8243,7 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateProjectRequest",
 }) as any as S.Schema<UpdateProjectRequest>;
 
-export type UpdateProjectResponseOperationsList = Operation[];
+export type UpdateProjectResponseOperationsList = ReadonlyArray<Operation>;
 export const UpdateProjectResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<UpdateProjectResponseOperationsList>;
@@ -8304,7 +8300,8 @@ export const UpdateProjectBranchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateProjectBranchRequest",
 }) as any as S.Schema<UpdateProjectBranchRequest>;
 
-export type UpdateProjectBranchResponseOperationsList = Operation[];
+export type UpdateProjectBranchResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const UpdateProjectBranchResponseOperationsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<UpdateProjectBranchResponseOperationsList>;
@@ -8398,7 +8395,8 @@ export const UpdateProjectBranchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateProjectBranchDatabaseRequest",
 }) as any as S.Schema<UpdateProjectBranchDatabaseRequest>;
 
-export type UpdateProjectBranchDatabaseResponseOperationsList = Operation[];
+export type UpdateProjectBranchDatabaseResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const UpdateProjectBranchDatabaseResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -8507,7 +8505,8 @@ export const UpdateProjectEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateProjectEndpointRequest",
 }) as any as S.Schema<UpdateProjectEndpointRequest>;
 
-export type UpdateProjectEndpointResponseOperationsList = Operation[];
+export type UpdateProjectEndpointResponseOperationsList =
+  ReadonlyArray<Operation>;
 export const UpdateProjectEndpointResponseOperationsList =
   /*@__PURE__*/ S.Array(
     Operation,

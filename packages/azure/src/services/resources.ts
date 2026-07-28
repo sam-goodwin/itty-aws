@@ -12,43 +12,15 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface ApplicationDefinitionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the managed application definition. */
-  applicationDefinitionName: string;
-  body: unknown;
-}
-export const ApplicationDefinitionsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      applicationDefinitionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
-        code: 200,
-        apiVersion: "2019-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ApplicationDefinitionsCreateOrUpdateRequest",
-  }) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateRequest>;
-
 /** Resource tags */
-export type ApplicationDefinitionsCreateOrUpdateResponseTagsMap = {
+export type ApplicationDefinitionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ApplicationDefinitionsCreateOrUpdateResponseTagsMap =
+export const ApplicationDefinitionsCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateRequestTagsMap>;
 
 /** SKU for the resource. */
 export interface Sku_2 {
@@ -77,11 +49,7 @@ export const Sku_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku_2" }) as any as S.Schema<Sku_2>;
 
 /** The managed application lock level. */
-export type ApplicationLockLevel =
-  | "CanNotDelete"
-  | "ReadOnly"
-  | "None"
-  | (string & {});
+export type ApplicationLockLevel = "CanNotDelete" | "ReadOnly" | "None";
 export const ApplicationLockLevel = /*@__PURE__*/ S.String;
 
 /** The managed application provider authorization. */
@@ -102,7 +70,7 @@ export const ApplicationAuthorization = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed application provider authorizations. */
 export type ApplicationDefinitionPropertiesAuthorizationsList =
-  ApplicationAuthorization[];
+  ReadonlyArray<ApplicationAuthorization>;
 export const ApplicationDefinitionPropertiesAuthorizationsList =
   /*@__PURE__*/ S.Array(
     ApplicationAuthorization,
@@ -113,16 +81,11 @@ export type ApplicationDefinitionArtifactName =
   | "NotSpecified"
   | "ApplicationResourceTemplate"
   | "CreateUiDefinition"
-  | "MainTemplateParameters"
-  | (string & {});
+  | "MainTemplateParameters";
 export const ApplicationDefinitionArtifactName = /*@__PURE__*/ S.String;
 
 /** The managed application artifact type. */
-export type ApplicationArtifactType =
-  | "NotSpecified"
-  | "Template"
-  | "Custom"
-  | (string & {});
+export type ApplicationArtifactType = "NotSpecified" | "Template" | "Custom";
 export const ApplicationArtifactType = /*@__PURE__*/ S.String;
 
 /** Application definition artifact. */
@@ -146,7 +109,7 @@ export const ApplicationDefinitionArtifact = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition. */
 export type ApplicationDefinitionPropertiesArtifactsList =
-  ApplicationDefinitionArtifact[];
+  ReadonlyArray<ApplicationDefinitionArtifact>;
 export const ApplicationDefinitionPropertiesArtifactsList =
   /*@__PURE__*/ S.Array(
     ApplicationDefinitionArtifact,
@@ -167,7 +130,7 @@ export const ApplicationNotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed application notification endpoint. */
 export type ApplicationNotificationPolicyNotificationEndpointsList =
-  ApplicationNotificationEndpoint[];
+  ReadonlyArray<ApplicationNotificationEndpoint>;
 export const ApplicationNotificationPolicyNotificationEndpointsList =
   /*@__PURE__*/ S.Array(
     ApplicationNotificationEndpoint,
@@ -189,7 +152,7 @@ export const ApplicationNotificationPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The deny assignment excluded actions. */
 export type ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
-  string[];
+  ReadonlyArray<string>;
 export const ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -197,7 +160,7 @@ export const ApplicationPackageLockingPolicyDefinitionAllowedActionsList =
 
 /** The deny assignment excluded data actions. */
 export type ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList =
-  string[];
+  ReadonlyArray<string>;
 export const ApplicationPackageLockingPolicyDefinitionAllowedDataActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -225,11 +188,7 @@ export const ApplicationPackageLockingPolicyDefinition =
   }) as any as S.Schema<ApplicationPackageLockingPolicyDefinition>;
 
 /** The deployment mode. */
-export type DeploymentMode_2 =
-  | "NotSpecified"
-  | "Incremental"
-  | "Complete"
-  | (string & {});
+export type DeploymentMode_2 = "NotSpecified" | "Incremental" | "Complete";
 export const DeploymentMode_2 = /*@__PURE__*/ S.String;
 
 /** Managed application deployment policy. */
@@ -249,8 +208,7 @@ export const ApplicationDeploymentPolicy = /*@__PURE__*/ S.suspend(() =>
 export type ApplicationManagementMode =
   | "NotSpecified"
   | "Unmanaged"
-  | "Managed"
-  | (string & {});
+  | "Managed";
 export const ApplicationManagementMode = /*@__PURE__*/ S.String;
 
 /** Managed application management policy. */
@@ -286,7 +244,8 @@ export const ApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationPolicy>;
 
 /** The managed application provider policies. */
-export type ApplicationDefinitionPropertiesPoliciesList = ApplicationPolicy[];
+export type ApplicationDefinitionPropertiesPoliciesList =
+  ReadonlyArray<ApplicationPolicy>;
 export const ApplicationDefinitionPropertiesPoliciesList =
   /*@__PURE__*/ S.Array(
     ApplicationPolicy,
@@ -345,6 +304,57 @@ export const ApplicationDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplicationDefinitionProperties",
 }) as any as S.Schema<ApplicationDefinitionProperties>;
+
+export interface ApplicationDefinitionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the managed application definition. */
+  applicationDefinitionName: string;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ApplicationDefinitionsCreateOrUpdateRequestTagsMap;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku_2;
+  /** The managed application definition properties. */
+  properties: ApplicationDefinitionProperties;
+}
+export const ApplicationDefinitionsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      applicationDefinitionName: S.String.pipe(T.Label()),
+      location: S.optional(S.String),
+      tags: S.optional(ApplicationDefinitionsCreateOrUpdateRequestTagsMap),
+      managedBy: S.optional(S.String),
+      sku: S.optional(Sku_2),
+      properties: ApplicationDefinitionProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Solutions/applicationDefinitions/{applicationDefinitionName}",
+        code: 200,
+        apiVersion: "2019-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ApplicationDefinitionsCreateOrUpdateRequest",
+  }) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateRequest>;
+
+/** Resource tags */
+export type ApplicationDefinitionsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationDefinitionsCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ApplicationDefinitionsCreateOrUpdateResponseTagsMap>;
 
 export interface ApplicationDefinitionsCreateOrUpdateResponse {
   /** Resource ID */
@@ -546,7 +556,8 @@ export const ApplicationDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationDefinition>;
 
 /** The array of managed application definitions. */
-export type ApplicationDefinitionListResultValueList = ApplicationDefinition[];
+export type ApplicationDefinitionListResultValueList =
+  ReadonlyArray<ApplicationDefinition>;
 export const ApplicationDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   ApplicationDefinition,
 ) as any as S.Schema<ApplicationDefinitionListResultValueList>;
@@ -567,6 +578,159 @@ export const ApplicationDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationDefinitionListResult",
 }) as any as S.Schema<ApplicationDefinitionListResult>;
 
+/** Resource tags */
+export type ApplicationsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ApplicationsCreateOrUpdateRequestTagsMap>;
+
+/** The Jit approval mode. */
+export type JitApprovalMode = "NotSpecified" | "AutoApprove" | "ManualApprove";
+export const JitApprovalMode = /*@__PURE__*/ S.String;
+
+/** The approver type. */
+export type JitApproverDefinitionType = "user" | "group";
+export const JitApproverDefinitionType = /*@__PURE__*/ S.String;
+
+/** JIT approver definition. */
+export interface JitApproverDefinition {
+  /** The approver service principal Id. */
+  id: string;
+  /** The approver type. */
+  type?: JitApproverDefinitionType;
+  /** The approver display name. */
+  displayName?: string;
+}
+export const JitApproverDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    type: S.optional(JitApproverDefinitionType),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "JitApproverDefinition",
+}) as any as S.Schema<JitApproverDefinition>;
+
+/** The JIT approvers */
+export type ApplicationJitAccessPolicyJitApproversList =
+  ReadonlyArray<JitApproverDefinition>;
+export const ApplicationJitAccessPolicyJitApproversList = /*@__PURE__*/ S.Array(
+  JitApproverDefinition,
+) as any as S.Schema<ApplicationJitAccessPolicyJitApproversList>;
+
+/** Managed application Jit access policy. */
+export interface ApplicationJitAccessPolicy {
+  /** Whether the JIT access is enabled. */
+  jitAccessEnabled: boolean;
+  /** JIT approval mode. */
+  jitApprovalMode?: JitApprovalMode;
+  /** The JIT approvers */
+  jitApprovers?: ApplicationJitAccessPolicyJitApproversList;
+  /** The maximum duration JIT access is granted. This is an ISO8601 time period value. */
+  maximumJitAccessDuration?: string;
+}
+export const ApplicationJitAccessPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jitAccessEnabled: S.Boolean,
+    jitApprovalMode: S.optional(JitApprovalMode),
+    jitApprovers: S.optional(ApplicationJitAccessPolicyJitApproversList),
+    maximumJitAccessDuration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApplicationJitAccessPolicy",
+}) as any as S.Schema<ApplicationJitAccessPolicy>;
+
+/** The managed application properties. */
+export interface ApplicationPropertiesInput {
+  /** The managed resource group Id. */
+  managedResourceGroupId?: string;
+  /** The fully qualified path of managed application definition Id. */
+  applicationDefinitionId?: string;
+  /** Name and value pairs that define the managed application parameters. It can be a JObject or a well formed JSON string. */
+  parameters?: unknown;
+  /** The managed application Jit access policy. */
+  jitAccessPolicy?: ApplicationJitAccessPolicy;
+}
+export const ApplicationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedResourceGroupId: S.optional(S.String),
+    applicationDefinitionId: S.optional(S.String),
+    parameters: S.optional(S.Unknown),
+    jitAccessPolicy: S.optional(ApplicationJitAccessPolicy),
+  }),
+).annotate({
+  identifier: "ApplicationPropertiesInput",
+}) as any as S.Schema<ApplicationPropertiesInput>;
+
+/** Plan for the managed application. */
+export interface Plan_2 {
+  /** The plan name. */
+  name: string;
+  /** The publisher ID. */
+  publisher: string;
+  /** The product code. */
+  product: string;
+  /** The promotion code. */
+  promotionCode?: string;
+  /** The plan's version. */
+  version: string;
+}
+export const Plan_2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    publisher: S.String,
+    product: S.String,
+    promotionCode: S.optional(S.String),
+    version: S.String,
+  }),
+).annotate({ identifier: "Plan_2" }) as any as S.Schema<Plan_2>;
+
+/** The identity type. */
+export type IdentityInputType =
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned, UserAssigned"
+  | "None";
+export const IdentityInputType = /*@__PURE__*/ S.String;
+
+/** Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity */
+export interface UserAssignedResourceIdentityInput {}
+export const UserAssignedResourceIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedResourceIdentityInput",
+}) as any as S.Schema<UserAssignedResourceIdentityInput>;
+
+/** The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type IdentityInputUserAssignedIdentitiesMap_3 = {
+  [key: string]: UserAssignedResourceIdentityInput | undefined;
+};
+export const IdentityInputUserAssignedIdentitiesMap_3 = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedResourceIdentityInput,
+) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap_3>;
+
+/** Identity for the resource. */
+export interface IdentityInput_3 {
+  /** The identity type. */
+  type?: IdentityInputType;
+  /** The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap_3;
+}
+export const IdentityInput_3 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(IdentityInputType),
+    userAssignedIdentities: S.optional(
+      IdentityInputUserAssignedIdentitiesMap_3,
+    ),
+  }),
+).annotate({
+  identifier: "IdentityInput_3",
+}) as any as S.Schema<IdentityInput_3>;
+
 export interface ApplicationsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -574,14 +738,36 @@ export interface ApplicationsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the managed application. */
   applicationName: string;
-  body: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ApplicationsCreateOrUpdateRequestTagsMap;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku_2;
+  /** The managed application properties. */
+  properties: ApplicationPropertiesInput;
+  /** The plan information. */
+  plan?: Plan_2;
+  /** The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog. */
+  kind: string;
+  /** The identity of the resource. */
+  identity?: IdentityInput_3;
 }
 export const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(ApplicationsCreateOrUpdateRequestTagsMap),
+    managedBy: S.optional(S.String),
+    sku: S.optional(Sku_2),
+    properties: ApplicationPropertiesInput,
+    plan: S.optional(Plan_2),
+    kind: S.String,
+    identity: S.optional(IdentityInput_3),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -616,8 +802,7 @@ export type ProvisioningState_3 =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningState_3 = /*@__PURE__*/ S.String;
 
 /** Managed application billing details definition. */
@@ -633,69 +818,9 @@ export const ApplicationBillingDetailsDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationBillingDetailsDefinition",
 }) as any as S.Schema<ApplicationBillingDetailsDefinition>;
 
-/** The Jit approval mode. */
-export type JitApprovalMode =
-  | "NotSpecified"
-  | "AutoApprove"
-  | "ManualApprove"
-  | (string & {});
-export const JitApprovalMode = /*@__PURE__*/ S.String;
-
-/** The approver type. */
-export type JitApproverDefinitionType = "user" | "group" | (string & {});
-export const JitApproverDefinitionType = /*@__PURE__*/ S.String;
-
-/** JIT approver definition. */
-export interface JitApproverDefinition {
-  /** The approver service principal Id. */
-  id: string;
-  /** The approver type. */
-  type?: JitApproverDefinitionType;
-  /** The approver display name. */
-  displayName?: string;
-}
-export const JitApproverDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.optional(JitApproverDefinitionType),
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JitApproverDefinition",
-}) as any as S.Schema<JitApproverDefinition>;
-
-/** The JIT approvers */
-export type ApplicationJitAccessPolicyJitApproversList =
-  JitApproverDefinition[];
-export const ApplicationJitAccessPolicyJitApproversList = /*@__PURE__*/ S.Array(
-  JitApproverDefinition,
-) as any as S.Schema<ApplicationJitAccessPolicyJitApproversList>;
-
-/** Managed application Jit access policy. */
-export interface ApplicationJitAccessPolicy {
-  /** Whether the JIT access is enabled. */
-  jitAccessEnabled: boolean;
-  /** JIT approval mode. */
-  jitApprovalMode?: JitApprovalMode;
-  /** The JIT approvers */
-  jitApprovers?: ApplicationJitAccessPolicyJitApproversList;
-  /** The maximum duration JIT access is granted. This is an ISO8601 time period value. */
-  maximumJitAccessDuration?: string;
-}
-export const ApplicationJitAccessPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jitAccessEnabled: S.Boolean,
-    jitApprovalMode: S.optional(JitApprovalMode),
-    jitApprovers: S.optional(ApplicationJitAccessPolicyJitApproversList),
-    maximumJitAccessDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationJitAccessPolicy",
-}) as any as S.Schema<ApplicationJitAccessPolicy>;
-
 /** The read-only authorizations property that is retrieved from the application package. */
 export type ApplicationPropertiesAuthorizationsList =
-  ApplicationAuthorization[];
+  ReadonlyArray<ApplicationAuthorization>;
 export const ApplicationPropertiesAuthorizationsList = /*@__PURE__*/ S.Array(
   ApplicationAuthorization,
 ) as any as S.Schema<ApplicationPropertiesAuthorizationsList>;
@@ -740,8 +865,7 @@ export type ApplicationArtifactName =
   | "NotSpecified"
   | "ViewDefinition"
   | "Authorizations"
-  | "CustomRoleDefinition"
-  | (string & {});
+  | "CustomRoleDefinition";
 export const ApplicationArtifactName = /*@__PURE__*/ S.String;
 
 /** Managed application artifact. */
@@ -764,7 +888,8 @@ export const ApplicationArtifact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationArtifact>;
 
 /** The collection of managed application artifacts. */
-export type ApplicationPropertiesArtifactsList = ApplicationArtifact[];
+export type ApplicationPropertiesArtifactsList =
+  ReadonlyArray<ApplicationArtifact>;
 export const ApplicationPropertiesArtifactsList = /*@__PURE__*/ S.Array(
   ApplicationArtifact,
 ) as any as S.Schema<ApplicationPropertiesArtifactsList>;
@@ -843,36 +968,12 @@ export const ApplicationProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationProperties",
 }) as any as S.Schema<ApplicationProperties>;
 
-/** Plan for the managed application. */
-export interface Plan_2 {
-  /** The plan name. */
-  name: string;
-  /** The publisher ID. */
-  publisher: string;
-  /** The product code. */
-  product: string;
-  /** The promotion code. */
-  promotionCode?: string;
-  /** The plan's version. */
-  version: string;
-}
-export const Plan_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.String,
-  }),
-).annotate({ identifier: "Plan_2" }) as any as S.Schema<Plan_2>;
-
 /** The identity type. */
 export type IdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Represents the user assigned identity that is contained within the UserAssignedIdentities dictionary on ResourceIdentity */
@@ -962,16 +1063,48 @@ export const ApplicationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsCreateOrUpdateResponse",
 }) as any as S.Schema<ApplicationsCreateOrUpdateResponse>;
 
+/** Resource tags */
+export type ApplicationsCreateOrUpdateByIdRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationsCreateOrUpdateByIdRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ApplicationsCreateOrUpdateByIdRequestTagsMap>;
+
 export interface ApplicationsCreateOrUpdateByIdRequest {
   /** The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name} */
   applicationId: string;
-  body: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ApplicationsCreateOrUpdateByIdRequestTagsMap;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku_2;
+  /** The managed application properties. */
+  properties: ApplicationPropertiesInput;
+  /** The plan information. */
+  plan?: Plan_2;
+  /** The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog. */
+  kind: string;
+  /** The identity of the resource. */
+  identity?: IdentityInput_3;
 }
 export const ApplicationsCreateOrUpdateByIdRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       applicationId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(ApplicationsCreateOrUpdateByIdRequestTagsMap),
+      managedBy: S.optional(S.String),
+      sku: S.optional(Sku_2),
+      properties: ApplicationPropertiesInput,
+      plan: S.optional(Plan_2),
+      kind: S.String,
+      identity: S.optional(IdentityInput_3),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1313,7 +1446,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 /** The array of managed applications. */
-export type ApplicationListResultValueList = Application[];
+export type ApplicationListResultValueList = ReadonlyArray<Application>;
 export const ApplicationListResultValueList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationListResultValueList>;
@@ -1387,6 +1520,38 @@ export const ApplicationsRefreshPermissionsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ApplicationsRefreshPermissionsResponse",
 }) as any as S.Schema<ApplicationsRefreshPermissionsResponse>;
 
+/** Resource tags */
+export type ApplicationsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ApplicationsUpdateRequestTagsMap>;
+
+/** Plan for the managed application. */
+export interface PlanPatchable {
+  /** The plan name. */
+  name?: string;
+  /** The publisher ID. */
+  publisher?: string;
+  /** The product code. */
+  product?: string;
+  /** The promotion code. */
+  promotionCode?: string;
+  /** The plan's version. */
+  version?: string;
+}
+export const PlanPatchable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    publisher: S.optional(S.String),
+    product: S.optional(S.String),
+    promotionCode: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({ identifier: "PlanPatchable" }) as any as S.Schema<PlanPatchable>;
+
 export interface ApplicationsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1394,14 +1559,36 @@ export interface ApplicationsUpdateRequest {
   resourceGroupName: string;
   /** The name of the managed application. */
   applicationName: string;
-  body?: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ApplicationsUpdateRequestTagsMap;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku_2;
+  /** The managed application properties. */
+  properties?: ApplicationPropertiesInput;
+  /** The plan information. */
+  plan?: PlanPatchable;
+  /** The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog. */
+  kind?: string;
+  /** The identity of the resource. */
+  identity?: IdentityInput_3;
 }
 export const ApplicationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    location: S.optional(S.String),
+    tags: S.optional(ApplicationsUpdateRequestTagsMap),
+    managedBy: S.optional(S.String),
+    sku: S.optional(Sku_2),
+    properties: S.optional(ApplicationPropertiesInput),
+    plan: S.optional(PlanPatchable),
+    kind: S.optional(S.String),
+    identity: S.optional(IdentityInput_3),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1465,15 +1652,46 @@ export const ApplicationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsUpdateResponse",
 }) as any as S.Schema<ApplicationsUpdateResponse>;
 
+/** Resource tags */
+export type ApplicationsUpdateByIdRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationsUpdateByIdRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ApplicationsUpdateByIdRequestTagsMap>;
+
 export interface ApplicationsUpdateByIdRequest {
   /** The fully qualified ID of the managed application, including the managed application name and the managed application resource type. Use the format, /subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.Solutions/applications/{application-name} */
   applicationId: string;
-  body?: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: ApplicationsUpdateByIdRequestTagsMap;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku_2;
+  /** The managed application properties. */
+  properties: ApplicationPropertiesInput;
+  /** The plan information. */
+  plan?: Plan_2;
+  /** The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog. */
+  kind: string;
+  /** The identity of the resource. */
+  identity?: IdentityInput_3;
 }
 export const ApplicationsUpdateByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    location: S.optional(S.String),
+    tags: S.optional(ApplicationsUpdateByIdRequestTagsMap),
+    managedBy: S.optional(S.String),
+    sku: S.optional(Sku_2),
+    properties: ApplicationPropertiesInput,
+    plan: S.optional(Plan_2),
+    kind: S.String,
+    identity: S.optional(IdentityInput_3),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1585,7 +1803,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Microsoft.Authorization operations. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1641,11 +1859,7 @@ export const ChangesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangesGetRequest>;
 
 /** The type of change that was captured in the resource */
-export type ChangePropertiesChangeType =
-  | "Update"
-  | "Delete"
-  | "Create"
-  | (string & {});
+export type ChangePropertiesChangeType = "Update" | "Delete" | "Create";
 export const ChangePropertiesChangeType = /*@__PURE__*/ S.String;
 
 /** Details about the change resource */
@@ -1674,15 +1888,11 @@ export const ChangeAttributes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeAttributes>;
 
 /** The type of change that occurred */
-export type ChangeBasePropertyChangeType =
-  | "Insert"
-  | "Update"
-  | "Remove"
-  | (string & {});
+export type ChangeBasePropertyChangeType = "Insert" | "Update" | "Remove";
 export const ChangeBasePropertyChangeType = /*@__PURE__*/ S.String;
 
 /** The entity that made the change */
-export type ChangeBaseChangeCategory = "User" | "System" | (string & {});
+export type ChangeBaseChangeCategory = "User" | "System";
 export const ChangeBaseChangeCategory = /*@__PURE__*/ S.String;
 
 /** An individual change on the target resource */
@@ -1814,7 +2024,8 @@ export const ChangeResourceResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeResourceResult>;
 
 /** The list of resources */
-export type ChangeResourceListResultValueList = ChangeResourceResult[];
+export type ChangeResourceListResultValueList =
+  ReadonlyArray<ChangeResourceResult>;
 export const ChangeResourceListResultValueList = /*@__PURE__*/ S.Array(
   ChangeResourceResult,
 ) as any as S.Schema<ChangeResourceListResultValueList>;
@@ -1836,11 +2047,15 @@ export const ChangeResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeResourceListResult>;
 
 export interface CheckResourceNameRequest {
-  body?: unknown;
+  /** Name of the resource */
+  name: string;
+  /** The type of the resource */
+  type: string;
 }
 export const CheckResourceNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.String,
+    type: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -1854,7 +2069,7 @@ export const CheckResourceNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckResourceNameRequest>;
 
 /** Is the resource name Allowed or Reserved */
-export type ResourceNameStatus = "Allowed" | "Reserved" | (string & {});
+export type ResourceNameStatus = "Allowed" | "Reserved";
 export const ResourceNameStatus = /*@__PURE__*/ S.String;
 
 /** Resource Name valid if not a reserved word, does not contain a reserved word and does not start with a reserved word */
@@ -1876,7 +2091,7 @@ export const CheckResourceNameResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckResourceNameResult",
 }) as any as S.Schema<CheckResourceNameResult>;
 
-export type DataBoundariesGetScopeRequestDefault = "default" | (string & {});
+export type DataBoundariesGetScopeRequestDefault = "default";
 export const DataBoundariesGetScopeRequestDefault = /*@__PURE__*/ S.String;
 
 export interface DataBoundariesGetScopeRequest {
@@ -1906,8 +2121,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1915,8 +2129,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1946,7 +2159,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** The data boundary definition. */
-export type DataBoundary = "NotDefined" | "Global" | "EU" | (string & {});
+export type DataBoundary = "NotDefined" | "Global" | "EU";
 export const DataBoundary = /*@__PURE__*/ S.String;
 
 /** Denotes the state of provisioning. */
@@ -1957,8 +2170,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Data boundary properties */
@@ -2001,7 +2213,7 @@ export const DataBoundariesGetScopeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataBoundariesGetScopeResponse",
 }) as any as S.Schema<DataBoundariesGetScopeResponse>;
 
-export type DataBoundariesGetTenantRequestDefault = "default" | (string & {});
+export type DataBoundariesGetTenantRequestDefault = "default";
 export const DataBoundariesGetTenantRequestDefault = /*@__PURE__*/ S.String;
 
 export interface DataBoundariesGetTenantRequest {
@@ -2047,18 +2259,19 @@ export const DataBoundariesGetTenantResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataBoundariesGetTenantResponse",
 }) as any as S.Schema<DataBoundariesGetTenantResponse>;
 
-export type DataBoundariesPutRequestDefault = "default" | (string & {});
+export type DataBoundariesPutRequestDefault = "default";
 export const DataBoundariesPutRequestDefault = /*@__PURE__*/ S.String;
 
 export interface DataBoundariesPutRequest {
   /** Default string modeled as parameter for auto generation to work correctly. */
   default: DataBoundariesPutRequestDefault;
-  body: unknown;
+  /** Data boundary properties */
+  properties?: DataBoundaryProperties;
 }
 export const DataBoundariesPutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: DataBoundariesPutRequestDefault.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DataBoundaryProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2116,19 +2329,19 @@ export const DataPolicyManifestsGetByPolicyModeRequest =
   }) as any as S.Schema<DataPolicyManifestsGetByPolicyModeRequest>;
 
 /** The list of namespaces for the data policy manifest. */
-export type DataPolicyManifestPropertiesNamespacesList = string[];
+export type DataPolicyManifestPropertiesNamespacesList = ReadonlyArray<string>;
 export const DataPolicyManifestPropertiesNamespacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataPolicyManifestPropertiesNamespacesList>;
 
 /** The API versions. */
-export type AliasPathApiVersionsList = string[];
+export type AliasPathApiVersionsList = ReadonlyArray<string>;
 export const AliasPathApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AliasPathApiVersionsList>;
 
 /** The type of alias pattern. */
-export type AliasPatternType = "NotSpecified" | "Extract" | (string & {});
+export type AliasPatternType = "NotSpecified" | "Extract";
 export const AliasPatternType = /*@__PURE__*/ S.String;
 
 /** The type of the pattern for an alias path. */
@@ -2157,12 +2370,11 @@ export type AliasPathTokenType =
   | "Array"
   | "Integer"
   | "Number"
-  | "Boolean"
-  | (string & {});
+  | "Boolean";
 export const AliasPathTokenType = /*@__PURE__*/ S.String;
 
 /** The attributes of the token that the alias path is referring to. */
-export type AliasPathAttributes = "None" | "Modifiable" | (string & {});
+export type AliasPathAttributes = "None" | "Modifiable";
 export const AliasPathAttributes = /*@__PURE__*/ S.String;
 
 /** The alias path metadata. */
@@ -2202,13 +2414,13 @@ export const AliasPath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AliasPath" }) as any as S.Schema<AliasPath>;
 
 /** The paths for an alias. */
-export type AliasPathsList = AliasPath[];
+export type AliasPathsList = ReadonlyArray<AliasPath>;
 export const AliasPathsList = /*@__PURE__*/ S.Array(
   AliasPath,
 ) as any as S.Schema<AliasPathsList>;
 
 /** The type of the alias. */
-export type AliasType = "NotSpecified" | "PlainText" | "Mask" | (string & {});
+export type AliasType = "NotSpecified" | "PlainText" | "Mask";
 export const AliasType = /*@__PURE__*/ S.String;
 
 /** The alias type. */
@@ -2238,7 +2450,7 @@ export const Alias = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alias" }) as any as S.Schema<Alias>;
 
 /** The aliases for property names. */
-export type ResourceTypeAliasesAliasesList = Alias[];
+export type ResourceTypeAliasesAliasesList = ReadonlyArray<Alias>;
 export const ResourceTypeAliasesAliasesList = /*@__PURE__*/ S.Array(
   Alias,
 ) as any as S.Schema<ResourceTypeAliasesAliasesList>;
@@ -2261,7 +2473,7 @@ export const ResourceTypeAliases = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of resource type aliases. */
 export type DataPolicyManifestPropertiesResourceTypeAliasesList =
-  ResourceTypeAliases[];
+  ReadonlyArray<ResourceTypeAliases>;
 export const DataPolicyManifestPropertiesResourceTypeAliasesList =
   /*@__PURE__*/ S.Array(
     ResourceTypeAliases,
@@ -2282,20 +2494,21 @@ export const DataEffect = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataEffect" }) as any as S.Schema<DataEffect>;
 
 /** The effect definition. */
-export type DataPolicyManifestPropertiesEffectsList = DataEffect[];
+export type DataPolicyManifestPropertiesEffectsList = ReadonlyArray<DataEffect>;
 export const DataPolicyManifestPropertiesEffectsList = /*@__PURE__*/ S.Array(
   DataEffect,
 ) as any as S.Schema<DataPolicyManifestPropertiesEffectsList>;
 
 /** The non-alias field accessor values that can be used in the policy rule. */
-export type DataPolicyManifestPropertiesFieldValuesList = string[];
+export type DataPolicyManifestPropertiesFieldValuesList = ReadonlyArray<string>;
 export const DataPolicyManifestPropertiesFieldValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DataPolicyManifestPropertiesFieldValuesList>;
 
 /** The standard resource functions (subscription and/or resourceGroup). */
-export type DataManifestResourceFunctionsDefinitionStandardList = string[];
+export type DataManifestResourceFunctionsDefinitionStandardList =
+  ReadonlyArray<string>;
 export const DataManifestResourceFunctionsDefinitionStandardList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2303,7 +2516,7 @@ export const DataManifestResourceFunctionsDefinitionStandardList =
 
 /** The top-level properties that can be selected on the function's output. eg - [ \"name\", \"location\" ] if vault().name and vault().location are supported. */
 export type DataManifestCustomResourceFunctionDefinitionDefaultPropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const DataManifestCustomResourceFunctionDefinitionDefaultPropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2336,7 +2549,7 @@ export const DataManifestCustomResourceFunctionDefinition =
 
 /** An array of data manifest custom resource definitions. */
 export type DataManifestResourceFunctionsDefinitionCustomList =
-  DataManifestCustomResourceFunctionDefinition[];
+  ReadonlyArray<DataManifestCustomResourceFunctionDefinition>;
 export const DataManifestResourceFunctionsDefinitionCustomList =
   /*@__PURE__*/ S.Array(
     DataManifestCustomResourceFunctionDefinition,
@@ -2462,7 +2675,8 @@ export const DataPolicyManifest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataPolicyManifest>;
 
 /** The DataPolicyManifest items on this page */
-export type DataPolicyManifestListResultValueList = DataPolicyManifest[];
+export type DataPolicyManifestListResultValueList =
+  ReadonlyArray<DataPolicyManifest>;
 export const DataPolicyManifestListResultValueList = /*@__PURE__*/ S.Array(
   DataPolicyManifest,
 ) as any as S.Schema<DataPolicyManifestListResultValueList>;
@@ -2486,12 +2700,13 @@ export const DataPolicyManifestListResult = /*@__PURE__*/ S.suspend(() =>
 export interface DecompileBicepRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** The ARM json template to be decompiled into a Bicep file */
+  template: string;
 }
 export const DecompileBicepRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    template: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -2519,7 +2734,8 @@ export const FileDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileDefinition" }) as any as S.Schema<FileDefinition>;
 
 /** An array of key-value pairs containing the entryPoint string as the key for the Bicep file decompiled from the ARM json template */
-export type DecompileOperationSuccessResponseFilesList = FileDefinition[];
+export type DecompileOperationSuccessResponseFilesList =
+  ReadonlyArray<FileDefinition>;
 export const DecompileOperationSuccessResponseFilesList = /*@__PURE__*/ S.Array(
   FileDefinition,
 ) as any as S.Schema<DecompileOperationSuccessResponseFilesList>;
@@ -2579,12 +2795,11 @@ export type ProvisioningOperation =
   | "Action"
   | "Read"
   | "EvaluateDeploymentOutput"
-  | "DeploymentCleanup"
-  | (string & {});
+  | "DeploymentCleanup";
 export const ProvisioningOperation = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type ErrorResponseDetailsList = ErrorResponse[];
+export type ErrorResponseDetailsList = ReadonlyArray<ErrorResponse>;
 export const ErrorResponseDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorResponse),
 ) as any as S.Schema<ErrorResponseDetailsList>;
@@ -2606,7 +2821,8 @@ export const ErrorResponseAdditionalInfoItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorResponseAdditionalInfoItem>;
 
 /** The error additional info. */
-export type ErrorResponseAdditionalInfoList = ErrorResponseAdditionalInfoItem[];
+export type ErrorResponseAdditionalInfoList =
+  ReadonlyArray<ErrorResponseAdditionalInfoItem>;
 export const ErrorResponseAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorResponseAdditionalInfoItem,
 ) as any as S.Schema<ErrorResponseAdditionalInfoList>;
@@ -2655,8 +2871,7 @@ export type ExtensionConfigPropertyType =
   | "Array"
   | "Object"
   | "SecureString"
-  | "SecureObject"
-  | (string & {});
+  | "SecureObject";
 export const ExtensionConfigPropertyType = /*@__PURE__*/ S.String;
 
 /** Azure Key Vault reference. */
@@ -2971,7 +3186,8 @@ export const DeploymentOperationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentOperationsListRequest>;
 
 /** The DeploymentOperation items on this page */
-export type DeploymentOperationsListResultValueList = DeploymentOperation[];
+export type DeploymentOperationsListResultValueList =
+  ReadonlyArray<DeploymentOperation>;
 export const DeploymentOperationsListResultValueList = /*@__PURE__*/ S.Array(
   DeploymentOperation,
 ) as any as S.Schema<DeploymentOperationsListResultValueList>;
@@ -3093,14 +3309,10 @@ export const DeploymentOperationsListAtTenantScopeRequest =
     identifier: "DeploymentOperationsListAtTenantScopeRequest",
   }) as any as S.Schema<DeploymentOperationsListAtTenantScopeRequest>;
 
-export interface DeploymentsCalculateTemplateHashRequest {
-  body: unknown;
-}
+export interface DeploymentsCalculateTemplateHashRequest {}
 export const DeploymentsCalculateTemplateHashRequest = /*@__PURE__*/ S.suspend(
   () =>
-    S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
+    S.Struct({}).pipe(
       T.Http({
         method: "POST",
         uri: "/providers/Microsoft.Resources/calculateTemplateHash",
@@ -3274,6 +3486,292 @@ export const DeploymentsCancelAtTenantScopeResponse = /*@__PURE__*/ S.suspend(
   identifier: "DeploymentsCancelAtTenantScopeResponse",
 }) as any as S.Schema<DeploymentsCancelAtTenantScopeResponse>;
 
+/** Entity representing the reference to the template. */
+export interface TemplateLink {
+  /** The URI of the template to deploy. Use either the uri or id property, but not both. */
+  uri?: string;
+  /** The resource id of a Template Spec. Use either the id or uri property, but not both. */
+  id?: string;
+  /** The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec. If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs */
+  relativePath?: string;
+  /** If included, must match the ContentVersion in the template. */
+  contentVersion?: string;
+  /** The query string (for example, a SAS token) to be used with the templateLink URI. */
+  queryString?: string;
+}
+export const TemplateLink = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uri: S.optional(S.String),
+    id: S.optional(S.String),
+    relativePath: S.optional(S.String),
+    contentVersion: S.optional(S.String),
+    queryString: S.optional(S.String),
+  }),
+).annotate({ identifier: "TemplateLink" }) as any as S.Schema<TemplateLink>;
+
+/** Deployment parameter for the template. */
+export interface DeploymentParameter_2 {
+  /** Input value to the parameter . */
+  value?: unknown;
+  /** Azure Key Vault parameter reference. */
+  reference?: KeyVaultParameterReference_2;
+  /** Input expression to the parameter. */
+  expression?: string;
+}
+export const DeploymentParameter_2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.Unknown),
+    reference: S.optional(KeyVaultParameterReference_2),
+    expression: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeploymentParameter_2",
+}) as any as S.Schema<DeploymentParameter_2>;
+
+/** Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string. */
+export type DeploymentPropertiesParametersMap = {
+  [key: string]: DeploymentParameter_2 | undefined;
+};
+export const DeploymentPropertiesParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DeploymentParameter_2,
+) as any as S.Schema<DeploymentPropertiesParametersMap>;
+
+/** Deployment external input for parameterization. */
+export interface DeploymentExternalInput {
+  /** External input value. */
+  value: unknown;
+}
+export const DeploymentExternalInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.Unknown,
+  }),
+).annotate({
+  identifier: "DeploymentExternalInput",
+}) as any as S.Schema<DeploymentExternalInput>;
+
+/** External input values, used by external tooling for parameter evaluation. */
+export type DeploymentPropertiesExternalInputsMap = {
+  [key: string]: DeploymentExternalInput | undefined;
+};
+export const DeploymentPropertiesExternalInputsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DeploymentExternalInput,
+) as any as S.Schema<DeploymentPropertiesExternalInputsMap>;
+
+/** Deployment external input definition for parameterization. */
+export interface DeploymentExternalInputDefinition {
+  /** The kind of external input. */
+  kind: string;
+  /** Configuration for the external input. */
+  config?: unknown;
+}
+export const DeploymentExternalInputDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.String,
+    config: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "DeploymentExternalInputDefinition",
+}) as any as S.Schema<DeploymentExternalInputDefinition>;
+
+/** External input definitions, used by external tooling to define expected external input values. */
+export type DeploymentPropertiesExternalInputDefinitionsMap = {
+  [key: string]: DeploymentExternalInputDefinition | undefined;
+};
+export const DeploymentPropertiesExternalInputDefinitionsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentExternalInputDefinition,
+  ) as any as S.Schema<DeploymentPropertiesExternalInputDefinitionsMap>;
+
+/** Entity representing the reference to the deployment parameters. */
+export interface ParametersLink {
+  /** The URI of the parameters file. */
+  uri: string;
+  /** If included, must match the ContentVersion in the template. */
+  contentVersion?: string;
+}
+export const ParametersLink = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uri: S.String,
+    contentVersion: S.optional(S.String),
+  }),
+).annotate({ identifier: "ParametersLink" }) as any as S.Schema<ParametersLink>;
+
+export type DeploymentPropertiesExtensionConfigsValueMap = {
+  [key: string]: DeploymentExtensionConfigItem_2 | undefined;
+};
+export const DeploymentPropertiesExtensionConfigsValueMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentExtensionConfigItem_2,
+  ) as any as S.Schema<DeploymentPropertiesExtensionConfigsValueMap>;
+
+/** The configurations to use for deployment extensions. The keys of this object are deployment extension aliases as defined in the deployment template. */
+export type DeploymentPropertiesExtensionConfigsMap = {
+  [key: string]: DeploymentPropertiesExtensionConfigsValueMap | undefined;
+};
+export const DeploymentPropertiesExtensionConfigsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DeploymentPropertiesExtensionConfigsValueMap,
+) as any as S.Schema<DeploymentPropertiesExtensionConfigsMap>;
+
+/** The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources. */
+export type DeploymentMode = "Incremental" | "Complete";
+export const DeploymentMode = /*@__PURE__*/ S.String;
+
+/** The debug setting. */
+export interface DebugSetting {
+  /** Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations. */
+  detailLevel?: string;
+}
+export const DebugSetting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detailLevel: S.optional(S.String),
+  }),
+).annotate({ identifier: "DebugSetting" }) as any as S.Schema<DebugSetting>;
+
+/** The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment. */
+export type OnErrorDeploymentType = "LastSuccessful" | "SpecificDeployment";
+export const OnErrorDeploymentType = /*@__PURE__*/ S.String;
+
+/** Deployment on error behavior. */
+export interface OnErrorDeployment {
+  /** The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment. */
+  type?: OnErrorDeploymentType;
+  /** The deployment to be used on error case. */
+  deploymentName?: string;
+}
+export const OnErrorDeployment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(OnErrorDeploymentType),
+    deploymentName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OnErrorDeployment",
+}) as any as S.Schema<OnErrorDeployment>;
+
+/** The scope to be used for evaluation of parameters, variables and functions in a nested template. */
+export type ExpressionEvaluationOptionsScopeType =
+  | "NotSpecified"
+  | "Outer"
+  | "Inner";
+export const ExpressionEvaluationOptionsScopeType = /*@__PURE__*/ S.String;
+
+/** Specifies whether template expressions are evaluated within the scope of the parent template or nested template. */
+export interface ExpressionEvaluationOptions {
+  /** The scope to be used for evaluation of parameters, variables and functions in a nested template. */
+  scope?: ExpressionEvaluationOptionsScopeType;
+}
+export const ExpressionEvaluationOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.optional(ExpressionEvaluationOptionsScopeType),
+  }),
+).annotate({
+  identifier: "ExpressionEvaluationOptions",
+}) as any as S.Schema<ExpressionEvaluationOptions>;
+
+/** The level of validation performed on the deployment. */
+export type ValidationLevel = "Template" | "Provider" | "ProviderNoRbac";
+export const ValidationLevel = /*@__PURE__*/ S.String;
+
+/** Deployment properties. */
+export interface DeploymentProperties {
+  /** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
+  template?: unknown;
+  /** The URI of the template. Use either the templateLink property or the template property, but not both. */
+  templateLink?: TemplateLink;
+  /** Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string. */
+  parameters?: DeploymentPropertiesParametersMap;
+  /** External input values, used by external tooling for parameter evaluation. */
+  externalInputs?: DeploymentPropertiesExternalInputsMap;
+  /** External input definitions, used by external tooling to define expected external input values. */
+  externalInputDefinitions?: DeploymentPropertiesExternalInputDefinitionsMap;
+  /** The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both. */
+  parametersLink?: ParametersLink;
+  /** The configurations to use for deployment extensions. The keys of this object are deployment extension aliases as defined in the deployment template. */
+  extensionConfigs?: DeploymentPropertiesExtensionConfigsMap;
+  /** The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources. */
+  mode: DeploymentMode;
+  /** The debug setting of the deployment. */
+  debugSetting?: DebugSetting;
+  /** The deployment on error behavior. */
+  onErrorDeployment?: OnErrorDeployment;
+  /** Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer. */
+  expressionEvaluationOptions?: ExpressionEvaluationOptions;
+  /** The validation level of the deployment */
+  validationLevel?: ValidationLevel;
+}
+export const DeploymentProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    template: S.optional(S.Unknown),
+    templateLink: S.optional(TemplateLink),
+    parameters: S.optional(DeploymentPropertiesParametersMap),
+    externalInputs: S.optional(DeploymentPropertiesExternalInputsMap),
+    externalInputDefinitions: S.optional(
+      DeploymentPropertiesExternalInputDefinitionsMap,
+    ),
+    parametersLink: S.optional(ParametersLink),
+    extensionConfigs: S.optional(DeploymentPropertiesExtensionConfigsMap),
+    mode: DeploymentMode,
+    debugSetting: S.optional(DebugSetting),
+    onErrorDeployment: S.optional(OnErrorDeployment),
+    expressionEvaluationOptions: S.optional(ExpressionEvaluationOptions),
+    validationLevel: S.optional(ValidationLevel),
+  }),
+).annotate({
+  identifier: "DeploymentProperties",
+}) as any as S.Schema<DeploymentProperties>;
+
+/** Deployment tags */
+export type DeploymentsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DeploymentsCreateOrUpdateRequestTagsMap>;
+
+/** The identity type. */
+export type DeploymentIdentityType = "None" | "UserAssigned";
+export const DeploymentIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface DeploymentIdentityInputUserAssignedIdentitiesValue {}
+export const DeploymentIdentityInputUserAssignedIdentitiesValue =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeploymentIdentityInputUserAssignedIdentitiesValue",
+  }) as any as S.Schema<DeploymentIdentityInputUserAssignedIdentitiesValue>;
+
+/** The set of user assigned identities associated with the resource. */
+export type DeploymentIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: DeploymentIdentityInputUserAssignedIdentitiesValue | undefined;
+};
+export const DeploymentIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentIdentityInputUserAssignedIdentitiesValue,
+  ) as any as S.Schema<DeploymentIdentityInputUserAssignedIdentitiesMap>;
+
+/** The Managed Identity configuration for a deployment. */
+export interface DeploymentIdentityInput {
+  /** The identity type. */
+  type: DeploymentIdentityType;
+  /** The set of user assigned identities associated with the resource. */
+  userAssignedIdentities?: DeploymentIdentityInputUserAssignedIdentitiesMap;
+}
+export const DeploymentIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: DeploymentIdentityType,
+    userAssignedIdentities: S.optional(
+      DeploymentIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "DeploymentIdentityInput",
+}) as any as S.Schema<DeploymentIdentityInput>;
+
 export interface DeploymentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3281,14 +3779,24 @@ export interface DeploymentsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location?: string;
+  /** The deployment properties. */
+  properties: DeploymentProperties;
+  /** Deployment tags */
+  tags?: DeploymentsCreateOrUpdateRequestTagsMap;
+  /** The Managed Identity configuration for a deployment. */
+  identity?: DeploymentIdentityInput;
 }
 export const DeploymentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    properties: DeploymentProperties,
+    tags: S.optional(DeploymentsCreateOrUpdateRequestTagsMap),
+    identity: S.optional(DeploymentIdentityInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3314,18 +3822,18 @@ export type ProvisioningState_2 =
   | "Canceled"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningState_2 = /*@__PURE__*/ S.String;
 
 /** The collection of locations where this resource type can be created. */
-export type ProviderResourceTypeLocationsList = string[];
+export type ProviderResourceTypeLocationsList = ReadonlyArray<string>;
 export const ProviderResourceTypeLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProviderResourceTypeLocationsList>;
 
 /** The extended locations for the azure location. */
-export type ProviderExtendedLocationExtendedLocationsList = string[];
+export type ProviderExtendedLocationExtendedLocationsList =
+  ReadonlyArray<string>;
 export const ProviderExtendedLocationExtendedLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3354,13 +3862,13 @@ export const ProviderExtendedLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** The location mappings that are supported by this resource type. */
 export type ProviderResourceTypeLocationMappingsList =
-  ProviderExtendedLocation[];
+  ReadonlyArray<ProviderExtendedLocation>;
 export const ProviderResourceTypeLocationMappingsList = /*@__PURE__*/ S.Array(
   ProviderExtendedLocation,
 ) as any as S.Schema<ProviderResourceTypeLocationMappingsList>;
 
 /** The type of alias pattern */
-export type AliasPatternType_2 = "NotSpecified" | "Extract" | (string & {});
+export type AliasPatternType_2 = "NotSpecified" | "Extract";
 export const AliasPatternType_2 = /*@__PURE__*/ S.String;
 
 /** The type of the pattern for an alias path. */
@@ -3416,7 +3924,7 @@ export const AliasPath_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AliasPath_2" }) as any as S.Schema<AliasPath_2>;
 
 /** The paths for an alias. */
-export type AliasPathsList_2 = AliasPath_2[];
+export type AliasPathsList_2 = ReadonlyArray<AliasPath_2>;
 export const AliasPathsList_2 = /*@__PURE__*/ S.Array(
   AliasPath_2,
 ) as any as S.Schema<AliasPathsList_2>;
@@ -3448,18 +3956,18 @@ export const Alias_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alias_2" }) as any as S.Schema<Alias_2>;
 
 /** The aliases that are supported by this resource type. */
-export type ProviderResourceTypeAliasesList = Alias_2[];
+export type ProviderResourceTypeAliasesList = ReadonlyArray<Alias_2>;
 export const ProviderResourceTypeAliasesList = /*@__PURE__*/ S.Array(
   Alias_2,
 ) as any as S.Schema<ProviderResourceTypeAliasesList>;
 
 /** The API version. */
-export type ProviderResourceTypeApiVersionsList = string[];
+export type ProviderResourceTypeApiVersionsList = ReadonlyArray<string>;
 export const ProviderResourceTypeApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProviderResourceTypeApiVersionsList>;
 
-export type ZoneMappingZonesList = string[];
+export type ZoneMappingZonesList = ReadonlyArray<string>;
 export const ZoneMappingZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ZoneMappingZonesList>;
@@ -3476,7 +3984,7 @@ export const ZoneMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ZoneMapping" }) as any as S.Schema<ZoneMapping>;
 
-export type ProviderResourceTypeZoneMappingsList = ZoneMapping[];
+export type ProviderResourceTypeZoneMappingsList = ReadonlyArray<ZoneMapping>;
 export const ProviderResourceTypeZoneMappingsList = /*@__PURE__*/ S.Array(
   ZoneMapping,
 ) as any as S.Schema<ProviderResourceTypeZoneMappingsList>;
@@ -3495,7 +4003,7 @@ export const ApiProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiProfile" }) as any as S.Schema<ApiProfile>;
 
 /** The API profiles for the resource provider. */
-export type ProviderResourceTypeApiProfilesList = ApiProfile[];
+export type ProviderResourceTypeApiProfilesList = ReadonlyArray<ApiProfile>;
 export const ProviderResourceTypeApiProfilesList = /*@__PURE__*/ S.Array(
   ApiProfile,
 ) as any as S.Schema<ProviderResourceTypeApiProfilesList>;
@@ -3549,7 +4057,7 @@ export const ProviderResourceType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderResourceType>;
 
 /** The collection of provider resource types. */
-export type ProviderResourceTypesList = ProviderResourceType[];
+export type ProviderResourceTypesList = ReadonlyArray<ProviderResourceType>;
 export const ProviderResourceTypesList = /*@__PURE__*/ S.Array(
   ProviderResourceType,
 ) as any as S.Schema<ProviderResourceTypesList>;
@@ -3559,8 +4067,7 @@ export type ProviderAuthorizationConsentState =
   | "NotSpecified"
   | "Required"
   | "NotRequired"
-  | "Consented"
-  | (string & {});
+  | "Consented";
 export const ProviderAuthorizationConsentState = /*@__PURE__*/ S.String;
 
 /** Resource provider information. */
@@ -3592,7 +4099,7 @@ export const Provider = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Provider" }) as any as S.Schema<Provider>;
 
 /** The list of resource providers needed for the deployment. */
-export type DeploymentPropertiesExtendedProvidersList = Provider[];
+export type DeploymentPropertiesExtendedProvidersList = ReadonlyArray<Provider>;
 export const DeploymentPropertiesExtendedProvidersList = /*@__PURE__*/ S.Array(
   Provider,
 ) as any as S.Schema<DeploymentPropertiesExtendedProvidersList>;
@@ -3617,7 +4124,7 @@ export const BasicDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BasicDependency>;
 
 /** The list of dependencies. */
-export type DependencyDependsOnList = BasicDependency[];
+export type DependencyDependsOnList = ReadonlyArray<BasicDependency>;
 export const DependencyDependsOnList = /*@__PURE__*/ S.Array(
   BasicDependency,
 ) as any as S.Schema<DependencyDependsOnList>;
@@ -3643,77 +4150,19 @@ export const Dependency = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dependency" }) as any as S.Schema<Dependency>;
 
 /** The list of deployment dependencies. */
-export type DeploymentPropertiesExtendedDependenciesList = Dependency[];
+export type DeploymentPropertiesExtendedDependenciesList =
+  ReadonlyArray<Dependency>;
 export const DeploymentPropertiesExtendedDependenciesList =
   /*@__PURE__*/ S.Array(
     Dependency,
   ) as any as S.Schema<DeploymentPropertiesExtendedDependenciesList>;
 
-/** Entity representing the reference to the template. */
-export interface TemplateLink {
-  /** The URI of the template to deploy. Use either the uri or id property, but not both. */
-  uri?: string;
-  /** The resource id of a Template Spec. Use either the id or uri property, but not both. */
-  id?: string;
-  /** The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec. If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs */
-  relativePath?: string;
-  /** If included, must match the ContentVersion in the template. */
-  contentVersion?: string;
-  /** The query string (for example, a SAS token) to be used with the templateLink URI. */
-  queryString?: string;
-}
-export const TemplateLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    id: S.optional(S.String),
-    relativePath: S.optional(S.String),
-    contentVersion: S.optional(S.String),
-    queryString: S.optional(S.String),
-  }),
-).annotate({ identifier: "TemplateLink" }) as any as S.Schema<TemplateLink>;
-
-/** Entity representing the reference to the deployment parameters. */
-export interface ParametersLink {
-  /** The URI of the parameters file. */
-  uri: string;
-  /** If included, must match the ContentVersion in the template. */
-  contentVersion?: string;
-}
-export const ParametersLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.String,
-    contentVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "ParametersLink" }) as any as S.Schema<ParametersLink>;
-
 /** The extensions used in this deployment. */
 export type DeploymentPropertiesExtendedExtensionsList =
-  DeploymentExtensionDefinition[];
+  ReadonlyArray<DeploymentExtensionDefinition>;
 export const DeploymentPropertiesExtendedExtensionsList = /*@__PURE__*/ S.Array(
   DeploymentExtensionDefinition,
 ) as any as S.Schema<DeploymentPropertiesExtendedExtensionsList>;
-
-/** The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources. */
-export type DeploymentMode = "Incremental" | "Complete" | (string & {});
-export const DeploymentMode = /*@__PURE__*/ S.String;
-
-/** The debug setting. */
-export interface DebugSetting {
-  /** Specifies the type of information to log for debugging. The permitted values are none, requestContent, responseContent, or both requestContent and responseContent separated by a comma. The default is none. When setting this value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations. */
-  detailLevel?: string;
-}
-export const DebugSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    detailLevel: S.optional(S.String),
-  }),
-).annotate({ identifier: "DebugSetting" }) as any as S.Schema<DebugSetting>;
-
-/** The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment. */
-export type OnErrorDeploymentType =
-  | "LastSuccessful"
-  | "SpecificDeployment"
-  | (string & {});
-export const OnErrorDeploymentType = /*@__PURE__*/ S.String;
 
 /** Deployment on error behavior with additional details. */
 export interface OnErrorDeploymentExtended {
@@ -3761,7 +4210,7 @@ export const ResourceReference_2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of provisioned resources. */
 export type DeploymentPropertiesExtendedOutputResourcesList =
-  ResourceReference_2[];
+  ReadonlyArray<ResourceReference_2>;
 export const DeploymentPropertiesExtendedOutputResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReference_2,
@@ -3769,14 +4218,14 @@ export const DeploymentPropertiesExtendedOutputResourcesList =
 
 /** Array of validated resources. */
 export type DeploymentPropertiesExtendedValidatedResourcesList =
-  ResourceReference_2[];
+  ReadonlyArray<ResourceReference_2>;
 export const DeploymentPropertiesExtendedValidatedResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReference_2,
   ) as any as S.Schema<DeploymentPropertiesExtendedValidatedResourcesList>;
 
 /** Denotes the additional response level. */
-export type Level = "Warning" | "Info" | "Error" | (string & {});
+export type Level = "Warning" | "Info" | "Error";
 export const Level = /*@__PURE__*/ S.String;
 
 /** The resource management error additional info. */
@@ -3798,7 +4247,7 @@ export const DeploymentDiagnosticsDefinitionAdditionalInfoItem =
 
 /** The error additional info. */
 export type DeploymentDiagnosticsDefinitionAdditionalInfoList =
-  DeploymentDiagnosticsDefinitionAdditionalInfoItem[];
+  ReadonlyArray<DeploymentDiagnosticsDefinitionAdditionalInfoItem>;
 export const DeploymentDiagnosticsDefinitionAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     DeploymentDiagnosticsDefinitionAdditionalInfoItem,
@@ -3832,19 +4281,11 @@ export const DeploymentDiagnosticsDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains diagnostic information collected during validation process. */
 export type DeploymentPropertiesExtendedDiagnosticsList =
-  DeploymentDiagnosticsDefinition[];
+  ReadonlyArray<DeploymentDiagnosticsDefinition>;
 export const DeploymentPropertiesExtendedDiagnosticsList =
   /*@__PURE__*/ S.Array(
     DeploymentDiagnosticsDefinition,
   ) as any as S.Schema<DeploymentPropertiesExtendedDiagnosticsList>;
-
-/** The level of validation performed on the deployment. */
-export type ValidationLevel =
-  | "Template"
-  | "Provider"
-  | "ProviderNoRbac"
-  | (string & {});
-export const ValidationLevel = /*@__PURE__*/ S.String;
 
 /** Deployment properties with additional details. */
 export interface DeploymentPropertiesExtended {
@@ -3959,19 +4400,38 @@ export const DeploymentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentsCreateOrUpdateResponse",
 }) as any as S.Schema<DeploymentsCreateOrUpdateResponse>;
 
+/** Deployment tags */
+export type DeploymentsCreateOrUpdateAtManagementGroupScopeRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentsCreateOrUpdateAtManagementGroupScopeRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentsCreateOrUpdateAtManagementGroupScopeRequestTagsMap>;
+
 export interface DeploymentsCreateOrUpdateAtManagementGroupScopeRequest {
   /** The management group ID. */
   groupId: string;
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location: string;
+  /** The deployment properties. */
+  properties: DeploymentProperties;
+  /** Deployment tags */
+  tags?: DeploymentsCreateOrUpdateAtManagementGroupScopeRequestTagsMap;
 }
 export const DeploymentsCreateOrUpdateAtManagementGroupScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       groupId: S.String.pipe(T.Label()),
       deploymentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.String,
+      properties: DeploymentProperties,
+      tags: S.optional(
+        DeploymentsCreateOrUpdateAtManagementGroupScopeRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4027,19 +4487,39 @@ export const DeploymentsCreateOrUpdateAtManagementGroupScopeResponse =
     identifier: "DeploymentsCreateOrUpdateAtManagementGroupScopeResponse",
   }) as any as S.Schema<DeploymentsCreateOrUpdateAtManagementGroupScopeResponse>;
 
+/** Deployment tags */
+export type DeploymentsCreateOrUpdateAtScopeRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentsCreateOrUpdateAtScopeRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentsCreateOrUpdateAtScopeRequestTagsMap>;
+
 export interface DeploymentsCreateOrUpdateAtScopeRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location?: string;
+  /** The deployment properties. */
+  properties: DeploymentProperties;
+  /** Deployment tags */
+  tags?: DeploymentsCreateOrUpdateAtScopeRequestTagsMap;
+  /** The Managed Identity configuration for a deployment. */
+  identity?: DeploymentIdentityInput;
 }
 export const DeploymentsCreateOrUpdateAtScopeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       scope: S.String.pipe(T.Label()),
       deploymentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      properties: DeploymentProperties,
+      tags: S.optional(DeploymentsCreateOrUpdateAtScopeRequestTagsMap),
+      identity: S.optional(DeploymentIdentityInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4093,19 +4573,41 @@ export const DeploymentsCreateOrUpdateAtScopeResponse = /*@__PURE__*/ S.suspend(
   identifier: "DeploymentsCreateOrUpdateAtScopeResponse",
 }) as any as S.Schema<DeploymentsCreateOrUpdateAtScopeResponse>;
 
+/** Deployment tags */
+export type DeploymentsCreateOrUpdateAtSubscriptionScopeRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentsCreateOrUpdateAtSubscriptionScopeRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentsCreateOrUpdateAtSubscriptionScopeRequestTagsMap>;
+
 export interface DeploymentsCreateOrUpdateAtSubscriptionScopeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location?: string;
+  /** The deployment properties. */
+  properties: DeploymentProperties;
+  /** Deployment tags */
+  tags?: DeploymentsCreateOrUpdateAtSubscriptionScopeRequestTagsMap;
+  /** The Managed Identity configuration for a deployment. */
+  identity?: DeploymentIdentityInput;
 }
 export const DeploymentsCreateOrUpdateAtSubscriptionScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       deploymentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      properties: DeploymentProperties,
+      tags: S.optional(
+        DeploymentsCreateOrUpdateAtSubscriptionScopeRequestTagsMap,
+      ),
+      identity: S.optional(DeploymentIdentityInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4161,16 +4663,33 @@ export const DeploymentsCreateOrUpdateAtSubscriptionScopeResponse =
     identifier: "DeploymentsCreateOrUpdateAtSubscriptionScopeResponse",
   }) as any as S.Schema<DeploymentsCreateOrUpdateAtSubscriptionScopeResponse>;
 
+/** Deployment tags */
+export type DeploymentsCreateOrUpdateAtTenantScopeRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentsCreateOrUpdateAtTenantScopeRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentsCreateOrUpdateAtTenantScopeRequestTagsMap>;
+
 export interface DeploymentsCreateOrUpdateAtTenantScopeRequest {
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location: string;
+  /** The deployment properties. */
+  properties: DeploymentProperties;
+  /** Deployment tags */
+  tags?: DeploymentsCreateOrUpdateAtTenantScopeRequestTagsMap;
 }
 export const DeploymentsCreateOrUpdateAtTenantScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       deploymentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.String,
+      properties: DeploymentProperties,
+      tags: S.optional(DeploymentsCreateOrUpdateAtTenantScopeRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4224,6 +4743,59 @@ export const DeploymentsCreateOrUpdateAtTenantScopeResponse =
     identifier: "DeploymentsCreateOrUpdateAtTenantScopeResponse",
   }) as any as S.Schema<DeploymentsCreateOrUpdateAtTenantScopeResponse>;
 
+/** Resource tags. */
+export type DeploymentScriptsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentScriptsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DeploymentScriptsCreateRequestTagsMap>;
+
+/** Type of the script. */
+export type ScriptType = "AzurePowerShell" | "AzureCLI";
+export const ScriptType = /*@__PURE__*/ S.String;
+
+/** Type of the managed identity. */
+export type ManagedServiceIdentityType = "UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User-assigned managed identity. */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity. */
+export type ManagedServiceIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const ManagedServiceIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<ManagedServiceIdentityInputUserAssignedIdentitiesMap>;
+
+/** Describes the managed identities for an Azure resource. */
+export interface ManagedServiceIdentityInput {
+  /** Type of the managed identity. */
+  type?: ManagedServiceIdentityType;
+  /** The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity. */
+  userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
+}
+export const ManagedServiceIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ManagedServiceIdentityType),
+    userAssignedIdentities: S.optional(
+      ManagedServiceIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ManagedServiceIdentityInput",
+}) as any as S.Schema<ManagedServiceIdentityInput>;
+
 export interface DeploymentScriptsCreateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4231,14 +4803,24 @@ export interface DeploymentScriptsCreateRequest {
   resourceGroupName: string;
   /** Name of the deployment script. */
   scriptName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DeploymentScriptsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Type of the script. */
+  kind: ScriptType;
+  /** Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported. */
+  identity?: ManagedServiceIdentityInput;
 }
 export const DeploymentScriptsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     scriptName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DeploymentScriptsCreateRequestTagsMap),
+    location: S.String,
+    kind: ScriptType,
+    identity: S.optional(ManagedServiceIdentityInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4259,14 +4841,6 @@ export const DeploymentScriptsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<DeploymentScriptsCreateResponseTagsMap>;
-
-/** Type of the script. */
-export type ScriptType = "AzurePowerShell" | "AzureCLI" | (string & {});
-export const ScriptType = /*@__PURE__*/ S.String;
-
-/** Type of the managed identity. */
-export type ManagedServiceIdentityType = "UserAssigned" | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User-assigned managed identity. */
 export interface UserAssignedIdentity {
@@ -4507,7 +5081,7 @@ export const ScriptLog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScriptLog" }) as any as S.Schema<ScriptLog>;
 
 /** Deployment scripts logs. */
-export type ScriptLogsListValueList = ScriptLog[];
+export type ScriptLogsListValueList = ReadonlyArray<ScriptLog>;
 export const ScriptLogsListValueList = /*@__PURE__*/ S.Array(
   ScriptLog,
 ) as any as S.Schema<ScriptLogsListValueList>;
@@ -4642,7 +5216,8 @@ export const DeploymentScript = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentScript>;
 
 /** An array of deployment scripts. */
-export type DeploymentScriptListResultValueList = DeploymentScript[];
+export type DeploymentScriptListResultValueList =
+  ReadonlyArray<DeploymentScript>;
 export const DeploymentScriptListResultValueList = /*@__PURE__*/ S.Array(
   DeploymentScript,
 ) as any as S.Schema<DeploymentScriptListResultValueList>;
@@ -4683,6 +5258,15 @@ export const DeploymentScriptsListBySubscriptionRequest =
     identifier: "DeploymentScriptsListBySubscriptionRequest",
   }) as any as S.Schema<DeploymentScriptsListBySubscriptionRequest>;
 
+/** Resource tags to be updated. */
+export type DeploymentScriptsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentScriptsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DeploymentScriptsUpdateRequestTagsMap>;
+
 export interface DeploymentScriptsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4690,14 +5274,15 @@ export interface DeploymentScriptsUpdateRequest {
   resourceGroupName: string;
   /** Name of the deployment script. */
   scriptName: string;
-  body?: unknown;
+  /** Resource tags to be updated. */
+  tags?: DeploymentScriptsUpdateRequestTagsMap;
 }
 export const DeploymentScriptsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     scriptName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(DeploymentScriptsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5402,7 +5987,7 @@ export const DeploymentExtended = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentExtended>;
 
 /** The DeploymentExtended items on this page */
-export type DeploymentListResultValueList = DeploymentExtended[];
+export type DeploymentListResultValueList = ReadonlyArray<DeploymentExtended>;
 export const DeploymentListResultValueList = /*@__PURE__*/ S.Array(
   DeploymentExtended,
 ) as any as S.Schema<DeploymentListResultValueList>;
@@ -5525,131 +6110,22 @@ export const DeploymentsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeploymentsListByResourceGroupRequest",
 }) as any as S.Schema<DeploymentsListByResourceGroupRequest>;
 
-export interface DeploymentStacksCreateOrUpdateAtManagementGroupRequest {
-  /** The management group ID. */
-  managementGroupId: string;
-  /** Name of the deployment stack. */
-  deploymentStackName: string;
-  body: unknown;
-}
-export const DeploymentStacksCreateOrUpdateAtManagementGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managementGroupId: S.String.pipe(T.Label()),
-      deploymentStackName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
-        code: 200,
-        apiVersion: "2025-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeploymentStacksCreateOrUpdateAtManagementGroupRequest",
-  }) as any as S.Schema<DeploymentStacksCreateOrUpdateAtManagementGroupRequest>;
-
-/** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => ErrorDetail),
-) as any as S.Schema<ErrorDetailDetailsList>;
-
-/** The resource management error additional info. */
-export interface ErrorAdditionalInfo {
-  /** The additional info type. */
-  type?: string;
-  /** The additional info. */
-  info?: unknown;
-}
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    info: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "ErrorAdditionalInfo",
-}) as any as S.Schema<ErrorAdditionalInfo>;
-
-/** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
-) as any as S.Schema<ErrorDetailAdditionalInfoList>;
-
 /** The error detail. */
-export interface ErrorDetail {
-  /** The error code. */
-  code?: string;
-  /** The error message. */
-  message?: string;
-  /** The error target. */
-  target?: string;
-  /** The error details. */
-  details?: ErrorDetailDetailsList;
-  /** The error additional info. */
-  additionalInfo?: ErrorDetailAdditionalInfoList;
-}
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    target: S.optional(S.String),
-    details: S.optional(ErrorDetailDetailsList),
-    additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
-  }),
-).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
-
-/** The error details. */
-export type DeploymentStackPropertiesErrorDetailsList = ErrorDetail[];
-export const DeploymentStackPropertiesErrorDetailsList = /*@__PURE__*/ S.Array(
-  ErrorDetail,
-) as any as S.Schema<DeploymentStackPropertiesErrorDetailsList>;
-
-/** The error additional info. */
-export type DeploymentStackPropertiesErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
-export const DeploymentStackPropertiesErrorAdditionalInfoList =
-  /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
-  ) as any as S.Schema<DeploymentStackPropertiesErrorAdditionalInfoList>;
-
-/** The error detail. */
-export interface DeploymentStackPropertiesError {
-  /** The error code. */
-  code?: string;
-  /** The error message. */
-  message?: string;
-  /** The error target. */
-  target?: string;
-  /** The error details. */
-  details?: DeploymentStackPropertiesErrorDetailsList;
-  /** The error additional info. */
-  additionalInfo?: DeploymentStackPropertiesErrorAdditionalInfoList;
-}
-export const DeploymentStackPropertiesError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    target: S.optional(S.String),
-    details: S.optional(DeploymentStackPropertiesErrorDetailsList),
-    additionalInfo: S.optional(
-      DeploymentStackPropertiesErrorAdditionalInfoList,
-    ),
-  }),
+export interface DeploymentStackPropertiesInputError {}
+export const DeploymentStackPropertiesInputError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "DeploymentStackPropertiesError",
-}) as any as S.Schema<DeploymentStackPropertiesError>;
+  identifier: "DeploymentStackPropertiesInputError",
+}) as any as S.Schema<DeploymentStackPropertiesInputError>;
 
 /** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
-export type DeploymentStackPropertiesTemplateMap = {
+export type DeploymentStackPropertiesInputTemplateMap = {
   [key: string]: unknown | undefined;
 };
-export const DeploymentStackPropertiesTemplateMap = /*@__PURE__*/ S.Record(
+export const DeploymentStackPropertiesInputTemplateMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
-) as any as S.Schema<DeploymentStackPropertiesTemplateMap>;
+) as any as S.Schema<DeploymentStackPropertiesInputTemplateMap>;
 
 /** Entity representing the reference to the template. */
 export interface DeploymentStacksTemplateLink {
@@ -5731,13 +6207,14 @@ export const DeploymentParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentParameter>;
 
 /** Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. */
-export type DeploymentStackPropertiesParametersMap = {
+export type DeploymentStackPropertiesInputParametersMap = {
   [key: string]: DeploymentParameter | undefined;
 };
-export const DeploymentStackPropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  DeploymentParameter,
-) as any as S.Schema<DeploymentStackPropertiesParametersMap>;
+export const DeploymentStackPropertiesInputParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentParameter,
+  ) as any as S.Schema<DeploymentStackPropertiesInputParametersMap>;
 
 /** Entity representing the reference to the deployment parameters. */
 export interface DeploymentStacksParametersLink {
@@ -5756,115 +6233,74 @@ export const DeploymentStacksParametersLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentStacksParametersLink>;
 
 /** The value or how to get a value for an extension config property. */
-export interface DeploymentExtensionConfigItem {
-  /** The type of the value. */
-  type?: string;
+export interface DeploymentExtensionConfigItemInput {
   /** The value of the config item. The type is determined by the extension config schema. */
   value?: unknown;
   /** The key vault reference of the config item. */
   keyVaultReference?: KeyVaultParameterReference;
 }
-export const DeploymentExtensionConfigItem = /*@__PURE__*/ S.suspend(() =>
+export const DeploymentExtensionConfigItemInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    type: S.optional(S.String),
     value: S.optional(S.Unknown),
     keyVaultReference: S.optional(KeyVaultParameterReference),
   }),
 ).annotate({
-  identifier: "DeploymentExtensionConfigItem",
-}) as any as S.Schema<DeploymentExtensionConfigItem>;
+  identifier: "DeploymentExtensionConfigItemInput",
+}) as any as S.Schema<DeploymentExtensionConfigItemInput>;
 
 /** The configuration of a deployment extension. The keys of this object should align with the extension config schema. */
-export type DeploymentExtensionConfig = {
-  [key: string]: DeploymentExtensionConfigItem | undefined;
+export type DeploymentExtensionConfigInput = {
+  [key: string]: DeploymentExtensionConfigItemInput | undefined;
 };
-export const DeploymentExtensionConfig = /*@__PURE__*/ S.Record(
+export const DeploymentExtensionConfigInput = /*@__PURE__*/ S.Record(
   S.String,
-  DeploymentExtensionConfigItem,
-) as any as S.Schema<DeploymentExtensionConfig>;
+  DeploymentExtensionConfigItemInput,
+) as any as S.Schema<DeploymentExtensionConfigInput>;
 
 /** The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template. */
-export type DeploymentStackPropertiesExtensionConfigsMap = {
-  [key: string]: DeploymentExtensionConfig | undefined;
+export type DeploymentStackPropertiesInputExtensionConfigsMap = {
+  [key: string]: DeploymentExtensionConfigInput | undefined;
 };
-export const DeploymentStackPropertiesExtensionConfigsMap =
+export const DeploymentStackPropertiesInputExtensionConfigsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DeploymentExtensionConfig,
-  ) as any as S.Schema<DeploymentStackPropertiesExtensionConfigsMap>;
-
-/** Deployment external input for parameterization. */
-export interface DeploymentExternalInput {
-  /** External input value. */
-  value: unknown;
-}
-export const DeploymentExternalInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.Unknown,
-  }),
-).annotate({
-  identifier: "DeploymentExternalInput",
-}) as any as S.Schema<DeploymentExternalInput>;
+    DeploymentExtensionConfigInput,
+  ) as any as S.Schema<DeploymentStackPropertiesInputExtensionConfigsMap>;
 
 /** External input values, used by external tooling for parameter evaluation. */
-export type DeploymentStackPropertiesExternalInputsMap = {
+export type DeploymentStackPropertiesInputExternalInputsMap = {
   [key: string]: DeploymentExternalInput | undefined;
 };
-export const DeploymentStackPropertiesExternalInputsMap =
+export const DeploymentStackPropertiesInputExternalInputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     DeploymentExternalInput,
-  ) as any as S.Schema<DeploymentStackPropertiesExternalInputsMap>;
-
-/** Deployment external input definition for parameterization. */
-export interface DeploymentExternalInputDefinition {
-  /** The kind of external input. */
-  kind: string;
-  /** Configuration for the external input. */
-  config?: unknown;
-}
-export const DeploymentExternalInputDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.String,
-    config: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "DeploymentExternalInputDefinition",
-}) as any as S.Schema<DeploymentExternalInputDefinition>;
+  ) as any as S.Schema<DeploymentStackPropertiesInputExternalInputsMap>;
 
 /** External input definitions, used by external tooling to define expected external input values. */
-export type DeploymentStackPropertiesExternalInputDefinitionsMap = {
+export type DeploymentStackPropertiesInputExternalInputDefinitionsMap = {
   [key: string]: DeploymentExternalInputDefinition | undefined;
 };
-export const DeploymentStackPropertiesExternalInputDefinitionsMap =
+export const DeploymentStackPropertiesInputExternalInputDefinitionsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     DeploymentExternalInputDefinition,
-  ) as any as S.Schema<DeploymentStackPropertiesExternalInputDefinitionsMap>;
+  ) as any as S.Schema<DeploymentStackPropertiesInputExternalInputDefinitionsMap>;
 
 /** Specifies an action for a newly unmanaged resource. */
-export type UnmanageActionResourceMode = "delete" | "detach" | (string & {});
+export type UnmanageActionResourceMode = "delete" | "detach";
 export const UnmanageActionResourceMode = /*@__PURE__*/ S.String;
 
 /** Specifies an action for a newly unmanaged resource group. */
-export type UnmanageActionResourceGroupMode =
-  | "delete"
-  | "detach"
-  | (string & {});
+export type UnmanageActionResourceGroupMode = "delete" | "detach";
 export const UnmanageActionResourceGroupMode = /*@__PURE__*/ S.String;
 
 /** Specifies an action for a newly unmanaged resource. */
-export type UnmanageActionManagementGroupMode =
-  | "delete"
-  | "detach"
-  | (string & {});
+export type UnmanageActionManagementGroupMode = "delete" | "detach";
 export const UnmanageActionManagementGroupMode = /*@__PURE__*/ S.String;
 
 /** Specifies an action for resources that do not support deletion. */
-export type ResourcesWithoutDeleteSupportAction =
-  | "detach"
-  | "fail"
-  | (string & {});
+export type ResourcesWithoutDeleteSupportAction = "detach" | "fail";
 export const ResourcesWithoutDeleteSupportAction = /*@__PURE__*/ S.String;
 
 /** Defines the behavior of resources that are no longer managed after the stack is updated or deleted. */
@@ -5905,21 +6341,17 @@ export const DeploymentStacksDebugSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentStacksDebugSetting>;
 
 /** denySettings Mode that defines denied actions. */
-export type DenySettingsMode =
-  | "denyDelete"
-  | "denyWriteAndDelete"
-  | "none"
-  | (string & {});
+export type DenySettingsMode = "denyDelete" | "denyWriteAndDelete" | "none";
 export const DenySettingsMode = /*@__PURE__*/ S.String;
 
 /** List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted. */
-export type DenySettingsExcludedPrincipalsList = string[];
+export type DenySettingsExcludedPrincipalsList = ReadonlyArray<string>;
 export const DenySettingsExcludedPrincipalsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DenySettingsExcludedPrincipalsList>;
 
 /** List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed. */
-export type DenySettingsExcludedActionsList = string[];
+export type DenySettingsExcludedActionsList = ReadonlyArray<string>;
 export const DenySettingsExcludedActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DenySettingsExcludedActionsList>;
@@ -5944,6 +6376,278 @@ export const DenySettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DenySettings" }) as any as S.Schema<DenySettings>;
 
+/** Deployment stack properties. */
+export interface DeploymentStackPropertiesInput {
+  /** The error detail. */
+  error?: DeploymentStackPropertiesInputError;
+  /** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
+  template?: DeploymentStackPropertiesInputTemplateMap;
+  /** The URI of the template. Use either the templateLink property or the template property, but not both. */
+  templateLink?: DeploymentStacksTemplateLink;
+  /** Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. */
+  parameters?: DeploymentStackPropertiesInputParametersMap;
+  /** The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both. */
+  parametersLink?: DeploymentStacksParametersLink;
+  /** The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template. */
+  extensionConfigs?: DeploymentStackPropertiesInputExtensionConfigsMap;
+  /** External input values, used by external tooling for parameter evaluation. */
+  externalInputs?: DeploymentStackPropertiesInputExternalInputsMap;
+  /** External input definitions, used by external tooling to define expected external input values. */
+  externalInputDefinitions?: DeploymentStackPropertiesInputExternalInputDefinitionsMap;
+  /** Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted. */
+  actionOnUnmanage: ActionOnUnmanage;
+  /** The debug setting of the deployment. */
+  debugSetting?: DeploymentStacksDebugSetting;
+  /** The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'). */
+  deploymentScope?: string;
+  /** Deployment stack description. Max length of 4096 characters. */
+  description?: string;
+  /** Defines how resources deployed by the stack are locked. */
+  denySettings: DenySettings;
+  /** The validation level of the deployment stack */
+  validationLevel?: ValidationLevel;
+  /** Flag to bypass service errors that indicate the stack resource list is not correctly synchronized. */
+  bypassStackOutOfSyncError?: boolean;
+}
+export const DeploymentStackPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    error: S.optional(DeploymentStackPropertiesInputError),
+    template: S.optional(DeploymentStackPropertiesInputTemplateMap),
+    templateLink: S.optional(DeploymentStacksTemplateLink),
+    parameters: S.optional(DeploymentStackPropertiesInputParametersMap),
+    parametersLink: S.optional(DeploymentStacksParametersLink),
+    extensionConfigs: S.optional(
+      DeploymentStackPropertiesInputExtensionConfigsMap,
+    ),
+    externalInputs: S.optional(DeploymentStackPropertiesInputExternalInputsMap),
+    externalInputDefinitions: S.optional(
+      DeploymentStackPropertiesInputExternalInputDefinitionsMap,
+    ),
+    actionOnUnmanage: ActionOnUnmanage,
+    debugSetting: S.optional(DeploymentStacksDebugSetting),
+    deploymentScope: S.optional(S.String),
+    description: S.optional(S.String),
+    denySettings: DenySettings,
+    validationLevel: S.optional(ValidationLevel),
+    bypassStackOutOfSyncError: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DeploymentStackPropertiesInput",
+}) as any as S.Schema<DeploymentStackPropertiesInput>;
+
+/** Resource tags. */
+export type DeploymentStacksCreateOrUpdateAtManagementGroupRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentStacksCreateOrUpdateAtManagementGroupRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentStacksCreateOrUpdateAtManagementGroupRequestTagsMap>;
+
+export interface DeploymentStacksCreateOrUpdateAtManagementGroupRequest {
+  /** The management group ID. */
+  managementGroupId: string;
+  /** Name of the deployment stack. */
+  deploymentStackName: string;
+  /** Deployment stack properties. */
+  properties?: DeploymentStackPropertiesInput;
+  /** The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks. */
+  location?: string;
+  /** Resource tags. */
+  tags?: DeploymentStacksCreateOrUpdateAtManagementGroupRequestTagsMap;
+}
+export const DeploymentStacksCreateOrUpdateAtManagementGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managementGroupId: S.String.pipe(T.Label()),
+      deploymentStackName: S.String.pipe(T.Label()),
+      properties: S.optional(DeploymentStackPropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(
+        DeploymentStacksCreateOrUpdateAtManagementGroupRequestTagsMap,
+      ),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Resources/deploymentStacks/{deploymentStackName}",
+        code: 200,
+        apiVersion: "2025-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeploymentStacksCreateOrUpdateAtManagementGroupRequest",
+  }) as any as S.Schema<DeploymentStacksCreateOrUpdateAtManagementGroupRequest>;
+
+/** The error details. */
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
+export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+  S.suspend(() => ErrorDetail),
+) as any as S.Schema<ErrorDetailDetailsList>;
+
+/** The resource management error additional info. */
+export interface ErrorAdditionalInfo {
+  /** The additional info type. */
+  type?: string;
+  /** The additional info. */
+  info?: unknown;
+}
+export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    info: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "ErrorAdditionalInfo",
+}) as any as S.Schema<ErrorAdditionalInfo>;
+
+/** The error additional info. */
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
+export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+  ErrorAdditionalInfo,
+) as any as S.Schema<ErrorDetailAdditionalInfoList>;
+
+/** The error detail. */
+export interface ErrorDetail {
+  /** The error code. */
+  code?: string;
+  /** The error message. */
+  message?: string;
+  /** The error target. */
+  target?: string;
+  /** The error details. */
+  details?: ErrorDetailDetailsList;
+  /** The error additional info. */
+  additionalInfo?: ErrorDetailAdditionalInfoList;
+}
+export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+    target: S.optional(S.String),
+    details: S.optional(ErrorDetailDetailsList),
+    additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
+  }),
+).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
+
+/** The error details. */
+export type DeploymentStackPropertiesErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
+export const DeploymentStackPropertiesErrorDetailsList = /*@__PURE__*/ S.Array(
+  ErrorDetail,
+) as any as S.Schema<DeploymentStackPropertiesErrorDetailsList>;
+
+/** The error additional info. */
+export type DeploymentStackPropertiesErrorAdditionalInfoList =
+  ReadonlyArray<ErrorAdditionalInfo>;
+export const DeploymentStackPropertiesErrorAdditionalInfoList =
+  /*@__PURE__*/ S.Array(
+    ErrorAdditionalInfo,
+  ) as any as S.Schema<DeploymentStackPropertiesErrorAdditionalInfoList>;
+
+/** The error detail. */
+export interface DeploymentStackPropertiesError {
+  /** The error code. */
+  code?: string;
+  /** The error message. */
+  message?: string;
+  /** The error target. */
+  target?: string;
+  /** The error details. */
+  details?: DeploymentStackPropertiesErrorDetailsList;
+  /** The error additional info. */
+  additionalInfo?: DeploymentStackPropertiesErrorAdditionalInfoList;
+}
+export const DeploymentStackPropertiesError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+    target: S.optional(S.String),
+    details: S.optional(DeploymentStackPropertiesErrorDetailsList),
+    additionalInfo: S.optional(
+      DeploymentStackPropertiesErrorAdditionalInfoList,
+    ),
+  }),
+).annotate({
+  identifier: "DeploymentStackPropertiesError",
+}) as any as S.Schema<DeploymentStackPropertiesError>;
+
+/** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
+export type DeploymentStackPropertiesTemplateMap = {
+  [key: string]: unknown | undefined;
+};
+export const DeploymentStackPropertiesTemplateMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DeploymentStackPropertiesTemplateMap>;
+
+/** Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. */
+export type DeploymentStackPropertiesParametersMap = {
+  [key: string]: DeploymentParameter | undefined;
+};
+export const DeploymentStackPropertiesParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DeploymentParameter,
+) as any as S.Schema<DeploymentStackPropertiesParametersMap>;
+
+/** The value or how to get a value for an extension config property. */
+export interface DeploymentExtensionConfigItem {
+  /** The type of the value. */
+  type?: string;
+  /** The value of the config item. The type is determined by the extension config schema. */
+  value?: unknown;
+  /** The key vault reference of the config item. */
+  keyVaultReference?: KeyVaultParameterReference;
+}
+export const DeploymentExtensionConfigItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    value: S.optional(S.Unknown),
+    keyVaultReference: S.optional(KeyVaultParameterReference),
+  }),
+).annotate({
+  identifier: "DeploymentExtensionConfigItem",
+}) as any as S.Schema<DeploymentExtensionConfigItem>;
+
+/** The configuration of a deployment extension. The keys of this object should align with the extension config schema. */
+export type DeploymentExtensionConfig = {
+  [key: string]: DeploymentExtensionConfigItem | undefined;
+};
+export const DeploymentExtensionConfig = /*@__PURE__*/ S.Record(
+  S.String,
+  DeploymentExtensionConfigItem,
+) as any as S.Schema<DeploymentExtensionConfig>;
+
+/** The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template. */
+export type DeploymentStackPropertiesExtensionConfigsMap = {
+  [key: string]: DeploymentExtensionConfig | undefined;
+};
+export const DeploymentStackPropertiesExtensionConfigsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentExtensionConfig,
+  ) as any as S.Schema<DeploymentStackPropertiesExtensionConfigsMap>;
+
+/** External input values, used by external tooling for parameter evaluation. */
+export type DeploymentStackPropertiesExternalInputsMap = {
+  [key: string]: DeploymentExternalInput | undefined;
+};
+export const DeploymentStackPropertiesExternalInputsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentExternalInput,
+  ) as any as S.Schema<DeploymentStackPropertiesExternalInputsMap>;
+
+/** External input definitions, used by external tooling to define expected external input values. */
+export type DeploymentStackPropertiesExternalInputDefinitionsMap = {
+  [key: string]: DeploymentExternalInputDefinition | undefined;
+};
+export const DeploymentStackPropertiesExternalInputDefinitionsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentExternalInputDefinition,
+  ) as any as S.Schema<DeploymentStackPropertiesExternalInputDefinitionsMap>;
+
 /** State of the deployment stack. */
 export type DeploymentStackProvisioningState =
   | "creating"
@@ -5958,8 +6662,7 @@ export type DeploymentStackProvisioningState =
   | "canceled"
   | "deleting"
   | "initializing"
-  | "running"
-  | (string & {});
+  | "running";
 export const DeploymentStackProvisioningState = /*@__PURE__*/ S.String;
 
 /** Details about the usage of a deployment extension. */
@@ -6020,14 +6723,15 @@ export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of resources that were detached during the most recent Deployment stack update. Detached means that the resource was removed from the template, but no relevant deletion operations were specified. So, the resource still exists while no longer being associated with the stack. */
 export type DeploymentStackPropertiesDetachedResourcesList =
-  ResourceReference[];
+  ReadonlyArray<ResourceReference>;
 export const DeploymentStackPropertiesDetachedResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
   ) as any as S.Schema<DeploymentStackPropertiesDetachedResourcesList>;
 
 /** An array of resources that were deleted during the most recent Deployment stack update. Deleted means that the resource was removed from the template and relevant deletion operations were specified. */
-export type DeploymentStackPropertiesDeletedResourcesList = ResourceReference[];
+export type DeploymentStackPropertiesDeletedResourcesList =
+  ReadonlyArray<ResourceReference>;
 export const DeploymentStackPropertiesDeletedResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -6043,14 +6747,15 @@ export const ResourceReferenceExtendedIdentifiersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ResourceReferenceExtendedIdentifiersMap>;
 
 /** The error details. */
-export type ResourceReferenceExtendedErrorDetailsList = ErrorDetail[];
+export type ResourceReferenceExtendedErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const ResourceReferenceExtendedErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ResourceReferenceExtendedErrorDetailsList>;
 
 /** The error additional info. */
 export type ResourceReferenceExtendedErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const ResourceReferenceExtendedErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -6113,7 +6818,7 @@ export const ResourceReferenceExtended = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of resources that failed to reach goal state during the most recent update. Each resourceId is accompanied by an error message. */
 export type DeploymentStackPropertiesFailedResourcesList =
-  ResourceReferenceExtended[];
+  ReadonlyArray<ResourceReferenceExtended>;
 export const DeploymentStackPropertiesFailedResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReferenceExtended,
@@ -6132,8 +6837,7 @@ export const ManagedResourceReferenceIdentifiersMap = /*@__PURE__*/ S.Record(
 export type ResourceStatusMode =
   | "managed"
   | "removeDenyFailed"
-  | "deleteFailed"
-  | (string & {});
+  | "deleteFailed";
 export const ResourceStatusMode = /*@__PURE__*/ S.String;
 
 /** denyAssignment settings applied to the resource. */
@@ -6144,8 +6848,7 @@ export type ManagedResourceReferenceDenyStatus =
   | "denyWriteAndDelete"
   | "removedBySystem"
   | "none"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const ManagedResourceReferenceDenyStatus = /*@__PURE__*/ S.String;
 
 /** The managed resource model. */
@@ -6180,14 +6883,15 @@ export const ManagedResourceReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedResourceReference>;
 
 /** An array of resources currently managed by the deployment stack. */
-export type DeploymentStackPropertiesResourcesList = ManagedResourceReference[];
+export type DeploymentStackPropertiesResourcesList =
+  ReadonlyArray<ManagedResourceReference>;
 export const DeploymentStackPropertiesResourcesList = /*@__PURE__*/ S.Array(
   ManagedResourceReference,
 ) as any as S.Schema<DeploymentStackPropertiesResourcesList>;
 
 /** The extensions used during deployment. Contains extension data for all extensible resources managed by the stack. */
 export type DeploymentStackPropertiesDeploymentExtensionsList =
-  DeploymentExtension[];
+  ReadonlyArray<DeploymentExtension>;
 export const DeploymentStackPropertiesDeploymentExtensionsList =
   /*@__PURE__*/ S.Array(
     DeploymentExtension,
@@ -6336,6 +7040,16 @@ export const DeploymentStacksCreateOrUpdateAtManagementGroupResponse =
     identifier: "DeploymentStacksCreateOrUpdateAtManagementGroupResponse",
   }) as any as S.Schema<DeploymentStacksCreateOrUpdateAtManagementGroupResponse>;
 
+/** Resource tags. */
+export type DeploymentStacksCreateOrUpdateAtResourceGroupRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentStacksCreateOrUpdateAtResourceGroupRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentStacksCreateOrUpdateAtResourceGroupRequestTagsMap>;
+
 export interface DeploymentStacksCreateOrUpdateAtResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6343,7 +7057,12 @@ export interface DeploymentStacksCreateOrUpdateAtResourceGroupRequest {
   resourceGroupName: string;
   /** Name of the deployment stack. */
   deploymentStackName: string;
-  body: unknown;
+  /** Deployment stack properties. */
+  properties?: DeploymentStackPropertiesInput;
+  /** The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks. */
+  location?: string;
+  /** Resource tags. */
+  tags?: DeploymentStacksCreateOrUpdateAtResourceGroupRequestTagsMap;
 }
 export const DeploymentStacksCreateOrUpdateAtResourceGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6351,7 +7070,11 @@ export const DeploymentStacksCreateOrUpdateAtResourceGroupRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       deploymentStackName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DeploymentStackPropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(
+        DeploymentStacksCreateOrUpdateAtResourceGroupRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6407,19 +7130,38 @@ export const DeploymentStacksCreateOrUpdateAtResourceGroupResponse =
     identifier: "DeploymentStacksCreateOrUpdateAtResourceGroupResponse",
   }) as any as S.Schema<DeploymentStacksCreateOrUpdateAtResourceGroupResponse>;
 
+/** Resource tags. */
+export type DeploymentStacksCreateOrUpdateAtSubscriptionRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentStacksCreateOrUpdateAtSubscriptionRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentStacksCreateOrUpdateAtSubscriptionRequestTagsMap>;
+
 export interface DeploymentStacksCreateOrUpdateAtSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Name of the deployment stack. */
   deploymentStackName: string;
-  body: unknown;
+  /** Deployment stack properties. */
+  properties?: DeploymentStackPropertiesInput;
+  /** The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks. */
+  location?: string;
+  /** Resource tags. */
+  tags?: DeploymentStacksCreateOrUpdateAtSubscriptionRequestTagsMap;
 }
 export const DeploymentStacksCreateOrUpdateAtSubscriptionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       deploymentStackName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DeploymentStackPropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(
+        DeploymentStacksCreateOrUpdateAtSubscriptionRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6476,22 +7218,22 @@ export const DeploymentStacksCreateOrUpdateAtSubscriptionResponse =
   }) as any as S.Schema<DeploymentStacksCreateOrUpdateAtSubscriptionResponse>;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResources =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourceGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionManagementGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail" | (string & {});
+  "detach" | "fail";
 export const DeploymentStacksDeleteAtManagementGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -6556,22 +7298,22 @@ export const DeploymentStacksDeleteAtManagementGroupResponse =
   }) as any as S.Schema<DeploymentStacksDeleteAtManagementGroupResponse>;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResources =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourceGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionManagementGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail" | (string & {});
+  "detach" | "fail";
 export const DeploymentStacksDeleteAtResourceGroupRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -6639,22 +7381,22 @@ export const DeploymentStacksDeleteAtResourceGroupResponse =
   }) as any as S.Schema<DeploymentStacksDeleteAtResourceGroupResponse>;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResources =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourceGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionManagementGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail" | (string & {});
+  "detach" | "fail";
 export const DeploymentStacksDeleteAtSubscriptionRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -7070,7 +7812,7 @@ export const DeploymentStack = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentStack>;
 
 /** The DeploymentStack items on this page */
-export type DeploymentStackListResultValueList = DeploymentStack[];
+export type DeploymentStackListResultValueList = ReadonlyArray<DeploymentStack>;
 export const DeploymentStackListResultValueList = /*@__PURE__*/ S.Array(
   DeploymentStack,
 ) as any as S.Schema<DeploymentStackListResultValueList>;
@@ -7134,19 +7876,38 @@ export const DeploymentStacksListAtSubscriptionRequest =
     identifier: "DeploymentStacksListAtSubscriptionRequest",
   }) as any as S.Schema<DeploymentStacksListAtSubscriptionRequest>;
 
+/** Resource tags. */
+export type DeploymentStacksValidateStackAtManagementGroupRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentStacksValidateStackAtManagementGroupRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentStacksValidateStackAtManagementGroupRequestTagsMap>;
+
 export interface DeploymentStacksValidateStackAtManagementGroupRequest {
   /** The management group ID. */
   managementGroupId: string;
   /** Name of the deployment stack. */
   deploymentStackName: string;
-  body: unknown;
+  /** Deployment stack properties. */
+  properties?: DeploymentStackPropertiesInput;
+  /** The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks. */
+  location?: string;
+  /** Resource tags. */
+  tags?: DeploymentStacksValidateStackAtManagementGroupRequestTagsMap;
 }
 export const DeploymentStacksValidateStackAtManagementGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       managementGroupId: S.String.pipe(T.Label()),
       deploymentStackName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DeploymentStackPropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(
+        DeploymentStacksValidateStackAtManagementGroupRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -7164,8 +7925,7 @@ export type DeploymentStackValidateResultSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DeploymentStackValidateResultSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -7174,8 +7934,7 @@ export type DeploymentStackValidateResultSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DeploymentStackValidateResultSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -7213,7 +7972,8 @@ export const DeploymentStackValidateResultSystemData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeploymentStackValidateResultSystemData>;
 
 /** The error details. */
-export type DeploymentStackValidateResultErrorDetailsList = ErrorDetail[];
+export type DeploymentStackValidateResultErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const DeploymentStackValidateResultErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -7221,7 +7981,7 @@ export const DeploymentStackValidateResultErrorDetailsList =
 
 /** The error additional info. */
 export type DeploymentStackValidateResultErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const DeploymentStackValidateResultErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -7266,7 +8026,7 @@ export const DeploymentStackValidatePropertiesParametersMap =
 
 /** The array of resources that were validated. */
 export type DeploymentStackValidatePropertiesValidatedResourcesList =
-  ResourceReference[];
+  ReadonlyArray<ResourceReference>;
 export const DeploymentStackValidatePropertiesValidatedResourcesList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -7274,7 +8034,7 @@ export const DeploymentStackValidatePropertiesValidatedResourcesList =
 
 /** The deployment extensions. */
 export type DeploymentStackValidatePropertiesDeploymentExtensionsList =
-  DeploymentExtension[];
+  ReadonlyArray<DeploymentExtension>;
 export const DeploymentStackValidatePropertiesDeploymentExtensionsList =
   /*@__PURE__*/ S.Array(
     DeploymentExtension,
@@ -7352,6 +8112,16 @@ export const DeploymentStackValidateResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentStackValidateResult",
 }) as any as S.Schema<DeploymentStackValidateResult>;
 
+/** Resource tags. */
+export type DeploymentStacksValidateStackAtResourceGroupRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentStacksValidateStackAtResourceGroupRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentStacksValidateStackAtResourceGroupRequestTagsMap>;
+
 export interface DeploymentStacksValidateStackAtResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7359,7 +8129,12 @@ export interface DeploymentStacksValidateStackAtResourceGroupRequest {
   resourceGroupName: string;
   /** Name of the deployment stack. */
   deploymentStackName: string;
-  body: unknown;
+  /** Deployment stack properties. */
+  properties?: DeploymentStackPropertiesInput;
+  /** The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks. */
+  location?: string;
+  /** Resource tags. */
+  tags?: DeploymentStacksValidateStackAtResourceGroupRequestTagsMap;
 }
 export const DeploymentStacksValidateStackAtResourceGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7367,7 +8142,11 @@ export const DeploymentStacksValidateStackAtResourceGroupRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       deploymentStackName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DeploymentStackPropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(
+        DeploymentStacksValidateStackAtResourceGroupRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -7380,19 +8159,38 @@ export const DeploymentStacksValidateStackAtResourceGroupRequest =
     identifier: "DeploymentStacksValidateStackAtResourceGroupRequest",
   }) as any as S.Schema<DeploymentStacksValidateStackAtResourceGroupRequest>;
 
+/** Resource tags. */
+export type DeploymentStacksValidateStackAtSubscriptionRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentStacksValidateStackAtSubscriptionRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentStacksValidateStackAtSubscriptionRequestTagsMap>;
+
 export interface DeploymentStacksValidateStackAtSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Name of the deployment stack. */
   deploymentStackName: string;
-  body: unknown;
+  /** Deployment stack properties. */
+  properties?: DeploymentStackPropertiesInput;
+  /** The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks. */
+  location?: string;
+  /** Resource tags. */
+  tags?: DeploymentStacksValidateStackAtSubscriptionRequestTagsMap;
 }
 export const DeploymentStacksValidateStackAtSubscriptionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       deploymentStackName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DeploymentStackPropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(
+        DeploymentStacksValidateStackAtSubscriptionRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -7405,19 +8203,162 @@ export const DeploymentStacksValidateStackAtSubscriptionRequest =
     identifier: "DeploymentStacksValidateStackAtSubscriptionRequest",
   }) as any as S.Schema<DeploymentStacksValidateStackAtSubscriptionRequest>;
 
+/** The error detail. */
+export interface DeploymentStacksWhatIfResultPropertiesInputError {}
+export const DeploymentStacksWhatIfResultPropertiesInputError =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeploymentStacksWhatIfResultPropertiesInputError",
+  }) as any as S.Schema<DeploymentStacksWhatIfResultPropertiesInputError>;
+
+/** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
+export type DeploymentStacksWhatIfResultPropertiesInputTemplateMap = {
+  [key: string]: unknown | undefined;
+};
+export const DeploymentStacksWhatIfResultPropertiesInputTemplateMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DeploymentStacksWhatIfResultPropertiesInputTemplateMap>;
+
+/** Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. */
+export type DeploymentStacksWhatIfResultPropertiesInputParametersMap = {
+  [key: string]: DeploymentParameter | undefined;
+};
+export const DeploymentStacksWhatIfResultPropertiesInputParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentParameter,
+  ) as any as S.Schema<DeploymentStacksWhatIfResultPropertiesInputParametersMap>;
+
+/** The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template. */
+export type DeploymentStacksWhatIfResultPropertiesInputExtensionConfigsMap = {
+  [key: string]: DeploymentExtensionConfigInput | undefined;
+};
+export const DeploymentStacksWhatIfResultPropertiesInputExtensionConfigsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentExtensionConfigInput,
+  ) as any as S.Schema<DeploymentStacksWhatIfResultPropertiesInputExtensionConfigsMap>;
+
+/** External input values, used by external tooling for parameter evaluation. */
+export type DeploymentStacksWhatIfResultPropertiesInputExternalInputsMap = {
+  [key: string]: DeploymentExternalInput | undefined;
+};
+export const DeploymentStacksWhatIfResultPropertiesInputExternalInputsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentExternalInput,
+  ) as any as S.Schema<DeploymentStacksWhatIfResultPropertiesInputExternalInputsMap>;
+
+/** External input definitions, used by external tooling to define expected external input values. */
+export type DeploymentStacksWhatIfResultPropertiesInputExternalInputDefinitionsMap =
+  { [key: string]: DeploymentExternalInputDefinition | undefined };
+export const DeploymentStacksWhatIfResultPropertiesInputExternalInputDefinitionsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentExternalInputDefinition,
+  ) as any as S.Schema<DeploymentStacksWhatIfResultPropertiesInputExternalInputDefinitionsMap>;
+
+/** DeploymentStack WhatIfResult Properties */
+export interface DeploymentStacksWhatIfResultPropertiesInput {
+  /** The error detail. */
+  error?: DeploymentStacksWhatIfResultPropertiesInputError;
+  /** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
+  template?: DeploymentStacksWhatIfResultPropertiesInputTemplateMap;
+  /** The URI of the template. Use either the templateLink property or the template property, but not both. */
+  templateLink?: DeploymentStacksTemplateLink;
+  /** Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. */
+  parameters?: DeploymentStacksWhatIfResultPropertiesInputParametersMap;
+  /** The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both. */
+  parametersLink?: DeploymentStacksParametersLink;
+  /** The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template. */
+  extensionConfigs?: DeploymentStacksWhatIfResultPropertiesInputExtensionConfigsMap;
+  /** External input values, used by external tooling for parameter evaluation. */
+  externalInputs?: DeploymentStacksWhatIfResultPropertiesInputExternalInputsMap;
+  /** External input definitions, used by external tooling to define expected external input values. */
+  externalInputDefinitions?: DeploymentStacksWhatIfResultPropertiesInputExternalInputDefinitionsMap;
+  /** Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted. */
+  actionOnUnmanage: ActionOnUnmanage;
+  /** The debug setting of the deployment. */
+  debugSetting?: DeploymentStacksDebugSetting;
+  /** The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'). */
+  deploymentScope?: string;
+  /** Deployment stack description. Max length of 4096 characters. */
+  description?: string;
+  /** Defines how resources deployed by the stack are locked. */
+  denySettings: DenySettings;
+  /** The validation level of the deployment stack */
+  validationLevel?: ValidationLevel;
+  /** The deployment stack id to use as the basis for comparison. */
+  deploymentStackResourceId: string;
+  /** The interval to persist the deployment stack what-if result in ISO 8601 format. */
+  retentionInterval: string;
+}
+export const DeploymentStacksWhatIfResultPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      error: S.optional(DeploymentStacksWhatIfResultPropertiesInputError),
+      template: S.optional(
+        DeploymentStacksWhatIfResultPropertiesInputTemplateMap,
+      ),
+      templateLink: S.optional(DeploymentStacksTemplateLink),
+      parameters: S.optional(
+        DeploymentStacksWhatIfResultPropertiesInputParametersMap,
+      ),
+      parametersLink: S.optional(DeploymentStacksParametersLink),
+      extensionConfigs: S.optional(
+        DeploymentStacksWhatIfResultPropertiesInputExtensionConfigsMap,
+      ),
+      externalInputs: S.optional(
+        DeploymentStacksWhatIfResultPropertiesInputExternalInputsMap,
+      ),
+      externalInputDefinitions: S.optional(
+        DeploymentStacksWhatIfResultPropertiesInputExternalInputDefinitionsMap,
+      ),
+      actionOnUnmanage: ActionOnUnmanage,
+      debugSetting: S.optional(DeploymentStacksDebugSetting),
+      deploymentScope: S.optional(S.String),
+      description: S.optional(S.String),
+      denySettings: DenySettings,
+      validationLevel: S.optional(ValidationLevel),
+      deploymentStackResourceId: S.String,
+      retentionInterval: S.String,
+    }),
+  ).annotate({
+    identifier: "DeploymentStacksWhatIfResultPropertiesInput",
+  }) as any as S.Schema<DeploymentStacksWhatIfResultPropertiesInput>;
+
+/** Resource tags. */
+export type DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRequestTagsMap =
+  { [key: string]: string | undefined };
+export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRequestTagsMap>;
+
 export interface DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRequest {
   /** The management group ID. */
   managementGroupId: string;
   /** Name of the deployment stack what-if result. */
   deploymentStacksWhatIfResultName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DeploymentStacksWhatIfResultPropertiesInput;
+  /** The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks. */
+  location?: string;
+  /** Resource tags. */
+  tags?: DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRequestTagsMap;
 }
 export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       managementGroupId: S.String.pipe(T.Label()),
       deploymentStacksWhatIfResultName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DeploymentStacksWhatIfResultPropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(
+        DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -7433,7 +8374,7 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRequest
 
 /** The error details. */
 export type DeploymentStacksWhatIfResultPropertiesErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const DeploymentStacksWhatIfResultPropertiesErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -7441,7 +8382,7 @@ export const DeploymentStacksWhatIfResultPropertiesErrorDetailsList =
 
 /** The error additional info. */
 export type DeploymentStacksWhatIfResultPropertiesErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const DeploymentStacksWhatIfResultPropertiesErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -7543,23 +8484,18 @@ export type DeploymentStacksWhatIfChangeType =
   | "detach"
   | "modify"
   | "noChange"
-  | "unsupported"
-  | (string & {});
+  | "unsupported";
 export const DeploymentStacksWhatIfChangeType = /*@__PURE__*/ S.String;
 
 /** Denotes the confidence level of the predicted change. */
-export type DeploymentStacksWhatIfChangeCertainty =
-  | "definite"
-  | "potential"
-  | (string & {});
+export type DeploymentStacksWhatIfChangeCertainty = "definite" | "potential";
 export const DeploymentStacksWhatIfChangeCertainty = /*@__PURE__*/ S.String;
 
 /** The management status of the deployment stack resource. */
 export type DeploymentStacksManagementStatus =
   | "managed"
   | "unmanaged"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const DeploymentStacksManagementStatus = /*@__PURE__*/ S.String;
 
 /** The predicted changes to the deployment stack management status of the resource. */
@@ -7587,8 +8523,7 @@ export type DenyStatusMode =
   | "denyWriteAndDelete"
   | "removedBySystem"
   | "none"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const DenyStatusMode = /*@__PURE__*/ S.String;
 
 /** The predicted changes to the deployment stack deny status of the resource. */
@@ -7632,13 +8567,12 @@ export type DeploymentStacksWhatIfPropertyChangeType =
   | "create"
   | "delete"
   | "modify"
-  | "noEffect"
-  | (string & {});
+  | "noEffect";
 export const DeploymentStacksWhatIfPropertyChangeType = /*@__PURE__*/ S.String;
 
 /** Nested property changes. */
 export type DeploymentStacksWhatIfPropertyChangeChildrenList =
-  DeploymentStacksWhatIfPropertyChange[];
+  ReadonlyArray<DeploymentStacksWhatIfPropertyChange>;
 export const DeploymentStacksWhatIfPropertyChangeChildrenList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => DeploymentStacksWhatIfPropertyChange),
@@ -7672,7 +8606,7 @@ export const DeploymentStacksWhatIfPropertyChange = /*@__PURE__*/ S.suspend(
 
 /** The predicted changes to the properties." */
 export type DeploymentStacksWhatIfResourceChangeResourceConfigurationChangesDeltaList =
-  DeploymentStacksWhatIfPropertyChange[];
+  ReadonlyArray<DeploymentStacksWhatIfPropertyChange>;
 export const DeploymentStacksWhatIfResourceChangeResourceConfigurationChangesDeltaList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksWhatIfPropertyChange,
@@ -7765,7 +8699,7 @@ export const DeploymentStacksWhatIfResourceChange = /*@__PURE__*/ S.suspend(
 
 /** List of resource changes predicted by What-If operation. */
 export type DeploymentStacksWhatIfChangeResourceChangesList =
-  DeploymentStacksWhatIfResourceChange[];
+  ReadonlyArray<DeploymentStacksWhatIfResourceChange>;
 export const DeploymentStacksWhatIfChangeResourceChangesList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksWhatIfResourceChange,
@@ -7773,7 +8707,7 @@ export const DeploymentStacksWhatIfChangeResourceChangesList =
 
 /** The predicted changes to the properties." */
 export type DeploymentStacksWhatIfChangeDenySettingsChangeDeltaList =
-  DeploymentStacksWhatIfPropertyChange[];
+  ReadonlyArray<DeploymentStacksWhatIfPropertyChange>;
 export const DeploymentStacksWhatIfChangeDenySettingsChangeDeltaList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksWhatIfPropertyChange,
@@ -7840,11 +8774,7 @@ export const DeploymentStacksWhatIfChange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentStacksWhatIfChange>;
 
 /** Denotes the additional response level. */
-export type DeploymentStacksDiagnosticLevel =
-  | "info"
-  | "warning"
-  | "error"
-  | (string & {});
+export type DeploymentStacksDiagnosticLevel = "info" | "warning" | "error";
 export const DeploymentStacksDiagnosticLevel = /*@__PURE__*/ S.String;
 
 /** The resource management error additional info. */
@@ -7866,7 +8796,7 @@ export const DeploymentStacksDiagnosticAdditionalInfoItem =
 
 /** Additional error information. */
 export type DeploymentStacksDiagnosticAdditionalInfoList =
-  DeploymentStacksDiagnosticAdditionalInfoItem[];
+  ReadonlyArray<DeploymentStacksDiagnosticAdditionalInfoItem>;
 export const DeploymentStacksDiagnosticAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksDiagnosticAdditionalInfoItem,
@@ -7899,7 +8829,7 @@ export const DeploymentStacksDiagnostic = /*@__PURE__*/ S.suspend(() =>
 
 /** List of resource diagnostics detected by What-If operation. */
 export type DeploymentStacksWhatIfResultPropertiesDiagnosticsList =
-  DeploymentStacksDiagnostic[];
+  ReadonlyArray<DeploymentStacksDiagnostic>;
 export const DeploymentStacksWhatIfResultPropertiesDiagnosticsList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksDiagnostic,
@@ -8033,22 +8963,22 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateRespons
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtManagementGroupCreateOrUpdateResponse>;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResources =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourceGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionManagementGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail" | (string & {});
+  "detach" | "fail";
 export const DeploymentStacksWhatIfResultsAtManagementGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -8240,7 +9170,7 @@ export const DeploymentStacksWhatIfResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The DeploymentStacksWhatIfResult items on this page */
 export type DeploymentStacksWhatIfResultListResultValueList =
-  DeploymentStacksWhatIfResult[];
+  ReadonlyArray<DeploymentStacksWhatIfResult>;
 export const DeploymentStacksWhatIfResultListResultValueList =
   /*@__PURE__*/ S.Array(
     DeploymentStacksWhatIfResult,
@@ -8328,6 +9258,15 @@ export const DeploymentStacksWhatIfResultsAtManagementGroupWhatIfResponse =
     identifier: "DeploymentStacksWhatIfResultsAtManagementGroupWhatIfResponse",
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtManagementGroupWhatIfResponse>;
 
+/** Resource tags. */
+export type DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateRequestTagsMap =
+  { [key: string]: string | undefined };
+export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateRequestTagsMap>;
+
 export interface DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8335,7 +9274,12 @@ export interface DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateReque
   resourceGroupName: string;
   /** Name of the deployment stack what-if result. */
   deploymentStacksWhatIfResultName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DeploymentStacksWhatIfResultPropertiesInput;
+  /** The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks. */
+  location?: string;
+  /** Resource tags. */
+  tags?: DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateRequestTagsMap;
 }
 export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8343,7 +9287,11 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       deploymentStacksWhatIfResultName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DeploymentStacksWhatIfResultPropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(
+        DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -8401,22 +9349,22 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateResponse 
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtResourceGroupCreateOrUpdateResponse>;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResources =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourceGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionManagementGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail" | (string & {});
+  "detach" | "fail";
 export const DeploymentStacksWhatIfResultsAtResourceGroupDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -8643,19 +9591,37 @@ export const DeploymentStacksWhatIfResultsAtResourceGroupWhatIfResponse =
     identifier: "DeploymentStacksWhatIfResultsAtResourceGroupWhatIfResponse",
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtResourceGroupWhatIfResponse>;
 
+/** Resource tags. */
+export type DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateRequestTagsMap =
+  { [key: string]: string | undefined };
+export const DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateRequestTagsMap>;
+
 export interface DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Name of the deployment stack what-if result. */
   deploymentStacksWhatIfResultName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DeploymentStacksWhatIfResultPropertiesInput;
+  /** The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks. */
+  location?: string;
+  /** Resource tags. */
+  tags?: DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateRequestTagsMap;
 }
 export const DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       deploymentStacksWhatIfResultName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DeploymentStacksWhatIfResultPropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(
+        DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -8713,22 +9679,22 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateResponse =
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtSubscriptionCreateOrUpdateResponse>;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResources =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResources =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourceGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourceGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionManagementGroups =
-  "delete" | "detach" | (string & {});
+  "delete" | "detach";
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionManagementGroups =
   /*@__PURE__*/ S.String;
 
 export type DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
-  "detach" | "fail" | (string & {});
+  "detach" | "fail";
 export const DeploymentStacksWhatIfResultsAtSubscriptionDeleteRequestUnmanageActionResourcesWithoutDeleteSupport =
   /*@__PURE__*/ S.String;
 
@@ -8944,6 +9910,15 @@ export const DeploymentStacksWhatIfResultsAtSubscriptionWhatIfResponse =
     identifier: "DeploymentStacksWhatIfResultsAtSubscriptionWhatIfResponse",
   }) as any as S.Schema<DeploymentStacksWhatIfResultsAtSubscriptionWhatIfResponse>;
 
+/** Deployment tags */
+export type DeploymentsValidateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentsValidateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DeploymentsValidateRequestTagsMap>;
+
 export interface DeploymentsValidateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8951,14 +9926,24 @@ export interface DeploymentsValidateRequest {
   resourceGroupName: string;
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location?: string;
+  /** The deployment properties. */
+  properties: DeploymentProperties;
+  /** Deployment tags */
+  tags?: DeploymentsValidateRequestTagsMap;
+  /** The Managed Identity configuration for a deployment. */
+  identity?: DeploymentIdentityInput;
 }
 export const DeploymentsValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    properties: DeploymentProperties,
+    tags: S.optional(DeploymentsValidateRequestTagsMap),
+    identity: S.optional(DeploymentIdentityInput),
   }).pipe(
     T.Http({
       method: "POST",
@@ -8996,19 +9981,36 @@ export const DeploymentValidateResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentValidateResult",
 }) as any as S.Schema<DeploymentValidateResult>;
 
+/** Deployment tags */
+export type DeploymentsValidateAtManagementGroupScopeRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentsValidateAtManagementGroupScopeRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentsValidateAtManagementGroupScopeRequestTagsMap>;
+
 export interface DeploymentsValidateAtManagementGroupScopeRequest {
   /** The management group ID. */
   groupId: string;
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location: string;
+  /** The deployment properties. */
+  properties: DeploymentProperties;
+  /** Deployment tags */
+  tags?: DeploymentsValidateAtManagementGroupScopeRequestTagsMap;
 }
 export const DeploymentsValidateAtManagementGroupScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       groupId: S.String.pipe(T.Label()),
       deploymentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.String,
+      properties: DeploymentProperties,
+      tags: S.optional(DeploymentsValidateAtManagementGroupScopeRequestTagsMap),
     }).pipe(
       T.Http({
         method: "POST",
@@ -9021,18 +10023,37 @@ export const DeploymentsValidateAtManagementGroupScopeRequest =
     identifier: "DeploymentsValidateAtManagementGroupScopeRequest",
   }) as any as S.Schema<DeploymentsValidateAtManagementGroupScopeRequest>;
 
+/** Deployment tags */
+export type DeploymentsValidateAtScopeRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentsValidateAtScopeRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DeploymentsValidateAtScopeRequestTagsMap>;
+
 export interface DeploymentsValidateAtScopeRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location?: string;
+  /** The deployment properties. */
+  properties: DeploymentProperties;
+  /** Deployment tags */
+  tags?: DeploymentsValidateAtScopeRequestTagsMap;
+  /** The Managed Identity configuration for a deployment. */
+  identity?: DeploymentIdentityInput;
 }
 export const DeploymentsValidateAtScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    properties: DeploymentProperties,
+    tags: S.optional(DeploymentsValidateAtScopeRequestTagsMap),
+    identity: S.optional(DeploymentIdentityInput),
   }).pipe(
     T.Http({
       method: "POST",
@@ -9045,19 +10066,39 @@ export const DeploymentsValidateAtScopeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentsValidateAtScopeRequest",
 }) as any as S.Schema<DeploymentsValidateAtScopeRequest>;
 
+/** Deployment tags */
+export type DeploymentsValidateAtSubscriptionScopeRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentsValidateAtSubscriptionScopeRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentsValidateAtSubscriptionScopeRequestTagsMap>;
+
 export interface DeploymentsValidateAtSubscriptionScopeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location?: string;
+  /** The deployment properties. */
+  properties: DeploymentProperties;
+  /** Deployment tags */
+  tags?: DeploymentsValidateAtSubscriptionScopeRequestTagsMap;
+  /** The Managed Identity configuration for a deployment. */
+  identity?: DeploymentIdentityInput;
 }
 export const DeploymentsValidateAtSubscriptionScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       deploymentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      properties: DeploymentProperties,
+      tags: S.optional(DeploymentsValidateAtSubscriptionScopeRequestTagsMap),
+      identity: S.optional(DeploymentIdentityInput),
     }).pipe(
       T.Http({
         method: "POST",
@@ -9070,16 +10111,33 @@ export const DeploymentsValidateAtSubscriptionScopeRequest =
     identifier: "DeploymentsValidateAtSubscriptionScopeRequest",
   }) as any as S.Schema<DeploymentsValidateAtSubscriptionScopeRequest>;
 
+/** Deployment tags */
+export type DeploymentsValidateAtTenantScopeRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DeploymentsValidateAtTenantScopeRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DeploymentsValidateAtTenantScopeRequestTagsMap>;
+
 export interface DeploymentsValidateAtTenantScopeRequest {
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location: string;
+  /** The deployment properties. */
+  properties: DeploymentProperties;
+  /** Deployment tags */
+  tags?: DeploymentsValidateAtTenantScopeRequestTagsMap;
 }
 export const DeploymentsValidateAtTenantScopeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       deploymentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.String,
+      properties: DeploymentProperties,
+      tags: S.optional(DeploymentsValidateAtTenantScopeRequestTagsMap),
     }).pipe(
       T.Http({
         method: "POST",
@@ -9092,6 +10150,122 @@ export const DeploymentsValidateAtTenantScopeRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeploymentsValidateAtTenantScopeRequest",
 }) as any as S.Schema<DeploymentsValidateAtTenantScopeRequest>;
 
+/** Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string. */
+export type DeploymentWhatIfPropertiesParametersMap = {
+  [key: string]: DeploymentParameter_2 | undefined;
+};
+export const DeploymentWhatIfPropertiesParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DeploymentParameter_2,
+) as any as S.Schema<DeploymentWhatIfPropertiesParametersMap>;
+
+/** External input values, used by external tooling for parameter evaluation. */
+export type DeploymentWhatIfPropertiesExternalInputsMap = {
+  [key: string]: DeploymentExternalInput | undefined;
+};
+export const DeploymentWhatIfPropertiesExternalInputsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentExternalInput,
+  ) as any as S.Schema<DeploymentWhatIfPropertiesExternalInputsMap>;
+
+/** External input definitions, used by external tooling to define expected external input values. */
+export type DeploymentWhatIfPropertiesExternalInputDefinitionsMap = {
+  [key: string]: DeploymentExternalInputDefinition | undefined;
+};
+export const DeploymentWhatIfPropertiesExternalInputDefinitionsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentExternalInputDefinition,
+  ) as any as S.Schema<DeploymentWhatIfPropertiesExternalInputDefinitionsMap>;
+
+export type DeploymentWhatIfPropertiesExtensionConfigsValueMap = {
+  [key: string]: DeploymentExtensionConfigItem_2 | undefined;
+};
+export const DeploymentWhatIfPropertiesExtensionConfigsValueMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentExtensionConfigItem_2,
+  ) as any as S.Schema<DeploymentWhatIfPropertiesExtensionConfigsValueMap>;
+
+/** The configurations to use for deployment extensions. The keys of this object are deployment extension aliases as defined in the deployment template. */
+export type DeploymentWhatIfPropertiesExtensionConfigsMap = {
+  [key: string]: DeploymentWhatIfPropertiesExtensionConfigsValueMap | undefined;
+};
+export const DeploymentWhatIfPropertiesExtensionConfigsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeploymentWhatIfPropertiesExtensionConfigsValueMap,
+  ) as any as S.Schema<DeploymentWhatIfPropertiesExtensionConfigsMap>;
+
+/** The format of the What-If results */
+export type WhatIfResultFormat = "ResourceIdOnly" | "FullResourcePayloads";
+export const WhatIfResultFormat = /*@__PURE__*/ S.String;
+
+/** Deployment What-If operation settings. */
+export interface DeploymentWhatIfSettings {
+  /** The format of the What-If results */
+  resultFormat?: WhatIfResultFormat;
+}
+export const DeploymentWhatIfSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resultFormat: S.optional(WhatIfResultFormat),
+  }),
+).annotate({
+  identifier: "DeploymentWhatIfSettings",
+}) as any as S.Schema<DeploymentWhatIfSettings>;
+
+/** Deployment What-if properties. */
+export interface DeploymentWhatIfProperties {
+  /** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
+  template?: unknown;
+  /** The URI of the template. Use either the templateLink property or the template property, but not both. */
+  templateLink?: TemplateLink;
+  /** Name and value pairs that define the deployment parameters for the template. You use this element when you want to provide the parameter values directly in the request rather than link to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. It can be a JObject or a well formed JSON string. */
+  parameters?: DeploymentWhatIfPropertiesParametersMap;
+  /** External input values, used by external tooling for parameter evaluation. */
+  externalInputs?: DeploymentWhatIfPropertiesExternalInputsMap;
+  /** External input definitions, used by external tooling to define expected external input values. */
+  externalInputDefinitions?: DeploymentWhatIfPropertiesExternalInputDefinitionsMap;
+  /** The URI of parameters file. You use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both. */
+  parametersLink?: ParametersLink;
+  /** The configurations to use for deployment extensions. The keys of this object are deployment extension aliases as defined in the deployment template. */
+  extensionConfigs?: DeploymentWhatIfPropertiesExtensionConfigsMap;
+  /** The mode that is used to deploy resources. This value can be either Incremental or Complete. In Incremental mode, resources are deployed without deleting existing resources that are not included in the template. In Complete mode, resources are deployed and existing resources in the resource group that are not included in the template are deleted. Be careful when using Complete mode as you may unintentionally delete resources. */
+  mode: DeploymentMode;
+  /** The debug setting of the deployment. */
+  debugSetting?: DebugSetting;
+  /** The deployment on error behavior. */
+  onErrorDeployment?: OnErrorDeployment;
+  /** Specifies whether template expressions are evaluated within the scope of the parent template or nested template. Only applicable to nested templates. If not specified, default value is outer. */
+  expressionEvaluationOptions?: ExpressionEvaluationOptions;
+  /** The validation level of the deployment */
+  validationLevel?: ValidationLevel;
+  /** Optional What-If operation settings. */
+  whatIfSettings?: DeploymentWhatIfSettings;
+}
+export const DeploymentWhatIfProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    template: S.optional(S.Unknown),
+    templateLink: S.optional(TemplateLink),
+    parameters: S.optional(DeploymentWhatIfPropertiesParametersMap),
+    externalInputs: S.optional(DeploymentWhatIfPropertiesExternalInputsMap),
+    externalInputDefinitions: S.optional(
+      DeploymentWhatIfPropertiesExternalInputDefinitionsMap,
+    ),
+    parametersLink: S.optional(ParametersLink),
+    extensionConfigs: S.optional(DeploymentWhatIfPropertiesExtensionConfigsMap),
+    mode: DeploymentMode,
+    debugSetting: S.optional(DebugSetting),
+    onErrorDeployment: S.optional(OnErrorDeployment),
+    expressionEvaluationOptions: S.optional(ExpressionEvaluationOptions),
+    validationLevel: S.optional(ValidationLevel),
+    whatIfSettings: S.optional(DeploymentWhatIfSettings),
+  }),
+).annotate({
+  identifier: "DeploymentWhatIfProperties",
+}) as any as S.Schema<DeploymentWhatIfProperties>;
+
 export interface DeploymentsWhatIfRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9099,14 +10273,18 @@ export interface DeploymentsWhatIfRequest {
   resourceGroupName: string;
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location?: string;
+  /** The deployment properties. */
+  properties: DeploymentWhatIfProperties;
 }
 export const DeploymentsWhatIfRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    properties: DeploymentWhatIfProperties,
   }).pipe(
     T.Http({
       method: "POST",
@@ -9127,8 +10305,7 @@ export type ChangeType =
   | "Deploy"
   | "NoChange"
   | "Modify"
-  | "Unsupported"
-  | (string & {});
+  | "Unsupported";
 export const ChangeType = /*@__PURE__*/ S.String;
 
 /** The type of property change. */
@@ -9137,12 +10314,12 @@ export type PropertyChangeType =
   | "Delete"
   | "Modify"
   | "Array"
-  | "NoEffect"
-  | (string & {});
+  | "NoEffect";
 export const PropertyChangeType = /*@__PURE__*/ S.String;
 
 /** Nested property changes. */
-export type WhatIfPropertyChangeChildrenList = WhatIfPropertyChange[];
+export type WhatIfPropertyChangeChildrenList =
+  ReadonlyArray<WhatIfPropertyChange>;
 export const WhatIfPropertyChangeChildrenList = /*@__PURE__*/ S.Array(
   S.suspend(() => WhatIfPropertyChange),
 ) as any as S.Schema<WhatIfPropertyChangeChildrenList>;
@@ -9173,7 +10350,7 @@ export const WhatIfPropertyChange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WhatIfPropertyChange>;
 
 /** The predicted changes to resource properties. */
-export type WhatIfChangeDeltaList = WhatIfPropertyChange[];
+export type WhatIfChangeDeltaList = ReadonlyArray<WhatIfPropertyChange>;
 export const WhatIfChangeDeltaList = /*@__PURE__*/ S.Array(
   WhatIfPropertyChange,
 ) as any as S.Schema<WhatIfChangeDeltaList>;
@@ -9217,13 +10394,14 @@ export const WhatIfChange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WhatIfChange" }) as any as S.Schema<WhatIfChange>;
 
 /** List of resource changes predicted by What-If operation. */
-export type WhatIfOperationPropertiesChangesList = WhatIfChange[];
+export type WhatIfOperationPropertiesChangesList = ReadonlyArray<WhatIfChange>;
 export const WhatIfOperationPropertiesChangesList = /*@__PURE__*/ S.Array(
   WhatIfChange,
 ) as any as S.Schema<WhatIfOperationPropertiesChangesList>;
 
 /** List of resource changes predicted by What-If operation. */
-export type WhatIfOperationPropertiesPotentialChangesList = WhatIfChange[];
+export type WhatIfOperationPropertiesPotentialChangesList =
+  ReadonlyArray<WhatIfChange>;
 export const WhatIfOperationPropertiesPotentialChangesList =
   /*@__PURE__*/ S.Array(
     WhatIfChange,
@@ -9231,7 +10409,7 @@ export const WhatIfOperationPropertiesPotentialChangesList =
 
 /** List of resource diagnostics detected by What-If operation. */
 export type WhatIfOperationPropertiesDiagnosticsList =
-  DeploymentDiagnosticsDefinition[];
+  ReadonlyArray<DeploymentDiagnosticsDefinition>;
 export const WhatIfOperationPropertiesDiagnosticsList = /*@__PURE__*/ S.Array(
   DeploymentDiagnosticsDefinition,
 ) as any as S.Schema<WhatIfOperationPropertiesDiagnosticsList>;
@@ -9279,14 +10457,18 @@ export interface DeploymentsWhatIfAtManagementGroupScopeRequest {
   groupId: string;
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location: string;
+  /** The deployment properties. */
+  properties: DeploymentWhatIfProperties;
 }
 export const DeploymentsWhatIfAtManagementGroupScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       groupId: S.String.pipe(T.Label()),
       deploymentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.String,
+      properties: DeploymentWhatIfProperties,
     }).pipe(
       T.Http({
         method: "POST",
@@ -9304,14 +10486,18 @@ export interface DeploymentsWhatIfAtSubscriptionScopeRequest {
   subscriptionId: string;
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location?: string;
+  /** The deployment properties. */
+  properties: DeploymentWhatIfProperties;
 }
 export const DeploymentsWhatIfAtSubscriptionScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       deploymentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      properties: DeploymentWhatIfProperties,
     }).pipe(
       T.Http({
         method: "POST",
@@ -9327,13 +10513,17 @@ export const DeploymentsWhatIfAtSubscriptionScopeRequest =
 export interface DeploymentsWhatIfAtTenantScopeRequest {
   /** The name of the deployment. */
   deploymentName: string;
-  body: unknown;
+  /** The location to store the deployment data. */
+  location: string;
+  /** The deployment properties. */
+  properties: DeploymentWhatIfProperties;
 }
 export const DeploymentsWhatIfAtTenantScopeRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       deploymentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.String,
+      properties: DeploymentWhatIfProperties,
     }).pipe(
       T.Http({
         method: "POST",
@@ -9427,7 +10617,7 @@ export const FeaturesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeaturesListRequest>;
 
 /** The array of features. */
-export type FeatureOperationsListResultValueList = FeatureResult[];
+export type FeatureOperationsListResultValueList = ReadonlyArray<FeatureResult>;
 export const FeatureOperationsListResultValueList = /*@__PURE__*/ S.Array(
   FeatureResult,
 ) as any as S.Schema<FeatureOperationsListResultValueList>;
@@ -9517,6 +10707,74 @@ export const FeaturesUnregisterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FeaturesUnregisterRequest",
 }) as any as S.Schema<FeaturesUnregisterRequest>;
 
+/** Resource tags */
+export type JitRequestsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const JitRequestsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<JitRequestsCreateOrUpdateRequestTagsMap>;
+
+/** The JIT authorization policies. */
+export interface JitAuthorizationPolicies {
+  /** The the principal id that will be granted JIT access. */
+  principalId: string;
+  /** The role definition id that will be granted to the Principal. */
+  roleDefinitionId: string;
+}
+export const JitAuthorizationPolicies = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.String,
+    roleDefinitionId: S.String,
+  }),
+).annotate({
+  identifier: "JitAuthorizationPolicies",
+}) as any as S.Schema<JitAuthorizationPolicies>;
+
+/** The JIT authorization policies. */
+export type JitRequestPropertiesInputJitAuthorizationPoliciesList =
+  ReadonlyArray<JitAuthorizationPolicies>;
+export const JitRequestPropertiesInputJitAuthorizationPoliciesList =
+  /*@__PURE__*/ S.Array(
+    JitAuthorizationPolicies,
+  ) as any as S.Schema<JitRequestPropertiesInputJitAuthorizationPoliciesList>;
+
+/** The JIT scheduling policies. */
+export interface JitSchedulingPolicyInput {
+  duration: string;
+  /** The start time of the request. */
+  startTime: string;
+}
+export const JitSchedulingPolicyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    duration: S.String,
+    startTime: S.String,
+  }),
+).annotate({
+  identifier: "JitSchedulingPolicyInput",
+}) as any as S.Schema<JitSchedulingPolicyInput>;
+
+/** Information about JIT request properties */
+export interface JitRequestPropertiesInput {
+  /** The parent application id. */
+  applicationResourceId: string;
+  /** The JIT authorization policies. */
+  jitAuthorizationPolicies: JitRequestPropertiesInputJitAuthorizationPoliciesList;
+  /** The JIT request properties. */
+  jitSchedulingPolicy: JitSchedulingPolicyInput;
+}
+export const JitRequestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationResourceId: S.String,
+    jitAuthorizationPolicies:
+      JitRequestPropertiesInputJitAuthorizationPoliciesList,
+    jitSchedulingPolicy: JitSchedulingPolicyInput,
+  }),
+).annotate({
+  identifier: "JitRequestPropertiesInput",
+}) as any as S.Schema<JitRequestPropertiesInput>;
+
 export interface JitRequestsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9524,14 +10782,21 @@ export interface JitRequestsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the JIT request. */
   jitRequestName: string;
-  body: unknown;
+  /** Resource location */
+  location?: string;
+  /** Resource tags */
+  tags?: JitRequestsCreateOrUpdateRequestTagsMap;
+  /** The JIT request properties. */
+  properties?: JitRequestPropertiesInput;
 }
 export const JitRequestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     jitRequestName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(JitRequestsCreateOrUpdateRequestTagsMap),
+    properties: S.optional(JitRequestPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9554,35 +10819,15 @@ export const JitRequestsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JitRequestsCreateOrUpdateResponseTagsMap>;
 
 /** The JIT authorization policies. */
-export interface JitAuthorizationPolicies {
-  /** The the principal id that will be granted JIT access. */
-  principalId: string;
-  /** The role definition id that will be granted to the Principal. */
-  roleDefinitionId: string;
-}
-export const JitAuthorizationPolicies = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.String,
-    roleDefinitionId: S.String,
-  }),
-).annotate({
-  identifier: "JitAuthorizationPolicies",
-}) as any as S.Schema<JitAuthorizationPolicies>;
-
-/** The JIT authorization policies. */
 export type JitRequestPropertiesJitAuthorizationPoliciesList =
-  JitAuthorizationPolicies[];
+  ReadonlyArray<JitAuthorizationPolicies>;
 export const JitRequestPropertiesJitAuthorizationPoliciesList =
   /*@__PURE__*/ S.Array(
     JitAuthorizationPolicies,
   ) as any as S.Schema<JitRequestPropertiesJitAuthorizationPoliciesList>;
 
 /** The JIT request scheduling type. */
-export type JitSchedulingType =
-  | "NotSpecified"
-  | "Once"
-  | "Recurring"
-  | (string & {});
+export type JitSchedulingType = "NotSpecified" | "Once" | "Recurring";
 export const JitSchedulingType = /*@__PURE__*/ S.String;
 
 /** The JIT scheduling policies. */
@@ -9612,8 +10857,7 @@ export type JitRequestState =
   | "Failed"
   | "Canceled"
   | "Expired"
-  | "Timeout"
-  | (string & {});
+  | "Timeout";
 export const JitRequestState = /*@__PURE__*/ S.String;
 
 /** Information about JIT request properties */
@@ -9829,7 +11073,8 @@ export const JitRequestDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JitRequestDefinition>;
 
 /** The array of Jit request definition. */
-export type JitRequestDefinitionListResultValueList = JitRequestDefinition[];
+export type JitRequestDefinitionListResultValueList =
+  ReadonlyArray<JitRequestDefinition>;
 export const JitRequestDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   JitRequestDefinition,
 ) as any as S.Schema<JitRequestDefinitionListResultValueList>;
@@ -9870,6 +11115,15 @@ export const JitRequestsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "JitRequestsListBySubscriptionRequest",
 }) as any as S.Schema<JitRequestsListBySubscriptionRequest>;
 
+/** Jit request tags */
+export type JitRequestsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const JitRequestsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<JitRequestsUpdateRequestTagsMap>;
+
 export interface JitRequestsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -9877,14 +11131,15 @@ export interface JitRequestsUpdateRequest {
   resourceGroupName: string;
   /** The name of the JIT request. */
   jitRequestName: string;
-  body: unknown;
+  /** Jit request tags */
+  tags?: JitRequestsUpdateRequestTagsMap;
 }
 export const JitRequestsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     jitRequestName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(JitRequestsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -9981,7 +11236,7 @@ export const Operation_2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation_2" }) as any as S.Schema<Operation_2>;
 
 /** List of Microsoft.Features operations. */
-export type OperationListResultValueList_2 = Operation_2[];
+export type OperationListResultValueList_2 = ReadonlyArray<Operation_2>;
 export const OperationListResultValueList_2 = /*@__PURE__*/ S.Array(
   Operation_2,
 ) as any as S.Schema<OperationListResultValueList_2>;
@@ -10002,40 +11257,11 @@ export const OperationListResult_2 = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult_2",
 }) as any as S.Schema<OperationListResult_2>;
 
-export interface ManagementLocksCreateOrUpdateAtResourceGroupLevelRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group to lock. */
-  resourceGroupName: string;
-  /** The lock name. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control characters. */
-  lockName: string;
-  body: unknown;
-}
-export const ManagementLocksCreateOrUpdateAtResourceGroupLevelRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      lockName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/locks/{lockName}",
-        code: 200,
-        apiVersion: "2020-05-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ManagementLocksCreateOrUpdateAtResourceGroupLevelRequest",
-  }) as any as S.Schema<ManagementLocksCreateOrUpdateAtResourceGroupLevelRequest>;
-
 /** The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it. */
 export type ManagementLockPropertiesLevel =
   | "NotSpecified"
   | "CanNotDelete"
-  | "ReadOnly"
-  | (string & {});
+  | "ReadOnly";
 export const ManagementLockPropertiesLevel = /*@__PURE__*/ S.String;
 
 /** Lock owner properties. */
@@ -10052,7 +11278,8 @@ export const ManagementLockOwner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementLockOwner>;
 
 /** The owners of the lock. */
-export type ManagementLockPropertiesOwnersList = ManagementLockOwner[];
+export type ManagementLockPropertiesOwnersList =
+  ReadonlyArray<ManagementLockOwner>;
 export const ManagementLockPropertiesOwnersList = /*@__PURE__*/ S.Array(
   ManagementLockOwner,
 ) as any as S.Schema<ManagementLockPropertiesOwnersList>;
@@ -10076,13 +11303,41 @@ export const ManagementLockProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagementLockProperties",
 }) as any as S.Schema<ManagementLockProperties>;
 
+export interface ManagementLocksCreateOrUpdateAtResourceGroupLevelRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group to lock. */
+  resourceGroupName: string;
+  /** The lock name. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control characters. */
+  lockName: string;
+  /** The properties of the lock. */
+  properties: ManagementLockProperties;
+}
+export const ManagementLocksCreateOrUpdateAtResourceGroupLevelRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      lockName: S.String.pipe(T.Label()),
+      properties: ManagementLockProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/locks/{lockName}",
+        code: 200,
+        apiVersion: "2020-05-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ManagementLocksCreateOrUpdateAtResourceGroupLevelRequest",
+  }) as any as S.Schema<ManagementLocksCreateOrUpdateAtResourceGroupLevelRequest>;
+
 /** The type of identity that created the resource. */
 export type ManagementLockObjectSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ManagementLockObjectSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -10091,8 +11346,7 @@ export type ManagementLockObjectSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ManagementLockObjectSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -10166,7 +11420,8 @@ export interface ManagementLocksCreateOrUpdateAtResourceLevelRequest {
   resourceName: string;
   /** The name of lock. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control characters. */
   lockName: string;
-  body: unknown;
+  /** The properties of the lock. */
+  properties: ManagementLockProperties;
 }
 export const ManagementLocksCreateOrUpdateAtResourceLevelRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10178,7 +11433,7 @@ export const ManagementLocksCreateOrUpdateAtResourceLevelRequest =
       resourceType: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
       lockName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: ManagementLockProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -10196,14 +11451,15 @@ export interface ManagementLocksCreateOrUpdateAtSubscriptionLevelRequest {
   subscriptionId: string;
   /** The name of lock. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control characters. */
   lockName: string;
-  body: unknown;
+  /** The properties of the lock. */
+  properties: ManagementLockProperties;
 }
 export const ManagementLocksCreateOrUpdateAtSubscriptionLevelRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       lockName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: ManagementLockProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -10221,14 +11477,15 @@ export interface ManagementLocksCreateOrUpdateByScopeRequest {
   scope: string;
   /** The name of lock. */
   lockName: string;
-  body: unknown;
+  /** The properties of the lock. */
+  properties: ManagementLockProperties;
 }
 export const ManagementLocksCreateOrUpdateByScopeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scope: S.String.pipe(T.Label()),
       lockName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: ManagementLockProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -10511,7 +11768,8 @@ export const ManagementLocksListAtResourceGroupLevelRequest =
   }) as any as S.Schema<ManagementLocksListAtResourceGroupLevelRequest>;
 
 /** The list of locks. */
-export type ManagementLockListResultValueList = ManagementLockObject[];
+export type ManagementLockListResultValueList =
+  ReadonlyArray<ManagementLockObject>;
 export const ManagementLockListResultValueList = /*@__PURE__*/ S.Array(
   ManagementLockObject,
 ) as any as S.Schema<ManagementLockListResultValueList>;
@@ -10652,11 +11910,11 @@ export const OperationDisplay_3 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay_3>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -10683,7 +11941,7 @@ export const Operation_3 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation_3" }) as any as S.Schema<Operation_3>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation_3[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation_3>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation_3,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -10703,35 +11961,13 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
-export interface PolicyAssignmentsCreateRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** The name of the policy assignment to get. */
-  policyAssignmentName: string;
-  body: unknown;
-}
-export const PolicyAssignmentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    policyAssignmentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "PolicyAssignmentsCreateRequest",
-}) as any as S.Schema<PolicyAssignmentsCreateRequest>;
-
 /** The policy's excluded scopes. */
-export type PolicyAssignmentPropertiesNotScopesList = string[];
-export const PolicyAssignmentPropertiesNotScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PolicyAssignmentPropertiesNotScopesList>;
+export type PolicyAssignmentPropertiesInputNotScopesList =
+  ReadonlyArray<string>;
+export const PolicyAssignmentPropertiesInputNotScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PolicyAssignmentPropertiesInputNotScopesList>;
 
 /** The value of a parameter. */
 export interface ParameterValuesValue {
@@ -10747,21 +11983,22 @@ export const ParameterValuesValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ParameterValuesValue>;
 
 /** The parameter values for the assigned policy rule. The keys are the parameter names. */
-export type PolicyAssignmentPropertiesParametersMap = {
+export type PolicyAssignmentPropertiesInputParametersMap = {
   [key: string]: ParameterValuesValue | undefined;
 };
-export const PolicyAssignmentPropertiesParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ParameterValuesValue,
-) as any as S.Schema<PolicyAssignmentPropertiesParametersMap>;
+export const PolicyAssignmentPropertiesInputParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ParameterValuesValue,
+  ) as any as S.Schema<PolicyAssignmentPropertiesInputParametersMap>;
 
 /** The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll */
-export type PolicyAssignmentPropertiesEnforcementMode =
+export type PolicyAssignmentPropertiesInputEnforcementMode =
   | "Default"
   | "DoNotEnforce"
-  | "Enroll"
-  | (string & {});
-export const PolicyAssignmentPropertiesEnforcementMode = /*@__PURE__*/ S.String;
+  | "Enroll";
+export const PolicyAssignmentPropertiesInputEnforcementMode =
+  /*@__PURE__*/ S.String;
 
 /** A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results. */
 export interface NonComplianceMessage {
@@ -10780,12 +12017,12 @@ export const NonComplianceMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NonComplianceMessage>;
 
 /** The messages that describe why a resource is non-compliant with the policy. */
-export type PolicyAssignmentPropertiesNonComplianceMessagesList =
-  NonComplianceMessage[];
-export const PolicyAssignmentPropertiesNonComplianceMessagesList =
+export type PolicyAssignmentPropertiesInputNonComplianceMessagesList =
+  ReadonlyArray<NonComplianceMessage>;
+export const PolicyAssignmentPropertiesInputNonComplianceMessagesList =
   /*@__PURE__*/ S.Array(
     NonComplianceMessage,
-  ) as any as S.Schema<PolicyAssignmentPropertiesNonComplianceMessagesList>;
+  ) as any as S.Schema<PolicyAssignmentPropertiesInputNonComplianceMessagesList>;
 
 /** The selector kind. */
 export type SelectorKind =
@@ -10795,18 +12032,17 @@ export type SelectorKind =
   | "policyDefinitionReferenceId"
   | "resourceRolloutPercentage"
   | "userPrincipalId"
-  | "groupPrincipalId"
-  | (string & {});
+  | "groupPrincipalId";
 export const SelectorKind = /*@__PURE__*/ S.String;
 
 /** The list of values to filter in. */
-export type SelectorInList = string[];
+export type SelectorInList = ReadonlyArray<string>;
 export const SelectorInList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SelectorInList>;
 
 /** The list of values to filter out. */
-export type SelectorNotInList = string[];
+export type SelectorNotInList = ReadonlyArray<string>;
 export const SelectorNotInList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SelectorNotInList>;
@@ -10832,7 +12068,7 @@ export const Selector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Selector" }) as any as S.Schema<Selector>;
 
 /** The list of the selector expressions. */
-export type ResourceSelectorSelectorsList = Selector[];
+export type ResourceSelectorSelectorsList = ReadonlyArray<Selector>;
 export const ResourceSelectorSelectorsList = /*@__PURE__*/ S.Array(
   Selector,
 ) as any as S.Schema<ResourceSelectorSelectorsList>;
@@ -10854,19 +12090,19 @@ export const ResourceSelector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSelector>;
 
 /** The resource selector list to filter policies by resource properties. */
-export type PolicyAssignmentPropertiesResourceSelectorsList =
-  ResourceSelector[];
-export const PolicyAssignmentPropertiesResourceSelectorsList =
+export type PolicyAssignmentPropertiesInputResourceSelectorsList =
+  ReadonlyArray<ResourceSelector>;
+export const PolicyAssignmentPropertiesInputResourceSelectorsList =
   /*@__PURE__*/ S.Array(
     ResourceSelector,
-  ) as any as S.Schema<PolicyAssignmentPropertiesResourceSelectorsList>;
+  ) as any as S.Schema<PolicyAssignmentPropertiesInputResourceSelectorsList>;
 
 /** The override kind. */
-export type OverrideKind = "policyEffect" | "definitionVersion" | (string & {});
+export type OverrideKind = "policyEffect" | "definitionVersion";
 export const OverrideKind = /*@__PURE__*/ S.String;
 
 /** The list of the selector expressions. */
-export type OverrideSelectorsList = Selector[];
+export type OverrideSelectorsList = ReadonlyArray<Selector>;
 export const OverrideSelectorsList = /*@__PURE__*/ S.Array(
   Selector,
 ) as any as S.Schema<OverrideSelectorsList>;
@@ -10889,23 +12125,24 @@ export const Override = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Override" }) as any as S.Schema<Override>;
 
 /** The policy property value override. */
-export type PolicyAssignmentPropertiesOverridesList = Override[];
-export const PolicyAssignmentPropertiesOverridesList = /*@__PURE__*/ S.Array(
-  Override,
-) as any as S.Schema<PolicyAssignmentPropertiesOverridesList>;
+export type PolicyAssignmentPropertiesInputOverridesList =
+  ReadonlyArray<Override>;
+export const PolicyAssignmentPropertiesInputOverridesList =
+  /*@__PURE__*/ S.Array(
+    Override,
+  ) as any as S.Schema<PolicyAssignmentPropertiesInputOverridesList>;
 
 /** The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable. */
 export type AssignmentType =
   | "NotSpecified"
   | "System"
   | "SystemHidden"
-  | "Custom"
-  | (string & {});
+  | "Custom";
 export const AssignmentType = /*@__PURE__*/ S.String;
 
 /** The policy definition reference IDs for self-serve exemption. */
 export type SelfServeExemptionSettingsPolicyDefinitionReferenceIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const SelfServeExemptionSettingsPolicyDefinitionReferenceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10928,6 +12165,168 @@ export const SelfServeExemptionSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SelfServeExemptionSettings",
 }) as any as S.Schema<SelfServeExemptionSettings>;
+
+/** The policy assignment properties. */
+export interface PolicyAssignmentPropertiesInput {
+  /** The display name of the policy assignment. */
+  displayName?: string;
+  /** The ID of the policy definition or policy set definition being assigned. */
+  policyDefinitionId?: string;
+  /** The version of the policy definition to use. */
+  definitionVersion?: string;
+  /** The policy's excluded scopes. */
+  notScopes?: PolicyAssignmentPropertiesInputNotScopesList;
+  /** The parameter values for the assigned policy rule. The keys are the parameter names. */
+  parameters?: PolicyAssignmentPropertiesInputParametersMap;
+  /** This message will be part of response in case of policy violation. */
+  description?: string;
+  /** The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs. */
+  metadata?: unknown;
+  /** The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll */
+  enforcementMode?: PolicyAssignmentPropertiesInputEnforcementMode;
+  /** The messages that describe why a resource is non-compliant with the policy. */
+  nonComplianceMessages?: PolicyAssignmentPropertiesInputNonComplianceMessagesList;
+  /** The resource selector list to filter policies by resource properties. */
+  resourceSelectors?: PolicyAssignmentPropertiesInputResourceSelectorsList;
+  /** The policy property value override. */
+  overrides?: PolicyAssignmentPropertiesInputOverridesList;
+  /** The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable. */
+  assignmentType?: AssignmentType;
+  /** The self-serve exemption settings for the policy assignment. */
+  selfServeExemptionSettings?: SelfServeExemptionSettings;
+}
+export const PolicyAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    policyDefinitionId: S.optional(S.String),
+    definitionVersion: S.optional(S.String),
+    notScopes: S.optional(PolicyAssignmentPropertiesInputNotScopesList),
+    parameters: S.optional(PolicyAssignmentPropertiesInputParametersMap),
+    description: S.optional(S.String),
+    metadata: S.optional(S.Unknown),
+    enforcementMode: S.optional(PolicyAssignmentPropertiesInputEnforcementMode),
+    nonComplianceMessages: S.optional(
+      PolicyAssignmentPropertiesInputNonComplianceMessagesList,
+    ),
+    resourceSelectors: S.optional(
+      PolicyAssignmentPropertiesInputResourceSelectorsList,
+    ),
+    overrides: S.optional(PolicyAssignmentPropertiesInputOverridesList),
+    assignmentType: S.optional(AssignmentType),
+    selfServeExemptionSettings: S.optional(SelfServeExemptionSettings),
+  }),
+).annotate({
+  identifier: "PolicyAssignmentPropertiesInput",
+}) as any as S.Schema<PolicyAssignmentPropertiesInput>;
+
+/** The identity type. This is the only required field when adding a system or user assigned identity to a resource. */
+export type ResourceIdentityType = "SystemAssigned" | "UserAssigned" | "None";
+export const ResourceIdentityType = /*@__PURE__*/ S.String;
+
+export interface UserAssignedIdentitiesValueInput {}
+export const UserAssignedIdentitiesValueInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentitiesValueInput",
+}) as any as S.Schema<UserAssignedIdentitiesValueInput>;
+
+/** The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type IdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentitiesValueInput | undefined;
+};
+export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentitiesValueInput,
+) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
+
+/** Identity for the resource. Policy assignments support a maximum of one identity. That is either a system assigned identity or a single user assigned identity. */
+export interface IdentityInput {
+  /** The identity type. This is the only required field when adding a system or user assigned identity to a resource. */
+  type?: ResourceIdentityType;
+  /** The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
+}
+export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ResourceIdentityType),
+    userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
+  }),
+).annotate({ identifier: "IdentityInput" }) as any as S.Schema<IdentityInput>;
+
+export interface PolicyAssignmentsCreateRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** The name of the policy assignment to get. */
+  policyAssignmentName: string;
+  /** Properties for the policy assignment. */
+  properties?: PolicyAssignmentPropertiesInput;
+  /** The location of the policy assignment. Only required when utilizing managed identity. */
+  location?: string;
+  /** The managed identity associated with the policy assignment. */
+  identity?: IdentityInput;
+}
+export const PolicyAssignmentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    policyAssignmentName: S.String.pipe(T.Label()),
+    properties: S.optional(PolicyAssignmentPropertiesInput),
+    location: S.optional(S.String),
+    identity: S.optional(IdentityInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "PolicyAssignmentsCreateRequest",
+}) as any as S.Schema<PolicyAssignmentsCreateRequest>;
+
+/** The policy's excluded scopes. */
+export type PolicyAssignmentPropertiesNotScopesList = ReadonlyArray<string>;
+export const PolicyAssignmentPropertiesNotScopesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PolicyAssignmentPropertiesNotScopesList>;
+
+/** The parameter values for the assigned policy rule. The keys are the parameter names. */
+export type PolicyAssignmentPropertiesParametersMap = {
+  [key: string]: ParameterValuesValue | undefined;
+};
+export const PolicyAssignmentPropertiesParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ParameterValuesValue,
+) as any as S.Schema<PolicyAssignmentPropertiesParametersMap>;
+
+/** The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll */
+export type PolicyAssignmentPropertiesEnforcementMode =
+  | "Default"
+  | "DoNotEnforce"
+  | "Enroll";
+export const PolicyAssignmentPropertiesEnforcementMode = /*@__PURE__*/ S.String;
+
+/** The messages that describe why a resource is non-compliant with the policy. */
+export type PolicyAssignmentPropertiesNonComplianceMessagesList =
+  ReadonlyArray<NonComplianceMessage>;
+export const PolicyAssignmentPropertiesNonComplianceMessagesList =
+  /*@__PURE__*/ S.Array(
+    NonComplianceMessage,
+  ) as any as S.Schema<PolicyAssignmentPropertiesNonComplianceMessagesList>;
+
+/** The resource selector list to filter policies by resource properties. */
+export type PolicyAssignmentPropertiesResourceSelectorsList =
+  ReadonlyArray<ResourceSelector>;
+export const PolicyAssignmentPropertiesResourceSelectorsList =
+  /*@__PURE__*/ S.Array(
+    ResourceSelector,
+  ) as any as S.Schema<PolicyAssignmentPropertiesResourceSelectorsList>;
+
+/** The policy property value override. */
+export type PolicyAssignmentPropertiesOverridesList = ReadonlyArray<Override>;
+export const PolicyAssignmentPropertiesOverridesList = /*@__PURE__*/ S.Array(
+  Override,
+) as any as S.Schema<PolicyAssignmentPropertiesOverridesList>;
 
 /** The policy assignment properties. */
 export interface PolicyAssignmentProperties {
@@ -10993,14 +12392,6 @@ export const PolicyAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PolicyAssignmentProperties",
 }) as any as S.Schema<PolicyAssignmentProperties>;
-
-/** The identity type. This is the only required field when adding a system or user assigned identity to a resource. */
-export type ResourceIdentityType =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "None"
-  | (string & {});
-export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 export interface UserAssignedIdentitiesValue {
   /** The principal id of user assigned identity. */
@@ -11243,7 +12634,8 @@ export const PolicyAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyAssignment>;
 
 /** The PolicyAssignment items on this page */
-export type PolicyAssignmentListResultValueList = PolicyAssignment[];
+export type PolicyAssignmentListResultValueList =
+  ReadonlyArray<PolicyAssignment>;
 export const PolicyAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   PolicyAssignment,
 ) as any as S.Schema<PolicyAssignmentListResultValueList>;
@@ -11369,18 +12761,62 @@ export const PolicyAssignmentsListForResourceGroupRequest =
     identifier: "PolicyAssignmentsListForResourceGroupRequest",
   }) as any as S.Schema<PolicyAssignmentsListForResourceGroupRequest>;
 
+/** The resource selector list to filter policies by resource properties. */
+export type PolicyAssignmentUpdatePropertiesResourceSelectorsList =
+  ReadonlyArray<ResourceSelector>;
+export const PolicyAssignmentUpdatePropertiesResourceSelectorsList =
+  /*@__PURE__*/ S.Array(
+    ResourceSelector,
+  ) as any as S.Schema<PolicyAssignmentUpdatePropertiesResourceSelectorsList>;
+
+/** The policy property value override. */
+export type PolicyAssignmentUpdatePropertiesOverridesList =
+  ReadonlyArray<Override>;
+export const PolicyAssignmentUpdatePropertiesOverridesList =
+  /*@__PURE__*/ S.Array(
+    Override,
+  ) as any as S.Schema<PolicyAssignmentUpdatePropertiesOverridesList>;
+
+/** The policy assignment properties for Patch request. */
+export interface PolicyAssignmentUpdateProperties {
+  /** The resource selector list to filter policies by resource properties. */
+  resourceSelectors?: PolicyAssignmentUpdatePropertiesResourceSelectorsList;
+  /** The policy property value override. */
+  overrides?: PolicyAssignmentUpdatePropertiesOverridesList;
+  /** The self-serve exemption settings for the policy assignment. */
+  selfServeExemptionSettings?: SelfServeExemptionSettings;
+}
+export const PolicyAssignmentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceSelectors: S.optional(
+      PolicyAssignmentUpdatePropertiesResourceSelectorsList,
+    ),
+    overrides: S.optional(PolicyAssignmentUpdatePropertiesOverridesList),
+    selfServeExemptionSettings: S.optional(SelfServeExemptionSettings),
+  }),
+).annotate({
+  identifier: "PolicyAssignmentUpdateProperties",
+}) as any as S.Schema<PolicyAssignmentUpdateProperties>;
+
 export interface PolicyAssignmentsUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** The name of the policy assignment to get. */
   policyAssignmentName: string;
-  body: unknown;
+  /** The policy assignment properties for Patch request. */
+  properties?: PolicyAssignmentUpdateProperties;
+  /** The location of the policy assignment. Only required when utilizing managed identity. */
+  location?: string;
+  /** The managed identity associated with the policy assignment. */
+  identity?: IdentityInput;
 }
 export const PolicyAssignmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     policyAssignmentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(PolicyAssignmentUpdateProperties),
+    location: S.optional(S.String),
+    identity: S.optional(IdentityInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -11423,38 +12859,8 @@ export const PolicyAssignmentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyAssignmentsUpdateResponse",
 }) as any as S.Schema<PolicyAssignmentsUpdateResponse>;
 
-export interface PolicyDefinitionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the policy definition to get. */
-  policyDefinitionName: string;
-  body: unknown;
-}
-export const PolicyDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      policyDefinitionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "PolicyDefinitionsCreateOrUpdateRequest",
-}) as any as S.Schema<PolicyDefinitionsCreateOrUpdateRequest>;
-
 /** The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static. */
-export type PolicyType =
-  | "NotSpecified"
-  | "BuiltIn"
-  | "Custom"
-  | "Static"
-  | (string & {});
+export type PolicyType = "NotSpecified" | "BuiltIn" | "Custom" | "Static";
 export const PolicyType = /*@__PURE__*/ S.String;
 
 /** The data type of the parameter. */
@@ -11465,12 +12871,11 @@ export type ParameterType =
   | "Boolean"
   | "Integer"
   | "Float"
-  | "DateTime"
-  | (string & {});
+  | "DateTime";
 export const ParameterType = /*@__PURE__*/ S.String;
 
 /** The allowed values for the parameter. */
-export type ParameterDefinitionsValueAllowedValuesList = unknown[];
+export type ParameterDefinitionsValueAllowedValuesList = ReadonlyArray<unknown>;
 export const ParameterDefinitionsValueAllowedValuesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ParameterDefinitionsValueAllowedValuesList>;
@@ -11532,7 +12937,7 @@ export const PolicyDefinitionPropertiesParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PolicyDefinitionPropertiesParametersMap>;
 
 /** A list of available versions for this policy definition. */
-export type PolicyDefinitionPropertiesVersionsList = string[];
+export type PolicyDefinitionPropertiesVersionsList = ReadonlyArray<string>;
 export const PolicyDefinitionPropertiesVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PolicyDefinitionPropertiesVersionsList>;
@@ -11555,7 +12960,7 @@ export const ExternalEvaluationEndpointSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of the role definition Ids the assignment's MSI will need in order to invoke the endpoint. */
 export type ExternalEvaluationEnforcementSettingsRoleDefinitionIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const ExternalEvaluationEnforcementSettingsRoleDefinitionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11628,6 +13033,32 @@ export const PolicyDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyDefinitionProperties",
 }) as any as S.Schema<PolicyDefinitionProperties>;
 
+export interface PolicyDefinitionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the policy definition to get. */
+  policyDefinitionName: string;
+  /** The policy definition properties. */
+  properties?: PolicyDefinitionProperties;
+}
+export const PolicyDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      policyDefinitionName: S.String.pipe(T.Label()),
+      properties: S.optional(PolicyDefinitionProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+).annotate({
+  identifier: "PolicyDefinitionsCreateOrUpdateRequest",
+}) as any as S.Schema<PolicyDefinitionsCreateOrUpdateRequest>;
+
 export interface PolicyDefinitionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -11658,14 +13089,15 @@ export interface PolicyDefinitionsCreateOrUpdateAtManagementGroupRequest {
   managementGroupId: string;
   /** The name of the policy definition to get. */
   policyDefinitionName: string;
-  body: unknown;
+  /** The policy definition properties. */
+  properties?: PolicyDefinitionProperties;
 }
 export const PolicyDefinitionsCreateOrUpdateAtManagementGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       managementGroupId: S.String.pipe(T.Label()),
       policyDefinitionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PolicyDefinitionProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -11949,7 +13381,8 @@ export const PolicyDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyDefinition>;
 
 /** The PolicyDefinition items on this page */
-export type PolicyDefinitionListResultValueList = PolicyDefinition[];
+export type PolicyDefinitionListResultValueList =
+  ReadonlyArray<PolicyDefinition>;
 export const PolicyDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   PolicyDefinition,
 ) as any as S.Schema<PolicyDefinitionListResultValueList>;
@@ -12018,34 +13451,6 @@ export const PolicyDefinitionsListByManagementGroupRequest =
     identifier: "PolicyDefinitionsListByManagementGroupRequest",
   }) as any as S.Schema<PolicyDefinitionsListByManagementGroupRequest>;
 
-export interface PolicyDefinitionVersionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the policy definition. */
-  policyDefinitionName: string;
-  /** The policy definition version. The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number */
-  policyDefinitionVersion: string;
-  body: unknown;
-}
-export const PolicyDefinitionVersionsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      policyDefinitionName: S.String.pipe(T.Label()),
-      policyDefinitionVersion: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PolicyDefinitionVersionsCreateOrUpdateRequest",
-  }) as any as S.Schema<PolicyDefinitionVersionsCreateOrUpdateRequest>;
-
 /** The parameter definitions for parameters used in the policy rule. The keys are the parameter names. */
 export type PolicyDefinitionVersionPropertiesParametersMap = {
   [key: string]: ParameterDefinitionsValue | undefined;
@@ -12095,6 +13500,35 @@ export const PolicyDefinitionVersionProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyDefinitionVersionProperties",
 }) as any as S.Schema<PolicyDefinitionVersionProperties>;
 
+export interface PolicyDefinitionVersionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the policy definition. */
+  policyDefinitionName: string;
+  /** The policy definition version. The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number */
+  policyDefinitionVersion: string;
+  /** The policy definition version properties. */
+  properties?: PolicyDefinitionVersionProperties;
+}
+export const PolicyDefinitionVersionsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      policyDefinitionName: S.String.pipe(T.Label()),
+      policyDefinitionVersion: S.String.pipe(T.Label()),
+      properties: S.optional(PolicyDefinitionVersionProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}/versions/{policyDefinitionVersion}",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "PolicyDefinitionVersionsCreateOrUpdateRequest",
+  }) as any as S.Schema<PolicyDefinitionVersionsCreateOrUpdateRequest>;
+
 export interface PolicyDefinitionVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -12127,7 +13561,8 @@ export interface PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupRequest 
   policyDefinitionName: string;
   /** The policy definition version. The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number */
   policyDefinitionVersion: string;
-  body: unknown;
+  /** The policy definition version properties. */
+  properties?: PolicyDefinitionVersionProperties;
 }
 export const PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12135,7 +13570,7 @@ export const PolicyDefinitionVersionsCreateOrUpdateAtManagementGroupRequest =
       managementGroupName: S.String.pipe(T.Label()),
       policyDefinitionName: S.String.pipe(T.Label()),
       policyDefinitionVersion: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PolicyDefinitionVersionProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -12440,7 +13875,7 @@ export const PolicyDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The PolicyDefinitionVersion items on this page */
 export type PolicyDefinitionVersionListResultValueList =
-  PolicyDefinitionVersion[];
+  ReadonlyArray<PolicyDefinitionVersion>;
 export const PolicyDefinitionVersionListResultValueList = /*@__PURE__*/ S.Array(
   PolicyDefinitionVersion,
 ) as any as S.Schema<PolicyDefinitionVersionListResultValueList>;
@@ -12565,19 +14000,161 @@ export const PolicyDefinitionVersionsListByManagementGroupRequest =
     identifier: "PolicyDefinitionVersionsListByManagementGroupRequest",
   }) as any as S.Schema<PolicyDefinitionVersionsListByManagementGroupRequest>;
 
+/** The policy set definition parameters that can be used in policy definition references. */
+export type PolicySetDefinitionPropertiesInputParametersMap = {
+  [key: string]: ParameterDefinitionsValue | undefined;
+};
+export const PolicySetDefinitionPropertiesInputParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ParameterDefinitionsValue,
+  ) as any as S.Schema<PolicySetDefinitionPropertiesInputParametersMap>;
+
+/** The parameter values for the referenced policy rule. The keys are the parameter names. */
+export type PolicyDefinitionReferenceInputParametersMap = {
+  [key: string]: ParameterValuesValue | undefined;
+};
+export const PolicyDefinitionReferenceInputParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ParameterValuesValue,
+  ) as any as S.Schema<PolicyDefinitionReferenceInputParametersMap>;
+
+/** The name of the groups that this policy definition reference belongs to. */
+export type PolicyDefinitionReferenceInputGroupNamesList =
+  ReadonlyArray<string>;
+export const PolicyDefinitionReferenceInputGroupNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PolicyDefinitionReferenceInputGroupNamesList>;
+
+/** The policy definition reference. */
+export interface PolicyDefinitionReferenceInput {
+  /** The ID of the policy definition or policy set definition. */
+  policyDefinitionId: string;
+  /** The version of the policy definition to use. */
+  definitionVersion?: string;
+  /** The parameter values for the referenced policy rule. The keys are the parameter names. */
+  parameters?: PolicyDefinitionReferenceInputParametersMap;
+  /** A unique id (within the policy set definition) for this policy definition reference. */
+  policyDefinitionReferenceId?: string;
+  /** The name of the groups that this policy definition reference belongs to. */
+  groupNames?: PolicyDefinitionReferenceInputGroupNamesList;
+}
+export const PolicyDefinitionReferenceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyDefinitionId: S.String,
+    definitionVersion: S.optional(S.String),
+    parameters: S.optional(PolicyDefinitionReferenceInputParametersMap),
+    policyDefinitionReferenceId: S.optional(S.String),
+    groupNames: S.optional(PolicyDefinitionReferenceInputGroupNamesList),
+  }),
+).annotate({
+  identifier: "PolicyDefinitionReferenceInput",
+}) as any as S.Schema<PolicyDefinitionReferenceInput>;
+
+/** An array of policy definition references. */
+export type PolicySetDefinitionPropertiesInputPolicyDefinitionsList =
+  ReadonlyArray<PolicyDefinitionReferenceInput>;
+export const PolicySetDefinitionPropertiesInputPolicyDefinitionsList =
+  /*@__PURE__*/ S.Array(
+    PolicyDefinitionReferenceInput,
+  ) as any as S.Schema<PolicySetDefinitionPropertiesInputPolicyDefinitionsList>;
+
+/** The policy definition group. */
+export interface PolicyDefinitionGroup {
+  /** The name of the group. */
+  name: string;
+  /** The group's display name. */
+  displayName?: string;
+  /** The group's category. */
+  category?: string;
+  /** The group's description. */
+  description?: string;
+  /** A resource ID of a resource that contains additional metadata about the group. */
+  additionalMetadataId?: string;
+}
+export const PolicyDefinitionGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    displayName: S.optional(S.String),
+    category: S.optional(S.String),
+    description: S.optional(S.String),
+    additionalMetadataId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PolicyDefinitionGroup",
+}) as any as S.Schema<PolicyDefinitionGroup>;
+
+/** The metadata describing groups of policy definition references within the policy set definition. */
+export type PolicySetDefinitionPropertiesInputPolicyDefinitionGroupsList =
+  ReadonlyArray<PolicyDefinitionGroup>;
+export const PolicySetDefinitionPropertiesInputPolicyDefinitionGroupsList =
+  /*@__PURE__*/ S.Array(
+    PolicyDefinitionGroup,
+  ) as any as S.Schema<PolicySetDefinitionPropertiesInputPolicyDefinitionGroupsList>;
+
+/** A list of available versions for this policy set definition. */
+export type PolicySetDefinitionPropertiesInputVersionsList =
+  ReadonlyArray<string>;
+export const PolicySetDefinitionPropertiesInputVersionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PolicySetDefinitionPropertiesInputVersionsList>;
+
+/** The policy set definition properties. */
+export interface PolicySetDefinitionPropertiesInput {
+  /** The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static. */
+  policyType?: PolicyType;
+  /** The display name of the policy set definition. */
+  displayName?: string;
+  /** The policy set definition description. */
+  description?: string;
+  /** The policy set definition metadata. Metadata is an open ended object and is typically a collection of key value pairs. */
+  metadata?: unknown;
+  /** The policy set definition parameters that can be used in policy definition references. */
+  parameters?: PolicySetDefinitionPropertiesInputParametersMap;
+  /** An array of policy definition references. */
+  policyDefinitions: PolicySetDefinitionPropertiesInputPolicyDefinitionsList;
+  /** The metadata describing groups of policy definition references within the policy set definition. */
+  policyDefinitionGroups?: PolicySetDefinitionPropertiesInputPolicyDefinitionGroupsList;
+  /** The policy set definition version in #.#.# format. */
+  version?: string;
+  /** A list of available versions for this policy set definition. */
+  versions?: PolicySetDefinitionPropertiesInputVersionsList;
+}
+export const PolicySetDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyType: S.optional(PolicyType),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    metadata: S.optional(S.Unknown),
+    parameters: S.optional(PolicySetDefinitionPropertiesInputParametersMap),
+    policyDefinitions: PolicySetDefinitionPropertiesInputPolicyDefinitionsList,
+    policyDefinitionGroups: S.optional(
+      PolicySetDefinitionPropertiesInputPolicyDefinitionGroupsList,
+    ),
+    version: S.optional(S.String),
+    versions: S.optional(PolicySetDefinitionPropertiesInputVersionsList),
+  }),
+).annotate({
+  identifier: "PolicySetDefinitionPropertiesInput",
+}) as any as S.Schema<PolicySetDefinitionPropertiesInput>;
+
 export interface PolicySetDefinitionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the policy set definition to get. */
   policySetDefinitionName: string;
-  body: unknown;
+  /** The policy set definition properties. */
+  properties?: PolicySetDefinitionPropertiesInput;
 }
 export const PolicySetDefinitionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       policySetDefinitionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PolicySetDefinitionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -12610,7 +14187,7 @@ export const PolicyDefinitionReferenceParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PolicyDefinitionReferenceParametersMap>;
 
 /** The name of the groups that this policy definition reference belongs to. */
-export type PolicyDefinitionReferenceGroupNamesList = string[];
+export type PolicyDefinitionReferenceGroupNamesList = ReadonlyArray<string>;
 export const PolicyDefinitionReferenceGroupNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PolicyDefinitionReferenceGroupNamesList>;
@@ -12648,47 +14225,22 @@ export const PolicyDefinitionReference = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of policy definition references. */
 export type PolicySetDefinitionPropertiesPolicyDefinitionsList =
-  PolicyDefinitionReference[];
+  ReadonlyArray<PolicyDefinitionReference>;
 export const PolicySetDefinitionPropertiesPolicyDefinitionsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionReference,
   ) as any as S.Schema<PolicySetDefinitionPropertiesPolicyDefinitionsList>;
 
-/** The policy definition group. */
-export interface PolicyDefinitionGroup {
-  /** The name of the group. */
-  name: string;
-  /** The group's display name. */
-  displayName?: string;
-  /** The group's category. */
-  category?: string;
-  /** The group's description. */
-  description?: string;
-  /** A resource ID of a resource that contains additional metadata about the group. */
-  additionalMetadataId?: string;
-}
-export const PolicyDefinitionGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    displayName: S.optional(S.String),
-    category: S.optional(S.String),
-    description: S.optional(S.String),
-    additionalMetadataId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PolicyDefinitionGroup",
-}) as any as S.Schema<PolicyDefinitionGroup>;
-
 /** The metadata describing groups of policy definition references within the policy set definition. */
 export type PolicySetDefinitionPropertiesPolicyDefinitionGroupsList =
-  PolicyDefinitionGroup[];
+  ReadonlyArray<PolicyDefinitionGroup>;
 export const PolicySetDefinitionPropertiesPolicyDefinitionGroupsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionGroup,
   ) as any as S.Schema<PolicySetDefinitionPropertiesPolicyDefinitionGroupsList>;
 
 /** A list of available versions for this policy set definition. */
-export type PolicySetDefinitionPropertiesVersionsList = string[];
+export type PolicySetDefinitionPropertiesVersionsList = ReadonlyArray<string>;
 export const PolicySetDefinitionPropertiesVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PolicySetDefinitionPropertiesVersionsList>;
@@ -12762,14 +14314,15 @@ export interface PolicySetDefinitionsCreateOrUpdateAtManagementGroupRequest {
   managementGroupId: string;
   /** The name of the policy set definition to get. */
   policySetDefinitionName: string;
-  body: unknown;
+  /** The policy set definition properties. */
+  properties?: PolicySetDefinitionPropertiesInput;
 }
 export const PolicySetDefinitionsCreateOrUpdateAtManagementGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       managementGroupId: S.String.pipe(T.Label()),
       policySetDefinitionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PolicySetDefinitionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -13067,7 +14620,8 @@ export const PolicySetDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicySetDefinition>;
 
 /** The PolicySetDefinition items on this page */
-export type PolicySetDefinitionListResultValueList = PolicySetDefinition[];
+export type PolicySetDefinitionListResultValueList =
+  ReadonlyArray<PolicySetDefinition>;
 export const PolicySetDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   PolicySetDefinition,
 ) as any as S.Schema<PolicySetDefinitionListResultValueList>;
@@ -13143,6 +14697,72 @@ export const PolicySetDefinitionsListByManagementGroupRequest =
     identifier: "PolicySetDefinitionsListByManagementGroupRequest",
   }) as any as S.Schema<PolicySetDefinitionsListByManagementGroupRequest>;
 
+/** The policy set definition parameters that can be used in policy definition references. */
+export type PolicySetDefinitionVersionPropertiesInputParametersMap = {
+  [key: string]: ParameterDefinitionsValue | undefined;
+};
+export const PolicySetDefinitionVersionPropertiesInputParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ParameterDefinitionsValue,
+  ) as any as S.Schema<PolicySetDefinitionVersionPropertiesInputParametersMap>;
+
+/** An array of policy definition references. */
+export type PolicySetDefinitionVersionPropertiesInputPolicyDefinitionsList =
+  ReadonlyArray<PolicyDefinitionReferenceInput>;
+export const PolicySetDefinitionVersionPropertiesInputPolicyDefinitionsList =
+  /*@__PURE__*/ S.Array(
+    PolicyDefinitionReferenceInput,
+  ) as any as S.Schema<PolicySetDefinitionVersionPropertiesInputPolicyDefinitionsList>;
+
+/** The metadata describing groups of policy definition references within the policy set definition. */
+export type PolicySetDefinitionVersionPropertiesInputPolicyDefinitionGroupsList =
+  ReadonlyArray<PolicyDefinitionGroup>;
+export const PolicySetDefinitionVersionPropertiesInputPolicyDefinitionGroupsList =
+  /*@__PURE__*/ S.Array(
+    PolicyDefinitionGroup,
+  ) as any as S.Schema<PolicySetDefinitionVersionPropertiesInputPolicyDefinitionGroupsList>;
+
+/** The policy set definition properties. */
+export interface PolicySetDefinitionVersionPropertiesInput {
+  /** The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static. */
+  policyType?: PolicyType;
+  /** The display name of the policy set definition. */
+  displayName?: string;
+  /** The policy set definition description. */
+  description?: string;
+  /** The policy set definition metadata. Metadata is an open ended object and is typically a collection of key value pairs. */
+  metadata?: unknown;
+  /** The policy set definition parameters that can be used in policy definition references. */
+  parameters?: PolicySetDefinitionVersionPropertiesInputParametersMap;
+  /** An array of policy definition references. */
+  policyDefinitions: PolicySetDefinitionVersionPropertiesInputPolicyDefinitionsList;
+  /** The metadata describing groups of policy definition references within the policy set definition. */
+  policyDefinitionGroups?: PolicySetDefinitionVersionPropertiesInputPolicyDefinitionGroupsList;
+  /** The policy set definition version in #.#.# format. */
+  version?: string;
+}
+export const PolicySetDefinitionVersionPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      policyType: S.optional(PolicyType),
+      displayName: S.optional(S.String),
+      description: S.optional(S.String),
+      metadata: S.optional(S.Unknown),
+      parameters: S.optional(
+        PolicySetDefinitionVersionPropertiesInputParametersMap,
+      ),
+      policyDefinitions:
+        PolicySetDefinitionVersionPropertiesInputPolicyDefinitionsList,
+      policyDefinitionGroups: S.optional(
+        PolicySetDefinitionVersionPropertiesInputPolicyDefinitionGroupsList,
+      ),
+      version: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PolicySetDefinitionVersionPropertiesInput",
+  }) as any as S.Schema<PolicySetDefinitionVersionPropertiesInput>;
+
 export interface PolicySetDefinitionVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -13150,7 +14770,8 @@ export interface PolicySetDefinitionVersionsCreateOrUpdateRequest {
   policySetDefinitionName: string;
   /** The policy set definition version. The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number */
   policyDefinitionVersion: string;
-  body: unknown;
+  /** The policy set definition version properties. */
+  properties?: PolicySetDefinitionVersionPropertiesInput;
 }
 export const PolicySetDefinitionVersionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -13158,7 +14779,7 @@ export const PolicySetDefinitionVersionsCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       policySetDefinitionName: S.String.pipe(T.Label()),
       policyDefinitionVersion: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PolicySetDefinitionVersionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -13183,7 +14804,7 @@ export const PolicySetDefinitionVersionPropertiesParametersMap =
 
 /** An array of policy definition references. */
 export type PolicySetDefinitionVersionPropertiesPolicyDefinitionsList =
-  PolicyDefinitionReference[];
+  ReadonlyArray<PolicyDefinitionReference>;
 export const PolicySetDefinitionVersionPropertiesPolicyDefinitionsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionReference,
@@ -13191,7 +14812,7 @@ export const PolicySetDefinitionVersionPropertiesPolicyDefinitionsList =
 
 /** The metadata describing groups of policy definition references within the policy set definition. */
 export type PolicySetDefinitionVersionPropertiesPolicyDefinitionGroupsList =
-  PolicyDefinitionGroup[];
+  ReadonlyArray<PolicyDefinitionGroup>;
 export const PolicySetDefinitionVersionPropertiesPolicyDefinitionGroupsList =
   /*@__PURE__*/ S.Array(
     PolicyDefinitionGroup,
@@ -13267,7 +14888,8 @@ export interface PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupReque
   policySetDefinitionName: string;
   /** The policy set definition version. The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number */
   policyDefinitionVersion: string;
-  body: unknown;
+  /** The policy set definition version properties. */
+  properties?: PolicySetDefinitionVersionPropertiesInput;
 }
 export const PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -13275,7 +14897,7 @@ export const PolicySetDefinitionVersionsCreateOrUpdateAtManagementGroupRequest =
       managementGroupName: S.String.pipe(T.Label()),
       policySetDefinitionName: S.String.pipe(T.Label()),
       policyDefinitionVersion: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PolicySetDefinitionVersionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -13594,7 +15216,7 @@ export const PolicySetDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The PolicySetDefinitionVersion items on this page */
 export type PolicySetDefinitionVersionListResultValueList =
-  PolicySetDefinitionVersion[];
+  ReadonlyArray<PolicySetDefinitionVersion>;
 export const PolicySetDefinitionVersionListResultValueList =
   /*@__PURE__*/ S.Array(
     PolicySetDefinitionVersion,
@@ -13727,15 +15349,38 @@ export const PolicySetDefinitionVersionsListByManagementGroupRequest =
     identifier: "PolicySetDefinitionVersionsListByManagementGroupRequest",
   }) as any as S.Schema<PolicySetDefinitionVersionsListByManagementGroupRequest>;
 
+/** The resource operation to acquire a token for. */
+export interface PolicyTokenOperation {
+  /** The request URI of the resource operation. */
+  uri: string;
+  /** The http method of the resource operation. */
+  httpMethod: string;
+  /** The payload of the resource operation. */
+  content?: unknown;
+}
+export const PolicyTokenOperation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uri: S.String,
+    httpMethod: S.String,
+    content: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "PolicyTokenOperation",
+}) as any as S.Schema<PolicyTokenOperation>;
+
 export interface PolicyTokensAcquireRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** The resource operation to acquire a token for. */
+  operation: PolicyTokenOperation;
+  /** The change reference. */
+  changeReference?: string;
 }
 export const PolicyTokensAcquireRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    operation: PolicyTokenOperation,
+    changeReference: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -13749,7 +15394,7 @@ export const PolicyTokensAcquireRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyTokensAcquireRequest>;
 
 /** The result of the completed token acquisition operation. Possible values are Succeeded and Failed. */
-export type PolicyTokenResult = "Succeeded" | "Failed" | (string & {});
+export type PolicyTokenResult = "Succeeded" | "Failed";
 export const PolicyTokenResult = /*@__PURE__*/ S.String;
 
 /** The policy token evaluated request details. */
@@ -13825,17 +15470,11 @@ export const PolicyLogInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyLogInfo" }) as any as S.Schema<PolicyLogInfo>;
 
 /** The result of the external endpoint. Possible values are Succeeded and Failed. */
-export type ExternalEndpointResult = "Succeeded" | "Failed" | (string & {});
+export type ExternalEndpointResult = "Succeeded" | "Failed";
 export const ExternalEndpointResult = /*@__PURE__*/ S.String;
 
 /** The effective outcome of the policy evaluation based on both the policy effect and evaluation result. Possible values are Unknown, Allow, Audit, Deny, Error. */
-export type PolicyAction =
-  | "Unknown"
-  | "Allow"
-  | "Audit"
-  | "Deny"
-  | "Error"
-  | (string & {});
+export type PolicyAction = "Unknown" | "Allow" | "Audit" | "Deny" | "Error";
 export const PolicyAction = /*@__PURE__*/ S.String;
 
 /** The compliance state of the resource against the policy. Possible values are NotSpecified, NonCompliant, Partial, Conflict, NotApplicable, Compliant, Error, Unknown, Exempt, and Protected. */
@@ -13849,8 +15488,7 @@ export type ComplianceState =
   | "Error"
   | "Unknown"
   | "Exempt"
-  | "Protected"
-  | (string & {});
+  | "Protected";
 export const ComplianceState = /*@__PURE__*/ S.String;
 
 /** The external evaluation endpoint invocation results. */
@@ -13899,7 +15537,7 @@ export const ExternalEvaluationEndpointInvocationResult =
 
 /** An array of external evaluation endpoint invocation results. */
 export type PolicyTokenResponseResultsList =
-  ExternalEvaluationEndpointInvocationResult[];
+  ReadonlyArray<ExternalEvaluationEndpointInvocationResult>;
 export const PolicyTokenResponseResultsList = /*@__PURE__*/ S.Array(
   ExternalEvaluationEndpointInvocationResult,
 ) as any as S.Schema<PolicyTokenResponseResultsList>;
@@ -13944,13 +15582,17 @@ export const PolicyTokenResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PolicyTokensAcquireAtManagementGroupRequest {
   /** The name of the management group. The name is case insensitive. */
   managementGroupName: string;
-  body: unknown;
+  /** The resource operation to acquire a token for. */
+  operation: PolicyTokenOperation;
+  /** The change reference. */
+  changeReference?: string;
 }
 export const PolicyTokensAcquireAtManagementGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       managementGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      operation: PolicyTokenOperation,
+      changeReference: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -13968,14 +15610,18 @@ export interface PolicyTokensAcquireAtResourceGroupRequest {
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  body: unknown;
+  /** The resource operation to acquire a token for. */
+  operation: PolicyTokenOperation;
+  /** The change reference. */
+  changeReference?: string;
 }
 export const PolicyTokensAcquireAtResourceGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      operation: PolicyTokenOperation,
+      changeReference: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -14041,8 +15687,7 @@ export const PrivateLinkAssociationGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PrivateLinkAssociationPropertiesExpandedPublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const PrivateLinkAssociationPropertiesExpandedPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -14111,7 +15756,8 @@ export const PrivateLinkAssociationListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkAssociationListRequest>;
 
 /** private link association information. */
-export type PrivateLinkAssociationGetResultValueList = PrivateLinkAssociation[];
+export type PrivateLinkAssociationGetResultValueList =
+  ReadonlyArray<PrivateLinkAssociation>;
 export const PrivateLinkAssociationGetResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkAssociation,
 ) as any as S.Schema<PrivateLinkAssociationGetResultValueList>;
@@ -14129,18 +15775,41 @@ export const PrivateLinkAssociationGetResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkAssociationGetResult",
 }) as any as S.Schema<PrivateLinkAssociationGetResult>;
 
+export type PrivateLinkAssociationPropertiesPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled";
+export const PrivateLinkAssociationPropertiesPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+export interface PrivateLinkAssociationProperties {
+  /** The rmpl Resource ID. */
+  privateLink?: string;
+  publicNetworkAccess?: PrivateLinkAssociationPropertiesPublicNetworkAccess;
+}
+export const PrivateLinkAssociationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateLink: S.optional(S.String),
+    publicNetworkAccess: S.optional(
+      PrivateLinkAssociationPropertiesPublicNetworkAccess,
+    ),
+  }),
+).annotate({
+  identifier: "PrivateLinkAssociationProperties",
+}) as any as S.Schema<PrivateLinkAssociationProperties>;
+
 export interface PrivateLinkAssociationPutRequest {
   /** The management group ID. */
   groupId: string;
   /** The ID of the PLA */
   plaId: string;
-  body: unknown;
+  /** The properties of the PrivateLinkAssociation. */
+  properties?: PrivateLinkAssociationProperties;
 }
 export const PrivateLinkAssociationPutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
     plaId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(PrivateLinkAssociationProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -14179,7 +15848,8 @@ export const ProviderResourceTypesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderResourceTypesListRequest>;
 
 /** The ProviderResourceType items on this page */
-export type ProviderResourceTypeListResultValueList = ProviderResourceType[];
+export type ProviderResourceTypeListResultValueList =
+  ReadonlyArray<ProviderResourceType>;
 export const ProviderResourceTypeListResultValueList = /*@__PURE__*/ S.Array(
   ProviderResourceType,
 ) as any as S.Schema<ProviderResourceTypeListResultValueList>;
@@ -14270,7 +15940,7 @@ export const ProvidersListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProvidersListRequest>;
 
 /** The Provider items on this page */
-export type ProviderListResultValueList = Provider[];
+export type ProviderListResultValueList = ReadonlyArray<Provider>;
 export const ProviderListResultValueList = /*@__PURE__*/ S.Array(
   Provider,
 ) as any as S.Schema<ProviderListResultValueList>;
@@ -14333,25 +16003,25 @@ export const ProvidersProviderPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProvidersProviderPermissionsRequest>;
 
 /** Allowed actions. */
-export type PermissionActionsList = string[];
+export type PermissionActionsList = ReadonlyArray<string>;
 export const PermissionActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionActionsList>;
 
 /** Denied actions. */
-export type PermissionNotActionsList = string[];
+export type PermissionNotActionsList = ReadonlyArray<string>;
 export const PermissionNotActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionNotActionsList>;
 
 /** Allowed Data actions. */
-export type PermissionDataActionsList = string[];
+export type PermissionDataActionsList = ReadonlyArray<string>;
 export const PermissionDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionDataActionsList>;
 
 /** Denied Data actions. */
-export type PermissionNotDataActionsList = string[];
+export type PermissionNotDataActionsList = ReadonlyArray<string>;
 export const PermissionNotDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionNotDataActionsList>;
@@ -14377,13 +16047,13 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
 /** Role definition permissions. */
-export type RoleDefinitionPermissionsList = Permission[];
+export type RoleDefinitionPermissionsList = ReadonlyArray<Permission>;
 export const RoleDefinitionPermissionsList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<RoleDefinitionPermissionsList>;
 
 /** Role definition assignable scopes. */
-export type RoleDefinitionScopesList = string[];
+export type RoleDefinitionScopesList = ReadonlyArray<string>;
 export const RoleDefinitionScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoleDefinitionScopesList>;
@@ -14436,7 +16106,8 @@ export const ProviderPermission = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderPermission>;
 
 /** The ProviderPermission items on this page */
-export type ProviderPermissionListResultValueList = ProviderPermission[];
+export type ProviderPermissionListResultValueList =
+  ReadonlyArray<ProviderPermission>;
 export const ProviderPermissionListResultValueList = /*@__PURE__*/ S.Array(
   ProviderPermission,
 ) as any as S.Schema<ProviderPermissionListResultValueList>;
@@ -14457,18 +16128,32 @@ export const ProviderPermissionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProviderPermissionListResult",
 }) as any as S.Schema<ProviderPermissionListResult>;
 
+/** The provider consent. */
+export interface ProviderConsentDefinition {
+  /** A value indicating whether authorization is consented or not. */
+  consentToAuthorization?: boolean;
+}
+export const ProviderConsentDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consentToAuthorization: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ProviderConsentDefinition",
+}) as any as S.Schema<ProviderConsentDefinition>;
+
 export interface ProvidersRegisterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The namespace of the resource provider to register. */
   resourceProviderNamespace: string;
-  body?: unknown;
+  /** The provider consent. */
+  thirdPartyProviderConsent?: ProviderConsentDefinition;
 }
 export const ProvidersRegisterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceProviderNamespace: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    thirdPartyProviderConsent: S.optional(ProviderConsentDefinition),
   }).pipe(
     T.Http({
       method: "POST",
@@ -14531,18 +16216,46 @@ export const ProvidersUnregisterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProvidersUnregisterRequest",
 }) as any as S.Schema<ProvidersUnregisterRequest>;
 
+/** Resource tags. */
+export type ResourceGroupsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ResourceGroupsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ResourceGroupsCreateOrUpdateRequestTagsMap>;
+
+/** The resource group properties. */
+export interface ResourceGroupPropertiesInput {}
+export const ResourceGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ResourceGroupPropertiesInput",
+}) as any as S.Schema<ResourceGroupPropertiesInput>;
+
 export interface ResourceGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group to get. The name is case insensitive. */
   resourceGroupName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ResourceGroupsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource group properties. */
+  properties?: ResourceGroupPropertiesInput;
+  /** The ID of the resource that manages this resource group. */
+  managedBy?: string;
 }
 export const ResourceGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ResourceGroupsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ResourceGroupPropertiesInput),
+    managedBy: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -14644,18 +16357,37 @@ export const ResourceGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceGroupsDeleteResponse",
 }) as any as S.Schema<ResourceGroupsDeleteResponse>;
 
+/** The IDs of the resources to filter the export by. To export all resources, supply an array with single entry '*'. */
+export type ResourceGroupsExportTemplateRequestResourcesList =
+  ReadonlyArray<string>;
+export const ResourceGroupsExportTemplateRequestResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ResourceGroupsExportTemplateRequestResourcesList>;
+
+/** The output format for the exported resources. */
+export type ExportTemplateOutputFormat = "Json" | "Bicep";
+export const ExportTemplateOutputFormat = /*@__PURE__*/ S.String;
+
 export interface ResourceGroupsExportTemplateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group to get. The name is case insensitive. */
   resourceGroupName: string;
-  body: unknown;
+  /** The IDs of the resources to filter the export by. To export all resources, supply an array with single entry '*'. */
+  resources?: ResourceGroupsExportTemplateRequestResourcesList;
+  /** The export template options. A CSV-formatted list containing zero or more of the following: 'IncludeParameterDefaultValue', 'IncludeComments', 'SkipResourceNameParameterization', 'SkipAllParameterization' */
+  options?: string;
+  /** The output format for the exported resources. */
+  outputFormat?: ExportTemplateOutputFormat;
 }
 export const ResourceGroupsExportTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    resources: S.optional(ResourceGroupsExportTemplateRequestResourcesList),
+    options: S.optional(S.String),
+    outputFormat: S.optional(ExportTemplateOutputFormat),
   }).pipe(
     T.Http({
       method: "POST",
@@ -14669,14 +16401,15 @@ export const ResourceGroupsExportTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceGroupsExportTemplateRequest>;
 
 /** The error details. */
-export type ResourceGroupExportResultErrorDetailsList = ErrorDetail[];
+export type ResourceGroupExportResultErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const ResourceGroupExportResultErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ResourceGroupExportResultErrorDetailsList>;
 
 /** The error additional info. */
 export type ResourceGroupExportResultErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const ResourceGroupExportResultErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -14857,7 +16590,7 @@ export const ResourceGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceGroup" }) as any as S.Schema<ResourceGroup>;
 
 /** The ResourceGroup items on this page */
-export type ResourceGroupListResultValueList = ResourceGroup[];
+export type ResourceGroupListResultValueList = ReadonlyArray<ResourceGroup>;
 export const ResourceGroupListResultValueList = /*@__PURE__*/ S.Array(
   ResourceGroup,
 ) as any as S.Schema<ResourceGroupListResultValueList>;
@@ -14878,18 +16611,37 @@ export const ResourceGroupListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceGroupListResult",
 }) as any as S.Schema<ResourceGroupListResult>;
 
+/** The tags attached to the resource group. */
+export type ResourceGroupsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ResourceGroupsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ResourceGroupsUpdateRequestTagsMap>;
+
 export interface ResourceGroupsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group to get. The name is case insensitive. */
   resourceGroupName: string;
-  body: unknown;
+  /** The name of the resource group. */
+  name?: string;
+  /** The resource group properties. */
+  properties?: ResourceGroupPropertiesInput;
+  /** The ID of the resource that manages this resource group. */
+  managedBy?: string;
+  /** The tags attached to the resource group. */
+  tags?: ResourceGroupsUpdateRequestTagsMap;
 }
 export const ResourceGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.optional(S.String),
+    properties: S.optional(ResourceGroupPropertiesInput),
+    managedBy: S.optional(S.String),
+    tags: S.optional(ResourceGroupsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -14944,15 +16696,32 @@ export const ResourceGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceGroupsUpdateResponse",
 }) as any as S.Schema<ResourceGroupsUpdateResponse>;
 
+/** The resource link properties. */
+export interface ResourceLinkPropertiesInput {
+  /** The fully qualified ID of the target resource in the link. */
+  targetId: string;
+  /** Notes about the resource link. */
+  notes?: string;
+}
+export const ResourceLinkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetId: S.String,
+    notes: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceLinkPropertiesInput",
+}) as any as S.Schema<ResourceLinkPropertiesInput>;
+
 export interface ResourceLinksCreateOrUpdateRequest {
   /** The fully qualified ID of the resource link. Use the format, /subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/{provider-namespace}/{resource-type}/{resource-name}/Microsoft.Resources/links/{link-name}. For example, /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myGroup/Microsoft.Web/sites/mySite/Microsoft.Resources/links/myLink */
   linkId: string;
-  body: unknown;
+  /** Properties for resource link. */
+  properties?: ResourceLinkPropertiesInput;
 }
 export const ResourceLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ResourceLinkPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -15049,9 +16818,7 @@ export const ResourceLinksGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceLinksGetRequest",
 }) as any as S.Schema<ResourceLinksGetRequest>;
 
-export type ResourceLinksListAtSourceScopeRequestFilter =
-  | "atScope()"
-  | (string & {});
+export type ResourceLinksListAtSourceScopeRequestFilter = "atScope()";
 export const ResourceLinksListAtSourceScopeRequestFilter =
   /*@__PURE__*/ S.String;
 
@@ -15081,7 +16848,7 @@ export const ResourceLinksListAtSourceScopeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ResourceLinksListAtSourceScopeRequest>;
 
 /** An array of resource links. */
-export type ResourceLinkResultValueList = ResourceLink[];
+export type ResourceLinkResultValueList = ReadonlyArray<ResourceLink>;
 export const ResourceLinkResultValueList = /*@__PURE__*/ S.Array(
   ResourceLink,
 ) as any as S.Schema<ResourceLinkResultValueList>;
@@ -15185,7 +16952,7 @@ export const ResourceManagementPrivateLinkGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The private endpoint connections. */
 export type ResourceManagementPrivateLinkEndpointConnectionsPrivateEndpointConnectionsList =
-  string[];
+  ReadonlyArray<string>;
 export const ResourceManagementPrivateLinkEndpointConnectionsPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15251,7 +17018,7 @@ export const ResourceManagementPrivateLinkListRequest = /*@__PURE__*/ S.suspend(
 
 /** An array of resource management private links. */
 export type ResourceManagementPrivateLinkListResultValueList =
-  ResourceManagementPrivateLink[];
+  ReadonlyArray<ResourceManagementPrivateLink>;
 export const ResourceManagementPrivateLinkListResultValueList =
   /*@__PURE__*/ S.Array(
     ResourceManagementPrivateLink,
@@ -15300,7 +17067,8 @@ export interface ResourceManagementPrivateLinkPutRequest {
   resourceGroupName: string;
   /** The name of the resource management private link. */
   rmplName: string;
-  body: unknown;
+  /** the region to create private link association. */
+  location?: string;
 }
 export const ResourceManagementPrivateLinkPutRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -15308,7 +17076,7 @@ export const ResourceManagementPrivateLinkPutRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       rmplName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -15320,42 +17088,6 @@ export const ResourceManagementPrivateLinkPutRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ResourceManagementPrivateLinkPutRequest",
 }) as any as S.Schema<ResourceManagementPrivateLinkPutRequest>;
-
-export interface ResourcesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group containing the resource to get. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The resource provider of the resource to check. */
-  resourceProviderNamespace: string;
-  /** The parent resource identity. */
-  parentResourcePath: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The name of the resource to check whether it exists. */
-  resourceName: string;
-  body: unknown;
-}
-export const ResourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceProviderNamespace: S.String.pipe(T.Label()),
-    parentResourcePath: S.String.pipe(T.Label()),
-    resourceType: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}",
-      code: 200,
-      apiVersion: "2025-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ResourcesCreateOrUpdateRequest",
-}) as any as S.Schema<ResourcesCreateOrUpdateRequest>;
 
 /** Plan for the resource. */
 export interface Plan {
@@ -15411,9 +17143,132 @@ export type ResourceIdentityType_2 =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const ResourceIdentityType_2 = /*@__PURE__*/ S.String;
+
+export interface IdentityUserAssignedIdentitiesValueInput {}
+export const IdentityUserAssignedIdentitiesValueInput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "IdentityUserAssignedIdentitiesValueInput",
+}) as any as S.Schema<IdentityUserAssignedIdentitiesValueInput>;
+
+/** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type IdentityInputUserAssignedIdentitiesMap_2 = {
+  [key: string]: IdentityUserAssignedIdentitiesValueInput | undefined;
+};
+export const IdentityInputUserAssignedIdentitiesMap_2 = /*@__PURE__*/ S.Record(
+  S.String,
+  IdentityUserAssignedIdentitiesValueInput,
+) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap_2>;
+
+/** Identity for the resource. */
+export interface IdentityInput_2 {
+  /** The identity type. */
+  type?: ResourceIdentityType_2;
+  /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap_2;
+}
+export const IdentityInput_2 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ResourceIdentityType_2),
+    userAssignedIdentities: S.optional(
+      IdentityInputUserAssignedIdentitiesMap_2,
+    ),
+  }),
+).annotate({
+  identifier: "IdentityInput_2",
+}) as any as S.Schema<IdentityInput_2>;
+
+/** The extended location type. */
+export type ExtendedLocationType = "EdgeZone";
+export const ExtendedLocationType = /*@__PURE__*/ S.String;
+
+/** Resource extended location. */
+export interface ExtendedLocation {
+  /** The extended location type. */
+  type?: ExtendedLocationType;
+  /** The extended location name. */
+  name?: string;
+}
+export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ExtendedLocationType),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExtendedLocation",
+}) as any as S.Schema<ExtendedLocation>;
+
+/** Resource tags */
+export type ResourcesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ResourcesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ResourcesCreateOrUpdateRequestTagsMap>;
+
+export interface ResourcesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group containing the resource to get. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The resource provider of the resource to check. */
+  resourceProviderNamespace: string;
+  /** The parent resource identity. */
+  parentResourcePath: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The name of the resource to check whether it exists. */
+  resourceName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: unknown;
+  /** The plan of the resource. */
+  plan?: Plan;
+  /** The kind of the resource. */
+  kind?: string;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku;
+  /** The identity of the resource. */
+  identity?: IdentityInput_2;
+  /** Resource location */
+  location?: string;
+  /** Resource extended location. */
+  extendedLocation?: ExtendedLocation;
+  /** Resource tags */
+  tags?: ResourcesCreateOrUpdateRequestTagsMap;
+}
+export const ResourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceProviderNamespace: S.String.pipe(T.Label()),
+    parentResourcePath: S.String.pipe(T.Label()),
+    resourceType: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+    properties: S.optional(S.Unknown),
+    plan: S.optional(Plan),
+    kind: S.optional(S.String),
+    managedBy: S.optional(S.String),
+    sku: S.optional(Sku),
+    identity: S.optional(IdentityInput_2),
+    location: S.optional(S.String),
+    extendedLocation: S.optional(ExtendedLocation),
+    tags: S.optional(ResourcesCreateOrUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}",
+      code: 200,
+      apiVersion: "2025-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ResourcesCreateOrUpdateRequest",
+}) as any as S.Schema<ResourcesCreateOrUpdateRequest>;
 
 export interface IdentityUserAssignedIdentitiesValue {
   /** The principal id of user assigned identity. */
@@ -15458,26 +17313,6 @@ export const Identity_2 = /*@__PURE__*/ S.suspend(() =>
     userAssignedIdentities: S.optional(IdentityUserAssignedIdentitiesMap_2),
   }),
 ).annotate({ identifier: "Identity_2" }) as any as S.Schema<Identity_2>;
-
-/** The extended location type. */
-export type ExtendedLocationType = "EdgeZone" | (string & {});
-export const ExtendedLocationType = /*@__PURE__*/ S.String;
-
-/** Resource extended location. */
-export interface ExtendedLocation {
-  /** The extended location type. */
-  type?: ExtendedLocationType;
-  /** The extended location name. */
-  name?: string;
-}
-export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ExtendedLocationType),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExtendedLocation",
-}) as any as S.Schema<ExtendedLocation>;
 
 /** Resource tags */
 export type ResourcesCreateOrUpdateResponseTagsMap = {
@@ -15536,14 +17371,48 @@ export const ResourcesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourcesCreateOrUpdateResponse",
 }) as any as S.Schema<ResourcesCreateOrUpdateResponse>;
 
+/** Resource tags */
+export type ResourcesCreateOrUpdateByIdRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ResourcesCreateOrUpdateByIdRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ResourcesCreateOrUpdateByIdRequestTagsMap>;
+
 export interface ResourcesCreateOrUpdateByIdRequest {
   resourceId: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: unknown;
+  /** The plan of the resource. */
+  plan?: Plan;
+  /** The kind of the resource. */
+  kind?: string;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku;
+  /** The identity of the resource. */
+  identity?: IdentityInput_2;
+  /** Resource location */
+  location?: string;
+  /** Resource extended location. */
+  extendedLocation?: ExtendedLocation;
+  /** Resource tags */
+  tags?: ResourcesCreateOrUpdateByIdRequestTagsMap;
 }
 export const ResourcesCreateOrUpdateByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(S.Unknown),
+    plan: S.optional(Plan),
+    kind: S.optional(S.String),
+    managedBy: S.optional(S.String),
+    sku: S.optional(Sku),
+    identity: S.optional(IdentityInput_2),
+    location: S.optional(S.String),
+    extendedLocation: S.optional(ExtendedLocation),
+    tags: S.optional(ResourcesCreateOrUpdateByIdRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -15940,7 +17809,8 @@ export const GenericResourceExpanded = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenericResourceExpanded>;
 
 /** The GenericResourceExpanded items on this page */
-export type ResourceListResultValueList = GenericResourceExpanded[];
+export type ResourceListResultValueList =
+  ReadonlyArray<GenericResourceExpanded>;
 export const ResourceListResultValueList = /*@__PURE__*/ S.Array(
   GenericResourceExpanded,
 ) as any as S.Schema<ResourceListResultValueList>;
@@ -15992,18 +17862,28 @@ export const ResourcesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourcesListByResourceGroupRequest",
 }) as any as S.Schema<ResourcesListByResourceGroupRequest>;
 
+/** The IDs of the resources. */
+export type ResourcesMoveResourcesRequestResourcesList = ReadonlyArray<string>;
+export const ResourcesMoveResourcesRequestResourcesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourcesMoveResourcesRequestResourcesList>;
+
 export interface ResourcesMoveResourcesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group to get. The name is case insensitive. */
   sourceResourceGroupName: string;
-  body: unknown;
+  /** The IDs of the resources. */
+  resources?: ResourcesMoveResourcesRequestResourcesList;
+  /** The target resource group. */
+  targetResourceGroup?: string;
 }
 export const ResourcesMoveResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     sourceResourceGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    resources: S.optional(ResourcesMoveResourcesRequestResourcesList),
+    targetResourceGroup: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -16023,6 +17903,15 @@ export const ResourcesMoveResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourcesMoveResourcesResponse",
 }) as any as S.Schema<ResourcesMoveResourcesResponse>;
 
+/** Resource tags */
+export type ResourcesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ResourcesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ResourcesUpdateRequestTagsMap>;
+
 export interface ResourcesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -16036,7 +17925,24 @@ export interface ResourcesUpdateRequest {
   resourceType: string;
   /** The name of the resource to check whether it exists. */
   resourceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: unknown;
+  /** The plan of the resource. */
+  plan?: Plan;
+  /** The kind of the resource. */
+  kind?: string;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku;
+  /** The identity of the resource. */
+  identity?: IdentityInput_2;
+  /** Resource location */
+  location?: string;
+  /** Resource extended location. */
+  extendedLocation?: ExtendedLocation;
+  /** Resource tags */
+  tags?: ResourcesUpdateRequestTagsMap;
 }
 export const ResourcesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16046,7 +17952,15 @@ export const ResourcesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     parentResourcePath: S.String.pipe(T.Label()),
     resourceType: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(S.Unknown),
+    plan: S.optional(Plan),
+    kind: S.optional(S.String),
+    managedBy: S.optional(S.String),
+    sku: S.optional(Sku),
+    identity: S.optional(IdentityInput_2),
+    location: S.optional(S.String),
+    extendedLocation: S.optional(ExtendedLocation),
+    tags: S.optional(ResourcesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -16116,14 +18030,48 @@ export const ResourcesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourcesUpdateResponse",
 }) as any as S.Schema<ResourcesUpdateResponse>;
 
+/** Resource tags */
+export type ResourcesUpdateByIdRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ResourcesUpdateByIdRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ResourcesUpdateByIdRequestTagsMap>;
+
 export interface ResourcesUpdateByIdRequest {
   resourceId: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: unknown;
+  /** The plan of the resource. */
+  plan?: Plan;
+  /** The kind of the resource. */
+  kind?: string;
+  /** ID of the resource that manages this resource. */
+  managedBy?: string;
+  /** The SKU of the resource. */
+  sku?: Sku;
+  /** The identity of the resource. */
+  identity?: IdentityInput_2;
+  /** Resource location */
+  location?: string;
+  /** Resource extended location. */
+  extendedLocation?: ExtendedLocation;
+  /** Resource tags */
+  tags?: ResourcesUpdateByIdRequestTagsMap;
 }
 export const ResourcesUpdateByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(S.Unknown),
+    plan: S.optional(Plan),
+    kind: S.optional(S.String),
+    managedBy: S.optional(S.String),
+    sku: S.optional(Sku),
+    identity: S.optional(IdentityInput_2),
+    location: S.optional(S.String),
+    extendedLocation: S.optional(ExtendedLocation),
+    tags: S.optional(ResourcesUpdateByIdRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -16193,19 +18141,31 @@ export const ResourcesUpdateByIdResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourcesUpdateByIdResponse",
 }) as any as S.Schema<ResourcesUpdateByIdResponse>;
 
+/** The IDs of the resources. */
+export type ResourcesValidateMoveResourcesRequestResourcesList =
+  ReadonlyArray<string>;
+export const ResourcesValidateMoveResourcesRequestResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ResourcesValidateMoveResourcesRequestResourcesList>;
+
 export interface ResourcesValidateMoveResourcesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group to get. The name is case insensitive. */
   sourceResourceGroupName: string;
-  body: unknown;
+  /** The IDs of the resources. */
+  resources?: ResourcesValidateMoveResourcesRequestResourcesList;
+  /** The target resource group. */
+  targetResourceGroup?: string;
 }
 export const ResourcesValidateMoveResourcesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       sourceResourceGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resources: S.optional(ResourcesValidateMoveResourcesRequestResourcesList),
+      targetResourceGroup: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -16225,13 +18185,60 @@ export const ResourcesValidateMoveResourcesResponse = /*@__PURE__*/ S.suspend(
   identifier: "ResourcesValidateMoveResourcesResponse",
 }) as any as S.Schema<ResourcesValidateMoveResourcesResponse>;
 
+/** The body of the resource to validate. In most cases, this should be the exact same resource body as on an ARM resource PUT request plus the apiVersion property. */
+export interface ResourceValidationRequestResource {
+  /** The API version to use with this resource. */
+  apiVersion: string;
+  /** Set this to true if this resource is meant to be provisioned only if it does not exist. */
+  onlyIfNotExists?: boolean;
+}
+export const ResourceValidationRequestResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiVersion: S.String,
+    onlyIfNotExists: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ResourceValidationRequestResource",
+}) as any as S.Schema<ResourceValidationRequestResource>;
+
+/** The list of resources to validate. Each resource in the list must have the same namespace, type, and location. The namespace and type on each resource must match the corresponding values in the top-level request. The location on each resource must match the top-level location in the request if specified. */
+export type ResourceValidatorValidateResourcesRequestResourcesList =
+  ReadonlyArray<ResourceValidationRequestResource>;
+export const ResourceValidatorValidateResourcesRequestResourcesList =
+  /*@__PURE__*/ S.Array(
+    ResourceValidationRequestResource,
+  ) as any as S.Schema<ResourceValidatorValidateResourcesRequestResourcesList>;
+
+/** The type of resource validation */
+export type ResourceValidationType = "ArmFull" | "ArmPartial";
+export const ResourceValidationType = /*@__PURE__*/ S.String;
+
 export interface ResourceValidatorValidateResourcesRequest {
-  body: unknown;
+  /** The resource provider namespace of the resources being validated */
+  provider: string;
+  /** The type of the resources being validated */
+  type: string;
+  /** The optional location for the resources being validated */
+  location?: string;
+  /** The scope of the resources being validated */
+  scope: string;
+  /** The list of resources to validate. Each resource in the list must have the same namespace, type, and location. The namespace and type on each resource must match the corresponding values in the top-level request. The location on each resource must match the top-level location in the request if specified. */
+  resources: ResourceValidatorValidateResourcesRequestResourcesList;
+  /** The type of resource validation to perform */
+  validationType?: ResourceValidationType;
+  /** If true, the validation will be performed without checking RBAC write permissions. */
+  performPreflightWithoutRbacWriteCheck?: boolean;
 }
 export const ResourceValidatorValidateResourcesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      provider: S.String,
+      type: S.String,
+      location: S.optional(S.String),
+      scope: S.String,
+      resources: ResourceValidatorValidateResourcesRequestResourcesList,
+      validationType: S.optional(ResourceValidationType),
+      performPreflightWithoutRbacWriteCheck: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -16246,7 +18253,7 @@ export const ResourceValidatorValidateResourcesRequest =
 
 /** List of ARM resource IDs corresponding to the resources that were successfully validated */
 export type ResourceValidationResponsePropertiesValidatedResourcesList =
-  string[];
+  ReadonlyArray<string>;
 export const ResourceValidationResponsePropertiesValidatedResourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16280,6 +18287,64 @@ export const ResourceValidationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceValidationResponse",
 }) as any as S.Schema<ResourceValidationResponse>;
 
+/** The state. */
+export type SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState =
+    | "NotSpecified"
+    | "NotRegistered"
+    | "Pending"
+    | "Registering"
+    | "Registered"
+    | "Unregistering"
+    | "Unregistered";
+export const SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState =
+  /*@__PURE__*/ S.String;
+
+/** Authorization Profile */
+export interface AuthorizationProfileInput {}
+export const AuthorizationProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AuthorizationProfileInput",
+}) as any as S.Schema<AuthorizationProfileInput>;
+
+/** Key-value pairs for meta data. */
+export type SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesMetadataMap =
+  { [key: string]: string | undefined };
+export const SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesMetadataMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesMetadataMap>;
+
+export interface SubscriptionFeatureRegistrationsCreateOrUpdateRequestProperties {
+  /** The state. */
+  state?: SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState;
+  authorizationProfile?: AuthorizationProfileInput;
+  /** Key-value pairs for meta data. */
+  metadata?: SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesMetadataMap;
+  /** Indicates whether feature should be displayed in Portal. */
+  shouldFeatureDisplayInPortal?: boolean;
+  /** The feature description. */
+  description?: string;
+}
+export const SubscriptionFeatureRegistrationsCreateOrUpdateRequestProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: S.optional(
+        SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState,
+      ),
+      authorizationProfile: S.optional(AuthorizationProfileInput),
+      metadata: S.optional(
+        SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesMetadataMap,
+      ),
+      shouldFeatureDisplayInPortal: S.optional(S.Boolean),
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SubscriptionFeatureRegistrationsCreateOrUpdateRequestProperties",
+  }) as any as S.Schema<SubscriptionFeatureRegistrationsCreateOrUpdateRequestProperties>;
+
 export interface SubscriptionFeatureRegistrationsCreateOrUpdateRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -16287,7 +18352,7 @@ export interface SubscriptionFeatureRegistrationsCreateOrUpdateRequest {
   providerNamespace: string;
   /** The feature name. */
   featureName: string;
-  body?: unknown;
+  properties?: SubscriptionFeatureRegistrationsCreateOrUpdateRequestProperties;
 }
 export const SubscriptionFeatureRegistrationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16295,7 +18360,9 @@ export const SubscriptionFeatureRegistrationsCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       providerNamespace: S.String.pipe(T.Label()),
       featureName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(
+        SubscriptionFeatureRegistrationsCreateOrUpdateRequestProperties,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -16316,8 +18383,7 @@ export type SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesStat
     | "Registering"
     | "Registered"
     | "Unregistering"
-    | "Unregistered"
-    | (string & {});
+    | "Unregistered";
 export const SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -16357,7 +18423,7 @@ export const SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesMet
 
 /** The feature approval type. */
 export type SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesApprovalType =
-  "NotSpecified" | "ApprovalRequired" | "AutoApproval" | (string & {});
+  "NotSpecified" | "ApprovalRequired" | "AutoApproval";
 export const SubscriptionFeatureRegistrationsCreateOrUpdateResponsePropertiesApprovalType =
   /*@__PURE__*/ S.String;
 
@@ -16508,8 +18574,7 @@ export type SubscriptionFeatureRegistrationsGetResponsePropertiesState =
   | "Registering"
   | "Registered"
   | "Unregistering"
-  | "Unregistered"
-  | (string & {});
+  | "Unregistered";
 export const SubscriptionFeatureRegistrationsGetResponsePropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -16527,8 +18592,7 @@ export const SubscriptionFeatureRegistrationsGetResponsePropertiesMetadataMap =
 export type SubscriptionFeatureRegistrationsGetResponsePropertiesApprovalType =
   | "NotSpecified"
   | "ApprovalRequired"
-  | "AutoApproval"
-  | (string & {});
+  | "AutoApproval";
 export const SubscriptionFeatureRegistrationsGetResponsePropertiesApprovalType =
   /*@__PURE__*/ S.String;
 
@@ -16640,8 +18704,7 @@ export type SubscriptionFeatureRegistrationPropertiesState =
   | "Registering"
   | "Registered"
   | "Unregistering"
-  | "Unregistered"
-  | (string & {});
+  | "Unregistered";
 export const SubscriptionFeatureRegistrationPropertiesState =
   /*@__PURE__*/ S.String;
 
@@ -16659,8 +18722,7 @@ export const SubscriptionFeatureRegistrationPropertiesMetadataMap =
 export type SubscriptionFeatureRegistrationPropertiesApprovalType =
   | "NotSpecified"
   | "ApprovalRequired"
-  | "AutoApproval"
-  | (string & {});
+  | "AutoApproval";
 export const SubscriptionFeatureRegistrationPropertiesApprovalType =
   /*@__PURE__*/ S.String;
 
@@ -16742,7 +18804,7 @@ export const SubscriptionFeatureRegistration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of subscription feature registrations. */
 export type SubscriptionFeatureRegistrationListValueList =
-  SubscriptionFeatureRegistration[];
+  ReadonlyArray<SubscriptionFeatureRegistration>;
 export const SubscriptionFeatureRegistrationListValueList =
   /*@__PURE__*/ S.Array(
     SubscriptionFeatureRegistration,
@@ -16787,15 +18849,29 @@ export const SubscriptionFeatureRegistrationsListBySubscriptionRequest =
     identifier: "SubscriptionFeatureRegistrationsListBySubscriptionRequest",
   }) as any as S.Schema<SubscriptionFeatureRegistrationsListBySubscriptionRequest>;
 
+/** The peer Microsoft Azure subscription ID. */
+export type SubscriptionsCheckZonePeersRequestSubscriptionIdsList =
+  ReadonlyArray<string>;
+export const SubscriptionsCheckZonePeersRequestSubscriptionIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SubscriptionsCheckZonePeersRequestSubscriptionIdsList>;
+
 export interface SubscriptionsCheckZonePeersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** The Microsoft location. */
+  location?: string;
+  /** The peer Microsoft Azure subscription ID. */
+  subscriptionIds?: SubscriptionsCheckZonePeersRequestSubscriptionIdsList;
 }
 export const SubscriptionsCheckZonePeersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    subscriptionIds: S.optional(
+      SubscriptionsCheckZonePeersRequestSubscriptionIdsList,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -16823,7 +18899,7 @@ export const Peers = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Peers" }) as any as S.Schema<Peers>;
 
 /** Details of shared availability zone. */
-export type AvailabilityZonePeersPeersList = Peers[];
+export type AvailabilityZonePeersPeersList = ReadonlyArray<Peers>;
 export const AvailabilityZonePeersPeersList = /*@__PURE__*/ S.Array(
   Peers,
 ) as any as S.Schema<AvailabilityZonePeersPeersList>;
@@ -16846,7 +18922,7 @@ export const AvailabilityZonePeers = /*@__PURE__*/ S.suspend(() =>
 
 /** The Availability Zones shared by the subscriptions. */
 export type CheckZonePeersResultAvailabilityZonePeersList =
-  AvailabilityZonePeers[];
+  ReadonlyArray<AvailabilityZonePeers>;
 export const CheckZonePeersResultAvailabilityZonePeersList =
   /*@__PURE__*/ S.Array(
     AvailabilityZonePeers,
@@ -16898,12 +18974,11 @@ export type SubscriptionState =
   | "Warned"
   | "PastDue"
   | "Disabled"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const SubscriptionState = /*@__PURE__*/ S.String;
 
 /** The subscription spending limit. */
-export type SpendingLimit = "On" | "Off" | "CurrentPeriodOff" | (string & {});
+export type SpendingLimit = "On" | "Off" | "CurrentPeriodOff";
 export const SpendingLimit = /*@__PURE__*/ S.String;
 
 /** Subscription policies. */
@@ -16939,7 +19014,7 @@ export const ManagedByTenant = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedByTenant>;
 
 /** An array containing the tenants managing the subscription. */
-export type SubscriptionManagedByTenantsList = ManagedByTenant[];
+export type SubscriptionManagedByTenantsList = ReadonlyArray<ManagedByTenant>;
 export const SubscriptionManagedByTenantsList = /*@__PURE__*/ S.Array(
   ManagedByTenant,
 ) as any as S.Schema<SubscriptionManagedByTenantsList>;
@@ -17001,7 +19076,7 @@ export const SubscriptionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsListRequest>;
 
 /** The Subscription items on this page */
-export type SubscriptionListResultValueList = Subscription[];
+export type SubscriptionListResultValueList = ReadonlyArray<Subscription>;
 export const SubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionListResultValueList>;
@@ -17045,19 +19120,15 @@ export const SubscriptionsListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionsListLocationsRequest>;
 
 /** The location type. */
-export type LocationType = "Region" | "EdgeZone" | (string & {});
+export type LocationType = "Region" | "EdgeZone";
 export const LocationType = /*@__PURE__*/ S.String;
 
 /** The type of the region. */
-export type RegionType = "Physical" | "Logical" | (string & {});
+export type RegionType = "Physical" | "Logical";
 export const RegionType = /*@__PURE__*/ S.String;
 
 /** The category of the region. */
-export type RegionCategory =
-  | "Recommended"
-  | "Extended"
-  | "Other"
-  | (string & {});
+export type RegionCategory = "Recommended" | "Extended" | "Other";
 export const RegionCategory = /*@__PURE__*/ S.String;
 
 /** Information regarding paired region. */
@@ -17078,7 +19149,7 @@ export const PairedRegion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PairedRegion" }) as any as S.Schema<PairedRegion>;
 
 /** The regions paired to this region. */
-export type LocationMetadataPairedRegionList = PairedRegion[];
+export type LocationMetadataPairedRegionList = ReadonlyArray<PairedRegion>;
 export const LocationMetadataPairedRegionList = /*@__PURE__*/ S.Array(
   PairedRegion,
 ) as any as S.Schema<LocationMetadataPairedRegionList>;
@@ -17137,7 +19208,8 @@ export const AvailabilityZoneMappings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailabilityZoneMappings>;
 
 /** The availability zone mappings for this region. */
-export type LocationAvailabilityZoneMappingsList = AvailabilityZoneMappings[];
+export type LocationAvailabilityZoneMappingsList =
+  ReadonlyArray<AvailabilityZoneMappings>;
 export const LocationAvailabilityZoneMappingsList = /*@__PURE__*/ S.Array(
   AvailabilityZoneMappings,
 ) as any as S.Schema<LocationAvailabilityZoneMappingsList>;
@@ -17175,7 +19247,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 /** An array of locations. */
-export type LocationListResultValueList = Location[];
+export type LocationListResultValueList = ReadonlyArray<Location>;
 export const LocationListResultValueList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationListResultValueList>;
@@ -17250,7 +19322,7 @@ export const TagValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagValue" }) as any as S.Schema<TagValue>;
 
 /** The list of tag values. */
-export type TagDetailsValuesList = TagValue[];
+export type TagDetailsValuesList = ReadonlyArray<TagValue>;
 export const TagDetailsValuesList = /*@__PURE__*/ S.Array(
   TagValue,
 ) as any as S.Schema<TagDetailsValuesList>;
@@ -17275,27 +19347,6 @@ export const TagDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TagDetails" }) as any as S.Schema<TagDetails>;
 
-export interface TagsCreateOrUpdateAtScopeRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  body: unknown;
-}
-export const TagsCreateOrUpdateAtScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/{scope}/providers/Microsoft.Resources/tags/default",
-      code: 200,
-      apiVersion: "2025-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "TagsCreateOrUpdateAtScopeRequest",
-}) as any as S.Schema<TagsCreateOrUpdateAtScopeRequest>;
-
 /** Dictionary of <string> */
 export type TagsTagsMap = { [key: string]: string | undefined };
 export const TagsTagsMap = /*@__PURE__*/ S.Record(
@@ -17313,6 +19364,28 @@ export const Tags = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(TagsTagsMap),
   }),
 ).annotate({ identifier: "Tags" }) as any as S.Schema<Tags>;
+
+export interface TagsCreateOrUpdateAtScopeRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** The set of tags. */
+  properties: Tags;
+}
+export const TagsCreateOrUpdateAtScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    properties: Tags,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/{scope}/providers/Microsoft.Resources/tags/default",
+      code: 200,
+      apiVersion: "2025-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "TagsCreateOrUpdateAtScopeRequest",
+}) as any as S.Schema<TagsCreateOrUpdateAtScopeRequest>;
 
 export interface TagsCreateOrUpdateAtScopeResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -17513,7 +19586,7 @@ export const TagsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TagsListRequest>;
 
 /** The TagDetails items on this page */
-export type TagsListResultValueList = TagDetails[];
+export type TagsListResultValueList = ReadonlyArray<TagDetails>;
 export const TagsListResultValueList = /*@__PURE__*/ S.Array(
   TagDetails,
 ) as any as S.Schema<TagsListResultValueList>;
@@ -17532,15 +19605,23 @@ export const TagsListResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TagsListResult" }) as any as S.Schema<TagsListResult>;
 
+/** The operation type for the patch API. */
+export type TagsPatchOperation = "Replace" | "Merge" | "Delete";
+export const TagsPatchOperation = /*@__PURE__*/ S.String;
+
 export interface TagsUpdateAtScopeRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
-  body: unknown;
+  /** The operation type for the patch API. */
+  operation?: TagsPatchOperation;
+  /** The set of tags. */
+  properties?: Tags;
 }
 export const TagsUpdateAtScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    operation: S.optional(TagsPatchOperation),
+    properties: S.optional(Tags),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -17577,6 +19658,34 @@ export const TagsUpdateAtScopeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TagsUpdateAtScopeResponse",
 }) as any as S.Schema<TagsUpdateAtScopeResponse>;
 
+/** Template Spec properties. */
+export interface TemplateSpecPropertiesInput {
+  /** Template Spec description. */
+  description?: string;
+  /** Template Spec display name. */
+  displayName?: string;
+  /** The Template Spec metadata. Metadata is an open-ended object and is typically a collection of key-value pairs. */
+  metadata?: unknown;
+}
+export const TemplateSpecPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    displayName: S.optional(S.String),
+    metadata: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "TemplateSpecPropertiesInput",
+}) as any as S.Schema<TemplateSpecPropertiesInput>;
+
+/** Resource tags. */
+export type TemplateSpecsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const TemplateSpecsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<TemplateSpecsCreateOrUpdateRequestTagsMap>;
+
 export interface TemplateSpecsCreateOrUpdateRequest {
   /** Subscription Id which forms part of the URI for every service call. */
   subscriptionId: string;
@@ -17584,14 +19693,21 @@ export interface TemplateSpecsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the Template Spec. */
   templateSpecName: string;
-  body: unknown;
+  /** The location of the Template Spec. It cannot be changed after Template Spec creation. It must be one of the supported Azure locations. */
+  location: string;
+  /** Template Spec properties. */
+  properties?: TemplateSpecPropertiesInput;
+  /** Resource tags. */
+  tags?: TemplateSpecsCreateOrUpdateRequestTagsMap;
 }
 export const TemplateSpecsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     templateSpecName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.String,
+    properties: S.optional(TemplateSpecPropertiesInput),
+    tags: S.optional(TemplateSpecsCreateOrUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -17609,8 +19725,7 @@ export type TemplateSpecsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -17619,8 +19734,7 @@ export type TemplateSpecsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -17779,7 +19893,7 @@ export const TemplateSpecsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateSpecsDeleteResponse",
 }) as any as S.Schema<TemplateSpecsDeleteResponse>;
 
-export type TemplateSpecsGetRequestExpand = "versions" | (string & {});
+export type TemplateSpecsGetRequestExpand = "versions";
 export const TemplateSpecsGetRequestExpand = /*@__PURE__*/ S.String;
 
 export interface TemplateSpecsGetRequest {
@@ -17815,8 +19929,7 @@ export type TemplateSpecsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -17825,8 +19938,7 @@ export type TemplateSpecsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -17899,7 +20011,7 @@ export const TemplateSpecsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateSpecsGetResponse",
 }) as any as S.Schema<TemplateSpecsGetResponse>;
 
-export type TemplateSpecsGetBuiltInRequestExpand = "versions" | (string & {});
+export type TemplateSpecsGetBuiltInRequestExpand = "versions";
 export const TemplateSpecsGetBuiltInRequestExpand = /*@__PURE__*/ S.String;
 
 export interface TemplateSpecsGetBuiltInRequest {
@@ -17931,8 +20043,7 @@ export type TemplateSpecsGetBuiltInResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecsGetBuiltInResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -17941,8 +20052,7 @@ export type TemplateSpecsGetBuiltInResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecsGetBuiltInResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -18018,7 +20128,7 @@ export const TemplateSpecsGetBuiltInResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateSpecsGetBuiltInResponse",
 }) as any as S.Schema<TemplateSpecsGetBuiltInResponse>;
 
-export type TemplateSpecsListBuiltInsRequestExpand = "versions" | (string & {});
+export type TemplateSpecsListBuiltInsRequestExpand = "versions";
 export const TemplateSpecsListBuiltInsRequestExpand = /*@__PURE__*/ S.String;
 
 export interface TemplateSpecsListBuiltInsRequest {
@@ -18047,8 +20157,7 @@ export type TemplateSpecSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -18056,8 +20165,7 @@ export type TemplateSpecSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -18125,7 +20233,7 @@ export const TemplateSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TemplateSpec" }) as any as S.Schema<TemplateSpec>;
 
 /** An array of Template Specs. */
-export type TemplateSpecsListResultValueList = TemplateSpec[];
+export type TemplateSpecsListResultValueList = ReadonlyArray<TemplateSpec>;
 export const TemplateSpecsListResultValueList = /*@__PURE__*/ S.Array(
   TemplateSpec,
 ) as any as S.Schema<TemplateSpecsListResultValueList>;
@@ -18146,9 +20254,7 @@ export const TemplateSpecsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateSpecsListResult",
 }) as any as S.Schema<TemplateSpecsListResult>;
 
-export type TemplateSpecsListByResourceGroupRequestExpand =
-  | "versions"
-  | (string & {});
+export type TemplateSpecsListByResourceGroupRequestExpand = "versions";
 export const TemplateSpecsListByResourceGroupRequestExpand =
   /*@__PURE__*/ S.String;
 
@@ -18180,9 +20286,7 @@ export const TemplateSpecsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
   identifier: "TemplateSpecsListByResourceGroupRequest",
 }) as any as S.Schema<TemplateSpecsListByResourceGroupRequest>;
 
-export type TemplateSpecsListBySubscriptionRequestExpand =
-  | "versions"
-  | (string & {});
+export type TemplateSpecsListBySubscriptionRequestExpand = "versions";
 export const TemplateSpecsListBySubscriptionRequestExpand =
   /*@__PURE__*/ S.String;
 
@@ -18211,6 +20315,15 @@ export const TemplateSpecsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "TemplateSpecsListBySubscriptionRequest",
 }) as any as S.Schema<TemplateSpecsListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type TemplateSpecsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const TemplateSpecsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<TemplateSpecsUpdateRequestTagsMap>;
+
 export interface TemplateSpecsUpdateRequest {
   /** Subscription Id which forms part of the URI for every service call. */
   subscriptionId: string;
@@ -18218,14 +20331,15 @@ export interface TemplateSpecsUpdateRequest {
   resourceGroupName: string;
   /** Name of the Template Spec. */
   templateSpecName: string;
-  body?: unknown;
+  /** Resource tags. */
+  tags?: TemplateSpecsUpdateRequestTagsMap;
 }
 export const TemplateSpecsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     templateSpecName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(TemplateSpecsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -18243,8 +20357,7 @@ export type TemplateSpecsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -18253,8 +20366,7 @@ export type TemplateSpecsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -18330,6 +20442,67 @@ export const TemplateSpecsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateSpecsUpdateResponse",
 }) as any as S.Schema<TemplateSpecsUpdateResponse>;
 
+/** Represents a Template Spec artifact containing an embedded Azure Resource Manager template for use as a linked template. */
+export interface LinkedTemplateArtifact {
+  /** A filesystem safe relative path of the artifact. */
+  path: string;
+  /** The Azure Resource Manager template. */
+  template: unknown;
+}
+export const LinkedTemplateArtifact = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.String,
+    template: S.Unknown,
+  }),
+).annotate({
+  identifier: "LinkedTemplateArtifact",
+}) as any as S.Schema<LinkedTemplateArtifact>;
+
+/** An array of linked template artifacts. */
+export type TemplateSpecVersionPropertiesLinkedTemplatesList =
+  ReadonlyArray<LinkedTemplateArtifact>;
+export const TemplateSpecVersionPropertiesLinkedTemplatesList =
+  /*@__PURE__*/ S.Array(
+    LinkedTemplateArtifact,
+  ) as any as S.Schema<TemplateSpecVersionPropertiesLinkedTemplatesList>;
+
+/** Template Spec Version properties. */
+export interface TemplateSpecVersionProperties {
+  /** Template Spec version description. */
+  description?: string;
+  /** An array of linked template artifacts. */
+  linkedTemplates?: TemplateSpecVersionPropertiesLinkedTemplatesList;
+  /** The version metadata. Metadata is an open-ended object and is typically a collection of key-value pairs. */
+  metadata?: unknown;
+  /** The main Azure Resource Manager template content. */
+  mainTemplate?: unknown;
+  /** The Azure Resource Manager template UI definition content. */
+  uiFormDefinition?: unknown;
+}
+export const TemplateSpecVersionProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    linkedTemplates: S.optional(
+      TemplateSpecVersionPropertiesLinkedTemplatesList,
+    ),
+    metadata: S.optional(S.Unknown),
+    mainTemplate: S.optional(S.Unknown),
+    uiFormDefinition: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "TemplateSpecVersionProperties",
+}) as any as S.Schema<TemplateSpecVersionProperties>;
+
+/** Resource tags. */
+export type TemplateSpecVersionsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const TemplateSpecVersionsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<TemplateSpecVersionsCreateOrUpdateRequestTagsMap>;
+
 export interface TemplateSpecVersionsCreateOrUpdateRequest {
   /** Subscription Id which forms part of the URI for every service call. */
   subscriptionId: string;
@@ -18339,7 +20512,12 @@ export interface TemplateSpecVersionsCreateOrUpdateRequest {
   templateSpecName: string;
   /** The version of the Template Spec. */
   templateSpecVersion: string;
-  body: unknown;
+  /** The location of the Template Spec Version. It must match the location of the parent Template Spec. */
+  location: string;
+  /** Template Spec Version properties. */
+  properties: TemplateSpecVersionProperties;
+  /** Resource tags. */
+  tags?: TemplateSpecVersionsCreateOrUpdateRequestTagsMap;
 }
 export const TemplateSpecVersionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -18348,7 +20526,9 @@ export const TemplateSpecVersionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       templateSpecName: S.String.pipe(T.Label()),
       templateSpecVersion: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.String,
+      properties: TemplateSpecVersionProperties,
+      tags: S.optional(TemplateSpecVersionsCreateOrUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -18366,14 +20546,13 @@ export type TemplateSpecVersionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecVersionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type TemplateSpecVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const TemplateSpecVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -18409,57 +20588,6 @@ export const TemplateSpecVersionsCreateOrUpdateResponseSystemData =
   ).annotate({
     identifier: "TemplateSpecVersionsCreateOrUpdateResponseSystemData",
   }) as any as S.Schema<TemplateSpecVersionsCreateOrUpdateResponseSystemData>;
-
-/** Represents a Template Spec artifact containing an embedded Azure Resource Manager template for use as a linked template. */
-export interface LinkedTemplateArtifact {
-  /** A filesystem safe relative path of the artifact. */
-  path: string;
-  /** The Azure Resource Manager template. */
-  template: unknown;
-}
-export const LinkedTemplateArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.String,
-    template: S.Unknown,
-  }),
-).annotate({
-  identifier: "LinkedTemplateArtifact",
-}) as any as S.Schema<LinkedTemplateArtifact>;
-
-/** An array of linked template artifacts. */
-export type TemplateSpecVersionPropertiesLinkedTemplatesList =
-  LinkedTemplateArtifact[];
-export const TemplateSpecVersionPropertiesLinkedTemplatesList =
-  /*@__PURE__*/ S.Array(
-    LinkedTemplateArtifact,
-  ) as any as S.Schema<TemplateSpecVersionPropertiesLinkedTemplatesList>;
-
-/** Template Spec Version properties. */
-export interface TemplateSpecVersionProperties {
-  /** Template Spec version description. */
-  description?: string;
-  /** An array of linked template artifacts. */
-  linkedTemplates?: TemplateSpecVersionPropertiesLinkedTemplatesList;
-  /** The version metadata. Metadata is an open-ended object and is typically a collection of key-value pairs. */
-  metadata?: unknown;
-  /** The main Azure Resource Manager template content. */
-  mainTemplate?: unknown;
-  /** The Azure Resource Manager template UI definition content. */
-  uiFormDefinition?: unknown;
-}
-export const TemplateSpecVersionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    linkedTemplates: S.optional(
-      TemplateSpecVersionPropertiesLinkedTemplatesList,
-    ),
-    metadata: S.optional(S.Unknown),
-    mainTemplate: S.optional(S.Unknown),
-    uiFormDefinition: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "TemplateSpecVersionProperties",
-}) as any as S.Schema<TemplateSpecVersionProperties>;
 
 /** Resource tags. */
 export type TemplateSpecVersionsCreateOrUpdateResponseTagsMap = {
@@ -18572,8 +20700,7 @@ export type TemplateSpecVersionsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecVersionsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -18582,8 +20709,7 @@ export type TemplateSpecVersionsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecVersionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -18687,14 +20813,13 @@ export type TemplateSpecVersionsGetBuiltInResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecVersionsGetBuiltInResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type TemplateSpecVersionsGetBuiltInResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const TemplateSpecVersionsGetBuiltInResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -18802,8 +20927,7 @@ export type TemplateSpecVersionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecVersionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -18812,8 +20936,7 @@ export type TemplateSpecVersionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecVersionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -18886,7 +21009,8 @@ export const TemplateSpecVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TemplateSpecVersion>;
 
 /** An array of Template Spec versions. */
-export type TemplateSpecVersionsListResultValueList = TemplateSpecVersion[];
+export type TemplateSpecVersionsListResultValueList =
+  ReadonlyArray<TemplateSpecVersion>;
 export const TemplateSpecVersionsListResultValueList = /*@__PURE__*/ S.Array(
   TemplateSpecVersion,
 ) as any as S.Schema<TemplateSpecVersionsListResultValueList>;
@@ -18927,6 +21051,15 @@ export const TemplateSpecVersionsListBuiltInsRequest = /*@__PURE__*/ S.suspend(
   identifier: "TemplateSpecVersionsListBuiltInsRequest",
 }) as any as S.Schema<TemplateSpecVersionsListBuiltInsRequest>;
 
+/** Resource tags. */
+export type TemplateSpecVersionsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const TemplateSpecVersionsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<TemplateSpecVersionsUpdateRequestTagsMap>;
+
 export interface TemplateSpecVersionsUpdateRequest {
   /** Subscription Id which forms part of the URI for every service call. */
   subscriptionId: string;
@@ -18936,7 +21069,8 @@ export interface TemplateSpecVersionsUpdateRequest {
   templateSpecName: string;
   /** The version of the Template Spec. */
   templateSpecVersion: string;
-  body?: unknown;
+  /** Resource tags. */
+  tags?: TemplateSpecVersionsUpdateRequestTagsMap;
 }
 export const TemplateSpecVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18944,7 +21078,7 @@ export const TemplateSpecVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     templateSpecName: S.String.pipe(T.Label()),
     templateSpecVersion: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(TemplateSpecVersionsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -18962,8 +21096,7 @@ export type TemplateSpecVersionsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecVersionsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -18972,8 +21105,7 @@ export type TemplateSpecVersionsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const TemplateSpecVersionsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -19064,15 +21196,11 @@ export const TenantsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TenantsListRequest>;
 
 /** Category of the tenant. */
-export type TenantCategory =
-  | "Home"
-  | "ProjectedBy"
-  | "ManagedBy"
-  | (string & {});
+export type TenantCategory = "Home" | "ProjectedBy" | "ManagedBy";
 export const TenantCategory = /*@__PURE__*/ S.String;
 
 /** The list of domains for the tenant. */
-export type TenantIdDescriptionDomainsList = string[];
+export type TenantIdDescriptionDomainsList = ReadonlyArray<string>;
 export const TenantIdDescriptionDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TenantIdDescriptionDomainsList>;
@@ -19118,7 +21246,7 @@ export const TenantIdDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TenantIdDescription>;
 
 /** The TenantIdDescription items on this page */
-export type TenantListResultValueList = TenantIdDescription[];
+export type TenantListResultValueList = ReadonlyArray<TenantIdDescription>;
 export const TenantListResultValueList = /*@__PURE__*/ S.Array(
   TenantIdDescription,
 ) as any as S.Schema<TenantListResultValueList>;

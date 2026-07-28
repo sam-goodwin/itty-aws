@@ -138,10 +138,7 @@ export class TokenNotFound extends T.applyErrorMatchers(
   [{ code: 1003 }],
 ) {}
 
-export type TokensCreateRequestPoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensCreateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensCreateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensCreateRequestPoliciesItemPermissionGroupsItemMeta {
@@ -178,45 +175,25 @@ export const TokensCreateRequestPoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
 
 export type TokensCreateRequestPoliciesItemPermissionGroupsList =
-  TokensCreateRequestPoliciesItemPermissionGroupsItem[];
+  ReadonlyArray<TokensCreateRequestPoliciesItemPermissionGroupsItem>;
 export const TokensCreateRequestPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensCreateRequestPoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<TokensCreateRequestPoliciesItemPermissionGroupsList>;
 
-export type TokensCreateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
-  { [key: string]: unknown | undefined };
-export const TokensCreateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
+export type TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
+  { [key: string]: string | undefined };
+export const TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensCreateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap>;
-
-export type TokensCreateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  { [key: string]: unknown | undefined };
-export const TokensCreateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensCreateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap>;
+  ) as any as S.Schema<TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
 
-export interface TokensCreateRequestPoliciesItemResourcesValue {
-  /** Map of simple string resource permissions */
-  IAMResourcesTypeObjectString: TokensCreateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap;
-  /** Map of nested resource permissions */
-  IAMResourcesTypeObjectNested: TokensCreateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap;
-}
+export type TokensCreateRequestPoliciesItemResourcesValue =
+  | string
+  | TokensCreateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensCreateRequestPoliciesItemResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IAMResourcesTypeObjectString:
-        TokensCreateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap,
-      IAMResourcesTypeObjectNested:
-        TokensCreateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap,
-    }),
-  ).annotate({
-    identifier: "TokensCreateRequestPoliciesItemResourcesValue",
-  }) as any as S.Schema<TokensCreateRequestPoliciesItemResourcesValue>;
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type TokensCreateRequestPoliciesItemResourcesMap = {
   [key: string]: TokensCreateRequestPoliciesItemResourcesValue | undefined;
@@ -228,8 +205,6 @@ export const TokensCreateRequestPoliciesItemResourcesMap =
   ) as any as S.Schema<TokensCreateRequestPoliciesItemResourcesMap>;
 
 export interface TokensCreateRequestPoliciesItem {
-  /** Policy identifier. */
-  id: string;
   /** Allow or deny operations against the resources. */
   effect: TokensCreateRequestPoliciesItemEffect;
   /** A set of permission groups that are specified to the policy. */
@@ -239,7 +214,6 @@ export interface TokensCreateRequestPoliciesItem {
 }
 export const TokensCreateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
     effect: TokensCreateRequestPoliciesItemEffect,
     permissionGroups: TokensCreateRequestPoliciesItemPermissionGroupsList.pipe(
       T.Body("permission_groups"),
@@ -250,21 +224,23 @@ export const TokensCreateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensCreateRequestPoliciesItem",
 }) as any as S.Schema<TokensCreateRequestPoliciesItem>;
 
-export type TokensCreateRequestPoliciesList = TokensCreateRequestPoliciesItem[];
+export type TokensCreateRequestPoliciesList =
+  ReadonlyArray<TokensCreateRequestPoliciesItem>;
 export const TokensCreateRequestPoliciesList = /*@__PURE__*/ S.Array(
   TokensCreateRequestPoliciesItem,
 ) as any as S.Schema<TokensCreateRequestPoliciesList>;
 
-export type TokensCreateRequestConditionRequestIpInList = unknown[];
+export type TokensCreateRequestConditionRequestIpInList = ReadonlyArray<string>;
 export const TokensCreateRequestConditionRequestIpInList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<TokensCreateRequestConditionRequestIpInList>;
 
-export type TokensCreateRequestConditionRequestIpNotInList = unknown[];
+export type TokensCreateRequestConditionRequestIpNotInList =
+  ReadonlyArray<string>;
 export const TokensCreateRequestConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<TokensCreateRequestConditionRequestIpNotInList>;
 
 export interface TokensCreateRequestConditionRequestIp {
@@ -324,16 +300,18 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateTokenRequest",
 }) as any as S.Schema<CreateTokenRequest>;
 
-export type TokensCreateResponseConditionRequestIpInList = unknown[];
+export type TokensCreateResponseConditionRequestIpInList =
+  ReadonlyArray<string>;
 export const TokensCreateResponseConditionRequestIpInList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<TokensCreateResponseConditionRequestIpInList>;
 
-export type TokensCreateResponseConditionRequestIpNotInList = unknown[];
+export type TokensCreateResponseConditionRequestIpNotInList =
+  ReadonlyArray<string>;
 export const TokensCreateResponseConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<TokensCreateResponseConditionRequestIpNotInList>;
 
 export interface TokensCreateResponseConditionRequestIp {
@@ -368,10 +346,7 @@ export const TokensCreateResponseCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensCreateResponseCondition",
 }) as any as S.Schema<TokensCreateResponseCondition>;
 
-export type TokensCreateResponsePoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensCreateResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensCreateResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensCreateResponsePoliciesItemPermissionGroupsItemMeta {
@@ -410,45 +385,25 @@ export const TokensCreateResponsePoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
 
 export type TokensCreateResponsePoliciesItemPermissionGroupsList =
-  TokensCreateResponsePoliciesItemPermissionGroupsItem[];
+  ReadonlyArray<TokensCreateResponsePoliciesItemPermissionGroupsItem>;
 export const TokensCreateResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensCreateResponsePoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<TokensCreateResponsePoliciesItemPermissionGroupsList>;
 
-export type TokensCreateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
-  { [key: string]: unknown | undefined };
-export const TokensCreateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
+export type TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
+  { [key: string]: string | undefined };
+export const TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensCreateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap>;
-
-export type TokensCreateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  { [key: string]: unknown | undefined };
-export const TokensCreateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensCreateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap>;
+  ) as any as S.Schema<TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
 
-export interface TokensCreateResponsePoliciesItemResourcesValue {
-  /** Map of simple string resource permissions */
-  IAMResourcesTypeObjectString: TokensCreateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap;
-  /** Map of nested resource permissions */
-  IAMResourcesTypeObjectNested: TokensCreateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap;
-}
+export type TokensCreateResponsePoliciesItemResourcesValue =
+  | string
+  | TokensCreateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensCreateResponsePoliciesItemResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IAMResourcesTypeObjectString:
-        TokensCreateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap,
-      IAMResourcesTypeObjectNested:
-        TokensCreateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap,
-    }),
-  ).annotate({
-    identifier: "TokensCreateResponsePoliciesItemResourcesValue",
-  }) as any as S.Schema<TokensCreateResponsePoliciesItemResourcesValue>;
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type TokensCreateResponsePoliciesItemResourcesMap = {
   [key: string]: TokensCreateResponsePoliciesItemResourcesValue | undefined;
@@ -483,16 +438,12 @@ export const TokensCreateResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokensCreateResponsePoliciesItem>;
 
 export type TokensCreateResponsePoliciesList =
-  TokensCreateResponsePoliciesItem[];
+  ReadonlyArray<TokensCreateResponsePoliciesItem>;
 export const TokensCreateResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensCreateResponsePoliciesItem,
 ) as any as S.Schema<TokensCreateResponsePoliciesList>;
 
-export type TokensCreateResponseStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensCreateResponseStatus = "active" | "disabled" | "expired";
 export const TokensCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -517,7 +468,7 @@ export interface CreateTokenResponse {
   /** Status of the token. */
   status?: TokensCreateResponseStatus;
   /** The token value. */
-  value?: unknown;
+  value?: string;
 }
 export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -531,7 +482,7 @@ export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
     notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
     policies: S.optional(TokensCreateResponsePoliciesList),
     status: S.optional(TokensCreateResponseStatus),
-    value: S.optional(S.Unknown),
+    value: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateTokenResponse",
@@ -750,7 +701,7 @@ export const GetInviteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInviteRequest",
 }) as any as S.Schema<GetInviteRequest>;
 
-export type InvitesGetResponseRolesList = string[];
+export type InvitesGetResponseRolesList = ReadonlyArray<string>;
 export const InvitesGetResponseRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvitesGetResponseRolesList>;
@@ -759,8 +710,7 @@ export type InvitesGetResponseStatus =
   | "pending"
   | "accepted"
   | "rejected"
-  | "expired"
-  | (string & {});
+  | "expired";
 export const InvitesGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -849,18 +799,23 @@ export type SubscriptionsGetResultItemFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
-  | "yearly"
-  | (string & {});
+  | "yearly";
 export const SubscriptionsGetResultItemFrequency = /*@__PURE__*/ S.String;
 
 export type SubscriptionsGetResultItemRatePlanId =
   | "free"
   | "lite"
   | "pro"
-  | (string & {});
+  | "pro_plus"
+  | "business"
+  | "enterprise"
+  | "partners_free"
+  | "partners_pro"
+  | "partners_business"
+  | "partners_enterprise";
 export const SubscriptionsGetResultItemRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsGetResultItemRatePlanSetsList = string[];
+export type SubscriptionsGetResultItemRatePlanSetsList = ReadonlyArray<string>;
 export const SubscriptionsGetResultItemRatePlanSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsGetResultItemRatePlanSetsList>;
@@ -899,7 +854,10 @@ export type SubscriptionsGetResultItemState =
   | "Trial"
   | "Provisioned"
   | "Paid"
-  | (string & {});
+  | "AwaitingPayment"
+  | "Cancelled"
+  | "Failed"
+  | "Expired";
 export const SubscriptionsGetResultItemState = /*@__PURE__*/ S.String;
 
 export interface SubscriptionsGetResultItem {
@@ -939,7 +897,8 @@ export const SubscriptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionsGetResultItem",
 }) as any as S.Schema<SubscriptionsGetResultItem>;
 
-export type SubscriptionsGetResultList = SubscriptionsGetResultItem[];
+export type SubscriptionsGetResultList =
+  ReadonlyArray<SubscriptionsGetResultItem>;
 export const SubscriptionsGetResultList = /*@__PURE__*/ S.Array(
   SubscriptionsGetResultItem,
 ) as any as S.Schema<SubscriptionsGetResultList>;
@@ -973,15 +932,16 @@ export const GetTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTokenRequest",
 }) as any as S.Schema<GetTokenRequest>;
 
-export type TokensGetResponseConditionRequestIpInList = unknown[];
+export type TokensGetResponseConditionRequestIpInList = ReadonlyArray<string>;
 export const TokensGetResponseConditionRequestIpInList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<TokensGetResponseConditionRequestIpInList>;
 
-export type TokensGetResponseConditionRequestIpNotInList = unknown[];
+export type TokensGetResponseConditionRequestIpNotInList =
+  ReadonlyArray<string>;
 export const TokensGetResponseConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<TokensGetResponseConditionRequestIpNotInList>;
 
 export interface TokensGetResponseConditionRequestIp {
@@ -1015,10 +975,7 @@ export const TokensGetResponseCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensGetResponseCondition",
 }) as any as S.Schema<TokensGetResponseCondition>;
 
-export type TokensGetResponsePoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensGetResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensGetResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensGetResponsePoliciesItemPermissionGroupsItemMeta {
@@ -1055,45 +1012,25 @@ export const TokensGetResponsePoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensGetResponsePoliciesItemPermissionGroupsItem>;
 
 export type TokensGetResponsePoliciesItemPermissionGroupsList =
-  TokensGetResponsePoliciesItemPermissionGroupsItem[];
+  ReadonlyArray<TokensGetResponsePoliciesItemPermissionGroupsItem>;
 export const TokensGetResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensGetResponsePoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<TokensGetResponsePoliciesItemPermissionGroupsList>;
 
-export type TokensGetResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
-  { [key: string]: unknown | undefined };
-export const TokensGetResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
+export type TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
+  { [key: string]: string | undefined };
+export const TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensGetResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap>;
-
-export type TokensGetResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  { [key: string]: unknown | undefined };
-export const TokensGetResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensGetResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap>;
+  ) as any as S.Schema<TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
 
-export interface TokensGetResponsePoliciesItemResourcesValue {
-  /** Map of simple string resource permissions */
-  IAMResourcesTypeObjectString: TokensGetResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap;
-  /** Map of nested resource permissions */
-  IAMResourcesTypeObjectNested: TokensGetResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap;
-}
+export type TokensGetResponsePoliciesItemResourcesValue =
+  | string
+  | TokensGetResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensGetResponsePoliciesItemResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IAMResourcesTypeObjectString:
-        TokensGetResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap,
-      IAMResourcesTypeObjectNested:
-        TokensGetResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap,
-    }),
-  ).annotate({
-    identifier: "TokensGetResponsePoliciesItemResourcesValue",
-  }) as any as S.Schema<TokensGetResponsePoliciesItemResourcesValue>;
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type TokensGetResponsePoliciesItemResourcesMap = {
   [key: string]: TokensGetResponsePoliciesItemResourcesValue | undefined;
@@ -1126,16 +1063,13 @@ export const TokensGetResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensGetResponsePoliciesItem",
 }) as any as S.Schema<TokensGetResponsePoliciesItem>;
 
-export type TokensGetResponsePoliciesList = TokensGetResponsePoliciesItem[];
+export type TokensGetResponsePoliciesList =
+  ReadonlyArray<TokensGetResponsePoliciesItem>;
 export const TokensGetResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensGetResponsePoliciesItem,
 ) as any as S.Schema<TokensGetResponsePoliciesList>;
 
-export type TokensGetResponseStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensGetResponseStatus = "active" | "disabled" | "expired";
 export const TokensGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1184,21 +1118,25 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 
-export type GetResponseBetasList = string[];
+export type GetResponseBetasList = ReadonlyArray<string>;
 export const GetResponseBetasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseBetasList>;
 
-export type GetResponseOrganizationsItemPermissionsList = unknown[];
+export type GetResponseOrganizationsItemPermissionsList =
+  ReadonlyArray<unknown>;
 export const GetResponseOrganizationsItemPermissionsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<GetResponseOrganizationsItemPermissionsList>;
 
-export type GetResponseOrganizationsItemRolesList = string[];
+export type GetResponseOrganizationsItemRolesList = ReadonlyArray<string>;
 export const GetResponseOrganizationsItemRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseOrganizationsItemRolesList>;
+
+export type GetResponseOrganizationsItemStatus = "member" | "invited";
+export const GetResponseOrganizationsItemStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseOrganizationsItem {
   /** Identifier */
@@ -1210,7 +1148,7 @@ export interface GetResponseOrganizationsItem {
   /** List of roles that a user has within an organization. */
   roles?: GetResponseOrganizationsItemRolesList;
   /** Whether the user is a member of the organization or has an invitation pending. */
-  status?: unknown;
+  status?: GetResponseOrganizationsItemStatus;
 }
 export const GetResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1218,13 +1156,14 @@ export const GetResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     permissions: S.optional(GetResponseOrganizationsItemPermissionsList),
     roles: S.optional(GetResponseOrganizationsItemRolesList),
-    status: S.optional(S.Unknown),
+    status: S.optional(GetResponseOrganizationsItemStatus),
   }),
 ).annotate({
   identifier: "GetResponseOrganizationsItem",
 }) as any as S.Schema<GetResponseOrganizationsItem>;
 
-export type GetResponseOrganizationsList = GetResponseOrganizationsItem[];
+export type GetResponseOrganizationsList =
+  ReadonlyArray<GetResponseOrganizationsItem>;
 export const GetResponseOrganizationsList = /*@__PURE__*/ S.Array(
   GetResponseOrganizationsItem,
 ) as any as S.Schema<GetResponseOrganizationsList>;
@@ -1289,14 +1228,18 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserResponse",
 }) as any as S.Schema<GetUserResponse>;
 
-export type AuditLogsListRequestDirection = "desc" | "asc" | (string & {});
+export type AuditLogsListRequestDirection = "desc" | "asc";
 export const AuditLogsListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListAuditLogsRequest {
   /** Finds a specific log by its ID. */
   id?: string;
-  action?: string;
-  actor?: string;
+  /** Filters by the action type. */
+  actionType?: string;
+  /** Filters by the email address of the actor that made the change. */
+  actorEmail?: string;
+  /** Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range. */
+  actorIp?: string;
   /** Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339. */
   before?: string;
   /** Changes the direction of the chronological sorting. */
@@ -1311,13 +1254,15 @@ export interface ListAuditLogsRequest {
   perPage?: number;
   /** Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339. */
   since?: string;
-  zone?: string;
+  /** Filters by the name of the zone associated to the change. */
+  zoneName?: string;
 }
 export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String.pipe(T.Query())),
-    action: S.optional(S.String.pipe(T.Query())),
-    actor: S.optional(S.String.pipe(T.Query())),
+    actionType: S.optional(S.String.pipe(T.Query("action.type"))),
+    actorEmail: S.optional(S.String.pipe(T.Query("actor.email"))),
+    actorIp: S.optional(S.String.pipe(T.Query("actor.ip"))),
     before: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(AuditLogsListRequestDirection.pipe(T.Query())),
     export: S.optional(S.Boolean.pipe(T.Query())),
@@ -1325,7 +1270,7 @@ export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     since: S.optional(S.String.pipe(T.Query())),
-    zone: S.optional(S.String.pipe(T.Query())),
+    zoneName: S.optional(S.String.pipe(T.Query("zone.name"))),
   })
     .pipe(T.Http({ method: "GET", uri: "/user/audit_logs", code: 200 }))
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1333,203 +1278,15 @@ export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAuditLogsRequest",
 }) as any as S.Schema<ListAuditLogsRequest>;
 
-export interface AuditLogsListResponseErrorsItemSource {
-  pointer?: string;
-}
-export const AuditLogsListResponseErrorsItemSource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pointer: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AuditLogsListResponseErrorsItemSource",
-}) as any as S.Schema<AuditLogsListResponseErrorsItemSource>;
-
-export interface AuditLogsListResponseErrorsItem {
-  code: number;
-  message: string;
-  documentationUrl?: string;
-  source?: AuditLogsListResponseErrorsItemSource;
-}
-export const AuditLogsListResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.Number,
-    message: S.String,
-    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-    source: S.optional(AuditLogsListResponseErrorsItemSource),
-  }),
-).annotate({
-  identifier: "AuditLogsListResponseErrorsItem",
-}) as any as S.Schema<AuditLogsListResponseErrorsItem>;
-
-export type AuditLogsListResponseErrorsList = AuditLogsListResponseErrorsItem[];
-export const AuditLogsListResponseErrorsList = /*@__PURE__*/ S.Array(
-  AuditLogsListResponseErrorsItem,
-) as any as S.Schema<AuditLogsListResponseErrorsList>;
-
-export interface AuditLogsListResponseMessagesItem {
-  code: number;
-  message: string;
-  documentationUrl?: string;
-  source?: unknown;
-}
-export const AuditLogsListResponseMessagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.Number,
-    message: S.String,
-    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-    source: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "AuditLogsListResponseMessagesItem",
-}) as any as S.Schema<AuditLogsListResponseMessagesItem>;
-
-export type AuditLogsListResponseMessagesList =
-  AuditLogsListResponseMessagesItem[];
-export const AuditLogsListResponseMessagesList = /*@__PURE__*/ S.Array(
-  AuditLogsListResponseMessagesItem,
-) as any as S.Schema<AuditLogsListResponseMessagesList>;
-
-export interface AuditLogsListResponseResultItemAction {
-  /** A boolean that indicates if the action attempted was successful. */
-  result?: boolean;
-  /** A short string that describes the action that was performed. */
-  type?: string;
-}
-export const AuditLogsListResponseResultItemAction = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Boolean),
-      type: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AuditLogsListResponseResultItemAction",
-}) as any as S.Schema<AuditLogsListResponseResultItemAction>;
-
-export type AuditLogsListResponseResultItemActorType =
-  | "user"
-  | "admin"
-  | "Cloudflare"
-  | (string & {});
-export const AuditLogsListResponseResultItemActorType = /*@__PURE__*/ S.String;
-
-export interface AuditLogsListResponseResultItemActor {
-  /** The ID of the actor that performed the action. If a user performed the action, this will be their User ID. */
-  id?: string;
-  /** The email of the user that performed the action. */
-  email?: string;
-  /** The IP address of the request that performed the action. */
-  ip?: string;
-  /** The type of actor, whether a User, Cloudflare Admin, or an Automated System. */
-  type?: AuditLogsListResponseResultItemActorType;
-}
-export const AuditLogsListResponseResultItemActor = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      email: S.optional(S.String),
-      ip: S.optional(S.String),
-      type: S.optional(AuditLogsListResponseResultItemActorType),
-    }),
-).annotate({
-  identifier: "AuditLogsListResponseResultItemActor",
-}) as any as S.Schema<AuditLogsListResponseResultItemActor>;
-
-export interface AuditLogsListResponseResultItemOwner {
-  /** Identifier */
-  id?: string;
-}
-export const AuditLogsListResponseResultItemOwner = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AuditLogsListResponseResultItemOwner",
-}) as any as S.Schema<AuditLogsListResponseResultItemOwner>;
-
-export interface AuditLogsListResponseResultItemResource {
-  /** An identifier for the resource that was affected by the action. */
-  id?: string;
-  /** A short string that describes the resource that was affected by the action. */
-  type?: string;
-}
-export const AuditLogsListResponseResultItemResource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      type: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AuditLogsListResponseResultItemResource",
-}) as any as S.Schema<AuditLogsListResponseResultItemResource>;
-
-export interface AuditLogsListResponseResultItem {
-  /** A string that uniquely identifies the audit log. */
-  id?: string;
-  action?: AuditLogsListResponseResultItemAction;
-  actor?: AuditLogsListResponseResultItemActor;
-  /** The source of the event. */
-  interface?: string;
-  /** An object which can lend more context to the action being logged. This is a flexible value and varies between different actions. */
-  metadata?: unknown;
-  /** The new value of the resource that was modified. */
-  newValue?: string;
-  /** The value of the resource before it was modified. */
-  oldValue?: string;
-  owner?: AuditLogsListResponseResultItemOwner;
-  resource?: AuditLogsListResponseResultItemResource;
-  /** A UTC RFC3339 timestamp that specifies when the action being logged occured. */
-  when?: string;
-}
-export const AuditLogsListResponseResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(AuditLogsListResponseResultItemAction),
-    actor: S.optional(AuditLogsListResponseResultItemActor),
-    interface: S.optional(S.String),
-    metadata: S.optional(S.Unknown),
-    newValue: S.optional(S.String),
-    oldValue: S.optional(S.String),
-    owner: S.optional(AuditLogsListResponseResultItemOwner),
-    resource: S.optional(AuditLogsListResponseResultItemResource),
-    when: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuditLogsListResponseResultItem",
-}) as any as S.Schema<AuditLogsListResponseResultItem>;
-
-export type AuditLogsListResponseResultList = AuditLogsListResponseResultItem[];
-export const AuditLogsListResponseResultList = /*@__PURE__*/ S.Array(
-  AuditLogsListResponseResultItem,
-) as any as S.Schema<AuditLogsListResponseResultList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ListAuditLogsResponse {
-  errors?: AuditLogsListResponseErrorsList;
-  messages?: AuditLogsListResponseMessagesList;
-  result: AuditLogsListResponseResultList;
-  success?: boolean;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
+export interface ListAuditLogsResponse {}
 export const ListAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(AuditLogsListResponseErrorsList),
-    messages: S.optional(AuditLogsListResponseMessagesList),
-    result: AuditLogsListResponseResultList,
-    success: S.optional(S.Boolean),
-    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAuditLogsResponse",
 }) as any as S.Schema<ListAuditLogsResponse>;
 
-export type BillingHistoryListRequestOrder =
-  | "type"
-  | "occurred_at"
-  | "action"
-  | (string & {});
+export type BillingHistoryListRequestOrder = "type" | "occurred_at" | "action";
 export const BillingHistoryListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListBillingHistoriesRequest {
@@ -1604,7 +1361,8 @@ export const BillingHistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingHistoryListResultItem",
 }) as any as S.Schema<BillingHistoryListResultItem>;
 
-export type BillingHistoryListResultList = BillingHistoryListResultItem[];
+export type BillingHistoryListResultList =
+  ReadonlyArray<BillingHistoryListResultItem>;
 export const BillingHistoryListResultList = /*@__PURE__*/ S.Array(
   BillingHistoryListResultItem,
 ) as any as S.Schema<BillingHistoryListResultList>;
@@ -1633,7 +1391,7 @@ export const ListInvitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvitesRequest",
 }) as any as S.Schema<ListInvitesRequest>;
 
-export type InvitesListResultItemRolesList = string[];
+export type InvitesListResultItemRolesList = ReadonlyArray<string>;
 export const InvitesListResultItemRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvitesListResultItemRolesList>;
@@ -1642,8 +1400,7 @@ export type InvitesListResultItemStatus =
   | "pending"
   | "accepted"
   | "rejected"
-  | "expired"
-  | (string & {});
+  | "expired";
 export const InvitesListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface InvitesListResultItem {
@@ -1691,7 +1448,7 @@ export const InvitesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvitesListResultItem",
 }) as any as S.Schema<InvitesListResultItem>;
 
-export type InvitesListResultList = InvitesListResultItem[];
+export type InvitesListResultList = ReadonlyArray<InvitesListResultItem>;
 export const InvitesListResultList = /*@__PURE__*/ S.Array(
   InvitesListResultItem,
 ) as any as S.Schema<InvitesListResultList>;
@@ -1711,23 +1468,16 @@ export const ListInvitesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvitesResponse",
 }) as any as S.Schema<ListInvitesResponse>;
 
-export type OrganizationsListRequestDirection = "asc" | "desc" | (string & {});
+export type OrganizationsListRequestDirection = "asc" | "desc";
 export const OrganizationsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type OrganizationsListRequestMatch = "any" | "all" | (string & {});
+export type OrganizationsListRequestMatch = "any" | "all";
 export const OrganizationsListRequestMatch = /*@__PURE__*/ S.String;
 
-export type OrganizationsListRequestOrder =
-  | "id"
-  | "name"
-  | "status"
-  | (string & {});
+export type OrganizationsListRequestOrder = "id" | "name" | "status";
 export const OrganizationsListRequestOrder = /*@__PURE__*/ S.String;
 
-export type OrganizationsListRequestStatus =
-  | "member"
-  | "invited"
-  | (string & {});
+export type OrganizationsListRequestStatus = "member" | "invited";
 export const OrganizationsListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListOrganizationsRequest {
@@ -1762,15 +1512,18 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsRequest",
 }) as any as S.Schema<ListOrganizationsRequest>;
 
-export type OrganizationsListResultItemPermissionsList = unknown[];
+export type OrganizationsListResultItemPermissionsList = ReadonlyArray<unknown>;
 export const OrganizationsListResultItemPermissionsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<OrganizationsListResultItemPermissionsList>;
 
-export type OrganizationsListResultItemRolesList = string[];
+export type OrganizationsListResultItemRolesList = ReadonlyArray<string>;
 export const OrganizationsListResultItemRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OrganizationsListResultItemRolesList>;
+
+export type OrganizationsListResultItemStatus = "member" | "invited";
+export const OrganizationsListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface OrganizationsListResultItem {
   /** Identifier */
@@ -1782,7 +1535,7 @@ export interface OrganizationsListResultItem {
   /** List of roles that a user has within an organization. */
   roles?: OrganizationsListResultItemRolesList;
   /** Whether the user is a member of the organization or has an invitation pending. */
-  status?: unknown;
+  status?: OrganizationsListResultItemStatus;
 }
 export const OrganizationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1790,13 +1543,14 @@ export const OrganizationsListResultItem = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     permissions: S.optional(OrganizationsListResultItemPermissionsList),
     roles: S.optional(OrganizationsListResultItemRolesList),
-    status: S.optional(S.Unknown),
+    status: S.optional(OrganizationsListResultItemStatus),
   }),
 ).annotate({
   identifier: "OrganizationsListResultItem",
 }) as any as S.Schema<OrganizationsListResultItem>;
 
-export type OrganizationsListResultList = OrganizationsListResultItem[];
+export type OrganizationsListResultList =
+  ReadonlyArray<OrganizationsListResultItem>;
 export const OrganizationsListResultList = /*@__PURE__*/ S.Array(
   OrganizationsListResultItem,
 ) as any as S.Schema<OrganizationsListResultList>;
@@ -1844,7 +1598,7 @@ export const TenantsListResultItemMetaFlags = /*@__PURE__*/ S.suspend(() =>
   identifier: "TenantsListResultItemMetaFlags",
 }) as any as S.Schema<TenantsListResultItemMetaFlags>;
 
-export type TenantsListResultItemMetaHierarchyTagsList = string[];
+export type TenantsListResultItemMetaHierarchyTagsList = ReadonlyArray<string>;
 export const TenantsListResultItemMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TenantsListResultItemMetaHierarchyTagsList>;
@@ -1921,7 +1675,7 @@ export const TenantsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TenantsListResultItem",
 }) as any as S.Schema<TenantsListResultItem>;
 
-export type TenantsListResultList = TenantsListResultItem[];
+export type TenantsListResultList = ReadonlyArray<TenantsListResultItem>;
 export const TenantsListResultList = /*@__PURE__*/ S.Array(
   TenantsListResultItem,
 ) as any as S.Schema<TenantsListResultList>;
@@ -1968,7 +1722,16 @@ export type TokensPermissionGroupsListResultItemCategory =
   | "developer_platform"
   | "ai_and_machine_learning"
   | "dns_and_zones"
-  | (string & {});
+  | "app_security"
+  | "rules_and_configuration"
+  | "cloudflare_one_and_zero_trust"
+  | "analytics_and_logs"
+  | "network_services"
+  | "media"
+  | "email_and_messaging"
+  | "cache_and_performance"
+  | "account_and_billing"
+  | "other";
 export const TokensPermissionGroupsListResultItemCategory =
   /*@__PURE__*/ S.String;
 
@@ -1976,13 +1739,12 @@ export type TokensPermissionGroupsListResultItemScopesItem =
   | "com.cloudflare.api.account"
   | "com.cloudflare.api.account.zone"
   | "com.cloudflare.api.user"
-  | "com.cloudflare.edge.r2.bucket"
-  | (string & {});
+  | "com.cloudflare.edge.r2.bucket";
 export const TokensPermissionGroupsListResultItemScopesItem =
   /*@__PURE__*/ S.String;
 
 export type TokensPermissionGroupsListResultItemScopesList =
-  TokensPermissionGroupsListResultItemScopesItem[];
+  ReadonlyArray<TokensPermissionGroupsListResultItemScopesItem>;
 export const TokensPermissionGroupsListResultItemScopesList =
   /*@__PURE__*/ S.Array(
     TokensPermissionGroupsListResultItemScopesItem,
@@ -2011,7 +1773,7 @@ export const TokensPermissionGroupsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TokensPermissionGroupsListResultItem>;
 
 export type TokensPermissionGroupsListResultList =
-  TokensPermissionGroupsListResultItem[];
+  ReadonlyArray<TokensPermissionGroupsListResultItem>;
 export const TokensPermissionGroupsListResultList = /*@__PURE__*/ S.Array(
   TokensPermissionGroupsListResultItem,
 ) as any as S.Schema<TokensPermissionGroupsListResultList>;
@@ -2031,7 +1793,7 @@ export const ListTokenPermissionGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTokenPermissionGroupsResponse",
 }) as any as S.Schema<ListTokenPermissionGroupsResponse>;
 
-export type TokensListRequestDirection = "asc" | "desc" | (string & {});
+export type TokensListRequestDirection = "asc" | "desc";
 export const TokensListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListTokensRequest {
@@ -2054,16 +1816,18 @@ export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTokensRequest",
 }) as any as S.Schema<ListTokensRequest>;
 
-export type TokensListResultItemConditionRequestIpInList = unknown[];
+export type TokensListResultItemConditionRequestIpInList =
+  ReadonlyArray<string>;
 export const TokensListResultItemConditionRequestIpInList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<TokensListResultItemConditionRequestIpInList>;
 
-export type TokensListResultItemConditionRequestIpNotInList = unknown[];
+export type TokensListResultItemConditionRequestIpNotInList =
+  ReadonlyArray<string>;
 export const TokensListResultItemConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<TokensListResultItemConditionRequestIpNotInList>;
 
 export interface TokensListResultItemConditionRequestIp {
@@ -2098,10 +1862,7 @@ export const TokensListResultItemCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensListResultItemCondition",
 }) as any as S.Schema<TokensListResultItemCondition>;
 
-export type TokensListResultItemPoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensListResultItemPoliciesItemEffect = "allow" | "deny";
 export const TokensListResultItemPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensListResultItemPoliciesItemPermissionGroupsItemMeta {
@@ -2140,45 +1901,25 @@ export const TokensListResultItemPoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensListResultItemPoliciesItemPermissionGroupsItem>;
 
 export type TokensListResultItemPoliciesItemPermissionGroupsList =
-  TokensListResultItemPoliciesItemPermissionGroupsItem[];
+  ReadonlyArray<TokensListResultItemPoliciesItemPermissionGroupsItem>;
 export const TokensListResultItemPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensListResultItemPoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<TokensListResultItemPoliciesItemPermissionGroupsList>;
 
-export type TokensListResultItemPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
-  { [key: string]: unknown | undefined };
-export const TokensListResultItemPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
+export type TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
+  { [key: string]: string | undefined };
+export const TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensListResultItemPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap>;
-
-export type TokensListResultItemPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  { [key: string]: unknown | undefined };
-export const TokensListResultItemPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensListResultItemPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap>;
+  ) as any as S.Schema<TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
 
-export interface TokensListResultItemPoliciesItemResourcesValue {
-  /** Map of simple string resource permissions */
-  IAMResourcesTypeObjectString: TokensListResultItemPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap;
-  /** Map of nested resource permissions */
-  IAMResourcesTypeObjectNested: TokensListResultItemPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap;
-}
+export type TokensListResultItemPoliciesItemResourcesValue =
+  | string
+  | TokensListResultItemPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensListResultItemPoliciesItemResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IAMResourcesTypeObjectString:
-        TokensListResultItemPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap,
-      IAMResourcesTypeObjectNested:
-        TokensListResultItemPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap,
-    }),
-  ).annotate({
-    identifier: "TokensListResultItemPoliciesItemResourcesValue",
-  }) as any as S.Schema<TokensListResultItemPoliciesItemResourcesValue>;
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type TokensListResultItemPoliciesItemResourcesMap = {
   [key: string]: TokensListResultItemPoliciesItemResourcesValue | undefined;
@@ -2213,16 +1954,12 @@ export const TokensListResultItemPoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokensListResultItemPoliciesItem>;
 
 export type TokensListResultItemPoliciesList =
-  TokensListResultItemPoliciesItem[];
+  ReadonlyArray<TokensListResultItemPoliciesItem>;
 export const TokensListResultItemPoliciesList = /*@__PURE__*/ S.Array(
   TokensListResultItemPoliciesItem,
 ) as any as S.Schema<TokensListResultItemPoliciesList>;
 
-export type TokensListResultItemStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensListResultItemStatus = "active" | "disabled" | "expired";
 export const TokensListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface TokensListResultItem {
@@ -2263,7 +2000,7 @@ export const TokensListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensListResultItem",
 }) as any as S.Schema<TokensListResultItem>;
 
-export type TokensListResultList = TokensListResultItem[];
+export type TokensListResultList = ReadonlyArray<TokensListResultItem>;
 export const TokensListResultList = /*@__PURE__*/ S.Array(
   TokensListResultItem,
 ) as any as S.Schema<TokensListResultList>;
@@ -2283,7 +2020,7 @@ export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTokensResponse",
 }) as any as S.Schema<ListTokensResponse>;
 
-export type InvitesEditRequestStatus = "accepted" | "rejected" | (string & {});
+export type InvitesEditRequestStatus = "accepted" | "rejected";
 export const InvitesEditRequestStatus = /*@__PURE__*/ S.String;
 
 export interface PatchInviteRequest {
@@ -2305,7 +2042,7 @@ export const PatchInviteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchInviteRequest",
 }) as any as S.Schema<PatchInviteRequest>;
 
-export type InvitesEditResponseRolesList = string[];
+export type InvitesEditResponseRolesList = ReadonlyArray<string>;
 export const InvitesEditResponseRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InvitesEditResponseRolesList>;
@@ -2314,8 +2051,7 @@ export type InvitesEditResponseStatus =
   | "pending"
   | "accepted"
   | "rejected"
-  | "expired"
-  | (string & {});
+  | "expired";
 export const InvitesEditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2390,21 +2126,25 @@ export const PatchUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchUserRequest",
 }) as any as S.Schema<PatchUserRequest>;
 
-export type EditResponseBetasList = string[];
+export type EditResponseBetasList = ReadonlyArray<string>;
 export const EditResponseBetasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseBetasList>;
 
-export type EditResponseOrganizationsItemPermissionsList = unknown[];
+export type EditResponseOrganizationsItemPermissionsList =
+  ReadonlyArray<unknown>;
 export const EditResponseOrganizationsItemPermissionsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<EditResponseOrganizationsItemPermissionsList>;
 
-export type EditResponseOrganizationsItemRolesList = string[];
+export type EditResponseOrganizationsItemRolesList = ReadonlyArray<string>;
 export const EditResponseOrganizationsItemRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseOrganizationsItemRolesList>;
+
+export type EditResponseOrganizationsItemStatus = "member" | "invited";
+export const EditResponseOrganizationsItemStatus = /*@__PURE__*/ S.String;
 
 export interface EditResponseOrganizationsItem {
   /** Identifier */
@@ -2416,7 +2156,7 @@ export interface EditResponseOrganizationsItem {
   /** List of roles that a user has within an organization. */
   roles?: EditResponseOrganizationsItemRolesList;
   /** Whether the user is a member of the organization or has an invitation pending. */
-  status?: unknown;
+  status?: EditResponseOrganizationsItemStatus;
 }
 export const EditResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2424,13 +2164,14 @@ export const EditResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     permissions: S.optional(EditResponseOrganizationsItemPermissionsList),
     roles: S.optional(EditResponseOrganizationsItemRolesList),
-    status: S.optional(S.Unknown),
+    status: S.optional(EditResponseOrganizationsItemStatus),
   }),
 ).annotate({
   identifier: "EditResponseOrganizationsItem",
 }) as any as S.Schema<EditResponseOrganizationsItem>;
 
-export type EditResponseOrganizationsList = EditResponseOrganizationsItem[];
+export type EditResponseOrganizationsList =
+  ReadonlyArray<EditResponseOrganizationsItem>;
 export const EditResponseOrganizationsList = /*@__PURE__*/ S.Array(
   EditResponseOrganizationsItem,
 ) as any as S.Schema<EditResponseOrganizationsList>;
@@ -2499,18 +2240,23 @@ export type SubscriptionsUpdateRequestFrequency =
   | "weekly"
   | "monthly"
   | "quarterly"
-  | "yearly"
-  | (string & {});
+  | "yearly";
 export const SubscriptionsUpdateRequestFrequency = /*@__PURE__*/ S.String;
 
 export type SubscriptionsUpdateRequestRatePlanId =
   | "free"
   | "lite"
   | "pro"
-  | (string & {});
+  | "pro_plus"
+  | "business"
+  | "enterprise"
+  | "partners_free"
+  | "partners_pro"
+  | "partners_business"
+  | "partners_enterprise";
 export const SubscriptionsUpdateRequestRatePlanId = /*@__PURE__*/ S.String;
 
-export type SubscriptionsUpdateRequestRatePlanSetsList = string[];
+export type SubscriptionsUpdateRequestRatePlanSetsList = ReadonlyArray<string>;
 export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
@@ -2573,16 +2319,9 @@ export const PutSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutSubscriptionRequest",
 }) as any as S.Schema<PutSubscriptionRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PutSubscriptionResponse {
-  unknown: unknown;
-  string: unknown;
-}
+export type PutSubscriptionResponse = unknown;
 export const PutSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unknown: S.Unknown,
-    string: S.Unknown,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "PutSubscriptionResponse",
 }) as any as S.Schema<PutSubscriptionResponse>;
@@ -2590,12 +2329,10 @@ export const PutSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutTokenValueRequest {
   /** Token identifier tag. */
   tokenId: string;
-  body: unknown;
 }
 export const PutTokenValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label("token_id")),
-    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -2616,10 +2353,7 @@ export const PutTokenValueResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutTokenValueResponse",
 }) as any as S.Schema<PutTokenValueResponse>;
 
-export type TokensUpdateRequestPoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensUpdateRequestPoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateRequestPoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensUpdateRequestPoliciesItemPermissionGroupsItemMeta {
@@ -2656,45 +2390,25 @@ export const TokensUpdateRequestPoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensUpdateRequestPoliciesItemPermissionGroupsItem>;
 
 export type TokensUpdateRequestPoliciesItemPermissionGroupsList =
-  TokensUpdateRequestPoliciesItemPermissionGroupsItem[];
+  ReadonlyArray<TokensUpdateRequestPoliciesItemPermissionGroupsItem>;
 export const TokensUpdateRequestPoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensUpdateRequestPoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<TokensUpdateRequestPoliciesItemPermissionGroupsList>;
 
-export type TokensUpdateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
-  { [key: string]: unknown | undefined };
-export const TokensUpdateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
+export type TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
+  { [key: string]: string | undefined };
+export const TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensUpdateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap>;
-
-export type TokensUpdateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  { [key: string]: unknown | undefined };
-export const TokensUpdateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensUpdateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap>;
+  ) as any as S.Schema<TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
 
-export interface TokensUpdateRequestPoliciesItemResourcesValue {
-  /** Map of simple string resource permissions */
-  IAMResourcesTypeObjectString: TokensUpdateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap;
-  /** Map of nested resource permissions */
-  IAMResourcesTypeObjectNested: TokensUpdateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap;
-}
+export type TokensUpdateRequestPoliciesItemResourcesValue =
+  | string
+  | TokensUpdateRequestPoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensUpdateRequestPoliciesItemResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IAMResourcesTypeObjectString:
-        TokensUpdateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectStringMap,
-      IAMResourcesTypeObjectNested:
-        TokensUpdateRequestPoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap,
-    }),
-  ).annotate({
-    identifier: "TokensUpdateRequestPoliciesItemResourcesValue",
-  }) as any as S.Schema<TokensUpdateRequestPoliciesItemResourcesValue>;
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type TokensUpdateRequestPoliciesItemResourcesMap = {
   [key: string]: TokensUpdateRequestPoliciesItemResourcesValue | undefined;
@@ -2706,8 +2420,6 @@ export const TokensUpdateRequestPoliciesItemResourcesMap =
   ) as any as S.Schema<TokensUpdateRequestPoliciesItemResourcesMap>;
 
 export interface TokensUpdateRequestPoliciesItem {
-  /** Policy identifier. */
-  id: string;
   /** Allow or deny operations against the resources. */
   effect: TokensUpdateRequestPoliciesItemEffect;
   /** A set of permission groups that are specified to the policy. */
@@ -2717,7 +2429,6 @@ export interface TokensUpdateRequestPoliciesItem {
 }
 export const TokensUpdateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
     effect: TokensUpdateRequestPoliciesItemEffect,
     permissionGroups: TokensUpdateRequestPoliciesItemPermissionGroupsList.pipe(
       T.Body("permission_groups"),
@@ -2728,21 +2439,23 @@ export const TokensUpdateRequestPoliciesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensUpdateRequestPoliciesItem",
 }) as any as S.Schema<TokensUpdateRequestPoliciesItem>;
 
-export type TokensUpdateRequestPoliciesList = TokensUpdateRequestPoliciesItem[];
+export type TokensUpdateRequestPoliciesList =
+  ReadonlyArray<TokensUpdateRequestPoliciesItem>;
 export const TokensUpdateRequestPoliciesList = /*@__PURE__*/ S.Array(
   TokensUpdateRequestPoliciesItem,
 ) as any as S.Schema<TokensUpdateRequestPoliciesList>;
 
-export type TokensUpdateRequestConditionRequestIpInList = unknown[];
+export type TokensUpdateRequestConditionRequestIpInList = ReadonlyArray<string>;
 export const TokensUpdateRequestConditionRequestIpInList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<TokensUpdateRequestConditionRequestIpInList>;
 
-export type TokensUpdateRequestConditionRequestIpNotInList = unknown[];
+export type TokensUpdateRequestConditionRequestIpNotInList =
+  ReadonlyArray<string>;
 export const TokensUpdateRequestConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<TokensUpdateRequestConditionRequestIpNotInList>;
 
 export interface TokensUpdateRequestConditionRequestIp {
@@ -2777,11 +2490,7 @@ export const TokensUpdateRequestCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensUpdateRequestCondition",
 }) as any as S.Schema<TokensUpdateRequestCondition>;
 
-export type TokensUpdateRequestStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensUpdateRequestStatus = "active" | "disabled" | "expired";
 export const TokensUpdateRequestStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateTokenRequest {
@@ -2815,16 +2524,18 @@ export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTokenRequest",
 }) as any as S.Schema<UpdateTokenRequest>;
 
-export type TokensUpdateResponseConditionRequestIpInList = unknown[];
+export type TokensUpdateResponseConditionRequestIpInList =
+  ReadonlyArray<string>;
 export const TokensUpdateResponseConditionRequestIpInList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<TokensUpdateResponseConditionRequestIpInList>;
 
-export type TokensUpdateResponseConditionRequestIpNotInList = unknown[];
+export type TokensUpdateResponseConditionRequestIpNotInList =
+  ReadonlyArray<string>;
 export const TokensUpdateResponseConditionRequestIpNotInList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<TokensUpdateResponseConditionRequestIpNotInList>;
 
 export interface TokensUpdateResponseConditionRequestIp {
@@ -2859,10 +2570,7 @@ export const TokensUpdateResponseCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensUpdateResponseCondition",
 }) as any as S.Schema<TokensUpdateResponseCondition>;
 
-export type TokensUpdateResponsePoliciesItemEffect =
-  | "allow"
-  | "deny"
-  | (string & {});
+export type TokensUpdateResponsePoliciesItemEffect = "allow" | "deny";
 export const TokensUpdateResponsePoliciesItemEffect = /*@__PURE__*/ S.String;
 
 export interface TokensUpdateResponsePoliciesItemPermissionGroupsItemMeta {
@@ -2901,45 +2609,25 @@ export const TokensUpdateResponsePoliciesItemPermissionGroupsItem =
   }) as any as S.Schema<TokensUpdateResponsePoliciesItemPermissionGroupsItem>;
 
 export type TokensUpdateResponsePoliciesItemPermissionGroupsList =
-  TokensUpdateResponsePoliciesItemPermissionGroupsItem[];
+  ReadonlyArray<TokensUpdateResponsePoliciesItemPermissionGroupsItem>;
 export const TokensUpdateResponsePoliciesItemPermissionGroupsList =
   /*@__PURE__*/ S.Array(
     TokensUpdateResponsePoliciesItemPermissionGroupsItem,
   ) as any as S.Schema<TokensUpdateResponsePoliciesItemPermissionGroupsList>;
 
-export type TokensUpdateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
-  { [key: string]: unknown | undefined };
-export const TokensUpdateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap =
+export type TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
+  { [key: string]: string | undefined };
+export const TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensUpdateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap>;
-
-export type TokensUpdateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  { [key: string]: unknown | undefined };
-export const TokensUpdateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap =
-  /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
-  ) as any as S.Schema<TokensUpdateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap>;
+  ) as any as S.Schema<TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap>;
 
-export interface TokensUpdateResponsePoliciesItemResourcesValue {
-  /** Map of simple string resource permissions */
-  IAMResourcesTypeObjectString: TokensUpdateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap;
-  /** Map of nested resource permissions */
-  IAMResourcesTypeObjectNested: TokensUpdateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap;
-}
+export type TokensUpdateResponsePoliciesItemResourcesValue =
+  | string
+  | TokensUpdateResponsePoliciesItemResourcesIAMResourcesTypeObjectNestedValueMap;
 export const TokensUpdateResponsePoliciesItemResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      IAMResourcesTypeObjectString:
-        TokensUpdateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectStringMap,
-      IAMResourcesTypeObjectNested:
-        TokensUpdateResponsePoliciesItemResourcesValueIAMResourcesTypeObjectNestedMap,
-    }),
-  ).annotate({
-    identifier: "TokensUpdateResponsePoliciesItemResourcesValue",
-  }) as any as S.Schema<TokensUpdateResponsePoliciesItemResourcesValue>;
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], []]));
 
 export type TokensUpdateResponsePoliciesItemResourcesMap = {
   [key: string]: TokensUpdateResponsePoliciesItemResourcesValue | undefined;
@@ -2974,16 +2662,12 @@ export const TokensUpdateResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TokensUpdateResponsePoliciesItem>;
 
 export type TokensUpdateResponsePoliciesList =
-  TokensUpdateResponsePoliciesItem[];
+  ReadonlyArray<TokensUpdateResponsePoliciesItem>;
 export const TokensUpdateResponsePoliciesList = /*@__PURE__*/ S.Array(
   TokensUpdateResponsePoliciesItem,
 ) as any as S.Schema<TokensUpdateResponsePoliciesList>;
 
-export type TokensUpdateResponseStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensUpdateResponseStatus = "active" | "disabled" | "expired";
 export const TokensUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3034,11 +2718,7 @@ export const VerifyTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerifyTokenRequest",
 }) as any as S.Schema<VerifyTokenRequest>;
 
-export type TokensVerifyResponseStatus =
-  | "active"
-  | "disabled"
-  | "expired"
-  | (string & {});
+export type TokensVerifyResponseStatus = "active" | "disabled" | "expired";
 export const TokensVerifyResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3239,28 +2919,18 @@ export const getUser: API.OperationMethod<
 
 export type ListAuditLogsError = CloudflareOpError;
 /** Gets a list of audit logs for a user account. Can be filtered by who made the change, on which zone, and the timeframe of the change. */
-export const listAuditLogs: API.PaginatedOperationMethod<
+export const listAuditLogs: API.OperationMethod<
   ListAuditLogsRequest,
   ListAuditLogsResponse,
   ListAuditLogsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListAuditLogsRequest,
-    output: ListAuditLogsResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
-    protocol: CloudflarePaginatedProtocol,
-    retry: Retry.Retry,
-    pagination: {
-      mode: "page",
-      inputToken: "page",
-      outputToken: "resultInfo.page",
-      items: "result",
-      pageSize: "perPage",
-    } as const,
-  }),
-  cloudflarePaginate,
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAuditLogsRequest,
+  output: ListAuditLogsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ListBillingHistoriesError = CloudflareOpError;
 /** Accesses your billing history object. */

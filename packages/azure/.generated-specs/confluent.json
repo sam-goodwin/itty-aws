@@ -89,16 +89,193 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.confluent#ValidationsValidateOrganizationV2RequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.confluent#OrganizationResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Organization resource properties",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#OrganizationResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "offerDetail": {
+          "target": "com.azure.confluent#OfferDetailInput",
+          "traits": {
+            "smithy.api#documentation": "Confluent offer detail",
+            "smithy.api#required": {}
+          }
+        },
+        "userDetail": {
+          "target": "com.azure.confluent#UserDetail",
+          "traits": {
+            "smithy.api#documentation": "Subscriber detail",
+            "smithy.api#required": {}
+          }
+        },
+        "linkOrganization": {
+          "target": "com.azure.confluent#LinkOrganization",
+          "traits": {
+            "smithy.api#documentation": "Link an existing Confluent organization"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Organization resource property"
+      }
+    },
+    "com.azure.confluent#LinkOrganization": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User auth token",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Link an existing Confluent organization"
+      }
+    },
+    "com.azure.confluent#UserDetail": {
+      "type": "structure",
+      "members": {
+        "firstName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "First name"
+          }
+        },
+        "lastName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last name"
+          }
+        },
+        "emailAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email address",
+            "smithy.api#required": {}
+          }
+        },
+        "userPrincipalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User principal name"
+          }
+        },
+        "aadEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "AAD email address"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Subscriber detail"
+      }
+    },
+    "com.azure.confluent#OfferDetailInput": {
+      "type": "structure",
+      "members": {
+        "publisherId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Publisher Id",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Offer Id",
+            "smithy.api#required": {}
+          }
+        },
+        "planId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Offer Plan Id",
+            "smithy.api#required": {}
+          }
+        },
+        "planName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Offer Plan Name",
+            "smithy.api#required": {}
+          }
+        },
+        "termUnit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Offer Plan Term unit",
+            "smithy.api#required": {}
+          }
+        },
+        "termId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Offer Plan Term Id"
+          }
+        },
+        "privateOfferId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Private Offer Id"
+          }
+        },
+        "privateOfferIds": {
+          "target": "com.azure.confluent#OfferDetailInputPrivateOfferIdsList",
+          "traits": {
+            "smithy.api#documentation": "Array of Private Offer Ids"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Confluent Offer detail"
+      }
+    },
+    "com.azure.confluent#OfferDetailInputPrivateOfferIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of Private Offer Ids"
+      }
+    },
+    "com.azure.confluent#ValidationsValidateOrganizationV2RequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.confluent#ValidationsValidateOrganization": {
@@ -222,60 +399,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Organization resource property"
-      }
-    },
-    "com.azure.confluent#LinkOrganization": {
-      "type": "structure",
-      "members": {
-        "token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "User auth token",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Link an existing Confluent organization"
-      }
-    },
-    "com.azure.confluent#UserDetail": {
-      "type": "structure",
-      "members": {
-        "firstName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "First name"
-          }
-        },
-        "lastName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Last name"
-          }
-        },
-        "emailAddress": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Email address",
-            "smithy.api#required": {}
-          }
-        },
-        "userPrincipalName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "User principal name"
-          }
-        },
-        "aadEmail": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "AAD email address"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Subscriber detail"
       }
     },
     "com.azure.confluent#OfferDetail": {
@@ -631,16 +754,41 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.confluent#ValidationsValidateOrganizationRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.confluent#OrganizationResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Organization resource properties",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#ValidationsValidateOrganizationRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.confluent#OrganizationListRegions": {
@@ -832,16 +980,27 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "searchFilters": {
+          "target": "com.azure.confluent#OrganizationListRegionsRequestSearchFiltersMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Search filters for the request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#OrganizationListRegionsRequestSearchFiltersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Search filters for the request"
       }
     },
     "com.azure.confluent#OrganizationGetSchemaRegistryClusterById": {
@@ -1458,10 +1617,10 @@
             "smithy.api#documentation": "Confluent kafka or schema registry topic name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.confluent#TopicProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Topic Properties"
           }
         }
       },
@@ -1948,11 +2107,16 @@
             "smithy.api#documentation": "Confluent kafka or schema registry cluster id"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name of the API Key"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the API Key"
           }
         }
       },
@@ -2386,10 +2550,11 @@
             "smithy.api#documentation": "Confluent connector name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.confluent#ConnectorResourceProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The properties of the Connector",
+            "smithy.api#required": {}
           }
         }
       },
@@ -3058,10 +3223,16 @@
             "smithy.api#documentation": "Confluent kafka or schema registry cluster id"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Type of cluster"
+          }
+        },
+        "properties": {
+          "target": "com.azure.confluent#ClusterProperties",
+          "traits": {
+            "smithy.api#documentation": "Cluster Properties"
           }
         }
       },
@@ -3518,10 +3689,16 @@
             "smithy.api#documentation": "Confluent environment id"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Type of environment"
+          }
+        },
+        "properties": {
+          "target": "com.azure.confluent#EnvironmentProperties",
+          "traits": {
+            "smithy.api#documentation": "Environment properties"
           }
         }
       },
@@ -4090,16 +4267,27 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "searchFilters": {
+          "target": "com.azure.confluent#AccessListUsersRequestSearchFiltersMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Search filters for the request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#AccessListUsersRequestSearchFiltersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Search filters for the request"
       }
     },
     "com.azure.confluent#AccessListServiceAccounts": {
@@ -4221,16 +4409,27 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "searchFilters": {
+          "target": "com.azure.confluent#AccessListServiceAccountsRequestSearchFiltersMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Search filters for the request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#AccessListServiceAccountsRequestSearchFiltersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Search filters for the request"
       }
     },
     "com.azure.confluent#AccessListRoleBindings": {
@@ -4358,16 +4557,27 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "searchFilters": {
+          "target": "com.azure.confluent#AccessListRoleBindingsRequestSearchFiltersMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Search filters for the request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#AccessListRoleBindingsRequestSearchFiltersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Search filters for the request"
       }
     },
     "com.azure.confluent#AccessListRoleBindingNameList": {
@@ -4451,16 +4661,27 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "searchFilters": {
+          "target": "com.azure.confluent#AccessListRoleBindingNameListRequestSearchFiltersMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Search filters for the request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#AccessListRoleBindingNameListRequestSearchFiltersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Search filters for the request"
       }
     },
     "com.azure.confluent#AccessListInvitations": {
@@ -4600,16 +4821,27 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "searchFilters": {
+          "target": "com.azure.confluent#AccessListInvitationsRequestSearchFiltersMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Search filters for the request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#AccessListInvitationsRequestSearchFiltersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Search filters for the request"
       }
     },
     "com.azure.confluent#AccessListEnvironments": {
@@ -4725,16 +4957,27 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "searchFilters": {
+          "target": "com.azure.confluent#AccessListEnvironmentsRequestSearchFiltersMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Search filters for the request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#AccessListEnvironmentsRequestSearchFiltersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Search filters for the request"
       }
     },
     "com.azure.confluent#AccessListClusters": {
@@ -5032,16 +5275,27 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "searchFilters": {
+          "target": "com.azure.confluent#AccessListClustersRequestSearchFiltersMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Search filters for the request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#AccessListClustersRequestSearchFiltersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Search filters for the request"
       }
     },
     "com.azure.confluent#AccessDeleteRoleBinding": {
@@ -5149,11 +5403,22 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "principal": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The principal User or Group to bind the role to"
+          }
+        },
+        "role_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the role to bind to the principal"
+          }
+        },
+        "crn_pattern": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A CRN that specifies the scope and resource patterns necessary for the role to bind"
           }
         }
       },
@@ -5207,16 +5472,53 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "organizationId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Id of the organization"
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the logged in user"
+          }
+        },
+        "upn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Upn of the logged in user"
+          }
+        },
+        "invitedUserDetails": {
+          "target": "com.azure.confluent#AccessInvitedUserDetails",
+          "traits": {
+            "smithy.api#documentation": "Details of the user who is being invited"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#AccessInvitedUserDetails": {
+      "type": "structure",
+      "members": {
+        "invitedEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UPN/Email of the user who is being invited"
+          }
+        },
+        "auth_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Auth type of the user"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the user being invited"
       }
     },
     "com.azure.confluent#OrganizationDelete": {
@@ -5380,15 +5682,27 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.confluent#OrganizationUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "ARM resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#OrganizationUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "ARM resource tags"
       }
     },
     "com.azure.confluent#OrganizationCreate": {
@@ -5501,15 +5815,41 @@
             "smithy.api#documentation": "Organization resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.confluent#OrganizationCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.confluent#OrganizationResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Organization resource properties",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.confluent#OrganizationCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.confluent#OrganizationGet": {
@@ -6031,10 +6371,10 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.confluent#ConfluentAgreementProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Represents the properties of the resource."
           }
         }
       },

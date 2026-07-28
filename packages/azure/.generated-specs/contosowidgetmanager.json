@@ -367,16 +367,59 @@
             "smithy.api#documentation": "The name of the Employee"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.contosowidgetmanager#EmployeesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.contosowidgetmanager#EmployeePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.contosowidgetmanager#EmployeePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "age": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Age of employee"
+          }
+        },
+        "city": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "City of employee"
+          }
+        },
+        "profile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Profile of employee"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Employee properties"
+      }
+    },
+    "com.azure.contosowidgetmanager#EmployeesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.contosowidgetmanager#EmployeesCreateOrUpdate": {
@@ -488,16 +531,40 @@
             "smithy.api#documentation": "The name of the Employee"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.contosowidgetmanager#EmployeesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.contosowidgetmanager#EmployeePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.contosowidgetmanager#EmployeesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.contosowidgetmanager#EmployeesGet": {

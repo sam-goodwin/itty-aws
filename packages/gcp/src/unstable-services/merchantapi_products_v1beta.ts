@@ -124,7 +124,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = CustomAttribute[];
+export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -165,11 +165,10 @@ export const AutomatedDiscounts = /*@__PURE__*/ S.suspend(() =>
 export type ProductChannelEnum =
   | "CHANNEL_ENUM_UNSPECIFIED"
   | "ONLINE"
-  | "LOCAL"
-  | (string & {});
+  | "LOCAL";
 export const ProductChannelEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -178,8 +177,7 @@ export type ItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DEMOTED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type ItemLevelIssueReportingContextEnum =
@@ -202,8 +200,7 @@ export type ItemLevelIssueReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const ItemLevelIssueReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product status. */
@@ -241,7 +238,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
-export type ItemLevelIssueList = ItemLevelIssue[];
+export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
 export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
@@ -266,8 +263,7 @@ export type DestinationStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const DestinationStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The destination status of the product status. Equivalent to `StatusPerReportingContext` in Reports API. */
@@ -292,7 +288,7 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationStatus",
 }) as any as S.Schema<DestinationStatus>;
 
-export type DestinationStatusList = DestinationStatus[];
+export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
 export const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
@@ -374,7 +370,7 @@ export const Tax = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tax" }) as any as S.Schema<Tax>;
 
-export type TaxList = Tax[];
+export type TaxList = ReadonlyArray<Tax>;
 export const TaxList = /*@__PURE__*/ S.Array(Tax) as any as S.Schema<TaxList>;
 
 /** Conditions to be met for a product to have free shipping. */
@@ -393,7 +389,7 @@ export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
   identifier: "FreeShippingThreshold",
 }) as any as S.Schema<FreeShippingThreshold>;
 
-export type FreeShippingThresholdList = FreeShippingThreshold[];
+export type FreeShippingThresholdList = ReadonlyArray<FreeShippingThreshold>;
 export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
   FreeShippingThreshold,
 ) as any as S.Schema<FreeShippingThresholdList>;
@@ -401,8 +397,7 @@ export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
 export type ProductSustainabilityIncentiveTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EV_TAX_CREDIT"
-  | "EV_PRICE_DISCOUNT"
-  | (string & {});
+  | "EV_PRICE_DISCOUNT";
 export const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information regarding sustainability-related incentive programs such as rebates or tax relief. */
@@ -425,7 +420,7 @@ export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductSustainabilityIncentive>;
 
 export type ProductSustainabilityIncentiveList =
-  ProductSustainabilityIncentive[];
+  ReadonlyArray<ProductSustainabilityIncentive>;
 export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
   ProductSustainabilityIncentive,
 ) as any as S.Schema<ProductSustainabilityIncentiveList>;
@@ -515,7 +510,7 @@ export const Shipping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Shipping" }) as any as S.Schema<Shipping>;
 
-export type ShippingList = Shipping[];
+export type ShippingList = ReadonlyArray<Shipping>;
 export const ShippingList = /*@__PURE__*/ S.Array(
   Shipping,
 ) as any as S.Schema<ShippingList>;
@@ -583,7 +578,7 @@ export const Interval = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Interval" }) as any as S.Schema<Interval>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -623,7 +618,7 @@ export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudExportAdditionalProperties>;
 
 export type CloudExportAdditionalPropertiesList =
-  CloudExportAdditionalProperties[];
+  ReadonlyArray<CloudExportAdditionalProperties>;
 export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
   CloudExportAdditionalProperties,
 ) as any as S.Schema<CloudExportAdditionalPropertiesList>;
@@ -648,7 +643,7 @@ export const Certification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Certification" }) as any as S.Schema<Certification>;
 
-export type CertificationList = Certification[];
+export type CertificationList = ReadonlyArray<Certification>;
 export const CertificationList = /*@__PURE__*/ S.Array(
   Certification,
 ) as any as S.Schema<CertificationList>;
@@ -702,7 +697,7 @@ export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
 
-export type ProductDetailList = ProductDetail[];
+export type ProductDetailList = ReadonlyArray<ProductDetail>;
 export const ProductDetailList = /*@__PURE__*/ S.Array(
   ProductDetail,
 ) as any as S.Schema<ProductDetailList>;
@@ -711,8 +706,7 @@ export type SubscriptionCostPeriodEnum =
   | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
   | "MONTH"
   | "YEAR"
-  | "WEEK"
-  | (string & {});
+  | "WEEK";
 export const SubscriptionCostPeriodEnum = /*@__PURE__*/ S.String;
 
 /** The SubscriptionCost of the product. */
@@ -763,7 +757,7 @@ export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
-export type LoyaltyProgramList = LoyaltyProgram[];
+export type LoyaltyProgramList = ReadonlyArray<LoyaltyProgram>;
 export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
   LoyaltyProgram,
 ) as any as S.Schema<LoyaltyProgramList>;
@@ -1133,8 +1127,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 export type ProductInputChannelEnum =
   | "CHANNEL_ENUM_UNSPECIFIED"
   | "ONLINE"
-  | "LOCAL"
-  | (string & {});
+  | "LOCAL";
 export const ProductInputChannelEnum = /*@__PURE__*/ S.String;
 
 /** This resource represents input data you submit for a product, not the processed product that you see in Merchant Center, in Shopping ads, or across Google surfaces. Product inputs, rules and supplemental data source data are combined to create the processed Product. For more information, see [Manage products](/merchant/api/guides/products/overview). Required product input attributes to pass data validation checks are primarily defined in the [Products Data Specification](https://support.google.com/merchants/answer/188494). The following attributes are required: feedLabel, contentLanguage and offerId. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved. All fields in the product input and its sub-messages match the English name of their corresponding attribute in the [Products Data Specification](https://support.google.com/merchants/answer/188494) with [some exceptions](https://support.google.com/merchants/answer/7052112). The following reference documentation lists the field names in the **camelCase** casing style while the Products Data Specification lists the names in the **snake_case** casing style. */
@@ -1226,7 +1219,7 @@ export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsProductsRequest",
 }) as any as S.Schema<ListAccountsProductsRequest>;
 
-export type ProductList = Product[];
+export type ProductList = ReadonlyArray<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;

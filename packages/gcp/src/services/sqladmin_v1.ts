@@ -211,12 +211,11 @@ export type PreCheckMajorVersionUpgradeContextTargetDatabaseVersionEnum =
   | "SQLSERVER_2022_WEB"
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
-  | "SQLSERVER_2025_EXPRESS"
-  | (string & {});
+  | "SQLSERVER_2025_EXPRESS";
 export const PreCheckMajorVersionUpgradeContextTargetDatabaseVersionEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -225,8 +224,7 @@ export type PreCheckResponseMessageTypeEnum =
   | "MESSAGE_TYPE_UNSPECIFIED"
   | "INFO"
   | "WARNING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const PreCheckResponseMessageTypeEnum = /*@__PURE__*/ S.String;
 
 /** Structured PreCheckResponse containing message, type, and required actions. */
@@ -248,7 +246,7 @@ export const PreCheckResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PreCheckResponse",
 }) as any as S.Schema<PreCheckResponse>;
 
-export type PreCheckResponseList = PreCheckResponse[];
+export type PreCheckResponseList = ReadonlyArray<PreCheckResponse>;
 export const PreCheckResponseList = /*@__PURE__*/ S.Array(
   PreCheckResponse,
 ) as any as S.Schema<PreCheckResponseList>;
@@ -279,8 +277,7 @@ export type SqlSubOperationTypeMaintenanceTypeEnum =
   | "INSTANCE_MAINTENANCE"
   | "REPLICA_INCLUDED_MAINTENANCE"
   | "INSTANCE_SELF_SERVICE_MAINTENANCE"
-  | "REPLICA_INCLUDED_SELF_SERVICE_MAINTENANCE"
-  | (string & {});
+  | "REPLICA_INCLUDED_SELF_SERVICE_MAINTENANCE";
 export const SqlSubOperationTypeMaintenanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** The sub operation type based on the operation type. */
@@ -313,7 +310,7 @@ export const OperationError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OperationError" }) as any as S.Schema<OperationError>;
 
-export type OperationErrorList = OperationError[];
+export type OperationErrorList = ReadonlyArray<OperationError>;
 export const OperationErrorList = /*@__PURE__*/ S.Array(
   OperationError,
 ) as any as S.Schema<OperationErrorList>;
@@ -339,8 +336,7 @@ export type ApiWarningCodeEnum =
   | "REGION_UNREACHABLE"
   | "MAX_RESULTS_EXCEEDS_LIMIT"
   | "COMPROMISED_CREDENTIALS"
-  | "INTERNAL_STATE_FAILURE"
-  | (string & {});
+  | "INTERNAL_STATE_FAILURE";
 export const ApiWarningCodeEnum = /*@__PURE__*/ S.String;
 
 /** An Admin API warning message. */
@@ -414,8 +410,7 @@ export type OperationOperationTypeEnum =
   | "REPAIR_READ_POOL"
   | "CREATE_READ_POOL"
   | "PRE_CHECK_MAJOR_VERSION_UPGRADE"
-  | "SETUP_MIGRATION"
-  | (string & {});
+  | "SETUP_MIGRATION";
 export const OperationOperationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Backup context. */
@@ -439,8 +434,7 @@ export type OperationStatusEnum =
   | "SQL_OPERATION_STATUS_UNSPECIFIED"
   | "PENDING"
   | "RUNNING"
-  | "DONE"
-  | (string & {});
+  | "DONE";
 export const OperationStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ImportContextSqlImportOptionsPostgresImportOptions {
@@ -532,8 +526,7 @@ export type ImportContextFileTypeEnum =
   | "SQL"
   | "CSV"
   | "BAK"
-  | "TDE"
-  | (string & {});
+  | "TDE";
 export const ImportContextFileTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ImportContextBakImportOptionsEncryptionOptions {
@@ -562,8 +555,7 @@ export type ImportContextBakImportOptionsBakTypeEnum =
   | "BAK_TYPE_UNSPECIFIED"
   | "FULL"
   | "DIFF"
-  | "TLOG"
-  | (string & {});
+  | "TLOG";
 export const ImportContextBakImportOptionsBakTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ImportContextBakImportOptions {
@@ -658,16 +650,14 @@ export type ExportContextFileTypeEnum =
   | "SQL"
   | "CSV"
   | "BAK"
-  | "TDE"
-  | (string & {});
+  | "TDE";
 export const ExportContextFileTypeEnum = /*@__PURE__*/ S.String;
 
 export type ExportContextBakExportOptionsBakTypeEnum =
   | "BAK_TYPE_UNSPECIFIED"
   | "FULL"
   | "DIFF"
-  | "TLOG"
-  | (string & {});
+  | "TLOG";
 export const ExportContextBakExportOptionsBakTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ExportContextBakExportOptions {
@@ -1065,8 +1055,7 @@ export type BackupStateEnum =
   | "FAILED"
   | "SUCCESSFUL"
   | "DELETING"
-  | "DELETION_FAILED"
-  | (string & {});
+  | "DELETION_FAILED";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 export type BackupDatabaseVersionEnum =
@@ -1125,15 +1114,13 @@ export type BackupDatabaseVersionEnum =
   | "SQLSERVER_2022_WEB"
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
-  | "SQLSERVER_2025_EXPRESS"
-  | (string & {});
+  | "SQLSERVER_2025_EXPRESS";
 export const BackupDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 export type BackupBackupKindEnum =
   | "SQL_BACKUP_KIND_UNSPECIFIED"
   | "SNAPSHOT"
-  | "PHYSICAL"
-  | (string & {});
+  | "PHYSICAL";
 export const BackupBackupKindEnum = /*@__PURE__*/ S.String;
 
 /** Gemini instance configuration. */
@@ -1184,8 +1171,7 @@ export type DatabaseInstanceBackendTypeEnum =
   | "SQL_BACKEND_TYPE_UNSPECIFIED"
   | "FIRST_GEN"
   | "SECOND_GEN"
-  | "EXTERNAL"
-  | (string & {});
+  | "EXTERNAL";
 export const DatabaseInstanceBackendTypeEnum = /*@__PURE__*/ S.String;
 
 /** SslCerts Resource */
@@ -1263,7 +1249,8 @@ export const AvailableDatabaseVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "AvailableDatabaseVersion",
 }) as any as S.Schema<AvailableDatabaseVersion>;
 
-export type AvailableDatabaseVersionList = AvailableDatabaseVersion[];
+export type AvailableDatabaseVersionList =
+  ReadonlyArray<AvailableDatabaseVersion>;
 export const AvailableDatabaseVersionList = /*@__PURE__*/ S.Array(
   AvailableDatabaseVersion,
 ) as any as S.Schema<AvailableDatabaseVersionList>;
@@ -1278,8 +1265,7 @@ export type PscAutoConnectionConfigWriteEndpointAutoDnsStatusEnum =
   | "AUTO_DNS_STATUS_UNSPECIFIED"
   | "AUTO_DNS_OK"
   | "AUTO_DNS_FAILED"
-  | "AUTO_DNS_UNKNOWN"
-  | (string & {});
+  | "AUTO_DNS_UNKNOWN";
 export const PscAutoConnectionConfigWriteEndpointAutoDnsStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1287,8 +1273,7 @@ export type PscAutoConnectionConfigInstanceAutoDnsStatusEnum =
   | "AUTO_DNS_STATUS_UNSPECIFIED"
   | "AUTO_DNS_OK"
   | "AUTO_DNS_FAILED"
-  | "AUTO_DNS_UNKNOWN"
-  | (string & {});
+  | "AUTO_DNS_UNKNOWN";
 export const PscAutoConnectionConfigInstanceAutoDnsStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1333,7 +1318,8 @@ export const PscAutoConnectionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PscAutoConnectionConfig",
 }) as any as S.Schema<PscAutoConnectionConfig>;
 
-export type PscAutoConnectionConfigList = PscAutoConnectionConfig[];
+export type PscAutoConnectionConfigList =
+  ReadonlyArray<PscAutoConnectionConfig>;
 export const PscAutoConnectionConfigList = /*@__PURE__*/ S.Array(
   PscAutoConnectionConfig,
 ) as any as S.Schema<PscAutoConnectionConfigList>;
@@ -1371,8 +1357,7 @@ export type IpConfigurationSslModeEnum =
   | "SSL_MODE_UNSPECIFIED"
   | "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
   | "ENCRYPTED_ONLY"
-  | "TRUSTED_CLIENT_CERTIFICATE_REQUIRED"
-  | (string & {});
+  | "TRUSTED_CLIENT_CERTIFICATE_REQUIRED";
 export const IpConfigurationSslModeEnum = /*@__PURE__*/ S.String;
 
 /** An entry for an Access Control list. */
@@ -1395,7 +1380,7 @@ export const AclEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AclEntry" }) as any as S.Schema<AclEntry>;
 
-export type AclEntryList = AclEntry[];
+export type AclEntryList = ReadonlyArray<AclEntry>;
 export const AclEntryList = /*@__PURE__*/ S.Array(
   AclEntry,
 ) as any as S.Schema<AclEntryList>;
@@ -1404,15 +1389,13 @@ export type IpConfigurationServerCaModeEnum =
   | "CA_MODE_UNSPECIFIED"
   | "GOOGLE_MANAGED_INTERNAL_CA"
   | "GOOGLE_MANAGED_CAS_CA"
-  | "CUSTOMER_MANAGED_CAS_CA"
-  | (string & {});
+  | "CUSTOMER_MANAGED_CAS_CA";
 export const IpConfigurationServerCaModeEnum = /*@__PURE__*/ S.String;
 
 export type IpConfigurationServerCertificateRotationModeEnum =
   | "SERVER_CERTIFICATE_ROTATION_MODE_UNSPECIFIED"
   | "NO_AUTOMATIC_ROTATION"
-  | "AUTOMATIC_ROTATION_DURING_MAINTENANCE"
-  | (string & {});
+  | "AUTOMATIC_ROTATION_DURING_MAINTENANCE";
 export const IpConfigurationServerCertificateRotationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1483,7 +1466,7 @@ export const DenyMaintenancePeriod = /*@__PURE__*/ S.suspend(() =>
   identifier: "DenyMaintenancePeriod",
 }) as any as S.Schema<DenyMaintenancePeriod>;
 
-export type DenyMaintenancePeriodList = DenyMaintenancePeriod[];
+export type DenyMaintenancePeriodList = ReadonlyArray<DenyMaintenancePeriod>;
 export const DenyMaintenancePeriodList = /*@__PURE__*/ S.Array(
   DenyMaintenancePeriod,
 ) as any as S.Schema<DenyMaintenancePeriodList>;
@@ -1492,8 +1475,7 @@ export type SettingsEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "ENTERPRISE"
   | "ENTERPRISE_PLUS"
-  | "DEVELOPER"
-  | (string & {});
+  | "DEVELOPER";
 export const SettingsEditionEnum = /*@__PURE__*/ S.String;
 
 /** Database flags for Cloud SQL instances. */
@@ -1510,7 +1492,7 @@ export const DatabaseFlags = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatabaseFlags" }) as any as S.Schema<DatabaseFlags>;
 
-export type DatabaseFlagsList = DatabaseFlags[];
+export type DatabaseFlagsList = ReadonlyArray<DatabaseFlags>;
 export const DatabaseFlagsList = /*@__PURE__*/ S.Array(
   DatabaseFlags,
 ) as any as S.Schema<DatabaseFlagsList>;
@@ -1531,8 +1513,7 @@ export const AdvancedMachineFeatures = /*@__PURE__*/ S.suspend(() =>
 export type SettingsPricingPlanEnum =
   | "SQL_PRICING_PLAN_UNSPECIFIED"
   | "PACKAGE"
-  | "PER_USE"
-  | (string & {});
+  | "PER_USE";
 export const SettingsPricingPlanEnum = /*@__PURE__*/ S.String;
 
 /** Data cache configurations. */
@@ -1578,8 +1559,7 @@ export type SettingsActivationPolicyEnum =
   | "SQL_ACTIVATION_POLICY_UNSPECIFIED"
   | "ALWAYS"
   | "NEVER"
-  | "ON_DEMAND"
-  | (string & {});
+  | "ON_DEMAND";
 export const SettingsActivationPolicyEnum = /*@__PURE__*/ S.String;
 
 export type SettingsDataDiskTypeEnum =
@@ -1587,23 +1567,20 @@ export type SettingsDataDiskTypeEnum =
   | "PD_SSD"
   | "PD_HDD"
   | "OBSOLETE_LOCAL_SSD"
-  | "HYPERDISK_BALANCED"
-  | (string & {});
+  | "HYPERDISK_BALANCED";
 export const SettingsDataDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type SettingsDataApiAccessEnum =
   | "DATA_API_ACCESS_UNSPECIFIED"
   | "DISALLOW_DATA_API"
-  | "ALLOW_DATA_API"
-  | (string & {});
+  | "ALLOW_DATA_API";
 export const SettingsDataApiAccessEnum = /*@__PURE__*/ S.String;
 
 export type SqlActiveDirectoryConfigModeEnum =
   | "ACTIVE_DIRECTORY_MODE_UNSPECIFIED"
   | "MANAGED_ACTIVE_DIRECTORY"
   | "SELF_MANAGED_ACTIVE_DIRECTORY"
-  | "CUSTOMER_MANAGED_ACTIVE_DIRECTORY"
-  | (string & {});
+  | "CUSTOMER_MANAGED_ACTIVE_DIRECTORY";
 export const SqlActiveDirectoryConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Active Directory configuration, relevant only for Cloud SQL for SQL Server. */
@@ -1637,16 +1614,14 @@ export const SqlActiveDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
 export type SettingsAvailabilityTypeEnum =
   | "SQL_AVAILABILITY_TYPE_UNSPECIFIED"
   | "ZONAL"
-  | "REGIONAL"
-  | (string & {});
+  | "REGIONAL";
 export const SettingsAvailabilityTypeEnum = /*@__PURE__*/ S.String;
 
 export type MaintenanceWindowUpdateTrackEnum =
   | "SQL_UPDATE_TRACK_UNSPECIFIED"
   | "canary"
   | "stable"
-  | "week5"
-  | (string & {});
+  | "week5";
 export const MaintenanceWindowUpdateTrackEnum = /*@__PURE__*/ S.String;
 
 /** Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes. */
@@ -1674,8 +1649,7 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 export type SettingsReplicationTypeEnum =
   | "SQL_REPLICATION_TYPE_UNSPECIFIED"
   | "SYNCHRONOUS"
-  | "ASYNCHRONOUS"
-  | (string & {});
+  | "ASYNCHRONOUS";
 export const SettingsReplicationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Target metric for read pool auto scaling. */
@@ -1692,7 +1666,7 @@ export const TargetMetric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetMetric" }) as any as S.Schema<TargetMetric>;
 
-export type TargetMetricList = TargetMetric[];
+export type TargetMetricList = ReadonlyArray<TargetMetric>;
 export const TargetMetricList = /*@__PURE__*/ S.Array(
   TargetMetric,
 ) as any as S.Schema<TargetMetricList>;
@@ -1752,15 +1726,13 @@ export type BackupConfigurationTransactionalLogStorageStateEnum =
   | "DISK"
   | "SWITCHING_TO_CLOUD_STORAGE"
   | "SWITCHED_TO_CLOUD_STORAGE"
-  | "CLOUD_STORAGE"
-  | (string & {});
+  | "CLOUD_STORAGE";
 export const BackupConfigurationTransactionalLogStorageStateEnum =
   /*@__PURE__*/ S.String;
 
 export type BackupRetentionSettingsRetentionUnitEnum =
   | "RETENTION_UNIT_UNSPECIFIED"
-  | "COUNT"
-  | (string & {});
+  | "COUNT";
 export const BackupRetentionSettingsRetentionUnitEnum = /*@__PURE__*/ S.String;
 
 /** We currently only support backup retention by specifying the number of backups we will retain. */
@@ -1783,8 +1755,7 @@ export type BackupConfigurationBackupTierEnum =
   | "BACKUP_TIER_UNSPECIFIED"
   | "STANDARD"
   | "ADVANCED"
-  | "ENHANCED"
-  | (string & {});
+  | "ENHANCED";
 export const BackupConfigurationBackupTierEnum = /*@__PURE__*/ S.String;
 
 /** Database instance backup configuration. */
@@ -1873,8 +1844,7 @@ export const SqlServerAuditConfig = /*@__PURE__*/ S.suspend(() =>
 export type PerformanceCaptureConfigTransactionKillTypeEnum =
   | "TRANSACTION_KILL_TYPE_UNSPECIFIED"
   | "READ_ONLY_TRANSACTIONS"
-  | "ALL_TRANSACTIONS"
-  | (string & {});
+  | "ALL_TRANSACTIONS";
 export const PerformanceCaptureConfigTransactionKillTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1934,8 +1904,7 @@ export const PerformanceCaptureConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type PasswordValidationPolicyComplexityEnum =
   | "COMPLEXITY_UNSPECIFIED"
-  | "COMPLEXITY_DEFAULT"
-  | (string & {});
+  | "COMPLEXITY_DEFAULT";
 export const PasswordValidationPolicyComplexityEnum = /*@__PURE__*/ S.String;
 
 /** Database instance local user password validation policy. This message defines the password policy for local database users. When enabled, it enforces constraints on password complexity, length, and reuse. Keep this policy enabled to help prevent unauthorized access. */
@@ -1972,8 +1941,7 @@ export const PasswordValidationPolicy = /*@__PURE__*/ S.suspend(() =>
 export type SettingsConnectorEnforcementEnum =
   | "CONNECTOR_ENFORCEMENT_UNSPECIFIED"
   | "NOT_REQUIRED"
-  | "REQUIRED"
-  | (string & {});
+  | "REQUIRED";
 export const SettingsConnectorEnforcementEnum = /*@__PURE__*/ S.String;
 
 /** Connection pool flags for Cloud SQL instances managed connection pool configuration. */
@@ -1992,7 +1960,7 @@ export const ConnectionPoolFlags = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionPoolFlags",
 }) as any as S.Schema<ConnectionPoolFlags>;
 
-export type ConnectionPoolFlagsList = ConnectionPoolFlags[];
+export type ConnectionPoolFlagsList = ReadonlyArray<ConnectionPoolFlags>;
 export const ConnectionPoolFlagsList = /*@__PURE__*/ S.Array(
   ConnectionPoolFlags,
 ) as any as S.Schema<ConnectionPoolFlagsList>;
@@ -2240,8 +2208,7 @@ export type DatabaseInstanceDatabaseVersionEnum =
   | "SQLSERVER_2022_WEB"
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
-  | "SQLSERVER_2025_EXPRESS"
-  | (string & {});
+  | "SQLSERVER_2025_EXPRESS";
 export const DatabaseInstanceDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 export type DatabaseInstanceSuspensionReasonItemEnum =
@@ -2250,12 +2217,11 @@ export type DatabaseInstanceSuspensionReasonItemEnum =
   | "LEGAL_ISSUE"
   | "OPERATIONAL_ISSUE"
   | "KMS_KEY_ISSUE"
-  | "PROJECT_ABUSE"
-  | (string & {});
+  | "PROJECT_ABUSE";
 export const DatabaseInstanceSuspensionReasonItemEnum = /*@__PURE__*/ S.String;
 
 export type DatabaseInstanceSuspensionReasonItemEnumList =
-  DatabaseInstanceSuspensionReasonItemEnum[];
+  ReadonlyArray<DatabaseInstanceSuspensionReasonItemEnum>;
 export const DatabaseInstanceSuspensionReasonItemEnumList =
   /*@__PURE__*/ S.Array(
     DatabaseInstanceSuspensionReasonItemEnum,
@@ -2264,8 +2230,7 @@ export const DatabaseInstanceSuspensionReasonItemEnumList =
 export type SqlOutOfDiskReportSqlOutOfDiskStateEnum =
   | "SQL_OUT_OF_DISK_STATE_UNSPECIFIED"
   | "NORMAL"
-  | "SOFT_SHUTDOWN"
-  | (string & {});
+  | "SOFT_SHUTDOWN";
 export const SqlOutOfDiskReportSqlOutOfDiskStateEnum = /*@__PURE__*/ S.String;
 
 /** This message wraps up the information written by out-of-disk detection job. */
@@ -2302,23 +2267,20 @@ export const DatabaseInstanceFailoverReplica = /*@__PURE__*/ S.suspend(() =>
 export type DnsNameMappingDnsScopeEnum =
   | "DNS_SCOPE_UNSPECIFIED"
   | "INSTANCE"
-  | "CLUSTER"
-  | (string & {});
+  | "CLUSTER";
 export const DnsNameMappingDnsScopeEnum = /*@__PURE__*/ S.String;
 
 export type DnsNameMappingRecordManagerEnum =
   | "RECORD_MANAGER_UNSPECIFIED"
   | "CUSTOMER"
-  | "CLOUD_SQL_AUTOMATION"
-  | (string & {});
+  | "CLOUD_SQL_AUTOMATION";
 export const DnsNameMappingRecordManagerEnum = /*@__PURE__*/ S.String;
 
 export type DnsNameMappingConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "PUBLIC"
   | "PRIVATE_SERVICES_ACCESS"
-  | "PRIVATE_SERVICE_CONNECT"
-  | (string & {});
+  | "PRIVATE_SERVICE_CONNECT";
 export const DnsNameMappingConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** DNS metadata. */
@@ -2341,7 +2303,7 @@ export const DnsNameMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsNameMapping" }) as any as S.Schema<DnsNameMapping>;
 
-export type DnsNameMappingList = DnsNameMapping[];
+export type DnsNameMappingList = ReadonlyArray<DnsNameMapping>;
 export const DnsNameMappingList = /*@__PURE__*/ S.Array(
   DnsNameMapping,
 ) as any as S.Schema<DnsNameMappingList>;
@@ -2351,8 +2313,7 @@ export type IpMappingTypeEnum =
   | "PRIMARY"
   | "OUTGOING"
   | "PRIVATE"
-  | "MIGRATED_1ST_GEN"
-  | (string & {});
+  | "MIGRATED_1ST_GEN";
 export const IpMappingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Database instance IP mapping */
@@ -2372,7 +2333,7 @@ export const IpMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IpMapping" }) as any as S.Schema<IpMapping>;
 
-export type IpMappingList = IpMapping[];
+export type IpMappingList = ReadonlyArray<IpMapping>;
 export const IpMappingList = /*@__PURE__*/ S.Array(
   IpMapping,
 ) as any as S.Schema<IpMappingList>;
@@ -2386,8 +2347,7 @@ export type DatabaseInstanceStateEnum =
   | "MAINTENANCE"
   | "FAILED"
   | "ONLINE_MAINTENANCE"
-  | "REPAIRING"
-  | (string & {});
+  | "REPAIRING";
 export const DatabaseInstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** A primary instance and disaster recovery (DR) replica pair. A DR replica is a cross-region replica that you designate for failover in the event that the primary instance experiences regional failure. Applicable to MySQL and PostgreSQL. */
@@ -2430,8 +2390,7 @@ export type DatabaseInstanceInstanceTypeEnum =
   | "CLOUD_SQL_INSTANCE"
   | "ON_PREMISES_INSTANCE"
   | "READ_REPLICA_INSTANCE"
-  | "READ_POOL_INSTANCE"
-  | (string & {});
+  | "READ_POOL_INSTANCE";
 export const DatabaseInstanceInstanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Reference to another Cloud SQL instance. */
@@ -2457,8 +2416,7 @@ export type OnPremisesConfigurationSslOptionEnum =
   | "SSL_OPTION_UNSPECIFIED"
   | "DISABLE"
   | "REQUIRE"
-  | "VERIFY_CA"
-  | (string & {});
+  | "VERIFY_CA";
 export const OnPremisesConfigurationSslOptionEnum = /*@__PURE__*/ S.String;
 
 /** A list of objects that the user selects for replication from an external source instance. */
@@ -2474,7 +2432,7 @@ export const SelectedObjects = /*@__PURE__*/ S.suspend(() =>
   identifier: "SelectedObjects",
 }) as any as S.Schema<SelectedObjects>;
 
-export type SelectedObjectsList = SelectedObjects[];
+export type SelectedObjectsList = ReadonlyArray<SelectedObjects>;
 export const SelectedObjectsList = /*@__PURE__*/ S.Array(
   SelectedObjects,
 ) as any as S.Schema<SelectedObjectsList>;
@@ -2590,8 +2548,7 @@ export const ReplicaConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type DatabaseInstanceSqlNetworkArchitectureEnum =
   | "SQL_NETWORK_ARCHITECTURE_UNSPECIFIED"
   | "NEW_NETWORK_ARCHITECTURE"
-  | "OLD_NETWORK_ARCHITECTURE"
-  | (string & {});
+  | "OLD_NETWORK_ARCHITECTURE";
 export const DatabaseInstanceSqlNetworkArchitectureEnum =
   /*@__PURE__*/ S.String;
 
@@ -2604,8 +2561,7 @@ export type PoolNodeConfigStateEnum =
   | "MAINTENANCE"
   | "FAILED"
   | "ONLINE_MAINTENANCE"
-  | "REPAIRING"
-  | (string & {});
+  | "REPAIRING";
 export const PoolNodeConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of a single read pool node of a read pool. */
@@ -2640,7 +2596,7 @@ export const PoolNodeConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PoolNodeConfig" }) as any as S.Schema<PoolNodeConfig>;
 
-export type PoolNodeConfigList = PoolNodeConfig[];
+export type PoolNodeConfigList = ReadonlyArray<PoolNodeConfig>;
 export const PoolNodeConfigList = /*@__PURE__*/ S.Array(
   PoolNodeConfig,
 ) as any as S.Schema<PoolNodeConfigList>;
@@ -2827,8 +2783,7 @@ export type BackupTypeEnum =
   | "SQL_BACKUP_TYPE_UNSPECIFIED"
   | "AUTOMATED"
   | "ON_DEMAND"
-  | "FINAL"
-  | (string & {});
+  | "FINAL";
 export const BackupTypeEnum = /*@__PURE__*/ S.String;
 
 /** A backup resource. */
@@ -3282,8 +3237,7 @@ export const DemoteMasterInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ExecuteSqlPayloadPartialResultModeEnum =
   | "PARTIAL_RESULT_MODE_UNSPECIFIED"
   | "FAIL_PARTIAL_RESULT"
-  | "ALLOW_PARTIAL_RESULT"
-  | (string & {});
+  | "ALLOW_PARTIAL_RESULT";
 export const ExecuteSqlPayloadPartialResultModeEnum = /*@__PURE__*/ S.String;
 
 /** The request payload used to execute SQL statements. */
@@ -3358,7 +3312,7 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 
-export type MessageList = Message[];
+export type MessageList = ReadonlyArray<Message>;
 export const MessageList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<MessageList>;
@@ -3377,7 +3331,7 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
-export type ValueList = Value[];
+export type ValueList = ReadonlyArray<Value>;
 export const ValueList = /*@__PURE__*/ S.Array(
   Value,
 ) as any as S.Schema<ValueList>;
@@ -3393,7 +3347,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
-export type RowList = Row[];
+export type RowList = ReadonlyArray<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** Contains the name and datatype of a column. */
@@ -3410,7 +3364,7 @@ export const Column = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Column" }) as any as S.Schema<Column>;
 
-export type ColumnList = Column[];
+export type ColumnList = ReadonlyArray<Column>;
 export const ColumnList = /*@__PURE__*/ S.Array(
   Column,
 ) as any as S.Schema<ColumnList>;
@@ -3421,7 +3375,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -3466,7 +3420,7 @@ export const QueryResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryResult" }) as any as S.Schema<QueryResult>;
 
-export type QueryResultList = QueryResult[];
+export type QueryResultList = ReadonlyArray<QueryResult>;
 export const QueryResultList = /*@__PURE__*/ S.Array(
   QueryResult,
 ) as any as S.Schema<QueryResultList>;
@@ -3751,22 +3705,19 @@ export type BackupRunDatabaseVersionEnum =
   | "SQLSERVER_2022_WEB"
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
-  | "SQLSERVER_2025_EXPRESS"
-  | (string & {});
+  | "SQLSERVER_2025_EXPRESS";
 export const BackupRunDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 export type BackupRunBackupKindEnum =
   | "SQL_BACKUP_KIND_UNSPECIFIED"
   | "SNAPSHOT"
-  | "PHYSICAL"
-  | (string & {});
+  | "PHYSICAL";
 export const BackupRunBackupKindEnum = /*@__PURE__*/ S.String;
 
 export type BackupRunTypeEnum =
   | "SQL_BACKUP_RUN_TYPE_UNSPECIFIED"
   | "AUTOMATED"
-  | "ON_DEMAND"
-  | (string & {});
+  | "ON_DEMAND";
 export const BackupRunTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackupRunStatusEnum =
@@ -3779,8 +3730,7 @@ export type BackupRunStatusEnum =
   | "SKIPPED"
   | "DELETION_PENDING"
   | "DELETION_FAILED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const BackupRunStatusEnum = /*@__PURE__*/ S.String;
 
 /** A BackupRun resource. */
@@ -3876,8 +3826,7 @@ export type ConnectSettingsServerCaModeEnum =
   | "CA_MODE_UNSPECIFIED"
   | "GOOGLE_MANAGED_INTERNAL_CA"
   | "GOOGLE_MANAGED_CAS_CA"
-  | "CUSTOMER_MANAGED_CAS_CA"
-  | (string & {});
+  | "CUSTOMER_MANAGED_CAS_CA";
 export const ConnectSettingsServerCaModeEnum = /*@__PURE__*/ S.String;
 
 /** Details of a single read pool node of a read pool. */
@@ -3902,19 +3851,18 @@ export const ConnectPoolNodeConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectPoolNodeConfig",
 }) as any as S.Schema<ConnectPoolNodeConfig>;
 
-export type ConnectPoolNodeConfigList = ConnectPoolNodeConfig[];
+export type ConnectPoolNodeConfigList = ReadonlyArray<ConnectPoolNodeConfig>;
 export const ConnectPoolNodeConfigList = /*@__PURE__*/ S.Array(
   ConnectPoolNodeConfig,
 ) as any as S.Schema<ConnectPoolNodeConfigList>;
 
 export type ConnectSettingsMdxProtocolSupportItemEnum =
   | "MDX_PROTOCOL_SUPPORT_UNSPECIFIED"
-  | "CLIENT_PROTOCOL_TYPE"
-  | (string & {});
+  | "CLIENT_PROTOCOL_TYPE";
 export const ConnectSettingsMdxProtocolSupportItemEnum = /*@__PURE__*/ S.String;
 
 export type ConnectSettingsMdxProtocolSupportItemEnumList =
-  ConnectSettingsMdxProtocolSupportItemEnum[];
+  ReadonlyArray<ConnectSettingsMdxProtocolSupportItemEnum>;
 export const ConnectSettingsMdxProtocolSupportItemEnumList =
   /*@__PURE__*/ S.Array(
     ConnectSettingsMdxProtocolSupportItemEnum,
@@ -3976,16 +3924,14 @@ export type ConnectSettingsDatabaseVersionEnum =
   | "SQLSERVER_2022_WEB"
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
-  | "SQLSERVER_2025_EXPRESS"
-  | (string & {});
+  | "SQLSERVER_2025_EXPRESS";
 export const ConnectSettingsDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 export type ConnectSettingsBackendTypeEnum =
   | "SQL_BACKEND_TYPE_UNSPECIFIED"
   | "FIRST_GEN"
   | "SECOND_GEN"
-  | "EXTERNAL"
-  | (string & {});
+  | "EXTERNAL";
 export const ConnectSettingsBackendTypeEnum = /*@__PURE__*/ S.String;
 
 /** Connect settings retrieval response. */
@@ -4302,8 +4248,7 @@ export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export type UserIamStatusEnum =
   | "IAM_STATUS_UNSPECIFIED"
   | "INACTIVE"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const UserIamStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Sql Server user on the Cloud SQL instance. */
@@ -4330,16 +4275,14 @@ export type UserTypeEnum =
   | "CLOUD_IAM_GROUP_USER"
   | "CLOUD_IAM_GROUP_SERVICE_ACCOUNT"
   | "CLOUD_IAM_WORKFORCE_IDENTITY"
-  | "ENTRAID_USER"
-  | (string & {});
+  | "ENTRAID_USER";
 export const UserTypeEnum = /*@__PURE__*/ S.String;
 
 export type UserDualPasswordTypeEnum =
   | "DUAL_PASSWORD_TYPE_UNSPECIFIED"
   | "NO_MODIFY_DUAL_PASSWORD"
   | "NO_DUAL_PASSWORD"
-  | "DUAL_PASSWORD"
-  | (string & {});
+  | "DUAL_PASSWORD";
 export const UserDualPasswordTypeEnum = /*@__PURE__*/ S.String;
 
 /** Read-only password status. */
@@ -4660,7 +4603,7 @@ export const ListBackupRunsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBackupRunsRequest",
 }) as any as S.Schema<ListBackupRunsRequest>;
 
-export type BackupRunList = BackupRun[];
+export type BackupRunList = ReadonlyArray<BackupRun>;
 export const BackupRunList = /*@__PURE__*/ S.Array(
   BackupRun,
 ) as any as S.Schema<BackupRunList>;
@@ -4711,12 +4654,12 @@ export const ListBackupsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBackupsBackupsRequest",
 }) as any as S.Schema<ListBackupsBackupsRequest>;
 
-export type ApiWarningList = ApiWarning[];
+export type ApiWarningList = ReadonlyArray<ApiWarning>;
 export const ApiWarningList = /*@__PURE__*/ S.Array(
   ApiWarning,
 ) as any as S.Schema<ApiWarningList>;
 
-export type BackupList = Backup[];
+export type BackupList = ReadonlyArray<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -4761,7 +4704,7 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDatabasesRequest",
 }) as any as S.Schema<ListDatabasesRequest>;
 
-export type DatabaseList = Database[];
+export type DatabaseList = ReadonlyArray<Database>;
 export const DatabaseList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseList>;
@@ -4804,7 +4747,7 @@ export const ListEntraIdCertificatesInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListEntraIdCertificatesInstancesRequest",
 }) as any as S.Schema<ListEntraIdCertificatesInstancesRequest>;
 
-export type SslCertList = SslCert[];
+export type SslCertList = ReadonlyArray<SslCert>;
 export const SslCertList = /*@__PURE__*/ S.Array(
   SslCert,
 ) as any as S.Schema<SslCertList>;
@@ -4832,8 +4775,7 @@ export const InstancesListEntraIdCertificatesResponse = /*@__PURE__*/ S.suspend(
 export type ListFlagsFlagScopeEnum =
   | "SQL_FLAG_SCOPE_UNSPECIFIED"
   | "SQL_FLAG_SCOPE_DATABASE"
-  | "SQL_FLAG_SCOPE_CONNECTION_POOL"
-  | (string & {});
+  | "SQL_FLAG_SCOPE_CONNECTION_POOL";
 export const ListFlagsFlagScopeEnum = /*@__PURE__*/ S.String;
 
 export interface ListFlagsRequest {
@@ -4865,8 +4807,7 @@ export type FlagTypeEnum =
   | "NONE"
   | "MYSQL_TIMEZONE_OFFSET"
   | "FLOAT"
-  | "REPEATED_STRING"
-  | (string & {});
+  | "REPEATED_STRING";
 export const FlagTypeEnum = /*@__PURE__*/ S.String;
 
 export type FlagAppliesToItemEnum =
@@ -4925,11 +4866,10 @@ export type FlagAppliesToItemEnum =
   | "SQLSERVER_2022_WEB"
   | "SQLSERVER_2025_STANDARD"
   | "SQLSERVER_2025_ENTERPRISE"
-  | "SQLSERVER_2025_EXPRESS"
-  | (string & {});
+  | "SQLSERVER_2025_EXPRESS";
 export const FlagAppliesToItemEnum = /*@__PURE__*/ S.String;
 
-export type FlagAppliesToItemEnumList = FlagAppliesToItemEnum[];
+export type FlagAppliesToItemEnumList = ReadonlyArray<FlagAppliesToItemEnum>;
 export const FlagAppliesToItemEnumList = /*@__PURE__*/ S.Array(
   FlagAppliesToItemEnum,
 ) as any as S.Schema<FlagAppliesToItemEnumList>;
@@ -4937,8 +4877,7 @@ export const FlagAppliesToItemEnumList = /*@__PURE__*/ S.Array(
 export type FlagFlagScopeEnum =
   | "SQL_FLAG_SCOPE_UNSPECIFIED"
   | "SQL_FLAG_SCOPE_DATABASE"
-  | "SQL_FLAG_SCOPE_CONNECTION_POOL"
-  | (string & {});
+  | "SQL_FLAG_SCOPE_CONNECTION_POOL";
 export const FlagFlagScopeEnum = /*@__PURE__*/ S.String;
 
 /** A flag resource. */
@@ -4988,7 +4927,7 @@ export const Flag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Flag" }) as any as S.Schema<Flag>;
 
-export type FlagList = Flag[];
+export type FlagList = ReadonlyArray<Flag>;
 export const FlagList = /*@__PURE__*/ S.Array(
   Flag,
 ) as any as S.Schema<FlagList>;
@@ -5036,7 +4975,7 @@ export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInstancesRequest",
 }) as any as S.Schema<ListInstancesRequest>;
 
-export type DatabaseInstanceList = DatabaseInstance[];
+export type DatabaseInstanceList = ReadonlyArray<DatabaseInstance>;
 export const DatabaseInstanceList = /*@__PURE__*/ S.Array(
   DatabaseInstance,
 ) as any as S.Schema<DatabaseInstanceList>;
@@ -5090,7 +5029,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -5276,7 +5215,7 @@ export const Tier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tier" }) as any as S.Schema<Tier>;
 
-export type TierList = Tier[];
+export type TierList = ReadonlyArray<Tier>;
 export const TierList = /*@__PURE__*/ S.Array(
   Tier,
 ) as any as S.Schema<TierList>;
@@ -5318,7 +5257,7 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersRequest",
 }) as any as S.Schema<ListUsersRequest>;
 
-export type UserList = User[];
+export type UserList = ReadonlyArray<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -5568,8 +5507,7 @@ export const PromoteReplicaInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 export type BackupReencryptionConfigBackupTypeEnum =
   | "BACKUP_TYPE_UNSPECIFIED"
   | "AUTOMATED"
-  | "ON_DEMAND"
-  | (string & {});
+  | "ON_DEMAND";
 export const BackupReencryptionConfigBackupTypeEnum = /*@__PURE__*/ S.String;
 
 /** Backup Reencryption Config */
@@ -5664,8 +5602,7 @@ export type RescheduleRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
   | "IMMEDIATE"
   | "NEXT_AVAILABLE_WINDOW"
-  | "SPECIFIC_TIME"
-  | (string & {});
+  | "SPECIFIC_TIME";
 export const RescheduleRescheduleTypeEnum = /*@__PURE__*/ S.String;
 
 export interface Reschedule {
@@ -5758,8 +5695,7 @@ export const ResetReplicaSizeProjectsInstancesRequest = /*@__PURE__*/ S.suspend(
 export type ResetSslConfigInstancesModeEnum =
   | "RESET_SSL_MODE_UNSPECIFIED"
   | "ALL"
-  | "SYNC_FROM_PRIMARY"
-  | (string & {});
+  | "SYNC_FROM_PRIMARY";
 export const ResetSslConfigInstancesModeEnum = /*@__PURE__*/ S.String;
 
 export interface ResetSslConfigInstancesRequest {
@@ -6073,8 +6009,7 @@ export const RotateServerCertificateInstancesRequest = /*@__PURE__*/ S.suspend(
 export type SqlInstancesStartExternalSyncRequestSyncModeEnum =
   | "EXTERNAL_SYNC_MODE_UNSPECIFIED"
   | "ONLINE"
-  | "OFFLINE"
-  | (string & {});
+  | "OFFLINE";
 export const SqlInstancesStartExternalSyncRequestSyncModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6092,7 +6027,7 @@ export const SyncFlags = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SyncFlags" }) as any as S.Schema<SyncFlags>;
 
-export type SyncFlagsList = SyncFlags[];
+export type SyncFlagsList = ReadonlyArray<SyncFlags>;
 export const SyncFlagsList = /*@__PURE__*/ S.Array(
   SyncFlags,
 ) as any as S.Schema<SyncFlagsList>;
@@ -6113,8 +6048,7 @@ export const MySqlSyncConfig = /*@__PURE__*/ S.suspend(() =>
 export type SqlInstancesStartExternalSyncRequestMigrationTypeEnum =
   | "MIGRATION_TYPE_UNSPECIFIED"
   | "LOGICAL"
-  | "PHYSICAL"
-  | (string & {});
+  | "PHYSICAL";
 export const SqlInstancesStartExternalSyncRequestMigrationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6122,8 +6056,7 @@ export type SqlInstancesStartExternalSyncRequestSyncParallelLevelEnum =
   | "EXTERNAL_SYNC_PARALLEL_LEVEL_UNSPECIFIED"
   | "MIN"
   | "OPTIMAL"
-  | "MAX"
-  | (string & {});
+  | "MAX";
 export const SqlInstancesStartExternalSyncRequestSyncParallelLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -6418,25 +6351,19 @@ export const UpdateUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export type SqlInstancesVerifyExternalSyncSettingsRequestSyncModeEnum =
   | "EXTERNAL_SYNC_MODE_UNSPECIFIED"
   | "ONLINE"
-  | "OFFLINE"
-  | (string & {});
+  | "OFFLINE";
 export const SqlInstancesVerifyExternalSyncSettingsRequestSyncModeEnum =
   /*@__PURE__*/ S.String;
 
 export type SqlInstancesVerifyExternalSyncSettingsRequestSyncParallelLevelEnum =
-    | "EXTERNAL_SYNC_PARALLEL_LEVEL_UNSPECIFIED"
-    | "MIN"
-    | "OPTIMAL"
-    | "MAX"
-    | (string & {});
+  "EXTERNAL_SYNC_PARALLEL_LEVEL_UNSPECIFIED" | "MIN" | "OPTIMAL" | "MAX";
 export const SqlInstancesVerifyExternalSyncSettingsRequestSyncParallelLevelEnum =
   /*@__PURE__*/ S.String;
 
 export type SqlInstancesVerifyExternalSyncSettingsRequestMigrationTypeEnum =
   | "MIGRATION_TYPE_UNSPECIFIED"
   | "LOGICAL"
-  | "PHYSICAL"
-  | (string & {});
+  | "PHYSICAL";
 export const SqlInstancesVerifyExternalSyncSettingsRequestMigrationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6453,7 +6380,8 @@ export const ExternalSyncSelectedObject = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalSyncSelectedObject",
 }) as any as S.Schema<ExternalSyncSelectedObject>;
 
-export type ExternalSyncSelectedObjectList = ExternalSyncSelectedObject[];
+export type ExternalSyncSelectedObjectList =
+  ReadonlyArray<ExternalSyncSelectedObject>;
 export const ExternalSyncSelectedObjectList = /*@__PURE__*/ S.Array(
   ExternalSyncSelectedObject,
 ) as any as S.Schema<ExternalSyncSelectedObjectList>;
@@ -6582,8 +6510,7 @@ export type SqlExternalSyncSettingErrorTypeEnum =
   | "SELECTED_OBJECTS_REFERENCE_UNSELECTED_OBJECTS"
   | "PROMPT_DELETE_EXISTING"
   | "WILL_DELETE_EXISTING"
-  | "PG_DDL_REPLICATION_INSUFFICIENT_PRIVILEGE"
-  | (string & {});
+  | "PG_DDL_REPLICATION_INSUFFICIENT_PRIVILEGE";
 export const SqlExternalSyncSettingErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** External primary instance migration setting error/warning. */
@@ -6605,7 +6532,8 @@ export const SqlExternalSyncSettingError = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlExternalSyncSettingError",
 }) as any as S.Schema<SqlExternalSyncSettingError>;
 
-export type SqlExternalSyncSettingErrorList = SqlExternalSyncSettingError[];
+export type SqlExternalSyncSettingErrorList =
+  ReadonlyArray<SqlExternalSyncSettingError>;
 export const SqlExternalSyncSettingErrorList = /*@__PURE__*/ S.Array(
   SqlExternalSyncSettingError,
 ) as any as S.Schema<SqlExternalSyncSettingErrorList>;

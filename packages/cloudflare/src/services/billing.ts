@@ -226,13 +226,13 @@ export const GetUsageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUsageRequest",
 }) as any as S.Schema<GetUsageRequest>;
 
-export type UsageGetResultItemChargeCategory = "Usage" | (string & {});
+export type UsageGetResultItemChargeCategory = "Usage";
 export const UsageGetResultItemChargeCategory = /*@__PURE__*/ S.String;
 
-export type UsageGetResultItemChargeFrequency = "Usage-Based" | (string & {});
+export type UsageGetResultItemChargeFrequency = "Usage-Based";
 export const UsageGetResultItemChargeFrequency = /*@__PURE__*/ S.String;
 
-export type UsageGetResultItemChargeClass = "Correction" | (string & {});
+export type UsageGetResultItemChargeClass = "Correction";
 export const UsageGetResultItemChargeClass = /*@__PURE__*/ S.String;
 
 export interface UsageGetResultItem {
@@ -345,7 +345,7 @@ export const UsageGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsageGetResultItem",
 }) as any as S.Schema<UsageGetResultItem>;
 
-export type UsageGetResultList = UsageGetResultItem[];
+export type UsageGetResultList = ReadonlyArray<UsageGetResultItem>;
 export const UsageGetResultList = /*@__PURE__*/ S.Array(
   UsageGetResultItem,
 ) as any as S.Schema<UsageGetResultList>;
@@ -437,7 +437,7 @@ export const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsagePaygoResultItem",
 }) as any as S.Schema<UsagePaygoResultItem>;
 
-export type UsagePaygoResultList = UsagePaygoResultItem[];
+export type UsagePaygoResultList = ReadonlyArray<UsagePaygoResultItem>;
 export const UsagePaygoResultList = /*@__PURE__*/ S.Array(
   UsagePaygoResultItem,
 ) as any as S.Schema<UsagePaygoResultList>;

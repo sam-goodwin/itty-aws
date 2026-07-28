@@ -53,9 +53,18 @@ export const JsSnippetResolveRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "JsSnippetResolveRetrieveRequest",
 }) as any as S.Schema<JsSnippetResolveRetrieveRequest>;
 
-export type JsSnippetResolveRetrieveResponse = unknown;
+export type JsSnippetResolveRetrieveResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const JsSnippetResolveRetrieveResponseBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<JsSnippetResolveRetrieveResponseBodyMap>;
+
+export type JsSnippetResolveRetrieveResponse =
+  JsSnippetResolveRetrieveResponseBodyMap;
 export const JsSnippetResolveRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  JsSnippetResolveRetrieveResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "JsSnippetResolveRetrieveResponse",
 }) as any as S.Schema<JsSnippetResolveRetrieveResponse>;
@@ -82,9 +91,19 @@ export const JsSnippetVersionPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   identifier: "JsSnippetVersionPartialUpdateRequest",
 }) as any as S.Schema<JsSnippetVersionPartialUpdateRequest>;
 
-export type JsSnippetVersionPartialUpdateResponse = unknown;
+export type JsSnippetVersionPartialUpdateResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const JsSnippetVersionPartialUpdateResponseBodyMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<JsSnippetVersionPartialUpdateResponseBodyMap>;
+
+export type JsSnippetVersionPartialUpdateResponse =
+  JsSnippetVersionPartialUpdateResponseBodyMap;
 export const JsSnippetVersionPartialUpdateResponse = /*@__PURE__*/ S.suspend(
-  () => S.Unknown.pipe(T.RawResponseRoot()),
+  () => JsSnippetVersionPartialUpdateResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "JsSnippetVersionPartialUpdateResponse",
 }) as any as S.Schema<JsSnippetVersionPartialUpdateResponse>;
@@ -107,9 +126,18 @@ export const JsSnippetVersionRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "JsSnippetVersionRetrieveRequest",
 }) as any as S.Schema<JsSnippetVersionRetrieveRequest>;
 
-export type JsSnippetVersionRetrieveResponse = unknown;
+export type JsSnippetVersionRetrieveResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const JsSnippetVersionRetrieveResponseBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<JsSnippetVersionRetrieveResponseBodyMap>;
+
+export type JsSnippetVersionRetrieveResponse =
+  JsSnippetVersionRetrieveResponseBodyMap;
 export const JsSnippetVersionRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  JsSnippetVersionRetrieveResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "JsSnippetVersionRetrieveResponse",
 }) as any as S.Schema<JsSnippetVersionRetrieveResponse>;

@@ -1851,16 +1851,44 @@
             "smithy.api#documentation": "The topic space name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#TopicSpacePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of topic space."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#TopicSpacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the Topic Space resource."
+          }
+        },
+        "topicTemplates": {
+          "target": "com.azure.eventgrid#TopicSpacePropertiesInputTopicTemplatesList",
+          "traits": {
+            "smithy.api#documentation": "The topic filters in the topic space.\r\nExample: \"topicTemplates\": [ \r\n              \"devices/foo/bar\",\r\n              \"devices/topic1/+\",\r\n              \"devices/${principal.name}/${principal.attributes.keyName}\" ]."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of topic space."
+      }
+    },
+    "com.azure.eventgrid#TopicSpacePropertiesInputTopicTemplatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The topic filters in the topic space.\r\nExample: \"topicTemplates\": [ \r\n              \"devices/foo/bar\",\r\n              \"devices/topic1/+\",\r\n              \"devices/${principal.name}/${principal.attributes.keyName}\" ]."
       }
     },
     "com.azure.eventgrid#TopicSpacesGet": {
@@ -3094,16 +3122,33 @@
             "smithy.api#documentation": "Name of the system topic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.eventgrid#SystemTopicsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags of the system topic."
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventgrid#IdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Resource identity information."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#SystemTopicsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the system topic."
       }
     },
     "com.azure.eventgrid#SystemTopicsCreateOrUpdate": {
@@ -3329,16 +3374,66 @@
             "smithy.api#documentation": "Name of the system topic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Location of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventgrid#SystemTopicsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#SystemTopicPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the system topic."
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventgrid#IdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Identity information for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#SystemTopicPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source for the system topic."
+          }
+        },
+        "topicType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TopicType for the system topic."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the System Topic."
+      }
+    },
+    "com.azure.eventgrid#SystemTopicsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the resource."
       }
     },
     "com.azure.eventgrid#SystemTopicsGet": {
@@ -4312,11 +4407,10 @@
             "smithy.api#documentation": "The name of the private endpoint connection connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#PrivateEndpointConnectionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the PrivateEndpointConnection."
           }
         }
       },
@@ -5090,16 +5184,67 @@
             "smithy.api#documentation": "The permission binding name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#PermissionBindingPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of permission binding."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#PermissionBindingPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the Permission Binding resource."
+          }
+        },
+        "topicSpaceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Topic Space resource that the permission is bound to.\r\nThe Topic space needs to be a resource under the same namespace the permission binding is a part of."
+          }
+        },
+        "permission": {
+          "target": "com.azure.eventgrid#PermissionBindingPropertiesInputPermission",
+          "traits": {
+            "smithy.api#documentation": "The allowed permission."
+          }
+        },
+        "clientGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the client group resource that the permission is bound to.\r\nThe client group needs to be a resource under the same namespace the permission binding is a part of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of permission binding."
+      }
+    },
+    "com.azure.eventgrid#PermissionBindingPropertiesInputPermission": {
+      "type": "enum",
+      "members": {
+        "PUBLISHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Publisher"
+          }
+        },
+        "SUBSCRIBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Subscriber"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The allowed permission."
       }
     },
     "com.azure.eventgrid#PermissionBindingsGet": {
@@ -6382,16 +6527,33 @@
             "smithy.api#documentation": "Name of the partner topic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.eventgrid#PartnerTopicsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags of the Partner Topic resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventgrid#IdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Identity information for the Partner Topic resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#PartnerTopicsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the Partner Topic resource."
       }
     },
     "com.azure.eventgrid#PartnerTopicsCreateOrUpdate": {
@@ -6617,16 +6779,122 @@
             "smithy.api#documentation": "Name of the partner topic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Location of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventgrid#PartnerTopicsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#PartnerTopicPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Partner Topic."
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventgrid#IdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Identity information for the Partner Topic resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#PartnerTopicPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "partnerRegistrationImmutableId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The immutableId of the corresponding partner registration."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source associated with this partner topic. This represents a unique partner resource."
+          }
+        },
+        "eventTypeInfo": {
+          "target": "com.azure.eventgrid#EventTypeInfo",
+          "traits": {
+            "smithy.api#documentation": "Event Type information from the corresponding event channel."
+          }
+        },
+        "expirationTimeIfNotActivatedUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,\r\nthe partner topic and corresponding event channel are deleted."
+          }
+        },
+        "activationState": {
+          "target": "com.azure.eventgrid#PartnerTopicPropertiesInputActivationState",
+          "traits": {
+            "smithy.api#documentation": "Activation state of the partner topic."
+          }
+        },
+        "partnerTopicFriendlyDescription": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly description about the topic. This can be set by the publisher/partner to show custom description for the customer partner topic.\r\nThis will be helpful to remove any ambiguity of the origin of creation of the partner topic for the customer."
+          }
+        },
+        "messageForActivation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Context or helpful message that can be used during the approval process by the subscriber."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Partner Topic."
+      }
+    },
+    "com.azure.eventgrid#PartnerTopicPropertiesInputActivationState": {
+      "type": "enum",
+      "members": {
+        "NEVERACTIVATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NeverActivated"
+          }
+        },
+        "ACTIVATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Activated"
+          }
+        },
+        "DEACTIVATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deactivated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Activation state of the partner topic."
+      }
+    },
+    "com.azure.eventgrid#PartnerTopicsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the resource."
       }
     },
     "com.azure.eventgrid#PartnerTopicsGet": {
@@ -7324,16 +7592,27 @@
             "smithy.api#documentation": "Name of the partner registration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.eventgrid#PartnerRegistrationsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags of the partner registration resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#PartnerRegistrationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the partner registration resource."
       }
     },
     "com.azure.eventgrid#PartnerRegistrationsCreateOrUpdate": {
@@ -7553,16 +7832,54 @@
             "smithy.api#documentation": "Name of the partner registration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Location of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventgrid#PartnerRegistrationsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#PartnerRegistrationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the partner registration."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#PartnerRegistrationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "partnerRegistrationImmutableId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The immutableId of the corresponding partner registration.\r\nNote: This property is marked for deprecation and is not supported in any future GA API version"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the partner registration."
+      }
+    },
+    "com.azure.eventgrid#PartnerRegistrationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the resource."
       }
     },
     "com.azure.eventgrid#PartnerRegistrationsGet": {
@@ -7853,10 +8170,10 @@
             "smithy.api#documentation": "Name of the partner namespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Key name to regenerate (key1 or key2).",
             "smithy.api#required": {}
           }
         }
@@ -8541,16 +8858,120 @@
             "smithy.api#documentation": "Name of the partner namespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.eventgrid#PartnerNamespacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags of the Partner Namespace."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#PartnerNamespaceUpdateParameterProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Partner Namespace."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#PartnerNamespaceUpdateParameterProperties": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.eventgrid#PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled. \r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceUpdateParameterProperties.InboundIpRules\" />"
+          }
+        },
+        "inboundIpRules": {
+          "target": "com.azure.eventgrid#PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList",
+          "traits": {
+            "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+          }
+        },
+        "minimumTlsVersionAllowed": {
+          "target": "com.azure.eventgrid#PartnerNamespaceUpdateParameterPropertiesMinimumTlsVersionAllowed",
+          "traits": {
+            "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this domain"
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information of Partner Namespace update parameter properties."
+      }
+    },
+    "com.azure.eventgrid#PartnerNamespaceUpdateParameterPropertiesMinimumTlsVersionAllowed": {
+      "type": "enum",
+      "members": {
+        "_1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.0"
+          }
+        },
+        "_1_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.1"
+          }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this domain"
+      }
+    },
+    "com.azure.eventgrid#PartnerNamespaceUpdateParameterPropertiesInboundIpRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#InboundIpRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+      }
+    },
+    "com.azure.eventgrid#PartnerNamespaceUpdateParameterPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled. \r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceUpdateParameterProperties.InboundIpRules\" />"
+      }
+    },
+    "com.azure.eventgrid#PartnerNamespacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the Partner Namespace."
       }
     },
     "com.azure.eventgrid#PartnerNamespacesCreateOrUpdate": {
@@ -8770,16 +9191,159 @@
             "smithy.api#documentation": "Name of the partner namespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Location of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventgrid#PartnerNamespacesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#PartnerNamespacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Partner Namespace."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#PartnerNamespacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "partnerRegistrationFullyQualifiedId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format:\r\n/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}."
+          }
+        },
+        "minimumTlsVersionAllowed": {
+          "target": "com.azure.eventgrid#PartnerNamespacePropertiesInputMinimumTlsVersionAllowed",
+          "traits": {
+            "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this partner namespace"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.eventgrid#PartnerNamespacePropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled.\r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules\" />"
+          }
+        },
+        "inboundIpRules": {
+          "target": "com.azure.eventgrid#PartnerNamespacePropertiesInputInboundIpRulesList",
+          "traits": {
+            "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace."
+          }
+        },
+        "partnerTopicRoutingMode": {
+          "target": "com.azure.eventgrid#PartnerNamespacePropertiesInputPartnerTopicRoutingMode",
+          "traits": {
+            "smithy.api#documentation": "This determines if events published to this partner namespace should use the source attribute in the event payload\r\nor use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the partner namespace."
+      }
+    },
+    "com.azure.eventgrid#PartnerNamespacePropertiesInputPartnerTopicRoutingMode": {
+      "type": "enum",
+      "members": {
+        "SOURCEEVENTATTRIBUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SourceEventAttribute"
+          }
+        },
+        "CHANNELNAMEHEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ChannelNameHeader"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines if events published to this partner namespace should use the source attribute in the event payload\r\nor use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic."
+      }
+    },
+    "com.azure.eventgrid#PartnerNamespacePropertiesInputInboundIpRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#InboundIpRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+      }
+    },
+    "com.azure.eventgrid#PartnerNamespacePropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled.\r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules\" />"
+      }
+    },
+    "com.azure.eventgrid#PartnerNamespacePropertiesInputMinimumTlsVersionAllowed": {
+      "type": "enum",
+      "members": {
+        "_1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.0"
+          }
+        },
+        "_1_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.1"
+          }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this partner namespace"
+      }
+    },
+    "com.azure.eventgrid#PartnerNamespacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the resource."
       }
     },
     "com.azure.eventgrid#PartnerNamespacesGet": {
@@ -9331,11 +9895,22 @@
             "smithy.api#documentation": "The name of the resource group within the user's subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "partnerRegistrationImmutableId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The immutableId of the corresponding partner registration."
+          }
+        },
+        "partnerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The partner name."
+          }
+        },
+        "authorizationExpirationTimeInUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's\r\ncontext will fail. If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration.\r\nIf not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified."
           }
         }
       },
@@ -9551,11 +10126,22 @@
             "smithy.api#documentation": "The name of the resource group within the user's subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "partnerRegistrationImmutableId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The immutableId of the corresponding partner registration."
+          }
+        },
+        "partnerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The partner name."
+          }
+        },
+        "authorizationExpirationTimeInUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's\r\ncontext will fail. If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration.\r\nIf not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified."
           }
         }
       },
@@ -10105,16 +10691,47 @@
             "smithy.api#documentation": "The name of the resource group within the user's subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.eventgrid#PartnerConfigurationsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags of the partner configuration resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#PartnerConfigurationUpdateParameterProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Topic resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#PartnerConfigurationUpdateParameterProperties": {
+      "type": "structure",
+      "members": {
+        "defaultMaximumExpirationTimeInDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The default time used to validate the maximum expiration time for each authorized partners in days. Allowed values ar between 1 and 365 days."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information of partner configuration update parameter properties."
+      }
+    },
+    "com.azure.eventgrid#PartnerConfigurationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the partner configuration resource."
       }
     },
     "com.azure.eventgrid#PartnerConfigurationsCreateOrUpdate": {
@@ -10325,16 +10942,39 @@
             "smithy.api#documentation": "The name of the resource group within the user's subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#PartnerConfigurationProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the partner configuration."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventgrid#PartnerConfigurationsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#PartnerConfigurationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the resource."
       }
     },
     "com.azure.eventgrid#PartnerConfigurationsGet": {
@@ -10616,10 +11256,10 @@
             "smithy.api#documentation": "Name of the topic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Key name to regenerate key1 or key2",
             "smithy.api#required": {}
           }
         }
@@ -11351,16 +11991,158 @@
             "smithy.api#documentation": "Name of the topic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.eventgrid#TopicsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags of the Topic resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventgrid#IdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Topic resource identity information."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#TopicUpdateParameterProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Topic resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#TopicUpdateParameterProperties": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.eventgrid#TopicUpdateParameterPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled. \r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicUpdateParameterProperties.InboundIpRules\" />"
+          }
+        },
+        "inboundIpRules": {
+          "target": "com.azure.eventgrid#TopicUpdateParameterPropertiesInboundIpRulesList",
+          "traits": {
+            "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+          }
+        },
+        "minimumTlsVersionAllowed": {
+          "target": "com.azure.eventgrid#TopicUpdateParameterPropertiesMinimumTlsVersionAllowed",
+          "traits": {
+            "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this domain"
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic."
+          }
+        },
+        "dataResidencyBoundary": {
+          "target": "com.azure.eventgrid#TopicUpdateParameterPropertiesDataResidencyBoundary",
+          "traits": {
+            "smithy.api#documentation": "The data residency boundary for the topic."
+          }
+        },
+        "eventTypeInfo": {
+          "target": "com.azure.eventgrid#EventTypeInfo",
+          "traits": {
+            "smithy.api#documentation": "The eventTypeInfo for the topic."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information of topic update parameter properties."
+      }
+    },
+    "com.azure.eventgrid#TopicUpdateParameterPropertiesDataResidencyBoundary": {
+      "type": "enum",
+      "members": {
+        "WITHINGEOPAIR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WithinGeopair"
+          }
+        },
+        "WITHINREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WithinRegion"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The data residency boundary for the topic."
+      }
+    },
+    "com.azure.eventgrid#TopicUpdateParameterPropertiesMinimumTlsVersionAllowed": {
+      "type": "enum",
+      "members": {
+        "_1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.0"
+          }
+        },
+        "_1_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.1"
+          }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this domain"
+      }
+    },
+    "com.azure.eventgrid#TopicUpdateParameterPropertiesInboundIpRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#InboundIpRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+      }
+    },
+    "com.azure.eventgrid#TopicUpdateParameterPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled. \r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicUpdateParameterProperties.InboundIpRules\" />"
+      }
+    },
+    "com.azure.eventgrid#TopicsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the Topic resource."
       }
     },
     "com.azure.eventgrid#TopicsCreateOrUpdate": {
@@ -11586,16 +12368,203 @@
             "smithy.api#documentation": "Name of the topic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Location of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventgrid#TopicsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#TopicPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the topic."
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventgrid#IdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Identity information for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#TopicPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "eventTypeInfo": {
+          "target": "com.azure.eventgrid#EventTypeInfo",
+          "traits": {
+            "smithy.api#documentation": "Event Type Information for the user topic. This information is provided by the publisher and can be used by the \r\nsubscriber to view different types of events that are published."
+          }
+        },
+        "minimumTlsVersionAllowed": {
+          "target": "com.azure.eventgrid#TopicPropertiesInputMinimumTlsVersionAllowed",
+          "traits": {
+            "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this topic"
+          }
+        },
+        "inputSchema": {
+          "target": "com.azure.eventgrid#TopicPropertiesInputInputSchema",
+          "traits": {
+            "smithy.api#documentation": "This determines the format that Event Grid should expect for incoming events published to the topic."
+          }
+        },
+        "inputSchemaMapping": {
+          "target": "com.azure.eventgrid#InputSchemaMapping",
+          "traits": {
+            "smithy.api#documentation": "This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.eventgrid#TopicPropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled. \r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules\" />"
+          }
+        },
+        "inboundIpRules": {
+          "target": "com.azure.eventgrid#TopicPropertiesInputInboundIpRulesList",
+          "traits": {
+            "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic."
+          }
+        },
+        "dataResidencyBoundary": {
+          "target": "com.azure.eventgrid#TopicPropertiesInputDataResidencyBoundary",
+          "traits": {
+            "smithy.api#documentation": "Data Residency Boundary of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Topic."
+      }
+    },
+    "com.azure.eventgrid#TopicPropertiesInputDataResidencyBoundary": {
+      "type": "enum",
+      "members": {
+        "WITHINGEOPAIR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WithinGeopair"
+          }
+        },
+        "WITHINREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WithinRegion"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data Residency Boundary of the resource."
+      }
+    },
+    "com.azure.eventgrid#TopicPropertiesInputInboundIpRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#InboundIpRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+      }
+    },
+    "com.azure.eventgrid#TopicPropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled. \r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules\" />"
+      }
+    },
+    "com.azure.eventgrid#TopicPropertiesInputInputSchema": {
+      "type": "enum",
+      "members": {
+        "EVENTGRIDSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventGridSchema"
+          }
+        },
+        "CUSTOMEVENTSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomEventSchema"
+          }
+        },
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines the format that Event Grid should expect for incoming events published to the topic."
+      }
+    },
+    "com.azure.eventgrid#TopicPropertiesInputMinimumTlsVersionAllowed": {
+      "type": "enum",
+      "members": {
+        "_1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.0"
+          }
+        },
+        "_1_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.1"
+          }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this topic"
+      }
+    },
+    "com.azure.eventgrid#TopicsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the resource."
       }
     },
     "com.azure.eventgrid#TopicsGet": {
@@ -11992,10 +12961,10 @@
             "smithy.api#documentation": "Name of the topic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Key name to regenerate key1 or key2",
             "smithy.api#required": {}
           }
         }
@@ -12690,16 +13659,29 @@
             "smithy.api#documentation": "Name of the namespace topic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#NamespaceTopicUpdateParameterProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the namespace topic resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#NamespaceTopicUpdateParameterProperties": {
+      "type": "structure",
+      "members": {
+        "eventRetentionInDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Event retention for the namespace topic expressed in days. The property default value is 1 day.\r\nMin event retention duration value is 1 day and max event retention duration value is 1 day."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information of namespace topic update parameter properties."
       }
     },
     "com.azure.eventgrid#NamespaceTopicsCreateOrUpdate": {
@@ -12902,16 +13884,69 @@
             "smithy.api#documentation": "Name of the namespace topic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#NamespaceTopicPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the namespace topic."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#NamespaceTopicPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "publisherType": {
+          "target": "com.azure.eventgrid#NamespaceTopicPropertiesInputPublisherType",
+          "traits": {
+            "smithy.api#documentation": "Publisher type of the namespace topic."
+          }
+        },
+        "inputSchema": {
+          "target": "com.azure.eventgrid#NamespaceTopicPropertiesInputInputSchema",
+          "traits": {
+            "smithy.api#documentation": "This determines the format that is expected for incoming events published to the topic."
+          }
+        },
+        "eventRetentionInDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Event retention for the namespace topic expressed in days. The property default value is 1 day.\r\nMin event retention duration value is 1 day and max event retention duration value is 1 day."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the namespace topic."
+      }
+    },
+    "com.azure.eventgrid#NamespaceTopicPropertiesInputInputSchema": {
+      "type": "enum",
+      "members": {
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines the format that is expected for incoming events published to the topic."
+      }
+    },
+    "com.azure.eventgrid#NamespaceTopicPropertiesInputPublisherType": {
+      "type": "enum",
+      "members": {
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Custom"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Publisher type of the namespace topic."
       }
     },
     "com.azure.eventgrid#NamespaceTopicsGet": {
@@ -13185,10 +14220,10 @@
             "smithy.api#documentation": "Name of the Namespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Key name to regenerate key1 or key2.",
             "smithy.api#required": {}
           }
         }
@@ -14304,16 +15339,208 @@
             "smithy.api#documentation": "Name of the namespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.eventgrid#NamespacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags of the namespace resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventgrid#IdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Namespace resource identity information."
+          }
+        },
+        "sku": {
+          "target": "com.azure.eventgrid#NamespaceSku",
+          "traits": {
+            "smithy.api#documentation": "Represents available Sku pricing tiers."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#NamespaceUpdateParameterProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the namespace resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#NamespaceUpdateParameterProperties": {
+      "type": "structure",
+      "members": {
+        "topicSpacesConfiguration": {
+          "target": "com.azure.eventgrid#UpdateTopicSpacesConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "Topic spaces configuration properties that can be updated."
+          }
+        },
+        "topicsConfiguration": {
+          "target": "com.azure.eventgrid#UpdateTopicsConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "Topics configuration properties that can be updated."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.eventgrid#NamespaceUpdateParameterPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled. \r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceUpdateParameterProperties.InboundIpRules\" />"
+          }
+        },
+        "inboundIpRules": {
+          "target": "com.azure.eventgrid#NamespaceUpdateParameterPropertiesInboundIpRulesList",
+          "traits": {
+            "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information of namespace update parameter properties."
+      }
+    },
+    "com.azure.eventgrid#NamespaceUpdateParameterPropertiesInboundIpRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#InboundIpRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+      }
+    },
+    "com.azure.eventgrid#NamespaceUpdateParameterPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled. \r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceUpdateParameterProperties.InboundIpRules\" />"
+      }
+    },
+    "com.azure.eventgrid#UpdateTopicsConfigurationInfo": {
+      "type": "structure",
+      "members": {
+        "customDomains": {
+          "target": "com.azure.eventgrid#UpdateTopicsConfigurationInfoCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain info for topics configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the topics configuration info of a namespace."
+      }
+    },
+    "com.azure.eventgrid#UpdateTopicsConfigurationInfoCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#CustomDomainConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom domain info for topics configuration."
+      }
+    },
+    "com.azure.eventgrid#UpdateTopicSpacesConfigurationInfo": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.eventgrid#UpdateTopicSpacesConfigurationInfoState",
+          "traits": {
+            "smithy.api#documentation": "Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled."
+          }
+        },
+        "routeTopicResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This property is used to specify custom topic to which events will be routed to from topic spaces configuration under namespace."
+          }
+        },
+        "routingEnrichments": {
+          "target": "com.azure.eventgrid#RoutingEnrichments",
+          "traits": {
+            "smithy.api#documentation": "Routing enrichments for topic spaces configuration."
+          }
+        },
+        "maximumSessionExpiryInHours": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum session expiry in hours. The property default value is 1 hour.\r\nMin allowed value is 1 hour and max allowed value is 8 hours."
+          }
+        },
+        "maximumClientSessionsPerAuthenticationName": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of sessions per authentication name. The property default value is 1.\r\nMin allowed value is 1 and max allowed value is 100."
+          }
+        },
+        "routingIdentityInfo": {
+          "target": "com.azure.eventgrid#RoutingIdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Routing identity info for topic spaces configuration."
+          }
+        },
+        "customDomains": {
+          "target": "com.azure.eventgrid#UpdateTopicSpacesConfigurationInfoCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain info for topic spaces configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the topic spaces configuration info of a namespace."
+      }
+    },
+    "com.azure.eventgrid#UpdateTopicSpacesConfigurationInfoCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#CustomDomainConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom domain info for topic spaces configuration."
+      }
+    },
+    "com.azure.eventgrid#UpdateTopicSpacesConfigurationInfoState": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled."
+      }
+    },
+    "com.azure.eventgrid#NamespacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the namespace resource."
       }
     },
     "com.azure.eventgrid#NamespacesCreateOrUpdate": {
@@ -14545,16 +15772,280 @@
             "smithy.api#documentation": "Name of the namespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Location of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventgrid#NamespacesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#NamespacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Namespace resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.eventgrid#NamespaceSku",
+          "traits": {
+            "smithy.api#documentation": "Represents available Sku pricing tiers."
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventgrid#IdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Identity information for the Namespace resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#NamespacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpointConnections": {
+          "target": "com.azure.eventgrid#NamespacePropertiesInputPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of private endpoint connections."
+          }
+        },
+        "topicsConfiguration": {
+          "target": "com.azure.eventgrid#TopicsConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "Topics configuration information for the namespace resource"
+          }
+        },
+        "topicSpacesConfiguration": {
+          "target": "com.azure.eventgrid#TopicSpacesConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "Topic spaces configuration information for the namespace resource"
+          }
+        },
+        "isZoneRedundant": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this\r\nproperty is not specified explicitly by the user, its default value depends on the following conditions:\r\n    a. For Availability Zones enabled regions - The default property value would be true.\r\n    b. For non-Availability Zones enabled regions - The default property value would be false.\r\nOnce specified, this property cannot be updated."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.eventgrid#NamespacePropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled.\r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules\" />"
+          }
+        },
+        "inboundIpRules": {
+          "target": "com.azure.eventgrid#NamespacePropertiesInputInboundIpRulesList",
+          "traits": {
+            "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+          }
+        },
+        "minimumTlsVersionAllowed": {
+          "target": "com.azure.eventgrid#NamespacePropertiesInputMinimumTlsVersionAllowed",
+          "traits": {
+            "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the namespace resource."
+      }
+    },
+    "com.azure.eventgrid#NamespacePropertiesInputMinimumTlsVersionAllowed": {
+      "type": "enum",
+      "members": {
+        "_1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.0"
+          }
+        },
+        "_1_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.1"
+          }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported."
+      }
+    },
+    "com.azure.eventgrid#NamespacePropertiesInputInboundIpRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#InboundIpRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+      }
+    },
+    "com.azure.eventgrid#NamespacePropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled.\r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules\" />"
+      }
+    },
+    "com.azure.eventgrid#TopicSpacesConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.eventgrid#TopicSpacesConfigurationInputState",
+          "traits": {
+            "smithy.api#documentation": "Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled."
+          }
+        },
+        "routeTopicResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified Azure Resource Id for the Event Grid Topic to which events will be routed to from TopicSpaces under a namespace.\r\nThis property should be in the following format '/subscriptions/{subId}/resourcegroups/{resourceGroupName}/providers/microsoft.EventGrid/topics/{topicName}'.\r\nThis topic should reside in the same region where namespace is located."
+          }
+        },
+        "routingEnrichments": {
+          "target": "com.azure.eventgrid#RoutingEnrichments",
+          "traits": {
+            "smithy.api#documentation": "Routing enrichments for topic spaces configuration"
+          }
+        },
+        "maximumSessionExpiryInHours": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum session expiry in hours. The property default value is 1 hour.\r\nMin allowed value is 1 hour and max allowed value is 8 hours."
+          }
+        },
+        "maximumClientSessionsPerAuthenticationName": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of sessions per authentication name. The property default value is 1.\r\nMin allowed value is 1 and max allowed value is 100."
+          }
+        },
+        "routingIdentityInfo": {
+          "target": "com.azure.eventgrid#RoutingIdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Routing identity info for topic spaces configuration."
+          }
+        },
+        "customDomains": {
+          "target": "com.azure.eventgrid#TopicSpacesConfigurationInputCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "List of custom domain configurations for the namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Topic Spaces Configuration."
+      }
+    },
+    "com.azure.eventgrid#TopicSpacesConfigurationInputCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#CustomDomainConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of custom domain configurations for the namespace."
+      }
+    },
+    "com.azure.eventgrid#TopicSpacesConfigurationInputState": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled."
+      }
+    },
+    "com.azure.eventgrid#TopicsConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "customDomains": {
+          "target": "com.azure.eventgrid#TopicsConfigurationInputCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "List of custom domain configurations for the namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Topics Configuration."
+      }
+    },
+    "com.azure.eventgrid#TopicsConfigurationInputCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#CustomDomainConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of custom domain configurations for the namespace."
+      }
+    },
+    "com.azure.eventgrid#NamespacePropertiesInputPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#PrivateEndpointConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of private endpoint connections."
+      }
+    },
+    "com.azure.eventgrid#PrivateEndpointConnectionInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.eventgrid#PrivateEndpointConnectionProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the PrivateEndpointConnection."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.eventgrid#NamespacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the resource."
       }
     },
     "com.azure.eventgrid#NamespacesGet": {
@@ -17255,16 +18746,98 @@
             "smithy.api#documentation": "Name of the event subscription to be updated."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "destination": {
+          "target": "com.azure.eventgrid#EventSubscriptionDestination",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deliveryWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeliveryWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "filter": {
+          "target": "com.azure.eventgrid#EventSubscriptionFilter",
+          "traits": {
+            "smithy.api#documentation": "Information about the filter for the event subscription."
+          }
+        },
+        "labels": {
+          "target": "com.azure.eventgrid#PartnerTopicEventSubscriptionsUpdateRequestLabelsList",
+          "traits": {
+            "smithy.api#documentation": "List of user defined labels."
+          }
+        },
+        "expirationTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Information about the expiration time for the event subscription."
+          }
+        },
+        "eventDeliverySchema": {
+          "target": "com.azure.eventgrid#PartnerTopicEventSubscriptionsUpdateRequestEventDeliverySchema",
+          "traits": {
+            "smithy.api#documentation": "The event delivery schema for the event subscription."
+          }
+        },
+        "retryPolicy": {
+          "target": "com.azure.eventgrid#RetryPolicy",
+          "traits": {
+            "smithy.api#documentation": "The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events."
+          }
+        },
+        "deadLetterDestination": {
+          "target": "com.azure.eventgrid#DeadLetterDestination",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deadLetterWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeadLetterWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#PartnerTopicEventSubscriptionsUpdateRequestEventDeliverySchema": {
+      "type": "enum",
+      "members": {
+        "EVENTGRIDSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventGridSchema"
+          }
+        },
+        "CUSTOMINPUTSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomInputSchema"
+          }
+        },
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The event delivery schema for the event subscription."
+      }
+    },
+    "com.azure.eventgrid#PartnerTopicEventSubscriptionsUpdateRequestLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user defined labels."
       }
     },
     "com.azure.eventgrid#PartnerTopicEventSubscriptionsCreateOrUpdate": {
@@ -17467,16 +19040,112 @@
             "smithy.api#documentation": "Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#EventSubscriptionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the event subscription."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#EventSubscriptionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "destination": {
+          "target": "com.azure.eventgrid#EventSubscriptionDestination",
+          "traits": {
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deliveryWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeliveryWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "filter": {
+          "target": "com.azure.eventgrid#EventSubscriptionFilter",
+          "traits": {
+            "smithy.api#documentation": "Information about the filter for the event subscription."
+          }
+        },
+        "labels": {
+          "target": "com.azure.eventgrid#EventSubscriptionPropertiesInputLabelsList",
+          "traits": {
+            "smithy.api#documentation": "List of user defined labels."
+          }
+        },
+        "expirationTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration time of the event subscription."
+          }
+        },
+        "eventDeliverySchema": {
+          "target": "com.azure.eventgrid#EventSubscriptionPropertiesInputEventDeliverySchema",
+          "traits": {
+            "smithy.api#documentation": "The event delivery schema for the event subscription."
+          }
+        },
+        "retryPolicy": {
+          "target": "com.azure.eventgrid#RetryPolicy",
+          "traits": {
+            "smithy.api#documentation": "The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events."
+          }
+        },
+        "deadLetterDestination": {
+          "target": "com.azure.eventgrid#DeadLetterDestination",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deadLetterWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeadLetterWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Event Subscription."
+      }
+    },
+    "com.azure.eventgrid#EventSubscriptionPropertiesInputEventDeliverySchema": {
+      "type": "enum",
+      "members": {
+        "EVENTGRIDSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventGridSchema"
+          }
+        },
+        "CUSTOMINPUTSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomInputSchema"
+          }
+        },
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The event delivery schema for the event subscription."
+      }
+    },
+    "com.azure.eventgrid#EventSubscriptionPropertiesInputLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user defined labels."
       }
     },
     "com.azure.eventgrid#PartnerTopicEventSubscriptionsGet": {
@@ -18110,16 +19779,98 @@
             "smithy.api#documentation": "Name of the event subscription to be updated."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "destination": {
+          "target": "com.azure.eventgrid#EventSubscriptionDestination",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deliveryWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeliveryWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "filter": {
+          "target": "com.azure.eventgrid#EventSubscriptionFilter",
+          "traits": {
+            "smithy.api#documentation": "Information about the filter for the event subscription."
+          }
+        },
+        "labels": {
+          "target": "com.azure.eventgrid#SystemTopicEventSubscriptionsUpdateRequestLabelsList",
+          "traits": {
+            "smithy.api#documentation": "List of user defined labels."
+          }
+        },
+        "expirationTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Information about the expiration time for the event subscription."
+          }
+        },
+        "eventDeliverySchema": {
+          "target": "com.azure.eventgrid#SystemTopicEventSubscriptionsUpdateRequestEventDeliverySchema",
+          "traits": {
+            "smithy.api#documentation": "The event delivery schema for the event subscription."
+          }
+        },
+        "retryPolicy": {
+          "target": "com.azure.eventgrid#RetryPolicy",
+          "traits": {
+            "smithy.api#documentation": "The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events."
+          }
+        },
+        "deadLetterDestination": {
+          "target": "com.azure.eventgrid#DeadLetterDestination",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deadLetterWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeadLetterWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#SystemTopicEventSubscriptionsUpdateRequestEventDeliverySchema": {
+      "type": "enum",
+      "members": {
+        "EVENTGRIDSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventGridSchema"
+          }
+        },
+        "CUSTOMINPUTSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomInputSchema"
+          }
+        },
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The event delivery schema for the event subscription."
+      }
+    },
+    "com.azure.eventgrid#SystemTopicEventSubscriptionsUpdateRequestLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user defined labels."
       }
     },
     "com.azure.eventgrid#SystemTopicEventSubscriptionsCreateOrUpdate": {
@@ -18322,11 +20073,10 @@
             "smithy.api#documentation": "Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#EventSubscriptionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the event subscription."
           }
         }
       },
@@ -18798,16 +20548,98 @@
             "smithy.api#documentation": "Name of the event subscription to be updated."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "destination": {
+          "target": "com.azure.eventgrid#EventSubscriptionDestination",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deliveryWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeliveryWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "filter": {
+          "target": "com.azure.eventgrid#EventSubscriptionFilter",
+          "traits": {
+            "smithy.api#documentation": "Information about the filter for the event subscription."
+          }
+        },
+        "labels": {
+          "target": "com.azure.eventgrid#DomainEventSubscriptionsUpdateRequestLabelsList",
+          "traits": {
+            "smithy.api#documentation": "List of user defined labels."
+          }
+        },
+        "expirationTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Information about the expiration time for the event subscription."
+          }
+        },
+        "eventDeliverySchema": {
+          "target": "com.azure.eventgrid#DomainEventSubscriptionsUpdateRequestEventDeliverySchema",
+          "traits": {
+            "smithy.api#documentation": "The event delivery schema for the event subscription."
+          }
+        },
+        "retryPolicy": {
+          "target": "com.azure.eventgrid#RetryPolicy",
+          "traits": {
+            "smithy.api#documentation": "The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events."
+          }
+        },
+        "deadLetterDestination": {
+          "target": "com.azure.eventgrid#DeadLetterDestination",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deadLetterWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeadLetterWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#DomainEventSubscriptionsUpdateRequestEventDeliverySchema": {
+      "type": "enum",
+      "members": {
+        "EVENTGRIDSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventGridSchema"
+          }
+        },
+        "CUSTOMINPUTSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomInputSchema"
+          }
+        },
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The event delivery schema for the event subscription."
+      }
+    },
+    "com.azure.eventgrid#DomainEventSubscriptionsUpdateRequestLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user defined labels."
       }
     },
     "com.azure.eventgrid#DomainEventSubscriptionsCreateOrUpdate": {
@@ -19010,11 +20842,10 @@
             "smithy.api#documentation": "Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#EventSubscriptionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the event subscription."
           }
         }
       },
@@ -19486,16 +21317,98 @@
             "smithy.api#documentation": "Name of the event subscription to be updated."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "destination": {
+          "target": "com.azure.eventgrid#EventSubscriptionDestination",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deliveryWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeliveryWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "filter": {
+          "target": "com.azure.eventgrid#EventSubscriptionFilter",
+          "traits": {
+            "smithy.api#documentation": "Information about the filter for the event subscription."
+          }
+        },
+        "labels": {
+          "target": "com.azure.eventgrid#TopicEventSubscriptionsUpdateRequestLabelsList",
+          "traits": {
+            "smithy.api#documentation": "List of user defined labels."
+          }
+        },
+        "expirationTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Information about the expiration time for the event subscription."
+          }
+        },
+        "eventDeliverySchema": {
+          "target": "com.azure.eventgrid#TopicEventSubscriptionsUpdateRequestEventDeliverySchema",
+          "traits": {
+            "smithy.api#documentation": "The event delivery schema for the event subscription."
+          }
+        },
+        "retryPolicy": {
+          "target": "com.azure.eventgrid#RetryPolicy",
+          "traits": {
+            "smithy.api#documentation": "The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events."
+          }
+        },
+        "deadLetterDestination": {
+          "target": "com.azure.eventgrid#DeadLetterDestination",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deadLetterWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeadLetterWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#TopicEventSubscriptionsUpdateRequestEventDeliverySchema": {
+      "type": "enum",
+      "members": {
+        "EVENTGRIDSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventGridSchema"
+          }
+        },
+        "CUSTOMINPUTSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomInputSchema"
+          }
+        },
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The event delivery schema for the event subscription."
+      }
+    },
+    "com.azure.eventgrid#TopicEventSubscriptionsUpdateRequestLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user defined labels."
       }
     },
     "com.azure.eventgrid#TopicEventSubscriptionsCreateOrUpdate": {
@@ -19698,11 +21611,10 @@
             "smithy.api#documentation": "Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#EventSubscriptionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the event subscription."
           }
         }
       },
@@ -20190,16 +22102,98 @@
             "smithy.api#documentation": "Name of the event subscription to be updated."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "destination": {
+          "target": "com.azure.eventgrid#EventSubscriptionDestination",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deliveryWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeliveryWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "filter": {
+          "target": "com.azure.eventgrid#EventSubscriptionFilter",
+          "traits": {
+            "smithy.api#documentation": "Information about the filter for the event subscription."
+          }
+        },
+        "labels": {
+          "target": "com.azure.eventgrid#DomainTopicEventSubscriptionsUpdateRequestLabelsList",
+          "traits": {
+            "smithy.api#documentation": "List of user defined labels."
+          }
+        },
+        "expirationTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Information about the expiration time for the event subscription."
+          }
+        },
+        "eventDeliverySchema": {
+          "target": "com.azure.eventgrid#DomainTopicEventSubscriptionsUpdateRequestEventDeliverySchema",
+          "traits": {
+            "smithy.api#documentation": "The event delivery schema for the event subscription."
+          }
+        },
+        "retryPolicy": {
+          "target": "com.azure.eventgrid#RetryPolicy",
+          "traits": {
+            "smithy.api#documentation": "The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events."
+          }
+        },
+        "deadLetterDestination": {
+          "target": "com.azure.eventgrid#DeadLetterDestination",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deadLetterWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeadLetterWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#DomainTopicEventSubscriptionsUpdateRequestEventDeliverySchema": {
+      "type": "enum",
+      "members": {
+        "EVENTGRIDSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventGridSchema"
+          }
+        },
+        "CUSTOMINPUTSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomInputSchema"
+          }
+        },
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The event delivery schema for the event subscription."
+      }
+    },
+    "com.azure.eventgrid#DomainTopicEventSubscriptionsUpdateRequestLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user defined labels."
       }
     },
     "com.azure.eventgrid#DomainTopicEventSubscriptionsCreateOrUpdate": {
@@ -20410,11 +22404,10 @@
             "smithy.api#documentation": "Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and use alphanumeric letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#EventSubscriptionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the event subscription."
           }
         }
       },
@@ -20862,16 +22855,98 @@
             "smithy.api#documentation": "Name of the event subscription to be updated."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "destination": {
+          "target": "com.azure.eventgrid#EventSubscriptionDestination",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deliveryWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeliveryWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "Information about the destination where events have to be delivered for the event subscription.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "filter": {
+          "target": "com.azure.eventgrid#EventSubscriptionFilter",
+          "traits": {
+            "smithy.api#documentation": "Information about the filter for the event subscription."
+          }
+        },
+        "labels": {
+          "target": "com.azure.eventgrid#EventSubscriptionsUpdateRequestLabelsList",
+          "traits": {
+            "smithy.api#documentation": "List of user defined labels."
+          }
+        },
+        "expirationTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Information about the expiration time for the event subscription."
+          }
+        },
+        "eventDeliverySchema": {
+          "target": "com.azure.eventgrid#EventSubscriptionsUpdateRequestEventDeliverySchema",
+          "traits": {
+            "smithy.api#documentation": "The event delivery schema for the event subscription."
+          }
+        },
+        "retryPolicy": {
+          "target": "com.azure.eventgrid#RetryPolicy",
+          "traits": {
+            "smithy.api#documentation": "The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events."
+          }
+        },
+        "deadLetterDestination": {
+          "target": "com.azure.eventgrid#DeadLetterDestination",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering."
+          }
+        },
+        "deadLetterWithResourceIdentity": {
+          "target": "com.azure.eventgrid#DeadLetterWithResourceIdentity",
+          "traits": {
+            "smithy.api#documentation": "The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.\r\nUses the managed identity setup on the parent resource (topic / domain) to acquire the authentication tokens being used during delivery / dead-lettering."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#EventSubscriptionsUpdateRequestEventDeliverySchema": {
+      "type": "enum",
+      "members": {
+        "EVENTGRIDSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventGridSchema"
+          }
+        },
+        "CUSTOMINPUTSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomInputSchema"
+          }
+        },
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The event delivery schema for the event subscription."
+      }
+    },
+    "com.azure.eventgrid#EventSubscriptionsUpdateRequestLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user defined labels."
       }
     },
     "com.azure.eventgrid#EventSubscriptionsCreateOrUpdate": {
@@ -21058,11 +23133,10 @@
             "smithy.api#documentation": "Name of the event subscription to be created. Event subscription names must be between 3 and 64 characters in length and should use alphanumeric letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#EventSubscriptionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the event subscription."
           }
         }
       },
@@ -22272,16 +24346,58 @@
             "smithy.api#documentation": "Name of the event subscription to be updated."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.eventgrid#SubscriptionUpdateParametersProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#SubscriptionUpdateParametersProperties": {
+      "type": "structure",
+      "members": {
+        "deliveryConfiguration": {
+          "target": "com.azure.eventgrid#DeliveryConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Information about the delivery configuration of the event subscription."
+          }
+        },
+        "eventDeliverySchema": {
+          "target": "com.azure.eventgrid#SubscriptionUpdateParametersPropertiesEventDeliverySchema",
+          "traits": {
+            "smithy.api#documentation": "The event delivery schema for the event subscription."
+          }
+        },
+        "filtersConfiguration": {
+          "target": "com.azure.eventgrid#FiltersConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Information about the filter for the event subscription."
+          }
+        },
+        "expirationTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration time of the event subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Event Subscription update parameters."
+      }
+    },
+    "com.azure.eventgrid#SubscriptionUpdateParametersPropertiesEventDeliverySchema": {
+      "type": "enum",
+      "members": {
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The event delivery schema for the event subscription."
       }
     },
     "com.azure.eventgrid#NamespaceTopicEventSubscriptionsCreateOrUpdate": {
@@ -22492,16 +24608,61 @@
             "smithy.api#documentation": "Name of the event subscription to be created. Event subscription names must be between 3 and 50 characters in length and use alphanumeric letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#SubscriptionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the event subscription."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#SubscriptionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "deliveryConfiguration": {
+          "target": "com.azure.eventgrid#DeliveryConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Information about the delivery configuration of the event subscription."
+          }
+        },
+        "eventDeliverySchema": {
+          "target": "com.azure.eventgrid#SubscriptionPropertiesInputEventDeliverySchema",
+          "traits": {
+            "smithy.api#documentation": "The event delivery schema for the event subscription."
+          }
+        },
+        "filtersConfiguration": {
+          "target": "com.azure.eventgrid#FiltersConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Information about the filter for the event subscription."
+          }
+        },
+        "expirationTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration time of the event subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the event subscription."
+      }
+    },
+    "com.azure.eventgrid#SubscriptionPropertiesInputEventDeliverySchema": {
+      "type": "enum",
+      "members": {
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The event delivery schema for the event subscription."
       }
     },
     "com.azure.eventgrid#NamespaceTopicEventSubscriptionsGet": {
@@ -23668,10 +25829,10 @@
             "smithy.api#documentation": "Name of the domain."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Key name to regenerate key1 or key2.",
             "smithy.api#required": {}
           }
         }
@@ -24386,16 +26547,170 @@
             "smithy.api#documentation": "Name of the domain."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.eventgrid#DomainsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags of the domains resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#DomainUpdateParameterProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventgrid#IdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Identity information for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#DomainUpdateParameterProperties": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.eventgrid#DomainUpdateParameterPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled. \r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainUpdateParameterProperties.InboundIpRules\" />"
+          }
+        },
+        "inboundIpRules": {
+          "target": "com.azure.eventgrid#DomainUpdateParameterPropertiesInboundIpRulesList",
+          "traits": {
+            "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+          }
+        },
+        "minimumTlsVersionAllowed": {
+          "target": "com.azure.eventgrid#DomainUpdateParameterPropertiesMinimumTlsVersionAllowed",
+          "traits": {
+            "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this domain"
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the domain."
+          }
+        },
+        "autoCreateTopicWithFirstSubscription": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This Boolean is used to specify the creation mechanism for 'all' the Event Grid Domain Topics associated with this Event Grid Domain resource.\r\nIn this context, creation of domain topic can be auto-managed (when true) or self-managed (when false). The default value for this property is true.\r\nWhen this property is null or set to true, Event Grid is responsible of automatically creating the domain topic when the first event subscription is\r\ncreated at the scope of the domain topic. If this property is set to false, then creating the first event subscription will require creating a domain topic\r\nby the user. The self-management mode can be used if the user wants full control of when the domain topic is created, while auto-managed mode provides the\r\nflexibility to perform less operations and manage fewer resources by the user. Also, note that in auto-managed creation mode, user is allowed to create the\r\ndomain topic on demand if needed."
+          }
+        },
+        "autoDeleteTopicWithLastSubscription": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This Boolean is used to specify the deletion mechanism for 'all' the Event Grid Domain Topics associated with this Event Grid Domain resource.\r\nIn this context, deletion of domain topic can be auto-managed (when true) or self-managed (when false). The default value for this property is true.\r\nWhen this property is set to true, Event Grid is responsible of automatically deleting the domain topic when the last event subscription at the scope\r\nof the domain topic is deleted. If this property is set to false, then the user needs to manually delete the domain topic when it is no longer needed\r\n(e.g., when last event subscription is deleted and the resource needs to be cleaned up). The self-management mode can be used if the user wants full\r\ncontrol of when the domain topic needs to be deleted, while auto-managed mode provides the flexibility to perform less operations and manage fewer\r\nresources by the user."
+          }
+        },
+        "dataResidencyBoundary": {
+          "target": "com.azure.eventgrid#DomainUpdateParameterPropertiesDataResidencyBoundary",
+          "traits": {
+            "smithy.api#documentation": "The data residency boundary for the domain."
+          }
+        },
+        "eventTypeInfo": {
+          "target": "com.azure.eventgrid#EventTypeInfo",
+          "traits": {
+            "smithy.api#documentation": "The eventTypeInfo for the domain."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information of domain update parameter properties."
+      }
+    },
+    "com.azure.eventgrid#DomainUpdateParameterPropertiesDataResidencyBoundary": {
+      "type": "enum",
+      "members": {
+        "WITHINGEOPAIR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WithinGeopair"
+          }
+        },
+        "WITHINREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WithinRegion"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The data residency boundary for the domain."
+      }
+    },
+    "com.azure.eventgrid#DomainUpdateParameterPropertiesMinimumTlsVersionAllowed": {
+      "type": "enum",
+      "members": {
+        "_1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.0"
+          }
+        },
+        "_1_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.1"
+          }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this domain"
+      }
+    },
+    "com.azure.eventgrid#DomainUpdateParameterPropertiesInboundIpRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#InboundIpRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+      }
+    },
+    "com.azure.eventgrid#DomainUpdateParameterPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled. \r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainUpdateParameterProperties.InboundIpRules\" />"
+      }
+    },
+    "com.azure.eventgrid#DomainsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the domains resource."
       }
     },
     "com.azure.eventgrid#DomainsCreateOrUpdate": {
@@ -24621,16 +26936,215 @@
             "smithy.api#documentation": "Name of the domain."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Location of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.eventgrid#DomainsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.eventgrid#DomainPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Event Grid Domain resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.eventgrid#IdentityInfo",
+          "traits": {
+            "smithy.api#documentation": "Identity information for the Event Grid Domain resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#DomainPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "minimumTlsVersionAllowed": {
+          "target": "com.azure.eventgrid#DomainPropertiesInputMinimumTlsVersionAllowed",
+          "traits": {
+            "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this domain"
+          }
+        },
+        "inputSchema": {
+          "target": "com.azure.eventgrid#DomainPropertiesInputInputSchema",
+          "traits": {
+            "smithy.api#documentation": "This determines the format that Event Grid should expect for incoming events published to the Event Grid Domain Resource."
+          }
+        },
+        "eventTypeInfo": {
+          "target": "com.azure.eventgrid#EventTypeInfo",
+          "traits": {
+            "smithy.api#documentation": "Event Type Information for the domain. This information is provided by the publisher and can be used by the \r\nsubscriber to view different types of events that are published."
+          }
+        },
+        "inputSchemaMapping": {
+          "target": "com.azure.eventgrid#InputSchemaMapping",
+          "traits": {
+            "smithy.api#documentation": "Information about the InputSchemaMapping which specified the info about mapping event payload."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.eventgrid#DomainPropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled.\r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules\" />"
+          }
+        },
+        "inboundIpRules": {
+          "target": "com.azure.eventgrid#DomainPropertiesInputInboundIpRulesList",
+          "traits": {
+            "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the domain."
+          }
+        },
+        "autoCreateTopicWithFirstSubscription": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This Boolean is used to specify the creation mechanism for 'all' the Event Grid Domain Topics associated with this Event Grid Domain resource.\r\nIn this context, creation of domain topic can be auto-managed (when true) or self-managed (when false). The default value for this property is true.\r\nWhen this property is null or set to true, Event Grid is responsible of automatically creating the domain topic when the first event subscription is\r\ncreated at the scope of the domain topic. If this property is set to false, then creating the first event subscription will require creating a domain topic\r\nby the user. The self-management mode can be used if the user wants full control of when the domain topic is created, while auto-managed mode provides the\r\nflexibility to perform less operations and manage fewer resources by the user. Also, note that in auto-managed creation mode, user is allowed to create the\r\ndomain topic on demand if needed."
+          }
+        },
+        "autoDeleteTopicWithLastSubscription": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This Boolean is used to specify the deletion mechanism for 'all' the Event Grid Domain Topics associated with this Event Grid Domain resource.\r\nIn this context, deletion of domain topic can be auto-managed (when true) or self-managed (when false). The default value for this property is true.\r\nWhen this property is set to true, Event Grid is responsible of automatically deleting the domain topic when the last event subscription at the scope\r\nof the domain topic is deleted. If this property is set to false, then the user needs to manually delete the domain topic when it is no longer needed\r\n(e.g., when last event subscription is deleted and the resource needs to be cleaned up). The self-management mode can be used if the user wants full\r\ncontrol of when the domain topic needs to be deleted, while auto-managed mode provides the flexibility to perform less operations and manage fewer\r\nresources by the user."
+          }
+        },
+        "dataResidencyBoundary": {
+          "target": "com.azure.eventgrid#DomainPropertiesInputDataResidencyBoundary",
+          "traits": {
+            "smithy.api#documentation": "Data Residency Boundary of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Event Grid Domain Resource."
+      }
+    },
+    "com.azure.eventgrid#DomainPropertiesInputDataResidencyBoundary": {
+      "type": "enum",
+      "members": {
+        "WITHINGEOPAIR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WithinGeopair"
+          }
+        },
+        "WITHINREGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WithinRegion"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data Residency Boundary of the resource."
+      }
+    },
+    "com.azure.eventgrid#DomainPropertiesInputInboundIpRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.eventgrid#InboundIpRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled."
+      }
+    },
+    "com.azure.eventgrid#DomainPropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines if traffic is allowed over public network. By default it is enabled.\r\nYou can further restrict to specific IPs by configuring <seealso cref=\"P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.DomainProperties.InboundIpRules\" />"
+      }
+    },
+    "com.azure.eventgrid#DomainPropertiesInputInputSchema": {
+      "type": "enum",
+      "members": {
+        "EVENTGRIDSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventGridSchema"
+          }
+        },
+        "CUSTOMEVENTSCHEMA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomEventSchema"
+          }
+        },
+        "CLOUDEVENTSCHEMAV1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudEventSchemaV1_0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This determines the format that Event Grid should expect for incoming events published to the Event Grid Domain Resource."
+      }
+    },
+    "com.azure.eventgrid#DomainPropertiesInputMinimumTlsVersionAllowed": {
+      "type": "enum",
+      "members": {
+        "_1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.0"
+          }
+        },
+        "_1_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.1"
+          }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Minimum TLS version of the publisher allowed to publish to this domain"
+      }
+    },
+    "com.azure.eventgrid#DomainsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the resource."
       }
     },
     "com.azure.eventgrid#DomainsGet": {
@@ -25559,16 +28073,85 @@
             "smithy.api#documentation": "The client name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#ClientPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of client."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#ClientPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the Client resource."
+          }
+        },
+        "authenticationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name presented by the client for authentication. The default value is the name of the resource."
+          }
+        },
+        "clientCertificateAuthentication": {
+          "target": "com.azure.eventgrid#ClientCertificateAuthentication",
+          "traits": {
+            "smithy.api#documentation": "The client certificate authentication information."
+          }
+        },
+        "state": {
+          "target": "com.azure.eventgrid#ClientPropertiesInputState",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the client is enabled or not. Default value is Enabled."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.eventgrid#ClientPropertiesInputAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "Attributes for the client. Supported values are int, bool, string, string[].\r\nExample:\r\n\"attributes\": { \"room\": \"345\", \"floor\": 12, \"deviceTypes\": [\"Fan\", \"Light\"] }"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of client."
+      }
+    },
+    "com.azure.eventgrid#ClientPropertiesInputAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Attributes for the client. Supported values are int, bool, string, string[].\r\nExample:\r\n\"attributes\": { \"room\": \"345\", \"floor\": 12, \"deviceTypes\": [\"Fan\", \"Light\"] }"
+      }
+    },
+    "com.azure.eventgrid#ClientPropertiesInputState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates if the client is enabled or not. Default value is Enabled."
       }
     },
     "com.azure.eventgrid#ClientsGet": {
@@ -26351,16 +28934,35 @@
             "smithy.api#documentation": "The client group name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#ClientGroupPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of client group."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#ClientGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the Client Group resource."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The grouping query for the clients.\r\nExample : attributes.keyName IN ['a', 'b', 'c']."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of client group."
       }
     },
     "com.azure.eventgrid#ClientGroupsGet": {
@@ -27146,16 +29748,46 @@
             "smithy.api#documentation": "Name of the channel."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.eventgrid#ChannelUpdateParametersProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#ChannelUpdateParametersProperties": {
+      "type": "structure",
+      "members": {
+        "expirationTimeIfNotActivatedUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration time of the channel. If this timer expires while the corresponding partner topic or partner destination is never activated,\r\nthe channel and corresponding partner topic or partner destination are deleted."
+          }
+        },
+        "partnerTopicInfo": {
+          "target": "com.azure.eventgrid#PartnerUpdateTopicInfo",
+          "traits": {
+            "smithy.api#documentation": "Partner topic properties which can be updated if the channel is of type PartnerTopic."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the channel update parameters."
+      }
+    },
+    "com.azure.eventgrid#PartnerUpdateTopicInfo": {
+      "type": "structure",
+      "members": {
+        "eventTypeInfo": {
+          "target": "com.azure.eventgrid#EventTypeInfo",
+          "traits": {
+            "smithy.api#documentation": "Event type info for the partner topic"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Update properties for the corresponding partner topic of a channel."
       }
     },
     "com.azure.eventgrid#ChannelsCreateOrUpdate": {
@@ -27358,11 +29990,10 @@
             "smithy.api#documentation": "Name of the channel."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#ChannelProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the Channel."
           }
         }
       },
@@ -28162,16 +30793,35 @@
             "smithy.api#documentation": "The CA certificate name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.eventgrid#CaCertificatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of CA certificate."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.eventgrid#CaCertificatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the CA Certificate resource."
+          }
+        },
+        "encodedCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base64 encoded PEM (Privacy Enhanced Mail) format certificate data."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of CA certificate."
       }
     },
     "com.azure.eventgrid#CaCertificatesGet": {

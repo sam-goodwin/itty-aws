@@ -17,15 +17,13 @@ export type SingleSessionSummariesListRequestOrder =
   | "-session_start_time"
   | "created_at"
   | "session_duration"
-  | "session_start_time"
-  | (string & {});
+  | "session_start_time";
 export const SingleSessionSummariesListRequestOrder = /*@__PURE__*/ S.String;
 
 export type SingleSessionSummariesListRequestOutcome =
   | "failure"
   | "success"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const SingleSessionSummariesListRequestOutcome = /*@__PURE__*/ S.String;
 
 export interface SingleSessionSummariesListRequest {
@@ -124,11 +122,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -209,7 +206,7 @@ export const SingleSessionSummaryMinimal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SingleSessionSummaryMinimal>;
 
 export type PaginatedSingleSessionSummaryMinimalListResultsList =
-  SingleSessionSummaryMinimal[];
+  ReadonlyArray<SingleSessionSummaryMinimal>;
 export const PaginatedSingleSessionSummaryMinimalListResultsList =
   /*@__PURE__*/ S.Array(
     SingleSessionSummaryMinimal,
@@ -264,7 +261,7 @@ export const SingleSessionSummarySummaryMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SingleSessionSummarySummaryMap>;
 
 /** Event IDs (capped at 100) where exceptions occurred during the session — extracted from the summary for searchability. */
-export type SingleSessionSummaryExceptionEventIdsList = string[];
+export type SingleSessionSummaryExceptionEventIdsList = ReadonlyArray<string>;
 export const SingleSessionSummaryExceptionEventIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SingleSessionSummaryExceptionEventIdsList>;

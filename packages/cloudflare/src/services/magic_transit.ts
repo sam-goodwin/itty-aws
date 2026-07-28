@@ -434,13 +434,11 @@ export class SiteWanNotFound extends T.applyErrorMatchers(
 export interface BulkPutCfInterconnectsRequest {
   /** Identifier */
   accountId: string;
-  body: unknown;
   xMagicNewHcTarget?: boolean;
 }
 export const BulkPutCfInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: S.Unknown.pipe(T.HttpBody()),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -472,44 +470,62 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre =
     identifier: "CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre",
   }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre>;
 
-export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget {
+export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate =
+  "low" | "mid" | "high";
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget =
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
     identifier:
-      "CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget",
-  }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget>;
+      "CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget>;
+
+export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget =
+    | string
+    | CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType =
+  "reply" | "request";
+export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType;
 }
 export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(
+        CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckRate,
+      ),
       target: S.optional(
         CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckTarget,
       ),
-      type: S.optional(S.Unknown),
+      type: S.optional(
+        CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemHealthCheckType,
+      ),
     }),
   ).annotate({
     identifier:
@@ -577,7 +593,7 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem =
   }) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem>;
 
 export type CfInterconnectsBulkUpdateResponseModifiedInterconnectsList =
-  CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem[];
+  ReadonlyArray<CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem>;
 export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsList =
   /*@__PURE__*/ S.Array(
     CfInterconnectsBulkUpdateResponseModifiedInterconnectsItem,
@@ -604,13 +620,11 @@ export const BulkPutCfInterconnectsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface BulkPutGreTunnelsRequest {
   /** Identifier */
   accountId: string;
-  body: unknown;
   xMagicNewHcTarget?: boolean;
 }
 export const BulkPutGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: S.Unknown.pipe(T.HttpBody()),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -628,7 +642,7 @@ export const BulkPutGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkPutGreTunnelsRequest>;
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList =
-  string[];
+  ReadonlyArray<string>;
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -666,8 +680,7 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp =
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
+  | "BGP_ESTABLISHING";
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -702,28 +715,45 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus =
   }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus>;
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
-  "unidirectional" | "bidirectional" | (string & {});
+  "unidirectional" | "bidirectional";
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget {
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget =
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
     identifier:
-      "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget>;
+      "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget>;
+
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget =
+    | string
+    | GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget;
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType =
+  | "reply"
+  | "request";
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -731,11 +761,11 @@ export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType;
 }
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
@@ -744,11 +774,15 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck =
         GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection,
       ),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(
+        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckRate,
+      ),
       target: S.optional(
         GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget,
       ),
-      type: S.optional(S.Unknown),
+      type: S.optional(
+        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckType,
+      ),
     }),
   ).annotate({
     identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck",
@@ -819,7 +853,7 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem =
   }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem>;
 
 export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsList =
-  GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem[];
+  ReadonlyArray<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem>;
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsList =
   /*@__PURE__*/ S.Array(
     GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem,
@@ -846,13 +880,11 @@ export const BulkPutGreTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface BulkPutIpsecTunnelsRequest {
   /** Identifier */
   accountId: string;
-  body: unknown;
   xMagicNewHcTarget?: boolean;
 }
 export const BulkPutIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    body: S.Unknown.pipe(T.HttpBody()),
     xMagicNewHcTarget: S.optional(
       S.Boolean.pipe(T.Header("x-magic-new-hc-target")),
     ),
@@ -870,7 +902,7 @@ export const BulkPutIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkPutIpsecTunnelsRequest>;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList =
-  string[];
+  ReadonlyArray<string>;
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -906,7 +938,7 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp =
   }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp>;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
-  "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
+  "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING";
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -957,28 +989,42 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteI
   }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities>;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
-  "unidirectional" | "bidirectional" | (string & {});
+  "unidirectional" | "bidirectional";
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget {
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate =
+  "low" | "mid" | "high";
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget =
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
     identifier:
-      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget>;
+      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget>;
+
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget =
+    | string
+    | IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget;
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType =
+  "reply" | "request";
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -986,11 +1032,11 @@ export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthChe
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType;
 }
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
@@ -999,11 +1045,15 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck =
         IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection,
       ),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckRate,
+      ),
       target: S.optional(
         IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget,
       ),
-      type: S.optional(S.Unknown),
+      type: S.optional(
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckType,
+      ),
     }),
   ).annotate({
     identifier:
@@ -1104,7 +1154,7 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem =
   }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem>;
 
 export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem[];
+  ReadonlyArray<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem>;
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList =
   /*@__PURE__*/ S.Array(
     IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem,
@@ -1128,13 +1178,15 @@ export const BulkPutIpsecTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPutIpsecTunnelsResponse",
 }) as any as S.Schema<BulkPutIpsecTunnelsResponse>;
 
-export type RoutesBulkUpdateRequestRoutesItemScopeColoNamesList = string[];
+export type RoutesBulkUpdateRequestRoutesItemScopeColoNamesList =
+  ReadonlyArray<string>;
 export const RoutesBulkUpdateRequestRoutesItemScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesBulkUpdateRequestRoutesItemScopeColoNamesList>;
 
-export type RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList = string[];
+export type RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList =
+  ReadonlyArray<string>;
 export const RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1195,7 +1247,7 @@ export const RoutesBulkUpdateRequestRoutesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutesBulkUpdateRequestRoutesItem>;
 
 export type RoutesBulkUpdateRequestRoutesList =
-  RoutesBulkUpdateRequestRoutesItem[];
+  ReadonlyArray<RoutesBulkUpdateRequestRoutesItem>;
 export const RoutesBulkUpdateRequestRoutesList = /*@__PURE__*/ S.Array(
   RoutesBulkUpdateRequestRoutesItem,
 ) as any as S.Schema<RoutesBulkUpdateRequestRoutesList>;
@@ -1223,14 +1275,14 @@ export const BulkPutRoutesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkPutRoutesRequest>;
 
 export type RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList>;
 
 export type RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList =
-  string[];
+  ReadonlyArray<string>;
 export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1298,7 +1350,7 @@ export const RoutesBulkUpdateResponseModifiedRoutesItem =
   }) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItem>;
 
 export type RoutesBulkUpdateResponseModifiedRoutesList =
-  RoutesBulkUpdateResponseModifiedRoutesItem[];
+  ReadonlyArray<RoutesBulkUpdateResponseModifiedRoutesItem>;
 export const RoutesBulkUpdateResponseModifiedRoutesList = /*@__PURE__*/ S.Array(
   RoutesBulkUpdateResponseModifiedRoutesItem,
 ) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesList>;
@@ -1321,17 +1373,17 @@ export const BulkPutRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPutRoutesResponse",
 }) as any as S.Schema<BulkPutRoutesResponse>;
 
-export type AppsCreateRequestHostnamesList = string[];
+export type AppsCreateRequestHostnamesList = ReadonlyArray<string>;
 export const AppsCreateRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateRequestHostnamesList>;
 
-export type AppsCreateRequestIpSubnetsList = string[];
+export type AppsCreateRequestIpSubnetsList = ReadonlyArray<string>;
 export const AppsCreateRequestIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateRequestIpSubnetsList>;
 
-export type AppsCreateRequestSourceSubnetsList = string[];
+export type AppsCreateRequestSourceSubnetsList = ReadonlyArray<string>;
 export const AppsCreateRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateRequestSourceSubnetsList>;
@@ -1375,17 +1427,17 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAppRequest",
 }) as any as S.Schema<CreateAppRequest>;
 
-export type AppsCreateResponseHostnamesList = string[];
+export type AppsCreateResponseHostnamesList = ReadonlyArray<string>;
 export const AppsCreateResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateResponseHostnamesList>;
 
-export type AppsCreateResponseIpSubnetsList = string[];
+export type AppsCreateResponseIpSubnetsList = ReadonlyArray<string>;
 export const AppsCreateResponseIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateResponseIpSubnetsList>;
 
-export type AppsCreateResponseSourceSubnetsList = string[];
+export type AppsCreateResponseSourceSubnetsList = ReadonlyArray<string>;
 export const AppsCreateResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsCreateResponseSourceSubnetsList>;
@@ -1465,7 +1517,8 @@ export const Cf1SitesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Cf1SitesCreateRequestBodyItem",
 }) as any as S.Schema<Cf1SitesCreateRequestBodyItem>;
 
-export type Cf1SitesCreateRequestBodyList = Cf1SitesCreateRequestBodyItem[];
+export type Cf1SitesCreateRequestBodyList =
+  ReadonlyArray<Cf1SitesCreateRequestBodyItem>;
 export const Cf1SitesCreateRequestBodyList = /*@__PURE__*/ S.Array(
   Cf1SitesCreateRequestBodyItem,
 ) as any as S.Schema<Cf1SitesCreateRequestBodyList>;
@@ -1534,7 +1587,7 @@ export const Cf1SitesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Cf1SitesCreateResultItem",
 }) as any as S.Schema<Cf1SitesCreateResultItem>;
 
-export type Cf1SitesCreateResultList = Cf1SitesCreateResultItem[];
+export type Cf1SitesCreateResultList = ReadonlyArray<Cf1SitesCreateResultItem>;
 export const Cf1SitesCreateResultList = /*@__PURE__*/ S.Array(
   Cf1SitesCreateResultItem,
 ) as any as S.Schema<Cf1SitesCreateResultList>;
@@ -1554,23 +1607,31 @@ export const CreateCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCf1SiteResponse",
 }) as any as S.Schema<CreateCf1SiteResponse>;
 
+export type Cf1SitesRampsCreateRequestBodyItemType =
+  | "gre"
+  | "gre_interconnect"
+  | "mpls_interconnect"
+  | "mconn"
+  | "ipsec";
+export const Cf1SitesRampsCreateRequestBodyItemType = /*@__PURE__*/ S.String;
+
 export interface Cf1SitesRampsCreateRequestBodyItem {
   /** Identifier of the source network resource to associate as a ramp. */
   sourceRampId: string;
   /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
-  type: unknown;
+  type: Cf1SitesRampsCreateRequestBodyItemType;
 }
 export const Cf1SitesRampsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceRampId: S.String.pipe(T.Body("source_ramp_id")),
-    type: S.Unknown,
+    type: Cf1SitesRampsCreateRequestBodyItemType,
   }),
 ).annotate({
   identifier: "Cf1SitesRampsCreateRequestBodyItem",
 }) as any as S.Schema<Cf1SitesRampsCreateRequestBodyItem>;
 
 export type Cf1SitesRampsCreateRequestBodyList =
-  Cf1SitesRampsCreateRequestBodyItem[];
+  ReadonlyArray<Cf1SitesRampsCreateRequestBodyItem>;
 export const Cf1SitesRampsCreateRequestBodyList = /*@__PURE__*/ S.Array(
   Cf1SitesRampsCreateRequestBodyItem,
 ) as any as S.Schema<Cf1SitesRampsCreateRequestBodyList>;
@@ -1599,6 +1660,14 @@ export const CreateCf1SiteRampRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCf1SiteRampRequest",
 }) as any as S.Schema<CreateCf1SiteRampRequest>;
+
+export type Cf1SitesRampsCreateResultItemType =
+  | "gre"
+  | "gre_interconnect"
+  | "mpls_interconnect"
+  | "mconn"
+  | "ipsec";
+export const Cf1SitesRampsCreateResultItemType = /*@__PURE__*/ S.String;
 
 export interface Cf1SitesRampsCreateResultItemGre {
   /** URL reference to the source network resource that this ramp is managed by. */
@@ -1670,7 +1739,7 @@ export interface Cf1SitesRampsCreateResultItem {
   /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
   name: string;
   /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
-  type: unknown;
+  type: Cf1SitesRampsCreateResultItemType;
   /** A human-provided description of the ramp. */
   description?: string;
   gre?: Cf1SitesRampsCreateResultItemGre;
@@ -1685,7 +1754,7 @@ export const Cf1SitesRampsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
     createdOn: S.String.pipe(T.Body("created_on")),
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
-    type: S.Unknown,
+    type: Cf1SitesRampsCreateResultItemType,
     description: S.optional(S.String),
     gre: S.optional(Cf1SitesRampsCreateResultItemGre),
     greInterconnect: S.optional(
@@ -1705,7 +1774,8 @@ export const Cf1SitesRampsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Cf1SitesRampsCreateResultItem",
 }) as any as S.Schema<Cf1SitesRampsCreateResultItem>;
 
-export type Cf1SitesRampsCreateResultList = Cf1SitesRampsCreateResultItem[];
+export type Cf1SitesRampsCreateResultList =
+  ReadonlyArray<Cf1SitesRampsCreateResultItem>;
 export const Cf1SitesRampsCreateResultList = /*@__PURE__*/ S.Array(
   Cf1SitesRampsCreateResultItem,
 ) as any as S.Schema<Cf1SitesRampsCreateResultList>;
@@ -1745,18 +1815,22 @@ export type ConnectorsCreateRequestInterruptWindowDaysOfWeekItem =
   | "Sunday"
   | "Monday"
   | "Tuesday"
-  | (string & {});
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday";
 export const ConnectorsCreateRequestInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsCreateRequestInterruptWindowDaysOfWeekList =
-  ConnectorsCreateRequestInterruptWindowDaysOfWeekItem[];
+  ReadonlyArray<ConnectorsCreateRequestInterruptWindowDaysOfWeekItem>;
 export const ConnectorsCreateRequestInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsCreateRequestInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsCreateRequestInterruptWindowDaysOfWeekList>;
 
-export type ConnectorsCreateRequestInterruptWindowEmbargoDatesList = string[];
+export type ConnectorsCreateRequestInterruptWindowEmbargoDatesList =
+  ReadonlyArray<string>;
 export const ConnectorsCreateRequestInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1821,27 +1895,28 @@ export type ConnectorsCreateResponseInterruptWindowDaysOfWeekItem =
   | "Sunday"
   | "Monday"
   | "Tuesday"
-  | (string & {});
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday";
 export const ConnectorsCreateResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsCreateResponseInterruptWindowDaysOfWeekList =
-  ConnectorsCreateResponseInterruptWindowDaysOfWeekItem[];
+  ReadonlyArray<ConnectorsCreateResponseInterruptWindowDaysOfWeekItem>;
 export const ConnectorsCreateResponseInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsCreateResponseInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsCreateResponseInterruptWindowDaysOfWeekList>;
 
-export type ConnectorsCreateResponseInterruptWindowEmbargoDatesList = string[];
+export type ConnectorsCreateResponseInterruptWindowEmbargoDatesList =
+  ReadonlyArray<string>;
 export const ConnectorsCreateResponseInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectorsCreateResponseInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsCreateResponseDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
+export type ConnectorsCreateResponseDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsCreateResponseDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsCreateResponseDevice {
@@ -1911,7 +1986,7 @@ export const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConnectorResponse",
 }) as any as S.Schema<CreateConnectorResponse>;
 
-export type GreTunnelsCreateRequestBgpExtraPrefixesList = string[];
+export type GreTunnelsCreateRequestBgpExtraPrefixesList = ReadonlyArray<string>;
 export const GreTunnelsCreateRequestBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1947,28 +2022,38 @@ export const GreTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
 
 export type GreTunnelsCreateRequestHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const GreTunnelsCreateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface GreTunnelsCreateRequestHealthCheckTarget {
+export type GreTunnelsCreateRequestHealthCheckRate = "low" | "mid" | "high";
+export const GreTunnelsCreateRequestHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const GreTunnelsCreateRequestHealthCheckTarget = /*@__PURE__*/ S.suspend(
-  () =>
+export const GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
-).annotate({
-  identifier: "GreTunnelsCreateRequestHealthCheckTarget",
-}) as any as S.Schema<GreTunnelsCreateRequestHealthCheckTarget>;
+  ).annotate({
+    identifier:
+      "GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget>;
+
+export type GreTunnelsCreateRequestHealthCheckTarget =
+  | string
+  | GreTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
+export const GreTunnelsCreateRequestHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsCreateRequestHealthCheckType = "reply" | "request";
+export const GreTunnelsCreateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateRequestHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -1976,19 +2061,19 @@ export interface GreTunnelsCreateRequestHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: GreTunnelsCreateRequestHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: GreTunnelsCreateRequestHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: GreTunnelsCreateRequestHealthCheckType;
 }
 export const GreTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: S.optional(GreTunnelsCreateRequestHealthCheckDirection),
     enabled: S.optional(S.Boolean),
-    rate: S.optional(S.Unknown),
+    rate: S.optional(GreTunnelsCreateRequestHealthCheckRate),
     target: S.optional(GreTunnelsCreateRequestHealthCheckTarget),
-    type: S.optional(S.Unknown),
+    type: S.optional(GreTunnelsCreateRequestHealthCheckType),
   }),
 ).annotate({
   identifier: "GreTunnelsCreateRequestHealthCheck",
@@ -2053,7 +2138,8 @@ export const CreateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGreTunnelRequest",
 }) as any as S.Schema<CreateGreTunnelRequest>;
 
-export type GreTunnelsCreateResponseBgpExtraPrefixesList = string[];
+export type GreTunnelsCreateResponseBgpExtraPrefixesList =
+  ReadonlyArray<string>;
 export const GreTunnelsCreateResponseBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2090,8 +2176,7 @@ export const GreTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
 export type GreTunnelsCreateResponseBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
+  | "BGP_ESTABLISHING";
 export const GreTunnelsCreateResponseBgpStatusState = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateResponseBgpStatus {
@@ -2123,28 +2208,38 @@ export const GreTunnelsCreateResponseBgpStatus = /*@__PURE__*/ S.suspend(() =>
 
 export type GreTunnelsCreateResponseHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const GreTunnelsCreateResponseHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface GreTunnelsCreateResponseHealthCheckTarget {
+export type GreTunnelsCreateResponseHealthCheckRate = "low" | "mid" | "high";
+export const GreTunnelsCreateResponseHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface GreTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const GreTunnelsCreateResponseHealthCheckTarget =
+export const GreTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "GreTunnelsCreateResponseHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsCreateResponseHealthCheckTarget>;
+    identifier:
+      "GreTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget>;
+
+export type GreTunnelsCreateResponseHealthCheckTarget =
+  | string
+  | GreTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget;
+export const GreTunnelsCreateResponseHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsCreateResponseHealthCheckType = "reply" | "request";
+export const GreTunnelsCreateResponseHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsCreateResponseHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -2152,19 +2247,19 @@ export interface GreTunnelsCreateResponseHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: GreTunnelsCreateResponseHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: GreTunnelsCreateResponseHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: GreTunnelsCreateResponseHealthCheckType;
 }
 export const GreTunnelsCreateResponseHealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: S.optional(GreTunnelsCreateResponseHealthCheckDirection),
     enabled: S.optional(S.Boolean),
-    rate: S.optional(S.Unknown),
+    rate: S.optional(GreTunnelsCreateResponseHealthCheckRate),
     target: S.optional(GreTunnelsCreateResponseHealthCheckTarget),
-    type: S.optional(S.Unknown),
+    type: S.optional(GreTunnelsCreateResponseHealthCheckType),
   }),
 ).annotate({
   identifier: "GreTunnelsCreateResponseHealthCheck",
@@ -2228,7 +2323,8 @@ export const CreateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGreTunnelResponse",
 }) as any as S.Schema<CreateGreTunnelResponse>;
 
-export type IpsecTunnelsCreateRequestBgpExtraPrefixesList = string[];
+export type IpsecTunnelsCreateRequestBgpExtraPrefixesList =
+  ReadonlyArray<string>;
 export const IpsecTunnelsCreateRequestBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2277,28 +2373,38 @@ export const IpsecTunnelsCreateRequestCustomRemoteIdentities =
 
 export type IpsecTunnelsCreateRequestHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const IpsecTunnelsCreateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface IpsecTunnelsCreateRequestHealthCheckTarget {
+export type IpsecTunnelsCreateRequestHealthCheckRate = "low" | "mid" | "high";
+export const IpsecTunnelsCreateRequestHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const IpsecTunnelsCreateRequestHealthCheckTarget =
+export const IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "IpsecTunnelsCreateRequestHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsCreateRequestHealthCheckTarget>;
+    identifier:
+      "IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget>;
+
+export type IpsecTunnelsCreateRequestHealthCheckTarget =
+  | string
+  | IpsecTunnelsCreateRequestHealthCheckTargetMagicHealthCheckTarget;
+export const IpsecTunnelsCreateRequestHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsCreateRequestHealthCheckType = "reply" | "request";
+export const IpsecTunnelsCreateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateRequestHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -2306,20 +2412,20 @@ export interface IpsecTunnelsCreateRequestHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: IpsecTunnelsCreateRequestHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: IpsecTunnelsCreateRequestHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: IpsecTunnelsCreateRequestHealthCheckType;
 }
 export const IpsecTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       direction: S.optional(IpsecTunnelsCreateRequestHealthCheckDirection),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(IpsecTunnelsCreateRequestHealthCheckRate),
       target: S.optional(IpsecTunnelsCreateRequestHealthCheckTarget),
-      type: S.optional(S.Unknown),
+      type: S.optional(IpsecTunnelsCreateRequestHealthCheckType),
     }),
 ).annotate({
   identifier: "IpsecTunnelsCreateRequestHealthCheck",
@@ -2390,7 +2496,8 @@ export const CreateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIpsecTunnelRequest",
 }) as any as S.Schema<CreateIpsecTunnelRequest>;
 
-export type IpsecTunnelsCreateResponseBgpExtraPrefixesList = string[];
+export type IpsecTunnelsCreateResponseBgpExtraPrefixesList =
+  ReadonlyArray<string>;
 export const IpsecTunnelsCreateResponseBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2427,8 +2534,7 @@ export const IpsecTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
 export type IpsecTunnelsCreateResponseBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
+  | "BGP_ESTABLISHING";
 export const IpsecTunnelsCreateResponseBgpStatusState = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateResponseBgpStatus {
@@ -2473,28 +2579,38 @@ export const IpsecTunnelsCreateResponseCustomRemoteIdentities =
 
 export type IpsecTunnelsCreateResponseHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const IpsecTunnelsCreateResponseHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface IpsecTunnelsCreateResponseHealthCheckTarget {
+export type IpsecTunnelsCreateResponseHealthCheckRate = "low" | "mid" | "high";
+export const IpsecTunnelsCreateResponseHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const IpsecTunnelsCreateResponseHealthCheckTarget =
+export const IpsecTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "IpsecTunnelsCreateResponseHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsCreateResponseHealthCheckTarget>;
+    identifier:
+      "IpsecTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget>;
+
+export type IpsecTunnelsCreateResponseHealthCheckTarget =
+  | string
+  | IpsecTunnelsCreateResponseHealthCheckTargetMagicHealthCheckTarget;
+export const IpsecTunnelsCreateResponseHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsCreateResponseHealthCheckType = "reply" | "request";
+export const IpsecTunnelsCreateResponseHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsCreateResponseHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -2502,20 +2618,20 @@ export interface IpsecTunnelsCreateResponseHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: IpsecTunnelsCreateResponseHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: IpsecTunnelsCreateResponseHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: IpsecTunnelsCreateResponseHealthCheckType;
 }
 export const IpsecTunnelsCreateResponseHealthCheck = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       direction: S.optional(IpsecTunnelsCreateResponseHealthCheckDirection),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(IpsecTunnelsCreateResponseHealthCheckRate),
       target: S.optional(IpsecTunnelsCreateResponseHealthCheckTarget),
-      type: S.optional(S.Unknown),
+      type: S.optional(IpsecTunnelsCreateResponseHealthCheckType),
     }),
 ).annotate({
   identifier: "IpsecTunnelsCreateResponseHealthCheck",
@@ -2604,14 +2720,13 @@ export const CreateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIpsecTunnelResponse>;
 
 export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem =
-  "magic-transit" | (string & {});
+  "magic-transit";
 export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleSystem =
   /*@__PURE__*/ S.String;
 
 export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType =
   | "simple"
-  | "full"
-  | (string & {});
+  | "full";
 export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleType =
   /*@__PURE__*/ S.String;
 
@@ -2677,15 +2792,13 @@ export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple =
   }) as any as S.Schema<PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimple>;
 
 export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem =
-  | "magic-transit"
-  | (string & {});
+  "magic-transit";
 export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullSystem =
   /*@__PURE__*/ S.String;
 
 export type PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType =
   | "simple"
-  | "full"
-  | (string & {});
+  | "full";
 export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType =
   /*@__PURE__*/ S.String;
 
@@ -2703,7 +2816,7 @@ export interface PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull {
   /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
   byteLimit?: number;
   /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: unknown;
+  filterV1?: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1;
   /** The limit of packets contained in a packet capture. */
   packetLimit?: number;
 }
@@ -2716,7 +2829,11 @@ export const PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFull =
       timeLimit: S.Number.pipe(T.Body("time_limit")),
       type: PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestFullType,
       byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
-      filterV1: S.optional(S.Unknown.pipe(T.Body("filter_v1"))),
+      filterV1: S.optional(
+        PcapsCreateRequestBodyMagicVisibilityPCAPsPCAPsRequestSimpleFilterV1.pipe(
+          T.Body("filter_v1"),
+        ),
+      ),
       packetLimit: S.optional(S.Number.pipe(T.Body("packet_limit"))),
     }),
   ).annotate({
@@ -2764,7 +2881,7 @@ export const CreatePcapRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePcapRequest",
 }) as any as S.Schema<CreatePcapRequest>;
 
-export interface PcapsCreateResponseFilterV1 {
+export interface PcapsCreateResultPCAPFilterV1 {
   /** The destination IP address of the packet. */
   destinationAddress?: string;
   /** The destination port of the packet. */
@@ -2776,7 +2893,7 @@ export interface PcapsCreateResponseFilterV1 {
   /** The source port of the packet. */
   sourcePort?: number;
 }
-export const PcapsCreateResponseFilterV1 = /*@__PURE__*/ S.suspend(() =>
+export const PcapsCreateResultPCAPFilterV1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationAddress: S.optional(
       S.String.pipe(T.Body("destination_address")),
@@ -2787,40 +2904,87 @@ export const PcapsCreateResponseFilterV1 = /*@__PURE__*/ S.suspend(() =>
     sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
   }),
 ).annotate({
-  identifier: "PcapsCreateResponseFilterV1",
-}) as any as S.Schema<PcapsCreateResponseFilterV1>;
+  identifier: "PcapsCreateResultPCAPFilterV1",
+}) as any as S.Schema<PcapsCreateResultPCAPFilterV1>;
 
-export type PcapsCreateResponseStatus =
+export type PcapsCreateResultPCAPStatus =
   | "unknown"
   | "success"
   | "pending"
-  | (string & {});
-export const PcapsCreateResponseStatus = /*@__PURE__*/ S.String;
+  | "running"
+  | "conversion_pending"
+  | "conversion_running"
+  | "complete"
+  | "failed";
+export const PcapsCreateResultPCAPStatus = /*@__PURE__*/ S.String;
 
-export type PcapsCreateResponseSystem = "magic-transit" | (string & {});
-export const PcapsCreateResponseSystem = /*@__PURE__*/ S.String;
+export type PcapsCreateResultPCAPSystem = "magic-transit";
+export const PcapsCreateResultPCAPSystem = /*@__PURE__*/ S.String;
 
-export type PcapsCreateResponseType = "simple" | "full" | (string & {});
-export const PcapsCreateResponseType = /*@__PURE__*/ S.String;
+export type PcapsCreateResultPCAPType = "simple" | "full";
+export const PcapsCreateResultPCAPType = /*@__PURE__*/ S.String;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreatePcapResponse {
+export interface PcapsCreateResultPCAP {
   /** The ID for the packet capture. */
   id?: string;
   /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsCreateResponseFilterV1;
+  filterV1?: PcapsCreateResultPCAPFilterV1;
   /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
   offsetTime?: string;
   /** The status of the packet capture request. */
-  status?: PcapsCreateResponseStatus;
+  status?: PcapsCreateResultPCAPStatus;
   /** The RFC 3339 timestamp when the packet capture was created. */
   submitted?: string;
   /** The system used to collect packet captures. */
-  system?: PcapsCreateResponseSystem;
+  system?: PcapsCreateResultPCAPSystem;
   /** The packet capture duration in seconds. */
   timeLimit?: number;
   /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type?: PcapsCreateResponseType;
+  type?: PcapsCreateResultPCAPType;
+}
+export const PcapsCreateResultPCAP = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    filterV1: S.optional(
+      PcapsCreateResultPCAPFilterV1.pipe(T.Body("filter_v1")),
+    ),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    status: S.optional(PcapsCreateResultPCAPStatus),
+    submitted: S.optional(S.String),
+    system: S.optional(PcapsCreateResultPCAPSystem),
+    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+    type: S.optional(PcapsCreateResultPCAPType),
+  }),
+).annotate({
+  identifier: "PcapsCreateResultPCAP",
+}) as any as S.Schema<PcapsCreateResultPCAP>;
+
+export type PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
+  | "unknown"
+  | "success"
+  | "pending"
+  | "running"
+  | "conversion_pending"
+  | "conversion_running"
+  | "complete"
+  | "failed";
+export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
+  /*@__PURE__*/ S.String;
+
+export type PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
+  "magic-transit";
+export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
+  /*@__PURE__*/ S.String;
+
+export type PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType =
+  | "simple"
+  | "full";
+export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType =
+  /*@__PURE__*/ S.String;
+
+export interface PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull {
+  /** The ID for the packet capture. */
+  id?: string;
   /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
   byteLimit?: number;
   /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
@@ -2829,28 +2993,88 @@ export interface CreatePcapResponse {
   destinationConf?: string;
   /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
   errorMessage?: string;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsCreateResultPCAPFilterV1;
   /** The number of packets captured. */
   packetsCaptured?: number;
+  /** The status of the packet capture request. */
+  status?: PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus;
   /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
   stopRequested?: string;
+  /** The RFC 3339 timestamp when the packet capture was created. */
+  submitted?: string;
+  /** The system used to collect packet captures. */
+  system?: PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem;
+  /** The packet capture duration in seconds. */
+  timeLimit?: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type?: PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType;
 }
+export const PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+      coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+      destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+      errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
+      filterV1: S.optional(
+        PcapsCreateResultPCAPFilterV1.pipe(T.Body("filter_v1")),
+      ),
+      packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
+      status: S.optional(
+        PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullStatus,
+      ),
+      stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
+      submitted: S.optional(S.String),
+      system: S.optional(
+        PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullSystem,
+      ),
+      timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+      type: S.optional(
+        PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFullType,
+      ),
+    }),
+  ).annotate({
+    identifier: "PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull",
+  }) as any as S.Schema<PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull>;
+
+export type PcapsCreateResult =
+  | PcapsCreateResultPCAP
+  | PcapsCreateResultMagicVisibilityPCAPsPCAPsResponseFull;
+export const PcapsCreateResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "id",
+      "filterV1",
+      "offsetTime",
+      "status",
+      "submitted",
+      "system",
+      "timeLimit",
+      "type",
+    ],
+    [
+      "id",
+      "byteLimit",
+      "coloName",
+      "destinationConf",
+      "errorMessage",
+      "filterV1",
+      "packetsCaptured",
+      "status",
+      "stopRequested",
+      "submitted",
+      "system",
+      "timeLimit",
+      "type",
+    ],
+  ]),
+);
+
+export type CreatePcapResponse = PcapsCreateResult;
 export const CreatePcapResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    filterV1: S.optional(PcapsCreateResponseFilterV1.pipe(T.Body("filter_v1"))),
-    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
-    status: S.optional(PcapsCreateResponseStatus),
-    submitted: S.optional(S.String),
-    system: S.optional(PcapsCreateResponseSystem),
-    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
-    type: S.optional(PcapsCreateResponseType),
-    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
-    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
-    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
-    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
-    stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  PcapsCreateResult.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "CreatePcapResponse",
 }) as any as S.Schema<CreatePcapResponse>;
@@ -2881,8 +3105,7 @@ export const CreatePcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
 export type PcapsOwnershipCreateResponseStatus =
   | "pending"
   | "success"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const PcapsOwnershipCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2913,12 +3136,12 @@ export const CreatePcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePcapOwnershipResponse",
 }) as any as S.Schema<CreatePcapOwnershipResponse>;
 
-export type RoutesCreateRequestScopeColoNamesList = string[];
+export type RoutesCreateRequestScopeColoNamesList = ReadonlyArray<string>;
 export const RoutesCreateRequestScopeColoNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesCreateRequestScopeColoNamesList>;
 
-export type RoutesCreateRequestScopeColoRegionsList = string[];
+export type RoutesCreateRequestScopeColoRegionsList = ReadonlyArray<string>;
 export const RoutesCreateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesCreateRequestScopeColoRegionsList>;
@@ -2980,12 +3203,12 @@ export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRouteRequest",
 }) as any as S.Schema<CreateRouteRequest>;
 
-export type RoutesCreateResponseScopeColoNamesList = string[];
+export type RoutesCreateResponseScopeColoNamesList = ReadonlyArray<string>;
 export const RoutesCreateResponseScopeColoNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesCreateResponseScopeColoNamesList>;
 
-export type RoutesCreateResponseScopeColoRegionsList = string[];
+export type RoutesCreateResponseScopeColoRegionsList = ReadonlyArray<string>;
 export const RoutesCreateResponseScopeColoRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesCreateResponseScopeColoRegionsList>;
@@ -3147,19 +3370,19 @@ export const CreateSiteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSiteResponse",
 }) as any as S.Schema<CreateSiteResponse>;
 
-export type SitesAclsCreateRequestLan1PortRangesList = string[];
+export type SitesAclsCreateRequestLan1PortRangesList = ReadonlyArray<string>;
 export const SitesAclsCreateRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsCreateRequestLan1PortRangesList>;
 
-export type SitesAclsCreateRequestLan1PortsList = number[];
+export type SitesAclsCreateRequestLan1PortsList = ReadonlyArray<number>;
 export const SitesAclsCreateRequestLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsCreateRequestLan1PortsList>;
 
-export type SitesAclsCreateRequestLan1SubnetsList = unknown[];
+export type SitesAclsCreateRequestLan1SubnetsList = ReadonlyArray<string>;
 export const SitesAclsCreateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<SitesAclsCreateRequestLan1SubnetsList>;
 
 export interface SitesAclsCreateRequestLan1 {
@@ -3188,9 +3411,13 @@ export const SitesAclsCreateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsCreateRequestLan1",
 }) as any as S.Schema<SitesAclsCreateRequestLan1>;
 
-export type SitesAclsCreateRequestProtocolsList = unknown[];
+export type SitesAclsCreateRequestProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsCreateRequestProtocolsItem = /*@__PURE__*/ S.String;
+
+export type SitesAclsCreateRequestProtocolsList =
+  ReadonlyArray<SitesAclsCreateRequestProtocolsItem>;
 export const SitesAclsCreateRequestProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SitesAclsCreateRequestProtocolsItem,
 ) as any as S.Schema<SitesAclsCreateRequestProtocolsList>;
 
 export interface CreateSiteAclRequest {
@@ -3199,7 +3426,7 @@ export interface CreateSiteAclRequest {
   /** Identifier */
   siteId: string;
   lan1: SitesAclsCreateRequestLan1;
-  lan2: unknown;
+  lan2: SitesAclsCreateRequestLan1;
   /** The name of the ACL. */
   name: string;
   /** Description for the ACL. */
@@ -3215,7 +3442,7 @@ export const CreateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     lan1: SitesAclsCreateRequestLan1.pipe(T.Body("lan_1")),
-    lan2: S.Unknown.pipe(T.Body("lan_2")),
+    lan2: SitesAclsCreateRequestLan1.pipe(T.Body("lan_2")),
     name: S.String,
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
@@ -3234,19 +3461,19 @@ export const CreateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSiteAclRequest",
 }) as any as S.Schema<CreateSiteAclRequest>;
 
-export type SitesAclsCreateResponseLan1PortRangesList = string[];
+export type SitesAclsCreateResponseLan1PortRangesList = ReadonlyArray<string>;
 export const SitesAclsCreateResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsCreateResponseLan1PortRangesList>;
 
-export type SitesAclsCreateResponseLan1PortsList = number[];
+export type SitesAclsCreateResponseLan1PortsList = ReadonlyArray<number>;
 export const SitesAclsCreateResponseLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsCreateResponseLan1PortsList>;
 
-export type SitesAclsCreateResponseLan1SubnetsList = unknown[];
+export type SitesAclsCreateResponseLan1SubnetsList = ReadonlyArray<string>;
 export const SitesAclsCreateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<SitesAclsCreateResponseLan1SubnetsList>;
 
 export interface SitesAclsCreateResponseLan1 {
@@ -3275,9 +3502,13 @@ export const SitesAclsCreateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsCreateResponseLan1",
 }) as any as S.Schema<SitesAclsCreateResponseLan1>;
 
-export type SitesAclsCreateResponseProtocolsList = unknown[];
+export type SitesAclsCreateResponseProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsCreateResponseProtocolsItem = /*@__PURE__*/ S.String;
+
+export type SitesAclsCreateResponseProtocolsList =
+  ReadonlyArray<SitesAclsCreateResponseProtocolsItem>;
 export const SitesAclsCreateResponseProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SitesAclsCreateResponseProtocolsItem,
 ) as any as S.Schema<SitesAclsCreateResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3289,7 +3520,7 @@ export interface CreateSiteAclResponse {
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
   lan1?: SitesAclsCreateResponseLan1;
-  lan2?: unknown;
+  lan2?: SitesAclsCreateResponseLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsCreateResponseProtocolsList;
@@ -3302,7 +3533,7 @@ export const CreateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
     lan1: S.optional(SitesAclsCreateResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    lan2: S.optional(SitesAclsCreateResponseLan1.pipe(T.Body("lan_2"))),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsCreateResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -3328,27 +3559,27 @@ export interface SitesLansCreateRequestRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: unknown;
+  nat?: SitesLansCreateRequestNat;
 }
 export const SitesLansCreateRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.Unknown),
+      nat: S.optional(SitesLansCreateRequestNat),
     }),
 ).annotate({
   identifier: "SitesLansCreateRequestRoutedSubnetsItem",
 }) as any as S.Schema<SitesLansCreateRequestRoutedSubnetsItem>;
 
 export type SitesLansCreateRequestRoutedSubnetsList =
-  SitesLansCreateRequestRoutedSubnetsItem[];
+  ReadonlyArray<SitesLansCreateRequestRoutedSubnetsItem>;
 export const SitesLansCreateRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansCreateRequestRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansCreateRequestRoutedSubnetsList>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3372,7 +3603,7 @@ export const SitesLansCreateRequestStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpRelay>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
+  "text" | "hex" | "ip" | "byte" | "short" | "integer";
 export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -3397,26 +3628,26 @@ export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem[];
+  ReadonlyArray<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansCreateRequestStaticAddressingDhcpServer {
@@ -3556,27 +3787,27 @@ export interface SitesLansCreateResultItemRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: unknown;
+  nat?: SitesLansCreateResultItemNat;
 }
 export const SitesLansCreateResultItemRoutedSubnetsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.Unknown),
+      nat: S.optional(SitesLansCreateResultItemNat),
     }),
   ).annotate({
     identifier: "SitesLansCreateResultItemRoutedSubnetsItem",
   }) as any as S.Schema<SitesLansCreateResultItemRoutedSubnetsItem>;
 
 export type SitesLansCreateResultItemRoutedSubnetsList =
-  SitesLansCreateResultItemRoutedSubnetsItem[];
+  ReadonlyArray<SitesLansCreateResultItemRoutedSubnetsItem>;
 export const SitesLansCreateResultItemRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansCreateResultItemRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansCreateResultItemRoutedSubnetsList>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3600,7 +3831,7 @@ export const SitesLansCreateResultItemStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpRelay>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
+  "text" | "hex" | "ip" | "byte" | "short" | "integer";
 export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -3625,25 +3856,25 @@ export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem 
   }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem[];
+  ReadonlyArray<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap =
-  { [key: string]: unknown | undefined };
+  { [key: string]: string | undefined };
 export const SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansCreateResultItemStaticAddressingDhcpServer {
@@ -3760,7 +3991,8 @@ export const SitesLansCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesLansCreateResultItem",
 }) as any as S.Schema<SitesLansCreateResultItem>;
 
-export type SitesLansCreateResultList = SitesLansCreateResultItem[];
+export type SitesLansCreateResultList =
+  ReadonlyArray<SitesLansCreateResultItem>;
 export const SitesLansCreateResultList = /*@__PURE__*/ S.Array(
   SitesLansCreateResultItem,
 ) as any as S.Schema<SitesLansCreateResultList>;
@@ -3836,11 +4068,7 @@ export const CreateSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSiteWanRequest",
 }) as any as S.Schema<CreateSiteWanRequest>;
 
-export type SitesWansCreateResultItemHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high"
-  | (string & {});
+export type SitesWansCreateResultItemHealthCheckRate = "low" | "mid" | "high";
 export const SitesWansCreateResultItemHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansCreateResultItemStaticAddressing {
@@ -3901,7 +4129,8 @@ export const SitesWansCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesWansCreateResultItem",
 }) as any as S.Schema<SitesWansCreateResultItem>;
 
-export type SitesWansCreateResultList = SitesWansCreateResultItem[];
+export type SitesWansCreateResultList =
+  ReadonlyArray<SitesWansCreateResultItem>;
 export const SitesWansCreateResultList = /*@__PURE__*/ S.Array(
   SitesWansCreateResultItem,
 ) as any as S.Schema<SitesWansCreateResultList>;
@@ -3944,17 +4173,17 @@ export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAppRequest",
 }) as any as S.Schema<DeleteAppRequest>;
 
-export type AppsDeleteResponseHostnamesList = string[];
+export type AppsDeleteResponseHostnamesList = ReadonlyArray<string>;
 export const AppsDeleteResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsDeleteResponseHostnamesList>;
 
-export type AppsDeleteResponseIpSubnetsList = string[];
+export type AppsDeleteResponseIpSubnetsList = ReadonlyArray<string>;
 export const AppsDeleteResponseIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsDeleteResponseIpSubnetsList>;
 
-export type AppsDeleteResponseSourceSubnetsList = string[];
+export type AppsDeleteResponseSourceSubnetsList = ReadonlyArray<string>;
 export const AppsDeleteResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsDeleteResponseSourceSubnetsList>;
@@ -4083,6 +4312,14 @@ export const DeleteCf1SiteRampRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCf1SiteRampRequest",
 }) as any as S.Schema<DeleteCf1SiteRampRequest>;
 
+export type Cf1SitesRampsDeleteResponseType =
+  | "gre"
+  | "gre_interconnect"
+  | "mpls_interconnect"
+  | "mconn"
+  | "ipsec";
+export const Cf1SitesRampsDeleteResponseType = /*@__PURE__*/ S.String;
+
 export interface Cf1SitesRampsDeleteResponseGre {
   /** URL reference to the source network resource that this ramp is managed by. */
   managedBy?: string;
@@ -4154,7 +4391,7 @@ export interface DeleteCf1SiteRampResponse {
   /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
   name: string;
   /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
-  type: unknown;
+  type: Cf1SitesRampsDeleteResponseType;
   /** A human-provided description of the ramp. */
   description?: string;
   gre?: Cf1SitesRampsDeleteResponseGre;
@@ -4169,7 +4406,7 @@ export const DeleteCf1SiteRampResponse = /*@__PURE__*/ S.suspend(() =>
     createdOn: S.String.pipe(T.Body("created_on")),
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
-    type: S.Unknown,
+    type: Cf1SitesRampsDeleteResponseType,
     description: S.optional(S.String),
     gre: S.optional(Cf1SitesRampsDeleteResponseGre),
     greInterconnect: S.optional(
@@ -4215,27 +4452,28 @@ export type ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem =
   | "Sunday"
   | "Monday"
   | "Tuesday"
-  | (string & {});
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday";
 export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsDeleteResponseInterruptWindowDaysOfWeekList =
-  ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem[];
+  ReadonlyArray<ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem>;
 export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsDeleteResponseInterruptWindowDaysOfWeekList>;
 
-export type ConnectorsDeleteResponseInterruptWindowEmbargoDatesList = string[];
+export type ConnectorsDeleteResponseInterruptWindowEmbargoDatesList =
+  ReadonlyArray<string>;
 export const ConnectorsDeleteResponseInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectorsDeleteResponseInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsDeleteResponseDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
+export type ConnectorsDeleteResponseDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsDeleteResponseDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsDeleteResponseDevice {
@@ -4333,7 +4571,7 @@ export const DeleteGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGreTunnelRequest>;
 
 export type GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList =
-  string[];
+  ReadonlyArray<string>;
 export const GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4371,8 +4609,7 @@ export const GreTunnelsDeleteResponseDeletedGreTunnelBgp =
 export type GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
+  | "BGP_ESTABLISHING";
 export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -4408,28 +4645,45 @@ export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus =
 
 export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget {
+export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget =
+export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget>;
+    identifier:
+      "GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTargetMagicHealthCheckTarget>;
+
+export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget =
+  | string
+  | GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTargetMagicHealthCheckTarget;
+export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType =
+  | "reply"
+  | "request";
+export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -4437,11 +4691,11 @@ export interface GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType;
 }
 export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
@@ -4450,11 +4704,11 @@ export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck =
         GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection,
       ),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckRate),
       target: S.optional(
         GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget,
       ),
-      type: S.optional(S.Unknown),
+      type: S.optional(GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckType),
     }),
   ).annotate({
     identifier: "GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck",
@@ -4570,7 +4824,7 @@ export const DeleteIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIpsecTunnelRequest>;
 
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList =
-  string[];
+  ReadonlyArray<string>;
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4608,8 +4862,7 @@ export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp =
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
+  | "BGP_ESTABLISHING";
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -4659,28 +4912,45 @@ export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities 
 
 export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget {
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget =
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget>;
+    identifier:
+      "IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget>;
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget =
+  | string
+  | IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget;
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType =
+  | "reply"
+  | "request";
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -4688,11 +4958,11 @@ export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType;
 }
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
@@ -4701,11 +4971,15 @@ export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck =
         IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection,
       ),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(
+        IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckRate,
+      ),
       target: S.optional(
         IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget,
       ),
-      type: S.optional(S.Unknown),
+      type: S.optional(
+        IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckType,
+      ),
     }),
   ).annotate({
     identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck",
@@ -4872,13 +5146,15 @@ export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRouteRequest",
 }) as any as S.Schema<DeleteRouteRequest>;
 
-export type RoutesDeleteResponseDeletedRouteScopeColoNamesList = string[];
+export type RoutesDeleteResponseDeletedRouteScopeColoNamesList =
+  ReadonlyArray<string>;
 export const RoutesDeleteResponseDeletedRouteScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesDeleteResponseDeletedRouteScopeColoNamesList>;
 
-export type RoutesDeleteResponseDeletedRouteScopeColoRegionsList = string[];
+export type RoutesDeleteResponseDeletedRouteScopeColoRegionsList =
+  ReadonlyArray<string>;
 export const RoutesDeleteResponseDeletedRouteScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5056,19 +5332,19 @@ export const DeleteSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSiteAclRequest",
 }) as any as S.Schema<DeleteSiteAclRequest>;
 
-export type SitesAclsDeleteResponseLan1PortRangesList = string[];
+export type SitesAclsDeleteResponseLan1PortRangesList = ReadonlyArray<string>;
 export const SitesAclsDeleteResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsDeleteResponseLan1PortRangesList>;
 
-export type SitesAclsDeleteResponseLan1PortsList = number[];
+export type SitesAclsDeleteResponseLan1PortsList = ReadonlyArray<number>;
 export const SitesAclsDeleteResponseLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsDeleteResponseLan1PortsList>;
 
-export type SitesAclsDeleteResponseLan1SubnetsList = unknown[];
+export type SitesAclsDeleteResponseLan1SubnetsList = ReadonlyArray<string>;
 export const SitesAclsDeleteResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<SitesAclsDeleteResponseLan1SubnetsList>;
 
 export interface SitesAclsDeleteResponseLan1 {
@@ -5097,9 +5373,13 @@ export const SitesAclsDeleteResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsDeleteResponseLan1",
 }) as any as S.Schema<SitesAclsDeleteResponseLan1>;
 
-export type SitesAclsDeleteResponseProtocolsList = unknown[];
+export type SitesAclsDeleteResponseProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsDeleteResponseProtocolsItem = /*@__PURE__*/ S.String;
+
+export type SitesAclsDeleteResponseProtocolsList =
+  ReadonlyArray<SitesAclsDeleteResponseProtocolsItem>;
 export const SitesAclsDeleteResponseProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SitesAclsDeleteResponseProtocolsItem,
 ) as any as S.Schema<SitesAclsDeleteResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5111,7 +5391,7 @@ export interface DeleteSiteAclResponse {
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
   lan1?: SitesAclsDeleteResponseLan1;
-  lan2?: unknown;
+  lan2?: SitesAclsDeleteResponseLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsDeleteResponseProtocolsList;
@@ -5124,7 +5404,7 @@ export const DeleteSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
     lan1: S.optional(SitesAclsDeleteResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    lan2: S.optional(SitesAclsDeleteResponseLan1.pipe(T.Body("lan_2"))),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsDeleteResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -5176,27 +5456,27 @@ export interface SitesLansDeleteResponseRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: unknown;
+  nat?: SitesLansDeleteResponseNat;
 }
 export const SitesLansDeleteResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.Unknown),
+      nat: S.optional(SitesLansDeleteResponseNat),
     }),
 ).annotate({
   identifier: "SitesLansDeleteResponseRoutedSubnetsItem",
 }) as any as S.Schema<SitesLansDeleteResponseRoutedSubnetsItem>;
 
 export type SitesLansDeleteResponseRoutedSubnetsList =
-  SitesLansDeleteResponseRoutedSubnetsItem[];
+  ReadonlyArray<SitesLansDeleteResponseRoutedSubnetsItem>;
 export const SitesLansDeleteResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansDeleteResponseRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansDeleteResponseRoutedSubnetsList>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5220,7 +5500,7 @@ export const SitesLansDeleteResponseStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
+  "text" | "hex" | "ip" | "byte" | "short" | "integer";
 export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -5245,26 +5525,26 @@ export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem[];
+  ReadonlyArray<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansDeleteResponseStaticAddressingDhcpServer {
@@ -5406,11 +5686,7 @@ export const DeleteSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSiteWanRequest",
 }) as any as S.Schema<DeleteSiteWanRequest>;
 
-export type SitesWansDeleteResponseHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high"
-  | (string & {});
+export type SitesWansDeleteResponseHealthCheckRate = "low" | "mid" | "high";
 export const SitesWansDeleteResponseHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansDeleteResponseStaticAddressing {
@@ -5488,13 +5764,15 @@ export const EmptyRouteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmptyRouteRequest",
 }) as any as S.Schema<EmptyRouteRequest>;
 
-export type RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList = string[];
+export type RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList =
+  ReadonlyArray<string>;
 export const RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList>;
 
-export type RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList = string[];
+export type RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList =
+  ReadonlyArray<string>;
 export const RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5562,7 +5840,7 @@ export const RoutesEmptyResponseDeletedRoutesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItem>;
 
 export type RoutesEmptyResponseDeletedRoutesList =
-  RoutesEmptyResponseDeletedRoutesItem[];
+  ReadonlyArray<RoutesEmptyResponseDeletedRoutesItem>;
 export const RoutesEmptyResponseDeletedRoutesList = /*@__PURE__*/ S.Array(
   RoutesEmptyResponseDeletedRoutesItem,
 ) as any as S.Schema<RoutesEmptyResponseDeletedRoutesList>;
@@ -5675,6 +5953,14 @@ export const GetCf1SiteRampRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCf1SiteRampRequest",
 }) as any as S.Schema<GetCf1SiteRampRequest>;
 
+export type Cf1SitesRampsGetResponseType =
+  | "gre"
+  | "gre_interconnect"
+  | "mpls_interconnect"
+  | "mconn"
+  | "ipsec";
+export const Cf1SitesRampsGetResponseType = /*@__PURE__*/ S.String;
+
 export interface Cf1SitesRampsGetResponseGre {
   /** URL reference to the source network resource that this ramp is managed by. */
   managedBy?: string;
@@ -5746,7 +6032,7 @@ export interface GetCf1SiteRampResponse {
   /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
   name: string;
   /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
-  type: unknown;
+  type: Cf1SitesRampsGetResponseType;
   /** A human-provided description of the ramp. */
   description?: string;
   gre?: Cf1SitesRampsGetResponseGre;
@@ -5761,7 +6047,7 @@ export const GetCf1SiteRampResponse = /*@__PURE__*/ S.suspend(() =>
     createdOn: S.String.pipe(T.Body("created_on")),
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
-    type: S.Unknown,
+    type: Cf1SitesRampsGetResponseType,
     description: S.optional(S.String),
     gre: S.optional(Cf1SitesRampsGetResponseGre),
     greInterconnect: S.optional(
@@ -5821,43 +6107,61 @@ export const CfInterconnectsGetResponseInterconnectGre =
     identifier: "CfInterconnectsGetResponseInterconnectGre",
   }) as any as S.Schema<CfInterconnectsGetResponseInterconnectGre>;
 
-export interface CfInterconnectsGetResponseInterconnectHealthCheckTarget {
+export type CfInterconnectsGetResponseInterconnectHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const CfInterconnectsGetResponseInterconnectHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface CfInterconnectsGetResponseInterconnectHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const CfInterconnectsGetResponseInterconnectHealthCheckTarget =
+export const CfInterconnectsGetResponseInterconnectHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "CfInterconnectsGetResponseInterconnectHealthCheckTarget",
-  }) as any as S.Schema<CfInterconnectsGetResponseInterconnectHealthCheckTarget>;
+    identifier:
+      "CfInterconnectsGetResponseInterconnectHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<CfInterconnectsGetResponseInterconnectHealthCheckTargetMagicHealthCheckTarget>;
+
+export type CfInterconnectsGetResponseInterconnectHealthCheckTarget =
+  | string
+  | CfInterconnectsGetResponseInterconnectHealthCheckTargetMagicHealthCheckTarget;
+export const CfInterconnectsGetResponseInterconnectHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type CfInterconnectsGetResponseInterconnectHealthCheckType =
+  | "reply"
+  | "request";
+export const CfInterconnectsGetResponseInterconnectHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface CfInterconnectsGetResponseInterconnectHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: CfInterconnectsGetResponseInterconnectHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: CfInterconnectsGetResponseInterconnectHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: CfInterconnectsGetResponseInterconnectHealthCheckType;
 }
 export const CfInterconnectsGetResponseInterconnectHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(CfInterconnectsGetResponseInterconnectHealthCheckRate),
       target: S.optional(
         CfInterconnectsGetResponseInterconnectHealthCheckTarget,
       ),
-      type: S.optional(S.Unknown),
+      type: S.optional(CfInterconnectsGetResponseInterconnectHealthCheckType),
     }),
   ).annotate({
     identifier: "CfInterconnectsGetResponseInterconnectHealthCheck",
@@ -5959,27 +6263,28 @@ export type ConnectorsGetResponseInterruptWindowDaysOfWeekItem =
   | "Sunday"
   | "Monday"
   | "Tuesday"
-  | (string & {});
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday";
 export const ConnectorsGetResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsGetResponseInterruptWindowDaysOfWeekList =
-  ConnectorsGetResponseInterruptWindowDaysOfWeekItem[];
+  ReadonlyArray<ConnectorsGetResponseInterruptWindowDaysOfWeekItem>;
 export const ConnectorsGetResponseInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsGetResponseInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsGetResponseInterruptWindowDaysOfWeekList>;
 
-export type ConnectorsGetResponseInterruptWindowEmbargoDatesList = string[];
+export type ConnectorsGetResponseInterruptWindowEmbargoDatesList =
+  ReadonlyArray<string>;
 export const ConnectorsGetResponseInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectorsGetResponseInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsGetResponseDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
+export type ConnectorsGetResponseDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsGetResponseDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsGetResponseDevice {
@@ -6075,7 +6380,7 @@ export const GetConnectorEventRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConnectorEventRequest",
 }) as any as S.Schema<GetConnectorEventRequest>;
 
-export type ConnectorsEventsGetResponseEInitK = "Init" | (string & {});
+export type ConnectorsEventsGetResponseEInitK = "Init";
 export const ConnectorsEventsGetResponseEInitK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseEInit {
@@ -6090,7 +6395,7 @@ export const ConnectorsEventsGetResponseEInit = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorsEventsGetResponseEInit",
 }) as any as S.Schema<ConnectorsEventsGetResponseEInit>;
 
-export type ConnectorsEventsGetResponseELeaveK = "Leave" | (string & {});
+export type ConnectorsEventsGetResponseELeaveK = "Leave";
 export const ConnectorsEventsGetResponseELeaveK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseELeave {
@@ -6105,9 +6410,7 @@ export const ConnectorsEventsGetResponseELeave = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorsEventsGetResponseELeave",
 }) as any as S.Schema<ConnectorsEventsGetResponseELeave>;
 
-export type ConnectorsEventsGetResponseEStartAttestationK =
-  | "StartAttestation"
-  | (string & {});
+export type ConnectorsEventsGetResponseEStartAttestationK = "StartAttestation";
 export const ConnectorsEventsGetResponseEStartAttestationK =
   /*@__PURE__*/ S.String;
 
@@ -6125,8 +6428,7 @@ export const ConnectorsEventsGetResponseEStartAttestation =
   }) as any as S.Schema<ConnectorsEventsGetResponseEStartAttestation>;
 
 export type ConnectorsEventsGetResponseEFinishAttestationSuccessK =
-  | "FinishAttestationSuccess"
-  | (string & {});
+  "FinishAttestationSuccess";
 export const ConnectorsEventsGetResponseEFinishAttestationSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -6144,8 +6446,7 @@ export const ConnectorsEventsGetResponseEFinishAttestationSuccess =
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishAttestationSuccess>;
 
 export type ConnectorsEventsGetResponseEFinishAttestationFailureK =
-  | "FinishAttestationFailure"
-  | (string & {});
+  "FinishAttestationFailure";
 export const ConnectorsEventsGetResponseEFinishAttestationFailureK =
   /*@__PURE__*/ S.String;
 
@@ -6163,8 +6464,7 @@ export const ConnectorsEventsGetResponseEFinishAttestationFailure =
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishAttestationFailure>;
 
 export type ConnectorsEventsGetResponseEStartRotateCryptKeyK =
-  | "StartRotateCryptKey"
-  | (string & {});
+  "StartRotateCryptKey";
 export const ConnectorsEventsGetResponseEStartRotateCryptKeyK =
   /*@__PURE__*/ S.String;
 
@@ -6182,8 +6482,7 @@ export const ConnectorsEventsGetResponseEStartRotateCryptKey =
   }) as any as S.Schema<ConnectorsEventsGetResponseEStartRotateCryptKey>;
 
 export type ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK =
-  | "FinishRotateCryptKeySuccess"
-  | (string & {});
+  "FinishRotateCryptKeySuccess";
 export const ConnectorsEventsGetResponseEFinishRotateCryptKeySuccessK =
   /*@__PURE__*/ S.String;
 
@@ -6201,8 +6500,7 @@ export const ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess =
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotateCryptKeySuccess>;
 
 export type ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK =
-  | "FinishRotateCryptKeyFailure"
-  | (string & {});
+  "FinishRotateCryptKeyFailure";
 export const ConnectorsEventsGetResponseEFinishRotateCryptKeyFailureK =
   /*@__PURE__*/ S.String;
 
@@ -6219,9 +6517,7 @@ export const ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure =
     identifier: "ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure",
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotateCryptKeyFailure>;
 
-export type ConnectorsEventsGetResponseEStartRotatePkiK =
-  | "StartRotatePki"
-  | (string & {});
+export type ConnectorsEventsGetResponseEStartRotatePkiK = "StartRotatePki";
 export const ConnectorsEventsGetResponseEStartRotatePkiK =
   /*@__PURE__*/ S.String;
 
@@ -6239,8 +6535,7 @@ export const ConnectorsEventsGetResponseEStartRotatePki =
   }) as any as S.Schema<ConnectorsEventsGetResponseEStartRotatePki>;
 
 export type ConnectorsEventsGetResponseEFinishRotatePkiSuccessK =
-  | "FinishRotatePkiSuccess"
-  | (string & {});
+  "FinishRotatePkiSuccess";
 export const ConnectorsEventsGetResponseEFinishRotatePkiSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -6258,8 +6553,7 @@ export const ConnectorsEventsGetResponseEFinishRotatePkiSuccess =
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotatePkiSuccess>;
 
 export type ConnectorsEventsGetResponseEFinishRotatePkiFailureK =
-  | "FinishRotatePkiFailure"
-  | (string & {});
+  "FinishRotatePkiFailure";
 export const ConnectorsEventsGetResponseEFinishRotatePkiFailureK =
   /*@__PURE__*/ S.String;
 
@@ -6276,9 +6570,7 @@ export const ConnectorsEventsGetResponseEFinishRotatePkiFailure =
     identifier: "ConnectorsEventsGetResponseEFinishRotatePkiFailure",
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishRotatePkiFailure>;
 
-export type ConnectorsEventsGetResponseEStartUpgradeK =
-  | "StartUpgrade"
-  | (string & {});
+export type ConnectorsEventsGetResponseEStartUpgradeK = "StartUpgrade";
 export const ConnectorsEventsGetResponseEStartUpgradeK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseEStartUpgrade {
@@ -6298,8 +6590,7 @@ export const ConnectorsEventsGetResponseEStartUpgrade = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsEventsGetResponseEStartUpgrade>;
 
 export type ConnectorsEventsGetResponseEFinishUpgradeSuccessK =
-  | "FinishUpgradeSuccess"
-  | (string & {});
+  "FinishUpgradeSuccess";
 export const ConnectorsEventsGetResponseEFinishUpgradeSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -6317,8 +6608,7 @@ export const ConnectorsEventsGetResponseEFinishUpgradeSuccess =
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishUpgradeSuccess>;
 
 export type ConnectorsEventsGetResponseEFinishUpgradeFailureK =
-  | "FinishUpgradeFailure"
-  | (string & {});
+  "FinishUpgradeFailure";
 export const ConnectorsEventsGetResponseEFinishUpgradeFailureK =
   /*@__PURE__*/ S.String;
 
@@ -6335,9 +6625,7 @@ export const ConnectorsEventsGetResponseEFinishUpgradeFailure =
     identifier: "ConnectorsEventsGetResponseEFinishUpgradeFailure",
   }) as any as S.Schema<ConnectorsEventsGetResponseEFinishUpgradeFailure>;
 
-export type ConnectorsEventsGetResponseEReconcileK =
-  | "Reconcile"
-  | (string & {});
+export type ConnectorsEventsGetResponseEReconcileK = "Reconcile";
 export const ConnectorsEventsGetResponseEReconcileK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseEReconcile {
@@ -6354,8 +6642,7 @@ export const ConnectorsEventsGetResponseEReconcile = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsEventsGetResponseEReconcile>;
 
 export type ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK =
-  | "ConfigureCloudflaredTunnel"
-  | (string & {});
+  "ConfigureCloudflaredTunnel";
 export const ConnectorsEventsGetResponseEConfigureCloudflaredTunnelK =
   /*@__PURE__*/ S.String;
 
@@ -6372,9 +6659,7 @@ export const ConnectorsEventsGetResponseEConfigureCloudflaredTunnel =
     identifier: "ConnectorsEventsGetResponseEConfigureCloudflaredTunnel",
   }) as any as S.Schema<ConnectorsEventsGetResponseEConfigureCloudflaredTunnel>;
 
-export type ConnectorsEventsGetResponseERekeyInstallBothK =
-  | "RekeyInstallBoth"
-  | (string & {});
+export type ConnectorsEventsGetResponseERekeyInstallBothK = "RekeyInstallBoth";
 export const ConnectorsEventsGetResponseERekeyInstallBothK =
   /*@__PURE__*/ S.String;
 
@@ -6394,9 +6679,7 @@ export const ConnectorsEventsGetResponseERekeyInstallBoth =
     identifier: "ConnectorsEventsGetResponseERekeyInstallBoth",
   }) as any as S.Schema<ConnectorsEventsGetResponseERekeyInstallBoth>;
 
-export type ConnectorsEventsGetResponseERekeyStartK =
-  | "RekeyStart"
-  | (string & {});
+export type ConnectorsEventsGetResponseERekeyStartK = "RekeyStart";
 export const ConnectorsEventsGetResponseERekeyStartK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseERekeyStart {
@@ -6415,9 +6698,7 @@ export const ConnectorsEventsGetResponseERekeyStart = /*@__PURE__*/ S.suspend(
   identifier: "ConnectorsEventsGetResponseERekeyStart",
 }) as any as S.Schema<ConnectorsEventsGetResponseERekeyStart>;
 
-export type ConnectorsEventsGetResponseERekeyAdvanceK =
-  | "RekeyAdvance"
-  | (string & {});
+export type ConnectorsEventsGetResponseERekeyAdvanceK = "RekeyAdvance";
 export const ConnectorsEventsGetResponseERekeyAdvanceK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseERekeyAdvance {
@@ -6436,9 +6717,7 @@ export const ConnectorsEventsGetResponseERekeyAdvance = /*@__PURE__*/ S.suspend(
   identifier: "ConnectorsEventsGetResponseERekeyAdvance",
 }) as any as S.Schema<ConnectorsEventsGetResponseERekeyAdvance>;
 
-export type ConnectorsEventsGetResponseERekeyCompleteK =
-  | "RekeyComplete"
-  | (string & {});
+export type ConnectorsEventsGetResponseERekeyCompleteK = "RekeyComplete";
 export const ConnectorsEventsGetResponseERekeyCompleteK =
   /*@__PURE__*/ S.String;
 
@@ -6458,9 +6737,7 @@ export const ConnectorsEventsGetResponseERekeyComplete =
     identifier: "ConnectorsEventsGetResponseERekeyComplete",
   }) as any as S.Schema<ConnectorsEventsGetResponseERekeyComplete>;
 
-export type ConnectorsEventsGetResponseERekeyResetK =
-  | "RekeyReset"
-  | (string & {});
+export type ConnectorsEventsGetResponseERekeyResetK = "RekeyReset";
 export const ConnectorsEventsGetResponseERekeyResetK = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEventsGetResponseERekeyReset {
@@ -6589,7 +6866,7 @@ export const ConnectorsSnapshotsGetResponseBondsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsSnapshotsGetResponseBondsItem>;
 
 export type ConnectorsSnapshotsGetResponseBondsList =
-  ConnectorsSnapshotsGetResponseBondsItem[];
+  ReadonlyArray<ConnectorsSnapshotsGetResponseBondsItem>;
 export const ConnectorsSnapshotsGetResponseBondsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseBondsItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseBondsList>;
@@ -6623,7 +6900,7 @@ export const ConnectorsSnapshotsGetResponseDhcpLeasesItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseDhcpLeasesItem>;
 
 export type ConnectorsSnapshotsGetResponseDhcpLeasesList =
-  ConnectorsSnapshotsGetResponseDhcpLeasesItem[];
+  ReadonlyArray<ConnectorsSnapshotsGetResponseDhcpLeasesItem>;
 export const ConnectorsSnapshotsGetResponseDhcpLeasesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsGetResponseDhcpLeasesItem,
@@ -6702,7 +6979,7 @@ export const ConnectorsSnapshotsGetResponseDisksItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsSnapshotsGetResponseDisksItem>;
 
 export type ConnectorsSnapshotsGetResponseDisksList =
-  ConnectorsSnapshotsGetResponseDisksItem[];
+  ReadonlyArray<ConnectorsSnapshotsGetResponseDisksItem>;
 export const ConnectorsSnapshotsGetResponseDisksList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseDisksItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseDisksList>;
@@ -6724,7 +7001,7 @@ export const ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem>;
 
 export type ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesList =
-  ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem[];
+  ReadonlyArray<ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem>;
 export const ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem,
@@ -6756,7 +7033,7 @@ export const ConnectorsSnapshotsGetResponseInterfacesItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseInterfacesItem>;
 
 export type ConnectorsSnapshotsGetResponseInterfacesList =
-  ConnectorsSnapshotsGetResponseInterfacesItem[];
+  ReadonlyArray<ConnectorsSnapshotsGetResponseInterfacesItem>;
 export const ConnectorsSnapshotsGetResponseInterfacesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsGetResponseInterfacesItem,
@@ -6803,7 +7080,7 @@ export const ConnectorsSnapshotsGetResponseMountsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsSnapshotsGetResponseMountsItem>;
 
 export type ConnectorsSnapshotsGetResponseMountsList =
-  ConnectorsSnapshotsGetResponseMountsItem[];
+  ReadonlyArray<ConnectorsSnapshotsGetResponseMountsItem>;
 export const ConnectorsSnapshotsGetResponseMountsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseMountsItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseMountsList>;
@@ -6870,7 +7147,7 @@ export const ConnectorsSnapshotsGetResponseNetdevsItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseNetdevsItem>;
 
 export type ConnectorsSnapshotsGetResponseNetdevsList =
-  ConnectorsSnapshotsGetResponseNetdevsItem[];
+  ReadonlyArray<ConnectorsSnapshotsGetResponseNetdevsItem>;
 export const ConnectorsSnapshotsGetResponseNetdevsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseNetdevsItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseNetdevsList>;
@@ -6898,7 +7175,7 @@ export const ConnectorsSnapshotsGetResponseThermalsItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseThermalsItem>;
 
 export type ConnectorsSnapshotsGetResponseThermalsList =
-  ConnectorsSnapshotsGetResponseThermalsItem[];
+  ReadonlyArray<ConnectorsSnapshotsGetResponseThermalsItem>;
 export const ConnectorsSnapshotsGetResponseThermalsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseThermalsItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseThermalsList>;
@@ -6948,7 +7225,7 @@ export const ConnectorsSnapshotsGetResponseTunnelsItem =
   }) as any as S.Schema<ConnectorsSnapshotsGetResponseTunnelsItem>;
 
 export type ConnectorsSnapshotsGetResponseTunnelsList =
-  ConnectorsSnapshotsGetResponseTunnelsItem[];
+  ReadonlyArray<ConnectorsSnapshotsGetResponseTunnelsItem>;
 export const ConnectorsSnapshotsGetResponseTunnelsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsGetResponseTunnelsItem,
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseTunnelsList>;
@@ -7695,7 +7972,8 @@ export const GetGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetGreTunnelRequest",
 }) as any as S.Schema<GetGreTunnelRequest>;
 
-export type GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList = string[];
+export type GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList =
+  ReadonlyArray<string>;
 export const GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7732,8 +8010,7 @@ export const GreTunnelsGetResponseGreTunnelBgp = /*@__PURE__*/ S.suspend(() =>
 export type GreTunnelsGetResponseGreTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
+  | "BGP_ESTABLISHING";
 export const GreTunnelsGetResponseGreTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -7769,28 +8046,43 @@ export const GreTunnelsGetResponseGreTunnelBgpStatus = /*@__PURE__*/ S.suspend(
 
 export type GreTunnelsGetResponseGreTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const GreTunnelsGetResponseGreTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface GreTunnelsGetResponseGreTunnelHealthCheckTarget {
+export type GreTunnelsGetResponseGreTunnelHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const GreTunnelsGetResponseGreTunnelHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsGetResponseGreTunnelHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const GreTunnelsGetResponseGreTunnelHealthCheckTarget =
+export const GreTunnelsGetResponseGreTunnelHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "GreTunnelsGetResponseGreTunnelHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsGetResponseGreTunnelHealthCheckTarget>;
+    identifier:
+      "GreTunnelsGetResponseGreTunnelHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsGetResponseGreTunnelHealthCheckTargetMagicHealthCheckTarget>;
+
+export type GreTunnelsGetResponseGreTunnelHealthCheckTarget =
+  | string
+  | GreTunnelsGetResponseGreTunnelHealthCheckTargetMagicHealthCheckTarget;
+export const GreTunnelsGetResponseGreTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsGetResponseGreTunnelHealthCheckType = "reply" | "request";
+export const GreTunnelsGetResponseGreTunnelHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface GreTunnelsGetResponseGreTunnelHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -7798,20 +8090,20 @@ export interface GreTunnelsGetResponseGreTunnelHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: GreTunnelsGetResponseGreTunnelHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: GreTunnelsGetResponseGreTunnelHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: GreTunnelsGetResponseGreTunnelHealthCheckType;
 }
 export const GreTunnelsGetResponseGreTunnelHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       direction: S.optional(GreTunnelsGetResponseGreTunnelHealthCheckDirection),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(GreTunnelsGetResponseGreTunnelHealthCheckRate),
       target: S.optional(GreTunnelsGetResponseGreTunnelHealthCheckTarget),
-      type: S.optional(S.Unknown),
+      type: S.optional(GreTunnelsGetResponseGreTunnelHealthCheckType),
     }),
   ).annotate({
     identifier: "GreTunnelsGetResponseGreTunnelHealthCheck",
@@ -7915,7 +8207,8 @@ export const GetIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetIpsecTunnelRequest",
 }) as any as S.Schema<GetIpsecTunnelRequest>;
 
-export type IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList = string[];
+export type IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList =
+  ReadonlyArray<string>;
 export const IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7953,8 +8246,7 @@ export const IpsecTunnelsGetResponseIpsecTunnelBgp = /*@__PURE__*/ S.suspend(
 export type IpsecTunnelsGetResponseIpsecTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
+  | "BGP_ESTABLISHING";
 export const IpsecTunnelsGetResponseIpsecTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -8003,28 +8295,45 @@ export const IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities =
 
 export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget {
+export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsGetResponseIpsecTunnelHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget =
+export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget>;
+    identifier:
+      "IpsecTunnelsGetResponseIpsecTunnelHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelHealthCheckTargetMagicHealthCheckTarget>;
+
+export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget =
+  | string
+  | IpsecTunnelsGetResponseIpsecTunnelHealthCheckTargetMagicHealthCheckTarget;
+export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckType =
+  | "reply"
+  | "request";
+export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsGetResponseIpsecTunnelHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -8032,11 +8341,11 @@ export interface IpsecTunnelsGetResponseIpsecTunnelHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: IpsecTunnelsGetResponseIpsecTunnelHealthCheckType;
 }
 export const IpsecTunnelsGetResponseIpsecTunnelHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
@@ -8045,9 +8354,9 @@ export const IpsecTunnelsGetResponseIpsecTunnelHealthCheck =
         IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection,
       ),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(IpsecTunnelsGetResponseIpsecTunnelHealthCheckRate),
       target: S.optional(IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget),
-      type: S.optional(S.Unknown),
+      type: S.optional(IpsecTunnelsGetResponseIpsecTunnelHealthCheckType),
     }),
   ).annotate({
     identifier: "IpsecTunnelsGetResponseIpsecTunnelHealthCheck",
@@ -8173,7 +8482,7 @@ export const GetPcapRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetPcapRequest" }) as any as S.Schema<GetPcapRequest>;
 
-export interface PcapsGetResponseFilterV1 {
+export interface PcapsGetResultPCAPFilterV1 {
   /** The destination IP address of the packet. */
   destinationAddress?: string;
   /** The destination port of the packet. */
@@ -8185,7 +8494,7 @@ export interface PcapsGetResponseFilterV1 {
   /** The source port of the packet. */
   sourcePort?: number;
 }
-export const PcapsGetResponseFilterV1 = /*@__PURE__*/ S.suspend(() =>
+export const PcapsGetResultPCAPFilterV1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationAddress: S.optional(
       S.String.pipe(T.Body("destination_address")),
@@ -8196,40 +8505,85 @@ export const PcapsGetResponseFilterV1 = /*@__PURE__*/ S.suspend(() =>
     sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
   }),
 ).annotate({
-  identifier: "PcapsGetResponseFilterV1",
-}) as any as S.Schema<PcapsGetResponseFilterV1>;
+  identifier: "PcapsGetResultPCAPFilterV1",
+}) as any as S.Schema<PcapsGetResultPCAPFilterV1>;
 
-export type PcapsGetResponseStatus =
+export type PcapsGetResultPCAPStatus =
   | "unknown"
   | "success"
   | "pending"
-  | (string & {});
-export const PcapsGetResponseStatus = /*@__PURE__*/ S.String;
+  | "running"
+  | "conversion_pending"
+  | "conversion_running"
+  | "complete"
+  | "failed";
+export const PcapsGetResultPCAPStatus = /*@__PURE__*/ S.String;
 
-export type PcapsGetResponseSystem = "magic-transit" | (string & {});
-export const PcapsGetResponseSystem = /*@__PURE__*/ S.String;
+export type PcapsGetResultPCAPSystem = "magic-transit";
+export const PcapsGetResultPCAPSystem = /*@__PURE__*/ S.String;
 
-export type PcapsGetResponseType = "simple" | "full" | (string & {});
-export const PcapsGetResponseType = /*@__PURE__*/ S.String;
+export type PcapsGetResultPCAPType = "simple" | "full";
+export const PcapsGetResultPCAPType = /*@__PURE__*/ S.String;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetPcapResponse {
+export interface PcapsGetResultPCAP {
   /** The ID for the packet capture. */
   id?: string;
   /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsGetResponseFilterV1;
+  filterV1?: PcapsGetResultPCAPFilterV1;
   /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
   offsetTime?: string;
   /** The status of the packet capture request. */
-  status?: PcapsGetResponseStatus;
+  status?: PcapsGetResultPCAPStatus;
   /** The RFC 3339 timestamp when the packet capture was created. */
   submitted?: string;
   /** The system used to collect packet captures. */
-  system?: PcapsGetResponseSystem;
+  system?: PcapsGetResultPCAPSystem;
   /** The packet capture duration in seconds. */
   timeLimit?: number;
   /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type?: PcapsGetResponseType;
+  type?: PcapsGetResultPCAPType;
+}
+export const PcapsGetResultPCAP = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    filterV1: S.optional(PcapsGetResultPCAPFilterV1.pipe(T.Body("filter_v1"))),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    status: S.optional(PcapsGetResultPCAPStatus),
+    submitted: S.optional(S.String),
+    system: S.optional(PcapsGetResultPCAPSystem),
+    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+    type: S.optional(PcapsGetResultPCAPType),
+  }),
+).annotate({
+  identifier: "PcapsGetResultPCAP",
+}) as any as S.Schema<PcapsGetResultPCAP>;
+
+export type PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
+  | "unknown"
+  | "success"
+  | "pending"
+  | "running"
+  | "conversion_pending"
+  | "conversion_running"
+  | "complete"
+  | "failed";
+export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus =
+  /*@__PURE__*/ S.String;
+
+export type PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
+  "magic-transit";
+export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem =
+  /*@__PURE__*/ S.String;
+
+export type PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType =
+  | "simple"
+  | "full";
+export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType =
+  /*@__PURE__*/ S.String;
+
+export interface PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull {
+  /** The ID for the packet capture. */
+  id?: string;
   /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
   byteLimit?: number;
   /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
@@ -8238,28 +8592,86 @@ export interface GetPcapResponse {
   destinationConf?: string;
   /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
   errorMessage?: string;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsGetResultPCAPFilterV1;
   /** The number of packets captured. */
   packetsCaptured?: number;
+  /** The status of the packet capture request. */
+  status?: PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus;
   /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
   stopRequested?: string;
+  /** The RFC 3339 timestamp when the packet capture was created. */
+  submitted?: string;
+  /** The system used to collect packet captures. */
+  system?: PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem;
+  /** The packet capture duration in seconds. */
+  timeLimit?: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type?: PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType;
 }
+export const PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+      coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+      destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+      errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
+      filterV1: S.optional(
+        PcapsGetResultPCAPFilterV1.pipe(T.Body("filter_v1")),
+      ),
+      packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
+      status: S.optional(
+        PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullStatus,
+      ),
+      stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
+      submitted: S.optional(S.String),
+      system: S.optional(
+        PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullSystem,
+      ),
+      timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+      type: S.optional(PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFullType),
+    }),
+  ).annotate({
+    identifier: "PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull",
+  }) as any as S.Schema<PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull>;
+
+export type PcapsGetResult =
+  | PcapsGetResultPCAP
+  | PcapsGetResultMagicVisibilityPCAPsPCAPsResponseFull;
+export const PcapsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "id",
+      "filterV1",
+      "offsetTime",
+      "status",
+      "submitted",
+      "system",
+      "timeLimit",
+      "type",
+    ],
+    [
+      "id",
+      "byteLimit",
+      "coloName",
+      "destinationConf",
+      "errorMessage",
+      "filterV1",
+      "packetsCaptured",
+      "status",
+      "stopRequested",
+      "submitted",
+      "system",
+      "timeLimit",
+      "type",
+    ],
+  ]),
+);
+
+export type GetPcapResponse = PcapsGetResult;
 export const GetPcapResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    filterV1: S.optional(PcapsGetResponseFilterV1.pipe(T.Body("filter_v1"))),
-    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
-    status: S.optional(PcapsGetResponseStatus),
-    submitted: S.optional(S.String),
-    system: S.optional(PcapsGetResponseSystem),
-    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
-    type: S.optional(PcapsGetResponseType),
-    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
-    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
-    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
-    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
-    stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  PcapsGetResult.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetPcapResponse",
 }) as any as S.Schema<GetPcapResponse>;
@@ -8317,8 +8729,7 @@ export const GetPcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
 export type PcapsOwnershipGetResultItemStatus =
   | "pending"
   | "success"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const PcapsOwnershipGetResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface PcapsOwnershipGetResultItem {
@@ -8348,7 +8759,8 @@ export const PcapsOwnershipGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PcapsOwnershipGetResultItem",
 }) as any as S.Schema<PcapsOwnershipGetResultItem>;
 
-export type PcapsOwnershipGetResultList = PcapsOwnershipGetResultItem[];
+export type PcapsOwnershipGetResultList =
+  ReadonlyArray<PcapsOwnershipGetResultItem>;
 export const PcapsOwnershipGetResultList = /*@__PURE__*/ S.Array(
   PcapsOwnershipGetResultItem,
 ) as any as S.Schema<PcapsOwnershipGetResultList>;
@@ -8391,12 +8803,12 @@ export const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRouteRequest",
 }) as any as S.Schema<GetRouteRequest>;
 
-export type RoutesGetResponseRouteScopeColoNamesList = string[];
+export type RoutesGetResponseRouteScopeColoNamesList = ReadonlyArray<string>;
 export const RoutesGetResponseRouteScopeColoNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesGetResponseRouteScopeColoNamesList>;
 
-export type RoutesGetResponseRouteScopeColoRegionsList = string[];
+export type RoutesGetResponseRouteScopeColoRegionsList = ReadonlyArray<string>;
 export const RoutesGetResponseRouteScopeColoRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesGetResponseRouteScopeColoRegionsList>;
@@ -8566,19 +8978,19 @@ export const GetSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSiteAclRequest",
 }) as any as S.Schema<GetSiteAclRequest>;
 
-export type SitesAclsGetResponseLan1PortRangesList = string[];
+export type SitesAclsGetResponseLan1PortRangesList = ReadonlyArray<string>;
 export const SitesAclsGetResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsGetResponseLan1PortRangesList>;
 
-export type SitesAclsGetResponseLan1PortsList = number[];
+export type SitesAclsGetResponseLan1PortsList = ReadonlyArray<number>;
 export const SitesAclsGetResponseLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsGetResponseLan1PortsList>;
 
-export type SitesAclsGetResponseLan1SubnetsList = unknown[];
+export type SitesAclsGetResponseLan1SubnetsList = ReadonlyArray<string>;
 export const SitesAclsGetResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<SitesAclsGetResponseLan1SubnetsList>;
 
 export interface SitesAclsGetResponseLan1 {
@@ -8607,9 +9019,13 @@ export const SitesAclsGetResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsGetResponseLan1",
 }) as any as S.Schema<SitesAclsGetResponseLan1>;
 
-export type SitesAclsGetResponseProtocolsList = unknown[];
+export type SitesAclsGetResponseProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsGetResponseProtocolsItem = /*@__PURE__*/ S.String;
+
+export type SitesAclsGetResponseProtocolsList =
+  ReadonlyArray<SitesAclsGetResponseProtocolsItem>;
 export const SitesAclsGetResponseProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SitesAclsGetResponseProtocolsItem,
 ) as any as S.Schema<SitesAclsGetResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -8621,7 +9037,7 @@ export interface GetSiteAclResponse {
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
   lan1?: SitesAclsGetResponseLan1;
-  lan2?: unknown;
+  lan2?: SitesAclsGetResponseLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsGetResponseProtocolsList;
@@ -8634,7 +9050,7 @@ export const GetSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
     lan1: S.optional(SitesAclsGetResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    lan2: S.optional(SitesAclsGetResponseLan1.pipe(T.Body("lan_2"))),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsGetResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -8686,27 +9102,27 @@ export interface SitesLansGetResponseRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: unknown;
+  nat?: SitesLansGetResponseNat;
 }
 export const SitesLansGetResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.Unknown),
+      nat: S.optional(SitesLansGetResponseNat),
     }),
 ).annotate({
   identifier: "SitesLansGetResponseRoutedSubnetsItem",
 }) as any as S.Schema<SitesLansGetResponseRoutedSubnetsItem>;
 
 export type SitesLansGetResponseRoutedSubnetsList =
-  SitesLansGetResponseRoutedSubnetsItem[];
+  ReadonlyArray<SitesLansGetResponseRoutedSubnetsItem>;
 export const SitesLansGetResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansGetResponseRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansGetResponseRoutedSubnetsList>;
 
 export type SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8733,7 +9149,9 @@ export type SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   | "text"
   | "hex"
   | "ip"
-  | (string & {});
+  | "byte"
+  | "short"
+  | "integer";
 export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -8757,26 +9175,26 @@ export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem[];
+  ReadonlyArray<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansGetResponseStaticAddressingDhcpServerDnsServersList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansGetResponseStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansGetResponseStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const SitesLansGetResponseStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansGetResponseStaticAddressingDhcpServer {
@@ -8918,11 +9336,7 @@ export const GetSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSiteWanRequest",
 }) as any as S.Schema<GetSiteWanRequest>;
 
-export type SitesWansGetResponseHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high"
-  | (string & {});
+export type SitesWansGetResponseHealthCheckRate = "low" | "mid" | "high";
 export const SitesWansGetResponseHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansGetResponseStaticAddressing {
@@ -9000,56 +9414,125 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsRequest",
 }) as any as S.Schema<ListAppsRequest>;
 
-export type AppsListResultItemHostnamesList = string[];
-export const AppsListResultItemHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultItemHostnamesList>;
+export type AppsListResultItemMagicAccountAppHostnamesList =
+  ReadonlyArray<string>;
+export const AppsListResultItemMagicAccountAppHostnamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AppsListResultItemMagicAccountAppHostnamesList>;
 
-export type AppsListResultItemIpSubnetsList = string[];
-export const AppsListResultItemIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultItemIpSubnetsList>;
+export type AppsListResultItemMagicAccountAppIpSubnetsList =
+  ReadonlyArray<string>;
+export const AppsListResultItemMagicAccountAppIpSubnetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AppsListResultItemMagicAccountAppIpSubnetsList>;
 
-export type AppsListResultItemSourceSubnetsList = string[];
-export const AppsListResultItemSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsListResultItemSourceSubnetsList>;
+export type AppsListResultItemMagicAccountAppSourceSubnetsList =
+  ReadonlyArray<string>;
+export const AppsListResultItemMagicAccountAppSourceSubnetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AppsListResultItemMagicAccountAppSourceSubnetsList>;
 
-export interface AppsListResultItem {
+export interface AppsListResultItemMagicAccountApp {
   /** Magic account app ID. */
-  accountAppId?: string;
+  accountAppId: string;
   /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsListResultItemHostnamesList;
+  hostnames?: AppsListResultItemMagicAccountAppHostnamesList;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsListResultItemIpSubnetsList;
+  ipSubnets?: AppsListResultItemMagicAccountAppIpSubnetsList;
   /** Display name for the app. */
   name?: string;
   /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsListResultItemSourceSubnetsList;
+  sourceSubnets?: AppsListResultItemMagicAccountAppSourceSubnetsList;
   /** Category of the app. */
   type?: string;
-  /** Managed app ID. */
-  managedAppId?: string;
 }
-export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
+export const AppsListResultItemMagicAccountApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
-    hostnames: S.optional(AppsListResultItemHostnamesList),
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
+    hostnames: S.optional(AppsListResultItemMagicAccountAppHostnamesList),
     ipSubnets: S.optional(
-      AppsListResultItemIpSubnetsList.pipe(T.Body("ip_subnets")),
+      AppsListResultItemMagicAccountAppIpSubnetsList.pipe(T.Body("ip_subnets")),
     ),
     name: S.optional(S.String),
     sourceSubnets: S.optional(
-      AppsListResultItemSourceSubnetsList.pipe(T.Body("source_subnets")),
+      AppsListResultItemMagicAccountAppSourceSubnetsList.pipe(
+        T.Body("source_subnets"),
+      ),
     ),
     type: S.optional(S.String),
-    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
   }),
 ).annotate({
-  identifier: "AppsListResultItem",
-}) as any as S.Schema<AppsListResultItem>;
+  identifier: "AppsListResultItemMagicAccountApp",
+}) as any as S.Schema<AppsListResultItemMagicAccountApp>;
 
-export type AppsListResultList = AppsListResultItem[];
+export type AppsListResultItemMagicManagedAppHostnamesList =
+  ReadonlyArray<string>;
+export const AppsListResultItemMagicManagedAppHostnamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AppsListResultItemMagicManagedAppHostnamesList>;
+
+export type AppsListResultItemMagicManagedAppIpSubnetsList =
+  ReadonlyArray<string>;
+export const AppsListResultItemMagicManagedAppIpSubnetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AppsListResultItemMagicManagedAppIpSubnetsList>;
+
+export type AppsListResultItemMagicManagedAppSourceSubnetsList =
+  ReadonlyArray<string>;
+export const AppsListResultItemMagicManagedAppSourceSubnetsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AppsListResultItemMagicManagedAppSourceSubnetsList>;
+
+export interface AppsListResultItemMagicManagedApp {
+  /** Managed app ID. */
+  managedAppId: string;
+  /** FQDNs to associate with traffic decisions. */
+  hostnames?: AppsListResultItemMagicManagedAppHostnamesList;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  ipSubnets?: AppsListResultItemMagicManagedAppIpSubnetsList;
+  /** Display name for the app. */
+  name?: string;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: AppsListResultItemMagicManagedAppSourceSubnetsList;
+  /** Category of the app. */
+  type?: string;
+}
+export const AppsListResultItemMagicManagedApp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedAppId: S.String.pipe(T.Body("managed_app_id")),
+    hostnames: S.optional(AppsListResultItemMagicManagedAppHostnamesList),
+    ipSubnets: S.optional(
+      AppsListResultItemMagicManagedAppIpSubnetsList.pipe(T.Body("ip_subnets")),
+    ),
+    name: S.optional(S.String),
+    sourceSubnets: S.optional(
+      AppsListResultItemMagicManagedAppSourceSubnetsList.pipe(
+        T.Body("source_subnets"),
+      ),
+    ),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppsListResultItemMagicManagedApp",
+}) as any as S.Schema<AppsListResultItemMagicManagedApp>;
+
+export type AppsListResultItem =
+  | AppsListResultItemMagicAccountApp
+  | AppsListResultItemMagicManagedApp;
+export const AppsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["accountAppId", "hostnames", "ipSubnets", "name", "sourceSubnets", "type"],
+    ["managedAppId", "hostnames", "ipSubnets", "name", "sourceSubnets", "type"],
+  ]),
+);
+
+export type AppsListResultList = ReadonlyArray<AppsListResultItem>;
 export const AppsListResultList = /*@__PURE__*/ S.Array(
   AppsListResultItem,
 ) as any as S.Schema<AppsListResultList>;
@@ -9091,6 +9574,14 @@ export const ListCf1SiteRampsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCf1SiteRampsRequest",
 }) as any as S.Schema<ListCf1SiteRampsRequest>;
+
+export type Cf1SitesRampsListResultItemType =
+  | "gre"
+  | "gre_interconnect"
+  | "mpls_interconnect"
+  | "mconn"
+  | "ipsec";
+export const Cf1SitesRampsListResultItemType = /*@__PURE__*/ S.String;
 
 export interface Cf1SitesRampsListResultItemGre {
   /** URL reference to the source network resource that this ramp is managed by. */
@@ -9162,7 +9653,7 @@ export interface Cf1SitesRampsListResultItem {
   /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
   name: string;
   /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
-  type: unknown;
+  type: Cf1SitesRampsListResultItemType;
   /** A human-provided description of the ramp. */
   description?: string;
   gre?: Cf1SitesRampsListResultItemGre;
@@ -9177,7 +9668,7 @@ export const Cf1SitesRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
     createdOn: S.String.pipe(T.Body("created_on")),
     modifiedOn: S.String.pipe(T.Body("modified_on")),
     name: S.String,
-    type: S.Unknown,
+    type: Cf1SitesRampsListResultItemType,
     description: S.optional(S.String),
     gre: S.optional(Cf1SitesRampsListResultItemGre),
     greInterconnect: S.optional(
@@ -9197,7 +9688,8 @@ export const Cf1SitesRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Cf1SitesRampsListResultItem",
 }) as any as S.Schema<Cf1SitesRampsListResultItem>;
 
-export type Cf1SitesRampsListResultList = Cf1SitesRampsListResultItem[];
+export type Cf1SitesRampsListResultList =
+  ReadonlyArray<Cf1SitesRampsListResultItem>;
 export const Cf1SitesRampsListResultList = /*@__PURE__*/ S.Array(
   Cf1SitesRampsListResultItem,
 ) as any as S.Schema<Cf1SitesRampsListResultList>;
@@ -9279,7 +9771,7 @@ export const Cf1SitesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "Cf1SitesListResultItem",
 }) as any as S.Schema<Cf1SitesListResultItem>;
 
-export type Cf1SitesListResultList = Cf1SitesListResultItem[];
+export type Cf1SitesListResultList = ReadonlyArray<Cf1SitesListResultItem>;
 export const Cf1SitesListResultList = /*@__PURE__*/ S.Array(
   Cf1SitesListResultItem,
 ) as any as S.Schema<Cf1SitesListResultList>;
@@ -9338,43 +9830,65 @@ export const CfInterconnectsListResponseInterconnectsItemGre =
     identifier: "CfInterconnectsListResponseInterconnectsItemGre",
   }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemGre>;
 
-export interface CfInterconnectsListResponseInterconnectsItemHealthCheckTarget {
+export type CfInterconnectsListResponseInterconnectsItemHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const CfInterconnectsListResponseInterconnectsItemHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface CfInterconnectsListResponseInterconnectsItemHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const CfInterconnectsListResponseInterconnectsItemHealthCheckTarget =
+export const CfInterconnectsListResponseInterconnectsItemHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "CfInterconnectsListResponseInterconnectsItemHealthCheckTarget",
-  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemHealthCheckTarget>;
+    identifier:
+      "CfInterconnectsListResponseInterconnectsItemHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemHealthCheckTargetMagicHealthCheckTarget>;
+
+export type CfInterconnectsListResponseInterconnectsItemHealthCheckTarget =
+  | string
+  | CfInterconnectsListResponseInterconnectsItemHealthCheckTargetMagicHealthCheckTarget;
+export const CfInterconnectsListResponseInterconnectsItemHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type CfInterconnectsListResponseInterconnectsItemHealthCheckType =
+  | "reply"
+  | "request";
+export const CfInterconnectsListResponseInterconnectsItemHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface CfInterconnectsListResponseInterconnectsItemHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: CfInterconnectsListResponseInterconnectsItemHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: CfInterconnectsListResponseInterconnectsItemHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: CfInterconnectsListResponseInterconnectsItemHealthCheckType;
 }
 export const CfInterconnectsListResponseInterconnectsItemHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(
+        CfInterconnectsListResponseInterconnectsItemHealthCheckRate,
+      ),
       target: S.optional(
         CfInterconnectsListResponseInterconnectsItemHealthCheckTarget,
       ),
-      type: S.optional(S.Unknown),
+      type: S.optional(
+        CfInterconnectsListResponseInterconnectsItemHealthCheckType,
+      ),
     }),
   ).annotate({
     identifier: "CfInterconnectsListResponseInterconnectsItemHealthCheck",
@@ -9439,7 +9953,7 @@ export const CfInterconnectsListResponseInterconnectsItem =
   }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItem>;
 
 export type CfInterconnectsListResponseInterconnectsList =
-  CfInterconnectsListResponseInterconnectsItem[];
+  ReadonlyArray<CfInterconnectsListResponseInterconnectsItem>;
 export const CfInterconnectsListResponseInterconnectsList =
   /*@__PURE__*/ S.Array(
     CfInterconnectsListResponseInterconnectsItem,
@@ -9479,9 +9993,7 @@ export const ListConnectorEventLatestsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectorEventLatestsRequest",
 }) as any as S.Schema<ListConnectorEventLatestsRequest>;
 
-export type ConnectorsEventsLatestListResponseItemsItemEInitK =
-  | "Init"
-  | (string & {});
+export type ConnectorsEventsLatestListResponseItemsItemEInitK = "Init";
 export const ConnectorsEventsLatestListResponseItemsItemEInitK =
   /*@__PURE__*/ S.String;
 
@@ -9498,9 +10010,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEInit =
     identifier: "ConnectorsEventsLatestListResponseItemsItemEInit",
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEInit>;
 
-export type ConnectorsEventsLatestListResponseItemsItemELeaveK =
-  | "Leave"
-  | (string & {});
+export type ConnectorsEventsLatestListResponseItemsItemELeaveK = "Leave";
 export const ConnectorsEventsLatestListResponseItemsItemELeaveK =
   /*@__PURE__*/ S.String;
 
@@ -9518,8 +10028,7 @@ export const ConnectorsEventsLatestListResponseItemsItemELeave =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemELeave>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEStartAttestationK =
-  | "StartAttestation"
-  | (string & {});
+  "StartAttestation";
 export const ConnectorsEventsLatestListResponseItemsItemEStartAttestationK =
   /*@__PURE__*/ S.String;
 
@@ -9537,7 +10046,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEStartAttestation =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartAttestation>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK =
-  "FinishAttestationSuccess" | (string & {});
+  "FinishAttestationSuccess";
 export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -9556,7 +10065,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSucces
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishAttestationSuccess>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK =
-  "FinishAttestationFailure" | (string & {});
+  "FinishAttestationFailure";
 export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailureK =
   /*@__PURE__*/ S.String;
 
@@ -9575,8 +10084,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailur
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishAttestationFailure>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK =
-  | "StartRotateCryptKey"
-  | (string & {});
+  "StartRotateCryptKey";
 export const ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKeyK =
   /*@__PURE__*/ S.String;
 
@@ -9595,7 +10103,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartRotateCryptKey>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK =
-  "FinishRotateCryptKeySuccess" | (string & {});
+  "FinishRotateCryptKeySuccess";
 export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccessK =
   /*@__PURE__*/ S.String;
 
@@ -9614,7 +10122,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuc
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeySuccess>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK =
-  "FinishRotateCryptKeyFailure" | (string & {});
+  "FinishRotateCryptKeyFailure";
 export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailureK =
   /*@__PURE__*/ S.String;
 
@@ -9633,8 +10141,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFai
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotateCryptKeyFailure>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK =
-  | "StartRotatePki"
-  | (string & {});
+  "StartRotatePki";
 export const ConnectorsEventsLatestListResponseItemsItemEStartRotatePkiK =
   /*@__PURE__*/ S.String;
 
@@ -9652,7 +10159,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEStartRotatePki =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartRotatePki>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK =
-  "FinishRotatePkiSuccess" | (string & {});
+  "FinishRotatePkiSuccess";
 export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -9671,7 +10178,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess 
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiSuccess>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK =
-  "FinishRotatePkiFailure" | (string & {});
+  "FinishRotatePkiFailure";
 export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailureK =
   /*@__PURE__*/ S.String;
 
@@ -9690,8 +10197,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure 
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishRotatePkiFailure>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK =
-  | "StartUpgrade"
-  | (string & {});
+  "StartUpgrade";
 export const ConnectorsEventsLatestListResponseItemsItemEStartUpgradeK =
   /*@__PURE__*/ S.String;
 
@@ -9712,8 +10218,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEStartUpgrade =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEStartUpgrade>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK =
-  | "FinishUpgradeSuccess"
-  | (string & {});
+  "FinishUpgradeSuccess";
 export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccessK =
   /*@__PURE__*/ S.String;
 
@@ -9732,8 +10237,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeSuccess>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK =
-  | "FinishUpgradeFailure"
-  | (string & {});
+  "FinishUpgradeFailure";
 export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailureK =
   /*@__PURE__*/ S.String;
 
@@ -9752,8 +10256,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEFinishUpgradeFailure>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEReconcileK =
-  | "Reconcile"
-  | (string & {});
+  "Reconcile";
 export const ConnectorsEventsLatestListResponseItemsItemEReconcileK =
   /*@__PURE__*/ S.String;
 
@@ -9771,7 +10274,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEReconcile =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEReconcile>;
 
 export type ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK =
-  "ConfigureCloudflaredTunnel" | (string & {});
+  "ConfigureCloudflaredTunnel";
 export const ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnelK =
   /*@__PURE__*/ S.String;
 
@@ -9790,8 +10293,7 @@ export const ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTun
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemEConfigureCloudflaredTunnel>;
 
 export type ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK =
-  | "RekeyInstallBoth"
-  | (string & {});
+  "RekeyInstallBoth";
 export const ConnectorsEventsLatestListResponseItemsItemERekeyInstallBothK =
   /*@__PURE__*/ S.String;
 
@@ -9812,8 +10314,7 @@ export const ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyInstallBoth>;
 
 export type ConnectorsEventsLatestListResponseItemsItemERekeyStartK =
-  | "RekeyStart"
-  | (string & {});
+  "RekeyStart";
 export const ConnectorsEventsLatestListResponseItemsItemERekeyStartK =
   /*@__PURE__*/ S.String;
 
@@ -9834,8 +10335,7 @@ export const ConnectorsEventsLatestListResponseItemsItemERekeyStart =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyStart>;
 
 export type ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK =
-  | "RekeyAdvance"
-  | (string & {});
+  "RekeyAdvance";
 export const ConnectorsEventsLatestListResponseItemsItemERekeyAdvanceK =
   /*@__PURE__*/ S.String;
 
@@ -9856,8 +10356,7 @@ export const ConnectorsEventsLatestListResponseItemsItemERekeyAdvance =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyAdvance>;
 
 export type ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK =
-  | "RekeyComplete"
-  | (string & {});
+  "RekeyComplete";
 export const ConnectorsEventsLatestListResponseItemsItemERekeyCompleteK =
   /*@__PURE__*/ S.String;
 
@@ -9878,8 +10377,7 @@ export const ConnectorsEventsLatestListResponseItemsItemERekeyComplete =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemERekeyComplete>;
 
 export type ConnectorsEventsLatestListResponseItemsItemERekeyResetK =
-  | "RekeyReset"
-  | (string & {});
+  "RekeyReset";
 export const ConnectorsEventsLatestListResponseItemsItemERekeyResetK =
   /*@__PURE__*/ S.String;
 
@@ -9970,7 +10468,7 @@ export const ConnectorsEventsLatestListResponseItemsItem =
   }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItem>;
 
 export type ConnectorsEventsLatestListResponseItemsList =
-  ConnectorsEventsLatestListResponseItemsItem[];
+  ReadonlyArray<ConnectorsEventsLatestListResponseItemsItem>;
 export const ConnectorsEventsLatestListResponseItemsList =
   /*@__PURE__*/ S.Array(
     ConnectorsEventsLatestListResponseItemsItem,
@@ -10046,7 +10544,7 @@ export const ConnectorsEventsListResponseItemsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsEventsListResponseItemsItem>;
 
 export type ConnectorsEventsListResponseItemsList =
-  ConnectorsEventsListResponseItemsItem[];
+  ReadonlyArray<ConnectorsEventsListResponseItemsItem>;
 export const ConnectorsEventsListResponseItemsList = /*@__PURE__*/ S.Array(
   ConnectorsEventsListResponseItemsItem,
 ) as any as S.Schema<ConnectorsEventsListResponseItemsList>;
@@ -10067,10 +10565,7 @@ export const ListConnectorEventsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectorEventsResponse",
 }) as any as S.Schema<ListConnectorEventsResponse>;
 
-export type ConnectorsListRequestDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
+export type ConnectorsListRequestDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsListRequestDeviceType = /*@__PURE__*/ S.String;
 
 export interface ListConnectorsRequest {
@@ -10102,27 +10597,28 @@ export type ConnectorsListResultItemInterruptWindowDaysOfWeekItem =
   | "Sunday"
   | "Monday"
   | "Tuesday"
-  | (string & {});
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday";
 export const ConnectorsListResultItemInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsListResultItemInterruptWindowDaysOfWeekList =
-  ConnectorsListResultItemInterruptWindowDaysOfWeekItem[];
+  ReadonlyArray<ConnectorsListResultItemInterruptWindowDaysOfWeekItem>;
 export const ConnectorsListResultItemInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsListResultItemInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsListResultItemInterruptWindowDaysOfWeekList>;
 
-export type ConnectorsListResultItemInterruptWindowEmbargoDatesList = string[];
+export type ConnectorsListResultItemInterruptWindowEmbargoDatesList =
+  ReadonlyArray<string>;
 export const ConnectorsListResultItemInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectorsListResultItemInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsListResultItemDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
+export type ConnectorsListResultItemDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsListResultItemDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsListResultItemDevice {
@@ -10191,7 +10687,7 @@ export const ConnectorsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorsListResultItem",
 }) as any as S.Schema<ConnectorsListResultItem>;
 
-export type ConnectorsListResultList = ConnectorsListResultItem[];
+export type ConnectorsListResultList = ReadonlyArray<ConnectorsListResultItem>;
 export const ConnectorsListResultList = /*@__PURE__*/ S.Array(
   ConnectorsListResultItem,
 ) as any as S.Schema<ConnectorsListResultList>;
@@ -10250,7 +10746,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemBondsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemBondsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemBondsList =
-  ConnectorsSnapshotsLatestListResponseItemsItemBondsItem[];
+  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemBondsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemBondsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemBondsItem,
@@ -10285,7 +10781,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesList =
-  ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem[];
+  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemDhcpLeasesItem,
@@ -10364,7 +10860,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemDisksItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemDisksItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemDisksList =
-  ConnectorsSnapshotsLatestListResponseItemsItemDisksItem[];
+  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemDisksItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemDisksList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemDisksItem,
@@ -10388,7 +10884,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddre
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesList =
-  ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesItem[];
+  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItemIpAddressesItem,
@@ -10420,7 +10916,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemInterfacesList =
-  ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItem[];
+  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemInterfacesList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemInterfacesItem,
@@ -10467,7 +10963,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemMountsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemMountsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemMountsList =
-  ConnectorsSnapshotsLatestListResponseItemsItemMountsItem[];
+  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemMountsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemMountsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemMountsItem,
@@ -10535,7 +11031,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemNetdevsList =
-  ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem[];
+  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemNetdevsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemNetdevsItem,
@@ -10564,7 +11060,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemThermalsList =
-  ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem[];
+  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemThermalsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemThermalsItem,
@@ -10615,7 +11111,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsItemTunnelsList =
-  ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem[];
+  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsItemTunnelsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem,
@@ -11383,7 +11879,7 @@ export const ConnectorsSnapshotsLatestListResponseItemsItem =
   }) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsItem>;
 
 export type ConnectorsSnapshotsLatestListResponseItemsList =
-  ConnectorsSnapshotsLatestListResponseItemsItem[];
+  ReadonlyArray<ConnectorsSnapshotsLatestListResponseItemsItem>;
 export const ConnectorsSnapshotsLatestListResponseItemsList =
   /*@__PURE__*/ S.Array(
     ConnectorsSnapshotsLatestListResponseItemsItem,
@@ -11451,7 +11947,7 @@ export const ConnectorsSnapshotsListResponseItemsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorsSnapshotsListResponseItemsItem>;
 
 export type ConnectorsSnapshotsListResponseItemsList =
-  ConnectorsSnapshotsListResponseItemsItem[];
+  ReadonlyArray<ConnectorsSnapshotsListResponseItemsItem>;
 export const ConnectorsSnapshotsListResponseItemsList = /*@__PURE__*/ S.Array(
   ConnectorsSnapshotsListResponseItemsItem,
 ) as any as S.Schema<ConnectorsSnapshotsListResponseItemsList>;
@@ -11496,7 +11992,8 @@ export const ListGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGreTunnelsRequest",
 }) as any as S.Schema<ListGreTunnelsRequest>;
 
-export type GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList = string[];
+export type GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList =
+  ReadonlyArray<string>;
 export const GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11534,8 +12031,7 @@ export const GreTunnelsListResponseGreTunnelsItemBgp = /*@__PURE__*/ S.suspend(
 export type GreTunnelsListResponseGreTunnelsItemBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
+  | "BGP_ESTABLISHING";
 export const GreTunnelsListResponseGreTunnelsItemBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -11571,28 +12067,45 @@ export const GreTunnelsListResponseGreTunnelsItemBgpStatus =
 
 export type GreTunnelsListResponseGreTunnelsItemHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const GreTunnelsListResponseGreTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface GreTunnelsListResponseGreTunnelsItemHealthCheckTarget {
+export type GreTunnelsListResponseGreTunnelsItemHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const GreTunnelsListResponseGreTunnelsItemHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsListResponseGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const GreTunnelsListResponseGreTunnelsItemHealthCheckTarget =
+export const GreTunnelsListResponseGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "GreTunnelsListResponseGreTunnelsItemHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsListResponseGreTunnelsItemHealthCheckTarget>;
+    identifier:
+      "GreTunnelsListResponseGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsListResponseGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget>;
+
+export type GreTunnelsListResponseGreTunnelsItemHealthCheckTarget =
+  | string
+  | GreTunnelsListResponseGreTunnelsItemHealthCheckTargetMagicHealthCheckTarget;
+export const GreTunnelsListResponseGreTunnelsItemHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsListResponseGreTunnelsItemHealthCheckType =
+  | "reply"
+  | "request";
+export const GreTunnelsListResponseGreTunnelsItemHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface GreTunnelsListResponseGreTunnelsItemHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -11600,11 +12113,11 @@ export interface GreTunnelsListResponseGreTunnelsItemHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: GreTunnelsListResponseGreTunnelsItemHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: GreTunnelsListResponseGreTunnelsItemHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: GreTunnelsListResponseGreTunnelsItemHealthCheckType;
 }
 export const GreTunnelsListResponseGreTunnelsItemHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
@@ -11613,9 +12126,9 @@ export const GreTunnelsListResponseGreTunnelsItemHealthCheck =
         GreTunnelsListResponseGreTunnelsItemHealthCheckDirection,
       ),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(GreTunnelsListResponseGreTunnelsItemHealthCheckRate),
       target: S.optional(GreTunnelsListResponseGreTunnelsItemHealthCheckTarget),
-      type: S.optional(S.Unknown),
+      type: S.optional(GreTunnelsListResponseGreTunnelsItemHealthCheckType),
     }),
   ).annotate({
     identifier: "GreTunnelsListResponseGreTunnelsItemHealthCheck",
@@ -11686,7 +12199,7 @@ export const GreTunnelsListResponseGreTunnelsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GreTunnelsListResponseGreTunnelsItem>;
 
 export type GreTunnelsListResponseGreTunnelsList =
-  GreTunnelsListResponseGreTunnelsItem[];
+  ReadonlyArray<GreTunnelsListResponseGreTunnelsItem>;
 export const GreTunnelsListResponseGreTunnelsList = /*@__PURE__*/ S.Array(
   GreTunnelsListResponseGreTunnelsItem,
 ) as any as S.Schema<GreTunnelsListResponseGreTunnelsList>;
@@ -11730,7 +12243,7 @@ export const ListIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpsecTunnelsRequest>;
 
 export type IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList =
-  string[];
+  ReadonlyArray<string>;
 export const IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11768,8 +12281,7 @@ export const IpsecTunnelsListResponseIpsecTunnelsItemBgp =
 export type IpsecTunnelsListResponseIpsecTunnelsItemBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
+  | "BGP_ESTABLISHING";
 export const IpsecTunnelsListResponseIpsecTunnelsItemBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -11819,28 +12331,45 @@ export const IpsecTunnelsListResponseIpsecTunnelsItemCustomRemoteIdentities =
 
 export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget {
+export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget =
+export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget>;
+    identifier:
+      "IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget>;
+
+export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget =
+  | string
+  | IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTargetMagicHealthCheckTarget;
+export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType =
+  | "reply"
+  | "request";
+export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -11848,11 +12377,11 @@ export interface IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType;
 }
 export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
@@ -11861,11 +12390,11 @@ export const IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck =
         IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckDirection,
       ),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckRate),
       target: S.optional(
         IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckTarget,
       ),
-      type: S.optional(S.Unknown),
+      type: S.optional(IpsecTunnelsListResponseIpsecTunnelsItemHealthCheckType),
     }),
   ).annotate({
     identifier: "IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck",
@@ -11962,7 +12491,7 @@ export const IpsecTunnelsListResponseIpsecTunnelsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsItem>;
 
 export type IpsecTunnelsListResponseIpsecTunnelsList =
-  IpsecTunnelsListResponseIpsecTunnelsItem[];
+  ReadonlyArray<IpsecTunnelsListResponseIpsecTunnelsItem>;
 export const IpsecTunnelsListResponseIpsecTunnelsList = /*@__PURE__*/ S.Array(
   IpsecTunnelsListResponseIpsecTunnelsItem,
 ) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsList>;
@@ -11997,7 +12526,7 @@ export const ListPcapsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPcapsRequest",
 }) as any as S.Schema<ListPcapsRequest>;
 
-export interface PcapsListResultItemFilterV1 {
+export interface PcapsListResultItemPCAPFilterV1 {
   /** The destination IP address of the packet. */
   destinationAddress?: string;
   /** The destination port of the packet. */
@@ -12009,7 +12538,7 @@ export interface PcapsListResultItemFilterV1 {
   /** The source port of the packet. */
   sourcePort?: number;
 }
-export const PcapsListResultItemFilterV1 = /*@__PURE__*/ S.suspend(() =>
+export const PcapsListResultItemPCAPFilterV1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationAddress: S.optional(
       S.String.pipe(T.Body("destination_address")),
@@ -12020,39 +12549,87 @@ export const PcapsListResultItemFilterV1 = /*@__PURE__*/ S.suspend(() =>
     sourcePort: S.optional(S.Number.pipe(T.Body("source_port"))),
   }),
 ).annotate({
-  identifier: "PcapsListResultItemFilterV1",
-}) as any as S.Schema<PcapsListResultItemFilterV1>;
+  identifier: "PcapsListResultItemPCAPFilterV1",
+}) as any as S.Schema<PcapsListResultItemPCAPFilterV1>;
 
-export type PcapsListResultItemStatus =
+export type PcapsListResultItemPCAPStatus =
   | "unknown"
   | "success"
   | "pending"
-  | (string & {});
-export const PcapsListResultItemStatus = /*@__PURE__*/ S.String;
+  | "running"
+  | "conversion_pending"
+  | "conversion_running"
+  | "complete"
+  | "failed";
+export const PcapsListResultItemPCAPStatus = /*@__PURE__*/ S.String;
 
-export type PcapsListResultItemSystem = "magic-transit" | (string & {});
-export const PcapsListResultItemSystem = /*@__PURE__*/ S.String;
+export type PcapsListResultItemPCAPSystem = "magic-transit";
+export const PcapsListResultItemPCAPSystem = /*@__PURE__*/ S.String;
 
-export type PcapsListResultItemType = "simple" | "full" | (string & {});
-export const PcapsListResultItemType = /*@__PURE__*/ S.String;
+export type PcapsListResultItemPCAPType = "simple" | "full";
+export const PcapsListResultItemPCAPType = /*@__PURE__*/ S.String;
 
-export interface PcapsListResultItem {
+export interface PcapsListResultItemPCAP {
   /** The ID for the packet capture. */
   id?: string;
   /** The packet capture filter. When this field is empty, all packets are captured. */
-  filterV1?: PcapsListResultItemFilterV1;
+  filterV1?: PcapsListResultItemPCAPFilterV1;
   /** The RFC 3339 offset timestamp from which to query backwards for packets. Must be within the last 24h. When this field is empty, defaults to time of request. */
   offsetTime?: string;
   /** The status of the packet capture request. */
-  status?: PcapsListResultItemStatus;
+  status?: PcapsListResultItemPCAPStatus;
   /** The RFC 3339 timestamp when the packet capture was created. */
   submitted?: string;
   /** The system used to collect packet captures. */
-  system?: PcapsListResultItemSystem;
+  system?: PcapsListResultItemPCAPSystem;
   /** The packet capture duration in seconds. */
   timeLimit?: number;
   /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
-  type?: PcapsListResultItemType;
+  type?: PcapsListResultItemPCAPType;
+}
+export const PcapsListResultItemPCAP = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    filterV1: S.optional(
+      PcapsListResultItemPCAPFilterV1.pipe(T.Body("filter_v1")),
+    ),
+    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
+    status: S.optional(PcapsListResultItemPCAPStatus),
+    submitted: S.optional(S.String),
+    system: S.optional(PcapsListResultItemPCAPSystem),
+    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+    type: S.optional(PcapsListResultItemPCAPType),
+  }),
+).annotate({
+  identifier: "PcapsListResultItemPCAP",
+}) as any as S.Schema<PcapsListResultItemPCAP>;
+
+export type PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus =
+  | "unknown"
+  | "success"
+  | "pending"
+  | "running"
+  | "conversion_pending"
+  | "conversion_running"
+  | "complete"
+  | "failed";
+export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus =
+  /*@__PURE__*/ S.String;
+
+export type PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem =
+  "magic-transit";
+export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem =
+  /*@__PURE__*/ S.String;
+
+export type PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType =
+  | "simple"
+  | "full";
+export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType =
+  /*@__PURE__*/ S.String;
+
+export interface PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull {
+  /** The ID for the packet capture. */
+  id?: string;
   /** The maximum number of bytes to capture. This field only applies to `full` packet captures. */
   byteLimit?: number;
   /** The name of the data center used for the packet capture. This can be a specific colo (ord02) or a multi-colo name (ORD). This field only applies to `full` packet captures. */
@@ -12061,33 +12638,86 @@ export interface PcapsListResultItem {
   destinationConf?: string;
   /** An error message that describes why the packet capture failed. This field only applies to `full` packet captures. */
   errorMessage?: string;
+  /** The packet capture filter. When this field is empty, all packets are captured. */
+  filterV1?: PcapsListResultItemPCAPFilterV1;
   /** The number of packets captured. */
   packetsCaptured?: number;
+  /** The status of the packet capture request. */
+  status?: PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus;
   /** The RFC 3339 timestamp when stopping the packet capture was requested. This field only applies to `full` packet captures. */
   stopRequested?: string;
+  /** The RFC 3339 timestamp when the packet capture was created. */
+  submitted?: string;
+  /** The system used to collect packet captures. */
+  system?: PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem;
+  /** The packet capture duration in seconds. */
+  timeLimit?: number;
+  /** The type of packet capture. `Simple` captures sampled packets, and `full` captures entire payloads and non-sampled packets. */
+  type?: PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType;
 }
-export const PcapsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    filterV1: S.optional(PcapsListResultItemFilterV1.pipe(T.Body("filter_v1"))),
-    offsetTime: S.optional(S.String.pipe(T.Body("offset_time"))),
-    status: S.optional(PcapsListResultItemStatus),
-    submitted: S.optional(S.String),
-    system: S.optional(PcapsListResultItemSystem),
-    timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
-    type: S.optional(PcapsListResultItemType),
-    byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
-    coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
-    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
-    errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
-    packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
-    stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
-  }),
-).annotate({
-  identifier: "PcapsListResultItem",
-}) as any as S.Schema<PcapsListResultItem>;
+export const PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      byteLimit: S.optional(S.Number.pipe(T.Body("byte_limit"))),
+      coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+      destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+      errorMessage: S.optional(S.String.pipe(T.Body("error_message"))),
+      filterV1: S.optional(
+        PcapsListResultItemPCAPFilterV1.pipe(T.Body("filter_v1")),
+      ),
+      packetsCaptured: S.optional(S.Number.pipe(T.Body("packets_captured"))),
+      status: S.optional(
+        PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullStatus,
+      ),
+      stopRequested: S.optional(S.String.pipe(T.Body("stop_requested"))),
+      submitted: S.optional(S.String),
+      system: S.optional(
+        PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullSystem,
+      ),
+      timeLimit: S.optional(S.Number.pipe(T.Body("time_limit"))),
+      type: S.optional(
+        PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFullType,
+      ),
+    }),
+  ).annotate({
+    identifier: "PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull",
+  }) as any as S.Schema<PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull>;
 
-export type PcapsListResultList = PcapsListResultItem[];
+export type PcapsListResultItem =
+  | PcapsListResultItemPCAP
+  | PcapsListResultItemMagicVisibilityPCAPsPCAPsResponseFull;
+export const PcapsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    [
+      "id",
+      "filterV1",
+      "offsetTime",
+      "status",
+      "submitted",
+      "system",
+      "timeLimit",
+      "type",
+    ],
+    [
+      "id",
+      "byteLimit",
+      "coloName",
+      "destinationConf",
+      "errorMessage",
+      "filterV1",
+      "packetsCaptured",
+      "status",
+      "stopRequested",
+      "submitted",
+      "system",
+      "timeLimit",
+      "type",
+    ],
+  ]),
+);
+
+export type PcapsListResultList = ReadonlyArray<PcapsListResultItem>;
 export const PcapsListResultList = /*@__PURE__*/ S.Array(
   PcapsListResultItem,
 ) as any as S.Schema<PcapsListResultList>;
@@ -12127,13 +12757,15 @@ export const ListRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRoutesRequest",
 }) as any as S.Schema<ListRoutesRequest>;
 
-export type RoutesListResponseRoutesItemScopeColoNamesList = string[];
+export type RoutesListResponseRoutesItemScopeColoNamesList =
+  ReadonlyArray<string>;
 export const RoutesListResponseRoutesItemScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesListResponseRoutesItemScopeColoNamesList>;
 
-export type RoutesListResponseRoutesItemScopeColoRegionsList = string[];
+export type RoutesListResponseRoutesItemScopeColoRegionsList =
+  ReadonlyArray<string>;
 export const RoutesListResponseRoutesItemScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12196,7 +12828,8 @@ export const RoutesListResponseRoutesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoutesListResponseRoutesItem",
 }) as any as S.Schema<RoutesListResponseRoutesItem>;
 
-export type RoutesListResponseRoutesList = RoutesListResponseRoutesItem[];
+export type RoutesListResponseRoutesList =
+  ReadonlyArray<RoutesListResponseRoutesItem>;
 export const RoutesListResponseRoutesList = /*@__PURE__*/ S.Array(
   RoutesListResponseRoutesItem,
 ) as any as S.Schema<RoutesListResponseRoutesList>;
@@ -12236,19 +12869,19 @@ export const ListSiteAclsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSiteAclsRequest",
 }) as any as S.Schema<ListSiteAclsRequest>;
 
-export type SitesAclsListResultItemLan1PortRangesList = string[];
+export type SitesAclsListResultItemLan1PortRangesList = ReadonlyArray<string>;
 export const SitesAclsListResultItemLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsListResultItemLan1PortRangesList>;
 
-export type SitesAclsListResultItemLan1PortsList = number[];
+export type SitesAclsListResultItemLan1PortsList = ReadonlyArray<number>;
 export const SitesAclsListResultItemLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsListResultItemLan1PortsList>;
 
-export type SitesAclsListResultItemLan1SubnetsList = unknown[];
+export type SitesAclsListResultItemLan1SubnetsList = ReadonlyArray<string>;
 export const SitesAclsListResultItemLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<SitesAclsListResultItemLan1SubnetsList>;
 
 export interface SitesAclsListResultItemLan1 {
@@ -12277,9 +12910,13 @@ export const SitesAclsListResultItemLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsListResultItemLan1",
 }) as any as S.Schema<SitesAclsListResultItemLan1>;
 
-export type SitesAclsListResultItemProtocolsList = unknown[];
+export type SitesAclsListResultItemProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsListResultItemProtocolsItem = /*@__PURE__*/ S.String;
+
+export type SitesAclsListResultItemProtocolsList =
+  ReadonlyArray<SitesAclsListResultItemProtocolsItem>;
 export const SitesAclsListResultItemProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SitesAclsListResultItemProtocolsItem,
 ) as any as S.Schema<SitesAclsListResultItemProtocolsList>;
 
 export interface SitesAclsListResultItem {
@@ -12290,7 +12927,7 @@ export interface SitesAclsListResultItem {
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
   lan1?: SitesAclsListResultItemLan1;
-  lan2?: unknown;
+  lan2?: SitesAclsListResultItemLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsListResultItemProtocolsList;
@@ -12303,7 +12940,7 @@ export const SitesAclsListResultItem = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
     lan1: S.optional(SitesAclsListResultItemLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    lan2: S.optional(SitesAclsListResultItemLan1.pipe(T.Body("lan_2"))),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsListResultItemProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -12312,7 +12949,7 @@ export const SitesAclsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsListResultItem",
 }) as any as S.Schema<SitesAclsListResultItem>;
 
-export type SitesAclsListResultList = SitesAclsListResultItem[];
+export type SitesAclsListResultList = ReadonlyArray<SitesAclsListResultItem>;
 export const SitesAclsListResultList = /*@__PURE__*/ S.Array(
   SitesAclsListResultItem,
 ) as any as S.Schema<SitesAclsListResultList>;
@@ -12372,27 +13009,27 @@ export interface SitesLansListResultItemRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: unknown;
+  nat?: SitesLansListResultItemNat;
 }
 export const SitesLansListResultItemRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.Unknown),
+      nat: S.optional(SitesLansListResultItemNat),
     }),
 ).annotate({
   identifier: "SitesLansListResultItemRoutedSubnetsItem",
 }) as any as S.Schema<SitesLansListResultItemRoutedSubnetsItem>;
 
 export type SitesLansListResultItemRoutedSubnetsList =
-  SitesLansListResultItemRoutedSubnetsItem[];
+  ReadonlyArray<SitesLansListResultItemRoutedSubnetsItem>;
 export const SitesLansListResultItemRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansListResultItemRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansListResultItemRoutedSubnetsList>;
 
 export type SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12416,7 +13053,7 @@ export const SitesLansListResultItemStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpRelay>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
+  "text" | "hex" | "ip" | "byte" | "short" | "integer";
 export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -12441,26 +13078,26 @@ export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem[];
+  ReadonlyArray<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerDnsServersList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansListResultItemStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansListResultItemStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const SitesLansListResultItemStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansListResultItemStaticAddressingDhcpServer {
@@ -12575,7 +13212,7 @@ export const SitesLansListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesLansListResultItem",
 }) as any as S.Schema<SitesLansListResultItem>;
 
-export type SitesLansListResultList = SitesLansListResultItem[];
+export type SitesLansListResultList = ReadonlyArray<SitesLansListResultItem>;
 export const SitesLansListResultList = /*@__PURE__*/ S.Array(
   SitesLansListResultItem,
 ) as any as S.Schema<SitesLansListResultList>;
@@ -12664,7 +13301,7 @@ export const SitesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesListResultItem",
 }) as any as S.Schema<SitesListResultItem>;
 
-export type SitesListResultList = SitesListResultItem[];
+export type SitesListResultList = ReadonlyArray<SitesListResultItem>;
 export const SitesListResultList = /*@__PURE__*/ S.Array(
   SitesListResultItem,
 ) as any as S.Schema<SitesListResultList>;
@@ -12707,11 +13344,7 @@ export const ListSiteWansRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSiteWansRequest",
 }) as any as S.Schema<ListSiteWansRequest>;
 
-export type SitesWansListResultItemHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high"
-  | (string & {});
+export type SitesWansListResultItemHealthCheckRate = "low" | "mid" | "high";
 export const SitesWansListResultItemHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansListResultItemStaticAddressing {
@@ -12768,7 +13401,7 @@ export const SitesWansListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesWansListResultItem",
 }) as any as S.Schema<SitesWansListResultItem>;
 
-export type SitesWansListResultList = SitesWansListResultItem[];
+export type SitesWansListResultList = ReadonlyArray<SitesWansListResultItem>;
 export const SitesWansListResultList = /*@__PURE__*/ S.Array(
   SitesWansListResultItem,
 ) as any as S.Schema<SitesWansListResultList>;
@@ -12788,17 +13421,17 @@ export const ListSiteWansResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSiteWansResponse",
 }) as any as S.Schema<ListSiteWansResponse>;
 
-export type AppsEditRequestHostnamesList = string[];
+export type AppsEditRequestHostnamesList = ReadonlyArray<string>;
 export const AppsEditRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditRequestHostnamesList>;
 
-export type AppsEditRequestIpSubnetsList = string[];
+export type AppsEditRequestIpSubnetsList = ReadonlyArray<string>;
 export const AppsEditRequestIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditRequestIpSubnetsList>;
 
-export type AppsEditRequestSourceSubnetsList = string[];
+export type AppsEditRequestSourceSubnetsList = ReadonlyArray<string>;
 export const AppsEditRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditRequestSourceSubnetsList>;
@@ -12845,17 +13478,17 @@ export const PatchAppRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchAppRequest",
 }) as any as S.Schema<PatchAppRequest>;
 
-export type AppsEditResponseHostnamesList = string[];
+export type AppsEditResponseHostnamesList = ReadonlyArray<string>;
 export const AppsEditResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditResponseHostnamesList>;
 
-export type AppsEditResponseIpSubnetsList = string[];
+export type AppsEditResponseIpSubnetsList = ReadonlyArray<string>;
 export const AppsEditResponseIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditResponseIpSubnetsList>;
 
-export type AppsEditResponseSourceSubnetsList = string[];
+export type AppsEditResponseSourceSubnetsList = ReadonlyArray<string>;
 export const AppsEditResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsEditResponseSourceSubnetsList>;
@@ -12988,18 +13621,22 @@ export type ConnectorsEditRequestInterruptWindowDaysOfWeekItem =
   | "Sunday"
   | "Monday"
   | "Tuesday"
-  | (string & {});
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday";
 export const ConnectorsEditRequestInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsEditRequestInterruptWindowDaysOfWeekList =
-  ConnectorsEditRequestInterruptWindowDaysOfWeekItem[];
+  ReadonlyArray<ConnectorsEditRequestInterruptWindowDaysOfWeekItem>;
 export const ConnectorsEditRequestInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsEditRequestInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsEditRequestInterruptWindowDaysOfWeekList>;
 
-export type ConnectorsEditRequestInterruptWindowEmbargoDatesList = string[];
+export type ConnectorsEditRequestInterruptWindowEmbargoDatesList =
+  ReadonlyArray<string>;
 export const ConnectorsEditRequestInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13066,27 +13703,28 @@ export type ConnectorsEditResponseInterruptWindowDaysOfWeekItem =
   | "Sunday"
   | "Monday"
   | "Tuesday"
-  | (string & {});
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday";
 export const ConnectorsEditResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsEditResponseInterruptWindowDaysOfWeekList =
-  ConnectorsEditResponseInterruptWindowDaysOfWeekItem[];
+  ReadonlyArray<ConnectorsEditResponseInterruptWindowDaysOfWeekItem>;
 export const ConnectorsEditResponseInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsEditResponseInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsEditResponseInterruptWindowDaysOfWeekList>;
 
-export type ConnectorsEditResponseInterruptWindowEmbargoDatesList = string[];
+export type ConnectorsEditResponseInterruptWindowEmbargoDatesList =
+  ReadonlyArray<string>;
 export const ConnectorsEditResponseInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectorsEditResponseInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsEditResponseDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
+export type ConnectorsEditResponseDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsEditResponseDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsEditResponseDevice {
@@ -13257,19 +13895,19 @@ export const PatchSiteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSiteResponse",
 }) as any as S.Schema<PatchSiteResponse>;
 
-export type SitesAclsEditRequestLan1PortRangesList = string[];
+export type SitesAclsEditRequestLan1PortRangesList = ReadonlyArray<string>;
 export const SitesAclsEditRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsEditRequestLan1PortRangesList>;
 
-export type SitesAclsEditRequestLan1PortsList = number[];
+export type SitesAclsEditRequestLan1PortsList = ReadonlyArray<number>;
 export const SitesAclsEditRequestLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsEditRequestLan1PortsList>;
 
-export type SitesAclsEditRequestLan1SubnetsList = unknown[];
+export type SitesAclsEditRequestLan1SubnetsList = ReadonlyArray<string>;
 export const SitesAclsEditRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<SitesAclsEditRequestLan1SubnetsList>;
 
 export interface SitesAclsEditRequestLan1 {
@@ -13298,9 +13936,13 @@ export const SitesAclsEditRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsEditRequestLan1",
 }) as any as S.Schema<SitesAclsEditRequestLan1>;
 
-export type SitesAclsEditRequestProtocolsList = unknown[];
+export type SitesAclsEditRequestProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsEditRequestProtocolsItem = /*@__PURE__*/ S.String;
+
+export type SitesAclsEditRequestProtocolsList =
+  ReadonlyArray<SitesAclsEditRequestProtocolsItem>;
 export const SitesAclsEditRequestProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SitesAclsEditRequestProtocolsItem,
 ) as any as S.Schema<SitesAclsEditRequestProtocolsList>;
 
 export interface PatchSiteAclRequest {
@@ -13315,7 +13957,7 @@ export interface PatchSiteAclRequest {
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
   lan1?: SitesAclsEditRequestLan1;
-  lan2?: unknown;
+  lan2?: SitesAclsEditRequestLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsEditRequestProtocolsList;
@@ -13330,7 +13972,7 @@ export const PatchSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
     lan1: S.optional(SitesAclsEditRequestLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    lan2: S.optional(SitesAclsEditRequestLan1.pipe(T.Body("lan_2"))),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsEditRequestProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -13347,19 +13989,19 @@ export const PatchSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSiteAclRequest",
 }) as any as S.Schema<PatchSiteAclRequest>;
 
-export type SitesAclsEditResponseLan1PortRangesList = string[];
+export type SitesAclsEditResponseLan1PortRangesList = ReadonlyArray<string>;
 export const SitesAclsEditResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsEditResponseLan1PortRangesList>;
 
-export type SitesAclsEditResponseLan1PortsList = number[];
+export type SitesAclsEditResponseLan1PortsList = ReadonlyArray<number>;
 export const SitesAclsEditResponseLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsEditResponseLan1PortsList>;
 
-export type SitesAclsEditResponseLan1SubnetsList = unknown[];
+export type SitesAclsEditResponseLan1SubnetsList = ReadonlyArray<string>;
 export const SitesAclsEditResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<SitesAclsEditResponseLan1SubnetsList>;
 
 export interface SitesAclsEditResponseLan1 {
@@ -13388,9 +14030,13 @@ export const SitesAclsEditResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsEditResponseLan1",
 }) as any as S.Schema<SitesAclsEditResponseLan1>;
 
-export type SitesAclsEditResponseProtocolsList = unknown[];
+export type SitesAclsEditResponseProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsEditResponseProtocolsItem = /*@__PURE__*/ S.String;
+
+export type SitesAclsEditResponseProtocolsList =
+  ReadonlyArray<SitesAclsEditResponseProtocolsItem>;
 export const SitesAclsEditResponseProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SitesAclsEditResponseProtocolsItem,
 ) as any as S.Schema<SitesAclsEditResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -13402,7 +14048,7 @@ export interface PatchSiteAclResponse {
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
   lan1?: SitesAclsEditResponseLan1;
-  lan2?: unknown;
+  lan2?: SitesAclsEditResponseLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsEditResponseProtocolsList;
@@ -13415,7 +14061,7 @@ export const PatchSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
     lan1: S.optional(SitesAclsEditResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    lan2: S.optional(SitesAclsEditResponseLan1.pipe(T.Body("lan_2"))),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsEditResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -13441,27 +14087,27 @@ export interface SitesLansEditRequestRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: unknown;
+  nat?: SitesLansEditRequestNat;
 }
 export const SitesLansEditRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.Unknown),
+      nat: S.optional(SitesLansEditRequestNat),
     }),
 ).annotate({
   identifier: "SitesLansEditRequestRoutedSubnetsItem",
 }) as any as S.Schema<SitesLansEditRequestRoutedSubnetsItem>;
 
 export type SitesLansEditRequestRoutedSubnetsList =
-  SitesLansEditRequestRoutedSubnetsItem[];
+  ReadonlyArray<SitesLansEditRequestRoutedSubnetsItem>;
 export const SitesLansEditRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansEditRequestRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansEditRequestRoutedSubnetsList>;
 
 export type SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13488,7 +14134,9 @@ export type SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   | "text"
   | "hex"
   | "ip"
-  | (string & {});
+  | "byte"
+  | "short"
+  | "integer";
 export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -13512,26 +14160,26 @@ export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem[];
+  ReadonlyArray<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansEditRequestStaticAddressingDhcpServerDnsServersList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansEditRequestStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansEditRequestStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const SitesLansEditRequestStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansEditRequestStaticAddressingDhcpServer {
@@ -13671,27 +14319,27 @@ export interface SitesLansEditResponseRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: unknown;
+  nat?: SitesLansEditResponseNat;
 }
 export const SitesLansEditResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.Unknown),
+      nat: S.optional(SitesLansEditResponseNat),
     }),
 ).annotate({
   identifier: "SitesLansEditResponseRoutedSubnetsItem",
 }) as any as S.Schema<SitesLansEditResponseRoutedSubnetsItem>;
 
 export type SitesLansEditResponseRoutedSubnetsList =
-  SitesLansEditResponseRoutedSubnetsItem[];
+  ReadonlyArray<SitesLansEditResponseRoutedSubnetsItem>;
 export const SitesLansEditResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansEditResponseRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansEditResponseRoutedSubnetsList>;
 
 export type SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13715,7 +14363,7 @@ export const SitesLansEditResponseStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
+  "text" | "hex" | "ip" | "byte" | "short" | "integer";
 export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -13740,26 +14388,26 @@ export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem[];
+  ReadonlyArray<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerDnsServersList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansEditResponseStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansEditResponseStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const SitesLansEditResponseStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansEditResponseStaticAddressingDhcpServer {
@@ -13934,11 +14582,7 @@ export const PatchSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSiteWanRequest",
 }) as any as S.Schema<PatchSiteWanRequest>;
 
-export type SitesWansEditResponseHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high"
-  | (string & {});
+export type SitesWansEditResponseHealthCheckRate = "low" | "mid" | "high";
 export const SitesWansEditResponseHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansEditResponseStaticAddressing {
@@ -14001,13 +14645,11 @@ export interface PskGenerateIpsecTunnelRequest {
   accountId: string;
   /** Identifier */
   ipsecTunnelId: string;
-  body: unknown;
 }
 export const PskGenerateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
-    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -14071,7 +14713,7 @@ export const IpsecTunnelsPskSetRequestPsksItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpsecTunnelsPskSetRequestPsksItem>;
 
 export type IpsecTunnelsPskSetRequestPsksList =
-  IpsecTunnelsPskSetRequestPsksItem[];
+  ReadonlyArray<IpsecTunnelsPskSetRequestPsksItem>;
 export const IpsecTunnelsPskSetRequestPsksList = /*@__PURE__*/ S.Array(
   IpsecTunnelsPskSetRequestPsksItem,
 ) as any as S.Schema<IpsecTunnelsPskSetRequestPsksList>;
@@ -14102,22 +14744,63 @@ export const PskSetIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PskSetIpsecTunnelRequest",
 }) as any as S.Schema<PskSetIpsecTunnelRequest>;
 
+export interface IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValuePskMetadata {
+  /** The date and time the tunnel was last modified. */
+  lastGeneratedOn?: string;
+}
+export const IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValuePskMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValuePskMetadata",
+  }) as any as S.Schema<IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValuePskMetadata>;
+
+export interface IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue {
+  /** The IKE identifier used for this tunnel on the Cloudflare edge. */
+  ipsecId: string;
+  /** Identifier */
+  ipsecTunnelId: string;
+  /** A randomly generated or provided string for use in the IPsec tunnel. */
+  psk: string;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata: IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValuePskMetadata;
+}
+export const IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ipsecId: S.String.pipe(T.Body("ipsec_id")),
+      ipsecTunnelId: S.String.pipe(T.Body("ipsec_tunnel_id")),
+      psk: S.String,
+      pskMetadata:
+        IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValuePskMetadata.pipe(
+          T.Body("psk_metadata"),
+        ),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue",
+  }) as any as S.Schema<IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue>;
+
 export type IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue
+    | undefined;
 };
 export const IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksValue,
   ) as any as S.Schema<IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap>;
 
 export type IpsecTunnelsPskSetResponseUnappliedPsksMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const IpsecTunnelsPskSetResponseUnappliedPsksMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<IpsecTunnelsPskSetResponseUnappliedPsksMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -14156,41 +14839,57 @@ export const CfInterconnectsUpdateRequestGre = /*@__PURE__*/ S.suspend(() =>
   identifier: "CfInterconnectsUpdateRequestGre",
 }) as any as S.Schema<CfInterconnectsUpdateRequestGre>;
 
-export interface CfInterconnectsUpdateRequestHealthCheckTarget {
+export type CfInterconnectsUpdateRequestHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const CfInterconnectsUpdateRequestHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface CfInterconnectsUpdateRequestHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const CfInterconnectsUpdateRequestHealthCheckTarget =
+export const CfInterconnectsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "CfInterconnectsUpdateRequestHealthCheckTarget",
-  }) as any as S.Schema<CfInterconnectsUpdateRequestHealthCheckTarget>;
+    identifier:
+      "CfInterconnectsUpdateRequestHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<CfInterconnectsUpdateRequestHealthCheckTargetMagicHealthCheckTarget>;
+
+export type CfInterconnectsUpdateRequestHealthCheckTarget =
+  | string
+  | CfInterconnectsUpdateRequestHealthCheckTargetMagicHealthCheckTarget;
+export const CfInterconnectsUpdateRequestHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type CfInterconnectsUpdateRequestHealthCheckType = "reply" | "request";
+export const CfInterconnectsUpdateRequestHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface CfInterconnectsUpdateRequestHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: CfInterconnectsUpdateRequestHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: CfInterconnectsUpdateRequestHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: CfInterconnectsUpdateRequestHealthCheckType;
 }
 export const CfInterconnectsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(CfInterconnectsUpdateRequestHealthCheckRate),
       target: S.optional(CfInterconnectsUpdateRequestHealthCheckTarget),
-      type: S.optional(S.Unknown),
+      type: S.optional(CfInterconnectsUpdateRequestHealthCheckType),
     }),
 ).annotate({
   identifier: "CfInterconnectsUpdateRequestHealthCheck",
@@ -14265,44 +14964,65 @@ export const CfInterconnectsUpdateResponseModifiedInterconnectGre =
     identifier: "CfInterconnectsUpdateResponseModifiedInterconnectGre",
   }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectGre>;
 
-export interface CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget {
+export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
+export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
     identifier:
-      "CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget",
-  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget>;
+      "CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTargetMagicHealthCheckTarget>;
+
+export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
+    | string
+    | CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTargetMagicHealthCheckTarget;
+export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType =
+  | "reply"
+  | "request";
+export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType;
 }
 export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(
+        CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckRate,
+      ),
       target: S.optional(
         CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget,
       ),
-      type: S.optional(S.Unknown),
+      type: S.optional(
+        CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckType,
+      ),
     }),
   ).annotate({
     identifier: "CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck",
@@ -14385,7 +15105,7 @@ export const PutCfInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutCfInterconnectResponse>;
 
 export type SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesAppConfigurationCreateRequestBodyAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14418,7 +15138,7 @@ export const SitesAppConfigurationCreateRequestBodyAccountApp =
   }) as any as S.Schema<SitesAppConfigurationCreateRequestBodyAccountApp>;
 
 export type SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesAppConfigurationCreateRequestBodyManagedAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14486,43 +15206,98 @@ export const SitesAppConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationCreateRequest",
 }) as any as S.Schema<SitesAppConfigurationCreateRequest>;
 
-export type SitesAppConfigurationCreateResponsePreferredWansList = string[];
-export const SitesAppConfigurationCreateResponsePreferredWansList =
+export type SitesAppConfigurationCreateResultAccountAppPreferredWansList =
+  ReadonlyArray<string>;
+export const SitesAppConfigurationCreateResultAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationCreateResponsePreferredWansList>;
+  ) as any as S.Schema<SitesAppConfigurationCreateResultAccountAppPreferredWansList>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesAppConfigurationCreateResponse {
+export interface SitesAppConfigurationCreateResultAccountApp {
   /** Magic account app ID. */
-  accountAppId?: string;
+  accountAppId: string;
   /** Identifier */
   id?: string;
   /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
   breakout?: boolean;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationCreateResponsePreferredWansList;
+  preferredWans?: SitesAppConfigurationCreateResultAccountAppPreferredWansList;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number;
   /** Identifier */
   siteId?: string;
-  /** Managed app ID. */
-  managedAppId?: string;
 }
-export const SitesAppConfigurationCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
-    id: S.optional(S.String),
-    breakout: S.optional(S.Boolean),
-    preferredWans: S.optional(
-      SitesAppConfigurationCreateResponsePreferredWansList.pipe(
-        T.Body("preferred_wans"),
+export const SitesAppConfigurationCreateResultAccountApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountAppId: S.String.pipe(T.Body("account_app_id")),
+      id: S.optional(S.String),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationCreateResultAccountAppPreferredWansList.pipe(
+          T.Body("preferred_wans"),
+        ),
       ),
-    ),
-    priority: S.optional(S.Number),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      priority: S.optional(S.Number),
+      siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    }),
+  ).annotate({
+    identifier: "SitesAppConfigurationCreateResultAccountApp",
+  }) as any as S.Schema<SitesAppConfigurationCreateResultAccountApp>;
+
+export type SitesAppConfigurationCreateResultManagedAppPreferredWansList =
+  ReadonlyArray<string>;
+export const SitesAppConfigurationCreateResultManagedAppPreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationCreateResultManagedAppPreferredWansList>;
+
+export interface SitesAppConfigurationCreateResultManagedApp {
+  /** Managed app ID. */
+  managedAppId: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationCreateResultManagedAppPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+}
+export const SitesAppConfigurationCreateResultManagedApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedAppId: S.String.pipe(T.Body("managed_app_id")),
+      id: S.optional(S.String),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationCreateResultManagedAppPreferredWansList.pipe(
+          T.Body("preferred_wans"),
+        ),
+      ),
+      priority: S.optional(S.Number),
+      siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    }),
+  ).annotate({
+    identifier: "SitesAppConfigurationCreateResultManagedApp",
+  }) as any as S.Schema<SitesAppConfigurationCreateResultManagedApp>;
+
+export type SitesAppConfigurationCreateResult =
+  | SitesAppConfigurationCreateResultAccountApp
+  | SitesAppConfigurationCreateResultManagedApp;
+export const SitesAppConfigurationCreateResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
+    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
+  ]),
+);
+
+export type SitesAppConfigurationCreateResponse =
+  SitesAppConfigurationCreateResult;
+export const SitesAppConfigurationCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  SitesAppConfigurationCreateResult.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "SitesAppConfigurationCreateResponse",
 }) as any as S.Schema<SitesAppConfigurationCreateResponse>;
@@ -14553,48 +15328,104 @@ export const SitesAppConfigurationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationDeleteRequest",
 }) as any as S.Schema<SitesAppConfigurationDeleteRequest>;
 
-export type SitesAppConfigurationDeleteResponsePreferredWansList = string[];
-export const SitesAppConfigurationDeleteResponsePreferredWansList =
+export type SitesAppConfigurationDeleteResultAccountAppPreferredWansList =
+  ReadonlyArray<string>;
+export const SitesAppConfigurationDeleteResultAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationDeleteResponsePreferredWansList>;
+  ) as any as S.Schema<SitesAppConfigurationDeleteResultAccountAppPreferredWansList>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesAppConfigurationDeleteResponse {
+export interface SitesAppConfigurationDeleteResultAccountApp {
   /** Magic account app ID. */
-  accountAppId?: string;
+  accountAppId: string;
   /** Identifier */
   id?: string;
   /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
   breakout?: boolean;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationDeleteResponsePreferredWansList;
+  preferredWans?: SitesAppConfigurationDeleteResultAccountAppPreferredWansList;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number;
   /** Identifier */
   siteId?: string;
-  /** Managed app ID. */
-  managedAppId?: string;
 }
-export const SitesAppConfigurationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
-    id: S.optional(S.String),
-    breakout: S.optional(S.Boolean),
-    preferredWans: S.optional(
-      SitesAppConfigurationDeleteResponsePreferredWansList.pipe(
-        T.Body("preferred_wans"),
+export const SitesAppConfigurationDeleteResultAccountApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountAppId: S.String.pipe(T.Body("account_app_id")),
+      id: S.optional(S.String),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationDeleteResultAccountAppPreferredWansList.pipe(
+          T.Body("preferred_wans"),
+        ),
       ),
-    ),
-    priority: S.optional(S.Number),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      priority: S.optional(S.Number),
+      siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    }),
+  ).annotate({
+    identifier: "SitesAppConfigurationDeleteResultAccountApp",
+  }) as any as S.Schema<SitesAppConfigurationDeleteResultAccountApp>;
+
+export type SitesAppConfigurationDeleteResultManagedAppPreferredWansList =
+  ReadonlyArray<string>;
+export const SitesAppConfigurationDeleteResultManagedAppPreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationDeleteResultManagedAppPreferredWansList>;
+
+export interface SitesAppConfigurationDeleteResultManagedApp {
+  /** Managed app ID. */
+  managedAppId: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationDeleteResultManagedAppPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+}
+export const SitesAppConfigurationDeleteResultManagedApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedAppId: S.String.pipe(T.Body("managed_app_id")),
+      id: S.optional(S.String),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationDeleteResultManagedAppPreferredWansList.pipe(
+          T.Body("preferred_wans"),
+        ),
+      ),
+      priority: S.optional(S.Number),
+      siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    }),
+  ).annotate({
+    identifier: "SitesAppConfigurationDeleteResultManagedApp",
+  }) as any as S.Schema<SitesAppConfigurationDeleteResultManagedApp>;
+
+export type SitesAppConfigurationDeleteResult =
+  | SitesAppConfigurationDeleteResultAccountApp
+  | SitesAppConfigurationDeleteResultManagedApp;
+export const SitesAppConfigurationDeleteResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
+    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
+  ]),
+);
+
+export type SitesAppConfigurationDeleteResponse =
+  SitesAppConfigurationDeleteResult;
+export const SitesAppConfigurationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  SitesAppConfigurationDeleteResult.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "SitesAppConfigurationDeleteResponse",
 }) as any as S.Schema<SitesAppConfigurationDeleteResponse>;
 
-export type SitesAppConfigurationEditRequestPreferredWansList = string[];
+export type SitesAppConfigurationEditRequestPreferredWansList =
+  ReadonlyArray<string>;
 export const SitesAppConfigurationEditRequestPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14645,43 +15476,97 @@ export const SitesAppConfigurationEditRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationEditRequest",
 }) as any as S.Schema<SitesAppConfigurationEditRequest>;
 
-export type SitesAppConfigurationEditResponsePreferredWansList = string[];
-export const SitesAppConfigurationEditResponsePreferredWansList =
+export type SitesAppConfigurationEditResultAccountAppPreferredWansList =
+  ReadonlyArray<string>;
+export const SitesAppConfigurationEditResultAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationEditResponsePreferredWansList>;
+  ) as any as S.Schema<SitesAppConfigurationEditResultAccountAppPreferredWansList>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesAppConfigurationEditResponse {
+export interface SitesAppConfigurationEditResultAccountApp {
   /** Magic account app ID. */
-  accountAppId?: string;
+  accountAppId: string;
   /** Identifier */
   id?: string;
   /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
   breakout?: boolean;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationEditResponsePreferredWansList;
+  preferredWans?: SitesAppConfigurationEditResultAccountAppPreferredWansList;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number;
   /** Identifier */
   siteId?: string;
-  /** Managed app ID. */
-  managedAppId?: string;
 }
-export const SitesAppConfigurationEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
-    id: S.optional(S.String),
-    breakout: S.optional(S.Boolean),
-    preferredWans: S.optional(
-      SitesAppConfigurationEditResponsePreferredWansList.pipe(
-        T.Body("preferred_wans"),
+export const SitesAppConfigurationEditResultAccountApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountAppId: S.String.pipe(T.Body("account_app_id")),
+      id: S.optional(S.String),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationEditResultAccountAppPreferredWansList.pipe(
+          T.Body("preferred_wans"),
+        ),
       ),
-    ),
-    priority: S.optional(S.Number),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      priority: S.optional(S.Number),
+      siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    }),
+  ).annotate({
+    identifier: "SitesAppConfigurationEditResultAccountApp",
+  }) as any as S.Schema<SitesAppConfigurationEditResultAccountApp>;
+
+export type SitesAppConfigurationEditResultManagedAppPreferredWansList =
+  ReadonlyArray<string>;
+export const SitesAppConfigurationEditResultManagedAppPreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationEditResultManagedAppPreferredWansList>;
+
+export interface SitesAppConfigurationEditResultManagedApp {
+  /** Managed app ID. */
+  managedAppId: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationEditResultManagedAppPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+}
+export const SitesAppConfigurationEditResultManagedApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedAppId: S.String.pipe(T.Body("managed_app_id")),
+      id: S.optional(S.String),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationEditResultManagedAppPreferredWansList.pipe(
+          T.Body("preferred_wans"),
+        ),
+      ),
+      priority: S.optional(S.Number),
+      siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    }),
+  ).annotate({
+    identifier: "SitesAppConfigurationEditResultManagedApp",
+  }) as any as S.Schema<SitesAppConfigurationEditResultManagedApp>;
+
+export type SitesAppConfigurationEditResult =
+  | SitesAppConfigurationEditResultAccountApp
+  | SitesAppConfigurationEditResultManagedApp;
+export const SitesAppConfigurationEditResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
+    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
+  ]),
+);
+
+export type SitesAppConfigurationEditResponse = SitesAppConfigurationEditResult;
+export const SitesAppConfigurationEditResponse = /*@__PURE__*/ S.suspend(() =>
+  SitesAppConfigurationEditResult.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "SitesAppConfigurationEditResponse",
 }) as any as S.Schema<SitesAppConfigurationEditResponse>;
@@ -14709,48 +15594,96 @@ export const SitesAppConfigurationListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationListRequest",
 }) as any as S.Schema<SitesAppConfigurationListRequest>;
 
-export type SitesAppConfigurationListResultItemPreferredWansList = string[];
-export const SitesAppConfigurationListResultItemPreferredWansList =
+export type SitesAppConfigurationListResultItemAccountAppPreferredWansList =
+  ReadonlyArray<string>;
+export const SitesAppConfigurationListResultItemAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationListResultItemPreferredWansList>;
+  ) as any as S.Schema<SitesAppConfigurationListResultItemAccountAppPreferredWansList>;
 
-export interface SitesAppConfigurationListResultItem {
+export interface SitesAppConfigurationListResultItemAccountApp {
   /** Magic account app ID. */
-  accountAppId?: string;
+  accountAppId: string;
   /** Identifier */
   id?: string;
   /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
   breakout?: boolean;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationListResultItemPreferredWansList;
+  preferredWans?: SitesAppConfigurationListResultItemAccountAppPreferredWansList;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number;
   /** Identifier */
   siteId?: string;
-  /** Managed app ID. */
-  managedAppId?: string;
 }
-export const SitesAppConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
-    id: S.optional(S.String),
-    breakout: S.optional(S.Boolean),
-    preferredWans: S.optional(
-      SitesAppConfigurationListResultItemPreferredWansList.pipe(
-        T.Body("preferred_wans"),
+export const SitesAppConfigurationListResultItemAccountApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountAppId: S.String.pipe(T.Body("account_app_id")),
+      id: S.optional(S.String),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationListResultItemAccountAppPreferredWansList.pipe(
+          T.Body("preferred_wans"),
+        ),
       ),
-    ),
-    priority: S.optional(S.Number),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
-  }),
-).annotate({
-  identifier: "SitesAppConfigurationListResultItem",
-}) as any as S.Schema<SitesAppConfigurationListResultItem>;
+      priority: S.optional(S.Number),
+      siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    }),
+  ).annotate({
+    identifier: "SitesAppConfigurationListResultItemAccountApp",
+  }) as any as S.Schema<SitesAppConfigurationListResultItemAccountApp>;
+
+export type SitesAppConfigurationListResultItemManagedAppPreferredWansList =
+  ReadonlyArray<string>;
+export const SitesAppConfigurationListResultItemManagedAppPreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationListResultItemManagedAppPreferredWansList>;
+
+export interface SitesAppConfigurationListResultItemManagedApp {
+  /** Managed app ID. */
+  managedAppId: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationListResultItemManagedAppPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+}
+export const SitesAppConfigurationListResultItemManagedApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedAppId: S.String.pipe(T.Body("managed_app_id")),
+      id: S.optional(S.String),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationListResultItemManagedAppPreferredWansList.pipe(
+          T.Body("preferred_wans"),
+        ),
+      ),
+      priority: S.optional(S.Number),
+      siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    }),
+  ).annotate({
+    identifier: "SitesAppConfigurationListResultItemManagedApp",
+  }) as any as S.Schema<SitesAppConfigurationListResultItemManagedApp>;
+
+export type SitesAppConfigurationListResultItem =
+  | SitesAppConfigurationListResultItemAccountApp
+  | SitesAppConfigurationListResultItemManagedApp;
+export const SitesAppConfigurationListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
+    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
+  ]),
+);
 
 export type SitesAppConfigurationListResultList =
-  SitesAppConfigurationListResultItem[];
+  ReadonlyArray<SitesAppConfigurationListResultItem>;
 export const SitesAppConfigurationListResultList = /*@__PURE__*/ S.Array(
   SitesAppConfigurationListResultItem,
 ) as any as S.Schema<SitesAppConfigurationListResultList>;
@@ -14763,7 +15696,8 @@ export const SitesAppConfigurationListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationListResponse",
 }) as any as S.Schema<SitesAppConfigurationListResponse>;
 
-export type SitesAppConfigurationUpdateRequestPreferredWansList = string[];
+export type SitesAppConfigurationUpdateRequestPreferredWansList =
+  ReadonlyArray<string>;
 export const SitesAppConfigurationUpdateRequestPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14814,43 +15748,98 @@ export const SitesAppConfigurationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationUpdateRequest",
 }) as any as S.Schema<SitesAppConfigurationUpdateRequest>;
 
-export type SitesAppConfigurationUpdateResponsePreferredWansList = string[];
-export const SitesAppConfigurationUpdateResponsePreferredWansList =
+export type SitesAppConfigurationUpdateResultAccountAppPreferredWansList =
+  ReadonlyArray<string>;
+export const SitesAppConfigurationUpdateResultAccountAppPreferredWansList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SitesAppConfigurationUpdateResponsePreferredWansList>;
+  ) as any as S.Schema<SitesAppConfigurationUpdateResultAccountAppPreferredWansList>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesAppConfigurationUpdateResponse {
+export interface SitesAppConfigurationUpdateResultAccountApp {
   /** Magic account app ID. */
-  accountAppId?: string;
+  accountAppId: string;
   /** Identifier */
   id?: string;
   /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
   breakout?: boolean;
   /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
-  preferredWans?: SitesAppConfigurationUpdateResponsePreferredWansList;
+  preferredWans?: SitesAppConfigurationUpdateResultAccountAppPreferredWansList;
   /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
   priority?: number;
   /** Identifier */
   siteId?: string;
-  /** Managed app ID. */
-  managedAppId?: string;
 }
-export const SitesAppConfigurationUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.optional(S.String.pipe(T.Body("account_app_id"))),
-    id: S.optional(S.String),
-    breakout: S.optional(S.Boolean),
-    preferredWans: S.optional(
-      SitesAppConfigurationUpdateResponsePreferredWansList.pipe(
-        T.Body("preferred_wans"),
+export const SitesAppConfigurationUpdateResultAccountApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountAppId: S.String.pipe(T.Body("account_app_id")),
+      id: S.optional(S.String),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationUpdateResultAccountAppPreferredWansList.pipe(
+          T.Body("preferred_wans"),
+        ),
       ),
-    ),
-    priority: S.optional(S.Number),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    managedAppId: S.optional(S.String.pipe(T.Body("managed_app_id"))),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      priority: S.optional(S.Number),
+      siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    }),
+  ).annotate({
+    identifier: "SitesAppConfigurationUpdateResultAccountApp",
+  }) as any as S.Schema<SitesAppConfigurationUpdateResultAccountApp>;
+
+export type SitesAppConfigurationUpdateResultManagedAppPreferredWansList =
+  ReadonlyArray<string>;
+export const SitesAppConfigurationUpdateResultManagedAppPreferredWansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesAppConfigurationUpdateResultManagedAppPreferredWansList>;
+
+export interface SitesAppConfigurationUpdateResultManagedApp {
+  /** Managed app ID. */
+  managedAppId: string;
+  /** Identifier */
+  id?: string;
+  /** Whether to breakout traffic to the app's endpoints directly. Null preserves default behavior. */
+  breakout?: boolean;
+  /** WAN interfaces to prefer over default WANs, highest-priority first. Can only be specified for breakout rules (breakout must be true). */
+  preferredWans?: SitesAppConfigurationUpdateResultManagedAppPreferredWansList;
+  /** Priority of traffic. 0 is default, anything greater is prioritized. (Currently only 0 and 1 are supported) */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+}
+export const SitesAppConfigurationUpdateResultManagedApp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedAppId: S.String.pipe(T.Body("managed_app_id")),
+      id: S.optional(S.String),
+      breakout: S.optional(S.Boolean),
+      preferredWans: S.optional(
+        SitesAppConfigurationUpdateResultManagedAppPreferredWansList.pipe(
+          T.Body("preferred_wans"),
+        ),
+      ),
+      priority: S.optional(S.Number),
+      siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    }),
+  ).annotate({
+    identifier: "SitesAppConfigurationUpdateResultManagedApp",
+  }) as any as S.Schema<SitesAppConfigurationUpdateResultManagedApp>;
+
+export type SitesAppConfigurationUpdateResult =
+  | SitesAppConfigurationUpdateResultAccountApp
+  | SitesAppConfigurationUpdateResultManagedApp;
+export const SitesAppConfigurationUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["accountAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
+    ["managedAppId", "id", "breakout", "preferredWans", "priority", "siteId"],
+  ]),
+);
+
+export type SitesAppConfigurationUpdateResponse =
+  SitesAppConfigurationUpdateResult;
+export const SitesAppConfigurationUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  SitesAppConfigurationUpdateResult.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "SitesAppConfigurationUpdateResponse",
 }) as any as S.Schema<SitesAppConfigurationUpdateResponse>;
@@ -14885,17 +15874,17 @@ export const StopPcapResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopPcapResponse",
 }) as any as S.Schema<StopPcapResponse>;
 
-export type AppsUpdateRequestHostnamesList = string[];
+export type AppsUpdateRequestHostnamesList = ReadonlyArray<string>;
 export const AppsUpdateRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateRequestHostnamesList>;
 
-export type AppsUpdateRequestIpSubnetsList = string[];
+export type AppsUpdateRequestIpSubnetsList = ReadonlyArray<string>;
 export const AppsUpdateRequestIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateRequestIpSubnetsList>;
 
-export type AppsUpdateRequestSourceSubnetsList = string[];
+export type AppsUpdateRequestSourceSubnetsList = ReadonlyArray<string>;
 export const AppsUpdateRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateRequestSourceSubnetsList>;
@@ -14942,17 +15931,17 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAppRequest",
 }) as any as S.Schema<UpdateAppRequest>;
 
-export type AppsUpdateResponseHostnamesList = string[];
+export type AppsUpdateResponseHostnamesList = ReadonlyArray<string>;
 export const AppsUpdateResponseHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateResponseHostnamesList>;
 
-export type AppsUpdateResponseIpSubnetsList = string[];
+export type AppsUpdateResponseIpSubnetsList = ReadonlyArray<string>;
 export const AppsUpdateResponseIpSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateResponseIpSubnetsList>;
 
-export type AppsUpdateResponseSourceSubnetsList = string[];
+export type AppsUpdateResponseSourceSubnetsList = ReadonlyArray<string>;
 export const AppsUpdateResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppsUpdateResponseSourceSubnetsList>;
@@ -14993,18 +15982,22 @@ export type ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem =
   | "Sunday"
   | "Monday"
   | "Tuesday"
-  | (string & {});
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday";
 export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsUpdateRequestInterruptWindowDaysOfWeekList =
-  ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem[];
+  ReadonlyArray<ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem>;
 export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsUpdateRequestInterruptWindowDaysOfWeekList>;
 
-export type ConnectorsUpdateRequestInterruptWindowEmbargoDatesList = string[];
+export type ConnectorsUpdateRequestInterruptWindowEmbargoDatesList =
+  ReadonlyArray<string>;
 export const ConnectorsUpdateRequestInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15071,27 +16064,28 @@ export type ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem =
   | "Sunday"
   | "Monday"
   | "Tuesday"
-  | (string & {});
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday";
 export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 export type ConnectorsUpdateResponseInterruptWindowDaysOfWeekList =
-  ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem[];
+  ReadonlyArray<ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem>;
 export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem,
   ) as any as S.Schema<ConnectorsUpdateResponseInterruptWindowDaysOfWeekList>;
 
-export type ConnectorsUpdateResponseInterruptWindowEmbargoDatesList = string[];
+export type ConnectorsUpdateResponseInterruptWindowEmbargoDatesList =
+  ReadonlyArray<string>;
 export const ConnectorsUpdateResponseInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectorsUpdateResponseInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsUpdateResponseDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
+export type ConnectorsUpdateResponseDeviceType = "MANAGED" | "LICENSED";
 export const ConnectorsUpdateResponseDeviceType = /*@__PURE__*/ S.String;
 
 export interface ConnectorsUpdateResponseDevice {
@@ -15163,28 +16157,38 @@ export const UpdateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type GreTunnelsUpdateRequestHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const GreTunnelsUpdateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface GreTunnelsUpdateRequestHealthCheckTarget {
+export type GreTunnelsUpdateRequestHealthCheckRate = "low" | "mid" | "high";
+export const GreTunnelsUpdateRequestHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const GreTunnelsUpdateRequestHealthCheckTarget = /*@__PURE__*/ S.suspend(
-  () =>
+export const GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
-).annotate({
-  identifier: "GreTunnelsUpdateRequestHealthCheckTarget",
-}) as any as S.Schema<GreTunnelsUpdateRequestHealthCheckTarget>;
+  ).annotate({
+    identifier:
+      "GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget>;
+
+export type GreTunnelsUpdateRequestHealthCheckTarget =
+  | string
+  | GreTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget;
+export const GreTunnelsUpdateRequestHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsUpdateRequestHealthCheckType = "reply" | "request";
+export const GreTunnelsUpdateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface GreTunnelsUpdateRequestHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -15192,19 +16196,19 @@ export interface GreTunnelsUpdateRequestHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: GreTunnelsUpdateRequestHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: GreTunnelsUpdateRequestHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: GreTunnelsUpdateRequestHealthCheckType;
 }
 export const GreTunnelsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: S.optional(GreTunnelsUpdateRequestHealthCheckDirection),
     enabled: S.optional(S.Boolean),
-    rate: S.optional(S.Unknown),
+    rate: S.optional(GreTunnelsUpdateRequestHealthCheckRate),
     target: S.optional(GreTunnelsUpdateRequestHealthCheckTarget),
-    type: S.optional(S.Unknown),
+    type: S.optional(GreTunnelsUpdateRequestHealthCheckType),
   }),
 ).annotate({
   identifier: "GreTunnelsUpdateRequestHealthCheck",
@@ -15271,7 +16275,7 @@ export const UpdateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGreTunnelRequest>;
 
 export type GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList =
-  string[];
+  ReadonlyArray<string>;
 export const GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15309,8 +16313,7 @@ export const GreTunnelsUpdateResponseModifiedGreTunnelBgp =
 export type GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
+  | "BGP_ESTABLISHING";
 export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -15346,28 +16349,45 @@ export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus =
 
 export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget {
+export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget =
+export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget>;
+    identifier:
+      "GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTargetMagicHealthCheckTarget>;
+
+export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget =
+  | string
+  | GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTargetMagicHealthCheckTarget;
+export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType =
+  | "reply"
+  | "request";
+export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -15375,11 +16395,11 @@ export interface GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType;
 }
 export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
@@ -15388,11 +16408,15 @@ export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck =
         GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection,
       ),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(
+        GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckRate,
+      ),
       target: S.optional(
         GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget,
       ),
-      type: S.optional(S.Unknown),
+      type: S.optional(
+        GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckType,
+      ),
     }),
   ).annotate({
     identifier: "GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck",
@@ -15480,7 +16504,8 @@ export const UpdateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateGreTunnelResponse",
 }) as any as S.Schema<UpdateGreTunnelResponse>;
 
-export type IpsecTunnelsUpdateRequestBgpExtraPrefixesList = string[];
+export type IpsecTunnelsUpdateRequestBgpExtraPrefixesList =
+  ReadonlyArray<string>;
 export const IpsecTunnelsUpdateRequestBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15529,28 +16554,38 @@ export const IpsecTunnelsUpdateRequestCustomRemoteIdentities =
 
 export type IpsecTunnelsUpdateRequestHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const IpsecTunnelsUpdateRequestHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface IpsecTunnelsUpdateRequestHealthCheckTarget {
+export type IpsecTunnelsUpdateRequestHealthCheckRate = "low" | "mid" | "high";
+export const IpsecTunnelsUpdateRequestHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const IpsecTunnelsUpdateRequestHealthCheckTarget =
+export const IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
-    identifier: "IpsecTunnelsUpdateRequestHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsUpdateRequestHealthCheckTarget>;
+    identifier:
+      "IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget>;
+
+export type IpsecTunnelsUpdateRequestHealthCheckTarget =
+  | string
+  | IpsecTunnelsUpdateRequestHealthCheckTargetMagicHealthCheckTarget;
+export const IpsecTunnelsUpdateRequestHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsUpdateRequestHealthCheckType = "reply" | "request";
+export const IpsecTunnelsUpdateRequestHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsUpdateRequestHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -15558,20 +16593,20 @@ export interface IpsecTunnelsUpdateRequestHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: IpsecTunnelsUpdateRequestHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: IpsecTunnelsUpdateRequestHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: IpsecTunnelsUpdateRequestHealthCheckType;
 }
 export const IpsecTunnelsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       direction: S.optional(IpsecTunnelsUpdateRequestHealthCheckDirection),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(IpsecTunnelsUpdateRequestHealthCheckRate),
       target: S.optional(IpsecTunnelsUpdateRequestHealthCheckTarget),
-      type: S.optional(S.Unknown),
+      type: S.optional(IpsecTunnelsUpdateRequestHealthCheckType),
     }),
 ).annotate({
   identifier: "IpsecTunnelsUpdateRequestHealthCheck",
@@ -15646,7 +16681,7 @@ export const UpdateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateIpsecTunnelRequest>;
 
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList =
-  string[];
+  ReadonlyArray<string>;
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15684,8 +16719,7 @@ export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp =
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState =
   | "BGP_DOWN"
   | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
+  | "BGP_ESTABLISHING";
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState =
   /*@__PURE__*/ S.String;
 
@@ -15735,29 +16769,45 @@ export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities
 
 export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection =
   | "unidirectional"
-  | "bidirectional"
-  | (string & {});
+  | "bidirectional";
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection =
   /*@__PURE__*/ S.String;
 
-export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget {
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high";
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget {
   /** The effective health check target. If 'saved' is empty, then this field will be populated with the calculated default value on GET requests. Ignored in POST, PUT, and PATCH requests. */
   effective?: string;
   /** The saved health check target. Setting the value to the empty string indicates that the calculated default value will be used. */
   saved?: string;
-  string: unknown;
 }
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget =
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       effective: S.optional(S.String),
       saved: S.optional(S.String),
-      string: S.Unknown,
     }),
   ).annotate({
     identifier:
-      "IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget>;
+      "IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget>;
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget =
+  | string
+  | IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTargetMagicHealthCheckTarget;
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], ["effective", "saved"]]));
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType =
+  | "reply"
+  | "request";
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType =
+  /*@__PURE__*/ S.String;
 
 export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck {
   /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
@@ -15765,11 +16815,11 @@ export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck {
   /** Determines whether to run healthchecks for a tunnel. */
   enabled?: boolean;
   /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
+  rate?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate;
   /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
   target?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget;
   /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
+  type?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType;
 }
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck =
   /*@__PURE__*/ S.suspend(() =>
@@ -15778,11 +16828,15 @@ export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck =
         IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection,
       ),
       enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
+      rate: S.optional(
+        IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckRate,
+      ),
       target: S.optional(
         IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget,
       ),
-      type: S.optional(S.Unknown),
+      type: S.optional(
+        IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckType,
+      ),
     }),
   ).annotate({
     identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck",
@@ -15896,12 +16950,12 @@ export const UpdateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateIpsecTunnelResponse",
 }) as any as S.Schema<UpdateIpsecTunnelResponse>;
 
-export type RoutesUpdateRequestScopeColoNamesList = string[];
+export type RoutesUpdateRequestScopeColoNamesList = ReadonlyArray<string>;
 export const RoutesUpdateRequestScopeColoNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesUpdateRequestScopeColoNamesList>;
 
-export type RoutesUpdateRequestScopeColoRegionsList = string[];
+export type RoutesUpdateRequestScopeColoRegionsList = ReadonlyArray<string>;
 export const RoutesUpdateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutesUpdateRequestScopeColoRegionsList>;
@@ -15966,13 +17020,15 @@ export const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRouteRequest",
 }) as any as S.Schema<UpdateRouteRequest>;
 
-export type RoutesUpdateResponseModifiedRouteScopeColoNamesList = string[];
+export type RoutesUpdateResponseModifiedRouteScopeColoNamesList =
+  ReadonlyArray<string>;
 export const RoutesUpdateResponseModifiedRouteScopeColoNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<RoutesUpdateResponseModifiedRouteScopeColoNamesList>;
 
-export type RoutesUpdateResponseModifiedRouteScopeColoRegionsList = string[];
+export type RoutesUpdateResponseModifiedRouteScopeColoRegionsList =
+  ReadonlyArray<string>;
 export const RoutesUpdateResponseModifiedRouteScopeColoRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16155,19 +17211,19 @@ export const UpdateSiteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSiteResponse",
 }) as any as S.Schema<UpdateSiteResponse>;
 
-export type SitesAclsUpdateRequestLan1PortRangesList = string[];
+export type SitesAclsUpdateRequestLan1PortRangesList = ReadonlyArray<string>;
 export const SitesAclsUpdateRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsUpdateRequestLan1PortRangesList>;
 
-export type SitesAclsUpdateRequestLan1PortsList = number[];
+export type SitesAclsUpdateRequestLan1PortsList = ReadonlyArray<number>;
 export const SitesAclsUpdateRequestLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsUpdateRequestLan1PortsList>;
 
-export type SitesAclsUpdateRequestLan1SubnetsList = unknown[];
+export type SitesAclsUpdateRequestLan1SubnetsList = ReadonlyArray<string>;
 export const SitesAclsUpdateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<SitesAclsUpdateRequestLan1SubnetsList>;
 
 export interface SitesAclsUpdateRequestLan1 {
@@ -16196,9 +17252,13 @@ export const SitesAclsUpdateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsUpdateRequestLan1",
 }) as any as S.Schema<SitesAclsUpdateRequestLan1>;
 
-export type SitesAclsUpdateRequestProtocolsList = unknown[];
+export type SitesAclsUpdateRequestProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsUpdateRequestProtocolsItem = /*@__PURE__*/ S.String;
+
+export type SitesAclsUpdateRequestProtocolsList =
+  ReadonlyArray<SitesAclsUpdateRequestProtocolsItem>;
 export const SitesAclsUpdateRequestProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SitesAclsUpdateRequestProtocolsItem,
 ) as any as S.Schema<SitesAclsUpdateRequestProtocolsList>;
 
 export interface UpdateSiteAclRequest {
@@ -16213,7 +17273,7 @@ export interface UpdateSiteAclRequest {
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
   lan1?: SitesAclsUpdateRequestLan1;
-  lan2?: unknown;
+  lan2?: SitesAclsUpdateRequestLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsUpdateRequestProtocolsList;
@@ -16228,7 +17288,7 @@ export const UpdateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
     lan1: S.optional(SitesAclsUpdateRequestLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    lan2: S.optional(SitesAclsUpdateRequestLan1.pipe(T.Body("lan_2"))),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsUpdateRequestProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -16245,19 +17305,19 @@ export const UpdateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSiteAclRequest",
 }) as any as S.Schema<UpdateSiteAclRequest>;
 
-export type SitesAclsUpdateResponseLan1PortRangesList = string[];
+export type SitesAclsUpdateResponseLan1PortRangesList = ReadonlyArray<string>;
 export const SitesAclsUpdateResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitesAclsUpdateResponseLan1PortRangesList>;
 
-export type SitesAclsUpdateResponseLan1PortsList = number[];
+export type SitesAclsUpdateResponseLan1PortsList = ReadonlyArray<number>;
 export const SitesAclsUpdateResponseLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SitesAclsUpdateResponseLan1PortsList>;
 
-export type SitesAclsUpdateResponseLan1SubnetsList = unknown[];
+export type SitesAclsUpdateResponseLan1SubnetsList = ReadonlyArray<string>;
 export const SitesAclsUpdateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<SitesAclsUpdateResponseLan1SubnetsList>;
 
 export interface SitesAclsUpdateResponseLan1 {
@@ -16286,9 +17346,13 @@ export const SitesAclsUpdateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAclsUpdateResponseLan1",
 }) as any as S.Schema<SitesAclsUpdateResponseLan1>;
 
-export type SitesAclsUpdateResponseProtocolsList = unknown[];
+export type SitesAclsUpdateResponseProtocolsItem = "tcp" | "udp" | "icmp";
+export const SitesAclsUpdateResponseProtocolsItem = /*@__PURE__*/ S.String;
+
+export type SitesAclsUpdateResponseProtocolsList =
+  ReadonlyArray<SitesAclsUpdateResponseProtocolsItem>;
 export const SitesAclsUpdateResponseProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  SitesAclsUpdateResponseProtocolsItem,
 ) as any as S.Schema<SitesAclsUpdateResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -16300,7 +17364,7 @@ export interface UpdateSiteAclResponse {
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
   lan1?: SitesAclsUpdateResponseLan1;
-  lan2?: unknown;
+  lan2?: SitesAclsUpdateResponseLan1;
   /** The name of the ACL. */
   name?: string;
   protocols?: SitesAclsUpdateResponseProtocolsList;
@@ -16313,7 +17377,7 @@ export const UpdateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
     lan1: S.optional(SitesAclsUpdateResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    lan2: S.optional(SitesAclsUpdateResponseLan1.pipe(T.Body("lan_2"))),
     name: S.optional(S.String),
     protocols: S.optional(SitesAclsUpdateResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
@@ -16339,27 +17403,27 @@ export interface SitesLansUpdateRequestRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: unknown;
+  nat?: SitesLansUpdateRequestNat;
 }
 export const SitesLansUpdateRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.Unknown),
+      nat: S.optional(SitesLansUpdateRequestNat),
     }),
 ).annotate({
   identifier: "SitesLansUpdateRequestRoutedSubnetsItem",
 }) as any as S.Schema<SitesLansUpdateRequestRoutedSubnetsItem>;
 
 export type SitesLansUpdateRequestRoutedSubnetsList =
-  SitesLansUpdateRequestRoutedSubnetsItem[];
+  ReadonlyArray<SitesLansUpdateRequestRoutedSubnetsItem>;
 export const SitesLansUpdateRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansUpdateRequestRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansUpdateRequestRoutedSubnetsList>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansUpdateRequestStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16383,7 +17447,7 @@ export const SitesLansUpdateRequestStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpRelay>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
+  "text" | "hex" | "ip" | "byte" | "short" | "integer";
 export const SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -16408,26 +17472,26 @@ export const SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem[];
+  ReadonlyArray<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<SitesLansUpdateRequestStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansUpdateRequestStaticAddressingDhcpServer {
@@ -16567,27 +17631,27 @@ export interface SitesLansUpdateResponseRoutedSubnetsItem {
   nextHop: string;
   /** A valid CIDR notation representing an IP range. */
   prefix: string;
-  nat?: unknown;
+  nat?: SitesLansUpdateResponseNat;
 }
 export const SitesLansUpdateResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       nextHop: S.String.pipe(T.Body("next_hop")),
       prefix: S.String,
-      nat: S.optional(S.Unknown),
+      nat: S.optional(SitesLansUpdateResponseNat),
     }),
 ).annotate({
   identifier: "SitesLansUpdateResponseRoutedSubnetsItem",
 }) as any as S.Schema<SitesLansUpdateResponseRoutedSubnetsItem>;
 
 export type SitesLansUpdateResponseRoutedSubnetsList =
-  SitesLansUpdateResponseRoutedSubnetsItem[];
+  ReadonlyArray<SitesLansUpdateResponseRoutedSubnetsItem>;
 export const SitesLansUpdateResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
   SitesLansUpdateResponseRoutedSubnetsItem,
 ) as any as S.Schema<SitesLansUpdateResponseRoutedSubnetsList>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpRelayServerAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansUpdateResponseStaticAddressingDhcpRelayServerAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16611,7 +17675,7 @@ export const SitesLansUpdateResponseStaticAddressingDhcpRelay =
   }) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpRelay>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
+  "text" | "hex" | "ip" | "byte" | "short" | "integer";
 export const SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItemType =
   /*@__PURE__*/ S.String;
 
@@ -16636,26 +17700,26 @@ export const SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem =
   }) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem[];
+  ReadonlyArray<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem>;
 export const SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsList =
   /*@__PURE__*/ S.Array(
     SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsItem,
   ) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDhcpOptionsList>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList =
-  string[];
+  ReadonlyArray<string>;
 export const SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerDnsServersList>;
 
 export type SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<SitesLansUpdateResponseStaticAddressingDhcpServerReservationsMap>;
 
 export interface SitesLansUpdateResponseStaticAddressingDhcpServer {
@@ -16830,11 +17894,7 @@ export const UpdateSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSiteWanRequest",
 }) as any as S.Schema<UpdateSiteWanRequest>;
 
-export type SitesWansUpdateResponseHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high"
-  | (string & {});
+export type SitesWansUpdateResponseHealthCheckRate = "low" | "mid" | "high";
 export const SitesWansUpdateResponseHealthCheckRate = /*@__PURE__*/ S.String;
 
 export interface SitesWansUpdateResponseStaticAddressing {
@@ -16921,8 +17981,7 @@ export const ValidatePcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
 export type PcapsOwnershipValidateResponseStatus =
   | "pending"
   | "success"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const PcapsOwnershipValidateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

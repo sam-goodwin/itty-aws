@@ -3743,13 +3743,15 @@
         "transactionHash": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The hash of the transaction, as a 0x-prefixed hex string. Populated for EOA accounts. Null for Smart Accounts (use userOpHash instead)."
+            "smithy.api#documentation": "The hash of the transaction, as a 0x-prefixed hex string. Populated for EOA accounts. Null for Smart Accounts (use userOpHash instead).",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "userOpHash": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The hash of the user operation, as a 0x-prefixed hex string. Populated for Smart Accounts. Null for EOA accounts (use transactionHash instead)."
+            "smithy.api#documentation": "The hash of the user operation, as a 0x-prefixed hex string. Populated for Smart Accounts. Null for EOA accounts (use transactionHash instead).",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -7229,7 +7231,8 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The estimated gas limit that should be used to send the transaction to guarantee settlement.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "gasPrice": {
@@ -7269,14 +7272,16 @@
           "target": "com.coinbase.cdp#TokenFee",
           "traits": {
             "smithy.api#documentation": "The estimated gas fee for the swap.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "protocolFee": {
           "target": "com.coinbase.cdp#TokenFee",
           "traits": {
             "smithy.api#documentation": "The estimated protocol fee for the swap.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -7342,14 +7347,16 @@
           "target": "com.coinbase.cdp#GetSwapPriceResponseIssuesAllowance",
           "traits": {
             "smithy.api#documentation": "Details of the allowances that the taker must set in order to execute the swap successfully. Null if no allowance is required.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "balance": {
           "target": "com.coinbase.cdp#GetSwapPriceResponseIssuesBalance",
           "traits": {
             "smithy.api#documentation": "Details of the balance of the `fromToken` that the `taker` must hold. Null if the `taker` has a sufficient balance.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "simulationIncomplete": {
@@ -7490,7 +7497,8 @@
           "target": "com.coinbase.cdp#CreateSwapQuoteResponsePermit2",
           "traits": {
             "smithy.api#documentation": "The approval object which contains the necessary fields to submit an approval for this transaction. Null if the `fromToken` is the native token or the transaction is a native token wrap / unwrap.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "transaction": {
@@ -7637,14 +7645,16 @@
           "target": "com.coinbase.cdp#TokenFee",
           "traits": {
             "smithy.api#documentation": "The estimated gas fee for the swap.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "protocolFee": {
           "target": "com.coinbase.cdp#TokenFee",
           "traits": {
             "smithy.api#documentation": "The estimated protocol fee for the swap.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -7710,14 +7720,16 @@
           "target": "com.coinbase.cdp#CreateSwapQuoteResponseIssuesAllowance",
           "traits": {
             "smithy.api#documentation": "Details of the allowances that the taker must set in order to execute the swap successfully. Null if no allowance is required.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "balance": {
           "target": "com.coinbase.cdp#CreateSwapQuoteResponseIssuesBalance",
           "traits": {
             "smithy.api#documentation": "Details of the balance of the `fromToken` that the `taker` must hold. Null if the `taker` has a sufficient balance.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "simulationIncomplete": {
@@ -15008,6 +15020,26 @@
         "smithy.api#documentation": "List webhook subscription events\n\nRetrieve webhook event delivery attempts for a specific subscription.\nReturns event deliveries in descending order by creation time (newest first),\nincluding delivery status, retry count, and response details.\n\n### Use Cases\n- Debug webhook delivery failures and inspect response codes\n- Monitor delivery status and retry counts\n- Audit event delivery history for a subscription\n- Verify that expected events were sent to webhook URLs\n\n### Filtering\nUse optional query parameters to narrow results:\n- `eventId` — find a specific event by ID\n- `minCreatedAt` / `maxCreatedAt` — filter by time range\n- `eventTypeNames` — filter by event type (comma-separated)\n\n**Note:** Results are limited to the 50 most recent events (newest first). No pagination is supported."
       }
     },
+    "com.coinbase.cdp#X402Version": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The version of the x402 protocol."
+      }
+    },
     "com.coinbase.cdp#X402PaymentPayload": {
       "type": "union",
       "members": {
@@ -15026,7 +15058,7 @@
       "type": "structure",
       "members": {
         "x402Version": {
-          "target": "smithy.api#Double",
+          "target": "com.coinbase.cdp#X402Version",
           "traits": {
             "smithy.api#documentation": "The x402 protocol version. Must be `2` for this payload shape.",
             "smithy.api#required": {}
@@ -16100,7 +16132,7 @@
       "type": "structure",
       "members": {
         "x402Version": {
-          "target": "smithy.api#Double",
+          "target": "com.coinbase.cdp#X402Version",
           "traits": {
             "smithy.api#documentation": "The x402 protocol version. Must be `1` for this payload shape.",
             "smithy.api#required": {}
@@ -16334,7 +16366,7 @@
       "type": "structure",
       "members": {
         "x402Version": {
-          "target": "smithy.api#Double",
+          "target": "com.coinbase.cdp#X402Version",
           "traits": {
             "smithy.api#required": {}
           }
@@ -17604,7 +17636,7 @@
       "type": "structure",
       "members": {
         "x402Version": {
-          "target": "smithy.api#Double",
+          "target": "com.coinbase.cdp#X402Version",
           "traits": {
             "smithy.api#required": {}
           }
@@ -19008,7 +19040,7 @@
       "type": "structure",
       "members": {
         "x402Version": {
-          "target": "smithy.api#Double",
+          "target": "com.coinbase.cdp#X402Version",
           "traits": {
             "smithy.api#required": {}
           }
@@ -19272,7 +19304,7 @@
       "type": "structure",
       "members": {
         "x402Version": {
-          "target": "smithy.api#Double",
+          "target": "com.coinbase.cdp#X402Version",
           "traits": {
             "smithy.api#required": {}
           }
@@ -19320,7 +19352,7 @@
           }
         },
         "x402Version": {
-          "target": "smithy.api#Double",
+          "target": "com.coinbase.cdp#X402Version",
           "traits": {
             "smithy.api#required": {}
           }
@@ -19531,7 +19563,7 @@
       "type": "structure",
       "members": {
         "x402Version": {
-          "target": "smithy.api#Double",
+          "target": "com.coinbase.cdp#X402Version",
           "traits": {
             "smithy.api#required": {}
           }
@@ -19715,7 +19747,7 @@
           }
         },
         "x402Version": {
-          "target": "smithy.api#Double",
+          "target": "com.coinbase.cdp#X402Version",
           "traits": {
             "smithy.api#required": {}
           }
@@ -19864,7 +19896,8 @@
         "id": {
           "target": "com.coinbase.cdp#X402McpResponseId",
           "traits": {
-            "smithy.api#documentation": "Request identifier (matches the request ID, null for notifications)."
+            "smithy.api#documentation": "Request identifier (matches the request ID, null for notifications).",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "result": {
@@ -20033,14 +20066,16 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "The HTTP status code returned by the endpoint, or `null` if the endpoint was not reachable.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "x402Version": {
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "The x402 protocol version advertised by the endpoint, or `null` if it could not be determined. Intentionally a bare integer rather than the `X402Version` enum so the validator can surface unsupported or malformed version values returned by non-conforming endpoints.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "preflight": {
@@ -20054,14 +20089,16 @@
           "target": "com.coinbase.cdp#X402PaymentRequirements",
           "traits": {
             "smithy.api#documentation": "The raw decoded payment requirements returned by the endpoint, or `null` if the endpoint was not reachable or did not return a parseable 402 payload. Lets sellers inspect exactly what their endpoint is advertising.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "bazaarExtension": {
           "target": "com.coinbase.cdp#X402ValidateResponseBazaarExtensionMap",
           "traits": {
             "smithy.api#documentation": "The `extensions.bazaar` block from the endpoint's discovery metadata, or `null` if the bazaar extension was absent or the endpoint was not reachable. Lets sellers verify the discovery configuration their endpoint is advertising.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "simulation": {
@@ -20074,7 +20111,8 @@
           "target": "com.coinbase.cdp#X402ValidateIndex",
           "traits": {
             "smithy.api#documentation": "Bazaar index status for the endpoint, or `null` if the endpoint is not yet indexed. Present on every response regardless of simulation outcome.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -20258,7 +20296,8 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "When the endpoint was last crawled, or `null` if it has been indexed but not yet crawled.",
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
           }
         },
         "quality": {

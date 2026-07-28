@@ -268,16 +268,30 @@
             "smithy.api#documentation": "name of the property"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#AzureADOnlyAuthenticationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "azureADOnlyAuthentication resource properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#AzureADOnlyAuthenticationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "azureADOnlyAuthentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Azure Active Directory only Authentication enabled.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a active directory only authentication."
       }
     },
     "com.azure.synapse#AzureADOnlyAuthenticationsCreateRequestAzureADOnlyAuthenticationName": {
@@ -1172,16 +1186,27 @@
             "smithy.api#documentation": "Big Data pool name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.synapse#BigDataPoolsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Updated tags for the Big Data pool"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#BigDataPoolsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Updated tags for the Big Data pool"
       }
     },
     "com.azure.synapse#BigDataPoolsCreateOrUpdate": {
@@ -1302,16 +1327,339 @@
             "smithy.api#documentation": "Whether to stop any running jobs in the Big Data pool"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.synapse#BigDataPoolsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.synapse#BigDataPoolResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Big Data pool properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#BigDataPoolResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The state of the Big Data pool."
+          }
+        },
+        "autoScale": {
+          "target": "com.azure.synapse#AutoScaleProperties",
+          "traits": {
+            "smithy.api#documentation": "Auto-scaling properties"
+          }
+        },
+        "autoPause": {
+          "target": "com.azure.synapse#AutoPauseProperties",
+          "traits": {
+            "smithy.api#documentation": "Auto-pausing properties"
+          }
+        },
+        "isComputeIsolationEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether compute isolation is required or not."
+          }
+        },
+        "isAutotuneEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether autotune is required or not."
+          }
+        },
+        "sessionLevelPackagesEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether session level packages enabled."
+          }
+        },
+        "cacheSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The cache size"
+          }
+        },
+        "dynamicExecutorAllocation": {
+          "target": "com.azure.synapse#DynamicExecutorAllocation",
+          "traits": {
+            "smithy.api#documentation": "Dynamic Executor Allocation"
+          }
+        },
+        "sparkEventsFolder": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Spark events folder"
+          }
+        },
+        "nodeCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of nodes in the Big Data pool."
+          }
+        },
+        "libraryRequirements": {
+          "target": "com.azure.synapse#LibraryRequirementsInput",
+          "traits": {
+            "smithy.api#documentation": "Library version requirements"
+          }
+        },
+        "customLibraries": {
+          "target": "com.azure.synapse#BigDataPoolResourcePropertiesInputCustomLibrariesList",
+          "traits": {
+            "smithy.api#documentation": "List of custom libraries/packages associated with the spark pool."
+          }
+        },
+        "sparkConfigProperties": {
+          "target": "com.azure.synapse#SparkConfigPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Spark configuration file to specify additional properties"
+          }
+        },
+        "sparkVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Apache Spark version."
+          }
+        },
+        "defaultSparkLogFolder": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default folder where Spark logs will be written."
+          }
+        },
+        "nodeSize": {
+          "target": "com.azure.synapse#BigDataPoolResourcePropertiesInputNodeSize",
+          "traits": {
+            "smithy.api#documentation": "The level of compute power that each node in the Big Data pool has."
+          }
+        },
+        "nodeSizeFamily": {
+          "target": "com.azure.synapse#BigDataPoolResourcePropertiesInputNodeSizeFamily",
+          "traits": {
+            "smithy.api#documentation": "The kind of nodes that the Big Data pool provides."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a Big Data pool powered by Apache Spark"
+      }
+    },
+    "com.azure.synapse#BigDataPoolResourcePropertiesInputNodeSizeFamily": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "MEMORYOPTIMIZED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MemoryOptimized"
+          }
+        },
+        "HARDWAREACCELERATEDFPGA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HardwareAcceleratedFPGA"
+          }
+        },
+        "HARDWAREACCELERATEDGPU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HardwareAcceleratedGPU"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of nodes that the Big Data pool provides."
+      }
+    },
+    "com.azure.synapse#BigDataPoolResourcePropertiesInputNodeSize": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "SMALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Small"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "LARGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Large"
+          }
+        },
+        "XLARGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "XLarge"
+          }
+        },
+        "XXLARGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "XXLarge"
+          }
+        },
+        "XXXLARGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "XXXLarge"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The level of compute power that each node in the Big Data pool has."
+      }
+    },
+    "com.azure.synapse#SparkConfigPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The spark config properties."
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filename of the spark config properties file."
+          }
+        },
+        "configurationType": {
+          "target": "com.azure.synapse#SparkConfigPropertiesInputConfigurationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the spark config properties file."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SparkConfig Properties for a Big Data pool powered by Apache Spark"
+      }
+    },
+    "com.azure.synapse#SparkConfigPropertiesInputConfigurationType": {
+      "type": "enum",
+      "members": {
+        "FILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "File"
+          }
+        },
+        "ARTIFACT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Artifact"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the spark config properties file."
+      }
+    },
+    "com.azure.synapse#BigDataPoolResourcePropertiesInputCustomLibrariesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.synapse#BigDataPoolResourcePropertiesInputCustomLibrariesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of custom libraries/packages associated with the spark pool."
+      }
+    },
+    "com.azure.synapse#BigDataPoolResourcePropertiesInputCustomLibrariesItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the library."
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage blob path of library."
+          }
+        },
+        "containerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage blob container name."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of the library."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Library/package information of a Big Data pool powered by Apache Spark"
+      }
+    },
+    "com.azure.synapse#LibraryRequirementsInput": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The library requirements."
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filename of the library requirements file."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Library requirements for a Big Data pool powered by Apache Spark"
+      }
+    },
+    "com.azure.synapse#BigDataPoolsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.synapse#BigDataPoolsGet": {
@@ -1492,11 +1840,16 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Workspace name"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type: workspace"
           }
         }
       },
@@ -1564,16 +1917,47 @@
             "smithy.api#documentation": "The name of the workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "ipFirewallRules": {
+          "target": "com.azure.synapse#IpFirewallRulesReplaceAllRequestIpFirewallRulesMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "IP firewall rule properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#IpFirewallRulesReplaceAllRequestIpFirewallRulesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.synapse#IpFirewallRulePropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "IP firewall rule properties"
+      }
+    },
+    "com.azure.synapse#IpFirewallRulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "endIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress"
+          }
+        },
+        "startIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start IP address of the firewall rule. Must be IPv4 format"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "IP firewall rule properties"
       }
     },
     "com.azure.synapse#IpFirewallRulesDelete": {
@@ -1817,11 +2201,10 @@
             "smithy.api#documentation": "The IP firewall rule name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#IpFirewallRulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "IP firewall rule properties"
           }
         }
       },
@@ -2926,16 +3309,35 @@
             "smithy.api#documentation": "Integration runtime name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "com.azure.synapse#IntegrationRuntimeAuthKeysRegenerateRequestKeyName",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the authentication key to regenerate."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#IntegrationRuntimeAuthKeysRegenerateRequestKeyName": {
+      "type": "enum",
+      "members": {
+        "AUTHKEY1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "authKey1"
+          }
+        },
+        "AUTHKEY2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "authKey2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The name of the authentication key to regenerate."
       }
     },
     "com.azure.synapse#IntegrationRuntimesStart": {
@@ -3633,11 +4035,10 @@
             "smithy.api#documentation": "Integration runtime node name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "concurrentJobsLimit": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs(inclusive) are allowed."
           }
         }
       },
@@ -3860,10 +4261,10 @@
             "smithy.api#documentation": "Integration runtime name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "metadataPath": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Metadata path."
           }
         }
       },
@@ -4163,16 +4564,41 @@
             "smithy.api#documentation": "Integration runtime name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "autoUpdate": {
+          "target": "com.azure.synapse#IntegrationRuntimeAutoUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Enables or disables the auto-update feature of the self-hosted integration runtime. See https://go.microsoft.com/fwlink/?linkid=854189."
+          }
+        },
+        "updateDelayOffset": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time offset (in hours) in the day, e.g., PT03H is 3 hours. The integration runtime auto update will happen on that time."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#IntegrationRuntimeAutoUpdate": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "On"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Off"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state of integration runtime auto update."
       }
     },
     "com.azure.synapse#IntegrationRuntimesCreate": {
@@ -4268,10 +4694,10 @@
             "smithy.api#documentation": "Integration runtime name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#IntegrationRuntime",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Integration runtime properties.",
             "smithy.api#required": {}
           }
         }
@@ -4575,11 +5001,10 @@
             "smithy.api#documentation": "The name of the workspace key"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#KeyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Keys resource properties"
           }
         }
       },
@@ -6067,16 +6492,62 @@
             "smithy.api#documentation": "The name of the private endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Private endpoint connection properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.synapse#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint which the connection belongs to."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.synapse#PrivateLinkServiceConnectionStateInput",
+          "traits": {
+            "smithy.api#documentation": "Connection state of the private endpoint connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a private endpoint connection."
+      }
+    },
+    "com.azure.synapse#PrivateLinkServiceConnectionStateInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection status."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Connection state details of the private endpoint"
+      }
+    },
+    "com.azure.synapse#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Private endpoint details"
       }
     },
     "com.azure.synapse#PrivateEndpointConnectionsGet": {
@@ -7142,16 +7613,27 @@
             "smithy.api#documentation": "Name of the privateLinkHub"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.synapse#PrivateLinkHubsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#PrivateLinkHubsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.synapse#PrivateLinkHubsCreateOrUpdate": {
@@ -7257,16 +7739,54 @@
             "smithy.api#documentation": "Name of the privateLinkHub"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.synapse#PrivateLinkHubsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.synapse#PrivateLinkHubPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "PrivateLinkHub resource properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#PrivateLinkHubPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "PrivateLinkHub provisioning state"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PrivateLinkHub properties"
+      }
+    },
+    "com.azure.synapse#PrivateLinkHubsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.synapse#PrivateLinkHubsGet": {
@@ -7770,11 +8290,10 @@
             "smithy.api#documentation": "The name of the workload classifier."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#WorkloadClassifierProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -8217,11 +8736,10 @@
             "smithy.api#documentation": "The name of the workload group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#WorkloadGroupProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -9969,16 +10487,157 @@
             "smithy.api#documentation": "The name of the data masking rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#DataMaskingRulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#DataMaskingRulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "aliasName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The alias name. This is a legacy parameter and is no longer used."
+          }
+        },
+        "ruleState": {
+          "target": "com.azure.synapse#DataMaskingRulePropertiesInputRuleState",
+          "traits": {
+            "smithy.api#documentation": "The rule state. Used to delete a rule. To delete an existing rule, specify the schemaName, tableName, columnName, maskingFunction, and specify ruleState as disabled. However, if the rule doesn't already exist, the rule will be created with ruleState set to enabled, regardless of the provided value of ruleState."
+          }
+        },
+        "schemaName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The schema name on which the data masking rule is applied.",
+            "smithy.api#required": {}
+          }
+        },
+        "tableName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The table name on which the data masking rule is applied.",
+            "smithy.api#required": {}
+          }
+        },
+        "columnName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The column name on which the data masking rule is applied.",
+            "smithy.api#required": {}
+          }
+        },
+        "maskingFunction": {
+          "target": "com.azure.synapse#DataMaskingRulePropertiesInputMaskingFunction",
+          "traits": {
+            "smithy.api#documentation": "The masking function that is used for the data masking rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "numberFrom": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The numberFrom property of the masking rule. Required if maskingFunction is set to Number, otherwise this parameter will be ignored."
+          }
+        },
+        "numberTo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The numberTo property of the data masking rule. Required if maskingFunction is set to Number, otherwise this parameter will be ignored."
+          }
+        },
+        "prefixSize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If maskingFunction is set to Text, the number of characters to show unmasked in the beginning of the string. Otherwise, this parameter will be ignored."
+          }
+        },
+        "suffixSize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If maskingFunction is set to Text, the number of characters to show unmasked at the end of the string. Otherwise, this parameter will be ignored."
+          }
+        },
+        "replacementString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If maskingFunction is set to Text, the character to use for masking the unexposed part of the string. Otherwise, this parameter will be ignored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a Sql pool data masking rule."
+      }
+    },
+    "com.azure.synapse#DataMaskingRulePropertiesInputMaskingFunction": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "CCN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CCN"
+          }
+        },
+        "EMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Email"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Number"
+          }
+        },
+        "SSN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSN"
+          }
+        },
+        "TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Text"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The masking function that is used for the data masking rule."
+      }
+    },
+    "com.azure.synapse#DataMaskingRulePropertiesInputRuleState": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The rule state. Used to delete a rule. To delete an existing rule, specify the schemaName, tableName, columnName, maskingFunction, and specify ruleState as disabled. However, if the rule doesn't already exist, the rule will be created with ruleState set to enabled, regardless of the provided value of ruleState."
       }
     },
     "com.azure.synapse#DataMaskingRulesCreateOrUpdateRequestDataMaskingPolicyName": {
@@ -10289,16 +10948,56 @@
             "smithy.api#documentation": "The name of the data masking policy for which the masking rule applies."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#DataMaskingPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the data masking policy."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#DataMaskingPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "dataMaskingState": {
+          "target": "com.azure.synapse#DataMaskingPolicyPropertiesInputDataMaskingState",
+          "traits": {
+            "smithy.api#documentation": "The state of the data masking policy.",
+            "smithy.api#required": {}
+          }
+        },
+        "exemptPrincipals": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The list of the exempt principals. Specifies the semicolon-separated list of database users for which the data masking policy does not apply. The specified users receive data results without masking for all of the database queries."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a database data masking policy."
+      }
+    },
+    "com.azure.synapse#DataMaskingPolicyPropertiesInputDataMaskingState": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state of the data masking policy."
       }
     },
     "com.azure.synapse#DataMaskingPoliciesCreateOrUpdateRequestDataMaskingPolicyName": {
@@ -10754,11 +11453,10 @@
             "smithy.api#documentation": "The name of the blob auditing policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#ExtendedSqlPoolBlobAuditingPolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -11129,11 +11827,10 @@
             "smithy.api#documentation": "The name of the vulnerability assessment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#SqlPoolVulnerabilityAssessmentProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -11535,11 +12232,10 @@
             "smithy.api#documentation": "The name of the vulnerability assessment rule baseline (default implies a baseline on a Sql pool level rule and master for workspace level rule)."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#SqlPoolVulnerabilityAssessmentRuleBaselineProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -11917,16 +12613,110 @@
             "smithy.api#documentation": "The name of the security alert policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#SecurityAlertPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#SecurityAlertPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.synapse#SecurityAlertPolicyPropertiesInputState",
+          "traits": {
+            "smithy.api#documentation": "Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific Sql pool.",
+            "smithy.api#required": {}
+          }
+        },
+        "disabledAlerts": {
+          "target": "com.azure.synapse#SecurityAlertPolicyPropertiesInputDisabledAlertsList",
+          "traits": {
+            "smithy.api#documentation": "Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action"
+          }
+        },
+        "emailAddresses": {
+          "target": "com.azure.synapse#SecurityAlertPolicyPropertiesInputEmailAddressesList",
+          "traits": {
+            "smithy.api#documentation": "Specifies an array of e-mail addresses to which the alert is sent."
+          }
+        },
+        "emailAccountAdmins": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies that the alert is sent to the account administrators."
+          }
+        },
+        "storageEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs."
+          }
+        },
+        "storageAccountAccessKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the identifier key of the Threat Detection audit storage account."
+          }
+        },
+        "retentionDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of days to keep in the Threat Detection audit logs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a security alert policy."
+      }
+    },
+    "com.azure.synapse#SecurityAlertPolicyPropertiesInputEmailAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies an array of e-mail addresses to which the alert is sent."
+      }
+    },
+    "com.azure.synapse#SecurityAlertPolicyPropertiesInputDisabledAlertsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action"
+      }
+    },
+    "com.azure.synapse#SecurityAlertPolicyPropertiesInputState": {
+      "type": "enum",
+      "members": {
+        "NEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "New"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific Sql pool."
       }
     },
     "com.azure.synapse#SqlPoolSecurityAlertPoliciesCreateOrUpdateRequestSecurityAlertPolicyName": {
@@ -13547,17 +14337,87 @@
             "smithy.api#documentation": "The source of the sensitivity label."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#SensitivityLabelPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.synapse#SensitivityLabelPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "labelName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The label name."
+          }
+        },
+        "labelId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The label ID."
+          }
+        },
+        "informationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The information type."
+          }
+        },
+        "informationTypeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The information type ID."
+          }
+        },
+        "rank": {
+          "target": "com.azure.synapse#SensitivityLabelPropertiesInputRank"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a sensitivity label."
+      }
+    },
+    "com.azure.synapse#SensitivityLabelPropertiesInputRank": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Critical"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.synapse#SqlPoolSensitivityLabelsCreateOrUpdateRequestSensitivityLabelSource": {
       "type": "enum",
@@ -13772,17 +14632,87 @@
             "smithy.api#documentation": "SQL pool name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "operations": {
+          "target": "com.azure.synapse#SqlPoolRecommendedSensitivityLabelsUpdateRequestOperationsList"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.synapse#SqlPoolRecommendedSensitivityLabelsUpdateRequestOperationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.synapse#RecommendedSensitivityLabelUpdateInput"
+      },
+      "traits": {}
+    },
+    "com.azure.synapse#RecommendedSensitivityLabelUpdateInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.synapse#RecommendedSensitivityLabelUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Resource properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A recommended sensitivity label update operation."
+      }
+    },
+    "com.azure.synapse#RecommendedSensitivityLabelUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "op": {
+          "target": "com.azure.synapse#RecommendedSensitivityLabelUpdatePropertiesOp",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "schema": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema name of the column to update.",
+            "smithy.api#required": {}
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Table name of the column to update.",
+            "smithy.api#required": {}
+          }
+        },
+        "column": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Column name to update.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an operation executed on a recommended sensitivity label."
+      }
+    },
+    "com.azure.synapse#RecommendedSensitivityLabelUpdatePropertiesOp": {
+      "type": "enum",
+      "members": {
+        "ENABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable"
+          }
+        },
+        "DISABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.synapse#SqlPoolSensitivityLabelsListRecommended": {
       "type": "operation",
@@ -13985,17 +14915,107 @@
             "smithy.api#documentation": "SQL pool name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "operations": {
+          "target": "com.azure.synapse#SqlPoolSensitivityLabelsUpdateRequestOperationsList"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.synapse#SqlPoolSensitivityLabelsUpdateRequestOperationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.synapse#SensitivityLabelUpdateInput"
+      },
+      "traits": {}
+    },
+    "com.azure.synapse#SensitivityLabelUpdateInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.synapse#SensitivityLabelUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Resource properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A sensitivity label update operation."
+      }
+    },
+    "com.azure.synapse#SensitivityLabelUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "op": {
+          "target": "com.azure.synapse#SensitivityLabelUpdatePropertiesInputOp",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "schema": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema name of the column to update.",
+            "smithy.api#required": {}
+          }
+        },
+        "table": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Table name of the column to update.",
+            "smithy.api#required": {}
+          }
+        },
+        "column": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Column name to update.",
+            "smithy.api#required": {}
+          }
+        },
+        "sensitivityLabel": {
+          "target": "com.azure.synapse#SensitivityLabelInput",
+          "traits": {
+            "smithy.api#documentation": "The sensitivity label information to apply on a column."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an operation executed on a sensitivity label."
+      }
+    },
+    "com.azure.synapse#SensitivityLabelInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.synapse#SensitivityLabelPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Resource properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A sensitivity label."
+      }
+    },
+    "com.azure.synapse#SensitivityLabelUpdatePropertiesInputOp": {
+      "type": "enum",
+      "members": {
+        "SET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "set"
+          }
+        },
+        "REMOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "remove"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.synapse#SqlPoolSensitivityLabelsListCurrent": {
       "type": "operation",
@@ -14558,11 +15578,10 @@
             "smithy.api#documentation": "The name of the blob auditing policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#SqlPoolBlobAuditingPolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -14959,11 +15978,10 @@
             "smithy.api#documentation": "The name of the transparent data encryption configuration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#TransparentDataEncryptionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Represents the properties of the resource."
           }
         }
       },
@@ -15396,17 +16414,34 @@
             "smithy.api#documentation": "Maintenance window name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#MaintenanceWindowsProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.synapse#MaintenanceWindowsProperties": {
+      "type": "structure",
+      "members": {
+        "timeRanges": {
+          "target": "com.azure.synapse#MaintenanceWindowsPropertiesTimeRangesList"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Maintenance windows resource properties."
+      }
+    },
+    "com.azure.synapse#MaintenanceWindowsPropertiesTimeRangesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.synapse#MaintenanceWindowTimeRange"
+      },
+      "traits": {}
     },
     "com.azure.synapse#SqlPoolMaintenanceWindowsGet": {
       "type": "operation",
@@ -15458,24 +16493,6 @@
       "traits": {
         "smithy.api#output": {}
       }
-    },
-    "com.azure.synapse#MaintenanceWindowsProperties": {
-      "type": "structure",
-      "members": {
-        "timeRanges": {
-          "target": "com.azure.synapse#MaintenanceWindowsPropertiesTimeRangesList"
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Maintenance windows resource properties."
-      }
-    },
-    "com.azure.synapse#MaintenanceWindowsPropertiesTimeRangesList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.synapse#MaintenanceWindowTimeRange"
-      },
-      "traits": {}
     },
     "com.azure.synapse#SqlPoolMaintenanceWindowsGetRequest": {
       "type": "structure",
@@ -16024,10 +17041,10 @@
             "smithy.api#documentation": "SQL pool name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "restorePointLabel": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The restore point label to apply",
             "smithy.api#required": {}
           }
         }
@@ -16435,16 +17452,51 @@
             "smithy.api#documentation": "The name of the geo backup policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#GeoBackupPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the geo backup policy.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#GeoBackupPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.synapse#GeoBackupPolicyPropertiesInputState",
+          "traits": {
+            "smithy.api#documentation": "The state of the geo backup policy.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the geo backup policy."
+      }
+    },
+    "com.azure.synapse#GeoBackupPolicyPropertiesInputState": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state of the geo backup policy."
       }
     },
     "com.azure.synapse#SqlPoolGeoBackupPoliciesCreateOrUpdateRequestGeoBackupPolicyName": {
@@ -17618,16 +18670,159 @@
             "smithy.api#documentation": "SQL pool name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.synapse#SqlPoolsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "sku": {
+          "target": "com.azure.synapse#Sku",
+          "traits": {
+            "smithy.api#documentation": "SQL pool SKU"
+          }
+        },
+        "properties": {
+          "target": "com.azure.synapse#SqlPoolResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "SQL pool properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#SqlPoolResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "maxSizeBytes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum size in bytes"
+          }
+        },
+        "collation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Collation mode"
+          }
+        },
+        "sourceDatabaseId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source database to create from"
+          }
+        },
+        "recoverableDatabaseId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Backup database to restore from"
+          }
+        },
+        "provisioningState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource state"
+          }
+        },
+        "restorePointInTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Snapshot time to restore"
+          }
+        },
+        "createMode": {
+          "target": "com.azure.synapse#SqlPoolResourcePropertiesInputCreateMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the mode of sql pool creation.\n\nDefault: regular sql pool creation.\n\nPointInTimeRestore: Creates a sql pool by restoring a point in time backup of an existing sql pool. sourceDatabaseId must be specified as the resource ID of the existing sql pool, and restorePointInTime must be specified.\n\nRecovery: Creates a sql pool by a geo-replicated backup. sourceDatabaseId  must be specified as the recoverableDatabaseId to restore.\n\nRestore: Creates a sql pool by restoring a backup of a deleted sql  pool. SourceDatabaseId should be the sql pool's original resource ID. SourceDatabaseId and sourceDatabaseDeletionDate must be specified."
+          }
+        },
+        "storageAccountType": {
+          "target": "com.azure.synapse#SqlPoolResourcePropertiesInputStorageAccountType",
+          "traits": {
+            "smithy.api#documentation": "The storage account type used to store backups for this sql pool."
+          }
+        },
+        "sourceDatabaseDeletionDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the time that the sql pool was deleted"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a SQL Analytics pool"
+      }
+    },
+    "com.azure.synapse#SqlPoolResourcePropertiesInputStorageAccountType": {
+      "type": "enum",
+      "members": {
+        "GRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GRS"
+          }
+        },
+        "LRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LRS"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage account type used to store backups for this sql pool."
+      }
+    },
+    "com.azure.synapse#SqlPoolResourcePropertiesInputCreateMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "POINTINTIMERESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PointInTimeRestore"
+          }
+        },
+        "RECOVERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Recovery"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Restore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the mode of sql pool creation.\n\nDefault: regular sql pool creation.\n\nPointInTimeRestore: Creates a sql pool by restoring a point in time backup of an existing sql pool. sourceDatabaseId must be specified as the resource ID of the existing sql pool, and restorePointInTime must be specified.\n\nRecovery: Creates a sql pool by a geo-replicated backup. sourceDatabaseId  must be specified as the recoverableDatabaseId to restore.\n\nRestore: Creates a sql pool by restoring a backup of a deleted sql  pool. SourceDatabaseId should be the sql pool's original resource ID. SourceDatabaseId and sourceDatabaseDeletionDate must be specified."
+      }
+    },
+    "com.azure.synapse#SqlPoolsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.synapse#SqlPoolsCreate": {
@@ -17747,16 +18942,46 @@
             "smithy.api#documentation": "SQL pool name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.synapse#SqlPoolsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.synapse#Sku",
+          "traits": {
+            "smithy.api#documentation": "SQL pool SKU"
+          }
+        },
+        "properties": {
+          "target": "com.azure.synapse#SqlPoolResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "SQL pool properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#SqlPoolsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.synapse#SqlPoolsGet": {
@@ -18105,11 +19330,10 @@
             "smithy.api#documentation": "The name of the dedicated sql minimal tls settings."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#DedicatedSQLminimalTlsSettingsProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -18944,16 +20168,56 @@
             "smithy.api#documentation": "The name of the encryption protector."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#EncryptionProtectorPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#EncryptionProtectorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "serverKeyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the server key."
+          }
+        },
+        "serverKeyType": {
+          "target": "com.azure.synapse#EncryptionProtectorPropertiesInputServerKeyType",
+          "traits": {
+            "smithy.api#documentation": "The encryption protector type like 'ServiceManaged', 'AzureKeyVault'.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for an encryption protector execution."
+      }
+    },
+    "com.azure.synapse#EncryptionProtectorPropertiesInputServerKeyType": {
+      "type": "enum",
+      "members": {
+        "SERVICEMANAGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServiceManaged"
+          }
+        },
+        "AZUREKEYVAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureKeyVault"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The encryption protector type like 'ServiceManaged', 'AzureKeyVault'."
       }
     },
     "com.azure.synapse#WorkspaceManagedSqlServerEncryptionProtectorCreateOrUpdateRequestEncryptionProtectorName": {
@@ -19385,11 +20649,10 @@
             "smithy.api#documentation": "The name of the vulnerability assessment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#ServerVulnerabilityAssessmentProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -19811,16 +21074,110 @@
             "smithy.api#documentation": "The name of the security alert policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#ServerSecurityAlertPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#ServerSecurityAlertPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.synapse#ServerSecurityAlertPolicyPropertiesInputState",
+          "traits": {
+            "smithy.api#documentation": "Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific server",
+            "smithy.api#required": {}
+          }
+        },
+        "disabledAlerts": {
+          "target": "com.azure.synapse#ServerSecurityAlertPolicyPropertiesInputDisabledAlertsList",
+          "traits": {
+            "smithy.api#documentation": "Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action"
+          }
+        },
+        "emailAddresses": {
+          "target": "com.azure.synapse#ServerSecurityAlertPolicyPropertiesInputEmailAddressesList",
+          "traits": {
+            "smithy.api#documentation": "Specifies an array of e-mail addresses to which the alert is sent."
+          }
+        },
+        "emailAccountAdmins": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies that the alert is sent to the account administrators."
+          }
+        },
+        "storageEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs."
+          }
+        },
+        "storageAccountAccessKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the identifier key of the Threat Detection audit storage account."
+          }
+        },
+        "retentionDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of days to keep in the Threat Detection audit logs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a security alert policy."
+      }
+    },
+    "com.azure.synapse#ServerSecurityAlertPolicyPropertiesInputEmailAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies an array of e-mail addresses to which the alert is sent."
+      }
+    },
+    "com.azure.synapse#ServerSecurityAlertPolicyPropertiesInputDisabledAlertsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action"
+      }
+    },
+    "com.azure.synapse#ServerSecurityAlertPolicyPropertiesInputState": {
+      "type": "enum",
+      "members": {
+        "NEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "New"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific server"
       }
     },
     "com.azure.synapse#WorkspaceManagedSqlServerSecurityAlertPolicyCreateOrUpdateRequestSecurityAlertPolicyName": {
@@ -20240,11 +21597,10 @@
             "smithy.api#documentation": "The name of the blob auditing policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#ExtendedServerBlobAuditingPolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -20663,11 +22019,10 @@
             "smithy.api#documentation": "The name of the blob auditing policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#ServerBlobAuditingPolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -21226,16 +22581,63 @@
             "smithy.api#documentation": "The name of the workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Sql Control Settings for workspace managed identity"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "grantSqlControlToManagedIdentity": {
+          "target": "com.azure.synapse#WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentity",
+          "traits": {
+            "smithy.api#documentation": "Grant sql control to managed identity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Sql Control Settings for workspace managed identity"
+      }
+    },
+    "com.azure.synapse#WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentity": {
+      "type": "structure",
+      "members": {
+        "desiredState": {
+          "target": "com.azure.synapse#WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState",
+          "traits": {
+            "smithy.api#documentation": "Desired state"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Grant sql control to managed identity"
+      }
+    },
+    "com.azure.synapse#WorkspaceManagedIdentitySqlControlSettingsCreateOrUpdateRequestPropertiesGrantSqlControlToManagedIdentityDesiredState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Desired state"
       }
     },
     "com.azure.synapse#WorkspaceManagedIdentitySqlControlSettingsGet": {
@@ -21574,11 +22976,10 @@
             "smithy.api#documentation": "The name of the workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#AadAdminProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Workspace active directory administrator properties"
           }
         }
       },
@@ -21798,11 +23199,10 @@
             "smithy.api#documentation": "The name of the workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.synapse#AadAdminProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Workspace active directory administrator properties"
           }
         }
       },
@@ -22812,16 +24212,203 @@
             "smithy.api#documentation": "The name of the workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.synapse#WorkspacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.synapse#ManagedIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the workspace"
+          }
+        },
+        "properties": {
+          "target": "com.azure.synapse#WorkspacePatchPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Workspace patch properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#WorkspacePatchPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sqlAdministratorLoginPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SQL administrator login password",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "managedVirtualNetworkSettings": {
+          "target": "com.azure.synapse#ManagedVirtualNetworkSettings",
+          "traits": {
+            "smithy.api#documentation": "Managed Virtual Network Settings"
+          }
+        },
+        "workspaceRepositoryConfiguration": {
+          "target": "com.azure.synapse#WorkspaceRepositoryConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Git integration settings"
+          }
+        },
+        "purviewConfiguration": {
+          "target": "com.azure.synapse#PurviewConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Purview Configuration"
+          }
+        },
+        "encryption": {
+          "target": "com.azure.synapse#EncryptionDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "The encryption details of the workspace"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.synapse#WorkspacePatchPropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Enable or Disable public network access to workspace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Workspace patch properties"
+      }
+    },
+    "com.azure.synapse#WorkspacePatchPropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enable or Disable public network access to workspace"
+      }
+    },
+    "com.azure.synapse#EncryptionDetailsInput": {
+      "type": "structure",
+      "members": {
+        "cmk": {
+          "target": "com.azure.synapse#CustomerManagedKeyDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "Customer Managed Key Details"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the encryption associated with the workspace"
+      }
+    },
+    "com.azure.synapse#CustomerManagedKeyDetailsInput": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "com.azure.synapse#WorkspaceKeyDetails",
+          "traits": {
+            "smithy.api#documentation": "The key object of the workspace"
+          }
+        },
+        "kekIdentity": {
+          "target": "com.azure.synapse#KekIdentityProperties",
+          "traits": {
+            "smithy.api#documentation": "Key encryption key"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the customer managed key associated with the workspace"
+      }
+    },
+    "com.azure.synapse#ManagedIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.synapse#ManagedIdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "The type of managed identity for the workspace"
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.synapse#UserAssignedManagedIdentitiesInput",
+          "traits": {
+            "smithy.api#documentation": "The user assigned managed identities."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The workspace managed identity"
+      }
+    },
+    "com.azure.synapse#UserAssignedManagedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.synapse#UserAssignedManagedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The User Assigned Managed Identities."
+      }
+    },
+    "com.azure.synapse#UserAssignedManagedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User Assigned Managed Identity"
+      }
+    },
+    "com.azure.synapse#ManagedIdentityInputType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "SYSTEMASSIGNED_USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned,UserAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of managed identity for the workspace"
+      }
+    },
+    "com.azure.synapse#WorkspacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.synapse#WorkspacesCreateOrUpdate": {
@@ -22933,16 +24520,188 @@
             "smithy.api#documentation": "The name of the workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.synapse#WorkspacesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.synapse#WorkspacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Workspace resource properties"
+          }
+        },
+        "identity": {
+          "target": "com.azure.synapse#ManagedIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity of the workspace"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.synapse#WorkspacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "defaultDataLakeStorage": {
+          "target": "com.azure.synapse#DataLakeStorageAccountDetails",
+          "traits": {
+            "smithy.api#documentation": "Workspace default data lake storage account details"
+          }
+        },
+        "sqlAdministratorLoginPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SQL administrator login password",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "managedResourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Workspace managed resource group. The resource group name uniquely identifies the resource group within the user subscriptionId. The resource group name must be no longer than 90 characters long, and must be alphanumeric characters (Char.IsLetterOrDigit()) and '-', '_', '(', ')' and'.'. Note that the name cannot end with '.'"
+          }
+        },
+        "sqlAdministratorLogin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Login for workspace SQL active directory administrator"
+          }
+        },
+        "virtualNetworkProfile": {
+          "target": "com.azure.synapse#VirtualNetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "Virtual Network profile"
+          }
+        },
+        "managedVirtualNetwork": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Setting this to 'default' will ensure that all compute for this workspace is in a virtual network managed on behalf of the user."
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.synapse#WorkspacePropertiesInputPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "Private endpoint connections to the workspace"
+          }
+        },
+        "encryption": {
+          "target": "com.azure.synapse#EncryptionDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "The encryption details of the workspace"
+          }
+        },
+        "managedVirtualNetworkSettings": {
+          "target": "com.azure.synapse#ManagedVirtualNetworkSettings",
+          "traits": {
+            "smithy.api#documentation": "Managed Virtual Network Settings"
+          }
+        },
+        "workspaceRepositoryConfiguration": {
+          "target": "com.azure.synapse#WorkspaceRepositoryConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Git integration settings"
+          }
+        },
+        "purviewConfiguration": {
+          "target": "com.azure.synapse#PurviewConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Purview Configuration"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.synapse#WorkspacePropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Enable or Disable public network access to workspace"
+          }
+        },
+        "cspWorkspaceAdminProperties": {
+          "target": "com.azure.synapse#CspWorkspaceAdminProperties",
+          "traits": {
+            "smithy.api#documentation": "Initial workspace AAD admin properties for a CSP subscription"
+          }
+        },
+        "azureADOnlyAuthentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable or Disable AzureADOnlyAuthentication on All Workspace subresource"
+          }
+        },
+        "trustedServiceBypassEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is trustedServiceBypassEnabled for the workspace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Workspace properties"
+      }
+    },
+    "com.azure.synapse#WorkspacePropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enable or Disable public network access to workspace"
+      }
+    },
+    "com.azure.synapse#WorkspacePropertiesInputPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.synapse#WorkspacePropertiesInputPrivateEndpointConnectionsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Private endpoint connections to the workspace"
+      }
+    },
+    "com.azure.synapse#WorkspacePropertiesInputPrivateEndpointConnectionsItem": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.synapse#PrivateEndpointConnectionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Private endpoint connection properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A private endpoint connection"
+      }
+    },
+    "com.azure.synapse#WorkspacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.synapse#WorkspacesGet": {

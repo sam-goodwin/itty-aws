@@ -39,8 +39,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -48,8 +47,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -105,15 +103,11 @@ export const ScoreEntity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScoreEntity" }) as any as S.Schema<ScoreEntity>;
 
 /** The aggregation level of the score. */
-export type TimeSeriesEntityItemAggregationLevel =
-  | "week"
-  | "day"
-  | "month"
-  | (string & {});
+export type TimeSeriesEntityItemAggregationLevel = "week" | "day" | "month";
 export const TimeSeriesEntityItemAggregationLevel = /*@__PURE__*/ S.String;
 
 /** The past score data */
-export type TimeSeriesEntityItemScoreHistoryList = ScoreEntity[];
+export type TimeSeriesEntityItemScoreHistoryList = ReadonlyArray<ScoreEntity>;
 export const TimeSeriesEntityItemScoreHistoryList = /*@__PURE__*/ S.Array(
   ScoreEntity,
 ) as any as S.Schema<TimeSeriesEntityItemScoreHistoryList>;
@@ -135,7 +129,7 @@ export const TimeSeriesEntityItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TimeSeriesEntityItem>;
 
 /** The historic data at different aggregation levels. */
-export type TimeSeriesEntity = TimeSeriesEntityItem[];
+export type TimeSeriesEntity = ReadonlyArray<TimeSeriesEntityItem>;
 export const TimeSeriesEntity = /*@__PURE__*/ S.Array(
   TimeSeriesEntityItem,
 ) as any as S.Schema<TimeSeriesEntity>;
@@ -241,7 +235,7 @@ export const AdvisorScoreEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdvisorScoreEntity>;
 
 /** The list of operations. */
-export type AdvisorScoreResponseValueList = AdvisorScoreEntity[];
+export type AdvisorScoreResponseValueList = ReadonlyArray<AdvisorScoreEntity>;
 export const AdvisorScoreResponseValueList = /*@__PURE__*/ S.Array(
   AdvisorScoreEntity,
 ) as any as S.Schema<AdvisorScoreResponseValueList>;
@@ -259,49 +253,12 @@ export const AdvisorScoreResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdvisorScoreResponse>;
 
 export type ConfigurationsCreateInResourceGroupRequestConfigurationName =
-  | "default"
-  | (string & {});
+  "default";
 export const ConfigurationsCreateInResourceGroupRequestConfigurationName =
   /*@__PURE__*/ S.String;
 
-export interface ConfigurationsCreateInResourceGroupRequest {
-  /** The Azure subscription ID. */
-  subscriptionId: string;
-  /** The name of the Azure resource group. */
-  resourceGroup: string;
-  /** Advisor configuration name. Value must be 'default' */
-  configurationName: ConfigurationsCreateInResourceGroupRequestConfigurationName;
-  body: unknown;
-}
-export const ConfigurationsCreateInResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroup: S.String.pipe(T.Label()),
-      configurationName:
-        ConfigurationsCreateInResourceGroupRequestConfigurationName.pipe(
-          T.Label(),
-        ),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Advisor/configurations/{configurationName}",
-        code: 200,
-        apiVersion: "2025-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationsCreateInResourceGroupRequest",
-  }) as any as S.Schema<ConfigurationsCreateInResourceGroupRequest>;
-
 /** Minimum percentage threshold for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 5 (default), 10, 15 or 20. */
-export type ConfigDataPropertiesLowCpuThreshold =
-  | "5"
-  | "10"
-  | "15"
-  | "20"
-  | (string & {});
+export type ConfigDataPropertiesLowCpuThreshold = "5" | "10" | "15" | "20";
 export const ConfigDataPropertiesLowCpuThreshold = /*@__PURE__*/ S.String;
 
 /** Minimum duration for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 7 (default), 14, 21, 30, 60 or 90. */
@@ -311,8 +268,7 @@ export type ConfigDataPropertiesDuration =
   | "21"
   | "30"
   | "60"
-  | "90"
-  | (string & {});
+  | "90";
 export const ConfigDataPropertiesDuration = /*@__PURE__*/ S.String;
 
 export type DigestConfigCategoriesItem =
@@ -320,18 +276,18 @@ export type DigestConfigCategoriesItem =
   | "Security"
   | "Performance"
   | "Cost"
-  | "OperationalExcellence"
-  | (string & {});
+  | "OperationalExcellence";
 export const DigestConfigCategoriesItem = /*@__PURE__*/ S.String;
 
 /** Categories to send digest for. If categories are not provided, then digest will be sent for all categories. */
-export type DigestConfigCategoriesList = DigestConfigCategoriesItem[];
+export type DigestConfigCategoriesList =
+  ReadonlyArray<DigestConfigCategoriesItem>;
 export const DigestConfigCategoriesList = /*@__PURE__*/ S.Array(
   DigestConfigCategoriesItem,
 ) as any as S.Schema<DigestConfigCategoriesList>;
 
 /** State of digest configuration. */
-export type DigestConfigState = "Active" | "Disabled" | (string & {});
+export type DigestConfigState = "Active" | "Disabled";
 export const DigestConfigState = /*@__PURE__*/ S.String;
 
 /** Advisor Digest configuration entity */
@@ -361,7 +317,7 @@ export const DigestConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DigestConfig" }) as any as S.Schema<DigestConfig>;
 
 /** Advisor digest configuration. Valid only for subscriptions */
-export type ConfigDataPropertiesDigestsList = DigestConfig[];
+export type ConfigDataPropertiesDigestsList = ReadonlyArray<DigestConfig>;
 export const ConfigDataPropertiesDigestsList = /*@__PURE__*/ S.Array(
   DigestConfig,
 ) as any as S.Schema<ConfigDataPropertiesDigestsList>;
@@ -387,6 +343,38 @@ export const ConfigDataProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfigDataProperties",
 }) as any as S.Schema<ConfigDataProperties>;
+
+export interface ConfigurationsCreateInResourceGroupRequest {
+  /** The Azure subscription ID. */
+  subscriptionId: string;
+  /** The name of the Azure resource group. */
+  resourceGroup: string;
+  /** Advisor configuration name. Value must be 'default' */
+  configurationName: ConfigurationsCreateInResourceGroupRequestConfigurationName;
+  /** The Advisor configuration data structure. */
+  properties?: ConfigDataProperties;
+}
+export const ConfigurationsCreateInResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroup: S.String.pipe(T.Label()),
+      configurationName:
+        ConfigurationsCreateInResourceGroupRequestConfigurationName.pipe(
+          T.Label(),
+        ),
+      properties: S.optional(ConfigDataProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Advisor/configurations/{configurationName}",
+        code: 200,
+        apiVersion: "2025-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ConfigurationsCreateInResourceGroupRequest",
+  }) as any as S.Schema<ConfigurationsCreateInResourceGroupRequest>;
 
 export interface ConfigurationsCreateInResourceGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -414,8 +402,7 @@ export const ConfigurationsCreateInResourceGroupResponse =
   }) as any as S.Schema<ConfigurationsCreateInResourceGroupResponse>;
 
 export type ConfigurationsCreateInSubscriptionRequestConfigurationName =
-  | "default"
-  | (string & {});
+  "default";
 export const ConfigurationsCreateInSubscriptionRequestConfigurationName =
   /*@__PURE__*/ S.String;
 
@@ -424,7 +411,8 @@ export interface ConfigurationsCreateInSubscriptionRequest {
   subscriptionId: string;
   /** Advisor configuration name. Value must be 'default' */
   configurationName: ConfigurationsCreateInSubscriptionRequestConfigurationName;
-  body: unknown;
+  /** The Advisor configuration data structure. */
+  properties?: ConfigDataProperties;
 }
 export const ConfigurationsCreateInSubscriptionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -434,7 +422,7 @@ export const ConfigurationsCreateInSubscriptionRequest =
         ConfigurationsCreateInSubscriptionRequestConfigurationName.pipe(
           T.Label(),
         ),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ConfigDataProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -519,7 +507,7 @@ export const ConfigData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigData" }) as any as S.Schema<ConfigData>;
 
 /** The list of configurations. */
-export type ConfigurationListResultValueList = ConfigData[];
+export type ConfigurationListResultValueList = ReadonlyArray<ConfigData>;
 export const ConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   ConfigData,
 ) as any as S.Schema<ConfigurationListResultValueList>;
@@ -613,7 +601,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntity>;
 
 /** The list of operations. */
-export type OperationEntityListResultValueList = OperationEntity[];
+export type OperationEntityListResultValueList = ReadonlyArray<OperationEntity>;
 export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;
@@ -634,15 +622,36 @@ export const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationEntityListResult",
 }) as any as S.Schema<OperationEntityListResult>;
 
+/** Type of the prediction. */
+export type PredictionRequestPropertiesPredictionType = "PredictiveRightsizing";
+export const PredictionRequestPropertiesPredictionType = /*@__PURE__*/ S.String;
+
+/** Properties given for the predictor. */
+export interface PredictionRequestProperties {
+  /** Type of the prediction. */
+  predictionType?: PredictionRequestPropertiesPredictionType;
+  /** Extended properties are arguments specific for each prediction type. */
+  extendedProperties?: unknown;
+}
+export const PredictionRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    predictionType: S.optional(PredictionRequestPropertiesPredictionType),
+    extendedProperties: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "PredictionRequestProperties",
+}) as any as S.Schema<PredictionRequestProperties>;
+
 export interface PredictRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
-  body: unknown;
+  /** Request properties for prediction recommendation. */
+  properties?: PredictionRequestProperties;
 }
 export const PredictRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(PredictionRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -655,8 +664,7 @@ export const PredictRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the prediction. */
 export type PredictionResponsePropertiesPredictionType =
-  | "PredictiveRightsizing"
-  | (string & {});
+  "PredictiveRightsizing";
 export const PredictionResponsePropertiesPredictionType =
   /*@__PURE__*/ S.String;
 
@@ -666,16 +674,11 @@ export type PredictionResponsePropertiesCategory =
   | "Security"
   | "Performance"
   | "Cost"
-  | "OperationalExcellence"
-  | (string & {});
+  | "OperationalExcellence";
 export const PredictionResponsePropertiesCategory = /*@__PURE__*/ S.String;
 
 /** The business impact of the recommendation. */
-export type PredictionResponsePropertiesImpact =
-  | "High"
-  | "Medium"
-  | "Low"
-  | (string & {});
+export type PredictionResponsePropertiesImpact = "High" | "Medium" | "Low";
 export const PredictionResponsePropertiesImpact = /*@__PURE__*/ S.String;
 
 /** A summary of the recommendation. */
@@ -758,20 +761,18 @@ export const RecommendationMetadataGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationMetadataGetRequest>;
 
 /** The list of keys on which this entity depends on. */
-export type MetadataEntityPropertiesDependsOnList = string[];
+export type MetadataEntityPropertiesDependsOnList = ReadonlyArray<string>;
 export const MetadataEntityPropertiesDependsOnList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
 
-export type MetadataEntityPropertiesApplicableScenariosItem =
-  | "Alerts"
-  | (string & {});
+export type MetadataEntityPropertiesApplicableScenariosItem = "Alerts";
 export const MetadataEntityPropertiesApplicableScenariosItem =
   /*@__PURE__*/ S.String;
 
 /** The list of scenarios applicable to this metadata entity. */
 export type MetadataEntityPropertiesApplicableScenariosList =
-  MetadataEntityPropertiesApplicableScenariosItem[];
+  ReadonlyArray<MetadataEntityPropertiesApplicableScenariosItem>;
 export const MetadataEntityPropertiesApplicableScenariosList =
   /*@__PURE__*/ S.Array(
     MetadataEntityPropertiesApplicableScenariosItem,
@@ -795,7 +796,7 @@ export const MetadataSupportedValueDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported values. */
 export type MetadataEntityPropertiesSupportedValuesList =
-  MetadataSupportedValueDetail[];
+  ReadonlyArray<MetadataSupportedValueDetail>;
 export const MetadataEntityPropertiesSupportedValuesList =
   /*@__PURE__*/ S.Array(
     MetadataSupportedValueDetail,
@@ -865,7 +866,7 @@ export const RecommendationMetadataListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationMetadataListRequest>;
 
 /** The list of metadata entities. */
-export type MetadataEntityListResultValueList = MetadataEntity[];
+export type MetadataEntityListResultValueList = ReadonlyArray<MetadataEntity>;
 export const MetadataEntityListResultValueList = /*@__PURE__*/ S.Array(
   MetadataEntity,
 ) as any as S.Schema<MetadataEntityListResultValueList>;
@@ -940,8 +941,7 @@ export type RecommendationPropertiesCategory =
   | "Security"
   | "Performance"
   | "Cost"
-  | "OperationalExcellence"
-  | (string & {});
+  | "OperationalExcellence";
 export const RecommendationPropertiesCategory = /*@__PURE__*/ S.String;
 
 /** The sub-category of the recommendation. */
@@ -954,16 +954,11 @@ export type RecommendationPropertiesControl =
   | "ServiceUpgradeAndRetirement"
   | "Other"
   | "PrioritizedRecommendations"
-  | "Personalized"
-  | (string & {});
+  | "Personalized";
 export const RecommendationPropertiesControl = /*@__PURE__*/ S.String;
 
 /** The business impact of the recommendation. */
-export type RecommendationPropertiesImpact =
-  | "High"
-  | "Medium"
-  | "Low"
-  | (string & {});
+export type RecommendationPropertiesImpact = "High" | "Medium" | "Low";
 export const RecommendationPropertiesImpact = /*@__PURE__*/ S.String;
 
 /** The recommendation metadata. */
@@ -976,15 +971,11 @@ export const RecommendationPropertiesMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RecommendationPropertiesMetadataMap>;
 
 /** The potential risk of not implementing the recommendation. */
-export type RecommendationPropertiesRisk =
-  | "Error"
-  | "Warning"
-  | "None"
-  | (string & {});
+export type RecommendationPropertiesRisk = "Error" | "Warning" | "None";
 export const RecommendationPropertiesRisk = /*@__PURE__*/ S.String;
 
 /** The list of snoozed and dismissed rules for the recommendation. */
-export type RecommendationPropertiesSuppressionIdsList = string[];
+export type RecommendationPropertiesSuppressionIdsList = ReadonlyArray<string>;
 export const RecommendationPropertiesSuppressionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecommendationPropertiesSuppressionIdsList>;
@@ -1041,7 +1032,7 @@ export const RecommendationPropertiesActionsItemMap = /*@__PURE__*/ S.Record(
 
 /** The list of recommended actions to implement recommendation. */
 export type RecommendationPropertiesActionsList =
-  RecommendationPropertiesActionsItemMap[];
+  ReadonlyArray<RecommendationPropertiesActionsItemMap>;
 export const RecommendationPropertiesActionsList = /*@__PURE__*/ S.Array(
   RecommendationPropertiesActionsItemMap,
 ) as any as S.Schema<RecommendationPropertiesActionsList>;
@@ -1248,7 +1239,7 @@ export const ResourceRecommendationBase = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of recommendations. */
 export type ResourceRecommendationBaseListResultValueList =
-  ResourceRecommendationBase[];
+  ReadonlyArray<ResourceRecommendationBase>;
 export const ResourceRecommendationBaseListResultValueList =
   /*@__PURE__*/ S.Array(
     ResourceRecommendationBase,
@@ -1271,6 +1262,22 @@ export const ResourceRecommendationBaseListResult = /*@__PURE__*/ S.suspend(
   identifier: "ResourceRecommendationBaseListResult",
 }) as any as S.Schema<ResourceRecommendationBaseListResult>;
 
+/** The properties of the suppression. */
+export interface SuppressionPropertiesInput {
+  /** The GUID of the suppression. */
+  suppressionId?: string;
+  /** The duration for which the suppression is valid. */
+  ttl?: string;
+}
+export const SuppressionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    suppressionId: S.optional(S.String),
+    ttl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SuppressionPropertiesInput",
+}) as any as S.Schema<SuppressionPropertiesInput>;
+
 export interface SuppressionsCreateRequest {
   /** The fully qualified Azure Resource Manager identifier of the resource to which the recommendation applies. */
   resourceUri: string;
@@ -1278,14 +1285,15 @@ export interface SuppressionsCreateRequest {
   recommendationId: string;
   /** The name of the suppression. */
   name: string;
-  body: unknown;
+  /** The properties of the suppression. */
+  properties?: SuppressionPropertiesInput;
 }
 export const SuppressionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     recommendationId: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SuppressionPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1473,7 +1481,8 @@ export const SuppressionContract = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuppressionContract>;
 
 /** The list of suppressions. */
-export type SuppressionContractListResultValueList = SuppressionContract[];
+export type SuppressionContractListResultValueList =
+  ReadonlyArray<SuppressionContract>;
 export const SuppressionContractListResultValueList = /*@__PURE__*/ S.Array(
   SuppressionContract,
 ) as any as S.Schema<SuppressionContractListResultValueList>;

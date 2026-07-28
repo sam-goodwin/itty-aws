@@ -234,7 +234,8 @@
         "objectId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The object id of the user."
+            "smithy.api#documentation": "The object id of the user.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -393,16 +394,105 @@
             "smithy.api#documentation": "The watchlist item id (GUID)"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#WatchlistItemPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Watchlist Item properties"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#WatchlistItemPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "watchlistItemType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the watchlist item"
+          }
+        },
+        "watchlistItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id (a Guid) of the watchlist item"
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenantId to which the watchlist item belongs to"
+          }
+        },
+        "isDeleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A flag that indicates if the watchlist item is deleted or not"
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time the watchlist item was created"
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the watchlist item was updated"
+          }
+        },
+        "createdBy": {
+          "target": "com.azure.securityinsights#UserInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Describes a user that created the watchlist item"
+          }
+        },
+        "updatedBy": {
+          "target": "com.azure.securityinsights#UserInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Describes a user that updated the watchlist item"
+          }
+        },
+        "itemsKeyValue": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "key-value pairs for a watchlist item",
+            "smithy.api#required": {}
+          }
+        },
+        "entityMapping": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "key-value pairs for a watchlist item entity mapping"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes watchlist item properties"
+      }
+    },
+    "com.azure.securityinsights#UserInfoInput": {
+      "type": "structure",
+      "members": {
+        "objectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object id of the user.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "User information that made some action"
       }
     },
     "com.azure.securityinsights#WatchlistItemsGet": {
@@ -1035,16 +1125,167 @@
             "smithy.api#documentation": "The watchlist alias"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#WatchlistPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Watchlist properties"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#WatchlistPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "watchlistId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id (a Guid) of the watchlist"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the watchlist",
+            "smithy.api#required": {}
+          }
+        },
+        "provider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The provider of the watchlist",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filename of the watchlist, called 'source'"
+          }
+        },
+        "sourceType": {
+          "target": "com.azure.securityinsights#SourceType",
+          "traits": {
+            "smithy.api#documentation": "The sourceType of the watchlist"
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time the watchlist was created"
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the watchlist was updated"
+          }
+        },
+        "createdBy": {
+          "target": "com.azure.securityinsights#UserInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Describes a user that created the watchlist"
+          }
+        },
+        "updatedBy": {
+          "target": "com.azure.securityinsights#UserInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Describes a user that updated the watchlist"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the watchlist"
+          }
+        },
+        "watchlistType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the watchlist"
+          }
+        },
+        "watchlistAlias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The alias of the watchlist"
+          }
+        },
+        "isDeleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A flag that indicates if the watchlist is deleted or not"
+          }
+        },
+        "labels": {
+          "target": "com.azure.securityinsights#WatchlistPropertiesInputLabelsList",
+          "traits": {
+            "smithy.api#documentation": "List of labels relevant to this watchlist"
+          }
+        },
+        "defaultDuration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default duration of a watchlist (in ISO 8601 duration format)"
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenantId where the watchlist belongs to"
+          }
+        },
+        "numberOfLinesToSkip": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of lines in a csv/tsv content to skip before the header"
+          }
+        },
+        "rawContent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint"
+          }
+        },
+        "itemsSearchKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address.",
+            "smithy.api#required": {}
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the raw content. Example : text/csv or text/tsv"
+          }
+        },
+        "uploadStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The status of the Watchlist upload : New, InProgress or Complete. **Note** : When a Watchlist upload status is InProgress, the Watchlist cannot be deleted"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes watchlist properties"
+      }
+    },
+    "com.azure.securityinsights#WatchlistPropertiesInputLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of labels relevant to this watchlist"
       }
     },
     "com.azure.securityinsights#WatchlistsGet": {
@@ -1417,16 +1658,187 @@
             "smithy.api#documentation": "The name of the monitor workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "pageSize": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Page size"
+          }
+        },
+        "minConfidence": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Minimum confidence."
+          }
+        },
+        "maxConfidence": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum confidence."
+          }
+        },
+        "minValidUntil": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start time for ValidUntil filter."
+          }
+        },
+        "maxValidUntil": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time for ValidUntil filter."
+          }
+        },
+        "includeDisabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Parameter to include/exclude disabled indicators."
+          }
+        },
+        "sortBy": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList",
+          "traits": {
+            "smithy.api#documentation": "Columns to sort by and sorting order"
+          }
+        },
+        "sources": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList",
+          "traits": {
+            "smithy.api#documentation": "Sources of threat intelligence indicators"
+          }
+        },
+        "patternTypes": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList",
+          "traits": {
+            "smithy.api#documentation": "Pattern types"
+          }
+        },
+        "threatTypes": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList",
+          "traits": {
+            "smithy.api#documentation": "Threat types of threat intelligence indicators"
+          }
+        },
+        "ids": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList",
+          "traits": {
+            "smithy.api#documentation": "Ids of threat intelligence indicators"
+          }
+        },
+        "keywords": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList",
+          "traits": {
+            "smithy.api#documentation": "Keywords for searching threat intelligence indicators"
+          }
+        },
+        "skipToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Skip token."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Keywords for searching threat intelligence indicators"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ids of threat intelligence indicators"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Threat types of threat intelligence indicators"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Pattern types"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Sources of threat intelligence indicators"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityinsights#ThreatIntelligenceSortingCriteria"
+      },
+      "traits": {
+        "smithy.api#documentation": "Columns to sort by and sorting order"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceSortingCriteria": {
+      "type": "structure",
+      "members": {
+        "itemKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Column name"
+          }
+        },
+        "sortOrder": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceSortingOrder",
+          "traits": {
+            "smithy.api#documentation": "Sorting order (ascending/descending/unsorted)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of available columns for sorting"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceSortingOrder": {
+      "type": "enum",
+      "members": {
+        "UNSORTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unsorted"
+          }
+        },
+        "ASCENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ascending"
+          }
+        },
+        "DESCENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "descending"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Sorting order (ascending/descending/unsorted)."
       }
     },
     "com.azure.securityinsights#ThreatIntelligenceIndicatorMetricsList": {
@@ -1696,16 +2108,451 @@
             "smithy.api#documentation": "Threat intelligence indicator name field."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceResourceInnerKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Threat Intelligence Entity properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "threatIntelligenceTags": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList",
+          "traits": {
+            "smithy.api#documentation": "List of tags"
+          }
+        },
+        "lastUpdatedTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last updated time in UTC"
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source of a threat intelligence entity"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of a threat intelligence entity"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of a threat intelligence entity"
+          }
+        },
+        "indicatorTypes": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList",
+          "traits": {
+            "smithy.api#documentation": "Indicator types of threat intelligence entities"
+          }
+        },
+        "pattern": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pattern of a threat intelligence entity"
+          }
+        },
+        "patternType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pattern type of a threat intelligence entity"
+          }
+        },
+        "patternVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pattern version of a threat intelligence entity"
+          }
+        },
+        "killChainPhases": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList",
+          "traits": {
+            "smithy.api#documentation": "Kill chain phases"
+          }
+        },
+        "parsedPattern": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputParsedPatternList",
+          "traits": {
+            "smithy.api#documentation": "Parsed patterns"
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "External ID of threat intelligence entity"
+          }
+        },
+        "createdByRef": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Created by reference of threat intelligence entity"
+          }
+        },
+        "defanged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is threat intelligence entity defanged"
+          }
+        },
+        "externalLastUpdatedTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "External last updated time in UTC"
+          }
+        },
+        "externalReferences": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList",
+          "traits": {
+            "smithy.api#documentation": "External References"
+          }
+        },
+        "granularMarkings": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList",
+          "traits": {
+            "smithy.api#documentation": "Granular Markings"
+          }
+        },
+        "labels": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputLabelsList",
+          "traits": {
+            "smithy.api#documentation": "Labels  of threat intelligence entity"
+          }
+        },
+        "revoked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is threat intelligence entity revoked"
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Confidence of threat intelligence entity"
+          }
+        },
+        "objectMarkingRefs": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList",
+          "traits": {
+            "smithy.api#documentation": "Threat intelligence entity object marking references"
+          }
+        },
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Language of threat intelligence entity"
+          }
+        },
+        "threatTypes": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputThreatTypesList",
+          "traits": {
+            "smithy.api#documentation": "Threat types"
+          }
+        },
+        "validFrom": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Valid from"
+          }
+        },
+        "validUntil": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Valid until"
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Created by"
+          }
+        },
+        "modified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Modified by"
+          }
+        },
+        "extensions": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputExtensionsMap",
+          "traits": {
+            "smithy.api#documentation": "Extensions map"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes threat intelligence entity properties"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputExtensionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Extensions map"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputThreatTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Threat types"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Threat intelligence entity object marking references"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Labels  of threat intelligence entity"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityinsights#ThreatIntelligenceGranularMarkingModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "Granular Markings"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceGranularMarkingModel": {
+      "type": "structure",
+      "members": {
+        "language": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Language granular marking model"
+          }
+        },
+        "markingRef": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "marking reference granular marking model"
+          }
+        },
+        "selectors": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceGranularMarkingModelSelectorsList",
+          "traits": {
+            "smithy.api#documentation": "granular marking model selectors"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes threat granular marking model entity"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceGranularMarkingModelSelectorsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "granular marking model selectors"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityinsights#ThreatIntelligenceExternalReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "External References"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceExternalReference": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "External reference description"
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "External reference ID"
+          }
+        },
+        "sourceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "External reference source name"
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "External reference URL"
+          }
+        },
+        "hashes": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceExternalReferenceHashesMap",
+          "traits": {
+            "smithy.api#documentation": "External reference hashes"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes external reference"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceExternalReferenceHashesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "External reference hashes"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputParsedPatternList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityinsights#ThreatIntelligenceParsedPattern"
+      },
+      "traits": {
+        "smithy.api#documentation": "Parsed patterns"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceParsedPattern": {
+      "type": "structure",
+      "members": {
+        "patternTypeKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pattern type key"
+          }
+        },
+        "patternTypeValues": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceParsedPatternPatternTypeValuesList",
+          "traits": {
+            "smithy.api#documentation": "Pattern type keys"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes parsed pattern entity"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceParsedPatternPatternTypeValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityinsights#ThreatIntelligenceParsedPatternTypeValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "Pattern type keys"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceParsedPatternTypeValue": {
+      "type": "structure",
+      "members": {
+        "valueType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of the value"
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of parsed pattern"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes threat kill chain phase entity"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityinsights#ThreatIntelligenceKillChainPhase"
+      },
+      "traits": {
+        "smithy.api#documentation": "Kill chain phases"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceKillChainPhase": {
+      "type": "structure",
+      "members": {
+        "killChainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kill chainName name"
+          }
+        },
+        "phaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Phase name"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes threat kill chain phase entity"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicator types of threat intelligence entities"
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of tags"
       }
     },
     "com.azure.securityinsights#ThreatIntelligenceIndicatorAppendTags": {
@@ -1762,16 +2609,24 @@
             "smithy.api#documentation": "Threat intelligence indicator name field."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "threatIntelligenceTags": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of tags to be appended."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of tags to be appended."
       }
     },
     "com.azure.securityinsights#ThreatIntelligenceIndicatorDelete": {
@@ -1932,11 +2787,23 @@
             "smithy.api#documentation": "Threat intelligence indicator name field."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceResourceInnerKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Threat Intelligence Entity properties"
           }
         }
       },
@@ -2218,11 +3085,23 @@
             "smithy.api#documentation": "The name of the monitor workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceResourceInnerKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityinsights#ThreatIntelligenceIndicatorPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Threat Intelligence Entity properties"
           }
         }
       },
@@ -2366,16 +3245,102 @@
             "smithy.api#documentation": "Source control Id"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#RepositoryAccessObject",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "RepositoryAccess properties",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#RepositoryAccessObject": {
+      "type": "structure",
+      "members": {
+        "repositoryAccess": {
+          "target": "com.azure.securityinsights#RepositoryAccess",
+          "traits": {
+            "smithy.api#documentation": "RepositoryAccess properties",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Credentials to access repository."
+      }
+    },
+    "com.azure.securityinsights#RepositoryAccess": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.securityinsights#RepositoryAccessKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of repository access credentials",
+            "smithy.api#required": {}
+          }
+        },
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OAuth Code. Required when `kind` is `OAuth`"
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OAuth State. Required when `kind` is `OAuth`"
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OAuth ClientId. Required when `kind` is `OAuth`"
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Personal Access Token. Required when `kind` is `PAT`"
+          }
+        },
+        "installationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Application installation ID. Required when `kind` is `App`. Supported by `GitHub` only."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Credentials to access repository."
+      }
+    },
+    "com.azure.securityinsights#RepositoryAccessKind": {
+      "type": "enum",
+      "members": {
+        "OAUTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OAuth"
+          }
+        },
+        "PAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAT"
+          }
+        },
+        "APP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "App"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of repository access credentials"
       }
     },
     "com.azure.securityinsights#SourceControlsCreate": {
@@ -2812,77 +3777,6 @@
         "smithy.api#documentation": "Detail about the webhook object."
       }
     },
-    "com.azure.securityinsights#RepositoryAccess": {
-      "type": "structure",
-      "members": {
-        "kind": {
-          "target": "com.azure.securityinsights#RepositoryAccessKind",
-          "traits": {
-            "smithy.api#documentation": "The kind of repository access credentials",
-            "smithy.api#required": {}
-          }
-        },
-        "code": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "OAuth Code. Required when `kind` is `OAuth`"
-          }
-        },
-        "state": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "OAuth State. Required when `kind` is `OAuth`"
-          }
-        },
-        "clientId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "OAuth ClientId. Required when `kind` is `OAuth`"
-          }
-        },
-        "token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Personal Access Token. Required when `kind` is `PAT`"
-          }
-        },
-        "installationId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Application installation ID. Required when `kind` is `App`. Supported by `GitHub` only."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Credentials to access repository."
-      }
-    },
-    "com.azure.securityinsights#RepositoryAccessKind": {
-      "type": "enum",
-      "members": {
-        "OAUTH": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OAuth"
-          }
-        },
-        "PAT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PAT"
-          }
-        },
-        "APP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "App"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The kind of repository access credentials"
-      }
-    },
     "com.azure.securityinsights#WorkloadIdentityFederation": {
       "type": "structure",
       "members": {
@@ -3115,16 +4009,161 @@
             "smithy.api#documentation": "Source control Id"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#SourceControlPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "source control properties",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#SourceControlPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the source control",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the source control"
+          }
+        },
+        "repoType": {
+          "target": "com.azure.securityinsights#RepoType",
+          "traits": {
+            "smithy.api#documentation": "The repository type of the source control",
+            "smithy.api#required": {}
+          }
+        },
+        "contentTypes": {
+          "target": "com.azure.securityinsights#SourceControlPropertiesInputContentTypesList",
+          "traits": {
+            "smithy.api#documentation": "Array of source control content types.",
+            "smithy.api#required": {}
+          }
+        },
+        "repository": {
+          "target": "com.azure.securityinsights#RepositoryInput",
+          "traits": {
+            "smithy.api#documentation": "Repository metadata.",
+            "smithy.api#required": {}
+          }
+        },
+        "servicePrincipal": {
+          "target": "com.azure.securityinsights#ServicePrincipalInput",
+          "traits": {
+            "smithy.api#documentation": "Service principal metadata."
+          }
+        },
+        "repositoryAccess": {
+          "target": "com.azure.securityinsights#RepositoryAccess",
+          "traits": {
+            "smithy.api#documentation": "Repository access credentials. This is write-only object and it never returns back to a user."
+          }
+        },
+        "repositoryResourceInfo": {
+          "target": "com.azure.securityinsights#RepositoryResourceInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Information regarding the resources created in user's repository."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes source control properties"
+      }
+    },
+    "com.azure.securityinsights#RepositoryResourceInfoInput": {
+      "type": "structure",
+      "members": {
+        "webhook": {
+          "target": "com.azure.securityinsights#WebhookInput",
+          "traits": {
+            "smithy.api#documentation": "The webhook object created for the source-control."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resources created in user's repository for the source-control."
+      }
+    },
+    "com.azure.securityinsights#WebhookInput": {
+      "type": "structure",
+      "members": {
+        "rotateWebhookSecret": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A flag to instruct the backend service to rotate webhook secret."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Detail about the webhook object."
+      }
+    },
+    "com.azure.securityinsights#ServicePrincipalInput": {
+      "type": "structure",
+      "members": {
+        "credentialsExpireOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration time of service principal credentials."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Service principal metadata."
+      }
+    },
+    "com.azure.securityinsights#RepositoryInput": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Url of repository.",
+            "smithy.api#required": {}
+          }
+        },
+        "branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Branch name of repository.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display url of repository."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "metadata of a repository."
+      }
+    },
+    "com.azure.securityinsights#SourceControlPropertiesInputContentTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityinsights#ContentType"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of source control content types."
       }
     },
     "com.azure.securityinsights#SourceControlsGet": {
@@ -3529,11 +4568,17 @@
             "smithy.api#documentation": "Security ML Analytics Settings resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityinsights#SecurityMLAnalyticsSettingsKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
@@ -3942,10 +4987,16 @@
             "smithy.api#documentation": "The Sentinel onboarding state name. Supports - default"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#SentinelOnboardingStateProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The Sentinel onboarding state object"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
@@ -4890,16 +5941,188 @@
             "smithy.api#documentation": "The Metadata name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Etag of the azure resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityinsights#MetadataPropertiesPatch",
+          "traits": {
+            "smithy.api#documentation": "Metadata patch request body"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#MetadataPropertiesPatch": {
+      "type": "structure",
+      "members": {
+        "contentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Can be optionally set for user created content to define dependencies.  If an active content item is made from a template, both will have the same contentId."
+          }
+        },
+        "parentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Full parent resource ID of the content item the metadata is for.  This is the full resource ID including the scope (subscription and resource group)"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of content the metadata is for."
+          }
+        },
+        "source": {
+          "target": "com.azure.securityinsights#MetadataSource",
+          "traits": {
+            "smithy.api#documentation": "Source of the content.  This is where/how it was created."
+          }
+        },
+        "author": {
+          "target": "com.azure.securityinsights#MetadataAuthor",
+          "traits": {
+            "smithy.api#documentation": "The creator of the content item."
+          }
+        },
+        "support": {
+          "target": "com.azure.securityinsights#MetadataSupport",
+          "traits": {
+            "smithy.api#documentation": "Support information for the metadata - type, name, contact information"
+          }
+        },
+        "dependencies": {
+          "target": "com.azure.securityinsights#MetadataDependencies",
+          "traits": {
+            "smithy.api#documentation": "Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats."
+          }
+        },
+        "categories": {
+          "target": "com.azure.securityinsights#MetadataCategories",
+          "traits": {
+            "smithy.api#documentation": "Categories for the solution content item"
+          }
+        },
+        "providers": {
+          "target": "com.azure.securityinsights#MetadataPropertiesPatchProvidersList",
+          "traits": {
+            "smithy.api#documentation": "Providers for the solution content item"
+          }
+        },
+        "firstPublishDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "first publish date of solution content item"
+          }
+        },
+        "lastPublishDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last publish date of solution content item"
+          }
+        },
+        "customVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The custom version of the content. A optional free text"
+          }
+        },
+        "contentSchemaVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema version of the content. Can be used to distinguish between different flow based on the schema version"
+          }
+        },
+        "icon": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the icon identifier. this id can later be fetched from the solution template"
+          }
+        },
+        "threatAnalysisTactics": {
+          "target": "com.azure.securityinsights#MetadataPropertiesPatchThreatAnalysisTacticsList",
+          "traits": {
+            "smithy.api#documentation": "the tactics the resource covers"
+          }
+        },
+        "threatAnalysisTechniques": {
+          "target": "com.azure.securityinsights#MetadataPropertiesPatchThreatAnalysisTechniquesList",
+          "traits": {
+            "smithy.api#documentation": "the techniques the resource covers, these have to be aligned with the tactics being used"
+          }
+        },
+        "previewImages": {
+          "target": "com.azure.securityinsights#MetadataPropertiesPatchPreviewImagesList",
+          "traits": {
+            "smithy.api#documentation": "preview image file names. These will be taken from the solution artifacts"
+          }
+        },
+        "previewImagesDark": {
+          "target": "com.azure.securityinsights#MetadataPropertiesPatchPreviewImagesDarkList",
+          "traits": {
+            "smithy.api#documentation": "preview image file names. These will be taken from the solution artifacts. used for dark theme support"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata property bag for patch requests.  This is the same as the MetadataProperties, but with nothing required"
+      }
+    },
+    "com.azure.securityinsights#MetadataPropertiesPatchPreviewImagesDarkList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "preview image file names. These will be taken from the solution artifacts. used for dark theme support"
+      }
+    },
+    "com.azure.securityinsights#MetadataPropertiesPatchPreviewImagesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "preview image file names. These will be taken from the solution artifacts"
+      }
+    },
+    "com.azure.securityinsights#MetadataPropertiesPatchThreatAnalysisTechniquesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "the techniques the resource covers, these have to be aligned with the tactics being used"
+      }
+    },
+    "com.azure.securityinsights#MetadataPropertiesPatchThreatAnalysisTacticsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "the tactics the resource covers"
+      }
+    },
+    "com.azure.securityinsights#MetadataPropertiesPatchProvidersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Providers for the solution content item"
       }
     },
     "com.azure.securityinsights#MetadataCreate": {
@@ -5000,11 +6223,16 @@
             "smithy.api#documentation": "The Metadata name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#MetadataProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Metadata properties"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
@@ -5385,10 +6613,10 @@
             "smithy.api#documentation": "The name of the workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#RepositoryAccessObject",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "RepositoryAccess properties",
             "smithy.api#required": {}
           }
         }
@@ -5675,16 +6903,62 @@
             "smithy.api#documentation": "Incident task ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#IncidentTaskPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Describes the properties of an incident task",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#IncidentTaskPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title of the task",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the task"
+          }
+        },
+        "status": {
+          "target": "com.azure.securityinsights#IncidentTaskStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the task",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "com.azure.securityinsights#ClientInfo",
+          "traits": {
+            "smithy.api#documentation": "Information on the client (user or application) that made some action"
+          }
+        },
+        "lastModifiedBy": {
+          "target": "com.azure.securityinsights#ClientInfo",
+          "traits": {
+            "smithy.api#documentation": "Information on the client (user or application) that made some action"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of an incident task"
       }
     },
     "com.azure.securityinsights#IncidentTasksGet": {
@@ -5986,10 +7260,14 @@
             "smithy.api#documentation": "The incident identifier."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tenantId": {
+          "target": "smithy.api#String"
+        },
+        "logicAppsResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Related Analytic rule resource id",
+            "smithy.api#required": {}
           }
         }
       },
@@ -6203,16 +7481,36 @@
             "smithy.api#documentation": "Relation Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#RelationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Relation properties"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#RelationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "relatedResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the related resource",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Relation property bag."
       }
     },
     "com.azure.securityinsights#IncidentRelationsGet": {
@@ -6985,16 +8283,36 @@
             "smithy.api#documentation": "Incident comment ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#IncidentCommentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Incident comment properties"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#IncidentCommentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The comment message",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Incident comment property bag."
       }
     },
     "com.azure.securityinsights#IncidentCommentsGet": {
@@ -8823,16 +10141,107 @@
             "smithy.api#documentation": "Incident ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#IncidentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Incident properties"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#IncidentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title of the incident",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the incident"
+          }
+        },
+        "severity": {
+          "target": "com.azure.securityinsights#IncidentSeverity",
+          "traits": {
+            "smithy.api#documentation": "The severity of the incident",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.securityinsights#IncidentStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the incident",
+            "smithy.api#required": {}
+          }
+        },
+        "classification": {
+          "target": "com.azure.securityinsights#IncidentClassification",
+          "traits": {
+            "smithy.api#documentation": "The reason the incident was closed"
+          }
+        },
+        "classificationReason": {
+          "target": "com.azure.securityinsights#IncidentClassificationReason",
+          "traits": {
+            "smithy.api#documentation": "The classification reason the incident was closed with"
+          }
+        },
+        "classificationComment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Describes the reason the incident was closed"
+          }
+        },
+        "owner": {
+          "target": "com.azure.securityinsights#IncidentOwnerInfo",
+          "traits": {
+            "smithy.api#documentation": "Describes a user that the incident is assigned to"
+          }
+        },
+        "labels": {
+          "target": "com.azure.securityinsights#IncidentPropertiesInputLabelsList",
+          "traits": {
+            "smithy.api#documentation": "List of labels relevant to this incident"
+          }
+        },
+        "firstActivityTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time of the first activity in the incident"
+          }
+        },
+        "lastActivityTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time of the last activity in the incident"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes incident properties"
+      }
+    },
+    "com.azure.securityinsights#IncidentPropertiesInputLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityinsights#IncidentLabel"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of labels relevant to this incident"
       }
     },
     "com.azure.securityinsights#IncidentsGet": {
@@ -9145,10 +10554,23 @@
             "smithy.api#documentation": "entity ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "incidentArmId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Incident ARM id."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant id of the playbook resource."
+          }
+        },
+        "logicAppsResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the playbook resource.",
+            "smithy.api#required": {}
           }
         }
       },
@@ -9388,11 +10810,17 @@
             "smithy.api#documentation": "Connector ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityinsights#DataConnectorKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
@@ -9802,11 +11230,17 @@
             "smithy.api#documentation": "The data connector definition name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityinsights#DataConnectorDefinitionKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
@@ -10776,16 +12210,224 @@
             "smithy.api#documentation": "template Id"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#TemplatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "template properties"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#TemplatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "contentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name"
+          }
+        },
+        "contentProductId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template"
+          }
+        },
+        "packageVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of the package.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the template"
+          }
+        },
+        "contentKind": {
+          "target": "com.azure.securityinsights#Kind",
+          "traits": {
+            "smithy.api#documentation": "The kind of content the template is for."
+          }
+        },
+        "source": {
+          "target": "com.azure.securityinsights#MetadataSource",
+          "traits": {
+            "smithy.api#documentation": "Source of the content.  This is where/how it was created."
+          }
+        },
+        "author": {
+          "target": "com.azure.securityinsights#MetadataAuthor",
+          "traits": {
+            "smithy.api#documentation": "The creator of the content item."
+          }
+        },
+        "support": {
+          "target": "com.azure.securityinsights#MetadataSupport",
+          "traits": {
+            "smithy.api#documentation": "Support information for the template - type, name, contact information"
+          }
+        },
+        "dependencies": {
+          "target": "com.azure.securityinsights#MetadataDependencies",
+          "traits": {
+            "smithy.api#documentation": "Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats."
+          }
+        },
+        "categories": {
+          "target": "com.azure.securityinsights#MetadataCategories",
+          "traits": {
+            "smithy.api#documentation": "Categories for the item"
+          }
+        },
+        "providers": {
+          "target": "com.azure.securityinsights#TemplatePropertiesInputProvidersList",
+          "traits": {
+            "smithy.api#documentation": "Providers for the content item"
+          }
+        },
+        "firstPublishDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "first publish date content item"
+          }
+        },
+        "lastPublishDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last publish date for the content item"
+          }
+        },
+        "customVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The custom version of the content. A optional free text"
+          }
+        },
+        "contentSchemaVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema version of the content. Can be used to distinguish between different flow based on the schema version"
+          }
+        },
+        "icon": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the icon identifier. this id can later be fetched from the content metadata"
+          }
+        },
+        "threatAnalysisTactics": {
+          "target": "com.azure.securityinsights#TemplatePropertiesInputThreatAnalysisTacticsList",
+          "traits": {
+            "smithy.api#documentation": "the tactics the resource covers"
+          }
+        },
+        "threatAnalysisTechniques": {
+          "target": "com.azure.securityinsights#TemplatePropertiesInputThreatAnalysisTechniquesList",
+          "traits": {
+            "smithy.api#documentation": "the techniques the resource covers, these have to be aligned with the tactics being used"
+          }
+        },
+        "previewImages": {
+          "target": "com.azure.securityinsights#TemplatePropertiesInputPreviewImagesList",
+          "traits": {
+            "smithy.api#documentation": "preview image file names. These will be taken from the solution artifacts"
+          }
+        },
+        "previewImagesDark": {
+          "target": "com.azure.securityinsights#TemplatePropertiesInputPreviewImagesDarkList",
+          "traits": {
+            "smithy.api#documentation": "preview image file names. These will be taken from the solution artifacts. used for dark theme support"
+          }
+        },
+        "packageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the package Id contains this template"
+          }
+        },
+        "packageKind": {
+          "target": "com.azure.securityinsights#PackageKind",
+          "traits": {
+            "smithy.api#documentation": "the packageKind of the package contains this template"
+          }
+        },
+        "packageName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the name of the package contains this template"
+          }
+        },
+        "mainTemplate": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The JSON of the ARM template to deploy active content. Expandable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Template property bag."
+      }
+    },
+    "com.azure.securityinsights#TemplatePropertiesInputPreviewImagesDarkList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "preview image file names. These will be taken from the solution artifacts. used for dark theme support"
+      }
+    },
+    "com.azure.securityinsights#TemplatePropertiesInputPreviewImagesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "preview image file names. These will be taken from the solution artifacts"
+      }
+    },
+    "com.azure.securityinsights#TemplatePropertiesInputThreatAnalysisTechniquesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "the techniques the resource covers, these have to be aligned with the tactics being used"
+      }
+    },
+    "com.azure.securityinsights#TemplatePropertiesInputThreatAnalysisTacticsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "the tactics the resource covers"
+      }
+    },
+    "com.azure.securityinsights#TemplatePropertiesInputProvidersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Providers for the content item"
       }
     },
     "com.azure.securityinsights#ContentTemplateGet": {
@@ -12030,11 +13672,16 @@
             "smithy.api#documentation": "package Id"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#PackageBaseProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "package properties"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
@@ -12573,16 +14220,118 @@
             "smithy.api#documentation": "Bookmark ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#BookmarkPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Bookmark properties"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#BookmarkPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time the bookmark was created"
+          }
+        },
+        "createdBy": {
+          "target": "com.azure.securityinsights#UserInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Describes a user that created the bookmark"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the bookmark",
+            "smithy.api#required": {}
+          }
+        },
+        "labels": {
+          "target": "com.azure.securityinsights#BookmarkPropertiesInputLabelsList",
+          "traits": {
+            "smithy.api#documentation": "List of labels relevant to this bookmark"
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The notes of the bookmark"
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The query of the bookmark.",
+            "smithy.api#required": {}
+          }
+        },
+        "queryResult": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The query result of the bookmark."
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the bookmark was updated"
+          }
+        },
+        "updatedBy": {
+          "target": "com.azure.securityinsights#UserInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Describes a user that updated the bookmark"
+          }
+        },
+        "eventTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The bookmark event time"
+          }
+        },
+        "queryStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start time for the query"
+          }
+        },
+        "queryEndTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end time for the query"
+          }
+        },
+        "incidentInfo": {
+          "target": "com.azure.securityinsights#IncidentInfo",
+          "traits": {
+            "smithy.api#documentation": "Describes an incident that relates to bookmark"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes bookmark properties"
+      }
+    },
+    "com.azure.securityinsights#BookmarkPropertiesInputLabelsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of labels relevant to this bookmark"
       }
     },
     "com.azure.securityinsights#BookmarksGet": {
@@ -13236,15 +14985,67 @@
             "smithy.api#documentation": "The automation rule ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityinsights#AutomationRulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Automation rule properties",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#AutomationRulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the automation rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "order": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The order of execution of the automation rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "triggeringLogic": {
+          "target": "com.azure.securityinsights#AutomationRuleTriggeringLogic",
+          "traits": {
+            "smithy.api#documentation": "Describes automation rule triggering logic.",
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.azure.securityinsights#AutomationRulePropertiesInputActionsList",
+          "traits": {
+            "smithy.api#documentation": "The actions to execute when the automation rule is triggered.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Automation rule properties"
+      }
+    },
+    "com.azure.securityinsights#AutomationRulePropertiesInputActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityinsights#AutomationRuleAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "The actions to execute when the automation rule is triggered."
       }
     },
     "com.azure.securityinsights#AutomationRulesGet": {
@@ -13668,16 +15469,43 @@
             "smithy.api#documentation": "Action ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Etag of the azure resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityinsights#ActionRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Action properties for put request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityinsights#ActionRequestProperties": {
+      "type": "structure",
+      "members": {
+        "logicAppResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}.",
+            "smithy.api#required": {}
+          }
+        },
+        "triggerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Logic App Callback URL for this specific workflow.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Action property bag."
       }
     },
     "com.azure.securityinsights#ActionsGet": {
@@ -14108,11 +15936,17 @@
             "smithy.api#documentation": "Alert rule ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityinsights#AlertRuleKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Etag of the azure resource"
           }
         }
       },

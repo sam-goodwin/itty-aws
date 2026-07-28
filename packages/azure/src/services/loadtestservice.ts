@@ -12,6 +12,107 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Resource tags. */
+export type LoadTestsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const LoadTestsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LoadTestsCreateOrUpdateRequestTagsMap>;
+
+/** Managed identity type to use for accessing encryption key Url. */
+export type Type = "SystemAssigned" | "UserAssigned";
+export const Type = /*@__PURE__*/ S.String;
+
+/** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
+export interface EncryptionPropertiesIdentity {
+  /** Managed identity type to use for accessing encryption key Url. */
+  type?: Type;
+  /** User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. */
+  resourceId?: string | null;
+}
+export const EncryptionPropertiesIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(Type),
+    resourceId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "EncryptionPropertiesIdentity",
+}) as any as S.Schema<EncryptionPropertiesIdentity>;
+
+/** Key and identity details for Customer Managed Key encryption of load test resource. */
+export interface EncryptionProperties {
+  /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
+  identity?: EncryptionPropertiesIdentity;
+  /** key encryption key Url, versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. */
+  keyUrl?: string;
+}
+export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identity: S.optional(EncryptionPropertiesIdentity),
+    keyUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EncryptionProperties",
+}) as any as S.Schema<EncryptionProperties>;
+
+/** LoadTest resource properties. */
+export interface LoadTestPropertiesInput {
+  /** Description of the resource. */
+  description?: string;
+  /** CMK Encryption property. */
+  encryption?: EncryptionProperties;
+}
+export const LoadTestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    encryption: S.optional(EncryptionProperties),
+  }),
+).annotate({
+  identifier: "LoadTestPropertiesInput",
+}) as any as S.Schema<LoadTestPropertiesInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface LoadTestsCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const LoadTestsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "LoadTestsCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<LoadTestsCreateOrUpdateRequestIdentity>;
+
 export interface LoadTestsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19,14 +120,24 @@ export interface LoadTestsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Load Test name */
   loadTestName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: LoadTestsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: LoadTestPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: LoadTestsCreateOrUpdateRequestIdentity;
 }
 export const LoadTestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     loadTestName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(LoadTestsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(LoadTestPropertiesInput),
+    identity: S.optional(LoadTestsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -44,8 +155,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -53,8 +163,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -93,49 +202,8 @@ export const LoadTestsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LoadTestsCreateOrUpdateResponseTagsMap>;
 
 /** Resources provisioning states. */
-export type ResourceState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Deleted"
-  | (string & {});
+export type ResourceState = "Succeeded" | "Failed" | "Canceled" | "Deleted";
 export const ResourceState = /*@__PURE__*/ S.String;
-
-/** Managed identity type to use for accessing encryption key Url. */
-export type Type = "SystemAssigned" | "UserAssigned" | (string & {});
-export const Type = /*@__PURE__*/ S.String;
-
-/** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
-export interface EncryptionPropertiesIdentity {
-  /** Managed identity type to use for accessing encryption key Url. */
-  type?: Type;
-  /** User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. */
-  resourceId?: string | null;
-}
-export const EncryptionPropertiesIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(Type),
-    resourceId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "EncryptionPropertiesIdentity",
-}) as any as S.Schema<EncryptionPropertiesIdentity>;
-
-/** Key and identity details for Customer Managed Key encryption of load test resource. */
-export interface EncryptionProperties {
-  /** All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault. */
-  identity?: EncryptionPropertiesIdentity;
-  /** key encryption key Url, versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek. */
-  keyUrl?: string;
-}
-export const EncryptionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identity: S.optional(EncryptionPropertiesIdentity),
-    keyUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EncryptionProperties",
-}) as any as S.Schema<EncryptionProperties>;
 
 /** LoadTest resource properties. */
 export interface LoadTestProperties {
@@ -158,15 +226,6 @@ export const LoadTestProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoadTestProperties",
 }) as any as S.Schema<LoadTestProperties>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -448,7 +507,8 @@ export const LoadTestResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoadTestResource>;
 
 /** The LoadTestResource items on this page */
-export type LoadTestResourceListResultValueList = LoadTestResource[];
+export type LoadTestResourceListResultValueList =
+  ReadonlyArray<LoadTestResource>;
 export const LoadTestResourceListResultValueList = /*@__PURE__*/ S.Array(
   LoadTestResource,
 ) as any as S.Schema<LoadTestResourceListResultValueList>;
@@ -526,7 +586,8 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The list of connection details for this endpoint. */
-export type EndpointDependencyEndpointDetailsList = EndpointDetail[];
+export type EndpointDependencyEndpointDetailsList =
+  ReadonlyArray<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -551,7 +612,8 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointDependency>;
 
 /** The endpoints for this service to which the Batch service makes outbound calls. */
-export type OutboundEnvironmentEndpointEndpointsList = EndpointDependency[];
+export type OutboundEnvironmentEndpointEndpointsList =
+  ReadonlyArray<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -574,7 +636,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The OutboundEnvironmentEndpoint items on this page */
 export type PagedOutboundEnvironmentEndpointValueList =
-  OutboundEnvironmentEndpoint[];
+  ReadonlyArray<OutboundEnvironmentEndpoint>;
 export const PagedOutboundEnvironmentEndpointValueList = /*@__PURE__*/ S.Array(
   OutboundEnvironmentEndpoint,
 ) as any as S.Schema<PagedOutboundEnvironmentEndpointValueList>;
@@ -595,6 +657,45 @@ export const PagedOutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "PagedOutboundEnvironmentEndpoint",
 }) as any as S.Schema<PagedOutboundEnvironmentEndpoint>;
 
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface LoadTestsUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const LoadTestsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "LoadTestsUpdateRequestIdentity",
+}) as any as S.Schema<LoadTestsUpdateRequestIdentity>;
+
+/** Resource tags. */
+export type LoadTestsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const LoadTestsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LoadTestsUpdateRequestTagsMap>;
+
+/** The updatable properties of the LoadTestResource. */
+export interface LoadTestResourceUpdateProperties {
+  /** Description of the resource. */
+  description?: string;
+  /** CMK Encryption property. */
+  encryption?: EncryptionProperties;
+}
+export const LoadTestResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    encryption: S.optional(EncryptionProperties),
+  }),
+).annotate({
+  identifier: "LoadTestResourceUpdateProperties",
+}) as any as S.Schema<LoadTestResourceUpdateProperties>;
+
 export interface LoadTestsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -602,14 +703,21 @@ export interface LoadTestsUpdateRequest {
   resourceGroupName: string;
   /** Load Test name */
   loadTestName: string;
-  body: unknown;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: LoadTestsUpdateRequestIdentity;
+  /** Resource tags. */
+  tags?: LoadTestsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: LoadTestResourceUpdateProperties;
 }
 export const LoadTestsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     loadTestName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(LoadTestsUpdateRequestIdentity),
+    tags: S.optional(LoadTestsUpdateRequestTagsMap),
+    properties: S.optional(LoadTestResourceUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -721,11 +829,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -752,7 +860,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -772,9 +880,7 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
-export type PlaywrightQuotasGetRequestPlaywrightQuotaName =
-  | "ExecutionMinutes"
-  | (string & {});
+export type PlaywrightQuotasGetRequestPlaywrightQuotaName = "ExecutionMinutes";
 export const PlaywrightQuotasGetRequestPlaywrightQuotaName =
   /*@__PURE__*/ S.String;
 
@@ -806,11 +912,7 @@ export const PlaywrightQuotasGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlaywrightQuotasGetRequest>;
 
 /** The free trial state. */
-export type FreeTrialState =
-  | "Active"
-  | "Expired"
-  | "NotApplicable"
-  | (string & {});
+export type FreeTrialState = "Active" | "Expired" | "NotApplicable";
 export const FreeTrialState = /*@__PURE__*/ S.String;
 
 /** Subscription-level location-based Playwright quota free trial properties. */
@@ -836,8 +938,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Creating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Subscription-level location-based Playwright quota resource properties. */
@@ -929,7 +1030,7 @@ export const PlaywrightQuota = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlaywrightQuota>;
 
 /** The PlaywrightQuota items on this page */
-export type PlaywrightQuotaListResultValueList = PlaywrightQuota[];
+export type PlaywrightQuotaListResultValueList = ReadonlyArray<PlaywrightQuota>;
 export const PlaywrightQuotaListResultValueList = /*@__PURE__*/ S.Array(
   PlaywrightQuota,
 ) as any as S.Schema<PlaywrightQuotaListResultValueList>;
@@ -950,9 +1051,7 @@ export const PlaywrightQuotaListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlaywrightQuotaListResult",
 }) as any as S.Schema<PlaywrightQuotaListResult>;
 
-export type PlaywrightWorkspaceQuotasGetRequestQuotaName =
-  | "ExecutionMinutes"
-  | (string & {});
+export type PlaywrightWorkspaceQuotasGetRequestQuotaName = "ExecutionMinutes";
 export const PlaywrightWorkspaceQuotasGetRequestQuotaName =
   /*@__PURE__*/ S.String;
 
@@ -1104,7 +1203,7 @@ export const PlaywrightWorkspaceQuota = /*@__PURE__*/ S.suspend(() =>
 
 /** The PlaywrightWorkspaceQuota items on this page */
 export type PlaywrightWorkspaceQuotaListResultValueList =
-  PlaywrightWorkspaceQuota[];
+  ReadonlyArray<PlaywrightWorkspaceQuota>;
 export const PlaywrightWorkspaceQuotaListResultValueList =
   /*@__PURE__*/ S.Array(
     PlaywrightWorkspaceQuota,
@@ -1129,13 +1228,17 @@ export const PlaywrightWorkspaceQuotaListResult = /*@__PURE__*/ S.suspend(() =>
 export interface PlaywrightWorkspacesCheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
 }
 export const PlaywrightWorkspacesCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1151,8 +1254,7 @@ export const PlaywrightWorkspacesCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type PlaywrightWorkspacesCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const PlaywrightWorkspacesCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -1177,6 +1279,48 @@ export const PlaywrightWorkspacesCheckNameAvailabilityResponse =
     identifier: "PlaywrightWorkspacesCheckNameAvailabilityResponse",
   }) as any as S.Schema<PlaywrightWorkspacesCheckNameAvailabilityResponse>;
 
+/** Resource tags. */
+export type PlaywrightWorkspacesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PlaywrightWorkspacesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateRequestTagsMap>;
+
+/** Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created. */
+export type PlaywrightWorkspacePropertiesInputRegionalAffinity =
+  | "Enabled"
+  | "Disabled";
+export const PlaywrightWorkspacePropertiesInputRegionalAffinity =
+  /*@__PURE__*/ S.String;
+
+/** Enables the workspace to use local authentication through service access tokens for operations. */
+export type PlaywrightWorkspacePropertiesInputLocalAuth =
+  | "Enabled"
+  | "Disabled";
+export const PlaywrightWorkspacePropertiesInputLocalAuth =
+  /*@__PURE__*/ S.String;
+
+/** Playwright workspace resource properties. */
+export interface PlaywrightWorkspacePropertiesInput {
+  /** Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created. */
+  regionalAffinity?: PlaywrightWorkspacePropertiesInputRegionalAffinity;
+  /** Enables the workspace to use local authentication through service access tokens for operations. */
+  localAuth?: PlaywrightWorkspacePropertiesInputLocalAuth;
+}
+export const PlaywrightWorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    regionalAffinity: S.optional(
+      PlaywrightWorkspacePropertiesInputRegionalAffinity,
+    ),
+    localAuth: S.optional(PlaywrightWorkspacePropertiesInputLocalAuth),
+  }),
+).annotate({
+  identifier: "PlaywrightWorkspacePropertiesInput",
+}) as any as S.Schema<PlaywrightWorkspacePropertiesInput>;
+
 export interface PlaywrightWorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1184,7 +1328,12 @@ export interface PlaywrightWorkspacesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the PlaywrightWorkspace */
   playwrightWorkspaceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: PlaywrightWorkspacesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: PlaywrightWorkspacePropertiesInput;
 }
 export const PlaywrightWorkspacesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1192,7 +1341,9 @@ export const PlaywrightWorkspacesCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       playwrightWorkspaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(PlaywrightWorkspacesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(PlaywrightWorkspacePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1218,16 +1369,12 @@ export const PlaywrightWorkspacesCreateOrUpdateResponseTagsMap =
 /** Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created. */
 export type PlaywrightWorkspacePropertiesRegionalAffinity =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const PlaywrightWorkspacePropertiesRegionalAffinity =
   /*@__PURE__*/ S.String;
 
 /** Enables the workspace to use local authentication through service access tokens for operations. */
-export type PlaywrightWorkspacePropertiesLocalAuth =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type PlaywrightWorkspacePropertiesLocalAuth = "Enabled" | "Disabled";
 export const PlaywrightWorkspacePropertiesLocalAuth = /*@__PURE__*/ S.String;
 
 /** Playwright workspace resource properties. */
@@ -1444,7 +1591,8 @@ export const PlaywrightWorkspace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlaywrightWorkspace>;
 
 /** The PlaywrightWorkspace items on this page */
-export type PlaywrightWorkspaceListResultValueList = PlaywrightWorkspace[];
+export type PlaywrightWorkspaceListResultValueList =
+  ReadonlyArray<PlaywrightWorkspace>;
 export const PlaywrightWorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   PlaywrightWorkspace,
 ) as any as S.Schema<PlaywrightWorkspaceListResultValueList>;
@@ -1485,6 +1633,35 @@ export const PlaywrightWorkspacesListBySubscriptionRequest =
     identifier: "PlaywrightWorkspacesListBySubscriptionRequest",
   }) as any as S.Schema<PlaywrightWorkspacesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type PlaywrightWorkspacesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PlaywrightWorkspacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PlaywrightWorkspacesUpdateRequestTagsMap>;
+
+/** The enablement status of a feature. */
+export type EnablementStatus = "Enabled" | "Disabled";
+export const EnablementStatus = /*@__PURE__*/ S.String;
+
+/** The updatable properties of the PlaywrightWorkspace. */
+export interface PlaywrightWorkspaceUpdateProperties {
+  /** Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created. */
+  regionalAffinity?: EnablementStatus;
+  /** Enables the workspace to use local authentication through service access tokens for operations. */
+  localAuth?: EnablementStatus;
+}
+export const PlaywrightWorkspaceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    regionalAffinity: S.optional(EnablementStatus),
+    localAuth: S.optional(EnablementStatus),
+  }),
+).annotate({
+  identifier: "PlaywrightWorkspaceUpdateProperties",
+}) as any as S.Schema<PlaywrightWorkspaceUpdateProperties>;
+
 export interface PlaywrightWorkspacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1492,14 +1669,18 @@ export interface PlaywrightWorkspacesUpdateRequest {
   resourceGroupName: string;
   /** The name of the PlaywrightWorkspace */
   playwrightWorkspaceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: PlaywrightWorkspacesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: PlaywrightWorkspaceUpdateProperties;
 }
 export const PlaywrightWorkspacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     playwrightWorkspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(PlaywrightWorkspacesUpdateRequestTagsMap),
+    properties: S.optional(PlaywrightWorkspaceUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1551,6 +1732,45 @@ export const PlaywrightWorkspacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlaywrightWorkspacesUpdateResponse",
 }) as any as S.Schema<PlaywrightWorkspacesUpdateResponse>;
 
+/** Dimensions for new quota request. */
+export interface QuotaBucketRequestPropertiesDimensions {
+  /** Subscription Id dimension for new quota request of the quota bucket. */
+  subscriptionId?: string;
+  /** Location dimension for new quota request of the quota bucket. */
+  location?: string;
+}
+export const QuotaBucketRequestPropertiesDimensions = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.optional(S.String),
+      location: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "QuotaBucketRequestPropertiesDimensions",
+}) as any as S.Schema<QuotaBucketRequestPropertiesDimensions>;
+
+/** New quota request request properties. */
+export interface QuotaBucketRequestProperties {
+  /** Current quota usage of the quota bucket. */
+  currentUsage?: number;
+  /** Current quota limit of the quota bucket. */
+  currentQuota?: number;
+  /** New quota limit of the quota bucket. */
+  newQuota?: number;
+  /** Dimensions for new quota request. */
+  dimensions?: QuotaBucketRequestPropertiesDimensions;
+}
+export const QuotaBucketRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currentUsage: S.optional(S.Number),
+    currentQuota: S.optional(S.Number),
+    newQuota: S.optional(S.Number),
+    dimensions: S.optional(QuotaBucketRequestPropertiesDimensions),
+  }),
+).annotate({
+  identifier: "QuotaBucketRequestProperties",
+}) as any as S.Schema<QuotaBucketRequestProperties>;
+
 export interface QuotasCheckAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1558,14 +1778,15 @@ export interface QuotasCheckAvailabilityRequest {
   location: string;
   /** The quota name. */
   quotaBucketName: string;
-  body: unknown;
+  /** Request object of new quota for a quota bucket. */
+  properties?: QuotaBucketRequestProperties;
 }
 export const QuotasCheckAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
     quotaBucketName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(QuotaBucketRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1583,8 +1804,7 @@ export type CheckQuotaAvailabilityResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const CheckQuotaAvailabilityResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1593,8 +1813,7 @@ export type CheckQuotaAvailabilityResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const CheckQuotaAvailabilityResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1787,7 +2006,7 @@ export const QuotaResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaResource" }) as any as S.Schema<QuotaResource>;
 
 /** The QuotaResource items on this page */
-export type QuotaResourceListResultValueList = QuotaResource[];
+export type QuotaResourceListResultValueList = ReadonlyArray<QuotaResource>;
 export const QuotaResourceListResultValueList = /*@__PURE__*/ S.Array(
   QuotaResource,
 ) as any as S.Schema<QuotaResourceListResultValueList>;

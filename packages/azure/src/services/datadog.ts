@@ -173,7 +173,7 @@ export const CreationSupportedListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The CreateResourceSupportedResponse items on this page */
 export type CreateResourceSupportedResponseListValueList =
-  CreateResourceSupportedResponse[];
+  ReadonlyArray<CreateResourceSupportedResponse>;
 export const CreateResourceSupportedResponseListValueList =
   /*@__PURE__*/ S.Array(
     CreateResourceSupportedResponse,
@@ -194,28 +194,6 @@ export const CreateResourceSupportedResponseList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateResourceSupportedResponseList",
 }) as any as S.Schema<CreateResourceSupportedResponseList>;
-
-export interface MarketplaceAgreementsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  body?: unknown;
-}
-export const MarketplaceAgreementsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/agreements/default",
-        code: 200,
-        apiVersion: "2025-06-11",
-      }),
-    ),
-  ).annotate({
-    identifier: "MarketplaceAgreementsCreateOrUpdateRequest",
-  }) as any as S.Schema<MarketplaceAgreementsCreateOrUpdateRequest>;
 
 /** Terms properties. */
 export interface DatadogAgreementProperties {
@@ -251,13 +229,35 @@ export const DatadogAgreementProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatadogAgreementProperties",
 }) as any as S.Schema<DatadogAgreementProperties>;
 
+export interface MarketplaceAgreementsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** Represents the properties of the resource. */
+  properties?: DatadogAgreementProperties;
+}
+export const MarketplaceAgreementsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      properties: S.optional(DatadogAgreementProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Datadog/agreements/default",
+        code: 200,
+        apiVersion: "2025-06-11",
+      }),
+    ),
+  ).annotate({
+    identifier: "MarketplaceAgreementsCreateOrUpdateRequest",
+  }) as any as S.Schema<MarketplaceAgreementsCreateOrUpdateRequest>;
+
 /** The type of identity that created the resource. */
 export type DatadogAgreementResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DatadogAgreementResourceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -266,8 +266,7 @@ export type DatadogAgreementResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const DatadogAgreementResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -346,7 +345,7 @@ export const MarketplaceAgreementsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatadogAgreementResource items on this page */
 export type DatadogAgreementResourceListResponseValueList =
-  DatadogAgreementResource[];
+  ReadonlyArray<DatadogAgreementResource>;
 export const DatadogAgreementResourceListResponseValueList =
   /*@__PURE__*/ S.Array(
     DatadogAgreementResource,
@@ -369,6 +368,176 @@ export const DatadogAgreementResourceListResponse = /*@__PURE__*/ S.suspend(
   identifier: "DatadogAgreementResourceListResponse",
 }) as any as S.Schema<DatadogAgreementResourceListResponse>;
 
+/** The operation for the patch on the resource. */
+export type Operation =
+  | "AddBegin"
+  | "AddComplete"
+  | "DeleteBegin"
+  | "DeleteComplete"
+  | "Active";
+export const Operation = /*@__PURE__*/ S.String;
+
+/** The state of monitoring. */
+export type Status = "InProgress" | "Active" | "Failed" | "Deleting";
+export const Status = /*@__PURE__*/ S.String;
+
+/** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
+export type TagAction = "Include" | "Exclude";
+export const TagAction = /*@__PURE__*/ S.String;
+
+/** The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored. */
+export interface FilteringTag {
+  /** The name (also known as the key) of the tag. */
+  name?: string;
+  /** The value of the tag. */
+  value?: string;
+  /** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
+  action?: TagAction;
+}
+export const FilteringTag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+    action: S.optional(TagAction),
+  }),
+).annotate({ identifier: "FilteringTag" }) as any as S.Schema<FilteringTag>;
+
+/** List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
+export type LogRulesFilteringTagsList = ReadonlyArray<FilteringTag>;
+export const LogRulesFilteringTagsList = /*@__PURE__*/ S.Array(
+  FilteringTag,
+) as any as S.Schema<LogRulesFilteringTagsList>;
+
+/** Set of rules for sending logs for the Monitor resource. */
+export interface LogRules {
+  /** Flag specifying if AAD logs should be sent for the Monitor resource. */
+  sendAadLogs?: boolean;
+  /** Flag specifying if Azure subscription logs should be sent for the Monitor resource. */
+  sendSubscriptionLogs?: boolean;
+  /** Flag specifying if Azure resource logs should be sent for the Monitor resource. */
+  sendResourceLogs?: boolean;
+  /** List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
+  filteringTags?: LogRulesFilteringTagsList;
+}
+export const LogRules = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sendAadLogs: S.optional(S.Boolean),
+    sendSubscriptionLogs: S.optional(S.Boolean),
+    sendResourceLogs: S.optional(S.Boolean),
+    filteringTags: S.optional(LogRulesFilteringTagsList),
+  }),
+).annotate({ identifier: "LogRules" }) as any as S.Schema<LogRules>;
+
+/** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
+export type MetricRulesFilteringTagsList = ReadonlyArray<FilteringTag>;
+export const MetricRulesFilteringTagsList = /*@__PURE__*/ S.Array(
+  FilteringTag,
+) as any as S.Schema<MetricRulesFilteringTagsList>;
+
+/** Set of rules for sending metrics for the Monitor resource. */
+export interface MetricRules {
+  /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
+  filteringTags?: MetricRulesFilteringTagsList;
+}
+export const MetricRules = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filteringTags: S.optional(MetricRulesFilteringTagsList),
+  }),
+).annotate({ identifier: "MetricRules" }) as any as S.Schema<MetricRules>;
+
+/** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
+export type AgentRulesFilteringTagsList = ReadonlyArray<FilteringTag>;
+export const AgentRulesFilteringTagsList = /*@__PURE__*/ S.Array(
+  FilteringTag,
+) as any as S.Schema<AgentRulesFilteringTagsList>;
+
+/** Set of rules for managing agents for the Monitor resource. */
+export interface AgentRules {
+  /** Flag specifying if agent monitoring should be enabled for the Monitor resource. */
+  enableAgentMonitoring?: boolean;
+  /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
+  filteringTags?: AgentRulesFilteringTagsList;
+}
+export const AgentRules = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enableAgentMonitoring: S.optional(S.Boolean),
+    filteringTags: S.optional(AgentRulesFilteringTagsList),
+  }),
+).annotate({ identifier: "AgentRules" }) as any as S.Schema<AgentRules>;
+
+/** Definition of the properties for a TagRules resource. */
+export interface MonitoringTagRulesPropertiesInput {
+  /** Set of rules for sending logs for the Monitor resource. */
+  logRules?: LogRules;
+  /** Set of rules for sending metrics for the Monitor resource. */
+  metricRules?: MetricRules;
+  /** Set of rules for managing agents for the Monitor resource. */
+  agentRules?: AgentRules;
+  /** Configuration to enable/disable auto-muting flag */
+  automuting?: boolean;
+  /** Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent. */
+  customMetrics?: boolean;
+}
+export const MonitoringTagRulesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    logRules: S.optional(LogRules),
+    metricRules: S.optional(MetricRules),
+    agentRules: S.optional(AgentRules),
+    automuting: S.optional(S.Boolean),
+    customMetrics: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MonitoringTagRulesPropertiesInput",
+}) as any as S.Schema<MonitoringTagRulesPropertiesInput>;
+
+/** The list of subscriptions and it's monitoring status by current Datadog monitor. */
+export interface MonitoredSubscriptionInput {
+  /** The subscriptionId to be monitored. */
+  subscriptionId?: string;
+  /** The state of monitoring. */
+  status?: Status;
+  /** The reason of not monitoring the subscription. */
+  error?: string;
+  /** Definition of the properties for a TagRules resource. */
+  tagRules?: MonitoringTagRulesPropertiesInput;
+}
+export const MonitoredSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.optional(S.String),
+    status: S.optional(Status),
+    error: S.optional(S.String),
+    tagRules: S.optional(MonitoringTagRulesPropertiesInput),
+  }),
+).annotate({
+  identifier: "MonitoredSubscriptionInput",
+}) as any as S.Schema<MonitoredSubscriptionInput>;
+
+/** List of subscriptions and the state of the monitoring. */
+export type SubscriptionListInputMonitoredSubscriptionListList =
+  ReadonlyArray<MonitoredSubscriptionInput>;
+export const SubscriptionListInputMonitoredSubscriptionListList =
+  /*@__PURE__*/ S.Array(
+    MonitoredSubscriptionInput,
+  ) as any as S.Schema<SubscriptionListInputMonitoredSubscriptionListList>;
+
+/** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
+export interface SubscriptionListInput {
+  /** The operation for the patch on the resource. */
+  operation?: Operation;
+  /** List of subscriptions and the state of the monitoring. */
+  monitoredSubscriptionList?: SubscriptionListInputMonitoredSubscriptionListList;
+}
+export const SubscriptionListInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operation: S.optional(Operation),
+    monitoredSubscriptionList: S.optional(
+      SubscriptionListInputMonitoredSubscriptionListList,
+    ),
+  }),
+).annotate({
+  identifier: "SubscriptionListInput",
+}) as any as S.Schema<SubscriptionListInput>;
+
 export interface MonitoredSubscriptionsCreateorUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -378,7 +547,8 @@ export interface MonitoredSubscriptionsCreateorUpdateRequest {
   monitorName: string;
   /** The configuration name. Only 'default' value is supported. */
   configurationName: string;
-  body?: unknown;
+  /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
+  properties?: SubscriptionListInput;
 }
 export const MonitoredSubscriptionsCreateorUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -387,7 +557,7 @@ export const MonitoredSubscriptionsCreateorUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       monitorName: S.String.pipe(T.Label()),
       configurationName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(SubscriptionListInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -405,8 +575,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -414,8 +583,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -444,25 +612,6 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
-/** The operation for the patch on the resource. */
-export type Operation =
-  | "AddBegin"
-  | "AddComplete"
-  | "DeleteBegin"
-  | "DeleteComplete"
-  | "Active"
-  | (string & {});
-export const Operation = /*@__PURE__*/ S.String;
-
-/** The state of monitoring. */
-export type Status =
-  | "InProgress"
-  | "Active"
-  | "Failed"
-  | "Deleting"
-  | (string & {});
-export const Status = /*@__PURE__*/ S.String;
-
 export type ProvisioningState =
   | "Accepted"
   | "Creating"
@@ -472,93 +621,8 @@ export type ProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "NotSpecified"
-  | (string & {});
+  | "NotSpecified";
 export const ProvisioningState = /*@__PURE__*/ S.String;
-
-/** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
-export type TagAction = "Include" | "Exclude" | (string & {});
-export const TagAction = /*@__PURE__*/ S.String;
-
-/** The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored. */
-export interface FilteringTag {
-  /** The name (also known as the key) of the tag. */
-  name?: string;
-  /** The value of the tag. */
-  value?: string;
-  /** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
-  action?: TagAction;
-}
-export const FilteringTag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-    action: S.optional(TagAction),
-  }),
-).annotate({ identifier: "FilteringTag" }) as any as S.Schema<FilteringTag>;
-
-/** List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
-export type LogRulesFilteringTagsList = FilteringTag[];
-export const LogRulesFilteringTagsList = /*@__PURE__*/ S.Array(
-  FilteringTag,
-) as any as S.Schema<LogRulesFilteringTagsList>;
-
-/** Set of rules for sending logs for the Monitor resource. */
-export interface LogRules {
-  /** Flag specifying if AAD logs should be sent for the Monitor resource. */
-  sendAadLogs?: boolean;
-  /** Flag specifying if Azure subscription logs should be sent for the Monitor resource. */
-  sendSubscriptionLogs?: boolean;
-  /** Flag specifying if Azure resource logs should be sent for the Monitor resource. */
-  sendResourceLogs?: boolean;
-  /** List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
-  filteringTags?: LogRulesFilteringTagsList;
-}
-export const LogRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sendAadLogs: S.optional(S.Boolean),
-    sendSubscriptionLogs: S.optional(S.Boolean),
-    sendResourceLogs: S.optional(S.Boolean),
-    filteringTags: S.optional(LogRulesFilteringTagsList),
-  }),
-).annotate({ identifier: "LogRules" }) as any as S.Schema<LogRules>;
-
-/** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
-export type MetricRulesFilteringTagsList = FilteringTag[];
-export const MetricRulesFilteringTagsList = /*@__PURE__*/ S.Array(
-  FilteringTag,
-) as any as S.Schema<MetricRulesFilteringTagsList>;
-
-/** Set of rules for sending metrics for the Monitor resource. */
-export interface MetricRules {
-  /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
-  filteringTags?: MetricRulesFilteringTagsList;
-}
-export const MetricRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filteringTags: S.optional(MetricRulesFilteringTagsList),
-  }),
-).annotate({ identifier: "MetricRules" }) as any as S.Schema<MetricRules>;
-
-/** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
-export type AgentRulesFilteringTagsList = FilteringTag[];
-export const AgentRulesFilteringTagsList = /*@__PURE__*/ S.Array(
-  FilteringTag,
-) as any as S.Schema<AgentRulesFilteringTagsList>;
-
-/** Set of rules for managing agents for the Monitor resource. */
-export interface AgentRules {
-  /** Flag specifying if agent monitoring should be enabled for the Monitor resource. */
-  enableAgentMonitoring?: boolean;
-  /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
-  filteringTags?: AgentRulesFilteringTagsList;
-}
-export const AgentRules = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enableAgentMonitoring: S.optional(S.Boolean),
-    filteringTags: S.optional(AgentRulesFilteringTagsList),
-  }),
-).annotate({ identifier: "AgentRules" }) as any as S.Schema<AgentRules>;
 
 /** Definition of the properties for a TagRules resource. */
 export interface MonitoringTagRulesProperties {
@@ -611,7 +675,7 @@ export const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscriptions and the state of the monitoring. */
 export type SubscriptionListMonitoredSubscriptionListList =
-  MonitoredSubscription[];
+  ReadonlyArray<MonitoredSubscription>;
 export const SubscriptionListMonitoredSubscriptionListList =
   /*@__PURE__*/ S.Array(
     MonitoredSubscription,
@@ -799,7 +863,7 @@ export const MonitoredSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The MonitoredSubscriptionProperties items on this page */
 export type MonitoredSubscriptionPropertiesListValueList =
-  MonitoredSubscriptionProperties[];
+  ReadonlyArray<MonitoredSubscriptionProperties>;
 export const MonitoredSubscriptionPropertiesListValueList =
   /*@__PURE__*/ S.Array(
     MonitoredSubscriptionProperties,
@@ -830,7 +894,8 @@ export interface MonitoredSubscriptionsUpdateRequest {
   monitorName: string;
   /** The configuration name. Only 'default' value is supported. */
   configurationName: string;
-  body?: unknown;
+  /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
+  properties?: SubscriptionListInput;
 }
 export const MonitoredSubscriptionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -838,7 +903,7 @@ export const MonitoredSubscriptionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
     configurationName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(SubscriptionListInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -876,57 +941,18 @@ export const MonitoredSubscriptionsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "MonitoredSubscriptionsUpdateResponse",
 }) as any as S.Schema<MonitoredSubscriptionsUpdateResponse>;
 
-export interface MonitorsCreateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Monitor resource name */
-  monitorName: string;
-  body?: unknown;
-}
-export const MonitorsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    monitorName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}",
-      code: 200,
-      apiVersion: "2025-06-11",
-    }),
-  ),
-).annotate({
-  identifier: "MonitorsCreateRequest",
-}) as any as S.Schema<MonitorsCreateRequest>;
-
 /** Resource tags. */
-export type MonitorsCreateResponseTagsMap = {
+export type MonitorsCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const MonitorsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const MonitorsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<MonitorsCreateResponseTagsMap>;
+) as any as S.Schema<MonitorsCreateRequestTagsMap>;
 
 /** Flag specifying if the resource monitoring is enabled or disabled. */
-export type MonitorPropertiesMonitoringStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const MonitorPropertiesMonitoringStatus = /*@__PURE__*/ S.String;
-
-/** Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state. */
-export type MarketplaceSubscriptionStatus =
-  | "Provisioning"
-  | "Active"
-  | "Suspended"
-  | "Unsubscribed"
-  | (string & {});
-export const MarketplaceSubscriptionStatus = /*@__PURE__*/ S.String;
+export type MonitorPropertiesInputMonitoringStatus = "Enabled" | "Disabled";
+export const MonitorPropertiesInputMonitoringStatus = /*@__PURE__*/ S.String;
 
 /** Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well. */
 export interface DatadogOrganizationProperties {
@@ -985,7 +1011,111 @@ export const UserInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserInfo" }) as any as S.Schema<UserInfo>;
 
-export type LiftrResourceCategories = "Unknown" | "MonitorLogs" | (string & {});
+/** Properties specific to the monitor resource. */
+export interface MonitorPropertiesInput {
+  /** Flag specifying if the resource monitoring is enabled or disabled. */
+  monitoringStatus?: MonitorPropertiesInputMonitoringStatus;
+  /** Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well. */
+  datadogOrganizationProperties?: DatadogOrganizationProperties;
+  /** Includes name, email and optionally, phone number. User Information can't be null. */
+  userInfo?: UserInfo;
+}
+export const MonitorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    monitoringStatus: S.optional(MonitorPropertiesInputMonitoringStatus),
+    datadogOrganizationProperties: S.optional(DatadogOrganizationProperties),
+    userInfo: S.optional(UserInfo),
+  }),
+).annotate({
+  identifier: "MonitorPropertiesInput",
+}) as any as S.Schema<MonitorPropertiesInput>;
+
+export interface ResourceSku {
+  /** Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'. */
+  name: string;
+}
+export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+  }),
+).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
+
+/** Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'. */
+export type ManagedIdentityTypes = "SystemAssigned" | "UserAssigned";
+export const ManagedIdentityTypes = /*@__PURE__*/ S.String;
+
+export interface IdentityPropertiesInput {
+  /** Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'. */
+  type?: ManagedIdentityTypes;
+}
+export const IdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ManagedIdentityTypes),
+  }),
+).annotate({
+  identifier: "IdentityPropertiesInput",
+}) as any as S.Schema<IdentityPropertiesInput>;
+
+export interface MonitorsCreateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Monitor resource name */
+  monitorName: string;
+  /** Resource tags. */
+  tags?: MonitorsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties specific to the monitor resource. */
+  properties?: MonitorPropertiesInput;
+  sku?: ResourceSku;
+  identity?: IdentityPropertiesInput;
+}
+export const MonitorsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    monitorName: S.String.pipe(T.Label()),
+    tags: S.optional(MonitorsCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(MonitorPropertiesInput),
+    sku: S.optional(ResourceSku),
+    identity: S.optional(IdentityPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Datadog/monitors/{monitorName}",
+      code: 200,
+      apiVersion: "2025-06-11",
+    }),
+  ),
+).annotate({
+  identifier: "MonitorsCreateRequest",
+}) as any as S.Schema<MonitorsCreateRequest>;
+
+/** Resource tags. */
+export type MonitorsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MonitorsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MonitorsCreateResponseTagsMap>;
+
+/** Flag specifying if the resource monitoring is enabled or disabled. */
+export type MonitorPropertiesMonitoringStatus = "Enabled" | "Disabled";
+export const MonitorPropertiesMonitoringStatus = /*@__PURE__*/ S.String;
+
+/** Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state. */
+export type MarketplaceSubscriptionStatus =
+  | "Provisioning"
+  | "Active"
+  | "Suspended"
+  | "Unsubscribed";
+export const MarketplaceSubscriptionStatus = /*@__PURE__*/ S.String;
+
+export type LiftrResourceCategories = "Unknown" | "MonitorLogs";
 export const LiftrResourceCategories = /*@__PURE__*/ S.String;
 
 /** Properties specific to the monitor resource. */
@@ -1016,23 +1146,6 @@ export const MonitorProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MonitorProperties",
 }) as any as S.Schema<MonitorProperties>;
-
-export interface ResourceSku {
-  /** Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'. */
-  name: string;
-}
-export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
-
-/** Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'. */
-export type ManagedIdentityTypes =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
-export const ManagedIdentityTypes = /*@__PURE__*/ S.String;
 
 export interface IdentityProperties {
   /** The identity ID. */
@@ -1293,7 +1406,7 @@ export const DatadogMonitorResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatadogMonitorResource items on this page */
 export type DatadogMonitorResourceListResponseValueList =
-  DatadogMonitorResource[];
+  ReadonlyArray<DatadogMonitorResource>;
 export const DatadogMonitorResourceListResponseValueList =
   /*@__PURE__*/ S.Array(
     DatadogMonitorResource,
@@ -1341,7 +1454,7 @@ export const MonitorsListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorsListApiKeysRequest>;
 
 /** The DatadogApiKey items on this page */
-export type DatadogApiKeyListResponseValueList = DatadogApiKey[];
+export type DatadogApiKeyListResponseValueList = ReadonlyArray<DatadogApiKey>;
 export const DatadogApiKeyListResponseValueList = /*@__PURE__*/ S.Array(
   DatadogApiKey,
 ) as any as S.Schema<DatadogApiKeyListResponseValueList>;
@@ -1410,13 +1523,13 @@ export const MonitorsListHostsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorsListHostsRequest>;
 
 /** The aliases for the host installed via the Datadog agent. */
-export type DatadogHostAliasesList = string[];
+export type DatadogHostAliasesList = ReadonlyArray<string>;
 export const DatadogHostAliasesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatadogHostAliasesList>;
 
 /** The Datadog integrations reporting metrics for the host. */
-export type DatadogHostAppsList = string[];
+export type DatadogHostAppsList = ReadonlyArray<string>;
 export const DatadogHostAppsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatadogHostAppsList>;
@@ -1486,7 +1599,7 @@ export const DatadogHost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatadogHost" }) as any as S.Schema<DatadogHost>;
 
 /** The DatadogHost items on this page */
-export type DatadogHostListResponseValueList = DatadogHost[];
+export type DatadogHostListResponseValueList = ReadonlyArray<DatadogHost>;
 export const DatadogHostListResponseValueList = /*@__PURE__*/ S.Array(
   DatadogHost,
 ) as any as S.Schema<DatadogHostListResponseValueList>;
@@ -1547,7 +1660,7 @@ export const LinkedResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkedResource" }) as any as S.Schema<LinkedResource>;
 
 /** The LinkedResource items on this page */
-export type LinkedResourceListResponseValueList = LinkedResource[];
+export type LinkedResourceListResponseValueList = ReadonlyArray<LinkedResource>;
 export const LinkedResourceListResponseValueList = /*@__PURE__*/ S.Array(
   LinkedResource,
 ) as any as S.Schema<LinkedResourceListResponseValueList>;
@@ -1620,7 +1733,8 @@ export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoredResource>;
 
 /** The MonitoredResource items on this page */
-export type MonitoredResourceListResponseValueList = MonitoredResource[];
+export type MonitoredResourceListResponseValueList =
+  ReadonlyArray<MonitoredResource>;
 export const MonitoredResourceListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoredResource,
 ) as any as S.Schema<MonitoredResourceListResponseValueList>;
@@ -1685,14 +1799,24 @@ export interface MonitorsSetDefaultKeyRequest {
   resourceGroupName: string;
   /** Monitor resource name */
   monitorName: string;
-  body?: unknown;
+  /** The user that created the API key. */
+  createdBy?: string;
+  /** The name of the API key. */
+  name?: string;
+  /** The value of the API key. */
+  key: string;
+  /** The time of creation of the API key. */
+  created?: string;
 }
 export const MonitorsSetDefaultKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    createdBy: S.optional(S.String),
+    name: S.optional(S.String),
+    key: S.String,
+    created: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1712,6 +1836,38 @@ export const MonitorsSetDefaultKeyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitorsSetDefaultKeyResponse",
 }) as any as S.Schema<MonitorsSetDefaultKeyResponse>;
 
+/** Flag specifying if the resource monitoring is enabled or disabled. */
+export type MonitorUpdatePropertiesMonitoringStatus = "Enabled" | "Disabled";
+export const MonitorUpdatePropertiesMonitoringStatus = /*@__PURE__*/ S.String;
+
+/** The set of properties that can be update in a PATCH request to a monitor resource. */
+export interface MonitorUpdateProperties {
+  /** Flag specifying if the resource monitoring is enabled or disabled. */
+  monitoringStatus?: MonitorUpdatePropertiesMonitoringStatus;
+  /** The new cloud security posture management value of the monitor resource. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks. */
+  cspm?: boolean;
+  /** The new resource collection value of the monitor resource. This collects configuration information for all resources in a subscription. */
+  resourceCollection?: boolean;
+}
+export const MonitorUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    monitoringStatus: S.optional(MonitorUpdatePropertiesMonitoringStatus),
+    cspm: S.optional(S.Boolean),
+    resourceCollection: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MonitorUpdateProperties",
+}) as any as S.Schema<MonitorUpdateProperties>;
+
+/** The new tags of the monitor resource. */
+export type MonitorsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MonitorsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MonitorsUpdateRequestTagsMap>;
+
 export interface MonitorsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1719,14 +1875,20 @@ export interface MonitorsUpdateRequest {
   resourceGroupName: string;
   /** Monitor resource name */
   monitorName: string;
-  body?: unknown;
+  /** The set of properties that can be update in a PATCH request to a monitor resource. */
+  properties?: MonitorUpdateProperties;
+  /** The new tags of the monitor resource. */
+  tags?: MonitorsUpdateRequestTagsMap;
+  sku?: ResourceSku;
 }
 export const MonitorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(MonitorUpdateProperties),
+    tags: S.optional(MonitorsUpdateRequestTagsMap),
+    sku: S.optional(ResourceSku),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1838,7 +2000,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResult>;
 
 /** The list of operations. */
-export type OperationListResultValueList = OperationResult[];
+export type OperationListResultValueList = ReadonlyArray<OperationResult>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1866,14 +2028,20 @@ export interface OrganizationsResubscribeRequest {
   resourceGroupName: string;
   /** Monitor resource name */
   monitorName: string;
-  body?: unknown;
+  sku?: ResourceSku;
+  /** Newly selected Azure Subscription Id in which the new Marketplace subscription will be created for Resubscribe */
+  azureSubscriptionId?: string;
+  /** Newly selected Azure resource group in which the new Marketplace subscription will be created for Resubscribe */
+  resourceGroup?: string;
 }
 export const OrganizationsResubscribeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    sku: S.optional(ResourceSku),
+    azureSubscriptionId: S.optional(S.String),
+    resourceGroup: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1929,6 +2097,25 @@ export const OrganizationsResubscribeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationsResubscribeResponse",
 }) as any as S.Schema<OrganizationsResubscribeResponse>;
 
+/** Various states of the SSO resource */
+export type SingleSignOnStates = "Initial" | "Enable" | "Disable" | "Existing";
+export const SingleSignOnStates = /*@__PURE__*/ S.String;
+
+export interface DatadogSingleSignOnPropertiesInput {
+  /** Various states of the SSO resource */
+  singleSignOnState?: SingleSignOnStates;
+  /** The Id of the Enterprise App used for Single sign-on. */
+  enterpriseAppId?: string;
+}
+export const DatadogSingleSignOnPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    singleSignOnState: S.optional(SingleSignOnStates),
+    enterpriseAppId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatadogSingleSignOnPropertiesInput",
+}) as any as S.Schema<DatadogSingleSignOnPropertiesInput>;
+
 export interface SingleSignOnConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1938,7 +2125,7 @@ export interface SingleSignOnConfigurationsCreateOrUpdateRequest {
   monitorName: string;
   /** Configuration name */
   configurationName: string;
-  body?: unknown;
+  properties?: DatadogSingleSignOnPropertiesInput;
 }
 export const SingleSignOnConfigurationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1947,7 +2134,7 @@ export const SingleSignOnConfigurationsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       monitorName: S.String.pipe(T.Label()),
       configurationName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(DatadogSingleSignOnPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1959,15 +2146,6 @@ export const SingleSignOnConfigurationsCreateOrUpdateRequest =
   ).annotate({
     identifier: "SingleSignOnConfigurationsCreateOrUpdateRequest",
   }) as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateRequest>;
-
-/** Various states of the SSO resource */
-export type SingleSignOnStates =
-  | "Initial"
-  | "Enable"
-  | "Disable"
-  | "Existing"
-  | (string & {});
-export const SingleSignOnStates = /*@__PURE__*/ S.String;
 
 export interface DatadogSingleSignOnProperties {
   provisioningState?: ProvisioningState;
@@ -2118,7 +2296,7 @@ export const DatadogSingleSignOnResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatadogSingleSignOnResource items on this page */
 export type DatadogSingleSignOnResourceListResponseValueList =
-  DatadogSingleSignOnResource[];
+  ReadonlyArray<DatadogSingleSignOnResource>;
 export const DatadogSingleSignOnResourceListResponseValueList =
   /*@__PURE__*/ S.Array(
     DatadogSingleSignOnResource,
@@ -2150,7 +2328,8 @@ export interface TagRulesCreateOrUpdateRequest {
   monitorName: string;
   /** Rule set name */
   ruleSetName: string;
-  body?: unknown;
+  /** Definition of the properties for a TagRules resource. */
+  properties?: MonitoringTagRulesPropertiesInput;
 }
 export const TagRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2158,7 +2337,7 @@ export const TagRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
     ruleSetName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(MonitoringTagRulesPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2298,7 +2477,8 @@ export const MonitoringTagRules = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoringTagRules>;
 
 /** The MonitoringTagRules items on this page */
-export type MonitoringTagRulesListResponseValueList = MonitoringTagRules[];
+export type MonitoringTagRulesListResponseValueList =
+  ReadonlyArray<MonitoringTagRules>;
 export const MonitoringTagRulesListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoringTagRules,
 ) as any as S.Schema<MonitoringTagRulesListResponseValueList>;

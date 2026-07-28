@@ -100,7 +100,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -188,15 +188,13 @@ export type MessageNewTaskStateEnum =
   | "RUNNING"
   | "FAILED"
   | "SUCCEEDED"
-  | "UNEXECUTED"
-  | (string & {});
+  | "UNEXECUTED";
 export const MessageNewTaskStateEnum = /*@__PURE__*/ S.String;
 
 export type MessageTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "JOB_STATE_CHANGED"
-  | "TASK_STATE_CHANGED"
-  | (string & {});
+  | "TASK_STATE_CHANGED";
 export const MessageTypeEnum = /*@__PURE__*/ S.String;
 
 export type MessageNewJobStateEnum =
@@ -208,8 +206,7 @@ export type MessageNewJobStateEnum =
   | "FAILED"
   | "DELETION_IN_PROGRESS"
   | "CANCELLATION_IN_PROGRESS"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const MessageNewJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state. */
@@ -245,7 +242,7 @@ export const JobNotification = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobNotification",
 }) as any as S.Schema<JobNotification>;
 
-export type JobNotificationList = JobNotification[];
+export type JobNotificationList = ReadonlyArray<JobNotification>;
 export const JobNotificationList = /*@__PURE__*/ S.Array(
   JobNotification,
 ) as any as S.Schema<JobNotificationList>;
@@ -264,7 +261,7 @@ export const Script = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Script" }) as any as S.Schema<Script>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -389,7 +386,7 @@ export const Runnable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Runnable" }) as any as S.Schema<Runnable>;
 
-export type RunnableList = Runnable[];
+export type RunnableList = ReadonlyArray<Runnable>;
 export const RunnableList = /*@__PURE__*/ S.Array(
   Runnable,
 ) as any as S.Schema<RunnableList>;
@@ -416,11 +413,10 @@ export const ComputeResource = /*@__PURE__*/ S.suspend(() =>
 export type LifecyclePolicyActionEnum =
   | "ACTION_UNSPECIFIED"
   | "RETRY_TASK"
-  | "FAIL_TASK"
-  | (string & {});
+  | "FAIL_TASK";
 export const LifecyclePolicyActionEnum = /*@__PURE__*/ S.String;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -454,7 +450,7 @@ export const LifecyclePolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "LifecyclePolicy",
 }) as any as S.Schema<LifecyclePolicy>;
 
-export type LifecyclePolicyList = LifecyclePolicy[];
+export type LifecyclePolicyList = ReadonlyArray<LifecyclePolicy>;
 export const LifecyclePolicyList = /*@__PURE__*/ S.Array(
   LifecyclePolicy,
 ) as any as S.Schema<LifecyclePolicyList>;
@@ -507,7 +503,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
-export type VolumeList = Volume[];
+export type VolumeList = ReadonlyArray<Volume>;
 export const VolumeList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumeList>;
@@ -544,7 +540,7 @@ export const TaskSpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskSpec" }) as any as S.Schema<TaskSpec>;
 
-export type EnvironmentList = Environment[];
+export type EnvironmentList = ReadonlyArray<Environment>;
 export const EnvironmentList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<EnvironmentList>;
@@ -552,8 +548,7 @@ export const EnvironmentList = /*@__PURE__*/ S.Array(
 export type TaskGroupSchedulingPolicyEnum =
   | "SCHEDULING_POLICY_UNSPECIFIED"
   | "AS_SOON_AS_POSSIBLE"
-  | "IN_ORDER"
-  | (string & {});
+  | "IN_ORDER";
 export const TaskGroupSchedulingPolicyEnum = /*@__PURE__*/ S.String;
 
 /** A TaskGroup defines one or more Tasks that all share the same TaskSpec. */
@@ -594,7 +589,7 @@ export const TaskGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskGroup" }) as any as S.Schema<TaskGroup>;
 
-export type TaskGroupList = TaskGroup[];
+export type TaskGroupList = ReadonlyArray<TaskGroup>;
 export const TaskGroupList = /*@__PURE__*/ S.Array(
   TaskGroup,
 ) as any as S.Schema<TaskGroupList>;
@@ -605,8 +600,7 @@ export type InstanceStatusProvisioningModelEnum =
   | "SPOT"
   | "PREEMPTIBLE"
   | "RESERVATION_BOUND"
-  | "FLEX_START"
-  | (string & {});
+  | "FLEX_START";
 export const InstanceStatusProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds. */
@@ -652,7 +646,7 @@ export const InstanceStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InstanceStatus" }) as any as S.Schema<InstanceStatus>;
 
-export type InstanceStatusList = InstanceStatus[];
+export type InstanceStatusList = ReadonlyArray<InstanceStatus>;
 export const InstanceStatusList = /*@__PURE__*/ S.Array(
   InstanceStatus,
 ) as any as S.Schema<InstanceStatusList>;
@@ -688,8 +682,7 @@ export type JobStatusStateEnum =
   | "FAILED"
   | "DELETION_IN_PROGRESS"
   | "CANCELLATION_IN_PROGRESS"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const JobStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** This Task Execution field includes detail information for task execution procedures, based on StatusEvent types. */
@@ -710,8 +703,7 @@ export type StatusEventTaskStateEnum =
   | "RUNNING"
   | "FAILED"
   | "SUCCEEDED"
-  | "UNEXECUTED"
-  | (string & {});
+  | "UNEXECUTED";
 export const StatusEventTaskStateEnum = /*@__PURE__*/ S.String;
 
 /** Status event. */
@@ -737,7 +729,7 @@ export const StatusEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StatusEvent" }) as any as S.Schema<StatusEvent>;
 
-export type StatusEventList = StatusEvent[];
+export type StatusEventList = ReadonlyArray<StatusEvent>;
 export const StatusEventList = /*@__PURE__*/ S.Array(
   StatusEvent,
 ) as any as S.Schema<StatusEventList>;
@@ -778,8 +770,7 @@ export type InstancePolicyProvisioningModelEnum =
   | "SPOT"
   | "PREEMPTIBLE"
   | "RESERVATION_BOUND"
-  | "FLEX_START"
-  | (string & {});
+  | "FLEX_START";
 export const InstancePolicyProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** A new or an existing persistent disk (PD) or a local ssd attached to a VM instance. */
@@ -798,7 +789,7 @@ export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AttachedDisk" }) as any as S.Schema<AttachedDisk>;
 
-export type AttachedDiskList = AttachedDisk[];
+export type AttachedDiskList = ReadonlyArray<AttachedDisk>;
 export const AttachedDiskList = /*@__PURE__*/ S.Array(
   AttachedDisk,
 ) as any as S.Schema<AttachedDiskList>;
@@ -823,7 +814,7 @@ export const Accelerator = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Accelerator" }) as any as S.Schema<Accelerator>;
 
-export type AcceleratorList = Accelerator[];
+export type AcceleratorList = ReadonlyArray<Accelerator>;
 export const AcceleratorList = /*@__PURE__*/ S.Array(
   Accelerator,
 ) as any as S.Schema<AcceleratorList>;
@@ -882,7 +873,8 @@ export const InstancePolicyOrTemplate = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstancePolicyOrTemplate",
 }) as any as S.Schema<InstancePolicyOrTemplate>;
 
-export type InstancePolicyOrTemplateList = InstancePolicyOrTemplate[];
+export type InstancePolicyOrTemplateList =
+  ReadonlyArray<InstancePolicyOrTemplate>;
 export const InstancePolicyOrTemplateList = /*@__PURE__*/ S.Array(
   InstancePolicyOrTemplate,
 ) as any as S.Schema<InstancePolicyOrTemplateList>;
@@ -906,7 +898,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkInterface",
 }) as any as S.Schema<NetworkInterface>;
 
-export type NetworkInterfaceList = NetworkInterface[];
+export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
 export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfaceList>;
@@ -999,8 +991,7 @@ export const CloudLoggingOption = /*@__PURE__*/ S.suspend(() =>
 export type LogsPolicyDestinationEnum =
   | "DESTINATION_UNSPECIFIED"
   | "CLOUD_LOGGING"
-  | "PATH"
-  | (string & {});
+  | "PATH";
 export const LogsPolicyDestinationEnum = /*@__PURE__*/ S.String;
 
 /** LogsPolicy describes if and how a job's logs are preserved. Logs include information that is automatically written by the Batch service agent and any information that you configured the job's runnables to write to the `stdout` or `stderr` streams. */
@@ -1216,8 +1207,7 @@ export type TaskStatusStateEnum =
   | "RUNNING"
   | "FAILED"
   | "SUCCEEDED"
-  | "UNEXECUTED"
-  | (string & {});
+  | "UNEXECUTED";
 export const TaskStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Status of a task. */
@@ -1297,7 +1287,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1348,7 +1338,7 @@ export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
-export type JobList = Job[];
+export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** ListJob Response. */
@@ -1398,7 +1388,7 @@ export const ListProjectsLocationsJobsTaskGroupsTasksRequest =
     identifier: "ListProjectsLocationsJobsTaskGroupsTasksRequest",
   }) as any as S.Schema<ListProjectsLocationsJobsTaskGroupsTasksRequest>;
 
-export type TaskList = Task[];
+export type TaskList = ReadonlyArray<Task>;
 export const TaskList = /*@__PURE__*/ S.Array(
   Task,
 ) as any as S.Schema<TaskList>;
@@ -1453,7 +1443,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1481,8 +1471,7 @@ export type AgentInfoStateEnum =
   | "AGENT_STATE_UNSPECIFIED"
   | "AGENT_STARTING"
   | "AGENT_RUNNING"
-  | "AGENT_STOPPED"
-  | (string & {});
+  | "AGENT_STOPPED";
 export const AgentInfoStateEnum = /*@__PURE__*/ S.String;
 
 /** Task Info */
@@ -1502,7 +1491,7 @@ export const AgentTaskInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentTaskInfo" }) as any as S.Schema<AgentTaskInfo>;
 
-export type AgentTaskInfoList = AgentTaskInfo[];
+export type AgentTaskInfoList = ReadonlyArray<AgentTaskInfo>;
 export const AgentTaskInfoList = /*@__PURE__*/ S.Array(
   AgentTaskInfo,
 ) as any as S.Schema<AgentTaskInfoList>;
@@ -1744,7 +1733,7 @@ export const AgentTaskRunnable = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentTaskRunnable",
 }) as any as S.Schema<AgentTaskRunnable>;
 
-export type AgentTaskRunnableList = AgentTaskRunnable[];
+export type AgentTaskRunnableList = ReadonlyArray<AgentTaskRunnable>;
 export const AgentTaskRunnableList = /*@__PURE__*/ S.Array(
   AgentTaskRunnable,
 ) as any as S.Schema<AgentTaskRunnableList>;
@@ -1788,16 +1777,14 @@ export const AgentTaskSpec = /*@__PURE__*/ S.suspend(() =>
 export type AgentTaskTaskSourceEnum =
   | "TASK_SOURCE_UNSPECIFIED"
   | "BATCH_INTERNAL"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const AgentTaskTaskSourceEnum = /*@__PURE__*/ S.String;
 
 export type AgentTaskIntendedStateEnum =
   | "INTENDED_STATE_UNSPECIFIED"
   | "ASSIGNED"
   | "CANCELLED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const AgentTaskIntendedStateEnum = /*@__PURE__*/ S.String;
 
 /** TODO(b/182501497) The message needs to be redefined when the Agent API server updates data in storage per the backend design. */
@@ -1829,7 +1816,7 @@ export const AgentTask = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentTask" }) as any as S.Schema<AgentTask>;
 
-export type AgentTaskList = AgentTask[];
+export type AgentTaskList = ReadonlyArray<AgentTask>;
 export const AgentTaskList = /*@__PURE__*/ S.Array(
   AgentTask,
 ) as any as S.Schema<AgentTaskList>;

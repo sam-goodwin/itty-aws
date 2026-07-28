@@ -358,16 +358,38 @@
             "smithy.api#documentation": "Specifies the Azure subscription ID, which uniquely identifies the Microsoft Azure subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.dns#DnsResourceReferenceRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the Resource Reference Request."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dns#DnsResourceReferenceRequestProperties": {
+      "type": "structure",
+      "members": {
+        "targetResources": {
+          "target": "com.azure.dns#DnsResourceReferenceRequestPropertiesTargetResourcesList",
+          "traits": {
+            "smithy.api#documentation": "A list of references to azure resources for which referencing dns records need to be queried."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the properties of the Dns Resource Reference Request."
+      }
+    },
+    "com.azure.dns#DnsResourceReferenceRequestPropertiesTargetResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dns#SubResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of references to azure resources for which referencing dns records need to be queried."
       }
     },
     "com.azure.dns#ZonesListByResourceGroup": {
@@ -580,16 +602,27 @@
             "smithy.api#documentation": "The name of the DNS zone (without a terminating dot)."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.dns#ZonesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dns#ZonesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dns#ZonesCreateOrUpdate": {
@@ -701,16 +734,110 @@
             "smithy.api#documentation": "The name of the DNS zone (without a terminating dot)."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource location.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.dns#ZonesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The etag of the zone."
+          }
+        },
+        "properties": {
+          "target": "com.azure.dns#ZonePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the zone."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dns#ZonePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "zoneType": {
+          "target": "com.azure.dns#ZonePropertiesInputZoneType",
+          "traits": {
+            "smithy.api#documentation": "The type of this DNS zone (Public or Private)."
+          }
+        },
+        "registrationVirtualNetworks": {
+          "target": "com.azure.dns#ZonePropertiesInputRegistrationVirtualNetworksList",
+          "traits": {
+            "smithy.api#documentation": "A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private."
+          }
+        },
+        "resolutionVirtualNetworks": {
+          "target": "com.azure.dns#ZonePropertiesInputResolutionVirtualNetworksList",
+          "traits": {
+            "smithy.api#documentation": "A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the properties of the zone."
+      }
+    },
+    "com.azure.dns#ZonePropertiesInputResolutionVirtualNetworksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dns#SubResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private."
+      }
+    },
+    "com.azure.dns#ZonePropertiesInputRegistrationVirtualNetworksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dns#SubResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private."
+      }
+    },
+    "com.azure.dns#ZonePropertiesInputZoneType": {
+      "type": "enum",
+      "members": {
+        "PUBLIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Public"
+          }
+        },
+        "PRIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Private"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of this DNS zone (Public or Private)."
+      }
+    },
+    "com.azure.dns#ZonesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.dns#ZonesGet": {
@@ -1761,16 +1888,191 @@
             "smithy.api#documentation": "The name of the record set, relative to the name of the zone."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The etag of the record set."
+          }
+        },
+        "properties": {
+          "target": "com.azure.dns#RecordSetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the record set."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.dns#RecordSetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "com.azure.dns#RecordSetPropertiesInputMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "The metadata attached to the record set."
+          }
+        },
+        "TTL": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The TTL (time-to-live) of the records in the record set."
+          }
+        },
+        "targetResource": {
+          "target": "com.azure.dns#SubResource",
+          "traits": {
+            "smithy.api#documentation": "A reference to an azure resource from where the dns resource value is taken."
+          }
+        },
+        "ARecords": {
+          "target": "com.azure.dns#RecordSetPropertiesInputARecordsList",
+          "traits": {
+            "smithy.api#documentation": "The list of A records in the record set."
+          }
+        },
+        "AAAARecords": {
+          "target": "com.azure.dns#RecordSetPropertiesInputAAAARecordsList",
+          "traits": {
+            "smithy.api#documentation": "The list of AAAA records in the record set."
+          }
+        },
+        "MXRecords": {
+          "target": "com.azure.dns#RecordSetPropertiesInputMXRecordsList",
+          "traits": {
+            "smithy.api#documentation": "The list of MX records in the record set."
+          }
+        },
+        "NSRecords": {
+          "target": "com.azure.dns#RecordSetPropertiesInputNSRecordsList",
+          "traits": {
+            "smithy.api#documentation": "The list of NS records in the record set."
+          }
+        },
+        "PTRRecords": {
+          "target": "com.azure.dns#RecordSetPropertiesInputPTRRecordsList",
+          "traits": {
+            "smithy.api#documentation": "The list of PTR records in the record set."
+          }
+        },
+        "SRVRecords": {
+          "target": "com.azure.dns#RecordSetPropertiesInputSRVRecordsList",
+          "traits": {
+            "smithy.api#documentation": "The list of SRV records in the record set."
+          }
+        },
+        "TXTRecords": {
+          "target": "com.azure.dns#RecordSetPropertiesInputTXTRecordsList",
+          "traits": {
+            "smithy.api#documentation": "The list of TXT records in the record set."
+          }
+        },
+        "CNAMERecord": {
+          "target": "com.azure.dns#CnameRecord",
+          "traits": {
+            "smithy.api#documentation": "The CNAME record in the  record set."
+          }
+        },
+        "SOARecord": {
+          "target": "com.azure.dns#SoaRecord",
+          "traits": {
+            "smithy.api#documentation": "The SOA record in the record set."
+          }
+        },
+        "caaRecords": {
+          "target": "com.azure.dns#RecordSetPropertiesInputCaaRecordsList",
+          "traits": {
+            "smithy.api#documentation": "The list of CAA records in the record set."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents the properties of the records in the record set."
+      }
+    },
+    "com.azure.dns#RecordSetPropertiesInputCaaRecordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dns#CaaRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of CAA records in the record set."
+      }
+    },
+    "com.azure.dns#RecordSetPropertiesInputTXTRecordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dns#TxtRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of TXT records in the record set."
+      }
+    },
+    "com.azure.dns#RecordSetPropertiesInputSRVRecordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dns#SrvRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of SRV records in the record set."
+      }
+    },
+    "com.azure.dns#RecordSetPropertiesInputPTRRecordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dns#PtrRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of PTR records in the record set."
+      }
+    },
+    "com.azure.dns#RecordSetPropertiesInputNSRecordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dns#NsRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of NS records in the record set."
+      }
+    },
+    "com.azure.dns#RecordSetPropertiesInputMXRecordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dns#MxRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of MX records in the record set."
+      }
+    },
+    "com.azure.dns#RecordSetPropertiesInputAAAARecordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dns#AaaaRecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of AAAA records in the record set."
+      }
+    },
+    "com.azure.dns#RecordSetPropertiesInputARecordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.dns#ARecord"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of A records in the record set."
+      }
+    },
+    "com.azure.dns#RecordSetPropertiesInputMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The metadata attached to the record set."
       }
     },
     "com.azure.dns#RecordSetsUpdateRequestRecordType": {
@@ -1901,11 +2203,16 @@
             "smithy.api#documentation": "The name of the record set, relative to the name of the zone."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The etag of the record set."
+          }
+        },
+        "properties": {
+          "target": "com.azure.dns#RecordSetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the record set."
           }
         }
       },

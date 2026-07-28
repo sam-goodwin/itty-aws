@@ -43,37 +43,36 @@ export class WidgetNotFound extends T.applyErrorMatchers(
   [{ code: 10404 }, { code: 10407 }],
 ) {}
 
-export type WidgetsCreateRequestDirection = "asc" | "desc" | (string & {});
+export type WidgetsCreateRequestDirection = "asc" | "desc";
 export const WidgetsCreateRequestDirection = /*@__PURE__*/ S.String;
 
 export type WidgetsCreateRequestOrder =
   | "id"
   | "sitekey"
   | "name"
-  | (string & {});
+  | "created_on"
+  | "modified_on";
 export const WidgetsCreateRequestOrder = /*@__PURE__*/ S.String;
 
-export type WidgetsCreateRequestDomainsList = unknown[];
+export type WidgetsCreateRequestDomainsList = ReadonlyArray<string>;
 export const WidgetsCreateRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<WidgetsCreateRequestDomainsList>;
 
 export type WidgetsCreateRequestMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsCreateRequestMode = /*@__PURE__*/ S.String;
 
 export type WidgetsCreateRequestClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsCreateRequestClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsCreateRequestRegion = "world" | "china" | (string & {});
+export type WidgetsCreateRequestRegion = "world" | "china";
 export const WidgetsCreateRequestRegion = /*@__PURE__*/ S.String;
 
 export interface CreateWidgetRequest {
@@ -140,23 +139,21 @@ export type WidgetsCreateResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsCreateResponseClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsCreateResponseDomainsList = unknown[];
+export type WidgetsCreateResponseDomainsList = ReadonlyArray<string>;
 export const WidgetsCreateResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<WidgetsCreateResponseDomainsList>;
 
 export type WidgetsCreateResponseMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsCreateResponseMode = /*@__PURE__*/ S.String;
 
-export type WidgetsCreateResponseRegion = "world" | "china" | (string & {});
+export type WidgetsCreateResponseRegion = "world" | "china";
 export const WidgetsCreateResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -233,23 +230,21 @@ export type WidgetsDeleteResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsDeleteResponseClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsDeleteResponseDomainsList = unknown[];
+export type WidgetsDeleteResponseDomainsList = ReadonlyArray<string>;
 export const WidgetsDeleteResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<WidgetsDeleteResponseDomainsList>;
 
 export type WidgetsDeleteResponseMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsDeleteResponseMode = /*@__PURE__*/ S.String;
 
-export type WidgetsDeleteResponseRegion = "world" | "china" | (string & {});
+export type WidgetsDeleteResponseRegion = "world" | "china";
 export const WidgetsDeleteResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -326,23 +321,21 @@ export type WidgetsGetResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsGetResponseClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsGetResponseDomainsList = unknown[];
+export type WidgetsGetResponseDomainsList = ReadonlyArray<string>;
 export const WidgetsGetResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<WidgetsGetResponseDomainsList>;
 
 export type WidgetsGetResponseMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsGetResponseMode = /*@__PURE__*/ S.String;
 
-export type WidgetsGetResponseRegion = "world" | "china" | (string & {});
+export type WidgetsGetResponseRegion = "world" | "china";
 export const WidgetsGetResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -392,10 +385,15 @@ export const GetWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetWidgetResponse",
 }) as any as S.Schema<GetWidgetResponse>;
 
-export type WidgetsListRequestDirection = "asc" | "desc" | (string & {});
+export type WidgetsListRequestDirection = "asc" | "desc";
 export const WidgetsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type WidgetsListRequestOrder = "id" | "sitekey" | "name" | (string & {});
+export type WidgetsListRequestOrder =
+  | "id"
+  | "sitekey"
+  | "name"
+  | "created_on"
+  | "modified_on";
 export const WidgetsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListWidgetsRequest {
@@ -437,23 +435,21 @@ export type WidgetsListResultItemClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsListResultItemClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsListResultItemDomainsList = unknown[];
+export type WidgetsListResultItemDomainsList = ReadonlyArray<string>;
 export const WidgetsListResultItemDomainsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<WidgetsListResultItemDomainsList>;
 
 export type WidgetsListResultItemMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsListResultItemMode = /*@__PURE__*/ S.String;
 
-export type WidgetsListResultItemRegion = "world" | "china" | (string & {});
+export type WidgetsListResultItemRegion = "world" | "china";
 export const WidgetsListResultItemRegion = /*@__PURE__*/ S.String;
 
 export interface WidgetsListResultItem {
@@ -499,7 +495,7 @@ export const WidgetsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WidgetsListResultItem",
 }) as any as S.Schema<WidgetsListResultItem>;
 
-export type WidgetsListResultList = WidgetsListResultItem[];
+export type WidgetsListResultList = ReadonlyArray<WidgetsListResultItem>;
 export const WidgetsListResultList = /*@__PURE__*/ S.Array(
   WidgetsListResultItem,
 ) as any as S.Schema<WidgetsListResultList>;
@@ -551,26 +547,21 @@ export type WidgetsRotateSecretResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsRotateSecretResponseClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsRotateSecretResponseDomainsList = unknown[];
+export type WidgetsRotateSecretResponseDomainsList = ReadonlyArray<string>;
 export const WidgetsRotateSecretResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<WidgetsRotateSecretResponseDomainsList>;
 
 export type WidgetsRotateSecretResponseMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsRotateSecretResponseMode = /*@__PURE__*/ S.String;
 
-export type WidgetsRotateSecretResponseRegion =
-  | "world"
-  | "china"
-  | (string & {});
+export type WidgetsRotateSecretResponseRegion = "world" | "china";
 export const WidgetsRotateSecretResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -620,27 +611,25 @@ export const RotateSecretWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RotateSecretWidgetResponse",
 }) as any as S.Schema<RotateSecretWidgetResponse>;
 
-export type WidgetsUpdateRequestDomainsList = unknown[];
+export type WidgetsUpdateRequestDomainsList = ReadonlyArray<string>;
 export const WidgetsUpdateRequestDomainsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<WidgetsUpdateRequestDomainsList>;
 
 export type WidgetsUpdateRequestMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsUpdateRequestMode = /*@__PURE__*/ S.String;
 
 export type WidgetsUpdateRequestClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsUpdateRequestClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsUpdateRequestRegion = "world" | "china" | (string & {});
+export type WidgetsUpdateRequestRegion = "world" | "china";
 export const WidgetsUpdateRequestRegion = /*@__PURE__*/ S.String;
 
 export interface UpdateWidgetRequest {
@@ -695,23 +684,21 @@ export type WidgetsUpdateResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
-  | "interactive"
-  | (string & {});
+  | "interactive";
 export const WidgetsUpdateResponseClearanceLevel = /*@__PURE__*/ S.String;
 
-export type WidgetsUpdateResponseDomainsList = unknown[];
+export type WidgetsUpdateResponseDomainsList = ReadonlyArray<string>;
 export const WidgetsUpdateResponseDomainsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<WidgetsUpdateResponseDomainsList>;
 
 export type WidgetsUpdateResponseMode =
   | "non-interactive"
   | "invisible"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const WidgetsUpdateResponseMode = /*@__PURE__*/ S.String;
 
-export type WidgetsUpdateResponseRegion = "world" | "china" | (string & {});
+export type WidgetsUpdateResponseRegion = "world" | "china";
 export const WidgetsUpdateResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

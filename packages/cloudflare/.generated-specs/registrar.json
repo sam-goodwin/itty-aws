@@ -92,6 +92,18 @@
           "traits": {
             "smithy.api#enumValue": "extension_disallows_registration"
           }
+        },
+        "DOMAIN_PREMIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_premium"
+          }
+        },
+        "DOMAIN_UNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_unavailable"
+          }
         }
       }
     },
@@ -277,6 +289,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "extension_disallows_registration"
+          }
+        },
+        "DOMAIN_PREMIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_premium"
+          }
+        },
+        "DOMAIN_UNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_unavailable"
           }
         }
       }
@@ -577,6 +601,24 @@
           "traits": {
             "smithy.api#enumValue": "pending"
           }
+        },
+        "TRYING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trying"
+          }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
         }
       }
     },
@@ -623,6 +665,18 @@
           "traits": {
             "smithy.api#enumValue": "pending"
           }
+        },
+        "TRYING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trying"
+          }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
         }
       }
     },
@@ -645,6 +699,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "pending"
+          }
+        },
+        "TRYING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trying"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
           }
         }
       }
@@ -942,6 +1008,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "action_required"
+          }
+        },
+        "BLOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "blocked"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
           }
         }
       }
@@ -1255,6 +1339,24 @@
           "traits": {
             "smithy.api#enumValue": "action_required"
           }
+        },
+        "BLOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "blocked"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
         }
       }
     },
@@ -1441,6 +1543,24 @@
           "traits": {
             "smithy.api#enumValue": "action_required"
           }
+        },
+        "BLOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "blocked"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
         }
       }
     },
@@ -1596,6 +1716,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "expired"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        },
+        "REDEMPTION_PERIOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redemption_period"
+          }
+        },
+        "PENDING_DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_delete"
           }
         }
       }
@@ -1791,6 +1929,24 @@
           "traits": {
             "smithy.api#enumValue": "expired"
           }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        },
+        "REDEMPTION_PERIOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redemption_period"
+          }
+        },
+        "PENDING_DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_delete"
+          }
         }
       }
     },
@@ -1948,6 +2104,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "action_required"
+          }
+        },
+        "BLOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "blocked"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
           }
         }
       }

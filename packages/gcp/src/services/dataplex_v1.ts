@@ -98,7 +98,7 @@ export const ApproveProjectsLocationsChangeRequestsRequest =
     identifier: "ApproveProjectsLocationsChangeRequestsRequest",
   }) as any as S.Schema<ApproveProjectsLocationsChangeRequestsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -127,7 +127,7 @@ export const GoogleCloudDataplexV1EntrySourceAncestor = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDataplexV1EntrySourceAncestor>;
 
 export type GoogleCloudDataplexV1EntrySourceAncestorList =
-  GoogleCloudDataplexV1EntrySourceAncestor[];
+  ReadonlyArray<GoogleCloudDataplexV1EntrySourceAncestor>;
 export const GoogleCloudDataplexV1EntrySourceAncestorList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1EntrySourceAncestor,
@@ -297,8 +297,7 @@ export const GoogleCloudDataplexV1UpdateEntryRequest = /*@__PURE__*/ S.suspend(
 export type GoogleCloudDataplexV1EntryLinkEntryReferenceTypeEnum =
   | "UNSPECIFIED"
   | "SOURCE"
-  | "TARGET"
-  | (string & {});
+  | "TARGET";
 export const GoogleCloudDataplexV1EntryLinkEntryReferenceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -323,7 +322,7 @@ export const GoogleCloudDataplexV1EntryLinkEntryReference =
   }) as any as S.Schema<GoogleCloudDataplexV1EntryLinkEntryReference>;
 
 export type GoogleCloudDataplexV1EntryLinkEntryReferenceList =
-  GoogleCloudDataplexV1EntryLinkEntryReference[];
+  ReadonlyArray<GoogleCloudDataplexV1EntryLinkEntryReference>;
 export const GoogleCloudDataplexV1EntryLinkEntryReferenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1EntryLinkEntryReference,
@@ -505,8 +504,7 @@ export type GoogleCloudDataplexV1ChangeRequestStateEnum =
   | "APPROVED"
   | "REJECTED"
   | "EXPIRED"
-  | "REVOKED"
-  | (string & {});
+  | "REVOKED";
 export const GoogleCloudDataplexV1ChangeRequestStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -731,8 +729,7 @@ export type GoogleCloudDataplexV1ChangeRequestChangeTypeEnum =
   | "CREATE_GLOSSARY_TERM"
   | "UPDATE_GLOSSARY_TERM"
   | "DELETE_GLOSSARY_TERM"
-  | "REQUEST_DATA_PRODUCT_ACCESS"
-  | (string & {});
+  | "REQUEST_DATA_PRODUCT_ACCESS";
 export const GoogleCloudDataplexV1ChangeRequestChangeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1027,8 +1024,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 export type GoogleCloudDataplexV1EncryptionConfigFailureDetailsErrorCodeEnum =
   | "UNKNOWN"
   | "INTERNAL_ERROR"
-  | "REQUIRE_USER_ACTION"
-  | (string & {});
+  | "REQUIRE_USER_ACTION";
 export const GoogleCloudDataplexV1EncryptionConfigFailureDetailsErrorCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1055,8 +1051,7 @@ export type GoogleCloudDataplexV1EncryptionConfigEncryptionStateEnum =
   | "ENCRYPTION_STATE_UNSPECIFIED"
   | "ENCRYPTING"
   | "COMPLETED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const GoogleCloudDataplexV1EncryptionConfigEncryptionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1126,7 +1121,7 @@ export const CreateOrganizationsLocationsEncryptionConfigsRequest =
     identifier: "CreateOrganizationsLocationsEncryptionConfigsRequest",
   }) as any as S.Schema<CreateOrganizationsLocationsEncryptionConfigsRequest>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1210,14 +1205,14 @@ export const GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue =
   }) as any as S.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue>;
 
 export type GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueList =
-  GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue[];
+  ReadonlyArray<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue>;
 export const GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue,
   ) as any as S.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValueList>;
 
 export type GoogleCloudDataplexV1AspectTypeMetadataTemplateList =
-  GoogleCloudDataplexV1AspectTypeMetadataTemplate[];
+  ReadonlyArray<GoogleCloudDataplexV1AspectTypeMetadataTemplate>;
 export const GoogleCloudDataplexV1AspectTypeMetadataTemplateList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GoogleCloudDataplexV1AspectTypeMetadataTemplate),
@@ -1306,16 +1301,14 @@ export const GoogleCloudDataplexV1AspectTypeMetadataTemplate =
 
 export type GoogleCloudDataplexV1AspectTypeDataClassificationEnum =
   | "DATA_CLASSIFICATION_UNSPECIFIED"
-  | "METADATA_AND_DATA"
-  | (string & {});
+  | "METADATA_AND_DATA";
 export const GoogleCloudDataplexV1AspectTypeDataClassificationEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1AspectTypeTransferStatusEnum =
   | "TRANSFER_STATUS_UNSPECIFIED"
   | "TRANSFER_STATUS_MIGRATED"
-  | "TRANSFER_STATUS_TRANSFERRED"
-  | (string & {});
+  | "TRANSFER_STATUS_TRANSFERRED";
 export const GoogleCloudDataplexV1AspectTypeTransferStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1431,7 +1424,7 @@ export const GoogleCloudDataplexV1DataAttributeBindingPath =
   }) as any as S.Schema<GoogleCloudDataplexV1DataAttributeBindingPath>;
 
 export type GoogleCloudDataplexV1DataAttributeBindingPathList =
-  GoogleCloudDataplexV1DataAttributeBindingPath[];
+  ReadonlyArray<GoogleCloudDataplexV1DataAttributeBindingPath>;
 export const GoogleCloudDataplexV1DataAttributeBindingPathList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataAttributeBindingPath,
@@ -1532,7 +1525,7 @@ export const GoogleCloudDataplexV1ContactIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDataplexV1ContactIdentity>;
 
 export type GoogleCloudDataplexV1ContactIdentityList =
-  GoogleCloudDataplexV1ContactIdentity[];
+  ReadonlyArray<GoogleCloudDataplexV1ContactIdentity>;
 export const GoogleCloudDataplexV1ContactIdentityList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1ContactIdentity,
 ) as any as S.Schema<GoogleCloudDataplexV1ContactIdentityList>;
@@ -2025,7 +2018,7 @@ export const GoogleCloudDataplexV1DataDocumentationResultQuery =
   }) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultQuery>;
 
 export type GoogleCloudDataplexV1DataDocumentationResultQueryList =
-  GoogleCloudDataplexV1DataDocumentationResultQuery[];
+  ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultQuery>;
 export const GoogleCloudDataplexV1DataDocumentationResultQueryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataDocumentationResultQuery,
@@ -2050,23 +2043,19 @@ export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchem
   }) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths>;
 
 export type GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnum =
-    | "SOURCE_UNSPECIFIED"
-    | "AGENT"
-    | "QUERY_HISTORY"
-    | "TABLE_CONSTRAINTS"
-    | (string & {});
+  "SOURCE_UNSPECIFIED" | "AGENT" | "QUERY_HISTORY" | "TABLE_CONSTRAINTS";
 export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList =
-  GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnum[];
+  ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnum>;
 export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnum,
   ) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSourcesItemEnumList>;
 
 export type GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipTypeEnum =
-  "TYPE_UNSPECIFIED" | "SCHEMA_JOIN" | (string & {});
+  "TYPE_UNSPECIFIED" | "SCHEMA_JOIN";
 export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2103,7 +2092,7 @@ export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship =
   }) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship>;
 
 export type GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipList =
-  GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship[];
+  ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship>;
 export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship,
@@ -2156,7 +2145,7 @@ export const GoogleCloudDataplexV1DataDocumentationResultField =
   }) as any as S.Schema<GoogleCloudDataplexV1DataDocumentationResultField>;
 
 export type GoogleCloudDataplexV1DataDocumentationResultFieldList =
-  GoogleCloudDataplexV1DataDocumentationResultField[];
+  ReadonlyArray<GoogleCloudDataplexV1DataDocumentationResultField>;
 export const GoogleCloudDataplexV1DataDocumentationResultFieldList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataDocumentationResultField,
@@ -2278,7 +2267,7 @@ export const GoogleCloudDataplexV1ScannedData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDataplexV1ScannedData>;
 
 export type GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultStateEnum =
-  "STATE_UNSPECIFIED" | "SUCCEEDED" | "FAILED" | "SKIPPED" | (string & {});
+  "STATE_UNSPECIFIED" | "SUCCEEDED" | "FAILED" | "SKIPPED";
 export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2322,8 +2311,7 @@ export type GoogleCloudDataplexV1DataScanCatalogPublishingStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED"
-  | "SKIPPED"
-  | (string & {});
+  | "SKIPPED";
 export const GoogleCloudDataplexV1DataScanCatalogPublishingStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2413,13 +2401,13 @@ export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNVa
   }) as any as S.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>;
 
 export type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueList =
-  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue[];
+  ReadonlyArray<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>;
 export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue,
   ) as any as S.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueList>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -2514,7 +2502,7 @@ export const GoogleCloudDataplexV1DataProfileResultProfileField =
   }) as any as S.Schema<GoogleCloudDataplexV1DataProfileResultProfileField>;
 
 export type GoogleCloudDataplexV1DataProfileResultProfileFieldList =
-  GoogleCloudDataplexV1DataProfileResultProfileField[];
+  ReadonlyArray<GoogleCloudDataplexV1DataProfileResultProfileField>;
 export const GoogleCloudDataplexV1DataProfileResultProfileFieldList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataProfileResultProfileField,
@@ -2661,7 +2649,7 @@ export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfig =
   }) as any as S.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfig>;
 
 export type GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfigTableTypeEnum =
-  "TABLE_TYPE_UNSPECIFIED" | "EXTERNAL" | "BIGLAKE" | (string & {});
+  "TABLE_TYPE_UNSPECIFIED" | "EXTERNAL" | "BIGLAKE";
 export const GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfigTableTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2716,8 +2704,7 @@ export type GoogleCloudDataplexV1GraphProfileFieldModeEnum =
   | "MODE_UNSPECIFIED"
   | "NULLABLE"
   | "REPEATED"
-  | "REQUIRED"
-  | (string & {});
+  | "REQUIRED";
 export const GoogleCloudDataplexV1GraphProfileFieldModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2731,8 +2718,7 @@ export type GoogleCloudDataplexV1GraphProfileFieldMetadataTypeEnum =
   | "TIMESTAMP"
   | "GEOSPATIAL"
   | "STRUCT"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const GoogleCloudDataplexV1GraphProfileFieldMetadataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2792,7 +2778,7 @@ export const GoogleCloudDataplexV1GraphProfileField = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDataplexV1GraphProfileField>;
 
 export type GoogleCloudDataplexV1GraphProfileFieldList =
-  GoogleCloudDataplexV1GraphProfileField[];
+  ReadonlyArray<GoogleCloudDataplexV1GraphProfileField>;
 export const GoogleCloudDataplexV1GraphProfileFieldList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1GraphProfileField,
 ) as any as S.Schema<GoogleCloudDataplexV1GraphProfileFieldList>;
@@ -2840,7 +2826,7 @@ export const GoogleCloudDataplexV1GraphProfileNodeType =
   }) as any as S.Schema<GoogleCloudDataplexV1GraphProfileNodeType>;
 
 export type GoogleCloudDataplexV1GraphProfileNodeTypeList =
-  GoogleCloudDataplexV1GraphProfileNodeType[];
+  ReadonlyArray<GoogleCloudDataplexV1GraphProfileNodeType>;
 export const GoogleCloudDataplexV1GraphProfileNodeTypeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1GraphProfileNodeType,
@@ -2865,7 +2851,7 @@ export const GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping =
   }) as any as S.Schema<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping>;
 
 export type GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMappingList =
-  GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping[];
+  ReadonlyArray<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping>;
 export const GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMappingList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyFieldMapping,
@@ -2897,7 +2883,7 @@ export const GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey =
   }) as any as S.Schema<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey>;
 
 export type GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyList =
-  GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey[];
+  ReadonlyArray<GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey>;
 export const GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKeyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1GraphProfileEdgeTypeForeignKey,
@@ -2954,7 +2940,7 @@ export const GoogleCloudDataplexV1GraphProfileEdgeType =
   }) as any as S.Schema<GoogleCloudDataplexV1GraphProfileEdgeType>;
 
 export type GoogleCloudDataplexV1GraphProfileEdgeTypeList =
-  GoogleCloudDataplexV1GraphProfileEdgeType[];
+  ReadonlyArray<GoogleCloudDataplexV1GraphProfileEdgeType>;
 export const GoogleCloudDataplexV1GraphProfileEdgeTypeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1GraphProfileEdgeType,
@@ -3001,8 +2987,7 @@ export type GoogleCloudDataplexV1DataScanStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "DELETING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+  | "ACTION_REQUIRED";
 export const GoogleCloudDataplexV1DataScanStateEnum = /*@__PURE__*/ S.String;
 
 /** The credential of the calling user. */
@@ -3092,8 +3077,7 @@ export const GoogleCloudDataplexV1DataProfileSpecSelectedFields =
 export type GoogleCloudDataplexV1DataProfileSpecModeEnum =
   | "MODE_UNSPECIFIED"
   | "STANDARD"
-  | "LIGHTWEIGHT"
-  | (string & {});
+  | "LIGHTWEIGHT";
 export const GoogleCloudDataplexV1DataProfileSpecModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3287,7 +3271,7 @@ export const GoogleCloudDataplexV1DataQualityRuleNonNullExpectation =
   }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleNonNullExpectation>;
 
 export type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticEnum =
-  "STATISTIC_UNDEFINED" | "MEAN" | "MIN" | "MAX" | (string & {});
+  "STATISTIC_UNDEFINED" | "MEAN" | "MIN" | "MAX";
 export const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticEnum =
   /*@__PURE__*/ S.String;
 
@@ -3337,7 +3321,7 @@ export const GoogleCloudDataplexV1DataQualityRuleDebugQuery =
   }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleDebugQuery>;
 
 export type GoogleCloudDataplexV1DataQualityRuleDebugQueryList =
-  GoogleCloudDataplexV1DataQualityRuleDebugQuery[];
+  ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleDebugQuery>;
 export const GoogleCloudDataplexV1DataQualityRuleDebugQueryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataQualityRuleDebugQuery,
@@ -3418,7 +3402,7 @@ export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement =
   }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement>;
 
 export type GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementList =
-  GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement[];
+  ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement>;
 export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement,
@@ -3496,7 +3480,7 @@ export const GoogleCloudDataplexV1DataQualityRuleTemplateSql =
   }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateSql>;
 
 export type GoogleCloudDataplexV1DataQualityRuleTemplateSqlList =
-  GoogleCloudDataplexV1DataQualityRuleTemplateSql[];
+  ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleTemplateSql>;
 export const GoogleCloudDataplexV1DataQualityRuleTemplateSqlList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataQualityRuleTemplateSql,
@@ -3753,7 +3737,7 @@ export const GoogleCloudDataplexV1DataQualityRule = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRule>;
 
 export type GoogleCloudDataplexV1DataQualityRuleList =
-  GoogleCloudDataplexV1DataQualityRule[];
+  ReadonlyArray<GoogleCloudDataplexV1DataQualityRule>;
 export const GoogleCloudDataplexV1DataQualityRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataQualityRule,
 ) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleList>;
@@ -3874,8 +3858,7 @@ export type GoogleCloudDataplexV1DataScanTypeEnum =
   | "DATA_PROFILE"
   | "DATA_DISCOVERY"
   | "DATA_DOCUMENTATION"
-  | "UNSTRUCTURED_DATA_PROFILE"
-  | (string & {});
+  | "UNSTRUCTURED_DATA_PROFILE";
 export const GoogleCloudDataplexV1DataScanTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum =
@@ -3883,13 +3866,12 @@ export type GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum =
     | "ALL"
     | "TABLE_AND_COLUMN_DESCRIPTIONS"
     | "SQL_QUERIES"
-    | "BUSINESS_GLOSSARY_TERM_ASSOCIATIONS"
-    | (string & {});
+    | "BUSINESS_GLOSSARY_TERM_ASSOCIATIONS";
 export const GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnumList =
-  GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum[];
+  ReadonlyArray<GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum>;
 export const GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataDocumentationSpecGenerationScopesItemEnum,
@@ -3949,7 +3931,7 @@ export const GoogleCloudDataplexV1DataQualityDimensionResult =
   }) as any as S.Schema<GoogleCloudDataplexV1DataQualityDimensionResult>;
 
 export type GoogleCloudDataplexV1DataQualityDimensionResultList =
-  GoogleCloudDataplexV1DataQualityDimensionResult[];
+  ReadonlyArray<GoogleCloudDataplexV1DataQualityDimensionResult>;
 export const GoogleCloudDataplexV1DataQualityDimensionResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataQualityDimensionResult,
@@ -4005,7 +3987,7 @@ export const GoogleCloudDataplexV1DataQualityColumnResult =
   }) as any as S.Schema<GoogleCloudDataplexV1DataQualityColumnResult>;
 
 export type GoogleCloudDataplexV1DataQualityColumnResultList =
-  GoogleCloudDataplexV1DataQualityColumnResult[];
+  ReadonlyArray<GoogleCloudDataplexV1DataQualityColumnResult>;
 export const GoogleCloudDataplexV1DataQualityColumnResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataQualityColumnResult,
@@ -4032,7 +4014,7 @@ export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult =
   }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult>;
 
 export type GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultList =
-  GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult[];
+  ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult>;
 export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult,
@@ -4055,7 +4037,7 @@ export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet =
   }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet>;
 
 export type GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSetList =
-  GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet[];
+  ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet>;
 export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet,
@@ -4102,14 +4084,14 @@ export const GoogleCloudDataplexV1DataQualityRuleResult =
   }) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleResult>;
 
 export type GoogleCloudDataplexV1DataQualityRuleResultList =
-  GoogleCloudDataplexV1DataQualityRuleResult[];
+  ReadonlyArray<GoogleCloudDataplexV1DataQualityRuleResult>;
 export const GoogleCloudDataplexV1DataQualityRuleResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataQualityRuleResult,
   ) as any as S.Schema<GoogleCloudDataplexV1DataQualityRuleResultList>;
 
 export type GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultStateEnum =
-  "STATE_UNSPECIFIED" | "SUCCEEDED" | "FAILED" | "SKIPPED" | (string & {});
+  "STATE_UNSPECIFIED" | "SUCCEEDED" | "FAILED" | "SKIPPED";
 export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResultStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4490,8 +4472,7 @@ export const CreateProjectsLocationsDataTaxonomiesAttributesRequest =
 export type GoogleCloudDataplexV1EntryGroupTransferStatusEnum =
   | "TRANSFER_STATUS_UNSPECIFIED"
   | "TRANSFER_STATUS_MIGRATED"
-  | "TRANSFER_STATUS_TRANSFERRED"
-  | (string & {});
+  | "TRANSFER_STATUS_TRANSFERRED";
 export const GoogleCloudDataplexV1EntryGroupTransferStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -4626,7 +4607,7 @@ export const GoogleCloudDataplexV1EntryTypeAspectInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDataplexV1EntryTypeAspectInfo>;
 
 export type GoogleCloudDataplexV1EntryTypeAspectInfoList =
-  GoogleCloudDataplexV1EntryTypeAspectInfo[];
+  ReadonlyArray<GoogleCloudDataplexV1EntryTypeAspectInfo>;
 export const GoogleCloudDataplexV1EntryTypeAspectInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1EntryTypeAspectInfo,
@@ -4808,8 +4789,7 @@ export type GoogleCloudDataplexV1LakeMetastoreStatusStateEnum =
   | "NONE"
   | "READY"
   | "UPDATING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GoogleCloudDataplexV1LakeMetastoreStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4860,8 +4840,7 @@ export type GoogleCloudDataplexV1LakeStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "DELETING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+  | "ACTION_REQUIRED";
 export const GoogleCloudDataplexV1LakeStateEnum = /*@__PURE__*/ S.String;
 
 /** Settings to manage association of Dataproc Metastore with a lake. */
@@ -4979,8 +4958,7 @@ export const GoogleCloudDataplexV1TaskExecutionSpec = /*@__PURE__*/ S.suspend(
 export type GoogleCloudDataplexV1JobTriggerEnum =
   | "TRIGGER_UNSPECIFIED"
   | "TASK_CONFIG"
-  | "RUN_REQUEST"
-  | (string & {});
+  | "RUN_REQUEST";
 export const GoogleCloudDataplexV1JobTriggerEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1JobStateEnum =
@@ -4990,14 +4968,12 @@ export type GoogleCloudDataplexV1JobStateEnum =
   | "CANCELLED"
   | "SUCCEEDED"
   | "FAILED"
-  | "ABORTED"
-  | (string & {});
+  | "ABORTED";
 export const GoogleCloudDataplexV1JobStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1JobServiceEnum =
   | "SERVICE_UNSPECIFIED"
-  | "DATAPROC"
-  | (string & {});
+  | "DATAPROC";
 export const GoogleCloudDataplexV1JobServiceEnum = /*@__PURE__*/ S.String;
 
 /** A job represents an instance of a task. */
@@ -5068,8 +5044,7 @@ export type GoogleCloudDataplexV1TaskStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "DELETING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+  | "ACTION_REQUIRED";
 export const GoogleCloudDataplexV1TaskStateEnum = /*@__PURE__*/ S.String;
 
 /** Batch compute resources associated with the task. */
@@ -5200,8 +5175,7 @@ export const GoogleCloudDataplexV1TaskSparkTaskConfig = /*@__PURE__*/ S.suspend(
 export type GoogleCloudDataplexV1TaskTriggerSpecTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ON_DEMAND"
-  | "RECURRING"
-  | (string & {});
+  | "RECURRING";
 export const GoogleCloudDataplexV1TaskTriggerSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5336,8 +5310,7 @@ export const CreateProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(
 export type GoogleCloudDataplexV1ZoneResourceSpecLocationTypeEnum =
   | "LOCATION_TYPE_UNSPECIFIED"
   | "SINGLE_REGION"
-  | "MULTI_REGION"
-  | (string & {});
+  | "MULTI_REGION";
 export const GoogleCloudDataplexV1ZoneResourceSpecLocationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5360,8 +5333,7 @@ export const GoogleCloudDataplexV1ZoneResourceSpec = /*@__PURE__*/ S.suspend(
 export type GoogleCloudDataplexV1ZoneTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "RAW"
-  | "CURATED"
-  | (string & {});
+  | "CURATED";
 export const GoogleCloudDataplexV1ZoneTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describe JSON data format. */
@@ -5440,8 +5412,7 @@ export type GoogleCloudDataplexV1ZoneStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "DELETING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+  | "ACTION_REQUIRED";
 export const GoogleCloudDataplexV1ZoneStateEnum = /*@__PURE__*/ S.String;
 
 /** A zone represents a logical group of related assets within a lake. A zone can be used to map to organizational structure or represent stages of data readiness from raw to curated. It provides managing behavior that is shared or inherited by all contained assets. */
@@ -5523,23 +5494,20 @@ export type GoogleCloudDataplexV1AssetStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "DELETING"
-  | "ACTION_REQUIRED"
-  | (string & {});
+  | "ACTION_REQUIRED";
 export const GoogleCloudDataplexV1AssetStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1AssetResourceSpecReadAccessModeEnum =
   | "ACCESS_MODE_UNSPECIFIED"
   | "DIRECT"
-  | "MANAGED"
-  | (string & {});
+  | "MANAGED";
 export const GoogleCloudDataplexV1AssetResourceSpecReadAccessModeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1AssetResourceSpecTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "STORAGE_BUCKET"
-  | "BIGQUERY_DATASET"
-  | (string & {});
+  | "BIGQUERY_DATASET";
 export const GoogleCloudDataplexV1AssetResourceSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5593,8 +5561,7 @@ export type GoogleCloudDataplexV1AssetDiscoveryStatusStateEnum =
   | "SCHEDULED"
   | "IN_PROGRESS"
   | "PAUSED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const GoogleCloudDataplexV1AssetDiscoveryStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5631,8 +5598,7 @@ export type GoogleCloudDataplexV1AssetSecurityStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
   | "APPLYING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GoogleCloudDataplexV1AssetSecurityStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5730,8 +5696,7 @@ export const GoogleCloudDataplexV1AssetDiscoverySpec = /*@__PURE__*/ S.suspend(
 export type GoogleCloudDataplexV1AssetResourceStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "READY"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GoogleCloudDataplexV1AssetResourceStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5837,8 +5802,7 @@ export const CreateProjectsLocationsLakesZonesAssetsRequest =
 
 export type GoogleCloudDataplexV1SchemaPartitionStyleEnum =
   | "PARTITION_STYLE_UNSPECIFIED"
-  | "HIVE_COMPATIBLE"
-  | (string & {});
+  | "HIVE_COMPATIBLE";
 export const GoogleCloudDataplexV1SchemaPartitionStyleEnum =
   /*@__PURE__*/ S.String;
 
@@ -5858,8 +5822,7 @@ export type GoogleCloudDataplexV1SchemaPartitionFieldTypeEnum =
   | "DATE"
   | "TIME"
   | "RECORD"
-  | "NULL"
-  | (string & {});
+  | "NULL";
 export const GoogleCloudDataplexV1SchemaPartitionFieldTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5881,7 +5844,7 @@ export const GoogleCloudDataplexV1SchemaPartitionField =
   }) as any as S.Schema<GoogleCloudDataplexV1SchemaPartitionField>;
 
 export type GoogleCloudDataplexV1SchemaPartitionFieldList =
-  GoogleCloudDataplexV1SchemaPartitionField[];
+  ReadonlyArray<GoogleCloudDataplexV1SchemaPartitionField>;
 export const GoogleCloudDataplexV1SchemaPartitionFieldList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1SchemaPartitionField,
@@ -5903,8 +5866,7 @@ export type GoogleCloudDataplexV1SchemaSchemaFieldTypeEnum =
   | "DATE"
   | "TIME"
   | "RECORD"
-  | "NULL"
-  | (string & {});
+  | "NULL";
 export const GoogleCloudDataplexV1SchemaSchemaFieldTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5912,8 +5874,7 @@ export type GoogleCloudDataplexV1SchemaSchemaFieldModeEnum =
   | "MODE_UNSPECIFIED"
   | "REQUIRED"
   | "NULLABLE"
-  | "REPEATED"
-  | (string & {});
+  | "REPEATED";
 export const GoogleCloudDataplexV1SchemaSchemaFieldModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5946,7 +5907,7 @@ export const GoogleCloudDataplexV1SchemaSchemaField = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDataplexV1SchemaSchemaField>;
 
 export type GoogleCloudDataplexV1SchemaSchemaFieldList =
-  GoogleCloudDataplexV1SchemaSchemaField[];
+  ReadonlyArray<GoogleCloudDataplexV1SchemaSchemaField>;
 export const GoogleCloudDataplexV1SchemaSchemaFieldList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1SchemaSchemaField,
 ) as any as S.Schema<GoogleCloudDataplexV1SchemaSchemaFieldList>;
@@ -5976,8 +5937,7 @@ export const GoogleCloudDataplexV1Schema = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudDataplexV1StorageFormatCompressionFormatEnum =
   | "COMPRESSION_FORMAT_UNSPECIFIED"
   | "GZIP"
-  | "BZIP2"
-  | (string & {});
+  | "BZIP2";
 export const GoogleCloudDataplexV1StorageFormatCompressionFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -5994,8 +5954,7 @@ export type GoogleCloudDataplexV1StorageFormatFormatEnum =
   | "TEXT"
   | "TFRECORD"
   | "OTHER"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const GoogleCloudDataplexV1StorageFormatFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -6121,22 +6080,19 @@ export const GoogleCloudDataplexV1EntityCompatibilityStatus =
 export type GoogleCloudDataplexV1EntityTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TABLE"
-  | "FILESET"
-  | (string & {});
+  | "FILESET";
 export const GoogleCloudDataplexV1EntityTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1EntitySystemEnum =
   | "STORAGE_SYSTEM_UNSPECIFIED"
   | "CLOUD_STORAGE"
-  | "BIGQUERY"
-  | (string & {});
+  | "BIGQUERY";
 export const GoogleCloudDataplexV1EntitySystemEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1StorageAccessReadEnum =
   | "ACCESS_MODE_UNSPECIFIED"
   | "DIRECT"
-  | "MANAGED"
-  | (string & {});
+  | "MANAGED";
 export const GoogleCloudDataplexV1StorageAccessReadEnum =
   /*@__PURE__*/ S.String;
 
@@ -6293,13 +6249,12 @@ export type GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnum =
   | "CHANGE_TYPE_UNSPECIFIED"
   | "CREATE"
   | "UPDATE"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnumList =
-  GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnum[];
+  ReadonlyArray<GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnum>;
 export const GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1MetadataFeedFiltersChangeTypesItemEnum,
@@ -6413,16 +6368,14 @@ export type GoogleCloudDataplexV1MetadataJobImportJobSpecEntrySyncModeEnum =
   | "SYNC_MODE_UNSPECIFIED"
   | "FULL"
   | "INCREMENTAL"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const GoogleCloudDataplexV1MetadataJobImportJobSpecEntrySyncModeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1MetadataJobImportJobSpecLogLevelEnum =
   | "LOG_LEVEL_UNSPECIFIED"
   | "DEBUG"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const GoogleCloudDataplexV1MetadataJobImportJobSpecLogLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -6459,8 +6412,7 @@ export type GoogleCloudDataplexV1MetadataJobImportJobSpecAspectSyncModeEnum =
   | "SYNC_MODE_UNSPECIFIED"
   | "FULL"
   | "INCREMENTAL"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const GoogleCloudDataplexV1MetadataJobImportJobSpecAspectSyncModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6592,8 +6544,7 @@ export type GoogleCloudDataplexV1MetadataJobStatusStateEnum =
   | "CANCELED"
   | "SUCCEEDED"
   | "FAILED"
-  | "SUCCEEDED_WITH_ERRORS"
-  | (string & {});
+  | "SUCCEEDED_WITH_ERRORS";
 export const GoogleCloudDataplexV1MetadataJobStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6640,8 +6591,7 @@ export const GoogleCloudDataplexV1MetadataJobExportJobResult =
 export type GoogleCloudDataplexV1MetadataJobTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "IMPORT"
-  | "EXPORT"
-  | (string & {});
+  | "EXPORT";
 export const GoogleCloudDataplexV1MetadataJobTypeEnum = /*@__PURE__*/ S.String;
 
 /** A metadata job resource. */
@@ -7370,8 +7320,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -7390,7 +7339,8 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList = GoogleIamV1AuditLogConfig[];
+export type GoogleIamV1AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -7411,7 +7361,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = GoogleIamV1AuditConfig[];
+export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -7455,7 +7405,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = GoogleIamV1Binding[];
+export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -8117,8 +8067,7 @@ export const GetProjectsLocationsDataProductsDataAssetsRequest =
 export type GetProjectsLocationsDataScansViewEnum =
   | "DATA_SCAN_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsDataScansViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsDataScansRequest {
@@ -8146,8 +8095,7 @@ export const GetProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(
 export type GetProjectsLocationsDataScansJobsViewEnum =
   | "DATA_SCAN_JOB_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsDataScansJobsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsDataScansJobsRequest {
@@ -8182,8 +8130,7 @@ export type GoogleCloudDataplexV1DataScanJobStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "PENDING"
-  | "SUCCEEDED_WITH_ERRORS"
-  | (string & {});
+  | "SUCCEEDED_WITH_ERRORS";
 export const GoogleCloudDataplexV1DataScanJobStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudDataplexV1DataScanJobTypeEnum =
@@ -8192,8 +8139,7 @@ export type GoogleCloudDataplexV1DataScanJobTypeEnum =
   | "DATA_PROFILE"
   | "DATA_DISCOVERY"
   | "DATA_DOCUMENTATION"
-  | "UNSTRUCTURED_DATA_PROFILE"
-  | (string & {});
+  | "UNSTRUCTURED_DATA_PROFILE";
 export const GoogleCloudDataplexV1DataScanJobTypeEnum = /*@__PURE__*/ S.String;
 
 /** A DataScanJob represents an instance of DataScan execution. */
@@ -8332,8 +8278,7 @@ export type GetProjectsLocationsEntryGroupsEntriesViewEnum =
   | "BASIC"
   | "FULL"
   | "CUSTOM"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const GetProjectsLocationsEntryGroupsEntriesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -8560,8 +8505,7 @@ export type GetProjectsLocationsLakesZonesEntitiesViewEnum =
   | "ENTITY_VIEW_UNSPECIFIED"
   | "BASIC"
   | "SCHEMA"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsLakesZonesEntitiesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -8697,7 +8641,7 @@ export const ListOrganizationsLocationsEncryptionConfigsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsEncryptionConfigsRequest>;
 
 export type GoogleCloudDataplexV1EncryptionConfigList =
-  GoogleCloudDataplexV1EncryptionConfig[];
+  ReadonlyArray<GoogleCloudDataplexV1EncryptionConfig>;
 export const GoogleCloudDataplexV1EncryptionConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1EncryptionConfig,
 ) as any as S.Schema<GoogleCloudDataplexV1EncryptionConfigList>;
@@ -8753,7 +8697,8 @@ export const ListOrganizationsLocationsOperationsRequest =
     identifier: "ListOrganizationsLocationsOperationsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -8808,7 +8753,8 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type GoogleCloudLocationLocationList = GoogleCloudLocationLocation[];
+export type GoogleCloudLocationLocationList =
+  ReadonlyArray<GoogleCloudLocationLocation>;
 export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
@@ -8862,7 +8808,7 @@ export const ListProjectsLocationsAspectTypesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsAspectTypesRequest>;
 
 export type GoogleCloudDataplexV1AspectTypeList =
-  GoogleCloudDataplexV1AspectType[];
+  ReadonlyArray<GoogleCloudDataplexV1AspectType>;
 export const GoogleCloudDataplexV1AspectTypeList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1AspectType,
 ) as any as S.Schema<GoogleCloudDataplexV1AspectTypeList>;
@@ -8919,7 +8865,7 @@ export const ListProjectsLocationsChangeRequestsRequest =
   }) as any as S.Schema<ListProjectsLocationsChangeRequestsRequest>;
 
 export type GoogleCloudDataplexV1ChangeRequestList =
-  GoogleCloudDataplexV1ChangeRequest[];
+  ReadonlyArray<GoogleCloudDataplexV1ChangeRequest>;
 export const GoogleCloudDataplexV1ChangeRequestList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1ChangeRequest,
 ) as any as S.Schema<GoogleCloudDataplexV1ChangeRequestList>;
@@ -8976,7 +8922,7 @@ export const ListProjectsLocationsDataAttributeBindingsRequest =
   }) as any as S.Schema<ListProjectsLocationsDataAttributeBindingsRequest>;
 
 export type GoogleCloudDataplexV1DataAttributeBindingList =
-  GoogleCloudDataplexV1DataAttributeBinding[];
+  ReadonlyArray<GoogleCloudDataplexV1DataAttributeBinding>;
 export const GoogleCloudDataplexV1DataAttributeBindingList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1DataAttributeBinding,
@@ -9036,7 +8982,7 @@ export const ListProjectsLocationsDataDomainsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsDataDomainsRequest>;
 
 export type GoogleCloudDataplexV1DataDomainList =
-  GoogleCloudDataplexV1DataDomain[];
+  ReadonlyArray<GoogleCloudDataplexV1DataDomain>;
 export const GoogleCloudDataplexV1DataDomainList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataDomain,
 ) as any as S.Schema<GoogleCloudDataplexV1DataDomainList>;
@@ -9090,7 +9036,7 @@ export const ListProjectsLocationsDataDomainsBindingsRequest =
   }) as any as S.Schema<ListProjectsLocationsDataDomainsBindingsRequest>;
 
 export type GoogleCloudDataplexV1DataDomainBindingList =
-  GoogleCloudDataplexV1DataDomainBinding[];
+  ReadonlyArray<GoogleCloudDataplexV1DataDomainBinding>;
 export const GoogleCloudDataplexV1DataDomainBindingList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataDomainBinding,
 ) as any as S.Schema<GoogleCloudDataplexV1DataDomainBindingList>;
@@ -9146,7 +9092,7 @@ export const ListProjectsLocationsDataProductsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsDataProductsRequest>;
 
 export type GoogleCloudDataplexV1DataProductList =
-  GoogleCloudDataplexV1DataProduct[];
+  ReadonlyArray<GoogleCloudDataplexV1DataProduct>;
 export const GoogleCloudDataplexV1DataProductList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataProduct,
 ) as any as S.Schema<GoogleCloudDataplexV1DataProductList>;
@@ -9203,7 +9149,7 @@ export const ListProjectsLocationsDataProductsDataAssetsRequest =
   }) as any as S.Schema<ListProjectsLocationsDataProductsDataAssetsRequest>;
 
 export type GoogleCloudDataplexV1DataAssetList =
-  GoogleCloudDataplexV1DataAsset[];
+  ReadonlyArray<GoogleCloudDataplexV1DataAsset>;
 export const GoogleCloudDataplexV1DataAssetList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataAsset,
 ) as any as S.Schema<GoogleCloudDataplexV1DataAssetList>;
@@ -9256,7 +9202,8 @@ export const ListProjectsLocationsDataScansRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDataScansRequest",
 }) as any as S.Schema<ListProjectsLocationsDataScansRequest>;
 
-export type GoogleCloudDataplexV1DataScanList = GoogleCloudDataplexV1DataScan[];
+export type GoogleCloudDataplexV1DataScanList =
+  ReadonlyArray<GoogleCloudDataplexV1DataScan>;
 export const GoogleCloudDataplexV1DataScanList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataScan,
 ) as any as S.Schema<GoogleCloudDataplexV1DataScanList>;
@@ -9310,7 +9257,7 @@ export const ListProjectsLocationsDataScansJobsRequest =
   }) as any as S.Schema<ListProjectsLocationsDataScansJobsRequest>;
 
 export type GoogleCloudDataplexV1DataScanJobList =
-  GoogleCloudDataplexV1DataScanJob[];
+  ReadonlyArray<GoogleCloudDataplexV1DataScanJob>;
 export const GoogleCloudDataplexV1DataScanJobList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataScanJob,
 ) as any as S.Schema<GoogleCloudDataplexV1DataScanJobList>;
@@ -9364,7 +9311,7 @@ export const ListProjectsLocationsDataTaxonomiesRequest =
   }) as any as S.Schema<ListProjectsLocationsDataTaxonomiesRequest>;
 
 export type GoogleCloudDataplexV1DataTaxonomyList =
-  GoogleCloudDataplexV1DataTaxonomy[];
+  ReadonlyArray<GoogleCloudDataplexV1DataTaxonomy>;
 export const GoogleCloudDataplexV1DataTaxonomyList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataTaxonomy,
 ) as any as S.Schema<GoogleCloudDataplexV1DataTaxonomyList>;
@@ -9421,7 +9368,7 @@ export const ListProjectsLocationsDataTaxonomiesAttributesRequest =
   }) as any as S.Schema<ListProjectsLocationsDataTaxonomiesAttributesRequest>;
 
 export type GoogleCloudDataplexV1DataAttributeList =
-  GoogleCloudDataplexV1DataAttribute[];
+  ReadonlyArray<GoogleCloudDataplexV1DataAttribute>;
 export const GoogleCloudDataplexV1DataAttributeList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1DataAttribute,
 ) as any as S.Schema<GoogleCloudDataplexV1DataAttributeList>;
@@ -9478,7 +9425,7 @@ export const ListProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsEntryGroupsRequest>;
 
 export type GoogleCloudDataplexV1EntryGroupList =
-  GoogleCloudDataplexV1EntryGroup[];
+  ReadonlyArray<GoogleCloudDataplexV1EntryGroup>;
 export const GoogleCloudDataplexV1EntryGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1EntryGroup,
 ) as any as S.Schema<GoogleCloudDataplexV1EntryGroupList>;
@@ -9531,7 +9478,8 @@ export const ListProjectsLocationsEntryGroupsEntriesRequest =
     identifier: "ListProjectsLocationsEntryGroupsEntriesRequest",
   }) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>;
 
-export type GoogleCloudDataplexV1EntryList = GoogleCloudDataplexV1Entry[];
+export type GoogleCloudDataplexV1EntryList =
+  ReadonlyArray<GoogleCloudDataplexV1Entry>;
 export const GoogleCloudDataplexV1EntryList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Entry,
 ) as any as S.Schema<GoogleCloudDataplexV1EntryList>;
@@ -9585,7 +9533,7 @@ export const ListProjectsLocationsEntryTypesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsEntryTypesRequest>;
 
 export type GoogleCloudDataplexV1EntryTypeList =
-  GoogleCloudDataplexV1EntryType[];
+  ReadonlyArray<GoogleCloudDataplexV1EntryType>;
 export const GoogleCloudDataplexV1EntryTypeList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1EntryType,
 ) as any as S.Schema<GoogleCloudDataplexV1EntryTypeList>;
@@ -9641,7 +9589,8 @@ export const ListProjectsLocationsGlossariesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsGlossariesRequest",
 }) as any as S.Schema<ListProjectsLocationsGlossariesRequest>;
 
-export type GoogleCloudDataplexV1GlossaryList = GoogleCloudDataplexV1Glossary[];
+export type GoogleCloudDataplexV1GlossaryList =
+  ReadonlyArray<GoogleCloudDataplexV1Glossary>;
 export const GoogleCloudDataplexV1GlossaryList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Glossary,
 ) as any as S.Schema<GoogleCloudDataplexV1GlossaryList>;
@@ -9698,7 +9647,7 @@ export const ListProjectsLocationsGlossariesCategoriesRequest =
   }) as any as S.Schema<ListProjectsLocationsGlossariesCategoriesRequest>;
 
 export type GoogleCloudDataplexV1GlossaryCategoryList =
-  GoogleCloudDataplexV1GlossaryCategory[];
+  ReadonlyArray<GoogleCloudDataplexV1GlossaryCategory>;
 export const GoogleCloudDataplexV1GlossaryCategoryList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1GlossaryCategory,
 ) as any as S.Schema<GoogleCloudDataplexV1GlossaryCategoryList>;
@@ -9755,7 +9704,7 @@ export const ListProjectsLocationsGlossariesTermsRequest =
   }) as any as S.Schema<ListProjectsLocationsGlossariesTermsRequest>;
 
 export type GoogleCloudDataplexV1GlossaryTermList =
-  GoogleCloudDataplexV1GlossaryTerm[];
+  ReadonlyArray<GoogleCloudDataplexV1GlossaryTerm>;
 export const GoogleCloudDataplexV1GlossaryTermList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1GlossaryTerm,
 ) as any as S.Schema<GoogleCloudDataplexV1GlossaryTermList>;
@@ -9810,7 +9759,8 @@ export const ListProjectsLocationsLakesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsLakesRequest",
 }) as any as S.Schema<ListProjectsLocationsLakesRequest>;
 
-export type GoogleCloudDataplexV1LakeList = GoogleCloudDataplexV1Lake[];
+export type GoogleCloudDataplexV1LakeList =
+  ReadonlyArray<GoogleCloudDataplexV1Lake>;
 export const GoogleCloudDataplexV1LakeList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Lake,
 ) as any as S.Schema<GoogleCloudDataplexV1LakeList>;
@@ -9891,8 +9841,7 @@ export type GoogleCloudDataplexV1ActionCategoryEnum =
   | "CATEGORY_UNSPECIFIED"
   | "RESOURCE_MANAGEMENT"
   | "SECURITY_POLICY"
-  | "DATA_DISCOVERY"
-  | (string & {});
+  | "DATA_DISCOVERY";
 export const GoogleCloudDataplexV1ActionCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Action details for unauthorized resource issues raised to indicate that the service account associated with the lake instance is not authorized to access or manage the resource associated with an asset. */
@@ -9918,10 +9867,7 @@ export const GoogleCloudDataplexV1ActionMissingResource =
   }) as any as S.Schema<GoogleCloudDataplexV1ActionMissingResource>;
 
 export type GoogleCloudDataplexV1ActionInvalidDataPartitionExpectedStructureEnum =
-    | "PARTITION_STRUCTURE_UNSPECIFIED"
-    | "CONSISTENT_KEYS"
-    | "HIVE_STYLE_KEYS"
-    | (string & {});
+  "PARTITION_STRUCTURE_UNSPECIFIED" | "CONSISTENT_KEYS" | "HIVE_STYLE_KEYS";
 export const GoogleCloudDataplexV1ActionInvalidDataPartitionExpectedStructureEnum =
   /*@__PURE__*/ S.String;
 
@@ -9944,8 +9890,7 @@ export const GoogleCloudDataplexV1ActionInvalidDataPartition =
 export type GoogleCloudDataplexV1ActionIncompatibleDataSchemaSchemaChangeEnum =
   | "SCHEMA_CHANGE_UNSPECIFIED"
   | "INCOMPATIBLE"
-  | "MODIFIED"
-  | (string & {});
+  | "MODIFIED";
 export const GoogleCloudDataplexV1ActionIncompatibleDataSchemaSchemaChangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10059,7 +10004,8 @@ export const GoogleCloudDataplexV1Action = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudDataplexV1Action",
 }) as any as S.Schema<GoogleCloudDataplexV1Action>;
 
-export type GoogleCloudDataplexV1ActionList = GoogleCloudDataplexV1Action[];
+export type GoogleCloudDataplexV1ActionList =
+  ReadonlyArray<GoogleCloudDataplexV1Action>;
 export const GoogleCloudDataplexV1ActionList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Action,
 ) as any as S.Schema<GoogleCloudDataplexV1ActionList>;
@@ -10112,7 +10058,8 @@ export const ListProjectsLocationsLakesTasksRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsLakesTasksRequest",
 }) as any as S.Schema<ListProjectsLocationsLakesTasksRequest>;
 
-export type GoogleCloudDataplexV1TaskList = GoogleCloudDataplexV1Task[];
+export type GoogleCloudDataplexV1TaskList =
+  ReadonlyArray<GoogleCloudDataplexV1Task>;
 export const GoogleCloudDataplexV1TaskList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Task,
 ) as any as S.Schema<GoogleCloudDataplexV1TaskList>;
@@ -10162,7 +10109,8 @@ export const ListProjectsLocationsLakesTasksJobsRequest =
     identifier: "ListProjectsLocationsLakesTasksJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsLakesTasksJobsRequest>;
 
-export type GoogleCloudDataplexV1JobList = GoogleCloudDataplexV1Job[];
+export type GoogleCloudDataplexV1JobList =
+  ReadonlyArray<GoogleCloudDataplexV1Job>;
 export const GoogleCloudDataplexV1JobList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Job,
 ) as any as S.Schema<GoogleCloudDataplexV1JobList>;
@@ -10215,7 +10163,8 @@ export const ListProjectsLocationsLakesZonesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsLakesZonesRequest",
 }) as any as S.Schema<ListProjectsLocationsLakesZonesRequest>;
 
-export type GoogleCloudDataplexV1ZoneList = GoogleCloudDataplexV1Zone[];
+export type GoogleCloudDataplexV1ZoneList =
+  ReadonlyArray<GoogleCloudDataplexV1Zone>;
 export const GoogleCloudDataplexV1ZoneList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Zone,
 ) as any as S.Schema<GoogleCloudDataplexV1ZoneList>;
@@ -10293,7 +10242,8 @@ export const ListProjectsLocationsLakesZonesAssetsRequest =
     identifier: "ListProjectsLocationsLakesZonesAssetsRequest",
   }) as any as S.Schema<ListProjectsLocationsLakesZonesAssetsRequest>;
 
-export type GoogleCloudDataplexV1AssetList = GoogleCloudDataplexV1Asset[];
+export type GoogleCloudDataplexV1AssetList =
+  ReadonlyArray<GoogleCloudDataplexV1Asset>;
 export const GoogleCloudDataplexV1AssetList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Asset,
 ) as any as S.Schema<GoogleCloudDataplexV1AssetList>;
@@ -10343,8 +10293,7 @@ export const ListProjectsLocationsLakesZonesAssetsActionsRequest =
 export type ListProjectsLocationsLakesZonesEntitiesViewEnum =
   | "ENTITY_VIEW_UNSPECIFIED"
   | "TABLES"
-  | "FILESETS"
-  | (string & {});
+  | "FILESETS";
 export const ListProjectsLocationsLakesZonesEntitiesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -10381,7 +10330,8 @@ export const ListProjectsLocationsLakesZonesEntitiesRequest =
     identifier: "ListProjectsLocationsLakesZonesEntitiesRequest",
   }) as any as S.Schema<ListProjectsLocationsLakesZonesEntitiesRequest>;
 
-export type GoogleCloudDataplexV1EntityList = GoogleCloudDataplexV1Entity[];
+export type GoogleCloudDataplexV1EntityList =
+  ReadonlyArray<GoogleCloudDataplexV1Entity>;
 export const GoogleCloudDataplexV1EntityList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Entity,
 ) as any as S.Schema<GoogleCloudDataplexV1EntityList>;
@@ -10432,7 +10382,7 @@ export const ListProjectsLocationsLakesZonesEntitiesPartitionsRequest =
   }) as any as S.Schema<ListProjectsLocationsLakesZonesEntitiesPartitionsRequest>;
 
 export type GoogleCloudDataplexV1PartitionList =
-  GoogleCloudDataplexV1Partition[];
+  ReadonlyArray<GoogleCloudDataplexV1Partition>;
 export const GoogleCloudDataplexV1PartitionList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1Partition,
 ) as any as S.Schema<GoogleCloudDataplexV1PartitionList>;
@@ -10486,7 +10436,7 @@ export const ListProjectsLocationsMetadataFeedsRequest =
   }) as any as S.Schema<ListProjectsLocationsMetadataFeedsRequest>;
 
 export type GoogleCloudDataplexV1MetadataFeedList =
-  GoogleCloudDataplexV1MetadataFeed[];
+  ReadonlyArray<GoogleCloudDataplexV1MetadataFeed>;
 export const GoogleCloudDataplexV1MetadataFeedList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1MetadataFeed,
 ) as any as S.Schema<GoogleCloudDataplexV1MetadataFeedList>;
@@ -10543,7 +10493,7 @@ export const ListProjectsLocationsMetadataJobsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsMetadataJobsRequest>;
 
 export type GoogleCloudDataplexV1MetadataJobList =
-  GoogleCloudDataplexV1MetadataJob[];
+  ReadonlyArray<GoogleCloudDataplexV1MetadataJob>;
 export const GoogleCloudDataplexV1MetadataJobList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1MetadataJob,
 ) as any as S.Schema<GoogleCloudDataplexV1MetadataJobList>;
@@ -10657,8 +10607,7 @@ export const GoogleCloudDataplexV1LookupContextResponse =
 export type LookupEntryLinksProjectsLocationsEntryModeEnum =
   | "ENTRY_MODE_UNSPECIFIED"
   | "SOURCE"
-  | "TARGET"
-  | (string & {});
+  | "TARGET";
 export const LookupEntryLinksProjectsLocationsEntryModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10699,7 +10648,7 @@ export const LookupEntryLinksProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LookupEntryLinksProjectsLocationsRequest>;
 
 export type GoogleCloudDataplexV1EntryLinkList =
-  GoogleCloudDataplexV1EntryLink[];
+  ReadonlyArray<GoogleCloudDataplexV1EntryLink>;
 export const GoogleCloudDataplexV1EntryLinkList = /*@__PURE__*/ S.Array(
   GoogleCloudDataplexV1EntryLink,
 ) as any as S.Schema<GoogleCloudDataplexV1EntryLinkList>;
@@ -10726,8 +10675,7 @@ export type LookupEntryProjectsLocationsViewEnum =
   | "BASIC"
   | "FULL"
   | "CUSTOM"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const LookupEntryProjectsLocationsViewEnum = /*@__PURE__*/ S.String;
 
 export interface LookupEntryProjectsLocationsRequest {
@@ -11684,7 +11632,7 @@ export const GoogleCloudDataplexV1SearchEntriesResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDataplexV1SearchEntriesResult>;
 
 export type GoogleCloudDataplexV1SearchEntriesResultList =
-  GoogleCloudDataplexV1SearchEntriesResult[];
+  ReadonlyArray<GoogleCloudDataplexV1SearchEntriesResult>;
 export const GoogleCloudDataplexV1SearchEntriesResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDataplexV1SearchEntriesResult,

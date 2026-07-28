@@ -178,8 +178,7 @@ export type InstanceTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "BASIC"
   | "ENTERPRISE"
-  | "DEVELOPER"
-  | (string & {});
+  | "DEVELOPER";
 export const InstanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type AcceleratorAcceleratorTypeEnum =
@@ -187,16 +186,14 @@ export type AcceleratorAcceleratorTypeEnum =
   | "CDC"
   | "HEALTHCARE"
   | "CCAI_INSIGHTS"
-  | "CLOUDSEARCH"
-  | (string & {});
+  | "CLOUDSEARCH";
 export const AcceleratorAcceleratorTypeEnum = /*@__PURE__*/ S.String;
 
 export type AcceleratorStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const AcceleratorStateEnum = /*@__PURE__*/ S.String;
 
 /** Identifies Cloud Data Fusion accelerators for an instance. */
@@ -213,7 +210,7 @@ export const Accelerator = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Accelerator" }) as any as S.Schema<Accelerator>;
 
-export type AcceleratorList = Accelerator[];
+export type AcceleratorList = ReadonlyArray<Accelerator>;
 export const AcceleratorList = /*@__PURE__*/ S.Array(
   Accelerator,
 ) as any as S.Schema<AcceleratorList>;
@@ -221,12 +218,11 @@ export const AcceleratorList = /*@__PURE__*/ S.Array(
 export type InstanceDisabledReasonItemEnum =
   | "DISABLED_REASON_UNSPECIFIED"
   | "KMS_KEY_ISSUE"
-  | "PROJECT_STATE_OFF"
-  | (string & {});
+  | "PROJECT_STATE_OFF";
 export const InstanceDisabledReasonItemEnum = /*@__PURE__*/ S.String;
 
 export type InstanceDisabledReasonItemEnumList =
-  InstanceDisabledReasonItemEnum[];
+  ReadonlyArray<InstanceDisabledReasonItemEnum>;
 export const InstanceDisabledReasonItemEnumList = /*@__PURE__*/ S.Array(
   InstanceDisabledReasonItemEnum,
 ) as any as S.Schema<InstanceDisabledReasonItemEnumList>;
@@ -264,11 +260,10 @@ export type VersionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_PREVIEW"
   | "TYPE_GENERAL_AVAILABILITY"
-  | "TYPE_DEPRECATED"
-  | (string & {});
+  | "TYPE_DEPRECATED";
 export const VersionTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -293,7 +288,7 @@ export const Version = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
-export type VersionList = Version[];
+export type VersionList = ReadonlyArray<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -301,8 +296,7 @@ export const VersionList = /*@__PURE__*/ S.Array(
 export type NetworkConfigConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "VPC_PEERING"
-  | "PRIVATE_SERVICE_CONNECT_INTERFACES"
-  | (string & {});
+  | "PRIVATE_SERVICE_CONNECT_INTERFACES";
 export const NetworkConfigConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for using Private Service Connect to establish connectivity between the Data Fusion consumer project and the corresponding tenant project. */
@@ -356,16 +350,14 @@ export type InstanceStateEnum =
   | "AUTO_UPDATING"
   | "AUTO_UPGRADING"
   | "DISABLED"
-  | "ENABLING"
-  | (string & {});
+  | "ENABLING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type MaintenanceEventStateEnum =
   | "STATE_UNSPECIFIED"
   | "SCHEDULED"
   | "STARTED"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const MaintenanceEventStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a maintenance event. */
@@ -387,7 +379,7 @@ export const MaintenanceEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceEvent",
 }) as any as S.Schema<MaintenanceEvent>;
 
-export type MaintenanceEventList = MaintenanceEvent[];
+export type MaintenanceEventList = ReadonlyArray<MaintenanceEvent>;
 export const MaintenanceEventList = /*@__PURE__*/ S.Array(
   MaintenanceEvent,
 ) as any as S.Schema<MaintenanceEventList>;
@@ -565,7 +557,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -744,8 +736,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -762,7 +753,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -781,7 +772,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -823,7 +814,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -979,7 +970,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1031,7 +1022,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -1080,7 +1071,7 @@ export const ListProjectsLocationsInstancesDnsPeeringsRequest =
     identifier: "ListProjectsLocationsInstancesDnsPeeringsRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesDnsPeeringsRequest>;
 
-export type DnsPeeringList = DnsPeering[];
+export type DnsPeeringList = ReadonlyArray<DnsPeering>;
 export const DnsPeeringList = /*@__PURE__*/ S.Array(
   DnsPeering,
 ) as any as S.Schema<DnsPeeringList>;
@@ -1104,8 +1095,7 @@ export const ListDnsPeeringsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsInstancesNamespacesViewEnum =
   | "NAMESPACE_VIEW_UNSPECIFIED"
   | "NAMESPACE_VIEW_BASIC"
-  | "NAMESPACE_VIEW_FULL"
-  | (string & {});
+  | "NAMESPACE_VIEW_FULL";
 export const ListProjectsLocationsInstancesNamespacesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1167,7 +1157,7 @@ export const Namespace = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Namespace" }) as any as S.Schema<Namespace>;
 
-export type NamespaceList = Namespace[];
+export type NamespaceList = ReadonlyArray<Namespace>;
 export const NamespaceList = /*@__PURE__*/ S.Array(
   Namespace,
 ) as any as S.Schema<NamespaceList>;
@@ -1219,7 +1209,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

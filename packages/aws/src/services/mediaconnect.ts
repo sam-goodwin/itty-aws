@@ -173,8 +173,7 @@ export type Protocol =
   | "srt-caller"
   | "fujitsu-qos"
   | "udp"
-  | "ndi-speed-hq"
-  | (string & {});
+  | "ndi-speed-hq";
 export const Protocol = /*@__PURE__*/ S.String;
 
 export interface AddBridgeNetworkOutputRequest {
@@ -537,18 +536,16 @@ export type Colorimetry =
   | "BT2100"
   | "ST2065-1"
   | "ST2065-3"
-  | "XYZ"
-  | (string & {});
+  | "XYZ";
 export const Colorimetry = /*@__PURE__*/ S.String;
 
-export type Range = "NARROW" | "FULL" | "FULLPROTECT" | (string & {});
+export type Range = "NARROW" | "FULL" | "FULLPROTECT";
 export const Range = /*@__PURE__*/ S.String;
 
 export type ScanMode =
   | "progressive"
   | "interlace"
-  | "progressive-segmented-frame"
-  | (string & {});
+  | "progressive-segmented-frame";
 export const ScanMode = /*@__PURE__*/ S.String;
 
 export type Tcs =
@@ -560,8 +557,7 @@ export type Tcs =
   | "BT2100LINHLG"
   | "ST2065-1"
   | "ST428-1"
-  | "DENSITY"
-  | (string & {});
+  | "DENSITY";
 export const Tcs = /*@__PURE__*/ S.String;
 
 export interface FmtpRequest {
@@ -605,11 +601,7 @@ export const MediaStreamAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MediaStreamAttributesRequest",
 }) as any as S.Schema<MediaStreamAttributesRequest>;
-export type MediaStreamType =
-  | "video"
-  | "audio"
-  | "ancillary-data"
-  | (string & {});
+export type MediaStreamType = "video" | "audio" | "ancillary-data";
 export const MediaStreamType = /*@__PURE__*/ S.String;
 
 export type __mapOfString = { [key: string]: string | undefined };
@@ -775,10 +767,10 @@ export const AddFlowMediaStreamsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddFlowMediaStreamsResponse>;
 export type __listOfString = string[];
 export const __listOfString = /*@__PURE__*/ S.Array(S.String);
-export type Algorithm = "aes128" | "aes192" | "aes256" | (string & {});
+export type Algorithm = "aes128" | "aes192" | "aes256";
 export const Algorithm = /*@__PURE__*/ S.String;
 
-export type KeyType = "speke" | "static-key" | "srt-password" | (string & {});
+export type KeyType = "speke" | "static-key" | "srt-password";
 export const KeyType = /*@__PURE__*/ S.String;
 
 export interface Encryption {
@@ -850,10 +842,10 @@ export type __listOfDestinationConfigurationRequest =
 export const __listOfDestinationConfigurationRequest = /*@__PURE__*/ S.Array(
   DestinationConfigurationRequest,
 );
-export type EncodingName = "jxsv" | "raw" | "smpte291" | "pcm" | (string & {});
+export type EncodingName = "jxsv" | "raw" | "smpte291" | "pcm";
 export const EncodingName = /*@__PURE__*/ S.String;
 
-export type EncoderProfile = "main" | "high" | (string & {});
+export type EncoderProfile = "main" | "high";
 export const EncoderProfile = /*@__PURE__*/ S.String;
 
 export interface EncodingParametersRequest {
@@ -903,16 +895,13 @@ export type __listOfMediaStreamOutputConfigurationRequest =
   MediaStreamOutputConfigurationRequest[];
 export const __listOfMediaStreamOutputConfigurationRequest =
   /*@__PURE__*/ S.Array(MediaStreamOutputConfigurationRequest);
-export type OutputStatus = "ENABLED" | "DISABLED" | (string & {});
+export type OutputStatus = "ENABLED" | "DISABLED";
 export const OutputStatus = /*@__PURE__*/ S.String;
 
-export type State = "ENABLED" | "DISABLED" | (string & {});
+export type State = "ENABLED" | "DISABLED";
 export const State = /*@__PURE__*/ S.String;
 
-export type FlowTransitEncryptionKeyType =
-  | "SECRETS_MANAGER"
-  | "AUTOMATIC"
-  | (string & {});
+export type FlowTransitEncryptionKeyType = "SECRETS_MANAGER" | "AUTOMATIC";
 export const FlowTransitEncryptionKeyType = /*@__PURE__*/ S.String;
 
 export type SecretArn = string;
@@ -962,10 +951,7 @@ export const FlowTransitEncryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FlowTransitEncryption",
 }) as any as S.Schema<FlowTransitEncryption>;
-export type NdiOutputTimecodeSource =
-  | "EMBEDDED_TIMECODE"
-  | "UTC_SYSTEM_TIME"
-  | (string & {});
+export type NdiOutputTimecodeSource = "EMBEDDED_TIMECODE" | "UTC_SYSTEM_TIME";
 export const NdiOutputTimecodeSource = /*@__PURE__*/ S.String;
 
 export interface AddOutputRequest {
@@ -1653,7 +1639,7 @@ export const AddFlowSourcesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddFlowSourcesResponse",
 }) as any as S.Schema<AddFlowSourcesResponse>;
-export type NetworkInterfaceType = "ena" | "efa" | (string & {});
+export type NetworkInterfaceType = "ena" | "efa";
 export const NetworkInterfaceType = /*@__PURE__*/ S.String;
 
 export interface VpcInterfaceRequest {
@@ -1789,8 +1775,7 @@ export type RouterInputState =
   | "UPDATING"
   | "ERROR"
   | "RECOVERING"
-  | "MIGRATING"
-  | (string & {});
+  | "MIGRATING";
 export const RouterInputState = /*@__PURE__*/ S.String;
 
 export type RouterInputType =
@@ -1798,8 +1783,7 @@ export type RouterInputType =
   | "FAILOVER"
   | "MERGE"
   | "MEDIACONNECT_FLOW"
-  | "MEDIALIVE_CHANNEL"
-  | (string & {});
+  | "MEDIALIVE_CHANNEL";
 export const RouterInputType = /*@__PURE__*/ S.String;
 
 export type RouterNetworkInterfaceArn = string;
@@ -1873,10 +1857,7 @@ export const SrtCallerRouterInputConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SrtCallerRouterInputConfiguration",
 }) as any as S.Schema<SrtCallerRouterInputConfiguration>;
-export type ForwardErrorCorrectionState =
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type ForwardErrorCorrectionState = "ENABLED" | "DISABLED";
 export const ForwardErrorCorrectionState = /*@__PURE__*/ S.String;
 
 export interface RtpRouterInputConfiguration {
@@ -1931,8 +1912,7 @@ export type RouterInputProtocol =
   | "RTP"
   | "RIST"
   | "SRT_CALLER"
-  | "SRT_LISTENER"
-  | (string & {});
+  | "SRT_LISTENER";
 export const RouterInputProtocol = /*@__PURE__*/ S.String;
 
 export interface StandardRouterInputConfiguration {
@@ -1956,16 +1936,10 @@ export const StandardRouterInputConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "StandardRouterInputConfiguration",
 }) as any as S.Schema<StandardRouterInputConfiguration>;
 export type MediaLiveChannelArn = string;
-export type MediaLiveChannelPipelineId =
-  | "PIPELINE_0"
-  | "PIPELINE_1"
-  | (string & {});
+export type MediaLiveChannelPipelineId = "PIPELINE_0" | "PIPELINE_1";
 export const MediaLiveChannelPipelineId = /*@__PURE__*/ S.String;
 
-export type MediaLiveTransitEncryptionKeyType =
-  | "SECRETS_MANAGER"
-  | "AUTOMATIC"
-  | (string & {});
+export type MediaLiveTransitEncryptionKeyType = "SECRETS_MANAGER" | "AUTOMATIC";
 export const MediaLiveTransitEncryptionKeyType = /*@__PURE__*/ S.String;
 
 export type MediaLiveTransitEncryptionKeyConfiguration =
@@ -2058,8 +2032,7 @@ export const FailoverRouterInputProtocolConfigurationList =
   /*@__PURE__*/ S.Array(FailoverRouterInputProtocolConfiguration);
 export type FailoverInputSourcePriorityMode =
   | "NO_PRIORITY"
-  | "PRIMARY_SECONDARY"
-  | (string & {});
+  | "PRIMARY_SECONDARY";
 export const FailoverInputSourcePriorityMode = /*@__PURE__*/ S.String;
 
 export interface FailoverRouterInputConfiguration {
@@ -2182,14 +2155,10 @@ export const RouterInputConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ MediaConnectFlow: MediaConnectFlowRouterInputConfiguration }),
   S.Struct({ Merge: MergeRouterInputConfiguration }),
 ]);
-export type RouterInputTier =
-  | "INPUT_100"
-  | "INPUT_50"
-  | "INPUT_20"
-  | (string & {});
+export type RouterInputTier = "INPUT_100" | "INPUT_50" | "INPUT_20";
 export const RouterInputTier = /*@__PURE__*/ S.String;
 
-export type RoutingScope = "REGIONAL" | "GLOBAL" | (string & {});
+export type RoutingScope = "REGIONAL" | "GLOBAL";
 export const RoutingScope = /*@__PURE__*/ S.String;
 
 export interface RouterInputMessage {
@@ -2207,8 +2176,7 @@ export type RouterInputMessages = RouterInputMessage[];
 export const RouterInputMessages = /*@__PURE__*/ S.Array(RouterInputMessage);
 export type RouterInputTransitEncryptionKeyType =
   | "SECRETS_MANAGER"
-  | "AUTOMATIC"
-  | (string & {});
+  | "AUTOMATIC";
 export const RouterInputTransitEncryptionKeyType = /*@__PURE__*/ S.String;
 
 export type RouterInputTransitEncryptionKeyConfiguration =
@@ -2374,7 +2342,7 @@ export const RouterInputStreamDetails = /*@__PURE__*/ S.Union([
   S.Struct({ MediaConnectFlow: MediaConnectFlowRouterInputStreamDetails }),
   S.Struct({ Merge: MergeRouterInputStreamDetails }),
 ]);
-export type MaintenanceType = "PREFERRED_DAY_TIME" | "DEFAULT" | (string & {});
+export type MaintenanceType = "PREFERRED_DAY_TIME" | "DEFAULT";
 export const MaintenanceType = /*@__PURE__*/ S.String;
 
 export type Day =
@@ -2384,8 +2352,7 @@ export type Day =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const Day = /*@__PURE__*/ S.String;
 
 export interface PreferredDayTimeMaintenanceConfiguration {
@@ -2416,7 +2383,7 @@ export const MaintenanceConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ PreferredDayTime: PreferredDayTimeMaintenanceConfiguration }),
   S.Struct({ Default: DefaultMaintenanceConfiguration }),
 ]);
-export type MaintenanceScheduleType = "WINDOW" | (string & {});
+export type MaintenanceScheduleType = "WINDOW";
 export const MaintenanceScheduleType = /*@__PURE__*/ S.String;
 
 export interface WindowMaintenanceSchedule {
@@ -2443,13 +2410,10 @@ export type MaintenanceSchedule = { Window: WindowMaintenanceSchedule };
 export const MaintenanceSchedule = /*@__PURE__*/ S.Union([
   S.Struct({ Window: WindowMaintenanceSchedule }),
 ]);
-export type RouterContentQualityAnalysisType = "CONTENT_LEVEL" | (string & {});
+export type RouterContentQualityAnalysisType = "CONTENT_LEVEL";
 export const RouterContentQualityAnalysisType = /*@__PURE__*/ S.String;
 
-export type ContentQualityAnalysisState =
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type ContentQualityAnalysisState = "ENABLED" | "DISABLED";
 export const ContentQualityAnalysisState = /*@__PURE__*/ S.String;
 
 export type RouterCqaThresholdSeconds = number;
@@ -2673,11 +2637,10 @@ export type RouterNetworkInterfaceState =
   | "UPDATING"
   | "DELETING"
   | "ERROR"
-  | "RECOVERING"
-  | (string & {});
+  | "RECOVERING";
 export const RouterNetworkInterfaceState = /*@__PURE__*/ S.String;
 
-export type RouterNetworkInterfaceType = "PUBLIC" | "VPC" | (string & {});
+export type RouterNetworkInterfaceType = "PUBLIC" | "VPC";
 export const RouterNetworkInterfaceType = /*@__PURE__*/ S.String;
 
 export interface PublicRouterNetworkInterfaceRule {
@@ -2847,15 +2810,13 @@ export type RouterOutputState =
   | "UPDATING"
   | "ERROR"
   | "RECOVERING"
-  | "MIGRATING"
-  | (string & {});
+  | "MIGRATING";
 export const RouterOutputState = /*@__PURE__*/ S.String;
 
 export type RouterOutputType =
   | "STANDARD"
   | "MEDIACONNECT_FLOW"
-  | "MEDIALIVE_INPUT"
-  | (string & {});
+  | "MEDIALIVE_INPUT";
 export const RouterOutputType = /*@__PURE__*/ S.String;
 
 export interface RistRouterOutputConfiguration {
@@ -2984,8 +2945,7 @@ export type RouterOutputProtocol =
   | "RTP"
   | "RIST"
   | "SRT_CALLER"
-  | "SRT_LISTENER"
-  | (string & {});
+  | "SRT_LISTENER";
 export const RouterOutputProtocol = /*@__PURE__*/ S.String;
 
 export interface StandardRouterOutputConfiguration {
@@ -3031,10 +2991,7 @@ export const MediaConnectFlowRouterOutputConfiguration =
     identifier: "MediaConnectFlowRouterOutputConfiguration",
   }) as any as S.Schema<MediaConnectFlowRouterOutputConfiguration>;
 export type MediaLiveInputArn = string;
-export type MediaLiveInputPipelineId =
-  | "PIPELINE_0"
-  | "PIPELINE_1"
-  | (string & {});
+export type MediaLiveInputPipelineId = "PIPELINE_0" | "PIPELINE_1";
 export const MediaLiveInputPipelineId = /*@__PURE__*/ S.String;
 
 export interface MediaLiveInputRouterOutputConfiguration {
@@ -3079,18 +3036,10 @@ export const RouterOutputConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ MediaConnectFlow: MediaConnectFlowRouterOutputConfiguration }),
   S.Struct({ MediaLiveInput: MediaLiveInputRouterOutputConfiguration }),
 ]);
-export type RouterOutputRoutedState =
-  | "ROUTED"
-  | "ROUTING"
-  | "UNROUTED"
-  | (string & {});
+export type RouterOutputRoutedState = "ROUTED" | "ROUTING" | "UNROUTED";
 export const RouterOutputRoutedState = /*@__PURE__*/ S.String;
 
-export type RouterOutputTier =
-  | "OUTPUT_100"
-  | "OUTPUT_50"
-  | "OUTPUT_20"
-  | (string & {});
+export type RouterOutputTier = "OUTPUT_100" | "OUTPUT_50" | "OUTPUT_20";
 export const RouterOutputTier = /*@__PURE__*/ S.String;
 
 export interface RouterOutputMessage {
@@ -3278,7 +3227,7 @@ export const AddIngressGatewayBridgeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddIngressGatewayBridgeRequest",
 }) as any as S.Schema<AddIngressGatewayBridgeRequest>;
-export type FailoverMode = "MERGE" | "FAILOVER" | (string & {});
+export type FailoverMode = "MERGE" | "FAILOVER";
 export const FailoverMode = /*@__PURE__*/ S.String;
 
 export interface SourcePriority {
@@ -3385,8 +3334,7 @@ export type BridgeState =
   | "START_FAILED"
   | "START_PENDING"
   | "STOP_FAILED"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const BridgeState = /*@__PURE__*/ S.String;
 
 export interface EgressGatewayBridge {
@@ -3506,7 +3454,7 @@ export const CreateBridgeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBridgeResponse",
 }) as any as S.Schema<CreateBridgeResponse>;
-export type EntitlementStatus = "ENABLED" | "DISABLED" | (string & {});
+export type EntitlementStatus = "ENABLED" | "DISABLED";
 export const EntitlementStatus = /*@__PURE__*/ S.String;
 
 export interface GrantEntitlementRequest {
@@ -3552,8 +3500,7 @@ export type MaintenanceDay =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday"
-  | (string & {});
+  | "Sunday";
 export const MaintenanceDay = /*@__PURE__*/ S.String;
 
 export interface AddMaintenance {
@@ -3571,7 +3518,7 @@ export const AddMaintenance = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "AddMaintenance" }) as any as S.Schema<AddMaintenance>;
-export type ThumbnailState = "ENABLED" | "DISABLED" | (string & {});
+export type ThumbnailState = "ENABLED" | "DISABLED";
 export const ThumbnailState = /*@__PURE__*/ S.String;
 
 export interface SilentAudio {
@@ -3665,10 +3612,10 @@ export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MonitoringConfig",
 }) as any as S.Schema<MonitoringConfig>;
-export type FlowSize = "MEDIUM" | "LARGE" | "LARGE_4X" | (string & {});
+export type FlowSize = "MEDIUM" | "LARGE" | "LARGE_4X";
 export const FlowSize = /*@__PURE__*/ S.String;
 
-export type NdiState = "ENABLED" | "DISABLED" | (string & {});
+export type NdiState = "ENABLED" | "DISABLED";
 export const NdiState = /*@__PURE__*/ S.String;
 
 export interface NdiDiscoveryServerConfig {
@@ -3715,8 +3662,7 @@ export const NdiConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NdiConfig" }) as any as S.Schema<NdiConfig>;
 export type EncodingProfile =
   | "DISTRIBUTION_H264_DEFAULT"
-  | "CONTRIBUTION_H264_DEFAULT"
-  | (string & {});
+  | "CONTRIBUTION_H264_DEFAULT";
 export const EncodingProfile = /*@__PURE__*/ S.String;
 
 export interface EncodingConfig {
@@ -3840,8 +3786,7 @@ export type Status =
   | "DELETING"
   | "STARTING"
   | "STOPPING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const Status = /*@__PURE__*/ S.String;
 
 export interface Maintenance {
@@ -4069,8 +4014,7 @@ export type GatewayState =
   | "UPDATING"
   | "ERROR"
   | "DELETING"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const GatewayState = /*@__PURE__*/ S.String;
 
 export interface Gateway {
@@ -4505,8 +4449,7 @@ export type InstanceState =
   | "DEREGISTERING"
   | "DEREGISTERED"
   | "REGISTRATION_ERROR"
-  | "DEREGISTRATION_ERROR"
-  | (string & {});
+  | "DEREGISTRATION_ERROR";
 export const InstanceState = /*@__PURE__*/ S.String;
 
 export interface DeregisterGatewayInstanceResponse {
@@ -5066,10 +5009,10 @@ export const DescribeGatewayInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeGatewayInstanceRequest",
 }) as any as S.Schema<DescribeGatewayInstanceRequest>;
-export type BridgePlacement = "AVAILABLE" | "LOCKED" | (string & {});
+export type BridgePlacement = "AVAILABLE" | "LOCKED";
 export const BridgePlacement = /*@__PURE__*/ S.String;
 
-export type ConnectionStatus = "CONNECTED" | "DISCONNECTED" | (string & {});
+export type ConnectionStatus = "CONNECTED" | "DISCONNECTED";
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface GatewayInstance {
@@ -5144,13 +5087,13 @@ export const DescribeOfferingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeOfferingRequest",
 }) as any as S.Schema<DescribeOfferingRequest>;
-export type DurationUnits = "MONTHS" | (string & {});
+export type DurationUnits = "MONTHS";
 export const DurationUnits = /*@__PURE__*/ S.String;
 
-export type PriceUnits = "HOURLY" | (string & {});
+export type PriceUnits = "HOURLY";
 export const PriceUnits = /*@__PURE__*/ S.String;
 
-export type ResourceType = "Mbps_Outbound_Bandwidth" | (string & {});
+export type ResourceType = "Mbps_Outbound_Bandwidth";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface ResourceSpecification {
@@ -5244,12 +5187,7 @@ export const DescribeReservationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeReservationRequest",
 }) as any as S.Schema<DescribeReservationRequest>;
-export type ReservationState =
-  | "ACTIVE"
-  | "EXPIRED"
-  | "PROCESSING"
-  | "CANCELED"
-  | (string & {});
+export type ReservationState = "ACTIVE" | "EXPIRED" | "PROCESSING" | "CANCELED";
 export const ReservationState = /*@__PURE__*/ S.String;
 
 export interface Reservation {
@@ -5726,7 +5664,7 @@ export const ListFlowsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFlowsRequest",
 }) as any as S.Schema<ListFlowsRequest>;
-export type SourceType = "OWNED" | "ENTITLED" | (string & {});
+export type SourceType = "OWNED" | "ENTITLED";
 export const SourceType = /*@__PURE__*/ S.String;
 
 export interface ListedFlow {
@@ -7527,7 +7465,7 @@ export const UpdateBridgeSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateBridgeSourceResponse",
 }) as any as S.Schema<UpdateBridgeSourceResponse>;
-export type DesiredState = "ACTIVE" | "STANDBY" | "DELETED" | (string & {});
+export type DesiredState = "ACTIVE" | "STANDBY" | "DELETED";
 export const DesiredState = /*@__PURE__*/ S.String;
 
 export interface UpdateBridgeStateRequest {

@@ -1916,16 +1916,44 @@
             "smithy.api#documentation": "Order Id of the reservation"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.reservations#SplitProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for reservation split"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.reservations#SplitProperties": {
+      "type": "structure",
+      "members": {
+        "quantities": {
+          "target": "com.azure.reservations#SplitPropertiesQuantitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of the quantities in the new reservations to create."
+          }
+        },
+        "reservationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id of the reservation to be split. Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for reservation split"
+      }
+    },
+    "com.azure.reservations#SplitPropertiesQuantitiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of the quantities in the new reservations to create."
       }
     },
     "com.azure.reservations#ReturnPost": {
@@ -2204,16 +2232,67 @@
             "smithy.api#documentation": "Order Id of the reservation"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.reservations#RefundRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties needed for refund request including the session id from calculate refund, the scope, the reservation to be returned and the return reason."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.reservations#RefundRequestProperties": {
+      "type": "structure",
+      "members": {
+        "sessionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SessionId that was returned by CalculateRefund API."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope of the refund, e.g. Reservation"
+          }
+        },
+        "reservationToReturn": {
+          "target": "com.azure.reservations#ReservationToReturn",
+          "traits": {
+            "smithy.api#documentation": "Reservation to return"
+          }
+        },
+        "returnReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The reason of returning the reservation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties needed for refund request including the session id from calculate refund, the scope, the reservation to be returned and the return reason."
+      }
+    },
+    "com.azure.reservations#ReservationToReturn": {
+      "type": "structure",
+      "members": {
+        "reservationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified identifier of the reservation being returned"
+          }
+        },
+        "quantity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Quantity to be returned. Must be greater than zero."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reservation to return"
       }
     },
     "com.azure.reservations#ReservationUnarchive": {
@@ -2416,17 +2495,34 @@
             "smithy.api#documentation": "Id of the reservation item"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.reservations#AvailableScopeRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Available scope request properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.reservations#AvailableScopeRequestProperties": {
+      "type": "structure",
+      "members": {
+        "scopes": {
+          "target": "com.azure.reservations#AvailableScopeRequestPropertiesScopesList"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Available scope request properties"
+      }
+    },
+    "com.azure.reservations#AvailableScopeRequestPropertiesScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.reservations#ReservationArchive": {
       "type": "operation",
@@ -2582,16 +2678,89 @@
             "smithy.api#documentation": "Id of the reservation item"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.reservations#PatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for reservation patch"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.reservations#PatchProperties": {
+      "type": "structure",
+      "members": {
+        "appliedScopeType": {
+          "target": "com.azure.reservations#AppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "Type of the Applied Scope."
+          }
+        },
+        "appliedScopes": {
+          "target": "com.azure.reservations#PatchPropertiesAppliedScopesList",
+          "traits": {
+            "smithy.api#documentation": "List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType."
+          }
+        },
+        "appliedScopeProperties": {
+          "target": "com.azure.reservations#AppliedScopeProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to applied scope type. Not required if not applicable. Required and need to provide tenantId and managementGroupId if AppliedScopeType is ManagementGroup"
+          }
+        },
+        "instanceFlexibility": {
+          "target": "com.azure.reservations#InstanceFlexibility",
+          "traits": {
+            "smithy.api#documentation": "Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the reservation"
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this to true will automatically purchase a new reservation on the expiration date time."
+          }
+        },
+        "renewProperties": {
+          "target": "com.azure.reservations#PatchPropertiesRenewProperties"
+        },
+        "reviewDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the date-time when the Azure hybrid benefit needs to be reviewed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for reservation patch"
+      }
+    },
+    "com.azure.reservations#PatchPropertiesRenewProperties": {
+      "type": "structure",
+      "members": {
+        "purchaseProperties": {
+          "target": "com.azure.reservations#PurchaseRequest",
+          "traits": {
+            "smithy.api#documentation": "The request for reservation purchase"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.reservations#PatchPropertiesAppliedScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType."
       }
     },
     "com.azure.reservations#ReservationGet": {
@@ -2804,16 +2973,38 @@
             "smithy.api#documentation": "Order Id of the reservation"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.reservations#MergeProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for reservation merge"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.reservations#MergeProperties": {
+      "type": "structure",
+      "members": {
+        "sources": {
+          "target": "com.azure.reservations#MergePropertiesSourcesList",
+          "traits": {
+            "smithy.api#documentation": "Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for reservation merge"
+      }
+    },
+    "com.azure.reservations#MergePropertiesSourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}"
       }
     },
     "com.azure.reservations#ReservationOrderChangeDirectory": {
@@ -2902,11 +3093,10 @@
             "smithy.api#documentation": "Order Id of the reservation"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "destinationTenantId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tenant id GUID that reservation order is to be transferred to"
           }
         }
       },
@@ -3474,16 +3664,41 @@
             "smithy.api#documentation": "Order Id of the reservation"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Fully qualified identifier of the reservation order being returned"
+          }
+        },
+        "properties": {
+          "target": "com.azure.reservations#CalculateRefundRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties needed for calculate refund including the scope and the reservation to be returned."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.reservations#CalculateRefundRequestProperties": {
+      "type": "structure",
+      "members": {
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope of the refund, e.g. Reservation"
+          }
+        },
+        "reservationToReturn": {
+          "target": "com.azure.reservations#ReservationToReturn",
+          "traits": {
+            "smithy.api#documentation": "Reservation to return"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties needed for calculate refund including the scope and the reservation to be returned."
       }
     },
     "com.azure.reservations#ReservationOrderPurchase": {
@@ -3557,11 +3772,22 @@
             "smithy.api#documentation": "Order Id of the reservation"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.reservations#SkuName",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of sku"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure region where the reserved resource lives."
+          }
+        },
+        "properties": {
+          "target": "com.azure.reservations#PurchaseRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of reservation purchase request"
           }
         }
       },
@@ -4392,16 +4618,29 @@
     "com.azure.reservations#ExchangePostRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.reservations#ExchangeRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Exchange request properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.reservations#ExchangeRequestProperties": {
+      "type": "structure",
+      "members": {
+        "sessionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SessionId that was returned by CalculateExchange API."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Exchange request properties"
       }
     },
     "com.azure.reservations#ReservationOrderCalculate": {
@@ -4555,11 +4794,22 @@
     "com.azure.reservations#ReservationOrderCalculateRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.reservations#SkuName",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of sku"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure region where the reserved resource lives."
+          }
+        },
+        "properties": {
+          "target": "com.azure.reservations#PurchaseRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of reservation purchase request"
           }
         }
       },
@@ -4814,16 +5064,68 @@
     "com.azure.reservations#CalculateExchangePostRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.reservations#CalculateExchangeRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Calculate exchange request properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.reservations#CalculateExchangeRequestProperties": {
+      "type": "structure",
+      "members": {
+        "reservationsToPurchase": {
+          "target": "com.azure.reservations#CalculateExchangeRequestPropertiesReservationsToPurchaseList",
+          "traits": {
+            "smithy.api#documentation": "List of reservations that are being purchased in this exchange."
+          }
+        },
+        "savingsPlansToPurchase": {
+          "target": "com.azure.reservations#CalculateExchangeRequestPropertiesSavingsPlansToPurchaseList",
+          "traits": {
+            "smithy.api#documentation": "List of savings plans that are being purchased in this exchange."
+          }
+        },
+        "reservationsToExchange": {
+          "target": "com.azure.reservations#CalculateExchangeRequestPropertiesReservationsToExchangeList",
+          "traits": {
+            "smithy.api#documentation": "List of reservations that are being returned in this exchange."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Calculate exchange request properties"
+      }
+    },
+    "com.azure.reservations#CalculateExchangeRequestPropertiesReservationsToExchangeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.reservations#ReservationToReturn"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of reservations that are being returned in this exchange."
+      }
+    },
+    "com.azure.reservations#CalculateExchangeRequestPropertiesSavingsPlansToPurchaseList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.reservations#SavingsPlanPurchaseRequest"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of savings plans that are being purchased in this exchange."
+      }
+    },
+    "com.azure.reservations#CalculateExchangeRequestPropertiesReservationsToPurchaseList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.reservations#PurchaseRequest"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of reservations that are being purchased in this exchange."
       }
     },
     "com.azure.reservations#Reservations": {

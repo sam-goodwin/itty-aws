@@ -13,6 +13,98 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Parameter name to be used for filter. The allowed operands to query pipeline runs are PipelineName, RunStart, RunEnd and Status; to query activity runs are ActivityName, ActivityRunStart, ActivityRunEnd, ActivityType and Status, and to query trigger runs are TriggerName, TriggerRunTimestamp and Status. */
+export type RunQueryFilterOperand =
+  | "PipelineName"
+  | "Status"
+  | "RunStart"
+  | "RunEnd"
+  | "ActivityName"
+  | "ActivityRunStart"
+  | "ActivityRunEnd"
+  | "ActivityType"
+  | "TriggerName"
+  | "TriggerRunTimestamp"
+  | "RunGroupId"
+  | "LatestOnly";
+export const RunQueryFilterOperand = /*@__PURE__*/ S.String;
+
+/** Operator to be used for filter. */
+export type RunQueryFilterOperator = "Equals" | "NotEquals" | "In" | "NotIn";
+export const RunQueryFilterOperator = /*@__PURE__*/ S.String;
+
+/** List of filter values. */
+export type RunQueryFilterValuesList = ReadonlyArray<string>;
+export const RunQueryFilterValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RunQueryFilterValuesList>;
+
+/** Query filter option for listing runs. */
+export interface RunQueryFilter {
+  /** Parameter name to be used for filter. The allowed operands to query pipeline runs are PipelineName, RunStart, RunEnd and Status; to query activity runs are ActivityName, ActivityRunStart, ActivityRunEnd, ActivityType and Status, and to query trigger runs are TriggerName, TriggerRunTimestamp and Status. */
+  operand: RunQueryFilterOperand;
+  /** Operator to be used for filter. */
+  operator: RunQueryFilterOperator;
+  /** List of filter values. */
+  values: RunQueryFilterValuesList;
+}
+export const RunQueryFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operand: RunQueryFilterOperand,
+    operator: RunQueryFilterOperator,
+    values: RunQueryFilterValuesList,
+  }),
+).annotate({ identifier: "RunQueryFilter" }) as any as S.Schema<RunQueryFilter>;
+
+/** List of filters. */
+export type ActivityRunsQueryByPipelineRunRequestFiltersList =
+  ReadonlyArray<RunQueryFilter>;
+export const ActivityRunsQueryByPipelineRunRequestFiltersList =
+  /*@__PURE__*/ S.Array(
+    RunQueryFilter,
+  ) as any as S.Schema<ActivityRunsQueryByPipelineRunRequestFiltersList>;
+
+/** Parameter name to be used for order by. The allowed parameters to order by for pipeline runs are PipelineName, RunStart, RunEnd and Status; for activity runs are ActivityName, ActivityRunStart, ActivityRunEnd and Status; for trigger runs are TriggerName, TriggerRunTimestamp and Status. */
+export type RunQueryOrderByField =
+  | "RunStart"
+  | "RunEnd"
+  | "PipelineName"
+  | "Status"
+  | "ActivityName"
+  | "ActivityRunStart"
+  | "ActivityRunEnd"
+  | "TriggerName"
+  | "TriggerRunTimestamp";
+export const RunQueryOrderByField = /*@__PURE__*/ S.String;
+
+/** Sorting order of the parameter. */
+export type RunQueryOrder = "ASC" | "DESC";
+export const RunQueryOrder = /*@__PURE__*/ S.String;
+
+/** An object to provide order by options for listing runs. */
+export interface RunQueryOrderBy {
+  /** Parameter name to be used for order by. The allowed parameters to order by for pipeline runs are PipelineName, RunStart, RunEnd and Status; for activity runs are ActivityName, ActivityRunStart, ActivityRunEnd and Status; for trigger runs are TriggerName, TriggerRunTimestamp and Status. */
+  orderBy: RunQueryOrderByField;
+  /** Sorting order of the parameter. */
+  order: RunQueryOrder;
+}
+export const RunQueryOrderBy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orderBy: RunQueryOrderByField,
+    order: RunQueryOrder,
+  }),
+).annotate({
+  identifier: "RunQueryOrderBy",
+}) as any as S.Schema<RunQueryOrderBy>;
+
+/** List of OrderBy option. */
+export type ActivityRunsQueryByPipelineRunRequestOrderByList =
+  ReadonlyArray<RunQueryOrderBy>;
+export const ActivityRunsQueryByPipelineRunRequestOrderByList =
+  /*@__PURE__*/ S.Array(
+    RunQueryOrderBy,
+  ) as any as S.Schema<ActivityRunsQueryByPipelineRunRequestOrderByList>;
+
 export interface ActivityRunsQueryByPipelineRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -21,7 +113,16 @@ export interface ActivityRunsQueryByPipelineRunRequest {
   factoryName: string;
   /** The pipeline run identifier. */
   runId: string;
-  body: unknown;
+  /** The continuation token for getting the next page of results. Null for first page. */
+  continuationToken?: string;
+  /** The time at or after which the run event was updated in 'ISO 8601' format. */
+  lastUpdatedAfter: string;
+  /** The time at or before which the run event was updated in 'ISO 8601' format. */
+  lastUpdatedBefore: string;
+  /** List of filters. */
+  filters?: ActivityRunsQueryByPipelineRunRequestFiltersList;
+  /** List of OrderBy option. */
+  orderBy?: ActivityRunsQueryByPipelineRunRequestOrderByList;
 }
 export const ActivityRunsQueryByPipelineRunRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -30,7 +131,11 @@ export const ActivityRunsQueryByPipelineRunRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
       runId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      continuationToken: S.optional(S.String),
+      lastUpdatedAfter: S.String,
+      lastUpdatedBefore: S.String,
+      filters: S.optional(ActivityRunsQueryByPipelineRunRequestFiltersList),
+      orderBy: S.optional(ActivityRunsQueryByPipelineRunRequestOrderByList),
     }).pipe(
       T.Http({
         method: "POST",
@@ -91,7 +196,7 @@ export const ActivityRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityRun" }) as any as S.Schema<ActivityRun>;
 
 /** List of activity runs. */
-export type ActivityRunsQueryResponseValueList = ActivityRun[];
+export type ActivityRunsQueryResponseValueList = ReadonlyArray<ActivityRun>;
 export const ActivityRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
   ActivityRun,
 ) as any as S.Schema<ActivityRunsQueryResponseValueList>;
@@ -111,81 +216,6 @@ export const ActivityRunsQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivityRunsQueryResponse",
 }) as any as S.Schema<ActivityRunsQueryResponse>;
-
-export interface ChangeDataCaptureCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The factory name. */
-  factoryName: string;
-  /** The change data capture name. */
-  changeDataCaptureName: string;
-  body: unknown;
-}
-export const ChangeDataCaptureCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      factoryName: S.String.pipe(T.Label()),
-      changeDataCaptureName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}",
-        code: 200,
-        apiVersion: "2018-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "ChangeDataCaptureCreateOrUpdateRequest",
-}) as any as S.Schema<ChangeDataCaptureCreateOrUpdateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** The folder that this CDC is in. If not specified, CDC will appear at the root level. */
 export interface ChangeDataCaptureFolder {
@@ -217,7 +247,7 @@ export const MapperTableSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MapperTableSchema>;
 
 /** List of columns for the source table. */
-export type MapperTablePropertiesSchemaList = MapperTableSchema[];
+export type MapperTablePropertiesSchemaList = ReadonlyArray<MapperTableSchema>;
 export const MapperTablePropertiesSchemaList = /*@__PURE__*/ S.Array(
   MapperTableSchema,
 ) as any as S.Schema<MapperTablePropertiesSchemaList>;
@@ -240,7 +270,7 @@ export const MapperDslConnectorProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** List of name/value pairs for connection properties. */
 export type MapperTablePropertiesDslConnectorPropertiesList =
-  MapperDslConnectorProperties[];
+  ReadonlyArray<MapperDslConnectorProperties>;
 export const MapperTablePropertiesDslConnectorPropertiesList =
   /*@__PURE__*/ S.Array(
     MapperDslConnectorProperties,
@@ -279,14 +309,15 @@ export const MapperTable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MapperTable" }) as any as S.Schema<MapperTable>;
 
 /** List of source tables for a source connection. */
-export type MapperSourceConnectionsInfoSourceEntitiesList = MapperTable[];
+export type MapperSourceConnectionsInfoSourceEntitiesList =
+  ReadonlyArray<MapperTable>;
 export const MapperSourceConnectionsInfoSourceEntitiesList =
   /*@__PURE__*/ S.Array(
     MapperTable,
   ) as any as S.Schema<MapperSourceConnectionsInfoSourceEntitiesList>;
 
 /** Linked service reference type. */
-export type Type = "LinkedServiceReference" | (string & {});
+export type Type = "LinkedServiceReference";
 export const Type = /*@__PURE__*/ S.String;
 
 /** Arguments for LinkedService. */
@@ -318,12 +349,12 @@ export const LinkedServiceReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinkedServiceReference>;
 
 /** Type of connection via linked service or dataset. */
-export type ConnectionType = "linkedservicetype" | (string & {});
+export type ConnectionType = "linkedservicetype";
 export const ConnectionType = /*@__PURE__*/ S.String;
 
 /** List of name/value pairs for connection properties. */
 export type MapperConnectionCommonDslConnectorPropertiesList =
-  MapperDslConnectorProperties[];
+  ReadonlyArray<MapperDslConnectorProperties>;
 export const MapperConnectionCommonDslConnectorPropertiesList =
   /*@__PURE__*/ S.Array(
     MapperDslConnectorProperties,
@@ -374,13 +405,14 @@ export const MapperSourceConnectionsInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of sources connections that can be used as sources in the CDC. */
 export type ChangeDataCaptureSourceConnectionsInfoList =
-  MapperSourceConnectionsInfo[];
+  ReadonlyArray<MapperSourceConnectionsInfo>;
 export const ChangeDataCaptureSourceConnectionsInfoList = /*@__PURE__*/ S.Array(
   MapperSourceConnectionsInfo,
 ) as any as S.Schema<ChangeDataCaptureSourceConnectionsInfoList>;
 
 /** List of source tables for a target connection. */
-export type MapperTargetConnectionsInfoTargetEntitiesList = MapperTable[];
+export type MapperTargetConnectionsInfoTargetEntitiesList =
+  ReadonlyArray<MapperTable>;
 export const MapperTargetConnectionsInfoTargetEntitiesList =
   /*@__PURE__*/ S.Array(
     MapperTable,
@@ -403,7 +435,7 @@ export const MapperConnectionReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MapperConnectionReference>;
 
 /** Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'. */
-export type MappingType = "Direct" | "Derived" | "Aggregate" | (string & {});
+export type MappingType = "Direct" | "Derived" | "Aggregate";
 export const MappingType = /*@__PURE__*/ S.String;
 
 /** Attribute reference details for the referred column. */
@@ -427,7 +459,7 @@ export const MapperAttributeReference = /*@__PURE__*/ S.suspend(() =>
 
 /** List of references for source columns. It is used for 'Derived' and 'Aggregate' type mappings only. */
 export type MapperAttributeMappingAttributeReferencesList =
-  MapperAttributeReference[];
+  ReadonlyArray<MapperAttributeReference>;
 export const MapperAttributeMappingAttributeReferencesList =
   /*@__PURE__*/ S.Array(
     MapperAttributeReference,
@@ -465,7 +497,7 @@ export const MapperAttributeMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** List of attribute mappings. */
 export type MapperAttributeMappingsAttributeMappingsList =
-  MapperAttributeMapping[];
+  ReadonlyArray<MapperAttributeMapping>;
 export const MapperAttributeMappingsAttributeMappingsList =
   /*@__PURE__*/ S.Array(
     MapperAttributeMapping,
@@ -511,14 +543,15 @@ export const DataMapperMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** List of table mappings. */
 export type MapperTargetConnectionsInfoDataMapperMappingsList =
-  DataMapperMapping[];
+  ReadonlyArray<DataMapperMapping>;
 export const MapperTargetConnectionsInfoDataMapperMappingsList =
   /*@__PURE__*/ S.Array(
     DataMapperMapping,
   ) as any as S.Schema<MapperTargetConnectionsInfoDataMapperMappingsList>;
 
 /** List of relationship info among the tables. */
-export type MapperTargetConnectionsInfoRelationshipsList = unknown[];
+export type MapperTargetConnectionsInfoRelationshipsList =
+  ReadonlyArray<unknown>;
 export const MapperTargetConnectionsInfoRelationshipsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -550,13 +583,13 @@ export const MapperTargetConnectionsInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** List of target connections that can be used as sources in the CDC. */
 export type ChangeDataCaptureTargetConnectionsInfoList =
-  MapperTargetConnectionsInfo[];
+  ReadonlyArray<MapperTargetConnectionsInfo>;
 export const ChangeDataCaptureTargetConnectionsInfoList = /*@__PURE__*/ S.Array(
   MapperTargetConnectionsInfo,
 ) as any as S.Schema<ChangeDataCaptureTargetConnectionsInfoList>;
 
 /** Frequency of period in terms of 'Hour', 'Minute' or 'Second'. */
-export type FrequencyType = "Hour" | "Minute" | "Second" | (string & {});
+export type FrequencyType = "Hour" | "Minute" | "Second";
 export const FrequencyType = /*@__PURE__*/ S.String;
 
 /** CDC policy recurrence details. */
@@ -619,6 +652,80 @@ export const ChangeDataCapture = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChangeDataCapture",
 }) as any as S.Schema<ChangeDataCapture>;
+
+export interface ChangeDataCaptureCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The factory name. */
+  factoryName: string;
+  /** The change data capture name. */
+  changeDataCaptureName: string;
+  /** Properties of the change data capture. */
+  properties: ChangeDataCapture;
+}
+export const ChangeDataCaptureCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      factoryName: S.String.pipe(T.Label()),
+      changeDataCaptureName: S.String.pipe(T.Label()),
+      properties: ChangeDataCapture,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/adfcdcs/{changeDataCaptureName}",
+        code: 200,
+        apiVersion: "2018-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "ChangeDataCaptureCreateOrUpdateRequest",
+}) as any as S.Schema<ChangeDataCaptureCreateOrUpdateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 export interface ChangeDataCaptureCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -794,7 +901,7 @@ export const ChangeDataCaptureResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The ChangeDataCaptureResource items on this page */
 export type ChangeDataCaptureListResponseValueList =
-  ChangeDataCaptureResource[];
+  ReadonlyArray<ChangeDataCaptureResource>;
 export const ChangeDataCaptureListResponseValueList = /*@__PURE__*/ S.Array(
   ChangeDataCaptureResource,
 ) as any as S.Schema<ChangeDataCaptureListResponseValueList>;
@@ -920,39 +1027,8 @@ export const ChangeDataCaptureStopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChangeDataCaptureStopResponse",
 }) as any as S.Schema<ChangeDataCaptureStopResponse>;
 
-export interface CredentialOperationsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The factory name. */
-  factoryName: string;
-  /** Credential name */
-  credentialName: string;
-  body: unknown;
-}
-export const CredentialOperationsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      factoryName: S.String.pipe(T.Label()),
-      credentialName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials/{credentialName}",
-        code: 200,
-        apiVersion: "2018-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "CredentialOperationsCreateOrUpdateRequest",
-  }) as any as S.Schema<CredentialOperationsCreateOrUpdateRequest>;
-
 /** List of tags that can be used for describing the Credential. */
-export type CredentialAnnotationsList = unknown[];
+export type CredentialAnnotationsList = ReadonlyArray<unknown>;
 export const CredentialAnnotationsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CredentialAnnotationsList>;
@@ -973,6 +1049,38 @@ export const Credential = /*@__PURE__*/ S.suspend(() =>
     annotations: S.optional(CredentialAnnotationsList),
   }),
 ).annotate({ identifier: "Credential" }) as any as S.Schema<Credential>;
+
+export interface CredentialOperationsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The factory name. */
+  factoryName: string;
+  /** Credential name */
+  credentialName: string;
+  /** Properties of credentials. */
+  properties: Credential;
+}
+export const CredentialOperationsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      factoryName: S.String.pipe(T.Label()),
+      credentialName: S.String.pipe(T.Label()),
+      properties: Credential,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/credentials/{credentialName}",
+        code: 200,
+        apiVersion: "2018-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CredentialOperationsCreateOrUpdateRequest",
+  }) as any as S.Schema<CredentialOperationsCreateOrUpdateRequest>;
 
 export interface CredentialOperationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1147,7 +1255,7 @@ export const CredentialResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CredentialResource>;
 
 /** The CredentialResource items on this page */
-export type CredentialListResponseValueList = CredentialResource[];
+export type CredentialListResponseValueList = ReadonlyArray<CredentialResource>;
 export const CredentialListResponseValueList = /*@__PURE__*/ S.Array(
   CredentialResource,
 ) as any as S.Schema<CredentialListResponseValueList>;
@@ -1168,6 +1276,344 @@ export const CredentialListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CredentialListResponse",
 }) as any as S.Schema<CredentialListResponse>;
 
+/** List of tags that can be used for describing the data flow. */
+export type DataFlowAnnotationsList = ReadonlyArray<unknown>;
+export const DataFlowAnnotationsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DataFlowAnnotationsList>;
+
+/** The folder that this data flow is in. If not specified, Data flow will appear at the root level. */
+export interface DataFlowFolder {
+  /** The name of the folder that this data flow is in. */
+  name?: string;
+}
+export const DataFlowFolder = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({ identifier: "DataFlowFolder" }) as any as S.Schema<DataFlowFolder>;
+
+/** Azure Data Factory nested object which contains a flow with data movements and transformations. */
+export interface DataFlow {
+  /** Type of data flow. */
+  type: string;
+  /** The description of the data flow. */
+  description?: string;
+  /** List of tags that can be used for describing the data flow. */
+  annotations?: DataFlowAnnotationsList;
+  /** The folder that this data flow is in. If not specified, Data flow will appear at the root level. */
+  folder?: DataFlowFolder;
+}
+export const DataFlow = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    description: S.optional(S.String),
+    annotations: S.optional(DataFlowAnnotationsList),
+    folder: S.optional(DataFlowFolder),
+  }),
+).annotate({ identifier: "DataFlow" }) as any as S.Schema<DataFlow>;
+
+/** Data flow debug resource. */
+export interface DataFlowDebugResource {
+  /** The resource name. */
+  name?: string;
+  /** Data flow properties. */
+  properties: DataFlow;
+}
+export const DataFlowDebugResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    properties: DataFlow,
+  }),
+).annotate({
+  identifier: "DataFlowDebugResource",
+}) as any as S.Schema<DataFlowDebugResource>;
+
+/** List of Data flows */
+export type DataFlowDebugSessionAddDataFlowRequestDataFlowsList =
+  ReadonlyArray<DataFlowDebugResource>;
+export const DataFlowDebugSessionAddDataFlowRequestDataFlowsList =
+  /*@__PURE__*/ S.Array(
+    DataFlowDebugResource,
+  ) as any as S.Schema<DataFlowDebugSessionAddDataFlowRequestDataFlowsList>;
+
+/** Parameter type. */
+export type ParameterType =
+  | "Object"
+  | "String"
+  | "Int"
+  | "Float"
+  | "Bool"
+  | "Array"
+  | "SecureString";
+export const ParameterType = /*@__PURE__*/ S.String;
+
+/** Definition of a single parameter for an entity. */
+export interface ParameterSpecification {
+  /** Parameter type. */
+  type: ParameterType;
+  /** Default value of parameter. */
+  defaultValue?: unknown;
+}
+export const ParameterSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ParameterType,
+    defaultValue: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "ParameterSpecification",
+}) as any as S.Schema<ParameterSpecification>;
+
+/** Parameters for dataset. */
+export type DatasetParametersMap = {
+  [key: string]: ParameterSpecification | undefined;
+};
+export const DatasetParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ParameterSpecification,
+) as any as S.Schema<DatasetParametersMap>;
+
+/** List of tags that can be used for describing the Dataset. */
+export type DatasetAnnotationsList = ReadonlyArray<unknown>;
+export const DatasetAnnotationsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DatasetAnnotationsList>;
+
+/** The folder that this Dataset is in. If not specified, Dataset will appear at the root level. */
+export interface DatasetFolder {
+  /** The name of the folder that this Dataset is in. */
+  name?: string;
+}
+export const DatasetFolder = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({ identifier: "DatasetFolder" }) as any as S.Schema<DatasetFolder>;
+
+/** The Azure Data Factory nested object which identifies data within different data stores, such as tables, files, folders, and documents. */
+export interface Dataset {
+  /** Type of dataset. */
+  type: string;
+  /** Dataset description. */
+  description?: string;
+  /** Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement. */
+  structure?: unknown;
+  /** Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement. */
+  schema?: unknown;
+  /** Linked service reference. */
+  linkedServiceName: LinkedServiceReference;
+  /** Parameters for dataset. */
+  parameters?: DatasetParametersMap;
+  /** List of tags that can be used for describing the Dataset. */
+  annotations?: DatasetAnnotationsList;
+  /** The folder that this Dataset is in. If not specified, Dataset will appear at the root level. */
+  folder?: DatasetFolder;
+}
+export const Dataset = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    description: S.optional(S.String),
+    structure: S.optional(S.Unknown),
+    schema: S.optional(S.Unknown),
+    linkedServiceName: LinkedServiceReference,
+    parameters: S.optional(DatasetParametersMap),
+    annotations: S.optional(DatasetAnnotationsList),
+    folder: S.optional(DatasetFolder),
+  }),
+).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
+
+/** Dataset debug resource. */
+export interface DatasetDebugResource {
+  /** The resource name. */
+  name?: string;
+  /** Dataset properties. */
+  properties: Dataset;
+}
+export const DatasetDebugResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    properties: Dataset,
+  }),
+).annotate({
+  identifier: "DatasetDebugResource",
+}) as any as S.Schema<DatasetDebugResource>;
+
+/** List of datasets. */
+export type DataFlowDebugSessionAddDataFlowRequestDatasetsList =
+  ReadonlyArray<DatasetDebugResource>;
+export const DataFlowDebugSessionAddDataFlowRequestDatasetsList =
+  /*@__PURE__*/ S.Array(
+    DatasetDebugResource,
+  ) as any as S.Schema<DataFlowDebugSessionAddDataFlowRequestDatasetsList>;
+
+/** Type of integration runtime. */
+export type IntegrationRuntimeReferenceType = "IntegrationRuntimeReference";
+export const IntegrationRuntimeReferenceType = /*@__PURE__*/ S.String;
+
+/** Arguments for integration runtime. */
+export type IntegrationRuntimeReferenceParametersMap = {
+  [key: string]: unknown | undefined;
+};
+export const IntegrationRuntimeReferenceParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<IntegrationRuntimeReferenceParametersMap>;
+
+/** Integration runtime reference type. */
+export interface IntegrationRuntimeReference {
+  /** Type of integration runtime. */
+  type: IntegrationRuntimeReferenceType;
+  /** Reference integration runtime name. */
+  referenceName: string;
+  /** Arguments for integration runtime. */
+  parameters?: IntegrationRuntimeReferenceParametersMap;
+}
+export const IntegrationRuntimeReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: IntegrationRuntimeReferenceType,
+    referenceName: S.String,
+    parameters: S.optional(IntegrationRuntimeReferenceParametersMap),
+  }),
+).annotate({
+  identifier: "IntegrationRuntimeReference",
+}) as any as S.Schema<IntegrationRuntimeReference>;
+
+/** Parameters for linked service. */
+export type LinkedServiceParametersMap = {
+  [key: string]: ParameterSpecification | undefined;
+};
+export const LinkedServiceParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ParameterSpecification,
+) as any as S.Schema<LinkedServiceParametersMap>;
+
+/** List of tags that can be used for describing the linked service. */
+export type LinkedServiceAnnotationsList = ReadonlyArray<unknown>;
+export const LinkedServiceAnnotationsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<LinkedServiceAnnotationsList>;
+
+/** The nested object which contains the information and credential which can be used to connect with related store or compute resource. */
+export interface LinkedService {
+  /** Type of linked service. */
+  type: string;
+  /** Version of the linked service. */
+  version?: string;
+  /** The integration runtime reference. */
+  connectVia?: IntegrationRuntimeReference;
+  /** Linked service description. */
+  description?: string;
+  /** Parameters for linked service. */
+  parameters?: LinkedServiceParametersMap;
+  /** List of tags that can be used for describing the linked service. */
+  annotations?: LinkedServiceAnnotationsList;
+}
+export const LinkedService = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    version: S.optional(S.String),
+    connectVia: S.optional(IntegrationRuntimeReference),
+    description: S.optional(S.String),
+    parameters: S.optional(LinkedServiceParametersMap),
+    annotations: S.optional(LinkedServiceAnnotationsList),
+  }),
+).annotate({ identifier: "LinkedService" }) as any as S.Schema<LinkedService>;
+
+/** Linked service debug resource. */
+export interface LinkedServiceDebugResource {
+  /** The resource name. */
+  name?: string;
+  /** Properties of linked service. */
+  properties: LinkedService;
+}
+export const LinkedServiceDebugResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    properties: LinkedService,
+  }),
+).annotate({
+  identifier: "LinkedServiceDebugResource",
+}) as any as S.Schema<LinkedServiceDebugResource>;
+
+/** List of linked services. */
+export type DataFlowDebugSessionAddDataFlowRequestLinkedServicesList =
+  ReadonlyArray<LinkedServiceDebugResource>;
+export const DataFlowDebugSessionAddDataFlowRequestLinkedServicesList =
+  /*@__PURE__*/ S.Array(
+    LinkedServiceDebugResource,
+  ) as any as S.Schema<DataFlowDebugSessionAddDataFlowRequestLinkedServicesList>;
+
+/** Staging info for execute data flow activity. */
+export interface DataFlowStagingInfo {
+  /** Staging linked service reference. */
+  linkedService?: LinkedServiceReference;
+  /** Folder path for staging blob. Type: string (or Expression with resultType string) */
+  folderPath?: unknown;
+}
+export const DataFlowStagingInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    linkedService: S.optional(LinkedServiceReference),
+    folderPath: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "DataFlowStagingInfo",
+}) as any as S.Schema<DataFlowStagingInfo>;
+
+/** Definition of data flow source setting for debug. */
+export interface DataFlowSourceSetting {
+  /** The data flow source name. */
+  sourceName?: string;
+  /** Defines the row limit of data flow source in debug. */
+  rowLimit?: number;
+}
+export const DataFlowSourceSetting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceName: S.optional(S.String),
+    rowLimit: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DataFlowSourceSetting",
+}) as any as S.Schema<DataFlowSourceSetting>;
+
+/** Source setting for data flow debug. */
+export type DataFlowDebugPackageDebugSettingsSourceSettingsList =
+  ReadonlyArray<DataFlowSourceSetting>;
+export const DataFlowDebugPackageDebugSettingsSourceSettingsList =
+  /*@__PURE__*/ S.Array(
+    DataFlowSourceSetting,
+  ) as any as S.Schema<DataFlowDebugPackageDebugSettingsSourceSettingsList>;
+
+/** Data flow parameters. */
+export type DataFlowDebugPackageDebugSettingsParametersMap = {
+  [key: string]: unknown | undefined;
+};
+export const DataFlowDebugPackageDebugSettingsParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DataFlowDebugPackageDebugSettingsParametersMap>;
+
+/** Data flow debug settings. */
+export interface DataFlowDebugPackageDebugSettings {
+  /** Source setting for data flow debug. */
+  sourceSettings?: DataFlowDebugPackageDebugSettingsSourceSettingsList;
+  /** Data flow parameters. */
+  parameters?: DataFlowDebugPackageDebugSettingsParametersMap;
+  /** Parameters for dataset. */
+  datasetParameters?: unknown;
+}
+export const DataFlowDebugPackageDebugSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceSettings: S.optional(
+      DataFlowDebugPackageDebugSettingsSourceSettingsList,
+    ),
+    parameters: S.optional(DataFlowDebugPackageDebugSettingsParametersMap),
+    datasetParameters: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "DataFlowDebugPackageDebugSettings",
+}) as any as S.Schema<DataFlowDebugPackageDebugSettings>;
+
 export interface DataFlowDebugSessionAddDataFlowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1175,7 +1621,20 @@ export interface DataFlowDebugSessionAddDataFlowRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** The ID of data flow debug session. */
+  sessionId?: string;
+  /** Data flow instance. */
+  dataFlow?: DataFlowDebugResource;
+  /** List of Data flows */
+  dataFlows?: DataFlowDebugSessionAddDataFlowRequestDataFlowsList;
+  /** List of datasets. */
+  datasets?: DataFlowDebugSessionAddDataFlowRequestDatasetsList;
+  /** List of linked services. */
+  linkedServices?: DataFlowDebugSessionAddDataFlowRequestLinkedServicesList;
+  /** Staging info for debug session. */
+  staging?: DataFlowStagingInfo;
+  /** Data flow debug settings. */
+  debugSettings?: DataFlowDebugPackageDebugSettings;
 }
 export const DataFlowDebugSessionAddDataFlowRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1183,7 +1642,17 @@ export const DataFlowDebugSessionAddDataFlowRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      sessionId: S.optional(S.String),
+      dataFlow: S.optional(DataFlowDebugResource),
+      dataFlows: S.optional(
+        DataFlowDebugSessionAddDataFlowRequestDataFlowsList,
+      ),
+      datasets: S.optional(DataFlowDebugSessionAddDataFlowRequestDatasetsList),
+      linkedServices: S.optional(
+        DataFlowDebugSessionAddDataFlowRequestLinkedServicesList,
+      ),
+      staging: S.optional(DataFlowStagingInfo),
+      debugSettings: S.optional(DataFlowDebugPackageDebugSettings),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1209,6 +1678,42 @@ export const AddDataFlowToDebugSessionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddDataFlowToDebugSessionResponse",
 }) as any as S.Schema<AddDataFlowToDebugSessionResponse>;
 
+/** The type of integration runtime. */
+export type IntegrationRuntimeType = "Managed" | "SelfHosted";
+export const IntegrationRuntimeType = /*@__PURE__*/ S.String;
+
+/** Azure Data Factory nested object which serves as a compute resource for activities. */
+export interface IntegrationRuntime {
+  /** Type of integration runtime. */
+  type: IntegrationRuntimeType;
+  /** Integration runtime description. */
+  description?: string;
+}
+export const IntegrationRuntime = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: IntegrationRuntimeType,
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IntegrationRuntime",
+}) as any as S.Schema<IntegrationRuntime>;
+
+/** Integration runtime debug resource. */
+export interface IntegrationRuntimeDebugResource {
+  /** The resource name. */
+  name?: string;
+  /** Integration runtime properties. */
+  properties: IntegrationRuntime;
+}
+export const IntegrationRuntimeDebugResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    properties: IntegrationRuntime,
+  }),
+).annotate({
+  identifier: "IntegrationRuntimeDebugResource",
+}) as any as S.Schema<IntegrationRuntimeDebugResource>;
+
 export interface DataFlowDebugSessionCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1216,14 +1721,24 @@ export interface DataFlowDebugSessionCreateRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** Compute type of the cluster. The value will be overwritten by the same setting in integration runtime if provided. */
+  computeType?: string;
+  /** Core count of the cluster. The value will be overwritten by the same setting in integration runtime if provided. */
+  coreCount?: number;
+  /** Time to live setting of the cluster in minutes. */
+  timeToLive?: number;
+  /** Set to use integration runtime setting for data flow debug session. */
+  integrationRuntime?: IntegrationRuntimeDebugResource;
 }
 export const DataFlowDebugSessionCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    computeType: S.optional(S.String),
+    coreCount: S.optional(S.Number),
+    timeToLive: S.optional(S.Number),
+    integrationRuntime: S.optional(IntegrationRuntimeDebugResource),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1259,14 +1774,15 @@ export interface DataFlowDebugSessionDeleteRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** The ID of data flow debug session. */
+  sessionId?: string;
 }
 export const DataFlowDebugSessionDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sessionId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1286,6 +1802,41 @@ export const DataFlowDebugSessionDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataFlowDebugSessionDeleteResponse",
 }) as any as S.Schema<DataFlowDebugSessionDeleteResponse>;
 
+/** The command type. */
+export type DataFlowDebugCommandType =
+  | "executePreviewQuery"
+  | "executeStatisticsQuery"
+  | "executeExpressionQuery";
+export const DataFlowDebugCommandType = /*@__PURE__*/ S.String;
+
+/** Array of column names. */
+export type DataFlowDebugCommandPayloadColumnsList = ReadonlyArray<string>;
+export const DataFlowDebugCommandPayloadColumnsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DataFlowDebugCommandPayloadColumnsList>;
+
+/** Structure of command payload. */
+export interface DataFlowDebugCommandPayload {
+  /** The stream name which is used for preview. */
+  streamName: string;
+  /** Row limits for preview response. */
+  rowLimits?: number;
+  /** Array of column names. */
+  columns?: DataFlowDebugCommandPayloadColumnsList;
+  /** The expression which is used for preview. */
+  expression?: string;
+}
+export const DataFlowDebugCommandPayload = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    streamName: S.String,
+    rowLimits: S.optional(S.Number),
+    columns: S.optional(DataFlowDebugCommandPayloadColumnsList),
+    expression: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataFlowDebugCommandPayload",
+}) as any as S.Schema<DataFlowDebugCommandPayload>;
+
 export interface DataFlowDebugSessionExecuteCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1293,7 +1844,12 @@ export interface DataFlowDebugSessionExecuteCommandRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** The ID of data flow debug session. */
+  sessionId?: string;
+  /** The command type. */
+  command?: DataFlowDebugCommandType;
+  /** The command payload object. */
+  commandPayload?: DataFlowDebugCommandPayload;
 }
 export const DataFlowDebugSessionExecuteCommandRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1301,7 +1857,9 @@ export const DataFlowDebugSessionExecuteCommandRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      sessionId: S.optional(S.String),
+      command: S.optional(DataFlowDebugCommandType),
+      commandPayload: S.optional(DataFlowDebugCommandPayload),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1395,7 +1953,7 @@ export const DataFlowDebugSessionInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataFlowDebugSessionInfo items on this page */
 export type QueryDataFlowDebugSessionsResponseValueList =
-  DataFlowDebugSessionInfo[];
+  ReadonlyArray<DataFlowDebugSessionInfo>;
 export const QueryDataFlowDebugSessionsResponseValueList =
   /*@__PURE__*/ S.Array(
     DataFlowDebugSessionInfo,
@@ -1426,7 +1984,8 @@ export interface DataFlowsCreateOrUpdateRequest {
   factoryName: string;
   /** The data flow name. */
   dataFlowName: string;
-  body: unknown;
+  /** Data flow properties. */
+  properties: DataFlow;
 }
 export const DataFlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1434,7 +1993,7 @@ export const DataFlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
     dataFlowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: DataFlow,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1446,43 +2005,6 @@ export const DataFlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataFlowsCreateOrUpdateRequest",
 }) as any as S.Schema<DataFlowsCreateOrUpdateRequest>;
-
-/** List of tags that can be used for describing the data flow. */
-export type DataFlowAnnotationsList = unknown[];
-export const DataFlowAnnotationsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DataFlowAnnotationsList>;
-
-/** The folder that this data flow is in. If not specified, Data flow will appear at the root level. */
-export interface DataFlowFolder {
-  /** The name of the folder that this data flow is in. */
-  name?: string;
-}
-export const DataFlowFolder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "DataFlowFolder" }) as any as S.Schema<DataFlowFolder>;
-
-/** Azure Data Factory nested object which contains a flow with data movements and transformations. */
-export interface DataFlow {
-  /** Type of data flow. */
-  type: string;
-  /** The description of the data flow. */
-  description?: string;
-  /** List of tags that can be used for describing the data flow. */
-  annotations?: DataFlowAnnotationsList;
-  /** The folder that this data flow is in. If not specified, Data flow will appear at the root level. */
-  folder?: DataFlowFolder;
-}
-export const DataFlow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    description: S.optional(S.String),
-    annotations: S.optional(DataFlowAnnotationsList),
-    folder: S.optional(DataFlowFolder),
-  }),
-).annotate({ identifier: "DataFlow" }) as any as S.Schema<DataFlow>;
 
 export interface DataFlowsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1655,7 +2177,7 @@ export const DataFlowResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataFlowResource>;
 
 /** The DataFlowResource items on this page */
-export type DataFlowListResponseValueList = DataFlowResource[];
+export type DataFlowListResponseValueList = ReadonlyArray<DataFlowResource>;
 export const DataFlowListResponseValueList = /*@__PURE__*/ S.Array(
   DataFlowResource,
 ) as any as S.Schema<DataFlowListResponseValueList>;
@@ -1685,7 +2207,8 @@ export interface DatasetsCreateOrUpdateRequest {
   factoryName: string;
   /** The dataset name. */
   datasetName: string;
-  body: unknown;
+  /** Dataset properties. */
+  properties: Dataset;
 }
 export const DatasetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1693,7 +2216,7 @@ export const DatasetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
     datasetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: Dataset,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1705,92 +2228,6 @@ export const DatasetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatasetsCreateOrUpdateRequest",
 }) as any as S.Schema<DatasetsCreateOrUpdateRequest>;
-
-/** Parameter type. */
-export type ParameterType =
-  | "Object"
-  | "String"
-  | "Int"
-  | "Float"
-  | "Bool"
-  | "Array"
-  | "SecureString"
-  | (string & {});
-export const ParameterType = /*@__PURE__*/ S.String;
-
-/** Definition of a single parameter for an entity. */
-export interface ParameterSpecification {
-  /** Parameter type. */
-  type: ParameterType;
-  /** Default value of parameter. */
-  defaultValue?: unknown;
-}
-export const ParameterSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ParameterType,
-    defaultValue: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "ParameterSpecification",
-}) as any as S.Schema<ParameterSpecification>;
-
-/** Parameters for dataset. */
-export type DatasetParametersMap = {
-  [key: string]: ParameterSpecification | undefined;
-};
-export const DatasetParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ParameterSpecification,
-) as any as S.Schema<DatasetParametersMap>;
-
-/** List of tags that can be used for describing the Dataset. */
-export type DatasetAnnotationsList = unknown[];
-export const DatasetAnnotationsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DatasetAnnotationsList>;
-
-/** The folder that this Dataset is in. If not specified, Dataset will appear at the root level. */
-export interface DatasetFolder {
-  /** The name of the folder that this Dataset is in. */
-  name?: string;
-}
-export const DatasetFolder = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "DatasetFolder" }) as any as S.Schema<DatasetFolder>;
-
-/** The Azure Data Factory nested object which identifies data within different data stores, such as tables, files, folders, and documents. */
-export interface Dataset {
-  /** Type of dataset. */
-  type: string;
-  /** Dataset description. */
-  description?: string;
-  /** Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement. */
-  structure?: unknown;
-  /** Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement. */
-  schema?: unknown;
-  /** Linked service reference. */
-  linkedServiceName: LinkedServiceReference;
-  /** Parameters for dataset. */
-  parameters?: DatasetParametersMap;
-  /** List of tags that can be used for describing the Dataset. */
-  annotations?: DatasetAnnotationsList;
-  /** The folder that this Dataset is in. If not specified, Dataset will appear at the root level. */
-  folder?: DatasetFolder;
-}
-export const Dataset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    description: S.optional(S.String),
-    structure: S.optional(S.Unknown),
-    schema: S.optional(S.Unknown),
-    linkedServiceName: LinkedServiceReference,
-    parameters: S.optional(DatasetParametersMap),
-    annotations: S.optional(DatasetAnnotationsList),
-    folder: S.optional(DatasetFolder),
-  }),
-).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 
 export interface DatasetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1963,7 +2400,7 @@ export const DatasetResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetResource>;
 
 /** The DatasetResource items on this page */
-export type DatasetListResponseValueList = DatasetResource[];
+export type DatasetListResponseValueList = ReadonlyArray<DatasetResource>;
 export const DatasetListResponseValueList = /*@__PURE__*/ S.Array(
   DatasetResource,
 ) as any as S.Schema<DatasetListResponseValueList>;
@@ -1989,14 +2426,18 @@ export interface ExposureControlGetFeatureValueRequest {
   subscriptionId: string;
   /** The location identifier. */
   locationId: string;
-  body: unknown;
+  /** The feature name. */
+  featureName?: string;
+  /** The feature type. */
+  featureType?: string;
 }
 export const ExposureControlGetFeatureValueRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      featureName: S.optional(S.String),
+      featureType: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2032,7 +2473,10 @@ export interface ExposureControlGetFeatureValueByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** The feature name. */
+  featureName?: string;
+  /** The feature type. */
+  featureType?: string;
 }
 export const ExposureControlGetFeatureValueByFactoryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2040,7 +2484,8 @@ export const ExposureControlGetFeatureValueByFactoryRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      featureName: S.optional(S.String),
+      featureType: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2053,6 +2498,30 @@ export const ExposureControlGetFeatureValueByFactoryRequest =
     identifier: "ExposureControlGetFeatureValueByFactoryRequest",
   }) as any as S.Schema<ExposureControlGetFeatureValueByFactoryRequest>;
 
+/** The exposure control request. */
+export interface ExposureControlRequest {
+  /** The feature name. */
+  featureName?: string;
+  /** The feature type. */
+  featureType?: string;
+}
+export const ExposureControlRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    featureName: S.optional(S.String),
+    featureType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExposureControlRequest",
+}) as any as S.Schema<ExposureControlRequest>;
+
+/** List of exposure control features. */
+export type ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList =
+  ReadonlyArray<ExposureControlRequest>;
+export const ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList =
+  /*@__PURE__*/ S.Array(
+    ExposureControlRequest,
+  ) as any as S.Schema<ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList>;
+
 export interface ExposureControlQueryFeatureValuesByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2060,7 +2529,8 @@ export interface ExposureControlQueryFeatureValuesByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** List of exposure control features. */
+  exposureControlRequests: ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList;
 }
 export const ExposureControlQueryFeatureValuesByFactoryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2068,7 +2538,8 @@ export const ExposureControlQueryFeatureValuesByFactoryRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      exposureControlRequests:
+        ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList,
     }).pipe(
       T.Http({
         method: "POST",
@@ -2083,7 +2554,7 @@ export const ExposureControlQueryFeatureValuesByFactoryRequest =
 
 /** List of exposure control feature values. */
 export type ExposureControlBatchResponseExposureControlResponsesList =
-  ExposureControlResponse[];
+  ReadonlyArray<ExposureControlResponse>;
 export const ExposureControlBatchResponseExposureControlResponsesList =
   /*@__PURE__*/ S.Array(
     ExposureControlResponse,
@@ -2102,44 +2573,6 @@ export const ExposureControlBatchResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExposureControlBatchResponse",
 }) as any as S.Schema<ExposureControlBatchResponse>;
-
-export interface FactoriesConfigureFactoryRepoRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The location identifier. */
-  locationId: string;
-  body: unknown;
-}
-export const FactoriesConfigureFactoryRepoRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      locationId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/locations/{locationId}/configureFactoryRepo",
-        code: 200,
-        apiVersion: "2018-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "FactoriesConfigureFactoryRepoRequest",
-}) as any as S.Schema<FactoriesConfigureFactoryRepoRequest>;
-
-/** Purview configuration. */
-export interface PurviewConfiguration {
-  /** Purview resource id. */
-  purviewResourceId?: string;
-}
-export const PurviewConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    purviewResourceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PurviewConfiguration",
-}) as any as S.Schema<PurviewConfiguration>;
 
 /** Factory's git repo information. */
 export interface FactoryRepoConfiguration {
@@ -2172,6 +2605,48 @@ export const FactoryRepoConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "FactoryRepoConfiguration",
 }) as any as S.Schema<FactoryRepoConfiguration>;
 
+export interface FactoriesConfigureFactoryRepoRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The location identifier. */
+  locationId: string;
+  /** The factory resource id. */
+  factoryResourceId?: string;
+  /** Git repo information of the factory. */
+  repoConfiguration?: FactoryRepoConfiguration;
+}
+export const FactoriesConfigureFactoryRepoRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      locationId: S.String.pipe(T.Label()),
+      factoryResourceId: S.optional(S.String),
+      repoConfiguration: S.optional(FactoryRepoConfiguration),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataFactory/locations/{locationId}/configureFactoryRepo",
+        code: 200,
+        apiVersion: "2018-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "FactoriesConfigureFactoryRepoRequest",
+}) as any as S.Schema<FactoriesConfigureFactoryRepoRequest>;
+
+/** Purview configuration. */
+export interface PurviewConfiguration {
+  /** Purview resource id. */
+  purviewResourceId?: string;
+}
+export const PurviewConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    purviewResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PurviewConfiguration",
+}) as any as S.Schema<PurviewConfiguration>;
+
 /** Global Parameter type. */
 export type GlobalParameterType =
   | "Object"
@@ -2179,8 +2654,7 @@ export type GlobalParameterType =
   | "Int"
   | "Float"
   | "Bool"
-  | "Array"
-  | (string & {});
+  | "Array";
 export const GlobalParameterType = /*@__PURE__*/ S.String;
 
 /** Definition of a single parameter for an entity. */
@@ -2244,7 +2718,7 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionConfiguration>;
 
 /** Whether or not public network access is allowed for the data factory. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Factory resource properties. */
@@ -2285,8 +2759,7 @@ export const FactoryProperties = /*@__PURE__*/ S.suspend(() =>
 export type FactoryIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
+  | "SystemAssigned,UserAssigned";
 export const FactoryIdentityType = /*@__PURE__*/ S.String;
 
 /** List of user assigned identities for the factory. */
@@ -2369,6 +2842,49 @@ export const FactoriesConfigureFactoryRepoResponse = /*@__PURE__*/ S.suspend(
   identifier: "FactoriesConfigureFactoryRepoResponse",
 }) as any as S.Schema<FactoriesConfigureFactoryRepoResponse>;
 
+/** List of parameters for factory. */
+export type FactoryPropertiesInputGlobalParametersMap = {
+  [key: string]: GlobalParameterSpecification | undefined;
+};
+export const FactoryPropertiesInputGlobalParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  GlobalParameterSpecification,
+) as any as S.Schema<FactoryPropertiesInputGlobalParametersMap>;
+
+/** Factory resource properties. */
+export interface FactoryPropertiesInput {
+  /** Purview information of the factory. */
+  purviewConfiguration?: PurviewConfiguration;
+  /** Git repo information of the factory. */
+  repoConfiguration?: FactoryRepoConfiguration;
+  /** List of parameters for factory. */
+  globalParameters?: FactoryPropertiesInputGlobalParametersMap;
+  /** Properties to enable Customer Managed Key for the factory. */
+  encryption?: EncryptionConfiguration;
+  /** Whether or not public network access is allowed for the data factory. */
+  publicNetworkAccess?: PublicNetworkAccess;
+}
+export const FactoryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    purviewConfiguration: S.optional(PurviewConfiguration),
+    repoConfiguration: S.optional(FactoryRepoConfiguration),
+    globalParameters: S.optional(FactoryPropertiesInputGlobalParametersMap),
+    encryption: S.optional(EncryptionConfiguration),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+  }),
+).annotate({
+  identifier: "FactoryPropertiesInput",
+}) as any as S.Schema<FactoryPropertiesInput>;
+
+/** The resource tags. */
+export type FactoriesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FactoriesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FactoriesCreateOrUpdateRequestTagsMap>;
+
 export interface FactoriesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2376,14 +2892,24 @@ export interface FactoriesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** Properties of the factory. */
+  properties?: FactoryPropertiesInput;
+  /** Managed service identity of the factory. */
+  identity?: FactoryIdentity;
+  /** The resource location. */
+  location?: string;
+  /** The resource tags. */
+  tags?: FactoriesCreateOrUpdateRequestTagsMap;
 }
 export const FactoriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(FactoryPropertiesInput),
+    identity: S.optional(FactoryIdentity),
+    location: S.optional(S.String),
+    tags: S.optional(FactoriesCreateOrUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2548,14 +3074,27 @@ export interface FactoriesGetDataPlaneAccessRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** The string with permissions for Data Plane access. Currently only 'r' is supported which grants read only access. */
+  permissions?: string;
+  /** The resource path to get access relative to factory. Currently only empty string is supported which corresponds to the factory resource. */
+  accessResourcePath?: string;
+  /** The name of the profile. Currently only the default is supported. The default value is DefaultProfile. */
+  profileName?: string;
+  /** Start time for the token. If not specified the current time will be used. */
+  startTime?: string;
+  /** Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours. */
+  expireTime?: string;
 }
 export const FactoriesGetDataPlaneAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    permissions: S.optional(S.String),
+    accessResourcePath: S.optional(S.String),
+    profileName: S.optional(S.String),
+    startTime: S.optional(S.String),
+    expireTime: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2612,6 +3151,22 @@ export const AccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessPolicyResponse",
 }) as any as S.Schema<AccessPolicyResponse>;
 
+/** Client secret information for factory's bring your own app repository configuration. */
+export interface GitHubClientSecret {
+  /** Bring your own app client secret AKV URL. */
+  byoaSecretAkvUrl?: string;
+  /** Bring your own app client secret name in AKV. */
+  byoaSecretName?: string;
+}
+export const GitHubClientSecret = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    byoaSecretAkvUrl: S.optional(S.String),
+    byoaSecretName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GitHubClientSecret",
+}) as any as S.Schema<GitHubClientSecret>;
+
 export interface FactoriesGetGitHubAccessTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2619,7 +3174,14 @@ export interface FactoriesGetGitHubAccessTokenRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** GitHub access code. */
+  gitHubAccessCode: string;
+  /** GitHub application client ID. */
+  gitHubClientId?: string;
+  /** GitHub bring your own app client secret information. */
+  gitHubClientSecret?: GitHubClientSecret;
+  /** GitHub access token base URL. */
+  gitHubAccessTokenBaseUrl: string;
 }
 export const FactoriesGetGitHubAccessTokenRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2627,7 +3189,10 @@ export const FactoriesGetGitHubAccessTokenRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      gitHubAccessCode: S.String,
+      gitHubClientId: S.optional(S.String),
+      gitHubClientSecret: S.optional(GitHubClientSecret),
+      gitHubAccessTokenBaseUrl: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -2715,7 +3280,7 @@ export const Factory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Factory" }) as any as S.Schema<Factory>;
 
 /** The Factory items on this page */
-export type FactoryListResponseValueList = Factory[];
+export type FactoryListResponseValueList = ReadonlyArray<Factory>;
 export const FactoryListResponseValueList = /*@__PURE__*/ S.Array(
   Factory,
 ) as any as S.Schema<FactoryListResponseValueList>;
@@ -2758,6 +3323,28 @@ export const FactoriesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FactoriesListByResourceGroupRequest",
 }) as any as S.Schema<FactoriesListByResourceGroupRequest>;
 
+/** The resource tags. */
+export type FactoriesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FactoriesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FactoriesUpdateRequestTagsMap>;
+
+/** Factory update resource properties. */
+export interface FactoryUpdateProperties {
+  /** Whether or not public network access is allowed for the data factory. */
+  publicNetworkAccess?: PublicNetworkAccess;
+}
+export const FactoryUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+  }),
+).annotate({
+  identifier: "FactoryUpdateProperties",
+}) as any as S.Schema<FactoryUpdateProperties>;
+
 export interface FactoriesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2765,14 +3352,21 @@ export interface FactoriesUpdateRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** The resource tags. */
+  tags?: FactoriesUpdateRequestTagsMap;
+  /** Managed service identity of the factory. */
+  identity?: FactoryIdentity;
+  /** Properties of update the factory. */
+  properties?: FactoryUpdateProperties;
 }
 export const FactoriesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(FactoriesUpdateRequestTagsMap),
+    identity: S.optional(FactoryIdentity),
+    properties: S.optional(FactoryUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2830,6 +3424,16 @@ export const FactoriesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FactoriesUpdateResponse",
 }) as any as S.Schema<FactoriesUpdateResponse>;
 
+/** Properties of the global parameter. */
+export type GlobalParametersCreateOrUpdateRequestPropertiesMap = {
+  [key: string]: GlobalParameterSpecification | undefined;
+};
+export const GlobalParametersCreateOrUpdateRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    GlobalParameterSpecification,
+  ) as any as S.Schema<GlobalParametersCreateOrUpdateRequestPropertiesMap>;
+
 export interface GlobalParametersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2839,7 +3443,8 @@ export interface GlobalParametersCreateOrUpdateRequest {
   factoryName: string;
   /** The global parameter name. */
   globalParameterName: string;
-  body: unknown;
+  /** Properties of the global parameter. */
+  properties: GlobalParametersCreateOrUpdateRequestPropertiesMap;
 }
 export const GlobalParametersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2848,7 +3453,7 @@ export const GlobalParametersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
       globalParameterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: GlobalParametersCreateOrUpdateRequestPropertiesMap,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3062,7 +3667,8 @@ export const GlobalParameterResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GlobalParameterResource>;
 
 /** The GlobalParameterResource items on this page */
-export type GlobalParameterListResponseValueList = GlobalParameterResource[];
+export type GlobalParameterListResponseValueList =
+  ReadonlyArray<GlobalParameterResource>;
 export const GlobalParameterListResponseValueList = /*@__PURE__*/ S.Array(
   GlobalParameterResource,
 ) as any as S.Schema<GlobalParameterListResponseValueList>;
@@ -3112,26 +3718,6 @@ export const IntegrationRuntimeDisableInteractiveQueryRequest =
     identifier: "IntegrationRuntimeDisableInteractiveQueryRequest",
   }) as any as S.Schema<IntegrationRuntimeDisableInteractiveQueryRequest>;
 
-/** The type of integration runtime. */
-export type IntegrationRuntimeType = "Managed" | "SelfHosted" | (string & {});
-export const IntegrationRuntimeType = /*@__PURE__*/ S.String;
-
-/** Azure Data Factory nested object which serves as a compute resource for activities. */
-export interface IntegrationRuntime {
-  /** Type of integration runtime. */
-  type: IntegrationRuntimeType;
-  /** Integration runtime description. */
-  description?: string;
-}
-export const IntegrationRuntime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: IntegrationRuntimeType,
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IntegrationRuntime",
-}) as any as S.Schema<IntegrationRuntime>;
-
 export interface IntegrationRuntimeDisableInteractiveQueryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3169,7 +3755,8 @@ export interface IntegrationRuntimeEnableInteractiveQueryRequest {
   factoryName: string;
   /** The integration runtime name. */
   integrationRuntimeName: string;
-  body: unknown;
+  /** The allowed idle time for interactive authoring. */
+  autoTerminationMinutes?: number;
 }
 export const IntegrationRuntimeEnableInteractiveQueryRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3178,7 +3765,7 @@ export const IntegrationRuntimeEnableInteractiveQueryRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
       integrationRuntimeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      autoTerminationMinutes: S.optional(S.Number),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3293,8 +3880,7 @@ export type SelfHostedIntegrationRuntimeNodeStatus =
   | "Offline"
   | "Upgrading"
   | "Initializing"
-  | "InitializeFailed"
-  | (string & {});
+  | "InitializeFailed";
 export const SelfHostedIntegrationRuntimeNodeStatus = /*@__PURE__*/ S.String;
 
 /** The integration runtime capabilities dictionary */
@@ -3308,11 +3894,7 @@ export const SelfHostedIntegrationRuntimeNodeCapabilitiesMap =
   ) as any as S.Schema<SelfHostedIntegrationRuntimeNodeCapabilitiesMap>;
 
 /** The result of the last integration runtime node update. */
-export type IntegrationRuntimeUpdateResult =
-  | "None"
-  | "Succeed"
-  | "Fail"
-  | (string & {});
+export type IntegrationRuntimeUpdateResult = "None" | "Succeed" | "Fail";
 export const IntegrationRuntimeUpdateResult = /*@__PURE__*/ S.String;
 
 /** Properties of Self-hosted integration runtime node. */
@@ -3431,7 +4013,8 @@ export interface IntegrationRuntimeNodesUpdateRequest {
   integrationRuntimeName: string;
   /** The integration runtime node name. */
   nodeName: string;
-  body: unknown;
+  /** The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs(inclusive) are allowed. */
+  concurrentJobsLimit?: number;
 }
 export const IntegrationRuntimeNodesUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3441,7 +4024,7 @@ export const IntegrationRuntimeNodesUpdateRequest = /*@__PURE__*/ S.suspend(
       factoryName: S.String.pipe(T.Label()),
       integrationRuntimeName: S.String.pipe(T.Label()),
       nodeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      concurrentJobsLimit: S.optional(S.Number),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -3463,7 +4046,8 @@ export interface IntegrationRuntimeObjectMetadataGetRequest {
   factoryName: string;
   /** The integration runtime name. */
   integrationRuntimeName: string;
-  body?: unknown;
+  /** Metadata path. */
+  metadataPath?: string;
 }
 export const IntegrationRuntimeObjectMetadataGetRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3472,7 +4056,7 @@ export const IntegrationRuntimeObjectMetadataGetRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
       integrationRuntimeName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      metadataPath: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3490,8 +4074,7 @@ export type SsisObjectMetadataType =
   | "Folder"
   | "Project"
   | "Package"
-  | "Environment"
-  | (string & {});
+  | "Environment";
 export const SsisObjectMetadataType = /*@__PURE__*/ S.String;
 
 /** SSIS object metadata. */
@@ -3517,7 +4100,8 @@ export const SsisObjectMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsisObjectMetadata>;
 
 /** The SsisObjectMetadata items on this page */
-export type SsisObjectMetadataListResponseValueList = SsisObjectMetadata[];
+export type SsisObjectMetadataListResponseValueList =
+  ReadonlyArray<SsisObjectMetadata>;
 export const SsisObjectMetadataListResponseValueList = /*@__PURE__*/ S.Array(
   SsisObjectMetadata,
 ) as any as S.Schema<SsisObjectMetadataListResponseValueList>;
@@ -3598,7 +4182,12 @@ export interface IntegrationRuntimesCreateLinkedIntegrationRuntimeRequest {
   factoryName: string;
   /** The integration runtime name. */
   integrationRuntimeName: string;
-  body: unknown;
+  /** The name of the linked integration runtime. */
+  name?: string;
+  /** The name of the data factory that the linked integration runtime belongs to. */
+  dataFactoryName?: string;
+  /** The location of the data factory that the linked integration runtime belongs to. */
+  dataFactoryLocation?: string;
 }
 export const IntegrationRuntimesCreateLinkedIntegrationRuntimeRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3607,7 +4196,9 @@ export const IntegrationRuntimesCreateLinkedIntegrationRuntimeRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
       integrationRuntimeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      dataFactoryName: S.optional(S.String),
+      dataFactoryLocation: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3631,8 +4222,7 @@ export type IntegrationRuntimeState =
   | "Online"
   | "Limited"
   | "Offline"
-  | "AccessDenied"
-  | (string & {});
+  | "AccessDenied";
 export const IntegrationRuntimeState = /*@__PURE__*/ S.String;
 
 /** Integration runtime status. */
@@ -3679,7 +4269,8 @@ export interface IntegrationRuntimesCreateOrUpdateRequest {
   factoryName: string;
   /** The integration runtime name. */
   integrationRuntimeName: string;
-  body: unknown;
+  /** Integration runtime properties. */
+  properties: IntegrationRuntime;
 }
 export const IntegrationRuntimesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3688,7 +4279,7 @@ export const IntegrationRuntimesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
       integrationRuntimeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: IntegrationRuntime,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3942,7 +4533,7 @@ export const IntegrationRuntimeNodeMonitoringData = /*@__PURE__*/ S.suspend(
 
 /** Integration runtime node monitoring data. */
 export type IntegrationRuntimeMonitoringDataNodesList =
-  IntegrationRuntimeNodeMonitoringData[];
+  ReadonlyArray<IntegrationRuntimeNodeMonitoringData>;
 export const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ S.Array(
   IntegrationRuntimeNodeMonitoringData,
 ) as any as S.Schema<IntegrationRuntimeMonitoringDataNodesList>;
@@ -4092,7 +4683,7 @@ export const IntegrationRuntimeResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The IntegrationRuntimeResource items on this page */
 export type IntegrationRuntimeListResponseValueList =
-  IntegrationRuntimeResource[];
+  ReadonlyArray<IntegrationRuntimeResource>;
 export const IntegrationRuntimeListResponseValueList = /*@__PURE__*/ S.Array(
   IntegrationRuntimeResource,
 ) as any as S.Schema<IntegrationRuntimeListResponseValueList>;
@@ -4159,7 +4750,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails =
 
 /** The details of endpoint. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
-  IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails[];
+  ReadonlyArray<IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails>;
 export const IntegrationRuntimeOutboundNetworkDependenciesEndpointEndpointDetailsList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesEndpointDetails,
@@ -4186,7 +4777,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesEndpoint =
 
 /** The endpoints for outbound network dependency. */
 export type IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
-  IntegrationRuntimeOutboundNetworkDependenciesEndpoint[];
+  ReadonlyArray<IntegrationRuntimeOutboundNetworkDependenciesEndpoint>;
 export const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpointEndpointsList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesEndpoint,
@@ -4213,7 +4804,7 @@ export const IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint =
 
 /** The list of outbound network dependency endpoints. */
 export type IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
-  IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint[];
+  ReadonlyArray<IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint>;
 export const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponseValueList =
   /*@__PURE__*/ S.Array(
     IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint,
@@ -4236,6 +4827,10 @@ export const IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse =
       "IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse",
   }) as any as S.Schema<IntegrationRuntimeOutboundNetworkDependenciesEndpointsResponse>;
 
+/** The name of the authentication key to regenerate. */
+export type IntegrationRuntimeAuthKeyName = "authKey1" | "authKey2";
+export const IntegrationRuntimeAuthKeyName = /*@__PURE__*/ S.String;
+
 export interface IntegrationRuntimesRegenerateAuthKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4245,7 +4840,8 @@ export interface IntegrationRuntimesRegenerateAuthKeyRequest {
   factoryName: string;
   /** The integration runtime name. */
   integrationRuntimeName: string;
-  body: unknown;
+  /** The name of the authentication key to regenerate. */
+  keyName?: IntegrationRuntimeAuthKeyName;
 }
 export const IntegrationRuntimesRegenerateAuthKeyRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4254,7 +4850,7 @@ export const IntegrationRuntimesRegenerateAuthKeyRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
       integrationRuntimeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      keyName: S.optional(IntegrationRuntimeAuthKeyName),
     }).pipe(
       T.Http({
         method: "POST",
@@ -4276,7 +4872,6 @@ export interface IntegrationRuntimesRemoveLinksRequest {
   factoryName: string;
   /** The integration runtime name. */
   integrationRuntimeName: string;
-  body: unknown;
 }
 export const IntegrationRuntimesRemoveLinksRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4285,7 +4880,6 @@ export const IntegrationRuntimesRemoveLinksRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
       integrationRuntimeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "POST",
@@ -4403,6 +4997,10 @@ export const IntegrationRuntimesSyncCredentialsResponse =
     identifier: "IntegrationRuntimesSyncCredentialsResponse",
   }) as any as S.Schema<IntegrationRuntimesSyncCredentialsResponse>;
 
+/** The state of integration runtime auto update. */
+export type IntegrationRuntimeAutoUpdate = "On" | "Off";
+export const IntegrationRuntimeAutoUpdate = /*@__PURE__*/ S.String;
+
 export interface IntegrationRuntimesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4412,7 +5010,10 @@ export interface IntegrationRuntimesUpdateRequest {
   factoryName: string;
   /** The integration runtime name. */
   integrationRuntimeName: string;
-  body: unknown;
+  /** Enables or disables the auto-update feature of the self-hosted integration runtime. See https://go.microsoft.com/fwlink/?linkid=854189. */
+  autoUpdate?: IntegrationRuntimeAutoUpdate;
+  /** The time offset (in hours) in the day, e.g., PT03H is 3 hours. The integration runtime auto update will happen on that time. */
+  updateDelayOffset?: string;
 }
 export const IntegrationRuntimesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4420,7 +5021,8 @@ export const IntegrationRuntimesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
     integrationRuntimeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    autoUpdate: S.optional(IntegrationRuntimeAutoUpdate),
+    updateDelayOffset: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4504,7 +5106,8 @@ export interface LinkedServicesCreateOrUpdateRequest {
   factoryName: string;
   /** The linked service name. */
   linkedServiceName: string;
-  body: unknown;
+  /** Properties of linked service. */
+  properties: LinkedService;
 }
 export const LinkedServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4512,7 +5115,7 @@ export const LinkedServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
     linkedServiceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: LinkedService,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4524,81 +5127,6 @@ export const LinkedServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LinkedServicesCreateOrUpdateRequest",
 }) as any as S.Schema<LinkedServicesCreateOrUpdateRequest>;
-
-/** Type of integration runtime. */
-export type IntegrationRuntimeReferenceType =
-  | "IntegrationRuntimeReference"
-  | (string & {});
-export const IntegrationRuntimeReferenceType = /*@__PURE__*/ S.String;
-
-/** Arguments for integration runtime. */
-export type IntegrationRuntimeReferenceParametersMap = {
-  [key: string]: unknown | undefined;
-};
-export const IntegrationRuntimeReferenceParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<IntegrationRuntimeReferenceParametersMap>;
-
-/** Integration runtime reference type. */
-export interface IntegrationRuntimeReference {
-  /** Type of integration runtime. */
-  type: IntegrationRuntimeReferenceType;
-  /** Reference integration runtime name. */
-  referenceName: string;
-  /** Arguments for integration runtime. */
-  parameters?: IntegrationRuntimeReferenceParametersMap;
-}
-export const IntegrationRuntimeReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: IntegrationRuntimeReferenceType,
-    referenceName: S.String,
-    parameters: S.optional(IntegrationRuntimeReferenceParametersMap),
-  }),
-).annotate({
-  identifier: "IntegrationRuntimeReference",
-}) as any as S.Schema<IntegrationRuntimeReference>;
-
-/** Parameters for linked service. */
-export type LinkedServiceParametersMap = {
-  [key: string]: ParameterSpecification | undefined;
-};
-export const LinkedServiceParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ParameterSpecification,
-) as any as S.Schema<LinkedServiceParametersMap>;
-
-/** List of tags that can be used for describing the linked service. */
-export type LinkedServiceAnnotationsList = unknown[];
-export const LinkedServiceAnnotationsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LinkedServiceAnnotationsList>;
-
-/** The nested object which contains the information and credential which can be used to connect with related store or compute resource. */
-export interface LinkedService {
-  /** Type of linked service. */
-  type: string;
-  /** Version of the linked service. */
-  version?: string;
-  /** The integration runtime reference. */
-  connectVia?: IntegrationRuntimeReference;
-  /** Linked service description. */
-  description?: string;
-  /** Parameters for linked service. */
-  parameters?: LinkedServiceParametersMap;
-  /** List of tags that can be used for describing the linked service. */
-  annotations?: LinkedServiceAnnotationsList;
-}
-export const LinkedService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    version: S.optional(S.String),
-    connectVia: S.optional(IntegrationRuntimeReference),
-    description: S.optional(S.String),
-    parameters: S.optional(LinkedServiceParametersMap),
-    annotations: S.optional(LinkedServiceAnnotationsList),
-  }),
-).annotate({ identifier: "LinkedService" }) as any as S.Schema<LinkedService>;
 
 export interface LinkedServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4772,7 +5300,8 @@ export const LinkedServiceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LinkedServiceResource>;
 
 /** The LinkedServiceResource items on this page */
-export type LinkedServiceListResponseValueList = LinkedServiceResource[];
+export type LinkedServiceListResponseValueList =
+  ReadonlyArray<LinkedServiceResource>;
 export const LinkedServiceListResponseValueList = /*@__PURE__*/ S.Array(
   LinkedServiceResource,
 ) as any as S.Schema<LinkedServiceListResponseValueList>;
@@ -4793,6 +5322,42 @@ export const LinkedServiceListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LinkedServiceListResponse",
 }) as any as S.Schema<LinkedServiceListResponse>;
 
+/** The connection state of a managed private endpoint */
+export interface ConnectionStatePropertiesInput {}
+export const ConnectionStatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ConnectionStatePropertiesInput",
+}) as any as S.Schema<ConnectionStatePropertiesInput>;
+
+/** Fully qualified domain names */
+export type ManagedPrivateEndpointInputFqdnsList = ReadonlyArray<string>;
+export const ManagedPrivateEndpointInputFqdnsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ManagedPrivateEndpointInputFqdnsList>;
+
+/** Properties of a managed private endpoint */
+export interface ManagedPrivateEndpointInput {
+  /** The managed private endpoint connection state */
+  connectionState?: ConnectionStatePropertiesInput;
+  /** Fully qualified domain names */
+  fqdns?: ManagedPrivateEndpointInputFqdnsList;
+  /** The groupId to which the managed private endpoint is created */
+  groupId?: string;
+  /** The ARM resource ID of the resource to which the managed private endpoint is created */
+  privateLinkResourceId?: string;
+}
+export const ManagedPrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectionState: S.optional(ConnectionStatePropertiesInput),
+    fqdns: S.optional(ManagedPrivateEndpointInputFqdnsList),
+    groupId: S.optional(S.String),
+    privateLinkResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedPrivateEndpointInput",
+}) as any as S.Schema<ManagedPrivateEndpointInput>;
+
 export interface ManagedPrivateEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4804,7 +5369,8 @@ export interface ManagedPrivateEndpointsCreateOrUpdateRequest {
   managedVirtualNetworkName: string;
   /** Managed private endpoint name */
   managedPrivateEndpointName: string;
-  body: unknown;
+  /** Managed private endpoint properties. */
+  properties: ManagedPrivateEndpointInput;
 }
 export const ManagedPrivateEndpointsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4814,7 +5380,7 @@ export const ManagedPrivateEndpointsCreateOrUpdateRequest =
       factoryName: S.String.pipe(T.Label()),
       managedVirtualNetworkName: S.String.pipe(T.Label()),
       managedPrivateEndpointName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: ManagedPrivateEndpointInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4847,7 +5413,7 @@ export const ConnectionStateProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionStateProperties>;
 
 /** Fully qualified domain names */
-export type ManagedPrivateEndpointFqdnsList = string[];
+export type ManagedPrivateEndpointFqdnsList = ReadonlyArray<string>;
 export const ManagedPrivateEndpointFqdnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagedPrivateEndpointFqdnsList>;
@@ -5064,7 +5630,7 @@ export const ManagedPrivateEndpointResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedPrivateEndpointResource items on this page */
 export type ManagedPrivateEndpointListResponseValueList =
-  ManagedPrivateEndpointResource[];
+  ReadonlyArray<ManagedPrivateEndpointResource>;
 export const ManagedPrivateEndpointListResponseValueList =
   /*@__PURE__*/ S.Array(
     ManagedPrivateEndpointResource,
@@ -5086,6 +5652,14 @@ export const ManagedPrivateEndpointListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedPrivateEndpointListResponse",
 }) as any as S.Schema<ManagedPrivateEndpointListResponse>;
 
+/** A managed Virtual Network associated with the Azure Data Factory */
+export interface ManagedVirtualNetworkInput {}
+export const ManagedVirtualNetworkInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ManagedVirtualNetworkInput",
+}) as any as S.Schema<ManagedVirtualNetworkInput>;
+
 export interface ManagedVirtualNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5095,7 +5669,8 @@ export interface ManagedVirtualNetworksCreateOrUpdateRequest {
   factoryName: string;
   /** Managed virtual network name */
   managedVirtualNetworkName: string;
-  body: unknown;
+  /** Managed Virtual Network properties. */
+  properties: ManagedVirtualNetworkInput;
 }
 export const ManagedVirtualNetworksCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5104,7 +5679,7 @@ export const ManagedVirtualNetworksCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
       managedVirtualNetworkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: ManagedVirtualNetworkInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5272,7 +5847,7 @@ export const ManagedVirtualNetworkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The ManagedVirtualNetworkResource items on this page */
 export type ManagedVirtualNetworkListResponseValueList =
-  ManagedVirtualNetworkResource[];
+  ReadonlyArray<ManagedVirtualNetworkResource>;
 export const ManagedVirtualNetworkListResponseValueList = /*@__PURE__*/ S.Array(
   ManagedVirtualNetworkResource,
 ) as any as S.Schema<ManagedVirtualNetworkListResponseValueList>;
@@ -5350,7 +5925,7 @@ export const OperationLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about operations related to logs. */
 export type OperationServiceSpecificationLogSpecificationsList =
-  OperationLogSpecification[];
+  ReadonlyArray<OperationLogSpecification>;
 export const OperationServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationLogSpecification,
@@ -5374,7 +5949,7 @@ export const OperationMetricAvailability = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines how often data for metrics becomes available. */
 export type OperationMetricSpecificationAvailabilitiesList =
-  OperationMetricAvailability[];
+  ReadonlyArray<OperationMetricAvailability>;
 export const OperationMetricSpecificationAvailabilitiesList =
   /*@__PURE__*/ S.Array(
     OperationMetricAvailability,
@@ -5401,7 +5976,7 @@ export const OperationMetricDimension = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the metric dimension. */
 export type OperationMetricSpecificationDimensionsList =
-  OperationMetricDimension[];
+  ReadonlyArray<OperationMetricDimension>;
 export const OperationMetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   OperationMetricDimension,
 ) as any as S.Schema<OperationMetricSpecificationDimensionsList>;
@@ -5448,7 +6023,7 @@ export const OperationMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about operations related to metrics. */
 export type OperationServiceSpecificationMetricSpecificationsList =
-  OperationMetricSpecification[];
+  ReadonlyArray<OperationMetricSpecification>;
 export const OperationServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetricSpecification,
@@ -5508,7 +6083,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Data Factory operations supported by the Data Factory resource provider. */
-export type OperationListResponseValueList = Operation[];
+export type OperationListResponseValueList = ReadonlyArray<Operation>;
 export const OperationListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResponseValueList>;
@@ -5679,6 +6254,22 @@ export const PipelineRun = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PipelineRun" }) as any as S.Schema<PipelineRun>;
 
+/** List of filters. */
+export type PipelineRunsQueryByFactoryRequestFiltersList =
+  ReadonlyArray<RunQueryFilter>;
+export const PipelineRunsQueryByFactoryRequestFiltersList =
+  /*@__PURE__*/ S.Array(
+    RunQueryFilter,
+  ) as any as S.Schema<PipelineRunsQueryByFactoryRequestFiltersList>;
+
+/** List of OrderBy option. */
+export type PipelineRunsQueryByFactoryRequestOrderByList =
+  ReadonlyArray<RunQueryOrderBy>;
+export const PipelineRunsQueryByFactoryRequestOrderByList =
+  /*@__PURE__*/ S.Array(
+    RunQueryOrderBy,
+  ) as any as S.Schema<PipelineRunsQueryByFactoryRequestOrderByList>;
+
 export interface PipelineRunsQueryByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5686,14 +6277,27 @@ export interface PipelineRunsQueryByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** The continuation token for getting the next page of results. Null for first page. */
+  continuationToken?: string;
+  /** The time at or after which the run event was updated in 'ISO 8601' format. */
+  lastUpdatedAfter: string;
+  /** The time at or before which the run event was updated in 'ISO 8601' format. */
+  lastUpdatedBefore: string;
+  /** List of filters. */
+  filters?: PipelineRunsQueryByFactoryRequestFiltersList;
+  /** List of OrderBy option. */
+  orderBy?: PipelineRunsQueryByFactoryRequestOrderByList;
 }
 export const PipelineRunsQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    continuationToken: S.optional(S.String),
+    lastUpdatedAfter: S.String,
+    lastUpdatedBefore: S.String,
+    filters: S.optional(PipelineRunsQueryByFactoryRequestFiltersList),
+    orderBy: S.optional(PipelineRunsQueryByFactoryRequestOrderByList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5707,7 +6311,7 @@ export const PipelineRunsQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PipelineRunsQueryByFactoryRequest>;
 
 /** List of pipeline runs. */
-export type PipelineRunsQueryResponseValueList = PipelineRun[];
+export type PipelineRunsQueryResponseValueList = ReadonlyArray<PipelineRun>;
 export const PipelineRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
   PipelineRun,
 ) as any as S.Schema<PipelineRunsQueryResponseValueList>;
@@ -5728,58 +6332,24 @@ export const PipelineRunsQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PipelineRunsQueryResponse",
 }) as any as S.Schema<PipelineRunsQueryResponse>;
 
-export interface PipelinesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The factory name. */
-  factoryName: string;
-  /** The pipeline name. */
-  pipelineName: string;
-  body: unknown;
-}
-export const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    factoryName: S.String.pipe(T.Label()),
-    pipelineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines/{pipelineName}",
-      code: 200,
-      apiVersion: "2018-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "PipelinesCreateOrUpdateRequest",
-}) as any as S.Schema<PipelinesCreateOrUpdateRequest>;
-
 /** Activity state. This is an optional property and if not provided, the state will be Active by default. */
-export type ActivityState = "Active" | "Inactive" | (string & {});
+export type ActivityState = "Active" | "Inactive";
 export const ActivityState = /*@__PURE__*/ S.String;
 
 /** Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default. */
-export type ActivityOnInactiveMarkAs =
-  | "Succeeded"
-  | "Failed"
-  | "Skipped"
-  | (string & {});
+export type ActivityOnInactiveMarkAs = "Succeeded" | "Failed" | "Skipped";
 export const ActivityOnInactiveMarkAs = /*@__PURE__*/ S.String;
 
 export type DependencyCondition =
   | "Succeeded"
   | "Failed"
   | "Skipped"
-  | "Completed"
-  | (string & {});
+  | "Completed";
 export const DependencyCondition = /*@__PURE__*/ S.String;
 
 /** Match-Condition for the dependency. */
-export type ActivityDependencyDependencyConditionsList = DependencyCondition[];
+export type ActivityDependencyDependencyConditionsList =
+  ReadonlyArray<DependencyCondition>;
 export const ActivityDependencyDependencyConditionsList = /*@__PURE__*/ S.Array(
   DependencyCondition,
 ) as any as S.Schema<ActivityDependencyDependencyConditionsList>;
@@ -5801,7 +6371,7 @@ export const ActivityDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityDependency>;
 
 /** Activity depends on condition. */
-export type ActivityDependsOnList = ActivityDependency[];
+export type ActivityDependsOnList = ReadonlyArray<ActivityDependency>;
 export const ActivityDependsOnList = /*@__PURE__*/ S.Array(
   ActivityDependency,
 ) as any as S.Schema<ActivityDependsOnList>;
@@ -5821,7 +6391,7 @@ export const UserProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserProperty" }) as any as S.Schema<UserProperty>;
 
 /** Activity user properties. */
-export type ActivityUserPropertiesList = UserProperty[];
+export type ActivityUserPropertiesList = ReadonlyArray<UserProperty>;
 export const ActivityUserPropertiesList = /*@__PURE__*/ S.Array(
   UserProperty,
 ) as any as S.Schema<ActivityUserPropertiesList>;
@@ -5856,7 +6426,7 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
 /** List of activities in pipeline. */
-export type PipelineActivitiesList = Activity[];
+export type PipelineActivitiesList = ReadonlyArray<Activity>;
 export const PipelineActivitiesList = /*@__PURE__*/ S.Array(
   Activity,
 ) as any as S.Schema<PipelineActivitiesList>;
@@ -5871,7 +6441,7 @@ export const PipelineParametersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PipelineParametersMap>;
 
 /** Variable type. */
-export type VariableType = "String" | "Bool" | "Array" | (string & {});
+export type VariableType = "String" | "Bool" | "Array";
 export const VariableType = /*@__PURE__*/ S.String;
 
 /** Definition of a single variable for a Pipeline. */
@@ -5900,7 +6470,7 @@ export const PipelineVariablesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PipelineVariablesMap>;
 
 /** List of tags that can be used for describing the Pipeline. */
-export type PipelineAnnotationsList = unknown[];
+export type PipelineAnnotationsList = ReadonlyArray<unknown>;
 export const PipelineAnnotationsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<PipelineAnnotationsList>;
@@ -5982,6 +6552,37 @@ export const Pipeline = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Pipeline" }) as any as S.Schema<Pipeline>;
 
+export interface PipelinesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The factory name. */
+  factoryName: string;
+  /** The pipeline name. */
+  pipelineName: string;
+  /** Properties of the pipeline. */
+  properties: Pipeline;
+}
+export const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    factoryName: S.String.pipe(T.Label()),
+    pipelineName: S.String.pipe(T.Label()),
+    properties: Pipeline,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/pipelines/{pipelineName}",
+      code: 200,
+      apiVersion: "2018-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "PipelinesCreateOrUpdateRequest",
+}) as any as S.Schema<PipelinesCreateOrUpdateRequest>;
+
 export interface PipelinesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6009,6 +6610,14 @@ export const PipelinesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PipelinesCreateOrUpdateResponse",
 }) as any as S.Schema<PipelinesCreateOrUpdateResponse>;
 
+export type PipelinesCreateRunRequestBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const PipelinesCreateRunRequestBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<PipelinesCreateRunRequestBodyMap>;
+
 export interface PipelinesCreateRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6026,7 +6635,7 @@ export interface PipelinesCreateRunRequest {
   startActivityName?: string;
   /** In recovery mode, if set to true, the rerun will start from failed activities. The property will be used only if startActivityName is not specified. */
   startFromFailure?: boolean;
-  body?: unknown;
+  body?: PipelinesCreateRunRequestBodyMap;
 }
 export const PipelinesCreateRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6038,7 +6647,7 @@ export const PipelinesCreateRunRequest = /*@__PURE__*/ S.suspend(() =>
     isRecovery: S.optional(S.Boolean.pipe(T.Query())),
     startActivityName: S.optional(S.String.pipe(T.Query())),
     startFromFailure: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    body: S.optional(PipelinesCreateRunRequestBodyMap.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -6208,7 +6817,7 @@ export const PipelineResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PipelineResource>;
 
 /** The PipelineResource items on this page */
-export type PipelineListResponseValueList = PipelineResource[];
+export type PipelineListResponseValueList = ReadonlyArray<PipelineResource>;
 export const PipelineListResponseValueList = /*@__PURE__*/ S.Array(
   PipelineResource,
 ) as any as S.Schema<PipelineListResponseValueList>;
@@ -6229,6 +6838,55 @@ export const PipelineListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PipelineListResponse",
 }) as any as S.Schema<PipelineListResponse>;
 
+/** The state of a private link connection */
+export interface PrivateLinkConnectionState {
+  /** Status of a private link connection */
+  status?: string;
+  /** Description of a private link connection */
+  description?: string;
+  /** ActionsRequired for a private link connection */
+  actionsRequired?: string;
+}
+export const PrivateLinkConnectionState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(S.String),
+    description: S.optional(S.String),
+    actionsRequired: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateLinkConnectionState",
+}) as any as S.Schema<PrivateLinkConnectionState>;
+
+/** Private endpoint which a connection belongs to. */
+export interface PrivateEndpoint {
+  /** The resource Id for private endpoint */
+  id?: string;
+}
+export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateEndpoint",
+}) as any as S.Schema<PrivateEndpoint>;
+
+/** A request to approve or reject a private endpoint connection */
+export interface PrivateLinkConnectionApprovalRequest {
+  /** The state of a private link connection */
+  privateLinkServiceConnectionState?: PrivateLinkConnectionState;
+  /** The resource of private endpoint. */
+  privateEndpoint?: PrivateEndpoint;
+}
+export const PrivateLinkConnectionApprovalRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateLinkServiceConnectionState: S.optional(PrivateLinkConnectionState),
+      privateEndpoint: S.optional(PrivateEndpoint),
+    }),
+).annotate({
+  identifier: "PrivateLinkConnectionApprovalRequest",
+}) as any as S.Schema<PrivateLinkConnectionApprovalRequest>;
+
 export interface PrivateEndpointConnectionCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6238,7 +6896,8 @@ export interface PrivateEndpointConnectionCreateOrUpdateRequest {
   factoryName: string;
   /** The private endpoint connection name. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: PrivateLinkConnectionApprovalRequest;
 }
 export const PrivateEndpointConnectionCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6247,7 +6906,7 @@ export const PrivateEndpointConnectionCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateLinkConnectionApprovalRequest),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6269,25 +6928,6 @@ export const ArmIdWrapper = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
   }),
 ).annotate({ identifier: "ArmIdWrapper" }) as any as S.Schema<ArmIdWrapper>;
-
-/** The state of a private link connection */
-export interface PrivateLinkConnectionState {
-  /** Status of a private link connection */
-  status?: string;
-  /** Description of a private link connection */
-  description?: string;
-  /** ActionsRequired for a private link connection */
-  actionsRequired?: string;
-}
-export const PrivateLinkConnectionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    description: S.optional(S.String),
-    actionsRequired: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkConnectionState",
-}) as any as S.Schema<PrivateLinkConnectionState>;
 
 /** A remote private endpoint connection */
 export interface RemotePrivateEndpointConnection {
@@ -6483,7 +7123,7 @@ export const PrivateEndpointConnectionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateEndpointConnectionResource items on this page */
 export type PrivateEndpointConnectionListResponseValueList =
-  PrivateEndpointConnectionResource[];
+  ReadonlyArray<PrivateEndpointConnectionResource>;
 export const PrivateEndpointConnectionListResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionResource,
@@ -6532,14 +7172,16 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** RequiredMembers of a private link resource */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** RequiredZoneNames of a private link resource */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6593,7 +7235,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResource",
 }) as any as S.Schema<PrivateLinkResource>;
 
-export type PrivateLinkResourcesWrapperValueList = PrivateLinkResource[];
+export type PrivateLinkResourcesWrapperValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourcesWrapperValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesWrapperValueList>;
@@ -6646,6 +7289,22 @@ export const TriggerRunsCancelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggerRunsCancelResponse",
 }) as any as S.Schema<TriggerRunsCancelResponse>;
 
+/** List of filters. */
+export type TriggerRunsQueryByFactoryRequestFiltersList =
+  ReadonlyArray<RunQueryFilter>;
+export const TriggerRunsQueryByFactoryRequestFiltersList =
+  /*@__PURE__*/ S.Array(
+    RunQueryFilter,
+  ) as any as S.Schema<TriggerRunsQueryByFactoryRequestFiltersList>;
+
+/** List of OrderBy option. */
+export type TriggerRunsQueryByFactoryRequestOrderByList =
+  ReadonlyArray<RunQueryOrderBy>;
+export const TriggerRunsQueryByFactoryRequestOrderByList =
+  /*@__PURE__*/ S.Array(
+    RunQueryOrderBy,
+  ) as any as S.Schema<TriggerRunsQueryByFactoryRequestOrderByList>;
+
 export interface TriggerRunsQueryByFactoryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6653,14 +7312,27 @@ export interface TriggerRunsQueryByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** The continuation token for getting the next page of results. Null for first page. */
+  continuationToken?: string;
+  /** The time at or after which the run event was updated in 'ISO 8601' format. */
+  lastUpdatedAfter: string;
+  /** The time at or before which the run event was updated in 'ISO 8601' format. */
+  lastUpdatedBefore: string;
+  /** List of filters. */
+  filters?: TriggerRunsQueryByFactoryRequestFiltersList;
+  /** List of OrderBy option. */
+  orderBy?: TriggerRunsQueryByFactoryRequestOrderByList;
 }
 export const TriggerRunsQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    continuationToken: S.optional(S.String),
+    lastUpdatedAfter: S.String,
+    lastUpdatedBefore: S.String,
+    filters: S.optional(TriggerRunsQueryByFactoryRequestFiltersList),
+    orderBy: S.optional(TriggerRunsQueryByFactoryRequestOrderByList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -6674,11 +7346,7 @@ export const TriggerRunsQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggerRunsQueryByFactoryRequest>;
 
 /** Trigger run status. */
-export type TriggerRunStatus =
-  | "Succeeded"
-  | "Failed"
-  | "Inprogress"
-  | (string & {});
+export type TriggerRunStatus = "Succeeded" | "Failed" | "Inprogress";
 export const TriggerRunStatus = /*@__PURE__*/ S.String;
 
 /** List of property name and value related to trigger run. Name, value pair depends on type of trigger. */
@@ -6752,7 +7420,7 @@ export const TriggerRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerRun" }) as any as S.Schema<TriggerRun>;
 
 /** List of trigger runs. */
-export type TriggerRunsQueryResponseValueList = TriggerRun[];
+export type TriggerRunsQueryResponseValueList = ReadonlyArray<TriggerRun>;
 export const TriggerRunsQueryResponseValueList = /*@__PURE__*/ S.Array(
   TriggerRun,
 ) as any as S.Schema<TriggerRunsQueryResponseValueList>;
@@ -6809,46 +7477,12 @@ export const TriggerRunsRerunResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggerRunsRerunResponse",
 }) as any as S.Schema<TriggerRunsRerunResponse>;
 
-export interface TriggersCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The factory name. */
-  factoryName: string;
-  /** The trigger name. */
-  triggerName: string;
-  body: unknown;
-}
-export const TriggersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    factoryName: S.String.pipe(T.Label()),
-    triggerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}",
-      code: 200,
-      apiVersion: "2018-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "TriggersCreateOrUpdateRequest",
-}) as any as S.Schema<TriggersCreateOrUpdateRequest>;
-
 /** Enumerates possible state of Triggers. */
-export type TriggerRuntimeState =
-  | "Started"
-  | "Stopped"
-  | "Disabled"
-  | (string & {});
+export type TriggerRuntimeState = "Started" | "Stopped" | "Disabled";
 export const TriggerRuntimeState = /*@__PURE__*/ S.String;
 
 /** List of tags that can be used for describing the trigger. */
-export type TriggerAnnotationsList = unknown[];
+export type TriggerAnnotationsList = ReadonlyArray<unknown>;
 export const TriggerAnnotationsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<TriggerAnnotationsList>;
@@ -6872,6 +7506,37 @@ export const Trigger = /*@__PURE__*/ S.suspend(() =>
     annotations: S.optional(TriggerAnnotationsList),
   }),
 ).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
+
+export interface TriggersCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The factory name. */
+  factoryName: string;
+  /** The trigger name. */
+  triggerName: string;
+  /** Properties of the trigger. */
+  properties: Trigger;
+}
+export const TriggersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    factoryName: S.String.pipe(T.Label()),
+    triggerName: S.String.pipe(T.Label()),
+    properties: Trigger,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/triggers/{triggerName}",
+      code: 200,
+      apiVersion: "2018-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "TriggersCreateOrUpdateRequest",
+}) as any as S.Schema<TriggersCreateOrUpdateRequest>;
 
 export interface TriggersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7025,8 +7690,7 @@ export type EventSubscriptionStatus =
   | "Provisioning"
   | "Deprovisioning"
   | "Disabled"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const EventSubscriptionStatus = /*@__PURE__*/ S.String;
 
 /** Defines the response of a trigger subscription operation. */
@@ -7099,7 +7763,7 @@ export const TriggerResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggerResource>;
 
 /** The TriggerResource items on this page */
-export type TriggerListResponseValueList = TriggerResource[];
+export type TriggerListResponseValueList = ReadonlyArray<TriggerResource>;
 export const TriggerListResponseValueList = /*@__PURE__*/ S.Array(
   TriggerResource,
 ) as any as S.Schema<TriggerListResponseValueList>;
@@ -7127,14 +7791,18 @@ export interface TriggersQueryByFactoryRequest {
   resourceGroupName: string;
   /** The factory name. */
   factoryName: string;
-  body: unknown;
+  /** The continuation token for getting the next page of results. Null for first page. */
+  continuationToken?: string;
+  /** The name of the parent TumblingWindowTrigger to get the child rerun triggers */
+  parentTriggerName?: string;
 }
 export const TriggersQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     factoryName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    continuationToken: S.optional(S.String),
+    parentTriggerName: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -7148,7 +7816,7 @@ export const TriggersQueryByFactoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggersQueryByFactoryRequest>;
 
 /** List of triggers. */
-export type TriggerQueryResponseValueList = TriggerResource[];
+export type TriggerQueryResponseValueList = ReadonlyArray<TriggerResource>;
 export const TriggerQueryResponseValueList = /*@__PURE__*/ S.Array(
   TriggerResource,
 ) as any as S.Schema<TriggerQueryResponseValueList>;

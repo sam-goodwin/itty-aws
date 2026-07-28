@@ -20,14 +20,21 @@ export interface AccessCreateRoleBindingRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** The principal User or Group to bind the role to */
+  principal?: string;
+  /** The name of the role to bind to the principal */
+  role_name?: string;
+  /** A CRN that specifies the scope and resource patterns necessary for the role to bind */
+  crn_pattern?: string;
 }
 export const AccessCreateRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     organizationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    principal: S.optional(S.String),
+    role_name: S.optional(S.String),
+    crn_pattern: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -126,6 +133,22 @@ export const AccessDeleteRoleBindingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessDeleteRoleBindingResponse",
 }) as any as S.Schema<AccessDeleteRoleBindingResponse>;
 
+/** Details of the user being invited */
+export interface AccessInvitedUserDetails {
+  /** UPN/Email of the user who is being invited */
+  invitedEmail?: string;
+  /** Auth type of the user */
+  auth_type?: string;
+}
+export const AccessInvitedUserDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invitedEmail: S.optional(S.String),
+    auth_type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AccessInvitedUserDetails",
+}) as any as S.Schema<AccessInvitedUserDetails>;
+
 export interface AccessInviteUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -133,14 +156,24 @@ export interface AccessInviteUserRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** Id of the organization */
+  organizationId?: string;
+  /** Email of the logged in user */
+  email?: string;
+  /** Upn of the logged in user */
+  upn?: string;
+  /** Details of the user who is being invited */
+  invitedUserDetails?: AccessInvitedUserDetails;
 }
 export const AccessInviteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     organizationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    organizationId: S.optional(S.String),
+    email: S.optional(S.String),
+    upn: S.optional(S.String),
+    invitedUserDetails: S.optional(AccessInvitedUserDetails),
   }).pipe(
     T.Http({
       method: "POST",
@@ -187,6 +220,15 @@ export const InvitationRecord = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvitationRecord",
 }) as any as S.Schema<InvitationRecord>;
 
+/** Search filters for the request */
+export type AccessListClustersRequestSearchFiltersMap = {
+  [key: string]: string | undefined;
+};
+export const AccessListClustersRequestSearchFiltersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccessListClustersRequestSearchFiltersMap>;
+
 export interface AccessListClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -194,14 +236,15 @@ export interface AccessListClustersRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** Search filters for the request */
+  searchFilters?: AccessListClustersRequestSearchFiltersMap;
 }
 export const AccessListClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     organizationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    searchFilters: S.optional(AccessListClustersRequestSearchFiltersMap),
   }).pipe(
     T.Http({
       method: "POST",
@@ -404,7 +447,8 @@ export const ClusterRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterRecord" }) as any as S.Schema<ClusterRecord>;
 
 /** List of clusters */
-export type AccessListClusterSuccessResponseDataList = ClusterRecord[];
+export type AccessListClusterSuccessResponseDataList =
+  ReadonlyArray<ClusterRecord>;
 export const AccessListClusterSuccessResponseDataList = /*@__PURE__*/ S.Array(
   ClusterRecord,
 ) as any as S.Schema<AccessListClusterSuccessResponseDataList>;
@@ -428,6 +472,16 @@ export const AccessListClusterSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessListClusterSuccessResponse",
 }) as any as S.Schema<AccessListClusterSuccessResponse>;
 
+/** Search filters for the request */
+export type AccessListEnvironmentsRequestSearchFiltersMap = {
+  [key: string]: string | undefined;
+};
+export const AccessListEnvironmentsRequestSearchFiltersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AccessListEnvironmentsRequestSearchFiltersMap>;
+
 export interface AccessListEnvironmentsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -435,14 +489,15 @@ export interface AccessListEnvironmentsRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** Search filters for the request */
+  searchFilters?: AccessListEnvironmentsRequestSearchFiltersMap;
 }
 export const AccessListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     organizationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    searchFilters: S.optional(AccessListEnvironmentsRequestSearchFiltersMap),
   }).pipe(
     T.Http({
       method: "POST",
@@ -478,7 +533,8 @@ export const EnvironmentRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentRecord>;
 
 /** Environment list data */
-export type AccessListEnvironmentsSuccessResponseDataList = EnvironmentRecord[];
+export type AccessListEnvironmentsSuccessResponseDataList =
+  ReadonlyArray<EnvironmentRecord>;
 export const AccessListEnvironmentsSuccessResponseDataList =
   /*@__PURE__*/ S.Array(
     EnvironmentRecord,
@@ -504,6 +560,16 @@ export const AccessListEnvironmentsSuccessResponse = /*@__PURE__*/ S.suspend(
   identifier: "AccessListEnvironmentsSuccessResponse",
 }) as any as S.Schema<AccessListEnvironmentsSuccessResponse>;
 
+/** Search filters for the request */
+export type AccessListInvitationsRequestSearchFiltersMap = {
+  [key: string]: string | undefined;
+};
+export const AccessListInvitationsRequestSearchFiltersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AccessListInvitationsRequestSearchFiltersMap>;
+
 export interface AccessListInvitationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -511,14 +577,15 @@ export interface AccessListInvitationsRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** Search filters for the request */
+  searchFilters?: AccessListInvitationsRequestSearchFiltersMap;
 }
 export const AccessListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     organizationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    searchFilters: S.optional(AccessListInvitationsRequestSearchFiltersMap),
   }).pipe(
     T.Http({
       method: "POST",
@@ -532,7 +599,8 @@ export const AccessListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessListInvitationsRequest>;
 
 /** Data of the invitations list */
-export type AccessListInvitationsSuccessResponseDataList = InvitationRecord[];
+export type AccessListInvitationsSuccessResponseDataList =
+  ReadonlyArray<InvitationRecord>;
 export const AccessListInvitationsSuccessResponseDataList =
   /*@__PURE__*/ S.Array(
     InvitationRecord,
@@ -558,6 +626,16 @@ export const AccessListInvitationsSuccessResponse = /*@__PURE__*/ S.suspend(
   identifier: "AccessListInvitationsSuccessResponse",
 }) as any as S.Schema<AccessListInvitationsSuccessResponse>;
 
+/** Search filters for the request */
+export type AccessListRoleBindingNameListRequestSearchFiltersMap = {
+  [key: string]: string | undefined;
+};
+export const AccessListRoleBindingNameListRequestSearchFiltersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AccessListRoleBindingNameListRequestSearchFiltersMap>;
+
 export interface AccessListRoleBindingNameListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -565,7 +643,8 @@ export interface AccessListRoleBindingNameListRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** Search filters for the request */
+  searchFilters?: AccessListRoleBindingNameListRequestSearchFiltersMap;
 }
 export const AccessListRoleBindingNameListRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -573,7 +652,9 @@ export const AccessListRoleBindingNameListRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       organizationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      searchFilters: S.optional(
+        AccessListRoleBindingNameListRequestSearchFiltersMap,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -587,7 +668,8 @@ export const AccessListRoleBindingNameListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccessListRoleBindingNameListRequest>;
 
 /** List of role binding names */
-export type AccessRoleBindingNameListSuccessResponseDataList = string[];
+export type AccessRoleBindingNameListSuccessResponseDataList =
+  ReadonlyArray<string>;
 export const AccessRoleBindingNameListSuccessResponseDataList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -613,6 +695,16 @@ export const AccessRoleBindingNameListSuccessResponse = /*@__PURE__*/ S.suspend(
   identifier: "AccessRoleBindingNameListSuccessResponse",
 }) as any as S.Schema<AccessRoleBindingNameListSuccessResponse>;
 
+/** Search filters for the request */
+export type AccessListRoleBindingsRequestSearchFiltersMap = {
+  [key: string]: string | undefined;
+};
+export const AccessListRoleBindingsRequestSearchFiltersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AccessListRoleBindingsRequestSearchFiltersMap>;
+
 export interface AccessListRoleBindingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -620,14 +712,15 @@ export interface AccessListRoleBindingsRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** Search filters for the request */
+  searchFilters?: AccessListRoleBindingsRequestSearchFiltersMap;
 }
 export const AccessListRoleBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     organizationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    searchFilters: S.optional(AccessListRoleBindingsRequestSearchFiltersMap),
   }).pipe(
     T.Http({
       method: "POST",
@@ -641,7 +734,8 @@ export const AccessListRoleBindingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessListRoleBindingsRequest>;
 
 /** List of role binding */
-export type AccessListRoleBindingsSuccessResponseDataList = RoleBindingRecord[];
+export type AccessListRoleBindingsSuccessResponseDataList =
+  ReadonlyArray<RoleBindingRecord>;
 export const AccessListRoleBindingsSuccessResponseDataList =
   /*@__PURE__*/ S.Array(
     RoleBindingRecord,
@@ -667,6 +761,16 @@ export const AccessListRoleBindingsSuccessResponse = /*@__PURE__*/ S.suspend(
   identifier: "AccessListRoleBindingsSuccessResponse",
 }) as any as S.Schema<AccessListRoleBindingsSuccessResponse>;
 
+/** Search filters for the request */
+export type AccessListServiceAccountsRequestSearchFiltersMap = {
+  [key: string]: string | undefined;
+};
+export const AccessListServiceAccountsRequestSearchFiltersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AccessListServiceAccountsRequestSearchFiltersMap>;
+
 export interface AccessListServiceAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -674,14 +778,15 @@ export interface AccessListServiceAccountsRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** Search filters for the request */
+  searchFilters?: AccessListServiceAccountsRequestSearchFiltersMap;
 }
 export const AccessListServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     organizationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    searchFilters: S.optional(AccessListServiceAccountsRequestSearchFiltersMap),
   }).pipe(
     T.Http({
       method: "POST",
@@ -721,7 +826,7 @@ export const ServiceAccountRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Data of the service accounts list */
 export type AccessListServiceAccountsSuccessResponseDataList =
-  ServiceAccountRecord[];
+  ReadonlyArray<ServiceAccountRecord>;
 export const AccessListServiceAccountsSuccessResponseDataList =
   /*@__PURE__*/ S.Array(
     ServiceAccountRecord,
@@ -747,6 +852,15 @@ export const AccessListServiceAccountsSuccessResponse = /*@__PURE__*/ S.suspend(
   identifier: "AccessListServiceAccountsSuccessResponse",
 }) as any as S.Schema<AccessListServiceAccountsSuccessResponse>;
 
+/** Search filters for the request */
+export type AccessListUsersRequestSearchFiltersMap = {
+  [key: string]: string | undefined;
+};
+export const AccessListUsersRequestSearchFiltersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccessListUsersRequestSearchFiltersMap>;
+
 export interface AccessListUsersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -754,14 +868,15 @@ export interface AccessListUsersRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** Search filters for the request */
+  searchFilters?: AccessListUsersRequestSearchFiltersMap;
 }
 export const AccessListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     organizationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    searchFilters: S.optional(AccessListUsersRequestSearchFiltersMap),
   }).pipe(
     T.Http({
       method: "POST",
@@ -801,7 +916,7 @@ export const UserRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserRecord" }) as any as S.Schema<UserRecord>;
 
 /** Data of the users list */
-export type AccessListUsersSuccessResponseDataList = UserRecord[];
+export type AccessListUsersSuccessResponseDataList = ReadonlyArray<UserRecord>;
 export const AccessListUsersSuccessResponseDataList = /*@__PURE__*/ S.Array(
   UserRecord,
 ) as any as S.Schema<AccessListUsersSuccessResponseDataList>;
@@ -824,83 +939,6 @@ export const AccessListUsersSuccessResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccessListUsersSuccessResponse",
 }) as any as S.Schema<AccessListUsersSuccessResponse>;
-
-export interface ClusterCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Organization resource name */
-  organizationName: string;
-  /** Confluent environment id */
-  environmentId: string;
-  /** Confluent kafka or schema registry cluster id */
-  clusterId: string;
-  body?: unknown;
-}
-export const ClusterCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    organizationName: S.String.pipe(T.Label()),
-    environmentId: S.String.pipe(T.Label()),
-    clusterId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
-      code: 200,
-      apiVersion: "2024-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "ClusterCreateOrUpdateRequest",
-}) as any as S.Schema<ClusterCreateOrUpdateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Metadata of the data record */
 export interface SCMetadataEntity {
@@ -928,7 +966,7 @@ export const SCMetadataEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SCMetadataEntity>;
 
 /** Stream Governance Package. Supported values are ESSENTIALS and ADVANCED */
-export type Package = "ESSENTIALS" | "ADVANCED" | (string & {});
+export type Package = "ESSENTIALS" | "ADVANCED";
 export const Package = /*@__PURE__*/ S.String;
 
 /** The environment or the network to which cluster belongs */
@@ -1040,6 +1078,85 @@ export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClusterProperties",
 }) as any as S.Schema<ClusterProperties>;
 
+export interface ClusterCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Organization resource name */
+  organizationName: string;
+  /** Confluent environment id */
+  environmentId: string;
+  /** Confluent kafka or schema registry cluster id */
+  clusterId: string;
+  /** Type of cluster */
+  kind?: string;
+  /** Cluster Properties */
+  properties?: ClusterProperties;
+}
+export const ClusterCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    organizationName: S.String.pipe(T.Label()),
+    environmentId: S.String.pipe(T.Label()),
+    clusterId: S.String.pipe(T.Label()),
+    kind: S.optional(S.String),
+    properties: S.optional(ClusterProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}",
+      code: 200,
+      apiVersion: "2024-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ClusterCreateOrUpdateRequest",
+}) as any as S.Schema<ClusterCreateOrUpdateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
 export interface ClusterCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1105,60 +1222,16 @@ export const ClusterDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClusterDeleteResponse",
 }) as any as S.Schema<ClusterDeleteResponse>;
 
-export interface ConnectorCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Organization resource name */
-  organizationName: string;
-  /** Confluent environment id */
-  environmentId: string;
-  /** Confluent kafka or schema registry cluster id */
-  clusterId: string;
-  /** Confluent connector name */
-  connectorName: string;
-  body?: unknown;
-}
-export const ConnectorCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    organizationName: S.String.pipe(T.Label()),
-    environmentId: S.String.pipe(T.Label()),
-    clusterId: S.String.pipe(T.Label()),
-    connectorName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
-      code: 200,
-      apiVersion: "2024-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorCreateOrUpdateRequest",
-}) as any as S.Schema<ConnectorCreateOrUpdateRequest>;
-
 /** Connector Type */
-export type ConnectorType = "SINK" | "SOURCE" | (string & {});
+export type ConnectorType = "SINK" | "SOURCE";
 export const ConnectorType = /*@__PURE__*/ S.String;
 
 /** Connector Class */
-export type ConnectorClass =
-  | "AZUREBLOBSOURCE"
-  | "AZUREBLOBSINK"
-  | (string & {});
+export type ConnectorClass = "AZUREBLOBSOURCE" | "AZUREBLOBSINK";
 export const ConnectorClass = /*@__PURE__*/ S.String;
 
 /** Connector Status */
-export type ConnectorStatus =
-  | "PROVISIONING"
-  | "RUNNING"
-  | "PAUSED"
-  | "FAILED"
-  | (string & {});
+export type ConnectorStatus = "PROVISIONING" | "RUNNING" | "PAUSED" | "FAILED";
 export const ConnectorStatus = /*@__PURE__*/ S.String;
 
 /** Connector Info Base properties */
@@ -1192,8 +1265,7 @@ export type ConnectorServiceType =
   | "AzureBlobStorageSourceConnector"
   | "AzureCosmosDBSinkConnector"
   | "AzureCosmosDBSourceConnector"
-  | "AzureSynapseAnalyticsSinkConnector"
-  | (string & {});
+  | "AzureSynapseAnalyticsSinkConnector";
 export const ConnectorServiceType = /*@__PURE__*/ S.String;
 
 /** The connector service type info */
@@ -1215,8 +1287,7 @@ export type PartnerConnectorType =
   | "KafkaAzureBlobStorageSink"
   | "KafkaAzureCosmosDBSource"
   | "KafkaAzureCosmosDBSink"
-  | "KafkaAzureSynapseAnalyticsSink"
-  | (string & {});
+  | "KafkaAzureSynapseAnalyticsSink";
 export const PartnerConnectorType = /*@__PURE__*/ S.String;
 
 /** The partner info base */
@@ -1250,6 +1321,43 @@ export const ConnectorResourceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectorResourceProperties",
 }) as any as S.Schema<ConnectorResourceProperties>;
+
+export interface ConnectorCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Organization resource name */
+  organizationName: string;
+  /** Confluent environment id */
+  environmentId: string;
+  /** Confluent kafka or schema registry cluster id */
+  clusterId: string;
+  /** Confluent connector name */
+  connectorName: string;
+  /** The properties of the Connector */
+  properties: ConnectorResourceProperties;
+}
+export const ConnectorCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    organizationName: S.String.pipe(T.Label()),
+    environmentId: S.String.pipe(T.Label()),
+    clusterId: S.String.pipe(T.Label()),
+    connectorName: S.String.pipe(T.Label()),
+    properties: ConnectorResourceProperties,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/connectors/{connectorName}",
+      code: 200,
+      apiVersion: "2024-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ConnectorCreateOrUpdateRequest",
+}) as any as S.Schema<ConnectorCreateOrUpdateRequest>;
 
 export interface ConnectorCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1437,7 +1545,8 @@ export const ConnectorResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorResource>;
 
 /** The ConnectorResource items on this page */
-export type ListConnectorsSuccessResponseValueList = ConnectorResource[];
+export type ListConnectorsSuccessResponseValueList =
+  ReadonlyArray<ConnectorResource>;
 export const ListConnectorsSuccessResponseValueList = /*@__PURE__*/ S.Array(
   ConnectorResource,
 ) as any as S.Schema<ListConnectorsSuccessResponseValueList>;
@@ -1457,36 +1566,6 @@ export const ListConnectorsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListConnectorsSuccessResponse",
 }) as any as S.Schema<ListConnectorsSuccessResponse>;
-
-export interface EnvironmentCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Organization resource name */
-  organizationName: string;
-  /** Confluent environment id */
-  environmentId: string;
-  body?: unknown;
-}
-export const EnvironmentCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    organizationName: S.String.pipe(T.Label()),
-    environmentId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}",
-      code: 200,
-      apiVersion: "2024-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "EnvironmentCreateOrUpdateRequest",
-}) as any as S.Schema<EnvironmentCreateOrUpdateRequest>;
 
 /** Stream governance configuration */
 export interface StreamGovernanceConfig {
@@ -1516,6 +1595,40 @@ export const EnvironmentProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnvironmentProperties",
 }) as any as S.Schema<EnvironmentProperties>;
+
+export interface EnvironmentCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Organization resource name */
+  organizationName: string;
+  /** Confluent environment id */
+  environmentId: string;
+  /** Type of environment */
+  kind?: string;
+  /** Environment properties */
+  properties?: EnvironmentProperties;
+}
+export const EnvironmentCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    organizationName: S.String.pipe(T.Label()),
+    environmentId: S.String.pipe(T.Label()),
+    kind: S.optional(S.String),
+    properties: S.optional(EnvironmentProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}",
+      code: 200,
+      apiVersion: "2024-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "EnvironmentCreateOrUpdateRequest",
+}) as any as S.Schema<EnvironmentCreateOrUpdateRequest>;
 
 export interface EnvironmentCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1579,15 +1692,50 @@ export const EnvironmentDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentDeleteResponse",
 }) as any as S.Schema<EnvironmentDeleteResponse>;
 
+/** Terms properties for Marketplace and Confluent. */
+export interface ConfluentAgreementProperties {
+  /** Publisher identifier string. */
+  publisher?: string;
+  /** Product identifier string. */
+  product?: string;
+  /** Plan identifier string. */
+  plan?: string;
+  /** Link to HTML with Microsoft and Publisher terms. */
+  licenseTextLink?: string;
+  /** Link to the privacy policy of the publisher. */
+  privacyPolicyLink?: string;
+  /** Date and time in UTC of when the terms were accepted. This is empty if Accepted is false. */
+  retrieveDatetime?: string;
+  /** Terms signature. */
+  signature?: string;
+  /** If any version of the terms have been accepted, otherwise false. */
+  accepted?: boolean;
+}
+export const ConfluentAgreementProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publisher: S.optional(S.String),
+    product: S.optional(S.String),
+    plan: S.optional(S.String),
+    licenseTextLink: S.optional(S.String),
+    privacyPolicyLink: S.optional(S.String),
+    retrieveDatetime: S.optional(S.String),
+    signature: S.optional(S.String),
+    accepted: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ConfluentAgreementProperties",
+}) as any as S.Schema<ConfluentAgreementProperties>;
+
 export interface MarketplaceAgreementsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body?: unknown;
+  /** Represents the properties of the resource. */
+  properties?: ConfluentAgreementProperties;
 }
 export const MarketplaceAgreementsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(ConfluentAgreementProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1605,8 +1753,7 @@ export type ConfluentAgreementResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfluentAgreementResourceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1615,8 +1762,7 @@ export type ConfluentAgreementResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfluentAgreementResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1652,40 +1798,6 @@ export const ConfluentAgreementResourceSystemData = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ConfluentAgreementResourceSystemData",
 }) as any as S.Schema<ConfluentAgreementResourceSystemData>;
-
-/** Terms properties for Marketplace and Confluent. */
-export interface ConfluentAgreementProperties {
-  /** Publisher identifier string. */
-  publisher?: string;
-  /** Product identifier string. */
-  product?: string;
-  /** Plan identifier string. */
-  plan?: string;
-  /** Link to HTML with Microsoft and Publisher terms. */
-  licenseTextLink?: string;
-  /** Link to the privacy policy of the publisher. */
-  privacyPolicyLink?: string;
-  /** Date and time in UTC of when the terms were accepted. This is empty if Accepted is false. */
-  retrieveDatetime?: string;
-  /** Terms signature. */
-  signature?: string;
-  /** If any version of the terms have been accepted, otherwise false. */
-  accepted?: boolean;
-}
-export const ConfluentAgreementProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publisher: S.optional(S.String),
-    product: S.optional(S.String),
-    plan: S.optional(S.String),
-    licenseTextLink: S.optional(S.String),
-    privacyPolicyLink: S.optional(S.String),
-    retrieveDatetime: S.optional(S.String),
-    signature: S.optional(S.String),
-    accepted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ConfluentAgreementProperties",
-}) as any as S.Schema<ConfluentAgreementProperties>;
 
 /** Agreement Terms definition */
 export interface ConfluentAgreementResource {
@@ -1733,7 +1845,7 @@ export const MarketplaceAgreementsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConfluentAgreementResource items on this page */
 export type ConfluentAgreementResourceListResponseValueList =
-  ConfluentAgreementResource[];
+  ReadonlyArray<ConfluentAgreementResource>;
 export const ConfluentAgreementResourceListResponseValueList =
   /*@__PURE__*/ S.Array(
     ConfluentAgreementResource,
@@ -1756,79 +1868,23 @@ export const ConfluentAgreementResourceListResponse = /*@__PURE__*/ S.suspend(
   identifier: "ConfluentAgreementResourceListResponse",
 }) as any as S.Schema<ConfluentAgreementResourceListResponse>;
 
-export interface OrganizationCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Organization resource name */
-  organizationName: string;
-  body?: unknown;
-}
-export const OrganizationCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    organizationName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
-      code: 200,
-      apiVersion: "2024-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "OrganizationCreateRequest",
-}) as any as S.Schema<OrganizationCreateRequest>;
-
 /** Resource tags. */
-export type OrganizationCreateResponseTagsMap = {
+export type OrganizationCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const OrganizationCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const OrganizationCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<OrganizationCreateResponseTagsMap>;
-
-/** Provision states for confluent RP */
-export type ProvisionState =
-  | "Accepted"
-  | "Creating"
-  | "Updating"
-  | "Deleting"
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Deleted"
-  | "NotSpecified"
-  | (string & {});
-export const ProvisionState = /*@__PURE__*/ S.String;
+) as any as S.Schema<OrganizationCreateRequestTagsMap>;
 
 /** Array of Private Offer Ids */
-export type OfferDetailPrivateOfferIdsList = string[];
-export const OfferDetailPrivateOfferIdsList = /*@__PURE__*/ S.Array(
+export type OfferDetailInputPrivateOfferIdsList = ReadonlyArray<string>;
+export const OfferDetailInputPrivateOfferIdsList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<OfferDetailPrivateOfferIdsList>;
-
-/** SaaS Offer Status for confluent RP */
-export type SaaSOfferStatus =
-  | "Started"
-  | "PendingFulfillmentStart"
-  | "InProgress"
-  | "Subscribed"
-  | "Suspended"
-  | "Reinstated"
-  | "Succeeded"
-  | "Failed"
-  | "Unsubscribed"
-  | "Updating"
-  | (string & {});
-export const SaaSOfferStatus = /*@__PURE__*/ S.String;
+) as any as S.Schema<OfferDetailInputPrivateOfferIdsList>;
 
 /** Confluent Offer detail */
-export interface OfferDetail {
+export interface OfferDetailInput {
   /** Publisher Id */
   publisherId: string;
   /** Offer Id */
@@ -1844,11 +1900,9 @@ export interface OfferDetail {
   /** Private Offer Id */
   privateOfferId?: string;
   /** Array of Private Offer Ids */
-  privateOfferIds?: OfferDetailPrivateOfferIdsList;
-  /** SaaS Offer Status */
-  status?: SaaSOfferStatus;
+  privateOfferIds?: OfferDetailInputPrivateOfferIdsList;
 }
-export const OfferDetail = /*@__PURE__*/ S.suspend(() =>
+export const OfferDetailInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherId: S.String,
     id: S.String,
@@ -1857,10 +1911,11 @@ export const OfferDetail = /*@__PURE__*/ S.suspend(() =>
     termUnit: S.String,
     termId: S.optional(S.String),
     privateOfferId: S.optional(S.String),
-    privateOfferIds: S.optional(OfferDetailPrivateOfferIdsList),
-    status: S.optional(SaaSOfferStatus),
+    privateOfferIds: S.optional(OfferDetailInputPrivateOfferIdsList),
   }),
-).annotate({ identifier: "OfferDetail" }) as any as S.Schema<OfferDetail>;
+).annotate({
+  identifier: "OfferDetailInput",
+}) as any as S.Schema<OfferDetailInput>;
 
 /** Subscriber detail */
 export interface UserDetail {
@@ -1897,6 +1952,136 @@ export const LinkOrganization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LinkOrganization",
 }) as any as S.Schema<LinkOrganization>;
+
+/** Organization resource property */
+export interface OrganizationResourcePropertiesInput {
+  /** Confluent offer detail */
+  offerDetail: OfferDetailInput;
+  /** Subscriber detail */
+  userDetail: UserDetail;
+  /** Link an existing Confluent organization */
+  linkOrganization?: LinkOrganization;
+}
+export const OrganizationResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    offerDetail: OfferDetailInput,
+    userDetail: UserDetail,
+    linkOrganization: S.optional(LinkOrganization),
+  }),
+).annotate({
+  identifier: "OrganizationResourcePropertiesInput",
+}) as any as S.Schema<OrganizationResourcePropertiesInput>;
+
+export interface OrganizationCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Organization resource name */
+  organizationName: string;
+  /** Resource tags. */
+  tags?: OrganizationCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Organization resource properties */
+  properties: OrganizationResourcePropertiesInput;
+}
+export const OrganizationCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    organizationName: S.String.pipe(T.Label()),
+    tags: S.optional(OrganizationCreateRequestTagsMap),
+    location: S.String,
+    properties: OrganizationResourcePropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
+      code: 200,
+      apiVersion: "2024-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "OrganizationCreateRequest",
+}) as any as S.Schema<OrganizationCreateRequest>;
+
+/** Resource tags. */
+export type OrganizationCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const OrganizationCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<OrganizationCreateResponseTagsMap>;
+
+/** Provision states for confluent RP */
+export type ProvisionState =
+  | "Accepted"
+  | "Creating"
+  | "Updating"
+  | "Deleting"
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Deleted"
+  | "NotSpecified";
+export const ProvisionState = /*@__PURE__*/ S.String;
+
+/** Array of Private Offer Ids */
+export type OfferDetailPrivateOfferIdsList = ReadonlyArray<string>;
+export const OfferDetailPrivateOfferIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OfferDetailPrivateOfferIdsList>;
+
+/** SaaS Offer Status for confluent RP */
+export type SaaSOfferStatus =
+  | "Started"
+  | "PendingFulfillmentStart"
+  | "InProgress"
+  | "Subscribed"
+  | "Suspended"
+  | "Reinstated"
+  | "Succeeded"
+  | "Failed"
+  | "Unsubscribed"
+  | "Updating";
+export const SaaSOfferStatus = /*@__PURE__*/ S.String;
+
+/** Confluent Offer detail */
+export interface OfferDetail {
+  /** Publisher Id */
+  publisherId: string;
+  /** Offer Id */
+  id: string;
+  /** Offer Plan Id */
+  planId: string;
+  /** Offer Plan Name */
+  planName: string;
+  /** Offer Plan Term unit */
+  termUnit: string;
+  /** Offer Plan Term Id */
+  termId?: string;
+  /** Private Offer Id */
+  privateOfferId?: string;
+  /** Array of Private Offer Ids */
+  privateOfferIds?: OfferDetailPrivateOfferIdsList;
+  /** SaaS Offer Status */
+  status?: SaaSOfferStatus;
+}
+export const OfferDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publisherId: S.String,
+    id: S.String,
+    planId: S.String,
+    planName: S.String,
+    termUnit: S.String,
+    termId: S.optional(S.String),
+    privateOfferId: S.optional(S.String),
+    privateOfferIds: S.optional(OfferDetailPrivateOfferIdsList),
+    status: S.optional(SaaSOfferStatus),
+  }),
+).annotate({ identifier: "OfferDetail" }) as any as S.Schema<OfferDetail>;
 
 /** Organization resource property */
 export interface OrganizationResourceProperties {
@@ -1970,7 +2155,10 @@ export interface OrganizationCreateAPIKeyRequest {
   environmentId: string;
   /** Confluent kafka or schema registry cluster id */
   clusterId: string;
-  body: unknown;
+  /** Name of the API Key */
+  name?: string;
+  /** Description of the API Key */
+  description?: string;
 }
 export const OrganizationCreateAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1979,7 +2167,8 @@ export const OrganizationCreateAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
     organizationName: S.String.pipe(T.Label()),
     environmentId: S.String.pipe(T.Label()),
     clusterId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2565,7 +2754,8 @@ export const OrganizationResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationResource>;
 
 /** The OrganizationResource items on this page */
-export type OrganizationResourceListResultValueList = OrganizationResource[];
+export type OrganizationResourceListResultValueList =
+  ReadonlyArray<OrganizationResource>;
 export const OrganizationResourceListResultValueList = /*@__PURE__*/ S.Array(
   OrganizationResource,
 ) as any as S.Schema<OrganizationResourceListResultValueList>;
@@ -2669,7 +2859,8 @@ export const SCClusterRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SCClusterRecord>;
 
 /** The SCClusterRecord items on this page */
-export type ListClustersSuccessResponseValueList = SCClusterRecord[];
+export type ListClustersSuccessResponseValueList =
+  ReadonlyArray<SCClusterRecord>;
 export const ListClustersSuccessResponseValueList = /*@__PURE__*/ S.Array(
   SCClusterRecord,
 ) as any as S.Schema<ListClustersSuccessResponseValueList>;
@@ -2750,7 +2941,8 @@ export const SCEnvironmentRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SCEnvironmentRecord>;
 
 /** The SCEnvironmentRecord items on this page */
-export type GetEnvironmentsResponseValueList = SCEnvironmentRecord[];
+export type GetEnvironmentsResponseValueList =
+  ReadonlyArray<SCEnvironmentRecord>;
 export const GetEnvironmentsResponseValueList = /*@__PURE__*/ S.Array(
   SCEnvironmentRecord,
 ) as any as S.Schema<GetEnvironmentsResponseValueList>;
@@ -2771,6 +2963,16 @@ export const GetEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEnvironmentsResponse",
 }) as any as S.Schema<GetEnvironmentsResponse>;
 
+/** Search filters for the request */
+export type OrganizationListRegionsRequestSearchFiltersMap = {
+  [key: string]: string | undefined;
+};
+export const OrganizationListRegionsRequestSearchFiltersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<OrganizationListRegionsRequestSearchFiltersMap>;
+
 export interface OrganizationListRegionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2778,14 +2980,15 @@ export interface OrganizationListRegionsRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** Search filters for the request */
+  searchFilters?: OrganizationListRegionsRequestSearchFiltersMap;
 }
 export const OrganizationListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     organizationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    searchFilters: S.optional(OrganizationListRegionsRequestSearchFiltersMap),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2798,7 +3001,7 @@ export const OrganizationListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationListRegionsRequest",
 }) as any as S.Schema<OrganizationListRegionsRequest>;
 
-export type RegionSpecEntityPackagesList = string[];
+export type RegionSpecEntityPackagesList = ReadonlyArray<string>;
 export const RegionSpecEntityPackagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RegionSpecEntityPackagesList>;
@@ -2858,7 +3061,7 @@ export const RegionRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionRecord" }) as any as S.Schema<RegionRecord>;
 
 /** List of regions supported by confluent */
-export type ListRegionsSuccessResponseDataList = RegionRecord[];
+export type ListRegionsSuccessResponseDataList = ReadonlyArray<RegionRecord>;
 export const ListRegionsSuccessResponseDataList = /*@__PURE__*/ S.Array(
   RegionRecord,
 ) as any as S.Schema<ListRegionsSuccessResponseDataList>;
@@ -2913,7 +3116,7 @@ export const OrganizationListSchemaRegistryClustersRequest =
 
 /** The SchemaRegistryClusterRecord items on this page */
 export type ListSchemaRegistryClustersResponseValueList =
-  SchemaRegistryClusterRecord[];
+  ReadonlyArray<SchemaRegistryClusterRecord>;
 export const ListSchemaRegistryClustersResponseValueList =
   /*@__PURE__*/ S.Array(
     SchemaRegistryClusterRecord,
@@ -2991,7 +3194,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResult>;
 
 /** List of Confluent operations supported by the Microsoft.Confluent provider. */
-export type OperationListResultValueList = OperationResult[];
+export type OperationListResultValueList = ReadonlyArray<OperationResult>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3012,6 +3215,15 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
+/** ARM resource tags */
+export type OrganizationUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const OrganizationUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<OrganizationUpdateRequestTagsMap>;
+
 export interface OrganizationUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3019,14 +3231,15 @@ export interface OrganizationUpdateRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body?: unknown;
+  /** ARM resource tags */
+  tags?: OrganizationUpdateRequestTagsMap;
 }
 export const OrganizationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     organizationName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(OrganizationUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3078,42 +3291,6 @@ export const OrganizationUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationUpdateResponse",
 }) as any as S.Schema<OrganizationUpdateResponse>;
 
-export interface TopicsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Organization resource name */
-  organizationName: string;
-  /** Confluent environment id */
-  environmentId: string;
-  /** Confluent kafka or schema registry cluster id */
-  clusterId: string;
-  /** Confluent kafka or schema registry topic name */
-  topicName: string;
-  body?: unknown;
-}
-export const TopicsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    organizationName: S.String.pipe(T.Label()),
-    environmentId: S.String.pipe(T.Label()),
-    clusterId: S.String.pipe(T.Label()),
-    topicName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics/{topicName}",
-      code: 200,
-      apiVersion: "2024-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "TopicsCreateRequest",
-}) as any as S.Schema<TopicsCreateRequest>;
-
 /** Metadata of the data record */
 export interface TopicMetadataEntity {
   /** Self lookup url */
@@ -3160,7 +3337,7 @@ export const TopicsInputConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopicsInputConfig>;
 
 /** Input Config Specification of the topic */
-export type TopicPropertiesInputConfigsList = TopicsInputConfig[];
+export type TopicPropertiesInputConfigsList = ReadonlyArray<TopicsInputConfig>;
 export const TopicPropertiesInputConfigsList = /*@__PURE__*/ S.Array(
   TopicsInputConfig,
 ) as any as S.Schema<TopicPropertiesInputConfigsList>;
@@ -3201,6 +3378,43 @@ export const TopicProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TopicProperties",
 }) as any as S.Schema<TopicProperties>;
+
+export interface TopicsCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Organization resource name */
+  organizationName: string;
+  /** Confluent environment id */
+  environmentId: string;
+  /** Confluent kafka or schema registry cluster id */
+  clusterId: string;
+  /** Confluent kafka or schema registry topic name */
+  topicName: string;
+  /** Topic Properties */
+  properties?: TopicProperties;
+}
+export const TopicsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    organizationName: S.String.pipe(T.Label()),
+    environmentId: S.String.pipe(T.Label()),
+    clusterId: S.String.pipe(T.Label()),
+    topicName: S.String.pipe(T.Label()),
+    properties: S.optional(TopicProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters/{clusterId}/topics/{topicName}",
+      code: 200,
+      apiVersion: "2024-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "TopicsCreateRequest",
+}) as any as S.Schema<TopicsCreateRequest>;
 
 export interface TopicsCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3386,7 +3600,7 @@ export const TopicRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopicRecord" }) as any as S.Schema<TopicRecord>;
 
 /** The TopicRecord items on this page */
-export type ListTopicsSuccessResponseValueList = TopicRecord[];
+export type ListTopicsSuccessResponseValueList = ReadonlyArray<TopicRecord>;
 export const ListTopicsSuccessResponseValueList = /*@__PURE__*/ S.Array(
   TopicRecord,
 ) as any as S.Schema<ListTopicsSuccessResponseValueList>;
@@ -3407,6 +3621,16 @@ export const ListTopicsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTopicsSuccessResponse",
 }) as any as S.Schema<ListTopicsSuccessResponse>;
 
+/** Resource tags. */
+export type ValidationsValidateOrganizationRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ValidationsValidateOrganizationRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ValidationsValidateOrganizationRequestTagsMap>;
+
 export interface ValidationsValidateOrganizationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3414,7 +3638,12 @@ export interface ValidationsValidateOrganizationRequest {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ValidationsValidateOrganizationRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Organization resource properties */
+  properties: OrganizationResourcePropertiesInput;
 }
 export const ValidationsValidateOrganizationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3422,7 +3651,9 @@ export const ValidationsValidateOrganizationRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       organizationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ValidationsValidateOrganizationRequestTagsMap),
+      location: S.String,
+      properties: OrganizationResourcePropertiesInput,
     }).pipe(
       T.Http({
         method: "POST",
@@ -3476,6 +3707,16 @@ export const ValidationsValidateOrganizationResponse = /*@__PURE__*/ S.suspend(
   identifier: "ValidationsValidateOrganizationResponse",
 }) as any as S.Schema<ValidationsValidateOrganizationResponse>;
 
+/** Resource tags. */
+export type ValidationsValidateOrganizationV2RequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ValidationsValidateOrganizationV2RequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ValidationsValidateOrganizationV2RequestTagsMap>;
+
 export interface ValidationsValidateOrganizationV2Request {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3483,7 +3724,12 @@ export interface ValidationsValidateOrganizationV2Request {
   resourceGroupName: string;
   /** Organization resource name */
   organizationName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ValidationsValidateOrganizationV2RequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Organization resource properties */
+  properties: OrganizationResourcePropertiesInput;
 }
 export const ValidationsValidateOrganizationV2Request = /*@__PURE__*/ S.suspend(
   () =>
@@ -3491,7 +3737,9 @@ export const ValidationsValidateOrganizationV2Request = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       organizationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ValidationsValidateOrganizationV2RequestTagsMap),
+      location: S.String,
+      properties: OrganizationResourcePropertiesInput,
     }).pipe(
       T.Http({
         method: "POST",

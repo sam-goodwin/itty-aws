@@ -676,16 +676,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.fileshares#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fileshares#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.fileshares#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.fileshares#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.fileshares#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.fileshares#PrivateEndpointConnectionsGet": {
@@ -1093,16 +1120,41 @@
             "smithy.api#documentation": "The name of the FileShareSnapshot"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.fileshares#FileShareSnapshotUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fileshares#FileShareSnapshotUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "com.azure.fileshares#FileShareSnapshotUpdatePropertiesMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "The metadata"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the FileShareSnapshot."
+      }
+    },
+    "com.azure.fileshares#FileShareSnapshotUpdatePropertiesMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The metadata"
       }
     },
     "com.azure.fileshares#FileShareSnapshotCreateOrUpdate": {
@@ -1159,16 +1211,47 @@
             "smithy.api#documentation": "The name of the FileShareSnapshot"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.fileshares#FileShareSnapshotPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fileshares#FileShareSnapshotPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "initiatorId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The initiator of the FileShareSnapshot. This is a user-defined value."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.fileshares#FileShareSnapshotPropertiesInputMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "The metadata"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "FileShareSnapshot properties"
+      }
+    },
+    "com.azure.fileshares#FileShareSnapshotPropertiesInputMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The metadata"
       }
     },
     "com.azure.fileshares#FileShareSnapshotGet": {
@@ -1947,16 +2030,77 @@
             "smithy.api#documentation": "The resource name of the file share, as seen by the administrator through Azure Resource Manager."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.fileshares#FileSharesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.fileshares#FileShareUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fileshares#FileShareUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "provisionedStorageGiB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The provisioned storage size of the share in GiB (1 GiB is 1024^3 bytes or 1073741824 bytes). A component of the file share's bill is the provisioned storage, regardless of the amount of used storage."
+          }
+        },
+        "provisionedIOPerSec": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The provisioned IO / sec of the share."
+          }
+        },
+        "provisionedThroughputMiBPerSec": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The provisioned throughput / sec of the share."
+          }
+        },
+        "nfsProtocolProperties": {
+          "target": "com.azure.fileshares#NfsProtocolProperties",
+          "traits": {
+            "smithy.api#documentation": "Protocol settings specific NFS."
+          }
+        },
+        "publicAccessProperties": {
+          "target": "com.azure.fileshares#PublicAccessProperties",
+          "traits": {
+            "smithy.api#documentation": "The set of properties for control public access."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.fileshares#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets allow or disallow public network access to azure managed file share"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the FileShare."
+      }
+    },
+    "com.azure.fileshares#FileSharesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.fileshares#FileSharesCreateOrUpdate": {
@@ -2068,16 +2212,108 @@
             "smithy.api#documentation": "The resource name of the file share, as seen by the administrator through Azure Resource Manager."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.fileshares#FileSharesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.fileshares#FileSharePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fileshares#FileSharePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "mountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the file share as seen by the end user when mounting the share, such as in a URI or UNC format in their operating system."
+          }
+        },
+        "mediaTier": {
+          "target": "com.azure.fileshares#MediaTier",
+          "traits": {
+            "smithy.api#documentation": "The storage media tier of the file share."
+          }
+        },
+        "redundancy": {
+          "target": "com.azure.fileshares#Redundancy",
+          "traits": {
+            "smithy.api#documentation": "The chosen redundancy level of the file share."
+          }
+        },
+        "protocol": {
+          "target": "com.azure.fileshares#Protocol",
+          "traits": {
+            "smithy.api#documentation": "The file sharing protocol for this file share."
+          }
+        },
+        "provisionedStorageGiB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The provisioned storage size of the share in GiB (1 GiB is 1024^3 bytes or 1073741824 bytes). A component of the file share's bill is the provisioned storage, regardless of the amount of used storage."
+          }
+        },
+        "provisionedIOPerSec": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The provisioned IO / sec of the share."
+          }
+        },
+        "provisionedThroughputMiBPerSec": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The provisioned throughput / sec of the share."
+          }
+        },
+        "nfsProtocolProperties": {
+          "target": "com.azure.fileshares#NfsProtocolProperties",
+          "traits": {
+            "smithy.api#documentation": "Protocol settings specific NFS."
+          }
+        },
+        "publicAccessProperties": {
+          "target": "com.azure.fileshares#PublicAccessProperties",
+          "traits": {
+            "smithy.api#documentation": "The set of properties for control public access."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.fileshares#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets allow or disallow public network access to azure managed file share"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "File share properties"
+      }
+    },
+    "com.azure.fileshares#FileSharesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.fileshares#FileSharesGet": {
@@ -2509,16 +2745,31 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.fileshares#FileShareProvisioningRecommendationInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the file share provisioning recommendation input.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fileshares#FileShareProvisioningRecommendationInput": {
+      "type": "structure",
+      "members": {
+        "provisionedStorageGiB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The desired provisioned storage size of the share in GiB. Will be use to calculate the values of remaining provisioning parameters.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "File share provisioning parameters recommendation API input structure."
       }
     },
     "com.azure.fileshares#FileShareGetLimits": {
@@ -2813,11 +3064,16 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },

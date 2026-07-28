@@ -105,8 +105,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type BackupFileSystemProtocolEnum =
   | "FILE_PROTOCOL_UNSPECIFIED"
   | "NFS_V3"
-  | "NFS_V4_1"
-  | (string & {});
+  | "NFS_V4_1";
 export const BackupFileSystemProtocolEnum = /*@__PURE__*/ S.String;
 
 export type BackupSourceInstanceTierEnum =
@@ -118,8 +117,7 @@ export type BackupSourceInstanceTierEnum =
   | "HIGH_SCALE_SSD"
   | "ENTERPRISE"
   | "ZONAL"
-  | "REGIONAL"
-  | (string & {});
+  | "REGIONAL";
 export const BackupSourceInstanceTierEnum = /*@__PURE__*/ S.String;
 
 export type BackupStateEnum =
@@ -128,8 +126,7 @@ export type BackupStateEnum =
   | "FINALIZING"
   | "READY"
   | "DELETING"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** A Filestore backup. */
@@ -219,7 +216,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -268,18 +265,17 @@ export type NetworkConfigConnectModeEnum =
   | "CONNECT_MODE_UNSPECIFIED"
   | "DIRECT_PEERING"
   | "PRIVATE_SERVICE_ACCESS"
-  | "PRIVATE_SERVICE_CONNECT"
-  | (string & {});
+  | "PRIVATE_SERVICE_CONNECT";
 export const NetworkConfigConnectModeEnum = /*@__PURE__*/ S.String;
 
 export type NetworkConfigModesItemEnum =
   | "ADDRESS_MODE_UNSPECIFIED"
   | "MODE_IPV4"
-  | "MODE_IPV6"
-  | (string & {});
+  | "MODE_IPV6";
 export const NetworkConfigModesItemEnum = /*@__PURE__*/ S.String;
 
-export type NetworkConfigModesItemEnumList = NetworkConfigModesItemEnum[];
+export type NetworkConfigModesItemEnumList =
+  ReadonlyArray<NetworkConfigModesItemEnum>;
 export const NetworkConfigModesItemEnumList = /*@__PURE__*/ S.Array(
   NetworkConfigModesItemEnum,
 ) as any as S.Schema<NetworkConfigModesItemEnumList>;
@@ -295,7 +291,7 @@ export const PscConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PscConfig" }) as any as S.Schema<PscConfig>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -326,7 +322,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type NetworkConfigList = NetworkConfig[];
+export type NetworkConfigList = ReadonlyArray<NetworkConfig>;
 export const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
@@ -340,8 +336,7 @@ export type InstanceTierEnum =
   | "HIGH_SCALE_SSD"
   | "ENTERPRISE"
   | "ZONAL"
-  | "REGIONAL"
-  | (string & {});
+  | "REGIONAL";
 export const InstanceTierEnum = /*@__PURE__*/ S.String;
 
 /** The enforced performance limits, calculated from the instance's performance configuration. */
@@ -414,18 +409,16 @@ export type InstanceStateEnum =
   | "SUSPENDING"
   | "RESUMING"
   | "REVERTING"
-  | "PROMOTING"
-  | (string & {});
+  | "PROMOTING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type InstanceSuspensionReasonsItemEnum =
   | "SUSPENSION_REASON_UNSPECIFIED"
-  | "KMS_KEY_ISSUE"
-  | (string & {});
+  | "KMS_KEY_ISSUE";
 export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type InstanceSuspensionReasonsItemEnumList =
-  InstanceSuspensionReasonsItemEnum[];
+  ReadonlyArray<InstanceSuspensionReasonsItemEnum>;
 export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
   InstanceSuspensionReasonsItemEnum,
 ) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
@@ -433,15 +426,13 @@ export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
 export type NfsExportOptionsAccessModeEnum =
   | "ACCESS_MODE_UNSPECIFIED"
   | "READ_ONLY"
-  | "READ_WRITE"
-  | (string & {});
+  | "READ_WRITE";
 export const NfsExportOptionsAccessModeEnum = /*@__PURE__*/ S.String;
 
 export type NfsExportOptionsSquashModeEnum =
   | "SQUASH_MODE_UNSPECIFIED"
   | "NO_ROOT_SQUASH"
-  | "ROOT_SQUASH"
-  | (string & {});
+  | "ROOT_SQUASH";
 export const NfsExportOptionsSquashModeEnum = /*@__PURE__*/ S.String;
 
 /** NFS export options specifications. */
@@ -472,7 +463,7 @@ export const NfsExportOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "NfsExportOptions",
 }) as any as S.Schema<NfsExportOptions>;
 
-export type NfsExportOptionsList = NfsExportOptions[];
+export type NfsExportOptionsList = ReadonlyArray<NfsExportOptions>;
 export const NfsExportOptionsList = /*@__PURE__*/ S.Array(
   NfsExportOptions,
 ) as any as S.Schema<NfsExportOptionsList>;
@@ -502,7 +493,7 @@ export const FileShareConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileShareConfig",
 }) as any as S.Schema<FileShareConfig>;
 
-export type FileShareConfigList = FileShareConfig[];
+export type FileShareConfigList = ReadonlyArray<FileShareConfig>;
 export const FileShareConfigList = /*@__PURE__*/ S.Array(
   FileShareConfig,
 ) as any as S.Schema<FileShareConfigList>;
@@ -510,15 +501,10 @@ export const FileShareConfigList = /*@__PURE__*/ S.Array(
 export type InstanceProtocolEnum =
   | "FILE_PROTOCOL_UNSPECIFIED"
   | "NFS_V3"
-  | "NFS_V4_1"
-  | (string & {});
+  | "NFS_V4_1";
 export const InstanceProtocolEnum = /*@__PURE__*/ S.String;
 
-export type ReplicationRoleEnum =
-  | "ROLE_UNSPECIFIED"
-  | "ACTIVE"
-  | "STANDBY"
-  | (string & {});
+export type ReplicationRoleEnum = "ROLE_UNSPECIFIED" | "ACTIVE" | "STANDBY";
 export const ReplicationRoleEnum = /*@__PURE__*/ S.String;
 
 export type ReplicaConfigStateEnum =
@@ -530,8 +516,7 @@ export type ReplicaConfigStateEnum =
   | "PROMOTING"
   | "PAUSING"
   | "PAUSED"
-  | "RESUMING"
-  | (string & {});
+  | "RESUMING";
 export const ReplicaConfigStateEnum = /*@__PURE__*/ S.String;
 
 export type ReplicaConfigStateReasonsItemEnum =
@@ -539,12 +524,11 @@ export type ReplicaConfigStateReasonsItemEnum =
   | "PEER_INSTANCE_UNREACHABLE"
   | "REMOVE_FAILED"
   | "PAUSE_FAILED"
-  | "RESUME_FAILED"
-  | (string & {});
+  | "RESUME_FAILED";
 export const ReplicaConfigStateReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type ReplicaConfigStateReasonsItemEnumList =
-  ReplicaConfigStateReasonsItemEnum[];
+  ReadonlyArray<ReplicaConfigStateReasonsItemEnum>;
 export const ReplicaConfigStateReasonsItemEnumList = /*@__PURE__*/ S.Array(
   ReplicaConfigStateReasonsItemEnum,
 ) as any as S.Schema<ReplicaConfigStateReasonsItemEnumList>;
@@ -572,7 +556,7 @@ export const ReplicaConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReplicaConfig" }) as any as S.Schema<ReplicaConfig>;
 
-export type ReplicaConfigList = ReplicaConfig[];
+export type ReplicaConfigList = ReadonlyArray<ReplicaConfig>;
 export const ReplicaConfigList = /*@__PURE__*/ S.Array(
   ReplicaConfig,
 ) as any as S.Schema<ReplicaConfigList>;
@@ -744,8 +728,7 @@ export type SnapshotStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "READY"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const SnapshotStateEnum = /*@__PURE__*/ S.String;
 
 /** A Filestore snapshot. */
@@ -1027,7 +1010,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1078,7 +1061,7 @@ export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsBackupsRequest",
 }) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
 
-export type BackupList = Backup[];
+export type BackupList = ReadonlyArray<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -1133,7 +1116,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -1191,7 +1174,7 @@ export const ListProjectsLocationsInstancesSnapshotsRequest =
     identifier: "ListProjectsLocationsInstancesSnapshotsRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesSnapshotsRequest>;
 
-export type SnapshotList = Snapshot[];
+export type SnapshotList = ReadonlyArray<Snapshot>;
 export const SnapshotList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotList>;
@@ -1246,7 +1229,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

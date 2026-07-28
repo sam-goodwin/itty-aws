@@ -305,12 +305,7 @@ export const ImportStatistics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportStatistics",
 }) as any as S.Schema<ImportStatistics>;
-export type ImportStatus =
-  | "IN_PROGRESS"
-  | "CANCELLED"
-  | "COMPLETED"
-  | "FAILED"
-  | (string & {});
+export type ImportStatus = "IN_PROGRESS" | "CANCELLED" | "COMPLETED" | "FAILED";
 export const ImportStatus = /*@__PURE__*/ S.String;
 
 export interface CancelImportTaskResponse {
@@ -384,12 +379,7 @@ export const CreateDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDeliveryRequest",
 }) as any as S.Schema<CreateDeliveryRequest>;
 export type DeliveryId = string;
-export type DeliveryDestinationType =
-  | "S3"
-  | "CWL"
-  | "FH"
-  | "XRAY"
-  | (string & {});
+export type DeliveryDestinationType = "S3" | "CWL" | "FH" | "XRAY";
 export const DeliveryDestinationType = /*@__PURE__*/ S.String;
 
 export interface Delivery {
@@ -527,8 +517,7 @@ export type EvaluationFrequency =
   | "TEN_MIN"
   | "FIFTEEN_MIN"
   | "THIRTY_MIN"
-  | "ONE_HOUR"
-  | (string & {});
+  | "ONE_HOUR";
 export const EvaluationFrequency = /*@__PURE__*/ S.String;
 
 export type FilterPattern = string;
@@ -575,11 +564,7 @@ export const CreateLogAnomalyDetectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLogAnomalyDetectorResponse",
 }) as any as S.Schema<CreateLogAnomalyDetectorResponse>;
-export type LogGroupClass =
-  | "STANDARD"
-  | "INFREQUENT_ACCESS"
-  | "DELIVERY"
-  | (string & {});
+export type LogGroupClass = "STANDARD" | "INFREQUENT_ACCESS" | "DELIVERY";
 export const LogGroupClass = /*@__PURE__*/ S.String;
 
 export type DeletionProtectionEnabled = boolean;
@@ -687,7 +672,7 @@ export const CreateLookupTableResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLookupTableResponse>;
 export type ScheduledQueryName = string;
 export type ScheduledQueryDescription = string;
-export type QueryLanguage = "CWLI" | "SQL" | "PPL" | (string & {});
+export type QueryLanguage = "CWLI" | "SQL" | "PPL";
 export const QueryLanguage = /*@__PURE__*/ S.String;
 
 export type QueryString = string;
@@ -726,7 +711,7 @@ export const DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DestinationConfiguration",
 }) as any as S.Schema<DestinationConfiguration>;
-export type ScheduledQueryState = "ENABLED" | "DISABLED" | (string & {});
+export type ScheduledQueryState = "ENABLED" | "DISABLED";
 export const ScheduledQueryState = /*@__PURE__*/ S.String;
 
 export interface CreateScheduledQueryRequest {
@@ -795,8 +780,7 @@ export type PolicyType =
   | "SUBSCRIPTION_FILTER_POLICY"
   | "FIELD_INDEX_POLICY"
   | "TRANSFORMER_POLICY"
-  | "METRIC_EXTRACTION_POLICY"
-  | (string & {});
+  | "METRIC_EXTRACTION_POLICY";
 export const PolicyType = /*@__PURE__*/ S.String;
 
 export interface DeleteAccountPolicyRequest {
@@ -1361,7 +1345,7 @@ export const DescribeAccountPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAccountPoliciesRequest",
 }) as any as S.Schema<DescribeAccountPoliciesRequest>;
 export type AccountPolicyDocument = string;
-export type Scope = "ALL" | (string & {});
+export type Scope = "ALL";
 export const Scope = /*@__PURE__*/ S.String;
 
 export type SelectionCriteria = string;
@@ -1466,13 +1450,7 @@ export const RecordField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordField" }) as any as S.Schema<RecordField>;
 export type AllowedFields = RecordField[];
 export const AllowedFields = /*@__PURE__*/ S.Array(RecordField);
-export type OutputFormat =
-  | "json"
-  | "plain"
-  | "w3c"
-  | "raw"
-  | "parquet"
-  | (string & {});
+export type OutputFormat = "json" | "plain" | "w3c" | "raw" | "parquet";
 export const OutputFormat = /*@__PURE__*/ S.String;
 
 export type OutputFormats = OutputFormat[];
@@ -1486,8 +1464,7 @@ export type DeliverySourceConfigurationSchemaValueType =
   | "boolean"
   | "int"
   | "double"
-  | "long"
-  | (string & {});
+  | "long";
 export const DeliverySourceConfigurationSchemaValueType =
   /*@__PURE__*/ S.String;
 
@@ -1720,10 +1697,10 @@ export const DeliverySourceConfiguration = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type DeliverySourceStatus = "ACTIVE" | "INACTIVE" | (string & {});
+export type DeliverySourceStatus = "ACTIVE" | "INACTIVE";
 export const DeliverySourceStatus = /*@__PURE__*/ S.String;
 
-export type DeliverySourceStatusReason = "RESOURCE_DELETED" | (string & {});
+export type DeliverySourceStatusReason = "RESOURCE_DELETED";
 export const DeliverySourceStatusReason = /*@__PURE__*/ S.String;
 
 export interface DeliverySource {
@@ -1828,8 +1805,7 @@ export type ExportTaskStatusCode =
   | "FAILED"
   | "PENDING"
   | "PENDING_CANCEL"
-  | "RUNNING"
-  | (string & {});
+  | "RUNNING";
 export const ExportTaskStatusCode = /*@__PURE__*/ S.String;
 
 export interface DescribeExportTasksRequest {
@@ -1948,7 +1924,7 @@ export const DescribeFieldIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeFieldIndexesRequest",
 }) as any as S.Schema<DescribeFieldIndexesRequest>;
 export type FieldIndexName = string;
-export type IndexType = "FACET" | "FIELD_INDEX" | (string & {});
+export type IndexType = "FACET" | "FIELD_INDEX";
 export const IndexType = /*@__PURE__*/ S.String;
 
 export interface FieldIndex {
@@ -2136,7 +2112,7 @@ export const DescribeIndexPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeIndexPoliciesRequest",
 }) as any as S.Schema<DescribeIndexPoliciesRequest>;
 export type PolicyDocument = string;
-export type IndexSource = "ACCOUNT" | "LOG_GROUP" | (string & {});
+export type IndexSource = "ACCOUNT" | "LOG_GROUP";
 export const IndexSource = /*@__PURE__*/ S.String;
 
 export interface IndexPolicy {
@@ -2215,11 +2191,10 @@ export type DataProtectionStatus =
   | "ACTIVATED"
   | "DELETED"
   | "ARCHIVED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const DataProtectionStatus = /*@__PURE__*/ S.String;
 
-export type InheritedProperty = "ACCOUNT_DATA_PROTECTION" | (string & {});
+export type InheritedProperty = "ACCOUNT_DATA_PROTECTION";
 export const InheritedProperty = /*@__PURE__*/ S.String;
 
 export type InheritedProperties = InheritedProperty[];
@@ -2271,7 +2246,7 @@ export const DescribeLogGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLogGroupsResponse",
 }) as any as S.Schema<DescribeLogGroupsResponse>;
-export type OrderBy = "LogStreamName" | "LastEventTime" | (string & {});
+export type OrderBy = "LogStreamName" | "LastEventTime";
 export const OrderBy = /*@__PURE__*/ S.String;
 
 export type Descending = boolean;
@@ -2476,8 +2451,7 @@ export type StandardUnit =
   | "Gigabits/Second"
   | "Terabits/Second"
   | "Count/Second"
-  | "None"
-  | (string & {});
+  | "None";
 export const StandardUnit = /*@__PURE__*/ S.String;
 
 export interface MetricTransformation {
@@ -2551,8 +2525,7 @@ export type QueryStatus =
   | "Failed"
   | "Cancelled"
   | "Timeout"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const QueryStatus = /*@__PURE__*/ S.String;
 
 export type DescribeQueriesMaxResults = number;
@@ -2709,7 +2682,7 @@ export const DescribeQueryDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeQueryDefinitionsResponse",
 }) as any as S.Schema<DescribeQueryDefinitionsResponse>;
-export type PolicyScope = "ACCOUNT" | "RESOURCE" | (string & {});
+export type PolicyScope = "ACCOUNT" | "RESOURCE";
 export const PolicyScope = /*@__PURE__*/ S.String;
 
 export interface DescribeResourcePoliciesRequest {
@@ -2797,7 +2770,7 @@ export const DescribeSubscriptionFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeSubscriptionFiltersRequest",
 }) as any as S.Schema<DescribeSubscriptionFiltersRequest>;
 export type DestinationArn = string;
-export type Distribution = "Random" | "ByLogStream" | (string & {});
+export type Distribution = "Random" | "ByLogStream";
 export const Distribution = /*@__PURE__*/ S.String;
 
 export interface SubscriptionFilter {
@@ -3159,22 +3132,14 @@ export const GetIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIntegrationRequest",
 }) as any as S.Schema<GetIntegrationRequest>;
-export type IntegrationType = "OPENSEARCH" | (string & {});
+export type IntegrationType = "OPENSEARCH";
 export const IntegrationType = /*@__PURE__*/ S.String;
 
-export type IntegrationStatus =
-  | "PROVISIONING"
-  | "ACTIVE"
-  | "FAILED"
-  | (string & {});
+export type IntegrationStatus = "PROVISIONING" | "ACTIVE" | "FAILED";
 export const IntegrationStatus = /*@__PURE__*/ S.String;
 
 export type OpenSearchDataSourceName = string;
-export type OpenSearchResourceStatusType =
-  | "ACTIVE"
-  | "NOT_FOUND"
-  | "ERROR"
-  | (string & {});
+export type OpenSearchResourceStatusType = "ACTIVE" | "NOT_FOUND" | "ERROR";
 export const OpenSearchResourceStatusType = /*@__PURE__*/ S.String;
 
 export type IntegrationStatusMessage = string;
@@ -3367,8 +3332,7 @@ export type AnomalyDetectorStatus =
   | "ANALYZING"
   | "FAILED"
   | "DELETED"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const AnomalyDetectorStatus = /*@__PURE__*/ S.String;
 
 export type EpochMillis = number;
@@ -3798,7 +3762,7 @@ export const GetScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetScheduledQueryRequest",
 }) as any as S.Schema<GetScheduledQueryRequest>;
-export type ScheduleType = "CUSTOMER_MANAGED" | "AWS_MANAGED" | (string & {});
+export type ScheduleType = "CUSTOMER_MANAGED" | "AWS_MANAGED";
 export const ScheduleType = /*@__PURE__*/ S.String;
 
 export type ExecutionStatus =
@@ -3806,8 +3770,7 @@ export type ExecutionStatus =
   | "InvalidQuery"
   | "Complete"
   | "Failed"
-  | "Timeout"
-  | (string & {});
+  | "Timeout";
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface GetScheduledQueryResponse {
@@ -3891,15 +3854,14 @@ export const GetScheduledQueryHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetScheduledQueryHistoryRequest",
 }) as any as S.Schema<GetScheduledQueryHistoryRequest>;
-export type ScheduledQueryDestinationType = "S3" | (string & {});
+export type ScheduledQueryDestinationType = "S3";
 export const ScheduledQueryDestinationType = /*@__PURE__*/ S.String;
 
 export type ActionStatus =
   | "IN_PROGRESS"
   | "CLIENT_ERROR"
   | "FAILED"
-  | "COMPLETE"
-  | (string & {});
+  | "COMPLETE";
 export const ActionStatus = /*@__PURE__*/ S.String;
 
 export interface ScheduledQueryDestination {
@@ -4094,7 +4056,7 @@ export const Grok = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Grok" }) as any as S.Schema<Grok>;
 export type ValueKey = string;
 export type Flatten = boolean;
-export type FlattenedElement = "first" | "last" | (string & {});
+export type FlattenedElement = "first" | "last";
 export const FlattenedElement = /*@__PURE__*/ S.String;
 
 export interface ListToMap {
@@ -4195,11 +4157,10 @@ export type EventSource =
   | "Route53Resolver"
   | "VPCFlow"
   | "EKSAudit"
-  | "AWSWAF"
-  | (string & {});
+  | "AWSWAF";
 export const EventSource = /*@__PURE__*/ S.String;
 
-export type OCSFVersion = "V1.1" | "V1.5" | (string & {});
+export type OCSFVersion = "V1.1" | "V1.5";
 export const OCSFVersion = /*@__PURE__*/ S.String;
 
 export type MappingVersion = string;
@@ -4306,7 +4267,7 @@ export interface TrimString {
 export const TrimString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ withKeys: TrimStringWithKeys }),
 ).annotate({ identifier: "TrimString" }) as any as S.Schema<TrimString>;
-export type Type = "boolean" | "integer" | "double" | "string" | (string & {});
+export type Type = "boolean" | "integer" | "double" | "string";
 export const Type = /*@__PURE__*/ S.String;
 
 export interface TypeConverterEntry {
@@ -4420,8 +4381,7 @@ export type DataSourceFilters = DataSourceFilter[];
 export const DataSourceFilters = /*@__PURE__*/ S.Array(DataSourceFilter);
 export type ListAggregateLogGroupSummariesGroupBy =
   | "DATA_SOURCE_NAME_TYPE_AND_FORMAT"
-  | "DATA_SOURCE_NAME_AND_TYPE"
-  | (string & {});
+  | "DATA_SOURCE_NAME_AND_TYPE";
 export const ListAggregateLogGroupSummariesGroupBy = /*@__PURE__*/ S.String;
 
 export type ListLogGroupsRequestLimit = number;
@@ -4503,7 +4463,7 @@ export const ListAggregateLogGroupSummariesResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListAggregateLogGroupSummariesResponse",
 }) as any as S.Schema<ListAggregateLogGroupSummariesResponse>;
-export type SuppressionState = "SUPPRESSED" | "UNSUPPRESSED" | (string & {});
+export type SuppressionState = "SUPPRESSED" | "UNSUPPRESSED";
 export const SuppressionState = /*@__PURE__*/ S.String;
 
 export type ListAnomaliesLimit = number;
@@ -4539,7 +4499,7 @@ export type PatternString = string;
 export type PatternRegex = string;
 export type Priority = string;
 export type Description = string;
-export type State = "Active" | "Suppressed" | "Baseline" | (string & {});
+export type State = "Active" | "Suppressed" | "Baseline";
 export const State = /*@__PURE__*/ S.String;
 
 export type Count = number;
@@ -4980,8 +4940,7 @@ export type S3TableIntegrationSourceStatus =
   | "ACTIVE"
   | "UNHEALTHY"
   | "FAILED"
-  | "DATA_SOURCE_DELETE_IN_PROGRESS"
-  | (string & {});
+  | "DATA_SOURCE_DELETE_IN_PROGRESS";
 export const S3TableIntegrationSourceStatus = /*@__PURE__*/ S.String;
 
 export type S3TableIntegrationSourceStatusReason = string;
@@ -5049,7 +5008,7 @@ export const ListSyslogConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSyslogConfigurationsRequest",
 }) as any as S.Schema<ListSyslogConfigurationsRequest>;
-export type SyslogSourceType = "VPCE" | (string & {});
+export type SyslogSourceType = "VPCE";
 export const SyslogSourceType = /*@__PURE__*/ S.String;
 
 export interface SyslogConfiguration {
@@ -5574,8 +5533,7 @@ export type EntityRejectionErrorType =
   | "InvalidAttributes"
   | "EntitySizeTooLarge"
   | "UnsupportedLogGroupType"
-  | "MissingRequiredFields"
-  | (string & {});
+  | "MissingRequiredFields";
 export const EntityRejectionErrorType = /*@__PURE__*/ S.String;
 
 export interface RejectedEntityInfo {
@@ -6298,10 +6256,10 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export type SuppressionType = "LIMITED" | "INFINITE" | (string & {});
+export type SuppressionType = "LIMITED" | "INFINITE";
 export const SuppressionType = /*@__PURE__*/ S.String;
 
-export type SuppressionUnit = "SECONDS" | "MINUTES" | "HOURS" | (string & {});
+export type SuppressionUnit = "SECONDS" | "MINUTES" | "HOURS";
 export const SuppressionUnit = /*@__PURE__*/ S.String;
 
 export interface SuppressionPeriod {

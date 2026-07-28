@@ -138,7 +138,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.dashboards#UserBasic"
+          "target": "com.posthog.dashboards#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "last_accessed_at": {
           "target": "smithy.api#String",
@@ -172,16 +175,16 @@
           "target": "com.posthog.dashboards#DashboardBasicTagsList"
         },
         "restriction_level": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#RestrictionLevelEnum",
           "traits": {
             "smithy.api#documentation": "Controls who can edit the dashboard.\n\n* `21` - Everyone in the project can edit\n* `37` - Only those invited to this dashboard can edit"
           }
         },
         "effective_restriction_level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.dashboards#EffectivePrivilegeLevelEnum"
         },
         "effective_privilege_level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.dashboards#EffectivePrivilegeLevelEnum"
         },
         "user_access_level": {
           "target": "smithy.api#String",
@@ -388,6 +391,44 @@
       },
       "traits": {}
     },
+    "com.posthog.dashboards#RestrictionLevelEnum": {
+      "type": "intEnum",
+      "members": {
+        "_21": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 21
+          }
+        },
+        "_37": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 37
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `21` - Everyone in the project can edit\n* `37` - Only those invited to this dashboard can edit"
+      }
+    },
+    "com.posthog.dashboards#EffectivePrivilegeLevelEnum": {
+      "type": "intEnum",
+      "members": {
+        "_21": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 21
+          }
+        },
+        "_37": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 37
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.dashboards#SearchMatchTypeEnum": {
       "type": "enum",
       "members": {
@@ -458,49 +499,9 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsCreateRequestFiltersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.dashboards#DashboardsCreateRequestVariablesMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.dashboards#DashboardsCreateRequestTagsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.dashboards#DashboardsCreateRequestPersistedFiltersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.dashboards#DashboardsCreateRequestPersistedVariablesMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
         "target": "smithy.api#Document"
       },
       "traits": {}
@@ -513,23 +514,6 @@
       "traits": {
         "smithy.api#documentation": "List of quick filter IDs associated with this dashboard"
       }
-    },
-    "com.posthog.dashboards#DashboardsCreateRequestTilesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.dashboards#DashboardsCreateRequestTilesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.dashboards#DashboardsCreateRequestTilesItemMap"
-      },
-      "traits": {}
     },
     "com.posthog.dashboards#DashboardsCreateRequest": {
       "type": "structure",
@@ -555,9 +539,6 @@
             "smithy.api#documentation": "Opt in to receiving the deprecated `dashboards` field in insight payloads. Once opt-in enforcement is enabled, API-token callers stop receiving it by default; use `dashboard_tiles` instead."
           }
         },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -570,48 +551,14 @@
         "pinned": {
           "target": "smithy.api#Boolean"
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.dashboards#UserBasic"
-        },
         "last_accessed_at": {
           "target": "smithy.api#String",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
-        "last_viewed_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "folder": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Path of the project-tree folder this dashboard is filed under in the file system, e.g. 'Unfiled/Dashboards'. An empty string means the project root; null means the dashboard has no file system entry. The dashboard's own name is not part of the path.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_shared": {
-          "target": "smithy.api#Boolean"
-        },
         "deleted": {
           "target": "smithy.api#Boolean"
-        },
-        "creation_mode": {
-          "target": "com.posthog.dashboards#CreationModeEnum"
-        },
-        "filters": {
-          "target": "com.posthog.dashboards#DashboardsCreateRequestFiltersMap"
-        },
-        "variables": {
-          "target": "com.posthog.dashboards#DashboardsCreateRequestVariablesMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "breakdown_colors": {
           "target": "smithy.api#Document",
@@ -630,23 +577,7 @@
           "target": "com.posthog.dashboards#DashboardsCreateRequestTagsList"
         },
         "restriction_level": {
-          "target": "smithy.api#Double"
-        },
-        "effective_restriction_level": {
-          "target": "smithy.api#Double"
-        },
-        "effective_privilege_level": {
-          "target": "smithy.api#Double"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "access_control_version": {
-          "target": "smithy.api#String"
+          "target": "com.posthog.dashboards#RestrictionLevelEnum"
         },
         "last_refresh": {
           "target": "smithy.api#String",
@@ -654,31 +585,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "persisted_filters": {
-          "target": "com.posthog.dashboards#DashboardsCreateRequestPersistedFiltersMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "persisted_variables": {
-          "target": "com.posthog.dashboards#DashboardsCreateRequestPersistedVariablesMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team_id": {
-          "target": "smithy.api#Integer"
-        },
         "quick_filter_ids": {
           "target": "com.posthog.dashboards#DashboardsCreateRequestQuickFilterIdsList",
           "traits": {
             "smithy.api#documentation": "List of quick filter IDs associated with this dashboard",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "tiles": {
-          "target": "com.posthog.dashboards#DashboardsCreateRequestTilesList",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -709,7 +619,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#Dashboard": {
+    "com.posthog.dashboards#DashboardOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -731,7 +641,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.dashboards#UserBasic"
+          "target": "com.posthog.dashboards#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "last_accessed_at": {
           "target": "smithy.api#String",
@@ -762,10 +675,10 @@
           "target": "com.posthog.dashboards#CreationModeEnum"
         },
         "filters": {
-          "target": "com.posthog.dashboards#DashboardFiltersMap"
+          "target": "com.posthog.dashboards#DashboardOutputFiltersMap"
         },
         "variables": {
-          "target": "com.posthog.dashboards#DashboardVariablesMap",
+          "target": "com.posthog.dashboards#DashboardOutputVariablesMap",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -784,16 +697,16 @@
           }
         },
         "tags": {
-          "target": "com.posthog.dashboards#DashboardTagsList"
+          "target": "com.posthog.dashboards#DashboardOutputTagsList"
         },
         "restriction_level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.dashboards#RestrictionLevelEnum"
         },
         "effective_restriction_level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.dashboards#EffectivePrivilegeLevelEnum"
         },
         "effective_privilege_level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.dashboards#EffectivePrivilegeLevelEnum"
         },
         "user_access_level": {
           "target": "smithy.api#String",
@@ -812,13 +725,13 @@
           }
         },
         "persisted_filters": {
-          "target": "com.posthog.dashboards#DashboardPersistedFiltersMap",
+          "target": "com.posthog.dashboards#DashboardOutputPersistedFiltersMap",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
         "persisted_variables": {
-          "target": "com.posthog.dashboards#DashboardPersistedVariablesMap",
+          "target": "com.posthog.dashboards#DashboardOutputPersistedVariablesMap",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -827,46 +740,24 @@
           "target": "smithy.api#Integer"
         },
         "quick_filter_ids": {
-          "target": "com.posthog.dashboards#DashboardQuickFilterIdsList",
+          "target": "com.posthog.dashboards#DashboardOutputQuickFilterIdsList",
           "traits": {
             "smithy.api#documentation": "List of quick filter IDs associated with this dashboard",
             "com.distilled.openapi#nullable": {}
           }
         },
         "tiles": {
-          "target": "com.posthog.dashboards#DashboardTilesList",
+          "target": "com.posthog.dashboards#DashboardOutputTilesList",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "use_template": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Template key to create the dashboard from a predefined template."
-          }
-        },
-        "use_dashboard": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "ID of an existing dashboard to duplicate.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "delete_insights": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "When deleting, also delete insights that are only on this dashboard."
-          }
-        },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
         "smithy.api#documentation": "Serializer mixin that handles tags for objects."
       }
     },
-    "com.posthog.dashboards#DashboardFiltersMap": {
+    "com.posthog.dashboards#DashboardOutputFiltersMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -876,7 +767,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardVariablesMap": {
+    "com.posthog.dashboards#DashboardOutputVariablesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -886,14 +777,14 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardTagsList": {
+    "com.posthog.dashboards#DashboardOutputTagsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardPersistedFiltersMap": {
+    "com.posthog.dashboards#DashboardOutputPersistedFiltersMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -903,7 +794,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardPersistedVariablesMap": {
+    "com.posthog.dashboards#DashboardOutputPersistedVariablesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -913,7 +804,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardQuickFilterIdsList": {
+    "com.posthog.dashboards#DashboardOutputQuickFilterIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -922,7 +813,7 @@
         "smithy.api#documentation": "List of quick filter IDs associated with this dashboard"
       }
     },
-    "com.posthog.dashboards#DashboardTilesItemMap": {
+    "com.posthog.dashboards#DashboardOutputTilesItemMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -932,10 +823,10 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardTilesList": {
+    "com.posthog.dashboards#DashboardOutputTilesList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.dashboards#DashboardTilesItemMap"
+        "target": "com.posthog.dashboards#DashboardOutputTilesItemMap"
       },
       "traits": {}
     },
@@ -945,7 +836,7 @@
         "target": "com.posthog.dashboards#DashboardsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#Dashboard"
+        "target": "com.posthog.dashboards#DashboardOutput"
       },
       "errors": [
         {
@@ -989,7 +880,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#DashboardCollaborator": {
+    "com.posthog.dashboards#DashboardCollaboratorOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -999,18 +890,18 @@
           "target": "smithy.api#Integer"
         },
         "user": {
-          "target": "com.posthog.dashboards#UserBasic"
+          "target": "com.posthog.dashboards#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.dashboards#RestrictionLevelEnum"
         },
         "added_at": {
           "target": "smithy.api#String"
         },
         "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "user_uuid": {
           "target": "smithy.api#String"
         }
       },
@@ -1019,7 +910,7 @@
     "com.posthog.dashboards#DashboardsCollaboratorsListResponseBodyList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.dashboards#DashboardCollaborator"
+        "target": "com.posthog.dashboards#DashboardCollaboratorOutput"
       },
       "traits": {}
     },
@@ -1080,20 +971,8 @@
             "smithy.api#required": {}
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "user": {
-          "target": "com.posthog.dashboards#UserBasic"
-        },
         "level": {
-          "target": "smithy.api#Double"
-        },
-        "added_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
+          "target": "com.posthog.dashboards#RestrictionLevelEnum"
         },
         "user_uuid": {
           "target": "smithy.api#String"
@@ -1109,7 +988,7 @@
         "target": "com.posthog.dashboards#DashboardsCollaboratorsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#DashboardCollaborator"
+        "target": "com.posthog.dashboards#DashboardCollaboratorOutput"
       },
       "errors": [
         {
@@ -1321,13 +1200,6 @@
         }
       }
     },
-    "com.posthog.dashboards#DashboardsSharingPasswordsCreateRequestSharePasswordsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.dashboards#SharePassword"
-      },
-      "traits": {}
-    },
     "com.posthog.dashboards#DashboardsSharingPasswordsCreateRequest": {
       "type": "structure",
       "members": {
@@ -1346,34 +1218,14 @@
             "smithy.api#required": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "access_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {},
-            "smithy.api#sensitive": {}
-          }
         },
         "settings": {
           "target": "smithy.api#Document"
         },
         "password_required": {
           "target": "smithy.api#Boolean"
-        },
-        "share_passwords": {
-          "target": "com.posthog.dashboards#DashboardsSharingPasswordsCreateRequestSharePasswordsList"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -1463,13 +1315,6 @@
         "smithy.api#documentation": "Delete a password from the sharing configuration."
       }
     },
-    "com.posthog.dashboards#DashboardsSharingRefreshCreateRequestSharePasswordsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.dashboards#SharePassword"
-      },
-      "traits": {}
-    },
     "com.posthog.dashboards#DashboardsSharingRefreshCreateRequest": {
       "type": "structure",
       "members": {
@@ -1488,34 +1333,14 @@
             "smithy.api#required": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "access_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {},
-            "smithy.api#sensitive": {}
-          }
         },
         "settings": {
           "target": "smithy.api#Document"
         },
         "password_required": {
           "target": "smithy.api#Boolean"
-        },
-        "share_passwords": {
-          "target": "com.posthog.dashboards#DashboardsSharingRefreshCreateRequestSharePasswordsList"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -1624,7 +1449,7 @@
         "target": "com.posthog.dashboards#DashboardsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#Dashboard"
+        "target": "com.posthog.dashboards#DashboardOutput"
       },
       "errors": [
         {
@@ -1663,49 +1488,9 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsUpdateRequestFiltersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.dashboards#DashboardsUpdateRequestVariablesMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.dashboards#DashboardsUpdateRequestTagsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.dashboards#DashboardsUpdateRequestPersistedFiltersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.dashboards#DashboardsUpdateRequestPersistedVariablesMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
         "target": "smithy.api#Document"
       },
       "traits": {}
@@ -1718,23 +1503,6 @@
       "traits": {
         "smithy.api#documentation": "List of quick filter IDs associated with this dashboard"
       }
-    },
-    "com.posthog.dashboards#DashboardsUpdateRequestTilesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.dashboards#DashboardsUpdateRequestTilesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.dashboards#DashboardsUpdateRequestTilesItemMap"
-      },
-      "traits": {}
     },
     "com.posthog.dashboards#DashboardsUpdateRequest": {
       "type": "structure",
@@ -1780,48 +1548,14 @@
         "pinned": {
           "target": "smithy.api#Boolean"
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.dashboards#UserBasic"
-        },
         "last_accessed_at": {
           "target": "smithy.api#String",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
-        "last_viewed_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "folder": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Path of the project-tree folder this dashboard is filed under in the file system, e.g. 'Unfiled/Dashboards'. An empty string means the project root; null means the dashboard has no file system entry. The dashboard's own name is not part of the path.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_shared": {
-          "target": "smithy.api#Boolean"
-        },
         "deleted": {
           "target": "smithy.api#Boolean"
-        },
-        "creation_mode": {
-          "target": "com.posthog.dashboards#CreationModeEnum"
-        },
-        "filters": {
-          "target": "com.posthog.dashboards#DashboardsUpdateRequestFiltersMap"
-        },
-        "variables": {
-          "target": "com.posthog.dashboards#DashboardsUpdateRequestVariablesMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "breakdown_colors": {
           "target": "smithy.api#Document",
@@ -1840,23 +1574,7 @@
           "target": "com.posthog.dashboards#DashboardsUpdateRequestTagsList"
         },
         "restriction_level": {
-          "target": "smithy.api#Double"
-        },
-        "effective_restriction_level": {
-          "target": "smithy.api#Double"
-        },
-        "effective_privilege_level": {
-          "target": "smithy.api#Double"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "access_control_version": {
-          "target": "smithy.api#String"
+          "target": "com.posthog.dashboards#RestrictionLevelEnum"
         },
         "last_refresh": {
           "target": "smithy.api#String",
@@ -1864,31 +1582,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "persisted_filters": {
-          "target": "com.posthog.dashboards#DashboardsUpdateRequestPersistedFiltersMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "persisted_variables": {
-          "target": "com.posthog.dashboards#DashboardsUpdateRequestPersistedVariablesMap",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team_id": {
-          "target": "smithy.api#Integer"
-        },
         "quick_filter_ids": {
           "target": "com.posthog.dashboards#DashboardsUpdateRequestQuickFilterIdsList",
           "traits": {
             "smithy.api#documentation": "List of quick filter IDs associated with this dashboard",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "tiles": {
-          "target": "com.posthog.dashboards#DashboardsUpdateRequestTilesList",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1925,7 +1622,7 @@
         "target": "com.posthog.dashboards#DashboardsUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#Dashboard"
+        "target": "com.posthog.dashboards#DashboardOutput"
       },
       "errors": [
         {
@@ -3374,7 +3071,7 @@
           "target": "com.posthog.dashboards#DashboardsPartialUpdateRequestTagsList"
         },
         "restriction_level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.dashboards#EffectivePrivilegeLevelEnum"
         },
         "quick_filter_ids": {
           "target": "com.posthog.dashboards#DashboardsPartialUpdateRequestQuickFilterIdsList",
@@ -3419,7 +3116,7 @@
         "target": "com.posthog.dashboards#DashboardsPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#Dashboard"
+        "target": "com.posthog.dashboards#DashboardOutput"
       },
       "errors": [
         {
@@ -3582,7 +3279,7 @@
         "target": "com.posthog.dashboards#DashboardsCopyTileCreateRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#Dashboard"
+        "target": "com.posthog.dashboards#DashboardOutput"
       },
       "errors": [
         {
@@ -3720,14 +3417,14 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#DashboardTile": {
+    "com.posthog.dashboards#DashboardTileOutput": {
       "type": "structure",
       "members": {
         "id": {
           "target": "smithy.api#Integer"
         },
         "insight": {
-          "target": "com.posthog.dashboards#Insight",
+          "target": "com.posthog.dashboards#InsightOutput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -3777,7 +3474,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#Insight": {
+    "com.posthog.dashboards#InsightOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -3814,13 +3511,13 @@
           "target": "smithy.api#Boolean"
         },
         "dashboards": {
-          "target": "com.posthog.dashboards#InsightDashboardsList",
+          "target": "com.posthog.dashboards#InsightOutputDashboardsList",
           "traits": {
             "smithy.api#documentation": "\n        DEPRECATED. Will be removed in a future release. Use dashboard_tiles instead.\n        A dashboard ID for each of the dashboards that this insight is displayed on.\n        This field may be omitted from responses: once opt-in enforcement is enabled, API-token\n        callers (personal API keys, OAuth) only receive it when passing the\n        `include_dashboards=true` query parameter. Do not rely on it being present.\n        "
           }
         },
         "dashboard_tiles": {
-          "target": "com.posthog.dashboards#InsightDashboardTilesList",
+          "target": "com.posthog.dashboards#InsightOutputDashboardTilesList",
           "traits": {
             "smithy.api#documentation": "\n    A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on.\n    "
           }
@@ -3856,7 +3553,7 @@
           }
         },
         "columns": {
-          "target": "com.posthog.dashboards#InsightColumnsList",
+          "target": "com.posthog.dashboards#InsightOutputColumnsList",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -3868,7 +3565,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.dashboards#UserBasic"
+          "target": "com.posthog.dashboards#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "description": {
           "target": "smithy.api#String",
@@ -3880,7 +3580,7 @@
           "target": "smithy.api#String"
         },
         "tags": {
-          "target": "com.posthog.dashboards#InsightTagsList"
+          "target": "com.posthog.dashboards#InsightOutputTagsList"
         },
         "favorited": {
           "target": "smithy.api#Boolean"
@@ -3889,16 +3589,19 @@
           "target": "smithy.api#String"
         },
         "last_modified_by": {
-          "target": "com.posthog.dashboards#UserBasic"
+          "target": "com.posthog.dashboards#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "is_sample": {
           "target": "smithy.api#Boolean"
         },
         "effective_restriction_level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.dashboards#EffectivePrivilegeLevelEnum"
         },
         "effective_privilege_level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.dashboards#EffectivePrivilegeLevelEnum"
         },
         "user_access_level": {
           "target": "smithy.api#String",
@@ -3927,22 +3630,19 @@
           }
         },
         "types": {
-          "target": "com.posthog.dashboards#InsightTypesList",
+          "target": "com.posthog.dashboards#InsightOutputTypesList",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
         "resolved_date_range": {
-          "target": "com.posthog.dashboards#InsightResolvedDateRange",
+          "target": "com.posthog.dashboards#InsightOutputResolvedDateRange",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
-        },
         "alerts": {
-          "target": "com.posthog.dashboards#InsightAlertsList"
+          "target": "com.posthog.dashboards#InsightOutputAlertsList"
         },
         "filter_override_context": {
           "target": "com.posthog.dashboards#InsightFilterOverrideContext",
@@ -4598,10 +4298,58 @@
       },
       "traits": {}
     },
+    "com.posthog.dashboards#DaysOfWeekEnum": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 5
+          }
+        },
+        "_6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 6
+          }
+        },
+        "_7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 7
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.dashboards#DateRangeDaysOfWeekList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Double"
+        "target": "com.posthog.dashboards#DaysOfWeekEnum"
       },
       "traits": {}
     },
@@ -7707,7 +7455,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -8153,6 +7901,42 @@
         },
         "Case6": {
           "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.dashboards#MathGroupTypeIndex": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
         }
       },
       "traits": {}
@@ -9221,7 +9005,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -9533,7 +9317,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -9842,7 +9626,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -11439,7 +11223,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -11759,7 +11543,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -12454,7 +12238,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -15200,7 +14984,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -25441,7 +25225,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -31407,7 +31191,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -31752,7 +31536,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -32095,7 +31879,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.dashboards#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -36878,7 +36662,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#InsightDashboardsList": {
+    "com.posthog.dashboards#InsightOutputDashboardsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
@@ -36905,7 +36689,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#InsightDashboardTilesList": {
+    "com.posthog.dashboards#InsightOutputDashboardTilesList": {
       "type": "list",
       "member": {
         "target": "com.posthog.dashboards#DashboardTileBasic"
@@ -36914,28 +36698,28 @@
         "smithy.api#documentation": "\n    A dashboard tile ID and dashboard_id for each of the dashboards that this insight is displayed on.\n    "
       }
     },
-    "com.posthog.dashboards#InsightColumnsList": {
+    "com.posthog.dashboards#InsightOutputColumnsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.posthog.dashboards#InsightTagsList": {
+    "com.posthog.dashboards#InsightOutputTagsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       },
       "traits": {}
     },
-    "com.posthog.dashboards#InsightTypesList": {
+    "com.posthog.dashboards#InsightOutputTypesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       },
       "traits": {}
     },
-    "com.posthog.dashboards#InsightResolvedDateRange": {
+    "com.posthog.dashboards#InsightOutputResolvedDateRange": {
       "type": "structure",
       "members": {
         "date_from": {
@@ -36947,7 +36731,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#InsightAlertsList": {
+    "com.posthog.dashboards#InsightOutputAlertsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
@@ -37493,7 +37277,7 @@
         "target": "com.posthog.dashboards#DashboardsCreateTextTileCreateRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#DashboardTile"
+        "target": "com.posthog.dashboards#DashboardTileOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -37657,7 +37441,7 @@
         "target": "com.posthog.dashboards#DashboardsMoveTileCreateRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#Dashboard"
+        "target": "com.posthog.dashboards#DashboardOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -37768,7 +37552,7 @@
         "target": "com.posthog.dashboards#DashboardsReorderTilesCreateRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#Dashboard"
+        "target": "com.posthog.dashboards#DashboardOutput"
       },
       "errors": [
         {
@@ -38402,7 +38186,7 @@
         "target": "com.posthog.dashboards#DashboardsUpdateTextTileCreateRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#DashboardTile"
+        "target": "com.posthog.dashboards#DashboardTileOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -38958,11 +38742,11 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#AddDashboardWidgetsBatchResponse": {
+    "com.posthog.dashboards#AddDashboardWidgetsBatchResponseOutput": {
       "type": "structure",
       "members": {
         "tiles": {
-          "target": "com.posthog.dashboards#AddDashboardWidgetsBatchResponseTilesList",
+          "target": "com.posthog.dashboards#AddDashboardWidgetsBatchResponseOutputTilesList",
           "traits": {
             "smithy.api#documentation": "Created dashboard widget tiles in request order.",
             "smithy.api#required": {}
@@ -38971,10 +38755,10 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#AddDashboardWidgetsBatchResponseTilesList": {
+    "com.posthog.dashboards#AddDashboardWidgetsBatchResponseOutputTilesList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.dashboards#DashboardTile"
+        "target": "com.posthog.dashboards#DashboardTileOutput"
       },
       "traits": {
         "smithy.api#documentation": "Created dashboard widget tiles in request order."
@@ -38986,7 +38770,7 @@
         "target": "com.posthog.dashboards#DashboardsWidgetsBatchCreateRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#AddDashboardWidgetsBatchResponse"
+        "target": "com.posthog.dashboards#AddDashboardWidgetsBatchResponseOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -39353,11 +39137,11 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#UpdateDashboardWidgetsBatchResponse": {
+    "com.posthog.dashboards#UpdateDashboardWidgetsBatchResponseOutput": {
       "type": "structure",
       "members": {
         "tiles": {
-          "target": "com.posthog.dashboards#UpdateDashboardWidgetsBatchResponseTilesList",
+          "target": "com.posthog.dashboards#UpdateDashboardWidgetsBatchResponseOutputTilesList",
           "traits": {
             "smithy.api#documentation": "Updated dashboard widget tiles in request order.",
             "smithy.api#required": {}
@@ -39366,10 +39150,10 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#UpdateDashboardWidgetsBatchResponseTilesList": {
+    "com.posthog.dashboards#UpdateDashboardWidgetsBatchResponseOutputTilesList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.dashboards#DashboardTile"
+        "target": "com.posthog.dashboards#DashboardTileOutput"
       },
       "traits": {
         "smithy.api#documentation": "Updated dashboard widget tiles in request order."
@@ -39381,7 +39165,7 @@
         "target": "com.posthog.dashboards#DashboardsUpdateWidgetsBatchRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#UpdateDashboardWidgetsBatchResponse"
+        "target": "com.posthog.dashboards#UpdateDashboardWidgetsBatchResponseOutput"
       },
       "traits": {
         "smithy.api#http": {

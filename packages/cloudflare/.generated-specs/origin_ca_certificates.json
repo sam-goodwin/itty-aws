@@ -23,56 +23,72 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.origin_ca_certificates#CreateRequestRequestType": {
+      "type": "enum",
+      "members": {
+        "ORIGIN_RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "origin-rsa"
+          }
+        },
+        "ORIGIN_ECC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "origin-ecc"
+          }
+        },
+        "KEYLESS_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keyless-certificate"
+          }
+        }
+      }
+    },
     "com.cloudflare.origin_ca_certificates#CreateRequestRequestedValidity": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_7": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "7"
+            "smithy.api#enumValue": 7
           }
         },
         "_30": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "30"
+            "smithy.api#enumValue": 30
           }
         },
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         },
         "_365": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "365"
+            "smithy.api#enumValue": 365
           }
         },
         "_730": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "730"
+            "smithy.api#enumValue": 730
           }
         },
         "_1095": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "1095"
+            "smithy.api#enumValue": 1095
           }
         },
         "_5475": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "5475"
+            "smithy.api#enumValue": 5475
           }
         }
       }
@@ -95,7 +111,7 @@
           }
         },
         "request_type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.origin_ca_certificates#CreateRequestRequestType",
           "traits": {
             "smithy.api#documentation": "Signature type desired on certificate (\"origin-rsa\" (rsa), \"origin-ecc\" (ecdsa), or \"keyless-certificate\" (for Keyless SSL servers).",
             "smithy.api#required": {}
@@ -118,56 +134,72 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.origin_ca_certificates#CreateResponseRequestType": {
+      "type": "enum",
+      "members": {
+        "ORIGIN_RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "origin-rsa"
+          }
+        },
+        "ORIGIN_ECC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "origin-ecc"
+          }
+        },
+        "KEYLESS_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keyless-certificate"
+          }
+        }
+      }
+    },
     "com.cloudflare.origin_ca_certificates#CreateResponseRequestedValidity": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_7": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "7"
+            "smithy.api#enumValue": 7
           }
         },
         "_30": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "30"
+            "smithy.api#enumValue": 30
           }
         },
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         },
         "_365": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "365"
+            "smithy.api#enumValue": 365
           }
         },
         "_730": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "730"
+            "smithy.api#enumValue": 730
           }
         },
         "_1095": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "1095"
+            "smithy.api#enumValue": 1095
           }
         },
         "_5475": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "5475"
+            "smithy.api#enumValue": 5475
           }
         }
       }
@@ -190,7 +222,7 @@
           }
         },
         "request_type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.origin_ca_certificates#CreateResponseRequestType",
           "traits": {
             "smithy.api#documentation": "Signature type desired on certificate (\"origin-rsa\" (rsa), \"origin-ecc\" (ecdsa), or \"keyless-certificate\" (for Keyless SSL servers).",
             "smithy.api#required": {}
@@ -321,56 +353,72 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.origin_ca_certificates#GetResponseRequestType": {
+      "type": "enum",
+      "members": {
+        "ORIGIN_RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "origin-rsa"
+          }
+        },
+        "ORIGIN_ECC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "origin-ecc"
+          }
+        },
+        "KEYLESS_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keyless-certificate"
+          }
+        }
+      }
+    },
     "com.cloudflare.origin_ca_certificates#GetResponseRequestedValidity": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_7": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "7"
+            "smithy.api#enumValue": 7
           }
         },
         "_30": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "30"
+            "smithy.api#enumValue": 30
           }
         },
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         },
         "_365": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "365"
+            "smithy.api#enumValue": 365
           }
         },
         "_730": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "730"
+            "smithy.api#enumValue": 730
           }
         },
         "_1095": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "1095"
+            "smithy.api#enumValue": 1095
           }
         },
         "_5475": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "5475"
+            "smithy.api#enumValue": 5475
           }
         }
       }
@@ -393,7 +441,7 @@
           }
         },
         "request_type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.origin_ca_certificates#GetResponseRequestType",
           "traits": {
             "smithy.api#documentation": "Signature type desired on certificate (\"origin-rsa\" (rsa), \"origin-ecc\" (ecdsa), or \"keyless-certificate\" (for Keyless SSL servers).",
             "smithy.api#required": {}
@@ -498,56 +546,72 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.origin_ca_certificates#ListResultItemRequestType": {
+      "type": "enum",
+      "members": {
+        "ORIGIN_RSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "origin-rsa"
+          }
+        },
+        "ORIGIN_ECC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "origin-ecc"
+          }
+        },
+        "KEYLESS_CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keyless-certificate"
+          }
+        }
+      }
+    },
     "com.cloudflare.origin_ca_certificates#ListResultItemRequestedValidity": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_7": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "7"
+            "smithy.api#enumValue": 7
           }
         },
         "_30": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "30"
+            "smithy.api#enumValue": 30
           }
         },
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         },
         "_365": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "365"
+            "smithy.api#enumValue": 365
           }
         },
         "_730": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "730"
+            "smithy.api#enumValue": 730
           }
         },
         "_1095": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "1095"
+            "smithy.api#enumValue": 1095
           }
         },
         "_5475": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "5475"
+            "smithy.api#enumValue": 5475
           }
         }
       }
@@ -570,7 +634,7 @@
           }
         },
         "request_type": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.origin_ca_certificates#ListResultItemRequestType",
           "traits": {
             "smithy.api#documentation": "Signature type desired on certificate (\"origin-rsa\" (rsa), \"origin-ecc\" (ecdsa), or \"keyless-certificate\" (for Keyless SSL servers).",
             "smithy.api#required": {}

@@ -92,7 +92,8 @@ export const ActiveBreakpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActiveBreakpoint>;
 
 /** List of active breakpoints */
-export type ActiveBreakpointsResponseBreakpointsList = ActiveBreakpoint[];
+export type ActiveBreakpointsResponseBreakpointsList =
+  ReadonlyArray<ActiveBreakpoint>;
 export const ActiveBreakpointsResponseBreakpointsList = /*@__PURE__*/ S.Array(
   ActiveBreakpoint,
 ) as any as S.Schema<ActiveBreakpointsResponseBreakpointsList>;
@@ -146,7 +147,7 @@ export const BreakpointHitVariablesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BreakpointHitVariablesMap>;
 
 /** Stack trace at the time of the hit */
-export type BreakpointHitStackTraceList = unknown[];
+export type BreakpointHitStackTraceList = ReadonlyArray<unknown>;
 export const BreakpointHitStackTraceList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<BreakpointHitStackTraceList>;
@@ -184,7 +185,7 @@ export const BreakpointHit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BreakpointHit" }) as any as S.Schema<BreakpointHit>;
 
 /** List of breakpoint hit events */
-export type BreakpointHitsResponseResultsList = BreakpointHit[];
+export type BreakpointHitsResponseResultsList = ReadonlyArray<BreakpointHit>;
 export const BreakpointHitsResponseResultsList = /*@__PURE__*/ S.Array(
   BreakpointHit,
 ) as any as S.Schema<BreakpointHitsResponseResultsList>;
@@ -211,27 +212,21 @@ export const BreakpointHitsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface LiveDebuggerBreakpointsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   repository?: string | null;
   filename?: string;
   line_number?: number;
   enabled?: boolean;
   condition?: string | null;
-  created_at?: string;
-  updated_at?: string;
 }
 export const LiveDebuggerBreakpointsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
       repository: S.optional(S.NullOr(S.String)),
       filename: S.optional(S.String),
       line_number: S.optional(S.Number),
       enabled: S.optional(S.Boolean),
       condition: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -326,7 +321,7 @@ export const LiveDebuggerBreakpointsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiveDebuggerBreakpointsListRequest>;
 
 export type PaginatedLiveDebuggerBreakpointListResultsList =
-  LiveDebuggerBreakpoint[];
+  ReadonlyArray<LiveDebuggerBreakpoint>;
 export const PaginatedLiveDebuggerBreakpointListResultsList =
   /*@__PURE__*/ S.Array(
     LiveDebuggerBreakpoint,
@@ -359,8 +354,6 @@ export interface LiveDebuggerBreakpointsPartialUpdateRequest {
   line_number?: number;
   enabled?: boolean;
   condition?: string | null;
-  created_at?: string;
-  updated_at?: string;
 }
 export const LiveDebuggerBreakpointsPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -372,8 +365,6 @@ export const LiveDebuggerBreakpointsPartialUpdateRequest =
       line_number: S.optional(S.Number),
       enabled: S.optional(S.Boolean),
       condition: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -417,8 +408,6 @@ export interface LiveDebuggerBreakpointsUpdateRequest {
   line_number?: number;
   enabled?: boolean;
   condition?: string | null;
-  created_at?: string;
-  updated_at?: string;
 }
 export const LiveDebuggerBreakpointsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -430,8 +419,6 @@ export const LiveDebuggerBreakpointsUpdateRequest = /*@__PURE__*/ S.suspend(
       line_number: S.optional(S.Number),
       enabled: S.optional(S.Boolean),
       condition: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",

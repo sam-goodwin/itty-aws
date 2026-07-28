@@ -105,7 +105,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -299,16 +299,14 @@ export type FederationStateEnum =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const FederationStateEnum = /*@__PURE__*/ S.String;
 
 export type BackendMetastoreMetastoreTypeEnum =
   | "METASTORE_TYPE_UNSPECIFIED"
   | "DATAPLEX"
   | "BIGQUERY"
-  | "DATAPROC_METASTORE"
-  | (string & {});
+  | "DATAPROC_METASTORE";
 export const BackendMetastoreMetastoreTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a backend metastore for the federation. */
@@ -407,16 +405,14 @@ export const CreateProjectsLocationsFederationsRequest =
 export type ServiceReleaseChannelEnum =
   | "RELEASE_CHANNEL_UNSPECIFIED"
   | "CANARY"
-  | "STABLE"
-  | (string & {});
+  | "STABLE";
 export const ServiceReleaseChannelEnum = /*@__PURE__*/ S.String;
 
 export type LatestBackupStateEnum =
   | "STATE_UNSPECIFIED"
   | "IN_PROGRESS"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const LatestBackupStateEnum = /*@__PURE__*/ S.String;
 
 /** The details of the latest scheduled backup. */
@@ -484,7 +480,7 @@ export const Consumer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Consumer" }) as any as S.Schema<Consumer>;
 
-export type ConsumerList = Consumer[];
+export type ConsumerList = ReadonlyArray<Consumer>;
 export const ConsumerList = /*@__PURE__*/ S.Array(
   Consumer,
 ) as any as S.Schema<ConsumerList>;
@@ -514,8 +510,7 @@ export type ServiceStateEnum =
   | "ERROR"
   | "AUTOSCALING"
   | "MIGRATING"
-  | "PROXY"
-  | (string & {});
+  | "PROXY";
 export const ServiceStateEnum = /*@__PURE__*/ S.String;
 
 export type ScalingConfigInstanceSizeEnum =
@@ -524,8 +519,7 @@ export type ScalingConfigInstanceSizeEnum =
   | "SMALL"
   | "MEDIUM"
   | "LARGE"
-  | "EXTRA_LARGE"
-  | (string & {});
+  | "EXTRA_LARGE";
 export const ScalingConfigInstanceSizeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the autoscaling limit configuration of a metastore service. */
@@ -578,7 +572,7 @@ export const ScalingConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScalingConfig" }) as any as S.Schema<ScalingConfig>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -615,7 +609,7 @@ export const RootCACertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "RootCACertificate",
 }) as any as S.Schema<RootCACertificate>;
 
-export type RootCACertificateList = RootCACertificate[];
+export type RootCACertificateList = ReadonlyArray<RootCACertificate>;
 export const RootCACertificateList = /*@__PURE__*/ S.Array(
   RootCACertificate,
 ) as any as S.Schema<RootCACertificateList>;
@@ -639,8 +633,7 @@ export const MultiRegionConfig = /*@__PURE__*/ S.suspend(() =>
 export type ServiceDatabaseTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
   | "MYSQL"
-  | "SPANNER"
-  | (string & {});
+  | "SPANNER";
 export const ServiceDatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption settings for the service. */
@@ -667,8 +660,7 @@ export type MaintenanceWindowDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const MaintenanceWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service. */
@@ -692,15 +684,13 @@ export type MetadataExportStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const MetadataExportStateEnum = /*@__PURE__*/ S.String;
 
 export type MetadataExportDatabaseDumpTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "MYSQL"
-  | "AVRO"
-  | (string & {});
+  | "AVRO";
 export const MetadataExportDatabaseDumpTypeEnum = /*@__PURE__*/ S.String;
 
 /** The details of a metadata export operation. */
@@ -726,7 +716,7 @@ export const MetadataExport = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetadataExport" }) as any as S.Schema<MetadataExport>;
 
-export type MetadataExportList = MetadataExport[];
+export type MetadataExportList = ReadonlyArray<MetadataExport>;
 export const MetadataExportList = /*@__PURE__*/ S.Array(
   MetadataExport,
 ) as any as S.Schema<MetadataExportList>;
@@ -736,15 +726,13 @@ export type RestoreStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const RestoreStateEnum = /*@__PURE__*/ S.String;
 
 export type RestoreTypeEnum =
   | "RESTORE_TYPE_UNSPECIFIED"
   | "FULL"
-  | "METADATA_ONLY"
-  | (string & {});
+  | "METADATA_ONLY";
 export const RestoreTypeEnum = /*@__PURE__*/ S.String;
 
 /** The details of a metadata restore operation. */
@@ -776,7 +764,7 @@ export const Restore = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Restore" }) as any as S.Schema<Restore>;
 
-export type RestoreList = Restore[];
+export type RestoreList = ReadonlyArray<Restore>;
 export const RestoreList = /*@__PURE__*/ S.Array(
   Restore,
 ) as any as S.Schema<RestoreList>;
@@ -855,8 +843,7 @@ export const AuxiliaryVersionConfigMap = /*@__PURE__*/ S.Record(
 export type HiveMetastoreConfigEndpointProtocolEnum =
   | "ENDPOINT_PROTOCOL_UNSPECIFIED"
   | "THRIFT"
-  | "GRPC"
-  | (string & {});
+  | "GRPC";
 export const HiveMetastoreConfigEndpointProtocolEnum = /*@__PURE__*/ S.String;
 
 /** Specifies configuration information specific to running Hive metastore software as the metastore service. */
@@ -887,8 +874,7 @@ export const HiveMetastoreConfig = /*@__PURE__*/ S.suspend(() =>
 export type TelemetryConfigLogFormatEnum =
   | "LOG_FORMAT_UNSPECIFIED"
   | "LEGACY"
-  | "JSON"
-  | (string & {});
+  | "JSON";
 export const TelemetryConfigLogFormatEnum = /*@__PURE__*/ S.String;
 
 /** Telemetry Configuration for the Dataproc Metastore service. */
@@ -961,11 +947,7 @@ export const MetadataIntegration = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetadataIntegration",
 }) as any as S.Schema<MetadataIntegration>;
 
-export type ServiceTierEnum =
-  | "TIER_UNSPECIFIED"
-  | "DEVELOPER"
-  | "ENTERPRISE"
-  | (string & {});
+export type ServiceTierEnum = "TIER_UNSPECIFIED" | "DEVELOPER" | "ENTERPRISE";
 export const ServiceTierEnum = /*@__PURE__*/ S.String;
 
 /** A managed metastore service that serves metadata queries. */
@@ -1088,8 +1070,7 @@ export type BackupStateEnum =
   | "DELETING"
   | "ACTIVE"
   | "FAILED"
-  | "RESTORING"
-  | (string & {});
+  | "RESTORING";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** The details of a backup resource. */
@@ -1151,15 +1132,10 @@ export const CreateProjectsLocationsServicesBackupsRequest =
 
 export type DatabaseDumpDatabaseTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
-  | "MYSQL"
-  | (string & {});
+  | "MYSQL";
 export const DatabaseDumpDatabaseTypeEnum = /*@__PURE__*/ S.String;
 
-export type DatabaseDumpTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "MYSQL"
-  | "AVRO"
-  | (string & {});
+export type DatabaseDumpTypeEnum = "TYPE_UNSPECIFIED" | "MYSQL" | "AVRO";
 export const DatabaseDumpTypeEnum = /*@__PURE__*/ S.String;
 
 /** A specification of the location of and metadata about a database dump from a relational database management system. */
@@ -1187,8 +1163,7 @@ export type MetadataImportStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "UPDATING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const MetadataImportStateEnum = /*@__PURE__*/ S.String;
 
 /** A metastore resource that imports metadata. */
@@ -1358,8 +1333,7 @@ export const DeleteProjectsLocationsServicesMigrationExecutionsRequest =
 export type ExportMetadataRequestDatabaseDumpTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "MYSQL"
-  | "AVRO"
-  | (string & {});
+  | "AVRO";
 export const ExportMetadataRequestDatabaseDumpTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request message for DataprocMetastore.ExportMetadata. */
@@ -1429,8 +1403,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1447,7 +1420,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1466,7 +1439,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1508,7 +1481,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1857,8 +1830,7 @@ export const CloudSQLMigrationConfig = /*@__PURE__*/ S.suspend(() =>
 export type MigrationExecutionPhaseEnum =
   | "PHASE_UNSPECIFIED"
   | "REPLICATION"
-  | "CUTOVER"
-  | (string & {});
+  | "CUTOVER";
 export const MigrationExecutionPhaseEnum = /*@__PURE__*/ S.String;
 
 export type MigrationExecutionStateEnum =
@@ -1871,8 +1843,7 @@ export type MigrationExecutionStateEnum =
   | "FAILED"
   | "CANCELLED"
   | "DELETING"
-  | "ROLLED_BACK"
-  | (string & {});
+  | "ROLLED_BACK";
 export const MigrationExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** The details of a migration execution resource. */
@@ -1936,7 +1907,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1988,7 +1959,7 @@ export const ListProjectsLocationsFederationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsFederationsRequest",
 }) as any as S.Schema<ListProjectsLocationsFederationsRequest>;
 
-export type FederationList = Federation[];
+export type FederationList = ReadonlyArray<Federation>;
 export const FederationList = /*@__PURE__*/ S.Array(
   Federation,
 ) as any as S.Schema<FederationList>;
@@ -2043,7 +2014,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2098,7 +2069,7 @@ export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsServicesRequest",
 }) as any as S.Schema<ListProjectsLocationsServicesRequest>;
 
-export type ServiceList = Service[];
+export type ServiceList = ReadonlyArray<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -2153,7 +2124,7 @@ export const ListProjectsLocationsServicesBackupsRequest =
     identifier: "ListProjectsLocationsServicesBackupsRequest",
   }) as any as S.Schema<ListProjectsLocationsServicesBackupsRequest>;
 
-export type BackupList = Backup[];
+export type BackupList = ReadonlyArray<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -2208,7 +2179,7 @@ export const ListProjectsLocationsServicesMetadataImportsRequest =
     identifier: "ListProjectsLocationsServicesMetadataImportsRequest",
   }) as any as S.Schema<ListProjectsLocationsServicesMetadataImportsRequest>;
 
-export type MetadataImportList = MetadataImport[];
+export type MetadataImportList = ReadonlyArray<MetadataImport>;
 export const MetadataImportList = /*@__PURE__*/ S.Array(
   MetadataImport,
 ) as any as S.Schema<MetadataImportList>;
@@ -2263,7 +2234,7 @@ export const ListProjectsLocationsServicesMigrationExecutionsRequest =
     identifier: "ListProjectsLocationsServicesMigrationExecutionsRequest",
   }) as any as S.Schema<ListProjectsLocationsServicesMigrationExecutionsRequest>;
 
-export type MigrationExecutionList = MigrationExecution[];
+export type MigrationExecutionList = ReadonlyArray<MigrationExecution>;
 export const MigrationExecutionList = /*@__PURE__*/ S.Array(
   MigrationExecution,
 ) as any as S.Schema<MigrationExecutionList>;
@@ -2498,8 +2469,7 @@ export const RemoveIamPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 export type RestoreServiceRequestRestoreTypeEnum =
   | "RESTORE_TYPE_UNSPECIFIED"
   | "FULL"
-  | "METADATA_ONLY"
-  | (string & {});
+  | "METADATA_ONLY";
 export const RestoreServiceRequestRestoreTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request message for DataprocMetastore.RestoreService. */

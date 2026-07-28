@@ -149,8 +149,7 @@ export const GoogleCloudSecuritycenterV1beta1SecurityMarks =
 export type GoogleCloudSecuritycenterV1beta1FindingStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const GoogleCloudSecuritycenterV1beta1FindingStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -276,7 +275,7 @@ export const GetIamPolicyOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetIamPolicyOrganizationsSourcesRequest",
 }) as any as S.Schema<GetIamPolicyOrganizationsSourcesRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -285,8 +284,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 export interface AuditLogConfig {
@@ -300,7 +298,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -316,7 +314,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -349,7 +347,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -390,8 +388,7 @@ export const GetOrganizationSettingsOrganizationsRequest =
 export type AssetDiscoveryConfigInclusionModeEnum =
   | "INCLUSION_MODE_UNSPECIFIED"
   | "INCLUDE_ONLY"
-  | "EXCLUDE"
-  | (string & {});
+  | "EXCLUDE";
 export const AssetDiscoveryConfigInclusionModeEnum = /*@__PURE__*/ S.String;
 
 export interface AssetDiscoveryConfig {
@@ -439,7 +436,7 @@ export const GetOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOrganizationsOperationsRequest",
 }) as any as S.Schema<GetOrganizationsOperationsRequest>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -543,7 +540,7 @@ export const GroupResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupResult" }) as any as S.Schema<GroupResult>;
 
-export type GroupResultList = GroupResult[];
+export type GroupResultList = ReadonlyArray<GroupResult>;
 export const GroupResultList = /*@__PURE__*/ S.Array(
   GroupResult,
 ) as any as S.Schema<GroupResultList>;
@@ -692,8 +689,7 @@ export type ListAssetsResultStateEnum =
   | "UNUSED"
   | "ADDED"
   | "REMOVED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const ListAssetsResultStateEnum = /*@__PURE__*/ S.String;
 
 export interface ListAssetsResult {
@@ -709,7 +705,7 @@ export const ListAssetsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAssetsResult",
 }) as any as S.Schema<ListAssetsResult>;
 
-export type ListAssetsResultList = ListAssetsResult[];
+export type ListAssetsResultList = ReadonlyArray<ListAssetsResult>;
 export const ListAssetsResultList = /*@__PURE__*/ S.Array(
   ListAssetsResult,
 ) as any as S.Schema<ListAssetsResultList>;
@@ -756,7 +752,7 @@ export const ListOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsOperationsRequest",
 }) as any as S.Schema<ListOrganizationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -797,7 +793,7 @@ export const ListOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsSourcesRequest",
 }) as any as S.Schema<ListOrganizationsSourcesRequest>;
 
-export type SourceList = Source[];
+export type SourceList = ReadonlyArray<Source>;
 export const SourceList = /*@__PURE__*/ S.Array(
   Source,
 ) as any as S.Schema<SourceList>;
@@ -846,7 +842,7 @@ export const ListOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationsSourcesFindingsRequest>;
 
 export type GoogleCloudSecuritycenterV1beta1FindingList =
-  GoogleCloudSecuritycenterV1beta1Finding[];
+  ReadonlyArray<GoogleCloudSecuritycenterV1beta1Finding>;
 export const GoogleCloudSecuritycenterV1beta1FindingList =
   /*@__PURE__*/ S.Array(
     GoogleCloudSecuritycenterV1beta1Finding,
@@ -981,8 +977,7 @@ export const SetIamPolicyOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(
 export type SetFindingStateRequestStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const SetFindingStateRequestStateEnum = /*@__PURE__*/ S.String;
 
 export interface SetFindingStateRequest {

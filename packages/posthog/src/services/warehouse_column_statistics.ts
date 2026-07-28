@@ -91,7 +91,7 @@ export const WarehouseColumnStatistics2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WarehouseColumnStatistics2>;
 
 export type PaginatedWarehouseColumnStatisticsListResultsList =
-  WarehouseColumnStatistics2[];
+  ReadonlyArray<WarehouseColumnStatistics2>;
 export const PaginatedWarehouseColumnStatisticsListResultsList =
   /*@__PURE__*/ S.Array(
     WarehouseColumnStatistics2,

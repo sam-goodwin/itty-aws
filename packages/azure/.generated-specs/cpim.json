@@ -399,15 +399,27 @@
             "smithy.api#documentation": "The initial domain name of the Azure AD B2C tenant."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cpim#GuestUsagesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Key-value pairs of additional resource provisioning properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cpim#GuestUsagesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional resource provisioning properties."
       }
     },
     "com.azure.cpim#GuestUsagesCreate": {
@@ -456,15 +468,39 @@
             "smithy.api#documentation": "The initial domain name of the Azure AD B2C tenant."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Location of the Guest Usages resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cpim#GuestUsagesCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs of additional resource provisioning properties."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cpim#GuestUsagesResourceProperties",
+          "traits": {
+            "smithy.api#documentation": "The Guest Usages Resource Properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cpim#GuestUsagesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional resource provisioning properties."
       }
     },
     "com.azure.cpim#GuestUsagesGet": {
@@ -1036,15 +1072,90 @@
             "smithy.api#documentation": "The initial domain name of the Azure AD B2C tenant."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.cpim#B2CResourceSKU"
+        },
+        "properties": {
+          "target": "com.azure.cpim#B2CTenantResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The Azure AD B2C tenant resource properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cpim#B2CTenantsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource Tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cpim#B2CTenantsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource Tags"
+      }
+    },
+    "com.azure.cpim#B2CTenantResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "billingConfig": {
+          "target": "com.azure.cpim#B2CTenantResourcePropertiesInputBillingConfig",
+          "traits": {
+            "smithy.api#documentation": "The billing configuration for the tenant."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An identifier of the Azure AD B2C tenant."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Azure AD B2C tenant Azure resource."
+      }
+    },
+    "com.azure.cpim#B2CTenantResourcePropertiesInputBillingConfig": {
+      "type": "structure",
+      "members": {
+        "billingType": {
+          "target": "com.azure.cpim#B2CTenantResourcePropertiesInputBillingConfigBillingType",
+          "traits": {
+            "smithy.api#documentation": "The type of billing. Will be MAU for all new customers. If 'Auths', it can be updated to 'MAU'. Cannot be changed if value is 'MAU'. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The billing configuration for the tenant."
+      }
+    },
+    "com.azure.cpim#B2CTenantResourcePropertiesInputBillingConfigBillingType": {
+      "type": "enum",
+      "members": {
+        "MAU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MAU"
+          }
+        },
+        "AUTHS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Auths"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of billing. Will be MAU for all new customers. If 'Auths', it can be updated to 'MAU'. Cannot be changed if value is 'MAU'. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling)."
       }
     },
     "com.azure.cpim#B2CTenantsCreate": {
@@ -1093,15 +1204,72 @@
             "smithy.api#documentation": "The initial domain name of the Azure AD B2C tenant."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cpim#B2CTenantsCreateRequestProperties",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.cpim#B2CResourceSKU",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.cpim#B2CTenantsCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource Tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cpim#B2CTenantsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource Tags"
+      }
+    },
+    "com.azure.cpim#B2CTenantsCreateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "createTenantProperties": {
+          "target": "com.azure.cpim#CreateTenantProperties"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.cpim#CreateTenantProperties": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the Azure AD B2C tenant."
+          }
+        },
+        "countryCode": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "These properties are used to create the Azure AD B2C tenant. These properties are not part of the Azure resource."
       }
     },
     "com.azure.cpim#B2CTenantsGet": {
@@ -1329,10 +1497,17 @@
             "smithy.api#documentation": "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The domain name to check for availability.",
+            "smithy.api#required": {}
+          }
+        },
+        "countryCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
           }
         }
       },

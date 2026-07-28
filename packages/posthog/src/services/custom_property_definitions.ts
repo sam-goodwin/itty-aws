@@ -20,16 +20,14 @@ export type CustomPropertyDisplayTypeEnum =
   | "date"
   | "datetime"
   | "boolean"
-  | "select"
-  | (string & {});
+  | "select";
 export const CustomPropertyDisplayTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `account` - account * `person` - person * `group` - group */
 export type CustomPropertyDefinitionTargetTypeEnum =
   | "account"
   | "person"
-  | "group"
-  | (string & {});
+  | "group";
 export const CustomPropertyDefinitionTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `preset-1` - preset-1 * `preset-2` - preset-2 * `preset-3` - preset-3 * `preset-4` - preset-4 * `preset-5` - preset-5 * `preset-6` - preset-6 * `preset-7` - preset-7 * `preset-8` - preset-8 * `preset-9` - preset-9 * `preset-10` - preset-10 */
@@ -43,8 +41,7 @@ export type CustomPropertyOptionColorEnum =
   | "preset-7"
   | "preset-8"
   | "preset-9"
-  | "preset-10"
-  | (string & {});
+  | "preset-10";
 export const CustomPropertyOptionColorEnum = /*@__PURE__*/ S.String;
 
 /** An allowed value of a select custom property. */
@@ -68,11 +65,60 @@ export const CustomPropertyOption = /*@__PURE__*/ S.suspend(() =>
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type CustomPropertyDefinitionsCreateRequestOptionsList =
-  CustomPropertyOption[];
+  ReadonlyArray<CustomPropertyOption>;
 export const CustomPropertyDefinitionsCreateRequestOptionsList =
   /*@__PURE__*/ S.Array(
     CustomPropertyOption,
   ) as any as S.Schema<CustomPropertyDefinitionsCreateRequestOptionsList>;
+
+export interface CustomPropertyDefinitionsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Human-readable name of the custom property. Unique within the team. */
+  name: string;
+  /** Optional description of what the property represents. */
+  description?: string | null;
+  /** How the property is interpreted and rendered: 'text', 'number', 'currency', 'percent', 'date', 'datetime', 'boolean', or 'select'. * `text` - text * `number` - number * `currency` - currency * `percent` - percent * `date` - date * `datetime` - datetime * `boolean` - boolean * `select` - select */
+  display_type: CustomPropertyDisplayTypeEnum;
+  /** What entity this property is attached to: 'account' (default), 'person', or 'group'. Person and group properties are populated from a warehouse schema and become usable like any other person/group property (feature flags, cohorts, insights). * `account` - account * `person` - person * `group` - group */
+  target_type?: CustomPropertyDefinitionTargetTypeEnum;
+  /** For 'group' targets only: which group type (0-4) the property attaches to. Required when target_type is 'group'; must be omitted otherwise. Create-only. */
+  group_type_index?: number | null;
+  /** Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties. */
+  is_big_number?: boolean;
+  /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
+  options?: CustomPropertyDefinitionsCreateRequestOptionsList | null;
+}
+export const CustomPropertyDefinitionsCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      name: S.String,
+      description: S.optional(S.NullOr(S.String)),
+      display_type: CustomPropertyDisplayTypeEnum,
+      target_type: S.optional(CustomPropertyDefinitionTargetTypeEnum),
+      group_type_index: S.optional(S.NullOr(S.Number)),
+      is_big_number: S.optional(S.Boolean),
+      options: S.optional(
+        S.NullOr(CustomPropertyDefinitionsCreateRequestOptionsList),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/custom_property_definitions/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CustomPropertyDefinitionsCreateRequest",
+}) as any as S.Schema<CustomPropertyDefinitionsCreateRequest>;
+
+/** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
+export type CustomPropertyDefinitionOptionsList =
+  ReadonlyArray<CustomPropertyOption>;
+export const CustomPropertyDefinitionOptionsList = /*@__PURE__*/ S.Array(
+  CustomPropertyOption,
+) as any as S.Schema<CustomPropertyDefinitionOptionsList>;
 
 /** One person- or group-property sync or backfill run. Read-only: runs are created by the sync/backfill pipeline, never through the API. */
 export interface CustomPropertySyncRun {
@@ -199,77 +245,8 @@ export const CustomPropertyReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomPropertyReference>;
 
 /** Workflows that use this property, resolved by definition id. */
-export type CustomPropertyDefinitionsCreateRequestReferencesList =
-  CustomPropertyReference[];
-export const CustomPropertyDefinitionsCreateRequestReferencesList =
-  /*@__PURE__*/ S.Array(
-    CustomPropertyReference,
-  ) as any as S.Schema<CustomPropertyDefinitionsCreateRequestReferencesList>;
-
-export interface CustomPropertyDefinitionsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-  /** Human-readable name of the custom property. Unique within the team. */
-  name: string;
-  /** Optional description of what the property represents. */
-  description?: string | null;
-  /** How the property is interpreted and rendered: 'text', 'number', 'currency', 'percent', 'date', 'datetime', 'boolean', or 'select'. * `text` - text * `number` - number * `currency` - currency * `percent` - percent * `date` - date * `datetime` - datetime * `boolean` - boolean * `select` - select */
-  display_type: CustomPropertyDisplayTypeEnum;
-  /** What entity this property is attached to: 'account' (default), 'person', or 'group'. Person and group properties are populated from a warehouse schema and become usable like any other person/group property (feature flags, cohorts, insights). * `account` - account * `person` - person * `group` - group */
-  target_type?: CustomPropertyDefinitionTargetTypeEnum;
-  /** For 'group' targets only: which group type (0-4) the property attaches to. Required when target_type is 'group'; must be omitted otherwise. Create-only. */
-  group_type_index?: number | null;
-  /** Abbreviate large numbers (e.g. 10,000 → 10K). Only applies to numeric properties. */
-  is_big_number?: boolean;
-  /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
-  options?: CustomPropertyDefinitionsCreateRequestOptionsList | null;
-  /** The data-warehouse view-sync binding feeding this property, or null when values are set manually. */
-  source: CustomPropertySource | null;
-  created_at: string;
-  created_by: number | null;
-  updated_at: string | null;
-  /** Workflows that use this property, resolved by definition id. */
-  references: CustomPropertyDefinitionsCreateRequestReferencesList;
-}
-export const CustomPropertyDefinitionsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String,
-      name: S.String,
-      description: S.optional(S.NullOr(S.String)),
-      display_type: CustomPropertyDisplayTypeEnum,
-      target_type: S.optional(CustomPropertyDefinitionTargetTypeEnum),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-      is_big_number: S.optional(S.Boolean),
-      options: S.optional(
-        S.NullOr(CustomPropertyDefinitionsCreateRequestOptionsList),
-      ),
-      source: S.NullOr(CustomPropertySource),
-      created_at: S.String,
-      created_by: S.NullOr(S.Number),
-      updated_at: S.NullOr(S.String),
-      references: CustomPropertyDefinitionsCreateRequestReferencesList,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/custom_property_definitions/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "CustomPropertyDefinitionsCreateRequest",
-}) as any as S.Schema<CustomPropertyDefinitionsCreateRequest>;
-
-/** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
-export type CustomPropertyDefinitionOptionsList = CustomPropertyOption[];
-export const CustomPropertyDefinitionOptionsList = /*@__PURE__*/ S.Array(
-  CustomPropertyOption,
-) as any as S.Schema<CustomPropertyDefinitionOptionsList>;
-
-/** Workflows that use this property, resolved by definition id. */
-export type CustomPropertyDefinitionReferencesList = CustomPropertyReference[];
+export type CustomPropertyDefinitionReferencesList =
+  ReadonlyArray<CustomPropertyReference>;
 export const CustomPropertyDefinitionReferencesList = /*@__PURE__*/ S.Array(
   CustomPropertyReference,
 ) as any as S.Schema<CustomPropertyDefinitionReferencesList>;
@@ -373,7 +350,7 @@ export const CustomPropertyDefinitionsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CustomPropertyDefinitionsListRequest>;
 
 export type PaginatedCustomPropertyDefinitionListResultsList =
-  CustomPropertyDefinition[];
+  ReadonlyArray<CustomPropertyDefinition>;
 export const PaginatedCustomPropertyDefinitionListResultsList =
   /*@__PURE__*/ S.Array(
     CustomPropertyDefinition,
@@ -399,19 +376,11 @@ export const PaginatedCustomPropertyDefinitionList = /*@__PURE__*/ S.suspend(
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type CustomPropertyDefinitionsPartialUpdateRequestOptionsList =
-  CustomPropertyOption[];
+  ReadonlyArray<CustomPropertyOption>;
 export const CustomPropertyDefinitionsPartialUpdateRequestOptionsList =
   /*@__PURE__*/ S.Array(
     CustomPropertyOption,
   ) as any as S.Schema<CustomPropertyDefinitionsPartialUpdateRequestOptionsList>;
-
-/** Workflows that use this property, resolved by definition id. */
-export type CustomPropertyDefinitionsPartialUpdateRequestReferencesList =
-  CustomPropertyReference[];
-export const CustomPropertyDefinitionsPartialUpdateRequestReferencesList =
-  /*@__PURE__*/ S.Array(
-    CustomPropertyReference,
-  ) as any as S.Schema<CustomPropertyDefinitionsPartialUpdateRequestReferencesList>;
 
 export interface CustomPropertyDefinitionsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -431,13 +400,6 @@ export interface CustomPropertyDefinitionsPartialUpdateRequest {
   is_big_number?: boolean;
   /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
   options?: CustomPropertyDefinitionsPartialUpdateRequestOptionsList | null;
-  /** The data-warehouse view-sync binding feeding this property, or null when values are set manually. */
-  source?: CustomPropertySource | null;
-  created_at?: string;
-  created_by?: number | null;
-  updated_at?: string | null;
-  /** Workflows that use this property, resolved by definition id. */
-  references?: CustomPropertyDefinitionsPartialUpdateRequestReferencesList;
 }
 export const CustomPropertyDefinitionsPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -452,13 +414,6 @@ export const CustomPropertyDefinitionsPartialUpdateRequest =
       is_big_number: S.optional(S.Boolean),
       options: S.optional(
         S.NullOr(CustomPropertyDefinitionsPartialUpdateRequestOptionsList),
-      ),
-      source: S.optional(S.NullOr(CustomPropertySource)),
-      created_at: S.optional(S.String),
-      created_by: S.optional(S.NullOr(S.Number)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      references: S.optional(
-        CustomPropertyDefinitionsPartialUpdateRequestReferencesList,
       ),
     }).pipe(
       T.Http({
@@ -494,19 +449,11 @@ export const CustomPropertyDefinitionsRetrieveRequest = /*@__PURE__*/ S.suspend(
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type CustomPropertyDefinitionsUpdateRequestOptionsList =
-  CustomPropertyOption[];
+  ReadonlyArray<CustomPropertyOption>;
 export const CustomPropertyDefinitionsUpdateRequestOptionsList =
   /*@__PURE__*/ S.Array(
     CustomPropertyOption,
   ) as any as S.Schema<CustomPropertyDefinitionsUpdateRequestOptionsList>;
-
-/** Workflows that use this property, resolved by definition id. */
-export type CustomPropertyDefinitionsUpdateRequestReferencesList =
-  CustomPropertyReference[];
-export const CustomPropertyDefinitionsUpdateRequestReferencesList =
-  /*@__PURE__*/ S.Array(
-    CustomPropertyReference,
-  ) as any as S.Schema<CustomPropertyDefinitionsUpdateRequestReferencesList>;
 
 export interface CustomPropertyDefinitionsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -526,13 +473,6 @@ export interface CustomPropertyDefinitionsUpdateRequest {
   is_big_number?: boolean;
   /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
   options?: CustomPropertyDefinitionsUpdateRequestOptionsList | null;
-  /** The data-warehouse view-sync binding feeding this property, or null when values are set manually. */
-  source: CustomPropertySource | null;
-  created_at: string;
-  created_by: number | null;
-  updated_at: string | null;
-  /** Workflows that use this property, resolved by definition id. */
-  references: CustomPropertyDefinitionsUpdateRequestReferencesList;
 }
 export const CustomPropertyDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -548,11 +488,6 @@ export const CustomPropertyDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(
       options: S.optional(
         S.NullOr(CustomPropertyDefinitionsUpdateRequestOptionsList),
       ),
-      source: S.NullOr(CustomPropertySource),
-      created_at: S.String,
-      created_by: S.NullOr(S.Number),
-      updated_at: S.NullOr(S.String),
-      references: CustomPropertyDefinitionsUpdateRequestReferencesList,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -604,7 +539,7 @@ export const CustomPropertyValueSuggestion = /*@__PURE__*/ S.suspend(() =>
 
 /** Suggested values matching the search input. */
 export type CustomPropertyValueSuggestionsResponseResultsList =
-  CustomPropertyValueSuggestion[];
+  ReadonlyArray<CustomPropertyValueSuggestion>;
 export const CustomPropertyValueSuggestionsResponseResultsList =
   /*@__PURE__*/ S.Array(
     CustomPropertyValueSuggestion,

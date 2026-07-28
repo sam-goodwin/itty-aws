@@ -531,16 +531,58 @@
             "smithy.api#documentation": "Name of RegistryEndpoint resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#RegistryEndpointPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#RegistryEndpointPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Container Registry endpoint hostname.",
+            "smithy.api#required": {}
+          }
+        },
+        "authentication": {
+          "target": "com.azure.iotoperations#RegistryEndpointAuthentication",
+          "traits": {
+            "smithy.api#documentation": "The authentication settings for the Azure Container Registry.",
+            "smithy.api#required": {}
+          }
+        },
+        "codeSigningCas": {
+          "target": "com.azure.iotoperations#RegistryEndpointPropertiesInputCodeSigningCasList",
+          "traits": {
+            "smithy.api#documentation": "The signing certificate authorities used by artifacts in the registry endpoint"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "RegistryEndpoint properties"
+      }
+    },
+    "com.azure.iotoperations#RegistryEndpointPropertiesInputCodeSigningCasList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.iotoperations#RegistryEndpointTrustedSigningKey"
+      },
+      "traits": {
+        "smithy.api#documentation": "The signing certificate authorities used by artifacts in the registry endpoint"
       }
     },
     "com.azure.iotoperations#RegistryEndpointGet": {
@@ -1644,16 +1686,77 @@
             "smithy.api#documentation": "Name of Instance dataflowProfile dataflow resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#DataflowPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#DataflowPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.azure.iotoperations#DataflowPropertiesInputMode",
+          "traits": {
+            "smithy.api#documentation": "Mode for Dataflow. Optional; defaults to Enabled."
+          }
+        },
+        "requestDiskPersistence": {
+          "target": "com.azure.iotoperations#OperationalMode",
+          "traits": {
+            "smithy.api#documentation": "Disk persistence mode."
+          }
+        },
+        "operations": {
+          "target": "com.azure.iotoperations#DataflowPropertiesInputOperationsList",
+          "traits": {
+            "smithy.api#documentation": "List of operations including source and destination references as well as transformation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dataflow Resource properties"
+      }
+    },
+    "com.azure.iotoperations#DataflowPropertiesInputOperationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.iotoperations#DataflowOperation"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of operations including source and destination references as well as transformation."
+      }
+    },
+    "com.azure.iotoperations#DataflowPropertiesInputMode": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Mode for Dataflow. Optional; defaults to Enabled."
       }
     },
     "com.azure.iotoperations#DataflowGet": {
@@ -2367,16 +2470,93 @@
             "smithy.api#documentation": "Name of Instance dataflowEndpoint resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#DataflowGraphPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#DataflowGraphPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.azure.iotoperations#DataflowGraphPropertiesInputMode",
+          "traits": {
+            "smithy.api#documentation": "The mode of the dataflow graph."
+          }
+        },
+        "requestDiskPersistence": {
+          "target": "com.azure.iotoperations#OperationalMode",
+          "traits": {
+            "smithy.api#documentation": "Disk persistence mode."
+          }
+        },
+        "nodes": {
+          "target": "com.azure.iotoperations#DataflowGraphPropertiesInputNodesList",
+          "traits": {
+            "smithy.api#documentation": "List of nodes in the dataflow graph.",
+            "smithy.api#required": {}
+          }
+        },
+        "nodeConnections": {
+          "target": "com.azure.iotoperations#DataflowGraphPropertiesInputNodeConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of connections between nodes in the dataflow graph.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DataflowGraph properties."
+      }
+    },
+    "com.azure.iotoperations#DataflowGraphPropertiesInputNodeConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.iotoperations#DataflowGraphNodeConnection"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of connections between nodes in the dataflow graph."
+      }
+    },
+    "com.azure.iotoperations#DataflowGraphPropertiesInputNodesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.iotoperations#DataflowGraphNode"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of nodes in the dataflow graph."
+      }
+    },
+    "com.azure.iotoperations#DataflowGraphPropertiesInputMode": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The mode of the dataflow graph."
       }
     },
     "com.azure.iotoperations#DataflowGraphGet": {
@@ -2912,16 +3092,41 @@
             "smithy.api#documentation": "Name of Instance dataflowProfile resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#DataflowProfilePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#DataflowProfilePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "diagnostics": {
+          "target": "com.azure.iotoperations#ProfileDiagnostics",
+          "traits": {
+            "smithy.api#documentation": "Spec defines the desired identities of NBC diagnostics settings."
+          }
+        },
+        "instanceCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "To manually scale the dataflow profile, specify the maximum number of instances you want to run."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DataflowProfile Resource properties"
       }
     },
     "com.azure.iotoperations#DataflowProfileGet": {
@@ -4596,16 +4801,84 @@
             "smithy.api#documentation": "Name of Instance dataflowEndpoint resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#DataflowEndpointPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#DataflowEndpointPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "endpointType": {
+          "target": "com.azure.iotoperations#EndpointType",
+          "traits": {
+            "smithy.api#documentation": "Endpoint Type.",
+            "smithy.api#required": {}
+          }
+        },
+        "hostType": {
+          "target": "com.azure.iotoperations#DataflowEndpointHostType",
+          "traits": {
+            "smithy.api#documentation": "The type of the Kafka host. E.g FabricRT, EventGrid."
+          }
+        },
+        "dataExplorerSettings": {
+          "target": "com.azure.iotoperations#DataflowEndpointDataExplorer",
+          "traits": {
+            "smithy.api#documentation": "Azure Data Explorer endpoint."
+          }
+        },
+        "dataLakeStorageSettings": {
+          "target": "com.azure.iotoperations#DataflowEndpointDataLakeStorage",
+          "traits": {
+            "smithy.api#documentation": "Azure Data Lake endpoint."
+          }
+        },
+        "fabricOneLakeSettings": {
+          "target": "com.azure.iotoperations#DataflowEndpointFabricOneLake",
+          "traits": {
+            "smithy.api#documentation": "Microsoft Fabric endpoint."
+          }
+        },
+        "kafkaSettings": {
+          "target": "com.azure.iotoperations#DataflowEndpointKafka",
+          "traits": {
+            "smithy.api#documentation": "Kafka endpoint."
+          }
+        },
+        "localStorageSettings": {
+          "target": "com.azure.iotoperations#DataflowEndpointLocalStorage",
+          "traits": {
+            "smithy.api#documentation": "Local persistent volume endpoint."
+          }
+        },
+        "mqttSettings": {
+          "target": "com.azure.iotoperations#DataflowEndpointMqtt",
+          "traits": {
+            "smithy.api#documentation": "Broker endpoint."
+          }
+        },
+        "openTelemetrySettings": {
+          "target": "com.azure.iotoperations#DataflowEndpointOpenTelemetry",
+          "traits": {
+            "smithy.api#documentation": "OpenTelemetry endpoint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource"
       }
     },
     "com.azure.iotoperations#DataflowEndpointGet": {
@@ -5468,16 +5741,83 @@
             "smithy.api#documentation": "Name of Instance broker listener resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#BrokerListenerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#BrokerListenerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "serviceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kubernetes Service name of this listener."
+          }
+        },
+        "ports": {
+          "target": "com.azure.iotoperations#BrokerListenerPropertiesInputPortsList",
+          "traits": {
+            "smithy.api#documentation": "Ports on which this listener accepts client connections.",
+            "smithy.api#required": {}
+          }
+        },
+        "serviceType": {
+          "target": "com.azure.iotoperations#BrokerListenerPropertiesInputServiceType",
+          "traits": {
+            "smithy.api#documentation": "Kubernetes Service type of this listener."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines a Broker listener. A listener is a collection of ports on which the broker accepts connections from clients."
+      }
+    },
+    "com.azure.iotoperations#BrokerListenerPropertiesInputServiceType": {
+      "type": "enum",
+      "members": {
+        "CLUSTERIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ClusterIp"
+          }
+        },
+        "LOADBALANCER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LoadBalancer"
+          }
+        },
+        "NODEPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NodePort"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Kubernetes Service type of this listener."
+      }
+    },
+    "com.azure.iotoperations#BrokerListenerPropertiesInputPortsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.iotoperations#ListenerPort"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ports on which this listener accepts client connections."
       }
     },
     "com.azure.iotoperations#BrokerListenerGet": {
@@ -6275,16 +6615,36 @@
             "smithy.api#documentation": "Name of Instance broker authorization resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#BrokerAuthorizationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#BrokerAuthorizationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "authorizationPolicies": {
+          "target": "com.azure.iotoperations#AuthorizationConfig",
+          "traits": {
+            "smithy.api#documentation": "The list of authorization policies supported by the Authorization Resource.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "BrokerAuthorization Resource properties"
       }
     },
     "com.azure.iotoperations#BrokerAuthorizationGet": {
@@ -7007,16 +7367,45 @@
             "smithy.api#documentation": "Name of Instance broker authentication resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#BrokerAuthenticationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#BrokerAuthenticationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "authenticationMethods": {
+          "target": "com.azure.iotoperations#BrokerAuthenticationPropertiesInputAuthenticationMethodsList",
+          "traits": {
+            "smithy.api#documentation": "Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "BrokerAuthentication Resource properties"
+      }
+    },
+    "com.azure.iotoperations#BrokerAuthenticationPropertiesInputAuthenticationMethodsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.iotoperations#BrokerAuthenticatorMethods"
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported."
       }
     },
     "com.azure.iotoperations#BrokerAuthenticationGet": {
@@ -8495,16 +8884,109 @@
             "smithy.api#documentation": "Name of broker."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#BrokerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#BrokerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "advanced": {
+          "target": "com.azure.iotoperations#AdvancedSettings",
+          "traits": {
+            "smithy.api#documentation": "Advanced settings of Broker."
+          }
+        },
+        "cardinality": {
+          "target": "com.azure.iotoperations#Cardinality",
+          "traits": {
+            "smithy.api#documentation": "The cardinality details of the broker."
+          }
+        },
+        "diagnostics": {
+          "target": "com.azure.iotoperations#BrokerDiagnostics",
+          "traits": {
+            "smithy.api#documentation": "Spec defines the desired identities of Broker diagnostics settings."
+          }
+        },
+        "diskBackedMessageBuffer": {
+          "target": "com.azure.iotoperations#DiskBackedMessageBuffer",
+          "traits": {
+            "smithy.api#documentation": "Settings of Disk Backed Message Buffer."
+          }
+        },
+        "generateResourceLimits": {
+          "target": "com.azure.iotoperations#GenerateResourceLimits",
+          "traits": {
+            "smithy.api#documentation": "This setting controls whether Kubernetes CPU resource limits are requested. Increasing the number of replicas or workers proportionally increases the amount of CPU resources requested. If this setting is enabled and there are insufficient CPU resources, an error will be emitted."
+          }
+        },
+        "highPriorityMessagesBackpressureHandling": {
+          "target": "com.azure.iotoperations#HighPriorityMessagesBackpressureHandling",
+          "traits": {
+            "smithy.api#documentation": "  Handling of high-priority messages in the event that regular-priority messages are being backpressured.\n\n  When set to \"Accept\", the broker continues to accept high-priority messages even while regular-priority messages are rejected due to backpressure.\n\n  When set to \"Reject\", backpressure also affects high-priority messages.\n\n  Defaults to \"Accept\"."
+          }
+        },
+        "memoryProfile": {
+          "target": "com.azure.iotoperations#BrokerPropertiesInputMemoryProfile",
+          "traits": {
+            "smithy.api#documentation": "Memory profile of Broker."
+          }
+        },
+        "persistence": {
+          "target": "com.azure.iotoperations#BrokerPersistence",
+          "traits": {
+            "smithy.api#documentation": "The persistence settings of the Broker."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Broker Resource properties"
+      }
+    },
+    "com.azure.iotoperations#BrokerPropertiesInputMemoryProfile": {
+      "type": "enum",
+      "members": {
+        "TINY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tiny"
+          }
+        },
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "High"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Memory profile of Broker."
       }
     },
     "com.azure.iotoperations#BrokerGet": {
@@ -8926,16 +9408,28 @@
             "smithy.api#documentation": "Name of AkriService resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#AkriServicePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#AkriServicePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "AkriService properties."
       }
     },
     "com.azure.iotoperations#AkriServiceGet": {
@@ -9448,16 +9942,28 @@
             "smithy.api#documentation": "Name of AkriConnector resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#AkriConnectorPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#AkriConnectorPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "AkriConnector properties."
       }
     },
     "com.azure.iotoperations#AkriConnectorGet": {
@@ -10158,16 +10664,76 @@
             "smithy.api#documentation": "Name of AkriConnectorTemplate resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.iotoperations#AkriConnectorTemplatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#AkriConnectorTemplatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "aioMetadata": {
+          "target": "com.azure.iotoperations#AkriConnectorTemplateAioMetadata",
+          "traits": {
+            "smithy.api#documentation": "Metadata about AIO."
+          }
+        },
+        "runtimeConfiguration": {
+          "target": "com.azure.iotoperations#AkriConnectorTemplateRuntimeConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The runtime configuration for the Connector template.",
+            "smithy.api#required": {}
+          }
+        },
+        "diagnostics": {
+          "target": "com.azure.iotoperations#AkriConnectorTemplateDiagnostics",
+          "traits": {
+            "smithy.api#documentation": "Diagnostics settings for the Connector template."
+          }
+        },
+        "deviceInboundEndpointTypes": {
+          "target": "com.azure.iotoperations#AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList",
+          "traits": {
+            "smithy.api#documentation": "Device inbound endpoint types.",
+            "smithy.api#required": {}
+          }
+        },
+        "mqttConnectionConfiguration": {
+          "target": "com.azure.iotoperations#AkriConnectorsMqttConnectionConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Mqtt connection configuration settings."
+          }
+        },
+        "connectorMetadataRef": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A reference to a connector metadata document reference in a container registry."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "AkriConnectorTemplate properties."
+      }
+    },
+    "com.azure.iotoperations#AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.iotoperations#AkriConnectorTemplateDeviceInboundEndpointType"
+      },
+      "traits": {
+        "smithy.api#documentation": "Device inbound endpoint types."
       }
     },
     "com.azure.iotoperations#AkriConnectorTemplateGet": {
@@ -10868,16 +11434,69 @@
             "smithy.api#documentation": "Name of instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.iotoperations#InstanceUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.iotoperations#InstanceUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#InstanceUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.iotoperations#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.iotoperations#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.iotoperations#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.iotoperations#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.iotoperations#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.iotoperations#InstanceUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.iotoperations#InstanceCreateOrUpdate": {
@@ -11031,16 +11650,121 @@
             "smithy.api#documentation": "Name of instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.iotoperations#InstanceCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.iotoperations#InstancePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.iotoperations#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Edge location of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.iotoperations#InstanceCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.iotoperations#InstanceCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.iotoperations#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.iotoperations#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.iotoperations#InstancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Detailed description of the Instance."
+          }
+        },
+        "schemaRegistryRef": {
+          "target": "com.azure.iotoperations#SchemaRegistryRef",
+          "traits": {
+            "smithy.api#documentation": "The reference to the Schema Registry for this AIO Instance.",
+            "smithy.api#required": {}
+          }
+        },
+        "defaultSecretProviderClassRef": {
+          "target": "com.azure.iotoperations#SecretProviderClassRef",
+          "traits": {
+            "smithy.api#documentation": "The reference to the AIO Secret provider class."
+          }
+        },
+        "features": {
+          "target": "com.azure.iotoperations#InstancePropertiesInputFeaturesMap",
+          "traits": {
+            "smithy.api#documentation": "The features of the AIO Instance."
+          }
+        },
+        "adrNamespaceRef": {
+          "target": "com.azure.iotoperations#AzureDeviceRegistryNamespaceRef",
+          "traits": {
+            "smithy.api#documentation": "The Azure Device Registry Namespace used by Assets, Discovered Assets and devices"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the Instance resource."
+      }
+    },
+    "com.azure.iotoperations#InstancePropertiesInputFeaturesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.iotoperations#InstanceFeature"
+      },
+      "traits": {
+        "smithy.api#documentation": "The features of the AIO Instance."
+      }
+    },
+    "com.azure.iotoperations#InstanceCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.iotoperations#InstanceGet": {

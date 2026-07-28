@@ -105,8 +105,7 @@ export const GetAccountsLfpMerchantStatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type LfpStoreStateMatchingStateEnum =
   | "STORE_MATCHING_STATE_UNSPECIFIED"
   | "STORE_MATCHING_STATE_MATCHED"
-  | "STORE_MATCHING_STATE_FAILED"
-  | (string & {});
+  | "STORE_MATCHING_STATE_FAILED";
 export const LfpStoreStateMatchingStateEnum = /*@__PURE__*/ S.String;
 
 /** The state of a specific merchant's store. */
@@ -126,7 +125,7 @@ export const LfpStoreState = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LfpStoreState" }) as any as S.Schema<LfpStoreState>;
 
-export type LfpStoreStateList = LfpStoreState[];
+export type LfpStoreStateList = ReadonlyArray<LfpStoreState>;
 export const LfpStoreStateList = /*@__PURE__*/ S.Array(
   LfpStoreState,
 ) as any as S.Schema<LfpStoreStateList>;
@@ -135,8 +134,7 @@ export type CountrySettingsInventoryVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFICATION_STATE_NOT_APPROVED"
   | "VERIFICATION_STATE_IN_PROGRESS"
-  | "VERIFICATION_STATE_APPROVED"
-  | (string & {});
+  | "VERIFICATION_STATE_APPROVED";
 export const CountrySettingsInventoryVerificationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -144,8 +142,7 @@ export type CountrySettingsPickupServingVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFICATION_STATE_NOT_APPROVED"
   | "VERIFICATION_STATE_IN_PROGRESS"
-  | "VERIFICATION_STATE_APPROVED"
-  | (string & {});
+  | "VERIFICATION_STATE_APPROVED";
 export const CountrySettingsPickupServingVerificationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -153,8 +150,7 @@ export type CountrySettingsInstockServingVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFICATION_STATE_NOT_APPROVED"
   | "VERIFICATION_STATE_IN_PROGRESS"
-  | "VERIFICATION_STATE_APPROVED"
-  | (string & {});
+  | "VERIFICATION_STATE_APPROVED";
 export const CountrySettingsInstockServingVerificationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -162,8 +158,7 @@ export type CountrySettingsProductPageTypeEnum =
   | "PRODUCT_PAGE_TYPE_UNSPECIFIED"
   | "GOOGLE_HOSTED"
   | "MERCHANT_HOSTED"
-  | "MERCHANT_HOSTED_STORE_SPECIFIC"
-  | (string & {});
+  | "MERCHANT_HOSTED_STORE_SPECIFIC";
 export const CountrySettingsProductPageTypeEnum = /*@__PURE__*/ S.String;
 
 /** Country-specific settings for the merchant. */
@@ -203,7 +198,7 @@ export const CountrySettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "CountrySettings",
 }) as any as S.Schema<CountrySettings>;
 
-export type CountrySettingsList = CountrySettings[];
+export type CountrySettingsList = ReadonlyArray<CountrySettings>;
 export const CountrySettingsList = /*@__PURE__*/ S.Array(
   CountrySettings,
 ) as any as S.Schema<CountrySettingsList>;
@@ -271,7 +266,7 @@ export const GetAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsLfpStoresRequest",
 }) as any as S.Schema<GetAccountsLfpStoresRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -279,8 +274,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type LfpStoreMatchingStateEnum =
   | "STORE_MATCHING_STATE_UNSPECIFIED"
   | "STORE_MATCHING_STATE_MATCHED"
-  | "STORE_MATCHING_STATE_FAILED"
-  | (string & {});
+  | "STORE_MATCHING_STATE_FAILED";
 export const LfpStoreMatchingStateEnum = /*@__PURE__*/ S.String;
 
 /** A store for the merchant. This will be used to match to a store under the Google Business Profile of the target merchant. If a matching store can't be found, the inventories or sales submitted with the store code will not be used. */
@@ -522,7 +516,7 @@ export const ListAccountsLfpStoresRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsLfpStoresRequest",
 }) as any as S.Schema<ListAccountsLfpStoresRequest>;
 
-export type LfpStoreList = LfpStore[];
+export type LfpStoreList = ReadonlyArray<LfpStore>;
 export const LfpStoreList = /*@__PURE__*/ S.Array(
   LfpStore,
 ) as any as S.Schema<LfpStoreList>;

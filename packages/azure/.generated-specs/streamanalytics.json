@@ -623,16 +623,49 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.streamanalytics#ClustersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "sku": {
+          "target": "com.azure.streamanalytics#ClusterSku"
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#ClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties associated with a Stream Analytics cluster."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.streamanalytics#ClusterPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The properties associated with a Stream Analytics cluster."
+      }
+    },
+    "com.azure.streamanalytics#ClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.streamanalytics#ClustersCreateOrUpdate": {
@@ -746,16 +779,42 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.streamanalytics#ClustersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "sku": {
+          "target": "com.azure.streamanalytics#ClusterSku"
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#ClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties associated with a Stream Analytics cluster."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.streamanalytics#ClustersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.streamanalytics#ClustersGet": {
@@ -1055,10 +1114,11 @@
             "smithy.api#documentation": "The name of the function."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "bindingType": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Indicates the function binding type.",
+            "smithy.api#required": {}
           }
         }
       },
@@ -1160,15 +1220,39 @@
             "smithy.api#documentation": "The name of the function."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#FunctionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with a function."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.streamanalytics#FunctionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the type of function.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#FunctionConfiguration"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that are associated with a function."
       }
     },
     "com.azure.streamanalytics#FunctionsListByStreamingJob": {
@@ -1435,11 +1519,16 @@
             "smithy.api#documentation": "The name of the function."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#FunctionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with a function."
           }
         }
       },
@@ -1533,11 +1622,16 @@
             "smithy.api#documentation": "The name of the function."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#FunctionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with a function."
           }
         }
       },
@@ -1710,15 +1804,142 @@
             "smithy.api#documentation": "The name of the input."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#InputPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with an input. Required on PUT (CreateOrReplace) requests."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.streamanalytics#InputPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the input is a source of reference data or stream data. Required on PUT (CreateOrReplace) requests.",
+            "smithy.api#required": {}
+          }
+        },
+        "serialization": {
+          "target": "com.azure.streamanalytics#Serialization",
+          "traits": {
+            "smithy.api#documentation": "Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests."
+          }
+        },
+        "compression": {
+          "target": "com.azure.streamanalytics#Compression",
+          "traits": {
+            "smithy.api#documentation": "Describes how input data is compressed"
+          }
+        },
+        "partitionKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "partitionKey Describes a key in the input data which is used for partitioning the input data"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that are associated with an input."
+      }
+    },
+    "com.azure.streamanalytics#Compression": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.streamanalytics#CompressionType",
+          "traits": {
+            "smithy.api#documentation": "Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes how input data is compressed"
+      }
+    },
+    "com.azure.streamanalytics#CompressionType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "GZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GZip"
+          }
+        },
+        "DEFLATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deflate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests."
+      }
+    },
+    "com.azure.streamanalytics#Serialization": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.streamanalytics#EventSerializationType",
+          "traits": {
+            "smithy.api#documentation": "Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes how data from an input is serialized or how data is serialized when written to an output."
+      }
+    },
+    "com.azure.streamanalytics#EventSerializationType": {
+      "type": "enum",
+      "members": {
+        "CSV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Csv"
+          }
+        },
+        "AVRO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Avro"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Json"
+          }
+        },
+        "PARQUET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Parquet"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests."
       }
     },
     "com.azure.streamanalytics#InputsListByStreamingJob": {
@@ -1846,47 +2067,6 @@
         "smithy.api#documentation": "The properties that are associated with an input."
       }
     },
-    "com.azure.streamanalytics#Compression": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.azure.streamanalytics#CompressionType",
-          "traits": {
-            "smithy.api#documentation": "Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Describes how input data is compressed"
-      }
-    },
-    "com.azure.streamanalytics#CompressionType": {
-      "type": "enum",
-      "members": {
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "None"
-          }
-        },
-        "GZIP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "GZip"
-          }
-        },
-        "DEFLATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Deflate"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests."
-      }
-    },
     "com.azure.streamanalytics#Diagnostics": {
       "type": "structure",
       "members": {
@@ -1934,53 +2114,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Condition applicable to the resource, or to the job overall, that warrant customer attention."
-      }
-    },
-    "com.azure.streamanalytics#Serialization": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.azure.streamanalytics#EventSerializationType",
-          "traits": {
-            "smithy.api#documentation": "Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Describes how data from an input is serialized or how data is serialized when written to an output."
-      }
-    },
-    "com.azure.streamanalytics#EventSerializationType": {
-      "type": "enum",
-      "members": {
-        "CSV": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Csv"
-          }
-        },
-        "AVRO": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Avro"
-          }
-        },
-        "JSON": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Json"
-          }
-        },
-        "PARQUET": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Parquet"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests."
       }
     },
     "com.azure.streamanalytics#InputsListByStreamingJobRequest": {
@@ -2167,11 +2300,16 @@
             "smithy.api#documentation": "The name of the input."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#InputPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with an input. Required on PUT (CreateOrReplace) requests."
           }
         }
       },
@@ -2265,11 +2403,16 @@
             "smithy.api#documentation": "The name of the input."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#InputPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with an input. Required on PUT (CreateOrReplace) requests."
           }
         }
       },
@@ -2442,15 +2585,96 @@
             "smithy.api#documentation": "The name of the output."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#OutputPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with an output. Required on PUT (CreateOrReplace) requests."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.streamanalytics#OutputPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "datasource": {
+          "target": "com.azure.streamanalytics#OutputDataSource",
+          "traits": {
+            "smithy.api#documentation": "Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests."
+          }
+        },
+        "timeWindow": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time frame for filtering Stream Analytics job outputs."
+          }
+        },
+        "sizeWindow": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The size window to constrain a Stream Analytics output to."
+          }
+        },
+        "serialization": {
+          "target": "com.azure.streamanalytics#OutputPropertiesInputSerialization",
+          "traits": {
+            "smithy.api#documentation": "Describes how data from an input is serialized or how data is serialized when written to an output."
+          }
+        },
+        "diagnostics": {
+          "target": "com.azure.streamanalytics#OutputPropertiesInputDiagnostics",
+          "traits": {
+            "smithy.api#documentation": "Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that are associated with an output."
+      }
+    },
+    "com.azure.streamanalytics#OutputPropertiesInputDiagnostics": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention."
+      }
+    },
+    "com.azure.streamanalytics#OutputPropertiesInputSerialization": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.streamanalytics#EventSerializationType",
+          "traits": {
+            "smithy.api#documentation": "Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes how data from an input is serialized or how data is serialized when written to an output."
+      }
+    },
+    "com.azure.streamanalytics#OutputDataSource": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the data source that output will be written to."
       }
     },
     "com.azure.streamanalytics#OutputsListByStreamingJob": {
@@ -2613,21 +2837,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Describes how data from an input is serialized or how data is serialized when written to an output."
-      }
-    },
-    "com.azure.streamanalytics#OutputDataSource": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Describes the data source that output will be written to."
       }
     },
     "com.azure.streamanalytics#OutputsListByStreamingJobRequest": {
@@ -2814,11 +3023,16 @@
             "smithy.api#documentation": "The name of the output."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#OutputPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with an output. Required on PUT (CreateOrReplace) requests."
           }
         }
       },
@@ -2912,11 +3126,16 @@
             "smithy.api#documentation": "The name of the output."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#OutputPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with an output. Required on PUT (CreateOrReplace) requests."
           }
         }
       },
@@ -3394,16 +3613,94 @@
             "smithy.api#documentation": "The name of the private endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.streamanalytics#PrivateEndpointPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties associated with a private endpoint."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.streamanalytics#PrivateEndpointPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "manualPrivateLinkServiceConnections": {
+          "target": "com.azure.streamanalytics#PrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of connections to the remote resource. Immutable after it is set."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties associated with a private endpoint."
+      }
+    },
+    "com.azure.streamanalytics#PrivateEndpointPropertiesInputManualPrivateLinkServiceConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.streamanalytics#PrivateLinkServiceConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of connections to the remote resource. Immutable after it is set."
+      }
+    },
+    "com.azure.streamanalytics#PrivateLinkServiceConnectionInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.streamanalytics#PrivateLinkServiceConnectionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Bag of properties defining a privatelinkServiceConnection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A grouping of information about the connection to the remote resource."
+      }
+    },
+    "com.azure.streamanalytics#PrivateLinkServiceConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateLinkServiceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the private link service. Required on PUT (CreateOrUpdate) requests."
+          }
+        },
+        "groupIds": {
+          "target": "com.azure.streamanalytics#PrivateLinkServiceConnectionPropertiesInputGroupIdsList",
+          "traits": {
+            "smithy.api#documentation": "The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.streamanalytics#PrivateLinkConnectionStateInput",
+          "traits": {
+            "smithy.api#documentation": "A collection of read-only information about the state of the connection to the private remote resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bag of properties defining a privatelinkServiceConnection."
+      }
+    },
+    "com.azure.streamanalytics#PrivateLinkConnectionStateInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "A collection of read-only information about the state of the connection to the private remote resource."
+      }
+    },
+    "com.azure.streamanalytics#PrivateLinkServiceConnectionPropertiesInputGroupIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests."
       }
     },
     "com.azure.streamanalytics#PrivateEndpointsGet": {
@@ -3549,10 +3846,10 @@
             "smithy.api#documentation": "The name of the streaming job."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "streamingUnits": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Specifies the number of streaming units that the streaming job will scale to."
           }
         }
       },
@@ -3657,15 +3954,47 @@
             "smithy.api#documentation": "The name of the streaming job."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "outputStartMode": {
+          "target": "com.azure.streamanalytics#OutputStartMode",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time."
+          }
+        },
+        "outputStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null to indicate that the output event stream will start whenever the streaming job is started. This property must have a value if outputStartMode is set to CustomTime."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.streamanalytics#OutputStartMode": {
+      "type": "enum",
+      "members": {
+        "JOBSTARTTIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JobStartTime"
+          }
+        },
+        "CUSTOMTIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CustomTime"
+          }
+        },
+        "LASTOUTPUTEVENTTIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LastOutputEventTime"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time."
       }
     },
     "com.azure.streamanalytics#StreamingJobsList": {
@@ -4280,32 +4609,6 @@
         "smithy.api#documentation": "Indicates the policy to apply to events that arrive out of order in the input event stream."
       }
     },
-    "com.azure.streamanalytics#OutputStartMode": {
-      "type": "enum",
-      "members": {
-        "JOBSTARTTIME": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "JobStartTime"
-          }
-        },
-        "CUSTOMTIME": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CustomTime"
-          }
-        },
-        "LASTOUTPUTEVENTTIME": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LastOutputEventTime"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time."
-      }
-    },
     "com.azure.streamanalytics#StreamingJobPropertiesJobType": {
       "type": "enum",
       "members": {
@@ -4598,16 +4901,351 @@
             "smithy.api#documentation": "The name of the streaming job."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.streamanalytics#StreamingJobsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#StreamingJobPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with a streaming job.  Required on PUT (CreateOrReplace) requests."
+          }
+        },
+        "identity": {
+          "target": "com.azure.streamanalytics#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.streamanalytics#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes how identity is verified"
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sku": {
+          "target": "com.azure.streamanalytics#Sku",
+          "traits": {
+            "smithy.api#documentation": "Describes the SKU of the streaming job. Required on PUT (CreateOrReplace) requests."
+          }
+        },
+        "jobType": {
+          "target": "com.azure.streamanalytics#StreamingJobPropertiesInputJobType",
+          "traits": {
+            "smithy.api#documentation": "Describes the type of the job. Valid modes are `Cloud` and 'Edge'."
+          }
+        },
+        "outputStartMode": {
+          "target": "com.azure.streamanalytics#OutputStartMode",
+          "traits": {
+            "smithy.api#documentation": "This property should only be utilized when it is desired that the job be started immediately upon creation. Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time."
+          }
+        },
+        "outputStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null to indicate that the output event stream will start whenever the streaming job is started. This property must have a value if outputStartMode is set to CustomTime."
+          }
+        },
+        "eventsOutOfOrderPolicy": {
+          "target": "com.azure.streamanalytics#EventsOutOfOrderPolicy",
+          "traits": {
+            "smithy.api#documentation": "Indicates the policy to apply to events that arrive out of order in the input event stream."
+          }
+        },
+        "outputErrorPolicy": {
+          "target": "com.azure.streamanalytics#OutputErrorPolicy",
+          "traits": {
+            "smithy.api#documentation": "Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size)."
+          }
+        },
+        "eventsOutOfOrderMaxDelayInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum tolerable delay in seconds where out-of-order events can be adjusted to be back in order."
+          }
+        },
+        "eventsLateArrivalMaxDelayInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum tolerable delay in seconds where events arriving late could be included.  Supported range is -1 to 1814399 (20.23:59:59 days) and -1 is used to specify wait indefinitely. If the property is absent, it is interpreted to have a value of -1."
+          }
+        },
+        "dataLocale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The data locale of the stream analytics job. Value should be the name of a supported .NET Culture from the set https://msdn.microsoft.com/en-us/library/system.globalization.culturetypes(v=vs.110).aspx. Defaults to 'en-US' if none specified."
+          }
+        },
+        "compatibilityLevel": {
+          "target": "com.azure.streamanalytics#CompatibilityLevel",
+          "traits": {
+            "smithy.api#documentation": "Controls certain runtime behaviors of the streaming job."
+          }
+        },
+        "inputs": {
+          "target": "com.azure.streamanalytics#StreamingJobPropertiesInputInputsList",
+          "traits": {
+            "smithy.api#documentation": "A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input."
+          }
+        },
+        "transformation": {
+          "target": "com.azure.streamanalytics#StreamingJobPropertiesInputTransformation",
+          "traits": {
+            "smithy.api#documentation": "A transformation object, containing all information associated with the named transformation. All transformations are contained under a streaming job."
+          }
+        },
+        "outputs": {
+          "target": "com.azure.streamanalytics#StreamingJobPropertiesInputOutputsList",
+          "traits": {
+            "smithy.api#documentation": "A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output."
+          }
+        },
+        "functions": {
+          "target": "com.azure.streamanalytics#StreamingJobPropertiesInputFunctionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation."
+          }
+        },
+        "jobStorageAccount": {
+          "target": "com.azure.streamanalytics#JobStorageAccount",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with an Azure Storage account with MSI"
+          }
+        },
+        "contentStoragePolicy": {
+          "target": "com.azure.streamanalytics#StreamingJobPropertiesInputContentStoragePolicy",
+          "traits": {
+            "smithy.api#documentation": "Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. ."
+          }
+        },
+        "cluster": {
+          "target": "com.azure.streamanalytics#ClusterInfo",
+          "traits": {
+            "smithy.api#documentation": "The cluster which streaming jobs will run on."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that are associated with a streaming job."
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobPropertiesInputContentStoragePolicy": {
+      "type": "enum",
+      "members": {
+        "SYSTEMACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAccount"
+          }
+        },
+        "JOBSTORAGEACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JobStorageAccount"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. ."
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobPropertiesInputFunctionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.streamanalytics#StreamingJobPropertiesInputFunctionsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation."
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobPropertiesInputFunctionsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#FunctionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with a function."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A function object, containing all information associated with the named function. All functions are contained under a streaming job."
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobPropertiesInputOutputsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.streamanalytics#StreamingJobPropertiesInputOutputsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output."
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobPropertiesInputOutputsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#OutputPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with an output. Required on PUT (CreateOrReplace) requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An output object, containing all information associated with the named output. All outputs are contained under a streaming job."
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobPropertiesInputTransformation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#TransformationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A transformation object, containing all information associated with the named transformation. All transformations are contained under a streaming job."
+      }
+    },
+    "com.azure.streamanalytics#TransformationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "streamingUnits": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of streaming units that the streaming job uses."
+          }
+        },
+        "validStreamingUnits": {
+          "target": "com.azure.streamanalytics#TransformationPropertiesInputValidStreamingUnitsList",
+          "traits": {
+            "smithy.api#documentation": "Specifies the valid streaming units a streaming job can scale to."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the query that will be run in the streaming job. You can learn more about the Stream Analytics Query Language (SAQL) here: https://msdn.microsoft.com/library/azure/dn834998 . Required on PUT (CreateOrReplace) requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that are associated with a transformation."
+      }
+    },
+    "com.azure.streamanalytics#TransformationPropertiesInputValidStreamingUnitsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the valid streaming units a streaming job can scale to."
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobPropertiesInputInputsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.streamanalytics#StreamingJobPropertiesInputInputsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input."
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobPropertiesInputInputsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#InputPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with an input. Required on PUT (CreateOrReplace) requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An input object, containing all information associated with the named input. All inputs are contained under a streaming job."
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobPropertiesInputJobType": {
+      "type": "enum",
+      "members": {
+        "CLOUD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cloud"
+          }
+        },
+        "EDGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Edge"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the type of the job. Valid modes are `Cloud` and 'Edge'."
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.streamanalytics#StreamingJobsCreateOrReplace": {
@@ -4718,16 +5356,45 @@
             "smithy.api#documentation": "The name of the streaming job."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.streamanalytics#StreamingJobsCreateOrReplaceRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#StreamingJobPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with a streaming job.  Required on PUT (CreateOrReplace) requests."
+          }
+        },
+        "identity": {
+          "target": "com.azure.streamanalytics#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.streamanalytics#StreamingJobsCreateOrReplaceRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.streamanalytics#StreamingJobsGet": {
@@ -5160,11 +5827,16 @@
             "smithy.api#documentation": "The name of the transformation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#TransformationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests."
           }
         }
       },
@@ -5258,11 +5930,16 @@
             "smithy.api#documentation": "The name of the transformation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource name"
+          }
+        },
+        "properties": {
+          "target": "com.azure.streamanalytics#TransformationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that are associated with a transformation. Required on PUT (CreateOrReplace) requests."
           }
         }
       },

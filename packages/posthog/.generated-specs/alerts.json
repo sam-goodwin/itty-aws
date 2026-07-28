@@ -99,7 +99,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.alerts#UserBasic"
+          "target": "com.posthog.alerts#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -1611,14 +1614,23 @@
         "smithy.api#documentation": "User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object."
       }
     },
-    "com.posthog.alerts#AlertsCreateRequestChecksList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.alerts#AlertCheck"
+    "com.posthog.alerts#ThresholdInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name for the threshold."
+          }
+        },
+        "configuration": {
+          "target": "com.posthog.alerts#InsightThreshold",
+          "traits": {
+            "smithy.api#documentation": "Threshold bounds and type. Includes bounds (lower/upper floats) and type (absolute or percentage). For threshold-based alerts (no detector_config), at least one of lower or upper must be set."
+          }
+        }
       },
-      "traits": {
-        "smithy.api#documentation": "Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve."
-      }
+      "traits": {}
     },
     "com.posthog.alerts#AlertsCreateRequest": {
       "type": "structure",
@@ -1630,15 +1642,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.alerts#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         },
         "insight": {
           "target": "smithy.api#Integer",
@@ -1659,7 +1662,7 @@
           }
         },
         "threshold": {
-          "target": "com.posthog.alerts#Threshold",
+          "target": "com.posthog.alerts#ThresholdInput",
           "traits": {
             "smithy.api#documentation": "Threshold configuration with bounds and type for evaluating the alert."
           }
@@ -1671,47 +1674,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "state": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Current alert state: Firing, Not firing, Errored, or Snoozed."
-          }
-        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the alert is actively being evaluated."
-          }
-        },
-        "last_notified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_checked_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "next_check_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "checks": {
-          "target": "com.posthog.alerts#AlertsCreateRequestChecksList",
-          "traits": {
-            "smithy.api#documentation": "Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve."
-          }
-        },
-        "checks_total": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Total alert checks matching the retrieve filters (date window). Only set on alert retrieve; omitted otherwise.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "config": {
@@ -1754,13 +1720,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "last_value": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The last calculated value from the most recent alert check.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "investigation_agent_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -1777,13 +1736,6 @@
           "target": "com.posthog.alerts#InvestigationInconclusiveActionEnum",
           "traits": {
             "smithy.api#documentation": "How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting.\n\n* `notify` - Notify\n* `suppress` - Suppress"
-          }
-        },
-        "search_match_type": {
-          "target": "com.posthog.alerts#SearchMatchTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1906,15 +1858,6 @@
         "smithy.api#documentation": "User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object."
       }
     },
-    "com.posthog.alerts#AlertsUpdateRequestChecksList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.alerts#AlertCheck"
-      },
-      "traits": {
-        "smithy.api#documentation": "Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve."
-      }
-    },
     "com.posthog.alerts#AlertsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1933,12 +1876,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this alert configuration."
           }
-        },
-        "created_by": {
-          "target": "com.posthog.alerts#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         },
         "insight": {
           "target": "smithy.api#Integer",
@@ -1959,7 +1896,7 @@
           }
         },
         "threshold": {
-          "target": "com.posthog.alerts#Threshold",
+          "target": "com.posthog.alerts#ThresholdInput",
           "traits": {
             "smithy.api#documentation": "Threshold configuration with bounds and type for evaluating the alert."
           }
@@ -1971,47 +1908,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "state": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Current alert state: Firing, Not firing, Errored, or Snoozed."
-          }
-        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the alert is actively being evaluated."
-          }
-        },
-        "last_notified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_checked_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "next_check_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "checks": {
-          "target": "com.posthog.alerts#AlertsUpdateRequestChecksList",
-          "traits": {
-            "smithy.api#documentation": "Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve."
-          }
-        },
-        "checks_total": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Total alert checks matching the retrieve filters (date window). Only set on alert retrieve; omitted otherwise.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "config": {
@@ -2054,13 +1954,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "last_value": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The last calculated value from the most recent alert check.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "investigation_agent_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -2077,13 +1970,6 @@
           "target": "com.posthog.alerts#InvestigationInconclusiveActionEnum",
           "traits": {
             "smithy.api#documentation": "How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting.\n\n* `notify` - Notify\n* `suppress` - Suppress"
-          }
-        },
-        "search_match_type": {
-          "target": "com.posthog.alerts#SearchMatchTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -2127,15 +2013,6 @@
         "smithy.api#documentation": "User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object."
       }
     },
-    "com.posthog.alerts#AlertsPartialUpdateRequestChecksList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.alerts#AlertCheck"
-      },
-      "traits": {
-        "smithy.api#documentation": "Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve."
-      }
-    },
     "com.posthog.alerts#AlertsPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -2154,12 +2031,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this alert configuration."
           }
-        },
-        "created_by": {
-          "target": "com.posthog.alerts#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         },
         "insight": {
           "target": "smithy.api#Integer",
@@ -2180,7 +2051,7 @@
           }
         },
         "threshold": {
-          "target": "com.posthog.alerts#Threshold",
+          "target": "com.posthog.alerts#ThresholdInput",
           "traits": {
             "smithy.api#documentation": "Threshold configuration with bounds and type for evaluating the alert."
           }
@@ -2192,47 +2063,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "state": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Current alert state: Firing, Not firing, Errored, or Snoozed."
-          }
-        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the alert is actively being evaluated."
-          }
-        },
-        "last_notified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_checked_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "next_check_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "checks": {
-          "target": "com.posthog.alerts#AlertsPartialUpdateRequestChecksList",
-          "traits": {
-            "smithy.api#documentation": "Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve."
-          }
-        },
-        "checks_total": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Total alert checks matching the retrieve filters (date window). Only set on alert retrieve; omitted otherwise.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "config": {
@@ -2275,13 +2109,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "last_value": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The last calculated value from the most recent alert check.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "investigation_agent_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -2298,13 +2125,6 @@
           "target": "com.posthog.alerts#InvestigationInconclusiveActionEnum",
           "traits": {
             "smithy.api#documentation": "How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting.\n\n* `notify` - Notify\n* `suppress` - Suppress"
-          }
-        },
-        "search_match_type": {
-          "target": "com.posthog.alerts#SearchMatchTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },

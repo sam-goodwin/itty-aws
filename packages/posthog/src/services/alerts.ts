@@ -35,59 +35,8 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
-export type RoleAtOrganizationEnum =
-  | "engineering"
-  | "data"
-  | "product"
-  | "founder"
-  | "leadership"
-  | "marketing"
-  | "sales"
-  | "other"
-  | (string & {});
-export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
-
-export type BlankEnum = "" | (string & {});
-export const BlankEnum = /*@__PURE__*/ S.String;
-
-export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
-export interface UserBasic {
-  id?: number;
-  uuid?: string;
-  distinct_id?: string | null;
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-  is_email_verified?: boolean | null;
-  hedgehog_config?: UserBasicHedgehogConfigMap | null;
-  role_at_organization?: UserBasicRoleAtOrganization | null;
-}
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    uuid: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
-    first_name: S.optional(S.String),
-    last_name: S.optional(S.String),
-    email: S.optional(S.String),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
-    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
-  }),
-).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
-export type AlertsCreateRequestSubscribedUsersList = number[];
+export type AlertsCreateRequestSubscribedUsersList = ReadonlyArray<number>;
 export const AlertsCreateRequestSubscribedUsersList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertsCreateRequestSubscribedUsersList>;
@@ -107,7 +56,7 @@ export const InsightsThresholdBounds = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsThresholdBounds",
 }) as any as S.Schema<InsightsThresholdBounds>;
 
-export type InsightThresholdType = "absolute" | "percentage" | (string & {});
+export type InsightThresholdType = "absolute" | "percentage";
 export const InsightThresholdType = /*@__PURE__*/ S.String;
 
 export interface InsightThreshold {
@@ -124,28 +73,23 @@ export const InsightThreshold = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightThreshold",
 }) as any as S.Schema<InsightThreshold>;
 
-export interface Threshold {
-  id?: string;
-  created_at?: string;
+export interface ThresholdInput {
   /** Optional name for the threshold. */
   name?: string;
   /** Threshold bounds and type. Includes bounds (lower/upper floats) and type (absolute or percentage). For threshold-based alerts (no detector_config), at least one of lower or upper must be set. */
   configuration?: InsightThreshold;
 }
-export const Threshold = /*@__PURE__*/ S.suspend(() =>
+export const ThresholdInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created_at: S.optional(S.String),
     name: S.optional(S.String),
     configuration: S.optional(InsightThreshold),
   }),
-).annotate({ identifier: "Threshold" }) as any as S.Schema<Threshold>;
+).annotate({ identifier: "ThresholdInput" }) as any as S.Schema<ThresholdInput>;
 
 export type AlertConditionType =
   | "absolute_value"
   | "relative_increase"
-  | "relative_decrease"
-  | (string & {});
+  | "relative_decrease";
 export const AlertConditionType = /*@__PURE__*/ S.String;
 
 export interface AlertCondition {
@@ -156,79 +100,6 @@ export const AlertCondition = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(AlertConditionType),
   }),
 ).annotate({ identifier: "AlertCondition" }) as any as S.Schema<AlertCondition>;
-
-/** * `Firing` - Firing * `Not firing` - Not firing * `Errored` - Errored * `Snoozed` - Snoozed */
-export type AlertCheckStateEnum =
-  | "Firing"
-  | "Not firing"
-  | "Errored"
-  | "Snoozed"
-  | (string & {});
-export const AlertCheckStateEnum = /*@__PURE__*/ S.String;
-
-/** * `pending` - pending * `running` - running * `done` - done * `failed` - failed * `skipped` - skipped */
-export type InvestigationStatusEnum =
-  | "pending"
-  | "running"
-  | "done"
-  | "failed"
-  | "skipped"
-  | (string & {});
-export const InvestigationStatusEnum = /*@__PURE__*/ S.String;
-
-/** * `true_positive` - true_positive * `false_positive` - false_positive * `inconclusive` - inconclusive */
-export type InvestigationVerdictEnum =
-  | "true_positive"
-  | "false_positive"
-  | "inconclusive"
-  | (string & {});
-export const InvestigationVerdictEnum = /*@__PURE__*/ S.String;
-
-export interface AlertCheck {
-  id?: string;
-  created_at?: string;
-  calculated_value?: number | null;
-  state?: AlertCheckStateEnum;
-  targets_notified?: boolean;
-  anomaly_scores?: unknown;
-  triggered_points?: unknown;
-  triggered_dates?: unknown;
-  interval?: string | null;
-  triggered_metadata?: unknown;
-  investigation_status?: InvestigationStatusEnum | null;
-  investigation_verdict?: InvestigationVerdictEnum | null;
-  investigation_summary?: string | null;
-  /** Short ID of the Notebook produced by the investigation agent, when the agent ran for this check. */
-  investigation_notebook_short_id?: string | null;
-  notification_sent_at?: string | null;
-  notification_suppressed_by_agent?: boolean;
-}
-export const AlertCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    created_at: S.optional(S.String),
-    calculated_value: S.optional(S.NullOr(S.Number)),
-    state: S.optional(AlertCheckStateEnum),
-    targets_notified: S.optional(S.Boolean),
-    anomaly_scores: S.optional(S.Unknown),
-    triggered_points: S.optional(S.Unknown),
-    triggered_dates: S.optional(S.Unknown),
-    interval: S.optional(S.NullOr(S.String)),
-    triggered_metadata: S.optional(S.Unknown),
-    investigation_status: S.optional(S.NullOr(InvestigationStatusEnum)),
-    investigation_verdict: S.optional(S.NullOr(InvestigationVerdictEnum)),
-    investigation_summary: S.optional(S.NullOr(S.String)),
-    investigation_notebook_short_id: S.optional(S.NullOr(S.String)),
-    notification_sent_at: S.optional(S.NullOr(S.String)),
-    notification_suppressed_by_agent: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "AlertCheck" }) as any as S.Schema<AlertCheck>;
-
-/** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
-export type AlertsCreateRequestChecksList = AlertCheck[];
-export const AlertsCreateRequestChecksList = /*@__PURE__*/ S.Array(
-  AlertCheck,
-) as any as S.Schema<AlertsCreateRequestChecksList>;
 
 export interface TrendsAlertConfig {
   /** When true, evaluate the current (still incomplete) time interval in addition to completed ones. */
@@ -247,11 +118,7 @@ export const TrendsAlertConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrendsAlertConfig",
 }) as any as S.Schema<TrendsAlertConfig>;
 
-export type HogQLAlertEvaluation =
-  | "last_row"
-  | "first_row"
-  | "any_row"
-  | (string & {});
+export type HogQLAlertEvaluation = "last_row" | "first_row" | "any_row";
 export const HogQLAlertEvaluation = /*@__PURE__*/ S.String;
 
 export interface HogQLAlertConfig {
@@ -276,8 +143,7 @@ export const HogQLAlertConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type FunnelConversionMetric =
   | "conversion_from_start"
-  | "conversion_from_previous"
-  | (string & {});
+  | "conversion_from_previous";
 export const FunnelConversionMetric = /*@__PURE__*/ S.String;
 
 export interface FunnelsAlertConfig {
@@ -483,7 +349,7 @@ export const IsolationForestDetectorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "IsolationForestDetectorConfig",
 }) as any as S.Schema<IsolationForestDetectorConfig>;
 
-export type Method = "largest" | "mean" | "median" | (string & {});
+export type Method = "largest" | "mean" | "median";
 export const Method = /*@__PURE__*/ S.String;
 
 export interface KNNDetectorConfig {
@@ -622,12 +488,12 @@ export const EnsembleDetectorConfigDetectorsItem =
 
 /** Sub-detector configurations (minimum 2) */
 export type EnsembleDetectorConfigDetectorsList =
-  EnsembleDetectorConfigDetectorsItem[];
+  ReadonlyArray<EnsembleDetectorConfigDetectorsItem>;
 export const EnsembleDetectorConfigDetectorsList = /*@__PURE__*/ S.Array(
   EnsembleDetectorConfigDetectorsItem,
 ) as any as S.Schema<EnsembleDetectorConfigDetectorsList>;
 
-export type EnsembleOperator = "and" | "or" | (string & {});
+export type EnsembleOperator = "and" | "or";
 export const EnsembleOperator = /*@__PURE__*/ S.String;
 
 export interface EnsembleDetectorConfig {
@@ -672,8 +538,7 @@ export type CalculationIntervalEnum =
   | "hourly"
   | "daily"
   | "weekly"
-  | "monthly"
-  | (string & {});
+  | "monthly";
 export const CalculationIntervalEnum = /*@__PURE__*/ S.String;
 
 export interface AlertScheduleRestrictionWindow {
@@ -693,7 +558,7 @@ export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
 export type AlertScheduleRestrictionBlockedWindowsList =
-  AlertScheduleRestrictionWindow[];
+  ReadonlyArray<AlertScheduleRestrictionWindow>;
 export const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ S.Array(
   AlertScheduleRestrictionWindow,
 ) as any as S.Schema<AlertScheduleRestrictionBlockedWindowsList>;
@@ -711,21 +576,12 @@ export const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertScheduleRestriction>;
 
 /** * `notify` - Notify * `suppress` - Suppress */
-export type InvestigationInconclusiveActionEnum =
-  | "notify"
-  | "suppress"
-  | (string & {});
+export type InvestigationInconclusiveActionEnum = "notify" | "suppress";
 export const InvestigationInconclusiveActionEnum = /*@__PURE__*/ S.String;
-
-export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
-export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface AlertsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
-  created_by?: UserBasic;
-  created_at?: string;
   /** Insight ID monitored by this alert. Note: Response returns full InsightBasicSerializer object. */
   insight?: number;
   /** Human-readable name for the alert. */
@@ -733,20 +589,11 @@ export interface AlertsCreateRequest {
   /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
   subscribed_users?: AlertsCreateRequestSubscribedUsersList;
   /** Threshold configuration with bounds and type for evaluating the alert. */
-  threshold?: Threshold;
+  threshold?: ThresholdInput;
   /** Alert condition type. Determines how the value is evaluated: absolute_value, relative_increase, or relative_decrease. */
   condition?: AlertCondition | null;
-  /** Current alert state: Firing, Not firing, Errored, or Snoozed. */
-  state?: string;
   /** Whether the alert is actively being evaluated. */
   enabled?: boolean;
-  last_notified_at?: string | null;
-  last_checked_at?: string | null;
-  next_check_at?: string | null;
-  /** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
-  checks?: AlertsCreateRequestChecksList;
-  /** Total alert checks matching the retrieve filters (date window). Only set on alert retrieve; omitted otherwise. */
-  checks_total?: number | null;
   /** Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation ('last_row' checks the latest value of an oldest->newest query, 'first_row' checks the first value of a newest->oldest query, 'any_row' fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step), metric ('conversion_from_start' or 'conversion_from_previous'), and check_ongoing_interval (historical-trend funnels: also evaluate the current in-progress period). Steps funnels support only absolute_value conditions; historical-trend funnels also support relative_increase/relative_decrease (compared against the prior period). */
   config?: AlertConfigUnion | null;
   detector_config?: DetectorConfig | null;
@@ -758,48 +605,33 @@ export interface AlertsCreateRequest {
   skip_weekend?: boolean | null;
   /** Blocked local time windows (HH:MM in the project timezone). Interval is half-open [start, end): start inclusive, end exclusive. Use blocked_windows array of {start, end}. Null disables. */
   schedule_restriction?: AlertScheduleRestriction | null;
-  /** The last calculated value from the most recent alert check. */
-  last_value?: number | null;
   /** When enabled, an investigation agent runs on the state transition to firing and writes findings to a Notebook linked from the alert check. Only effective for detector-based (anomaly) alerts. */
   investigation_agent_enabled?: boolean;
   /** When enabled (and investigation_agent_enabled is on), notification dispatch is held until the investigation agent produces a verdict. Notifications are suppressed when the verdict is false_positive (and optionally when inconclusive). A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const AlertsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
     insight: S.optional(S.Number),
     name: S.optional(S.String),
     subscribed_users: S.optional(AlertsCreateRequestSubscribedUsersList),
-    threshold: S.optional(Threshold),
+    threshold: S.optional(ThresholdInput),
     condition: S.optional(S.NullOr(AlertCondition)),
-    state: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    last_notified_at: S.optional(S.NullOr(S.String)),
-    last_checked_at: S.optional(S.NullOr(S.String)),
-    next_check_at: S.optional(S.NullOr(S.String)),
-    checks: S.optional(AlertsCreateRequestChecksList),
-    checks_total: S.optional(S.NullOr(S.Number)),
     config: S.optional(S.NullOr(AlertConfigUnion)),
     detector_config: S.optional(S.NullOr(DetectorConfig)),
     calculation_interval: S.optional(CalculationIntervalEnum),
     snoozed_until: S.optional(S.NullOr(S.String)),
     skip_weekend: S.optional(S.NullOr(S.Boolean)),
     schedule_restriction: S.optional(S.NullOr(AlertScheduleRestriction)),
-    last_value: S.optional(S.NullOr(S.Number)),
     investigation_agent_enabled: S.optional(S.Boolean),
     investigation_gates_notifications: S.optional(S.Boolean),
     investigation_inconclusive_action: S.optional(
       InvestigationInconclusiveActionEnum,
     ),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -811,21 +643,155 @@ export const AlertsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlertsCreateRequest",
 }) as any as S.Schema<AlertsCreateRequest>;
 
+export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+export type RoleAtOrganizationEnum =
+  | "engineering"
+  | "data"
+  | "product"
+  | "founder"
+  | "leadership"
+  | "marketing"
+  | "sales"
+  | "other";
+export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
+
+export type BlankEnum = "";
+export const BlankEnum = /*@__PURE__*/ S.String;
+
+export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+export const UserBasicRoleAtOrganization =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
+export interface UserBasic {
+  id?: number;
+  uuid?: string;
+  distinct_id?: string | null;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  is_email_verified?: boolean | null;
+  hedgehog_config?: UserBasicHedgehogConfigMap | null;
+  role_at_organization?: UserBasicRoleAtOrganization | null;
+}
+export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    uuid: S.optional(S.String),
+    distinct_id: S.optional(S.NullOr(S.String)),
+    first_name: S.optional(S.String),
+    last_name: S.optional(S.String),
+    email: S.optional(S.String),
+    is_email_verified: S.optional(S.NullOr(S.Boolean)),
+    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+  }),
+).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
+
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
-export type AlertSubscribedUsersList = number[];
+export type AlertSubscribedUsersList = ReadonlyArray<number>;
 export const AlertSubscribedUsersList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertSubscribedUsersList>;
 
+export interface Threshold {
+  id?: string;
+  created_at?: string;
+  /** Optional name for the threshold. */
+  name?: string;
+  /** Threshold bounds and type. Includes bounds (lower/upper floats) and type (absolute or percentage). For threshold-based alerts (no detector_config), at least one of lower or upper must be set. */
+  configuration?: InsightThreshold;
+}
+export const Threshold = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    created_at: S.optional(S.String),
+    name: S.optional(S.String),
+    configuration: S.optional(InsightThreshold),
+  }),
+).annotate({ identifier: "Threshold" }) as any as S.Schema<Threshold>;
+
+/** * `Firing` - Firing * `Not firing` - Not firing * `Errored` - Errored * `Snoozed` - Snoozed */
+export type AlertCheckStateEnum =
+  | "Firing"
+  | "Not firing"
+  | "Errored"
+  | "Snoozed";
+export const AlertCheckStateEnum = /*@__PURE__*/ S.String;
+
+/** * `pending` - pending * `running` - running * `done` - done * `failed` - failed * `skipped` - skipped */
+export type InvestigationStatusEnum =
+  | "pending"
+  | "running"
+  | "done"
+  | "failed"
+  | "skipped";
+export const InvestigationStatusEnum = /*@__PURE__*/ S.String;
+
+/** * `true_positive` - true_positive * `false_positive` - false_positive * `inconclusive` - inconclusive */
+export type InvestigationVerdictEnum =
+  | "true_positive"
+  | "false_positive"
+  | "inconclusive";
+export const InvestigationVerdictEnum = /*@__PURE__*/ S.String;
+
+export interface AlertCheck {
+  id?: string;
+  created_at?: string;
+  calculated_value?: number | null;
+  state?: AlertCheckStateEnum;
+  targets_notified?: boolean;
+  anomaly_scores?: unknown;
+  triggered_points?: unknown;
+  triggered_dates?: unknown;
+  interval?: string | null;
+  triggered_metadata?: unknown;
+  investigation_status?: InvestigationStatusEnum | null;
+  investigation_verdict?: InvestigationVerdictEnum | null;
+  investigation_summary?: string | null;
+  /** Short ID of the Notebook produced by the investigation agent, when the agent ran for this check. */
+  investigation_notebook_short_id?: string | null;
+  notification_sent_at?: string | null;
+  notification_suppressed_by_agent?: boolean;
+}
+export const AlertCheck = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    created_at: S.optional(S.String),
+    calculated_value: S.optional(S.NullOr(S.Number)),
+    state: S.optional(AlertCheckStateEnum),
+    targets_notified: S.optional(S.Boolean),
+    anomaly_scores: S.optional(S.Unknown),
+    triggered_points: S.optional(S.Unknown),
+    triggered_dates: S.optional(S.Unknown),
+    interval: S.optional(S.NullOr(S.String)),
+    triggered_metadata: S.optional(S.Unknown),
+    investigation_status: S.optional(S.NullOr(InvestigationStatusEnum)),
+    investigation_verdict: S.optional(S.NullOr(InvestigationVerdictEnum)),
+    investigation_summary: S.optional(S.NullOr(S.String)),
+    investigation_notebook_short_id: S.optional(S.NullOr(S.String)),
+    notification_sent_at: S.optional(S.NullOr(S.String)),
+    notification_suppressed_by_agent: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "AlertCheck" }) as any as S.Schema<AlertCheck>;
+
 /** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
-export type AlertChecksList = AlertCheck[];
+export type AlertChecksList = ReadonlyArray<AlertCheck>;
 export const AlertChecksList = /*@__PURE__*/ S.Array(
   AlertCheck,
 ) as any as S.Schema<AlertChecksList>;
 
+export type SearchMatchTypeEnum = "exact" | "similar";
+export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
+
 export interface Alert {
   id?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   created_at?: string;
   /** Insight ID monitored by this alert. Note: Response returns full InsightBasicSerializer object. */
   insight?: number;
@@ -873,7 +839,7 @@ export interface Alert {
 export const Alert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.String),
     insight: S.optional(S.Number),
     name: S.optional(S.String),
@@ -964,7 +930,7 @@ export const AlertsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlertsListRequest",
 }) as any as S.Schema<AlertsListRequest>;
 
-export type PaginatedAlertListResultsList = Alert[];
+export type PaginatedAlertListResultsList = ReadonlyArray<Alert>;
 export const PaginatedAlertListResultsList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<PaginatedAlertListResultsList>;
@@ -987,25 +953,18 @@ export const PaginatedAlertList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedAlertList>;
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
-export type AlertsPartialUpdateRequestSubscribedUsersList = number[];
+export type AlertsPartialUpdateRequestSubscribedUsersList =
+  ReadonlyArray<number>;
 export const AlertsPartialUpdateRequestSubscribedUsersList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<AlertsPartialUpdateRequestSubscribedUsersList>;
-
-/** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
-export type AlertsPartialUpdateRequestChecksList = AlertCheck[];
-export const AlertsPartialUpdateRequestChecksList = /*@__PURE__*/ S.Array(
-  AlertCheck,
-) as any as S.Schema<AlertsPartialUpdateRequestChecksList>;
 
 export interface AlertsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this alert configuration. */
   id: string;
-  created_by?: UserBasic;
-  created_at?: string;
   /** Insight ID monitored by this alert. Note: Response returns full InsightBasicSerializer object. */
   insight?: number;
   /** Human-readable name for the alert. */
@@ -1013,20 +972,11 @@ export interface AlertsPartialUpdateRequest {
   /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
   subscribed_users?: AlertsPartialUpdateRequestSubscribedUsersList;
   /** Threshold configuration with bounds and type for evaluating the alert. */
-  threshold?: Threshold;
+  threshold?: ThresholdInput;
   /** Alert condition type. Determines how the value is evaluated: absolute_value, relative_increase, or relative_decrease. */
   condition?: AlertCondition | null;
-  /** Current alert state: Firing, Not firing, Errored, or Snoozed. */
-  state?: string;
   /** Whether the alert is actively being evaluated. */
   enabled?: boolean;
-  last_notified_at?: string | null;
-  last_checked_at?: string | null;
-  next_check_at?: string | null;
-  /** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
-  checks?: AlertsPartialUpdateRequestChecksList;
-  /** Total alert checks matching the retrieve filters (date window). Only set on alert retrieve; omitted otherwise. */
-  checks_total?: number | null;
   /** Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation ('last_row' checks the latest value of an oldest->newest query, 'first_row' checks the first value of a newest->oldest query, 'any_row' fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step), metric ('conversion_from_start' or 'conversion_from_previous'), and check_ongoing_interval (historical-trend funnels: also evaluate the current in-progress period). Steps funnels support only absolute_value conditions; historical-trend funnels also support relative_increase/relative_decrease (compared against the prior period). */
   config?: AlertConfigUnion | null;
   detector_config?: DetectorConfig | null;
@@ -1038,48 +988,34 @@ export interface AlertsPartialUpdateRequest {
   skip_weekend?: boolean | null;
   /** Blocked local time windows (HH:MM in the project timezone). Interval is half-open [start, end): start inclusive, end exclusive. Use blocked_windows array of {start, end}. Null disables. */
   schedule_restriction?: AlertScheduleRestriction | null;
-  /** The last calculated value from the most recent alert check. */
-  last_value?: number | null;
   /** When enabled, an investigation agent runs on the state transition to firing and writes findings to a Notebook linked from the alert check. Only effective for detector-based (anomaly) alerts. */
   investigation_agent_enabled?: boolean;
   /** When enabled (and investigation_agent_enabled is on), notification dispatch is held until the investigation agent produces a verdict. Notifications are suppressed when the verdict is false_positive (and optionally when inconclusive). A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const AlertsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
     insight: S.optional(S.Number),
     name: S.optional(S.String),
     subscribed_users: S.optional(AlertsPartialUpdateRequestSubscribedUsersList),
-    threshold: S.optional(Threshold),
+    threshold: S.optional(ThresholdInput),
     condition: S.optional(S.NullOr(AlertCondition)),
-    state: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    last_notified_at: S.optional(S.NullOr(S.String)),
-    last_checked_at: S.optional(S.NullOr(S.String)),
-    next_check_at: S.optional(S.NullOr(S.String)),
-    checks: S.optional(AlertsPartialUpdateRequestChecksList),
-    checks_total: S.optional(S.NullOr(S.Number)),
     config: S.optional(S.NullOr(AlertConfigUnion)),
     detector_config: S.optional(S.NullOr(DetectorConfig)),
     calculation_interval: S.optional(CalculationIntervalEnum),
     snoozed_until: S.optional(S.NullOr(S.String)),
     skip_weekend: S.optional(S.NullOr(S.Boolean)),
     schedule_restriction: S.optional(S.NullOr(AlertScheduleRestriction)),
-    last_value: S.optional(S.NullOr(S.Number)),
     investigation_agent_enabled: S.optional(S.Boolean),
     investigation_gates_notifications: S.optional(S.Boolean),
     investigation_inconclusive_action: S.optional(
       InvestigationInconclusiveActionEnum,
     ),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1158,31 +1094,31 @@ export const AlertsSimulateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertsSimulateCreateRequest>;
 
 /** Data values for each point. */
-export type AlertSimulateResponseDataList = number[];
+export type AlertSimulateResponseDataList = ReadonlyArray<number>;
 export const AlertSimulateResponseDataList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertSimulateResponseDataList>;
 
 /** Date labels for each point. */
-export type AlertSimulateResponseDatesList = string[];
+export type AlertSimulateResponseDatesList = ReadonlyArray<string>;
 export const AlertSimulateResponseDatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertSimulateResponseDatesList>;
 
 /** Anomaly score for each point (null if insufficient data). */
-export type AlertSimulateResponseScoresList = number[];
+export type AlertSimulateResponseScoresList = ReadonlyArray<number>;
 export const AlertSimulateResponseScoresList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertSimulateResponseScoresList>;
 
 /** Indices of points flagged as anomalies. */
-export type AlertSimulateResponseTriggeredIndicesList = number[];
+export type AlertSimulateResponseTriggeredIndicesList = ReadonlyArray<number>;
 export const AlertSimulateResponseTriggeredIndicesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertSimulateResponseTriggeredIndicesList>;
 
 /** Dates of points flagged as anomalies. */
-export type AlertSimulateResponseTriggeredDatesList = string[];
+export type AlertSimulateResponseTriggeredDatesList = ReadonlyArray<string>;
 export const AlertSimulateResponseTriggeredDatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AlertSimulateResponseTriggeredDatesList>;
@@ -1198,38 +1134,39 @@ export const AlertSimulateResponseSubDetectorScoresItemMap =
 
 /** Per-sub-detector scores for ensemble detectors. Each entry has 'type' and 'scores' fields. */
 export type AlertSimulateResponseSubDetectorScoresList =
-  AlertSimulateResponseSubDetectorScoresItemMap[];
+  ReadonlyArray<AlertSimulateResponseSubDetectorScoresItemMap>;
 export const AlertSimulateResponseSubDetectorScoresList = /*@__PURE__*/ S.Array(
   AlertSimulateResponseSubDetectorScoresItemMap,
 ) as any as S.Schema<AlertSimulateResponseSubDetectorScoresList>;
 
 /** Data values for each point. */
-export type BreakdownSimulationResultDataList = number[];
+export type BreakdownSimulationResultDataList = ReadonlyArray<number>;
 export const BreakdownSimulationResultDataList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BreakdownSimulationResultDataList>;
 
 /** Date labels for each point. */
-export type BreakdownSimulationResultDatesList = string[];
+export type BreakdownSimulationResultDatesList = ReadonlyArray<string>;
 export const BreakdownSimulationResultDatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BreakdownSimulationResultDatesList>;
 
 /** Anomaly score for each point. */
-export type BreakdownSimulationResultScoresList = number[];
+export type BreakdownSimulationResultScoresList = ReadonlyArray<number>;
 export const BreakdownSimulationResultScoresList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BreakdownSimulationResultScoresList>;
 
 /** Indices of points flagged as anomalies. */
-export type BreakdownSimulationResultTriggeredIndicesList = number[];
+export type BreakdownSimulationResultTriggeredIndicesList =
+  ReadonlyArray<number>;
 export const BreakdownSimulationResultTriggeredIndicesList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<BreakdownSimulationResultTriggeredIndicesList>;
 
 /** Dates of points flagged as anomalies. */
-export type BreakdownSimulationResultTriggeredDatesList = string[];
+export type BreakdownSimulationResultTriggeredDatesList = ReadonlyArray<string>;
 export const BreakdownSimulationResultTriggeredDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1246,7 +1183,7 @@ export const BreakdownSimulationResultSubDetectorScoresItemMap =
 
 /** Per-sub-detector scores for ensemble detectors. */
 export type BreakdownSimulationResultSubDetectorScoresList =
-  BreakdownSimulationResultSubDetectorScoresItemMap[];
+  ReadonlyArray<BreakdownSimulationResultSubDetectorScoresItemMap>;
 export const BreakdownSimulationResultSubDetectorScoresList =
   /*@__PURE__*/ S.Array(
     BreakdownSimulationResultSubDetectorScoresItemMap,
@@ -1294,7 +1231,7 @@ export const BreakdownSimulationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-breakdown-value simulation results. Present only when the insight has breakdowns (up to 25 values). */
 export type AlertSimulateResponseBreakdownResultsList =
-  BreakdownSimulationResult[];
+  ReadonlyArray<BreakdownSimulationResult>;
 export const AlertSimulateResponseBreakdownResultsList = /*@__PURE__*/ S.Array(
   BreakdownSimulationResult,
 ) as any as S.Schema<AlertSimulateResponseBreakdownResultsList>;
@@ -1339,24 +1276,16 @@ export const AlertSimulateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertSimulateResponse>;
 
 /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
-export type AlertsUpdateRequestSubscribedUsersList = number[];
+export type AlertsUpdateRequestSubscribedUsersList = ReadonlyArray<number>;
 export const AlertsUpdateRequestSubscribedUsersList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AlertsUpdateRequestSubscribedUsersList>;
-
-/** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
-export type AlertsUpdateRequestChecksList = AlertCheck[];
-export const AlertsUpdateRequestChecksList = /*@__PURE__*/ S.Array(
-  AlertCheck,
-) as any as S.Schema<AlertsUpdateRequestChecksList>;
 
 export interface AlertsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this alert configuration. */
   id: string;
-  created_by?: UserBasic;
-  created_at?: string;
   /** Insight ID monitored by this alert. Note: Response returns full InsightBasicSerializer object. */
   insight?: number;
   /** Human-readable name for the alert. */
@@ -1364,20 +1293,11 @@ export interface AlertsUpdateRequest {
   /** User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object. */
   subscribed_users?: AlertsUpdateRequestSubscribedUsersList;
   /** Threshold configuration with bounds and type for evaluating the alert. */
-  threshold?: Threshold;
+  threshold?: ThresholdInput;
   /** Alert condition type. Determines how the value is evaluated: absolute_value, relative_increase, or relative_decrease. */
   condition?: AlertCondition | null;
-  /** Current alert state: Firing, Not firing, Errored, or Snoozed. */
-  state?: string;
   /** Whether the alert is actively being evaluated. */
   enabled?: boolean;
-  last_notified_at?: string | null;
-  last_checked_at?: string | null;
-  next_check_at?: string | null;
-  /** Alert check results. By default returns the last 5. Use checks_date_from and checks_date_to (e.g. '-24h', '-7d') to get checks within a time window, checks_limit to cap how many are returned (default 5, max 500), and checks_offset to skip the newest N checks for pagination (0-based). Newest checks first. Only populated on retrieve. */
-  checks?: AlertsUpdateRequestChecksList;
-  /** Total alert checks matching the retrieve filters (date window). Only set on alert retrieve; omitted otherwise. */
-  checks_total?: number | null;
   /** Per-insight-kind alert configuration, discriminated by `type`. TrendsAlertConfig: series_index (which series to monitor) and check_ongoing_interval (whether to check the current incomplete interval). HogQLAlertConfig (SQL insights): column (which result column to evaluate, defaults to the single numeric column), evaluation ('last_row' checks the latest value of an oldest->newest query, 'first_row' checks the first value of a newest->oldest query, 'any_row' fires if any row breaches), and label_column (names the evaluated row(s) in breach messages, in every evaluation mode). FunnelsAlertConfig (funnel insights): funnel_step (the step to monitor, null for the overall last step), metric ('conversion_from_start' or 'conversion_from_previous'), and check_ongoing_interval (historical-trend funnels: also evaluate the current in-progress period). Steps funnels support only absolute_value conditions; historical-trend funnels also support relative_increase/relative_decrease (compared against the prior period). */
   config?: AlertConfigUnion | null;
   detector_config?: DetectorConfig | null;
@@ -1389,48 +1309,34 @@ export interface AlertsUpdateRequest {
   skip_weekend?: boolean | null;
   /** Blocked local time windows (HH:MM in the project timezone). Interval is half-open [start, end): start inclusive, end exclusive. Use blocked_windows array of {start, end}. Null disables. */
   schedule_restriction?: AlertScheduleRestriction | null;
-  /** The last calculated value from the most recent alert check. */
-  last_value?: number | null;
   /** When enabled, an investigation agent runs on the state transition to firing and writes findings to a Notebook linked from the alert check. Only effective for detector-based (anomaly) alerts. */
   investigation_agent_enabled?: boolean;
   /** When enabled (and investigation_agent_enabled is on), notification dispatch is held until the investigation agent produces a verdict. Notifications are suppressed when the verdict is false_positive (and optionally when inconclusive). A safety-net task force-fires after a few minutes if the investigation stalls. */
   investigation_gates_notifications?: boolean;
   /** How to handle an 'inconclusive' verdict: whether gated notifications fire and whether the investigation surfaces in the Signals inbox. 'notify' is the safe default — an agent that can't be sure is itself useful signal. False positives never reach the inbox regardless of this setting. * `notify` - Notify * `suppress` - Suppress */
   investigation_inconclusive_action?: InvestigationInconclusiveActionEnum;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const AlertsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
     insight: S.optional(S.Number),
     name: S.optional(S.String),
     subscribed_users: S.optional(AlertsUpdateRequestSubscribedUsersList),
-    threshold: S.optional(Threshold),
+    threshold: S.optional(ThresholdInput),
     condition: S.optional(S.NullOr(AlertCondition)),
-    state: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    last_notified_at: S.optional(S.NullOr(S.String)),
-    last_checked_at: S.optional(S.NullOr(S.String)),
-    next_check_at: S.optional(S.NullOr(S.String)),
-    checks: S.optional(AlertsUpdateRequestChecksList),
-    checks_total: S.optional(S.NullOr(S.Number)),
     config: S.optional(S.NullOr(AlertConfigUnion)),
     detector_config: S.optional(S.NullOr(DetectorConfig)),
     calculation_interval: S.optional(CalculationIntervalEnum),
     snoozed_until: S.optional(S.NullOr(S.String)),
     skip_weekend: S.optional(S.NullOr(S.Boolean)),
     schedule_restriction: S.optional(S.NullOr(AlertScheduleRestriction)),
-    last_value: S.optional(S.NullOr(S.Number)),
     investigation_agent_enabled: S.optional(S.Boolean),
     investigation_gates_notifications: S.optional(S.Boolean),
     investigation_inconclusive_action: S.optional(
       InvestigationInconclusiveActionEnum,
     ),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }).pipe(
     T.Http({
       method: "PUT",

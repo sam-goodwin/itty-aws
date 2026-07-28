@@ -51,7 +51,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.users#PaginatedUserList": {
+    "com.posthog.users#PaginatedUserListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -70,12 +70,12 @@
           }
         },
         "results": {
-          "target": "com.posthog.users#PaginatedUserListResultsList"
+          "target": "com.posthog.users#PaginatedUserListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.users#User": {
+    "com.posthog.users#UserOutput": {
       "type": "structure",
       "members": {
         "date_joined": {
@@ -112,7 +112,7 @@
           }
         },
         "notification_settings": {
-          "target": "com.posthog.users#UserNotificationSettingsMap",
+          "target": "com.posthog.users#UserOutputNotificationSettingsMap",
           "traits": {
             "smithy.api#documentation": "Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is."
           }
@@ -131,7 +131,7 @@
           }
         },
         "toolbar_mode": {
-          "target": "com.posthog.users#UserToolbarMode",
+          "target": "com.posthog.users#UserOutputToolbarMode",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -186,26 +186,7 @@
           "target": "com.posthog.users#Organization"
         },
         "organizations": {
-          "target": "com.posthog.users#UserOrganizationsList"
-        },
-        "set_current_organization": {
-          "target": "smithy.api#String"
-        },
-        "set_current_team": {
-          "target": "smithy.api#String"
-        },
-        "password": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "current_password": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The user's current password. Required when changing `password` if the user already has a usable password set.",
-            "smithy.api#sensitive": {}
-          }
+          "target": "com.posthog.users#UserOutputOrganizationsList"
         },
         "events_column_config": {
           "target": "smithy.api#Document"
@@ -223,10 +204,10 @@
           "target": "smithy.api#Document"
         },
         "scene_personalisation": {
-          "target": "com.posthog.users#UserScenePersonalisationList"
+          "target": "com.posthog.users#UserOutputScenePersonalisationList"
         },
         "theme_mode": {
-          "target": "com.posthog.users#UserThemeMode",
+          "target": "com.posthog.users#UserOutputThemeMode",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -241,7 +222,7 @@
           }
         },
         "shortcut_position": {
-          "target": "com.posthog.users#UserShortcutPosition",
+          "target": "com.posthog.users#UserOutputShortcutPosition",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -306,13 +287,13 @@
           }
         },
         "active_realtime_notification_types": {
-          "target": "com.posthog.users#UserActiveRealtimeNotificationTypesList",
+          "target": "com.posthog.users#UserOutputActiveRealtimeNotificationTypesList",
           "traits": {
             "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
           }
         },
         "pending_invites": {
-          "target": "com.posthog.users#UserPendingInvitesList"
+          "target": "com.posthog.users#UserOutputPendingInvitesList"
         },
         "requires_credential_review": {
           "target": "smithy.api#Boolean",
@@ -323,7 +304,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UserNotificationSettingsMap": {
+    "com.posthog.users#UserOutputNotificationSettingsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -367,7 +348,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UserToolbarMode": {
+    "com.posthog.users#UserOutputToolbarMode": {
       "type": "union",
       "members": {
         "ToolbarModeEnum": {
@@ -4035,10 +4016,10 @@
           "target": "smithy.api#String"
         },
         "membership_level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.users#EffectiveMembershipLevelEnum"
         },
         "plugins_access_level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.users#PluginsAccessLevelEnum"
         },
         "teams": {
           "target": "com.posthog.users#OrganizationTeamsList"
@@ -4178,6 +4159,62 @@
       },
       "traits": {}
     },
+    "com.posthog.users#EffectiveMembershipLevelEnum": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 8
+          }
+        },
+        "_15": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 15
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.users#PluginsAccessLevelEnum": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 6
+          }
+        },
+        "_9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 9
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `0` - none\n* `3` - config\n* `6` - install\n* `9` - root"
+      }
+    },
     "com.posthog.users#OrganizationTeamsItemMap": {
       "type": "map",
       "key": {
@@ -4282,7 +4319,7 @@
           }
         },
         "membership_level": {
-          "target": "smithy.api#Double"
+          "target": "com.posthog.users#EffectiveMembershipLevelEnum"
         },
         "members_can_use_personal_api_keys": {
           "target": "smithy.api#Boolean"
@@ -4313,7 +4350,7 @@
         "smithy.api#documentation": "Serializer for `Organization` model with minimal attributes to speeed up loading and transfer times.\nAlso used for nested serializers."
       }
     },
-    "com.posthog.users#UserOrganizationsList": {
+    "com.posthog.users#UserOutputOrganizationsList": {
       "type": "list",
       "member": {
         "target": "com.posthog.users#OrganizationBasic"
@@ -4335,7 +4372,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UserScenePersonalisationList": {
+    "com.posthog.users#UserOutputScenePersonalisationList": {
       "type": "list",
       "member": {
         "target": "com.posthog.users#ScenePersonalisationBasic"
@@ -4368,7 +4405,7 @@
         "smithy.api#documentation": "* `light` - Light\n* `dark` - Dark\n* `system` - System"
       }
     },
-    "com.posthog.users#UserThemeMode": {
+    "com.posthog.users#UserOutputThemeMode": {
       "type": "union",
       "members": {
         "ThemeModeEnum": {
@@ -4406,7 +4443,7 @@
         "smithy.api#documentation": "* `above` - Above\n* `below` - Below\n* `hidden` - Hidden"
       }
     },
-    "com.posthog.users#UserShortcutPosition": {
+    "com.posthog.users#UserOutputShortcutPosition": {
       "type": "union",
       "members": {
         "ShortcutPositionEnum": {
@@ -4506,7 +4543,7 @@
         "smithy.api#documentation": "* `delegated` - Delegated to teammate\n* `later` - Skipped for later\n* `other` - Other\n* `provisioned` - Account provisioned by a partner"
       }
     },
-    "com.posthog.users#UserActiveRealtimeNotificationTypesList": {
+    "com.posthog.users#UserOutputActiveRealtimeNotificationTypesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -4538,17 +4575,17 @@
         "smithy.api#documentation": "Shape of each item in UserSerializer.pending_invites."
       }
     },
-    "com.posthog.users#UserPendingInvitesList": {
+    "com.posthog.users#UserOutputPendingInvitesList": {
       "type": "list",
       "member": {
         "target": "com.posthog.users#PendingInvite"
       },
       "traits": {}
     },
-    "com.posthog.users#PaginatedUserListResultsList": {
+    "com.posthog.users#PaginatedUserListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.users#User"
+        "target": "com.posthog.users#UserOutput"
       },
       "traits": {}
     },
@@ -4558,7 +4595,7 @@
         "target": "com.posthog.users#UsersListRequest"
       },
       "output": {
-        "target": "com.posthog.users#PaginatedUserList"
+        "target": "com.posthog.users#PaginatedUserListOutput"
       },
       "errors": [
         {
@@ -4598,7 +4635,7 @@
           "target": "smithy.api#String"
         },
         "user": {
-          "target": "com.posthog.users#User2"
+          "target": "com.posthog.users#User"
         },
         "autostart_priority": {
           "target": "com.posthog.users#SignalUserAutonomyConfigAutostartPriority",
@@ -4636,7 +4673,7 @@
       },
       "traits": {}
     },
-    "com.posthog.users#User2": {
+    "com.posthog.users#User": {
       "type": "structure",
       "members": {
         "id": {
@@ -4782,22 +4819,9 @@
             "smithy.api#required": {}
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "user": {
-          "target": "com.posthog.users#User2"
-        },
         "autostart_priority": {
           "target": "com.posthog.users#UsersSignalAutonomyCreateRequestAutostartPriority",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_notification_integration_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "ID of the Slack Integration to deliver inbox-item notifications through, or null when notifications are disabled.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -4814,12 +4838,6 @@
             "smithy.api#documentation": "Minimum report priority that triggers a Slack notification. P0 is highest. Null means notify on every priority (and reports without a priority judgment).\n\n* `P0` - P0\n* `P1` - P1\n* `P2` - P2\n* `P3` - P3\n* `P4` - P4",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -4915,7 +4933,7 @@
         "target": "com.posthog.users#UsersRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.users#User"
+        "target": "com.posthog.users#UserOutput"
       },
       "errors": [
         {
@@ -4958,20 +4976,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersUpdateRequestOrganizationsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#OrganizationBasic"
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersUpdateRequestScenePersonalisationList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#ScenePersonalisationBasic"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersUpdateRequestThemeMode": {
       "type": "union",
       "members": {
@@ -4996,22 +5000,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersUpdateRequestActiveRealtimeNotificationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-      }
-    },
-    "com.posthog.users#UsersUpdateRequestPendingInvitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#PendingInvite"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersUpdateRequest": {
       "type": "structure",
       "members": {
@@ -5022,15 +5010,6 @@
             "smithy.api#required": {}
           }
         },
-        "date_joined": {
-          "target": "smithy.api#String"
-        },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "first_name": {
           "target": "smithy.api#String"
         },
@@ -5039,18 +5018,6 @@
         },
         "email": {
           "target": "smithy.api#String"
-        },
-        "pending_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_email_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "notification_settings": {
           "target": "com.posthog.users#UsersUpdateRequestNotificationSettingsMap",
@@ -5077,57 +5044,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_password": {
-          "target": "smithy.api#Boolean"
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "is_staff": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Designates whether the user can log into this admin site."
           }
-        },
-        "is_impersonated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_until": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_read_only": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "sensitive_session_expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team": {
-          "target": "com.posthog.users#TeamBasic"
-        },
-        "organization": {
-          "target": "com.posthog.users#Organization"
-        },
-        "organizations": {
-          "target": "com.posthog.users#UsersUpdateRequestOrganizationsList"
         },
         "set_current_organization": {
           "target": "smithy.api#String"
@@ -5151,20 +5072,8 @@
         "events_column_config": {
           "target": "smithy.api#Document"
         },
-        "is_2fa_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_social_auth": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_sso_enforcement": {
-          "target": "smithy.api#Boolean"
-        },
         "has_seen_product_intro_for": {
           "target": "smithy.api#Document"
-        },
-        "scene_personalisation": {
-          "target": "com.posthog.users#UsersUpdateRequestScenePersonalisationList"
         },
         "theme_mode": {
           "target": "com.posthog.users#UsersUpdateRequestThemeMode",
@@ -5202,64 +5111,6 @@
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
-        },
-        "onboarding_skipped_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_reason": {
-          "target": "com.posthog.users#OnboardingSkippedReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_invite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegation_accepted_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_organization_first_user": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "active_realtime_notification_types": {
-          "target": "com.posthog.users#UsersUpdateRequestActiveRealtimeNotificationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-          }
-        },
-        "pending_invites": {
-          "target": "com.posthog.users#UsersUpdateRequestPendingInvitesList"
-        },
-        "requires_credential_review": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
-          }
         }
       },
       "traits": {
@@ -5272,7 +5123,7 @@
         "target": "com.posthog.users#UsersUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.users#User"
+        "target": "com.posthog.users#UserOutput"
       },
       "errors": [
         {
@@ -5318,20 +5169,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersPartialUpdateRequestOrganizationsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#OrganizationBasic"
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersPartialUpdateRequestScenePersonalisationList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#ScenePersonalisationBasic"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersPartialUpdateRequestThemeMode": {
       "type": "union",
       "members": {
@@ -5356,22 +5193,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersPartialUpdateRequestActiveRealtimeNotificationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-      }
-    },
-    "com.posthog.users#UsersPartialUpdateRequestPendingInvitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#PendingInvite"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -5382,15 +5203,6 @@
             "smithy.api#required": {}
           }
         },
-        "date_joined": {
-          "target": "smithy.api#String"
-        },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "first_name": {
           "target": "smithy.api#String"
         },
@@ -5399,18 +5211,6 @@
         },
         "email": {
           "target": "smithy.api#String"
-        },
-        "pending_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_email_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "notification_settings": {
           "target": "com.posthog.users#UsersPartialUpdateRequestNotificationSettingsMap",
@@ -5437,57 +5237,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_password": {
-          "target": "smithy.api#Boolean"
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "is_staff": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Designates whether the user can log into this admin site."
           }
-        },
-        "is_impersonated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_until": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_read_only": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "sensitive_session_expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team": {
-          "target": "com.posthog.users#TeamBasic"
-        },
-        "organization": {
-          "target": "com.posthog.users#Organization"
-        },
-        "organizations": {
-          "target": "com.posthog.users#UsersPartialUpdateRequestOrganizationsList"
         },
         "set_current_organization": {
           "target": "smithy.api#String"
@@ -5511,20 +5265,8 @@
         "events_column_config": {
           "target": "smithy.api#Document"
         },
-        "is_2fa_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_social_auth": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_sso_enforcement": {
-          "target": "smithy.api#Boolean"
-        },
         "has_seen_product_intro_for": {
           "target": "smithy.api#Document"
-        },
-        "scene_personalisation": {
-          "target": "com.posthog.users#UsersPartialUpdateRequestScenePersonalisationList"
         },
         "theme_mode": {
           "target": "com.posthog.users#UsersPartialUpdateRequestThemeMode",
@@ -5562,64 +5304,6 @@
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
           }
-        },
-        "onboarding_skipped_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_reason": {
-          "target": "com.posthog.users#OnboardingSkippedReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_invite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegation_accepted_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_organization_first_user": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "active_realtime_notification_types": {
-          "target": "com.posthog.users#UsersPartialUpdateRequestActiveRealtimeNotificationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-          }
-        },
-        "pending_invites": {
-          "target": "com.posthog.users#UsersPartialUpdateRequestPendingInvitesList"
-        },
-        "requires_credential_review": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
-          }
         }
       },
       "traits": {
@@ -5632,7 +5316,7 @@
         "target": "com.posthog.users#UsersPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.users#User"
+        "target": "com.posthog.users#UserOutput"
       },
       "errors": [
         {
@@ -5827,20 +5511,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersHedgehogConfigPartialUpdateRequestOrganizationsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#OrganizationBasic"
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersHedgehogConfigPartialUpdateRequestScenePersonalisationList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#ScenePersonalisationBasic"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersHedgehogConfigPartialUpdateRequestThemeMode": {
       "type": "union",
       "members": {
@@ -5865,22 +5535,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersHedgehogConfigPartialUpdateRequestActiveRealtimeNotificationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-      }
-    },
-    "com.posthog.users#UsersHedgehogConfigPartialUpdateRequestPendingInvitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#PendingInvite"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersHedgehogConfigPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -5891,15 +5545,6 @@
             "smithy.api#required": {}
           }
         },
-        "date_joined": {
-          "target": "smithy.api#String"
-        },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "first_name": {
           "target": "smithy.api#String"
         },
@@ -5908,18 +5553,6 @@
         },
         "email": {
           "target": "smithy.api#String"
-        },
-        "pending_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_email_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "notification_settings": {
           "target": "com.posthog.users#UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap",
@@ -5946,57 +5579,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_password": {
-          "target": "smithy.api#Boolean"
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "is_staff": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Designates whether the user can log into this admin site."
           }
-        },
-        "is_impersonated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_until": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_read_only": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "sensitive_session_expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team": {
-          "target": "com.posthog.users#TeamBasic"
-        },
-        "organization": {
-          "target": "com.posthog.users#Organization"
-        },
-        "organizations": {
-          "target": "com.posthog.users#UsersHedgehogConfigPartialUpdateRequestOrganizationsList"
         },
         "set_current_organization": {
           "target": "smithy.api#String"
@@ -6020,20 +5607,8 @@
         "events_column_config": {
           "target": "smithy.api#Document"
         },
-        "is_2fa_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_social_auth": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_sso_enforcement": {
-          "target": "smithy.api#Boolean"
-        },
         "has_seen_product_intro_for": {
           "target": "smithy.api#Document"
-        },
-        "scene_personalisation": {
-          "target": "com.posthog.users#UsersHedgehogConfigPartialUpdateRequestScenePersonalisationList"
         },
         "theme_mode": {
           "target": "com.posthog.users#UsersHedgehogConfigPartialUpdateRequestThemeMode",
@@ -6070,64 +5645,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
-          }
-        },
-        "onboarding_skipped_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_reason": {
-          "target": "com.posthog.users#OnboardingSkippedReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_invite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegation_accepted_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_organization_first_user": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "active_realtime_notification_types": {
-          "target": "com.posthog.users#UsersHedgehogConfigPartialUpdateRequestActiveRealtimeNotificationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-          }
-        },
-        "pending_invites": {
-          "target": "com.posthog.users#UsersHedgehogConfigPartialUpdateRequestPendingInvitesList"
-        },
-        "requires_credential_review": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
           }
         }
       },
@@ -7269,7 +6786,7 @@
         "target": "com.posthog.users#UsersOnboardingSkipCreateRequest"
       },
       "output": {
-        "target": "com.posthog.users#User"
+        "target": "com.posthog.users#UserOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -7449,20 +6966,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersScenePersonalisationCreateRequestOrganizationsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#OrganizationBasic"
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersScenePersonalisationCreateRequestScenePersonalisationList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#ScenePersonalisationBasic"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersScenePersonalisationCreateRequestThemeMode": {
       "type": "union",
       "members": {
@@ -7487,22 +6990,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersScenePersonalisationCreateRequestActiveRealtimeNotificationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-      }
-    },
-    "com.posthog.users#UsersScenePersonalisationCreateRequestPendingInvitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#PendingInvite"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersScenePersonalisationCreateRequest": {
       "type": "structure",
       "members": {
@@ -7513,15 +7000,6 @@
             "smithy.api#required": {}
           }
         },
-        "date_joined": {
-          "target": "smithy.api#String"
-        },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "first_name": {
           "target": "smithy.api#String"
         },
@@ -7530,18 +7008,6 @@
         },
         "email": {
           "target": "smithy.api#String"
-        },
-        "pending_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_email_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "notification_settings": {
           "target": "com.posthog.users#UsersScenePersonalisationCreateRequestNotificationSettingsMap",
@@ -7568,57 +7034,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_password": {
-          "target": "smithy.api#Boolean"
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "is_staff": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Designates whether the user can log into this admin site."
           }
-        },
-        "is_impersonated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_until": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_read_only": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "sensitive_session_expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team": {
-          "target": "com.posthog.users#TeamBasic"
-        },
-        "organization": {
-          "target": "com.posthog.users#Organization"
-        },
-        "organizations": {
-          "target": "com.posthog.users#UsersScenePersonalisationCreateRequestOrganizationsList"
         },
         "set_current_organization": {
           "target": "smithy.api#String"
@@ -7642,20 +7062,8 @@
         "events_column_config": {
           "target": "smithy.api#Document"
         },
-        "is_2fa_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_social_auth": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_sso_enforcement": {
-          "target": "smithy.api#Boolean"
-        },
         "has_seen_product_intro_for": {
           "target": "smithy.api#Document"
-        },
-        "scene_personalisation": {
-          "target": "com.posthog.users#UsersScenePersonalisationCreateRequestScenePersonalisationList"
         },
         "theme_mode": {
           "target": "com.posthog.users#UsersScenePersonalisationCreateRequestThemeMode",
@@ -7692,64 +7100,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
-          }
-        },
-        "onboarding_skipped_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_reason": {
-          "target": "com.posthog.users#OnboardingSkippedReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_invite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegation_accepted_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_organization_first_user": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "active_realtime_notification_types": {
-          "target": "com.posthog.users#UsersScenePersonalisationCreateRequestActiveRealtimeNotificationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-          }
-        },
-        "pending_invites": {
-          "target": "com.posthog.users#UsersScenePersonalisationCreateRequestPendingInvitesList"
-        },
-        "requires_credential_review": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
           }
         }
       },
@@ -7847,20 +7197,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersTwoFactorBackupCodesCreateRequestOrganizationsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#OrganizationBasic"
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersTwoFactorBackupCodesCreateRequestScenePersonalisationList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#ScenePersonalisationBasic"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersTwoFactorBackupCodesCreateRequestThemeMode": {
       "type": "union",
       "members": {
@@ -7885,22 +7221,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersTwoFactorBackupCodesCreateRequestActiveRealtimeNotificationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-      }
-    },
-    "com.posthog.users#UsersTwoFactorBackupCodesCreateRequestPendingInvitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#PendingInvite"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersTwoFactorBackupCodesCreateRequest": {
       "type": "structure",
       "members": {
@@ -7911,15 +7231,6 @@
             "smithy.api#required": {}
           }
         },
-        "date_joined": {
-          "target": "smithy.api#String"
-        },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "first_name": {
           "target": "smithy.api#String"
         },
@@ -7928,18 +7239,6 @@
         },
         "email": {
           "target": "smithy.api#String"
-        },
-        "pending_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_email_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "notification_settings": {
           "target": "com.posthog.users#UsersTwoFactorBackupCodesCreateRequestNotificationSettingsMap",
@@ -7966,57 +7265,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_password": {
-          "target": "smithy.api#Boolean"
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "is_staff": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Designates whether the user can log into this admin site."
           }
-        },
-        "is_impersonated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_until": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_read_only": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "sensitive_session_expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team": {
-          "target": "com.posthog.users#TeamBasic"
-        },
-        "organization": {
-          "target": "com.posthog.users#Organization"
-        },
-        "organizations": {
-          "target": "com.posthog.users#UsersTwoFactorBackupCodesCreateRequestOrganizationsList"
         },
         "set_current_organization": {
           "target": "smithy.api#String"
@@ -8040,20 +7293,8 @@
         "events_column_config": {
           "target": "smithy.api#Document"
         },
-        "is_2fa_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_social_auth": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_sso_enforcement": {
-          "target": "smithy.api#Boolean"
-        },
         "has_seen_product_intro_for": {
           "target": "smithy.api#Document"
-        },
-        "scene_personalisation": {
-          "target": "com.posthog.users#UsersTwoFactorBackupCodesCreateRequestScenePersonalisationList"
         },
         "theme_mode": {
           "target": "com.posthog.users#UsersTwoFactorBackupCodesCreateRequestThemeMode",
@@ -8090,64 +7331,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
-          }
-        },
-        "onboarding_skipped_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_reason": {
-          "target": "com.posthog.users#OnboardingSkippedReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_invite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegation_accepted_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_organization_first_user": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "active_realtime_notification_types": {
-          "target": "com.posthog.users#UsersTwoFactorBackupCodesCreateRequestActiveRealtimeNotificationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-          }
-        },
-        "pending_invites": {
-          "target": "com.posthog.users#UsersTwoFactorBackupCodesCreateRequestPendingInvitesList"
-        },
-        "requires_credential_review": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
           }
         }
       },
@@ -8207,20 +7390,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersTwoFactorDisableCreateRequestOrganizationsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#OrganizationBasic"
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersTwoFactorDisableCreateRequestScenePersonalisationList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#ScenePersonalisationBasic"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersTwoFactorDisableCreateRequestThemeMode": {
       "type": "union",
       "members": {
@@ -8245,22 +7414,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersTwoFactorDisableCreateRequestActiveRealtimeNotificationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-      }
-    },
-    "com.posthog.users#UsersTwoFactorDisableCreateRequestPendingInvitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#PendingInvite"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersTwoFactorDisableCreateRequest": {
       "type": "structure",
       "members": {
@@ -8271,15 +7424,6 @@
             "smithy.api#required": {}
           }
         },
-        "date_joined": {
-          "target": "smithy.api#String"
-        },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "first_name": {
           "target": "smithy.api#String"
         },
@@ -8288,18 +7432,6 @@
         },
         "email": {
           "target": "smithy.api#String"
-        },
-        "pending_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_email_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "notification_settings": {
           "target": "com.posthog.users#UsersTwoFactorDisableCreateRequestNotificationSettingsMap",
@@ -8326,57 +7458,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_password": {
-          "target": "smithy.api#Boolean"
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "is_staff": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Designates whether the user can log into this admin site."
           }
-        },
-        "is_impersonated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_until": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_read_only": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "sensitive_session_expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team": {
-          "target": "com.posthog.users#TeamBasic"
-        },
-        "organization": {
-          "target": "com.posthog.users#Organization"
-        },
-        "organizations": {
-          "target": "com.posthog.users#UsersTwoFactorDisableCreateRequestOrganizationsList"
         },
         "set_current_organization": {
           "target": "smithy.api#String"
@@ -8400,20 +7486,8 @@
         "events_column_config": {
           "target": "smithy.api#Document"
         },
-        "is_2fa_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_social_auth": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_sso_enforcement": {
-          "target": "smithy.api#Boolean"
-        },
         "has_seen_product_intro_for": {
           "target": "smithy.api#Document"
-        },
-        "scene_personalisation": {
-          "target": "com.posthog.users#UsersTwoFactorDisableCreateRequestScenePersonalisationList"
         },
         "theme_mode": {
           "target": "com.posthog.users#UsersTwoFactorDisableCreateRequestThemeMode",
@@ -8450,64 +7524,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
-          }
-        },
-        "onboarding_skipped_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_reason": {
-          "target": "com.posthog.users#OnboardingSkippedReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_invite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegation_accepted_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_organization_first_user": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "active_realtime_notification_types": {
-          "target": "com.posthog.users#UsersTwoFactorDisableCreateRequestActiveRealtimeNotificationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-          }
-        },
-        "pending_invites": {
-          "target": "com.posthog.users#UsersTwoFactorDisableCreateRequestPendingInvitesList"
-        },
-        "requires_credential_review": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
           }
         }
       },
@@ -8646,20 +7662,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersTwoFactorValidateCreateRequestOrganizationsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#OrganizationBasic"
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersTwoFactorValidateCreateRequestScenePersonalisationList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#ScenePersonalisationBasic"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersTwoFactorValidateCreateRequestThemeMode": {
       "type": "union",
       "members": {
@@ -8684,22 +7686,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersTwoFactorValidateCreateRequestActiveRealtimeNotificationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-      }
-    },
-    "com.posthog.users#UsersTwoFactorValidateCreateRequestPendingInvitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#PendingInvite"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersTwoFactorValidateCreateRequest": {
       "type": "structure",
       "members": {
@@ -8710,15 +7696,6 @@
             "smithy.api#required": {}
           }
         },
-        "date_joined": {
-          "target": "smithy.api#String"
-        },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "first_name": {
           "target": "smithy.api#String"
         },
@@ -8727,18 +7704,6 @@
         },
         "email": {
           "target": "smithy.api#String"
-        },
-        "pending_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_email_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "notification_settings": {
           "target": "com.posthog.users#UsersTwoFactorValidateCreateRequestNotificationSettingsMap",
@@ -8765,57 +7730,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_password": {
-          "target": "smithy.api#Boolean"
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "is_staff": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Designates whether the user can log into this admin site."
           }
-        },
-        "is_impersonated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_until": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_read_only": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "sensitive_session_expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team": {
-          "target": "com.posthog.users#TeamBasic"
-        },
-        "organization": {
-          "target": "com.posthog.users#Organization"
-        },
-        "organizations": {
-          "target": "com.posthog.users#UsersTwoFactorValidateCreateRequestOrganizationsList"
         },
         "set_current_organization": {
           "target": "smithy.api#String"
@@ -8839,20 +7758,8 @@
         "events_column_config": {
           "target": "smithy.api#Document"
         },
-        "is_2fa_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_social_auth": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_sso_enforcement": {
-          "target": "smithy.api#Boolean"
-        },
         "has_seen_product_intro_for": {
           "target": "smithy.api#Document"
-        },
-        "scene_personalisation": {
-          "target": "com.posthog.users#UsersTwoFactorValidateCreateRequestScenePersonalisationList"
         },
         "theme_mode": {
           "target": "com.posthog.users#UsersTwoFactorValidateCreateRequestThemeMode",
@@ -8889,64 +7796,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
-          }
-        },
-        "onboarding_skipped_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_reason": {
-          "target": "com.posthog.users#OnboardingSkippedReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_invite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegation_accepted_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_organization_first_user": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "active_realtime_notification_types": {
-          "target": "com.posthog.users#UsersTwoFactorValidateCreateRequestActiveRealtimeNotificationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-          }
-        },
-        "pending_invites": {
-          "target": "com.posthog.users#UsersTwoFactorValidateCreateRequestPendingInvitesList"
-        },
-        "requires_credential_review": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
           }
         }
       },
@@ -9005,20 +7854,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersValidate2faCreateRequestOrganizationsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#OrganizationBasic"
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersValidate2faCreateRequestScenePersonalisationList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#ScenePersonalisationBasic"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersValidate2faCreateRequestThemeMode": {
       "type": "union",
       "members": {
@@ -9043,22 +7878,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersValidate2faCreateRequestActiveRealtimeNotificationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-      }
-    },
-    "com.posthog.users#UsersValidate2faCreateRequestPendingInvitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#PendingInvite"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersValidate2faCreateRequest": {
       "type": "structure",
       "members": {
@@ -9069,15 +7888,6 @@
             "smithy.api#required": {}
           }
         },
-        "date_joined": {
-          "target": "smithy.api#String"
-        },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "first_name": {
           "target": "smithy.api#String"
         },
@@ -9086,18 +7896,6 @@
         },
         "email": {
           "target": "smithy.api#String"
-        },
-        "pending_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_email_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "notification_settings": {
           "target": "com.posthog.users#UsersValidate2faCreateRequestNotificationSettingsMap",
@@ -9124,57 +7922,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_password": {
-          "target": "smithy.api#Boolean"
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "is_staff": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Designates whether the user can log into this admin site."
           }
-        },
-        "is_impersonated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_until": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_read_only": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "sensitive_session_expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team": {
-          "target": "com.posthog.users#TeamBasic"
-        },
-        "organization": {
-          "target": "com.posthog.users#Organization"
-        },
-        "organizations": {
-          "target": "com.posthog.users#UsersValidate2faCreateRequestOrganizationsList"
         },
         "set_current_organization": {
           "target": "smithy.api#String"
@@ -9198,20 +7950,8 @@
         "events_column_config": {
           "target": "smithy.api#Document"
         },
-        "is_2fa_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_social_auth": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_sso_enforcement": {
-          "target": "smithy.api#Boolean"
-        },
         "has_seen_product_intro_for": {
           "target": "smithy.api#Document"
-        },
-        "scene_personalisation": {
-          "target": "com.posthog.users#UsersValidate2faCreateRequestScenePersonalisationList"
         },
         "theme_mode": {
           "target": "com.posthog.users#UsersValidate2faCreateRequestThemeMode",
@@ -9248,64 +7988,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
-          }
-        },
-        "onboarding_skipped_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_reason": {
-          "target": "com.posthog.users#OnboardingSkippedReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_invite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegation_accepted_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_organization_first_user": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "active_realtime_notification_types": {
-          "target": "com.posthog.users#UsersValidate2faCreateRequestActiveRealtimeNotificationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-          }
-        },
-        "pending_invites": {
-          "target": "com.posthog.users#UsersValidate2faCreateRequestPendingInvitesList"
-        },
-        "requires_credential_review": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
           }
         }
       },
@@ -9364,20 +8046,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequestOrganizationsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#OrganizationBasic"
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequestScenePersonalisationList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#ScenePersonalisationBasic"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode": {
       "type": "union",
       "members": {
@@ -9402,37 +8070,9 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequestActiveRealtimeNotificationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-      }
-    },
-    "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequestPendingInvitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#PendingInvite"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequest": {
       "type": "structure",
       "members": {
-        "date_joined": {
-          "target": "smithy.api#String"
-        },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "first_name": {
           "target": "smithy.api#String"
         },
@@ -9441,18 +8081,6 @@
         },
         "email": {
           "target": "smithy.api#String"
-        },
-        "pending_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_email_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "notification_settings": {
           "target": "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap",
@@ -9479,57 +8107,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_password": {
-          "target": "smithy.api#Boolean"
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "is_staff": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Designates whether the user can log into this admin site."
           }
-        },
-        "is_impersonated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_until": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_read_only": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "sensitive_session_expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team": {
-          "target": "com.posthog.users#TeamBasic"
-        },
-        "organization": {
-          "target": "com.posthog.users#Organization"
-        },
-        "organizations": {
-          "target": "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequestOrganizationsList"
         },
         "set_current_organization": {
           "target": "smithy.api#String"
@@ -9553,20 +8135,8 @@
         "events_column_config": {
           "target": "smithy.api#Document"
         },
-        "is_2fa_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_social_auth": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_sso_enforcement": {
-          "target": "smithy.api#Boolean"
-        },
         "has_seen_product_intro_for": {
           "target": "smithy.api#Document"
-        },
-        "scene_personalisation": {
-          "target": "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequestScenePersonalisationList"
         },
         "theme_mode": {
           "target": "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode",
@@ -9603,64 +8173,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
-          }
-        },
-        "onboarding_skipped_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_reason": {
-          "target": "com.posthog.users#OnboardingSkippedReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_invite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegation_accepted_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_organization_first_user": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "active_realtime_notification_types": {
-          "target": "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequestActiveRealtimeNotificationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-          }
-        },
-        "pending_invites": {
-          "target": "com.posthog.users#UsersCancelEmailChangeRequestPartialUpdateRequestPendingInvitesList"
-        },
-        "requires_credential_review": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
           }
         }
       },
@@ -9716,20 +8228,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersRequestEmailVerificationCreateRequestOrganizationsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#OrganizationBasic"
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersRequestEmailVerificationCreateRequestScenePersonalisationList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#ScenePersonalisationBasic"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersRequestEmailVerificationCreateRequestThemeMode": {
       "type": "union",
       "members": {
@@ -9754,37 +8252,9 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersRequestEmailVerificationCreateRequestActiveRealtimeNotificationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-      }
-    },
-    "com.posthog.users#UsersRequestEmailVerificationCreateRequestPendingInvitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#PendingInvite"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersRequestEmailVerificationCreateRequest": {
       "type": "structure",
       "members": {
-        "date_joined": {
-          "target": "smithy.api#String"
-        },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "first_name": {
           "target": "smithy.api#String"
         },
@@ -9793,18 +8263,6 @@
         },
         "email": {
           "target": "smithy.api#String"
-        },
-        "pending_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_email_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "notification_settings": {
           "target": "com.posthog.users#UsersRequestEmailVerificationCreateRequestNotificationSettingsMap",
@@ -9831,57 +8289,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_password": {
-          "target": "smithy.api#Boolean"
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "is_staff": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Designates whether the user can log into this admin site."
           }
-        },
-        "is_impersonated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_until": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_read_only": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "sensitive_session_expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team": {
-          "target": "com.posthog.users#TeamBasic"
-        },
-        "organization": {
-          "target": "com.posthog.users#Organization"
-        },
-        "organizations": {
-          "target": "com.posthog.users#UsersRequestEmailVerificationCreateRequestOrganizationsList"
         },
         "set_current_organization": {
           "target": "smithy.api#String"
@@ -9905,20 +8317,8 @@
         "events_column_config": {
           "target": "smithy.api#Document"
         },
-        "is_2fa_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_social_auth": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_sso_enforcement": {
-          "target": "smithy.api#Boolean"
-        },
         "has_seen_product_intro_for": {
           "target": "smithy.api#Document"
-        },
-        "scene_personalisation": {
-          "target": "com.posthog.users#UsersRequestEmailVerificationCreateRequestScenePersonalisationList"
         },
         "theme_mode": {
           "target": "com.posthog.users#UsersRequestEmailVerificationCreateRequestThemeMode",
@@ -9955,64 +8355,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
-          }
-        },
-        "onboarding_skipped_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_reason": {
-          "target": "com.posthog.users#OnboardingSkippedReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_invite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegation_accepted_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_organization_first_user": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "active_realtime_notification_types": {
-          "target": "com.posthog.users#UsersRequestEmailVerificationCreateRequestActiveRealtimeNotificationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-          }
-        },
-        "pending_invites": {
-          "target": "com.posthog.users#UsersRequestEmailVerificationCreateRequestPendingInvitesList"
-        },
-        "requires_credential_review": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
           }
         }
       },
@@ -10068,20 +8410,6 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersVerifyEmailCreateRequestOrganizationsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#OrganizationBasic"
-      },
-      "traits": {}
-    },
-    "com.posthog.users#UsersVerifyEmailCreateRequestScenePersonalisationList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#ScenePersonalisationBasic"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersVerifyEmailCreateRequestThemeMode": {
       "type": "union",
       "members": {
@@ -10106,37 +8434,9 @@
       },
       "traits": {}
     },
-    "com.posthog.users#UsersVerifyEmailCreateRequestActiveRealtimeNotificationTypesList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-      }
-    },
-    "com.posthog.users#UsersVerifyEmailCreateRequestPendingInvitesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.users#PendingInvite"
-      },
-      "traits": {}
-    },
     "com.posthog.users#UsersVerifyEmailCreateRequest": {
       "type": "structure",
       "members": {
-        "date_joined": {
-          "target": "smithy.api#String"
-        },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "first_name": {
           "target": "smithy.api#String"
         },
@@ -10145,18 +8445,6 @@
         },
         "email": {
           "target": "smithy.api#String"
-        },
-        "pending_email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_email_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "notification_settings": {
           "target": "com.posthog.users#UsersVerifyEmailCreateRequestNotificationSettingsMap",
@@ -10183,57 +8471,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "has_password": {
-          "target": "smithy.api#Boolean"
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "is_staff": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Designates whether the user can log into this admin site."
           }
-        },
-        "is_impersonated": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_until": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_read_only": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_impersonated_reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "sensitive_session_expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team": {
-          "target": "com.posthog.users#TeamBasic"
-        },
-        "organization": {
-          "target": "com.posthog.users#Organization"
-        },
-        "organizations": {
-          "target": "com.posthog.users#UsersVerifyEmailCreateRequestOrganizationsList"
         },
         "set_current_organization": {
           "target": "smithy.api#String"
@@ -10257,20 +8499,8 @@
         "events_column_config": {
           "target": "smithy.api#Document"
         },
-        "is_2fa_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_social_auth": {
-          "target": "smithy.api#Boolean"
-        },
-        "has_sso_enforcement": {
-          "target": "smithy.api#Boolean"
-        },
         "has_seen_product_intro_for": {
           "target": "smithy.api#Document"
-        },
-        "scene_personalisation": {
-          "target": "com.posthog.users#UsersVerifyEmailCreateRequestScenePersonalisationList"
         },
         "theme_mode": {
           "target": "com.posthog.users#UsersVerifyEmailCreateRequestThemeMode",
@@ -10307,64 +8537,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions."
-          }
-        },
-        "onboarding_skipped_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_reason": {
-          "target": "com.posthog.users#OnboardingSkippedReasonEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_skipped_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_invite": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegated_to_organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "onboarding_delegation_accepted_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_organization_first_user": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "active_realtime_notification_types": {
-          "target": "com.posthog.users#UsersVerifyEmailCreateRequestActiveRealtimeNotificationTypesList",
-          "traits": {
-            "smithy.api#documentation": "Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only."
-          }
-        },
-        "pending_invites": {
-          "target": "com.posthog.users#UsersVerifyEmailCreateRequestPendingInvitesList"
-        },
-        "requires_credential_review": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only."
           }
         }
       },

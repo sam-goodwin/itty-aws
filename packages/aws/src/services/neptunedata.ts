@@ -586,10 +586,7 @@ export const DeleteSparqlStatisticsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSparqlStatisticsOutput",
 }) as any as S.Schema<DeleteSparqlStatisticsOutput>;
-export type Action =
-  | "initiateDatabaseReset"
-  | "performDatabaseReset"
-  | (string & {});
+export type Action = "initiateDatabaseReset" | "performDatabaseReset";
 export const Action = /*@__PURE__*/ S.String;
 
 export interface ExecuteFastResetInput {
@@ -750,11 +747,7 @@ export const ExecuteGremlinQueryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteGremlinQueryOutput",
 }) as any as S.Schema<ExecuteGremlinQueryOutput>;
-export type OpenCypherExplainMode =
-  | "static"
-  | "dynamic"
-  | "details"
-  | (string & {});
+export type OpenCypherExplainMode = "static" | "dynamic" | "details";
 export const OpenCypherExplainMode = /*@__PURE__*/ S.String;
 
 export interface ExecuteOpenCypherExplainQueryInput {
@@ -1251,11 +1244,10 @@ export type IteratorType =
   | "AT_SEQUENCE_NUMBER"
   | "AFTER_SEQUENCE_NUMBER"
   | "TRIM_HORIZON"
-  | "LATEST"
-  | (string & {});
+  | "LATEST";
 export const IteratorType = /*@__PURE__*/ S.String;
 
-export type Encoding = "gzip" | (string & {});
+export type Encoding = "gzip";
 export const Encoding = /*@__PURE__*/ S.String;
 
 export interface GetPropertygraphStreamInput {
@@ -1344,7 +1336,7 @@ export const GetPropertygraphStreamOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPropertygraphStreamOutput",
 }) as any as S.Schema<GetPropertygraphStreamOutput>;
-export type GraphSummaryType = "basic" | "detailed" | (string & {});
+export type GraphSummaryType = "basic" | "detailed";
 export const GraphSummaryType = /*@__PURE__*/ S.String;
 
 export interface GetPropertygraphSummaryInput {
@@ -1901,8 +1893,7 @@ export const ListOpenCypherQueriesOutput = /*@__PURE__*/ S.suspend(() =>
 export type StatisticsAutoGenerationMode =
   | "disableAutoCompute"
   | "enableAutoCompute"
-  | "refresh"
-  | (string & {});
+  | "refresh";
 export const StatisticsAutoGenerationMode = /*@__PURE__*/ S.String;
 
 export interface ManagePropertygraphStatisticsInput {
@@ -1971,8 +1962,7 @@ export type Format =
   | "ntriples"
   | "nquads"
   | "rdfxml"
-  | "turtle"
-  | (string & {});
+  | "turtle";
 export const Format = /*@__PURE__*/ S.String;
 
 export type S3BucketRegion =
@@ -2011,19 +2001,13 @@ export type S3BucketRegion =
   | "mx-central-1"
   | "ap-east-2"
   | "ap-south-2"
-  | "eu-central-2"
-  | (string & {});
+  | "eu-central-2";
 export const S3BucketRegion = /*@__PURE__*/ S.String;
 
-export type Mode = "RESUME" | "NEW" | "AUTO" | (string & {});
+export type Mode = "RESUME" | "NEW" | "AUTO";
 export const Mode = /*@__PURE__*/ S.String;
 
-export type Parallelism =
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "OVERSUBSCRIBE"
-  | (string & {});
+export type Parallelism = "LOW" | "MEDIUM" | "HIGH" | "OVERSUBSCRIBE";
 export const Parallelism = /*@__PURE__*/ S.String;
 
 export interface StartLoaderJobInput {

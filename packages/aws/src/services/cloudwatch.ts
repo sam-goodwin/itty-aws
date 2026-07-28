@@ -414,8 +414,7 @@ export type StandardUnit =
   | "Gigabits/Second"
   | "Terabits/Second"
   | "Count/Second"
-  | "None"
-  | (string & {});
+  | "None";
 export const StandardUnit = /*@__PURE__*/ S.String;
 
 export interface MetricStat {
@@ -672,11 +671,7 @@ export const DescribeAlarmContributorsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAlarmContributorsOutput",
 }) as any as S.Schema<DescribeAlarmContributorsOutput>;
-export type AlarmType =
-  | "CompositeAlarm"
-  | "MetricAlarm"
-  | "LogAlarm"
-  | (string & {});
+export type AlarmType = "CompositeAlarm" | "MetricAlarm" | "LogAlarm";
 export const AlarmType = /*@__PURE__*/ S.String;
 
 export type AlarmTypes = AlarmType[];
@@ -686,15 +681,11 @@ export type HistoryItemType =
   | "StateUpdate"
   | "Action"
   | "AlarmContributorStateUpdate"
-  | "AlarmContributorAction"
-  | (string & {});
+  | "AlarmContributorAction";
 export const HistoryItemType = /*@__PURE__*/ S.String;
 
 export type MaxRecords = number;
-export type ScanBy =
-  | "TimestampDescending"
-  | "TimestampAscending"
-  | (string & {});
+export type ScanBy = "TimestampDescending" | "TimestampAscending";
 export const ScanBy = /*@__PURE__*/ S.String;
 
 export interface DescribeAlarmHistoryInput {
@@ -774,7 +765,7 @@ export const DescribeAlarmHistoryOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAlarmHistoryOutput",
 }) as any as S.Schema<DescribeAlarmHistoryOutput>;
 export type AlarmNamePrefix = string;
-export type StateValue = "OK" | "ALARM" | "INSUFFICIENT_DATA" | (string & {});
+export type StateValue = "OK" | "ALARM" | "INSUFFICIENT_DATA";
 export const StateValue = /*@__PURE__*/ S.String;
 
 export type ActionPrefix = string;
@@ -822,11 +813,7 @@ export type AlarmArn = string;
 export type AlarmDescription = string;
 export type AlarmRule = string;
 export type StateReasonData = string;
-export type ActionsSuppressedBy =
-  | "WaitPeriod"
-  | "ExtensionPeriod"
-  | "Alarm"
-  | (string & {});
+export type ActionsSuppressedBy = "WaitPeriod" | "ExtensionPeriod" | "Alarm";
 export const ActionsSuppressedBy = /*@__PURE__*/ S.String;
 
 export type ActionsSuppressedReason = string;
@@ -888,8 +875,7 @@ export type Statistic =
   | "Average"
   | "Sum"
   | "Minimum"
-  | "Maximum"
-  | (string & {});
+  | "Maximum";
 export const Statistic = /*@__PURE__*/ S.String;
 
 export type ExtendedStatistic = string;
@@ -903,8 +889,7 @@ export type ComparisonOperator =
   | "LessThanOrEqualToThreshold"
   | "LessThanLowerOrGreaterThanUpperThreshold"
   | "LessThanLowerThreshold"
-  | "GreaterThanUpperThreshold"
-  | (string & {});
+  | "GreaterThanUpperThreshold";
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export type TreatMissingData = string;
@@ -912,8 +897,7 @@ export type EvaluateLowSampleCountPercentile = string;
 export type EvaluationState =
   | "PARTIAL_DATA"
   | "EVALUATION_FAILURE"
-  | "EVALUATION_ERROR"
-  | (string & {});
+  | "EVALUATION_ERROR";
 export const EvaluationState = /*@__PURE__*/ S.String;
 
 export type Query = string;
@@ -1228,10 +1212,7 @@ export const DescribeAlarmsForMetricOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAlarmsForMetricOutput",
 }) as any as S.Schema<DescribeAlarmsForMetricOutput>;
 export type MaxReturnedResultsCount = number;
-export type AnomalyDetectorType =
-  | "SINGLE_METRIC"
-  | "METRIC_MATH"
-  | (string & {});
+export type AnomalyDetectorType = "SINGLE_METRIC" | "METRIC_MATH";
 export const AnomalyDetectorType = /*@__PURE__*/ S.String;
 
 export type AnomalyDetectorTypes = AnomalyDetectorType[];
@@ -1294,8 +1275,7 @@ export const AnomalyDetectorConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type AnomalyDetectorStateValue =
   | "PENDING_TRAINING"
   | "TRAINED_INSUFFICIENT_DATA"
-  | "TRAINED"
-  | (string & {});
+  | "TRAINED";
 export const AnomalyDetectorStateValue = /*@__PURE__*/ S.String;
 
 export type PeriodicSpikes = boolean;
@@ -1610,11 +1590,7 @@ export interface MuteTargets {
 export const MuteTargets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AlarmNames: S.optional(MuteTargetAlarmNameList) }),
 ).annotate({ identifier: "MuteTargets" }) as any as S.Schema<MuteTargets>;
-export type AlarmMuteRuleStatus =
-  | "SCHEDULED"
-  | "ACTIVE"
-  | "EXPIRED"
-  | (string & {});
+export type AlarmMuteRuleStatus = "SCHEDULED" | "ACTIVE" | "EXPIRED";
 export const AlarmMuteRuleStatus = /*@__PURE__*/ S.String;
 
 export type MuteType = string;
@@ -1905,8 +1881,7 @@ export type StatusCode =
   | "Complete"
   | "InternalError"
   | "PartialData"
-  | "Forbidden"
-  | (string & {});
+  | "Forbidden";
 export const StatusCode = /*@__PURE__*/ S.String;
 
 export type MessageDataCode = string;
@@ -2075,8 +2050,7 @@ export type MetricStreamState = string;
 export type MetricStreamOutputFormat =
   | "json"
   | "opentelemetry0.7"
-  | "opentelemetry1.0"
-  | (string & {});
+  | "opentelemetry1.0";
 export const MetricStreamOutputFormat = /*@__PURE__*/ S.String;
 
 export interface MetricStreamStatisticsMetric {
@@ -2208,7 +2182,7 @@ export const GetOTelEnrichmentInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOTelEnrichmentInput",
 }) as any as S.Schema<GetOTelEnrichmentInput>;
-export type OTelEnrichmentStatus = "Running" | "Stopped" | (string & {});
+export type OTelEnrichmentStatus = "Running" | "Stopped";
 export const OTelEnrichmentStatus = /*@__PURE__*/ S.String;
 
 export interface GetOTelEnrichmentOutput {
@@ -2415,7 +2389,7 @@ export const DimensionFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DimensionFilter>;
 export type DimensionFilters = DimensionFilter[];
 export const DimensionFilters = /*@__PURE__*/ S.Array(DimensionFilter);
-export type RecentlyActive = "PT3H" | (string & {});
+export type RecentlyActive = "PT3H";
 export const RecentlyActive = /*@__PURE__*/ S.String;
 
 export type IncludeLinkedAccounts = boolean;

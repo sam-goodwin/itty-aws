@@ -87,7 +87,7 @@ export const WorkflowCost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowCost" }) as any as S.Schema<WorkflowCost>;
 
 export type EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList =
-  WorkflowCost[];
+  ReadonlyArray<WorkflowCost>;
 export const EngineeringAnalyticsAuthorWorkflowCostsResponseBodyList =
   /*@__PURE__*/ S.Array(
     WorkflowCost,
@@ -135,12 +135,11 @@ export type BrokenTestRowStateEnum =
   | "novel_burst"
   | "potentially_resolved"
   | "flaky"
-  | "pr_only"
-  | (string & {});
+  | "pr_only";
 export const BrokenTestRowStateEnum = /*@__PURE__*/ S.String;
 
 /** Hourly failure counts over the last 24 hours, oldest first (fixed 24-slot array), for the row sparkline. All zeros when nothing failed in the last day. */
-export type BrokenTestRowTrend24hList = number[];
+export type BrokenTestRowTrend24hList = ReadonlyArray<number>;
 export const BrokenTestRowTrend24hList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BrokenTestRowTrend24hList>;
@@ -195,13 +194,13 @@ export const BrokenTestRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BrokenTestRow" }) as any as S.Schema<BrokenTestRow>;
 
 /** Classified failures ranked by triage urgency — breaking trunk first, single-PR failures last. */
-export type BrokenTestsResultRowsList = BrokenTestRow[];
+export type BrokenTestsResultRowsList = ReadonlyArray<BrokenTestRow>;
 export const BrokenTestsResultRowsList = /*@__PURE__*/ S.Array(
   BrokenTestRow,
 ) as any as S.Schema<BrokenTestsResultRowsList>;
 
 /** Default-branch job names whose latest completed run is failing — the 'what's on fire right now' summary. Empty when the job-level source isn't synced or trunk is green. */
-export type BrokenTestsResultBreakingMasterJobsList = string[];
+export type BrokenTestsResultBreakingMasterJobsList = ReadonlyArray<string>;
 export const BrokenTestsResultBreakingMasterJobsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BrokenTestsResultBreakingMasterJobsList>;
@@ -333,7 +332,7 @@ export const CIFailureLogLine = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CIFailureLogLine>;
 
 /** The thinned failure-log lines in original order, with omission markers. */
-export type CIJobFailureLogLinesList = CIFailureLogLine[];
+export type CIJobFailureLogLinesList = ReadonlyArray<CIFailureLogLine>;
 export const CIJobFailureLogLinesList = /*@__PURE__*/ S.Array(
   CIFailureLogLine,
 ) as any as S.Schema<CIJobFailureLogLinesList>;
@@ -372,7 +371,7 @@ export const CIJobFailureLog = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CIJobFailureLog>;
 
 /** Failed CI jobs with their thinned failure logs, grouped by job. */
-export type CIFailureLogsJobsList = CIJobFailureLog[];
+export type CIFailureLogsJobsList = ReadonlyArray<CIJobFailureLog>;
 export const CIFailureLogsJobsList = /*@__PURE__*/ S.Array(
   CIJobFailureLog,
 ) as any as S.Schema<CIFailureLogsJobsList>;
@@ -422,7 +421,7 @@ export const EngineeringAnalyticsCiSignalsConfigRetrieveRequest =
   }) as any as S.Schema<EngineeringAnalyticsCiSignalsConfigRetrieveRequest>;
 
 /** * `running` - RUNNING * `completed` - COMPLETED * `failed` - FAILED */
-export type SyncStatusEnum = "running" | "completed" | "failed" | (string & {});
+export type SyncStatusEnum = "running" | "completed" | "failed";
 export const SyncStatusEnum = /*@__PURE__*/ S.String;
 
 export interface CISignalsConfig {
@@ -491,7 +490,7 @@ export const EngineeringAnalyticsCurrentBranchHealthRequest =
   }) as any as S.Schema<EngineeringAnalyticsCurrentBranchHealthRequest>;
 
 /** Alphabetical preview of failing workflow names, capped at 20; use failing_workflows for the complete count. */
-export type CurrentBranchHealthFailingWorkflowNamesList = string[];
+export type CurrentBranchHealthFailingWorkflowNamesList = ReadonlyArray<string>;
 export const CurrentBranchHealthFailingWorkflowNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -559,8 +558,7 @@ export const EngineeringAnalyticsFlakyTestsRequest = /*@__PURE__*/ S.suspend(
 export type FlakyTestItemClassificationEnum =
   | "confirmed_flake"
   | "suspected_regression"
-  | "quarantined"
-  | (string & {});
+  | "quarantined";
 export const FlakyTestItemClassificationEnum = /*@__PURE__*/ S.String;
 
 export interface FlakyTestItem {
@@ -598,7 +596,7 @@ export const FlakyTestItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlakyTestItem" }) as any as S.Schema<FlakyTestItem>;
 
 /** Tests worth acting on now, ranked by blast radius: master failures, then PRs hit, then runs. */
-export type FlakyTestListItemsList = FlakyTestItem[];
+export type FlakyTestListItemsList = ReadonlyArray<FlakyTestItem>;
 export const FlakyTestListItemsList = /*@__PURE__*/ S.Array(
   FlakyTestItem,
 ) as any as S.Schema<FlakyTestListItemsList>;
@@ -702,7 +700,7 @@ export const WorkflowJobAggregate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowJobAggregate>;
 
 export type EngineeringAnalyticsJobAggregatesResponseBodyList =
-  WorkflowJobAggregate[];
+  ReadonlyArray<WorkflowJobAggregate>;
 export const EngineeringAnalyticsJobAggregatesResponseBodyList =
   /*@__PURE__*/ S.Array(
     WorkflowJobAggregate,
@@ -782,7 +780,7 @@ export const MasterFailureGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MasterFailureGroup>;
 
 export type EngineeringAnalyticsMasterFailuresResponseBodyList =
-  MasterFailureGroup[];
+  ReadonlyArray<MasterFailureGroup>;
 export const EngineeringAnalyticsMasterFailuresResponseBodyList =
   /*@__PURE__*/ S.Array(
     MasterFailureGroup,
@@ -827,7 +825,7 @@ export const EngineeringAnalyticsPrCostRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EngineeringAnalyticsPrCostRequest>;
 
 /** Same spend broken down per workflow. */
-export type PRCostSummaryByWorkflowList = WorkflowCost[];
+export type PRCostSummaryByWorkflowList = ReadonlyArray<WorkflowCost>;
 export const PRCostSummaryByWorkflowList = /*@__PURE__*/ S.Array(
   WorkflowCost,
 ) as any as S.Schema<PRCostSummaryByWorkflowList>;
@@ -852,7 +850,7 @@ export const RunCost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunCost" }) as any as S.Schema<RunCost>;
 
 /** Same spend broken down per workflow run, keyed by (run_id, run_attempt). */
-export type PRCostSummaryByRunList = RunCost[];
+export type PRCostSummaryByRunList = ReadonlyArray<RunCost>;
 export const PRCostSummaryByRunList = /*@__PURE__*/ S.Array(
   RunCost,
 ) as any as S.Schema<PRCostSummaryByRunList>;
@@ -958,11 +956,7 @@ export const Author = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Author" }) as any as S.Schema<Author>;
 
 /** * `open` - OPEN * `closed` - CLOSED * `merged` - MERGED */
-export type EngineeringAnalyticsPRStateEnum =
-  | "open"
-  | "closed"
-  | "merged"
-  | (string & {});
+export type EngineeringAnalyticsPRStateEnum = "open" | "closed" | "merged";
 export const EngineeringAnalyticsPRStateEnum = /*@__PURE__*/ S.String;
 
 export interface PullRequest {
@@ -1008,8 +1002,7 @@ export type PRLifecycleEventKindEnum =
   | "ci_started"
   | "ci_finished"
   | "merged"
-  | "closed"
-  | (string & {});
+  | "closed";
 export const PRLifecycleEventKindEnum = /*@__PURE__*/ S.String;
 
 export interface PRLifecycleEvent {
@@ -1034,17 +1027,13 @@ export const PRLifecycleEvent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PRLifecycleEvent>;
 
 /** Lifecycle events ordered by time. */
-export type PRLifecycleEventsList = PRLifecycleEvent[];
+export type PRLifecycleEventsList = ReadonlyArray<PRLifecycleEvent>;
 export const PRLifecycleEventsList = /*@__PURE__*/ S.Array(
   PRLifecycleEvent,
 ) as any as S.Schema<PRLifecycleEventsList>;
 
 /** * `precise` - PRECISE * `coarse` - COARSE * `partial` - PARTIAL */
-export type MetricQualityEnum =
-  | "precise"
-  | "coarse"
-  | "partial"
-  | (string & {});
+export type MetricQualityEnum = "precise" | "coarse" | "partial";
 export const MetricQualityEnum = /*@__PURE__*/ S.String;
 
 export interface PRLifecycle {
@@ -1135,7 +1124,8 @@ export const WorkflowRunDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkflowRunDetail",
 }) as any as S.Schema<WorkflowRunDetail>;
 
-export type EngineeringAnalyticsPrRunsResponseBodyList = WorkflowRunDetail[];
+export type EngineeringAnalyticsPrRunsResponseBodyList =
+  ReadonlyArray<WorkflowRunDetail>;
 export const EngineeringAnalyticsPrRunsResponseBodyList = /*@__PURE__*/ S.Array(
   WorkflowRunDetail,
 ) as any as S.Schema<EngineeringAnalyticsPrRunsResponseBodyList>;
@@ -1180,7 +1170,7 @@ export const EngineeringAnalyticsPullRequestsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EngineeringAnalyticsPullRequestsRequest>;
 
 /** The workflow names behind `failing`, sorted - names what is failing instead of leaving a bare count. */
-export type CIStatusRollupFailingWorkflowsList = string[];
+export type CIStatusRollupFailingWorkflowsList = ReadonlyArray<string>;
 export const CIStatusRollupFailingWorkflowsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CIStatusRollupFailingWorkflowsList>;
@@ -1230,13 +1220,13 @@ export const PushCISample = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PushCISample" }) as any as S.Schema<PushCISample>;
 
 /** This PR's CI rounds oldest-first, capped to the most recent pushes - one sample per push for the push-history sparkline. `pushes` stays the uncapped count. */
-export type PullRequestListItemPushHistoryList = PushCISample[];
+export type PullRequestListItemPushHistoryList = ReadonlyArray<PushCISample>;
 export const PullRequestListItemPushHistoryList = /*@__PURE__*/ S.Array(
   PushCISample,
 ) as any as S.Schema<PullRequestListItemPushHistoryList>;
 
 /** GitHub label names on the pull request. */
-export type PullRequestListItemLabelsList = string[];
+export type PullRequestListItemLabelsList = ReadonlyArray<string>;
 export const PullRequestListItemLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PullRequestListItemLabelsList>;
@@ -1299,7 +1289,7 @@ export const PullRequestListItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PullRequestListItem>;
 
 /** Pull requests, newest first, capped at `limit`. */
-export type PullRequestListItemsList = PullRequestListItem[];
+export type PullRequestListItemsList = ReadonlyArray<PullRequestListItem>;
 export const PullRequestListItemsList = /*@__PURE__*/ S.Array(
   PullRequestListItem,
 ) as any as S.Schema<PullRequestListItemsList>;
@@ -1348,25 +1338,15 @@ export const EngineeringAnalyticsQuarantineRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EngineeringAnalyticsQuarantineRequest>;
 
 /** * `run` - RUN * `skip` - SKIP */
-export type QuarantineModeEnum = "run" | "skip" | (string & {});
+export type QuarantineModeEnum = "run" | "skip";
 export const QuarantineModeEnum = /*@__PURE__*/ S.String;
 
 /** * `active` - ACTIVE * `expiring_soon` - EXPIRING_SOON * `in_grace` - IN_GRACE * `overdue` - OVERDUE */
-export type LifecycleEnum =
-  | "active"
-  | "expiring_soon"
-  | "in_grace"
-  | "overdue"
-  | (string & {});
+export type LifecycleEnum = "active" | "expiring_soon" | "in_grace" | "overdue";
 export const LifecycleEnum = /*@__PURE__*/ S.String;
 
 /** * `product` - PRODUCT * `file` - FILE * `directory` - DIRECTORY * `test` - TEST */
-export type SelectorKindEnum =
-  | "product"
-  | "file"
-  | "directory"
-  | "test"
-  | (string & {});
+export type SelectorKindEnum = "product" | "file" | "directory" | "test";
 export const SelectorKindEnum = /*@__PURE__*/ S.String;
 
 export interface QuarantineEntry {
@@ -1412,19 +1392,19 @@ export const QuarantineEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuarantineEntry>;
 
 /** Quarantined selectors, most urgent first (overdue, in_grace, expiring_soon, active), then by soonest expiry. */
-export type QuarantineFileEntriesList = QuarantineEntry[];
+export type QuarantineFileEntriesList = ReadonlyArray<QuarantineEntry>;
 export const QuarantineFileEntriesList = /*@__PURE__*/ S.Array(
   QuarantineEntry,
 ) as any as S.Schema<QuarantineFileEntriesList>;
 
 /** Contract violations (malformed JSON, bad entries) or fetch failures. Malformed entries are dropped; well-formed ones are kept. */
-export type QuarantineFileParseErrorsList = string[];
+export type QuarantineFileParseErrorsList = ReadonlyArray<string>;
 export const QuarantineFileParseErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QuarantineFileParseErrorsList>;
 
 /** Forward-compatibility notices, e.g. unknown entry fields. */
-export type QuarantineFileParseWarningsList = string[];
+export type QuarantineFileParseWarningsList = ReadonlyArray<string>;
 export const QuarantineFileParseWarningsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QuarantineFileParseWarningsList>;
@@ -1458,7 +1438,7 @@ export const QuarantineFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuarantineFile" }) as any as S.Schema<QuarantineFile>;
 
 /** * `quarantine` - QUARANTINE * `extend` - EXTEND * `remove` - REMOVE */
-export type OperationEnum = "quarantine" | "extend" | "remove" | (string & {});
+export type OperationEnum = "quarantine" | "extend" | "remove";
 export const OperationEnum = /*@__PURE__*/ S.String;
 
 export interface EngineeringAnalyticsQuarantineRequestRequest {
@@ -1578,7 +1558,7 @@ export const CostPerMergeBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CostPerMergeBucket>;
 
 /** CI cost per merged PR across the window, oldest first, zero-filled, bucketed by cost_series_granularity. Empty when the job-level source isn't synced or include_series=false. */
-export type RepoOverviewCostSeriesList = CostPerMergeBucket[];
+export type RepoOverviewCostSeriesList = ReadonlyArray<CostPerMergeBucket>;
 export const RepoOverviewCostSeriesList = /*@__PURE__*/ S.Array(
   CostPerMergeBucket,
 ) as any as S.Schema<RepoOverviewCostSeriesList>;
@@ -1599,7 +1579,8 @@ export const TimeToGreenBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TimeToGreenBucket>;
 
 /** Median time-to-green (p50 successful PR-attributed CI run duration) per bucket across the window, oldest first, bucketed by time_to_green_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
-export type RepoOverviewTimeToGreenSeriesList = TimeToGreenBucket[];
+export type RepoOverviewTimeToGreenSeriesList =
+  ReadonlyArray<TimeToGreenBucket>;
 export const RepoOverviewTimeToGreenSeriesList = /*@__PURE__*/ S.Array(
   TimeToGreenBucket,
 ) as any as S.Schema<RepoOverviewTimeToGreenSeriesList>;
@@ -1618,7 +1599,7 @@ export const PassRateBucket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PassRateBucket" }) as any as S.Schema<PassRateBucket>;
 
 /** CI pass rate (completed runs that succeeded, all branches) per bucket across the window, oldest first, bucketed by success_rate_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
-export type RepoOverviewSuccessRateSeriesList = PassRateBucket[];
+export type RepoOverviewSuccessRateSeriesList = ReadonlyArray<PassRateBucket>;
 export const RepoOverviewSuccessRateSeriesList = /*@__PURE__*/ S.Array(
   PassRateBucket,
 ) as any as S.Schema<RepoOverviewSuccessRateSeriesList>;
@@ -1639,7 +1620,8 @@ export const OpenToMergeBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenToMergeBucket>;
 
 /** Median time-to-merge (p50 open_to_merge_seconds, bots/drafts excluded) per bucket across the window, oldest first, bucketed by open_to_merge_series_granularity. Empty buckets carry null; the whole series is empty when include_series=false. */
-export type RepoOverviewOpenToMergeSeriesList = OpenToMergeBucket[];
+export type RepoOverviewOpenToMergeSeriesList =
+  ReadonlyArray<OpenToMergeBucket>;
 export const RepoOverviewOpenToMergeSeriesList = /*@__PURE__*/ S.Array(
   OpenToMergeBucket,
 ) as any as S.Schema<RepoOverviewOpenToMergeSeriesList>;
@@ -1788,7 +1770,8 @@ export const WorkflowRunActivityPoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowRunActivityPoint>;
 
 /** Per-run chart points, newest first, capped at `limit`. */
-export type WorkflowRunActivityPointsList = WorkflowRunActivityPoint[];
+export type WorkflowRunActivityPointsList =
+  ReadonlyArray<WorkflowRunActivityPoint>;
 export const WorkflowRunActivityPointsList = /*@__PURE__*/ S.Array(
   WorkflowRunActivityPoint,
 ) as any as S.Schema<WorkflowRunActivityPointsList>;
@@ -1861,7 +1844,8 @@ export const BranchPRMatch = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BranchPRMatch" }) as any as S.Schema<BranchPRMatch>;
 
-export type EngineeringAnalyticsResolveBranchResponseBodyList = BranchPRMatch[];
+export type EngineeringAnalyticsResolveBranchResponseBodyList =
+  ReadonlyArray<BranchPRMatch>;
 export const EngineeringAnalyticsResolveBranchResponseBodyList =
   /*@__PURE__*/ S.Array(
     BranchPRMatch,
@@ -1905,7 +1889,7 @@ export const EngineeringAnalyticsRunFailureLogsRequest =
   }) as any as S.Schema<EngineeringAnalyticsRunFailureLogsRequest>;
 
 /** Failed CI jobs of this run with their thinned failure logs, grouped by job. */
-export type RunFailureLogsJobsList = CIJobFailureLog[];
+export type RunFailureLogsJobsList = ReadonlyArray<CIJobFailureLog>;
 export const RunFailureLogsJobsList = /*@__PURE__*/ S.Array(
   CIJobFailureLog,
 ) as any as S.Schema<RunFailureLogsJobsList>;
@@ -1966,7 +1950,8 @@ export const GitHubSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GitHubSource" }) as any as S.Schema<GitHubSource>;
 
-export type EngineeringAnalyticsSourcesResponseBodyList = GitHubSource[];
+export type EngineeringAnalyticsSourcesResponseBodyList =
+  ReadonlyArray<GitHubSource>;
 export const EngineeringAnalyticsSourcesResponseBodyList =
   /*@__PURE__*/ S.Array(
     GitHubSource,
@@ -2037,7 +2022,7 @@ export const TeamTestSignal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamTestSignal" }) as any as S.Schema<TeamTestSignal>;
 
 /** The team's owned tests with signal in either window, ranked by the stronger window's count (the current-vs-prior pairs behind a before/after comparison). */
-export type TeamCIActivityTestsList = TeamTestSignal[];
+export type TeamCIActivityTestsList = ReadonlyArray<TeamTestSignal>;
 export const TeamCIActivityTestsList = /*@__PURE__*/ S.Array(
   TeamTestSignal,
 ) as any as S.Schema<TeamCIActivityTestsList>;
@@ -2138,7 +2123,7 @@ export const TeamCIHealthItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TeamCIHealthItem>;
 
 /** Owning teams ranked by current flaky + failure signal, heaviest first, capped at `limit`. Teams are organizational owners of code surfaces; this never aggregates by author. */
-export type TeamCIHealthListItemsList = TeamCIHealthItem[];
+export type TeamCIHealthListItemsList = ReadonlyArray<TeamCIHealthItem>;
 export const TeamCIHealthListItemsList = /*@__PURE__*/ S.Array(
   TeamCIHealthItem,
 ) as any as S.Schema<TeamCIHealthListItemsList>;
@@ -2214,7 +2199,7 @@ export const TeamMergeTrendPoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TeamMergeTrendPoint>;
 
 /** Daily median and average open→merge over the PRs this team's members merged, ascending by day. Coarse timing (open→merge combines draft and review time); bots excluded. */
-export type TeamMergeTrendPointsList = TeamMergeTrendPoint[];
+export type TeamMergeTrendPointsList = ReadonlyArray<TeamMergeTrendPoint>;
 export const TeamMergeTrendPointsList = /*@__PURE__*/ S.Array(
   TeamMergeTrendPoint,
 ) as any as S.Schema<TeamMergeTrendPointsList>;
@@ -2237,8 +2222,7 @@ export const TeamMergeTrend = /*@__PURE__*/ S.suspend(() =>
 
 export type EngineeringAnalyticsWorkflowHealthRequestRunScope =
   | "all"
-  | "pull_request"
-  | (string & {});
+  | "pull_request";
 export const EngineeringAnalyticsWorkflowHealthRequestRunScope =
   /*@__PURE__*/ S.String;
 
@@ -2306,7 +2290,7 @@ export const WorkflowHealthBucket = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowHealthBucket>;
 
 /** Run history across the whole window, oldest first, zero-filled, bucketed by granularity. */
-export type WorkflowHealthItemBucketsList = WorkflowHealthBucket[];
+export type WorkflowHealthItemBucketsList = ReadonlyArray<WorkflowHealthBucket>;
 export const WorkflowHealthItemBucketsList = /*@__PURE__*/ S.Array(
   WorkflowHealthBucket,
 ) as any as S.Schema<WorkflowHealthItemBucketsList>;
@@ -2376,7 +2360,7 @@ export const WorkflowHealthItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowHealthItem>;
 
 export type EngineeringAnalyticsWorkflowHealthResponseBodyList =
-  WorkflowHealthItem[];
+  ReadonlyArray<WorkflowHealthItem>;
 export const EngineeringAnalyticsWorkflowHealthResponseBodyList =
   /*@__PURE__*/ S.Array(
     WorkflowHealthItem,
@@ -2464,7 +2448,8 @@ export const WorkflowJob = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WorkflowJob" }) as any as S.Schema<WorkflowJob>;
 
-export type EngineeringAnalyticsWorkflowJobsResponseBodyList = WorkflowJob[];
+export type EngineeringAnalyticsWorkflowJobsResponseBodyList =
+  ReadonlyArray<WorkflowJob>;
 export const EngineeringAnalyticsWorkflowJobsResponseBodyList =
   /*@__PURE__*/ S.Array(
     WorkflowJob,
@@ -2606,7 +2591,7 @@ export const WorkflowRunnerCost = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowRunnerCost>;
 
 export type EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList =
-  WorkflowRunnerCost[];
+  ReadonlyArray<WorkflowRunnerCost>;
 export const EngineeringAnalyticsWorkflowRunnerCostsResponseBodyList =
   /*@__PURE__*/ S.Array(
     WorkflowRunnerCost,
@@ -2661,7 +2646,7 @@ export const EngineeringAnalyticsWorkflowRunsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EngineeringAnalyticsWorkflowRunsRequest>;
 
 export type EngineeringAnalyticsWorkflowRunsResponseBodyList =
-  WorkflowRunDetail[];
+  ReadonlyArray<WorkflowRunDetail>;
 export const EngineeringAnalyticsWorkflowRunsResponseBodyList =
   /*@__PURE__*/ S.Array(
     WorkflowRunDetail,

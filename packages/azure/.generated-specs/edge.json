@@ -895,16 +895,63 @@
             "smithy.api#documentation": "Name of the target"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "solutionVersionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Solution Version Id",
+            "smithy.api#required": {}
+          }
+        },
+        "errorDetails": {
+          "target": "com.azure.edge#TargetsUpdateExternalValidationStatusRequestErrorDetails",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        },
+        "externalValidationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "External validation id",
+            "smithy.api#required": {}
+          }
+        },
+        "validationStatus": {
+          "target": "com.azure.edge#ValidationStatus",
+          "traits": {
+            "smithy.api#documentation": "Validation Status of external validation",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ValidationStatus": {
+      "type": "enum",
+      "members": {
+        "VALID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Valid"
+          }
+        },
+        "INVALID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Invalid"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution Instance Validation Status"
+      }
+    },
+    "com.azure.edge#TargetsUpdateExternalValidationStatusRequestErrorDetails": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
       }
     },
     "com.azure.edge#TargetsUnstageSolutionVersion": {
@@ -1000,10 +1047,10 @@
             "smithy.api#documentation": "Name of the target"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "solutionVersionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Solution Version ARM Id",
             "smithy.api#required": {}
           }
         }
@@ -1058,11 +1105,17 @@
             "smithy.api#documentation": "Name of the target"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "solutionTemplateId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Solution Template ARM Id",
             "smithy.api#required": {}
+          }
+        },
+        "solutionInstanceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Solution Instance Name"
           }
         }
       },
@@ -1246,16 +1299,41 @@
             "smithy.api#documentation": "Name of the solution version"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SolutionVersionPropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionVersionPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "specification": {
+          "target": "com.azure.edge#SolutionVersionPropertiesUpdateSpecificationMap",
+          "traits": {
+            "smithy.api#documentation": "App components spec"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution Version Properties"
+      }
+    },
+    "com.azure.edge#SolutionVersionPropertiesUpdateSpecificationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "App components spec"
       }
     },
     "com.azure.edge#SolutionVersionsCreateOrUpdate": {
@@ -1367,16 +1445,58 @@
             "smithy.api#documentation": "Name of the solution version"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SolutionVersionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
+        },
+        "extendedLocation": {
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionVersionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "specification": {
+          "target": "com.azure.edge#SolutionVersionPropertiesInputSpecificationMap",
+          "traits": {
+            "smithy.api#documentation": "App components spec",
+            "smithy.api#required": {}
+          }
+        },
+        "errorDetails": {
+          "target": "com.azure.edge#SolutionVersionPropertiesInputErrorDetails",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution Version Properties"
+      }
+    },
+    "com.azure.edge#SolutionVersionPropertiesInputErrorDetails": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.edge#SolutionVersionPropertiesInputSpecificationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "App components spec"
       }
     },
     "com.azure.edge#SolutionVersionsGet": {
@@ -2433,16 +2553,73 @@
             "smithy.api#documentation": "Name of the instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#InstancePropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#InstancePropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "solutionVersionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Solution version of instance"
+          }
+        },
+        "targetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target of instance"
+          }
+        },
+        "activeState": {
+          "target": "com.azure.edge#ActiveState",
+          "traits": {
+            "smithy.api#documentation": "State of instance"
+          }
+        },
+        "reconciliationPolicy": {
+          "target": "com.azure.edge#ReconciliationPolicyPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "Reconciliation policy of instance"
+          }
+        },
+        "solutionScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Scope of instance"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Instance Properties"
+      }
+    },
+    "com.azure.edge#ReconciliationPolicyPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.edge#ReconciliationState",
+          "traits": {
+            "smithy.api#documentation": "The state of the ReconciliationPolicy"
+          }
+        },
+        "interval": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Policy interval"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines a ReconciliationPolicy"
       }
     },
     "com.azure.edge#InstancesCreateOrUpdate": {
@@ -2554,16 +2731,58 @@
             "smithy.api#documentation": "Name of the instance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#InstancePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
+        },
+        "extendedLocation": {
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#InstancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "solutionVersionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Solution version of instance",
+            "smithy.api#required": {}
+          }
+        },
+        "targetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target of instance",
+            "smithy.api#required": {}
+          }
+        },
+        "activeState": {
+          "target": "com.azure.edge#ActiveState",
+          "traits": {
+            "smithy.api#documentation": "State of instance"
+          }
+        },
+        "reconciliationPolicy": {
+          "target": "com.azure.edge#ReconciliationPolicyProperties",
+          "traits": {
+            "smithy.api#documentation": "Reconciliation policy of instance"
+          }
+        },
+        "solutionScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Scope of instance"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Instance Properties"
       }
     },
     "com.azure.edge#InstancesGet": {
@@ -3046,16 +3265,22 @@
             "smithy.api#documentation": "Name of the solution"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SolutionUpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Solution."
       }
     },
     "com.azure.edge#SolutionsCreateOrUpdate": {
@@ -3159,16 +3384,25 @@
             "smithy.api#documentation": "Name of the solution"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SolutionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
+        },
+        "extendedLocation": {
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Solution Properties"
       }
     },
     "com.azure.edge#SolutionsGet": {
@@ -3498,16 +3732,90 @@
             "smithy.api#documentation": "Name of the target"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "solutionTemplateVersionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Solution Template Version ARM Id",
             "smithy.api#required": {}
+          }
+        },
+        "solutionInstanceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Solution Instance Name"
+          }
+        },
+        "solutionDependencies": {
+          "target": "com.azure.edge#TargetsReviewSolutionVersionRequestSolutionDependenciesList",
+          "traits": {
+            "smithy.api#documentation": "Solution Dependencies"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#TargetsReviewSolutionVersionRequestSolutionDependenciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#SolutionDependencyParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution Dependencies"
+      }
+    },
+    "com.azure.edge#SolutionDependencyParameter": {
+      "type": "structure",
+      "members": {
+        "solutionVersionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Solution Version Id"
+          }
+        },
+        "solutionTemplateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Solution Template Id"
+          }
+        },
+        "solutionTemplateVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Solution Template Version"
+          }
+        },
+        "solutionInstanceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Solution Instance Name"
+          }
+        },
+        "targetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target Id"
+          }
+        },
+        "dependencies": {
+          "target": "com.azure.edge#SolutionDependencyParameterDependenciesList",
+          "traits": {
+            "smithy.api#documentation": "Solution dependencies"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution Dependency Context"
+      }
+    },
+    "com.azure.edge#SolutionDependencyParameterDependenciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#SolutionDependencyParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution dependencies"
       }
     },
     "com.azure.edge#TargetsResolveConfiguration": {
@@ -3571,16 +3879,37 @@
             "smithy.api#documentation": "Name of the target"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "solutionTemplateVersionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Solution Template Version ARM Id",
             "smithy.api#required": {}
+          }
+        },
+        "solutionInstanceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Solution Instance Name"
+          }
+        },
+        "solutionDependencies": {
+          "target": "com.azure.edge#TargetsResolveConfigurationRequestSolutionDependenciesList",
+          "traits": {
+            "smithy.api#documentation": "Solution Dependencies"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#TargetsResolveConfigurationRequestSolutionDependenciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#SolutionDependencyParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution Dependencies"
       }
     },
     "com.azure.edge#TargetsRemoveRevision": {
@@ -3629,10 +3958,17 @@
             "smithy.api#documentation": "Name of the target"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "solutionTemplateId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Solution Template ARM Id",
+            "smithy.api#required": {}
+          }
+        },
+        "solutionVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Solution Version Name",
             "smithy.api#required": {}
           }
         }
@@ -3734,10 +4070,10 @@
             "smithy.api#documentation": "Name of the target"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "solutionVersionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Solution Version ARM Id",
             "smithy.api#required": {}
           }
         }
@@ -3792,10 +4128,10 @@
             "smithy.api#documentation": "Name of the target"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "solutionVersionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Solution Version ARM Id",
             "smithy.api#required": {}
           }
         }
@@ -4095,16 +4431,110 @@
             "smithy.api#documentation": "Name of the target"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#TargetsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#TargetUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#TargetUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of target"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of target"
+          }
+        },
+        "contextId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ArmId of Context"
+          }
+        },
+        "targetSpecification": {
+          "target": "com.azure.edge#TargetUpdatePropertiesTargetSpecificationMap",
+          "traits": {
+            "smithy.api#documentation": "target spec"
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.edge#TargetUpdatePropertiesCapabilitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of capabilities"
+          }
+        },
+        "hierarchyLevel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy Level"
+          }
+        },
+        "solutionScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Scope of the target resource"
+          }
+        },
+        "state": {
+          "target": "com.azure.edge#ResourceState",
+          "traits": {
+            "smithy.api#documentation": "State of resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Target."
+      }
+    },
+    "com.azure.edge#TargetUpdatePropertiesCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of capabilities"
+      }
+    },
+    "com.azure.edge#TargetUpdatePropertiesTargetSpecificationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "target spec"
+      }
+    },
+    "com.azure.edge#TargetsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#TargetsCreateOrUpdate": {
@@ -4225,16 +4655,126 @@
             "smithy.api#documentation": "Name of the target"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#TargetsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "properties": {
+          "target": "com.azure.edge#TargetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#TargetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of target",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of target",
+            "smithy.api#required": {}
+          }
+        },
+        "contextId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ArmId of Context",
+            "smithy.api#required": {}
+          }
+        },
+        "targetSpecification": {
+          "target": "com.azure.edge#TargetPropertiesInputTargetSpecificationMap",
+          "traits": {
+            "smithy.api#documentation": "target spec",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.edge#TargetPropertiesInputCapabilitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of capabilities",
+            "smithy.api#required": {}
+          }
+        },
+        "hierarchyLevel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy Level",
+            "smithy.api#required": {}
+          }
+        },
+        "solutionScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Scope of the target resource"
+          }
+        },
+        "state": {
+          "target": "com.azure.edge#ResourceState",
+          "traits": {
+            "smithy.api#documentation": "State of resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Target Properties"
+      }
+    },
+    "com.azure.edge#TargetPropertiesInputCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of capabilities"
+      }
+    },
+    "com.azure.edge#TargetPropertiesInputTargetSpecificationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "target spec"
+      }
+    },
+    "com.azure.edge#TargetsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#TargetsGet": {
@@ -4835,16 +5375,94 @@
             "smithy.api#documentation": "The name of the SolutionTemplateVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targets": {
+          "target": "com.azure.edge#SolutionTemplateVersionsBulkReviewSolutionRequestTargetsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Targets to which solution needs to be published",
             "smithy.api#required": {}
+          }
+        },
+        "solutionInstanceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the solution instance"
+          }
+        },
+        "solutionDependencies": {
+          "target": "com.azure.edge#SolutionTemplateVersionsBulkReviewSolutionRequestSolutionDependenciesList",
+          "traits": {
+            "smithy.api#documentation": "Solution dependencies"
+          }
+        },
+        "solutionConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Configuration of solution"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionTemplateVersionsBulkReviewSolutionRequestSolutionDependenciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#SolutionDependencyParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution dependencies"
+      }
+    },
+    "com.azure.edge#SolutionTemplateVersionsBulkReviewSolutionRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#BulkReviewTargetDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "Targets to which solution needs to be published"
+      }
+    },
+    "com.azure.edge#BulkReviewTargetDetails": {
+      "type": "structure",
+      "members": {
+        "targetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ArmId of Target",
+            "smithy.api#required": {}
+          }
+        },
+        "solutionDependencies": {
+          "target": "com.azure.edge#BulkReviewTargetDetailsSolutionDependenciesList",
+          "traits": {
+            "smithy.api#documentation": "Solution dependencies"
+          }
+        },
+        "solutionInstanceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the solution instance"
+          }
+        },
+        "solutionConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Configuration of solution"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bulk publish target details"
+      }
+    },
+    "com.azure.edge#BulkReviewTargetDetailsSolutionDependenciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#SolutionDependencyParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution dependencies"
       }
     },
     "com.azure.edge#SolutionTemplateVersionsBulkPublishSolution": {
@@ -4901,16 +5519,100 @@
             "smithy.api#documentation": "The name of the SolutionTemplateVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targets": {
+          "target": "com.azure.edge#SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Targets to which solution needs to be published",
             "smithy.api#required": {}
+          }
+        },
+        "solutionInstanceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the solution instance"
+          }
+        },
+        "solutionDependencies": {
+          "target": "com.azure.edge#SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList",
+          "traits": {
+            "smithy.api#documentation": "Solution dependencies"
+          }
+        },
+        "solutionConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Configuration of solution"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#SolutionDependencyParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution dependencies"
+      }
+    },
+    "com.azure.edge#SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#BulkPublishTargetDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "Targets to which solution needs to be published"
+      }
+    },
+    "com.azure.edge#BulkPublishTargetDetails": {
+      "type": "structure",
+      "members": {
+        "targetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ArmId of Target",
+            "smithy.api#required": {}
+          }
+        },
+        "solutionDependencies": {
+          "target": "com.azure.edge#BulkPublishTargetDetailsSolutionDependenciesList",
+          "traits": {
+            "smithy.api#documentation": "Solution dependencies"
+          }
+        },
+        "solutionInstanceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the solution instance"
+          }
+        },
+        "solutionVersionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ArmId of Target Solution Version"
+          }
+        },
+        "solutionConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Configuration of solution"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bulk publish target details"
+      }
+    },
+    "com.azure.edge#BulkPublishTargetDetailsSolutionDependenciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#SolutionDependencyParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution dependencies"
       }
     },
     "com.azure.edge#SolutionTemplateVersionsBulkDeploySolution": {
@@ -4967,16 +5669,40 @@
             "smithy.api#documentation": "The name of the SolutionTemplateVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targets": {
+          "target": "com.azure.edge#SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Targets to which solution needs to be deployed",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#BulkDeployTargetDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "Targets to which solution needs to be deployed"
+      }
+    },
+    "com.azure.edge#BulkDeployTargetDetails": {
+      "type": "structure",
+      "members": {
+        "solutionVersionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ArmId of Target Solution Version",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bulk deploy target details"
       }
     },
     "com.azure.edge#SolutionTemplateVersionsDelete": {
@@ -5234,16 +5960,53 @@
             "smithy.api#documentation": "The name of the SolutionTemplateVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SolutionTemplateVersionPropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionTemplateVersionPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "configurations": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Config expressions for this solution version"
+          }
+        },
+        "specification": {
+          "target": "com.azure.edge#SolutionTemplateVersionPropertiesUpdateSpecificationMap",
+          "traits": {
+            "smithy.api#documentation": "App components spec"
+          }
+        },
+        "orchestratorType": {
+          "target": "com.azure.edge#OrchestratorType",
+          "traits": {
+            "smithy.api#documentation": "Orchestrator type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution Template Version Properties"
+      }
+    },
+    "com.azure.edge#SolutionTemplateVersionPropertiesUpdateSpecificationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "App components spec"
       }
     },
     "com.azure.edge#SolutionTemplateVersionsCreateOrUpdate": {
@@ -5344,16 +6107,55 @@
             "smithy.api#documentation": "The name of the SolutionTemplateVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SolutionTemplateVersionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionTemplateVersionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "configurations": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Config expressions for this solution version",
+            "smithy.api#required": {}
+          }
+        },
+        "specification": {
+          "target": "com.azure.edge#SolutionTemplateVersionPropertiesInputSpecificationMap",
+          "traits": {
+            "smithy.api#documentation": "App components spec",
+            "smithy.api#required": {}
+          }
+        },
+        "orchestratorType": {
+          "target": "com.azure.edge#OrchestratorType",
+          "traits": {
+            "smithy.api#documentation": "Orchestrator type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution Template Version Properties"
+      }
+    },
+    "com.azure.edge#SolutionTemplateVersionPropertiesInputSpecificationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "App components spec"
       }
     },
     "com.azure.edge#SolutionTemplateVersionsGet": {
@@ -5630,10 +6432,10 @@
             "smithy.api#documentation": "The name of the SolutionTemplate"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "version": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Version of the Resource",
             "smithy.api#required": {}
           }
         }
@@ -5732,16 +6534,68 @@
             "smithy.api#documentation": "The name of the SolutionTemplate"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "updateType": {
+          "target": "com.azure.edge#UpdateType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Update type"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version to create"
+          }
+        },
+        "solutionTemplateVersion": {
+          "target": "com.azure.edge#SolutionTemplateVersionInput",
+          "traits": {
+            "smithy.api#documentation": "Solution Template Version",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionTemplateVersionInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.edge#SolutionTemplateVersionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution Template Version Resource. Contains configurations that use expressions which can be resolved hierarchically along with edge specifications."
+      }
+    },
+    "com.azure.edge#UpdateType": {
+      "type": "enum",
+      "members": {
+        "MAJOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Major"
+          }
+        },
+        "MINOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Minor"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Patch"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Denotes which part of the version number will be updated"
       }
     },
     "com.azure.edge#SolutionTemplatesDelete": {
@@ -5971,16 +6825,74 @@
             "smithy.api#documentation": "The name of the SolutionTemplate"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#SolutionTemplatesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#SolutionTemplateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionTemplateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of Solution template"
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.edge#SolutionTemplateUpdatePropertiesCapabilitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of capabilities"
+          }
+        },
+        "state": {
+          "target": "com.azure.edge#ResourceState",
+          "traits": {
+            "smithy.api#documentation": "State of resource"
+          }
+        },
+        "enableExternalValidation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to enable external validation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the SolutionTemplate."
+      }
+    },
+    "com.azure.edge#SolutionTemplateUpdatePropertiesCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of capabilities"
+      }
+    },
+    "com.azure.edge#SolutionTemplatesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#SolutionTemplatesCreateOrUpdate": {
@@ -6098,16 +7010,83 @@
             "smithy.api#documentation": "The name of the SolutionTemplate"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#SolutionTemplatesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#SolutionTemplatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SolutionTemplatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of Solution template",
+            "smithy.api#required": {}
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.edge#SolutionTemplatePropertiesInputCapabilitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of capabilities",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.azure.edge#ResourceState",
+          "traits": {
+            "smithy.api#documentation": "State of resource"
+          }
+        },
+        "enableExternalValidation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to enable external validation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Solution Template Properties"
+      }
+    },
+    "com.azure.edge#SolutionTemplatePropertiesInputCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of capabilities"
+      }
+    },
+    "com.azure.edge#SolutionTemplatesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#SolutionTemplatesGet": {
@@ -6550,16 +7529,29 @@
             "smithy.api#documentation": "The name of the SchemaVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SchemaVersionPropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SchemaVersionPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of schema version"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema Version Properties"
       }
     },
     "com.azure.edge#SchemaVersionsCreateOrUpdate": {
@@ -6660,16 +7652,30 @@
             "smithy.api#documentation": "The name of the SchemaVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SchemaVersionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SchemaVersionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of schema version",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema Version Properties"
       }
     },
     "com.azure.edge#SchemaVersionsGet": {
@@ -6961,10 +7967,10 @@
             "smithy.api#documentation": "The name of the Schema"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "version": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Version of the Resource",
             "smithy.api#required": {}
           }
         }
@@ -7146,11 +8152,10 @@
             "smithy.api#documentation": "The name of the DynamicSchemaVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SchemaVersionPropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -7264,11 +8269,10 @@
             "smithy.api#documentation": "The name of the DynamicSchemaVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SchemaVersionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -7749,16 +8753,22 @@
             "smithy.api#documentation": "The name of the DynamicSchema"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#DynamicSchemaPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#DynamicSchemaPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "DynamicSchema Properties"
       }
     },
     "com.azure.edge#DynamicSchemasCreateOrUpdate": {
@@ -7859,11 +8869,10 @@
             "smithy.api#documentation": "The name of the DynamicSchema"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#DynamicSchemaPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -8189,16 +9198,42 @@
             "smithy.api#documentation": "The name of the Schema"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "updateType": {
+          "target": "com.azure.edge#UpdateType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Update type"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version to create"
+          }
+        },
+        "schemaVersion": {
+          "target": "com.azure.edge#SchemaVersionInput",
+          "traits": {
+            "smithy.api#documentation": "Schema Version",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SchemaVersionInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.edge#SchemaVersionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema Version Resource"
       }
     },
     "com.azure.edge#SchemasDelete": {
@@ -8387,16 +9422,40 @@
             "smithy.api#documentation": "The name of the Schema"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SchemaUpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.edge#SchemasUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SchemasUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.edge#SchemaUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Schema."
       }
     },
     "com.azure.edge#SchemasCreateOrUpdate": {
@@ -8514,16 +9573,47 @@
             "smithy.api#documentation": "The name of the Schema"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#SchemasCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#SchemaPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SchemaPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Schema Properties"
+      }
+    },
+    "com.azure.edge#SchemasCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#SchemasGet": {
@@ -8971,16 +10061,40 @@
             "smithy.api#documentation": "Name of Diagnostic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#DiagnosticUpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.edge#DiagnosticsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#DiagnosticsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.edge#DiagnosticUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Diagnostic."
       }
     },
     "com.azure.edge#DiagnosticsCreateOrUpdate": {
@@ -9101,16 +10215,50 @@
             "smithy.api#documentation": "Name of Diagnostic."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#DiagnosticsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "properties": {
+          "target": "com.azure.edge#DiagnosticPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#DiagnosticPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The properties of a Diagnostic resource."
+      }
+    },
+    "com.azure.edge#DiagnosticsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#DiagnosticsGet": {
@@ -9739,16 +10887,47 @@
             "smithy.api#documentation": "The name of the Execution."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#ExecutionPropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ExecutionPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "workflowVersionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Workflow version of execution"
+          }
+        },
+        "specification": {
+          "target": "com.azure.edge#ExecutionPropertiesUpdateSpecificationMap",
+          "traits": {
+            "smithy.api#documentation": "Execution specification"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Execution Properties"
+      }
+    },
+    "com.azure.edge#ExecutionPropertiesUpdateSpecificationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Execution specification"
       }
     },
     "com.azure.edge#ExecutionsCreateOrUpdate": {
@@ -9868,16 +11047,51 @@
             "smithy.api#documentation": "The name of the Execution."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#ExecutionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
+        },
+        "extendedLocation": {
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ExecutionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "workflowVersionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Workflow version of execution",
+            "smithy.api#required": {}
+          }
+        },
+        "specification": {
+          "target": "com.azure.edge#ExecutionPropertiesInputSpecificationMap",
+          "traits": {
+            "smithy.api#documentation": "Execution specification"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Execution Properties"
+      }
+    },
+    "com.azure.edge#ExecutionPropertiesInputSpecificationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Execution specification"
       }
     },
     "com.azure.edge#ExecutionsGet": {
@@ -10554,16 +11768,56 @@
             "smithy.api#documentation": "The name of the workflowVersion."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#WorkflowVersionPropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#WorkflowVersionPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "stageSpec": {
+          "target": "com.azure.edge#WorkflowVersionPropertiesUpdateStageSpecList",
+          "traits": {
+            "smithy.api#documentation": "A list of stage specs"
+          }
+        },
+        "specification": {
+          "target": "com.azure.edge#WorkflowVersionPropertiesUpdateSpecificationMap",
+          "traits": {
+            "smithy.api#documentation": "Execution specification"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Workflow Version Properties"
+      }
+    },
+    "com.azure.edge#WorkflowVersionPropertiesUpdateSpecificationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Execution specification"
+      }
+    },
+    "com.azure.edge#WorkflowVersionPropertiesUpdateStageSpecList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#StageSpec"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of stage specs"
       }
     },
     "com.azure.edge#WorkflowVersionsCreateOrUpdate": {
@@ -10675,16 +11929,60 @@
             "smithy.api#documentation": "The name of the workflowVersion."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#WorkflowVersionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
+        },
+        "extendedLocation": {
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#WorkflowVersionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "stageSpec": {
+          "target": "com.azure.edge#WorkflowVersionPropertiesInputStageSpecList",
+          "traits": {
+            "smithy.api#documentation": "A list of stage specs",
+            "smithy.api#required": {}
+          }
+        },
+        "specification": {
+          "target": "com.azure.edge#WorkflowVersionPropertiesInputSpecificationMap",
+          "traits": {
+            "smithy.api#documentation": "Execution specification"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Workflow Version Properties"
+      }
+    },
+    "com.azure.edge#WorkflowVersionPropertiesInputSpecificationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Execution specification"
+      }
+    },
+    "com.azure.edge#WorkflowVersionPropertiesInputStageSpecList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#StageSpec"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of stage specs"
       }
     },
     "com.azure.edge#WorkflowVersionsGet": {
@@ -11117,16 +12415,22 @@
             "smithy.api#documentation": "Name of the workflow"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#WorkflowPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#WorkflowPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Workflow Properties"
       }
     },
     "com.azure.edge#WorkflowsCreateOrUpdate": {
@@ -11230,12 +12534,14 @@
             "smithy.api#documentation": "Name of the workflow"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#WorkflowPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
+        },
+        "extendedLocation": {
+          "target": "com.azure.edge#AzureResourceManagerCommonTypesExtendedLocation"
         }
       },
       "traits": {
@@ -11648,16 +12954,29 @@
             "smithy.api#documentation": "The name of the SiteReference"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SiteReferencePropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SiteReferencePropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "siteId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource ID for Site"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Site Reference Properties"
       }
     },
     "com.azure.edge#SiteReferencesCreateOrUpdate": {
@@ -11752,16 +13071,30 @@
             "smithy.api#documentation": "The name of the SiteReference"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SiteReferencePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SiteReferencePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "siteId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource ID for Site",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Site Reference Properties"
       }
     },
     "com.azure.edge#SiteReferencesGet": {
@@ -12242,16 +13575,71 @@
             "smithy.api#documentation": "The name of the Context."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#ContextsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#ContextUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ContextUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "capabilities": {
+          "target": "com.azure.edge#ContextUpdatePropertiesCapabilitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of Capabilities"
+          }
+        },
+        "hierarchies": {
+          "target": "com.azure.edge#ContextUpdatePropertiesHierarchiesList",
+          "traits": {
+            "smithy.api#documentation": "List of Hierarchies"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Context."
+      }
+    },
+    "com.azure.edge#ContextUpdatePropertiesHierarchiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#Hierarchy"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Hierarchies"
+      }
+    },
+    "com.azure.edge#ContextUpdatePropertiesCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#Capability"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Capabilities"
+      }
+    },
+    "com.azure.edge#ContextsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#ContextsCreateOrUpdate": {
@@ -12363,16 +13751,80 @@
             "smithy.api#documentation": "The name of the Context."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#ContextsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#ContextPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ContextPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "capabilities": {
+          "target": "com.azure.edge#ContextPropertiesInputCapabilitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of Capabilities",
+            "smithy.api#required": {}
+          }
+        },
+        "hierarchies": {
+          "target": "com.azure.edge#ContextPropertiesInputHierarchiesList",
+          "traits": {
+            "smithy.api#documentation": "List of Hierarchies",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Context Properties"
+      }
+    },
+    "com.azure.edge#ContextPropertiesInputHierarchiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#Hierarchy"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Hierarchies"
+      }
+    },
+    "com.azure.edge#ContextPropertiesInputCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#Capability"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Capabilities"
+      }
+    },
+    "com.azure.edge#ContextsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#ContextsGet": {
@@ -13073,16 +14525,29 @@
             "smithy.api#documentation": "The name of the ConfigTemplateVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#ConfigTemplateVersionPropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigTemplateVersionPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "configurations": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Configuration values"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Config Template Version Properties"
       }
     },
     "com.azure.edge#ConfigTemplateVersionsCreateOrUpdate": {
@@ -13183,16 +14648,30 @@
             "smithy.api#documentation": "The name of the ConfigTemplateVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#ConfigTemplateVersionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigTemplateVersionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "configurations": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Configuration values",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Config Template Version Properties"
       }
     },
     "com.azure.edge#ConfigTemplateVersionsGet": {
@@ -13469,16 +14948,37 @@
             "smithy.api#documentation": "The name of the ConfigTemplate"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "contextId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Context Id",
             "smithy.api#required": {}
+          }
+        },
+        "hierarchyIds": {
+          "target": "com.azure.edge#ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy Ids"
+          }
+        },
+        "level": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy Level"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Hierarchy Ids"
       }
     },
     "com.azure.edge#ConfigTemplatesRemoveVersion": {
@@ -13527,10 +15027,10 @@
             "smithy.api#documentation": "The name of the ConfigTemplate"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "version": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Version of the Resource",
             "smithy.api#required": {}
           }
         }
@@ -13585,16 +15085,37 @@
             "smithy.api#documentation": "The name of the ConfigTemplate"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "contextId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Context Id",
             "smithy.api#required": {}
+          }
+        },
+        "hierarchyIds": {
+          "target": "com.azure.edge#ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy Ids"
+          }
+        },
+        "level": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy Level"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Hierarchy Ids"
       }
     },
     "com.azure.edge#ConfigTemplatesCreateVersion": {
@@ -13687,16 +15208,42 @@
             "smithy.api#documentation": "The name of the ConfigTemplate"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "updateType": {
+          "target": "com.azure.edge#UpdateType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Update type"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version to create"
+          }
+        },
+        "configTemplateVersion": {
+          "target": "com.azure.edge#ConfigTemplateVersionInput",
+          "traits": {
+            "smithy.api#documentation": "Config Template Version",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigTemplateVersionInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.edge#ConfigTemplateVersionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Config Template Version Resource"
       }
     },
     "com.azure.edge#ConfigTemplateMetadatasDelete": {
@@ -13941,16 +15488,59 @@
             "smithy.api#documentation": "The name of the ConfigTemplateMetadataProperties"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#ConfigTemplateMetadataUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigTemplateMetadataUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "contextId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ArmId of Context"
+          }
+        },
+        "linkedHierarchies": {
+          "target": "com.azure.edge#ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy ARM Ids"
+          }
+        },
+        "unLinkedHierarchies": {
+          "target": "com.azure.edge#ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy ARM Ids"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the ConfigTemplateMetadata."
+      }
+    },
+    "com.azure.edge#ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#HierarchyMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "Hierarchy ARM Ids"
+      }
+    },
+    "com.azure.edge#ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#HierarchyMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "Hierarchy ARM Ids"
       }
     },
     "com.azure.edge#ConfigTemplateMetadatasCreateOrUpdate": {
@@ -14051,16 +15641,59 @@
             "smithy.api#documentation": "The name of the ConfigTemplateMetadataProperties"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#ConfigTemplateMetadataPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigTemplateMetadataPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "contextId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ArmId of Context"
+          }
+        },
+        "linkedHierarchies": {
+          "target": "com.azure.edge#ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy ARM Ids"
+          }
+        },
+        "unLinkedHierarchies": {
+          "target": "com.azure.edge#ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList",
+          "traits": {
+            "smithy.api#documentation": "Hierarchy ARM Ids"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ConfigTemplateMetadata Properties"
+      }
+    },
+    "com.azure.edge#ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#HierarchyMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "Hierarchy ARM Ids"
+      }
+    },
+    "com.azure.edge#ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.edge#HierarchyMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "Hierarchy ARM Ids"
       }
     },
     "com.azure.edge#ConfigTemplateMetadatasGet": {
@@ -14490,16 +16123,47 @@
             "smithy.api#documentation": "The name of the ConfigTemplate"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#ConfigTemplatesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#ConfigTemplateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigTemplateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of config template"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the ConfigTemplate."
+      }
+    },
+    "com.azure.edge#ConfigTemplatesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#ConfigTemplatesCreateOrUpdate": {
@@ -14617,16 +16281,55 @@
             "smithy.api#documentation": "The name of the ConfigTemplate"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#ConfigTemplatesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#ConfigTemplatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigTemplatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of config template",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Config Template Properties"
+      }
+    },
+    "com.azure.edge#ConfigTemplatesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#ConfigTemplatesGet": {
@@ -15721,16 +17424,29 @@
             "smithy.api#documentation": "The name of the SchemaReference"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SchemaReferencePropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SchemaReferencePropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "schemaId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema Id of schema reference"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema Reference Properties"
       }
     },
     "com.azure.edge#SchemaReferencesCreateOrUpdate": {
@@ -15815,16 +17531,30 @@
             "smithy.api#documentation": "The name of the SchemaReference"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SchemaReferencePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SchemaReferencePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "schemaId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema Id of schema reference",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema Reference Properties"
       }
     },
     "com.azure.edge#SchemaReferencesGet": {
@@ -17233,16 +18963,29 @@
             "smithy.api#documentation": "The name of the DynamicConfigurationVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#DynamicConfigurationVersionPropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#DynamicConfigurationVersionPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Values of configuration version"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dynamic Configuration Properties"
       }
     },
     "com.azure.edge#DynamicConfigurationVersionsCreateOrUpdate": {
@@ -17345,16 +19088,30 @@
             "smithy.api#documentation": "The name of the DynamicConfigurationVersion"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#DynamicConfigurationVersionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#DynamicConfigurationVersionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "values": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Values of configuration version",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dynamic Configuration Properties"
       }
     },
     "com.azure.edge#DynamicConfigurationVersionsGet": {
@@ -17779,16 +19536,29 @@
             "smithy.api#documentation": "Name of the dynamic configuration"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#DynamicConfigurationPropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#DynamicConfigurationPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "currentVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current Version of dynamic configuration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dynamic Configuration Properties"
       }
     },
     "com.azure.edge#DynamicConfigurationsCreateOrUpdate": {
@@ -17883,16 +19653,30 @@
             "smithy.api#documentation": "Name of the dynamic configuration"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#DynamicConfigurationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#DynamicConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "currentVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current Version of dynamic configuration",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dynamic Configuration Properties"
       }
     },
     "com.azure.edge#DynamicConfigurationsGet": {
@@ -18311,16 +20095,40 @@
             "smithy.api#documentation": "Name of the Configuration"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#ConfigurationsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#ConfigurationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Configuration Properties"
+      }
+    },
+    "com.azure.edge#ConfigurationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#ConfigurationsCreateOrUpdate": {
@@ -18432,16 +20240,40 @@
             "smithy.api#documentation": "Name of the Configuration"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#ConfigurationsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#ConfigurationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigurationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#ConfigurationsGet": {
@@ -18868,16 +20700,29 @@
             "smithy.api#documentation": "The name of the ConfigurationReference"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#ConfigurationReferencePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#ConfigurationReferencePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "configurationResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ArmId of Configuration resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for ConfigurationReference Resource"
       }
     },
     "com.azure.edge#ConfigurationReferencesCreateOrUpdate": {
@@ -18956,11 +20801,10 @@
             "smithy.api#documentation": "The name of the ConfigurationReference"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#ConfigurationReferencePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -20643,16 +22487,86 @@
             "smithy.api#documentation": "The name of the HardwareSetting"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#HardwareSettingPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#HardwareSettingPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "totalCores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of cores",
+            "smithy.api#required": {}
+          }
+        },
+        "diskSpaceInGb": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The disk space in GB",
+            "smithy.api#required": {}
+          }
+        },
+        "memoryInGb": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The memory in GB",
+            "smithy.api#required": {}
+          }
+        },
+        "oem": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The OEM",
+            "smithy.api#required": {}
+          }
+        },
+        "hardwareSku": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hardware SKU",
+            "smithy.api#required": {}
+          }
+        },
+        "nodes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of nodes",
+            "smithy.api#required": {}
+          }
+        },
+        "versionAtRegistration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The active version at registration",
+            "smithy.api#required": {}
+          }
+        },
+        "solutionBuilderExtension": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The solution builder extension at registration",
+            "smithy.api#required": {}
+          }
+        },
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique Id of the device",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The hardware setting properties"
       }
     },
     "com.azure.edge#HardwareSettingsGet": {
@@ -21136,16 +23050,117 @@
             "smithy.api#documentation": "Name of the resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#DisconnectedOperationsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#DisconnectedOperationUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#DisconnectedOperationUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "connectionIntent": {
+          "target": "com.azure.edge#ConnectionIntent",
+          "traits": {
+            "smithy.api#documentation": "The connection intent"
+          }
+        },
+        "registrationStatus": {
+          "target": "com.azure.edge#RegistrationStatus",
+          "traits": {
+            "smithy.api#documentation": "The registration intent"
+          }
+        },
+        "deviceVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The device version"
+          }
+        },
+        "billingConfiguration": {
+          "target": "com.azure.edge#BillingConfigurationUpdate",
+          "traits": {
+            "smithy.api#documentation": "The billing configuration"
+          }
+        },
+        "benefitPlans": {
+          "target": "com.azure.edge#BenefitPlans",
+          "traits": {
+            "smithy.api#documentation": "The benefit plans"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the DisconnectedOperation."
+      }
+    },
+    "com.azure.edge#BillingConfigurationUpdate": {
+      "type": "structure",
+      "members": {
+        "autoRenew": {
+          "target": "com.azure.edge#AutoRenew",
+          "traits": {
+            "smithy.api#documentation": "The auto renew setting"
+          }
+        },
+        "current": {
+          "target": "com.azure.edge#BillingPeriodUpdate",
+          "traits": {
+            "smithy.api#documentation": "The current billing configuration"
+          }
+        },
+        "upcoming": {
+          "target": "com.azure.edge#BillingPeriodUpdate",
+          "traits": {
+            "smithy.api#documentation": "The upcoming billing configuration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The billing configuration"
+      }
+    },
+    "com.azure.edge#BillingPeriodUpdate": {
+      "type": "structure",
+      "members": {
+        "cores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of cores"
+          }
+        },
+        "pricingModel": {
+          "target": "com.azure.edge#PricingModel",
+          "traits": {
+            "smithy.api#documentation": "The pricing model"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The billing period"
+      }
+    },
+    "com.azure.edge#DisconnectedOperationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#DisconnectedOperationsCreateOrUpdate": {
@@ -21257,16 +23272,129 @@
             "smithy.api#documentation": "Name of the resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.edge#DisconnectedOperationsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.edge#DisconnectedOperationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#DisconnectedOperationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "connectionIntent": {
+          "target": "com.azure.edge#ConnectionIntent",
+          "traits": {
+            "smithy.api#documentation": "The connection intent",
+            "smithy.api#required": {}
+          }
+        },
+        "registrationStatus": {
+          "target": "com.azure.edge#RegistrationStatus",
+          "traits": {
+            "smithy.api#documentation": "The registration intent"
+          }
+        },
+        "deviceVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The device version"
+          }
+        },
+        "billingConfiguration": {
+          "target": "com.azure.edge#BillingConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "The billing configuration"
+          }
+        },
+        "benefitPlans": {
+          "target": "com.azure.edge#BenefitPlans",
+          "traits": {
+            "smithy.api#documentation": "The benefit plans"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The disconnected operation properties"
+      }
+    },
+    "com.azure.edge#BillingConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "autoRenew": {
+          "target": "com.azure.edge#AutoRenew",
+          "traits": {
+            "smithy.api#documentation": "The auto renew setting",
+            "smithy.api#required": {}
+          }
+        },
+        "current": {
+          "target": "com.azure.edge#BillingPeriodInput",
+          "traits": {
+            "smithy.api#documentation": "The current billing configuration",
+            "smithy.api#required": {}
+          }
+        },
+        "upcoming": {
+          "target": "com.azure.edge#BillingPeriodInput",
+          "traits": {
+            "smithy.api#documentation": "The upcoming billing configuration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The billing configuration"
+      }
+    },
+    "com.azure.edge#BillingPeriodInput": {
+      "type": "structure",
+      "members": {
+        "cores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of cores",
+            "smithy.api#required": {}
+          }
+        },
+        "pricingModel": {
+          "target": "com.azure.edge#PricingModel",
+          "traits": {
+            "smithy.api#documentation": "The pricing model",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The billing period"
+      }
+    },
+    "com.azure.edge#DisconnectedOperationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.edge#DisconnectedOperationsGet": {
@@ -21941,16 +24069,59 @@
             "smithy.api#documentation": "The name of the Site"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SiteUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The updatable properties of the Site."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SiteUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "displayName of Site resource"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of Site resource"
+          }
+        },
+        "siteAddress": {
+          "target": "com.azure.edge#SiteAddressProperties",
+          "traits": {
+            "smithy.api#documentation": "Physical address of the site"
+          }
+        },
+        "labels": {
+          "target": "com.azure.edge#SiteUpdatePropertiesLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs for labeling the site resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Site."
+      }
+    },
+    "com.azure.edge#SiteUpdatePropertiesLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs for labeling the site resource."
       }
     },
     "com.azure.edge#SitesCreateOrUpdate": {
@@ -22037,16 +24208,59 @@
             "smithy.api#documentation": "The name of the Site"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SitePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.edge#SitePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "displayName of Site resource"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of Site resource"
+          }
+        },
+        "siteAddress": {
+          "target": "com.azure.edge#SiteAddressProperties",
+          "traits": {
+            "smithy.api#documentation": "Physical address of the site"
+          }
+        },
+        "labels": {
+          "target": "com.azure.edge#SitePropertiesInputLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs for labeling the site resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Site properties"
+      }
+    },
+    "com.azure.edge#SitePropertiesInputLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs for labeling the site resource."
       }
     },
     "com.azure.edge#SitesGet": {
@@ -22368,11 +24582,10 @@
             "smithy.api#documentation": "The name of the Site"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SiteUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The updatable properties of the Site."
           }
         }
       },
@@ -22456,11 +24669,10 @@
             "smithy.api#documentation": "The name of the Site"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SitePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -22703,11 +24915,10 @@
             "smithy.api#documentation": "The name of the Site"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SiteUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The updatable properties of the Site."
           }
         }
       },
@@ -22791,11 +25002,10 @@
             "smithy.api#documentation": "The name of the Site"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.edge#SitePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },

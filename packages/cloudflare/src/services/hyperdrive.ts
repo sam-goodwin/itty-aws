@@ -74,8 +74,7 @@ export class PrivateHostNotAllowed extends T.applyErrorMatchers(
 export type ConfigsCreateRequestOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsCreateRequestOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -108,7 +107,7 @@ export const ConfigsCreateRequestOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsCreateRequestOriginPublicDatabase>;
 
 export type ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -146,7 +145,7 @@ export const ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTu
   }) as any as S.Schema<ConfigsCreateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsCreateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -293,8 +292,7 @@ export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsCreateResponseOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsCreateResponseOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -327,7 +325,7 @@ export const ConfigsCreateResponseOriginPublicDatabase =
   }) as any as S.Schema<ConfigsCreateResponseOriginPublicDatabase>;
 
 export type ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -365,7 +363,7 @@ export const ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareT
   }) as any as S.Schema<ConfigsCreateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsCreateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -566,8 +564,7 @@ export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsGetResponseOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsGetResponseOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -600,7 +597,7 @@ export const ConfigsGetResponseOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsGetResponseOriginPublicDatabase>;
 
 export type ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -640,8 +637,7 @@ export const ConfigsGetResponseOriginAccessProtectedDatabaseBehindCloudflareTunn
 export type ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsGetResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -806,8 +802,7 @@ export const ListConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsListResultItemOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsListResultItemOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -840,7 +835,7 @@ export const ConfigsListResultItemOriginPublicDatabase =
   }) as any as S.Schema<ConfigsListResultItemOriginPublicDatabase>;
 
 export type ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -878,7 +873,7 @@ export const ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareT
   }) as any as S.Schema<ConfigsListResultItemOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsListResultItemOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -1022,7 +1017,7 @@ export const ConfigsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigsListResultItem",
 }) as any as S.Schema<ConfigsListResultItem>;
 
-export type ConfigsListResultList = ConfigsListResultItem[];
+export type ConfigsListResultList = ReadonlyArray<ConfigsListResultItem>;
 export const ConfigsListResultList = /*@__PURE__*/ S.Array(
   ConfigsListResultItem,
 ) as any as S.Schema<ConfigsListResultList>;
@@ -1104,8 +1099,7 @@ export const ConfigsEditRequestMtls = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsEditRequestOriginHyperdriveHyperdriveDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -1237,8 +1231,7 @@ export const PatchConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsEditResponseOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsEditResponseOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -1271,7 +1264,7 @@ export const ConfigsEditResponseOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsEditResponseOriginPublicDatabase>;
 
 export type ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -1309,7 +1302,7 @@ export const ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTun
   }) as any as S.Schema<ConfigsEditResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsEditResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -1455,8 +1448,7 @@ export const PatchConfigResponse = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsUpdateRequestOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsUpdateRequestOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -1489,7 +1481,7 @@ export const ConfigsUpdateRequestOriginPublicDatabase = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConfigsUpdateRequestOriginPublicDatabase>;
 
 export type ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -1527,7 +1519,7 @@ export const ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTu
   }) as any as S.Schema<ConfigsUpdateRequestOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsUpdateRequestOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 
@@ -1677,8 +1669,7 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type ConfigsUpdateResponseOriginPublicDatabaseScheme =
   | "postgres"
   | "postgresql"
-  | "mysql"
-  | (string & {});
+  | "mysql";
 export const ConfigsUpdateResponseOriginPublicDatabaseScheme =
   /*@__PURE__*/ S.String;
 
@@ -1711,7 +1702,7 @@ export const ConfigsUpdateResponseOriginPublicDatabase =
   }) as any as S.Schema<ConfigsUpdateResponseOriginPublicDatabase>;
 
 export type ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnelScheme =
   /*@__PURE__*/ S.String;
 
@@ -1749,7 +1740,7 @@ export const ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareT
   }) as any as S.Schema<ConfigsUpdateResponseOriginAccessProtectedDatabaseBehindCloudflareTunnel>;
 
 export type ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
-  "postgres" | "postgresql" | "mysql" | (string & {});
+  "postgres" | "postgresql" | "mysql";
 export const ConfigsUpdateResponseOriginDatabaseReachableThroughAWorkersVPCScheme =
   /*@__PURE__*/ S.String;
 

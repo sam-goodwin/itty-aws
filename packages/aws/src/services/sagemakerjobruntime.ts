@@ -109,7 +109,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
 ).pipe(C.withBadRequestError) {}
 export type JobArn = string;
 export type TrajectoryId = string;
-export type CompletionStatus = "ready" | "failed" | (string & {});
+export type CompletionStatus = "ready" | "failed";
 export const CompletionStatus = /*@__PURE__*/ S.String;
 
 export interface CompleteRolloutRequest {

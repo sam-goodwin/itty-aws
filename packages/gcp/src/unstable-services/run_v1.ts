@@ -106,7 +106,7 @@ export const KeyToPath = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyToPath" }) as any as S.Schema<KeyToPath>;
 
-export type KeyToPathList = KeyToPath[];
+export type KeyToPathList = ReadonlyArray<KeyToPath>;
 export const KeyToPathList = /*@__PURE__*/ S.Array(
   KeyToPath,
 ) as any as S.Schema<KeyToPathList>;
@@ -240,12 +240,12 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
-export type VolumeList = Volume[];
+export type VolumeList = ReadonlyArray<Volume>;
 export const VolumeList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumeList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -280,7 +280,7 @@ export const HTTPHeader = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HTTPHeader" }) as any as S.Schema<HTTPHeader>;
 
-export type HTTPHeaderList = HTTPHeader[];
+export type HTTPHeaderList = ReadonlyArray<HTTPHeader>;
 export const HTTPHeaderList = /*@__PURE__*/ S.Array(
   HTTPHeader,
 ) as any as S.Schema<HTTPHeaderList>;
@@ -449,7 +449,7 @@ export const EnvFromSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EnvFromSource" }) as any as S.Schema<EnvFromSource>;
 
-export type EnvFromSourceList = EnvFromSource[];
+export type EnvFromSourceList = ReadonlyArray<EnvFromSource>;
 export const EnvFromSourceList = /*@__PURE__*/ S.Array(
   EnvFromSource,
 ) as any as S.Schema<EnvFromSourceList>;
@@ -490,7 +490,7 @@ export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VolumeMount" }) as any as S.Schema<VolumeMount>;
 
-export type VolumeMountList = VolumeMount[];
+export type VolumeMountList = ReadonlyArray<VolumeMount>;
 export const VolumeMountList = /*@__PURE__*/ S.Array(
   VolumeMount,
 ) as any as S.Schema<VolumeMountList>;
@@ -512,7 +512,7 @@ export const ContainerPort = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContainerPort" }) as any as S.Schema<ContainerPort>;
 
-export type ContainerPortList = ContainerPort[];
+export type ContainerPortList = ReadonlyArray<ContainerPort>;
 export const ContainerPortList = /*@__PURE__*/ S.Array(
   ContainerPort,
 ) as any as S.Schema<ContainerPortList>;
@@ -592,7 +592,7 @@ export const EnvVar = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EnvVar" }) as any as S.Schema<EnvVar>;
 
-export type EnvVarList = EnvVar[];
+export type EnvVarList = ReadonlyArray<EnvVar>;
 export const EnvVarList = /*@__PURE__*/ S.Array(
   EnvVar,
 ) as any as S.Schema<EnvVarList>;
@@ -659,7 +659,7 @@ export const Container = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
 
-export type ContainerList = Container[];
+export type ContainerList = ReadonlyArray<Container>;
 export const ContainerList = /*@__PURE__*/ S.Array(
   Container,
 ) as any as S.Schema<ContainerList>;
@@ -746,7 +746,7 @@ export const OwnerReference = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OwnerReference" }) as any as S.Schema<OwnerReference>;
 
-export type OwnerReferenceList = OwnerReference[];
+export type OwnerReferenceList = ReadonlyArray<OwnerReference>;
 export const OwnerReferenceList = /*@__PURE__*/ S.Array(
   OwnerReference,
 ) as any as S.Schema<OwnerReferenceList>;
@@ -832,7 +832,8 @@ export const GoogleCloudRunV1Condition = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV1Condition",
 }) as any as S.Schema<GoogleCloudRunV1Condition>;
 
-export type GoogleCloudRunV1ConditionList = GoogleCloudRunV1Condition[];
+export type GoogleCloudRunV1ConditionList =
+  ReadonlyArray<GoogleCloudRunV1Condition>;
 export const GoogleCloudRunV1ConditionList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV1Condition,
 ) as any as S.Schema<GoogleCloudRunV1ConditionList>;
@@ -903,8 +904,7 @@ export const Execution = /*@__PURE__*/ S.suspend(() =>
 export type DomainMappingSpecCertificateModeEnum =
   | "CERTIFICATE_MODE_UNSPECIFIED"
   | "NONE"
-  | "AUTOMATIC"
-  | (string & {});
+  | "AUTOMATIC";
 export const DomainMappingSpecCertificateModeEnum = /*@__PURE__*/ S.String;
 
 /** The desired state of the Domain Mapping. */
@@ -930,8 +930,7 @@ export type ResourceRecordTypeEnum =
   | "RECORD_TYPE_UNSPECIFIED"
   | "A"
   | "AAAA"
-  | "CNAME"
-  | (string & {});
+  | "CNAME";
 export const ResourceRecordTypeEnum = /*@__PURE__*/ S.String;
 
 /** A DNS resource record. */
@@ -951,7 +950,7 @@ export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
 
-export type ResourceRecordList = ResourceRecord[];
+export type ResourceRecordList = ReadonlyArray<ResourceRecord>;
 export const ResourceRecordList = /*@__PURE__*/ S.Array(
   ResourceRecord,
 ) as any as S.Schema<ResourceRecordList>;
@@ -1158,8 +1157,7 @@ export type ExecutionReferenceCompletionStatusEnum =
   | "EXECUTION_FAILED"
   | "EXECUTION_RUNNING"
   | "EXECUTION_PENDING"
-  | "EXECUTION_CANCELLED"
-  | (string & {});
+  | "EXECUTION_CANCELLED";
 export const ExecutionReferenceCompletionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status. */
@@ -1254,7 +1252,7 @@ export const CreateNamespacesJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateNamespacesJobsRequest",
 }) as any as S.Schema<CreateNamespacesJobsRequest>;
 
-export type LocalObjectReferenceList = LocalObjectReference[];
+export type LocalObjectReferenceList = ReadonlyArray<LocalObjectReference>;
 export const LocalObjectReferenceList = /*@__PURE__*/ S.Array(
   LocalObjectReference,
 ) as any as S.Schema<LocalObjectReferenceList>;
@@ -1335,7 +1333,7 @@ export const TrafficTarget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrafficTarget" }) as any as S.Schema<TrafficTarget>;
 
-export type TrafficTargetList = TrafficTarget[];
+export type TrafficTargetList = ReadonlyArray<TrafficTarget>;
 export const TrafficTargetList = /*@__PURE__*/ S.Array(
   TrafficTarget,
 ) as any as S.Schema<TrafficTargetList>;
@@ -1457,7 +1455,7 @@ export const InstanceSplit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InstanceSplit" }) as any as S.Schema<InstanceSplit>;
 
-export type InstanceSplitList = InstanceSplit[];
+export type InstanceSplitList = ReadonlyArray<InstanceSplit>;
 export const InstanceSplitList = /*@__PURE__*/ S.Array(
   InstanceSplit,
 ) as any as S.Schema<InstanceSplitList>;
@@ -1663,7 +1661,7 @@ export const StatusCause = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StatusCause" }) as any as S.Schema<StatusCause>;
 
-export type StatusCauseList = StatusCause[];
+export type StatusCauseList = ReadonlyArray<StatusCause>;
 export const StatusCauseList = /*@__PURE__*/ S.Array(
   StatusCause,
 ) as any as S.Schema<StatusCauseList>;
@@ -2032,8 +2030,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2050,7 +2047,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -2069,7 +2066,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -2111,7 +2108,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2534,7 +2531,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2828,7 +2825,7 @@ export const AuthorizedDomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizedDomain",
 }) as any as S.Schema<AuthorizedDomain>;
 
-export type AuthorizedDomainList = AuthorizedDomain[];
+export type AuthorizedDomainList = ReadonlyArray<AuthorizedDomain>;
 export const AuthorizedDomainList = /*@__PURE__*/ S.Array(
   AuthorizedDomain,
 ) as any as S.Schema<AuthorizedDomainList>;
@@ -2888,7 +2885,7 @@ export const ListNamespacesConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesConfigurationsRequest",
 }) as any as S.Schema<ListNamespacesConfigurationsRequest>;
 
-export type ConfigurationList = Configuration[];
+export type ConfigurationList = ReadonlyArray<Configuration>;
 export const ConfigurationList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationList>;
@@ -2957,7 +2954,7 @@ export const ListNamespacesDomainmappingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesDomainmappingsRequest",
 }) as any as S.Schema<ListNamespacesDomainmappingsRequest>;
 
-export type DomainMappingList = DomainMapping[];
+export type DomainMappingList = ReadonlyArray<DomainMapping>;
 export const DomainMappingList = /*@__PURE__*/ S.Array(
   DomainMapping,
 ) as any as S.Schema<DomainMappingList>;
@@ -3026,7 +3023,7 @@ export const ListNamespacesExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesExecutionsRequest",
 }) as any as S.Schema<ListNamespacesExecutionsRequest>;
 
-export type ExecutionList = Execution[];
+export type ExecutionList = ReadonlyArray<Execution>;
 export const ExecutionList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionList>;
@@ -3095,7 +3092,7 @@ export const ListNamespacesInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesInstancesRequest",
 }) as any as S.Schema<ListNamespacesInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -3164,7 +3161,7 @@ export const ListNamespacesJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesJobsRequest",
 }) as any as S.Schema<ListNamespacesJobsRequest>;
 
-export type JobList = Job[];
+export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** ListJobsResponse is a list of Jobs resources. */
@@ -3231,7 +3228,7 @@ export const ListNamespacesRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesRevisionsRequest",
 }) as any as S.Schema<ListNamespacesRevisionsRequest>;
 
-export type RevisionList = Revision[];
+export type RevisionList = ReadonlyArray<Revision>;
 export const RevisionList = /*@__PURE__*/ S.Array(
   Revision,
 ) as any as S.Schema<RevisionList>;
@@ -3300,7 +3297,7 @@ export const ListNamespacesRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesRoutesRequest",
 }) as any as S.Schema<ListNamespacesRoutesRequest>;
 
-export type RouteList = Route[];
+export type RouteList = ReadonlyArray<Route>;
 export const RouteList = /*@__PURE__*/ S.Array(
   Route,
 ) as any as S.Schema<RouteList>;
@@ -3369,7 +3366,7 @@ export const ListNamespacesServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesServicesRequest",
 }) as any as S.Schema<ListNamespacesServicesRequest>;
 
-export type ServiceList = Service[];
+export type ServiceList = ReadonlyArray<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -3438,7 +3435,7 @@ export const ListNamespacesTasksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesTasksRequest",
 }) as any as S.Schema<ListNamespacesTasksRequest>;
 
-export type TaskList = Task[];
+export type TaskList = ReadonlyArray<Task>;
 export const TaskList = /*@__PURE__*/ S.Array(
   Task,
 ) as any as S.Schema<TaskList>;
@@ -3495,7 +3492,7 @@ export const ListNamespacesWorkerpoolsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesWorkerpoolsRequest",
 }) as any as S.Schema<ListNamespacesWorkerpoolsRequest>;
 
-export type WorkerPoolList = WorkerPool[];
+export type WorkerPoolList = ReadonlyArray<WorkerPool>;
 export const WorkerPoolList = /*@__PURE__*/ S.Array(
   WorkerPool,
 ) as any as S.Schema<WorkerPoolList>;
@@ -3603,7 +3600,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3760,7 +3757,8 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -4050,7 +4048,7 @@ export const ContainerOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContainerOverride",
 }) as any as S.Schema<ContainerOverride>;
 
-export type ContainerOverrideList = ContainerOverride[];
+export type ContainerOverrideList = ReadonlyArray<ContainerOverride>;
 export const ContainerOverrideList = /*@__PURE__*/ S.Array(
   ContainerOverride,
 ) as any as S.Schema<ContainerOverrideList>;

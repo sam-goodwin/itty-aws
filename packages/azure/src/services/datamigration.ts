@@ -13,6 +13,108 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+export type DatabaseMigrationPropertiesCosmosDbMongoInputKind =
+  | "SqlMi"
+  | "SqlVm"
+  | "SqlDb"
+  | "MongoToCosmosDbMongo";
+export const DatabaseMigrationPropertiesCosmosDbMongoInputKind =
+  /*@__PURE__*/ S.String;
+
+/** Mongo Connection */
+export interface MongoConnectionInformation {
+  /** Host of mongo connection. */
+  host?: string;
+  /** Port of mongo connection. */
+  port?: number;
+  /** User name to connect to Mongo. */
+  userName?: string;
+  /** Password to connect to Mongo. */
+  password?: string | Redacted.Redacted<string>;
+  /** Whether to UseSsl or UseTls to connect to Mongo. Default is true. */
+  useSsl?: boolean;
+  /** ConnectionString to connect to Mongo. */
+  connectionString?: string | Redacted.Redacted<string>;
+}
+export const MongoConnectionInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    host: S.optional(S.String),
+    port: S.optional(S.Number),
+    userName: S.optional(S.String),
+    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    useSsl: S.optional(S.Boolean),
+    connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+  }),
+).annotate({
+  identifier: "MongoConnectionInformation",
+}) as any as S.Schema<MongoConnectionInformation>;
+
+/** Mongo source and target database and collection details. */
+export interface MongoMigrationCollectionInput {
+  /** Source database name. */
+  sourceDatabase?: string;
+  /** Source collection name. */
+  sourceCollection?: string;
+  /** Target database name. */
+  targetDatabase?: string;
+  /** Target collection name. */
+  targetCollection?: string;
+}
+export const MongoMigrationCollectionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceDatabase: S.optional(S.String),
+    sourceCollection: S.optional(S.String),
+    targetDatabase: S.optional(S.String),
+    targetCollection: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MongoMigrationCollectionInput",
+}) as any as S.Schema<MongoMigrationCollectionInput>;
+
+/** List of Mongo Collections to be migrated. */
+export type DatabaseMigrationPropertiesCosmosDbMongoInputCollectionListList =
+  ReadonlyArray<MongoMigrationCollectionInput>;
+export const DatabaseMigrationPropertiesCosmosDbMongoInputCollectionListList =
+  /*@__PURE__*/ S.Array(
+    MongoMigrationCollectionInput,
+  ) as any as S.Schema<DatabaseMigrationPropertiesCosmosDbMongoInputCollectionListList>;
+
+/** Database Migration Resource properties for CosmosDb for Mongo. */
+export interface DatabaseMigrationPropertiesCosmosDbMongoInput {
+  kind: DatabaseMigrationPropertiesCosmosDbMongoInputKind;
+  /** Resource Id of the target resource. */
+  scope?: string;
+  /** Resource Id of the Migration Service. */
+  migrationService?: string;
+  /** ID for current migration operation. */
+  migrationOperationId?: string;
+  /** Error message for migration provisioning failure, if any. */
+  provisioningError?: string;
+  /** Source Mongo connection details. */
+  sourceMongoConnection?: MongoConnectionInformation;
+  /** Target Cosmos DB Mongo connection details. */
+  targetMongoConnection?: MongoConnectionInformation;
+  /** List of Mongo Collections to be migrated. */
+  collectionList?: DatabaseMigrationPropertiesCosmosDbMongoInputCollectionListList;
+}
+export const DatabaseMigrationPropertiesCosmosDbMongoInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: DatabaseMigrationPropertiesCosmosDbMongoInputKind,
+      scope: S.optional(S.String),
+      migrationService: S.optional(S.String),
+      migrationOperationId: S.optional(S.String),
+      provisioningError: S.optional(S.String),
+      sourceMongoConnection: S.optional(MongoConnectionInformation),
+      targetMongoConnection: S.optional(MongoConnectionInformation),
+      collectionList: S.optional(
+        DatabaseMigrationPropertiesCosmosDbMongoInputCollectionListList,
+      ),
+    }),
+  ).annotate({
+    identifier: "DatabaseMigrationPropertiesCosmosDbMongoInput",
+  }) as any as S.Schema<DatabaseMigrationPropertiesCosmosDbMongoInput>;
+
 export interface DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -22,7 +124,7 @@ export interface DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest {
   targetResourceName: string;
   /** Name of the migration. */
   migrationName: string;
-  body: unknown;
+  properties?: DatabaseMigrationPropertiesCosmosDbMongoInput;
 }
 export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -31,7 +133,7 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       targetResourceName: S.String.pipe(T.Label()),
       migrationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongoInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -49,8 +151,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -58,8 +159,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -92,8 +192,7 @@ export type DatabaseMigrationPropertiesCosmosDbMongoKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo"
-  | (string & {});
+  | "MongoToCosmosDbMongo";
 export const DatabaseMigrationPropertiesCosmosDbMongoKind =
   /*@__PURE__*/ S.String;
 
@@ -103,8 +202,7 @@ export type DatabaseMigrationPropertiesCosmosDbMongoProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const DatabaseMigrationPropertiesCosmosDbMongoProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -122,42 +220,13 @@ export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorInfo" }) as any as S.Schema<ErrorInfo>;
 
-/** Mongo Connection */
-export interface MongoConnectionInformation {
-  /** Host of mongo connection. */
-  host?: string;
-  /** Port of mongo connection. */
-  port?: number;
-  /** User name to connect to Mongo. */
-  userName?: string;
-  /** Password to connect to Mongo. */
-  password?: string | Redacted.Redacted<string>;
-  /** Whether to UseSsl or UseTls to connect to Mongo. Default is true. */
-  useSsl?: boolean;
-  /** ConnectionString to connect to Mongo. */
-  connectionString?: string | Redacted.Redacted<string>;
-}
-export const MongoConnectionInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.String),
-    port: S.optional(S.Number),
-    userName: S.optional(S.String),
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    useSsl: S.optional(S.Boolean),
-    connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({
-  identifier: "MongoConnectionInformation",
-}) as any as S.Schema<MongoConnectionInformation>;
-
 /** Migration Status */
 export type MongoMigrationProgressDetailsMigrationStatus =
   | "NotStarted"
   | "InProgress"
   | "Completed"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const MongoMigrationProgressDetailsMigrationStatus =
   /*@__PURE__*/ S.String;
 
@@ -213,7 +282,7 @@ export const MongoMigrationCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Mongo Collections to be migrated. */
 export type DatabaseMigrationPropertiesCosmosDbMongoCollectionListList =
-  MongoMigrationCollection[];
+  ReadonlyArray<MongoMigrationCollection>;
 export const DatabaseMigrationPropertiesCosmosDbMongoCollectionListList =
   /*@__PURE__*/ S.Array(
     MongoMigrationCollection,
@@ -438,7 +507,7 @@ export const DatabaseMigrationCosmosDbMongo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseMigrationCosmosDbMongo>;
 
 export type DatabaseMigrationCosmosDbMongoListResultValueList =
-  DatabaseMigrationCosmosDbMongo[];
+  ReadonlyArray<DatabaseMigrationCosmosDbMongo>;
 export const DatabaseMigrationCosmosDbMongoListResultValueList =
   /*@__PURE__*/ S.Array(
     DatabaseMigrationCosmosDbMongo,
@@ -468,7 +537,7 @@ export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest {
   targetResourceName: string;
   /** Name of the migration. */
   migrationName: string;
-  body: unknown;
+  properties?: DatabaseMigrationPropertiesCosmosDbMongoInput;
 }
 export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -477,7 +546,7 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       targetResourceName: S.String.pipe(T.Label()),
       migrationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongoInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -639,7 +708,8 @@ export interface DatabaseMigrationsSqlDbCancelRequest {
   sqlDbInstanceName: string;
   /** The name of the target database. */
   targetDbName: string;
-  body: unknown;
+  /** ID tracking migration operation. */
+  migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlDbCancelRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -648,7 +718,7 @@ export const DatabaseMigrationsSqlDbCancelRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       sqlDbInstanceName: S.String.pipe(T.Label()),
       targetDbName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      migrationOperationId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -668,54 +738,12 @@ export const DatabaseMigrationsSqlDbCancelResponse = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseMigrationsSqlDbCancelResponse",
 }) as any as S.Schema<DatabaseMigrationsSqlDbCancelResponse>;
 
-export interface DatabaseMigrationsSqlDbCreateOrUpdateRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  sqlDbInstanceName: string;
-  /** The name of the target database. */
-  targetDbName: string;
-  body: unknown;
-}
-export const DatabaseMigrationsSqlDbCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlDbInstanceName: S.String.pipe(T.Label()),
-      targetDbName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "DatabaseMigrationsSqlDbCreateOrUpdateRequest",
-  }) as any as S.Schema<DatabaseMigrationsSqlDbCreateOrUpdateRequest>;
-
-export type DatabaseMigrationPropertiesSqlDbKind =
+export type DatabaseMigrationPropertiesSqlDbInputKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo"
-  | (string & {});
-export const DatabaseMigrationPropertiesSqlDbKind = /*@__PURE__*/ S.String;
-
-/** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
-export type DatabaseMigrationPropertiesSqlDbProvisioningState =
-  | "Provisioning"
-  | "Updating"
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
-export const DatabaseMigrationPropertiesSqlDbProvisioningState =
-  /*@__PURE__*/ S.String;
+  | "MongoToCosmosDbMongo";
+export const DatabaseMigrationPropertiesSqlDbInputKind = /*@__PURE__*/ S.String;
 
 /** Source SQL Connection */
 export interface SqlConnectionInformation {
@@ -745,8 +773,104 @@ export const SqlConnectionInformation = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlConnectionInformation",
 }) as any as S.Schema<SqlConnectionInformation>;
 
+/** List of tables to copy. */
+export type DatabaseMigrationPropertiesSqlDbInputTableListList =
+  ReadonlyArray<string>;
+export const DatabaseMigrationPropertiesSqlDbInputTableListList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DatabaseMigrationPropertiesSqlDbInputTableListList>;
+
+/** Database Migration Resource properties for SQL database. */
+export interface DatabaseMigrationPropertiesSqlDbInput {
+  kind: DatabaseMigrationPropertiesSqlDbInputKind;
+  /** Resource Id of the target resource. */
+  scope?: string;
+  /** Resource Id of the Migration Service. */
+  migrationService?: string;
+  /** ID for current migration operation. */
+  migrationOperationId?: string;
+  /** Error message for migration provisioning failure, if any. */
+  provisioningError?: string;
+  /** Source SQL Server connection details. */
+  sourceSqlConnection?: SqlConnectionInformation;
+  /** Name of the source database. */
+  sourceDatabaseName?: string;
+  /** Database collation to be used for the target database. */
+  targetDatabaseCollation?: string;
+  /** Target SQL DB connection details. */
+  targetSqlConnection?: SqlConnectionInformation;
+  /** List of tables to copy. */
+  tableList?: DatabaseMigrationPropertiesSqlDbInputTableListList;
+}
+export const DatabaseMigrationPropertiesSqlDbInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      kind: DatabaseMigrationPropertiesSqlDbInputKind,
+      scope: S.optional(S.String),
+      migrationService: S.optional(S.String),
+      migrationOperationId: S.optional(S.String),
+      provisioningError: S.optional(S.String),
+      sourceSqlConnection: S.optional(SqlConnectionInformation),
+      sourceDatabaseName: S.optional(S.String),
+      targetDatabaseCollation: S.optional(S.String),
+      targetSqlConnection: S.optional(SqlConnectionInformation),
+      tableList: S.optional(DatabaseMigrationPropertiesSqlDbInputTableListList),
+    }),
+).annotate({
+  identifier: "DatabaseMigrationPropertiesSqlDbInput",
+}) as any as S.Schema<DatabaseMigrationPropertiesSqlDbInput>;
+
+export interface DatabaseMigrationsSqlDbCreateOrUpdateRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  sqlDbInstanceName: string;
+  /** The name of the target database. */
+  targetDbName: string;
+  properties?: DatabaseMigrationPropertiesSqlDbInput;
+}
+export const DatabaseMigrationsSqlDbCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlDbInstanceName: S.String.pipe(T.Label()),
+      targetDbName: S.String.pipe(T.Label()),
+      properties: S.optional(DatabaseMigrationPropertiesSqlDbInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "DatabaseMigrationsSqlDbCreateOrUpdateRequest",
+  }) as any as S.Schema<DatabaseMigrationsSqlDbCreateOrUpdateRequest>;
+
+export type DatabaseMigrationPropertiesSqlDbKind =
+  | "SqlMi"
+  | "SqlVm"
+  | "SqlDb"
+  | "MongoToCosmosDbMongo";
+export const DatabaseMigrationPropertiesSqlDbKind = /*@__PURE__*/ S.String;
+
+/** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
+export type DatabaseMigrationPropertiesSqlDbProvisioningState =
+  | "Provisioning"
+  | "Updating"
+  | "Succeeded"
+  | "Failed"
+  | "Canceled";
+export const DatabaseMigrationPropertiesSqlDbProvisioningState =
+  /*@__PURE__*/ S.String;
+
 /** Sql Data Copy errors, if any. */
-export type SqlDbMigrationStatusDetailsSqlDataCopyErrorsList = string[];
+export type SqlDbMigrationStatusDetailsSqlDataCopyErrorsList =
+  ReadonlyArray<string>;
 export const SqlDbMigrationStatusDetailsSqlDataCopyErrorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -797,7 +921,7 @@ export const CopyProgressDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on progress of ADF copy activities. */
 export type SqlDbMigrationStatusDetailsListOfCopyProgressDetailsList =
-  CopyProgressDetails[];
+  ReadonlyArray<CopyProgressDetails>;
 export const SqlDbMigrationStatusDetailsListOfCopyProgressDetailsList =
   /*@__PURE__*/ S.Array(
     CopyProgressDetails,
@@ -840,7 +964,8 @@ export const SqlDbOfflineConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlDbOfflineConfiguration>;
 
 /** List of tables to copy. */
-export type DatabaseMigrationPropertiesSqlDbTableListList = string[];
+export type DatabaseMigrationPropertiesSqlDbTableListList =
+  ReadonlyArray<string>;
 export const DatabaseMigrationPropertiesSqlDbTableListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1037,7 +1162,8 @@ export interface DatabaseMigrationsSqlDbRetryRequest {
   sqlDbInstanceName: string;
   /** The name of the target database. */
   targetDbName: string;
-  body: unknown;
+  /** ID tracking migration operation. */
+  migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlDbRetryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1045,7 +1171,7 @@ export const DatabaseMigrationsSqlDbRetryRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     sqlDbInstanceName: S.String.pipe(T.Label()),
     targetDbName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    migrationOperationId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1073,7 +1199,8 @@ export interface DatabaseMigrationsSqlMiCancelRequest {
   managedInstanceName: string;
   /** The name of the target database. */
   targetDbName: string;
-  body: unknown;
+  /** ID tracking migration operation. */
+  migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlMiCancelRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1082,7 +1209,7 @@ export const DatabaseMigrationsSqlMiCancelRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       managedInstanceName: S.String.pipe(T.Label()),
       targetDbName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      migrationOperationId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1102,6 +1229,202 @@ export const DatabaseMigrationsSqlMiCancelResponse = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseMigrationsSqlMiCancelResponse",
 }) as any as S.Schema<DatabaseMigrationsSqlMiCancelResponse>;
 
+export type DatabaseMigrationPropertiesSqlMiInputKind =
+  | "SqlMi"
+  | "SqlVm"
+  | "SqlDb"
+  | "MongoToCosmosDbMongo";
+export const DatabaseMigrationPropertiesSqlMiInputKind = /*@__PURE__*/ S.String;
+
+/** File share */
+export interface SqlFileShare {
+  /** Location as SMB share or local drive where backups are placed. */
+  path?: string;
+  /** Username to access the file share location for backups. */
+  username?: string;
+  /** Password for username to access file share location. */
+  password?: string | Redacted.Redacted<string>;
+}
+export const SqlFileShare = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.optional(S.String),
+    username: S.optional(S.String),
+    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+  }),
+).annotate({ identifier: "SqlFileShare" }) as any as S.Schema<SqlFileShare>;
+
+/** Authentication type used for accessing Azure Blob Storage. */
+export type AzureBlobInputAuthType = "AccountKey" | "ManagedIdentity";
+export const AzureBlobInputAuthType = /*@__PURE__*/ S.String;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type AzureBlobInputIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const AzureBlobInputIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<AzureBlobInputIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface AzureBlobInputIdentity {
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: AzureBlobInputIdentityUserAssignedIdentitiesMap;
+}
+export const AzureBlobInputIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      AzureBlobInputIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "AzureBlobInputIdentity",
+}) as any as S.Schema<AzureBlobInputIdentity>;
+
+/** Azure Blob Details */
+export interface AzureBlobInput {
+  /** Authentication type used for accessing Azure Blob Storage. */
+  authType?: AzureBlobInputAuthType;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: AzureBlobInputIdentity;
+  /** Resource Id of the storage account where backups are stored. */
+  storageAccountResourceId?: string;
+  /** Storage Account Key. */
+  accountKey?: string;
+  /** Blob container name where backups are stored. */
+  blobContainerName?: string;
+}
+export const AzureBlobInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authType: S.optional(AzureBlobInputAuthType),
+    identity: S.optional(AzureBlobInputIdentity),
+    storageAccountResourceId: S.optional(S.String),
+    accountKey: S.optional(S.String),
+    blobContainerName: S.optional(S.String),
+  }),
+).annotate({ identifier: "AzureBlobInput" }) as any as S.Schema<AzureBlobInput>;
+
+/** Source Location details of backups. */
+export interface SourceLocationInput {
+  /** Source File share. */
+  fileShare?: SqlFileShare;
+  /** Source Azure Blob. */
+  azureBlob?: AzureBlobInput;
+}
+export const SourceLocationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fileShare: S.optional(SqlFileShare),
+    azureBlob: S.optional(AzureBlobInput),
+  }),
+).annotate({
+  identifier: "SourceLocationInput",
+}) as any as S.Schema<SourceLocationInput>;
+
+/** Target Location details for optional copy of backups */
+export interface TargetLocation {
+  /** Resource Id of the storage account copying backups. */
+  storageAccountResourceId?: string;
+  /** Storage Account Key. */
+  accountKey?: string;
+}
+export const TargetLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageAccountResourceId: S.optional(S.String),
+    accountKey: S.optional(S.String),
+  }),
+).annotate({ identifier: "TargetLocation" }) as any as S.Schema<TargetLocation>;
+
+/** Backup Configuration */
+export interface BackupConfigurationInput {
+  /** Source location of backups. */
+  sourceLocation?: SourceLocationInput;
+  /** Target location for copying backups. */
+  targetLocation?: TargetLocation;
+}
+export const BackupConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceLocation: S.optional(SourceLocationInput),
+    targetLocation: S.optional(TargetLocation),
+  }),
+).annotate({
+  identifier: "BackupConfigurationInput",
+}) as any as S.Schema<BackupConfigurationInput>;
+
+/** Offline configuration */
+export interface OfflineConfiguration {
+  /** Offline migration */
+  offline?: boolean;
+  /** Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share. */
+  lastBackupName?: string;
+}
+export const OfflineConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    offline: S.optional(S.Boolean),
+    lastBackupName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OfflineConfiguration",
+}) as any as S.Schema<OfflineConfiguration>;
+
+/** Database Migration Resource properties for SQL Managed Instance. */
+export interface DatabaseMigrationPropertiesSqlMiInput {
+  kind: DatabaseMigrationPropertiesSqlMiInputKind;
+  /** Resource Id of the target resource. */
+  scope?: string;
+  /** Resource Id of the Migration Service. */
+  migrationService?: string;
+  /** ID for current migration operation. */
+  migrationOperationId?: string;
+  /** Error message for migration provisioning failure, if any. */
+  provisioningError?: string;
+  /** Source SQL Server connection details. */
+  sourceSqlConnection?: SqlConnectionInformation;
+  /** Name of the source database. */
+  sourceDatabaseName?: string;
+  /** Database collation to be used for the target database. */
+  targetDatabaseCollation?: string;
+  /** Backup configuration info. */
+  backupConfiguration?: BackupConfigurationInput;
+  /** Offline configuration. */
+  offlineConfiguration?: OfflineConfiguration;
+}
+export const DatabaseMigrationPropertiesSqlMiInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      kind: DatabaseMigrationPropertiesSqlMiInputKind,
+      scope: S.optional(S.String),
+      migrationService: S.optional(S.String),
+      migrationOperationId: S.optional(S.String),
+      provisioningError: S.optional(S.String),
+      sourceSqlConnection: S.optional(SqlConnectionInformation),
+      sourceDatabaseName: S.optional(S.String),
+      targetDatabaseCollation: S.optional(S.String),
+      backupConfiguration: S.optional(BackupConfigurationInput),
+      offlineConfiguration: S.optional(OfflineConfiguration),
+    }),
+).annotate({
+  identifier: "DatabaseMigrationPropertiesSqlMiInput",
+}) as any as S.Schema<DatabaseMigrationPropertiesSqlMiInput>;
+
 export interface DatabaseMigrationsSqlMiCreateOrUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -1110,7 +1433,7 @@ export interface DatabaseMigrationsSqlMiCreateOrUpdateRequest {
   managedInstanceName: string;
   /** The name of the target database. */
   targetDbName: string;
-  body: unknown;
+  properties?: DatabaseMigrationPropertiesSqlMiInput;
 }
 export const DatabaseMigrationsSqlMiCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1119,7 +1442,7 @@ export const DatabaseMigrationsSqlMiCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       managedInstanceName: S.String.pipe(T.Label()),
       targetDbName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DatabaseMigrationPropertiesSqlMiInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1136,8 +1459,7 @@ export type DatabaseMigrationPropertiesSqlMiKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo"
-  | (string & {});
+  | "MongoToCosmosDbMongo";
 export const DatabaseMigrationPropertiesSqlMiKind = /*@__PURE__*/ S.String;
 
 /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
@@ -1146,8 +1468,7 @@ export type DatabaseMigrationPropertiesSqlMiProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const DatabaseMigrationPropertiesSqlMiProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1186,13 +1507,14 @@ export const SqlBackupFileInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlBackupFileInfo>;
 
 /** List of files in the backup set. */
-export type SqlBackupSetInfoListOfBackupFilesList = SqlBackupFileInfo[];
+export type SqlBackupSetInfoListOfBackupFilesList =
+  ReadonlyArray<SqlBackupFileInfo>;
 export const SqlBackupSetInfoListOfBackupFilesList = /*@__PURE__*/ S.Array(
   SqlBackupFileInfo,
 ) as any as S.Schema<SqlBackupSetInfoListOfBackupFilesList>;
 
 /** The reasons why the backup set is ignored */
-export type SqlBackupSetInfoIgnoreReasonsList = string[];
+export type SqlBackupSetInfoIgnoreReasonsList = ReadonlyArray<string>;
 export const SqlBackupSetInfoIgnoreReasonsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SqlBackupSetInfoIgnoreReasonsList>;
@@ -1241,19 +1563,21 @@ export const SqlBackupSetInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlBackupSetInfo>;
 
 /** Backup sets that are currently active. */
-export type MigrationStatusDetailsActiveBackupSetsList = SqlBackupSetInfo[];
+export type MigrationStatusDetailsActiveBackupSetsList =
+  ReadonlyArray<SqlBackupSetInfo>;
 export const MigrationStatusDetailsActiveBackupSetsList = /*@__PURE__*/ S.Array(
   SqlBackupSetInfo,
 ) as any as S.Schema<MigrationStatusDetailsActiveBackupSetsList>;
 
 /** Files that are not valid backup files. */
-export type MigrationStatusDetailsInvalidFilesList = string[];
+export type MigrationStatusDetailsInvalidFilesList = ReadonlyArray<string>;
 export const MigrationStatusDetailsInvalidFilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MigrationStatusDetailsInvalidFilesList>;
 
 /** File upload blocking errors, if any. */
-export type MigrationStatusDetailsFileUploadBlockingErrorsList = string[];
+export type MigrationStatusDetailsFileUploadBlockingErrorsList =
+  ReadonlyArray<string>;
 export const MigrationStatusDetailsFileUploadBlockingErrorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1310,38 +1634,9 @@ export const MigrationStatusDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrationStatusDetails",
 }) as any as S.Schema<MigrationStatusDetails>;
 
-/** File share */
-export interface SqlFileShare {
-  /** Location as SMB share or local drive where backups are placed. */
-  path?: string;
-  /** Username to access the file share location for backups. */
-  username?: string;
-  /** Password for username to access file share location. */
-  password?: string | Redacted.Redacted<string>;
-}
-export const SqlFileShare = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.optional(S.String),
-    username: S.optional(S.String),
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({ identifier: "SqlFileShare" }) as any as S.Schema<SqlFileShare>;
-
 /** Authentication type used for accessing Azure Blob Storage. */
-export type AzureBlobAuthType =
-  | "AccountKey"
-  | "ManagedIdentity"
-  | (string & {});
+export type AzureBlobAuthType = "AccountKey" | "ManagedIdentity";
 export const AzureBlobAuthType = /*@__PURE__*/ S.String;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -1432,20 +1727,6 @@ export const SourceLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceLocation" }) as any as S.Schema<SourceLocation>;
 
-/** Target Location details for optional copy of backups */
-export interface TargetLocation {
-  /** Resource Id of the storage account copying backups. */
-  storageAccountResourceId?: string;
-  /** Storage Account Key. */
-  accountKey?: string;
-}
-export const TargetLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storageAccountResourceId: S.optional(S.String),
-    accountKey: S.optional(S.String),
-  }),
-).annotate({ identifier: "TargetLocation" }) as any as S.Schema<TargetLocation>;
-
 /** Backup Configuration */
 export interface BackupConfiguration {
   /** Source location of backups. */
@@ -1461,22 +1742,6 @@ export const BackupConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BackupConfiguration",
 }) as any as S.Schema<BackupConfiguration>;
-
-/** Offline configuration */
-export interface OfflineConfiguration {
-  /** Offline migration */
-  offline?: boolean;
-  /** Last backup name for offline migration. This is optional for migrations from file share. If it is not provided, then the service will determine the last backup file name based on latest backup files present in file share. */
-  lastBackupName?: string;
-}
-export const OfflineConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    offline: S.optional(S.Boolean),
-    lastBackupName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OfflineConfiguration",
-}) as any as S.Schema<OfflineConfiguration>;
 
 /** Database Migration Resource properties for SQL Managed Instance. */
 export interface DatabaseMigrationPropertiesSqlMi {
@@ -1572,7 +1837,8 @@ export interface DatabaseMigrationsSqlMiCutoverRequest {
   managedInstanceName: string;
   /** The name of the target database. */
   targetDbName: string;
-  body: unknown;
+  /** ID tracking migration operation. */
+  migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlMiCutoverRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1581,7 +1847,7 @@ export const DatabaseMigrationsSqlMiCutoverRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       managedInstanceName: S.String.pipe(T.Label()),
       targetDbName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      migrationOperationId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1720,7 +1986,8 @@ export interface DatabaseMigrationsSqlVmCancelRequest {
   sqlVirtualMachineName: string;
   /** The name of the target database. */
   targetDbName: string;
-  body: unknown;
+  /** ID tracking migration operation. */
+  migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlVmCancelRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1729,7 +1996,7 @@ export const DatabaseMigrationsSqlVmCancelRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       sqlVirtualMachineName: S.String.pipe(T.Label()),
       targetDbName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      migrationOperationId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1749,6 +2016,53 @@ export const DatabaseMigrationsSqlVmCancelResponse = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseMigrationsSqlVmCancelResponse",
 }) as any as S.Schema<DatabaseMigrationsSqlVmCancelResponse>;
 
+export type DatabaseMigrationPropertiesSqlVmInputKind =
+  | "SqlMi"
+  | "SqlVm"
+  | "SqlDb"
+  | "MongoToCosmosDbMongo";
+export const DatabaseMigrationPropertiesSqlVmInputKind = /*@__PURE__*/ S.String;
+
+/** Database Migration Resource properties for SQL Virtual Machine. */
+export interface DatabaseMigrationPropertiesSqlVmInput {
+  kind: DatabaseMigrationPropertiesSqlVmInputKind;
+  /** Resource Id of the target resource. */
+  scope?: string;
+  /** Resource Id of the Migration Service. */
+  migrationService?: string;
+  /** ID for current migration operation. */
+  migrationOperationId?: string;
+  /** Error message for migration provisioning failure, if any. */
+  provisioningError?: string;
+  /** Source SQL Server connection details. */
+  sourceSqlConnection?: SqlConnectionInformation;
+  /** Name of the source database. */
+  sourceDatabaseName?: string;
+  /** Database collation to be used for the target database. */
+  targetDatabaseCollation?: string;
+  /** Backup configuration info. */
+  backupConfiguration?: BackupConfigurationInput;
+  /** Offline configuration. */
+  offlineConfiguration?: OfflineConfiguration;
+}
+export const DatabaseMigrationPropertiesSqlVmInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      kind: DatabaseMigrationPropertiesSqlVmInputKind,
+      scope: S.optional(S.String),
+      migrationService: S.optional(S.String),
+      migrationOperationId: S.optional(S.String),
+      provisioningError: S.optional(S.String),
+      sourceSqlConnection: S.optional(SqlConnectionInformation),
+      sourceDatabaseName: S.optional(S.String),
+      targetDatabaseCollation: S.optional(S.String),
+      backupConfiguration: S.optional(BackupConfigurationInput),
+      offlineConfiguration: S.optional(OfflineConfiguration),
+    }),
+).annotate({
+  identifier: "DatabaseMigrationPropertiesSqlVmInput",
+}) as any as S.Schema<DatabaseMigrationPropertiesSqlVmInput>;
+
 export interface DatabaseMigrationsSqlVmCreateOrUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -1757,7 +2071,7 @@ export interface DatabaseMigrationsSqlVmCreateOrUpdateRequest {
   sqlVirtualMachineName: string;
   /** The name of the target database. */
   targetDbName: string;
-  body: unknown;
+  properties?: DatabaseMigrationPropertiesSqlVmInput;
 }
 export const DatabaseMigrationsSqlVmCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1766,7 +2080,7 @@ export const DatabaseMigrationsSqlVmCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       sqlVirtualMachineName: S.String.pipe(T.Label()),
       targetDbName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DatabaseMigrationPropertiesSqlVmInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1783,8 +2097,7 @@ export type DatabaseMigrationPropertiesSqlVmKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo"
-  | (string & {});
+  | "MongoToCosmosDbMongo";
 export const DatabaseMigrationPropertiesSqlVmKind = /*@__PURE__*/ S.String;
 
 /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
@@ -1793,8 +2106,7 @@ export type DatabaseMigrationPropertiesSqlVmProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const DatabaseMigrationPropertiesSqlVmProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1892,7 +2204,8 @@ export interface DatabaseMigrationsSqlVmCutoverRequest {
   sqlVirtualMachineName: string;
   /** The name of the target database. */
   targetDbName: string;
-  body: unknown;
+  /** ID tracking migration operation. */
+  migrationOperationId?: string;
 }
 export const DatabaseMigrationsSqlVmCutoverRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1901,7 +2214,7 @@ export const DatabaseMigrationsSqlVmCutoverRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       sqlVirtualMachineName: S.String.pipe(T.Label()),
       targetDbName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      migrationOperationId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2032,6 +2345,25 @@ export const DatabaseMigrationsSqlVmGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseMigrationsSqlVmGetResponse",
 }) as any as S.Schema<DatabaseMigrationsSqlVmGetResponse>;
 
+/** Base class for file properties. */
+export interface ProjectFilePropertiesInput {
+  /** Optional File extension. If submitted it should not have a leading period and must match the extension from filePath. */
+  extension?: string;
+  /** Relative path of this file resource. This property can be set when creating or updating the file resource. */
+  filePath?: string;
+  /** File content type. This property can be modified to reflect the file content type. */
+  mediaType?: string;
+}
+export const ProjectFilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    extension: S.optional(S.String),
+    filePath: S.optional(S.String),
+    mediaType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProjectFilePropertiesInput",
+}) as any as S.Schema<ProjectFilePropertiesInput>;
+
 export interface FilesCreateOrUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -2043,7 +2375,10 @@ export interface FilesCreateOrUpdateRequest {
   projectName: string;
   /** Name of the File */
   fileName: string;
-  body: unknown;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom file properties */
+  properties?: ProjectFilePropertiesInput;
 }
 export const FilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2052,7 +2387,8 @@ export const FilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     serviceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
     fileName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectFilePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2268,7 +2604,7 @@ export const ProjectFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectFile" }) as any as S.Schema<ProjectFile>;
 
 /** List of files */
-export type FilesListResponseValueList = ProjectFile[];
+export type FilesListResponseValueList = ReadonlyArray<ProjectFile>;
 export const FilesListResponseValueList = /*@__PURE__*/ S.Array(
   ProjectFile,
 ) as any as S.Schema<FilesListResponseValueList>;
@@ -2403,7 +2739,10 @@ export interface FilesUpdateRequest {
   projectName: string;
   /** Name of the File */
   fileName: string;
-  body: unknown;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom file properties */
+  properties?: ProjectFilePropertiesInput;
 }
 export const FilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2412,7 +2751,8 @@ export const FilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     serviceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
     fileName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectFilePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2452,6 +2792,24 @@ export const FilesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilesUpdateResponse",
 }) as any as S.Schema<FilesUpdateResponse>;
 
+/** Resource tags. */
+export type MigrationServicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MigrationServicesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<MigrationServicesCreateOrUpdateRequestTagsMap>;
+
+/** The Migration Service properties. */
+export interface MigrationServicePropertiesInput {}
+export const MigrationServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "MigrationServicePropertiesInput",
+}) as any as S.Schema<MigrationServicePropertiesInput>;
+
 export interface MigrationServicesCreateOrUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -2459,7 +2817,11 @@ export interface MigrationServicesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the Migration Service. */
   migrationServiceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: MigrationServicesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: MigrationServicePropertiesInput;
 }
 export const MigrationServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2467,7 +2829,9 @@ export const MigrationServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       migrationServiceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(MigrationServicesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(MigrationServicePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2496,8 +2860,7 @@ export type MigrationServicePropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const MigrationServicePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2702,7 +3065,8 @@ export const MigrationService = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrationService",
 }) as any as S.Schema<MigrationService>;
 
-export type MigrationServiceListResultValueList = MigrationService[];
+export type MigrationServiceListResultValueList =
+  ReadonlyArray<MigrationService>;
 export const MigrationServiceListResultValueList = /*@__PURE__*/ S.Array(
   MigrationService,
 ) as any as S.Schema<MigrationServiceListResultValueList>;
@@ -2771,8 +3135,7 @@ export type DatabaseMigrationBasePropertiesKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo"
-  | (string & {});
+  | "MongoToCosmosDbMongo";
 export const DatabaseMigrationBasePropertiesKind = /*@__PURE__*/ S.String;
 
 /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
@@ -2781,8 +3144,7 @@ export type DatabaseMigrationBasePropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const DatabaseMigrationBasePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2851,7 +3213,8 @@ export const DatabaseMigrationBase = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseMigrationBase",
 }) as any as S.Schema<DatabaseMigrationBase>;
 
-export type DatabaseMigrationBaseListResultValueList = DatabaseMigrationBase[];
+export type DatabaseMigrationBaseListResultValueList =
+  ReadonlyArray<DatabaseMigrationBase>;
 export const DatabaseMigrationBaseListResultValueList = /*@__PURE__*/ S.Array(
   DatabaseMigrationBase,
 ) as any as S.Schema<DatabaseMigrationBaseListResultValueList>;
@@ -2870,6 +3233,14 @@ export const DatabaseMigrationBaseListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseMigrationBaseListResult",
 }) as any as S.Schema<DatabaseMigrationBaseListResult>;
 
+export type MigrationServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MigrationServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MigrationServicesUpdateRequestTagsMap>;
+
 export interface MigrationServicesUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -2877,14 +3248,14 @@ export interface MigrationServicesUpdateRequest {
   resourceGroupName: string;
   /** Name of the Migration Service. */
   migrationServiceName: string;
-  body: unknown;
+  tags?: MigrationServicesUpdateRequestTagsMap;
 }
 export const MigrationServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     migrationServiceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(MigrationServicesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2966,7 +3337,7 @@ export const OperationsDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsDisplayDefinition",
 }) as any as S.Schema<OperationsDisplayDefinition>;
 
-export type OperationsDefinitionOrigin = "user" | "system" | (string & {});
+export type OperationsDefinitionOrigin = "user" | "system";
 export const OperationsDefinitionOrigin = /*@__PURE__*/ S.String;
 
 export type OperationsDefinitionPropertiesMap = {
@@ -2997,7 +3368,7 @@ export const OperationsDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsDefinition",
 }) as any as S.Schema<OperationsDefinition>;
 
-export type OperationListResultValueList = OperationsDefinition[];
+export type OperationListResultValueList = ReadonlyArray<OperationsDefinition>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationsDefinition,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3016,6 +3387,149 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
+/** Resource tags. */
+export type ProjectsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
+
+/** Source platform of the project */
+export type ProjectSourcePlatform =
+  | "SQL"
+  | "MySQL"
+  | "PostgreSql"
+  | "MongoDb"
+  | "Unknown";
+export const ProjectSourcePlatform = /*@__PURE__*/ S.String;
+
+/** Azure Active Directory Application */
+export interface ProjectPropertiesInputAzureAuthenticationInfo {
+  /** Application ID of the Azure Active Directory Application */
+  applicationId?: string;
+  /** Key used to authenticate to the Azure Active Directory Application */
+  appKey?: string;
+  /** Tenant id of the customer */
+  tenantId?: string;
+  /** Ignore checking azure permissions on the AAD app */
+  ignoreAzurePermissions?: boolean;
+}
+export const ProjectPropertiesInputAzureAuthenticationInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicationId: S.optional(S.String),
+      appKey: S.optional(S.String),
+      tenantId: S.optional(S.String),
+      ignoreAzurePermissions: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ProjectPropertiesInputAzureAuthenticationInfo",
+  }) as any as S.Schema<ProjectPropertiesInputAzureAuthenticationInfo>;
+
+/** Target platform of the project */
+export type ProjectTargetPlatform =
+  | "SQLDB"
+  | "SQLMI"
+  | "AzureDbForMySql"
+  | "AzureDbForPostgreSql"
+  | "MongoDb"
+  | "Unknown";
+export const ProjectTargetPlatform = /*@__PURE__*/ S.String;
+
+/** Defines the connection properties of a server */
+export interface ProjectPropertiesInputSourceConnectionInfo {
+  /** Type of connection info */
+  type: string;
+  /** User name */
+  userName?: string;
+  /** Password credential. */
+  password?: string | Redacted.Redacted<string>;
+}
+export const ProjectPropertiesInputSourceConnectionInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      userName: S.optional(S.String),
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    }),
+  ).annotate({
+    identifier: "ProjectPropertiesInputSourceConnectionInfo",
+  }) as any as S.Schema<ProjectPropertiesInputSourceConnectionInfo>;
+
+/** Defines the connection properties of a server */
+export interface ProjectPropertiesInputTargetConnectionInfo {
+  /** Type of connection info */
+  type: string;
+  /** User name */
+  userName?: string;
+  /** Password credential. */
+  password?: string | Redacted.Redacted<string>;
+}
+export const ProjectPropertiesInputTargetConnectionInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.String,
+      userName: S.optional(S.String),
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    }),
+  ).annotate({
+    identifier: "ProjectPropertiesInputTargetConnectionInfo",
+  }) as any as S.Schema<ProjectPropertiesInputTargetConnectionInfo>;
+
+/** Project Database Details */
+export interface DatabaseInfo {
+  /** Name of the database */
+  sourceDatabaseName: string;
+}
+export const DatabaseInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceDatabaseName: S.String,
+  }),
+).annotate({ identifier: "DatabaseInfo" }) as any as S.Schema<DatabaseInfo>;
+
+/** List of DatabaseInfo */
+export type ProjectPropertiesInputDatabasesInfoList =
+  ReadonlyArray<DatabaseInfo>;
+export const ProjectPropertiesInputDatabasesInfoList = /*@__PURE__*/ S.Array(
+  DatabaseInfo,
+) as any as S.Schema<ProjectPropertiesInputDatabasesInfoList>;
+
+/** Project-specific properties */
+export interface ProjectPropertiesInput {
+  /** Source platform for the project */
+  sourcePlatform: ProjectSourcePlatform;
+  /** Azure Active Directory Application */
+  azureAuthenticationInfo?: ProjectPropertiesInputAzureAuthenticationInfo;
+  /** Target platform for the project */
+  targetPlatform: ProjectTargetPlatform;
+  /** Defines the connection properties of a server */
+  sourceConnectionInfo?: ProjectPropertiesInputSourceConnectionInfo;
+  /** Defines the connection properties of a server */
+  targetConnectionInfo?: ProjectPropertiesInputTargetConnectionInfo;
+  /** List of DatabaseInfo */
+  databasesInfo?: ProjectPropertiesInputDatabasesInfoList;
+}
+export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourcePlatform: ProjectSourcePlatform,
+    azureAuthenticationInfo: S.optional(
+      ProjectPropertiesInputAzureAuthenticationInfo,
+    ),
+    targetPlatform: ProjectTargetPlatform,
+    sourceConnectionInfo: S.optional(
+      ProjectPropertiesInputSourceConnectionInfo,
+    ),
+    targetConnectionInfo: S.optional(
+      ProjectPropertiesInputTargetConnectionInfo,
+    ),
+    databasesInfo: S.optional(ProjectPropertiesInputDatabasesInfoList),
+  }),
+).annotate({
+  identifier: "ProjectPropertiesInput",
+}) as any as S.Schema<ProjectPropertiesInput>;
+
 export interface ProjectsCreateOrUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -3025,7 +3539,14 @@ export interface ProjectsCreateOrUpdateRequest {
   serviceName: string;
   /** Name of the project */
   projectName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ProjectsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Project properties */
+  properties?: ProjectPropertiesInput;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
 }
 export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3033,7 +3554,10 @@ export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     groupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ProjectsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ProjectPropertiesInput),
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3054,16 +3578,6 @@ export const ProjectsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
-
-/** Source platform of the project */
-export type ProjectSourcePlatform =
-  | "SQL"
-  | "MySQL"
-  | "PostgreSql"
-  | "MongoDb"
-  | "Unknown"
-  | (string & {});
-export const ProjectSourcePlatform = /*@__PURE__*/ S.String;
 
 /** Azure Active Directory Application */
 export interface ProjectPropertiesAzureAuthenticationInfo {
@@ -3087,17 +3601,6 @@ export const ProjectPropertiesAzureAuthenticationInfo = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ProjectPropertiesAzureAuthenticationInfo",
 }) as any as S.Schema<ProjectPropertiesAzureAuthenticationInfo>;
-
-/** Target platform of the project */
-export type ProjectTargetPlatform =
-  | "SQLDB"
-  | "SQLMI"
-  | "AzureDbForMySql"
-  | "AzureDbForPostgreSql"
-  | "MongoDb"
-  | "Unknown"
-  | (string & {});
-export const ProjectTargetPlatform = /*@__PURE__*/ S.String;
 
 /** Defines the connection properties of a server */
 export interface ProjectPropertiesSourceConnectionInfo {
@@ -3139,28 +3642,14 @@ export const ProjectPropertiesTargetConnectionInfo = /*@__PURE__*/ S.suspend(
   identifier: "ProjectPropertiesTargetConnectionInfo",
 }) as any as S.Schema<ProjectPropertiesTargetConnectionInfo>;
 
-/** Project Database Details */
-export interface DatabaseInfo {
-  /** Name of the database */
-  sourceDatabaseName: string;
-}
-export const DatabaseInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceDatabaseName: S.String,
-  }),
-).annotate({ identifier: "DatabaseInfo" }) as any as S.Schema<DatabaseInfo>;
-
 /** List of DatabaseInfo */
-export type ProjectPropertiesDatabasesInfoList = DatabaseInfo[];
+export type ProjectPropertiesDatabasesInfoList = ReadonlyArray<DatabaseInfo>;
 export const ProjectPropertiesDatabasesInfoList = /*@__PURE__*/ S.Array(
   DatabaseInfo,
 ) as any as S.Schema<ProjectPropertiesDatabasesInfoList>;
 
 /** The project's provisioning state */
-export type ProjectPropertiesProvisioningState =
-  | "Deleting"
-  | "Succeeded"
-  | (string & {});
+export type ProjectPropertiesProvisioningState = "Deleting" | "Succeeded";
 export const ProjectPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Project-specific properties */
@@ -3403,7 +3892,7 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
 
 /** List of projects */
-export type ProjectsListResponseValueList = Project[];
+export type ProjectsListResponseValueList = ReadonlyArray<Project>;
 export const ProjectsListResponseValueList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectsListResponseValueList>;
@@ -3423,6 +3912,15 @@ export const ProjectsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsListResponse",
 }) as any as S.Schema<ProjectsListResponse>;
 
+/** Resource tags. */
+export type ProjectsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProjectsUpdateRequestTagsMap>;
+
 export interface ProjectsUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -3432,7 +3930,14 @@ export interface ProjectsUpdateRequest {
   serviceName: string;
   /** Name of the project */
   projectName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ProjectsUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Project properties */
+  properties?: ProjectPropertiesInput;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
 }
 export const ProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3440,7 +3945,10 @@ export const ProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     groupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ProjectsUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ProjectPropertiesInput),
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3515,11 +4023,7 @@ export const ResourceSkusListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkusListSkusRequest>;
 
 /** The scale type applicable to the SKU. */
-export type ResourceSkuCapacityScaleType =
-  | "Automatic"
-  | "Manual"
-  | "None"
-  | (string & {});
+export type ResourceSkuCapacityScaleType = "Automatic" | "Manual" | "None";
 export const ResourceSkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** Describes scaling information of a SKU. */
@@ -3545,13 +4049,13 @@ export const ResourceSkuCapacity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuCapacity>;
 
 /** The set of locations that the SKU is available. */
-export type ResourceSkuLocationsList = string[];
+export type ResourceSkuLocationsList = ReadonlyArray<string>;
 export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuLocationsList>;
 
 /** The api versions that support this SKU. */
-export type ResourceSkuApiVersionsList = string[];
+export type ResourceSkuApiVersionsList = ReadonlyArray<string>;
 export const ResourceSkuApiVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuApiVersionsList>;
@@ -3576,7 +4080,7 @@ export const ResourceSkuCosts = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuCosts>;
 
 /** Metadata for retrieving price info. */
-export type ResourceSkuCostsList = ResourceSkuCosts[];
+export type ResourceSkuCostsList = ReadonlyArray<ResourceSkuCosts>;
 export const ResourceSkuCostsList = /*@__PURE__*/ S.Array(
   ResourceSkuCosts,
 ) as any as S.Schema<ResourceSkuCostsList>;
@@ -3598,17 +4102,18 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuCapabilities>;
 
 /** A name value pair to describe the capability. */
-export type ResourceSkuCapabilitiesList = ResourceSkuCapabilities[];
+export type ResourceSkuCapabilitiesList =
+  ReadonlyArray<ResourceSkuCapabilities>;
 export const ResourceSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuCapabilitiesList>;
 
 /** The type of restrictions. */
-export type ResourceSkuRestrictionsType = "location" | (string & {});
+export type ResourceSkuRestrictionsType = "location";
 export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
-export type ResourceSkuRestrictionsValuesList = string[];
+export type ResourceSkuRestrictionsValuesList = ReadonlyArray<string>;
 export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
@@ -3616,8 +4121,7 @@ export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
 /** The reason code for restriction. */
 export type ResourceSkuRestrictionsReasonCode =
   | "QuotaId"
-  | "NotAvailableForSubscription"
-  | (string & {});
+  | "NotAvailableForSubscription";
 export const ResourceSkuRestrictionsReasonCode = /*@__PURE__*/ S.String;
 
 /** Describes scaling information of a SKU. */
@@ -3640,7 +4144,8 @@ export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuRestrictions>;
 
 /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
-export type ResourceSkuRestrictionsList = ResourceSkuRestrictions[];
+export type ResourceSkuRestrictionsList =
+  ReadonlyArray<ResourceSkuRestrictions>;
 export const ResourceSkuRestrictionsList = /*@__PURE__*/ S.Array(
   ResourceSkuRestrictions,
 ) as any as S.Schema<ResourceSkuRestrictionsList>;
@@ -3690,7 +4195,7 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
 
 /** The list of SKUs available for the subscription. */
-export type ResourceSkusListSkusResponseValueList = ResourceSku[];
+export type ResourceSkusListSkusResponseValueList = ReadonlyArray<ResourceSku>;
 export const ResourceSkusListSkusResponseValueList = /*@__PURE__*/ S.Array(
   ResourceSku,
 ) as any as S.Schema<ResourceSkusListSkusResponseValueList>;
@@ -3717,7 +4222,10 @@ export interface ServicesCheckChildrenNameAvailabilityRequest {
   groupName: string;
   /** Name of the service */
   serviceName: string;
-  body: unknown;
+  /** The proposed resource name */
+  name?: string;
+  /** The resource type chain (e.g. virtualMachines/extensions) */
+  type?: string;
 }
 export const ServicesCheckChildrenNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3725,7 +4233,8 @@ export const ServicesCheckChildrenNameAvailabilityRequest =
       subscriptionId: S.String.pipe(T.Label()),
       groupName: S.String.pipe(T.Label()),
       serviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3741,8 +4250,7 @@ export const ServicesCheckChildrenNameAvailabilityRequest =
 /** The reason why the name is not available, if nameAvailable is false */
 export type ServicesCheckChildrenNameAvailabilityResponseReason =
   | "AlreadyExists"
-  | "Invalid"
-  | (string & {});
+  | "Invalid";
 export const ServicesCheckChildrenNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -3770,14 +4278,18 @@ export interface ServicesCheckNameAvailabilityRequest {
   subscriptionId: string;
   /** The Azure region of the operation */
   location: string;
-  body: unknown;
+  /** The proposed resource name */
+  name?: string;
+  /** The resource type chain (e.g. virtualMachines/extensions) */
+  type?: string;
 }
 export const ServicesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3793,8 +4305,7 @@ export const ServicesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 /** The reason why the name is not available, if nameAvailable is false */
 export type ServicesCheckNameAvailabilityResponseReason =
   | "AlreadyExists"
-  | "Invalid"
-  | (string & {});
+  | "Invalid";
 export const ServicesCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -3843,7 +4354,8 @@ export const ServicesCheckStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesCheckStatusRequest>;
 
 /** The list of supported task types */
-export type ServicesCheckStatusResponseSupportedTaskTypesList = string[];
+export type ServicesCheckStatusResponseSupportedTaskTypesList =
+  ReadonlyArray<string>;
 export const ServicesCheckStatusResponseSupportedTaskTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3875,6 +4387,63 @@ export const ServicesCheckStatusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServicesCheckStatusResponse",
 }) as any as S.Schema<ServicesCheckStatusResponse>;
 
+/** Resource tags. */
+export type ServicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
+
+/** Properties of the Azure Database Migration Service (classic) instance */
+export interface DataMigrationServicePropertiesInput {
+  /** The public key of the service, used to encrypt secrets sent to the service */
+  publicKey?: string;
+  /** The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined */
+  virtualSubnetId?: string;
+  /** The ID of the Microsoft.Network/networkInterfaces resource which the service have */
+  virtualNicId?: string;
+  /** The time delay before the service is auto-stopped when idle. */
+  autoStopDelay?: string;
+  /** Whether service resources should be deleted when stopped. (Turned on by default) */
+  deleteResourcesOnStop?: boolean;
+}
+export const DataMigrationServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publicKey: S.optional(S.String),
+    virtualSubnetId: S.optional(S.String),
+    virtualNicId: S.optional(S.String),
+    autoStopDelay: S.optional(S.String),
+    deleteResourcesOnStop: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DataMigrationServicePropertiesInput",
+}) as any as S.Schema<DataMigrationServicePropertiesInput>;
+
+/** An Azure SKU instance */
+export interface ServiceSku {
+  /** The unique name of the SKU, such as 'P3' */
+  name?: string;
+  /** The tier of the SKU, such as 'Basic', 'General Purpose', or 'Business Critical' */
+  tier?: string;
+  /** The SKU family, used when the service has multiple performance classes within a tier, such as 'A', 'D', etc. for virtual machines */
+  family?: string;
+  /** The size of the SKU, used when the name alone does not denote a service size or when a SKU has multiple performance classes within a family, e.g. 'A1' for virtual machines */
+  size?: string;
+  /** The capacity of the SKU, if it supports scaling */
+  capacity?: number;
+}
+export const ServiceSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    tier: S.optional(S.String),
+    family: S.optional(S.String),
+    size: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({ identifier: "ServiceSku" }) as any as S.Schema<ServiceSku>;
+
 export interface ServicesCreateOrUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -3882,14 +4451,30 @@ export interface ServicesCreateOrUpdateRequest {
   groupName: string;
   /** Name of the service */
   serviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ServicesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** HTTP strong entity tag value. Ignored if submitted */
+  etag?: string;
+  /** The resource kind. Only 'vm' (the default) is supported. */
+  kind?: string;
+  /** Custom service properties */
+  properties?: DataMigrationServicePropertiesInput;
+  /** Service SKU */
+  sku?: ServiceSku;
 }
 export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     groupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ServicesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    etag: S.optional(S.String),
+    kind: S.optional(S.String),
+    properties: S.optional(DataMigrationServicePropertiesInput),
+    sku: S.optional(ServiceSku),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3922,8 +4507,7 @@ export type DataMigrationServicePropertiesProvisioningState =
   | "FailedToStart"
   | "FailedToStop"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const DataMigrationServicePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3956,29 +4540,6 @@ export const DataMigrationServiceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataMigrationServiceProperties",
 }) as any as S.Schema<DataMigrationServiceProperties>;
-
-/** An Azure SKU instance */
-export interface ServiceSku {
-  /** The unique name of the SKU, such as 'P3' */
-  name?: string;
-  /** The tier of the SKU, such as 'Basic', 'General Purpose', or 'Business Critical' */
-  tier?: string;
-  /** The SKU family, used when the service has multiple performance classes within a tier, such as 'A', 'D', etc. for virtual machines */
-  family?: string;
-  /** The size of the SKU, used when the name alone does not denote a service size or when a SKU has multiple performance classes within a family, e.g. 'A1' for virtual machines */
-  size?: string;
-  /** The capacity of the SKU, if it supports scaling */
-  capacity?: number;
-}
-export const ServiceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    tier: S.optional(S.String),
-    family: S.optional(S.String),
-    size: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ServiceSku" }) as any as S.Schema<ServiceSku>;
 
 export interface ServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4192,7 +4753,7 @@ export const DataMigrationService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataMigrationService>;
 
 /** List of services */
-export type ServicesListResponseValueList = DataMigrationService[];
+export type ServicesListResponseValueList = ReadonlyArray<DataMigrationService>;
 export const ServicesListResponseValueList = /*@__PURE__*/ S.Array(
   DataMigrationService,
 ) as any as S.Schema<ServicesListResponseValueList>;
@@ -4236,7 +4797,7 @@ export const ServicesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of services */
 export type ServicesListByResourceGroupResponseValueList =
-  DataMigrationService[];
+  ReadonlyArray<DataMigrationService>;
 export const ServicesListByResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     DataMigrationService,
@@ -4308,8 +4869,7 @@ export const AvailableServiceSkuSku = /*@__PURE__*/ S.suspend(() =>
 export type AvailableServiceSkuCapacityScaleType =
   | "none"
   | "manual"
-  | "automatic"
-  | (string & {});
+  | "automatic";
 export const AvailableServiceSkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** A description of the scaling capacities of the SKU */
@@ -4354,7 +4914,8 @@ export const AvailableServiceSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableServiceSku>;
 
 /** List of service SKUs */
-export type ServicesListSkusResponseValueList = AvailableServiceSku[];
+export type ServicesListSkusResponseValueList =
+  ReadonlyArray<AvailableServiceSku>;
 export const ServicesListSkusResponseValueList = /*@__PURE__*/ S.Array(
   AvailableServiceSku,
 ) as any as S.Schema<ServicesListSkusResponseValueList>;
@@ -4438,6 +4999,15 @@ export const ServicesStopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServicesStopResponse",
 }) as any as S.Schema<ServicesStopResponse>;
 
+/** Resource tags. */
+export type ServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesUpdateRequestTagsMap>;
+
 export interface ServicesUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -4445,14 +5015,30 @@ export interface ServicesUpdateRequest {
   groupName: string;
   /** Name of the service */
   serviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ServicesUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** HTTP strong entity tag value. Ignored if submitted */
+  etag?: string;
+  /** The resource kind. Only 'vm' (the default) is supported. */
+  kind?: string;
+  /** Custom service properties */
+  properties?: DataMigrationServicePropertiesInput;
+  /** Service SKU */
+  sku?: ServiceSku;
 }
 export const ServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     groupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ServicesUpdateRequestTagsMap),
+    location: S.String,
+    etag: S.optional(S.String),
+    kind: S.optional(S.String),
+    properties: S.optional(DataMigrationServicePropertiesInput),
+    sku: S.optional(ServiceSku),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4580,12 +5166,11 @@ export type ProjectTaskPropertiesTaskType =
   | "Service.Check.OCI"
   | "Service.Upload.OCI"
   | "Service.Install.OCI"
-  | "MigrateSchemaSqlServerSqlDb"
-  | (string & {});
+  | "MigrateSchemaSqlServerSqlDb";
 export const ProjectTaskPropertiesTaskType = /*@__PURE__*/ S.String;
 
 /** Inner errors that caused this error */
-export type ODataErrorDetailsList = ODataError[];
+export type ODataErrorDetailsList = ReadonlyArray<ODataError>;
 export const ODataErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ODataError),
 ) as any as S.Schema<ODataErrorDetailsList>;
@@ -4608,7 +5193,8 @@ export const ODataError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ODataError" }) as any as S.Schema<ODataError>;
 
 /** Inner errors that caused this error */
-export type ProjectTaskPropertiesErrorsItemDetailsList = ODataError[];
+export type ProjectTaskPropertiesErrorsItemDetailsList =
+  ReadonlyArray<ODataError>;
 export const ProjectTaskPropertiesErrorsItemDetailsList = /*@__PURE__*/ S.Array(
   ODataError,
 ) as any as S.Schema<ProjectTaskPropertiesErrorsItemDetailsList>;
@@ -4633,7 +5219,8 @@ export const ProjectTaskPropertiesErrorsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectTaskPropertiesErrorsItem>;
 
 /** Array of errors. This is ignored if submitted. */
-export type ProjectTaskPropertiesErrorsList = ProjectTaskPropertiesErrorsItem[];
+export type ProjectTaskPropertiesErrorsList =
+  ReadonlyArray<ProjectTaskPropertiesErrorsItem>;
 export const ProjectTaskPropertiesErrorsList = /*@__PURE__*/ S.Array(
   ProjectTaskPropertiesErrorsItem,
 ) as any as S.Schema<ProjectTaskPropertiesErrorsList>;
@@ -4647,8 +5234,7 @@ export type ProjectTaskPropertiesState =
   | "Succeeded"
   | "Failed"
   | "FailedInputValidation"
-  | "Faulted"
-  | (string & {});
+  | "Faulted";
 export const ProjectTaskPropertiesState = /*@__PURE__*/ S.String;
 
 /** Command type. */
@@ -4657,14 +5243,13 @@ export type ProjectTaskPropertiesCommandsItemCommandType =
   | "Migrate.SqlServer.AzureDbSqlMi.Complete"
   | "cancel"
   | "finish"
-  | "restart"
-  | (string & {});
+  | "restart";
 export const ProjectTaskPropertiesCommandsItemCommandType =
   /*@__PURE__*/ S.String;
 
 /** Inner errors that caused this error */
 export type ProjectTaskPropertiesCommandsItemErrorsItemDetailsList =
-  ODataError[];
+  ReadonlyArray<ODataError>;
 export const ProjectTaskPropertiesCommandsItemErrorsItemDetailsList =
   /*@__PURE__*/ S.Array(
     ODataError,
@@ -4694,7 +5279,7 @@ export const ProjectTaskPropertiesCommandsItemErrorsItem =
 
 /** Array of errors. This is ignored if submitted. */
 export type ProjectTaskPropertiesCommandsItemErrorsList =
-  ProjectTaskPropertiesCommandsItemErrorsItem[];
+  ReadonlyArray<ProjectTaskPropertiesCommandsItemErrorsItem>;
 export const ProjectTaskPropertiesCommandsItemErrorsList =
   /*@__PURE__*/ S.Array(
     ProjectTaskPropertiesCommandsItemErrorsItem,
@@ -4706,8 +5291,7 @@ export type ProjectTaskPropertiesCommandsItemState =
   | "Accepted"
   | "Running"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProjectTaskPropertiesCommandsItemState = /*@__PURE__*/ S.String;
 
 /** Base class for all types of DMS (classic) command properties. If command is not supported by current client, this object is returned. */
@@ -4731,7 +5315,7 @@ export const ProjectTaskPropertiesCommandsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of command properties. */
 export type ProjectTaskPropertiesCommandsList =
-  ProjectTaskPropertiesCommandsItem[];
+  ReadonlyArray<ProjectTaskPropertiesCommandsItem>;
 export const ProjectTaskPropertiesCommandsList = /*@__PURE__*/ S.Array(
   ProjectTaskPropertiesCommandsItem,
 ) as any as S.Schema<ProjectTaskPropertiesCommandsList>;
@@ -4797,6 +5381,73 @@ export const ServiceTasksCancelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceTasksCancelResponse",
 }) as any as S.Schema<ServiceTasksCancelResponse>;
 
+/** Task type. */
+export type ProjectTaskPropertiesInputTaskType =
+  | "Connect.MongoDb"
+  | "ConnectToSource.SqlServer"
+  | "ConnectToSource.SqlServer.Sync"
+  | "ConnectToSource.PostgreSql.Sync"
+  | "ConnectToSource.MySql"
+  | "ConnectToSource.Oracle.Sync"
+  | "ConnectToTarget.SqlDb"
+  | "ConnectToTarget.SqlDb.Sync"
+  | "ConnectToTarget.AzureDbForPostgreSql.Sync"
+  | "ConnectToTarget.Oracle.AzureDbForPostgreSql.Sync"
+  | "ConnectToTarget.AzureSqlDbMI"
+  | "ConnectToTarget.AzureSqlDbMI.Sync.LRS"
+  | "ConnectToTarget.AzureDbForMySql"
+  | "GetUserTables.Sql"
+  | "GetUserTables.AzureSqlDb.Sync"
+  | "GetUserTablesOracle"
+  | "GetUserTablesPostgreSql"
+  | "GetUserTablesMySql"
+  | "Migrate.MongoDb"
+  | "Migrate.SqlServer.AzureSqlDbMI"
+  | "Migrate.SqlServer.AzureSqlDbMI.Sync.LRS"
+  | "Migrate.SqlServer.SqlDb"
+  | "Migrate.SqlServer.AzureSqlDb.Sync"
+  | "Migrate.MySql.AzureDbForMySql.Sync"
+  | "Migrate.MySql.AzureDbForMySql"
+  | "Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2"
+  | "Migrate.Oracle.AzureDbForPostgreSql.Sync"
+  | "ValidateMigrationInput.SqlServer.SqlDb.Sync"
+  | "ValidateMigrationInput.SqlServer.AzureSqlDbMI"
+  | "ValidateMigrationInput.SqlServer.AzureSqlDbMI.Sync.LRS"
+  | "Validate.MongoDb"
+  | "Validate.Oracle.AzureDbPostgreSql.Sync"
+  | "GetTDECertificates.Sql"
+  | "Migrate.Ssis"
+  | "Service.Check.OCI"
+  | "Service.Upload.OCI"
+  | "Service.Install.OCI"
+  | "MigrateSchemaSqlServerSqlDb";
+export const ProjectTaskPropertiesInputTaskType = /*@__PURE__*/ S.String;
+
+/** Key value pairs of client data to attach meta data information to task */
+export type ProjectTaskPropertiesInputClientDataMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectTaskPropertiesInputClientDataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProjectTaskPropertiesInputClientDataMap>;
+
+/** Base class for all types of DMS (classic) task properties. If task is not supported by current client, this object is returned. */
+export interface ProjectTaskPropertiesInput {
+  /** Task type. */
+  taskType: ProjectTaskPropertiesInputTaskType;
+  /** Key value pairs of client data to attach meta data information to task */
+  clientData?: ProjectTaskPropertiesInputClientDataMap;
+}
+export const ProjectTaskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taskType: ProjectTaskPropertiesInputTaskType,
+    clientData: S.optional(ProjectTaskPropertiesInputClientDataMap),
+  }),
+).annotate({
+  identifier: "ProjectTaskPropertiesInput",
+}) as any as S.Schema<ProjectTaskPropertiesInput>;
+
 export interface ServiceTasksCreateOrUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -4806,7 +5457,10 @@ export interface ServiceTasksCreateOrUpdateRequest {
   serviceName: string;
   /** Name of the Task */
   taskName: string;
-  body: unknown;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom task properties */
+  properties?: ProjectTaskPropertiesInput;
 }
 export const ServiceTasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4814,7 +5468,8 @@ export const ServiceTasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     groupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
     taskName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectTaskPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5005,7 +5660,7 @@ export const ProjectTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectTask" }) as any as S.Schema<ProjectTask>;
 
 /** List of tasks */
-export type ServiceTasksListResponseValueList = ProjectTask[];
+export type ServiceTasksListResponseValueList = ReadonlyArray<ProjectTask>;
 export const ServiceTasksListResponseValueList = /*@__PURE__*/ S.Array(
   ProjectTask,
 ) as any as S.Schema<ServiceTasksListResponseValueList>;
@@ -5034,7 +5689,10 @@ export interface ServiceTasksUpdateRequest {
   serviceName: string;
   /** Name of the Task */
   taskName: string;
-  body: unknown;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom task properties */
+  properties?: ProjectTaskPropertiesInput;
 }
 export const ServiceTasksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5042,7 +5700,8 @@ export const ServiceTasksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     groupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
     taskName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectTaskPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5082,6 +5741,24 @@ export const ServiceTasksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceTasksUpdateResponse",
 }) as any as S.Schema<ServiceTasksUpdateResponse>;
 
+/** Resource tags. */
+export type SqlMigrationServicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlMigrationServicesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlMigrationServicesCreateOrUpdateRequestTagsMap>;
+
+/** The SQL Migration Service properties. */
+export interface SqlMigrationServicePropertiesInput {}
+export const SqlMigrationServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SqlMigrationServicePropertiesInput",
+}) as any as S.Schema<SqlMigrationServicePropertiesInput>;
+
 export interface SqlMigrationServicesCreateOrUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -5089,7 +5766,11 @@ export interface SqlMigrationServicesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the SQL Migration Service. */
   sqlMigrationServiceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SqlMigrationServicesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: SqlMigrationServicePropertiesInput;
 }
 export const SqlMigrationServicesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5097,7 +5778,9 @@ export const SqlMigrationServicesCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       sqlMigrationServiceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(SqlMigrationServicesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(SqlMigrationServicePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5205,7 +5888,10 @@ export interface SqlMigrationServicesDeleteNodeRequest {
   resourceGroupName: string;
   /** Name of the SQL Migration Service. */
   sqlMigrationServiceName: string;
-  body: unknown;
+  /** The name of node to delete. */
+  nodeName?: string;
+  /** The name of integration runtime. */
+  integrationRuntimeName?: string;
 }
 export const SqlMigrationServicesDeleteNodeRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5213,7 +5899,8 @@ export const SqlMigrationServicesDeleteNodeRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       sqlMigrationServiceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      nodeName: S.optional(S.String),
+      integrationRuntimeName: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -5405,7 +6092,8 @@ export const SqlMigrationService = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlMigrationService",
 }) as any as S.Schema<SqlMigrationService>;
 
-export type SqlMigrationListResultValueList = SqlMigrationService[];
+export type SqlMigrationListResultValueList =
+  ReadonlyArray<SqlMigrationService>;
 export const SqlMigrationListResultValueList = /*@__PURE__*/ S.Array(
   SqlMigrationService,
 ) as any as S.Schema<SqlMigrationListResultValueList>;
@@ -5474,8 +6162,7 @@ export type DatabaseMigrationPropertiesKind =
   | "SqlMi"
   | "SqlVm"
   | "SqlDb"
-  | "MongoToCosmosDbMongo"
-  | (string & {});
+  | "MongoToCosmosDbMongo";
 export const DatabaseMigrationPropertiesKind = /*@__PURE__*/ S.String;
 
 /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
@@ -5484,8 +6171,7 @@ export type DatabaseMigrationPropertiesProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const DatabaseMigrationPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -5564,7 +6250,8 @@ export const DatabaseMigration = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseMigration",
 }) as any as S.Schema<DatabaseMigration>;
 
-export type DatabaseMigrationListResultValueList = DatabaseMigration[];
+export type DatabaseMigrationListResultValueList =
+  ReadonlyArray<DatabaseMigration>;
 export const DatabaseMigrationListResultValueList = /*@__PURE__*/ S.Array(
   DatabaseMigration,
 ) as any as S.Schema<DatabaseMigrationListResultValueList>;
@@ -5655,7 +6342,8 @@ export const NodeMonitoringData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeMonitoringData>;
 
 /** Integration Runtime node monitoring data. */
-export type IntegrationRuntimeMonitoringDataNodesList = NodeMonitoringData[];
+export type IntegrationRuntimeMonitoringDataNodesList =
+  ReadonlyArray<NodeMonitoringData>;
 export const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ S.Array(
   NodeMonitoringData,
 ) as any as S.Schema<IntegrationRuntimeMonitoringDataNodesList>;
@@ -5683,7 +6371,12 @@ export interface SqlMigrationServicesRegenerateAuthKeysRequest {
   resourceGroupName: string;
   /** Name of the SQL Migration Service. */
   sqlMigrationServiceName: string;
-  body: unknown;
+  /** The name of authentication key to generate. */
+  keyName?: string;
+  /** The first authentication key. */
+  authKey1?: string;
+  /** The second authentication key. */
+  authKey2?: string;
 }
 export const SqlMigrationServicesRegenerateAuthKeysRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5691,7 +6384,9 @@ export const SqlMigrationServicesRegenerateAuthKeysRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       sqlMigrationServiceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      keyName: S.optional(S.String),
+      authKey1: S.optional(S.String),
+      authKey2: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -5721,6 +6416,14 @@ export const RegenAuthKeys = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RegenAuthKeys" }) as any as S.Schema<RegenAuthKeys>;
 
+export type SqlMigrationServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlMigrationServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlMigrationServicesUpdateRequestTagsMap>;
+
 export interface SqlMigrationServicesUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -5728,14 +6431,14 @@ export interface SqlMigrationServicesUpdateRequest {
   resourceGroupName: string;
   /** Name of the SQL Migration Service. */
   sqlMigrationServiceName: string;
-  body: unknown;
+  tags?: SqlMigrationServicesUpdateRequestTagsMap;
 }
 export const SqlMigrationServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     sqlMigrationServiceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SqlMigrationServicesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5844,6 +6547,15 @@ export const TasksCancelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TasksCancelResponse",
 }) as any as S.Schema<TasksCancelResponse>;
 
+/** Command type. */
+export type TasksCommandRequestCommandType =
+  | "Migrate.Sync.Complete.Database"
+  | "Migrate.SqlServer.AzureDbSqlMi.Complete"
+  | "cancel"
+  | "finish"
+  | "restart";
+export const TasksCommandRequestCommandType = /*@__PURE__*/ S.String;
+
 export interface TasksCommandRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -5855,7 +6567,8 @@ export interface TasksCommandRequest {
   projectName: string;
   /** Name of the Task */
   taskName: string;
-  body: unknown;
+  /** Command type. */
+  commandType: TasksCommandRequestCommandType;
 }
 export const TasksCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5864,7 +6577,7 @@ export const TasksCommandRequest = /*@__PURE__*/ S.suspend(() =>
     serviceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
     taskName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    commandType: TasksCommandRequestCommandType,
   }).pipe(
     T.Http({
       method: "POST",
@@ -5883,12 +6596,12 @@ export type TasksCommandResponseCommandType =
   | "Migrate.SqlServer.AzureDbSqlMi.Complete"
   | "cancel"
   | "finish"
-  | "restart"
-  | (string & {});
+  | "restart";
 export const TasksCommandResponseCommandType = /*@__PURE__*/ S.String;
 
 /** Inner errors that caused this error */
-export type TasksCommandResponseErrorsItemDetailsList = ODataError[];
+export type TasksCommandResponseErrorsItemDetailsList =
+  ReadonlyArray<ODataError>;
 export const TasksCommandResponseErrorsItemDetailsList = /*@__PURE__*/ S.Array(
   ODataError,
 ) as any as S.Schema<TasksCommandResponseErrorsItemDetailsList>;
@@ -5913,7 +6626,8 @@ export const TasksCommandResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksCommandResponseErrorsItem>;
 
 /** Array of errors. This is ignored if submitted. */
-export type TasksCommandResponseErrorsList = TasksCommandResponseErrorsItem[];
+export type TasksCommandResponseErrorsList =
+  ReadonlyArray<TasksCommandResponseErrorsItem>;
 export const TasksCommandResponseErrorsList = /*@__PURE__*/ S.Array(
   TasksCommandResponseErrorsItem,
 ) as any as S.Schema<TasksCommandResponseErrorsList>;
@@ -5924,8 +6638,7 @@ export type TasksCommandResponseState =
   | "Accepted"
   | "Running"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const TasksCommandResponseState = /*@__PURE__*/ S.String;
 
 export interface TasksCommandResponse {
@@ -5957,7 +6670,10 @@ export interface TasksCreateOrUpdateRequest {
   projectName: string;
   /** Name of the Task */
   taskName: string;
-  body: unknown;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom task properties */
+  properties?: ProjectTaskPropertiesInput;
 }
 export const TasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5966,7 +6682,8 @@ export const TasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     serviceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
     taskName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectTaskPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6140,7 +6857,7 @@ export const TasksListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksListRequest>;
 
 /** List of tasks */
-export type TasksListResponseValueList = ProjectTask[];
+export type TasksListResponseValueList = ReadonlyArray<ProjectTask>;
 export const TasksListResponseValueList = /*@__PURE__*/ S.Array(
   ProjectTask,
 ) as any as S.Schema<TasksListResponseValueList>;
@@ -6171,7 +6888,10 @@ export interface TasksUpdateRequest {
   projectName: string;
   /** Name of the Task */
   taskName: string;
-  body: unknown;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom task properties */
+  properties?: ProjectTaskPropertiesInput;
 }
 export const TasksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6180,7 +6900,8 @@ export const TasksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     serviceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
     taskName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectTaskPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -6280,7 +7001,7 @@ export const Quota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
 
 /** List of quotas */
-export type UsagesListResponseValueList = Quota[];
+export type UsagesListResponseValueList = ReadonlyArray<Quota>;
 export const UsagesListResponseValueList = /*@__PURE__*/ S.Array(
   Quota,
 ) as any as S.Schema<UsagesListResponseValueList>;

@@ -114,7 +114,7 @@ export const GetRecordsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRecordsInput",
 }) as any as S.Schema<GetRecordsInput>;
-export type OriginType = "USER" | "REPLICATION" | "TTL" | (string & {});
+export type OriginType = "USER" | "REPLICATION" | "TTL";
 export const OriginType = /*@__PURE__*/ S.String;
 
 export interface KeyspacesMetadata {
@@ -1014,7 +1014,7 @@ export const Record = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
 export type RecordList = Record[];
 export const RecordList = /*@__PURE__*/ S.Array(Record);
-export type IteratorPosition = "AT_TIP" | "BEHIND_TIP" | (string & {});
+export type IteratorPosition = "AT_TIP" | "BEHIND_TIP";
 export const IteratorPosition = /*@__PURE__*/ S.String;
 
 export interface IteratorDescription {
@@ -1045,8 +1045,7 @@ export type ShardIteratorType =
   | "TRIM_HORIZON"
   | "LATEST"
   | "AT_SEQUENCE_NUMBER"
-  | "AFTER_SEQUENCE_NUMBER"
-  | (string & {});
+  | "AFTER_SEQUENCE_NUMBER";
 export const ShardIteratorType = /*@__PURE__*/ S.String;
 
 export interface GetShardIteratorInput {
@@ -1075,7 +1074,7 @@ export const GetShardIteratorOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetShardIteratorOutput",
 }) as any as S.Schema<GetShardIteratorOutput>;
-export type ShardFilterType = "CHILD_SHARDS" | (string & {});
+export type ShardFilterType = "CHILD_SHARDS";
 export const ShardFilterType = /*@__PURE__*/ S.String;
 
 export interface ShardFilter {
@@ -1105,20 +1104,14 @@ export const GetStreamInput = /*@__PURE__*/ S.suspend(() =>
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "GetStreamInput" }) as any as S.Schema<GetStreamInput>;
-export type StreamStatus =
-  | "ENABLING"
-  | "ENABLED"
-  | "DISABLING"
-  | "DISABLED"
-  | (string & {});
+export type StreamStatus = "ENABLING" | "ENABLED" | "DISABLING" | "DISABLED";
 export const StreamStatus = /*@__PURE__*/ S.String;
 
 export type StreamViewType =
   | "NEW_IMAGE"
   | "OLD_IMAGE"
   | "NEW_AND_OLD_IMAGES"
-  | "KEYS_ONLY"
-  | (string & {});
+  | "KEYS_ONLY";
 export const StreamViewType = /*@__PURE__*/ S.String;
 
 export type KeyspaceName = string;
@@ -1228,8 +1221,7 @@ export type ValidationExceptionType =
   | "InvalidFormat"
   | "TrimmedDataAccess"
   | "ExpiredIterator"
-  | "ExpiredNextToken"
-  | (string & {});
+  | "ExpiredNextToken";
 export const ValidationExceptionType = /*@__PURE__*/ S.String;
 
 export type GetRecordsError =

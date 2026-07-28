@@ -213,20 +213,18 @@ export const GetMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type MaintenanceConfigsGetResponseCredentialStatus =
   | "present"
-  | "absent"
-  | (string & {});
+  | "absent";
 export const MaintenanceConfigsGetResponseCredentialStatus =
   /*@__PURE__*/ S.String;
 
 export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
   /*@__PURE__*/ S.String;
 
 export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512" | (string & {});
+  "64" | "128" | "256" | "512";
 export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -250,7 +248,7 @@ export const MaintenanceConfigsGetResponseMaintenanceConfigCompaction =
   }) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
 
 export type MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -346,12 +344,12 @@ export const GetNamespaceTableMaintenanceConfigRequest =
   }) as any as S.Schema<GetNamespaceTableMaintenanceConfigRequest>;
 
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
   /*@__PURE__*/ S.String;
 
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512" | (string & {});
+  "64" | "128" | "256" | "512";
 export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -377,7 +375,7 @@ export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompa
   }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
 
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -465,16 +463,15 @@ export const GetR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetR2DataCatalogRequest",
 }) as any as S.Schema<GetR2DataCatalogRequest>;
 
-export type GetResponseStatus = "active" | "inactive" | (string & {});
+export type GetResponseStatus = "active" | "inactive";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
-export type GetResponseCredentialStatus = "present" | "absent" | (string & {});
+export type GetResponseCredentialStatus = "present" | "absent";
 export const GetResponseCredentialStatus = /*@__PURE__*/ S.String;
 
 export type GetResponseMaintenanceConfigCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const GetResponseMaintenanceConfigCompactionState =
   /*@__PURE__*/ S.String;
 
@@ -482,8 +479,7 @@ export type GetResponseMaintenanceConfigCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
-  | "512"
-  | (string & {});
+  | "512";
 export const GetResponseMaintenanceConfigCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -507,8 +503,7 @@ export const GetResponseMaintenanceConfigCompaction = /*@__PURE__*/ S.suspend(
 
 export type GetResponseMaintenanceConfigSnapshotExpirationState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const GetResponseMaintenanceConfigSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -620,12 +615,19 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesRequest",
 }) as any as S.Schema<ListNamespacesRequest>;
 
-export type NamespacesListResponseNamespacesList = unknown[];
+export type NamespacesListResponseNamespacesItemList = ReadonlyArray<string>;
+export const NamespacesListResponseNamespacesItemList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NamespacesListResponseNamespacesItemList>;
+
+export type NamespacesListResponseNamespacesList =
+  ReadonlyArray<NamespacesListResponseNamespacesItemList>;
 export const NamespacesListResponseNamespacesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  NamespacesListResponseNamespacesItemList,
 ) as any as S.Schema<NamespacesListResponseNamespacesList>;
 
-export type NamespacesListResponseDetailsItemNamespaceList = string[];
+export type NamespacesListResponseDetailsItemNamespaceList =
+  ReadonlyArray<string>;
 export const NamespacesListResponseDetailsItemNamespaceList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -653,12 +655,12 @@ export const NamespacesListResponseDetailsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesListResponseDetailsItem>;
 
 export type NamespacesListResponseDetailsList =
-  NamespacesListResponseDetailsItem[];
+  ReadonlyArray<NamespacesListResponseDetailsItem>;
 export const NamespacesListResponseDetailsList = /*@__PURE__*/ S.Array(
   NamespacesListResponseDetailsItem,
 ) as any as S.Schema<NamespacesListResponseDetailsList>;
 
-export type NamespacesListResponseNamespaceUuidsList = string[];
+export type NamespacesListResponseNamespaceUuidsList = ReadonlyArray<string>;
 export const NamespacesListResponseNamespaceUuidsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesListResponseNamespaceUuidsList>;
@@ -724,7 +726,8 @@ export const ListNamespaceTablesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespaceTablesRequest",
 }) as any as S.Schema<ListNamespaceTablesRequest>;
 
-export type NamespacesTablesListResponseIdentifiersItemNamespaceList = string[];
+export type NamespacesTablesListResponseIdentifiersItemNamespaceList =
+  ReadonlyArray<string>;
 export const NamespacesTablesListResponseIdentifiersItemNamespaceList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -747,14 +750,14 @@ export const NamespacesTablesListResponseIdentifiersItem =
   }) as any as S.Schema<NamespacesTablesListResponseIdentifiersItem>;
 
 export type NamespacesTablesListResponseIdentifiersList =
-  NamespacesTablesListResponseIdentifiersItem[];
+  ReadonlyArray<NamespacesTablesListResponseIdentifiersItem>;
 export const NamespacesTablesListResponseIdentifiersList =
   /*@__PURE__*/ S.Array(
     NamespacesTablesListResponseIdentifiersItem,
   ) as any as S.Schema<NamespacesTablesListResponseIdentifiersList>;
 
 export type NamespacesTablesListResponseDetailsItemIdentifierNamespaceList =
-  string[];
+  ReadonlyArray<string>;
 export const NamespacesTablesListResponseDetailsItemIdentifierNamespaceList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -805,12 +808,12 @@ export const NamespacesTablesListResponseDetailsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesTablesListResponseDetailsItem>;
 
 export type NamespacesTablesListResponseDetailsList =
-  NamespacesTablesListResponseDetailsItem[];
+  ReadonlyArray<NamespacesTablesListResponseDetailsItem>;
 export const NamespacesTablesListResponseDetailsList = /*@__PURE__*/ S.Array(
   NamespacesTablesListResponseDetailsItem,
 ) as any as S.Schema<NamespacesTablesListResponseDetailsList>;
 
-export type NamespacesTablesListResponseTableUuidsList = string[];
+export type NamespacesTablesListResponseTableUuidsList = ReadonlyArray<string>;
 export const NamespacesTablesListResponseTableUuidsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesTablesListResponseTableUuidsList>;
@@ -859,23 +862,16 @@ export const ListR2DataCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListR2DataCatalogsRequest",
 }) as any as S.Schema<ListR2DataCatalogsRequest>;
 
-export type ListResponseWarehousesItemStatus =
-  | "active"
-  | "inactive"
-  | (string & {});
+export type ListResponseWarehousesItemStatus = "active" | "inactive";
 export const ListResponseWarehousesItemStatus = /*@__PURE__*/ S.String;
 
-export type ListResponseWarehousesItemCredentialStatus =
-  | "present"
-  | "absent"
-  | (string & {});
+export type ListResponseWarehousesItemCredentialStatus = "present" | "absent";
 export const ListResponseWarehousesItemCredentialStatus =
   /*@__PURE__*/ S.String;
 
 export type ListResponseWarehousesItemMaintenanceConfigCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const ListResponseWarehousesItemMaintenanceConfigCompactionState =
   /*@__PURE__*/ S.String;
 
@@ -883,8 +879,7 @@ export type ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
-  | "512"
-  | (string & {});
+  | "512";
 export const ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -908,7 +903,7 @@ export const ListResponseWarehousesItemMaintenanceConfigCompaction =
   }) as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigCompaction>;
 
 export type ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -988,7 +983,8 @@ export const ListResponseWarehousesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResponseWarehousesItem",
 }) as any as S.Schema<ListResponseWarehousesItem>;
 
-export type ListResponseWarehousesList = ListResponseWarehousesItem[];
+export type ListResponseWarehousesList =
+  ReadonlyArray<ListResponseWarehousesItem>;
 export const ListResponseWarehousesList = /*@__PURE__*/ S.Array(
   ListResponseWarehousesItem,
 ) as any as S.Schema<ListResponseWarehousesList>;
@@ -1008,8 +1004,7 @@ export const ListR2DataCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type MaintenanceConfigsUpdateRequestCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const MaintenanceConfigsUpdateRequestCompactionState =
   /*@__PURE__*/ S.String;
 
@@ -1017,8 +1012,7 @@ export type MaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
-  | "512"
-  | (string & {});
+  | "512";
 export const MaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -1044,8 +1038,7 @@ export const MaintenanceConfigsUpdateRequestCompaction =
 
 export type MaintenanceConfigsUpdateRequestSnapshotExpirationState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const MaintenanceConfigsUpdateRequestSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -1105,8 +1098,7 @@ export const UpdateMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type MaintenanceConfigsUpdateResponseCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const MaintenanceConfigsUpdateResponseCompactionState =
   /*@__PURE__*/ S.String;
 
@@ -1114,8 +1106,7 @@ export type MaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
-  | "512"
-  | (string & {});
+  | "512";
 export const MaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -1139,8 +1130,7 @@ export const MaintenanceConfigsUpdateResponseCompaction =
 
 export type MaintenanceConfigsUpdateResponseSnapshotExpirationState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const MaintenanceConfigsUpdateResponseSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -1185,13 +1175,12 @@ export const UpdateMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState =
   /*@__PURE__*/ S.String;
 
 export type NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512" | (string & {});
+  "64" | "128" | "256" | "512";
 export const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -1218,7 +1207,7 @@ export const NamespacesTablesMaintenanceConfigsUpdateRequestCompaction =
   }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateRequestCompaction>;
 
 export type NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 
@@ -1288,13 +1277,12 @@ export const UpdateNamespaceTableMaintenanceConfigRequest =
 
 export type NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState =
   /*@__PURE__*/ S.String;
 
 export type NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512" | (string & {});
+  "64" | "128" | "256" | "512";
 export const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
   /*@__PURE__*/ S.String;
 
@@ -1318,7 +1306,7 @@ export const NamespacesTablesMaintenanceConfigsUpdateResponseCompaction =
   }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateResponseCompaction>;
 
 export type NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
+  "enabled" | "disabled";
 export const NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirationState =
   /*@__PURE__*/ S.String;
 

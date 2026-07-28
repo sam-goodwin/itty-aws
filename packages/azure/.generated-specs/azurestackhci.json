@@ -63,17 +63,29 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.azurestackhci#RawCertificateData"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.azurestackhci#RawCertificateData": {
+      "type": "structure",
+      "members": {
+        "certificates": {
+          "target": "com.azure.azurestackhci#RawCertificateDataCertificatesList"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#RawCertificateDataCertificatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.azurestackhci#UpdateRunsDelete": {
       "type": "operation",
@@ -619,16 +631,53 @@
             "smithy.api#documentation": "The name of the Update Run"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#UpdateRunPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Describes Update Run Properties."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#UpdateRunPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "timeStarted": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of the update run was started."
+          }
+        },
+        "lastUpdatedTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of the most recently completed step in the update run."
+          }
+        },
+        "duration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Duration of the update run."
+          }
+        },
+        "progress": {
+          "target": "com.azure.azurestackhci#Step",
+          "traits": {
+            "smithy.api#documentation": "Progress representation of the update run steps."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of an Update run"
       }
     },
     "com.azure.azurestackhci#UpdateRunsGet": {
@@ -1841,16 +1890,176 @@
             "smithy.api#documentation": "The name of the Update"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#UpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Update properties"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#UpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "installedDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date that the update was installed."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the update."
+          }
+        },
+        "minSbeVersionRequired": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Minimum Sbe Version of the update."
+          }
+        },
+        "state": {
+          "target": "com.azure.azurestackhci#State",
+          "traits": {
+            "smithy.api#documentation": "Represents the current state of the update as it relates to this stamp. This includes phases such as preparation, installation, scanning, and error handling, providing insight into the update's progress and any issues encountered."
+          }
+        },
+        "prerequisites": {
+          "target": "com.azure.azurestackhci#UpdatePropertiesInputPrerequisitesList",
+          "traits": {
+            "smithy.api#documentation": "If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty."
+          }
+        },
+        "componentVersions": {
+          "target": "com.azure.azurestackhci#UpdatePropertiesInputComponentVersionsList",
+          "traits": {
+            "smithy.api#documentation": "An array of component versions for a Solution Bundle update, and an empty array otherwise."
+          }
+        },
+        "rebootRequired": {
+          "target": "com.azure.azurestackhci#RebootRequirement",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether a reboot is required after the update or operation. Helps determine if a system restart is necessary to complete the process."
+          }
+        },
+        "healthState": {
+          "target": "com.azure.azurestackhci#HealthState",
+          "traits": {
+            "smithy.api#documentation": "Overall health state for update-specific health checks."
+          }
+        },
+        "healthCheckResult": {
+          "target": "com.azure.azurestackhci#UpdatePropertiesInputHealthCheckResultList",
+          "traits": {
+            "smithy.api#documentation": "An array of PrecheckResult objects."
+          }
+        },
+        "healthCheckDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the package-specific checks were run."
+          }
+        },
+        "packagePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path where the update package is available."
+          }
+        },
+        "packageSizeInMb": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Size of the package. This value is a combination of the size from update metadata and size of the payload that results from the live scan operation for OS update content."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the Update"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of the update."
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Publisher of the update package."
+          }
+        },
+        "releaseLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link to release notes for the update."
+          }
+        },
+        "availabilityType": {
+          "target": "com.azure.azurestackhci#AvailabilityType",
+          "traits": {
+            "smithy.api#documentation": "Indicates how the update content is made available for download. This determines whether the update is sourced locally, from an online repository, or requires user notification."
+          }
+        },
+        "packageType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer-visible type of the update."
+          }
+        },
+        "additionalProperties": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Extensible KV pairs serialized as a string. This is currently used to report the stamp OEM family and hardware model information when an update is flagged as Invalid for the stamp based on OEM type."
+          }
+        },
+        "updateStateProperties": {
+          "target": "com.azure.azurestackhci#UpdateStateProperties",
+          "traits": {
+            "smithy.api#documentation": "Additional information regarding the state of the update. See definition of UpdateStateProperties type below for more details on this property."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of a singular Update in HCI Cluster"
+      }
+    },
+    "com.azure.azurestackhci#UpdatePropertiesInputHealthCheckResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#PrecheckResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of PrecheckResult objects."
+      }
+    },
+    "com.azure.azurestackhci#UpdatePropertiesInputComponentVersionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#PackageVersionInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of component versions for a Solution Bundle update, and an empty array otherwise."
+      }
+    },
+    "com.azure.azurestackhci#UpdatePropertiesInputPrerequisitesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#UpdatePrerequisite"
+      },
+      "traits": {
+        "smithy.api#documentation": "If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty."
       }
     },
     "com.azure.azurestackhci#UpdatesGet": {
@@ -2127,11 +2336,10 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "updateName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name of update"
           }
         }
       },
@@ -2491,16 +2699,119 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#UpdateSummariesPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Update summaries properties"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#UpdateSummariesPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "oemFamily": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OEM family name."
+          }
+        },
+        "currentOemVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current OEM Version."
+          }
+        },
+        "hardwareModel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the hardware model."
+          }
+        },
+        "packageVersions": {
+          "target": "com.azure.azurestackhci#UpdateSummariesPropertiesInputPackageVersionsList",
+          "traits": {
+            "smithy.api#documentation": "Current version of each updatable component."
+          }
+        },
+        "currentVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current Solution Bundle version of the stamp."
+          }
+        },
+        "currentSbeVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current Sbe version of the stamp."
+          }
+        },
+        "lastUpdated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time an update installation completed successfully."
+          }
+        },
+        "lastChecked": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the update service successfully checked for updates"
+          }
+        },
+        "healthState": {
+          "target": "com.azure.azurestackhci#HealthState",
+          "traits": {
+            "smithy.api#documentation": "Overall health state for update-specific health checks."
+          }
+        },
+        "healthCheckResult": {
+          "target": "com.azure.azurestackhci#UpdateSummariesPropertiesInputHealthCheckResultList",
+          "traits": {
+            "smithy.api#documentation": "An array of pre-check result objects."
+          }
+        },
+        "healthCheckDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the package-specific checks were run."
+          }
+        },
+        "state": {
+          "target": "com.azure.azurestackhci#UpdateSummariesPropertiesState",
+          "traits": {
+            "smithy.api#documentation": "Overall update state of the stamp. Indicates the current status of update deployment across the stamp, including preparation, application, and any issues encountered."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Update summaries"
+      }
+    },
+    "com.azure.azurestackhci#UpdateSummariesPropertiesInputHealthCheckResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#PrecheckResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of pre-check result objects."
+      }
+    },
+    "com.azure.azurestackhci#UpdateSummariesPropertiesInputPackageVersionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#PackageVersionInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "Current version of each updatable component."
       }
     },
     "com.azure.azurestackhci#UpdateSummariesGet": {
@@ -4204,16 +4515,24 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#ClustersUpdateSecretsLocationsRequestPropertiesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of secret locations"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#ClustersUpdateSecretsLocationsRequestPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#SecretsLocationDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of secret locations"
       }
     },
     "com.azure.azurestackhci#ClustersTriggerLogCollection": {
@@ -4381,16 +4700,37 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#LogCollectionRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for Log Collection Request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#LogCollectionRequestProperties": {
+      "type": "structure",
+      "members": {
+        "fromDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "From DateTimeStamp from when logs need to be connected",
+            "smithy.api#required": {}
+          }
+        },
+        "toDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "To DateTimeStamp till when logs need to be connected",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for Log Collection Request"
       }
     },
     "com.azure.azurestackhci#SecuritySettingsDelete": {
@@ -4706,16 +5046,101 @@
             "smithy.api#documentation": "Name of security setting"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#SecurityPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#SecurityPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "securedCoreComplianceAssignment": {
+          "target": "com.azure.azurestackhci#SecurityPropertiesInputSecuredCoreComplianceAssignment",
+          "traits": {
+            "smithy.api#documentation": "Secured Core Compliance Assignment"
+          }
+        },
+        "wdacComplianceAssignment": {
+          "target": "com.azure.azurestackhci#SecurityPropertiesInputWdacComplianceAssignment",
+          "traits": {
+            "smithy.api#documentation": "WDAC Compliance Assignment"
+          }
+        },
+        "smbEncryptionForIntraClusterTrafficComplianceAssignment": {
+          "target": "com.azure.azurestackhci#SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment",
+          "traits": {
+            "smithy.api#documentation": "SMB encryption for intra-cluster traffic Compliance Assignment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Security properties of the resource"
+      }
+    },
+    "com.azure.azurestackhci#SecurityPropertiesInputSmbEncryptionForIntraClusterTrafficComplianceAssignment": {
+      "type": "enum",
+      "members": {
+        "AUDIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Audit"
+          }
+        },
+        "APPLYANDAUTOCORRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ApplyAndAutoCorrect"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SMB encryption for intra-cluster traffic Compliance Assignment"
+      }
+    },
+    "com.azure.azurestackhci#SecurityPropertiesInputWdacComplianceAssignment": {
+      "type": "enum",
+      "members": {
+        "AUDIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Audit"
+          }
+        },
+        "APPLYANDAUTOCORRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ApplyAndAutoCorrect"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "WDAC Compliance Assignment"
+      }
+    },
+    "com.azure.azurestackhci#SecurityPropertiesInputSecuredCoreComplianceAssignment": {
+      "type": "enum",
+      "members": {
+        "AUDIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Audit"
+          }
+        },
+        "APPLYANDAUTOCORRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ApplyAndAutoCorrect"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Secured Core Compliance Assignment"
       }
     },
     "com.azure.azurestackhci#SecuritySettingsGet": {
@@ -5800,17 +6225,25 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.azurestackhci#SoftwareAssuranceChangeRequestProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.azurestackhci#SoftwareAssuranceChangeRequestProperties": {
+      "type": "structure",
+      "members": {
+        "softwareAssuranceIntent": {
+          "target": "com.azure.azurestackhci#SoftwareAssuranceIntent",
+          "traits": {
+            "smithy.api#documentation": "Customer Intent for Software Assurance Benefit. This indicates whether the customer wishes to opt in or out of the Software Assurance program, which provides licensing and support benefits."
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.azurestackhci#DeploymentSettingsDelete": {
       "type": "operation",
@@ -7542,16 +7975,333 @@
             "smithy.api#documentation": "Name of Deployment Setting"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#DeploymentSettingsPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#DeploymentSettingsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "arcNodeResourceIds": {
+          "target": "com.azure.azurestackhci#DeploymentSettingsPropertiesInputArcNodeResourceIdsList",
+          "traits": {
+            "smithy.api#documentation": "Azure resource ids of Arc machines to be part of cluster.",
+            "smithy.api#required": {}
+          }
+        },
+        "deploymentMode": {
+          "target": "com.azure.azurestackhci#DeploymentMode",
+          "traits": {
+            "smithy.api#documentation": "The deployment mode for cluster deployment.",
+            "smithy.api#required": {}
+          }
+        },
+        "operationType": {
+          "target": "com.azure.azurestackhci#DeploymentSettingsPropertiesInputOperationType",
+          "traits": {
+            "smithy.api#documentation": "The intended operation for a cluster."
+          }
+        },
+        "deploymentConfiguration": {
+          "target": "com.azure.azurestackhci#DeploymentConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "Scale units will contains list of deployment data",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DeploymentSetting properties"
+      }
+    },
+    "com.azure.azurestackhci#DeploymentConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "deployment template version"
+          }
+        },
+        "scaleUnits": {
+          "target": "com.azure.azurestackhci#DeploymentConfigurationInputScaleUnitsList",
+          "traits": {
+            "smithy.api#documentation": "Scale units will contains list of deployment data",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment Configuration"
+      }
+    },
+    "com.azure.azurestackhci#DeploymentConfigurationInputScaleUnitsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#ScaleUnitsInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Scale units will contains list of deployment data"
+      }
+    },
+    "com.azure.azurestackhci#ScaleUnitsInput": {
+      "type": "structure",
+      "members": {
+        "deploymentData": {
+          "target": "com.azure.azurestackhci#DeploymentDataInput",
+          "traits": {
+            "smithy.api#documentation": "Deployment Data to deploy AzureStackHCI Cluster.",
+            "smithy.api#required": {}
+          }
+        },
+        "sbePartnerInfo": {
+          "target": "com.azure.azurestackhci#SbePartnerInfo",
+          "traits": {
+            "smithy.api#documentation": "Solution builder extension (SBE) partner properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Scale units will contains list of deployment data"
+      }
+    },
+    "com.azure.azurestackhci#DeploymentDataInput": {
+      "type": "structure",
+      "members": {
+        "securitySettings": {
+          "target": "com.azure.azurestackhci#DeploymentSecuritySettings",
+          "traits": {
+            "smithy.api#documentation": "SecuritySettings to deploy AzureStackHCI Cluster."
+          }
+        },
+        "observability": {
+          "target": "com.azure.azurestackhci#Observability",
+          "traits": {
+            "smithy.api#documentation": "Observability config to deploy AzureStackHCI Cluster."
+          }
+        },
+        "cluster": {
+          "target": "com.azure.azurestackhci#DeploymentClusterInput",
+          "traits": {
+            "smithy.api#documentation": "Observability config to deploy AzureStackHCI Cluster."
+          }
+        },
+        "identityProvider": {
+          "target": "com.azure.azurestackhci#IdentityProvider",
+          "traits": {
+            "smithy.api#documentation": "Identity Provider for the cluster"
+          }
+        },
+        "storage": {
+          "target": "com.azure.azurestackhci#Storage",
+          "traits": {
+            "smithy.api#documentation": "Storage config to deploy AzureStackHCI Cluster."
+          }
+        },
+        "namingPrefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "naming prefix to deploy cluster."
+          }
+        },
+        "domainFqdn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "FQDN to deploy cluster"
+          }
+        },
+        "infrastructureNetwork": {
+          "target": "com.azure.azurestackhci#DeploymentDataInputInfrastructureNetworkList",
+          "traits": {
+            "smithy.api#documentation": "InfrastructureNetwork config to deploy AzureStackHCI Cluster."
+          }
+        },
+        "physicalNodes": {
+          "target": "com.azure.azurestackhci#DeploymentDataInputPhysicalNodesList",
+          "traits": {
+            "smithy.api#documentation": "list of physical nodes config to deploy AzureStackHCI Cluster."
+          }
+        },
+        "hostNetwork": {
+          "target": "com.azure.azurestackhci#DeploymentSettingHostNetwork",
+          "traits": {
+            "smithy.api#documentation": "HostNetwork config to deploy AzureStackHCI Cluster."
+          }
+        },
+        "sdnIntegration": {
+          "target": "com.azure.azurestackhci#SdnIntegration",
+          "traits": {
+            "smithy.api#documentation": "SDN Integration config to deploy AzureStackHCI Cluster."
+          }
+        },
+        "isManagementCluster": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is Management Cluster, when true indicates that the cluster is used for managing other clusters"
+          }
+        },
+        "adouPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The path to the Active Directory Organizational Unit container object prepared for the deployment."
+          }
+        },
+        "secretsLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure key vault endpoint. This property is deprecated from 2023-12-01-preview. Please use secrets property instead."
+          }
+        },
+        "secrets": {
+          "target": "com.azure.azurestackhci#DeploymentDataInputSecretsList",
+          "traits": {
+            "smithy.api#documentation": "secrets used for cloud deployment."
+          }
+        },
+        "optionalServices": {
+          "target": "com.azure.azurestackhci#OptionalServices",
+          "traits": {
+            "smithy.api#documentation": "OptionalServices config to deploy AzureStackHCI Cluster."
+          }
+        },
+        "localAvailabilityZones": {
+          "target": "com.azure.azurestackhci#DeploymentDataInputLocalAvailabilityZonesList",
+          "traits": {
+            "smithy.api#documentation": "Local Availability Zone information for HCI cluster"
+          }
+        },
+        "assemblyInfo": {
+          "target": "com.azure.azurestackhci#AssemblyInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Assembly Package details for Validated Solution Recipe for AzureStackHCI Cluster"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Deployment data of AzureStackHCI Cluster."
+      }
+    },
+    "com.azure.azurestackhci#AssemblyInfoInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Assembly Package details for Validated Solution Recipe for AzureStackHCI Cluster"
+      }
+    },
+    "com.azure.azurestackhci#DeploymentDataInputLocalAvailabilityZonesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#LocalAvailabilityZones"
+      },
+      "traits": {
+        "smithy.api#documentation": "Local Availability Zone information for HCI cluster"
+      }
+    },
+    "com.azure.azurestackhci#DeploymentDataInputSecretsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#EceDeploymentSecrets"
+      },
+      "traits": {
+        "smithy.api#documentation": "secrets used for cloud deployment."
+      }
+    },
+    "com.azure.azurestackhci#DeploymentDataInputPhysicalNodesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#PhysicalNodes"
+      },
+      "traits": {
+        "smithy.api#documentation": "list of physical nodes config to deploy AzureStackHCI Cluster."
+      }
+    },
+    "com.azure.azurestackhci#DeploymentDataInputInfrastructureNetworkList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#InfrastructureNetwork"
+      },
+      "traits": {
+        "smithy.api#documentation": "InfrastructureNetwork config to deploy AzureStackHCI Cluster."
+      }
+    },
+    "com.azure.azurestackhci#DeploymentClusterInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cluster name provided when preparing Active Directory."
+          }
+        },
+        "witnessType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'."
+          }
+        },
+        "witnessPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the fileshare path for the local witness for your Azure Stack HCI cluster."
+          }
+        },
+        "cloudAccountName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specify the Azure Storage account name for cloud witness for your Azure Stack HCI cluster."
+          }
+        },
+        "azureServiceEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net."
+          }
+        },
+        "clusterPattern": {
+          "target": "com.azure.azurestackhci#ClusterPattern",
+          "traits": {
+            "smithy.api#documentation": "Cluster Pattern supported."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "AzureStackHCI Cluster deployment properties."
+      }
+    },
+    "com.azure.azurestackhci#DeploymentSettingsPropertiesInputOperationType": {
+      "type": "enum",
+      "members": {
+        "CLUSTERPROVISIONING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ClusterProvisioning"
+          }
+        },
+        "CLUSTERUPGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ClusterUpgrade"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The intended operation for a cluster."
+      }
+    },
+    "com.azure.azurestackhci#DeploymentSettingsPropertiesInputArcNodeResourceIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure resource ids of Arc machines to be part of cluster."
       }
     },
     "com.azure.azurestackhci#DeploymentSettingsGet": {
@@ -8018,16 +8768,35 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#RemoteSupportRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for Remote Support Request"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#RemoteSupportRequestProperties": {
+      "type": "structure",
+      "members": {
+        "expirationTimeStamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration DateTimeStamp when Remote Support Access will be expired"
+          }
+        },
+        "remoteSupportType": {
+          "target": "com.azure.azurestackhci#RemoteSupportType",
+          "traits": {
+            "smithy.api#documentation": "Remote Support Type for cluster"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for Remote Support Request"
       }
     },
     "com.azure.azurestackhci#ArcSettingsReconcile": {
@@ -8557,17 +9326,34 @@
             "smithy.api#documentation": "The name of the proxy resource holding details of HCI ArcSetting information."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#ReconcileArcSettingsRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of Arc Nodes in the cluster"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.azurestackhci#ReconcileArcSettingsRequestProperties": {
+      "type": "structure",
+      "members": {
+        "clusterNodes": {
+          "target": "com.azure.azurestackhci#ReconcileArcSettingsRequestPropertiesClusterNodesList"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Arc Nodes in the cluster"
+      }
+    },
+    "com.azure.azurestackhci#ReconcileArcSettingsRequestPropertiesClusterNodesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.azurestackhci#ArcSettingsInitializeDisableProcess": {
       "type": "operation",
@@ -8767,11 +9553,10 @@
             "smithy.api#documentation": "The name of the machine extension."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targetVersion": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Extension Upgrade Target Version."
           }
         }
       },
@@ -9429,16 +10214,61 @@
             "smithy.api#documentation": "The name of the machine extension."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#ExtensionPatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Describes Machine Extension Properties that can be updated."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#ExtensionPatchProperties": {
+      "type": "structure",
+      "members": {
+        "extensionParameters": {
+          "target": "com.azure.azurestackhci#ExtensionPatchParameters",
+          "traits": {
+            "smithy.api#documentation": "Describes the properties of a Machine Extension that can be updated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes Machine Extension Properties that can be updated."
+      }
+    },
+    "com.azure.azurestackhci#ExtensionPatchParameters": {
+      "type": "structure",
+      "members": {
+        "typeHandlerVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the version of the script handler. Latest version would be used if not specified."
+          }
+        },
+        "enableAutomaticUpgrade": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available."
+          }
+        },
+        "settings": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Json formatted public settings for the extension."
+          }
+        },
+        "protectedSettings": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Protected settings (may contain secrets)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Machine Extension that can be updated."
       }
     },
     "com.azure.azurestackhci#ExtensionsCreate": {
@@ -9541,16 +10371,29 @@
             "smithy.api#documentation": "The name of the machine extension."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#ExtensionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Describes Machine Extension Properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#ExtensionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "extensionParameters": {
+          "target": "com.azure.azurestackhci#ExtensionParameters",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to this extension type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status of Arc Extension for a particular node in HCI Cluster."
       }
     },
     "com.azure.azurestackhci#ExtensionsGet": {
@@ -10124,16 +10967,47 @@
             "smithy.api#documentation": "The name of the proxy resource holding details of HCI ArcSetting information."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#ArcSettingsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurestackhci#ArcSettingsPatchProperties",
+          "traits": {
+            "smithy.api#documentation": "ArcSettings properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#ArcSettingsPatchProperties": {
+      "type": "structure",
+      "members": {
+        "connectivityProperties": {
+          "target": "com.azure.azurestackhci#ArcConnectivityProperties",
+          "traits": {
+            "smithy.api#documentation": "contains connectivity related configuration for ARC resources"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ArcSettings properties."
+      }
+    },
+    "com.azure.azurestackhci#ArcSettingsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurestackhci#ArcSettingsCreate": {
@@ -10228,16 +11102,59 @@
             "smithy.api#documentation": "The name of the proxy resource holding details of HCI ArcSetting information."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#ArcSettingPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ArcSetting properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#ArcSettingPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "arcInstanceResourceGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource group that hosts the Arc agents, ie. Hybrid Compute Machine resources."
+          }
+        },
+        "arcApplicationClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App id of arc AAD identity."
+          }
+        },
+        "arcApplicationTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tenant id of arc AAD identity."
+          }
+        },
+        "arcServicePrincipalObjectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object id of arc AAD service principal."
+          }
+        },
+        "arcApplicationObjectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object id of arc AAD identity."
+          }
+        },
+        "connectivityProperties": {
+          "target": "com.azure.azurestackhci#ArcConnectivityProperties",
+          "traits": {
+            "smithy.api#documentation": "contains connectivity related configuration for ARC resources"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ArcSetting properties."
       }
     },
     "com.azure.azurestackhci#ArcSettingsGet": {
@@ -10672,16 +11589,110 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#ClustersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.azurestackhci#ClustersUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurestackhci#ClusterPatchProperties",
+          "traits": {
+            "smithy.api#documentation": "Cluster properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#ClusterPatchProperties": {
+      "type": "structure",
+      "members": {
+        "cloudManagementEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint configured for management from the Azure portal"
+          }
+        },
+        "aadClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App id of cluster AAD identity."
+          }
+        },
+        "aadTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tenant id of cluster AAD identity."
+          }
+        },
+        "desiredProperties": {
+          "target": "com.azure.azurestackhci#ClusterDesiredProperties",
+          "traits": {
+            "smithy.api#documentation": "Desired properties of the cluster."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cluster properties."
+      }
+    },
+    "com.azure.azurestackhci#ClustersUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azurestackhci#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.azurestackhci#ClustersUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.azurestackhci#ClustersUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.azurestackhci#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.azurestackhci#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.azurestackhci#ClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurestackhci#ClustersCreate": {
@@ -10849,16 +11860,204 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#ClustersCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurestackhci#ClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Cluster properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.azurestackhci#ClustersCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This property identifies the purpose of the Cluster deployment. For example, a valid value is AzureLocal"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#ClustersCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azurestackhci#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.azurestackhci#ClustersCreateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.azurestackhci#ClustersCreateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.azurestackhci#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.azurestackhci#ClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "cloudManagementEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endpoint configured for management from the Azure portal."
+          }
+        },
+        "aadClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App id of cluster AAD identity."
+          }
+        },
+        "aadTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tenant id of cluster AAD identity."
+          }
+        },
+        "aadApplicationObjectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object id of cluster AAD identity."
+          }
+        },
+        "aadServicePrincipalObjectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of cluster identity service principal."
+          }
+        },
+        "softwareAssuranceProperties": {
+          "target": "com.azure.azurestackhci#SoftwareAssurancePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Software Assurance properties of the cluster."
+          }
+        },
+        "logCollectionProperties": {
+          "target": "com.azure.azurestackhci#LogCollectionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Log Collection properties of the cluster."
+          }
+        },
+        "remoteSupportProperties": {
+          "target": "com.azure.azurestackhci#RemoteSupportPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "RemoteSupport properties of the cluster."
+          }
+        },
+        "desiredProperties": {
+          "target": "com.azure.azurestackhci#ClusterDesiredProperties",
+          "traits": {
+            "smithy.api#documentation": "Desired properties of the cluster."
+          }
+        },
+        "secretsLocations": {
+          "target": "com.azure.azurestackhci#ClusterPropertiesInputSecretsLocationsList",
+          "traits": {
+            "smithy.api#documentation": "List of secret locations."
+          }
+        },
+        "localAvailabilityZones": {
+          "target": "com.azure.azurestackhci#ClusterPropertiesInputLocalAvailabilityZonesList",
+          "traits": {
+            "smithy.api#documentation": "Local Availability Zone information for HCI cluster"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cluster properties."
+      }
+    },
+    "com.azure.azurestackhci#ClusterPropertiesInputLocalAvailabilityZonesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#LocalAvailabilityZones"
+      },
+      "traits": {
+        "smithy.api#documentation": "Local Availability Zone information for HCI cluster"
+      }
+    },
+    "com.azure.azurestackhci#ClusterPropertiesInputSecretsLocationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#SecretsLocationDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of secret locations."
+      }
+    },
+    "com.azure.azurestackhci#RemoteSupportPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Remote Support properties of the cluster."
+      }
+    },
+    "com.azure.azurestackhci#LogCollectionPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Log Collection properties of the cluster."
+      }
+    },
+    "com.azure.azurestackhci#SoftwareAssurancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "softwareAssuranceIntent": {
+          "target": "com.azure.azurestackhci#SoftwareAssuranceIntent",
+          "traits": {
+            "smithy.api#documentation": "Customer Intent for Software Assurance Benefit."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Software Assurance properties of the cluster."
+      }
+    },
+    "com.azure.azurestackhci#ClustersCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurestackhci#ClustersGet": {
@@ -11984,16 +13183,31 @@
             "smithy.api#documentation": "Name of Device"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "edgeDeviceIds": {
+          "target": "com.azure.azurestackhci#EdgeDevicesValidateRequestEdgeDeviceIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Node Ids against which, current node has to be validated.",
             "smithy.api#required": {}
+          }
+        },
+        "additionalInfo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Additional info required for validation."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#EdgeDevicesValidateRequestEdgeDeviceIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Node Ids against which, current node has to be validated."
       }
     },
     "com.azure.azurestackhci#EdgeDeviceJobsDelete": {
@@ -12146,10 +13360,10 @@
             "smithy.api#documentation": "Name of EdgeDevice Job"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.azurestackhci#EdgeDeviceKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
             "smithy.api#required": {}
           }
         }
@@ -12494,10 +13708,10 @@
             "smithy.api#documentation": "Name of Device"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.azurestackhci#DeviceKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.",
             "smithy.api#required": {}
           }
         }
@@ -13413,16 +14627,27 @@
             "smithy.api#documentation": "Name of the gallery image"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#GalleryImagesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#GalleryImagesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.azurestackhci#GalleryImagesCreateOrUpdate": {
@@ -13557,16 +14782,217 @@
             "smithy.api#documentation": "Name of the gallery image"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#GalleryImagesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurestackhci#GalleryImagePropertiesInput"
+        },
+        "extendedLocation": {
+          "target": "com.azure.azurestackhci#GalleryImagesCreateOrUpdateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#GalleryImagesCreateOrUpdateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.azurestackhci#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.azurestackhci#GalleryImagePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "containerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage ContainerID of the storage container to be used for gallery image"
+          }
+        },
+        "imagePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "location of the image the gallery image should be created from"
+          }
+        },
+        "osType": {
+          "target": "com.azure.azurestackhci#GalleryImagePropertiesInputOsType",
+          "traits": {
+            "smithy.api#documentation": "Operating system type that the gallery image uses [Windows, Linux]",
+            "smithy.api#required": {}
+          }
+        },
+        "cloudInitDataSource": {
+          "target": "com.azure.azurestackhci#GalleryImagePropertiesInputCloudInitDataSource",
+          "traits": {
+            "smithy.api#documentation": "Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]"
+          }
+        },
+        "hyperVGeneration": {
+          "target": "com.azure.azurestackhci#GalleryImagePropertiesInputHyperVGeneration",
+          "traits": {
+            "smithy.api#documentation": "The hypervisor generation of the Virtual Machine [V1, V2]"
+          }
+        },
+        "identifier": {
+          "target": "com.azure.azurestackhci#GalleryImageIdentifier"
+        },
+        "version": {
+          "target": "com.azure.azurestackhci#GalleryImageVersionInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties under the gallery image resource"
+      }
+    },
+    "com.azure.azurestackhci#GalleryImageVersionInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the version of the gallery image."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurestackhci#GalleryImageVersionPropertiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies information about the gallery image version that you want to create or update."
+      }
+    },
+    "com.azure.azurestackhci#GalleryImageVersionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "storageProfile": {
+          "target": "com.azure.azurestackhci#GalleryImageVersionStorageProfileInput",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a gallery image version."
+      }
+    },
+    "com.azure.azurestackhci#GalleryImageVersionStorageProfileInput": {
+      "type": "structure",
+      "members": {
+        "osDiskImage": {
+          "target": "com.azure.azurestackhci#GalleryDiskImageInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This is the storage profile of a Gallery Image Version."
+      }
+    },
+    "com.azure.azurestackhci#GalleryDiskImageInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "This is the disk image base class."
+      }
+    },
+    "com.azure.azurestackhci#GalleryImagePropertiesInputHyperVGeneration": {
+      "type": "enum",
+      "members": {
+        "V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "V1"
+          }
+        },
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "V2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The hypervisor generation of the Virtual Machine [V1, V2]"
+      }
+    },
+    "com.azure.azurestackhci#GalleryImagePropertiesInputCloudInitDataSource": {
+      "type": "enum",
+      "members": {
+        "NOCLOUD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoCloud"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Azure"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]"
+      }
+    },
+    "com.azure.azurestackhci#GalleryImagePropertiesInputOsType": {
+      "type": "enum",
+      "members": {
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        },
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Operating system type that the gallery image uses [Windows, Linux]"
+      }
+    },
+    "com.azure.azurestackhci#GalleryImagesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurestackhci#GalleryImagesGet": {
@@ -14542,16 +15968,27 @@
             "smithy.api#documentation": "Name of the logical network"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#LogicalNetworksUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#LogicalNetworksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.azurestackhci#LogicalNetworksCreateOrUpdate": {
@@ -14686,16 +16123,319 @@
             "smithy.api#documentation": "Name of the logical network"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#LogicalNetworksCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurestackhci#LogicalNetworkPropertiesInput"
+        },
+        "extendedLocation": {
+          "target": "com.azure.azurestackhci#LogicalNetworksCreateOrUpdateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#LogicalNetworksCreateOrUpdateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.azurestackhci#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.azurestackhci#LogicalNetworkPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "dhcpOptions": {
+          "target": "com.azure.azurestackhci#LogicalNetworkPropertiesInputDhcpOptions",
+          "traits": {
+            "smithy.api#documentation": "DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options."
+          }
+        },
+        "subnets": {
+          "target": "com.azure.azurestackhci#LogicalNetworkPropertiesInputSubnetsList",
+          "traits": {
+            "smithy.api#documentation": "Subnet - list of subnets under the logical network"
+          }
+        },
+        "vmSwitchName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "name of the network switch to be used for VMs"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties under the logical network resource"
+      }
+    },
+    "com.azure.azurestackhci#LogicalNetworkPropertiesInputSubnetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#SubnetInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Subnet - list of subnets under the logical network"
+      }
+    },
+    "com.azure.azurestackhci#SubnetInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.azurestackhci#SubnetPropertiesFormatInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the subnet."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name - The name of the resource that is unique within a resource group. This name can be used to access the resource."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#SubnetPropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "addressPrefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6."
+          }
+        },
+        "addressPrefixes": {
+          "target": "com.azure.azurestackhci#SubnetPropertiesFormatInputAddressPrefixesList",
+          "traits": {
+            "smithy.api#documentation": "List of address prefixes for the subnet."
+          }
+        },
+        "ipAllocationMethod": {
+          "target": "com.azure.azurestackhci#SubnetPropertiesFormatInputIpAllocationMethod",
+          "traits": {
+            "smithy.api#documentation": "IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'"
+          }
+        },
+        "ipConfigurationReferences": {
+          "target": "com.azure.azurestackhci#SubnetPropertiesFormatInputIpConfigurationReferencesList",
+          "traits": {
+            "smithy.api#documentation": "IPConfigurationReferences - list of IPConfigurationReferences"
+          }
+        },
+        "routeTable": {
+          "target": "com.azure.azurestackhci#RouteTableInput"
+        },
+        "ipPools": {
+          "target": "com.azure.azurestackhci#SubnetPropertiesFormatInputIpPoolsList",
+          "traits": {
+            "smithy.api#documentation": "network associated pool of IP Addresses"
+          }
+        },
+        "vlan": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Vlan to use for the subnet"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the subnet."
+      }
+    },
+    "com.azure.azurestackhci#SubnetPropertiesFormatInputIpPoolsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#IPPoolInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "network associated pool of IP Addresses"
+      }
+    },
+    "com.azure.azurestackhci#IPPoolInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the IP-Pool"
+          }
+        },
+        "ipPoolType": {
+          "target": "com.azure.azurestackhci#IPPoolInputIpPoolType",
+          "traits": {
+            "smithy.api#documentation": "Type of the IP Pool [vm, vippool]"
+          }
+        },
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start of the IP address pool"
+          }
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End of the IP address pool"
+          }
+        },
+        "info": {
+          "target": "com.azure.azurestackhci#IPPoolInfoInput"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#IPPoolInfoInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
+    },
+    "com.azure.azurestackhci#IPPoolInputIpPoolType": {
+      "type": "enum",
+      "members": {
+        "VM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vm"
+          }
+        },
+        "VIPPOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vippool"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of the IP Pool [vm, vippool]"
+      }
+    },
+    "com.azure.azurestackhci#RouteTableInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.azurestackhci#RouteTablePropertiesFormat",
+          "traits": {
+            "smithy.api#documentation": "Properties of the route table."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Route table resource."
+      }
+    },
+    "com.azure.azurestackhci#SubnetPropertiesFormatInputIpConfigurationReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#SubnetPropertiesFormatInputIpConfigurationReferencesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "IPConfigurationReferences - list of IPConfigurationReferences"
+      }
+    },
+    "com.azure.azurestackhci#SubnetPropertiesFormatInputIpConfigurationReferencesItem": {
+      "type": "structure",
+      "members": {
+        "ID": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IPConfigurationID"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "IPConfigurationReference - Describes a IPConfiguration under the virtual network"
+      }
+    },
+    "com.azure.azurestackhci#SubnetPropertiesFormatInputIpAllocationMethod": {
+      "type": "enum",
+      "members": {
+        "DYNAMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Dynamic"
+          }
+        },
+        "STATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Static"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'"
+      }
+    },
+    "com.azure.azurestackhci#SubnetPropertiesFormatInputAddressPrefixesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of address prefixes for the subnet."
+      }
+    },
+    "com.azure.azurestackhci#LogicalNetworkPropertiesInputDhcpOptions": {
+      "type": "structure",
+      "members": {
+        "dnsServers": {
+          "target": "com.azure.azurestackhci#LogicalNetworkPropertiesInputDhcpOptionsDnsServersList",
+          "traits": {
+            "smithy.api#documentation": "The list of DNS servers IP addresses."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options."
+      }
+    },
+    "com.azure.azurestackhci#LogicalNetworkPropertiesInputDhcpOptionsDnsServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of DNS servers IP addresses."
+      }
+    },
+    "com.azure.azurestackhci#LogicalNetworksCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurestackhci#LogicalNetworksGet": {
@@ -15445,16 +17185,27 @@
             "smithy.api#documentation": "Name of the marketplace gallery image"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#MarketplaceGalleryImagesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#MarketplaceGalleryImagesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.azurestackhci#MarketplaceGalleryImagesCreateOrUpdate": {
@@ -15589,16 +17340,162 @@
             "smithy.api#documentation": "Name of the marketplace gallery image"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#MarketplaceGalleryImagesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurestackhci#MarketplaceGalleryImagePropertiesInput"
+        },
+        "extendedLocation": {
+          "target": "com.azure.azurestackhci#MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.azurestackhci#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.azurestackhci#MarketplaceGalleryImagePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "containerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage ContainerID of the storage container to be used for marketplace gallery image"
+          }
+        },
+        "osType": {
+          "target": "com.azure.azurestackhci#MarketplaceGalleryImagePropertiesInputOsType",
+          "traits": {
+            "smithy.api#documentation": "Operating system type that the gallery image uses [Windows, Linux]",
+            "smithy.api#required": {}
+          }
+        },
+        "cloudInitDataSource": {
+          "target": "com.azure.azurestackhci#MarketplaceGalleryImagePropertiesInputCloudInitDataSource",
+          "traits": {
+            "smithy.api#documentation": "Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]"
+          }
+        },
+        "hyperVGeneration": {
+          "target": "com.azure.azurestackhci#MarketplaceGalleryImagePropertiesInputHyperVGeneration",
+          "traits": {
+            "smithy.api#documentation": "The hypervisor generation of the Virtual Machine [V1, V2]"
+          }
+        },
+        "identifier": {
+          "target": "com.azure.azurestackhci#GalleryImageIdentifier"
+        },
+        "version": {
+          "target": "com.azure.azurestackhci#GalleryImageVersionInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties under the marketplace gallery image resource"
+      }
+    },
+    "com.azure.azurestackhci#MarketplaceGalleryImagePropertiesInputHyperVGeneration": {
+      "type": "enum",
+      "members": {
+        "V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "V1"
+          }
+        },
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "V2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The hypervisor generation of the Virtual Machine [V1, V2]"
+      }
+    },
+    "com.azure.azurestackhci#MarketplaceGalleryImagePropertiesInputCloudInitDataSource": {
+      "type": "enum",
+      "members": {
+        "NOCLOUD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoCloud"
+          }
+        },
+        "AZURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Azure"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]"
+      }
+    },
+    "com.azure.azurestackhci#MarketplaceGalleryImagePropertiesInputOsType": {
+      "type": "enum",
+      "members": {
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        },
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Operating system type that the gallery image uses [Windows, Linux]"
+      }
+    },
+    "com.azure.azurestackhci#MarketplaceGalleryImagesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurestackhci#MarketplaceGalleryImagesGet": {
@@ -16346,16 +18243,27 @@
             "smithy.api#documentation": "Name of the network interface"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#NetworkInterfacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#NetworkInterfacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.azurestackhci#NetworkInterfacesCreateOrUpdate": {
@@ -16490,16 +18398,152 @@
             "smithy.api#documentation": "Name of the network interface"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#NetworkInterfacesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurestackhci#NetworkInterfacePropertiesInput"
+        },
+        "extendedLocation": {
+          "target": "com.azure.azurestackhci#NetworkInterfacesCreateOrUpdateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#NetworkInterfacesCreateOrUpdateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.azurestackhci#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.azurestackhci#NetworkInterfacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "ipConfigurations": {
+          "target": "com.azure.azurestackhci#NetworkInterfacePropertiesInputIpConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "IPConfigurations - A list of IPConfigurations of the network interface."
+          }
+        },
+        "macAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "MacAddress - The MAC address of the network interface."
+          }
+        },
+        "dnsSettings": {
+          "target": "com.azure.azurestackhci#InterfaceDNSSettings",
+          "traits": {
+            "smithy.api#documentation": "DNS Settings for the interface"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties under the network interface resource"
+      }
+    },
+    "com.azure.azurestackhci#NetworkInterfacePropertiesInputIpConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#IPConfigurationInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "IPConfigurations - A list of IPConfigurations of the network interface."
+      }
+    },
+    "com.azure.azurestackhci#IPConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name - The name of the resource that is unique within a resource group. This name can be used to access the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurestackhci#IPConfigurationInputProperties",
+          "traits": {
+            "smithy.api#documentation": "InterfaceIPConfigurationPropertiesFormat properties of IP configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "InterfaceIPConfiguration iPConfiguration in a network interface."
+      }
+    },
+    "com.azure.azurestackhci#IPConfigurationInputProperties": {
+      "type": "structure",
+      "members": {
+        "privateIPAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "PrivateIPAddress - Private IP address of the IP configuration."
+          }
+        },
+        "subnet": {
+          "target": "com.azure.azurestackhci#IPConfigurationInputPropertiesSubnet",
+          "traits": {
+            "smithy.api#documentation": "Subnet - Name of Subnet bound to the IP configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "InterfaceIPConfigurationPropertiesFormat properties of IP configuration."
+      }
+    },
+    "com.azure.azurestackhci#IPConfigurationInputPropertiesSubnet": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID - The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/..."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Subnet - Name of Subnet bound to the IP configuration."
+      }
+    },
+    "com.azure.azurestackhci#NetworkInterfacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurestackhci#NetworkInterfacesGet": {
@@ -17152,16 +19196,27 @@
             "smithy.api#documentation": "Name of the storage container"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#StorageContainersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#StorageContainersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.azurestackhci#StorageContainersCreateOrUpdate": {
@@ -17296,16 +19351,78 @@
             "smithy.api#documentation": "Name of the storage container"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#StorageContainersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurestackhci#StorageContainerPropertiesInput"
+        },
+        "extendedLocation": {
+          "target": "com.azure.azurestackhci#StorageContainersCreateOrUpdateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#StorageContainersCreateOrUpdateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.azurestackhci#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.azurestackhci#StorageContainerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path of the storage container on the disk",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties under the storage container resource"
+      }
+    },
+    "com.azure.azurestackhci#StorageContainersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurestackhci#StorageContainersGet": {
@@ -18018,16 +20135,27 @@
             "smithy.api#documentation": "Name of the virtual hard disk"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#VirtualHardDisksUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#VirtualHardDisksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.azurestackhci#VirtualHardDisksCreateOrUpdate": {
@@ -18162,16 +20290,150 @@
             "smithy.api#documentation": "Name of the virtual hard disk"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurestackhci#VirtualHardDisksCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azurestackhci#VirtualHardDiskPropertiesInput"
+        },
+        "extendedLocation": {
+          "target": "com.azure.azurestackhci#VirtualHardDisksCreateOrUpdateRequestExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The complex type of the extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#VirtualHardDisksCreateOrUpdateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.azurestackhci#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.azurestackhci#VirtualHardDiskPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "blockSizeBytes": {
+          "target": "smithy.api#Integer"
+        },
+        "diskSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Size of the disk in GB"
+          }
+        },
+        "dynamic": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Boolean for enabling dynamic sizing on the virtual hard disk"
+          }
+        },
+        "logicalSectorBytes": {
+          "target": "smithy.api#Integer"
+        },
+        "physicalSectorBytes": {
+          "target": "smithy.api#Integer"
+        },
+        "hyperVGeneration": {
+          "target": "com.azure.azurestackhci#VirtualHardDiskPropertiesInputHyperVGeneration",
+          "traits": {
+            "smithy.api#documentation": "The hypervisor generation of the Virtual Machine [V1, V2]"
+          }
+        },
+        "diskFileFormat": {
+          "target": "com.azure.azurestackhci#VirtualHardDiskPropertiesInputDiskFileFormat",
+          "traits": {
+            "smithy.api#documentation": "The format of the actual VHD file [vhd, vhdx]"
+          }
+        },
+        "containerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage ContainerID of the storage container to be used for VHD"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties under the virtual hard disk resource"
+      }
+    },
+    "com.azure.azurestackhci#VirtualHardDiskPropertiesInputDiskFileFormat": {
+      "type": "enum",
+      "members": {
+        "VHDX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vhdx"
+          }
+        },
+        "VHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vhd"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The format of the actual VHD file [vhd, vhdx]"
+      }
+    },
+    "com.azure.azurestackhci#VirtualHardDiskPropertiesInputHyperVGeneration": {
+      "type": "enum",
+      "members": {
+        "V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "V1"
+          }
+        },
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "V2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The hypervisor generation of the Virtual Machine [V1, V2]"
+      }
+    },
+    "com.azure.azurestackhci#VirtualHardDisksCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurestackhci#VirtualHardDisksGet": {
@@ -18598,15 +20860,36 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#GuestAgentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties.",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurestackhci#GuestAgentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "credentials": {
+          "target": "com.azure.azurestackhci#GuestCredential",
+          "traits": {
+            "smithy.api#documentation": "Username / Password Credentials to provision guest agent."
+          }
+        },
+        "provisioningAction": {
+          "target": "com.azure.azurestackhci#ProvisioningAction",
+          "traits": {
+            "smithy.api#documentation": "The guest agent provisioning action."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
       }
     },
     "com.azure.azurestackhci#GuestAgentGet": {
@@ -20823,17 +23106,355 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstanceUpdateProperties"
+        },
+        "identity": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancesUpdateRequestIdentity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Identity for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancesUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancesUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity type."
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstanceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "hardwareProfile": {
+          "target": "com.azure.azurestackhci#HardwareProfileUpdate"
+        },
+        "storageProfile": {
+          "target": "com.azure.azurestackhci#StorageProfileUpdate"
+        },
+        "networkProfile": {
+          "target": "com.azure.azurestackhci#NetworkProfileUpdate"
+        },
+        "osProfile": {
+          "target": "com.azure.azurestackhci#OsProfileUpdate"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties for the update."
+      }
+    },
+    "com.azure.azurestackhci#OsProfileUpdate": {
+      "type": "structure",
+      "members": {
+        "computerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ComputerName - name of the computer"
+          }
+        },
+        "linuxConfiguration": {
+          "target": "com.azure.azurestackhci#OsProfileUpdateLinuxConfiguration"
+        },
+        "windowsConfiguration": {
+          "target": "com.azure.azurestackhci#OsProfileUpdateWindowsConfiguration"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "OsProfile - describes the update configuration of the operating system"
+      }
+    },
+    "com.azure.azurestackhci#OsProfileUpdateWindowsConfiguration": {
+      "type": "structure",
+      "members": {
+        "provisionVMAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process."
+          }
+        },
+        "provisionVMConfigAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#OsProfileUpdateLinuxConfiguration": {
+      "type": "structure",
+      "members": {
+        "provisionVMAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process."
+          }
+        },
+        "provisionVMConfigAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#NetworkProfileUpdate": {
+      "type": "structure",
+      "members": {
+        "networkInterfaces": {
+          "target": "com.azure.azurestackhci#NetworkProfileUpdateNetworkInterfacesList",
+          "traits": {
+            "smithy.api#documentation": "NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NetworkProfile - describes the network update configuration the virtual machine instance"
+      }
+    },
+    "com.azure.azurestackhci#NetworkProfileUpdateNetworkInterfacesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#NetworkProfileUpdateNetworkInterfacesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance"
+      }
+    },
+    "com.azure.azurestackhci#NetworkProfileUpdateNetworkInterfacesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID - Resource ID of the network interface"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#StorageProfileUpdate": {
+      "type": "structure",
+      "members": {
+        "dataDisks": {
+          "target": "com.azure.azurestackhci#StorageProfileUpdateDataDisksList",
+          "traits": {
+            "smithy.api#documentation": "adds data disks to the virtual machine instance for the update call"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#StorageProfileUpdateDataDisksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#StorageProfileUpdateDataDisksItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "adds data disks to the virtual machine instance for the update call"
+      }
+    },
+    "com.azure.azurestackhci#StorageProfileUpdateDataDisksItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#HardwareProfileUpdate": {
+      "type": "structure",
+      "members": {
+        "vmSize": {
+          "target": "com.azure.azurestackhci#HardwareProfileUpdateVmSize"
+        },
+        "processors": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "number of processors for the virtual machine instance"
+          }
+        },
+        "memoryMB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "RAM in MB for the virtual machine instance"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "HardwareProfile - Specifies the hardware settings for the virtual machine instance."
+      }
+    },
+    "com.azure.azurestackhci#HardwareProfileUpdateVmSize": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "STANDARD_A2_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A2_v2"
+          }
+        },
+        "STANDARD_A4_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A4_v2"
+          }
+        },
+        "STANDARD_D2S_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D2s_v3"
+          }
+        },
+        "STANDARD_D4S_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D4s_v3"
+          }
+        },
+        "STANDARD_D8S_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D8s_v3"
+          }
+        },
+        "STANDARD_D16S_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D16s_v3"
+          }
+        },
+        "STANDARD_D32S_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D32s_v3"
+          }
+        },
+        "STANDARD_DS2_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS2_v2"
+          }
+        },
+        "STANDARD_DS3_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS3_v2"
+          }
+        },
+        "STANDARD_DS4_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS4_v2"
+          }
+        },
+        "STANDARD_DS5_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS5_v2"
+          }
+        },
+        "STANDARD_DS13_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS13_v2"
+          }
+        },
+        "STANDARD_K8S_V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_K8S_v1"
+          }
+        },
+        "STANDARD_K8S2_V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_K8S2_v1"
+          }
+        },
+        "STANDARD_K8S3_V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_K8S3_v1"
+          }
+        },
+        "STANDARD_K8S4_V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_K8S4_v1"
+          }
+        },
+        "STANDARD_NK6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_NK6"
+          }
+        },
+        "STANDARD_NK12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_NK12"
+          }
+        },
+        "STANDARD_NV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_NV6"
+          }
+        },
+        "STANDARD_NV12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_NV12"
+          }
+        },
+        "STANDARD_K8S5_V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_K8S5_v1"
+          }
+        },
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Custom"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.azurestackhci#VirtualMachineInstancesCreateOrUpdate": {
       "type": "operation",
@@ -20972,17 +23593,627 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInput"
+        },
+        "extendedLocation": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The complex type of the extended location."
+          }
+        },
+        "identity": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancesCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancesCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancesCreateOrUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancesCreateOrUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity type."
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extended location."
+          }
+        },
+        "type": {
+          "target": "com.azure.azurestackhci#ExtendedLocationType",
+          "traits": {
+            "smithy.api#documentation": "The type of the extended location."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The complex type of the extended location."
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "hardwareProfile": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputHardwareProfile",
+          "traits": {
+            "smithy.api#documentation": "HardwareProfile - Specifies the hardware settings for the virtual machine instance."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputNetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "NetworkProfile - describes the network configuration the virtual machine instance"
+          }
+        },
+        "osProfile": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputOsProfile",
+          "traits": {
+            "smithy.api#documentation": "OsProfile - describes the configuration of the operating system and sets login data"
+          }
+        },
+        "securityProfile": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputSecurityProfile",
+          "traits": {
+            "smithy.api#documentation": "SecurityProfile - Specifies the security settings for the virtual machine instance."
+          }
+        },
+        "storageProfile": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfile",
+          "traits": {
+            "smithy.api#documentation": "StorageProfile - contains information about the disks and storage information for the virtual machine instance"
+          }
+        },
+        "httpProxyConfig": {
+          "target": "com.azure.azurestackhci#HttpProxyConfiguration",
+          "traits": {
+            "smithy.api#documentation": "HTTP Proxy configuration for the VM."
+          }
+        },
+        "guestAgentInstallStatus": {
+          "target": "com.azure.azurestackhci#GuestAgentInstallStatusInput",
+          "traits": {
+            "smithy.api#documentation": "Guest agent install status."
+          }
+        },
+        "resourceUid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier defined by ARC to identify the guest of the VM."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties under the virtual machine instance resource"
+      }
+    },
+    "com.azure.azurestackhci#GuestAgentInstallStatusInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Defines the status of a guest agent installation."
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfile": {
+      "type": "structure",
+      "members": {
+        "dataDisks": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfileDataDisksList",
+          "traits": {
+            "smithy.api#documentation": "adds data disks to the virtual machine instance"
+          }
+        },
+        "imageReference": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfileImageReference",
+          "traits": {
+            "smithy.api#documentation": "Which Image to use for the virtual machine instance"
+          }
+        },
+        "osDisk": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfileOsDisk",
+          "traits": {
+            "smithy.api#documentation": "VHD to attach as OS disk"
+          }
+        },
+        "vmConfigStoragePathId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the storage container that hosts the VM configuration file"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "StorageProfile - contains information about the disks and storage information for the virtual machine instance"
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfileOsDisk": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of the OS disk"
+          }
+        },
+        "osType": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType",
+          "traits": {
+            "smithy.api#documentation": "This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "VHD to attach as OS disk"
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfileOsDiskOsType": {
+      "type": "enum",
+      "members": {
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        },
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**"
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfileImageReference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of the image"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Which Image to use for the virtual machine instance"
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfileDataDisksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "adds data disks to the virtual machine instance"
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of the data disk"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputSecurityProfile": {
+      "type": "structure",
+      "members": {
+        "enableTPM": {
+          "target": "smithy.api#Boolean"
+        },
+        "uefiSettings": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputSecurityProfileUefiSettings"
+        },
+        "securityType": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputSecurityProfileSecurityType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SecurityProfile - Specifies the security settings for the virtual machine instance."
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputSecurityProfileSecurityType": {
+      "type": "enum",
+      "members": {
+        "TRUSTEDLAUNCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TrustedLaunch"
+          }
+        },
+        "CONFIDENTIALVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConfidentialVM"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function."
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputSecurityProfileUefiSettings": {
+      "type": "structure",
+      "members": {
+        "secureBootEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether secure boot should be enabled on the virtual machine instance."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputOsProfile": {
+      "type": "structure",
+      "members": {
+        "adminPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "AdminPassword - admin password",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "adminUsername": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "AdminUsername - admin username"
+          }
+        },
+        "computerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ComputerName - name of the compute"
+          }
+        },
+        "linuxConfiguration": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputOsProfileLinuxConfiguration",
+          "traits": {
+            "smithy.api#documentation": "LinuxConfiguration - linux specific configuration values for the virtual machine instance"
+          }
+        },
+        "windowsConfiguration": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputOsProfileWindowsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Windows Configuration for the virtual machine instance "
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "OsProfile - describes the configuration of the operating system and sets login data"
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputOsProfileWindowsConfiguration": {
+      "type": "structure",
+      "members": {
+        "enableAutomaticUpdates": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to EnableAutomaticUpdates on the machine"
+          }
+        },
+        "ssh": {
+          "target": "com.azure.azurestackhci#SshConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Specifies the ssh key configuration for Windows OS."
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TimeZone for the virtual machine instance"
+          }
+        },
+        "provisionVMAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process."
+          }
+        },
+        "provisionVMConfigAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Windows Configuration for the virtual machine instance "
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputOsProfileLinuxConfiguration": {
+      "type": "structure",
+      "members": {
+        "disablePasswordAuthentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "DisablePasswordAuthentication - whether password authentication should be disabled"
+          }
+        },
+        "ssh": {
+          "target": "com.azure.azurestackhci#SshConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Specifies the ssh key configuration for a Linux OS."
+          }
+        },
+        "provisionVMAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process."
+          }
+        },
+        "provisionVMConfigAgent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "LinuxConfiguration - linux specific configuration values for the virtual machine instance"
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputNetworkProfile": {
+      "type": "structure",
+      "members": {
+        "networkInterfaces": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesList",
+          "traits": {
+            "smithy.api#documentation": "NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NetworkProfile - describes the network configuration the virtual machine instance"
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance"
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID - Resource Id of the network interface"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputHardwareProfile": {
+      "type": "structure",
+      "members": {
+        "vmSize": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputHardwareProfileVmSize"
+        },
+        "processors": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "number of processors for the virtual machine instance"
+          }
+        },
+        "memoryMB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "RAM in MB for the virtual machine instance"
+          }
+        },
+        "dynamicMemoryConfig": {
+          "target": "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputHardwareProfileDynamicMemoryConfig"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "HardwareProfile - Specifies the hardware settings for the virtual machine instance."
+      }
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputHardwareProfileDynamicMemoryConfig": {
+      "type": "structure",
+      "members": {
+        "maximumMemoryMB": {
+          "target": "smithy.api#Integer"
+        },
+        "minimumMemoryMB": {
+          "target": "smithy.api#Integer"
+        },
+        "targetMemoryBuffer": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.azurestackhci#VirtualMachineInstancePropertiesInputHardwareProfileVmSize": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "STANDARD_A2_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A2_v2"
+          }
+        },
+        "STANDARD_A4_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_A4_v2"
+          }
+        },
+        "STANDARD_D2S_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D2s_v3"
+          }
+        },
+        "STANDARD_D4S_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D4s_v3"
+          }
+        },
+        "STANDARD_D8S_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D8s_v3"
+          }
+        },
+        "STANDARD_D16S_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D16s_v3"
+          }
+        },
+        "STANDARD_D32S_V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_D32s_v3"
+          }
+        },
+        "STANDARD_DS2_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS2_v2"
+          }
+        },
+        "STANDARD_DS3_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS3_v2"
+          }
+        },
+        "STANDARD_DS4_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS4_v2"
+          }
+        },
+        "STANDARD_DS5_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS5_v2"
+          }
+        },
+        "STANDARD_DS13_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_DS13_v2"
+          }
+        },
+        "STANDARD_K8S_V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_K8S_v1"
+          }
+        },
+        "STANDARD_K8S2_V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_K8S2_v1"
+          }
+        },
+        "STANDARD_K8S3_V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_K8S3_v1"
+          }
+        },
+        "STANDARD_K8S4_V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_K8S4_v1"
+          }
+        },
+        "STANDARD_NK6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_NK6"
+          }
+        },
+        "STANDARD_NK12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_NK12"
+          }
+        },
+        "STANDARD_NV6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_NV6"
+          }
+        },
+        "STANDARD_NV12": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_NV12"
+          }
+        },
+        "STANDARD_K8S5_V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_K8S5_v1"
+          }
+        },
+        "CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Custom"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.azurestackhci#VirtualMachineInstancesGet": {
       "type": "operation",

@@ -179,8 +179,7 @@ export const AcknowledgePurchasesSubscriptionsResponse =
 export type ActivateOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const ActivateOneTimeProductOfferRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -259,8 +258,7 @@ export type OneTimeProductOfferStateEnum =
   | "DRAFT"
   | "ACTIVE"
   | "CANCELLED"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const OneTimeProductOfferStateEnum = /*@__PURE__*/ S.String;
 
 /** Options for one-time product offers without a regional price override. */
@@ -288,10 +286,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
 export type OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum =
-    | "AVAILABILITY_UNSPECIFIED"
-    | "AVAILABLE"
-    | "NO_LONGER_AVAILABLE"
-    | (string & {});
+  "AVAILABILITY_UNSPECIFIED" | "AVAILABLE" | "NO_LONGER_AVAILABLE";
 export const OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -324,7 +319,7 @@ export const OneTimeProductOfferRegionalPricingAndAvailabilityConfig =
   }) as any as S.Schema<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
 
 export type OneTimeProductOfferRegionalPricingAndAvailabilityConfigList =
-  OneTimeProductOfferRegionalPricingAndAvailabilityConfig[];
+  ReadonlyArray<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
 export const OneTimeProductOfferRegionalPricingAndAvailabilityConfigList =
   /*@__PURE__*/ S.Array(
     OneTimeProductOfferRegionalPricingAndAvailabilityConfig,
@@ -341,7 +336,7 @@ export const OfferTag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OfferTag" }) as any as S.Schema<OfferTag>;
 
-export type OfferTagList = OfferTag[];
+export type OfferTagList = ReadonlyArray<OfferTag>;
 export const OfferTagList = /*@__PURE__*/ S.Array(
   OfferTag,
 ) as any as S.Schema<OfferTagList>;
@@ -368,8 +363,7 @@ export const OneTimeProductDiscountedOffer = /*@__PURE__*/ S.suspend(() =>
 export type OneTimeProductPreOrderOfferPriceChangeBehaviorEnum =
   | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_UNSPECIFIED"
   | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_TWO_POINT_LOWEST"
-  | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_NEW_ORDERS_ONLY"
-  | (string & {});
+  | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_NEW_ORDERS_ONLY";
 export const OneTimeProductPreOrderOfferPriceChangeBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -442,8 +436,7 @@ export const OneTimeProductOffer = /*@__PURE__*/ S.suspend(() =>
 export type ActivateBasePlanRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const ActivateBasePlanRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -502,8 +495,7 @@ export type RegionalProductAgeRatingInfoProductAgeRatingTierEnum =
   | "PRODUCT_AGE_RATING_TIER_EVERYONE"
   | "PRODUCT_AGE_RATING_TIER_THIRTEEN_AND_ABOVE"
   | "PRODUCT_AGE_RATING_TIER_SIXTEEN_AND_ABOVE"
-  | "PRODUCT_AGE_RATING_TIER_EIGHTEEN_AND_ABOVE"
-  | (string & {});
+  | "PRODUCT_AGE_RATING_TIER_EIGHTEEN_AND_ABOVE";
 export const RegionalProductAgeRatingInfoProductAgeRatingTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -525,7 +517,8 @@ export const RegionalProductAgeRatingInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionalProductAgeRatingInfo",
 }) as any as S.Schema<RegionalProductAgeRatingInfo>;
 
-export type RegionalProductAgeRatingInfoList = RegionalProductAgeRatingInfo[];
+export type RegionalProductAgeRatingInfoList =
+  ReadonlyArray<RegionalProductAgeRatingInfo>;
 export const RegionalProductAgeRatingInfoList = /*@__PURE__*/ S.Array(
   RegionalProductAgeRatingInfo,
 ) as any as S.Schema<RegionalProductAgeRatingInfoList>;
@@ -533,8 +526,7 @@ export const RegionalProductAgeRatingInfoList = /*@__PURE__*/ S.Array(
 export type SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum =
   | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
   | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
-  | "WITHDRAWAL_RIGHT_SERVICE"
-  | (string & {});
+  | "WITHDRAWAL_RIGHT_SERVICE";
 export const SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -545,8 +537,7 @@ export type RegionalTaxRateInfoStreamingTaxTypeEnum =
   | "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL"
   | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL"
   | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES"
-  | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL"
-  | (string & {});
+  | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL";
 export const RegionalTaxRateInfoStreamingTaxTypeEnum = /*@__PURE__*/ S.String;
 
 export type RegionalTaxRateInfoTaxTierEnum =
@@ -555,8 +546,7 @@ export type RegionalTaxRateInfoTaxTierEnum =
   | "TAX_TIER_NEWS_1"
   | "TAX_TIER_NEWS_2"
   | "TAX_TIER_MUSIC_OR_AUDIO_1"
-  | "TAX_TIER_LIVE_OR_BROADCAST_1"
-  | (string & {});
+  | "TAX_TIER_LIVE_OR_BROADCAST_1";
 export const RegionalTaxRateInfoTaxTierEnum = /*@__PURE__*/ S.String;
 
 /** Specified details about taxation in a given geographical region. */
@@ -616,7 +606,7 @@ export const SubscriptionTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(
   identifier: "SubscriptionTaxAndComplianceSettings",
 }) as any as S.Schema<SubscriptionTaxAndComplianceSettings>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -638,30 +628,26 @@ export type BasePlanStateEnum =
   | "STATE_UNSPECIFIED"
   | "DRAFT"
   | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const BasePlanStateEnum = /*@__PURE__*/ S.String;
 
 export type InstallmentsBasePlanTypeResubscribeStateEnum =
   | "RESUBSCRIBE_STATE_UNSPECIFIED"
   | "RESUBSCRIBE_STATE_ACTIVE"
-  | "RESUBSCRIBE_STATE_INACTIVE"
-  | (string & {});
+  | "RESUBSCRIBE_STATE_INACTIVE";
 export const InstallmentsBasePlanTypeResubscribeStateEnum =
   /*@__PURE__*/ S.String;
 
 export type InstallmentsBasePlanTypeRenewalTypeEnum =
   | "RENEWAL_TYPE_UNSPECIFIED"
   | "RENEWAL_TYPE_RENEWS_WITHOUT_COMMITMENT"
-  | "RENEWAL_TYPE_RENEWS_WITH_COMMITMENT"
-  | (string & {});
+  | "RENEWAL_TYPE_RENEWS_WITH_COMMITMENT";
 export const InstallmentsBasePlanTypeRenewalTypeEnum = /*@__PURE__*/ S.String;
 
 export type InstallmentsBasePlanTypeProrationModeEnum =
   | "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED"
   | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE"
-  | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY"
-  | (string & {});
+  | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY";
 export const InstallmentsBasePlanTypeProrationModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an installments base plan where a user commits to a specified number of payments. */
@@ -717,8 +703,7 @@ export const OtherRegionsBasePlanConfig = /*@__PURE__*/ S.suspend(() =>
 export type PrepaidBasePlanTypeTimeExtensionEnum =
   | "TIME_EXTENSION_UNSPECIFIED"
   | "TIME_EXTENSION_ACTIVE"
-  | "TIME_EXTENSION_INACTIVE"
-  | (string & {});
+  | "TIME_EXTENSION_INACTIVE";
 export const PrepaidBasePlanTypeTimeExtensionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a base plan that does not automatically renew at the end of the base plan, and must be manually renewed by the user. */
@@ -740,15 +725,13 @@ export const PrepaidBasePlanType = /*@__PURE__*/ S.suspend(() =>
 export type AutoRenewingBasePlanTypeProrationModeEnum =
   | "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED"
   | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE"
-  | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY"
-  | (string & {});
+  | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY";
 export const AutoRenewingBasePlanTypeProrationModeEnum = /*@__PURE__*/ S.String;
 
 export type AutoRenewingBasePlanTypeResubscribeStateEnum =
   | "RESUBSCRIBE_STATE_UNSPECIFIED"
   | "RESUBSCRIBE_STATE_ACTIVE"
-  | "RESUBSCRIBE_STATE_INACTIVE"
-  | (string & {});
+  | "RESUBSCRIBE_STATE_INACTIVE";
 export const AutoRenewingBasePlanTypeResubscribeStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -802,7 +785,7 @@ export const RegionalBasePlanConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionalBasePlanConfig",
 }) as any as S.Schema<RegionalBasePlanConfig>;
 
-export type RegionalBasePlanConfigList = RegionalBasePlanConfig[];
+export type RegionalBasePlanConfigList = ReadonlyArray<RegionalBasePlanConfig>;
 export const RegionalBasePlanConfigList = /*@__PURE__*/ S.Array(
   RegionalBasePlanConfig,
 ) as any as S.Schema<RegionalBasePlanConfigList>;
@@ -839,7 +822,7 @@ export const BasePlan = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BasePlan" }) as any as S.Schema<BasePlan>;
 
-export type BasePlanList = BasePlan[];
+export type BasePlanList = ReadonlyArray<BasePlan>;
 export const BasePlanList = /*@__PURE__*/ S.Array(
   BasePlan,
 ) as any as S.Schema<BasePlanList>;
@@ -866,7 +849,7 @@ export const SubscriptionListing = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionListing",
 }) as any as S.Schema<SubscriptionListing>;
 
-export type SubscriptionListingList = SubscriptionListing[];
+export type SubscriptionListingList = ReadonlyArray<SubscriptionListing>;
 export const SubscriptionListingList = /*@__PURE__*/ S.Array(
   SubscriptionListing,
 ) as any as S.Schema<SubscriptionListingList>;
@@ -903,8 +886,7 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 export type ActivateSubscriptionOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const ActivateSubscriptionOfferRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -970,8 +952,7 @@ export type SubscriptionOfferStateEnum =
   | "STATE_UNSPECIFIED"
   | "DRAFT"
   | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const SubscriptionOfferStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the targeting rule scope corresponding to the subscriptions in which this offer is defined. */
@@ -1074,7 +1055,7 @@ export const RegionalSubscriptionOfferConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalSubscriptionOfferConfig>;
 
 export type RegionalSubscriptionOfferConfigList =
-  RegionalSubscriptionOfferConfig[];
+  ReadonlyArray<RegionalSubscriptionOfferConfig>;
 export const RegionalSubscriptionOfferConfigList = /*@__PURE__*/ S.Array(
   RegionalSubscriptionOfferConfig,
 ) as any as S.Schema<RegionalSubscriptionOfferConfigList>;
@@ -1173,7 +1154,7 @@ export const RegionalSubscriptionOfferPhaseConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegionalSubscriptionOfferPhaseConfig>;
 
 export type RegionalSubscriptionOfferPhaseConfigList =
-  RegionalSubscriptionOfferPhaseConfig[];
+  ReadonlyArray<RegionalSubscriptionOfferPhaseConfig>;
 export const RegionalSubscriptionOfferPhaseConfigList = /*@__PURE__*/ S.Array(
   RegionalSubscriptionOfferPhaseConfig,
 ) as any as S.Schema<RegionalSubscriptionOfferPhaseConfigList>;
@@ -1200,7 +1181,7 @@ export const SubscriptionOfferPhase = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionOfferPhase",
 }) as any as S.Schema<SubscriptionOfferPhase>;
 
-export type SubscriptionOfferPhaseList = SubscriptionOfferPhase[];
+export type SubscriptionOfferPhaseList = ReadonlyArray<SubscriptionOfferPhase>;
 export const SubscriptionOfferPhaseList = /*@__PURE__*/ S.Array(
   SubscriptionOfferPhase,
 ) as any as S.Schema<SubscriptionOfferPhaseList>;
@@ -1259,7 +1240,7 @@ export const UsesPermission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsesPermission" }) as any as S.Schema<UsesPermission>;
 
-export type UsesPermissionList = UsesPermission[];
+export type UsesPermissionList = ReadonlyArray<UsesPermission>;
 export const UsesPermissionList = /*@__PURE__*/ S.Array(
   UsesPermission,
 ) as any as S.Schema<UsesPermissionList>;
@@ -1502,8 +1483,7 @@ export const ArchiveMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
 export type InappproductsDeleteRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const InappproductsDeleteRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1528,7 +1508,8 @@ export const InappproductsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InappproductsDeleteRequest",
 }) as any as S.Schema<InappproductsDeleteRequest>;
 
-export type InappproductsDeleteRequestList = InappproductsDeleteRequest[];
+export type InappproductsDeleteRequestList =
+  ReadonlyArray<InappproductsDeleteRequest>;
 export const InappproductsDeleteRequestList = /*@__PURE__*/ S.Array(
   InappproductsDeleteRequest,
 ) as any as S.Schema<InappproductsDeleteRequestList>;
@@ -1577,8 +1558,7 @@ export const BatchDeleteInappproductsResponse = /*@__PURE__*/ S.suspend(() =>
 export type DeleteOneTimeProductRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const DeleteOneTimeProductRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1603,7 +1583,8 @@ export const DeleteOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteOneTimeProductRequest",
 }) as any as S.Schema<DeleteOneTimeProductRequest>;
 
-export type DeleteOneTimeProductRequestList = DeleteOneTimeProductRequest[];
+export type DeleteOneTimeProductRequestList =
+  ReadonlyArray<DeleteOneTimeProductRequest>;
 export const DeleteOneTimeProductRequestList = /*@__PURE__*/ S.Array(
   DeleteOneTimeProductRequest,
 ) as any as S.Schema<DeleteOneTimeProductRequestList>;
@@ -1652,8 +1633,7 @@ export const BatchDeleteMonetizationOnetimeproductsResponse =
 export type DeletePurchaseOptionRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const DeletePurchaseOptionRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1684,7 +1664,8 @@ export const DeletePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletePurchaseOptionRequest",
 }) as any as S.Schema<DeletePurchaseOptionRequest>;
 
-export type DeletePurchaseOptionRequestList = DeletePurchaseOptionRequest[];
+export type DeletePurchaseOptionRequestList =
+  ReadonlyArray<DeletePurchaseOptionRequest>;
 export const DeletePurchaseOptionRequestList = /*@__PURE__*/ S.Array(
   DeletePurchaseOptionRequest,
 ) as any as S.Schema<DeletePurchaseOptionRequestList>;
@@ -1736,8 +1717,7 @@ export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse =
 export type DeleteOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const DeleteOneTimeProductOfferRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1769,7 +1749,7 @@ export const DeleteOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOneTimeProductOfferRequest>;
 
 export type DeleteOneTimeProductOfferRequestList =
-  DeleteOneTimeProductOfferRequest[];
+  ReadonlyArray<DeleteOneTimeProductOfferRequest>;
 export const DeleteOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
   DeleteOneTimeProductOfferRequest,
 ) as any as S.Schema<DeleteOneTimeProductOfferRequestList>;
@@ -1850,8 +1830,7 @@ export const BatchGetInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
 export type InAppProductStatusEnum =
   | "statusUnspecified"
   | "active"
-  | "inactive"
-  | (string & {});
+  | "inactive";
 export const InAppProductStatusEnum = /*@__PURE__*/ S.String;
 
 /** Definition of a price, i.e. currency and units. */
@@ -1877,8 +1856,7 @@ export const PriceMap = /*@__PURE__*/ S.Record(
 export type ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum =
   | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
   | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
-  | "WITHDRAWAL_RIGHT_SERVICE"
-  | (string & {});
+  | "WITHDRAWAL_RIGHT_SERVICE";
 export const ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1915,8 +1893,7 @@ export const ManagedProductTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(
 export type InAppProductPurchaseTypeEnum =
   | "purchaseTypeUnspecified"
   | "managedUser"
-  | "subscription"
-  | (string & {});
+  | "subscription";
 export const InAppProductPurchaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** Store listing of a single in-app product. */
@@ -1997,7 +1974,7 @@ export const InAppProduct = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InAppProduct" }) as any as S.Schema<InAppProduct>;
 
-export type InAppProductList = InAppProduct[];
+export type InAppProductList = ReadonlyArray<InAppProduct>;
 export const InAppProductList = /*@__PURE__*/ S.Array(
   InAppProduct,
 ) as any as S.Schema<InAppProductList>;
@@ -2044,8 +2021,7 @@ export type RegionalTaxConfigStreamingTaxTypeEnum =
   | "STREAMING_TAX_TYPE_TELCO_VIDEO_MULTI_CHANNEL"
   | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL"
   | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES"
-  | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL"
-  | (string & {});
+  | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL";
 export const RegionalTaxConfigStreamingTaxTypeEnum = /*@__PURE__*/ S.String;
 
 export type RegionalTaxConfigTaxTierEnum =
@@ -2054,8 +2030,7 @@ export type RegionalTaxConfigTaxTierEnum =
   | "TAX_TIER_NEWS_1"
   | "TAX_TIER_NEWS_2"
   | "TAX_TIER_MUSIC_OR_AUDIO_1"
-  | "TAX_TIER_LIVE_OR_BROADCAST_1"
-  | (string & {});
+  | "TAX_TIER_LIVE_OR_BROADCAST_1";
 export const RegionalTaxConfigTaxTierEnum = /*@__PURE__*/ S.String;
 
 /** Details about taxation in a given geographical region. */
@@ -2080,7 +2055,7 @@ export const RegionalTaxConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionalTaxConfig",
 }) as any as S.Schema<RegionalTaxConfig>;
 
-export type RegionalTaxConfigList = RegionalTaxConfig[];
+export type RegionalTaxConfigList = ReadonlyArray<RegionalTaxConfig>;
 export const RegionalTaxConfigList = /*@__PURE__*/ S.Array(
   RegionalTaxConfig,
 ) as any as S.Schema<RegionalTaxConfigList>;
@@ -2113,8 +2088,7 @@ export const OneTimeProductTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(
 export type OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum =
   | "AVAILABILITY_UNSPECIFIED"
   | "AVAILABLE"
-  | "NO_LONGER_AVAILABLE"
-  | (string & {});
+  | "NO_LONGER_AVAILABLE";
 export const OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2143,8 +2117,7 @@ export const OneTimeProductPurchaseOptionNewRegionsConfig =
 export type PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum =
   | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
   | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
-  | "WITHDRAWAL_RIGHT_SERVICE"
-  | (string & {});
+  | "WITHDRAWAL_RIGHT_SERVICE";
 export const PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2201,8 +2174,7 @@ export type OneTimeProductPurchaseOptionStateEnum =
   | "DRAFT"
   | "ACTIVE"
   | "INACTIVE"
-  | "INACTIVE_PUBLISHED"
-  | (string & {});
+  | "INACTIVE_PUBLISHED";
 export const OneTimeProductPurchaseOptionStateEnum = /*@__PURE__*/ S.String;
 
 export type OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum =
@@ -2210,8 +2182,7 @@ export type OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvai
     | "AVAILABLE"
     | "NO_LONGER_AVAILABLE"
     | "AVAILABLE_IF_RELEASED"
-    | "AVAILABLE_FOR_OFFERS_ONLY"
-    | (string & {});
+    | "AVAILABLE_FOR_OFFERS_ONLY";
 export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2239,7 +2210,7 @@ export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig =
   }) as any as S.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
 
 export type OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList =
-  OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig[];
+  ReadonlyArray<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
 export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList =
   /*@__PURE__*/ S.Array(
     OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig,
@@ -2283,7 +2254,8 @@ export const OneTimeProductPurchaseOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "OneTimeProductPurchaseOption",
 }) as any as S.Schema<OneTimeProductPurchaseOption>;
 
-export type OneTimeProductPurchaseOptionList = OneTimeProductPurchaseOption[];
+export type OneTimeProductPurchaseOptionList =
+  ReadonlyArray<OneTimeProductPurchaseOption>;
 export const OneTimeProductPurchaseOptionList = /*@__PURE__*/ S.Array(
   OneTimeProductPurchaseOption,
 ) as any as S.Schema<OneTimeProductPurchaseOptionList>;
@@ -2307,7 +2279,7 @@ export const OneTimeProductListing = /*@__PURE__*/ S.suspend(() =>
   identifier: "OneTimeProductListing",
 }) as any as S.Schema<OneTimeProductListing>;
 
-export type OneTimeProductListingList = OneTimeProductListing[];
+export type OneTimeProductListingList = ReadonlyArray<OneTimeProductListing>;
 export const OneTimeProductListingList = /*@__PURE__*/ S.Array(
   OneTimeProductListing,
 ) as any as S.Schema<OneTimeProductListingList>;
@@ -2346,7 +2318,7 @@ export const OneTimeProduct = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OneTimeProduct" }) as any as S.Schema<OneTimeProduct>;
 
-export type OneTimeProductList = OneTimeProduct[];
+export type OneTimeProductList = ReadonlyArray<OneTimeProduct>;
 export const OneTimeProductList = /*@__PURE__*/ S.Array(
   OneTimeProduct,
 ) as any as S.Schema<OneTimeProductList>;
@@ -2386,7 +2358,8 @@ export const GetOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOneTimeProductOfferRequest",
 }) as any as S.Schema<GetOneTimeProductOfferRequest>;
 
-export type GetOneTimeProductOfferRequestList = GetOneTimeProductOfferRequest[];
+export type GetOneTimeProductOfferRequestList =
+  ReadonlyArray<GetOneTimeProductOfferRequest>;
 export const GetOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
   GetOneTimeProductOfferRequest,
 ) as any as S.Schema<GetOneTimeProductOfferRequestList>;
@@ -2433,7 +2406,7 @@ export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
       "BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
   }) as any as S.Schema<BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
-export type OneTimeProductOfferList = OneTimeProductOffer[];
+export type OneTimeProductOfferList = ReadonlyArray<OneTimeProductOffer>;
 export const OneTimeProductOfferList = /*@__PURE__*/ S.Array(
   OneTimeProductOffer,
 ) as any as S.Schema<OneTimeProductOfferList>;
@@ -2474,7 +2447,7 @@ export const BatchGetMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "BatchGetMonetizationSubscriptionsRequest",
 }) as any as S.Schema<BatchGetMonetizationSubscriptionsRequest>;
 
-export type SubscriptionList = Subscription[];
+export type SubscriptionList = ReadonlyArray<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -2514,7 +2487,8 @@ export const GetSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSubscriptionOfferRequest",
 }) as any as S.Schema<GetSubscriptionOfferRequest>;
 
-export type GetSubscriptionOfferRequestList = GetSubscriptionOfferRequest[];
+export type GetSubscriptionOfferRequestList =
+  ReadonlyArray<GetSubscriptionOfferRequest>;
 export const GetSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(
   GetSubscriptionOfferRequest,
 ) as any as S.Schema<GetSubscriptionOfferRequestList>;
@@ -2560,7 +2534,7 @@ export const BatchGetMonetizationSubscriptionsBasePlansOffersRequest =
     identifier: "BatchGetMonetizationSubscriptionsBasePlansOffersRequest",
   }) as any as S.Schema<BatchGetMonetizationSubscriptionsBasePlansOffersRequest>;
 
-export type SubscriptionOfferList = SubscriptionOffer[];
+export type SubscriptionOfferList = ReadonlyArray<SubscriptionOffer>;
 export const SubscriptionOfferList = /*@__PURE__*/ S.Array(
   SubscriptionOffer,
 ) as any as S.Schema<SubscriptionOfferList>;
@@ -2605,8 +2579,7 @@ export type OrderStateEnum =
   | "CANCELED"
   | "PENDING_REFUND"
   | "PARTIALLY_REFUNDED"
-  | "REFUNDED"
-  | (string & {});
+  | "REFUNDED";
 export const OrderStateEnum = /*@__PURE__*/ S.String;
 
 /** Address information for the customer, for use in tax computation. */
@@ -2632,8 +2605,7 @@ export type OrderSalesChannelEnum =
   | "PC_EMULATOR"
   | "NATIVE_PC"
   | "PLAY_STORE"
-  | "OUTSIDE_PLAY_STORE"
-  | (string & {});
+  | "OUTSIDE_PLAY_STORE";
 export const OrderSalesChannelEnum = /*@__PURE__*/ S.String;
 
 /** Details relating to any Play Points applied to an order. */
@@ -2694,8 +2666,7 @@ export const CancellationEvent = /*@__PURE__*/ S.suspend(() =>
 export type RefundEventRefundReasonEnum =
   | "REFUND_REASON_UNSPECIFIED"
   | "OTHER"
-  | "CHARGEBACK"
-  | (string & {});
+  | "CHARGEBACK";
 export const RefundEventRefundReasonEnum = /*@__PURE__*/ S.String;
 
 /** Details for a partial or full refund. */
@@ -2732,8 +2703,7 @@ export const RefundEvent = /*@__PURE__*/ S.suspend(() =>
 export type PartialRefundEventStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
-  | "PROCESSED_SUCCESSFULLY"
-  | (string & {});
+  | "PROCESSED_SUCCESSFULLY";
 export const PartialRefundEventStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of the partial refund events for this order. */
@@ -2758,7 +2728,7 @@ export const PartialRefundEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "PartialRefundEvent",
 }) as any as S.Schema<PartialRefundEvent>;
 
-export type PartialRefundEventList = PartialRefundEvent[];
+export type PartialRefundEventList = ReadonlyArray<PartialRefundEvent>;
 export const PartialRefundEventList = /*@__PURE__*/ S.Array(
   PartialRefundEvent,
 ) as any as S.Schema<PartialRefundEventList>;
@@ -2832,8 +2802,7 @@ export type SubscriptionDetailsOfferPhaseEnum =
   | "OFFER_PHASE_UNSPECIFIED"
   | "BASE"
   | "INTRODUCTORY"
-  | "FREE_TRIAL"
-  | (string & {});
+  | "FREE_TRIAL";
 export const SubscriptionDetailsOfferPhaseEnum = /*@__PURE__*/ S.String;
 
 /** Details of a free trial pricing phase. */
@@ -2856,8 +2825,7 @@ export type ProrationPeriodDetailsOriginalOfferPhaseEnum =
   | "OFFER_PHASE_UNSPECIFIED"
   | "BASE"
   | "INTRODUCTORY"
-  | "FREE_TRIAL"
-  | (string & {});
+  | "FREE_TRIAL";
 export const ProrationPeriodDetailsOriginalOfferPhaseEnum =
   /*@__PURE__*/ S.String;
 
@@ -2964,7 +2932,7 @@ export const LineItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LineItem" }) as any as S.Schema<LineItem>;
 
-export type LineItemList = LineItem[];
+export type LineItemList = ReadonlyArray<LineItem>;
 export const LineItemList = /*@__PURE__*/ S.Array(
   LineItem,
 ) as any as S.Schema<LineItemList>;
@@ -3019,7 +2987,7 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
-export type OrderList = Order[];
+export type OrderList = ReadonlyArray<Order>;
 export const OrderList = /*@__PURE__*/ S.Array(
   Order,
 ) as any as S.Schema<OrderList>;
@@ -3040,16 +3008,14 @@ export const BatchGetOrdersResponse = /*@__PURE__*/ S.suspend(() =>
 export type MigrateBasePlanPricesRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const MigrateBasePlanPricesRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
 export type RegionalPriceMigrationConfigPriceIncreaseTypeEnum =
   | "PRICE_INCREASE_TYPE_UNSPECIFIED"
   | "PRICE_INCREASE_TYPE_OPT_IN"
-  | "PRICE_INCREASE_TYPE_OPT_OUT"
-  | (string & {});
+  | "PRICE_INCREASE_TYPE_OPT_OUT";
 export const RegionalPriceMigrationConfigPriceIncreaseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3074,7 +3040,8 @@ export const RegionalPriceMigrationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionalPriceMigrationConfig",
 }) as any as S.Schema<RegionalPriceMigrationConfig>;
 
-export type RegionalPriceMigrationConfigList = RegionalPriceMigrationConfig[];
+export type RegionalPriceMigrationConfigList =
+  ReadonlyArray<RegionalPriceMigrationConfig>;
 export const RegionalPriceMigrationConfigList = /*@__PURE__*/ S.Array(
   RegionalPriceMigrationConfig,
 ) as any as S.Schema<RegionalPriceMigrationConfigList>;
@@ -3109,7 +3076,8 @@ export const MigrateBasePlanPricesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrateBasePlanPricesRequest",
 }) as any as S.Schema<MigrateBasePlanPricesRequest>;
 
-export type MigrateBasePlanPricesRequestList = MigrateBasePlanPricesRequest[];
+export type MigrateBasePlanPricesRequestList =
+  ReadonlyArray<MigrateBasePlanPricesRequest>;
 export const MigrateBasePlanPricesRequestList = /*@__PURE__*/ S.Array(
   MigrateBasePlanPricesRequest,
 ) as any as S.Schema<MigrateBasePlanPricesRequestList>;
@@ -3160,7 +3128,8 @@ export const MigrateBasePlanPricesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrateBasePlanPricesResponse",
 }) as any as S.Schema<MigrateBasePlanPricesResponse>;
 
-export type MigrateBasePlanPricesResponseList = MigrateBasePlanPricesResponse[];
+export type MigrateBasePlanPricesResponseList =
+  ReadonlyArray<MigrateBasePlanPricesResponse>;
 export const MigrateBasePlanPricesResponseList = /*@__PURE__*/ S.Array(
   MigrateBasePlanPricesResponse,
 ) as any as S.Schema<MigrateBasePlanPricesResponseList>;
@@ -3181,8 +3150,7 @@ export const BatchMigrateBasePlanPricesResponse = /*@__PURE__*/ S.suspend(() =>
 export type InappproductsUpdateRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const InappproductsUpdateRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3216,7 +3184,8 @@ export const InappproductsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InappproductsUpdateRequest",
 }) as any as S.Schema<InappproductsUpdateRequest>;
 
-export type InappproductsUpdateRequestList = InappproductsUpdateRequest[];
+export type InappproductsUpdateRequestList =
+  ReadonlyArray<InappproductsUpdateRequest>;
 export const InappproductsUpdateRequestList = /*@__PURE__*/ S.Array(
   InappproductsUpdateRequest,
 ) as any as S.Schema<InappproductsUpdateRequestList>;
@@ -3271,8 +3240,7 @@ export const InappproductsBatchUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateOneTimeProductRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const UpdateOneTimeProductRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3303,7 +3271,8 @@ export const UpdateOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateOneTimeProductRequest",
 }) as any as S.Schema<UpdateOneTimeProductRequest>;
 
-export type UpdateOneTimeProductRequestList = UpdateOneTimeProductRequest[];
+export type UpdateOneTimeProductRequestList =
+  ReadonlyArray<UpdateOneTimeProductRequest>;
 export const UpdateOneTimeProductRequestList = /*@__PURE__*/ S.Array(
   UpdateOneTimeProductRequest,
 ) as any as S.Schema<UpdateOneTimeProductRequestList>;
@@ -3359,8 +3328,7 @@ export const BatchUpdateOneTimeProductsResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const UpdateOneTimeProductOfferRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3392,7 +3360,7 @@ export const UpdateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOneTimeProductOfferRequest>;
 
 export type UpdateOneTimeProductOfferRequestList =
-  UpdateOneTimeProductOfferRequest[];
+  ReadonlyArray<UpdateOneTimeProductOfferRequest>;
 export const UpdateOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
   UpdateOneTimeProductOfferRequest,
 ) as any as S.Schema<UpdateOneTimeProductOfferRequestList>;
@@ -3459,8 +3427,7 @@ export const BatchUpdateOneTimeProductOffersResponse = /*@__PURE__*/ S.suspend(
 export type UpdateSubscriptionRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const UpdateSubscriptionRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3489,7 +3456,8 @@ export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSubscriptionRequest",
 }) as any as S.Schema<UpdateSubscriptionRequest>;
 
-export type UpdateSubscriptionRequestList = UpdateSubscriptionRequest[];
+export type UpdateSubscriptionRequestList =
+  ReadonlyArray<UpdateSubscriptionRequest>;
 export const UpdateSubscriptionRequestList = /*@__PURE__*/ S.Array(
   UpdateSubscriptionRequest,
 ) as any as S.Schema<UpdateSubscriptionRequestList>;
@@ -3545,8 +3513,7 @@ export const BatchUpdateSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateSubscriptionOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const UpdateSubscriptionOfferRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3578,7 +3545,7 @@ export const UpdateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSubscriptionOfferRequest>;
 
 export type UpdateSubscriptionOfferRequestList =
-  UpdateSubscriptionOfferRequest[];
+  ReadonlyArray<UpdateSubscriptionOfferRequest>;
 export const UpdateSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(
   UpdateSubscriptionOfferRequest,
 ) as any as S.Schema<UpdateSubscriptionOfferRequestList>;
@@ -3642,8 +3609,7 @@ export const BatchUpdateSubscriptionOffersResponse = /*@__PURE__*/ S.suspend(
 export type DeactivatePurchaseOptionRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const DeactivatePurchaseOptionRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3674,8 +3640,7 @@ export const DeactivatePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
 export type ActivatePurchaseOptionRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const ActivatePurchaseOptionRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3722,7 +3687,7 @@ export const UpdatePurchaseOptionStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePurchaseOptionStateRequest>;
 
 export type UpdatePurchaseOptionStateRequestList =
-  UpdatePurchaseOptionStateRequest[];
+  ReadonlyArray<UpdatePurchaseOptionStateRequest>;
 export const UpdatePurchaseOptionStateRequestList = /*@__PURE__*/ S.Array(
   UpdatePurchaseOptionStateRequest,
 ) as any as S.Schema<UpdatePurchaseOptionStateRequestList>;
@@ -3786,8 +3751,7 @@ export const BatchUpdatePurchaseOptionStatesResponse = /*@__PURE__*/ S.suspend(
 export type CancelOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const CancelOneTimeProductOfferRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3821,8 +3785,7 @@ export const CancelOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeactivateOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const DeactivateOneTimeProductOfferRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3881,7 +3844,7 @@ export const UpdateOneTimeProductOfferStateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateOneTimeProductOfferStateRequest>;
 
 export type UpdateOneTimeProductOfferStateRequestList =
-  UpdateOneTimeProductOfferStateRequest[];
+  ReadonlyArray<UpdateOneTimeProductOfferStateRequest>;
 export const UpdateOneTimeProductOfferStateRequestList = /*@__PURE__*/ S.Array(
   UpdateOneTimeProductOfferStateRequest,
 ) as any as S.Schema<UpdateOneTimeProductOfferStateRequestList>;
@@ -3948,8 +3911,7 @@ export const BatchUpdateOneTimeProductOfferStatesResponse =
 export type DeactivateBasePlanRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const DeactivateBasePlanRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3991,7 +3953,8 @@ export const UpdateBasePlanStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateBasePlanStateRequest",
 }) as any as S.Schema<UpdateBasePlanStateRequest>;
 
-export type UpdateBasePlanStateRequestList = UpdateBasePlanStateRequest[];
+export type UpdateBasePlanStateRequestList =
+  ReadonlyArray<UpdateBasePlanStateRequest>;
 export const UpdateBasePlanStateRequestList = /*@__PURE__*/ S.Array(
   UpdateBasePlanStateRequest,
 ) as any as S.Schema<UpdateBasePlanStateRequestList>;
@@ -4050,8 +4013,7 @@ export const BatchUpdateBasePlanStatesResponse = /*@__PURE__*/ S.suspend(() =>
 export type DeactivateSubscriptionOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const DeactivateSubscriptionOfferRequestLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -4103,7 +4065,7 @@ export const UpdateSubscriptionOfferStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSubscriptionOfferStateRequest>;
 
 export type UpdateSubscriptionOfferStateRequestList =
-  UpdateSubscriptionOfferStateRequest[];
+  ReadonlyArray<UpdateSubscriptionOfferStateRequest>;
 export const UpdateSubscriptionOfferStateRequestList = /*@__PURE__*/ S.Array(
   UpdateSubscriptionOfferStateRequest,
 ) as any as S.Schema<UpdateSubscriptionOfferStateRequestList>;
@@ -4272,8 +4234,7 @@ export const CancelPurchasesSubscriptionsResponse = /*@__PURE__*/ S.suspend(
 export type CancellationContextCancellationTypeEnum =
   | "CANCELLATION_TYPE_UNSPECIFIED"
   | "USER_REQUESTED_STOP_RENEWALS"
-  | "DEVELOPER_REQUESTED_STOP_PAYMENTS"
-  | (string & {});
+  | "DEVELOPER_REQUESTED_STOP_PAYMENTS";
 export const CancellationContextCancellationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Cancellation context of the purchases.subscriptionsv2.cancel API. */
@@ -4338,8 +4299,7 @@ export const CancelSubscriptionPurchaseResponse = /*@__PURE__*/ S.suspend(() =>
 export type CommitEditsChangesInReviewBehaviorEnum =
   | "CHANGES_IN_REVIEW_BEHAVIOR_TYPE_UNSPECIFIED"
   | "CANCEL_IN_REVIEW_AND_SUBMIT"
-  | "ERROR_IF_IN_REVIEW"
-  | (string & {});
+  | "ERROR_IF_IN_REVIEW";
 export const CommitEditsChangesInReviewBehaviorEnum = /*@__PURE__*/ S.String;
 
 export interface CommitEditsRequest {
@@ -4530,7 +4490,7 @@ export const UserCountrySet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserCountrySet" }) as any as S.Schema<UserCountrySet>;
 
-export type UserCountrySetList = UserCountrySet[];
+export type UserCountrySetList = ReadonlyArray<UserCountrySet>;
 export const UserCountrySetList = /*@__PURE__*/ S.Array(
   UserCountrySet,
 ) as any as S.Schema<UserCountrySetList>;
@@ -4549,7 +4509,7 @@ export const SystemOnChip = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemOnChip" }) as any as S.Schema<SystemOnChip>;
 
-export type SystemOnChipList = SystemOnChip[];
+export type SystemOnChipList = ReadonlyArray<SystemOnChip>;
 export const SystemOnChipList = /*@__PURE__*/ S.Array(
   SystemOnChip,
 ) as any as S.Schema<SystemOnChipList>;
@@ -4568,7 +4528,7 @@ export const DeviceId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceId" }) as any as S.Schema<DeviceId>;
 
-export type DeviceIdList = DeviceId[];
+export type DeviceIdList = ReadonlyArray<DeviceId>;
 export const DeviceIdList = /*@__PURE__*/ S.Array(
   DeviceId,
 ) as any as S.Schema<DeviceIdList>;
@@ -4584,7 +4544,7 @@ export const SystemFeature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemFeature" }) as any as S.Schema<SystemFeature>;
 
-export type SystemFeatureList = SystemFeature[];
+export type SystemFeatureList = ReadonlyArray<SystemFeature>;
 export const SystemFeatureList = /*@__PURE__*/ S.Array(
   SystemFeature,
 ) as any as S.Schema<SystemFeatureList>;
@@ -4629,7 +4589,7 @@ export const DeviceSelector = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceSelector" }) as any as S.Schema<DeviceSelector>;
 
-export type DeviceSelectorList = DeviceSelector[];
+export type DeviceSelectorList = ReadonlyArray<DeviceSelector>;
 export const DeviceSelectorList = /*@__PURE__*/ S.Array(
   DeviceSelector,
 ) as any as S.Schema<DeviceSelectorList>;
@@ -4648,7 +4608,7 @@ export const DeviceGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceGroup" }) as any as S.Schema<DeviceGroup>;
 
-export type DeviceGroupList = DeviceGroup[];
+export type DeviceGroupList = ReadonlyArray<DeviceGroup>;
 export const DeviceGroupList = /*@__PURE__*/ S.Array(
   DeviceGroup,
 ) as any as S.Schema<DeviceGroupList>;
@@ -4667,7 +4627,7 @@ export const DeviceTier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceTier" }) as any as S.Schema<DeviceTier>;
 
-export type DeviceTierList = DeviceTier[];
+export type DeviceTierList = ReadonlyArray<DeviceTier>;
 export const DeviceTierList = /*@__PURE__*/ S.Array(
   DeviceTier,
 ) as any as S.Schema<DeviceTierList>;
@@ -4836,8 +4796,7 @@ export type AppRecoveryActionStatusEnum =
   | "RECOVERY_STATUS_CANCELED"
   | "RECOVERY_STATUS_DRAFT"
   | "RECOVERY_STATUS_GENERATION_IN_PROGRESS"
-  | "RECOVERY_STATUS_GENERATION_FAILED"
-  | (string & {});
+  | "RECOVERY_STATUS_GENERATION_FAILED";
 export const AppRecoveryActionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Data related to the recovery action at bundle level. */
@@ -4860,7 +4819,7 @@ export const RemoteInAppUpdateDataPerBundle = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoteInAppUpdateDataPerBundle>;
 
 export type RemoteInAppUpdateDataPerBundleList =
-  RemoteInAppUpdateDataPerBundle[];
+  ReadonlyArray<RemoteInAppUpdateDataPerBundle>;
 export const RemoteInAppUpdateDataPerBundleList = /*@__PURE__*/ S.Array(
   RemoteInAppUpdateDataPerBundle,
 ) as any as S.Schema<RemoteInAppUpdateDataPerBundleList>;
@@ -4957,18 +4916,14 @@ export const CreateAppStoreHostedAppResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAppStoreHostedAppResponse",
 }) as any as S.Schema<CreateAppStoreHostedAppResponse>;
 
-export type TrackConfigTypeEnum =
-  | "TRACK_TYPE_UNSPECIFIED"
-  | "CLOSED_TESTING"
-  | (string & {});
+export type TrackConfigTypeEnum = "TRACK_TYPE_UNSPECIFIED" | "CLOSED_TESTING";
 export const TrackConfigTypeEnum = /*@__PURE__*/ S.String;
 
 export type TrackConfigFormFactorEnum =
   | "FORM_FACTOR_UNSPECIFIED"
   | "DEFAULT"
   | "WEAR"
-  | "AUTOMOTIVE"
-  | (string & {});
+  | "AUTOMOTIVE";
 export const TrackConfigFormFactorEnum = /*@__PURE__*/ S.String;
 
 /** Configurations of the new track. */
@@ -5026,7 +4981,7 @@ export const LocalizedText = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocalizedText" }) as any as S.Schema<LocalizedText>;
 
-export type LocalizedTextList = LocalizedText[];
+export type LocalizedTextList = ReadonlyArray<LocalizedText>;
 export const LocalizedTextList = /*@__PURE__*/ S.Array(
   LocalizedText,
 ) as any as S.Schema<LocalizedTextList>;
@@ -5036,8 +4991,7 @@ export type TrackReleaseStatusEnum =
   | "draft"
   | "inProgress"
   | "halted"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const TrackReleaseStatusEnum = /*@__PURE__*/ S.String;
 
 /** Country targeting specification. */
@@ -5085,7 +5039,7 @@ export const TrackRelease = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrackRelease" }) as any as S.Schema<TrackRelease>;
 
-export type TrackReleaseList = TrackRelease[];
+export type TrackReleaseList = ReadonlyArray<TrackRelease>;
 export const TrackReleaseList = /*@__PURE__*/ S.Array(
   TrackRelease,
 ) as any as S.Schema<TrackReleaseList>;
@@ -5128,16 +5082,14 @@ export const OtherRecurringProduct = /*@__PURE__*/ S.suspend(() =>
 export type RecurringExternalTransactionMigratedTransactionProgramEnum =
   | "EXTERNAL_TRANSACTION_PROGRAM_UNSPECIFIED"
   | "USER_CHOICE_BILLING"
-  | "ALTERNATIVE_BILLING_ONLY"
-  | (string & {});
+  | "ALTERNATIVE_BILLING_ONLY";
 export const RecurringExternalTransactionMigratedTransactionProgramEnum =
   /*@__PURE__*/ S.String;
 
 export type ExternalSubscriptionSubscriptionTypeEnum =
   | "SUBSCRIPTION_TYPE_UNSPECIFIED"
   | "RECURRING"
-  | "PREPAID"
-  | (string & {});
+  | "PREPAID";
 export const ExternalSubscriptionSubscriptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details of an external subscription. */
@@ -5199,16 +5151,14 @@ export const ExternalTransactionAddress = /*@__PURE__*/ S.suspend(() =>
 export type ExternalOfferDetailsInstalledAppCategoryEnum =
   | "EXTERNAL_OFFER_APP_CATEGORY_UNSPECIFIED"
   | "APP"
-  | "GAME"
-  | (string & {});
+  | "GAME";
 export const ExternalOfferDetailsInstalledAppCategoryEnum =
   /*@__PURE__*/ S.String;
 
 export type ExternalOfferDetailsLinkTypeEnum =
   | "EXTERNAL_OFFER_LINK_TYPE_UNSPECIFIED"
   | "LINK_TO_DIGITAL_CONTENT_OFFER"
-  | "LINK_TO_APP_DOWNLOAD"
-  | (string & {});
+  | "LINK_TO_APP_DOWNLOAD";
 export const ExternalOfferDetailsLinkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Reporting details unique to the external offers program. */
@@ -5238,8 +5188,7 @@ export const ExternalOfferDetails = /*@__PURE__*/ S.suspend(() =>
 export type ExternalTransactionTransactionStateEnum =
   | "TRANSACTION_STATE_UNSPECIFIED"
   | "TRANSACTION_REPORTED"
-  | "TRANSACTION_CANCELED"
-  | (string & {});
+  | "TRANSACTION_CANCELED";
 export const ExternalTransactionTransactionStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a transaction performed using a test account. These transactions will not be charged by Google. */
@@ -5345,12 +5294,11 @@ export type GrantAppLevelPermissionsItemEnum =
   | "CAN_MANAGE_APP_CONTENT"
   | "CAN_VIEW_NON_FINANCIAL_DATA"
   | "CAN_VIEW_APP_QUALITY"
-  | "CAN_MANAGE_DEEPLINKS"
-  | (string & {});
+  | "CAN_MANAGE_DEEPLINKS";
 export const GrantAppLevelPermissionsItemEnum = /*@__PURE__*/ S.String;
 
 export type GrantAppLevelPermissionsItemEnumList =
-  GrantAppLevelPermissionsItemEnum[];
+  ReadonlyArray<GrantAppLevelPermissionsItemEnum>;
 export const GrantAppLevelPermissionsItemEnumList = /*@__PURE__*/ S.Array(
   GrantAppLevelPermissionsItemEnum,
 ) as any as S.Schema<GrantAppLevelPermissionsItemEnumList>;
@@ -5537,11 +5485,10 @@ export type UserAccessStateEnum =
   | "INVITED"
   | "INVITATION_EXPIRED"
   | "ACCESS_GRANTED"
-  | "ACCESS_EXPIRED"
-  | (string & {});
+  | "ACCESS_EXPIRED";
 export const UserAccessStateEnum = /*@__PURE__*/ S.String;
 
-export type GrantList = Grant[];
+export type GrantList = ReadonlyArray<Grant>;
 export const GrantList = /*@__PURE__*/ S.Array(
   Grant,
 ) as any as S.Schema<GrantList>;
@@ -5567,12 +5514,11 @@ export type UserDeveloperAccountPermissionsItemEnum =
   | "CAN_VIEW_APP_QUALITY_GLOBAL"
   | "CAN_MANAGE_DEEPLINKS_GLOBAL"
   | "CAN_VIEW_CONNECTED_APPS_GLOBAL"
-  | "CAN_EDIT_CONNECTED_APPS_GLOBAL"
-  | (string & {});
+  | "CAN_EDIT_CONNECTED_APPS_GLOBAL";
 export const UserDeveloperAccountPermissionsItemEnum = /*@__PURE__*/ S.String;
 
 export type UserDeveloperAccountPermissionsItemEnumList =
-  UserDeveloperAccountPermissionsItemEnum[];
+  ReadonlyArray<UserDeveloperAccountPermissionsItemEnum>;
 export const UserDeveloperAccountPermissionsItemEnumList =
   /*@__PURE__*/ S.Array(
     UserDeveloperAccountPermissionsItemEnum,
@@ -5905,7 +5851,7 @@ export const ItemExpiryTimeDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ItemExpiryTimeDetails",
 }) as any as S.Schema<ItemExpiryTimeDetails>;
 
-export type ItemExpiryTimeDetailsList = ItemExpiryTimeDetails[];
+export type ItemExpiryTimeDetailsList = ReadonlyArray<ItemExpiryTimeDetails>;
 export const ItemExpiryTimeDetailsList = /*@__PURE__*/ S.Array(
   ItemExpiryTimeDetails,
 ) as any as S.Schema<ItemExpiryTimeDetailsList>;
@@ -5932,8 +5878,7 @@ export type DeleteallEditsImagesImageTypeEnum =
   | "wearScreenshots"
   | "icon"
   | "featureGraphic"
-  | "tvBanner"
-  | (string & {});
+  | "tvBanner";
 export const DeleteallEditsImagesImageTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteallEditsImagesRequest {
@@ -5966,8 +5911,7 @@ export const DeleteallEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ImageAiGeneratedStateEnum =
   | "aiGeneratedStateUnspecified"
   | "aiGeneratedStateNotAiGenerated"
-  | "aiGeneratedStateAiGeneratedDeveloperAttested"
-  | (string & {});
+  | "aiGeneratedStateAiGeneratedDeveloperAttested";
 export const ImageAiGeneratedStateEnum = /*@__PURE__*/ S.String;
 
 /** An uploaded image. The resource for ImagesService. */
@@ -5993,7 +5937,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
-export type ImageList = Image[];
+export type ImageList = ReadonlyArray<Image>;
 export const ImageList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageList>;
@@ -6076,8 +6020,7 @@ export type DeleteEditsImagesImageTypeEnum =
   | "wearScreenshots"
   | "icon"
   | "featureGraphic"
-  | "tvBanner"
-  | (string & {});
+  | "tvBanner";
 export const DeleteEditsImagesImageTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteEditsImagesRequest {
@@ -6176,8 +6119,7 @@ export const DeleteGrantsResponse = /*@__PURE__*/ S.suspend(() =>
 export type DeleteInappproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const DeleteInappproductsLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteInappproductsRequest {
@@ -6216,8 +6158,7 @@ export const DeleteInappproductsResponse = /*@__PURE__*/ S.suspend(() =>
 export type DeleteMonetizationOnetimeproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const DeleteMonetizationOnetimeproductsLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -6541,7 +6482,7 @@ export const ImageAsset = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageAsset" }) as any as S.Schema<ImageAsset>;
 
-export type ImageAssetList = ImageAsset[];
+export type ImageAssetList = ReadonlyArray<ImageAsset>;
 export const ImageAssetList = /*@__PURE__*/ S.Array(
   ImageAsset,
 ) as any as S.Schema<ImageAssetList>;
@@ -6597,7 +6538,7 @@ export const LocalizedStoreListing = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocalizedStoreListing",
 }) as any as S.Schema<LocalizedStoreListing>;
 
-export type LocalizedStoreListingList = LocalizedStoreListing[];
+export type LocalizedStoreListingList = ReadonlyArray<LocalizedStoreListing>;
 export const LocalizedStoreListingList = /*@__PURE__*/ S.Array(
   LocalizedStoreListing,
 ) as any as S.Schema<LocalizedStoreListingList>;
@@ -6633,7 +6574,7 @@ export const CatalogPermission = /*@__PURE__*/ S.suspend(() =>
   identifier: "CatalogPermission",
 }) as any as S.Schema<CatalogPermission>;
 
-export type CatalogPermissionList = CatalogPermission[];
+export type CatalogPermissionList = ReadonlyArray<CatalogPermission>;
 export const CatalogPermissionList = /*@__PURE__*/ S.Array(
   CatalogPermission,
 ) as any as S.Schema<CatalogPermissionList>;
@@ -6681,8 +6622,7 @@ export type UsesConfigurationRequiredTouchscreenTypeEnum =
   | "TOUCHSCREEN_TYPE_UNDEFINED"
   | "TOUCHSCREEN_TYPE_NO_TOUCHSCREEN"
   | "TOUCHSCREEN_TYPE_STYLUS"
-  | "TOUCHSCREEN_TYPE_FINGER"
-  | (string & {});
+  | "TOUCHSCREEN_TYPE_FINGER";
 export const UsesConfigurationRequiredTouchscreenTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6691,8 +6631,7 @@ export type UsesConfigurationRequiredKeyboardTypeEnum =
   | "KEYBOARD_TYPE_UNDEFINED"
   | "KEYBOARD_TYPE_NO_KEYS"
   | "KEYBOARD_TYPE_QWERTY"
-  | "KEYBOARD_TYPE_TWELVE_KEY"
-  | (string & {});
+  | "KEYBOARD_TYPE_TWELVE_KEY";
 export const UsesConfigurationRequiredKeyboardTypeEnum = /*@__PURE__*/ S.String;
 
 export type UsesConfigurationRequiredNavigationTypeEnum =
@@ -6701,8 +6640,7 @@ export type UsesConfigurationRequiredNavigationTypeEnum =
   | "NAVIGATION_TYPE_NO_NAVIGATION"
   | "NAVIGATION_TYPE_DPAD"
   | "NAVIGATION_TYPE_TRACKBALL"
-  | "NAVIGATION_TYPE_WHEEL"
-  | (string & {});
+  | "NAVIGATION_TYPE_WHEEL";
 export const UsesConfigurationRequiredNavigationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6735,7 +6673,7 @@ export const UsesConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsesConfiguration",
 }) as any as S.Schema<UsesConfiguration>;
 
-export type UsesConfigurationList = UsesConfiguration[];
+export type UsesConfigurationList = ReadonlyArray<UsesConfiguration>;
 export const UsesConfigurationList = /*@__PURE__*/ S.Array(
   UsesConfiguration,
 ) as any as S.Schema<UsesConfigurationList>;
@@ -6745,8 +6683,7 @@ export type CompatibleScreenScreenSizeEnum =
   | "SCREEN_SIZE_SMALL"
   | "SCREEN_SIZE_NORMAL"
   | "SCREEN_SIZE_LARGE"
-  | "SCREEN_SIZE_EXTRA_LARGE"
-  | (string & {});
+  | "SCREEN_SIZE_EXTRA_LARGE";
 export const CompatibleScreenScreenSizeEnum = /*@__PURE__*/ S.String;
 
 export type CompatibleScreenDensityEnum =
@@ -6763,8 +6700,7 @@ export type CompatibleScreenDensityEnum =
   | "DENSITY_420"
   | "DENSITY_XXHDPI"
   | "DENSITY_560"
-  | "DENSITY_XXXHDPI"
-  | (string & {});
+  | "DENSITY_XXXHDPI";
 export const CompatibleScreenDensityEnum = /*@__PURE__*/ S.String;
 
 /** Compatible screens as listed in the `compatible-screens` Manifest tag. */
@@ -6783,7 +6719,7 @@ export const CompatibleScreen = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompatibleScreen",
 }) as any as S.Schema<CompatibleScreen>;
 
-export type CompatibleScreenList = CompatibleScreen[];
+export type CompatibleScreenList = ReadonlyArray<CompatibleScreen>;
 export const CompatibleScreenList = /*@__PURE__*/ S.Array(
   CompatibleScreen,
 ) as any as S.Schema<CompatibleScreenList>;
@@ -6791,8 +6727,7 @@ export const CompatibleScreenList = /*@__PURE__*/ S.Array(
 export type DeviceCompatibilityRequirementsUse32BitAbiEnum =
   | "USE_32_BIT_ABI_UNSPECIFIED"
   | "USE_32_BIT_ABI_TRUE"
-  | "USE_32_BIT_ABI_OTHER"
-  | (string & {});
+  | "USE_32_BIT_ABI_OTHER";
 export const DeviceCompatibilityRequirementsUse32BitAbiEnum =
   /*@__PURE__*/ S.String;
 
@@ -6801,13 +6736,12 @@ export type DeviceCompatibilityRequirementsSupportedScreensItemEnum =
   | "SCREEN_SIZE_SMALL"
   | "SCREEN_SIZE_NORMAL"
   | "SCREEN_SIZE_LARGE"
-  | "SCREEN_SIZE_EXTRA_LARGE"
-  | (string & {});
+  | "SCREEN_SIZE_EXTRA_LARGE";
 export const DeviceCompatibilityRequirementsSupportedScreensItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DeviceCompatibilityRequirementsSupportedScreensItemEnumList =
-  DeviceCompatibilityRequirementsSupportedScreensItemEnum[];
+  ReadonlyArray<DeviceCompatibilityRequirementsSupportedScreensItemEnum>;
 export const DeviceCompatibilityRequirementsSupportedScreensItemEnumList =
   /*@__PURE__*/ S.Array(
     DeviceCompatibilityRequirementsSupportedScreensItemEnum,
@@ -6862,7 +6796,7 @@ export const DeviceCompatibilityRequirements = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeviceCompatibilityRequirements>;
 
 export type DeviceCompatibilityRequirementsList =
-  DeviceCompatibilityRequirements[];
+  ReadonlyArray<DeviceCompatibilityRequirements>;
 export const DeviceCompatibilityRequirementsList = /*@__PURE__*/ S.Array(
   DeviceCompatibilityRequirements,
 ) as any as S.Schema<DeviceCompatibilityRequirementsList>;
@@ -6870,8 +6804,7 @@ export const DeviceCompatibilityRequirementsList = /*@__PURE__*/ S.Array(
 export type CatalogAppViewAppCategoryEnum =
   | "APP_CATEGORY_UNSPECIFIED"
   | "GAME"
-  | "APP"
-  | (string & {});
+  | "APP";
 export const CatalogAppViewAppCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Defines a RAM selector for a device. */
@@ -6899,15 +6832,14 @@ export const SocSelector = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SocSelector" }) as any as S.Schema<SocSelector>;
 
-export type SocSelectorList = SocSelector[];
+export type SocSelectorList = ReadonlyArray<SocSelector>;
 export const SocSelectorList = /*@__PURE__*/ S.Array(
   SocSelector,
 ) as any as S.Schema<SocSelectorList>;
 
 export type CatalogDeviceSelectorDeviceTypeSelectorEnum =
   | "DEVICE_TYPE_SELECTOR_UNSPECIFIED"
-  | "ANDROID_GO"
-  | (string & {});
+  | "ANDROID_GO";
 export const CatalogDeviceSelectorDeviceTypeSelectorEnum =
   /*@__PURE__*/ S.String;
 
@@ -6930,7 +6862,7 @@ export const CatalogDeviceSelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "CatalogDeviceSelector",
 }) as any as S.Schema<CatalogDeviceSelector>;
 
-export type CatalogDeviceSelectorList = CatalogDeviceSelector[];
+export type CatalogDeviceSelectorList = ReadonlyArray<CatalogDeviceSelector>;
 export const CatalogDeviceSelectorList = /*@__PURE__*/ S.Array(
   CatalogDeviceSelector,
 ) as any as S.Schema<CatalogDeviceSelectorList>;
@@ -6951,7 +6883,7 @@ export const DeviceIdentifier = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceIdentifier",
 }) as any as S.Schema<DeviceIdentifier>;
 
-export type DeviceIdentifierList = DeviceIdentifier[];
+export type DeviceIdentifierList = ReadonlyArray<DeviceIdentifier>;
 export const DeviceIdentifierList = /*@__PURE__*/ S.Array(
   DeviceIdentifier,
 ) as any as S.Schema<DeviceIdentifierList>;
@@ -7145,7 +7077,7 @@ export const TrackTargetedCountry = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrackTargetedCountry",
 }) as any as S.Schema<TrackTargetedCountry>;
 
-export type TrackTargetedCountryList = TrackTargetedCountry[];
+export type TrackTargetedCountryList = ReadonlyArray<TrackTargetedCountry>;
 export const TrackTargetedCountryList = /*@__PURE__*/ S.Array(
   TrackTargetedCountry,
 ) as any as S.Schema<TrackTargetedCountryList>;
@@ -7213,8 +7145,7 @@ export const AppDetails = /*@__PURE__*/ S.suspend(() =>
 export type GetEditsExpansionfilesExpansionFileTypeEnum =
   | "expansionFileTypeUnspecified"
   | "main"
-  | "patch"
-  | (string & {});
+  | "patch";
 export const GetEditsExpansionfilesExpansionFileTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7525,8 +7456,7 @@ export type PurchaseStateContextPurchaseStateEnum =
   | "PURCHASE_STATE_UNSPECIFIED"
   | "PURCHASED"
   | "CANCELLED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const PurchaseStateContextPurchaseStateEnum = /*@__PURE__*/ S.String;
 
 /** Context about the purchase state. */
@@ -7542,10 +7472,7 @@ export const PurchaseStateContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "PurchaseStateContext",
 }) as any as S.Schema<PurchaseStateContext>;
 
-export type TestPurchaseContextFopTypeEnum =
-  | "FOP_TYPE_UNSPECIFIED"
-  | "TEST"
-  | (string & {});
+export type TestPurchaseContextFopTypeEnum = "FOP_TYPE_UNSPECIFIED" | "TEST";
 export const TestPurchaseContextFopTypeEnum = /*@__PURE__*/ S.String;
 
 /** Context about a test purchase. */
@@ -7564,15 +7491,13 @@ export const TestPurchaseContext = /*@__PURE__*/ S.suspend(() =>
 export type ProductPurchaseV2AcknowledgementStateEnum =
   | "ACKNOWLEDGEMENT_STATE_UNSPECIFIED"
   | "ACKNOWLEDGEMENT_STATE_PENDING"
-  | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED"
-  | (string & {});
+  | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED";
 export const ProductPurchaseV2AcknowledgementStateEnum = /*@__PURE__*/ S.String;
 
 export type ProductOfferDetailsConsumptionStateEnum =
   | "CONSUMPTION_STATE_UNSPECIFIED"
   | "CONSUMPTION_STATE_YET_TO_BE_CONSUMED"
-  | "CONSUMPTION_STATE_CONSUMED"
-  | (string & {});
+  | "CONSUMPTION_STATE_CONSUMED";
 export const ProductOfferDetailsConsumptionStateEnum = /*@__PURE__*/ S.String;
 
 /** Offer details information related to a rental line item. */
@@ -7649,7 +7574,7 @@ export const ProductLineItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductLineItem",
 }) as any as S.Schema<ProductLineItem>;
 
-export type ProductLineItemList = ProductLineItem[];
+export type ProductLineItemList = ReadonlyArray<ProductLineItem>;
 export const ProductLineItemList = /*@__PURE__*/ S.Array(
   ProductLineItem,
 ) as any as S.Schema<ProductLineItemList>;
@@ -7822,8 +7747,7 @@ export type SubscriptionPurchaseV2SubscriptionStateEnum =
   | "SUBSCRIPTION_STATE_ON_HOLD"
   | "SUBSCRIPTION_STATE_CANCELED"
   | "SUBSCRIPTION_STATE_EXPIRED"
-  | "SUBSCRIPTION_STATE_PENDING_PURCHASE_CANCELED"
-  | (string & {});
+  | "SUBSCRIPTION_STATE_PENDING_PURCHASE_CANCELED";
 export const SubscriptionPurchaseV2SubscriptionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -7903,8 +7827,7 @@ export type CancelSurveyResultReasonEnum =
   | "CANCEL_SURVEY_REASON_TECHNICAL_ISSUES"
   | "CANCEL_SURVEY_REASON_COST_RELATED"
   | "CANCEL_SURVEY_REASON_FOUND_BETTER_APP"
-  | "CANCEL_SURVEY_REASON_OTHERS"
-  | (string & {});
+  | "CANCEL_SURVEY_REASON_OTHERS";
 export const CancelSurveyResultReasonEnum = /*@__PURE__*/ S.String;
 
 /** Result of the cancel survey when the subscription was canceled by the user. */
@@ -8004,8 +7927,7 @@ export const OutOfAppPurchaseContext = /*@__PURE__*/ S.suspend(() =>
 export type SubscriptionPurchaseV2AcknowledgementStateEnum =
   | "ACKNOWLEDGEMENT_STATE_UNSPECIFIED"
   | "ACKNOWLEDGEMENT_STATE_PENDING"
-  | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED"
-  | (string & {});
+  | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED";
 export const SubscriptionPurchaseV2AcknowledgementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -8039,8 +7961,7 @@ export type ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum =
   | "ORIGINAL_OFFER_PHASE_TYPE_UNSPECIFIED"
   | "BASE"
   | "INTRODUCTORY"
-  | "FREE_TRIAL"
-  | (string & {});
+  | "FREE_TRIAL";
 export const ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8119,8 +8040,7 @@ export type SubscriptionItemPriceChangeDetailsPriceChangeStateEnum =
   | "OUTSTANDING"
   | "CONFIRMED"
   | "APPLIED"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const SubscriptionItemPriceChangeDetailsPriceChangeStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -8128,8 +8048,7 @@ export type SubscriptionItemPriceChangeDetailsPriceChangeModeEnum =
   | "PRICE_CHANGE_MODE_UNSPECIFIED"
   | "PRICE_DECREASE"
   | "PRICE_INCREASE"
-  | "OPT_OUT_PRICE_INCREASE"
-  | (string & {});
+  | "OPT_OUT_PRICE_INCREASE";
 export const SubscriptionItemPriceChangeDetailsPriceChangeModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8163,8 +8082,7 @@ export type PriceStepUpConsentDetailsStateEnum =
   | "CONSENT_STATE_UNSPECIFIED"
   | "PENDING"
   | "CONFIRMED"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const PriceStepUpConsentDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** Information related to a price step-up that requires user consent. */
@@ -8265,8 +8183,7 @@ export type ItemReplacementReplacementModeEnum =
   | "WITHOUT_PRORATION"
   | "CHARGE_FULL_PRICE"
   | "DEFERRED"
-  | "KEEP_EXISTING"
-  | (string & {});
+  | "KEEP_EXISTING";
 export const ItemReplacementReplacementModeEnum = /*@__PURE__*/ S.String;
 
 /** Details about a subscription line item that is being replaced. */
@@ -8375,7 +8292,8 @@ export const SubscriptionPurchaseLineItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionPurchaseLineItem",
 }) as any as S.Schema<SubscriptionPurchaseLineItem>;
 
-export type SubscriptionPurchaseLineItemList = SubscriptionPurchaseLineItem[];
+export type SubscriptionPurchaseLineItemList =
+  ReadonlyArray<SubscriptionPurchaseLineItem>;
 export const SubscriptionPurchaseLineItemList = /*@__PURE__*/ S.Array(
   SubscriptionPurchaseLineItem,
 ) as any as S.Schema<SubscriptionPurchaseLineItemList>;
@@ -8593,7 +8511,7 @@ export const Comment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
 
-export type CommentList = Comment[];
+export type CommentList = ReadonlyArray<Comment>;
 export const CommentList = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<CommentList>;
@@ -8709,7 +8627,7 @@ export const ListApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListApplicationsDeviceTierConfigsRequest",
 }) as any as S.Schema<ListApplicationsDeviceTierConfigsRequest>;
 
-export type DeviceTierConfigList = DeviceTierConfig[];
+export type DeviceTierConfigList = ReadonlyArray<DeviceTierConfig>;
 export const DeviceTierConfigList = /*@__PURE__*/ S.Array(
   DeviceTierConfig,
 ) as any as S.Schema<DeviceTierConfigList>;
@@ -8762,7 +8680,7 @@ export const ArtifactSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ArtifactSummary",
 }) as any as S.Schema<ArtifactSummary>;
 
-export type ArtifactSummaryList = ArtifactSummary[];
+export type ArtifactSummaryList = ReadonlyArray<ArtifactSummary>;
 export const ArtifactSummaryList = /*@__PURE__*/ S.Array(
   ArtifactSummary,
 ) as any as S.Schema<ArtifactSummaryList>;
@@ -8774,8 +8692,7 @@ export type ReleaseSummaryReleaseLifecycleStateEnum =
   | "RELEASE_LIFECYCLE_STATE_IN_REVIEW"
   | "RELEASE_LIFECYCLE_STATE_APPROVED_NOT_PUBLISHED"
   | "RELEASE_LIFECYCLE_STATE_NOT_APPROVED"
-  | "RELEASE_LIFECYCLE_STATE_PUBLISHED"
-  | (string & {});
+  | "RELEASE_LIFECYCLE_STATE_PUBLISHED";
 export const ReleaseSummaryReleaseLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 /** Summary of a release. */
@@ -8798,7 +8715,7 @@ export const ReleaseSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReleaseSummary" }) as any as S.Schema<ReleaseSummary>;
 
-export type ReleaseSummaryList = ReleaseSummary[];
+export type ReleaseSummaryList = ReadonlyArray<ReleaseSummary>;
 export const ReleaseSummaryList = /*@__PURE__*/ S.Array(
   ReleaseSummary,
 ) as any as S.Schema<ReleaseSummaryList>;
@@ -8837,7 +8754,7 @@ export const ListApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListApprecoveryRequest",
 }) as any as S.Schema<ListApprecoveryRequest>;
 
-export type AppRecoveryActionList = AppRecoveryAction[];
+export type AppRecoveryActionList = ReadonlyArray<AppRecoveryAction>;
 export const AppRecoveryActionList = /*@__PURE__*/ S.Array(
   AppRecoveryAction,
 ) as any as S.Schema<AppRecoveryActionList>;
@@ -8889,8 +8806,7 @@ export const ListAppstorecatalogRecentupdateeventsRequest =
 export type RecentUpdateEventUpdateTypeEnum =
   | "UPDATE_TYPE_UNSPECIFIED"
   | "MODIFICATION"
-  | "DELETION"
-  | (string & {});
+  | "DELETION";
 export const RecentUpdateEventUpdateTypeEnum = /*@__PURE__*/ S.String;
 
 /** A recent update event. */
@@ -8912,7 +8828,7 @@ export const RecentUpdateEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecentUpdateEvent",
 }) as any as S.Schema<RecentUpdateEvent>;
 
-export type RecentUpdateEventList = RecentUpdateEvent[];
+export type RecentUpdateEventList = ReadonlyArray<RecentUpdateEvent>;
 export const RecentUpdateEventList = /*@__PURE__*/ S.Array(
   RecentUpdateEvent,
 ) as any as S.Schema<RecentUpdateEventList>;
@@ -8982,7 +8898,7 @@ export const Apk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Apk" }) as any as S.Schema<Apk>;
 
-export type ApkList = Apk[];
+export type ApkList = ReadonlyArray<Apk>;
 export const ApkList = /*@__PURE__*/ S.Array(Apk) as any as S.Schema<ApkList>;
 
 /** Response listing all APKs. */
@@ -9039,7 +8955,7 @@ export const Bundle = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Bundle" }) as any as S.Schema<Bundle>;
 
-export type BundleList = Bundle[];
+export type BundleList = ReadonlyArray<Bundle>;
 export const BundleList = /*@__PURE__*/ S.Array(
   Bundle,
 ) as any as S.Schema<BundleList>;
@@ -9069,8 +8985,7 @@ export type ListEditsImagesImageTypeEnum =
   | "wearScreenshots"
   | "icon"
   | "featureGraphic"
-  | "tvBanner"
-  | (string & {});
+  | "tvBanner";
 export const ListEditsImagesImageTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListEditsImagesRequest {
@@ -9134,7 +9049,7 @@ export const ListEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEditsListingsRequest",
 }) as any as S.Schema<ListEditsListingsRequest>;
 
-export type ListingList = Listing[];
+export type ListingList = ReadonlyArray<Listing>;
 export const ListingList = /*@__PURE__*/ S.Array(
   Listing,
 ) as any as S.Schema<ListingList>;
@@ -9176,7 +9091,7 @@ export const ListEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEditsTracksRequest",
 }) as any as S.Schema<ListEditsTracksRequest>;
 
-export type TrackList = Track[];
+export type TrackList = ReadonlyArray<Track>;
 export const TrackList = /*@__PURE__*/ S.Array(
   Track,
 ) as any as S.Schema<TrackList>;
@@ -9240,7 +9155,7 @@ export const GeneratedSplitApk = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeneratedSplitApk",
 }) as any as S.Schema<GeneratedSplitApk>;
 
-export type GeneratedSplitApkList = GeneratedSplitApk[];
+export type GeneratedSplitApkList = ReadonlyArray<GeneratedSplitApk>;
 export const GeneratedSplitApkList = /*@__PURE__*/ S.Array(
   GeneratedSplitApk,
 ) as any as S.Schema<GeneratedSplitApkList>;
@@ -9251,8 +9166,7 @@ export type GeneratedRecoveryApkRecoveryStatusEnum =
   | "RECOVERY_STATUS_CANCELED"
   | "RECOVERY_STATUS_DRAFT"
   | "RECOVERY_STATUS_GENERATION_IN_PROGRESS"
-  | "RECOVERY_STATUS_GENERATION_FAILED"
-  | (string & {});
+  | "RECOVERY_STATUS_GENERATION_FAILED";
 export const GeneratedRecoveryApkRecoveryStatusEnum = /*@__PURE__*/ S.String;
 
 /** Download metadata for an app recovery module. */
@@ -9277,7 +9191,7 @@ export const GeneratedRecoveryApk = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeneratedRecoveryApk",
 }) as any as S.Schema<GeneratedRecoveryApk>;
 
-export type GeneratedRecoveryApkList = GeneratedRecoveryApk[];
+export type GeneratedRecoveryApkList = ReadonlyArray<GeneratedRecoveryApk>;
 export const GeneratedRecoveryApkList = /*@__PURE__*/ S.Array(
   GeneratedRecoveryApk,
 ) as any as S.Schema<GeneratedRecoveryApkList>;
@@ -9298,7 +9212,7 @@ export const GeneratedStandaloneApk = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeneratedStandaloneApk",
 }) as any as S.Schema<GeneratedStandaloneApk>;
 
-export type GeneratedStandaloneApkList = GeneratedStandaloneApk[];
+export type GeneratedStandaloneApkList = ReadonlyArray<GeneratedStandaloneApk>;
 export const GeneratedStandaloneApkList = /*@__PURE__*/ S.Array(
   GeneratedStandaloneApk,
 ) as any as S.Schema<GeneratedStandaloneApkList>;
@@ -9320,8 +9234,7 @@ export type AssetModuleMetadataDeliveryTypeEnum =
   | "UNKNOWN_DELIVERY_TYPE"
   | "INSTALL_TIME"
   | "ON_DEMAND"
-  | "FAST_FOLLOW"
-  | (string & {});
+  | "FAST_FOLLOW";
 export const AssetModuleMetadataDeliveryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata of an asset module. */
@@ -9383,7 +9296,7 @@ export const SdkVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SdkVersion" }) as any as S.Schema<SdkVersion>;
 
-export type SdkVersionList = SdkVersion[];
+export type SdkVersionList = ReadonlyArray<SdkVersion>;
 export const SdkVersionList = /*@__PURE__*/ S.Array(
   SdkVersion,
 ) as any as S.Schema<SdkVersionList>;
@@ -9411,8 +9324,7 @@ export type AbiAliasEnum =
   | "ARM64_V8A"
   | "X86"
   | "X86_64"
-  | "RISCV64"
-  | (string & {});
+  | "RISCV64";
 export const AbiAliasEnum = /*@__PURE__*/ S.String;
 
 /** Represents an Abi. */
@@ -9426,7 +9338,7 @@ export const Abi = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Abi" }) as any as S.Schema<Abi>;
 
-export type AbiList = Abi[];
+export type AbiList = ReadonlyArray<Abi>;
 export const AbiList = /*@__PURE__*/ S.Array(Abi) as any as S.Schema<AbiList>;
 
 /** Targeting based on Abi. */
@@ -9454,7 +9366,7 @@ export const MultiAbi = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MultiAbi" }) as any as S.Schema<MultiAbi>;
 
-export type MultiAbiList = MultiAbi[];
+export type MultiAbiList = ReadonlyArray<MultiAbi>;
 export const MultiAbiList = /*@__PURE__*/ S.Array(
   MultiAbi,
 ) as any as S.Schema<MultiAbiList>;
@@ -9484,8 +9396,7 @@ export type ScreenDensityDensityAliasEnum =
   | "HDPI"
   | "XHDPI"
   | "XXHDPI"
-  | "XXXHDPI"
-  | (string & {});
+  | "XXXHDPI";
 export const ScreenDensityDensityAliasEnum = /*@__PURE__*/ S.String;
 
 /** Represents a screen density. */
@@ -9502,7 +9413,7 @@ export const ScreenDensity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScreenDensity" }) as any as S.Schema<ScreenDensity>;
 
-export type ScreenDensityList = ScreenDensity[];
+export type ScreenDensityList = ReadonlyArray<ScreenDensity>;
 export const ScreenDensityList = /*@__PURE__*/ S.Array(
   ScreenDensity,
 ) as any as S.Schema<ScreenDensityList>;
@@ -9534,8 +9445,7 @@ export type TextureCompressionFormatAliasEnum =
   | "S3TC"
   | "PVRTC"
   | "ASTC"
-  | "ETC2"
-  | (string & {});
+  | "ETC2";
 export const TextureCompressionFormatAliasEnum = /*@__PURE__*/ S.String;
 
 /** Represents texture compression format. */
@@ -9551,7 +9461,8 @@ export const TextureCompressionFormat = /*@__PURE__*/ S.suspend(() =>
   identifier: "TextureCompressionFormat",
 }) as any as S.Schema<TextureCompressionFormat>;
 
-export type TextureCompressionFormatList = TextureCompressionFormat[];
+export type TextureCompressionFormatList =
+  ReadonlyArray<TextureCompressionFormat>;
 export const TextureCompressionFormatList = /*@__PURE__*/ S.Array(
   TextureCompressionFormat,
 ) as any as S.Schema<TextureCompressionFormatList>;
@@ -9639,7 +9550,7 @@ export const ApkDescription = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApkDescription" }) as any as S.Schema<ApkDescription>;
 
-export type ApkDescriptionList = ApkDescription[];
+export type ApkDescriptionList = ReadonlyArray<ApkDescription>;
 export const ApkDescriptionList = /*@__PURE__*/ S.Array(
   ApkDescription,
 ) as any as S.Schema<ApkDescriptionList>;
@@ -9658,7 +9569,7 @@ export const AssetSliceSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AssetSliceSet" }) as any as S.Schema<AssetSliceSet>;
 
-export type AssetSliceSetList = AssetSliceSet[];
+export type AssetSliceSetList = ReadonlyArray<AssetSliceSet>;
 export const AssetSliceSetList = /*@__PURE__*/ S.Array(
   AssetSliceSet,
 ) as any as S.Schema<AssetSliceSetList>;
@@ -9692,16 +9603,14 @@ export const VariantTargeting = /*@__PURE__*/ S.suspend(() =>
 
 export type ModuleMetadataModuleTypeEnum =
   | "UNKNOWN_MODULE_TYPE"
-  | "FEATURE_MODULE"
-  | (string & {});
+  | "FEATURE_MODULE";
 export const ModuleMetadataModuleTypeEnum = /*@__PURE__*/ S.String;
 
 export type ModuleMetadataDeliveryTypeEnum =
   | "UNKNOWN_DELIVERY_TYPE"
   | "INSTALL_TIME"
   | "ON_DEMAND"
-  | "FAST_FOLLOW"
-  | (string & {});
+  | "FAST_FOLLOW";
 export const ModuleMetadataDeliveryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a device feature. */
@@ -9731,7 +9640,7 @@ export const DeviceFeatureTargeting = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceFeatureTargeting",
 }) as any as S.Schema<DeviceFeatureTargeting>;
 
-export type DeviceFeatureTargetingList = DeviceFeatureTargeting[];
+export type DeviceFeatureTargetingList = ReadonlyArray<DeviceFeatureTargeting>;
 export const DeviceFeatureTargetingList = /*@__PURE__*/ S.Array(
   DeviceFeatureTargeting,
 ) as any as S.Schema<DeviceFeatureTargetingList>;
@@ -9808,7 +9717,7 @@ export const ApkSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApkSet" }) as any as S.Schema<ApkSet>;
 
-export type ApkSetList = ApkSet[];
+export type ApkSetList = ReadonlyArray<ApkSet>;
 export const ApkSetList = /*@__PURE__*/ S.Array(
   ApkSet,
 ) as any as S.Schema<ApkSetList>;
@@ -9832,7 +9741,7 @@ export const SplitApkVariant = /*@__PURE__*/ S.suspend(() =>
   identifier: "SplitApkVariant",
 }) as any as S.Schema<SplitApkVariant>;
 
-export type SplitApkVariantList = SplitApkVariant[];
+export type SplitApkVariantList = ReadonlyArray<SplitApkVariant>;
 export const SplitApkVariantList = /*@__PURE__*/ S.Array(
   SplitApkVariant,
 ) as any as S.Schema<SplitApkVariantList>;
@@ -9876,7 +9785,8 @@ export const GeneratedAssetPackSlice = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeneratedAssetPackSlice",
 }) as any as S.Schema<GeneratedAssetPackSlice>;
 
-export type GeneratedAssetPackSliceList = GeneratedAssetPackSlice[];
+export type GeneratedAssetPackSliceList =
+  ReadonlyArray<GeneratedAssetPackSlice>;
 export const GeneratedAssetPackSliceList = /*@__PURE__*/ S.Array(
   GeneratedAssetPackSlice,
 ) as any as S.Schema<GeneratedAssetPackSliceList>;
@@ -9918,7 +9828,8 @@ export const GeneratedApksPerSigningKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeneratedApksPerSigningKey",
 }) as any as S.Schema<GeneratedApksPerSigningKey>;
 
-export type GeneratedApksPerSigningKeyList = GeneratedApksPerSigningKey[];
+export type GeneratedApksPerSigningKeyList =
+  ReadonlyArray<GeneratedApksPerSigningKey>;
 export const GeneratedApksPerSigningKeyList = /*@__PURE__*/ S.Array(
   GeneratedApksPerSigningKey,
 ) as any as S.Schema<GeneratedApksPerSigningKeyList>;
@@ -10267,7 +10178,7 @@ export const VoidedPurchase = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VoidedPurchase" }) as any as S.Schema<VoidedPurchase>;
 
-export type VoidedPurchaseList = VoidedPurchase[];
+export type VoidedPurchaseList = ReadonlyArray<VoidedPurchase>;
 export const VoidedPurchaseList = /*@__PURE__*/ S.Array(
   VoidedPurchase,
 ) as any as S.Schema<VoidedPurchaseList>;
@@ -10320,7 +10231,7 @@ export const ListReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReviewsRequest",
 }) as any as S.Schema<ListReviewsRequest>;
 
-export type ReviewList = Review[];
+export type ReviewList = ReadonlyArray<Review>;
 export const ReviewList = /*@__PURE__*/ S.Array(
   Review,
 ) as any as S.Schema<ReviewList>;
@@ -10365,7 +10276,7 @@ export const ListSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSystemapksVariantsRequest",
 }) as any as S.Schema<ListSystemapksVariantsRequest>;
 
-export type VariantList = Variant[];
+export type VariantList = ReadonlyArray<Variant>;
 export const VariantList = /*@__PURE__*/ S.Array(
   Variant,
 ) as any as S.Schema<VariantList>;
@@ -10407,7 +10318,7 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersRequest",
 }) as any as S.Schema<ListUsersRequest>;
 
-export type UserList = User[];
+export type UserList = ReadonlyArray<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -10483,8 +10394,7 @@ export const PatchEditsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PatchEditsExpansionfilesExpansionFileTypeEnum =
   | "expansionFileTypeUnspecified"
   | "main"
-  | "patch"
-  | (string & {});
+  | "patch";
 export const PatchEditsExpansionfilesExpansionFileTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10628,8 +10538,7 @@ export const PatchGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PatchInappproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const PatchInappproductsLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 export interface PatchInappproductsRequest {
@@ -10667,8 +10576,7 @@ export const PatchInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PatchMonetizationOnetimeproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const PatchMonetizationOnetimeproductsLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -10714,8 +10622,7 @@ export const PatchMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(
 export type PatchMonetizationSubscriptionsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const PatchMonetizationSubscriptionsLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -10761,8 +10668,7 @@ export const PatchMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
 export type PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum =
   /*@__PURE__*/ S.String;
 
@@ -10999,8 +10905,7 @@ export type OrdersReviewRefundRequestRefundPreferenceEnum =
   | "REFUND_PREFERENCE_UNSPECIFIED"
   | "DECLINE"
   | "APPROVE"
-  | "NEUTRAL"
-  | (string & {});
+  | "NEUTRAL";
 export const OrdersReviewRefundRequestRefundPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -11052,7 +10957,7 @@ export const ConsumptionUsageEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsumptionUsageEvent",
 }) as any as S.Schema<ConsumptionUsageEvent>;
 
-export type ConsumptionUsageEventList = ConsumptionUsageEvent[];
+export type ConsumptionUsageEventList = ReadonlyArray<ConsumptionUsageEvent>;
 export const ConsumptionUsageEventList = /*@__PURE__*/ S.Array(
   ConsumptionUsageEvent,
 ) as any as S.Schema<ConsumptionUsageEventList>;
@@ -11242,7 +11147,8 @@ export const AppStoreAppActiveApkSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppStoreAppActiveApkSet",
 }) as any as S.Schema<AppStoreAppActiveApkSet>;
 
-export type AppStoreAppActiveApkSetList = AppStoreAppActiveApkSet[];
+export type AppStoreAppActiveApkSetList =
+  ReadonlyArray<AppStoreAppActiveApkSet>;
 export const AppStoreAppActiveApkSetList = /*@__PURE__*/ S.Array(
   AppStoreAppActiveApkSet,
 ) as any as S.Schema<AppStoreAppActiveApkSetList>;
@@ -11291,7 +11197,8 @@ export const AppStoreAppStoreListing = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppStoreAppStoreListing",
 }) as any as S.Schema<AppStoreAppStoreListing>;
 
-export type AppStoreAppStoreListingList = AppStoreAppStoreListing[];
+export type AppStoreAppStoreListingList =
+  ReadonlyArray<AppStoreAppStoreListing>;
 export const AppStoreAppStoreListingList = /*@__PURE__*/ S.Array(
   AppStoreAppStoreListing,
 ) as any as S.Schema<AppStoreAppStoreListingList>;
@@ -11395,7 +11302,7 @@ export const NestedPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NestedPolicyResponse",
 }) as any as S.Schema<NestedPolicyResponse>;
 
-export type NestedPolicyResponseList = NestedPolicyResponse[];
+export type NestedPolicyResponseList = ReadonlyArray<NestedPolicyResponse>;
 export const NestedPolicyResponseList = /*@__PURE__*/ S.Array(
   NestedPolicyResponse,
 ) as any as S.Schema<NestedPolicyResponseList>;
@@ -11414,7 +11321,7 @@ export const KeyedGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyedGroup" }) as any as S.Schema<KeyedGroup>;
 
-export type KeyedGroupList = KeyedGroup[];
+export type KeyedGroupList = ReadonlyArray<KeyedGroup>;
 export const KeyedGroupList = /*@__PURE__*/ S.Array(
   KeyedGroup,
 ) as any as S.Schema<KeyedGroupList>;
@@ -11443,7 +11350,7 @@ export const Group = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
-export type GroupList = Group[];
+export type GroupList = ReadonlyArray<Group>;
 export const GroupList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupList>;
@@ -11493,7 +11400,7 @@ export const PolicyResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyResponse" }) as any as S.Schema<PolicyResponse>;
 
-export type PolicyResponseList = PolicyResponse[];
+export type PolicyResponseList = ReadonlyArray<PolicyResponse>;
 export const PolicyResponseList = /*@__PURE__*/ S.Array(
   PolicyResponse,
 ) as any as S.Schema<PolicyResponseList>;
@@ -11514,7 +11421,8 @@ export const AppStoreAppPolicyDeclaration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppStoreAppPolicyDeclaration",
 }) as any as S.Schema<AppStoreAppPolicyDeclaration>;
 
-export type AppStoreAppPolicyDeclarationList = AppStoreAppPolicyDeclaration[];
+export type AppStoreAppPolicyDeclarationList =
+  ReadonlyArray<AppStoreAppPolicyDeclaration>;
 export const AppStoreAppPolicyDeclarationList = /*@__PURE__*/ S.Array(
   AppStoreAppPolicyDeclaration,
 ) as any as S.Schema<AppStoreAppPolicyDeclarationList>;
@@ -11577,8 +11485,7 @@ export const UpdateAppStoreHostedAppResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum =
   | "APP_STORE_APP_PUBLISH_STATE_UNSPECIFIED"
   | "APP_STORE_APP_PUBLISH_STATE_PUBLISHED"
-  | "APP_STORE_APP_PUBLISH_STATE_UNPUBLISHED"
-  | (string & {});
+  | "APP_STORE_APP_PUBLISH_STATE_UNPUBLISHED";
 export const UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -11659,8 +11566,7 @@ export const UpdateEditsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateEditsExpansionfilesExpansionFileTypeEnum =
   | "expansionFileTypeUnspecified"
   | "main"
-  | "patch"
-  | (string & {});
+  | "patch";
 export const UpdateEditsExpansionfilesExpansionFileTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -11780,8 +11686,7 @@ export const UpdateEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateInappproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
-  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT"
-  | (string & {});
+  | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
 export const UpdateInappproductsLatencyToleranceEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateInappproductsRequest {
@@ -11904,8 +11809,7 @@ export const InternalAppSharingArtifact = /*@__PURE__*/ S.suspend(() =>
 
 export type UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum =
   | "DECLARATION_FILE_TYPE_UNSPECIFIED"
-  | "DECLARATION_FILE_TYPE_DOCUMENT"
-  | (string & {});
+  | "DECLARATION_FILE_TYPE_DOCUMENT";
 export const UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -12037,8 +11941,7 @@ export const UploadEditsBundlesRequest = /*@__PURE__*/ S.suspend(() =>
 export type UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum =
   | "deobfuscationFileTypeUnspecified"
   | "proguard"
-  | "nativeCode"
-  | (string & {});
+  | "nativeCode";
 export const UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -12074,8 +11977,7 @@ export const UploadEditsDeobfuscationfilesRequest = /*@__PURE__*/ S.suspend(
 export type DeobfuscationFileSymbolTypeEnum =
   | "deobfuscationFileTypeUnspecified"
   | "proguard"
-  | "nativeCode"
-  | (string & {});
+  | "nativeCode";
 export const DeobfuscationFileSymbolTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a deobfuscation file. */
@@ -12107,8 +12009,7 @@ export const DeobfuscationFilesUploadResponse = /*@__PURE__*/ S.suspend(() =>
 export type UploadEditsExpansionfilesExpansionFileTypeEnum =
   | "expansionFileTypeUnspecified"
   | "main"
-  | "patch"
-  | (string & {});
+  | "patch";
 export const UploadEditsExpansionfilesExpansionFileTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -12157,8 +12058,7 @@ export const ExpansionFilesUploadResponse = /*@__PURE__*/ S.suspend(() =>
 export type UploadEditsImagesAiGeneratedStateEnum =
   | "aiGeneratedStateUnspecified"
   | "aiGeneratedStateNotAiGenerated"
-  | "aiGeneratedStateAiGeneratedDeveloperAttested"
-  | (string & {});
+  | "aiGeneratedStateAiGeneratedDeveloperAttested";
 export const UploadEditsImagesAiGeneratedStateEnum = /*@__PURE__*/ S.String;
 
 export type UploadEditsImagesImageTypeEnum =
@@ -12170,8 +12070,7 @@ export type UploadEditsImagesImageTypeEnum =
   | "wearScreenshots"
   | "icon"
   | "featureGraphic"
-  | "tvBanner"
-  | (string & {});
+  | "tvBanner";
 export const UploadEditsImagesImageTypeEnum = /*@__PURE__*/ S.String;
 
 export interface UploadEditsImagesRequest {

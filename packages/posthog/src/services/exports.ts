@@ -72,40 +72,24 @@ export type ExportFormatEnum =
   | "video/webm"
   | "video/mp4"
   | "image/gif"
-  | "application/json"
-  | (string & {});
+  | "application/json";
 export const ExportFormatEnum = /*@__PURE__*/ S.String;
 
 export interface ExportsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: number;
   dashboard?: number | null;
   insight?: number | null;
   export_format?: ExportFormatEnum;
-  created_at?: string;
-  has_content?: boolean;
   export_context?: unknown;
-  filename?: string;
-  expires_after?: string | null;
-  exception?: string | null;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const ExportsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.Number),
     dashboard: S.optional(S.NullOr(S.Number)),
     insight: S.optional(S.NullOr(S.Number)),
     export_format: S.optional(ExportFormatEnum),
-    created_at: S.optional(S.String),
-    has_content: S.optional(S.Boolean),
     export_context: S.optional(S.Unknown),
-    filename: S.optional(S.String),
-    expires_after: S.optional(S.NullOr(S.String)),
-    exception: S.optional(S.NullOr(S.String)),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -172,7 +156,8 @@ export const ExportsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportsListRequest",
 }) as any as S.Schema<ExportsListRequest>;
 
-export type PaginatedExportedAssetListResultsList = ExportedAsset[];
+export type PaginatedExportedAssetListResultsList =
+  ReadonlyArray<ExportedAsset>;
 export const PaginatedExportedAssetListResultsList = /*@__PURE__*/ S.Array(
   ExportedAsset,
 ) as any as S.Schema<PaginatedExportedAssetListResultsList>;

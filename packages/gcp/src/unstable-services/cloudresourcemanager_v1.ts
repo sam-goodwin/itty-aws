@@ -145,7 +145,7 @@ export const ClearOrgPolicyProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClearOrgPolicyProjectsRequest",
 }) as any as S.Schema<ClearOrgPolicyProjectsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -198,8 +198,7 @@ export type ProjectLifecycleStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "ACTIVE"
   | "DELETE_REQUESTED"
-  | "DELETE_IN_PROGRESS"
-  | (string & {});
+  | "DELETE_IN_PROGRESS";
 export const ProjectLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -281,7 +280,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -402,7 +401,7 @@ export const Ancestor = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Ancestor" }) as any as S.Schema<Ancestor>;
 
-export type AncestorList = Ancestor[];
+export type AncestorList = ReadonlyArray<Ancestor>;
 export const AncestorList = /*@__PURE__*/ S.Array(
   Ancestor,
 ) as any as S.Schema<AncestorList>;
@@ -468,8 +467,7 @@ export const BooleanPolicy = /*@__PURE__*/ S.suspend(() =>
 export type ListPolicyAllValuesEnum =
   | "ALL_VALUES_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const ListPolicyAllValuesEnum = /*@__PURE__*/ S.String;
 
 /** Used in `policy_type` to specify how `list_policy` behaves at this resource. `ListPolicy` can define specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied by setting the `allowed_values` and `denied_values` fields. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used. You can set `allowed_values` and `denied_values` in the same `Policy` if `all_values` is `ALL_VALUES_UNSPECIFIED`. `ALLOW` or `DENY` are used to allow or deny all values. If `all_values` is set to either `ALLOW` or `DENY`, `allowed_values` and `denied_values` must be unset. */
@@ -625,8 +623,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -643,7 +640,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -662,7 +659,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -704,7 +701,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -807,8 +804,7 @@ export const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type OrganizationLifecycleStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DELETE_REQUESTED"
-  | (string & {});
+  | "DELETE_REQUESTED";
 export const OrganizationLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 /** The entity that owns an Organization. The lifetime of the Organization and all of its descendants are bound to the `OrganizationOwner`. If the `OrganizationOwner` is deleted, the Organization and all its descendants will be deleted. */
@@ -999,8 +995,7 @@ export const ListConstraint = /*@__PURE__*/ S.suspend(() =>
 export type ConstraintConstraintDefaultEnum =
   | "CONSTRAINT_DEFAULT_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const ConstraintConstraintDefaultEnum = /*@__PURE__*/ S.String;
 
 /** A `Constraint` that is either enforced or not. For example a constraint `constraints/compute.disableSerialPortAccess`. If it is enforced on a VM instance, serial port connections will not be opened to that instance. */
@@ -1040,7 +1035,7 @@ export const Constraint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Constraint" }) as any as S.Schema<Constraint>;
 
-export type ConstraintList = Constraint[];
+export type ConstraintList = ReadonlyArray<Constraint>;
 export const ConstraintList = /*@__PURE__*/ S.Array(
   Constraint,
 ) as any as S.Schema<ConstraintList>;
@@ -1134,7 +1129,7 @@ export const ListLiensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiensRequest",
 }) as any as S.Schema<ListLiensRequest>;
 
-export type LienList = Lien[];
+export type LienList = ReadonlyArray<Lien>;
 export const LienList = /*@__PURE__*/ S.Array(
   Lien,
 ) as any as S.Schema<LienList>;
@@ -1192,7 +1187,7 @@ export const ListOrgPoliciesFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrgPoliciesFoldersRequest",
 }) as any as S.Schema<ListOrgPoliciesFoldersRequest>;
 
-export type OrgPolicyList = OrgPolicy[];
+export type OrgPolicyList = ReadonlyArray<OrgPolicy>;
 export const OrgPolicyList = /*@__PURE__*/ S.Array(
   OrgPolicy,
 ) as any as S.Schema<OrgPolicyList>;
@@ -1279,7 +1274,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsRequest",
 }) as any as S.Schema<ListProjectsRequest>;
 
-export type ProjectList = Project[];
+export type ProjectList = ReadonlyArray<Project>;
 export const ProjectList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectList>;
@@ -1337,7 +1332,7 @@ export const SearchOrganizationsRequest_ = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchOrganizationsRequest_",
 }) as any as S.Schema<SearchOrganizationsRequest_>;
 
-export type OrganizationList = Organization[];
+export type OrganizationList = ReadonlyArray<Organization>;
 export const OrganizationList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationList>;

@@ -181,61 +181,71 @@ export class IndicatorFeedsNotEntitled extends T.applyErrorMatchers(
   ],
 ) {}
 
-export type AttackSurfaceReportIssuesClassRequestIssueClassList = string[];
+export type AttackSurfaceReportIssuesClassRequestIssueClassList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesClassRequestIssueClassList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesClassRequestIssueClassList>;
 
-export type AttackSurfaceReportIssuesClassRequestIssueClassNeqList = string[];
+export type AttackSurfaceReportIssuesClassRequestIssueClassNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesClassRequestIssueClassNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesClassRequestIssueClassNeqList>;
 
-export type AttackSurfaceReportIssuesClassRequestIssueTypeList = string[];
+export type AttackSurfaceReportIssuesClassRequestIssueTypeList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesClassRequestIssueTypeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesClassRequestIssueTypeList>;
 
-export type AttackSurfaceReportIssuesClassRequestIssueTypeNeqList = string[];
+export type AttackSurfaceReportIssuesClassRequestIssueTypeNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesClassRequestIssueTypeNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesClassRequestIssueTypeNeqList>;
 
-export type AttackSurfaceReportIssuesClassRequestProductList = string[];
+export type AttackSurfaceReportIssuesClassRequestProductList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesClassRequestProductList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesClassRequestProductList>;
 
-export type AttackSurfaceReportIssuesClassRequestProductNeqList = string[];
+export type AttackSurfaceReportIssuesClassRequestProductNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesClassRequestProductNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesClassRequestProductNeqList>;
 
-export type AttackSurfaceReportIssuesClassRequestSeverityList = string[];
+export type AttackSurfaceReportIssuesClassRequestSeverityList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesClassRequestSeverityList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesClassRequestSeverityList>;
 
-export type AttackSurfaceReportIssuesClassRequestSeverityNeqList = string[];
+export type AttackSurfaceReportIssuesClassRequestSeverityNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesClassRequestSeverityNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesClassRequestSeverityNeqList>;
 
-export type AttackSurfaceReportIssuesClassRequestSubjectList = string[];
+export type AttackSurfaceReportIssuesClassRequestSubjectList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesClassRequestSubjectList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesClassRequestSubjectList>;
 
-export type AttackSurfaceReportIssuesClassRequestSubjectNeqList = string[];
+export type AttackSurfaceReportIssuesClassRequestSubjectNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesClassRequestSubjectNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -333,7 +343,7 @@ export const AttackSurfaceReportIssuesClassResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AttackSurfaceReportIssuesClassResultItem>;
 
 export type AttackSurfaceReportIssuesClassResultList =
-  AttackSurfaceReportIssuesClassResultItem[];
+  ReadonlyArray<AttackSurfaceReportIssuesClassResultItem>;
 export const AttackSurfaceReportIssuesClassResultList = /*@__PURE__*/ S.Array(
   AttackSurfaceReportIssuesClassResultItem,
 ) as any as S.Schema<AttackSurfaceReportIssuesClassResultList>;
@@ -447,13 +457,15 @@ export const CreateIndicatorFeedPermissionResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateIndicatorFeedPermissionResponse",
 }) as any as S.Schema<CreateIndicatorFeedPermissionResponse>;
 
-export type MiscategorizationsCreateRequestContentAddsList = number[];
+export type MiscategorizationsCreateRequestContentAddsList =
+  ReadonlyArray<number>;
 export const MiscategorizationsCreateRequestContentAddsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<MiscategorizationsCreateRequestContentAddsList>;
 
-export type MiscategorizationsCreateRequestContentRemovesList = number[];
+export type MiscategorizationsCreateRequestContentRemovesList =
+  ReadonlyArray<number>;
 export const MiscategorizationsCreateRequestContentRemovesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -463,18 +475,19 @@ export type MiscategorizationsCreateRequestIndicatorType =
   | "domain"
   | "ipv4"
   | "ipv6"
-  | "url"
-  | (string & {});
+  | "url";
 export const MiscategorizationsCreateRequestIndicatorType =
   /*@__PURE__*/ S.String;
 
-export type MiscategorizationsCreateRequestSecurityAddsList = number[];
+export type MiscategorizationsCreateRequestSecurityAddsList =
+  ReadonlyArray<number>;
 export const MiscategorizationsCreateRequestSecurityAddsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<MiscategorizationsCreateRequestSecurityAddsList>;
 
-export type MiscategorizationsCreateRequestSecurityRemovesList = number[];
+export type MiscategorizationsCreateRequestSecurityRemovesList =
+  ReadonlyArray<number>;
 export const MiscategorizationsCreateRequestSecurityRemovesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -697,7 +710,7 @@ export const GetAsnSubnetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAsnSubnetRequest",
 }) as any as S.Schema<GetAsnSubnetRequest>;
 
-export type AsnSubnetsGetResponseSubnetsList = string[];
+export type AsnSubnetsGetResponseSubnetsList = ReadonlyArray<string>;
 export const AsnSubnetsGetResponseSubnetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AsnSubnetsGetResponseSubnetsList>;
@@ -748,7 +761,7 @@ export const GetAttackSurfaceReportIssueTypeRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetAttackSurfaceReportIssueTypeRequest",
 }) as any as S.Schema<GetAttackSurfaceReportIssueTypeRequest>;
 
-export type AttackSurfaceReportIssueTypesGetResultList = string[];
+export type AttackSurfaceReportIssueTypesGetResultList = ReadonlyArray<string>;
 export const AttackSurfaceReportIssueTypesGetResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AttackSurfaceReportIssueTypesGetResultList>;
@@ -844,7 +857,7 @@ export const DomainsGetResponseContentCategoriesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DomainsGetResponseContentCategoriesItem>;
 
 export type DomainsGetResponseContentCategoriesList =
-  DomainsGetResponseContentCategoriesItem[];
+  ReadonlyArray<DomainsGetResponseContentCategoriesItem>;
 export const DomainsGetResponseContentCategoriesList = /*@__PURE__*/ S.Array(
   DomainsGetResponseContentCategoriesItem,
 ) as any as S.Schema<DomainsGetResponseContentCategoriesList>;
@@ -866,7 +879,7 @@ export const DomainsGetResponseInheritedContentCategoriesItem =
   }) as any as S.Schema<DomainsGetResponseInheritedContentCategoriesItem>;
 
 export type DomainsGetResponseInheritedContentCategoriesList =
-  DomainsGetResponseInheritedContentCategoriesItem[];
+  ReadonlyArray<DomainsGetResponseInheritedContentCategoriesItem>;
 export const DomainsGetResponseInheritedContentCategoriesList =
   /*@__PURE__*/ S.Array(
     DomainsGetResponseInheritedContentCategoriesItem,
@@ -889,7 +902,7 @@ export const DomainsGetResponseInheritedRiskTypesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DomainsGetResponseInheritedRiskTypesItem>;
 
 export type DomainsGetResponseInheritedRiskTypesList =
-  DomainsGetResponseInheritedRiskTypesItem[];
+  ReadonlyArray<DomainsGetResponseInheritedRiskTypesItem>;
 export const DomainsGetResponseInheritedRiskTypesList = /*@__PURE__*/ S.Array(
   DomainsGetResponseInheritedRiskTypesItem,
 ) as any as S.Schema<DomainsGetResponseInheritedRiskTypesList>;
@@ -911,7 +924,7 @@ export const DomainsGetResponseResolvesToRefsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DomainsGetResponseResolvesToRefsItem>;
 
 export type DomainsGetResponseResolvesToRefsList =
-  DomainsGetResponseResolvesToRefsItem[];
+  ReadonlyArray<DomainsGetResponseResolvesToRefsItem>;
 export const DomainsGetResponseResolvesToRefsList = /*@__PURE__*/ S.Array(
   DomainsGetResponseResolvesToRefsItem,
 ) as any as S.Schema<DomainsGetResponseResolvesToRefsList>;
@@ -931,7 +944,8 @@ export const DomainsGetResponseRiskTypesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainsGetResponseRiskTypesItem",
 }) as any as S.Schema<DomainsGetResponseRiskTypesItem>;
 
-export type DomainsGetResponseRiskTypesList = DomainsGetResponseRiskTypesItem[];
+export type DomainsGetResponseRiskTypesList =
+  ReadonlyArray<DomainsGetResponseRiskTypesItem>;
 export const DomainsGetResponseRiskTypesList = /*@__PURE__*/ S.Array(
   DomainsGetResponseRiskTypesItem,
 ) as any as S.Schema<DomainsGetResponseRiskTypesList>;
@@ -994,7 +1008,7 @@ export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDomainResponse",
 }) as any as S.Schema<GetDomainResponse>;
 
-export type DomainsBulksGetRequestDomainList = string[];
+export type DomainsBulksGetRequestDomainList = ReadonlyArray<string>;
 export const DomainsBulksGetRequestDomainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DomainsBulksGetRequestDomainList>;
@@ -1074,7 +1088,7 @@ export const DomainsBulksGetResultItemContentCategoriesItem =
   }) as any as S.Schema<DomainsBulksGetResultItemContentCategoriesItem>;
 
 export type DomainsBulksGetResultItemContentCategoriesList =
-  DomainsBulksGetResultItemContentCategoriesItem[];
+  ReadonlyArray<DomainsBulksGetResultItemContentCategoriesItem>;
 export const DomainsBulksGetResultItemContentCategoriesList =
   /*@__PURE__*/ S.Array(
     DomainsBulksGetResultItemContentCategoriesItem,
@@ -1097,7 +1111,7 @@ export const DomainsBulksGetResultItemInheritedContentCategoriesItem =
   }) as any as S.Schema<DomainsBulksGetResultItemInheritedContentCategoriesItem>;
 
 export type DomainsBulksGetResultItemInheritedContentCategoriesList =
-  DomainsBulksGetResultItemInheritedContentCategoriesItem[];
+  ReadonlyArray<DomainsBulksGetResultItemInheritedContentCategoriesItem>;
 export const DomainsBulksGetResultItemInheritedContentCategoriesList =
   /*@__PURE__*/ S.Array(
     DomainsBulksGetResultItemInheritedContentCategoriesItem,
@@ -1120,7 +1134,7 @@ export const DomainsBulksGetResultItemInheritedRiskTypesItem =
   }) as any as S.Schema<DomainsBulksGetResultItemInheritedRiskTypesItem>;
 
 export type DomainsBulksGetResultItemInheritedRiskTypesList =
-  DomainsBulksGetResultItemInheritedRiskTypesItem[];
+  ReadonlyArray<DomainsBulksGetResultItemInheritedRiskTypesItem>;
 export const DomainsBulksGetResultItemInheritedRiskTypesList =
   /*@__PURE__*/ S.Array(
     DomainsBulksGetResultItemInheritedRiskTypesItem,
@@ -1143,7 +1157,7 @@ export const DomainsBulksGetResultItemRiskTypesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DomainsBulksGetResultItemRiskTypesItem>;
 
 export type DomainsBulksGetResultItemRiskTypesList =
-  DomainsBulksGetResultItemRiskTypesItem[];
+  ReadonlyArray<DomainsBulksGetResultItemRiskTypesItem>;
 export const DomainsBulksGetResultItemRiskTypesList = /*@__PURE__*/ S.Array(
   DomainsBulksGetResultItemRiskTypesItem,
 ) as any as S.Schema<DomainsBulksGetResultItemRiskTypesList>;
@@ -1200,7 +1214,8 @@ export const DomainsBulksGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainsBulksGetResultItem",
 }) as any as S.Schema<DomainsBulksGetResultItem>;
 
-export type DomainsBulksGetResultList = DomainsBulksGetResultItem[];
+export type DomainsBulksGetResultList =
+  ReadonlyArray<DomainsBulksGetResultItem>;
 export const DomainsBulksGetResultList = /*@__PURE__*/ S.Array(
   DomainsBulksGetResultItem,
 ) as any as S.Schema<DomainsBulksGetResultList>;
@@ -1249,7 +1264,7 @@ export const DomainHistoryGetResultItemCategorizationsItemCategoriesItem =
   }) as any as S.Schema<DomainHistoryGetResultItemCategorizationsItemCategoriesItem>;
 
 export type DomainHistoryGetResultItemCategorizationsItemCategoriesList =
-  DomainHistoryGetResultItemCategorizationsItemCategoriesItem[];
+  ReadonlyArray<DomainHistoryGetResultItemCategorizationsItemCategoriesItem>;
 export const DomainHistoryGetResultItemCategorizationsItemCategoriesList =
   /*@__PURE__*/ S.Array(
     DomainHistoryGetResultItemCategorizationsItemCategoriesItem,
@@ -1274,7 +1289,7 @@ export const DomainHistoryGetResultItemCategorizationsItem =
   }) as any as S.Schema<DomainHistoryGetResultItemCategorizationsItem>;
 
 export type DomainHistoryGetResultItemCategorizationsList =
-  DomainHistoryGetResultItemCategorizationsItem[];
+  ReadonlyArray<DomainHistoryGetResultItemCategorizationsItem>;
 export const DomainHistoryGetResultItemCategorizationsList =
   /*@__PURE__*/ S.Array(
     DomainHistoryGetResultItemCategorizationsItem,
@@ -1293,7 +1308,8 @@ export const DomainHistoryGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainHistoryGetResultItem",
 }) as any as S.Schema<DomainHistoryGetResultItem>;
 
-export type DomainHistoryGetResultList = DomainHistoryGetResultItem[];
+export type DomainHistoryGetResultList =
+  ReadonlyArray<DomainHistoryGetResultItem>;
 export const DomainHistoryGetResultList = /*@__PURE__*/ S.Array(
   DomainHistoryGetResultItem,
 ) as any as S.Schema<DomainHistoryGetResultList>;
@@ -1419,7 +1435,9 @@ export type IndicatorFeedsGetResponseLatestUploadStatus =
   | "Mirroring"
   | "Unifying"
   | "Loading"
-  | (string & {});
+  | "Provisioning"
+  | "Complete"
+  | "Error";
 export const IndicatorFeedsGetResponseLatestUploadStatus =
   /*@__PURE__*/ S.String;
 
@@ -1505,8 +1523,7 @@ export const GetIpRequest = /*@__PURE__*/ S.suspend(() =>
 export type IpsGetResultItemBelongsToRefType =
   | "hosting_provider"
   | "isp"
-  | "organization"
-  | (string & {});
+  | "organization";
 export const IpsGetResultItemBelongsToRefType = /*@__PURE__*/ S.String;
 
 export interface IpsGetResultItemBelongsToRef {
@@ -1544,7 +1561,8 @@ export const IpsGetResultItemRiskTypesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpsGetResultItemRiskTypesItem",
 }) as any as S.Schema<IpsGetResultItemRiskTypesItem>;
 
-export type IpsGetResultItemRiskTypesList = IpsGetResultItemRiskTypesItem[];
+export type IpsGetResultItemRiskTypesList =
+  ReadonlyArray<IpsGetResultItemRiskTypesItem>;
 export const IpsGetResultItemRiskTypesList = /*@__PURE__*/ S.Array(
   IpsGetResultItemRiskTypesItem,
 ) as any as S.Schema<IpsGetResultItemRiskTypesList>;
@@ -1569,7 +1587,7 @@ export const IpsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpsGetResultItem",
 }) as any as S.Schema<IpsGetResultItem>;
 
-export type IpsGetResultList = IpsGetResultItem[];
+export type IpsGetResultList = ReadonlyArray<IpsGetResultItem>;
 export const IpsGetResultList = /*@__PURE__*/ S.Array(
   IpsGetResultItem,
 ) as any as S.Schema<IpsGetResultList>;
@@ -1599,12 +1617,12 @@ export const GetWhoiRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetWhoiRequest" }) as any as S.Schema<GetWhoiRequest>;
 
-export type WhoisGetResponseNameserversList = string[];
+export type WhoisGetResponseNameserversList = ReadonlyArray<string>;
 export const WhoisGetResponseNameserversList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WhoisGetResponseNameserversList>;
 
-export type WhoisGetResponseStatusList = string[];
+export type WhoisGetResponseStatusList = ReadonlyArray<string>;
 export const WhoisGetResponseStatusList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WhoisGetResponseStatusList>;
@@ -1833,61 +1851,71 @@ export const GetWhoiResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetWhoiResponse",
 }) as any as S.Schema<GetWhoiResponse>;
 
-export type AttackSurfaceReportIssuesListRequestIssueClassList = string[];
+export type AttackSurfaceReportIssuesListRequestIssueClassList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesListRequestIssueClassList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesListRequestIssueClassList>;
 
-export type AttackSurfaceReportIssuesListRequestIssueClassNeqList = string[];
+export type AttackSurfaceReportIssuesListRequestIssueClassNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesListRequestIssueClassNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesListRequestIssueClassNeqList>;
 
-export type AttackSurfaceReportIssuesListRequestIssueTypeList = string[];
+export type AttackSurfaceReportIssuesListRequestIssueTypeList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesListRequestIssueTypeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesListRequestIssueTypeList>;
 
-export type AttackSurfaceReportIssuesListRequestIssueTypeNeqList = string[];
+export type AttackSurfaceReportIssuesListRequestIssueTypeNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesListRequestIssueTypeNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesListRequestIssueTypeNeqList>;
 
-export type AttackSurfaceReportIssuesListRequestProductList = string[];
+export type AttackSurfaceReportIssuesListRequestProductList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesListRequestProductList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesListRequestProductList>;
 
-export type AttackSurfaceReportIssuesListRequestProductNeqList = string[];
+export type AttackSurfaceReportIssuesListRequestProductNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesListRequestProductNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesListRequestProductNeqList>;
 
-export type AttackSurfaceReportIssuesListRequestSeverityList = string[];
+export type AttackSurfaceReportIssuesListRequestSeverityList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesListRequestSeverityList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesListRequestSeverityList>;
 
-export type AttackSurfaceReportIssuesListRequestSeverityNeqList = string[];
+export type AttackSurfaceReportIssuesListRequestSeverityNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesListRequestSeverityNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesListRequestSeverityNeqList>;
 
-export type AttackSurfaceReportIssuesListRequestSubjectList = string[];
+export type AttackSurfaceReportIssuesListRequestSubjectList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesListRequestSubjectList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesListRequestSubjectList>;
 
-export type AttackSurfaceReportIssuesListRequestSubjectNeqList = string[];
+export type AttackSurfaceReportIssuesListRequestSubjectNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesListRequestSubjectNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1976,6 +2004,16 @@ export const ListAttackSurfaceReportIssuesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAttackSurfaceReportIssuesRequest",
 }) as any as S.Schema<ListAttackSurfaceReportIssuesRequest>;
 
+export type AttackSurfaceReportIssuesListResponseIssuesItemIssueType =
+  | "compliance_violation"
+  | "email_security"
+  | "exposed_infrastructure"
+  | "insecure_configuration"
+  | "weak_authentication"
+  | "configuration_suggestion";
+export const AttackSurfaceReportIssuesListResponseIssuesItemIssueType =
+  /*@__PURE__*/ S.String;
+
 export interface AttackSurfaceReportIssuesListResponseIssuesItemPayload {
   /** Describes the method used to detect insight. */
   detectionMethod?: string;
@@ -1994,23 +2032,20 @@ export const AttackSurfaceReportIssuesListResponseIssuesItemPayload =
 export type AttackSurfaceReportIssuesListResponseIssuesItemSeverity =
   | "Low"
   | "Moderate"
-  | "Critical"
-  | (string & {});
+  | "Critical";
 export const AttackSurfaceReportIssuesListResponseIssuesItemSeverity =
   /*@__PURE__*/ S.String;
 
 export type AttackSurfaceReportIssuesListResponseIssuesItemStatus =
   | "active"
-  | "resolved"
-  | (string & {});
+  | "resolved";
 export const AttackSurfaceReportIssuesListResponseIssuesItemStatus =
   /*@__PURE__*/ S.String;
 
 export type AttackSurfaceReportIssuesListResponseIssuesItemUserClassification =
   | "false_positive"
   | "accept_risk"
-  | "other"
-  | (string & {});
+  | "other";
 export const AttackSurfaceReportIssuesListResponseIssuesItemUserClassification =
   /*@__PURE__*/ S.String;
 
@@ -2020,7 +2055,7 @@ export interface AttackSurfaceReportIssuesListResponseIssuesItem {
   /** Indicates whether the insight has a large payload that requires fetching via the context endpoint. */
   hasExtendedContext?: boolean;
   issueClass?: string;
-  issueType?: unknown;
+  issueType?: AttackSurfaceReportIssuesListResponseIssuesItemIssueType;
   payload?: AttackSurfaceReportIssuesListResponseIssuesItemPayload;
   resolveLink?: string;
   resolveText?: string;
@@ -2042,7 +2077,11 @@ export const AttackSurfaceReportIssuesListResponseIssuesItem =
         S.Boolean.pipe(T.Body("has_extended_context")),
       ),
       issueClass: S.optional(S.String.pipe(T.Body("issue_class"))),
-      issueType: S.optional(S.Unknown.pipe(T.Body("issue_type"))),
+      issueType: S.optional(
+        AttackSurfaceReportIssuesListResponseIssuesItemIssueType.pipe(
+          T.Body("issue_type"),
+        ),
+      ),
       payload: S.optional(
         AttackSurfaceReportIssuesListResponseIssuesItemPayload,
       ),
@@ -2066,7 +2105,7 @@ export const AttackSurfaceReportIssuesListResponseIssuesItem =
   }) as any as S.Schema<AttackSurfaceReportIssuesListResponseIssuesItem>;
 
 export type AttackSurfaceReportIssuesListResponseIssuesList =
-  AttackSurfaceReportIssuesListResponseIssuesItem[];
+  ReadonlyArray<AttackSurfaceReportIssuesListResponseIssuesItem>;
 export const AttackSurfaceReportIssuesListResponseIssuesList =
   /*@__PURE__*/ S.Array(
     AttackSurfaceReportIssuesListResponseIssuesItem,
@@ -2102,7 +2141,10 @@ export interface ListDnsRequest {
   page?: number;
   /** Maximum number of results requested. */
   perPage?: number;
-  startEndParams?: string;
+  /** Defaults to the current date. */
+  startEndParamsEnd?: string;
+  /** Defaults to 30 days before the end parameter value. */
+  startEndParamsStart?: string;
 }
 export const ListDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2110,7 +2152,12 @@ export const ListDnsRequest = /*@__PURE__*/ S.suspend(() =>
     ipv4: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    startEndParams: S.optional(S.String.pipe(T.Query("start_end_params"))),
+    startEndParamsEnd: S.optional(
+      S.String.pipe(T.Query("start_end_params.end")),
+    ),
+    startEndParamsStart: S.optional(
+      S.String.pipe(T.Query("start_end_params.start")),
+    ),
   })
     .pipe(
       T.Http({
@@ -2141,7 +2188,7 @@ export const DnsListResponseReverseRecordsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnsListResponseReverseRecordsItem>;
 
 export type DnsListResponseReverseRecordsList =
-  DnsListResponseReverseRecordsItem[];
+  ReadonlyArray<DnsListResponseReverseRecordsItem>;
 export const DnsListResponseReverseRecordsList = /*@__PURE__*/ S.Array(
   DnsListResponseReverseRecordsItem,
 ) as any as S.Schema<DnsListResponseReverseRecordsList>;
@@ -2219,7 +2266,7 @@ export const IndicatorFeedsPermissionsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IndicatorFeedsPermissionsListResultItem>;
 
 export type IndicatorFeedsPermissionsListResultList =
-  IndicatorFeedsPermissionsListResultItem[];
+  ReadonlyArray<IndicatorFeedsPermissionsListResultItem>;
 export const IndicatorFeedsPermissionsListResultList = /*@__PURE__*/ S.Array(
   IndicatorFeedsPermissionsListResultItem,
 ) as any as S.Schema<IndicatorFeedsPermissionsListResultList>;
@@ -2285,7 +2332,8 @@ export const IndicatorFeedsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndicatorFeedsListResultItem",
 }) as any as S.Schema<IndicatorFeedsListResultItem>;
 
-export type IndicatorFeedsListResultList = IndicatorFeedsListResultItem[];
+export type IndicatorFeedsListResultList =
+  ReadonlyArray<IndicatorFeedsListResultItem>;
 export const IndicatorFeedsListResultList = /*@__PURE__*/ S.Array(
   IndicatorFeedsListResultItem,
 ) as any as S.Schema<IndicatorFeedsListResultList>;
@@ -2355,7 +2403,7 @@ export const SinkholesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SinkholesListResultItem",
 }) as any as S.Schema<SinkholesListResultItem>;
 
-export type SinkholesListResultList = SinkholesListResultItem[];
+export type SinkholesListResultList = ReadonlyArray<SinkholesListResultItem>;
 export const SinkholesListResultList = /*@__PURE__*/ S.Array(
   SinkholesListResultItem,
 ) as any as S.Schema<SinkholesListResultList>;
@@ -2380,17 +2428,21 @@ export interface PutIndicatorFeedSnapshotRequest {
   accountId: string;
   /** Indicator feed ID */
   feedId: number;
+  /** The file to upload. Either a plain STIX2/CRDF body or a gzipped one (recognised by 0x1f 0x8b magic bytes or a .gz filename suffix). */
+  source?: string;
 }
 export const PutIndicatorFeedSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     feedId: S.Number.pipe(T.Label("feed_id")),
+    source: S.optional(S.String),
   })
     .pipe(
       T.Http({
         method: "PUT",
         uri: "/accounts/{account_id}/intel/indicator-feeds/{feed_id}/snapshot",
         code: 200,
+        contentType: "multipart",
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2417,62 +2469,71 @@ export const PutIndicatorFeedSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutIndicatorFeedSnapshotResponse",
 }) as any as S.Schema<PutIndicatorFeedSnapshotResponse>;
 
-export type AttackSurfaceReportIssuesSeverityRequestIssueClassList = string[];
+export type AttackSurfaceReportIssuesSeverityRequestIssueClassList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesSeverityRequestIssueClassList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestIssueClassList>;
 
 export type AttackSurfaceReportIssuesSeverityRequestIssueClassNeqList =
-  string[];
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesSeverityRequestIssueClassNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestIssueClassNeqList>;
 
-export type AttackSurfaceReportIssuesSeverityRequestIssueTypeList = string[];
+export type AttackSurfaceReportIssuesSeverityRequestIssueTypeList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesSeverityRequestIssueTypeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestIssueTypeList>;
 
-export type AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList = string[];
+export type AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList>;
 
-export type AttackSurfaceReportIssuesSeverityRequestProductList = string[];
+export type AttackSurfaceReportIssuesSeverityRequestProductList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesSeverityRequestProductList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestProductList>;
 
-export type AttackSurfaceReportIssuesSeverityRequestProductNeqList = string[];
+export type AttackSurfaceReportIssuesSeverityRequestProductNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesSeverityRequestProductNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestProductNeqList>;
 
-export type AttackSurfaceReportIssuesSeverityRequestSeverityList = string[];
+export type AttackSurfaceReportIssuesSeverityRequestSeverityList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesSeverityRequestSeverityList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestSeverityList>;
 
-export type AttackSurfaceReportIssuesSeverityRequestSeverityNeqList = string[];
+export type AttackSurfaceReportIssuesSeverityRequestSeverityNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesSeverityRequestSeverityNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestSeverityNeqList>;
 
-export type AttackSurfaceReportIssuesSeverityRequestSubjectList = string[];
+export type AttackSurfaceReportIssuesSeverityRequestSubjectList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesSeverityRequestSubjectList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestSubjectList>;
 
-export type AttackSurfaceReportIssuesSeverityRequestSubjectNeqList = string[];
+export type AttackSurfaceReportIssuesSeverityRequestSubjectNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesSeverityRequestSubjectNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2570,7 +2631,7 @@ export const AttackSurfaceReportIssuesSeverityResultItem =
   }) as any as S.Schema<AttackSurfaceReportIssuesSeverityResultItem>;
 
 export type AttackSurfaceReportIssuesSeverityResultList =
-  AttackSurfaceReportIssuesSeverityResultItem[];
+  ReadonlyArray<AttackSurfaceReportIssuesSeverityResultItem>;
 export const AttackSurfaceReportIssuesSeverityResultList =
   /*@__PURE__*/ S.Array(
     AttackSurfaceReportIssuesSeverityResultItem,
@@ -2585,61 +2646,71 @@ export const SeverityAttackSurfaceReportIssueResponse = /*@__PURE__*/ S.suspend(
   identifier: "SeverityAttackSurfaceReportIssueResponse",
 }) as any as S.Schema<SeverityAttackSurfaceReportIssueResponse>;
 
-export type AttackSurfaceReportIssuesTypeRequestIssueClassList = string[];
+export type AttackSurfaceReportIssuesTypeRequestIssueClassList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesTypeRequestIssueClassList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesTypeRequestIssueClassList>;
 
-export type AttackSurfaceReportIssuesTypeRequestIssueClassNeqList = string[];
+export type AttackSurfaceReportIssuesTypeRequestIssueClassNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesTypeRequestIssueClassNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesTypeRequestIssueClassNeqList>;
 
-export type AttackSurfaceReportIssuesTypeRequestIssueTypeList = string[];
+export type AttackSurfaceReportIssuesTypeRequestIssueTypeList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesTypeRequestIssueTypeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesTypeRequestIssueTypeList>;
 
-export type AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList = string[];
+export type AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList>;
 
-export type AttackSurfaceReportIssuesTypeRequestProductList = string[];
+export type AttackSurfaceReportIssuesTypeRequestProductList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesTypeRequestProductList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesTypeRequestProductList>;
 
-export type AttackSurfaceReportIssuesTypeRequestProductNeqList = string[];
+export type AttackSurfaceReportIssuesTypeRequestProductNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesTypeRequestProductNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesTypeRequestProductNeqList>;
 
-export type AttackSurfaceReportIssuesTypeRequestSeverityList = string[];
+export type AttackSurfaceReportIssuesTypeRequestSeverityList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesTypeRequestSeverityList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesTypeRequestSeverityList>;
 
-export type AttackSurfaceReportIssuesTypeRequestSeverityNeqList = string[];
+export type AttackSurfaceReportIssuesTypeRequestSeverityNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesTypeRequestSeverityNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesTypeRequestSeverityNeqList>;
 
-export type AttackSurfaceReportIssuesTypeRequestSubjectList = string[];
+export type AttackSurfaceReportIssuesTypeRequestSubjectList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesTypeRequestSubjectList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AttackSurfaceReportIssuesTypeRequestSubjectList>;
 
-export type AttackSurfaceReportIssuesTypeRequestSubjectNeqList = string[];
+export type AttackSurfaceReportIssuesTypeRequestSubjectNeqList =
+  ReadonlyArray<string>;
 export const AttackSurfaceReportIssuesTypeRequestSubjectNeqList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2736,7 +2807,7 @@ export const AttackSurfaceReportIssuesTypeResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AttackSurfaceReportIssuesTypeResultItem>;
 
 export type AttackSurfaceReportIssuesTypeResultList =
-  AttackSurfaceReportIssuesTypeResultItem[];
+  ReadonlyArray<AttackSurfaceReportIssuesTypeResultItem>;
 export const AttackSurfaceReportIssuesTypeResultList = /*@__PURE__*/ S.Array(
   AttackSurfaceReportIssuesTypeResultItem,
 ) as any as S.Schema<AttackSurfaceReportIssuesTypeResultList>;

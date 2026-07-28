@@ -68,8 +68,7 @@ export type RepositoryFormatEnum =
   | "APT"
   | "YUM"
   | "GOOGET"
-  | "PYTHON"
-  | (string & {});
+  | "PYTHON";
 export const RepositoryFormatEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -81,8 +80,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type MavenRepositoryConfigVersionPolicyEnum =
   | "VERSION_POLICY_UNSPECIFIED"
   | "RELEASE"
-  | "SNAPSHOT"
-  | (string & {});
+  | "SNAPSHOT";
 export const MavenRepositoryConfigVersionPolicyEnum = /*@__PURE__*/ S.String;
 
 /** MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type. */
@@ -173,7 +171,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -391,7 +389,7 @@ export const GetIamPolicyProjectsLocationsRepositoriesRequest =
     identifier: "GetIamPolicyProjectsLocationsRepositoriesRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -433,7 +431,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -479,8 +477,7 @@ export type ProjectSettingsLegacyRedirectionStateEnum =
   | "REDIRECTION_FROM_GCR_IO_ENABLED"
   | "REDIRECTION_FROM_GCR_IO_FINALIZED"
   | "REDIRECTION_FROM_GCR_IO_ENABLED_AND_COPYING"
-  | "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING"
-  | (string & {});
+  | "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING";
 export const ProjectSettingsLegacyRedirectionStateEnum = /*@__PURE__*/ S.String;
 
 /** The Artifact Registry settings that apply to a Project. */
@@ -606,8 +603,7 @@ export type HashTypeEnum =
   | "HASH_TYPE_UNSPECIFIED"
   | "SHA256"
   | "MD5"
-  | "DIRSUM_SHA256"
-  | (string & {});
+  | "DIRSUM_SHA256";
 export const HashTypeEnum = /*@__PURE__*/ S.String;
 
 /** A hash of file content. */
@@ -624,7 +620,7 @@ export const Hash = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Hash" }) as any as S.Schema<Hash>;
 
-export type HashList = Hash[];
+export type HashList = ReadonlyArray<Hash>;
 export const HashList = /*@__PURE__*/ S.Array(
   Hash,
 ) as any as S.Schema<HashList>;
@@ -722,8 +718,7 @@ export const GetProjectsLocationsRepositoriesPackagesTagsRequest =
 export type GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -753,7 +748,7 @@ export const GetProjectsLocationsRepositoriesPackagesVersionsRequest =
     identifier: "GetProjectsLocationsRepositoriesPackagesVersionsRequest",
   }) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
-export type TagList = Tag[];
+export type TagList = ReadonlyArray<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** The body of a version resource. A version resource represents a collection of components, such as files and other data. This may correspond to a version in many package management schemes. */
@@ -914,7 +909,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -963,7 +958,7 @@ export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRepositoriesRequest",
 }) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
 
-export type RepositoryList = Repository[];
+export type RepositoryList = ReadonlyArray<Repository>;
 export const RepositoryList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<RepositoryList>;
@@ -1013,7 +1008,7 @@ export const ListProjectsLocationsRepositoriesFilesRequest =
   }) as any as S.Schema<ListProjectsLocationsRepositoriesFilesRequest>;
 
 export type GoogleDevtoolsArtifactregistryV1beta2FileList =
-  GoogleDevtoolsArtifactregistryV1beta2File[];
+  ReadonlyArray<GoogleDevtoolsArtifactregistryV1beta2File>;
 export const GoogleDevtoolsArtifactregistryV1beta2FileList =
   /*@__PURE__*/ S.Array(
     GoogleDevtoolsArtifactregistryV1beta2File,
@@ -1063,7 +1058,7 @@ export const ListProjectsLocationsRepositoriesPackagesRequest =
     identifier: "ListProjectsLocationsRepositoriesPackagesRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesRequest>;
 
-export type PackageList = Package[];
+export type PackageList = ReadonlyArray<Package>;
 export const PackageList = /*@__PURE__*/ S.Array(
   Package,
 ) as any as S.Schema<PackageList>;
@@ -1131,8 +1126,7 @@ export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1171,7 +1165,7 @@ export const ListProjectsLocationsRepositoriesPackagesVersionsRequest =
     identifier: "ListProjectsLocationsRepositoriesPackagesVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
-export type VersionList = Version[];
+export type VersionList = ReadonlyArray<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;

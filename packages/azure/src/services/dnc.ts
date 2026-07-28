@@ -12,6 +12,15 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The resource tags. */
+export type ControllerCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ControllerCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ControllerCreateRequestTagsMap>;
+
 export interface ControllerCreateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -19,14 +28,18 @@ export interface ControllerCreateRequest {
   resourceGroupName: string;
   /** The name of the resource. It must be a minimum of 3 characters, and a maximum of 63. */
   resourceName: string;
-  body: unknown;
+  /** Location of the resource. */
+  location?: string;
+  /** The resource tags. */
+  tags?: ControllerCreateRequestTagsMap;
 }
 export const ControllerCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(ControllerCreateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -53,8 +66,7 @@ export type DelegatedControllerPropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const DelegatedControllerPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -205,6 +217,15 @@ export const ControllerGetDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ControllerGetDetailsResponse",
 }) as any as S.Schema<ControllerGetDetailsResponse>;
 
+/** The resource tags. */
+export type ControllerPatchRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ControllerPatchRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ControllerPatchRequestTagsMap>;
+
 export interface ControllerPatchRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -212,14 +233,15 @@ export interface ControllerPatchRequest {
   resourceGroupName: string;
   /** The name of the resource. It must be a minimum of 3 characters, and a maximum of 63. */
   resourceName: string;
-  body: unknown;
+  /** The resource tags. */
+  tags?: ControllerPatchRequestTagsMap;
 }
 export const ControllerPatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ControllerPatchRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -327,7 +349,7 @@ export const DelegatedController = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DelegatedController>;
 
 /** An array of Delegated controller resources. */
-export type DelegatedControllersValueList = DelegatedController[];
+export type DelegatedControllersValueList = ReadonlyArray<DelegatedController>;
 export const DelegatedControllersValueList = /*@__PURE__*/ S.Array(
   DelegatedController,
 ) as any as S.Schema<DelegatedControllersValueList>;
@@ -444,8 +466,7 @@ export type DelegatedSubnetPropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const DelegatedSubnetPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -583,7 +604,7 @@ export const DelegatedSubnet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DelegatedSubnet>;
 
 /** An array of DelegatedSubnet resources. */
-export type DelegatedSubnetsValueList = DelegatedSubnet[];
+export type DelegatedSubnetsValueList = ReadonlyArray<DelegatedSubnet>;
 export const DelegatedSubnetsValueList = /*@__PURE__*/ S.Array(
   DelegatedSubnet,
 ) as any as S.Schema<DelegatedSubnetsValueList>;
@@ -624,6 +645,16 @@ export const DelegatedSubnetServiceListBySubscriptionRequest =
     identifier: "DelegatedSubnetServiceListBySubscriptionRequest",
   }) as any as S.Schema<DelegatedSubnetServiceListBySubscriptionRequest>;
 
+/** The resource tags. */
+export type DelegatedSubnetServicePatchDetailsRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DelegatedSubnetServicePatchDetailsRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DelegatedSubnetServicePatchDetailsRequestTagsMap>;
+
 export interface DelegatedSubnetServicePatchDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -631,7 +662,8 @@ export interface DelegatedSubnetServicePatchDetailsRequest {
   resourceGroupName: string;
   /** The name of the resource. It must be a minimum of 3 characters, and a maximum of 63. */
   resourceName: string;
-  body: unknown;
+  /** The resource tags. */
+  tags?: DelegatedSubnetServicePatchDetailsRequestTagsMap;
 }
 export const DelegatedSubnetServicePatchDetailsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -639,7 +671,7 @@ export const DelegatedSubnetServicePatchDetailsRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(DelegatedSubnetServicePatchDetailsRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -690,6 +722,48 @@ export const DelegatedSubnetServicePatchDetailsResponse =
     identifier: "DelegatedSubnetServicePatchDetailsResponse",
   }) as any as S.Schema<DelegatedSubnetServicePatchDetailsResponse>;
 
+/** The resource tags. */
+export type DelegatedSubnetServicePutDetailsRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DelegatedSubnetServicePutDetailsRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DelegatedSubnetServicePutDetailsRequestTagsMap>;
+
+/** controller details */
+export interface DelegatedSubnetPropertiesInputControllerDetails {
+  /** controller arm resource id */
+  id?: string;
+}
+export const DelegatedSubnetPropertiesInputControllerDetails =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DelegatedSubnetPropertiesInputControllerDetails",
+  }) as any as S.Schema<DelegatedSubnetPropertiesInputControllerDetails>;
+
+/** Properties of delegated subnet */
+export interface DelegatedSubnetPropertiesInput {
+  /** subnet details */
+  subnetDetails?: SubnetDetails;
+  /** controller details */
+  controllerDetails?: DelegatedSubnetPropertiesInputControllerDetails;
+}
+export const DelegatedSubnetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subnetDetails: S.optional(SubnetDetails),
+    controllerDetails: S.optional(
+      DelegatedSubnetPropertiesInputControllerDetails,
+    ),
+  }),
+).annotate({
+  identifier: "DelegatedSubnetPropertiesInput",
+}) as any as S.Schema<DelegatedSubnetPropertiesInput>;
+
 export interface DelegatedSubnetServicePutDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -697,7 +771,12 @@ export interface DelegatedSubnetServicePutDetailsRequest {
   resourceGroupName: string;
   /** The name of the resource. It must be a minimum of 3 characters, and a maximum of 63. */
   resourceName: string;
-  body: unknown;
+  /** Location of the resource. */
+  location?: string;
+  /** The resource tags. */
+  tags?: DelegatedSubnetServicePutDetailsRequestTagsMap;
+  /** Properties of the provision operation request. */
+  properties?: DelegatedSubnetPropertiesInput;
 }
 export const DelegatedSubnetServicePutDetailsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -705,7 +784,9 @@ export const DelegatedSubnetServicePutDetailsRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(DelegatedSubnetServicePutDetailsRequestTagsMap),
+      properties: S.optional(DelegatedSubnetPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -793,11 +874,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -824,7 +905,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -844,6 +925,79 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** The kind of workbook. Choices are user and shared. */
+export type OrchestratorInstanceServiceCreateRequestKind = "Kubernetes";
+export const OrchestratorInstanceServiceCreateRequestKind =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters */
+export type OrchestratorIdentityInputType = "SystemAssigned" | "None";
+export const OrchestratorIdentityInputType = /*@__PURE__*/ S.String;
+
+export interface OrchestratorIdentityInput {
+  /** The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters */
+  type?: OrchestratorIdentityInputType;
+}
+export const OrchestratorIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(OrchestratorIdentityInputType),
+  }),
+).annotate({
+  identifier: "OrchestratorIdentityInput",
+}) as any as S.Schema<OrchestratorIdentityInput>;
+
+/** The resource tags. */
+export type OrchestratorInstanceServiceCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const OrchestratorInstanceServiceCreateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<OrchestratorInstanceServiceCreateRequestTagsMap>;
+
+/** controller details */
+export interface OrchestratorResourcePropertiesInputControllerDetails {
+  /** controller arm resource id */
+  id?: string;
+}
+export const OrchestratorResourcePropertiesInputControllerDetails =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "OrchestratorResourcePropertiesInputControllerDetails",
+  }) as any as S.Schema<OrchestratorResourcePropertiesInputControllerDetails>;
+
+/** Properties of orchestrator */
+export interface OrchestratorResourcePropertiesInput {
+  /** AAD ID used with apiserver */
+  orchestratorAppId?: string;
+  /** TenantID of server App ID */
+  orchestratorTenantId?: string;
+  /** RootCA certificate of kubernetes cluster base64 encoded */
+  clusterRootCA?: string;
+  /** K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified */
+  apiServerEndpoint?: string;
+  /** private link arm resource id. Either one of apiServerEndpoint or privateLinkResourceId can be specified */
+  privateLinkResourceId?: string;
+  /** controller details */
+  controllerDetails: OrchestratorResourcePropertiesInputControllerDetails;
+}
+export const OrchestratorResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orchestratorAppId: S.optional(S.String),
+    orchestratorTenantId: S.optional(S.String),
+    clusterRootCA: S.optional(S.String),
+    apiServerEndpoint: S.optional(S.String),
+    privateLinkResourceId: S.optional(S.String),
+    controllerDetails: OrchestratorResourcePropertiesInputControllerDetails,
+  }),
+).annotate({
+  identifier: "OrchestratorResourcePropertiesInput",
+}) as any as S.Schema<OrchestratorResourcePropertiesInput>;
+
 export interface OrchestratorInstanceServiceCreateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -851,7 +1005,16 @@ export interface OrchestratorInstanceServiceCreateRequest {
   resourceGroupName: string;
   /** The name of the resource. It must be a minimum of 3 characters, and a maximum of 63. */
   resourceName: string;
-  body: unknown;
+  /** Location of the resource. */
+  location?: string;
+  /** The kind of workbook. Choices are user and shared. */
+  kind: OrchestratorInstanceServiceCreateRequestKind;
+  /** The identity of the orchestrator */
+  identity?: OrchestratorIdentityInput;
+  /** The resource tags. */
+  tags?: OrchestratorInstanceServiceCreateRequestTagsMap;
+  /** Properties of the provision operation request. */
+  properties?: OrchestratorResourcePropertiesInput;
 }
 export const OrchestratorInstanceServiceCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -859,7 +1022,11 @@ export const OrchestratorInstanceServiceCreateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      kind: OrchestratorInstanceServiceCreateRequestKind,
+      identity: S.optional(OrchestratorIdentityInput),
+      tags: S.optional(OrchestratorInstanceServiceCreateRequestTagsMap),
+      properties: S.optional(OrchestratorResourcePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -873,17 +1040,12 @@ export const OrchestratorInstanceServiceCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OrchestratorInstanceServiceCreateRequest>;
 
 /** The kind of workbook. Choices are user and shared. */
-export type OrchestratorInstanceServiceCreateResponseKind =
-  | "Kubernetes"
-  | (string & {});
+export type OrchestratorInstanceServiceCreateResponseKind = "Kubernetes";
 export const OrchestratorInstanceServiceCreateResponseKind =
   /*@__PURE__*/ S.String;
 
 /** The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters */
-export type OrchestratorIdentityType =
-  | "SystemAssigned"
-  | "None"
-  | (string & {});
+export type OrchestratorIdentityType = "SystemAssigned" | "None";
 export const OrchestratorIdentityType = /*@__PURE__*/ S.String;
 
 export interface OrchestratorIdentity {
@@ -919,8 +1081,7 @@ export type OrchestratorResourcePropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Provisioning"
-  | (string & {});
+  | "Provisioning";
 export const OrchestratorResourcePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1070,9 +1231,7 @@ export const OrchestratorInstanceServiceGetDetailsRequest =
   }) as any as S.Schema<OrchestratorInstanceServiceGetDetailsRequest>;
 
 /** The kind of workbook. Choices are user and shared. */
-export type OrchestratorInstanceServiceGetDetailsResponseKind =
-  | "Kubernetes"
-  | (string & {});
+export type OrchestratorInstanceServiceGetDetailsResponseKind = "Kubernetes";
 export const OrchestratorInstanceServiceGetDetailsResponseKind =
   /*@__PURE__*/ S.String;
 
@@ -1144,7 +1303,7 @@ export const OrchestratorInstanceServiceListByResourceGroupRequest =
   }) as any as S.Schema<OrchestratorInstanceServiceListByResourceGroupRequest>;
 
 /** The kind of workbook. Choices are user and shared. */
-export type OrchestratorKind = "Kubernetes" | (string & {});
+export type OrchestratorKind = "Kubernetes";
 export const OrchestratorKind = /*@__PURE__*/ S.String;
 
 /** The resource tags. */
@@ -1187,7 +1346,7 @@ export const Orchestrator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Orchestrator" }) as any as S.Schema<Orchestrator>;
 
 /** An array of OrchestratorInstance resources. */
-export type OrchestratorsValueList = Orchestrator[];
+export type OrchestratorsValueList = ReadonlyArray<Orchestrator>;
 export const OrchestratorsValueList = /*@__PURE__*/ S.Array(
   Orchestrator,
 ) as any as S.Schema<OrchestratorsValueList>;
@@ -1226,6 +1385,16 @@ export const OrchestratorInstanceServiceListBySubscriptionRequest =
     identifier: "OrchestratorInstanceServiceListBySubscriptionRequest",
   }) as any as S.Schema<OrchestratorInstanceServiceListBySubscriptionRequest>;
 
+/** The resource tags. */
+export type OrchestratorInstanceServicePatchRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const OrchestratorInstanceServicePatchRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<OrchestratorInstanceServicePatchRequestTagsMap>;
+
 export interface OrchestratorInstanceServicePatchRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1233,7 +1402,8 @@ export interface OrchestratorInstanceServicePatchRequest {
   resourceGroupName: string;
   /** The name of the resource. It must be a minimum of 3 characters, and a maximum of 63. */
   resourceName: string;
-  body: unknown;
+  /** The resource tags. */
+  tags?: OrchestratorInstanceServicePatchRequestTagsMap;
 }
 export const OrchestratorInstanceServicePatchRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1241,7 +1411,7 @@ export const OrchestratorInstanceServicePatchRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(OrchestratorInstanceServicePatchRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1255,9 +1425,7 @@ export const OrchestratorInstanceServicePatchRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OrchestratorInstanceServicePatchRequest>;
 
 /** The kind of workbook. Choices are user and shared. */
-export type OrchestratorInstanceServicePatchResponseKind =
-  | "Kubernetes"
-  | (string & {});
+export type OrchestratorInstanceServicePatchResponseKind = "Kubernetes";
 export const OrchestratorInstanceServicePatchResponseKind =
   /*@__PURE__*/ S.String;
 

@@ -78,8 +78,7 @@ export type LookupCurrentConditionsRequestUaqiColorPaletteEnum =
   | "COLOR_PALETTE_UNSPECIFIED"
   | "RED_GREEN"
   | "INDIGO_PERSIAN_DARK"
-  | "INDIGO_PERSIAN_LIGHT"
-  | (string & {});
+  | "INDIGO_PERSIAN_LIGHT";
 export const LookupCurrentConditionsRequestUaqiColorPaletteEnum =
   /*@__PURE__*/ S.String;
 
@@ -97,7 +96,7 @@ export const CustomLocalAqi = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomLocalAqi" }) as any as S.Schema<CustomLocalAqi>;
 
-export type CustomLocalAqiList = CustomLocalAqi[];
+export type CustomLocalAqiList = ReadonlyArray<CustomLocalAqi>;
 export const CustomLocalAqiList = /*@__PURE__*/ S.Array(
   CustomLocalAqi,
 ) as any as S.Schema<CustomLocalAqiList>;
@@ -108,13 +107,12 @@ export type LookupCurrentConditionsRequestExtraComputationsItemEnum =
   | "HEALTH_RECOMMENDATIONS"
   | "POLLUTANT_ADDITIONAL_INFO"
   | "DOMINANT_POLLUTANT_CONCENTRATION"
-  | "POLLUTANT_CONCENTRATION"
-  | (string & {});
+  | "POLLUTANT_CONCENTRATION";
 export const LookupCurrentConditionsRequestExtraComputationsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type LookupCurrentConditionsRequestExtraComputationsItemEnumList =
-  LookupCurrentConditionsRequestExtraComputationsItemEnum[];
+  ReadonlyArray<LookupCurrentConditionsRequestExtraComputationsItemEnum>;
 export const LookupCurrentConditionsRequestExtraComputationsItemEnumList =
   /*@__PURE__*/ S.Array(
     LookupCurrentConditionsRequestExtraComputationsItemEnum,
@@ -221,7 +219,7 @@ export const AirQualityIndex = /*@__PURE__*/ S.suspend(() =>
   identifier: "AirQualityIndex",
 }) as any as S.Schema<AirQualityIndex>;
 
-export type AirQualityIndexList = AirQualityIndex[];
+export type AirQualityIndexList = ReadonlyArray<AirQualityIndex>;
 export const AirQualityIndexList = /*@__PURE__*/ S.Array(
   AirQualityIndex,
 ) as any as S.Schema<AirQualityIndexList>;
@@ -243,8 +241,7 @@ export const AdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 export type ConcentrationUnitsEnum =
   | "UNIT_UNSPECIFIED"
   | "PARTS_PER_BILLION"
-  | "MICROGRAMS_PER_CUBIC_METER"
-  | (string & {});
+  | "MICROGRAMS_PER_CUBIC_METER";
 export const ConcentrationUnitsEnum = /*@__PURE__*/ S.String;
 
 /** The concentration of a given pollutant in the air. */
@@ -284,7 +281,7 @@ export const Pollutant = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Pollutant" }) as any as S.Schema<Pollutant>;
 
-export type PollutantList = Pollutant[];
+export type PollutantList = ReadonlyArray<Pollutant>;
 export const PollutantList = /*@__PURE__*/ S.Array(
   Pollutant,
 ) as any as S.Schema<PollutantList>;
@@ -350,13 +347,12 @@ export type LookupForecastRequestExtraComputationsItemEnum =
   | "HEALTH_RECOMMENDATIONS"
   | "POLLUTANT_ADDITIONAL_INFO"
   | "DOMINANT_POLLUTANT_CONCENTRATION"
-  | "POLLUTANT_CONCENTRATION"
-  | (string & {});
+  | "POLLUTANT_CONCENTRATION";
 export const LookupForecastRequestExtraComputationsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type LookupForecastRequestExtraComputationsItemEnumList =
-  LookupForecastRequestExtraComputationsItemEnum[];
+  ReadonlyArray<LookupForecastRequestExtraComputationsItemEnum>;
 export const LookupForecastRequestExtraComputationsItemEnumList =
   /*@__PURE__*/ S.Array(
     LookupForecastRequestExtraComputationsItemEnum,
@@ -380,8 +376,7 @@ export type LookupForecastRequestUaqiColorPaletteEnum =
   | "COLOR_PALETTE_UNSPECIFIED"
   | "RED_GREEN"
   | "INDIGO_PERSIAN_DARK"
-  | "INDIGO_PERSIAN_LIGHT"
-  | (string & {});
+  | "INDIGO_PERSIAN_LIGHT";
 export const LookupForecastRequestUaqiColorPaletteEnum = /*@__PURE__*/ S.String;
 
 /** The request object of the air quality forecast API. */
@@ -464,7 +459,7 @@ export const HourlyForecast = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HourlyForecast" }) as any as S.Schema<HourlyForecast>;
 
-export type HourlyForecastList = HourlyForecast[];
+export type HourlyForecastList = ReadonlyArray<HourlyForecast>;
 export const HourlyForecastList = /*@__PURE__*/ S.Array(
   HourlyForecast,
 ) as any as S.Schema<HourlyForecastList>;
@@ -497,8 +492,7 @@ export type LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum =
   | "DEU_UBA"
   | "CAN_EC"
   | "FRA_ATMO"
-  | "US_AQI"
-  | (string & {});
+  | "US_AQI";
 export const LookupHeatmapTileMapTypesHeatmapTilesMapTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -536,7 +530,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -562,8 +556,7 @@ export type LookupHistoryRequestUaqiColorPaletteEnum =
   | "COLOR_PALETTE_UNSPECIFIED"
   | "RED_GREEN"
   | "INDIGO_PERSIAN_DARK"
-  | "INDIGO_PERSIAN_LIGHT"
-  | (string & {});
+  | "INDIGO_PERSIAN_LIGHT";
 export const LookupHistoryRequestUaqiColorPaletteEnum = /*@__PURE__*/ S.String;
 
 export type LookupHistoryRequestExtraComputationsItemEnum =
@@ -572,13 +565,12 @@ export type LookupHistoryRequestExtraComputationsItemEnum =
   | "HEALTH_RECOMMENDATIONS"
   | "POLLUTANT_ADDITIONAL_INFO"
   | "DOMINANT_POLLUTANT_CONCENTRATION"
-  | "POLLUTANT_CONCENTRATION"
-  | (string & {});
+  | "POLLUTANT_CONCENTRATION";
 export const LookupHistoryRequestExtraComputationsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type LookupHistoryRequestExtraComputationsItemEnumList =
-  LookupHistoryRequestExtraComputationsItemEnum[];
+  ReadonlyArray<LookupHistoryRequestExtraComputationsItemEnum>;
 export const LookupHistoryRequestExtraComputationsItemEnumList =
   /*@__PURE__*/ S.Array(
     LookupHistoryRequestExtraComputationsItemEnum,
@@ -667,7 +659,7 @@ export const HourInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HourInfo" }) as any as S.Schema<HourInfo>;
 
-export type HourInfoList = HourInfo[];
+export type HourInfoList = ReadonlyArray<HourInfo>;
 export const HourInfoList = /*@__PURE__*/ S.Array(
   HourInfo,
 ) as any as S.Schema<HourInfoList>;

@@ -314,8 +314,7 @@ export type TypeHint =
   | "TIMESTAMP"
   | "DATE"
   | "TIME"
-  | "DECIMAL"
-  | (string & {});
+  | "DECIMAL";
 export const TypeHint = /*@__PURE__*/ S.String;
 
 export interface SqlParameter {
@@ -728,10 +727,10 @@ export const ExecuteSqlResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteSqlResponse",
 }) as any as S.Schema<ExecuteSqlResponse>;
-export type DecimalReturnType = "STRING" | "DOUBLE_OR_LONG" | (string & {});
+export type DecimalReturnType = "STRING" | "DOUBLE_OR_LONG";
 export const DecimalReturnType = /*@__PURE__*/ S.String;
 
-export type LongReturnType = "STRING" | "LONG" | (string & {});
+export type LongReturnType = "STRING" | "LONG";
 export const LongReturnType = /*@__PURE__*/ S.String;
 
 export interface ResultSetOptions {
@@ -746,7 +745,7 @@ export const ResultSetOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResultSetOptions",
 }) as any as S.Schema<ResultSetOptions>;
-export type RecordsFormatType = "NONE" | "JSON" | (string & {});
+export type RecordsFormatType = "NONE" | "JSON";
 export const RecordsFormatType = /*@__PURE__*/ S.String;
 
 export interface ExecuteStatementRequest {

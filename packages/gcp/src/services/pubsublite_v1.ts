@@ -373,8 +373,7 @@ export type ExportConfigCurrentStateEnum =
   | "ACTIVE"
   | "PAUSED"
   | "PERMISSION_DENIED"
-  | "NOT_FOUND"
-  | (string & {});
+  | "NOT_FOUND";
 export const ExportConfigCurrentStateEnum = /*@__PURE__*/ S.String;
 
 export type ExportConfigDesiredStateEnum =
@@ -382,8 +381,7 @@ export type ExportConfigDesiredStateEnum =
   | "ACTIVE"
   | "PAUSED"
   | "PERMISSION_DENIED"
-  | "NOT_FOUND"
-  | (string & {});
+  | "NOT_FOUND";
 export const ExportConfigDesiredStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for exporting to a Pub/Sub topic. */
@@ -420,8 +418,7 @@ export const ExportConfig = /*@__PURE__*/ S.suspend(() =>
 export type DeliveryConfigDeliveryRequirementEnum =
   | "DELIVERY_REQUIREMENT_UNSPECIFIED"
   | "DELIVER_IMMEDIATELY"
-  | "DELIVER_AFTER_STORED"
-  | (string & {});
+  | "DELIVER_AFTER_STORED";
 export const DeliveryConfigDeliveryRequirementEnum = /*@__PURE__*/ S.String;
 
 /** The settings for a subscription's message delivery. */
@@ -691,7 +688,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -856,12 +853,12 @@ export const ListAdminProjectsLocationsOperationsRequest =
     identifier: "ListAdminProjectsLocationsOperationsRequest",
   }) as any as S.Schema<ListAdminProjectsLocationsOperationsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -910,7 +907,7 @@ export const ListAdminProjectsLocationsReservationsRequest =
     identifier: "ListAdminProjectsLocationsReservationsRequest",
   }) as any as S.Schema<ListAdminProjectsLocationsReservationsRequest>;
 
-export type ReservationList = Reservation[];
+export type ReservationList = ReadonlyArray<Reservation>;
 export const ReservationList = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationList>;
@@ -997,7 +994,7 @@ export const ListAdminProjectsLocationsSubscriptionsRequest =
     identifier: "ListAdminProjectsLocationsSubscriptionsRequest",
   }) as any as S.Schema<ListAdminProjectsLocationsSubscriptionsRequest>;
 
-export type SubscriptionList = Subscription[];
+export type SubscriptionList = ReadonlyArray<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -1043,7 +1040,7 @@ export const ListAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAdminProjectsLocationsTopicsRequest",
 }) as any as S.Schema<ListAdminProjectsLocationsTopicsRequest>;
 
-export type TopicList = Topic[];
+export type TopicList = ReadonlyArray<Topic>;
 export const TopicList = /*@__PURE__*/ S.Array(
   Topic,
 ) as any as S.Schema<TopicList>;
@@ -1146,7 +1143,7 @@ export const PartitionCursor = /*@__PURE__*/ S.suspend(() =>
   identifier: "PartitionCursor",
 }) as any as S.Schema<PartitionCursor>;
 
-export type PartitionCursorList = PartitionCursor[];
+export type PartitionCursorList = ReadonlyArray<PartitionCursor>;
 export const PartitionCursorList = /*@__PURE__*/ S.Array(
   PartitionCursor,
 ) as any as S.Schema<PartitionCursorList>;
@@ -1245,8 +1242,7 @@ export const PatchAdminProjectsLocationsTopicsRequest = /*@__PURE__*/ S.suspend(
 export type SeekSubscriptionRequestNamedTargetEnum =
   | "NAMED_TARGET_UNSPECIFIED"
   | "TAIL"
-  | "HEAD"
-  | (string & {});
+  | "HEAD";
 export const SeekSubscriptionRequestNamedTargetEnum = /*@__PURE__*/ S.String;
 
 /** Request for SeekSubscription. */

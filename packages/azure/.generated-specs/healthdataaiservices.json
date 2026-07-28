@@ -579,16 +579,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the private endpoint connection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthdataaiservices#PrivateEndpointConnectionsCreateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.healthdataaiservices#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.healthdataaiservices#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.healthdataaiservices#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.healthdataaiservices#PrivateEndpointConnectionsGet": {
@@ -1341,16 +1368,124 @@
             "smithy.api#documentation": "The name of the deid service"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.healthdataaiservices#DeidServicesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.healthdataaiservices#ManagedServiceIdentityUpdateInput",
+          "traits": {
+            "smithy.api#documentation": "Updatable managed service identity"
+          }
+        },
+        "properties": {
+          "target": "com.azure.healthdataaiservices#DeidPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "RP-specific properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthdataaiservices#DeidPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.healthdataaiservices#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets allow or disallow public network access to resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The template for adding optional properties."
+      }
+    },
+    "com.azure.healthdataaiservices#ManagedServiceIdentityUpdateInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.healthdataaiservices#ManagedServiceIdentityUpdateInputType",
+          "traits": {
+            "smithy.api#documentation": "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed)."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.healthdataaiservices#ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The identities assigned to this resource by the user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The template for adding optional properties."
+      }
+    },
+    "com.azure.healthdataaiservices#ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.healthdataaiservices#ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The identities assigned to this resource by the user."
+      }
+    },
+    "com.azure.healthdataaiservices#ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.healthdataaiservices#ManagedServiceIdentityUpdateInputType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        },
+        "SYSTEMASSIGNED_USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned,UserAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed)."
+      }
+    },
+    "com.azure.healthdataaiservices#DeidServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.healthdataaiservices#DeidServicesCreate": {
@@ -1497,16 +1632,96 @@
             "smithy.api#documentation": "The name of the deid service"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.healthdataaiservices#DeidServicesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.healthdataaiservices#DeidServicePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.healthdataaiservices#DeidServicesCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthdataaiservices#DeidServicesCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.healthdataaiservices#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.healthdataaiservices#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.healthdataaiservices#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.healthdataaiservices#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.healthdataaiservices#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.healthdataaiservices#DeidServicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.healthdataaiservices#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets allow or disallow public network access to resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the HealthDataAIServices DeidService."
+      }
+    },
+    "com.azure.healthdataaiservices#DeidServicesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.healthdataaiservices#DeidServicesGet": {

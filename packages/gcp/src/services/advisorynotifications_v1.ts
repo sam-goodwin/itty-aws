@@ -86,8 +86,7 @@ export type GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum =
   | "LOCALIZATION_STATE_UNSPECIFIED"
   | "LOCALIZATION_STATE_NOT_APPLICABLE"
   | "LOCALIZATION_STATE_PENDING"
-  | "LOCALIZATION_STATE_COMPLETED"
-  | (string & {});
+  | "LOCALIZATION_STATE_COMPLETED";
 export const GoogleCloudAdvisorynotificationsV1TextLocalizationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -127,7 +126,7 @@ export const GoogleCloudAdvisorynotificationsV1Subject =
     identifier: "GoogleCloudAdvisorynotificationsV1Subject",
   }) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Subject>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -147,7 +146,7 @@ export const GoogleCloudAdvisorynotificationsV1CsvCsvRow =
   }) as any as S.Schema<GoogleCloudAdvisorynotificationsV1CsvCsvRow>;
 
 export type GoogleCloudAdvisorynotificationsV1CsvCsvRowList =
-  GoogleCloudAdvisorynotificationsV1CsvCsvRow[];
+  ReadonlyArray<GoogleCloudAdvisorynotificationsV1CsvCsvRow>;
 export const GoogleCloudAdvisorynotificationsV1CsvCsvRowList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAdvisorynotificationsV1CsvCsvRow,
@@ -188,7 +187,7 @@ export const GoogleCloudAdvisorynotificationsV1Attachment =
   }) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Attachment>;
 
 export type GoogleCloudAdvisorynotificationsV1AttachmentList =
-  GoogleCloudAdvisorynotificationsV1Attachment[];
+  ReadonlyArray<GoogleCloudAdvisorynotificationsV1Attachment>;
 export const GoogleCloudAdvisorynotificationsV1AttachmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAdvisorynotificationsV1Attachment,
@@ -232,7 +231,7 @@ export const GoogleCloudAdvisorynotificationsV1Message =
   }) as any as S.Schema<GoogleCloudAdvisorynotificationsV1Message>;
 
 export type GoogleCloudAdvisorynotificationsV1MessageList =
-  GoogleCloudAdvisorynotificationsV1Message[];
+  ReadonlyArray<GoogleCloudAdvisorynotificationsV1Message>;
 export const GoogleCloudAdvisorynotificationsV1MessageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAdvisorynotificationsV1Message,
@@ -243,8 +242,7 @@ export type GoogleCloudAdvisorynotificationsV1NotificationNotificationTypeEnum =
     | "NOTIFICATION_TYPE_SECURITY_PRIVACY_ADVISORY"
     | "NOTIFICATION_TYPE_SENSITIVE_ACTIONS"
     | "NOTIFICATION_TYPE_SECURITY_MSA"
-    | "NOTIFICATION_TYPE_THREAT_HORIZONS"
-    | (string & {});
+    | "NOTIFICATION_TYPE_THREAT_HORIZONS";
 export const GoogleCloudAdvisorynotificationsV1NotificationNotificationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -385,8 +383,7 @@ export const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListOrganizationsLocationsNotificationsViewEnum =
   | "NOTIFICATION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListOrganizationsLocationsNotificationsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -424,7 +421,7 @@ export const ListOrganizationsLocationsNotificationsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsNotificationsRequest>;
 
 export type GoogleCloudAdvisorynotificationsV1NotificationList =
-  GoogleCloudAdvisorynotificationsV1Notification[];
+  ReadonlyArray<GoogleCloudAdvisorynotificationsV1Notification>;
 export const GoogleCloudAdvisorynotificationsV1NotificationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudAdvisorynotificationsV1Notification,
@@ -455,8 +452,7 @@ export const GoogleCloudAdvisorynotificationsV1ListNotificationsResponse =
 export type ListProjectsLocationsNotificationsViewEnum =
   | "NOTIFICATION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsNotificationsViewEnum =
   /*@__PURE__*/ S.String;
 

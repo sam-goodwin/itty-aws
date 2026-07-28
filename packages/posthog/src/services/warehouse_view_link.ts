@@ -11,6 +11,38 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
+export interface WarehouseViewLinkCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  deleted?: boolean | null;
+  source_table_name: string;
+  source_table_key: string;
+  joining_table_name: string;
+  joining_table_key: string;
+  field_name: string;
+  configuration?: unknown;
+}
+export const WarehouseViewLinkCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+    source_table_name: S.String,
+    source_table_key: S.String,
+    joining_table_name: S.String,
+    joining_table_key: S.String,
+    field_name: S.String,
+    configuration: S.optional(S.Unknown),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/warehouse_view_link/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "WarehouseViewLinkCreateRequest",
+}) as any as S.Schema<WarehouseViewLinkCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -26,11 +58,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -61,44 +92,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-export interface WarehouseViewLinkCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-  deleted?: boolean | null;
-  created_by: UserBasic;
-  created_at: string;
-  source_table_name: string;
-  source_table_key: string;
-  joining_table_name: string;
-  joining_table_key: string;
-  field_name: string;
-  configuration?: unknown;
-}
-export const WarehouseViewLinkCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String,
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    created_by: UserBasic,
-    created_at: S.String,
-    source_table_name: S.String,
-    source_table_key: S.String,
-    joining_table_name: S.String,
-    joining_table_key: S.String,
-    field_name: S.String,
-    configuration: S.optional(S.Unknown),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/warehouse_view_link/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WarehouseViewLinkCreateRequest",
-}) as any as S.Schema<WarehouseViewLinkCreateRequest>;
 
 export interface ViewLink {
   id: string;
@@ -182,7 +175,7 @@ export const WarehouseViewLinkListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WarehouseViewLinkListRequest",
 }) as any as S.Schema<WarehouseViewLinkListRequest>;
 
-export type PaginatedViewLinkListResultsList = ViewLink[];
+export type PaginatedViewLinkListResultsList = ReadonlyArray<ViewLink>;
 export const PaginatedViewLinkListResultsList = /*@__PURE__*/ S.Array(
   ViewLink,
 ) as any as S.Schema<PaginatedViewLinkListResultsList>;
@@ -210,8 +203,6 @@ export interface WarehouseViewLinkPartialUpdateRequest {
   /** A UUID string identifying this data warehouse join. */
   id: string;
   deleted?: boolean | null;
-  created_by?: UserBasic;
-  created_at?: string;
   source_table_name?: string;
   source_table_key?: string;
   joining_table_name?: string;
@@ -225,8 +216,6 @@ export const WarehouseViewLinkPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
       deleted: S.optional(S.NullOr(S.Boolean)),
-      created_by: S.optional(UserBasic),
-      created_at: S.optional(S.String),
       source_table_name: S.optional(S.String),
       source_table_key: S.optional(S.String),
       joining_table_name: S.optional(S.String),
@@ -271,8 +260,6 @@ export interface WarehouseViewLinkUpdateRequest {
   /** A UUID string identifying this data warehouse join. */
   id: string;
   deleted?: boolean | null;
-  created_by: UserBasic;
-  created_at: string;
   source_table_name: string;
   source_table_key: string;
   joining_table_name: string;
@@ -285,8 +272,6 @@ export const WarehouseViewLinkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     deleted: S.optional(S.NullOr(S.Boolean)),
-    created_by: UserBasic,
-    created_at: S.String,
     source_table_name: S.String,
     source_table_key: S.String,
     joining_table_name: S.String,

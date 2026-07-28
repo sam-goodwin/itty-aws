@@ -15,12 +15,16 @@ export type { AzureOpError, AzureOpContext };
 export interface CheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body: unknown;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
 }
 export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -34,10 +38,7 @@ export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckNameAvailabilityRequest>;
 
 /** The reason why the given name is not available. */
-export type CheckNameAvailabilityResponseReason =
-  | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+export type CheckNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
 export const CheckNameAvailabilityResponseReason = /*@__PURE__*/ S.String;
 
 export interface CheckNameAvailabilityResponse {
@@ -58,6 +59,142 @@ export const CheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckNameAvailabilityResponse",
 }) as any as S.Schema<CheckNameAvailabilityResponse>;
 
+/** Resource tags. */
+export type LedgerCreateRequestTagsMap = { [key: string]: string | undefined };
+export const LedgerCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LedgerCreateRequestTagsMap>;
+
+/** Object representing RunningState for Confidential Ledger. */
+export type RunningState =
+  | "Active"
+  | "Paused"
+  | "Unknown"
+  | "Pausing"
+  | "Resuming";
+export const RunningState = /*@__PURE__*/ S.String;
+
+/** Type of the ledger. Private means transaction data is encrypted. */
+export type LedgerType = "Unknown" | "Public" | "Private";
+export const LedgerType = /*@__PURE__*/ S.String;
+
+/** SKU associated with the ledger resource */
+export type LedgerSku = "Standard" | "Basic" | "Unknown";
+export const LedgerSku = /*@__PURE__*/ S.String;
+
+/** LedgerRole associated with the Security Principal of Ledger */
+export type LedgerRoleName = "Reader" | "Contributor" | "Administrator";
+export const LedgerRoleName = /*@__PURE__*/ S.String;
+
+/** AAD based security principal with associated Ledger RoleName */
+export interface AADBasedSecurityPrincipal {
+  /** UUID/GUID based Principal Id of the Security Principal */
+  principalId?: string;
+  /** UUID/GUID based Tenant Id of the Security Principal */
+  tenantId?: string;
+  /** LedgerRole associated with the Security Principal of Ledger */
+  ledgerRoleName?: LedgerRoleName;
+}
+export const AADBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    ledgerRoleName: S.optional(LedgerRoleName),
+  }),
+).annotate({
+  identifier: "AADBasedSecurityPrincipal",
+}) as any as S.Schema<AADBasedSecurityPrincipal>;
+
+/** Array of all AAD based Security Principals. */
+export type LedgerPropertiesInputAadBasedSecurityPrincipalsList =
+  ReadonlyArray<AADBasedSecurityPrincipal>;
+export const LedgerPropertiesInputAadBasedSecurityPrincipalsList =
+  /*@__PURE__*/ S.Array(
+    AADBasedSecurityPrincipal,
+  ) as any as S.Schema<LedgerPropertiesInputAadBasedSecurityPrincipalsList>;
+
+/** Cert based security principal with Ledger RoleName */
+export interface CertBasedSecurityPrincipal {
+  /** Public key of the user cert (.pem or .cer) */
+  cert?: string;
+  /** LedgerRole associated with the Security Principal of Ledger */
+  ledgerRoleName?: LedgerRoleName;
+}
+export const CertBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cert: S.optional(S.String),
+    ledgerRoleName: S.optional(LedgerRoleName),
+  }),
+).annotate({
+  identifier: "CertBasedSecurityPrincipal",
+}) as any as S.Schema<CertBasedSecurityPrincipal>;
+
+/** Array of all cert based Security Principals. */
+export type LedgerPropertiesInputCertBasedSecurityPrincipalsList =
+  ReadonlyArray<CertBasedSecurityPrincipal>;
+export const LedgerPropertiesInputCertBasedSecurityPrincipalsList =
+  /*@__PURE__*/ S.Array(
+    CertBasedSecurityPrincipal,
+  ) as any as S.Schema<LedgerPropertiesInputCertBasedSecurityPrincipalsList>;
+
+/** Object representing the application type of the Confidential Ledger. Defaults to ConfidentialLedger. */
+export type ApplicationType = "ConfidentialLedger" | "CodeTransparency";
+export const ApplicationType = /*@__PURE__*/ S.String;
+
+/** Additional Confidential Ledger properties. */
+export interface LedgerPropertiesInput {
+  /** Object representing RunningState for Ledger. */
+  runningState?: RunningState;
+  /** Type of Confidential Ledger */
+  ledgerType?: LedgerType;
+  /** SKU associated with the ledger */
+  ledgerSku?: LedgerSku;
+  /** Array of all AAD based Security Principals. */
+  aadBasedSecurityPrincipals?: LedgerPropertiesInputAadBasedSecurityPrincipalsList;
+  /** Array of all cert based Security Principals. */
+  certBasedSecurityPrincipals?: LedgerPropertiesInputCertBasedSecurityPrincipalsList;
+  /** CCF Property for the logging level for the untrusted host: Trace, Debug, Info, Fail, Fatal. */
+  hostLevel?: string;
+  /** CCF Property for the maximum size of the http request body: 1MB, 5MB, 10MB. */
+  maxBodySizeInMb?: number;
+  /** CCF Property for the subject name to include in the node certificate. Default: CN=CCF Node. */
+  subjectName?: string;
+  /** Number of CCF nodes in the ACC Ledger. */
+  nodeCount?: number;
+  /** Prefix for the write load balancer. Example: write */
+  writeLBAddressPrefix?: string;
+  /** Number of additional threads processing incoming client requests in the enclave (modify with care!) */
+  workerThreads?: number;
+  /** Application type of the Confidential Ledger. */
+  applicationType?: ApplicationType;
+  /** The SCITT Configuration that needs to be set for the Confidential Ledger. */
+  scittConfiguration?: string;
+}
+export const LedgerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runningState: S.optional(RunningState),
+    ledgerType: S.optional(LedgerType),
+    ledgerSku: S.optional(LedgerSku),
+    aadBasedSecurityPrincipals: S.optional(
+      LedgerPropertiesInputAadBasedSecurityPrincipalsList,
+    ),
+    certBasedSecurityPrincipals: S.optional(
+      LedgerPropertiesInputCertBasedSecurityPrincipalsList,
+    ),
+    hostLevel: S.optional(S.String),
+    maxBodySizeInMb: S.optional(S.Number),
+    subjectName: S.optional(S.String),
+    nodeCount: S.optional(S.Number),
+    writeLBAddressPrefix: S.optional(S.String),
+    workerThreads: S.optional(S.Number),
+    applicationType: S.optional(ApplicationType),
+    scittConfiguration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LedgerPropertiesInput",
+}) as any as S.Schema<LedgerPropertiesInput>;
+
 export interface LedgerCreateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -65,14 +202,21 @@ export interface LedgerCreateRequest {
   resourceGroupName: string;
   /** Name of the Confidential Ledger */
   ledgerName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: LedgerCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Confidential Ledger Resource. */
+  properties?: LedgerPropertiesInput;
 }
 export const LedgerCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     ledgerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(LedgerCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(LedgerPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -90,8 +234,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -99,8 +242,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -136,20 +278,6 @@ export const LedgerCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<LedgerCreateResponseTagsMap>;
 
-/** Object representing RunningState for Confidential Ledger. */
-export type RunningState =
-  | "Active"
-  | "Paused"
-  | "Unknown"
-  | "Pausing"
-  | "Resuming"
-  | (string & {});
-export const RunningState = /*@__PURE__*/ S.String;
-
-/** Type of the ledger. Private means transaction data is encrypted. */
-export type LedgerType = "Unknown" | "Public" | "Private" | (string & {});
-export const LedgerType = /*@__PURE__*/ S.String;
-
 /** Object representing ProvisioningState for Confidential Ledger. */
 export type ProvisioningState =
   | "Unknown"
@@ -158,83 +286,28 @@ export type ProvisioningState =
   | "Canceled"
   | "Creating"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningState = /*@__PURE__*/ S.String;
-
-/** SKU associated with the ledger resource */
-export type LedgerSku = "Standard" | "Basic" | "Unknown" | (string & {});
-export const LedgerSku = /*@__PURE__*/ S.String;
-
-/** LedgerRole associated with the Security Principal of Ledger */
-export type LedgerRoleName =
-  | "Reader"
-  | "Contributor"
-  | "Administrator"
-  | (string & {});
-export const LedgerRoleName = /*@__PURE__*/ S.String;
-
-/** AAD based security principal with associated Ledger RoleName */
-export interface AADBasedSecurityPrincipal {
-  /** UUID/GUID based Principal Id of the Security Principal */
-  principalId?: string;
-  /** UUID/GUID based Tenant Id of the Security Principal */
-  tenantId?: string;
-  /** LedgerRole associated with the Security Principal of Ledger */
-  ledgerRoleName?: LedgerRoleName;
-}
-export const AADBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    ledgerRoleName: S.optional(LedgerRoleName),
-  }),
-).annotate({
-  identifier: "AADBasedSecurityPrincipal",
-}) as any as S.Schema<AADBasedSecurityPrincipal>;
 
 /** Array of all AAD based Security Principals. */
 export type LedgerPropertiesAadBasedSecurityPrincipalsList =
-  AADBasedSecurityPrincipal[];
+  ReadonlyArray<AADBasedSecurityPrincipal>;
 export const LedgerPropertiesAadBasedSecurityPrincipalsList =
   /*@__PURE__*/ S.Array(
     AADBasedSecurityPrincipal,
   ) as any as S.Schema<LedgerPropertiesAadBasedSecurityPrincipalsList>;
 
-/** Cert based security principal with Ledger RoleName */
-export interface CertBasedSecurityPrincipal {
-  /** Public key of the user cert (.pem or .cer) */
-  cert?: string;
-  /** LedgerRole associated with the Security Principal of Ledger */
-  ledgerRoleName?: LedgerRoleName;
-}
-export const CertBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cert: S.optional(S.String),
-    ledgerRoleName: S.optional(LedgerRoleName),
-  }),
-).annotate({
-  identifier: "CertBasedSecurityPrincipal",
-}) as any as S.Schema<CertBasedSecurityPrincipal>;
-
 /** Array of all cert based Security Principals. */
 export type LedgerPropertiesCertBasedSecurityPrincipalsList =
-  CertBasedSecurityPrincipal[];
+  ReadonlyArray<CertBasedSecurityPrincipal>;
 export const LedgerPropertiesCertBasedSecurityPrincipalsList =
   /*@__PURE__*/ S.Array(
     CertBasedSecurityPrincipal,
   ) as any as S.Schema<LedgerPropertiesCertBasedSecurityPrincipalsList>;
 
 /** Object representing the enclave platform for the Confidential Ledger application. Defaults to IntelSgx. */
-export type EnclavePlatform = "IntelSgx" | "AmdSevSnp" | (string & {});
+export type EnclavePlatform = "IntelSgx" | "AmdSevSnp";
 export const EnclavePlatform = /*@__PURE__*/ S.String;
-
-/** Object representing the application type of the Confidential Ledger. Defaults to ConfidentialLedger. */
-export type ApplicationType =
-  | "ConfidentialLedger"
-  | "CodeTransparency"
-  | (string & {});
-export const ApplicationType = /*@__PURE__*/ S.String;
 
 /** Additional Confidential Ledger properties. */
 export interface LedgerProperties {
@@ -376,14 +449,18 @@ export interface LedgerFilesExportRequest {
   resourceGroupName: string;
   /** Name of the Confidential Ledger */
   ledgerName: string;
-  body: unknown;
+  /** The region where the exported ledger files will eventually be restored to. */
+  restoreRegion?: string;
+  /** SAS URI used to access the Fileshare for exporting ledger files. */
+  uri: string;
 }
 export const LedgerFilesExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     ledgerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    restoreRegion: S.optional(S.String),
+    uri: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -536,7 +613,7 @@ export const ConfidentialLedger = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfidentialLedger>;
 
 /** The ConfidentialLedger items on this page */
-export type ConfidentialLedgerListValueList = ConfidentialLedger[];
+export type ConfidentialLedgerListValueList = ReadonlyArray<ConfidentialLedger>;
 export const ConfidentialLedgerListValueList = /*@__PURE__*/ S.Array(
   ConfidentialLedger,
 ) as any as S.Schema<ConfidentialLedgerListValueList>;
@@ -579,6 +656,13 @@ export const LedgerListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LedgerListBySubscriptionRequest",
 }) as any as S.Schema<LedgerListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type LedgerUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const LedgerUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LedgerUpdateRequestTagsMap>;
+
 export interface LedgerUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -586,14 +670,21 @@ export interface LedgerUpdateRequest {
   resourceGroupName: string;
   /** Name of the Confidential Ledger */
   ledgerName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: LedgerUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Confidential Ledger Resource. */
+  properties?: LedgerPropertiesInput;
 }
 export const LedgerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     ledgerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(LedgerUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(LedgerPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -700,7 +791,7 @@ export const ResourceProviderOperationDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operations. */
 export type ResourceProviderOperationListValueList =
-  ResourceProviderOperationDefinition[];
+  ReadonlyArray<ResourceProviderOperationDefinition>;
 export const ResourceProviderOperationListValueList = /*@__PURE__*/ S.Array(
   ResourceProviderOperationDefinition,
 ) as any as S.Schema<ResourceProviderOperationListValueList>;

@@ -223,30 +223,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "template_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "icon_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Deprecated: use icon_domain instead. Lowercase key from the linked template for clients that still render bundled icon assets. Empty if custom install (no template)."
-          }
-        },
-        "icon_domain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Brand domain from the linked template, rendered via the logo.dev icon proxy. Empty if custom install (no template)."
-          }
-        },
         "display_name": {
           "target": "smithy.api#String"
         },
@@ -261,39 +237,6 @@
         },
         "is_enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "scope": {
-          "target": "com.posthog.mcp_server_installations#MCPServerInstallationScopeEnum"
-        },
-        "is_owner": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True when the requesting user owns this installation. Lets clients gate owner-only controls instead of surfacing 403s."
-          }
-        },
-        "needs_reauth": {
-          "target": "smithy.api#Boolean"
-        },
-        "pending_oauth": {
-          "target": "smithy.api#Boolean"
-        },
-        "proxy_url": {
-          "target": "smithy.api#String"
-        },
-        "tool_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of live (non-removed) tools exposed by this installation."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -375,27 +318,6 @@
             "smithy.api#documentation": "A UUID string identifying this mcp server installation."
           }
         },
-        "template_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "icon_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Deprecated: use icon_domain instead. Lowercase key from the linked template for clients that still render bundled icon assets. Empty if custom install (no template)."
-          }
-        },
-        "icon_domain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Brand domain from the linked template, rendered via the logo.dev icon proxy. Empty if custom install (no template)."
-          }
-        },
         "display_name": {
           "target": "smithy.api#String"
         },
@@ -410,39 +332,6 @@
         },
         "is_enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "scope": {
-          "target": "com.posthog.mcp_server_installations#MCPServerInstallationScopeEnum"
-        },
-        "is_owner": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True when the requesting user owns this installation. Lets clients gate owner-only controls instead of surfacing 403s."
-          }
-        },
-        "needs_reauth": {
-          "target": "smithy.api#Boolean"
-        },
-        "pending_oauth": {
-          "target": "smithy.api#Boolean"
-        },
-        "proxy_url": {
-          "target": "smithy.api#String"
-        },
-        "tool_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of live (non-removed) tools exposed by this installation."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -573,27 +462,6 @@
             "smithy.api#documentation": "A UUID string identifying this mcp server installation."
           }
         },
-        "template_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "icon_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Deprecated: use icon_domain instead. Lowercase key from the linked template for clients that still render bundled icon assets. Empty if custom install (no template)."
-          }
-        },
-        "icon_domain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Brand domain from the linked template, rendered via the logo.dev icon proxy. Empty if custom install (no template)."
-          }
-        },
         "display_name": {
           "target": "smithy.api#String"
         },
@@ -608,39 +476,6 @@
         },
         "is_enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "scope": {
-          "target": "com.posthog.mcp_server_installations#MCPServerInstallationScopeEnum"
-        },
-        "is_owner": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True when the requesting user owns this installation. Lets clients gate owner-only controls instead of surfacing 403s."
-          }
-        },
-        "needs_reauth": {
-          "target": "smithy.api#Boolean"
-        },
-        "pending_oauth": {
-          "target": "smithy.api#Boolean"
-        },
-        "proxy_url": {
-          "target": "smithy.api#String"
-        },
-        "tool_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of live (non-removed) tools exposed by this installation."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -938,27 +773,6 @@
             "smithy.api#documentation": "A UUID string identifying this mcp server installation."
           }
         },
-        "template_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "icon_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Deprecated: use icon_domain instead. Lowercase key from the linked template for clients that still render bundled icon assets. Empty if custom install (no template)."
-          }
-        },
-        "icon_domain": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Brand domain from the linked template, rendered via the logo.dev icon proxy. Empty if custom install (no template)."
-          }
-        },
         "display_name": {
           "target": "smithy.api#String"
         },
@@ -973,39 +787,6 @@
         },
         "is_enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "scope": {
-          "target": "com.posthog.mcp_server_installations#MCPServerInstallationScopeEnum"
-        },
-        "is_owner": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "True when the requesting user owns this installation. Lets clients gate owner-only controls instead of surfacing 403s."
-          }
-        },
-        "needs_reauth": {
-          "target": "smithy.api#Boolean"
-        },
-        "pending_oauth": {
-          "target": "smithy.api#Boolean"
-        },
-        "proxy_url": {
-          "target": "smithy.api#String"
-        },
-        "tool_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of live (non-removed) tools exposed by this installation."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {

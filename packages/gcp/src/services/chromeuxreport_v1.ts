@@ -64,11 +64,10 @@ export type QueryHistoryRequestFormFactorEnum =
   | "ALL_FORM_FACTORS"
   | "PHONE"
   | "DESKTOP"
-  | "TABLET"
-  | (string & {});
+  | "TABLET";
 export const QueryHistoryRequestFormFactorEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -136,8 +135,7 @@ export type HistoryKeyFormFactorEnum =
   | "ALL_FORM_FACTORS"
   | "PHONE"
   | "DESKTOP"
-  | "TABLET"
-  | (string & {});
+  | "TABLET";
 export const HistoryKeyFormFactorEnum = /*@__PURE__*/ S.String;
 
 /** Key defines all the dimensions that identify this record as unique. */
@@ -192,12 +190,12 @@ export const CollectionPeriod = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectionPeriod",
 }) as any as S.Schema<CollectionPeriod>;
 
-export type CollectionPeriodList = CollectionPeriod[];
+export type CollectionPeriodList = ReadonlyArray<CollectionPeriod>;
 export const CollectionPeriodList = /*@__PURE__*/ S.Array(
   CollectionPeriod,
 ) as any as S.Schema<CollectionPeriodList>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -219,12 +217,12 @@ export const TimeseriesBin = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimeseriesBin" }) as any as S.Schema<TimeseriesBin>;
 
-export type TimeseriesBinList = TimeseriesBin[];
+export type TimeseriesBinList = ReadonlyArray<TimeseriesBin>;
 export const TimeseriesBinList = /*@__PURE__*/ S.Array(
   TimeseriesBin,
 ) as any as S.Schema<TimeseriesBinList>;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -327,8 +325,7 @@ export type QueryRequestFormFactorEnum =
   | "ALL_FORM_FACTORS"
   | "PHONE"
   | "DESKTOP"
-  | "TABLET"
-  | (string & {});
+  | "TABLET";
 export const QueryRequestFormFactorEnum = /*@__PURE__*/ S.String;
 
 /** Request payload sent by a physical web client. This request includes all necessary context to load a particular user experience record. */
@@ -389,7 +386,7 @@ export const Bin = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Bin" }) as any as S.Schema<Bin>;
 
-export type BinList = Bin[];
+export type BinList = ReadonlyArray<Bin>;
 export const BinList = /*@__PURE__*/ S.Array(Bin) as any as S.Schema<BinList>;
 
 /** Percentiles contains synthetic values of a metric at a given statistical percentile. These are used for estimating a metric's value as experienced by a percentage of users out of the total number of users. */
@@ -436,8 +433,7 @@ export type KeyFormFactorEnum =
   | "ALL_FORM_FACTORS"
   | "PHONE"
   | "DESKTOP"
-  | "TABLET"
-  | (string & {});
+  | "TABLET";
 export const KeyFormFactorEnum = /*@__PURE__*/ S.String;
 
 /** Key defines all the dimensions that identify this record as unique. */

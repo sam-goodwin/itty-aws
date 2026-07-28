@@ -59,7 +59,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.replay#PaginatedSessionRecordingPlaylistList": {
+    "com.posthog.replay#PaginatedSessionRecordingPlaylistListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -78,12 +78,12 @@
           }
         },
         "results": {
-          "target": "com.posthog.replay#PaginatedSessionRecordingPlaylistListResultsList"
+          "target": "com.posthog.replay#PaginatedSessionRecordingPlaylistListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.replay#SessionRecordingPlaylist": {
+    "com.posthog.replay#SessionRecordingPlaylistOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -121,7 +121,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.replay#UserBasic"
+          "target": "com.posthog.replay#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "deleted": {
           "target": "smithy.api#Boolean",
@@ -139,10 +142,13 @@
           "target": "smithy.api#String"
         },
         "last_modified_by": {
-          "target": "com.posthog.replay#UserBasic"
+          "target": "com.posthog.replay#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "recordings_counts": {
-          "target": "com.posthog.replay#SessionRecordingPlaylistRecordingsCountsMap"
+          "target": "com.posthog.replay#SessionRecordingPlaylistOutputRecordingsCountsMap"
         },
         "type": {
           "target": "com.posthog.replay#SessionRecordingPlaylistTypeEnum",
@@ -156,9 +162,6 @@
           "traits": {
             "smithy.api#documentation": "Return whether this is a synthetic playlist"
           }
-        },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {}
@@ -298,7 +301,7 @@
       },
       "traits": {}
     },
-    "com.posthog.replay#SessionRecordingPlaylistRecordingsCountsValueValue": {
+    "com.posthog.replay#SessionRecordingPlaylistOutputRecordingsCountsValueValue": {
       "type": "union",
       "members": {
         "Case0": {
@@ -310,23 +313,23 @@
       },
       "traits": {}
     },
-    "com.posthog.replay#SessionRecordingPlaylistRecordingsCountsValueMap": {
+    "com.posthog.replay#SessionRecordingPlaylistOutputRecordingsCountsValueMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistRecordingsCountsValueValue"
+        "target": "com.posthog.replay#SessionRecordingPlaylistOutputRecordingsCountsValueValue"
       },
       "traits": {}
     },
-    "com.posthog.replay#SessionRecordingPlaylistRecordingsCountsMap": {
+    "com.posthog.replay#SessionRecordingPlaylistOutputRecordingsCountsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistRecordingsCountsValueMap"
+        "target": "com.posthog.replay#SessionRecordingPlaylistOutputRecordingsCountsValueMap"
       },
       "traits": {}
     },
@@ -350,10 +353,10 @@
         "smithy.api#documentation": "* `collection` - Collection\n* `filters` - Filters"
       }
     },
-    "com.posthog.replay#PaginatedSessionRecordingPlaylistListResultsList": {
+    "com.posthog.replay#PaginatedSessionRecordingPlaylistListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.replay#SessionRecordingPlaylist"
+        "target": "com.posthog.replay#SessionRecordingPlaylistOutput"
       },
       "traits": {}
     },
@@ -363,7 +366,7 @@
         "target": "com.posthog.replay#SessionRecordingPlaylistsListRequest"
       },
       "output": {
-        "target": "com.posthog.replay#PaginatedSessionRecordingPlaylistList"
+        "target": "com.posthog.replay#PaginatedSessionRecordingPlaylistListOutput"
       },
       "errors": [
         {
@@ -385,38 +388,6 @@
         "smithy.api#documentation": "Override list to include synthetic playlists.\n\nSynthetics have no DB row, so we compute each one's position in the merged\nsort and split the requested page between synthetics and a DB queryset slice.\nThe merge/rank/sort is all in-memory, so each phase is wrapped in a span and\nthe input sizes are recorded as span attributes — a slow response on a team\nwith many playlists then shows up as a wide span against a large db_count."
       }
     },
-    "com.posthog.replay#SessionRecordingPlaylistsCreateRequestRecordingsCountsValueValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#Integer"
-        },
-        "Case1": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingPlaylistsCreateRequestRecordingsCountsValueMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsCreateRequestRecordingsCountsValueValue"
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingPlaylistsCreateRequestRecordingsCountsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsCreateRequestRecordingsCountsValueMap"
-      },
-      "traits": {}
-    },
     "com.posthog.replay#SessionRecordingPlaylistsCreateRequest": {
       "type": "structure",
       "members": {
@@ -427,12 +398,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
-        "short_id": {
-          "target": "smithy.api#String"
         },
         "name": {
           "target": "smithy.api#String",
@@ -459,12 +424,6 @@
             "smithy.api#documentation": "Whether this playlist is pinned to the top of the list."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.replay#UserBasic"
-        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -477,26 +436,11 @@
             "smithy.api#documentation": "JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them."
           }
         },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.replay#UserBasic"
-        },
-        "recordings_counts": {
-          "target": "com.posthog.replay#SessionRecordingPlaylistsCreateRequestRecordingsCountsMap"
-        },
         "type": {
           "target": "com.posthog.replay#SessionRecordingPlaylistTypeEnum",
           "traits": {
             "smithy.api#documentation": "Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after.\n\n* `collection` - Collection\n* `filters` - Filters",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_synthetic": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Return whether this is a synthetic playlist"
           }
         },
         "_create_in_folder": {
@@ -513,7 +457,7 @@
         "target": "com.posthog.replay#SessionRecordingPlaylistsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.replay#SessionRecordingPlaylist"
+        "target": "com.posthog.replay#SessionRecordingPlaylistOutput"
       },
       "errors": [
         {
@@ -563,7 +507,7 @@
         "target": "com.posthog.replay#SessionRecordingPlaylistsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.replay#SessionRecordingPlaylist"
+        "target": "com.posthog.replay#SessionRecordingPlaylistOutput"
       },
       "errors": [
         {
@@ -580,38 +524,6 @@
           "code": 200
         }
       }
-    },
-    "com.posthog.replay#SessionRecordingPlaylistsUpdateRequestRecordingsCountsValueValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#Integer"
-        },
-        "Case1": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingPlaylistsUpdateRequestRecordingsCountsValueMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsUpdateRequestRecordingsCountsValueValue"
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingPlaylistsUpdateRequestRecordingsCountsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsUpdateRequestRecordingsCountsValueMap"
-      },
-      "traits": {}
     },
     "com.posthog.replay#SessionRecordingPlaylistsUpdateRequest": {
       "type": "structure",
@@ -630,9 +542,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
-        },
-        "id": {
-          "target": "smithy.api#Integer"
         },
         "name": {
           "target": "smithy.api#String",
@@ -659,12 +568,6 @@
             "smithy.api#documentation": "Whether this playlist is pinned to the top of the list."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.replay#UserBasic"
-        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -677,26 +580,11 @@
             "smithy.api#documentation": "JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them."
           }
         },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.replay#UserBasic"
-        },
-        "recordings_counts": {
-          "target": "com.posthog.replay#SessionRecordingPlaylistsUpdateRequestRecordingsCountsMap"
-        },
         "type": {
           "target": "com.posthog.replay#SessionRecordingPlaylistTypeEnum",
           "traits": {
             "smithy.api#documentation": "Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after.\n\n* `collection` - Collection\n* `filters` - Filters",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_synthetic": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Return whether this is a synthetic playlist"
           }
         },
         "_create_in_folder": {
@@ -713,7 +601,7 @@
         "target": "com.posthog.replay#SessionRecordingPlaylistsUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.replay#SessionRecordingPlaylist"
+        "target": "com.posthog.replay#SessionRecordingPlaylistOutput"
       },
       "errors": [
         {
@@ -734,38 +622,6 @@
         }
       }
     },
-    "com.posthog.replay#SessionRecordingPlaylistsPartialUpdateRequestRecordingsCountsValueValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#Integer"
-        },
-        "Case1": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingPlaylistsPartialUpdateRequestRecordingsCountsValueMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsPartialUpdateRequestRecordingsCountsValueValue"
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingPlaylistsPartialUpdateRequestRecordingsCountsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsPartialUpdateRequestRecordingsCountsValueMap"
-      },
-      "traits": {}
-    },
     "com.posthog.replay#SessionRecordingPlaylistsPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -783,9 +639,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
-        },
-        "id": {
-          "target": "smithy.api#Integer"
         },
         "name": {
           "target": "smithy.api#String",
@@ -812,12 +665,6 @@
             "smithy.api#documentation": "Whether this playlist is pinned to the top of the list."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.replay#UserBasic"
-        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -830,26 +677,11 @@
             "smithy.api#documentation": "JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them."
           }
         },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.replay#UserBasic"
-        },
-        "recordings_counts": {
-          "target": "com.posthog.replay#SessionRecordingPlaylistsPartialUpdateRequestRecordingsCountsMap"
-        },
         "type": {
           "target": "com.posthog.replay#SessionRecordingPlaylistTypeEnum",
           "traits": {
             "smithy.api#documentation": "Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after.\n\n* `collection` - Collection\n* `filters` - Filters",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_synthetic": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Return whether this is a synthetic playlist"
           }
         },
         "_create_in_folder": {
@@ -866,7 +698,7 @@
         "target": "com.posthog.replay#SessionRecordingPlaylistsPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.replay#SessionRecordingPlaylist"
+        "target": "com.posthog.replay#SessionRecordingPlaylistOutput"
       },
       "errors": [
         {
@@ -982,38 +814,6 @@
         }
       }
     },
-    "com.posthog.replay#SessionRecordingPlaylistsRecordingsCreateRequestRecordingsCountsValueValue": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#Integer"
-        },
-        "Case1": {
-          "target": "smithy.api#Boolean"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingPlaylistsRecordingsCreateRequestRecordingsCountsValueMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsRecordingsCreateRequestRecordingsCountsValueValue"
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingPlaylistsRecordingsCreateRequestRecordingsCountsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsRecordingsCreateRequestRecordingsCountsValueMap"
-      },
-      "traits": {}
-    },
     "com.posthog.replay#SessionRecordingPlaylistsRecordingsCreateRequest": {
       "type": "structure",
       "members": {
@@ -1038,9 +838,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
-        },
-        "id": {
-          "target": "smithy.api#Integer"
         },
         "name": {
           "target": "smithy.api#String",
@@ -1067,12 +864,6 @@
             "smithy.api#documentation": "Whether this playlist is pinned to the top of the list."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.replay#UserBasic"
-        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -1085,26 +876,11 @@
             "smithy.api#documentation": "JSON object with recording filter criteria. Only used when type is 'filters'. Defines which recordings match this saved filter view. When updating a filters-type playlist, you must include the existing filters alongside any other changes — omitting filters will be treated as removing them."
           }
         },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.replay#UserBasic"
-        },
-        "recordings_counts": {
-          "target": "com.posthog.replay#SessionRecordingPlaylistsRecordingsCreateRequestRecordingsCountsMap"
-        },
         "type": {
           "target": "com.posthog.replay#SessionRecordingPlaylistTypeEnum",
           "traits": {
             "smithy.api#documentation": "Playlist type: 'collection' for manually curated recordings, 'filters' for saved filter views. Required on create, cannot be changed after.\n\n* `collection` - Collection\n* `filters` - Filters",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_synthetic": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Return whether this is a synthetic playlist"
           }
         },
         "_create_in_folder": {
@@ -1584,31 +1360,17 @@
         }
       }
     },
-    "com.posthog.replay#SessionRecordingsUpdateRequestViewersList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
+    "com.posthog.replay#MinimalPersonInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Key-value map of person properties set via $set and $set_once operations."
+          }
+        }
       },
       "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingsUpdateRequestExternalReferencesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingsUpdateRequestExternalReferencesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.replay#SessionRecordingsUpdateRequestExternalReferencesItemMap"
-      },
-      "traits": {
-        "smithy.api#documentation": "Load external references (linked issues) for this recording"
-      }
     },
     "com.posthog.replay#SessionRecordingsUpdateRequest": {
       "type": "structure",
@@ -1629,149 +1391,8 @@
             "smithy.api#documentation": "A UUID string identifying this session recording."
           }
         },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "viewed": {
-          "target": "smithy.api#Boolean"
-        },
-        "viewers": {
-          "target": "com.posthog.replay#SessionRecordingsUpdateRequestViewersList"
-        },
-        "recording_duration": {
-          "target": "smithy.api#Integer"
-        },
-        "active_seconds": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "inactive_seconds": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "start_time": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "end_time": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "click_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "keypress_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "mouse_activity_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "console_log_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "console_warn_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "console_error_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "start_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "person": {
-          "target": "com.posthog.replay#MinimalPerson"
-        },
-        "retention_period_days": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "expiry_time": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "recording_ttl": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "snapshot_source": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "snapshot_library": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "ongoing": {
-          "target": "smithy.api#Boolean"
-        },
-        "activity_score": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "has_summary": {
-          "target": "smithy.api#Boolean"
-        },
-        "summary_outcome": {
-          "target": "com.posthog.replay#Outcome",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "external_references": {
-          "target": "com.posthog.replay#SessionRecordingsUpdateRequestExternalReferencesList",
-          "traits": {
-            "smithy.api#documentation": "Load external references (linked issues) for this recording"
-          }
-        },
-        "matches_filters": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this recording matched the filters of the listing query that returned it. False only when a recording requested via session_recording_id was included despite not matching the filters."
-          }
+          "target": "com.posthog.replay#MinimalPersonInput"
         }
       },
       "traits": {
@@ -1805,32 +1426,6 @@
         }
       }
     },
-    "com.posthog.replay#SessionRecordingsPartialUpdateRequestViewersList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingsPartialUpdateRequestExternalReferencesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.replay#SessionRecordingsPartialUpdateRequestExternalReferencesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.replay#SessionRecordingsPartialUpdateRequestExternalReferencesItemMap"
-      },
-      "traits": {
-        "smithy.api#documentation": "Load external references (linked issues) for this recording"
-      }
-    },
     "com.posthog.replay#SessionRecordingsPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1850,149 +1445,8 @@
             "smithy.api#documentation": "A UUID string identifying this session recording."
           }
         },
-        "distinct_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "viewed": {
-          "target": "smithy.api#Boolean"
-        },
-        "viewers": {
-          "target": "com.posthog.replay#SessionRecordingsPartialUpdateRequestViewersList"
-        },
-        "recording_duration": {
-          "target": "smithy.api#Integer"
-        },
-        "active_seconds": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "inactive_seconds": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "start_time": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "end_time": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "click_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "keypress_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "mouse_activity_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "console_log_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "console_warn_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "console_error_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "start_url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "person": {
-          "target": "com.posthog.replay#MinimalPerson"
-        },
-        "retention_period_days": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "expiry_time": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "recording_ttl": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "snapshot_source": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "snapshot_library": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "ongoing": {
-          "target": "smithy.api#Boolean"
-        },
-        "activity_score": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "has_summary": {
-          "target": "smithy.api#Boolean"
-        },
-        "summary_outcome": {
-          "target": "com.posthog.replay#Outcome",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "external_references": {
-          "target": "com.posthog.replay#SessionRecordingsPartialUpdateRequestExternalReferencesList",
-          "traits": {
-            "smithy.api#documentation": "Load external references (linked issues) for this recording"
-          }
-        },
-        "matches_filters": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this recording matched the filters of the listing query that returned it. False only when a recording requested via session_recording_id was included despite not matching the filters."
-          }
+          "target": "com.posthog.replay#MinimalPersonInput"
         }
       },
       "traits": {

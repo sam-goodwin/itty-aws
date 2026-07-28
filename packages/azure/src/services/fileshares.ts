@@ -131,19 +131,34 @@ export const FileShareLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileShareLimitsResponse",
 }) as any as S.Schema<FileShareLimitsResponse>;
 
+/** File share provisioning parameters recommendation API input structure. */
+export interface FileShareProvisioningRecommendationInput {
+  /** The desired provisioned storage size of the share in GiB. Will be use to calculate the values of remaining provisioning parameters. */
+  provisionedStorageGiB: number;
+}
+export const FileShareProvisioningRecommendationInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      provisionedStorageGiB: S.Number,
+    }),
+).annotate({
+  identifier: "FileShareProvisioningRecommendationInput",
+}) as any as S.Schema<FileShareProvisioningRecommendationInput>;
+
 export interface FileShareGetProvisioningRecommendationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
-  body: unknown;
+  /** The properties of the file share provisioning recommendation input. */
+  properties: FileShareProvisioningRecommendationInput;
 }
 export const FileShareGetProvisioningRecommendationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: FileShareProvisioningRecommendationInput,
     }).pipe(
       T.Http({
         method: "POST",
@@ -157,12 +172,12 @@ export const FileShareGetProvisioningRecommendationRequest =
   }) as any as S.Schema<FileShareGetProvisioningRecommendationRequest>;
 
 /** Redundancy enum. */
-export type Redundancy = "Local" | "Zone" | (string & {});
+export type Redundancy = "Local" | "Zone";
 export const Redundancy = /*@__PURE__*/ S.String;
 
 /** Redundancy options for the share. */
 export type FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList =
-  Redundancy[];
+  ReadonlyArray<Redundancy>;
 export const FileShareProvisioningRecommendationOutputAvailableRedundancyOptionsList =
   /*@__PURE__*/ S.Array(
     Redundancy,
@@ -269,14 +284,18 @@ export interface FileSharesCheckNameAvailabilityRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
-  body: unknown;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
 }
 export const FileSharesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -292,8 +311,7 @@ export const FileSharesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 /** The reason why the given name is not available. */
 export type FileSharesCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const FileSharesCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -316,6 +334,110 @@ export const FileSharesCheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(
   identifier: "FileSharesCheckNameAvailabilityResponse",
 }) as any as S.Schema<FileSharesCheckNameAvailabilityResponse>;
 
+/** Resource tags. */
+export type FileSharesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FileSharesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FileSharesCreateOrUpdateRequestTagsMap>;
+
+/** Media Tier enum. */
+export type MediaTier = "SSD";
+export const MediaTier = /*@__PURE__*/ S.String;
+
+/** Protocol enum. */
+export type Protocol = "NFS";
+export const Protocol = /*@__PURE__*/ S.String;
+
+/** Share root squash enum. */
+export type ShareRootSquash = "NoRootSquash" | "RootSquash" | "AllSquash";
+export const ShareRootSquash = /*@__PURE__*/ S.String;
+
+/** State of NFS encryption in transit. */
+export type EncryptionInTransitRequired = "Enabled" | "Disabled";
+export const EncryptionInTransitRequired = /*@__PURE__*/ S.String;
+
+/** Properties specific to the NFS protocol. */
+export interface NfsProtocolProperties {
+  /** Root squash defines how root users on clients are mapped to the NFS share. */
+  rootSquash?: ShareRootSquash;
+  /** Encryption in transit defines whether data is encrypted for NFS shares. */
+  encryptionInTransitRequired?: EncryptionInTransitRequired;
+}
+export const NfsProtocolProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rootSquash: S.optional(ShareRootSquash),
+    encryptionInTransitRequired: S.optional(EncryptionInTransitRequired),
+  }),
+).annotate({
+  identifier: "NfsProtocolProperties",
+}) as any as S.Schema<NfsProtocolProperties>;
+
+/** The allowed set of subnets when access is restricted. */
+export type PublicAccessPropertiesAllowedSubnetsList = ReadonlyArray<string>;
+export const PublicAccessPropertiesAllowedSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PublicAccessPropertiesAllowedSubnetsList>;
+
+/** The set of properties for control public access. */
+export interface PublicAccessProperties {
+  /** The allowed set of subnets when access is restricted. */
+  allowedSubnets?: PublicAccessPropertiesAllowedSubnetsList;
+}
+export const PublicAccessProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedSubnets: S.optional(PublicAccessPropertiesAllowedSubnetsList),
+  }),
+).annotate({
+  identifier: "PublicAccessProperties",
+}) as any as S.Schema<PublicAccessProperties>;
+
+/** State of the public network access. */
+export type PublicNetworkAccess = "Enabled" | "Disabled";
+export const PublicNetworkAccess = /*@__PURE__*/ S.String;
+
+/** File share properties */
+export interface FileSharePropertiesInput {
+  /** The name of the file share as seen by the end user when mounting the share, such as in a URI or UNC format in their operating system. */
+  mountName?: string;
+  /** The storage media tier of the file share. */
+  mediaTier?: MediaTier;
+  /** The chosen redundancy level of the file share. */
+  redundancy?: Redundancy;
+  /** The file sharing protocol for this file share. */
+  protocol?: Protocol;
+  /** The provisioned storage size of the share in GiB (1 GiB is 1024^3 bytes or 1073741824 bytes). A component of the file share's bill is the provisioned storage, regardless of the amount of used storage. */
+  provisionedStorageGiB?: number;
+  /** The provisioned IO / sec of the share. */
+  provisionedIOPerSec?: number;
+  /** The provisioned throughput / sec of the share. */
+  provisionedThroughputMiBPerSec?: number;
+  /** Protocol settings specific NFS. */
+  nfsProtocolProperties?: NfsProtocolProperties;
+  /** The set of properties for control public access. */
+  publicAccessProperties?: PublicAccessProperties;
+  /** Gets or sets allow or disallow public network access to azure managed file share */
+  publicNetworkAccess?: PublicNetworkAccess;
+}
+export const FileSharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mountName: S.optional(S.String),
+    mediaTier: S.optional(MediaTier),
+    redundancy: S.optional(Redundancy),
+    protocol: S.optional(Protocol),
+    provisionedStorageGiB: S.optional(S.Number),
+    provisionedIOPerSec: S.optional(S.Number),
+    provisionedThroughputMiBPerSec: S.optional(S.Number),
+    nfsProtocolProperties: S.optional(NfsProtocolProperties),
+    publicAccessProperties: S.optional(PublicAccessProperties),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+  }),
+).annotate({
+  identifier: "FileSharePropertiesInput",
+}) as any as S.Schema<FileSharePropertiesInput>;
+
 export interface FileSharesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -323,14 +445,21 @@ export interface FileSharesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: FileSharesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: FileSharePropertiesInput;
 }
 export const FileSharesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(FileSharesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(FileSharePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -348,8 +477,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -357,8 +485,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -396,64 +523,6 @@ export const FileSharesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<FileSharesCreateOrUpdateResponseTagsMap>;
 
-/** Media Tier enum. */
-export type MediaTier = "SSD" | (string & {});
-export const MediaTier = /*@__PURE__*/ S.String;
-
-/** Protocol enum. */
-export type Protocol = "NFS" | (string & {});
-export const Protocol = /*@__PURE__*/ S.String;
-
-/** Share root squash enum. */
-export type ShareRootSquash =
-  | "NoRootSquash"
-  | "RootSquash"
-  | "AllSquash"
-  | (string & {});
-export const ShareRootSquash = /*@__PURE__*/ S.String;
-
-/** State of NFS encryption in transit. */
-export type EncryptionInTransitRequired =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const EncryptionInTransitRequired = /*@__PURE__*/ S.String;
-
-/** Properties specific to the NFS protocol. */
-export interface NfsProtocolProperties {
-  /** Root squash defines how root users on clients are mapped to the NFS share. */
-  rootSquash?: ShareRootSquash;
-  /** Encryption in transit defines whether data is encrypted for NFS shares. */
-  encryptionInTransitRequired?: EncryptionInTransitRequired;
-}
-export const NfsProtocolProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rootSquash: S.optional(ShareRootSquash),
-    encryptionInTransitRequired: S.optional(EncryptionInTransitRequired),
-  }),
-).annotate({
-  identifier: "NfsProtocolProperties",
-}) as any as S.Schema<NfsProtocolProperties>;
-
-/** The allowed set of subnets when access is restricted. */
-export type PublicAccessPropertiesAllowedSubnetsList = string[];
-export const PublicAccessPropertiesAllowedSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PublicAccessPropertiesAllowedSubnetsList>;
-
-/** The set of properties for control public access. */
-export interface PublicAccessProperties {
-  /** The allowed set of subnets when access is restricted. */
-  allowedSubnets?: PublicAccessPropertiesAllowedSubnetsList;
-}
-export const PublicAccessProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedSubnets: S.optional(PublicAccessPropertiesAllowedSubnetsList),
-  }),
-).annotate({
-  identifier: "PublicAccessProperties",
-}) as any as S.Schema<PublicAccessProperties>;
-
 /** The status of file share's ProvisioningState. */
 export type FileShareProvisioningState =
   | "Succeeded"
@@ -467,16 +536,12 @@ export type FileShareProvisioningState =
   | "TransientFailure"
   | "Creating"
   | "Patching"
-  | "Posting"
-  | (string & {});
+  | "Posting";
 export const FileShareProvisioningState = /*@__PURE__*/ S.String;
 
-/** State of the public network access. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
-export const PublicNetworkAccess = /*@__PURE__*/ S.String;
-
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -499,8 +564,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -527,8 +591,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -582,7 +645,7 @@ export const FileSharePropertiesPrivateEndpointConnectionsItem =
 
 /** The list of associated private endpoint connections. */
 export type FileSharePropertiesPrivateEndpointConnectionsList =
-  FileSharePropertiesPrivateEndpointConnectionsItem[];
+  ReadonlyArray<FileSharePropertiesPrivateEndpointConnectionsItem>;
 export const FileSharePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     FileSharePropertiesPrivateEndpointConnectionsItem,
@@ -839,7 +902,7 @@ export const FileShare = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileShare" }) as any as S.Schema<FileShare>;
 
 /** The FileShare items on this page */
-export type FileShareListResultValueList = FileShare[];
+export type FileShareListResultValueList = ReadonlyArray<FileShare>;
 export const FileShareListResultValueList = /*@__PURE__*/ S.Array(
   FileShare,
 ) as any as S.Schema<FileShareListResultValueList>;
@@ -879,6 +942,32 @@ export const FileSharesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileSharesListBySubscriptionRequest",
 }) as any as S.Schema<FileSharesListBySubscriptionRequest>;
 
+/** The metadata */
+export type FileShareSnapshotPropertiesInputMetadataMap = {
+  [key: string]: string | undefined;
+};
+export const FileShareSnapshotPropertiesInputMetadataMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<FileShareSnapshotPropertiesInputMetadataMap>;
+
+/** FileShareSnapshot properties */
+export interface FileShareSnapshotPropertiesInput {
+  /** The initiator of the FileShareSnapshot. This is a user-defined value. */
+  initiatorId?: string;
+  /** The metadata */
+  metadata?: FileShareSnapshotPropertiesInputMetadataMap;
+}
+export const FileShareSnapshotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    initiatorId: S.optional(S.String),
+    metadata: S.optional(FileShareSnapshotPropertiesInputMetadataMap),
+  }),
+).annotate({
+  identifier: "FileShareSnapshotPropertiesInput",
+}) as any as S.Schema<FileShareSnapshotPropertiesInput>;
+
 export interface FileShareSnapshotCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -888,7 +977,8 @@ export interface FileShareSnapshotCreateOrUpdateRequest {
   resourceName: string;
   /** The name of the FileShareSnapshot */
   name: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: FileShareSnapshotPropertiesInput;
 }
 export const FileShareSnapshotCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -897,7 +987,7 @@ export const FileShareSnapshotCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(FileShareSnapshotPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1083,7 +1173,8 @@ export const FileShareSnapshot = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileShareSnapshot>;
 
 /** The FileShareSnapshot items on this page */
-export type FileShareSnapshotListResultValueList = FileShareSnapshot[];
+export type FileShareSnapshotListResultValueList =
+  ReadonlyArray<FileShareSnapshot>;
 export const FileShareSnapshotListResultValueList = /*@__PURE__*/ S.Array(
   FileShareSnapshot,
 ) as any as S.Schema<FileShareSnapshotListResultValueList>;
@@ -1104,6 +1195,29 @@ export const FileShareSnapshotListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileShareSnapshotListResult",
 }) as any as S.Schema<FileShareSnapshotListResult>;
 
+/** The metadata */
+export type FileShareSnapshotUpdatePropertiesMetadataMap = {
+  [key: string]: string | undefined;
+};
+export const FileShareSnapshotUpdatePropertiesMetadataMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<FileShareSnapshotUpdatePropertiesMetadataMap>;
+
+/** The updatable properties of the FileShareSnapshot. */
+export interface FileShareSnapshotUpdateProperties {
+  /** The metadata */
+  metadata?: FileShareSnapshotUpdatePropertiesMetadataMap;
+}
+export const FileShareSnapshotUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadata: S.optional(FileShareSnapshotUpdatePropertiesMetadataMap),
+  }),
+).annotate({
+  identifier: "FileShareSnapshotUpdateProperties",
+}) as any as S.Schema<FileShareSnapshotUpdateProperties>;
+
 export interface FileShareSnapshotUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1113,7 +1227,8 @@ export interface FileShareSnapshotUpdateRequest {
   resourceName: string;
   /** The name of the FileShareSnapshot */
   name: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: FileShareSnapshotUpdateProperties;
 }
 export const FileShareSnapshotUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1121,7 +1236,7 @@ export const FileShareSnapshotUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(FileShareSnapshotUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1158,6 +1273,43 @@ export const FileShareSnapshotUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileShareSnapshotUpdateResponse",
 }) as any as S.Schema<FileShareSnapshotUpdateResponse>;
 
+/** Resource tags. */
+export type FileSharesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FileSharesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FileSharesUpdateRequestTagsMap>;
+
+/** The updatable properties of the FileShare. */
+export interface FileShareUpdateProperties {
+  /** The provisioned storage size of the share in GiB (1 GiB is 1024^3 bytes or 1073741824 bytes). A component of the file share's bill is the provisioned storage, regardless of the amount of used storage. */
+  provisionedStorageGiB?: number;
+  /** The provisioned IO / sec of the share. */
+  provisionedIOPerSec?: number;
+  /** The provisioned throughput / sec of the share. */
+  provisionedThroughputMiBPerSec?: number;
+  /** Protocol settings specific NFS. */
+  nfsProtocolProperties?: NfsProtocolProperties;
+  /** The set of properties for control public access. */
+  publicAccessProperties?: PublicAccessProperties;
+  /** Gets or sets allow or disallow public network access to azure managed file share */
+  publicNetworkAccess?: PublicNetworkAccess;
+}
+export const FileShareUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisionedStorageGiB: S.optional(S.Number),
+    provisionedIOPerSec: S.optional(S.Number),
+    provisionedThroughputMiBPerSec: S.optional(S.Number),
+    nfsProtocolProperties: S.optional(NfsProtocolProperties),
+    publicAccessProperties: S.optional(PublicAccessProperties),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+  }),
+).annotate({
+  identifier: "FileShareUpdateProperties",
+}) as any as S.Schema<FileShareUpdateProperties>;
+
 export interface FileSharesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1165,14 +1317,18 @@ export interface FileSharesUpdateRequest {
   resourceGroupName: string;
   /** The resource name of the file share, as seen by the administrator through Azure Resource Manager. */
   resourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: FileSharesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: FileShareUpdateProperties;
 }
 export const FileSharesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(FileSharesUpdateRequestTagsMap),
+    properties: S.optional(FileShareUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1261,11 +1417,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1292,7 +1448,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1312,6 +1468,31 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** The private endpoint resource. */
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
+
+/** Properties of the private endpoint connection. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** The private endpoint resource. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PrivateEndpointConnectionsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1321,7 +1502,8 @@ export interface PrivateEndpointConnectionsCreateRequest {
   resourceName: string;
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
 }
 export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1330,7 +1512,7 @@ export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1512,7 +1694,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnectionListResultValueItem[];
+  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -1563,14 +1745,16 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1674,7 +1858,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourceListResultValueList = PrivateLinkResource[];
+export type PrivateLinkResourceListResultValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;

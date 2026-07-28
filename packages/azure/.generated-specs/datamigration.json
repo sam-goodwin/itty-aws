@@ -524,16 +524,47 @@
             "smithy.api#documentation": "Name of the File"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "HTTP strong entity tag value. This is ignored if submitted."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#ProjectFilePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Custom file properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datamigration#ProjectFilePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "extension": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional File extension. If submitted it should not have a leading period and must match the extension from filePath."
+          }
+        },
+        "filePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Relative path of this file resource. This property can be set when creating or updating the file resource."
+          }
+        },
+        "mediaType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "File content type. This property can be modified to reflect the file content type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base class for file properties."
       }
     },
     "com.azure.datamigration#FilesCreateOrUpdate": {
@@ -642,11 +673,16 @@
             "smithy.api#documentation": "Name of the File"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "HTTP strong entity tag value. This is ignored if submitted."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#ProjectFilePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Custom file properties"
           }
         }
       },
@@ -1111,11 +1147,16 @@
             "smithy.api#documentation": "The Azure region of the operation"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The proposed resource name"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type chain (e.g. virtualMachines/extensions)"
           }
         }
       },
@@ -1584,16 +1625,189 @@
             "smithy.api#documentation": "Name of the project"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.datamigration#ProjectsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#ProjectPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Project properties"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP strong entity tag value. This is ignored if submitted."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datamigration#ProjectPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sourcePlatform": {
+          "target": "com.azure.datamigration#ProjectSourcePlatform",
+          "traits": {
+            "smithy.api#documentation": "Source platform for the project",
+            "smithy.api#required": {}
+          }
+        },
+        "azureAuthenticationInfo": {
+          "target": "com.azure.datamigration#ProjectPropertiesInputAzureAuthenticationInfo",
+          "traits": {
+            "smithy.api#documentation": "Azure Active Directory Application"
+          }
+        },
+        "targetPlatform": {
+          "target": "com.azure.datamigration#ProjectTargetPlatform",
+          "traits": {
+            "smithy.api#documentation": "Target platform for the project",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceConnectionInfo": {
+          "target": "com.azure.datamigration#ProjectPropertiesInputSourceConnectionInfo",
+          "traits": {
+            "smithy.api#documentation": "Defines the connection properties of a server"
+          }
+        },
+        "targetConnectionInfo": {
+          "target": "com.azure.datamigration#ProjectPropertiesInputTargetConnectionInfo",
+          "traits": {
+            "smithy.api#documentation": "Defines the connection properties of a server"
+          }
+        },
+        "databasesInfo": {
+          "target": "com.azure.datamigration#ProjectPropertiesInputDatabasesInfoList",
+          "traits": {
+            "smithy.api#documentation": "List of DatabaseInfo"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Project-specific properties"
+      }
+    },
+    "com.azure.datamigration#ProjectPropertiesInputDatabasesInfoList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datamigration#DatabaseInfo"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of DatabaseInfo"
+      }
+    },
+    "com.azure.datamigration#ProjectPropertiesInputTargetConnectionInfo": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of connection info",
+            "smithy.api#required": {}
+          }
+        },
+        "userName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User name"
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Password credential.",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the connection properties of a server"
+      }
+    },
+    "com.azure.datamigration#ProjectPropertiesInputSourceConnectionInfo": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of connection info",
+            "smithy.api#required": {}
+          }
+        },
+        "userName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User name"
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Password credential.",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the connection properties of a server"
+      }
+    },
+    "com.azure.datamigration#ProjectPropertiesInputAzureAuthenticationInfo": {
+      "type": "structure",
+      "members": {
+        "applicationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Application ID of the Azure Active Directory Application"
+          }
+        },
+        "appKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key used to authenticate to the Azure Active Directory Application"
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tenant id of the customer"
+          }
+        },
+        "ignoreAzurePermissions": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Ignore checking azure permissions on the AAD app"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Active Directory Application"
+      }
+    },
+    "com.azure.datamigration#ProjectsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.datamigration#ProjectsCreateOrUpdate": {
@@ -1719,16 +1933,46 @@
             "smithy.api#documentation": "Name of the project"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.datamigration#ProjectsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#ProjectPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Project properties"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP strong entity tag value. This is ignored if submitted."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datamigration#ProjectsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.datamigration#ProjectsGet": {
@@ -2252,16 +2496,54 @@
             "smithy.api#documentation": "Name of the Task"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "commandType": {
+          "target": "com.azure.datamigration#TasksCommandRequestCommandType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Command type.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datamigration#TasksCommandRequestCommandType": {
+      "type": "enum",
+      "members": {
+        "MIGRATE_SYNC_COMPLETE_DATABASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.Sync.Complete.Database"
+          }
+        },
+        "MIGRATE_SQLSERVER_AZUREDBSQLMI_COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.SqlServer.AzureDbSqlMi.Complete"
+          }
+        },
+        "CANCEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancel"
+          }
+        },
+        "FINISH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "finish"
+          }
+        },
+        "RESTART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restart"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Command type."
       }
     },
     "com.azure.datamigration#ServiceTasksCancel": {
@@ -3185,16 +3467,290 @@
             "smithy.api#documentation": "Name of the Task"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "HTTP strong entity tag value. This is ignored if submitted."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#ProjectTaskPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Custom task properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datamigration#ProjectTaskPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "taskType": {
+          "target": "com.azure.datamigration#ProjectTaskPropertiesInputTaskType",
+          "traits": {
+            "smithy.api#documentation": "Task type.",
+            "smithy.api#required": {}
+          }
+        },
+        "clientData": {
+          "target": "com.azure.datamigration#ProjectTaskPropertiesInputClientDataMap",
+          "traits": {
+            "smithy.api#documentation": "Key value pairs of client data to attach meta data information to task"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base class for all types of DMS (classic) task properties. If task is not supported by current client, this object is returned."
+      }
+    },
+    "com.azure.datamigration#ProjectTaskPropertiesInputClientDataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key value pairs of client data to attach meta data information to task"
+      }
+    },
+    "com.azure.datamigration#ProjectTaskPropertiesInputTaskType": {
+      "type": "enum",
+      "members": {
+        "CONNECT_MONGODB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Connect.MongoDb"
+          }
+        },
+        "CONNECTTOSOURCE_SQLSERVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToSource.SqlServer"
+          }
+        },
+        "CONNECTTOSOURCE_SQLSERVER_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToSource.SqlServer.Sync"
+          }
+        },
+        "CONNECTTOSOURCE_POSTGRESQL_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToSource.PostgreSql.Sync"
+          }
+        },
+        "CONNECTTOSOURCE_MYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToSource.MySql"
+          }
+        },
+        "CONNECTTOSOURCE_ORACLE_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToSource.Oracle.Sync"
+          }
+        },
+        "CONNECTTOTARGET_SQLDB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToTarget.SqlDb"
+          }
+        },
+        "CONNECTTOTARGET_SQLDB_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToTarget.SqlDb.Sync"
+          }
+        },
+        "CONNECTTOTARGET_AZUREDBFORPOSTGRESQL_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToTarget.AzureDbForPostgreSql.Sync"
+          }
+        },
+        "CONNECTTOTARGET_ORACLE_AZUREDBFORPOSTGRESQL_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToTarget.Oracle.AzureDbForPostgreSql.Sync"
+          }
+        },
+        "CONNECTTOTARGET_AZURESQLDBMI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToTarget.AzureSqlDbMI"
+          }
+        },
+        "CONNECTTOTARGET_AZURESQLDBMI_SYNC_LRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToTarget.AzureSqlDbMI.Sync.LRS"
+          }
+        },
+        "CONNECTTOTARGET_AZUREDBFORMYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConnectToTarget.AzureDbForMySql"
+          }
+        },
+        "GETUSERTABLES_SQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GetUserTables.Sql"
+          }
+        },
+        "GETUSERTABLES_AZURESQLDB_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GetUserTables.AzureSqlDb.Sync"
+          }
+        },
+        "GETUSERTABLESORACLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GetUserTablesOracle"
+          }
+        },
+        "GETUSERTABLESPOSTGRESQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GetUserTablesPostgreSql"
+          }
+        },
+        "GETUSERTABLESMYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GetUserTablesMySql"
+          }
+        },
+        "MIGRATE_MONGODB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.MongoDb"
+          }
+        },
+        "MIGRATE_SQLSERVER_AZURESQLDBMI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.SqlServer.AzureSqlDbMI"
+          }
+        },
+        "MIGRATE_SQLSERVER_AZURESQLDBMI_SYNC_LRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.SqlServer.AzureSqlDbMI.Sync.LRS"
+          }
+        },
+        "MIGRATE_SQLSERVER_SQLDB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.SqlServer.SqlDb"
+          }
+        },
+        "MIGRATE_SQLSERVER_AZURESQLDB_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.SqlServer.AzureSqlDb.Sync"
+          }
+        },
+        "MIGRATE_MYSQL_AZUREDBFORMYSQL_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.MySql.AzureDbForMySql.Sync"
+          }
+        },
+        "MIGRATE_MYSQL_AZUREDBFORMYSQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.MySql.AzureDbForMySql"
+          }
+        },
+        "MIGRATE_POSTGRESQL_AZUREDBFORPOSTGRESQL_SYNCV2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2"
+          }
+        },
+        "MIGRATE_ORACLE_AZUREDBFORPOSTGRESQL_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.Oracle.AzureDbForPostgreSql.Sync"
+          }
+        },
+        "VALIDATEMIGRATIONINPUT_SQLSERVER_SQLDB_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ValidateMigrationInput.SqlServer.SqlDb.Sync"
+          }
+        },
+        "VALIDATEMIGRATIONINPUT_SQLSERVER_AZURESQLDBMI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ValidateMigrationInput.SqlServer.AzureSqlDbMI"
+          }
+        },
+        "VALIDATEMIGRATIONINPUT_SQLSERVER_AZURESQLDBMI_SYNC_LRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ValidateMigrationInput.SqlServer.AzureSqlDbMI.Sync.LRS"
+          }
+        },
+        "VALIDATE_MONGODB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Validate.MongoDb"
+          }
+        },
+        "VALIDATE_ORACLE_AZUREDBPOSTGRESQL_SYNC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Validate.Oracle.AzureDbPostgreSql.Sync"
+          }
+        },
+        "GETTDECERTIFICATES_SQL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GetTDECertificates.Sql"
+          }
+        },
+        "MIGRATE_SSIS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrate.Ssis"
+          }
+        },
+        "SERVICE_CHECK_OCI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Service.Check.OCI"
+          }
+        },
+        "SERVICE_UPLOAD_OCI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Service.Upload.OCI"
+          }
+        },
+        "SERVICE_INSTALL_OCI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Service.Install.OCI"
+          }
+        },
+        "MIGRATESCHEMASQLSERVERSQLDB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MigrateSchemaSqlServerSqlDb"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Task type."
       }
     },
     "com.azure.datamigration#ServiceTasksCreateOrUpdate": {
@@ -3295,11 +3851,16 @@
             "smithy.api#documentation": "Name of the Task"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "HTTP strong entity tag value. This is ignored if submitted."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#ProjectTaskPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Custom task properties"
           }
         }
       },
@@ -3597,11 +4158,16 @@
             "smithy.api#documentation": "Name of the Task"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "HTTP strong entity tag value. This is ignored if submitted."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#ProjectTaskPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Custom task properties"
           }
         }
       },
@@ -3715,11 +4281,16 @@
             "smithy.api#documentation": "Name of the Task"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "HTTP strong entity tag value. This is ignored if submitted."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#ProjectTaskPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Custom task properties"
           }
         }
       },
@@ -4304,11 +4875,16 @@
             "smithy.api#documentation": "Name of the service"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The proposed resource name"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type chain (e.g. virtualMachines/extensions)"
           }
         }
       },
@@ -5123,16 +5699,96 @@
             "smithy.api#documentation": "Name of the service"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.datamigration#ServicesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP strong entity tag value. Ignored if submitted"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource kind. Only 'vm' (the default) is supported."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#DataMigrationServicePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Custom service properties"
+          }
+        },
+        "sku": {
+          "target": "com.azure.datamigration#ServiceSku",
+          "traits": {
+            "smithy.api#documentation": "Service SKU"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datamigration#DataMigrationServicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "publicKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The public key of the service, used to encrypt secrets sent to the service"
+          }
+        },
+        "virtualSubnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined"
+          }
+        },
+        "virtualNicId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Microsoft.Network/networkInterfaces resource which the service have"
+          }
+        },
+        "autoStopDelay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time delay before the service is auto-stopped when idle."
+          }
+        },
+        "deleteResourcesOnStop": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether service resources should be deleted when stopped. (Turned on by default)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Azure Database Migration Service (classic) instance"
+      }
+    },
+    "com.azure.datamigration#ServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.datamigration#ServicesCreateOrUpdate": {
@@ -5262,16 +5918,58 @@
             "smithy.api#documentation": "Name of the service"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.datamigration#ServicesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTP strong entity tag value. Ignored if submitted"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource kind. Only 'vm' (the default) is supported."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#DataMigrationServicePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Custom service properties"
+          }
+        },
+        "sku": {
+          "target": "com.azure.datamigration#ServiceSku",
+          "traits": {
+            "smithy.api#documentation": "Service SKU"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datamigration#ServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.datamigration#ServicesGet": {
@@ -6455,11 +7153,16 @@
             "smithy.api#documentation": "Name of the SQL Migration Service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "nodeName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of node to delete."
+          }
+        },
+        "integrationRuntimeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of integration runtime."
           }
         }
       },
@@ -6539,11 +7242,22 @@
             "smithy.api#documentation": "Name of the SQL Migration Service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of authentication key to generate."
+          }
+        },
+        "authKey1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The first authentication key."
+          }
+        },
+        "authKey2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The second authentication key."
           }
         }
       },
@@ -6822,17 +7536,23 @@
             "smithy.api#documentation": "Name of the SQL Migration Service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "tags": {
+          "target": "com.azure.datamigration#SqlMigrationServicesUpdateRequestTagsMap"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.datamigration#SqlMigrationServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.datamigration#SqlMigrationServicesCreateOrUpdate": {
       "type": "operation",
@@ -6940,16 +7660,44 @@
             "smithy.api#documentation": "Name of the SQL Migration Service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.datamigration#SqlMigrationServicesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#SqlMigrationServicePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datamigration#SqlMigrationServicePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The SQL Migration Service properties."
+      }
+    },
+    "com.azure.datamigration#SqlMigrationServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.datamigration#SqlMigrationServicesGet": {
@@ -7680,17 +8428,23 @@
             "smithy.api#documentation": "Name of the Migration Service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "tags": {
+          "target": "com.azure.datamigration#MigrationServicesUpdateRequestTagsMap"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.datamigration#MigrationServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.datamigration#MigrationServicesCreateOrUpdate": {
       "type": "operation",
@@ -7798,16 +8552,44 @@
             "smithy.api#documentation": "Name of the Migration Service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.datamigration#MigrationServicesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "properties": {
+          "target": "com.azure.datamigration#MigrationServicePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datamigration#MigrationServicePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The Migration Service properties."
+      }
+    },
+    "com.azure.datamigration#MigrationServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.datamigration#MigrationServicesGet": {
@@ -8084,11 +8866,10 @@
             "smithy.api#documentation": "The name of the target database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "migrationOperationId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ID tracking migration operation."
           }
         }
       },
@@ -8149,11 +8930,10 @@
             "smithy.api#documentation": "The name of the target database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "migrationOperationId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ID tracking migration operation."
           }
         }
       },
@@ -9055,17 +9835,248 @@
             "smithy.api#documentation": "The name of the target database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.datamigration#DatabaseMigrationPropertiesSqlVmInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.datamigration#DatabaseMigrationPropertiesSqlVmInput": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.datamigration#DatabaseMigrationPropertiesSqlVmInputKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id of the target resource."
+          }
+        },
+        "migrationService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id of the Migration Service."
+          }
+        },
+        "migrationOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID for current migration operation."
+          }
+        },
+        "provisioningError": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message for migration provisioning failure, if any."
+          }
+        },
+        "sourceSqlConnection": {
+          "target": "com.azure.datamigration#SqlConnectionInformation",
+          "traits": {
+            "smithy.api#documentation": "Source SQL Server connection details."
+          }
+        },
+        "sourceDatabaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the source database."
+          }
+        },
+        "targetDatabaseCollation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Database collation to be used for the target database."
+          }
+        },
+        "backupConfiguration": {
+          "target": "com.azure.datamigration#BackupConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "Backup configuration info."
+          }
+        },
+        "offlineConfiguration": {
+          "target": "com.azure.datamigration#OfflineConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Offline configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Database Migration Resource properties for SQL Virtual Machine."
+      }
+    },
+    "com.azure.datamigration#BackupConfigurationInput": {
+      "type": "structure",
+      "members": {
+        "sourceLocation": {
+          "target": "com.azure.datamigration#SourceLocationInput",
+          "traits": {
+            "smithy.api#documentation": "Source location of backups."
+          }
+        },
+        "targetLocation": {
+          "target": "com.azure.datamigration#TargetLocation",
+          "traits": {
+            "smithy.api#documentation": "Target location for copying backups."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Backup Configuration"
+      }
+    },
+    "com.azure.datamigration#SourceLocationInput": {
+      "type": "structure",
+      "members": {
+        "fileShare": {
+          "target": "com.azure.datamigration#SqlFileShare",
+          "traits": {
+            "smithy.api#documentation": "Source File share."
+          }
+        },
+        "azureBlob": {
+          "target": "com.azure.datamigration#AzureBlobInput",
+          "traits": {
+            "smithy.api#documentation": "Source Azure Blob."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Source Location details of backups."
+      }
+    },
+    "com.azure.datamigration#AzureBlobInput": {
+      "type": "structure",
+      "members": {
+        "authType": {
+          "target": "com.azure.datamigration#AzureBlobInputAuthType",
+          "traits": {
+            "smithy.api#documentation": "Authentication type used for accessing Azure Blob Storage."
+          }
+        },
+        "identity": {
+          "target": "com.azure.datamigration#AzureBlobInputIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "storageAccountResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id of the storage account where backups are stored."
+          }
+        },
+        "accountKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage Account Key."
+          }
+        },
+        "blobContainerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Blob container name where backups are stored."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Blob Details"
+      }
+    },
+    "com.azure.datamigration#AzureBlobInputIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.datamigration#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.datamigration#AzureBlobInputIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.datamigration#AzureBlobInputIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.datamigration#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.datamigration#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.datamigration#AzureBlobInputAuthType": {
+      "type": "enum",
+      "members": {
+        "ACCOUNTKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AccountKey"
+          }
+        },
+        "MANAGEDIDENTITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ManagedIdentity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Authentication type used for accessing Azure Blob Storage."
+      }
+    },
+    "com.azure.datamigration#DatabaseMigrationPropertiesSqlVmInputKind": {
+      "type": "enum",
+      "members": {
+        "SQLMI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlMi"
+          }
+        },
+        "SQLVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlVm"
+          }
+        },
+        "SQLDB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlDb"
+          }
+        },
+        "MONGOTOCOSMOSDBMONGO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MongoToCosmosDbMongo"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.datamigration#DatabaseMigrationsSqlVmGet": {
       "type": "operation",
@@ -9227,11 +10238,10 @@
             "smithy.api#documentation": "The name of the target database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "migrationOperationId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ID tracking migration operation."
           }
         }
       },
@@ -9292,11 +10302,10 @@
             "smithy.api#documentation": "The name of the target database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "migrationOperationId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ID tracking migration operation."
           }
         }
       },
@@ -9670,17 +10679,111 @@
             "smithy.api#documentation": "The name of the target database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.datamigration#DatabaseMigrationPropertiesSqlMiInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.datamigration#DatabaseMigrationPropertiesSqlMiInput": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.datamigration#DatabaseMigrationPropertiesSqlMiInputKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id of the target resource."
+          }
+        },
+        "migrationService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id of the Migration Service."
+          }
+        },
+        "migrationOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID for current migration operation."
+          }
+        },
+        "provisioningError": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message for migration provisioning failure, if any."
+          }
+        },
+        "sourceSqlConnection": {
+          "target": "com.azure.datamigration#SqlConnectionInformation",
+          "traits": {
+            "smithy.api#documentation": "Source SQL Server connection details."
+          }
+        },
+        "sourceDatabaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the source database."
+          }
+        },
+        "targetDatabaseCollation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Database collation to be used for the target database."
+          }
+        },
+        "backupConfiguration": {
+          "target": "com.azure.datamigration#BackupConfigurationInput",
+          "traits": {
+            "smithy.api#documentation": "Backup configuration info."
+          }
+        },
+        "offlineConfiguration": {
+          "target": "com.azure.datamigration#OfflineConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Offline configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Database Migration Resource properties for SQL Managed Instance."
+      }
+    },
+    "com.azure.datamigration#DatabaseMigrationPropertiesSqlMiInputKind": {
+      "type": "enum",
+      "members": {
+        "SQLMI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlMi"
+          }
+        },
+        "SQLVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlVm"
+          }
+        },
+        "SQLDB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlDb"
+          }
+        },
+        "MONGOTOCOSMOSDBMONGO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MongoToCosmosDbMongo"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.datamigration#DatabaseMigrationsSqlMiGet": {
       "type": "operation",
@@ -9842,11 +10945,10 @@
             "smithy.api#documentation": "The name of the target database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "migrationOperationId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ID tracking migration operation."
           }
         }
       },
@@ -9907,11 +11009,10 @@
             "smithy.api#documentation": "The name of the target database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "migrationOperationId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ID tracking migration operation."
           }
         }
       },
@@ -10397,17 +11498,120 @@
             "smithy.api#documentation": "The name of the target database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.datamigration#DatabaseMigrationPropertiesSqlDbInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.datamigration#DatabaseMigrationPropertiesSqlDbInput": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.datamigration#DatabaseMigrationPropertiesSqlDbInputKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id of the target resource."
+          }
+        },
+        "migrationService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id of the Migration Service."
+          }
+        },
+        "migrationOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID for current migration operation."
+          }
+        },
+        "provisioningError": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message for migration provisioning failure, if any."
+          }
+        },
+        "sourceSqlConnection": {
+          "target": "com.azure.datamigration#SqlConnectionInformation",
+          "traits": {
+            "smithy.api#documentation": "Source SQL Server connection details."
+          }
+        },
+        "sourceDatabaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the source database."
+          }
+        },
+        "targetDatabaseCollation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Database collation to be used for the target database."
+          }
+        },
+        "targetSqlConnection": {
+          "target": "com.azure.datamigration#SqlConnectionInformation",
+          "traits": {
+            "smithy.api#documentation": "Target SQL DB connection details."
+          }
+        },
+        "tableList": {
+          "target": "com.azure.datamigration#DatabaseMigrationPropertiesSqlDbInputTableListList",
+          "traits": {
+            "smithy.api#documentation": "List of tables to copy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Database Migration Resource properties for SQL database."
+      }
+    },
+    "com.azure.datamigration#DatabaseMigrationPropertiesSqlDbInputTableListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of tables to copy."
+      }
+    },
+    "com.azure.datamigration#DatabaseMigrationPropertiesSqlDbInputKind": {
+      "type": "enum",
+      "members": {
+        "SQLMI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlMi"
+          }
+        },
+        "SQLVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlVm"
+          }
+        },
+        "SQLDB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlDb"
+          }
+        },
+        "MONGOTOCOSMOSDBMONGO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MongoToCosmosDbMongo"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.datamigration#DatabaseMigrationsSqlDbGet": {
       "type": "operation",
@@ -11101,17 +12305,140 @@
             "smithy.api#documentation": "Name of the migration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.datamigration#DatabaseMigrationPropertiesCosmosDbMongoInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.datamigration#DatabaseMigrationPropertiesCosmosDbMongoInput": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.datamigration#DatabaseMigrationPropertiesCosmosDbMongoInputKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id of the target resource."
+          }
+        },
+        "migrationService": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id of the Migration Service."
+          }
+        },
+        "migrationOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID for current migration operation."
+          }
+        },
+        "provisioningError": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message for migration provisioning failure, if any."
+          }
+        },
+        "sourceMongoConnection": {
+          "target": "com.azure.datamigration#MongoConnectionInformation",
+          "traits": {
+            "smithy.api#documentation": "Source Mongo connection details."
+          }
+        },
+        "targetMongoConnection": {
+          "target": "com.azure.datamigration#MongoConnectionInformation",
+          "traits": {
+            "smithy.api#documentation": "Target Cosmos DB Mongo connection details."
+          }
+        },
+        "collectionList": {
+          "target": "com.azure.datamigration#DatabaseMigrationPropertiesCosmosDbMongoInputCollectionListList",
+          "traits": {
+            "smithy.api#documentation": "List of Mongo Collections to be migrated."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Database Migration Resource properties for CosmosDb for Mongo."
+      }
+    },
+    "com.azure.datamigration#DatabaseMigrationPropertiesCosmosDbMongoInputCollectionListList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datamigration#MongoMigrationCollectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Mongo Collections to be migrated."
+      }
+    },
+    "com.azure.datamigration#MongoMigrationCollectionInput": {
+      "type": "structure",
+      "members": {
+        "sourceDatabase": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source database name."
+          }
+        },
+        "sourceCollection": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source collection name."
+          }
+        },
+        "targetDatabase": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target database name."
+          }
+        },
+        "targetCollection": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target collection name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Mongo source and target database and collection details."
+      }
+    },
+    "com.azure.datamigration#DatabaseMigrationPropertiesCosmosDbMongoInputKind": {
+      "type": "enum",
+      "members": {
+        "SQLMI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlMi"
+          }
+        },
+        "SQLVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlVm"
+          }
+        },
+        "SQLDB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlDb"
+          }
+        },
+        "MONGOTOCOSMOSDBMONGO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MongoToCosmosDbMongo"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoGet": {
       "type": "operation",
@@ -11413,12 +12740,8 @@
             "smithy.api#documentation": "Name of the migration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.datamigration#DatabaseMigrationPropertiesCosmosDbMongoInput"
         }
       },
       "traits": {

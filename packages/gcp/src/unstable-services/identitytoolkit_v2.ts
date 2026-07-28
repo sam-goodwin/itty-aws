@@ -80,7 +80,7 @@ export const GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig =
     identifier: "GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig",
   }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -176,7 +176,7 @@ export const GoogleCloudIdentitytoolkitAdminV2IdpCertificate =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2IdpCertificate>;
 
 export type GoogleCloudIdentitytoolkitAdminV2IdpCertificateList =
-  GoogleCloudIdentitytoolkitAdminV2IdpCertificate[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2IdpCertificate>;
 export const GoogleCloudIdentitytoolkitAdminV2IdpCertificateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2IdpCertificate,
@@ -225,7 +225,7 @@ export const GoogleCloudIdentitytoolkitAdminV2SpCertificate =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2SpCertificate>;
 
 export type GoogleCloudIdentitytoolkitAdminV2SpCertificateList =
-  GoogleCloudIdentitytoolkitAdminV2SpCertificate[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2SpCertificate>;
 export const GoogleCloudIdentitytoolkitAdminV2SpCertificateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2SpCertificate,
@@ -482,8 +482,7 @@ export type GoogleCloudIdentitytoolkitAdminV2HashConfigAlgorithmEnum =
   | "PBKDF2_SHA256"
   | "SHA256"
   | "SHA512"
-  | "STANDARD_SCRYPT"
-  | (string & {});
+  | "STANDARD_SCRYPT";
 export const GoogleCloudIdentitytoolkitAdminV2HashConfigAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -519,18 +518,17 @@ export type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED"
-  | "MANDATORY"
-  | (string & {});
+  | "MANDATORY";
 export const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnum =
-  "PROVIDER_UNSPECIFIED" | "PHONE_SMS" | (string & {});
+  "PROVIDER_UNSPECIFIED" | "PHONE_SMS";
 export const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnumList =
-  GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnum[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnum>;
 export const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItemEnum,
@@ -554,8 +552,7 @@ export type GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateEnum =
   | "MFA_STATE_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED"
-  | "MANDATORY"
-  | (string & {});
+  | "MANDATORY";
 export const GoogleCloudIdentitytoolkitAdminV2ProviderConfigStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -581,7 +578,7 @@ export const GoogleCloudIdentitytoolkitAdminV2ProviderConfig =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2ProviderConfig>;
 
 export type GoogleCloudIdentitytoolkitAdminV2ProviderConfigList =
-  GoogleCloudIdentitytoolkitAdminV2ProviderConfig[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2ProviderConfig>;
 export const GoogleCloudIdentitytoolkitAdminV2ProviderConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2ProviderConfig,
@@ -649,8 +646,7 @@ export const GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig =
 export type GoogleCloudIdentitytoolkitAdminV2MobileLinksConfigDomainEnum =
   | "DOMAIN_UNSPECIFIED"
   | "FIREBASE_DYNAMIC_LINK_DOMAIN"
-  | "HOSTING_DOMAIN"
-  | (string & {});
+  | "HOSTING_DOMAIN";
 export const GoogleCloudIdentitytoolkitAdminV2MobileLinksConfigDomainEnum =
   /*@__PURE__*/ S.String;
 
@@ -704,8 +700,7 @@ export type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPhoneEnforcementStat
     | "RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED"
     | "OFF"
     | "AUDIT"
-    | "ENFORCE"
-    | (string & {});
+    | "ENFORCE";
 export const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigPhoneEnforcementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -713,15 +708,13 @@ export type GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforce
     | "RECAPTCHA_PROVIDER_ENFORCEMENT_STATE_UNSPECIFIED"
     | "OFF"
     | "AUDIT"
-    | "ENFORCE"
-    | (string & {});
+    | "ENFORCE";
 export const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionEnum =
   | "RECAPTCHA_ACTION_UNSPECIFIED"
-  | "BLOCK"
-  | (string & {});
+  | "BLOCK";
 export const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -745,7 +738,7 @@ export const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>;
 
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleList =
-  GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>;
 export const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule,
@@ -755,8 +748,7 @@ export type GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyTypeEnum =
   | "CLIENT_TYPE_UNSPECIFIED"
   | "WEB"
   | "IOS"
-  | "ANDROID"
-  | (string & {});
+  | "ANDROID";
 export const GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -778,14 +770,14 @@ export const GoogleCloudIdentitytoolkitAdminV2RecaptchaKey =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2RecaptchaKey>;
 
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyList =
-  GoogleCloudIdentitytoolkitAdminV2RecaptchaKey[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2RecaptchaKey>;
 export const GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2RecaptchaKey,
   ) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyList>;
 
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleActionEnum =
-  "RECAPTCHA_ACTION_UNSPECIFIED" | "BLOCK" | (string & {});
+  "RECAPTCHA_ACTION_UNSPECIFIED" | "BLOCK";
 export const GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -810,7 +802,7 @@ export const GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule>;
 
 export type GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleList =
-  GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule>;
 export const GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2RecaptchaTollFraudManagedRule,
@@ -862,10 +854,7 @@ export const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig>;
 
 export type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateEnum =
-    | "PASSWORD_POLICY_ENFORCEMENT_STATE_UNSPECIFIED"
-    | "OFF"
-    | "ENFORCE"
-    | (string & {});
+  "PASSWORD_POLICY_ENFORCEMENT_STATE_UNSPECIFIED" | "OFF" | "ENFORCE";
 export const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -918,7 +907,7 @@ export const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion>;
 
 export type GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionList =
-  GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion>;
 export const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion,
@@ -1549,8 +1538,7 @@ export const GoogleCloudIdentitytoolkitAdminV2MultiTenantConfig =
 export type GoogleCloudIdentitytoolkitAdminV2ConfigSubtypeEnum =
   | "SUBTYPE_UNSPECIFIED"
   | "IDENTITY_PLATFORM"
-  | "FIREBASE_AUTH"
-  | (string & {});
+  | "FIREBASE_AUTH";
 export const GoogleCloudIdentitytoolkitAdminV2ConfigSubtypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1732,8 +1720,7 @@ export const GoogleCloudIdentitytoolkitAdminV2BlockingFunctionsConfig =
 export type GoogleCloudIdentitytoolkitAdminV2EmailTemplateBodyFormatEnum =
   | "BODY_FORMAT_UNSPECIFIED"
   | "PLAIN_TEXT"
-  | "HTML"
-  | (string & {});
+  | "HTML";
 export const GoogleCloudIdentitytoolkitAdminV2EmailTemplateBodyFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -1776,8 +1763,7 @@ export type GoogleCloudIdentitytoolkitAdminV2DnsInfoCustomDomainStateEnum =
   | "NOT_STARTED"
   | "IN_PROGRESS"
   | "FAILED"
-  | "SUCCEEDED"
-  | (string & {});
+  | "SUCCEEDED";
 export const GoogleCloudIdentitytoolkitAdminV2DnsInfoCustomDomainStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1812,16 +1798,14 @@ export const GoogleCloudIdentitytoolkitAdminV2DnsInfo = /*@__PURE__*/ S.suspend(
 export type GoogleCloudIdentitytoolkitAdminV2SendEmailMethodEnum =
   | "METHOD_UNSPECIFIED"
   | "DEFAULT"
-  | "CUSTOM_SMTP"
-  | (string & {});
+  | "CUSTOM_SMTP";
 export const GoogleCloudIdentitytoolkitAdminV2SendEmailMethodEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIdentitytoolkitAdminV2SmtpSecurityModeEnum =
   | "SECURITY_MODE_UNSPECIFIED"
   | "SSL"
-  | "START_TLS"
-  | (string & {});
+  | "START_TLS";
 export const GoogleCloudIdentitytoolkitAdminV2SmtpSecurityModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2124,8 +2108,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2144,7 +2127,8 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList = GoogleIamV1AuditLogConfig[];
+export type GoogleIamV1AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -2165,7 +2149,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = GoogleIamV1AuditConfig[];
+export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -2209,7 +2193,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = GoogleIamV1Binding[];
+export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -2257,8 +2241,7 @@ export const GetPasswordPolicyV2Request = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudIdentitytoolkitV2PasswordPolicyEnforcementStateEnum =
   | "ENFORCEMENT_STATE_UNSPECIFIED"
   | "OFF"
-  | "ENFORCE"
-  | (string & {});
+  | "ENFORCE";
 export const GoogleCloudIdentitytoolkitV2PasswordPolicyEnforcementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2454,16 +2437,14 @@ export const GetProjectsTenantsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(
 
 export type GetRecaptchaConfigV2VersionEnum =
   | "RECAPTCHA_VERSION_UNSPECIFIED"
-  | "RECAPTCHA_ENTERPRISE"
-  | (string & {});
+  | "RECAPTCHA_ENTERPRISE";
 export const GetRecaptchaConfigV2VersionEnum = /*@__PURE__*/ S.String;
 
 export type GetRecaptchaConfigV2ClientTypeEnum =
   | "CLIENT_TYPE_UNSPECIFIED"
   | "CLIENT_TYPE_WEB"
   | "CLIENT_TYPE_ANDROID"
-  | "CLIENT_TYPE_IOS"
-  | (string & {});
+  | "CLIENT_TYPE_IOS";
 export const GetRecaptchaConfigV2ClientTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetRecaptchaConfigV2Request {
@@ -2491,15 +2472,14 @@ export const GetRecaptchaConfigV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRecaptchaConfigV2Request>;
 
 export type GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateEnforcementStateEnum =
-  "ENFORCEMENT_STATE_UNSPECIFIED" | "OFF" | "AUDIT" | "ENFORCE" | (string & {});
+  "ENFORCEMENT_STATE_UNSPECIFIED" | "OFF" | "AUDIT" | "ENFORCE";
 export const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateEnforcementStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateProviderEnum =
   | "RECAPTCHA_PROVIDER_UNSPECIFIED"
   | "EMAIL_PASSWORD_PROVIDER"
-  | "PHONE_PROVIDER"
-  | (string & {});
+  | "PHONE_PROVIDER";
 export const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateProviderEnum =
   /*@__PURE__*/ S.String;
 
@@ -2525,7 +2505,7 @@ export const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState>;
 
 export type GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateList =
-  GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState>;
 export const GoogleCloudIdentitytoolkitV2RecaptchaEnforcementStateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV2RecaptchaEnforcementState,
@@ -2637,7 +2617,7 @@ export const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp>;
 
 export type GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpList =
-  GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp>;
 export const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp,
@@ -2689,7 +2669,7 @@ export const ListProjectsDefaultSupportedIdpConfigsRequest =
   }) as any as S.Schema<ListProjectsDefaultSupportedIdpConfigsRequest>;
 
 export type GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfigList =
-  GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig>;
 export const GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig,
@@ -2741,7 +2721,7 @@ export const ListProjectsInboundSamlConfigsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsInboundSamlConfigsRequest>;
 
 export type GoogleCloudIdentitytoolkitAdminV2InboundSamlConfigList =
-  GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig>;
 export const GoogleCloudIdentitytoolkitAdminV2InboundSamlConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig,
@@ -2792,7 +2772,7 @@ export const ListProjectsOauthIdpConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsOauthIdpConfigsRequest>;
 
 export type GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfigList =
-  GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig>;
 export const GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig,
@@ -2842,7 +2822,7 @@ export const ListProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsTenantsRequest>;
 
 export type GoogleCloudIdentitytoolkitAdminV2TenantList =
-  GoogleCloudIdentitytoolkitAdminV2Tenant[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitAdminV2Tenant>;
 export const GoogleCloudIdentitytoolkitAdminV2TenantList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitAdminV2Tenant,
@@ -3135,8 +3115,7 @@ export type GoogleCloudIdentitytoolkitV2RevokeTokenRequestTokenTypeEnum =
   | "TOKEN_TYPE_UNSPECIFIED"
   | "REFRESH_TOKEN"
   | "ACCESS_TOKEN"
-  | "CODE"
-  | (string & {});
+  | "CODE";
 export const GoogleCloudIdentitytoolkitV2RevokeTokenRequestTokenTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3253,13 +3232,12 @@ export type GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfoClientTypeEnum =
     | "CLIENT_TYPE_UNSPECIFIED"
     | "CLIENT_TYPE_WEB"
     | "CLIENT_TYPE_ANDROID"
-    | "CLIENT_TYPE_IOS"
-    | (string & {});
+    | "CLIENT_TYPE_IOS";
 export const GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfoClientTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfoRecaptchaVersionEnum =
-  "RECAPTCHA_VERSION_UNSPECIFIED" | "RECAPTCHA_ENTERPRISE" | (string & {});
+  "RECAPTCHA_VERSION_UNSPECIFIED" | "RECAPTCHA_ENTERPRISE";
 export const GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfoRecaptchaVersionEnum =
   /*@__PURE__*/ S.String;
 

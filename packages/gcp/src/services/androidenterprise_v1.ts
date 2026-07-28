@@ -100,8 +100,7 @@ export const ApprovalUrlInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type ProductsApproveRequestApprovedPermissionsEnum =
   | "currentPermissionsOnly"
-  | "allPermissions"
-  | (string & {});
+  | "allPermissions";
 export const ProductsApproveRequestApprovedPermissionsEnum =
   /*@__PURE__*/ S.String;
 
@@ -185,7 +184,7 @@ export const Administrator = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Administrator" }) as any as S.Schema<Administrator>;
 
-export type AdministratorList = Administrator[];
+export type AdministratorList = ReadonlyArray<Administrator>;
 export const AdministratorList = /*@__PURE__*/ S.Array(
   Administrator,
 ) as any as S.Schema<AdministratorList>;
@@ -193,23 +192,20 @@ export const AdministratorList = /*@__PURE__*/ S.Array(
 export type EnterpriseManagedGoogleDomainTypeEnum =
   | "managedGoogleDomainTypeUnspecified"
   | "typeTeam"
-  | "typeDomain"
-  | (string & {});
+  | "typeDomain";
 export const EnterpriseManagedGoogleDomainTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
   | "googleAuthenticationRequiredUnspecified"
   | "notRequired"
-  | "required"
-  | (string & {});
+  | "required";
 export const GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAuthenticationSettingsDedicatedDevicesAllowedEnum =
   | "dedicatedDevicesAllowedUnspecified"
   | "disallowed"
-  | "allowed"
-  | (string & {});
+  | "allowed";
 export const GoogleAuthenticationSettingsDedicatedDevicesAllowedEnum =
   /*@__PURE__*/ S.String;
 
@@ -236,8 +232,7 @@ export const GoogleAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
 export type EnterpriseEnterpriseTypeEnum =
   | "enterpriseTypeUnspecified"
   | "managedGoogleDomain"
-  | "managedGooglePlayAccountsEnterprise"
-  | (string & {});
+  | "managedGooglePlayAccountsEnterprise";
 export const EnterpriseEnterpriseTypeEnum = /*@__PURE__*/ S.String;
 
 /** An Enterprises resource represents the binding between an EMM and a specific organization. That binding can be instantiated in one of two different ways using this API as follows: - For Google managed domain customers, the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts obtained from the Admin console and the Google API Console) and submitted to the EMM through a more-or-less manual process. - For managed Google Play Accounts customers, the process involves using Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction with the managed Google Play sign-up UI (Google-provided mechanism) to create the binding without manual steps. As an EMM, you can support either or both approaches in your EMM console. See Create an Enterprise for details. */
@@ -272,15 +267,11 @@ export const Enterprise = /*@__PURE__*/ S.suspend(() =>
 export type EnrollmentTokenEnrollmentTokenTypeEnum =
   | "enrollmentTokenTypeUnspecified"
   | "userlessDevice"
-  | "userDevice"
-  | (string & {});
+  | "userDevice";
 export const EnrollmentTokenEnrollmentTokenTypeEnum = /*@__PURE__*/ S.String;
 
 export type EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum =
-    | "authenticationRequirementUnspecified"
-    | "optional"
-    | "required"
-    | (string & {});
+  "authenticationRequirementUnspecified" | "optional" | "required";
 export const EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum =
   /*@__PURE__*/ S.String;
 
@@ -416,13 +407,12 @@ export const AdministratorWebTokenSpecStoreBuilder = /*@__PURE__*/ S.suspend(
 export type AdministratorWebTokenSpecPermissionItemEnum =
   | "unknown"
   | "approveApps"
-  | "manageMcm"
-  | (string & {});
+  | "manageMcm";
 export const AdministratorWebTokenSpecPermissionItemEnum =
   /*@__PURE__*/ S.String;
 
 export type AdministratorWebTokenSpecPermissionItemEnumList =
-  AdministratorWebTokenSpecPermissionItemEnum[];
+  ReadonlyArray<AdministratorWebTokenSpecPermissionItemEnum>;
 export const AdministratorWebTokenSpecPermissionItemEnumList =
   /*@__PURE__*/ S.Array(
     AdministratorWebTokenSpecPermissionItemEnum,
@@ -907,7 +897,7 @@ export const AuthenticationToken = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthenticationToken",
 }) as any as S.Schema<AuthenticationToken>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -1025,8 +1015,7 @@ export type AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum =
   | "multiselect"
   | "hidden"
   | "bundle"
-  | "bundleArray"
-  | (string & {});
+  | "bundleArray";
 export const AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1066,8 +1055,7 @@ export type AppRestrictionsSchemaRestrictionRestrictionTypeEnum =
   | "multiselect"
   | "hidden"
   | "bundle"
-  | "bundleArray"
-  | (string & {});
+  | "bundleArray";
 export const AppRestrictionsSchemaRestrictionRestrictionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1110,7 +1098,7 @@ export const AppRestrictionsSchemaRestriction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppRestrictionsSchemaRestriction>;
 
 export type AppRestrictionsSchemaRestrictionList =
-  AppRestrictionsSchemaRestriction[];
+  ReadonlyArray<AppRestrictionsSchemaRestriction>;
 export const AppRestrictionsSchemaRestrictionList = /*@__PURE__*/ S.Array(
   AppRestrictionsSchemaRestriction,
 ) as any as S.Schema<AppRestrictionsSchemaRestrictionList>;
@@ -1156,20 +1144,18 @@ export type ProductSetProductSetBehaviorEnum =
   | "unknown"
   | "whitelist"
   | "includeAll"
-  | "allApproved"
-  | (string & {});
+  | "allApproved";
 export const ProductSetProductSetBehaviorEnum = /*@__PURE__*/ S.String;
 
 export type ProductVisibilityTracksItemEnum =
   | "appTrackUnspecified"
   | "production"
   | "beta"
-  | "alpha"
-  | (string & {});
+  | "alpha";
 export const ProductVisibilityTracksItemEnum = /*@__PURE__*/ S.String;
 
 export type ProductVisibilityTracksItemEnumList =
-  ProductVisibilityTracksItemEnum[];
+  ReadonlyArray<ProductVisibilityTracksItemEnum>;
 export const ProductVisibilityTracksItemEnumList = /*@__PURE__*/ S.Array(
   ProductVisibilityTracksItemEnum,
 ) as any as S.Schema<ProductVisibilityTracksItemEnumList>;
@@ -1193,7 +1179,7 @@ export const ProductVisibility = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductVisibility",
 }) as any as S.Schema<ProductVisibility>;
 
-export type ProductVisibilityList = ProductVisibility[];
+export type ProductVisibilityList = ReadonlyArray<ProductVisibility>;
 export const ProductVisibilityList = /*@__PURE__*/ S.Array(
   ProductVisibility,
 ) as any as S.Schema<ProductVisibilityList>;
@@ -1242,31 +1228,27 @@ export const GetDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PolicyProductAvailabilityPolicyEnum =
   | "productAvailabilityPolicyUnspecified"
   | "whitelist"
-  | "all"
-  | (string & {});
+  | "all";
 export const PolicyProductAvailabilityPolicyEnum = /*@__PURE__*/ S.String;
 
 export type AutoInstallConstraintNetworkTypeConstraintEnum =
   | "networkTypeConstraintUnspecified"
   | "anyNetwork"
-  | "unmeteredNetwork"
-  | (string & {});
+  | "unmeteredNetwork";
 export const AutoInstallConstraintNetworkTypeConstraintEnum =
   /*@__PURE__*/ S.String;
 
 export type AutoInstallConstraintDeviceIdleStateConstraintEnum =
   | "deviceIdleStateConstraintUnspecified"
   | "deviceIdleNotRequired"
-  | "deviceIdleRequired"
-  | (string & {});
+  | "deviceIdleRequired";
 export const AutoInstallConstraintDeviceIdleStateConstraintEnum =
   /*@__PURE__*/ S.String;
 
 export type AutoInstallConstraintChargingStateConstraintEnum =
   | "chargingStateConstraintUnspecified"
   | "chargingNotRequired"
-  | "chargingRequired"
-  | (string & {});
+  | "chargingRequired";
 export const AutoInstallConstraintChargingStateConstraintEnum =
   /*@__PURE__*/ S.String;
 
@@ -1295,7 +1277,7 @@ export const AutoInstallConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoInstallConstraint",
 }) as any as S.Schema<AutoInstallConstraint>;
 
-export type AutoInstallConstraintList = AutoInstallConstraint[];
+export type AutoInstallConstraintList = ReadonlyArray<AutoInstallConstraint>;
 export const AutoInstallConstraintList = /*@__PURE__*/ S.Array(
   AutoInstallConstraint,
 ) as any as S.Schema<AutoInstallConstraintList>;
@@ -1304,8 +1286,7 @@ export type AutoInstallPolicyAutoInstallModeEnum =
   | "autoInstallModeUnspecified"
   | "doNotAutoInstall"
   | "autoInstallOnce"
-  | "forceAutoInstall"
-  | (string & {});
+  | "forceAutoInstall";
 export const AutoInstallPolicyAutoInstallModeEnum = /*@__PURE__*/ S.String;
 
 export interface AutoInstallPolicy {
@@ -1333,11 +1314,11 @@ export type ProductPolicyTracksItemEnum =
   | "appTrackUnspecified"
   | "production"
   | "beta"
-  | "alpha"
-  | (string & {});
+  | "alpha";
 export const ProductPolicyTracksItemEnum = /*@__PURE__*/ S.String;
 
-export type ProductPolicyTracksItemEnumList = ProductPolicyTracksItemEnum[];
+export type ProductPolicyTracksItemEnumList =
+  ReadonlyArray<ProductPolicyTracksItemEnum>;
 export const ProductPolicyTracksItemEnumList = /*@__PURE__*/ S.Array(
   ProductPolicyTracksItemEnum,
 ) as any as S.Schema<ProductPolicyTracksItemEnumList>;
@@ -1357,7 +1338,7 @@ export const EnterpriseAuthenticationAppLinkConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnterpriseAuthenticationAppLinkConfig>;
 
 export type EnterpriseAuthenticationAppLinkConfigList =
-  EnterpriseAuthenticationAppLinkConfig[];
+  ReadonlyArray<EnterpriseAuthenticationAppLinkConfig>;
 export const EnterpriseAuthenticationAppLinkConfigList = /*@__PURE__*/ S.Array(
   EnterpriseAuthenticationAppLinkConfig,
 ) as any as S.Schema<EnterpriseAuthenticationAppLinkConfigList>;
@@ -1375,7 +1356,7 @@ export const ManagedPropertyBundle = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedPropertyBundle",
 }) as any as S.Schema<ManagedPropertyBundle>;
 
-export type ManagedPropertyBundleList = ManagedPropertyBundle[];
+export type ManagedPropertyBundleList = ReadonlyArray<ManagedPropertyBundle>;
 export const ManagedPropertyBundleList = /*@__PURE__*/ S.Array(
   ManagedPropertyBundle,
 ) as any as S.Schema<ManagedPropertyBundleList>;
@@ -1411,7 +1392,7 @@ export const ManagedProperty = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedProperty",
 }) as any as S.Schema<ManagedProperty>;
 
-export type ManagedPropertyList = ManagedProperty[];
+export type ManagedPropertyList = ReadonlyArray<ManagedProperty>;
 export const ManagedPropertyList = /*@__PURE__*/ S.Array(
   ManagedProperty,
 ) as any as S.Schema<ManagedPropertyList>;
@@ -1430,7 +1411,7 @@ export const VariableSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VariableSet" }) as any as S.Schema<VariableSet>;
 
-export type VariableSetList = VariableSet[];
+export type VariableSetList = ReadonlyArray<VariableSet>;
 export const VariableSetList = /*@__PURE__*/ S.Array(
   VariableSet,
 ) as any as S.Schema<VariableSetList>;
@@ -1477,8 +1458,7 @@ export type ProductPolicyAutoUpdateModeEnum =
   | "autoUpdateModeUnspecified"
   | "autoUpdateDefault"
   | "autoUpdatePostponed"
-  | "autoUpdateHighPriority"
-  | (string & {});
+  | "autoUpdateHighPriority";
 export const ProductPolicyAutoUpdateModeEnum = /*@__PURE__*/ S.String;
 
 /** The policy for a product. */
@@ -1512,7 +1492,7 @@ export const ProductPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductPolicy" }) as any as S.Schema<ProductPolicy>;
 
-export type ProductPolicyList = ProductPolicy[];
+export type ProductPolicyList = ReadonlyArray<ProductPolicy>;
 export const ProductPolicyList = /*@__PURE__*/ S.Array(
   ProductPolicy,
 ) as any as S.Schema<ProductPolicyList>;
@@ -1522,15 +1502,13 @@ export type PolicyAutoUpdatePolicyEnum =
   | "choiceToTheUser"
   | "never"
   | "wifiOnly"
-  | "always"
-  | (string & {});
+  | "always";
 export const PolicyAutoUpdatePolicyEnum = /*@__PURE__*/ S.String;
 
 export type PolicyDeviceReportPolicyEnum =
   | "deviceReportPolicyUnspecified"
   | "deviceReportDisabled"
-  | "deviceReportEnabled"
-  | (string & {});
+  | "deviceReportEnabled";
 export const PolicyDeviceReportPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Maintenance window for managed Google Play Accounts. This allows Play store to update the apps on the foreground in the designated window. */
@@ -1578,8 +1556,7 @@ export const Policy = /*@__PURE__*/ S.suspend(() =>
 export type KeyedAppStateSeverityEnum =
   | "severityUnknown"
   | "severityInfo"
-  | "severityError"
-  | (string & {});
+  | "severityError";
 export const KeyedAppStateSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Represents a keyed app state containing a key, timestamp, severity level, optional description, and optional data. */
@@ -1605,7 +1582,7 @@ export const KeyedAppState = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyedAppState" }) as any as S.Schema<KeyedAppState>;
 
-export type KeyedAppStateList = KeyedAppState[];
+export type KeyedAppStateList = ReadonlyArray<KeyedAppState>;
 export const KeyedAppStateList = /*@__PURE__*/ S.Array(
   KeyedAppState,
 ) as any as S.Schema<KeyedAppStateList>;
@@ -1624,7 +1601,7 @@ export const AppState = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppState" }) as any as S.Schema<AppState>;
 
-export type AppStateList = AppState[];
+export type AppStateList = ReadonlyArray<AppState>;
 export const AppStateList = /*@__PURE__*/ S.Array(
   AppState,
 ) as any as S.Schema<AppStateList>;
@@ -1647,8 +1624,7 @@ export type DeviceManagementTypeEnum =
   | "managedDevice"
   | "managedProfile"
   | "containerApp"
-  | "unmanagedProfile"
-  | (string & {});
+  | "unmanagedProfile";
 export const DeviceManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Devices resource represents a mobile device managed by the EMM and belonging to a specific enterprise user. */
@@ -1734,11 +1710,7 @@ export const GetEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEntitlementsRequest",
 }) as any as S.Schema<GetEntitlementsRequest>;
 
-export type EntitlementReasonEnum =
-  | "free"
-  | "groupLicense"
-  | "userPurchase"
-  | (string & {});
+export type EntitlementReasonEnum = "free" | "groupLicense" | "userPurchase";
 export const EntitlementReasonEnum = /*@__PURE__*/ S.String;
 
 /** *Deprecated:* New integrations cannot use this method and can refer to our new recommendations. */
@@ -1776,23 +1748,16 @@ export const GetGrouplicensesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetGrouplicensesRequest",
 }) as any as S.Schema<GetGrouplicensesRequest>;
 
-export type GroupLicenseAcquisitionKindEnum =
-  | "free"
-  | "bulkPurchase"
-  | (string & {});
+export type GroupLicenseAcquisitionKindEnum = "free" | "bulkPurchase";
 export const GroupLicenseAcquisitionKindEnum = /*@__PURE__*/ S.String;
 
 export type GroupLicensePermissionsEnum =
   | "currentApproved"
   | "needsReapproval"
-  | "allCurrentAndFutureApproved"
-  | (string & {});
+  | "allCurrentAndFutureApproved";
 export const GroupLicensePermissionsEnum = /*@__PURE__*/ S.String;
 
-export type GroupLicenseApprovalEnum =
-  | "approved"
-  | "unapproved"
-  | (string & {});
+export type GroupLicenseApprovalEnum = "approved" | "unapproved";
 export const GroupLicenseApprovalEnum = /*@__PURE__*/ S.String;
 
 /** *Deprecated:* New integrations cannot use this method and can refer to our new recommendations */
@@ -1848,10 +1813,7 @@ export const GetInstallsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInstallsRequest",
 }) as any as S.Schema<GetInstallsRequest>;
 
-export type InstallInstallStateEnum =
-  | "installed"
-  | "installPending"
-  | (string & {});
+export type InstallInstallStateEnum = "installed" | "installPending";
 export const InstallInstallStateEnum = /*@__PURE__*/ S.String;
 
 /** The existence of an Installs resource indicates that an app is installed on a particular device (or that an install is pending). The API can be used to create an install resource using the update method. This triggers the actual install of the app on the device. If the user does not already have an entitlement for the app, then an attempt is made to create one. If this fails (for example, because the app is not free and there is no available license), then the creation of the install fails. The API can also be used to update an installed app. If the update method is used on an existing install, then the app will be updated to the latest available version. Note that it is not possible to force the installation of a specific version of an app: the version code is read-only. If a user installs an app themselves (as permitted by the enterprise), then again an install resource and possibly an entitlement resource are automatically created. The API can also be used to delete an install resource, which triggers the removal of the app from the device. Note that deleting an install does not automatically remove the corresponding entitlement, even if there are no remaining installs. The install resource will also be deleted if the user uninstalls the app themselves. */
@@ -1983,10 +1945,7 @@ export const GetPermissionsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPermissionsProductsRequest",
 }) as any as S.Schema<GetPermissionsProductsRequest>;
 
-export type ProductPermissionStateEnum =
-  | "required"
-  | "accepted"
-  | (string & {});
+export type ProductPermissionStateEnum = "required" | "accepted";
 export const ProductPermissionStateEnum = /*@__PURE__*/ S.String;
 
 /** A product permissions resource represents the set of permissions required by a specific app and whether or not they have been accepted by an enterprise admin. The API can be used to read the set of permissions, and also to update the set to indicate that permissions have been accepted. */
@@ -2005,7 +1964,7 @@ export const ProductPermission = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductPermission",
 }) as any as S.Schema<ProductPermission>;
 
-export type ProductPermissionList = ProductPermission[];
+export type ProductPermissionList = ReadonlyArray<ProductPermission>;
 export const ProductPermissionList = /*@__PURE__*/ S.Array(
   ProductPermission,
 ) as any as S.Schema<ProductPermissionList>;
@@ -2054,12 +2013,11 @@ export type ProductAvailableTracksItemEnum =
   | "appTrackUnspecified"
   | "production"
   | "beta"
-  | "alpha"
-  | (string & {});
+  | "alpha";
 export const ProductAvailableTracksItemEnum = /*@__PURE__*/ S.String;
 
 export type ProductAvailableTracksItemEnumList =
-  ProductAvailableTracksItemEnum[];
+  ReadonlyArray<ProductAvailableTracksItemEnum>;
 export const ProductAvailableTracksItemEnumList = /*@__PURE__*/ S.Array(
   ProductAvailableTracksItemEnum,
 ) as any as S.Schema<ProductAvailableTracksItemEnumList>;
@@ -2069,16 +2027,14 @@ export type ProductContentRatingEnum =
   | "all"
   | "preTeen"
   | "teen"
-  | "mature"
-  | (string & {});
+  | "mature";
 export const ProductContentRatingEnum = /*@__PURE__*/ S.String;
 
 export type AppVersionTrackEnum =
   | "appTrackUnspecified"
   | "production"
   | "beta"
-  | "alpha"
-  | (string & {});
+  | "alpha";
 export const AppVersionTrackEnum = /*@__PURE__*/ S.String;
 
 /** This represents a single version of the app. */
@@ -2107,7 +2063,7 @@ export const AppVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppVersion" }) as any as S.Schema<AppVersion>;
 
-export type AppVersionList = AppVersion[];
+export type AppVersionList = ReadonlyArray<AppVersion>;
 export const AppVersionList = /*@__PURE__*/ S.Array(
   AppVersion,
 ) as any as S.Schema<AppVersionList>;
@@ -2115,8 +2071,7 @@ export const AppVersionList = /*@__PURE__*/ S.Array(
 export type ProductDistributionChannelEnum =
   | "publicGoogleHosted"
   | "privateGoogleHosted"
-  | "privateSelfHosted"
-  | (string & {});
+  | "privateSelfHosted";
 export const ProductDistributionChannelEnum = /*@__PURE__*/ S.String;
 
 export interface ProductSigningCertificate {
@@ -2134,13 +2089,11 @@ export const ProductSigningCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductSigningCertificate",
 }) as any as S.Schema<ProductSigningCertificate>;
 
-export type ProductFeaturesItemEnum =
-  | "featureUnknown"
-  | "vpnApp"
-  | (string & {});
+export type ProductFeaturesItemEnum = "featureUnknown" | "vpnApp";
 export const ProductFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type ProductFeaturesItemEnumList = ProductFeaturesItemEnum[];
+export type ProductFeaturesItemEnumList =
+  ReadonlyArray<ProductFeaturesItemEnum>;
 export const ProductFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   ProductFeaturesItemEnum,
 ) as any as S.Schema<ProductFeaturesItemEnumList>;
@@ -2149,8 +2102,7 @@ export type ProductProductPricingEnum =
   | "unknown"
   | "free"
   | "freeWithInAppPurchase"
-  | "paid"
-  | (string & {});
+  | "paid";
 export const ProductProductPricingEnum = /*@__PURE__*/ S.String;
 
 /** Id to name association of a track. */
@@ -2167,7 +2119,7 @@ export const TrackInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrackInfo" }) as any as S.Schema<TrackInfo>;
 
-export type TrackInfoList = TrackInfo[];
+export type TrackInfoList = ReadonlyArray<TrackInfo>;
 export const TrackInfoList = /*@__PURE__*/ S.Array(
   TrackInfo,
 ) as any as S.Schema<TrackInfoList>;
@@ -2260,8 +2212,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 
 export type GetServiceAccountEnterprisesKeyTypeEnum =
   | "googleCredentials"
-  | "pkcs12"
-  | (string & {});
+  | "pkcs12";
 export const GetServiceAccountEnterprisesKeyTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetServiceAccountEnterprisesRequest {
@@ -2287,10 +2238,7 @@ export const GetServiceAccountEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetServiceAccountEnterprisesRequest",
 }) as any as S.Schema<GetServiceAccountEnterprisesRequest>;
 
-export type ServiceAccountKeyTypeEnum =
-  | "googleCredentials"
-  | "pkcs12"
-  | (string & {});
+export type ServiceAccountKeyTypeEnum = "googleCredentials" | "pkcs12";
 export const ServiceAccountKeyTypeEnum = /*@__PURE__*/ S.String;
 
 /** *Deprecated:* New integrations cannot use this method and can refer to our new recommendations */
@@ -2353,10 +2301,7 @@ export const GetStateDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStateDevicesRequest",
 }) as any as S.Schema<GetStateDevicesRequest>;
 
-export type DeviceStateAccountStateEnum =
-  | "enabled"
-  | "disabled"
-  | (string & {});
+export type DeviceStateAccountStateEnum = "enabled" | "disabled";
 export const DeviceStateAccountStateEnum = /*@__PURE__*/ S.String;
 
 /** The state of a user's device, as accessed by the getState and setState methods on device resources. */
@@ -2408,7 +2353,7 @@ export const LocalizedText = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocalizedText" }) as any as S.Schema<LocalizedText>;
 
-export type LocalizedTextList = LocalizedText[];
+export type LocalizedTextList = ReadonlyArray<LocalizedText>;
 export const LocalizedTextList = /*@__PURE__*/ S.Array(
   LocalizedText,
 ) as any as S.Schema<LocalizedTextList>;
@@ -2451,11 +2396,7 @@ export const GetStoreLayoutEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStoreLayoutEnterprisesRequest",
 }) as any as S.Schema<GetStoreLayoutEnterprisesRequest>;
 
-export type StoreLayoutStoreLayoutTypeEnum =
-  | "unknown"
-  | "basic"
-  | "custom"
-  | (string & {});
+export type StoreLayoutStoreLayoutTypeEnum = "unknown" | "basic" | "custom";
 export const StoreLayoutStoreLayoutTypeEnum = /*@__PURE__*/ S.String;
 
 /** General setting for the managed Google Play store layout, currently only specifying the page to display the first time the store is opened. */
@@ -2531,16 +2472,10 @@ export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUsersRequest",
 }) as any as S.Schema<GetUsersRequest>;
 
-export type UserAccountTypeEnum =
-  | "deviceAccount"
-  | "userAccount"
-  | (string & {});
+export type UserAccountTypeEnum = "deviceAccount" | "userAccount";
 export const UserAccountTypeEnum = /*@__PURE__*/ S.String;
 
-export type UserManagementTypeEnum =
-  | "googleManaged"
-  | "emmManaged"
-  | (string & {});
+export type UserManagementTypeEnum = "googleManaged" | "emmManaged";
 export const UserManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Users resource represents an account associated with an enterprise. The account may be specific to a device or to an individual user (who can then use the account across multiple devices). The account may provide access to managed Google Play only, or to other Google services, depending on the identity model: - The Google managed domain identity model requires synchronization to Google account sources (via primaryEmail). - The managed Google Play Accounts identity model provides a dynamic means for enterprises to create user or device accounts as needed. These accounts provide access to managed Google Play. */
@@ -2594,8 +2529,7 @@ export type WebAppDisplayModeEnum =
   | "displayModeUnspecified"
   | "minimalUi"
   | "standalone"
-  | "fullScreen"
-  | (string & {});
+  | "fullScreen";
 export const WebAppDisplayModeEnum = /*@__PURE__*/ S.String;
 
 /** Icon for a web app. */
@@ -2609,7 +2543,7 @@ export const WebAppIcon = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebAppIcon" }) as any as S.Schema<WebAppIcon>;
 
-export type WebAppIconList = WebAppIcon[];
+export type WebAppIconList = ReadonlyArray<WebAppIcon>;
 export const WebAppIconList = /*@__PURE__*/ S.Array(
   WebAppIcon,
 ) as any as S.Schema<WebAppIconList>;
@@ -2772,7 +2706,7 @@ export const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDevicesRequest",
 }) as any as S.Schema<ListDevicesRequest>;
 
-export type DeviceList = Device[];
+export type DeviceList = ReadonlyArray<Device>;
 export const DeviceList = /*@__PURE__*/ S.Array(
   Device,
 ) as any as S.Schema<DeviceList>;
@@ -2807,7 +2741,7 @@ export const ListEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnterprisesRequest",
 }) as any as S.Schema<ListEnterprisesRequest>;
 
-export type EnterpriseList = Enterprise[];
+export type EnterpriseList = ReadonlyArray<Enterprise>;
 export const EnterpriseList = /*@__PURE__*/ S.Array(
   Enterprise,
 ) as any as S.Schema<EnterpriseList>;
@@ -2845,7 +2779,7 @@ export const ListEntitlementsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEntitlementsRequest",
 }) as any as S.Schema<ListEntitlementsRequest>;
 
-export type EntitlementList = Entitlement[];
+export type EntitlementList = ReadonlyArray<Entitlement>;
 export const EntitlementList = /*@__PURE__*/ S.Array(
   Entitlement,
 ) as any as S.Schema<EntitlementList>;
@@ -2880,7 +2814,7 @@ export const ListGrouplicensesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGrouplicensesRequest",
 }) as any as S.Schema<ListGrouplicensesRequest>;
 
-export type GroupLicenseList = GroupLicense[];
+export type GroupLicenseList = ReadonlyArray<GroupLicense>;
 export const GroupLicenseList = /*@__PURE__*/ S.Array(
   GroupLicense,
 ) as any as S.Schema<GroupLicenseList>;
@@ -2918,7 +2852,7 @@ export const ListGrouplicenseusersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGrouplicenseusersRequest",
 }) as any as S.Schema<ListGrouplicenseusersRequest>;
 
-export type UserList = User[];
+export type UserList = ReadonlyArray<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -2959,7 +2893,7 @@ export const ListInstallsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInstallsRequest",
 }) as any as S.Schema<ListInstallsRequest>;
 
-export type InstallList = Install[];
+export type InstallList = ReadonlyArray<Install>;
 export const InstallList = /*@__PURE__*/ S.Array(
   Install,
 ) as any as S.Schema<InstallList>;
@@ -3001,7 +2935,7 @@ export const ListManagedconfigurationsfordeviceRequest =
     identifier: "ListManagedconfigurationsfordeviceRequest",
   }) as any as S.Schema<ListManagedconfigurationsfordeviceRequest>;
 
-export type ManagedConfigurationList = ManagedConfiguration[];
+export type ManagedConfigurationList = ReadonlyArray<ManagedConfiguration>;
 export const ManagedConfigurationList = /*@__PURE__*/ S.Array(
   ManagedConfiguration,
 ) as any as S.Schema<ManagedConfigurationList>;
@@ -3095,7 +3029,8 @@ export const ManagedConfigurationsSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedConfigurationsSettings",
 }) as any as S.Schema<ManagedConfigurationsSettings>;
 
-export type ManagedConfigurationsSettingsList = ManagedConfigurationsSettings[];
+export type ManagedConfigurationsSettingsList =
+  ReadonlyArray<ManagedConfigurationsSettings>;
 export const ManagedConfigurationsSettingsList = /*@__PURE__*/ S.Array(
   ManagedConfigurationsSettings,
 ) as any as S.Schema<ManagedConfigurationsSettingsList>;
@@ -3180,7 +3115,7 @@ export const TokenPagination = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokenPagination",
 }) as any as S.Schema<TokenPagination>;
 
-export type ProductList = Product[];
+export type ProductList = ReadonlyArray<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;
@@ -3221,7 +3156,7 @@ export const ListServiceaccountkeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServiceaccountkeysRequest",
 }) as any as S.Schema<ListServiceaccountkeysRequest>;
 
-export type ServiceAccountKeyList = ServiceAccountKey[];
+export type ServiceAccountKeyList = ReadonlyArray<ServiceAccountKey>;
 export const ServiceAccountKeyList = /*@__PURE__*/ S.Array(
   ServiceAccountKey,
 ) as any as S.Schema<ServiceAccountKeyList>;
@@ -3259,7 +3194,7 @@ export const ListStorelayoutclustersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStorelayoutclustersRequest",
 }) as any as S.Schema<ListStorelayoutclustersRequest>;
 
-export type StoreClusterList = StoreCluster[];
+export type StoreClusterList = ReadonlyArray<StoreCluster>;
 export const StoreClusterList = /*@__PURE__*/ S.Array(
   StoreCluster,
 ) as any as S.Schema<StoreClusterList>;
@@ -3294,7 +3229,7 @@ export const ListStorelayoutpagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStorelayoutpagesRequest",
 }) as any as S.Schema<ListStorelayoutpagesRequest>;
 
-export type StorePageList = StorePage[];
+export type StorePageList = ReadonlyArray<StorePage>;
 export const StorePageList = /*@__PURE__*/ S.Array(
   StorePage,
 ) as any as S.Schema<StorePageList>;
@@ -3362,7 +3297,7 @@ export const ListWebappsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWebappsRequest",
 }) as any as S.Schema<ListWebappsRequest>;
 
-export type WebAppList = WebApp[];
+export type WebAppList = ReadonlyArray<WebApp>;
 export const WebAppList = /*@__PURE__*/ S.Array(
   WebApp,
 ) as any as S.Schema<WebAppList>;
@@ -3381,8 +3316,7 @@ export const WebAppsListResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type PullNotificationSetEnterprisesRequestModeEnum =
   | "waitForNotifications"
-  | "returnImmediately"
-  | (string & {});
+  | "returnImmediately";
 export const PullNotificationSetEnterprisesRequestModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3409,8 +3343,7 @@ export const PullNotificationSetEnterprisesRequest = /*@__PURE__*/ S.suspend(
 
 export type EnterpriseUpgradeEventUpgradeStateEnum =
   | "upgradeStateUnspecified"
-  | "upgradeStateSucceeded"
-  | (string & {});
+  | "upgradeStateSucceeded";
 export const EnterpriseUpgradeEventUpgradeStateEnum = /*@__PURE__*/ S.String;
 
 /** An event generated when an enterprise is upgraded. */
@@ -3429,8 +3362,7 @@ export const EnterpriseUpgradeEvent = /*@__PURE__*/ S.suspend(() =>
 export type ProductApprovalEventApprovedEnum =
   | "unknown"
   | "approved"
-  | "unapproved"
-  | (string & {});
+  | "unapproved";
 export const ProductApprovalEventApprovedEnum = /*@__PURE__*/ S.String;
 
 /** An event generated when a product's approval status is changed. */
@@ -3451,8 +3383,7 @@ export const ProductApprovalEvent = /*@__PURE__*/ S.suspend(() =>
 
 export type NewDeviceEventManagementTypeEnum =
   | "managedDevice"
-  | "managedProfile"
-  | (string & {});
+  | "managedProfile";
 export const NewDeviceEventManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** An event generated when a new device is ready to be managed. */
@@ -3479,8 +3410,7 @@ export type ProductAvailabilityChangeEventAvailabilityStatusEnum =
   | "unknown"
   | "available"
   | "removed"
-  | "unpublished"
-  | (string & {});
+  | "unpublished";
 export const ProductAvailabilityChangeEventAvailabilityStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3526,8 +3456,7 @@ export type NotificationNotificationTypeEnum =
   | "productAvailabilityChange"
   | "newDevice"
   | "deviceReportUpdate"
-  | "enterpriseUpgrade"
-  | (string & {});
+  | "enterpriseUpgrade";
 export const NotificationNotificationTypeEnum = /*@__PURE__*/ S.String;
 
 /** An event generated when an updated device report is available. */
@@ -3549,10 +3478,7 @@ export const DeviceReportUpdateEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceReportUpdateEvent",
 }) as any as S.Schema<DeviceReportUpdateEvent>;
 
-export type InstallFailureEventFailureReasonEnum =
-  | "unknown"
-  | "timeout"
-  | (string & {});
+export type InstallFailureEventFailureReasonEnum = "unknown" | "timeout";
 export const InstallFailureEventFailureReasonEnum = /*@__PURE__*/ S.String;
 
 /** An event generated when an app installation failed on a device */
@@ -3656,7 +3582,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
-export type NotificationList = Notification[];
+export type NotificationList = ReadonlyArray<Notification>;
 export const NotificationList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<NotificationList>;

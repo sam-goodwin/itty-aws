@@ -387,16 +387,50 @@
             "smithy.api#documentation": "ID of the VM group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkVMGroupPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#WorkloadNetworkVMGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the VM group."
+          }
+        },
+        "members": {
+          "target": "com.azure.vmware#WorkloadNetworkVMGroupPropertiesInputMembersList",
+          "traits": {
+            "smithy.api#documentation": "Virtual machine members of this group."
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "NSX revision number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NSX VM Group Properties"
+      }
+    },
+    "com.azure.vmware#WorkloadNetworkVMGroupPropertiesInputMembersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual machine members of this group."
       }
     },
     "com.azure.vmware#WorkloadNetworksCreateVMGroup": {
@@ -491,11 +525,10 @@
             "smithy.api#documentation": "ID of the VM group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkVMGroupPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -1348,16 +1381,47 @@
             "smithy.api#documentation": "The ID of the NSX Segment"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkSegmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#WorkloadNetworkSegmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the segment."
+          }
+        },
+        "connectedGateway": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gateway which to connect segment to."
+          }
+        },
+        "subnet": {
+          "target": "com.azure.vmware#WorkloadNetworkSegmentSubnet",
+          "traits": {
+            "smithy.api#documentation": "Subnet which to connect segment to."
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "NSX revision number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NSX Segment Properties"
       }
     },
     "com.azure.vmware#WorkloadNetworksCreateSegments": {
@@ -1452,11 +1516,10 @@
             "smithy.api#documentation": "The ID of the NSX Segment"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkSegmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -1907,16 +1970,35 @@
             "smithy.api#documentation": "ID of the DNS zone."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkPublicIPPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#WorkloadNetworkPublicIPPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the Public IP Block."
+          }
+        },
+        "numberOfPublicIPs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of Public IPs requested."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NSX Public IP Block Properties"
       }
     },
     "com.azure.vmware#WorkloadNetworksGetPublicIP": {
@@ -2426,16 +2508,53 @@
             "smithy.api#documentation": "ID of the NSX port mirroring profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkPortMirroringPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#WorkloadNetworkPortMirroringPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the port mirroring profile."
+          }
+        },
+        "direction": {
+          "target": "com.azure.vmware#PortMirroringDirectionEnum",
+          "traits": {
+            "smithy.api#documentation": "Direction of port mirroring profile."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source VM Group."
+          }
+        },
+        "destination": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Destination VM Group."
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "NSX revision number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NSX Port Mirroring Properties"
       }
     },
     "com.azure.vmware#WorkloadNetworksCreatePortMirroring": {
@@ -2530,11 +2649,10 @@
             "smithy.api#documentation": "ID of the NSX port mirroring profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkPortMirroringPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -3263,16 +3381,77 @@
             "smithy.api#documentation": "ID of the DNS zone."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkDnsZonePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#WorkloadNetworkDnsZonePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the DNS Zone."
+          }
+        },
+        "domain": {
+          "target": "com.azure.vmware#WorkloadNetworkDnsZonePropertiesInputDomainList",
+          "traits": {
+            "smithy.api#documentation": "Domain names of the DNS Zone."
+          }
+        },
+        "dnsServerIps": {
+          "target": "com.azure.vmware#WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList",
+          "traits": {
+            "smithy.api#documentation": "DNS Server IP array of the DNS Zone."
+          }
+        },
+        "sourceIp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source IP of the DNS Zone."
+          }
+        },
+        "dnsServices": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of DNS Services using the DNS zone."
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "NSX revision number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NSX DNS Zone Properties"
+      }
+    },
+    "com.azure.vmware#WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "DNS Server IP array of the DNS Zone."
+      }
+    },
+    "com.azure.vmware#WorkloadNetworkDnsZonePropertiesInputDomainList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Domain names of the DNS Zone."
       }
     },
     "com.azure.vmware#WorkloadNetworksCreateDnsZone": {
@@ -3367,11 +3546,10 @@
             "smithy.api#documentation": "ID of the DNS zone."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkDnsZonePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -3913,16 +4091,68 @@
             "smithy.api#documentation": "ID of the DNS service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkDnsServicePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#WorkloadNetworkDnsServicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the DNS Service."
+          }
+        },
+        "dnsServiceIp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS service IP of the DNS Service."
+          }
+        },
+        "defaultDnsZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Default DNS zone of the DNS Service."
+          }
+        },
+        "fqdnZones": {
+          "target": "com.azure.vmware#WorkloadNetworkDnsServicePropertiesInputFqdnZonesList",
+          "traits": {
+            "smithy.api#documentation": "FQDN zones of the DNS Service."
+          }
+        },
+        "logLevel": {
+          "target": "com.azure.vmware#DnsServiceLogLevelEnum",
+          "traits": {
+            "smithy.api#documentation": "DNS Service log level."
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "NSX revision number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NSX DNS Service Properties"
+      }
+    },
+    "com.azure.vmware#WorkloadNetworkDnsServicePropertiesInputFqdnZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "FQDN zones of the DNS Service."
       }
     },
     "com.azure.vmware#WorkloadNetworksCreateDnsService": {
@@ -4017,11 +4247,10 @@
             "smithy.api#documentation": "ID of the DNS service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkDnsServicePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -4508,16 +4737,42 @@
             "smithy.api#documentation": "The ID of the DHCP configuration"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkDhcpEntityInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#WorkloadNetworkDhcpEntityInput": {
+      "type": "structure",
+      "members": {
+        "dhcpType": {
+          "target": "com.azure.vmware#DhcpTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Type of DHCP: SERVER or RELAY.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the DHCP entity."
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "NSX revision number."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to\ninherit from"
       }
     },
     "com.azure.vmware#WorkloadNetworksCreateDhcp": {
@@ -4612,11 +4867,10 @@
             "smithy.api#documentation": "The ID of the DHCP configuration"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#WorkloadNetworkDhcpEntityInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -6151,7 +6405,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.vmware#ScriptExecutionsGetExecutionLogsRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {}
           }
@@ -6159,6 +6413,45 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#ScriptExecutionsGetExecutionLogsRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.vmware#ScriptOutputStreamType"
+      },
+      "traits": {}
+    },
+    "com.azure.vmware#ScriptOutputStreamType": {
+      "type": "enum",
+      "members": {
+        "INFORMATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Information"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Warning"
+          }
+        },
+        "OUTPUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Output"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Error"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Script Output Stream type"
       }
     },
     "com.azure.vmware#ScriptExecutionsDelete": {
@@ -6312,16 +6605,111 @@
             "smithy.api#documentation": "Name of the script cmdlet."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#ScriptExecutionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#ScriptExecutionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "scriptCmdletId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A reference to the script cmdlet resource if user is running a AVS script"
+          }
+        },
+        "parameters": {
+          "target": "com.azure.vmware#ScriptExecutionPropertiesInputParametersList",
+          "traits": {
+            "smithy.api#documentation": "Parameters the script will accept"
+          }
+        },
+        "hiddenParameters": {
+          "target": "com.azure.vmware#ScriptExecutionPropertiesInputHiddenParametersList",
+          "traits": {
+            "smithy.api#documentation": "Parameters that will be hidden/not visible to ARM, such as passwords and\ncredentials"
+          }
+        },
+        "failureReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Error message if the script was able to run, but if the script itself had\nerrors or powershell threw an exception"
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time limit for execution",
+            "smithy.api#required": {}
+          }
+        },
+        "retention": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time to live for the resource. If not provided, will be available for 60 days"
+          }
+        },
+        "output": {
+          "target": "com.azure.vmware#ScriptExecutionPropertiesInputOutputList",
+          "traits": {
+            "smithy.api#documentation": "Standard output stream from the powershell execution"
+          }
+        },
+        "namedOutputs": {
+          "target": "com.azure.vmware#ScriptExecutionPropertiesInputNamedOutputsMap",
+          "traits": {
+            "smithy.api#documentation": "User-defined dictionary."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a user-invoked script"
+      }
+    },
+    "com.azure.vmware#ScriptExecutionPropertiesInputNamedOutputsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "User-defined dictionary."
+      }
+    },
+    "com.azure.vmware#ScriptExecutionPropertiesInputOutputList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Standard output stream from the powershell execution"
+      }
+    },
+    "com.azure.vmware#ScriptExecutionPropertiesInputHiddenParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.vmware#ScriptExecutionParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters that will be hidden/not visible to ARM, such as passwords and\ncredentials"
+      }
+    },
+    "com.azure.vmware#ScriptExecutionPropertiesInputParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.vmware#ScriptExecutionParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters the script will accept"
       }
     },
     "com.azure.vmware#ScriptExecutionsGet": {
@@ -6859,16 +7247,37 @@
             "smithy.api#documentation": "Name of the storage policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#PureStoragePolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#PureStoragePolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "storagePolicyDefinition": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Definition of a Pure Storage Policy Based Management policy",
+            "smithy.api#required": {}
+          }
+        },
+        "storagePoolId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure resource ID of the Pure Storage Pool associated with the storage policy",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a Pure Storage Policy Based Management policy"
       }
     },
     "com.azure.vmware#PureStoragePoliciesGet": {
@@ -7967,11 +8376,16 @@
             "smithy.api#documentation": "Name of the maintenance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "scheduleTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "schedule time"
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "scheduling message"
           }
         }
       },
@@ -8071,11 +8485,16 @@
             "smithy.api#documentation": "Name of the maintenance"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "rescheduleTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "reschedule time"
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "rescheduling reason"
           }
         }
       },
@@ -8864,16 +9283,30 @@
             "smithy.api#documentation": "Name of the license."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#LicensePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#LicensePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.vmware#LicenseKind",
+          "traits": {
+            "smithy.api#documentation": "License kind",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a license"
       }
     },
     "com.azure.vmware#LicensesCreateOrUpdateRequestLicenseName": {
@@ -9322,16 +9755,30 @@
             "smithy.api#documentation": "Name of the private cloud"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#IscsiPathPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#IscsiPathPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "networkBlock": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CIDR Block for iSCSI path.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an iSCSI path resource"
       }
     },
     "com.azure.vmware#IscsiPathsGet": {
@@ -9777,16 +10224,22 @@
             "smithy.api#documentation": "Name of the HCX Enterprise Site"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#HcxEnterpriseSitePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#HcxEnterpriseSitePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The properties of an HCX Enterprise Site"
       }
     },
     "com.azure.vmware#HcxEnterpriseSitesGet": {
@@ -10258,16 +10711,41 @@
             "smithy.api#documentation": "Name of the global reach connection"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#GlobalReachConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#GlobalReachConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "authorizationKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Authorization key from the peer express route used for the global reach\nconnection"
+          }
+        },
+        "peerExpressRouteCircuit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the ExpressRoute Circuit to peer with in the global reach\nconnection"
+          }
+        },
+        "expressRouteId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Private Cloud's ExpressRoute Circuit that is participating in the\nglobal reach connection"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a global reach connection"
       }
     },
     "com.azure.vmware#GlobalReachConnectionsGet": {
@@ -10634,16 +11112,35 @@
             "smithy.api#documentation": "ID of the virtual machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "restrictMovement": {
+          "target": "com.azure.vmware#VirtualMachineRestrictMovementState",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Whether VM DRS-driven movement is restricted (enabled) or not (disabled)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#VirtualMachineRestrictMovementState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual Machine Restrict Movement state"
       }
     },
     "com.azure.vmware#VirtualMachinesGet": {
@@ -10739,26 +11236,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Virtual Machine Properties"
-      }
-    },
-    "com.azure.vmware#VirtualMachineRestrictMovementState": {
-      "type": "enum",
-      "members": {
-        "ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Enabled"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Disabled"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Virtual Machine Restrict Movement state"
       }
     },
     "com.azure.vmware#VirtualMachineProvisioningState": {
@@ -11246,16 +11723,111 @@
             "smithy.api#documentation": "Name of the placement policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#PlacementPolicyUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a placement policy resource that may be updated"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#PlacementPolicyUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.vmware#PlacementPolicyState",
+          "traits": {
+            "smithy.api#documentation": "Whether the placement policy is enabled or disabled"
+          }
+        },
+        "vmMembers": {
+          "target": "com.azure.vmware#PlacementPolicyUpdatePropertiesVmMembersList",
+          "traits": {
+            "smithy.api#documentation": "Virtual machine members list"
+          }
+        },
+        "hostMembers": {
+          "target": "com.azure.vmware#PlacementPolicyUpdatePropertiesHostMembersList",
+          "traits": {
+            "smithy.api#documentation": "Host members list"
+          }
+        },
+        "affinityStrength": {
+          "target": "com.azure.vmware#AffinityStrength",
+          "traits": {
+            "smithy.api#documentation": "vm-host placement policy affinity strength (should/must)"
+          }
+        },
+        "azureHybridBenefitType": {
+          "target": "com.azure.vmware#AzureHybridBenefitType",
+          "traits": {
+            "smithy.api#documentation": "placement policy azure hybrid benefit opt-in type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a placement policy resource that may be updated"
+      }
+    },
+    "com.azure.vmware#AzureHybridBenefitType": {
+      "type": "enum",
+      "members": {
+        "SQLHOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SqlHost"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Hybrid Benefit type"
+      }
+    },
+    "com.azure.vmware#AffinityStrength": {
+      "type": "enum",
+      "members": {
+        "SHOULD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Should"
+          }
+        },
+        "MUST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Must"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Affinity Strength"
+      }
+    },
+    "com.azure.vmware#PlacementPolicyUpdatePropertiesHostMembersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Host members list"
+      }
+    },
+    "com.azure.vmware#PlacementPolicyUpdatePropertiesVmMembersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual machine members list"
       }
     },
     "com.azure.vmware#PlacementPoliciesCreateOrUpdate": {
@@ -11358,16 +11930,42 @@
             "smithy.api#documentation": "Name of the placement policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#PlacementPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#PlacementPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.vmware#PlacementPolicyType",
+          "traits": {
+            "smithy.api#documentation": "Placement Policy type",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.azure.vmware#PlacementPolicyState",
+          "traits": {
+            "smithy.api#documentation": "Whether the placement policy is enabled or disabled"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the placement policy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Abstract placement policy properties"
       }
     },
     "com.azure.vmware#PlacementPoliciesGet": {
@@ -12628,16 +13226,95 @@
             "smithy.api#documentation": "Name of the datastore"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#DatastorePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#DatastorePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "netAppVolume": {
+          "target": "com.azure.vmware#NetAppVolume",
+          "traits": {
+            "smithy.api#documentation": "An Azure NetApp Files volume"
+          }
+        },
+        "diskPoolVolume": {
+          "target": "com.azure.vmware#DiskPoolVolumeInput",
+          "traits": {
+            "smithy.api#documentation": "An iSCSI volume"
+          }
+        },
+        "elasticSanVolume": {
+          "target": "com.azure.vmware#ElasticSanVolume",
+          "traits": {
+            "smithy.api#documentation": "An Elastic SAN volume"
+          }
+        },
+        "pureStorageVolume": {
+          "target": "com.azure.vmware#PureStorageVolume",
+          "traits": {
+            "smithy.api#documentation": "A Pure Storage volume"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a datastore"
+      }
+    },
+    "com.azure.vmware#DiskPoolVolumeInput": {
+      "type": "structure",
+      "members": {
+        "targetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure resource ID of the iSCSI target",
+            "smithy.api#required": {}
+          }
+        },
+        "lunName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the LUN to be used for datastore",
+            "smithy.api#required": {}
+          }
+        },
+        "mountOption": {
+          "target": "com.azure.vmware#DiskPoolVolumeInputMountOption",
+          "traits": {
+            "smithy.api#documentation": "Mode that describes whether the LUN has to be mounted as a datastore or\nattached as a LUN"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An iSCSI volume from Microsoft.StoragePool provider"
+      }
+    },
+    "com.azure.vmware#DiskPoolVolumeInputMountOption": {
+      "type": "enum",
+      "members": {
+        "MOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOUNT"
+          }
+        },
+        "ATTACH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ATTACH"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Mode that describes whether the LUN has to be mounted as a datastore or\nattached as a LUN"
       }
     },
     "com.azure.vmware#DatastoresGet": {
@@ -13157,16 +13834,86 @@
             "smithy.api#documentation": "Name of the cluster"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.vmware#ClustersUpdateRequestSku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "properties": {
+          "target": "com.azure.vmware#ClusterUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of a cluster resource that may be updated"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#ClusterUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "clusterSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The cluster size"
+          }
+        },
+        "hosts": {
+          "target": "com.azure.vmware#ClusterUpdatePropertiesHostsList",
+          "traits": {
+            "smithy.api#documentation": "The hosts"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a cluster that may be updated"
+      }
+    },
+    "com.azure.vmware#ClusterUpdatePropertiesHostsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The hosts"
+      }
+    },
+    "com.azure.vmware#ClustersUpdateRequestSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.vmware#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
       }
     },
     "com.azure.vmware#ClustersCreateOrUpdate": {
@@ -13304,16 +14051,93 @@
             "smithy.api#documentation": "Name of the cluster"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#ClusterPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.vmware#ClustersCreateOrUpdateRequestSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#ClustersCreateOrUpdateRequestSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.vmware#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.vmware#ClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "clusterSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The cluster size"
+          }
+        },
+        "hosts": {
+          "target": "com.azure.vmware#ClusterPropertiesInputHostsList",
+          "traits": {
+            "smithy.api#documentation": "The hosts"
+          }
+        },
+        "vsanDatastoreName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the vsan datastore associated with the cluster"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a cluster"
+      }
+    },
+    "com.azure.vmware#ClusterPropertiesInputHostsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The hosts"
       }
     },
     "com.azure.vmware#ClustersGet": {
@@ -13859,16 +14683,29 @@
             "smithy.api#documentation": "Name of the cloud link."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#CloudLinkPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#CloudLinkPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "linkedCloud": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the other private cloud participating in the link."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a cloud link."
       }
     },
     "com.azure.vmware#CloudLinksGet": {
@@ -14302,16 +15139,29 @@
             "smithy.api#documentation": "Name of the ExpressRoute Circuit Authorization"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#ExpressRouteAuthorizationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#ExpressRouteAuthorizationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "expressRouteId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the ExpressRoute Circuit"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an ExpressRoute Circuit Authorization resource"
       }
     },
     "com.azure.vmware#AuthorizationsGet": {
@@ -14784,16 +15634,30 @@
             "smithy.api#documentation": "Name of the addon."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.vmware#AddonPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#AddonPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "addonType": {
+          "target": "com.azure.vmware#AddonType",
+          "traits": {
+            "smithy.api#documentation": "Addon type",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an addon"
       }
     },
     "com.azure.vmware#AddonsGet": {
@@ -15957,16 +16821,264 @@
             "smithy.api#documentation": "Name of the private cloud"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.vmware#PrivateCloudsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "sku": {
+          "target": "com.azure.vmware#PrivateCloudsUpdateRequestSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "identity": {
+          "target": "com.azure.vmware#PrivateCloudsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.vmware#PrivateCloudUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The updatable properties of a private cloud resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#PrivateCloudUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "managementCluster": {
+          "target": "com.azure.vmware#ManagementClusterInput",
+          "traits": {
+            "smithy.api#documentation": "The default cluster used for management"
+          }
+        },
+        "internet": {
+          "target": "com.azure.vmware#InternetEnum",
+          "traits": {
+            "smithy.api#documentation": "Connectivity to internet is enabled or disabled"
+          }
+        },
+        "identitySources": {
+          "target": "com.azure.vmware#PrivateCloudUpdatePropertiesInputIdentitySourcesList",
+          "traits": {
+            "smithy.api#documentation": "vCenter Single Sign On Identity Sources"
+          }
+        },
+        "availability": {
+          "target": "com.azure.vmware#AvailabilityProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties describing how the cloud is distributed across availability zones"
+          }
+        },
+        "encryption": {
+          "target": "com.azure.vmware#EncryptionInput",
+          "traits": {
+            "smithy.api#documentation": "Customer managed key encryption, can be enabled or disabled"
+          }
+        },
+        "extendedNetworkBlocks": {
+          "target": "com.azure.vmware#PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList",
+          "traits": {
+            "smithy.api#documentation": "Array of additional networks noncontiguous with networkBlock. Networks must be\nunique and non-overlapping across VNet in your subscription, on-premise, and\nthis privateCloud networkBlock attribute. Make sure the CIDR format conforms to\n(A.B.C.D/X)."
+          }
+        },
+        "dnsZoneType": {
+          "target": "com.azure.vmware#DnsZoneType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS zone to use."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a private cloud resource that may be updated"
+      }
+    },
+    "com.azure.vmware#PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of additional networks noncontiguous with networkBlock. Networks must be\nunique and non-overlapping across VNet in your subscription, on-premise, and\nthis privateCloud networkBlock attribute. Make sure the CIDR format conforms to\n(A.B.C.D/X)."
+      }
+    },
+    "com.azure.vmware#EncryptionInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.vmware#EncryptionState",
+          "traits": {
+            "smithy.api#documentation": "Status of customer managed encryption key"
+          }
+        },
+        "keyVaultProperties": {
+          "target": "com.azure.vmware#EncryptionKeyVaultPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The key vault where the encryption key is stored"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of customer managed encryption key"
+      }
+    },
+    "com.azure.vmware#EncryptionKeyVaultPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "keyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the key."
+          }
+        },
+        "keyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the key."
+          }
+        },
+        "keyVaultUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL of the vault."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An Encryption Key"
+      }
+    },
+    "com.azure.vmware#PrivateCloudUpdatePropertiesInputIdentitySourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.vmware#IdentitySource"
+      },
+      "traits": {
+        "smithy.api#documentation": "vCenter Single Sign On Identity Sources"
+      }
+    },
+    "com.azure.vmware#InternetEnum": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether internet is enabled or disabled"
+      }
+    },
+    "com.azure.vmware#ManagementClusterInput": {
+      "type": "structure",
+      "members": {
+        "clusterSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The cluster size"
+          }
+        },
+        "hosts": {
+          "target": "com.azure.vmware#ManagementClusterInputHostsList",
+          "traits": {
+            "smithy.api#documentation": "The hosts"
+          }
+        },
+        "vsanDatastoreName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the vsan datastore associated with the cluster"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a management cluster"
+      }
+    },
+    "com.azure.vmware#ManagementClusterInputHostsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The hosts"
+      }
+    },
+    "com.azure.vmware#PrivateCloudsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.vmware#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.vmware#PrivateCloudsUpdateRequestSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.vmware#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.vmware#PrivateCloudsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.vmware#PrivateCloudsCreateOrUpdate": {
@@ -16168,16 +17280,274 @@
             "smithy.api#documentation": "Name of the private cloud"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.vmware#PrivateCloudsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.vmware#PrivateCloudPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.vmware#PrivateCloudsCreateOrUpdateRequestSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.vmware#PrivateCloudsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+          }
+        },
+        "zones": {
+          "target": "com.azure.vmware#PrivateCloudsCreateOrUpdateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The availability zones."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.vmware#PrivateCloudsCreateOrUpdateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The availability zones."
+      }
+    },
+    "com.azure.vmware#PrivateCloudsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.vmware#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.vmware#PrivateCloudsCreateOrUpdateRequestSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.vmware#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.vmware#PrivateCloudPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "managementCluster": {
+          "target": "com.azure.vmware#ManagementClusterInput",
+          "traits": {
+            "smithy.api#documentation": "The default cluster used for management",
+            "smithy.api#required": {}
+          }
+        },
+        "internet": {
+          "target": "com.azure.vmware#PrivateCloudPropertiesInputInternet",
+          "traits": {
+            "smithy.api#documentation": "Connectivity to internet is enabled or disabled"
+          }
+        },
+        "identitySources": {
+          "target": "com.azure.vmware#PrivateCloudPropertiesInputIdentitySourcesList",
+          "traits": {
+            "smithy.api#documentation": "vCenter Single Sign On Identity Sources"
+          }
+        },
+        "availability": {
+          "target": "com.azure.vmware#AvailabilityProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties describing how the cloud is distributed across availability zones"
+          }
+        },
+        "encryption": {
+          "target": "com.azure.vmware#EncryptionInput",
+          "traits": {
+            "smithy.api#documentation": "Customer managed key encryption, can be enabled or disabled"
+          }
+        },
+        "extendedNetworkBlocks": {
+          "target": "com.azure.vmware#PrivateCloudPropertiesInputExtendedNetworkBlocksList",
+          "traits": {
+            "smithy.api#documentation": "Array of additional networks noncontiguous with networkBlock. Networks must be\nunique and non-overlapping across VNet in your subscription, on-premise, and\nthis privateCloud networkBlock attribute. Make sure the CIDR format conforms to\n(A.B.C.D/X)."
+          }
+        },
+        "circuit": {
+          "target": "com.azure.vmware#CircuitInput",
+          "traits": {
+            "smithy.api#documentation": "An ExpressRoute Circuit"
+          }
+        },
+        "networkBlock": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The block of addresses should be unique across VNet in your subscription as\nwell as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where\nA,B,C,D are between 0 and 255, and X is between 0 and 22",
+            "smithy.api#required": {}
+          }
+        },
+        "vcenterPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optionally, set the vCenter admin password when the private cloud is created",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "nsxtPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optionally, set the NSX-T Manager password when the private cloud is created",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "secondaryCircuit": {
+          "target": "com.azure.vmware#CircuitInput",
+          "traits": {
+            "smithy.api#documentation": "A secondary expressRoute circuit from a separate AZ. Only present in a\nstretched private cloud"
+          }
+        },
+        "virtualNetworkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure resource ID of the virtual network"
+          }
+        },
+        "dnsZoneType": {
+          "target": "com.azure.vmware#DnsZoneType",
+          "traits": {
+            "smithy.api#documentation": "The type of DNS zone to use."
+          }
+        },
+        "vcfLicense": {
+          "target": "com.azure.vmware#VcfLicenseInput",
+          "traits": {
+            "smithy.api#documentation": "The private cloud license"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a private cloud resource"
+      }
+    },
+    "com.azure.vmware#VcfLicenseInput": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "com.azure.vmware#VcfLicenseKind",
+          "traits": {
+            "smithy.api#documentation": "License kind",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A VMware Cloud Foundation license"
+      }
+    },
+    "com.azure.vmware#CircuitInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "An ExpressRoute Circuit"
+      }
+    },
+    "com.azure.vmware#PrivateCloudPropertiesInputExtendedNetworkBlocksList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of additional networks noncontiguous with networkBlock. Networks must be\nunique and non-overlapping across VNet in your subscription, on-premise, and\nthis privateCloud networkBlock attribute. Make sure the CIDR format conforms to\n(A.B.C.D/X)."
+      }
+    },
+    "com.azure.vmware#PrivateCloudPropertiesInputIdentitySourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.vmware#IdentitySource"
+      },
+      "traits": {
+        "smithy.api#documentation": "vCenter Single Sign On Identity Sources"
+      }
+    },
+    "com.azure.vmware#PrivateCloudPropertiesInputInternet": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Connectivity to internet is enabled or disabled"
+      }
+    },
+    "com.azure.vmware#PrivateCloudsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.vmware#PrivateCloudsGet": {
@@ -17198,10 +18568,32 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.vmware#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
           }
         }
       },

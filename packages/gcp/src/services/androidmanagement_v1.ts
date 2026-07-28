@@ -92,13 +92,12 @@ export type EnterpriseEnabledNotificationTypesItemEnum =
   | "STATUS_REPORT"
   | "COMMAND"
   | "USAGE_LOGS"
-  | "ENTERPRISE_UPGRADE"
-  | (string & {});
+  | "ENTERPRISE_UPGRADE";
 export const EnterpriseEnabledNotificationTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type EnterpriseEnabledNotificationTypesItemEnumList =
-  EnterpriseEnabledNotificationTypesItemEnum[];
+  ReadonlyArray<EnterpriseEnabledNotificationTypesItemEnum>;
 export const EnterpriseEnabledNotificationTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     EnterpriseEnabledNotificationTypesItemEnum,
@@ -121,8 +120,7 @@ export const ExternalData = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
   | "GOOGLE_AUTHENTICATION_REQUIRED_UNSPECIFIED"
   | "NOT_REQUIRED"
-  | "REQUIRED"
-  | (string & {});
+  | "REQUIRED";
 export const GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
   /*@__PURE__*/ S.String;
 
@@ -179,7 +177,7 @@ export const TermsAndConditions = /*@__PURE__*/ S.suspend(() =>
   identifier: "TermsAndConditions",
 }) as any as S.Schema<TermsAndConditions>;
 
-export type TermsAndConditionsList = TermsAndConditions[];
+export type TermsAndConditionsList = ReadonlyArray<TermsAndConditions>;
 export const TermsAndConditionsList = /*@__PURE__*/ S.Array(
   TermsAndConditions,
 ) as any as S.Schema<TermsAndConditionsList>;
@@ -187,15 +185,13 @@ export const TermsAndConditionsList = /*@__PURE__*/ S.Array(
 export type EnterpriseEnterpriseTypeEnum =
   | "ENTERPRISE_TYPE_UNSPECIFIED"
   | "MANAGED_GOOGLE_DOMAIN"
-  | "MANAGED_GOOGLE_PLAY_ACCOUNTS_ENTERPRISE"
-  | (string & {});
+  | "MANAGED_GOOGLE_PLAY_ACCOUNTS_ENTERPRISE";
 export const EnterpriseEnterpriseTypeEnum = /*@__PURE__*/ S.String;
 
 export type EnterpriseManagedGooglePlayAccountsEnterpriseTypeEnum =
   | "MANAGED_GOOGLE_PLAY_ACCOUNTS_ENTERPRISE_TYPE_UNSPECIFIED"
   | "CUSTOMER_MANAGED"
-  | "EMM_MANAGED"
-  | (string & {});
+  | "EMM_MANAGED";
 export const EnterpriseManagedGooglePlayAccountsEnterpriseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -231,23 +227,18 @@ export const ContactInfo = /*@__PURE__*/ S.suspend(() =>
 export type EnterpriseManagedGoogleDomainTypeEnum =
   | "MANAGED_GOOGLE_DOMAIN_TYPE_UNSPECIFIED"
   | "TYPE_TEAM"
-  | "TYPE_DOMAIN"
-  | (string & {});
+  | "TYPE_DOMAIN";
 export const EnterpriseManagedGoogleDomainTypeEnum = /*@__PURE__*/ S.String;
 
 export type SigninDetailAllowPersonalUsageEnum =
   | "ALLOW_PERSONAL_USAGE_UNSPECIFIED"
   | "PERSONAL_USAGE_ALLOWED"
   | "PERSONAL_USAGE_DISALLOWED"
-  | "PERSONAL_USAGE_DISALLOWED_USERLESS"
-  | (string & {});
+  | "PERSONAL_USAGE_DISALLOWED_USERLESS";
 export const SigninDetailAllowPersonalUsageEnum = /*@__PURE__*/ S.String;
 
 export type SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnum =
-    | "AUTHENTICATION_REQUIREMENT_UNSPECIFIED"
-    | "OPTIONAL"
-    | "REQUIRED"
-    | (string & {});
+  "AUTHENTICATION_REQUIREMENT_UNSPECIFIED" | "OPTIONAL" | "REQUIRED";
 export const SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnum =
   /*@__PURE__*/ S.String;
 
@@ -270,8 +261,7 @@ export const SigninDetailGoogleAuthenticationOptions = /*@__PURE__*/ S.suspend(
 export type SigninDetailDefaultStatusEnum =
   | "SIGNIN_DETAIL_DEFAULT_STATUS_UNSPECIFIED"
   | "SIGNIN_DETAIL_IS_DEFAULT"
-  | "SIGNIN_DETAIL_IS_NOT_DEFAULT"
-  | (string & {});
+  | "SIGNIN_DETAIL_IS_NOT_DEFAULT";
 export const SigninDetailDefaultStatusEnum = /*@__PURE__*/ S.String;
 
 /** A resource containing sign in details for an enterprise. Use enterprises to manage SigninDetails for a given enterprise.For an enterprise, we can have any number of SigninDetails that is uniquely identified by combination of the following three fields (signin_url, allow_personal_usage, token_tag). One cannot create two SigninDetails with the same (signin_url, allow_personal_usage, token_tag). (token_tag is an optional field).Patch: The operation updates the current list of SigninDetails with the new list of SigninDetails. If the stored SigninDetail configuration is passed, it returns the same signin_enrollment_token and qr_code. If we pass multiple identical SigninDetail configurations that are not stored, it will store the first one amongst those SigninDetail configurations. if the configuration already exists we cannot request it more than once in a particular patch API call, otherwise it will give a duplicate key error and the whole operation will fail. If we remove certain SigninDetail configuration from the request then it will get removed from the storage. We can then request another signin_enrollment_token and qr_code for the same SigninDetail configuration. */
@@ -305,7 +295,7 @@ export const SigninDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SigninDetail" }) as any as S.Schema<SigninDetail>;
 
-export type SigninDetailList = SigninDetail[];
+export type SigninDetailList = ReadonlyArray<SigninDetail>;
 export const SigninDetailList = /*@__PURE__*/ S.Array(
   SigninDetail,
 ) as any as S.Schema<SigninDetailList>;
@@ -409,15 +399,13 @@ export type EnrollmentTokenAllowPersonalUsageEnum =
   | "ALLOW_PERSONAL_USAGE_UNSPECIFIED"
   | "PERSONAL_USAGE_ALLOWED"
   | "PERSONAL_USAGE_DISALLOWED"
-  | "PERSONAL_USAGE_DISALLOWED_USERLESS"
-  | (string & {});
+  | "PERSONAL_USAGE_DISALLOWED_USERLESS";
 export const EnrollmentTokenAllowPersonalUsageEnum = /*@__PURE__*/ S.String;
 
 export type GoogleAuthenticationOptionsAuthenticationRequirementEnum =
   | "AUTHENTICATION_REQUIREMENT_UNSPECIFIED"
   | "OPTIONAL"
-  | "REQUIRED"
-  | (string & {});
+  | "REQUIRED";
 export const GoogleAuthenticationOptionsAuthenticationRequirementEnum =
   /*@__PURE__*/ S.String;
 
@@ -508,8 +496,7 @@ export type MigrationTokenManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "WORK_PROFILE_PERSONALLY_OWNED"
   | "WORK_PROFILE_COMPANY_OWNED"
-  | "FULLY_MANAGED"
-  | (string & {});
+  | "FULLY_MANAGED";
 export const MigrationTokenManagementModeEnum = /*@__PURE__*/ S.String;
 
 /** A token to initiate the migration of a device from being managed by a third-party DPC to being managed by Android Management API. A migration token is valid only for a single device. See the guide (https://developers.google.com/android/management/dpc-migration) for more details. */
@@ -586,7 +573,7 @@ export const WebAppIcon = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebAppIcon" }) as any as S.Schema<WebAppIcon>;
 
-export type WebAppIconList = WebAppIcon[];
+export type WebAppIconList = ReadonlyArray<WebAppIcon>;
 export const WebAppIconList = /*@__PURE__*/ S.Array(
   WebAppIcon,
 ) as any as S.Schema<WebAppIconList>;
@@ -595,8 +582,7 @@ export type WebAppDisplayModeEnum =
   | "DISPLAY_MODE_UNSPECIFIED"
   | "MINIMAL_UI"
   | "STANDALONE"
-  | "FULL_SCREEN"
-  | (string & {});
+  | "FULL_SCREEN";
 export const WebAppDisplayModeEnum = /*@__PURE__*/ S.String;
 
 /** A web app. */
@@ -648,11 +634,11 @@ export const CreateEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type WebTokenPermissionsItemEnum =
   | "WEB_TOKEN_PERMISSION_UNSPECIFIED"
-  | "APPROVE_APPS"
-  | (string & {});
+  | "APPROVE_APPS";
 export const WebTokenPermissionsItemEnum = /*@__PURE__*/ S.String;
 
-export type WebTokenPermissionsItemEnumList = WebTokenPermissionsItemEnum[];
+export type WebTokenPermissionsItemEnumList =
+  ReadonlyArray<WebTokenPermissionsItemEnum>;
 export const WebTokenPermissionsItemEnumList = /*@__PURE__*/ S.Array(
   WebTokenPermissionsItemEnum,
 ) as any as S.Schema<WebTokenPermissionsItemEnumList>;
@@ -664,12 +650,11 @@ export type WebTokenEnabledFeaturesItemEnum =
   | "WEB_APPS"
   | "STORE_BUILDER"
   | "MANAGED_CONFIGURATIONS"
-  | "ZERO_TOUCH_CUSTOMER_MANAGEMENT"
-  | (string & {});
+  | "ZERO_TOUCH_CUSTOMER_MANAGEMENT";
 export const WebTokenEnabledFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type WebTokenEnabledFeaturesItemEnumList =
-  WebTokenEnabledFeaturesItemEnum[];
+  ReadonlyArray<WebTokenEnabledFeaturesItemEnum>;
 export const WebTokenEnabledFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   WebTokenEnabledFeaturesItemEnum,
 ) as any as S.Schema<WebTokenEnabledFeaturesItemEnumList>;
@@ -718,7 +703,7 @@ export const CreateEnterprisesWebTokensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEnterprisesWebTokensRequest",
 }) as any as S.Schema<CreateEnterprisesWebTokensRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -786,12 +771,11 @@ export type DeleteEnterprisesDevicesWipeDataFlagsEnum =
   | "WIPE_DATA_FLAG_UNSPECIFIED"
   | "PRESERVE_RESET_PROTECTION_DATA"
   | "WIPE_EXTERNAL_STORAGE"
-  | "WIPE_ESIMS"
-  | (string & {});
+  | "WIPE_ESIMS";
 export const DeleteEnterprisesDevicesWipeDataFlagsEnum = /*@__PURE__*/ S.String;
 
 export type DeleteEnterprisesDevicesWipeDataFlagsEnumList =
-  DeleteEnterprisesDevicesWipeDataFlagsEnum[];
+  ReadonlyArray<DeleteEnterprisesDevicesWipeDataFlagsEnum>;
 export const DeleteEnterprisesDevicesWipeDataFlagsEnumList =
   /*@__PURE__*/ S.Array(
     DeleteEnterprisesDevicesWipeDataFlagsEnum,
@@ -975,16 +959,14 @@ export type ApplicationContentRatingEnum =
   | "SEVEN_YEARS"
   | "TWELVE_YEARS"
   | "SIXTEEN_YEARS"
-  | "EIGHTEEN_YEARS"
-  | (string & {});
+  | "EIGHTEEN_YEARS";
 export const ApplicationContentRatingEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationAppPricingEnum =
   | "APP_PRICING_UNSPECIFIED"
   | "FREE"
   | "FREE_WITH_IN_APP_PURCHASE"
-  | "PAID"
-  | (string & {});
+  | "PAID";
 export const ApplicationAppPricingEnum = /*@__PURE__*/ S.String;
 
 export type ManagedPropertyTypeEnum =
@@ -996,8 +978,7 @@ export type ManagedPropertyTypeEnum =
   | "MULTISELECT"
   | "HIDDEN"
   | "BUNDLE"
-  | "BUNDLE_ARRAY"
-  | (string & {});
+  | "BUNDLE_ARRAY";
 export const ManagedPropertyTypeEnum = /*@__PURE__*/ S.String;
 
 /** An entry of a managed property. */
@@ -1016,7 +997,7 @@ export const ManagedPropertyEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedPropertyEntry",
 }) as any as S.Schema<ManagedPropertyEntry>;
 
-export type ManagedPropertyEntryList = ManagedPropertyEntry[];
+export type ManagedPropertyEntryList = ReadonlyArray<ManagedPropertyEntry>;
 export const ManagedPropertyEntryList = /*@__PURE__*/ S.Array(
   ManagedPropertyEntry,
 ) as any as S.Schema<ManagedPropertyEntryList>;
@@ -1052,7 +1033,7 @@ export const ManagedProperty = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedProperty",
 }) as any as S.Schema<ManagedProperty>;
 
-export type ManagedPropertyList = ManagedProperty[];
+export type ManagedPropertyList = ReadonlyArray<ManagedProperty>;
 export const ManagedPropertyList = /*@__PURE__*/ S.Array(
   ManagedProperty,
 ) as any as S.Schema<ManagedPropertyList>;
@@ -1071,7 +1052,7 @@ export const AppTrackInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppTrackInfo" }) as any as S.Schema<AppTrackInfo>;
 
-export type AppTrackInfoList = AppTrackInfo[];
+export type AppTrackInfoList = ReadonlyArray<AppTrackInfo>;
 export const AppTrackInfoList = /*@__PURE__*/ S.Array(
   AppTrackInfo,
 ) as any as S.Schema<AppTrackInfoList>;
@@ -1095,7 +1076,7 @@ export const ApplicationPermission = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationPermission",
 }) as any as S.Schema<ApplicationPermission>;
 
-export type ApplicationPermissionList = ApplicationPermission[];
+export type ApplicationPermissionList = ReadonlyArray<ApplicationPermission>;
 export const ApplicationPermissionList = /*@__PURE__*/ S.Array(
   ApplicationPermission,
 ) as any as S.Schema<ApplicationPermissionList>;
@@ -1120,18 +1101,16 @@ export const AppVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppVersion" }) as any as S.Schema<AppVersion>;
 
-export type AppVersionList = AppVersion[];
+export type AppVersionList = ReadonlyArray<AppVersion>;
 export const AppVersionList = /*@__PURE__*/ S.Array(
   AppVersion,
 ) as any as S.Schema<AppVersionList>;
 
-export type ApplicationFeaturesItemEnum =
-  | "APP_FEATURE_UNSPECIFIED"
-  | "VPN_APP"
-  | (string & {});
+export type ApplicationFeaturesItemEnum = "APP_FEATURE_UNSPECIFIED" | "VPN_APP";
 export const ApplicationFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type ApplicationFeaturesItemEnumList = ApplicationFeaturesItemEnum[];
+export type ApplicationFeaturesItemEnumList =
+  ReadonlyArray<ApplicationFeaturesItemEnum>;
 export const ApplicationFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   ApplicationFeaturesItemEnum,
 ) as any as S.Schema<ApplicationFeaturesItemEnumList>;
@@ -1140,8 +1119,7 @@ export type ApplicationDistributionChannelEnum =
   | "DISTRIBUTION_CHANNEL_UNSPECIFIED"
   | "PUBLIC_GOOGLE_HOSTED"
   | "PRIVATE_GOOGLE_HOSTED"
-  | "PRIVATE_SELF_HOSTED"
-  | (string & {});
+  | "PRIVATE_SELF_HOSTED";
 export const ApplicationDistributionChannelEnum = /*@__PURE__*/ S.String;
 
 /** Information about an app. */
@@ -1250,16 +1228,14 @@ export type NonComplianceDetailNonComplianceReasonEnum =
   | "APP_NOT_UPDATED"
   | "DEVICE_INCOMPATIBLE"
   | "APP_SIGNING_CERT_MISMATCH"
-  | "PROJECT_NOT_PERMITTED"
-  | (string & {});
+  | "PROJECT_NOT_PERMITTED";
 export const NonComplianceDetailNonComplianceReasonEnum =
   /*@__PURE__*/ S.String;
 
 export type PasswordPoliciesContextPasswordPolicyScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "SCOPE_DEVICE"
-  | "SCOPE_PROFILE"
-  | (string & {});
+  | "SCOPE_PROFILE";
 export const PasswordPoliciesContextPasswordPolicyScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1282,8 +1258,7 @@ export type DefaultApplicationContextDefaultApplicationScopeEnum =
   | "DEFAULT_APPLICATION_SCOPE_UNSPECIFIED"
   | "SCOPE_FULLY_MANAGED"
   | "SCOPE_WORK_PROFILE"
-  | "SCOPE_PERSONAL_PROFILE"
-  | (string & {});
+  | "SCOPE_PERSONAL_PROFILE";
 export const DefaultApplicationContextDefaultApplicationScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1347,8 +1322,7 @@ export type NonComplianceDetailSpecificNonComplianceReasonEnum =
   | "NEW_ACCOUNT_NOT_IN_ENTERPRISE"
   | "DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES"
   | "DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE"
-  | "PRIVATE_DNS_HOST_NOT_SERVING"
-  | (string & {});
+  | "PRIVATE_DNS_HOST_NOT_SERVING";
 export const NonComplianceDetailSpecificNonComplianceReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -1365,8 +1339,7 @@ export type NonComplianceDetailInstallationFailureReasonEnum =
   | "NOT_ENROLLED"
   | "USER_INVALID"
   | "NETWORK_ERROR_UNRELIABLE_CONNECTION"
-  | "INSUFFICIENT_STORAGE"
-  | (string & {});
+  | "INSUFFICIENT_STORAGE";
 export const NonComplianceDetailInstallationFailureReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -1408,7 +1381,7 @@ export const NonComplianceDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "NonComplianceDetail",
 }) as any as S.Schema<NonComplianceDetail>;
 
-export type NonComplianceDetailList = NonComplianceDetail[];
+export type NonComplianceDetailList = ReadonlyArray<NonComplianceDetail>;
 export const NonComplianceDetailList = /*@__PURE__*/ S.Array(
   NonComplianceDetail,
 ) as any as S.Schema<NonComplianceDetailList>;
@@ -1416,22 +1389,19 @@ export const NonComplianceDetailList = /*@__PURE__*/ S.Array(
 export type DeviceManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "DEVICE_OWNER"
-  | "PROFILE_OWNER"
-  | (string & {});
+  | "PROFILE_OWNER";
 export const DeviceManagementModeEnum = /*@__PURE__*/ S.String;
 
 export type TelephonyInfoConfigModeEnum =
   | "CONFIG_MODE_UNSPECIFIED"
   | "ADMIN_CONFIGURED"
-  | "USER_CONFIGURED"
-  | (string & {});
+  | "USER_CONFIGURED";
 export const TelephonyInfoConfigModeEnum = /*@__PURE__*/ S.String;
 
 export type TelephonyInfoActivationStateEnum =
   | "ACTIVATION_STATE_UNSPECIFIED"
   | "ACTIVATED"
-  | "NOT_ACTIVATED"
-  | (string & {});
+  | "NOT_ACTIVATED";
 export const TelephonyInfoActivationStateEnum = /*@__PURE__*/ S.String;
 
 /** Telephony information associated with a given SIM card on the device. This is supported for all SIM cards on fully managed devices on Android 6 and above. In addition, this is supported for admin-added eSIMs on all devices for Android 15 and above. */
@@ -1457,7 +1427,7 @@ export const TelephonyInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TelephonyInfo" }) as any as S.Schema<TelephonyInfo>;
 
-export type TelephonyInfoList = TelephonyInfo[];
+export type TelephonyInfoList = ReadonlyArray<TelephonyInfo>;
 export const TelephonyInfoList = /*@__PURE__*/ S.Array(
   TelephonyInfo,
 ) as any as S.Schema<TelephonyInfoList>;
@@ -1490,8 +1460,7 @@ export type SystemUpdateInfoUpdateStatusEnum =
   | "UP_TO_DATE"
   | "UNKNOWN_UPDATE_AVAILABLE"
   | "SECURITY_UPDATE_AVAILABLE"
-  | "OS_UPDATE_AVAILABLE"
-  | (string & {});
+  | "OS_UPDATE_AVAILABLE";
 export const SystemUpdateInfoUpdateStatusEnum = /*@__PURE__*/ S.String;
 
 /** Information about a potential pending system update. */
@@ -1559,8 +1528,7 @@ export type PowerManagementEventEventTypeEnum =
   | "BATTERY_LOW"
   | "BATTERY_OKAY"
   | "BOOT_COMPLETED"
-  | "SHUTDOWN"
-  | (string & {});
+  | "SHUTDOWN";
 export const PowerManagementEventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** A power management event. */
@@ -1582,7 +1550,7 @@ export const PowerManagementEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "PowerManagementEvent",
 }) as any as S.Schema<PowerManagementEvent>;
 
-export type PowerManagementEventList = PowerManagementEvent[];
+export type PowerManagementEventList = ReadonlyArray<PowerManagementEvent>;
 export const PowerManagementEventList = /*@__PURE__*/ S.Array(
   PowerManagementEvent,
 ) as any as S.Schema<PowerManagementEventList>;
@@ -1612,8 +1580,7 @@ export type DefaultApplicationInfoDefaultApplicationTypeEnum =
   | "DEFAULT_DIALER"
   | "DEFAULT_HOME"
   | "DEFAULT_SMS"
-  | "DEFAULT_WALLET"
-  | (string & {});
+  | "DEFAULT_WALLET";
 export const DefaultApplicationInfoDefaultApplicationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1622,8 +1589,7 @@ export type DefaultApplicationSettingAttemptAttemptOutcomeEnum =
   | "SUCCESS"
   | "APP_NOT_INSTALLED"
   | "APP_SIGNING_CERT_MISMATCH"
-  | "OTHER_FAILURE"
-  | (string & {});
+  | "OTHER_FAILURE";
 export const DefaultApplicationSettingAttemptAttemptOutcomeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1646,7 +1612,7 @@ export const DefaultApplicationSettingAttempt = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultApplicationSettingAttempt>;
 
 export type DefaultApplicationSettingAttemptList =
-  DefaultApplicationSettingAttempt[];
+  ReadonlyArray<DefaultApplicationSettingAttempt>;
 export const DefaultApplicationSettingAttemptList = /*@__PURE__*/ S.Array(
   DefaultApplicationSettingAttempt,
 ) as any as S.Schema<DefaultApplicationSettingAttemptList>;
@@ -1674,7 +1640,7 @@ export const DefaultApplicationInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultApplicationInfo",
 }) as any as S.Schema<DefaultApplicationInfo>;
 
-export type DefaultApplicationInfoList = DefaultApplicationInfo[];
+export type DefaultApplicationInfoList = ReadonlyArray<DefaultApplicationInfo>;
 export const DefaultApplicationInfoList = /*@__PURE__*/ S.Array(
   DefaultApplicationInfo,
 ) as any as S.Schema<DefaultApplicationInfoList>;
@@ -1688,8 +1654,7 @@ export type ApplicationEventEventTypeEnum =
   | "REPLACED"
   | "RESTARTED"
   | "PINNED"
-  | "UNPINNED"
-  | (string & {});
+  | "UNPINNED";
 export const ApplicationEventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** An app-related event. */
@@ -1708,7 +1673,7 @@ export const ApplicationEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationEvent",
 }) as any as S.Schema<ApplicationEvent>;
 
-export type ApplicationEventList = ApplicationEvent[];
+export type ApplicationEventList = ReadonlyArray<ApplicationEvent>;
 export const ApplicationEventList = /*@__PURE__*/ S.Array(
   ApplicationEvent,
 ) as any as S.Schema<ApplicationEventList>;
@@ -1718,22 +1683,19 @@ export type ApplicationReportApplicationSourceEnum =
   | "SYSTEM_APP_FACTORY_VERSION"
   | "SYSTEM_APP_UPDATED_VERSION"
   | "INSTALLED_FROM_PLAY_STORE"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const ApplicationReportApplicationSourceEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationReportStateEnum =
   | "APPLICATION_STATE_UNSPECIFIED"
   | "REMOVED"
-  | "INSTALLED"
-  | (string & {});
+  | "INSTALLED";
 export const ApplicationReportStateEnum = /*@__PURE__*/ S.String;
 
 export type KeyedAppStateSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "INFO"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const KeyedAppStateSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Keyed app state reported by the app. */
@@ -1762,7 +1724,7 @@ export const KeyedAppState = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyedAppState" }) as any as S.Schema<KeyedAppState>;
 
-export type KeyedAppStateList = KeyedAppState[];
+export type KeyedAppStateList = ReadonlyArray<KeyedAppState>;
 export const KeyedAppStateList = /*@__PURE__*/ S.Array(
   KeyedAppState,
 ) as any as S.Schema<KeyedAppStateList>;
@@ -1770,8 +1732,7 @@ export const KeyedAppStateList = /*@__PURE__*/ S.Array(
 export type ApplicationReportUserFacingTypeEnum =
   | "USER_FACING_TYPE_UNSPECIFIED"
   | "NOT_USER_FACING"
-  | "USER_FACING"
-  | (string & {});
+  | "USER_FACING";
 export const ApplicationReportUserFacingTypeEnum = /*@__PURE__*/ S.String;
 
 /** The application signing key certificate. */
@@ -1787,7 +1748,8 @@ export const ApplicationSigningKeyCert = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationSigningKeyCert",
 }) as any as S.Schema<ApplicationSigningKeyCert>;
 
-export type ApplicationSigningKeyCertList = ApplicationSigningKeyCert[];
+export type ApplicationSigningKeyCertList =
+  ReadonlyArray<ApplicationSigningKeyCert>;
 export const ApplicationSigningKeyCertList = /*@__PURE__*/ S.Array(
   ApplicationSigningKeyCert,
 ) as any as S.Schema<ApplicationSigningKeyCertList>;
@@ -1841,7 +1803,7 @@ export const ApplicationReport = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationReport",
 }) as any as S.Schema<ApplicationReport>;
 
-export type ApplicationReportList = ApplicationReport[];
+export type ApplicationReportList = ReadonlyArray<ApplicationReport>;
 export const ApplicationReportList = /*@__PURE__*/ S.Array(
   ApplicationReport,
 ) as any as S.Schema<ApplicationReportList>;
@@ -1850,11 +1812,10 @@ export type PostureDetailSecurityRiskEnum =
   | "SECURITY_RISK_UNSPECIFIED"
   | "UNKNOWN_OS"
   | "COMPROMISED_OS"
-  | "HARDWARE_BACKED_EVALUATION_FAILED"
-  | (string & {});
+  | "HARDWARE_BACKED_EVALUATION_FAILED";
 export const PostureDetailSecurityRiskEnum = /*@__PURE__*/ S.String;
 
-export type UserFacingMessageList = UserFacingMessage[];
+export type UserFacingMessageList = ReadonlyArray<UserFacingMessage>;
 export const UserFacingMessageList = /*@__PURE__*/ S.Array(
   UserFacingMessage,
 ) as any as S.Schema<UserFacingMessageList>;
@@ -1873,7 +1834,7 @@ export const PostureDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PostureDetail" }) as any as S.Schema<PostureDetail>;
 
-export type PostureDetailList = PostureDetail[];
+export type PostureDetailList = ReadonlyArray<PostureDetail>;
 export const PostureDetailList = /*@__PURE__*/ S.Array(
   PostureDetail,
 ) as any as S.Schema<PostureDetailList>;
@@ -1882,8 +1843,7 @@ export type SecurityPostureDevicePostureEnum =
   | "POSTURE_UNSPECIFIED"
   | "SECURE"
   | "AT_RISK"
-  | "POTENTIALLY_COMPROMISED"
-  | (string & {});
+  | "POTENTIALLY_COMPROMISED";
 export const SecurityPostureDevicePostureEnum = /*@__PURE__*/ S.String;
 
 /** The security posture of the device, as determined by the current device state and the policies applied. */
@@ -1910,8 +1870,7 @@ export type DeviceStateEnum =
   | "PROVISIONING"
   | "LOST"
   | "PREPARING_FOR_MIGRATION"
-  | "DEACTIVATED_BY_DEVICE_FINANCE"
-  | (string & {});
+  | "DEACTIVATED_BY_DEVICE_FINANCE";
 export const DeviceStateEnum = /*@__PURE__*/ S.String;
 
 export type DisplayStateEnum =
@@ -1919,8 +1878,7 @@ export type DisplayStateEnum =
   | "OFF"
   | "ON"
   | "DOZE"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const DisplayStateEnum = /*@__PURE__*/ S.String;
 
 /** Device display information. */
@@ -1952,7 +1910,7 @@ export const Display = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Display" }) as any as S.Schema<Display>;
 
-export type DisplayList = Display[];
+export type DisplayList = ReadonlyArray<Display>;
 export const DisplayList = /*@__PURE__*/ S.Array(
   Display,
 ) as any as S.Schema<DisplayList>;
@@ -1960,11 +1918,10 @@ export const DisplayList = /*@__PURE__*/ S.Array(
 export type DeviceOwnershipEnum =
   | "OWNERSHIP_UNSPECIFIED"
   | "COMPANY_OWNED"
-  | "PERSONALLY_OWNED"
-  | (string & {});
+  | "PERSONALLY_OWNED";
 export const DeviceOwnershipEnum = /*@__PURE__*/ S.String;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -1980,7 +1937,7 @@ export const EuiccChipInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EuiccChipInfo" }) as any as S.Schema<EuiccChipInfo>;
 
-export type EuiccChipInfoList = EuiccChipInfo[];
+export type EuiccChipInfoList = ReadonlyArray<EuiccChipInfo>;
 export const EuiccChipInfoList = /*@__PURE__*/ S.Array(
   EuiccChipInfo,
 ) as any as S.Schema<EuiccChipInfoList>;
@@ -2070,7 +2027,7 @@ export const HardwareStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HardwareStatus" }) as any as S.Schema<HardwareStatus>;
 
-export type HardwareStatusList = HardwareStatus[];
+export type HardwareStatusList = ReadonlyArray<HardwareStatus>;
 export const HardwareStatusList = /*@__PURE__*/ S.Array(
   HardwareStatus,
 ) as any as S.Schema<HardwareStatusList>;
@@ -2082,8 +2039,7 @@ export type DeviceSettingsEncryptionStatusEnum =
   | "ACTIVATING"
   | "ACTIVE"
   | "ACTIVE_DEFAULT_KEY"
-  | "ACTIVE_PER_USER"
-  | (string & {});
+  | "ACTIVE_PER_USER";
 export const DeviceSettingsEncryptionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Information about security related device settings on device. */
@@ -2123,8 +2079,7 @@ export type DeviceAppliedStateEnum =
   | "PROVISIONING"
   | "LOST"
   | "PREPARING_FOR_MIGRATION"
-  | "DEACTIVATED_BY_DEVICE_FINANCE"
-  | (string & {});
+  | "DEACTIVATED_BY_DEVICE_FINANCE";
 export const DeviceAppliedStateEnum = /*@__PURE__*/ S.String;
 
 export type MemoryEventEventTypeEnum =
@@ -2133,8 +2088,7 @@ export type MemoryEventEventTypeEnum =
   | "INTERNAL_STORAGE_MEASURED"
   | "EXTERNAL_STORAGE_DETECTED"
   | "EXTERNAL_STORAGE_REMOVED"
-  | "EXTERNAL_STORAGE_MEASURED"
-  | (string & {});
+  | "EXTERNAL_STORAGE_MEASURED";
 export const MemoryEventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** An event related to memory and storage measurements.To distinguish between new and old events, we recommend using the createTime field. */
@@ -2154,7 +2108,7 @@ export const MemoryEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemoryEvent" }) as any as S.Schema<MemoryEvent>;
 
-export type MemoryEventList = MemoryEvent[];
+export type MemoryEventList = ReadonlyArray<MemoryEvent>;
 export const MemoryEventList = /*@__PURE__*/ S.Array(
   MemoryEvent,
 ) as any as S.Schema<MemoryEventList>;
@@ -2176,8 +2130,7 @@ export const MemoryInfo = /*@__PURE__*/ S.suspend(() =>
 export type CommonCriteriaModeInfoCommonCriteriaModeStatusEnum =
   | "COMMON_CRITERIA_MODE_STATUS_UNKNOWN"
   | "COMMON_CRITERIA_MODE_DISABLED"
-  | "COMMON_CRITERIA_MODE_ENABLED"
-  | (string & {});
+  | "COMMON_CRITERIA_MODE_ENABLED";
 export const CommonCriteriaModeInfoCommonCriteriaModeStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2186,8 +2139,7 @@ export type CommonCriteriaModeInfoPolicySignatureVerificationStatusEnum =
   | "POLICY_SIGNATURE_VERIFICATION_DISABLED"
   | "POLICY_SIGNATURE_VERIFICATION_SUCCEEDED"
   | "POLICY_SIGNATURE_VERIFICATION_NOT_SUPPORTED"
-  | "POLICY_SIGNATURE_VERIFICATION_FAILED"
-  | (string & {});
+  | "POLICY_SIGNATURE_VERIFICATION_FAILED";
 export const CommonCriteriaModeInfoPolicySignatureVerificationStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2222,30 +2174,26 @@ export type PasswordRequirementsPasswordQualityEnum =
   | "COMPLEX"
   | "COMPLEXITY_LOW"
   | "COMPLEXITY_MEDIUM"
-  | "COMPLEXITY_HIGH"
-  | (string & {});
+  | "COMPLEXITY_HIGH";
 export const PasswordRequirementsPasswordQualityEnum = /*@__PURE__*/ S.String;
 
 export type PasswordRequirementsPasswordScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "SCOPE_DEVICE"
-  | "SCOPE_PROFILE"
-  | (string & {});
+  | "SCOPE_PROFILE";
 export const PasswordRequirementsPasswordScopeEnum = /*@__PURE__*/ S.String;
 
 export type PasswordRequirementsRequirePasswordUnlockEnum =
   | "REQUIRE_PASSWORD_UNLOCK_UNSPECIFIED"
   | "USE_DEFAULT_DEVICE_TIMEOUT"
-  | "REQUIRE_EVERY_DAY"
-  | (string & {});
+  | "REQUIRE_EVERY_DAY";
 export const PasswordRequirementsRequirePasswordUnlockEnum =
   /*@__PURE__*/ S.String;
 
 export type PasswordRequirementsUnifiedLockSettingsEnum =
   | "UNIFIED_LOCK_SETTINGS_UNSPECIFIED"
   | "ALLOW_UNIFIED_WORK_AND_PERSONAL_LOCK"
-  | "REQUIRE_SEPARATE_WORK_LOCK"
-  | (string & {});
+  | "REQUIRE_SEPARATE_WORK_LOCK";
 export const PasswordRequirementsUnifiedLockSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -2305,7 +2253,7 @@ export const PasswordRequirements = /*@__PURE__*/ S.suspend(() =>
   identifier: "PasswordRequirements",
 }) as any as S.Schema<PasswordRequirements>;
 
-export type PasswordRequirementsList = PasswordRequirements[];
+export type PasswordRequirementsList = ReadonlyArray<PasswordRequirements>;
 export const PasswordRequirementsList = /*@__PURE__*/ S.Array(
   PasswordRequirements,
 ) as any as S.Schema<PasswordRequirementsList>;
@@ -2454,7 +2402,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2590,7 +2538,7 @@ export const OncCertificateProvider = /*@__PURE__*/ S.suspend(() =>
   identifier: "OncCertificateProvider",
 }) as any as S.Schema<OncCertificateProvider>;
 
-export type OncCertificateProviderList = OncCertificateProvider[];
+export type OncCertificateProviderList = ReadonlyArray<OncCertificateProvider>;
 export const OncCertificateProviderList = /*@__PURE__*/ S.Array(
   OncCertificateProvider,
 ) as any as S.Schema<OncCertificateProviderList>;
@@ -2598,8 +2546,7 @@ export const OncCertificateProviderList = /*@__PURE__*/ S.Array(
 export type PolicyPlayStoreModeEnum =
   | "PLAY_STORE_MODE_UNSPECIFIED"
   | "WHITELIST"
-  | "BLACKLIST"
-  | (string & {});
+  | "BLACKLIST";
 export const PolicyPlayStoreModeEnum = /*@__PURE__*/ S.String;
 
 /** A list of package names. */
@@ -2619,45 +2566,39 @@ export type PolicyCameraAccessEnum =
   | "CAMERA_ACCESS_UNSPECIFIED"
   | "CAMERA_ACCESS_USER_CHOICE"
   | "CAMERA_ACCESS_DISABLED"
-  | "CAMERA_ACCESS_ENFORCED"
-  | (string & {});
+  | "CAMERA_ACCESS_ENFORCED";
 export const PolicyCameraAccessEnum = /*@__PURE__*/ S.String;
 
 export type KioskCustomizationSystemErrorWarningsEnum =
   | "SYSTEM_ERROR_WARNINGS_UNSPECIFIED"
   | "ERROR_AND_WARNINGS_ENABLED"
-  | "ERROR_AND_WARNINGS_MUTED"
-  | (string & {});
+  | "ERROR_AND_WARNINGS_MUTED";
 export const KioskCustomizationSystemErrorWarningsEnum = /*@__PURE__*/ S.String;
 
 export type KioskCustomizationSystemNavigationEnum =
   | "SYSTEM_NAVIGATION_UNSPECIFIED"
   | "NAVIGATION_ENABLED"
   | "NAVIGATION_DISABLED"
-  | "HOME_BUTTON_ONLY"
-  | (string & {});
+  | "HOME_BUTTON_ONLY";
 export const KioskCustomizationSystemNavigationEnum = /*@__PURE__*/ S.String;
 
 export type KioskCustomizationStatusBarEnum =
   | "STATUS_BAR_UNSPECIFIED"
   | "NOTIFICATIONS_AND_SYSTEM_INFO_ENABLED"
   | "NOTIFICATIONS_AND_SYSTEM_INFO_DISABLED"
-  | "SYSTEM_INFO_ONLY"
-  | (string & {});
+  | "SYSTEM_INFO_ONLY";
 export const KioskCustomizationStatusBarEnum = /*@__PURE__*/ S.String;
 
 export type KioskCustomizationPowerButtonActionsEnum =
   | "POWER_BUTTON_ACTIONS_UNSPECIFIED"
   | "POWER_BUTTON_AVAILABLE"
-  | "POWER_BUTTON_BLOCKED"
-  | (string & {});
+  | "POWER_BUTTON_BLOCKED";
 export const KioskCustomizationPowerButtonActionsEnum = /*@__PURE__*/ S.String;
 
 export type KioskCustomizationDeviceSettingsEnum =
   | "DEVICE_SETTINGS_UNSPECIFIED"
   | "SETTINGS_ACCESS_ALLOWED"
-  | "SETTINGS_ACCESS_BLOCKED"
-  | (string & {});
+  | "SETTINGS_ACCESS_BLOCKED";
 export const KioskCustomizationDeviceSettingsEnum = /*@__PURE__*/ S.String;
 
 /** Settings controlling the behavior of a device in kiosk mode. To enable kiosk mode, set kioskCustomLauncherEnabled to true or specify an app in the policy with installType KIOSK. */
@@ -2688,16 +2629,14 @@ export const KioskCustomization = /*@__PURE__*/ S.suspend(() =>
 export type PersonalUsagePoliciesPrivateSpacePolicyEnum =
   | "PRIVATE_SPACE_POLICY_UNSPECIFIED"
   | "PRIVATE_SPACE_ALLOWED"
-  | "PRIVATE_SPACE_DISALLOWED"
-  | (string & {});
+  | "PRIVATE_SPACE_DISALLOWED";
 export const PersonalUsagePoliciesPrivateSpacePolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type PersonalApplicationPolicyInstallTypeEnum =
   | "INSTALL_TYPE_UNSPECIFIED"
   | "BLOCKED"
-  | "AVAILABLE"
-  | (string & {});
+  | "AVAILABLE";
 export const PersonalApplicationPolicyInstallTypeEnum = /*@__PURE__*/ S.String;
 
 /** Policies for apps in the personal profile of a company-owned device with a work profile. */
@@ -2716,7 +2655,8 @@ export const PersonalApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersonalApplicationPolicy",
 }) as any as S.Schema<PersonalApplicationPolicy>;
 
-export type PersonalApplicationPolicyList = PersonalApplicationPolicy[];
+export type PersonalApplicationPolicyList =
+  ReadonlyArray<PersonalApplicationPolicy>;
 export const PersonalApplicationPolicyList = /*@__PURE__*/ S.Array(
   PersonalApplicationPolicy,
 ) as any as S.Schema<PersonalApplicationPolicyList>;
@@ -2724,16 +2664,14 @@ export const PersonalApplicationPolicyList = /*@__PURE__*/ S.Array(
 export type PersonalUsagePoliciesBluetoothSharingEnum =
   | "BLUETOOTH_SHARING_UNSPECIFIED"
   | "BLUETOOTH_SHARING_ALLOWED"
-  | "BLUETOOTH_SHARING_DISALLOWED"
-  | (string & {});
+  | "BLUETOOTH_SHARING_DISALLOWED";
 export const PersonalUsagePoliciesBluetoothSharingEnum = /*@__PURE__*/ S.String;
 
 export type PersonalUsagePoliciesPersonalPlayStoreModeEnum =
   | "PLAY_STORE_MODE_UNSPECIFIED"
   | "BLACKLIST"
   | "BLOCKLIST"
-  | "ALLOWLIST"
-  | (string & {});
+  | "ALLOWLIST";
 export const PersonalUsagePoliciesPersonalPlayStoreModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2776,8 +2714,7 @@ export const PersonalUsagePolicies = /*@__PURE__*/ S.suspend(() =>
 export type BlockActionBlockScopeEnum =
   | "BLOCK_SCOPE_UNSPECIFIED"
   | "BLOCK_SCOPE_WORK_PROFILE"
-  | "BLOCK_SCOPE_DEVICE"
-  | (string & {});
+  | "BLOCK_SCOPE_DEVICE";
 export const BlockActionBlockScopeEnum = /*@__PURE__*/ S.String;
 
 /** An action to block access to apps and data on a fully managed device or in a work profile. This action also triggers a device or work profile to displays a user-facing notification with information (where possible) on how to correct the compliance issue. Note: wipeAction must also be specified. */
@@ -2827,7 +2764,7 @@ export const PolicyEnforcementRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyEnforcementRule",
 }) as any as S.Schema<PolicyEnforcementRule>;
 
-export type PolicyEnforcementRuleList = PolicyEnforcementRule[];
+export type PolicyEnforcementRuleList = ReadonlyArray<PolicyEnforcementRule>;
 export const PolicyEnforcementRuleList = /*@__PURE__*/ S.Array(
   PolicyEnforcementRule,
 ) as any as S.Schema<PolicyEnforcementRuleList>;
@@ -2851,7 +2788,8 @@ export const PersistentPreferredActivity = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersistentPreferredActivity",
 }) as any as S.Schema<PersistentPreferredActivity>;
 
-export type PersistentPreferredActivityList = PersistentPreferredActivity[];
+export type PersistentPreferredActivityList =
+  ReadonlyArray<PersistentPreferredActivity>;
 export const PersistentPreferredActivityList = /*@__PURE__*/ S.Array(
   PersistentPreferredActivity,
 ) as any as S.Schema<PersistentPreferredActivityList>;
@@ -2883,8 +2821,7 @@ export type NonComplianceDetailConditionNonComplianceReasonEnum =
   | "APP_NOT_UPDATED"
   | "DEVICE_INCOMPATIBLE"
   | "APP_SIGNING_CERT_MISMATCH"
-  | "PROJECT_NOT_PERMITTED"
-  | (string & {});
+  | "PROJECT_NOT_PERMITTED";
 export const NonComplianceDetailConditionNonComplianceReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -2929,7 +2866,7 @@ export const ComplianceRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ComplianceRule" }) as any as S.Schema<ComplianceRule>;
 
-export type ComplianceRuleList = ComplianceRule[];
+export type ComplianceRuleList = ReadonlyArray<ComplianceRule>;
 export const ComplianceRuleList = /*@__PURE__*/ S.Array(
   ComplianceRule,
 ) as any as S.Schema<ComplianceRuleList>;
@@ -2953,7 +2890,7 @@ export const ChoosePrivateKeyRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChoosePrivateKeyRule",
 }) as any as S.Schema<ChoosePrivateKeyRule>;
 
-export type ChoosePrivateKeyRuleList = ChoosePrivateKeyRule[];
+export type ChoosePrivateKeyRuleList = ReadonlyArray<ChoosePrivateKeyRule>;
 export const ChoosePrivateKeyRuleList = /*@__PURE__*/ S.Array(
   ChoosePrivateKeyRule,
 ) as any as S.Schema<ChoosePrivateKeyRuleList>;
@@ -2961,8 +2898,7 @@ export const ChoosePrivateKeyRuleList = /*@__PURE__*/ S.Array(
 export type ScreenTimeoutSettingsScreenTimeoutModeEnum =
   | "SCREEN_TIMEOUT_MODE_UNSPECIFIED"
   | "SCREEN_TIMEOUT_USER_CHOICE"
-  | "SCREEN_TIMEOUT_ENFORCED"
-  | (string & {});
+  | "SCREEN_TIMEOUT_ENFORCED";
 export const ScreenTimeoutSettingsScreenTimeoutModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2986,8 +2922,7 @@ export type ScreenBrightnessSettingsScreenBrightnessModeEnum =
   | "SCREEN_BRIGHTNESS_MODE_UNSPECIFIED"
   | "BRIGHTNESS_USER_CHOICE"
   | "BRIGHTNESS_AUTOMATIC"
-  | "BRIGHTNESS_FIXED"
-  | (string & {});
+  | "BRIGHTNESS_FIXED";
 export const ScreenBrightnessSettingsScreenBrightnessModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3028,15 +2963,13 @@ export const DisplaySettings = /*@__PURE__*/ S.suspend(() =>
 export type PolicyAssistContentPolicyEnum =
   | "ASSIST_CONTENT_POLICY_UNSPECIFIED"
   | "ASSIST_CONTENT_DISALLOWED"
-  | "ASSIST_CONTENT_ALLOWED"
-  | (string & {});
+  | "ASSIST_CONTENT_ALLOWED";
 export const PolicyAssistContentPolicyEnum = /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateUltraWidebandStateEnum =
   | "ULTRA_WIDEBAND_STATE_UNSPECIFIED"
   | "ULTRA_WIDEBAND_USER_CHOICE"
-  | "ULTRA_WIDEBAND_DISABLED"
-  | (string & {});
+  | "ULTRA_WIDEBAND_DISABLED";
 export const DeviceRadioStateUltraWidebandStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateMinimumWifiSecurityLevelEnum =
@@ -3044,38 +2977,33 @@ export type DeviceRadioStateMinimumWifiSecurityLevelEnum =
   | "OPEN_NETWORK_SECURITY"
   | "PERSONAL_NETWORK_SECURITY"
   | "ENTERPRISE_NETWORK_SECURITY"
-  | "ENTERPRISE_BIT192_NETWORK_SECURITY"
-  | (string & {});
+  | "ENTERPRISE_BIT192_NETWORK_SECURITY";
 export const DeviceRadioStateMinimumWifiSecurityLevelEnum =
   /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateCellularTwoGStateEnum =
   | "CELLULAR_TWO_G_STATE_UNSPECIFIED"
   | "CELLULAR_TWO_G_USER_CHOICE"
-  | "CELLULAR_TWO_G_DISABLED"
-  | (string & {});
+  | "CELLULAR_TWO_G_DISABLED";
 export const DeviceRadioStateCellularTwoGStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateWifiStateEnum =
   | "WIFI_STATE_UNSPECIFIED"
   | "WIFI_STATE_USER_CHOICE"
   | "WIFI_ENABLED"
-  | "WIFI_DISABLED"
-  | (string & {});
+  | "WIFI_DISABLED";
 export const DeviceRadioStateWifiStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateAirplaneModeStateEnum =
   | "AIRPLANE_MODE_STATE_UNSPECIFIED"
   | "AIRPLANE_MODE_USER_CHOICE"
-  | "AIRPLANE_MODE_DISABLED"
-  | (string & {});
+  | "AIRPLANE_MODE_DISABLED";
 export const DeviceRadioStateAirplaneModeStateEnum = /*@__PURE__*/ S.String;
 
 export type DeviceRadioStateUserInitiatedAddEsimSettingsEnum =
   | "USER_INITIATED_ADD_ESIM_SETTINGS_UNSPECIFIED"
   | "USER_INITIATED_ADD_ESIM_ALLOWED"
-  | "USER_INITIATED_ADD_ESIM_DISALLOWED"
-  | (string & {});
+  | "USER_INITIATED_ADD_ESIM_DISALLOWED";
 export const DeviceRadioStateUserInitiatedAddEsimSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -3114,12 +3042,11 @@ export const DeviceRadioState = /*@__PURE__*/ S.suspend(() =>
 export type PolicyAndroidDevicePolicyTracksItemEnum =
   | "APP_TRACK_UNSPECIFIED"
   | "PRODUCTION"
-  | "BETA"
-  | (string & {});
+  | "BETA";
 export const PolicyAndroidDevicePolicyTracksItemEnum = /*@__PURE__*/ S.String;
 
 export type PolicyAndroidDevicePolicyTracksItemEnumList =
-  PolicyAndroidDevicePolicyTracksItemEnum[];
+  ReadonlyArray<PolicyAndroidDevicePolicyTracksItemEnum>;
 export const PolicyAndroidDevicePolicyTracksItemEnumList =
   /*@__PURE__*/ S.Array(
     PolicyAndroidDevicePolicyTracksItemEnum,
@@ -3129,24 +3056,21 @@ export type PolicyDefaultPermissionPolicyEnum =
   | "PERMISSION_POLICY_UNSPECIFIED"
   | "PROMPT"
   | "GRANT"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const PolicyDefaultPermissionPolicyEnum = /*@__PURE__*/ S.String;
 
 export type AdvancedSecurityOverridesContentProtectionPolicyEnum =
   | "CONTENT_PROTECTION_POLICY_UNSPECIFIED"
   | "CONTENT_PROTECTION_DISABLED"
   | "CONTENT_PROTECTION_ENFORCED"
-  | "CONTENT_PROTECTION_USER_CHOICE"
-  | (string & {});
+  | "CONTENT_PROTECTION_USER_CHOICE";
 export const AdvancedSecurityOverridesContentProtectionPolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type AdvancedSecurityOverridesGooglePlayProtectVerifyAppsEnum =
   | "GOOGLE_PLAY_PROTECT_VERIFY_APPS_UNSPECIFIED"
   | "VERIFY_APPS_ENFORCED"
-  | "VERIFY_APPS_USER_CHOICE"
-  | (string & {});
+  | "VERIFY_APPS_USER_CHOICE";
 export const AdvancedSecurityOverridesGooglePlayProtectVerifyAppsEnum =
   /*@__PURE__*/ S.String;
 
@@ -3154,15 +3078,13 @@ export type AdvancedSecurityOverridesMtePolicyEnum =
   | "MTE_POLICY_UNSPECIFIED"
   | "MTE_USER_CHOICE"
   | "MTE_ENFORCED"
-  | "MTE_DISABLED"
-  | (string & {});
+  | "MTE_DISABLED";
 export const AdvancedSecurityOverridesMtePolicyEnum = /*@__PURE__*/ S.String;
 
 export type AdvancedSecurityOverridesCommonCriteriaModeEnum =
   | "COMMON_CRITERIA_MODE_UNSPECIFIED"
   | "COMMON_CRITERIA_MODE_DISABLED"
-  | "COMMON_CRITERIA_MODE_ENABLED"
-  | (string & {});
+  | "COMMON_CRITERIA_MODE_ENABLED";
 export const AdvancedSecurityOverridesCommonCriteriaModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3170,16 +3092,14 @@ export type AdvancedSecurityOverridesUntrustedAppsPolicyEnum =
   | "UNTRUSTED_APPS_POLICY_UNSPECIFIED"
   | "DISALLOW_INSTALL"
   | "ALLOW_INSTALL_IN_PERSONAL_PROFILE_ONLY"
-  | "ALLOW_INSTALL_DEVICE_WIDE"
-  | (string & {});
+  | "ALLOW_INSTALL_DEVICE_WIDE";
 export const AdvancedSecurityOverridesUntrustedAppsPolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type AdvancedSecurityOverridesDeveloperSettingsEnum =
   | "DEVELOPER_SETTINGS_UNSPECIFIED"
   | "DEVELOPER_SETTINGS_DISABLED"
-  | "DEVELOPER_SETTINGS_ALLOWED"
-  | (string & {});
+  | "DEVELOPER_SETTINGS_ALLOWED";
 export const AdvancedSecurityOverridesDeveloperSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -3236,12 +3156,11 @@ export type PolicyKeyguardDisabledFeaturesItemEnum =
   | "IRIS"
   | "BIOMETRICS"
   | "SHORTCUTS"
-  | "ALL_FEATURES"
-  | (string & {});
+  | "ALL_FEATURES";
 export const PolicyKeyguardDisabledFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type PolicyKeyguardDisabledFeaturesItemEnumList =
-  PolicyKeyguardDisabledFeaturesItemEnum[];
+  ReadonlyArray<PolicyKeyguardDisabledFeaturesItemEnum>;
 export const PolicyKeyguardDisabledFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   PolicyKeyguardDisabledFeaturesItemEnum,
 ) as any as S.Schema<PolicyKeyguardDisabledFeaturesItemEnumList>;
@@ -3257,7 +3176,7 @@ export const WifiSsid = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WifiSsid" }) as any as S.Schema<WifiSsid>;
 
-export type WifiSsidList = WifiSsid[];
+export type WifiSsidList = ReadonlyArray<WifiSsid>;
 export const WifiSsidList = /*@__PURE__*/ S.Array(
   WifiSsid,
 ) as any as S.Schema<WifiSsidList>;
@@ -3265,8 +3184,7 @@ export const WifiSsidList = /*@__PURE__*/ S.Array(
 export type WifiSsidPolicyWifiSsidPolicyTypeEnum =
   | "WIFI_SSID_POLICY_TYPE_UNSPECIFIED"
   | "WIFI_SSID_DENYLIST"
-  | "WIFI_SSID_ALLOWLIST"
-  | (string & {});
+  | "WIFI_SSID_ALLOWLIST";
 export const WifiSsidPolicyWifiSsidPolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks can be configured on the device. Supported on company-owned devices running Android 13 and above. */
@@ -3287,16 +3205,14 @@ export type DeviceConnectivityManagementConfigureWifiEnum =
   | "CONFIGURE_WIFI_UNSPECIFIED"
   | "ALLOW_CONFIGURING_WIFI"
   | "DISALLOW_ADD_WIFI_CONFIG"
-  | "DISALLOW_CONFIGURING_WIFI"
-  | (string & {});
+  | "DISALLOW_CONFIGURING_WIFI";
 export const DeviceConnectivityManagementConfigureWifiEnum =
   /*@__PURE__*/ S.String;
 
 export type ApnPolicyOverrideApnsEnum =
   | "OVERRIDE_APNS_UNSPECIFIED"
   | "OVERRIDE_APNS_DISABLED"
-  | "OVERRIDE_APNS_ENABLED"
-  | (string & {});
+  | "OVERRIDE_APNS_ENABLED";
 export const ApnPolicyOverrideApnsEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingMvnoTypeEnum =
@@ -3304,8 +3220,7 @@ export type ApnSettingMvnoTypeEnum =
   | "GID"
   | "ICCID"
   | "IMSI"
-  | "SPN"
-  | (string & {});
+  | "SPN";
 export const ApnSettingMvnoTypeEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingNetworkTypesItemEnum =
@@ -3321,12 +3236,11 @@ export type ApnSettingNetworkTypesItemEnum =
   | "LTE"
   | "NR"
   | "TD_SCDMA"
-  | "UMTS"
-  | (string & {});
+  | "UMTS";
 export const ApnSettingNetworkTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingNetworkTypesItemEnumList =
-  ApnSettingNetworkTypesItemEnum[];
+  ReadonlyArray<ApnSettingNetworkTypesItemEnum>;
 export const ApnSettingNetworkTypesItemEnumList = /*@__PURE__*/ S.Array(
   ApnSettingNetworkTypesItemEnum,
 ) as any as S.Schema<ApnSettingNetworkTypesItemEnumList>;
@@ -3338,8 +3252,7 @@ export type ApnSettingRoamingProtocolEnum =
   | "IPV6"
   | "NON_IP"
   | "PPP"
-  | "UNSTRUCTURED"
-  | (string & {});
+  | "UNSTRUCTURED";
 export const ApnSettingRoamingProtocolEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingAuthTypeEnum =
@@ -3347,8 +3260,7 @@ export type ApnSettingAuthTypeEnum =
   | "NONE"
   | "PAP"
   | "CHAP"
-  | "PAP_OR_CHAP"
-  | (string & {});
+  | "PAP_OR_CHAP";
 export const ApnSettingAuthTypeEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingProtocolEnum =
@@ -3358,15 +3270,13 @@ export type ApnSettingProtocolEnum =
   | "IPV6"
   | "NON_IP"
   | "PPP"
-  | "UNSTRUCTURED"
-  | (string & {});
+  | "UNSTRUCTURED";
 export const ApnSettingProtocolEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingAlwaysOnSettingEnum =
   | "ALWAYS_ON_SETTING_UNSPECIFIED"
   | "NOT_ALWAYS_ON"
-  | "ALWAYS_ON"
-  | (string & {});
+  | "ALWAYS_ON";
 export const ApnSettingAlwaysOnSettingEnum = /*@__PURE__*/ S.String;
 
 export type ApnSettingApnTypesItemEnum =
@@ -3386,11 +3296,11 @@ export type ApnSettingApnTypesItemEnum =
   | "RCS"
   | "SUPL"
   | "VSIM"
-  | "XCAP"
-  | (string & {});
+  | "XCAP";
 export const ApnSettingApnTypesItemEnum = /*@__PURE__*/ S.String;
 
-export type ApnSettingApnTypesItemEnumList = ApnSettingApnTypesItemEnum[];
+export type ApnSettingApnTypesItemEnumList =
+  ReadonlyArray<ApnSettingApnTypesItemEnum>;
 export const ApnSettingApnTypesItemEnumList = /*@__PURE__*/ S.Array(
   ApnSettingApnTypesItemEnum,
 ) as any as S.Schema<ApnSettingApnTypesItemEnumList>;
@@ -3463,7 +3373,7 @@ export const ApnSetting = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApnSetting" }) as any as S.Schema<ApnSetting>;
 
-export type ApnSettingList = ApnSetting[];
+export type ApnSettingList = ReadonlyArray<ApnSetting>;
 export const ApnSettingList = /*@__PURE__*/ S.Array(
   ApnSetting,
 ) as any as S.Schema<ApnSettingList>;
@@ -3485,8 +3395,7 @@ export const ApnPolicy = /*@__PURE__*/ S.suspend(() =>
 export type DeviceConnectivityManagementBluetoothSharingEnum =
   | "BLUETOOTH_SHARING_UNSPECIFIED"
   | "BLUETOOTH_SHARING_ALLOWED"
-  | "BLUETOOTH_SHARING_DISALLOWED"
-  | (string & {});
+  | "BLUETOOTH_SHARING_DISALLOWED";
 export const DeviceConnectivityManagementBluetoothSharingEnum =
   /*@__PURE__*/ S.String;
 
@@ -3494,8 +3403,7 @@ export type DeviceConnectivityManagementUsbDataAccessEnum =
   | "USB_DATA_ACCESS_UNSPECIFIED"
   | "ALLOW_USB_DATA_TRANSFER"
   | "DISALLOW_USB_FILE_TRANSFER"
-  | "DISALLOW_USB_DATA_TRANSFER"
-  | (string & {});
+  | "DISALLOW_USB_DATA_TRANSFER";
 export const DeviceConnectivityManagementUsbDataAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -3503,8 +3411,7 @@ export type PrivateDnsSettingsPrivateDnsModeEnum =
   | "PRIVATE_DNS_MODE_UNSPECIFIED"
   | "PRIVATE_DNS_USER_CHOICE"
   | "PRIVATE_DNS_AUTOMATIC"
-  | "PRIVATE_DNS_SPECIFIED_HOST"
-  | (string & {});
+  | "PRIVATE_DNS_SPECIFIED_HOST";
 export const PrivateDnsSettingsPrivateDnsModeEnum = /*@__PURE__*/ S.String;
 
 /** Controls the device's private DNS settings. */
@@ -3527,8 +3434,7 @@ export type DeviceConnectivityManagementTetheringSettingsEnum =
   | "TETHERING_SETTINGS_UNSPECIFIED"
   | "ALLOW_ALL_TETHERING"
   | "DISALLOW_WIFI_TETHERING"
-  | "DISALLOW_ALL_TETHERING"
-  | (string & {});
+  | "DISALLOW_ALL_TETHERING";
 export const DeviceConnectivityManagementTetheringSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -3536,8 +3442,7 @@ export type WifiRoamingSettingWifiRoamingModeEnum =
   | "WIFI_ROAMING_MODE_UNSPECIFIED"
   | "WIFI_ROAMING_DISABLED"
   | "WIFI_ROAMING_DEFAULT"
-  | "WIFI_ROAMING_AGGRESSIVE"
-  | (string & {});
+  | "WIFI_ROAMING_AGGRESSIVE";
 export const WifiRoamingSettingWifiRoamingModeEnum = /*@__PURE__*/ S.String;
 
 /** Wi-Fi roaming setting. */
@@ -3556,7 +3461,7 @@ export const WifiRoamingSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "WifiRoamingSetting",
 }) as any as S.Schema<WifiRoamingSetting>;
 
-export type WifiRoamingSettingList = WifiRoamingSetting[];
+export type WifiRoamingSettingList = ReadonlyArray<WifiRoamingSetting>;
 export const WifiRoamingSettingList = /*@__PURE__*/ S.Array(
   WifiRoamingSetting,
 ) as any as S.Schema<WifiRoamingSettingList>;
@@ -3581,24 +3486,21 @@ export type PreferentialNetworkServiceSettingsDefaultPreferentialNetworkIdEnum =
     | "PREFERENTIAL_NETWORK_ID_TWO"
     | "PREFERENTIAL_NETWORK_ID_THREE"
     | "PREFERENTIAL_NETWORK_ID_FOUR"
-    | "PREFERENTIAL_NETWORK_ID_FIVE"
-    | (string & {});
+    | "PREFERENTIAL_NETWORK_ID_FIVE";
 export const PreferentialNetworkServiceSettingsDefaultPreferentialNetworkIdEnum =
   /*@__PURE__*/ S.String;
 
 export type PreferentialNetworkServiceConfigFallbackToDefaultConnectionEnum =
   | "FALLBACK_TO_DEFAULT_CONNECTION_UNSPECIFIED"
   | "FALLBACK_TO_DEFAULT_CONNECTION_ALLOWED"
-  | "FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED"
-  | (string & {});
+  | "FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED";
 export const PreferentialNetworkServiceConfigFallbackToDefaultConnectionEnum =
   /*@__PURE__*/ S.String;
 
 export type PreferentialNetworkServiceConfigNonMatchingNetworksEnum =
   | "NON_MATCHING_NETWORKS_UNSPECIFIED"
   | "NON_MATCHING_NETWORKS_ALLOWED"
-  | "NON_MATCHING_NETWORKS_DISALLOWED"
-  | (string & {});
+  | "NON_MATCHING_NETWORKS_DISALLOWED";
 export const PreferentialNetworkServiceConfigNonMatchingNetworksEnum =
   /*@__PURE__*/ S.String;
 
@@ -3609,8 +3511,7 @@ export type PreferentialNetworkServiceConfigPreferentialNetworkIdEnum =
   | "PREFERENTIAL_NETWORK_ID_TWO"
   | "PREFERENTIAL_NETWORK_ID_THREE"
   | "PREFERENTIAL_NETWORK_ID_FOUR"
-  | "PREFERENTIAL_NETWORK_ID_FIVE"
-  | (string & {});
+  | "PREFERENTIAL_NETWORK_ID_FIVE";
 export const PreferentialNetworkServiceConfigPreferentialNetworkIdEnum =
   /*@__PURE__*/ S.String;
 
@@ -3640,7 +3541,7 @@ export const PreferentialNetworkServiceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreferentialNetworkServiceConfig>;
 
 export type PreferentialNetworkServiceConfigList =
-  PreferentialNetworkServiceConfig[];
+  ReadonlyArray<PreferentialNetworkServiceConfig>;
 export const PreferentialNetworkServiceConfigList = /*@__PURE__*/ S.Array(
   PreferentialNetworkServiceConfig,
 ) as any as S.Schema<PreferentialNetworkServiceConfigList>;
@@ -3668,8 +3569,7 @@ export const PreferentialNetworkServiceSettings = /*@__PURE__*/ S.suspend(() =>
 export type DeviceConnectivityManagementWifiDirectSettingsEnum =
   | "WIFI_DIRECT_SETTINGS_UNSPECIFIED"
   | "ALLOW_WIFI_DIRECT"
-  | "DISALLOW_WIFI_DIRECT"
-  | (string & {});
+  | "DISALLOW_WIFI_DIRECT";
 export const DeviceConnectivityManagementWifiDirectSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -3730,8 +3630,7 @@ export type DefaultApplicationSettingDefaultApplicationTypeEnum =
   | "DEFAULT_DIALER"
   | "DEFAULT_HOME"
   | "DEFAULT_SMS"
-  | "DEFAULT_WALLET"
-  | (string & {});
+  | "DEFAULT_WALLET";
 export const DefaultApplicationSettingDefaultApplicationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3748,7 +3647,7 @@ export const DefaultApplication = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultApplication",
 }) as any as S.Schema<DefaultApplication>;
 
-export type DefaultApplicationList = DefaultApplication[];
+export type DefaultApplicationList = ReadonlyArray<DefaultApplication>;
 export const DefaultApplicationList = /*@__PURE__*/ S.Array(
   DefaultApplication,
 ) as any as S.Schema<DefaultApplicationList>;
@@ -3757,13 +3656,12 @@ export type DefaultApplicationSettingDefaultApplicationScopesItemEnum =
   | "DEFAULT_APPLICATION_SCOPE_UNSPECIFIED"
   | "SCOPE_FULLY_MANAGED"
   | "SCOPE_WORK_PROFILE"
-  | "SCOPE_PERSONAL_PROFILE"
-  | (string & {});
+  | "SCOPE_PERSONAL_PROFILE";
 export const DefaultApplicationSettingDefaultApplicationScopesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DefaultApplicationSettingDefaultApplicationScopesItemEnumList =
-  DefaultApplicationSettingDefaultApplicationScopesItemEnum[];
+  ReadonlyArray<DefaultApplicationSettingDefaultApplicationScopesItemEnum>;
 export const DefaultApplicationSettingDefaultApplicationScopesItemEnumList =
   /*@__PURE__*/ S.Array(
     DefaultApplicationSettingDefaultApplicationScopesItemEnum,
@@ -3792,7 +3690,8 @@ export const DefaultApplicationSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultApplicationSetting",
 }) as any as S.Schema<DefaultApplicationSetting>;
 
-export type DefaultApplicationSettingList = DefaultApplicationSetting[];
+export type DefaultApplicationSettingList =
+  ReadonlyArray<DefaultApplicationSetting>;
 export const DefaultApplicationSettingList = /*@__PURE__*/ S.Array(
   DefaultApplicationSetting,
 ) as any as S.Schema<DefaultApplicationSettingList>;
@@ -3827,7 +3726,7 @@ export const SetupAction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SetupAction" }) as any as S.Schema<SetupAction>;
 
-export type SetupActionList = SetupAction[];
+export type SetupActionList = ReadonlyArray<SetupAction>;
 export const SetupActionList = /*@__PURE__*/ S.Array(
   SetupAction,
 ) as any as S.Schema<SetupActionList>;
@@ -3850,11 +3749,11 @@ export const AlwaysOnVpnPackage = /*@__PURE__*/ S.suspend(() =>
 
 export type PolicyWipeDataFlagsItemEnum =
   | "WIPE_DATA_FLAG_UNSPECIFIED"
-  | "WIPE_ESIMS"
-  | (string & {});
+  | "WIPE_ESIMS";
 export const PolicyWipeDataFlagsItemEnum = /*@__PURE__*/ S.String;
 
-export type PolicyWipeDataFlagsItemEnumList = PolicyWipeDataFlagsItemEnum[];
+export type PolicyWipeDataFlagsItemEnumList =
+  ReadonlyArray<PolicyWipeDataFlagsItemEnum>;
 export const PolicyWipeDataFlagsItemEnumList = /*@__PURE__*/ S.Array(
   PolicyWipeDataFlagsItemEnum,
 ) as any as S.Schema<PolicyWipeDataFlagsItemEnumList>;
@@ -3862,22 +3761,19 @@ export const PolicyWipeDataFlagsItemEnumList = /*@__PURE__*/ S.Array(
 export type PolicyAutoDateAndTimeZoneEnum =
   | "AUTO_DATE_AND_TIME_ZONE_UNSPECIFIED"
   | "AUTO_DATE_AND_TIME_ZONE_USER_CHOICE"
-  | "AUTO_DATE_AND_TIME_ZONE_ENFORCED"
-  | (string & {});
+  | "AUTO_DATE_AND_TIME_ZONE_ENFORCED";
 export const PolicyAutoDateAndTimeZoneEnum = /*@__PURE__*/ S.String;
 
 export type PolicyEncryptionPolicyEnum =
   | "ENCRYPTION_POLICY_UNSPECIFIED"
   | "ENABLED_WITHOUT_PASSWORD"
-  | "ENABLED_WITH_PASSWORD"
-  | (string & {});
+  | "ENABLED_WITH_PASSWORD";
 export const PolicyEncryptionPolicyEnum = /*@__PURE__*/ S.String;
 
 export type WorkAccountSetupConfigAuthenticationTypeEnum =
   | "AUTHENTICATION_TYPE_UNSPECIFIED"
   | "AUTHENTICATION_TYPE_NOT_ENFORCED"
-  | "GOOGLE_AUTHENTICATED"
-  | (string & {});
+  | "GOOGLE_AUTHENTICATED";
 export const WorkAccountSetupConfigAuthenticationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3904,29 +3800,25 @@ export type PolicyAppAutoUpdatePolicyEnum =
   | "CHOICE_TO_THE_USER"
   | "NEVER"
   | "WIFI_ONLY"
-  | "ALWAYS"
-  | (string & {});
+  | "ALWAYS";
 export const PolicyAppAutoUpdatePolicyEnum = /*@__PURE__*/ S.String;
 
 export type PolicyAppFunctionsEnum =
   | "APP_FUNCTIONS_UNSPECIFIED"
   | "APP_FUNCTIONS_DISALLOWED"
-  | "APP_FUNCTIONS_ALLOWED"
-  | (string & {});
+  | "APP_FUNCTIONS_ALLOWED";
 export const PolicyAppFunctionsEnum = /*@__PURE__*/ S.String;
 
 export type PolicyAutofillPolicyEnum =
   | "AUTOFILL_POLICY_UNSPECIFIED"
   | "AUTOFILL_USER_CHOICE"
-  | "AUTOFILL_DISABLED"
-  | (string & {});
+  | "AUTOFILL_DISABLED";
 export const PolicyAutofillPolicyEnum = /*@__PURE__*/ S.String;
 
 export type CrossProfilePoliciesCrossProfileCopyPasteEnum =
   | "CROSS_PROFILE_COPY_PASTE_UNSPECIFIED"
   | "COPY_FROM_WORK_TO_PERSONAL_DISALLOWED"
-  | "CROSS_PROFILE_COPY_PASTE_ALLOWED"
-  | (string & {});
+  | "CROSS_PROFILE_COPY_PASTE_ALLOWED";
 export const CrossProfilePoliciesCrossProfileCopyPasteEnum =
   /*@__PURE__*/ S.String;
 
@@ -3934,24 +3826,21 @@ export type CrossProfilePoliciesCrossProfileDataSharingEnum =
   | "CROSS_PROFILE_DATA_SHARING_UNSPECIFIED"
   | "CROSS_PROFILE_DATA_SHARING_DISALLOWED"
   | "DATA_SHARING_FROM_WORK_TO_PERSONAL_DISALLOWED"
-  | "CROSS_PROFILE_DATA_SHARING_ALLOWED"
-  | (string & {});
+  | "CROSS_PROFILE_DATA_SHARING_ALLOWED";
 export const CrossProfilePoliciesCrossProfileDataSharingEnum =
   /*@__PURE__*/ S.String;
 
 export type CrossProfilePoliciesCrossProfileAppFunctionsEnum =
   | "CROSS_PROFILE_APP_FUNCTIONS_UNSPECIFIED"
   | "CROSS_PROFILE_APP_FUNCTIONS_DISALLOWED"
-  | "CROSS_PROFILE_APP_FUNCTIONS_ALLOWED"
-  | (string & {});
+  | "CROSS_PROFILE_APP_FUNCTIONS_ALLOWED";
 export const CrossProfilePoliciesCrossProfileAppFunctionsEnum =
   /*@__PURE__*/ S.String;
 
 export type CrossProfilePoliciesWorkProfileWidgetsDefaultEnum =
   | "WORK_PROFILE_WIDGETS_DEFAULT_UNSPECIFIED"
   | "WORK_PROFILE_WIDGETS_DEFAULT_ALLOWED"
-  | "WORK_PROFILE_WIDGETS_DEFAULT_DISALLOWED"
-  | (string & {});
+  | "WORK_PROFILE_WIDGETS_DEFAULT_DISALLOWED";
 export const CrossProfilePoliciesWorkProfileWidgetsDefaultEnum =
   /*@__PURE__*/ S.String;
 
@@ -3959,8 +3848,7 @@ export type CrossProfilePoliciesShowWorkContactsInPersonalProfileEnum =
   | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_UNSPECIFIED"
   | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED"
   | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED"
-  | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM"
-  | (string & {});
+  | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM";
 export const CrossProfilePoliciesShowWorkContactsInPersonalProfileEnum =
   /*@__PURE__*/ S.String;
 
@@ -4005,15 +3893,13 @@ export const CrossProfilePolicies = /*@__PURE__*/ S.suspend(() =>
 export type PolicyCredentialProviderPolicyDefaultEnum =
   | "CREDENTIAL_PROVIDER_POLICY_DEFAULT_UNSPECIFIED"
   | "CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED"
-  | "CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED_EXCEPT_SYSTEM"
-  | (string & {});
+  | "CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED_EXCEPT_SYSTEM";
 export const PolicyCredentialProviderPolicyDefaultEnum = /*@__PURE__*/ S.String;
 
 export type PolicyPreferentialNetworkServiceEnum =
   | "PREFERENTIAL_NETWORK_SERVICE_UNSPECIFIED"
   | "PREFERENTIAL_NETWORK_SERVICE_DISABLED"
-  | "PREFERENTIAL_NETWORK_SERVICE_ENABLED"
-  | (string & {});
+  | "PREFERENTIAL_NETWORK_SERVICE_ENABLED";
 export const PolicyPreferentialNetworkServiceEnum = /*@__PURE__*/ S.String;
 
 /** Settings controlling the behavior of application reports. */
@@ -4078,12 +3964,11 @@ export const StatusReportingSettings = /*@__PURE__*/ S.suspend(() =>
 export type UsageLogEnabledLogTypesItemEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "SECURITY_LOGS"
-  | "NETWORK_ACTIVITY_LOGS"
-  | (string & {});
+  | "NETWORK_ACTIVITY_LOGS";
 export const UsageLogEnabledLogTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type UsageLogEnabledLogTypesItemEnumList =
-  UsageLogEnabledLogTypesItemEnum[];
+  ReadonlyArray<UsageLogEnabledLogTypesItemEnum>;
 export const UsageLogEnabledLogTypesItemEnumList = /*@__PURE__*/ S.Array(
   UsageLogEnabledLogTypesItemEnum,
 ) as any as S.Schema<UsageLogEnabledLogTypesItemEnumList>;
@@ -4091,12 +3976,11 @@ export const UsageLogEnabledLogTypesItemEnumList = /*@__PURE__*/ S.Array(
 export type UsageLogUploadOnCellularAllowedItemEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "SECURITY_LOGS"
-  | "NETWORK_ACTIVITY_LOGS"
-  | (string & {});
+  | "NETWORK_ACTIVITY_LOGS";
 export const UsageLogUploadOnCellularAllowedItemEnum = /*@__PURE__*/ S.String;
 
 export type UsageLogUploadOnCellularAllowedItemEnumList =
-  UsageLogUploadOnCellularAllowedItemEnum[];
+  ReadonlyArray<UsageLogUploadOnCellularAllowedItemEnum>;
 export const UsageLogUploadOnCellularAllowedItemEnumList =
   /*@__PURE__*/ S.Array(
     UsageLogUploadOnCellularAllowedItemEnum,
@@ -4142,20 +4026,18 @@ export type PolicyMicrophoneAccessEnum =
   | "MICROPHONE_ACCESS_UNSPECIFIED"
   | "MICROPHONE_ACCESS_USER_CHOICE"
   | "MICROPHONE_ACCESS_DISABLED"
-  | "MICROPHONE_ACCESS_ENFORCED"
-  | (string & {});
+  | "MICROPHONE_ACCESS_ENFORCED";
 export const PolicyMicrophoneAccessEnum = /*@__PURE__*/ S.String;
 
 export type PolicyStayOnPluggedModesItemEnum =
   | "BATTERY_PLUGGED_MODE_UNSPECIFIED"
   | "AC"
   | "USB"
-  | "WIRELESS"
-  | (string & {});
+  | "WIRELESS";
 export const PolicyStayOnPluggedModesItemEnum = /*@__PURE__*/ S.String;
 
 export type PolicyStayOnPluggedModesItemEnumList =
-  PolicyStayOnPluggedModesItemEnum[];
+  ReadonlyArray<PolicyStayOnPluggedModesItemEnum>;
 export const PolicyStayOnPluggedModesItemEnumList = /*@__PURE__*/ S.Array(
   PolicyStayOnPluggedModesItemEnum,
 ) as any as S.Schema<PolicyStayOnPluggedModesItemEnumList>;
@@ -4168,23 +4050,20 @@ export type PolicyLocationModeEnum =
   | "OFF"
   | "LOCATION_USER_CHOICE"
   | "LOCATION_ENFORCED"
-  | "LOCATION_DISABLED"
-  | (string & {});
+  | "LOCATION_DISABLED";
 export const PolicyLocationModeEnum = /*@__PURE__*/ S.String;
 
 export type PolicyPrintingPolicyEnum =
   | "PRINTING_POLICY_UNSPECIFIED"
   | "PRINTING_DISALLOWED"
-  | "PRINTING_ALLOWED"
-  | (string & {});
+  | "PRINTING_ALLOWED";
 export const PolicyPrintingPolicyEnum = /*@__PURE__*/ S.String;
 
 export type SystemUpdateTypeEnum =
   | "SYSTEM_UPDATE_TYPE_UNSPECIFIED"
   | "AUTOMATIC"
   | "WINDOWED"
-  | "POSTPONE"
-  | (string & {});
+  | "POSTPONE";
 export const SystemUpdateTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: A full date, with non-zero year, month, and day values. A month and day, with a zero year (for example, an anniversary). A year on its own, with a zero month and a zero day. A year and month, with a zero day (for example, a credit card expiration date).Related types: google.type.TimeOfDay google.type.DateTime google.protobuf.Timestamp */
@@ -4220,7 +4099,7 @@ export const FreezePeriod = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FreezePeriod" }) as any as S.Schema<FreezePeriod>;
 
-export type FreezePeriodList = FreezePeriod[];
+export type FreezePeriodList = ReadonlyArray<FreezePeriod>;
 export const FreezePeriodList = /*@__PURE__*/ S.Array(
   FreezePeriod,
 ) as any as S.Schema<FreezePeriodList>;
@@ -4249,8 +4128,7 @@ export type PermissionGrantPolicyEnum =
   | "PERMISSION_POLICY_UNSPECIFIED"
   | "PROMPT"
   | "GRANT"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const PermissionGrantPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for an Android permission and its grant state. */
@@ -4269,7 +4147,7 @@ export const PermissionGrant = /*@__PURE__*/ S.suspend(() =>
   identifier: "PermissionGrant",
 }) as any as S.Schema<PermissionGrant>;
 
-export type PermissionGrantList = PermissionGrant[];
+export type PermissionGrantList = ReadonlyArray<PermissionGrant>;
 export const PermissionGrantList = /*@__PURE__*/ S.Array(
   PermissionGrant,
 ) as any as S.Schema<PermissionGrantList>;
@@ -4278,16 +4156,14 @@ export type ApplicationPolicyDefaultPermissionPolicyEnum =
   | "PERMISSION_POLICY_UNSPECIFIED"
   | "PROMPT"
   | "GRANT"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const ApplicationPolicyDefaultPermissionPolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type ApplicationPolicyAlwaysOnVpnLockdownExemptionEnum =
   | "ALWAYS_ON_VPN_LOCKDOWN_EXEMPTION_UNSPECIFIED"
   | "VPN_LOCKDOWN_ENFORCED"
-  | "VPN_LOCKDOWN_EXEMPTION"
-  | (string & {});
+  | "VPN_LOCKDOWN_EXEMPTION";
 export const ApplicationPolicyAlwaysOnVpnLockdownExemptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4317,12 +4193,11 @@ export type ApplicationPolicyDelegatedScopesItemEnum =
   | "ENABLE_SYSTEM_APP"
   | "NETWORK_ACTIVITY_LOGS"
   | "SECURITY_LOGS"
-  | "CERT_SELECTION"
-  | (string & {});
+  | "CERT_SELECTION";
 export const ApplicationPolicyDelegatedScopesItemEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationPolicyDelegatedScopesItemEnumList =
-  ApplicationPolicyDelegatedScopesItemEnum[];
+  ReadonlyArray<ApplicationPolicyDelegatedScopesItemEnum>;
 export const ApplicationPolicyDelegatedScopesItemEnumList =
   /*@__PURE__*/ S.Array(
     ApplicationPolicyDelegatedScopesItemEnum,
@@ -4331,22 +4206,19 @@ export const ApplicationPolicyDelegatedScopesItemEnumList =
 export type InstallConstraintChargingConstraintEnum =
   | "CHARGING_CONSTRAINT_UNSPECIFIED"
   | "CHARGING_NOT_REQUIRED"
-  | "INSTALL_ONLY_WHEN_CHARGING"
-  | (string & {});
+  | "INSTALL_ONLY_WHEN_CHARGING";
 export const InstallConstraintChargingConstraintEnum = /*@__PURE__*/ S.String;
 
 export type InstallConstraintDeviceIdleConstraintEnum =
   | "DEVICE_IDLE_CONSTRAINT_UNSPECIFIED"
   | "DEVICE_IDLE_NOT_REQUIRED"
-  | "INSTALL_ONLY_WHEN_DEVICE_IDLE"
-  | (string & {});
+  | "INSTALL_ONLY_WHEN_DEVICE_IDLE";
 export const InstallConstraintDeviceIdleConstraintEnum = /*@__PURE__*/ S.String;
 
 export type InstallConstraintNetworkTypeConstraintEnum =
   | "NETWORK_TYPE_CONSTRAINT_UNSPECIFIED"
   | "INSTALL_ON_ANY_NETWORK"
-  | "INSTALL_ONLY_ON_UNMETERED_NETWORK"
-  | (string & {});
+  | "INSTALL_ONLY_ON_UNMETERED_NETWORK";
 export const InstallConstraintNetworkTypeConstraintEnum =
   /*@__PURE__*/ S.String;
 
@@ -4371,7 +4243,7 @@ export const InstallConstraint = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstallConstraint",
 }) as any as S.Schema<InstallConstraint>;
 
-export type InstallConstraintList = InstallConstraint[];
+export type InstallConstraintList = ReadonlyArray<InstallConstraint>;
 export const InstallConstraintList = /*@__PURE__*/ S.Array(
   InstallConstraint,
 ) as any as S.Schema<InstallConstraintList>;
@@ -4379,8 +4251,7 @@ export const InstallConstraintList = /*@__PURE__*/ S.Array(
 export type ApplicationPolicyWorkProfileWidgetsEnum =
   | "WORK_PROFILE_WIDGETS_UNSPECIFIED"
   | "WORK_PROFILE_WIDGETS_ALLOWED"
-  | "WORK_PROFILE_WIDGETS_DISALLOWED"
-  | (string & {});
+  | "WORK_PROFILE_WIDGETS_DISALLOWED";
 export const ApplicationPolicyWorkProfileWidgetsEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationPolicyPreferentialNetworkIdEnum =
@@ -4390,8 +4261,7 @@ export type ApplicationPolicyPreferentialNetworkIdEnum =
   | "PREFERENTIAL_NETWORK_ID_TWO"
   | "PREFERENTIAL_NETWORK_ID_THREE"
   | "PREFERENTIAL_NETWORK_ID_FOUR"
-  | "PREFERENTIAL_NETWORK_ID_FIVE"
-  | (string & {});
+  | "PREFERENTIAL_NETWORK_ID_FIVE";
 export const ApplicationPolicyPreferentialNetworkIdEnum =
   /*@__PURE__*/ S.String;
 
@@ -4400,8 +4270,7 @@ export type RoleRoleTypeEnum =
   | "COMPANION_APP"
   | "KIOSK"
   | "MOBILE_THREAT_DEFENSE_ENDPOINT_DETECTION_RESPONSE"
-  | "SYSTEM_HEALTH_MONITORING"
-  | (string & {});
+  | "SYSTEM_HEALTH_MONITORING";
 export const RoleRoleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Role an app can have. */
@@ -4415,7 +4284,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
-export type RoleList = Role[];
+export type RoleList = ReadonlyArray<Role>;
 export const RoleList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<RoleList>;
@@ -4423,15 +4292,13 @@ export const RoleList = /*@__PURE__*/ S.Array(
 export type ApplicationPolicyUserControlSettingsEnum =
   | "USER_CONTROL_SETTINGS_UNSPECIFIED"
   | "USER_CONTROL_ALLOWED"
-  | "USER_CONTROL_DISALLOWED"
-  | (string & {});
+  | "USER_CONTROL_DISALLOWED";
 export const ApplicationPolicyUserControlSettingsEnum = /*@__PURE__*/ S.String;
 
 export type CustomAppConfigUserUninstallSettingsEnum =
   | "USER_UNINSTALL_SETTINGS_UNSPECIFIED"
   | "DISALLOW_UNINSTALL_BY_USER"
-  | "ALLOW_UNINSTALL_BY_USER"
-  | (string & {});
+  | "ALLOW_UNINSTALL_BY_USER";
 export const CustomAppConfigUserUninstallSettingsEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a custom app. */
@@ -4455,8 +4322,7 @@ export type ApplicationPolicyInstallTypeEnum =
   | "AVAILABLE"
   | "REQUIRED_FOR_SETUP"
   | "KIOSK"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const ApplicationPolicyInstallTypeEnum = /*@__PURE__*/ S.String;
 
 /** The managed configurations template for the app, saved from the managed configurations iframe. */
@@ -4477,16 +4343,14 @@ export const ManagedConfigurationTemplate = /*@__PURE__*/ S.suspend(() =>
 
 export type ApplicationPolicyCredentialProviderPolicyEnum =
   | "CREDENTIAL_PROVIDER_POLICY_UNSPECIFIED"
-  | "CREDENTIAL_PROVIDER_ALLOWED"
-  | (string & {});
+  | "CREDENTIAL_PROVIDER_ALLOWED";
 export const ApplicationPolicyCredentialProviderPolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type ApplicationPolicyConnectedWorkAndPersonalAppEnum =
   | "CONNECTED_WORK_AND_PERSONAL_APP_UNSPECIFIED"
   | "CONNECTED_WORK_AND_PERSONAL_APP_DISALLOWED"
-  | "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED"
-  | (string & {});
+  | "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED";
 export const ApplicationPolicyConnectedWorkAndPersonalAppEnum =
   /*@__PURE__*/ S.String;
 
@@ -4494,8 +4358,7 @@ export type ApplicationPolicyAutoUpdateModeEnum =
   | "AUTO_UPDATE_MODE_UNSPECIFIED"
   | "AUTO_UPDATE_DEFAULT"
   | "AUTO_UPDATE_POSTPONED"
-  | "AUTO_UPDATE_HIGH_PRIORITY"
-  | (string & {});
+  | "AUTO_UPDATE_HIGH_PRIORITY";
 export const ApplicationPolicyAutoUpdateModeEnum = /*@__PURE__*/ S.String;
 
 /** Policy for an individual app. Note: Application availability on a given device cannot be changed using this policy if installAppsDisabled is enabled. The maximum number of applications that you can specify per policy is 3,000. */
@@ -4590,7 +4453,7 @@ export const ApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationPolicy",
 }) as any as S.Schema<ApplicationPolicy>;
 
-export type ApplicationPolicyList = ApplicationPolicy[];
+export type ApplicationPolicyList = ReadonlyArray<ApplicationPolicy>;
 export const ApplicationPolicyList = /*@__PURE__*/ S.Array(
   ApplicationPolicy,
 ) as any as S.Schema<ApplicationPolicyList>;
@@ -4598,8 +4461,7 @@ export const ApplicationPolicyList = /*@__PURE__*/ S.Array(
 export type PolicyEnterpriseDisplayNameVisibilityEnum =
   | "ENTERPRISE_DISPLAY_NAME_VISIBILITY_UNSPECIFIED"
   | "ENTERPRISE_DISPLAY_NAME_VISIBLE"
-  | "ENTERPRISE_DISPLAY_NAME_HIDDEN"
-  | (string & {});
+  | "ENTERPRISE_DISPLAY_NAME_HIDDEN";
 export const PolicyEnterpriseDisplayNameVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** A policy resource represents a group of settings that govern the behavior of a managed device and the apps installed on it. */
@@ -4959,15 +4821,13 @@ export const GetProvisioningInfoRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProvisioningInfoOwnershipEnum =
   | "OWNERSHIP_UNSPECIFIED"
   | "COMPANY_OWNED"
-  | "PERSONALLY_OWNED"
-  | (string & {});
+  | "PERSONALLY_OWNED";
 export const ProvisioningInfoOwnershipEnum = /*@__PURE__*/ S.String;
 
 export type ProvisioningInfoManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "DEVICE_OWNER"
-  | "PROFILE_OWNER"
-  | (string & {});
+  | "PROFILE_OWNER";
 export const ProvisioningInfoManagementModeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a device that is available during setup. */
@@ -5018,8 +4878,7 @@ export type RequestDeviceInfoStatusStatusEnum =
   | "SUCCEEDED"
   | "PENDING_USER_ACTION"
   | "USER_DECLINED"
-  | "UNSUPPORTED"
-  | (string & {});
+  | "UNSUPPORTED";
 export const RequestDeviceInfoStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** EID information for each eUICC chip. */
@@ -5033,7 +4892,7 @@ export const Eid = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Eid" }) as any as S.Schema<Eid>;
 
-export type EidList = Eid[];
+export type EidList = ReadonlyArray<Eid>;
 export const EidList = /*@__PURE__*/ S.Array(Eid) as any as S.Schema<EidList>;
 
 /** Information related to the EIDs of the device. */
@@ -5065,8 +4924,7 @@ export const RequestDeviceInfoStatus = /*@__PURE__*/ S.suspend(() =>
 
 export type RequestDeviceInfoParamsDeviceInfoEnum =
   | "DEVICE_INFO_UNSPECIFIED"
-  | "EID"
-  | (string & {});
+  | "EID";
 export const RequestDeviceInfoParamsDeviceInfoEnum = /*@__PURE__*/ S.String;
 
 /** Parameters associated with the REQUEST_DEVICE_INFO command to get device related information. */
@@ -5085,8 +4943,7 @@ export const RequestDeviceInfoParams = /*@__PURE__*/ S.suspend(() =>
 export type StopLostModeStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "SUCCESS"
-  | "NOT_IN_LOST_MODE"
-  | (string & {});
+  | "NOT_IN_LOST_MODE";
 export const StopLostModeStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** Status of the STOP_LOST_MODE command to take the device out of lost mode. */
@@ -5107,8 +4964,7 @@ export type PerAppResultClearingResultEnum =
   | "SUCCESS"
   | "APP_NOT_FOUND"
   | "APP_PROTECTED"
-  | "API_LEVEL"
-  | (string & {});
+  | "API_LEVEL";
 export const PerAppResultClearingResultEnum = /*@__PURE__*/ S.String;
 
 /** The result of an attempt to clear the data of a single app. */
@@ -5159,8 +5015,7 @@ export type StartLostModeStatusStatusEnum =
   | "SUCCESS"
   | "RESET_PASSWORD_RECENTLY"
   | "USER_EXIT_LOST_MODE_RECENTLY"
-  | "ALREADY_IN_LOST_MODE"
-  | (string & {});
+  | "ALREADY_IN_LOST_MODE";
 export const StartLostModeStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** Status of the START_LOST_MODE command to put the device into lost mode. */
@@ -5180,12 +5035,11 @@ export type WipeParamsWipeDataFlagsItemEnum =
   | "WIPE_DATA_FLAG_UNSPECIFIED"
   | "PRESERVE_RESET_PROTECTION_DATA"
   | "WIPE_EXTERNAL_STORAGE"
-  | "WIPE_ESIMS"
-  | (string & {});
+  | "WIPE_ESIMS";
 export const WipeParamsWipeDataFlagsItemEnum = /*@__PURE__*/ S.String;
 
 export type WipeParamsWipeDataFlagsItemEnumList =
-  WipeParamsWipeDataFlagsItemEnum[];
+  ReadonlyArray<WipeParamsWipeDataFlagsItemEnum>;
 export const WipeParamsWipeDataFlagsItemEnumList = /*@__PURE__*/ S.Array(
   WipeParamsWipeDataFlagsItemEnum,
 ) as any as S.Schema<WipeParamsWipeDataFlagsItemEnumList>;
@@ -5229,20 +5083,18 @@ export type CommandTypeEnum =
   | "ADD_ESIM"
   | "REMOVE_ESIM"
   | "REQUEST_DEVICE_INFO"
-  | "WIPE"
-  | (string & {});
+  | "WIPE";
 export const CommandTypeEnum = /*@__PURE__*/ S.String;
 
 export type CommandResetPasswordFlagsItemEnum =
   | "RESET_PASSWORD_FLAG_UNSPECIFIED"
   | "REQUIRE_ENTRY"
   | "DO_NOT_ASK_CREDENTIALS_ON_BOOT"
-  | "LOCK_NOW"
-  | (string & {});
+  | "LOCK_NOW";
 export const CommandResetPasswordFlagsItemEnum = /*@__PURE__*/ S.String;
 
 export type CommandResetPasswordFlagsItemEnumList =
-  CommandResetPasswordFlagsItemEnum[];
+  ReadonlyArray<CommandResetPasswordFlagsItemEnum>;
 export const CommandResetPasswordFlagsItemEnumList = /*@__PURE__*/ S.Array(
   CommandResetPasswordFlagsItemEnum,
 ) as any as S.Schema<CommandResetPasswordFlagsItemEnumList>;
@@ -5253,8 +5105,7 @@ export type CommandErrorCodeEnum =
   | "API_LEVEL"
   | "MANAGEMENT_MODE"
   | "INVALID_VALUE"
-  | "UNSUPPORTED"
-  | (string & {});
+  | "UNSUPPORTED";
 export const CommandErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export type EsimCommandStatusStatusEnum =
@@ -5266,8 +5117,7 @@ export type EsimCommandStatusStatusEnum =
   | "ERROR_USER_DENIED"
   | "INTERNAL_ERROR"
   | "ERROR_ICC_ID_NOT_FOUND"
-  | "ERROR_MULTIPLE_ACTIVE_ESIMS_NO_AVAILABLE_SLOT"
-  | (string & {});
+  | "ERROR_MULTIPLE_ACTIVE_ESIMS_NO_AVAILABLE_SLOT";
 export const EsimCommandStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** Details of the eSIM added or removed. */
@@ -5300,8 +5150,7 @@ export type InternalErrorDetailsErrorCodeDetailEnum =
   | "ERROR_INSTALL_PROFILE"
   | "ERROR_EUICC_INSUFFICIENT_MEMORY"
   | "ERROR_INVALID_PORT"
-  | "ERROR_SIM_MISSING"
-  | (string & {});
+  | "ERROR_SIM_MISSING";
 export const InternalErrorDetailsErrorCodeDetailEnum = /*@__PURE__*/ S.String;
 
 export type InternalErrorDetailsOperationCodeDetailEnum =
@@ -5316,8 +5165,7 @@ export type InternalErrorDetailsOperationCodeDetailEnum =
   | "OPERATION_EUICC_GSMA"
   | "OPERATION_APDU"
   | "OPERATION_SMDX_SUBJECT_REASON_CODE"
-  | "OPERATION_HTTP"
-  | (string & {});
+  | "OPERATION_HTTP";
 export const InternalErrorDetailsOperationCodeDetailEnum =
   /*@__PURE__*/ S.String;
 
@@ -5400,8 +5248,7 @@ export const StartLostModeParams = /*@__PURE__*/ S.suspend(() =>
 export type AddEsimParamsActivationStateEnum =
   | "ACTIVATION_STATE_UNSPECIFIED"
   | "ACTIVATED"
-  | "NOT_ACTIVATED"
-  | (string & {});
+  | "NOT_ACTIVATED";
 export const AddEsimParamsActivationStateEnum = /*@__PURE__*/ S.String;
 
 /** Parameters associated with the ADD_ESIM command to add an eSIM profile to the device. */
@@ -5505,10 +5352,7 @@ export const IssueCommandEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "IssueCommandEnterprisesDevicesRequest",
 }) as any as S.Schema<IssueCommandEnterprisesDevicesRequest>;
 
-export type ListEnterprisesViewEnum =
-  | "ENTERPRISE_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | (string & {});
+export type ListEnterprisesViewEnum = "ENTERPRISE_VIEW_UNSPECIFIED" | "BASIC";
 export const ListEnterprisesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListEnterprisesRequest {
@@ -5538,7 +5382,7 @@ export const ListEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnterprisesRequest",
 }) as any as S.Schema<ListEnterprisesRequest>;
 
-export type EnterpriseList = Enterprise[];
+export type EnterpriseList = ReadonlyArray<Enterprise>;
 export const EnterpriseList = /*@__PURE__*/ S.Array(
   Enterprise,
 ) as any as S.Schema<EnterpriseList>;
@@ -5583,7 +5427,7 @@ export const ListEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnterprisesDevicesRequest",
 }) as any as S.Schema<ListEnterprisesDevicesRequest>;
 
-export type DeviceList = Device[];
+export type DeviceList = ReadonlyArray<Device>;
 export const DeviceList = /*@__PURE__*/ S.Array(
   Device,
 ) as any as S.Schema<DeviceList>;
@@ -5635,7 +5479,7 @@ export const ListEnterprisesDevicesOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListEnterprisesDevicesOperationsRequest",
 }) as any as S.Schema<ListEnterprisesDevicesOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -5684,7 +5528,7 @@ export const ListEnterprisesEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListEnterprisesEnrollmentTokensRequest",
 }) as any as S.Schema<ListEnterprisesEnrollmentTokensRequest>;
 
-export type EnrollmentTokenList = EnrollmentToken[];
+export type EnrollmentTokenList = ReadonlyArray<EnrollmentToken>;
 export const EnrollmentTokenList = /*@__PURE__*/ S.Array(
   EnrollmentToken,
 ) as any as S.Schema<EnrollmentTokenList>;
@@ -5730,7 +5574,7 @@ export const ListEnterprisesMigrationTokensRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListEnterprisesMigrationTokensRequest",
 }) as any as S.Schema<ListEnterprisesMigrationTokensRequest>;
 
-export type MigrationTokenList = MigrationToken[];
+export type MigrationTokenList = ReadonlyArray<MigrationToken>;
 export const MigrationTokenList = /*@__PURE__*/ S.Array(
   MigrationToken,
 ) as any as S.Schema<MigrationTokenList>;
@@ -5775,7 +5619,7 @@ export const ListEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnterprisesPoliciesRequest",
 }) as any as S.Schema<ListEnterprisesPoliciesRequest>;
 
-export type PolicyList = Policy[];
+export type PolicyList = ReadonlyArray<Policy>;
 export const PolicyList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<PolicyList>;
@@ -5820,7 +5664,7 @@ export const ListEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnterprisesWebAppsRequest",
 }) as any as S.Schema<ListEnterprisesWebAppsRequest>;
 
-export type WebAppList = WebApp[];
+export type WebAppList = ReadonlyArray<WebApp>;
 export const WebAppList = /*@__PURE__*/ S.Array(
   WebApp,
 ) as any as S.Schema<WebAppList>;
@@ -5857,7 +5701,8 @@ export const ApplicationPolicyChange = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationPolicyChange",
 }) as any as S.Schema<ApplicationPolicyChange>;
 
-export type ApplicationPolicyChangeList = ApplicationPolicyChange[];
+export type ApplicationPolicyChangeList =
+  ReadonlyArray<ApplicationPolicyChange>;
 export const ApplicationPolicyChangeList = /*@__PURE__*/ S.Array(
   ApplicationPolicyChange,
 ) as any as S.Schema<ApplicationPolicyChangeList>;

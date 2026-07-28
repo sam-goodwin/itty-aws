@@ -101,7 +101,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -365,7 +365,7 @@ export const CheckTransitiveMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckTransitiveMembershipResponse",
 }) as any as S.Schema<CheckTransitiveMembershipResponse>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -375,17 +375,12 @@ export type GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnu
     | "UNMANAGED"
     | "MANAGED_BY_OTHER_DOMAIN"
     | "PROFILE_MANAGED"
-    | "BROWSER_MANAGED"
-    | (string & {});
+    | "BROWSER_MANAGED";
 export const GoogleAppsCloudidentityDevicesV1BrowserInfoBrowserManagementStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum =
-    | "SAFE_BROWSING_LEVEL_UNSPECIFIED"
-    | "DISABLED"
-    | "STANDARD"
-    | "ENHANCED"
-    | (string & {});
+  "SAFE_BROWSING_LEVEL_UNSPECIFIED" | "DISABLED" | "STANDARD" | "ENHANCED";
 export const GoogleAppsCloudidentityDevicesV1BrowserInfoSafeBrowsingProtectionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -393,8 +388,7 @@ export type GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarning
     | "PASSWORD_PROTECTION_TRIGGER_UNSPECIFIED"
     | "PROTECTION_OFF"
     | "PASSWORD_REUSE"
-    | "PHISHING_REUSE"
-    | (string & {});
+    | "PHISHING_REUSE";
 export const GoogleAppsCloudidentityDevicesV1BrowserInfoPasswordProtectionWarningTriggerEnum =
   /*@__PURE__*/ S.String;
 
@@ -480,7 +474,7 @@ export const GoogleAppsCloudidentityDevicesV1BrowserAttributes =
   }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
 
 export type GoogleAppsCloudidentityDevicesV1BrowserAttributesList =
-  GoogleAppsCloudidentityDevicesV1BrowserAttributes[];
+  ReadonlyArray<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
 export const GoogleAppsCloudidentityDevicesV1BrowserAttributesList =
   /*@__PURE__*/ S.Array(
     GoogleAppsCloudidentityDevicesV1BrowserAttributes,
@@ -509,8 +503,7 @@ export const GoogleAppsCloudidentityDevicesV1CertificateTemplate =
 export type GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum =
     | "CERTIFICATE_VALIDATION_STATE_UNSPECIFIED"
     | "VALIDATION_SUCCESSFUL"
-    | "VALIDATION_FAILED"
-    | (string & {});
+    | "VALIDATION_FAILED";
 export const GoogleAppsCloudidentityDevicesV1CertificateAttributesValidationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -557,7 +550,7 @@ export const GoogleAppsCloudidentityDevicesV1CertificateAttributes =
   }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
 
 export type GoogleAppsCloudidentityDevicesV1CertificateAttributesList =
-  GoogleAppsCloudidentityDevicesV1CertificateAttributes[];
+  ReadonlyArray<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
 export const GoogleAppsCloudidentityDevicesV1CertificateAttributesList =
   /*@__PURE__*/ S.Array(
     GoogleAppsCloudidentityDevicesV1CertificateAttributes,
@@ -595,8 +588,7 @@ export type GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum =
   | "PENDING"
   | "UNPROVISIONED"
   | "WIPING"
-  | "WIPED"
-  | (string & {});
+  | "WIPED";
 export const GoogleAppsCloudidentityDevicesV1DeviceManagementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -608,16 +600,14 @@ export type GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum =
   | "WINDOWS"
   | "MAC_OS"
   | "LINUX"
-  | "CHROME_OS"
-  | (string & {});
+  | "CHROME_OS";
 export const GoogleAppsCloudidentityDevicesV1DeviceDeviceTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum =
   | "DEVICE_OWNERSHIP_UNSPECIFIED"
   | "COMPANY"
-  | "BYOD"
-  | (string & {});
+  | "BYOD";
 export const GoogleAppsCloudidentityDevicesV1DeviceOwnerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -625,8 +615,7 @@ export type GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeE
     | "OWNERSHIP_PRIVILEGE_UNSPECIFIED"
     | "DEVICE_ADMINISTRATOR"
     | "PROFILE_OWNER"
-    | "DEVICE_OWNER"
-    | (string & {});
+    | "DEVICE_OWNER";
 export const GoogleAppsCloudidentityDevicesV1AndroidAttributesOwnershipPrivilegeEnum =
   /*@__PURE__*/ S.String;
 
@@ -671,16 +660,14 @@ export type GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum =
   | "ENCRYPTION_STATE_UNSPECIFIED"
   | "UNSUPPORTED_BY_DEVICE"
   | "ENCRYPTED"
-  | "NOT_ENCRYPTED"
-  | (string & {});
+  | "NOT_ENCRYPTED";
 export const GoogleAppsCloudidentityDevicesV1DeviceEncryptionStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum =
   | "COMPROMISED_STATE_UNSPECIFIED"
   | "COMPROMISED"
-  | "UNCOMPROMISED"
-  | (string & {});
+  | "UNCOMPROMISED";
 export const GoogleAppsCloudidentityDevicesV1DeviceCompromisedStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -829,8 +816,7 @@ export const CreateDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateGroupsInitialGroupConfigEnum =
   | "INITIAL_GROUP_CONFIG_UNSPECIFIED"
   | "WITH_INITIAL_OWNER"
-  | "EMPTY"
-  | (string & {});
+  | "EMPTY";
 export const CreateGroupsInitialGroupConfigEnum = /*@__PURE__*/ S.String;
 
 /** A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s. */
@@ -849,8 +835,7 @@ export const EntityKey = /*@__PURE__*/ S.suspend(() =>
 
 export type DynamicGroupQueryResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const DynamicGroupQueryResourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines a query on a resource. */
@@ -869,7 +854,7 @@ export const DynamicGroupQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicGroupQuery",
 }) as any as S.Schema<DynamicGroupQuery>;
 
-export type DynamicGroupQueryList = DynamicGroupQuery[];
+export type DynamicGroupQueryList = ReadonlyArray<DynamicGroupQuery>;
 export const DynamicGroupQueryList = /*@__PURE__*/ S.Array(
   DynamicGroupQuery,
 ) as any as S.Schema<DynamicGroupQueryList>;
@@ -878,8 +863,7 @@ export type DynamicGroupStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "UP_TO_DATE"
   | "UPDATING_MEMBERSHIPS"
-  | "INVALID_QUERY"
-  | (string & {});
+  | "INVALID_QUERY";
 export const DynamicGroupStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The current status of a dynamic group along with timestamp. */
@@ -920,7 +904,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type EntityKeyList = EntityKey[];
+export type EntityKeyList = ReadonlyArray<EntityKey>;
 export const EntityKeyList = /*@__PURE__*/ S.Array(
   EntityKey,
 ) as any as S.Schema<EntityKeyList>;
@@ -994,8 +978,7 @@ export type MembershipTypeEnum =
   | "SHARED_DRIVE"
   | "CBCM_BROWSER"
   | "CHROME_OS_DEVICE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const MembershipTypeEnum = /*@__PURE__*/ S.String;
 
 /** The `MembershipRole` expiry details. */
@@ -1014,8 +997,7 @@ export type MembershipRoleRestrictionEvaluationStateEnum =
   | "COMPLIANT"
   | "FORWARD_COMPLIANT"
   | "NON_COMPLIANT"
-  | "EVALUATING"
-  | (string & {});
+  | "EVALUATING";
 export const MembershipRoleRestrictionEvaluationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1064,7 +1046,7 @@ export const MembershipRole = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MembershipRole" }) as any as S.Schema<MembershipRole>;
 
-export type MembershipRoleList = MembershipRole[];
+export type MembershipRoleList = ReadonlyArray<MembershipRole>;
 export const MembershipRoleList = /*@__PURE__*/ S.Array(
   MembershipRole,
 ) as any as S.Schema<MembershipRoleList>;
@@ -1075,8 +1057,7 @@ export type MembershipDeliverySettingEnum =
   | "DIGEST"
   | "DAILY"
   | "NONE"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const MembershipDeliverySettingEnum = /*@__PURE__*/ S.String;
 
 /** A membership within the Cloud Identity Groups API. A `Membership` defines a relationship between a `Group` and an entity belonging to that `Group`, referred to as a "member". */
@@ -1304,8 +1285,7 @@ export const OidcSsoInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type SignInBehaviorRedirectConditionEnum =
   | "REDIRECT_CONDITION_UNSPECIFIED"
-  | "NEVER"
-  | (string & {});
+  | "NEVER";
 export const SignInBehaviorRedirectConditionEnum = /*@__PURE__*/ S.String;
 
 /** Controls sign-in behavior. */
@@ -1324,8 +1304,7 @@ export type InboundSsoAssignmentSsoModeEnum =
   | "SSO_OFF"
   | "SAML_SSO"
   | "OIDC_SSO"
-  | "DOMAIN_WIDE_SAML_IF_ENABLED"
-  | (string & {});
+  | "DOMAIN_WIDE_SAML_IF_ENABLED";
 export const InboundSsoAssignmentSsoModeEnum = /*@__PURE__*/ S.String;
 
 /** Targets with "set" SSO assignments and their respective assignments. */
@@ -1397,11 +1376,7 @@ export const Setting = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Setting" }) as any as S.Schema<Setting>;
 
-export type PolicyTypeEnum =
-  | "POLICY_TYPE_UNSPECIFIED"
-  | "SYSTEM"
-  | "ADMIN"
-  | (string & {});
+export type PolicyTypeEnum = "POLICY_TYPE_UNSPECIFIED" | "SYSTEM" | "ADMIN";
 export const PolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** PolicyQuery */
@@ -1657,8 +1632,7 @@ export type UserInvitationStateEnum =
   | "NOT_YET_SENT"
   | "INVITED"
   | "ACCEPTED"
-  | "DECLINED"
-  | (string & {});
+  | "DECLINED";
 export const UserInvitationStateEnum = /*@__PURE__*/ S.String;
 
 /** The `UserInvitation` resource represents an email that can be sent to an unmanaged user account inviting them to join the customer's Google Workspace or Cloud Identity account. An unmanaged account shares an email address domain with the Google Workspace or Cloud Identity account but is not managed by it yet. If the user accepts the `UserInvitation`, the user account will become managed. */
@@ -1726,16 +1700,14 @@ export const GetDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsCloudidentityDevicesV1DeviceUserCompromisedStateEnum =
   | "COMPROMISED_STATE_UNSPECIFIED"
   | "COMPROMISED"
-  | "NOT_COMPROMISED"
-  | (string & {});
+  | "NOT_COMPROMISED";
 export const GoogleAppsCloudidentityDevicesV1DeviceUserCompromisedStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCloudidentityDevicesV1DeviceUserPasswordStateEnum =
   | "PASSWORD_STATE_UNSPECIFIED"
   | "PASSWORD_SET"
-  | "PASSWORD_NOT_SET"
-  | (string & {});
+  | "PASSWORD_NOT_SET";
 export const GoogleAppsCloudidentityDevicesV1DeviceUserPasswordStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1746,8 +1718,7 @@ export type GoogleAppsCloudidentityDevicesV1DeviceUserManagementStateEnum =
   | "APPROVED"
   | "BLOCKED"
   | "PENDING_APPROVAL"
-  | "UNENROLLED"
-  | (string & {});
+  | "UNENROLLED";
 export const GoogleAppsCloudidentityDevicesV1DeviceUserManagementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1823,8 +1794,7 @@ export const GetDevicesDeviceUsersClientStatesRequest = /*@__PURE__*/ S.suspend(
 export type GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum =
   | "COMPLIANCE_STATE_UNSPECIFIED"
   | "COMPLIANT"
-  | "NON_COMPLIANT"
-  | (string & {});
+  | "NON_COMPLIANT";
 export const GoogleAppsCloudidentityDevicesV1ClientStateComplianceStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1862,8 +1832,7 @@ export const GoogleAppsCloudidentityDevicesV1CustomAttributeValueMap =
 export type GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum =
   | "OWNER_TYPE_UNSPECIFIED"
   | "OWNER_TYPE_CUSTOMER"
-  | "OWNER_TYPE_PARTNER"
-  | (string & {});
+  | "OWNER_TYPE_PARTNER";
 export const GoogleAppsCloudidentityDevicesV1ClientStateOwnerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1873,16 +1842,14 @@ export type GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum =
   | "POOR"
   | "NEUTRAL"
   | "GOOD"
-  | "VERY_GOOD"
-  | (string & {});
+  | "VERY_GOOD";
 export const GoogleAppsCloudidentityDevicesV1ClientStateHealthScoreEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum =
   | "MANAGED_STATE_UNSPECIFIED"
   | "MANAGED"
-  | "UNMANAGED"
-  | (string & {});
+  | "UNMANAGED";
 export const GoogleAppsCloudidentityDevicesV1ClientStateManagedEnum =
   /*@__PURE__*/ S.String;
 
@@ -2164,8 +2131,7 @@ export type RestrictionEvaluationStateEnum =
   | "EVALUATING"
   | "COMPLIANT"
   | "FORWARD_COMPLIANT"
-  | "NON_COMPLIANT"
-  | (string & {});
+  | "NON_COMPLIANT";
 export const RestrictionEvaluationStateEnum = /*@__PURE__*/ S.String;
 
 /** The evaluated state of this restriction. */
@@ -2275,7 +2241,7 @@ export const ListCustomersUserinvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersUserinvitationsRequest",
 }) as any as S.Schema<ListCustomersUserinvitationsRequest>;
 
-export type UserInvitationList = UserInvitation[];
+export type UserInvitationList = ReadonlyArray<UserInvitation>;
 export const UserInvitationList = /*@__PURE__*/ S.Array(
   UserInvitation,
 ) as any as S.Schema<UserInvitationList>;
@@ -2299,8 +2265,7 @@ export const ListUserInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListDevicesViewEnum =
   | "VIEW_UNSPECIFIED"
   | "COMPANY_INVENTORY"
-  | "USER_ASSIGNED_DEVICES"
-  | (string & {});
+  | "USER_ASSIGNED_DEVICES";
 export const ListDevicesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListDevicesRequest {
@@ -2337,7 +2302,7 @@ export const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDevicesRequest>;
 
 export type GoogleAppsCloudidentityDevicesV1DeviceList =
-  GoogleAppsCloudidentityDevicesV1Device[];
+  ReadonlyArray<GoogleAppsCloudidentityDevicesV1Device>;
 export const GoogleAppsCloudidentityDevicesV1DeviceList = /*@__PURE__*/ S.Array(
   GoogleAppsCloudidentityDevicesV1Device,
 ) as any as S.Schema<GoogleAppsCloudidentityDevicesV1DeviceList>;
@@ -2393,7 +2358,7 @@ export const ListDevicesDeviceUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDevicesDeviceUsersRequest>;
 
 export type GoogleAppsCloudidentityDevicesV1DeviceUserList =
-  GoogleAppsCloudidentityDevicesV1DeviceUser[];
+  ReadonlyArray<GoogleAppsCloudidentityDevicesV1DeviceUser>;
 export const GoogleAppsCloudidentityDevicesV1DeviceUserList =
   /*@__PURE__*/ S.Array(
     GoogleAppsCloudidentityDevicesV1DeviceUser,
@@ -2448,7 +2413,7 @@ export const ListDevicesDeviceUsersClientStatesRequest =
   }) as any as S.Schema<ListDevicesDeviceUsersClientStatesRequest>;
 
 export type GoogleAppsCloudidentityDevicesV1ClientStateList =
-  GoogleAppsCloudidentityDevicesV1ClientState[];
+  ReadonlyArray<GoogleAppsCloudidentityDevicesV1ClientState>;
 export const GoogleAppsCloudidentityDevicesV1ClientStateList =
   /*@__PURE__*/ S.Array(
     GoogleAppsCloudidentityDevicesV1ClientState,
@@ -2471,11 +2436,7 @@ export const GoogleAppsCloudidentityDevicesV1ListClientStatesResponse =
     identifier: "GoogleAppsCloudidentityDevicesV1ListClientStatesResponse",
   }) as any as S.Schema<GoogleAppsCloudidentityDevicesV1ListClientStatesResponse>;
 
-export type ListGroupsViewEnum =
-  | "VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
+export type ListGroupsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
 export const ListGroupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListGroupsRequest {
@@ -2505,7 +2466,7 @@ export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupsRequest",
 }) as any as S.Schema<ListGroupsRequest>;
 
-export type GroupList = Group[];
+export type GroupList = ReadonlyArray<Group>;
 export const GroupList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupList>;
@@ -2529,8 +2490,7 @@ export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListGroupsMembershipsViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListGroupsMembershipsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListGroupsMembershipsRequest {
@@ -2560,7 +2520,7 @@ export const ListGroupsMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupsMembershipsRequest",
 }) as any as S.Schema<ListGroupsMembershipsRequest>;
 
-export type MembershipList = Membership[];
+export type MembershipList = ReadonlyArray<Membership>;
 export const MembershipList = /*@__PURE__*/ S.Array(
   Membership,
 ) as any as S.Schema<MembershipList>;
@@ -2605,7 +2565,7 @@ export const ListInboundOidcSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInboundOidcSsoProfilesRequest",
 }) as any as S.Schema<ListInboundOidcSsoProfilesRequest>;
 
-export type InboundOidcSsoProfileList = InboundOidcSsoProfile[];
+export type InboundOidcSsoProfileList = ReadonlyArray<InboundOidcSsoProfile>;
 export const InboundOidcSsoProfileList = /*@__PURE__*/ S.Array(
   InboundOidcSsoProfile,
 ) as any as S.Schema<InboundOidcSsoProfileList>;
@@ -2650,7 +2610,7 @@ export const ListInboundSamlSsoProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInboundSamlSsoProfilesRequest",
 }) as any as S.Schema<ListInboundSamlSsoProfilesRequest>;
 
-export type InboundSamlSsoProfileList = InboundSamlSsoProfile[];
+export type InboundSamlSsoProfileList = ReadonlyArray<InboundSamlSsoProfile>;
 export const InboundSamlSsoProfileList = /*@__PURE__*/ S.Array(
   InboundSamlSsoProfile,
 ) as any as S.Schema<InboundSamlSsoProfileList>;
@@ -2696,7 +2656,7 @@ export const ListInboundSamlSsoProfilesIdpCredentialsRequest =
     identifier: "ListInboundSamlSsoProfilesIdpCredentialsRequest",
   }) as any as S.Schema<ListInboundSamlSsoProfilesIdpCredentialsRequest>;
 
-export type IdpCredentialList = IdpCredential[];
+export type IdpCredentialList = ReadonlyArray<IdpCredential>;
 export const IdpCredentialList = /*@__PURE__*/ S.Array(
   IdpCredential,
 ) as any as S.Schema<IdpCredentialList>;
@@ -2741,7 +2701,7 @@ export const ListInboundSsoAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInboundSsoAssignmentsRequest",
 }) as any as S.Schema<ListInboundSsoAssignmentsRequest>;
 
-export type InboundSsoAssignmentList = InboundSsoAssignment[];
+export type InboundSsoAssignmentList = ReadonlyArray<InboundSsoAssignment>;
 export const InboundSsoAssignmentList = /*@__PURE__*/ S.Array(
   InboundSsoAssignment,
 ) as any as S.Schema<InboundSsoAssignmentList>;
@@ -2786,7 +2746,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPoliciesRequest",
 }) as any as S.Schema<ListPoliciesRequest>;
 
-export type PolicyList = Policy[];
+export type PolicyList = ReadonlyArray<Policy>;
 export const PolicyList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<PolicyList>;
@@ -2953,7 +2913,8 @@ export const UpdateMembershipRolesParams = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMembershipRolesParams",
 }) as any as S.Schema<UpdateMembershipRolesParams>;
 
-export type UpdateMembershipRolesParamsList = UpdateMembershipRolesParams[];
+export type UpdateMembershipRolesParamsList =
+  ReadonlyArray<UpdateMembershipRolesParams>;
 export const UpdateMembershipRolesParamsList = /*@__PURE__*/ S.Array(
   UpdateMembershipRolesParams,
 ) as any as S.Schema<UpdateMembershipRolesParamsList>;
@@ -3221,7 +3182,7 @@ export const MembershipRelation = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembershipRelation",
 }) as any as S.Schema<MembershipRelation>;
 
-export type MembershipRelationList = MembershipRelation[];
+export type MembershipRelationList = ReadonlyArray<MembershipRelation>;
 export const MembershipRelationList = /*@__PURE__*/ S.Array(
   MembershipRelation,
 ) as any as S.Schema<MembershipRelationList>;
@@ -3242,11 +3203,7 @@ export const SearchDirectGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchDirectGroupsResponse",
 }) as any as S.Schema<SearchDirectGroupsResponse>;
 
-export type SearchGroupsViewEnum =
-  | "VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
+export type SearchGroupsViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
 export const SearchGroupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface SearchGroupsRequest {
@@ -3333,7 +3290,8 @@ export const TransitiveMembershipRole = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransitiveMembershipRole",
 }) as any as S.Schema<TransitiveMembershipRole>;
 
-export type TransitiveMembershipRoleList = TransitiveMembershipRole[];
+export type TransitiveMembershipRoleList =
+  ReadonlyArray<TransitiveMembershipRole>;
 export const TransitiveMembershipRoleList = /*@__PURE__*/ S.Array(
   TransitiveMembershipRole,
 ) as any as S.Schema<TransitiveMembershipRoleList>;
@@ -3342,8 +3300,7 @@ export type GroupRelationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "DIRECT"
   | "INDIRECT"
-  | "DIRECT_AND_INDIRECT"
-  | (string & {});
+  | "DIRECT_AND_INDIRECT";
 export const GroupRelationRelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a transitive group of a user or a group. */
@@ -3372,7 +3329,7 @@ export const GroupRelation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupRelation" }) as any as S.Schema<GroupRelation>;
 
-export type GroupRelationList = GroupRelation[];
+export type GroupRelationList = ReadonlyArray<GroupRelation>;
 export const GroupRelationList = /*@__PURE__*/ S.Array(
   GroupRelation,
 ) as any as S.Schema<GroupRelationList>;
@@ -3422,8 +3379,7 @@ export type MemberRelationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "DIRECT"
   | "INDIRECT"
-  | "DIRECT_AND_INDIRECT"
-  | (string & {});
+  | "DIRECT_AND_INDIRECT";
 export const MemberRelationRelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a transitive membership of a group. */
@@ -3446,7 +3402,7 @@ export const MemberRelation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemberRelation" }) as any as S.Schema<MemberRelation>;
 
-export type MemberRelationList = MemberRelation[];
+export type MemberRelationList = ReadonlyArray<MemberRelation>;
 export const MemberRelationList = /*@__PURE__*/ S.Array(
   MemberRelation,
 ) as any as S.Schema<MemberRelationList>;

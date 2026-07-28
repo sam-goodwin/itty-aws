@@ -108,7 +108,7 @@ export const CreateProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateProjectsLocationsCatalogsRequest",
 }) as any as S.Schema<CreateProjectsLocationsCatalogsRequest>;
 
-export type DatabaseTypeEnum = "TYPE_UNSPECIFIED" | "HIVE" | (string & {});
+export type DatabaseTypeEnum = "TYPE_UNSPECIFIED" | "HIVE";
 export const DatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -239,7 +239,7 @@ export const HiveTableOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "HiveTableOptions",
 }) as any as S.Schema<HiveTableOptions>;
 
-export type TableTypeEnum = "TYPE_UNSPECIFIED" | "HIVE" | (string & {});
+export type TableTypeEnum = "TYPE_UNSPECIFIED" | "HIVE";
 export const TableTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a table. */
@@ -397,7 +397,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -419,7 +419,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -428,8 +428,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -446,7 +445,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -465,7 +464,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -615,7 +614,7 @@ export const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsCatalogsRequest",
 }) as any as S.Schema<ListProjectsLocationsCatalogsRequest>;
 
-export type CatalogList = Catalog[];
+export type CatalogList = ReadonlyArray<Catalog>;
 export const CatalogList = /*@__PURE__*/ S.Array(
   Catalog,
 ) as any as S.Schema<CatalogList>;
@@ -661,7 +660,7 @@ export const ListProjectsLocationsCatalogsDatabasesRequest =
     identifier: "ListProjectsLocationsCatalogsDatabasesRequest",
   }) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesRequest>;
 
-export type DatabaseList = Database[];
+export type DatabaseList = ReadonlyArray<Database>;
 export const DatabaseList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseList>;
@@ -685,8 +684,7 @@ export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsCatalogsDatabasesTablesViewEnum =
   | "TABLE_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsCatalogsDatabasesTablesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -720,7 +718,7 @@ export const ListProjectsLocationsCatalogsDatabasesTablesRequest =
     identifier: "ListProjectsLocationsCatalogsDatabasesTablesRequest",
   }) as any as S.Schema<ListProjectsLocationsCatalogsDatabasesTablesRequest>;
 
-export type TableList = Table[];
+export type TableList = ReadonlyArray<Table>;
 export const TableList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<TableList>;

@@ -284,10 +284,22 @@
             "smithy.api#documentation": "The Azure region for the metadata request."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "dcrKind": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "DCR Kind for which metadata is being requested (e.g., PlatformTelemetry)."
+          }
+        },
+        "resourceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional resource type filter (e.g., Microsoft.Compute/virtualMachines). If specified, returns configuration metadata for that resource type."
+          }
+        },
+        "withStreamMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, returns detailed stream metadata in the response. Defaults to false."
           }
         }
       },
@@ -621,7 +633,7 @@
           }
         },
         "severity": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.monitor#ScheduledQueryRulePropertiesSeverity",
           "traits": {
             "smithy.api#documentation": "Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert."
           }
@@ -1110,6 +1122,44 @@
         "smithy.api#documentation": "The list of resource id's that this scheduled query rule is scoped to."
       }
     },
+    "com.azure.monitor#ScheduledQueryRulePropertiesSeverity": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert."
+      }
+    },
     "com.azure.monitor#ScheduledQueryRuleResourceSystemData": {
       "type": "structure",
       "members": {
@@ -1374,16 +1424,265 @@
             "smithy.api#documentation": "The name of the rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.monitor#IdentityInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.monitor#ScheduledQueryRulesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.monitor#ScheduledQueryRulePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The scheduled query rule properties of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitor#ScheduledQueryRulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the scheduled query rule."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the alert rule"
+          }
+        },
+        "severity": {
+          "target": "com.azure.monitor#ScheduledQueryRulePropertiesInputSeverity",
+          "traits": {
+            "smithy.api#documentation": "Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The flag which indicates whether this scheduled query rule is enabled. Value should be true or false"
+          }
+        },
+        "scopes": {
+          "target": "com.azure.monitor#ScheduledQueryRulePropertiesInputScopesList",
+          "traits": {
+            "smithy.api#documentation": "The list of resource id's that this scheduled query rule is scoped to."
+          }
+        },
+        "evaluationFrequency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert."
+          }
+        },
+        "windowSize": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The period of time (in ISO 8601 duration format) on which the Alert query will be executed (bin size). Relevant and required only for rules of the kind LogAlert."
+          }
+        },
+        "overrideQueryTimeRange": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If specified then overrides the query time range (default is WindowSize*NumberOfEvaluationPeriods). Relevant only for rules of the kind LogAlert."
+          }
+        },
+        "targetResourceTypes": {
+          "target": "com.azure.monitor#ScheduledQueryRulePropertiesInputTargetResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert"
+          }
+        },
+        "criteria": {
+          "target": "com.azure.monitor#ScheduledQueryRuleCriteria",
+          "traits": {
+            "smithy.api#documentation": "The rule criteria that defines the conditions of the scheduled query rule."
+          }
+        },
+        "muteActionsDuration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Mute actions for the chosen period of time (in ISO 8601 duration format) after the alert is fired. Relevant only for rules of the kind LogAlert."
+          }
+        },
+        "actions": {
+          "target": "com.azure.monitor#Actions",
+          "traits": {
+            "smithy.api#documentation": "Actions to invoke when the alert fires."
+          }
+        },
+        "checkWorkspaceAlertsStorageConfigured": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The flag which indicates whether this scheduled query rule should be stored in the customer's storage. The default is false. Relevant only for rules of the kind LogAlert."
+          }
+        },
+        "skipQueryValidation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The flag which indicates whether the provided query should be validated or not. The default is false. Relevant only for rules of the kind LogAlert."
+          }
+        },
+        "autoMitigate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of kinds LogAlert and SimpleLogAlert."
+          }
+        },
+        "resolveConfiguration": {
+          "target": "com.azure.monitor#RuleResolveConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "scheduled query rule Definition"
+      }
+    },
+    "com.azure.monitor#ScheduledQueryRulePropertiesInputTargetResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert"
+      }
+    },
+    "com.azure.monitor#ScheduledQueryRulePropertiesInputScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of resource id's that this scheduled query rule is scoped to."
+      }
+    },
+    "com.azure.monitor#ScheduledQueryRulePropertiesInputSeverity": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert."
+      }
+    },
+    "com.azure.monitor#ScheduledQueryRulesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
+      }
+    },
+    "com.azure.monitor#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.monitor#IdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "Type of managed service identity.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.monitor#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.monitor#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.monitor#UserIdentityPropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.monitor#UserIdentityPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties."
+      }
+    },
+    "com.azure.monitor#IdentityInputType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of managed service identity."
       }
     },
     "com.azure.monitor#ScheduledQueryRulesCreateOrUpdate": {
@@ -1432,16 +1731,79 @@
             "smithy.api#documentation": "The name of the rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.monitor#IdentityInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.monitor#ScheduledQueryRulesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.monitor#ScheduledQueryRulesCreateOrUpdateRequestKind",
+          "traits": {
+            "smithy.api#documentation": "Indicates the type of scheduled query rule. The default is LogAlert."
+          }
+        },
+        "properties": {
+          "target": "com.azure.monitor#ScheduledQueryRulePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The rule properties of the resource.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitor#ScheduledQueryRulesCreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "LOGALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LogAlert"
+          }
+        },
+        "SIMPLELOGALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SimpleLogAlert"
+          }
+        },
+        "LOGTOMETRIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LogToMetric"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates the type of scheduled query rule. The default is LogAlert."
+      }
+    },
+    "com.azure.monitor#ScheduledQueryRulesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.monitor#ScheduledQueryRulesGet": {

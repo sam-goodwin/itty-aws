@@ -729,16 +729,68 @@
             "smithy.api#documentation": "The name of the service resource in the format of {applicationName}~{serviceName}."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "It will be deprecated in New API, resource location depends on the parent resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.servicefabric#ServicesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Azure resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicefabric#ServiceResourceUpdateProperties"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicefabric#ServiceResourceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "placementConstraints": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: \"NodeColor == blue)\"."
+          }
+        },
+        "correlationScheme": {
+          "target": "com.azure.servicefabric#CorrelationSchemeList"
+        },
+        "serviceLoadMetrics": {
+          "target": "com.azure.servicefabric#ServiceLoadMetricsList"
+        },
+        "servicePlacementPolicies": {
+          "target": "com.azure.servicefabric#ServicePlacementPoliciesList"
+        },
+        "defaultMoveCost": {
+          "target": "com.azure.servicefabric#MoveCost"
+        },
+        "serviceKind": {
+          "target": "com.azure.servicefabric#ServiceKind",
+          "traits": {
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#input": {}
+        "smithy.api#documentation": "The service resource properties for patch operations."
+      }
+    },
+    "com.azure.servicefabric#ServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure resource tags."
       }
     },
     "com.azure.servicefabric#ServicesCreateOrUpdate": {
@@ -803,16 +855,109 @@
             "smithy.api#documentation": "The name of the service resource in the format of {applicationName}~{serviceName}."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "It will be deprecated in New API, resource location depends on the parent resource."
           }
+        },
+        "tags": {
+          "target": "com.azure.servicefabric#ServicesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Azure resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicefabric#ServiceResourcePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicefabric#ServiceResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "placementConstraints": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: \"NodeColor == blue)\"."
+          }
+        },
+        "correlationScheme": {
+          "target": "com.azure.servicefabric#CorrelationSchemeList"
+        },
+        "serviceLoadMetrics": {
+          "target": "com.azure.servicefabric#ServiceLoadMetricsList"
+        },
+        "servicePlacementPolicies": {
+          "target": "com.azure.servicefabric#ServicePlacementPoliciesList"
+        },
+        "defaultMoveCost": {
+          "target": "com.azure.servicefabric#MoveCost"
+        },
+        "serviceKind": {
+          "target": "com.azure.servicefabric#ServiceKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "serviceTypeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service type"
+          }
+        },
+        "partitionDescription": {
+          "target": "com.azure.servicefabric#PartitionSchemeDescription"
+        },
+        "servicePackageActivationMode": {
+          "target": "com.azure.servicefabric#ServiceResourcePropertiesInputServicePackageActivationMode",
+          "traits": {
+            "smithy.api#documentation": "The activation Mode of the service package"
+          }
+        },
+        "serviceDnsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Dns name used for the service. If this is specified, then the service can be accessed via its DNS name instead of service name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The service resource properties."
+      }
+    },
+    "com.azure.servicefabric#ServiceResourcePropertiesInputServicePackageActivationMode": {
+      "type": "enum",
+      "members": {
+        "SHAREDPROCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SharedProcess"
+          }
+        },
+        "EXCLUSIVEPROCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ExclusiveProcess"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The activation Mode of the service package"
+      }
+    },
+    "com.azure.servicefabric#ServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure resource tags."
       }
     },
     "com.azure.servicefabric#ServicesGet": {
@@ -1603,16 +1748,89 @@
             "smithy.api#documentation": "The name of the application resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "It will be deprecated in New API, resource location depends on the parent resource."
           }
+        },
+        "tags": {
+          "target": "com.azure.servicefabric#ApplicationsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Azure resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicefabric#ApplicationResourceUpdateProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicefabric#ApplicationResourceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "typeVersion": {
+          "target": "smithy.api#String"
+        },
+        "parameters": {
+          "target": "com.azure.servicefabric#ApplicationParameterList"
+        },
+        "upgradePolicy": {
+          "target": "com.azure.servicefabric#ApplicationUpgradePolicy"
+        },
+        "minimumNodes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of nodes where Service Fabric will reserve capacity for this application. Note that this does not mean that the services of this application will be placed on all of those nodes. If this property is set to zero, no capacity will be reserved. The value of this property cannot be more than the value of the MaximumNodes property."
+          }
+        },
+        "maximumNodes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of nodes where Service Fabric will reserve capacity for this application. Note that this does not mean that the services of this application will be placed on all of those nodes. By default, the value of this property is zero and it means that the services can be placed on any node."
+          }
+        },
+        "removeApplicationCapacity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Remove the current application capacity settings."
+          }
+        },
+        "metrics": {
+          "target": "com.azure.servicefabric#ApplicationMetricDescriptionList"
+        },
+        "managedIdentities": {
+          "target": "com.azure.servicefabric#ApplicationResourceUpdatePropertiesManagedIdentitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of user assigned identities for the application, each mapped to a friendly name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The application resource properties for patch operations."
+      }
+    },
+    "com.azure.servicefabric#ApplicationResourceUpdatePropertiesManagedIdentitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#ApplicationUserAssignedIdentity"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user assigned identities for the application, each mapped to a friendly name."
+      }
+    },
+    "com.azure.servicefabric#ApplicationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure resource tags."
       }
     },
     "com.azure.servicefabric#ApplicationsCreateOrUpdate": {
@@ -1669,16 +1887,126 @@
             "smithy.api#documentation": "The name of the application resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "It will be deprecated in New API, resource location depends on the parent resource."
           }
+        },
+        "tags": {
+          "target": "com.azure.servicefabric#ApplicationsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Azure resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.servicefabric#ManagedIdentityInput"
+        },
+        "properties": {
+          "target": "com.azure.servicefabric#ApplicationResourcePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicefabric#ApplicationResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "typeVersion": {
+          "target": "smithy.api#String"
+        },
+        "parameters": {
+          "target": "com.azure.servicefabric#ApplicationParameterList"
+        },
+        "upgradePolicy": {
+          "target": "com.azure.servicefabric#ApplicationUpgradePolicy"
+        },
+        "minimumNodes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of nodes where Service Fabric will reserve capacity for this application. Note that this does not mean that the services of this application will be placed on all of those nodes. If this property is set to zero, no capacity will be reserved. The value of this property cannot be more than the value of the MaximumNodes property."
+          }
+        },
+        "maximumNodes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of nodes where Service Fabric will reserve capacity for this application. Note that this does not mean that the services of this application will be placed on all of those nodes. By default, the value of this property is zero and it means that the services can be placed on any node."
+          }
+        },
+        "removeApplicationCapacity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Remove the current application capacity settings."
+          }
+        },
+        "metrics": {
+          "target": "com.azure.servicefabric#ApplicationMetricDescriptionList"
+        },
+        "managedIdentities": {
+          "target": "com.azure.servicefabric#ApplicationResourcePropertiesInputManagedIdentitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of user assigned identities for the application, each mapped to a friendly name."
+          }
+        },
+        "typeName": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The application resource properties."
+      }
+    },
+    "com.azure.servicefabric#ApplicationResourcePropertiesInputManagedIdentitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#ApplicationUserAssignedIdentity"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of user assigned identities for the application, each mapped to a friendly name."
+      }
+    },
+    "com.azure.servicefabric#ManagedIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.servicefabric#ManagedIdentityType"
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.servicefabric#UserAssignedIdentityMapInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the managed identities for an Azure resource."
+      }
+    },
+    "com.azure.servicefabric#UserAssignedIdentityMapInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.servicefabric#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:\n'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.\n"
+      }
+    },
+    "com.azure.servicefabric#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
+    },
+    "com.azure.servicefabric#ApplicationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure resource tags."
       }
     },
     "com.azure.servicefabric#ApplicationsGet": {
@@ -2115,16 +2443,51 @@
             "smithy.api#documentation": "The application type version."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "It will be deprecated in New API, resource location depends on the parent resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.servicefabric#ApplicationTypeVersionsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Azure resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicefabric#ApplicationTypeVersionResourcePropertiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicefabric#ApplicationTypeVersionResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "appPackageUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to the application package",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#input": {}
+        "smithy.api#documentation": "The properties of the application type version resource."
+      }
+    },
+    "com.azure.servicefabric#ApplicationTypeVersionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure resource tags."
       }
     },
     "com.azure.servicefabric#ApplicationTypeVersionsGet": {
@@ -2582,16 +2945,43 @@
             "smithy.api#documentation": "The name of the application type name resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "It will be deprecated in New API, resource location depends on the parent resource."
           }
+        },
+        "tags": {
+          "target": "com.azure.servicefabric#ApplicationTypesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Azure resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicefabric#ApplicationTypeResourcePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicefabric#ApplicationTypeResourcePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The application type name properties"
+      }
+    },
+    "com.azure.servicefabric#ApplicationTypesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure resource tags."
       }
     },
     "com.azure.servicefabric#ApplicationTypesGet": {
@@ -2897,10 +3287,11 @@
             "smithy.api#documentation": "The name of the cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targetVersion": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The target code version.",
+            "smithy.api#required": {}
           }
         }
       },
@@ -4934,16 +5325,209 @@
             "smithy.api#documentation": "The name of the cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.servicefabric#ClusterPropertiesUpdateParameters"
+        },
+        "tags": {
+          "target": "com.azure.servicefabric#ClustersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Cluster update parameters"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicefabric#ClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Cluster update parameters"
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "addOnFeatures": {
+          "target": "com.azure.servicefabric#ClusterPropertiesUpdateParametersAddOnFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "The list of add-on features to enable in the cluster."
+          }
+        },
+        "certificate": {
+          "target": "com.azure.servicefabric#CertificateDescription",
+          "traits": {
+            "smithy.api#documentation": "The certificate to use for securing the cluster. The certificate provided will be used for  node to node security within the cluster, SSL certificate for cluster management endpoint and default  admin client."
+          }
+        },
+        "certificateCommonNames": {
+          "target": "com.azure.servicefabric#ServerCertificateCommonNames"
+        },
+        "clientCertificateCommonNames": {
+          "target": "com.azure.servicefabric#ClusterPropertiesUpdateParametersClientCertificateCommonNamesList",
+          "traits": {
+            "smithy.api#documentation": "The list of client certificates referenced by common name that are allowed to manage the cluster. This will overwrite the existing list."
+          }
+        },
+        "clientCertificateThumbprints": {
+          "target": "com.azure.servicefabric#ClusterPropertiesUpdateParametersClientCertificateThumbprintsList",
+          "traits": {
+            "smithy.api#documentation": "The list of client certificates referenced by thumbprint that are allowed to manage the cluster. This will overwrite the existing list."
+          }
+        },
+        "clusterCodeVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](https://learn.microsoft.com/rest/api/servicefabric/cluster-versions/list). To get the list of available version for existing clusters use **availableClusterVersions**."
+          }
+        },
+        "eventStoreServiceEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the event store service is enabled."
+          }
+        },
+        "fabricSettings": {
+          "target": "com.azure.servicefabric#ClusterPropertiesUpdateParametersFabricSettingsList",
+          "traits": {
+            "smithy.api#documentation": "The list of custom fabric settings to configure the cluster. This will overwrite the existing list."
+          }
+        },
+        "nodeTypes": {
+          "target": "com.azure.servicefabric#ClusterPropertiesUpdateParametersNodeTypesList",
+          "traits": {
+            "smithy.api#documentation": "The list of node types in the cluster. This will overwrite the existing list."
+          }
+        },
+        "reliabilityLevel": {
+          "target": "com.azure.servicefabric#ReliabilityLevel"
+        },
+        "reverseProxyCertificate": {
+          "target": "com.azure.servicefabric#CertificateDescription",
+          "traits": {
+            "smithy.api#documentation": "The server certificate used by reverse proxy."
+          }
+        },
+        "upgradeDescription": {
+          "target": "com.azure.servicefabric#ClusterUpgradePolicy",
+          "traits": {
+            "smithy.api#documentation": "The policy to use when upgrading the cluster."
+          }
+        },
+        "applicationTypeVersionsCleanupPolicy": {
+          "target": "com.azure.servicefabric#ApplicationTypeVersionsCleanupPolicy",
+          "traits": {
+            "smithy.api#documentation": "The policy used to clean up unused versions."
+          }
+        },
+        "upgradeMode": {
+          "target": "com.azure.servicefabric#UpgradeMode"
+        },
+        "sfZonalUpgradeMode": {
+          "target": "com.azure.servicefabric#SfZonalUpgradeMode"
+        },
+        "vmssZonalUpgradeMode": {
+          "target": "com.azure.servicefabric#VmssZonalUpgradeMode"
+        },
+        "infrastructureServiceManager": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if infrastructure service manager is enabled."
+          }
+        },
+        "upgradeWave": {
+          "target": "com.azure.servicefabric#ClusterUpgradeCadence",
+          "traits": {
+            "smithy.api#documentation": "Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **upgradeMode** is set to 'Automatic'."
+          }
+        },
+        "upgradePauseStartTimestampUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start timestamp to pause runtime version upgrades on the cluster (UTC)."
+          }
+        },
+        "upgradePauseEndTimestampUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end timestamp of pause runtime version upgrades on the cluster (UTC)."
+          }
+        },
+        "waveUpgradePaused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Boolean to pause automatic runtime version upgrades to the cluster."
+          }
+        },
+        "notifications": {
+          "target": "com.azure.servicefabric#ClusterPropertiesUpdateParametersNotificationsList",
+          "traits": {
+            "smithy.api#documentation": "Indicates a list of notification channels for cluster events."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the cluster resource properties that can be updated during PATCH operation."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesUpdateParametersNotificationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#Notification"
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates a list of notification channels for cluster events."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesUpdateParametersNodeTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#NodeTypeDescription"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of node types in the cluster. This will overwrite the existing list."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesUpdateParametersFabricSettingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#SettingsSectionDescription"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of custom fabric settings to configure the cluster. This will overwrite the existing list."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesUpdateParametersClientCertificateThumbprintsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#ClientCertificateThumbprint"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of client certificates referenced by thumbprint that are allowed to manage the cluster. This will overwrite the existing list."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesUpdateParametersClientCertificateCommonNamesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#ClientCertificateCommonName"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of client certificates referenced by common name that are allowed to manage the cluster. This will overwrite the existing list."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesUpdateParametersAddOnFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#AddOnFeatures"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of add-on features to enable in the cluster."
       }
     },
     "com.azure.servicefabric#ClustersCreateOrUpdate": {
@@ -5058,16 +5642,248 @@
             "smithy.api#documentation": "The name of the cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Azure resource location.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.servicefabric#ClustersCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Azure resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicefabric#ClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The cluster resource properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "addOnFeatures": {
+          "target": "com.azure.servicefabric#ClusterPropertiesInputAddOnFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "The list of add-on features to enable in the cluster."
+          }
+        },
+        "azureActiveDirectory": {
+          "target": "com.azure.servicefabric#AzureActiveDirectory",
+          "traits": {
+            "smithy.api#documentation": "The AAD authentication settings of the cluster."
+          }
+        },
+        "certificate": {
+          "target": "com.azure.servicefabric#CertificateDescription",
+          "traits": {
+            "smithy.api#documentation": "The certificate to use for securing the cluster. The certificate provided will be used for node to node security within the cluster, SSL certificate for cluster management endpoint and default admin client."
+          }
+        },
+        "certificateCommonNames": {
+          "target": "com.azure.servicefabric#ServerCertificateCommonNames"
+        },
+        "clientCertificateCommonNames": {
+          "target": "com.azure.servicefabric#ClusterPropertiesInputClientCertificateCommonNamesList",
+          "traits": {
+            "smithy.api#documentation": "The list of client certificates referenced by common name that are allowed to manage the cluster."
+          }
+        },
+        "clientCertificateThumbprints": {
+          "target": "com.azure.servicefabric#ClusterPropertiesInputClientCertificateThumbprintsList",
+          "traits": {
+            "smithy.api#documentation": "The list of client certificates referenced by thumbprint that are allowed to manage the cluster."
+          }
+        },
+        "clusterCodeVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](https://learn.microsoft.com/rest/api/servicefabric/cluster-versions/list). To get the list of available version for existing clusters use **availableClusterVersions**."
+          }
+        },
+        "diagnosticsStorageAccountConfig": {
+          "target": "com.azure.servicefabric#DiagnosticsStorageAccountConfig",
+          "traits": {
+            "smithy.api#documentation": "The storage account information for storing Service Fabric diagnostic logs."
+          }
+        },
+        "eventStoreServiceEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the event store service is enabled."
+          }
+        },
+        "fabricSettings": {
+          "target": "com.azure.servicefabric#ClusterPropertiesInputFabricSettingsList",
+          "traits": {
+            "smithy.api#documentation": "The list of custom fabric settings to configure the cluster."
+          }
+        },
+        "managementEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The http management endpoint of the cluster.",
+            "smithy.api#required": {}
+          }
+        },
+        "nodeTypes": {
+          "target": "com.azure.servicefabric#ClusterPropertiesInputNodeTypesList",
+          "traits": {
+            "smithy.api#documentation": "The list of node types in the cluster.",
+            "smithy.api#required": {}
+          }
+        },
+        "reliabilityLevel": {
+          "target": "com.azure.servicefabric#ReliabilityLevel"
+        },
+        "reverseProxyCertificate": {
+          "target": "com.azure.servicefabric#CertificateDescription",
+          "traits": {
+            "smithy.api#documentation": "The server certificate used by reverse proxy."
+          }
+        },
+        "reverseProxyCertificateCommonNames": {
+          "target": "com.azure.servicefabric#ServerCertificateCommonNames"
+        },
+        "upgradeDescription": {
+          "target": "com.azure.servicefabric#ClusterUpgradePolicy",
+          "traits": {
+            "smithy.api#documentation": "The policy to use when upgrading the cluster."
+          }
+        },
+        "upgradeMode": {
+          "target": "com.azure.servicefabric#UpgradeMode"
+        },
+        "applicationTypeVersionsCleanupPolicy": {
+          "target": "com.azure.servicefabric#ApplicationTypeVersionsCleanupPolicy",
+          "traits": {
+            "smithy.api#documentation": "The policy used to clean up unused versions."
+          }
+        },
+        "vmImage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The VM image VMSS has been configured with. Generic names such as Windows or Linux can be used."
+          }
+        },
+        "sfZonalUpgradeMode": {
+          "target": "com.azure.servicefabric#SfZonalUpgradeMode"
+        },
+        "vmssZonalUpgradeMode": {
+          "target": "com.azure.servicefabric#VmssZonalUpgradeMode"
+        },
+        "infrastructureServiceManager": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if infrastructure service manager is enabled."
+          }
+        },
+        "upgradeWave": {
+          "target": "com.azure.servicefabric#ClusterUpgradeCadence",
+          "traits": {
+            "smithy.api#documentation": "Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **upgradeMode** is set to 'Automatic'."
+          }
+        },
+        "upgradePauseStartTimestampUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the start date and time to pause automatic runtime version upgrades on the cluster for an specific period of time on the cluster (UTC)."
+          }
+        },
+        "upgradePauseEndTimestampUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the end date and time to pause automatic runtime version upgrades on the cluster for an specific period of time on the cluster (UTC)."
+          }
+        },
+        "waveUpgradePaused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Boolean to pause automatic runtime version upgrades to the cluster."
+          }
+        },
+        "notifications": {
+          "target": "com.azure.servicefabric#ClusterPropertiesInputNotificationsList",
+          "traits": {
+            "smithy.api#documentation": "Indicates a list of notification channels for cluster events."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the cluster resource properties."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesInputNotificationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#Notification"
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates a list of notification channels for cluster events."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesInputNodeTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#NodeTypeDescription"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of node types in the cluster."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesInputFabricSettingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#SettingsSectionDescription"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of custom fabric settings to configure the cluster."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesInputClientCertificateThumbprintsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#ClientCertificateThumbprint"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of client certificates referenced by thumbprint that are allowed to manage the cluster."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesInputClientCertificateCommonNamesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#ClientCertificateCommonName"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of client certificates referenced by common name that are allowed to manage the cluster."
+      }
+    },
+    "com.azure.servicefabric#ClusterPropertiesInputAddOnFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicefabric#AddOnFeatures"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of add-on features to enable in the cluster."
+      }
+    },
+    "com.azure.servicefabric#ClustersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure resource tags."
       }
     },
     "com.azure.servicefabric#ClustersGet": {

@@ -68,6 +68,24 @@
           "traits": {
             "smithy.api#enumValue": "RECLASSIFY"
           }
+        },
+        "SUBMISSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUBMISSION"
+          }
+        },
+        "QUARANTINE_RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QUARANTINE_RELEASE"
+          }
+        },
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PREVIEW"
+          }
         }
       }
     },
@@ -163,6 +181,36 @@
           "traits": {
             "smithy.api#enumValue": "allowed_sender"
           }
+        },
+        "ALLOWED_RECIPIENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "allowed_recipient"
+          }
+        },
+        "DOMAIN_SIMILARITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_similarity"
+          }
+        },
+        "DOMAIN_RECENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_recency"
+          }
+        },
+        "MANAGED_ACCEPTABLE_SENDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_acceptable_sender"
+          }
+        },
+        "OUTBOUND_NDR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "outbound_ndr"
+          }
         }
       }
     },
@@ -185,6 +233,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "allowed_sender"
+          }
+        },
+        "ALLOWED_RECIPIENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "allowed_recipient"
+          }
+        },
+        "DOMAIN_SIMILARITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_similarity"
+          }
+        },
+        "DOMAIN_RECENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_recency"
+          }
+        },
+        "MANAGED_ACCEPTABLE_SENDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_acceptable_sender"
+          }
+        },
+        "OUTBOUND_NDR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "outbound_ndr"
           }
         }
       }
@@ -244,6 +322,54 @@
           "traits": {
             "smithy.api#enumValue": "JOURNAL"
           }
+        },
+        "REVIEW_SUBMISSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "REVIEW_SUBMISSION"
+          }
+        },
+        "DMARC_UNVERIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DMARC_UNVERIFIED"
+          }
+        },
+        "DMARC_FAILURE_REPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DMARC_FAILURE_REPORT"
+          }
+        },
+        "DMARC_AGGREGATE_REPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DMARC_AGGREGATE_REPORT"
+          }
+        },
+        "THREAT_INTEL_SUBMISSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "THREAT_INTEL_SUBMISSION"
+          }
+        },
+        "SIMULATION_SUBMISSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SIMULATION_SUBMISSION"
+          }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "API"
+          }
+        },
+        "RETRO_SCAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RETRO_SCAN"
+          }
         }
       }
     },
@@ -266,6 +392,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "quarantined"
+          }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "DEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deferred"
+          }
+        },
+        "BOUNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bounced"
+          }
+        },
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
           }
         }
       }
@@ -302,6 +452,48 @@
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
           }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
         }
       }
     },
@@ -324,6 +516,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -439,6 +673,18 @@
           "traits": {
             "smithy.api#enumValue": "fail"
           }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
         }
       }
     },
@@ -462,6 +708,18 @@
           "traits": {
             "smithy.api#enumValue": "fail"
           }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
         }
       }
     },
@@ -484,6 +742,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "fail"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
           }
         }
       }
@@ -701,6 +971,30 @@
           "traits": {
             "smithy.api#enumValue": "quarantined"
           }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "DEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deferred"
+          }
+        },
+        "BOUNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bounced"
+          }
+        },
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
         }
       }
     },
@@ -723,6 +1017,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -898,6 +1210,24 @@
           "traits": {
             "smithy.api#enumValue": "RECLASSIFY"
           }
+        },
+        "SUBMISSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUBMISSION"
+          }
+        },
+        "QUARANTINE_RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QUARANTINE_RELEASE"
+          }
+        },
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PREVIEW"
+          }
         }
       }
     },
@@ -993,6 +1323,36 @@
           "traits": {
             "smithy.api#enumValue": "allowed_sender"
           }
+        },
+        "ALLOWED_RECIPIENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "allowed_recipient"
+          }
+        },
+        "DOMAIN_SIMILARITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_similarity"
+          }
+        },
+        "DOMAIN_RECENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_recency"
+          }
+        },
+        "MANAGED_ACCEPTABLE_SENDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_acceptable_sender"
+          }
+        },
+        "OUTBOUND_NDR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "outbound_ndr"
+          }
         }
       }
     },
@@ -1015,6 +1375,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "allowed_sender"
+          }
+        },
+        "ALLOWED_RECIPIENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "allowed_recipient"
+          }
+        },
+        "DOMAIN_SIMILARITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_similarity"
+          }
+        },
+        "DOMAIN_RECENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "domain_recency"
+          }
+        },
+        "MANAGED_ACCEPTABLE_SENDER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_acceptable_sender"
+          }
+        },
+        "OUTBOUND_NDR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "outbound_ndr"
           }
         }
       }
@@ -1074,6 +1464,54 @@
           "traits": {
             "smithy.api#enumValue": "JOURNAL"
           }
+        },
+        "REVIEW_SUBMISSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "REVIEW_SUBMISSION"
+          }
+        },
+        "DMARC_UNVERIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DMARC_UNVERIFIED"
+          }
+        },
+        "DMARC_FAILURE_REPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DMARC_FAILURE_REPORT"
+          }
+        },
+        "DMARC_AGGREGATE_REPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DMARC_AGGREGATE_REPORT"
+          }
+        },
+        "THREAT_INTEL_SUBMISSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "THREAT_INTEL_SUBMISSION"
+          }
+        },
+        "SIMULATION_SUBMISSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SIMULATION_SUBMISSION"
+          }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "API"
+          }
+        },
+        "RETRO_SCAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RETRO_SCAN"
+          }
         }
       }
     },
@@ -1096,6 +1534,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "quarantined"
+          }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "DEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deferred"
+          }
+        },
+        "BOUNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bounced"
+          }
+        },
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
           }
         }
       }
@@ -1132,6 +1594,48 @@
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
           }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
         }
       }
     },
@@ -1154,6 +1658,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -1269,6 +1815,18 @@
           "traits": {
             "smithy.api#enumValue": "fail"
           }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
         }
       }
     },
@@ -1292,6 +1850,18 @@
           "traits": {
             "smithy.api#enumValue": "fail"
           }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
         }
       }
     },
@@ -1314,6 +1884,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "fail"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
           }
         }
       }
@@ -1565,6 +2147,30 @@
           "traits": {
             "smithy.api#enumValue": "quarantined"
           }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "DEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deferred"
+          }
+        },
+        "BOUNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bounced"
+          }
+        },
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
         }
       }
     },
@@ -1587,6 +2193,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -1702,6 +2350,18 @@
           "traits": {
             "smithy.api#enumValue": "DeletedItems"
           }
+        },
+        "RECOVERABLEITEMSDELETIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsDeletions"
+          }
+        },
+        "RECOVERABLEITEMSPURGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsPurges"
+          }
         }
       }
     },
@@ -1724,6 +2384,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -1785,6 +2487,18 @@
           "traits": {
             "smithy.api#enumValue": "DeletedItems"
           }
+        },
+        "RECOVERABLEITEMSDELETIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsDeletions"
+          }
+        },
+        "RECOVERABLEITEMSPURGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsPurges"
+          }
         }
       }
     },
@@ -1818,6 +2532,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -1912,6 +2668,30 @@
           "traits": {
             "smithy.api#enumValue": "quarantined"
           }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "DEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deferred"
+          }
+        },
+        "BOUNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bounced"
+          }
+        },
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
         }
       }
     },
@@ -1934,6 +2714,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -2048,6 +2870,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "PROCESSING"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "COMPLETED"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FAILED"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CANCELLED"
+          }
+        },
+        "SKIPPED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SKIPPED"
           }
         }
       }
@@ -2249,6 +3095,18 @@
           "traits": {
             "smithy.api#enumValue": "DeletedItems"
           }
+        },
+        "RECOVERABLEITEMSDELETIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsDeletions"
+          }
+        },
+        "RECOVERABLEITEMSPURGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsPurges"
+          }
         }
       }
     },
@@ -2282,6 +3140,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -2376,6 +3276,30 @@
           "traits": {
             "smithy.api#enumValue": "quarantined"
           }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "DEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deferred"
+          }
+        },
+        "BOUNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bounced"
+          }
+        },
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
         }
       }
     },
@@ -2398,6 +3322,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -2512,6 +3478,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "PROCESSING"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "COMPLETED"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FAILED"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CANCELLED"
+          }
+        },
+        "SKIPPED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SKIPPED"
           }
         }
       }
@@ -2652,6 +3642,30 @@
           "traits": {
             "smithy.api#enumValue": "PROCESSING"
           }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "COMPLETED"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FAILED"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CANCELLED"
+          }
+        },
+        "SKIPPED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SKIPPED"
+          }
         }
       }
     },
@@ -2717,6 +3731,18 @@
           "traits": {
             "smithy.api#enumValue": "DeletedItems"
           }
+        },
+        "RECOVERABLEITEMSDELETIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsDeletions"
+          }
+        },
+        "RECOVERABLEITEMSPURGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsPurges"
+          }
         }
       }
     },
@@ -2750,6 +3776,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -2844,6 +3912,30 @@
           "traits": {
             "smithy.api#enumValue": "quarantined"
           }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "DEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deferred"
+          }
+        },
+        "BOUNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bounced"
+          }
+        },
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
         }
       }
     },
@@ -2866,6 +3958,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -2980,6 +4114,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "PROCESSING"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "COMPLETED"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FAILED"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CANCELLED"
+          }
+        },
+        "SKIPPED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SKIPPED"
           }
         }
       }
@@ -3143,6 +4301,18 @@
           "traits": {
             "smithy.api#enumValue": "DeletedItems"
           }
+        },
+        "RECOVERABLEITEMSDELETIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsDeletions"
+          }
+        },
+        "RECOVERABLEITEMSPURGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsPurges"
+          }
         }
       }
     },
@@ -3176,6 +4346,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -3270,6 +4482,30 @@
           "traits": {
             "smithy.api#enumValue": "quarantined"
           }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        },
+        "DEFERRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deferred"
+          }
+        },
+        "BOUNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bounced"
+          }
+        },
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
         }
       }
     },
@@ -3292,6 +4528,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -3406,6 +4684,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "PROCESSING"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "COMPLETED"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FAILED"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CANCELLED"
+          }
+        },
+        "SKIPPED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SKIPPED"
           }
         }
       }
@@ -3528,6 +4830,30 @@
           "traits": {
             "smithy.api#enumValue": "PROCESSING"
           }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "COMPLETED"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FAILED"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CANCELLED"
+          }
+        },
+        "SKIPPED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SKIPPED"
+          }
         }
       }
     },
@@ -3594,6 +4920,18 @@
           "traits": {
             "smithy.api#enumValue": "DeletedItems"
           }
+        },
+        "RECOVERABLEITEMSDELETIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsDeletions"
+          }
+        },
+        "RECOVERABLEITEMSPURGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsPurges"
+          }
         }
       }
     },
@@ -3627,6 +4965,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -3732,6 +5112,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "PROCESSING"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "COMPLETED"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FAILED"
+          }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CANCELLED"
+          }
+        },
+        "SKIPPED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SKIPPED"
           }
         }
       }
@@ -3884,6 +5288,48 @@
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
           }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
         }
       }
     },
@@ -3972,6 +5418,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -4123,6 +5611,18 @@
           "traits": {
             "smithy.api#enumValue": "fail"
           }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
         }
       }
     },
@@ -4146,6 +5646,18 @@
           "traits": {
             "smithy.api#enumValue": "fail"
           }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
         }
       }
     },
@@ -4168,6 +5680,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "fail"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
           }
         }
       }
@@ -4208,6 +5732,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -4310,6 +5876,18 @@
           "traits": {
             "smithy.api#enumValue": "DeletedItems"
           }
+        },
+        "RECOVERABLEITEMSDELETIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsDeletions"
+          }
+        },
+        "RECOVERABLEITEMSPURGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsPurges"
+          }
         }
       }
     },
@@ -4332,6 +5910,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -4503,6 +6123,18 @@
           "traits": {
             "smithy.api#enumValue": "DeletedItems"
           }
+        },
+        "RECOVERABLEITEMSDELETIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsDeletions"
+          }
+        },
+        "RECOVERABLEITEMSPURGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RecoverableItemsPurges"
+          }
         }
       }
     },
@@ -4525,6 +6157,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -4851,6 +6525,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
           }
         }
       }
@@ -5244,6 +6936,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -7211,6 +8945,18 @@
           "traits": {
             "smithy.api#enumValue": "JOURNAL"
           }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "API"
+          }
+        },
+        "RETRO_SCAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RETRO_SCAN"
+          }
         }
       }
     },
@@ -7239,6 +8985,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -7291,6 +9079,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "DE"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "US"
           }
         }
       }
@@ -7378,6 +9178,18 @@
           "traits": {
             "smithy.api#enumValue": "JOURNAL"
           }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "API"
+          }
+        },
+        "RETRO_SCAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RETRO_SCAN"
+          }
         }
       }
     },
@@ -7449,6 +9261,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -7542,6 +9396,18 @@
           "traits": {
             "smithy.api#enumValue": "DE"
           }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "US"
+          }
         }
       }
     },
@@ -7570,6 +9436,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "neutral"
+          }
+        },
+        "OPEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "open"
+          }
+        },
+        "INVALID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "invalid"
           }
         }
       }
@@ -7745,6 +9623,18 @@
           "traits": {
             "smithy.api#enumValue": "JOURNAL"
           }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "API"
+          }
+        },
+        "RETRO_SCAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RETRO_SCAN"
+          }
         }
       }
     },
@@ -7816,6 +9706,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -7909,6 +9841,18 @@
           "traits": {
             "smithy.api#enumValue": "DE"
           }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "US"
+          }
         }
       }
     },
@@ -7937,6 +9881,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "neutral"
+          }
+        },
+        "OPEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "open"
+          }
+        },
+        "INVALID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "invalid"
           }
         }
       }
@@ -8089,6 +10045,18 @@
           "traits": {
             "smithy.api#enumValue": "JOURNAL"
           }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "API"
+          }
+        },
+        "RETRO_SCAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RETRO_SCAN"
+          }
         }
       }
     },
@@ -8111,6 +10079,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "JOURNAL"
+          }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "API"
+          }
+        },
+        "RETRO_SCAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RETRO_SCAN"
           }
         }
       }
@@ -8290,6 +10270,18 @@
           "traits": {
             "smithy.api#enumValue": "JOURNAL"
           }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "API"
+          }
+        },
+        "RETRO_SCAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RETRO_SCAN"
+          }
         }
       }
     },
@@ -8361,6 +10353,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        },
+        "SPOOF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "ENCRYPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENCRYPTED"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EXTERNAL"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -8454,6 +10488,18 @@
           "traits": {
             "smithy.api#enumValue": "DE"
           }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "US"
+          }
         }
       }
     },
@@ -8482,6 +10528,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "neutral"
+          }
+        },
+        "OPEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "open"
+          }
+        },
+        "INVALID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "invalid"
           }
         }
       }
@@ -10947,6 +13005,24 @@
           "traits": {
             "smithy.api#enumValue": "SPOOF"
           }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
         }
       }
     },
@@ -10970,6 +13046,24 @@
           "traits": {
             "smithy.api#enumValue": "SPOOF"
           }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
         }
       }
     },
@@ -10992,6 +13086,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -11149,6 +13261,24 @@
           "traits": {
             "smithy.api#enumValue": "SPOOF"
           }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
         }
       }
     },
@@ -11171,6 +13301,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }
@@ -11195,6 +13343,24 @@
           "traits": {
             "smithy.api#enumValue": "SPOOF"
           }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
+          }
         }
       }
     },
@@ -11217,6 +13383,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SPOOF"
+          }
+        },
+        "SPAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPAM"
+          }
+        },
+        "BULK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BULK"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NONE"
           }
         }
       }

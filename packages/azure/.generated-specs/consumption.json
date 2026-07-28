@@ -6147,16 +6147,81 @@
             "smithy.api#documentation": "Budget Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.consumption#BudgetPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the budget."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.consumption#BudgetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "category": {
+          "target": "com.azure.consumption#CategoryType",
+          "traits": {
+            "smithy.api#documentation": "The category of the budget, whether the budget tracks cost or usage.",
+            "smithy.api#required": {}
+          }
+        },
+        "amount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The total amount of cost to track with the budget",
+            "smithy.api#required": {}
+          }
+        },
+        "timeGrain": {
+          "target": "com.azure.consumption#TimeGrainType",
+          "traits": {
+            "smithy.api#documentation": "The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers",
+            "smithy.api#required": {}
+          }
+        },
+        "timePeriod": {
+          "target": "com.azure.consumption#BudgetTimePeriod",
+          "traits": {
+            "smithy.api#documentation": "Has start and end date of the budget. The start date must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period. There are no restrictions on the end date.",
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "com.azure.consumption#BudgetFilter",
+          "traits": {
+            "smithy.api#documentation": "May be used to filter budgets by user-specified dimensions and/or tags."
+          }
+        },
+        "notifications": {
+          "target": "com.azure.consumption#BudgetPropertiesInputNotificationsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of notifications associated with the budget. Budget can have up to five notifications."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the budget."
+      }
+    },
+    "com.azure.consumption#BudgetPropertiesInputNotificationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.consumption#Notification"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of notifications associated with the budget. Budget can have up to five notifications."
       }
     },
     "com.azure.consumption#BudgetsGet": {

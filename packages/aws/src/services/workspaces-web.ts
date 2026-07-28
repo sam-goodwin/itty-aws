@@ -458,8 +458,7 @@ export type Category =
   | "ProfessionalNetwork"
   | "SocialNetworking"
   | "WebBasedEmail"
-  | "ParkedDomains"
-  | (string & {});
+  | "ParkedDomains";
 export const Category = /*@__PURE__*/ S.String;
 
 export type BlockedCategories = Category[];
@@ -843,8 +842,7 @@ export type Event =
   | "SessionStart"
   | "SessionDisconnect"
   | "SessionEnd"
-  | "UrlBlockByContentFilter"
-  | (string & {});
+  | "UrlBlockByContentFilter";
 export const Event = /*@__PURE__*/ S.String;
 
 export type Events = Event[];
@@ -859,10 +857,10 @@ export const EventFilter = /*@__PURE__*/ S.Union([
 export type S3Bucket = string | redacted.Redacted<string>;
 export type S3KeyPrefix = string | redacted.Redacted<string>;
 export type S3BucketOwner = string;
-export type LogFileFormat = "JSONLines" | "Json" | (string & {});
+export type LogFileFormat = "JSONLines" | "Json";
 export const LogFileFormat = /*@__PURE__*/ S.String;
 
-export type FolderStructure = "Flat" | "NestedByDate" | (string & {});
+export type FolderStructure = "Flat" | "NestedByDate";
 export const FolderStructure = /*@__PURE__*/ S.String;
 
 export interface S3LogConfiguration {
@@ -1081,8 +1079,7 @@ export type Locale =
   | "ko-KR"
   | "pt-BR"
   | "zh-CN"
-  | "zh-TW"
-  | (string & {});
+  | "zh-TW";
 export const Locale = /*@__PURE__*/ S.String;
 
 export type BrandingSafeStringType = string;
@@ -1118,7 +1115,7 @@ export const LocalizedBrandingStringMap = /*@__PURE__*/ S.Record(
   Locale,
   LocalizedBrandingStrings.pipe(S.optional),
 );
-export type ColorTheme = "Light" | "Dark" | (string & {});
+export type ColorTheme = "Light" | "Dark";
 export const ColorTheme = /*@__PURE__*/ S.String;
 
 export type Markdown = string | redacted.Redacted<string>;
@@ -2090,7 +2087,7 @@ export type Username = string | redacted.Redacted<string>;
 export type IpAddress = string | redacted.Redacted<string>;
 export type IpAddressList = (string | redacted.Redacted<string>)[];
 export const IpAddressList = /*@__PURE__*/ S.Array(SensitiveString);
-export type SessionStatus = "Active" | "Terminated" | (string & {});
+export type SessionStatus = "Active" | "Terminated";
 export const SessionStatus = /*@__PURE__*/ S.String;
 
 export interface Session {
@@ -2326,11 +2323,7 @@ export const GetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUserSettingsRequest",
 }) as any as S.Schema<GetUserSettingsRequest>;
-export type MimeType =
-  | "image/png"
-  | "image/jpeg"
-  | "image/x-icon"
-  | (string & {});
+export type MimeType = "image/png" | "image/jpeg" | "image/x-icon";
 export const MimeType = /*@__PURE__*/ S.String;
 
 export interface ImageMetadata {
@@ -2795,10 +2788,7 @@ export const ListSessionLoggersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSessionLoggersResponse",
 }) as any as S.Schema<ListSessionLoggersResponse>;
-export type SessionSortBy =
-  | "StartTimeAscending"
-  | "StartTimeDescending"
-  | (string & {});
+export type SessionSortBy = "StartTimeAscending" | "StartTimeDescending";
 export const SessionSortBy = /*@__PURE__*/ S.String;
 
 export interface ListSessionsRequest {

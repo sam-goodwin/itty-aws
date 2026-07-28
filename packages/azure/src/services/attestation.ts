@@ -12,6 +12,132 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The tags that will be assigned to the attestation provider. */
+export type AttestationProvidersCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AttestationProvidersCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AttestationProvidersCreateRequestTagsMap>;
+
+/** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
+export type AttestationServiceCreationSpecificParamsPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled";
+export const AttestationServiceCreationSpecificParamsPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** The "x5c" (X.509 certificate chain) parameter contains a chain of one or more PKIX certificates [RFC5280]. The certificate chain is represented as a JSON array of certificate value strings. Each string in the array is a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the key value MUST be the first certificate. */
+export type JsonWebKeyX5cList = ReadonlyArray<string>;
+export const JsonWebKeyX5cList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<JsonWebKeyX5cList>;
+
+export interface JsonWebKey {
+  /** The "alg" (algorithm) parameter identifies the algorithm intended for use with the key. The values used should either be registered in the IANA "JSON Web Signature and Encryption Algorithms" registry established by [JWA] or be a value that contains a Collision- Resistant Name. */
+  alg?: string;
+  /** The "crv" (curve) parameter identifies the curve type */
+  crv?: string;
+  /** RSA private exponent or ECC private key */
+  d?: string;
+  /** RSA Private Key Parameter */
+  dp?: string;
+  /** RSA Private Key Parameter */
+  dq?: string;
+  /** RSA public exponent, in Base64 */
+  e?: string;
+  /** Symmetric key */
+  k?: string;
+  /** The "kid" (key ID) parameter is used to match a specific key. This is used, for instance, to choose among a set of keys within a JWK Set during key rollover. The structure of the "kid" value is unspecified. When "kid" values are used within a JWK Set, different keys within the JWK Set SHOULD use distinct "kid" values. (One example in which different keys might use the same "kid" value is if they have different "kty" (key type) values but are considered to be equivalent alternatives by the application using them.) The "kid" value is a case-sensitive string. */
+  kid?: string;
+  /** The "kty" (key type) parameter identifies the cryptographic algorithm family used with the key, such as "RSA" or "EC". "kty" values should either be registered in the IANA "JSON Web Key Types" registry established by [JWA] or be a value that contains a Collision- Resistant Name. The "kty" value is a case-sensitive string. */
+  kty: string;
+  /** RSA modulus, in Base64 */
+  n?: string;
+  /** RSA secret prime */
+  p?: string;
+  /** RSA secret prime, with p < q */
+  q?: string;
+  /** RSA Private Key Parameter */
+  qi?: string;
+  /** Use ("public key use") identifies the intended use of the public key. The "use" parameter is employed to indicate whether a public key is used for encrypting data or verifying the signature on data. Values are commonly "sig" (signature) or "enc" (encryption). */
+  use?: string;
+  /** X coordinate for the Elliptic Curve point */
+  x?: string;
+  /** The "x5c" (X.509 certificate chain) parameter contains a chain of one or more PKIX certificates [RFC5280]. The certificate chain is represented as a JSON array of certificate value strings. Each string in the array is a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the key value MUST be the first certificate. */
+  x5c?: JsonWebKeyX5cList;
+  /** Y coordinate for the Elliptic Curve point */
+  y?: string;
+}
+export const JsonWebKey = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    alg: S.optional(S.String),
+    crv: S.optional(S.String),
+    d: S.optional(S.String),
+    dp: S.optional(S.String),
+    dq: S.optional(S.String),
+    e: S.optional(S.String),
+    k: S.optional(S.String),
+    kid: S.optional(S.String),
+    kty: S.String,
+    n: S.optional(S.String),
+    p: S.optional(S.String),
+    q: S.optional(S.String),
+    qi: S.optional(S.String),
+    use: S.optional(S.String),
+    x: S.optional(S.String),
+    x5c: S.optional(JsonWebKeyX5cList),
+    y: S.optional(S.String),
+  }),
+).annotate({ identifier: "JsonWebKey" }) as any as S.Schema<JsonWebKey>;
+
+/** The value of the "keys" parameter is an array of JWK values. By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Sets can choose to assign a meaning to the order for their purposes, if desired. */
+export type JsonWebKeySetKeysList = ReadonlyArray<JsonWebKey>;
+export const JsonWebKeySetKeysList = /*@__PURE__*/ S.Array(
+  JsonWebKey,
+) as any as S.Schema<JsonWebKeySetKeysList>;
+
+export interface JsonWebKeySet {
+  /** The value of the "keys" parameter is an array of JWK values. By default, the order of the JWK values within the array does not imply an order of preference among them, although applications of JWK Sets can choose to assign a meaning to the order for their purposes, if desired. */
+  keys?: JsonWebKeySetKeysList;
+}
+export const JsonWebKeySet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keys: S.optional(JsonWebKeySetKeysList),
+  }),
+).annotate({ identifier: "JsonWebKeySet" }) as any as S.Schema<JsonWebKeySet>;
+
+/** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
+export type AttestationServiceCreationSpecificParamsTpmAttestationAuthentication =
+  "Enabled" | "Disabled";
+export const AttestationServiceCreationSpecificParamsTpmAttestationAuthentication =
+  /*@__PURE__*/ S.String;
+
+/** Client supplied parameters used to create a new attestation provider. */
+export interface AttestationServiceCreationSpecificParams {
+  /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
+  publicNetworkAccess?: AttestationServiceCreationSpecificParamsPublicNetworkAccess;
+  /** JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations */
+  policySigningCertificates?: JsonWebKeySet;
+  /** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
+  tpmAttestationAuthentication?: AttestationServiceCreationSpecificParamsTpmAttestationAuthentication;
+}
+export const AttestationServiceCreationSpecificParams = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      publicNetworkAccess: S.optional(
+        AttestationServiceCreationSpecificParamsPublicNetworkAccess,
+      ),
+      policySigningCertificates: S.optional(JsonWebKeySet),
+      tpmAttestationAuthentication: S.optional(
+        AttestationServiceCreationSpecificParamsTpmAttestationAuthentication,
+      ),
+    }),
+).annotate({
+  identifier: "AttestationServiceCreationSpecificParams",
+}) as any as S.Schema<AttestationServiceCreationSpecificParams>;
+
 export interface AttestationProvidersCreateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -19,14 +145,21 @@ export interface AttestationProvidersCreateRequest {
   resourceGroupName: string;
   /** Name of the attestation provider. */
   providerName: string;
-  body: unknown;
+  /** The supported Azure location where the attestation provider should be created. */
+  location: string;
+  /** The tags that will be assigned to the attestation provider. */
+  tags?: AttestationProvidersCreateRequestTagsMap;
+  /** Properties of the attestation provider */
+  properties: AttestationServiceCreationSpecificParams;
 }
 export const AttestationProvidersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     providerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.String,
+    tags: S.optional(AttestationProvidersCreateRequestTagsMap),
+    properties: AttestationServiceCreationSpecificParams,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -44,8 +177,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -53,8 +185,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -93,18 +224,11 @@ export const AttestationProvidersCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AttestationProvidersCreateResponseTagsMap>;
 
 /** Status of attestation service. */
-export type AttestationServiceStatus =
-  | "Ready"
-  | "NotReady"
-  | "Error"
-  | (string & {});
+export type AttestationServiceStatus = "Ready" | "NotReady" | "Error";
 export const AttestationServiceStatus = /*@__PURE__*/ S.String;
 
 /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
-export type StatusResultPublicNetworkAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type StatusResultPublicNetworkAccess = "Enabled" | "Disabled";
 export const StatusResultPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The Private Endpoint resource. */
@@ -124,8 +248,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -152,8 +275,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -204,16 +326,13 @@ export const StatusResultPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with the attestation provider. */
 export type StatusResultPrivateEndpointConnectionsList =
-  StatusResultPrivateEndpointConnectionsItem[];
+  ReadonlyArray<StatusResultPrivateEndpointConnectionsItem>;
 export const StatusResultPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   StatusResultPrivateEndpointConnectionsItem,
 ) as any as S.Schema<StatusResultPrivateEndpointConnectionsList>;
 
 /** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
-export type StatusResultTpmAttestationAuthentication =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type StatusResultTpmAttestationAuthentication = "Enabled" | "Disabled";
 export const StatusResultTpmAttestationAuthentication = /*@__PURE__*/ S.String;
 
 /** Status of attestation service. */
@@ -460,8 +579,7 @@ export type AttestationProviderListResultSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AttestationProviderListResultSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -470,8 +588,7 @@ export type AttestationProviderListResultSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AttestationProviderListResultSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -547,7 +664,8 @@ export const AttestationProvider = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttestationProvider>;
 
 /** Attestation Provider array. */
-export type AttestationProviderListResultValueList = AttestationProvider[];
+export type AttestationProviderListResultValueList =
+  ReadonlyArray<AttestationProvider>;
 export const AttestationProviderListResultValueList = /*@__PURE__*/ S.Array(
   AttestationProvider,
 ) as any as S.Schema<AttestationProviderListResultValueList>;
@@ -611,6 +729,50 @@ export const AttestationProvidersListDefaultRequest = /*@__PURE__*/ S.suspend(
   identifier: "AttestationProvidersListDefaultRequest",
 }) as any as S.Schema<AttestationProvidersListDefaultRequest>;
 
+/** The tags that will be assigned to the attestation provider. */
+export type AttestationProvidersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AttestationProvidersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AttestationProvidersUpdateRequestTagsMap>;
+
+/** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
+export type AttestationServicePatchSpecificParamsPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled";
+export const AttestationServicePatchSpecificParamsPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
+export type AttestationServicePatchSpecificParamsTpmAttestationAuthentication =
+  | "Enabled"
+  | "Disabled";
+export const AttestationServicePatchSpecificParamsTpmAttestationAuthentication =
+  /*@__PURE__*/ S.String;
+
+/** Client supplied parameters used to patch an existing attestation provider. */
+export interface AttestationServicePatchSpecificParams {
+  /** Controls whether traffic from the public network is allowed to access the Attestation Provider APIs. */
+  publicNetworkAccess?: AttestationServicePatchSpecificParamsPublicNetworkAccess;
+  /** The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs. */
+  tpmAttestationAuthentication?: AttestationServicePatchSpecificParamsTpmAttestationAuthentication;
+}
+export const AttestationServicePatchSpecificParams = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      publicNetworkAccess: S.optional(
+        AttestationServicePatchSpecificParamsPublicNetworkAccess,
+      ),
+      tpmAttestationAuthentication: S.optional(
+        AttestationServicePatchSpecificParamsTpmAttestationAuthentication,
+      ),
+    }),
+).annotate({
+  identifier: "AttestationServicePatchSpecificParams",
+}) as any as S.Schema<AttestationServicePatchSpecificParams>;
+
 export interface AttestationProvidersUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -618,14 +780,18 @@ export interface AttestationProvidersUpdateRequest {
   resourceGroupName: string;
   /** Name of the attestation provider. */
   providerName: string;
-  body: unknown;
+  /** The tags that will be assigned to the attestation provider. */
+  tags?: AttestationProvidersUpdateRequestTagsMap;
+  /** Properties of the attestation provider */
+  properties?: AttestationServicePatchSpecificParams;
 }
 export const AttestationProvidersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     providerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AttestationProvidersUpdateRequestTagsMap),
+    properties: S.optional(AttestationServicePatchSpecificParams),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -696,8 +862,7 @@ export type OperationListSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OperationListSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -705,8 +870,7 @@ export type OperationListSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const OperationListSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -776,7 +940,8 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Specifications of the Log for Microsoft Azure Attestation */
-export type ServiceSpecificationLogSpecificationsList = LogSpecification[];
+export type ServiceSpecificationLogSpecificationsList =
+  ReadonlyArray<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -827,7 +992,7 @@ export const OperationsDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsDefinition>;
 
 /** List of supported operations. */
-export type OperationListValueList = OperationsDefinition[];
+export type OperationListValueList = ReadonlyArray<OperationsDefinition>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationsDefinition,
 ) as any as S.Schema<OperationListValueList>;
@@ -846,6 +1011,31 @@ export const OperationList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OperationList" }) as any as S.Schema<OperationList>;
 
+/** The Private Endpoint resource. */
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
+
+/** Properties of the PrivateEndpointConnectProperties. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** The resource of private end point. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PrivateEndpointConnectionsCreateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -855,7 +1045,8 @@ export interface PrivateEndpointConnectionsCreateRequest {
   providerName: string;
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
 }
 export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -864,7 +1055,7 @@ export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       providerName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1046,7 +1237,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnectionListResultValueItem[];
+  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -1095,14 +1286,16 @@ export const PrivateLinkResourcesListByProviderRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByProviderRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1159,7 +1352,7 @@ export const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ S.suspend(
 
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList =
-  PrivateLinkResourceListResultValueItem[];
+  ReadonlyArray<PrivateLinkResourceListResultValueItem>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResourceListResultValueItem,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;

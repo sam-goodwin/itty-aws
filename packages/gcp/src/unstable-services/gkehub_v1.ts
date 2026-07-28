@@ -132,7 +132,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -179,7 +179,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -239,7 +239,8 @@ export const PolicyControllerToleration = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyControllerToleration",
 }) as any as S.Schema<PolicyControllerToleration>;
 
-export type PolicyControllerTolerationList = PolicyControllerToleration[];
+export type PolicyControllerTolerationList =
+  ReadonlyArray<PolicyControllerToleration>;
 export const PolicyControllerTolerationList = /*@__PURE__*/ S.Array(
   PolicyControllerToleration,
 ) as any as S.Schema<PolicyControllerTolerationList>;
@@ -247,8 +248,7 @@ export const PolicyControllerTolerationList = /*@__PURE__*/ S.Array(
 export type PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum =
   | "AFFINITY_UNSPECIFIED"
   | "NO_AFFINITY"
-  | "ANTI_AFFINITY"
-  | (string & {});
+  | "ANTI_AFFINITY";
 export const PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum =
   /*@__PURE__*/ S.String;
 
@@ -294,20 +294,18 @@ export type PolicyControllerHubConfigInstallSpecEnum =
   | "INSTALL_SPEC_NOT_INSTALLED"
   | "INSTALL_SPEC_ENABLED"
   | "INSTALL_SPEC_SUSPENDED"
-  | "INSTALL_SPEC_DETACHED"
-  | (string & {});
+  | "INSTALL_SPEC_DETACHED";
 export const PolicyControllerHubConfigInstallSpecEnum = /*@__PURE__*/ S.String;
 
 export type PolicyControllerMonitoringConfigBackendsItemEnum =
   | "MONITORING_BACKEND_UNSPECIFIED"
   | "PROMETHEUS"
-  | "CLOUD_MONITORING"
-  | (string & {});
+  | "CLOUD_MONITORING";
 export const PolicyControllerMonitoringConfigBackendsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PolicyControllerMonitoringConfigBackendsItemEnumList =
-  PolicyControllerMonitoringConfigBackendsItemEnum[];
+  ReadonlyArray<PolicyControllerMonitoringConfigBackendsItemEnum>;
 export const PolicyControllerMonitoringConfigBackendsItemEnumList =
   /*@__PURE__*/ S.Array(
     PolicyControllerMonitoringConfigBackendsItemEnum,
@@ -350,8 +348,7 @@ export const PolicyControllerBundleInstallSpecMap = /*@__PURE__*/ S.Record(
 export type PolicyControllerTemplateLibraryConfigInstallationEnum =
   | "INSTALLATION_UNSPECIFIED"
   | "NOT_INSTALLED"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const PolicyControllerTemplateLibraryConfigInstallationEnum =
   /*@__PURE__*/ S.String;
 
@@ -449,22 +446,19 @@ export type ServiceMeshMembershipSpecManagementEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "MANAGEMENT_AUTOMATIC"
   | "MANAGEMENT_MANUAL"
-  | "MANAGEMENT_NOT_INSTALLED"
-  | (string & {});
+  | "MANAGEMENT_NOT_INSTALLED";
 export const ServiceMeshMembershipSpecManagementEnum = /*@__PURE__*/ S.String;
 
 export type ServiceMeshMembershipSpecControlPlaneEnum =
   | "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED"
   | "AUTOMATIC"
-  | "MANUAL"
-  | (string & {});
+  | "MANUAL";
 export const ServiceMeshMembershipSpecControlPlaneEnum = /*@__PURE__*/ S.String;
 
 export type ServiceMeshMembershipSpecConfigApiEnum =
   | "CONFIG_API_UNSPECIFIED"
   | "CONFIG_API_ISTIO"
-  | "CONFIG_API_GATEWAY"
-  | (string & {});
+  | "CONFIG_API_GATEWAY";
 export const ServiceMeshMembershipSpecConfigApiEnum = /*@__PURE__*/ S.String;
 
 /** **Service Mesh**: Spec for a single Membership for the servicemesh feature */
@@ -768,7 +762,8 @@ export const IdentityServiceAuthMethod = /*@__PURE__*/ S.suspend(() =>
   identifier: "IdentityServiceAuthMethod",
 }) as any as S.Schema<IdentityServiceAuthMethod>;
 
-export type IdentityServiceAuthMethodList = IdentityServiceAuthMethod[];
+export type IdentityServiceAuthMethodList =
+  ReadonlyArray<IdentityServiceAuthMethod>;
 export const IdentityServiceAuthMethodList = /*@__PURE__*/ S.Array(
   IdentityServiceAuthMethod,
 ) as any as S.Schema<IdentityServiceAuthMethodList>;
@@ -845,8 +840,7 @@ export const ConfigManagementHierarchyControllerConfig =
 export type ConfigManagementMembershipSpecManagementEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "MANAGEMENT_AUTOMATIC"
-  | "MANAGEMENT_MANUAL"
-  | (string & {});
+  | "MANAGEMENT_MANUAL";
 export const ConfigManagementMembershipSpecManagementEnum =
   /*@__PURE__*/ S.String;
 
@@ -935,7 +929,7 @@ export const ConfigManagementContainerOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementContainerOverride>;
 
 export type ConfigManagementContainerOverrideList =
-  ConfigManagementContainerOverride[];
+  ReadonlyArray<ConfigManagementContainerOverride>;
 export const ConfigManagementContainerOverrideList = /*@__PURE__*/ S.Array(
   ConfigManagementContainerOverride,
 ) as any as S.Schema<ConfigManagementContainerOverrideList>;
@@ -960,7 +954,7 @@ export const ConfigManagementDeploymentOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementDeploymentOverride>;
 
 export type ConfigManagementDeploymentOverrideList =
-  ConfigManagementDeploymentOverride[];
+  ReadonlyArray<ConfigManagementDeploymentOverride>;
 export const ConfigManagementDeploymentOverrideList = /*@__PURE__*/ S.Array(
   ConfigManagementDeploymentOverride,
 ) as any as S.Schema<ConfigManagementDeploymentOverrideList>;
@@ -1002,13 +996,12 @@ export const ConfigManagementConfigSync = /*@__PURE__*/ S.suspend(() =>
 export type ConfigManagementPolicyControllerMonitoringBackendsItemEnum =
   | "MONITORING_BACKEND_UNSPECIFIED"
   | "PROMETHEUS"
-  | "CLOUD_MONITORING"
-  | (string & {});
+  | "CLOUD_MONITORING";
 export const ConfigManagementPolicyControllerMonitoringBackendsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ConfigManagementPolicyControllerMonitoringBackendsItemEnumList =
-  ConfigManagementPolicyControllerMonitoringBackendsItemEnum[];
+  ReadonlyArray<ConfigManagementPolicyControllerMonitoringBackendsItemEnum>;
 export const ConfigManagementPolicyControllerMonitoringBackendsItemEnumList =
   /*@__PURE__*/ S.Array(
     ConfigManagementPolicyControllerMonitoringBackendsItemEnum,
@@ -1117,12 +1110,7 @@ export const CommonFleetDefaultMemberConfigSpec = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommonFleetDefaultMemberConfigSpec",
 }) as any as S.Schema<CommonFleetDefaultMemberConfigSpec>;
 
-export type StatusCodeEnum =
-  | "CODE_UNSPECIFIED"
-  | "OK"
-  | "FAILED"
-  | "UNKNOWN"
-  | (string & {});
+export type StatusCodeEnum = "CODE_UNSPECIFIED" | "OK" | "FAILED" | "UNKNOWN";
 export const StatusCodeEnum = /*@__PURE__*/ S.String;
 
 /** Status specifies state for the subcomponent. */
@@ -1200,7 +1188,7 @@ export const ClusterUpgradeGKEUpgradeFeatureCondition = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ClusterUpgradeGKEUpgradeFeatureCondition>;
 
 export type ClusterUpgradeGKEUpgradeFeatureConditionList =
-  ClusterUpgradeGKEUpgradeFeatureCondition[];
+  ReadonlyArray<ClusterUpgradeGKEUpgradeFeatureCondition>;
 export const ClusterUpgradeGKEUpgradeFeatureConditionList =
   /*@__PURE__*/ S.Array(
     ClusterUpgradeGKEUpgradeFeatureCondition,
@@ -1213,8 +1201,7 @@ export type ClusterUpgradeUpgradeStatusCodeEnum =
   | "IN_PROGRESS"
   | "SOAKING"
   | "FORCED_SOAKING"
-  | "COMPLETE"
-  | (string & {});
+  | "COMPLETE";
 export const ClusterUpgradeUpgradeStatusCodeEnum = /*@__PURE__*/ S.String;
 
 /** UpgradeStatus provides status information for each upgrade. */
@@ -1271,7 +1258,8 @@ export const ClusterUpgradeGKEUpgradeState = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClusterUpgradeGKEUpgradeState",
 }) as any as S.Schema<ClusterUpgradeGKEUpgradeState>;
 
-export type ClusterUpgradeGKEUpgradeStateList = ClusterUpgradeGKEUpgradeState[];
+export type ClusterUpgradeGKEUpgradeStateList =
+  ReadonlyArray<ClusterUpgradeGKEUpgradeState>;
 export const ClusterUpgradeGKEUpgradeStateList = /*@__PURE__*/ S.Array(
   ClusterUpgradeGKEUpgradeState,
 ) as any as S.Schema<ClusterUpgradeGKEUpgradeStateList>;
@@ -1316,8 +1304,7 @@ export type FeatureStateCodeEnum =
   | "CODE_UNSPECIFIED"
   | "OK"
   | "WARNING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const FeatureStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context. */
@@ -1348,8 +1335,7 @@ export const RBACRoleBindingActuationFeatureState = /*@__PURE__*/ S.suspend(
 export type WorkloadIdentityFeatureStateNamespaceStatesValueEnum =
   | "NAMESPACE_STATE_UNSPECIFIED"
   | "NAMESPACE_STATE_OK"
-  | "NAMESPACE_STATE_ERROR"
-  | (string & {});
+  | "NAMESPACE_STATE_ERROR";
 export const WorkloadIdentityFeatureStateNamespaceStatesValueEnum =
   /*@__PURE__*/ S.String;
 
@@ -1367,8 +1353,7 @@ export const WorkloadIdentityFeatureStateNamespaceStatesValueEnumMap =
 export type WorkloadIdentityNamespaceStateDetailCodeEnum =
   | "NAMESPACE_STATE_UNSPECIFIED"
   | "NAMESPACE_STATE_OK"
-  | "NAMESPACE_STATE_ERROR"
-  | (string & {});
+  | "NAMESPACE_STATE_ERROR";
 export const WorkloadIdentityNamespaceStateDetailCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1400,8 +1385,7 @@ export const WorkloadIdentityNamespaceStateDetailMap = /*@__PURE__*/ S.Record(
 export type WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum =
   | "WORKLOAD_IDENTITY_POOL_STATE_UNSPECIFIED"
   | "WORKLOAD_IDENTITY_POOL_STATE_OK"
-  | "WORKLOAD_IDENTITY_POOL_STATE_ERROR"
-  | (string & {});
+  | "WORKLOAD_IDENTITY_POOL_STATE_ERROR";
 export const WorkloadIdentityWorkloadIdentityPoolStateDetailCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1463,8 +1447,7 @@ export const WorkloadIdentityFeatureState = /*@__PURE__*/ S.suspend(() =>
 export type FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum =
   | "CODE_UNSPECIFIED"
   | "OK"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const FleetObservabilityFleetObservabilityBaseFeatureStateCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1485,7 +1468,7 @@ export const FleetObservabilityFeatureError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetObservabilityFeatureError>;
 
 export type FleetObservabilityFeatureErrorList =
-  FleetObservabilityFeatureError[];
+  ReadonlyArray<FleetObservabilityFeatureError>;
 export const FleetObservabilityFeatureErrorList = /*@__PURE__*/ S.Array(
   FleetObservabilityFeatureError,
 ) as any as S.Schema<FleetObservabilityFeatureErrorList>;
@@ -1637,8 +1620,7 @@ export type OriginTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "FLEET"
   | "FLEET_OUT_OF_SYNC"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const OriginTypeEnum = /*@__PURE__*/ S.String;
 
 /** Origin defines where this MembershipFeatureSpec originated from. */
@@ -1691,8 +1673,7 @@ export const MembershipFeatureSpecMap = /*@__PURE__*/ S.Record(
 export type FleetObservabilityRoutingConfigModeEnum =
   | "MODE_UNSPECIFIED"
   | "COPY"
-  | "MOVE"
-  | (string & {});
+  | "MOVE";
 export const FleetObservabilityRoutingConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** RoutingConfig configures the behaviour of fleet logging feature. */
@@ -1766,8 +1747,7 @@ export const WorkloadIdentityFeatureSpec = /*@__PURE__*/ S.suspend(() =>
 export type ServiceMeshFeatureSpecModernizationCompatibilityEnum =
   | "MODERNIZATION_COMPATIBILITY_UNSPECIFIED"
   | "VALIDATION_ENABLED"
-  | "VALIDATION_DISABLED"
-  | (string & {});
+  | "VALIDATION_DISABLED";
 export const ServiceMeshFeatureSpecModernizationCompatibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -1816,7 +1796,7 @@ export const ClusterUpgradeGKEUpgradeOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterUpgradeGKEUpgradeOverride>;
 
 export type ClusterUpgradeGKEUpgradeOverrideList =
-  ClusterUpgradeGKEUpgradeOverride[];
+  ReadonlyArray<ClusterUpgradeGKEUpgradeOverride>;
 export const ClusterUpgradeGKEUpgradeOverrideList = /*@__PURE__*/ S.Array(
   ClusterUpgradeGKEUpgradeOverride,
 ) as any as S.Schema<ClusterUpgradeGKEUpgradeOverrideList>;
@@ -1912,8 +1892,7 @@ export type ServiceMeshControlPlaneManagementImplementationEnum =
   | "IMPLEMENTATION_UNSPECIFIED"
   | "ISTIOD"
   | "TRAFFIC_DIRECTOR"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const ServiceMeshControlPlaneManagementImplementationEnum =
   /*@__PURE__*/ S.String;
 
@@ -1926,8 +1905,7 @@ export type ServiceMeshControlPlaneManagementStateEnum =
   | "STALLED"
   | "NEEDS_ATTENTION"
   | "DEGRADED"
-  | "DEPROVISIONING"
-  | (string & {});
+  | "DEPROVISIONING";
 export const ServiceMeshControlPlaneManagementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1947,7 +1925,8 @@ export const ServiceMeshStatusDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceMeshStatusDetails",
 }) as any as S.Schema<ServiceMeshStatusDetails>;
 
-export type ServiceMeshStatusDetailsList = ServiceMeshStatusDetails[];
+export type ServiceMeshStatusDetailsList =
+  ReadonlyArray<ServiceMeshStatusDetails>;
 export const ServiceMeshStatusDetailsList = /*@__PURE__*/ S.Array(
   ServiceMeshStatusDetails,
 ) as any as S.Schema<ServiceMeshStatusDetailsList>;
@@ -2037,16 +2016,14 @@ export type ServiceMeshConditionCodeEnum =
   | "MODERNIZATION_COMPATIBLE"
   | "MODERNIZATION_INCOMPATIBLE"
   | "MODERNIZATION_INCOMPATIBLE_FLEET_SCALE"
-  | "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA"
-  | (string & {});
+  | "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA";
 export const ServiceMeshConditionCodeEnum = /*@__PURE__*/ S.String;
 
 export type ServiceMeshConditionSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const ServiceMeshConditionSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Condition being reported. */
@@ -2071,7 +2048,7 @@ export const ServiceMeshCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceMeshCondition",
 }) as any as S.Schema<ServiceMeshCondition>;
 
-export type ServiceMeshConditionList = ServiceMeshCondition[];
+export type ServiceMeshConditionList = ReadonlyArray<ServiceMeshCondition>;
 export const ServiceMeshConditionList = /*@__PURE__*/ S.Array(
   ServiceMeshCondition,
 ) as any as S.Schema<ServiceMeshConditionList>;
@@ -2085,8 +2062,7 @@ export type ServiceMeshDataPlaneManagementStateEnum =
   | "STALLED"
   | "NEEDS_ATTENTION"
   | "DEGRADED"
-  | "DEPROVISIONING"
-  | (string & {});
+  | "DEPROVISIONING";
 export const ServiceMeshDataPlaneManagementStateEnum = /*@__PURE__*/ S.String;
 
 /** Status of data plane management. Only reported per-member. */
@@ -2134,8 +2110,7 @@ export type PolicyControllerMembershipStateStateEnum =
   | "CLUSTER_ERROR"
   | "HUB_ERROR"
   | "SUSPENDED"
-  | "DETACHED"
-  | (string & {});
+  | "DETACHED";
 export const PolicyControllerMembershipStateStateEnum = /*@__PURE__*/ S.String;
 
 export type PolicyControllerOnClusterStateStateEnum =
@@ -2148,8 +2123,7 @@ export type PolicyControllerOnClusterStateStateEnum =
   | "CLUSTER_ERROR"
   | "HUB_ERROR"
   | "SUSPENDED"
-  | "DETACHED"
-  | (string & {});
+  | "DETACHED";
 export const PolicyControllerOnClusterStateStateEnum = /*@__PURE__*/ S.String;
 
 /** OnClusterState represents the state of a sub-component of Policy Controller. */
@@ -2232,7 +2206,7 @@ export const ClusterUpgradeMembershipGKEUpgradeState = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ClusterUpgradeMembershipGKEUpgradeState>;
 
 export type ClusterUpgradeMembershipGKEUpgradeStateList =
-  ClusterUpgradeMembershipGKEUpgradeState[];
+  ReadonlyArray<ClusterUpgradeMembershipGKEUpgradeState>;
 export const ClusterUpgradeMembershipGKEUpgradeStateList =
   /*@__PURE__*/ S.Array(
     ClusterUpgradeMembershipGKEUpgradeState,
@@ -2267,7 +2241,8 @@ export const ConfigManagementInstallError = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigManagementInstallError",
 }) as any as S.Schema<ConfigManagementInstallError>;
 
-export type ConfigManagementInstallErrorList = ConfigManagementInstallError[];
+export type ConfigManagementInstallErrorList =
+  ReadonlyArray<ConfigManagementInstallError>;
 export const ConfigManagementInstallErrorList = /*@__PURE__*/ S.Array(
   ConfigManagementInstallError,
 ) as any as S.Schema<ConfigManagementInstallErrorList>;
@@ -2277,8 +2252,7 @@ export type ConfigManagementOperatorStateDeploymentStateEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementOperatorStateDeploymentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2308,8 +2282,7 @@ export type ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManager
     | "NOT_INSTALLED"
     | "INSTALLED"
     | "ERROR"
-    | "PENDING"
-    | (string & {});
+    | "PENDING";
 export const ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2318,8 +2291,7 @@ export type ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum =
   /*@__PURE__*/ S.String;
 
@@ -2328,8 +2300,7 @@ export type ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum =
   /*@__PURE__*/ S.String;
 
@@ -2376,8 +2347,7 @@ export const ConfigManagementPolicyControllerVersion = /*@__PURE__*/ S.suspend(
 export type ConfigManagementPolicyControllerMigrationStageEnum =
   | "STAGE_UNSPECIFIED"
   | "ACM_MANAGED"
-  | "POCO_MANAGED"
-  | (string & {});
+  | "POCO_MANAGED";
 export const ConfigManagementPolicyControllerMigrationStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -2440,8 +2410,7 @@ export type ConfigManagementHierarchyControllerDeploymentStateHncEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementHierarchyControllerDeploymentStateHncEnum =
   /*@__PURE__*/ S.String;
 
@@ -2450,8 +2419,7 @@ export type ConfigManagementHierarchyControllerDeploymentStateExtensionEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementHierarchyControllerDeploymentStateExtensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2501,8 +2469,7 @@ export type ConfigManagementSyncStateCodeEnum =
   | "NOT_CONFIGURED"
   | "NOT_INSTALLED"
   | "UNAUTHORIZED"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ConfigManagementSyncStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** A Kubernetes object's GVK */
@@ -2546,7 +2513,8 @@ export const ConfigManagementErrorResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigManagementErrorResource",
 }) as any as S.Schema<ConfigManagementErrorResource>;
 
-export type ConfigManagementErrorResourceList = ConfigManagementErrorResource[];
+export type ConfigManagementErrorResourceList =
+  ReadonlyArray<ConfigManagementErrorResource>;
 export const ConfigManagementErrorResourceList = /*@__PURE__*/ S.Array(
   ConfigManagementErrorResource,
 ) as any as S.Schema<ConfigManagementErrorResourceList>;
@@ -2570,7 +2538,8 @@ export const ConfigManagementSyncError = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigManagementSyncError",
 }) as any as S.Schema<ConfigManagementSyncError>;
 
-export type ConfigManagementSyncErrorList = ConfigManagementSyncError[];
+export type ConfigManagementSyncErrorList =
+  ReadonlyArray<ConfigManagementSyncError>;
 export const ConfigManagementSyncErrorList = /*@__PURE__*/ S.Array(
   ConfigManagementSyncError,
 ) as any as S.Schema<ConfigManagementSyncErrorList>;
@@ -2611,8 +2580,7 @@ export type ConfigManagementConfigSyncStateRootsyncCrdEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "TERMINATING"
-  | "INSTALLING"
-  | (string & {});
+  | "INSTALLING";
 export const ConfigManagementConfigSyncStateRootsyncCrdEnum =
   /*@__PURE__*/ S.String;
 
@@ -2621,8 +2589,7 @@ export type ConfigManagementConfigSyncStateReposyncCrdEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "TERMINATING"
-  | "INSTALLING"
-  | (string & {});
+  | "INSTALLING";
 export const ConfigManagementConfigSyncStateReposyncCrdEnum =
   /*@__PURE__*/ S.String;
 
@@ -2631,8 +2598,7 @@ export type ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum =
   /*@__PURE__*/ S.String;
 
@@ -2641,8 +2607,7 @@ export type ConfigManagementConfigSyncDeploymentStateImporterEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateImporterEnum =
   /*@__PURE__*/ S.String;
 
@@ -2651,8 +2616,7 @@ export type ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum =
   /*@__PURE__*/ S.String;
 
@@ -2661,8 +2625,7 @@ export type ConfigManagementConfigSyncDeploymentStateGitSyncEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateGitSyncEnum =
   /*@__PURE__*/ S.String;
 
@@ -2671,8 +2634,7 @@ export type ConfigManagementConfigSyncDeploymentStateMonitorEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateMonitorEnum =
   /*@__PURE__*/ S.String;
 
@@ -2681,8 +2643,7 @@ export type ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum =
   /*@__PURE__*/ S.String;
 
@@ -2691,8 +2652,7 @@ export type ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum =
   /*@__PURE__*/ S.String;
 
@@ -2701,8 +2661,7 @@ export type ConfigManagementConfigSyncDeploymentStateSyncerEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateSyncerEnum =
   /*@__PURE__*/ S.String;
 
@@ -2711,8 +2670,7 @@ export type ConfigManagementConfigSyncDeploymentStateResourceGroupControllerMana
     | "NOT_INSTALLED"
     | "INSTALLED"
     | "ERROR"
-    | "PENDING"
-    | (string & {});
+    | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum =
   /*@__PURE__*/ S.String;
 
@@ -2771,16 +2729,14 @@ export type ConfigManagementConfigSyncStateStateEnum =
   | "CONFIG_SYNC_NOT_INSTALLED"
   | "CONFIG_SYNC_INSTALLED"
   | "CONFIG_SYNC_ERROR"
-  | "CONFIG_SYNC_PENDING"
-  | (string & {});
+  | "CONFIG_SYNC_PENDING";
 export const ConfigManagementConfigSyncStateStateEnum = /*@__PURE__*/ S.String;
 
 export type ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum =
   | "STOP_SYNCING_STATE_UNSPECIFIED"
   | "NOT_STOPPED"
   | "PENDING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2798,7 +2754,7 @@ export const ConfigManagementConfigSyncError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementConfigSyncError>;
 
 export type ConfigManagementConfigSyncErrorList =
-  ConfigManagementConfigSyncError[];
+  ReadonlyArray<ConfigManagementConfigSyncError>;
 export const ConfigManagementConfigSyncErrorList = /*@__PURE__*/ S.Array(
   ConfigManagementConfigSyncError,
 ) as any as S.Schema<ConfigManagementConfigSyncErrorList>;
@@ -2923,8 +2879,7 @@ export const FleetObservabilityMembershipState = /*@__PURE__*/ S.suspend(() =>
 export type WorkloadIdentityIdentityProviderStateDetailCodeEnum =
   | "IDENTITY_PROVIDER_STATE_UNSPECIFIED"
   | "IDENTITY_PROVIDER_STATE_OK"
-  | "IDENTITY_PROVIDER_STATE_ERROR"
-  | (string & {});
+  | "IDENTITY_PROVIDER_STATE_ERROR";
 export const WorkloadIdentityIdentityProviderStateDetailCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2975,8 +2930,7 @@ export const WorkloadIdentityMembershipState = /*@__PURE__*/ S.suspend(() =>
 export type IdentityServiceMembershipStateStateEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "OK"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const IdentityServiceMembershipStateStateEnum = /*@__PURE__*/ S.String;
 
 /** **Anthos Identity Service**: State for a single Membership. */
@@ -3052,8 +3006,7 @@ export type FeatureResourceStateStateEnum =
   | "ACTIVE"
   | "DISABLING"
   | "UPDATING"
-  | "SERVICE_UPDATING"
-  | (string & {});
+  | "SERVICE_UPDATING";
 export const FeatureResourceStateStateEnum = /*@__PURE__*/ S.String;
 
 /** FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Fleet and across Memberships. */
@@ -3152,8 +3105,7 @@ export type FleetLifecycleStateCodeEnum =
   | "CREATING"
   | "READY"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const FleetLifecycleStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** FleetLifecycleState describes the state of a Fleet resource. */
@@ -3173,16 +3125,14 @@ export type SecurityPostureConfigModeEnum =
   | "MODE_UNSPECIFIED"
   | "DISABLED"
   | "BASIC"
-  | "ENTERPRISE"
-  | (string & {});
+  | "ENTERPRISE";
 export const SecurityPostureConfigModeEnum = /*@__PURE__*/ S.String;
 
 export type SecurityPostureConfigVulnerabilityModeEnum =
   | "VULNERABILITY_MODE_UNSPECIFIED"
   | "VULNERABILITY_DISABLED"
   | "VULNERABILITY_BASIC"
-  | "VULNERABILITY_ENTERPRISE"
-  | (string & {});
+  | "VULNERABILITY_ENTERPRISE";
 export const SecurityPostureConfigVulnerabilityModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3205,8 +3155,7 @@ export const SecurityPostureConfig = /*@__PURE__*/ S.suspend(() =>
 export type BinaryAuthorizationConfigEvaluationModeEnum =
   | "EVALUATION_MODE_UNSPECIFIED"
   | "DISABLED"
-  | "POLICY_BINDINGS"
-  | (string & {});
+  | "POLICY_BINDINGS";
 export const BinaryAuthorizationConfigEvaluationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3221,7 +3170,7 @@ export const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyBinding" }) as any as S.Schema<PolicyBinding>;
 
-export type PolicyBindingList = PolicyBinding[];
+export type PolicyBindingList = ReadonlyArray<PolicyBinding>;
 export const PolicyBindingList = /*@__PURE__*/ S.Array(
   PolicyBinding,
 ) as any as S.Schema<PolicyBindingList>;
@@ -3245,8 +3194,7 @@ export const BinaryAuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
 export type CompliancePostureConfigModeEnum =
   | "MODE_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const CompliancePostureConfigModeEnum = /*@__PURE__*/ S.String;
 
 export interface ComplianceStandard {
@@ -3261,7 +3209,7 @@ export const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComplianceStandard",
 }) as any as S.Schema<ComplianceStandard>;
 
-export type ComplianceStandardList = ComplianceStandard[];
+export type ComplianceStandardList = ReadonlyArray<ComplianceStandard>;
 export const ComplianceStandardList = /*@__PURE__*/ S.Array(
   ComplianceStandard,
 ) as any as S.Schema<ComplianceStandardList>;
@@ -3385,8 +3333,7 @@ export const MonitoringConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type MembershipMembershipTypeEnum =
   | "MEMBERSHIP_TYPE_UNSPECIFIED"
-  | "LIGHTWEIGHT"
-  | (string & {});
+  | "LIGHTWEIGHT";
 export const MembershipMembershipTypeEnum = /*@__PURE__*/ S.String;
 
 /** ResourceManifest represents a single Kubernetes resource to be applied to the cluster. */
@@ -3405,7 +3352,7 @@ export const ResourceManifest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceManifest",
 }) as any as S.Schema<ResourceManifest>;
 
-export type ResourceManifestList = ResourceManifest[];
+export type ResourceManifestList = ReadonlyArray<ResourceManifest>;
 export const ResourceManifestList = /*@__PURE__*/ S.Array(
   ResourceManifest,
 ) as any as S.Schema<ResourceManifestList>;
@@ -3541,8 +3488,7 @@ export type OnPremClusterClusterTypeEnum =
   | "BOOTSTRAP"
   | "HYBRID"
   | "STANDALONE"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const OnPremClusterClusterTypeEnum = /*@__PURE__*/ S.String;
 
 /** OnPremCluster contains information specific to GKE On-Prem clusters. */
@@ -3605,8 +3551,7 @@ export type MembershipStateCodeEnum =
   | "READY"
   | "DELETING"
   | "UPDATING"
-  | "SERVICE_UPDATING"
-  | (string & {});
+  | "SERVICE_UPDATING";
 export const MembershipStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** MembershipState describes the state of a Membership resource. */
@@ -3625,8 +3570,7 @@ export const MembershipState = /*@__PURE__*/ S.suspend(() =>
 export type MembershipClusterTierEnum =
   | "CLUSTER_TIER_UNSPECIFIED"
   | "STANDARD"
-  | "ENTERPRISE"
-  | (string & {});
+  | "ENTERPRISE";
 export const MembershipClusterTierEnum = /*@__PURE__*/ S.String;
 
 /** Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity */
@@ -3741,8 +3685,7 @@ export type MembershipBindingLifecycleStateCodeEnum =
   | "CREATING"
   | "READY"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const MembershipBindingLifecycleStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** MembershipBindingLifecycleState describes the state of a Binding resource. */
@@ -3822,8 +3765,7 @@ export type RolePredefinedRoleEnum =
   | "ADMIN"
   | "EDIT"
   | "VIEW"
-  | "ANTHOS_SUPPORT"
-  | (string & {});
+  | "ANTHOS_SUPPORT";
 export const RolePredefinedRoleEnum = /*@__PURE__*/ S.String;
 
 /** Role is the type for Kubernetes roles */
@@ -3845,8 +3787,7 @@ export type RBACRoleBindingLifecycleStateCodeEnum =
   | "CREATING"
   | "READY"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const RBACRoleBindingLifecycleStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource. */
@@ -3945,8 +3886,7 @@ export type OperationalStateStateEnum =
   | "ACTIVE"
   | "WARNING"
   | "ERROR"
-  | "INITIALIZING"
-  | (string & {});
+  | "INITIALIZING";
 export const OperationalStateStateEnum = /*@__PURE__*/ S.String;
 
 export type OperationalStateReasonsItemEnum =
@@ -3956,12 +3896,11 @@ export type OperationalStateReasonsItemEnum =
   | "EMPTY_STAGE_WARNING"
   | "MIXED_RELEASE_CHANNELS_WARNING"
   | "INTERNAL_ERROR"
-  | "NO_CLUSTERS_IN_SEQUENCE"
-  | (string & {});
+  | "NO_CLUSTERS_IN_SEQUENCE";
 export const OperationalStateReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type OperationalStateReasonsItemEnumList =
-  OperationalStateReasonsItemEnum[];
+  ReadonlyArray<OperationalStateReasonsItemEnum>;
 export const OperationalStateReasonsItemEnumList = /*@__PURE__*/ S.Array(
   OperationalStateReasonsItemEnum,
 ) as any as S.Schema<OperationalStateReasonsItemEnumList>;
@@ -3991,8 +3930,7 @@ export type RolloutSequenceComputedReleaseChannelEnum =
   | "REGULAR"
   | "STABLE"
   | "EXTENDED"
-  | "NO_CHANNEL"
-  | (string & {});
+  | "NO_CHANNEL";
 export const RolloutSequenceComputedReleaseChannelEnum = /*@__PURE__*/ S.String;
 
 export type RolloutCreationScopeUpgradeTypesItemEnum =
@@ -4000,12 +3938,11 @@ export type RolloutCreationScopeUpgradeTypesItemEnum =
   | "CONTROL_PLANE_MINOR"
   | "CONTROL_PLANE_PATCH"
   | "NODE_MINOR"
-  | "NODE_PATCH"
-  | (string & {});
+  | "NODE_PATCH";
 export const RolloutCreationScopeUpgradeTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type RolloutCreationScopeUpgradeTypesItemEnumList =
-  RolloutCreationScopeUpgradeTypesItemEnum[];
+  ReadonlyArray<RolloutCreationScopeUpgradeTypesItemEnum>;
 export const RolloutCreationScopeUpgradeTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     RolloutCreationScopeUpgradeTypesItemEnum,
@@ -4057,7 +3994,7 @@ export const Stage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
 
-export type StageList = Stage[];
+export type StageList = ReadonlyArray<Stage>;
 export const StageList = /*@__PURE__*/ S.Array(
   Stage,
 ) as any as S.Schema<StageList>;
@@ -4158,8 +4095,7 @@ export type ScopeLifecycleStateCodeEnum =
   | "CREATING"
   | "READY"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const ScopeLifecycleStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** ScopeLifecycleState describes the state of a Scope resource. */
@@ -4237,8 +4173,7 @@ export type NamespaceLifecycleStateCodeEnum =
   | "CREATING"
   | "READY"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const NamespaceLifecycleStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** NamespaceLifecycleState describes the state of a Namespace resource. */
@@ -4665,7 +4600,7 @@ export const ConnectAgentResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectAgentResource",
 }) as any as S.Schema<ConnectAgentResource>;
 
-export type ConnectAgentResourceList = ConnectAgentResource[];
+export type ConnectAgentResourceList = ReadonlyArray<ConnectAgentResource>;
 export const ConnectAgentResourceList = /*@__PURE__*/ S.Array(
   ConnectAgentResource,
 ) as any as S.Schema<ConnectAgentResourceList>;
@@ -4782,7 +4717,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -4791,8 +4726,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -4809,7 +4743,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -4828,7 +4762,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -5075,8 +5009,7 @@ export type RolloutIntentEnum =
   | "ROLLOUT_INTENT_UNSPECIFIED"
   | "REGULAR_UPGRADE"
   | "CONTROL_PLANE_PATCH_ENFORCEMENT"
-  | "END_OF_SUPPORT_ENFORCEMENT"
-  | (string & {});
+  | "END_OF_SUPPORT_ENFORCEMENT";
 export const RolloutIntentEnum = /*@__PURE__*/ S.String;
 
 export type RolloutStateReasonTypeEnum =
@@ -5088,8 +5021,7 @@ export type RolloutStateReasonTypeEnum =
   | "CANCELLED_PAUSED_TOO_LONG"
   | "CANCELLED_SUPERSEDED"
   | "CANCELLED_INCOMPATIBLE_ROLLOUT_SEQUENCE"
-  | "CANCELLED_SUPERSEDED_BY_USER_ROLLOUT"
-  | (string & {});
+  | "CANCELLED_SUPERSEDED_BY_USER_ROLLOUT";
 export const RolloutStateReasonTypeEnum = /*@__PURE__*/ S.String;
 
 export type RolloutTargetStateEnum =
@@ -5101,8 +5033,7 @@ export type RolloutTargetStateEnum =
   | "PAUSED"
   | "REMOVED"
   | "INELIGIBLE"
-  | "SKIPPED"
-  | (string & {});
+  | "SKIPPED";
 export const RolloutTargetStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about the status of targets (clusters or node pools) involved in the Rollout. */
@@ -5128,7 +5059,7 @@ export const RolloutTarget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RolloutTarget" }) as any as S.Schema<RolloutTarget>;
 
-export type RolloutTargetList = RolloutTarget[];
+export type RolloutTargetList = ReadonlyArray<RolloutTarget>;
 export const RolloutTargetList = /*@__PURE__*/ S.Array(
   RolloutTarget,
 ) as any as S.Schema<RolloutTargetList>;
@@ -5163,8 +5094,7 @@ export const RolloutMembershipStateMap = /*@__PURE__*/ S.Record(
 export type VersionUpgradeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_CONTROL_PLANE"
-  | "TYPE_NODE_POOL"
-  | (string & {});
+  | "TYPE_NODE_POOL";
 export const VersionUpgradeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Config for version upgrade of clusters. */
@@ -5181,11 +5111,7 @@ export const VersionUpgrade = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VersionUpgrade" }) as any as S.Schema<VersionUpgrade>;
 
-export type RolloutTriggerEnum =
-  | "ROLLOUT_TRIGGER_UNSPECIFIED"
-  | "USER"
-  | "GKE"
-  | (string & {});
+export type RolloutTriggerEnum = "ROLLOUT_TRIGGER_UNSPECIFIED" | "USER" | "GKE";
 export const RolloutTriggerEnum = /*@__PURE__*/ S.String;
 
 export type RolloutStageStateEnum =
@@ -5194,8 +5120,7 @@ export type RolloutStageStateEnum =
   | "RUNNING"
   | "SOAKING"
   | "COMPLETED"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const RolloutStageStateEnum = /*@__PURE__*/ S.String;
 
 /** Stage represents a single stage in the Rollout. */
@@ -5227,7 +5152,7 @@ export const RolloutStage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RolloutStage" }) as any as S.Schema<RolloutStage>;
 
-export type RolloutStageList = RolloutStage[];
+export type RolloutStageList = ReadonlyArray<RolloutStage>;
 export const RolloutStageList = /*@__PURE__*/ S.Array(
   RolloutStage,
 ) as any as S.Schema<RolloutStageList>;
@@ -5237,8 +5162,7 @@ export type RolloutStateEnum =
   | "RUNNING"
   | "PAUSED"
   | "CANCELLED"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const RolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** Rollout contains the Rollout metadata and configuration. Next ID: 28 */
@@ -5406,7 +5330,7 @@ export const ListMembershipsProjectsLocationsScopesRequest =
     identifier: "ListMembershipsProjectsLocationsScopesRequest",
   }) as any as S.Schema<ListMembershipsProjectsLocationsScopesRequest>;
 
-export type MembershipList = Membership[];
+export type MembershipList = ReadonlyArray<Membership>;
 export const MembershipList = /*@__PURE__*/ S.Array(
   Membership,
 ) as any as S.Schema<MembershipList>;
@@ -5455,7 +5379,7 @@ export const ListOrganizationsLocationsFleetsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOrganizationsLocationsFleetsRequest",
 }) as any as S.Schema<ListOrganizationsLocationsFleetsRequest>;
 
-export type FleetList = Fleet[];
+export type FleetList = ReadonlyArray<Fleet>;
 export const FleetList = /*@__PURE__*/ S.Array(
   Fleet,
 ) as any as S.Schema<FleetList>;
@@ -5501,7 +5425,7 @@ export const ListPermittedProjectsLocationsScopesRequest =
     identifier: "ListPermittedProjectsLocationsScopesRequest",
   }) as any as S.Schema<ListPermittedProjectsLocationsScopesRequest>;
 
-export type ScopeList = Scope[];
+export type ScopeList = ReadonlyArray<Scope>;
 export const ScopeList = /*@__PURE__*/ S.Array(
   Scope,
 ) as any as S.Schema<ScopeList>;
@@ -5552,7 +5476,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -5607,7 +5531,7 @@ export const ListProjectsLocationsFeaturesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsFeaturesRequest",
 }) as any as S.Schema<ListProjectsLocationsFeaturesRequest>;
 
-export type FeatureList = Feature[];
+export type FeatureList = ReadonlyArray<Feature>;
 export const FeatureList = /*@__PURE__*/ S.Array(
   Feature,
 ) as any as S.Schema<FeatureList>;
@@ -5730,7 +5654,7 @@ export const ListProjectsLocationsMembershipsBindingsRequest =
     identifier: "ListProjectsLocationsMembershipsBindingsRequest",
   }) as any as S.Schema<ListProjectsLocationsMembershipsBindingsRequest>;
 
-export type MembershipBindingList = MembershipBinding[];
+export type MembershipBindingList = ReadonlyArray<MembershipBinding>;
 export const MembershipBindingList = /*@__PURE__*/ S.Array(
   MembershipBinding,
 ) as any as S.Schema<MembershipBindingList>;
@@ -5779,7 +5703,7 @@ export const ListProjectsLocationsMembershipsRbacrolebindingsRequest =
     identifier: "ListProjectsLocationsMembershipsRbacrolebindingsRequest",
   }) as any as S.Schema<ListProjectsLocationsMembershipsRbacrolebindingsRequest>;
 
-export type RBACRoleBindingList = RBACRoleBinding[];
+export type RBACRoleBindingList = ReadonlyArray<RBACRoleBinding>;
 export const RBACRoleBindingList = /*@__PURE__*/ S.Array(
   RBACRoleBinding,
 ) as any as S.Schema<RBACRoleBindingList>;
@@ -5835,7 +5759,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -5887,7 +5811,7 @@ export const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRolloutsRequest",
 }) as any as S.Schema<ListProjectsLocationsRolloutsRequest>;
 
-export type RolloutList = Rollout[];
+export type RolloutList = ReadonlyArray<Rollout>;
 export const RolloutList = /*@__PURE__*/ S.Array(
   Rollout,
 ) as any as S.Schema<RolloutList>;
@@ -5936,7 +5860,7 @@ export const ListProjectsLocationsRolloutSequencesRequest =
     identifier: "ListProjectsLocationsRolloutSequencesRequest",
   }) as any as S.Schema<ListProjectsLocationsRolloutSequencesRequest>;
 
-export type RolloutSequenceList = RolloutSequence[];
+export type RolloutSequenceList = ReadonlyArray<RolloutSequence>;
 export const RolloutSequenceList = /*@__PURE__*/ S.Array(
   RolloutSequence,
 ) as any as S.Schema<RolloutSequenceList>;
@@ -6022,7 +5946,7 @@ export const ListProjectsLocationsScopesNamespacesRequest =
     identifier: "ListProjectsLocationsScopesNamespacesRequest",
   }) as any as S.Schema<ListProjectsLocationsScopesNamespacesRequest>;
 
-export type NamespaceList = Namespace[];
+export type NamespaceList = ReadonlyArray<Namespace>;
 export const NamespaceList = /*@__PURE__*/ S.Array(
   Namespace,
 ) as any as S.Schema<NamespaceList>;
@@ -6558,8 +6482,7 @@ export const TestIamPermissionsProjectsLocationsScopesRequest =
 export type UpgradeRolloutSequenceRequestUpgradeTypeEnum =
   | "UPGRADE_TYPE_UNSPECIFIED"
   | "CONTROL_PLANE"
-  | "NODE"
-  | (string & {});
+  | "NODE";
 export const UpgradeRolloutSequenceRequestUpgradeTypeEnum =
   /*@__PURE__*/ S.String;
 

@@ -42,8 +42,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -51,8 +50,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -169,13 +167,13 @@ export const ErrorAdditionalInfoItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfoItem>;
 
 /** The error additional info. */
-export type ErrorAdditionalInfoList = ErrorAdditionalInfoItem[];
+export type ErrorAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfoItem>;
 export const ErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfoItem,
 ) as any as S.Schema<ErrorAdditionalInfoList>;
 
 /** The error details. */
-export type ErrorDetailsList = Error[];
+export type ErrorDetailsList = ReadonlyArray<Error>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Error),
 ) as any as S.Schema<ErrorDetailsList>;
@@ -278,7 +276,7 @@ export const DeletedVault = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletedVault" }) as any as S.Schema<DeletedVault>;
 
 /** The DeletedVault items on this page */
-export type DeletedVaultListValueList = DeletedVault[];
+export type DeletedVaultListValueList = ReadonlyArray<DeletedVault>;
 export const DeletedVaultListValueList = /*@__PURE__*/ S.Array(
   DeletedVault,
 ) as any as S.Schema<DeletedVaultListValueList>;
@@ -299,6 +297,19 @@ export const DeletedVaultList = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeletedVaultList",
 }) as any as S.Schema<DeletedVaultList>;
 
+/** Input definition for DeletedVault undelete properties. */
+export interface DeletedVaultUndeleteInputProperties {
+  /** Recovery resource group Id. */
+  recoveryResourceGroupId: string;
+}
+export const DeletedVaultUndeleteInputProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recoveryResourceGroupId: S.String,
+  }),
+).annotate({
+  identifier: "DeletedVaultUndeleteInputProperties",
+}) as any as S.Schema<DeletedVaultUndeleteInputProperties>;
+
 export interface DeletedVaultsUndeleteRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -306,14 +317,15 @@ export interface DeletedVaultsUndeleteRequest {
   location: string;
   /** The name of the DeletedVault */
   deletedVaultName: string;
-  body: unknown;
+  /** Undelete input properties. */
+  properties: DeletedVaultUndeleteInputProperties;
 }
 export const DeletedVaultsUndeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
     deletedVaultName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: DeletedVaultUndeleteInputProperties,
   }).pipe(
     T.Http({
       method: "POST",
@@ -392,12 +404,11 @@ export type VaultUpgradeState =
   | "Unknown"
   | "InProgress"
   | "Upgraded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const VaultUpgradeState = /*@__PURE__*/ S.String;
 
 /** The way the vault upgrade was triggered. */
-export type TriggerType = "UserTriggered" | "ForcedUpgrade" | (string & {});
+export type TriggerType = "UserTriggered" | "ForcedUpgrade";
 export const TriggerType = /*@__PURE__*/ S.String;
 
 /** Details for upgrading vault. */
@@ -436,12 +447,7 @@ export const UpgradeDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpgradeDetails" }) as any as S.Schema<UpgradeDetails>;
 
 /** Gets or sets provisioning state of the private endpoint connection. */
-export type ProvisioningState =
-  | "Succeeded"
-  | "Deleting"
-  | "Failed"
-  | "Pending"
-  | (string & {});
+export type ProvisioningState = "Succeeded" | "Deleting" | "Failed" | "Pending";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The Private Endpoint network resource that is linked to the Private Endpoint connection. */
@@ -462,8 +468,7 @@ export type PrivateEndpointConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const PrivateEndpointConnectionStatus = /*@__PURE__*/ S.String;
 
 /** Gets or sets private link service connection state. */
@@ -489,12 +494,12 @@ export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
 export type VaultSubResourceType =
   | "AzureBackup"
   | "AzureBackup_secondary"
-  | "AzureSiteRecovery"
-  | (string & {});
+  | "AzureSiteRecovery";
 export const VaultSubResourceType = /*@__PURE__*/ S.String;
 
 /** Group Ids for the Private Endpoint */
-export type PrivateEndpointConnectionGroupIdsList = VaultSubResourceType[];
+export type PrivateEndpointConnectionGroupIdsList =
+  ReadonlyArray<VaultSubResourceType>;
 export const PrivateEndpointConnectionGroupIdsList = /*@__PURE__*/ S.Array(
   VaultSubResourceType,
 ) as any as S.Schema<PrivateEndpointConnectionGroupIdsList>;
@@ -551,14 +556,14 @@ export const PrivateEndpointConnectionVaultProperties = /*@__PURE__*/ S.suspend(
 
 /** List of private endpoint connection. */
 export type VaultPropertiesPrivateEndpointConnectionsList =
-  PrivateEndpointConnectionVaultProperties[];
+  ReadonlyArray<PrivateEndpointConnectionVaultProperties>;
 export const VaultPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionVaultProperties,
   ) as any as S.Schema<VaultPropertiesPrivateEndpointConnectionsList>;
 
 /** Private endpoint state for backup. */
-export type VaultPrivateEndpointState = "None" | "Enabled" | (string & {});
+export type VaultPrivateEndpointState = "None" | "Enabled";
 export const VaultPrivateEndpointState = /*@__PURE__*/ S.String;
 
 /** The properties of the Key Vault which hosts CMK */
@@ -589,10 +594,7 @@ export const CmkKekIdentity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CmkKekIdentity" }) as any as S.Schema<CmkKekIdentity>;
 
 /** Enabling/Disabling the Double Encryption state */
-export type InfrastructureEncryptionState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type InfrastructureEncryptionState = "Enabled" | "Disabled";
 export const InfrastructureEncryptionState = /*@__PURE__*/ S.String;
 
 /** Customer Managed Key details of the resource. */
@@ -650,19 +652,18 @@ export type ResourceMoveState =
   | "MoveSucceeded"
   | "Failure"
   | "CriticalFailure"
-  | "PartialSuccess"
-  | (string & {});
+  | "PartialSuccess";
 export const ResourceMoveState = /*@__PURE__*/ S.String;
 
 /** Backup storage version */
-export type BackupStorageVersion = "V1" | "V2" | "Unassigned" | (string & {});
+export type BackupStorageVersion = "V1" | "V2" | "Unassigned";
 export const BackupStorageVersion = /*@__PURE__*/ S.String;
 
 /** property to enable or disable resource provider inbound network traffic from public clients */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
-export type AlertsState = "Enabled" | "Disabled" | (string & {});
+export type AlertsState = "Enabled" | "Disabled";
 export const AlertsState = /*@__PURE__*/ S.String;
 
 /** Settings for Azure Monitor based alerts */
@@ -714,8 +715,7 @@ export const MonitoringSettings = /*@__PURE__*/ S.suspend(() =>
 export type GranularityLevel =
   | "VaultLevel"
   | "ProtectedItemLevel"
-  | "ProtectedItemWithParentTag"
-  | (string & {});
+  | "ProtectedItemWithParentTag";
 export const GranularityLevel = /*@__PURE__*/ S.String;
 
 /** Cost Management Settings of the vault */
@@ -734,8 +734,7 @@ export const CostManagementSettings = /*@__PURE__*/ S.suspend(() =>
 export type CrossSubscriptionRestoreState =
   | "Enabled"
   | "Disabled"
-  | "PermanentlyDisabled"
-  | (string & {});
+  | "PermanentlyDisabled";
 export const CrossSubscriptionRestoreState = /*@__PURE__*/ S.String;
 
 /** Settings for Cross Subscription Restore Settings */
@@ -770,12 +769,11 @@ export type StandardTierStorageRedundancy =
   | "Invalid"
   | "LocallyRedundant"
   | "GeoRedundant"
-  | "ZoneRedundant"
-  | (string & {});
+  | "ZoneRedundant";
 export const StandardTierStorageRedundancy = /*@__PURE__*/ S.String;
 
 /** Flag to show if Cross Region Restore is enabled on the Vault or not */
-export type CrossRegionRestore = "Enabled" | "Disabled" | (string & {});
+export type CrossRegionRestore = "Enabled" | "Disabled";
 export const CrossRegionRestore = /*@__PURE__*/ S.String;
 
 /** The redundancy Settings of a Vault */
@@ -794,15 +792,11 @@ export const VaultPropertiesRedundancySettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "VaultPropertiesRedundancySettings",
 }) as any as S.Schema<VaultPropertiesRedundancySettings>;
 
-export type ImmutabilityState =
-  | "Disabled"
-  | "Unlocked"
-  | "Locked"
-  | (string & {});
+export type ImmutabilityState = "Disabled" | "Unlocked" | "Locked";
 export const ImmutabilityState = /*@__PURE__*/ S.String;
 
 /** Immutability config type. */
-export type ImmutabilityType = "AsPerPolicy" | "TimeBased" | (string & {});
+export type ImmutabilityType = "AsPerPolicy" | "TimeBased";
 export const ImmutabilityType = /*@__PURE__*/ S.String;
 
 /** Immutability configuration of vault. */
@@ -836,20 +830,14 @@ export const ImmutabilitySettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImmutabilitySettings",
 }) as any as S.Schema<ImmutabilitySettings>;
 
-export type SoftDeleteState =
-  | "Invalid"
-  | "Enabled"
-  | "Disabled"
-  | "AlwaysON"
-  | (string & {});
+export type SoftDeleteState = "Invalid" | "Enabled" | "Disabled" | "AlwaysON";
 export const SoftDeleteState = /*@__PURE__*/ S.String;
 
 export type EnhancedSecurityState =
   | "Invalid"
   | "Enabled"
   | "Disabled"
-  | "AlwaysON"
-  | (string & {});
+  | "AlwaysON";
 export const EnhancedSecurityState = /*@__PURE__*/ S.String;
 
 /** Soft delete Settings of vault */
@@ -870,18 +858,14 @@ export const SoftDeleteSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SoftDeleteSettings>;
 
 /** MUA Settings of vault */
-export type MultiUserAuthorization =
-  | "Invalid"
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type MultiUserAuthorization = "Invalid" | "Enabled" | "Disabled";
 export const MultiUserAuthorization = /*@__PURE__*/ S.String;
 
-export type State = "Invalid" | "Enabled" | "Disabled" | (string & {});
+export type State = "Invalid" | "Enabled" | "Disabled";
 export const State = /*@__PURE__*/ S.String;
 
 /** Identity type that should be used for an operation. */
-export type IdentityType = "SystemAssigned" | "UserAssigned" | (string & {});
+export type IdentityType = "SystemAssigned" | "UserAssigned";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Identity details to be used for an operation */
@@ -938,25 +922,16 @@ export const SecuritySettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecuritySettings>;
 
 /** Secure Score of Recovery Services Vault */
-export type SecureScoreLevel =
-  | "None"
-  | "Minimum"
-  | "Adequate"
-  | "Maximum"
-  | (string & {});
+export type SecureScoreLevel = "None" | "Minimum" | "Adequate" | "Maximum";
 export const SecureScoreLevel = /*@__PURE__*/ S.String;
 
 /** Security levels of Recovery Services Vault for business continuity and disaster recovery */
-export type BCDRSecurityLevel =
-  | "Poor"
-  | "Fair"
-  | "Good"
-  | "Excellent"
-  | (string & {});
+export type BCDRSecurityLevel = "Poor" | "Fair" | "Good" | "Excellent";
 export const BCDRSecurityLevel = /*@__PURE__*/ S.String;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
-export type VaultPropertiesResourceGuardOperationRequestsList = string[];
+export type VaultPropertiesResourceGuardOperationRequestsList =
+  ReadonlyArray<string>;
 export const VaultPropertiesResourceGuardOperationRequestsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1035,8 +1010,7 @@ export type ResourceIdentityType =
   | "SystemAssigned"
   | "None"
   | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | (string & {});
+  | "SystemAssigned, UserAssigned";
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** A resource identity that is managed by the user of the service. */
@@ -1083,7 +1057,7 @@ export const IdentityData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IdentityData" }) as any as S.Schema<IdentityData>;
 
 /** Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig */
-export type SkuName = "Standard" | "RS0" | (string & {});
+export type SkuName = "Standard" | "RS0";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** Identifies the unique system identifier for each Azure resource. */
@@ -1232,7 +1206,7 @@ export const ClientDiscoveryForLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** List of log specifications of this operation. */
 export type ClientDiscoveryForServiceSpecificationLogSpecificationsList =
-  ClientDiscoveryForLogSpecification[];
+  ReadonlyArray<ClientDiscoveryForLogSpecification>;
 export const ClientDiscoveryForServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     ClientDiscoveryForLogSpecification,
@@ -1291,7 +1265,7 @@ export const ClientDiscoveryValueForSingleApi = /*@__PURE__*/ S.suspend(() =>
 
 /** The ClientDiscoveryValueForSingleApi items on this page */
 export type ClientDiscoveryResponseValueList =
-  ClientDiscoveryValueForSingleApi[];
+  ReadonlyArray<ClientDiscoveryValueForSingleApi>;
 export const ClientDiscoveryResponseValueList = /*@__PURE__*/ S.Array(
   ClientDiscoveryValueForSingleApi,
 ) as any as S.Schema<ClientDiscoveryResponseValueList>;
@@ -1340,14 +1314,16 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** [backup-ecs1, backup-prot1, backup-prot1b, backup-prot1c, backup-id1] */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1451,7 +1427,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinkResourcesValueList = PrivateLinkResource[];
+export type PrivateLinkResourcesValueList = ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourcesValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesValueList>;
@@ -1472,18 +1448,50 @@ export const PrivateLinkResources = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResources",
 }) as any as S.Schema<PrivateLinkResources>;
 
+/** DNSZone information */
+export interface DNSZone {
+  /** Subresource type for vault AzureBackup, AzureBackup_secondary or AzureSiteRecovery */
+  subResource?: VaultSubResourceType;
+}
+export const DNSZone = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subResource: S.optional(VaultSubResourceType),
+  }),
+).annotate({ identifier: "DNSZone" }) as any as S.Schema<DNSZone>;
+
+export type CapabilitiesPropertiesDnsZonesList = ReadonlyArray<DNSZone>;
+export const CapabilitiesPropertiesDnsZonesList = /*@__PURE__*/ S.Array(
+  DNSZone,
+) as any as S.Schema<CapabilitiesPropertiesDnsZonesList>;
+
+/** Capabilities information */
+export interface CapabilitiesProperties {
+  dnsZones?: CapabilitiesPropertiesDnsZonesList;
+}
+export const CapabilitiesProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dnsZones: S.optional(CapabilitiesPropertiesDnsZonesList),
+  }),
+).annotate({
+  identifier: "CapabilitiesProperties",
+}) as any as S.Schema<CapabilitiesProperties>;
+
 export interface RecoveryServicesCapabilitiesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The location of the resource. */
   location: string;
-  body: unknown;
+  /** Describes the Resource type: Microsoft.RecoveryServices/Vaults */
+  type: string;
+  /** Capabilities information */
+  properties?: CapabilitiesProperties;
 }
 export const RecoveryServicesCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    type: S.String,
+    properties: S.optional(CapabilitiesProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1497,7 +1505,7 @@ export const RecoveryServicesCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecoveryServicesCapabilitiesRequest>;
 
 /** The private link resource Private link DNS zone names. */
-export type DNSZoneResponseRequiredZoneNamesList = string[];
+export type DNSZoneResponseRequiredZoneNamesList = ReadonlyArray<string>;
 export const DNSZoneResponseRequiredZoneNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DNSZoneResponseRequiredZoneNamesList>;
@@ -1518,7 +1526,8 @@ export const DNSZoneResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DNSZoneResponse",
 }) as any as S.Schema<DNSZoneResponse>;
 
-export type CapabilitiesResponsePropertiesDnsZonesList = DNSZoneResponse[];
+export type CapabilitiesResponsePropertiesDnsZonesList =
+  ReadonlyArray<DNSZoneResponse>;
 export const CapabilitiesResponsePropertiesDnsZonesList = /*@__PURE__*/ S.Array(
   DNSZoneResponse,
 ) as any as S.Schema<CapabilitiesResponsePropertiesDnsZonesList>;
@@ -1558,7 +1567,10 @@ export interface RecoveryServicesCheckNameAvailabilityRequest {
   resourceGroupName: string;
   /** The name of Azure region. */
   location: string;
-  body: unknown;
+  /** Describes the Resource type: Microsoft.RecoveryServices/Vaults */
+  type?: string;
+  /** Resource name for which availability needs to be checked */
+  name?: string;
 }
 export const RecoveryServicesCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1566,7 +1578,8 @@ export const RecoveryServicesCheckNameAvailabilityRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      type: S.optional(S.String),
+      name: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1729,7 +1742,7 @@ export const ReplicationUsage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationUsage>;
 
 /** The list of replication usages for the given vault. */
-export type ReplicationUsageListValueList = ReplicationUsage[];
+export type ReplicationUsageListValueList = ReadonlyArray<ReplicationUsage>;
 export const ReplicationUsageListValueList = /*@__PURE__*/ S.Array(
   ReplicationUsage,
 ) as any as S.Schema<ReplicationUsageListValueList>;
@@ -1781,8 +1794,7 @@ export type UsagesUnit =
   | "Seconds"
   | "Percent"
   | "CountPerSecond"
-  | "BytesPerSecond"
-  | (string & {});
+  | "BytesPerSecond";
 export const UsagesUnit = /*@__PURE__*/ S.String;
 
 /** The name of usage. */
@@ -1826,7 +1838,7 @@ export const VaultUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VaultUsage" }) as any as S.Schema<VaultUsage>;
 
 /** The list of usages for the given vault. */
-export type VaultUsageListValueList = VaultUsage[];
+export type VaultUsageListValueList = ReadonlyArray<VaultUsage>;
 export const VaultUsageListValueList = /*@__PURE__*/ S.Array(
   VaultUsage,
 ) as any as S.Schema<VaultUsageListValueList>;
@@ -1844,6 +1856,31 @@ export const VaultUsageList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VaultUsageList" }) as any as S.Schema<VaultUsageList>;
 
+/** Specifies the authentication type. */
+export type AuthType =
+  | "Invalid"
+  | "ACS"
+  | "AAD"
+  | "AccessControlService"
+  | "AzureActiveDirectory";
+export const AuthType = /*@__PURE__*/ S.String;
+
+/** Raw certificate data. */
+export interface RawCertificateData {
+  /** Specifies the authentication type. */
+  authType?: AuthType;
+  /** The base64 encoded certificate raw data string */
+  certificate?: string;
+}
+export const RawCertificateData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authType: S.optional(AuthType),
+    certificate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RawCertificateData",
+}) as any as S.Schema<RawCertificateData>;
+
 export interface VaultCertificatesCreateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1853,7 +1890,8 @@ export interface VaultCertificatesCreateRequest {
   vaultName: string;
   /** Certificate friendly name. */
   certificateName: string;
-  body: unknown;
+  /** Raw certificate data. */
+  properties?: RawCertificateData;
 }
 export const VaultCertificatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1861,7 +1899,7 @@ export const VaultCertificatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
     certificateName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(RawCertificateData),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1933,34 +1971,6 @@ export const VaultCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VaultCertificateResponse",
 }) as any as S.Schema<VaultCertificateResponse>;
 
-export interface VaultExtendedInfoCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the recovery services vault. */
-  vaultName: string;
-  body: unknown;
-}
-export const VaultExtendedInfoCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      vaultName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
-        code: 200,
-        apiVersion: "2026-05-01",
-      }),
-    ),
-).annotate({
-  identifier: "VaultExtendedInfoCreateOrUpdateRequest",
-}) as any as S.Schema<VaultExtendedInfoCreateOrUpdateRequest>;
-
 /** Vault extended information. */
 export interface VaultExtendedInfo {
   /** Integrity key. */
@@ -1982,6 +1992,38 @@ export const VaultExtendedInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VaultExtendedInfo",
 }) as any as S.Schema<VaultExtendedInfo>;
+
+export interface VaultExtendedInfoCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the recovery services vault. */
+  vaultName: string;
+  /** Vault extended information. */
+  properties?: VaultExtendedInfo;
+  /** etag for the resource. */
+  etag?: string;
+}
+export const VaultExtendedInfoCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      vaultName: S.String.pipe(T.Label()),
+      properties: S.optional(VaultExtendedInfo),
+      etag: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/extendedInformation/vaultExtendedInfo",
+        code: 200,
+        apiVersion: "2026-05-01",
+      }),
+    ),
+).annotate({
+  identifier: "VaultExtendedInfoCreateOrUpdateRequest",
+}) as any as S.Schema<VaultExtendedInfoCreateOrUpdateRequest>;
 
 export interface VaultExtendedInfoCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2070,14 +2112,18 @@ export interface VaultExtendedInfoUpdateRequest {
   resourceGroupName: string;
   /** The name of the recovery services vault. */
   vaultName: string;
-  body: unknown;
+  /** Vault extended information. */
+  properties?: VaultExtendedInfo;
+  /** etag for the resource. */
+  etag?: string;
 }
 export const VaultExtendedInfoUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(VaultExtendedInfo),
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2117,6 +2163,117 @@ export const VaultExtendedInfoUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VaultExtendedInfoUpdateResponse",
 }) as any as S.Schema<VaultExtendedInfoUpdateResponse>;
 
+/** Resource tags. */
+export type VaultsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const VaultsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<VaultsCreateOrUpdateRequestTagsMap>;
+
+/** Details for upgrading vault. */
+export interface UpgradeDetailsInput {}
+export const UpgradeDetailsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpgradeDetailsInput",
+}) as any as S.Schema<UpgradeDetailsInput>;
+
+/** The details of the latest move operation performed on the Azure Resource */
+export interface VaultPropertiesMoveDetailsInput {}
+export const VaultPropertiesMoveDetailsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "VaultPropertiesMoveDetailsInput",
+}) as any as S.Schema<VaultPropertiesMoveDetailsInput>;
+
+/** ResourceGuardOperationRequests on which LAC check will be performed */
+export type VaultPropertiesInputResourceGuardOperationRequestsList =
+  ReadonlyArray<string>;
+export const VaultPropertiesInputResourceGuardOperationRequestsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<VaultPropertiesInputResourceGuardOperationRequestsList>;
+
+/** Properties of the vault. */
+export interface VaultPropertiesInput {
+  /** Details for upgrading vault. */
+  upgradeDetails?: UpgradeDetailsInput;
+  /** Customer Managed Key details of the resource. */
+  encryption?: VaultPropertiesEncryption;
+  /** The details of the latest move operation performed on the Azure Resource */
+  moveDetails?: VaultPropertiesMoveDetailsInput;
+  /** property to enable or disable resource provider inbound network traffic from public clients */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** Monitoring Settings of the vault */
+  monitoringSettings?: MonitoringSettings;
+  /** Cost Management Settings of the vault */
+  costManagementSettings?: CostManagementSettings;
+  /** Restore Settings of the vault */
+  restoreSettings?: RestoreSettings;
+  /** The redundancy Settings of a Vault */
+  redundancySettings?: VaultPropertiesRedundancySettings;
+  /** Security Settings of the vault */
+  securitySettings?: SecuritySettings;
+  /** ResourceGuardOperationRequests on which LAC check will be performed */
+  resourceGuardOperationRequests?: VaultPropertiesInputResourceGuardOperationRequestsList;
+}
+export const VaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    upgradeDetails: S.optional(UpgradeDetailsInput),
+    encryption: S.optional(VaultPropertiesEncryption),
+    moveDetails: S.optional(VaultPropertiesMoveDetailsInput),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    monitoringSettings: S.optional(MonitoringSettings),
+    costManagementSettings: S.optional(CostManagementSettings),
+    restoreSettings: S.optional(RestoreSettings),
+    redundancySettings: S.optional(VaultPropertiesRedundancySettings),
+    securitySettings: S.optional(SecuritySettings),
+    resourceGuardOperationRequests: S.optional(
+      VaultPropertiesInputResourceGuardOperationRequestsList,
+    ),
+  }),
+).annotate({
+  identifier: "VaultPropertiesInput",
+}) as any as S.Schema<VaultPropertiesInput>;
+
+/** A resource identity that is managed by the user of the service. */
+export interface UserIdentityInput {}
+export const UserIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserIdentityInput",
+}) as any as S.Schema<UserIdentityInput>;
+
+/** The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type IdentityDataInputUserAssignedIdentitiesMap = {
+  [key: string]: UserIdentityInput | undefined;
+};
+export const IdentityDataInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserIdentityInput,
+  ) as any as S.Schema<IdentityDataInputUserAssignedIdentitiesMap>;
+
+/** Identity for the resource. */
+export interface IdentityDataInput {
+  /** The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities. */
+  type: ResourceIdentityType;
+  /** The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: IdentityDataInputUserAssignedIdentitiesMap;
+}
+export const IdentityDataInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ResourceIdentityType,
+    userAssignedIdentities: S.optional(
+      IdentityDataInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "IdentityDataInput",
+}) as any as S.Schema<IdentityDataInput>;
+
 export interface VaultsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2124,14 +2281,30 @@ export interface VaultsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Vault */
   vaultName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: VaultsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the vault. */
+  properties?: VaultPropertiesInput;
+  /** Identity for the resource. */
+  identity?: IdentityDataInput;
+  /** Identifies the unique system identifier for each Azure resource. */
+  sku?: Sku;
+  /** etag for the resource. */
+  etag?: string;
 }
 export const VaultsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(VaultsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(VaultPropertiesInput),
+    identity: S.optional(IdentityDataInput),
+    sku: S.optional(Sku),
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2363,7 +2536,7 @@ export const Vault = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Vault" }) as any as S.Schema<Vault>;
 
 /** The Vault items on this page */
-export type VaultListValueList = Vault[];
+export type VaultListValueList = ReadonlyArray<Vault>;
 export const VaultListValueList = /*@__PURE__*/ S.Array(
   Vault,
 ) as any as S.Schema<VaultListValueList>;
@@ -2401,6 +2574,13 @@ export const VaultsListBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VaultsListBySubscriptionIdRequest",
 }) as any as S.Schema<VaultsListBySubscriptionIdRequest>;
 
+/** Resource tags. */
+export type VaultsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const VaultsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<VaultsUpdateRequestTagsMap>;
+
 export interface VaultsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2408,14 +2588,30 @@ export interface VaultsUpdateRequest {
   resourceGroupName: string;
   /** The name of the Vault */
   vaultName: string;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: VaultsUpdateRequestTagsMap;
+  /** Optional ETag. */
+  etag?: string;
+  /** Properties of the vault. */
+  properties?: VaultPropertiesInput;
+  /** Identifies the unique system identifier for each Azure resource. */
+  sku?: Sku;
+  /** Identity for the resource. */
+  identity?: IdentityDataInput;
 }
 export const VaultsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(VaultsUpdateRequestTagsMap),
+    etag: S.optional(S.String),
+    properties: S.optional(VaultPropertiesInput),
+    sku: S.optional(Sku),
+    identity: S.optional(IdentityDataInput),
   }).pipe(
     T.Http({
       method: "PATCH",

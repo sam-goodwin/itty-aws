@@ -645,16 +645,40 @@
             "smithy.api#documentation": "The name of the shared private link resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.signalr#SharedPrivateLinkResourcePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.signalr#SharedPrivateLinkResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group id from the provider of resource the shared private link resource is for",
+            "smithy.api#required": {}
+          }
+        },
+        "privateLinkResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the resource the shared private link resource is for",
+            "smithy.api#required": {}
+          }
+        },
+        "requestMessage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The request message for requesting approval of the shared private link resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of an existing Shared Private Link Resource"
       }
     },
     "com.azure.signalr#SignalRSharedPrivateLinkResourcesGet": {
@@ -1073,12 +1097,8 @@
             "smithy.api#documentation": "The name of the shared private link resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.signalr#SharedPrivateLinkResourcePropertiesInput"
         }
       },
       "traits": {
@@ -1502,16 +1522,82 @@
             "smithy.api#documentation": "The name of the replica."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.signalr#SignalRReplicasUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "sku": {
+          "target": "com.azure.signalr#ResourceSkuInput"
+        },
+        "properties": {
+          "target": "com.azure.signalr#ReplicaPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.signalr#ReplicaPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "regionEndpointEnabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enable or disable the regional endpoint. Default to \"Enabled\".\r\nWhen it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected."
+          }
+        },
+        "resourceStopped": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stop or start the resource.  Default to \"false\".\r\nWhen it's true, the data plane of the resource is shutdown.\r\nWhen it's false, the data plane of the resource is started."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.signalr#ResourceSkuInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. Required.\r\n\r\nAllowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.signalr#SignalRSkuTier"
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Optional, integer. The unit count of the resource.\r\n1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default.\r\n\r\nIf present, following values are allowed:\r\n    Free_F1: 1;\r\n    Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;\r\n    Premium_P1:  1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100;\r\n    Premium_P2:  100,200,300,400,500,600,700,800,900,1000;"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The billing information of the resource."
+      }
+    },
+    "com.azure.signalr#SignalRReplicasUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.signalr#SignalRReplicasCreateOrUpdate": {
@@ -1631,16 +1717,40 @@
             "smithy.api#documentation": "The name of the replica."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.signalr#SignalRReplicasCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "sku": {
+          "target": "com.azure.signalr#ResourceSkuInput"
+        },
+        "properties": {
+          "target": "com.azure.signalr#ReplicaPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.signalr#SignalRReplicasCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.signalr#SignalRReplicasGet": {
@@ -1984,16 +2094,38 @@
             "smithy.api#documentation": "The name of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "keyType": {
+          "target": "com.azure.signalr#KeyType"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.signalr#KeyType": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Primary"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secondary"
+          }
+        },
+        "SALT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Salt"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of access key."
       }
     },
     "com.azure.signalr#SignalRPrivateLinkResourcesList": {
@@ -2462,16 +2594,26 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.signalr#PrivateEndpointConnectionPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.signalr#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.signalr#PrivateEndpoint"
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.signalr#PrivateLinkServiceConnectionState"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Private endpoint connection properties"
       }
     },
     "com.azure.signalr#SignalRPrivateEndpointConnectionsGet": {
@@ -2923,16 +3065,36 @@
             "smithy.api#documentation": "Custom domain name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.signalr#CustomDomainPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.signalr#CustomDomainPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "domainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The custom domain name.",
+            "smithy.api#required": {}
+          }
+        },
+        "customCertificate": {
+          "target": "com.azure.signalr#ResourceReference",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a custom domain."
       }
     },
     "com.azure.signalr#SignalRCustomDomainsGet": {
@@ -3332,16 +3494,43 @@
             "smithy.api#documentation": "Custom certificate name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.signalr#CustomCertificatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.signalr#CustomCertificatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "keyVaultBaseUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Base uri of the KeyVault that stores certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "keyVaultSecretName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate secret name.",
+            "smithy.api#required": {}
+          }
+        },
+        "keyVaultSecretVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate secret version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom certificate properties."
       }
     },
     "com.azure.signalr#SignalRCustomCertificatesGet": {
@@ -4492,16 +4681,156 @@
             "smithy.api#documentation": "The name of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.signalr#SignalRUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "sku": {
+          "target": "com.azure.signalr#ResourceSkuInput"
+        },
+        "properties": {
+          "target": "com.azure.signalr#SignalRPropertiesInput"
+        },
+        "kind": {
+          "target": "com.azure.signalr#ServiceKind"
+        },
+        "identity": {
+          "target": "com.azure.signalr#ManagedIdentityInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.signalr#ManagedIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.signalr#ManagedIdentityType"
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.signalr#ManagedIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "Get or set the user assigned identities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A class represent managed identities used for request and response"
+      }
+    },
+    "com.azure.signalr#ManagedIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.signalr#UserAssignedIdentityPropertyInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Get or set the user assigned identities"
+      }
+    },
+    "com.azure.signalr#UserAssignedIdentityPropertyInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Properties of user assigned identity."
+      }
+    },
+    "com.azure.signalr#SignalRPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "tls": {
+          "target": "com.azure.signalr#SignalRTlsSettings"
+        },
+        "features": {
+          "target": "com.azure.signalr#SignalRPropertiesInputFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "List of the featureFlags.\r\n\r\nFeatureFlags that are not included in the parameters for the update operation will not be modified.\r\nAnd the response will only include featureFlags that are explicitly set. \r\nWhen a featureFlag is not explicitly set, its globally default value will be used\r\nBut keep in mind, the default value doesn't mean \"false\". It varies in terms of different FeatureFlags."
+          }
+        },
+        "liveTraceConfiguration": {
+          "target": "com.azure.signalr#LiveTraceConfiguration"
+        },
+        "resourceLogConfiguration": {
+          "target": "com.azure.signalr#ResourceLogConfiguration"
+        },
+        "cors": {
+          "target": "com.azure.signalr#SignalRCorsSettings"
+        },
+        "serverless": {
+          "target": "com.azure.signalr#ServerlessSettings"
+        },
+        "upstream": {
+          "target": "com.azure.signalr#ServerlessUpstreamSettings"
+        },
+        "networkACLs": {
+          "target": "com.azure.signalr#SignalRNetworkACLs"
+        },
+        "publicNetworkAccess": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enable or disable public network access. Default to \"Enabled\".\r\nWhen it's Enabled, network ACLs still apply.\r\nWhen it's Disabled, public network access is always disabled no matter what you set in network ACLs."
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "DisableLocalAuth\r\nEnable or disable local auth with AccessKey\r\nWhen set as true, connection with AccessKey=xxx won't work."
+          }
+        },
+        "disableAadAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "DisableLocalAuth\r\nEnable or disable aad auth\r\nWhen set as true, connection with AuthType=aad won't work."
+          }
+        },
+        "regionEndpointEnabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Enable or disable the regional endpoint. Default to \"Enabled\".\r\nWhen it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.\r\nThis property is replica specific. Disable the regional endpoint without replica is not allowed."
+          }
+        },
+        "resourceStopped": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stop or start the resource.  Default to \"False\".\r\nWhen it's true, the data plane of the resource is shutdown.\r\nWhen it's false, the data plane of the resource is started."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A class that describes the properties of the resource"
+      }
+    },
+    "com.azure.signalr#SignalRPropertiesInputFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.signalr#SignalRFeature"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of the featureFlags.\r\n\r\nFeatureFlags that are not included in the parameters for the update operation will not be modified.\r\nAnd the response will only include featureFlags that are explicitly set. \r\nWhen a featureFlag is not explicitly set, its globally default value will be used\r\nBut keep in mind, the default value doesn't mean \"false\". It varies in terms of different FeatureFlags."
+      }
+    },
+    "com.azure.signalr#SignalRUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.signalr#SignalRCreateOrUpdate": {
@@ -4619,16 +4948,46 @@
             "smithy.api#documentation": "The name of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.signalr#SignalRCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "sku": {
+          "target": "com.azure.signalr#ResourceSkuInput"
+        },
+        "properties": {
+          "target": "com.azure.signalr#SignalRPropertiesInput"
+        },
+        "kind": {
+          "target": "com.azure.signalr#ServiceKind"
+        },
+        "identity": {
+          "target": "com.azure.signalr#ManagedIdentityInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.signalr#SignalRCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.signalr#SignalRGet": {
@@ -5118,10 +5477,17 @@
             "smithy.api#documentation": "the region"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource type. Can be \"Microsoft.SignalRService/SignalR\", \"Microsoft.SignalRService/WebPubSub\", \"Microsoft.SignalRService/SignalR/replicas\" or \"Microsoft.SignalRService/WebPubSub/replicas\"",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource name to validate. e.g.\"my-resource-name\"",
             "smithy.api#required": {}
           }
         }

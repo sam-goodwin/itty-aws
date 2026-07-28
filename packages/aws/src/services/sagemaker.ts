@@ -166,8 +166,7 @@ export type AssociationEdgeType =
   | "AssociatedWith"
   | "DerivedFrom"
   | "Produced"
-  | "SameAs"
-  | (string & {});
+  | "SameAs";
 export const AssociationEdgeType = /*@__PURE__*/ S.String;
 
 export interface AddAssociationRequest {
@@ -313,8 +312,7 @@ export type VolumeAttachmentStatus =
   | "attached"
   | "detaching"
   | "detached"
-  | "busy"
-  | (string & {});
+  | "busy";
 export const VolumeAttachmentStatus = /*@__PURE__*/ S.String;
 
 export type VolumeDeviceName = string;
@@ -467,8 +465,7 @@ export type ClusterInstanceType =
   | "ml.g7e.12xlarge"
   | "ml.g7e.24xlarge"
   | "ml.g7e.48xlarge"
-  | "ml.p6-b300.48xlarge"
-  | (string & {});
+  | "ml.p6-b300.48xlarge";
 export const ClusterInstanceType = /*@__PURE__*/ S.String;
 
 export type ClusterInstanceTypes = ClusterInstanceType[];
@@ -525,8 +522,7 @@ export type ClusterInstanceStatus =
   | "ShuttingDown"
   | "SystemUpdating"
   | "DeepHealthCheckInProgress"
-  | "NotFound"
-  | (string & {});
+  | "NotFound";
 export const ClusterInstanceStatus = /*@__PURE__*/ S.String;
 
 export interface NodeAdditionResult {
@@ -554,8 +550,7 @@ export type BatchAddClusterNodesErrorCode =
   | "InstanceGroupNotFound"
   | "InvalidInstanceGroupStatus"
   | "IncompatibleAvailabilityZones"
-  | "IncompatibleInstanceTypes"
-  | (string & {});
+  | "IncompatibleInstanceTypes";
 export const BatchAddClusterNodesErrorCode = /*@__PURE__*/ S.String;
 
 export type BatchAddFailureCount = number;
@@ -626,8 +621,7 @@ export const BatchDeleteClusterNodesRequest = /*@__PURE__*/ S.suspend(() =>
 export type BatchDeleteClusterNodesErrorCode =
   | "NodeIdNotFound"
   | "InvalidNodeStatus"
-  | "NodeIdInUse"
-  | (string & {});
+  | "NodeIdInUse";
 export const BatchDeleteClusterNodesErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchDeleteClusterNodesError_ {
@@ -722,10 +716,10 @@ export type ContainerImage = string;
 export type ImageDigest = string;
 export type Url = string;
 export type S3ModelUri = string;
-export type S3ModelDataType = "S3Prefix" | "S3Object" | (string & {});
+export type S3ModelDataType = "S3Prefix" | "S3Object";
 export const S3ModelDataType = /*@__PURE__*/ S.String;
 
-export type ModelCompressionType = "None" | "Gzip" | (string & {});
+export type ModelCompressionType = "None" | "Gzip";
 export const ModelCompressionType = /*@__PURE__*/ S.String;
 
 export type AcceptEula = boolean;
@@ -811,14 +805,11 @@ export type AdditionalModelDataSources = AdditionalModelDataSource[];
 export const AdditionalModelDataSources = /*@__PURE__*/ S.Array(
   AdditionalModelDataSource,
 );
-export type AdditionalS3DataSourceDataType =
-  | "S3Object"
-  | "S3Prefix"
-  | (string & {});
+export type AdditionalS3DataSourceDataType = "S3Object" | "S3Prefix";
 export const AdditionalS3DataSourceDataType = /*@__PURE__*/ S.String;
 
 export type S3Uri = string;
-export type CompressionType = "None" | "Gzip" | (string & {});
+export type CompressionType = "None" | "Gzip";
 export const CompressionType = /*@__PURE__*/ S.String;
 
 export interface AdditionalS3DataSource {
@@ -1005,8 +996,7 @@ export type TransformInstanceType =
   | "ml.g6.12xlarge"
   | "ml.g6.16xlarge"
   | "ml.g6.24xlarge"
-  | "ml.g6.48xlarge"
-  | (string & {});
+  | "ml.g6.48xlarge";
 export const TransformInstanceType = /*@__PURE__*/ S.String;
 
 export type TransformInstanceTypes = TransformInstanceType[];
@@ -1284,8 +1274,7 @@ export type ProductionVariantInstanceType =
   | "ml.p6-b200.48xlarge"
   | "ml.p6-b300.48xlarge"
   | "ml.p6e-gb200.36xlarge"
-  | "ml.p5.4xlarge"
-  | (string & {});
+  | "ml.p5.4xlarge";
 export const ProductionVariantInstanceType = /*@__PURE__*/ S.String;
 
 export type RealtimeInferenceInstanceTypes = ProductionVariantInstanceType[];
@@ -1323,21 +1312,16 @@ export type ModelPackageStatus =
   | "InProgress"
   | "Completed"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ModelPackageStatus = /*@__PURE__*/ S.String;
 
 export type ModelApprovalStatus =
   | "Approved"
   | "Rejected"
-  | "PendingManualApproval"
-  | (string & {});
+  | "PendingManualApproval";
 export const ModelApprovalStatus = /*@__PURE__*/ S.String;
 
-export type ModelPackageRegistrationType =
-  | "Logged"
-  | "Registered"
-  | (string & {});
+export type ModelPackageRegistrationType = "Logged" | "Registered";
 export const ModelPackageRegistrationType = /*@__PURE__*/ S.String;
 
 export interface BatchDescribeModelPackageSummary {
@@ -1486,8 +1470,7 @@ export type BatchRebootClusterNodesErrorCode =
   | "InstanceIdNotFound"
   | "InvalidInstanceStatus"
   | "InstanceIdInUse"
-  | "InternalServerError"
-  | (string & {});
+  | "InternalServerError";
 export const BatchRebootClusterNodesErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchRebootClusterNodesError_ {
@@ -1580,8 +1563,7 @@ export type BatchReplaceClusterNodesErrorCode =
   | "InstanceIdNotFound"
   | "InvalidInstanceStatus"
   | "InstanceIdInUse"
-  | "InternalServerError"
-  | (string & {});
+  | "InternalServerError";
 export const BatchReplaceClusterNodesErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchReplaceClusterNodesError_ {
@@ -1667,8 +1649,7 @@ export type ActionStatus =
   | "Completed"
   | "Failed"
   | "Stopping"
-  | "Stopped"
-  | (string & {});
+  | "Stopped";
 export const ActionStatus = /*@__PURE__*/ S.String;
 
 export type StringParameterValue = string;
@@ -1888,11 +1869,7 @@ export const AIRecommendationOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AIRecommendationOutputConfig",
 }) as any as S.Schema<AIRecommendationOutputConfig>;
-export type AIRecommendationMetric =
-  | "ttft-ms"
-  | "throughput"
-  | "cost"
-  | (string & {});
+export type AIRecommendationMetric = "ttft-ms" | "throughput" | "cost";
 export const AIRecommendationMetric = /*@__PURE__*/ S.String;
 
 export interface AIRecommendationConstraint {
@@ -1915,7 +1892,7 @@ export const AIRecommendationPerformanceTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AIRecommendationPerformanceTarget",
 }) as any as S.Schema<AIRecommendationPerformanceTarget>;
-export type AIRecommendationInferenceFramework = "LMI" | "VLLM" | (string & {});
+export type AIRecommendationInferenceFramework = "LMI" | "VLLM";
 export const AIRecommendationInferenceFramework = /*@__PURE__*/ S.String;
 
 export interface AIRecommendationInferenceSpecification {
@@ -1967,17 +1944,14 @@ export type AIRecommendationInstanceType =
   | "ml.p5.48xlarge"
   | "ml.p5e.48xlarge"
   | "ml.p5en.48xlarge"
-  | "ml.p6-b200.48xlarge"
-  | (string & {});
+  | "ml.p6-b200.48xlarge";
 export const AIRecommendationInstanceType = /*@__PURE__*/ S.String;
 
 export type AIRecommendationInstanceTypeList = AIRecommendationInstanceType[];
 export const AIRecommendationInstanceTypeList = /*@__PURE__*/ S.Array(
   AIRecommendationInstanceType,
 );
-export type AICapacityReservationPreference =
-  | "capacity-reservations-only"
-  | (string & {});
+export type AICapacityReservationPreference = "capacity-reservations-only";
 export const AICapacityReservationPreference = /*@__PURE__*/ S.String;
 
 export type AIMlReservationArn = string;
@@ -2143,8 +2117,7 @@ export type ParameterType =
   | "Integer"
   | "Continuous"
   | "Categorical"
-  | "FreeText"
-  | (string & {});
+  | "FreeText";
 export const ParameterType = /*@__PURE__*/ S.String;
 
 export type ParameterValue = string;
@@ -2370,8 +2343,7 @@ export type TrainingInstanceType =
   | "ml.g7e.8xlarge"
   | "ml.g7e.12xlarge"
   | "ml.g7e.24xlarge"
-  | "ml.g7e.48xlarge"
-  | (string & {});
+  | "ml.g7e.48xlarge";
 export const TrainingInstanceType = /*@__PURE__*/ S.String;
 
 export type TrainingInstanceTypes = TrainingInstanceType[];
@@ -2393,7 +2365,7 @@ export const MetricDefinitionList = /*@__PURE__*/ S.Array(MetricDefinition);
 export type ChannelName = string;
 export type CompressionTypes = CompressionType[];
 export const CompressionTypes = /*@__PURE__*/ S.Array(CompressionType);
-export type TrainingInputMode = "Pipe" | "File" | "FastFile" | (string & {});
+export type TrainingInputMode = "Pipe" | "File" | "FastFile";
 export const TrainingInputMode = /*@__PURE__*/ S.String;
 
 export type InputModes = TrainingInputMode[];
@@ -2421,10 +2393,7 @@ export const ChannelSpecification = /*@__PURE__*/ S.suspend(() =>
 export type ChannelSpecifications = ChannelSpecification[];
 export const ChannelSpecifications =
   /*@__PURE__*/ S.Array(ChannelSpecification);
-export type HyperParameterTuningJobObjectiveType =
-  | "Maximize"
-  | "Minimize"
-  | (string & {});
+export type HyperParameterTuningJobObjectiveType = "Maximize" | "Minimize";
 export const HyperParameterTuningJobObjectiveType = /*@__PURE__*/ S.String;
 
 export interface HyperParameterTuningJobObjective {
@@ -2482,14 +2451,10 @@ export type S3DataType =
   | "ManifestFile"
   | "S3Prefix"
   | "AugmentedManifestFile"
-  | "Converse"
-  | (string & {});
+  | "Converse";
 export const S3DataType = /*@__PURE__*/ S.String;
 
-export type S3DataDistribution =
-  | "FullyReplicated"
-  | "ShardedByS3Key"
-  | (string & {});
+export type S3DataDistribution = "FullyReplicated" | "ShardedByS3Key";
 export const S3DataDistribution = /*@__PURE__*/ S.String;
 
 export type AttributeName = string;
@@ -2526,10 +2491,10 @@ export const S3DataSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "S3DataSource" }) as any as S.Schema<S3DataSource>;
 export type FileSystemId = string;
-export type FileSystemAccessMode = "rw" | "ro" | (string & {});
+export type FileSystemAccessMode = "rw" | "ro";
 export const FileSystemAccessMode = /*@__PURE__*/ S.String;
 
-export type FileSystemType = "EFS" | "FSxLustre" | (string & {});
+export type FileSystemType = "EFS" | "FSxLustre";
 export const FileSystemType = /*@__PURE__*/ S.String;
 
 export type DirectoryPath = string;
@@ -2568,7 +2533,7 @@ export const DataSource = /*@__PURE__*/ S.suspend(() =>
     DatasetSource: S.optional(DatasetSource),
   }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
-export type RecordWrapper = "None" | "RecordIO" | (string & {});
+export type RecordWrapper = "None" | "RecordIO";
 export const RecordWrapper = /*@__PURE__*/ S.String;
 
 export type Seed = number;
@@ -2601,7 +2566,7 @@ export const Channel = /*@__PURE__*/ S.suspend(() =>
 export type InputDataConfig = Channel[];
 export const InputDataConfig = /*@__PURE__*/ S.Array(Channel);
 export type KmsKeyId = string;
-export type OutputCompressionType = "GZIP" | "NONE" | (string & {});
+export type OutputCompressionType = "GZIP" | "NONE";
 export const OutputCompressionType = /*@__PURE__*/ S.String;
 
 export interface OutputDataConfig {
@@ -2725,7 +2690,7 @@ export const TrainingJobDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrainingJobDefinition>;
 export type MaxConcurrentTransforms = number;
 export type MaxPayloadInMB = number;
-export type BatchStrategy = "MultiRecord" | "SingleRecord" | (string & {});
+export type BatchStrategy = "MultiRecord" | "SingleRecord";
 export const BatchStrategy = /*@__PURE__*/ S.String;
 
 export type TransformEnvironmentKey = string;
@@ -2752,12 +2717,7 @@ export const TransformDataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TransformDataSource",
 }) as any as S.Schema<TransformDataSource>;
-export type SplitType =
-  | "None"
-  | "Line"
-  | "RecordIO"
-  | "TFRecord"
-  | (string & {});
+export type SplitType = "None" | "Line" | "RecordIO" | "TFRecord";
 export const SplitType = /*@__PURE__*/ S.String;
 
 export interface TransformInput {
@@ -2775,7 +2735,7 @@ export const TransformInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TransformInput" }) as any as S.Schema<TransformInput>;
 export type Accept = string;
-export type AssemblyType = "None" | "Line" | (string & {});
+export type AssemblyType = "None" | "Line";
 export const AssemblyType = /*@__PURE__*/ S.String;
 
 export interface TransformOutput {
@@ -2918,8 +2878,7 @@ export type AppType =
   | "JupyterLab"
   | "RStudioServerPro"
   | "RSessionGateway"
-  | "Canvas"
-  | (string & {});
+  | "Canvas";
 export const AppType = /*@__PURE__*/ S.String;
 
 export type AppName = string;
@@ -3096,8 +3055,7 @@ export type AppInstanceType =
   | "ml.g7e.8xlarge"
   | "ml.g7e.12xlarge"
   | "ml.g7e.24xlarge"
-  | "ml.g7e.48xlarge"
-  | (string & {});
+  | "ml.g7e.48xlarge";
 export const AppInstanceType = /*@__PURE__*/ S.String;
 
 export type StudioLifecycleConfigArn = string;
@@ -3298,8 +3256,7 @@ export type ArtifactSourceIdType =
   | "MD5Hash"
   | "S3ETag"
   | "S3Version"
-  | "Custom"
-  | (string & {});
+  | "Custom";
 export const ArtifactSourceIdType = /*@__PURE__*/ S.String;
 
 export interface ArtifactSourceType {
@@ -3375,8 +3332,7 @@ export type AutoMLJobName = string;
 export type AutoMLS3DataType =
   | "ManifestFile"
   | "S3Prefix"
-  | "AugmentedManifestFile"
-  | (string & {});
+  | "AugmentedManifestFile";
 export const AutoMLS3DataType = /*@__PURE__*/ S.String;
 
 export interface AutoMLS3DataSource {
@@ -3400,7 +3356,7 @@ export const AutoMLDataSource = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoMLDataSource",
 }) as any as S.Schema<AutoMLDataSource>;
 export type TargetAttributeName = string;
-export type AutoMLChannelType = "training" | "validation" | (string & {});
+export type AutoMLChannelType = "training" | "validation";
 export const AutoMLChannelType = /*@__PURE__*/ S.String;
 
 export type SampleWeightAttributeName = string;
@@ -3439,8 +3395,7 @@ export const AutoMLOutputDataConfig = /*@__PURE__*/ S.suspend(() =>
 export type ProblemType =
   | "BinaryClassification"
   | "MulticlassClassification"
-  | "Regression"
-  | (string & {});
+  | "Regression";
 export const ProblemType = /*@__PURE__*/ S.String;
 
 export type AutoMLMetricEnum =
@@ -3460,8 +3415,7 @@ export type AutoMLMetricEnum =
   | "MAPE"
   | "MASE"
   | "WAPE"
-  | "AverageWeightedQuantileLoss"
-  | (string & {});
+  | "AverageWeightedQuantileLoss";
 export const AutoMLMetricEnum = /*@__PURE__*/ S.String;
 
 export interface AutoMLJobObjective {
@@ -3518,8 +3472,7 @@ export type AutoMLAlgorithm =
   | "prophet"
   | "npts"
   | "arima"
-  | "ets"
-  | (string & {});
+  | "ets";
 export const AutoMLAlgorithm = /*@__PURE__*/ S.String;
 
 export type AutoMLAlgorithms = AutoMLAlgorithm[];
@@ -3557,11 +3510,7 @@ export const AutoMLDataSplitConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoMLDataSplitConfig",
 }) as any as S.Schema<AutoMLDataSplitConfig>;
-export type AutoMLMode =
-  | "AUTO"
-  | "ENSEMBLING"
-  | "HYPERPARAMETER_TUNING"
-  | (string & {});
+export type AutoMLMode = "AUTO" | "ENSEMBLING" | "HYPERPARAMETER_TUNING";
 export const AutoMLMode = /*@__PURE__*/ S.String;
 
 export interface AutoMLJobConfig {
@@ -3700,8 +3649,7 @@ export type FillingType =
   | "frontfill_value"
   | "middlefill_value"
   | "backfill_value"
-  | "futurefill_value"
-  | (string & {});
+  | "futurefill_value";
 export const FillingType = /*@__PURE__*/ S.String;
 
 export type FillingTransformationValue = string;
@@ -3722,8 +3670,7 @@ export type AggregationTransformationValue =
   | "avg"
   | "first"
   | "min"
-  | "max"
-  | (string & {});
+  | "max";
 export const AggregationTransformationValue = /*@__PURE__*/ S.String;
 
 export type AggregationTransformations = {
@@ -4064,20 +4011,14 @@ export type ClusterInstanceStorageConfigs = ClusterInstanceStorageConfig[];
 export const ClusterInstanceStorageConfigs = /*@__PURE__*/ S.Array(
   ClusterInstanceStorageConfig,
 );
-export type DeepHealthCheckType =
-  | "InstanceStress"
-  | "InstanceConnectivity"
-  | (string & {});
+export type DeepHealthCheckType = "InstanceStress" | "InstanceConnectivity";
 export const DeepHealthCheckType = /*@__PURE__*/ S.String;
 
 export type OnStartDeepHealthChecks = DeepHealthCheckType[];
 export const OnStartDeepHealthChecks =
   /*@__PURE__*/ S.Array(DeepHealthCheckType);
 export type CronScheduleExpression = string;
-export type NodeUnavailabilityType =
-  | "INSTANCE_COUNT"
-  | "CAPACITY_PERCENTAGE"
-  | (string & {});
+export type NodeUnavailabilityType = "INSTANCE_COUNT" | "CAPACITY_PERCENTAGE";
 export const NodeUnavailabilityType = /*@__PURE__*/ S.String;
 
 export type NodeUnavailabilityValue = number;
@@ -4142,10 +4083,7 @@ export const ScheduledUpdateConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScheduledUpdateConfig",
 }) as any as S.Schema<ScheduledUpdateConfig>;
 export type ImageId = string;
-export type ClusterPatchingStrategy =
-  | "WhenIdle"
-  | "WhenAllIdle"
-  | (string & {});
+export type ClusterPatchingStrategy = "WhenIdle" | "WhenAllIdle";
 export const ClusterPatchingStrategy = /*@__PURE__*/ S.String;
 
 export interface ClusterPatchSchedule {
@@ -4185,8 +4123,7 @@ export type ClusterKubernetesTaintValue = string;
 export type ClusterKubernetesTaintEffect =
   | "NoSchedule"
   | "PreferNoSchedule"
-  | "NoExecute"
-  | (string & {});
+  | "NoExecute";
 export const ClusterKubernetesTaintEffect = /*@__PURE__*/ S.String;
 
 export interface ClusterKubernetesTaint {
@@ -4219,11 +4156,7 @@ export const ClusterKubernetesConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterKubernetesConfig",
 }) as any as S.Schema<ClusterKubernetesConfig>;
-export type ClusterSlurmNodeType =
-  | "Controller"
-  | "Login"
-  | "Compute"
-  | (string & {});
+export type ClusterSlurmNodeType = "Controller" | "Login" | "Compute";
 export const ClusterSlurmNodeType = /*@__PURE__*/ S.String;
 
 export type ClusterPartitionName = string;
@@ -4265,7 +4198,7 @@ export const ClusterCapacityRequirements = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterCapacityRequirements",
 }) as any as S.Schema<ClusterCapacityRequirements>;
-export type ClusterInterfaceType = "efa" | "efa-only" | (string & {});
+export type ClusterInterfaceType = "efa" | "efa-only";
 export const ClusterInterfaceType = /*@__PURE__*/ S.String;
 
 export interface ClusterNetworkInterface {
@@ -4386,10 +4319,7 @@ export type ClusterRestrictedInstanceGroupSpecifications =
   ClusterRestrictedInstanceGroupSpecification[];
 export const ClusterRestrictedInstanceGroupSpecifications =
   /*@__PURE__*/ S.Array(ClusterRestrictedInstanceGroupSpecification);
-export type ClusterFSxLustreDeletionPolicy =
-  | "DeleteIfNotUsed"
-  | "Keep"
-  | (string & {});
+export type ClusterFSxLustreDeletionPolicy = "DeleteIfNotUsed" | "Keep";
 export const ClusterFSxLustreDeletionPolicy = /*@__PURE__*/ S.String;
 
 export interface ClusterSharedEnvironmentConfig {
@@ -4424,11 +4354,7 @@ export const ClusterOrchestratorEksConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterOrchestratorEksConfig",
 }) as any as S.Schema<ClusterOrchestratorEksConfig>;
-export type ClusterSlurmConfigStrategy =
-  | "Overwrite"
-  | "Managed"
-  | "Merge"
-  | (string & {});
+export type ClusterSlurmConfigStrategy = "Overwrite" | "Managed" | "Merge";
 export const ClusterSlurmConfigStrategy = /*@__PURE__*/ S.String;
 
 export interface ClusterOrchestratorSlurmConfig {
@@ -4451,10 +4377,10 @@ export const ClusterOrchestrator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterOrchestrator",
 }) as any as S.Schema<ClusterOrchestrator>;
-export type ClusterNodeRecovery = "Automatic" | "None" | (string & {});
+export type ClusterNodeRecovery = "Automatic" | "None";
 export const ClusterNodeRecovery = /*@__PURE__*/ S.String;
 
-export type ClusterConfigMode = "Enable" | "Disable" | (string & {});
+export type ClusterConfigMode = "Enable" | "Disable";
 export const ClusterConfigMode = /*@__PURE__*/ S.String;
 
 export type ClusterInstanceMemoryAllocationPercentage = number;
@@ -4470,13 +4396,13 @@ export const ClusterTieredStorageConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterTieredStorageConfig",
 }) as any as S.Schema<ClusterTieredStorageConfig>;
-export type ClusterNodeProvisioningMode = "Continuous" | (string & {});
+export type ClusterNodeProvisioningMode = "Continuous";
 export const ClusterNodeProvisioningMode = /*@__PURE__*/ S.String;
 
-export type ClusterAutoScalingMode = "Enable" | "Disable" | (string & {});
+export type ClusterAutoScalingMode = "Enable" | "Disable";
 export const ClusterAutoScalingMode = /*@__PURE__*/ S.String;
 
-export type ClusterAutoScalerType = "Karpenter" | (string & {});
+export type ClusterAutoScalerType = "Karpenter";
 export const ClusterAutoScalerType = /*@__PURE__*/ S.String;
 
 export interface ClusterAutoScalingConfig {
@@ -4556,10 +4482,10 @@ export const PriorityClass = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PriorityClass" }) as any as S.Schema<PriorityClass>;
 export type PriorityClassList = PriorityClass[];
 export const PriorityClassList = /*@__PURE__*/ S.Array(PriorityClass);
-export type FairShare = "Enabled" | "Disabled" | (string & {});
+export type FairShare = "Enabled" | "Disabled";
 export const FairShare = /*@__PURE__*/ S.String;
 
-export type IdleResourceSharing = "Enabled" | "Disabled" | (string & {});
+export type IdleResourceSharing = "Enabled" | "Disabled";
 export const IdleResourceSharing = /*@__PURE__*/ S.String;
 
 export interface SchedulerConfig {
@@ -4676,8 +4602,7 @@ export type Framework =
   | "XGBOOST"
   | "TFLITE"
   | "DARKNET"
-  | "SKLEARN"
-  | (string & {});
+  | "SKLEARN";
 export const Framework = /*@__PURE__*/ S.String;
 
 export type FrameworkVersion = string;
@@ -4732,11 +4657,10 @@ export type TargetDevice =
   | "x86_win64"
   | "coreml"
   | "jacinto_tda4vm"
-  | "imx8mplus"
-  | (string & {});
+  | "imx8mplus";
 export const TargetDevice = /*@__PURE__*/ S.String;
 
-export type TargetPlatformOs = "ANDROID" | "LINUX" | (string & {});
+export type TargetPlatformOs = "ANDROID" | "LINUX";
 export const TargetPlatformOs = /*@__PURE__*/ S.String;
 
 export type TargetPlatformArch =
@@ -4744,16 +4668,14 @@ export type TargetPlatformArch =
   | "X86"
   | "ARM64"
   | "ARM_EABI"
-  | "ARM_EABIHF"
-  | (string & {});
+  | "ARM_EABIHF";
 export const TargetPlatformArch = /*@__PURE__*/ S.String;
 
 export type TargetPlatformAccelerator =
   | "INTEL_GRAPHICS"
   | "MALI"
   | "NVIDIA"
-  | "NNA"
-  | (string & {});
+  | "NNA";
 export const TargetPlatformAccelerator = /*@__PURE__*/ S.String;
 
 export interface TargetPlatform {
@@ -4876,8 +4798,7 @@ export type MIGProfileType =
   | "mig-7g.80gb"
   | "mig-7g.141gb"
   | "mig-7g.180gb"
-  | "mig-7g.186gb"
-  | (string & {});
+  | "mig-7g.186gb";
 export const MIGProfileType = /*@__PURE__*/ S.String;
 
 export interface AcceleratorPartitionConfig {
@@ -4913,11 +4834,7 @@ export type ComputeQuotaResourceConfigList = ComputeQuotaResourceConfig[];
 export const ComputeQuotaResourceConfigList = /*@__PURE__*/ S.Array(
   ComputeQuotaResourceConfig,
 );
-export type ResourceSharingStrategy =
-  | "Lend"
-  | "DontLend"
-  | "LendAndBorrow"
-  | (string & {});
+export type ResourceSharingStrategy = "Lend" | "DontLend" | "LendAndBorrow";
 export const ResourceSharingStrategy = /*@__PURE__*/ S.String;
 
 export type BorrowLimit = number;
@@ -4939,7 +4856,7 @@ export const ResourceSharingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceSharingConfig",
 }) as any as S.Schema<ResourceSharingConfig>;
-export type PreemptTeamTasks = "Never" | "LowerPriority" | (string & {});
+export type PreemptTeamTasks = "Never" | "LowerPriority";
 export const PreemptTeamTasks = /*@__PURE__*/ S.String;
 
 export interface ComputeQuotaConfig {
@@ -4970,7 +4887,7 @@ export const ComputeQuotaTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComputeQuotaTarget",
 }) as any as S.Schema<ComputeQuotaTarget>;
-export type ActivationState = "Enabled" | "Disabled" | (string & {});
+export type ActivationState = "Enabled" | "Disabled";
 export const ActivationState = /*@__PURE__*/ S.String;
 
 export interface CreateComputeQuotaRequest {
@@ -5138,13 +5055,12 @@ export const DataQualityAppSpecification = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataQualityAppSpecification",
 }) as any as S.Schema<DataQualityAppSpecification>;
 export type ProcessingLocalPath = string;
-export type ProcessingS3InputMode = "Pipe" | "File" | (string & {});
+export type ProcessingS3InputMode = "Pipe" | "File";
 export const ProcessingS3InputMode = /*@__PURE__*/ S.String;
 
 export type ProcessingS3DataDistributionType =
   | "FullyReplicated"
-  | "ShardedByS3Key"
-  | (string & {});
+  | "ShardedByS3Key";
 export const ProcessingS3DataDistributionType = /*@__PURE__*/ S.String;
 
 export type ProbabilityThresholdAttribute = number;
@@ -5260,7 +5176,7 @@ export const DataQualityJobInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataQualityJobInput",
 }) as any as S.Schema<DataQualityJobInput>;
 export type MonitoringS3Uri = string;
-export type ProcessingS3UploadMode = "Continuous" | "EndOfJob" | (string & {});
+export type ProcessingS3UploadMode = "Continuous" | "EndOfJob";
 export const ProcessingS3UploadMode = /*@__PURE__*/ S.String;
 
 export interface MonitoringS3Output {
@@ -5427,8 +5343,7 @@ export type ProcessingInstanceType =
   | "ml.g7e.8xlarge"
   | "ml.g7e.12xlarge"
   | "ml.g7e.24xlarge"
-  | "ml.g7e.48xlarge"
-  | (string & {});
+  | "ml.g7e.48xlarge";
 export const ProcessingInstanceType = /*@__PURE__*/ S.String;
 
 export type ProcessingVolumeSizeInGB = number;
@@ -5528,7 +5443,7 @@ export const CreateDataQualityJobDefinitionResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateDataQualityJobDefinitionResponse",
 }) as any as S.Schema<CreateDataQualityJobDefinitionResponse>;
 export type DeviceFleetDescription = string;
-export type EdgePresetDeploymentType = "GreengrassV2Component" | (string & {});
+export type EdgePresetDeploymentType = "GreengrassV2Component";
 export const EdgePresetDeploymentType = /*@__PURE__*/ S.String;
 
 export interface EdgeOutputConfig {
@@ -5585,12 +5500,12 @@ export const CreateDeviceFleetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDeviceFleetResponse",
 }) as any as S.Schema<CreateDeviceFleetResponse>;
 export type DomainName = string;
-export type AuthMode = "SSO" | "IAM" | (string & {});
+export type AuthMode = "SSO" | "IAM";
 export const AuthMode = /*@__PURE__*/ S.String;
 
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
-export type NotebookOutputOption = "Allowed" | "Disabled" | (string & {});
+export type NotebookOutputOption = "Allowed" | "Disabled";
 export const NotebookOutputOption = /*@__PURE__*/ S.String;
 
 export interface SharingSettings {
@@ -5670,16 +5585,10 @@ export const TensorBoardAppSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TensorBoardAppSettings",
 }) as any as S.Schema<TensorBoardAppSettings>;
-export type RStudioServerProAccessStatus =
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type RStudioServerProAccessStatus = "ENABLED" | "DISABLED";
 export const RStudioServerProAccessStatus = /*@__PURE__*/ S.String;
 
-export type RStudioServerProUserGroup =
-  | "R_STUDIO_ADMIN"
-  | "R_STUDIO_USER"
-  | (string & {});
+export type RStudioServerProUserGroup = "R_STUDIO_ADMIN" | "R_STUDIO_USER";
 export const RStudioServerProUserGroup = /*@__PURE__*/ S.String;
 
 export interface RStudioServerProAppSettings {
@@ -5706,7 +5615,7 @@ export const RSessionAppSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RSessionAppSettings",
 }) as any as S.Schema<RSessionAppSettings>;
-export type FeatureStatus = "ENABLED" | "DISABLED" | (string & {});
+export type FeatureStatus = "ENABLED" | "DISABLED";
 export const FeatureStatus = /*@__PURE__*/ S.String;
 
 export interface TimeSeriesForecastingSettings {
@@ -5745,7 +5654,7 @@ export const WorkspaceSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkspaceSettings",
 }) as any as S.Schema<WorkspaceSettings>;
-export type DataSourceName = "SalesforceGenie" | "Snowflake" | (string & {});
+export type DataSourceName = "SalesforceGenie" | "Snowflake";
 export const DataSourceName = /*@__PURE__*/ S.String;
 
 export interface IdentityProviderOAuthSetting {
@@ -5824,7 +5733,7 @@ export const CanvasAppSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CanvasAppSettings",
 }) as any as S.Schema<CanvasAppSettings>;
-export type LifecycleManagement = "ENABLED" | "DISABLED" | (string & {});
+export type LifecycleManagement = "ENABLED" | "DISABLED";
 export const LifecycleManagement = /*@__PURE__*/ S.String;
 
 export type IdleTimeoutInMinutes = number;
@@ -5928,7 +5837,7 @@ export const DefaultSpaceStorageSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultSpaceStorageSettings",
 }) as any as S.Schema<DefaultSpaceStorageSettings>;
 export type LandingUri = string;
-export type StudioWebPortal = "ENABLED" | "DISABLED" | (string & {});
+export type StudioWebPortal = "ENABLED" | "DISABLED";
 export const StudioWebPortal = /*@__PURE__*/ S.String;
 
 export type Uid = number;
@@ -6026,8 +5935,7 @@ export type MlTools =
   | "HyperPodClusters"
   | "RunningInstances"
   | "Datasets"
-  | "Evaluators"
-  | (string & {});
+  | "Evaluators";
 export const MlTools = /*@__PURE__*/ S.String;
 
 export type HiddenMlToolsList = MlTools[];
@@ -6036,7 +5944,7 @@ export type HiddenAppTypesList = AppType[];
 export const HiddenAppTypesList = /*@__PURE__*/ S.Array(AppType);
 export type HiddenInstanceTypesList = AppInstanceType[];
 export const HiddenInstanceTypesList = /*@__PURE__*/ S.Array(AppInstanceType);
-export type SageMakerImageName = "sagemaker_distribution" | (string & {});
+export type SageMakerImageName = "sagemaker_distribution";
 export const SageMakerImageName = /*@__PURE__*/ S.String;
 
 export type ImageVersionAliasPattern = string;
@@ -6057,10 +5965,7 @@ export const HiddenSageMakerImage = /*@__PURE__*/ S.suspend(() =>
 export type HiddenSageMakerImageVersionAliasesList = HiddenSageMakerImage[];
 export const HiddenSageMakerImageVersionAliasesList =
   /*@__PURE__*/ S.Array(HiddenSageMakerImage);
-export type ExecutionRoleSessionNameMode =
-  | "STATIC"
-  | "USER_IDENTITY"
-  | (string & {});
+export type ExecutionRoleSessionNameMode = "STATIC" | "USER_IDENTITY";
 export const ExecutionRoleSessionNameMode = /*@__PURE__*/ S.String;
 
 export interface StudioWebPortalSettings {
@@ -6083,11 +5988,7 @@ export const StudioWebPortalSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StudioWebPortalSettings",
 }) as any as S.Schema<StudioWebPortalSettings>;
-export type AutoMountHomeEFS =
-  | "Enabled"
-  | "Disabled"
-  | "DefaultAsDomain"
-  | (string & {});
+export type AutoMountHomeEFS = "Enabled" | "Disabled" | "DefaultAsDomain";
 export const AutoMountHomeEFS = /*@__PURE__*/ S.String;
 
 export interface UserSettings {
@@ -6150,10 +6051,7 @@ export const RStudioServerProDomainSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RStudioServerProDomainSettings",
 }) as any as S.Schema<RStudioServerProDomainSettings>;
-export type ExecutionRoleIdentityConfig =
-  | "USER_PROFILE_NAME"
-  | "DISABLED"
-  | (string & {});
+export type ExecutionRoleIdentityConfig = "USER_PROFILE_NAME" | "DISABLED";
 export const ExecutionRoleIdentityConfig = /*@__PURE__*/ S.String;
 
 export interface TrustedIdentityPropagationSettings {
@@ -6221,7 +6119,7 @@ export const UnifiedStudioSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UnifiedStudioSettings",
 }) as any as S.Schema<UnifiedStudioSettings>;
-export type IPAddressType = "ipv4" | "dualstack" | (string & {});
+export type IPAddressType = "ipv4" | "dualstack";
 export const IPAddressType = /*@__PURE__*/ S.String;
 
 export interface DomainSettings {
@@ -6249,19 +6147,16 @@ export const DomainSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DomainSettings" }) as any as S.Schema<DomainSettings>;
 export type VpcId = string;
-export type AppNetworkAccessType =
-  | "PublicInternetOnly"
-  | "VpcOnly"
-  | (string & {});
+export type AppNetworkAccessType = "PublicInternetOnly" | "VpcOnly";
 export const AppNetworkAccessType = /*@__PURE__*/ S.String;
 
-export type AppSecurityGroupManagement = "Service" | "Customer" | (string & {});
+export type AppSecurityGroupManagement = "Service" | "Customer";
 export const AppSecurityGroupManagement = /*@__PURE__*/ S.String;
 
-export type HomeEfsFileSystemCreation = "Enabled" | "Disabled" | (string & {});
+export type HomeEfsFileSystemCreation = "Enabled" | "Disabled";
 export const HomeEfsFileSystemCreation = /*@__PURE__*/ S.String;
 
-export type TagPropagation = "ENABLED" | "DISABLED" | (string & {});
+export type TagPropagation = "ENABLED" | "DISABLED";
 export const TagPropagation = /*@__PURE__*/ S.String;
 
 export interface DefaultSpaceSettings {
@@ -6365,11 +6260,7 @@ export type EdgeDeploymentModelConfigs = EdgeDeploymentModelConfig[];
 export const EdgeDeploymentModelConfigs = /*@__PURE__*/ S.Array(
   EdgeDeploymentModelConfig,
 );
-export type DeviceSubsetType =
-  | "PERCENTAGE"
-  | "SELECTION"
-  | "NAMECONTAINS"
-  | (string & {});
+export type DeviceSubsetType = "PERCENTAGE" | "SELECTION" | "NAMECONTAINS";
 export const DeviceSubsetType = /*@__PURE__*/ S.String;
 
 export type Percentage = number;
@@ -6392,10 +6283,7 @@ export const DeviceSelectionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeviceSelectionConfig",
 }) as any as S.Schema<DeviceSelectionConfig>;
-export type FailureHandlingPolicy =
-  | "ROLLBACK_ON_FAILURE"
-  | "DO_NOTHING"
-  | (string & {});
+export type FailureHandlingPolicy = "ROLLBACK_ON_FAILURE" | "DO_NOTHING";
 export const FailureHandlingPolicy = /*@__PURE__*/ S.String;
 
 export interface EdgeDeploymentConfig {
@@ -6529,18 +6417,11 @@ export const CreateEdgePackagingJobResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEdgePackagingJobResponse",
 }) as any as S.Schema<CreateEdgePackagingJobResponse>;
 export type EndpointConfigName = string;
-export type TrafficRoutingConfigType =
-  | "ALL_AT_ONCE"
-  | "CANARY"
-  | "LINEAR"
-  | (string & {});
+export type TrafficRoutingConfigType = "ALL_AT_ONCE" | "CANARY" | "LINEAR";
 export const TrafficRoutingConfigType = /*@__PURE__*/ S.String;
 
 export type WaitIntervalInSeconds = number;
-export type CapacitySizeType =
-  | "INSTANCE_COUNT"
-  | "CAPACITY_PERCENT"
-  | (string & {});
+export type CapacitySizeType = "INSTANCE_COUNT" | "CAPACITY_PERCENT";
 export const CapacitySizeType = /*@__PURE__*/ S.String;
 
 export type CapacitySizeValue = number;
@@ -6690,8 +6571,7 @@ export type ProductionVariantAcceleratorType =
   | "ml.eia1.xlarge"
   | "ml.eia2.medium"
   | "ml.eia2.large"
-  | "ml.eia2.xlarge"
-  | (string & {});
+  | "ml.eia2.xlarge";
 export const ProductionVariantAcceleratorType = /*@__PURE__*/ S.String;
 
 export interface ProductionVariantCoreDumpConfig {
@@ -6728,18 +6608,14 @@ export type ProductionVariantModelDataDownloadTimeoutInSeconds = number;
 export type ProductionVariantContainerStartupHealthCheckTimeoutInSeconds =
   number;
 export type ProductionVariantSSMAccess = boolean;
-export type ManagedInstanceScalingStatus =
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type ManagedInstanceScalingStatus = "ENABLED" | "DISABLED";
 export const ManagedInstanceScalingStatus = /*@__PURE__*/ S.String;
 
 export type ManagedInstanceScalingMinInstanceCount = number;
 export type ManagedInstanceScalingMaxInstanceCount = number;
 export type ManagedInstanceScalingScaleInStrategy =
   | "IDLE_RELEASE"
-  | "CONSOLIDATION"
-  | (string & {});
+  | "CONSOLIDATION";
 export const ManagedInstanceScalingScaleInStrategy = /*@__PURE__*/ S.String;
 
 export type ManagedInstanceScalingMaximumStepSize = number;
@@ -6778,10 +6654,7 @@ export const ProductionVariantManagedInstanceScaling = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ProductionVariantManagedInstanceScaling",
 }) as any as S.Schema<ProductionVariantManagedInstanceScaling>;
-export type RoutingStrategy =
-  | "LEAST_OUTSTANDING_REQUESTS"
-  | "RANDOM"
-  | (string & {});
+export type RoutingStrategy = "LEAST_OUTSTANDING_REQUESTS" | "RANDOM";
 export const RoutingStrategy = /*@__PURE__*/ S.String;
 
 export interface ProductionVariantRoutingConfig {
@@ -6797,13 +6670,10 @@ export type ProductionVariantInferenceAmiVersion =
   | "al2-ami-sagemaker-inference-gpu-2-1"
   | "al2-ami-sagemaker-inference-gpu-3-1"
   | "al2-ami-sagemaker-inference-neuron-2"
-  | "al2023-ami-sagemaker-inference-gpu-4-1"
-  | (string & {});
+  | "al2023-ami-sagemaker-inference-gpu-4-1";
 export const ProductionVariantInferenceAmiVersion = /*@__PURE__*/ S.String;
 
-export type CapacityReservationPreference =
-  | "capacity-reservations-only"
-  | (string & {});
+export type CapacityReservationPreference = "capacity-reservations-only";
 export const CapacityReservationPreference = /*@__PURE__*/ S.String;
 
 export type MlReservationArn = string;
@@ -6870,7 +6740,7 @@ export type ProductionVariantList = ProductionVariant[];
 export const ProductionVariantList = /*@__PURE__*/ S.Array(ProductionVariant);
 export type EnableCapture = boolean;
 export type SamplingPercentage = number;
-export type CaptureMode = "Input" | "Output" | "InputAndOutput" | (string & {});
+export type CaptureMode = "Input" | "Output" | "InputAndOutput";
 export const CaptureMode = /*@__PURE__*/ S.String;
 
 export interface CaptureOption {
@@ -6931,8 +6801,7 @@ export const AsyncInferenceClientConfig = /*@__PURE__*/ S.suspend(() =>
 export type SnsTopicArn = string;
 export type AsyncNotificationTopicTypes =
   | "SUCCESS_NOTIFICATION_TOPIC"
-  | "ERROR_NOTIFICATION_TOPIC"
-  | (string & {});
+  | "ERROR_NOTIFICATION_TOPIC";
 export const AsyncNotificationTopicTypes = /*@__PURE__*/ S.String;
 
 export type AsyncNotificationTopicTypeList = AsyncNotificationTopicTypes[];
@@ -6995,11 +6864,7 @@ export type ClarifyLabelHeaders = string[];
 export const ClarifyLabelHeaders = /*@__PURE__*/ S.Array(S.String);
 export type ClarifyFeatureHeaders = string[];
 export const ClarifyFeatureHeaders = /*@__PURE__*/ S.Array(S.String);
-export type ClarifyFeatureType =
-  | "numerical"
-  | "categorical"
-  | "text"
-  | (string & {});
+export type ClarifyFeatureType = "numerical" | "categorical" | "text";
 export const ClarifyFeatureType = /*@__PURE__*/ S.String;
 
 export type ClarifyFeatureTypes = ClarifyFeatureType[];
@@ -7113,15 +6978,10 @@ export type ClarifyTextLanguage =
   | "ur"
   | "yo"
   | "lij"
-  | "xx"
-  | (string & {});
+  | "xx";
 export const ClarifyTextLanguage = /*@__PURE__*/ S.String;
 
-export type ClarifyTextGranularity =
-  | "token"
-  | "sentence"
-  | "paragraph"
-  | (string & {});
+export type ClarifyTextGranularity = "token" | "sentence" | "paragraph";
 export const ClarifyTextGranularity = /*@__PURE__*/ S.String;
 
 export interface ClarifyTextConfig {
@@ -7291,10 +7151,10 @@ export const CreateExperimentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateExperimentResponse>;
 export type FeatureGroupName = string;
 export type FeatureName = string;
-export type FeatureType = "Integral" | "Fractional" | "String" | (string & {});
+export type FeatureType = "Integral" | "Fractional" | "String";
 export const FeatureType = /*@__PURE__*/ S.String;
 
-export type CollectionType = "List" | "Set" | "Vector" | (string & {});
+export type CollectionType = "List" | "Set" | "Vector";
 export const CollectionType = /*@__PURE__*/ S.String;
 
 export type Dimension = number;
@@ -7339,8 +7199,7 @@ export type TtlDurationUnit =
   | "Minutes"
   | "Hours"
   | "Days"
-  | "Weeks"
-  | (string & {});
+  | "Weeks";
 export const TtlDurationUnit = /*@__PURE__*/ S.String;
 
 export type TtlDurationValue = number;
@@ -7351,7 +7210,7 @@ export interface TtlDuration {
 export const TtlDuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Unit: S.optional(TtlDurationUnit), Value: S.optional(S.Number) }),
 ).annotate({ identifier: "TtlDuration" }) as any as S.Schema<TtlDuration>;
-export type StorageType = "Standard" | "InMemory" | (string & {});
+export type StorageType = "Standard" | "InMemory";
 export const StorageType = /*@__PURE__*/ S.String;
 
 export interface OnlineStoreConfig {
@@ -7401,7 +7260,7 @@ export const DataCatalogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataCatalogConfig",
 }) as any as S.Schema<DataCatalogConfig>;
-export type TableFormat = "Default" | "Glue" | "Iceberg" | (string & {});
+export type TableFormat = "Default" | "Glue" | "Iceberg";
 export const TableFormat = /*@__PURE__*/ S.String;
 
 export interface OfflineStoreConfig {
@@ -7420,7 +7279,7 @@ export const OfflineStoreConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfflineStoreConfig",
 }) as any as S.Schema<OfflineStoreConfig>;
-export type ThroughputMode = "OnDemand" | "Provisioned" | (string & {});
+export type ThroughputMode = "OnDemand" | "Provisioned";
 export const ThroughputMode = /*@__PURE__*/ S.String;
 
 export type CapacityUnit = number;
@@ -7489,8 +7348,7 @@ export const CreateFeatureGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export type FlowDefinitionName = string;
 export type AwsManagedHumanLoopRequestSource =
   | "AWS/Rekognition/DetectModerationLabels/Image/V3"
-  | "AWS/Textract/AnalyzeDocument/Forms/V1"
-  | (string & {});
+  | "AWS/Textract/AnalyzeDocument/Forms/V1";
 export const AwsManagedHumanLoopRequestSource = /*@__PURE__*/ S.String;
 
 export interface HumanLoopRequestSource {
@@ -7698,8 +7556,7 @@ export type HubContentType =
   | "Notebook"
   | "ModelReference"
   | "DataSet"
-  | "JsonDoc"
-  | (string & {});
+  | "JsonDoc";
 export const HubContentType = /*@__PURE__*/ S.String;
 
 export interface PresignedUrlAccessConfig {
@@ -7859,8 +7716,7 @@ export type HyperParameterTuningJobStrategyType =
   | "Bayesian"
   | "Random"
   | "Hyperband"
-  | "Grid"
-  | (string & {});
+  | "Grid";
 export const HyperParameterTuningJobStrategyType = /*@__PURE__*/ S.String;
 
 export type HyperbandStrategyMinResource = number;
@@ -7906,8 +7762,7 @@ export type HyperParameterScalingType =
   | "Auto"
   | "Linear"
   | "Logarithmic"
-  | "ReverseLogarithmic"
-  | (string & {});
+  | "ReverseLogarithmic";
 export const HyperParameterScalingType = /*@__PURE__*/ S.String;
 
 export interface IntegerParameterRange {
@@ -7988,7 +7843,7 @@ export const ParameterRanges = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ParameterRanges",
 }) as any as S.Schema<ParameterRanges>;
-export type TrainingJobEarlyStoppingType = "Off" | "Auto" | (string & {});
+export type TrainingJobEarlyStoppingType = "Off" | "Auto";
 export const TrainingJobEarlyStoppingType = /*@__PURE__*/ S.String;
 
 export type TargetObjectiveMetricValue = number;
@@ -8001,7 +7856,7 @@ export const BestObjectiveNotImproving = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BestObjectiveNotImproving",
 }) as any as S.Schema<BestObjectiveNotImproving>;
-export type CompleteOnConvergence = "Disabled" | "Enabled" | (string & {});
+export type CompleteOnConvergence = "Disabled" | "Enabled";
 export const CompleteOnConvergence = /*@__PURE__*/ S.String;
 
 export interface ConvergenceDetected {
@@ -8073,9 +7928,7 @@ export const HyperParameterAlgorithmSpecification = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "HyperParameterAlgorithmSpecification",
 }) as any as S.Schema<HyperParameterAlgorithmSpecification>;
-export type HyperParameterTuningAllocationStrategy =
-  | "Prioritized"
-  | (string & {});
+export type HyperParameterTuningAllocationStrategy = "Prioritized";
 export const HyperParameterTuningAllocationStrategy = /*@__PURE__*/ S.String;
 
 export type VolumeSizeInGB = number;
@@ -8208,8 +8061,7 @@ export const ParentHyperParameterTuningJobs = /*@__PURE__*/ S.Array(
 );
 export type HyperParameterTuningJobWarmStartType =
   | "IdenticalDataAndAlgorithm"
-  | "TransferLearning"
-  | (string & {});
+  | "TransferLearning";
 export const HyperParameterTuningJobWarmStartType = /*@__PURE__*/ S.String;
 
 export interface HyperParameterTuningJobWarmStartConfig {
@@ -8227,7 +8079,7 @@ export const HyperParameterTuningJobWarmStartConfig = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "HyperParameterTuningJobWarmStartConfig",
 }) as any as S.Schema<HyperParameterTuningJobWarmStartConfig>;
-export type AutotuneMode = "Enabled" | (string & {});
+export type AutotuneMode = "Enabled";
 export const AutotuneMode = /*@__PURE__*/ S.String;
 
 export interface Autotune {
@@ -8325,20 +8177,15 @@ export type VendorGuidance =
   | "NOT_PROVIDED"
   | "STABLE"
   | "TO_BE_ARCHIVED"
-  | "ARCHIVED"
-  | (string & {});
+  | "ARCHIVED";
 export const VendorGuidance = /*@__PURE__*/ S.String;
 
-export type JobType =
-  | "TRAINING"
-  | "INFERENCE"
-  | "NOTEBOOK_KERNEL"
-  | (string & {});
+export type JobType = "TRAINING" | "INFERENCE" | "NOTEBOOK_KERNEL";
 export const JobType = /*@__PURE__*/ S.String;
 
 export type MLFramework = string;
 export type ProgrammingLang = string;
-export type Processor = "CPU" | "GPU" | (string & {});
+export type Processor = "CPU" | "GPU";
 export const Processor = /*@__PURE__*/ S.String;
 
 export type Horovod = boolean;
@@ -8475,15 +8322,10 @@ export const InferenceComponentDataCacheConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InferenceComponentDataCacheConfig",
 }) as any as S.Schema<InferenceComponentDataCacheConfig>;
-export type InferenceComponentPlacementStrategy =
-  | "SPREAD"
-  | "BINPACK"
-  | (string & {});
+export type InferenceComponentPlacementStrategy = "SPREAD" | "BINPACK";
 export const InferenceComponentPlacementStrategy = /*@__PURE__*/ S.String;
 
-export type AvailabilityZoneBalanceEnforcementMode =
-  | "PERMISSIVE"
-  | (string & {});
+export type AvailabilityZoneBalanceEnforcementMode = "PERMISSIVE";
 export const AvailabilityZoneBalanceEnforcementMode = /*@__PURE__*/ S.String;
 
 export type AvailabilityZoneBalanceMaxImbalance = number;
@@ -8596,7 +8438,7 @@ export const CreateInferenceComponentOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInferenceComponentOutput",
 }) as any as S.Schema<CreateInferenceComponentOutput>;
 export type InferenceExperimentName = string;
-export type InferenceExperimentType = "ShadowMode" | (string & {});
+export type InferenceExperimentType = "ShadowMode";
 export const InferenceExperimentType = /*@__PURE__*/ S.String;
 
 export interface InferenceExperimentSchedule {
@@ -8613,7 +8455,7 @@ export const InferenceExperimentSchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InferenceExperimentSchedule>;
 export type InferenceExperimentDescription = string;
 export type ModelVariantName = string;
-export type ModelInfrastructureType = "RealTimeInference" | (string & {});
+export type ModelInfrastructureType = "RealTimeInference";
 export const ModelInfrastructureType = /*@__PURE__*/ S.String;
 
 export type TaskCount = number;
@@ -8750,11 +8592,11 @@ export const CreateInferenceExperimentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateInferenceExperimentResponse",
 }) as any as S.Schema<CreateInferenceExperimentResponse>;
 export type RecommendationJobName = string;
-export type RecommendationJobType = "Default" | "Advanced" | (string & {});
+export type RecommendationJobType = "Default" | "Advanced";
 export const RecommendationJobType = /*@__PURE__*/ S.String;
 
 export type JobDurationInSeconds = number;
-export type TrafficType = "PHASES" | "STAIRS" | (string & {});
+export type TrafficType = "PHASES" | "STAIRS";
 export const TrafficType = /*@__PURE__*/ S.String;
 
 export type InitialNumberOfUsers = number;
@@ -8884,10 +8726,7 @@ export type RecommendationJobSupportedInstanceTypes = string[];
 export const RecommendationJobSupportedInstanceTypes = /*@__PURE__*/ S.Array(
   S.String,
 );
-export type RecommendationJobSupportedEndpointType =
-  | "RealTime"
-  | "Serverless"
-  | (string & {});
+export type RecommendationJobSupportedEndpointType = "RealTime" | "Serverless";
 export const RecommendationJobSupportedEndpointType = /*@__PURE__*/ S.String;
 
 export type RecommendationJobDataInputConfig = string;
@@ -8998,7 +8837,7 @@ export type ModelLatencyThresholds = ModelLatencyThreshold[];
 export const ModelLatencyThresholds = /*@__PURE__*/ S.Array(
   ModelLatencyThreshold,
 );
-export type FlatInvocations = "Continue" | "Stop" | (string & {});
+export type FlatInvocations = "Continue" | "Stop";
 export const FlatInvocations = /*@__PURE__*/ S.String;
 
 export interface RecommendationJobStoppingConditions {
@@ -9081,7 +8920,7 @@ export const CreateInferenceRecommendationsJobResponse =
     identifier: "CreateInferenceRecommendationsJobResponse",
   }) as any as S.Schema<CreateInferenceRecommendationsJobResponse>;
 export type JobName = string;
-export type JobCategory = "AgentRFT" | "AgentRFTEvaluation" | (string & {});
+export type JobCategory = "AgentRFT" | "AgentRFTEvaluation";
 export const JobCategory = /*@__PURE__*/ S.String;
 
 export type JobSchemaVersion = string;
@@ -9157,8 +8996,7 @@ export const LabelingJobDataSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabelingJobDataSource>;
 export type ContentClassifier =
   | "FreeOfPersonallyIdentifiableInformation"
-  | "FreeOfAdultContent"
-  | (string & {});
+  | "FreeOfAdultContent";
 export const ContentClassifier = /*@__PURE__*/ S.String;
 
 export type ContentClassifiers = ContentClassifier[];
@@ -9349,12 +9187,11 @@ export const CreateLabelingJobResponse = /*@__PURE__*/ S.suspend(() =>
 export type MlflowAppName = string;
 export type ModelRegistrationMode =
   | "AutoModelRegistrationEnabled"
-  | "AutoModelRegistrationDisabled"
-  | (string & {});
+  | "AutoModelRegistrationDisabled";
 export const ModelRegistrationMode = /*@__PURE__*/ S.String;
 
 export type WeeklyMaintenanceWindowStart = string;
-export type AccountDefaultStatus = "ENABLED" | "DISABLED" | (string & {});
+export type AccountDefaultStatus = "ENABLED" | "DISABLED";
 export const AccountDefaultStatus = /*@__PURE__*/ S.String;
 
 export type DefaultDomainIdList = string[];
@@ -9403,7 +9240,7 @@ export const CreateMlflowAppResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMlflowAppResponse",
 }) as any as S.Schema<CreateMlflowAppResponse>;
 export type TrackingServerName = string;
-export type TrackingServerSize = "Small" | "Medium" | "Large" | (string & {});
+export type TrackingServerSize = "Small" | "Medium" | "Large";
 export const TrackingServerSize = /*@__PURE__*/ S.String;
 
 export type MlflowVersion = string;
@@ -9454,7 +9291,7 @@ export const CreateMlflowTrackingServerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMlflowTrackingServerResponse",
 }) as any as S.Schema<CreateMlflowTrackingServerResponse>;
-export type RepositoryAccessMode = "Platform" | "Vpc" | (string & {});
+export type RepositoryAccessMode = "Platform" | "Vpc";
 export const RepositoryAccessMode = /*@__PURE__*/ S.String;
 
 export type RepositoryCredentialsProviderArn = string;
@@ -9476,11 +9313,11 @@ export const ImageConfig = /*@__PURE__*/ S.suspend(() =>
     RepositoryAuthConfig: S.optional(RepositoryAuthConfig),
   }),
 ).annotate({ identifier: "ImageConfig" }) as any as S.Schema<ImageConfig>;
-export type ContainerMode = "SingleModel" | "MultiModel" | (string & {});
+export type ContainerMode = "SingleModel" | "MultiModel";
 export const ContainerMode = /*@__PURE__*/ S.String;
 
 export type VersionedArnOrName = string;
-export type ModelCacheSetting = "Enabled" | "Disabled" | (string & {});
+export type ModelCacheSetting = "Enabled" | "Disabled";
 export const ModelCacheSetting = /*@__PURE__*/ S.String;
 
 export interface MultiModelConfig {
@@ -9526,7 +9363,7 @@ export const ContainerDefinition = /*@__PURE__*/ S.suspend(() =>
 export type ContainerDefinitionList = ContainerDefinition[];
 export const ContainerDefinitionList =
   /*@__PURE__*/ S.Array(ContainerDefinition);
-export type InferenceExecutionMode = "Serial" | "Direct" | (string & {});
+export type InferenceExecutionMode = "Serial" | "Direct";
 export const InferenceExecutionMode = /*@__PURE__*/ S.String;
 
 export interface InferenceExecutionConfig {
@@ -9686,8 +9523,7 @@ export type ModelCardStatus =
   | "Draft"
   | "PendingReview"
   | "Approved"
-  | "Archived"
-  | (string & {});
+  | "Archived";
 export const ModelCardStatus = /*@__PURE__*/ S.String;
 
 export interface CreateModelCardRequest {
@@ -10095,7 +9931,7 @@ export type AdditionalInferenceSpecifications =
 export const AdditionalInferenceSpecifications = /*@__PURE__*/ S.Array(
   AdditionalInferenceSpecificationDefinition,
 );
-export type SkipModelValidation = "All" | "None" | (string & {});
+export type SkipModelValidation = "All" | "None";
 export const SkipModelValidation = /*@__PURE__*/ S.String;
 
 export type ModelPackageSourceUri = string;
@@ -10132,7 +9968,7 @@ export const ModelLifeCycle = /*@__PURE__*/ S.suspend(() =>
     StageDescription: S.optional(S.String),
   }),
 ).annotate({ identifier: "ModelLifeCycle" }) as any as S.Schema<ModelLifeCycle>;
-export type ManagedStorageType = "Restricted" | (string & {});
+export type ManagedStorageType = "Restricted";
 export const ManagedStorageType = /*@__PURE__*/ S.String;
 
 export interface CreateModelPackageInput {
@@ -10271,8 +10107,7 @@ export const ModelQualityBaselineConfig = /*@__PURE__*/ S.suspend(() =>
 export type MonitoringProblemType =
   | "BinaryClassification"
   | "MulticlassClassification"
-  | "Regression"
-  | (string & {});
+  | "Regression";
 export const MonitoringProblemType = /*@__PURE__*/ S.String;
 
 export interface ModelQualityAppSpecification {
@@ -10460,8 +10295,7 @@ export type MonitoringType =
   | "DataQuality"
   | "ModelQuality"
   | "ModelBias"
-  | "ModelExplainability"
-  | (string & {});
+  | "ModelExplainability";
 export const MonitoringType = /*@__PURE__*/ S.String;
 
 export interface MonitoringScheduleConfig {
@@ -10697,12 +10531,11 @@ export type InstanceType =
   | "ml.g6e.12xlarge"
   | "ml.g6e.16xlarge"
   | "ml.g6e.24xlarge"
-  | "ml.g6e.48xlarge"
-  | (string & {});
+  | "ml.g6e.48xlarge";
 export const InstanceType = /*@__PURE__*/ S.String;
 
 export type NotebookInstanceLifecycleConfigName = string;
-export type DirectInternetAccess = "Enabled" | "Disabled" | (string & {});
+export type DirectInternetAccess = "Enabled" | "Disabled";
 export const DirectInternetAccess = /*@__PURE__*/ S.String;
 
 export type NotebookInstanceVolumeSizeInGB = number;
@@ -10712,8 +10545,7 @@ export type NotebookInstanceAcceleratorType =
   | "ml.eia1.xlarge"
   | "ml.eia2.medium"
   | "ml.eia2.large"
-  | "ml.eia2.xlarge"
-  | (string & {});
+  | "ml.eia2.xlarge";
 export const NotebookInstanceAcceleratorType = /*@__PURE__*/ S.String;
 
 export type NotebookInstanceAcceleratorTypes =
@@ -10726,7 +10558,7 @@ export type AdditionalCodeRepositoryNamesOrUrls = string[];
 export const AdditionalCodeRepositoryNamesOrUrls = /*@__PURE__*/ S.Array(
   S.String,
 );
-export type RootAccess = "Enabled" | "Disabled" | (string & {});
+export type RootAccess = "Enabled" | "Disabled";
 export const RootAccess = /*@__PURE__*/ S.String;
 
 export type PlatformIdentifier = string;
@@ -10939,8 +10771,7 @@ export type OptimizationJobDeploymentInstanceType =
   | "ml.inf2.48xlarge"
   | "ml.trn1.2xlarge"
   | "ml.trn1.32xlarge"
-  | "ml.trn1n.32xlarge"
-  | (string & {});
+  | "ml.trn1n.32xlarge";
 export const OptimizationJobDeploymentInstanceType = /*@__PURE__*/ S.String;
 
 export type OptimizationJobMaxInstanceCount = number;
@@ -10988,13 +10819,10 @@ export const ModelShardingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModelShardingConfig",
 }) as any as S.Schema<ModelShardingConfig>;
-export type ModelSpeculativeDecodingTechnique = "EAGLE" | (string & {});
+export type ModelSpeculativeDecodingTechnique = "EAGLE";
 export const ModelSpeculativeDecodingTechnique = /*@__PURE__*/ S.String;
 
-export type ModelSpeculativeDecodingS3DataType =
-  | "S3Prefix"
-  | "ManifestFile"
-  | (string & {});
+export type ModelSpeculativeDecodingS3DataType = "S3Prefix" | "ManifestFile";
 export const ModelSpeculativeDecodingS3DataType = /*@__PURE__*/ S.String;
 
 export interface ModelSpeculativeDecodingTrainingDataSource {
@@ -11141,8 +10969,7 @@ export type PartnerAppType =
   | "lakera-guard"
   | "comet"
   | "deepchecks-llm-evaluation"
-  | "fiddler"
-  | (string & {});
+  | "fiddler";
 export const PartnerAppType = /*@__PURE__*/ S.String;
 
 export type WeeklyScheduleTimeFormat = string;
@@ -11194,7 +11021,7 @@ export const PartnerAppConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PartnerAppConfig",
 }) as any as S.Schema<PartnerAppConfig>;
-export type PartnerAppAuthType = "IAM" | (string & {});
+export type PartnerAppAuthType = "IAM";
 export const PartnerAppAuthType = /*@__PURE__*/ S.String;
 
 export interface CreatePartnerAppRequest {
@@ -11498,10 +11325,10 @@ export const CreatePresignedNotebookInstanceUrlOutput = /*@__PURE__*/ S.suspend(
   identifier: "CreatePresignedNotebookInstanceUrlOutput",
 }) as any as S.Schema<CreatePresignedNotebookInstanceUrlOutput>;
 export type AppManaged = boolean;
-export type ProcessingS3DataType = "ManifestFile" | "S3Prefix" | (string & {});
+export type ProcessingS3DataType = "ManifestFile" | "S3Prefix";
 export const ProcessingS3DataType = /*@__PURE__*/ S.String;
 
-export type ProcessingS3CompressionType = "None" | "Gzip" | (string & {});
+export type ProcessingS3CompressionType = "None" | "Gzip";
 export const ProcessingS3CompressionType = /*@__PURE__*/ S.String;
 
 export interface ProcessingS3Input {
@@ -11533,15 +11360,10 @@ export type AthenaResultFormat =
   | "ORC"
   | "AVRO"
   | "JSON"
-  | "TEXTFILE"
-  | (string & {});
+  | "TEXTFILE";
 export const AthenaResultFormat = /*@__PURE__*/ S.String;
 
-export type AthenaResultCompressionType =
-  | "GZIP"
-  | "SNAPPY"
-  | "ZLIB"
-  | (string & {});
+export type AthenaResultCompressionType = "GZIP" | "SNAPPY" | "ZLIB";
 export const AthenaResultCompressionType = /*@__PURE__*/ S.String;
 
 export interface AthenaDatasetDefinition {
@@ -11572,7 +11394,7 @@ export type RedshiftClusterId = string;
 export type RedshiftDatabase = string;
 export type RedshiftUserName = string;
 export type RedshiftQueryString = string;
-export type RedshiftResultFormat = "PARQUET" | "CSV" | (string & {});
+export type RedshiftResultFormat = "PARQUET" | "CSV";
 export const RedshiftResultFormat = /*@__PURE__*/ S.String;
 
 export type RedshiftResultCompressionType =
@@ -11580,8 +11402,7 @@ export type RedshiftResultCompressionType =
   | "GZIP"
   | "BZIP2"
   | "ZSTD"
-  | "SNAPPY"
-  | (string & {});
+  | "SNAPPY";
 export const RedshiftResultCompressionType = /*@__PURE__*/ S.String;
 
 export interface RedshiftDatasetDefinition {
@@ -11610,13 +11431,10 @@ export const RedshiftDatasetDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RedshiftDatasetDefinition",
 }) as any as S.Schema<RedshiftDatasetDefinition>;
-export type DataDistributionType =
-  | "FullyReplicated"
-  | "ShardedByS3Key"
-  | (string & {});
+export type DataDistributionType = "FullyReplicated" | "ShardedByS3Key";
 export const DataDistributionType = /*@__PURE__*/ S.String;
 
-export type InputMode = "Pipe" | "File" | (string & {});
+export type InputMode = "Pipe" | "File";
 export const InputMode = /*@__PURE__*/ S.String;
 
 export interface DatasetDefinition {
@@ -12081,7 +11899,7 @@ export const OwnershipSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OwnershipSettings",
 }) as any as S.Schema<OwnershipSettings>;
-export type SharingType = "Private" | "Shared" | (string & {});
+export type SharingType = "Private" | "Shared";
 export const SharingType = /*@__PURE__*/ S.String;
 
 export interface SpaceSharingSettings {
@@ -12139,8 +11957,7 @@ export type StudioLifecycleConfigAppType =
   | "JupyterServer"
   | "KernelGateway"
   | "CodeEditor"
-  | "JupyterLab"
-  | (string & {});
+  | "JupyterLab";
 export const StudioLifecycleConfigAppType = /*@__PURE__*/ S.String;
 
 export interface CreateStudioLifecycleConfigRequest {
@@ -12184,7 +12001,7 @@ export const TrainingContainerEntrypoint = /*@__PURE__*/ S.Array(S.String);
 export type TrainingContainerArgument = string;
 export type TrainingContainerArguments = string[];
 export const TrainingContainerArguments = /*@__PURE__*/ S.Array(S.String);
-export type TrainingRepositoryAccessMode = "Platform" | "Vpc" | (string & {});
+export type TrainingRepositoryAccessMode = "Platform" | "Vpc";
 export const TrainingRepositoryAccessMode = /*@__PURE__*/ S.String;
 
 export type TrainingRepositoryCredentialsProviderArn = string;
@@ -12403,25 +12220,19 @@ export const SessionChainingConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionChainingConfig",
 }) as any as S.Schema<SessionChainingConfig>;
 export type ServerlessJobBaseModelArn = string;
-export type ServerlessJobType = "FineTuning" | "Evaluation" | (string & {});
+export type ServerlessJobType = "FineTuning" | "Evaluation";
 export const ServerlessJobType = /*@__PURE__*/ S.String;
 
-export type CustomizationTechnique =
-  | "SFT"
-  | "DPO"
-  | "RLVR"
-  | "RLAIF"
-  | (string & {});
+export type CustomizationTechnique = "SFT" | "DPO" | "RLVR" | "RLAIF";
 export const CustomizationTechnique = /*@__PURE__*/ S.String;
 
-export type Peft = "LORA" | (string & {});
+export type Peft = "LORA";
 export const Peft = /*@__PURE__*/ S.String;
 
 export type EvaluationType =
   | "LLMAJEvaluation"
   | "CustomScorerEvaluation"
-  | "BenchmarkEvaluation"
-  | (string & {});
+  | "BenchmarkEvaluation";
 export const EvaluationType = /*@__PURE__*/ S.String;
 
 export type EvaluatorArn = string;
@@ -12624,7 +12435,7 @@ export const BatchDataCaptureConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchDataCaptureConfig",
 }) as any as S.Schema<BatchDataCaptureConfig>;
 export type JsonPath = string;
-export type JoinSource = "Input" | "None" | (string & {});
+export type JoinSource = "Input" | "None";
 export const JoinSource = /*@__PURE__*/ S.String;
 
 export interface DataProcessing {
@@ -12735,8 +12546,7 @@ export type TrialComponentPrimaryStatus =
   | "Completed"
   | "Failed"
   | "Stopping"
-  | "Stopped"
-  | (string & {});
+  | "Stopped";
 export const TrialComponentPrimaryStatus = /*@__PURE__*/ S.String;
 
 export type TrialComponentStatusMessage = string;
@@ -12953,7 +12763,7 @@ export const WorkforceVpcConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkforceVpcConfigRequest",
 }) as any as S.Schema<WorkforceVpcConfigRequest>;
-export type WorkforceIpAddressType = "ipv4" | "dualstack" | (string & {});
+export type WorkforceIpAddressType = "ipv4" | "dualstack";
 export const WorkforceIpAddressType = /*@__PURE__*/ S.String;
 
 export interface CreateWorkforceRequest {
@@ -13048,7 +12858,7 @@ export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotificationConfiguration",
 }) as any as S.Schema<NotificationConfiguration>;
-export type EnabledOrDisabled = "Enabled" | "Disabled" | (string & {});
+export type EnabledOrDisabled = "Enabled" | "Disabled";
 export const EnabledOrDisabled = /*@__PURE__*/ S.String;
 
 export interface IamPolicyConstraints {
@@ -13564,7 +13374,7 @@ export const DeleteDeviceFleetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteDeviceFleetResponse",
 }) as any as S.Schema<DeleteDeviceFleetResponse>;
-export type RetentionType = "Retain" | "Delete" | (string & {});
+export type RetentionType = "Retain" | "Delete";
 export const RetentionType = /*@__PURE__*/ S.String;
 
 export interface RetentionPolicy {
@@ -14865,8 +14675,7 @@ export type AIBenchmarkJobStatus =
   | "Completed"
   | "Failed"
   | "Stopping"
-  | "Stopped"
-  | (string & {});
+  | "Stopped";
 export const AIBenchmarkJobStatus = /*@__PURE__*/ S.String;
 
 export type FailureReason = string;
@@ -14963,8 +14772,7 @@ export type AIRecommendationJobStatus =
   | "Completed"
   | "Failed"
   | "Stopping"
-  | "Stopped"
-  | (string & {});
+  | "Stopped";
 export const AIRecommendationJobStatus = /*@__PURE__*/ S.String;
 
 export interface AIRecommendationOutputResult {
@@ -14983,8 +14791,7 @@ export const AIRecommendationOutputResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AIRecommendationOutputResult>;
 export type AIRecommendationOptimizationType =
   | "SpeculativeDecoding"
-  | "KernelTuning"
-  | (string & {});
+  | "KernelTuning";
 export const AIRecommendationOptimizationType = /*@__PURE__*/ S.String;
 
 export type AIRecommendationOptimizationConfigMap = {
@@ -15244,16 +15051,14 @@ export type AlgorithmStatus =
   | "InProgress"
   | "Completed"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const AlgorithmStatus = /*@__PURE__*/ S.String;
 
 export type DetailedAlgorithmStatus =
   | "NotStarted"
   | "InProgress"
   | "Completed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const DetailedAlgorithmStatus = /*@__PURE__*/ S.String;
 
 export interface AlgorithmStatusItem {
@@ -15482,8 +15287,7 @@ export type AppStatus =
   | "Deleting"
   | "Failed"
   | "InService"
-  | "Pending"
-  | (string & {});
+  | "Pending";
 export const AppStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeAppResponse {
@@ -15660,7 +15464,7 @@ export const AutoMLPartialFailureReasons = /*@__PURE__*/ S.Array(
   AutoMLPartialFailureReason,
 );
 export type CandidateName = string;
-export type AutoMLJobObjectiveType = "Maximize" | "Minimize" | (string & {});
+export type AutoMLJobObjectiveType = "Maximize" | "Minimize";
 export const AutoMLJobObjectiveType = /*@__PURE__*/ S.String;
 
 export type MetricValue = number;
@@ -15680,18 +15484,13 @@ export const FinalAutoMLJobObjectiveMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FinalAutoMLJobObjectiveMetric",
 }) as any as S.Schema<FinalAutoMLJobObjectiveMetric>;
-export type ObjectiveStatus =
-  | "Succeeded"
-  | "Pending"
-  | "Failed"
-  | (string & {});
+export type ObjectiveStatus = "Succeeded" | "Pending" | "Failed";
 export const ObjectiveStatus = /*@__PURE__*/ S.String;
 
 export type CandidateStepType =
   | "AWS::SageMaker::TrainingJob"
   | "AWS::SageMaker::TransformJob"
-  | "AWS::SageMaker::ProcessingJob"
-  | (string & {});
+  | "AWS::SageMaker::ProcessingJob";
 export const CandidateStepType = /*@__PURE__*/ S.String;
 
 export type CandidateStepArn = string;
@@ -15717,8 +15516,7 @@ export type CandidateStatus =
   | "InProgress"
   | "Failed"
   | "Stopped"
-  | "Stopping"
-  | (string & {});
+  | "Stopping";
 export const CandidateStatus = /*@__PURE__*/ S.String;
 
 export interface AutoMLContainerDefinition {
@@ -15782,11 +15580,10 @@ export type AutoMLMetricExtendedEnum =
   | "RougeLSum"
   | "Perplexity"
   | "ValidationLoss"
-  | "TrainingLoss"
-  | (string & {});
+  | "TrainingLoss";
 export const AutoMLMetricExtendedEnum = /*@__PURE__*/ S.String;
 
-export type MetricSetSource = "Train" | "Validation" | "Test" | (string & {});
+export type MetricSetSource = "Train" | "Validation" | "Test";
 export const MetricSetSource = /*@__PURE__*/ S.String;
 
 export interface MetricDatum {
@@ -15817,7 +15614,7 @@ export const CandidateProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CandidateProperties",
 }) as any as S.Schema<CandidateProperties>;
-export type AutoMLProcessingUnit = "CPU" | "GPU" | (string & {});
+export type AutoMLProcessingUnit = "CPU" | "GPU";
 export const AutoMLProcessingUnit = /*@__PURE__*/ S.String;
 
 export type AutoMLInferenceContainerDefinitions = {
@@ -15870,8 +15667,7 @@ export type AutoMLJobStatus =
   | "InProgress"
   | "Failed"
   | "Stopped"
-  | "Stopping"
-  | (string & {});
+  | "Stopping";
 export const AutoMLJobStatus = /*@__PURE__*/ S.String;
 
 export type AutoMLJobSecondaryStatus =
@@ -15893,8 +15689,7 @@ export type AutoMLJobSecondaryStatus =
   | "ModelTuning"
   | "GeneratingExplainabilityReport"
   | "TrainingModels"
-  | "PreTraining"
-  | (string & {});
+  | "PreTraining";
 export const AutoMLJobSecondaryStatus = /*@__PURE__*/ S.String;
 
 export type CandidateDefinitionNotebookLocation = string;
@@ -16062,8 +15857,7 @@ export type AutoMLProblemTypeConfigName =
   | "TextClassification"
   | "TimeSeriesForecasting"
   | "Tabular"
-  | "TextGeneration"
-  | (string & {});
+  | "TextGeneration";
 export const AutoMLProblemTypeConfigName = /*@__PURE__*/ S.String;
 
 export interface TabularResolvedAttributes {
@@ -16244,8 +16038,7 @@ export type ClusterStatus =
   | "InService"
   | "RollingBack"
   | "SystemUpdating"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ClusterStatus = /*@__PURE__*/ S.String;
 
 export type ClusterNonNegativeInstanceCount = number;
@@ -16286,8 +16079,7 @@ export type InstanceGroupStatus =
   | "Failed"
   | "Degraded"
   | "SystemUpdating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const InstanceGroupStatus = /*@__PURE__*/ S.String;
 
 export type InstanceGroupTrainingPlanStatus = string;
@@ -16321,11 +16113,10 @@ export type ClusterImageVersionStatus =
   | "UpToDate"
   | "UpdateAvailable"
   | "SecurityUpdateRequired"
-  | "EndOfLife"
-  | (string & {});
+  | "EndOfLife";
 export const ClusterImageVersionStatus = /*@__PURE__*/ S.String;
 
-export type ActiveClusterOperationName = "Scaling" | (string & {});
+export type ActiveClusterOperationName = "Scaling";
 export const ActiveClusterOperationName = /*@__PURE__*/ S.String;
 
 export type ActiveClusterOperationCount = number;
@@ -16356,8 +16147,7 @@ export type SoftwareUpdateStatus =
   | "Succeeded"
   | "Failed"
   | "RollbackInProgress"
-  | "RollbackComplete"
-  | (string & {});
+  | "RollbackComplete";
 export const SoftwareUpdateStatus = /*@__PURE__*/ S.String;
 
 export interface ClusterSlurmConfigDetails {
@@ -16546,8 +16336,7 @@ export type ClusterAutoScalingStatus =
   | "InService"
   | "Failed"
   | "Creating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ClusterAutoScalingStatus = /*@__PURE__*/ S.String;
 
 export interface ClusterAutoScalingConfigOutput {
@@ -16725,11 +16514,7 @@ export const DescribeClusterEventRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeClusterEventRequest",
 }) as any as S.Schema<DescribeClusterEventRequest>;
-export type ClusterEventResourceType =
-  | "Cluster"
-  | "InstanceGroup"
-  | "Instance"
-  | (string & {});
+export type ClusterEventResourceType = "Cluster" | "InstanceGroup" | "Instance";
 export const ClusterEventResourceType = /*@__PURE__*/ S.String;
 
 export type EksRoleAccessEntries = string[];
@@ -16748,7 +16533,7 @@ export const ClusterMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterMetadata",
 }) as any as S.Schema<ClusterMetadata>;
-export type CapacityReservationType = "ODCR" | "CRG" | (string & {});
+export type CapacityReservationType = "ODCR" | "CRG";
 export const CapacityReservationType = /*@__PURE__*/ S.String;
 
 export interface CapacityReservation {
@@ -16887,7 +16672,7 @@ export interface EventDetails {
 export const EventDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EventMetadata: S.optional(EventMetadata) }),
 ).annotate({ identifier: "EventDetails" }) as any as S.Schema<EventDetails>;
-export type ClusterEventLevel = "Info" | "Warn" | "Error" | (string & {});
+export type ClusterEventLevel = "Info" | "Warn" | "Error";
 export const ClusterEventLevel = /*@__PURE__*/ S.String;
 
 export interface ClusterEventDetail {
@@ -17009,7 +16794,7 @@ export const ClusterKubernetesConfigNodeDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClusterKubernetesConfigNodeDetails",
 }) as any as S.Schema<ClusterKubernetesConfigNodeDetails>;
-export type ClusterCapacityType = "Spot" | "OnDemand" | (string & {});
+export type ClusterCapacityType = "Spot" | "OnDemand";
 export const ClusterCapacityType = /*@__PURE__*/ S.String;
 
 export interface ClusterNodeDetails {
@@ -17121,15 +16906,13 @@ export type SchedulerResourceStatus =
   | "Deleting"
   | "DeleteFailed"
   | "DeleteRollbackFailed"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const SchedulerResourceStatus = /*@__PURE__*/ S.String;
 
 export type SchedulerConfigComponent =
   | "PriorityClasses"
   | "FairShare"
-  | "IdleResourceSharing"
-  | (string & {});
+  | "IdleResourceSharing";
 export const SchedulerConfigComponent = /*@__PURE__*/ S.String;
 
 export type StatusDetailsMap = {
@@ -17246,8 +17029,7 @@ export type CompilationJobStatus =
   | "FAILED"
   | "STARTING"
   | "STOPPING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const CompilationJobStatus = /*@__PURE__*/ S.String;
 
 export type InferenceImage = string;
@@ -17699,8 +17481,7 @@ export type DomainStatus =
   | "Pending"
   | "Updating"
   | "Update_Failed"
-  | "Delete_Failed"
-  | (string & {});
+  | "Delete_Failed";
 export const DomainStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeDomainResponse {
@@ -17861,8 +17642,7 @@ export type StageStatus =
   | "DEPLOYED"
   | "FAILED"
   | "STOPPING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const StageStatus = /*@__PURE__*/ S.String;
 
 export interface EdgeDeploymentStatus {
@@ -17981,12 +17761,11 @@ export type EdgePackagingJobStatus =
   | "COMPLETED"
   | "FAILED"
   | "STOPPING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const EdgePackagingJobStatus = /*@__PURE__*/ S.String;
 
 export type EdgePresetDeploymentArtifact = string;
-export type EdgePresetDeploymentStatus = "COMPLETED" | "FAILED" | (string & {});
+export type EdgePresetDeploymentStatus = "COMPLETED" | "FAILED";
 export const EdgePresetDeploymentStatus = /*@__PURE__*/ S.String;
 
 export interface EdgePresetDeploymentOutput {
@@ -18099,8 +17878,7 @@ export type VariantStatus =
   | "Updating"
   | "Deleting"
   | "ActivatingTraffic"
-  | "Baking"
-  | (string & {});
+  | "Baking";
 export const VariantStatus = /*@__PURE__*/ S.String;
 
 export type VariantStatusMessage = string;
@@ -18204,7 +17982,7 @@ export type ProductionVariantSummaryList = ProductionVariantSummary[];
 export const ProductionVariantSummaryList = /*@__PURE__*/ S.Array(
   ProductionVariantSummary,
 );
-export type CaptureStatus = "Started" | "Stopped" | (string & {});
+export type CaptureStatus = "Started" | "Stopped";
 export const CaptureStatus = /*@__PURE__*/ S.String;
 
 export interface DataCaptureConfigSummary {
@@ -18234,8 +18012,7 @@ export type EndpointStatus =
   | "InService"
   | "Deleting"
   | "Failed"
-  | "UpdateRollbackFailed"
-  | (string & {});
+  | "UpdateRollbackFailed";
 export const EndpointStatus = /*@__PURE__*/ S.String;
 
 export interface PendingProductionVariantSummary {
@@ -18690,15 +18467,10 @@ export type FeatureGroupStatus =
   | "Created"
   | "CreateFailed"
   | "Deleting"
-  | "DeleteFailed"
-  | (string & {});
+  | "DeleteFailed";
 export const FeatureGroupStatus = /*@__PURE__*/ S.String;
 
-export type OfflineStoreStatusValue =
-  | "Active"
-  | "Blocked"
-  | "Disabled"
-  | (string & {});
+export type OfflineStoreStatusValue = "Active" | "Blocked" | "Disabled";
 export const OfflineStoreStatusValue = /*@__PURE__*/ S.String;
 
 export type BlockedReason = string;
@@ -18714,11 +18486,7 @@ export const OfflineStoreStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfflineStoreStatus",
 }) as any as S.Schema<OfflineStoreStatus>;
-export type LastUpdateStatusValue =
-  | "Successful"
-  | "Failed"
-  | "InProgress"
-  | (string & {});
+export type LastUpdateStatusValue = "Successful" | "Failed" | "InProgress";
 export const LastUpdateStatusValue = /*@__PURE__*/ S.String;
 
 export interface LastUpdateStatus {
@@ -18876,8 +18644,7 @@ export type FlowDefinitionStatus =
   | "Initializing"
   | "Active"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const FlowDefinitionStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeFlowDefinitionResponse {
@@ -18945,8 +18712,7 @@ export type HubStatus =
   | "Deleting"
   | "CreateFailed"
   | "UpdateFailed"
-  | "DeleteFailed"
-  | (string & {});
+  | "DeleteFailed";
 export const HubStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeHubResponse {
@@ -19011,11 +18777,7 @@ export type HubContentDescription = string;
 export type HubContentMarkdown = string;
 export type HubContentDocument = string;
 export type ReferenceMinVersion = string;
-export type HubContentSupportStatus =
-  | "Supported"
-  | "Deprecated"
-  | "Restricted"
-  | (string & {});
+export type HubContentSupportStatus = "Supported" | "Deprecated" | "Restricted";
 export const HubContentSupportStatus = /*@__PURE__*/ S.String;
 
 export type HubContentSearchKeyword = string;
@@ -19045,8 +18807,7 @@ export type HubContentStatus =
   | "ImportFailed"
   | "DeleteFailed"
   | "PendingImport"
-  | "PendingDelete"
-  | (string & {});
+  | "PendingDelete";
 export const HubContentStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeHubContentResponse {
@@ -19117,7 +18878,7 @@ export const DescribeHumanTaskUiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeHumanTaskUiRequest",
 }) as any as S.Schema<DescribeHumanTaskUiRequest>;
-export type HumanTaskUiStatus = "Active" | "Deleting" | (string & {});
+export type HumanTaskUiStatus = "Active" | "Deleting";
 export const HumanTaskUiStatus = /*@__PURE__*/ S.String;
 
 export type TemplateUrl = string;
@@ -19173,8 +18934,7 @@ export type HyperParameterTuningJobStatus =
   | "Stopped"
   | "Stopping"
   | "Deleting"
-  | "DeleteFailed"
-  | (string & {});
+  | "DeleteFailed";
 export const HyperParameterTuningJobStatus = /*@__PURE__*/ S.String;
 
 export type TrainingJobStatusCounter = number;
@@ -19217,8 +18977,7 @@ export type TrainingJobStatus =
   | "Failed"
   | "Stopping"
   | "Stopped"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const TrainingJobStatus = /*@__PURE__*/ S.String;
 
 export interface FinalHyperParameterTuningJobObjectiveMetric {
@@ -19585,8 +19344,7 @@ export type ImageStatus =
   | "UPDATING"
   | "UPDATE_FAILED"
   | "DELETING"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const ImageStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeImageResponse {
@@ -19647,8 +19405,7 @@ export type ImageVersionStatus =
   | "CREATED"
   | "CREATE_FAILED"
   | "DELETING"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const ImageVersionStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeImageVersionResponse {
@@ -19805,14 +19562,12 @@ export type InferenceComponentStatus =
   | "Creating"
   | "Updating"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const InferenceComponentStatus = /*@__PURE__*/ S.String;
 
 export type InferenceComponentCapacitySizeType =
   | "COPY_COUNT"
-  | "CAPACITY_PERCENT"
-  | (string & {});
+  | "CAPACITY_PERCENT";
 export const InferenceComponentCapacitySizeType = /*@__PURE__*/ S.String;
 
 export interface InferenceComponentCapacitySize {
@@ -19975,8 +19730,7 @@ export type InferenceExperimentStatus =
   | "Starting"
   | "Stopping"
   | "Completed"
-  | "Cancelled"
-  | (string & {});
+  | "Cancelled";
 export const InferenceExperimentStatus = /*@__PURE__*/ S.String;
 
 export type InferenceExperimentStatusReason = string;
@@ -20001,8 +19755,7 @@ export type ModelVariantStatus =
   | "Updating"
   | "InService"
   | "Deleting"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const ModelVariantStatus = /*@__PURE__*/ S.String;
 
 export interface ModelVariantConfigSummary {
@@ -20113,8 +19866,7 @@ export type RecommendationJobStatus =
   | "STOPPING"
   | "STOPPED"
   | "DELETING"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const RecommendationJobStatus = /*@__PURE__*/ S.String;
 
 export type UtilizationMetric = number;
@@ -20357,8 +20109,7 @@ export type JobStatus =
   | "Stopping"
   | "Stopped"
   | "Deleting"
-  | "DeleteFailed"
-  | (string & {});
+  | "DeleteFailed";
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type JobSecondaryStatus =
@@ -20376,8 +20127,7 @@ export type JobSecondaryStatus =
   | "Pending"
   | "Evaluating"
   | "Deleting"
-  | "DeleteFailed"
-  | (string & {});
+  | "DeleteFailed";
 export const JobSecondaryStatus = /*@__PURE__*/ S.String;
 
 export interface JobSecondaryStatusTransition {
@@ -20501,8 +20251,7 @@ export type LabelingJobStatus =
   | "Completed"
   | "Failed"
   | "Stopping"
-  | "Stopped"
-  | (string & {});
+  | "Stopped";
 export const LabelingJobStatus = /*@__PURE__*/ S.String;
 
 export type LabelCounter = number;
@@ -20675,15 +20424,13 @@ export type MlflowAppStatus =
   | "UpdateFailed"
   | "Deleting"
   | "DeleteFailed"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const MlflowAppStatus = /*@__PURE__*/ S.String;
 
 export type MaintenanceStatus =
   | "MaintenanceInProgress"
   | "MaintenanceComplete"
-  | "MaintenanceFailed"
-  | (string & {});
+  | "MaintenanceFailed";
 export const MaintenanceStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeMlflowAppResponse {
@@ -20761,18 +20508,16 @@ export type TrackingServerStatus =
   | "StartFailed"
   | "MaintenanceInProgress"
   | "MaintenanceComplete"
-  | "MaintenanceFailed"
-  | (string & {});
+  | "MaintenanceFailed";
 export const TrackingServerStatus = /*@__PURE__*/ S.String;
 
 export type TrackingServerMaintenanceStatus =
   | "MaintenanceInProgress"
   | "MaintenanceComplete"
-  | "MaintenanceFailed"
-  | (string & {});
+  | "MaintenanceFailed";
 export const TrackingServerMaintenanceStatus = /*@__PURE__*/ S.String;
 
-export type IsTrackingServerActive = "Active" | "Inactive" | (string & {});
+export type IsTrackingServerActive = "Active" | "Inactive";
 export const IsTrackingServerActive = /*@__PURE__*/ S.String;
 
 export interface DescribeMlflowTrackingServerResponse {
@@ -20846,8 +20591,7 @@ export type RecommendationStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | "FAILED"
-  | "NOT_APPLICABLE"
-  | (string & {});
+  | "NOT_APPLICABLE";
 export const RecommendationStatus = /*@__PURE__*/ S.String;
 
 export interface RealTimeInferenceRecommendation {
@@ -21076,7 +20820,7 @@ export const DescribeModelBiasJobDefinitionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeModelBiasJobDefinitionResponse",
 }) as any as S.Schema<DescribeModelBiasJobDefinitionResponse>;
-export type IncludedData = "AllData" | "MetadataOnly" | (string & {});
+export type IncludedData = "AllData" | "MetadataOnly";
 export const IncludedData = /*@__PURE__*/ S.String;
 
 export interface DescribeModelCardRequest {
@@ -21109,8 +20853,7 @@ export type ModelCardProcessingStatus =
   | "ContentDeleted"
   | "ExportJobsDeleted"
   | "DeleteCompleted"
-  | "DeleteFailed"
-  | (string & {});
+  | "DeleteFailed";
 export const ModelCardProcessingStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeModelCardResponse {
@@ -21163,11 +20906,7 @@ export const DescribeModelCardExportJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeModelCardExportJobRequest",
 }) as any as S.Schema<DescribeModelCardExportJobRequest>;
-export type ModelCardExportJobStatus =
-  | "InProgress"
-  | "Completed"
-  | "Failed"
-  | (string & {});
+export type ModelCardExportJobStatus = "InProgress" | "Completed" | "Failed";
 export const ModelCardExportJobStatus = /*@__PURE__*/ S.String;
 
 export interface ModelCardExportArtifacts {
@@ -21319,8 +21058,7 @@ export type DetailedModelPackageStatus =
   | "NotStarted"
   | "InProgress"
   | "Completed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const DetailedModelPackageStatus = /*@__PURE__*/ S.String;
 
 export interface ModelPackageStatusItem {
@@ -21611,8 +21349,7 @@ export type ModelPackageGroupStatus =
   | "Completed"
   | "Failed"
   | "Deleting"
-  | "DeleteFailed"
-  | (string & {});
+  | "DeleteFailed";
 export const ModelPackageGroupStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeModelPackageGroupOutput {
@@ -21738,12 +21475,7 @@ export const DescribeMonitoringScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMonitoringScheduleRequest",
 }) as any as S.Schema<DescribeMonitoringScheduleRequest>;
-export type ScheduleStatus =
-  | "Pending"
-  | "Failed"
-  | "Scheduled"
-  | "Stopped"
-  | (string & {});
+export type ScheduleStatus = "Pending" | "Failed" | "Scheduled" | "Stopped";
 export const ScheduleStatus = /*@__PURE__*/ S.String;
 
 export type ExecutionStatus =
@@ -21753,8 +21485,7 @@ export type ExecutionStatus =
   | "InProgress"
   | "Failed"
   | "Stopping"
-  | "Stopped"
-  | (string & {});
+  | "Stopped";
 export const ExecutionStatus = /*@__PURE__*/ S.String;
 
 export interface MonitoringExecutionSummary {
@@ -21891,8 +21622,7 @@ export type NotebookInstanceStatus =
   | "Stopped"
   | "Failed"
   | "Deleting"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const NotebookInstanceStatus = /*@__PURE__*/ S.String;
 
 export type NetworkInterfaceId = string;
@@ -22024,8 +21754,7 @@ export type OptimizationJobStatus =
   | "FAILED"
   | "STARTING"
   | "STOPPING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const OptimizationJobStatus = /*@__PURE__*/ S.String;
 
 export interface OptimizationOutput {
@@ -22124,8 +21853,7 @@ export type PartnerAppStatus =
   | "Available"
   | "Failed"
   | "UpdateFailed"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const PartnerAppStatus = /*@__PURE__*/ S.String;
 
 export interface ErrorInfo {
@@ -22224,7 +21952,7 @@ export const DescribePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePipelineRequest",
 }) as any as S.Schema<DescribePipelineRequest>;
-export type PipelineStatus = "Active" | "Deleting" | (string & {});
+export type PipelineStatus = "Active" | "Deleting";
 export const PipelineStatus = /*@__PURE__*/ S.String;
 
 export type PipelineVersionName = string;
@@ -22328,8 +22056,7 @@ export type PipelineExecutionStatus =
   | "Stopping"
   | "Stopped"
   | "Failed"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const PipelineExecutionStatus = /*@__PURE__*/ S.String;
 
 export type PipelineExecutionDescription = string;
@@ -22447,8 +22174,7 @@ export type ProcessingJobStatus =
   | "Completed"
   | "Failed"
   | "Stopping"
-  | "Stopped"
-  | (string & {});
+  | "Stopped";
 export const ProcessingJobStatus = /*@__PURE__*/ S.String;
 
 export type ExitMessage = string;
@@ -22598,8 +22324,7 @@ export type ProjectStatus =
   | "DeleteCompleted"
   | "UpdateInProgress"
   | "UpdateCompleted"
-  | "UpdateFailed"
-  | (string & {});
+  | "UpdateFailed";
 export const ProjectStatus = /*@__PURE__*/ S.String;
 
 export interface CfnStackParameter {
@@ -22726,7 +22451,7 @@ export const DescribeReservedCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeReservedCapacityRequest",
 }) as any as S.Schema<DescribeReservedCapacityRequest>;
-export type ReservedCapacityType = "UltraServer" | "Instance" | (string & {});
+export type ReservedCapacityType = "UltraServer" | "Instance";
 export const ReservedCapacityType = /*@__PURE__*/ S.String;
 
 export type ReservedCapacityStatus =
@@ -22734,8 +22459,7 @@ export type ReservedCapacityStatus =
   | "Active"
   | "Scheduled"
   | "Expired"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ReservedCapacityStatus = /*@__PURE__*/ S.String;
 
 export type AvailabilityZone = string;
@@ -22752,8 +22476,7 @@ export type ReservedCapacityInstanceType =
   | "ml.p4de.24xlarge"
   | "ml.p6e-gb200.36xlarge"
   | "ml.p5.4xlarge"
-  | "ml.p6-b300.48xlarge"
-  | (string & {});
+  | "ml.p6-b300.48xlarge";
 export const ReservedCapacityInstanceType = /*@__PURE__*/ S.String;
 
 export type TotalInstanceCount = number;
@@ -22848,8 +22571,7 @@ export type SpaceStatus =
   | "Pending"
   | "Updating"
   | "Update_Failed"
-  | "Delete_Failed"
-  | (string & {});
+  | "Delete_Failed";
 export const SpaceStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeSpaceResponse {
@@ -23029,16 +22751,14 @@ export type SecondaryStatus =
   | "MaxWaitTimeExceeded"
   | "Updating"
   | "Restarting"
-  | "Pending"
-  | (string & {});
+  | "Pending";
 export const SecondaryStatus = /*@__PURE__*/ S.String;
 
 export type WarmPoolResourceStatus =
   | "Available"
   | "Terminated"
   | "Reused"
-  | "InUse"
-  | (string & {});
+  | "InUse";
 export const WarmPoolResourceStatus = /*@__PURE__*/ S.String;
 
 export type ResourceRetainedBillableTimeInSeconds = number;
@@ -23098,8 +22818,7 @@ export type RuleEvaluationStatus =
   | "IssuesFound"
   | "Error"
   | "Stopping"
-  | "Stopped"
-  | (string & {});
+  | "Stopped";
 export const RuleEvaluationStatus = /*@__PURE__*/ S.String;
 
 export type StatusDetails = string;
@@ -23151,7 +22870,7 @@ export type ProfilerRuleEvaluationStatuses = ProfilerRuleEvaluationStatus[];
 export const ProfilerRuleEvaluationStatuses = /*@__PURE__*/ S.Array(
   ProfilerRuleEvaluationStatus,
 );
-export type ProfilingStatus = "Enabled" | "Disabled" | (string & {});
+export type ProfilingStatus = "Enabled" | "Disabled";
 export const ProfilingStatus = /*@__PURE__*/ S.String;
 
 export type MlflowExperimentId = string;
@@ -23377,8 +23096,7 @@ export type TrainingPlanStatus =
   | "Active"
   | "Scheduled"
   | "Expired"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const TrainingPlanStatus = /*@__PURE__*/ S.String;
 
 export type TrainingPlanStatusMessage = string;
@@ -23389,8 +23107,7 @@ export type SageMakerResourceName =
   | "training-job"
   | "hyperpod-cluster"
   | "endpoint"
-  | "studio-apps"
-  | (string & {});
+  | "studio-apps";
 export const SageMakerResourceName = /*@__PURE__*/ S.String;
 
 export type SageMakerResourceNames = SageMakerResourceName[];
@@ -23584,8 +23301,7 @@ export type TransformJobStatus =
   | "Completed"
   | "Failed"
   | "Stopping"
-  | "Stopped"
-  | (string & {});
+  | "Stopped";
 export const TransformJobStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeTransformJobResponse {
@@ -23860,8 +23576,7 @@ export type UserProfileStatus =
   | "Pending"
   | "Updating"
   | "Update_Failed"
-  | "Delete_Failed"
-  | (string & {});
+  | "Delete_Failed";
 export const UserProfileStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeUserProfileResponse {
@@ -24000,8 +23715,7 @@ export type WorkforceStatus =
   | "Updating"
   | "Deleting"
   | "Failed"
-  | "Active"
-  | (string & {});
+  | "Active";
 export const WorkforceStatus = /*@__PURE__*/ S.String;
 
 export type WorkforceFailureReason = string;
@@ -24451,10 +24165,7 @@ export const GetSagemakerServicecatalogPortfolioStatusInput =
   ).annotate({
     identifier: "GetSagemakerServicecatalogPortfolioStatusInput",
   }) as any as S.Schema<GetSagemakerServicecatalogPortfolioStatusInput>;
-export type SagemakerServicecatalogStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type SagemakerServicecatalogStatus = "Enabled" | "Disabled";
 export const SagemakerServicecatalogStatus = /*@__PURE__*/ S.String;
 
 export interface GetSagemakerServicecatalogPortfolioStatusOutput {
@@ -24533,8 +24244,7 @@ export type Statistic =
   | "Minimum"
   | "Maximum"
   | "SampleCount"
-  | "Sum"
-  | (string & {});
+  | "Sum";
 export const Statistic = /*@__PURE__*/ S.String;
 
 export interface CustomizedMetricSpecification {
@@ -24639,8 +24349,7 @@ export type ResourceType =
   | "HyperParameterTuningJob"
   | "ModelCard"
   | "PipelineVersion"
-  | "Job"
-  | (string & {});
+  | "Job";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type PropertyNameHint = string;
@@ -24759,10 +24468,10 @@ export const ImportHubContentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportHubContentResponse",
 }) as any as S.Schema<ImportHubContentResponse>;
-export type SortActionsBy = "Name" | "CreationTime" | (string & {});
+export type SortActionsBy = "Name" | "CreationTime";
 export const SortActionsBy = /*@__PURE__*/ S.String;
 
-export type SortOrder = "Ascending" | "Descending" | (string & {});
+export type SortOrder = "Ascending" | "Descending";
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface ListActionsRequest {
@@ -24838,11 +24547,7 @@ export const ListActionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListActionsResponse",
 }) as any as S.Schema<ListActionsResponse>;
 export type NameContains = string;
-export type ListAIBenchmarkJobsSortBy =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type ListAIBenchmarkJobsSortBy = "Name" | "CreationTime" | "Status";
 export const ListAIBenchmarkJobsSortBy = /*@__PURE__*/ S.String;
 
 export interface ListAIBenchmarkJobsRequest {
@@ -24924,11 +24629,7 @@ export const ListAIBenchmarkJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAIBenchmarkJobsResponse",
 }) as any as S.Schema<ListAIBenchmarkJobsResponse>;
-export type ListAIRecommendationJobsSortBy =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type ListAIRecommendationJobsSortBy = "Name" | "CreationTime" | "Status";
 export const ListAIRecommendationJobsSortBy = /*@__PURE__*/ S.String;
 
 export interface ListAIRecommendationJobsRequest {
@@ -25008,10 +24709,7 @@ export const ListAIRecommendationJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAIRecommendationJobsResponse",
 }) as any as S.Schema<ListAIRecommendationJobsResponse>;
-export type ListAIWorkloadConfigsSortBy =
-  | "Name"
-  | "CreationTime"
-  | (string & {});
+export type ListAIWorkloadConfigsSortBy = "Name" | "CreationTime";
 export const ListAIWorkloadConfigsSortBy = /*@__PURE__*/ S.String;
 
 export interface ListAIWorkloadConfigsRequest {
@@ -25084,7 +24782,7 @@ export const ListAIWorkloadConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAIWorkloadConfigsResponse",
 }) as any as S.Schema<ListAIWorkloadConfigsResponse>;
-export type AlgorithmSortBy = "Name" | "CreationTime" | (string & {});
+export type AlgorithmSortBy = "Name" | "CreationTime";
 export const AlgorithmSortBy = /*@__PURE__*/ S.String;
 
 export interface ListAlgorithmsInput {
@@ -25203,8 +24901,7 @@ export const ListAliasesResponse = /*@__PURE__*/ S.suspend(() =>
 export type AppImageConfigSortKey =
   | "CreationTime"
   | "LastModifiedTime"
-  | "Name"
-  | (string & {});
+  | "Name";
 export const AppImageConfigSortKey = /*@__PURE__*/ S.String;
 
 export interface ListAppImageConfigsRequest {
@@ -25293,7 +24990,7 @@ export const ListAppImageConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAppImageConfigsResponse",
 }) as any as S.Schema<ListAppImageConfigsResponse>;
-export type AppSortKey = "CreationTime" | (string & {});
+export type AppSortKey = "CreationTime";
 export const AppSortKey = /*@__PURE__*/ S.String;
 
 export interface ListAppsRequest {
@@ -25363,7 +25060,7 @@ export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAppsResponse",
 }) as any as S.Schema<ListAppsResponse>;
-export type SortArtifactsBy = "CreationTime" | (string & {});
+export type SortArtifactsBy = "CreationTime";
 export const SortArtifactsBy = /*@__PURE__*/ S.String;
 
 export interface ListArtifactsRequest {
@@ -25449,8 +25146,7 @@ export type SortAssociationsBy =
   | "DestinationArn"
   | "SourceType"
   | "DestinationType"
-  | "CreationTime"
-  | (string & {});
+  | "CreationTime";
 export const SortAssociationsBy = /*@__PURE__*/ S.String;
 
 export interface ListAssociationsRequest {
@@ -25534,10 +25230,10 @@ export const ListAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAssociationsResponse",
 }) as any as S.Schema<ListAssociationsResponse>;
 export type AutoMLNameContains = string;
-export type AutoMLSortOrder = "Ascending" | "Descending" | (string & {});
+export type AutoMLSortOrder = "Ascending" | "Descending";
 export const AutoMLSortOrder = /*@__PURE__*/ S.String;
 
-export type AutoMLSortBy = "Name" | "CreationTime" | "Status" | (string & {});
+export type AutoMLSortBy = "Name" | "CreationTime" | "Status";
 export const AutoMLSortBy = /*@__PURE__*/ S.String;
 
 export type AutoMLMaxResults = number;
@@ -25639,8 +25335,7 @@ export const ListAutoMLJobsResponse = /*@__PURE__*/ S.suspend(() =>
 export type CandidateSortBy =
   | "CreationTime"
   | "Status"
-  | "FinalObjectiveMetricValue"
-  | (string & {});
+  | "FinalObjectiveMetricValue";
 export const CandidateSortBy = /*@__PURE__*/ S.String;
 
 export type AutoMLMaxResultsForTrials = number;
@@ -25722,7 +25417,7 @@ export const ListCandidatesForAutoMLJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCandidatesForAutoMLJobResponse",
 }) as any as S.Schema<ListCandidatesForAutoMLJobResponse>;
-export type EventSortBy = "EventTime" | (string & {});
+export type EventSortBy = "EventTime";
 export const EventSortBy = /*@__PURE__*/ S.String;
 
 export type ClusterEventMaxResults = number;
@@ -25812,7 +25507,7 @@ export const ListClusterEventsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListClusterEventsResponse",
 }) as any as S.Schema<ListClusterEventsResponse>;
-export type ClusterSortBy = "CREATION_TIME" | "NAME" | (string & {});
+export type ClusterSortBy = "CREATION_TIME" | "NAME";
 export const ClusterSortBy = /*@__PURE__*/ S.String;
 
 export type IncludeNodeLogicalIdsBoolean = boolean;
@@ -25987,11 +25682,7 @@ export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListClustersResponse",
 }) as any as S.Schema<ListClustersResponse>;
-export type SortClusterSchedulerConfigBy =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type SortClusterSchedulerConfigBy = "Name" | "CreationTime" | "Status";
 export const SortClusterSchedulerConfigBy = /*@__PURE__*/ S.String;
 
 export interface ListClusterSchedulerConfigsRequest {
@@ -26081,17 +25772,10 @@ export const ListClusterSchedulerConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListClusterSchedulerConfigsResponse",
 }) as any as S.Schema<ListClusterSchedulerConfigsResponse>;
 export type CodeRepositoryNameContains = string;
-export type CodeRepositorySortBy =
-  | "Name"
-  | "CreationTime"
-  | "LastModifiedTime"
-  | (string & {});
+export type CodeRepositorySortBy = "Name" | "CreationTime" | "LastModifiedTime";
 export const CodeRepositorySortBy = /*@__PURE__*/ S.String;
 
-export type CodeRepositorySortOrder =
-  | "Ascending"
-  | "Descending"
-  | (string & {});
+export type CodeRepositorySortOrder = "Ascending" | "Descending";
 export const CodeRepositorySortOrder = /*@__PURE__*/ S.String;
 
 export interface ListCodeRepositoriesInput {
@@ -26180,11 +25864,7 @@ export const ListCodeRepositoriesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCodeRepositoriesOutput",
 }) as any as S.Schema<ListCodeRepositoriesOutput>;
-export type ListCompilationJobsSortBy =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type ListCompilationJobsSortBy = "Name" | "CreationTime" | "Status";
 export const ListCompilationJobsSortBy = /*@__PURE__*/ S.String;
 
 export interface ListCompilationJobsRequest {
@@ -26290,12 +25970,7 @@ export const ListCompilationJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCompilationJobsResponse",
 }) as any as S.Schema<ListCompilationJobsResponse>;
-export type SortQuotaBy =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | "ClusterArn"
-  | (string & {});
+export type SortQuotaBy = "Name" | "CreationTime" | "Status" | "ClusterArn";
 export const SortQuotaBy = /*@__PURE__*/ S.String;
 
 export interface ListComputeQuotasRequest {
@@ -26409,7 +26084,7 @@ export const ListComputeQuotasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListComputeQuotasResponse",
 }) as any as S.Schema<ListComputeQuotasResponse>;
-export type SortContextsBy = "Name" | "CreationTime" | (string & {});
+export type SortContextsBy = "Name" | "CreationTime";
 export const SortContextsBy = /*@__PURE__*/ S.String;
 
 export interface ListContextsRequest {
@@ -26482,10 +26157,7 @@ export const ListContextsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListContextsResponse",
 }) as any as S.Schema<ListContextsResponse>;
-export type MonitoringJobDefinitionSortKey =
-  | "Name"
-  | "CreationTime"
-  | (string & {});
+export type MonitoringJobDefinitionSortKey = "Name" | "CreationTime";
 export const MonitoringJobDefinitionSortKey = /*@__PURE__*/ S.String;
 
 export interface ListDataQualityJobDefinitionsRequest {
@@ -26570,8 +26242,7 @@ export type ListMaxResults = number;
 export type ListDeviceFleetsSortBy =
   | "NAME"
   | "CREATION_TIME"
-  | "LAST_MODIFIED_TIME"
-  | (string & {});
+  | "LAST_MODIFIED_TIME";
 export const ListDeviceFleetsSortBy = /*@__PURE__*/ S.String;
 
 export interface ListDeviceFleetsRequest {
@@ -26808,8 +26479,7 @@ export type ListEdgeDeploymentPlansSortBy =
   | "NAME"
   | "DEVICE_FLEET_NAME"
   | "CREATION_TIME"
-  | "LAST_MODIFIED_TIME"
-  | (string & {});
+  | "LAST_MODIFIED_TIME";
 export const ListEdgeDeploymentPlansSortBy = /*@__PURE__*/ S.String;
 
 export interface ListEdgeDeploymentPlansRequest {
@@ -26912,8 +26582,7 @@ export type ListEdgePackagingJobsSortBy =
   | "MODEL_NAME"
   | "CREATION_TIME"
   | "LAST_MODIFIED_TIME"
-  | "STATUS"
-  | (string & {});
+  | "STATUS";
 export const ListEdgePackagingJobsSortBy = /*@__PURE__*/ S.String;
 
 export interface ListEdgePackagingJobsRequest {
@@ -27010,10 +26679,10 @@ export const ListEdgePackagingJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEdgePackagingJobsResponse",
 }) as any as S.Schema<ListEdgePackagingJobsResponse>;
-export type EndpointConfigSortKey = "Name" | "CreationTime" | (string & {});
+export type EndpointConfigSortKey = "Name" | "CreationTime";
 export const EndpointConfigSortKey = /*@__PURE__*/ S.String;
 
-export type OrderKey = "Ascending" | "Descending" | (string & {});
+export type OrderKey = "Ascending" | "Descending";
 export const OrderKey = /*@__PURE__*/ S.String;
 
 export type PaginationToken = string;
@@ -27088,11 +26757,7 @@ export const ListEndpointConfigsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEndpointConfigsOutput",
 }) as any as S.Schema<ListEndpointConfigsOutput>;
-export type EndpointSortKey =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type EndpointSortKey = "Name" | "CreationTime" | "Status";
 export const EndpointSortKey = /*@__PURE__*/ S.String;
 
 export type EndpointNameContains = string;
@@ -27182,7 +26847,7 @@ export const ListEndpointsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEndpointsOutput",
 }) as any as S.Schema<ListEndpointsOutput>;
-export type SortExperimentsBy = "Name" | "CreationTime" | (string & {});
+export type SortExperimentsBy = "Name" | "CreationTime";
 export const SortExperimentsBy = /*@__PURE__*/ S.String;
 
 export interface ListExperimentsRequest {
@@ -27254,15 +26919,14 @@ export const ListExperimentsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListExperimentsResponse",
 }) as any as S.Schema<ListExperimentsResponse>;
 export type FeatureGroupNameContains = string;
-export type FeatureGroupSortOrder = "Ascending" | "Descending" | (string & {});
+export type FeatureGroupSortOrder = "Ascending" | "Descending";
 export const FeatureGroupSortOrder = /*@__PURE__*/ S.String;
 
 export type FeatureGroupSortBy =
   | "Name"
   | "FeatureGroupStatus"
   | "OfflineStoreStatus"
-  | "CreationTime"
-  | (string & {});
+  | "CreationTime";
 export const FeatureGroupSortBy = /*@__PURE__*/ S.String;
 
 export type FeatureGroupMaxResults = number;
@@ -27419,8 +27083,7 @@ export const ListFlowDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type HubContentSortBy =
   | "HubContentName"
   | "CreationTime"
-  | "HubContentStatus"
-  | (string & {});
+  | "HubContentStatus";
 export const HubContentSortBy = /*@__PURE__*/ S.String;
 
 export interface ListHubContentsRequest {
@@ -27589,8 +27252,7 @@ export type HubSortBy =
   | "HubName"
   | "CreationTime"
   | "HubStatus"
-  | "AccountIdOwner"
-  | (string & {});
+  | "AccountIdOwner";
 export const HubSortBy = /*@__PURE__*/ S.String;
 
 export interface ListHubsRequest {
@@ -27748,8 +27410,7 @@ export const ListHumanTaskUisResponse = /*@__PURE__*/ S.suspend(() =>
 export type HyperParameterTuningJobSortByOptions =
   | "Name"
   | "Status"
-  | "CreationTime"
-  | (string & {});
+  | "CreationTime";
 export const HyperParameterTuningJobSortByOptions = /*@__PURE__*/ S.String;
 
 export interface ListHyperParameterTuningJobsRequest {
@@ -27861,14 +27522,10 @@ export const ListHyperParameterTuningJobsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListHyperParameterTuningJobsResponse",
 }) as any as S.Schema<ListHyperParameterTuningJobsResponse>;
 export type ImageNameContains = string;
-export type ImageSortBy =
-  | "CREATION_TIME"
-  | "LAST_MODIFIED_TIME"
-  | "IMAGE_NAME"
-  | (string & {});
+export type ImageSortBy = "CREATION_TIME" | "LAST_MODIFIED_TIME" | "IMAGE_NAME";
 export const ImageSortBy = /*@__PURE__*/ S.String;
 
-export type ImageSortOrder = "ASCENDING" | "DESCENDING" | (string & {});
+export type ImageSortOrder = "ASCENDING" | "DESCENDING";
 export const ImageSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListImagesRequest {
@@ -27962,11 +27619,10 @@ export const ListImagesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ImageVersionSortBy =
   | "CREATION_TIME"
   | "LAST_MODIFIED_TIME"
-  | "VERSION"
-  | (string & {});
+  | "VERSION";
 export const ImageVersionSortBy = /*@__PURE__*/ S.String;
 
-export type ImageVersionSortOrder = "ASCENDING" | "DESCENDING" | (string & {});
+export type ImageVersionSortOrder = "ASCENDING" | "DESCENDING";
 export const ImageVersionSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListImageVersionsRequest {
@@ -28056,11 +27712,7 @@ export const ListImageVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListImageVersionsResponse",
 }) as any as S.Schema<ListImageVersionsResponse>;
-export type InferenceComponentSortKey =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type InferenceComponentSortKey = "Name" | "CreationTime" | "Status";
 export const InferenceComponentSortKey = /*@__PURE__*/ S.String;
 
 export type InferenceComponentNameContains = string;
@@ -28164,11 +27816,7 @@ export const ListInferenceComponentsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInferenceComponentsOutput",
 }) as any as S.Schema<ListInferenceComponentsOutput>;
-export type SortInferenceExperimentsBy =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type SortInferenceExperimentsBy = "Name" | "CreationTime" | "Status";
 export const SortInferenceExperimentsBy = /*@__PURE__*/ S.String;
 
 export interface ListInferenceExperimentsRequest {
@@ -28274,8 +27922,7 @@ export const ListInferenceExperimentsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListInferenceRecommendationsJobsSortBy =
   | "Name"
   | "CreationTime"
-  | "Status"
-  | (string & {});
+  | "Status";
 export const ListInferenceRecommendationsJobsSortBy = /*@__PURE__*/ S.String;
 
 export interface ListInferenceRecommendationsJobsRequest {
@@ -28391,7 +28038,7 @@ export const ListInferenceRecommendationsJobsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListInferenceRecommendationsJobsResponse",
 }) as any as S.Schema<ListInferenceRecommendationsJobsResponse>;
-export type RecommendationStepType = "BENCHMARK" | (string & {});
+export type RecommendationStepType = "BENCHMARK";
 export const RecommendationStepType = /*@__PURE__*/ S.String;
 
 export interface ListInferenceRecommendationsJobStepsRequest {
@@ -28509,7 +28156,7 @@ export const ListInferenceRecommendationsJobStepsResponse =
   ).annotate({
     identifier: "ListInferenceRecommendationsJobStepsResponse",
   }) as any as S.Schema<ListInferenceRecommendationsJobStepsResponse>;
-export type SortBy = "Name" | "CreationTime" | "Status" | (string & {});
+export type SortBy = "Name" | "CreationTime" | "Status";
 export const SortBy = /*@__PURE__*/ S.String;
 
 export interface ListJobsRequest {
@@ -28766,9 +28413,7 @@ export const ListLabelingJobsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLabelingJobsResponse",
 }) as any as S.Schema<ListLabelingJobsResponse>;
 export type JobReferenceCodeContains = string;
-export type ListLabelingJobsForWorkteamSortByOptions =
-  | "CreationTime"
-  | (string & {});
+export type ListLabelingJobsForWorkteamSortByOptions = "CreationTime";
 export const ListLabelingJobsForWorkteamSortByOptions = /*@__PURE__*/ S.String;
 
 export interface ListLabelingJobsForWorkteamRequest {
@@ -28863,7 +28508,7 @@ export const ListLabelingJobsForWorkteamResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLabelingJobsForWorkteamResponse",
 }) as any as S.Schema<ListLabelingJobsForWorkteamResponse>;
-export type SortLineageGroupsBy = "Name" | "CreationTime" | (string & {});
+export type SortLineageGroupsBy = "Name" | "CreationTime";
 export const SortLineageGroupsBy = /*@__PURE__*/ S.String;
 
 export interface ListLineageGroupsRequest {
@@ -28930,11 +28575,7 @@ export const ListLineageGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLineageGroupsResponse",
 }) as any as S.Schema<ListLineageGroupsResponse>;
-export type SortMlflowAppBy =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type SortMlflowAppBy = "Name" | "CreationTime" | "Status";
 export const SortMlflowAppBy = /*@__PURE__*/ S.String;
 
 export interface ListMlflowAppsRequest {
@@ -29011,11 +28652,7 @@ export const ListMlflowAppsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMlflowAppsResponse",
 }) as any as S.Schema<ListMlflowAppsResponse>;
-export type SortTrackingServerBy =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type SortTrackingServerBy = "Name" | "CreationTime" | "Status";
 export const SortTrackingServerBy = /*@__PURE__*/ S.String;
 
 export interface ListMlflowTrackingServersRequest {
@@ -29147,17 +28784,10 @@ export const ListModelBiasJobDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListModelBiasJobDefinitionsResponse",
 }) as any as S.Schema<ListModelBiasJobDefinitionsResponse>;
-export type ModelCardExportJobSortBy =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type ModelCardExportJobSortBy = "Name" | "CreationTime" | "Status";
 export const ModelCardExportJobSortBy = /*@__PURE__*/ S.String;
 
-export type ModelCardExportJobSortOrder =
-  | "Ascending"
-  | "Descending"
-  | (string & {});
+export type ModelCardExportJobSortOrder = "Ascending" | "Descending";
 export const ModelCardExportJobSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListModelCardExportJobsRequest {
@@ -29248,10 +28878,10 @@ export const ListModelCardExportJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListModelCardExportJobsResponse",
 }) as any as S.Schema<ListModelCardExportJobsResponse>;
-export type ModelCardSortBy = "Name" | "CreationTime" | (string & {});
+export type ModelCardSortBy = "Name" | "CreationTime";
 export const ModelCardSortBy = /*@__PURE__*/ S.String;
 
-export type ModelCardSortOrder = "Ascending" | "Descending" | (string & {});
+export type ModelCardSortOrder = "Ascending" | "Descending";
 export const ModelCardSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListModelCardsRequest {
@@ -29331,7 +28961,7 @@ export const ListModelCardsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListModelCardsResponse",
 }) as any as S.Schema<ListModelCardsResponse>;
-export type ModelCardVersionSortBy = "Version" | (string & {});
+export type ModelCardVersionSortBy = "Version";
 export const ModelCardVersionSortBy = /*@__PURE__*/ S.String;
 
 export interface ListModelCardVersionsRequest {
@@ -29477,8 +29107,7 @@ export type ModelMetadataFilterType =
   | "Domain"
   | "Framework"
   | "Task"
-  | "FrameworkVersion"
-  | (string & {});
+  | "FrameworkVersion";
 export const ModelMetadataFilterType = /*@__PURE__*/ S.String;
 
 export interface ModelMetadataFilter {
@@ -29566,13 +29195,10 @@ export const ListModelMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListModelMetadataResponse",
 }) as any as S.Schema<ListModelMetadataResponse>;
-export type ModelPackageGroupSortBy = "Name" | "CreationTime" | (string & {});
+export type ModelPackageGroupSortBy = "Name" | "CreationTime";
 export const ModelPackageGroupSortBy = /*@__PURE__*/ S.String;
 
-export type CrossAccountFilterOption =
-  | "SameAccount"
-  | "CrossAccount"
-  | (string & {});
+export type CrossAccountFilterOption = "SameAccount" | "CrossAccount";
 export const CrossAccountFilterOption = /*@__PURE__*/ S.String;
 
 export interface ListModelPackageGroupsInput {
@@ -29654,14 +29280,10 @@ export const ListModelPackageGroupsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListModelPackageGroupsOutput",
 }) as any as S.Schema<ListModelPackageGroupsOutput>;
-export type ModelPackageType =
-  | "Versioned"
-  | "Unversioned"
-  | "Both"
-  | (string & {});
+export type ModelPackageType = "Versioned" | "Unversioned" | "Both";
 export const ModelPackageType = /*@__PURE__*/ S.String;
 
-export type ModelPackageSortBy = "Name" | "CreationTime" | (string & {});
+export type ModelPackageSortBy = "Name" | "CreationTime";
 export const ModelPackageSortBy = /*@__PURE__*/ S.String;
 
 export interface ListModelPackagesInput {
@@ -29814,7 +29436,7 @@ export const ListModelQualityJobDefinitionsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListModelQualityJobDefinitionsResponse",
 }) as any as S.Schema<ListModelQualityJobDefinitionsResponse>;
-export type ModelSortKey = "Name" | "CreationTime" | (string & {});
+export type ModelSortKey = "Name" | "CreationTime";
 export const ModelSortKey = /*@__PURE__*/ S.String;
 
 export type ModelNameContains = string;
@@ -29885,13 +29507,10 @@ export const ListModelsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListModelsOutput",
 }) as any as S.Schema<ListModelsOutput>;
 export type MonitoringAlertName = string;
-export type MonitoringAlertHistorySortKey =
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type MonitoringAlertHistorySortKey = "CreationTime" | "Status";
 export const MonitoringAlertHistorySortKey = /*@__PURE__*/ S.String;
 
-export type MonitoringAlertStatus = "InAlert" | "OK" | (string & {});
+export type MonitoringAlertStatus = "InAlert" | "OK";
 export const MonitoringAlertStatus = /*@__PURE__*/ S.String;
 
 export interface ListMonitoringAlertHistoryRequest {
@@ -30066,8 +29685,7 @@ export const ListMonitoringAlertsResponse = /*@__PURE__*/ S.suspend(() =>
 export type MonitoringExecutionSortKey =
   | "CreationTime"
   | "ScheduledTime"
-  | "Status"
-  | (string & {});
+  | "Status";
 export const MonitoringExecutionSortKey = /*@__PURE__*/ S.String;
 
 export interface ListMonitoringExecutionsRequest {
@@ -30152,11 +29770,7 @@ export const ListMonitoringExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMonitoringExecutionsResponse",
 }) as any as S.Schema<ListMonitoringExecutionsResponse>;
-export type MonitoringScheduleSortKey =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type MonitoringScheduleSortKey = "Name" | "CreationTime" | "Status";
 export const MonitoringScheduleSortKey = /*@__PURE__*/ S.String;
 
 export interface ListMonitoringSchedulesRequest {
@@ -30262,14 +29876,12 @@ export const ListMonitoringSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
 export type NotebookInstanceLifecycleConfigSortKey =
   | "Name"
   | "CreationTime"
-  | "LastModifiedTime"
-  | (string & {});
+  | "LastModifiedTime";
 export const NotebookInstanceLifecycleConfigSortKey = /*@__PURE__*/ S.String;
 
 export type NotebookInstanceLifecycleConfigSortOrder =
   | "Ascending"
-  | "Descending"
-  | (string & {});
+  | "Descending";
 export const NotebookInstanceLifecycleConfigSortOrder = /*@__PURE__*/ S.String;
 
 export type NotebookInstanceLifecycleConfigNameContains = string;
@@ -30360,17 +29972,10 @@ export const ListNotebookInstanceLifecycleConfigsOutput =
   ).annotate({
     identifier: "ListNotebookInstanceLifecycleConfigsOutput",
   }) as any as S.Schema<ListNotebookInstanceLifecycleConfigsOutput>;
-export type NotebookInstanceSortKey =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type NotebookInstanceSortKey = "Name" | "CreationTime" | "Status";
 export const NotebookInstanceSortKey = /*@__PURE__*/ S.String;
 
-export type NotebookInstanceSortOrder =
-  | "Ascending"
-  | "Descending"
-  | (string & {});
+export type NotebookInstanceSortOrder = "Ascending" | "Descending";
 export const NotebookInstanceSortOrder = /*@__PURE__*/ S.String;
 
 export type NotebookInstanceNameContains = string;
@@ -30476,11 +30081,7 @@ export const ListNotebookInstancesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListNotebookInstancesOutput",
 }) as any as S.Schema<ListNotebookInstancesOutput>;
-export type ListOptimizationJobsSortBy =
-  | "Name"
-  | "CreationTime"
-  | "Status"
-  | (string & {});
+export type ListOptimizationJobsSortBy = "Name" | "CreationTime" | "Status";
 export const ListOptimizationJobsSortBy = /*@__PURE__*/ S.String;
 
 export interface ListOptimizationJobsRequest {
@@ -30645,10 +30246,7 @@ export const ListPartnerAppsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPartnerAppsResponse",
 }) as any as S.Schema<ListPartnerAppsResponse>;
-export type SortPipelineExecutionsBy =
-  | "CreationTime"
-  | "PipelineExecutionArn"
-  | (string & {});
+export type SortPipelineExecutionsBy = "CreationTime" | "PipelineExecutionArn";
 export const SortPipelineExecutionsBy = /*@__PURE__*/ S.String;
 
 export interface ListPipelineExecutionsRequest {
@@ -30755,8 +30353,7 @@ export type StepStatus =
   | "Stopping"
   | "Stopped"
   | "Failed"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const StepStatus = /*@__PURE__*/ S.String;
 
 export interface CacheHitResult {
@@ -30813,7 +30410,7 @@ export const RegisterModelStepMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RegisterModelStepMetadata",
 }) as any as S.Schema<RegisterModelStepMetadata>;
-export type ConditionOutcome = "True" | "False" | (string & {});
+export type ConditionOutcome = "True" | "False";
 export const ConditionOutcome = /*@__PURE__*/ S.String;
 
 export interface ConditionStepMetadata {
@@ -31230,7 +30827,7 @@ export const ListPipelineParametersForExecutionResponse =
   ).annotate({
     identifier: "ListPipelineParametersForExecutionResponse",
   }) as any as S.Schema<ListPipelineParametersForExecutionResponse>;
-export type SortPipelinesBy = "Name" | "CreationTime" | (string & {});
+export type SortPipelinesBy = "Name" | "CreationTime";
 export const SortPipelinesBy = /*@__PURE__*/ S.String;
 
 export interface ListPipelinesRequest {
@@ -31467,10 +31064,10 @@ export const ListProcessingJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProcessingJobsResponse",
 }) as any as S.Schema<ListProcessingJobsResponse>;
-export type ProjectSortBy = "Name" | "CreationTime" | (string & {});
+export type ProjectSortBy = "Name" | "CreationTime";
 export const ProjectSortBy = /*@__PURE__*/ S.String;
 
-export type ProjectSortOrder = "Ascending" | "Descending" | (string & {});
+export type ProjectSortOrder = "Ascending" | "Descending";
 export const ProjectSortOrder = /*@__PURE__*/ S.String;
 
 export interface ListProjectsInput {
@@ -31548,13 +31145,10 @@ export const ListProjectsOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsOutput",
 }) as any as S.Schema<ListProjectsOutput>;
 export type ResourceCatalogName = string;
-export type ResourceCatalogSortOrder =
-  | "Ascending"
-  | "Descending"
-  | (string & {});
+export type ResourceCatalogSortOrder = "Ascending" | "Descending";
 export const ResourceCatalogSortOrder = /*@__PURE__*/ S.String;
 
-export type ResourceCatalogSortBy = "CreationTime" | (string & {});
+export type ResourceCatalogSortBy = "CreationTime";
 export const ResourceCatalogSortBy = /*@__PURE__*/ S.String;
 
 export interface ListResourceCatalogsRequest {
@@ -31630,7 +31224,7 @@ export const ListResourceCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListResourceCatalogsResponse",
 }) as any as S.Schema<ListResourceCatalogsResponse>;
-export type SpaceSortKey = "CreationTime" | "LastModifiedTime" | (string & {});
+export type SpaceSortKey = "CreationTime" | "LastModifiedTime";
 export const SpaceSortKey = /*@__PURE__*/ S.String;
 
 export interface ListSpacesRequest {
@@ -31775,8 +31369,7 @@ export type DeviceDeploymentStatus =
   | "DEPLOYED"
   | "FAILED"
   | "STOPPING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const DeviceDeploymentStatus = /*@__PURE__*/ S.String;
 
 export interface DeviceDeploymentSummary {
@@ -31836,8 +31429,7 @@ export const ListStageDevicesResponse = /*@__PURE__*/ S.suspend(() =>
 export type StudioLifecycleConfigSortKey =
   | "CreationTime"
   | "LastModifiedTime"
-  | "Name"
-  | (string & {});
+  | "Name";
 export const StudioLifecycleConfigSortKey = /*@__PURE__*/ S.String;
 
 export interface ListStudioLifecycleConfigsRequest {
@@ -32096,8 +31688,7 @@ export type TrainingJobSortByOptions =
   | "Name"
   | "CreationTime"
   | "Status"
-  | "FinalObjectiveMetricValue"
-  | (string & {});
+  | "FinalObjectiveMetricValue";
 export const TrainingJobSortByOptions = /*@__PURE__*/ S.String;
 
 export interface ListTrainingJobsForHyperParameterTuningJobRequest {
@@ -32159,17 +31750,13 @@ export const ListTrainingJobsForHyperParameterTuningJobResponse =
   ).annotate({
     identifier: "ListTrainingJobsForHyperParameterTuningJobResponse",
   }) as any as S.Schema<ListTrainingJobsForHyperParameterTuningJobResponse>;
-export type TrainingPlanSortBy =
-  | "TrainingPlanName"
-  | "StartTime"
-  | "Status"
-  | (string & {});
+export type TrainingPlanSortBy = "TrainingPlanName" | "StartTime" | "Status";
 export const TrainingPlanSortBy = /*@__PURE__*/ S.String;
 
-export type TrainingPlanSortOrder = "Ascending" | "Descending" | (string & {});
+export type TrainingPlanSortOrder = "Ascending" | "Descending";
 export const TrainingPlanSortOrder = /*@__PURE__*/ S.String;
 
-export type TrainingPlanFilterName = "Status" | (string & {});
+export type TrainingPlanFilterName = "Status";
 export const TrainingPlanFilterName = /*@__PURE__*/ S.String;
 
 export interface TrainingPlanFilter {
@@ -32375,7 +31962,7 @@ export const ListTransformJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTransformJobsResponse",
 }) as any as S.Schema<ListTransformJobsResponse>;
-export type SortTrialComponentsBy = "Name" | "CreationTime" | (string & {});
+export type SortTrialComponentsBy = "Name" | "CreationTime";
 export const SortTrialComponentsBy = /*@__PURE__*/ S.String;
 
 export interface ListTrialComponentsRequest {
@@ -32466,7 +32053,7 @@ export const ListTrialComponentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTrialComponentsResponse",
 }) as any as S.Schema<ListTrialComponentsResponse>;
-export type SortTrialsBy = "Name" | "CreationTime" | (string & {});
+export type SortTrialsBy = "Name" | "CreationTime";
 export const SortTrialsBy = /*@__PURE__*/ S.String;
 
 export interface ListTrialsRequest {
@@ -32565,11 +32152,7 @@ export const ListUltraServersByReservedCapacityRequest =
     identifier: "ListUltraServersByReservedCapacityRequest",
   }) as any as S.Schema<ListUltraServersByReservedCapacityRequest>;
 export type ConfiguredSpareInstanceCount = number;
-export type UltraServerHealthStatus =
-  | "OK"
-  | "Impaired"
-  | "Insufficient-Data"
-  | (string & {});
+export type UltraServerHealthStatus = "OK" | "Impaired" | "Insufficient-Data";
 export const UltraServerHealthStatus = /*@__PURE__*/ S.String;
 
 export interface UltraServer {
@@ -32621,10 +32204,7 @@ export const ListUltraServersByReservedCapacityResponse =
   ).annotate({
     identifier: "ListUltraServersByReservedCapacityResponse",
   }) as any as S.Schema<ListUltraServersByReservedCapacityResponse>;
-export type UserProfileSortKey =
-  | "CreationTime"
-  | "LastModifiedTime"
-  | (string & {});
+export type UserProfileSortKey = "CreationTime" | "LastModifiedTime";
 export const UserProfileSortKey = /*@__PURE__*/ S.String;
 
 export interface ListUserProfilesRequest {
@@ -32691,7 +32271,7 @@ export const ListUserProfilesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUserProfilesResponse",
 }) as any as S.Schema<ListUserProfilesResponse>;
-export type ListWorkforcesSortByOptions = "Name" | "CreateDate" | (string & {});
+export type ListWorkforcesSortByOptions = "Name" | "CreateDate";
 export const ListWorkforcesSortByOptions = /*@__PURE__*/ S.String;
 
 export interface ListWorkforcesRequest {
@@ -32749,7 +32329,7 @@ export const ListWorkforcesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListWorkforcesResponse",
 }) as any as S.Schema<ListWorkforcesResponse>;
-export type ListWorkteamsSortByOptions = "Name" | "CreateDate" | (string & {});
+export type ListWorkteamsSortByOptions = "Name" | "CreateDate";
 export const ListWorkteamsSortByOptions = /*@__PURE__*/ S.String;
 
 export interface ListWorkteamsRequest {
@@ -32837,18 +32417,13 @@ export const PutModelPackageGroupPolicyOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutModelPackageGroupPolicyOutput>;
 export type QueryLineageStartArns = string[];
 export const QueryLineageStartArns = /*@__PURE__*/ S.Array(S.String);
-export type Direction = "Both" | "Ascendants" | "Descendants" | (string & {});
+export type Direction = "Both" | "Ascendants" | "Descendants";
 export const Direction = /*@__PURE__*/ S.String;
 
 export type String40 = string;
 export type QueryTypes = string[];
 export const QueryTypes = /*@__PURE__*/ S.Array(S.String);
-export type LineageType =
-  | "TrialComponent"
-  | "Artifact"
-  | "Context"
-  | "Action"
-  | (string & {});
+export type LineageType = "TrialComponent" | "Artifact" | "Context" | "Action";
 export const LineageType = /*@__PURE__*/ S.String;
 
 export type QueryLineageTypes = LineageType[];
@@ -33095,8 +32670,7 @@ export type Operator =
   | "Contains"
   | "Exists"
   | "NotExists"
-  | "In"
-  | (string & {});
+  | "In";
 export const Operator = /*@__PURE__*/ S.String;
 
 export type FilterValue = string;
@@ -33132,7 +32706,7 @@ export const SearchExpressionList = /*@__PURE__*/ S.Array(
     identifier: "SearchExpression",
   }),
 ) as any as S.Schema<SearchExpressionList>;
-export type BooleanOperator = "And" | "Or" | (string & {});
+export type BooleanOperator = "And" | "Or";
 export const BooleanOperator = /*@__PURE__*/ S.String;
 
 export interface SearchExpression {
@@ -33155,7 +32729,7 @@ export const SearchExpression = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchExpression",
 }) as any as S.Schema<SearchExpression>;
-export type SearchSortOrder = "Ascending" | "Descending" | (string & {});
+export type SearchSortOrder = "Ascending" | "Descending";
 export const SearchSortOrder = /*@__PURE__*/ S.String;
 
 export type VisibilityConditionsKey = string;
@@ -34249,7 +33823,7 @@ export const SearchRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRecord" }) as any as S.Schema<SearchRecord>;
 export type SearchResultsList = SearchRecord[];
 export const SearchResultsList = /*@__PURE__*/ S.Array(SearchRecord);
-export type Relation = "EqualTo" | "GreaterThanOrEqualTo" | (string & {});
+export type Relation = "EqualTo" | "GreaterThanOrEqualTo";
 export const Relation = /*@__PURE__*/ S.String;
 
 export interface TotalHits {
@@ -35973,11 +35547,7 @@ export const StopHyperParameterTuningJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StopHyperParameterTuningJobResponse",
 }) as any as S.Schema<StopHyperParameterTuningJobResponse>;
-export type ModelVariantAction =
-  | "Retain"
-  | "Remove"
-  | "Promote"
-  | (string & {});
+export type ModelVariantAction = "Retain" | "Remove" | "Promote";
 export const ModelVariantAction = /*@__PURE__*/ S.String;
 
 export type ModelVariantActionMap = {
@@ -35987,10 +35557,7 @@ export const ModelVariantActionMap = /*@__PURE__*/ S.Record(
   S.String,
   ModelVariantAction.pipe(S.optional),
 );
-export type InferenceExperimentStopDesiredState =
-  | "Completed"
-  | "Cancelled"
-  | (string & {});
+export type InferenceExperimentStopDesiredState = "Completed" | "Cancelled";
 export const InferenceExperimentStopDesiredState = /*@__PURE__*/ S.String;
 
 export interface StopInferenceExperimentRequest {
@@ -36825,8 +36392,7 @@ export const UpdateDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export type VariantPropertyType =
   | "DesiredInstanceCount"
   | "DesiredWeight"
-  | "DataCaptureConfig"
-  | (string & {});
+  | "DataCaptureConfig";
 export const VariantPropertyType = /*@__PURE__*/ S.String;
 
 export interface VariantProperty {

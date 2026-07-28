@@ -253,7 +253,7 @@ export type BackupPlanName = string;
 export type BackupRuleName = string;
 export type CronExpression = string;
 export type WindowMinutes = number;
-export type LifecycleDeleteAfterEvent = "DELETE_AFTER_COPY" | (string & {});
+export type LifecycleDeleteAfterEvent = "DELETE_AFTER_COPY";
 export const LifecycleDeleteAfterEvent = /*@__PURE__*/ S.String;
 
 export interface Lifecycle {
@@ -298,10 +298,10 @@ export const IndexAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexAction" }) as any as S.Schema<IndexAction>;
 export type IndexActions = IndexAction[];
 export const IndexActions = /*@__PURE__*/ S.Array(IndexAction);
-export type MalwareScanner = "GUARDDUTY" | (string & {});
+export type MalwareScanner = "GUARDDUTY";
 export const MalwareScanner = /*@__PURE__*/ S.String;
 
-export type ScanMode = "FULL_SCAN" | "INCREMENTAL_SCAN" | (string & {});
+export type ScanMode = "FULL_SCAN" | "INCREMENTAL_SCAN";
 export const ScanMode = /*@__PURE__*/ S.String;
 
 export interface ScanAction {
@@ -450,7 +450,7 @@ export const CreateBackupPlanOutput = /*@__PURE__*/ S.suspend(() =>
 export type BackupSelectionName = string;
 export type ResourceArns = string[];
 export const ResourceArns = /*@__PURE__*/ S.Array(S.String);
-export type ConditionType = "STRINGEQUALS" | (string & {});
+export type ConditionType = "STRINGEQUALS";
 export const ConditionType = /*@__PURE__*/ S.String;
 
 export type ConditionKey = string;
@@ -745,12 +745,7 @@ export const CreateLegalHoldInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLegalHoldInput",
 }) as any as S.Schema<CreateLegalHoldInput>;
-export type LegalHoldStatus =
-  | "CREATING"
-  | "ACTIVE"
-  | "CANCELING"
-  | "CANCELED"
-  | (string & {});
+export type LegalHoldStatus = "CREATING" | "ACTIVE" | "CANCELING" | "CANCELED";
 export const LegalHoldStatus = /*@__PURE__*/ S.String;
 
 export interface CreateLegalHoldOutput {
@@ -808,7 +803,7 @@ export const CreateLogicallyAirGappedBackupVaultInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateLogicallyAirGappedBackupVaultInput",
 }) as any as S.Schema<CreateLogicallyAirGappedBackupVaultInput>;
-export type VaultState = "CREATING" | "AVAILABLE" | "FAILED" | (string & {});
+export type VaultState = "CREATING" | "AVAILABLE" | "FAILED";
 export const VaultState = /*@__PURE__*/ S.String;
 
 export interface CreateLogicallyAirGappedBackupVaultOutput {
@@ -955,15 +950,11 @@ export const CreateRestoreAccessBackupVaultOutput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRestoreAccessBackupVaultOutput>;
 export type RestoreTestingRecoveryPointSelectionAlgorithm =
   | "LATEST_WITHIN_WINDOW"
-  | "RANDOM_WITHIN_WINDOW"
-  | (string & {});
+  | "RANDOM_WITHIN_WINDOW";
 export const RestoreTestingRecoveryPointSelectionAlgorithm =
   /*@__PURE__*/ S.String;
 
-export type RestoreTestingRecoveryPointType =
-  | "CONTINUOUS"
-  | "SNAPSHOT"
-  | (string & {});
+export type RestoreTestingRecoveryPointType = "CONTINUOUS" | "SNAPSHOT";
 export const RestoreTestingRecoveryPointType = /*@__PURE__*/ S.String;
 
 export type RestoreTestingRecoveryPointTypeList =
@@ -1579,8 +1570,7 @@ export type BackupJobState =
   | "COMPLETED"
   | "FAILED"
   | "EXPIRED"
-  | "PARTIAL"
-  | (string & {});
+  | "PARTIAL";
 export const BackupJobState = /*@__PURE__*/ S.String;
 
 export interface RecoveryPointCreator {
@@ -1712,16 +1702,11 @@ export const DescribeBackupVaultInput = /*@__PURE__*/ S.suspend(() =>
 export type VaultType =
   | "BACKUP_VAULT"
   | "LOGICALLY_AIR_GAPPED_BACKUP_VAULT"
-  | "RESTORE_ACCESS_BACKUP_VAULT"
-  | (string & {});
+  | "RESTORE_ACCESS_BACKUP_VAULT";
 export const VaultType = /*@__PURE__*/ S.String;
 
 export type Long2 = number;
-export type MpaSessionStatus =
-  | "PENDING"
-  | "APPROVED"
-  | "FAILED"
-  | (string & {});
+export type MpaSessionStatus = "PENDING" | "APPROVED" | "FAILED";
 export const MpaSessionStatus = /*@__PURE__*/ S.String;
 
 export interface LatestMpaApprovalTeamUpdate {
@@ -1744,8 +1729,7 @@ export const LatestMpaApprovalTeamUpdate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LatestMpaApprovalTeamUpdate>;
 export type EncryptionKeyType =
   | "AWS_OWNED_KMS_KEY"
-  | "CUSTOMER_MANAGED_KMS_KEY"
-  | (string & {});
+  | "CUSTOMER_MANAGED_KMS_KEY";
 export const EncryptionKeyType = /*@__PURE__*/ S.String;
 
 export interface DescribeBackupVaultOutput {
@@ -1812,8 +1796,7 @@ export type CopyJobState =
   | "RUNNING"
   | "COMPLETED"
   | "FAILED"
-  | "PARTIAL"
-  | (string & {});
+  | "PARTIAL";
 export const CopyJobState = /*@__PURE__*/ S.String;
 
 export type CopyJobChildJobsInState = { [key in CopyJobState]?: number };
@@ -2046,8 +2029,7 @@ export type RecoveryPointStatus =
   | "EXPIRED"
   | "AVAILABLE"
   | "STOPPED"
-  | "CREATING"
-  | (string & {});
+  | "CREATING";
 export const RecoveryPointStatus = /*@__PURE__*/ S.String;
 
 export interface CalculatedLifecycle {
@@ -2064,26 +2046,20 @@ export const CalculatedLifecycle = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CalculatedLifecycle",
 }) as any as S.Schema<CalculatedLifecycle>;
-export type StorageClass = "WARM" | "COLD" | "DELETED" | (string & {});
+export type StorageClass = "WARM" | "COLD" | "DELETED";
 export const StorageClass = /*@__PURE__*/ S.String;
 
-export type IndexStatus =
-  | "PENDING"
-  | "ACTIVE"
-  | "FAILED"
-  | "DELETING"
-  | (string & {});
+export type IndexStatus = "PENDING" | "ACTIVE" | "FAILED" | "DELETING";
 export const IndexStatus = /*@__PURE__*/ S.String;
 
 export type ScanJobState =
   | "COMPLETED"
   | "COMPLETED_WITH_ISSUES"
   | "FAILED"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const ScanJobState = /*@__PURE__*/ S.String;
 
-export type ScanFinding = "MALWARE" | (string & {});
+export type ScanFinding = "MALWARE";
 export const ScanFinding = /*@__PURE__*/ S.String;
 
 export type ScanFindings = ScanFinding[];
@@ -2356,8 +2332,7 @@ export type RestoreJobStatus =
   | "RUNNING"
   | "COMPLETED"
   | "ABORTED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const RestoreJobStatus = /*@__PURE__*/ S.String;
 
 export interface RestoreJobCreator {
@@ -2372,15 +2347,10 @@ export type RestoreValidationStatus =
   | "FAILED"
   | "SUCCESSFUL"
   | "TIMED_OUT"
-  | "VALIDATING"
-  | (string & {});
+  | "VALIDATING";
 export const RestoreValidationStatus = /*@__PURE__*/ S.String;
 
-export type RestoreDeletionStatus =
-  | "DELETING"
-  | "FAILED"
-  | "SUCCESSFUL"
-  | (string & {});
+export type RestoreDeletionStatus = "DELETING" | "FAILED" | "SUCCESSFUL";
 export const RestoreDeletionStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeRestoreJobOutput {
@@ -2470,14 +2440,10 @@ export const ScanJobCreator = /*@__PURE__*/ S.suspend(() =>
     BackupRuleId: S.String,
   }),
 ).annotate({ identifier: "ScanJobCreator" }) as any as S.Schema<ScanJobCreator>;
-export type ScanResourceType = "EBS" | "EC2" | "S3" | (string & {});
+export type ScanResourceType = "EBS" | "EC2" | "S3";
 export const ScanResourceType = /*@__PURE__*/ S.String;
 
-export type ScanResultStatus =
-  | "NO_THREATS_FOUND"
-  | "THREATS_FOUND"
-  | "UNKNOWN"
-  | (string & {});
+export type ScanResultStatus = "NO_THREATS_FOUND" | "THREATS_FOUND" | "UNKNOWN";
 export const ScanResultStatus = /*@__PURE__*/ S.String;
 
 export interface ScanResultInfo {
@@ -2492,8 +2458,7 @@ export type ScanState =
   | "COMPLETED_WITH_ISSUES"
   | "CREATED"
   | "FAILED"
-  | "RUNNING"
-  | (string & {});
+  | "RUNNING";
 export const ScanState = /*@__PURE__*/ S.String;
 
 export interface DescribeScanJobOutput {
@@ -2746,8 +2711,7 @@ export const BackupPlan = /*@__PURE__*/ S.suspend(() =>
 export type RuleExecutionType =
   | "CONTINUOUS"
   | "SNAPSHOTS"
-  | "CONTINUOUS_AND_SNAPSHOTS"
-  | (string & {});
+  | "CONTINUOUS_AND_SNAPSHOTS";
 export const RuleExecutionType = /*@__PURE__*/ S.String;
 
 export interface ScheduledPlanExecutionMember {
@@ -2978,8 +2942,7 @@ export type BackupVaultEvent =
   | "RECOVERY_POINT_INDEXING_FAILED"
   | "EKS_RESTORE_OBJECT_FAILED"
   | "EKS_RESTORE_OBJECT_SKIPPED"
-  | "EKS_BACKUP_OBJECT_FAILED"
-  | (string & {});
+  | "EKS_BACKUP_OBJECT_FAILED";
 export const BackupVaultEvent = /*@__PURE__*/ S.String;
 
 export type BackupVaultEvents = BackupVaultEvent[];
@@ -3622,16 +3585,11 @@ export type BackupJobStatus =
   | "EXPIRED"
   | "PARTIAL"
   | "AGGREGATE_ALL"
-  | "ANY"
-  | (string & {});
+  | "ANY";
 export const BackupJobStatus = /*@__PURE__*/ S.String;
 
 export type MessageCategory = string;
-export type AggregationPeriod =
-  | "ONE_DAY"
-  | "SEVEN_DAYS"
-  | "FOURTEEN_DAYS"
-  | (string & {});
+export type AggregationPeriod = "ONE_DAY" | "SEVEN_DAYS" | "FOURTEEN_DAYS";
 export const AggregationPeriod = /*@__PURE__*/ S.String;
 
 export interface ListBackupJobSummariesInput {
@@ -4077,8 +4035,7 @@ export type CopyJobStatus =
   | "FAILED"
   | "PARTIAL"
   | "AGGREGATE_ALL"
-  | "ANY"
-  | (string & {});
+  | "ANY";
 export const CopyJobStatus = /*@__PURE__*/ S.String;
 
 export interface ListCopyJobSummariesInput {
@@ -4838,7 +4795,7 @@ export const ListRestoreAccessBackupVaultsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRestoreAccessBackupVaultsInput",
 }) as any as S.Schema<ListRestoreAccessBackupVaultsInput>;
-export type MpaRevokeSessionStatus = "PENDING" | "FAILED" | (string & {});
+export type MpaRevokeSessionStatus = "PENDING" | "FAILED";
 export const MpaRevokeSessionStatus = /*@__PURE__*/ S.String;
 
 export interface LatestRevokeRequest {
@@ -5067,8 +5024,7 @@ export type RestoreJobState =
   | "COMPLETED"
   | "FAILED"
   | "AGGREGATE_ALL"
-  | "ANY"
-  | (string & {});
+  | "ANY";
 export const RestoreJobState = /*@__PURE__*/ S.String;
 
 export interface ListRestoreJobSummariesInput {
@@ -5398,8 +5354,7 @@ export type ScanJobStatus =
   | "FAILED"
   | "CANCELED"
   | "AGGREGATE_ALL"
-  | "ANY"
-  | (string & {});
+  | "ANY";
 export const ScanJobStatus = /*@__PURE__*/ S.String;
 
 export interface ListScanJobSummariesInput {
@@ -5731,7 +5686,7 @@ export const RevokeRestoreAccessBackupVaultResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "RevokeRestoreAccessBackupVaultResponse",
 }) as any as S.Schema<RevokeRestoreAccessBackupVaultResponse>;
-export type Index = "ENABLED" | "DISABLED" | (string & {});
+export type Index = "ENABLED" | "DISABLED";
 export const Index = /*@__PURE__*/ S.String;
 
 export interface StartBackupJobInput {

@@ -1573,7 +1573,7 @@ export const RecurringChargeList = /*@__PURE__*/ S.Array(
     identifier: "RecurringCharge",
   }),
 );
-export type ReservedNodeOfferingType = "Regular" | "Upgradable" | (string & {});
+export type ReservedNodeOfferingType = "Regular" | "Upgradable";
 export const ReservedNodeOfferingType = /*@__PURE__*/ S.String;
 
 export interface ReservedNode {
@@ -1694,8 +1694,7 @@ export type DataShareStatus =
   | "AUTHORIZED"
   | "DEAUTHORIZED"
   | "REJECTED"
-  | "AVAILABLE"
-  | (string & {});
+  | "AVAILABLE";
 export const DataShareStatus = /*@__PURE__*/ S.String;
 
 export interface DataShareAssociation {
@@ -1727,7 +1726,7 @@ export const DataShareAssociation = /*@__PURE__*/ S.suspend(() =>
 export type DataShareAssociationList = DataShareAssociation[];
 export const DataShareAssociationList =
   /*@__PURE__*/ S.Array(DataShareAssociation);
-export type DataShareType = "INTERNAL" | (string & {});
+export type DataShareType = "INTERNAL";
 export const DataShareType = /*@__PURE__*/ S.String;
 
 export interface DataShare {
@@ -1905,7 +1904,7 @@ export const AuthorizeEndpointAccessMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizeEndpointAccessMessage",
 }) as any as S.Schema<AuthorizeEndpointAccessMessage>;
-export type AuthorizationStatus = "Authorized" | "Revoking" | (string & {});
+export type AuthorizationStatus = "Authorized" | "Revoking";
 export const AuthorizationStatus = /*@__PURE__*/ S.String;
 
 export interface EndpointAuthorization {
@@ -2351,11 +2350,7 @@ export type IamRoleArnList = string[];
 export const IamRoleArnList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("IamRoleArn")),
 );
-export type AquaConfigurationStatus =
-  | "enabled"
-  | "disabled"
-  | "auto"
-  | (string & {});
+export type AquaConfigurationStatus = "enabled" | "disabled" | "auto";
 export const AquaConfigurationStatus = /*@__PURE__*/ S.String;
 
 export type CatalogNameString = string;
@@ -2749,7 +2744,7 @@ export const DeferredMaintenanceWindowsList = /*@__PURE__*/ S.Array(
     T.XmlName("DeferredMaintenanceWindow"),
   ).annotate({ identifier: "DeferredMaintenanceWindow" }),
 );
-export type ScheduleState = "MODIFYING" | "ACTIVE" | "FAILED" | (string & {});
+export type ScheduleState = "MODIFYING" | "ACTIVE" | "FAILED";
 export const ScheduleState = /*@__PURE__*/ S.String;
 
 export interface ResizeInfo {
@@ -2762,7 +2757,7 @@ export const ResizeInfo = /*@__PURE__*/ S.suspend(() =>
     AllowCancelResize: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "ResizeInfo" }) as any as S.Schema<ResizeInfo>;
-export type AquaStatus = "enabled" | "disabled" | "applying" | (string & {});
+export type AquaStatus = "enabled" | "disabled" | "applying";
 export const AquaStatus = /*@__PURE__*/ S.String;
 
 export interface AquaConfiguration {
@@ -2783,8 +2778,7 @@ export type ReservedNodeExchangeStatusType =
   | "IN_PROGRESS"
   | "RETRYING"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ReservedNodeExchangeStatusType = /*@__PURE__*/ S.String;
 
 export interface ReservedNodeExchangeStatus {
@@ -3531,8 +3525,7 @@ export type ZeroETLIntegrationStatus =
   | "failed"
   | "deleting"
   | "syncing"
-  | "needs_attention"
-  | (string & {});
+  | "needs_attention";
 export const ZeroETLIntegrationStatus = /*@__PURE__*/ S.String;
 
 export interface IntegrationError {
@@ -3605,7 +3598,7 @@ export type AuthorizedTokenIssuerList = AuthorizedTokenIssuer[];
 export const AuthorizedTokenIssuerList = /*@__PURE__*/ S.Array(
   AuthorizedTokenIssuer,
 );
-export type ServiceAuthorization = "Enabled" | "Disabled" | (string & {});
+export type ServiceAuthorization = "Enabled" | "Disabled";
 export const ServiceAuthorization = /*@__PURE__*/ S.String;
 
 export interface LakeFormationQuery {
@@ -3680,7 +3673,7 @@ export type ServiceIntegrationList = ServiceIntegrationsUnion[];
 export const ServiceIntegrationList = /*@__PURE__*/ S.Array(
   ServiceIntegrationsUnion,
 );
-export type ApplicationType = "None" | "Lakehouse" | (string & {});
+export type ApplicationType = "None" | "Lakehouse";
 export const ApplicationType = /*@__PURE__*/ S.String;
 
 export type TagKeyList = string[];
@@ -3887,7 +3880,7 @@ export const CreateScheduledActionMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateScheduledActionMessage",
 }) as any as S.Schema<CreateScheduledActionMessage>;
-export type ScheduledActionState = "ACTIVE" | "DISABLED" | (string & {});
+export type ScheduledActionState = "ACTIVE" | "DISABLED";
 export const ScheduledActionState = /*@__PURE__*/ S.String;
 
 export type ScheduledActionTimeList = Date[];
@@ -4086,21 +4079,16 @@ export type UsageLimitFeatureType =
   | "spectrum"
   | "concurrency-scaling"
   | "cross-region-datasharing"
-  | "extra-compute-for-automatic-optimization"
-  | (string & {});
+  | "extra-compute-for-automatic-optimization";
 export const UsageLimitFeatureType = /*@__PURE__*/ S.String;
 
-export type UsageLimitLimitType = "time" | "data-scanned" | (string & {});
+export type UsageLimitLimitType = "time" | "data-scanned";
 export const UsageLimitLimitType = /*@__PURE__*/ S.String;
 
-export type UsageLimitPeriod = "daily" | "weekly" | "monthly" | (string & {});
+export type UsageLimitPeriod = "daily" | "weekly" | "monthly";
 export const UsageLimitPeriod = /*@__PURE__*/ S.String;
 
-export type UsageLimitBreachAction =
-  | "log"
-  | "emit-metric"
-  | "disable"
-  | (string & {});
+export type UsageLimitBreachAction = "log" | "emit-metric" | "disable";
 export const UsageLimitBreachAction = /*@__PURE__*/ S.String;
 
 export interface CreateUsageLimitMessage {
@@ -4685,10 +4673,7 @@ export const DeregisterNamespaceInputMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeregisterNamespaceInputMessage",
 }) as any as S.Schema<DeregisterNamespaceInputMessage>;
-export type NamespaceRegistrationStatus =
-  | "Registering"
-  | "Deregistering"
-  | (string & {});
+export type NamespaceRegistrationStatus = "Registering" | "Deregistering";
 export const NamespaceRegistrationStatus = /*@__PURE__*/ S.String;
 
 export interface DeregisterNamespaceOutputMessage {
@@ -4964,7 +4949,7 @@ export const DescribeClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeClusterParametersMessage",
 }) as any as S.Schema<DescribeClusterParametersMessage>;
-export type ParameterApplyType = "static" | "dynamic" | (string & {});
+export type ParameterApplyType = "static" | "dynamic";
 export const ParameterApplyType = /*@__PURE__*/ S.String;
 
 export interface Parameter {
@@ -5101,11 +5086,10 @@ export const ClusterSecurityGroupMessage = /*@__PURE__*/ S.suspend(() =>
 export type SnapshotAttributeToSortBy =
   | "SOURCE_TYPE"
   | "TOTAL_SIZE"
-  | "CREATE_TIME"
-  | (string & {});
+  | "CREATE_TIME";
 export const SnapshotAttributeToSortBy = /*@__PURE__*/ S.String;
 
-export type SortByOrder = "ASC" | "DESC" | (string & {});
+export type SortByOrder = "ASC" | "DESC";
 export const SortByOrder = /*@__PURE__*/ S.String;
 
 export interface SnapshotSortingEntity {
@@ -5493,7 +5477,7 @@ export const DescribeDataSharesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDataSharesResult",
 }) as any as S.Schema<DescribeDataSharesResult>;
-export type DataShareStatusForConsumer = "ACTIVE" | "AVAILABLE" | (string & {});
+export type DataShareStatusForConsumer = "ACTIVE" | "AVAILABLE";
 export const DataShareStatusForConsumer = /*@__PURE__*/ S.String;
 
 export interface DescribeDataSharesForConsumerMessage {
@@ -5540,8 +5524,7 @@ export type DataShareStatusForProducer =
   | "AUTHORIZED"
   | "PENDING_AUTHORIZATION"
   | "DEAUTHORIZED"
-  | "REJECTED"
-  | (string & {});
+  | "REJECTED";
 export const DataShareStatusForProducer = /*@__PURE__*/ S.String;
 
 export interface DescribeDataSharesForProducerMessage {
@@ -5793,8 +5776,7 @@ export type SourceType =
   | "cluster-parameter-group"
   | "cluster-security-group"
   | "cluster-snapshot"
-  | "scheduled-action"
-  | (string & {});
+  | "scheduled-action";
 export const SourceType = /*@__PURE__*/ S.String;
 
 export interface DescribeEventsMessage {
@@ -6077,8 +6059,7 @@ export type DescribeIntegrationsFilterName =
   | "integration-arn"
   | "source-arn"
   | "source-types"
-  | "status"
-  | (string & {});
+  | "status";
 export const DescribeIntegrationsFilterName = /*@__PURE__*/ S.String;
 
 export type DescribeIntegrationsFilterValueList = string[];
@@ -6168,7 +6149,7 @@ export const DescribeLoggingStatusMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeLoggingStatusMessage",
 }) as any as S.Schema<DescribeLoggingStatusMessage>;
 export type S3KeyPrefixValue = string;
-export type LogDestinationType = "s3" | "cloudwatch" | (string & {});
+export type LogDestinationType = "s3" | "cloudwatch";
 export const LogDestinationType = /*@__PURE__*/ S.String;
 
 export type LogTypeList = string[];
@@ -6202,27 +6183,17 @@ export const LoggingStatus = /*@__PURE__*/ S.suspend(() =>
 export type ActionType =
   | "restore-cluster"
   | "recommend-node-config"
-  | "resize-cluster"
-  | (string & {});
+  | "resize-cluster";
 export const ActionType = /*@__PURE__*/ S.String;
 
 export type NodeConfigurationOptionsFilterName =
   | "NodeType"
   | "NumberOfNodes"
   | "EstimatedDiskUtilizationPercent"
-  | "Mode"
-  | (string & {});
+  | "Mode";
 export const NodeConfigurationOptionsFilterName = /*@__PURE__*/ S.String;
 
-export type OperatorType =
-  | "eq"
-  | "lt"
-  | "gt"
-  | "le"
-  | "ge"
-  | "in"
-  | "between"
-  | (string & {});
+export type OperatorType = "eq" | "lt" | "gt" | "le" | "ge" | "in" | "between";
 export const OperatorType = /*@__PURE__*/ S.String;
 
 export interface NodeConfigurationOptionsFilter {
@@ -6283,7 +6254,7 @@ export const DescribeNodeConfigurationOptionsMessage = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeNodeConfigurationOptionsMessage",
 }) as any as S.Schema<DescribeNodeConfigurationOptionsMessage>;
-export type Mode = "standard" | "high-performance" | (string & {});
+export type Mode = "standard" | "high-performance";
 export const Mode = /*@__PURE__*/ S.String;
 
 export interface NodeConfigurationOption {
@@ -6417,8 +6388,7 @@ export type PartnerIntegrationStatus =
   | "Active"
   | "Inactive"
   | "RuntimeFailure"
-  | "ConnectionFailure"
-  | (string & {});
+  | "ConnectionFailure";
 export const PartnerIntegrationStatus = /*@__PURE__*/ S.String;
 
 export type PartnerIntegrationStatusMessage = string;
@@ -6684,14 +6654,10 @@ export const DescribeResizeMessage = /*@__PURE__*/ S.suspend(() =>
 export type ScheduledActionTypeValues =
   | "ResizeCluster"
   | "PauseCluster"
-  | "ResumeCluster"
-  | (string & {});
+  | "ResumeCluster";
 export const ScheduledActionTypeValues = /*@__PURE__*/ S.String;
 
-export type ScheduledActionFilterName =
-  | "cluster-identifier"
-  | "iam-role"
-  | (string & {});
+export type ScheduledActionFilterName = "cluster-identifier" | "iam-role";
 export const ScheduledActionFilterName = /*@__PURE__*/ S.String;
 
 export interface ScheduledActionFilter {
@@ -6926,8 +6892,7 @@ export type TableRestoreStatusType =
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const TableRestoreStatusType = /*@__PURE__*/ S.String;
 
 export interface TableRestoreStatus {
@@ -7387,8 +7352,7 @@ export const GetIdentityCenterAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIdentityCenterAuthTokenResponse>;
 export type ReservedNodeExchangeActionType =
   | "restore-cluster"
-  | "resize-cluster"
-  | (string & {});
+  | "resize-cluster";
 export const ReservedNodeExchangeActionType = /*@__PURE__*/ S.String;
 
 export interface GetReservedNodeExchangeConfigurationOptionsInputMessage {
@@ -7553,10 +7517,10 @@ export const ListRecommendationsMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommendationsMessage",
 }) as any as S.Schema<ListRecommendationsMessage>;
-export type ImpactRankingType = "HIGH" | "MEDIUM" | "LOW" | (string & {});
+export type ImpactRankingType = "HIGH" | "MEDIUM" | "LOW";
 export const ImpactRankingType = /*@__PURE__*/ S.String;
 
-export type RecommendedActionType = "SQL" | "CLI" | (string & {});
+export type RecommendedActionType = "SQL" | "CLI";
 export const RecommendedActionType = /*@__PURE__*/ S.String;
 
 export interface RecommendedAction {
@@ -8156,13 +8120,10 @@ export const ModifyIntegrationMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModifyIntegrationMessage",
 }) as any as S.Schema<ModifyIntegrationMessage>;
-export type LakehouseRegistration = "Register" | "Deregister" | (string & {});
+export type LakehouseRegistration = "Register" | "Deregister";
 export const LakehouseRegistration = /*@__PURE__*/ S.String;
 
-export type LakehouseIdcRegistration =
-  | "Associate"
-  | "Disassociate"
-  | (string & {});
+export type LakehouseIdcRegistration = "Associate" | "Disassociate";
 export const LakehouseIdcRegistration = /*@__PURE__*/ S.String;
 
 export interface ModifyLakehouseConfigurationMessage {

@@ -1108,11 +1108,16 @@
             "smithy.api#documentation": "Name of identifier."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.domainregistration#DomainOwnershipIdentifierProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "DomainOwnershipIdentifier resource specific properties"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of resource"
           }
         }
       },
@@ -1218,11 +1223,16 @@
             "smithy.api#documentation": "Name of identifier."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.domainregistration#DomainOwnershipIdentifierProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "DomainOwnershipIdentifier resource specific properties"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of resource"
           }
         }
       },
@@ -1631,16 +1641,100 @@
             "smithy.api#documentation": "Name of the domain."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.domainregistration#DomainPatchResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "DomainPatchResource resource specific properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.domainregistration#DomainPatchResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "contactAdmin": {
+          "target": "com.azure.domainregistration#Contact",
+          "traits": {
+            "smithy.api#documentation": "Administrative contact.",
+            "smithy.api#required": {}
+          }
+        },
+        "contactBilling": {
+          "target": "com.azure.domainregistration#Contact",
+          "traits": {
+            "smithy.api#documentation": "Billing contact.",
+            "smithy.api#required": {}
+          }
+        },
+        "contactRegistrant": {
+          "target": "com.azure.domainregistration#Contact",
+          "traits": {
+            "smithy.api#documentation": "Registrant contact.",
+            "smithy.api#required": {}
+          }
+        },
+        "contactTech": {
+          "target": "com.azure.domainregistration#Contact",
+          "traits": {
+            "smithy.api#documentation": "Technical contact.",
+            "smithy.api#required": {}
+          }
+        },
+        "privacy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "<code>true</code> if domain privacy is enabled for this domain; otherwise, <code>false</code>."
+          }
+        },
+        "autoRenew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "<code>true</code> if the domain should be automatically renewed; otherwise, <code>false</code>."
+          }
+        },
+        "consent": {
+          "target": "com.azure.domainregistration#DomainPurchaseConsent",
+          "traits": {
+            "smithy.api#documentation": "Legal agreement consent.",
+            "smithy.api#required": {}
+          }
+        },
+        "dnsType": {
+          "target": "com.azure.domainregistration#DnsType",
+          "traits": {
+            "smithy.api#documentation": "Current DNS type"
+          }
+        },
+        "dnsZoneId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure DNS Zone to use"
+          }
+        },
+        "targetDnsType": {
+          "target": "com.azure.domainregistration#DnsType",
+          "traits": {
+            "smithy.api#documentation": "Target DNS type (would be used for migration)"
+          }
+        },
+        "authCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Authorization code for the domain."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DomainPatchResource resource specific properties"
       }
     },
     "com.azure.domainregistration#DomainsCreateOrUpdate": {
@@ -1758,16 +1852,125 @@
             "smithy.api#documentation": "Name of the domain."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.domainregistration#DomainsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.domainregistration#DomainPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Domain resource specific properties"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.domainregistration#DomainPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "contactAdmin": {
+          "target": "com.azure.domainregistration#Contact",
+          "traits": {
+            "smithy.api#documentation": "Administrative contact.",
+            "smithy.api#required": {}
+          }
+        },
+        "contactBilling": {
+          "target": "com.azure.domainregistration#Contact",
+          "traits": {
+            "smithy.api#documentation": "Billing contact.",
+            "smithy.api#required": {}
+          }
+        },
+        "contactRegistrant": {
+          "target": "com.azure.domainregistration#Contact",
+          "traits": {
+            "smithy.api#documentation": "Registrant contact.",
+            "smithy.api#required": {}
+          }
+        },
+        "contactTech": {
+          "target": "com.azure.domainregistration#Contact",
+          "traits": {
+            "smithy.api#documentation": "Technical contact.",
+            "smithy.api#required": {}
+          }
+        },
+        "privacy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "<code>true</code> if domain privacy is enabled for this domain; otherwise, <code>false</code>."
+          }
+        },
+        "autoRenew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "<code>true</code> if the domain should be automatically renewed; otherwise, <code>false</code>."
+          }
+        },
+        "consent": {
+          "target": "com.azure.domainregistration#DomainPurchaseConsent",
+          "traits": {
+            "smithy.api#documentation": "Legal agreement consent.",
+            "smithy.api#required": {}
+          }
+        },
+        "dnsType": {
+          "target": "com.azure.domainregistration#DnsType",
+          "traits": {
+            "smithy.api#documentation": "Current DNS type"
+          }
+        },
+        "dnsZoneId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure DNS Zone to use"
+          }
+        },
+        "targetDnsType": {
+          "target": "com.azure.domainregistration#DnsType",
+          "traits": {
+            "smithy.api#documentation": "Target DNS type (would be used for migration)"
+          }
+        },
+        "authCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Authorization code for the domain."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Domain resource specific properties"
+      }
+    },
+    "com.azure.domainregistration#DomainsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.domainregistration#DomainsGet": {
@@ -2135,11 +2338,16 @@
             "smithy.api#documentation": "Name of the top-level domain."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "includePrivacy": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "If <code>true</code>, then the list of agreements will include agreements for domain privacy as well; otherwise, <code>false</code>."
+          }
+        },
+        "forTransfer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If <code>true</code>, then the list of agreements will include agreements for domain transfer as well; otherwise, <code>false</code>."
           }
         }
       },
@@ -2431,11 +2639,16 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keywords": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Keywords to be used for generating domain recommendations."
+          }
+        },
+        "maxDomainRecommendations": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of recommendations."
           }
         }
       },
@@ -2615,11 +2828,10 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name of the object."
           }
         }
       },

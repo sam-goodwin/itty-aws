@@ -1357,16 +1357,69 @@
             "smithy.api#documentation": "String that represents a Experiment resource name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.chaos#ExperimentsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.chaos#ExperimentsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.chaos#ExperimentsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.chaos#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.chaos#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.chaos#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.chaos#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.chaos#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.chaos#ExperimentsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.chaos#ExperimentsCreateOrUpdate": {
@@ -1514,16 +1567,104 @@
             "smithy.api#documentation": "String that represents a Experiment resource name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.chaos#ExperimentsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.chaos#ExperimentsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.chaos#ExperimentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the experiment resource.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.chaos#ExperimentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "steps": {
+          "target": "com.azure.chaos#ExperimentPropertiesInputStepsList",
+          "traits": {
+            "smithy.api#documentation": "List of steps.",
+            "smithy.api#required": {}
+          }
+        },
+        "selectors": {
+          "target": "com.azure.chaos#ExperimentPropertiesInputSelectorsList",
+          "traits": {
+            "smithy.api#documentation": "List of selectors.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model that represents the Experiment properties model."
+      }
+    },
+    "com.azure.chaos#ExperimentPropertiesInputSelectorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.chaos#ChaosTargetSelector"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of selectors."
+      }
+    },
+    "com.azure.chaos#ExperimentPropertiesInputStepsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.chaos#ChaosExperimentStep"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of steps."
+      }
+    },
+    "com.azure.chaos#ExperimentsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.chaos#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.chaos#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.chaos#ExperimentsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.chaos#ExperimentsGet": {
@@ -2099,16 +2240,22 @@
             "smithy.api#documentation": "String that represents a Capability resource name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.chaos#CapabilityPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a capability resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.chaos#CapabilityPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Model that represents the Capability properties model."
       }
     },
     "com.azure.chaos#CapabilitiesGet": {
@@ -2584,16 +2731,34 @@
             "smithy.api#documentation": "String that represents a Target resource name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.chaos#TargetsCreateOrUpdateRequestPropertiesMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the target resource.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure resource location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.chaos#TargetsCreateOrUpdateRequestPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the target resource."
       }
     },
     "com.azure.chaos#TargetsGet": {

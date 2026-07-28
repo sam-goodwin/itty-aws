@@ -12,13 +12,27 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The Copilot Settings properties. */
+export interface CopilotSettingsPropertiesInput {
+  /** Boolean indicating if role-based access control is enabled for copilot in this tenant. */
+  accessControlEnabled: boolean;
+}
+export const CopilotSettingsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessControlEnabled: S.Boolean,
+  }),
+).annotate({
+  identifier: "CopilotSettingsPropertiesInput",
+}) as any as S.Schema<CopilotSettingsPropertiesInput>;
+
 export interface CopilotSettingsCreateOrUpdateRequest {
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: CopilotSettingsPropertiesInput;
 }
 export const CopilotSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(CopilotSettingsPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -36,8 +50,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -45,8 +58,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -79,8 +91,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -186,12 +197,27 @@ export const CopilotSettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CopilotSettingsGetResponse",
 }) as any as S.Schema<CopilotSettingsGetResponse>;
 
+/** The updatable properties of the CopilotSettingsResource. */
+export interface CopilotSettingsResourceUpdateProperties {
+  /** Boolean indicating if role-based access control is enabled for copilot in this tenant. */
+  accessControlEnabled?: boolean;
+}
+export const CopilotSettingsResourceUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accessControlEnabled: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "CopilotSettingsResourceUpdateProperties",
+}) as any as S.Schema<CopilotSettingsResourceUpdateProperties>;
+
 export interface CopilotSettingsUpdateRequest {
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: CopilotSettingsResourceUpdateProperties;
 }
 export const CopilotSettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(CopilotSettingsResourceUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -265,11 +291,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -296,7 +322,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -316,12 +342,47 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** The contents of the file. */
+export type PortalTenantCompilefileRequestContentsMap = {
+  [key: string]: unknown | undefined;
+};
+export const PortalTenantCompilefileRequestContentsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<PortalTenantCompilefileRequestContentsMap>;
+
+/** The contents of the string source. */
+export type PortalTenantCompilefileRequestStringSourceMap = {
+  [key: string]: unknown | undefined;
+};
+export const PortalTenantCompilefileRequestStringSourceMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<PortalTenantCompilefileRequestStringSourceMap>;
+
+/** The contents of referenced files. The property name is the relative file path and the value is its contents. */
+export type PortalTenantCompilefileRequestFilesMap = {
+  [key: string]: unknown | undefined;
+};
+export const PortalTenantCompilefileRequestFilesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<PortalTenantCompilefileRequestFilesMap>;
+
 export interface PortalTenantCompilefileRequest {
-  body: unknown;
+  /** The contents of the file. */
+  contents: PortalTenantCompilefileRequestContentsMap;
+  /** The contents of the string source. */
+  stringSource?: PortalTenantCompilefileRequestStringSourceMap;
+  /** The contents of referenced files. The property name is the relative file path and the value is its contents. */
+  files?: PortalTenantCompilefileRequestFilesMap;
 }
 export const PortalTenantCompilefileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    contents: PortalTenantCompilefileRequestContentsMap,
+    stringSource: S.optional(PortalTenantCompilefileRequestStringSourceMap),
+    files: S.optional(PortalTenantCompilefileRequestFilesMap),
   }).pipe(
     T.Http({
       method: "POST",
@@ -334,9 +395,18 @@ export const PortalTenantCompilefileRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PortalTenantCompilefileRequest",
 }) as any as S.Schema<PortalTenantCompilefileRequest>;
 
-export type PortalTenantCompilefileResponse = unknown;
+/** The contents of the file to compile. */
+export type PortalTenantCompileFileResult = {
+  [key: string]: unknown | undefined;
+};
+export const PortalTenantCompileFileResult = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<PortalTenantCompileFileResult>;
+
+export type PortalTenantCompilefileResponse = PortalTenantCompileFileResult;
 export const PortalTenantCompilefileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  PortalTenantCompileFileResult.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "PortalTenantCompilefileResponse",
 }) as any as S.Schema<PortalTenantCompilefileResponse>;

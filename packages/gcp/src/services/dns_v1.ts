@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -69,16 +69,14 @@ export type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeEnum =
   | "none"
   | "globalL7ilb"
   | "regionalL4ilb"
-  | "regionalL7ilb"
-  | (string & {});
+  | "regionalL7ilb";
 export const RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type RRSetRoutingPolicyLoadBalancerTargetIpProtocolEnum =
   | "undefined"
   | "tcp"
-  | "udp"
-  | (string & {});
+  | "udp";
 export const RRSetRoutingPolicyLoadBalancerTargetIpProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -121,7 +119,7 @@ export const RRSetRoutingPolicyLoadBalancerTarget = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RRSetRoutingPolicyLoadBalancerTarget>;
 
 export type RRSetRoutingPolicyLoadBalancerTargetList =
-  RRSetRoutingPolicyLoadBalancerTarget[];
+  ReadonlyArray<RRSetRoutingPolicyLoadBalancerTarget>;
 export const RRSetRoutingPolicyLoadBalancerTargetList = /*@__PURE__*/ S.Array(
   RRSetRoutingPolicyLoadBalancerTarget,
 ) as any as S.Schema<RRSetRoutingPolicyLoadBalancerTargetList>;
@@ -170,7 +168,7 @@ export const RRSetRoutingPolicyWrrPolicyWrrPolicyItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>;
 
 export type RRSetRoutingPolicyWrrPolicyWrrPolicyItemList =
-  RRSetRoutingPolicyWrrPolicyWrrPolicyItem[];
+  ReadonlyArray<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>;
 export const RRSetRoutingPolicyWrrPolicyWrrPolicyItemList =
   /*@__PURE__*/ S.Array(
     RRSetRoutingPolicyWrrPolicyWrrPolicyItem,
@@ -215,7 +213,7 @@ export const RRSetRoutingPolicyGeoPolicyGeoPolicyItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>;
 
 export type RRSetRoutingPolicyGeoPolicyGeoPolicyItemList =
-  RRSetRoutingPolicyGeoPolicyGeoPolicyItem[];
+  ReadonlyArray<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>;
 export const RRSetRoutingPolicyGeoPolicyGeoPolicyItemList =
   /*@__PURE__*/ S.Array(
     RRSetRoutingPolicyGeoPolicyGeoPolicyItem,
@@ -312,12 +310,12 @@ export const ResourceRecordSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceRecordSet",
 }) as any as S.Schema<ResourceRecordSet>;
 
-export type ResourceRecordSetList = ResourceRecordSet[];
+export type ResourceRecordSetList = ReadonlyArray<ResourceRecordSet>;
 export const ResourceRecordSetList = /*@__PURE__*/ S.Array(
   ResourceRecordSet,
 ) as any as S.Schema<ResourceRecordSetList>;
 
-export type ChangeStatusEnum = "pending" | "done" | (string & {});
+export type ChangeStatusEnum = "pending" | "done";
 export const ChangeStatusEnum = /*@__PURE__*/ S.String;
 
 /** A Change represents a set of `ResourceRecordSet` additions and deletions applied atomically to a ManagedZone. ResourceRecordSets within a ManagedZone are modified by creating a new Change element in the Changes collection. In turn the Changes collection also records the past modifications to the `ResourceRecordSets` in a `ManagedZone`. The current state of the `ManagedZone` is the sum effect of applying all `Change` elements in the `Changes` collection in sequence. */
@@ -375,7 +373,7 @@ export const CreateChangesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateChangesRequest",
 }) as any as S.Schema<CreateChangesRequest>;
 
-export type ManagedZoneVisibilityEnum = "public" | "private" | (string & {});
+export type ManagedZoneVisibilityEnum = "public" | "private";
 export const ManagedZoneVisibilityEnum = /*@__PURE__*/ S.String;
 
 export interface ManagedZonePeeringConfigTargetNetwork {
@@ -412,8 +410,7 @@ export const ManagedZonePeeringConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type ManagedZoneForwardingConfigNameServerTargetForwardingPathEnum =
   | "default"
-  | "private"
-  | (string & {});
+  | "private";
 export const ManagedZoneForwardingConfigNameServerTargetForwardingPathEnum =
   /*@__PURE__*/ S.String;
 
@@ -444,7 +441,7 @@ export const ManagedZoneForwardingConfigNameServerTarget =
   }) as any as S.Schema<ManagedZoneForwardingConfigNameServerTarget>;
 
 export type ManagedZoneForwardingConfigNameServerTargetList =
-  ManagedZoneForwardingConfigNameServerTarget[];
+  ReadonlyArray<ManagedZoneForwardingConfigNameServerTarget>;
 export const ManagedZoneForwardingConfigNameServerTargetList =
   /*@__PURE__*/ S.Array(
     ManagedZoneForwardingConfigNameServerTarget,
@@ -482,7 +479,7 @@ export const ManagedZonePrivateVisibilityConfigGKECluster =
   }) as any as S.Schema<ManagedZonePrivateVisibilityConfigGKECluster>;
 
 export type ManagedZonePrivateVisibilityConfigGKEClusterList =
-  ManagedZonePrivateVisibilityConfigGKECluster[];
+  ReadonlyArray<ManagedZonePrivateVisibilityConfigGKECluster>;
 export const ManagedZonePrivateVisibilityConfigGKEClusterList =
   /*@__PURE__*/ S.Array(
     ManagedZonePrivateVisibilityConfigGKECluster,
@@ -504,7 +501,7 @@ export const ManagedZonePrivateVisibilityConfigNetwork =
   }) as any as S.Schema<ManagedZonePrivateVisibilityConfigNetwork>;
 
 export type ManagedZonePrivateVisibilityConfigNetworkList =
-  ManagedZonePrivateVisibilityConfigNetwork[];
+  ReadonlyArray<ManagedZonePrivateVisibilityConfigNetwork>;
 export const ManagedZonePrivateVisibilityConfigNetworkList =
   /*@__PURE__*/ S.Array(
     ManagedZonePrivateVisibilityConfigNetwork,
@@ -527,23 +524,13 @@ export const ManagedZonePrivateVisibilityConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedZonePrivateVisibilityConfig",
 }) as any as S.Schema<ManagedZonePrivateVisibilityConfig>;
 
-export type ManagedZoneDnsSecConfigNonExistenceEnum =
-  | "nsec"
-  | "nsec3"
-  | (string & {});
+export type ManagedZoneDnsSecConfigNonExistenceEnum = "nsec" | "nsec3";
 export const ManagedZoneDnsSecConfigNonExistenceEnum = /*@__PURE__*/ S.String;
 
-export type ManagedZoneDnsSecConfigStateEnum =
-  | "off"
-  | "on"
-  | "transfer"
-  | (string & {});
+export type ManagedZoneDnsSecConfigStateEnum = "off" | "on" | "transfer";
 export const ManagedZoneDnsSecConfigStateEnum = /*@__PURE__*/ S.String;
 
-export type DnsKeySpecKeyTypeEnum =
-  | "keySigning"
-  | "zoneSigning"
-  | (string & {});
+export type DnsKeySpecKeyTypeEnum = "keySigning" | "zoneSigning";
 export const DnsKeySpecKeyTypeEnum = /*@__PURE__*/ S.String;
 
 export type DnsKeySpecAlgorithmEnum =
@@ -551,8 +538,7 @@ export type DnsKeySpecAlgorithmEnum =
   | "rsasha256"
   | "rsasha512"
   | "ecdsap256sha256"
-  | "ecdsap384sha384"
-  | (string & {});
+  | "ecdsap384sha384";
 export const DnsKeySpecAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when adding a new DnsKey. */
@@ -574,7 +560,7 @@ export const DnsKeySpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsKeySpec" }) as any as S.Schema<DnsKeySpec>;
 
-export type DnsKeySpecList = DnsKeySpec[];
+export type DnsKeySpecList = ReadonlyArray<DnsKeySpec>;
 export const DnsKeySpecList = /*@__PURE__*/ S.Array(
   DnsKeySpec,
 ) as any as S.Schema<DnsKeySpecList>;
@@ -775,7 +761,7 @@ export const PolicyDns64Config = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PolicyDns64Config>;
 
 export type PolicyAlternativeNameServerConfigTargetNameServerForwardingPathEnum =
-  "default" | "private" | (string & {});
+  "default" | "private";
 export const PolicyAlternativeNameServerConfigTargetNameServerForwardingPathEnum =
   /*@__PURE__*/ S.String;
 
@@ -803,7 +789,7 @@ export const PolicyAlternativeNameServerConfigTargetNameServer =
   }) as any as S.Schema<PolicyAlternativeNameServerConfigTargetNameServer>;
 
 export type PolicyAlternativeNameServerConfigTargetNameServerList =
-  PolicyAlternativeNameServerConfigTargetNameServer[];
+  ReadonlyArray<PolicyAlternativeNameServerConfigTargetNameServer>;
 export const PolicyAlternativeNameServerConfigTargetNameServerList =
   /*@__PURE__*/ S.Array(
     PolicyAlternativeNameServerConfigTargetNameServer,
@@ -837,7 +823,7 @@ export const PolicyNetwork = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyNetwork" }) as any as S.Schema<PolicyNetwork>;
 
-export type PolicyNetworkList = PolicyNetwork[];
+export type PolicyNetworkList = ReadonlyArray<PolicyNetwork>;
 export const PolicyNetworkList = /*@__PURE__*/ S.Array(
   PolicyNetwork,
 ) as any as S.Schema<PolicyNetworkList>;
@@ -941,7 +927,7 @@ export const ResponsePolicyNetwork = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResponsePolicyNetwork",
 }) as any as S.Schema<ResponsePolicyNetwork>;
 
-export type ResponsePolicyNetworkList = ResponsePolicyNetwork[];
+export type ResponsePolicyNetworkList = ReadonlyArray<ResponsePolicyNetwork>;
 export const ResponsePolicyNetworkList = /*@__PURE__*/ S.Array(
   ResponsePolicyNetwork,
 ) as any as S.Schema<ResponsePolicyNetworkList>;
@@ -960,7 +946,8 @@ export const ResponsePolicyGKECluster = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResponsePolicyGKECluster",
 }) as any as S.Schema<ResponsePolicyGKECluster>;
 
-export type ResponsePolicyGKEClusterList = ResponsePolicyGKECluster[];
+export type ResponsePolicyGKEClusterList =
+  ReadonlyArray<ResponsePolicyGKECluster>;
 export const ResponsePolicyGKEClusterList = /*@__PURE__*/ S.Array(
   ResponsePolicyGKECluster,
 ) as any as S.Schema<ResponsePolicyGKEClusterList>;
@@ -1031,8 +1018,7 @@ export const ResponsePolicyRuleLocalData = /*@__PURE__*/ S.suspend(() =>
 
 export type ResponsePolicyRuleBehaviorEnum =
   | "behaviorUnspecified"
-  | "bypassResponsePolicy"
-  | (string & {});
+  | "bypassResponsePolicy";
 export const ResponsePolicyRuleBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** A Response Policy Rule is a selector that applies its behavior to queries that match the selector. Selectors are DNS names, which may be wildcards or exact matches. Each DNS query subject to a Response Policy matches at most one ResponsePolicyRule, as identified by the dns_name field with the longest matching suffix. */
@@ -1307,7 +1293,7 @@ export const GetDnsKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDnsKeysRequest",
 }) as any as S.Schema<GetDnsKeysRequest>;
 
-export type DnsKeyDigestTypeEnum = "sha1" | "sha256" | "sha384" | (string & {});
+export type DnsKeyDigestTypeEnum = "sha1" | "sha256" | "sha384";
 export const DnsKeyDigestTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DnsKeyDigest {
@@ -1323,12 +1309,12 @@ export const DnsKeyDigest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsKeyDigest" }) as any as S.Schema<DnsKeyDigest>;
 
-export type DnsKeyDigestList = DnsKeyDigest[];
+export type DnsKeyDigestList = ReadonlyArray<DnsKeyDigest>;
 export const DnsKeyDigestList = /*@__PURE__*/ S.Array(
   DnsKeyDigest,
 ) as any as S.Schema<DnsKeyDigestList>;
 
-export type DnsKeyTypeEnum = "keySigning" | "zoneSigning" | (string & {});
+export type DnsKeyTypeEnum = "keySigning" | "zoneSigning";
 export const DnsKeyTypeEnum = /*@__PURE__*/ S.String;
 
 export type DnsKeyAlgorithmEnum =
@@ -1336,8 +1322,7 @@ export type DnsKeyAlgorithmEnum =
   | "rsasha256"
   | "rsasha512"
   | "ecdsap256sha256"
-  | "ecdsap384sha384"
-  | (string & {});
+  | "ecdsap384sha384";
 export const DnsKeyAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** A DNSSEC key pair. */
@@ -1431,8 +1416,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1451,7 +1435,8 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList = GoogleIamV1AuditLogConfig[];
+export type GoogleIamV1AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -1472,7 +1457,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = GoogleIamV1AuditConfig[];
+export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -1516,7 +1501,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = GoogleIamV1Binding[];
+export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -1585,7 +1570,7 @@ export const OperationManagedZoneContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationManagedZoneContext",
 }) as any as S.Schema<OperationManagedZoneContext>;
 
-export type OperationStatusEnum = "pending" | "done" | (string & {});
+export type OperationStatusEnum = "pending" | "done";
 export const OperationStatusEnum = /*@__PURE__*/ S.String;
 
 export interface OperationDnsKeyContext {
@@ -1887,7 +1872,7 @@ export const GetResponsePolicyRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponsePolicyRulesRequest",
 }) as any as S.Schema<GetResponsePolicyRulesRequest>;
 
-export type ListChangesSortByEnum = "changeSequence" | (string & {});
+export type ListChangesSortByEnum = "changeSequence";
 export const ListChangesSortByEnum = /*@__PURE__*/ S.String;
 
 export interface ListChangesRequest {
@@ -1923,7 +1908,7 @@ export const ListChangesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListChangesRequest",
 }) as any as S.Schema<ListChangesRequest>;
 
-export type ChangeList = Change[];
+export type ChangeList = ReadonlyArray<Change>;
 export const ChangeList = /*@__PURE__*/ S.Array(
   Change,
 ) as any as S.Schema<ChangeList>;
@@ -1977,7 +1962,7 @@ export const ListDnsKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDnsKeysRequest",
 }) as any as S.Schema<ListDnsKeysRequest>;
 
-export type DnsKeyList = DnsKey[];
+export type DnsKeyList = ReadonlyArray<DnsKey>;
 export const DnsKeyList = /*@__PURE__*/ S.Array(
   DnsKey,
 ) as any as S.Schema<DnsKeyList>;
@@ -2001,10 +1986,7 @@ export const DnsKeysListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsKeysListResponse",
 }) as any as S.Schema<DnsKeysListResponse>;
 
-export type ListManagedZoneOperationsSortByEnum =
-  | "startTime"
-  | "id"
-  | (string & {});
+export type ListManagedZoneOperationsSortByEnum = "startTime" | "id";
 export const ListManagedZoneOperationsSortByEnum = /*@__PURE__*/ S.String;
 
 export interface ListManagedZoneOperationsRequest {
@@ -2037,7 +2019,7 @@ export const ListManagedZoneOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListManagedZoneOperationsRequest",
 }) as any as S.Schema<ListManagedZoneOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2087,7 +2069,7 @@ export const ListManagedZonesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListManagedZonesRequest",
 }) as any as S.Schema<ListManagedZonesRequest>;
 
-export type ManagedZoneList = ManagedZone[];
+export type ManagedZoneList = ReadonlyArray<ManagedZone>;
 export const ManagedZoneList = /*@__PURE__*/ S.Array(
   ManagedZone,
 ) as any as S.Schema<ManagedZoneList>;
@@ -2134,7 +2116,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPoliciesRequest",
 }) as any as S.Schema<ListPoliciesRequest>;
 
-export type PolicyList = Policy[];
+export type PolicyList = ReadonlyArray<Policy>;
 export const PolicyList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<PolicyList>;
@@ -2235,7 +2217,7 @@ export const ListResponsePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResponsePoliciesRequest",
 }) as any as S.Schema<ListResponsePoliciesRequest>;
 
-export type ResponsePolicyList = ResponsePolicy[];
+export type ResponsePolicyList = ReadonlyArray<ResponsePolicy>;
 export const ResponsePolicyList = /*@__PURE__*/ S.Array(
   ResponsePolicy,
 ) as any as S.Schema<ResponsePolicyList>;
@@ -2282,7 +2264,7 @@ export const ListResponsePolicyRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResponsePolicyRulesRequest",
 }) as any as S.Schema<ListResponsePolicyRulesRequest>;
 
-export type ResponsePolicyRuleList = ResponsePolicyRule[];
+export type ResponsePolicyRuleList = ReadonlyArray<ResponsePolicyRule>;
 export const ResponsePolicyRuleList = /*@__PURE__*/ S.Array(
   ResponsePolicyRule,
 ) as any as S.Schema<ResponsePolicyRuleList>;

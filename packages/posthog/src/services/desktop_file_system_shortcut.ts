@@ -14,7 +14,6 @@ export type { PosthogOpError, PosthogOpContext };
 export interface DesktopFileSystemShortcutCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   /** Display path of the shortcut in the sidebar. */
   path?: string;
   /** Type of the linked item (e.g. 'folder', 'insight'), or blank. */
@@ -25,22 +24,16 @@ export interface DesktopFileSystemShortcutCreateRequest {
   href?: string | null;
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
-  created_at?: string;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const DesktopFileSystemShortcutCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
       path: S.optional(S.String),
       type: S.optional(S.String),
       ref: S.optional(S.NullOr(S.String)),
       href: S.optional(S.NullOr(S.String)),
       order: S.optional(S.Number),
-      created_at: S.optional(S.String),
-      user_access_level: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -137,7 +130,8 @@ export const DesktopFileSystemShortcutListRequest = /*@__PURE__*/ S.suspend(
   identifier: "DesktopFileSystemShortcutListRequest",
 }) as any as S.Schema<DesktopFileSystemShortcutListRequest>;
 
-export type PaginatedFileSystemShortcutListResultsList = FileSystemShortcut[];
+export type PaginatedFileSystemShortcutListResultsList =
+  ReadonlyArray<FileSystemShortcut>;
 export const PaginatedFileSystemShortcutListResultsList = /*@__PURE__*/ S.Array(
   FileSystemShortcut,
 ) as any as S.Schema<PaginatedFileSystemShortcutListResultsList>;
@@ -174,9 +168,6 @@ export interface DesktopFileSystemShortcutPartialUpdateRequest {
   href?: string | null;
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
-  created_at?: string;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const DesktopFileSystemShortcutPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -188,8 +179,6 @@ export const DesktopFileSystemShortcutPartialUpdateRequest =
       ref: S.optional(S.NullOr(S.String)),
       href: S.optional(S.NullOr(S.String)),
       order: S.optional(S.Number),
-      created_at: S.optional(S.String),
-      user_access_level: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -203,7 +192,7 @@ export const DesktopFileSystemShortcutPartialUpdateRequest =
 
 /** IDs of the current user's shortcuts in the desired display order. */
 export type DesktopFileSystemShortcutReorderCreateRequestOrderedIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const DesktopFileSystemShortcutReorderCreateRequestOrderedIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -268,9 +257,6 @@ export interface DesktopFileSystemShortcutUpdateRequest {
   href?: string | null;
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
-  created_at?: string;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const DesktopFileSystemShortcutUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -282,8 +268,6 @@ export const DesktopFileSystemShortcutUpdateRequest = /*@__PURE__*/ S.suspend(
       ref: S.optional(S.NullOr(S.String)),
       href: S.optional(S.NullOr(S.String)),
       order: S.optional(S.Number),
-      created_at: S.optional(S.String),
-      user_access_level: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PUT",

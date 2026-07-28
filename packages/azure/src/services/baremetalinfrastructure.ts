@@ -47,7 +47,7 @@ export const AzureBareMetalInstancesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AzureBareMetalInstancesGetResponseTagsMap>;
 
 /** Name of the hardware type (vendor and/or their product name) */
-export type HardwareProfileHardwareType = "Cisco_UCS" | "HPE" | (string & {});
+export type HardwareProfileHardwareType = "Cisco_UCS" | "HPE";
 export const HardwareProfileHardwareType = /*@__PURE__*/ S.String;
 
 /** Specifies the AzureBareMetal instance SKU. */
@@ -94,8 +94,7 @@ export type HardwareProfileAzureBareMetalInstanceSize =
   | "S896oo"
   | "S896oom"
   | "S896ooo"
-  | "S960m"
-  | (string & {});
+  | "S960m";
 export const HardwareProfileAzureBareMetalInstanceSize = /*@__PURE__*/ S.String;
 
 /** Specifies the hardware settings for the AzureBareMetal instance. */
@@ -134,7 +133,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 /** Specifies information about the operating system disk used by baremetal instance. */
-export type StorageProfileOsDisksList = Disk[];
+export type StorageProfileOsDisksList = ReadonlyArray<Disk>;
 export const StorageProfileOsDisksList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<StorageProfileOsDisksList>;
@@ -185,7 +184,7 @@ export const IpAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpAddress" }) as any as S.Schema<IpAddress>;
 
 /** Specifies the network interfaces for the AzureBareMetal instance. */
-export type NetworkProfileNetworkInterfacesList = IpAddress[];
+export type NetworkProfileNetworkInterfacesList = ReadonlyArray<IpAddress>;
 export const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
   IpAddress,
 ) as any as S.Schema<NetworkProfileNetworkInterfacesList>;
@@ -211,8 +210,7 @@ export type AzureBareMetalInstancePropertiesPowerState =
   | "stopping"
   | "stopped"
   | "restarting"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const AzureBareMetalInstancePropertiesPowerState =
   /*@__PURE__*/ S.String;
 
@@ -224,8 +222,7 @@ export type AzureBareMetalInstancePropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Deleting"
-  | "Migrating"
-  | (string & {});
+  | "Migrating";
 export const AzureBareMetalInstancePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -276,8 +273,7 @@ export type AzureBareMetalInstancesGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AzureBareMetalInstancesGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -286,8 +282,7 @@ export type AzureBareMetalInstancesGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AzureBareMetalInstancesGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -391,8 +386,7 @@ export type AzureBareMetalInstanceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AzureBareMetalInstanceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -401,8 +395,7 @@ export type AzureBareMetalInstanceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AzureBareMetalInstanceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -469,7 +462,7 @@ export const AzureBareMetalInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Azure BareMetal instances. */
 export type AzureBareMetalInstancesListResultValueList =
-  AzureBareMetalInstance[];
+  ReadonlyArray<AzureBareMetalInstance>;
 export const AzureBareMetalInstancesListResultValueList = /*@__PURE__*/ S.Array(
   AzureBareMetalInstance,
 ) as any as S.Schema<AzureBareMetalInstancesListResultValueList>;
@@ -510,6 +503,16 @@ export const AzureBareMetalInstancesListBySubscriptionRequest =
     identifier: "AzureBareMetalInstancesListBySubscriptionRequest",
   }) as any as S.Schema<AzureBareMetalInstancesListBySubscriptionRequest>;
 
+/** Tags field of the AzureBareMetal/AzureBareMetaStorage instance. */
+export type AzureBareMetalInstancesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AzureBareMetalInstancesUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AzureBareMetalInstancesUpdateRequestTagsMap>;
+
 export interface AzureBareMetalInstancesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -517,7 +520,8 @@ export interface AzureBareMetalInstancesUpdateRequest {
   resourceGroupName: string;
   /** Name of the Azure BareMetal on Azure instance. */
   azureBareMetalInstanceName: string;
-  body: unknown;
+  /** Tags field of the AzureBareMetal/AzureBareMetaStorage instance. */
+  tags?: AzureBareMetalInstancesUpdateRequestTagsMap;
 }
 export const AzureBareMetalInstancesUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -525,7 +529,7 @@ export const AzureBareMetalInstancesUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       azureBareMetalInstanceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(AzureBareMetalInstancesUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -553,8 +557,7 @@ export type AzureBareMetalInstancesUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AzureBareMetalInstancesUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -563,8 +566,7 @@ export type AzureBareMetalInstancesUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AzureBareMetalInstancesUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -632,43 +634,15 @@ export const AzureBareMetalInstancesUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "AzureBareMetalInstancesUpdateResponse",
 }) as any as S.Schema<AzureBareMetalInstancesUpdateResponse>;
 
-export interface AzureBareMetalStorageInstancesCreateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the AzureBareMetalStorage on Azure instance. */
-  azureBareMetalStorageInstanceName: string;
-  body: unknown;
-}
-export const AzureBareMetalStorageInstancesCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      azureBareMetalStorageInstanceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances/{azureBareMetalStorageInstanceName}",
-        code: 200,
-        apiVersion: "2023-04-06",
-      }),
-    ),
-  ).annotate({
-    identifier: "AzureBareMetalStorageInstancesCreateRequest",
-  }) as any as S.Schema<AzureBareMetalStorageInstancesCreateRequest>;
-
 /** Resource tags. */
-export type AzureBareMetalStorageInstancesCreateResponseTagsMap = {
+export type AzureBareMetalStorageInstancesCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const AzureBareMetalStorageInstancesCreateResponseTagsMap =
+export const AzureBareMetalStorageInstancesCreateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<AzureBareMetalStorageInstancesCreateResponseTagsMap>;
+  ) as any as S.Schema<AzureBareMetalStorageInstancesCreateRequestTagsMap>;
 
 /** State of provisioning of the AzureBareMetalStorageInstance */
 export type StoragePropertiesProvisioningState =
@@ -679,8 +653,7 @@ export type StoragePropertiesProvisioningState =
   | "Succeeded"
   | "Deleting"
   | "Canceled"
-  | "Migrating"
-  | (string & {});
+  | "Migrating";
 export const StoragePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Describes the billing related details of the AzureBareMetalStorageInstance. */
@@ -747,15 +720,60 @@ export const AzureBareMetalStorageInstanceProperties = /*@__PURE__*/ S.suspend(
   identifier: "AzureBareMetalStorageInstanceProperties",
 }) as any as S.Schema<AzureBareMetalStorageInstanceProperties>;
 
+export interface AzureBareMetalStorageInstancesCreateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the AzureBareMetalStorage on Azure instance. */
+  azureBareMetalStorageInstanceName: string;
+  /** Resource tags. */
+  tags?: AzureBareMetalStorageInstancesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** AzureBareMetalStorageInstance properties */
+  properties?: AzureBareMetalStorageInstanceProperties;
+}
+export const AzureBareMetalStorageInstancesCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      azureBareMetalStorageInstanceName: S.String.pipe(T.Label()),
+      tags: S.optional(AzureBareMetalStorageInstancesCreateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(AzureBareMetalStorageInstanceProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BareMetalInfrastructure/bareMetalStorageInstances/{azureBareMetalStorageInstanceName}",
+        code: 200,
+        apiVersion: "2023-04-06",
+      }),
+    ),
+  ).annotate({
+    identifier: "AzureBareMetalStorageInstancesCreateRequest",
+  }) as any as S.Schema<AzureBareMetalStorageInstancesCreateRequest>;
+
+/** Resource tags. */
+export type AzureBareMetalStorageInstancesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AzureBareMetalStorageInstancesCreateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AzureBareMetalStorageInstancesCreateResponseTagsMap>;
+
 /** The type of identity that created the resource. */
 export type AzureBareMetalStorageInstancesCreateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const AzureBareMetalStorageInstancesCreateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type AzureBareMetalStorageInstancesCreateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const AzureBareMetalStorageInstancesCreateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -898,14 +916,13 @@ export type AzureBareMetalStorageInstancesGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AzureBareMetalStorageInstancesGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type AzureBareMetalStorageInstancesGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const AzureBareMetalStorageInstancesGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1012,8 +1029,7 @@ export type AzureBareMetalStorageInstanceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AzureBareMetalStorageInstanceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1022,8 +1038,7 @@ export type AzureBareMetalStorageInstanceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AzureBareMetalStorageInstanceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1093,7 +1108,7 @@ export const AzureBareMetalStorageInstance = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of AzureBareMetalStorage instances. */
 export type AzureBareMetalStorageInstancesListResultValueList =
-  AzureBareMetalStorageInstance[];
+  ReadonlyArray<AzureBareMetalStorageInstance>;
 export const AzureBareMetalStorageInstancesListResultValueList =
   /*@__PURE__*/ S.Array(
     AzureBareMetalStorageInstance,
@@ -1136,6 +1151,16 @@ export const AzureBareMetalStorageInstancesListBySubscriptionRequest =
     identifier: "AzureBareMetalStorageInstancesListBySubscriptionRequest",
   }) as any as S.Schema<AzureBareMetalStorageInstancesListBySubscriptionRequest>;
 
+/** Tags field of the AzureBareMetal/AzureBareMetaStorage instance. */
+export type AzureBareMetalStorageInstancesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AzureBareMetalStorageInstancesUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AzureBareMetalStorageInstancesUpdateRequestTagsMap>;
+
 export interface AzureBareMetalStorageInstancesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1143,7 +1168,8 @@ export interface AzureBareMetalStorageInstancesUpdateRequest {
   resourceGroupName: string;
   /** Name of the AzureBareMetalStorage on Azure instance. */
   azureBareMetalStorageInstanceName: string;
-  body: unknown;
+  /** Tags field of the AzureBareMetal/AzureBareMetaStorage instance. */
+  tags?: AzureBareMetalStorageInstancesUpdateRequestTagsMap;
 }
 export const AzureBareMetalStorageInstancesUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1151,7 +1177,7 @@ export const AzureBareMetalStorageInstancesUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       azureBareMetalStorageInstanceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(AzureBareMetalStorageInstancesUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1176,13 +1202,13 @@ export const AzureBareMetalStorageInstancesUpdateResponseTagsMap =
 
 /** The type of identity that created the resource. */
 export type AzureBareMetalStorageInstancesUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const AzureBareMetalStorageInstancesUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type AzureBareMetalStorageInstancesUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const AzureBareMetalStorageInstancesUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1304,7 +1330,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of AzureBareMetal operations */
-export type OperationListValueList = Operation[];
+export type OperationListValueList = ReadonlyArray<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;

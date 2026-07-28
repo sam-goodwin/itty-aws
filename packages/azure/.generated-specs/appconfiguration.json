@@ -316,16 +316,89 @@
             "smithy.api#documentation": "The name of the snapshot."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appconfiguration#SnapshotPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "All snapshot properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration#SnapshotPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "filters": {
+          "target": "com.azure.appconfiguration#SnapshotPropertiesInputFiltersList",
+          "traits": {
+            "smithy.api#documentation": "A list of filters used to filter the key-values included in the snapshot.",
+            "smithy.api#required": {}
+          }
+        },
+        "compositionType": {
+          "target": "com.azure.appconfiguration#SnapshotPropertiesInputCompositionType",
+          "traits": {
+            "smithy.api#documentation": "The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label."
+          }
+        },
+        "retentionPeriod": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of time, in seconds, that a snapshot will remain in the archived state before expiring. This property is only writable during the creation of a snapshot. If not specified, the default lifetime of key-value revisions will be used."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration#SnapshotPropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "All snapshot properties."
+      }
+    },
+    "com.azure.appconfiguration#SnapshotPropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the snapshot. NOTE: These are data plane tags, not Azure Resource Manager (ARM) tags."
+      }
+    },
+    "com.azure.appconfiguration#SnapshotPropertiesInputCompositionType": {
+      "type": "enum",
+      "members": {
+        "KEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Key"
+          }
+        },
+        "KEY_LABEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Key_Label"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The composition type describes how the key-values within the snapshot are composed. The 'key' composition type ensures there are no two key-values containing the same key. The 'key_label' composition type ensures there are no two key-values containing the same key and label."
+      }
+    },
+    "com.azure.appconfiguration#SnapshotPropertiesInputFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appconfiguration#KeyValueFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of filters used to filter the key-values included in the snapshot."
       }
     },
     "com.azure.appconfiguration#SnapshotsGet": {
@@ -710,11 +783,10 @@
             "smithy.api#documentation": "The name of the replica."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The location of the replica."
           }
         }
       },
@@ -932,16 +1004,37 @@
             "smithy.api#documentation": "The location in which uniqueness will be verified."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name to check for availability.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.appconfiguration#OperationsRegionalCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The resource type to check for name availability.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration#OperationsRegionalCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_APPCONFIGURATION_CONFIGURATIONSTORES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.AppConfiguration/configurationStores"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource type to check for name availability."
       }
     },
     "com.azure.appconfiguration#ConfigurationStoresPurgeDeleted": {
@@ -1411,16 +1504,53 @@
             "smithy.api#documentation": "Identifier of key and label combination. Key and label are joined by $ character. Label is optional."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appconfiguration#KeyValuePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "All key-value properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration#KeyValuePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the key-value."
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the key-value's value.\r\nProviding a proper content-type can enable transformations of values when they are retrieved by applications."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration#KeyValuePropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "A dictionary of tags that can help identify what a key-value may be applicable for."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "All key-value properties."
+      }
+    },
+    "com.azure.appconfiguration#KeyValuePropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A dictionary of tags that can help identify what a key-value may be applicable for."
       }
     },
     "com.azure.appconfiguration#KeyValuesGet": {
@@ -2005,16 +2135,88 @@
             "smithy.api#documentation": "Private endpoint connection name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appconfiguration#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a private endpoint."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.appconfiguration#PrivateEndpoint",
+          "traits": {
+            "smithy.api#documentation": "The resource of private endpoint."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.appconfiguration#PrivateLinkServiceConnectionStateInput",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a private endpoint connection."
+      }
+    },
+    "com.azure.appconfiguration#PrivateLinkServiceConnectionStateInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.appconfiguration#PrivateLinkServiceConnectionStateInputStatus",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection status."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state of a private link service connection."
+      }
+    },
+    "com.azure.appconfiguration#PrivateLinkServiceConnectionStateInputStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pending"
+          }
+        },
+        "APPROVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Approved"
+          }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Rejected"
+          }
+        },
+        "DISCONNECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disconnected"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private link service connection status."
       }
     },
     "com.azure.appconfiguration#PrivateEndpointConnectionsGet": {
@@ -2549,11 +2751,10 @@
             "smithy.api#documentation": "The name of the configuration store."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The id of the key to regenerate."
           }
         }
       },
@@ -2678,16 +2879,37 @@
             "smithy.api#documentation": "The Microsoft Azure subscription ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name to check for availability.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.appconfiguration#OperationsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The resource type to check for name availability.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration#OperationsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_APPCONFIGURATION_CONFIGURATIONSTORES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.AppConfiguration/configurationStores"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource type to check for name availability."
       }
     },
     "com.azure.appconfiguration#ConfigurationStoresDelete": {
@@ -3381,16 +3603,180 @@
             "smithy.api#documentation": "The name of the configuration store."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appconfiguration#ConfigurationStorePropertiesUpdateParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties for updating a configuration store."
+          }
+        },
+        "identity": {
+          "target": "com.azure.appconfiguration#ResourceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The managed identity information for the configuration store."
+          }
+        },
+        "sku": {
+          "target": "com.azure.appconfiguration#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the configuration store."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appconfiguration#ConfigurationStoresUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration#ConfigurationStoresUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The ARM resource tags."
+      }
+    },
+    "com.azure.appconfiguration#ResourceIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.appconfiguration#ResourceIdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.appconfiguration#ResourceIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An identity that can be associated with a resource."
+      }
+    },
+    "com.azure.appconfiguration#ResourceIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.appconfiguration#UserIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.appconfiguration#UserIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "A resource identity that is managed by the user of the service."
+      }
+    },
+    "com.azure.appconfiguration#ResourceIdentityInputType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        },
+        "SYSTEMASSIGNED_USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned, UserAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities."
+      }
+    },
+    "com.azure.appconfiguration#ConfigurationStorePropertiesUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "encryption": {
+          "target": "com.azure.appconfiguration#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "The encryption settings of the configuration store."
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Disables all authentication methods other than AAD authentication."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.appconfiguration#ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+          }
+        },
+        "enablePurgeProtection": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property specifying whether protection against purge is enabled for this configuration store."
+          }
+        },
+        "dataPlaneProxy": {
+          "target": "com.azure.appconfiguration#DataPlaneProxyProperties",
+          "traits": {
+            "smithy.api#documentation": "Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM)."
+          }
+        },
+        "defaultKeyValueRevisionRetentionPeriodInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for updating a configuration store."
+      }
+    },
+    "com.azure.appconfiguration#ConfigurationStorePropertiesUpdateParametersPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
       }
     },
     "com.azure.appconfiguration#ConfigurationStoresCreate": {
@@ -3623,16 +4009,149 @@
             "smithy.api#documentation": "The name of the configuration store."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.appconfiguration#ConfigurationStoresCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.appconfiguration#ResourceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The managed identity information, if configured."
+          }
+        },
+        "properties": {
+          "target": "com.azure.appconfiguration#ConfigurationStorePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of a configuration store."
+          }
+        },
+        "sku": {
+          "target": "com.azure.appconfiguration#Sku",
+          "traits": {
+            "smithy.api#documentation": "The sku of the configuration store.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appconfiguration#ConfigurationStorePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "encryption": {
+          "target": "com.azure.appconfiguration#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "The encryption settings of the configuration store."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.appconfiguration#ConfigurationStorePropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Disables all authentication methods other than AAD authentication."
+          }
+        },
+        "softDeleteRetentionInDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of time in days that the configuration store will be retained when it is soft deleted."
+          }
+        },
+        "defaultKeyValueRevisionRetentionPeriodInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The duration in seconds to retain new key value revisions. Defaults to 604800 (7 days) for Free SKU stores and 2592000 (30 days) for Standard SKU stores and Premium SKU stores."
+          }
+        },
+        "enablePurgeProtection": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Property specifying whether protection against purge is enabled for this configuration store."
+          }
+        },
+        "dataPlaneProxy": {
+          "target": "com.azure.appconfiguration#DataPlaneProxyProperties",
+          "traits": {
+            "smithy.api#documentation": "Property specifying the configuration of data plane proxy for Azure Resource Manager (ARM)."
+          }
+        },
+        "createMode": {
+          "target": "com.azure.appconfiguration#ConfigurationStorePropertiesInputCreateMode",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the configuration store need to be recovered."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a configuration store."
+      }
+    },
+    "com.azure.appconfiguration#ConfigurationStorePropertiesInputCreateMode": {
+      "type": "enum",
+      "members": {
+        "RECOVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Recover"
+          }
+        },
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates whether the configuration store need to be recovered."
+      }
+    },
+    "com.azure.appconfiguration#ConfigurationStorePropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+      }
+    },
+    "com.azure.appconfiguration#ConfigurationStoresCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.appconfiguration#ConfigurationStoresGet": {

@@ -159,7 +159,7 @@ export const AdaptMessageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdaptMessageResponse",
 }) as any as S.Schema<AdaptMessageResponse>;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -175,7 +175,7 @@ export const Key = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
-export type KeyList = Key[];
+export type KeyList = ReadonlyArray<Key>;
 export const KeyList = /*@__PURE__*/ S.Array(Key) as any as S.Schema<KeyList>;
 
 /** The split points of a table or an index. */
@@ -198,7 +198,7 @@ export const SplitPoints = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SplitPoints" }) as any as S.Schema<SplitPoints>;
 
-export type SplitPointsList = SplitPoints[];
+export type SplitPointsList = ReadonlyArray<SplitPoints>;
 export const SplitPointsList = /*@__PURE__*/ S.Array(
   SplitPoints,
 ) as any as S.Schema<SplitPointsList>;
@@ -313,7 +313,7 @@ export const BatchCreateProjectsInstancesDatabasesSessionsRequest =
     identifier: "BatchCreateProjectsInstancesDatabasesSessionsRequest",
   }) as any as S.Schema<BatchCreateProjectsInstancesDatabasesSessionsRequest>;
 
-export type SessionList = Session[];
+export type SessionList = ReadonlyArray<Session>;
 export const SessionList = /*@__PURE__*/ S.Array(
   Session,
 ) as any as S.Schema<SessionList>;
@@ -335,8 +335,7 @@ export type RequestOptionsPriorityEnum =
   | "PRIORITY_UNSPECIFIED"
   | "PRIORITY_LOW"
   | "PRIORITY_MEDIUM"
-  | "PRIORITY_HIGH"
-  | (string & {});
+  | "PRIORITY_HIGH";
 export const RequestOptionsPriorityEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -376,12 +375,12 @@ export const RequestOptions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RequestOptions" }) as any as S.Schema<RequestOptions>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type DocumentListList = DocumentList[];
+export type DocumentListList = ReadonlyArray<DocumentList>;
 export const DocumentListList = /*@__PURE__*/ S.Array(
   DocumentList,
 ) as any as S.Schema<DocumentListList>;
@@ -423,7 +422,7 @@ export const KeyRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyRange" }) as any as S.Schema<KeyRange>;
 
-export type KeyRangeList = KeyRange[];
+export type KeyRangeList = ReadonlyArray<KeyRange>;
 export const KeyRangeList = /*@__PURE__*/ S.Array(
   KeyRange,
 ) as any as S.Schema<KeyRangeList>;
@@ -525,7 +524,7 @@ export const Mutation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Mutation" }) as any as S.Schema<Mutation>;
 
-export type MutationList = Mutation[];
+export type MutationList = ReadonlyArray<Mutation>;
 export const MutationList = /*@__PURE__*/ S.Array(
   Mutation,
 ) as any as S.Schema<MutationList>;
@@ -541,7 +540,7 @@ export const MutationGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MutationGroup" }) as any as S.Schema<MutationGroup>;
 
-export type MutationGroupList = MutationGroup[];
+export type MutationGroupList = ReadonlyArray<MutationGroup>;
 export const MutationGroupList = /*@__PURE__*/ S.Array(
   MutationGroup,
 ) as any as S.Schema<MutationGroupList>;
@@ -587,12 +586,12 @@ export const BatchWriteProjectsInstancesDatabasesSessionsRequest =
     identifier: "BatchWriteProjectsInstancesDatabasesSessionsRequest",
   }) as any as S.Schema<BatchWriteProjectsInstancesDatabasesSessionsRequest>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -636,8 +635,7 @@ export const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
 export type ReadWriteReadLockModeEnum =
   | "READ_LOCK_MODE_UNSPECIFIED"
   | "PESSIMISTIC"
-  | "OPTIMISTIC"
-  | (string & {});
+  | "OPTIMISTIC";
 export const ReadWriteReadLockModeEnum = /*@__PURE__*/ S.String;
 
 /** Message type to initiate a read-write transaction. Currently this transaction type has no options. */
@@ -689,8 +687,7 @@ export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
 export type TransactionOptionsIsolationLevelEnum =
   | "ISOLATION_LEVEL_UNSPECIFIED"
   | "SERIALIZABLE"
-  | "REPEATABLE_READ"
-  | (string & {});
+  | "REPEATABLE_READ";
 export const TransactionOptionsIsolationLevelEnum = /*@__PURE__*/ S.String;
 
 /** Options to use for transactions. */
@@ -1076,15 +1073,13 @@ export const CommitStats = /*@__PURE__*/ S.suspend(() =>
 export type CommitResponseIsolationLevelEnum =
   | "ISOLATION_LEVEL_UNSPECIFIED"
   | "SERIALIZABLE"
-  | "REPEATABLE_READ"
-  | (string & {});
+  | "REPEATABLE_READ";
 export const CommitResponseIsolationLevelEnum = /*@__PURE__*/ S.String;
 
 export type CommitResponseReadLockModeEnum =
   | "READ_LOCK_MODE_UNSPECIFIED"
   | "PESSIMISTIC"
-  | "OPTIMISTIC"
-  | (string & {});
+  | "OPTIMISTIC";
 export const CommitResponseReadLockModeEnum = /*@__PURE__*/ S.String;
 
 /** The response for Commit. */
@@ -1117,8 +1112,7 @@ export type CopyBackupEncryptionConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
+  | "CUSTOMER_MANAGED_ENCRYPTION";
 export const CopyBackupEncryptionConfigEncryptionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1187,16 +1181,14 @@ export const CopyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 export type InstanceConfigConfigTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_MANAGED"
-  | "USER_MANAGED"
-  | (string & {});
+  | "USER_MANAGED";
 export const InstanceConfigConfigTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReplicaInfoTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "READ_WRITE"
   | "READ_ONLY"
-  | "WITNESS"
-  | (string & {});
+  | "WITNESS";
 export const ReplicaInfoTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ReplicaInfo {
@@ -1215,7 +1207,7 @@ export const ReplicaInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReplicaInfo" }) as any as S.Schema<ReplicaInfo>;
 
-export type ReplicaInfoList = ReplicaInfo[];
+export type ReplicaInfoList = ReadonlyArray<ReplicaInfo>;
 export const ReplicaInfoList = /*@__PURE__*/ S.Array(
   ReplicaInfo,
 ) as any as S.Schema<ReplicaInfoList>;
@@ -1223,8 +1215,7 @@ export const ReplicaInfoList = /*@__PURE__*/ S.Array(
 export type InstanceConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
-  | "READY"
-  | (string & {});
+  | "READY";
 export const InstanceConfigStateEnum = /*@__PURE__*/ S.String;
 
 export type InstanceConfigFreeInstanceAvailabilityEnum =
@@ -1232,8 +1223,7 @@ export type InstanceConfigFreeInstanceAvailabilityEnum =
   | "AVAILABLE"
   | "UNSUPPORTED"
   | "DISABLED"
-  | "QUOTA_EXCEEDED"
-  | (string & {});
+  | "QUOTA_EXCEEDED";
 export const InstanceConfigFreeInstanceAvailabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -1241,8 +1231,7 @@ export type InstanceConfigQuorumTypeEnum =
   | "QUORUM_TYPE_UNSPECIFIED"
   | "REGION"
   | "DUAL_REGION"
-  | "MULTI_REGION"
-  | (string & {});
+  | "MULTI_REGION";
 export const InstanceConfigQuorumTypeEnum = /*@__PURE__*/ S.String;
 
 /** A possible configuration for a Cloud Spanner instance. Configurations define the geographic placement of nodes and their replication. */
@@ -1370,7 +1359,7 @@ export const ReplicaComputeCapacity = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicaComputeCapacity",
 }) as any as S.Schema<ReplicaComputeCapacity>;
 
-export type ReplicaComputeCapacityList = ReplicaComputeCapacity[];
+export type ReplicaComputeCapacityList = ReadonlyArray<ReplicaComputeCapacity>;
 export const ReplicaComputeCapacityList = /*@__PURE__*/ S.Array(
   ReplicaComputeCapacity,
 ) as any as S.Schema<ReplicaComputeCapacityList>;
@@ -1457,7 +1446,8 @@ export const AsymmetricAutoscalingOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "AsymmetricAutoscalingOption",
 }) as any as S.Schema<AsymmetricAutoscalingOption>;
 
-export type AsymmetricAutoscalingOptionList = AsymmetricAutoscalingOption[];
+export type AsymmetricAutoscalingOptionList =
+  ReadonlyArray<AsymmetricAutoscalingOption>;
 export const AsymmetricAutoscalingOptionList = /*@__PURE__*/ S.Array(
   AsymmetricAutoscalingOption,
 ) as any as S.Schema<AsymmetricAutoscalingOptionList>;
@@ -1481,25 +1471,19 @@ export const AutoscalingConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoscalingConfig",
 }) as any as S.Schema<AutoscalingConfig>;
 
-export type InstanceStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | (string & {});
+export type InstanceStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type InstanceInstanceTypeEnum =
   | "INSTANCE_TYPE_UNSPECIFIED"
   | "PROVISIONED"
-  | "FREE_INSTANCE"
-  | (string & {});
+  | "FREE_INSTANCE";
 export const InstanceInstanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type FreeInstanceMetadataExpireBehaviorEnum =
   | "EXPIRE_BEHAVIOR_UNSPECIFIED"
   | "FREE_TO_PROVISIONED"
-  | "REMOVE_AFTER_GRACE_PERIOD"
-  | (string & {});
+  | "REMOVE_AFTER_GRACE_PERIOD";
 export const FreeInstanceMetadataExpireBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes. */
@@ -1525,15 +1509,13 @@ export type InstanceEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS"
-  | (string & {});
+  | "ENTERPRISE_PLUS";
 export const InstanceEditionEnum = /*@__PURE__*/ S.String;
 
 export type InstanceDefaultBackupScheduleTypeEnum =
   | "DEFAULT_BACKUP_SCHEDULE_TYPE_UNSPECIFIED"
   | "NONE"
-  | "AUTOMATIC"
-  | (string & {});
+  | "AUTOMATIC";
 export const InstanceDefaultBackupScheduleTypeEnum = /*@__PURE__*/ S.String;
 
 /** An isolated set of Cloud Spanner resources on which databases can be hosted. */
@@ -1635,23 +1617,17 @@ export type CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_DATABASE_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
+  | "CUSTOMER_MANAGED_ENCRYPTION";
 export const CreateProjectsInstancesBackupsEncryptionConfig_encryptionTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type BackupStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "CREATING"
-  | "READY"
-  | (string & {});
+export type BackupStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "READY";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 export type EncryptionInfoEncryptionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
+  | "CUSTOMER_MANAGED_ENCRYPTION";
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encryption information for a Cloud Spanner database or backup. */
@@ -1671,7 +1647,7 @@ export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EncryptionInfo" }) as any as S.Schema<EncryptionInfo>;
 
-export type EncryptionInfoList = EncryptionInfo[];
+export type EncryptionInfoList = ReadonlyArray<EncryptionInfo>;
 export const EncryptionInfoList = /*@__PURE__*/ S.Array(
   EncryptionInfo,
 ) as any as S.Schema<EncryptionInfoList>;
@@ -1679,8 +1655,7 @@ export const EncryptionInfoList = /*@__PURE__*/ S.Array(
 export type BackupDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
-  | "POSTGRESQL"
-  | (string & {});
+  | "POSTGRESQL";
 export const BackupDatabaseDialectEnum = /*@__PURE__*/ S.String;
 
 /** Instance partition information for the backup. */
@@ -1696,7 +1671,8 @@ export const BackupInstancePartition = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupInstancePartition",
 }) as any as S.Schema<BackupInstancePartition>;
 
-export type BackupInstancePartitionList = BackupInstancePartition[];
+export type BackupInstancePartitionList =
+  ReadonlyArray<BackupInstancePartition>;
 export const BackupInstancePartitionList = /*@__PURE__*/ S.Array(
   BackupInstancePartition,
 ) as any as S.Schema<BackupInstancePartitionList>;
@@ -1705,8 +1681,7 @@ export type BackupMinimumRestorableEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS"
-  | (string & {});
+  | "ENTERPRISE_PLUS";
 export const BackupMinimumRestorableEditionEnum = /*@__PURE__*/ S.String;
 
 /** A backup of a Cloud Spanner database. */
@@ -1834,8 +1809,7 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 export type CreateDatabaseRequestDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
-  | "POSTGRESQL"
-  | (string & {});
+  | "POSTGRESQL";
 export const CreateDatabaseRequestDatabaseDialectEnum = /*@__PURE__*/ S.String;
 
 /** The request for CreateDatabase. */
@@ -1919,8 +1893,7 @@ export type CreateBackupEncryptionConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_DATABASE_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
+  | "CUSTOMER_MANAGED_ENCRYPTION";
 export const CreateBackupEncryptionConfigEncryptionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2049,8 +2022,7 @@ export const CreateProjectsInstancesDatabasesSessionsRequest =
 export type InstancePartitionStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
-  | "READY"
-  | (string & {});
+  | "READY";
 export const InstancePartitionStateEnum = /*@__PURE__*/ S.String;
 
 /** An isolated set of Cloud Spanner resources that databases can define placements on. */
@@ -2428,8 +2400,7 @@ export type TypeCodeEnum =
   | "PROTO"
   | "ENUM"
   | "INTERVAL"
-  | "UUID"
-  | (string & {});
+  | "UUID";
 export const TypeCodeEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a single field of a struct. */
@@ -2446,7 +2417,7 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
-export type FieldList = Field[];
+export type FieldList = ReadonlyArray<Field>;
 export const FieldList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<FieldList>;
@@ -2466,8 +2437,7 @@ export type TypeTypeAnnotationEnum =
   | "TYPE_ANNOTATION_CODE_UNSPECIFIED"
   | "PG_NUMERIC"
   | "PG_JSONB"
-  | "PG_OID"
-  | (string & {});
+  | "PG_OID";
 export const TypeTypeAnnotationEnum = /*@__PURE__*/ S.String;
 
 /** `Type` indicates the type of a Cloud Spanner value, as might be stored in a table cell or returned from an SQL query. */
@@ -2516,7 +2486,7 @@ export const Statement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Statement" }) as any as S.Schema<Statement>;
 
-export type StatementList = Statement[];
+export type StatementList = ReadonlyArray<Statement>;
 export const StatementList = /*@__PURE__*/ S.Array(
   Statement,
 ) as any as S.Schema<StatementList>;
@@ -2587,11 +2557,7 @@ export const ResultSetMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResultSetMetadata",
 }) as any as S.Schema<ResultSetMetadata>;
 
-export type PlanNodeKindEnum =
-  | "KIND_UNSPECIFIED"
-  | "RELATIONAL"
-  | "SCALAR"
-  | (string & {});
+export type PlanNodeKindEnum = "KIND_UNSPECIFIED" | "RELATIONAL" | "SCALAR";
 export const PlanNodeKindEnum = /*@__PURE__*/ S.String;
 
 /** Metadata associated with a parent-child relationship appearing in a PlanNode. */
@@ -2611,7 +2577,7 @@ export const ChildLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChildLink" }) as any as S.Schema<ChildLink>;
 
-export type ChildLinkList = ChildLink[];
+export type ChildLinkList = ReadonlyArray<ChildLink>;
 export const ChildLinkList = /*@__PURE__*/ S.Array(
   ChildLink,
 ) as any as S.Schema<ChildLinkList>;
@@ -2667,7 +2633,7 @@ export const PlanNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlanNode" }) as any as S.Schema<PlanNode>;
 
-export type PlanNodeList = PlanNode[];
+export type PlanNodeList = ReadonlyArray<PlanNode>;
 export const PlanNodeList = /*@__PURE__*/ S.Array(
   PlanNode,
 ) as any as S.Schema<PlanNodeList>;
@@ -2686,7 +2652,7 @@ export const IndexAdvice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IndexAdvice" }) as any as S.Schema<IndexAdvice>;
 
-export type IndexAdviceList = IndexAdvice[];
+export type IndexAdviceList = ReadonlyArray<IndexAdvice>;
 export const IndexAdviceList = /*@__PURE__*/ S.Array(
   IndexAdvice,
 ) as any as S.Schema<IndexAdviceList>;
@@ -2758,7 +2724,7 @@ export const ResultSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResultSet" }) as any as S.Schema<ResultSet>;
 
-export type ResultSetList = ResultSet[];
+export type ResultSetList = ReadonlyArray<ResultSet>;
 export const ResultSetList = /*@__PURE__*/ S.Array(
   ResultSet,
 ) as any as S.Schema<ResultSetList>;
@@ -2787,8 +2753,7 @@ export type ExecuteSqlRequestQueryModeEnum =
   | "PLAN"
   | "PROFILE"
   | "WITH_STATS"
-  | "WITH_PLAN_AND_STATS"
-  | (string & {});
+  | "WITH_PLAN_AND_STATS";
 export const ExecuteSqlRequestQueryModeEnum = /*@__PURE__*/ S.String;
 
 /** Query optimizer configuration. */
@@ -2808,8 +2773,7 @@ export const QueryOptions = /*@__PURE__*/ S.suspend(() =>
 export type ReplicaSelectionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "READ_WRITE"
-  | "READ_ONLY"
-  | (string & {});
+  | "READ_ONLY";
 export const ReplicaSelectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** The directed read replica selector. Callers must provide one or more of the following fields for replica selection: * `location` - The location must be one of the regions within the multi-region configuration of your database. * `type` - The type of the replica. Some examples of using replica_selectors are: * `location:us-east1` --> The "us-east1" replica(s) of any available type is used to process the request. * `type:READ_ONLY` --> The "READ_ONLY" type replica(s) in the nearest available location are used to process the request. * `location:us-east1 type:READ_ONLY` --> The "READ_ONLY" type replica(s) in location "us-east1" is used to process the request. */
@@ -2828,7 +2792,7 @@ export const ReplicaSelection = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicaSelection",
 }) as any as S.Schema<ReplicaSelection>;
 
-export type ReplicaSelectionList = ReplicaSelection[];
+export type ReplicaSelectionList = ReadonlyArray<ReplicaSelection>;
 export const ReplicaSelectionList = /*@__PURE__*/ S.Array(
   ReplicaSelection,
 ) as any as S.Schema<ReplicaSelectionList>;
@@ -3122,7 +3086,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -3347,14 +3311,10 @@ export type DatabaseStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "READY"
-  | "READY_OPTIMIZING"
-  | (string & {});
+  | "READY_OPTIMIZING";
 export const DatabaseStateEnum = /*@__PURE__*/ S.String;
 
-export type RestoreInfoSourceTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "BACKUP"
-  | (string & {});
+export type RestoreInfoSourceTypeEnum = "TYPE_UNSPECIFIED" | "BACKUP";
 export const RestoreInfoSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a backup. */
@@ -3394,15 +3354,13 @@ export const RestoreInfo = /*@__PURE__*/ S.suspend(() =>
 export type DatabaseDatabaseDialectEnum =
   | "DATABASE_DIALECT_UNSPECIFIED"
   | "GOOGLE_STANDARD_SQL"
-  | "POSTGRESQL"
-  | (string & {});
+  | "POSTGRESQL";
 export const DatabaseDatabaseDialectEnum = /*@__PURE__*/ S.String;
 
 export type QuorumInfoInitiatorEnum =
   | "INITIATOR_UNSPECIFIED"
   | "GOOGLE"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const QuorumInfoInitiatorEnum = /*@__PURE__*/ S.String;
 
 /** Information about the dual-region quorum. */
@@ -3589,8 +3547,7 @@ export const GetProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(
 export type GetScansProjectsInstancesDatabasesViewEnum =
   | "VIEW_UNSPECIFIED"
   | "SUMMARY"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetScansProjectsInstancesDatabasesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3647,7 +3604,7 @@ export const PrefixNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PrefixNode" }) as any as S.Schema<PrefixNode>;
 
-export type PrefixNodeList = PrefixNode[];
+export type PrefixNodeList = ReadonlyArray<PrefixNode>;
 export const PrefixNodeList = /*@__PURE__*/ S.Array(
   PrefixNode,
 ) as any as S.Schema<PrefixNodeList>;
@@ -3671,14 +3628,10 @@ export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocalizedString",
 }) as any as S.Schema<LocalizedString>;
 
-export type MetricAggregationEnum =
-  | "AGGREGATION_UNSPECIFIED"
-  | "MAX"
-  | "SUM"
-  | (string & {});
+export type MetricAggregationEnum = "AGGREGATION_UNSPECIFIED" | "MAX" | "SUM";
 export const MetricAggregationEnum = /*@__PURE__*/ S.String;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -3696,7 +3649,7 @@ export const MetricMatrixRow = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricMatrixRow",
 }) as any as S.Schema<MetricMatrixRow>;
 
-export type MetricMatrixRowList = MetricMatrixRow[];
+export type MetricMatrixRowList = ReadonlyArray<MetricMatrixRow>;
 export const MetricMatrixRowList = /*@__PURE__*/ S.Array(
   MetricMatrixRow,
 ) as any as S.Schema<MetricMatrixRowList>;
@@ -3748,8 +3701,7 @@ export type ContextValueSeverityEnum =
   | "INFO"
   | "WARNING"
   | "ERROR"
-  | "FATAL"
-  | (string & {});
+  | "FATAL";
 export const ContextValueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A message representing context for a KeyRangeInfo, including a label, value, unit, and severity. */
@@ -3772,7 +3724,7 @@ export const ContextValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContextValue" }) as any as S.Schema<ContextValue>;
 
-export type ContextValueList = ContextValue[];
+export type ContextValueList = ReadonlyArray<ContextValue>;
 export const ContextValueList = /*@__PURE__*/ S.Array(
   ContextValue,
 ) as any as S.Schema<ContextValueList>;
@@ -3812,7 +3764,7 @@ export const KeyRangeInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyRangeInfo" }) as any as S.Schema<KeyRangeInfo>;
 
-export type KeyRangeInfoList = KeyRangeInfo[];
+export type KeyRangeInfoList = ReadonlyArray<KeyRangeInfo>;
 export const KeyRangeInfoList = /*@__PURE__*/ S.Array(
   KeyRangeInfo,
 ) as any as S.Schema<KeyRangeInfoList>;
@@ -3902,7 +3854,7 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
-export type MetricList = Metric[];
+export type MetricList = ReadonlyArray<Metric>;
 export const MetricList = /*@__PURE__*/ S.Array(
   Metric,
 ) as any as S.Schema<MetricList>;
@@ -3912,8 +3864,7 @@ export type DiagnosticMessageSeverityEnum =
   | "INFO"
   | "WARNING"
   | "ERROR"
-  | "FATAL"
-  | (string & {});
+  | "FATAL";
 export const DiagnosticMessageSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A message representing the key visualizer diagnostic messages. */
@@ -3941,7 +3892,7 @@ export const DiagnosticMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiagnosticMessage",
 }) as any as S.Schema<DiagnosticMessage>;
 
-export type DiagnosticMessageList = DiagnosticMessage[];
+export type DiagnosticMessageList = ReadonlyArray<DiagnosticMessage>;
 export const DiagnosticMessageList = /*@__PURE__*/ S.Array(
   DiagnosticMessage,
 ) as any as S.Schema<DiagnosticMessageList>;
@@ -3949,8 +3900,7 @@ export const DiagnosticMessageList = /*@__PURE__*/ S.Array(
 export type VisualizationDataKeyUnitEnum =
   | "KEY_UNIT_UNSPECIFIED"
   | "KEY"
-  | "CHUNK"
-  | (string & {});
+  | "CHUNK";
 export const VisualizationDataKeyUnitEnum = /*@__PURE__*/ S.String;
 
 export interface VisualizationData {
@@ -4060,7 +4010,7 @@ export const ListProjectsInstanceConfigOperationsRequest =
     identifier: "ListProjectsInstanceConfigOperationsRequest",
   }) as any as S.Schema<ListProjectsInstanceConfigOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4106,7 +4056,7 @@ export const ListProjectsInstanceConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsInstanceConfigsRequest",
 }) as any as S.Schema<ListProjectsInstanceConfigsRequest>;
 
-export type InstanceConfigList = InstanceConfig[];
+export type InstanceConfigList = ReadonlyArray<InstanceConfig>;
 export const InstanceConfigList = /*@__PURE__*/ S.Array(
   InstanceConfig,
 ) as any as S.Schema<InstanceConfigList>;
@@ -4238,7 +4188,7 @@ export const ListProjectsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsInstancesRequest",
 }) as any as S.Schema<ListProjectsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -4333,7 +4283,7 @@ export const ListProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsInstancesBackupsRequest",
 }) as any as S.Schema<ListProjectsInstancesBackupsRequest>;
 
-export type BackupList = Backup[];
+export type BackupList = ReadonlyArray<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -4454,7 +4404,7 @@ export const ListProjectsInstancesDatabasesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsInstancesDatabasesRequest",
 }) as any as S.Schema<ListProjectsInstancesDatabasesRequest>;
 
-export type DatabaseList = Database[];
+export type DatabaseList = ReadonlyArray<Database>;
 export const DatabaseList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseList>;
@@ -4500,7 +4450,7 @@ export const ListProjectsInstancesDatabasesBackupSchedulesRequest =
     identifier: "ListProjectsInstancesDatabasesBackupSchedulesRequest",
   }) as any as S.Schema<ListProjectsInstancesDatabasesBackupSchedulesRequest>;
 
-export type BackupScheduleList = BackupSchedule[];
+export type BackupScheduleList = ReadonlyArray<BackupSchedule>;
 export const BackupScheduleList = /*@__PURE__*/ S.Array(
   BackupSchedule,
 ) as any as S.Schema<BackupScheduleList>;
@@ -4557,7 +4507,7 @@ export const DatabaseRole = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatabaseRole" }) as any as S.Schema<DatabaseRole>;
 
-export type DatabaseRoleList = DatabaseRole[];
+export type DatabaseRoleList = ReadonlyArray<DatabaseRole>;
 export const DatabaseRoleList = /*@__PURE__*/ S.Array(
   DatabaseRole,
 ) as any as S.Schema<DatabaseRoleList>;
@@ -4732,7 +4682,7 @@ export const ListProjectsInstancesInstancePartitionsRequest =
     identifier: "ListProjectsInstancesInstancePartitionsRequest",
   }) as any as S.Schema<ListProjectsInstancesInstancePartitionsRequest>;
 
-export type InstancePartitionList = InstancePartition[];
+export type InstancePartitionList = ReadonlyArray<InstancePartition>;
 export const InstancePartitionList = /*@__PURE__*/ S.Array(
   InstancePartition,
 ) as any as S.Schema<InstancePartitionList>;
@@ -4818,11 +4768,7 @@ export const ListProjectsInstancesOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsInstancesOperationsRequest",
 }) as any as S.Schema<ListProjectsInstancesOperationsRequest>;
 
-export type ListScansViewEnum =
-  | "VIEW_UNSPECIFIED"
-  | "SUMMARY"
-  | "FULL"
-  | (string & {});
+export type ListScansViewEnum = "VIEW_UNSPECIFIED" | "SUMMARY" | "FULL";
 export const ListScansViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListScansRequest {
@@ -4855,7 +4801,7 @@ export const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScansRequest",
 }) as any as S.Schema<ListScansRequest>;
 
-export type ScanList = Scan[];
+export type ScanList = ReadonlyArray<Scan>;
 export const ScanList = /*@__PURE__*/ S.Array(
   Scan,
 ) as any as S.Schema<ScanList>;
@@ -4908,7 +4854,7 @@ export const DatabaseMoveConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseMoveConfig",
 }) as any as S.Schema<DatabaseMoveConfig>;
 
-export type DatabaseMoveConfigList = DatabaseMoveConfig[];
+export type DatabaseMoveConfigList = ReadonlyArray<DatabaseMoveConfig>;
 export const DatabaseMoveConfigList = /*@__PURE__*/ S.Array(
   DatabaseMoveConfig,
 ) as any as S.Schema<DatabaseMoveConfigList>;
@@ -5024,7 +4970,7 @@ export const Partition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Partition" }) as any as S.Schema<Partition>;
 
-export type PartitionList = Partition[];
+export type PartitionList = ReadonlyArray<Partition>;
 export const PartitionList = /*@__PURE__*/ S.Array(
   Partition,
 ) as any as S.Schema<PartitionList>;
@@ -5288,15 +5234,13 @@ export const PatchProjectsInstancesInstancePartitionsRequest =
 export type ReadRequestOrderByEnum =
   | "ORDER_BY_UNSPECIFIED"
   | "ORDER_BY_PRIMARY_KEY"
-  | "ORDER_BY_NO_ORDER"
-  | (string & {});
+  | "ORDER_BY_NO_ORDER";
 export const ReadRequestOrderByEnum = /*@__PURE__*/ S.String;
 
 export type ReadRequestLockHintEnum =
   | "LOCK_HINT_UNSPECIFIED"
   | "LOCK_HINT_SHARED"
-  | "LOCK_HINT_EXCLUSIVE"
-  | (string & {});
+  | "LOCK_HINT_EXCLUSIVE";
 export const ReadRequestLockHintEnum = /*@__PURE__*/ S.String;
 
 /** The request for Read and StreamingRead. */
@@ -5372,8 +5316,7 @@ export type RestoreDatabaseEncryptionConfigEncryptionTypeEnum =
   | "ENCRYPTION_TYPE_UNSPECIFIED"
   | "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
+  | "CUSTOMER_MANAGED_ENCRYPTION";
 export const RestoreDatabaseEncryptionConfigEncryptionTypeEnum =
   /*@__PURE__*/ S.String;
 

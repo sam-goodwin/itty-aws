@@ -160,7 +160,7 @@ export const GetRoutingControlStateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRoutingControlStateRequest",
 }) as any as S.Schema<GetRoutingControlStateRequest>;
-export type RoutingControlState = "On" | "Off" | (string & {});
+export type RoutingControlState = "On" | "Off";
 export const RoutingControlState = /*@__PURE__*/ S.String;
 
 export type RoutingControlName = string;
@@ -295,8 +295,7 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other"
-  | (string & {});
+  | "other";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

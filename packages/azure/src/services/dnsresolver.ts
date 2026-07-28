@@ -12,6 +12,49 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Resource tags. */
+export type DnsForwardingRulesetsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsForwardingRulesetsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateRequestTagsMap>;
+
+/** Reference to another ARM resource. */
+export interface SubResource {
+  /** Resource ID. */
+  id: string;
+}
+export const SubResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({ identifier: "SubResource" }) as any as S.Schema<SubResource>;
+
+/** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
+export type DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList =
+  ReadonlyArray<SubResource>;
+export const DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList =
+  /*@__PURE__*/ S.Array(
+    SubResource,
+  ) as any as S.Schema<DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList>;
+
+/** Represents the properties of a DNS forwarding ruleset. */
+export interface DnsForwardingRulesetPropertiesInput {
+  /** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
+  dnsResolverOutboundEndpoints: DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList;
+}
+export const DnsForwardingRulesetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dnsResolverOutboundEndpoints:
+      DnsForwardingRulesetPropertiesInputDnsResolverOutboundEndpointsList,
+  }),
+).annotate({
+  identifier: "DnsForwardingRulesetPropertiesInput",
+}) as any as S.Schema<DnsForwardingRulesetPropertiesInput>;
+
 export interface DnsForwardingRulesetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19,7 +62,12 @@ export interface DnsForwardingRulesetsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the DNS forwarding ruleset. */
   dnsForwardingRulesetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DnsForwardingRulesetsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the DNS forwarding ruleset. */
+  properties: DnsForwardingRulesetPropertiesInput;
 }
 export const DnsForwardingRulesetsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -27,7 +75,9 @@ export const DnsForwardingRulesetsCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       dnsForwardingRulesetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(DnsForwardingRulesetsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: DnsForwardingRulesetPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -45,8 +95,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -54,8 +103,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -94,20 +142,9 @@ export const DnsForwardingRulesetsCreateOrUpdateResponseTagsMap =
     S.String,
   ) as any as S.Schema<DnsForwardingRulesetsCreateOrUpdateResponseTagsMap>;
 
-/** Reference to another ARM resource. */
-export interface SubResource {
-  /** Resource ID. */
-  id: string;
-}
-export const SubResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "SubResource" }) as any as S.Schema<SubResource>;
-
 /** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
 export type DnsForwardingRulesetPropertiesDnsResolverOutboundEndpointsList =
-  SubResource[];
+  ReadonlyArray<SubResource>;
 export const DnsForwardingRulesetPropertiesDnsResolverOutboundEndpointsList =
   /*@__PURE__*/ S.Array(
     SubResource,
@@ -120,8 +157,7 @@ export type ProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Represents the properties of a DNS forwarding ruleset. */
@@ -341,7 +377,8 @@ export const DnsForwardingRuleset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnsForwardingRuleset>;
 
 /** The DnsForwardingRuleset items on this page */
-export type DnsForwardingRulesetListResultValueList = DnsForwardingRuleset[];
+export type DnsForwardingRulesetListResultValueList =
+  ReadonlyArray<DnsForwardingRuleset>;
 export const DnsForwardingRulesetListResultValueList = /*@__PURE__*/ S.Array(
   DnsForwardingRuleset,
 ) as any as S.Schema<DnsForwardingRulesetListResultValueList>;
@@ -449,7 +486,7 @@ export const VirtualNetworkDnsForwardingRuleset = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualNetworkDnsForwardingRuleset items on this page */
 export type VirtualNetworkDnsForwardingRulesetListResultValueList =
-  VirtualNetworkDnsForwardingRuleset[];
+  ReadonlyArray<VirtualNetworkDnsForwardingRuleset>;
 export const VirtualNetworkDnsForwardingRulesetListResultValueList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkDnsForwardingRuleset,
@@ -472,6 +509,23 @@ export const VirtualNetworkDnsForwardingRulesetListResult =
     identifier: "VirtualNetworkDnsForwardingRulesetListResult",
   }) as any as S.Schema<VirtualNetworkDnsForwardingRulesetListResult>;
 
+/** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
+export type DnsForwardingRulesetsUpdateRequestDnsResolverOutboundEndpointsList =
+  ReadonlyArray<SubResource>;
+export const DnsForwardingRulesetsUpdateRequestDnsResolverOutboundEndpointsList =
+  /*@__PURE__*/ S.Array(
+    SubResource,
+  ) as any as S.Schema<DnsForwardingRulesetsUpdateRequestDnsResolverOutboundEndpointsList>;
+
+/** Tags for DNS Resolver. */
+export type DnsForwardingRulesetsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsForwardingRulesetsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DnsForwardingRulesetsUpdateRequestTagsMap>;
+
 export interface DnsForwardingRulesetsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -479,14 +533,20 @@ export interface DnsForwardingRulesetsUpdateRequest {
   resourceGroupName: string;
   /** The name of the DNS forwarding ruleset. */
   dnsForwardingRulesetName: string;
-  body: unknown;
+  /** The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers. */
+  dnsResolverOutboundEndpoints?: DnsForwardingRulesetsUpdateRequestDnsResolverOutboundEndpointsList;
+  /** Tags for DNS Resolver. */
+  tags?: DnsForwardingRulesetsUpdateRequestTagsMap;
 }
 export const DnsForwardingRulesetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     dnsForwardingRulesetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    dnsResolverOutboundEndpoints: S.optional(
+      DnsForwardingRulesetsUpdateRequestDnsResolverOutboundEndpointsList,
+    ),
+    tags: S.optional(DnsForwardingRulesetsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -542,6 +602,26 @@ export const DnsForwardingRulesetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsForwardingRulesetsUpdateResponse",
 }) as any as S.Schema<DnsForwardingRulesetsUpdateResponse>;
 
+/** The action type in requests for bulk upload or download of a DNS resolver domain list. */
+export type Action = "Upload" | "Download";
+export const Action = /*@__PURE__*/ S.String;
+
+/** Describes DNS resolver domain list properties for bulk UPLOAD or DOWNLOAD operations. */
+export interface DnsResolverDomainListBulkProperties {
+  /** The storage account blob file URL to be used in the bulk upload or download request of DNS resolver domain list. */
+  storageUrl: string;
+  /** The action to take in the request, Upload or Download. */
+  action: Action;
+}
+export const DnsResolverDomainListBulkProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageUrl: S.String,
+    action: Action,
+  }),
+).annotate({
+  identifier: "DnsResolverDomainListBulkProperties",
+}) as any as S.Schema<DnsResolverDomainListBulkProperties>;
+
 export interface DnsResolverDomainListsBulkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -549,14 +629,15 @@ export interface DnsResolverDomainListsBulkRequest {
   resourceGroupName: string;
   /** The name of the DNS resolver domain list. */
   dnsResolverDomainListName: string;
-  body: unknown;
+  /** Properties of the DNS resolver domain list upload or download request. */
+  properties: DnsResolverDomainListBulkProperties;
 }
 export const DnsResolverDomainListsBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     dnsResolverDomainListName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: DnsResolverDomainListBulkProperties,
   }).pipe(
     T.Http({
       method: "POST",
@@ -579,7 +660,7 @@ export const DnsResolverDomainListsBulkResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DnsResolverDomainListsBulkResponseTagsMap>;
 
 /** The domains in the domain list. Will be null if user is using large domain list. */
-export type DnsResolverDomainListPropertiesDomainsList = string[];
+export type DnsResolverDomainListPropertiesDomainsList = ReadonlyArray<string>;
 export const DnsResolverDomainListPropertiesDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DnsResolverDomainListPropertiesDomainsList>;
@@ -639,6 +720,38 @@ export const DnsResolverDomainListsBulkResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsResolverDomainListsBulkResponse",
 }) as any as S.Schema<DnsResolverDomainListsBulkResponse>;
 
+/** Resource tags. */
+export type DnsResolverDomainListsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsResolverDomainListsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DnsResolverDomainListsCreateOrUpdateRequestTagsMap>;
+
+/** The domains in the domain list. Will be null if user is using large domain list. */
+export type DnsResolverDomainListPropertiesInputDomainsList =
+  ReadonlyArray<string>;
+export const DnsResolverDomainListPropertiesInputDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DnsResolverDomainListPropertiesInputDomainsList>;
+
+/** Represents the properties of a DNS resolver domain list. */
+export interface DnsResolverDomainListPropertiesInput {
+  /** The domains in the domain list. Will be null if user is using large domain list. */
+  domains?: DnsResolverDomainListPropertiesInputDomainsList;
+}
+export const DnsResolverDomainListPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      domains: S.optional(DnsResolverDomainListPropertiesInputDomainsList),
+    }),
+).annotate({
+  identifier: "DnsResolverDomainListPropertiesInput",
+}) as any as S.Schema<DnsResolverDomainListPropertiesInput>;
+
 export interface DnsResolverDomainListsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -646,7 +759,12 @@ export interface DnsResolverDomainListsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the DNS resolver domain list. */
   dnsResolverDomainListName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DnsResolverDomainListsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the DNS resolver domain list. */
+  properties?: DnsResolverDomainListPropertiesInput;
 }
 export const DnsResolverDomainListsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -654,7 +772,9 @@ export const DnsResolverDomainListsCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       dnsResolverDomainListName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(DnsResolverDomainListsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(DnsResolverDomainListPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -876,7 +996,8 @@ export const DnsResolverDomainList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnsResolverDomainList>;
 
 /** The DnsResolverDomainList items on this page */
-export type DnsResolverDomainListListResultValueList = DnsResolverDomainList[];
+export type DnsResolverDomainListListResultValueList =
+  ReadonlyArray<DnsResolverDomainList>;
 export const DnsResolverDomainListListResultValueList = /*@__PURE__*/ S.Array(
   DnsResolverDomainList,
 ) as any as S.Schema<DnsResolverDomainListListResultValueList>;
@@ -923,6 +1044,38 @@ export const DnsResolverDomainListsListByResourceGroupRequest =
     identifier: "DnsResolverDomainListsListByResourceGroupRequest",
   }) as any as S.Schema<DnsResolverDomainListsListByResourceGroupRequest>;
 
+/** The domains in the domain list. */
+export type DnsResolverDomainListPatchPropertiesDomainsList =
+  ReadonlyArray<string>;
+export const DnsResolverDomainListPatchPropertiesDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DnsResolverDomainListPatchPropertiesDomainsList>;
+
+/** Represents the updatable properties of a DNS resolver domain list. */
+export interface DnsResolverDomainListPatchProperties {
+  /** The domains in the domain list. */
+  domains?: DnsResolverDomainListPatchPropertiesDomainsList;
+}
+export const DnsResolverDomainListPatchProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      domains: S.optional(DnsResolverDomainListPatchPropertiesDomainsList),
+    }),
+).annotate({
+  identifier: "DnsResolverDomainListPatchProperties",
+}) as any as S.Schema<DnsResolverDomainListPatchProperties>;
+
+/** Tags for DNS resolver domain list. */
+export type DnsResolverDomainListsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsResolverDomainListsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DnsResolverDomainListsUpdateRequestTagsMap>;
+
 export interface DnsResolverDomainListsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -930,14 +1083,18 @@ export interface DnsResolverDomainListsUpdateRequest {
   resourceGroupName: string;
   /** The name of the DNS resolver domain list. */
   dnsResolverDomainListName: string;
-  body: unknown;
+  /** Updatable properties of the DNS resolver domain list. */
+  properties?: DnsResolverDomainListPatchProperties;
+  /** Tags for DNS resolver domain list. */
+  tags?: DnsResolverDomainListsUpdateRequestTagsMap;
 }
 export const DnsResolverDomainListsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     dnsResolverDomainListName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DnsResolverDomainListPatchProperties),
+    tags: S.optional(DnsResolverDomainListsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -994,6 +1151,24 @@ export const DnsResolverDomainListsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "DnsResolverDomainListsUpdateResponse",
 }) as any as S.Schema<DnsResolverDomainListsUpdateResponse>;
 
+/** Resource tags. */
+export type DnsResolverPoliciesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsResolverPoliciesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DnsResolverPoliciesCreateOrUpdateRequestTagsMap>;
+
+/** Represents the properties of a DNS resolver policy. */
+export interface DnsResolverPolicyPropertiesInput {}
+export const DnsResolverPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DnsResolverPolicyPropertiesInput",
+}) as any as S.Schema<DnsResolverPolicyPropertiesInput>;
+
 export interface DnsResolverPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1001,7 +1176,12 @@ export interface DnsResolverPoliciesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the DNS resolver policy. */
   dnsResolverPolicyName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DnsResolverPoliciesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the DNS resolver policy. */
+  properties?: DnsResolverPolicyPropertiesInput;
 }
 export const DnsResolverPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1009,7 +1189,9 @@ export const DnsResolverPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       dnsResolverPolicyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(DnsResolverPoliciesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(DnsResolverPolicyPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1245,7 +1427,8 @@ export const DnsResolverPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnsResolverPolicy>;
 
 /** The DnsResolverPolicy items on this page */
-export type DnsResolverPolicyListResultValueList = DnsResolverPolicy[];
+export type DnsResolverPolicyListResultValueList =
+  ReadonlyArray<DnsResolverPolicy>;
 export const DnsResolverPolicyListResultValueList = /*@__PURE__*/ S.Array(
   DnsResolverPolicy,
 ) as any as S.Schema<DnsResolverPolicyListResultValueList>;
@@ -1319,7 +1502,7 @@ export const DnsResolverPoliciesListByVirtualNetworkRequest =
   }) as any as S.Schema<DnsResolverPoliciesListByVirtualNetworkRequest>;
 
 /** The SubResource items on this page */
-export type SubResourceListResultValueList = SubResource[];
+export type SubResourceListResultValueList = ReadonlyArray<SubResource>;
 export const SubResourceListResultValueList = /*@__PURE__*/ S.Array(
   SubResource,
 ) as any as S.Schema<SubResourceListResultValueList>;
@@ -1340,6 +1523,15 @@ export const SubResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubResourceListResult",
 }) as any as S.Schema<SubResourceListResult>;
 
+/** Tags for DNS resolver policy. */
+export type DnsResolverPoliciesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsResolverPoliciesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DnsResolverPoliciesUpdateRequestTagsMap>;
+
 export interface DnsResolverPoliciesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1347,14 +1539,15 @@ export interface DnsResolverPoliciesUpdateRequest {
   resourceGroupName: string;
   /** The name of the DNS resolver policy. */
   dnsResolverPolicyName: string;
-  body: unknown;
+  /** Tags for DNS resolver policy. */
+  tags?: DnsResolverPoliciesUpdateRequestTagsMap;
 }
 export const DnsResolverPoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     dnsResolverPolicyName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DnsResolverPoliciesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1409,6 +1602,33 @@ export const DnsResolverPoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsResolverPoliciesUpdateResponse",
 }) as any as S.Schema<DnsResolverPoliciesUpdateResponse>;
 
+/** Resource tags. */
+export type DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap>;
+
+/** Represents the properties of a DNS resolver policy virtual network link. */
+export interface DnsResolverPolicyVirtualNetworkLinkProperties {
+  /** The reference to the virtual network. This cannot be changed after creation. */
+  virtualNetwork: SubResource;
+  /** The current provisioning state of the DNS resolver policy virtual network link. This is a read-only property and any attempt to set this value will be ignored. */
+  provisioningState?: ProvisioningState;
+}
+export const DnsResolverPolicyVirtualNetworkLinkProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      virtualNetwork: SubResource,
+      provisioningState: S.optional(ProvisioningState),
+    }),
+  ).annotate({
+    identifier: "DnsResolverPolicyVirtualNetworkLinkProperties",
+  }) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinkProperties>;
+
 export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1418,7 +1638,12 @@ export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest {
   dnsResolverPolicyName: string;
   /** The name of the DNS resolver policy virtual network link for the DNS resolver policy. */
   dnsResolverPolicyVirtualNetworkLinkName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the DNS resolver policy virtual network link. */
+  properties: DnsResolverPolicyVirtualNetworkLinkProperties;
 }
 export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1427,7 +1652,11 @@ export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       dnsResolverPolicyName: S.String.pipe(T.Label()),
       dnsResolverPolicyVirtualNetworkLinkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(
+        DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateRequestTagsMap,
+      ),
+      location: S.String,
+      properties: DnsResolverPolicyVirtualNetworkLinkProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1448,23 +1677,6 @@ export const DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponseTagsMap =
     S.String,
     S.String,
   ) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponseTagsMap>;
-
-/** Represents the properties of a DNS resolver policy virtual network link. */
-export interface DnsResolverPolicyVirtualNetworkLinkProperties {
-  /** The reference to the virtual network. This cannot be changed after creation. */
-  virtualNetwork: SubResource;
-  /** The current provisioning state of the DNS resolver policy virtual network link. This is a read-only property and any attempt to set this value will be ignored. */
-  provisioningState?: ProvisioningState;
-}
-export const DnsResolverPolicyVirtualNetworkLinkProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      virtualNetwork: SubResource,
-      provisioningState: S.optional(ProvisioningState),
-    }),
-  ).annotate({
-    identifier: "DnsResolverPolicyVirtualNetworkLinkProperties",
-  }) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinkProperties>;
 
 export interface DnsResolverPolicyVirtualNetworkLinksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1685,7 +1897,7 @@ export const DnsResolverPolicyVirtualNetworkLink = /*@__PURE__*/ S.suspend(() =>
 
 /** The DnsResolverPolicyVirtualNetworkLink items on this page */
 export type DnsResolverPolicyVirtualNetworkLinkListResultValueList =
-  DnsResolverPolicyVirtualNetworkLink[];
+  ReadonlyArray<DnsResolverPolicyVirtualNetworkLink>;
 export const DnsResolverPolicyVirtualNetworkLinkListResultValueList =
   /*@__PURE__*/ S.Array(
     DnsResolverPolicyVirtualNetworkLink,
@@ -1708,6 +1920,16 @@ export const DnsResolverPolicyVirtualNetworkLinkListResult =
     identifier: "DnsResolverPolicyVirtualNetworkLinkListResult",
   }) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinkListResult>;
 
+/** Tags for the DNS resolver policy virtual network link. */
+export type DnsResolverPolicyVirtualNetworkLinksUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsResolverPolicyVirtualNetworkLinksUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksUpdateRequestTagsMap>;
+
 export interface DnsResolverPolicyVirtualNetworkLinksUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1717,7 +1939,8 @@ export interface DnsResolverPolicyVirtualNetworkLinksUpdateRequest {
   dnsResolverPolicyName: string;
   /** The name of the DNS resolver policy virtual network link for the DNS resolver policy. */
   dnsResolverPolicyVirtualNetworkLinkName: string;
-  body: unknown;
+  /** Tags for the DNS resolver policy virtual network link. */
+  tags?: DnsResolverPolicyVirtualNetworkLinksUpdateRequestTagsMap;
 }
 export const DnsResolverPolicyVirtualNetworkLinksUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1726,7 +1949,9 @@ export const DnsResolverPolicyVirtualNetworkLinksUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       dnsResolverPolicyName: S.String.pipe(T.Label()),
       dnsResolverPolicyVirtualNetworkLinkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(
+        DnsResolverPolicyVirtualNetworkLinksUpdateRequestTagsMap,
+      ),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1785,6 +2010,28 @@ export const DnsResolverPolicyVirtualNetworkLinksUpdateResponse =
     identifier: "DnsResolverPolicyVirtualNetworkLinksUpdateResponse",
   }) as any as S.Schema<DnsResolverPolicyVirtualNetworkLinksUpdateResponse>;
 
+/** Resource tags. */
+export type DnsResolversCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsResolversCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DnsResolversCreateOrUpdateRequestTagsMap>;
+
+/** Represents the properties of a DNS resolver. */
+export interface DnsResolverPropertiesInput {
+  /** The reference to the virtual network. This cannot be changed after creation. */
+  virtualNetwork: SubResource;
+}
+export const DnsResolverPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    virtualNetwork: SubResource,
+  }),
+).annotate({
+  identifier: "DnsResolverPropertiesInput",
+}) as any as S.Schema<DnsResolverPropertiesInput>;
+
 export interface DnsResolversCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1792,14 +2039,21 @@ export interface DnsResolversCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the DNS resolver. */
   dnsResolverName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DnsResolversCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the DNS resolver. */
+  properties: DnsResolverPropertiesInput;
 }
 export const DnsResolversCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     dnsResolverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DnsResolversCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: DnsResolverPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1822,7 +2076,7 @@ export const DnsResolversCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DnsResolversCreateOrUpdateResponseTagsMap>;
 
 /** The current status of the DNS resolver. This is a read-only property and any attempt to set this value will be ignored. */
-export type DnsResolverState = "Connected" | "Disconnected" | (string & {});
+export type DnsResolverState = "Connected" | "Disconnected";
 export const DnsResolverState = /*@__PURE__*/ S.String;
 
 /** Represents the properties of a DNS resolver. */
@@ -2041,7 +2295,7 @@ export const DnsResolver = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsResolver" }) as any as S.Schema<DnsResolver>;
 
 /** The DnsResolver items on this page */
-export type DnsResolverListResultValueList = DnsResolver[];
+export type DnsResolverListResultValueList = ReadonlyArray<DnsResolver>;
 export const DnsResolverListResultValueList = /*@__PURE__*/ S.Array(
   DnsResolver,
 ) as any as S.Schema<DnsResolverListResultValueList>;
@@ -2117,6 +2371,15 @@ export const DnsResolversListByVirtualNetworkRequest = /*@__PURE__*/ S.suspend(
   identifier: "DnsResolversListByVirtualNetworkRequest",
 }) as any as S.Schema<DnsResolversListByVirtualNetworkRequest>;
 
+/** Tags for DNS Resolver. */
+export type DnsResolversUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsResolversUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DnsResolversUpdateRequestTagsMap>;
+
 export interface DnsResolversUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2124,14 +2387,15 @@ export interface DnsResolversUpdateRequest {
   resourceGroupName: string;
   /** The name of the DNS resolver. */
   dnsResolverName: string;
-  body: unknown;
+  /** Tags for DNS Resolver. */
+  tags?: DnsResolversUpdateRequestTagsMap;
 }
 export const DnsResolversUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     dnsResolverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DnsResolversUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2186,49 +2450,18 @@ export const DnsResolversUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsResolversUpdateResponse",
 }) as any as S.Schema<DnsResolversUpdateResponse>;
 
-export interface DnsSecurityRulesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the DNS resolver policy. */
-  dnsResolverPolicyName: string;
-  /** The name of the DNS security rule. */
-  dnsSecurityRuleName: string;
-  body: unknown;
-}
-export const DnsSecurityRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dnsResolverPolicyName: S.String.pipe(T.Label()),
-      dnsSecurityRuleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-).annotate({
-  identifier: "DnsSecurityRulesCreateOrUpdateRequest",
-}) as any as S.Schema<DnsSecurityRulesCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type DnsSecurityRulesCreateOrUpdateResponseTagsMap = {
+export type DnsSecurityRulesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const DnsSecurityRulesCreateOrUpdateResponseTagsMap =
+export const DnsSecurityRulesCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<DnsSecurityRulesCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<DnsSecurityRulesCreateOrUpdateRequestTagsMap>;
 
 /** The type of action to take. */
-export type ActionType = "Allow" | "Alert" | "Block" | (string & {});
+export type ActionType = "Allow" | "Alert" | "Block";
 export const ActionType = /*@__PURE__*/ S.String;
 
 /** The action to take on DNS requests that match the DNS security rule. */
@@ -2245,14 +2478,15 @@ export const DnsSecurityRuleAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnsSecurityRuleAction>;
 
 /** DNS resolver policy domains lists that the DNS security rule applies to. */
-export type DnsSecurityRulePropertiesDnsResolverDomainListsList = SubResource[];
+export type DnsSecurityRulePropertiesDnsResolverDomainListsList =
+  ReadonlyArray<SubResource>;
 export const DnsSecurityRulePropertiesDnsResolverDomainListsList =
   /*@__PURE__*/ S.Array(
     SubResource,
   ) as any as S.Schema<DnsSecurityRulePropertiesDnsResolverDomainListsList>;
 
 /** The state of DNS security rule. */
-export type DnsSecurityRuleState = "Enabled" | "Disabled" | (string & {});
+export type DnsSecurityRuleState = "Enabled" | "Disabled";
 export const DnsSecurityRuleState = /*@__PURE__*/ S.String;
 
 /** Represents the properties of a DNS security rule. */
@@ -2279,6 +2513,54 @@ export const DnsSecurityRuleProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DnsSecurityRuleProperties",
 }) as any as S.Schema<DnsSecurityRuleProperties>;
+
+export interface DnsSecurityRulesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the DNS resolver policy. */
+  dnsResolverPolicyName: string;
+  /** The name of the DNS security rule. */
+  dnsSecurityRuleName: string;
+  /** Resource tags. */
+  tags?: DnsSecurityRulesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the DNS security rule. */
+  properties: DnsSecurityRuleProperties;
+}
+export const DnsSecurityRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dnsResolverPolicyName: S.String.pipe(T.Label()),
+      dnsSecurityRuleName: S.String.pipe(T.Label()),
+      tags: S.optional(DnsSecurityRulesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: DnsSecurityRuleProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolverPolicies/{dnsResolverPolicyName}/dnsSecurityRules/{dnsSecurityRuleName}",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+).annotate({
+  identifier: "DnsSecurityRulesCreateOrUpdateRequest",
+}) as any as S.Schema<DnsSecurityRulesCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type DnsSecurityRulesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsSecurityRulesCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DnsSecurityRulesCreateOrUpdateResponseTagsMap>;
 
 export interface DnsSecurityRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2489,7 +2771,7 @@ export const DnsSecurityRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DnsSecurityRule>;
 
 /** The DnsSecurityRule items on this page */
-export type DnsSecurityRuleListResultValueList = DnsSecurityRule[];
+export type DnsSecurityRuleListResultValueList = ReadonlyArray<DnsSecurityRule>;
 export const DnsSecurityRuleListResultValueList = /*@__PURE__*/ S.Array(
   DnsSecurityRule,
 ) as any as S.Schema<DnsSecurityRuleListResultValueList>;
@@ -2510,6 +2792,47 @@ export const DnsSecurityRuleListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsSecurityRuleListResult",
 }) as any as S.Schema<DnsSecurityRuleListResult>;
 
+/** DNS resolver policy domains lists that the DNS security rule applies to. */
+export type DnsSecurityRulePatchPropertiesDnsResolverDomainListsList =
+  ReadonlyArray<SubResource>;
+export const DnsSecurityRulePatchPropertiesDnsResolverDomainListsList =
+  /*@__PURE__*/ S.Array(
+    SubResource,
+  ) as any as S.Schema<DnsSecurityRulePatchPropertiesDnsResolverDomainListsList>;
+
+/** Represents the updatable properties of a DNS security rule. */
+export interface DnsSecurityRulePatchProperties {
+  /** The action to take on DNS requests that match the DNS security rule. */
+  action?: DnsSecurityRuleAction;
+  /** DNS resolver policy domains lists that the DNS security rule applies to. */
+  dnsResolverDomainLists?: DnsSecurityRulePatchPropertiesDnsResolverDomainListsList;
+  /** The state of DNS security rule. */
+  dnsSecurityRuleState?: DnsSecurityRuleState;
+  /** The priority of the DNS security rule. */
+  priority?: number;
+}
+export const DnsSecurityRulePatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.optional(DnsSecurityRuleAction),
+    dnsResolverDomainLists: S.optional(
+      DnsSecurityRulePatchPropertiesDnsResolverDomainListsList,
+    ),
+    dnsSecurityRuleState: S.optional(DnsSecurityRuleState),
+    priority: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DnsSecurityRulePatchProperties",
+}) as any as S.Schema<DnsSecurityRulePatchProperties>;
+
+/** Tags for DNS security rule. */
+export type DnsSecurityRulesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DnsSecurityRulesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DnsSecurityRulesUpdateRequestTagsMap>;
+
 export interface DnsSecurityRulesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2519,7 +2842,10 @@ export interface DnsSecurityRulesUpdateRequest {
   dnsResolverPolicyName: string;
   /** The name of the DNS security rule. */
   dnsSecurityRuleName: string;
-  body: unknown;
+  /** Updatable properties of the DNS security rule. */
+  properties?: DnsSecurityRulePatchProperties;
+  /** Tags for DNS security rule. */
+  tags?: DnsSecurityRulesUpdateRequestTagsMap;
 }
 export const DnsSecurityRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2527,7 +2853,8 @@ export const DnsSecurityRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     dnsResolverPolicyName: S.String.pipe(T.Label()),
     dnsSecurityRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DnsSecurityRulePatchProperties),
+    tags: S.optional(DnsSecurityRulesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2582,37 +2909,6 @@ export const DnsSecurityRulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DnsSecurityRulesUpdateResponse",
 }) as any as S.Schema<DnsSecurityRulesUpdateResponse>;
 
-export interface ForwardingRulesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the DNS forwarding ruleset. */
-  dnsForwardingRulesetName: string;
-  /** The name of the forwarding rule. */
-  forwardingRuleName: string;
-  body: unknown;
-}
-export const ForwardingRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dnsForwardingRulesetName: S.String.pipe(T.Label()),
-      forwardingRuleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-).annotate({
-  identifier: "ForwardingRulesCreateOrUpdateRequest",
-}) as any as S.Schema<ForwardingRulesCreateOrUpdateRequest>;
-
 /** Describes a server to forward the DNS queries to. */
 export interface TargetDnsServer {
   /** DNS server IP address. */
@@ -2630,7 +2926,8 @@ export const TargetDnsServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetDnsServer>;
 
 /** DNS servers to forward the DNS query to. */
-export type ForwardingRulePropertiesTargetDnsServersList = TargetDnsServer[];
+export type ForwardingRulePropertiesTargetDnsServersList =
+  ReadonlyArray<TargetDnsServer>;
 export const ForwardingRulePropertiesTargetDnsServersList =
   /*@__PURE__*/ S.Array(
     TargetDnsServer,
@@ -2646,7 +2943,7 @@ export const ForwardingRulePropertiesMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ForwardingRulePropertiesMetadataMap>;
 
 /** The state of forwarding rule. */
-export type ForwardingRuleState = "Enabled" | "Disabled" | (string & {});
+export type ForwardingRuleState = "Enabled" | "Disabled";
 export const ForwardingRuleState = /*@__PURE__*/ S.String;
 
 /** Represents the properties of a forwarding rule within a DNS forwarding ruleset. */
@@ -2673,6 +2970,38 @@ export const ForwardingRuleProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ForwardingRuleProperties",
 }) as any as S.Schema<ForwardingRuleProperties>;
+
+export interface ForwardingRulesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the DNS forwarding ruleset. */
+  dnsForwardingRulesetName: string;
+  /** The name of the forwarding rule. */
+  forwardingRuleName: string;
+  /** Properties of the forwarding rule. */
+  properties: ForwardingRuleProperties;
+}
+export const ForwardingRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dnsForwardingRulesetName: S.String.pipe(T.Label()),
+      forwardingRuleName: S.String.pipe(T.Label()),
+      properties: ForwardingRuleProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+).annotate({
+  identifier: "ForwardingRulesCreateOrUpdateRequest",
+}) as any as S.Schema<ForwardingRulesCreateOrUpdateRequest>;
 
 export interface ForwardingRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2847,7 +3176,7 @@ export const ForwardingRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ForwardingRule" }) as any as S.Schema<ForwardingRule>;
 
 /** The ForwardingRule items on this page */
-export type ForwardingRuleListResultValueList = ForwardingRule[];
+export type ForwardingRuleListResultValueList = ReadonlyArray<ForwardingRule>;
 export const ForwardingRuleListResultValueList = /*@__PURE__*/ S.Array(
   ForwardingRule,
 ) as any as S.Schema<ForwardingRuleListResultValueList>;
@@ -2868,6 +3197,53 @@ export const ForwardingRuleListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ForwardingRuleListResult",
 }) as any as S.Schema<ForwardingRuleListResult>;
 
+/** DNS servers to forward the DNS query to. */
+export type ForwardingRulePatchPropertiesTargetDnsServersList =
+  ReadonlyArray<TargetDnsServer>;
+export const ForwardingRulePatchPropertiesTargetDnsServersList =
+  /*@__PURE__*/ S.Array(
+    TargetDnsServer,
+  ) as any as S.Schema<ForwardingRulePatchPropertiesTargetDnsServersList>;
+
+/** Metadata attached to the forwarding rule. */
+export type ForwardingRulePatchPropertiesMetadataMap = {
+  [key: string]: string | undefined;
+};
+export const ForwardingRulePatchPropertiesMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ForwardingRulePatchPropertiesMetadataMap>;
+
+/** The state of forwarding rule. */
+export type ForwardingRulePatchPropertiesForwardingRuleState =
+  | "Enabled"
+  | "Disabled";
+export const ForwardingRulePatchPropertiesForwardingRuleState =
+  /*@__PURE__*/ S.String;
+
+/** Represents the updatable properties of a forwarding rule within a DNS forwarding ruleset. */
+export interface ForwardingRulePatchProperties {
+  /** DNS servers to forward the DNS query to. */
+  targetDnsServers?: ForwardingRulePatchPropertiesTargetDnsServersList;
+  /** Metadata attached to the forwarding rule. */
+  metadata?: ForwardingRulePatchPropertiesMetadataMap;
+  /** The state of forwarding rule. */
+  forwardingRuleState?: ForwardingRulePatchPropertiesForwardingRuleState;
+}
+export const ForwardingRulePatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetDnsServers: S.optional(
+      ForwardingRulePatchPropertiesTargetDnsServersList,
+    ),
+    metadata: S.optional(ForwardingRulePatchPropertiesMetadataMap),
+    forwardingRuleState: S.optional(
+      ForwardingRulePatchPropertiesForwardingRuleState,
+    ),
+  }),
+).annotate({
+  identifier: "ForwardingRulePatchProperties",
+}) as any as S.Schema<ForwardingRulePatchProperties>;
+
 export interface ForwardingRulesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2877,7 +3253,8 @@ export interface ForwardingRulesUpdateRequest {
   dnsForwardingRulesetName: string;
   /** The name of the forwarding rule. */
   forwardingRuleName: string;
-  body: unknown;
+  /** Updatable properties of the forwarding rule. */
+  properties?: ForwardingRulePatchProperties;
 }
 export const ForwardingRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2885,7 +3262,7 @@ export const ForwardingRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     dnsForwardingRulesetName: S.String.pipe(T.Label()),
     forwardingRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ForwardingRulePatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2925,52 +3302,18 @@ export const ForwardingRulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ForwardingRulesUpdateResponse",
 }) as any as S.Schema<ForwardingRulesUpdateResponse>;
 
-export interface InboundEndpointsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the DNS resolver. */
-  dnsResolverName: string;
-  /** The name of the inbound endpoint for the DNS resolver. */
-  inboundEndpointName: string;
-  body: unknown;
-}
-export const InboundEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dnsResolverName: S.String.pipe(T.Label()),
-      inboundEndpointName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-).annotate({
-  identifier: "InboundEndpointsCreateOrUpdateRequest",
-}) as any as S.Schema<InboundEndpointsCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type InboundEndpointsCreateOrUpdateResponseTagsMap = {
+export type InboundEndpointsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const InboundEndpointsCreateOrUpdateResponseTagsMap =
+export const InboundEndpointsCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<InboundEndpointsCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<InboundEndpointsCreateOrUpdateRequestTagsMap>;
 
 /** Private IP address allocation method. */
-export type IpConfigurationPrivateIpAllocationMethod =
-  | "Static"
-  | "Dynamic"
-  | (string & {});
+export type IpConfigurationPrivateIpAllocationMethod = "Static" | "Dynamic";
 export const IpConfigurationPrivateIpAllocationMethod = /*@__PURE__*/ S.String;
 
 /** IP configuration. */
@@ -2995,7 +3338,77 @@ export const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpConfiguration>;
 
 /** IP configurations for the inbound endpoint. */
-export type InboundEndpointPropertiesIpConfigurationsList = IpConfiguration[];
+export type InboundEndpointPropertiesInputIpConfigurationsList =
+  ReadonlyArray<IpConfiguration>;
+export const InboundEndpointPropertiesInputIpConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    IpConfiguration,
+  ) as any as S.Schema<InboundEndpointPropertiesInputIpConfigurationsList>;
+
+/** Represents the properties of an inbound endpoint for a DNS resolver. */
+export interface InboundEndpointPropertiesInput {
+  /** IP configurations for the inbound endpoint. */
+  ipConfigurations: InboundEndpointPropertiesInputIpConfigurationsList;
+}
+export const InboundEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipConfigurations: InboundEndpointPropertiesInputIpConfigurationsList,
+  }),
+).annotate({
+  identifier: "InboundEndpointPropertiesInput",
+}) as any as S.Schema<InboundEndpointPropertiesInput>;
+
+export interface InboundEndpointsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the DNS resolver. */
+  dnsResolverName: string;
+  /** The name of the inbound endpoint for the DNS resolver. */
+  inboundEndpointName: string;
+  /** Resource tags. */
+  tags?: InboundEndpointsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the inbound endpoint. */
+  properties: InboundEndpointPropertiesInput;
+}
+export const InboundEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dnsResolverName: S.String.pipe(T.Label()),
+      inboundEndpointName: S.String.pipe(T.Label()),
+      tags: S.optional(InboundEndpointsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: InboundEndpointPropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+).annotate({
+  identifier: "InboundEndpointsCreateOrUpdateRequest",
+}) as any as S.Schema<InboundEndpointsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type InboundEndpointsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const InboundEndpointsCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<InboundEndpointsCreateOrUpdateResponseTagsMap>;
+
+/** IP configurations for the inbound endpoint. */
+export type InboundEndpointPropertiesIpConfigurationsList =
+  ReadonlyArray<IpConfiguration>;
 export const InboundEndpointPropertiesIpConfigurationsList =
   /*@__PURE__*/ S.Array(
     IpConfiguration,
@@ -3229,7 +3642,7 @@ export const InboundEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InboundEndpoint>;
 
 /** The InboundEndpoint items on this page */
-export type InboundEndpointListResultValueList = InboundEndpoint[];
+export type InboundEndpointListResultValueList = ReadonlyArray<InboundEndpoint>;
 export const InboundEndpointListResultValueList = /*@__PURE__*/ S.Array(
   InboundEndpoint,
 ) as any as S.Schema<InboundEndpointListResultValueList>;
@@ -3250,6 +3663,15 @@ export const InboundEndpointListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "InboundEndpointListResult",
 }) as any as S.Schema<InboundEndpointListResult>;
 
+/** Tags for inbound endpoint. */
+export type InboundEndpointsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const InboundEndpointsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<InboundEndpointsUpdateRequestTagsMap>;
+
 export interface InboundEndpointsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3259,7 +3681,8 @@ export interface InboundEndpointsUpdateRequest {
   dnsResolverName: string;
   /** The name of the inbound endpoint for the DNS resolver. */
   inboundEndpointName: string;
-  body: unknown;
+  /** Tags for inbound endpoint. */
+  tags?: InboundEndpointsUpdateRequestTagsMap;
 }
 export const InboundEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3267,7 +3690,7 @@ export const InboundEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     dnsResolverName: S.String.pipe(T.Label()),
     inboundEndpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(InboundEndpointsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3322,6 +3745,29 @@ export const InboundEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InboundEndpointsUpdateResponse",
 }) as any as S.Schema<InboundEndpointsUpdateResponse>;
 
+/** Resource tags. */
+export type OutboundEndpointsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const OutboundEndpointsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<OutboundEndpointsCreateOrUpdateRequestTagsMap>;
+
+/** Represents the properties of an outbound endpoint for a DNS resolver. */
+export interface OutboundEndpointPropertiesInput {
+  /** The reference to the subnet used for the outbound endpoint. */
+  subnet: SubResource;
+}
+export const OutboundEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subnet: SubResource,
+  }),
+).annotate({
+  identifier: "OutboundEndpointPropertiesInput",
+}) as any as S.Schema<OutboundEndpointPropertiesInput>;
+
 export interface OutboundEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3331,7 +3777,12 @@ export interface OutboundEndpointsCreateOrUpdateRequest {
   dnsResolverName: string;
   /** The name of the outbound endpoint for the DNS resolver. */
   outboundEndpointName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: OutboundEndpointsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the outbound endpoint. */
+  properties: OutboundEndpointPropertiesInput;
 }
 export const OutboundEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3340,7 +3791,9 @@ export const OutboundEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       dnsResolverName: S.String.pipe(T.Label()),
       outboundEndpointName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(OutboundEndpointsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: OutboundEndpointPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3591,7 +4044,8 @@ export const OutboundEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutboundEndpoint>;
 
 /** The OutboundEndpoint items on this page */
-export type OutboundEndpointListResultValueList = OutboundEndpoint[];
+export type OutboundEndpointListResultValueList =
+  ReadonlyArray<OutboundEndpoint>;
 export const OutboundEndpointListResultValueList = /*@__PURE__*/ S.Array(
   OutboundEndpoint,
 ) as any as S.Schema<OutboundEndpointListResultValueList>;
@@ -3612,6 +4066,15 @@ export const OutboundEndpointListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OutboundEndpointListResult",
 }) as any as S.Schema<OutboundEndpointListResult>;
 
+/** Tags for outbound endpoint. */
+export type OutboundEndpointsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const OutboundEndpointsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<OutboundEndpointsUpdateRequestTagsMap>;
+
 export interface OutboundEndpointsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3621,7 +4084,8 @@ export interface OutboundEndpointsUpdateRequest {
   dnsResolverName: string;
   /** The name of the outbound endpoint for the DNS resolver. */
   outboundEndpointName: string;
-  body: unknown;
+  /** Tags for outbound endpoint. */
+  tags?: OutboundEndpointsUpdateRequestTagsMap;
 }
 export const OutboundEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3629,7 +4093,7 @@ export const OutboundEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     dnsResolverName: S.String.pipe(T.Label()),
     outboundEndpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(OutboundEndpointsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3684,37 +4148,6 @@ export const OutboundEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OutboundEndpointsUpdateResponse",
 }) as any as S.Schema<OutboundEndpointsUpdateResponse>;
 
-export interface VirtualNetworkLinksCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the DNS forwarding ruleset. */
-  dnsForwardingRulesetName: string;
-  /** The name of the virtual network link. */
-  virtualNetworkLinkName: string;
-  body: unknown;
-}
-export const VirtualNetworkLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dnsForwardingRulesetName: S.String.pipe(T.Label()),
-      virtualNetworkLinkName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-).annotate({
-  identifier: "VirtualNetworkLinksCreateOrUpdateRequest",
-}) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequest>;
-
 /** Metadata attached to the virtual network link. */
 export type VirtualNetworkLinkPropertiesMetadataMap = {
   [key: string]: string | undefined;
@@ -3742,6 +4175,38 @@ export const VirtualNetworkLinkProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VirtualNetworkLinkProperties",
 }) as any as S.Schema<VirtualNetworkLinkProperties>;
+
+export interface VirtualNetworkLinksCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the DNS forwarding ruleset. */
+  dnsForwardingRulesetName: string;
+  /** The name of the virtual network link. */
+  virtualNetworkLinkName: string;
+  /** Properties of the virtual network link. */
+  properties: VirtualNetworkLinkProperties;
+}
+export const VirtualNetworkLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dnsForwardingRulesetName: S.String.pipe(T.Label()),
+      virtualNetworkLinkName: S.String.pipe(T.Label()),
+      properties: VirtualNetworkLinkProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+).annotate({
+  identifier: "VirtualNetworkLinksCreateOrUpdateRequest",
+}) as any as S.Schema<VirtualNetworkLinksCreateOrUpdateRequest>;
 
 export interface VirtualNetworkLinksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3918,7 +4383,8 @@ export const VirtualNetworkLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualNetworkLink>;
 
 /** The VirtualNetworkLink items on this page */
-export type VirtualNetworkLinkListResultValueList = VirtualNetworkLink[];
+export type VirtualNetworkLinkListResultValueList =
+  ReadonlyArray<VirtualNetworkLink>;
 export const VirtualNetworkLinkListResultValueList = /*@__PURE__*/ S.Array(
   VirtualNetworkLink,
 ) as any as S.Schema<VirtualNetworkLinkListResultValueList>;
@@ -3939,6 +4405,29 @@ export const VirtualNetworkLinkListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "VirtualNetworkLinkListResult",
 }) as any as S.Schema<VirtualNetworkLinkListResult>;
 
+/** Metadata attached to the virtual network link. */
+export type VirtualNetworkLinkPatchPropertiesMetadataMap = {
+  [key: string]: string | undefined;
+};
+export const VirtualNetworkLinkPatchPropertiesMetadataMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<VirtualNetworkLinkPatchPropertiesMetadataMap>;
+
+/** Represents the updatable properties of the virtual network link. */
+export interface VirtualNetworkLinkPatchProperties {
+  /** Metadata attached to the virtual network link. */
+  metadata?: VirtualNetworkLinkPatchPropertiesMetadataMap;
+}
+export const VirtualNetworkLinkPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadata: S.optional(VirtualNetworkLinkPatchPropertiesMetadataMap),
+  }),
+).annotate({
+  identifier: "VirtualNetworkLinkPatchProperties",
+}) as any as S.Schema<VirtualNetworkLinkPatchProperties>;
+
 export interface VirtualNetworkLinksUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3948,7 +4437,8 @@ export interface VirtualNetworkLinksUpdateRequest {
   dnsForwardingRulesetName: string;
   /** The name of the virtual network link. */
   virtualNetworkLinkName: string;
-  body: unknown;
+  /** Updatable properties of the virtual network link. */
+  properties?: VirtualNetworkLinkPatchProperties;
 }
 export const VirtualNetworkLinksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3956,7 +4446,7 @@ export const VirtualNetworkLinksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     dnsForwardingRulesetName: S.String.pipe(T.Label()),
     virtualNetworkLinkName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(VirtualNetworkLinkPatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",

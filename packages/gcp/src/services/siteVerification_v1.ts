@@ -171,7 +171,7 @@ export const GetWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetWebResourceRequest",
 }) as any as S.Schema<GetWebResourceRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -245,7 +245,7 @@ export const ListWebResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWebResourceRequest>;
 
 export type SiteVerificationWebResourceResourceList =
-  SiteVerificationWebResourceResource[];
+  ReadonlyArray<SiteVerificationWebResourceResource>;
 export const SiteVerificationWebResourceResourceList = /*@__PURE__*/ S.Array(
   SiteVerificationWebResourceResource,
 ) as any as S.Schema<SiteVerificationWebResourceResourceList>;

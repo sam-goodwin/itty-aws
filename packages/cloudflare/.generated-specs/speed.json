@@ -144,6 +144,114 @@
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
           }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
+          }
         }
       }
     },
@@ -167,29 +275,6 @@
         "target": "com.cloudflare.speed#AvailabilitiesListResponseRegionsItem"
       }
     },
-    "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanBusinessItemValue": {
-      "type": "enum",
-      "members": {
-        "ASIA_EAST1": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-east1"
-          }
-        },
-        "ASIA_NORTHEAST1": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-northeast1"
-          }
-        },
-        "ASIA_NORTHEAST2": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-northeast2"
-          }
-        }
-      }
-    },
     "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanBusinessItem": {
       "type": "structure",
       "members": {
@@ -197,7 +282,7 @@
           "target": "smithy.api#String"
         },
         "value": {
-          "target": "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanBusinessItemValue",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A test region."
           }
@@ -210,29 +295,6 @@
         "target": "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanBusinessItem"
       }
     },
-    "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanEnterpriseItemValue": {
-      "type": "enum",
-      "members": {
-        "ASIA_EAST1": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-east1"
-          }
-        },
-        "ASIA_NORTHEAST1": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-northeast1"
-          }
-        },
-        "ASIA_NORTHEAST2": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-northeast2"
-          }
-        }
-      }
-    },
     "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanEnterpriseItem": {
       "type": "structure",
       "members": {
@@ -240,7 +302,7 @@
           "target": "smithy.api#String"
         },
         "value": {
-          "target": "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanEnterpriseItemValue",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A test region."
           }
@@ -253,29 +315,6 @@
         "target": "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanEnterpriseItem"
       }
     },
-    "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanFreeItemValue": {
-      "type": "enum",
-      "members": {
-        "ASIA_EAST1": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-east1"
-          }
-        },
-        "ASIA_NORTHEAST1": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-northeast1"
-          }
-        },
-        "ASIA_NORTHEAST2": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-northeast2"
-          }
-        }
-      }
-    },
     "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanFreeItem": {
       "type": "structure",
       "members": {
@@ -283,7 +322,7 @@
           "target": "smithy.api#String"
         },
         "value": {
-          "target": "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanFreeItemValue",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A test region."
           }
@@ -296,29 +335,6 @@
         "target": "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanFreeItem"
       }
     },
-    "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanProItemValue": {
-      "type": "enum",
-      "members": {
-        "ASIA_EAST1": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-east1"
-          }
-        },
-        "ASIA_NORTHEAST1": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-northeast1"
-          }
-        },
-        "ASIA_NORTHEAST2": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "asia-northeast2"
-          }
-        }
-      }
-    },
     "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanProItem": {
       "type": "structure",
       "members": {
@@ -326,7 +342,7 @@
           "target": "smithy.api#String"
         },
         "value": {
-          "target": "com.cloudflare.speed#AvailabilitiesListResponseRegionsPerPlanProItemValue",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A test region."
           }
@@ -431,6 +447,114 @@
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
           }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
+          }
         }
       }
     },
@@ -501,6 +625,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "NOT_HTML"
+          }
+        },
+        "LIGHTHOUSE_TIMEOUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIGHTHOUSE_TIMEOUT"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
           }
         }
       }
@@ -661,13 +797,13 @@
           }
         },
         "mobileReport": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.speed#PagesListResultItemTestsItemDesktopReport",
           "traits": {
             "smithy.api#documentation": "The Lighthouse report."
           }
         },
         "region": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.speed#PagesListResultItemRegion",
           "traits": {
             "smithy.api#documentation": "A test region with a label."
           }
@@ -793,6 +929,114 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
+          }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
           }
         }
       }
@@ -1009,6 +1253,114 @@
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
           }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
+          }
         }
       }
     },
@@ -1078,6 +1430,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "NOT_HTML"
+          }
+        },
+        "LIGHTHOUSE_TIMEOUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIGHTHOUSE_TIMEOUT"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
           }
         }
       }
@@ -1222,6 +1586,114 @@
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
           }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
+          }
         }
       }
     },
@@ -1275,7 +1747,7 @@
           }
         },
         "mobileReport": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.speed#PagesTestsCreateResponseDesktopReport",
           "traits": {
             "smithy.api#documentation": "The Lighthouse report."
           }
@@ -1340,6 +1812,114 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
+          }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
           }
         }
       }
@@ -1475,6 +2055,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "NOT_HTML"
+          }
+        },
+        "LIGHTHOUSE_TIMEOUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIGHTHOUSE_TIMEOUT"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
           }
         }
       }
@@ -1619,6 +2211,114 @@
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
           }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
+          }
         }
       }
     },
@@ -1672,7 +2372,7 @@
           }
         },
         "mobileReport": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.speed#PagesTestsGetResponseDesktopReport",
           "traits": {
             "smithy.api#documentation": "The Lighthouse report."
           }
@@ -1738,6 +2438,114 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
+          }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
           }
         }
       }
@@ -1821,6 +2629,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "NOT_HTML"
+          }
+        },
+        "LIGHTHOUSE_TIMEOUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIGHTHOUSE_TIMEOUT"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
           }
         }
       }
@@ -1965,6 +2785,114 @@
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
           }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
+          }
         }
       }
     },
@@ -2018,7 +2946,7 @@
           }
         },
         "mobileReport": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.speed#PagesTestsListResultItemDesktopReport",
           "traits": {
             "smithy.api#documentation": "The Lighthouse report."
           }
@@ -2119,6 +3047,114 @@
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
           }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
+          }
         }
       }
     },
@@ -2197,6 +3233,114 @@
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
           }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
+          }
         }
       }
     },
@@ -2259,6 +3403,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "NOT_HTML"
+          }
+        },
+        "LIGHTHOUSE_TIMEOUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIGHTHOUSE_TIMEOUT"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNKNOWN"
           }
         }
       }
@@ -2403,6 +3559,114 @@
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
           }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
+          }
         }
       }
     },
@@ -2456,7 +3720,7 @@
           }
         },
         "mobileReport": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.speed#ScheduleCreateResponseTestDesktopReport",
           "traits": {
             "smithy.api#documentation": "The Lighthouse report."
           }
@@ -2535,6 +3799,114 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
+          }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
           }
         }
       }
@@ -2623,6 +3995,114 @@
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
           }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
+          }
         }
       }
     },
@@ -2693,6 +4173,114 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "asia-northeast2"
+          }
+        },
+        "ASIA_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-south1"
+          }
+        },
+        "ASIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asia-southeast1"
+          }
+        },
+        "AUSTRALIA_SOUTHEAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "australia-southeast1"
+          }
+        },
+        "EUROPE_NORTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-north1"
+          }
+        },
+        "EUROPE_SOUTHWEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-southwest1"
+          }
+        },
+        "EUROPE_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west1"
+          }
+        },
+        "EUROPE_WEST2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west2"
+          }
+        },
+        "EUROPE_WEST3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west3"
+          }
+        },
+        "EUROPE_WEST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west4"
+          }
+        },
+        "EUROPE_WEST8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west8"
+          }
+        },
+        "EUROPE_WEST9": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "europe-west9"
+          }
+        },
+        "ME_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "me-west1"
+          }
+        },
+        "SOUTHAMERICA_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "southamerica-east1"
+          }
+        },
+        "US_CENTRAL1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-central1"
+          }
+        },
+        "US_EAST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east1"
+          }
+        },
+        "US_EAST4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-east4"
+          }
+        },
+        "US_SOUTH1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-south1"
+          }
+        },
+        "US_WEST1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "us-west1"
           }
         }
       }

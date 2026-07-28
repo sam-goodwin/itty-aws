@@ -218,53 +218,10 @@
             "smithy.api#documentation": "ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier for the proxy record."
-          }
-        },
         "domain": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The custom domain to proxy through, e.g. 'e.example.com'. Must be a valid subdomain you control."
-          }
-        },
-        "target_cname": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The CNAME target to add as a DNS record for your domain. Point your domain's CNAME to this value."
-          }
-        },
-        "status": {
-          "target": "com.posthog.reverse_proxy#ProxyRecordStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "Current provisioning status. Values: waiting (DNS verification pending), issuing (SSL certificate being issued), valid (proxy is live and working), warning (proxy has issues but is operational), erroring (proxy setup failed), deleting (removal in progress), timed_out (DNS verification timed out).\n\n* `waiting` - Waiting\n* `issuing` - Issuing\n* `valid` - Valid\n* `warning` - Warning\n* `erroring` - Erroring\n* `deleting` - Deleting\n* `timed_out` - Timed Out"
-          }
-        },
-        "message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Human-readable status message with details about errors or warnings, if any.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this proxy record was created."
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this proxy record was last updated."
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "ID of the user who created this proxy record."
           }
         }
       },

@@ -89,14 +89,13 @@ export interface EnumDeclOptions {
 }
 
 /**
- * Open string-union enum: literal members for autocomplete, `(string & {})`
- * so unknown/future values still pass, schema stays `S.String` (the
- * protocols never validate enum membership).
+ * Closed string-union enum: the spec's documented values as a literal
+ * union. The schema stays `S.String` (the protocols never validate enum
+ * membership, so undocumented wire values still pass through at runtime —
+ * the TYPE says what the API documents).
  */
 export const enumDecl = (o: EnumDeclOptions): string[] => {
-  const union = o.values.length
-    ? `${o.values.map(q).join(" | ")} | (string & {})`
-    : "string";
+  const union = o.values.length ? o.values.map(q).join(" | ") : "string";
   return [
     `export type ${o.name} = ${union};`,
     `export const ${o.name} = ${o.pure ?? ""}${o.schemaExpr ?? "S.String"};\n`,

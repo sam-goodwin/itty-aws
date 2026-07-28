@@ -48,8 +48,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -57,8 +56,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -91,8 +89,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -199,7 +196,7 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
 /** The Artifact items on this page */
-export type ArtifactListResultValueList = Artifact[];
+export type ArtifactListResultValueList = ReadonlyArray<Artifact>;
 export const ArtifactListResultValueList = /*@__PURE__*/ S.Array(
   Artifact,
 ) as any as S.Schema<ArtifactListResultValueList>;
@@ -284,39 +281,8 @@ export const ArtifactDownloadResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ArtifactDownloadResult",
 }) as any as S.Schema<ArtifactDownloadResult>;
 
-export interface ConfigTemplateMetadatasCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the ConfigTemplate */
-  configTemplateName: string;
-  /** The name of the ConfigTemplateMetadataProperties */
-  configTemplateMetadataName: string;
-  body: unknown;
-}
-export const ConfigTemplateMetadatasCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      configTemplateName: S.String.pipe(T.Label()),
-      configTemplateMetadataName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
-        code: 200,
-        apiVersion: "2026-03-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigTemplateMetadatasCreateOrUpdateRequest",
-  }) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateRequest>;
-
 /** Hierarchy Ids */
-export type HierarchyMetadataHierarchyIdsList = string[];
+export type HierarchyMetadataHierarchyIdsList = ReadonlyArray<string>;
 export const HierarchyMetadataHierarchyIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HierarchyMetadataHierarchyIdsList>;
@@ -338,8 +304,80 @@ export const HierarchyMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HierarchyMetadata>;
 
 /** Hierarchy ARM Ids */
+export type ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList =
+  ReadonlyArray<HierarchyMetadata>;
+export const ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList =
+  /*@__PURE__*/ S.Array(
+    HierarchyMetadata,
+  ) as any as S.Schema<ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList>;
+
+/** Hierarchy ARM Ids */
+export type ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList =
+  ReadonlyArray<HierarchyMetadata>;
+export const ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList =
+  /*@__PURE__*/ S.Array(
+    HierarchyMetadata,
+  ) as any as S.Schema<ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList>;
+
+/** ConfigTemplateMetadata Properties */
+export interface ConfigTemplateMetadataPropertiesInput {
+  /** ArmId of Context */
+  contextId?: string;
+  /** Hierarchy ARM Ids */
+  linkedHierarchies?: ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList;
+  /** Hierarchy ARM Ids */
+  unLinkedHierarchies?: ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList;
+}
+export const ConfigTemplateMetadataPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      contextId: S.optional(S.String),
+      linkedHierarchies: S.optional(
+        ConfigTemplateMetadataPropertiesInputLinkedHierarchiesList,
+      ),
+      unLinkedHierarchies: S.optional(
+        ConfigTemplateMetadataPropertiesInputUnLinkedHierarchiesList,
+      ),
+    }),
+).annotate({
+  identifier: "ConfigTemplateMetadataPropertiesInput",
+}) as any as S.Schema<ConfigTemplateMetadataPropertiesInput>;
+
+export interface ConfigTemplateMetadatasCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the ConfigTemplate */
+  configTemplateName: string;
+  /** The name of the ConfigTemplateMetadataProperties */
+  configTemplateMetadataName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigTemplateMetadataPropertiesInput;
+}
+export const ConfigTemplateMetadatasCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      configTemplateName: S.String.pipe(T.Label()),
+      configTemplateMetadataName: S.String.pipe(T.Label()),
+      properties: S.optional(ConfigTemplateMetadataPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/configTemplates/{configTemplateName}/configTemplateMetadatas/{configTemplateMetadataName}",
+        code: 200,
+        apiVersion: "2026-03-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ConfigTemplateMetadatasCreateOrUpdateRequest",
+  }) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateRequest>;
+
+/** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesLinkedHierarchiesList =
-  HierarchyMetadata[];
+  ReadonlyArray<HierarchyMetadata>;
 export const ConfigTemplateMetadataPropertiesLinkedHierarchiesList =
   /*@__PURE__*/ S.Array(
     HierarchyMetadata,
@@ -347,7 +385,7 @@ export const ConfigTemplateMetadataPropertiesLinkedHierarchiesList =
 
 /** Hierarchy ARM Ids */
 export type ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList =
-  HierarchyMetadata[];
+  ReadonlyArray<HierarchyMetadata>;
 export const ConfigTemplateMetadataPropertiesUnLinkedHierarchiesList =
   /*@__PURE__*/ S.Array(
     HierarchyMetadata,
@@ -360,8 +398,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Initialized"
   | "InProgress"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** ConfigTemplateMetadata Properties */
@@ -568,7 +605,7 @@ export const ConfigTemplateMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConfigTemplateMetadata items on this page */
 export type ConfigTemplateMetadataListResultValueList =
-  ConfigTemplateMetadata[];
+  ReadonlyArray<ConfigTemplateMetadata>;
 export const ConfigTemplateMetadataListResultValueList = /*@__PURE__*/ S.Array(
   ConfigTemplateMetadata,
 ) as any as S.Schema<ConfigTemplateMetadataListResultValueList>;
@@ -589,6 +626,46 @@ export const ConfigTemplateMetadataListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigTemplateMetadataListResult",
 }) as any as S.Schema<ConfigTemplateMetadataListResult>;
 
+/** Hierarchy ARM Ids */
+export type ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList =
+  ReadonlyArray<HierarchyMetadata>;
+export const ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList =
+  /*@__PURE__*/ S.Array(
+    HierarchyMetadata,
+  ) as any as S.Schema<ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList>;
+
+/** Hierarchy ARM Ids */
+export type ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList =
+  ReadonlyArray<HierarchyMetadata>;
+export const ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList =
+  /*@__PURE__*/ S.Array(
+    HierarchyMetadata,
+  ) as any as S.Schema<ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList>;
+
+/** The updatable properties of the ConfigTemplateMetadata. */
+export interface ConfigTemplateMetadataUpdateProperties {
+  /** ArmId of Context */
+  contextId?: string;
+  /** Hierarchy ARM Ids */
+  linkedHierarchies?: ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList;
+  /** Hierarchy ARM Ids */
+  unLinkedHierarchies?: ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList;
+}
+export const ConfigTemplateMetadataUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      contextId: S.optional(S.String),
+      linkedHierarchies: S.optional(
+        ConfigTemplateMetadataUpdatePropertiesLinkedHierarchiesList,
+      ),
+      unLinkedHierarchies: S.optional(
+        ConfigTemplateMetadataUpdatePropertiesUnLinkedHierarchiesList,
+      ),
+    }),
+).annotate({
+  identifier: "ConfigTemplateMetadataUpdateProperties",
+}) as any as S.Schema<ConfigTemplateMetadataUpdateProperties>;
+
 export interface ConfigTemplateMetadatasUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -598,7 +675,8 @@ export interface ConfigTemplateMetadatasUpdateRequest {
   configTemplateName: string;
   /** The name of the ConfigTemplateMetadataProperties */
   configTemplateMetadataName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigTemplateMetadataUpdateProperties;
 }
 export const ConfigTemplateMetadatasUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -607,7 +685,7 @@ export const ConfigTemplateMetadatasUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       configTemplateName: S.String.pipe(T.Label()),
       configTemplateMetadataName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ConfigTemplateMetadataUpdateProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -783,7 +861,8 @@ export const ConfigTemplateSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigTemplateSchema>;
 
 /** The ConfigTemplateSchema items on this page */
-export type ConfigTemplateSchemaListResultValueList = ConfigTemplateSchema[];
+export type ConfigTemplateSchemaListResultValueList =
+  ReadonlyArray<ConfigTemplateSchema>;
 export const ConfigTemplateSchemaListResultValueList = /*@__PURE__*/ S.Array(
   ConfigTemplateSchema,
 ) as any as S.Schema<ConfigTemplateSchemaListResultValueList>;
@@ -804,6 +883,29 @@ export const ConfigTemplateSchemaListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigTemplateSchemaListResult",
 }) as any as S.Schema<ConfigTemplateSchemaListResult>;
 
+/** Resource tags. */
+export type ConfigTemplatesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigTemplatesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConfigTemplatesCreateOrUpdateRequestTagsMap>;
+
+/** Config Template Properties */
+export interface ConfigTemplatePropertiesInput {
+  /** Description of config template */
+  description: string;
+}
+export const ConfigTemplatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+  }),
+).annotate({
+  identifier: "ConfigTemplatePropertiesInput",
+}) as any as S.Schema<ConfigTemplatePropertiesInput>;
+
 export interface ConfigTemplatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -811,7 +913,12 @@ export interface ConfigTemplatesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the ConfigTemplate */
   configTemplateName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ConfigTemplatesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigTemplatePropertiesInput;
 }
 export const ConfigTemplatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -819,7 +926,9 @@ export const ConfigTemplatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       configTemplateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ConfigTemplatesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(ConfigTemplatePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -898,6 +1007,37 @@ export const ConfigTemplatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ConfigTemplatesCreateOrUpdateResponse",
 }) as any as S.Schema<ConfigTemplatesCreateOrUpdateResponse>;
 
+/** Denotes which part of the version number will be updated */
+export type UpdateType = "Major" | "Minor" | "Patch";
+export const UpdateType = /*@__PURE__*/ S.String;
+
+/** Config Template Version Properties */
+export interface ConfigTemplateVersionPropertiesInput {
+  /** Configuration values */
+  configurations: string;
+}
+export const ConfigTemplateVersionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      configurations: S.String,
+    }),
+).annotate({
+  identifier: "ConfigTemplateVersionPropertiesInput",
+}) as any as S.Schema<ConfigTemplateVersionPropertiesInput>;
+
+/** Config Template Version Resource */
+export interface ConfigTemplateVersionInput {
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigTemplateVersionPropertiesInput;
+}
+export const ConfigTemplateVersionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(ConfigTemplateVersionPropertiesInput),
+  }),
+).annotate({
+  identifier: "ConfigTemplateVersionInput",
+}) as any as S.Schema<ConfigTemplateVersionInput>;
+
 export interface ConfigTemplatesCreateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -905,14 +1045,21 @@ export interface ConfigTemplatesCreateVersionRequest {
   resourceGroupName: string;
   /** The name of the ConfigTemplate */
   configTemplateName: string;
-  body: unknown;
+  /** Update type */
+  updateType?: UpdateType;
+  /** Version to create */
+  version?: string;
+  /** Config Template Version */
+  configTemplateVersion: ConfigTemplateVersionInput;
 }
 export const ConfigTemplatesCreateVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     configTemplateName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    updateType: S.optional(UpdateType),
+    version: S.optional(S.String),
+    configTemplateVersion: ConfigTemplateVersionInput,
   }).pipe(
     T.Http({
       method: "POST",
@@ -1068,6 +1215,14 @@ export const ConfigTemplatesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigTemplatesGetResponse",
 }) as any as S.Schema<ConfigTemplatesGetResponse>;
 
+/** Hierarchy Ids */
+export type ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList =
+  ReadonlyArray<string>;
+export const ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList>;
+
 export interface ConfigTemplatesLinkToHierarchiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1075,7 +1230,12 @@ export interface ConfigTemplatesLinkToHierarchiesRequest {
   resourceGroupName: string;
   /** The name of the ConfigTemplate */
   configTemplateName: string;
-  body: unknown;
+  /** Context Id */
+  contextId: string;
+  /** Hierarchy Ids */
+  hierarchyIds?: ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList;
+  /** Hierarchy Level */
+  level?: string;
 }
 export const ConfigTemplatesLinkToHierarchiesRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1083,7 +1243,11 @@ export const ConfigTemplatesLinkToHierarchiesRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       configTemplateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      contextId: S.String,
+      hierarchyIds: S.optional(
+        ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList,
+      ),
+      level: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1166,7 +1330,7 @@ export const ConfigTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigTemplate" }) as any as S.Schema<ConfigTemplate>;
 
 /** The ConfigTemplate items on this page */
-export type ConfigTemplateListResultValueList = ConfigTemplate[];
+export type ConfigTemplateListResultValueList = ReadonlyArray<ConfigTemplate>;
 export const ConfigTemplateListResultValueList = /*@__PURE__*/ S.Array(
   ConfigTemplate,
 ) as any as S.Schema<ConfigTemplateListResultValueList>;
@@ -1214,14 +1378,15 @@ export interface ConfigTemplatesRemoveVersionRequest {
   resourceGroupName: string;
   /** The name of the ConfigTemplate */
   configTemplateName: string;
-  body: unknown;
+  /** Version of the Resource */
+  version: string;
 }
 export const ConfigTemplatesRemoveVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     configTemplateName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    version: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -1247,6 +1412,14 @@ export const RemoveVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveVersionResponse",
 }) as any as S.Schema<RemoveVersionResponse>;
 
+/** Hierarchy Ids */
+export type ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList =
+  ReadonlyArray<string>;
+export const ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList>;
+
 export interface ConfigTemplatesUnLinkFromHierarchiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1254,7 +1427,12 @@ export interface ConfigTemplatesUnLinkFromHierarchiesRequest {
   resourceGroupName: string;
   /** The name of the ConfigTemplate */
   configTemplateName: string;
-  body: unknown;
+  /** Context Id */
+  contextId: string;
+  /** Hierarchy Ids */
+  hierarchyIds?: ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList;
+  /** Hierarchy Level */
+  level?: string;
 }
 export const ConfigTemplatesUnLinkFromHierarchiesRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1262,7 +1440,11 @@ export const ConfigTemplatesUnLinkFromHierarchiesRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       configTemplateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      contextId: S.String,
+      hierarchyIds: S.optional(
+        ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList,
+      ),
+      level: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1281,6 +1463,28 @@ export const ConfigTemplatesUnLinkFromHierarchiesResponse =
     identifier: "ConfigTemplatesUnLinkFromHierarchiesResponse",
   }) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesResponse>;
 
+/** Resource tags. */
+export type ConfigTemplatesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigTemplatesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConfigTemplatesUpdateRequestTagsMap>;
+
+/** The updatable properties of the ConfigTemplate. */
+export interface ConfigTemplateUpdateProperties {
+  /** Description of config template */
+  description?: string;
+}
+export const ConfigTemplateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigTemplateUpdateProperties",
+}) as any as S.Schema<ConfigTemplateUpdateProperties>;
+
 export interface ConfigTemplatesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1288,14 +1492,18 @@ export interface ConfigTemplatesUpdateRequest {
   resourceGroupName: string;
   /** The name of the ConfigTemplate */
   configTemplateName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ConfigTemplatesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigTemplateUpdateProperties;
 }
 export const ConfigTemplatesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     configTemplateName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ConfigTemplatesUpdateRequestTagsMap),
+    properties: S.optional(ConfigTemplateUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1359,7 +1567,8 @@ export interface ConfigTemplateVersionsCreateOrUpdateRequest {
   configTemplateName: string;
   /** The name of the ConfigTemplateVersion */
   configTemplateVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigTemplateVersionPropertiesInput;
 }
 export const ConfigTemplateVersionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1368,7 +1577,7 @@ export const ConfigTemplateVersionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       configTemplateName: S.String.pipe(T.Label()),
       configTemplateVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ConfigTemplateVersionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1554,7 +1763,8 @@ export const ConfigTemplateVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigTemplateVersion>;
 
 /** The ConfigTemplateVersion items on this page */
-export type ConfigTemplateVersionListResultValueList = ConfigTemplateVersion[];
+export type ConfigTemplateVersionListResultValueList =
+  ReadonlyArray<ConfigTemplateVersion>;
 export const ConfigTemplateVersionListResultValueList = /*@__PURE__*/ S.Array(
   ConfigTemplateVersion,
 ) as any as S.Schema<ConfigTemplateVersionListResultValueList>;
@@ -1575,6 +1785,20 @@ export const ConfigTemplateVersionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigTemplateVersionListResult",
 }) as any as S.Schema<ConfigTemplateVersionListResult>;
 
+/** Config Template Version Properties */
+export interface ConfigTemplateVersionPropertiesUpdate {
+  /** Configuration values */
+  configurations?: string;
+}
+export const ConfigTemplateVersionPropertiesUpdate = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      configurations: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ConfigTemplateVersionPropertiesUpdate",
+}) as any as S.Schema<ConfigTemplateVersionPropertiesUpdate>;
+
 export interface ConfigTemplateVersionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1584,7 +1808,8 @@ export interface ConfigTemplateVersionsUpdateRequest {
   configTemplateName: string;
   /** The name of the ConfigTemplateVersion */
   configTemplateVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigTemplateVersionPropertiesUpdate;
 }
 export const ConfigTemplateVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1592,7 +1817,7 @@ export const ConfigTemplateVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     configTemplateName: S.String.pipe(T.Label()),
     configTemplateVersionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ConfigTemplateVersionPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1633,19 +1858,34 @@ export const ConfigTemplateVersionsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ConfigTemplateVersionsUpdateResponse",
 }) as any as S.Schema<ConfigTemplateVersionsUpdateResponse>;
 
+/** Properties for ConfigurationReference Resource */
+export interface ConfigurationReferencePropertiesInput {
+  /** ArmId of Configuration resource */
+  configurationResourceId?: string;
+}
+export const ConfigurationReferencePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      configurationResourceId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ConfigurationReferencePropertiesInput",
+}) as any as S.Schema<ConfigurationReferencePropertiesInput>;
+
 export interface ConfigurationReferencesCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the ConfigurationReference */
   configurationReferenceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigurationReferencePropertiesInput;
 }
 export const ConfigurationReferencesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceUri: S.String.pipe(T.Label()),
       configurationReferenceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ConfigurationReferencePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1823,7 +2063,7 @@ export const ConfigurationReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConfigurationReference items on this page */
 export type ConfigurationReferenceListResultValueList =
-  ConfigurationReference[];
+  ReadonlyArray<ConfigurationReference>;
 export const ConfigurationReferenceListResultValueList = /*@__PURE__*/ S.Array(
   ConfigurationReference,
 ) as any as S.Schema<ConfigurationReferenceListResultValueList>;
@@ -1849,14 +2089,15 @@ export interface ConfigurationReferencesUpdateRequest {
   resourceUri: string;
   /** The name of the ConfigurationReference */
   configurationReferenceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigurationReferencePropertiesInput;
 }
 export const ConfigurationReferencesUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       resourceUri: S.String.pipe(T.Label()),
       configurationReferenceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ConfigurationReferencePropertiesInput),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1894,6 +2135,24 @@ export const ConfigurationReferencesUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ConfigurationReferencesUpdateResponse",
 }) as any as S.Schema<ConfigurationReferencesUpdateResponse>;
 
+/** Resource tags. */
+export type ConfigurationsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConfigurationsCreateOrUpdateRequestTagsMap>;
+
+/** Configuration Properties */
+export interface ConfigurationPropertiesInput {}
+export const ConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ConfigurationPropertiesInput",
+}) as any as S.Schema<ConfigurationPropertiesInput>;
+
 export interface ConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1901,14 +2160,21 @@ export interface ConfigurationsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the Configuration */
   configurationName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ConfigurationsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigurationPropertiesInput;
 }
 export const ConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     configurationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ConfigurationsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2133,7 +2399,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
-export type ConfigurationListResultValueList = Configuration[];
+export type ConfigurationListResultValueList = ReadonlyArray<Configuration>;
 export const ConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationListResultValueList>;
@@ -2174,6 +2440,15 @@ export const ConfigurationsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "ConfigurationsListBySubscriptionRequest",
 }) as any as S.Schema<ConfigurationsListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type ConfigurationsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConfigurationsUpdateRequestTagsMap>;
+
 export interface ConfigurationsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2181,14 +2456,18 @@ export interface ConfigurationsUpdateRequest {
   resourceGroupName: string;
   /** Name of the Configuration */
   configurationName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ConfigurationsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: ConfigurationPropertiesInput;
 }
 export const ConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     configurationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ConfigurationsUpdateRequestTagsMap),
+    properties: S.optional(ConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2240,6 +2519,78 @@ export const ConfigurationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationsUpdateResponse",
 }) as any as S.Schema<ConfigurationsUpdateResponse>;
 
+/** Resource tags. */
+export type ContextsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ContextsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ContextsCreateOrUpdateRequestTagsMap>;
+
+/** Resource Type State */
+export type ResourceState = "active" | "inactive";
+export const ResourceState = /*@__PURE__*/ S.String;
+
+/** Capability, to match in Solution Templates & Targets */
+export interface Capability {
+  /** Name of Capability */
+  name: string;
+  /** Description of Capability */
+  description: string;
+  /** State of resource */
+  state?: ResourceState;
+}
+export const Capability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.String,
+    state: S.optional(ResourceState),
+  }),
+).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
+
+/** List of Capabilities */
+export type ContextPropertiesInputCapabilitiesList = ReadonlyArray<Capability>;
+export const ContextPropertiesInputCapabilitiesList = /*@__PURE__*/ S.Array(
+  Capability,
+) as any as S.Schema<ContextPropertiesInputCapabilitiesList>;
+
+/** Hierarchy, to tag Sites / Hierarchy Provider nodes with what they represent */
+export interface Hierarchy {
+  /** Name of Hierarchy */
+  name: string;
+  /** Description of Hierarchy */
+  description: string;
+}
+export const Hierarchy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.String,
+  }),
+).annotate({ identifier: "Hierarchy" }) as any as S.Schema<Hierarchy>;
+
+/** List of Hierarchies */
+export type ContextPropertiesInputHierarchiesList = ReadonlyArray<Hierarchy>;
+export const ContextPropertiesInputHierarchiesList = /*@__PURE__*/ S.Array(
+  Hierarchy,
+) as any as S.Schema<ContextPropertiesInputHierarchiesList>;
+
+/** Context Properties */
+export interface ContextPropertiesInput {
+  /** List of Capabilities */
+  capabilities: ContextPropertiesInputCapabilitiesList;
+  /** List of Hierarchies */
+  hierarchies: ContextPropertiesInputHierarchiesList;
+}
+export const ContextPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capabilities: ContextPropertiesInputCapabilitiesList,
+    hierarchies: ContextPropertiesInputHierarchiesList,
+  }),
+).annotate({
+  identifier: "ContextPropertiesInput",
+}) as any as S.Schema<ContextPropertiesInput>;
+
 export interface ContextsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2247,14 +2598,21 @@ export interface ContextsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Context. */
   contextName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ContextsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ContextPropertiesInput;
 }
 export const ContextsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     contextName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ContextsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ContextPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2276,49 +2634,14 @@ export const ContextsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<ContextsCreateOrUpdateResponseTagsMap>;
 
-/** Resource Type State */
-export type ResourceState = "active" | "inactive" | (string & {});
-export const ResourceState = /*@__PURE__*/ S.String;
-
-/** Capability, to match in Solution Templates & Targets */
-export interface Capability {
-  /** Name of Capability */
-  name: string;
-  /** Description of Capability */
-  description: string;
-  /** State of resource */
-  state?: ResourceState;
-}
-export const Capability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.String,
-    state: S.optional(ResourceState),
-  }),
-).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
-
 /** List of Capabilities */
-export type ContextPropertiesCapabilitiesList = Capability[];
+export type ContextPropertiesCapabilitiesList = ReadonlyArray<Capability>;
 export const ContextPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<ContextPropertiesCapabilitiesList>;
 
-/** Hierarchy, to tag Sites / Hierarchy Provider nodes with what they represent */
-export interface Hierarchy {
-  /** Name of Hierarchy */
-  name: string;
-  /** Description of Hierarchy */
-  description: string;
-}
-export const Hierarchy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.String,
-  }),
-).annotate({ identifier: "Hierarchy" }) as any as S.Schema<Hierarchy>;
-
 /** List of Hierarchies */
-export type ContextPropertiesHierarchiesList = Hierarchy[];
+export type ContextPropertiesHierarchiesList = ReadonlyArray<Hierarchy>;
 export const ContextPropertiesHierarchiesList = /*@__PURE__*/ S.Array(
   Hierarchy,
 ) as any as S.Schema<ContextPropertiesHierarchiesList>;
@@ -2528,7 +2851,7 @@ export const Context = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Context" }) as any as S.Schema<Context>;
 
 /** The Context items on this page */
-export type ContextListResultValueList = Context[];
+export type ContextListResultValueList = ReadonlyArray<Context>;
 export const ContextListResultValueList = /*@__PURE__*/ S.Array(
   Context,
 ) as any as S.Schema<ContextListResultValueList>;
@@ -2568,6 +2891,43 @@ export const ContextsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContextsListBySubscriptionRequest",
 }) as any as S.Schema<ContextsListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type ContextsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ContextsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ContextsUpdateRequestTagsMap>;
+
+/** List of Capabilities */
+export type ContextUpdatePropertiesCapabilitiesList = ReadonlyArray<Capability>;
+export const ContextUpdatePropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
+  Capability,
+) as any as S.Schema<ContextUpdatePropertiesCapabilitiesList>;
+
+/** List of Hierarchies */
+export type ContextUpdatePropertiesHierarchiesList = ReadonlyArray<Hierarchy>;
+export const ContextUpdatePropertiesHierarchiesList = /*@__PURE__*/ S.Array(
+  Hierarchy,
+) as any as S.Schema<ContextUpdatePropertiesHierarchiesList>;
+
+/** The updatable properties of the Context. */
+export interface ContextUpdateProperties {
+  /** List of Capabilities */
+  capabilities?: ContextUpdatePropertiesCapabilitiesList;
+  /** List of Hierarchies */
+  hierarchies?: ContextUpdatePropertiesHierarchiesList;
+}
+export const ContextUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capabilities: S.optional(ContextUpdatePropertiesCapabilitiesList),
+    hierarchies: S.optional(ContextUpdatePropertiesHierarchiesList),
+  }),
+).annotate({
+  identifier: "ContextUpdateProperties",
+}) as any as S.Schema<ContextUpdateProperties>;
+
 export interface ContextsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2575,14 +2935,18 @@ export interface ContextsUpdateRequest {
   resourceGroupName: string;
   /** The name of the Context. */
   contextName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ContextsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: ContextUpdateProperties;
 }
 export const ContextsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     contextName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ContextsUpdateRequestTagsMap),
+    properties: S.optional(ContextUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2634,6 +2998,47 @@ export const ContextsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContextsUpdateResponse",
 }) as any as S.Schema<ContextsUpdateResponse>;
 
+/** Resource tags. */
+export type DiagnosticsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DiagnosticsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DiagnosticsCreateOrUpdateRequestTagsMap>;
+
+/** The properties of a Diagnostic resource. */
+export interface DiagnosticPropertiesInput {}
+export const DiagnosticPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DiagnosticPropertiesInput",
+}) as any as S.Schema<DiagnosticPropertiesInput>;
+
+/** The supported ExtendedLocation types. */
+export type AzureResourceManagerCommonTypesExtendedLocationType =
+  | "EdgeZone"
+  | "CustomLocation";
+export const AzureResourceManagerCommonTypesExtendedLocationType =
+  /*@__PURE__*/ S.String;
+
+/** The complex type of the extended location. */
+export interface AzureResourceManagerCommonTypesExtendedLocation {
+  /** The name of the extended location. */
+  name: string;
+  /** The type of the extended location. */
+  type: AzureResourceManagerCommonTypesExtendedLocationType;
+}
+export const AzureResourceManagerCommonTypesExtendedLocation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      type: AzureResourceManagerCommonTypesExtendedLocationType,
+    }),
+  ).annotate({
+    identifier: "AzureResourceManagerCommonTypesExtendedLocation",
+  }) as any as S.Schema<AzureResourceManagerCommonTypesExtendedLocation>;
+
 export interface DiagnosticsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2641,14 +3046,25 @@ export interface DiagnosticsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of Diagnostic. */
   diagnosticName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DiagnosticsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: DiagnosticPropertiesInput;
+  extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const DiagnosticsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     diagnosticName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DiagnosticsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(DiagnosticPropertiesInput),
+    extendedLocation: S.optional(
+      AzureResourceManagerCommonTypesExtendedLocation,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2682,31 +3098,6 @@ export const DiagnosticProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DiagnosticProperties",
 }) as any as S.Schema<DiagnosticProperties>;
-
-/** The supported ExtendedLocation types. */
-export type AzureResourceManagerCommonTypesExtendedLocationType =
-  | "EdgeZone"
-  | "CustomLocation"
-  | (string & {});
-export const AzureResourceManagerCommonTypesExtendedLocationType =
-  /*@__PURE__*/ S.String;
-
-/** The complex type of the extended location. */
-export interface AzureResourceManagerCommonTypesExtendedLocation {
-  /** The name of the extended location. */
-  name: string;
-  /** The type of the extended location. */
-  type: AzureResourceManagerCommonTypesExtendedLocationType;
-}
-export const AzureResourceManagerCommonTypesExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: AzureResourceManagerCommonTypesExtendedLocationType,
-    }),
-  ).annotate({
-    identifier: "AzureResourceManagerCommonTypesExtendedLocation",
-  }) as any as S.Schema<AzureResourceManagerCommonTypesExtendedLocation>;
 
 export interface DiagnosticsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2915,7 +3306,7 @@ export const Diagnostic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Diagnostic" }) as any as S.Schema<Diagnostic>;
 
 /** The Diagnostic items on this page */
-export type DiagnosticListResultValueList = Diagnostic[];
+export type DiagnosticListResultValueList = ReadonlyArray<Diagnostic>;
 export const DiagnosticListResultValueList = /*@__PURE__*/ S.Array(
   Diagnostic,
 ) as any as S.Schema<DiagnosticListResultValueList>;
@@ -2956,6 +3347,23 @@ export const DiagnosticsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "DiagnosticsListBySubscriptionRequest",
 }) as any as S.Schema<DiagnosticsListBySubscriptionRequest>;
 
+/** The updatable properties of the Diagnostic. */
+export interface DiagnosticUpdatePropertiesInput {}
+export const DiagnosticUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DiagnosticUpdatePropertiesInput",
+}) as any as S.Schema<DiagnosticUpdatePropertiesInput>;
+
+/** Resource tags. */
+export type DiagnosticsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DiagnosticsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DiagnosticsUpdateRequestTagsMap>;
+
 export interface DiagnosticsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2963,14 +3371,18 @@ export interface DiagnosticsUpdateRequest {
   resourceGroupName: string;
   /** Name of Diagnostic. */
   diagnosticName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DiagnosticUpdatePropertiesInput;
+  /** Resource tags. */
+  tags?: DiagnosticsUpdateRequestTagsMap;
 }
 export const DiagnosticsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     diagnosticName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DiagnosticUpdatePropertiesInput),
+    tags: S.optional(DiagnosticsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3029,6 +3441,111 @@ export const DiagnosticsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiagnosticsUpdateResponse",
 }) as any as S.Schema<DiagnosticsUpdateResponse>;
 
+/** Resource tags. */
+export type DisconnectedOperationsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DisconnectedOperationsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DisconnectedOperationsCreateOrUpdateRequestTagsMap>;
+
+/** Connection Intent */
+export type ConnectionIntent = "Connected" | "Disconnected";
+export const ConnectionIntent = /*@__PURE__*/ S.String;
+
+/** Registration status */
+export type RegistrationStatus = "Registered" | "Unregistered";
+export const RegistrationStatus = /*@__PURE__*/ S.String;
+
+/** Auto renew status */
+export type AutoRenew = "Enabled" | "Disabled";
+export const AutoRenew = /*@__PURE__*/ S.String;
+
+/** Pricing model */
+export type PricingModel = "Trial" | "Annual";
+export const PricingModel = /*@__PURE__*/ S.String;
+
+/** The billing period */
+export interface BillingPeriodInput {
+  /** The number of cores */
+  cores: number;
+  /** The pricing model */
+  pricingModel: PricingModel;
+}
+export const BillingPeriodInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cores: S.Number,
+    pricingModel: PricingModel,
+  }),
+).annotate({
+  identifier: "BillingPeriodInput",
+}) as any as S.Schema<BillingPeriodInput>;
+
+/** The billing configuration */
+export interface BillingConfigurationInput {
+  /** The auto renew setting */
+  autoRenew: AutoRenew;
+  /** The current billing configuration */
+  current: BillingPeriodInput;
+  /** The upcoming billing configuration */
+  upcoming?: BillingPeriodInput;
+}
+export const BillingConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoRenew: AutoRenew,
+    current: BillingPeriodInput,
+    upcoming: S.optional(BillingPeriodInput),
+  }),
+).annotate({
+  identifier: "BillingConfigurationInput",
+}) as any as S.Schema<BillingConfigurationInput>;
+
+/** Benefit plans status */
+export type BenefitPlanStatus = "Enabled" | "Disabled";
+export const BenefitPlanStatus = /*@__PURE__*/ S.String;
+
+/** The benefit plans */
+export interface BenefitPlans {
+  /** Azure Hybrid Windows Server Benefit plan */
+  azureHybridWindowsServerBenefit?: BenefitPlanStatus;
+  /** Number of Windows Server VMs to license under the Azure Hybrid Benefit plan */
+  windowsServerVmCount?: number;
+}
+export const BenefitPlans = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    azureHybridWindowsServerBenefit: S.optional(BenefitPlanStatus),
+    windowsServerVmCount: S.optional(S.Number),
+  }),
+).annotate({ identifier: "BenefitPlans" }) as any as S.Schema<BenefitPlans>;
+
+/** The disconnected operation properties */
+export interface DisconnectedOperationPropertiesInput {
+  /** The connection intent */
+  connectionIntent: ConnectionIntent;
+  /** The registration intent */
+  registrationStatus?: RegistrationStatus;
+  /** The device version */
+  deviceVersion?: string;
+  /** The billing configuration */
+  billingConfiguration?: BillingConfigurationInput;
+  /** The benefit plans */
+  benefitPlans?: BenefitPlans;
+}
+export const DisconnectedOperationPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      connectionIntent: ConnectionIntent,
+      registrationStatus: S.optional(RegistrationStatus),
+      deviceVersion: S.optional(S.String),
+      billingConfiguration: S.optional(BillingConfigurationInput),
+      benefitPlans: S.optional(BenefitPlans),
+    }),
+).annotate({
+  identifier: "DisconnectedOperationPropertiesInput",
+}) as any as S.Schema<DisconnectedOperationPropertiesInput>;
+
 export interface DisconnectedOperationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3036,7 +3553,12 @@ export interface DisconnectedOperationsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the resource */
   name: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DisconnectedOperationsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: DisconnectedOperationPropertiesInput;
 }
 export const DisconnectedOperationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3044,7 +3566,9 @@ export const DisconnectedOperationsCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(DisconnectedOperationsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(DisconnectedOperationPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3068,32 +3592,16 @@ export const DisconnectedOperationsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<DisconnectedOperationsCreateOrUpdateResponseTagsMap>;
 
 /** Billing model */
-export type BillingModel = "Capacity" | (string & {});
+export type BillingModel = "Capacity";
 export const BillingModel = /*@__PURE__*/ S.String;
 
-/** Connection Intent */
-export type ConnectionIntent = "Connected" | "Disconnected" | (string & {});
-export const ConnectionIntent = /*@__PURE__*/ S.String;
-
 /** Connection status */
-export type ConnectionStatus = "Connected" | "Disconnected" | (string & {});
+export type ConnectionStatus = "Connected" | "Disconnected";
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
-/** Registration status */
-export type RegistrationStatus = "Registered" | "Unregistered" | (string & {});
-export const RegistrationStatus = /*@__PURE__*/ S.String;
-
-/** Auto renew status */
-export type AutoRenew = "Enabled" | "Disabled" | (string & {});
-export const AutoRenew = /*@__PURE__*/ S.String;
-
 /** Billing status */
-export type BillingStatus = "Enabled" | "Disabled" | "Stopped" | (string & {});
+export type BillingStatus = "Enabled" | "Disabled" | "Stopped";
 export const BillingStatus = /*@__PURE__*/ S.String;
-
-/** Pricing model */
-export type PricingModel = "Trial" | "Annual" | (string & {});
-export const PricingModel = /*@__PURE__*/ S.String;
 
 /** The billing period */
 export interface BillingPeriod {
@@ -3136,24 +3644,6 @@ export const BillingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BillingConfiguration",
 }) as any as S.Schema<BillingConfiguration>;
-
-/** Benefit plans status */
-export type BenefitPlanStatus = "Enabled" | "Disabled" | (string & {});
-export const BenefitPlanStatus = /*@__PURE__*/ S.String;
-
-/** The benefit plans */
-export interface BenefitPlans {
-  /** Azure Hybrid Windows Server Benefit plan */
-  azureHybridWindowsServerBenefit?: BenefitPlanStatus;
-  /** Number of Windows Server VMs to license under the Azure Hybrid Benefit plan */
-  windowsServerVmCount?: number;
-}
-export const BenefitPlans = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    azureHybridWindowsServerBenefit: S.optional(BenefitPlanStatus),
-    windowsServerVmCount: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BenefitPlans" }) as any as S.Schema<BenefitPlans>;
 
 /** The disconnected operation properties */
 export interface DisconnectedOperationProperties {
@@ -3385,7 +3875,8 @@ export const DisconnectedOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisconnectedOperation>;
 
 /** The DisconnectedOperation items on this page */
-export type DisconnectedOperationListResultValueList = DisconnectedOperation[];
+export type DisconnectedOperationListResultValueList =
+  ReadonlyArray<DisconnectedOperation>;
 export const DisconnectedOperationListResultValueList = /*@__PURE__*/ S.Array(
   DisconnectedOperation,
 ) as any as S.Schema<DisconnectedOperationListResultValueList>;
@@ -3490,6 +3981,77 @@ export const DisconnectedOperationDeploymentManifest = /*@__PURE__*/ S.suspend(
   identifier: "DisconnectedOperationDeploymentManifest",
 }) as any as S.Schema<DisconnectedOperationDeploymentManifest>;
 
+/** Resource tags. */
+export type DisconnectedOperationsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DisconnectedOperationsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DisconnectedOperationsUpdateRequestTagsMap>;
+
+/** The billing period */
+export interface BillingPeriodUpdate {
+  /** The number of cores */
+  cores?: number;
+  /** The pricing model */
+  pricingModel?: PricingModel;
+}
+export const BillingPeriodUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cores: S.optional(S.Number),
+    pricingModel: S.optional(PricingModel),
+  }),
+).annotate({
+  identifier: "BillingPeriodUpdate",
+}) as any as S.Schema<BillingPeriodUpdate>;
+
+/** The billing configuration */
+export interface BillingConfigurationUpdate {
+  /** The auto renew setting */
+  autoRenew?: AutoRenew;
+  /** The current billing configuration */
+  current?: BillingPeriodUpdate;
+  /** The upcoming billing configuration */
+  upcoming?: BillingPeriodUpdate;
+}
+export const BillingConfigurationUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoRenew: S.optional(AutoRenew),
+    current: S.optional(BillingPeriodUpdate),
+    upcoming: S.optional(BillingPeriodUpdate),
+  }),
+).annotate({
+  identifier: "BillingConfigurationUpdate",
+}) as any as S.Schema<BillingConfigurationUpdate>;
+
+/** The updatable properties of the DisconnectedOperation. */
+export interface DisconnectedOperationUpdateProperties {
+  /** The connection intent */
+  connectionIntent?: ConnectionIntent;
+  /** The registration intent */
+  registrationStatus?: RegistrationStatus;
+  /** The device version */
+  deviceVersion?: string;
+  /** The billing configuration */
+  billingConfiguration?: BillingConfigurationUpdate;
+  /** The benefit plans */
+  benefitPlans?: BenefitPlans;
+}
+export const DisconnectedOperationUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      connectionIntent: S.optional(ConnectionIntent),
+      registrationStatus: S.optional(RegistrationStatus),
+      deviceVersion: S.optional(S.String),
+      billingConfiguration: S.optional(BillingConfigurationUpdate),
+      benefitPlans: S.optional(BenefitPlans),
+    }),
+).annotate({
+  identifier: "DisconnectedOperationUpdateProperties",
+}) as any as S.Schema<DisconnectedOperationUpdateProperties>;
+
 export interface DisconnectedOperationsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3497,14 +4059,18 @@ export interface DisconnectedOperationsUpdateRequest {
   resourceGroupName: string;
   /** Name of the resource */
   name: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DisconnectedOperationsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: DisconnectedOperationUpdateProperties;
 }
 export const DisconnectedOperationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DisconnectedOperationsUpdateRequestTagsMap),
+    properties: S.optional(DisconnectedOperationUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3558,6 +4124,19 @@ export const DisconnectedOperationsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "DisconnectedOperationsUpdateResponse",
 }) as any as S.Schema<DisconnectedOperationsUpdateResponse>;
 
+/** Dynamic Configuration Properties */
+export interface DynamicConfigurationPropertiesInput {
+  /** Current Version of dynamic configuration */
+  currentVersion: string;
+}
+export const DynamicConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currentVersion: S.String,
+  }),
+).annotate({
+  identifier: "DynamicConfigurationPropertiesInput",
+}) as any as S.Schema<DynamicConfigurationPropertiesInput>;
+
 export interface DynamicConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3567,7 +4146,8 @@ export interface DynamicConfigurationsCreateOrUpdateRequest {
   configurationName: string;
   /** Name of the dynamic configuration */
   dynamicConfigurationName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DynamicConfigurationPropertiesInput;
 }
 export const DynamicConfigurationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3576,7 +4156,7 @@ export const DynamicConfigurationsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       configurationName: S.String.pipe(T.Label()),
       dynamicConfigurationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DynamicConfigurationPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3590,11 +4170,11 @@ export const DynamicConfigurationsCreateOrUpdateRequest =
   }) as any as S.Schema<DynamicConfigurationsCreateOrUpdateRequest>;
 
 /** Available configuration types */
-export type ConfigurationType = "Shared" | "Hierarchy" | (string & {});
+export type ConfigurationType = "Shared" | "Hierarchy";
 export const ConfigurationType = /*@__PURE__*/ S.String;
 
 /** Available configuration models */
-export type ConfigurationModel = "Application" | "Common" | (string & {});
+export type ConfigurationModel = "Application" | "Common";
 export const ConfigurationModel = /*@__PURE__*/ S.String;
 
 /** Dynamic Configuration Properties */
@@ -3786,7 +4366,8 @@ export const DynamicConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicConfiguration>;
 
 /** The DynamicConfiguration items on this page */
-export type DynamicConfigurationListResultValueList = DynamicConfiguration[];
+export type DynamicConfigurationListResultValueList =
+  ReadonlyArray<DynamicConfiguration>;
 export const DynamicConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   DynamicConfiguration,
 ) as any as S.Schema<DynamicConfigurationListResultValueList>;
@@ -3807,6 +4388,20 @@ export const DynamicConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicConfigurationListResult",
 }) as any as S.Schema<DynamicConfigurationListResult>;
 
+/** Dynamic Configuration Properties */
+export interface DynamicConfigurationPropertiesUpdate {
+  /** Current Version of dynamic configuration */
+  currentVersion?: string;
+}
+export const DynamicConfigurationPropertiesUpdate = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      currentVersion: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "DynamicConfigurationPropertiesUpdate",
+}) as any as S.Schema<DynamicConfigurationPropertiesUpdate>;
+
 export interface DynamicConfigurationsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3816,7 +4411,8 @@ export interface DynamicConfigurationsUpdateRequest {
   configurationName: string;
   /** Name of the dynamic configuration */
   dynamicConfigurationName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DynamicConfigurationPropertiesUpdate;
 }
 export const DynamicConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3824,7 +4420,7 @@ export const DynamicConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     configurationName: S.String.pipe(T.Label()),
     dynamicConfigurationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DynamicConfigurationPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3861,6 +4457,20 @@ export const DynamicConfigurationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicConfigurationsUpdateResponse",
 }) as any as S.Schema<DynamicConfigurationsUpdateResponse>;
 
+/** Dynamic Configuration Properties */
+export interface DynamicConfigurationVersionPropertiesInput {
+  /** Values of configuration version */
+  values: string;
+}
+export const DynamicConfigurationVersionPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      values: S.String,
+    }),
+  ).annotate({
+    identifier: "DynamicConfigurationVersionPropertiesInput",
+  }) as any as S.Schema<DynamicConfigurationVersionPropertiesInput>;
+
 export interface DynamicConfigurationVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3872,7 +4482,8 @@ export interface DynamicConfigurationVersionsCreateOrUpdateRequest {
   dynamicConfigurationName: string;
   /** The name of the DynamicConfigurationVersion */
   dynamicConfigurationVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DynamicConfigurationVersionPropertiesInput;
 }
 export const DynamicConfigurationVersionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3882,7 +4493,7 @@ export const DynamicConfigurationVersionsCreateOrUpdateRequest =
       configurationName: S.String.pipe(T.Label()),
       dynamicConfigurationName: S.String.pipe(T.Label()),
       dynamicConfigurationVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DynamicConfigurationVersionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3898,8 +4509,7 @@ export const DynamicConfigurationVersionsCreateOrUpdateRequest =
 /** Configuration State Enums */
 export type ConfigurationState =
   | "ConfigurationCompleted"
-  | "ConfigurationPending"
-  | (string & {});
+  | "ConfigurationPending";
 export const ConfigurationState = /*@__PURE__*/ S.String;
 
 /** Dynamic Configuration Properties */
@@ -4107,7 +4717,7 @@ export const DynamicConfigurationVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The DynamicConfigurationVersion items on this page */
 export type DynamicConfigurationVersionListResultValueList =
-  DynamicConfigurationVersion[];
+  ReadonlyArray<DynamicConfigurationVersion>;
 export const DynamicConfigurationVersionListResultValueList =
   /*@__PURE__*/ S.Array(
     DynamicConfigurationVersion,
@@ -4130,6 +4740,20 @@ export const DynamicConfigurationVersionListResult = /*@__PURE__*/ S.suspend(
   identifier: "DynamicConfigurationVersionListResult",
 }) as any as S.Schema<DynamicConfigurationVersionListResult>;
 
+/** Dynamic Configuration Properties */
+export interface DynamicConfigurationVersionPropertiesUpdate {
+  /** Values of configuration version */
+  values?: string;
+}
+export const DynamicConfigurationVersionPropertiesUpdate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      values: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DynamicConfigurationVersionPropertiesUpdate",
+  }) as any as S.Schema<DynamicConfigurationVersionPropertiesUpdate>;
+
 export interface DynamicConfigurationVersionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4141,7 +4765,8 @@ export interface DynamicConfigurationVersionsUpdateRequest {
   dynamicConfigurationName: string;
   /** The name of the DynamicConfigurationVersion */
   dynamicConfigurationVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DynamicConfigurationVersionPropertiesUpdate;
 }
 export const DynamicConfigurationVersionsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4151,7 +4776,7 @@ export const DynamicConfigurationVersionsUpdateRequest =
       configurationName: S.String.pipe(T.Label()),
       dynamicConfigurationName: S.String.pipe(T.Label()),
       dynamicConfigurationVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DynamicConfigurationVersionPropertiesUpdate),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -4189,6 +4814,14 @@ export const DynamicConfigurationVersionsUpdateResponse =
     identifier: "DynamicConfigurationVersionsUpdateResponse",
   }) as any as S.Schema<DynamicConfigurationVersionsUpdateResponse>;
 
+/** DynamicSchema Properties */
+export interface DynamicSchemaPropertiesInput {}
+export const DynamicSchemaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DynamicSchemaPropertiesInput",
+}) as any as S.Schema<DynamicSchemaPropertiesInput>;
+
 export interface DynamicSchemasCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4198,7 +4831,8 @@ export interface DynamicSchemasCreateOrUpdateRequest {
   schemaName: string;
   /** The name of the DynamicSchema */
   dynamicSchemaName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DynamicSchemaPropertiesInput;
 }
 export const DynamicSchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4206,7 +4840,7 @@ export const DynamicSchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
     dynamicSchemaName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DynamicSchemaPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4411,7 +5045,7 @@ export const DynamicSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DynamicSchema" }) as any as S.Schema<DynamicSchema>;
 
 /** The DynamicSchema items on this page */
-export type DynamicSchemaListResultValueList = DynamicSchema[];
+export type DynamicSchemaListResultValueList = ReadonlyArray<DynamicSchema>;
 export const DynamicSchemaListResultValueList = /*@__PURE__*/ S.Array(
   DynamicSchema,
 ) as any as S.Schema<DynamicSchemaListResultValueList>;
@@ -4441,7 +5075,8 @@ export interface DynamicSchemasUpdateRequest {
   schemaName: string;
   /** The name of the DynamicSchema */
   dynamicSchemaName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: DynamicSchemaPropertiesInput;
 }
 export const DynamicSchemasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4449,7 +5084,7 @@ export const DynamicSchemasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
     dynamicSchemaName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DynamicSchemaPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4489,6 +5124,19 @@ export const DynamicSchemasUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicSchemasUpdateResponse",
 }) as any as S.Schema<DynamicSchemasUpdateResponse>;
 
+/** Schema Version Properties */
+export interface SchemaVersionPropertiesInput {
+  /** Value of schema version */
+  value: string;
+}
+export const SchemaVersionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.String,
+  }),
+).annotate({
+  identifier: "SchemaVersionPropertiesInput",
+}) as any as S.Schema<SchemaVersionPropertiesInput>;
+
 export interface DynamicSchemaVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4500,7 +5148,8 @@ export interface DynamicSchemaVersionsCreateOrUpdateRequest {
   dynamicSchemaName: string;
   /** The name of the DynamicSchemaVersion */
   dynamicSchemaVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaVersionPropertiesInput;
 }
 export const DynamicSchemaVersionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4510,7 +5159,7 @@ export const DynamicSchemaVersionsCreateOrUpdateRequest =
       schemaName: S.String.pipe(T.Label()),
       dynamicSchemaName: S.String.pipe(T.Label()),
       dynamicSchemaVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SchemaVersionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4721,7 +5370,8 @@ export const DynamicSchemaVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamicSchemaVersion>;
 
 /** The DynamicSchemaVersion items on this page */
-export type DynamicSchemaVersionListResultValueList = DynamicSchemaVersion[];
+export type DynamicSchemaVersionListResultValueList =
+  ReadonlyArray<DynamicSchemaVersion>;
 export const DynamicSchemaVersionListResultValueList = /*@__PURE__*/ S.Array(
   DynamicSchemaVersion,
 ) as any as S.Schema<DynamicSchemaVersionListResultValueList>;
@@ -4742,6 +5392,19 @@ export const DynamicSchemaVersionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicSchemaVersionListResult",
 }) as any as S.Schema<DynamicSchemaVersionListResult>;
 
+/** Schema Version Properties */
+export interface SchemaVersionPropertiesUpdate {
+  /** Value of schema version */
+  value?: string;
+}
+export const SchemaVersionPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SchemaVersionPropertiesUpdate",
+}) as any as S.Schema<SchemaVersionPropertiesUpdate>;
+
 export interface DynamicSchemaVersionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4753,7 +5416,8 @@ export interface DynamicSchemaVersionsUpdateRequest {
   dynamicSchemaName: string;
   /** The name of the DynamicSchemaVersion */
   dynamicSchemaVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaVersionPropertiesUpdate;
 }
 export const DynamicSchemaVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4762,7 +5426,7 @@ export const DynamicSchemaVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     schemaName: S.String.pipe(T.Label()),
     dynamicSchemaName: S.String.pipe(T.Label()),
     dynamicSchemaVersionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SchemaVersionPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4802,6 +5466,31 @@ export const DynamicSchemaVersionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicSchemaVersionsUpdateResponse",
 }) as any as S.Schema<DynamicSchemaVersionsUpdateResponse>;
 
+/** Execution specification */
+export type ExecutionPropertiesInputSpecificationMap = {
+  [key: string]: unknown | undefined;
+};
+export const ExecutionPropertiesInputSpecificationMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ExecutionPropertiesInputSpecificationMap>;
+
+/** Execution Properties */
+export interface ExecutionPropertiesInput {
+  /** Workflow version of execution */
+  workflowVersionId: string;
+  /** Execution specification */
+  specification?: ExecutionPropertiesInputSpecificationMap;
+}
+export const ExecutionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowVersionId: S.String,
+    specification: S.optional(ExecutionPropertiesInputSpecificationMap),
+  }),
+).annotate({
+  identifier: "ExecutionPropertiesInput",
+}) as any as S.Schema<ExecutionPropertiesInput>;
+
 export interface ExecutionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4815,7 +5504,9 @@ export interface ExecutionsCreateOrUpdateRequest {
   versionName: string;
   /** The name of the Execution. */
   executionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: ExecutionPropertiesInput;
+  extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const ExecutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4825,7 +5516,10 @@ export const ExecutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     workflowName: S.String.pipe(T.Label()),
     versionName: S.String.pipe(T.Label()),
     executionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ExecutionPropertiesInput),
+    extendedLocation: S.optional(
+      AzureResourceManagerCommonTypesExtendedLocation,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4848,7 +5542,7 @@ export const ExecutionPropertiesSpecificationMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExecutionPropertiesSpecificationMap>;
 
 /** Instance State */
-export type ActiveState = "active" | "inactive" | (string & {});
+export type ActiveState = "active" | "inactive";
 export const ActiveState = /*@__PURE__*/ S.String;
 
 /** The inputs of the StageHistory, Inputs holds a key-value map of user-defined parameters for the initial stage */
@@ -4898,7 +5592,7 @@ export const StageStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageStatus" }) as any as S.Schema<StageStatus>;
 
 /** target resource statuses */
-export type ExecutionStatusStageHistoryList = StageStatus[];
+export type ExecutionStatusStageHistoryList = ReadonlyArray<StageStatus>;
 export const ExecutionStatusStageHistoryList = /*@__PURE__*/ S.Array(
   StageStatus,
 ) as any as S.Schema<ExecutionStatusStageHistoryList>;
@@ -5147,7 +5841,7 @@ export const Execution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Execution" }) as any as S.Schema<Execution>;
 
 /** The Execution items on this page */
-export type ExecutionListResultValueList = Execution[];
+export type ExecutionListResultValueList = ReadonlyArray<Execution>;
 export const ExecutionListResultValueList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionListResultValueList>;
@@ -5168,6 +5862,31 @@ export const ExecutionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutionListResult",
 }) as any as S.Schema<ExecutionListResult>;
 
+/** Execution specification */
+export type ExecutionPropertiesUpdateSpecificationMap = {
+  [key: string]: unknown | undefined;
+};
+export const ExecutionPropertiesUpdateSpecificationMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ExecutionPropertiesUpdateSpecificationMap>;
+
+/** Execution Properties */
+export interface ExecutionPropertiesUpdate {
+  /** Workflow version of execution */
+  workflowVersionId?: string;
+  /** Execution specification */
+  specification?: ExecutionPropertiesUpdateSpecificationMap;
+}
+export const ExecutionPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowVersionId: S.optional(S.String),
+    specification: S.optional(ExecutionPropertiesUpdateSpecificationMap),
+  }),
+).annotate({
+  identifier: "ExecutionPropertiesUpdate",
+}) as any as S.Schema<ExecutionPropertiesUpdate>;
+
 export interface ExecutionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5181,7 +5900,8 @@ export interface ExecutionsUpdateRequest {
   versionName: string;
   /** The name of the Execution. */
   executionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: ExecutionPropertiesUpdate;
 }
 export const ExecutionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5191,7 +5911,7 @@ export const ExecutionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     workflowName: S.String.pipe(T.Label()),
     versionName: S.String.pipe(T.Label()),
     executionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ExecutionPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5235,6 +5955,43 @@ export const ExecutionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutionsUpdateResponse",
 }) as any as S.Schema<ExecutionsUpdateResponse>;
 
+/** The hardware setting properties */
+export interface HardwareSettingPropertiesInput {
+  /** The total number of cores */
+  totalCores: number;
+  /** The disk space in GB */
+  diskSpaceInGb: number;
+  /** The memory in GB */
+  memoryInGb: number;
+  /** The OEM */
+  oem: string;
+  /** The hardware SKU */
+  hardwareSku: string;
+  /** The number of nodes */
+  nodes: number;
+  /** The active version at registration */
+  versionAtRegistration: string;
+  /** The solution builder extension at registration */
+  solutionBuilderExtension: string;
+  /** The unique Id of the device */
+  deviceId: string;
+}
+export const HardwareSettingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    totalCores: S.Number,
+    diskSpaceInGb: S.Number,
+    memoryInGb: S.Number,
+    oem: S.String,
+    hardwareSku: S.String,
+    nodes: S.Number,
+    versionAtRegistration: S.String,
+    solutionBuilderExtension: S.String,
+    deviceId: S.String,
+  }),
+).annotate({
+  identifier: "HardwareSettingPropertiesInput",
+}) as any as S.Schema<HardwareSettingPropertiesInput>;
+
 export interface HardwareSettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5244,7 +6001,8 @@ export interface HardwareSettingsCreateOrUpdateRequest {
   name: string;
   /** The name of the HardwareSetting */
   hardwareSettingName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: HardwareSettingPropertiesInput;
 }
 export const HardwareSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5253,7 +6011,7 @@ export const HardwareSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       hardwareSettingName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(HardwareSettingPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5471,7 +6229,7 @@ export const HardwareSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HardwareSetting>;
 
 /** The HardwareSetting items on this page */
-export type HardwareSettingListResultValueList = HardwareSetting[];
+export type HardwareSettingListResultValueList = ReadonlyArray<HardwareSetting>;
 export const HardwareSettingListResultValueList = /*@__PURE__*/ S.Array(
   HardwareSetting,
 ) as any as S.Schema<HardwareSettingListResultValueList>;
@@ -5604,7 +6362,7 @@ export const HierarchyConfigurationMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The HierarchyConfigurationMetadata items on this page */
 export type HierarchyConfigurationMetadataListResultValueList =
-  HierarchyConfigurationMetadata[];
+  ReadonlyArray<HierarchyConfigurationMetadata>;
 export const HierarchyConfigurationMetadataListResultValueList =
   /*@__PURE__*/ S.Array(
     HierarchyConfigurationMetadata,
@@ -5656,8 +6414,7 @@ export const HierarchyConfigurationMetadataVersionsGetRequest =
 /** Configuration State Enums */
 export type ConfigTemplateConfigurationState =
   | "ConfigurationCompleted"
-  | "ConfigurationPending"
-  | (string & {});
+  | "ConfigurationPending";
 export const ConfigTemplateConfigurationState = /*@__PURE__*/ S.String;
 
 /** Hierarchy Configuration Metadata Version Properties */
@@ -5762,7 +6519,7 @@ export const HierarchyConfigurationMetadataVersion = /*@__PURE__*/ S.suspend(
 
 /** The HierarchyConfigurationMetadataVersion items on this page */
 export type HierarchyConfigurationMetadataVersionListResultValueList =
-  HierarchyConfigurationMetadataVersion[];
+  ReadonlyArray<HierarchyConfigurationMetadataVersion>;
 export const HierarchyConfigurationMetadataVersionListResultValueList =
   /*@__PURE__*/ S.Array(
     HierarchyConfigurationMetadataVersion,
@@ -5814,17 +6571,17 @@ export const ImagesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImagesGetRequest>;
 
 /** Release Type */
-export type ReleaseType = "Install" | "Update" | (string & {});
+export type ReleaseType = "Install" | "Update";
 export const ReleaseType = /*@__PURE__*/ S.String;
 
 /** The versions that are compatible for this update package. */
-export type ImagePropertiesCompatibleVersionsList = string[];
+export type ImagePropertiesCompatibleVersionsList = ReadonlyArray<string>;
 export const ImagePropertiesCompatibleVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImagePropertiesCompatibleVersionsList>;
 
 /** System Reboot */
-export type SystemReboot = "Required" | "NotRequired" | (string & {});
+export type SystemReboot = "Required" | "NotRequired";
 export const SystemReboot = /*@__PURE__*/ S.String;
 
 /** The update properties of the Update Release type Image */
@@ -5971,7 +6728,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 /** The Image items on this page */
-export type ImageListResultValueList = Image[];
+export type ImageListResultValueList = ReadonlyArray<Image>;
 export const ImageListResultValueList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageListResultValueList>;
@@ -6021,7 +6778,7 @@ export const ImagesListDownloadUriRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImagesListDownloadUriRequest>;
 
 /** The versions that are compatible for this update package. */
-export type ImageDownloadResultCompatibleVersionsList = string[];
+export type ImageDownloadResultCompatibleVersionsList = ReadonlyArray<string>;
 export const ImageDownloadResultCompatibleVersionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImageDownloadResultCompatibleVersionsList>;
@@ -6157,7 +6914,7 @@ export const TargetSnapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetSnapshot" }) as any as S.Schema<TargetSnapshot>;
 
 /** Defines a state of the reconciliation policy. */
-export type ReconciliationState = "inactive" | "active" | (string & {});
+export type ReconciliationState = "inactive" | "active";
 export const ReconciliationState = /*@__PURE__*/ S.String;
 
 /** Defines a ReconciliationPolicy */
@@ -6193,7 +6950,7 @@ export const ComponentStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentStatus>;
 
 /** Component statuses */
-export type TargetStatusComponentStatusesList = ComponentStatus[];
+export type TargetStatusComponentStatusesList = ReadonlyArray<ComponentStatus>;
 export const TargetStatusComponentStatusesList = /*@__PURE__*/ S.Array(
   ComponentStatus,
 ) as any as S.Schema<TargetStatusComponentStatusesList>;
@@ -6216,7 +6973,7 @@ export const TargetStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetStatus" }) as any as S.Schema<TargetStatus>;
 
 /** Target resource statuses */
-export type DeploymentStatusTargetStatusesList = TargetStatus[];
+export type DeploymentStatusTargetStatusesList = ReadonlyArray<TargetStatus>;
 export const DeploymentStatusTargetStatusesList = /*@__PURE__*/ S.Array(
   TargetStatus,
 ) as any as S.Schema<DeploymentStatusTargetStatusesList>;
@@ -6382,7 +7139,7 @@ export const InstanceHistory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceHistory>;
 
 /** The InstanceHistory items on this page */
-export type InstanceHistoryListResultValueList = InstanceHistory[];
+export type InstanceHistoryListResultValueList = ReadonlyArray<InstanceHistory>;
 export const InstanceHistoryListResultValueList = /*@__PURE__*/ S.Array(
   InstanceHistory,
 ) as any as S.Schema<InstanceHistoryListResultValueList>;
@@ -6403,6 +7160,31 @@ export const InstanceHistoryListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceHistoryListResult",
 }) as any as S.Schema<InstanceHistoryListResult>;
 
+/** Instance Properties */
+export interface InstancePropertiesInput {
+  /** Solution version of instance */
+  solutionVersionId: string;
+  /** Target of instance */
+  targetId: string;
+  /** State of instance */
+  activeState?: ActiveState;
+  /** Reconciliation policy of instance */
+  reconciliationPolicy?: ReconciliationPolicyProperties;
+  /** Scope of instance */
+  solutionScope?: string;
+}
+export const InstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    solutionVersionId: S.String,
+    targetId: S.String,
+    activeState: S.optional(ActiveState),
+    reconciliationPolicy: S.optional(ReconciliationPolicyProperties),
+    solutionScope: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InstancePropertiesInput",
+}) as any as S.Schema<InstancePropertiesInput>;
+
 export interface InstancesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6414,7 +7196,9 @@ export interface InstancesCreateOrUpdateRequest {
   solutionName: string;
   /** Name of the instance */
   instanceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: InstancePropertiesInput;
+  extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const InstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6423,7 +7207,10 @@ export const InstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     targetName: S.String.pipe(T.Label()),
     solutionName: S.String.pipe(T.Label()),
     instanceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(InstancePropertiesInput),
+    extendedLocation: S.optional(
+      AzureResourceManagerCommonTypesExtendedLocation,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6660,7 +7447,7 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 /** The Instance items on this page */
-export type InstanceListResultValueList = Instance[];
+export type InstanceListResultValueList = ReadonlyArray<Instance>;
 export const InstanceListResultValueList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceListResultValueList>;
@@ -6681,6 +7468,48 @@ export const InstanceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceListResult",
 }) as any as S.Schema<InstanceListResult>;
 
+/** Defines a ReconciliationPolicy */
+export interface ReconciliationPolicyPropertiesUpdate {
+  /** The state of the ReconciliationPolicy */
+  state?: ReconciliationState;
+  /** Policy interval */
+  interval?: string;
+}
+export const ReconciliationPolicyPropertiesUpdate = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: S.optional(ReconciliationState),
+      interval: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ReconciliationPolicyPropertiesUpdate",
+}) as any as S.Schema<ReconciliationPolicyPropertiesUpdate>;
+
+/** Instance Properties */
+export interface InstancePropertiesUpdate {
+  /** Solution version of instance */
+  solutionVersionId?: string;
+  /** Target of instance */
+  targetId?: string;
+  /** State of instance */
+  activeState?: ActiveState;
+  /** Reconciliation policy of instance */
+  reconciliationPolicy?: ReconciliationPolicyPropertiesUpdate;
+  /** Scope of instance */
+  solutionScope?: string;
+}
+export const InstancePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    solutionVersionId: S.optional(S.String),
+    targetId: S.optional(S.String),
+    activeState: S.optional(ActiveState),
+    reconciliationPolicy: S.optional(ReconciliationPolicyPropertiesUpdate),
+    solutionScope: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InstancePropertiesUpdate",
+}) as any as S.Schema<InstancePropertiesUpdate>;
+
 export interface InstancesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6692,7 +7521,8 @@ export interface InstancesUpdateRequest {
   solutionName: string;
   /** Name of the instance */
   instanceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: InstancePropertiesUpdate;
 }
 export const InstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6701,7 +7531,7 @@ export const InstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     targetName: S.String.pipe(T.Label()),
     solutionName: S.String.pipe(T.Label()),
     instanceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(InstancePropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -6771,17 +7601,11 @@ export type JobType =
   | "publish"
   | "staging"
   | "externalValidation"
-  | "uninstall"
-  | (string & {});
+  | "uninstall";
 export const JobType = /*@__PURE__*/ S.String;
 
 /** Status of a job or job step. */
-export type JobStatus =
-  | "NotStarted"
-  | "InProgress"
-  | "Succeeded"
-  | "Failed"
-  | (string & {});
+export type JobStatus = "NotStarted" | "InProgress" | "Succeeded" | "Failed";
 export const JobStatus = /*@__PURE__*/ S.String;
 
 /** Base Job Parameter */
@@ -6811,13 +7635,13 @@ export const JobStepStatisticsBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobStepStatisticsBase>;
 
 /** Nested substeps for this step */
-export type JobStepStepsList = JobStep[];
+export type JobStepStepsList = ReadonlyArray<JobStep>;
 export const JobStepStepsList = /*@__PURE__*/ S.Array(
   S.suspend(() => JobStep),
 ) as any as S.Schema<JobStepStepsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -6839,7 +7663,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -6868,13 +7692,14 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type JobStepErrorDetailsDetailsList = ErrorDetail[];
+export type JobStepErrorDetailsDetailsList = ReadonlyArray<ErrorDetail>;
 export const JobStepErrorDetailsDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<JobStepErrorDetailsDetailsList>;
 
 /** The error additional info. */
-export type JobStepErrorDetailsAdditionalInfoList = ErrorAdditionalInfo[];
+export type JobStepErrorDetailsAdditionalInfoList =
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const JobStepErrorDetailsAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<JobStepErrorDetailsAdditionalInfoList>;
@@ -6937,19 +7762,20 @@ export const JobStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobStep" }) as any as S.Schema<JobStep>;
 
 /** Steps and substatuses for the job. */
-export type JobPropertiesStepsList = JobStep[];
+export type JobPropertiesStepsList = ReadonlyArray<JobStep>;
 export const JobPropertiesStepsList = /*@__PURE__*/ S.Array(
   JobStep,
 ) as any as S.Schema<JobPropertiesStepsList>;
 
 /** The error details. */
-export type JobPropertiesErrorDetailsDetailsList = ErrorDetail[];
+export type JobPropertiesErrorDetailsDetailsList = ReadonlyArray<ErrorDetail>;
 export const JobPropertiesErrorDetailsDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<JobPropertiesErrorDetailsDetailsList>;
 
 /** The error additional info. */
-export type JobPropertiesErrorDetailsAdditionalInfoList = ErrorAdditionalInfo[];
+export type JobPropertiesErrorDetailsAdditionalInfoList =
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const JobPropertiesErrorDetailsAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -7105,7 +7931,7 @@ export const Job = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
 /** The Job items on this page */
-export type JobListResultValueList = Job[];
+export type JobListResultValueList = ReadonlyArray<Job>;
 export const JobListResultValueList = /*@__PURE__*/ S.Array(
   Job,
 ) as any as S.Schema<JobListResultValueList>;
@@ -7161,11 +7987,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -7192,7 +8018,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -7212,19 +8038,33 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** Schema Reference Properties */
+export interface SchemaReferencePropertiesInput {
+  /** Schema Id of schema reference */
+  schemaId: string;
+}
+export const SchemaReferencePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaId: S.String,
+  }),
+).annotate({
+  identifier: "SchemaReferencePropertiesInput",
+}) as any as S.Schema<SchemaReferencePropertiesInput>;
+
 export interface SchemaReferencesCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the SchemaReference */
   schemaReferenceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaReferencePropertiesInput;
 }
 export const SchemaReferencesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       resourceUri: S.String.pipe(T.Label()),
       schemaReferenceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SchemaReferencePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -7408,7 +8248,7 @@ export const SchemaReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaReference>;
 
 /** The SchemaReference items on this page */
-export type SchemaReferenceListResultValueList = SchemaReference[];
+export type SchemaReferenceListResultValueList = ReadonlyArray<SchemaReference>;
 export const SchemaReferenceListResultValueList = /*@__PURE__*/ S.Array(
   SchemaReference,
 ) as any as S.Schema<SchemaReferenceListResultValueList>;
@@ -7429,18 +8269,32 @@ export const SchemaReferenceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemaReferenceListResult",
 }) as any as S.Schema<SchemaReferenceListResult>;
 
+/** Schema Reference Properties */
+export interface SchemaReferencePropertiesUpdate {
+  /** Schema Id of schema reference */
+  schemaId?: string;
+}
+export const SchemaReferencePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SchemaReferencePropertiesUpdate",
+}) as any as S.Schema<SchemaReferencePropertiesUpdate>;
+
 export interface SchemaReferencesUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the SchemaReference */
   schemaReferenceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaReferencePropertiesUpdate;
 }
 export const SchemaReferencesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     schemaReferenceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SchemaReferencePropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7480,6 +8334,23 @@ export const SchemaReferencesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemaReferencesUpdateResponse",
 }) as any as S.Schema<SchemaReferencesUpdateResponse>;
 
+/** Resource tags. */
+export type SchemasCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SchemasCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SchemasCreateOrUpdateRequestTagsMap>;
+
+/** Schema Properties */
+export interface SchemaPropertiesInput {}
+export const SchemaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SchemaPropertiesInput",
+}) as any as S.Schema<SchemaPropertiesInput>;
+
 export interface SchemasCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7487,14 +8358,21 @@ export interface SchemasCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Schema */
   schemaName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SchemasCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaPropertiesInput;
 }
 export const SchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SchemasCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(SchemaPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7565,6 +8443,19 @@ export const SchemasCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemasCreateOrUpdateResponse",
 }) as any as S.Schema<SchemasCreateOrUpdateResponse>;
 
+/** Schema Version Resource */
+export interface SchemaVersionInput {
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaVersionPropertiesInput;
+}
+export const SchemaVersionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(SchemaVersionPropertiesInput),
+  }),
+).annotate({
+  identifier: "SchemaVersionInput",
+}) as any as S.Schema<SchemaVersionInput>;
+
 export interface SchemasCreateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7572,14 +8463,21 @@ export interface SchemasCreateVersionRequest {
   resourceGroupName: string;
   /** The name of the Schema */
   schemaName: string;
-  body: unknown;
+  /** Update type */
+  updateType?: UpdateType;
+  /** Version to create */
+  version?: string;
+  /** Schema Version */
+  schemaVersion: SchemaVersionInput;
 }
 export const SchemasCreateVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    updateType: S.optional(UpdateType),
+    version: S.optional(S.String),
+    schemaVersion: SchemaVersionInput,
   }).pipe(
     T.Http({
       method: "POST",
@@ -7778,7 +8676,7 @@ export const Schema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schema" }) as any as S.Schema<Schema>;
 
 /** The Schema items on this page */
-export type SchemaListResultValueList = Schema[];
+export type SchemaListResultValueList = ReadonlyArray<Schema>;
 export const SchemaListResultValueList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<SchemaListResultValueList>;
@@ -7825,14 +8723,15 @@ export interface SchemasRemoveVersionRequest {
   resourceGroupName: string;
   /** The name of the Schema */
   schemaName: string;
-  body: unknown;
+  /** Version of the Resource */
+  version: string;
 }
 export const SchemasRemoveVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    version: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -7845,6 +8744,21 @@ export const SchemasRemoveVersionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemasRemoveVersionRequest",
 }) as any as S.Schema<SchemasRemoveVersionRequest>;
 
+/** The updatable properties of the Schema. */
+export interface SchemaUpdatePropertiesInput {}
+export const SchemaUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SchemaUpdatePropertiesInput",
+}) as any as S.Schema<SchemaUpdatePropertiesInput>;
+
+/** Resource tags. */
+export type SchemasUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const SchemasUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SchemasUpdateRequestTagsMap>;
+
 export interface SchemasUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7852,14 +8766,18 @@ export interface SchemasUpdateRequest {
   resourceGroupName: string;
   /** The name of the Schema */
   schemaName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaUpdatePropertiesInput;
+  /** Resource tags. */
+  tags?: SchemasUpdateRequestTagsMap;
 }
 export const SchemasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SchemaUpdatePropertiesInput),
+    tags: S.optional(SchemasUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7923,7 +8841,8 @@ export interface SchemaVersionsCreateOrUpdateRequest {
   schemaName: string;
   /** The name of the SchemaVersion */
   schemaVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaVersionPropertiesInput;
 }
 export const SchemaVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7931,7 +8850,7 @@ export const SchemaVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
     schemaVersionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SchemaVersionPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -8114,7 +9033,7 @@ export const SchemaVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaVersion" }) as any as S.Schema<SchemaVersion>;
 
 /** The SchemaVersion items on this page */
-export type SchemaVersionListResultValueList = SchemaVersion[];
+export type SchemaVersionListResultValueList = ReadonlyArray<SchemaVersion>;
 export const SchemaVersionListResultValueList = /*@__PURE__*/ S.Array(
   SchemaVersion,
 ) as any as S.Schema<SchemaVersionListResultValueList>;
@@ -8144,7 +9063,8 @@ export interface SchemaVersionsUpdateRequest {
   schemaName: string;
   /** The name of the SchemaVersion */
   schemaVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaVersionPropertiesUpdate;
 }
 export const SchemaVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8152,7 +9072,7 @@ export const SchemaVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
     schemaVersionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SchemaVersionPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -8192,6 +9112,19 @@ export const SchemaVersionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemaVersionsUpdateResponse",
 }) as any as S.Schema<SchemaVersionsUpdateResponse>;
 
+/** Site Reference Properties */
+export interface SiteReferencePropertiesInput {
+  /** Azure Resource ID for Site */
+  siteId: string;
+}
+export const SiteReferencePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    siteId: S.String,
+  }),
+).annotate({
+  identifier: "SiteReferencePropertiesInput",
+}) as any as S.Schema<SiteReferencePropertiesInput>;
+
 export interface SiteReferencesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8201,7 +9134,8 @@ export interface SiteReferencesCreateOrUpdateRequest {
   contextName: string;
   /** The name of the SiteReference */
   siteReferenceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SiteReferencePropertiesInput;
 }
 export const SiteReferencesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8209,7 +9143,7 @@ export const SiteReferencesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     contextName: S.String.pipe(T.Label()),
     siteReferenceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SiteReferencePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -8399,7 +9333,7 @@ export const SiteReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SiteReference" }) as any as S.Schema<SiteReference>;
 
 /** The SiteReference items on this page */
-export type SiteReferenceListResultValueList = SiteReference[];
+export type SiteReferenceListResultValueList = ReadonlyArray<SiteReference>;
 export const SiteReferenceListResultValueList = /*@__PURE__*/ S.Array(
   SiteReference,
 ) as any as S.Schema<SiteReferenceListResultValueList>;
@@ -8420,6 +9354,19 @@ export const SiteReferenceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SiteReferenceListResult",
 }) as any as S.Schema<SiteReferenceListResult>;
 
+/** Site Reference Properties */
+export interface SiteReferencePropertiesUpdate {
+  /** Azure Resource ID for Site */
+  siteId?: string;
+}
+export const SiteReferencePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    siteId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SiteReferencePropertiesUpdate",
+}) as any as S.Schema<SiteReferencePropertiesUpdate>;
+
 export interface SiteReferencesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8429,7 +9376,8 @@ export interface SiteReferencesUpdateRequest {
   contextName: string;
   /** The name of the SiteReference */
   siteReferenceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SiteReferencePropertiesUpdate;
 }
 export const SiteReferencesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8437,7 +9385,7 @@ export const SiteReferencesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     contextName: S.String.pipe(T.Label()),
     siteReferenceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SiteReferencePropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -8474,31 +9422,6 @@ export const SiteReferencesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SiteReferencesUpdateResponse",
 }) as any as S.Schema<SiteReferencesUpdateResponse>;
 
-export interface SitesByServiceGroupCreateOrUpdateRequest {
-  /** The name of the service group */
-  servicegroupName: string;
-  /** The name of the Site */
-  siteName: string;
-  body: unknown;
-}
-export const SitesByServiceGroupCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      servicegroupName: S.String.pipe(T.Label()),
-      siteName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
-        code: 200,
-        apiVersion: "2025-06-01",
-      }),
-    ),
-).annotate({
-  identifier: "SitesByServiceGroupCreateOrUpdateRequest",
-}) as any as S.Schema<SitesByServiceGroupCreateOrUpdateRequest>;
-
 /** Site address properties */
 export interface SiteAddressProperties {
   /** First line of the street address */
@@ -8526,6 +9449,63 @@ export const SiteAddressProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SiteAddressProperties",
 }) as any as S.Schema<SiteAddressProperties>;
+
+/** Key-value pairs for labeling the site resource. */
+export type SitePropertiesInputLabelsMap = {
+  [key: string]: string | undefined;
+};
+export const SitePropertiesInputLabelsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SitePropertiesInputLabelsMap>;
+
+/** Site properties */
+export interface SitePropertiesInput {
+  /** displayName of Site resource */
+  displayName?: string;
+  /** Description of Site resource */
+  description?: string;
+  /** Physical address of the site */
+  siteAddress?: SiteAddressProperties;
+  /** Key-value pairs for labeling the site resource. */
+  labels?: SitePropertiesInputLabelsMap;
+}
+export const SitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    siteAddress: S.optional(SiteAddressProperties),
+    labels: S.optional(SitePropertiesInputLabelsMap),
+  }),
+).annotate({
+  identifier: "SitePropertiesInput",
+}) as any as S.Schema<SitePropertiesInput>;
+
+export interface SitesByServiceGroupCreateOrUpdateRequest {
+  /** The name of the service group */
+  servicegroupName: string;
+  /** The name of the Site */
+  siteName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: SitePropertiesInput;
+}
+export const SitesByServiceGroupCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      servicegroupName: S.String.pipe(T.Label()),
+      siteName: S.String.pipe(T.Label()),
+      properties: S.optional(SitePropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.Management/serviceGroups/{servicegroupName}/providers/Microsoft.Edge/sites/{siteName}",
+        code: 200,
+        apiVersion: "2025-06-01",
+      }),
+    ),
+).annotate({
+  identifier: "SitesByServiceGroupCreateOrUpdateRequest",
+}) as any as S.Schema<SitesByServiceGroupCreateOrUpdateRequest>;
 
 /** Key-value pairs for labeling the site resource. */
 export type SitePropertiesLabelsMap = { [key: string]: string | undefined };
@@ -8703,7 +9683,7 @@ export const Site = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
 /** The Site items on this page */
-export type SiteListResultValueList = Site[];
+export type SiteListResultValueList = ReadonlyArray<Site>;
 export const SiteListResultValueList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteListResultValueList>;
@@ -8722,18 +9702,50 @@ export const SiteListResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SiteListResult" }) as any as S.Schema<SiteListResult>;
 
+/** Key-value pairs for labeling the site resource. */
+export type SiteUpdatePropertiesLabelsMap = {
+  [key: string]: string | undefined;
+};
+export const SiteUpdatePropertiesLabelsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SiteUpdatePropertiesLabelsMap>;
+
+/** The updatable properties of the Site. */
+export interface SiteUpdateProperties {
+  /** displayName of Site resource */
+  displayName?: string;
+  /** Description of Site resource */
+  description?: string;
+  /** Physical address of the site */
+  siteAddress?: SiteAddressProperties;
+  /** Key-value pairs for labeling the site resource. */
+  labels?: SiteUpdatePropertiesLabelsMap;
+}
+export const SiteUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    siteAddress: S.optional(SiteAddressProperties),
+    labels: S.optional(SiteUpdatePropertiesLabelsMap),
+  }),
+).annotate({
+  identifier: "SiteUpdateProperties",
+}) as any as S.Schema<SiteUpdateProperties>;
+
 export interface SitesByServiceGroupUpdateRequest {
   /** The name of the service group */
   servicegroupName: string;
   /** The name of the Site */
   siteName: string;
-  body: unknown;
+  /** The updatable properties of the Site. */
+  properties?: SiteUpdateProperties;
 }
 export const SitesByServiceGroupUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servicegroupName: S.String.pipe(T.Label()),
     siteName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SiteUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -8775,14 +9787,15 @@ export interface SitesBySubscriptionCreateOrUpdateRequest {
   subscriptionId: string;
   /** The name of the Site */
   siteName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SitePropertiesInput;
 }
 export const SitesBySubscriptionCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       siteName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SitePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -8919,13 +9932,14 @@ export interface SitesBySubscriptionUpdateRequest {
   subscriptionId: string;
   /** The name of the Site */
   siteName: string;
-  body: unknown;
+  /** The updatable properties of the Site. */
+  properties?: SiteUpdateProperties;
 }
 export const SitesBySubscriptionUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     siteName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SiteUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -8969,14 +9983,15 @@ export interface SitesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Site */
   siteName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SitePropertiesInput;
 }
 export const SitesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     siteName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SitePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9123,14 +10138,15 @@ export interface SitesUpdateRequest {
   resourceGroupName: string;
   /** The name of the Site */
   siteName: string;
-  body: unknown;
+  /** The updatable properties of the Site. */
+  properties?: SiteUpdateProperties;
 }
 export const SitesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     siteName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SiteUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -9281,7 +10297,8 @@ export const SolutionMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionMetadata>;
 
 /** The SolutionMetadata items on this page */
-export type SolutionMetadataListResultValueList = SolutionMetadata[];
+export type SolutionMetadataListResultValueList =
+  ReadonlyArray<SolutionMetadata>;
 export const SolutionMetadataListResultValueList = /*@__PURE__*/ S.Array(
   SolutionMetadata,
 ) as any as S.Schema<SolutionMetadataListResultValueList>;
@@ -9426,7 +10443,7 @@ export const SolutionMetadataVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The SolutionMetadataVersion items on this page */
 export type SolutionMetadataVersionListResultValueList =
-  SolutionMetadataVersion[];
+  ReadonlyArray<SolutionMetadataVersion>;
 export const SolutionMetadataVersionListResultValueList = /*@__PURE__*/ S.Array(
   SolutionMetadataVersion,
 ) as any as S.Schema<SolutionMetadataVersionListResultValueList>;
@@ -9583,7 +10600,7 @@ export const SolutionSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SolutionSchema" }) as any as S.Schema<SolutionSchema>;
 
 /** The SolutionSchema items on this page */
-export type SolutionSchemaListResultValueList = SolutionSchema[];
+export type SolutionSchemaListResultValueList = ReadonlyArray<SolutionSchema>;
 export const SolutionSchemaListResultValueList = /*@__PURE__*/ S.Array(
   SolutionSchema,
 ) as any as S.Schema<SolutionSchemaListResultValueList>;
@@ -9604,6 +10621,14 @@ export const SolutionSchemaListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SolutionSchemaListResult",
 }) as any as S.Schema<SolutionSchemaListResult>;
 
+/** Solution Properties */
+export interface SolutionPropertiesInput {}
+export const SolutionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SolutionPropertiesInput",
+}) as any as S.Schema<SolutionPropertiesInput>;
+
 export interface SolutionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9613,7 +10638,9 @@ export interface SolutionsCreateOrUpdateRequest {
   targetName: string;
   /** Name of the solution */
   solutionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SolutionPropertiesInput;
+  extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const SolutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9621,7 +10648,10 @@ export const SolutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
     solutionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SolutionPropertiesInput),
+    extendedLocation: S.optional(
+      AzureResourceManagerCommonTypesExtendedLocation,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9655,7 +10685,7 @@ export const AvailableSolutionTemplateVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** List of latest revisions for available solution template versions */
 export type SolutionPropertiesAvailableSolutionTemplateVersionsList =
-  AvailableSolutionTemplateVersion[];
+  ReadonlyArray<AvailableSolutionTemplateVersion>;
 export const SolutionPropertiesAvailableSolutionTemplateVersionsList =
   /*@__PURE__*/ S.Array(
     AvailableSolutionTemplateVersion,
@@ -9866,7 +10896,7 @@ export const Solution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Solution" }) as any as S.Schema<Solution>;
 
 /** The Solution items on this page */
-export type SolutionListResultValueList = Solution[];
+export type SolutionListResultValueList = ReadonlyArray<Solution>;
 export const SolutionListResultValueList = /*@__PURE__*/ S.Array(
   Solution,
 ) as any as S.Schema<SolutionListResultValueList>;
@@ -9887,6 +10917,14 @@ export const SolutionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SolutionListResult",
 }) as any as S.Schema<SolutionListResult>;
 
+/** The updatable properties of the Solution. */
+export interface SolutionUpdatePropertiesInput {}
+export const SolutionUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SolutionUpdatePropertiesInput",
+}) as any as S.Schema<SolutionUpdatePropertiesInput>;
+
 export interface SolutionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9896,7 +10934,8 @@ export interface SolutionsUpdateRequest {
   targetName: string;
   /** Name of the solution */
   solutionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SolutionUpdatePropertiesInput;
 }
 export const SolutionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9904,7 +10943,7 @@ export const SolutionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
     solutionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SolutionUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -9948,6 +10987,46 @@ export const SolutionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SolutionsUpdateResponse",
 }) as any as S.Schema<SolutionsUpdateResponse>;
 
+/** Resource tags. */
+export type SolutionTemplatesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SolutionTemplatesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SolutionTemplatesCreateOrUpdateRequestTagsMap>;
+
+/** List of capabilities */
+export type SolutionTemplatePropertiesInputCapabilitiesList =
+  ReadonlyArray<string>;
+export const SolutionTemplatePropertiesInputCapabilitiesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SolutionTemplatePropertiesInputCapabilitiesList>;
+
+/** Solution Template Properties */
+export interface SolutionTemplatePropertiesInput {
+  /** Description of Solution template */
+  description: string;
+  /** List of capabilities */
+  capabilities: SolutionTemplatePropertiesInputCapabilitiesList;
+  /** State of resource */
+  state?: ResourceState;
+  /** Flag to enable external validation */
+  enableExternalValidation?: boolean;
+}
+export const SolutionTemplatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    capabilities: SolutionTemplatePropertiesInputCapabilitiesList,
+    state: S.optional(ResourceState),
+    enableExternalValidation: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SolutionTemplatePropertiesInput",
+}) as any as S.Schema<SolutionTemplatePropertiesInput>;
+
 export interface SolutionTemplatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9955,7 +11034,12 @@ export interface SolutionTemplatesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the SolutionTemplate */
   solutionTemplateName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SolutionTemplatesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: SolutionTemplatePropertiesInput;
 }
 export const SolutionTemplatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -9963,7 +11047,9 @@ export const SolutionTemplatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       solutionTemplateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(SolutionTemplatesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(SolutionTemplatePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -9987,7 +11073,7 @@ export const SolutionTemplatesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<SolutionTemplatesCreateOrUpdateResponseTagsMap>;
 
 /** List of capabilities */
-export type SolutionTemplatePropertiesCapabilitiesList = string[];
+export type SolutionTemplatePropertiesCapabilitiesList = ReadonlyArray<string>;
 export const SolutionTemplatePropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SolutionTemplatePropertiesCapabilitiesList>;
@@ -10057,6 +11143,53 @@ export const SolutionTemplatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "SolutionTemplatesCreateOrUpdateResponse",
 }) as any as S.Schema<SolutionTemplatesCreateOrUpdateResponse>;
 
+/** App components spec */
+export type SolutionTemplateVersionPropertiesInputSpecificationMap = {
+  [key: string]: unknown | undefined;
+};
+export const SolutionTemplateVersionPropertiesInputSpecificationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SolutionTemplateVersionPropertiesInputSpecificationMap>;
+
+/** Available Orchestrator types */
+export type OrchestratorType = "TO";
+export const OrchestratorType = /*@__PURE__*/ S.String;
+
+/** Solution Template Version Properties */
+export interface SolutionTemplateVersionPropertiesInput {
+  /** Config expressions for this solution version */
+  configurations: string;
+  /** App components spec */
+  specification: SolutionTemplateVersionPropertiesInputSpecificationMap;
+  /** Orchestrator type */
+  orchestratorType?: OrchestratorType;
+}
+export const SolutionTemplateVersionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      configurations: S.String,
+      specification: SolutionTemplateVersionPropertiesInputSpecificationMap,
+      orchestratorType: S.optional(OrchestratorType),
+    }),
+).annotate({
+  identifier: "SolutionTemplateVersionPropertiesInput",
+}) as any as S.Schema<SolutionTemplateVersionPropertiesInput>;
+
+/** Solution Template Version Resource. Contains configurations that use expressions which can be resolved hierarchically along with edge specifications. */
+export interface SolutionTemplateVersionInput {
+  /** The resource-specific properties for this resource. */
+  properties?: SolutionTemplateVersionPropertiesInput;
+}
+export const SolutionTemplateVersionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(SolutionTemplateVersionPropertiesInput),
+  }),
+).annotate({
+  identifier: "SolutionTemplateVersionInput",
+}) as any as S.Schema<SolutionTemplateVersionInput>;
+
 export interface SolutionTemplatesCreateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10064,7 +11197,12 @@ export interface SolutionTemplatesCreateVersionRequest {
   resourceGroupName: string;
   /** The name of the SolutionTemplate */
   solutionTemplateName: string;
-  body: unknown;
+  /** Update type */
+  updateType?: UpdateType;
+  /** Version to create */
+  version?: string;
+  /** Solution Template Version */
+  solutionTemplateVersion: SolutionTemplateVersionInput;
 }
 export const SolutionTemplatesCreateVersionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -10072,7 +11210,9 @@ export const SolutionTemplatesCreateVersionRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       solutionTemplateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      updateType: S.optional(UpdateType),
+      version: S.optional(S.String),
+      solutionTemplateVersion: SolutionTemplateVersionInput,
     }).pipe(
       T.Http({
         method: "POST",
@@ -10095,17 +11235,12 @@ export const SolutionTemplateVersionPropertiesSpecificationMap =
     S.Unknown,
   ) as any as S.Schema<SolutionTemplateVersionPropertiesSpecificationMap>;
 
-/** Available Orchestrator types */
-export type OrchestratorType = "TO" | (string & {});
-export const OrchestratorType = /*@__PURE__*/ S.String;
-
 /** Internal state of resource */
 export type InternalState =
   | "PendingValidation"
   | "Validated"
   | "ValidatedWithSchema"
-  | "ValidatedWithoutSchema"
-  | (string & {});
+  | "ValidatedWithoutSchema";
 export const InternalState = /*@__PURE__*/ S.String;
 
 /** Solution Template Version Properties */
@@ -10325,7 +11460,8 @@ export const SolutionTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionTemplate>;
 
 /** The SolutionTemplate items on this page */
-export type SolutionTemplateListResultValueList = SolutionTemplate[];
+export type SolutionTemplateListResultValueList =
+  ReadonlyArray<SolutionTemplate>;
 export const SolutionTemplateListResultValueList = /*@__PURE__*/ S.Array(
   SolutionTemplate,
 ) as any as S.Schema<SolutionTemplateListResultValueList>;
@@ -10373,7 +11509,8 @@ export interface SolutionTemplatesRemoveVersionRequest {
   resourceGroupName: string;
   /** The name of the SolutionTemplate */
   solutionTemplateName: string;
-  body: unknown;
+  /** Version of the Resource */
+  version: string;
 }
 export const SolutionTemplatesRemoveVersionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -10381,7 +11518,7 @@ export const SolutionTemplatesRemoveVersionRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       solutionTemplateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      version: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -10401,6 +11538,45 @@ export const SolutionTemplatesRemoveVersionResponse = /*@__PURE__*/ S.suspend(
   identifier: "SolutionTemplatesRemoveVersionResponse",
 }) as any as S.Schema<SolutionTemplatesRemoveVersionResponse>;
 
+/** Resource tags. */
+export type SolutionTemplatesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SolutionTemplatesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SolutionTemplatesUpdateRequestTagsMap>;
+
+/** List of capabilities */
+export type SolutionTemplateUpdatePropertiesCapabilitiesList =
+  ReadonlyArray<string>;
+export const SolutionTemplateUpdatePropertiesCapabilitiesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SolutionTemplateUpdatePropertiesCapabilitiesList>;
+
+/** The updatable properties of the SolutionTemplate. */
+export interface SolutionTemplateUpdateProperties {
+  /** Description of Solution template */
+  description?: string;
+  /** List of capabilities */
+  capabilities?: SolutionTemplateUpdatePropertiesCapabilitiesList;
+  /** State of resource */
+  state?: ResourceState;
+  /** Flag to enable external validation */
+  enableExternalValidation?: boolean;
+}
+export const SolutionTemplateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    capabilities: S.optional(SolutionTemplateUpdatePropertiesCapabilitiesList),
+    state: S.optional(ResourceState),
+    enableExternalValidation: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SolutionTemplateUpdateProperties",
+}) as any as S.Schema<SolutionTemplateUpdateProperties>;
+
 export interface SolutionTemplatesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10408,14 +11584,18 @@ export interface SolutionTemplatesUpdateRequest {
   resourceGroupName: string;
   /** The name of the SolutionTemplate */
   solutionTemplateName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SolutionTemplatesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: SolutionTemplateUpdateProperties;
 }
 export const SolutionTemplatesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     solutionTemplateName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SolutionTemplatesUpdateRequestTagsMap),
+    properties: S.optional(SolutionTemplateUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -10470,6 +11650,27 @@ export const SolutionTemplatesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SolutionTemplatesUpdateResponse",
 }) as any as S.Schema<SolutionTemplatesUpdateResponse>;
 
+/** Bulk deploy target details */
+export interface BulkDeployTargetDetails {
+  /** ArmId of Target Solution Version */
+  solutionVersionId: string;
+}
+export const BulkDeployTargetDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    solutionVersionId: S.String,
+  }),
+).annotate({
+  identifier: "BulkDeployTargetDetails",
+}) as any as S.Schema<BulkDeployTargetDetails>;
+
+/** Targets to which solution needs to be deployed */
+export type SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList =
+  ReadonlyArray<BulkDeployTargetDetails>;
+export const SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList =
+  /*@__PURE__*/ S.Array(
+    BulkDeployTargetDetails,
+  ) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList>;
+
 export interface SolutionTemplateVersionsBulkDeploySolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10479,7 +11680,8 @@ export interface SolutionTemplateVersionsBulkDeploySolutionRequest {
   solutionTemplateName: string;
   /** The name of the SolutionTemplateVersion */
   solutionTemplateVersionName: string;
-  body: unknown;
+  /** Targets to which solution needs to be deployed */
+  targets: SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList;
 }
 export const SolutionTemplateVersionsBulkDeploySolutionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10488,7 +11690,7 @@ export const SolutionTemplateVersionsBulkDeploySolutionRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       solutionTemplateName: S.String.pipe(T.Label()),
       solutionTemplateVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      targets: SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList,
     }).pipe(
       T.Http({
         method: "POST",
@@ -10507,6 +11709,93 @@ export const SolutionTemplateVersionsBulkDeploySolutionResponse =
     identifier: "SolutionTemplateVersionsBulkDeploySolutionResponse",
   }) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionResponse>;
 
+/** Solution dependencies */
+export type SolutionDependencyParameterDependenciesList =
+  ReadonlyArray<SolutionDependencyParameter>;
+export const SolutionDependencyParameterDependenciesList =
+  /*@__PURE__*/ S.Array(
+    S.suspend(() => SolutionDependencyParameter),
+  ) as any as S.Schema<SolutionDependencyParameterDependenciesList>;
+
+/** Solution Dependency Context */
+export interface SolutionDependencyParameter {
+  /** Solution Version Id */
+  solutionVersionId?: string;
+  /** Solution Template Id */
+  solutionTemplateId?: string;
+  /** Solution Template Version */
+  solutionTemplateVersion?: string;
+  /** Solution Instance Name */
+  solutionInstanceName?: string;
+  /** Target Id */
+  targetId?: string;
+  /** Solution dependencies */
+  dependencies?: SolutionDependencyParameterDependenciesList;
+}
+export const SolutionDependencyParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    solutionVersionId: S.optional(S.String),
+    solutionTemplateId: S.optional(S.String),
+    solutionTemplateVersion: S.optional(S.String),
+    solutionInstanceName: S.optional(S.String),
+    targetId: S.optional(S.String),
+    dependencies: S.optional(SolutionDependencyParameterDependenciesList),
+  }),
+).annotate({
+  identifier: "SolutionDependencyParameter",
+}) as any as S.Schema<SolutionDependencyParameter>;
+
+/** Solution dependencies */
+export type BulkPublishTargetDetailsSolutionDependenciesList =
+  ReadonlyArray<SolutionDependencyParameter>;
+export const BulkPublishTargetDetailsSolutionDependenciesList =
+  /*@__PURE__*/ S.Array(
+    SolutionDependencyParameter,
+  ) as any as S.Schema<BulkPublishTargetDetailsSolutionDependenciesList>;
+
+/** Bulk publish target details */
+export interface BulkPublishTargetDetails {
+  /** ArmId of Target */
+  targetId: string;
+  /** Solution dependencies */
+  solutionDependencies?: BulkPublishTargetDetailsSolutionDependenciesList;
+  /** Name of the solution instance */
+  solutionInstanceName?: string;
+  /** ArmId of Target Solution Version */
+  solutionVersionId?: string;
+  /** Configuration of solution */
+  solutionConfiguration?: string;
+}
+export const BulkPublishTargetDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetId: S.String,
+    solutionDependencies: S.optional(
+      BulkPublishTargetDetailsSolutionDependenciesList,
+    ),
+    solutionInstanceName: S.optional(S.String),
+    solutionVersionId: S.optional(S.String),
+    solutionConfiguration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BulkPublishTargetDetails",
+}) as any as S.Schema<BulkPublishTargetDetails>;
+
+/** Targets to which solution needs to be published */
+export type SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList =
+  ReadonlyArray<BulkPublishTargetDetails>;
+export const SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList =
+  /*@__PURE__*/ S.Array(
+    BulkPublishTargetDetails,
+  ) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList>;
+
+/** Solution dependencies */
+export type SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList =
+  ReadonlyArray<SolutionDependencyParameter>;
+export const SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList =
+  /*@__PURE__*/ S.Array(
+    SolutionDependencyParameter,
+  ) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList>;
+
 export interface SolutionTemplateVersionsBulkPublishSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10516,7 +11805,14 @@ export interface SolutionTemplateVersionsBulkPublishSolutionRequest {
   solutionTemplateName: string;
   /** The name of the SolutionTemplateVersion */
   solutionTemplateVersionName: string;
-  body: unknown;
+  /** Targets to which solution needs to be published */
+  targets: SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList;
+  /** Name of the solution instance */
+  solutionInstanceName?: string;
+  /** Solution dependencies */
+  solutionDependencies?: SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList;
+  /** Configuration of solution */
+  solutionConfiguration?: string;
 }
 export const SolutionTemplateVersionsBulkPublishSolutionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10525,7 +11821,12 @@ export const SolutionTemplateVersionsBulkPublishSolutionRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       solutionTemplateName: S.String.pipe(T.Label()),
       solutionTemplateVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      targets: SolutionTemplateVersionsBulkPublishSolutionRequestTargetsList,
+      solutionInstanceName: S.optional(S.String),
+      solutionDependencies: S.optional(
+        SolutionTemplateVersionsBulkPublishSolutionRequestSolutionDependenciesList,
+      ),
+      solutionConfiguration: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -10544,6 +11845,54 @@ export const SolutionTemplateVersionsBulkPublishSolutionResponse =
     identifier: "SolutionTemplateVersionsBulkPublishSolutionResponse",
   }) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionResponse>;
 
+/** Solution dependencies */
+export type BulkReviewTargetDetailsSolutionDependenciesList =
+  ReadonlyArray<SolutionDependencyParameter>;
+export const BulkReviewTargetDetailsSolutionDependenciesList =
+  /*@__PURE__*/ S.Array(
+    SolutionDependencyParameter,
+  ) as any as S.Schema<BulkReviewTargetDetailsSolutionDependenciesList>;
+
+/** Bulk publish target details */
+export interface BulkReviewTargetDetails {
+  /** ArmId of Target */
+  targetId: string;
+  /** Solution dependencies */
+  solutionDependencies?: BulkReviewTargetDetailsSolutionDependenciesList;
+  /** Name of the solution instance */
+  solutionInstanceName?: string;
+  /** Configuration of solution */
+  solutionConfiguration?: string;
+}
+export const BulkReviewTargetDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetId: S.String,
+    solutionDependencies: S.optional(
+      BulkReviewTargetDetailsSolutionDependenciesList,
+    ),
+    solutionInstanceName: S.optional(S.String),
+    solutionConfiguration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BulkReviewTargetDetails",
+}) as any as S.Schema<BulkReviewTargetDetails>;
+
+/** Targets to which solution needs to be published */
+export type SolutionTemplateVersionsBulkReviewSolutionRequestTargetsList =
+  ReadonlyArray<BulkReviewTargetDetails>;
+export const SolutionTemplateVersionsBulkReviewSolutionRequestTargetsList =
+  /*@__PURE__*/ S.Array(
+    BulkReviewTargetDetails,
+  ) as any as S.Schema<SolutionTemplateVersionsBulkReviewSolutionRequestTargetsList>;
+
+/** Solution dependencies */
+export type SolutionTemplateVersionsBulkReviewSolutionRequestSolutionDependenciesList =
+  ReadonlyArray<SolutionDependencyParameter>;
+export const SolutionTemplateVersionsBulkReviewSolutionRequestSolutionDependenciesList =
+  /*@__PURE__*/ S.Array(
+    SolutionDependencyParameter,
+  ) as any as S.Schema<SolutionTemplateVersionsBulkReviewSolutionRequestSolutionDependenciesList>;
+
 export interface SolutionTemplateVersionsBulkReviewSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10553,7 +11902,14 @@ export interface SolutionTemplateVersionsBulkReviewSolutionRequest {
   solutionTemplateName: string;
   /** The name of the SolutionTemplateVersion */
   solutionTemplateVersionName: string;
-  body: unknown;
+  /** Targets to which solution needs to be published */
+  targets: SolutionTemplateVersionsBulkReviewSolutionRequestTargetsList;
+  /** Name of the solution instance */
+  solutionInstanceName?: string;
+  /** Solution dependencies */
+  solutionDependencies?: SolutionTemplateVersionsBulkReviewSolutionRequestSolutionDependenciesList;
+  /** Configuration of solution */
+  solutionConfiguration?: string;
 }
 export const SolutionTemplateVersionsBulkReviewSolutionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10562,7 +11918,12 @@ export const SolutionTemplateVersionsBulkReviewSolutionRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       solutionTemplateName: S.String.pipe(T.Label()),
       solutionTemplateVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      targets: SolutionTemplateVersionsBulkReviewSolutionRequestTargetsList,
+      solutionInstanceName: S.optional(S.String),
+      solutionDependencies: S.optional(
+        SolutionTemplateVersionsBulkReviewSolutionRequestSolutionDependenciesList,
+      ),
+      solutionConfiguration: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -10590,7 +11951,8 @@ export interface SolutionTemplateVersionsCreateOrUpdateRequest {
   solutionTemplateName: string;
   /** The name of the SolutionTemplateVersion */
   solutionTemplateVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SolutionTemplateVersionPropertiesInput;
 }
 export const SolutionTemplateVersionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10599,7 +11961,7 @@ export const SolutionTemplateVersionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       solutionTemplateName: S.String.pipe(T.Label()),
       solutionTemplateVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SolutionTemplateVersionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -10787,7 +12149,7 @@ export const SolutionTemplateVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The SolutionTemplateVersion items on this page */
 export type SolutionTemplateVersionListResultValueList =
-  SolutionTemplateVersion[];
+  ReadonlyArray<SolutionTemplateVersion>;
 export const SolutionTemplateVersionListResultValueList = /*@__PURE__*/ S.Array(
   SolutionTemplateVersion,
 ) as any as S.Schema<SolutionTemplateVersionListResultValueList>;
@@ -10808,6 +12170,38 @@ export const SolutionTemplateVersionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SolutionTemplateVersionListResult",
 }) as any as S.Schema<SolutionTemplateVersionListResult>;
 
+/** App components spec */
+export type SolutionTemplateVersionPropertiesUpdateSpecificationMap = {
+  [key: string]: unknown | undefined;
+};
+export const SolutionTemplateVersionPropertiesUpdateSpecificationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SolutionTemplateVersionPropertiesUpdateSpecificationMap>;
+
+/** Solution Template Version Properties */
+export interface SolutionTemplateVersionPropertiesUpdate {
+  /** Config expressions for this solution version */
+  configurations?: string;
+  /** App components spec */
+  specification?: SolutionTemplateVersionPropertiesUpdateSpecificationMap;
+  /** Orchestrator type */
+  orchestratorType?: OrchestratorType;
+}
+export const SolutionTemplateVersionPropertiesUpdate = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      configurations: S.optional(S.String),
+      specification: S.optional(
+        SolutionTemplateVersionPropertiesUpdateSpecificationMap,
+      ),
+      orchestratorType: S.optional(OrchestratorType),
+    }),
+).annotate({
+  identifier: "SolutionTemplateVersionPropertiesUpdate",
+}) as any as S.Schema<SolutionTemplateVersionPropertiesUpdate>;
+
 export interface SolutionTemplateVersionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10817,7 +12211,8 @@ export interface SolutionTemplateVersionsUpdateRequest {
   solutionTemplateName: string;
   /** The name of the SolutionTemplateVersion */
   solutionTemplateVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SolutionTemplateVersionPropertiesUpdate;
 }
 export const SolutionTemplateVersionsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -10826,7 +12221,7 @@ export const SolutionTemplateVersionsUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       solutionTemplateName: S.String.pipe(T.Label()),
       solutionTemplateVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SolutionTemplateVersionPropertiesUpdate),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -10867,6 +12262,39 @@ export const SolutionTemplateVersionsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "SolutionTemplateVersionsUpdateResponse",
 }) as any as S.Schema<SolutionTemplateVersionsUpdateResponse>;
 
+/** App components spec */
+export type SolutionVersionPropertiesInputSpecificationMap = {
+  [key: string]: unknown | undefined;
+};
+export const SolutionVersionPropertiesInputSpecificationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SolutionVersionPropertiesInputSpecificationMap>;
+
+/** The error detail. */
+export interface SolutionVersionPropertiesInputErrorDetails {}
+export const SolutionVersionPropertiesInputErrorDetails =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "SolutionVersionPropertiesInputErrorDetails",
+  }) as any as S.Schema<SolutionVersionPropertiesInputErrorDetails>;
+
+/** Solution Version Properties */
+export interface SolutionVersionPropertiesInput {
+  /** App components spec */
+  specification: SolutionVersionPropertiesInputSpecificationMap;
+  /** The error detail. */
+  errorDetails?: SolutionVersionPropertiesInputErrorDetails;
+}
+export const SolutionVersionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    specification: SolutionVersionPropertiesInputSpecificationMap,
+    errorDetails: S.optional(SolutionVersionPropertiesInputErrorDetails),
+  }),
+).annotate({
+  identifier: "SolutionVersionPropertiesInput",
+}) as any as S.Schema<SolutionVersionPropertiesInput>;
+
 export interface SolutionVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10878,7 +12306,9 @@ export interface SolutionVersionsCreateOrUpdateRequest {
   solutionName: string;
   /** Name of the solution version */
   solutionVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SolutionVersionPropertiesInput;
+  extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const SolutionVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -10888,7 +12318,10 @@ export const SolutionVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       targetName: S.String.pipe(T.Label()),
       solutionName: S.String.pipe(T.Label()),
       solutionVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SolutionVersionPropertiesInput),
+      extendedLocation: S.optional(
+        AzureResourceManagerCommonTypesExtendedLocation,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -10923,8 +12356,7 @@ export type State =
   | "PendingExternalValidation"
   | "ExternalValidationFailed"
   | "Staging"
-  | "NotApplicable"
-  | (string & {});
+  | "NotApplicable";
 export const State = /*@__PURE__*/ S.String;
 
 /** Stages for Solution Version */
@@ -10935,8 +12367,7 @@ export type CMStages =
   | "Uninstallation"
   | "ExternalValidation"
   | "Staging"
-  | "Unstaging"
-  | (string & {});
+  | "Unstaging";
 export const CMStages = /*@__PURE__*/ S.String;
 
 /** State Category for Solution Version */
@@ -10945,12 +12376,11 @@ export type StateCategory =
   | "InProgress"
   | "Completed"
   | "Failed"
-  | "None"
-  | (string & {});
+  | "None";
 export const StateCategory = /*@__PURE__*/ S.String;
 
 /** Child stages which represents more granular level stage status if any */
-export type StageMapChildStagesList = StageMap[];
+export type StageMapChildStagesList = ReadonlyArray<StageMap>;
 export const StageMapChildStagesList = /*@__PURE__*/ S.Array(
   S.suspend(() => StageMap),
 ) as any as S.Schema<StageMapChildStagesList>;
@@ -10982,13 +12412,14 @@ export const StageMap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageMap" }) as any as S.Schema<StageMap>;
 
 /** Stages of revision */
-export type SolutionVersionPropertiesStagesList = StageMap[];
+export type SolutionVersionPropertiesStagesList = ReadonlyArray<StageMap>;
 export const SolutionVersionPropertiesStagesList = /*@__PURE__*/ S.Array(
   StageMap,
 ) as any as S.Schema<SolutionVersionPropertiesStagesList>;
 
 /** Solution dependencies */
-export type SolutionDependencyDependenciesList = SolutionDependency[];
+export type SolutionDependencyDependenciesList =
+  ReadonlyArray<SolutionDependency>;
 export const SolutionDependencyDependenciesList = /*@__PURE__*/ S.Array(
   S.suspend(() => SolutionDependency),
 ) as any as S.Schema<SolutionDependencyDependenciesList>;
@@ -11020,14 +12451,15 @@ export const SolutionDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** Solution Dependency Context */
 export type SolutionVersionPropertiesSolutionDependenciesList =
-  SolutionDependency[];
+  ReadonlyArray<SolutionDependency>;
 export const SolutionVersionPropertiesSolutionDependenciesList =
   /*@__PURE__*/ S.Array(
     SolutionDependency,
   ) as any as S.Schema<SolutionVersionPropertiesSolutionDependenciesList>;
 
 /** The error details. */
-export type SolutionVersionPropertiesErrorDetailsDetailsList = ErrorDetail[];
+export type SolutionVersionPropertiesErrorDetailsDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const SolutionVersionPropertiesErrorDetailsDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -11035,7 +12467,7 @@ export const SolutionVersionPropertiesErrorDetailsDetailsList =
 
 /** The error additional info. */
 export type SolutionVersionPropertiesErrorDetailsAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const SolutionVersionPropertiesErrorDetailsAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -11329,7 +12761,7 @@ export const SolutionVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionVersion>;
 
 /** The SolutionVersion items on this page */
-export type SolutionVersionListResultValueList = SolutionVersion[];
+export type SolutionVersionListResultValueList = ReadonlyArray<SolutionVersion>;
 export const SolutionVersionListResultValueList = /*@__PURE__*/ S.Array(
   SolutionVersion,
 ) as any as S.Schema<SolutionVersionListResultValueList>;
@@ -11350,6 +12782,29 @@ export const SolutionVersionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SolutionVersionListResult",
 }) as any as S.Schema<SolutionVersionListResult>;
 
+/** App components spec */
+export type SolutionVersionPropertiesUpdateSpecificationMap = {
+  [key: string]: unknown | undefined;
+};
+export const SolutionVersionPropertiesUpdateSpecificationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SolutionVersionPropertiesUpdateSpecificationMap>;
+
+/** Solution Version Properties */
+export interface SolutionVersionPropertiesUpdate {
+  /** App components spec */
+  specification?: SolutionVersionPropertiesUpdateSpecificationMap;
+}
+export const SolutionVersionPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    specification: S.optional(SolutionVersionPropertiesUpdateSpecificationMap),
+  }),
+).annotate({
+  identifier: "SolutionVersionPropertiesUpdate",
+}) as any as S.Schema<SolutionVersionPropertiesUpdate>;
+
 export interface SolutionVersionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11361,7 +12816,8 @@ export interface SolutionVersionsUpdateRequest {
   solutionName: string;
   /** Name of the solution version */
   solutionVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SolutionVersionPropertiesUpdate;
 }
 export const SolutionVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11370,7 +12826,7 @@ export const SolutionVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     targetName: S.String.pipe(T.Label()),
     solutionName: S.String.pipe(T.Label()),
     solutionVersionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SolutionVersionPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -11414,6 +12870,65 @@ export const SolutionVersionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SolutionVersionsUpdateResponse",
 }) as any as S.Schema<SolutionVersionsUpdateResponse>;
 
+/** Resource tags. */
+export type TargetsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const TargetsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<TargetsCreateOrUpdateRequestTagsMap>;
+
+/** target spec */
+export type TargetPropertiesInputTargetSpecificationMap = {
+  [key: string]: unknown | undefined;
+};
+export const TargetPropertiesInputTargetSpecificationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<TargetPropertiesInputTargetSpecificationMap>;
+
+/** List of capabilities */
+export type TargetPropertiesInputCapabilitiesList = ReadonlyArray<string>;
+export const TargetPropertiesInputCapabilitiesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TargetPropertiesInputCapabilitiesList>;
+
+/** Target Properties */
+export interface TargetPropertiesInput {
+  /** Description of target */
+  description: string;
+  /** Display name of target */
+  displayName: string;
+  /** ArmId of Context */
+  contextId: string;
+  /** target spec */
+  targetSpecification: TargetPropertiesInputTargetSpecificationMap;
+  /** List of capabilities */
+  capabilities: TargetPropertiesInputCapabilitiesList;
+  /** Hierarchy Level */
+  hierarchyLevel: string;
+  /** Scope of the target resource */
+  solutionScope?: string;
+  /** State of resource */
+  state?: ResourceState;
+}
+export const TargetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    displayName: S.String,
+    contextId: S.String,
+    targetSpecification: TargetPropertiesInputTargetSpecificationMap,
+    capabilities: TargetPropertiesInputCapabilitiesList,
+    hierarchyLevel: S.String,
+    solutionScope: S.optional(S.String),
+    state: S.optional(ResourceState),
+  }),
+).annotate({
+  identifier: "TargetPropertiesInput",
+}) as any as S.Schema<TargetPropertiesInput>;
+
 export interface TargetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11421,14 +12936,25 @@ export interface TargetsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the target */
   targetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: TargetsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: TargetPropertiesInput;
+  extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const TargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(TargetsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(TargetPropertiesInput),
+    extendedLocation: S.optional(
+      AzureResourceManagerCommonTypesExtendedLocation,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -11460,7 +12986,7 @@ export const TargetPropertiesTargetSpecificationMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TargetPropertiesTargetSpecificationMap>;
 
 /** List of capabilities */
-export type TargetPropertiesCapabilitiesList = string[];
+export type TargetPropertiesCapabilitiesList = ReadonlyArray<string>;
 export const TargetPropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TargetPropertiesCapabilitiesList>;
@@ -11653,14 +13179,15 @@ export interface TargetsInstallSolutionRequest {
   resourceGroupName: string;
   /** Name of the target */
   targetName: string;
-  body: unknown;
+  /** Solution Version ARM Id */
+  solutionVersionId: string;
 }
 export const TargetsInstallSolutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    solutionVersionId: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -11746,7 +13273,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
 /** The Target items on this page */
-export type TargetListResultValueList = Target[];
+export type TargetListResultValueList = ReadonlyArray<Target>;
 export const TargetListResultValueList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetListResultValueList>;
@@ -11793,7 +13320,8 @@ export interface TargetsPublishSolutionVersionRequest {
   resourceGroupName: string;
   /** Name of the target */
   targetName: string;
-  body: unknown;
+  /** Solution Version ARM Id */
+  solutionVersionId: string;
 }
 export const TargetsPublishSolutionVersionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -11801,7 +13329,7 @@ export const TargetsPublishSolutionVersionRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       targetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      solutionVersionId: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -11853,14 +13381,18 @@ export interface TargetsRemoveRevisionRequest {
   resourceGroupName: string;
   /** Name of the target */
   targetName: string;
-  body: unknown;
+  /** Solution Template ARM Id */
+  solutionTemplateId: string;
+  /** Solution Version Name */
+  solutionVersion: string;
 }
 export const TargetsRemoveRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    solutionTemplateId: S.String,
+    solutionVersion: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -11880,6 +13412,14 @@ export const TargetsRemoveRevisionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetsRemoveRevisionResponse",
 }) as any as S.Schema<TargetsRemoveRevisionResponse>;
 
+/** Solution Dependencies */
+export type TargetsResolveConfigurationRequestSolutionDependenciesList =
+  ReadonlyArray<SolutionDependencyParameter>;
+export const TargetsResolveConfigurationRequestSolutionDependenciesList =
+  /*@__PURE__*/ S.Array(
+    SolutionDependencyParameter,
+  ) as any as S.Schema<TargetsResolveConfigurationRequestSolutionDependenciesList>;
+
 export interface TargetsResolveConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11887,14 +13427,23 @@ export interface TargetsResolveConfigurationRequest {
   resourceGroupName: string;
   /** Name of the target */
   targetName: string;
-  body: unknown;
+  /** Solution Template Version ARM Id */
+  solutionTemplateVersionId: string;
+  /** Solution Instance Name */
+  solutionInstanceName?: string;
+  /** Solution Dependencies */
+  solutionDependencies?: TargetsResolveConfigurationRequestSolutionDependenciesList;
 }
 export const TargetsResolveConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    solutionTemplateVersionId: S.String,
+    solutionInstanceName: S.optional(S.String),
+    solutionDependencies: S.optional(
+      TargetsResolveConfigurationRequestSolutionDependenciesList,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -11920,6 +13469,14 @@ export const ResolvedConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResolvedConfiguration",
 }) as any as S.Schema<ResolvedConfiguration>;
 
+/** Solution Dependencies */
+export type TargetsReviewSolutionVersionRequestSolutionDependenciesList =
+  ReadonlyArray<SolutionDependencyParameter>;
+export const TargetsReviewSolutionVersionRequestSolutionDependenciesList =
+  /*@__PURE__*/ S.Array(
+    SolutionDependencyParameter,
+  ) as any as S.Schema<TargetsReviewSolutionVersionRequestSolutionDependenciesList>;
+
 export interface TargetsReviewSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11927,14 +13484,23 @@ export interface TargetsReviewSolutionVersionRequest {
   resourceGroupName: string;
   /** Name of the target */
   targetName: string;
-  body: unknown;
+  /** Solution Template Version ARM Id */
+  solutionTemplateVersionId: string;
+  /** Solution Instance Name */
+  solutionInstanceName?: string;
+  /** Solution Dependencies */
+  solutionDependencies?: TargetsReviewSolutionVersionRequestSolutionDependenciesList;
 }
 export const TargetsReviewSolutionVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    solutionTemplateVersionId: S.String,
+    solutionInstanceName: S.optional(S.String),
+    solutionDependencies: S.optional(
+      TargetsReviewSolutionVersionRequestSolutionDependenciesList,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -11986,14 +13552,18 @@ export interface TargetsUninstallSolutionRequest {
   resourceGroupName: string;
   /** Name of the target */
   targetName: string;
-  body: unknown;
+  /** Solution Template ARM Id */
+  solutionTemplateId: string;
+  /** Solution Instance Name */
+  solutionInstanceName?: string;
 }
 export const TargetsUninstallSolutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    solutionTemplateId: S.String,
+    solutionInstanceName: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -12020,7 +13590,8 @@ export interface TargetsUnstageSolutionVersionRequest {
   resourceGroupName: string;
   /** Name of the target */
   targetName: string;
-  body: unknown;
+  /** Solution Version ARM Id */
+  solutionVersionId: string;
 }
 export const TargetsUnstageSolutionVersionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -12028,7 +13599,7 @@ export const TargetsUnstageSolutionVersionRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       targetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      solutionVersionId: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -12073,6 +13644,65 @@ export const TargetsUnstageSolutionVersionResponse = /*@__PURE__*/ S.suspend(
   identifier: "TargetsUnstageSolutionVersionResponse",
 }) as any as S.Schema<TargetsUnstageSolutionVersionResponse>;
 
+/** Resource tags. */
+export type TargetsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const TargetsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<TargetsUpdateRequestTagsMap>;
+
+/** target spec */
+export type TargetUpdatePropertiesTargetSpecificationMap = {
+  [key: string]: unknown | undefined;
+};
+export const TargetUpdatePropertiesTargetSpecificationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<TargetUpdatePropertiesTargetSpecificationMap>;
+
+/** List of capabilities */
+export type TargetUpdatePropertiesCapabilitiesList = ReadonlyArray<string>;
+export const TargetUpdatePropertiesCapabilitiesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TargetUpdatePropertiesCapabilitiesList>;
+
+/** The updatable properties of the Target. */
+export interface TargetUpdateProperties {
+  /** Description of target */
+  description?: string;
+  /** Display name of target */
+  displayName?: string;
+  /** ArmId of Context */
+  contextId?: string;
+  /** target spec */
+  targetSpecification?: TargetUpdatePropertiesTargetSpecificationMap;
+  /** List of capabilities */
+  capabilities?: TargetUpdatePropertiesCapabilitiesList;
+  /** Hierarchy Level */
+  hierarchyLevel?: string;
+  /** Scope of the target resource */
+  solutionScope?: string;
+  /** State of resource */
+  state?: ResourceState;
+}
+export const TargetUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    displayName: S.optional(S.String),
+    contextId: S.optional(S.String),
+    targetSpecification: S.optional(
+      TargetUpdatePropertiesTargetSpecificationMap,
+    ),
+    capabilities: S.optional(TargetUpdatePropertiesCapabilitiesList),
+    hierarchyLevel: S.optional(S.String),
+    solutionScope: S.optional(S.String),
+    state: S.optional(ResourceState),
+  }),
+).annotate({
+  identifier: "TargetUpdateProperties",
+}) as any as S.Schema<TargetUpdateProperties>;
+
 export interface TargetsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12080,14 +13710,18 @@ export interface TargetsUpdateRequest {
   resourceGroupName: string;
   /** Name of the target */
   targetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: TargetsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: TargetUpdateProperties;
 }
 export const TargetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(TargetsUpdateRequestTagsMap),
+    properties: S.optional(TargetUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -12146,6 +13780,17 @@ export const TargetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetsUpdateResponse",
 }) as any as S.Schema<TargetsUpdateResponse>;
 
+/** The error detail. */
+export interface TargetsUpdateExternalValidationStatusRequestErrorDetails {}
+export const TargetsUpdateExternalValidationStatusRequestErrorDetails =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "TargetsUpdateExternalValidationStatusRequestErrorDetails",
+  }) as any as S.Schema<TargetsUpdateExternalValidationStatusRequestErrorDetails>;
+
+/** Solution Instance Validation Status */
+export type ValidationStatus = "Valid" | "Invalid";
+export const ValidationStatus = /*@__PURE__*/ S.String;
+
 export interface TargetsUpdateExternalValidationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12153,7 +13798,14 @@ export interface TargetsUpdateExternalValidationStatusRequest {
   resourceGroupName: string;
   /** Name of the target */
   targetName: string;
-  body: unknown;
+  /** Solution Version Id */
+  solutionVersionId: string;
+  /** The error detail. */
+  errorDetails?: TargetsUpdateExternalValidationStatusRequestErrorDetails;
+  /** External validation id */
+  externalValidationId: string;
+  /** Validation Status of external validation */
+  validationStatus: ValidationStatus;
 }
 export const TargetsUpdateExternalValidationStatusRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12161,7 +13813,12 @@ export const TargetsUpdateExternalValidationStatusRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       targetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      solutionVersionId: S.String,
+      errorDetails: S.optional(
+        TargetsUpdateExternalValidationStatusRequestErrorDetails,
+      ),
+      externalValidationId: S.String,
+      validationStatus: ValidationStatus,
     }).pipe(
       T.Http({
         method: "POST",
@@ -12206,6 +13863,14 @@ export const TargetsUpdateExternalValidationStatusResponse =
     identifier: "TargetsUpdateExternalValidationStatusResponse",
   }) as any as S.Schema<TargetsUpdateExternalValidationStatusResponse>;
 
+/** Workflow Properties */
+export interface WorkflowPropertiesInput {}
+export const WorkflowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "WorkflowPropertiesInput",
+}) as any as S.Schema<WorkflowPropertiesInput>;
+
 export interface WorkflowsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12215,7 +13880,9 @@ export interface WorkflowsCreateOrUpdateRequest {
   contextName: string;
   /** Name of the workflow */
   workflowName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: WorkflowPropertiesInput;
+  extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const WorkflowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12223,7 +13890,10 @@ export const WorkflowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     contextName: S.String.pipe(T.Label()),
     workflowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(WorkflowPropertiesInput),
+    extendedLocation: S.optional(
+      AzureResourceManagerCommonTypesExtendedLocation,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -12433,7 +14103,7 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 
 /** The Workflow items on this page */
-export type WorkflowListResultValueList = Workflow[];
+export type WorkflowListResultValueList = ReadonlyArray<Workflow>;
 export const WorkflowListResultValueList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowListResultValueList>;
@@ -12463,7 +14133,8 @@ export interface WorkflowsUpdateRequest {
   contextName: string;
   /** Name of the workflow */
   workflowName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: WorkflowPropertiesInput;
 }
 export const WorkflowsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12471,7 +14142,7 @@ export const WorkflowsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     contextName: S.String.pipe(T.Label()),
     workflowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(WorkflowPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -12515,40 +14186,6 @@ export const WorkflowsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkflowsUpdateResponse",
 }) as any as S.Schema<WorkflowsUpdateResponse>;
 
-export interface WorkflowVersionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Context. */
-  contextName: string;
-  /** Name of the workflow */
-  workflowName: string;
-  /** The name of the workflowVersion. */
-  versionName: string;
-  body: unknown;
-}
-export const WorkflowVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      contextName: S.String.pipe(T.Label()),
-      workflowName: S.String.pipe(T.Label()),
-      versionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
-        code: 200,
-        apiVersion: "2026-03-01",
-      }),
-    ),
-).annotate({
-  identifier: "WorkflowVersionsCreateOrUpdateRequest",
-}) as any as S.Schema<WorkflowVersionsCreateOrUpdateRequest>;
-
 /** Stage specification */
 export type StageSpecSpecificationMap = { [key: string]: unknown | undefined };
 export const StageSpecSpecificationMap = /*@__PURE__*/ S.Record(
@@ -12581,7 +14218,7 @@ export const TaskSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskSpec" }) as any as S.Schema<TaskSpec>;
 
 /** List of tasks in the stage */
-export type StageSpecTasksList = TaskSpec[];
+export type StageSpecTasksList = ReadonlyArray<TaskSpec>;
 export const StageSpecTasksList = /*@__PURE__*/ S.Array(
   TaskSpec,
 ) as any as S.Schema<StageSpecTasksList>;
@@ -12590,8 +14227,7 @@ export const StageSpecTasksList = /*@__PURE__*/ S.Array(
 export type ErrorActionMode =
   | "stopOnAnyFailure"
   | "stopOnNFailures"
-  | "silentlyContinue"
-  | (string & {});
+  | "silentlyContinue";
 export const ErrorActionMode = /*@__PURE__*/ S.String;
 
 /** Error Action Properties */
@@ -12643,7 +14279,80 @@ export const StageSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageSpec" }) as any as S.Schema<StageSpec>;
 
 /** A list of stage specs */
-export type WorkflowVersionPropertiesStageSpecList = StageSpec[];
+export type WorkflowVersionPropertiesInputStageSpecList =
+  ReadonlyArray<StageSpec>;
+export const WorkflowVersionPropertiesInputStageSpecList =
+  /*@__PURE__*/ S.Array(
+    StageSpec,
+  ) as any as S.Schema<WorkflowVersionPropertiesInputStageSpecList>;
+
+/** Execution specification */
+export type WorkflowVersionPropertiesInputSpecificationMap = {
+  [key: string]: unknown | undefined;
+};
+export const WorkflowVersionPropertiesInputSpecificationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<WorkflowVersionPropertiesInputSpecificationMap>;
+
+/** Workflow Version Properties */
+export interface WorkflowVersionPropertiesInput {
+  /** A list of stage specs */
+  stageSpec: WorkflowVersionPropertiesInputStageSpecList;
+  /** Execution specification */
+  specification?: WorkflowVersionPropertiesInputSpecificationMap;
+}
+export const WorkflowVersionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stageSpec: WorkflowVersionPropertiesInputStageSpecList,
+    specification: S.optional(WorkflowVersionPropertiesInputSpecificationMap),
+  }),
+).annotate({
+  identifier: "WorkflowVersionPropertiesInput",
+}) as any as S.Schema<WorkflowVersionPropertiesInput>;
+
+export interface WorkflowVersionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Context. */
+  contextName: string;
+  /** Name of the workflow */
+  workflowName: string;
+  /** The name of the workflowVersion. */
+  versionName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: WorkflowVersionPropertiesInput;
+  extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
+}
+export const WorkflowVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      contextName: S.String.pipe(T.Label()),
+      workflowName: S.String.pipe(T.Label()),
+      versionName: S.String.pipe(T.Label()),
+      properties: S.optional(WorkflowVersionPropertiesInput),
+      extendedLocation: S.optional(
+        AzureResourceManagerCommonTypesExtendedLocation,
+      ),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Edge/contexts/{contextName}/workflows/{workflowName}/versions/{versionName}",
+        code: 200,
+        apiVersion: "2026-03-01",
+      }),
+    ),
+).annotate({
+  identifier: "WorkflowVersionsCreateOrUpdateRequest",
+}) as any as S.Schema<WorkflowVersionsCreateOrUpdateRequest>;
+
+/** A list of stage specs */
+export type WorkflowVersionPropertiesStageSpecList = ReadonlyArray<StageSpec>;
 export const WorkflowVersionPropertiesStageSpecList = /*@__PURE__*/ S.Array(
   StageSpec,
 ) as any as S.Schema<WorkflowVersionPropertiesStageSpecList>;
@@ -12882,7 +14591,7 @@ export const WorkflowVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowVersion>;
 
 /** The WorkflowVersion items on this page */
-export type WorkflowVersionListResultValueList = WorkflowVersion[];
+export type WorkflowVersionListResultValueList = ReadonlyArray<WorkflowVersion>;
 export const WorkflowVersionListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowVersion,
 ) as any as S.Schema<WorkflowVersionListResultValueList>;
@@ -12903,6 +14612,40 @@ export const WorkflowVersionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkflowVersionListResult",
 }) as any as S.Schema<WorkflowVersionListResult>;
 
+/** A list of stage specs */
+export type WorkflowVersionPropertiesUpdateStageSpecList =
+  ReadonlyArray<StageSpec>;
+export const WorkflowVersionPropertiesUpdateStageSpecList =
+  /*@__PURE__*/ S.Array(
+    StageSpec,
+  ) as any as S.Schema<WorkflowVersionPropertiesUpdateStageSpecList>;
+
+/** Execution specification */
+export type WorkflowVersionPropertiesUpdateSpecificationMap = {
+  [key: string]: unknown | undefined;
+};
+export const WorkflowVersionPropertiesUpdateSpecificationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<WorkflowVersionPropertiesUpdateSpecificationMap>;
+
+/** Workflow Version Properties */
+export interface WorkflowVersionPropertiesUpdate {
+  /** A list of stage specs */
+  stageSpec?: WorkflowVersionPropertiesUpdateStageSpecList;
+  /** Execution specification */
+  specification?: WorkflowVersionPropertiesUpdateSpecificationMap;
+}
+export const WorkflowVersionPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stageSpec: S.optional(WorkflowVersionPropertiesUpdateStageSpecList),
+    specification: S.optional(WorkflowVersionPropertiesUpdateSpecificationMap),
+  }),
+).annotate({
+  identifier: "WorkflowVersionPropertiesUpdate",
+}) as any as S.Schema<WorkflowVersionPropertiesUpdate>;
+
 export interface WorkflowVersionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12914,7 +14657,8 @@ export interface WorkflowVersionsUpdateRequest {
   workflowName: string;
   /** The name of the workflowVersion. */
   versionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: WorkflowVersionPropertiesUpdate;
 }
 export const WorkflowVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12923,7 +14667,7 @@ export const WorkflowVersionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     contextName: S.String.pipe(T.Label()),
     workflowName: S.String.pipe(T.Label()),
     versionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(WorkflowVersionPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",

@@ -255,7 +255,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.feature_flags#PaginatedFeatureFlagList": {
+    "com.posthog.feature_flags#PaginatedFeatureFlagListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -274,12 +274,12 @@
           }
         },
         "results": {
-          "target": "com.posthog.feature_flags#PaginatedFeatureFlagListResultsList"
+          "target": "com.posthog.feature_flags#PaginatedFeatureFlagListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlag": {
+    "com.posthog.feature_flags#FeatureFlagOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -295,7 +295,7 @@
           "target": "smithy.api#String"
         },
         "filters": {
-          "target": "com.posthog.feature_flags#FeatureFlagFiltersMap"
+          "target": "com.posthog.feature_flags#FeatureFlagOutputFiltersMap"
         },
         "deleted": {
           "target": "smithy.api#Boolean"
@@ -310,7 +310,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.feature_flags#UserBasic"
+          "target": "com.posthog.feature_flags#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -325,7 +328,10 @@
           "target": "smithy.api#Integer"
         },
         "last_modified_by": {
-          "target": "com.posthog.feature_flags#UserBasic"
+          "target": "com.posthog.feature_flags#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "ensure_experience_continuity": {
           "target": "smithy.api#Boolean",
@@ -334,31 +340,28 @@
           }
         },
         "experiment_set": {
-          "target": "com.posthog.feature_flags#FeatureFlagExperimentSetList"
+          "target": "com.posthog.feature_flags#FeatureFlagOutputExperimentSetList"
         },
         "experiment_set_metadata": {
-          "target": "com.posthog.feature_flags#FeatureFlagExperimentSetMetadataList"
+          "target": "com.posthog.feature_flags#FeatureFlagOutputExperimentSetMetadataList"
         },
         "surveys": {
-          "target": "com.posthog.feature_flags#FeatureFlagSurveysMap"
+          "target": "com.posthog.feature_flags#FeatureFlagOutputSurveysMap"
         },
         "features": {
-          "target": "com.posthog.feature_flags#FeatureFlagFeaturesMap"
+          "target": "com.posthog.feature_flags#FeatureFlagOutputFeaturesMap"
         },
         "can_edit": {
           "target": "smithy.api#Boolean"
         },
         "tags": {
-          "target": "com.posthog.feature_flags#FeatureFlagTagsList"
-        },
-        "evaluation_contexts": {
-          "target": "com.posthog.feature_flags#FeatureFlagEvaluationContextsList"
+          "target": "com.posthog.feature_flags#FeatureFlagOutputTagsList"
         },
         "usage_dashboard": {
           "target": "smithy.api#Integer"
         },
         "analytics_dashboards": {
-          "target": "com.posthog.feature_flags#FeatureFlagAnalyticsDashboardsList"
+          "target": "com.posthog.feature_flags#FeatureFlagOutputAnalyticsDashboardsList"
         },
         "has_enriched_analytics": {
           "target": "smithy.api#Boolean",
@@ -371,12 +374,6 @@
           "traits": {
             "smithy.api#documentation": "The effective access level the user has for this object",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "creation_context": {
-          "target": "com.posthog.feature_flags#FeatureFlagCreationContextEnum",
-          "traits": {
-            "smithy.api#documentation": "Indicates the origin product of the feature flag. Choices: 'feature_flags', 'experiments', 'surveys', 'early_access_features', 'web_experiments', 'product_tours'.\n\n* `feature_flags` - feature_flags\n* `experiments` - experiments\n* `surveys` - surveys\n* `early_access_features` - early_access_features\n* `web_experiments` - web_experiments\n* `product_tours` - product_tours"
           }
         },
         "is_remote_configuration": {
@@ -395,14 +392,14 @@
           "target": "smithy.api#String"
         },
         "evaluation_runtime": {
-          "target": "com.posthog.feature_flags#FeatureFlagEvaluationRuntime",
+          "target": "com.posthog.feature_flags#FeatureFlagOutputEvaluationRuntime",
           "traits": {
             "smithy.api#documentation": "Specifies where this feature flag should be evaluated\n\n* `server` - Server\n* `client` - Client\n* `all` - All",
             "com.distilled.openapi#nullable": {}
           }
         },
         "bucketing_identifier": {
-          "target": "com.posthog.feature_flags#FeatureFlagBucketingIdentifier",
+          "target": "com.posthog.feature_flags#FeatureFlagOutputBucketingIdentifier",
           "traits": {
             "smithy.api#documentation": "Identifier used for bucketing users into rollout and variants\n\n* `distinct_id` - User ID (default)\n* `device_id` - Device ID",
             "com.distilled.openapi#nullable": {}
@@ -414,12 +411,6 @@
             "smithy.api#documentation": "Last time this feature flag was called (from $feature_flag_called events)",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
-        },
-        "_should_create_usage_dashboard": {
-          "target": "smithy.api#Boolean"
         },
         "is_used_in_replay_settings": {
           "target": "smithy.api#Boolean",
@@ -438,7 +429,7 @@
         "smithy.api#documentation": "Serializer mixin that handles tags for objects."
       }
     },
-    "com.posthog.feature_flags#FeatureFlagFiltersMap": {
+    "com.posthog.feature_flags#FeatureFlagOutputFiltersMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -583,7 +574,7 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagExperimentSetList": {
+    "com.posthog.feature_flags#FeatureFlagOutputExperimentSetList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
@@ -617,14 +608,14 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagExperimentSetMetadataList": {
+    "com.posthog.feature_flags#FeatureFlagOutputExperimentSetMetadataList": {
       "type": "list",
       "member": {
         "target": "com.posthog.feature_flags#FeatureFlagExperimentSetMetadata"
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagSurveysMap": {
+    "com.posthog.feature_flags#FeatureFlagOutputSurveysMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -634,7 +625,7 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagFeaturesMap": {
+    "com.posthog.feature_flags#FeatureFlagOutputFeaturesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -644,70 +635,19 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagTagsList": {
+    "com.posthog.feature_flags#FeatureFlagOutputTagsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagEvaluationContextsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagAnalyticsDashboardsList": {
+    "com.posthog.feature_flags#FeatureFlagOutputAnalyticsDashboardsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
       },
       "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagCreationContextEnum": {
-      "type": "enum",
-      "members": {
-        "FEATURE_FLAGS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feature_flags"
-          }
-        },
-        "EXPERIMENTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "experiments"
-          }
-        },
-        "SURVEYS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "surveys"
-          }
-        },
-        "EARLY_ACCESS_FEATURES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "early_access_features"
-          }
-        },
-        "WEB_EXPERIMENTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "web_experiments"
-          }
-        },
-        "PRODUCT_TOURS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "product_tours"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `feature_flags` - feature_flags\n* `experiments` - experiments\n* `surveys` - surveys\n* `early_access_features` - early_access_features\n* `web_experiments` - web_experiments\n* `product_tours` - product_tours"
-      }
     },
     "com.posthog.feature_flags#EvaluationRuntimeEnum": {
       "type": "enum",
@@ -735,7 +675,7 @@
         "smithy.api#documentation": "* `server` - Server\n* `client` - Client\n* `all` - All"
       }
     },
-    "com.posthog.feature_flags#FeatureFlagEvaluationRuntime": {
+    "com.posthog.feature_flags#FeatureFlagOutputEvaluationRuntime": {
       "type": "union",
       "members": {
         "EvaluationRuntimeEnum": {
@@ -769,7 +709,7 @@
         "smithy.api#documentation": "* `distinct_id` - User ID (default)\n* `device_id` - Device ID"
       }
     },
-    "com.posthog.feature_flags#FeatureFlagBucketingIdentifier": {
+    "com.posthog.feature_flags#FeatureFlagOutputBucketingIdentifier": {
       "type": "union",
       "members": {
         "BucketingIdentifierEnum": {
@@ -783,10 +723,10 @@
         "smithy.api#documentation": "Identifier used for bucketing users into rollout and variants\n\n* `distinct_id` - User ID (default)\n* `device_id` - Device ID"
       }
     },
-    "com.posthog.feature_flags#PaginatedFeatureFlagListResultsList": {
+    "com.posthog.feature_flags#PaginatedFeatureFlagListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.feature_flags#FeatureFlag"
+        "target": "com.posthog.feature_flags#FeatureFlagOutput"
       },
       "traits": {}
     },
@@ -796,7 +736,7 @@
         "target": "com.posthog.feature_flags#FeatureFlagsListRequest"
       },
       "output": {
-        "target": "com.posthog.feature_flags#PaginatedFeatureFlagList"
+        "target": "com.posthog.feature_flags#PaginatedFeatureFlagListOutput"
       },
       "errors": [
         {
@@ -1708,7 +1648,7 @@
         "target": "com.posthog.feature_flags#FeatureFlagsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.feature_flags#FeatureFlag"
+        "target": "com.posthog.feature_flags#FeatureFlagOutput"
       },
       "errors": [
         {
@@ -1760,7 +1700,7 @@
         "target": "com.posthog.feature_flags#FeatureFlagsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.feature_flags#FeatureFlag"
+        "target": "com.posthog.feature_flags#FeatureFlagOutput"
       },
       "errors": [
         {
@@ -1780,40 +1720,6 @@
       }
     },
     "com.posthog.feature_flags#FeatureFlagsUpdateRequestFiltersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsUpdateRequestExperimentSetList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsUpdateRequestExperimentSetMetadataList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.feature_flags#FeatureFlagExperimentSetMetadata"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsUpdateRequestSurveysMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsUpdateRequestFeaturesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1843,6 +1749,50 @@
         "target": "smithy.api#Integer"
       },
       "traits": {}
+    },
+    "com.posthog.feature_flags#FeatureFlagCreationContextEnum": {
+      "type": "enum",
+      "members": {
+        "FEATURE_FLAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature_flags"
+          }
+        },
+        "EXPERIMENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "experiments"
+          }
+        },
+        "SURVEYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "surveys"
+          }
+        },
+        "EARLY_ACCESS_FEATURES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "early_access_features"
+          }
+        },
+        "WEB_EXPERIMENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "web_experiments"
+          }
+        },
+        "PRODUCT_TOURS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "product_tours"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `feature_flags` - feature_flags\n* `experiments` - experiments\n* `surveys` - surveys\n* `early_access_features` - early_access_features\n* `web_experiments` - web_experiments\n* `product_tours` - product_tours"
+      }
     },
     "com.posthog.feature_flags#FeatureFlagsUpdateRequestEvaluationRuntime": {
       "type": "union",
@@ -1915,23 +1865,11 @@
             "smithy.api#documentation": "Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`)."
           }
         },
-        "created_by": {
-          "target": "com.posthog.feature_flags#UserBasic"
-        },
         "created_at": {
           "target": "smithy.api#String"
         },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "version": {
           "target": "smithy.api#Integer"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.feature_flags#UserBasic"
         },
         "ensure_experience_continuity": {
           "target": "smithy.api#Boolean",
@@ -1939,29 +1877,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "experiment_set": {
-          "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequestExperimentSetList"
-        },
-        "experiment_set_metadata": {
-          "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequestExperimentSetMetadataList"
-        },
-        "surveys": {
-          "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequestSurveysMap"
-        },
-        "features": {
-          "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequestFeaturesMap"
-        },
-        "can_edit": {
-          "target": "smithy.api#Boolean"
-        },
         "tags": {
           "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequestTagsList"
         },
         "evaluation_contexts": {
           "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequestEvaluationContextsList"
-        },
-        "usage_dashboard": {
-          "target": "smithy.api#Integer"
         },
         "analytics_dashboards": {
           "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequestAnalyticsDashboardsList"
@@ -1969,13 +1889,6 @@
         "has_enriched_analytics": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1996,9 +1909,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "evaluation_runtime": {
           "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequestEvaluationRuntime",
@@ -2026,18 +1936,6 @@
         },
         "_should_create_usage_dashboard": {
           "target": "smithy.api#Boolean"
-        },
-        "is_used_in_replay_settings": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Check if this feature flag is used in any team's session recording linked flag setting."
-          }
-        },
-        "is_eligible_for_experiment": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this flag can back an experiment: multivariate with 2 to 20 variants."
-          }
         }
       },
       "traits": {
@@ -2050,7 +1948,7 @@
         "target": "com.posthog.feature_flags#FeatureFlagsUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.feature_flags#FeatureFlag"
+        "target": "com.posthog.feature_flags#FeatureFlagOutput"
       },
       "errors": [
         {
@@ -2190,7 +2088,7 @@
         "target": "com.posthog.feature_flags#FeatureFlagsPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.feature_flags#FeatureFlag"
+        "target": "com.posthog.feature_flags#FeatureFlagOutput"
       },
       "errors": [
         {
@@ -2485,40 +2383,6 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestExperimentSetList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestExperimentSetMetadataList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.feature_flags#FeatureFlagExperimentSetMetadata"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestSurveysMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestFeaturesMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList": {
       "type": "list",
       "member": {
@@ -2611,23 +2475,11 @@
             "smithy.api#documentation": "Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`)."
           }
         },
-        "created_by": {
-          "target": "com.posthog.feature_flags#UserBasic"
-        },
         "created_at": {
           "target": "smithy.api#String"
         },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "version": {
           "target": "smithy.api#Integer"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.feature_flags#UserBasic"
         },
         "ensure_experience_continuity": {
           "target": "smithy.api#Boolean",
@@ -2635,29 +2487,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "experiment_set": {
-          "target": "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestExperimentSetList"
-        },
-        "experiment_set_metadata": {
-          "target": "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestExperimentSetMetadataList"
-        },
-        "surveys": {
-          "target": "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestSurveysMap"
-        },
-        "features": {
-          "target": "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestFeaturesMap"
-        },
-        "can_edit": {
-          "target": "smithy.api#Boolean"
-        },
         "tags": {
           "target": "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList"
         },
         "evaluation_contexts": {
           "target": "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationContextsList"
-        },
-        "usage_dashboard": {
-          "target": "smithy.api#Integer"
         },
         "analytics_dashboards": {
           "target": "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestAnalyticsDashboardsList"
@@ -2665,13 +2499,6 @@
         "has_enriched_analytics": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -2692,9 +2519,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "evaluation_runtime": {
           "target": "com.posthog.feature_flags#FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationRuntime",
@@ -2722,18 +2546,6 @@
         },
         "_should_create_usage_dashboard": {
           "target": "smithy.api#Boolean"
-        },
-        "is_used_in_replay_settings": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Check if this feature flag is used in any team's session recording linked flag setting."
-          }
-        },
-        "is_eligible_for_experiment": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this flag can back an experiment: multivariate with 2 to 20 variants."
-          }
         }
       },
       "traits": {
@@ -2769,40 +2581,6 @@
       }
     },
     "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestFiltersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestExperimentSetList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestExperimentSetMetadataList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.feature_flags#FeatureFlagExperimentSetMetadata"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestSurveysMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestFeaturesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -2904,23 +2682,11 @@
             "smithy.api#documentation": "Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`)."
           }
         },
-        "created_by": {
-          "target": "com.posthog.feature_flags#UserBasic"
-        },
         "created_at": {
           "target": "smithy.api#String"
         },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "version": {
           "target": "smithy.api#Integer"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.feature_flags#UserBasic"
         },
         "ensure_experience_continuity": {
           "target": "smithy.api#Boolean",
@@ -2928,29 +2694,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "experiment_set": {
-          "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestExperimentSetList"
-        },
-        "experiment_set_metadata": {
-          "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestExperimentSetMetadataList"
-        },
-        "surveys": {
-          "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestSurveysMap"
-        },
-        "features": {
-          "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestFeaturesMap"
-        },
-        "can_edit": {
-          "target": "smithy.api#Boolean"
-        },
         "tags": {
           "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestTagsList"
         },
         "evaluation_contexts": {
           "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestEvaluationContextsList"
-        },
-        "usage_dashboard": {
-          "target": "smithy.api#Integer"
         },
         "analytics_dashboards": {
           "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestAnalyticsDashboardsList"
@@ -2958,13 +2706,6 @@
         "has_enriched_analytics": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -2985,9 +2726,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "evaluation_runtime": {
           "target": "com.posthog.feature_flags#FeatureFlagsDashboardCreateRequestEvaluationRuntime",
@@ -3015,18 +2753,6 @@
         },
         "_should_create_usage_dashboard": {
           "target": "smithy.api#Boolean"
-        },
-        "is_used_in_replay_settings": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Check if this feature flag is used in any team's session recording linked flag setting."
-          }
-        },
-        "is_eligible_for_experiment": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this flag can back an experiment: multivariate with 2 to 20 variants."
-          }
         }
       },
       "traits": {
@@ -3166,40 +2892,6 @@
       },
       "traits": {}
     },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestExperimentSetList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestExperimentSetMetadataList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.feature_flags#FeatureFlagExperimentSetMetadata"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestSurveysMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestFeaturesMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestTagsList": {
       "type": "list",
       "member": {
@@ -3292,23 +2984,11 @@
             "smithy.api#documentation": "Whether the flag is archived. Archived flags are hidden from the flag list by default and must be disabled (`active: false`)."
           }
         },
-        "created_by": {
-          "target": "com.posthog.feature_flags#UserBasic"
-        },
         "created_at": {
           "target": "smithy.api#String"
         },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "version": {
           "target": "smithy.api#Integer"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.feature_flags#UserBasic"
         },
         "ensure_experience_continuity": {
           "target": "smithy.api#Boolean",
@@ -3316,29 +2996,11 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "experiment_set": {
-          "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestExperimentSetList"
-        },
-        "experiment_set_metadata": {
-          "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestExperimentSetMetadataList"
-        },
-        "surveys": {
-          "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestSurveysMap"
-        },
-        "features": {
-          "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestFeaturesMap"
-        },
-        "can_edit": {
-          "target": "smithy.api#Boolean"
-        },
         "tags": {
           "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestTagsList"
         },
         "evaluation_contexts": {
           "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationContextsList"
-        },
-        "usage_dashboard": {
-          "target": "smithy.api#Integer"
         },
         "analytics_dashboards": {
           "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestAnalyticsDashboardsList"
@@ -3346,13 +3008,6 @@
         "has_enriched_analytics": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -3373,9 +3028,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "status": {
-          "target": "smithy.api#String"
         },
         "evaluation_runtime": {
           "target": "com.posthog.feature_flags#FeatureFlagsEnrichUsageDashboardCreateRequestEvaluationRuntime",
@@ -3403,18 +3055,6 @@
         },
         "_should_create_usage_dashboard": {
           "target": "smithy.api#Boolean"
-        },
-        "is_used_in_replay_settings": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Check if this feature flag is used in any team's session recording linked flag setting."
-          }
-        },
-        "is_eligible_for_experiment": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this flag can back an experiment: multivariate with 2 to 20 variants."
-          }
         }
       },
       "traits": {

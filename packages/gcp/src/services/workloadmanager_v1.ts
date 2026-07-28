@@ -100,8 +100,7 @@ export type DeploymentWorkloadTypeEnum =
   | "WORKLOAD_TYPE_UNSPECIFIED"
   | "SAP_S4"
   | "SQL_SERVER"
-  | "ORACLE"
-  | (string & {});
+  | "ORACLE";
 export const DeploymentWorkloadTypeEnum = /*@__PURE__*/ S.String;
 
 /** In order to align with the Infra Manager dependency, we create the same TerraformVariable message to represent a Terraform input variable, by following Infra Manager's API documentation: https://cloud.google.com/infrastructure-manager/docs/reference/rest. A Terraform input variable. */
@@ -128,11 +127,10 @@ export const TerraformVariableMap = /*@__PURE__*/ S.Record(
 export type LocationDetailsInternetAccessEnum =
   | "INTERNETACCESS_UNSPECIFIED"
   | "ALLOW_EXTERNAL_IP"
-  | "CONFIGURE_NAT"
-  | (string & {});
+  | "CONFIGURE_NAT";
 export const LocationDetailsInternetAccessEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -185,8 +183,7 @@ export const LocationDetails = /*@__PURE__*/ S.suspend(() =>
 export type SapSystemS4ConfigEnvironmentTypeEnum =
   | "ENVIRONMENT_TYPE_UNSPECIFIED"
   | "NON_PRODUCTION"
-  | "PRODUCTION"
-  | (string & {});
+  | "PRODUCTION";
 export const SapSystemS4ConfigEnvironmentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message for SAP instance details. */
@@ -285,23 +282,20 @@ export const DatabaseDetails = /*@__PURE__*/ S.suspend(() =>
 export type SapSystemS4ConfigDeploymentModelEnum =
   | "DEPLOYMENT_MODEL_UNSPECIFIED"
   | "DISTRIBUTED"
-  | "DISTRIBUTED_HA"
-  | (string & {});
+  | "DISTRIBUTED_HA";
 export const SapSystemS4ConfigDeploymentModelEnum = /*@__PURE__*/ S.String;
 
 export type SapSystemS4ConfigScalingMethodEnum =
   | "SCALE_METHOD_UNSPECIFIED"
   | "SCALE_UP"
-  | "SCALE_OUT"
-  | (string & {});
+  | "SCALE_OUT";
 export const SapSystemS4ConfigScalingMethodEnum = /*@__PURE__*/ S.String;
 
 export type SapSystemS4ConfigVersionEnum =
   | "VERSION_UNSPECIFIED"
   | "S4_HANA_2021"
   | "S4_HANA_2022"
-  | "S4_HANA_2023"
-  | (string & {});
+  | "S4_HANA_2023";
 export const SapSystemS4ConfigVersionEnum = /*@__PURE__*/ S.String;
 
 /** Message for SAP system workload. */
@@ -358,29 +352,25 @@ export type DeploymentStateEnum =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const DeploymentStateEnum = /*@__PURE__*/ S.String;
 
 export type SqlServerWorkloadFciTypeEnum =
   | "FCI_TYPE_UNSPECIFIED"
   | "SHARED_DISK"
-  | "S2D"
-  | (string & {});
+  | "S2D";
 export const SqlServerWorkloadFciTypeEnum = /*@__PURE__*/ S.String;
 
 export type SqlServerWorkloadDeploymentModelEnum =
   | "DEPLOYMENT_MODEL_UNSPECIFIED"
   | "HIGH_AVAILABILITY"
-  | "SINGLE_INSTANCE"
-  | (string & {});
+  | "SINGLE_INSTANCE";
 export const SqlServerWorkloadDeploymentModelEnum = /*@__PURE__*/ S.String;
 
 export type DatabaseTenancyModelEnum =
   | "TENANCY_MODEL_UNSPECIFIED"
   | "SHARED"
-  | "SOLE_TENANT"
-  | (string & {});
+  | "SOLE_TENANT";
 export const DatabaseTenancyModelEnum = /*@__PURE__*/ S.String;
 
 /** Database details. */
@@ -453,8 +443,7 @@ export const Pacemaker = /*@__PURE__*/ S.suspend(() =>
 export type ActiveDirectoryTypeEnum =
   | "ACTIVE_DIRECTORY_TYPE_UNSPECIFIED"
   | "GCP_MANAGED"
-  | "SELF_MANAGED"
-  | (string & {});
+  | "SELF_MANAGED";
 export const ActiveDirectoryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Active Directory details. */
@@ -486,8 +475,7 @@ export type SqlServerWorkloadSqlServerVersionEnum =
   | "SQL_SERVER_VERSION_TYPE_UNSPECIFIED"
   | "SQL_SERVER_VERSION_TYPE_2017"
   | "SQL_SERVER_VERSION_TYPE_2019"
-  | "SQL_SERVER_VERSION_TYPE_2022"
-  | (string & {});
+  | "SQL_SERVER_VERSION_TYPE_2022";
 export const SqlServerWorkloadSqlServerVersionEnum = /*@__PURE__*/ S.String;
 
 export type SqlServerWorkloadOperatingSystemTypeEnum =
@@ -495,8 +483,7 @@ export type SqlServerWorkloadOperatingSystemTypeEnum =
   | "WINDOWS"
   | "UBUNTU"
   | "RED_HAT_ENTERPRISE_LINUX"
-  | "SUSE"
-  | (string & {});
+  | "SUSE";
 export const SqlServerWorkloadOperatingSystemTypeEnum = /*@__PURE__*/ S.String;
 
 export type SqlServerWorkloadSqlServerEditionEnum =
@@ -504,29 +491,25 @@ export type SqlServerWorkloadSqlServerEditionEnum =
   | "SQL_SERVER_EDITION_TYPE_DEVELOPER"
   | "SQL_SERVER_EDITION_TYPE_ENTERPRISE"
   | "SQL_SERVER_EDITION_TYPE_STANDARD"
-  | "SQL_SERVER_EDITION_TYPE_WEB"
-  | (string & {});
+  | "SQL_SERVER_EDITION_TYPE_WEB";
 export const SqlServerWorkloadSqlServerEditionEnum = /*@__PURE__*/ S.String;
 
 export type SqlServerWorkloadOsImageTypeEnum =
   | "OS_IMAGE_TYPE_UNSPECIFIED"
   | "PUBLIC_IMAGE"
-  | "CUSTOM_IMAGE"
-  | (string & {});
+  | "CUSTOM_IMAGE";
 export const SqlServerWorkloadOsImageTypeEnum = /*@__PURE__*/ S.String;
 
 export type SqlServerWorkloadEnvironmentTypeEnum =
   | "ENVIRONMENT_TYPE_UNSPECIFIED"
   | "NON_PRODUCTION"
-  | "PRODUCTION"
-  | (string & {});
+  | "PRODUCTION";
 export const SqlServerWorkloadEnvironmentTypeEnum = /*@__PURE__*/ S.String;
 
 export type SqlLocationDetailsInternetAccessEnum =
   | "INTERNET_ACCESS_UNSPECIFIED"
   | "ALLOW_EXTERNAL_IP"
-  | "CONFIGURE_NAT"
-  | (string & {});
+  | "CONFIGURE_NAT";
 export const SqlLocationDetailsInternetAccessEnum = /*@__PURE__*/ S.String;
 
 /** Location and networking details for configuring SQL server workload. */
@@ -569,8 +552,7 @@ export const SqlLocationDetails = /*@__PURE__*/ S.suspend(() =>
 export type SqlServerWorkloadHaTypeEnum =
   | "HA_TYPE_UNSPECIFIED"
   | "AOAG"
-  | "FCI"
-  | (string & {});
+  | "FCI";
 export const SqlServerWorkloadHaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message for MS SQL workload. */
@@ -709,7 +691,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -761,8 +743,7 @@ export type ActuationStateEnum =
   | "FAILED"
   | "POST_INFRA_CONFIGURING"
   | "INFRA_DESTROYING"
-  | "TIMEOUT"
-  | (string & {});
+  | "TIMEOUT";
 export const ActuationStateEnum = /*@__PURE__*/ S.String;
 
 /** Message for output of deployment resource. */
@@ -781,7 +762,7 @@ export const DeploymentOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentOutput",
 }) as any as S.Schema<DeploymentOutput>;
 
-export type DeploymentOutputList = DeploymentOutput[];
+export type DeploymentOutputList = ReadonlyArray<DeploymentOutput>;
 export const DeploymentOutputList = /*@__PURE__*/ S.Array(
   DeploymentOutput,
 ) as any as S.Schema<DeploymentOutputList>;
@@ -799,8 +780,7 @@ export type ActuationOutputErrorCodeEnum =
   | "INVALID_SECRET_IN_ANSIBLE"
   | "TERRAFORM_DELETION_FAILED"
   | "RESOURCE_IN_USE_IN_TERRAFORM_DELETION"
-  | "ANSIBLE_START_FAILED"
-  | (string & {});
+  | "ANSIBLE_START_FAILED";
 export const ActuationOutputErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Message for output of actuation. */
@@ -898,16 +878,14 @@ export type EvaluationEvaluationTypeEnum =
   | "EVALUATION_TYPE_UNSPECIFIED"
   | "SAP"
   | "SQL_SERVER"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const EvaluationEvaluationTypeEnum = /*@__PURE__*/ S.String;
 
 export type ResourceStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "ACTIVE"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const ResourceStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The lifecycle status of an Evaluation resource. */
@@ -1281,8 +1259,7 @@ export const GetProjectsLocationsDiscoveredprofilesRequest =
 export type BackupPropertiesLatestBackupStatusEnum =
   | "BACKUP_STATE_UNSPECIFIED"
   | "BACKUP_STATE_SUCCESS"
-  | "BACKUP_STATE_FAILURE"
-  | (string & {});
+  | "BACKUP_STATE_FAILURE";
 export const BackupPropertiesLatestBackupStatusEnum = /*@__PURE__*/ S.String;
 
 /** Backup properties. */
@@ -1308,8 +1285,7 @@ export type DatabasePropertiesDatabaseTypeEnum =
   | "DB2"
   | "ORACLE"
   | "SQLSERVER"
-  | "ASE"
-  | (string & {});
+  | "ASE";
 export const DatabasePropertiesDatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** Database Properties. */
@@ -1331,8 +1307,7 @@ export const DatabaseProperties = /*@__PURE__*/ S.suspend(() =>
 export type SapComponentTopologyTypeEnum =
   | "TOPOLOGY_TYPE_UNSPECIFIED"
   | "TOPOLOGY_SCALE_UP"
-  | "TOPOLOGY_SCALE_OUT"
-  | (string & {});
+  | "TOPOLOGY_SCALE_OUT";
 export const SapComponentTopologyTypeEnum = /*@__PURE__*/ S.String;
 
 export type ServiceStatesStateEnum =
@@ -1341,8 +1316,7 @@ export type ServiceStatesStateEnum =
   | "IAM_FAILURE"
   | "FUNCTIONALITY_FAILURE"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const ServiceStatesStateEnum = /*@__PURE__*/ S.String;
 
 /** The IAM permission status. */
@@ -1359,7 +1333,7 @@ export const IAMPermission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IAMPermission" }) as any as S.Schema<IAMPermission>;
 
-export type IAMPermissionList = IAMPermission[];
+export type IAMPermissionList = ReadonlyArray<IAMPermission>;
 export const IAMPermissionList = /*@__PURE__*/ S.Array(
   IAMPermission,
 ) as any as S.Schema<IAMPermissionList>;
@@ -1426,12 +1400,11 @@ export type InstancePropertiesRolesItemEnum =
   | "INSTANCE_ROLE_ERS"
   | "INSTANCE_ROLE_APP_SERVER"
   | "INSTANCE_ROLE_HANA_PRIMARY"
-  | "INSTANCE_ROLE_HANA_SECONDARY"
-  | (string & {});
+  | "INSTANCE_ROLE_HANA_SECONDARY";
 export const InstancePropertiesRolesItemEnum = /*@__PURE__*/ S.String;
 
 export type InstancePropertiesRolesItemEnumList =
-  InstancePropertiesRolesItemEnum[];
+  ReadonlyArray<InstancePropertiesRolesItemEnum>;
 export const InstancePropertiesRolesItemEnumList = /*@__PURE__*/ S.Array(
   InstancePropertiesRolesItemEnum,
 ) as any as S.Schema<InstancePropertiesRolesItemEnumList>;
@@ -1501,8 +1474,7 @@ export type CloudResourceKindEnum =
   | "RESOURCE_KIND_SUBNETWORK"
   | "RESOURCE_KIND_NETWORK"
   | "RESOURCE_KIND_PUBLIC_ADDRESS"
-  | "RESOURCE_KIND_INSTANCE_GROUP"
-  | (string & {});
+  | "RESOURCE_KIND_INSTANCE_GROUP";
 export const CloudResourceKindEnum = /*@__PURE__*/ S.String;
 
 /** The resource on GCP */
@@ -1522,7 +1494,7 @@ export const CloudResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CloudResource" }) as any as S.Schema<CloudResource>;
 
-export type CloudResourceList = CloudResource[];
+export type CloudResourceList = ReadonlyArray<CloudResource>;
 export const CloudResourceList = /*@__PURE__*/ S.Array(
   CloudResource,
 ) as any as S.Schema<CloudResourceList>;
@@ -1557,8 +1529,7 @@ export type SapWorkloadArchitectureEnum =
   | "DISTRIBUTED"
   | "DISTRIBUTED_HA"
   | "STANDALONE_DATABASE"
-  | "STANDALONE_DATABASE_HA"
-  | (string & {});
+  | "STANDALONE_DATABASE_HA";
 export const SapWorkloadArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** Contains the details of a product. */
@@ -1575,7 +1546,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
-export type ProductList = Product[];
+export type ProductList = ReadonlyArray<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;
@@ -1605,8 +1576,7 @@ export const SapWorkload = /*@__PURE__*/ S.suspend(() =>
 
 export type WorkloadProfileWorkloadTypeEnum =
   | "WORKLOAD_TYPE_UNSPECIFIED"
-  | "S4_HANA"
-  | (string & {});
+  | "S4_HANA";
 export const WorkloadProfileWorkloadTypeEnum = /*@__PURE__*/ S.String;
 
 /** Workload resource. */
@@ -1658,8 +1628,7 @@ export type WorkloadProfileHealthStateEnum =
   | "HEALTHY"
   | "UNHEALTHY"
   | "CRITICAL"
-  | "UNSUPPORTED"
-  | (string & {});
+  | "UNSUPPORTED";
 export const WorkloadProfileHealthStateEnum = /*@__PURE__*/ S.String;
 
 export type ComponentHealthStateEnum =
@@ -1667,16 +1636,14 @@ export type ComponentHealthStateEnum =
   | "HEALTHY"
   | "UNHEALTHY"
   | "CRITICAL"
-  | "UNSUPPORTED"
-  | (string & {});
+  | "UNSUPPORTED";
 export const ComponentHealthStateEnum = /*@__PURE__*/ S.String;
 
 export type ComponentHealthComponentHealthTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_REQUIRED"
   | "TYPE_OPTIONAL"
-  | "TYPE_SPECIAL"
-  | (string & {});
+  | "TYPE_SPECIAL";
 export const ComponentHealthComponentHealthTypeEnum = /*@__PURE__*/ S.String;
 
 export type HealthCheckStateEnum =
@@ -1685,8 +1652,7 @@ export type HealthCheckStateEnum =
   | "FAILED"
   | "DEGRADED"
   | "SKIPPED"
-  | "UNSUPPORTED"
-  | (string & {});
+  | "UNSUPPORTED";
 export const HealthCheckStateEnum = /*@__PURE__*/ S.String;
 
 /** HealthCheck contains the detailed health check of a component based on asource. */
@@ -1712,7 +1678,7 @@ export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
 
-export type HealthCheckList = HealthCheck[];
+export type HealthCheckList = ReadonlyArray<HealthCheck>;
 export const HealthCheckList = /*@__PURE__*/ S.Array(
   HealthCheck,
 ) as any as S.Schema<HealthCheckList>;
@@ -1742,7 +1708,7 @@ export const ComponentHealth = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComponentHealth",
 }) as any as S.Schema<ComponentHealth>;
 
-export type ComponentHealthList = ComponentHealth[];
+export type ComponentHealthList = ReadonlyArray<ComponentHealth>;
 export const ComponentHealthList = /*@__PURE__*/ S.Array(
   ComponentHealth,
 ) as any as S.Schema<ComponentHealthList>;
@@ -1824,16 +1790,14 @@ export const Summary = /*@__PURE__*/ S.suspend(() =>
 export type ExecutionRunTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ONE_TIME"
-  | "SCHEDULED"
-  | (string & {});
+  | "SCHEDULED";
 export const ExecutionRunTypeEnum = /*@__PURE__*/ S.String;
 
 export type ExecutionStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** Additional information generated by an execution. */
@@ -1847,7 +1811,7 @@ export const Notice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Notice" }) as any as S.Schema<Notice>;
 
-export type NoticeList = Notice[];
+export type NoticeList = ReadonlyArray<Notice>;
 export const NoticeList = /*@__PURE__*/ S.Array(
   Notice,
 ) as any as S.Schema<NoticeList>;
@@ -1855,16 +1819,14 @@ export const NoticeList = /*@__PURE__*/ S.Array(
 export type ExecutionEngineEnum =
   | "ENGINE_UNSPECIFIED"
   | "ENGINE_SCANNER"
-  | "V2"
-  | (string & {});
+  | "V2";
 export const ExecutionEngineEnum = /*@__PURE__*/ S.String;
 
 export type RuleExecutionResultStateEnum =
   | "STATE_UNSPECIFIED"
   | "STATE_SUCCESS"
   | "STATE_FAILURE"
-  | "STATE_SKIPPED"
-  | (string & {});
+  | "STATE_SKIPPED";
 export const RuleExecutionResultStateEnum = /*@__PURE__*/ S.String;
 
 /** Execution result summary per rule. */
@@ -1892,15 +1854,14 @@ export const RuleExecutionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RuleExecutionResult",
 }) as any as S.Schema<RuleExecutionResult>;
 
-export type RuleExecutionResultList = RuleExecutionResult[];
+export type RuleExecutionResultList = ReadonlyArray<RuleExecutionResult>;
 export const RuleExecutionResultList = /*@__PURE__*/ S.Array(
   RuleExecutionResult,
 ) as any as S.Schema<RuleExecutionResultList>;
 
 export type ExternalDataSourcesTypeEnum =
   | "TYPE_UNSPECIFIED"
-  | "BIG_QUERY_TABLE"
-  | (string & {});
+  | "BIG_QUERY_TABLE";
 export const ExternalDataSourcesTypeEnum = /*@__PURE__*/ S.String;
 
 /** External data sources for an execution. */
@@ -1925,7 +1886,7 @@ export const ExternalDataSources = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalDataSources",
 }) as any as S.Schema<ExternalDataSources>;
 
-export type ExternalDataSourcesList = ExternalDataSources[];
+export type ExternalDataSourcesList = ReadonlyArray<ExternalDataSources>;
 export const ExternalDataSourcesList = /*@__PURE__*/ S.Array(
   ExternalDataSources,
 ) as any as S.Schema<ExternalDataSourcesList>;
@@ -2026,7 +1987,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2078,7 +2039,7 @@ export const ListProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDeploymentsRequest",
 }) as any as S.Schema<ListProjectsLocationsDeploymentsRequest>;
 
-export type DeploymentList = Deployment[];
+export type DeploymentList = ReadonlyArray<Deployment>;
 export const DeploymentList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentList>;
@@ -2133,7 +2094,7 @@ export const ListProjectsLocationsDeploymentsActuationsRequest =
     identifier: "ListProjectsLocationsDeploymentsActuationsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeploymentsActuationsRequest>;
 
-export type ActuationList = Actuation[];
+export type ActuationList = ReadonlyArray<Actuation>;
 export const ActuationList = /*@__PURE__*/ S.Array(
   Actuation,
 ) as any as S.Schema<ActuationList>;
@@ -2185,7 +2146,7 @@ export const ListProjectsLocationsDiscoveredprofilesRequest =
     identifier: "ListProjectsLocationsDiscoveredprofilesRequest",
   }) as any as S.Schema<ListProjectsLocationsDiscoveredprofilesRequest>;
 
-export type WorkloadProfileList = WorkloadProfile[];
+export type WorkloadProfileList = ReadonlyArray<WorkloadProfile>;
 export const WorkloadProfileList = /*@__PURE__*/ S.Array(
   WorkloadProfile,
 ) as any as S.Schema<WorkloadProfileList>;
@@ -2240,7 +2201,7 @@ export const ListProjectsLocationsEvaluationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsEvaluationsRequest",
 }) as any as S.Schema<ListProjectsLocationsEvaluationsRequest>;
 
-export type EvaluationList = Evaluation[];
+export type EvaluationList = ReadonlyArray<Evaluation>;
 export const EvaluationList = /*@__PURE__*/ S.Array(
   Evaluation,
 ) as any as S.Schema<EvaluationList>;
@@ -2295,7 +2256,7 @@ export const ListProjectsLocationsEvaluationsExecutionsRequest =
     identifier: "ListProjectsLocationsEvaluationsExecutionsRequest",
   }) as any as S.Schema<ListProjectsLocationsEvaluationsExecutionsRequest>;
 
-export type ExecutionList = Execution[];
+export type ExecutionList = ReadonlyArray<Execution>;
 export const ExecutionList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionList>;
@@ -2350,8 +2311,7 @@ export const ListProjectsLocationsEvaluationsExecutionsResultsRequest =
 export type ExecutionResultTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_PASSED"
-  | "TYPE_VIOLATED"
-  | (string & {});
+  | "TYPE_VIOLATED";
 export const ExecutionResultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Resource in execution result. */
@@ -2416,7 +2376,7 @@ export const Command = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Command" }) as any as S.Schema<Command>;
 
-export type CommandList = Command[];
+export type CommandList = ReadonlyArray<Command>;
 export const CommandList = /*@__PURE__*/ S.Array(
   Command,
 ) as any as S.Schema<CommandList>;
@@ -2435,7 +2395,7 @@ export const RuleOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleOutput" }) as any as S.Schema<RuleOutput>;
 
-export type RuleOutputList = RuleOutput[];
+export type RuleOutputList = ReadonlyArray<RuleOutput>;
 export const RuleOutputList = /*@__PURE__*/ S.Array(
   RuleOutput,
 ) as any as S.Schema<RuleOutputList>;
@@ -2496,7 +2456,7 @@ export const ExecutionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutionResult",
 }) as any as S.Schema<ExecutionResult>;
 
-export type ExecutionResultList = ExecutionResult[];
+export type ExecutionResultList = ReadonlyArray<ExecutionResult>;
 export const ExecutionResultList = /*@__PURE__*/ S.Array(
   ExecutionResult,
 ) as any as S.Schema<ExecutionResultList>;
@@ -2568,7 +2528,7 @@ export const ScannedResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScannedResource",
 }) as any as S.Schema<ScannedResource>;
 
-export type ScannedResourceList = ScannedResource[];
+export type ScannedResourceList = ReadonlyArray<ScannedResource>;
 export const ScannedResourceList = /*@__PURE__*/ S.Array(
   ScannedResource,
 ) as any as S.Schema<ScannedResourceList>;
@@ -2620,7 +2580,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2648,8 +2608,7 @@ export type ListProjectsLocationsRulesEvaluationTypeEnum =
   | "EVALUATION_TYPE_UNSPECIFIED"
   | "SAP"
   | "SQL_SERVER"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const ListProjectsLocationsRulesEvaluationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2688,11 +2647,7 @@ export const ListProjectsLocationsRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRulesRequest",
 }) as any as S.Schema<ListProjectsLocationsRulesRequest>;
 
-export type RuleRuleTypeEnum =
-  | "RULE_TYPE_UNSPECIFIED"
-  | "BASELINE"
-  | "CUSTOM"
-  | (string & {});
+export type RuleRuleTypeEnum = "RULE_TYPE_UNSPECIFIED" | "BASELINE" | "CUSTOM";
 export const RuleRuleTypeEnum = /*@__PURE__*/ S.String;
 
 /** A rule to be evaluated. */
@@ -2742,7 +2697,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 
-export type RuleList = Rule[];
+export type RuleList = ReadonlyArray<Rule>;
 export const RuleList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<RuleList>;
@@ -2842,7 +2797,8 @@ export const SqlserverValidationDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlserverValidationDetails",
 }) as any as S.Schema<SqlserverValidationDetails>;
 
-export type SqlserverValidationDetailsList = SqlserverValidationDetails[];
+export type SqlserverValidationDetailsList =
+  ReadonlyArray<SqlserverValidationDetails>;
 export const SqlserverValidationDetailsList = /*@__PURE__*/ S.Array(
   SqlserverValidationDetails,
 ) as any as S.Schema<SqlserverValidationDetailsList>;
@@ -2860,8 +2816,7 @@ export type SqlserverValidationValidationDetailTypeEnum =
   | "INSTANCE_METRICS"
   | "DB_INDEX_FRAGMENTATION"
   | "DB_TABLE_INDEX_COMPRESSION"
-  | "DB_BACKUP_POLICY"
-  | (string & {});
+  | "DB_BACKUP_POLICY";
 export const SqlserverValidationValidationDetailTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2882,7 +2837,7 @@ export const SqlserverValidationValidationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlserverValidationValidationDetail>;
 
 export type SqlserverValidationValidationDetailList =
-  SqlserverValidationValidationDetail[];
+  ReadonlyArray<SqlserverValidationValidationDetail>;
 export const SqlserverValidationValidationDetailList = /*@__PURE__*/ S.Array(
   SqlserverValidationValidationDetail,
 ) as any as S.Schema<SqlserverValidationValidationDetailList>;
@@ -2913,8 +2868,7 @@ export type TorsoValidationWorkloadTypeEnum =
   | "WORKLOAD_TYPE_UNSPECIFIED"
   | "MYSQL"
   | "ORACLE"
-  | "REDIS"
-  | (string & {});
+  | "REDIS";
 export const TorsoValidationWorkloadTypeEnum = /*@__PURE__*/ S.String;
 
 /** The schema of torso workload validation data. */
@@ -2950,8 +2904,7 @@ export type SapValidationValidationDetailSapValidationTypeEnum =
   | "HANA"
   | "NETWEAVER"
   | "HANA_SECURITY"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const SapValidationValidationDetailSapValidationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2976,7 +2929,8 @@ export const SapValidationValidationDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "SapValidationValidationDetail",
 }) as any as S.Schema<SapValidationValidationDetail>;
 
-export type SapValidationValidationDetailList = SapValidationValidationDetail[];
+export type SapValidationValidationDetailList =
+  ReadonlyArray<SapValidationValidationDetail>;
 export const SapValidationValidationDetailList = /*@__PURE__*/ S.Array(
   SapValidationValidationDetail,
 ) as any as S.Schema<SapValidationValidationDetailList>;
@@ -3002,8 +2956,7 @@ export type AgentStatusServiceStatusFullyFunctionalEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+  | "ERROR_STATE";
 export const AgentStatusServiceStatusFullyFunctionalEnum =
   /*@__PURE__*/ S.String;
 
@@ -3011,8 +2964,7 @@ export type AgentStatusIAMPermissionGrantedEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+  | "ERROR_STATE";
 export const AgentStatusIAMPermissionGrantedEnum = /*@__PURE__*/ S.String;
 
 /** The IAM permission status. */
@@ -3031,7 +2983,8 @@ export const AgentStatusIAMPermission = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentStatusIAMPermission",
 }) as any as S.Schema<AgentStatusIAMPermission>;
 
-export type AgentStatusIAMPermissionList = AgentStatusIAMPermission[];
+export type AgentStatusIAMPermissionList =
+  ReadonlyArray<AgentStatusIAMPermission>;
 export const AgentStatusIAMPermissionList = /*@__PURE__*/ S.Array(
   AgentStatusIAMPermission,
 ) as any as S.Schema<AgentStatusIAMPermissionList>;
@@ -3040,8 +2993,7 @@ export type AgentStatusServiceStatusStateEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+  | "ERROR_STATE";
 export const AgentStatusServiceStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The configuration value. */
@@ -3063,7 +3015,7 @@ export const AgentStatusConfigValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentStatusConfigValue",
 }) as any as S.Schema<AgentStatusConfigValue>;
 
-export type AgentStatusConfigValueList = AgentStatusConfigValue[];
+export type AgentStatusConfigValueList = ReadonlyArray<AgentStatusConfigValue>;
 export const AgentStatusConfigValueList = /*@__PURE__*/ S.Array(
   AgentStatusConfigValue,
 ) as any as S.Schema<AgentStatusConfigValueList>;
@@ -3099,7 +3051,8 @@ export const AgentStatusServiceStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentStatusServiceStatus",
 }) as any as S.Schema<AgentStatusServiceStatus>;
 
-export type AgentStatusServiceStatusList = AgentStatusServiceStatus[];
+export type AgentStatusServiceStatusList =
+  ReadonlyArray<AgentStatusServiceStatus>;
 export const AgentStatusServiceStatusList = /*@__PURE__*/ S.Array(
   AgentStatusServiceStatus,
 ) as any as S.Schema<AgentStatusServiceStatusList>;
@@ -3108,8 +3061,7 @@ export type AgentStatusCloudApiAccessFullScopesGrantedEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+  | "ERROR_STATE";
 export const AgentStatusCloudApiAccessFullScopesGrantedEnum =
   /*@__PURE__*/ S.String;
 
@@ -3167,24 +3119,21 @@ export type AgentStatusConfigurationValidEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+  | "ERROR_STATE";
 export const AgentStatusConfigurationValidEnum = /*@__PURE__*/ S.String;
 
 export type AgentStatusSystemdServiceRunningEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+  | "ERROR_STATE";
 export const AgentStatusSystemdServiceRunningEnum = /*@__PURE__*/ S.String;
 
 export type AgentStatusSystemdServiceEnabledEnum =
   | "UNSPECIFIED_STATE"
   | "SUCCESS_STATE"
   | "FAILURE_STATE"
-  | "ERROR_STATE"
-  | (string & {});
+  | "ERROR_STATE";
 export const AgentStatusSystemdServiceEnabledEnum = /*@__PURE__*/ S.String;
 
 /** The reference to public documentation. */
@@ -3203,7 +3152,7 @@ export const AgentStatusReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentStatusReference",
 }) as any as S.Schema<AgentStatusReference>;
 
-export type AgentStatusReferenceList = AgentStatusReference[];
+export type AgentStatusReferenceList = ReadonlyArray<AgentStatusReference>;
 export const AgentStatusReferenceList = /*@__PURE__*/ S.Array(
   AgentStatusReference,
 ) as any as S.Schema<AgentStatusReferenceList>;
@@ -3279,8 +3228,7 @@ export type SapDiscoveryResourceResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
   | "RESOURCE_TYPE_COMPUTE"
   | "RESOURCE_TYPE_STORAGE"
-  | "RESOURCE_TYPE_NETWORK"
-  | (string & {});
+  | "RESOURCE_TYPE_NETWORK";
 export const SapDiscoveryResourceResourceTypeEnum = /*@__PURE__*/ S.String;
 
 export type SapDiscoveryResourceResourceKindEnum =
@@ -3295,8 +3243,7 @@ export type SapDiscoveryResourceResourceKindEnum =
   | "RESOURCE_KIND_SUBNETWORK"
   | "RESOURCE_KIND_NETWORK"
   | "RESOURCE_KIND_PUBLIC_ADDRESS"
-  | "RESOURCE_KIND_INSTANCE_GROUP"
-  | (string & {});
+  | "RESOURCE_KIND_INSTANCE_GROUP";
 export const SapDiscoveryResourceResourceKindEnum = /*@__PURE__*/ S.String;
 
 export type SapDiscoveryResourceInstancePropertiesInstanceRoleEnum =
@@ -3315,8 +3262,7 @@ export type SapDiscoveryResourceInstancePropertiesInstanceRoleEnum =
   | "INSTANCE_ROLE_ASCS_ERS_DATABASE"
   | "INSTANCE_ROLE_ASCS_APP_SERVER_DATABASE"
   | "INSTANCE_ROLE_ERS_APP_SERVER_DATABASE"
-  | "INSTANCE_ROLE_ASCS_ERS_APP_SERVER_DATABASE"
-  | (string & {});
+  | "INSTANCE_ROLE_ASCS_ERS_APP_SERVER_DATABASE";
 export const SapDiscoveryResourceInstancePropertiesInstanceRoleEnum =
   /*@__PURE__*/ S.String;
 
@@ -3338,7 +3284,7 @@ export const SapDiscoveryResourceInstancePropertiesAppInstance =
   }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesAppInstance>;
 
 export type SapDiscoveryResourceInstancePropertiesAppInstanceList =
-  SapDiscoveryResourceInstancePropertiesAppInstance[];
+  ReadonlyArray<SapDiscoveryResourceInstancePropertiesAppInstance>;
 export const SapDiscoveryResourceInstancePropertiesAppInstanceList =
   /*@__PURE__*/ S.Array(
     SapDiscoveryResourceInstancePropertiesAppInstance,
@@ -3365,7 +3311,7 @@ export const SapDiscoveryResourceInstancePropertiesDiskMount =
   }) as any as S.Schema<SapDiscoveryResourceInstancePropertiesDiskMount>;
 
 export type SapDiscoveryResourceInstancePropertiesDiskMountList =
-  SapDiscoveryResourceInstancePropertiesDiskMount[];
+  ReadonlyArray<SapDiscoveryResourceInstancePropertiesDiskMount>;
 export const SapDiscoveryResourceInstancePropertiesDiskMountList =
   /*@__PURE__*/ S.Array(
     SapDiscoveryResourceInstancePropertiesDiskMount,
@@ -3442,7 +3388,7 @@ export const SapDiscoveryResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "SapDiscoveryResource",
 }) as any as S.Schema<SapDiscoveryResource>;
 
-export type SapDiscoveryResourceList = SapDiscoveryResource[];
+export type SapDiscoveryResourceList = ReadonlyArray<SapDiscoveryResource>;
 export const SapDiscoveryResourceList = /*@__PURE__*/ S.Array(
   SapDiscoveryResource,
 ) as any as S.Schema<SapDiscoveryResourceList>;
@@ -3450,16 +3396,14 @@ export const SapDiscoveryResourceList = /*@__PURE__*/ S.Array(
 export type SapDiscoveryComponentTopologyTypeEnum =
   | "TOPOLOGY_TYPE_UNSPECIFIED"
   | "TOPOLOGY_SCALE_UP"
-  | "TOPOLOGY_SCALE_OUT"
-  | (string & {});
+  | "TOPOLOGY_SCALE_OUT";
 export const SapDiscoveryComponentTopologyTypeEnum = /*@__PURE__*/ S.String;
 
 export type SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum =
   | "APPLICATION_TYPE_UNSPECIFIED"
   | "NETWEAVER"
   | "NETWEAVER_ABAP"
-  | "NETWEAVER_JAVA"
-  | (string & {});
+  | "NETWEAVER_JAVA";
 export const SapDiscoveryComponentApplicationPropertiesApplicationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3518,7 +3462,7 @@ export const SapDiscoveryComponentReplicationSite = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SapDiscoveryComponentReplicationSite>;
 
 export type SapDiscoveryComponentReplicationSiteList =
-  SapDiscoveryComponentReplicationSite[];
+  ReadonlyArray<SapDiscoveryComponentReplicationSite>;
 export const SapDiscoveryComponentReplicationSiteList = /*@__PURE__*/ S.Array(
   SapDiscoveryComponentReplicationSite,
 ) as any as S.Schema<SapDiscoveryComponentReplicationSiteList>;
@@ -3530,8 +3474,7 @@ export type SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum =
   | "DB2"
   | "ORACLE"
   | "SQLSERVER"
-  | "ASE"
-  | (string & {});
+  | "ASE";
 export const SapDiscoveryComponentDatabasePropertiesDatabaseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3648,7 +3591,7 @@ export const SapDiscoveryWorkloadPropertiesProductVersion =
   }) as any as S.Schema<SapDiscoveryWorkloadPropertiesProductVersion>;
 
 export type SapDiscoveryWorkloadPropertiesProductVersionList =
-  SapDiscoveryWorkloadPropertiesProductVersion[];
+  ReadonlyArray<SapDiscoveryWorkloadPropertiesProductVersion>;
 export const SapDiscoveryWorkloadPropertiesProductVersionList =
   /*@__PURE__*/ S.Array(
     SapDiscoveryWorkloadPropertiesProductVersion,
@@ -3678,7 +3621,7 @@ export const SapDiscoveryWorkloadPropertiesSoftwareComponentProperties =
   }) as any as S.Schema<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
 
 export type SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList =
-  SapDiscoveryWorkloadPropertiesSoftwareComponentProperties[];
+  ReadonlyArray<SapDiscoveryWorkloadPropertiesSoftwareComponentProperties>;
 export const SapDiscoveryWorkloadPropertiesSoftwareComponentPropertiesList =
   /*@__PURE__*/ S.Array(
     SapDiscoveryWorkloadPropertiesSoftwareComponentProperties,

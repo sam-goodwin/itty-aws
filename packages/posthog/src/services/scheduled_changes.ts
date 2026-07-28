@@ -12,8 +12,59 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `FeatureFlag` - feature flag */
-export type ModelNameEnum = "FeatureFlag" | (string & {});
+export type ModelNameEnum = "FeatureFlag";
 export const ModelNameEnum = /*@__PURE__*/ S.String;
+
+/** * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
+export type ScheduledChangeRecurrenceIntervalEnum =
+  | "daily"
+  | "weekly"
+  | "monthly"
+  | "yearly";
+export const ScheduledChangeRecurrenceIntervalEnum = /*@__PURE__*/ S.String;
+
+export interface ScheduledChangesCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** The ID of the record to modify (e.g. the feature flag ID). */
+  record_id: string;
+  /** The type of record to modify. Currently only "FeatureFlag" is supported. * `FeatureFlag` - feature flag */
+  model_name: ModelNameEnum;
+  /** The change to apply. Must include an 'operation' key and a 'value' key. Supported operations: 'update_status' (value: true/false to enable/disable the flag), 'add_release_condition' (value: object with 'groups', 'payloads', and 'multivariate' keys), 'update_variants' (value: object with 'variants' and 'payloads' keys). */
+  payload: unknown;
+  /** ISO 8601 datetime when the change should be applied (e.g. '2025-06-01T14:00:00Z'). */
+  scheduled_at: string;
+  /** Whether this schedule repeats. Only the 'update_status' operation supports recurring schedules. */
+  is_recurring?: boolean;
+  /** How often the schedule repeats. Required when is_recurring is true. One of: daily, weekly, monthly, yearly. * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
+  recurrence_interval?: ScheduledChangeRecurrenceIntervalEnum | null;
+  cron_expression?: string | null;
+  /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
+  end_date?: string | null;
+}
+export const ScheduledChangesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    record_id: S.String,
+    model_name: ModelNameEnum,
+    payload: S.Unknown,
+    scheduled_at: S.String,
+    is_recurring: S.optional(S.Boolean),
+    recurrence_interval: S.optional(
+      S.NullOr(ScheduledChangeRecurrenceIntervalEnum),
+    ),
+    cron_expression: S.optional(S.NullOr(S.String)),
+    end_date: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/scheduled_changes/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ScheduledChangesCreateRequest",
+}) as any as S.Schema<ScheduledChangesCreateRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -30,11 +81,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -65,77 +115,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-/** * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
-export type ScheduledChangeRecurrenceIntervalEnum =
-  | "daily"
-  | "weekly"
-  | "monthly"
-  | "yearly"
-  | (string & {});
-export const ScheduledChangeRecurrenceIntervalEnum = /*@__PURE__*/ S.String;
-
-export interface ScheduledChangesCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: number;
-  team_id: number;
-  /** The ID of the record to modify (e.g. the feature flag ID). */
-  record_id: string;
-  /** The type of record to modify. Currently only "FeatureFlag" is supported. * `FeatureFlag` - feature flag */
-  model_name: ModelNameEnum;
-  /** The change to apply. Must include an 'operation' key and a 'value' key. Supported operations: 'update_status' (value: true/false to enable/disable the flag), 'add_release_condition' (value: object with 'groups', 'payloads', and 'multivariate' keys), 'update_variants' (value: object with 'variants' and 'payloads' keys). */
-  payload: unknown;
-  /** ISO 8601 datetime when the change should be applied (e.g. '2025-06-01T14:00:00Z'). */
-  scheduled_at: string;
-  executed_at: string | null;
-  /** Return the safely formatted failure reason instead of raw data. */
-  failure_reason: string | null;
-  created_at: string;
-  created_by: UserBasic;
-  updated_at: string;
-  /** Whether this schedule repeats. Only the 'update_status' operation supports recurring schedules. */
-  is_recurring?: boolean;
-  /** How often the schedule repeats. Required when is_recurring is true. One of: daily, weekly, monthly, yearly. * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
-  recurrence_interval?: ScheduledChangeRecurrenceIntervalEnum | null;
-  cron_expression?: string | null;
-  last_executed_at: string | null;
-  /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
-  end_date?: string | null;
-  timezone: string | null;
-}
-export const ScheduledChangesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number,
-    team_id: S.Number,
-    record_id: S.String,
-    model_name: ModelNameEnum,
-    payload: S.Unknown,
-    scheduled_at: S.String,
-    executed_at: S.NullOr(S.String),
-    failure_reason: S.NullOr(S.String),
-    created_at: S.String,
-    created_by: UserBasic,
-    updated_at: S.String,
-    is_recurring: S.optional(S.Boolean),
-    recurrence_interval: S.optional(
-      S.NullOr(ScheduledChangeRecurrenceIntervalEnum),
-    ),
-    cron_expression: S.optional(S.NullOr(S.String)),
-    last_executed_at: S.NullOr(S.String),
-    end_date: S.optional(S.NullOr(S.String)),
-    timezone: S.NullOr(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/scheduled_changes/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ScheduledChangesCreateRequest",
-}) as any as S.Schema<ScheduledChangesCreateRequest>;
 
 export interface ScheduledChange {
   id: number;
@@ -248,7 +227,8 @@ export const ScheduledChangesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScheduledChangesListRequest",
 }) as any as S.Schema<ScheduledChangesListRequest>;
 
-export type PaginatedScheduledChangeListResultsList = ScheduledChange[];
+export type PaginatedScheduledChangeListResultsList =
+  ReadonlyArray<ScheduledChange>;
 export const PaginatedScheduledChangeListResultsList = /*@__PURE__*/ S.Array(
   ScheduledChange,
 ) as any as S.Schema<PaginatedScheduledChangeListResultsList>;
@@ -275,7 +255,6 @@ export interface ScheduledChangesPartialUpdateRequest {
   project_id: string;
   /** A unique integer value identifying this scheduled change. */
   id: number;
-  team_id?: number;
   /** The ID of the record to modify (e.g. the feature flag ID). */
   record_id?: string;
   /** The type of record to modify. Currently only "FeatureFlag" is supported. * `FeatureFlag` - feature flag */
@@ -284,45 +263,29 @@ export interface ScheduledChangesPartialUpdateRequest {
   payload?: unknown;
   /** ISO 8601 datetime when the change should be applied (e.g. '2025-06-01T14:00:00Z'). */
   scheduled_at?: string;
-  executed_at?: string | null;
-  /** Return the safely formatted failure reason instead of raw data. */
-  failure_reason?: string | null;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string;
   /** Whether this schedule repeats. Only the 'update_status' operation supports recurring schedules. */
   is_recurring?: boolean;
   /** How often the schedule repeats. Required when is_recurring is true. One of: daily, weekly, monthly, yearly. * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
   recurrence_interval?: ScheduledChangeRecurrenceIntervalEnum | null;
   cron_expression?: string | null;
-  last_executed_at?: string | null;
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;
-  timezone?: string | null;
 }
 export const ScheduledChangesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      team_id: S.optional(S.Number),
       record_id: S.optional(S.String),
       model_name: S.optional(ModelNameEnum),
       payload: S.optional(S.Unknown),
       scheduled_at: S.optional(S.String),
-      executed_at: S.optional(S.NullOr(S.String)),
-      failure_reason: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      updated_at: S.optional(S.String),
       is_recurring: S.optional(S.Boolean),
       recurrence_interval: S.optional(
         S.NullOr(ScheduledChangeRecurrenceIntervalEnum),
       ),
       cron_expression: S.optional(S.NullOr(S.String)),
-      last_executed_at: S.optional(S.NullOr(S.String)),
       end_date: S.optional(S.NullOr(S.String)),
-      timezone: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -360,7 +323,6 @@ export interface ScheduledChangesUpdateRequest {
   project_id: string;
   /** A unique integer value identifying this scheduled change. */
   id: number;
-  team_id: number;
   /** The ID of the record to modify (e.g. the feature flag ID). */
   record_id: string;
   /** The type of record to modify. Currently only "FeatureFlag" is supported. * `FeatureFlag` - feature flag */
@@ -369,44 +331,28 @@ export interface ScheduledChangesUpdateRequest {
   payload: unknown;
   /** ISO 8601 datetime when the change should be applied (e.g. '2025-06-01T14:00:00Z'). */
   scheduled_at: string;
-  executed_at: string | null;
-  /** Return the safely formatted failure reason instead of raw data. */
-  failure_reason: string | null;
-  created_at: string;
-  created_by: UserBasic;
-  updated_at: string;
   /** Whether this schedule repeats. Only the 'update_status' operation supports recurring schedules. */
   is_recurring?: boolean;
   /** How often the schedule repeats. Required when is_recurring is true. One of: daily, weekly, monthly, yearly. * `daily` - daily * `weekly` - weekly * `monthly` - monthly * `yearly` - yearly */
   recurrence_interval?: ScheduledChangeRecurrenceIntervalEnum | null;
   cron_expression?: string | null;
-  last_executed_at: string | null;
   /** Optional ISO 8601 datetime after which a recurring schedule stops executing. */
   end_date?: string | null;
-  timezone: string | null;
 }
 export const ScheduledChangesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
-    team_id: S.Number,
     record_id: S.String,
     model_name: ModelNameEnum,
     payload: S.Unknown,
     scheduled_at: S.String,
-    executed_at: S.NullOr(S.String),
-    failure_reason: S.NullOr(S.String),
-    created_at: S.String,
-    created_by: UserBasic,
-    updated_at: S.String,
     is_recurring: S.optional(S.Boolean),
     recurrence_interval: S.optional(
       S.NullOr(ScheduledChangeRecurrenceIntervalEnum),
     ),
     cron_expression: S.optional(S.NullOr(S.String)),
-    last_executed_at: S.NullOr(S.String),
     end_date: S.optional(S.NullOr(S.String)),
-    timezone: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "PUT",

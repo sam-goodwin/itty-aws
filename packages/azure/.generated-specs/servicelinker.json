@@ -374,7 +374,8 @@
         "properties": {
           "target": "com.azure.servicelinker#ConfigurationNames",
           "traits": {
-            "smithy.api#documentation": "The result detail."
+            "smithy.api#documentation": "The result detail.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -864,15 +865,202 @@
             "smithy.api#documentation": "The name Linker resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "deleteOrUpdateBehavior": {
+          "target": "com.azure.servicelinker#DeleteOrUpdateBehavior",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Indicates whether to clean up previous operation when Linker is updating or deleting"
+          }
+        },
+        "action": {
+          "target": "com.azure.servicelinker#ActionType",
+          "traits": {
+            "smithy.api#documentation": "Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source."
+          }
+        },
+        "customizedKeys": {
+          "target": "com.azure.servicelinker#LinkersGenerateConfigurationsRequestCustomizedKeysMap",
+          "traits": {
+            "smithy.api#documentation": "Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations"
+          }
+        },
+        "daprProperties": {
+          "target": "com.azure.servicelinker#DaprPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Indicates some additional properties for dapr client type"
+          }
+        },
+        "additionalConfigurations": {
+          "target": "com.azure.servicelinker#LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap",
+          "traits": {
+            "smithy.api#documentation": "A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations"
+          }
+        },
+        "additionalConnectionStringProperties": {
+          "target": "com.azure.servicelinker#LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "A dictionary of additional properties to be added in the end of connection string."
+          }
+        },
+        "configurationStore": {
+          "target": "com.azure.servicelinker#ConfigurationStore",
+          "traits": {
+            "smithy.api#documentation": "An option to store configuration into different place",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicelinker#ConfigurationStore": {
+      "type": "structure",
+      "members": {
+        "appConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The app configuration id to store configuration",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An option to store configuration into different place"
+      }
+    },
+    "com.azure.servicelinker#LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A dictionary of additional properties to be added in the end of connection string."
+      }
+    },
+    "com.azure.servicelinker#LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations"
+      }
+    },
+    "com.azure.servicelinker#DaprPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The dapr component version",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "componentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The dapr component type",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "secretStoreComponent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of a secret store dapr to retrieve secret",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "metadata": {
+          "target": "com.azure.servicelinker#DaprPropertiesInputMetadataList",
+          "traits": {
+            "smithy.api#documentation": "Additional dapr metadata"
+          }
+        },
+        "scopes": {
+          "target": "com.azure.servicelinker#DaprPropertiesInputScopesList",
+          "traits": {
+            "smithy.api#documentation": "The dapr component scopes"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates some additional properties for dapr client type"
+      }
+    },
+    "com.azure.servicelinker#DaprPropertiesInputScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The dapr component scopes"
+      }
+    },
+    "com.azure.servicelinker#DaprPropertiesInputMetadataList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.servicelinker#DaprMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional dapr metadata"
+      }
+    },
+    "com.azure.servicelinker#LinkersGenerateConfigurationsRequestCustomizedKeysMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations"
+      }
+    },
+    "com.azure.servicelinker#ActionType": {
+      "type": "enum",
+      "members": {
+        "ENABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enable"
+          }
+        },
+        "OPTOUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "optOut"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates how to apply the connector operations, such as opt out network configuration, opt in configuration."
+      }
+    },
+    "com.azure.servicelinker#DeleteOrUpdateBehavior": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "FORCEDCLEANUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ForcedCleanup"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The cleanup behavior to indicate whether clean up operation when resource is deleted or updated"
       }
     },
     "com.azure.servicelinker#LinkersDeleteDryrun": {
@@ -1278,16 +1466,29 @@
             "smithy.api#documentation": "The name of dryrun."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.servicelinker#DryrunPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the dryrun job."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicelinker#DryrunPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "parameters": {
+          "target": "com.azure.servicelinker#DryrunParameters",
+          "traits": {
+            "smithy.api#documentation": "The parameters of the dryrun"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the dryrun job"
       }
     },
     "com.azure.servicelinker#LinkersCreateDryrun": {
@@ -1366,11 +1567,10 @@
             "smithy.api#documentation": "The name of dryrun."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.servicelinker#DryrunPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the dryrun job."
           }
         }
       },
@@ -1630,7 +1830,8 @@
         "properties": {
           "target": "com.azure.servicelinker#ValidateResult",
           "traits": {
-            "smithy.api#documentation": "The validation result detail."
+            "smithy.api#documentation": "The validation result detail.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "resourceId": {
@@ -1700,7 +1901,8 @@
         "authType": {
           "target": "com.azure.servicelinker#AuthType",
           "traits": {
-            "smithy.api#documentation": "The authentication type."
+            "smithy.api#documentation": "The authentication type.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "validationDetail": {
@@ -1946,13 +2148,15 @@
         "vNetSolution": {
           "target": "com.azure.servicelinker#VNetSolution",
           "traits": {
-            "smithy.api#documentation": "The VNet solution."
+            "smithy.api#documentation": "The VNet solution.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "secretStore": {
           "target": "com.azure.servicelinker#SecretStore",
           "traits": {
-            "smithy.api#documentation": "An option to store secret value in secure place"
+            "smithy.api#documentation": "An option to store secret value in secure place",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "scope": {
@@ -1965,13 +2169,15 @@
         "publicNetworkSolution": {
           "target": "com.azure.servicelinker#PublicNetworkSolution",
           "traits": {
-            "smithy.api#documentation": "The network solution."
+            "smithy.api#documentation": "The network solution.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "configurationInfo": {
           "target": "com.azure.servicelinker#ConfigurationInfo",
           "traits": {
-            "smithy.api#documentation": "The connection information consumed by applications, including secrets, connection strings."
+            "smithy.api#documentation": "The connection information consumed by applications, including secrets, connection strings.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -2021,27 +2227,13 @@
         "configurationStore": {
           "target": "com.azure.servicelinker#ConfigurationStore",
           "traits": {
-            "smithy.api#documentation": "An option to store configuration into different place"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The configuration information, used to generate configurations or save to applications"
-      }
-    },
-    "com.azure.servicelinker#ConfigurationStore": {
-      "type": "structure",
-      "members": {
-        "appConfigurationId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The app configuration id to store configuration",
+            "smithy.api#documentation": "An option to store configuration into different place",
             "com.distilled.openapi#nullable": {}
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "An option to store configuration into different place"
+        "smithy.api#documentation": "The configuration information, used to generate configurations or save to applications"
       }
     },
     "com.azure.servicelinker#ConfigurationInfoAdditionalConnectionStringPropertiesMap": {
@@ -2078,46 +2270,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations"
-      }
-    },
-    "com.azure.servicelinker#ActionType": {
-      "type": "enum",
-      "members": {
-        "ENABLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "enable"
-          }
-        },
-        "OPTOUT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "optOut"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Indicates how to apply the connector operations, such as opt out network configuration, opt in configuration."
-      }
-    },
-    "com.azure.servicelinker#DeleteOrUpdateBehavior": {
-      "type": "enum",
-      "members": {
-        "DEFAULT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Default"
-          }
-        },
-        "FORCEDCLEANUP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ForcedCleanup"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The cleanup behavior to indicate whether clean up operation when resource is deleted or updated"
       }
     },
     "com.azure.servicelinker#PublicNetworkSolution": {
@@ -2371,16 +2523,163 @@
             "smithy.api#documentation": "The name Linker resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.servicelinker#LinkerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Linker properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicelinker#LinkerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "targetService": {
+          "target": "com.azure.servicelinker#TargetServiceBase",
+          "traits": {
+            "smithy.api#documentation": "The target service properties"
+          }
+        },
+        "authInfo": {
+          "target": "com.azure.servicelinker#AuthInfoBase",
+          "traits": {
+            "smithy.api#documentation": "The authentication type."
+          }
+        },
+        "clientType": {
+          "target": "com.azure.servicelinker#ClientType",
+          "traits": {
+            "smithy.api#documentation": "The application client type"
+          }
+        },
+        "vNetSolution": {
+          "target": "com.azure.servicelinker#VNetSolution",
+          "traits": {
+            "smithy.api#documentation": "The VNet solution.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "secretStore": {
+          "target": "com.azure.servicelinker#SecretStore",
+          "traits": {
+            "smithy.api#documentation": "An option to store secret value in secure place",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "connection scope in source service.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publicNetworkSolution": {
+          "target": "com.azure.servicelinker#PublicNetworkSolution",
+          "traits": {
+            "smithy.api#documentation": "The network solution.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "configurationInfo": {
+          "target": "com.azure.servicelinker#ConfigurationInfoInput",
+          "traits": {
+            "smithy.api#documentation": "The connection information consumed by applications, including secrets, connection strings.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the Linker."
+      }
+    },
+    "com.azure.servicelinker#ConfigurationInfoInput": {
+      "type": "structure",
+      "members": {
+        "deleteOrUpdateBehavior": {
+          "target": "com.azure.servicelinker#DeleteOrUpdateBehavior",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether to clean up previous operation when Linker is updating or deleting"
+          }
+        },
+        "action": {
+          "target": "com.azure.servicelinker#ActionType",
+          "traits": {
+            "smithy.api#documentation": "Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source."
+          }
+        },
+        "customizedKeys": {
+          "target": "com.azure.servicelinker#ConfigurationInfoInputCustomizedKeysMap",
+          "traits": {
+            "smithy.api#documentation": "Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations"
+          }
+        },
+        "daprProperties": {
+          "target": "com.azure.servicelinker#DaprPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Indicates some additional properties for dapr client type"
+          }
+        },
+        "additionalConfigurations": {
+          "target": "com.azure.servicelinker#ConfigurationInfoInputAdditionalConfigurationsMap",
+          "traits": {
+            "smithy.api#documentation": "A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations"
+          }
+        },
+        "additionalConnectionStringProperties": {
+          "target": "com.azure.servicelinker#ConfigurationInfoInputAdditionalConnectionStringPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "A dictionary of additional properties to be added in the end of connection string."
+          }
+        },
+        "configurationStore": {
+          "target": "com.azure.servicelinker#ConfigurationStore",
+          "traits": {
+            "smithy.api#documentation": "An option to store configuration into different place",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration information, used to generate configurations or save to applications"
+      }
+    },
+    "com.azure.servicelinker#ConfigurationInfoInputAdditionalConnectionStringPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A dictionary of additional properties to be added in the end of connection string."
+      }
+    },
+    "com.azure.servicelinker#ConfigurationInfoInputAdditionalConfigurationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations"
+      }
+    },
+    "com.azure.servicelinker#ConfigurationInfoInputCustomizedKeysMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations"
       }
     },
     "com.azure.servicelinker#LinkerCreateOrUpdate": {
@@ -2460,10 +2759,10 @@
             "smithy.api#documentation": "The name Linker resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.servicelinker#LinkerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the Linker.",
             "smithy.api#required": {}
           }
         }
@@ -2712,15 +3011,88 @@
             "smithy.api#documentation": "The name of resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "deleteOrUpdateBehavior": {
+          "target": "com.azure.servicelinker#DeleteOrUpdateBehavior",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Indicates whether to clean up previous operation when Linker is updating or deleting"
+          }
+        },
+        "action": {
+          "target": "com.azure.servicelinker#ActionType",
+          "traits": {
+            "smithy.api#documentation": "Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source."
+          }
+        },
+        "customizedKeys": {
+          "target": "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestCustomizedKeysMap",
+          "traits": {
+            "smithy.api#documentation": "Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations"
+          }
+        },
+        "daprProperties": {
+          "target": "com.azure.servicelinker#DaprPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Indicates some additional properties for dapr client type"
+          }
+        },
+        "additionalConfigurations": {
+          "target": "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap",
+          "traits": {
+            "smithy.api#documentation": "A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations"
+          }
+        },
+        "additionalConnectionStringProperties": {
+          "target": "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "A dictionary of additional properties to be added in the end of connection string."
+          }
+        },
+        "configurationStore": {
+          "target": "com.azure.servicelinker#ConfigurationStore",
+          "traits": {
+            "smithy.api#documentation": "An option to store configuration into different place",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A dictionary of additional properties to be added in the end of connection string."
+      }
+    },
+    "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations"
+      }
+    },
+    "com.azure.servicelinker#ConnectorGenerateConfigurationsRequestCustomizedKeysMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations"
       }
     },
     "com.azure.servicelinker#ConnectorValidate": {
@@ -2934,11 +3306,10 @@
             "smithy.api#documentation": "The name of resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.servicelinker#LinkerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Linker properties"
           }
         }
       },
@@ -3039,10 +3410,10 @@
             "smithy.api#documentation": "The name of resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.servicelinker#LinkerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the Linker.",
             "smithy.api#required": {}
           }
         }
@@ -3351,11 +3722,10 @@
             "smithy.api#documentation": "The name of dryrun."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.servicelinker#DryrunPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the dryrun job."
           }
         }
       },
@@ -3455,11 +3825,10 @@
             "smithy.api#documentation": "The name of dryrun."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.servicelinker#DryrunPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the dryrun job."
           }
         }
       },

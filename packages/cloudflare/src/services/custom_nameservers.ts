@@ -86,7 +86,7 @@ export const CreateCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCustomNameserverRequest",
 }) as any as S.Schema<CreateCustomNameserverRequest>;
 
-export type CreateResponseDnsRecordsItemType = "A" | "AAAA" | (string & {});
+export type CreateResponseDnsRecordsItemType = "A" | "AAAA";
 export const CreateResponseDnsRecordsItemType = /*@__PURE__*/ S.String;
 
 export interface CreateResponseDnsRecordsItem {
@@ -104,16 +104,13 @@ export const CreateResponseDnsRecordsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseDnsRecordsItem",
 }) as any as S.Schema<CreateResponseDnsRecordsItem>;
 
-export type CreateResponseDnsRecordsList = CreateResponseDnsRecordsItem[];
+export type CreateResponseDnsRecordsList =
+  ReadonlyArray<CreateResponseDnsRecordsItem>;
 export const CreateResponseDnsRecordsList = /*@__PURE__*/ S.Array(
   CreateResponseDnsRecordsItem,
 ) as any as S.Schema<CreateResponseDnsRecordsList>;
 
-export type CreateResponseStatus =
-  | "moved"
-  | "pending"
-  | "verified"
-  | (string & {});
+export type CreateResponseStatus = "moved" | "pending" | "verified";
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -164,7 +161,7 @@ export const DeleteCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteCustomNameserverRequest",
 }) as any as S.Schema<DeleteCustomNameserverRequest>;
 
-export type DeleteResultList = string[];
+export type DeleteResultList = ReadonlyArray<string>;
 export const DeleteResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteResultList>;
@@ -204,7 +201,7 @@ export const GetCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCustomNameserverRequest",
 }) as any as S.Schema<GetCustomNameserverRequest>;
 
-export type GetResultItemDnsRecordsItemType = "A" | "AAAA" | (string & {});
+export type GetResultItemDnsRecordsItemType = "A" | "AAAA";
 export const GetResultItemDnsRecordsItemType = /*@__PURE__*/ S.String;
 
 export interface GetResultItemDnsRecordsItem {
@@ -222,16 +219,13 @@ export const GetResultItemDnsRecordsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResultItemDnsRecordsItem",
 }) as any as S.Schema<GetResultItemDnsRecordsItem>;
 
-export type GetResultItemDnsRecordsList = GetResultItemDnsRecordsItem[];
+export type GetResultItemDnsRecordsList =
+  ReadonlyArray<GetResultItemDnsRecordsItem>;
 export const GetResultItemDnsRecordsList = /*@__PURE__*/ S.Array(
   GetResultItemDnsRecordsItem,
 ) as any as S.Schema<GetResultItemDnsRecordsList>;
 
-export type GetResultItemStatus =
-  | "moved"
-  | "pending"
-  | "verified"
-  | (string & {});
+export type GetResultItemStatus = "moved" | "pending" | "verified";
 export const GetResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface GetResultItem {
@@ -256,7 +250,7 @@ export const GetResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetResultItem" }) as any as S.Schema<GetResultItem>;
 
-export type GetResultList = GetResultItem[];
+export type GetResultList = ReadonlyArray<GetResultItem>;
 export const GetResultList = /*@__PURE__*/ S.Array(
   GetResultItem,
 ) as any as S.Schema<GetResultList>;

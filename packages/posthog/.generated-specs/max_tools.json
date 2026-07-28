@@ -71,11 +71,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.max_tools#MaxToolsCreateAndQueryInsightCreateResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.max_tools#MaxToolsCreateAndQueryInsightCreateResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.max_tools#MaxToolsCreateAndQueryInsightCreateResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}

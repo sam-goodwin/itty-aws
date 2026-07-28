@@ -173,16 +173,25 @@
     "com.azure.appcomplianceautomation#ProviderActionsTriggerEvaluationRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "resourceIds": {
+          "target": "com.azure.appcomplianceautomation#ProviderActionsTriggerEvaluationRequestResourceIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "List of resource ids to be evaluated",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appcomplianceautomation#ProviderActionsTriggerEvaluationRequestResourceIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of resource ids to be evaluated"
       }
     },
     "com.azure.appcomplianceautomation#WebhookDelete": {
@@ -742,16 +751,80 @@
             "smithy.api#documentation": "Webhook Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appcomplianceautomation#WebhookPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Webhook property."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appcomplianceautomation#WebhookPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.appcomplianceautomation#WebhookStatus",
+          "traits": {
+            "smithy.api#documentation": "Webhook status."
+          }
+        },
+        "sendAllEvents": {
+          "target": "com.azure.appcomplianceautomation#SendAllEvents",
+          "traits": {
+            "smithy.api#documentation": "whether to send notification under any event."
+          }
+        },
+        "events": {
+          "target": "com.azure.appcomplianceautomation#WebhookPropertiesInputEventsList",
+          "traits": {
+            "smithy.api#documentation": "under which event notification should be sent."
+          }
+        },
+        "payloadUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "webhook payload url"
+          }
+        },
+        "contentType": {
+          "target": "com.azure.appcomplianceautomation#ContentType",
+          "traits": {
+            "smithy.api#documentation": "content type"
+          }
+        },
+        "webhookKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "webhook secret token. If not set, this field value is null; otherwise, please set a string value."
+          }
+        },
+        "updateWebhookKey": {
+          "target": "com.azure.appcomplianceautomation#UpdateWebhookKey",
+          "traits": {
+            "smithy.api#documentation": "whether to update webhookKey."
+          }
+        },
+        "enableSslVerification": {
+          "target": "com.azure.appcomplianceautomation#EnableSslVerification",
+          "traits": {
+            "smithy.api#documentation": "whether to enable ssl verification"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Webhook properties."
+      }
+    },
+    "com.azure.appcomplianceautomation#WebhookPropertiesInputEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appcomplianceautomation#NotificationEvent"
+      },
+      "traits": {
+        "smithy.api#documentation": "under which event notification should be sent."
       }
     },
     "com.azure.appcomplianceautomation#WebhookCreateOrUpdate": {
@@ -831,10 +904,10 @@
             "smithy.api#documentation": "Webhook Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appcomplianceautomation#WebhookPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Webhook property.",
             "smithy.api#required": {}
           }
         }
@@ -1258,10 +1331,10 @@
             "smithy.api#documentation": "Report Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "certRecord": {
+          "target": "com.azure.appcomplianceautomation#CertSyncRecord",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "certification record to be synchronized.",
             "smithy.api#required": {}
           }
         }
@@ -1556,16 +1629,60 @@
             "smithy.api#documentation": "Snapshot Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "reportCreatorTenantId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Tenant id."
+          }
+        },
+        "downloadType": {
+          "target": "com.azure.appcomplianceautomation#DownloadType",
+          "traits": {
+            "smithy.api#documentation": "Indicates the download type.",
             "smithy.api#required": {}
+          }
+        },
+        "offerGuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The offerGuid which mapping to the reports."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appcomplianceautomation#DownloadType": {
+      "type": "enum",
+      "members": {
+        "COMPLIANCEREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ComplianceReport"
+          }
+        },
+        "COMPLIANCEPDFREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CompliancePdfReport"
+          }
+        },
+        "COMPLIANCEDETAILEDPDFREPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ComplianceDetailedPdfReport"
+          }
+        },
+        "RESOURCELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResourceList"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates the download type."
       }
     },
     "com.azure.appcomplianceautomation#SnapshotGet": {
@@ -3025,16 +3142,39 @@
             "smithy.api#documentation": "The scoping configuration of the specific report."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appcomplianceautomation#ScopingConfigurationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "ScopingConfiguration property.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appcomplianceautomation#ScopingConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "answers": {
+          "target": "com.azure.appcomplianceautomation#ScopingConfigurationPropertiesInputAnswersList",
+          "traits": {
+            "smithy.api#documentation": "List of scoping question answers."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ScopingConfiguration's properties."
+      }
+    },
+    "com.azure.appcomplianceautomation#ScopingConfigurationPropertiesInputAnswersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appcomplianceautomation#ScopingAnswer"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of scoping question answers."
       }
     },
     "com.azure.appcomplianceautomation#ScopingConfigurationGet": {
@@ -3676,11 +3816,16 @@
             "smithy.api#documentation": "The evidence name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "reportCreatorTenantId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tenant id."
+          }
+        },
+        "offerGuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The offerGuid which mapping to the reports."
           }
         }
       },
@@ -3893,16 +4038,55 @@
             "smithy.api#documentation": "The tenant id of the report creator."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appcomplianceautomation#EvidencePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Evidence property.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appcomplianceautomation#EvidencePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "evidenceType": {
+          "target": "com.azure.appcomplianceautomation#EvidenceType",
+          "traits": {
+            "smithy.api#documentation": "Evidence type."
+          }
+        },
+        "filePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The path of the file in storage.",
+            "smithy.api#required": {}
+          }
+        },
+        "extraData": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Extra data considered as evidence."
+          }
+        },
+        "controlId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Control id."
+          }
+        },
+        "responsibilityId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Responsibility id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Evidence's properties."
       }
     },
     "com.azure.appcomplianceautomation#EvidenceGet": {
@@ -4216,11 +4400,16 @@
             "smithy.api#documentation": "Report Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },
@@ -4332,16 +4521,62 @@
             "smithy.api#documentation": "Report Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appcomplianceautomation#ReportPatchPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Report property."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appcomplianceautomation#ReportPatchPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "triggerTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Report collection trigger time."
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Report collection trigger time's time zone, the available list can be obtained by executing \"Get-TimeZone -ListAvailable\" in PowerShell.\nAn example of valid timezone id is \"Pacific Standard Time\"."
+          }
+        },
+        "resources": {
+          "target": "com.azure.appcomplianceautomation#ReportPatchPropertiesInputResourcesList",
+          "traits": {
+            "smithy.api#documentation": "List of resource data."
+          }
+        },
+        "offerGuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, \"00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002\" and \"00000000-0000-0000-0000-000000000003\"."
+          }
+        },
+        "storageInfo": {
+          "target": "com.azure.appcomplianceautomation#StorageInfo",
+          "traits": {
+            "smithy.api#documentation": "The information of 'bring your own storage' binding to the report"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Patch Report's properties."
+      }
+    },
+    "com.azure.appcomplianceautomation#ReportPatchPropertiesInputResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appcomplianceautomation#ResourceMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of resource data."
       }
     },
     "com.azure.appcomplianceautomation#ReportCreateOrUpdate": {
@@ -4413,16 +4648,66 @@
             "smithy.api#documentation": "Report Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appcomplianceautomation#ReportPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Report property.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appcomplianceautomation#ReportPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "triggerTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Report collection trigger time.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Report collection trigger time's time zone, the available list can be obtained by executing \"Get-TimeZone -ListAvailable\" in PowerShell.\nAn example of valid timezone id is \"Pacific Standard Time\".",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.appcomplianceautomation#ReportPropertiesInputResourcesList",
+          "traits": {
+            "smithy.api#documentation": "List of resource data.",
+            "smithy.api#required": {}
+          }
+        },
+        "offerGuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, \"00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002\" and \"00000000-0000-0000-0000-000000000003\"."
+          }
+        },
+        "storageInfo": {
+          "target": "com.azure.appcomplianceautomation#StorageInfo",
+          "traits": {
+            "smithy.api#documentation": "The information of 'bring your own storage' binding to the report"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Create Report's properties."
+      }
+    },
+    "com.azure.appcomplianceautomation#ReportPropertiesInputResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appcomplianceautomation#ResourceMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of resource data."
       }
     },
     "com.azure.appcomplianceautomation#ReportGet": {
@@ -4847,16 +5132,25 @@
     "com.azure.appcomplianceautomation#ProviderActionsOnboardRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "subscriptionIds": {
+          "target": "com.azure.appcomplianceautomation#ProviderActionsOnboardRequestSubscriptionIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "List of subscription ids to be onboarded",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appcomplianceautomation#ProviderActionsOnboardRequestSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of subscription ids to be onboarded"
       }
     },
     "com.azure.appcomplianceautomation#ProviderActionsListInUseStorageAccounts": {
@@ -4904,16 +5198,24 @@
     "com.azure.appcomplianceautomation#ProviderActionsListInUseStorageAccountsRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "subscriptionIds": {
+          "target": "com.azure.appcomplianceautomation#ProviderActionsListInUseStorageAccountsRequestSubscriptionIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of subscription ids to be query. If the list is null or empty, the API will query all the subscriptions of the user."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appcomplianceautomation#ProviderActionsListInUseStorageAccountsRequestSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of subscription ids to be query. If the list is null or empty, the API will query all the subscriptions of the user."
       }
     },
     "com.azure.appcomplianceautomation#ProviderActionsGetOverviewStatus": {
@@ -4981,11 +5283,10 @@
     "com.azure.appcomplianceautomation#ProviderActionsGetOverviewStatusRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource type."
           }
         }
       },
@@ -5029,11 +5330,10 @@
     "com.azure.appcomplianceautomation#ProviderActionsGetCollectionCountRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource type."
           }
         }
       },
@@ -5109,11 +5409,16 @@
     "com.azure.appcomplianceautomation#ProviderActionsCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },

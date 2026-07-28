@@ -82,7 +82,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#PaginatedNotebookMinimalList": {
+    "com.posthog.notebooks#PaginatedNotebookMinimalListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -101,12 +101,12 @@
           }
         },
         "results": {
-          "target": "com.posthog.notebooks#PaginatedNotebookMinimalListResultsList"
+          "target": "com.posthog.notebooks#PaginatedNotebookMinimalListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.notebooks#NotebookMinimal": {
+    "com.posthog.notebooks#NotebookMinimalOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -138,13 +138,19 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
+          "target": "com.posthog.notebooks#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "last_modified_at": {
           "target": "smithy.api#String"
         },
         "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
+          "target": "com.posthog.notebooks#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "user_access_level": {
           "target": "smithy.api#String",
@@ -152,9 +158,6 @@
             "smithy.api#documentation": "The effective access level the user has for this object",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {}
@@ -294,10 +297,10 @@
       },
       "traits": {}
     },
-    "com.posthog.notebooks#PaginatedNotebookMinimalListResultsList": {
+    "com.posthog.notebooks#PaginatedNotebookMinimalListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.notebooks#NotebookMinimal"
+        "target": "com.posthog.notebooks#NotebookMinimalOutput"
       },
       "traits": {}
     },
@@ -307,7 +310,7 @@
         "target": "com.posthog.notebooks#NotebooksListRequest"
       },
       "output": {
-        "target": "com.posthog.notebooks#PaginatedNotebookMinimalList"
+        "target": "com.posthog.notebooks#PaginatedNotebookMinimalListOutput"
       },
       "errors": [
         {
@@ -329,38 +332,6 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksCreateRequestParentResourceType": {
-      "type": "enum",
-      "members": {
-        "ACCOUNT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "account"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.notebooks#NotebooksCreateRequestParentResource": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.notebooks#NotebooksCreateRequestParentResourceType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list."
-      }
-    },
     "com.posthog.notebooks#NotebooksCreateRequest": {
       "type": "structure",
       "members": {
@@ -372,18 +343,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the notebook."
-          }
-        },
-        "short_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Short alphanumeric identifier used in URLs and API lookups."
-          }
-        },
         "title": {
           "target": "smithy.api#String",
           "traits": {
@@ -416,32 +375,6 @@
             "smithy.api#documentation": "Whether the notebook has been soft-deleted."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "parent_resource": {
-          "target": "com.posthog.notebooks#NotebooksCreateRequestParentResource",
-          "traits": {
-            "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "_create_in_folder": {
           "target": "smithy.api#String"
         }
@@ -450,7 +383,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.notebooks#Notebook": {
+    "com.posthog.notebooks#NotebookOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -501,13 +434,19 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
+          "target": "com.posthog.notebooks#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "last_modified_at": {
           "target": "smithy.api#String"
         },
         "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
+          "target": "com.posthog.notebooks#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "user_access_level": {
           "target": "smithy.api#String",
@@ -517,19 +456,16 @@
           }
         },
         "parent_resource": {
-          "target": "com.posthog.notebooks#NotebookParentResource",
+          "target": "com.posthog.notebooks#NotebookOutputParentResource",
           "traits": {
             "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list.",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {}
     },
-    "com.posthog.notebooks#NotebookParentResourceType": {
+    "com.posthog.notebooks#NotebookOutputParentResourceType": {
       "type": "enum",
       "members": {
         "ACCOUNT": {
@@ -541,11 +477,11 @@
       },
       "traits": {}
     },
-    "com.posthog.notebooks#NotebookParentResource": {
+    "com.posthog.notebooks#NotebookOutputParentResource": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.posthog.notebooks#NotebookParentResourceType",
+          "target": "com.posthog.notebooks#NotebookOutputParentResourceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -567,7 +503,7 @@
         "target": "com.posthog.notebooks#NotebooksCreateRequest"
       },
       "output": {
-        "target": "com.posthog.notebooks#Notebook"
+        "target": "com.posthog.notebooks#NotebookOutput"
       },
       "errors": [
         {
@@ -718,13 +654,6 @@
         }
       }
     },
-    "com.posthog.notebooks#NotebooksSharingPasswordsCreateRequestSharePasswordsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.notebooks#SharePassword"
-      },
-      "traits": {}
-    },
     "com.posthog.notebooks#NotebooksSharingPasswordsCreateRequest": {
       "type": "structure",
       "members": {
@@ -743,34 +672,14 @@
             "smithy.api#required": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "access_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {},
-            "smithy.api#sensitive": {}
-          }
         },
         "settings": {
           "target": "smithy.api#Document"
         },
         "password_required": {
           "target": "smithy.api#Boolean"
-        },
-        "share_passwords": {
-          "target": "com.posthog.notebooks#NotebooksSharingPasswordsCreateRequestSharePasswordsList"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -841,13 +750,6 @@
         "smithy.api#documentation": "Delete a password from the sharing configuration."
       }
     },
-    "com.posthog.notebooks#NotebooksSharingRefreshCreateRequestSharePasswordsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.notebooks#SharePassword"
-      },
-      "traits": {}
-    },
     "com.posthog.notebooks#NotebooksSharingRefreshCreateRequest": {
       "type": "structure",
       "members": {
@@ -866,34 +768,14 @@
             "smithy.api#required": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "access_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {},
-            "smithy.api#sensitive": {}
-          }
         },
         "settings": {
           "target": "smithy.api#Document"
         },
         "password_required": {
           "target": "smithy.api#Boolean"
-        },
-        "share_passwords": {
-          "target": "com.posthog.notebooks#NotebooksSharingRefreshCreateRequestSharePasswordsList"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -945,7 +827,7 @@
         "target": "com.posthog.notebooks#NotebooksRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.notebooks#Notebook"
+        "target": "com.posthog.notebooks#NotebookOutput"
       },
       "errors": [
         {
@@ -964,38 +846,6 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksUpdateRequestParentResourceType": {
-      "type": "enum",
-      "members": {
-        "ACCOUNT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "account"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.notebooks#NotebooksUpdateRequestParentResource": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.notebooks#NotebooksUpdateRequestParentResourceType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list."
-      }
-    },
     "com.posthog.notebooks#NotebooksUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1012,12 +862,6 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the notebook."
           }
         },
         "title": {
@@ -1052,32 +896,6 @@
             "smithy.api#documentation": "Whether the notebook has been soft-deleted."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "parent_resource": {
-          "target": "com.posthog.notebooks#NotebooksUpdateRequestParentResource",
-          "traits": {
-            "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "_create_in_folder": {
           "target": "smithy.api#String"
         }
@@ -1092,7 +910,7 @@
         "target": "com.posthog.notebooks#NotebooksUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.notebooks#Notebook"
+        "target": "com.posthog.notebooks#NotebookOutput"
       },
       "errors": [
         {
@@ -1114,38 +932,6 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksPartialUpdateRequestParentResourceType": {
-      "type": "enum",
-      "members": {
-        "ACCOUNT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "account"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.notebooks#NotebooksPartialUpdateRequestParentResource": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.notebooks#NotebooksPartialUpdateRequestParentResourceType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list."
-      }
-    },
     "com.posthog.notebooks#NotebooksPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1162,12 +948,6 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the notebook."
           }
         },
         "title": {
@@ -1202,32 +982,6 @@
             "smithy.api#documentation": "Whether the notebook has been soft-deleted."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "parent_resource": {
-          "target": "com.posthog.notebooks#NotebooksPartialUpdateRequestParentResource",
-          "traits": {
-            "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "_create_in_folder": {
           "target": "smithy.api#String"
         }
@@ -1242,7 +996,7 @@
         "target": "com.posthog.notebooks#NotebooksPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.notebooks#Notebook"
+        "target": "com.posthog.notebooks#NotebookOutput"
       },
       "errors": [
         {
@@ -1681,38 +1435,6 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksHogqlExecuteCreateRequestParentResourceType": {
-      "type": "enum",
-      "members": {
-        "ACCOUNT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "account"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.notebooks#NotebooksHogqlExecuteCreateRequestParentResource": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.notebooks#NotebooksHogqlExecuteCreateRequestParentResourceType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list."
-      }
-    },
     "com.posthog.notebooks#NotebooksHogqlExecuteCreateRequest": {
       "type": "structure",
       "members": {
@@ -1729,12 +1451,6 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the notebook."
           }
         },
         "title": {
@@ -1767,32 +1483,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the notebook has been soft-deleted."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "parent_resource": {
-          "target": "com.posthog.notebooks#NotebooksHogqlExecuteCreateRequestParentResource",
-          "traits": {
-            "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "_create_in_folder": {
@@ -1831,38 +1521,6 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksKernelConfigCreateRequestParentResourceType": {
-      "type": "enum",
-      "members": {
-        "ACCOUNT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "account"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.notebooks#NotebooksKernelConfigCreateRequestParentResource": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.notebooks#NotebooksKernelConfigCreateRequestParentResourceType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list."
-      }
-    },
     "com.posthog.notebooks#NotebooksKernelConfigCreateRequest": {
       "type": "structure",
       "members": {
@@ -1879,12 +1537,6 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the notebook."
           }
         },
         "title": {
@@ -1917,32 +1569,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the notebook has been soft-deleted."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "parent_resource": {
-          "target": "com.posthog.notebooks#NotebooksKernelConfigCreateRequestParentResource",
-          "traits": {
-            "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "_create_in_folder": {
@@ -2029,38 +1655,6 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksKernelExecuteCreateRequestParentResourceType": {
-      "type": "enum",
-      "members": {
-        "ACCOUNT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "account"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.notebooks#NotebooksKernelExecuteCreateRequestParentResource": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.notebooks#NotebooksKernelExecuteCreateRequestParentResourceType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list."
-      }
-    },
     "com.posthog.notebooks#NotebooksKernelExecuteCreateRequest": {
       "type": "structure",
       "members": {
@@ -2077,12 +1671,6 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the notebook."
           }
         },
         "title": {
@@ -2115,32 +1703,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the notebook has been soft-deleted."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "parent_resource": {
-          "target": "com.posthog.notebooks#NotebooksKernelExecuteCreateRequestParentResource",
-          "traits": {
-            "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "_create_in_folder": {
@@ -2179,38 +1741,6 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksKernelExecuteStreamCreateRequestParentResourceType": {
-      "type": "enum",
-      "members": {
-        "ACCOUNT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "account"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.notebooks#NotebooksKernelExecuteStreamCreateRequestParentResource": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.notebooks#NotebooksKernelExecuteStreamCreateRequestParentResourceType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list."
-      }
-    },
     "com.posthog.notebooks#NotebooksKernelExecuteStreamCreateRequest": {
       "type": "structure",
       "members": {
@@ -2227,12 +1757,6 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the notebook."
           }
         },
         "title": {
@@ -2265,32 +1789,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the notebook has been soft-deleted."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "parent_resource": {
-          "target": "com.posthog.notebooks#NotebooksKernelExecuteStreamCreateRequestParentResource",
-          "traits": {
-            "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "_create_in_folder": {
@@ -2329,38 +1827,6 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksKernelRestartCreateRequestParentResourceType": {
-      "type": "enum",
-      "members": {
-        "ACCOUNT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "account"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.notebooks#NotebooksKernelRestartCreateRequestParentResource": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.notebooks#NotebooksKernelRestartCreateRequestParentResourceType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list."
-      }
-    },
     "com.posthog.notebooks#NotebooksKernelRestartCreateRequest": {
       "type": "structure",
       "members": {
@@ -2377,12 +1843,6 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the notebook."
           }
         },
         "title": {
@@ -2415,32 +1875,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the notebook has been soft-deleted."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "parent_resource": {
-          "target": "com.posthog.notebooks#NotebooksKernelRestartCreateRequestParentResource",
-          "traits": {
-            "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "_create_in_folder": {
@@ -2479,38 +1913,6 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksKernelStartCreateRequestParentResourceType": {
-      "type": "enum",
-      "members": {
-        "ACCOUNT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "account"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.notebooks#NotebooksKernelStartCreateRequestParentResource": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.notebooks#NotebooksKernelStartCreateRequestParentResourceType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list."
-      }
-    },
     "com.posthog.notebooks#NotebooksKernelStartCreateRequest": {
       "type": "structure",
       "members": {
@@ -2527,12 +1929,6 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the notebook."
           }
         },
         "title": {
@@ -2565,32 +1961,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the notebook has been soft-deleted."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "parent_resource": {
-          "target": "com.posthog.notebooks#NotebooksKernelStartCreateRequestParentResource",
-          "traits": {
-            "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "_create_in_folder": {
@@ -2677,38 +2047,6 @@
         "smithy.api#documentation": "The API for interacting with Notebooks. This feature is in early access and the API can have breaking changes without announcement."
       }
     },
-    "com.posthog.notebooks#NotebooksKernelStopCreateRequestParentResourceType": {
-      "type": "enum",
-      "members": {
-        "ACCOUNT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "account"
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.notebooks#NotebooksKernelStopCreateRequestParentResource": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "com.posthog.notebooks#NotebooksKernelStopCreateRequestParentResourceType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list."
-      }
-    },
     "com.posthog.notebooks#NotebooksKernelStopCreateRequest": {
       "type": "structure",
       "members": {
@@ -2725,12 +2063,6 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the notebook."
           }
         },
         "title": {
@@ -2763,32 +2095,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether the notebook has been soft-deleted."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "last_modified_at": {
-          "target": "smithy.api#String"
-        },
-        "last_modified_by": {
-          "target": "com.posthog.notebooks#UserBasic"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "parent_resource": {
-          "target": "com.posthog.notebooks#NotebooksKernelStopCreateRequestParentResource",
-          "traits": {
-            "smithy.api#documentation": "Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "_create_in_folder": {

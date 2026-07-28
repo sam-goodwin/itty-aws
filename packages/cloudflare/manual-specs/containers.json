@@ -714,11 +714,37 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.containers#CreateContainerRegistryCredentialsResult": {
+      "type": "structure",
+      "members": {
+        "user": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.cloudflare.protocols#nullable": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.cloudflare.protocols#nullable": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Registry credentials (transcribed from the distilled SDK — endpoint is docs-absent)."
+      }
+    },
     "com.cloudflare.containers#CreateContainerRegistryCredentialsResponse": {
       "type": "structure",
       "members": {
         "result": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.containers#CreateContainerRegistryCredentialsResult",
           "traits": {
             "com.cloudflare.protocols#envelopePayload": {}
           }

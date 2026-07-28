@@ -107,7 +107,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -156,7 +156,7 @@ export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleLongrunningOperation",
 }) as any as S.Schema<GoogleLongrunningOperation>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -177,7 +177,8 @@ export const GoogleCloudRunV2ContainerPort = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2ContainerPort",
 }) as any as S.Schema<GoogleCloudRunV2ContainerPort>;
 
-export type GoogleCloudRunV2ContainerPortList = GoogleCloudRunV2ContainerPort[];
+export type GoogleCloudRunV2ContainerPortList =
+  ReadonlyArray<GoogleCloudRunV2ContainerPort>;
 export const GoogleCloudRunV2ContainerPortList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2ContainerPort,
 ) as any as S.Schema<GoogleCloudRunV2ContainerPortList>;
@@ -246,7 +247,7 @@ export const GoogleCloudRunV2EnvVar = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2EnvVar",
 }) as any as S.Schema<GoogleCloudRunV2EnvVar>;
 
-export type GoogleCloudRunV2EnvVarList = GoogleCloudRunV2EnvVar[];
+export type GoogleCloudRunV2EnvVarList = ReadonlyArray<GoogleCloudRunV2EnvVar>;
 export const GoogleCloudRunV2EnvVarList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2EnvVar,
 ) as any as S.Schema<GoogleCloudRunV2EnvVarList>;
@@ -296,7 +297,8 @@ export const GoogleCloudRunV2HTTPHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2HTTPHeader",
 }) as any as S.Schema<GoogleCloudRunV2HTTPHeader>;
 
-export type GoogleCloudRunV2HTTPHeaderList = GoogleCloudRunV2HTTPHeader[];
+export type GoogleCloudRunV2HTTPHeaderList =
+  ReadonlyArray<GoogleCloudRunV2HTTPHeader>;
 export const GoogleCloudRunV2HTTPHeaderList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2HTTPHeader,
 ) as any as S.Schema<GoogleCloudRunV2HTTPHeaderList>;
@@ -396,7 +398,8 @@ export const GoogleCloudRunV2VolumeMount = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2VolumeMount",
 }) as any as S.Schema<GoogleCloudRunV2VolumeMount>;
 
-export type GoogleCloudRunV2VolumeMountList = GoogleCloudRunV2VolumeMount[];
+export type GoogleCloudRunV2VolumeMountList =
+  ReadonlyArray<GoogleCloudRunV2VolumeMount>;
 export const GoogleCloudRunV2VolumeMountList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2VolumeMount,
 ) as any as S.Schema<GoogleCloudRunV2VolumeMountList>;
@@ -417,7 +420,8 @@ export const GoogleCloudRunV2SourceFile = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2SourceFile",
 }) as any as S.Schema<GoogleCloudRunV2SourceFile>;
 
-export type GoogleCloudRunV2SourceFileList = GoogleCloudRunV2SourceFile[];
+export type GoogleCloudRunV2SourceFileList =
+  ReadonlyArray<GoogleCloudRunV2SourceFile>;
 export const GoogleCloudRunV2SourceFileList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2SourceFile,
 ) as any as S.Schema<GoogleCloudRunV2SourceFileList>;
@@ -531,7 +535,8 @@ export const GoogleCloudRunV2Container = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2Container",
 }) as any as S.Schema<GoogleCloudRunV2Container>;
 
-export type GoogleCloudRunV2ContainerList = GoogleCloudRunV2Container[];
+export type GoogleCloudRunV2ContainerList =
+  ReadonlyArray<GoogleCloudRunV2Container>;
 export const GoogleCloudRunV2ContainerList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Container,
 ) as any as S.Schema<GoogleCloudRunV2ContainerList>;
@@ -576,16 +581,14 @@ export type GoogleCloudRunV2InstanceLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const GoogleCloudRunV2InstanceLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudRunV2InstanceRestartPolicyEnum =
   | "RESTART_POLICY_UNSPECIFIED"
   | "ALWAYS"
   | "ON_FAILURE"
-  | "NEVER"
-  | (string & {});
+  | "NEVER";
 export const GoogleCloudRunV2InstanceRestartPolicyEnum = /*@__PURE__*/ S.String;
 
 /** ContainerStatus holds the information of container name and image digest value. */
@@ -605,7 +608,7 @@ export const GoogleCloudRunV2ContainerStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2ContainerStatus>;
 
 export type GoogleCloudRunV2ContainerStatusList =
-  GoogleCloudRunV2ContainerStatus[];
+  ReadonlyArray<GoogleCloudRunV2ContainerStatus>;
 export const GoogleCloudRunV2ContainerStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2ContainerStatus,
 ) as any as S.Schema<GoogleCloudRunV2ContainerStatusList>;
@@ -615,8 +618,7 @@ export type GoogleCloudRunV2ConditionInstanceReasonEnum =
   | "INSTANCE_DELETED"
   | "INSTANCE_STOPPED"
   | "INSTANCE_STOPPING"
-  | "INSTANCE_NON_ZERO_EXIT_CODE"
-  | (string & {});
+  | "INSTANCE_NON_ZERO_EXIT_CODE";
 export const GoogleCloudRunV2ConditionInstanceReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -624,8 +626,7 @@ export type GoogleCloudRunV2ConditionSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const GoogleCloudRunV2ConditionSeverityEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudRunV2ConditionExecutionReasonEnum =
@@ -635,8 +636,7 @@ export type GoogleCloudRunV2ConditionExecutionReasonEnum =
   | "CANCELLED"
   | "CANCELLING"
   | "DELETED"
-  | "DELAYED_START_PENDING"
-  | (string & {});
+  | "DELAYED_START_PENDING";
 export const GoogleCloudRunV2ConditionExecutionReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -656,8 +656,7 @@ export type GoogleCloudRunV2ConditionReasonEnum =
   | "IMMEDIATE_RETRY"
   | "POSTPONED_RETRY"
   | "INTERNAL"
-  | "VPC_NETWORK_NOT_FOUND"
-  | (string & {});
+  | "VPC_NETWORK_NOT_FOUND";
 export const GoogleCloudRunV2ConditionReasonEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudRunV2ConditionRevisionReasonEnum =
@@ -673,8 +672,7 @@ export type GoogleCloudRunV2ConditionRevisionReasonEnum =
   | "ACTIVE_REVISION_LIMIT_REACHED"
   | "NO_DEPLOYMENT"
   | "HEALTH_CHECK_SKIPPED"
-  | "MIN_INSTANCES_WARMING"
-  | (string & {});
+  | "MIN_INSTANCES_WARMING";
 export const GoogleCloudRunV2ConditionRevisionReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -683,8 +681,7 @@ export type GoogleCloudRunV2ConditionStateEnum =
   | "CONDITION_PENDING"
   | "CONDITION_RECONCILING"
   | "CONDITION_FAILED"
-  | "CONDITION_SUCCEEDED"
-  | (string & {});
+  | "CONDITION_SUCCEEDED";
 export const GoogleCloudRunV2ConditionStateEnum = /*@__PURE__*/ S.String;
 
 /** Defines a status condition for a resource. */
@@ -775,7 +772,8 @@ export const GoogleCloudRunV2VersionToPath = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2VersionToPath",
 }) as any as S.Schema<GoogleCloudRunV2VersionToPath>;
 
-export type GoogleCloudRunV2VersionToPathList = GoogleCloudRunV2VersionToPath[];
+export type GoogleCloudRunV2VersionToPathList =
+  ReadonlyArray<GoogleCloudRunV2VersionToPath>;
 export const GoogleCloudRunV2VersionToPathList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2VersionToPath,
 ) as any as S.Schema<GoogleCloudRunV2VersionToPathList>;
@@ -802,8 +800,7 @@ export const GoogleCloudRunV2SecretVolumeSource = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudRunV2EmptyDirVolumeSourceMediumEnum =
   | "MEDIUM_UNSPECIFIED"
   | "MEMORY"
-  | "DISK"
-  | (string & {});
+  | "DISK";
 export const GoogleCloudRunV2EmptyDirVolumeSourceMediumEnum =
   /*@__PURE__*/ S.String;
 
@@ -871,7 +868,7 @@ export const GoogleCloudRunV2Volume = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2Volume",
 }) as any as S.Schema<GoogleCloudRunV2Volume>;
 
-export type GoogleCloudRunV2VolumeList = GoogleCloudRunV2Volume[];
+export type GoogleCloudRunV2VolumeList = ReadonlyArray<GoogleCloudRunV2Volume>;
 export const GoogleCloudRunV2VolumeList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Volume,
 ) as any as S.Schema<GoogleCloudRunV2VolumeList>;
@@ -879,8 +876,7 @@ export const GoogleCloudRunV2VolumeList = /*@__PURE__*/ S.Array(
 export type GoogleCloudRunV2VpcAccessEgressEnum =
   | "VPC_EGRESS_UNSPECIFIED"
   | "ALL_TRAFFIC"
-  | "PRIVATE_RANGES_ONLY"
-  | (string & {});
+  | "PRIVATE_RANGES_ONLY";
 export const GoogleCloudRunV2VpcAccessEgressEnum = /*@__PURE__*/ S.String;
 
 /** Direct VPC egress settings. */
@@ -903,7 +899,7 @@ export const GoogleCloudRunV2NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2NetworkInterface>;
 
 export type GoogleCloudRunV2NetworkInterfaceList =
-  GoogleCloudRunV2NetworkInterface[];
+  ReadonlyArray<GoogleCloudRunV2NetworkInterface>;
 export const GoogleCloudRunV2NetworkInterfaceList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2NetworkInterface,
 ) as any as S.Schema<GoogleCloudRunV2NetworkInterfaceList>;
@@ -927,7 +923,8 @@ export const GoogleCloudRunV2VpcAccess = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2VpcAccess",
 }) as any as S.Schema<GoogleCloudRunV2VpcAccess>;
 
-export type GoogleCloudRunV2ConditionList = GoogleCloudRunV2Condition[];
+export type GoogleCloudRunV2ConditionList =
+  ReadonlyArray<GoogleCloudRunV2Condition>;
 export const GoogleCloudRunV2ConditionList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Condition,
 ) as any as S.Schema<GoogleCloudRunV2ConditionList>;
@@ -935,8 +932,7 @@ export const GoogleCloudRunV2ConditionList = /*@__PURE__*/ S.Array(
 export type GoogleCloudRunV2InstanceEncryptionKeyRevocationActionEnum =
   | "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED"
   | "PREVENT_NEW"
-  | "SHUTDOWN"
-  | (string & {});
+  | "SHUTDOWN";
 export const GoogleCloudRunV2InstanceEncryptionKeyRevocationActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -945,8 +941,7 @@ export type GoogleCloudRunV2InstanceIngressEnum =
   | "INGRESS_TRAFFIC_ALL"
   | "INGRESS_TRAFFIC_INTERNAL_ONLY"
   | "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
-  | "INGRESS_TRAFFIC_NONE"
-  | (string & {});
+  | "INGRESS_TRAFFIC_NONE";
 export const GoogleCloudRunV2InstanceIngressEnum = /*@__PURE__*/ S.String;
 
 /** A Cloud Run Instance represents a single group of containers running in a region. */
@@ -1111,15 +1106,13 @@ export type GoogleCloudRunV2JobLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const GoogleCloudRunV2JobLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudRunV2TaskTemplateExecutionEnvironmentEnum =
   | "EXECUTION_ENVIRONMENT_UNSPECIFIED"
   | "EXECUTION_ENVIRONMENT_GEN1"
-  | "EXECUTION_ENVIRONMENT_GEN2"
-  | (string & {});
+  | "EXECUTION_ENVIRONMENT_GEN2";
 export const GoogleCloudRunV2TaskTemplateExecutionEnvironmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -1202,8 +1195,7 @@ export type GoogleCloudRunV2ExecutionReferenceCompletionStatusEnum =
   | "EXECUTION_FAILED"
   | "EXECUTION_RUNNING"
   | "EXECUTION_PENDING"
-  | "EXECUTION_CANCELLED"
-  | (string & {});
+  | "EXECUTION_CANCELLED";
 export const GoogleCloudRunV2ExecutionReferenceCompletionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1354,8 +1346,7 @@ export type GoogleCloudRunV2ServiceIngressEnum =
   | "INGRESS_TRAFFIC_ALL"
   | "INGRESS_TRAFFIC_INTERNAL_ONLY"
   | "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
-  | "INGRESS_TRAFFIC_NONE"
-  | (string & {});
+  | "INGRESS_TRAFFIC_NONE";
 export const GoogleCloudRunV2ServiceIngressEnum = /*@__PURE__*/ S.String;
 
 /** Settings for multi-region deployment. */
@@ -1390,8 +1381,7 @@ export const GoogleCloudRunV2ServiceMesh = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudRunV2RevisionTemplateEncryptionKeyRevocationActionEnum =
   | "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED"
   | "PREVENT_NEW"
-  | "SHUTDOWN"
-  | (string & {});
+  | "SHUTDOWN";
 export const GoogleCloudRunV2RevisionTemplateEncryptionKeyRevocationActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1420,8 +1410,7 @@ export const GoogleCloudRunV2RevisionScaling = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudRunV2RevisionTemplateExecutionEnvironmentEnum =
   | "EXECUTION_ENVIRONMENT_UNSPECIFIED"
   | "EXECUTION_ENVIRONMENT_GEN1"
-  | "EXECUTION_ENVIRONMENT_GEN2"
-  | (string & {});
+  | "EXECUTION_ENVIRONMENT_GEN2";
 export const GoogleCloudRunV2RevisionTemplateExecutionEnvironmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -1505,8 +1494,7 @@ export const GoogleCloudRunV2RevisionTemplate = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudRunV2TrafficTargetTypeEnum =
   | "TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"
   | "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
-  | "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION"
-  | (string & {});
+  | "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION";
 export const GoogleCloudRunV2TrafficTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision. */
@@ -1531,7 +1519,8 @@ export const GoogleCloudRunV2TrafficTarget = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2TrafficTarget",
 }) as any as S.Schema<GoogleCloudRunV2TrafficTarget>;
 
-export type GoogleCloudRunV2TrafficTargetList = GoogleCloudRunV2TrafficTarget[];
+export type GoogleCloudRunV2TrafficTargetList =
+  ReadonlyArray<GoogleCloudRunV2TrafficTarget>;
 export const GoogleCloudRunV2TrafficTargetList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2TrafficTarget,
 ) as any as S.Schema<GoogleCloudRunV2TrafficTargetList>;
@@ -1544,15 +1533,13 @@ export type GoogleCloudRunV2ServiceLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const GoogleCloudRunV2ServiceLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudRunV2ServiceScalingScalingModeEnum =
   | "SCALING_MODE_UNSPECIFIED"
   | "AUTOMATIC"
-  | "MANUAL"
-  | (string & {});
+  | "MANUAL";
 export const GoogleCloudRunV2ServiceScalingScalingModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1581,8 +1568,7 @@ export const GoogleCloudRunV2ServiceScaling = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudRunV2TrafficTargetStatusTypeEnum =
   | "TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"
   | "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
-  | "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION"
-  | (string & {});
+  | "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION";
 export const GoogleCloudRunV2TrafficTargetStatusTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1612,7 +1598,7 @@ export const GoogleCloudRunV2TrafficTargetStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2TrafficTargetStatus>;
 
 export type GoogleCloudRunV2TrafficTargetStatusList =
-  GoogleCloudRunV2TrafficTargetStatus[];
+  ReadonlyArray<GoogleCloudRunV2TrafficTargetStatus>;
 export const GoogleCloudRunV2TrafficTargetStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2TrafficTargetStatus,
 ) as any as S.Schema<GoogleCloudRunV2TrafficTargetStatusList>;
@@ -1810,10 +1796,7 @@ export const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateProjectsLocationsServicesRequest>;
 
 export type GoogleCloudRunV2WorkerPoolRevisionTemplateEncryptionKeyRevocationActionEnum =
-    | "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED"
-    | "PREVENT_NEW"
-    | "SHUTDOWN"
-    | (string & {});
+  "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED" | "PREVENT_NEW" | "SHUTDOWN";
 export const GoogleCloudRunV2WorkerPoolRevisionTemplateEncryptionKeyRevocationActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1878,8 +1861,7 @@ export const GoogleCloudRunV2WorkerPoolRevisionTemplate =
 export type GoogleCloudRunV2InstanceSplitTypeEnum =
   | "INSTANCE_SPLIT_ALLOCATION_TYPE_UNSPECIFIED"
   | "INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST"
-  | "INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION"
-  | (string & {});
+  | "INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION";
 export const GoogleCloudRunV2InstanceSplitTypeEnum = /*@__PURE__*/ S.String;
 
 /** Holds a single instance split entry for the Worker. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision. */
@@ -1901,7 +1883,8 @@ export const GoogleCloudRunV2InstanceSplit = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudRunV2InstanceSplit",
 }) as any as S.Schema<GoogleCloudRunV2InstanceSplit>;
 
-export type GoogleCloudRunV2InstanceSplitList = GoogleCloudRunV2InstanceSplit[];
+export type GoogleCloudRunV2InstanceSplitList =
+  ReadonlyArray<GoogleCloudRunV2InstanceSplit>;
 export const GoogleCloudRunV2InstanceSplitList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2InstanceSplit,
 ) as any as S.Schema<GoogleCloudRunV2InstanceSplitList>;
@@ -1914,8 +1897,7 @@ export type GoogleCloudRunV2WorkerPoolLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const GoogleCloudRunV2WorkerPoolLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** Worker pool scaling settings. */
@@ -1934,8 +1916,7 @@ export const GoogleCloudRunV2WorkerPoolScaling = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudRunV2InstanceSplitStatusTypeEnum =
   | "INSTANCE_SPLIT_ALLOCATION_TYPE_UNSPECIFIED"
   | "INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST"
-  | "INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION"
-  | (string & {});
+  | "INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION";
 export const GoogleCloudRunV2InstanceSplitStatusTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1959,7 +1940,7 @@ export const GoogleCloudRunV2InstanceSplitStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2InstanceSplitStatus>;
 
 export type GoogleCloudRunV2InstanceSplitStatusList =
-  GoogleCloudRunV2InstanceSplitStatus[];
+  ReadonlyArray<GoogleCloudRunV2InstanceSplitStatus>;
 export const GoogleCloudRunV2InstanceSplitStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2InstanceSplitStatus,
 ) as any as S.Schema<GoogleCloudRunV2InstanceSplitStatusList>;
@@ -2435,16 +2416,14 @@ export const ExportStatusProjectsLocationsJobsExecutionsRequest =
 export type GoogleCloudRunV2ExportStatusResponseOperationStateEnum =
   | "OPERATION_STATE_UNSPECIFIED"
   | "IN_PROGRESS"
-  | "FINISHED"
-  | (string & {});
+  | "FINISHED";
 export const GoogleCloudRunV2ExportStatusResponseOperationStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRunV2ImageExportStatusExportJobStateEnum =
   | "EXPORT_JOB_STATE_UNSPECIFIED"
   | "IN_PROGRESS"
-  | "FINISHED"
-  | (string & {});
+  | "FINISHED";
 export const GoogleCloudRunV2ImageExportStatusExportJobStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2506,7 +2485,7 @@ export const GoogleCloudRunV2ImageExportStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2ImageExportStatus>;
 
 export type GoogleCloudRunV2ImageExportStatusList =
-  GoogleCloudRunV2ImageExportStatus[];
+  ReadonlyArray<GoogleCloudRunV2ImageExportStatus>;
 export const GoogleCloudRunV2ImageExportStatusList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2ImageExportStatus,
 ) as any as S.Schema<GoogleCloudRunV2ImageExportStatusList>;
@@ -2581,8 +2560,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -2601,7 +2579,8 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList = GoogleIamV1AuditLogConfig[];
+export type GoogleIamV1AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -2622,7 +2601,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = GoogleIamV1AuditConfig[];
+export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -2666,7 +2645,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = GoogleIamV1Binding[];
+export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -2823,8 +2802,7 @@ export type GoogleCloudRunV2ExecutionLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const GoogleCloudRunV2ExecutionLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** Execution represents the configuration of a single execution. A execution an immutable resource that references a container image which is run to completion. */
@@ -2949,8 +2927,7 @@ export const GetProjectsLocationsJobsExecutionsTasksRequest =
 export type GoogleCloudRunV2TaskExecutionEnvironmentEnum =
   | "EXECUTION_ENVIRONMENT_UNSPECIFIED"
   | "EXECUTION_ENVIRONMENT_GEN1"
-  | "EXECUTION_ENVIRONMENT_GEN2"
-  | (string & {});
+  | "EXECUTION_ENVIRONMENT_GEN2";
 export const GoogleCloudRunV2TaskExecutionEnvironmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -3143,8 +3120,7 @@ export const GetProjectsLocationsServicesRevisionsRequest =
 export type GoogleCloudRunV2RevisionExecutionEnvironmentEnum =
   | "EXECUTION_ENVIRONMENT_UNSPECIFIED"
   | "EXECUTION_ENVIRONMENT_GEN1"
-  | "EXECUTION_ENVIRONMENT_GEN2"
-  | (string & {});
+  | "EXECUTION_ENVIRONMENT_GEN2";
 export const GoogleCloudRunV2RevisionExecutionEnvironmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -3165,8 +3141,7 @@ export const GoogleCloudRunV2RevisionScalingStatus = /*@__PURE__*/ S.suspend(
 export type GoogleCloudRunV2RevisionEncryptionKeyRevocationActionEnum =
   | "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED"
   | "PREVENT_NEW"
-  | "SHUTDOWN"
-  | (string & {});
+  | "SHUTDOWN";
 export const GoogleCloudRunV2RevisionEncryptionKeyRevocationActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -3178,8 +3153,7 @@ export type GoogleCloudRunV2RevisionLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const GoogleCloudRunV2RevisionLaunchStageEnum = /*@__PURE__*/ S.String;
 
 /** A Revision is an immutable snapshot of code and configuration. A Revision references a container image. Revisions are only created by updates to its parent Service. */
@@ -3370,7 +3344,8 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type GoogleCloudRunV2InstanceList = GoogleCloudRunV2Instance[];
+export type GoogleCloudRunV2InstanceList =
+  ReadonlyArray<GoogleCloudRunV2Instance>;
 export const GoogleCloudRunV2InstanceList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Instance,
 ) as any as S.Schema<GoogleCloudRunV2InstanceList>;
@@ -3419,7 +3394,7 @@ export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
-export type GoogleCloudRunV2JobList = GoogleCloudRunV2Job[];
+export type GoogleCloudRunV2JobList = ReadonlyArray<GoogleCloudRunV2Job>;
 export const GoogleCloudRunV2JobList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Job,
 ) as any as S.Schema<GoogleCloudRunV2JobList>;
@@ -3468,7 +3443,8 @@ export const ListProjectsLocationsJobsExecutionsRequest =
     identifier: "ListProjectsLocationsJobsExecutionsRequest",
   }) as any as S.Schema<ListProjectsLocationsJobsExecutionsRequest>;
 
-export type GoogleCloudRunV2ExecutionList = GoogleCloudRunV2Execution[];
+export type GoogleCloudRunV2ExecutionList =
+  ReadonlyArray<GoogleCloudRunV2Execution>;
 export const GoogleCloudRunV2ExecutionList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Execution,
 ) as any as S.Schema<GoogleCloudRunV2ExecutionList>;
@@ -3518,7 +3494,7 @@ export const ListProjectsLocationsJobsExecutionsTasksRequest =
     identifier: "ListProjectsLocationsJobsExecutionsTasksRequest",
   }) as any as S.Schema<ListProjectsLocationsJobsExecutionsTasksRequest>;
 
-export type GoogleCloudRunV2TaskList = GoogleCloudRunV2Task[];
+export type GoogleCloudRunV2TaskList = ReadonlyArray<GoogleCloudRunV2Task>;
 export const GoogleCloudRunV2TaskList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Task,
 ) as any as S.Schema<GoogleCloudRunV2TaskList>;
@@ -3570,7 +3546,8 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -3623,7 +3600,8 @@ export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsServicesRequest",
 }) as any as S.Schema<ListProjectsLocationsServicesRequest>;
 
-export type GoogleCloudRunV2ServiceList = GoogleCloudRunV2Service[];
+export type GoogleCloudRunV2ServiceList =
+  ReadonlyArray<GoogleCloudRunV2Service>;
 export const GoogleCloudRunV2ServiceList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Service,
 ) as any as S.Schema<GoogleCloudRunV2ServiceList>;
@@ -3676,7 +3654,8 @@ export const ListProjectsLocationsServicesRevisionsRequest =
     identifier: "ListProjectsLocationsServicesRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsServicesRevisionsRequest>;
 
-export type GoogleCloudRunV2RevisionList = GoogleCloudRunV2Revision[];
+export type GoogleCloudRunV2RevisionList =
+  ReadonlyArray<GoogleCloudRunV2Revision>;
 export const GoogleCloudRunV2RevisionList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2Revision,
 ) as any as S.Schema<GoogleCloudRunV2RevisionList>;
@@ -3726,7 +3705,8 @@ export const ListProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsWorkerPoolsRequest",
 }) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>;
 
-export type GoogleCloudRunV2WorkerPoolList = GoogleCloudRunV2WorkerPool[];
+export type GoogleCloudRunV2WorkerPoolList =
+  ReadonlyArray<GoogleCloudRunV2WorkerPool>;
 export const GoogleCloudRunV2WorkerPoolList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2WorkerPool,
 ) as any as S.Schema<GoogleCloudRunV2WorkerPoolList>;
@@ -3925,7 +3905,7 @@ export const GoogleCloudRunV2ContainerOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRunV2ContainerOverride>;
 
 export type GoogleCloudRunV2ContainerOverrideList =
-  GoogleCloudRunV2ContainerOverride[];
+  ReadonlyArray<GoogleCloudRunV2ContainerOverride>;
 export const GoogleCloudRunV2ContainerOverrideList = /*@__PURE__*/ S.Array(
   GoogleCloudRunV2ContainerOverride,
 ) as any as S.Schema<GoogleCloudRunV2ContainerOverrideList>;
@@ -4217,8 +4197,7 @@ export type GoogleCloudRunV2SubmitBuildRequestReleaseTrackEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const GoogleCloudRunV2SubmitBuildRequestReleaseTrackEnum =
   /*@__PURE__*/ S.String;
 

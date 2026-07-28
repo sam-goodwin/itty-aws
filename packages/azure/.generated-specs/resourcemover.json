@@ -1516,15 +1516,54 @@
             "smithy.api#documentation": "The Move Resource Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {}
-          }
+        "properties": {
+          "target": "com.azure.resourcemover#MoveResourcePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resourcemover#MoveResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Source ARM Id of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "existingTargetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the existing target ARM Id of the resource."
+          }
+        },
+        "resourceSettings": {
+          "target": "com.azure.resourcemover#ResourceSettings",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the resource settings."
+          }
+        },
+        "dependsOnOverrides": {
+          "target": "com.azure.resourcemover#MoveResourcePropertiesInputDependsOnOverridesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the move resource dependencies overrides."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the move resource properties."
+      }
+    },
+    "com.azure.resourcemover#MoveResourcePropertiesInputDependsOnOverridesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.resourcemover#MoveResourceDependencyOverride"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the move resource dependencies overrides."
       }
     },
     "com.azure.resourcemover#MoveResourcesGet": {
@@ -1630,15 +1669,53 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "validateOnly": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets a value indicating whether the operation needs to only run pre-requisite."
           }
+        },
+        "moveResources": {
+          "target": "com.azure.resourcemover#MoveCollectionsBulkRemoveRequestMoveResourcesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property."
+          }
+        },
+        "moveResourceInputType": {
+          "target": "com.azure.resourcemover#MoveResourceInputType"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resourcemover#MoveResourceInputType": {
+      "type": "enum",
+      "members": {
+        "MOVERESOURCEID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MoveResourceId"
+          }
+        },
+        "MOVERESOURCESOURCEID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MoveResourceSourceId"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the move resource input type."
+      }
+    },
+    "com.azure.resourcemover#MoveCollectionsBulkRemoveRequestMoveResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property."
       }
     },
     "com.azure.resourcemover#UnresolvedDependenciesGet": {
@@ -2037,15 +2114,34 @@
             "smithy.api#documentation": "The Move Collection Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "validateOnly": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets a value indicating whether the operation needs to only run pre-requisite."
           }
+        },
+        "moveResources": {
+          "target": "com.azure.resourcemover#MoveCollectionsDiscardRequestMoveResourcesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.",
+            "smithy.api#required": {}
+          }
+        },
+        "moveResourceInputType": {
+          "target": "com.azure.resourcemover#MoveResourceInputType"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resourcemover#MoveCollectionsDiscardRequestMoveResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property."
       }
     },
     "com.azure.resourcemover#MoveCollectionsCommit": {
@@ -2094,15 +2190,34 @@
             "smithy.api#documentation": "The Move Collection Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "validateOnly": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets a value indicating whether the operation needs to only run pre-requisite."
           }
+        },
+        "moveResources": {
+          "target": "com.azure.resourcemover#MoveCollectionsCommitRequestMoveResourcesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.",
+            "smithy.api#required": {}
+          }
+        },
+        "moveResourceInputType": {
+          "target": "com.azure.resourcemover#MoveResourceInputType"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resourcemover#MoveCollectionsCommitRequestMoveResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property."
       }
     },
     "com.azure.resourcemover#MoveCollectionsInitiateMove": {
@@ -2151,15 +2266,34 @@
             "smithy.api#documentation": "The Move Collection Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "validateOnly": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets a value indicating whether the operation needs to only run pre-requisite."
           }
+        },
+        "moveResources": {
+          "target": "com.azure.resourcemover#MoveCollectionsInitiateMoveRequestMoveResourcesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.",
+            "smithy.api#required": {}
+          }
+        },
+        "moveResourceInputType": {
+          "target": "com.azure.resourcemover#MoveResourceInputType"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resourcemover#MoveCollectionsInitiateMoveRequestMoveResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property."
       }
     },
     "com.azure.resourcemover#MoveCollectionsPrepare": {
@@ -2208,15 +2342,34 @@
             "smithy.api#documentation": "The Move Collection Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "validateOnly": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets a value indicating whether the operation needs to only run pre-requisite."
           }
+        },
+        "moveResources": {
+          "target": "com.azure.resourcemover#MoveCollectionsPrepareRequestMoveResourcesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property.",
+            "smithy.api#required": {}
+          }
+        },
+        "moveResourceInputType": {
+          "target": "com.azure.resourcemover#MoveResourceInputType"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resourcemover#MoveCollectionsPrepareRequestMoveResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property."
       }
     },
     "com.azure.resourcemover#MoveCollectionsDelete": {
@@ -2316,15 +2469,30 @@
             "smithy.api#documentation": "The Move Collection Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.resourcemover#MoveCollectionsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets the Resource tags."
           }
+        },
+        "identity": {
+          "target": "com.azure.resourcemover#Identity"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resourcemover#MoveCollectionsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
     "com.azure.resourcemover#MoveCollectionsCreate": {
@@ -2373,15 +2541,74 @@
             "smithy.api#documentation": "The Move Collection Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.resourcemover#MoveCollectionsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives."
+          }
+        },
+        "identity": {
+          "target": "com.azure.resourcemover#Identity"
+        },
+        "properties": {
+          "target": "com.azure.resourcemover#MoveCollectionPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resourcemover#MoveCollectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sourceRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the source region."
+          }
+        },
+        "targetRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the target region."
+          }
+        },
+        "moveRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the version of move collection."
+          }
+        },
+        "moveType": {
+          "target": "com.azure.resourcemover#MoveType"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the move collection properties."
+      }
+    },
+    "com.azure.resourcemover#MoveCollectionsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resourcemover#MoveCollectionsGet": {

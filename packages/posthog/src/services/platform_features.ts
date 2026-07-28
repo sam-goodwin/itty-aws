@@ -11,11 +11,52 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export type ApprovalPoliciesCreateRequestBypassRolesList = string[];
+export type ApprovalPoliciesCreateRequestBypassRolesList =
+  ReadonlyArray<string>;
 export const ApprovalPoliciesCreateRequestBypassRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ApprovalPoliciesCreateRequestBypassRolesList>;
+
+export interface ApprovalPoliciesCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  action_key?: string;
+  conditions?: unknown;
+  approver_config?: unknown;
+  allow_self_approve?: boolean;
+  bypass_org_membership_levels?: unknown;
+  bypass_roles?: ApprovalPoliciesCreateRequestBypassRolesList;
+  /** Auto-expire change requests after this duration */
+  expires_after?: string;
+  enabled?: boolean;
+}
+export const ApprovalPoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    action_key: S.optional(S.String),
+    conditions: S.optional(S.Unknown),
+    approver_config: S.optional(S.Unknown),
+    allow_self_approve: S.optional(S.Boolean),
+    bypass_org_membership_levels: S.optional(S.Unknown),
+    bypass_roles: S.optional(ApprovalPoliciesCreateRequestBypassRolesList),
+    expires_after: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/approval_policies/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ApprovalPoliciesCreateRequest",
+}) as any as S.Schema<ApprovalPoliciesCreateRequest>;
+
+export type ApprovalPolicyBypassRolesList = ReadonlyArray<string>;
+export const ApprovalPolicyBypassRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ApprovalPolicyBypassRolesList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -32,11 +73,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -68,54 +108,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export interface ApprovalPoliciesCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: string;
-  action_key?: string;
-  conditions?: unknown;
-  approver_config?: unknown;
-  allow_self_approve?: boolean;
-  bypass_org_membership_levels?: unknown;
-  bypass_roles?: ApprovalPoliciesCreateRequestBypassRolesList;
-  /** Auto-expire change requests after this duration */
-  expires_after?: string;
-  enabled?: boolean;
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string | null;
-}
-export const ApprovalPoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    action_key: S.optional(S.String),
-    conditions: S.optional(S.Unknown),
-    approver_config: S.optional(S.Unknown),
-    allow_self_approve: S.optional(S.Boolean),
-    bypass_org_membership_levels: S.optional(S.Unknown),
-    bypass_roles: S.optional(ApprovalPoliciesCreateRequestBypassRolesList),
-    expires_after: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/approval_policies/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ApprovalPoliciesCreateRequest",
-}) as any as S.Schema<ApprovalPoliciesCreateRequest>;
-
-export type ApprovalPolicyBypassRolesList = string[];
-export const ApprovalPolicyBypassRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ApprovalPolicyBypassRolesList>;
-
 export interface ApprovalPolicy {
   id?: string;
   action_key?: string;
@@ -127,7 +119,7 @@ export interface ApprovalPolicy {
   /** Auto-expire change requests after this duration */
   expires_after?: string;
   enabled?: boolean;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   created_at?: string;
   updated_at?: string | null;
 }
@@ -142,7 +134,7 @@ export const ApprovalPolicy = /*@__PURE__*/ S.suspend(() =>
     bypass_roles: S.optional(ApprovalPolicyBypassRolesList),
     expires_after: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.NullOr(S.String)),
   }),
@@ -200,7 +192,8 @@ export const ApprovalPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApprovalPoliciesListRequest",
 }) as any as S.Schema<ApprovalPoliciesListRequest>;
 
-export type PaginatedApprovalPolicyListResultsList = ApprovalPolicy[];
+export type PaginatedApprovalPolicyListResultsList =
+  ReadonlyArray<ApprovalPolicy>;
 export const PaginatedApprovalPolicyListResultsList = /*@__PURE__*/ S.Array(
   ApprovalPolicy,
 ) as any as S.Schema<PaginatedApprovalPolicyListResultsList>;
@@ -222,7 +215,8 @@ export const PaginatedApprovalPolicyList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedApprovalPolicyList",
 }) as any as S.Schema<PaginatedApprovalPolicyList>;
 
-export type ApprovalPoliciesPartialUpdateRequestBypassRolesList = string[];
+export type ApprovalPoliciesPartialUpdateRequestBypassRolesList =
+  ReadonlyArray<string>;
 export const ApprovalPoliciesPartialUpdateRequestBypassRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -242,9 +236,6 @@ export interface ApprovalPoliciesPartialUpdateRequest {
   /** Auto-expire change requests after this duration */
   expires_after?: string;
   enabled?: boolean;
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const ApprovalPoliciesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -261,9 +252,6 @@ export const ApprovalPoliciesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       ),
       expires_after: S.optional(S.String),
       enabled: S.optional(S.Boolean),
-      created_by: S.optional(UserBasic),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -296,7 +284,8 @@ export const ApprovalPoliciesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApprovalPoliciesRetrieveRequest",
 }) as any as S.Schema<ApprovalPoliciesRetrieveRequest>;
 
-export type ApprovalPoliciesUpdateRequestBypassRolesList = string[];
+export type ApprovalPoliciesUpdateRequestBypassRolesList =
+  ReadonlyArray<string>;
 export const ApprovalPoliciesUpdateRequestBypassRolesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -316,9 +305,6 @@ export interface ApprovalPoliciesUpdateRequest {
   /** Auto-expire change requests after this duration */
   expires_after?: string;
   enabled?: boolean;
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const ApprovalPoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -332,9 +318,6 @@ export const ApprovalPoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     bypass_roles: S.optional(ApprovalPoliciesUpdateRequestBypassRolesList),
     expires_after: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -371,11 +354,7 @@ export const ChangeRequestsApproveCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeRequestsApproveCreateRequest>;
 
 /** * `valid` - Valid * `invalid` - Invalid * `stale` - Stale (resource changed) */
-export type ValidationStatusEnum =
-  | "valid"
-  | "invalid"
-  | "stale"
-  | (string & {});
+export type ValidationStatusEnum = "valid" | "invalid" | "stale";
 export const ValidationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - Pending * `approved` - Approved (awaiting application) * `applied` - Applied * `rejected` - Rejected * `expired` - Expired * `failed` - Failed to apply */
@@ -385,8 +364,7 @@ export type ChangeRequestStateEnum =
   | "applied"
   | "rejected"
   | "expired"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const ChangeRequestStateEnum = /*@__PURE__*/ S.String;
 
 export type ChangeRequestApprovalsItemMap = {
@@ -397,7 +375,8 @@ export const ChangeRequestApprovalsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ChangeRequestApprovalsItemMap>;
 
-export type ChangeRequestApprovalsList = ChangeRequestApprovalsItemMap[];
+export type ChangeRequestApprovalsList =
+  ReadonlyArray<ChangeRequestApprovalsItemMap>;
 export const ChangeRequestApprovalsList = /*@__PURE__*/ S.Array(
   ChangeRequestApprovalsItemMap,
 ) as any as S.Schema<ChangeRequestApprovalsList>;
@@ -415,8 +394,8 @@ export interface ChangeRequest {
   validation_errors?: unknown;
   validated_at?: string | null;
   state?: ChangeRequestStateEnum;
-  created_by?: UserBasic;
-  applied_by?: UserBasic;
+  created_by?: UserBasic | null;
+  applied_by?: UserBasic | null;
   created_at?: string;
   updated_at?: string | null;
   expires_at?: string;
@@ -446,8 +425,8 @@ export const ChangeRequest = /*@__PURE__*/ S.suspend(() =>
     validation_errors: S.optional(S.Unknown),
     validated_at: S.optional(S.NullOr(S.String)),
     state: S.optional(ChangeRequestStateEnum),
-    created_by: S.optional(UserBasic),
-    applied_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
+    applied_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.NullOr(S.String)),
     expires_at: S.optional(S.String),
@@ -483,83 +462,16 @@ export const ChangeRequestDecisionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChangeRequestDecisionResponse",
 }) as any as S.Schema<ChangeRequestDecisionResponse>;
 
-export type ChangeRequestsCancelCreateRequestApprovalsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const ChangeRequestsCancelCreateRequestApprovalsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ChangeRequestsCancelCreateRequestApprovalsItemMap>;
-
-export type ChangeRequestsCancelCreateRequestApprovalsList =
-  ChangeRequestsCancelCreateRequestApprovalsItemMap[];
-export const ChangeRequestsCancelCreateRequestApprovalsList =
-  /*@__PURE__*/ S.Array(
-    ChangeRequestsCancelCreateRequestApprovalsItemMap,
-  ) as any as S.Schema<ChangeRequestsCancelCreateRequestApprovalsList>;
-
 export interface ChangeRequestsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this change request. */
   id: string;
-  action_key?: string;
-  action_version?: number;
-  resource_type?: string;
-  resource_id?: string | null;
-  intent?: unknown;
-  intent_display?: unknown;
-  policy_snapshot?: unknown;
-  validation_status?: ValidationStatusEnum;
-  validation_errors?: unknown;
-  validated_at?: string | null;
-  state?: ChangeRequestStateEnum;
-  created_by?: UserBasic;
-  applied_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string | null;
-  expires_at?: string;
-  applied_at?: string | null;
-  apply_error?: string;
-  result_data?: unknown;
-  approvals?: ChangeRequestsCancelCreateRequestApprovalsList;
-  /** Check if current user can approve this change request. */
-  can_approve?: boolean;
-  can_cancel?: boolean;
-  /** Check if current user is the requester. */
-  is_requester?: boolean;
-  /** Get the current user's approval decision if they have voted. */
-  user_decision?: string | null;
 }
 export const ChangeRequestsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    action_key: S.optional(S.String),
-    action_version: S.optional(S.Number),
-    resource_type: S.optional(S.String),
-    resource_id: S.optional(S.NullOr(S.String)),
-    intent: S.optional(S.Unknown),
-    intent_display: S.optional(S.Unknown),
-    policy_snapshot: S.optional(S.Unknown),
-    validation_status: S.optional(ValidationStatusEnum),
-    validation_errors: S.optional(S.Unknown),
-    validated_at: S.optional(S.NullOr(S.String)),
-    state: S.optional(ChangeRequestStateEnum),
-    created_by: S.optional(UserBasic),
-    applied_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
-    expires_at: S.optional(S.String),
-    applied_at: S.optional(S.NullOr(S.String)),
-    apply_error: S.optional(S.String),
-    result_data: S.optional(S.Unknown),
-    approvals: S.optional(ChangeRequestsCancelCreateRequestApprovalsList),
-    can_approve: S.optional(S.Boolean),
-    can_cancel: S.optional(S.Boolean),
-    is_requester: S.optional(S.Boolean),
-    user_decision: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -571,7 +483,7 @@ export const ChangeRequestsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChangeRequestsCancelCreateRequest",
 }) as any as S.Schema<ChangeRequestsCancelCreateRequest>;
 
-export type ChangeRequestsListRequestStateList = string[];
+export type ChangeRequestsListRequestStateList = ReadonlyArray<string>;
 export const ChangeRequestsListRequestStateList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ChangeRequestsListRequestStateList>;
@@ -611,7 +523,8 @@ export const ChangeRequestsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChangeRequestsListRequest",
 }) as any as S.Schema<ChangeRequestsListRequest>;
 
-export type PaginatedChangeRequestListResultsList = ChangeRequest[];
+export type PaginatedChangeRequestListResultsList =
+  ReadonlyArray<ChangeRequest>;
 export const PaginatedChangeRequestListResultsList = /*@__PURE__*/ S.Array(
   ChangeRequest,
 ) as any as S.Schema<PaginatedChangeRequestListResultsList>;

@@ -203,12 +203,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the SQL variable."
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -225,26 +219,6 @@
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Default value used when a query references this variable."
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "ID of the user who created the SQL variable.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp when the SQL variable was created."
-          }
-        },
-        "code_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Generated code-safe name used in HogQL as {variables.code_name}. Derived from name.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "values": {
@@ -370,26 +344,6 @@
             "smithy.api#documentation": "Default value used when a query references this variable."
           }
         },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "ID of the user who created the SQL variable.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp when the SQL variable was created."
-          }
-        },
-        "code_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Generated code-safe name used in HogQL as {variables.code_name}. Derived from name.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "values": {
           "target": "smithy.api#Document",
           "traits": {
@@ -463,26 +417,6 @@
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Default value used when a query references this variable."
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "ID of the user who created the SQL variable.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp when the SQL variable was created."
-          }
-        },
-        "code_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Generated code-safe name used in HogQL as {variables.code_name}. Derived from name.",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "values": {

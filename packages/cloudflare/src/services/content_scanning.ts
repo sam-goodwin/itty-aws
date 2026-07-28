@@ -41,7 +41,7 @@ export class Forbidden extends T.applyErrorMatchers(
   [{ status: 403 }],
 ) {}
 
-export type CreateRequestValue = "enabled" | "disabled" | (string & {});
+export type CreateRequestValue = "enabled" | "disabled";
 export const CreateRequestValue = /*@__PURE__*/ S.String;
 
 export interface CreateContentScanningRequest {
@@ -93,7 +93,8 @@ export const PayloadsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PayloadsCreateRequestBodyItem",
 }) as any as S.Schema<PayloadsCreateRequestBodyItem>;
 
-export type PayloadsCreateRequestBodyList = PayloadsCreateRequestBodyItem[];
+export type PayloadsCreateRequestBodyList =
+  ReadonlyArray<PayloadsCreateRequestBodyItem>;
 export const PayloadsCreateRequestBodyList = /*@__PURE__*/ S.Array(
   PayloadsCreateRequestBodyItem,
 ) as any as S.Schema<PayloadsCreateRequestBodyList>;
@@ -133,7 +134,7 @@ export const PayloadsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PayloadsCreateResultItem",
 }) as any as S.Schema<PayloadsCreateResultItem>;
 
-export type PayloadsCreateResultList = PayloadsCreateResultItem[];
+export type PayloadsCreateResultList = ReadonlyArray<PayloadsCreateResultItem>;
 export const PayloadsCreateResultList = /*@__PURE__*/ S.Array(
   PayloadsCreateResultItem,
 ) as any as S.Schema<PayloadsCreateResultList>;
@@ -189,7 +190,7 @@ export const PayloadsDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PayloadsDeleteResultItem",
 }) as any as S.Schema<PayloadsDeleteResultItem>;
 
-export type PayloadsDeleteResultList = PayloadsDeleteResultItem[];
+export type PayloadsDeleteResultList = ReadonlyArray<PayloadsDeleteResultItem>;
 export const PayloadsDeleteResultList = /*@__PURE__*/ S.Array(
   PayloadsDeleteResultItem,
 ) as any as S.Schema<PayloadsDeleteResultList>;
@@ -326,7 +327,7 @@ export const PayloadsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PayloadsListResultItem",
 }) as any as S.Schema<PayloadsListResultItem>;
 
-export type PayloadsListResultList = PayloadsListResultItem[];
+export type PayloadsListResultList = ReadonlyArray<PayloadsListResultItem>;
 export const PayloadsListResultList = /*@__PURE__*/ S.Array(
   PayloadsListResultItem,
 ) as any as S.Schema<PayloadsListResultList>;
@@ -380,7 +381,7 @@ export const SettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsGetResponse",
 }) as any as S.Schema<SettingsGetResponse>;
 
-export type UpdateRequestValue = "enabled" | "disabled" | (string & {});
+export type UpdateRequestValue = "enabled" | "disabled";
 export const UpdateRequestValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequest {

@@ -61,6 +61,29 @@ export const CloudEndpointAfsShareMetadataCertificatePublicKeys =
     identifier: "CloudEndpointAfsShareMetadataCertificatePublicKeys",
   }) as any as S.Schema<CloudEndpointAfsShareMetadataCertificatePublicKeys>;
 
+/** CloudEndpoint Properties object. */
+export interface CloudEndpointCreateParametersProperties {
+  /** Storage Account Resource Id */
+  storageAccountResourceId?: string;
+  /** Azure file share name */
+  azureFileShareName?: string;
+  /** Storage Account Tenant Id */
+  storageAccountTenantId?: string;
+  /** Friendly Name */
+  friendlyName?: string;
+}
+export const CloudEndpointCreateParametersProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      storageAccountResourceId: S.optional(S.String),
+      azureFileShareName: S.optional(S.String),
+      storageAccountTenantId: S.optional(S.String),
+      friendlyName: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "CloudEndpointCreateParametersProperties",
+}) as any as S.Schema<CloudEndpointCreateParametersProperties>;
+
 export interface CloudEndpointsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -72,7 +95,8 @@ export interface CloudEndpointsCreateRequest {
   syncGroupName: string;
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
-  body: unknown;
+  /** The parameters used to create the cloud endpoint. */
+  properties?: CloudEndpointCreateParametersProperties;
 }
 export const CloudEndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -81,7 +105,7 @@ export const CloudEndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     storageSyncServiceName: S.String.pipe(T.Label()),
     syncGroupName: S.String.pipe(T.Label()),
     cloudEndpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(CloudEndpointCreateParametersProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -99,8 +123,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -108,8 +131,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -170,16 +192,14 @@ export const CloudEndpointLastChangeEnumerationStatus = /*@__PURE__*/ S.suspend(
 /** State of change enumeration activity */
 export type CloudEndpointChangeEnumerationActivityState =
   | "InitialEnumerationInProgress"
-  | "EnumerationInProgress"
-  | (string & {});
+  | "EnumerationInProgress";
 export const CloudEndpointChangeEnumerationActivityState =
   /*@__PURE__*/ S.String;
 
 /** State of the total counts of change enumeration activity */
 export type CloudEndpointChangeEnumerationTotalCountsState =
   | "Calculating"
-  | "Final"
-  | (string & {});
+  | "Final";
 export const CloudEndpointChangeEnumerationTotalCountsState =
   /*@__PURE__*/ S.String;
 
@@ -467,7 +487,7 @@ export const CloudEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudEndpoint" }) as any as S.Schema<CloudEndpoint>;
 
 /** Collection of CloudEndpoint. */
-export type CloudEndpointArrayValueList = CloudEndpoint[];
+export type CloudEndpointArrayValueList = ReadonlyArray<CloudEndpoint>;
 export const CloudEndpointArrayValueList = /*@__PURE__*/ S.Array(
   CloudEndpoint,
 ) as any as S.Schema<CloudEndpointArrayValueList>;
@@ -499,7 +519,8 @@ export interface CloudEndpointsPostBackupRequest {
   syncGroupName: string;
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
-  body: unknown;
+  /** Azure File Share. */
+  azureFileShare?: string;
 }
 export const CloudEndpointsPostBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -508,7 +529,7 @@ export const CloudEndpointsPostBackupRequest = /*@__PURE__*/ S.suspend(() =>
     storageSyncServiceName: S.String.pipe(T.Label()),
     syncGroupName: S.String.pipe(T.Label()),
     cloudEndpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    azureFileShare: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -547,6 +568,30 @@ export const PostBackupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostBackupResponse",
 }) as any as S.Schema<PostBackupResponse>;
 
+/** Restore file spec. */
+export interface RestoreFileSpec {
+  /** Restore file spec path */
+  path?: string;
+  /** Restore file spec isdir */
+  isdir?: boolean;
+}
+export const RestoreFileSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.optional(S.String),
+    isdir: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RestoreFileSpec",
+}) as any as S.Schema<RestoreFileSpec>;
+
+/** Post Restore restore file spec array. */
+export type CloudEndpointsPostRestoreRequestRestoreFileSpecList =
+  ReadonlyArray<RestoreFileSpec>;
+export const CloudEndpointsPostRestoreRequestRestoreFileSpecList =
+  /*@__PURE__*/ S.Array(
+    RestoreFileSpec,
+  ) as any as S.Schema<CloudEndpointsPostRestoreRequestRestoreFileSpecList>;
+
 export interface CloudEndpointsPostRestoreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -558,7 +603,22 @@ export interface CloudEndpointsPostRestoreRequest {
   syncGroupName: string;
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
-  body: unknown;
+  /** Post Restore partition. */
+  partition?: string;
+  /** Post Restore replica group. */
+  replicaGroup?: string;
+  /** Post Restore request id. */
+  requestId?: string;
+  /** Post Restore Azure file share uri. */
+  azureFileShareUri?: string;
+  /** Post Restore Azure status. */
+  status?: string;
+  /** Post Restore Azure source azure file share uri. */
+  sourceAzureFileShareUri?: string;
+  /** Post Restore Azure failed file list. */
+  failedFileList?: string;
+  /** Post Restore restore file spec array. */
+  restoreFileSpec?: CloudEndpointsPostRestoreRequestRestoreFileSpecList;
 }
 export const CloudEndpointsPostRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -567,7 +627,16 @@ export const CloudEndpointsPostRestoreRequest = /*@__PURE__*/ S.suspend(() =>
     storageSyncServiceName: S.String.pipe(T.Label()),
     syncGroupName: S.String.pipe(T.Label()),
     cloudEndpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    partition: S.optional(S.String),
+    replicaGroup: S.optional(S.String),
+    requestId: S.optional(S.String),
+    azureFileShareUri: S.optional(S.String),
+    status: S.optional(S.String),
+    sourceAzureFileShareUri: S.optional(S.String),
+    failedFileList: S.optional(S.String),
+    restoreFileSpec: S.optional(
+      CloudEndpointsPostRestoreRequestRestoreFileSpecList,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -598,7 +667,8 @@ export interface CloudEndpointsPreBackupRequest {
   syncGroupName: string;
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
-  body: unknown;
+  /** Azure File Share. */
+  azureFileShare?: string;
 }
 export const CloudEndpointsPreBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -607,7 +677,7 @@ export const CloudEndpointsPreBackupRequest = /*@__PURE__*/ S.suspend(() =>
     storageSyncServiceName: S.String.pipe(T.Label()),
     syncGroupName: S.String.pipe(T.Label()),
     cloudEndpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    azureFileShare: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -627,6 +697,14 @@ export const CloudEndpointsPreBackupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CloudEndpointsPreBackupResponse",
 }) as any as S.Schema<CloudEndpointsPreBackupResponse>;
 
+/** Pre Restore restore file spec array. */
+export type CloudEndpointsPreRestoreRequestRestoreFileSpecList =
+  ReadonlyArray<RestoreFileSpec>;
+export const CloudEndpointsPreRestoreRequestRestoreFileSpecList =
+  /*@__PURE__*/ S.Array(
+    RestoreFileSpec,
+  ) as any as S.Schema<CloudEndpointsPreRestoreRequestRestoreFileSpecList>;
+
 export interface CloudEndpointsPreRestoreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -638,7 +716,24 @@ export interface CloudEndpointsPreRestoreRequest {
   syncGroupName: string;
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
-  body: unknown;
+  /** Pre Restore partition. */
+  partition?: string;
+  /** Pre Restore replica group. */
+  replicaGroup?: string;
+  /** Pre Restore request id. */
+  requestId?: string;
+  /** Pre Restore Azure file share uri. */
+  azureFileShareUri?: string;
+  /** Pre Restore Azure status. */
+  status?: string;
+  /** Pre Restore Azure source azure file share uri. */
+  sourceAzureFileShareUri?: string;
+  /** Pre Restore backup metadata property bag. */
+  backupMetadataPropertyBag?: string;
+  /** Pre Restore restore file spec array. */
+  restoreFileSpec?: CloudEndpointsPreRestoreRequestRestoreFileSpecList;
+  /** Pre Restore pause wait for sync drain time period in seconds. */
+  pauseWaitForSyncDrainTimePeriodInSeconds?: number;
 }
 export const CloudEndpointsPreRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -647,7 +742,17 @@ export const CloudEndpointsPreRestoreRequest = /*@__PURE__*/ S.suspend(() =>
     storageSyncServiceName: S.String.pipe(T.Label()),
     syncGroupName: S.String.pipe(T.Label()),
     cloudEndpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    partition: S.optional(S.String),
+    replicaGroup: S.optional(S.String),
+    requestId: S.optional(S.String),
+    azureFileShareUri: S.optional(S.String),
+    status: S.optional(S.String),
+    sourceAzureFileShareUri: S.optional(S.String),
+    backupMetadataPropertyBag: S.optional(S.String),
+    restoreFileSpec: S.optional(
+      CloudEndpointsPreRestoreRequestRestoreFileSpecList,
+    ),
+    pauseWaitForSyncDrainTimePeriodInSeconds: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -706,6 +811,18 @@ export const CloudEndpointsRestoreheartbeatResponse = /*@__PURE__*/ S.suspend(
   identifier: "CloudEndpointsRestoreheartbeatResponse",
 }) as any as S.Schema<CloudEndpointsRestoreheartbeatResponse>;
 
+/** Change Detection Mode. Applies to a directory specified in directoryPath parameter. */
+export type ChangeDetectionMode = "Default" | "Recursive";
+export const ChangeDetectionMode = /*@__PURE__*/ S.String;
+
+/** Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories. */
+export type CloudEndpointsTriggerChangeDetectionRequestPathsList =
+  ReadonlyArray<string>;
+export const CloudEndpointsTriggerChangeDetectionRequestPathsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CloudEndpointsTriggerChangeDetectionRequestPathsList>;
+
 export interface CloudEndpointsTriggerChangeDetectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -717,7 +834,12 @@ export interface CloudEndpointsTriggerChangeDetectionRequest {
   syncGroupName: string;
   /** Name of Cloud Endpoint object. */
   cloudEndpointName: string;
-  body: unknown;
+  /** Relative path to a directory Azure File share for which change detection is to be performed. */
+  directoryPath?: string;
+  /** Change Detection Mode. Applies to a directory specified in directoryPath parameter. */
+  changeDetectionMode?: ChangeDetectionMode;
+  /** Array of relative paths on the Azure File share to be included in the change detection. Can be files and directories. */
+  paths?: CloudEndpointsTriggerChangeDetectionRequestPathsList;
 }
 export const CloudEndpointsTriggerChangeDetectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -727,7 +849,9 @@ export const CloudEndpointsTriggerChangeDetectionRequest =
       storageSyncServiceName: S.String.pipe(T.Label()),
       syncGroupName: S.String.pipe(T.Label()),
       cloudEndpointName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      directoryPath: S.optional(S.String),
+      changeDetectionMode: S.optional(ChangeDetectionMode),
+      paths: S.optional(CloudEndpointsTriggerChangeDetectionRequestPathsList),
     }).pipe(
       T.Http({
         method: "POST",
@@ -921,7 +1045,7 @@ export const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Supported aggregation types for the metric. */
 export type OperationResourceMetricSpecificationSupportedAggregationTypesList =
-  string[];
+  ReadonlyArray<string>;
 export const OperationResourceMetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -949,7 +1073,7 @@ export const OperationResourceMetricSpecificationDimension =
 
 /** Dimensions for the metric specification. */
 export type OperationResourceMetricSpecificationDimensionsList =
-  OperationResourceMetricSpecificationDimension[];
+  ReadonlyArray<OperationResourceMetricSpecificationDimension>;
 export const OperationResourceMetricSpecificationDimensionsList =
   /*@__PURE__*/ S.Array(
     OperationResourceMetricSpecificationDimension,
@@ -999,7 +1123,7 @@ export const OperationResourceMetricSpecification = /*@__PURE__*/ S.suspend(
 
 /** List of metric specifications. */
 export type OperationResourceServiceSpecificationMetricSpecificationsList =
-  OperationResourceMetricSpecification[];
+  ReadonlyArray<OperationResourceMetricSpecification>;
 export const OperationResourceServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationResourceMetricSpecification,
@@ -1057,7 +1181,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntity>;
 
 /** The OperationEntity items on this page */
-export type OperationEntityListResultValueList = OperationEntity[];
+export type OperationEntityListResultValueList = ReadonlyArray<OperationEntity>;
 export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;
@@ -1134,63 +1258,19 @@ export const OperationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationStatus",
 }) as any as S.Schema<OperationStatus>;
 
-export interface PrivateEndpointConnectionsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of Storage Sync Service resource. */
-  storageSyncServiceName: string;
-  /** The name of the private endpoint connection associated with the Azure resource. */
-  privateEndpointConnectionName: string;
-  body: unknown;
-}
-export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      storageSyncServiceName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2022-09-01",
-      }),
-    ),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateRequest>;
-
-/** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
-export const PrivateEndpointConnectionPropertiesGroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** The private endpoint resource. */
-export interface PrivateEndpoint {
-  /** The ARM identifier for private endpoint. */
-  id?: string;
-}
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "PrivateEndpoint",
-}) as any as S.Schema<PrivateEndpoint>;
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -1212,13 +1292,82 @@ export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkServiceConnectionState",
 }) as any as S.Schema<PrivateLinkServiceConnectionState>;
 
+/** Properties of the private endpoint connection. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** The private endpoint resource. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
+export interface PrivateEndpointConnectionsCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of Storage Sync Service resource. */
+  storageSyncServiceName: string;
+  /** The name of the private endpoint connection associated with the Azure resource. */
+  privateEndpointConnectionName: string;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
+}
+export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      storageSyncServiceName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+        code: 200,
+        apiVersion: "2022-09-01",
+      }),
+    ),
+).annotate({
+  identifier: "PrivateEndpointConnectionsCreateRequest",
+}) as any as S.Schema<PrivateEndpointConnectionsCreateRequest>;
+
+/** The group ids for the private endpoint resource. */
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
+export const PrivateEndpointConnectionPropertiesGroupIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
+/** The private endpoint resource. */
+export interface PrivateEndpoint {
+  /** The ARM identifier for private endpoint. */
+  id?: string;
+}
+export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateEndpoint",
+}) as any as S.Schema<PrivateEndpoint>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1413,7 +1562,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** List of private endpoint connections associated with the specified resource. */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnectionListResultValueItem[];
+  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -1462,14 +1611,16 @@ export const PrivateLinkResourcesListByStorageSyncServiceRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByStorageSyncServiceRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1525,7 +1676,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourcesListByStorageSyncServiceResponseValueList =
-  PrivateLinkResource[];
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourcesListByStorageSyncServiceResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -1546,6 +1697,50 @@ export const PrivateLinkResourcesListByStorageSyncServiceResponse =
     identifier: "PrivateLinkResourcesListByStorageSyncServiceResponse",
   }) as any as S.Schema<PrivateLinkResourcesListByStorageSyncServiceResponse>;
 
+/** RegisteredServer Create Properties object. */
+export interface RegisteredServerCreateParametersProperties {
+  /** Registered Server Certificate */
+  serverCertificate?: string;
+  /** Registered Server Agent Version */
+  agentVersion?: string;
+  /** Registered Server OS Version */
+  serverOSVersion?: string;
+  /** Registered Server last heart beat */
+  lastHeartBeat?: string;
+  /** Registered Server serverRole */
+  serverRole?: string;
+  /** Registered Server clusterId */
+  clusterId?: string;
+  /** Registered Server clusterName */
+  clusterName?: string;
+  /** Registered Server serverId */
+  serverId?: string;
+  /** Friendly Name */
+  friendlyName?: string;
+  /** Server ServicePrincipal Id */
+  applicationId?: string;
+  /** Apply server with newly discovered ApplicationId if available. */
+  identity?: boolean;
+}
+export const RegisteredServerCreateParametersProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serverCertificate: S.optional(S.String),
+      agentVersion: S.optional(S.String),
+      serverOSVersion: S.optional(S.String),
+      lastHeartBeat: S.optional(S.String),
+      serverRole: S.optional(S.String),
+      clusterId: S.optional(S.String),
+      clusterName: S.optional(S.String),
+      serverId: S.optional(S.String),
+      friendlyName: S.optional(S.String),
+      applicationId: S.optional(S.String),
+      identity: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "RegisteredServerCreateParametersProperties",
+  }) as any as S.Schema<RegisteredServerCreateParametersProperties>;
+
 export interface RegisteredServersCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1555,7 +1750,8 @@ export interface RegisteredServersCreateRequest {
   storageSyncServiceName: string;
   /** GUID identifying the on-premises server. */
   serverId: string;
-  body: unknown;
+  /** The parameters used to create the registered server. */
+  properties?: RegisteredServerCreateParametersProperties;
 }
 export const RegisteredServersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1563,7 +1759,7 @@ export const RegisteredServersCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     storageSyncServiceName: S.String.pipe(T.Label()),
     serverId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(RegisteredServerCreateParametersProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1581,12 +1777,11 @@ export type RegisteredServerAgentVersionStatus =
   | "Ok"
   | "NearExpiry"
   | "Expired"
-  | "Blocked"
-  | (string & {});
+  | "Blocked";
 export const RegisteredServerAgentVersionStatus = /*@__PURE__*/ S.String;
 
 /** Type of the Server Auth type */
-export type ServerAuthType = "Certificate" | "ManagedIdentity" | (string & {});
+export type ServerAuthType = "Certificate" | "ManagedIdentity";
 export const ServerAuthType = /*@__PURE__*/ S.String;
 
 /** RegisteredServer Properties object. */
@@ -1843,7 +2038,7 @@ export const RegisteredServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegisteredServer>;
 
 /** Collection of Registered Server. */
-export type RegisteredServerArrayValueList = RegisteredServer[];
+export type RegisteredServerArrayValueList = ReadonlyArray<RegisteredServer>;
 export const RegisteredServerArrayValueList = /*@__PURE__*/ S.Array(
   RegisteredServer,
 ) as any as S.Schema<RegisteredServerArrayValueList>;
@@ -1873,7 +2068,8 @@ export interface RegisteredServersTriggerRolloverRequest {
   storageSyncServiceName: string;
   /** GUID identifying the on-premises server. */
   serverId: string;
-  body: unknown;
+  /** Certificate Data */
+  serverCertificate?: string;
 }
 export const RegisteredServersTriggerRolloverRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1882,7 +2078,7 @@ export const RegisteredServersTriggerRolloverRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       storageSyncServiceName: S.String.pipe(T.Label()),
       serverId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      serverCertificate: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1902,6 +2098,22 @@ export const RegisteredServersTriggerRolloverResponse = /*@__PURE__*/ S.suspend(
   identifier: "RegisteredServersTriggerRolloverResponse",
 }) as any as S.Schema<RegisteredServersTriggerRolloverResponse>;
 
+/** RegisteredServer Update Properties object. */
+export interface RegisteredServerUpdateProperties {
+  /** Apply server with newly discovered ApplicationId if available. */
+  identity?: boolean;
+  /** Apply server with new ServicePrincipal Id */
+  applicationId?: string;
+}
+export const RegisteredServerUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identity: S.optional(S.Boolean),
+    applicationId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RegisteredServerUpdateProperties",
+}) as any as S.Schema<RegisteredServerUpdateProperties>;
+
 export interface RegisteredServersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1911,7 +2123,8 @@ export interface RegisteredServersUpdateRequest {
   storageSyncServiceName: string;
   /** GUID identifying the on-premises server. */
   serverId: string;
-  body: unknown;
+  /** The parameters used to update the registered server. */
+  properties?: RegisteredServerUpdateProperties;
 }
 export const RegisteredServersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1919,7 +2132,7 @@ export const RegisteredServersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     storageSyncServiceName: S.String.pipe(T.Label()),
     serverId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(RegisteredServerUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1956,6 +2169,82 @@ export const RegisteredServersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegisteredServersUpdateResponse",
 }) as any as S.Schema<RegisteredServersUpdateResponse>;
 
+/** Type of the Feature Status */
+export type FeatureStatus = "on" | "off";
+export const FeatureStatus = /*@__PURE__*/ S.String;
+
+/** Policy for how namespace and files are recalled during FastDr. */
+export type ServerEndpointCreateParametersPropertiesInitialDownloadPolicy =
+  | "NamespaceOnly"
+  | "NamespaceThenModifiedFiles"
+  | "AvoidTieredFiles";
+export const ServerEndpointCreateParametersPropertiesInitialDownloadPolicy =
+  /*@__PURE__*/ S.String;
+
+/** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
+export type ServerEndpointCreateParametersPropertiesLocalCacheMode =
+  | "DownloadNewAndModifiedFiles"
+  | "UpdateLocallyCachedFiles";
+export const ServerEndpointCreateParametersPropertiesLocalCacheMode =
+  /*@__PURE__*/ S.String;
+
+/** Policy for how the initial upload sync session is performed. */
+export type ServerEndpointCreateParametersPropertiesInitialUploadPolicy =
+  | "ServerAuthoritative"
+  | "Merge";
+export const ServerEndpointCreateParametersPropertiesInitialUploadPolicy =
+  /*@__PURE__*/ S.String;
+
+/** ServerEndpoint Properties object. */
+export interface ServerEndpointCreateParametersProperties {
+  /** Server Local path. */
+  serverLocalPath?: string;
+  /** Cloud Tiering. */
+  cloudTiering?: FeatureStatus;
+  /** Level of free space to be maintained by Cloud Tiering if it is enabled. */
+  volumeFreeSpacePercent?: number;
+  /** Tier files older than days. */
+  tierFilesOlderThanDays?: number;
+  /** Friendly Name */
+  friendlyName?: string;
+  /** Server Resource Id. */
+  serverResourceId?: string;
+  /** Offline data transfer */
+  offlineDataTransfer?: FeatureStatus;
+  /** Offline data transfer share name */
+  offlineDataTransferShareName?: string;
+  /** Policy for how namespace and files are recalled during FastDr. */
+  initialDownloadPolicy?: ServerEndpointCreateParametersPropertiesInitialDownloadPolicy;
+  /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
+  localCacheMode?: ServerEndpointCreateParametersPropertiesLocalCacheMode;
+  /** Policy for how the initial upload sync session is performed. */
+  initialUploadPolicy?: ServerEndpointCreateParametersPropertiesInitialUploadPolicy;
+}
+export const ServerEndpointCreateParametersProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serverLocalPath: S.optional(S.String),
+      cloudTiering: S.optional(FeatureStatus),
+      volumeFreeSpacePercent: S.optional(S.Number),
+      tierFilesOlderThanDays: S.optional(S.Number),
+      friendlyName: S.optional(S.String),
+      serverResourceId: S.optional(S.String),
+      offlineDataTransfer: S.optional(FeatureStatus),
+      offlineDataTransferShareName: S.optional(S.String),
+      initialDownloadPolicy: S.optional(
+        ServerEndpointCreateParametersPropertiesInitialDownloadPolicy,
+      ),
+      localCacheMode: S.optional(
+        ServerEndpointCreateParametersPropertiesLocalCacheMode,
+      ),
+      initialUploadPolicy: S.optional(
+        ServerEndpointCreateParametersPropertiesInitialUploadPolicy,
+      ),
+    }),
+).annotate({
+  identifier: "ServerEndpointCreateParametersProperties",
+}) as any as S.Schema<ServerEndpointCreateParametersProperties>;
+
 export interface ServerEndpointsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1967,7 +2256,8 @@ export interface ServerEndpointsCreateRequest {
   syncGroupName: string;
   /** Name of Server Endpoint object. */
   serverEndpointName: string;
-  body: unknown;
+  /** The parameters used to create the server endpoint. */
+  properties?: ServerEndpointCreateParametersProperties;
 }
 export const ServerEndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1976,7 +2266,7 @@ export const ServerEndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     storageSyncServiceName: S.String.pipe(T.Label()),
     syncGroupName: S.String.pipe(T.Label()),
     serverEndpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ServerEndpointCreateParametersProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1989,24 +2279,15 @@ export const ServerEndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServerEndpointsCreateRequest",
 }) as any as S.Schema<ServerEndpointsCreateRequest>;
 
-/** Type of the Feature Status */
-export type FeatureStatus = "on" | "off" | (string & {});
-export const FeatureStatus = /*@__PURE__*/ S.String;
-
 /** Type of the server endpoint health state */
-export type ServerEndpointHealthState =
-  | "Unavailable"
-  | "Healthy"
-  | "Error"
-  | (string & {});
+export type ServerEndpointHealthState = "Unavailable" | "Healthy" | "Error";
 export const ServerEndpointHealthState = /*@__PURE__*/ S.String;
 
 /** Type of the sync activity state */
 export type ServerEndpointSyncActivityState =
   | "Upload"
   | "Download"
-  | "UploadAndDownload"
-  | (string & {});
+  | "UploadAndDownload";
 export const ServerEndpointSyncActivityState = /*@__PURE__*/ S.String;
 
 /** Files not syncing error object */
@@ -2030,7 +2311,7 @@ export const ServerEndpointFilesNotSyncingError = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of per-item errors coming from the last sync session. */
 export type ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList =
-  ServerEndpointFilesNotSyncingError[];
+  ReadonlyArray<ServerEndpointFilesNotSyncingError>;
 export const ServerEndpointSyncSessionStatusFilesNotSyncingErrorsList =
   /*@__PURE__*/ S.Array(
     ServerEndpointFilesNotSyncingError,
@@ -2042,8 +2323,7 @@ export type ServerEndpointSyncMode =
   | "NamespaceDownload"
   | "InitialUpload"
   | "SnapshotUpload"
-  | "InitialFullDownload"
-  | (string & {});
+  | "InitialFullDownload";
 export const ServerEndpointSyncMode = /*@__PURE__*/ S.String;
 
 /** Sync Session status object. */
@@ -2121,8 +2401,7 @@ export type ServerEndpointOfflineDataTransferState =
   | "InProgress"
   | "Stopping"
   | "NotRunning"
-  | "Complete"
-  | (string & {});
+  | "Complete";
 export const ServerEndpointOfflineDataTransferState = /*@__PURE__*/ S.String;
 
 /** Background data download activity object */
@@ -2265,7 +2544,8 @@ export const FilesNotTieringError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FilesNotTieringError>;
 
 /** Array of tiering errors */
-export type CloudTieringFilesNotTieringErrorsList = FilesNotTieringError[];
+export type CloudTieringFilesNotTieringErrorsList =
+  ReadonlyArray<FilesNotTieringError>;
 export const CloudTieringFilesNotTieringErrorsList = /*@__PURE__*/ S.Array(
   FilesNotTieringError,
 ) as any as S.Schema<CloudTieringFilesNotTieringErrorsList>;
@@ -2326,10 +2606,7 @@ export const CloudTieringDatePolicyStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudTieringDatePolicyStatus>;
 
 /** Type of the cloud tiering low disk mode state */
-export type CloudTieringLowDiskModeState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type CloudTieringLowDiskModeState = "Enabled" | "Disabled";
 export const CloudTieringLowDiskModeState = /*@__PURE__*/ S.String;
 
 /** Information regarding the low disk mode state */
@@ -2411,7 +2688,7 @@ export const ServerEndpointRecallError = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of recall errors */
 export type ServerEndpointRecallStatusRecallErrorsList =
-  ServerEndpointRecallError[];
+  ReadonlyArray<ServerEndpointRecallError>;
 export const ServerEndpointRecallStatusRecallErrorsList = /*@__PURE__*/ S.Array(
   ServerEndpointRecallError,
 ) as any as S.Schema<ServerEndpointRecallStatusRecallErrorsList>;
@@ -2439,23 +2716,20 @@ export const ServerEndpointRecallStatus = /*@__PURE__*/ S.suspend(() =>
 export type ServerEndpointPropertiesInitialDownloadPolicy =
   | "NamespaceOnly"
   | "NamespaceThenModifiedFiles"
-  | "AvoidTieredFiles"
-  | (string & {});
+  | "AvoidTieredFiles";
 export const ServerEndpointPropertiesInitialDownloadPolicy =
   /*@__PURE__*/ S.String;
 
 /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
 export type ServerEndpointPropertiesLocalCacheMode =
   | "DownloadNewAndModifiedFiles"
-  | "UpdateLocallyCachedFiles"
-  | (string & {});
+  | "UpdateLocallyCachedFiles";
 export const ServerEndpointPropertiesLocalCacheMode = /*@__PURE__*/ S.String;
 
 /** Policy for how the initial upload sync session is performed. */
 export type ServerEndpointPropertiesInitialUploadPolicy =
   | "ServerAuthoritative"
-  | "Merge"
-  | (string & {});
+  | "Merge";
 export const ServerEndpointPropertiesInitialUploadPolicy =
   /*@__PURE__*/ S.String;
 
@@ -2465,8 +2739,7 @@ export type ServerProvisioningStatus =
   | "InProgress"
   | "Ready_SyncNotFunctional"
   | "Ready_SyncFunctional"
-  | "Error"
-  | (string & {});
+  | "Error";
 export const ServerProvisioningStatus = /*@__PURE__*/ S.String;
 
 /** Additional information for the provisioning step */
@@ -2518,7 +2791,7 @@ export const ServerEndpointProvisioningStepStatus = /*@__PURE__*/ S.suspend(
 
 /** Provisioning Step status information for each step in the provisioning process */
 export type ServerEndpointProvisioningStatusProvisioningStepStatusesList =
-  ServerEndpointProvisioningStepStatus[];
+  ReadonlyArray<ServerEndpointProvisioningStepStatus>;
 export const ServerEndpointProvisioningStatusProvisioningStepStatusesList =
   /*@__PURE__*/ S.Array(
     ServerEndpointProvisioningStepStatus,
@@ -2794,7 +3067,7 @@ export const ServerEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerEndpoint" }) as any as S.Schema<ServerEndpoint>;
 
 /** Collection of ServerEndpoint. */
-export type ServerEndpointArrayValueList = ServerEndpoint[];
+export type ServerEndpointArrayValueList = ReadonlyArray<ServerEndpoint>;
 export const ServerEndpointArrayValueList = /*@__PURE__*/ S.Array(
   ServerEndpoint,
 ) as any as S.Schema<ServerEndpointArrayValueList>;
@@ -2826,7 +3099,10 @@ export interface ServerEndpointsRecallActionRequest {
   syncGroupName: string;
   /** Name of Server Endpoint object. */
   serverEndpointName: string;
-  body: unknown;
+  /** Pattern of the files. */
+  pattern?: string;
+  /** Recall path. */
+  recallPath?: string;
 }
 export const ServerEndpointsRecallActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2835,7 +3111,8 @@ export const ServerEndpointsRecallActionRequest = /*@__PURE__*/ S.suspend(() =>
     storageSyncServiceName: S.String.pipe(T.Label()),
     syncGroupName: S.String.pipe(T.Label()),
     serverEndpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    pattern: S.optional(S.String),
+    recallPath: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2855,6 +3132,41 @@ export const ServerEndpointsRecallActionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServerEndpointsRecallActionResponse",
 }) as any as S.Schema<ServerEndpointsRecallActionResponse>;
 
+/** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
+export type ServerEndpointUpdatePropertiesLocalCacheMode =
+  | "DownloadNewAndModifiedFiles"
+  | "UpdateLocallyCachedFiles";
+export const ServerEndpointUpdatePropertiesLocalCacheMode =
+  /*@__PURE__*/ S.String;
+
+/** ServerEndpoint Update Properties object. */
+export interface ServerEndpointUpdateProperties {
+  /** Cloud Tiering. */
+  cloudTiering?: FeatureStatus;
+  /** Level of free space to be maintained by Cloud Tiering if it is enabled. */
+  volumeFreeSpacePercent?: number;
+  /** Tier files older than days. */
+  tierFilesOlderThanDays?: number;
+  /** Offline data transfer */
+  offlineDataTransfer?: FeatureStatus;
+  /** Offline data transfer share name */
+  offlineDataTransferShareName?: string;
+  /** Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access. */
+  localCacheMode?: ServerEndpointUpdatePropertiesLocalCacheMode;
+}
+export const ServerEndpointUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloudTiering: S.optional(FeatureStatus),
+    volumeFreeSpacePercent: S.optional(S.Number),
+    tierFilesOlderThanDays: S.optional(S.Number),
+    offlineDataTransfer: S.optional(FeatureStatus),
+    offlineDataTransferShareName: S.optional(S.String),
+    localCacheMode: S.optional(ServerEndpointUpdatePropertiesLocalCacheMode),
+  }),
+).annotate({
+  identifier: "ServerEndpointUpdateProperties",
+}) as any as S.Schema<ServerEndpointUpdateProperties>;
+
 export interface ServerEndpointsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2866,7 +3178,8 @@ export interface ServerEndpointsUpdateRequest {
   syncGroupName: string;
   /** Name of Server Endpoint object. */
   serverEndpointName: string;
-  body?: unknown;
+  /** The properties of the server endpoint. */
+  properties?: ServerEndpointUpdateProperties;
 }
 export const ServerEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2875,7 +3188,7 @@ export const ServerEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     storageSyncServiceName: S.String.pipe(T.Label()),
     syncGroupName: S.String.pipe(T.Label()),
     serverEndpointName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(ServerEndpointUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2912,19 +3225,26 @@ export const ServerEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServerEndpointsUpdateResponse",
 }) as any as S.Schema<ServerEndpointsUpdateResponse>;
 
+export type Type = "Microsoft.StorageSync/storageSyncServices";
+export const Type = /*@__PURE__*/ S.String;
+
 export interface StorageSyncServicesCheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The desired region for the name check. */
   locationName: string;
-  body: unknown;
+  /** The name to check for availability */
+  name: string;
+  /** The resource type. Must be set to Microsoft.StorageSync/storageSyncServices */
+  type: Type;
 }
 export const StorageSyncServicesCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: Type,
     }).pipe(
       T.Http({
         method: "POST",
@@ -2938,10 +3258,7 @@ export const StorageSyncServicesCheckNameAvailabilityRequest =
   }) as any as S.Schema<StorageSyncServicesCheckNameAvailabilityRequest>;
 
 /** Gets the reason that a Storage Sync Service name could not be used. The Reason element is only returned if NameAvailable is false. */
-export type NameAvailabilityReason =
-  | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+export type NameAvailabilityReason = "Invalid" | "AlreadyExists";
 export const NameAvailabilityReason = /*@__PURE__*/ S.String;
 
 /** The CheckNameAvailability operation response. */
@@ -2963,6 +3280,78 @@ export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckNameAvailabilityResult",
 }) as any as S.Schema<CheckNameAvailabilityResult>;
 
+/** Resource tags. */
+export type StorageSyncServicesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const StorageSyncServicesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StorageSyncServicesCreateRequestTagsMap>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface StorageSyncServicesCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const StorageSyncServicesCreateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "StorageSyncServicesCreateRequestIdentity",
+}) as any as S.Schema<StorageSyncServicesCreateRequestIdentity>;
+
+/** Type of the Incoming Traffic Policy */
+export type IncomingTrafficPolicy =
+  | "AllowAllTraffic"
+  | "AllowVirtualNetworksOnly";
+export const IncomingTrafficPolicy = /*@__PURE__*/ S.String;
+
+/** StorageSyncService Properties object. */
+export interface StorageSyncServiceCreateParametersProperties {
+  /** Incoming Traffic Policy */
+  incomingTrafficPolicy?: IncomingTrafficPolicy;
+  /** Use Identity authorization when customer have finished setup RBAC permissions. */
+  useIdentity?: boolean;
+}
+export const StorageSyncServiceCreateParametersProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      incomingTrafficPolicy: S.optional(IncomingTrafficPolicy),
+      useIdentity: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "StorageSyncServiceCreateParametersProperties",
+  }) as any as S.Schema<StorageSyncServiceCreateParametersProperties>;
+
 export interface StorageSyncServicesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2970,14 +3359,24 @@ export interface StorageSyncServicesCreateRequest {
   resourceGroupName: string;
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: StorageSyncServicesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: StorageSyncServicesCreateRequestIdentity;
+  /** The parameters used to create the storage sync service. */
+  properties?: StorageSyncServiceCreateParametersProperties;
 }
 export const StorageSyncServicesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     storageSyncServiceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(StorageSyncServicesCreateRequestTagsMap),
+    location: S.String,
+    identity: S.optional(StorageSyncServicesCreateRequestIdentity),
+    properties: S.optional(StorageSyncServiceCreateParametersProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2998,13 +3397,6 @@ export const StorageSyncServicesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<StorageSyncServicesCreateResponseTagsMap>;
-
-/** Type of the Incoming Traffic Policy */
-export type IncomingTrafficPolicy =
-  | "AllowAllTraffic"
-  | "AllowVirtualNetworksOnly"
-  | (string & {});
-export const IncomingTrafficPolicy = /*@__PURE__*/ S.String;
 
 /** The private endpoint connection resource. */
 export interface StorageSyncServicePropertiesPrivateEndpointConnectionsItem {
@@ -3034,7 +3426,7 @@ export const StorageSyncServicePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connection associated with the specified storage sync service */
 export type StorageSyncServicePropertiesPrivateEndpointConnectionsList =
-  StorageSyncServicePropertiesPrivateEndpointConnectionsItem[];
+  ReadonlyArray<StorageSyncServicePropertiesPrivateEndpointConnectionsItem>;
 export const StorageSyncServicePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     StorageSyncServicePropertiesPrivateEndpointConnectionsItem,
@@ -3075,15 +3467,6 @@ export const StorageSyncServiceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StorageSyncServiceProperties",
 }) as any as S.Schema<StorageSyncServiceProperties>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -3369,7 +3752,8 @@ export const StorageSyncService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageSyncService>;
 
 /** Collection of StorageSyncServices. */
-export type StorageSyncServiceArrayValueList = StorageSyncService[];
+export type StorageSyncServiceArrayValueList =
+  ReadonlyArray<StorageSyncService>;
 export const StorageSyncServiceArrayValueList = /*@__PURE__*/ S.Array(
   StorageSyncService,
 ) as any as S.Schema<StorageSyncServiceArrayValueList>;
@@ -3410,6 +3794,46 @@ export const StorageSyncServicesListBySubscriptionRequest =
     identifier: "StorageSyncServicesListBySubscriptionRequest",
   }) as any as S.Schema<StorageSyncServicesListBySubscriptionRequest>;
 
+/** The user-specified tags associated with the storage sync service. */
+export type StorageSyncServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const StorageSyncServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StorageSyncServicesUpdateRequestTagsMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface StorageSyncServicesUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const StorageSyncServicesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "StorageSyncServicesUpdateRequestIdentity",
+}) as any as S.Schema<StorageSyncServicesUpdateRequestIdentity>;
+
+/** StorageSyncService Properties object. */
+export interface StorageSyncServiceUpdateProperties {
+  /** Incoming Traffic Policy */
+  incomingTrafficPolicy?: IncomingTrafficPolicy;
+  /** Use Identity authorization when customer have finished setup RBAC permissions. */
+  useIdentity?: boolean;
+}
+export const StorageSyncServiceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    incomingTrafficPolicy: S.optional(IncomingTrafficPolicy),
+    useIdentity: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "StorageSyncServiceUpdateProperties",
+}) as any as S.Schema<StorageSyncServiceUpdateProperties>;
+
 export interface StorageSyncServicesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3417,14 +3841,21 @@ export interface StorageSyncServicesUpdateRequest {
   resourceGroupName: string;
   /** Name of Storage Sync Service resource. */
   storageSyncServiceName: string;
-  body?: unknown;
+  /** The user-specified tags associated with the storage sync service. */
+  tags?: StorageSyncServicesUpdateRequestTagsMap;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: StorageSyncServicesUpdateRequestIdentity;
+  /** The properties of the server endpoint. */
+  properties?: StorageSyncServiceUpdateProperties;
 }
 export const StorageSyncServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     storageSyncServiceName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(StorageSyncServicesUpdateRequestTagsMap),
+    identity: S.optional(StorageSyncServicesUpdateRequestIdentity),
+    properties: S.optional(StorageSyncServiceUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3509,7 +3940,8 @@ export interface SyncGroupsCreateRequest {
   storageSyncServiceName: string;
   /** Name of Sync Group resource. */
   syncGroupName: string;
-  body: unknown;
+  /** The parameters used to create the sync group */
+  properties?: unknown;
 }
 export const SyncGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3517,7 +3949,7 @@ export const SyncGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     storageSyncServiceName: S.String.pipe(T.Label()),
     syncGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(S.Unknown),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3707,7 +4139,7 @@ export const SyncGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncGroup" }) as any as S.Schema<SyncGroup>;
 
 /** Collection of SyncGroup. */
-export type SyncGroupArrayValueList = SyncGroup[];
+export type SyncGroupArrayValueList = ReadonlyArray<SyncGroup>;
 export const SyncGroupArrayValueList = /*@__PURE__*/ S.Array(
   SyncGroup,
 ) as any as S.Schema<SyncGroupArrayValueList>;
@@ -3795,12 +4227,11 @@ export type WorkflowStatus =
   | "expired"
   | "succeeded"
   | "aborted"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const WorkflowStatus = /*@__PURE__*/ S.String;
 
 /** Type of the Operation Direction */
-export type OperationDirection = "do" | "undo" | "cancel" | (string & {});
+export type OperationDirection = "do" | "undo" | "cancel";
 export const OperationDirection = /*@__PURE__*/ S.String;
 
 /** Workflow Properties object. */
@@ -3911,7 +4342,7 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 
 /** Collection of workflow items. */
-export type WorkflowArrayValueList = Workflow[];
+export type WorkflowArrayValueList = ReadonlyArray<Workflow>;
 export const WorkflowArrayValueList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowArrayValueList>;

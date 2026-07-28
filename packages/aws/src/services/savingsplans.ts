@@ -242,8 +242,7 @@ export type SavingsPlanRateFilterName =
   | "productType"
   | "serviceCode"
   | "usageType"
-  | "operation"
-  | (string & {});
+  | "operation";
 export const SavingsPlanRateFilterName = /*@__PURE__*/ S.String;
 
 export type ListOfStrings = string[];
@@ -291,7 +290,7 @@ export const DescribeSavingsPlanRatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSavingsPlanRatesRequest",
 }) as any as S.Schema<DescribeSavingsPlanRatesRequest>;
-export type CurrencyCode = "CNY" | "USD" | "EUR" | (string & {});
+export type CurrencyCode = "CNY" | "USD" | "EUR";
 export const CurrencyCode = /*@__PURE__*/ S.String;
 
 export type SavingsPlanRateUnit =
@@ -311,8 +310,7 @@ export type SavingsPlanRateUnit =
   | "DCU-Hr"
   | "NCU-hr"
   | "OCU-hours"
-  | "Jobs"
-  | (string & {});
+  | "Jobs";
 export const SavingsPlanRateUnit = /*@__PURE__*/ S.String;
 
 export type SavingsPlanProductType =
@@ -329,8 +327,7 @@ export type SavingsPlanProductType =
   | "Timestream"
   | "Keyspaces"
   | "DMS"
-  | "OpenSearch"
-  | (string & {});
+  | "OpenSearch";
 export const SavingsPlanProductType = /*@__PURE__*/ S.String;
 
 export type SavingsPlanRateServiceCode =
@@ -348,8 +345,7 @@ export type SavingsPlanRateServiceCode =
   | "AmazonTimestream"
   | "AmazonMCS"
   | "AWSDatabaseMigrationSvc"
-  | "AmazonES"
-  | (string & {});
+  | "AmazonES";
 export const SavingsPlanRateServiceCode = /*@__PURE__*/ S.String;
 
 export type SavingsPlanRateUsageType = string;
@@ -359,8 +355,7 @@ export type SavingsPlanRatePropertyKey =
   | "instanceType"
   | "instanceFamily"
   | "productDescription"
-  | "tenancy"
-  | (string & {});
+  | "tenancy";
 export const SavingsPlanRatePropertyKey = /*@__PURE__*/ S.String;
 
 export type JsonSafeFilterValueString = string;
@@ -433,8 +428,7 @@ export type SavingsPlanState =
   | "queued"
   | "queued-deleted"
   | "pending-return"
-  | "returned"
-  | (string & {});
+  | "returned";
 export const SavingsPlanState = /*@__PURE__*/ S.String;
 
 export type SavingsPlanStateList = SavingsPlanState[];
@@ -449,8 +443,7 @@ export type SavingsPlansFilterName =
   | "payment-option"
   | "start"
   | "end"
-  | "instance-family"
-  | (string & {});
+  | "instance-family";
 export const SavingsPlansFilterName = /*@__PURE__*/ S.String;
 
 export interface SavingsPlanFilter {
@@ -502,15 +495,13 @@ export type SavingsPlanType =
   | "Compute"
   | "EC2Instance"
   | "SageMaker"
-  | "Database"
-  | (string & {});
+  | "Database";
 export const SavingsPlanType = /*@__PURE__*/ S.String;
 
 export type SavingsPlanPaymentOption =
   | "All Upfront"
   | "Partial Upfront"
-  | "No Upfront"
-  | (string & {});
+  | "No Upfront";
 export const SavingsPlanPaymentOption = /*@__PURE__*/ S.String;
 
 export type SavingsPlanProductTypeList = SavingsPlanProductType[];
@@ -599,8 +590,7 @@ export type SavingsPlanRateFilterAttribute =
   | "instanceType"
   | "productDescription"
   | "tenancy"
-  | "productId"
-  | (string & {});
+  | "productId";
 export const SavingsPlanRateFilterAttribute = /*@__PURE__*/ S.String;
 
 export type FilterValuesList = string[];
@@ -755,10 +745,7 @@ export const SavingsPlanUsageTypeList = /*@__PURE__*/ S.Array(S.String);
 export type SavingsPlanOperation = string;
 export type SavingsPlanOperationList = string[];
 export const SavingsPlanOperationList = /*@__PURE__*/ S.Array(S.String);
-export type SavingsPlanOfferingFilterAttribute =
-  | "region"
-  | "instanceFamily"
-  | (string & {});
+export type SavingsPlanOfferingFilterAttribute = "region" | "instanceFamily";
 export const SavingsPlanOfferingFilterAttribute = /*@__PURE__*/ S.String;
 
 export interface SavingsPlanOfferingFilterElement {
@@ -821,10 +808,7 @@ export const DescribeSavingsPlansOfferingsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeSavingsPlansOfferingsRequest",
 }) as any as S.Schema<DescribeSavingsPlansOfferingsRequest>;
-export type SavingsPlanOfferingPropertyKey =
-  | "region"
-  | "instanceFamily"
-  | (string & {});
+export type SavingsPlanOfferingPropertyKey = "region" | "instanceFamily";
 export const SavingsPlanOfferingPropertyKey = /*@__PURE__*/ S.String;
 
 export interface SavingsPlanOfferingProperty {

@@ -92,16 +92,14 @@ export type FetchSettingsDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const FetchSettingsDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 export type FetchSettingsFrequencyEnum =
   | "FREQUENCY_UNSPECIFIED"
   | "FREQUENCY_DAILY"
   | "FREQUENCY_WEEKLY"
-  | "FREQUENCY_MONTHLY"
-  | (string & {});
+  | "FREQUENCY_MONTHLY";
 export const FetchSettingsFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -163,8 +161,7 @@ export type FileInputFileInputTypeEnum =
   | "FILE_INPUT_TYPE_UNSPECIFIED"
   | "UPLOAD"
   | "FETCH"
-  | "GOOGLE_SHEETS"
-  | (string & {});
+  | "GOOGLE_SHEETS";
 export const FileInputFileInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** The data specific for file data sources. This field is empty for other data source inputs. */
@@ -189,8 +186,7 @@ export type DataSourceInputEnum =
   | "API"
   | "FILE"
   | "UI"
-  | "AUTOFEED"
-  | (string & {});
+  | "AUTOFEED";
 export const DataSourceInputEnum = /*@__PURE__*/ S.String;
 
 /** The local inventory data source type is only available for file inputs and can't be used to create API local inventory data sources. */
@@ -251,7 +247,7 @@ export const DataSourceReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceReference",
 }) as any as S.Schema<DataSourceReference>;
 
-export type DataSourceReferenceList = DataSourceReference[];
+export type DataSourceReferenceList = ReadonlyArray<DataSourceReference>;
 export const DataSourceReferenceList = /*@__PURE__*/ S.Array(
   DataSourceReference,
 ) as any as S.Schema<DataSourceReferenceList>;
@@ -280,15 +276,10 @@ export type DestinationDestinationEnum =
   | "FREE_VEHICLE_LISTINGS"
   | "VEHICLE_ADS"
   | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | (string & {});
+  | "LOCAL_CLOUD_RETAIL";
 export const DestinationDestinationEnum = /*@__PURE__*/ S.String;
 
-export type DestinationStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type DestinationStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
 export const DestinationStateEnum = /*@__PURE__*/ S.String;
 
 /** Destinations also known as [Marketing methods](https://support.google.com/merchants/answer/15130232) selections. */
@@ -305,12 +296,12 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
-export type DestinationList = Destination[];
+export type DestinationList = ReadonlyArray<Destination>;
 export const DestinationList = /*@__PURE__*/ S.Array(
   Destination,
 ) as any as S.Schema<DestinationList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -521,15 +512,10 @@ export type FileUploadProcessingStateEnum =
   | "PROCESSING_STATE_UNSPECIFIED"
   | "FAILED"
   | "IN_PROGRESS"
-  | "SUCCEEDED"
-  | (string & {});
+  | "SUCCEEDED";
 export const FileUploadProcessingStateEnum = /*@__PURE__*/ S.String;
 
-export type IssueSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "WARNING"
-  | "ERROR"
-  | (string & {});
+export type IssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR";
 export const IssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** An error occurring in the data source, like "invalid price". */
@@ -558,7 +544,7 @@ export const Issue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
-export type IssueList = Issue[];
+export type IssueList = ReadonlyArray<Issue>;
 export const IssueList = /*@__PURE__*/ S.Array(
   Issue,
 ) as any as S.Schema<IssueList>;
@@ -619,7 +605,7 @@ export const ListAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsDataSourcesRequest",
 }) as any as S.Schema<ListAccountsDataSourcesRequest>;
 
-export type DataSourceList = DataSource[];
+export type DataSourceList = ReadonlyArray<DataSource>;
 export const DataSourceList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceList>;

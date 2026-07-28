@@ -59,18 +59,14 @@ export const VisionQuota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VisionQuota" }) as any as S.Schema<VisionQuota>;
 
 /** * `schedule` - Schedule * `threshold` - Threshold */
-export type VisionActionTriggerTypeEnum =
-  | "schedule"
-  | "threshold"
-  | (string & {});
+export type VisionActionTriggerTypeEnum = "schedule" | "threshold";
 export const VisionActionTriggerTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `group_summary` - Group summary * `alert` - Alert * `per_observation` - Per observation */
 export type VisionActionModeEnum =
   | "group_summary"
   | "alert"
-  | "per_observation"
-  | (string & {});
+  | "per_observation";
 export const VisionActionModeEnum = /*@__PURE__*/ S.String;
 
 /** Schedule trigger parameters. Threshold triggers are reserved and rejected at the API for now. */
@@ -88,23 +84,23 @@ export const TriggerConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerConfig" }) as any as S.Schema<TriggerConfig>;
 
 /** Restrict to observations produced by these scanner IDs. Defaults to the bound scanner. */
-export type SelectionScannerIdsList = string[];
+export type SelectionScannerIdsList = ReadonlyArray<string>;
 export const SelectionScannerIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SelectionScannerIdsList>;
 
 /** * `yes` - yes * `no` - no * `inconclusive` - inconclusive */
-export type VerdictEnum = "yes" | "no" | "inconclusive" | (string & {});
+export type VerdictEnum = "yes" | "no" | "inconclusive";
 export const VerdictEnum = /*@__PURE__*/ S.String;
 
 /** Only run on monitor observations with one of these verdicts (yes/no/inconclusive). */
-export type SelectionVerdictList = VerdictEnum[];
+export type SelectionVerdictList = ReadonlyArray<VerdictEnum>;
 export const SelectionVerdictList = /*@__PURE__*/ S.Array(
   VerdictEnum,
 ) as any as S.Schema<SelectionVerdictList>;
 
 /** Only run on classifier observations carrying any of these tags (fixed or freeform). */
-export type SelectionTagsList = string[];
+export type SelectionTagsList = ReadonlyArray<string>;
 export const SelectionTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SelectionTagsList>;
@@ -146,19 +142,20 @@ export const SynthesisConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SynthesisConfig>;
 
 /** * `every_match` - Every new match * `on_breach` - When a threshold is crossed */
-export type AlertConfigFrequencyEnum =
-  | "every_match"
-  | "on_breach"
-  | (string & {});
+export type AlertConfigFrequencyEnum = "every_match" | "on_breach";
 export const AlertConfigFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** * `count` - Count of matching observations * `avg_score` - Average score */
-export type VisionAlertMetricEnum = "count" | "avg_score" | (string & {});
+export type VisionAlertMetricEnum = "count" | "avg_score";
 export const VisionAlertMetricEnum = /*@__PURE__*/ S.String;
 
 /** * `above` - At or above * `below` - At or below */
-export type VisionAlertDirectionEnum = "above" | "below" | (string & {});
+export type VisionAlertDirectionEnum = "above" | "below";
 export const VisionAlertDirectionEnum = /*@__PURE__*/ S.String;
+
+/** * `1` - 1 day * `3` - 3 days * `7` - 7 days * `14` - 14 days * `30` - 30 days */
+export type WindowDaysEnum = 1 | 3 | 7 | 14 | 30;
+export const WindowDaysEnum = /*@__PURE__*/ S.Number;
 
 /** The alert condition for mode='alert', applied after `selection` targeting. 'every_match' notifies about each new match since the previous check; 'on_breach' compares a metric to a threshold over a rolling window and notifies on the transition into breach. */
 export interface AlertConfig {
@@ -171,7 +168,7 @@ export interface AlertConfig {
   /** Which side of the threshold breaches: 'above' fires when the metric is at or above it, 'below' when at or below (e.g. an average score dropping under a floor). Both inclusive. Defaults to 'above'; ignored for every_match. * `above` - At or above * `below` - At or below */
   direction?: VisionAlertDirectionEnum;
   /** Rolling lookback window for on_breach conditions, ending at each check. Defaults to 1 day. every_match ignores it (each check covers what's new since the previous one). * `1` - 1 day * `3` - 3 days * `7` - 7 days * `14` - 14 days * `30` - 30 days */
-  window_days?: number;
+  window_days?: WindowDaysEnum;
 }
 export const AlertConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -179,12 +176,12 @@ export const AlertConfig = /*@__PURE__*/ S.suspend(() =>
     metric: S.optional(VisionAlertMetricEnum),
     threshold: S.optional(S.Number),
     direction: S.optional(VisionAlertDirectionEnum),
-    window_days: S.optional(S.Number),
+    window_days: S.optional(WindowDaysEnum),
   }),
 ).annotate({ identifier: "AlertConfig" }) as any as S.Schema<AlertConfig>;
 
 /** * `slack` - Slack */
-export type DeliveryTargetTypeEnum = "slack" | (string & {});
+export type DeliveryTargetTypeEnum = "slack";
 export const DeliveryTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single delivery destination. MVP supports Slack only. */
@@ -205,11 +202,69 @@ export const DeliveryTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeliveryTarget" }) as any as S.Schema<DeliveryTarget>;
 
 /** List of delivery destinations the synthesized summary is sent to. */
-export type VisionActionsCreateRequestDeliveryConfigList = DeliveryTarget[];
+export type VisionActionsCreateRequestDeliveryConfigList =
+  ReadonlyArray<DeliveryTarget>;
 export const VisionActionsCreateRequestDeliveryConfigList =
   /*@__PURE__*/ S.Array(
     DeliveryTarget,
   ) as any as S.Schema<VisionActionsCreateRequestDeliveryConfigList>;
+
+export interface VisionActionsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Human-readable action name. Unique within the team. */
+  name: string;
+  /** Scanner whose observations this action operates on. Must belong to the same team. */
+  scanner: string;
+  /** When false, the scheduler skips this action. */
+  enabled?: boolean;
+  /** Marks this action as the scanner's built-in daily digest, the one summary surfaced on the scanner overview. At most one digest per scanner. */
+  is_scanner_digest?: boolean;
+  /** What fires the action. MVP supports 'schedule' only. * `schedule` - Schedule * `threshold` - Threshold */
+  trigger_type?: VisionActionTriggerTypeEnum;
+  /** What the action produces. MVP supports 'group_summary' only. * `group_summary` - Group summary * `alert` - Alert * `per_observation` - Per observation */
+  mode?: VisionActionModeEnum;
+  /** Trigger parameters. For schedule triggers: {rrule, timezone}. */
+  trigger_config?: TriggerConfig;
+  /** Targeting predicate: which of the scanner's observations this action runs on. */
+  selection?: Selection;
+  /** Synthesis options for the group summary, e.g. {prompt_guide}. */
+  synthesis_config?: SynthesisConfig;
+  /** Alert condition; required when mode is 'alert', ignored otherwise. */
+  alert_config?: AlertConfig;
+  /** List of delivery destinations the synthesized summary is sent to. */
+  delivery_config?: VisionActionsCreateRequestDeliveryConfigList;
+}
+export const VisionActionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.String,
+    scanner: S.String,
+    enabled: S.optional(S.Boolean),
+    is_scanner_digest: S.optional(S.Boolean),
+    trigger_type: S.optional(VisionActionTriggerTypeEnum),
+    mode: S.optional(VisionActionModeEnum),
+    trigger_config: S.optional(TriggerConfig),
+    selection: S.optional(Selection),
+    synthesis_config: S.optional(SynthesisConfig),
+    alert_config: S.optional(AlertConfig),
+    delivery_config: S.optional(VisionActionsCreateRequestDeliveryConfigList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/vision/actions/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "VisionActionsCreateRequest",
+}) as any as S.Schema<VisionActionsCreateRequest>;
+
+/** List of delivery destinations the synthesized summary is sent to. */
+export type VisionActionDeliveryConfigList = ReadonlyArray<DeliveryTarget>;
+export const VisionActionDeliveryConfigList = /*@__PURE__*/ S.Array(
+  DeliveryTarget,
+) as any as S.Schema<VisionActionDeliveryConfigList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -226,11 +281,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -261,81 +315,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-export interface VisionActionsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-  /** Human-readable action name. Unique within the team. */
-  name: string;
-  /** Scanner whose observations this action operates on. Must belong to the same team. */
-  scanner: string;
-  /** When false, the scheduler skips this action. */
-  enabled?: boolean;
-  /** Marks this action as the scanner's built-in daily digest, the one summary surfaced on the scanner overview. At most one digest per scanner. */
-  is_scanner_digest?: boolean;
-  /** What fires the action. MVP supports 'schedule' only. * `schedule` - Schedule * `threshold` - Threshold */
-  trigger_type?: VisionActionTriggerTypeEnum;
-  /** What the action produces. MVP supports 'group_summary' only. * `group_summary` - Group summary * `alert` - Alert * `per_observation` - Per observation */
-  mode?: VisionActionModeEnum;
-  /** Trigger parameters. For schedule triggers: {rrule, timezone}. */
-  trigger_config?: TriggerConfig;
-  /** Targeting predicate: which of the scanner's observations this action runs on. */
-  selection?: Selection;
-  /** Synthesis options for the group summary, e.g. {prompt_guide}. */
-  synthesis_config?: SynthesisConfig;
-  /** Alert condition; required when mode is 'alert', ignored otherwise. */
-  alert_config?: AlertConfig;
-  /** List of delivery destinations the synthesized summary is sent to. */
-  delivery_config?: VisionActionsCreateRequestDeliveryConfigList;
-  /** Computed next fire time for schedule triggers; the scheduler scans this. */
-  next_run_at: string | null;
-  /** Timestamp of the most recent run, or null if it has never run. */
-  last_run_at: string | null;
-  /** ID of the delivery flow provisioned for this action. Null until delivery is wired up. */
-  hog_flow_id: string | null;
-  created_at: string;
-  /** User who created the action. */
-  created_by: UserBasic | null;
-  updated_at: string;
-}
-export const VisionActionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String,
-    name: S.String,
-    scanner: S.String,
-    enabled: S.optional(S.Boolean),
-    is_scanner_digest: S.optional(S.Boolean),
-    trigger_type: S.optional(VisionActionTriggerTypeEnum),
-    mode: S.optional(VisionActionModeEnum),
-    trigger_config: S.optional(TriggerConfig),
-    selection: S.optional(Selection),
-    synthesis_config: S.optional(SynthesisConfig),
-    alert_config: S.optional(AlertConfig),
-    delivery_config: S.optional(VisionActionsCreateRequestDeliveryConfigList),
-    next_run_at: S.NullOr(S.String),
-    last_run_at: S.NullOr(S.String),
-    hog_flow_id: S.NullOr(S.String),
-    created_at: S.String,
-    created_by: S.NullOr(UserBasic),
-    updated_at: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/vision/actions/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "VisionActionsCreateRequest",
-}) as any as S.Schema<VisionActionsCreateRequest>;
-
-/** List of delivery destinations the synthesized summary is sent to. */
-export type VisionActionDeliveryConfigList = DeliveryTarget[];
-export const VisionActionDeliveryConfigList = /*@__PURE__*/ S.Array(
-  DeliveryTarget,
-) as any as S.Schema<VisionActionDeliveryConfigList>;
 
 /** A Replay Vision action: a scheduled "and then…" automation over a scanner's observations. */
 export interface VisionAction {
@@ -451,7 +430,7 @@ export const VisionActionsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VisionActionsListRequest",
 }) as any as S.Schema<VisionActionsListRequest>;
 
-export type PaginatedVisionActionListResultsList = VisionAction[];
+export type PaginatedVisionActionListResultsList = ReadonlyArray<VisionAction>;
 export const PaginatedVisionActionListResultsList = /*@__PURE__*/ S.Array(
   VisionAction,
 ) as any as S.Schema<PaginatedVisionActionListResultsList>;
@@ -475,7 +454,7 @@ export const PaginatedVisionActionList = /*@__PURE__*/ S.suspend(() =>
 
 /** List of delivery destinations the synthesized summary is sent to. */
 export type VisionActionsPartialUpdateRequestDeliveryConfigList =
-  DeliveryTarget[];
+  ReadonlyArray<DeliveryTarget>;
 export const VisionActionsPartialUpdateRequestDeliveryConfigList =
   /*@__PURE__*/ S.Array(
     DeliveryTarget,
@@ -508,16 +487,6 @@ export interface VisionActionsPartialUpdateRequest {
   alert_config?: AlertConfig;
   /** List of delivery destinations the synthesized summary is sent to. */
   delivery_config?: VisionActionsPartialUpdateRequestDeliveryConfigList;
-  /** Computed next fire time for schedule triggers; the scheduler scans this. */
-  next_run_at?: string | null;
-  /** Timestamp of the most recent run, or null if it has never run. */
-  last_run_at?: string | null;
-  /** ID of the delivery flow provisioned for this action. Null until delivery is wired up. */
-  hog_flow_id?: string | null;
-  created_at?: string;
-  /** User who created the action. */
-  created_by?: UserBasic | null;
-  updated_at?: string;
 }
 export const VisionActionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -536,12 +505,6 @@ export const VisionActionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     delivery_config: S.optional(
       VisionActionsPartialUpdateRequestDeliveryConfigList,
     ),
-    next_run_at: S.optional(S.NullOr(S.String)),
-    last_run_at: S.optional(S.NullOr(S.String)),
-    hog_flow_id: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    created_by: S.optional(S.NullOr(UserBasic)),
-    updated_at: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -633,8 +596,7 @@ export type VisionActionRunStatusEnum =
   | "running"
   | "completed"
   | "failed"
-  | "skipped"
-  | (string & {});
+  | "skipped";
 export const VisionActionRunStatusEnum = /*@__PURE__*/ S.String;
 
 /** Lightweight run row for the per-action run list (no report body — that's fetched on retrieve). */
@@ -668,7 +630,8 @@ export const VisionActionRunList = /*@__PURE__*/ S.suspend(() =>
   identifier: "VisionActionRunList",
 }) as any as S.Schema<VisionActionRunList>;
 
-export type PaginatedVisionActionRunListListResultsList = VisionActionRunList[];
+export type PaginatedVisionActionRunListListResultsList =
+  ReadonlyArray<VisionActionRunList>;
 export const PaginatedVisionActionRunListListResultsList =
   /*@__PURE__*/ S.Array(
     VisionActionRunList,
@@ -741,7 +704,7 @@ export const RunObservation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunObservation" }) as any as S.Schema<RunObservation>;
 
 /** Recordings this run included in its summary, in summary order. Empty for runs recorded before this was tracked, and for skipped/failed runs. */
-export type VisionActionRunObservationsList = RunObservation[];
+export type VisionActionRunObservationsList = ReadonlyArray<RunObservation>;
 export const VisionActionRunObservationsList = /*@__PURE__*/ S.Array(
   RunObservation,
 ) as any as S.Schema<VisionActionRunObservationsList>;
@@ -911,8 +874,7 @@ export type VisionObservationsListRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status"
-  | (string & {});
+  | "status";
 export const VisionObservationsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface VisionObservationsListRequest {
@@ -951,8 +913,7 @@ export type ObservationStatusEnum =
   | "running"
   | "succeeded"
   | "failed"
-  | "ineligible"
-  | (string & {});
+  | "ineligible";
 export const ObservationStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `monitor` - Monitor * `classifier` - Classifier * `scorer` - Scorer * `summarizer` - Summarizer */
@@ -960,8 +921,7 @@ export type ScannerTypeEnum =
   | "monitor"
   | "classifier"
   | "scorer"
-  | "summarizer"
-  | (string & {});
+  | "summarizer";
 export const ScannerTypeEnum = /*@__PURE__*/ S.String;
 
 /** Mirrors `temporal.types.ScannerSnapshot` for OpenAPI generation. */
@@ -1010,11 +970,7 @@ export const ScannerResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScannerResult" }) as any as S.Schema<ScannerResult>;
 
 /** * `schedule` - Schedule * `on_demand` - On demand * `retry` - Retry */
-export type ObservationTriggerEnum =
-  | "schedule"
-  | "on_demand"
-  | "retry"
-  | (string & {});
+export type ObservationTriggerEnum = "schedule" | "on_demand" | "retry";
 export const ObservationTriggerEnum = /*@__PURE__*/ S.String;
 
 export interface ReplayObservation {
@@ -1076,7 +1032,8 @@ export const ReplayObservation = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplayObservation",
 }) as any as S.Schema<ReplayObservation>;
 
-export type PaginatedReplayObservationListResultsList = ReplayObservation[];
+export type PaginatedReplayObservationListResultsList =
+  ReadonlyArray<ReplayObservation>;
 export const PaginatedReplayObservationListResultsList = /*@__PURE__*/ S.Array(
   ReplayObservation,
 ) as any as S.Schema<PaginatedReplayObservationListResultsList>;
@@ -1118,8 +1075,7 @@ export type VisionObservationsRetrieveRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status"
-  | (string & {});
+  | "status";
 export const VisionObservationsRetrieveRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface VisionObservationsRetrieveRequest {
@@ -1261,7 +1217,8 @@ export const AffectedCohortResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AffectedCohortResponse>;
 
 /** Session recording IDs to scan on demand, at most 200 per request. Scans start until the in-flight limit or monthly credit quota is reached; the rest are reported as skipped rather than failing the whole batch. Already-running sessions are a no-op. */
-export type VisionScannersBulkObserveCreateRequestSessionIdsList = string[];
+export type VisionScannersBulkObserveCreateRequestSessionIdsList =
+  ReadonlyArray<string>;
 export const VisionScannersBulkObserveCreateRequestSessionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1300,27 +1257,73 @@ export const VisionScannersBulkObserveCreateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VisionScannersBulkObserveCreateResponse>;
 
 /** * `focused` - Focused * `balanced` - Balanced * `comprehensive` - Comprehensive */
-export type SamplingModeEnum =
-  | "focused"
-  | "balanced"
-  | "comprehensive"
-  | (string & {});
+export type SamplingModeEnum = "focused" | "balanced" | "comprehensive";
 export const SamplingModeEnum = /*@__PURE__*/ S.String;
 
 /** * `google` - Google */
-export type ScannerProviderEnum = "google" | (string & {});
+export type ScannerProviderEnum = "google";
 export const ScannerProviderEnum = /*@__PURE__*/ S.String;
 
 /** * `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite * `gemini-3-flash-preview` - Gemini 3 Flash (preview) * `gemini-3.6-flash` - Gemini 3.6 Flash */
 export type ScannerModelEnum =
   | "gemini-3.5-flash-lite"
   | "gemini-3-flash-preview"
-  | "gemini-3.6-flash"
-  | (string & {});
+  | "gemini-3.6-flash";
 export const ScannerModelEnum = /*@__PURE__*/ S.String;
 
+export interface VisionScannersCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Human-readable scanner name. Unique within the team. */
+  name: string;
+  /** Free-form description shown in the scanner management UI. */
+  description?: string;
+  /** What the scanner does: monitor, classifier, scorer, or summarizer. * `monitor` - Monitor * `classifier` - Classifier * `scorer` - Scorer * `summarizer` - Summarizer */
+  scanner_type: ScannerTypeEnum;
+  /** Type-specific configuration. All scanner types require `prompt`; monitors add optional `allow_inconclusive`, classifiers add `tags`, scorers add `scale`, summarizers add optional `length`. */
+  scanner_config: unknown;
+  /** Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save — the schedule controls time, not the user. */
+  query?: unknown;
+  /** 0..1 random downsample applied after the query matches. Defaults to 1.0 (no downsampling). Use exactly 0 to pause scanning; non-zero rates below 0.0001 (0.01%) are rejected as below the sampling precision. */
+  sampling_rate?: number;
+  /** Quality pre-filter applied before random sampling. focused = top sessions only, balanced = drops the lowest-quality, comprehensive = no filter (default). * `focused` - Focused * `balanced` - Balanced * `comprehensive` - Comprehensive */
+  sampling_mode?: SamplingModeEnum;
+  /** LLM provider. v1 is Google-only. * `google` - Google */
+  provider?: ScannerProviderEnum;
+  /** Concrete model to use for this scanner. * `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite * `gemini-3-flash-preview` - Gemini 3 Flash (preview) * `gemini-3.6-flash` - Gemini 3.6 Flash */
+  model: ScannerModelEnum;
+  /** When false, the reconciler removes the scanner's Temporal schedule. On-demand triggers still work. */
+  enabled?: boolean;
+  /** When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals. */
+  emits_signals?: boolean;
+}
+export const VisionScannersCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.String,
+    description: S.optional(S.String),
+    scanner_type: ScannerTypeEnum,
+    scanner_config: S.Unknown,
+    query: S.optional(S.Unknown),
+    sampling_rate: S.optional(S.Number),
+    sampling_mode: S.optional(SamplingModeEnum),
+    provider: S.optional(ScannerProviderEnum),
+    model: ScannerModelEnum,
+    enabled: S.optional(S.Boolean),
+    emits_signals: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/vision/scanners/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "VisionScannersCreateRequest",
+}) as any as S.Schema<VisionScannersCreateRequest>;
+
 /** Up to two short representative quotes from the feedback comments. */
-export type FeedbackThemeExamplesList = string[];
+export type FeedbackThemeExamplesList = ReadonlyArray<string>;
 export const FeedbackThemeExamplesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FeedbackThemeExamplesList>;
@@ -1341,7 +1344,7 @@ export const FeedbackThemeSession = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeedbackThemeSession>;
 
 /** The rated sessions whose feedback comments back this theme. Empty for summaries generated before session tracking. */
-export type FeedbackThemeSessionsList = FeedbackThemeSession[];
+export type FeedbackThemeSessionsList = ReadonlyArray<FeedbackThemeSession>;
 export const FeedbackThemeSessionsList = /*@__PURE__*/ S.Array(
   FeedbackThemeSession,
 ) as any as S.Schema<FeedbackThemeSessionsList>;
@@ -1366,7 +1369,7 @@ export const FeedbackTheme = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FeedbackTheme" }) as any as S.Schema<FeedbackTheme>;
 
 /** Recurring failure modes, most frequent first. */
-export type FeedbackThemesThemesList = FeedbackTheme[];
+export type FeedbackThemesThemesList = ReadonlyArray<FeedbackTheme>;
 export const FeedbackThemesThemesList = /*@__PURE__*/ S.Array(
   FeedbackTheme,
 ) as any as S.Schema<FeedbackThemesThemesList>;
@@ -1386,90 +1389,6 @@ export const FeedbackThemes = /*@__PURE__*/ S.suspend(() =>
     generated_at: S.String,
   }),
 ).annotate({ identifier: "FeedbackThemes" }) as any as S.Schema<FeedbackThemes>;
-
-export interface VisionScannersCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-  /** Human-readable scanner name. Unique within the team. */
-  name: string;
-  /** Free-form description shown in the scanner management UI. */
-  description?: string;
-  /** What the scanner does: monitor, classifier, scorer, or summarizer. * `monitor` - Monitor * `classifier` - Classifier * `scorer` - Scorer * `summarizer` - Summarizer */
-  scanner_type: ScannerTypeEnum;
-  /** Type-specific configuration. All scanner types require `prompt`; monitors add optional `allow_inconclusive`, classifiers add `tags`, scorers add `scale`, summarizers add optional `length`. */
-  scanner_config: unknown;
-  /** Persisted `RecordingsQuery` shape used to pick candidate sessions. `date_from`/`date_to` are stripped on save — the schedule controls time, not the user. */
-  query?: unknown;
-  /** 0..1 random downsample applied after the query matches. Defaults to 1.0 (no downsampling). Use exactly 0 to pause scanning; non-zero rates below 0.0001 (0.01%) are rejected as below the sampling precision. */
-  sampling_rate?: number;
-  /** Quality pre-filter applied before random sampling. focused = top sessions only, balanced = drops the lowest-quality, comprehensive = no filter (default). * `focused` - Focused * `balanced` - Balanced * `comprehensive` - Comprehensive */
-  sampling_mode?: SamplingModeEnum;
-  /** LLM provider. v1 is Google-only. * `google` - Google */
-  provider?: ScannerProviderEnum;
-  /** Concrete model to use for this scanner. * `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite * `gemini-3-flash-preview` - Gemini 3 Flash (preview) * `gemini-3.6-flash` - Gemini 3.6 Flash */
-  model: ScannerModelEnum;
-  /** When false, the reconciler removes the scanner's Temporal schedule. On-demand triggers still work. */
-  enabled?: boolean;
-  /** When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals. */
-  emits_signals?: boolean;
-  /** Increments on every config-changing save. Observations snapshot this value. */
-  scanner_version: number;
-  /** Latest projected observations/month for this scanner. Null until first computed. */
-  estimated_monthly_observations: number | null;
-  /** Credits one observation by this scanner costs (1 credit = $0.01), derived from `model`. */
-  credits_per_observation: number;
-  /** `estimated_monthly_observations` priced at `credits_per_observation`. Null until the estimate is first computed. */
-  estimated_monthly_credits: number | null;
-  /** Credits this scanner's succeeded observations consumed in the current billing period (1 credit = $0.01). Matches the window of the org-wide quota meter. */
-  credits_this_month: number;
-  /** Watermark for the scanner's last scheduled fire. Mirrors Temporal schedule state for recovery. */
-  last_swept_at: string;
-  created_at: string;
-  /** User who created the scanner. */
-  created_by: UserBasic | null;
-  updated_at: string;
-  /** AI summary of the team's written thumbs-down feedback into recurring failure modes. Refreshed with prompt recommendations; null until enough feedback accumulates. */
-  feedback_themes: FeedbackThemes | null;
-  /** The effective access level the user has for this object */
-  user_access_level: string | null;
-}
-export const VisionScannersCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    scanner_type: ScannerTypeEnum,
-    scanner_config: S.Unknown,
-    query: S.optional(S.Unknown),
-    sampling_rate: S.optional(S.Number),
-    sampling_mode: S.optional(SamplingModeEnum),
-    provider: S.optional(ScannerProviderEnum),
-    model: ScannerModelEnum,
-    enabled: S.optional(S.Boolean),
-    emits_signals: S.optional(S.Boolean),
-    scanner_version: S.Number,
-    estimated_monthly_observations: S.NullOr(S.Number),
-    credits_per_observation: S.Number,
-    estimated_monthly_credits: S.NullOr(S.Number),
-    credits_this_month: S.Number,
-    last_swept_at: S.String,
-    created_at: S.String,
-    created_by: S.NullOr(UserBasic),
-    updated_at: S.String,
-    feedback_themes: S.NullOr(FeedbackThemes),
-    user_access_level: S.NullOr(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/vision/scanners/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "VisionScannersCreateRequest",
-}) as any as S.Schema<VisionScannersCreateRequest>;
 
 /** A Replay Vision scanner: its type, targeting query, and AI configuration. */
 export interface ReplayScanner {
@@ -1565,7 +1484,7 @@ export const VisionScannersCreatorsRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VisionScannersCreatorsRetrieveRequest>;
 
 /** Users who created at least one scanner on this team. Returned regardless of pagination state so the dropdown stays stable across pages. */
-export type ScannerCreatorsResponseCreatorsList = UserBasic[];
+export type ScannerCreatorsResponseCreatorsList = ReadonlyArray<UserBasic>;
 export const ScannerCreatorsResponseCreatorsList = /*@__PURE__*/ S.Array(
   UserBasic,
 ) as any as S.Schema<ScannerCreatorsResponseCreatorsList>;
@@ -1744,8 +1663,7 @@ export type VisionScannersListRequestOrderBy =
   | "name"
   | "sampling_rate"
   | "scanner_type"
-  | "updated_at"
-  | (string & {});
+  | "updated_at";
 export const VisionScannersListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface VisionScannersListRequest {
@@ -1790,7 +1708,8 @@ export const VisionScannersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VisionScannersListRequest",
 }) as any as S.Schema<VisionScannersListRequest>;
 
-export type PaginatedReplayScannerListResultsList = ReplayScanner[];
+export type PaginatedReplayScannerListResultsList =
+  ReadonlyArray<ReplayScanner>;
 export const PaginatedReplayScannerListResultsList = /*@__PURE__*/ S.Array(
   ReplayScanner,
 ) as any as S.Schema<PaginatedReplayScannerListResultsList>;
@@ -1916,8 +1835,7 @@ export type VisionScannersObservationsListRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status"
-  | (string & {});
+  | "status";
 export const VisionScannersObservationsListRequestOrderBy =
   /*@__PURE__*/ S.String;
 
@@ -2000,8 +1918,7 @@ export type VisionScannersObservationsRetrieveRequestOrderBy =
   | "result_verdict"
   | "scanner_version"
   | "started_at"
-  | "status"
-  | (string & {});
+  | "status";
 export const VisionScannersObservationsRetrieveRequestOrderBy =
   /*@__PURE__*/ S.String;
 
@@ -2204,13 +2121,15 @@ export const ObservationLabelDayCount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObservationLabelDayCount>;
 
 /** Daily label counts over the last `recent_days` days, bucketed by the day the session was scanned so the series tracks scanner quality over time. Days without labels are omitted. */
-export type ObservationLabelStatsByDayList = ObservationLabelDayCount[];
+export type ObservationLabelStatsByDayList =
+  ReadonlyArray<ObservationLabelDayCount>;
 export const ObservationLabelStatsByDayList = /*@__PURE__*/ S.Array(
   ObservationLabelDayCount,
 ) as any as S.Schema<ObservationLabelStatsByDayList>;
 
 /** Daily label counts over the last `recent_days` days, bucketed by the day the rating was last set or changed: the team's rating activity. Days without rating changes are omitted. */
-export type ObservationLabelStatsByRatingDayList = ObservationLabelDayCount[];
+export type ObservationLabelStatsByRatingDayList =
+  ReadonlyArray<ObservationLabelDayCount>;
 export const ObservationLabelStatsByRatingDayList = /*@__PURE__*/ S.Array(
   ObservationLabelDayCount,
 ) as any as S.Schema<ObservationLabelStatsByRatingDayList>;
@@ -2247,7 +2166,7 @@ export const ObservationVersionMarker = /*@__PURE__*/ S.suspend(() =>
 
 /** Each scanner (prompt) version that produced observations (all-time), with its first day, prompt, and rating counts, for chart markers and the prompt version history. */
 export type ObservationLabelStatsVersionMarkersList =
-  ObservationVersionMarker[];
+  ReadonlyArray<ObservationVersionMarker>;
 export const ObservationLabelStatsVersionMarkersList = /*@__PURE__*/ S.Array(
   ObservationVersionMarker,
 ) as any as S.Schema<ObservationLabelStatsVersionMarkersList>;
@@ -2277,7 +2196,7 @@ export const ObservationLabelStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObservationLabelStats>;
 
 /** All distinct tags (fixed + freeform) emitted by succeeded observations in the filtered set. */
-export type ObservationStatsAvailableTagsList = string[];
+export type ObservationStatsAvailableTagsList = ReadonlyArray<string>;
 export const ObservationStatsAvailableTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ObservationStatsAvailableTagsList>;
@@ -2312,13 +2231,13 @@ export const TagCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagCount" }) as any as S.Schema<TagCount>;
 
 /** Top fixed-vocabulary tags by emission count. */
-export type ClassifierStatsFixedRankedList = TagCount[];
+export type ClassifierStatsFixedRankedList = ReadonlyArray<TagCount>;
 export const ClassifierStatsFixedRankedList = /*@__PURE__*/ S.Array(
   TagCount,
 ) as any as S.Schema<ClassifierStatsFixedRankedList>;
 
 /** Top freeform tags by emission count. */
-export type ClassifierStatsFreeformRankedList = TagCount[];
+export type ClassifierStatsFreeformRankedList = ReadonlyArray<TagCount>;
 export const ClassifierStatsFreeformRankedList = /*@__PURE__*/ S.Array(
   TagCount,
 ) as any as S.Schema<ClassifierStatsFreeformRankedList>;
@@ -2370,13 +2289,13 @@ export const ScorerSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScorerSummary" }) as any as S.Schema<ScorerSummary>;
 
 /** Bucket labels (one per histogram bar) spanning the scanner's configured scale. */
-export type ScorerHistogramLabelsList = string[];
+export type ScorerHistogramLabelsList = ReadonlyArray<string>;
 export const ScorerHistogramLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScorerHistogramLabelsList>;
 
 /** Observation count per bucket; same length as `labels`. */
-export type ScorerHistogramCountsList = number[];
+export type ScorerHistogramCountsList = ReadonlyArray<number>;
 export const ScorerHistogramCountsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ScorerHistogramCountsList>;
@@ -2497,26 +2416,6 @@ export interface VisionScannersPartialUpdateRequest {
   enabled?: boolean;
   /** When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals. */
   emits_signals?: boolean;
-  /** Increments on every config-changing save. Observations snapshot this value. */
-  scanner_version?: number;
-  /** Latest projected observations/month for this scanner. Null until first computed. */
-  estimated_monthly_observations?: number | null;
-  /** Credits one observation by this scanner costs (1 credit = $0.01), derived from `model`. */
-  credits_per_observation?: number;
-  /** `estimated_monthly_observations` priced at `credits_per_observation`. Null until the estimate is first computed. */
-  estimated_monthly_credits?: number | null;
-  /** Credits this scanner's succeeded observations consumed in the current billing period (1 credit = $0.01). Matches the window of the org-wide quota meter. */
-  credits_this_month?: number;
-  /** Watermark for the scanner's last scheduled fire. Mirrors Temporal schedule state for recovery. */
-  last_swept_at?: string;
-  created_at?: string;
-  /** User who created the scanner. */
-  created_by?: UserBasic | null;
-  updated_at?: string;
-  /** AI summary of the team's written thumbs-down feedback into recurring failure modes. Refreshed with prompt recommendations; null until enough feedback accumulates. */
-  feedback_themes?: FeedbackThemes | null;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const VisionScannersPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2533,17 +2432,6 @@ export const VisionScannersPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     model: S.optional(ScannerModelEnum),
     enabled: S.optional(S.Boolean),
     emits_signals: S.optional(S.Boolean),
-    scanner_version: S.optional(S.Number),
-    estimated_monthly_observations: S.optional(S.NullOr(S.Number)),
-    credits_per_observation: S.optional(S.Number),
-    estimated_monthly_credits: S.optional(S.NullOr(S.Number)),
-    credits_this_month: S.optional(S.Number),
-    last_swept_at: S.optional(S.String),
-    created_at: S.optional(S.String),
-    created_by: S.optional(S.NullOr(UserBasic)),
-    updated_at: S.optional(S.String),
-    feedback_themes: S.optional(S.NullOr(FeedbackThemes)),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2588,8 +2476,7 @@ export type ReplayScannerPromptSuggestionStatusEnum =
   | "applied"
   | "dismissed"
   | "superseded"
-  | "no_change"
-  | (string & {});
+  | "no_change";
 export const ReplayScannerPromptSuggestionStatusEnum = /*@__PURE__*/ S.String;
 
 export interface PromptEvaluationResult {
@@ -2623,7 +2510,8 @@ export const PromptEvaluationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PromptEvaluationResult>;
 
 /** Per-session outcomes, in completion order. */
-export type PromptSuggestionEvaluationResultsList = PromptEvaluationResult[];
+export type PromptSuggestionEvaluationResultsList =
+  ReadonlyArray<PromptEvaluationResult>;
 export const PromptSuggestionEvaluationResultsList = /*@__PURE__*/ S.Array(
   PromptEvaluationResult,
 ) as any as S.Schema<PromptSuggestionEvaluationResultsList>;
@@ -2881,7 +2769,7 @@ export const VisionScannersPromptSuggestionsListRequest =
   }) as any as S.Schema<VisionScannersPromptSuggestionsListRequest>;
 
 export type PaginatedReplayScannerPromptSuggestionListResultsList =
-  ReplayScannerPromptSuggestion[];
+  ReadonlyArray<ReplayScannerPromptSuggestion>;
 export const PaginatedReplayScannerPromptSuggestionListResultsList =
   /*@__PURE__*/ S.Array(
     ReplayScannerPromptSuggestion,
@@ -2998,7 +2886,8 @@ export const ScannerStatsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScannerStatsResponse>;
 
 /** The current tag vocabulary, so suggestions never duplicate a tag the user already has. */
-export type VisionScannersSuggestTagsCreateRequestTagsList = string[];
+export type VisionScannersSuggestTagsCreateRequestTagsList =
+  ReadonlyArray<string>;
 export const VisionScannersSuggestTagsCreateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3039,11 +2928,7 @@ export const VisionScannersSuggestTagsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VisionScannersSuggestTagsCreateRequest>;
 
 /** * `observed` - observed * `product` - product * `prompt` - prompt */
-export type TagSuggestionSourceEnum =
-  | "observed"
-  | "product"
-  | "prompt"
-  | (string & {});
+export type TagSuggestionSourceEnum = "observed" | "product" | "prompt";
 export const TagSuggestionSourceEnum = /*@__PURE__*/ S.String;
 
 /** One grounded tag suggestion. */
@@ -3064,7 +2949,7 @@ export const TagSuggestion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagSuggestion" }) as any as S.Schema<TagSuggestion>;
 
 /** Suggested tags to add, most relevant first. May be empty when the evidence is too thin. */
-export type SuggestTagsResponseSuggestionsList = TagSuggestion[];
+export type SuggestTagsResponseSuggestionsList = ReadonlyArray<TagSuggestion>;
 export const SuggestTagsResponseSuggestionsList = /*@__PURE__*/ S.Array(
   TagSuggestion,
 ) as any as S.Schema<SuggestTagsResponseSuggestionsList>;

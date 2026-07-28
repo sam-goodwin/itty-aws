@@ -798,16 +798,47 @@
             "smithy.api#documentation": "Private Endpoint Connection Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.notificationhubs#PrivateEndpointConnectionPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.notificationhubs#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.notificationhubs#PrivateEndpointConnectionProvisioningState"
+        },
+        "privateEndpoint": {
+          "target": "com.azure.notificationhubs#RemotePrivateEndpointConnectionInput"
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.notificationhubs#RemotePrivateLinkServiceConnectionStateInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Private Endpoint Connection properties."
+      }
+    },
+    "com.azure.notificationhubs#RemotePrivateLinkServiceConnectionStateInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.notificationhubs#PrivateLinkConnectionStatus"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "State of the Private Link Service connection."
+      }
+    },
+    "com.azure.notificationhubs#RemotePrivateEndpointConnectionInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Represents a Private Endpoint that is connected to Notification Hubs namespace using Private Endpoint Connection."
       }
     },
     "com.azure.notificationhubs#PrivateEndpointConnectionsGet": {
@@ -1771,16 +1802,35 @@
             "smithy.api#documentation": "Authorization Rule Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "policyKey": {
+          "target": "com.azure.notificationhubs#PolicyKeyType",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.notificationhubs#PolicyKeyType": {
+      "type": "enum",
+      "members": {
+        "PRIMARYKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PrimaryKey"
+          }
+        },
+        "SECONDARYKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecondaryKey"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of Shared Access Policy Key (primary or secondary)."
       }
     },
     "com.azure.notificationhubs#NamespacesListKeys": {
@@ -2251,16 +2301,72 @@
             "smithy.api#documentation": "Authorization Rule Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.notificationhubs#SharedAccessAuthorizationRulePropertiesInput"
+        },
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Deprecated - only for compatibility."
+          }
+        },
+        "tags": {
+          "target": "com.azure.notificationhubs#NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deprecated - only for compatibility."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.notificationhubs#NamespacesCreateOrUpdateAuthorizationRuleRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deprecated - only for compatibility."
+      }
+    },
+    "com.azure.notificationhubs#SharedAccessAuthorizationRulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "rights": {
+          "target": "com.azure.notificationhubs#SharedAccessAuthorizationRulePropertiesInputRightsList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the rights associated with the rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "primaryKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets a base64-encoded 256-bit primary key for signing and\r\nvalidating the SAS token."
+          }
+        },
+        "secondaryKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets a base64-encoded 256-bit primary key for signing and\r\nvalidating the SAS token."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SharedAccessAuthorizationRule properties."
+      }
+    },
+    "com.azure.notificationhubs#SharedAccessAuthorizationRulePropertiesInputRightsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.notificationhubs#AccessRights"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the rights associated with the rule."
       }
     },
     "com.azure.notificationhubs#NamespacesGetAuthorizationRule": {
@@ -3201,16 +3307,72 @@
             "smithy.api#documentation": "Namespace name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "sku": {
+          "target": "com.azure.notificationhubs#Sku"
+        },
+        "properties": {
+          "target": "com.azure.notificationhubs#NamespacePropertiesInput"
+        },
+        "tags": {
+          "target": "com.azure.notificationhubs#NamespacesUpdateRequestTagsMap"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.notificationhubs#NamespacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.notificationhubs#NamespacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.notificationhubs#OperationProvisioningState"
+        },
+        "status": {
+          "target": "com.azure.notificationhubs#NamespaceStatus"
+        },
+        "namespaceType": {
+          "target": "com.azure.notificationhubs#NamespaceType"
+        },
+        "replicationRegion": {
+          "target": "com.azure.notificationhubs#ReplicationRegion"
+        },
+        "zoneRedundancy": {
+          "target": "com.azure.notificationhubs#ZoneRedundancyPreference"
+        },
+        "networkAcls": {
+          "target": "com.azure.notificationhubs#NetworkAcls"
+        },
+        "pnsCredentials": {
+          "target": "com.azure.notificationhubs#PnsCredentials"
+        },
+        "scaleUnit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets scaleUnit where the namespace gets created"
+          }
+        },
+        "dataCenter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deprecated."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.notificationhubs#PublicNetworkAccess"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents namespace properties."
       }
     },
     "com.azure.notificationhubs#NamespacesCreateOrUpdate": {
@@ -3325,16 +3487,43 @@
             "smithy.api#documentation": "Namespace name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.notificationhubs#NamespacesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "sku": {
+          "target": "com.azure.notificationhubs#Sku",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.notificationhubs#NamespacePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.notificationhubs#NamespacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.notificationhubs#NamespacesGet": {
@@ -3549,16 +3738,49 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets resource name",
             "smithy.api#required": {}
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets resource location"
+          }
+        },
+        "tags": {
+          "target": "com.azure.notificationhubs#NamespacesCheckAvailabilityRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets resource tags"
+          }
+        },
+        "isAvailiable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Not used and deprecated since API version 2023-09-01"
+          }
+        },
+        "sku": {
+          "target": "com.azure.notificationhubs#Sku"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.notificationhubs#NamespacesCheckAvailabilityRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets resource tags"
       }
     },
     "com.azure.notificationhubs#NotificationHubsGetPnsCredentials": {
@@ -3741,10 +3963,9 @@
             "smithy.api#documentation": "Authorization Rule Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "policyKey": {
+          "target": "com.azure.notificationhubs#PolicyKeyType",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
@@ -4067,16 +4288,36 @@
             "smithy.api#documentation": "Authorization Rule Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.notificationhubs#SharedAccessAuthorizationRulePropertiesInput"
+        },
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Deprecated - only for compatibility."
+          }
+        },
+        "tags": {
+          "target": "com.azure.notificationhubs#NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Deprecated - only for compatibility."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.notificationhubs#NotificationHubsCreateOrUpdateAuthorizationRuleRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Deprecated - only for compatibility."
       }
     },
     "com.azure.notificationhubs#NotificationHubsGetAuthorizationRule": {
@@ -4785,16 +5026,72 @@
             "smithy.api#documentation": "Notification Hub name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.notificationhubs#NotificationHubPropertiesInput"
+        },
+        "sku": {
+          "target": "com.azure.notificationhubs#Sku"
+        },
+        "tags": {
+          "target": "com.azure.notificationhubs#NotificationHubsUpdateRequestTagsMap"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.notificationhubs#NotificationHubsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.notificationhubs#NotificationHubPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the NotificationHub name."
+          }
+        },
+        "registrationTtl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the RegistrationTtl of the created NotificationHub"
+          }
+        },
+        "apnsCredential": {
+          "target": "com.azure.notificationhubs#ApnsCredential"
+        },
+        "wnsCredential": {
+          "target": "com.azure.notificationhubs#WnsCredential"
+        },
+        "gcmCredential": {
+          "target": "com.azure.notificationhubs#GcmCredential"
+        },
+        "mpnsCredential": {
+          "target": "com.azure.notificationhubs#MpnsCredential"
+        },
+        "admCredential": {
+          "target": "com.azure.notificationhubs#AdmCredential"
+        },
+        "baiduCredential": {
+          "target": "com.azure.notificationhubs#BaiduCredential"
+        },
+        "browserCredential": {
+          "target": "com.azure.notificationhubs#BrowserCredential"
+        },
+        "xiaomiCredential": {
+          "target": "com.azure.notificationhubs#XiaomiCredential"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NotificationHub properties."
       }
     },
     "com.azure.notificationhubs#NotificationHubsCreateOrUpdate": {
@@ -4914,16 +5211,40 @@
             "smithy.api#documentation": "Notification Hub name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.notificationhubs#NotificationHubsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "properties": {
+          "target": "com.azure.notificationhubs#NotificationHubPropertiesInput"
+        },
+        "sku": {
+          "target": "com.azure.notificationhubs#Sku"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.notificationhubs#NotificationHubsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.notificationhubs#NotificationHubsGet": {
@@ -5159,16 +5480,49 @@
             "smithy.api#documentation": "Namespace name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets resource name",
             "smithy.api#required": {}
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets resource location"
+          }
+        },
+        "tags": {
+          "target": "com.azure.notificationhubs#NotificationHubsCheckNotificationHubAvailabilityRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets resource tags"
+          }
+        },
+        "isAvailiable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Not used and deprecated since API version 2023-09-01"
+          }
+        },
+        "sku": {
+          "target": "com.azure.notificationhubs#Sku"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.notificationhubs#NotificationHubsCheckNotificationHubAvailabilityRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets resource tags"
       }
     },
     "com.azure.notificationhubs#Notificationhubs": {

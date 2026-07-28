@@ -104,20 +104,18 @@ export type ComputeDiffThreatListsThreatTypeEnum =
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
-  | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE"
-  | (string & {});
+  | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
 export const ComputeDiffThreatListsThreatTypeEnum = /*@__PURE__*/ S.String;
 
 export type ComputeDiffThreatListsConstraints_supportedCompressionsEnum =
   | "COMPRESSION_TYPE_UNSPECIFIED"
   | "RAW"
-  | "RICE"
-  | (string & {});
+  | "RICE";
 export const ComputeDiffThreatListsConstraints_supportedCompressionsEnum =
   /*@__PURE__*/ S.String;
 
 export type ComputeDiffThreatListsConstraints_supportedCompressionsEnumList =
-  ComputeDiffThreatListsConstraints_supportedCompressionsEnum[];
+  ReadonlyArray<ComputeDiffThreatListsConstraints_supportedCompressionsEnum>;
 export const ComputeDiffThreatListsConstraints_supportedCompressionsEnumList =
   /*@__PURE__*/ S.Array(
     ComputeDiffThreatListsConstraints_supportedCompressionsEnum,
@@ -162,8 +160,7 @@ export const ComputeDiffThreatListsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudWebriskV1ComputeThreatListDiffResponseResponseTypeEnum =
   | "RESPONSE_TYPE_UNSPECIFIED"
   | "DIFF"
-  | "RESET"
-  | (string & {});
+  | "RESET";
 export const GoogleCloudWebriskV1ComputeThreatListDiffResponseResponseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -183,7 +180,8 @@ export const GoogleCloudWebriskV1RawHashes = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudWebriskV1RawHashes",
 }) as any as S.Schema<GoogleCloudWebriskV1RawHashes>;
 
-export type GoogleCloudWebriskV1RawHashesList = GoogleCloudWebriskV1RawHashes[];
+export type GoogleCloudWebriskV1RawHashesList =
+  ReadonlyArray<GoogleCloudWebriskV1RawHashes>;
 export const GoogleCloudWebriskV1RawHashesList = /*@__PURE__*/ S.Array(
   GoogleCloudWebriskV1RawHashes,
 ) as any as S.Schema<GoogleCloudWebriskV1RawHashesList>;
@@ -242,7 +240,7 @@ export const GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum =
     identifier: "GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum",
   }) as any as S.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -385,7 +383,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -464,12 +462,13 @@ export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsOperationsRequest",
 }) as any as S.Schema<ListProjectsOperationsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -499,11 +498,11 @@ export type SearchHashesThreatTypesEnum =
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
-  | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE"
-  | (string & {});
+  | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
 export const SearchHashesThreatTypesEnum = /*@__PURE__*/ S.String;
 
-export type SearchHashesThreatTypesEnumList = SearchHashesThreatTypesEnum[];
+export type SearchHashesThreatTypesEnumList =
+  ReadonlyArray<SearchHashesThreatTypesEnum>;
 export const SearchHashesThreatTypesEnumList = /*@__PURE__*/ S.Array(
   SearchHashesThreatTypesEnum,
 ) as any as S.Schema<SearchHashesThreatTypesEnumList>;
@@ -534,13 +533,12 @@ export type GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnu
     | "MALWARE"
     | "SOCIAL_ENGINEERING"
     | "UNWANTED_SOFTWARE"
-    | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE"
-    | (string & {});
+    | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
 export const GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList =
-  GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum[];
+  ReadonlyArray<GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum>;
 export const GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudWebriskV1SearchHashesResponseThreatHashThreatTypesItemEnum,
@@ -569,7 +567,7 @@ export const GoogleCloudWebriskV1SearchHashesResponseThreatHash =
   }) as any as S.Schema<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
 
 export type GoogleCloudWebriskV1SearchHashesResponseThreatHashList =
-  GoogleCloudWebriskV1SearchHashesResponseThreatHash[];
+  ReadonlyArray<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
 export const GoogleCloudWebriskV1SearchHashesResponseThreatHashList =
   /*@__PURE__*/ S.Array(
     GoogleCloudWebriskV1SearchHashesResponseThreatHash,
@@ -598,11 +596,11 @@ export type SearchUrisThreatTypesEnum =
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
-  | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE"
-  | (string & {});
+  | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
 export const SearchUrisThreatTypesEnum = /*@__PURE__*/ S.String;
 
-export type SearchUrisThreatTypesEnumList = SearchUrisThreatTypesEnum[];
+export type SearchUrisThreatTypesEnumList =
+  ReadonlyArray<SearchUrisThreatTypesEnum>;
 export const SearchUrisThreatTypesEnumList = /*@__PURE__*/ S.Array(
   SearchUrisThreatTypesEnum,
 ) as any as S.Schema<SearchUrisThreatTypesEnumList>;
@@ -633,13 +631,12 @@ export type GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum =
     | "MALWARE"
     | "SOCIAL_ENGINEERING"
     | "UNWANTED_SOFTWARE"
-    | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE"
-    | (string & {});
+    | "SOCIAL_ENGINEERING_EXTENDED_COVERAGE";
 export const GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList =
-  GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum[];
+  ReadonlyArray<GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum>;
 export const GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudWebriskV1SearchUrisResponseThreatUriThreatTypesItemEnum,

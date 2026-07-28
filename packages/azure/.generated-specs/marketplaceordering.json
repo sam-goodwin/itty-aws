@@ -809,11 +809,10 @@
             "smithy.api#documentation": "Plan identifier string of image being deployed."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplaceordering#AgreementProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Represents the properties of the resource."
           }
         }
       },

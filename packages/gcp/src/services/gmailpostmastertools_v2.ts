@@ -69,8 +69,7 @@ export type BaseMetricStandardMetricEnum =
   | "TLS_ENCRYPTION_MESSAGE_COUNT"
   | "TLS_ENCRYPTION_RATE"
   | "DELIVERY_ERROR_COUNT"
-  | "DELIVERY_ERROR_RATE"
-  | (string & {});
+  | "DELIVERY_ERROR_RATE";
 export const BaseMetricStandardMetricEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the base metric to query, which can be a predefined standard metric or a user-defined custom metric (if supported in the future). */
@@ -103,7 +102,7 @@ export const MetricDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricDefinition",
 }) as any as S.Schema<MetricDefinition>;
 
-export type MetricDefinitionList = MetricDefinition[];
+export type MetricDefinitionList = ReadonlyArray<MetricDefinition>;
 export const MetricDefinitionList = /*@__PURE__*/ S.Array(
   MetricDefinition,
 ) as any as S.Schema<MetricDefinitionList>;
@@ -127,7 +126,8 @@ export const Gmailpostmastertools_Date = /*@__PURE__*/ S.suspend(() =>
   identifier: "Gmailpostmastertools_Date",
 }) as any as S.Schema<Gmailpostmastertools_Date>;
 
-export type Gmailpostmastertools_DateList = Gmailpostmastertools_Date[];
+export type Gmailpostmastertools_DateList =
+  ReadonlyArray<Gmailpostmastertools_Date>;
 export const Gmailpostmastertools_DateList = /*@__PURE__*/ S.Array(
   Gmailpostmastertools_Date,
 ) as any as S.Schema<Gmailpostmastertools_DateList>;
@@ -157,7 +157,7 @@ export const DateRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
 
-export type DateRangeList = DateRange[];
+export type DateRangeList = ReadonlyArray<DateRange>;
 export const DateRangeList = /*@__PURE__*/ S.Array(
   DateRange,
 ) as any as S.Schema<DateRangeList>;
@@ -190,8 +190,7 @@ export const TimeQuery = /*@__PURE__*/ S.suspend(() =>
 export type QueryDomainStatsRequestAggregationGranularityEnum =
   | "AGGREGATION_GRANULARITY_UNSPECIFIED"
   | "DAILY"
-  | "OVERALL"
-  | (string & {});
+  | "OVERALL";
 export const QueryDomainStatsRequestAggregationGranularityEnum =
   /*@__PURE__*/ S.String;
 
@@ -225,7 +224,8 @@ export const QueryDomainStatsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryDomainStatsRequest",
 }) as any as S.Schema<QueryDomainStatsRequest>;
 
-export type QueryDomainStatsRequestList = QueryDomainStatsRequest[];
+export type QueryDomainStatsRequestList =
+  ReadonlyArray<QueryDomainStatsRequest>;
 export const QueryDomainStatsRequestList = /*@__PURE__*/ S.Array(
   QueryDomainStatsRequest,
 ) as any as S.Schema<QueryDomainStatsRequestList>;
@@ -267,7 +267,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -289,7 +289,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type StringList_ = string[];
+export type StringList_ = ReadonlyArray<string>;
 export const StringList_ = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList_>;
@@ -348,7 +348,7 @@ export const DomainStat = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DomainStat" }) as any as S.Schema<DomainStat>;
 
-export type DomainStatList = DomainStat[];
+export type DomainStatList = ReadonlyArray<DomainStat>;
 export const DomainStatList = /*@__PURE__*/ S.Array(
   DomainStat,
 ) as any as S.Schema<DomainStatList>;
@@ -385,7 +385,8 @@ export const BatchQueryDomainStatsResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchQueryDomainStatsResult",
 }) as any as S.Schema<BatchQueryDomainStatsResult>;
 
-export type BatchQueryDomainStatsResultList = BatchQueryDomainStatsResult[];
+export type BatchQueryDomainStatsResultList =
+  ReadonlyArray<BatchQueryDomainStatsResult>;
 export const BatchQueryDomainStatsResultList = /*@__PURE__*/ S.Array(
   BatchQueryDomainStatsResult,
 ) as any as S.Schema<BatchQueryDomainStatsResultList>;
@@ -437,8 +438,7 @@ export const CreateDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DomainVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "UNVERIFIED"
-  | "VERIFIED"
-  | (string & {});
+  | "VERIFIED";
 export const DomainVerificationStateEnum = /*@__PURE__*/ S.String;
 
 export type DomainPermissionEnum =
@@ -446,8 +446,7 @@ export type DomainPermissionEnum =
   | "READER"
   | "ADMIN"
   | "OWNER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const DomainPermissionEnum = /*@__PURE__*/ S.String;
 
 /** Information about a domain registered by the user. */
@@ -478,8 +477,7 @@ export type CreateUserRequestPermissionEnum =
   | "READER"
   | "ADMIN"
   | "OWNER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const CreateUserRequestPermissionEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Request message for CreateUser. */
@@ -524,8 +522,7 @@ export type UserPermissionEnum =
   | "READER"
   | "ADMIN"
   | "OWNER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const UserPermissionEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Information about a user's access to a domain. */
@@ -614,8 +611,7 @@ export const GetComplianceStatusDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ComplianceStatusStatusEnum =
   | "STATE_UNSPECIFIED"
   | "COMPLIANT"
-  | "NEEDS_WORK"
-  | (string & {});
+  | "NEEDS_WORK";
 export const ComplianceStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The status of a sender compliance requirement. */
@@ -635,8 +631,7 @@ export type OneClickUnsubscribeVerdictReasonEnum =
   | "REASON_UNSPECIFIED"
   | "NO_UNSUB_GENERAL"
   | "NO_UNSUB_SPAM_REPORTS"
-  | "NO_UNSUB_PROMO_SPAM_REPORTS"
-  | (string & {});
+  | "NO_UNSUB_PROMO_SPAM_REPORTS";
 export const OneClickUnsubscribeVerdictReasonEnum = /*@__PURE__*/ S.String;
 
 /** Compliance verdict for whether a sender meets the one-click unsubscribe compliance requirement. */
@@ -659,8 +654,7 @@ export type HonorUnsubscribeVerdictReasonEnum =
   | "REASON_UNSPECIFIED"
   | "NOT_HONORING"
   | "NOT_HONORING_TOO_FEW_CAMPAIGNS"
-  | "NOT_HONORING_TOO_MANY_CAMPAIGNS"
-  | (string & {});
+  | "NOT_HONORING_TOO_MANY_CAMPAIGNS";
 export const HonorUnsubscribeVerdictReasonEnum = /*@__PURE__*/ S.String;
 
 /** Compliance verdict for whether a sender meets the unsubscribe honoring compliance requirement. */
@@ -691,8 +685,7 @@ export type ComplianceRowDataRequirementEnum =
   | "ENCRYPTION"
   | "USER_REPORTED_SPAM_RATE"
   | "ONE_CLICK_UNSUBSCRIBE"
-  | "HONOR_UNSUBSCRIBE"
-  | (string & {});
+  | "HONOR_UNSUBSCRIBE";
 export const ComplianceRowDataRequirementEnum = /*@__PURE__*/ S.String;
 
 /** Data for a single row of the compliance status table. */
@@ -711,7 +704,7 @@ export const ComplianceRowData = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComplianceRowData",
 }) as any as S.Schema<ComplianceRowData>;
 
-export type ComplianceRowDataList = ComplianceRowData[];
+export type ComplianceRowDataList = ReadonlyArray<ComplianceRowData>;
 export const ComplianceRowDataList = /*@__PURE__*/ S.Array(
   ComplianceRowData,
 ) as any as S.Schema<ComplianceRowDataList>;
@@ -724,8 +717,7 @@ export type DeliverabilityStatusVerdictReasonEnum =
   | "SPAM_RATE_HIGH"
   | "USER_FEEDBACK_NEGATIVE"
   | "USER_FEEDBACK_LOW"
-  | "USER_FEEDBACK_POSITIVE"
-  | (string & {});
+  | "USER_FEEDBACK_POSITIVE";
 export const DeliverabilityStatusVerdictReasonEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Verdict of domain deliverability status. */
@@ -827,8 +819,7 @@ export const GetDomainsUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetVerificationTokenDomainsVerificationMethodEnum =
   | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
   | "TXT"
-  | "CNAME"
-  | (string & {});
+  | "CNAME";
 export const GetVerificationTokenDomainsVerificationMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -858,8 +849,7 @@ export const GetVerificationTokenDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DomainVerificationTokenVerificationMethodEnum =
   | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
   | "TXT"
-  | "CNAME"
-  | (string & {});
+  | "CNAME";
 export const DomainVerificationTokenVerificationMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -905,7 +895,7 @@ export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsRequest",
 }) as any as S.Schema<ListDomainsRequest>;
 
-export type DomainList = Domain[];
+export type DomainList = ReadonlyArray<Domain>;
 export const DomainList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainList>;
@@ -950,7 +940,7 @@ export const ListDomainsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsUsersRequest",
 }) as any as S.Schema<ListDomainsUsersRequest>;
 
-export type UserList = User[];
+export type UserList = ReadonlyArray<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -1019,8 +1009,7 @@ export const QueryDomainsDomainStatsRequest = /*@__PURE__*/ S.suspend(() =>
 export type VerifyDomainRequestVerificationMethodEnum =
   | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
   | "TXT"
-  | "CNAME"
-  | (string & {});
+  | "CNAME";
 export const VerifyDomainRequestVerificationMethodEnum = /*@__PURE__*/ S.String;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Request message for VerifyDomain. */

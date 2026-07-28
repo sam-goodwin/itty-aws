@@ -102,8 +102,7 @@ export type TaskStatusStateEnum =
   | "TASK_STATE_CANCELLED"
   | "TASK_STATE_INPUT_REQUIRED"
   | "TASK_STATE_REJECTED"
-  | "TASK_STATE_AUTH_REQUIRED"
-  | (string & {});
+  | "TASK_STATE_AUTH_REQUIRED";
 export const TaskStatusStateEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -112,16 +111,12 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type MessageRoleEnum =
-  | "ROLE_UNSPECIFIED"
-  | "ROLE_USER"
-  | "ROLE_AGENT"
-  | (string & {});
+export type MessageRoleEnum = "ROLE_UNSPECIFIED" | "ROLE_USER" | "ROLE_AGENT";
 export const MessageRoleEnum = /*@__PURE__*/ S.String;
 
 /** DataPart represents a structured blob. This is most commonly a JSON payload. */
@@ -167,7 +162,7 @@ export const Part = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Part" }) as any as S.Schema<Part>;
 
-export type PartList = Part[];
+export type PartList = ReadonlyArray<Part>;
 export const PartList = /*@__PURE__*/ S.Array(
   Part,
 ) as any as S.Schema<PartList>;
@@ -218,7 +213,7 @@ export const TaskStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskStatus" }) as any as S.Schema<TaskStatus>;
 
-export type MessageList = Message[];
+export type MessageList = ReadonlyArray<Message>;
 export const MessageList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<MessageList>;
@@ -249,7 +244,7 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
-export type ArtifactList = Artifact[];
+export type ArtifactList = ReadonlyArray<Artifact>;
 export const ArtifactList = /*@__PURE__*/ S.Array(
   Artifact,
 ) as any as S.Schema<ArtifactList>;
@@ -322,8 +317,7 @@ export type SubscriptionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "SUSPENDED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const SubscriptionStateEnum = /*@__PURE__*/ S.String;
 
 export type SubscriptionSuspensionReasonEnum =
@@ -336,8 +330,7 @@ export type SubscriptionSuspensionReasonEnum =
   | "ENDPOINT_PERMISSION_DENIED"
   | "ENDPOINT_NOT_FOUND"
   | "ENDPOINT_RESOURCE_EXHAUSTED"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const SubscriptionSuspensionReasonEnum = /*@__PURE__*/ S.String;
 
 /** A subscription to receive events about a Google Workspace resource. To learn more about subscriptions, see the [Google Workspace Events API overview](https://developers.google.com/workspace/events). */
@@ -423,7 +416,7 @@ export const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSubscriptionsRequest",
 }) as any as S.Schema<CreateSubscriptionsRequest>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -710,7 +703,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSubscriptionsRequest",
 }) as any as S.Schema<ListSubscriptionsRequest>;
 
-export type SubscriptionList = Subscription[];
+export type SubscriptionList = ReadonlyArray<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -759,7 +752,8 @@ export const ListTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListTasksPushNotificationConfigsRequest",
 }) as any as S.Schema<ListTasksPushNotificationConfigsRequest>;
 
-export type TaskPushNotificationConfigList = TaskPushNotificationConfig[];
+export type TaskPushNotificationConfigList =
+  ReadonlyArray<TaskPushNotificationConfig>;
 export const TaskPushNotificationConfigList = /*@__PURE__*/ S.Array(
   TaskPushNotificationConfig,
 ) as any as S.Schema<TaskPushNotificationConfigList>;

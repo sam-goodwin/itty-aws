@@ -12,6 +12,14 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The path to the content to be purged. Can describe a file path or a wild card directory. */
+export type EndpointsPurgeContentRequestContentPathsList =
+  ReadonlyArray<string>;
+export const EndpointsPurgeContentRequestContentPathsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EndpointsPurgeContentRequestContentPathsList>;
+
 export interface EndpointsPurgeContentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -19,14 +27,15 @@ export interface EndpointsPurgeContentRequest {
   resourceGroupName: string;
   /** Name of the Front Door which is globally unique. */
   frontDoorName: string;
-  body: unknown;
+  /** The path to the content to be purged. Can describe a file path or a wild card directory. */
+  contentPaths: EndpointsPurgeContentRequestContentPathsList;
 }
 export const EndpointsPurgeContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     frontDoorName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    contentPaths: EndpointsPurgeContentRequestContentPathsList,
   }).pipe(
     T.Http({
       method: "POST",
@@ -46,6 +55,55 @@ export const EndpointsPurgeContentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointsPurgeContentResponse",
 }) as any as S.Schema<EndpointsPurgeContentResponse>;
 
+/** Resource tags. */
+export type ExperimentsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ExperimentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ExperimentsCreateOrUpdateRequestTagsMap>;
+
+/** Defines the endpoint properties */
+export interface Endpoint {
+  /** The name of the endpoint */
+  name?: string;
+  /** The endpoint URL */
+  endpoint?: string;
+}
+export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    endpoint: S.optional(S.String),
+  }),
+).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
+
+/** The state of the Experiment */
+export type State = "Enabled" | "Disabled";
+export const State = /*@__PURE__*/ S.String;
+
+/** Defines the properties of an experiment */
+export interface ExperimentPropertiesInput {
+  /** The description of the details or intents of the Experiment */
+  description?: string;
+  /** The endpoint A of an experiment */
+  endpointA?: Endpoint;
+  /** The endpoint B of an experiment */
+  endpointB?: Endpoint;
+  /** The state of the Experiment */
+  enabledState?: State;
+}
+export const ExperimentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    endpointA: S.optional(Endpoint),
+    endpointB: S.optional(Endpoint),
+    enabledState: S.optional(State),
+  }),
+).annotate({
+  identifier: "ExperimentPropertiesInput",
+}) as any as S.Schema<ExperimentPropertiesInput>;
+
 export interface ExperimentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -55,7 +113,12 @@ export interface ExperimentsCreateOrUpdateRequest {
   profileName: string;
   /** The Experiment identifier associated with the Experiment */
   experimentName: string;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: ExperimentsCreateOrUpdateRequestTagsMap;
+  /** The properties of an Experiment */
+  properties?: ExperimentPropertiesInput;
 }
 export const ExperimentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -63,7 +126,9 @@ export const ExperimentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     profileName: S.String.pipe(T.Label()),
     experimentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(ExperimentsCreateOrUpdateRequestTagsMap),
+    properties: S.optional(ExperimentPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -85,24 +150,6 @@ export const ExperimentsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<ExperimentsCreateOrUpdateResponseTagsMap>;
 
-/** Defines the endpoint properties */
-export interface Endpoint {
-  /** The name of the endpoint */
-  name?: string;
-  /** The endpoint URL */
-  endpoint?: string;
-}
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    endpoint: S.optional(S.String),
-  }),
-).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
-
-/** The state of the Experiment */
-export type State = "Enabled" | "Disabled" | (string & {});
-export const State = /*@__PURE__*/ S.String;
-
 /** Defines the server side resource status */
 export type NetworkExperimentResourceState =
   | "Creating"
@@ -110,8 +157,7 @@ export type NetworkExperimentResourceState =
   | "Enabled"
   | "Disabling"
   | "Disabled"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const NetworkExperimentResourceState = /*@__PURE__*/ S.String;
 
 /** Defines the properties of an experiment */
@@ -330,7 +376,7 @@ export const Experiment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Experiment" }) as any as S.Schema<Experiment>;
 
 /** The Experiment items on this page */
-export type ExperimentListValueList = Experiment[];
+export type ExperimentListValueList = ReadonlyArray<Experiment>;
 export const ExperimentListValueList = /*@__PURE__*/ S.Array(
   Experiment,
 ) as any as S.Schema<ExperimentListValueList>;
@@ -349,6 +395,31 @@ export const ExperimentList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExperimentList" }) as any as S.Schema<ExperimentList>;
 
+/** Resource tags. */
+export type ExperimentsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ExperimentsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ExperimentsUpdateRequestTagsMap>;
+
+/** Defines the properties of an experiment */
+export interface ExperimentUpdateProperties {
+  /** The description of the intent or details of the Experiment */
+  description?: string;
+  /** The state of the Experiment */
+  enabledState?: State;
+}
+export const ExperimentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    enabledState: S.optional(State),
+  }),
+).annotate({
+  identifier: "ExperimentUpdateProperties",
+}) as any as S.Schema<ExperimentUpdateProperties>;
+
 export interface ExperimentsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -358,7 +429,10 @@ export interface ExperimentsUpdateRequest {
   profileName: string;
   /** The Experiment identifier associated with the Experiment */
   experimentName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ExperimentsUpdateRequestTagsMap;
+  /** The properties of a Profile */
+  properties?: ExperimentUpdateProperties;
 }
 export const ExperimentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -366,7 +440,8 @@ export const ExperimentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     profileName: S.String.pipe(T.Label()),
     experimentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ExperimentsUpdateRequestTagsMap),
+    properties: S.optional(ExperimentUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -415,13 +490,23 @@ export const ExperimentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentsUpdateResponse",
 }) as any as S.Schema<ExperimentsUpdateResponse>;
 
+/** Type of Front Door resource used in CheckNameAvailability. */
+export type ResourceType =
+  | "Microsoft.Network/frontDoors"
+  | "Microsoft.Network/frontDoors/frontendEndpoints";
+export const ResourceType = /*@__PURE__*/ S.String;
+
 export interface FrontDoorNameAvailabilityCheckRequest {
-  body: unknown;
+  /** The resource name to validate. */
+  name: string;
+  /** The type of the resource whose name is to be validated. */
+  type: ResourceType;
 }
 export const FrontDoorNameAvailabilityCheckRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: ResourceType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -435,7 +520,7 @@ export const FrontDoorNameAvailabilityCheckRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FrontDoorNameAvailabilityCheckRequest>;
 
 /** Indicates whether the name is available. */
-export type Availability = "Available" | "Unavailable" | (string & {});
+export type Availability = "Available" | "Unavailable";
 export const Availability = /*@__PURE__*/ S.String;
 
 /** Output of check name availability API. */
@@ -460,13 +545,17 @@ export const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
 export interface FrontDoorNameAvailabilityWithSubscriptionCheckRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body: unknown;
+  /** The resource name to validate. */
+  name: string;
+  /** The type of the resource whose name is to be validated. */
+  type: ResourceType;
 }
 export const FrontDoorNameAvailabilityWithSubscriptionCheckRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: ResourceType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -479,41 +568,14 @@ export const FrontDoorNameAvailabilityWithSubscriptionCheckRequest =
     identifier: "FrontDoorNameAvailabilityWithSubscriptionCheckRequest",
   }) as any as S.Schema<FrontDoorNameAvailabilityWithSubscriptionCheckRequest>;
 
-export interface FrontDoorsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Front Door which is globally unique. */
-  frontDoorName: string;
-  body: unknown;
-}
-export const FrontDoorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    frontDoorName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
-      code: 200,
-      apiVersion: "2025-11-01",
-    }),
-  ),
-).annotate({
-  identifier: "FrontDoorsCreateOrUpdateRequest",
-}) as any as S.Schema<FrontDoorsCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type FrontDoorsCreateOrUpdateResponseTagsMap = {
+export type FrontDoorsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const FrontDoorsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const FrontDoorsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<FrontDoorsCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<FrontDoorsCreateOrUpdateRequestTagsMap>;
 
 /** Reference to another subresource. */
 export interface SubResource {
@@ -527,29 +589,31 @@ export const SubResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubResource" }) as any as S.Schema<SubResource>;
 
 /** Frontend endpoints associated with this rule */
-export type RoutingRulePropertiesFrontendEndpointsList = SubResource[];
+export type RoutingRulePropertiesFrontendEndpointsList =
+  ReadonlyArray<SubResource>;
 export const RoutingRulePropertiesFrontendEndpointsList = /*@__PURE__*/ S.Array(
   SubResource,
 ) as any as S.Schema<RoutingRulePropertiesFrontendEndpointsList>;
 
 /** Accepted protocol schemes. */
-export type FrontDoorProtocol = "Http" | "Https" | (string & {});
+export type FrontDoorProtocol = "Http" | "Https";
 export const FrontDoorProtocol = /*@__PURE__*/ S.String;
 
 /** Protocol schemes to match for this rule */
-export type RoutingRulePropertiesAcceptedProtocolsList = FrontDoorProtocol[];
+export type RoutingRulePropertiesAcceptedProtocolsList =
+  ReadonlyArray<FrontDoorProtocol>;
 export const RoutingRulePropertiesAcceptedProtocolsList = /*@__PURE__*/ S.Array(
   FrontDoorProtocol,
 ) as any as S.Schema<RoutingRulePropertiesAcceptedProtocolsList>;
 
 /** The route patterns of the rule. */
-export type RoutingRulePropertiesPatternsToMatchList = string[];
+export type RoutingRulePropertiesPatternsToMatchList = ReadonlyArray<string>;
 export const RoutingRulePropertiesPatternsToMatchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RoutingRulePropertiesPatternsToMatchList>;
 
 /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
-export type RoutingRuleEnabledState = "Enabled" | "Disabled" | (string & {});
+export type RoutingRuleEnabledState = "Enabled" | "Disabled";
 export const RoutingRuleEnabledState = /*@__PURE__*/ S.String;
 
 /** Base class for all types of Route. */
@@ -587,8 +651,7 @@ export type FrontDoorResourceState =
   | "Disabled"
   | "Deleting"
   | "Migrating"
-  | "Migrated"
-  | (string & {});
+  | "Migrated";
 export const FrontDoorResourceState = /*@__PURE__*/ S.String;
 
 /** The JSON object that contains the properties required to create a routing rule. */
@@ -628,30 +691,30 @@ export const RoutingRuleProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutingRuleProperties>;
 
 /** A routing rule represents a specification for traffic to treat and where to send it, along with health probe information. */
-export interface RoutingRule {
+export interface RoutingRuleInput {
   /** Resource ID. */
   id?: string;
   /** Properties of the Front Door Routing Rule */
   properties?: RoutingRuleProperties;
   /** Resource name. */
   name?: string;
-  /** Resource type. */
-  type?: string;
 }
-export const RoutingRule = /*@__PURE__*/ S.suspend(() =>
+export const RoutingRuleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(RoutingRuleProperties),
     name: S.optional(S.String),
-    type: S.optional(S.String),
   }),
-).annotate({ identifier: "RoutingRule" }) as any as S.Schema<RoutingRule>;
+).annotate({
+  identifier: "RoutingRuleInput",
+}) as any as S.Schema<RoutingRuleInput>;
 
 /** Routing rules associated with this Front Door. */
-export type FrontDoorPropertiesRoutingRulesList = RoutingRule[];
-export const FrontDoorPropertiesRoutingRulesList = /*@__PURE__*/ S.Array(
-  RoutingRule,
-) as any as S.Schema<FrontDoorPropertiesRoutingRulesList>;
+export type FrontDoorPropertiesInputRoutingRulesList =
+  ReadonlyArray<RoutingRuleInput>;
+export const FrontDoorPropertiesInputRoutingRulesList = /*@__PURE__*/ S.Array(
+  RoutingRuleInput,
+) as any as S.Schema<FrontDoorPropertiesInputRoutingRulesList>;
 
 /** The JSON object that contains the properties required to create load balancing settings */
 export interface LoadBalancingSettingsProperties {
@@ -676,45 +739,39 @@ export const LoadBalancingSettingsProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoadBalancingSettingsProperties>;
 
 /** Load balancing settings for a backend pool */
-export interface LoadBalancingSettingsModel {
+export interface LoadBalancingSettingsModelInput {
   /** Resource ID. */
   id?: string;
   /** Properties of the load balancing settings */
   properties?: LoadBalancingSettingsProperties;
   /** Resource name. */
   name?: string;
-  /** Resource type. */
-  type?: string;
 }
-export const LoadBalancingSettingsModel = /*@__PURE__*/ S.suspend(() =>
+export const LoadBalancingSettingsModelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(LoadBalancingSettingsProperties),
     name: S.optional(S.String),
-    type: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "LoadBalancingSettingsModel",
-}) as any as S.Schema<LoadBalancingSettingsModel>;
+  identifier: "LoadBalancingSettingsModelInput",
+}) as any as S.Schema<LoadBalancingSettingsModelInput>;
 
 /** Load balancing settings associated with this Front Door instance. */
-export type FrontDoorPropertiesLoadBalancingSettingsList =
-  LoadBalancingSettingsModel[];
-export const FrontDoorPropertiesLoadBalancingSettingsList =
+export type FrontDoorPropertiesInputLoadBalancingSettingsList =
+  ReadonlyArray<LoadBalancingSettingsModelInput>;
+export const FrontDoorPropertiesInputLoadBalancingSettingsList =
   /*@__PURE__*/ S.Array(
-    LoadBalancingSettingsModel,
-  ) as any as S.Schema<FrontDoorPropertiesLoadBalancingSettingsList>;
+    LoadBalancingSettingsModelInput,
+  ) as any as S.Schema<FrontDoorPropertiesInputLoadBalancingSettingsList>;
 
 /** Configures which HTTP method to use to probe the backends defined under backendPools. */
-export type HealthProbeSettingsPropertiesHealthProbeMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthProbeSettingsPropertiesHealthProbeMethod = "GET" | "HEAD";
 export const HealthProbeSettingsPropertiesHealthProbeMethod =
   /*@__PURE__*/ S.String;
 
 /** Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool. */
-export type HealthProbeEnabled = "Enabled" | "Disabled" | (string & {});
+export type HealthProbeEnabled = "Enabled" | "Disabled";
 export const HealthProbeEnabled = /*@__PURE__*/ S.String;
 
 /** The JSON object that contains the properties required to create a health probe settings. */
@@ -748,33 +805,31 @@ export const HealthProbeSettingsProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthProbeSettingsProperties>;
 
 /** Load balancing settings for a backend pool */
-export interface HealthProbeSettingsModel {
+export interface HealthProbeSettingsModelInput {
   /** Resource ID. */
   id?: string;
   /** Properties of the health probe settings */
   properties?: HealthProbeSettingsProperties;
   /** Resource name. */
   name?: string;
-  /** Resource type. */
-  type?: string;
 }
-export const HealthProbeSettingsModel = /*@__PURE__*/ S.suspend(() =>
+export const HealthProbeSettingsModelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(HealthProbeSettingsProperties),
     name: S.optional(S.String),
-    type: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "HealthProbeSettingsModel",
-}) as any as S.Schema<HealthProbeSettingsModel>;
+  identifier: "HealthProbeSettingsModelInput",
+}) as any as S.Schema<HealthProbeSettingsModelInput>;
 
 /** Health probe settings associated with this Front Door instance. */
-export type FrontDoorPropertiesHealthProbeSettingsList =
-  HealthProbeSettingsModel[];
-export const FrontDoorPropertiesHealthProbeSettingsList = /*@__PURE__*/ S.Array(
-  HealthProbeSettingsModel,
-) as any as S.Schema<FrontDoorPropertiesHealthProbeSettingsList>;
+export type FrontDoorPropertiesInputHealthProbeSettingsList =
+  ReadonlyArray<HealthProbeSettingsModelInput>;
+export const FrontDoorPropertiesInputHealthProbeSettingsList =
+  /*@__PURE__*/ S.Array(
+    HealthProbeSettingsModelInput,
+  ) as any as S.Schema<FrontDoorPropertiesInputHealthProbeSettingsList>;
 
 /** The Approval status for the connection to the Private Link */
 export type PrivateEndpointStatus =
@@ -782,12 +837,11 @@ export type PrivateEndpointStatus =
   | "Approved"
   | "Rejected"
   | "Disconnected"
-  | "Timeout"
-  | (string & {});
+  | "Timeout";
 export const PrivateEndpointStatus = /*@__PURE__*/ S.String;
 
 /** Whether to enable use of this backend. Permitted values are 'Enabled' or 'Disabled' */
-export type BackendEnabledState = "Enabled" | "Disabled" | (string & {});
+export type BackendEnabledState = "Enabled" | "Disabled";
 export const BackendEnabledState = /*@__PURE__*/ S.String;
 
 /** Backend address of a frontDoor load balancer. */
@@ -835,7 +889,7 @@ export const Backend = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Backend" }) as any as S.Schema<Backend>;
 
 /** The set of backends for this pool */
-export type BackendPoolPropertiesBackendsList = Backend[];
+export type BackendPoolPropertiesBackendsList = ReadonlyArray<Backend>;
 export const BackendPoolPropertiesBackendsList = /*@__PURE__*/ S.Array(
   Backend,
 ) as any as S.Schema<BackendPoolPropertiesBackendsList>;
@@ -863,36 +917,33 @@ export const BackendPoolProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendPoolProperties>;
 
 /** A backend pool is a collection of backends that can be routed to. */
-export interface BackendPool {
+export interface BackendPoolInput {
   /** Resource ID. */
   id?: string;
   /** Properties of the Front Door Backend Pool */
   properties?: BackendPoolProperties;
   /** Resource name. */
   name?: string;
-  /** Resource type. */
-  type?: string;
 }
-export const BackendPool = /*@__PURE__*/ S.suspend(() =>
+export const BackendPoolInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     properties: S.optional(BackendPoolProperties),
     name: S.optional(S.String),
-    type: S.optional(S.String),
   }),
-).annotate({ identifier: "BackendPool" }) as any as S.Schema<BackendPool>;
+).annotate({
+  identifier: "BackendPoolInput",
+}) as any as S.Schema<BackendPoolInput>;
 
 /** Backend pools available to routing rules. */
-export type FrontDoorPropertiesBackendPoolsList = BackendPool[];
-export const FrontDoorPropertiesBackendPoolsList = /*@__PURE__*/ S.Array(
-  BackendPool,
-) as any as S.Schema<FrontDoorPropertiesBackendPoolsList>;
+export type FrontDoorPropertiesInputBackendPoolsList =
+  ReadonlyArray<BackendPoolInput>;
+export const FrontDoorPropertiesInputBackendPoolsList = /*@__PURE__*/ S.Array(
+  BackendPoolInput,
+) as any as S.Schema<FrontDoorPropertiesInputBackendPoolsList>;
 
 /** Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled' */
-export type SessionAffinityEnabledState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type SessionAffinityEnabledState = "Enabled" | "Disabled";
 export const SessionAffinityEnabledState = /*@__PURE__*/ S.String;
 
 /** Defines the Web Application Firewall policy for each host (if applicable) */
@@ -916,8 +967,7 @@ export type CustomHttpsProvisioningState =
   | "Enabled"
   | "Disabling"
   | "Disabled"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const CustomHttpsProvisioningState = /*@__PURE__*/ S.String;
 
 /** Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. */
@@ -931,23 +981,19 @@ export type CustomHttpsProvisioningSubstate =
   | "DeployingCertificate"
   | "CertificateDeployed"
   | "DeletingCertificate"
-  | "CertificateDeleted"
-  | (string & {});
+  | "CertificateDeleted";
 export const CustomHttpsProvisioningSubstate = /*@__PURE__*/ S.String;
 
 /** Defines the source of the SSL certificate */
-export type FrontDoorCertificateSource =
-  | "AzureKeyVault"
-  | "FrontDoor"
-  | (string & {});
+export type FrontDoorCertificateSource = "AzureKeyVault" | "FrontDoor";
 export const FrontDoorCertificateSource = /*@__PURE__*/ S.String;
 
 /** Defines the TLS extension protocol that is used for secure delivery */
-export type FrontDoorTlsProtocolType = "ServerNameIndication" | (string & {});
+export type FrontDoorTlsProtocolType = "ServerNameIndication";
 export const FrontDoorTlsProtocolType = /*@__PURE__*/ S.String;
 
 /** The minimum TLS version required from the clients to establish an SSL handshake with Front Door. */
-export type MinimumTLSVersion = "1.0" | "1.2" | (string & {});
+export type MinimumTLSVersion = "1.0" | "1.2";
 export const MinimumTLSVersion = /*@__PURE__*/ S.String;
 
 /** The Key Vault containing the SSL certificate */
@@ -984,7 +1030,7 @@ export const KeyVaultCertificateSourceParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyVaultCertificateSourceParameters>;
 
 /** Defines the type of the certificate used for secure connections to a frontendEndpoint */
-export type FrontDoorCertificateType = "Dedicated" | (string & {});
+export type FrontDoorCertificateType = "Dedicated";
 export const FrontDoorCertificateType = /*@__PURE__*/ S.String;
 
 /** Parameters required for enabling SSL with Front Door-managed certificates */
@@ -1069,38 +1115,36 @@ export const FrontendEndpointProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FrontendEndpointProperties>;
 
 /** A frontend endpoint used for routing. */
-export interface FrontendEndpoint {
+export interface FrontendEndpointInput {
   /** Resource ID. */
   id?: string;
   /** Resource name. */
   name?: string;
-  /** Resource type. */
-  type?: string;
   /** Properties of the Frontend endpoint */
   properties?: FrontendEndpointProperties;
 }
-export const FrontendEndpoint = /*@__PURE__*/ S.suspend(() =>
+export const FrontendEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
-    type: S.optional(S.String),
     properties: S.optional(FrontendEndpointProperties),
   }),
 ).annotate({
-  identifier: "FrontendEndpoint",
-}) as any as S.Schema<FrontendEndpoint>;
+  identifier: "FrontendEndpointInput",
+}) as any as S.Schema<FrontendEndpointInput>;
 
 /** Frontend endpoints available to routing rules. */
-export type FrontDoorPropertiesFrontendEndpointsList = FrontendEndpoint[];
-export const FrontDoorPropertiesFrontendEndpointsList = /*@__PURE__*/ S.Array(
-  FrontendEndpoint,
-) as any as S.Schema<FrontDoorPropertiesFrontendEndpointsList>;
+export type FrontDoorPropertiesInputFrontendEndpointsList =
+  ReadonlyArray<FrontendEndpointInput>;
+export const FrontDoorPropertiesInputFrontendEndpointsList =
+  /*@__PURE__*/ S.Array(
+    FrontendEndpointInput,
+  ) as any as S.Schema<FrontDoorPropertiesInputFrontendEndpointsList>;
 
 /** Whether to enforce certificate name check on HTTPS requests to all backend pools. No effect on non-HTTPS requests. */
 export type BackendPoolsSettingsEnforceCertificateNameCheck =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const BackendPoolsSettingsEnforceCertificateNameCheck =
   /*@__PURE__*/ S.String;
 
@@ -1123,15 +1167,234 @@ export const BackendPoolsSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendPoolsSettings>;
 
 /** Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled' */
-export type FrontDoorEnabledState = "Enabled" | "Disabled" | (string & {});
+export type FrontDoorEnabledState = "Enabled" | "Disabled";
 export const FrontDoorEnabledState = /*@__PURE__*/ S.String;
 
+/** The JSON object that contains the properties required to create an endpoint. */
+export interface FrontDoorPropertiesInput {
+  /** A friendly name for the frontDoor */
+  friendlyName?: string;
+  /** Routing rules associated with this Front Door. */
+  routingRules?: FrontDoorPropertiesInputRoutingRulesList;
+  /** Load balancing settings associated with this Front Door instance. */
+  loadBalancingSettings?: FrontDoorPropertiesInputLoadBalancingSettingsList;
+  /** Health probe settings associated with this Front Door instance. */
+  healthProbeSettings?: FrontDoorPropertiesInputHealthProbeSettingsList;
+  /** Backend pools available to routing rules. */
+  backendPools?: FrontDoorPropertiesInputBackendPoolsList;
+  /** Frontend endpoints available to routing rules. */
+  frontendEndpoints?: FrontDoorPropertiesInputFrontendEndpointsList;
+  /** Settings for all backendPools */
+  backendPoolsSettings?: BackendPoolsSettings;
+  /** Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled' */
+  enabledState?: FrontDoorEnabledState;
+}
+export const FrontDoorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    friendlyName: S.optional(S.String),
+    routingRules: S.optional(FrontDoorPropertiesInputRoutingRulesList),
+    loadBalancingSettings: S.optional(
+      FrontDoorPropertiesInputLoadBalancingSettingsList,
+    ),
+    healthProbeSettings: S.optional(
+      FrontDoorPropertiesInputHealthProbeSettingsList,
+    ),
+    backendPools: S.optional(FrontDoorPropertiesInputBackendPoolsList),
+    frontendEndpoints: S.optional(
+      FrontDoorPropertiesInputFrontendEndpointsList,
+    ),
+    backendPoolsSettings: S.optional(BackendPoolsSettings),
+    enabledState: S.optional(FrontDoorEnabledState),
+  }),
+).annotate({
+  identifier: "FrontDoorPropertiesInput",
+}) as any as S.Schema<FrontDoorPropertiesInput>;
+
+export interface FrontDoorsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Front Door which is globally unique. */
+  frontDoorName: string;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: FrontDoorsCreateOrUpdateRequestTagsMap;
+  /** Properties of the Front Door Load Balancer */
+  properties?: FrontDoorPropertiesInput;
+}
+export const FrontDoorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    frontDoorName: S.String.pipe(T.Label()),
+    location: S.optional(S.String),
+    tags: S.optional(FrontDoorsCreateOrUpdateRequestTagsMap),
+    properties: S.optional(FrontDoorPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/frontDoors/{frontDoorName}",
+      code: 200,
+      apiVersion: "2025-11-01",
+    }),
+  ),
+).annotate({
+  identifier: "FrontDoorsCreateOrUpdateRequest",
+}) as any as S.Schema<FrontDoorsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type FrontDoorsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FrontDoorsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FrontDoorsCreateOrUpdateResponseTagsMap>;
+
+/** A routing rule represents a specification for traffic to treat and where to send it, along with health probe information. */
+export interface RoutingRule {
+  /** Resource ID. */
+  id?: string;
+  /** Properties of the Front Door Routing Rule */
+  properties?: RoutingRuleProperties;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+}
+export const RoutingRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    properties: S.optional(RoutingRuleProperties),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({ identifier: "RoutingRule" }) as any as S.Schema<RoutingRule>;
+
+/** Routing rules associated with this Front Door. */
+export type FrontDoorPropertiesRoutingRulesList = ReadonlyArray<RoutingRule>;
+export const FrontDoorPropertiesRoutingRulesList = /*@__PURE__*/ S.Array(
+  RoutingRule,
+) as any as S.Schema<FrontDoorPropertiesRoutingRulesList>;
+
+/** Load balancing settings for a backend pool */
+export interface LoadBalancingSettingsModel {
+  /** Resource ID. */
+  id?: string;
+  /** Properties of the load balancing settings */
+  properties?: LoadBalancingSettingsProperties;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+}
+export const LoadBalancingSettingsModel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    properties: S.optional(LoadBalancingSettingsProperties),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LoadBalancingSettingsModel",
+}) as any as S.Schema<LoadBalancingSettingsModel>;
+
+/** Load balancing settings associated with this Front Door instance. */
+export type FrontDoorPropertiesLoadBalancingSettingsList =
+  ReadonlyArray<LoadBalancingSettingsModel>;
+export const FrontDoorPropertiesLoadBalancingSettingsList =
+  /*@__PURE__*/ S.Array(
+    LoadBalancingSettingsModel,
+  ) as any as S.Schema<FrontDoorPropertiesLoadBalancingSettingsList>;
+
+/** Load balancing settings for a backend pool */
+export interface HealthProbeSettingsModel {
+  /** Resource ID. */
+  id?: string;
+  /** Properties of the health probe settings */
+  properties?: HealthProbeSettingsProperties;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+}
+export const HealthProbeSettingsModel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    properties: S.optional(HealthProbeSettingsProperties),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HealthProbeSettingsModel",
+}) as any as S.Schema<HealthProbeSettingsModel>;
+
+/** Health probe settings associated with this Front Door instance. */
+export type FrontDoorPropertiesHealthProbeSettingsList =
+  ReadonlyArray<HealthProbeSettingsModel>;
+export const FrontDoorPropertiesHealthProbeSettingsList = /*@__PURE__*/ S.Array(
+  HealthProbeSettingsModel,
+) as any as S.Schema<FrontDoorPropertiesHealthProbeSettingsList>;
+
+/** A backend pool is a collection of backends that can be routed to. */
+export interface BackendPool {
+  /** Resource ID. */
+  id?: string;
+  /** Properties of the Front Door Backend Pool */
+  properties?: BackendPoolProperties;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+}
+export const BackendPool = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    properties: S.optional(BackendPoolProperties),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({ identifier: "BackendPool" }) as any as S.Schema<BackendPool>;
+
+/** Backend pools available to routing rules. */
+export type FrontDoorPropertiesBackendPoolsList = ReadonlyArray<BackendPool>;
+export const FrontDoorPropertiesBackendPoolsList = /*@__PURE__*/ S.Array(
+  BackendPool,
+) as any as S.Schema<FrontDoorPropertiesBackendPoolsList>;
+
+/** A frontend endpoint used for routing. */
+export interface FrontendEndpoint {
+  /** Resource ID. */
+  id?: string;
+  /** Resource name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  /** Properties of the Frontend endpoint */
+  properties?: FrontendEndpointProperties;
+}
+export const FrontendEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(FrontendEndpointProperties),
+  }),
+).annotate({
+  identifier: "FrontendEndpoint",
+}) as any as S.Schema<FrontendEndpoint>;
+
+/** Frontend endpoints available to routing rules. */
+export type FrontDoorPropertiesFrontendEndpointsList =
+  ReadonlyArray<FrontendEndpoint>;
+export const FrontDoorPropertiesFrontendEndpointsList = /*@__PURE__*/ S.Array(
+  FrontendEndpoint,
+) as any as S.Schema<FrontDoorPropertiesFrontendEndpointsList>;
+
 /** Which type of manipulation to apply to the header. */
-export type HeaderActionType =
-  | "Append"
-  | "Delete"
-  | "Overwrite"
-  | (string & {});
+export type HeaderActionType = "Append" | "Delete" | "Overwrite";
 export const HeaderActionType = /*@__PURE__*/ S.String;
 
 /** An action that can manipulate an http header. */
@@ -1152,13 +1415,15 @@ export const HeaderAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HeaderAction" }) as any as S.Schema<HeaderAction>;
 
 /** A list of header actions to apply from the request from AFD to the origin. */
-export type RulesEngineActionRequestHeaderActionsList = HeaderAction[];
+export type RulesEngineActionRequestHeaderActionsList =
+  ReadonlyArray<HeaderAction>;
 export const RulesEngineActionRequestHeaderActionsList = /*@__PURE__*/ S.Array(
   HeaderAction,
 ) as any as S.Schema<RulesEngineActionRequestHeaderActionsList>;
 
 /** A list of header actions to apply from the response from AFD to the client. */
-export type RulesEngineActionResponseHeaderActionsList = HeaderAction[];
+export type RulesEngineActionResponseHeaderActionsList =
+  ReadonlyArray<HeaderAction>;
 export const RulesEngineActionResponseHeaderActionsList = /*@__PURE__*/ S.Array(
   HeaderAction,
 ) as any as S.Schema<RulesEngineActionResponseHeaderActionsList>;
@@ -1197,8 +1462,7 @@ export type RulesEngineMatchVariable =
   | "RequestFilenameExtension"
   | "RequestHeader"
   | "RequestBody"
-  | "RequestScheme"
-  | (string & {});
+  | "RequestScheme";
 export const RulesEngineMatchVariable = /*@__PURE__*/ S.String;
 
 /** Describes operator to apply to the match condition. */
@@ -1213,12 +1477,12 @@ export type RulesEngineOperator =
   | "LessThanOrEqual"
   | "GreaterThanOrEqual"
   | "BeginsWith"
-  | "EndsWith"
-  | (string & {});
+  | "EndsWith";
 export const RulesEngineOperator = /*@__PURE__*/ S.String;
 
 /** Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match. */
-export type RulesEngineMatchConditionRulesEngineMatchValueList = string[];
+export type RulesEngineMatchConditionRulesEngineMatchValueList =
+  ReadonlyArray<string>;
 export const RulesEngineMatchConditionRulesEngineMatchValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1231,12 +1495,11 @@ export type Transform =
   | "Trim"
   | "UrlDecode"
   | "UrlEncode"
-  | "RemoveNulls"
-  | (string & {});
+  | "RemoveNulls";
 export const Transform = /*@__PURE__*/ S.String;
 
 /** List of transforms */
-export type RulesEngineMatchConditionTransformsList = Transform[];
+export type RulesEngineMatchConditionTransformsList = ReadonlyArray<Transform>;
 export const RulesEngineMatchConditionTransformsList = /*@__PURE__*/ S.Array(
   Transform,
 ) as any as S.Schema<RulesEngineMatchConditionTransformsList>;
@@ -1270,13 +1533,14 @@ export const RulesEngineMatchCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesEngineMatchCondition>;
 
 /** A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run. */
-export type RulesEngineRuleMatchConditionsList = RulesEngineMatchCondition[];
+export type RulesEngineRuleMatchConditionsList =
+  ReadonlyArray<RulesEngineMatchCondition>;
 export const RulesEngineRuleMatchConditionsList = /*@__PURE__*/ S.Array(
   RulesEngineMatchCondition,
 ) as any as S.Schema<RulesEngineRuleMatchConditionsList>;
 
 /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
-export type MatchProcessingBehavior = "Continue" | "Stop" | (string & {});
+export type MatchProcessingBehavior = "Continue" | "Stop";
 export const MatchProcessingBehavior = /*@__PURE__*/ S.String;
 
 /** Contains a list of match conditions, and an action on how to modify the request/response. If multiple rules match, the actions from one rule that conflict with a previous rule overwrite for a singular action, or append in the case of headers manipulation. */
@@ -1305,7 +1569,7 @@ export const RulesEngineRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesEngineRule>;
 
 /** A list of rules that define a particular Rules Engine Configuration. */
-export type RulesEnginePropertiesRulesList = RulesEngineRule[];
+export type RulesEnginePropertiesRulesList = ReadonlyArray<RulesEngineRule>;
 export const RulesEnginePropertiesRulesList = /*@__PURE__*/ S.Array(
   RulesEngineRule,
 ) as any as S.Schema<RulesEnginePropertiesRulesList>;
@@ -1347,7 +1611,7 @@ export const RulesEngine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RulesEngine" }) as any as S.Schema<RulesEngine>;
 
 /** Rules Engine Configurations available to routing rules. */
-export type FrontDoorPropertiesRulesEnginesList = RulesEngine[];
+export type FrontDoorPropertiesRulesEnginesList = ReadonlyArray<RulesEngine>;
 export const FrontDoorPropertiesRulesEnginesList = /*@__PURE__*/ S.Array(
   RulesEngine,
 ) as any as S.Schema<FrontDoorPropertiesRulesEnginesList>;
@@ -1588,7 +1852,7 @@ export const FrontDoor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FrontDoor" }) as any as S.Schema<FrontDoor>;
 
 /** The FrontDoor items on this page */
-export type FrontDoorListResultValueList = FrontDoor[];
+export type FrontDoorListResultValueList = ReadonlyArray<FrontDoor>;
 export const FrontDoorListResultValueList = /*@__PURE__*/ S.Array(
   FrontDoor,
 ) as any as S.Schema<FrontDoorListResultValueList>;
@@ -1639,7 +1903,8 @@ export interface FrontDoorsValidateCustomDomainRequest {
   resourceGroupName: string;
   /** Name of the Front Door which is globally unique. */
   frontDoorName: string;
-  body: unknown;
+  /** The host name of the custom domain. Must be a domain name. */
+  hostName: string;
 }
 export const FrontDoorsValidateCustomDomainRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1647,7 +1912,7 @@ export const FrontDoorsValidateCustomDomainRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       frontDoorName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      hostName: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -1724,7 +1989,16 @@ export interface FrontendEndpointsEnableHttpsRequest {
   frontDoorName: string;
   /** Name of the Frontend endpoint which is unique within the Front Door. */
   frontendEndpointName: string;
-  body: unknown;
+  /** Defines the source of the SSL certificate */
+  certificateSource: FrontDoorCertificateSource;
+  /** Defines the TLS extension protocol that is used for secure delivery */
+  protocolType: FrontDoorTlsProtocolType;
+  /** The minimum TLS version required from the clients to establish an SSL handshake with Front Door. */
+  minimumTlsVersion: MinimumTLSVersion;
+  /** KeyVault certificate source parameters (if certificateSource=AzureKeyVault) */
+  keyVaultCertificateSourceParameters?: KeyVaultCertificateSourceParameters;
+  /** Parameters required for enabling SSL with Front Door-managed certificates (if certificateSource=FrontDoor) */
+  frontDoorCertificateSourceParameters?: FrontDoorCertificateSourceParameters;
 }
 export const FrontendEndpointsEnableHttpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1732,7 +2006,15 @@ export const FrontendEndpointsEnableHttpsRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     frontDoorName: S.String.pipe(T.Label()),
     frontendEndpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    certificateSource: FrontDoorCertificateSource,
+    protocolType: FrontDoorTlsProtocolType,
+    minimumTlsVersion: MinimumTLSVersion,
+    keyVaultCertificateSourceParameters: S.optional(
+      KeyVaultCertificateSourceParameters,
+    ),
+    frontDoorCertificateSourceParameters: S.optional(
+      FrontDoorCertificateSourceParameters,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1828,7 +2110,8 @@ export const FrontendEndpointsListByFrontDoorRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FrontendEndpointsListByFrontDoorRequest>;
 
 /** The FrontendEndpoint items on this page */
-export type FrontendEndpointsListResultValueList = FrontendEndpoint[];
+export type FrontendEndpointsListResultValueList =
+  ReadonlyArray<FrontendEndpoint>;
 export const FrontendEndpointsListResultValueList = /*@__PURE__*/ S.Array(
   FrontendEndpoint,
 ) as any as S.Schema<FrontendEndpointsListResultValueList>;
@@ -1878,7 +2161,7 @@ export const ManagedRuleSetDefinitionTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ManagedRuleSetDefinitionTagsMap>;
 
 /** Describes if the managed rule is in enabled or disabled state. */
-export type ManagedRuleEnabledState = "Disabled" | "Enabled" | (string & {});
+export type ManagedRuleEnabledState = "Disabled" | "Enabled";
 export const ManagedRuleEnabledState = /*@__PURE__*/ S.String;
 
 /** Defines the action to take on rule match. */
@@ -1889,12 +2172,11 @@ export type ActionType =
   | "Redirect"
   | "AnomalyScoring"
   | "JSChallenge"
-  | "CAPTCHA"
-  | (string & {});
+  | "CAPTCHA";
 export const ActionType = /*@__PURE__*/ S.String;
 
 /** Defines the sensitivity for the rule. */
-export type SensitivityType = "Low" | "Medium" | "High" | (string & {});
+export type SensitivityType = "Low" | "Medium" | "High";
 export const SensitivityType = /*@__PURE__*/ S.String;
 
 /** Describes a managed rule definition. */
@@ -1923,7 +2205,8 @@ export const ManagedRuleDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedRuleDefinition>;
 
 /** List of rules within the managed rule group. */
-export type ManagedRuleGroupDefinitionRulesList = ManagedRuleDefinition[];
+export type ManagedRuleGroupDefinitionRulesList =
+  ReadonlyArray<ManagedRuleDefinition>;
 export const ManagedRuleGroupDefinitionRulesList = /*@__PURE__*/ S.Array(
   ManagedRuleDefinition,
 ) as any as S.Schema<ManagedRuleGroupDefinitionRulesList>;
@@ -1949,7 +2232,7 @@ export const ManagedRuleGroupDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Rule groups of the managed rule set. */
 export type ManagedRuleSetDefinitionPropertiesRuleGroupsList =
-  ManagedRuleGroupDefinition[];
+  ReadonlyArray<ManagedRuleGroupDefinition>;
 export const ManagedRuleSetDefinitionPropertiesRuleGroupsList =
   /*@__PURE__*/ S.Array(
     ManagedRuleGroupDefinition,
@@ -2009,7 +2292,8 @@ export const ManagedRuleSetDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedRuleSetDefinition>;
 
 /** The ManagedRuleSetDefinition items on this page */
-export type ManagedRuleSetDefinitionListValueList = ManagedRuleSetDefinition[];
+export type ManagedRuleSetDefinitionListValueList =
+  ReadonlyArray<ManagedRuleSetDefinition>;
 export const ManagedRuleSetDefinitionListValueList = /*@__PURE__*/ S.Array(
   ManagedRuleSetDefinition,
 ) as any as S.Schema<ManagedRuleSetDefinitionListValueList>;
@@ -2030,6 +2314,32 @@ export const ManagedRuleSetDefinitionList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedRuleSetDefinitionList",
 }) as any as S.Schema<ManagedRuleSetDefinitionList>;
 
+/** Resource tags. */
+export type NetworkExperimentProfilesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkExperimentProfilesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateRequestTagsMap>;
+
+/** Defines the properties of an experiment */
+export interface ProfileProperties {
+  /** Resource status. */
+  resourceState?: NetworkExperimentResourceState;
+  /** The state of the Experiment */
+  enabledState?: State;
+}
+export const ProfileProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceState: S.optional(NetworkExperimentResourceState),
+    enabledState: S.optional(State),
+  }),
+).annotate({
+  identifier: "ProfileProperties",
+}) as any as S.Schema<ProfileProperties>;
+
 export interface NetworkExperimentProfilesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2037,7 +2347,14 @@ export interface NetworkExperimentProfilesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The Profile identifier associated with the Tenant and Partner */
   profileName: string;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: NetworkExperimentProfilesCreateOrUpdateRequestTagsMap;
+  /** The properties of a Profile */
+  properties?: ProfileProperties;
+  /** Gets a unique read-only string that changes whenever the resource is updated. */
+  etag?: string;
 }
 export const NetworkExperimentProfilesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2045,7 +2362,10 @@ export const NetworkExperimentProfilesCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       profileName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(NetworkExperimentProfilesCreateOrUpdateRequestTagsMap),
+      properties: S.optional(ProfileProperties),
+      etag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2067,22 +2387,6 @@ export const NetworkExperimentProfilesCreateOrUpdateResponseTagsMap =
     S.String,
     S.String,
   ) as any as S.Schema<NetworkExperimentProfilesCreateOrUpdateResponseTagsMap>;
-
-/** Defines the properties of an experiment */
-export interface ProfileProperties {
-  /** Resource status. */
-  resourceState?: NetworkExperimentResourceState;
-  /** The state of the Experiment */
-  enabledState?: State;
-}
-export const ProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceState: S.optional(NetworkExperimentResourceState),
-    enabledState: S.optional(State),
-  }),
-).annotate({
-  identifier: "ProfileProperties",
-}) as any as S.Schema<ProfileProperties>;
 
 export interface NetworkExperimentProfilesCreateOrUpdateResponse {
   /** Resource ID. */
@@ -2271,7 +2575,7 @@ export const Profile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
 
 /** The Profile items on this page */
-export type ProfileListValueList = Profile[];
+export type ProfileListValueList = ReadonlyArray<Profile>;
 export const ProfileListValueList = /*@__PURE__*/ S.Array(
   Profile,
 ) as any as S.Schema<ProfileListValueList>;
@@ -2313,6 +2617,29 @@ export const NetworkExperimentProfilesListByResourceGroupRequest =
     identifier: "NetworkExperimentProfilesListByResourceGroupRequest",
   }) as any as S.Schema<NetworkExperimentProfilesListByResourceGroupRequest>;
 
+/** Defines the properties of an experiment */
+export interface ProfileUpdateProperties {
+  /** The enabled state of the Profile */
+  enabledState?: State;
+}
+export const ProfileUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabledState: S.optional(State),
+  }),
+).annotate({
+  identifier: "ProfileUpdateProperties",
+}) as any as S.Schema<ProfileUpdateProperties>;
+
+/** Resource tags. */
+export type NetworkExperimentProfilesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkExperimentProfilesUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkExperimentProfilesUpdateRequestTagsMap>;
+
 export interface NetworkExperimentProfilesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2320,7 +2647,10 @@ export interface NetworkExperimentProfilesUpdateRequest {
   resourceGroupName: string;
   /** The Profile identifier associated with the Tenant and Partner */
   profileName: string;
-  body: unknown;
+  /** The properties of a Profile */
+  properties?: ProfileUpdateProperties;
+  /** Resource tags. */
+  tags?: NetworkExperimentProfilesUpdateRequestTagsMap;
 }
 export const NetworkExperimentProfilesUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2328,7 +2658,8 @@ export const NetworkExperimentProfilesUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       profileName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ProfileUpdateProperties),
+      tags: S.optional(NetworkExperimentProfilesUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -2382,59 +2713,29 @@ export const NetworkExperimentProfilesUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NetworkExperimentProfilesUpdateResponse",
 }) as any as S.Schema<NetworkExperimentProfilesUpdateResponse>;
 
-export interface PoliciesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Web Application Firewall Policy. */
-  policyName: string;
-  body: unknown;
-}
-export const PoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    policyName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
-      code: 200,
-      apiVersion: "2025-11-01",
-    }),
-  ),
-).annotate({
-  identifier: "PoliciesCreateOrUpdateRequest",
-}) as any as S.Schema<PoliciesCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type PoliciesCreateOrUpdateResponseTagsMap = {
+export type PoliciesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PoliciesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const PoliciesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<PoliciesCreateOrUpdateRequestTagsMap>;
 
 /** Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified. */
-export type PolicyEnabledState = "Disabled" | "Enabled" | (string & {});
+export type PolicyEnabledState = "Disabled" | "Enabled";
 export const PolicyEnabledState = /*@__PURE__*/ S.String;
 
 /** Describes if it is in detection mode or prevention mode at policy level. */
-export type PolicyMode = "Prevention" | "Detection" | (string & {});
+export type PolicyMode = "Prevention" | "Detection";
 export const PolicyMode = /*@__PURE__*/ S.String;
 
 /** Describes if policy managed rules will inspect the request body content. */
-export type PolicyRequestBodyCheck = "Disabled" | "Enabled" | (string & {});
+export type PolicyRequestBodyCheck = "Disabled" | "Enabled";
 export const PolicyRequestBodyCheck = /*@__PURE__*/ S.String;
 
 /** State of the log scrubbing config. Default value is Enabled. */
-export type WebApplicationFirewallScrubbingState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type WebApplicationFirewallScrubbingState = "Enabled" | "Disabled";
 export const WebApplicationFirewallScrubbingState = /*@__PURE__*/ S.String;
 
 /** The variable to be scrubbed from the logs. */
@@ -2445,19 +2746,15 @@ export type ScrubbingRuleEntryMatchVariable =
   | "RequestHeaderNames"
   | "RequestCookieNames"
   | "RequestBodyPostArgNames"
-  | "RequestBodyJsonArgNames"
-  | (string & {});
+  | "RequestBodyJsonArgNames";
 export const ScrubbingRuleEntryMatchVariable = /*@__PURE__*/ S.String;
 
 /** When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to. */
-export type ScrubbingRuleEntryMatchOperator =
-  | "EqualsAny"
-  | "Equals"
-  | (string & {});
+export type ScrubbingRuleEntryMatchOperator = "EqualsAny" | "Equals";
 export const ScrubbingRuleEntryMatchOperator = /*@__PURE__*/ S.String;
 
 /** Defines the state of a log scrubbing rule. Default value is enabled. */
-export type ScrubbingRuleEntryState = "Enabled" | "Disabled" | (string & {});
+export type ScrubbingRuleEntryState = "Enabled" | "Disabled";
 export const ScrubbingRuleEntryState = /*@__PURE__*/ S.String;
 
 /** Defines the contents of the log scrubbing rules. */
@@ -2485,7 +2782,7 @@ export const WebApplicationFirewallScrubbingRules = /*@__PURE__*/ S.suspend(
 
 /** List of log scrubbing rules applied to the Web Application Firewall logs. */
 export type PolicySettingsLogScrubbingScrubbingRulesList =
-  WebApplicationFirewallScrubbingRules[];
+  ReadonlyArray<WebApplicationFirewallScrubbingRules>;
 export const PolicySettingsLogScrubbingScrubbingRulesList =
   /*@__PURE__*/ S.Array(
     WebApplicationFirewallScrubbingRules,
@@ -2543,19 +2840,15 @@ export const PolicySettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicySettings" }) as any as S.Schema<PolicySettings>;
 
 /** Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified. */
-export type CustomRuleEnabledState = "Disabled" | "Enabled" | (string & {});
+export type CustomRuleEnabledState = "Disabled" | "Enabled";
 export const CustomRuleEnabledState = /*@__PURE__*/ S.String;
 
 /** Describes type of rule. */
-export type RuleType = "MatchRule" | "RateLimitRule" | (string & {});
+export type RuleType = "MatchRule" | "RateLimitRule";
 export const RuleType = /*@__PURE__*/ S.String;
 
 /** Describes the supported variable for group by */
-export type VariableName =
-  | "SocketAddr"
-  | "GeoLocation"
-  | "None"
-  | (string & {});
+export type VariableName = "SocketAddr" | "GeoLocation" | "None";
 export const VariableName = /*@__PURE__*/ S.String;
 
 /** Describes the variables available to group the rate limit requests */
@@ -2572,7 +2865,7 @@ export const GroupByVariable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupByVariable>;
 
 /** Describes the list of variables to group the rate limit requests */
-export type CustomRuleGroupByList = GroupByVariable[];
+export type CustomRuleGroupByList = ReadonlyArray<GroupByVariable>;
 export const CustomRuleGroupByList = /*@__PURE__*/ S.Array(
   GroupByVariable,
 ) as any as S.Schema<CustomRuleGroupByList>;
@@ -2588,8 +2881,7 @@ export type MatchVariable =
   | "RequestBody"
   | "Cookies"
   | "SocketAddr"
-  | "JA4"
-  | (string & {});
+  | "JA4";
 export const MatchVariable = /*@__PURE__*/ S.String;
 
 /** Comparison type to use for matching with the variable value. */
@@ -2608,12 +2900,11 @@ export type Operator =
   | "RegEx"
   | "ServiceTagMatch"
   | "AsnMatch"
-  | "ClientFingerprint"
-  | (string & {});
+  | "ClientFingerprint";
 export const Operator = /*@__PURE__*/ S.String;
 
 /** List of possible match values. */
-export type MatchConditionMatchValueList = string[];
+export type MatchConditionMatchValueList = ReadonlyArray<string>;
 export const MatchConditionMatchValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MatchConditionMatchValueList>;
@@ -2625,12 +2916,11 @@ export type TransformType =
   | "Trim"
   | "UrlDecode"
   | "UrlEncode"
-  | "RemoveNulls"
-  | (string & {});
+  | "RemoveNulls";
 export const TransformType = /*@__PURE__*/ S.String;
 
 /** List of transforms. */
-export type MatchConditionTransformsList = TransformType[];
+export type MatchConditionTransformsList = ReadonlyArray<TransformType>;
 export const MatchConditionTransformsList = /*@__PURE__*/ S.Array(
   TransformType,
 ) as any as S.Schema<MatchConditionTransformsList>;
@@ -2662,7 +2952,7 @@ export const MatchCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MatchCondition" }) as any as S.Schema<MatchCondition>;
 
 /** List of match conditions. */
-export type CustomRuleMatchConditionsList = MatchCondition[];
+export type CustomRuleMatchConditionsList = ReadonlyArray<MatchCondition>;
 export const CustomRuleMatchConditionsList = /*@__PURE__*/ S.Array(
   MatchCondition,
 ) as any as S.Schema<CustomRuleMatchConditionsList>;
@@ -2703,7 +2993,7 @@ export const CustomRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomRule" }) as any as S.Schema<CustomRule>;
 
 /** List of rules */
-export type CustomRuleListRulesList = CustomRule[];
+export type CustomRuleListRulesList = ReadonlyArray<CustomRule>;
 export const CustomRuleListRulesList = /*@__PURE__*/ S.Array(
   CustomRule,
 ) as any as S.Schema<CustomRuleListRulesList>;
@@ -2720,11 +3010,7 @@ export const CustomRuleList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomRuleList" }) as any as S.Schema<CustomRuleList>;
 
 /** Defines the action to take when a managed rule set score threshold is met. */
-export type ManagedRuleSetActionType =
-  | "Block"
-  | "Log"
-  | "Redirect"
-  | (string & {});
+export type ManagedRuleSetActionType = "Block" | "Log" | "Redirect";
 export const ManagedRuleSetActionType = /*@__PURE__*/ S.String;
 
 /** The variable type to be excluded. */
@@ -2733,8 +3019,7 @@ export type ManagedRuleExclusionMatchVariable =
   | "RequestCookieNames"
   | "QueryStringArgNames"
   | "RequestBodyPostArgNames"
-  | "RequestBodyJsonArgNames"
-  | (string & {});
+  | "RequestBodyJsonArgNames";
 export const ManagedRuleExclusionMatchVariable = /*@__PURE__*/ S.String;
 
 /** Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to. */
@@ -2743,8 +3028,7 @@ export type ManagedRuleExclusionSelectorMatchOperator =
   | "Contains"
   | "StartsWith"
   | "EndsWith"
-  | "EqualsAny"
-  | (string & {});
+  | "EqualsAny";
 export const ManagedRuleExclusionSelectorMatchOperator = /*@__PURE__*/ S.String;
 
 /** Exclude variables from managed rule evaluation. */
@@ -2767,19 +3051,21 @@ export const ManagedRuleExclusion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedRuleExclusion>;
 
 /** Describes the exclusions that are applied to all rules in the set. */
-export type ManagedRuleSetExclusionsList = ManagedRuleExclusion[];
+export type ManagedRuleSetExclusionsList = ReadonlyArray<ManagedRuleExclusion>;
 export const ManagedRuleSetExclusionsList = /*@__PURE__*/ S.Array(
   ManagedRuleExclusion,
 ) as any as S.Schema<ManagedRuleSetExclusionsList>;
 
 /** Describes the exclusions that are applied to all rules in the group. */
-export type ManagedRuleGroupOverrideExclusionsList = ManagedRuleExclusion[];
+export type ManagedRuleGroupOverrideExclusionsList =
+  ReadonlyArray<ManagedRuleExclusion>;
 export const ManagedRuleGroupOverrideExclusionsList = /*@__PURE__*/ S.Array(
   ManagedRuleExclusion,
 ) as any as S.Schema<ManagedRuleGroupOverrideExclusionsList>;
 
 /** Describes the exclusions that are applied to this specific rule. */
-export type ManagedRuleOverrideExclusionsList = ManagedRuleExclusion[];
+export type ManagedRuleOverrideExclusionsList =
+  ReadonlyArray<ManagedRuleExclusion>;
 export const ManagedRuleOverrideExclusionsList = /*@__PURE__*/ S.Array(
   ManagedRuleExclusion,
 ) as any as S.Schema<ManagedRuleOverrideExclusionsList>;
@@ -2810,7 +3096,8 @@ export const ManagedRuleOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedRuleOverride>;
 
 /** List of rules that will be disabled. If none specified, all rules in the group will be disabled. */
-export type ManagedRuleGroupOverrideRulesList = ManagedRuleOverride[];
+export type ManagedRuleGroupOverrideRulesList =
+  ReadonlyArray<ManagedRuleOverride>;
 export const ManagedRuleGroupOverrideRulesList = /*@__PURE__*/ S.Array(
   ManagedRuleOverride,
 ) as any as S.Schema<ManagedRuleGroupOverrideRulesList>;
@@ -2835,7 +3122,8 @@ export const ManagedRuleGroupOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedRuleGroupOverride>;
 
 /** Defines the rule group overrides to apply to the rule set. */
-export type ManagedRuleSetRuleGroupOverridesList = ManagedRuleGroupOverride[];
+export type ManagedRuleSetRuleGroupOverridesList =
+  ReadonlyArray<ManagedRuleGroupOverride>;
 export const ManagedRuleSetRuleGroupOverridesList = /*@__PURE__*/ S.Array(
   ManagedRuleGroupOverride,
 ) as any as S.Schema<ManagedRuleSetRuleGroupOverridesList>;
@@ -2864,7 +3152,8 @@ export const ManagedRuleSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedRuleSet" }) as any as S.Schema<ManagedRuleSet>;
 
 /** List of rule sets. */
-export type ManagedRuleSetListManagedRuleSetsList = ManagedRuleSet[];
+export type ManagedRuleSetListManagedRuleSetsList =
+  ReadonlyArray<ManagedRuleSet>;
 export const ManagedRuleSetListManagedRuleSetsList = /*@__PURE__*/ S.Array(
   ManagedRuleSet,
 ) as any as S.Schema<ManagedRuleSetListManagedRuleSetsList>;
@@ -2873,12 +3162,11 @@ export const ManagedRuleSetListManagedRuleSetsList = /*@__PURE__*/ S.Array(
 export type ExceptionMatchVariable =
   | "RequestUri"
   | "SocketAddr"
-  | "RequestHeaderNames"
-  | (string & {});
+  | "RequestHeaderNames";
 export const ExceptionMatchVariable = /*@__PURE__*/ S.String;
 
 /** Comparison operator to apply to the selector when specifying which elements in the collection this exception applies to.. */
-export type ExceptionSelectorMatchOperator = "Equals" | (string & {});
+export type ExceptionSelectorMatchOperator = "Equals";
 export const ExceptionSelectorMatchOperator = /*@__PURE__*/ S.String;
 
 /** Comparison operator to apply to the value to be matched.. */
@@ -2888,12 +3176,11 @@ export type ExceptionValueMatchOperator =
   | "StartsWith"
   | "EndsWith"
   | "EqualsAny"
-  | "IPMatch"
-  | (string & {});
+  | "IPMatch";
 export const ExceptionValueMatchOperator = /*@__PURE__*/ S.String;
 
 /** List of values to be matched with. */
-export type ManagedRuleSetExceptionMatchValuesList = string[];
+export type ManagedRuleSetExceptionMatchValuesList = ReadonlyArray<string>;
 export const ManagedRuleSetExceptionMatchValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ManagedRuleSetExceptionMatchValuesList>;
@@ -2910,7 +3197,7 @@ export const RuleScope = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleScope" }) as any as S.Schema<RuleScope>;
 
 /** List of rule scopes. */
-export type RuleGroupScopeRuleScopesList = RuleScope[];
+export type RuleGroupScopeRuleScopesList = ReadonlyArray<RuleScope>;
 export const RuleGroupScopeRuleScopesList = /*@__PURE__*/ S.Array(
   RuleScope,
 ) as any as S.Schema<RuleGroupScopeRuleScopesList>;
@@ -2930,7 +3217,8 @@ export const RuleGroupScope = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleGroupScope" }) as any as S.Schema<RuleGroupScope>;
 
 /** List of rule group scopes. */
-export type ManagedRuleSetScopeRuleGroupScopesList = RuleGroupScope[];
+export type ManagedRuleSetScopeRuleGroupScopesList =
+  ReadonlyArray<RuleGroupScope>;
 export const ManagedRuleSetScopeRuleGroupScopesList = /*@__PURE__*/ S.Array(
   RuleGroupScope,
 ) as any as S.Schema<ManagedRuleSetScopeRuleGroupScopesList>;
@@ -2955,7 +3243,8 @@ export const ManagedRuleSetScope = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedRuleSetScope>;
 
 /** Scope(s) of the exception. */
-export type ManagedRuleSetExceptionScopesList = ManagedRuleSetScope[];
+export type ManagedRuleSetExceptionScopesList =
+  ReadonlyArray<ManagedRuleSetScope>;
 export const ManagedRuleSetExceptionScopesList = /*@__PURE__*/ S.Array(
   ManagedRuleSetScope,
 ) as any as S.Schema<ManagedRuleSetExceptionScopesList>;
@@ -2990,7 +3279,7 @@ export const ManagedRuleSetException = /*@__PURE__*/ S.suspend(() =>
 
 /** List of exceptions. */
 export type ManagedRuleSetExceptionListExceptionsList =
-  ManagedRuleSetException[];
+  ReadonlyArray<ManagedRuleSetException>;
 export const ManagedRuleSetExceptionListExceptionsList = /*@__PURE__*/ S.Array(
   ManagedRuleSetException,
 ) as any as S.Schema<ManagedRuleSetExceptionListExceptionsList>;
@@ -3024,6 +3313,93 @@ export const ManagedRuleSetList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedRuleSetList",
 }) as any as S.Schema<ManagedRuleSetList>;
 
+/** Defines web application firewall policy properties. */
+export interface WebApplicationFirewallPolicyPropertiesInput {
+  /** Describes settings for the policy. */
+  policySettings?: PolicySettings;
+  /** Describes custom rules inside the policy. */
+  customRules?: CustomRuleList;
+  /** Describes managed rules inside the policy. */
+  managedRules?: ManagedRuleSetList;
+}
+export const WebApplicationFirewallPolicyPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      policySettings: S.optional(PolicySettings),
+      customRules: S.optional(CustomRuleList),
+      managedRules: S.optional(ManagedRuleSetList),
+    }),
+  ).annotate({
+    identifier: "WebApplicationFirewallPolicyPropertiesInput",
+  }) as any as S.Schema<WebApplicationFirewallPolicyPropertiesInput>;
+
+/** Name of the pricing tier. */
+export type SkuName =
+  | "Classic_AzureFrontDoor"
+  | "Standard_AzureFrontDoor"
+  | "Premium_AzureFrontDoor";
+export const SkuName = /*@__PURE__*/ S.String;
+
+/** The pricing tier of the web application firewall policy. */
+export interface Sku {
+  /** Name of the pricing tier. */
+  name?: SkuName;
+}
+export const Sku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(SkuName),
+  }),
+).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+
+export interface PoliciesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Web Application Firewall Policy. */
+  policyName: string;
+  /** Resource location. */
+  location?: string;
+  /** Resource tags. */
+  tags?: PoliciesCreateOrUpdateRequestTagsMap;
+  /** Properties of the web application firewall policy. */
+  properties?: WebApplicationFirewallPolicyPropertiesInput;
+  /** Gets a unique read-only string that changes whenever the resource is updated. */
+  etag?: string;
+  /** The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified. */
+  sku?: Sku;
+}
+export const PoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    policyName: S.String.pipe(T.Label()),
+    location: S.optional(S.String),
+    tags: S.optional(PoliciesCreateOrUpdateRequestTagsMap),
+    properties: S.optional(WebApplicationFirewallPolicyPropertiesInput),
+    etag: S.optional(S.String),
+    sku: S.optional(Sku),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/{policyName}",
+      code: 200,
+      apiVersion: "2025-11-01",
+    }),
+  ),
+).annotate({
+  identifier: "PoliciesCreateOrUpdateRequest",
+}) as any as S.Schema<PoliciesCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type PoliciesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PoliciesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PoliciesCreateOrUpdateResponseTagsMap>;
+
 /** Defines the Resource ID for a Frontend Endpoint. */
 export interface FrontendEndpointLink {
   /** Resource ID. */
@@ -3039,7 +3415,7 @@ export const FrontendEndpointLink = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes Frontend Endpoints associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList =
-  FrontendEndpointLink[];
+  ReadonlyArray<FrontendEndpointLink>;
 export const WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList =
   /*@__PURE__*/ S.Array(
     FrontendEndpointLink,
@@ -3060,7 +3436,7 @@ export const RoutingRuleLink = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes Routing Rules associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList =
-  RoutingRuleLink[];
+  ReadonlyArray<RoutingRuleLink>;
 export const WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList =
   /*@__PURE__*/ S.Array(
     RoutingRuleLink,
@@ -3081,7 +3457,7 @@ export const SecurityPolicyLink = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes Security Policy associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList =
-  SecurityPolicyLink[];
+  ReadonlyArray<SecurityPolicyLink>;
 export const WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyLink,
@@ -3094,8 +3470,7 @@ export type PolicyResourceState =
   | "Enabled"
   | "Disabling"
   | "Disabled"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const PolicyResourceState = /*@__PURE__*/ S.String;
 
 /** Defines web application firewall policy properties. */
@@ -3138,25 +3513,6 @@ export const WebApplicationFirewallPolicyProperties = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "WebApplicationFirewallPolicyProperties",
 }) as any as S.Schema<WebApplicationFirewallPolicyProperties>;
-
-/** Name of the pricing tier. */
-export type SkuName =
-  | "Classic_AzureFrontDoor"
-  | "Standard_AzureFrontDoor"
-  | "Premium_AzureFrontDoor"
-  | (string & {});
-export const SkuName = /*@__PURE__*/ S.String;
-
-/** The pricing tier of the web application firewall policy. */
-export interface Sku {
-  /** Name of the pricing tier. */
-  name?: SkuName;
-}
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(SkuName),
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 export interface PoliciesCreateOrUpdateResponse {
   /** Resource ID. */
@@ -3355,7 +3711,7 @@ export const WebApplicationFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The WebApplicationFirewallPolicy items on this page */
 export type WebApplicationFirewallPolicyListValueList =
-  WebApplicationFirewallPolicy[];
+  ReadonlyArray<WebApplicationFirewallPolicy>;
 export const WebApplicationFirewallPolicyListValueList = /*@__PURE__*/ S.Array(
   WebApplicationFirewallPolicy,
 ) as any as S.Schema<WebApplicationFirewallPolicyListValueList>;
@@ -3395,6 +3751,15 @@ export const PoliciesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesListBySubscriptionRequest",
 }) as any as S.Schema<PoliciesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type PoliciesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PoliciesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestTagsMap>;
+
 export interface PoliciesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3402,14 +3767,15 @@ export interface PoliciesUpdateRequest {
   resourceGroupName: string;
   /** The name of the Web Application Firewall Policy. */
   policyName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: PoliciesUpdateRequestTagsMap;
 }
 export const PoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     policyName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(PoliciesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3499,12 +3865,7 @@ export const PreconfiguredEndpointTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PreconfiguredEndpointTagsMap>;
 
 /** The type of endpoint */
-export type EndpointType =
-  | "AFD"
-  | "AzureRegion"
-  | "CDN"
-  | "ATM"
-  | (string & {});
+export type EndpointType = "AFD" | "AzureRegion" | "CDN" | "ATM";
 export const EndpointType = /*@__PURE__*/ S.String;
 
 /** Defines the properties of a preconfigured endpoint */
@@ -3558,7 +3919,8 @@ export const PreconfiguredEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreconfiguredEndpoint>;
 
 /** The PreconfiguredEndpoint items on this page */
-export type PreconfiguredEndpointListValueList = PreconfiguredEndpoint[];
+export type PreconfiguredEndpointListValueList =
+  ReadonlyArray<PreconfiguredEndpoint>;
 export const PreconfiguredEndpointListValueList = /*@__PURE__*/ S.Array(
   PreconfiguredEndpoint,
 ) as any as S.Schema<PreconfiguredEndpointListValueList>;
@@ -3582,8 +3944,7 @@ export const PreconfiguredEndpointList = /*@__PURE__*/ S.suspend(() =>
 export type ReportsGetLatencyScorecardsRequestAggregationInterval =
   | "Daily"
   | "Weekly"
-  | "Monthly"
-  | (string & {});
+  | "Monthly";
 export const ReportsGetLatencyScorecardsRequestAggregationInterval =
   /*@__PURE__*/ S.String;
 
@@ -3674,7 +4035,8 @@ export const LatencyMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LatencyMetric" }) as any as S.Schema<LatencyMetric>;
 
 /** The latency metrics of the Latency Scorecard */
-export type LatencyScorecardPropertiesLatencyMetricsList = LatencyMetric[];
+export type LatencyScorecardPropertiesLatencyMetricsList =
+  ReadonlyArray<LatencyMetric>;
 export const LatencyScorecardPropertiesLatencyMetricsList =
   /*@__PURE__*/ S.Array(
     LatencyMetric,
@@ -3744,10 +4106,7 @@ export const ReportsGetLatencyScorecardsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportsGetLatencyScorecardsResponse",
 }) as any as S.Schema<ReportsGetLatencyScorecardsResponse>;
 
-export type ReportsGetTimeseriesRequestAggregationInterval =
-  | "Hourly"
-  | "Daily"
-  | (string & {});
+export type ReportsGetTimeseriesRequestAggregationInterval = "Hourly" | "Daily";
 export const ReportsGetTimeseriesRequestAggregationInterval =
   /*@__PURE__*/ S.String;
 
@@ -3755,8 +4114,7 @@ export type ReportsGetTimeseriesRequestTimeseriesType =
   | "MeasurementCounts"
   | "LatencyP50"
   | "LatencyP75"
-  | "LatencyP95"
-  | (string & {});
+  | "LatencyP95";
 export const ReportsGetTimeseriesRequestTimeseriesType = /*@__PURE__*/ S.String;
 
 export interface ReportsGetTimeseriesRequest {
@@ -3817,7 +4175,7 @@ export const ReportsGetTimeseriesResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ReportsGetTimeseriesResponseTagsMap>;
 
 /** The aggregation interval of the Timeseries */
-export type AggregationInterval = "Hourly" | "Daily" | (string & {});
+export type AggregationInterval = "Hourly" | "Daily";
 export const AggregationInterval = /*@__PURE__*/ S.String;
 
 /** The type of Timeseries */
@@ -3825,8 +4183,7 @@ export type TimeseriesType =
   | "MeasurementCounts"
   | "LatencyP50"
   | "LatencyP75"
-  | "LatencyP95"
-  | (string & {});
+  | "LatencyP95";
 export const TimeseriesType = /*@__PURE__*/ S.String;
 
 /** Defines a timeseries datapoint used in a timeseries */
@@ -3846,7 +4203,8 @@ export const TimeseriesDataPoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TimeseriesDataPoint>;
 
 /** The set of data points for the timeseries */
-export type TimeseriesPropertiesTimeseriesDataList = TimeseriesDataPoint[];
+export type TimeseriesPropertiesTimeseriesDataList =
+  ReadonlyArray<TimeseriesDataPoint>;
 export const TimeseriesPropertiesTimeseriesDataList = /*@__PURE__*/ S.Array(
   TimeseriesDataPoint,
 ) as any as S.Schema<TimeseriesPropertiesTimeseriesDataList>;
@@ -3918,7 +4276,8 @@ export interface RulesEnginesCreateOrUpdateRequest {
   frontDoorName: string;
   /** Name of the Rules Engine which is unique within the Front Door. */
   rulesEngineName: string;
-  body: unknown;
+  /** Properties of the Rules Engine Configuration. */
+  properties?: RulesEngineProperties;
 }
 export const RulesEnginesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3926,7 +4285,7 @@ export const RulesEnginesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     frontDoorName: S.String.pipe(T.Label()),
     rulesEngineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(RulesEngineProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4070,7 +4429,7 @@ export const RulesEnginesListByFrontDoorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesEnginesListByFrontDoorRequest>;
 
 /** The RulesEngine items on this page */
-export type RulesEngineListResultValueList = RulesEngine[];
+export type RulesEngineListResultValueList = ReadonlyArray<RulesEngine>;
 export const RulesEngineListResultValueList = /*@__PURE__*/ S.Array(
   RulesEngine,
 ) as any as S.Schema<RulesEngineListResultValueList>;

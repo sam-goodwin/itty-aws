@@ -68,8 +68,7 @@ export type AttributionSettingsAttributionModelEnum =
   | "CROSS_CHANNEL_FIRST_CLICK"
   | "CROSS_CHANNEL_LINEAR"
   | "CROSS_CHANNEL_POSITION_BASED"
-  | "CROSS_CHANNEL_TIME_DECAY"
-  | (string & {});
+  | "CROSS_CHANNEL_TIME_DECAY";
 export const AttributionSettingsAttributionModelEnum = /*@__PURE__*/ S.String;
 
 /** Message representing the type of a conversion event. */
@@ -86,7 +85,7 @@ export const ConversionType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConversionType" }) as any as S.Schema<ConversionType>;
 
-export type ConversionTypeList = ConversionType[];
+export type ConversionTypeList = ReadonlyArray<ConversionType>;
 export const ConversionTypeList = /*@__PURE__*/ S.Array(
   ConversionType,
 ) as any as S.Schema<ConversionTypeList>;
@@ -155,15 +154,13 @@ export type ConversionSourceStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ARCHIVED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConversionSourceStateEnum = /*@__PURE__*/ S.String;
 
 export type ConversionSourceControllerEnum =
   | "CONTROLLER_UNSPECIFIED"
   | "MERCHANT"
-  | "YOUTUBE_AFFILIATES"
-  | (string & {});
+  | "YOUTUBE_AFFILIATES";
 export const ConversionSourceControllerEnum = /*@__PURE__*/ S.String;
 
 /** Represents a conversion source owned by a Merchant account. A merchant account can have up to 200 conversion sources. */
@@ -287,7 +284,7 @@ export const ListAccountsConversionSourcesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccountsConversionSourcesRequest",
 }) as any as S.Schema<ListAccountsConversionSourcesRequest>;
 
-export type ConversionSourceList = ConversionSource[];
+export type ConversionSourceList = ReadonlyArray<ConversionSource>;
 export const ConversionSourceList = /*@__PURE__*/ S.Array(
   ConversionSource,
 ) as any as S.Schema<ConversionSourceList>;

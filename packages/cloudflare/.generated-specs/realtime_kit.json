@@ -2915,6 +2915,42 @@
           "traits": {
             "smithy.api#enumValue": "sales_call"
           }
+        },
+        "CLIENT_CHECK_IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client_check_in"
+          }
+        },
+        "INTERVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "interview"
+          }
+        },
+        "DAILY_STANDUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily_standup"
+          }
+        },
+        "ONE_ON_ONE_MEETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "one_on_one_meeting"
+          }
+        },
+        "LECTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lecture"
+          }
+        },
+        "CODE_REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "code_review"
+          }
         }
       }
     },
@@ -2983,6 +3019,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "de"
+          }
+        },
+        "HI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hi"
+          }
+        },
+        "SV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sv"
+          }
+        },
+        "RU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ru"
+          }
+        },
+        "PL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pl"
+          }
+        },
+        "EL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "el"
+          }
+        },
+        "FR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fr"
+          }
+        },
+        "NL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nl"
           }
         }
       }
@@ -3126,6 +3204,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "digitalocean"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
           }
         }
       }
@@ -3479,6 +3569,42 @@
           "traits": {
             "smithy.api#enumValue": "sales_call"
           }
+        },
+        "CLIENT_CHECK_IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client_check_in"
+          }
+        },
+        "INTERVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "interview"
+          }
+        },
+        "DAILY_STANDUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily_standup"
+          }
+        },
+        "ONE_ON_ONE_MEETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "one_on_one_meeting"
+          }
+        },
+        "LECTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lecture"
+          }
+        },
+        "CODE_REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "code_review"
+          }
         }
       }
     },
@@ -3547,6 +3673,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "de"
+          }
+        },
+        "HI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hi"
+          }
+        },
+        "SV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sv"
+          }
+        },
+        "RU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ru"
+          }
+        },
+        "PL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pl"
+          }
+        },
+        "EL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "el"
+          }
+        },
+        "FR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fr"
+          }
+        },
+        "NL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nl"
           }
         }
       }
@@ -3690,6 +3858,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "digitalocean"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
           }
         }
       }
@@ -4514,6 +4694,18 @@
           "traits": {
             "smithy.api#enumValue": "digitalocean"
           }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
+          }
         }
       }
     },
@@ -4990,6 +5182,42 @@
           "traits": {
             "smithy.api#enumValue": "sales_call"
           }
+        },
+        "CLIENT_CHECK_IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client_check_in"
+          }
+        },
+        "INTERVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "interview"
+          }
+        },
+        "DAILY_STANDUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily_standup"
+          }
+        },
+        "ONE_ON_ONE_MEETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "one_on_one_meeting"
+          }
+        },
+        "LECTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lecture"
+          }
+        },
+        "CODE_REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "code_review"
+          }
         }
       }
     },
@@ -5058,6 +5286,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "de"
+          }
+        },
+        "HI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hi"
+          }
+        },
+        "SV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sv"
+          }
+        },
+        "RU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ru"
+          }
+        },
+        "PL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pl"
+          }
+        },
+        "EL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "el"
+          }
+        },
+        "FR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fr"
+          }
+        },
+        "NL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nl"
           }
         }
       }
@@ -5201,6 +5471,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "digitalocean"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
           }
         }
       }
@@ -5984,6 +6266,42 @@
           "traits": {
             "smithy.api#enumValue": "sales_call"
           }
+        },
+        "CLIENT_CHECK_IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client_check_in"
+          }
+        },
+        "INTERVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "interview"
+          }
+        },
+        "DAILY_STANDUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily_standup"
+          }
+        },
+        "ONE_ON_ONE_MEETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "one_on_one_meeting"
+          }
+        },
+        "LECTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lecture"
+          }
+        },
+        "CODE_REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "code_review"
+          }
         }
       }
     },
@@ -6052,6 +6370,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "de"
+          }
+        },
+        "HI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hi"
+          }
+        },
+        "SV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sv"
+          }
+        },
+        "RU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ru"
+          }
+        },
+        "PL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pl"
+          }
+        },
+        "EL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "el"
+          }
+        },
+        "FR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fr"
+          }
+        },
+        "NL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nl"
           }
         }
       }
@@ -6195,6 +6555,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "digitalocean"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
           }
         }
       }
@@ -6555,6 +6927,42 @@
           "traits": {
             "smithy.api#enumValue": "sales_call"
           }
+        },
+        "CLIENT_CHECK_IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client_check_in"
+          }
+        },
+        "INTERVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "interview"
+          }
+        },
+        "DAILY_STANDUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily_standup"
+          }
+        },
+        "ONE_ON_ONE_MEETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "one_on_one_meeting"
+          }
+        },
+        "LECTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lecture"
+          }
+        },
+        "CODE_REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "code_review"
+          }
         }
       }
     },
@@ -6623,6 +7031,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "de"
+          }
+        },
+        "HI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hi"
+          }
+        },
+        "SV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sv"
+          }
+        },
+        "RU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ru"
+          }
+        },
+        "PL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pl"
+          }
+        },
+        "EL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "el"
+          }
+        },
+        "FR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fr"
+          }
+        },
+        "NL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nl"
           }
         }
       }
@@ -6766,6 +7216,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "digitalocean"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
           }
         }
       }
@@ -7177,6 +7639,42 @@
           "traits": {
             "smithy.api#enumValue": "sales_call"
           }
+        },
+        "CLIENT_CHECK_IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client_check_in"
+          }
+        },
+        "INTERVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "interview"
+          }
+        },
+        "DAILY_STANDUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily_standup"
+          }
+        },
+        "ONE_ON_ONE_MEETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "one_on_one_meeting"
+          }
+        },
+        "LECTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lecture"
+          }
+        },
+        "CODE_REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "code_review"
+          }
         }
       }
     },
@@ -7245,6 +7743,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "de"
+          }
+        },
+        "HI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hi"
+          }
+        },
+        "SV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sv"
+          }
+        },
+        "RU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ru"
+          }
+        },
+        "PL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pl"
+          }
+        },
+        "EL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "el"
+          }
+        },
+        "FR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fr"
+          }
+        },
+        "NL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nl"
           }
         }
       }
@@ -7388,6 +7928,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "digitalocean"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
           }
         }
       }
@@ -7771,6 +8323,42 @@
           "traits": {
             "smithy.api#enumValue": "sales_call"
           }
+        },
+        "CLIENT_CHECK_IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client_check_in"
+          }
+        },
+        "INTERVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "interview"
+          }
+        },
+        "DAILY_STANDUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily_standup"
+          }
+        },
+        "ONE_ON_ONE_MEETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "one_on_one_meeting"
+          }
+        },
+        "LECTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lecture"
+          }
+        },
+        "CODE_REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "code_review"
+          }
         }
       }
     },
@@ -7839,6 +8427,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "de"
+          }
+        },
+        "HI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hi"
+          }
+        },
+        "SV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sv"
+          }
+        },
+        "RU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ru"
+          }
+        },
+        "PL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pl"
+          }
+        },
+        "EL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "el"
+          }
+        },
+        "FR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fr"
+          }
+        },
+        "NL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nl"
           }
         }
       }
@@ -7982,6 +8612,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "digitalocean"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
           }
         }
       }
@@ -8411,6 +9053,18 @@
           "traits": {
             "smithy.api#enumValue": "qvga"
           }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
+          }
         }
       }
     },
@@ -8452,6 +9106,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "qvga"
+          }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
           }
         }
       }
@@ -8823,13 +9489,41 @@
         }
       }
     },
+    "com.cloudflare.realtime_kit#PresetsCreateRequestPermissionsPluginsConfigValueAccessControl": {
+      "type": "enum",
+      "members": {
+        "FULL_ACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FULL_ACCESS"
+          }
+        },
+        "VIEW_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_ONLY"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#PresetsCreateRequestPermissionsPluginsConfigValue": {
+      "type": "structure",
+      "members": {
+        "access_control": {
+          "target": "com.cloudflare.realtime_kit#PresetsCreateRequestPermissionsPluginsConfigValueAccessControl"
+        },
+        "handles_view_only": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.realtime_kit#PresetsCreateRequestPermissionsPluginsConfigMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.realtime_kit#PresetsCreateRequestPermissionsPluginsConfigValue"
       }
     },
     "com.cloudflare.realtime_kit#PresetsCreateRequestPermissionsPlugins": {
@@ -9464,6 +10158,18 @@
           "traits": {
             "smithy.api#enumValue": "qvga"
           }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
+          }
         }
       }
     },
@@ -9505,6 +10211,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "qvga"
+          }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
           }
         }
       }
@@ -9876,13 +10594,41 @@
         }
       }
     },
+    "com.cloudflare.realtime_kit#PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl": {
+      "type": "enum",
+      "members": {
+        "FULL_ACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FULL_ACCESS"
+          }
+        },
+        "VIEW_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_ONLY"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#PresetsCreateResponseDataPermissionsPluginsConfigValue": {
+      "type": "structure",
+      "members": {
+        "access_control": {
+          "target": "com.cloudflare.realtime_kit#PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl"
+        },
+        "handles_view_only": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.realtime_kit#PresetsCreateResponseDataPermissionsPluginsConfigMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.realtime_kit#PresetsCreateResponseDataPermissionsPluginsConfigValue"
       }
     },
     "com.cloudflare.realtime_kit#PresetsCreateResponseDataPermissionsPlugins": {
@@ -10583,6 +11329,18 @@
           "traits": {
             "smithy.api#enumValue": "qvga"
           }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
+          }
         }
       }
     },
@@ -10624,6 +11382,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "qvga"
+          }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
           }
         }
       }
@@ -10995,13 +11765,41 @@
         }
       }
     },
+    "com.cloudflare.realtime_kit#PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl": {
+      "type": "enum",
+      "members": {
+        "FULL_ACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FULL_ACCESS"
+          }
+        },
+        "VIEW_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_ONLY"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#PresetsDeleteResponseDataPermissionsPluginsConfigValue": {
+      "type": "structure",
+      "members": {
+        "access_control": {
+          "target": "com.cloudflare.realtime_kit#PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl"
+        },
+        "handles_view_only": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.realtime_kit#PresetsDeleteResponseDataPermissionsPluginsConfigMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.realtime_kit#PresetsDeleteResponseDataPermissionsPluginsConfigValue"
       }
     },
     "com.cloudflare.realtime_kit#PresetsDeleteResponseDataPermissionsPlugins": {
@@ -11845,6 +12643,18 @@
           "traits": {
             "smithy.api#enumValue": "qvga"
           }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
+          }
         }
       }
     },
@@ -11886,6 +12696,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "qvga"
+          }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
           }
         }
       }
@@ -12257,13 +13079,41 @@
         }
       }
     },
+    "com.cloudflare.realtime_kit#PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl": {
+      "type": "enum",
+      "members": {
+        "FULL_ACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FULL_ACCESS"
+          }
+        },
+        "VIEW_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_ONLY"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue": {
+      "type": "structure",
+      "members": {
+        "access_control": {
+          "target": "com.cloudflare.realtime_kit#PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl"
+        },
+        "handles_view_only": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.realtime_kit#PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.realtime_kit#PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue"
       }
     },
     "com.cloudflare.realtime_kit#PresetsGetPresetByIdResponseDataPermissionsPlugins": {
@@ -12955,6 +13805,18 @@
           "traits": {
             "smithy.api#enumValue": "qvga"
           }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
+          }
         }
       }
     },
@@ -12994,6 +13856,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "qvga"
+          }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
           }
         }
       }
@@ -13298,13 +14172,41 @@
         }
       }
     },
+    "com.cloudflare.realtime_kit#PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl": {
+      "type": "enum",
+      "members": {
+        "FULL_ACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FULL_ACCESS"
+          }
+        },
+        "VIEW_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_ONLY"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#PresetsUpdateRequestPermissionsPluginsConfigValue": {
+      "type": "structure",
+      "members": {
+        "access_control": {
+          "target": "com.cloudflare.realtime_kit#PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl"
+        },
+        "handles_view_only": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.realtime_kit#PresetsUpdateRequestPermissionsPluginsConfigMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.realtime_kit#PresetsUpdateRequestPermissionsPluginsConfigValue"
       }
     },
     "com.cloudflare.realtime_kit#PresetsUpdateRequestPermissionsPlugins": {
@@ -13828,6 +14730,18 @@
           "traits": {
             "smithy.api#enumValue": "qvga"
           }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
+          }
         }
       }
     },
@@ -13869,6 +14783,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "qvga"
+          }
+        },
+        "FHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhd"
+          }
+        },
+        "UHD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uhd"
           }
         }
       }
@@ -14240,13 +15166,41 @@
         }
       }
     },
+    "com.cloudflare.realtime_kit#PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl": {
+      "type": "enum",
+      "members": {
+        "FULL_ACCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FULL_ACCESS"
+          }
+        },
+        "VIEW_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VIEW_ONLY"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#PresetsUpdateResponseDataPermissionsPluginsConfigValue": {
+      "type": "structure",
+      "members": {
+        "access_control": {
+          "target": "com.cloudflare.realtime_kit#PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl"
+        },
+        "handles_view_only": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
     "com.cloudflare.realtime_kit#PresetsUpdateResponseDataPermissionsPluginsConfigMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.realtime_kit#PresetsUpdateResponseDataPermissionsPluginsConfigValue"
       }
     },
     "com.cloudflare.realtime_kit#PresetsUpdateResponseDataPermissionsPlugins": {
@@ -14928,6 +15882,24 @@
           "traits": {
             "smithy.api#enumValue": "UPLOADING"
           }
+        },
+        "UPLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UPLOADED"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ERRORED"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAUSED"
+          }
         }
       }
     },
@@ -15104,6 +16076,24 @@
           "traits": {
             "smithy.api#enumValue": "UPLOADING"
           }
+        },
+        "UPLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UPLOADED"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ERRORED"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAUSED"
+          }
         }
       }
     },
@@ -15274,6 +16264,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "digitalocean"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
           }
         }
       }
@@ -15551,6 +16553,24 @@
           "traits": {
             "smithy.api#enumValue": "UPLOADING"
           }
+        },
+        "UPLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UPLOADED"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ERRORED"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAUSED"
+          }
         }
       }
     },
@@ -15672,6 +16692,24 @@
           "traits": {
             "smithy.api#enumValue": "UPLOADING"
           }
+        },
+        "UPLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UPLOADED"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ERRORED"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAUSED"
+          }
         }
       }
     },
@@ -15774,6 +16812,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "digitalocean"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
           }
         }
       }
@@ -16146,6 +17196,18 @@
           "traits": {
             "smithy.api#enumValue": "digitalocean"
           }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
+          }
         }
       }
     },
@@ -16485,6 +17547,24 @@
           "traits": {
             "smithy.api#enumValue": "UPLOADING"
           }
+        },
+        "UPLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UPLOADED"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ERRORED"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAUSED"
+          }
         }
       }
     },
@@ -16655,6 +17735,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "digitalocean"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
           }
         }
       }
@@ -17006,6 +18098,18 @@
           "traits": {
             "smithy.api#enumValue": "digitalocean"
           }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
+          }
         }
       }
     },
@@ -17324,6 +18428,24 @@
           "traits": {
             "smithy.api#enumValue": "UPLOADING"
           }
+        },
+        "UPLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UPLOADED"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ERRORED"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAUSED"
+          }
         }
       }
     },
@@ -17494,6 +18616,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "digitalocean"
+          }
+        },
+        "GCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gcs"
+          }
+        },
+        "SFTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sftp"
           }
         }
       }
@@ -17722,13 +18856,41 @@
         "smithy.api#documentation": "Starts recording a meeting. The meeting can be started by an App admin directly, or a participant with permissions to start a recording, based on the type of authorization used."
       }
     },
+    "com.cloudflare.realtime_kit#RecordingsStartTrackRecordingRequestLayersValueMediaKind": {
+      "type": "enum",
+      "members": {
+        "AUDIO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audio"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#RecordingsStartTrackRecordingRequestLayersValue": {
+      "type": "structure",
+      "members": {
+        "file_name_prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A file name prefix to apply for files generated from this layer"
+          }
+        },
+        "media_kind": {
+          "target": "com.cloudflare.realtime_kit#RecordingsStartTrackRecordingRequestLayersValueMediaKind",
+          "traits": {
+            "smithy.api#documentation": "Media kind to record. Track recording currently supports audio only."
+          }
+        }
+      }
+    },
     "com.cloudflare.realtime_kit#RecordingsStartTrackRecordingRequestLayersMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.realtime_kit#RecordingsStartTrackRecordingRequestLayersValue"
       }
     },
     "com.cloudflare.realtime_kit#RecordingsStartTrackRecordingRequestUserIdsList": {
@@ -17799,6 +18961,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "UPLOADING"
+          }
+        },
+        "UPLOADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UPLOADED"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ERRORED"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAUSED"
           }
         }
       }
@@ -18025,6 +19205,18 @@
           "traits": {
             "smithy.api#enumValue": "precall_network_information"
           }
+        },
+        "EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "events"
+          }
+        },
+        "QUALITY_STATS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quality_stats"
+          }
         }
       }
     },
@@ -18115,6 +19307,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "AUDIO_ROOM"
+          }
+        },
+        "LIVESTREAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIVESTREAM"
+          }
+        },
+        "CHAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHAT"
           }
         }
       }
@@ -18527,20 +19731,25 @@
         }
       }
     },
-    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadata": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
+        },
+        "Double": {
+          "target": "smithy.api#Double"
+        },
+        "Boolean": {
+          "target": "smithy.api#Boolean"
+        }
       }
     },
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem": {
       "type": "structure",
       "members": {
         "metadata": {
-          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap",
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadata",
           "traits": {
             "smithy.api#documentation": "Event-specific metadata. Keys vary per event; values are primitive scalars (string, number, boolean, or null)."
           }
@@ -21146,6 +22355,18 @@
           "traits": {
             "smithy.api#enumValue": "AUDIO_ROOM"
           }
+        },
+        "LIVESTREAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIVESTREAM"
+          }
+        },
+        "CHAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHAT"
+          }
         }
       }
     },
@@ -21500,6 +22721,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "AUDIO_ROOM"
+          }
+        },
+        "LIVESTREAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LIVESTREAM"
+          }
+        },
+        "CHAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHAT"
           }
         }
       }
@@ -22264,6 +23497,42 @@
           "traits": {
             "smithy.api#enumValue": "meeting.participantJoined"
           }
+        },
+        "MEETING_PARTICIPANTLEFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.participantLeft"
+          }
+        },
+        "MEETING_CHATSYNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.chatSynced"
+          }
+        },
+        "RECORDING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recording.statusUpdate"
+          }
+        },
+        "LIVESTREAMING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "livestreaming.statusUpdate"
+          }
+        },
+        "MEETING_TRANSCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.transcript"
+          }
+        },
+        "MEETING_SUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.summary"
+          }
         }
       }
     },
@@ -22343,6 +23612,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "meeting.participantJoined"
+          }
+        },
+        "MEETING_PARTICIPANTLEFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.participantLeft"
+          }
+        },
+        "MEETING_CHATSYNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.chatSynced"
+          }
+        },
+        "RECORDING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recording.statusUpdate"
+          }
+        },
+        "LIVESTREAMING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "livestreaming.statusUpdate"
+          }
+        },
+        "MEETING_TRANSCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.transcript"
+          }
+        },
+        "MEETING_SUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.summary"
           }
         }
       }
@@ -22490,6 +23795,42 @@
           "traits": {
             "smithy.api#enumValue": "meeting.participantJoined"
           }
+        },
+        "MEETING_PARTICIPANTLEFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.participantLeft"
+          }
+        },
+        "MEETING_CHATSYNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.chatSynced"
+          }
+        },
+        "RECORDING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recording.statusUpdate"
+          }
+        },
+        "LIVESTREAMING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "livestreaming.statusUpdate"
+          }
+        },
+        "MEETING_TRANSCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.transcript"
+          }
+        },
+        "MEETING_SUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.summary"
+          }
         }
       }
     },
@@ -22606,6 +23947,42 @@
           "traits": {
             "smithy.api#enumValue": "meeting.participantJoined"
           }
+        },
+        "MEETING_PARTICIPANTLEFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.participantLeft"
+          }
+        },
+        "RECORDING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recording.statusUpdate"
+          }
+        },
+        "LIVESTREAMING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "livestreaming.statusUpdate"
+          }
+        },
+        "MEETING_CHATSYNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.chatSynced"
+          }
+        },
+        "MEETING_TRANSCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.transcript"
+          }
+        },
+        "MEETING_SUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.summary"
+          }
         }
       }
     },
@@ -22686,6 +24063,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "meeting.participantJoined"
+          }
+        },
+        "MEETING_PARTICIPANTLEFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.participantLeft"
+          }
+        },
+        "MEETING_CHATSYNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.chatSynced"
+          }
+        },
+        "RECORDING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recording.statusUpdate"
+          }
+        },
+        "LIVESTREAMING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "livestreaming.statusUpdate"
+          }
+        },
+        "MEETING_TRANSCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.transcript"
+          }
+        },
+        "MEETING_SUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.summary"
           }
         }
       }
@@ -22833,6 +24246,42 @@
           "traits": {
             "smithy.api#enumValue": "meeting.participantJoined"
           }
+        },
+        "MEETING_PARTICIPANTLEFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.participantLeft"
+          }
+        },
+        "MEETING_CHATSYNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.chatSynced"
+          }
+        },
+        "RECORDING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recording.statusUpdate"
+          }
+        },
+        "LIVESTREAMING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "livestreaming.statusUpdate"
+          }
+        },
+        "MEETING_TRANSCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.transcript"
+          }
+        },
+        "MEETING_SUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.summary"
+          }
         }
       }
     },
@@ -22973,6 +24422,42 @@
           "traits": {
             "smithy.api#enumValue": "meeting.participantJoined"
           }
+        },
+        "MEETING_PARTICIPANTLEFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.participantLeft"
+          }
+        },
+        "MEETING_CHATSYNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.chatSynced"
+          }
+        },
+        "RECORDING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recording.statusUpdate"
+          }
+        },
+        "LIVESTREAMING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "livestreaming.statusUpdate"
+          }
+        },
+        "MEETING_TRANSCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.transcript"
+          }
+        },
+        "MEETING_SUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.summary"
+          }
         }
       }
     },
@@ -23095,6 +24580,42 @@
           "traits": {
             "smithy.api#enumValue": "meeting.participantJoined"
           }
+        },
+        "MEETING_PARTICIPANTLEFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.participantLeft"
+          }
+        },
+        "MEETING_CHATSYNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.chatSynced"
+          }
+        },
+        "RECORDING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recording.statusUpdate"
+          }
+        },
+        "LIVESTREAMING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "livestreaming.statusUpdate"
+          }
+        },
+        "MEETING_TRANSCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.transcript"
+          }
+        },
+        "MEETING_SUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.summary"
+          }
         }
       }
     },
@@ -23181,6 +24702,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "meeting.participantJoined"
+          }
+        },
+        "MEETING_PARTICIPANTLEFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.participantLeft"
+          }
+        },
+        "MEETING_CHATSYNCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.chatSynced"
+          }
+        },
+        "RECORDING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "recording.statusUpdate"
+          }
+        },
+        "LIVESTREAMING_STATUSUPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "livestreaming.statusUpdate"
+          }
+        },
+        "MEETING_TRANSCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.transcript"
+          }
+        },
+        "MEETING_SUMMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "meeting.summary"
           }
         }
       }

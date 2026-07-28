@@ -170,8 +170,7 @@ export type ProfileStatus =
   | "UPDATING"
   | "CREATING"
   | "DELETED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ProfileStatus = /*@__PURE__*/ S.String;
 
 export type Rfc3339Timestamp = Date;
@@ -304,11 +303,7 @@ export const CreateProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProfileRequest",
 }) as any as S.Schema<CreateProfileRequest>;
-export type ShareStatus =
-  | "NOT_SHARED"
-  | "SHARED_WITH_ME"
-  | "SHARED_BY_ME"
-  | (string & {});
+export type ShareStatus = "NOT_SHARED" | "SHARED_WITH_ME" | "SHARED_BY_ME";
 export const ShareStatus = /*@__PURE__*/ S.String;
 
 export interface Profile {

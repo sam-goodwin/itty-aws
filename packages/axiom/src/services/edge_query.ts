@@ -12,11 +12,7 @@ import * as Retry from "../retry.ts";
 
 export type { AxiomOpError, AxiomOpContext };
 
-export type QueryAplRequestFormat =
-  | "legacy"
-  | "tabular"
-  | "tabular-rows"
-  | (string & {});
+export type QueryAplRequestFormat = "legacy" | "tabular" | "tabular-rows";
 export const QueryAplRequestFormat = /*@__PURE__*/ S.String;
 
 export interface QueryAplRequestDefaultOrderItem {
@@ -33,12 +29,13 @@ export const QueryAplRequestDefaultOrderItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryAplRequestDefaultOrderItem>;
 
 /** The default order to use when no order is specified in the query. */
-export type QueryAplRequestDefaultOrderList = QueryAplRequestDefaultOrderItem[];
+export type QueryAplRequestDefaultOrderList =
+  ReadonlyArray<QueryAplRequestDefaultOrderItem>;
 export const QueryAplRequestDefaultOrderList = /*@__PURE__*/ S.Array(
   QueryAplRequestDefaultOrderItem,
 ) as any as S.Schema<QueryAplRequestDefaultOrderList>;
 
-export type QueryAplRequestLibrariesList = string[];
+export type QueryAplRequestLibrariesList = ReadonlyArray<string>;
 export const QueryAplRequestLibrariesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryAplRequestLibrariesList>;

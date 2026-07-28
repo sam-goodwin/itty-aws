@@ -108,8 +108,7 @@ export type ActivityLogListRequestScope =
   | "Metric"
   | "TableCertification"
   | "Billing"
-  | "Loop"
-  | (string & {});
+  | "Loop";
 export const ActivityLogListRequestScope = /*@__PURE__*/ S.String;
 
 /** * `Cohort` - Cohort * `FeatureFlag` - FeatureFlag * `Person` - Person * `Group` - Group * `Insight` - Insight * `Plugin` - Plugin * `PluginConfig` - PluginConfig * `HogFunction` - HogFunction * `HogFlow` - HogFlow * `DataManagement` - DataManagement * `EventDefinition` - EventDefinition * `PropertyDefinition` - PropertyDefinition * `Notebook` - Notebook * `Endpoint` - Endpoint * `EndpointVersion` - EndpointVersion * `Dashboard` - Dashboard * `Replay` - Replay * `Experiment` - Experiment * `ExperimentHoldout` - ExperimentHoldout * `ExperimentSavedMetric` - ExperimentSavedMetric * `Survey` - Survey * `EarlyAccessFeature` - EarlyAccessFeature * `SessionRecordingPlaylist` - SessionRecordingPlaylist * `Comment` - Comment * `Team` - Team * `Project` - Project * `ErrorTrackingIssue` - ErrorTrackingIssue * `DataWarehouseSavedQuery` - DataWarehouseSavedQuery * `LegalDocument` - LegalDocument * `Organization` - Organization * `OrganizationDomain` - OrganizationDomain * `IdentityProviderConfig` - IdentityProviderConfig * `OrganizationMembership` - OrganizationMembership * `Role` - Role * `UserGroup` - UserGroup * `BatchExport` - BatchExport * `BatchImport` - BatchImport * `ExportedAsset` - ExportedAsset * `Integration` - Integration * `Annotation` - Annotation * `Tag` - Tag * `TaggedItem` - TaggedItem * `Subscription` - Subscription * `PersonalAPIKey` - PersonalAPIKey * `ProjectSecretAPIKey` - ProjectSecretAPIKey * `OAuthApplication` - OAuthApplication * `User` - User * `Action` - Action * `AlertConfiguration` - AlertConfiguration * `Threshold` - Threshold * `AlertSubscription` - AlertSubscription * `ExternalDataSource` - ExternalDataSource * `ExternalDataSchema` - ExternalDataSchema * `Evaluation` - Evaluation * `LLMPromptLabel` - LLMPromptLabel * `LLMTrace` - LLMTrace * `AIGatewayCredit` - AIGatewayCredit * `WebAnalyticsFilterPreset` - WebAnalyticsFilterPreset * `CustomerProfileConfig` - CustomerProfileConfig * `Log` - Log * `LogsAlertConfiguration` - LogsAlertConfiguration * `LogsExclusionRule` - LogsExclusionRule * `DashboardWidget` - DashboardWidget * `ProductTour` - ProductTour * `Ticket` - Ticket * `InstanceSetting` - InstanceSetting * `SignalReport` - SignalReport * `SignalScoutConfig` - SignalScoutConfig * `StreamlitApp` - StreamlitApp * `Metric` - Metric * `TableCertification` - TableCertification * `Billing` - Billing * `Loop` - Loop */
@@ -186,12 +185,11 @@ export type ActivityLogListRequestScopesItem =
   | "Metric"
   | "TableCertification"
   | "Billing"
-  | "Loop"
-  | (string & {});
+  | "Loop";
 export const ActivityLogListRequestScopesItem = /*@__PURE__*/ S.String;
 
 export type ActivityLogListRequestScopesList =
-  ActivityLogListRequestScopesItem[];
+  ReadonlyArray<ActivityLogListRequestScopesItem>;
 export const ActivityLogListRequestScopesList = /*@__PURE__*/ S.Array(
   ActivityLogListRequestScopesItem,
 ) as any as S.Schema<ActivityLogListRequestScopesList>;
@@ -247,11 +245,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -285,7 +282,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 export interface ActivityLog {
   id?: string;
-  user?: UserBasic;
+  user?: UserBasic | null;
   /** is the date of this log item newer than the user's bookmark */
   unread?: boolean;
   team_id?: number | null;
@@ -303,7 +300,7 @@ export interface ActivityLog {
 export const ActivityLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    user: S.optional(UserBasic),
+    user: S.optional(S.NullOr(UserBasic)),
     unread: S.optional(S.Boolean),
     team_id: S.optional(S.NullOr(S.Number)),
     organization_id: S.optional(S.NullOr(S.String)),
@@ -319,7 +316,7 @@ export const ActivityLog = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActivityLog" }) as any as S.Schema<ActivityLog>;
 
-export type PaginatedActivityLogListResultsList = ActivityLog[];
+export type PaginatedActivityLogListResultsList = ReadonlyArray<ActivityLog>;
 export const PaginatedActivityLogListResultsList = /*@__PURE__*/ S.Array(
   ActivityLog,
 ) as any as S.Schema<PaginatedActivityLogListResultsList>;

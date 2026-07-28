@@ -233,8 +233,7 @@ export type TransferConfigStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const TransferConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about a user. */
@@ -264,8 +263,7 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type TransferConfigManagedTableTypeEnum =
   | "MANAGED_TABLE_TYPE_UNSPECIFIED"
   | "NATIVE"
-  | "BIGLAKE"
-  | (string & {});
+  | "BIGLAKE";
 export const TransferConfigManagedTableTypeEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -287,7 +285,7 @@ export const EmailPreferences = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmailPreferences",
 }) as any as S.Schema<EmailPreferences>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -527,7 +525,7 @@ export const DeleteProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(
   identifier: "DeleteProjectsTransferConfigsRunsRequest",
 }) as any as S.Schema<DeleteProjectsTransferConfigsRunsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -614,8 +612,7 @@ export type DataSourceParameterTypeEnum =
   | "BOOLEAN"
   | "RECORD"
   | "PLUS_PAGE"
-  | "LIST"
-  | (string & {});
+  | "LIST";
 export const DataSourceParameterTypeEnum = /*@__PURE__*/ S.String;
 
 /** A parameter used to define custom fields in a data source definition. */
@@ -679,7 +676,7 @@ export const DataSourceParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceParameter",
 }) as any as S.Schema<DataSourceParameter>;
 
-export type DataSourceParameterList = DataSourceParameter[];
+export type DataSourceParameterList = ReadonlyArray<DataSourceParameter>;
 export const DataSourceParameterList = /*@__PURE__*/ S.Array(
   DataSourceParameter,
 ) as any as S.Schema<DataSourceParameterList>;
@@ -688,22 +685,19 @@ export type DataSourceAuthorizationTypeEnum =
   | "AUTHORIZATION_TYPE_UNSPECIFIED"
   | "AUTHORIZATION_CODE"
   | "GOOGLE_PLUS_AUTHORIZATION_CODE"
-  | "FIRST_PARTY_OAUTH"
-  | (string & {});
+  | "FIRST_PARTY_OAUTH";
 export const DataSourceAuthorizationTypeEnum = /*@__PURE__*/ S.String;
 
 export type DataSourceDataRefreshTypeEnum =
   | "DATA_REFRESH_TYPE_UNSPECIFIED"
   | "SLIDING_WINDOW"
-  | "CUSTOM_SLIDING_WINDOW"
-  | (string & {});
+  | "CUSTOM_SLIDING_WINDOW";
 export const DataSourceDataRefreshTypeEnum = /*@__PURE__*/ S.String;
 
 export type DataSourceTransferTypeEnum =
   | "TRANSFER_TYPE_UNSPECIFIED"
   | "BATCH"
-  | "STREAMING"
-  | (string & {});
+  | "STREAMING";
 export const DataSourceTransferTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines the properties and custom parameters for a data source. */
@@ -878,8 +872,7 @@ export type TransferRunStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const TransferRunStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a data transfer run. */
@@ -957,8 +950,7 @@ export const GetProjectsLocationsTransferConfigsTransferResourcesRequest =
 export type TransferResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
   | "RESOURCE_TYPE_TABLE"
-  | "RESOURCE_TYPE_PARTITION"
-  | (string & {});
+  | "RESOURCE_TYPE_PARTITION";
 export const TransferResourceTypeEnum = /*@__PURE__*/ S.String;
 
 export type TransferResourceDestinationEnum =
@@ -967,8 +959,7 @@ export type TransferResourceDestinationEnum =
   | "RESOURCE_DESTINATION_DATAPROC_METASTORE"
   | "RESOURCE_DESTINATION_BIGLAKE_METASTORE"
   | "RESOURCE_DESTINATION_BIGLAKE_REST_CATALOG"
-  | "RESOURCE_DESTINATION_BIGLAKE_HIVE_CATALOG"
-  | (string & {});
+  | "RESOURCE_DESTINATION_BIGLAKE_HIVE_CATALOG";
 export const TransferResourceDestinationEnum = /*@__PURE__*/ S.String;
 
 /** Basic information about a transfer run. */
@@ -993,15 +984,13 @@ export type TransferResourceStatusDetailStateEnum =
   | "RESOURCE_TRANSFER_RUNNING"
   | "RESOURCE_TRANSFER_SUCCEEDED"
   | "RESOURCE_TRANSFER_FAILED"
-  | "RESOURCE_TRANSFER_CANCELLED"
-  | (string & {});
+  | "RESOURCE_TRANSFER_CANCELLED";
 export const TransferResourceStatusDetailStateEnum = /*@__PURE__*/ S.String;
 
 export type TransferStatusMetricUnitEnum =
   | "TRANSFER_STATUS_UNIT_UNSPECIFIED"
   | "TRANSFER_STATUS_UNIT_BYTES"
-  | "TRANSFER_STATUS_UNIT_OBJECTS"
-  | (string & {});
+  | "TRANSFER_STATUS_UNIT_OBJECTS";
 export const TransferStatusMetricUnitEnum = /*@__PURE__*/ S.String;
 
 /** Metrics for tracking the transfer status. */
@@ -1029,7 +1018,7 @@ export const TransferStatusMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransferStatusMetric",
 }) as any as S.Schema<TransferStatusMetric>;
 
-export type TransferStatusMetricList = TransferStatusMetric[];
+export type TransferStatusMetricList = ReadonlyArray<TransferStatusMetric>;
 export const TransferStatusMetricList = /*@__PURE__*/ S.Array(
   TransferStatusMetric,
 ) as any as S.Schema<TransferStatusMetricList>;
@@ -1037,8 +1026,7 @@ export const TransferStatusMetricList = /*@__PURE__*/ S.Array(
 export type TransferStatusSummaryProgressUnitEnum =
   | "TRANSFER_STATUS_UNIT_UNSPECIFIED"
   | "TRANSFER_STATUS_UNIT_BYTES"
-  | "TRANSFER_STATUS_UNIT_OBJECTS"
-  | (string & {});
+  | "TRANSFER_STATUS_UNIT_OBJECTS";
 export const TransferStatusSummaryProgressUnitEnum = /*@__PURE__*/ S.String;
 
 /** Status summary of the resource being transferred. */
@@ -1233,7 +1221,7 @@ export const ListProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsDataSourcesRequest",
 }) as any as S.Schema<ListProjectsDataSourcesRequest>;
 
-export type DataSourceList = DataSource[];
+export type DataSourceList = ReadonlyArray<DataSource>;
 export const DataSourceList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceList>;
@@ -1284,7 +1272,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1358,7 +1346,7 @@ export const ListProjectsLocationsTransferConfigsRequest =
     identifier: "ListProjectsLocationsTransferConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsTransferConfigsRequest>;
 
-export type TransferConfigList = TransferConfig[];
+export type TransferConfigList = ReadonlyArray<TransferConfig>;
 export const TransferConfigList = /*@__PURE__*/ S.Array(
   TransferConfig,
 ) as any as S.Schema<TransferConfigList>;
@@ -1381,8 +1369,7 @@ export const ListTransferConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type ListProjectsLocationsTransferConfigsRunsRunAttemptEnum =
   | "RUN_ATTEMPT_UNSPECIFIED"
-  | "LATEST"
-  | (string & {});
+  | "LATEST";
 export const ListProjectsLocationsTransferConfigsRunsRunAttemptEnum =
   /*@__PURE__*/ S.String;
 
@@ -1392,13 +1379,12 @@ export type ListProjectsLocationsTransferConfigsRunsStatesEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const ListProjectsLocationsTransferConfigsRunsStatesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsTransferConfigsRunsStatesEnumList =
-  ListProjectsLocationsTransferConfigsRunsStatesEnum[];
+  ReadonlyArray<ListProjectsLocationsTransferConfigsRunsStatesEnum>;
 export const ListProjectsLocationsTransferConfigsRunsStatesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsLocationsTransferConfigsRunsStatesEnum,
@@ -1439,7 +1425,7 @@ export const ListProjectsLocationsTransferConfigsRunsRequest =
     identifier: "ListProjectsLocationsTransferConfigsRunsRequest",
   }) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsRequest>;
 
-export type TransferRunList = TransferRun[];
+export type TransferRunList = ReadonlyArray<TransferRun>;
 export const TransferRunList = /*@__PURE__*/ S.Array(
   TransferRun,
 ) as any as S.Schema<TransferRunList>;
@@ -1461,12 +1447,12 @@ export const ListTransferRunsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTransferRunsResponse>;
 
 export type ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum =
-  "MESSAGE_SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "ERROR" | (string & {});
+  "MESSAGE_SEVERITY_UNSPECIFIED" | "INFO" | "WARNING" | "ERROR";
 export const ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList =
-  ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum[];
+  ReadonlyArray<ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum>;
 export const ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum,
@@ -1508,8 +1494,7 @@ export type TransferMessageSeverityEnum =
   | "MESSAGE_SEVERITY_UNSPECIFIED"
   | "INFO"
   | "WARNING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const TransferMessageSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Represents a user facing message for a particular data transfer run. */
@@ -1531,7 +1516,7 @@ export const TransferMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransferMessage",
 }) as any as S.Schema<TransferMessage>;
 
-export type TransferMessageList = TransferMessage[];
+export type TransferMessageList = ReadonlyArray<TransferMessage>;
 export const TransferMessageList = /*@__PURE__*/ S.Array(
   TransferMessage,
 ) as any as S.Schema<TransferMessageList>;
@@ -1580,7 +1565,7 @@ export const ListProjectsLocationsTransferConfigsTransferResourcesRequest =
     identifier: "ListProjectsLocationsTransferConfigsTransferResourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsTransferConfigsTransferResourcesRequest>;
 
-export type TransferResourceList = TransferResource[];
+export type TransferResourceList = ReadonlyArray<TransferResource>;
 export const TransferResourceList = /*@__PURE__*/ S.Array(
   TransferResource,
 ) as any as S.Schema<TransferResourceList>;
@@ -1630,8 +1615,7 @@ export const ListProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListProjectsTransferConfigsRunsRunAttemptEnum =
   | "RUN_ATTEMPT_UNSPECIFIED"
-  | "LATEST"
-  | (string & {});
+  | "LATEST";
 export const ListProjectsTransferConfigsRunsRunAttemptEnum =
   /*@__PURE__*/ S.String;
 
@@ -1641,12 +1625,11 @@ export type ListProjectsTransferConfigsRunsStatesEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "FAILED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const ListProjectsTransferConfigsRunsStatesEnum = /*@__PURE__*/ S.String;
 
 export type ListProjectsTransferConfigsRunsStatesEnumList =
-  ListProjectsTransferConfigsRunsStatesEnum[];
+  ReadonlyArray<ListProjectsTransferConfigsRunsStatesEnum>;
 export const ListProjectsTransferConfigsRunsStatesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsTransferConfigsRunsStatesEnum,
@@ -1691,13 +1674,12 @@ export type ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum =
   | "MESSAGE_SEVERITY_UNSPECIFIED"
   | "INFO"
   | "WARNING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList =
-  ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum[];
+  ReadonlyArray<ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum>;
 export const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum,

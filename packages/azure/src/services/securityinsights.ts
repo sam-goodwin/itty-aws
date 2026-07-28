@@ -12,6 +12,22 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Action property bag. */
+export interface ActionRequestProperties {
+  /** Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resource-group}/providers/Microsoft.Logic/workflows/{my-workflow-id}. */
+  logicAppResourceId: string;
+  /** Logic App Callback URL for this specific workflow. */
+  triggerUri: string;
+}
+export const ActionRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    logicAppResourceId: S.String,
+    triggerUri: S.String,
+  }),
+).annotate({
+  identifier: "ActionRequestProperties",
+}) as any as S.Schema<ActionRequestProperties>;
+
 export interface ActionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -23,7 +39,10 @@ export interface ActionsCreateOrUpdateRequest {
   ruleId: string;
   /** Action ID */
   actionId: string;
-  body: unknown;
+  /** Etag of the azure resource */
+  etag?: string;
+  /** Action properties for put request */
+  properties?: ActionRequestProperties;
 }
 export const ActionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -32,7 +51,8 @@ export const ActionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     workspaceName: S.String.pipe(T.Label()),
     ruleId: S.String.pipe(T.Label()),
     actionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    etag: S.optional(S.String),
+    properties: S.optional(ActionRequestProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -50,8 +70,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -59,8 +78,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -283,7 +301,7 @@ export const ActionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionResponse" }) as any as S.Schema<ActionResponse>;
 
 /** The ActionResponse items on this page */
-export type ActionsListValueList = ActionResponse[];
+export type ActionsListValueList = ReadonlyArray<ActionResponse>;
 export const ActionsListValueList = /*@__PURE__*/ S.Array(
   ActionResponse,
 ) as any as S.Schema<ActionsListValueList>;
@@ -302,6 +320,13 @@ export const ActionsList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActionsList" }) as any as S.Schema<ActionsList>;
 
+/** The kind of the alert rule */
+export type AlertRuleKind =
+  | "Scheduled"
+  | "MicrosoftSecurityIncidentCreation"
+  | "Fusion";
+export const AlertRuleKind = /*@__PURE__*/ S.String;
+
 export interface AlertRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -311,7 +336,10 @@ export interface AlertRulesCreateOrUpdateRequest {
   workspaceName: string;
   /** Alert rule ID */
   ruleId: string;
-  body: unknown;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind: AlertRuleKind;
+  /** Etag of the azure resource */
+  etag?: string;
 }
 export const AlertRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -319,7 +347,8 @@ export const AlertRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     ruleId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: AlertRuleKind,
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -331,14 +360,6 @@ export const AlertRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AlertRulesCreateOrUpdateRequest",
 }) as any as S.Schema<AlertRulesCreateOrUpdateRequest>;
-
-/** The kind of the alert rule */
-export type AlertRuleKind =
-  | "Scheduled"
-  | "MicrosoftSecurityIncidentCreation"
-  | "Fusion"
-  | (string & {});
-export const AlertRuleKind = /*@__PURE__*/ S.String;
 
 export interface AlertRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -509,7 +530,7 @@ export const AlertRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertRule" }) as any as S.Schema<AlertRule>;
 
 /** The AlertRule items on this page */
-export type AlertRulesListValueList = AlertRule[];
+export type AlertRulesListValueList = ReadonlyArray<AlertRule>;
 export const AlertRulesListValueList = /*@__PURE__*/ S.Array(
   AlertRule,
 ) as any as S.Schema<AlertRulesListValueList>;
@@ -631,7 +652,7 @@ export const AlertRuleTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertRuleTemplate>;
 
 /** The AlertRuleTemplate items on this page */
-export type AlertRuleTemplatesListValueList = AlertRuleTemplate[];
+export type AlertRuleTemplatesListValueList = ReadonlyArray<AlertRuleTemplate>;
 export const AlertRuleTemplatesListValueList = /*@__PURE__*/ S.Array(
   AlertRuleTemplate,
 ) as any as S.Schema<AlertRuleTemplatesListValueList>;
@@ -652,41 +673,10 @@ export const AlertRuleTemplatesList = /*@__PURE__*/ S.suspend(() =>
   identifier: "AlertRuleTemplatesList",
 }) as any as S.Schema<AlertRuleTemplatesList>;
 
-export interface AutomationRulesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** The automation rule ID. */
-  automationRuleId: string;
-  body?: unknown;
-}
-export const AutomationRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      automationRuleId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
-        code: 200,
-        apiVersion: "2025-09-01",
-      }),
-    ),
-).annotate({
-  identifier: "AutomationRulesCreateOrUpdateRequest",
-}) as any as S.Schema<AutomationRulesCreateOrUpdateRequest>;
-
-export type TriggersOn = "Incidents" | "Alerts" | (string & {});
+export type TriggersOn = "Incidents" | "Alerts";
 export const TriggersOn = /*@__PURE__*/ S.String;
 
-export type TriggersWhen = "Created" | "Updated" | (string & {});
+export type TriggersWhen = "Created" | "Updated";
 export const TriggersWhen = /*@__PURE__*/ S.String;
 
 export type ConditionType =
@@ -694,8 +684,7 @@ export type ConditionType =
   | "PropertyArray"
   | "PropertyChanged"
   | "PropertyArrayChanged"
-  | "Boolean"
-  | (string & {});
+  | "Boolean";
 export const ConditionType = /*@__PURE__*/ S.String;
 
 /** Describes an automation rule condition. */
@@ -712,7 +701,7 @@ export const AutomationRuleCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** The conditions to evaluate to determine if the automation rule should be triggered on a given object. */
 export type AutomationRuleTriggeringLogicConditionsList =
-  AutomationRuleCondition[];
+  ReadonlyArray<AutomationRuleCondition>;
 export const AutomationRuleTriggeringLogicConditionsList =
   /*@__PURE__*/ S.Array(
     AutomationRuleCondition,
@@ -742,11 +731,7 @@ export const AutomationRuleTriggeringLogic = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutomationRuleTriggeringLogic>;
 
 /** The type of the automation rule action. */
-export type ActionType =
-  | "ModifyProperties"
-  | "RunPlaybook"
-  | "AddIncidentTask"
-  | (string & {});
+export type ActionType = "ModifyProperties" | "RunPlaybook" | "AddIncidentTask";
 export const ActionType = /*@__PURE__*/ S.String;
 
 /** Describes an automation rule action. */
@@ -765,7 +750,72 @@ export const AutomationRuleAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutomationRuleAction>;
 
 /** The actions to execute when the automation rule is triggered. */
-export type AutomationRulePropertiesActionsList = AutomationRuleAction[];
+export type AutomationRulePropertiesInputActionsList =
+  ReadonlyArray<AutomationRuleAction>;
+export const AutomationRulePropertiesInputActionsList = /*@__PURE__*/ S.Array(
+  AutomationRuleAction,
+) as any as S.Schema<AutomationRulePropertiesInputActionsList>;
+
+/** Automation rule properties */
+export interface AutomationRulePropertiesInput {
+  /** The display name of the automation rule. */
+  displayName: string;
+  /** The order of execution of the automation rule. */
+  order: number;
+  /** Describes automation rule triggering logic. */
+  triggeringLogic: AutomationRuleTriggeringLogic;
+  /** The actions to execute when the automation rule is triggered. */
+  actions: AutomationRulePropertiesInputActionsList;
+}
+export const AutomationRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.String,
+    order: S.Number,
+    triggeringLogic: AutomationRuleTriggeringLogic,
+    actions: AutomationRulePropertiesInputActionsList,
+  }),
+).annotate({
+  identifier: "AutomationRulePropertiesInput",
+}) as any as S.Schema<AutomationRulePropertiesInput>;
+
+export interface AutomationRulesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The automation rule ID. */
+  automationRuleId: string;
+  /** Automation rule properties */
+  properties: AutomationRulePropertiesInput;
+  /** Etag of the azure resource */
+  etag?: string;
+}
+export const AutomationRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      workspaceName: S.String.pipe(T.Label()),
+      automationRuleId: S.String.pipe(T.Label()),
+      properties: AutomationRulePropertiesInput,
+      etag: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
+        code: 200,
+        apiVersion: "2025-09-01",
+      }),
+    ),
+).annotate({
+  identifier: "AutomationRulesCreateOrUpdateRequest",
+}) as any as S.Schema<AutomationRulesCreateOrUpdateRequest>;
+
+/** The actions to execute when the automation rule is triggered. */
+export type AutomationRulePropertiesActionsList =
+  ReadonlyArray<AutomationRuleAction>;
 export const AutomationRulePropertiesActionsList = /*@__PURE__*/ S.Array(
   AutomationRuleAction,
 ) as any as S.Schema<AutomationRulePropertiesActionsList>;
@@ -994,7 +1044,7 @@ export const AutomationRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutomationRule" }) as any as S.Schema<AutomationRule>;
 
 /** List of automation rules. */
-export type AutomationRulesListValueList = AutomationRule[];
+export type AutomationRulesListValueList = ReadonlyArray<AutomationRule>;
 export const AutomationRulesListValueList = /*@__PURE__*/ S.Array(
   AutomationRule,
 ) as any as S.Schema<AutomationRulesListValueList>;
@@ -1014,66 +1064,25 @@ export const AutomationRulesList = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutomationRulesList",
 }) as any as S.Schema<AutomationRulesList>;
 
-export interface BookmarksCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the monitor workspace. */
-  workspaceName: string;
-  /** Bookmark ID */
-  bookmarkId: string;
-  body: unknown;
-}
-export const BookmarksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    bookmarkId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/bookmarks/{bookmarkId}",
-      code: 200,
-      apiVersion: "2025-09-01",
-    }),
-  ),
-).annotate({
-  identifier: "BookmarksCreateOrUpdateRequest",
-}) as any as S.Schema<BookmarksCreateOrUpdateRequest>;
-
 /** User information that made some action */
-export interface UserInfo {
-  /** The email of the user. */
-  email?: string;
-  /** The name of the user. */
-  name?: string;
+export interface UserInfoInput {
   /** The object id of the user. */
-  objectId?: string;
+  objectId?: string | null;
 }
-export const UserInfo = /*@__PURE__*/ S.suspend(() =>
+export const UserInfoInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    objectId: S.optional(S.String),
+    objectId: S.optional(S.NullOr(S.String)),
   }),
-).annotate({ identifier: "UserInfo" }) as any as S.Schema<UserInfo>;
+).annotate({ identifier: "UserInfoInput" }) as any as S.Schema<UserInfoInput>;
 
 /** List of labels relevant to this bookmark */
-export type BookmarkPropertiesLabelsList = string[];
-export const BookmarkPropertiesLabelsList = /*@__PURE__*/ S.Array(
+export type BookmarkPropertiesInputLabelsList = ReadonlyArray<string>;
+export const BookmarkPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<BookmarkPropertiesLabelsList>;
+) as any as S.Schema<BookmarkPropertiesInputLabelsList>;
 
 /** The severity of the incident */
-export type IncidentSeverity =
-  | "High"
-  | "Medium"
-  | "Low"
-  | "Informational"
-  | (string & {});
+export type IncidentSeverity = "High" | "Medium" | "Low" | "Informational";
 export const IncidentSeverity = /*@__PURE__*/ S.String;
 
 /** Describes related incident information for the bookmark */
@@ -1095,6 +1104,112 @@ export const IncidentInfo = /*@__PURE__*/ S.suspend(() =>
     relationName: S.optional(S.String),
   }),
 ).annotate({ identifier: "IncidentInfo" }) as any as S.Schema<IncidentInfo>;
+
+/** Describes bookmark properties */
+export interface BookmarkPropertiesInput {
+  /** The time the bookmark was created */
+  created?: string;
+  /** Describes a user that created the bookmark */
+  createdBy?: UserInfoInput;
+  /** The display name of the bookmark */
+  displayName: string;
+  /** List of labels relevant to this bookmark */
+  labels?: BookmarkPropertiesInputLabelsList;
+  /** The notes of the bookmark */
+  notes?: string;
+  /** The query of the bookmark. */
+  query: string;
+  /** The query result of the bookmark. */
+  queryResult?: string;
+  /** The last time the bookmark was updated */
+  updated?: string;
+  /** Describes a user that updated the bookmark */
+  updatedBy?: UserInfoInput;
+  /** The bookmark event time */
+  eventTime?: string;
+  /** The start time for the query */
+  queryStartTime?: string;
+  /** The end time for the query */
+  queryEndTime?: string;
+  /** Describes an incident that relates to bookmark */
+  incidentInfo?: IncidentInfo;
+}
+export const BookmarkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created: S.optional(S.String),
+    createdBy: S.optional(UserInfoInput),
+    displayName: S.String,
+    labels: S.optional(BookmarkPropertiesInputLabelsList),
+    notes: S.optional(S.String),
+    query: S.String,
+    queryResult: S.optional(S.String),
+    updated: S.optional(S.String),
+    updatedBy: S.optional(UserInfoInput),
+    eventTime: S.optional(S.String),
+    queryStartTime: S.optional(S.String),
+    queryEndTime: S.optional(S.String),
+    incidentInfo: S.optional(IncidentInfo),
+  }),
+).annotate({
+  identifier: "BookmarkPropertiesInput",
+}) as any as S.Schema<BookmarkPropertiesInput>;
+
+export interface BookmarksCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the monitor workspace. */
+  workspaceName: string;
+  /** Bookmark ID */
+  bookmarkId: string;
+  /** Bookmark properties */
+  properties?: BookmarkPropertiesInput;
+  /** Etag of the azure resource */
+  etag?: string;
+}
+export const BookmarksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    bookmarkId: S.String.pipe(T.Label()),
+    properties: S.optional(BookmarkPropertiesInput),
+    etag: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/bookmarks/{bookmarkId}",
+      code: 200,
+      apiVersion: "2025-09-01",
+    }),
+  ),
+).annotate({
+  identifier: "BookmarksCreateOrUpdateRequest",
+}) as any as S.Schema<BookmarksCreateOrUpdateRequest>;
+
+/** User information that made some action */
+export interface UserInfo {
+  /** The email of the user. */
+  email?: string;
+  /** The name of the user. */
+  name?: string;
+  /** The object id of the user. */
+  objectId?: string | null;
+}
+export const UserInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    name: S.optional(S.String),
+    objectId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({ identifier: "UserInfo" }) as any as S.Schema<UserInfo>;
+
+/** List of labels relevant to this bookmark */
+export type BookmarkPropertiesLabelsList = ReadonlyArray<string>;
+export const BookmarkPropertiesLabelsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BookmarkPropertiesLabelsList>;
 
 /** Describes bookmark properties */
 export interface BookmarkProperties {
@@ -1314,7 +1429,7 @@ export const Bookmark = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Bookmark" }) as any as S.Schema<Bookmark>;
 
 /** The Bookmark items on this page */
-export type BookmarkListValueList = Bookmark[];
+export type BookmarkListValueList = ReadonlyArray<Bookmark>;
 export const BookmarkListValueList = /*@__PURE__*/ S.Array(
   Bookmark,
 ) as any as S.Schema<BookmarkListValueList>;
@@ -1333,42 +1448,12 @@ export const BookmarkList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BookmarkList" }) as any as S.Schema<BookmarkList>;
 
-export interface ContentPackageInstallRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the monitor workspace. */
-  workspaceName: string;
-  /** package Id */
-  packageId: string;
-  body: unknown;
-}
-export const ContentPackageInstallRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    packageId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages/{packageId}",
-      code: 200,
-      apiVersion: "2025-09-01",
-    }),
-  ),
-).annotate({
-  identifier: "ContentPackageInstallRequest",
-}) as any as S.Schema<ContentPackageInstallRequest>;
-
 /** The package kind */
-export type PackageKind = "Solution" | "Standalone" | (string & {});
+export type PackageKind = "Solution" | "Standalone";
 export const PackageKind = /*@__PURE__*/ S.String;
 
 /** The boolean value the metadata is for. */
-export type Flag = "true" | "false" | (string & {});
+export type Flag = "true" | "false";
 export const Flag = /*@__PURE__*/ S.String;
 
 /** Source type of the content */
@@ -1376,8 +1461,7 @@ export type SourceKind =
   | "LocalWorkspace"
   | "Community"
   | "Solution"
-  | "SourceRepository"
-  | (string & {});
+  | "SourceRepository";
 export const SourceKind = /*@__PURE__*/ S.String;
 
 /** The original source of the content item, where it comes from. */
@@ -1415,7 +1499,7 @@ export const MetadataAuthor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataAuthor" }) as any as S.Schema<MetadataAuthor>;
 
 /** Type of support for content item */
-export type SupportTier = "Microsoft" | "Partner" | "Community" | (string & {});
+export type SupportTier = "Microsoft" | "Partner" | "Community";
 export const SupportTier = /*@__PURE__*/ S.String;
 
 /** Support information for the content item. */
@@ -1462,16 +1546,16 @@ export type Kind =
   | "ResourcesDataConnector"
   | "Notebook"
   | "Standalone"
-  | "SummaryRule"
-  | (string & {});
+  | "SummaryRule";
 export const Kind = /*@__PURE__*/ S.String;
 
 /** Operator used for list of dependencies in criteria array. */
-export type MetadataDependencyOperator = "AND" | "OR" | (string & {});
+export type MetadataDependencyOperator = "AND" | "OR";
 export const MetadataDependencyOperator = /*@__PURE__*/ S.String;
 
 /** This is the list of dependencies we must fulfill, according to the AND/OR operator */
-export type MetadataDependenciesCriteriaList = MetadataDependencies[];
+export type MetadataDependenciesCriteriaList =
+  ReadonlyArray<MetadataDependencies>;
 export const MetadataDependenciesCriteriaList = /*@__PURE__*/ S.Array(
   S.suspend(() => MetadataDependencies),
 ) as any as S.Schema<MetadataDependenciesCriteriaList>;
@@ -1505,19 +1589,19 @@ export const MetadataDependencies = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetadataDependencies>;
 
 /** Providers for the package item */
-export type PackageBasePropertiesProvidersList = string[];
+export type PackageBasePropertiesProvidersList = ReadonlyArray<string>;
 export const PackageBasePropertiesProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PackageBasePropertiesProvidersList>;
 
 /** domain for the solution content item */
-export type MetadataCategoriesDomainsList = string[];
+export type MetadataCategoriesDomainsList = ReadonlyArray<string>;
 export const MetadataCategoriesDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataCategoriesDomainsList>;
 
 /** Industry verticals for the solution content item */
-export type MetadataCategoriesVerticalsList = string[];
+export type MetadataCategoriesVerticalsList = ReadonlyArray<string>;
 export const MetadataCategoriesVerticalsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataCategoriesVerticalsList>;
@@ -1539,14 +1623,16 @@ export const MetadataCategories = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetadataCategories>;
 
 /** the tactics the resource covers */
-export type PackageBasePropertiesThreatAnalysisTacticsList = string[];
+export type PackageBasePropertiesThreatAnalysisTacticsList =
+  ReadonlyArray<string>;
 export const PackageBasePropertiesThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PackageBasePropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type PackageBasePropertiesThreatAnalysisTechniquesList = string[];
+export type PackageBasePropertiesThreatAnalysisTechniquesList =
+  ReadonlyArray<string>;
 export const PackageBasePropertiesThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1634,6 +1720,40 @@ export const PackageBaseProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PackageBaseProperties",
 }) as any as S.Schema<PackageBaseProperties>;
+
+export interface ContentPackageInstallRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the monitor workspace. */
+  workspaceName: string;
+  /** package Id */
+  packageId: string;
+  /** package properties */
+  properties?: PackageBaseProperties;
+  /** Etag of the azure resource */
+  etag?: string;
+}
+export const ContentPackageInstallRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    packageId: S.String.pipe(T.Label()),
+    properties: S.optional(PackageBaseProperties),
+    etag: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/contentPackages/{packageId}",
+      code: 200,
+      apiVersion: "2025-09-01",
+    }),
+  ),
+).annotate({
+  identifier: "ContentPackageInstallRequest",
+}) as any as S.Schema<ContentPackageInstallRequest>;
 
 export interface ContentPackageInstallResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1790,7 +1910,7 @@ export const PackageModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PackageModel" }) as any as S.Schema<PackageModel>;
 
 /** The PackageModel items on this page */
-export type PackageListValueList = PackageModel[];
+export type PackageListValueList = ReadonlyArray<PackageModel>;
 export const PackageListValueList = /*@__PURE__*/ S.Array(
   PackageModel,
 ) as any as S.Schema<PackageListValueList>;
@@ -1908,39 +2028,41 @@ export const ContentTemplateGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContentTemplateGetRequest>;
 
 /** Providers for the content item */
-export type TemplatePropertiesProvidersList = string[];
+export type TemplatePropertiesProvidersList = ReadonlyArray<string>;
 export const TemplatePropertiesProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TemplatePropertiesProvidersList>;
 
 /** the tactics the resource covers */
-export type TemplatePropertiesThreatAnalysisTacticsList = string[];
+export type TemplatePropertiesThreatAnalysisTacticsList = ReadonlyArray<string>;
 export const TemplatePropertiesThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TemplatePropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type TemplatePropertiesThreatAnalysisTechniquesList = string[];
+export type TemplatePropertiesThreatAnalysisTechniquesList =
+  ReadonlyArray<string>;
 export const TemplatePropertiesThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TemplatePropertiesThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
-export type TemplatePropertiesPreviewImagesList = string[];
+export type TemplatePropertiesPreviewImagesList = ReadonlyArray<string>;
 export const TemplatePropertiesPreviewImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TemplatePropertiesPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type TemplatePropertiesPreviewImagesDarkList = string[];
+export type TemplatePropertiesPreviewImagesDarkList = ReadonlyArray<string>;
 export const TemplatePropertiesPreviewImagesDarkList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TemplatePropertiesPreviewImagesDarkList>;
 
 /** Dependant templates. Expandable. */
-export type TemplatePropertiesDependantTemplatesList = TemplateProperties[];
+export type TemplatePropertiesDependantTemplatesList =
+  ReadonlyArray<TemplateProperties>;
 export const TemplatePropertiesDependantTemplatesList = /*@__PURE__*/ S.Array(
   S.suspend(() => TemplateProperties),
 ) as any as S.Schema<TemplatePropertiesDependantTemplatesList>;
@@ -2067,6 +2189,131 @@ export const ContentTemplateGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContentTemplateGetResponse",
 }) as any as S.Schema<ContentTemplateGetResponse>;
 
+/** Providers for the content item */
+export type TemplatePropertiesInputProvidersList = ReadonlyArray<string>;
+export const TemplatePropertiesInputProvidersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TemplatePropertiesInputProvidersList>;
+
+/** the tactics the resource covers */
+export type TemplatePropertiesInputThreatAnalysisTacticsList =
+  ReadonlyArray<string>;
+export const TemplatePropertiesInputThreatAnalysisTacticsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<TemplatePropertiesInputThreatAnalysisTacticsList>;
+
+/** the techniques the resource covers, these have to be aligned with the tactics being used */
+export type TemplatePropertiesInputThreatAnalysisTechniquesList =
+  ReadonlyArray<string>;
+export const TemplatePropertiesInputThreatAnalysisTechniquesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<TemplatePropertiesInputThreatAnalysisTechniquesList>;
+
+/** preview image file names. These will be taken from the solution artifacts */
+export type TemplatePropertiesInputPreviewImagesList = ReadonlyArray<string>;
+export const TemplatePropertiesInputPreviewImagesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TemplatePropertiesInputPreviewImagesList>;
+
+/** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
+export type TemplatePropertiesInputPreviewImagesDarkList =
+  ReadonlyArray<string>;
+export const TemplatePropertiesInputPreviewImagesDarkList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<TemplatePropertiesInputPreviewImagesDarkList>;
+
+/** Template property bag. */
+export interface TemplatePropertiesInput {
+  /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Dynamic for user-created. This is the resource name */
+  contentId?: string;
+  /** Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template */
+  contentProductId?: string;
+  /** Version of the package. Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices. Can also be any string, but then we cannot guarantee any version checks */
+  packageVersion?: string;
+  /** Version of the content. Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices. Can also be any string, but then we cannot guarantee any version checks */
+  version?: string;
+  /** The display name of the template */
+  displayName?: string;
+  /** The kind of content the template is for. */
+  contentKind?: Kind;
+  /** Source of the content. This is where/how it was created. */
+  source?: MetadataSource;
+  /** The creator of the content item. */
+  author?: MetadataAuthor;
+  /** Support information for the template - type, name, contact information */
+  support?: MetadataSupport;
+  /** Dependencies for the content item, what other content items it requires to work. Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats. */
+  dependencies?: MetadataDependencies;
+  /** Categories for the item */
+  categories?: MetadataCategories;
+  /** Providers for the content item */
+  providers?: TemplatePropertiesInputProvidersList;
+  /** first publish date content item */
+  firstPublishDate?: string;
+  /** last publish date for the content item */
+  lastPublishDate?: string;
+  /** The custom version of the content. A optional free text */
+  customVersion?: string;
+  /** Schema version of the content. Can be used to distinguish between different flow based on the schema version */
+  contentSchemaVersion?: string;
+  /** the icon identifier. this id can later be fetched from the content metadata */
+  icon?: string;
+  /** the tactics the resource covers */
+  threatAnalysisTactics?: TemplatePropertiesInputThreatAnalysisTacticsList;
+  /** the techniques the resource covers, these have to be aligned with the tactics being used */
+  threatAnalysisTechniques?: TemplatePropertiesInputThreatAnalysisTechniquesList;
+  /** preview image file names. These will be taken from the solution artifacts */
+  previewImages?: TemplatePropertiesInputPreviewImagesList;
+  /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
+  previewImagesDark?: TemplatePropertiesInputPreviewImagesDarkList;
+  /** the package Id contains this template */
+  packageId?: string;
+  /** the packageKind of the package contains this template */
+  packageKind?: PackageKind;
+  /** the name of the package contains this template */
+  packageName?: string;
+  /** The JSON of the ARM template to deploy active content. Expandable. */
+  mainTemplate?: unknown;
+}
+export const TemplatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentId: S.optional(S.String),
+    contentProductId: S.optional(S.String),
+    packageVersion: S.optional(S.String),
+    version: S.optional(S.String),
+    displayName: S.optional(S.String),
+    contentKind: S.optional(Kind),
+    source: S.optional(MetadataSource),
+    author: S.optional(MetadataAuthor),
+    support: S.optional(MetadataSupport),
+    dependencies: S.optional(MetadataDependencies),
+    categories: S.optional(MetadataCategories),
+    providers: S.optional(TemplatePropertiesInputProvidersList),
+    firstPublishDate: S.optional(S.String),
+    lastPublishDate: S.optional(S.String),
+    customVersion: S.optional(S.String),
+    contentSchemaVersion: S.optional(S.String),
+    icon: S.optional(S.String),
+    threatAnalysisTactics: S.optional(
+      TemplatePropertiesInputThreatAnalysisTacticsList,
+    ),
+    threatAnalysisTechniques: S.optional(
+      TemplatePropertiesInputThreatAnalysisTechniquesList,
+    ),
+    previewImages: S.optional(TemplatePropertiesInputPreviewImagesList),
+    previewImagesDark: S.optional(TemplatePropertiesInputPreviewImagesDarkList),
+    packageId: S.optional(S.String),
+    packageKind: S.optional(PackageKind),
+    packageName: S.optional(S.String),
+    mainTemplate: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "TemplatePropertiesInput",
+}) as any as S.Schema<TemplatePropertiesInput>;
+
 export interface ContentTemplateInstallRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2076,7 +2323,10 @@ export interface ContentTemplateInstallRequest {
   workspaceName: string;
   /** template Id */
   templateId: string;
-  body: unknown;
+  /** template properties */
+  properties?: TemplatePropertiesInput;
+  /** Etag of the azure resource */
+  etag?: string;
 }
 export const ContentTemplateInstallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2084,7 +2334,8 @@ export const ContentTemplateInstallRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     templateId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(TemplatePropertiesInput),
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2200,7 +2451,7 @@ export const TemplateModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TemplateModel" }) as any as S.Schema<TemplateModel>;
 
 /** The TemplateModel items on this page */
-export type TemplateListValueList = TemplateModel[];
+export type TemplateListValueList = ReadonlyArray<TemplateModel>;
 export const TemplateListValueList = /*@__PURE__*/ S.Array(
   TemplateModel,
 ) as any as S.Schema<TemplateListValueList>;
@@ -2219,6 +2470,10 @@ export const TemplateList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TemplateList" }) as any as S.Schema<TemplateList>;
 
+/** The kind of the data connector definitions */
+export type DataConnectorDefinitionKind = "Customizable";
+export const DataConnectorDefinitionKind = /*@__PURE__*/ S.String;
+
 export interface DataConnectorDefinitionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2228,7 +2483,10 @@ export interface DataConnectorDefinitionsCreateOrUpdateRequest {
   workspaceName: string;
   /** The data connector definition name. */
   dataConnectorDefinitionName: string;
-  body: unknown;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind: DataConnectorDefinitionKind;
+  /** Etag of the azure resource */
+  etag?: string;
 }
 export const DataConnectorDefinitionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2237,7 +2495,8 @@ export const DataConnectorDefinitionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       dataConnectorDefinitionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: DataConnectorDefinitionKind,
+      etag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2249,10 +2508,6 @@ export const DataConnectorDefinitionsCreateOrUpdateRequest =
   ).annotate({
     identifier: "DataConnectorDefinitionsCreateOrUpdateRequest",
   }) as any as S.Schema<DataConnectorDefinitionsCreateOrUpdateRequest>;
-
-/** The kind of the data connector definitions */
-export type DataConnectorDefinitionKind = "Customizable" | (string & {});
-export const DataConnectorDefinitionKind = /*@__PURE__*/ S.String;
 
 export interface DataConnectorDefinitionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2428,7 +2683,7 @@ export const DataConnectorDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of data connector definitions. */
 export type DataConnectorDefinitionArmCollectionWrapperValueList =
-  DataConnectorDefinition[];
+  ReadonlyArray<DataConnectorDefinition>;
 export const DataConnectorDefinitionArmCollectionWrapperValueList =
   /*@__PURE__*/ S.Array(
     DataConnectorDefinition,
@@ -2451,36 +2706,6 @@ export const DataConnectorDefinitionArmCollectionWrapper =
     identifier: "DataConnectorDefinitionArmCollectionWrapper",
   }) as any as S.Schema<DataConnectorDefinitionArmCollectionWrapper>;
 
-export interface DataConnectorsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the monitor workspace. */
-  workspaceName: string;
-  /** Connector ID */
-  dataConnectorId: string;
-  body: unknown;
-}
-export const DataConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    dataConnectorId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
-      code: 200,
-      apiVersion: "2025-09-01",
-    }),
-  ),
-).annotate({
-  identifier: "DataConnectorsCreateOrUpdateRequest",
-}) as any as S.Schema<DataConnectorsCreateOrUpdateRequest>;
-
 /** The kind of the data connector */
 export type DataConnectorKind =
   | "AzureActiveDirectory"
@@ -2493,9 +2718,42 @@ export type DataConnectorKind =
   | "MicrosoftDefenderAdvancedThreatProtection"
   | "MicrosoftThreatIntelligence"
   | "PremiumMicrosoftDefenderForThreatIntelligence"
-  | "RestApiPoller"
-  | (string & {});
+  | "RestApiPoller";
 export const DataConnectorKind = /*@__PURE__*/ S.String;
+
+export interface DataConnectorsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the monitor workspace. */
+  workspaceName: string;
+  /** Connector ID */
+  dataConnectorId: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind: DataConnectorKind;
+  /** Etag of the azure resource */
+  etag?: string;
+}
+export const DataConnectorsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    dataConnectorId: S.String.pipe(T.Label()),
+    kind: DataConnectorKind,
+    etag: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/dataConnectors/{dataConnectorId}",
+      code: 200,
+      apiVersion: "2025-09-01",
+    }),
+  ),
+).annotate({
+  identifier: "DataConnectorsCreateOrUpdateRequest",
+}) as any as S.Schema<DataConnectorsCreateOrUpdateRequest>;
 
 export interface DataConnectorsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2667,7 +2925,7 @@ export const DataConnector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataConnector" }) as any as S.Schema<DataConnector>;
 
 /** The DataConnector items on this page */
-export type DataConnectorListValueList = DataConnector[];
+export type DataConnectorListValueList = ReadonlyArray<DataConnector>;
 export const DataConnectorListValueList = /*@__PURE__*/ S.Array(
   DataConnector,
 ) as any as S.Schema<DataConnectorListValueList>;
@@ -2697,7 +2955,12 @@ export interface EntitiesRunPlaybookRequest {
   workspaceName: string;
   /** entity ID */
   entityIdentifier: string;
-  body?: unknown;
+  /** Incident ARM id. */
+  incidentArmId?: string;
+  /** The tenant id of the playbook resource. */
+  tenantId?: string;
+  /** The resource id of the playbook resource. */
+  logicAppsResourceId: string;
 }
 export const EntitiesRunPlaybookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2705,7 +2968,9 @@ export const EntitiesRunPlaybookRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     entityIdentifier: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    incidentArmId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    logicAppsResourceId: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -2725,6 +2990,19 @@ export const EntitiesRunPlaybookResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EntitiesRunPlaybookResponse",
 }) as any as S.Schema<EntitiesRunPlaybookResponse>;
 
+/** Incident comment property bag. */
+export interface IncidentCommentPropertiesInput {
+  /** The comment message */
+  message: string;
+}
+export const IncidentCommentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.String,
+  }),
+).annotate({
+  identifier: "IncidentCommentPropertiesInput",
+}) as any as S.Schema<IncidentCommentPropertiesInput>;
+
 export interface IncidentCommentsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2736,7 +3014,10 @@ export interface IncidentCommentsCreateOrUpdateRequest {
   incidentId: string;
   /** Incident comment ID */
   incidentCommentId: string;
-  body: unknown;
+  /** Incident comment properties */
+  properties?: IncidentCommentPropertiesInput;
+  /** Etag of the azure resource */
+  etag?: string;
 }
 export const IncidentCommentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2746,7 +3027,8 @@ export const IncidentCommentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       workspaceName: S.String.pipe(T.Label()),
       incidentId: S.String.pipe(T.Label()),
       incidentCommentId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(IncidentCommentPropertiesInput),
+      etag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2974,7 +3256,7 @@ export const IncidentComment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentComment>;
 
 /** The IncidentComment items on this page */
-export type IncidentCommentListValueList = IncidentComment[];
+export type IncidentCommentListValueList = ReadonlyArray<IncidentComment>;
 export const IncidentCommentListValueList = /*@__PURE__*/ S.Array(
   IncidentComment,
 ) as any as S.Schema<IncidentCommentListValueList>;
@@ -2995,6 +3277,19 @@ export const IncidentCommentList = /*@__PURE__*/ S.suspend(() =>
   identifier: "IncidentCommentList",
 }) as any as S.Schema<IncidentCommentList>;
 
+/** Relation property bag. */
+export interface RelationPropertiesInput {
+  /** The resource ID of the related resource */
+  relatedResourceId: string;
+}
+export const RelationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relatedResourceId: S.String,
+  }),
+).annotate({
+  identifier: "RelationPropertiesInput",
+}) as any as S.Schema<RelationPropertiesInput>;
+
 export interface IncidentRelationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3006,7 +3301,10 @@ export interface IncidentRelationsCreateOrUpdateRequest {
   incidentId: string;
   /** Relation Name */
   relationName: string;
-  body: unknown;
+  /** Relation properties */
+  properties?: RelationPropertiesInput;
+  /** Etag of the azure resource */
+  etag?: string;
 }
 export const IncidentRelationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3016,7 +3314,8 @@ export const IncidentRelationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       workspaceName: S.String.pipe(T.Label()),
       incidentId: S.String.pipe(T.Label()),
       relationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RelationPropertiesInput),
+      etag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3242,7 +3541,7 @@ export const Relation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Relation" }) as any as S.Schema<Relation>;
 
 /** The Relation items on this page */
-export type RelationListValueList = Relation[];
+export type RelationListValueList = ReadonlyArray<Relation>;
 export const RelationListValueList = /*@__PURE__*/ S.Array(
   Relation,
 ) as any as S.Schema<RelationListValueList>;
@@ -3261,38 +3560,8 @@ export const RelationList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RelationList" }) as any as S.Schema<RelationList>;
 
-export interface IncidentsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the monitor workspace. */
-  workspaceName: string;
-  /** Incident ID */
-  incidentId: string;
-  body: unknown;
-}
-export const IncidentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    incidentId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}",
-      code: 200,
-      apiVersion: "2025-09-01",
-    }),
-  ),
-).annotate({
-  identifier: "IncidentsCreateOrUpdateRequest",
-}) as any as S.Schema<IncidentsCreateOrUpdateRequest>;
-
 /** The status of the incident */
-export type IncidentStatus = "New" | "Active" | "Closed" | (string & {});
+export type IncidentStatus = "New" | "Active" | "Closed";
 export const IncidentStatus = /*@__PURE__*/ S.String;
 
 /** The reason the incident was closed */
@@ -3300,8 +3569,7 @@ export type IncidentClassification =
   | "Undetermined"
   | "TruePositive"
   | "BenignPositive"
-  | "FalsePositive"
-  | (string & {});
+  | "FalsePositive";
 export const IncidentClassification = /*@__PURE__*/ S.String;
 
 /** The classification reason the incident was closed with */
@@ -3309,12 +3577,11 @@ export type IncidentClassificationReason =
   | "SuspiciousActivity"
   | "SuspiciousButExpected"
   | "IncorrectAlertLogic"
-  | "InaccurateData"
-  | (string & {});
+  | "InaccurateData";
 export const IncidentClassificationReason = /*@__PURE__*/ S.String;
 
 /** The type of the owner the hunt is assigned to. */
-export type OwnerType = "Unknown" | "User" | "Group" | (string & {});
+export type OwnerType = "Unknown" | "User" | "Group";
 export const OwnerType = /*@__PURE__*/ S.String;
 
 /** Information on the user an incident is assigned to */
@@ -3343,7 +3610,7 @@ export const IncidentOwnerInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentOwnerInfo>;
 
 /** The type of the label */
-export type IncidentLabelType = "User" | "AutoAssigned" | (string & {});
+export type IncidentLabelType = "User" | "AutoAssigned";
 export const IncidentLabelType = /*@__PURE__*/ S.String;
 
 /** Represents an incident label */
@@ -3361,13 +3628,96 @@ export const IncidentLabel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IncidentLabel" }) as any as S.Schema<IncidentLabel>;
 
 /** List of labels relevant to this incident */
-export type IncidentPropertiesLabelsList = IncidentLabel[];
+export type IncidentPropertiesInputLabelsList = ReadonlyArray<IncidentLabel>;
+export const IncidentPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
+  IncidentLabel,
+) as any as S.Schema<IncidentPropertiesInputLabelsList>;
+
+/** Describes incident properties */
+export interface IncidentPropertiesInput {
+  /** The title of the incident */
+  title: string;
+  /** The description of the incident */
+  description?: string;
+  /** The severity of the incident */
+  severity: IncidentSeverity;
+  /** The status of the incident */
+  status: IncidentStatus;
+  /** The reason the incident was closed */
+  classification?: IncidentClassification;
+  /** The classification reason the incident was closed with */
+  classificationReason?: IncidentClassificationReason;
+  /** Describes the reason the incident was closed */
+  classificationComment?: string;
+  /** Describes a user that the incident is assigned to */
+  owner?: IncidentOwnerInfo;
+  /** List of labels relevant to this incident */
+  labels?: IncidentPropertiesInputLabelsList;
+  /** The time of the first activity in the incident */
+  firstActivityTimeUtc?: string;
+  /** The time of the last activity in the incident */
+  lastActivityTimeUtc?: string;
+}
+export const IncidentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    title: S.String,
+    description: S.optional(S.String),
+    severity: IncidentSeverity,
+    status: IncidentStatus,
+    classification: S.optional(IncidentClassification),
+    classificationReason: S.optional(IncidentClassificationReason),
+    classificationComment: S.optional(S.String),
+    owner: S.optional(IncidentOwnerInfo),
+    labels: S.optional(IncidentPropertiesInputLabelsList),
+    firstActivityTimeUtc: S.optional(S.String),
+    lastActivityTimeUtc: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IncidentPropertiesInput",
+}) as any as S.Schema<IncidentPropertiesInput>;
+
+export interface IncidentsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the monitor workspace. */
+  workspaceName: string;
+  /** Incident ID */
+  incidentId: string;
+  /** Incident properties */
+  properties?: IncidentPropertiesInput;
+  /** Etag of the azure resource */
+  etag?: string;
+}
+export const IncidentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    incidentId: S.String.pipe(T.Label()),
+    properties: S.optional(IncidentPropertiesInput),
+    etag: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}",
+      code: 200,
+      apiVersion: "2025-09-01",
+    }),
+  ),
+).annotate({
+  identifier: "IncidentsCreateOrUpdateRequest",
+}) as any as S.Schema<IncidentsCreateOrUpdateRequest>;
+
+/** List of labels relevant to this incident */
+export type IncidentPropertiesLabelsList = ReadonlyArray<IncidentLabel>;
 export const IncidentPropertiesLabelsList = /*@__PURE__*/ S.Array(
   IncidentLabel,
 ) as any as S.Schema<IncidentPropertiesLabelsList>;
 
 /** List of product names of alerts in the incident */
-export type IncidentAdditionalDataAlertProductNamesList = string[];
+export type IncidentAdditionalDataAlertProductNamesList = ReadonlyArray<string>;
 export const IncidentAdditionalDataAlertProductNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3391,12 +3741,11 @@ export type AttackTactic =
   | "Impact"
   | "PreAttack"
   | "ImpairProcessControl"
-  | "InhibitResponseFunction"
-  | (string & {});
+  | "InhibitResponseFunction";
 export const AttackTactic = /*@__PURE__*/ S.String;
 
 /** The tactics associated with incident */
-export type IncidentAdditionalDataTacticsList = AttackTactic[];
+export type IncidentAdditionalDataTacticsList = ReadonlyArray<AttackTactic>;
 export const IncidentAdditionalDataTacticsList = /*@__PURE__*/ S.Array(
   AttackTactic,
 ) as any as S.Schema<IncidentAdditionalDataTacticsList>;
@@ -3430,7 +3779,8 @@ export const IncidentAdditionalData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentAdditionalData>;
 
 /** List of resource ids of Analytic rules related to the incident */
-export type IncidentPropertiesRelatedAnalyticRuleIdsList = string[];
+export type IncidentPropertiesRelatedAnalyticRuleIdsList =
+  ReadonlyArray<string>;
 export const IncidentPropertiesRelatedAnalyticRuleIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3686,7 +4036,7 @@ export const Incident = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Incident" }) as any as S.Schema<Incident>;
 
 /** The Incident items on this page */
-export type IncidentListValueList = Incident[];
+export type IncidentListValueList = ReadonlyArray<Incident>;
 export const IncidentListValueList = /*@__PURE__*/ S.Array(
   Incident,
 ) as any as S.Schema<IncidentListValueList>;
@@ -3755,8 +4105,7 @@ export type EntityKindEnum =
   | "MailCluster"
   | "MailMessage"
   | "Mailbox"
-  | "SubmissionMail"
-  | (string & {});
+  | "SubmissionMail";
 export const EntityKindEnum = /*@__PURE__*/ S.String;
 
 /** A bag of custom fields that should be part of the entity and will be presented to the user. */
@@ -3769,7 +4118,7 @@ export const SecurityAlertPropertiesAdditionalDataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SecurityAlertPropertiesAdditionalDataMap>;
 
 /** The confidence level of this alert. */
-export type ConfidenceLevel = "Unknown" | "Low" | "High" | (string & {});
+export type ConfidenceLevel = "Unknown" | "Low" | "High";
 export const ConfidenceLevel = /*@__PURE__*/ S.String;
 
 /** confidence reason item */
@@ -3791,7 +4140,7 @@ export const SecurityAlertPropertiesConfidenceReasonsItem =
 
 /** The confidence reasons */
 export type SecurityAlertPropertiesConfidenceReasonsList =
-  SecurityAlertPropertiesConfidenceReasonsItem[];
+  ReadonlyArray<SecurityAlertPropertiesConfidenceReasonsItem>;
 export const SecurityAlertPropertiesConfidenceReasonsList =
   /*@__PURE__*/ S.Array(
     SecurityAlertPropertiesConfidenceReasonsItem,
@@ -3802,8 +4151,7 @@ export type ConfidenceScoreStatus =
   | "NotApplicable"
   | "InProcess"
   | "NotFinal"
-  | "Final"
-  | (string & {});
+  | "Final";
 export const ConfidenceScoreStatus = /*@__PURE__*/ S.String;
 
 /** The intent of the alert. */
@@ -3821,24 +4169,18 @@ export type KillChainIntent =
   | "Collection"
   | "Exfiltration"
   | "CommandAndControl"
-  | "Impact"
-  | (string & {});
+  | "Impact";
 export const KillChainIntent = /*@__PURE__*/ S.String;
 
 /** Manual action items to take to remediate the alert. */
-export type SecurityAlertPropertiesRemediationStepsList = string[];
+export type SecurityAlertPropertiesRemediationStepsList = ReadonlyArray<string>;
 export const SecurityAlertPropertiesRemediationStepsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SecurityAlertPropertiesRemediationStepsList>;
 
 /** The severity of the alert */
-export type AlertSeverity =
-  | "High"
-  | "Medium"
-  | "Low"
-  | "Informational"
-  | (string & {});
+export type AlertSeverity = "High" | "Medium" | "Low" | "Informational";
 export const AlertSeverity = /*@__PURE__*/ S.String;
 
 /** The lifecycle status of the alert. */
@@ -3847,18 +4189,18 @@ export type AlertStatus =
   | "New"
   | "Resolved"
   | "Dismissed"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const AlertStatus = /*@__PURE__*/ S.String;
 
 /** The tactics of the alert */
-export type SecurityAlertPropertiesTacticsList = AttackTactic[];
+export type SecurityAlertPropertiesTacticsList = ReadonlyArray<AttackTactic>;
 export const SecurityAlertPropertiesTacticsList = /*@__PURE__*/ S.Array(
   AttackTactic,
 ) as any as S.Schema<SecurityAlertPropertiesTacticsList>;
 
 /** The list of resource identifiers of the alert. */
-export type SecurityAlertPropertiesResourceIdentifiersList = unknown[];
+export type SecurityAlertPropertiesResourceIdentifiersList =
+  ReadonlyArray<unknown>;
 export const SecurityAlertPropertiesResourceIdentifiersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -3984,7 +4326,7 @@ export const SecurityAlert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityAlert" }) as any as S.Schema<SecurityAlert>;
 
 /** Array of incident alerts. */
-export type IncidentAlertListValueList = SecurityAlert[];
+export type IncidentAlertListValueList = ReadonlyArray<SecurityAlert>;
 export const IncidentAlertListValueList = /*@__PURE__*/ S.Array(
   SecurityAlert,
 ) as any as S.Schema<IncidentAlertListValueList>;
@@ -4041,7 +4383,7 @@ export const HuntingBookmarkPropertiesAdditionalDataMap =
   ) as any as S.Schema<HuntingBookmarkPropertiesAdditionalDataMap>;
 
 /** List of labels relevant to this bookmark */
-export type HuntingBookmarkPropertiesLabelsList = string[];
+export type HuntingBookmarkPropertiesLabelsList = ReadonlyArray<string>;
 export const HuntingBookmarkPropertiesLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HuntingBookmarkPropertiesLabelsList>;
@@ -4124,7 +4466,7 @@ export const HuntingBookmark = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HuntingBookmark>;
 
 /** Array of incident bookmarks. */
-export type IncidentBookmarkListValueList = HuntingBookmark[];
+export type IncidentBookmarkListValueList = ReadonlyArray<HuntingBookmark>;
 export const IncidentBookmarkListValueList = /*@__PURE__*/ S.Array(
   HuntingBookmark,
 ) as any as S.Schema<IncidentBookmarkListValueList>;
@@ -4194,7 +4536,7 @@ export const Entity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
 
 /** Array of the incident related entities. */
-export type IncidentEntitiesResponseEntitiesList = Entity[];
+export type IncidentEntitiesResponseEntitiesList = ReadonlyArray<Entity>;
 export const IncidentEntitiesResponseEntitiesList = /*@__PURE__*/ S.Array(
   Entity,
 ) as any as S.Schema<IncidentEntitiesResponseEntitiesList>;
@@ -4217,7 +4559,7 @@ export const IncidentEntitiesResultsMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata from the incident related entities results. */
 export type IncidentEntitiesResponseMetaDataList =
-  IncidentEntitiesResultsMetadata[];
+  ReadonlyArray<IncidentEntitiesResultsMetadata>;
 export const IncidentEntitiesResponseMetaDataList = /*@__PURE__*/ S.Array(
   IncidentEntitiesResultsMetadata,
 ) as any as S.Schema<IncidentEntitiesResponseMetaDataList>;
@@ -4247,7 +4589,9 @@ export interface IncidentsRunPlaybookRequest {
   workspaceName: string;
   /** The incident identifier. */
   incidentIdentifier: string;
-  body?: unknown;
+  tenantId?: string;
+  /** Related Analytic rule resource id */
+  logicAppsResourceId: string;
 }
 export const IncidentsRunPlaybookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4255,7 +4599,8 @@ export const IncidentsRunPlaybookRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     incidentIdentifier: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tenantId: S.optional(S.String),
+    logicAppsResourceId: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -4275,6 +4620,35 @@ export const IncidentsRunPlaybookResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "IncidentsRunPlaybookResponse",
 }) as any as S.Schema<IncidentsRunPlaybookResponse>;
 
+/** The status of the task */
+export type IncidentTaskStatus = "New" | "Completed";
+export const IncidentTaskStatus = /*@__PURE__*/ S.String;
+
+/** Describes the properties of an incident task */
+export interface IncidentTaskPropertiesInput {
+  /** The title of the task */
+  title: string;
+  /** The description of the task */
+  description?: string;
+  /** The status of the task */
+  status: IncidentTaskStatus;
+  /** Information on the client (user or application) that made some action */
+  createdBy?: ClientInfo;
+  /** Information on the client (user or application) that made some action */
+  lastModifiedBy?: ClientInfo;
+}
+export const IncidentTaskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    title: S.String,
+    description: S.optional(S.String),
+    status: IncidentTaskStatus,
+    createdBy: S.optional(ClientInfo),
+    lastModifiedBy: S.optional(ClientInfo),
+  }),
+).annotate({
+  identifier: "IncidentTaskPropertiesInput",
+}) as any as S.Schema<IncidentTaskPropertiesInput>;
+
 export interface IncidentTasksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4286,7 +4660,10 @@ export interface IncidentTasksCreateOrUpdateRequest {
   incidentId: string;
   /** Incident task ID */
   incidentTaskId: string;
-  body: unknown;
+  /** Describes the properties of an incident task */
+  properties: IncidentTaskPropertiesInput;
+  /** Etag of the azure resource */
+  etag?: string;
 }
 export const IncidentTasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4295,7 +4672,8 @@ export const IncidentTasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     workspaceName: S.String.pipe(T.Label()),
     incidentId: S.String.pipe(T.Label()),
     incidentTaskId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: IncidentTaskPropertiesInput,
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4307,10 +4685,6 @@ export const IncidentTasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IncidentTasksCreateOrUpdateRequest",
 }) as any as S.Schema<IncidentTasksCreateOrUpdateRequest>;
-
-/** The status of the task */
-export type IncidentTaskStatus = "New" | "Completed" | (string & {});
-export const IncidentTaskStatus = /*@__PURE__*/ S.String;
 
 /** Describes the properties of an incident task */
 export interface IncidentTaskProperties {
@@ -4521,7 +4895,7 @@ export const IncidentTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IncidentTask" }) as any as S.Schema<IncidentTask>;
 
 /** List of incident tasks. */
-export type IncidentTaskListValueList = IncidentTask[];
+export type IncidentTaskListValueList = ReadonlyArray<IncidentTask>;
 export const IncidentTaskListValueList = /*@__PURE__*/ S.Array(
   IncidentTask,
 ) as any as S.Schema<IncidentTaskListValueList>;
@@ -4542,64 +4916,35 @@ export const IncidentTaskList = /*@__PURE__*/ S.suspend(() =>
   identifier: "IncidentTaskList",
 }) as any as S.Schema<IncidentTaskList>;
 
-export interface MetadataCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the monitor workspace. */
-  workspaceName: string;
-  /** The Metadata name. */
-  metadataName: string;
-  body: unknown;
-}
-export const MetadataCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    metadataName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/metadata/{metadataName}",
-      code: 200,
-      apiVersion: "2025-09-01",
-    }),
-  ),
-).annotate({
-  identifier: "MetadataCreateRequest",
-}) as any as S.Schema<MetadataCreateRequest>;
-
 /** Providers for the solution content item */
-export type MetadataPropertiesProvidersList = string[];
+export type MetadataPropertiesProvidersList = ReadonlyArray<string>;
 export const MetadataPropertiesProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataPropertiesProvidersList>;
 
 /** the tactics the resource covers */
-export type MetadataPropertiesThreatAnalysisTacticsList = string[];
+export type MetadataPropertiesThreatAnalysisTacticsList = ReadonlyArray<string>;
 export const MetadataPropertiesThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetadataPropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type MetadataPropertiesThreatAnalysisTechniquesList = string[];
+export type MetadataPropertiesThreatAnalysisTechniquesList =
+  ReadonlyArray<string>;
 export const MetadataPropertiesThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetadataPropertiesThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
-export type MetadataPropertiesPreviewImagesList = string[];
+export type MetadataPropertiesPreviewImagesList = ReadonlyArray<string>;
 export const MetadataPropertiesPreviewImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataPropertiesPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type MetadataPropertiesPreviewImagesDarkList = string[];
+export type MetadataPropertiesPreviewImagesDarkList = ReadonlyArray<string>;
 export const MetadataPropertiesPreviewImagesDarkList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetadataPropertiesPreviewImagesDarkList>;
@@ -4674,6 +5019,40 @@ export const MetadataProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MetadataProperties",
 }) as any as S.Schema<MetadataProperties>;
+
+export interface MetadataCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the monitor workspace. */
+  workspaceName: string;
+  /** The Metadata name. */
+  metadataName: string;
+  /** Metadata properties */
+  properties?: MetadataProperties;
+  /** Etag of the azure resource */
+  etag?: string;
+}
+export const MetadataCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    metadataName: S.String.pipe(T.Label()),
+    properties: S.optional(MetadataProperties),
+    etag: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/metadata/{metadataName}",
+      code: 200,
+      apiVersion: "2025-09-01",
+    }),
+  ),
+).annotate({
+  identifier: "MetadataCreateRequest",
+}) as any as S.Schema<MetadataCreateRequest>;
 
 export interface MetadataCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4856,7 +5235,7 @@ export const MetadataModel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataModel" }) as any as S.Schema<MetadataModel>;
 
 /** The MetadataModel items on this page */
-export type MetadataListValueList = MetadataModel[];
+export type MetadataListValueList = ReadonlyArray<MetadataModel>;
 export const MetadataListValueList = /*@__PURE__*/ S.Array(
   MetadataModel,
 ) as any as S.Schema<MetadataListValueList>;
@@ -4875,6 +5254,113 @@ export const MetadataList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetadataList" }) as any as S.Schema<MetadataList>;
 
+/** Providers for the solution content item */
+export type MetadataPropertiesPatchProvidersList = ReadonlyArray<string>;
+export const MetadataPropertiesPatchProvidersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MetadataPropertiesPatchProvidersList>;
+
+/** the tactics the resource covers */
+export type MetadataPropertiesPatchThreatAnalysisTacticsList =
+  ReadonlyArray<string>;
+export const MetadataPropertiesPatchThreatAnalysisTacticsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MetadataPropertiesPatchThreatAnalysisTacticsList>;
+
+/** the techniques the resource covers, these have to be aligned with the tactics being used */
+export type MetadataPropertiesPatchThreatAnalysisTechniquesList =
+  ReadonlyArray<string>;
+export const MetadataPropertiesPatchThreatAnalysisTechniquesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MetadataPropertiesPatchThreatAnalysisTechniquesList>;
+
+/** preview image file names. These will be taken from the solution artifacts */
+export type MetadataPropertiesPatchPreviewImagesList = ReadonlyArray<string>;
+export const MetadataPropertiesPatchPreviewImagesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MetadataPropertiesPatchPreviewImagesList>;
+
+/** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
+export type MetadataPropertiesPatchPreviewImagesDarkList =
+  ReadonlyArray<string>;
+export const MetadataPropertiesPatchPreviewImagesDarkList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MetadataPropertiesPatchPreviewImagesDarkList>;
+
+/** Metadata property bag for patch requests. This is the same as the MetadataProperties, but with nothing required */
+export interface MetadataPropertiesPatch {
+  /** Static ID for the content. Used to identify dependencies and content from solutions or community. Hard-coded/static for out of the box content and solutions. Can be optionally set for user created content to define dependencies. If an active content item is made from a template, both will have the same contentId. */
+  contentId?: string;
+  /** Full parent resource ID of the content item the metadata is for. This is the full resource ID including the scope (subscription and resource group) */
+  parentId?: string;
+  /** Version of the content. Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices. Can also be any string, but then we cannot guarantee any version checks */
+  version?: string;
+  /** The kind of content the metadata is for. */
+  kind?: string;
+  /** Source of the content. This is where/how it was created. */
+  source?: MetadataSource;
+  /** The creator of the content item. */
+  author?: MetadataAuthor;
+  /** Support information for the metadata - type, name, contact information */
+  support?: MetadataSupport;
+  /** Dependencies for the content item, what other content items it requires to work. Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats. */
+  dependencies?: MetadataDependencies;
+  /** Categories for the solution content item */
+  categories?: MetadataCategories;
+  /** Providers for the solution content item */
+  providers?: MetadataPropertiesPatchProvidersList;
+  /** first publish date of solution content item */
+  firstPublishDate?: string;
+  /** last publish date of solution content item */
+  lastPublishDate?: string;
+  /** The custom version of the content. A optional free text */
+  customVersion?: string;
+  /** Schema version of the content. Can be used to distinguish between different flow based on the schema version */
+  contentSchemaVersion?: string;
+  /** the icon identifier. this id can later be fetched from the solution template */
+  icon?: string;
+  /** the tactics the resource covers */
+  threatAnalysisTactics?: MetadataPropertiesPatchThreatAnalysisTacticsList;
+  /** the techniques the resource covers, these have to be aligned with the tactics being used */
+  threatAnalysisTechniques?: MetadataPropertiesPatchThreatAnalysisTechniquesList;
+  /** preview image file names. These will be taken from the solution artifacts */
+  previewImages?: MetadataPropertiesPatchPreviewImagesList;
+  /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
+  previewImagesDark?: MetadataPropertiesPatchPreviewImagesDarkList;
+}
+export const MetadataPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentId: S.optional(S.String),
+    parentId: S.optional(S.String),
+    version: S.optional(S.String),
+    kind: S.optional(S.String),
+    source: S.optional(MetadataSource),
+    author: S.optional(MetadataAuthor),
+    support: S.optional(MetadataSupport),
+    dependencies: S.optional(MetadataDependencies),
+    categories: S.optional(MetadataCategories),
+    providers: S.optional(MetadataPropertiesPatchProvidersList),
+    firstPublishDate: S.optional(S.String),
+    lastPublishDate: S.optional(S.String),
+    customVersion: S.optional(S.String),
+    contentSchemaVersion: S.optional(S.String),
+    icon: S.optional(S.String),
+    threatAnalysisTactics: S.optional(
+      MetadataPropertiesPatchThreatAnalysisTacticsList,
+    ),
+    threatAnalysisTechniques: S.optional(
+      MetadataPropertiesPatchThreatAnalysisTechniquesList,
+    ),
+    previewImages: S.optional(MetadataPropertiesPatchPreviewImagesList),
+    previewImagesDark: S.optional(MetadataPropertiesPatchPreviewImagesDarkList),
+  }),
+).annotate({
+  identifier: "MetadataPropertiesPatch",
+}) as any as S.Schema<MetadataPropertiesPatch>;
+
 export interface MetadataUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4884,7 +5370,10 @@ export interface MetadataUpdateRequest {
   workspaceName: string;
   /** The Metadata name. */
   metadataName: string;
-  body: unknown;
+  /** Etag of the azure resource */
+  etag?: string;
+  /** Metadata patch request body */
+  properties?: MetadataPropertiesPatch;
 }
 export const MetadataUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4892,7 +5381,8 @@ export const MetadataUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     metadataName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    etag: S.optional(S.String),
+    properties: S.optional(MetadataPropertiesPatch),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4989,7 +5479,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Array of operations */
-export type OperationsListValueList = Operation[];
+export type OperationsListValueList = ReadonlyArray<Operation>;
 export const OperationsListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListValueList>;
@@ -5037,20 +5527,22 @@ export const ProductPackageGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductPackageGetRequest>;
 
 /** Providers for the package item */
-export type ProductPackagePropertiesProvidersList = string[];
+export type ProductPackagePropertiesProvidersList = ReadonlyArray<string>;
 export const ProductPackagePropertiesProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductPackagePropertiesProvidersList>;
 
 /** the tactics the resource covers */
-export type ProductPackagePropertiesThreatAnalysisTacticsList = string[];
+export type ProductPackagePropertiesThreatAnalysisTacticsList =
+  ReadonlyArray<string>;
 export const ProductPackagePropertiesThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProductPackagePropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type ProductPackagePropertiesThreatAnalysisTechniquesList = string[];
+export type ProductPackagePropertiesThreatAnalysisTechniquesList =
+  ReadonlyArray<string>;
 export const ProductPackagePropertiesThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5244,7 +5736,7 @@ export const ProductPackageModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductPackageModel>;
 
 /** The ProductPackageModel items on this page */
-export type ProductPackageListValueList = ProductPackageModel[];
+export type ProductPackageListValueList = ReadonlyArray<ProductPackageModel>;
 export const ProductPackageListValueList = /*@__PURE__*/ S.Array(
   ProductPackageModel,
 ) as any as S.Schema<ProductPackageListValueList>;
@@ -5294,33 +5786,36 @@ export const ProductTemplateGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductTemplateGetRequest>;
 
 /** Providers for the content item */
-export type ProductTemplatePropertiesProvidersList = string[];
+export type ProductTemplatePropertiesProvidersList = ReadonlyArray<string>;
 export const ProductTemplatePropertiesProvidersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductTemplatePropertiesProvidersList>;
 
 /** the tactics the resource covers */
-export type ProductTemplatePropertiesThreatAnalysisTacticsList = string[];
+export type ProductTemplatePropertiesThreatAnalysisTacticsList =
+  ReadonlyArray<string>;
 export const ProductTemplatePropertiesThreatAnalysisTacticsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProductTemplatePropertiesThreatAnalysisTacticsList>;
 
 /** the techniques the resource covers, these have to be aligned with the tactics being used */
-export type ProductTemplatePropertiesThreatAnalysisTechniquesList = string[];
+export type ProductTemplatePropertiesThreatAnalysisTechniquesList =
+  ReadonlyArray<string>;
 export const ProductTemplatePropertiesThreatAnalysisTechniquesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProductTemplatePropertiesThreatAnalysisTechniquesList>;
 
 /** preview image file names. These will be taken from the solution artifacts */
-export type ProductTemplatePropertiesPreviewImagesList = string[];
+export type ProductTemplatePropertiesPreviewImagesList = ReadonlyArray<string>;
 export const ProductTemplatePropertiesPreviewImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductTemplatePropertiesPreviewImagesList>;
 
 /** preview image file names. These will be taken from the solution artifacts. used for dark theme support */
-export type ProductTemplatePropertiesPreviewImagesDarkList = string[];
+export type ProductTemplatePropertiesPreviewImagesDarkList =
+  ReadonlyArray<string>;
 export const ProductTemplatePropertiesPreviewImagesDarkList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5522,7 +6017,7 @@ export const ProductTemplateModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductTemplateModel>;
 
 /** The ProductTemplateModel items on this page */
-export type ProductTemplateListValueList = ProductTemplateModel[];
+export type ProductTemplateListValueList = ReadonlyArray<ProductTemplateModel>;
 export const ProductTemplateListValueList = /*@__PURE__*/ S.Array(
   ProductTemplateModel,
 ) as any as S.Schema<ProductTemplateListValueList>;
@@ -5543,6 +6038,10 @@ export const ProductTemplateList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductTemplateList",
 }) as any as S.Schema<ProductTemplateList>;
 
+/** The kind of security ML analytics settings */
+export type SecurityMLAnalyticsSettingsKind = "Anomaly";
+export const SecurityMLAnalyticsSettingsKind = /*@__PURE__*/ S.String;
+
 export interface SecurityMLAnalyticsSettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5552,7 +6051,10 @@ export interface SecurityMLAnalyticsSettingsCreateOrUpdateRequest {
   workspaceName: string;
   /** Security ML Analytics Settings resource name */
   settingsResourceName: string;
-  body: unknown;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind: SecurityMLAnalyticsSettingsKind;
+  /** Etag of the azure resource */
+  etag?: string;
 }
 export const SecurityMLAnalyticsSettingsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5561,7 +6063,8 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       settingsResourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: SecurityMLAnalyticsSettingsKind,
+      etag: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5573,10 +6076,6 @@ export const SecurityMLAnalyticsSettingsCreateOrUpdateRequest =
   ).annotate({
     identifier: "SecurityMLAnalyticsSettingsCreateOrUpdateRequest",
   }) as any as S.Schema<SecurityMLAnalyticsSettingsCreateOrUpdateRequest>;
-
-/** The kind of security ML analytics settings */
-export type SecurityMLAnalyticsSettingsKind = "Anomaly" | (string & {});
-export const SecurityMLAnalyticsSettingsKind = /*@__PURE__*/ S.String;
 
 export interface SecurityMLAnalyticsSettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5754,7 +6253,7 @@ export const SecurityMLAnalyticsSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** The SecurityMLAnalyticsSetting items on this page */
 export type SecurityMLAnalyticsSettingsListValueList =
-  SecurityMLAnalyticsSetting[];
+  ReadonlyArray<SecurityMLAnalyticsSetting>;
 export const SecurityMLAnalyticsSettingsListValueList = /*@__PURE__*/ S.Array(
   SecurityMLAnalyticsSetting,
 ) as any as S.Schema<SecurityMLAnalyticsSettingsListValueList>;
@@ -5775,37 +6274,6 @@ export const SecurityMLAnalyticsSettingsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecurityMLAnalyticsSettingsList",
 }) as any as S.Schema<SecurityMLAnalyticsSettingsList>;
 
-export interface SentinelOnboardingStatesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** The Sentinel onboarding state name. Supports - default */
-  sentinelOnboardingStateName: string;
-  body?: unknown;
-}
-export const SentinelOnboardingStatesCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      sentinelOnboardingStateName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
-        code: 200,
-        apiVersion: "2025-09-01",
-      }),
-    ),
-).annotate({
-  identifier: "SentinelOnboardingStatesCreateRequest",
-}) as any as S.Schema<SentinelOnboardingStatesCreateRequest>;
-
 /** The Sentinel onboarding state properties */
 export interface SentinelOnboardingStateProperties {
   /** Flag that indicates the status of the CMK setting */
@@ -5818,6 +6286,41 @@ export const SentinelOnboardingStateProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SentinelOnboardingStateProperties",
 }) as any as S.Schema<SentinelOnboardingStateProperties>;
+
+export interface SentinelOnboardingStatesCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The Sentinel onboarding state name. Supports - default */
+  sentinelOnboardingStateName: string;
+  /** The Sentinel onboarding state object */
+  properties?: SentinelOnboardingStateProperties;
+  /** Etag of the azure resource */
+  etag?: string;
+}
+export const SentinelOnboardingStatesCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      workspaceName: S.String.pipe(T.Label()),
+      sentinelOnboardingStateName: S.String.pipe(T.Label()),
+      properties: S.optional(SentinelOnboardingStateProperties),
+      etag: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/onboardingStates/{sentinelOnboardingStateName}",
+        code: 200,
+        apiVersion: "2025-09-01",
+      }),
+    ),
+).annotate({
+  identifier: "SentinelOnboardingStatesCreateRequest",
+}) as any as S.Schema<SentinelOnboardingStatesCreateRequest>;
 
 export interface SentinelOnboardingStatesCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5992,7 +6495,8 @@ export const SentinelOnboardingState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SentinelOnboardingState>;
 
 /** Array of Sentinel onboarding states */
-export type SentinelOnboardingStatesListValueList = SentinelOnboardingState[];
+export type SentinelOnboardingStatesListValueList =
+  ReadonlyArray<SentinelOnboardingState>;
 export const SentinelOnboardingStatesListValueList = /*@__PURE__*/ S.Array(
   SentinelOnboardingState,
 ) as any as S.Schema<SentinelOnboardingStatesListValueList>;
@@ -6010,6 +6514,51 @@ export const SentinelOnboardingStatesList = /*@__PURE__*/ S.suspend(() =>
   identifier: "SentinelOnboardingStatesList",
 }) as any as S.Schema<SentinelOnboardingStatesList>;
 
+/** The kind of repository access credentials */
+export type RepositoryAccessKind = "OAuth" | "PAT" | "App";
+export const RepositoryAccessKind = /*@__PURE__*/ S.String;
+
+/** Credentials to access repository. */
+export interface RepositoryAccess {
+  /** The kind of repository access credentials */
+  kind: RepositoryAccessKind;
+  /** OAuth Code. Required when `kind` is `OAuth` */
+  code?: string;
+  /** OAuth State. Required when `kind` is `OAuth` */
+  state?: string;
+  /** OAuth ClientId. Required when `kind` is `OAuth` */
+  clientId?: string;
+  /** Personal Access Token. Required when `kind` is `PAT` */
+  token?: string;
+  /** Application installation ID. Required when `kind` is `App`. Supported by `GitHub` only. */
+  installationId?: string;
+}
+export const RepositoryAccess = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: RepositoryAccessKind,
+    code: S.optional(S.String),
+    state: S.optional(S.String),
+    clientId: S.optional(S.String),
+    token: S.optional(S.String),
+    installationId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RepositoryAccess",
+}) as any as S.Schema<RepositoryAccess>;
+
+/** Credentials to access repository. */
+export interface RepositoryAccessObject {
+  /** RepositoryAccess properties */
+  repositoryAccess: RepositoryAccess;
+}
+export const RepositoryAccessObject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repositoryAccess: RepositoryAccess,
+  }),
+).annotate({
+  identifier: "RepositoryAccessObject",
+}) as any as S.Schema<RepositoryAccessObject>;
+
 export interface SourceControlListRepositoriesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6017,7 +6566,8 @@ export interface SourceControlListRepositoriesRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
-  body: unknown;
+  /** RepositoryAccess properties */
+  properties: RepositoryAccessObject;
 }
 export const SourceControlListRepositoriesRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6025,7 +6575,7 @@ export const SourceControlListRepositoriesRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: RepositoryAccessObject,
     }).pipe(
       T.Http({
         method: "POST",
@@ -6039,7 +6589,7 @@ export const SourceControlListRepositoriesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SourceControlListRepositoriesRequest>;
 
 /** Array of branches. */
-export type RepoBranchesList = string[];
+export type RepoBranchesList = ReadonlyArray<string>;
 export const RepoBranchesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RepoBranchesList>;
@@ -6065,7 +6615,7 @@ export const Repo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Repo" }) as any as S.Schema<Repo>;
 
 /** The Repo items on this page */
-export type RepoListValueList = Repo[];
+export type RepoListValueList = ReadonlyArray<Repo>;
 export const RepoListValueList = /*@__PURE__*/ S.Array(
   Repo,
 ) as any as S.Schema<RepoListValueList>;
@@ -6084,6 +6634,118 @@ export const RepoList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RepoList" }) as any as S.Schema<RepoList>;
 
+/** The type of repository. */
+export type RepoType = "Github" | "AzureDevOps";
+export const RepoType = /*@__PURE__*/ S.String;
+
+/** The content type of a source control path. */
+export type ContentType =
+  | "AnalyticsRule"
+  | "AutomationRule"
+  | "HuntingQuery"
+  | "Parser"
+  | "Playbook"
+  | "Workbook";
+export const ContentType = /*@__PURE__*/ S.String;
+
+/** Array of source control content types. */
+export type SourceControlPropertiesInputContentTypesList =
+  ReadonlyArray<ContentType>;
+export const SourceControlPropertiesInputContentTypesList =
+  /*@__PURE__*/ S.Array(
+    ContentType,
+  ) as any as S.Schema<SourceControlPropertiesInputContentTypesList>;
+
+/** metadata of a repository. */
+export interface RepositoryInput {
+  /** Url of repository. */
+  url: string;
+  /** Branch name of repository. */
+  branch: string;
+  /** Display url of repository. */
+  displayUrl?: string;
+}
+export const RepositoryInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    url: S.String,
+    branch: S.String,
+    displayUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RepositoryInput",
+}) as any as S.Schema<RepositoryInput>;
+
+/** Service principal metadata. */
+export interface ServicePrincipalInput {
+  /** Expiration time of service principal credentials. */
+  credentialsExpireOn?: string;
+}
+export const ServicePrincipalInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    credentialsExpireOn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServicePrincipalInput",
+}) as any as S.Schema<ServicePrincipalInput>;
+
+/** Detail about the webhook object. */
+export interface WebhookInput {
+  /** A flag to instruct the backend service to rotate webhook secret. */
+  rotateWebhookSecret?: boolean;
+}
+export const WebhookInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rotateWebhookSecret: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "WebhookInput" }) as any as S.Schema<WebhookInput>;
+
+/** Resources created in user's repository for the source-control. */
+export interface RepositoryResourceInfoInput {
+  /** The webhook object created for the source-control. */
+  webhook?: WebhookInput;
+}
+export const RepositoryResourceInfoInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    webhook: S.optional(WebhookInput),
+  }),
+).annotate({
+  identifier: "RepositoryResourceInfoInput",
+}) as any as S.Schema<RepositoryResourceInfoInput>;
+
+/** Describes source control properties */
+export interface SourceControlPropertiesInput {
+  /** The display name of the source control */
+  displayName: string;
+  /** A description of the source control */
+  description?: string;
+  /** The repository type of the source control */
+  repoType: RepoType;
+  /** Array of source control content types. */
+  contentTypes: SourceControlPropertiesInputContentTypesList;
+  /** Repository metadata. */
+  repository: RepositoryInput;
+  /** Service principal metadata. */
+  servicePrincipal?: ServicePrincipalInput;
+  /** Repository access credentials. This is write-only object and it never returns back to a user. */
+  repositoryAccess?: RepositoryAccess;
+  /** Information regarding the resources created in user's repository. */
+  repositoryResourceInfo?: RepositoryResourceInfoInput;
+}
+export const SourceControlPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.String,
+    description: S.optional(S.String),
+    repoType: RepoType,
+    contentTypes: SourceControlPropertiesInputContentTypesList,
+    repository: RepositoryInput,
+    servicePrincipal: S.optional(ServicePrincipalInput),
+    repositoryAccess: S.optional(RepositoryAccess),
+    repositoryResourceInfo: S.optional(RepositoryResourceInfoInput),
+  }),
+).annotate({
+  identifier: "SourceControlPropertiesInput",
+}) as any as S.Schema<SourceControlPropertiesInput>;
+
 export interface SourceControlsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6093,7 +6755,10 @@ export interface SourceControlsCreateRequest {
   workspaceName: string;
   /** Source control Id */
   sourceControlId: string;
-  body: unknown;
+  /** source control properties */
+  properties: SourceControlPropertiesInput;
+  /** Etag of the azure resource */
+  etag?: string;
 }
 export const SourceControlsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6101,7 +6766,8 @@ export const SourceControlsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     sourceControlId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: SourceControlPropertiesInput,
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6115,26 +6781,12 @@ export const SourceControlsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceControlsCreateRequest>;
 
 /** The version of the source control. */
-export type Version = "V1" | "V2" | (string & {});
+export type Version = "V1" | "V2";
 export const Version = /*@__PURE__*/ S.String;
 
-/** The type of repository. */
-export type RepoType = "Github" | "AzureDevOps" | (string & {});
-export const RepoType = /*@__PURE__*/ S.String;
-
-/** The content type of a source control path. */
-export type ContentType =
-  | "AnalyticsRule"
-  | "AutomationRule"
-  | "HuntingQuery"
-  | "Parser"
-  | "Playbook"
-  | "Workbook"
-  | (string & {});
-export const ContentType = /*@__PURE__*/ S.String;
-
 /** Array of source control content types. */
-export type SourceControlPropertiesContentTypesList = ContentType[];
+export type SourceControlPropertiesContentTypesList =
+  ReadonlyArray<ContentType>;
 export const SourceControlPropertiesContentTypesList = /*@__PURE__*/ S.Array(
   ContentType,
 ) as any as S.Schema<SourceControlPropertiesContentTypesList>;
@@ -6206,38 +6858,6 @@ export const WorkloadIdentityFederation = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkloadIdentityFederation",
 }) as any as S.Schema<WorkloadIdentityFederation>;
 
-/** The kind of repository access credentials */
-export type RepositoryAccessKind = "OAuth" | "PAT" | "App" | (string & {});
-export const RepositoryAccessKind = /*@__PURE__*/ S.String;
-
-/** Credentials to access repository. */
-export interface RepositoryAccess {
-  /** The kind of repository access credentials */
-  kind: RepositoryAccessKind;
-  /** OAuth Code. Required when `kind` is `OAuth` */
-  code?: string;
-  /** OAuth State. Required when `kind` is `OAuth` */
-  state?: string;
-  /** OAuth ClientId. Required when `kind` is `OAuth` */
-  clientId?: string;
-  /** Personal Access Token. Required when `kind` is `PAT` */
-  token?: string;
-  /** Application installation ID. Required when `kind` is `App`. Supported by `GitHub` only. */
-  installationId?: string;
-}
-export const RepositoryAccess = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: RepositoryAccessKind,
-    code: S.optional(S.String),
-    state: S.optional(S.String),
-    clientId: S.optional(S.String),
-    token: S.optional(S.String),
-    installationId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RepositoryAccess",
-}) as any as S.Schema<RepositoryAccess>;
-
 /** Detail about the webhook object. */
 export interface Webhook {
   /** Unique identifier for the webhook. */
@@ -6307,11 +6927,7 @@ export const RepositoryResourceInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepositoryResourceInfo>;
 
 /** Status while trying to fetch the deployment information. */
-export type DeploymentFetchStatus =
-  | "Success"
-  | "Unauthorized"
-  | "NotFound"
-  | (string & {});
+export type DeploymentFetchStatus = "Success" | "Unauthorized" | "NotFound";
 export const DeploymentFetchStatus = /*@__PURE__*/ S.String;
 
 /** The current state of the deployment. */
@@ -6319,16 +6935,11 @@ export type DeploymentState =
   | "In_Progress"
   | "Completed"
   | "Queued"
-  | "Canceling"
-  | (string & {});
+  | "Canceling";
 export const DeploymentState = /*@__PURE__*/ S.String;
 
 /** Status while trying to fetch the deployment information. */
-export type DeploymentResult =
-  | "Success"
-  | "Canceled"
-  | "Failed"
-  | (string & {});
+export type DeploymentResult = "Success" | "Canceled" | "Failed";
 export const DeploymentResult = /*@__PURE__*/ S.String;
 
 /** Description about a deployment. */
@@ -6372,7 +6983,7 @@ export const DeploymentInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeploymentInfo" }) as any as S.Schema<DeploymentInfo>;
 
 /** Status of the pull request. */
-export type PullRequestState = "Open" | "Closed" | (string & {});
+export type PullRequestState = "Open" | "Closed";
 export const PullRequestState = /*@__PURE__*/ S.String;
 
 /** Information regarding pull request for protected branches. */
@@ -6474,7 +7085,8 @@ export interface SourceControlsDeleteRequest {
   workspaceName: string;
   /** Source control Id */
   sourceControlId: string;
-  body: unknown;
+  /** RepositoryAccess properties */
+  properties: RepositoryAccessObject;
 }
 export const SourceControlsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6482,7 +7094,7 @@ export const SourceControlsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     sourceControlId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: RepositoryAccessObject,
   }).pipe(
     T.Http({
       method: "POST",
@@ -6501,11 +7113,10 @@ export type WarningCode =
   | "SourceControlWarning_DeletePipelineFromAzureDevOps"
   | "SourceControlWarning_DeleteWorkflowAndSecretFromGitHub"
   | "SourceControlWarning_DeleteRoleAssignment"
-  | "SourceControl_DeletedWithWarnings"
-  | (string & {});
+  | "SourceControl_DeletedWithWarnings";
 export const WarningCode = /*@__PURE__*/ S.String;
 
-export type WarningBodyDetailsList = WarningBody[];
+export type WarningBodyDetailsList = ReadonlyArray<WarningBody>;
 export const WarningBodyDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => WarningBody),
 ) as any as S.Schema<WarningBodyDetailsList>;
@@ -6644,7 +7255,7 @@ export const SourceControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceControl" }) as any as S.Schema<SourceControl>;
 
 /** The SourceControl items on this page */
-export type SourceControlListValueList = SourceControl[];
+export type SourceControlListValueList = ReadonlyArray<SourceControl>;
 export const SourceControlListValueList = /*@__PURE__*/ S.Array(
   SourceControl,
 ) as any as S.Schema<SourceControlListValueList>;
@@ -6665,6 +7276,14 @@ export const SourceControlList = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceControlList",
 }) as any as S.Schema<SourceControlList>;
 
+/** List of tags to be appended. */
+export type ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList>;
+
 export interface ThreatIntelligenceIndicatorAppendTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6674,7 +7293,8 @@ export interface ThreatIntelligenceIndicatorAppendTagsRequest {
   workspaceName: string;
   /** Threat intelligence indicator name field. */
   name: string;
-  body: unknown;
+  /** List of tags to be appended. */
+  threatIntelligenceTags?: ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList;
 }
 export const ThreatIntelligenceIndicatorAppendTagsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6683,7 +7303,9 @@ export const ThreatIntelligenceIndicatorAppendTagsRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      threatIntelligenceTags: S.optional(
+        ThreatIntelligenceIndicatorAppendTagsRequestThreatIntelligenceTagsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -6702,6 +7324,329 @@ export const ThreatIntelligenceIndicatorAppendTagsResponse =
     identifier: "ThreatIntelligenceIndicatorAppendTagsResponse",
   }) as any as S.Schema<ThreatIntelligenceIndicatorAppendTagsResponse>;
 
+/** The kind of the threat intelligence entity */
+export type ThreatIntelligenceResourceInnerKind = "indicator";
+export const ThreatIntelligenceResourceInnerKind = /*@__PURE__*/ S.String;
+
+/** List of tags */
+export type ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList>;
+
+/** Indicator types of threat intelligence entities */
+export type ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList>;
+
+/** Describes threat kill chain phase entity */
+export interface ThreatIntelligenceKillChainPhase {
+  /** Kill chainName name */
+  killChainName?: string;
+  /** Phase name */
+  phaseName?: string;
+}
+export const ThreatIntelligenceKillChainPhase = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    killChainName: S.optional(S.String),
+    phaseName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ThreatIntelligenceKillChainPhase",
+}) as any as S.Schema<ThreatIntelligenceKillChainPhase>;
+
+/** Kill chain phases */
+export type ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList =
+  ReadonlyArray<ThreatIntelligenceKillChainPhase>;
+export const ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList =
+  /*@__PURE__*/ S.Array(
+    ThreatIntelligenceKillChainPhase,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList>;
+
+/** Describes threat kill chain phase entity */
+export interface ThreatIntelligenceParsedPatternTypeValue {
+  /** Type of the value */
+  valueType?: string;
+  /** Value of parsed pattern */
+  value?: string;
+}
+export const ThreatIntelligenceParsedPatternTypeValue = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      valueType: S.optional(S.String),
+      value: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ThreatIntelligenceParsedPatternTypeValue",
+}) as any as S.Schema<ThreatIntelligenceParsedPatternTypeValue>;
+
+/** Pattern type keys */
+export type ThreatIntelligenceParsedPatternPatternTypeValuesList =
+  ReadonlyArray<ThreatIntelligenceParsedPatternTypeValue>;
+export const ThreatIntelligenceParsedPatternPatternTypeValuesList =
+  /*@__PURE__*/ S.Array(
+    ThreatIntelligenceParsedPatternTypeValue,
+  ) as any as S.Schema<ThreatIntelligenceParsedPatternPatternTypeValuesList>;
+
+/** Describes parsed pattern entity */
+export interface ThreatIntelligenceParsedPattern {
+  /** Pattern type key */
+  patternTypeKey?: string;
+  /** Pattern type keys */
+  patternTypeValues?: ThreatIntelligenceParsedPatternPatternTypeValuesList;
+}
+export const ThreatIntelligenceParsedPattern = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    patternTypeKey: S.optional(S.String),
+    patternTypeValues: S.optional(
+      ThreatIntelligenceParsedPatternPatternTypeValuesList,
+    ),
+  }),
+).annotate({
+  identifier: "ThreatIntelligenceParsedPattern",
+}) as any as S.Schema<ThreatIntelligenceParsedPattern>;
+
+/** Parsed patterns */
+export type ThreatIntelligenceIndicatorPropertiesInputParsedPatternList =
+  ReadonlyArray<ThreatIntelligenceParsedPattern>;
+export const ThreatIntelligenceIndicatorPropertiesInputParsedPatternList =
+  /*@__PURE__*/ S.Array(
+    ThreatIntelligenceParsedPattern,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputParsedPatternList>;
+
+/** External reference hashes */
+export type ThreatIntelligenceExternalReferenceHashesMap = {
+  [key: string]: string | undefined;
+};
+export const ThreatIntelligenceExternalReferenceHashesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceExternalReferenceHashesMap>;
+
+/** Describes external reference */
+export interface ThreatIntelligenceExternalReference {
+  /** External reference description */
+  description?: string;
+  /** External reference ID */
+  externalId?: string;
+  /** External reference source name */
+  sourceName?: string;
+  /** External reference URL */
+  url?: string;
+  /** External reference hashes */
+  hashes?: ThreatIntelligenceExternalReferenceHashesMap;
+}
+export const ThreatIntelligenceExternalReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    externalId: S.optional(S.String),
+    sourceName: S.optional(S.String),
+    url: S.optional(S.String),
+    hashes: S.optional(ThreatIntelligenceExternalReferenceHashesMap),
+  }),
+).annotate({
+  identifier: "ThreatIntelligenceExternalReference",
+}) as any as S.Schema<ThreatIntelligenceExternalReference>;
+
+/** External References */
+export type ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList =
+  ReadonlyArray<ThreatIntelligenceExternalReference>;
+export const ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList =
+  /*@__PURE__*/ S.Array(
+    ThreatIntelligenceExternalReference,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList>;
+
+/** granular marking model selectors */
+export type ThreatIntelligenceGranularMarkingModelSelectorsList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceGranularMarkingModelSelectorsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceGranularMarkingModelSelectorsList>;
+
+/** Describes threat granular marking model entity */
+export interface ThreatIntelligenceGranularMarkingModel {
+  /** Language granular marking model */
+  language?: string;
+  /** marking reference granular marking model */
+  markingRef?: number;
+  /** granular marking model selectors */
+  selectors?: ThreatIntelligenceGranularMarkingModelSelectorsList;
+}
+export const ThreatIntelligenceGranularMarkingModel = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      language: S.optional(S.String),
+      markingRef: S.optional(S.Number),
+      selectors: S.optional(
+        ThreatIntelligenceGranularMarkingModelSelectorsList,
+      ),
+    }),
+).annotate({
+  identifier: "ThreatIntelligenceGranularMarkingModel",
+}) as any as S.Schema<ThreatIntelligenceGranularMarkingModel>;
+
+/** Granular Markings */
+export type ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList =
+  ReadonlyArray<ThreatIntelligenceGranularMarkingModel>;
+export const ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList =
+  /*@__PURE__*/ S.Array(
+    ThreatIntelligenceGranularMarkingModel,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList>;
+
+/** Labels of threat intelligence entity */
+export type ThreatIntelligenceIndicatorPropertiesInputLabelsList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceIndicatorPropertiesInputLabelsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputLabelsList>;
+
+/** Threat intelligence entity object marking references */
+export type ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList>;
+
+/** Threat types */
+export type ThreatIntelligenceIndicatorPropertiesInputThreatTypesList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceIndicatorPropertiesInputThreatTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputThreatTypesList>;
+
+/** Extensions map */
+export type ThreatIntelligenceIndicatorPropertiesInputExtensionsMap = {
+  [key: string]: unknown | undefined;
+};
+export const ThreatIntelligenceIndicatorPropertiesInputExtensionsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInputExtensionsMap>;
+
+/** Describes threat intelligence entity properties */
+export interface ThreatIntelligenceIndicatorPropertiesInput {
+  /** List of tags */
+  threatIntelligenceTags?: ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList;
+  /** Last updated time in UTC */
+  lastUpdatedTimeUtc?: string;
+  /** Source of a threat intelligence entity */
+  source?: string;
+  /** Display name of a threat intelligence entity */
+  displayName?: string;
+  /** Description of a threat intelligence entity */
+  description?: string;
+  /** Indicator types of threat intelligence entities */
+  indicatorTypes?: ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList;
+  /** Pattern of a threat intelligence entity */
+  pattern?: string;
+  /** Pattern type of a threat intelligence entity */
+  patternType?: string;
+  /** Pattern version of a threat intelligence entity */
+  patternVersion?: string;
+  /** Kill chain phases */
+  killChainPhases?: ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList;
+  /** Parsed patterns */
+  parsedPattern?: ThreatIntelligenceIndicatorPropertiesInputParsedPatternList;
+  /** External ID of threat intelligence entity */
+  externalId?: string;
+  /** Created by reference of threat intelligence entity */
+  createdByRef?: string;
+  /** Is threat intelligence entity defanged */
+  defanged?: boolean;
+  /** External last updated time in UTC */
+  externalLastUpdatedTimeUtc?: string;
+  /** External References */
+  externalReferences?: ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList;
+  /** Granular Markings */
+  granularMarkings?: ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList;
+  /** Labels of threat intelligence entity */
+  labels?: ThreatIntelligenceIndicatorPropertiesInputLabelsList;
+  /** Is threat intelligence entity revoked */
+  revoked?: boolean;
+  /** Confidence of threat intelligence entity */
+  confidence?: number;
+  /** Threat intelligence entity object marking references */
+  objectMarkingRefs?: ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList;
+  /** Language of threat intelligence entity */
+  language?: string;
+  /** Threat types */
+  threatTypes?: ThreatIntelligenceIndicatorPropertiesInputThreatTypesList;
+  /** Valid from */
+  validFrom?: string;
+  /** Valid until */
+  validUntil?: string;
+  /** Created by */
+  created?: string;
+  /** Modified by */
+  modified?: string;
+  /** Extensions map */
+  extensions?: ThreatIntelligenceIndicatorPropertiesInputExtensionsMap;
+}
+export const ThreatIntelligenceIndicatorPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      threatIntelligenceTags: S.optional(
+        ThreatIntelligenceIndicatorPropertiesInputThreatIntelligenceTagsList,
+      ),
+      lastUpdatedTimeUtc: S.optional(S.String),
+      source: S.optional(S.String),
+      displayName: S.optional(S.String),
+      description: S.optional(S.String),
+      indicatorTypes: S.optional(
+        ThreatIntelligenceIndicatorPropertiesInputIndicatorTypesList,
+      ),
+      pattern: S.optional(S.String),
+      patternType: S.optional(S.String),
+      patternVersion: S.optional(S.String),
+      killChainPhases: S.optional(
+        ThreatIntelligenceIndicatorPropertiesInputKillChainPhasesList,
+      ),
+      parsedPattern: S.optional(
+        ThreatIntelligenceIndicatorPropertiesInputParsedPatternList,
+      ),
+      externalId: S.optional(S.String),
+      createdByRef: S.optional(S.String),
+      defanged: S.optional(S.Boolean),
+      externalLastUpdatedTimeUtc: S.optional(S.String),
+      externalReferences: S.optional(
+        ThreatIntelligenceIndicatorPropertiesInputExternalReferencesList,
+      ),
+      granularMarkings: S.optional(
+        ThreatIntelligenceIndicatorPropertiesInputGranularMarkingsList,
+      ),
+      labels: S.optional(ThreatIntelligenceIndicatorPropertiesInputLabelsList),
+      revoked: S.optional(S.Boolean),
+      confidence: S.optional(S.Number),
+      objectMarkingRefs: S.optional(
+        ThreatIntelligenceIndicatorPropertiesInputObjectMarkingRefsList,
+      ),
+      language: S.optional(S.String),
+      threatTypes: S.optional(
+        ThreatIntelligenceIndicatorPropertiesInputThreatTypesList,
+      ),
+      validFrom: S.optional(S.String),
+      validUntil: S.optional(S.String),
+      created: S.optional(S.String),
+      modified: S.optional(S.String),
+      extensions: S.optional(
+        ThreatIntelligenceIndicatorPropertiesInputExtensionsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "ThreatIntelligenceIndicatorPropertiesInput",
+  }) as any as S.Schema<ThreatIntelligenceIndicatorPropertiesInput>;
+
 export interface ThreatIntelligenceIndicatorCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6711,7 +7656,12 @@ export interface ThreatIntelligenceIndicatorCreateRequest {
   workspaceName: string;
   /** Threat intelligence indicator name field. */
   name: string;
-  body: unknown;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind: ThreatIntelligenceResourceInnerKind;
+  /** Etag of the azure resource */
+  etag?: string;
+  /** Threat Intelligence Entity properties */
+  properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
 export const ThreatIntelligenceIndicatorCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6720,7 +7670,9 @@ export const ThreatIntelligenceIndicatorCreateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: ThreatIntelligenceResourceInnerKind,
+      etag: S.optional(S.String),
+      properties: S.optional(ThreatIntelligenceIndicatorPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6732,10 +7684,6 @@ export const ThreatIntelligenceIndicatorCreateRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ThreatIntelligenceIndicatorCreateRequest",
 }) as any as S.Schema<ThreatIntelligenceIndicatorCreateRequest>;
-
-/** The kind of the threat intelligence entity */
-export type ThreatIntelligenceResourceInnerKind = "indicator" | (string & {});
-export const ThreatIntelligenceResourceInnerKind = /*@__PURE__*/ S.String;
 
 export interface ThreatIntelligenceIndicatorCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6772,7 +7720,12 @@ export interface ThreatIntelligenceIndicatorCreateIndicatorRequest {
   resourceGroupName: string;
   /** The name of the monitor workspace. */
   workspaceName: string;
-  body: unknown;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind: ThreatIntelligenceResourceInnerKind;
+  /** Etag of the azure resource */
+  etag?: string;
+  /** Threat Intelligence Entity properties */
+  properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
 export const ThreatIntelligenceIndicatorCreateIndicatorRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6780,7 +7733,9 @@ export const ThreatIntelligenceIndicatorCreateIndicatorRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: ThreatIntelligenceResourceInnerKind,
+      etag: S.optional(S.String),
+      properties: S.optional(ThreatIntelligenceIndicatorPropertiesInput),
     }).pipe(
       T.Http({
         method: "POST",
@@ -6957,7 +7912,7 @@ export const ThreatIntelligenceMetricEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** Threat type metrics */
 export type ThreatIntelligenceMetricThreatTypeMetricsList =
-  ThreatIntelligenceMetricEntity[];
+  ReadonlyArray<ThreatIntelligenceMetricEntity>;
 export const ThreatIntelligenceMetricThreatTypeMetricsList =
   /*@__PURE__*/ S.Array(
     ThreatIntelligenceMetricEntity,
@@ -6965,7 +7920,7 @@ export const ThreatIntelligenceMetricThreatTypeMetricsList =
 
 /** Pattern type metrics */
 export type ThreatIntelligenceMetricPatternTypeMetricsList =
-  ThreatIntelligenceMetricEntity[];
+  ReadonlyArray<ThreatIntelligenceMetricEntity>;
 export const ThreatIntelligenceMetricPatternTypeMetricsList =
   /*@__PURE__*/ S.Array(
     ThreatIntelligenceMetricEntity,
@@ -6973,7 +7928,7 @@ export const ThreatIntelligenceMetricPatternTypeMetricsList =
 
 /** Source metrics */
 export type ThreatIntelligenceMetricSourceMetricsList =
-  ThreatIntelligenceMetricEntity[];
+  ReadonlyArray<ThreatIntelligenceMetricEntity>;
 export const ThreatIntelligenceMetricSourceMetricsList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceMetricEntity,
 ) as any as S.Schema<ThreatIntelligenceMetricSourceMetricsList>;
@@ -7019,7 +7974,7 @@ export const ThreatIntelligenceMetrics = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of threat intelligence metric fields (type/threat type/source). */
 export type ThreatIntelligenceMetricsListValueList =
-  ThreatIntelligenceMetrics[];
+  ReadonlyArray<ThreatIntelligenceMetrics>;
 export const ThreatIntelligenceMetricsListValueList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceMetrics,
 ) as any as S.Schema<ThreatIntelligenceMetricsListValueList>;
@@ -7037,6 +7992,77 @@ export const ThreatIntelligenceMetricsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ThreatIntelligenceMetricsList",
 }) as any as S.Schema<ThreatIntelligenceMetricsList>;
 
+/** Sorting order (ascending/descending/unsorted). */
+export type ThreatIntelligenceSortingOrder =
+  | "unsorted"
+  | "ascending"
+  | "descending";
+export const ThreatIntelligenceSortingOrder = /*@__PURE__*/ S.String;
+
+/** List of available columns for sorting */
+export interface ThreatIntelligenceSortingCriteria {
+  /** Column name */
+  itemKey?: string;
+  /** Sorting order (ascending/descending/unsorted). */
+  sortOrder?: ThreatIntelligenceSortingOrder;
+}
+export const ThreatIntelligenceSortingCriteria = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    itemKey: S.optional(S.String),
+    sortOrder: S.optional(ThreatIntelligenceSortingOrder),
+  }),
+).annotate({
+  identifier: "ThreatIntelligenceSortingCriteria",
+}) as any as S.Schema<ThreatIntelligenceSortingCriteria>;
+
+/** Columns to sort by and sorting order */
+export type ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList =
+  ReadonlyArray<ThreatIntelligenceSortingCriteria>;
+export const ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList =
+  /*@__PURE__*/ S.Array(
+    ThreatIntelligenceSortingCriteria,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList>;
+
+/** Sources of threat intelligence indicators */
+export type ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList>;
+
+/** Pattern types */
+export type ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList>;
+
+/** Threat types of threat intelligence indicators */
+export type ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList>;
+
+/** Ids of threat intelligence indicators */
+export type ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList>;
+
+/** Keywords for searching threat intelligence indicators */
+export type ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList =
+  ReadonlyArray<string>;
+export const ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList>;
+
 export interface ThreatIntelligenceIndicatorQueryIndicatorsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7044,7 +8070,32 @@ export interface ThreatIntelligenceIndicatorQueryIndicatorsRequest {
   resourceGroupName: string;
   /** The name of the monitor workspace. */
   workspaceName: string;
-  body: unknown;
+  /** Page size */
+  pageSize?: number;
+  /** Minimum confidence. */
+  minConfidence?: number;
+  /** Maximum confidence. */
+  maxConfidence?: number;
+  /** Start time for ValidUntil filter. */
+  minValidUntil?: string;
+  /** End time for ValidUntil filter. */
+  maxValidUntil?: string;
+  /** Parameter to include/exclude disabled indicators. */
+  includeDisabled?: boolean;
+  /** Columns to sort by and sorting order */
+  sortBy?: ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList;
+  /** Sources of threat intelligence indicators */
+  sources?: ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList;
+  /** Pattern types */
+  patternTypes?: ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList;
+  /** Threat types of threat intelligence indicators */
+  threatTypes?: ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList;
+  /** Ids of threat intelligence indicators */
+  ids?: ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList;
+  /** Keywords for searching threat intelligence indicators */
+  keywords?: ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList;
+  /** Skip token. */
+  skipToken?: string;
 }
 export const ThreatIntelligenceIndicatorQueryIndicatorsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7052,7 +8103,29 @@ export const ThreatIntelligenceIndicatorQueryIndicatorsRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      pageSize: S.optional(S.Number),
+      minConfidence: S.optional(S.Number),
+      maxConfidence: S.optional(S.Number),
+      minValidUntil: S.optional(S.String),
+      maxValidUntil: S.optional(S.String),
+      includeDisabled: S.optional(S.Boolean),
+      sortBy: S.optional(
+        ThreatIntelligenceIndicatorQueryIndicatorsRequestSortByList,
+      ),
+      sources: S.optional(
+        ThreatIntelligenceIndicatorQueryIndicatorsRequestSourcesList,
+      ),
+      patternTypes: S.optional(
+        ThreatIntelligenceIndicatorQueryIndicatorsRequestPatternTypesList,
+      ),
+      threatTypes: S.optional(
+        ThreatIntelligenceIndicatorQueryIndicatorsRequestThreatTypesList,
+      ),
+      ids: S.optional(ThreatIntelligenceIndicatorQueryIndicatorsRequestIdsList),
+      keywords: S.optional(
+        ThreatIntelligenceIndicatorQueryIndicatorsRequestKeywordsList,
+      ),
+      skipToken: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -7095,7 +8168,7 @@ export const ThreatIntelligenceInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The ThreatIntelligenceInformation items on this page */
 export type ThreatIntelligenceInformationListValueList =
-  ThreatIntelligenceInformation[];
+  ReadonlyArray<ThreatIntelligenceInformation>;
 export const ThreatIntelligenceInformationListValueList = /*@__PURE__*/ S.Array(
   ThreatIntelligenceInformation,
 ) as any as S.Schema<ThreatIntelligenceInformationListValueList>;
@@ -7125,7 +8198,12 @@ export interface ThreatIntelligenceIndicatorReplaceTagsRequest {
   workspaceName: string;
   /** Threat intelligence indicator name field. */
   name: string;
-  body: unknown;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind: ThreatIntelligenceResourceInnerKind;
+  /** Etag of the azure resource */
+  etag?: string;
+  /** Threat Intelligence Entity properties */
+  properties?: ThreatIntelligenceIndicatorPropertiesInput;
 }
 export const ThreatIntelligenceIndicatorReplaceTagsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7134,7 +8212,9 @@ export const ThreatIntelligenceIndicatorReplaceTagsRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: ThreatIntelligenceResourceInnerKind,
+      etag: S.optional(S.String),
+      properties: S.optional(ThreatIntelligenceIndicatorPropertiesInput),
     }).pipe(
       T.Http({
         method: "POST",
@@ -7213,6 +8293,46 @@ export const ThreatIntelligenceIndicatorsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "ThreatIntelligenceIndicatorsListRequest",
 }) as any as S.Schema<ThreatIntelligenceIndicatorsListRequest>;
 
+/** Describes watchlist item properties */
+export interface WatchlistItemPropertiesInput {
+  /** The type of the watchlist item */
+  watchlistItemType?: string;
+  /** The id (a Guid) of the watchlist item */
+  watchlistItemId?: string;
+  /** The tenantId to which the watchlist item belongs to */
+  tenantId?: string;
+  /** A flag that indicates if the watchlist item is deleted or not */
+  isDeleted?: boolean;
+  /** The time the watchlist item was created */
+  created?: string;
+  /** The last time the watchlist item was updated */
+  updated?: string;
+  /** Describes a user that created the watchlist item */
+  createdBy?: UserInfoInput;
+  /** Describes a user that updated the watchlist item */
+  updatedBy?: UserInfoInput;
+  /** key-value pairs for a watchlist item */
+  itemsKeyValue: unknown;
+  /** key-value pairs for a watchlist item entity mapping */
+  entityMapping?: unknown;
+}
+export const WatchlistItemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    watchlistItemType: S.optional(S.String),
+    watchlistItemId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    isDeleted: S.optional(S.Boolean),
+    created: S.optional(S.String),
+    updated: S.optional(S.String),
+    createdBy: S.optional(UserInfoInput),
+    updatedBy: S.optional(UserInfoInput),
+    itemsKeyValue: S.Unknown,
+    entityMapping: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "WatchlistItemPropertiesInput",
+}) as any as S.Schema<WatchlistItemPropertiesInput>;
+
 export interface WatchlistItemsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7224,7 +8344,10 @@ export interface WatchlistItemsCreateOrUpdateRequest {
   watchlistAlias: string;
   /** The watchlist item id (GUID) */
   watchlistItemId: string;
-  body: unknown;
+  /** Watchlist Item properties */
+  properties?: WatchlistItemPropertiesInput;
+  /** Etag of the azure resource */
+  etag?: string;
 }
 export const WatchlistItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7233,7 +8356,8 @@ export const WatchlistItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     workspaceName: S.String.pipe(T.Label()),
     watchlistAlias: S.String.pipe(T.Label()),
     watchlistItemId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(WatchlistItemPropertiesInput),
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7468,7 +8592,7 @@ export const WatchlistItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WatchlistItem" }) as any as S.Schema<WatchlistItem>;
 
 /** The WatchlistItem items on this page */
-export type WatchlistItemListValueList = WatchlistItem[];
+export type WatchlistItemListValueList = ReadonlyArray<WatchlistItem>;
 export const WatchlistItemListValueList = /*@__PURE__*/ S.Array(
   WatchlistItem,
 ) as any as S.Schema<WatchlistItemListValueList>;
@@ -7489,6 +8613,89 @@ export const WatchlistItemList = /*@__PURE__*/ S.suspend(() =>
   identifier: "WatchlistItemList",
 }) as any as S.Schema<WatchlistItemList>;
 
+/** The sourceType of the watchlist */
+export type SourceType = "Local" | "AzureStorage";
+export const SourceType = /*@__PURE__*/ S.String;
+
+/** List of labels relevant to this watchlist */
+export type WatchlistPropertiesInputLabelsList = ReadonlyArray<string>;
+export const WatchlistPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<WatchlistPropertiesInputLabelsList>;
+
+/** Describes watchlist properties */
+export interface WatchlistPropertiesInput {
+  /** The id (a Guid) of the watchlist */
+  watchlistId?: string;
+  /** The display name of the watchlist */
+  displayName: string;
+  /** The provider of the watchlist */
+  provider: string;
+  /** The filename of the watchlist, called 'source' */
+  source?: string;
+  /** The sourceType of the watchlist */
+  sourceType?: SourceType;
+  /** The time the watchlist was created */
+  created?: string;
+  /** The last time the watchlist was updated */
+  updated?: string;
+  /** Describes a user that created the watchlist */
+  createdBy?: UserInfoInput;
+  /** Describes a user that updated the watchlist */
+  updatedBy?: UserInfoInput;
+  /** A description of the watchlist */
+  description?: string;
+  /** The type of the watchlist */
+  watchlistType?: string;
+  /** The alias of the watchlist */
+  watchlistAlias?: string;
+  /** A flag that indicates if the watchlist is deleted or not */
+  isDeleted?: boolean;
+  /** List of labels relevant to this watchlist */
+  labels?: WatchlistPropertiesInputLabelsList;
+  /** The default duration of a watchlist (in ISO 8601 duration format) */
+  defaultDuration?: string;
+  /** The tenantId where the watchlist belongs to */
+  tenantId?: string;
+  /** The number of lines in a csv/tsv content to skip before the header */
+  numberOfLinesToSkip?: number;
+  /** The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint */
+  rawContent?: string;
+  /** The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address. */
+  itemsSearchKey: string;
+  /** The content type of the raw content. Example : text/csv or text/tsv */
+  contentType?: string;
+  /** The status of the Watchlist upload : New, InProgress or Complete. **Note** : When a Watchlist upload status is InProgress, the Watchlist cannot be deleted */
+  uploadStatus?: string;
+}
+export const WatchlistPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    watchlistId: S.optional(S.String),
+    displayName: S.String,
+    provider: S.String,
+    source: S.optional(S.String),
+    sourceType: S.optional(SourceType),
+    created: S.optional(S.String),
+    updated: S.optional(S.String),
+    createdBy: S.optional(UserInfoInput),
+    updatedBy: S.optional(UserInfoInput),
+    description: S.optional(S.String),
+    watchlistType: S.optional(S.String),
+    watchlistAlias: S.optional(S.String),
+    isDeleted: S.optional(S.Boolean),
+    labels: S.optional(WatchlistPropertiesInputLabelsList),
+    defaultDuration: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    numberOfLinesToSkip: S.optional(S.Number),
+    rawContent: S.optional(S.String),
+    itemsSearchKey: S.String,
+    contentType: S.optional(S.String),
+    uploadStatus: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WatchlistPropertiesInput",
+}) as any as S.Schema<WatchlistPropertiesInput>;
+
 export interface WatchlistsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7498,7 +8705,10 @@ export interface WatchlistsCreateOrUpdateRequest {
   workspaceName: string;
   /** The watchlist alias */
   watchlistAlias: string;
-  body: unknown;
+  /** Watchlist properties */
+  properties?: WatchlistPropertiesInput;
+  /** Etag of the azure resource */
+  etag?: string;
 }
 export const WatchlistsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7506,7 +8716,8 @@ export const WatchlistsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     watchlistAlias: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(WatchlistPropertiesInput),
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7519,12 +8730,8 @@ export const WatchlistsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WatchlistsCreateOrUpdateRequest",
 }) as any as S.Schema<WatchlistsCreateOrUpdateRequest>;
 
-/** The sourceType of the watchlist */
-export type SourceType = "Local" | "AzureStorage" | (string & {});
-export const SourceType = /*@__PURE__*/ S.String;
-
 /** List of labels relevant to this watchlist */
-export type WatchlistPropertiesLabelsList = string[];
+export type WatchlistPropertiesLabelsList = ReadonlyArray<string>;
 export const WatchlistPropertiesLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WatchlistPropertiesLabelsList>;
@@ -7537,8 +8744,7 @@ export type WatchlistProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const WatchlistProvisioningState = /*@__PURE__*/ S.String;
 
 /** Describes watchlist properties */
@@ -7789,7 +8995,7 @@ export const Watchlist = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Watchlist" }) as any as S.Schema<Watchlist>;
 
 /** The Watchlist items on this page */
-export type WatchlistListValueList = Watchlist[];
+export type WatchlistListValueList = ReadonlyArray<Watchlist>;
 export const WatchlistListValueList = /*@__PURE__*/ S.Array(
   Watchlist,
 ) as any as S.Schema<WatchlistListValueList>;

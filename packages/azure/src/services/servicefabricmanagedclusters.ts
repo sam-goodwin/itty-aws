@@ -13,80 +13,6 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface ApplicationsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the cluster resource. */
-  clusterName: string;
-  /** The name of the application resource. */
-  applicationName: string;
-  body: unknown;
-}
-export const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    applicationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}",
-      code: 200,
-      apiVersion: "2026-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "ApplicationsCreateOrUpdateRequest",
-}) as any as S.Schema<ApplicationsCreateOrUpdateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** User assigned identity for the application. */
 export interface ApplicationUserAssignedIdentity {
   /** The friendly name of user assigned identity. */
@@ -104,22 +30,22 @@ export const ApplicationUserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationUserAssignedIdentity>;
 
 /** List of user assigned identities for the application, each mapped to a friendly name. */
-export type ApplicationResourcePropertiesManagedIdentitiesList =
-  ApplicationUserAssignedIdentity[];
-export const ApplicationResourcePropertiesManagedIdentitiesList =
+export type ApplicationResourcePropertiesInputManagedIdentitiesList =
+  ReadonlyArray<ApplicationUserAssignedIdentity>;
+export const ApplicationResourcePropertiesInputManagedIdentitiesList =
   /*@__PURE__*/ S.Array(
     ApplicationUserAssignedIdentity,
-  ) as any as S.Schema<ApplicationResourcePropertiesManagedIdentitiesList>;
+  ) as any as S.Schema<ApplicationResourcePropertiesInputManagedIdentitiesList>;
 
 /** List of application parameters with overridden values from their default values specified in the application manifest. */
-export type ApplicationResourcePropertiesParametersMap = {
+export type ApplicationResourcePropertiesInputParametersMap = {
   [key: string]: string | undefined;
 };
-export const ApplicationResourcePropertiesParametersMap =
+export const ApplicationResourcePropertiesInputParametersMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<ApplicationResourcePropertiesParametersMap>;
+  ) as any as S.Schema<ApplicationResourcePropertiesInputParametersMap>;
 
 /** Represents the health policy used to evaluate the health of services belonging to a service type. */
 export interface ServiceTypeHealthPolicy {
@@ -175,7 +101,7 @@ export const ApplicationHealthPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationHealthPolicy>;
 
 /** The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. Invalid indicates the failure action is invalid. Rollback specifies that the upgrade will start rolling back automatically. Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode. */
-export type FailureAction = "Rollback" | "Manual" | (string & {});
+export type FailureAction = "Rollback" | "Manual";
 export const FailureAction = /*@__PURE__*/ S.String;
 
 /** The policy used for monitoring the application upgrade */
@@ -207,10 +133,7 @@ export const RollingUpgradeMonitoringPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RollingUpgradeMonitoringPolicy>;
 
 /** The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto. */
-export type RollingUpgradeMode =
-  | "Monitored"
-  | "UnmonitoredAuto"
-  | (string & {});
+export type RollingUpgradeMode = "Monitored" | "UnmonitoredAuto";
 export const RollingUpgradeMode = /*@__PURE__*/ S.String;
 
 /** Describes the policy for a monitored application upgrade. */
@@ -243,6 +166,183 @@ export const ApplicationUpgradePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplicationUpgradePolicy",
 }) as any as S.Schema<ApplicationUpgradePolicy>;
+
+/** The application resource properties. */
+export interface ApplicationResourcePropertiesInput {
+  /** List of user assigned identities for the application, each mapped to a friendly name. */
+  managedIdentities?: ApplicationResourcePropertiesInputManagedIdentitiesList;
+  /** The version of the application type as defined in the application manifest. This name must be the full Arm Resource ID for the referenced application type version. */
+  version?: string;
+  /** List of application parameters with overridden values from their default values specified in the application manifest. */
+  parameters?: ApplicationResourcePropertiesInputParametersMap;
+  /** Describes the policy for a monitored application upgrade. */
+  upgradePolicy?: ApplicationUpgradePolicy;
+}
+export const ApplicationResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedIdentities: S.optional(
+      ApplicationResourcePropertiesInputManagedIdentitiesList,
+    ),
+    version: S.optional(S.String),
+    parameters: S.optional(ApplicationResourcePropertiesInputParametersMap),
+    upgradePolicy: S.optional(ApplicationUpgradePolicy),
+  }),
+).annotate({
+  identifier: "ApplicationResourcePropertiesInput",
+}) as any as S.Schema<ApplicationResourcePropertiesInput>;
+
+/** Resource tags. */
+export type ApplicationsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ApplicationsCreateOrUpdateRequestTagsMap>;
+
+/** The type of managed identity for the resource. */
+export type ManagedIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned, UserAssigned";
+export const ManagedIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity. */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type ManagedIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const ManagedIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<ManagedIdentityInputUserAssignedIdentitiesMap>;
+
+/** Describes the managed identities for an Azure resource. */
+export interface ManagedIdentityInput {
+  /** The type of managed identity for the resource. */
+  type?: ManagedIdentityType;
+  /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: ManagedIdentityInputUserAssignedIdentitiesMap;
+}
+export const ManagedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ManagedIdentityType),
+    userAssignedIdentities: S.optional(
+      ManagedIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ManagedIdentityInput",
+}) as any as S.Schema<ManagedIdentityInput>;
+
+export interface ApplicationsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the cluster resource. */
+  clusterName: string;
+  /** The name of the application resource. */
+  applicationName: string;
+  /** The application resource properties. */
+  properties?: ApplicationResourcePropertiesInput;
+  /** Resource tags. */
+  tags?: ApplicationsCreateOrUpdateRequestTagsMap;
+  /** Describes the managed identities for an Azure resource. */
+  identity?: ManagedIdentityInput;
+  /** The geo-location where the resource lives */
+  location?: string;
+}
+export const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    applicationName: S.String.pipe(T.Label()),
+    properties: S.optional(ApplicationResourcePropertiesInput),
+    tags: S.optional(ApplicationsCreateOrUpdateRequestTagsMap),
+    identity: S.optional(ManagedIdentityInput),
+    location: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}",
+      code: 200,
+      apiVersion: "2026-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "ApplicationsCreateOrUpdateRequest",
+}) as any as S.Schema<ApplicationsCreateOrUpdateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** List of user assigned identities for the application, each mapped to a friendly name. */
+export type ApplicationResourcePropertiesManagedIdentitiesList =
+  ReadonlyArray<ApplicationUserAssignedIdentity>;
+export const ApplicationResourcePropertiesManagedIdentitiesList =
+  /*@__PURE__*/ S.Array(
+    ApplicationUserAssignedIdentity,
+  ) as any as S.Schema<ApplicationResourcePropertiesManagedIdentitiesList>;
+
+/** List of application parameters with overridden values from their default values specified in the application manifest. */
+export type ApplicationResourcePropertiesParametersMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationResourcePropertiesParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ApplicationResourcePropertiesParametersMap>;
 
 /** The application resource properties. */
 export interface ApplicationResourceProperties {
@@ -279,15 +379,6 @@ export const ApplicationsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ApplicationsCreateOrUpdateResponseTagsMap>;
-
-/** The type of managed identity for the resource. */
-export type ManagedIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | (string & {});
-export const ManagedIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity. */
 export interface UserAssignedIdentity {
@@ -406,6 +497,16 @@ export const ApplicationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsDeleteResponse",
 }) as any as S.Schema<ApplicationsDeleteResponse>;
 
+/** Enum for filtering health events. */
+export type HealthFilter =
+  | "Default"
+  | "None"
+  | "Ok"
+  | "Warning"
+  | "Error"
+  | "All";
+export const HealthFilter = /*@__PURE__*/ S.String;
+
 export interface ApplicationsFetchHealthRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -415,7 +516,16 @@ export interface ApplicationsFetchHealthRequest {
   clusterName: string;
   /** The name of the application resource. */
   applicationName: string;
-  body: unknown;
+  /** Allows filtering of the health events returned in the response based on health state. */
+  eventsHealthStateFilter?: HealthFilter;
+  /** Allows filtering of the deployed applications health state objects returned in the result of application health query based on their health state. */
+  deployedApplicationsHealthStateFilter?: HealthFilter;
+  /** Allows filtering of the services health state objects returned in the result of services health query based on their health state. */
+  servicesHealthStateFilter?: HealthFilter;
+  /** Indicates whether the health statistics should be returned as part of the query result. False by default. The statistics show the number of children entities in health state Ok, Warning, and Error. */
+  excludeHealthStatistics?: boolean;
+  /** Request timeout for the health query in seconds. The default value is 60 seconds. */
+  timeout?: number;
 }
 export const ApplicationsFetchHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -423,7 +533,11 @@ export const ApplicationsFetchHealthRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    eventsHealthStateFilter: S.optional(HealthFilter),
+    deployedApplicationsHealthStateFilter: S.optional(HealthFilter),
+    servicesHealthStateFilter: S.optional(HealthFilter),
+    excludeHealthStatistics: S.optional(S.Boolean),
+    timeout: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -580,7 +694,8 @@ export const ApplicationResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationResource>;
 
 /** The ApplicationResource items on this page */
-export type ApplicationResourceListValueList = ApplicationResource[];
+export type ApplicationResourceListValueList =
+  ReadonlyArray<ApplicationResource>;
 export const ApplicationResourceListValueList = /*@__PURE__*/ S.Array(
   ApplicationResource,
 ) as any as S.Schema<ApplicationResourceListValueList>;
@@ -645,7 +760,16 @@ export interface ApplicationsRestartDeployedCodePackageRequest {
   clusterName: string;
   /** The name of the application resource. */
   applicationName: string;
-  body: unknown;
+  /** The name of the node where the code package needs to be restarted. Use '*' to restart on all nodes where the code package is running. */
+  nodeName: string;
+  /** The name of the service manifest as specified in the code package. */
+  serviceManifestName: string;
+  /** The name of the code package as specified in the service manifest. */
+  codePackageName: string;
+  /** The instance ID for currently running entry point. For a code package setup entry point (if specified) runs first and after it finishes main entry point is started. Each time entry point executable is run, its instance ID will change. If 0 is passed in as the code package instance ID, the API will restart the code package with whatever instance ID it is currently running. If an instance ID other than 0 is passed in, the API will restart the code package only if the current Instance ID matches the passed in instance ID. Note, passing in the exact instance ID (not 0) in the API is safer, because if ensures at most one restart of the code package. */
+  codePackageInstanceId: string;
+  /** The activation id of a deployed service package. If ServicePackageActivationMode specified at the time of creating the service is 'SharedProcess' (or if it is not specified, in which case it defaults to 'SharedProcess'), then value of ServicePackageActivationId is always an empty string. */
+  servicePackageActivationId?: string;
 }
 export const ApplicationsRestartDeployedCodePackageRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -654,7 +778,11 @@ export const ApplicationsRestartDeployedCodePackageRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       applicationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      nodeName: S.String,
+      serviceManifestName: S.String,
+      codePackageName: S.String,
+      codePackageInstanceId: S.String,
+      servicePackageActivationId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -682,7 +810,8 @@ export interface ApplicationsResumeUpgradeRequest {
   clusterName: string;
   /** The name of the application resource. */
   applicationName: string;
-  body: unknown;
+  /** The upgrade domain name. Expected to be the next upgrade domain if the application is upgrading. */
+  upgradeDomainName?: string;
 }
 export const ApplicationsResumeUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -690,7 +819,7 @@ export const ApplicationsResumeUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    upgradeDomainName: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -745,6 +874,41 @@ export const ApplicationsStartRollbackResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsStartRollbackResponse",
 }) as any as S.Schema<ApplicationsStartRollbackResponse>;
 
+/** Application update parameters */
+export type ApplicationsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ApplicationsUpdateRequestTagsMap>;
+
+/** List of application parameters with overridden values from their default values specified in the application manifest. */
+export type ApplicationUpdateParametersPropertiesParametersMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationUpdateParametersPropertiesParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ApplicationUpdateParametersPropertiesParametersMap>;
+
+/** Properties for application update request. */
+export interface ApplicationUpdateParametersProperties {
+  /** List of application parameters with overridden values from their default values specified in the application manifest. */
+  parameters?: ApplicationUpdateParametersPropertiesParametersMap;
+}
+export const ApplicationUpdateParametersProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parameters: S.optional(
+        ApplicationUpdateParametersPropertiesParametersMap,
+      ),
+    }),
+).annotate({
+  identifier: "ApplicationUpdateParametersProperties",
+}) as any as S.Schema<ApplicationUpdateParametersProperties>;
+
 export interface ApplicationsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -754,7 +918,10 @@ export interface ApplicationsUpdateRequest {
   clusterName: string;
   /** The name of the application resource. */
   applicationName: string;
-  body: unknown;
+  /** Application update parameters */
+  tags?: ApplicationsUpdateRequestTagsMap;
+  /** Application update parameters properties. */
+  properties?: ApplicationUpdateParametersProperties;
 }
 export const ApplicationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -762,7 +929,8 @@ export const ApplicationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ApplicationsUpdateRequestTagsMap),
+    properties: S.optional(ApplicationUpdateParametersProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -817,6 +985,115 @@ export const ApplicationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsUpdateResponse",
 }) as any as S.Schema<ApplicationsUpdateResponse>;
 
+/** Cluster level definition for the kind of upgrade. */
+export type RuntimeUpgradeKind = "Rolling";
+export const RuntimeUpgradeKind = /*@__PURE__*/ S.String;
+
+/** Cluster level definition that represents the health policy used to evaluate the health of services belonging to a service type. */
+export interface RuntimeServiceTypeHealthPolicy {
+  /** The maximum allowed percentage of unhealthy services. The percentage represents the maximum tolerated percentage of services that can be unhealthy before the application is considered in error. If the percentage is respected but there is at least one unhealthy service, the health is evaluated as Warning. This is calculated by dividing the number of unhealthy services of the specific service type over the total number of services of the specific service type. The computation rounds up to tolerate one failure on small numbers of services. */
+  maxPercentUnhealthyServices: number;
+  /** The maximum allowed percentage of unhealthy partitions per service. The percentage represents the maximum tolerated percentage of partitions that can be unhealthy before the service is considered in error. If the percentage is respected but there is at least one unhealthy partition, the health is evaluated as Warning. The percentage is calculated by dividing the number of unhealthy partitions over the total number of partitions in the service. The computation rounds up to tolerate one failure on small numbers of partitions. */
+  maxPercentUnhealthyPartitionsPerService: number;
+  /** The maximum allowed percentage of unhealthy replicas per partition. The percentage represents the maximum tolerated percentage of replicas that can be unhealthy before the partition is considered in error. If the percentage is respected but there is at least one unhealthy replica, the health is evaluated as Warning. The percentage is calculated by dividing the number of unhealthy replicas over the total number of replicas in the partition. The computation rounds up to tolerate one failure on small numbers of replicas. */
+  maxPercentUnhealthyReplicasPerPartition: number;
+}
+export const RuntimeServiceTypeHealthPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxPercentUnhealthyServices: S.Number,
+    maxPercentUnhealthyPartitionsPerService: S.Number,
+    maxPercentUnhealthyReplicasPerPartition: S.Number,
+  }),
+).annotate({
+  identifier: "RuntimeServiceTypeHealthPolicy",
+}) as any as S.Schema<RuntimeServiceTypeHealthPolicy>;
+
+/** The map with service type health policy per service type name. The map is empty by default. */
+export type RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap = {
+  [key: string]: RuntimeServiceTypeHealthPolicy | undefined;
+};
+export const RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    RuntimeServiceTypeHealthPolicy,
+  ) as any as S.Schema<RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap>;
+
+/** Cluster level definition for a health policy used to evaluate the health of an application or one of its children entities. */
+export interface RuntimeApplicationHealthPolicy {
+  /** Indicates whether warnings are treated with the same severity as errors. */
+  considerWarningAsError: boolean;
+  /** The maximum allowed percentage of unhealthy deployed applications. Allowed values are Byte values from zero to 100. The percentage represents the maximum tolerated percentage of deployed applications that can be unhealthy before the application is considered in error. This is calculated by dividing the number of unhealthy deployed applications over the number of nodes where the application is currently deployed on in the cluster. The computation rounds up to tolerate one failure on small numbers of nodes. Default percentage is zero. */
+  maxPercentUnhealthyDeployedApplications: number;
+  /** The health policy used by default to evaluate the health of a service type. */
+  defaultServiceTypeHealthPolicy?: RuntimeServiceTypeHealthPolicy;
+  /** The map with service type health policy per service type name. The map is empty by default. */
+  serviceTypeHealthPolicyMap?: RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap;
+}
+export const RuntimeApplicationHealthPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    considerWarningAsError: S.Boolean,
+    maxPercentUnhealthyDeployedApplications: S.Number,
+    defaultServiceTypeHealthPolicy: S.optional(RuntimeServiceTypeHealthPolicy),
+    serviceTypeHealthPolicyMap: S.optional(
+      RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap,
+    ),
+  }),
+).annotate({
+  identifier: "RuntimeApplicationHealthPolicy",
+}) as any as S.Schema<RuntimeApplicationHealthPolicy>;
+
+/** Cluster level definition for the mode used to monitor health during a rolling upgrade. */
+export type RuntimeRollingUpgradeMode =
+  | "UnmonitoredAuto"
+  | "UnmonitoredManual"
+  | "Monitored";
+export const RuntimeRollingUpgradeMode = /*@__PURE__*/ S.String;
+
+/** Cluster level definition for the compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. */
+export type RuntimeFailureAction = "Rollback" | "Manual";
+export const RuntimeFailureAction = /*@__PURE__*/ S.String;
+
+/** Describes the parameters for updating a rolling upgrade of application or cluster. */
+export interface RuntimeRollingUpgradeUpdateMonitoringPolicy {
+  /** The mode used to monitor health during a rolling upgrade. */
+  rollingUpgradeMode: RuntimeRollingUpgradeMode;
+  /** If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data). */
+  forceRestart?: boolean;
+  /** The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues. When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues. The timeout is reset at the start of each upgrade domain. Valid values are between 0 and 42949672925 inclusive. (unsigned 32-bit integer). */
+  replicaSetCheckTimeoutInMilliseconds?: number;
+  /** The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. Invalid indicates the failure action is invalid. Rollback specifies that the upgrade will start rolling back automatically. Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode */
+  failureAction?: RuntimeFailureAction;
+  /** The amount of time to wait after completing an upgrade domain before applying health policies. It is first interpreted as a string representing an ISO 8601 duration. If that fails, then it is interpreted as a number representing the total number of milliseconds. */
+  healthCheckWaitDurationInMilliseconds?: string;
+  /** The amount of time that the application or cluster must remain healthy before the upgrade proceeds to the next upgrade domain. It is first interpreted as a string representing an ISO 8601 duration. If that fails, then it is interpreted as a number representing the total number of milliseconds. */
+  healthCheckStableDurationInMilliseconds?: string;
+  /** The amount of time to retry health evaluation when the application or cluster is unhealthy before FailureAction is executed. It is first interpreted as a string representing an ISO 8601 duration. If that fails, then it is interpreted as a number representing the total number of milliseconds. */
+  healthCheckRetryTimeoutInMilliseconds?: string;
+  /** The amount of time the overall upgrade has to complete before FailureAction is executed. It is first interpreted as a string representing an ISO 8601 duration. If that fails, then it is interpreted as a number representing the total number of milliseconds. */
+  upgradeTimeoutInMilliseconds?: string;
+  /** The amount of time each upgrade domain has to complete before FailureAction is executed. It is first interpreted as a string representing an ISO 8601 duration. If that fails, then it is interpreted as a number representing the total number of milliseconds. */
+  upgradeDomainTimeoutInMilliseconds?: string;
+  /** Duration in seconds, to wait before a stateless instance is closed, to allow the active requests to drain gracefully. This would be effective when the instance is closing during the application/cluster upgrade, only for those instances which have a non-zero delay duration configured in the service description. */
+  instanceCloseDelayDurationInSeconds?: number;
+}
+export const RuntimeRollingUpgradeUpdateMonitoringPolicy =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rollingUpgradeMode: RuntimeRollingUpgradeMode,
+      forceRestart: S.optional(S.Boolean),
+      replicaSetCheckTimeoutInMilliseconds: S.optional(S.Number),
+      failureAction: S.optional(RuntimeFailureAction),
+      healthCheckWaitDurationInMilliseconds: S.optional(S.String),
+      healthCheckStableDurationInMilliseconds: S.optional(S.String),
+      healthCheckRetryTimeoutInMilliseconds: S.optional(S.String),
+      upgradeTimeoutInMilliseconds: S.optional(S.String),
+      upgradeDomainTimeoutInMilliseconds: S.optional(S.String),
+      instanceCloseDelayDurationInSeconds: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "RuntimeRollingUpgradeUpdateMonitoringPolicy",
+  }) as any as S.Schema<RuntimeRollingUpgradeUpdateMonitoringPolicy>;
+
 export interface ApplicationsUpdateUpgradeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -826,7 +1103,14 @@ export interface ApplicationsUpdateUpgradeRequest {
   clusterName: string;
   /** The name of the application resource. */
   applicationName: string;
-  body: unknown;
+  /** The name of the application, including the 'fabric:' URI scheme. */
+  name: string;
+  /** The kind of the upgrade. */
+  upgradeKind: RuntimeUpgradeKind;
+  /** Defines a health policy used to evaluate the health of an application or one of its children entities. */
+  applicationHealthPolicy?: RuntimeApplicationHealthPolicy;
+  /** Describes the parameters for updating a rolling upgrade of application or cluster and a monitoring policy. */
+  updateDescription?: RuntimeRollingUpgradeUpdateMonitoringPolicy;
 }
 export const ApplicationsUpdateUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -834,7 +1118,10 @@ export const ApplicationsUpdateUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.String,
+    upgradeKind: RuntimeUpgradeKind,
+    applicationHealthPolicy: S.optional(RuntimeApplicationHealthPolicy),
+    updateDescription: S.optional(RuntimeRollingUpgradeUpdateMonitoringPolicy),
   }).pipe(
     T.Http({
       method: "POST",
@@ -854,6 +1141,24 @@ export const ApplicationsUpdateUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationsUpdateUpgradeResponse",
 }) as any as S.Schema<ApplicationsUpdateUpgradeResponse>;
 
+/** The application type name properties */
+export interface ApplicationTypeResourcePropertiesInput {}
+export const ApplicationTypeResourcePropertiesInput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "ApplicationTypeResourcePropertiesInput",
+}) as any as S.Schema<ApplicationTypeResourcePropertiesInput>;
+
+/** Resource tags. */
+export type ApplicationTypesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationTypesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ApplicationTypesCreateOrUpdateRequestTagsMap>;
+
 export interface ApplicationTypesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -863,7 +1168,12 @@ export interface ApplicationTypesCreateOrUpdateRequest {
   clusterName: string;
   /** The name of the application type name resource. */
   applicationTypeName: string;
-  body: unknown;
+  /** The application type name properties */
+  properties?: ApplicationTypeResourcePropertiesInput;
+  /** Resource tags. */
+  tags?: ApplicationTypesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
 }
 export const ApplicationTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -872,7 +1182,9 @@ export const ApplicationTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       applicationTypeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ApplicationTypeResourcePropertiesInput),
+      tags: S.optional(ApplicationTypesCreateOrUpdateRequestTagsMap),
+      location: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1107,7 +1419,8 @@ export const ApplicationTypeResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationTypeResource>;
 
 /** The ApplicationTypeResource items on this page */
-export type ApplicationTypeResourceListValueList = ApplicationTypeResource[];
+export type ApplicationTypeResourceListValueList =
+  ReadonlyArray<ApplicationTypeResource>;
 export const ApplicationTypeResourceListValueList = /*@__PURE__*/ S.Array(
   ApplicationTypeResource,
 ) as any as S.Schema<ApplicationTypeResourceListValueList>;
@@ -1128,6 +1441,15 @@ export const ApplicationTypeResourceList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationTypeResourceList",
 }) as any as S.Schema<ApplicationTypeResourceList>;
 
+/** Application type update parameters */
+export type ApplicationTypesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationTypesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ApplicationTypesUpdateRequestTagsMap>;
+
 export interface ApplicationTypesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1137,7 +1459,8 @@ export interface ApplicationTypesUpdateRequest {
   clusterName: string;
   /** The name of the application type name resource. */
   applicationTypeName: string;
-  body: unknown;
+  /** Application type update parameters */
+  tags?: ApplicationTypesUpdateRequestTagsMap;
 }
 export const ApplicationTypesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1145,7 +1468,7 @@ export const ApplicationTypesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     applicationTypeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ApplicationTypesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1197,6 +1520,30 @@ export const ApplicationTypesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationTypesUpdateResponse",
 }) as any as S.Schema<ApplicationTypesUpdateResponse>;
 
+/** The properties of the application type version resource. */
+export interface ApplicationTypeVersionResourcePropertiesInput {
+  /** The URL to the application package */
+  appPackageUrl: string;
+}
+export const ApplicationTypeVersionResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      appPackageUrl: S.String,
+    }),
+  ).annotate({
+    identifier: "ApplicationTypeVersionResourcePropertiesInput",
+  }) as any as S.Schema<ApplicationTypeVersionResourcePropertiesInput>;
+
+/** Resource tags. */
+export type ApplicationTypeVersionsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationTypeVersionsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateRequestTagsMap>;
+
 export interface ApplicationTypeVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1208,7 +1555,12 @@ export interface ApplicationTypeVersionsCreateOrUpdateRequest {
   applicationTypeName: string;
   /** The application type version. */
   version: string;
-  body: unknown;
+  /** The properties of the application type version resource. */
+  properties?: ApplicationTypeVersionResourcePropertiesInput;
+  /** Resource tags. */
+  tags?: ApplicationTypeVersionsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
 }
 export const ApplicationTypeVersionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1218,7 +1570,9 @@ export const ApplicationTypeVersionsCreateOrUpdateRequest =
       clusterName: S.String.pipe(T.Label()),
       applicationTypeName: S.String.pipe(T.Label()),
       version: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ApplicationTypeVersionResourcePropertiesInput),
+      tags: S.optional(ApplicationTypeVersionsCreateOrUpdateRequestTagsMap),
+      location: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1469,7 +1823,7 @@ export const ApplicationTypeVersionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The ApplicationTypeVersionResource items on this page */
 export type ApplicationTypeVersionResourceListValueList =
-  ApplicationTypeVersionResource[];
+  ReadonlyArray<ApplicationTypeVersionResource>;
 export const ApplicationTypeVersionResourceListValueList =
   /*@__PURE__*/ S.Array(
     ApplicationTypeVersionResource,
@@ -1491,6 +1845,16 @@ export const ApplicationTypeVersionResourceList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationTypeVersionResourceList",
 }) as any as S.Schema<ApplicationTypeVersionResourceList>;
 
+/** Application type version update parameters */
+export type ApplicationTypeVersionsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationTypeVersionsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ApplicationTypeVersionsUpdateRequestTagsMap>;
+
 export interface ApplicationTypeVersionsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1502,7 +1866,8 @@ export interface ApplicationTypeVersionsUpdateRequest {
   applicationTypeName: string;
   /** The application type version. */
   version: string;
-  body: unknown;
+  /** Application type version update parameters */
+  tags?: ApplicationTypeVersionsUpdateRequestTagsMap;
 }
 export const ApplicationTypeVersionsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1512,7 +1877,7 @@ export const ApplicationTypeVersionsUpdateRequest = /*@__PURE__*/ S.suspend(
       clusterName: S.String.pipe(T.Label()),
       applicationTypeName: S.String.pipe(T.Label()),
       version: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ApplicationTypeVersionsUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1647,7 +2012,7 @@ export const ResourceAzStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Managed VM Sizes for Service Fabric Managed Clusters. */
 export type ManagedAzResiliencyStatusBaseResourceStatusList =
-  ResourceAzStatus[];
+  ReadonlyArray<ResourceAzStatus>;
 export const ManagedAzResiliencyStatusBaseResourceStatusList =
   /*@__PURE__*/ S.Array(
     ResourceAzStatus,
@@ -1671,69 +2036,22 @@ export const ManagedAzResiliencyStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedAzResiliencyStatus",
 }) as any as S.Schema<ManagedAzResiliencyStatus>;
 
-export interface ManagedClustersCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the cluster resource. */
-  clusterName: string;
-  body: unknown;
-}
-export const ManagedClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}",
-        code: 200,
-        apiVersion: "2026-02-01",
-      }),
-    ),
-).annotate({
-  identifier: "ManagedClustersCreateOrUpdateRequest",
-}) as any as S.Schema<ManagedClustersCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type ManagedClustersCreateOrUpdateResponseTagsMap = {
+export type ManagedClustersCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ManagedClustersCreateOrUpdateResponseTagsMap =
+export const ManagedClustersCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<ManagedClustersCreateOrUpdateResponseTagsMap>;
-
-/** The current state of the cluster. */
-export type ClusterState =
-  | "WaitingForNodes"
-  | "Deploying"
-  | "BaselineUpgrade"
-  | "Upgrading"
-  | "UpgradeFailed"
-  | "Ready"
-  | (string & {});
-export const ClusterState = /*@__PURE__*/ S.String;
-
-/** List of thumbprints of the cluster certificates. */
-export type ManagedClusterPropertiesClusterCertificateThumbprintsList =
-  string[];
-export const ManagedClusterPropertiesClusterCertificateThumbprintsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ManagedClusterPropertiesClusterCertificateThumbprintsList>;
+  ) as any as S.Schema<ManagedClustersCreateOrUpdateRequestTagsMap>;
 
 /** The reference to the transport protocol used by the load balancing rule. */
-export type Protocol = "tcp" | "udp" | (string & {});
+export type Protocol = "tcp" | "udp";
 export const Protocol = /*@__PURE__*/ S.String;
 
 /** The reference to the load balancer probe used by the load balancing rule. */
-export type ProbeProtocol = "tcp" | "http" | "https" | (string & {});
+export type ProbeProtocol = "tcp" | "http" | "https";
 export const ProbeProtocol = /*@__PURE__*/ S.String;
 
 /** Describes a load balancing rule. */
@@ -1768,12 +2086,12 @@ export const LoadBalancingRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoadBalancingRule>;
 
 /** Load balancing rules that are applied to the public load balancer of the cluster. */
-export type ManagedClusterPropertiesLoadBalancingRulesList =
-  LoadBalancingRule[];
-export const ManagedClusterPropertiesLoadBalancingRulesList =
+export type ManagedClusterPropertiesInputLoadBalancingRulesList =
+  ReadonlyArray<LoadBalancingRule>;
+export const ManagedClusterPropertiesInputLoadBalancingRulesList =
   /*@__PURE__*/ S.Array(
     LoadBalancingRule,
-  ) as any as S.Schema<ManagedClusterPropertiesLoadBalancingRulesList>;
+  ) as any as S.Schema<ManagedClusterPropertiesInputLoadBalancingRulesList>;
 
 /** Network protocol this rule applies to. */
 export type NsgProtocol =
@@ -1783,43 +2101,45 @@ export type NsgProtocol =
   | "udp"
   | "icmp"
   | "ah"
-  | "esp"
-  | (string & {});
+  | "esp";
 export const NsgProtocol = /*@__PURE__*/ S.String;
 
 /** The CIDR or source IP ranges. */
-export type NetworkSecurityRuleSourceAddressPrefixesList = string[];
+export type NetworkSecurityRuleSourceAddressPrefixesList =
+  ReadonlyArray<string>;
 export const NetworkSecurityRuleSourceAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkSecurityRuleSourceAddressPrefixesList>;
 
 /** The destination address prefixes. CIDR or destination IP ranges. */
-export type NetworkSecurityRuleDestinationAddressPrefixesList = string[];
+export type NetworkSecurityRuleDestinationAddressPrefixesList =
+  ReadonlyArray<string>;
 export const NetworkSecurityRuleDestinationAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkSecurityRuleDestinationAddressPrefixesList>;
 
 /** The source port ranges. */
-export type NetworkSecurityRuleSourcePortRangesList = string[];
+export type NetworkSecurityRuleSourcePortRangesList = ReadonlyArray<string>;
 export const NetworkSecurityRuleSourcePortRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NetworkSecurityRuleSourcePortRangesList>;
 
 /** The destination port ranges. */
-export type NetworkSecurityRuleDestinationPortRangesList = string[];
+export type NetworkSecurityRuleDestinationPortRangesList =
+  ReadonlyArray<string>;
 export const NetworkSecurityRuleDestinationPortRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NetworkSecurityRuleDestinationPortRangesList>;
 
 /** The network traffic is allowed or denied. */
-export type Access = "allow" | "deny" | (string & {});
+export type Access = "allow" | "deny";
 export const Access = /*@__PURE__*/ S.String;
 
 /** Network security rule direction. */
-export type Direction = "inbound" | "outbound" | (string & {});
+export type Direction = "inbound" | "outbound";
 export const Direction = /*@__PURE__*/ S.String;
 
 /** Describes a network security rule. */
@@ -1881,12 +2201,12 @@ export const NetworkSecurityRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkSecurityRule>;
 
 /** Custom Network Security Rules that are applied to the Virtual Network of the cluster. */
-export type ManagedClusterPropertiesNetworkSecurityRulesList =
-  NetworkSecurityRule[];
-export const ManagedClusterPropertiesNetworkSecurityRulesList =
+export type ManagedClusterPropertiesInputNetworkSecurityRulesList =
+  ReadonlyArray<NetworkSecurityRule>;
+export const ManagedClusterPropertiesInputNetworkSecurityRulesList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityRule,
-  ) as any as S.Schema<ManagedClusterPropertiesNetworkSecurityRulesList>;
+  ) as any as S.Schema<ManagedClusterPropertiesInputNetworkSecurityRulesList>;
 
 /** Client certificate definition. */
 export interface ClientCertificate {
@@ -1911,10 +2231,11 @@ export const ClientCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClientCertificate>;
 
 /** Client certificates that are allowed to manage the cluster. */
-export type ManagedClusterPropertiesClientsList = ClientCertificate[];
-export const ManagedClusterPropertiesClientsList = /*@__PURE__*/ S.Array(
+export type ManagedClusterPropertiesInputClientsList =
+  ReadonlyArray<ClientCertificate>;
+export const ManagedClusterPropertiesInputClientsList = /*@__PURE__*/ S.Array(
   ClientCertificate,
-) as any as S.Schema<ManagedClusterPropertiesClientsList>;
+) as any as S.Schema<ManagedClusterPropertiesInputClientsList>;
 
 /** The settings to enable AAD authentication on the cluster. */
 export interface AzureActiveDirectory {
@@ -1953,7 +2274,7 @@ export const SettingsParameterDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of parameters in the section. */
 export type SettingsSectionDescriptionParametersList =
-  SettingsParameterDescription[];
+  ReadonlyArray<SettingsParameterDescription>;
 export const SettingsSectionDescriptionParametersList = /*@__PURE__*/ S.Array(
   SettingsParameterDescription,
 ) as any as S.Schema<SettingsSectionDescriptionParametersList>;
@@ -1975,53 +2296,38 @@ export const SettingsSectionDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsSectionDescription>;
 
 /** The list of custom fabric settings to configure the cluster. */
-export type ManagedClusterPropertiesFabricSettingsList =
-  SettingsSectionDescription[];
-export const ManagedClusterPropertiesFabricSettingsList = /*@__PURE__*/ S.Array(
-  SettingsSectionDescription,
-) as any as S.Schema<ManagedClusterPropertiesFabricSettingsList>;
-
-/** The provisioning state of the managed resource. */
-export type ManagedResourceProvisioningState =
-  | "None"
-  | "Creating"
-  | "Created"
-  | "Updating"
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Deleting"
-  | "Deleted"
-  | "Other"
-  | (string & {});
-export const ManagedResourceProvisioningState = /*@__PURE__*/ S.String;
+export type ManagedClusterPropertiesInputFabricSettingsList =
+  ReadonlyArray<SettingsSectionDescription>;
+export const ManagedClusterPropertiesInputFabricSettingsList =
+  /*@__PURE__*/ S.Array(
+    SettingsSectionDescription,
+  ) as any as S.Schema<ManagedClusterPropertiesInputFabricSettingsList>;
 
 /** The upgrade mode of the cluster when new Service Fabric runtime version is available. */
-export type ManagedClusterPropertiesClusterUpgradeMode =
+export type ManagedClusterPropertiesInputClusterUpgradeMode =
   | "Automatic"
-  | "Manual"
-  | (string & {});
-export const ManagedClusterPropertiesClusterUpgradeMode =
+  | "Manual";
+export const ManagedClusterPropertiesInputClusterUpgradeMode =
   /*@__PURE__*/ S.String;
 
 /** Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. */
-export type ClusterUpgradeCadence = "Wave0" | "Wave1" | "Wave2" | (string & {});
+export type ClusterUpgradeCadence = "Wave0" | "Wave1" | "Wave2";
 export const ClusterUpgradeCadence = /*@__PURE__*/ S.String;
 
 /** Available cluster add-on features */
 export type ManagedClusterAddOnFeature =
   | "DnsService"
   | "BackupRestoreService"
-  | "ResourceMonitorService"
-  | (string & {});
+  | "ResourceMonitorService";
 export const ManagedClusterAddOnFeature = /*@__PURE__*/ S.String;
 
 /** List of add-on features to enable on the cluster. */
-export type ManagedClusterPropertiesAddonFeaturesList =
-  ManagedClusterAddOnFeature[];
-export const ManagedClusterPropertiesAddonFeaturesList = /*@__PURE__*/ S.Array(
-  ManagedClusterAddOnFeature,
-) as any as S.Schema<ManagedClusterPropertiesAddonFeaturesList>;
+export type ManagedClusterPropertiesInputAddonFeaturesList =
+  ReadonlyArray<ManagedClusterAddOnFeature>;
+export const ManagedClusterPropertiesInputAddonFeaturesList =
+  /*@__PURE__*/ S.Array(
+    ManagedClusterAddOnFeature,
+  ) as any as S.Schema<ManagedClusterPropertiesInputAddonFeaturesList>;
 
 /** The policy used to clean up unused versions. When the policy is not specified explicitly, the default unused application versions to keep will be 3. */
 export interface ApplicationTypeVersionsCleanupPolicy {
@@ -2052,23 +2358,17 @@ export const IpTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpTag" }) as any as S.Schema<IpTag>;
 
 /** The list of IP tags associated with the default public IP address of the cluster. */
-export type ManagedClusterPropertiesIpTagsList = IpTag[];
-export const ManagedClusterPropertiesIpTagsList = /*@__PURE__*/ S.Array(
+export type ManagedClusterPropertiesInputIpTagsList = ReadonlyArray<IpTag>;
+export const ManagedClusterPropertiesInputIpTagsList = /*@__PURE__*/ S.Array(
   IpTag,
-) as any as S.Schema<ManagedClusterPropertiesIpTagsList>;
+) as any as S.Schema<ManagedClusterPropertiesInputIpTagsList>;
 
 /** Enable or Disable apply network policies on private end point in the subnet. */
-export type PrivateEndpointNetworkPolicies =
-  | "enabled"
-  | "disabled"
-  | (string & {});
+export type PrivateEndpointNetworkPolicies = "enabled" | "disabled";
 export const PrivateEndpointNetworkPolicies = /*@__PURE__*/ S.String;
 
 /** Enable or Disable apply network policies on private link service in the subnet. */
-export type PrivateLinkServiceNetworkPolicies =
-  | "enabled"
-  | "disabled"
-  | (string & {});
+export type PrivateLinkServiceNetworkPolicies = "enabled" | "disabled";
 export const PrivateLinkServiceNetworkPolicies = /*@__PURE__*/ S.String;
 
 /** Describes a Subnet. */
@@ -2097,14 +2397,15 @@ export const Subnet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subnet" }) as any as S.Schema<Subnet>;
 
 /** Auxiliary subnets for the cluster. */
-export type ManagedClusterPropertiesAuxiliarySubnetsList = Subnet[];
-export const ManagedClusterPropertiesAuxiliarySubnetsList =
+export type ManagedClusterPropertiesInputAuxiliarySubnetsList =
+  ReadonlyArray<Subnet>;
+export const ManagedClusterPropertiesInputAuxiliarySubnetsList =
   /*@__PURE__*/ S.Array(
     Subnet,
-  ) as any as S.Schema<ManagedClusterPropertiesAuxiliarySubnetsList>;
+  ) as any as S.Schema<ManagedClusterPropertiesInputAuxiliarySubnetsList>;
 
 /** A list of locations. */
-export type ServiceEndpointLocationsList = string[];
+export type ServiceEndpointLocationsList = ReadonlyArray<string>;
 export const ServiceEndpointLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServiceEndpointLocationsList>;
@@ -2129,14 +2430,15 @@ export const ServiceEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceEndpoint>;
 
 /** Service endpoints for subnets in the cluster. */
-export type ManagedClusterPropertiesServiceEndpointsList = ServiceEndpoint[];
-export const ManagedClusterPropertiesServiceEndpointsList =
+export type ManagedClusterPropertiesInputServiceEndpointsList =
+  ReadonlyArray<ServiceEndpoint>;
+export const ManagedClusterPropertiesInputServiceEndpointsList =
   /*@__PURE__*/ S.Array(
     ServiceEndpoint,
-  ) as any as S.Schema<ManagedClusterPropertiesServiceEndpointsList>;
+  ) as any as S.Schema<ManagedClusterPropertiesInputServiceEndpointsList>;
 
 /** Indicates the update mode for Cross Az clusters. */
-export type ZonalUpdateMode = "Standard" | "Fast" | (string & {});
+export type ZonalUpdateMode = "Standard" | "Fast";
 export const ZonalUpdateMode = /*@__PURE__*/ S.String;
 
 /** Defines a health policy used to evaluate the health of the cluster or of a cluster node. */
@@ -2229,9 +2531,302 @@ export type AutoGeneratedDomainNameLabelScope =
   | "TenantReuse"
   | "SubscriptionReuse"
   | "ResourceGroupReuse"
-  | "NoReuse"
-  | (string & {});
+  | "NoReuse";
 export const AutoGeneratedDomainNameLabelScope = /*@__PURE__*/ S.String;
+
+/** Describes the managed cluster resource properties. */
+export interface ManagedClusterPropertiesInput {
+  /** The cluster dns name. */
+  dnsName: string;
+  /** The port used for client connections to the cluster. */
+  clientConnectionPort?: number;
+  /** The port used for HTTP connections to the cluster. */
+  httpGatewayConnectionPort?: number;
+  /** VM admin user name. */
+  adminUserName: string;
+  /** VM admin user password. */
+  adminPassword?: string | Redacted.Redacted<string>;
+  /** Load balancing rules that are applied to the public load balancer of the cluster. */
+  loadBalancingRules?: ManagedClusterPropertiesInputLoadBalancingRulesList;
+  /** Setting this to true enables RDP access to the VM. The default NSG rule opens RDP port to Internet which can be overridden with custom Network Security Rules. The default value for this setting is false. */
+  allowRdpAccess?: boolean;
+  /** Custom Network Security Rules that are applied to the Virtual Network of the cluster. */
+  networkSecurityRules?: ManagedClusterPropertiesInputNetworkSecurityRulesList;
+  /** Client certificates that are allowed to manage the cluster. */
+  clients?: ManagedClusterPropertiesInputClientsList;
+  /** The AAD authentication settings of the cluster. */
+  azureActiveDirectory?: AzureActiveDirectory;
+  /** The list of custom fabric settings to configure the cluster. */
+  fabricSettings?: ManagedClusterPropertiesInputFabricSettingsList;
+  /** The Service Fabric runtime version of the cluster. This property is required when **clusterUpgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**. */
+  clusterCodeVersion?: string;
+  /** The upgrade mode of the cluster when new Service Fabric runtime version is available. */
+  clusterUpgradeMode?: ManagedClusterPropertiesInputClusterUpgradeMode;
+  /** Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **clusterUpgradeMode** is set to 'Automatic'. */
+  clusterUpgradeCadence?: ClusterUpgradeCadence;
+  /** List of add-on features to enable on the cluster. */
+  addonFeatures?: ManagedClusterPropertiesInputAddonFeaturesList;
+  /** Enables automatic OS upgrade for node types created using OS images with version 'latest'. The default value for this setting is false. */
+  enableAutoOSUpgrade?: boolean;
+  /** Indicates if the cluster has zone resiliency. */
+  zonalResiliency?: boolean;
+  /** The policy used to clean up unused versions. */
+  applicationTypeVersionsCleanupPolicy?: ApplicationTypeVersionsCleanupPolicy;
+  /** Setting this to true creates IPv6 address space for the default VNet used by the cluster. This setting cannot be changed once the cluster is created. The default value for this setting is false. */
+  enableIpv6?: boolean;
+  /** If specified, the node types for the cluster are created in this subnet instead of the default VNet. The **networkSecurityRules** specified for the cluster are also applied to this subnet. This setting cannot be changed once the cluster is created. */
+  subnetId?: string;
+  /** The list of IP tags associated with the default public IP address of the cluster. */
+  ipTags?: ManagedClusterPropertiesInputIpTagsList;
+  /** Setting this to true will link the IPv4 address as the ServicePublicIP of the IPv6 address. It can only be set to True if IPv6 is enabled on the cluster. */
+  enableServicePublicIP?: boolean;
+  /** Auxiliary subnets for the cluster. */
+  auxiliarySubnets?: ManagedClusterPropertiesInputAuxiliarySubnetsList;
+  /** Service endpoints for subnets in the cluster. */
+  serviceEndpoints?: ManagedClusterPropertiesInputServiceEndpointsList;
+  /** Indicates the update mode for Cross Az clusters. */
+  zonalUpdateMode?: ZonalUpdateMode;
+  /** For new clusters, this parameter indicates that it uses Bring your own VNet, but the subnet is specified at node type level; and for such clusters, the subnetId property is required for node types. */
+  useCustomVnet?: boolean;
+  /** Specify the resource id of a public IPv4 prefix that the load balancer will allocate a public IPv4 address from. This setting cannot be changed once the cluster is created. */
+  publicIPPrefixId?: string;
+  /** Specify the resource id of a public IPv6 prefix that the load balancer will allocate a public IPv6 address from. This setting cannot be changed once the cluster is created. */
+  publicIPv6PrefixId?: string;
+  /** Specify the resource id of a DDoS network protection plan that will be associated with the virtual network of the cluster. */
+  ddosProtectionPlanId?: string;
+  /** The policy to use when upgrading the cluster. */
+  upgradeDescription?: ClusterUpgradePolicy;
+  /** The port used for token-auth based HTTPS connections to the cluster. Cannot be set to the same port as HttpGatewayEndpoint. */
+  httpGatewayTokenAuthConnectionPort?: number;
+  /** If true, token-based authentication is not allowed on the HttpGatewayEndpoint. This is required to support TLS versions 1.3 and above. If token-based authentication is used, HttpGatewayTokenAuthConnectionPort must be defined. */
+  enableHttpGatewayExclusiveAuthMode?: boolean;
+  /** This property is the entry point to using a public CA cert for your cluster cert. It specifies the level of reuse allowed for the custom FQDN created, matching the subject of the public CA cert. */
+  autoGeneratedDomainNameLabelScope?: AutoGeneratedDomainNameLabelScope;
+  /** The number of outbound ports allocated for SNAT for each node in the backend pool of the default load balancer. The default value is 0 which provides dynamic port allocation based on pool size. */
+  allocatedOutboundPorts?: number;
+  /** The VM image the node types are configured with. This property controls the Service Fabric component packages to be used for the cluster. Allowed values are: 'Windows'. The default value is 'Windows'. */
+  VMImage?: string;
+  /** Enable the creation of node types with only outbound traffic enabled. If set, a separate load balancer backend pool will be created for node types with inbound traffic enabled. Can only be set at the time of cluster creation. */
+  enableOutboundOnlyNodeTypes?: boolean;
+  /** Determines whether to skip the assignment of the managed network security group (SF-NSG) to the cluster subnet when using a bring-your-own virtual network (BYOVNET) configuration. The default value is false. */
+  skipManagedNsgAssignment?: boolean;
+}
+export const ManagedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dnsName: S.String,
+    clientConnectionPort: S.optional(S.Number),
+    httpGatewayConnectionPort: S.optional(S.Number),
+    adminUserName: S.String,
+    adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    loadBalancingRules: S.optional(
+      ManagedClusterPropertiesInputLoadBalancingRulesList,
+    ),
+    allowRdpAccess: S.optional(S.Boolean),
+    networkSecurityRules: S.optional(
+      ManagedClusterPropertiesInputNetworkSecurityRulesList,
+    ),
+    clients: S.optional(ManagedClusterPropertiesInputClientsList),
+    azureActiveDirectory: S.optional(AzureActiveDirectory),
+    fabricSettings: S.optional(ManagedClusterPropertiesInputFabricSettingsList),
+    clusterCodeVersion: S.optional(S.String),
+    clusterUpgradeMode: S.optional(
+      ManagedClusterPropertiesInputClusterUpgradeMode,
+    ),
+    clusterUpgradeCadence: S.optional(ClusterUpgradeCadence),
+    addonFeatures: S.optional(ManagedClusterPropertiesInputAddonFeaturesList),
+    enableAutoOSUpgrade: S.optional(S.Boolean),
+    zonalResiliency: S.optional(S.Boolean),
+    applicationTypeVersionsCleanupPolicy: S.optional(
+      ApplicationTypeVersionsCleanupPolicy,
+    ),
+    enableIpv6: S.optional(S.Boolean),
+    subnetId: S.optional(S.String),
+    ipTags: S.optional(ManagedClusterPropertiesInputIpTagsList),
+    enableServicePublicIP: S.optional(S.Boolean),
+    auxiliarySubnets: S.optional(
+      ManagedClusterPropertiesInputAuxiliarySubnetsList,
+    ),
+    serviceEndpoints: S.optional(
+      ManagedClusterPropertiesInputServiceEndpointsList,
+    ),
+    zonalUpdateMode: S.optional(ZonalUpdateMode),
+    useCustomVnet: S.optional(S.Boolean),
+    publicIPPrefixId: S.optional(S.String),
+    publicIPv6PrefixId: S.optional(S.String),
+    ddosProtectionPlanId: S.optional(S.String),
+    upgradeDescription: S.optional(ClusterUpgradePolicy),
+    httpGatewayTokenAuthConnectionPort: S.optional(S.Number),
+    enableHttpGatewayExclusiveAuthMode: S.optional(S.Boolean),
+    autoGeneratedDomainNameLabelScope: S.optional(
+      AutoGeneratedDomainNameLabelScope,
+    ),
+    allocatedOutboundPorts: S.optional(S.Number),
+    VMImage: S.optional(S.String),
+    enableOutboundOnlyNodeTypes: S.optional(S.Boolean),
+    skipManagedNsgAssignment: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ManagedClusterPropertiesInput",
+}) as any as S.Schema<ManagedClusterPropertiesInput>;
+
+/** Sku Name. */
+export type SkuName = "Basic" | "Standard";
+export const SkuName = /*@__PURE__*/ S.String;
+
+/** Service Fabric managed cluster Sku definition */
+export interface Sku {
+  /** Sku Name. */
+  name: SkuName;
+}
+export const Sku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: SkuName,
+  }),
+).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+
+export interface ManagedClustersCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the cluster resource. */
+  clusterName: string;
+  /** Resource tags. */
+  tags?: ManagedClustersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The managed cluster resource properties */
+  properties?: ManagedClusterPropertiesInput;
+  /** The sku of the managed cluster */
+  sku: Sku;
+}
+export const ManagedClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      tags: S.optional(ManagedClustersCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(ManagedClusterPropertiesInput),
+      sku: Sku,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}",
+        code: 200,
+        apiVersion: "2026-02-01",
+      }),
+    ),
+).annotate({
+  identifier: "ManagedClustersCreateOrUpdateRequest",
+}) as any as S.Schema<ManagedClustersCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type ManagedClustersCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ManagedClustersCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ManagedClustersCreateOrUpdateResponseTagsMap>;
+
+/** The current state of the cluster. */
+export type ClusterState =
+  | "WaitingForNodes"
+  | "Deploying"
+  | "BaselineUpgrade"
+  | "Upgrading"
+  | "UpgradeFailed"
+  | "Ready";
+export const ClusterState = /*@__PURE__*/ S.String;
+
+/** List of thumbprints of the cluster certificates. */
+export type ManagedClusterPropertiesClusterCertificateThumbprintsList =
+  ReadonlyArray<string>;
+export const ManagedClusterPropertiesClusterCertificateThumbprintsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ManagedClusterPropertiesClusterCertificateThumbprintsList>;
+
+/** Load balancing rules that are applied to the public load balancer of the cluster. */
+export type ManagedClusterPropertiesLoadBalancingRulesList =
+  ReadonlyArray<LoadBalancingRule>;
+export const ManagedClusterPropertiesLoadBalancingRulesList =
+  /*@__PURE__*/ S.Array(
+    LoadBalancingRule,
+  ) as any as S.Schema<ManagedClusterPropertiesLoadBalancingRulesList>;
+
+/** Custom Network Security Rules that are applied to the Virtual Network of the cluster. */
+export type ManagedClusterPropertiesNetworkSecurityRulesList =
+  ReadonlyArray<NetworkSecurityRule>;
+export const ManagedClusterPropertiesNetworkSecurityRulesList =
+  /*@__PURE__*/ S.Array(
+    NetworkSecurityRule,
+  ) as any as S.Schema<ManagedClusterPropertiesNetworkSecurityRulesList>;
+
+/** Client certificates that are allowed to manage the cluster. */
+export type ManagedClusterPropertiesClientsList =
+  ReadonlyArray<ClientCertificate>;
+export const ManagedClusterPropertiesClientsList = /*@__PURE__*/ S.Array(
+  ClientCertificate,
+) as any as S.Schema<ManagedClusterPropertiesClientsList>;
+
+/** The list of custom fabric settings to configure the cluster. */
+export type ManagedClusterPropertiesFabricSettingsList =
+  ReadonlyArray<SettingsSectionDescription>;
+export const ManagedClusterPropertiesFabricSettingsList = /*@__PURE__*/ S.Array(
+  SettingsSectionDescription,
+) as any as S.Schema<ManagedClusterPropertiesFabricSettingsList>;
+
+/** The provisioning state of the managed resource. */
+export type ManagedResourceProvisioningState =
+  | "None"
+  | "Creating"
+  | "Created"
+  | "Updating"
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Deleting"
+  | "Deleted"
+  | "Other";
+export const ManagedResourceProvisioningState = /*@__PURE__*/ S.String;
+
+/** The upgrade mode of the cluster when new Service Fabric runtime version is available. */
+export type ManagedClusterPropertiesClusterUpgradeMode = "Automatic" | "Manual";
+export const ManagedClusterPropertiesClusterUpgradeMode =
+  /*@__PURE__*/ S.String;
+
+/** List of add-on features to enable on the cluster. */
+export type ManagedClusterPropertiesAddonFeaturesList =
+  ReadonlyArray<ManagedClusterAddOnFeature>;
+export const ManagedClusterPropertiesAddonFeaturesList = /*@__PURE__*/ S.Array(
+  ManagedClusterAddOnFeature,
+) as any as S.Schema<ManagedClusterPropertiesAddonFeaturesList>;
+
+/** The list of IP tags associated with the default public IP address of the cluster. */
+export type ManagedClusterPropertiesIpTagsList = ReadonlyArray<IpTag>;
+export const ManagedClusterPropertiesIpTagsList = /*@__PURE__*/ S.Array(
+  IpTag,
+) as any as S.Schema<ManagedClusterPropertiesIpTagsList>;
+
+/** Auxiliary subnets for the cluster. */
+export type ManagedClusterPropertiesAuxiliarySubnetsList =
+  ReadonlyArray<Subnet>;
+export const ManagedClusterPropertiesAuxiliarySubnetsList =
+  /*@__PURE__*/ S.Array(
+    Subnet,
+  ) as any as S.Schema<ManagedClusterPropertiesAuxiliarySubnetsList>;
+
+/** Service endpoints for subnets in the cluster. */
+export type ManagedClusterPropertiesServiceEndpointsList =
+  ReadonlyArray<ServiceEndpoint>;
+export const ManagedClusterPropertiesServiceEndpointsList =
+  /*@__PURE__*/ S.Array(
+    ServiceEndpoint,
+  ) as any as S.Schema<ManagedClusterPropertiesServiceEndpointsList>;
 
 /** Describes the managed cluster resource properties. */
 export interface ManagedClusterProperties {
@@ -2384,21 +2979,6 @@ export const ManagedClusterProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ManagedClusterProperties",
 }) as any as S.Schema<ManagedClusterProperties>;
-
-/** Sku Name. */
-export type SkuName = "Basic" | "Standard" | (string & {});
-export const SkuName = /*@__PURE__*/ S.String;
-
-/** Service Fabric managed cluster Sku definition */
-export interface Sku {
-  /** Sku Name. */
-  name: SkuName;
-}
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SkuName,
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 export interface ManagedClustersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2605,7 +3185,7 @@ export const ManagedCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedCluster" }) as any as S.Schema<ManagedCluster>;
 
 /** The ManagedCluster items on this page */
-export type ManagedClusterListResultValueList = ManagedCluster[];
+export type ManagedClusterListResultValueList = ReadonlyArray<ManagedCluster>;
 export const ManagedClusterListResultValueList = /*@__PURE__*/ S.Array(
   ManagedCluster,
 ) as any as S.Schema<ManagedClusterListResultValueList>;
@@ -2646,6 +3226,15 @@ export const ManagedClustersListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "ManagedClustersListBySubscriptionRequest",
 }) as any as S.Schema<ManagedClustersListBySubscriptionRequest>;
 
+/** Managed cluster update parameters */
+export type ManagedClustersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ManagedClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ManagedClustersUpdateRequestTagsMap>;
+
 export interface ManagedClustersUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2653,14 +3242,15 @@ export interface ManagedClustersUpdateRequest {
   resourceGroupName: string;
   /** The name of the cluster resource. */
   clusterName: string;
-  body: unknown;
+  /** Managed cluster update parameters */
+  tags?: ManagedClustersUpdateRequestTagsMap;
 }
 export const ManagedClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ManagedClustersUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2744,7 +3334,7 @@ export const ManagedClusterVersionGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterVersionGetRequest>;
 
 /** Cluster operating system, the default will be Windows */
-export type OsType = "Windows" | (string & {});
+export type OsType = "Windows";
 export const OsType = /*@__PURE__*/ S.String;
 
 /** The detail of the Service Fabric runtime version result */
@@ -2788,9 +3378,7 @@ export const ManagedClusterCodeVersionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedClusterCodeVersionResult",
 }) as any as S.Schema<ManagedClusterCodeVersionResult>;
 
-export type ManagedClusterVersionGetByEnvironmentRequestEnvironment =
-  | "Windows"
-  | (string & {});
+export type ManagedClusterVersionGetByEnvironmentRequestEnvironment = "Windows";
 export const ManagedClusterVersionGetByEnvironmentRequestEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -2848,7 +3436,7 @@ export const ManagedClusterVersionListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterVersionListRequest>;
 
 export type ManagedClusterVersionListResponseBodyList =
-  ManagedClusterCodeVersionResult[];
+  ReadonlyArray<ManagedClusterCodeVersionResult>;
 export const ManagedClusterVersionListResponseBodyList = /*@__PURE__*/ S.Array(
   ManagedClusterCodeVersionResult,
 ) as any as S.Schema<ManagedClusterVersionListResponseBodyList>;
@@ -2862,8 +3450,7 @@ export const ManagedClusterVersionListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterVersionListResponse>;
 
 export type ManagedClusterVersionListByEnvironmentRequestEnvironment =
-  | "Windows"
-  | (string & {});
+  "Windows";
 export const ManagedClusterVersionListByEnvironmentRequestEnvironment =
   /*@__PURE__*/ S.String;
 
@@ -2897,7 +3484,7 @@ export const ManagedClusterVersionListByEnvironmentRequest =
   }) as any as S.Schema<ManagedClusterVersionListByEnvironmentRequest>;
 
 export type ManagedClusterVersionListByEnvironmentResponseBodyList =
-  ManagedClusterCodeVersionResult[];
+  ReadonlyArray<ManagedClusterCodeVersionResult>;
 export const ManagedClusterVersionListByEnvironmentResponseBodyList =
   /*@__PURE__*/ S.Array(
     ManagedClusterCodeVersionResult,
@@ -3051,7 +3638,7 @@ export const ManagedUnsupportedVMSizesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedUnsupportedVMSizesListRequest>;
 
 /** The ManagedVMSize items on this page */
-export type ManagedVMSizesResultValueList = ManagedVMSize[];
+export type ManagedVMSizesResultValueList = ReadonlyArray<ManagedVMSize>;
 export const ManagedVMSizesResultValueList = /*@__PURE__*/ S.Array(
   ManagedVMSize,
 ) as any as S.Schema<ManagedVMSizesResultValueList>;
@@ -3072,64 +3659,34 @@ export const ManagedVMSizesResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedVMSizesResult",
 }) as any as S.Schema<ManagedVMSizesResult>;
 
-export interface NodeTypesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the cluster resource. */
-  clusterName: string;
-  /** The name of the node type. */
-  nodeTypeName: string;
-  body: unknown;
-}
-export const NodeTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    nodeTypeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}",
-      code: 200,
-      apiVersion: "2026-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "NodeTypesCreateOrUpdateRequest",
-}) as any as S.Schema<NodeTypesCreateOrUpdateRequest>;
-
 /** Managed data disk type. Specifies the storage account type for the managed disk */
-export type NodeTypePropertiesDataDiskType =
+export type NodeTypePropertiesInputDataDiskType =
   | "Standard_LRS"
   | "StandardSSD_LRS"
   | "Premium_LRS"
   | "PremiumV2_LRS"
   | "StandardSSD_ZRS"
-  | "Premium_ZRS"
-  | (string & {});
-export const NodeTypePropertiesDataDiskType = /*@__PURE__*/ S.String;
+  | "Premium_ZRS";
+export const NodeTypePropertiesInputDataDiskType = /*@__PURE__*/ S.String;
 
 /** The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run. */
-export type NodeTypePropertiesPlacementPropertiesMap = {
+export type NodeTypePropertiesInputPlacementPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const NodeTypePropertiesPlacementPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<NodeTypePropertiesPlacementPropertiesMap>;
+export const NodeTypePropertiesInputPlacementPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NodeTypePropertiesInputPlacementPropertiesMap>;
 
 /** The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has. */
-export type NodeTypePropertiesCapacitiesMap = {
+export type NodeTypePropertiesInputCapacitiesMap = {
   [key: string]: string | undefined;
 };
-export const NodeTypePropertiesCapacitiesMap = /*@__PURE__*/ S.Record(
+export const NodeTypePropertiesInputCapacitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<NodeTypePropertiesCapacitiesMap>;
+) as any as S.Schema<NodeTypePropertiesInputCapacitiesMap>;
 
 /** Port range details */
 export interface EndpointRangeDescription {
@@ -3175,7 +3732,8 @@ export const VaultCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VaultCertificate>;
 
 /** The list of key vault references in SourceVault which contain certificates. */
-export type VaultSecretGroupVaultCertificatesList = VaultCertificate[];
+export type VaultSecretGroupVaultCertificatesList =
+  ReadonlyArray<VaultCertificate>;
 export const VaultSecretGroupVaultCertificatesList = /*@__PURE__*/ S.Array(
   VaultCertificate,
 ) as any as S.Schema<VaultSecretGroupVaultCertificatesList>;
@@ -3197,24 +3755,735 @@ export const VaultSecretGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VaultSecretGroup>;
 
 /** The secrets to install in the virtual machines. */
-export type NodeTypePropertiesVmSecretsList = VaultSecretGroup[];
+export type NodeTypePropertiesInputVmSecretsList =
+  ReadonlyArray<VaultSecretGroup>;
+export const NodeTypePropertiesInputVmSecretsList = /*@__PURE__*/ S.Array(
+  VaultSecretGroup,
+) as any as S.Schema<NodeTypePropertiesInputVmSecretsList>;
+
+/** Collection of extension names after which this extension needs to be provisioned. */
+export type VMSSExtensionPropertiesInputProvisionAfterExtensionsList =
+  ReadonlyArray<string>;
+export const VMSSExtensionPropertiesInputProvisionAfterExtensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<VMSSExtensionPropertiesInputProvisionAfterExtensionsList>;
+
+/** Vm extension setup order. */
+export type VmssExtensionSetupOrder = "BeforeSFRuntime";
+export const VmssExtensionSetupOrder = /*@__PURE__*/ S.String;
+
+/** Indicates the setup order for the extension. */
+export type VMSSExtensionPropertiesInputSetupOrderList =
+  ReadonlyArray<VmssExtensionSetupOrder>;
+export const VMSSExtensionPropertiesInputSetupOrderList = /*@__PURE__*/ S.Array(
+  VmssExtensionSetupOrder,
+) as any as S.Schema<VMSSExtensionPropertiesInputSetupOrderList>;
+
+/** Describes the properties of a Virtual Machine Scale Set Extension. */
+export interface VMSSExtensionPropertiesInput {
+  /** The name of the extension handler publisher. */
+  publisher: string;
+  /** Specifies the type of the extension; an example is "CustomScriptExtension". */
+  type: string;
+  /** Specifies the version of the script handler. */
+  typeHandlerVersion: string;
+  /** Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true. */
+  autoUpgradeMinorVersion?: boolean;
+  /** Json formatted public settings for the extension. */
+  settings?: unknown;
+  /** The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. */
+  protectedSettings?: unknown;
+  /** If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed. */
+  forceUpdateTag?: string;
+  /** Collection of extension names after which this extension needs to be provisioned. */
+  provisionAfterExtensions?: VMSSExtensionPropertiesInputProvisionAfterExtensionsList;
+  /** Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available. */
+  enableAutomaticUpgrade?: boolean;
+  /** Indicates the setup order for the extension. */
+  setupOrder?: VMSSExtensionPropertiesInputSetupOrderList;
+}
+export const VMSSExtensionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publisher: S.String,
+    type: S.String,
+    typeHandlerVersion: S.String,
+    autoUpgradeMinorVersion: S.optional(S.Boolean),
+    settings: S.optional(S.Unknown),
+    protectedSettings: S.optional(S.Unknown),
+    forceUpdateTag: S.optional(S.String),
+    provisionAfterExtensions: S.optional(
+      VMSSExtensionPropertiesInputProvisionAfterExtensionsList,
+    ),
+    enableAutomaticUpgrade: S.optional(S.Boolean),
+    setupOrder: S.optional(VMSSExtensionPropertiesInputSetupOrderList),
+  }),
+).annotate({
+  identifier: "VMSSExtensionPropertiesInput",
+}) as any as S.Schema<VMSSExtensionPropertiesInput>;
+
+/** Specifies set of extensions that should be installed onto the virtual machines. */
+export interface VMSSExtensionInput {
+  /** The name of the extension. */
+  name: string;
+  /** Describes the properties of a Virtual Machine Scale Set Extension. */
+  properties: VMSSExtensionPropertiesInput;
+}
+export const VMSSExtensionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    properties: VMSSExtensionPropertiesInput,
+  }),
+).annotate({
+  identifier: "VMSSExtensionInput",
+}) as any as S.Schema<VMSSExtensionInput>;
+
+/** Set of extensions that should be installed onto the virtual machines. */
+export type NodeTypePropertiesInputVmExtensionsList =
+  ReadonlyArray<VMSSExtensionInput>;
+export const NodeTypePropertiesInputVmExtensionsList = /*@__PURE__*/ S.Array(
+  VMSSExtensionInput,
+) as any as S.Schema<NodeTypePropertiesInputVmExtensionsList>;
+
+/** The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type VmManagedIdentityUserAssignedIdentitiesList = ReadonlyArray<string>;
+export const VmManagedIdentityUserAssignedIdentitiesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<VmManagedIdentityUserAssignedIdentitiesList>;
+
+/** Identities for the virtual machine scale set under the node type. */
+export interface VmManagedIdentity {
+  /** The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: VmManagedIdentityUserAssignedIdentitiesList;
+}
+export const VmManagedIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userAssignedIdentities: S.optional(
+      VmManagedIdentityUserAssignedIdentitiesList,
+    ),
+  }),
+).annotate({
+  identifier: "VmManagedIdentity",
+}) as any as S.Schema<VmManagedIdentity>;
+
+/** The IP address type of this frontend configuration. If omitted the default value is IPv4. */
+export type FrontendConfigurationIpAddressType = "IPv4" | "IPv6";
+export const FrontendConfigurationIpAddressType = /*@__PURE__*/ S.String;
+
+/** Describes the frontend configurations for the node type. */
+export interface FrontendConfiguration {
+  /** The IP address type of this frontend configuration. If omitted the default value is IPv4. */
+  ipAddressType?: FrontendConfigurationIpAddressType;
+  /** The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}'. */
+  loadBalancerBackendAddressPoolId?: string;
+  /** The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatPools/{inboundNatPoolName}'. */
+  loadBalancerInboundNatPoolId?: string;
+  /** The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{backendAddressPoolName}'. */
+  applicationGatewayBackendAddressPoolId?: string;
+}
+export const FrontendConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipAddressType: S.optional(FrontendConfigurationIpAddressType),
+    loadBalancerBackendAddressPoolId: S.optional(S.String),
+    loadBalancerInboundNatPoolId: S.optional(S.String),
+    applicationGatewayBackendAddressPoolId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FrontendConfiguration",
+}) as any as S.Schema<FrontendConfiguration>;
+
+/** Indicates the node type uses its own frontend configurations instead of the default one for the cluster. This setting can only be specified for non-primary node types and can not be added or removed after the node type is created. */
+export type NodeTypePropertiesInputFrontendConfigurationsList =
+  ReadonlyArray<FrontendConfiguration>;
+export const NodeTypePropertiesInputFrontendConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    FrontendConfiguration,
+  ) as any as S.Schema<NodeTypePropertiesInputFrontendConfigurationsList>;
+
+/** The Network Security Rules for this node type. This setting can only be specified for node types that are configured with frontend configurations. */
+export type NodeTypePropertiesInputNetworkSecurityRulesList =
+  ReadonlyArray<NetworkSecurityRule>;
+export const NodeTypePropertiesInputNetworkSecurityRulesList =
+  /*@__PURE__*/ S.Array(
+    NetworkSecurityRule,
+  ) as any as S.Schema<NodeTypePropertiesInputNetworkSecurityRulesList>;
+
+/** Managed data disk type. Specifies the storage account type for the managed disk */
+export type VmssDataDiskDiskType =
+  | "Standard_LRS"
+  | "StandardSSD_LRS"
+  | "Premium_LRS"
+  | "PremiumV2_LRS"
+  | "StandardSSD_ZRS"
+  | "Premium_ZRS";
+export const VmssDataDiskDiskType = /*@__PURE__*/ S.String;
+
+/** Managed data disk description. */
+export interface VmssDataDisk {
+  /** Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM. Lun 0 is reserved for the service fabric data disk. */
+  lun: number;
+  /** Disk size for each vm in the node type in GBs. */
+  diskSizeGB: number;
+  /** Managed data disk type. Specifies the storage account type for the managed disk */
+  diskType: VmssDataDiskDiskType;
+  /** Managed data disk letter. It can not use the reserved letter C or D and it can not change after created. */
+  diskLetter: string;
+}
+export const VmssDataDisk = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lun: S.Number,
+    diskSizeGB: S.Number,
+    diskType: VmssDataDiskDiskType,
+    diskLetter: S.String,
+  }),
+).annotate({ identifier: "VmssDataDisk" }) as any as S.Schema<VmssDataDisk>;
+
+/** Additional managed data disks. */
+export type NodeTypePropertiesInputAdditionalDataDisksList =
+  ReadonlyArray<VmssDataDisk>;
+export const NodeTypePropertiesInputAdditionalDataDisksList =
+  /*@__PURE__*/ S.Array(
+    VmssDataDisk,
+  ) as any as S.Schema<NodeTypePropertiesInputAdditionalDataDisksList>;
+
+/** Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster. */
+export type NodeTypePropertiesInputZonesList = ReadonlyArray<string>;
+export const NodeTypePropertiesInputZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NodeTypePropertiesInputZonesList>;
+
+/** Specifies the eviction policy for virtual machines in a SPOT node type. */
+export type EvictionPolicyType = "Delete" | "Deallocate";
+export const EvictionPolicyType = /*@__PURE__*/ S.String;
+
+/** action to be performed on the vms before bootstrapping the service fabric runtime. */
+export type VmSetupAction = "EnableContainers" | "EnableHyperV";
+export const VmSetupAction = /*@__PURE__*/ S.String;
+
+/** Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime. */
+export type NodeTypePropertiesInputVmSetupActionsList =
+  ReadonlyArray<VmSetupAction>;
+export const NodeTypePropertiesInputVmSetupActionsList = /*@__PURE__*/ S.Array(
+  VmSetupAction,
+) as any as S.Schema<NodeTypePropertiesInputVmSetupActionsList>;
+
+/** Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported */
+export type SecurityType = "TrustedLaunch" | "Standard" | "ConfidentialVM";
+export const SecurityType = /*@__PURE__*/ S.String;
+
+/** Specifies the securityEncryptionType type of the nodeType. Only DiskWithVMGuestState and VMGuestStateOnly are currently supported */
+export type SecurityEncryptionType =
+  | "DiskWithVMGuestState"
+  | "VMGuestStateOnly";
+export const SecurityEncryptionType = /*@__PURE__*/ S.String;
+
+/** Provides information about NAT configuration on the default public Load Balancer for the node type. */
+export interface NodeTypeNatConfig {
+  /** The internal port for the NAT configuration. */
+  backendPort?: number;
+  /** The port range start for the external endpoint. */
+  frontendPortRangeStart?: number;
+  /** The port range end for the external endpoint. */
+  frontendPortRangeEnd?: number;
+}
+export const NodeTypeNatConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    backendPort: S.optional(S.Number),
+    frontendPortRangeStart: S.optional(S.Number),
+    frontendPortRangeEnd: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "NodeTypeNatConfig",
+}) as any as S.Schema<NodeTypeNatConfig>;
+
+/** Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer. */
+export type NodeTypePropertiesInputNatConfigurationsList =
+  ReadonlyArray<NodeTypeNatConfig>;
+export const NodeTypePropertiesInputNatConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    NodeTypeNatConfig,
+  ) as any as S.Schema<NodeTypePropertiesInputNatConfigurationsList>;
+
+/** Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started. Enter any required information and then click Save. */
+export interface VmImagePlan {
+  /** The plan ID. */
+  name?: string;
+  /** Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element. */
+  product?: string;
+  /** The promotion code. */
+  promotionCode?: string;
+  /** The publisher ID. */
+  publisher?: string;
+}
+export const VmImagePlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    product: S.optional(S.String),
+    promotionCode: S.optional(S.String),
+    publisher: S.optional(S.String),
+  }),
+).annotate({ identifier: "VmImagePlan" }) as any as S.Schema<VmImagePlan>;
+
+/** Specifies an array of references to backend address pools of application gateways. A node type can reference backend address pools of multiple application gateways. Multiple node types cannot use the same application gateway. */
+export type IpConfigurationApplicationGatewayBackendAddressPoolsList =
+  ReadonlyArray<SubResource>;
+export const IpConfigurationApplicationGatewayBackendAddressPoolsList =
+  /*@__PURE__*/ S.Array(
+    SubResource,
+  ) as any as S.Schema<IpConfigurationApplicationGatewayBackendAddressPoolsList>;
+
+/** Specifies an array of references to backend address pools of load balancers. A node type can reference backend address pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer. */
+export type IpConfigurationLoadBalancerBackendAddressPoolsList =
+  ReadonlyArray<SubResource>;
+export const IpConfigurationLoadBalancerBackendAddressPoolsList =
+  /*@__PURE__*/ S.Array(
+    SubResource,
+  ) as any as S.Schema<IpConfigurationLoadBalancerBackendAddressPoolsList>;
+
+/** Specifies an array of references to inbound Nat pools of the load balancers. A node type can reference inbound nat pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer. */
+export type IpConfigurationLoadBalancerInboundNatPoolsList =
+  ReadonlyArray<SubResource>;
+export const IpConfigurationLoadBalancerInboundNatPoolsList =
+  /*@__PURE__*/ S.Array(
+    SubResource,
+  ) as any as S.Schema<IpConfigurationLoadBalancerInboundNatPoolsList>;
+
+/** Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4. */
+export type IpConfigurationPrivateIPAddressVersion = "IPv4" | "IPv6";
+export const IpConfigurationPrivateIPAddressVersion = /*@__PURE__*/ S.String;
+
+/** Specifies the list of IP tags associated with the public IP address. */
+export type PublicIPAddressConfigurationIpTagsList = ReadonlyArray<IpTag>;
+export const PublicIPAddressConfigurationIpTagsList = /*@__PURE__*/ S.Array(
+  IpTag,
+) as any as S.Schema<PublicIPAddressConfigurationIpTagsList>;
+
+/** Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4. */
+export type PublicIPAddressConfigurationPublicIPAddressVersion =
+  | "IPv4"
+  | "IPv6";
+export const PublicIPAddressConfigurationPublicIPAddressVersion =
+  /*@__PURE__*/ S.String;
+
+/** The public IP address configuration of the network interface. */
+export interface PublicIPAddressConfiguration {
+  /** Name of the network interface. */
+  name: string;
+  /** Specifies the list of IP tags associated with the public IP address. */
+  ipTags?: PublicIPAddressConfigurationIpTagsList;
+  /** Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4. */
+  publicIPAddressVersion?: PublicIPAddressConfigurationPublicIPAddressVersion;
+}
+export const PublicIPAddressConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    ipTags: S.optional(PublicIPAddressConfigurationIpTagsList),
+    publicIPAddressVersion: S.optional(
+      PublicIPAddressConfigurationPublicIPAddressVersion,
+    ),
+  }),
+).annotate({
+  identifier: "PublicIPAddressConfiguration",
+}) as any as S.Schema<PublicIPAddressConfiguration>;
+
+/** Specifies an IP configuration of the network interface. */
+export interface IpConfiguration {
+  /** Name of the network interface. */
+  name: string;
+  /** Specifies an array of references to backend address pools of application gateways. A node type can reference backend address pools of multiple application gateways. Multiple node types cannot use the same application gateway. */
+  applicationGatewayBackendAddressPools?: IpConfigurationApplicationGatewayBackendAddressPoolsList;
+  /** Specifies an array of references to backend address pools of load balancers. A node type can reference backend address pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer. */
+  loadBalancerBackendAddressPools?: IpConfigurationLoadBalancerBackendAddressPoolsList;
+  /** Specifies an array of references to inbound Nat pools of the load balancers. A node type can reference inbound nat pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer. */
+  loadBalancerInboundNatPools?: IpConfigurationLoadBalancerInboundNatPoolsList;
+  /** Specifies the subnet of the network interface. */
+  subnet?: SubResource;
+  /** Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4. */
+  privateIPAddressVersion?: IpConfigurationPrivateIPAddressVersion;
+  /** The public IP address configuration of the network interface. */
+  publicIPAddressConfiguration?: PublicIPAddressConfiguration;
+}
+export const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    applicationGatewayBackendAddressPools: S.optional(
+      IpConfigurationApplicationGatewayBackendAddressPoolsList,
+    ),
+    loadBalancerBackendAddressPools: S.optional(
+      IpConfigurationLoadBalancerBackendAddressPoolsList,
+    ),
+    loadBalancerInboundNatPools: S.optional(
+      IpConfigurationLoadBalancerInboundNatPoolsList,
+    ),
+    subnet: S.optional(SubResource),
+    privateIPAddressVersion: S.optional(IpConfigurationPrivateIPAddressVersion),
+    publicIPAddressConfiguration: S.optional(PublicIPAddressConfiguration),
+  }),
+).annotate({
+  identifier: "IpConfiguration",
+}) as any as S.Schema<IpConfiguration>;
+
+/** Specifies the IP configurations of the network interface. */
+export type AdditionalNetworkInterfaceConfigurationIpConfigurationsList =
+  ReadonlyArray<IpConfiguration>;
+export const AdditionalNetworkInterfaceConfigurationIpConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    IpConfiguration,
+  ) as any as S.Schema<AdditionalNetworkInterfaceConfigurationIpConfigurationsList>;
+
+/** Specifies the settings for a network interface to attach to the node type. */
+export interface AdditionalNetworkInterfaceConfiguration {
+  /** Name of the network interface. */
+  name: string;
+  /** Specifies whether the network interface is accelerated networking-enabled. */
+  enableAcceleratedNetworking?: boolean;
+  /** Specifies the DSCP configuration to apply to the network interface. */
+  dscpConfiguration?: SubResource;
+  /** Specifies the IP configurations of the network interface. */
+  ipConfigurations: AdditionalNetworkInterfaceConfigurationIpConfigurationsList;
+}
+export const AdditionalNetworkInterfaceConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      enableAcceleratedNetworking: S.optional(S.Boolean),
+      dscpConfiguration: S.optional(SubResource),
+      ipConfigurations:
+        AdditionalNetworkInterfaceConfigurationIpConfigurationsList,
+    }),
+).annotate({
+  identifier: "AdditionalNetworkInterfaceConfiguration",
+}) as any as S.Schema<AdditionalNetworkInterfaceConfiguration>;
+
+/** Specifies the settings for any additional secondary network interfaces to attach to the node type. */
+export type NodeTypePropertiesInputAdditionalNetworkInterfaceConfigurationsList =
+  ReadonlyArray<AdditionalNetworkInterfaceConfiguration>;
+export const NodeTypePropertiesInputAdditionalNetworkInterfaceConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    AdditionalNetworkInterfaceConfiguration,
+  ) as any as S.Schema<NodeTypePropertiesInputAdditionalNetworkInterfaceConfigurationsList>;
+
+/** Specifies the gallery application that should be made available to the underlying VMSS. */
+export interface VmApplication {
+  /** Optional, Specifies the uri to an azure blob that will replace the default configuration for the package if provided. */
+  configurationReference?: string;
+  /** If set to true, when a new Gallery Application version is available in PIR/SIG, it will be automatically updated for the underlying VMSS. */
+  enableAutomaticUpgrade?: boolean;
+  /** Optional, Specifies the order in which the packages have to be installed. */
+  order?: number;
+  /** Specifies the GalleryApplicationVersion resource id on the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}. */
+  packageReferenceId: string;
+  /** Optional, Specifies a passthrough value for more generic context. Accepts a JSON-formatted string e.g. '{"Tag1":"Value1","Tag2":"Value2"}'. */
+  vmGalleryTags?: string;
+  /** Optional, If true, any failure for any operation in the VmApplication will fail the deployment. */
+  treatFailureAsDeploymentFailure?: boolean;
+}
+export const VmApplication = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    configurationReference: S.optional(S.String),
+    enableAutomaticUpgrade: S.optional(S.Boolean),
+    order: S.optional(S.Number),
+    packageReferenceId: S.String,
+    vmGalleryTags: S.optional(S.String),
+    treatFailureAsDeploymentFailure: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "VmApplication" }) as any as S.Schema<VmApplication>;
+
+/** Specifies the gallery applications that should be made available to the underlying VMSS. */
+export type NodeTypePropertiesInputVmApplicationsList =
+  ReadonlyArray<VmApplication>;
+export const NodeTypePropertiesInputVmApplicationsList = /*@__PURE__*/ S.Array(
+  VmApplication,
+) as any as S.Schema<NodeTypePropertiesInputVmApplicationsList>;
+
+/** Describes a node type in the cluster, each node type represents sub set of nodes in the cluster. */
+export interface NodeTypePropertiesInput {
+  /** Indicates the Service Fabric system services for the cluster will run on this node type. This setting cannot be changed once the node type is created. */
+  isPrimary: boolean;
+  /** The number of nodes in the node type. **Values:** -1 - Use when auto scale rules are configured or sku.capacity is defined 0 - Not supported >0 - Use for manual scale. */
+  vmInstanceCount: number;
+  /** Disk size for the managed disk attached to the vms on the node type in GBs. */
+  dataDiskSizeGB?: number;
+  /** Managed data disk type. Specifies the storage account type for the managed disk */
+  dataDiskType?: NodeTypePropertiesInputDataDiskType;
+  /** Managed data disk letter. It can not use the reserved letter C or D and it can not change after created. */
+  dataDiskLetter?: string;
+  /** The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run. */
+  placementProperties?: NodeTypePropertiesInputPlacementPropertiesMap;
+  /** The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has. */
+  capacities?: NodeTypePropertiesInputCapacitiesMap;
+  /** The range of ports from which cluster assigned port to Service Fabric applications. */
+  applicationPorts?: EndpointRangeDescription;
+  /** The range of ephemeral ports that nodes in this node type should be configured with. */
+  ephemeralPorts?: EndpointRangeDescription;
+  /** The size of virtual machines in the pool. All virtual machines in a pool are the same size. For example, Standard_D3. */
+  vmSize?: string;
+  /** The publisher of the Azure Virtual Machines Marketplace image. For example, Canonical or MicrosoftWindowsServer. */
+  vmImagePublisher?: string;
+  /** The offer type of the Azure Virtual Machines Marketplace image. For example, UbuntuServer or WindowsServer. */
+  vmImageOffer?: string;
+  /** The SKU of the Azure Virtual Machines Marketplace image. For example, 14.04.0-LTS or 2012-R2-Datacenter. */
+  vmImageSku?: string;
+  /** The version of the Azure Virtual Machines Marketplace image. A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'. */
+  vmImageVersion?: string;
+  /** The secrets to install in the virtual machines. */
+  vmSecrets?: NodeTypePropertiesInputVmSecretsList;
+  /** Set of extensions that should be installed onto the virtual machines. */
+  vmExtensions?: NodeTypePropertiesInputVmExtensionsList;
+  /** Identities to assign to the virtual machine scale set under the node type. */
+  vmManagedIdentity?: VmManagedIdentity;
+  /** Indicates if the node type can only host Stateless workloads. */
+  isStateless?: boolean;
+  /** Indicates if scale set associated with the node type can be composed of multiple placement groups. */
+  multiplePlacementGroups?: boolean;
+  /** Indicates the node type uses its own frontend configurations instead of the default one for the cluster. This setting can only be specified for non-primary node types and can not be added or removed after the node type is created. */
+  frontendConfigurations?: NodeTypePropertiesInputFrontendConfigurationsList;
+  /** The Network Security Rules for this node type. This setting can only be specified for node types that are configured with frontend configurations. */
+  networkSecurityRules?: NodeTypePropertiesInputNetworkSecurityRulesList;
+  /** Additional managed data disks. */
+  additionalDataDisks?: NodeTypePropertiesInputAdditionalDataDisksList;
+  /** Enable or disable the Host Encryption for the virtual machines on the node type. This will enable the encryption for all the disks including Resource/Temp disk at host itself. Default: The Encryption at host will be disabled unless this property is set to true for the resource. */
+  enableEncryptionAtHost?: boolean;
+  /** Specifies whether the network interface is accelerated networking-enabled. */
+  enableAcceleratedNetworking?: boolean;
+  /** Specifies whether the use public load balancer. If not specified and the node type doesn't have its own frontend configuration, it will be attached to the default load balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is true, then the frontend has to be an Internal Load Balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is false or not set, then the custom load balancer must include a public load balancer to provide outbound connectivity. */
+  useDefaultPublicLoadBalancer?: boolean;
+  /** Specifies whether to use the temporary disk for the service fabric data root, in which case no managed data disk will be attached and the temporary disk will be used. It is only allowed for stateless node types. */
+  useTempDataDisk?: boolean;
+  /** Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types. */
+  enableOverProvisioning?: boolean;
+  /** Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster. */
+  zones?: NodeTypePropertiesInputZonesList;
+  /** Indicates whether the node type will be Spot Virtual Machines. Azure will allocate the VMs if there is capacity available and the VMs can be evicted at any time. */
+  isSpotVM?: boolean;
+  /** Specifies the full host group resource Id. This property is used for deploying on azure dedicated hosts. */
+  hostGroupId?: string;
+  /** Indicates whether to use ephemeral os disk. The sku selected on the vmSize property needs to support this feature. */
+  useEphemeralOSDisk?: boolean;
+  /** Indicates the time duration after which the platform will not try to restore the VMSS SPOT instances specified as ISO 8601. */
+  spotRestoreTimeout?: string;
+  /** Specifies the eviction policy for virtual machines in a SPOT node type. Default is Delete. */
+  evictionPolicy?: EvictionPolicyType;
+  /** Indicates the resource id of the vm image. This parameter is used for custom vm image. */
+  vmImageResourceId?: string;
+  /** Indicates the resource id of the subnet for the node type. */
+  subnetId?: string;
+  /** Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime. */
+  vmSetupActions?: NodeTypePropertiesInputVmSetupActionsList;
+  /** Specifies the security type of the nodeType. Supported values include Standard, TrustedLaunch and ConfidentialVM. */
+  securityType?: SecurityType;
+  /** Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob and VMGuestStateOnly for encryption of just the VMGuestState blob. Note: It can be set for only Confidential VMs. */
+  securityEncryptionType?: SecurityEncryptionType;
+  /** Specifies whether secure boot should be enabled on the nodeType. Can only be used with TrustedLaunch and ConfidentialVM SecurityType. */
+  secureBootEnabled?: boolean;
+  /** Specifies whether each node is allocated its own public IPv4 address. This is only supported on secondary node types with custom Load Balancers. */
+  enableNodePublicIP?: boolean;
+  /** Specifies whether each node is allocated its own public IPv6 address. This is only supported on secondary node types with custom Load Balancers. */
+  enableNodePublicIPv6?: boolean;
+  /** Indicates the resource id of the vm shared galleries image. This parameter is used for custom vm image. */
+  vmSharedGalleryImageId?: string;
+  /** Specifies the resource id of a NAT Gateway to attach to the subnet of this node type. Node type must use custom load balancer. */
+  natGatewayId?: string;
+  /** Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer. */
+  natConfigurations?: NodeTypePropertiesInputNatConfigurationsList;
+  /** Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started ->. Enter any required information and then click Save. */
+  vmImagePlan?: VmImagePlan;
+  /** Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. */
+  serviceArtifactReferenceId?: string;
+  /** Specifies the resource id of the DSCP configuration to apply to the node type network interface. */
+  dscpConfigurationId?: string;
+  /** Specifies the settings for any additional secondary network interfaces to attach to the node type. */
+  additionalNetworkInterfaceConfigurations?: NodeTypePropertiesInputAdditionalNetworkInterfaceConfigurationsList;
+  /** Specifies the computer name prefix. Limited to 9 characters. If specified, allows for a longer name to be specified for the node type name. */
+  computerNamePrefix?: string;
+  /** Specifies the gallery applications that should be made available to the underlying VMSS. */
+  vmApplications?: NodeTypePropertiesInputVmApplicationsList;
+  /** Setting this to true allows stateless node types to scale out without equal distribution across zones. */
+  zoneBalance?: boolean;
+  /** Specifies the node type should be configured for only outbound traffic and not inbound traffic. */
+  isOutboundOnly?: boolean;
+  /** Specifies whether the node type should use a resilient ephemeral OS disk when using a supported SKU size. A resilient ephemeral OS disk provides improved reliability for ephemeral OS disks by enabling full caching. */
+  enableResilientEphemeralOsDisk?: boolean;
+}
+export const NodeTypePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isPrimary: S.Boolean,
+    vmInstanceCount: S.Number,
+    dataDiskSizeGB: S.optional(S.Number),
+    dataDiskType: S.optional(NodeTypePropertiesInputDataDiskType),
+    dataDiskLetter: S.optional(S.String),
+    placementProperties: S.optional(
+      NodeTypePropertiesInputPlacementPropertiesMap,
+    ),
+    capacities: S.optional(NodeTypePropertiesInputCapacitiesMap),
+    applicationPorts: S.optional(EndpointRangeDescription),
+    ephemeralPorts: S.optional(EndpointRangeDescription),
+    vmSize: S.optional(S.String),
+    vmImagePublisher: S.optional(S.String),
+    vmImageOffer: S.optional(S.String),
+    vmImageSku: S.optional(S.String),
+    vmImageVersion: S.optional(S.String),
+    vmSecrets: S.optional(NodeTypePropertiesInputVmSecretsList),
+    vmExtensions: S.optional(NodeTypePropertiesInputVmExtensionsList),
+    vmManagedIdentity: S.optional(VmManagedIdentity),
+    isStateless: S.optional(S.Boolean),
+    multiplePlacementGroups: S.optional(S.Boolean),
+    frontendConfigurations: S.optional(
+      NodeTypePropertiesInputFrontendConfigurationsList,
+    ),
+    networkSecurityRules: S.optional(
+      NodeTypePropertiesInputNetworkSecurityRulesList,
+    ),
+    additionalDataDisks: S.optional(
+      NodeTypePropertiesInputAdditionalDataDisksList,
+    ),
+    enableEncryptionAtHost: S.optional(S.Boolean),
+    enableAcceleratedNetworking: S.optional(S.Boolean),
+    useDefaultPublicLoadBalancer: S.optional(S.Boolean),
+    useTempDataDisk: S.optional(S.Boolean),
+    enableOverProvisioning: S.optional(S.Boolean),
+    zones: S.optional(NodeTypePropertiesInputZonesList),
+    isSpotVM: S.optional(S.Boolean),
+    hostGroupId: S.optional(S.String),
+    useEphemeralOSDisk: S.optional(S.Boolean),
+    spotRestoreTimeout: S.optional(S.String),
+    evictionPolicy: S.optional(EvictionPolicyType),
+    vmImageResourceId: S.optional(S.String),
+    subnetId: S.optional(S.String),
+    vmSetupActions: S.optional(NodeTypePropertiesInputVmSetupActionsList),
+    securityType: S.optional(SecurityType),
+    securityEncryptionType: S.optional(SecurityEncryptionType),
+    secureBootEnabled: S.optional(S.Boolean),
+    enableNodePublicIP: S.optional(S.Boolean),
+    enableNodePublicIPv6: S.optional(S.Boolean),
+    vmSharedGalleryImageId: S.optional(S.String),
+    natGatewayId: S.optional(S.String),
+    natConfigurations: S.optional(NodeTypePropertiesInputNatConfigurationsList),
+    vmImagePlan: S.optional(VmImagePlan),
+    serviceArtifactReferenceId: S.optional(S.String),
+    dscpConfigurationId: S.optional(S.String),
+    additionalNetworkInterfaceConfigurations: S.optional(
+      NodeTypePropertiesInputAdditionalNetworkInterfaceConfigurationsList,
+    ),
+    computerNamePrefix: S.optional(S.String),
+    vmApplications: S.optional(NodeTypePropertiesInputVmApplicationsList),
+    zoneBalance: S.optional(S.Boolean),
+    isOutboundOnly: S.optional(S.Boolean),
+    enableResilientEphemeralOsDisk: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "NodeTypePropertiesInput",
+}) as any as S.Schema<NodeTypePropertiesInput>;
+
+/** Resource tags. */
+export type NodeTypesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NodeTypesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NodeTypesCreateOrUpdateRequestTagsMap>;
+
+/** Describes a node type sku. */
+export interface NodeTypeSku {
+  /** The sku name. Name is internally generated and is used in auto-scale scenarios. Property does not allow to be changed to other values than generated. To avoid deployment errors please omit the property. */
+  name?: string;
+  /** Specifies the tier of the node type. Possible Values: **Standard** */
+  tier?: string;
+  /** The number of nodes in the node type. If present in request it will override properties.vmInstanceCount. */
+  capacity: number;
+}
+export const NodeTypeSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    tier: S.optional(S.String),
+    capacity: S.Number,
+  }),
+).annotate({ identifier: "NodeTypeSku" }) as any as S.Schema<NodeTypeSku>;
+
+export interface NodeTypesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the cluster resource. */
+  clusterName: string;
+  /** The name of the node type. */
+  nodeTypeName: string;
+  /** The node type properties */
+  properties?: NodeTypePropertiesInput;
+  /** Resource tags. */
+  tags?: NodeTypesCreateOrUpdateRequestTagsMap;
+  /** The node type sku. */
+  sku?: NodeTypeSku;
+}
+export const NodeTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    nodeTypeName: S.String.pipe(T.Label()),
+    properties: S.optional(NodeTypePropertiesInput),
+    tags: S.optional(NodeTypesCreateOrUpdateRequestTagsMap),
+    sku: S.optional(NodeTypeSku),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/nodeTypes/{nodeTypeName}",
+      code: 200,
+      apiVersion: "2026-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "NodeTypesCreateOrUpdateRequest",
+}) as any as S.Schema<NodeTypesCreateOrUpdateRequest>;
+
+/** Managed data disk type. Specifies the storage account type for the managed disk */
+export type NodeTypePropertiesDataDiskType =
+  | "Standard_LRS"
+  | "StandardSSD_LRS"
+  | "Premium_LRS"
+  | "PremiumV2_LRS"
+  | "StandardSSD_ZRS"
+  | "Premium_ZRS";
+export const NodeTypePropertiesDataDiskType = /*@__PURE__*/ S.String;
+
+/** The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run. */
+export type NodeTypePropertiesPlacementPropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const NodeTypePropertiesPlacementPropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NodeTypePropertiesPlacementPropertiesMap>;
+
+/** The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has. */
+export type NodeTypePropertiesCapacitiesMap = {
+  [key: string]: string | undefined;
+};
+export const NodeTypePropertiesCapacitiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NodeTypePropertiesCapacitiesMap>;
+
+/** The secrets to install in the virtual machines. */
+export type NodeTypePropertiesVmSecretsList = ReadonlyArray<VaultSecretGroup>;
 export const NodeTypePropertiesVmSecretsList = /*@__PURE__*/ S.Array(
   VaultSecretGroup,
 ) as any as S.Schema<NodeTypePropertiesVmSecretsList>;
 
 /** Collection of extension names after which this extension needs to be provisioned. */
-export type VMSSExtensionPropertiesProvisionAfterExtensionsList = string[];
+export type VMSSExtensionPropertiesProvisionAfterExtensionsList =
+  ReadonlyArray<string>;
 export const VMSSExtensionPropertiesProvisionAfterExtensionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<VMSSExtensionPropertiesProvisionAfterExtensionsList>;
 
-/** Vm extension setup order. */
-export type VmssExtensionSetupOrder = "BeforeSFRuntime" | (string & {});
-export const VmssExtensionSetupOrder = /*@__PURE__*/ S.String;
-
 /** Indicates the setup order for the extension. */
-export type VMSSExtensionPropertiesSetupOrderList = VmssExtensionSetupOrder[];
+export type VMSSExtensionPropertiesSetupOrderList =
+  ReadonlyArray<VmssExtensionSetupOrder>;
 export const VMSSExtensionPropertiesSetupOrderList = /*@__PURE__*/ S.Array(
   VmssExtensionSetupOrder,
 ) as any as S.Schema<VMSSExtensionPropertiesSetupOrderList>;
@@ -3279,362 +4548,62 @@ export const VMSSExtension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VMSSExtension" }) as any as S.Schema<VMSSExtension>;
 
 /** Set of extensions that should be installed onto the virtual machines. */
-export type NodeTypePropertiesVmExtensionsList = VMSSExtension[];
+export type NodeTypePropertiesVmExtensionsList = ReadonlyArray<VMSSExtension>;
 export const NodeTypePropertiesVmExtensionsList = /*@__PURE__*/ S.Array(
   VMSSExtension,
 ) as any as S.Schema<NodeTypePropertiesVmExtensionsList>;
 
-/** The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
-export type VmManagedIdentityUserAssignedIdentitiesList = string[];
-export const VmManagedIdentityUserAssignedIdentitiesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<VmManagedIdentityUserAssignedIdentitiesList>;
-
-/** Identities for the virtual machine scale set under the node type. */
-export interface VmManagedIdentity {
-  /** The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
-  userAssignedIdentities?: VmManagedIdentityUserAssignedIdentitiesList;
-}
-export const VmManagedIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userAssignedIdentities: S.optional(
-      VmManagedIdentityUserAssignedIdentitiesList,
-    ),
-  }),
-).annotate({
-  identifier: "VmManagedIdentity",
-}) as any as S.Schema<VmManagedIdentity>;
-
-/** The IP address type of this frontend configuration. If omitted the default value is IPv4. */
-export type FrontendConfigurationIpAddressType =
-  | "IPv4"
-  | "IPv6"
-  | (string & {});
-export const FrontendConfigurationIpAddressType = /*@__PURE__*/ S.String;
-
-/** Describes the frontend configurations for the node type. */
-export interface FrontendConfiguration {
-  /** The IP address type of this frontend configuration. If omitted the default value is IPv4. */
-  ipAddressType?: FrontendConfigurationIpAddressType;
-  /** The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}'. */
-  loadBalancerBackendAddressPoolId?: string;
-  /** The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatPools/{inboundNatPoolName}'. */
-  loadBalancerInboundNatPoolId?: string;
-  /** The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{backendAddressPoolName}'. */
-  applicationGatewayBackendAddressPoolId?: string;
-}
-export const FrontendConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipAddressType: S.optional(FrontendConfigurationIpAddressType),
-    loadBalancerBackendAddressPoolId: S.optional(S.String),
-    loadBalancerInboundNatPoolId: S.optional(S.String),
-    applicationGatewayBackendAddressPoolId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FrontendConfiguration",
-}) as any as S.Schema<FrontendConfiguration>;
-
 /** Indicates the node type uses its own frontend configurations instead of the default one for the cluster. This setting can only be specified for non-primary node types and can not be added or removed after the node type is created. */
 export type NodeTypePropertiesFrontendConfigurationsList =
-  FrontendConfiguration[];
+  ReadonlyArray<FrontendConfiguration>;
 export const NodeTypePropertiesFrontendConfigurationsList =
   /*@__PURE__*/ S.Array(
     FrontendConfiguration,
   ) as any as S.Schema<NodeTypePropertiesFrontendConfigurationsList>;
 
 /** The Network Security Rules for this node type. This setting can only be specified for node types that are configured with frontend configurations. */
-export type NodeTypePropertiesNetworkSecurityRulesList = NetworkSecurityRule[];
+export type NodeTypePropertiesNetworkSecurityRulesList =
+  ReadonlyArray<NetworkSecurityRule>;
 export const NodeTypePropertiesNetworkSecurityRulesList = /*@__PURE__*/ S.Array(
   NetworkSecurityRule,
 ) as any as S.Schema<NodeTypePropertiesNetworkSecurityRulesList>;
 
-/** Managed data disk type. Specifies the storage account type for the managed disk */
-export type VmssDataDiskDiskType =
-  | "Standard_LRS"
-  | "StandardSSD_LRS"
-  | "Premium_LRS"
-  | "PremiumV2_LRS"
-  | "StandardSSD_ZRS"
-  | "Premium_ZRS"
-  | (string & {});
-export const VmssDataDiskDiskType = /*@__PURE__*/ S.String;
-
-/** Managed data disk description. */
-export interface VmssDataDisk {
-  /** Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM. Lun 0 is reserved for the service fabric data disk. */
-  lun: number;
-  /** Disk size for each vm in the node type in GBs. */
-  diskSizeGB: number;
-  /** Managed data disk type. Specifies the storage account type for the managed disk */
-  diskType: VmssDataDiskDiskType;
-  /** Managed data disk letter. It can not use the reserved letter C or D and it can not change after created. */
-  diskLetter: string;
-}
-export const VmssDataDisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lun: S.Number,
-    diskSizeGB: S.Number,
-    diskType: VmssDataDiskDiskType,
-    diskLetter: S.String,
-  }),
-).annotate({ identifier: "VmssDataDisk" }) as any as S.Schema<VmssDataDisk>;
-
 /** Additional managed data disks. */
-export type NodeTypePropertiesAdditionalDataDisksList = VmssDataDisk[];
+export type NodeTypePropertiesAdditionalDataDisksList =
+  ReadonlyArray<VmssDataDisk>;
 export const NodeTypePropertiesAdditionalDataDisksList = /*@__PURE__*/ S.Array(
   VmssDataDisk,
 ) as any as S.Schema<NodeTypePropertiesAdditionalDataDisksList>;
 
 /** Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster. */
-export type NodeTypePropertiesZonesList = string[];
+export type NodeTypePropertiesZonesList = ReadonlyArray<string>;
 export const NodeTypePropertiesZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NodeTypePropertiesZonesList>;
 
-/** Specifies the eviction policy for virtual machines in a SPOT node type. */
-export type EvictionPolicyType = "Delete" | "Deallocate" | (string & {});
-export const EvictionPolicyType = /*@__PURE__*/ S.String;
-
-/** action to be performed on the vms before bootstrapping the service fabric runtime. */
-export type VmSetupAction = "EnableContainers" | "EnableHyperV" | (string & {});
-export const VmSetupAction = /*@__PURE__*/ S.String;
-
 /** Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime. */
-export type NodeTypePropertiesVmSetupActionsList = VmSetupAction[];
+export type NodeTypePropertiesVmSetupActionsList = ReadonlyArray<VmSetupAction>;
 export const NodeTypePropertiesVmSetupActionsList = /*@__PURE__*/ S.Array(
   VmSetupAction,
 ) as any as S.Schema<NodeTypePropertiesVmSetupActionsList>;
 
-/** Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported */
-export type SecurityType =
-  | "TrustedLaunch"
-  | "Standard"
-  | "ConfidentialVM"
-  | (string & {});
-export const SecurityType = /*@__PURE__*/ S.String;
-
-/** Specifies the securityEncryptionType type of the nodeType. Only DiskWithVMGuestState and VMGuestStateOnly are currently supported */
-export type SecurityEncryptionType =
-  | "DiskWithVMGuestState"
-  | "VMGuestStateOnly"
-  | (string & {});
-export const SecurityEncryptionType = /*@__PURE__*/ S.String;
-
-/** Provides information about NAT configuration on the default public Load Balancer for the node type. */
-export interface NodeTypeNatConfig {
-  /** The internal port for the NAT configuration. */
-  backendPort?: number;
-  /** The port range start for the external endpoint. */
-  frontendPortRangeStart?: number;
-  /** The port range end for the external endpoint. */
-  frontendPortRangeEnd?: number;
-}
-export const NodeTypeNatConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    backendPort: S.optional(S.Number),
-    frontendPortRangeStart: S.optional(S.Number),
-    frontendPortRangeEnd: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "NodeTypeNatConfig",
-}) as any as S.Schema<NodeTypeNatConfig>;
-
 /** Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer. */
-export type NodeTypePropertiesNatConfigurationsList = NodeTypeNatConfig[];
+export type NodeTypePropertiesNatConfigurationsList =
+  ReadonlyArray<NodeTypeNatConfig>;
 export const NodeTypePropertiesNatConfigurationsList = /*@__PURE__*/ S.Array(
   NodeTypeNatConfig,
 ) as any as S.Schema<NodeTypePropertiesNatConfigurationsList>;
 
-/** Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started. Enter any required information and then click Save. */
-export interface VmImagePlan {
-  /** The plan ID. */
-  name?: string;
-  /** Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element. */
-  product?: string;
-  /** The promotion code. */
-  promotionCode?: string;
-  /** The publisher ID. */
-  publisher?: string;
-}
-export const VmImagePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    product: S.optional(S.String),
-    promotionCode: S.optional(S.String),
-    publisher: S.optional(S.String),
-  }),
-).annotate({ identifier: "VmImagePlan" }) as any as S.Schema<VmImagePlan>;
-
-/** Specifies an array of references to backend address pools of application gateways. A node type can reference backend address pools of multiple application gateways. Multiple node types cannot use the same application gateway. */
-export type IpConfigurationApplicationGatewayBackendAddressPoolsList =
-  SubResource[];
-export const IpConfigurationApplicationGatewayBackendAddressPoolsList =
-  /*@__PURE__*/ S.Array(
-    SubResource,
-  ) as any as S.Schema<IpConfigurationApplicationGatewayBackendAddressPoolsList>;
-
-/** Specifies an array of references to backend address pools of load balancers. A node type can reference backend address pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer. */
-export type IpConfigurationLoadBalancerBackendAddressPoolsList = SubResource[];
-export const IpConfigurationLoadBalancerBackendAddressPoolsList =
-  /*@__PURE__*/ S.Array(
-    SubResource,
-  ) as any as S.Schema<IpConfigurationLoadBalancerBackendAddressPoolsList>;
-
-/** Specifies an array of references to inbound Nat pools of the load balancers. A node type can reference inbound nat pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer. */
-export type IpConfigurationLoadBalancerInboundNatPoolsList = SubResource[];
-export const IpConfigurationLoadBalancerInboundNatPoolsList =
-  /*@__PURE__*/ S.Array(
-    SubResource,
-  ) as any as S.Schema<IpConfigurationLoadBalancerInboundNatPoolsList>;
-
-/** Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4. */
-export type IpConfigurationPrivateIPAddressVersion =
-  | "IPv4"
-  | "IPv6"
-  | (string & {});
-export const IpConfigurationPrivateIPAddressVersion = /*@__PURE__*/ S.String;
-
-/** Specifies the list of IP tags associated with the public IP address. */
-export type PublicIPAddressConfigurationIpTagsList = IpTag[];
-export const PublicIPAddressConfigurationIpTagsList = /*@__PURE__*/ S.Array(
-  IpTag,
-) as any as S.Schema<PublicIPAddressConfigurationIpTagsList>;
-
-/** Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4. */
-export type PublicIPAddressConfigurationPublicIPAddressVersion =
-  | "IPv4"
-  | "IPv6"
-  | (string & {});
-export const PublicIPAddressConfigurationPublicIPAddressVersion =
-  /*@__PURE__*/ S.String;
-
-/** The public IP address configuration of the network interface. */
-export interface PublicIPAddressConfiguration {
-  /** Name of the network interface. */
-  name: string;
-  /** Specifies the list of IP tags associated with the public IP address. */
-  ipTags?: PublicIPAddressConfigurationIpTagsList;
-  /** Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4. */
-  publicIPAddressVersion?: PublicIPAddressConfigurationPublicIPAddressVersion;
-}
-export const PublicIPAddressConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ipTags: S.optional(PublicIPAddressConfigurationIpTagsList),
-    publicIPAddressVersion: S.optional(
-      PublicIPAddressConfigurationPublicIPAddressVersion,
-    ),
-  }),
-).annotate({
-  identifier: "PublicIPAddressConfiguration",
-}) as any as S.Schema<PublicIPAddressConfiguration>;
-
-/** Specifies an IP configuration of the network interface. */
-export interface IpConfiguration {
-  /** Name of the network interface. */
-  name: string;
-  /** Specifies an array of references to backend address pools of application gateways. A node type can reference backend address pools of multiple application gateways. Multiple node types cannot use the same application gateway. */
-  applicationGatewayBackendAddressPools?: IpConfigurationApplicationGatewayBackendAddressPoolsList;
-  /** Specifies an array of references to backend address pools of load balancers. A node type can reference backend address pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer. */
-  loadBalancerBackendAddressPools?: IpConfigurationLoadBalancerBackendAddressPoolsList;
-  /** Specifies an array of references to inbound Nat pools of the load balancers. A node type can reference inbound nat pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer. */
-  loadBalancerInboundNatPools?: IpConfigurationLoadBalancerInboundNatPoolsList;
-  /** Specifies the subnet of the network interface. */
-  subnet?: SubResource;
-  /** Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4. */
-  privateIPAddressVersion?: IpConfigurationPrivateIPAddressVersion;
-  /** The public IP address configuration of the network interface. */
-  publicIPAddressConfiguration?: PublicIPAddressConfiguration;
-}
-export const IpConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    applicationGatewayBackendAddressPools: S.optional(
-      IpConfigurationApplicationGatewayBackendAddressPoolsList,
-    ),
-    loadBalancerBackendAddressPools: S.optional(
-      IpConfigurationLoadBalancerBackendAddressPoolsList,
-    ),
-    loadBalancerInboundNatPools: S.optional(
-      IpConfigurationLoadBalancerInboundNatPoolsList,
-    ),
-    subnet: S.optional(SubResource),
-    privateIPAddressVersion: S.optional(IpConfigurationPrivateIPAddressVersion),
-    publicIPAddressConfiguration: S.optional(PublicIPAddressConfiguration),
-  }),
-).annotate({
-  identifier: "IpConfiguration",
-}) as any as S.Schema<IpConfiguration>;
-
-/** Specifies the IP configurations of the network interface. */
-export type AdditionalNetworkInterfaceConfigurationIpConfigurationsList =
-  IpConfiguration[];
-export const AdditionalNetworkInterfaceConfigurationIpConfigurationsList =
-  /*@__PURE__*/ S.Array(
-    IpConfiguration,
-  ) as any as S.Schema<AdditionalNetworkInterfaceConfigurationIpConfigurationsList>;
-
-/** Specifies the settings for a network interface to attach to the node type. */
-export interface AdditionalNetworkInterfaceConfiguration {
-  /** Name of the network interface. */
-  name: string;
-  /** Specifies whether the network interface is accelerated networking-enabled. */
-  enableAcceleratedNetworking?: boolean;
-  /** Specifies the DSCP configuration to apply to the network interface. */
-  dscpConfiguration?: SubResource;
-  /** Specifies the IP configurations of the network interface. */
-  ipConfigurations: AdditionalNetworkInterfaceConfigurationIpConfigurationsList;
-}
-export const AdditionalNetworkInterfaceConfiguration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      enableAcceleratedNetworking: S.optional(S.Boolean),
-      dscpConfiguration: S.optional(SubResource),
-      ipConfigurations:
-        AdditionalNetworkInterfaceConfigurationIpConfigurationsList,
-    }),
-).annotate({
-  identifier: "AdditionalNetworkInterfaceConfiguration",
-}) as any as S.Schema<AdditionalNetworkInterfaceConfiguration>;
-
 /** Specifies the settings for any additional secondary network interfaces to attach to the node type. */
 export type NodeTypePropertiesAdditionalNetworkInterfaceConfigurationsList =
-  AdditionalNetworkInterfaceConfiguration[];
+  ReadonlyArray<AdditionalNetworkInterfaceConfiguration>;
 export const NodeTypePropertiesAdditionalNetworkInterfaceConfigurationsList =
   /*@__PURE__*/ S.Array(
     AdditionalNetworkInterfaceConfiguration,
   ) as any as S.Schema<NodeTypePropertiesAdditionalNetworkInterfaceConfigurationsList>;
 
-/** Specifies the gallery application that should be made available to the underlying VMSS. */
-export interface VmApplication {
-  /** Optional, Specifies the uri to an azure blob that will replace the default configuration for the package if provided. */
-  configurationReference?: string;
-  /** If set to true, when a new Gallery Application version is available in PIR/SIG, it will be automatically updated for the underlying VMSS. */
-  enableAutomaticUpgrade?: boolean;
-  /** Optional, Specifies the order in which the packages have to be installed. */
-  order?: number;
-  /** Specifies the GalleryApplicationVersion resource id on the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}. */
-  packageReferenceId: string;
-  /** Optional, Specifies a passthrough value for more generic context. Accepts a JSON-formatted string e.g. '{"Tag1":"Value1","Tag2":"Value2"}'. */
-  vmGalleryTags?: string;
-  /** Optional, If true, any failure for any operation in the VmApplication will fail the deployment. */
-  treatFailureAsDeploymentFailure?: boolean;
-}
-export const VmApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurationReference: S.optional(S.String),
-    enableAutomaticUpgrade: S.optional(S.Boolean),
-    order: S.optional(S.Number),
-    packageReferenceId: S.String,
-    vmGalleryTags: S.optional(S.String),
-    treatFailureAsDeploymentFailure: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "VmApplication" }) as any as S.Schema<VmApplication>;
-
 /** Specifies the gallery applications that should be made available to the underlying VMSS. */
-export type NodeTypePropertiesVmApplicationsList = VmApplication[];
+export type NodeTypePropertiesVmApplicationsList = ReadonlyArray<VmApplication>;
 export const NodeTypePropertiesVmApplicationsList = /*@__PURE__*/ S.Array(
   VmApplication,
 ) as any as S.Schema<NodeTypePropertiesVmApplicationsList>;
@@ -3826,23 +4795,6 @@ export const NodeTypesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<NodeTypesCreateOrUpdateResponseTagsMap>;
 
-/** Describes a node type sku. */
-export interface NodeTypeSku {
-  /** The sku name. Name is internally generated and is used in auto-scale scenarios. Property does not allow to be changed to other values than generated. To avoid deployment errors please omit the property. */
-  name?: string;
-  /** Specifies the tier of the node type. Possible Values: **Standard** */
-  tier?: string;
-  /** The number of nodes in the node type. If present in request it will override properties.vmInstanceCount. */
-  capacity: number;
-}
-export const NodeTypeSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    tier: S.optional(S.String),
-    capacity: S.Number,
-  }),
-).annotate({ identifier: "NodeTypeSku" }) as any as S.Schema<NodeTypeSku>;
-
 export interface NodeTypesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3873,6 +4825,16 @@ export const NodeTypesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeTypesCreateOrUpdateResponse",
 }) as any as S.Schema<NodeTypesCreateOrUpdateResponse>;
 
+/** List of node names from the node type. */
+export type NodeTypesDeallocateRequestNodesList = ReadonlyArray<string>;
+export const NodeTypesDeallocateRequestNodesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NodeTypesDeallocateRequestNodesList>;
+
+/** Specifies the way the operation will be performed. */
+export type UpdateType = "Default" | "ByUpgradeDomain";
+export const UpdateType = /*@__PURE__*/ S.String;
+
 export interface NodeTypesDeallocateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3882,7 +4844,12 @@ export interface NodeTypesDeallocateRequest {
   clusterName: string;
   /** The name of the node type. */
   nodeTypeName: string;
-  body: unknown;
+  /** List of node names from the node type. */
+  nodes?: NodeTypesDeallocateRequestNodesList;
+  /** Force the action to go through. */
+  force?: boolean;
+  /** Specifies the way the operation will be performed. */
+  updateType?: UpdateType;
 }
 export const NodeTypesDeallocateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3890,7 +4857,9 @@ export const NodeTypesDeallocateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     nodeTypeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    nodes: S.optional(NodeTypesDeallocateRequestNodesList),
+    force: S.optional(S.Boolean),
+    updateType: S.optional(UpdateType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3945,6 +4914,12 @@ export const NodeTypesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeTypesDeleteResponse",
 }) as any as S.Schema<NodeTypesDeleteResponse>;
 
+/** List of node names from the node type. */
+export type NodeTypesDeleteNodeRequestNodesList = ReadonlyArray<string>;
+export const NodeTypesDeleteNodeRequestNodesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NodeTypesDeleteNodeRequestNodesList>;
+
 export interface NodeTypesDeleteNodeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3954,7 +4929,12 @@ export interface NodeTypesDeleteNodeRequest {
   clusterName: string;
   /** The name of the node type. */
   nodeTypeName: string;
-  body: unknown;
+  /** List of node names from the node type. */
+  nodes?: NodeTypesDeleteNodeRequestNodesList;
+  /** Force the action to go through. */
+  force?: boolean;
+  /** Specifies the way the operation will be performed. */
+  updateType?: UpdateType;
 }
 export const NodeTypesDeleteNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3962,7 +4942,9 @@ export const NodeTypesDeleteNodeRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     nodeTypeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    nodes: S.optional(NodeTypesDeleteNodeRequestNodesList),
+    force: S.optional(S.Boolean),
+    updateType: S.optional(UpdateType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4092,11 +5074,7 @@ export const NodeTypeSupportedSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeTypeSupportedSku>;
 
 /** Node type capacity scale type. */
-export type NodeTypeSkuCapacityScaleType =
-  | "None"
-  | "Manual"
-  | "Automatic"
-  | (string & {});
+export type NodeTypeSkuCapacityScaleType = "None" | "Manual" | "Automatic";
 export const NodeTypeSkuCapacityScaleType = /*@__PURE__*/ S.String;
 
 /** Provides information about how node type can be scaled. */
@@ -4141,7 +5119,8 @@ export const NodeTypeAvailableSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeTypeAvailableSku>;
 
 /** The NodeTypeAvailableSku items on this page */
-export type NodeTypeListSkuResultValueList = NodeTypeAvailableSku[];
+export type NodeTypeListSkuResultValueList =
+  ReadonlyArray<NodeTypeAvailableSku>;
 export const NodeTypeListSkuResultValueList = /*@__PURE__*/ S.Array(
   NodeTypeAvailableSku,
 ) as any as S.Schema<NodeTypeListSkuResultValueList>;
@@ -4225,7 +5204,7 @@ export const NodeType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeType" }) as any as S.Schema<NodeType>;
 
 /** The NodeType items on this page */
-export type NodeTypeListResultValueList = NodeType[];
+export type NodeTypeListResultValueList = ReadonlyArray<NodeType>;
 export const NodeTypeListResultValueList = /*@__PURE__*/ S.Array(
   NodeType,
 ) as any as S.Schema<NodeTypeListResultValueList>;
@@ -4246,6 +5225,12 @@ export const NodeTypeListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeTypeListResult",
 }) as any as S.Schema<NodeTypeListResult>;
 
+/** List of node names from the node type. */
+export type NodeTypesRedeployRequestNodesList = ReadonlyArray<string>;
+export const NodeTypesRedeployRequestNodesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NodeTypesRedeployRequestNodesList>;
+
 export interface NodeTypesRedeployRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4255,7 +5240,12 @@ export interface NodeTypesRedeployRequest {
   clusterName: string;
   /** The name of the node type. */
   nodeTypeName: string;
-  body: unknown;
+  /** List of node names from the node type. */
+  nodes?: NodeTypesRedeployRequestNodesList;
+  /** Force the action to go through. */
+  force?: boolean;
+  /** Specifies the way the operation will be performed. */
+  updateType?: UpdateType;
 }
 export const NodeTypesRedeployRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4263,7 +5253,9 @@ export const NodeTypesRedeployRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     nodeTypeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    nodes: S.optional(NodeTypesRedeployRequestNodesList),
+    force: S.optional(S.Boolean),
+    updateType: S.optional(UpdateType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4283,6 +5275,12 @@ export const NodeTypesRedeployResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeTypesRedeployResponse",
 }) as any as S.Schema<NodeTypesRedeployResponse>;
 
+/** List of node names from the node type. */
+export type NodeTypesReimageRequestNodesList = ReadonlyArray<string>;
+export const NodeTypesReimageRequestNodesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NodeTypesReimageRequestNodesList>;
+
 export interface NodeTypesReimageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4292,7 +5290,12 @@ export interface NodeTypesReimageRequest {
   clusterName: string;
   /** The name of the node type. */
   nodeTypeName: string;
-  body: unknown;
+  /** List of node names from the node type. */
+  nodes?: NodeTypesReimageRequestNodesList;
+  /** Force the action to go through. */
+  force?: boolean;
+  /** Specifies the way the operation will be performed. */
+  updateType?: UpdateType;
 }
 export const NodeTypesReimageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4300,7 +5303,9 @@ export const NodeTypesReimageRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     nodeTypeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    nodes: S.optional(NodeTypesReimageRequestNodesList),
+    force: S.optional(S.Boolean),
+    updateType: S.optional(UpdateType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4320,6 +5325,12 @@ export const NodeTypesReimageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeTypesReimageResponse",
 }) as any as S.Schema<NodeTypesReimageResponse>;
 
+/** List of node names from the node type. */
+export type NodeTypesRestartRequestNodesList = ReadonlyArray<string>;
+export const NodeTypesRestartRequestNodesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NodeTypesRestartRequestNodesList>;
+
 export interface NodeTypesRestartRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4329,7 +5340,12 @@ export interface NodeTypesRestartRequest {
   clusterName: string;
   /** The name of the node type. */
   nodeTypeName: string;
-  body: unknown;
+  /** List of node names from the node type. */
+  nodes?: NodeTypesRestartRequestNodesList;
+  /** Force the action to go through. */
+  force?: boolean;
+  /** Specifies the way the operation will be performed. */
+  updateType?: UpdateType;
 }
 export const NodeTypesRestartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4337,7 +5353,9 @@ export const NodeTypesRestartRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     nodeTypeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    nodes: S.optional(NodeTypesRestartRequestNodesList),
+    force: S.optional(S.Boolean),
+    updateType: S.optional(UpdateType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4357,6 +5375,12 @@ export const NodeTypesRestartResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeTypesRestartResponse",
 }) as any as S.Schema<NodeTypesRestartResponse>;
 
+/** List of node names from the node type. */
+export type NodeTypesStartRequestNodesList = ReadonlyArray<string>;
+export const NodeTypesStartRequestNodesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NodeTypesStartRequestNodesList>;
+
 export interface NodeTypesStartRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4366,7 +5390,12 @@ export interface NodeTypesStartRequest {
   clusterName: string;
   /** The name of the node type. */
   nodeTypeName: string;
-  body: unknown;
+  /** List of node names from the node type. */
+  nodes?: NodeTypesStartRequestNodesList;
+  /** Force the action to go through. */
+  force?: boolean;
+  /** Specifies the way the operation will be performed. */
+  updateType?: UpdateType;
 }
 export const NodeTypesStartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4374,7 +5403,9 @@ export const NodeTypesStartRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     nodeTypeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    nodes: S.optional(NodeTypesStartRequestNodesList),
+    force: S.optional(S.Boolean),
+    updateType: S.optional(UpdateType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4394,6 +5425,15 @@ export const NodeTypesStartResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeTypesStartResponse",
 }) as any as S.Schema<NodeTypesStartResponse>;
 
+/** Node type update parameters */
+export type NodeTypesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NodeTypesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NodeTypesUpdateRequestTagsMap>;
+
 export interface NodeTypesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4403,7 +5443,10 @@ export interface NodeTypesUpdateRequest {
   clusterName: string;
   /** The name of the node type. */
   nodeTypeName: string;
-  body: unknown;
+  /** Node type update parameters */
+  tags?: NodeTypesUpdateRequestTagsMap;
+  /** The node type sku. */
+  sku?: NodeTypeSku;
 }
 export const NodeTypesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4411,7 +5454,8 @@ export const NodeTypesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     nodeTypeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NodeTypesUpdateRequestTagsMap),
+    sku: S.optional(NodeTypeSku),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4557,7 +5601,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResult>;
 
 /** The OperationResult items on this page */
-export type OperationListResultValueList = OperationResult[];
+export type OperationListResultValueList = ReadonlyArray<OperationResult>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -4647,44 +5691,8 @@ export const LongRunningOperationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "LongRunningOperationResult",
 }) as any as S.Schema<LongRunningOperationResult>;
 
-export interface ServicesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the cluster resource. */
-  clusterName: string;
-  /** The name of the application resource. */
-  applicationName: string;
-  /** The name of the service resource in the format of {applicationName}~{serviceName}. */
-  serviceName: string;
-  body: unknown;
-}
-export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    applicationName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
-      code: 200,
-      apiVersion: "2026-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesCreateOrUpdateRequest",
-}) as any as S.Schema<ServicesCreateOrUpdateRequest>;
-
 /** The service correlation scheme. */
-export type ServiceCorrelationScheme =
-  | "AlignedAffinity"
-  | "NonAlignedAffinity"
-  | (string & {});
+export type ServiceCorrelationScheme = "AlignedAffinity" | "NonAlignedAffinity";
 export const ServiceCorrelationScheme = /*@__PURE__*/ S.String;
 
 /** Creates a particular correlation between services. */
@@ -4704,20 +5712,15 @@ export const ServiceCorrelation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceCorrelation>;
 
 /** A list that describes the correlation of the service with other services. */
-export type ServiceResourcePropertiesCorrelationSchemeList =
-  ServiceCorrelation[];
-export const ServiceResourcePropertiesCorrelationSchemeList =
+export type ServiceResourcePropertiesInputCorrelationSchemeList =
+  ReadonlyArray<ServiceCorrelation>;
+export const ServiceResourcePropertiesInputCorrelationSchemeList =
   /*@__PURE__*/ S.Array(
     ServiceCorrelation,
-  ) as any as S.Schema<ServiceResourcePropertiesCorrelationSchemeList>;
+  ) as any as S.Schema<ServiceResourcePropertiesInputCorrelationSchemeList>;
 
 /** Determines the metric weight relative to the other metrics that are configured for this service. During runtime, if two metrics end up in conflict, the Cluster Resource Manager prefers the metric with the higher weight. */
-export type ServiceLoadMetricWeight =
-  | "Zero"
-  | "Low"
-  | "Medium"
-  | "High"
-  | (string & {});
+export type ServiceLoadMetricWeight = "Zero" | "Low" | "Medium" | "High";
 export const ServiceLoadMetricWeight = /*@__PURE__*/ S.String;
 
 /** Specifies a metric to load balance a service during runtime. */
@@ -4746,12 +5749,12 @@ export const ServiceLoadMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceLoadMetric>;
 
 /** The service load metrics is given as an array of ServiceLoadMetric objects. */
-export type ServiceResourcePropertiesServiceLoadMetricsList =
-  ServiceLoadMetric[];
-export const ServiceResourcePropertiesServiceLoadMetricsList =
+export type ServiceResourcePropertiesInputServiceLoadMetricsList =
+  ReadonlyArray<ServiceLoadMetric>;
+export const ServiceResourcePropertiesInputServiceLoadMetricsList =
   /*@__PURE__*/ S.Array(
     ServiceLoadMetric,
-  ) as any as S.Schema<ServiceResourcePropertiesServiceLoadMetricsList>;
+  ) as any as S.Schema<ServiceResourcePropertiesInputServiceLoadMetricsList>;
 
 /** The type of placement policy for a service fabric service. Following are the possible values. */
 export type ServicePlacementPolicyType =
@@ -4759,8 +5762,7 @@ export type ServicePlacementPolicyType =
   | "RequiredDomain"
   | "PreferredPrimaryDomain"
   | "RequiredDomainDistribution"
-  | "NonPartiallyPlaceService"
-  | (string & {});
+  | "NonPartiallyPlaceService";
 export const ServicePlacementPolicyType = /*@__PURE__*/ S.String;
 
 /** Describes the policy to be used for placement of a Service Fabric service. */
@@ -4776,22 +5778,21 @@ export const ServicePlacementPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicePlacementPolicy>;
 
 /** A list that describes the correlation of the service with other services. */
-export type ServiceResourcePropertiesServicePlacementPoliciesList =
-  ServicePlacementPolicy[];
-export const ServiceResourcePropertiesServicePlacementPoliciesList =
+export type ServiceResourcePropertiesInputServicePlacementPoliciesList =
+  ReadonlyArray<ServicePlacementPolicy>;
+export const ServiceResourcePropertiesInputServicePlacementPoliciesList =
   /*@__PURE__*/ S.Array(
     ServicePlacementPolicy,
-  ) as any as S.Schema<ServiceResourcePropertiesServicePlacementPoliciesList>;
+  ) as any as S.Schema<ServiceResourcePropertiesInputServicePlacementPoliciesList>;
 
 /** Specifies the move cost for the service. */
-export type MoveCost = "Zero" | "Low" | "Medium" | "High" | (string & {});
+export type MoveCost = "Zero" | "Low" | "Medium" | "High";
 export const MoveCost = /*@__PURE__*/ S.String;
 
 /** Enumerates the ways that a service can be partitioned. */
 export type ServiceScalingMechanismKind =
   | "ScalePartitionInstanceCount"
-  | "AddRemoveIncrementalNamedPartition"
-  | (string & {});
+  | "AddRemoveIncrementalNamedPartition";
 export const ServiceScalingMechanismKind = /*@__PURE__*/ S.String;
 
 /** Describes the mechanism for performing a scaling operation. */
@@ -4809,8 +5810,7 @@ export const ScalingMechanism = /*@__PURE__*/ S.suspend(() =>
 /** Enumerates the ways that a service can be partitioned. */
 export type ServiceScalingTriggerKind =
   | "AveragePartitionLoadTrigger"
-  | "AverageServiceLoadTrigger"
-  | (string & {});
+  | "AverageServiceLoadTrigger";
 export const ServiceScalingTriggerKind = /*@__PURE__*/ S.String;
 
 /** Describes the trigger for performing a scaling operation. */
@@ -4838,22 +5838,19 @@ export const ScalingPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScalingPolicy" }) as any as S.Schema<ScalingPolicy>;
 
 /** Scaling policies for this service. */
-export type ServiceResourcePropertiesScalingPoliciesList = ScalingPolicy[];
-export const ServiceResourcePropertiesScalingPoliciesList =
+export type ServiceResourcePropertiesInputScalingPoliciesList =
+  ReadonlyArray<ScalingPolicy>;
+export const ServiceResourcePropertiesInputScalingPoliciesList =
   /*@__PURE__*/ S.Array(
     ScalingPolicy,
-  ) as any as S.Schema<ServiceResourcePropertiesScalingPoliciesList>;
+  ) as any as S.Schema<ServiceResourcePropertiesInputScalingPoliciesList>;
 
 /** The kind of service (Stateless or Stateful). */
-export type ServiceKind = "Stateless" | "Stateful" | (string & {});
+export type ServiceKind = "Stateless" | "Stateful";
 export const ServiceKind = /*@__PURE__*/ S.String;
 
 /** Enumerates the ways that a service can be partitioned. */
-export type PartitionScheme =
-  | "Singleton"
-  | "UniformInt64Range"
-  | "Named"
-  | (string & {});
+export type PartitionScheme = "Singleton" | "UniformInt64Range" | "Named";
 export const PartitionScheme = /*@__PURE__*/ S.String;
 
 /** Describes how the service is partitioned. */
@@ -4867,11 +5864,140 @@ export const Partition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Partition" }) as any as S.Schema<Partition>;
 
 /** The activation Mode of the service package */
-export type ServicePackageActivationMode =
-  | "SharedProcess"
-  | "ExclusiveProcess"
-  | (string & {});
+export type ServicePackageActivationMode = "SharedProcess" | "ExclusiveProcess";
 export const ServicePackageActivationMode = /*@__PURE__*/ S.String;
+
+/** The service resource properties. */
+export interface ServiceResourcePropertiesInput {
+  /** The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)". */
+  placementConstraints?: string;
+  /** A list that describes the correlation of the service with other services. */
+  correlationScheme?: ServiceResourcePropertiesInputCorrelationSchemeList;
+  /** The service load metrics is given as an array of ServiceLoadMetric objects. */
+  serviceLoadMetrics?: ServiceResourcePropertiesInputServiceLoadMetricsList;
+  /** A list that describes the correlation of the service with other services. */
+  servicePlacementPolicies?: ServiceResourcePropertiesInputServicePlacementPoliciesList;
+  /** Specifies the move cost for the service. */
+  defaultMoveCost?: MoveCost;
+  /** Scaling policies for this service. */
+  scalingPolicies?: ServiceResourcePropertiesInputScalingPoliciesList;
+  /** The kind of service (Stateless or Stateful). */
+  serviceKind: ServiceKind;
+  /** The name of the service type */
+  serviceTypeName: string;
+  /** Describes how the service is partitioned. */
+  partitionDescription: Partition;
+  /** The activation Mode of the service package */
+  servicePackageActivationMode?: ServicePackageActivationMode;
+  /** Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP). When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name. When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable. */
+  serviceDnsName?: string;
+}
+export const ServiceResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    placementConstraints: S.optional(S.String),
+    correlationScheme: S.optional(
+      ServiceResourcePropertiesInputCorrelationSchemeList,
+    ),
+    serviceLoadMetrics: S.optional(
+      ServiceResourcePropertiesInputServiceLoadMetricsList,
+    ),
+    servicePlacementPolicies: S.optional(
+      ServiceResourcePropertiesInputServicePlacementPoliciesList,
+    ),
+    defaultMoveCost: S.optional(MoveCost),
+    scalingPolicies: S.optional(
+      ServiceResourcePropertiesInputScalingPoliciesList,
+    ),
+    serviceKind: ServiceKind,
+    serviceTypeName: S.String,
+    partitionDescription: Partition,
+    servicePackageActivationMode: S.optional(ServicePackageActivationMode),
+    serviceDnsName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceResourcePropertiesInput",
+}) as any as S.Schema<ServiceResourcePropertiesInput>;
+
+/** Resource tags. */
+export type ServicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
+
+export interface ServicesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the cluster resource. */
+  clusterName: string;
+  /** The name of the application resource. */
+  applicationName: string;
+  /** The name of the service resource in the format of {applicationName}~{serviceName}. */
+  serviceName: string;
+  /** The service resource properties. */
+  properties?: ServiceResourcePropertiesInput;
+  /** Resource tags. */
+  tags?: ServicesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location?: string;
+}
+export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    applicationName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    properties: S.optional(ServiceResourcePropertiesInput),
+    tags: S.optional(ServicesCreateOrUpdateRequestTagsMap),
+    location: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabric/managedClusters/{clusterName}/applications/{applicationName}/services/{serviceName}",
+      code: 200,
+      apiVersion: "2026-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "ServicesCreateOrUpdateRequest",
+}) as any as S.Schema<ServicesCreateOrUpdateRequest>;
+
+/** A list that describes the correlation of the service with other services. */
+export type ServiceResourcePropertiesCorrelationSchemeList =
+  ReadonlyArray<ServiceCorrelation>;
+export const ServiceResourcePropertiesCorrelationSchemeList =
+  /*@__PURE__*/ S.Array(
+    ServiceCorrelation,
+  ) as any as S.Schema<ServiceResourcePropertiesCorrelationSchemeList>;
+
+/** The service load metrics is given as an array of ServiceLoadMetric objects. */
+export type ServiceResourcePropertiesServiceLoadMetricsList =
+  ReadonlyArray<ServiceLoadMetric>;
+export const ServiceResourcePropertiesServiceLoadMetricsList =
+  /*@__PURE__*/ S.Array(
+    ServiceLoadMetric,
+  ) as any as S.Schema<ServiceResourcePropertiesServiceLoadMetricsList>;
+
+/** A list that describes the correlation of the service with other services. */
+export type ServiceResourcePropertiesServicePlacementPoliciesList =
+  ReadonlyArray<ServicePlacementPolicy>;
+export const ServiceResourcePropertiesServicePlacementPoliciesList =
+  /*@__PURE__*/ S.Array(
+    ServicePlacementPolicy,
+  ) as any as S.Schema<ServiceResourcePropertiesServicePlacementPoliciesList>;
+
+/** Scaling policies for this service. */
+export type ServiceResourcePropertiesScalingPoliciesList =
+  ReadonlyArray<ScalingPolicy>;
+export const ServiceResourcePropertiesScalingPoliciesList =
+  /*@__PURE__*/ S.Array(
+    ScalingPolicy,
+  ) as any as S.Schema<ServiceResourcePropertiesScalingPoliciesList>;
 
 /** The service resource properties. */
 export interface ServiceResourceProperties {
@@ -5137,7 +6263,7 @@ export const ServiceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceResource>;
 
 /** The ServiceResource items on this page */
-export type ServiceResourceListValueList = ServiceResource[];
+export type ServiceResourceListValueList = ReadonlyArray<ServiceResource>;
 export const ServiceResourceListValueList = /*@__PURE__*/ S.Array(
   ServiceResource,
 ) as any as S.Schema<ServiceResourceListValueList>;
@@ -5158,6 +6284,17 @@ export const ServiceResourceList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceResourceList",
 }) as any as S.Schema<ServiceResourceList>;
 
+/** The IDs of the replicas to be restarted. */
+export type ServicesRestartReplicaRequestReplicaIdsList = ReadonlyArray<number>;
+export const ServicesRestartReplicaRequestReplicaIdsList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<ServicesRestartReplicaRequestReplicaIdsList>;
+
+/** The kind of restart to perform. */
+export type RestartKind = "Simultaneous";
+export const RestartKind = /*@__PURE__*/ S.String;
+
 export interface ServicesRestartReplicaRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5169,7 +6306,16 @@ export interface ServicesRestartReplicaRequest {
   applicationName: string;
   /** The name of the service resource in the format of {applicationName}~{serviceName}. */
   serviceName: string;
-  body: unknown;
+  /** The ID of the partition. */
+  partitionId: string;
+  /** The IDs of the replicas to be restarted. */
+  replicaIds: ServicesRestartReplicaRequestReplicaIdsList;
+  /** The kind of restart to perform. */
+  restartKind: RestartKind;
+  /** If true, the restart operation will be forced. Use this option with care, as it may cause data loss. */
+  forceRestart?: boolean;
+  /** The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. */
+  timeout?: number;
 }
 export const ServicesRestartReplicaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5178,7 +6324,11 @@ export const ServicesRestartReplicaRequest = /*@__PURE__*/ S.suspend(() =>
     clusterName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    partitionId: S.String,
+    replicaIds: ServicesRestartReplicaRequestReplicaIdsList,
+    restartKind: RestartKind,
+    forceRestart: S.optional(S.Boolean),
+    timeout: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5198,6 +6348,15 @@ export const ServicesRestartReplicaResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServicesRestartReplicaResponse",
 }) as any as S.Schema<ServicesRestartReplicaResponse>;
 
+/** Service update parameters */
+export type ServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesUpdateRequestTagsMap>;
+
 export interface ServicesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5209,7 +6368,8 @@ export interface ServicesUpdateRequest {
   applicationName: string;
   /** The name of the service resource in the format of {applicationName}~{serviceName}. */
   serviceName: string;
-  body: unknown;
+  /** Service update parameters */
+  tags?: ServicesUpdateRequestTagsMap;
 }
 export const ServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5218,7 +6378,7 @@ export const ServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     clusterName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ServicesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",

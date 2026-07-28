@@ -67,20 +67,18 @@ export type SourceTypeEnum =
   | "DOMAIN_PROFILE"
   | "CONTACT"
   | "OTHER_CONTACT"
-  | "DOMAIN_CONTACT"
-  | (string & {});
+  | "DOMAIN_CONTACT";
 export const SourceTypeEnum = /*@__PURE__*/ S.String;
 
 export type ProfileMetadataUserTypesItemEnum =
   | "USER_TYPE_UNKNOWN"
   | "GOOGLE_USER"
   | "GPLUS_USER"
-  | "GOOGLE_APPS_USER"
-  | (string & {});
+  | "GOOGLE_APPS_USER";
 export const ProfileMetadataUserTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type ProfileMetadataUserTypesItemEnumList =
-  ProfileMetadataUserTypesItemEnum[];
+  ReadonlyArray<ProfileMetadataUserTypesItemEnum>;
 export const ProfileMetadataUserTypesItemEnumList = /*@__PURE__*/ S.Array(
   ProfileMetadataUserTypesItemEnum,
 ) as any as S.Schema<ProfileMetadataUserTypesItemEnumList>;
@@ -88,8 +86,7 @@ export const ProfileMetadataUserTypesItemEnumList = /*@__PURE__*/ S.Array(
 export type ProfileMetadataObjectTypeEnum =
   | "OBJECT_TYPE_UNSPECIFIED"
   | "PERSON"
-  | "PAGE"
-  | (string & {});
+  | "PAGE";
 export const ProfileMetadataObjectTypeEnum = /*@__PURE__*/ S.String;
 
 /** The metadata about a profile. */
@@ -168,7 +165,7 @@ export const CoverPhoto = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CoverPhoto" }) as any as S.Schema<CoverPhoto>;
 
-export type CoverPhotoList = CoverPhoto[];
+export type CoverPhotoList = ReadonlyArray<CoverPhoto>;
 export const CoverPhotoList = /*@__PURE__*/ S.Array(
   CoverPhoto,
 ) as any as S.Schema<CoverPhotoList>;
@@ -196,7 +193,7 @@ export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PhoneNumber" }) as any as S.Schema<PhoneNumber>;
 
-export type PhoneNumberList = PhoneNumber[];
+export type PhoneNumberList = ReadonlyArray<PhoneNumber>;
 export const PhoneNumberList = /*@__PURE__*/ S.Array(
   PhoneNumber,
 ) as any as S.Schema<PhoneNumberList>;
@@ -215,7 +212,7 @@ export const Occupation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Occupation" }) as any as S.Schema<Occupation>;
 
-export type OccupationList = Occupation[];
+export type OccupationList = ReadonlyArray<Occupation>;
 export const OccupationList = /*@__PURE__*/ S.Array(
   Occupation,
 ) as any as S.Schema<OccupationList>;
@@ -239,7 +236,7 @@ export const RelationshipStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelationshipStatus",
 }) as any as S.Schema<RelationshipStatus>;
 
-export type RelationshipStatusList = RelationshipStatus[];
+export type RelationshipStatusList = ReadonlyArray<RelationshipStatus>;
 export const RelationshipStatusList = /*@__PURE__*/ S.Array(
   RelationshipStatus,
 ) as any as S.Schema<RelationshipStatusList>;
@@ -261,7 +258,7 @@ export const Residence = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Residence" }) as any as S.Schema<Residence>;
 
-export type ResidenceList = Residence[];
+export type ResidenceList = ReadonlyArray<Residence>;
 export const ResidenceList = /*@__PURE__*/ S.Array(
   Residence,
 ) as any as S.Schema<ResidenceList>;
@@ -286,7 +283,7 @@ export const Url = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Url" }) as any as S.Schema<Url>;
 
-export type UrlList = Url[];
+export type UrlList = ReadonlyArray<Url>;
 export const UrlList = /*@__PURE__*/ S.Array(Url) as any as S.Schema<UrlList>;
 
 /** A person's photo. A picture shown next to the person's name to help others recognize the person. */
@@ -306,7 +303,7 @@ export const Photo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Photo" }) as any as S.Schema<Photo>;
 
-export type PhotoList = Photo[];
+export type PhotoList = ReadonlyArray<Photo>;
 export const PhotoList = /*@__PURE__*/ S.Array(
   Photo,
 ) as any as S.Schema<PhotoList>;
@@ -315,8 +312,7 @@ export type AgeRangeTypeAgeRangeEnum =
   | "AGE_RANGE_UNSPECIFIED"
   | "LESS_THAN_EIGHTEEN"
   | "EIGHTEEN_TO_TWENTY"
-  | "TWENTY_ONE_OR_OLDER"
-  | (string & {});
+  | "TWENTY_ONE_OR_OLDER";
 export const AgeRangeTypeAgeRangeEnum = /*@__PURE__*/ S.String;
 
 /** A person's age range. */
@@ -333,7 +329,7 @@ export const AgeRangeType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgeRangeType" }) as any as S.Schema<AgeRangeType>;
 
-export type AgeRangeTypeList = AgeRangeType[];
+export type AgeRangeTypeList = ReadonlyArray<AgeRangeType>;
 export const AgeRangeTypeList = /*@__PURE__*/ S.Array(
   AgeRangeType,
 ) as any as S.Schema<AgeRangeTypeList>;
@@ -352,7 +348,7 @@ export const BraggingRights = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BraggingRights" }) as any as S.Schema<BraggingRights>;
 
-export type BraggingRightsList = BraggingRights[];
+export type BraggingRightsList = ReadonlyArray<BraggingRights>;
 export const BraggingRightsList = /*@__PURE__*/ S.Array(
   BraggingRights,
 ) as any as S.Schema<BraggingRightsList>;
@@ -371,7 +367,7 @@ export const Skill = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Skill" }) as any as S.Schema<Skill>;
 
-export type SkillList = Skill[];
+export type SkillList = ReadonlyArray<Skill>;
 export const SkillList = /*@__PURE__*/ S.Array(
   Skill,
 ) as any as S.Schema<SkillList>;
@@ -449,7 +445,7 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
-export type OrganizationList = Organization[];
+export type OrganizationList = ReadonlyArray<Organization>;
 export const OrganizationList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationList>;
@@ -471,7 +467,7 @@ export const UserDefined = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserDefined" }) as any as S.Schema<UserDefined>;
 
-export type UserDefinedList = UserDefined[];
+export type UserDefinedList = ReadonlyArray<UserDefined>;
 export const UserDefinedList = /*@__PURE__*/ S.Array(
   UserDefined,
 ) as any as S.Schema<UserDefinedList>;
@@ -502,7 +498,7 @@ export const ImClient = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImClient" }) as any as S.Schema<ImClient>;
 
-export type ImClientList = ImClient[];
+export type ImClientList = ReadonlyArray<ImClient>;
 export const ImClientList = /*@__PURE__*/ S.Array(
   ImClient,
 ) as any as S.Schema<ImClientList>;
@@ -553,7 +549,7 @@ export const Membership = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Membership" }) as any as S.Schema<Membership>;
 
-export type MembershipList = Membership[];
+export type MembershipList = ReadonlyArray<Membership>;
 export const MembershipList = /*@__PURE__*/ S.Array(
   Membership,
 ) as any as S.Schema<MembershipList>;
@@ -575,7 +571,7 @@ export const ClientData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClientData" }) as any as S.Schema<ClientData>;
 
-export type ClientDataList = ClientData[];
+export type ClientDataList = ReadonlyArray<ClientData>;
 export const ClientDataList = /*@__PURE__*/ S.Array(
   ClientData,
 ) as any as S.Schema<ClientDataList>;
@@ -600,7 +596,7 @@ export const Gender = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Gender" }) as any as S.Schema<Gender>;
 
-export type GenderList = Gender[];
+export type GenderList = ReadonlyArray<Gender>;
 export const GenderList = /*@__PURE__*/ S.Array(
   Gender,
 ) as any as S.Schema<GenderList>;
@@ -625,7 +621,7 @@ export const SipAddress = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SipAddress" }) as any as S.Schema<SipAddress>;
 
-export type SipAddressList = SipAddress[];
+export type SipAddressList = ReadonlyArray<SipAddress>;
 export const SipAddressList = /*@__PURE__*/ S.Array(
   SipAddress,
 ) as any as S.Schema<SipAddressList>;
@@ -633,16 +629,15 @@ export const SipAddressList = /*@__PURE__*/ S.Array(
 export type PersonMetadataObjectTypeEnum =
   | "OBJECT_TYPE_UNSPECIFIED"
   | "PERSON"
-  | "PAGE"
-  | (string & {});
+  | "PAGE";
 export const PersonMetadataObjectTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type SourceList = Source[];
+export type SourceList = ReadonlyArray<Source>;
 export const SourceList = /*@__PURE__*/ S.Array(
   Source,
 ) as any as S.Schema<SourceList>;
@@ -690,7 +685,7 @@ export const Relation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Relation" }) as any as S.Schema<Relation>;
 
-export type RelationList = Relation[];
+export type RelationList = ReadonlyArray<Relation>;
 export const RelationList = /*@__PURE__*/ S.Array(
   Relation,
 ) as any as S.Schema<RelationList>;
@@ -715,7 +710,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
-export type EventList = Event[];
+export type EventList = ReadonlyArray<Event>;
 export const EventList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<EventList>;
@@ -734,7 +729,7 @@ export const Tagline = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tagline" }) as any as S.Schema<Tagline>;
 
-export type TaglineList = Tagline[];
+export type TaglineList = ReadonlyArray<Tagline>;
 export const TaglineList = /*@__PURE__*/ S.Array(
   Tagline,
 ) as any as S.Schema<TaglineList>;
@@ -753,7 +748,7 @@ export const FileAs = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FileAs" }) as any as S.Schema<FileAs>;
 
-export type FileAsList = FileAs[];
+export type FileAsList = ReadonlyArray<FileAs>;
 export const FileAsList = /*@__PURE__*/ S.Array(
   FileAs,
 ) as any as S.Schema<FileAsList>;
@@ -772,7 +767,7 @@ export const Interest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Interest" }) as any as S.Schema<Interest>;
 
-export type InterestList = Interest[];
+export type InterestList = ReadonlyArray<Interest>;
 export const InterestList = /*@__PURE__*/ S.Array(
   Interest,
 ) as any as S.Schema<InterestList>;
@@ -780,8 +775,7 @@ export const InterestList = /*@__PURE__*/ S.Array(
 export type BiographyContentTypeEnum =
   | "CONTENT_TYPE_UNSPECIFIED"
   | "TEXT_PLAIN"
-  | "TEXT_HTML"
-  | (string & {});
+  | "TEXT_HTML";
 export const BiographyContentTypeEnum = /*@__PURE__*/ S.String;
 
 /** A person's short biography. */
@@ -801,7 +795,7 @@ export const Biography = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Biography" }) as any as S.Schema<Biography>;
 
-export type BiographyList = Biography[];
+export type BiographyList = ReadonlyArray<Biography>;
 export const BiographyList = /*@__PURE__*/ S.Array(
   Biography,
 ) as any as S.Schema<BiographyList>;
@@ -823,7 +817,7 @@ export const Birthday = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Birthday" }) as any as S.Schema<Birthday>;
 
-export type BirthdayList = Birthday[];
+export type BirthdayList = ReadonlyArray<Birthday>;
 export const BirthdayList = /*@__PURE__*/ S.Array(
   Birthday,
 ) as any as S.Schema<BirthdayList>;
@@ -835,8 +829,7 @@ export type NicknameTypeEnum =
   | "GPLUS"
   | "OTHER_NAME"
   | "ALTERNATE_NAME"
-  | "SHORT_NAME"
-  | (string & {});
+  | "SHORT_NAME";
 export const NicknameTypeEnum = /*@__PURE__*/ S.String;
 
 /** A person's nickname. */
@@ -856,7 +849,7 @@ export const Nickname = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Nickname" }) as any as S.Schema<Nickname>;
 
-export type NicknameList = Nickname[];
+export type NicknameList = ReadonlyArray<Nickname>;
 export const NicknameList = /*@__PURE__*/ S.Array(
   Nickname,
 ) as any as S.Schema<NicknameList>;
@@ -914,7 +907,7 @@ export const Name = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Name" }) as any as S.Schema<Name>;
 
-export type NameList = Name[];
+export type NameList = ReadonlyArray<Name>;
 export const NameList = /*@__PURE__*/ S.Array(
   Name,
 ) as any as S.Schema<NameList>;
@@ -939,7 +932,7 @@ export const CalendarUrl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CalendarUrl" }) as any as S.Schema<CalendarUrl>;
 
-export type CalendarUrlList = CalendarUrl[];
+export type CalendarUrlList = ReadonlyArray<CalendarUrl>;
 export const CalendarUrlList = /*@__PURE__*/ S.Array(
   CalendarUrl,
 ) as any as S.Schema<CalendarUrlList>;
@@ -976,7 +969,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1000,7 +993,7 @@ export const RelationshipInterest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelationshipInterest",
 }) as any as S.Schema<RelationshipInterest>;
 
-export type RelationshipInterestList = RelationshipInterest[];
+export type RelationshipInterestList = ReadonlyArray<RelationshipInterest>;
 export const RelationshipInterestList = /*@__PURE__*/ S.Array(
   RelationshipInterest,
 ) as any as S.Schema<RelationshipInterestList>;
@@ -1028,7 +1021,7 @@ export const EmailAddress = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EmailAddress" }) as any as S.Schema<EmailAddress>;
 
-export type EmailAddressList = EmailAddress[];
+export type EmailAddressList = ReadonlyArray<EmailAddress>;
 export const EmailAddressList = /*@__PURE__*/ S.Array(
   EmailAddress,
 ) as any as S.Schema<EmailAddressList>;
@@ -1037,8 +1030,7 @@ export type PersonAgeRangeEnum =
   | "AGE_RANGE_UNSPECIFIED"
   | "LESS_THAN_EIGHTEEN"
   | "EIGHTEEN_TO_TWENTY"
-  | "TWENTY_ONE_OR_OLDER"
-  | (string & {});
+  | "TWENTY_ONE_OR_OLDER";
 export const PersonAgeRangeEnum = /*@__PURE__*/ S.String;
 
 /** A person's physical address. May be a P.O. box or street address. All fields are optional. */
@@ -1085,7 +1077,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
-export type AddressList = Address[];
+export type AddressList = ReadonlyArray<Address>;
 export const AddressList = /*@__PURE__*/ S.Array(
   Address,
 ) as any as S.Schema<AddressList>;
@@ -1110,7 +1102,7 @@ export const ExternalId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExternalId" }) as any as S.Schema<ExternalId>;
 
-export type ExternalIdList = ExternalId[];
+export type ExternalIdList = ReadonlyArray<ExternalId>;
 export const ExternalIdList = /*@__PURE__*/ S.Array(
   ExternalId,
 ) as any as S.Schema<ExternalIdList>;
@@ -1129,7 +1121,7 @@ export const Locale = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Locale" }) as any as S.Schema<Locale>;
 
-export type LocaleList = Locale[];
+export type LocaleList = ReadonlyArray<Locale>;
 export const LocaleList = /*@__PURE__*/ S.Array(
   Locale,
 ) as any as S.Schema<LocaleList>;
@@ -1146,8 +1138,7 @@ export type MiscKeywordTypeEnum =
   | "OUTLOOK_USER"
   | "HOME"
   | "WORK"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const MiscKeywordTypeEnum = /*@__PURE__*/ S.String;
 
 /** A person's miscellaneous keyword. */
@@ -1170,7 +1161,7 @@ export const MiscKeyword = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MiscKeyword" }) as any as S.Schema<MiscKeyword>;
 
-export type MiscKeywordList = MiscKeyword[];
+export type MiscKeywordList = ReadonlyArray<MiscKeyword>;
 export const MiscKeywordList = /*@__PURE__*/ S.Array(
   MiscKeyword,
 ) as any as S.Schema<MiscKeywordList>;
@@ -1310,7 +1301,7 @@ export const ContactToCreate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContactToCreate",
 }) as any as S.Schema<ContactToCreate>;
 
-export type ContactToCreateList = ContactToCreate[];
+export type ContactToCreateList = ReadonlyArray<ContactToCreate>;
 export const ContactToCreateList = /*@__PURE__*/ S.Array(
   ContactToCreate,
 ) as any as S.Schema<ContactToCreateList>;
@@ -1320,12 +1311,11 @@ export type BatchCreateContactsRequestSourcesItemEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const BatchCreateContactsRequestSourcesItemEnum = /*@__PURE__*/ S.String;
 
 export type BatchCreateContactsRequestSourcesItemEnumList =
-  BatchCreateContactsRequestSourcesItemEnum[];
+  ReadonlyArray<BatchCreateContactsRequestSourcesItemEnum>;
 export const BatchCreateContactsRequestSourcesItemEnumList =
   /*@__PURE__*/ S.Array(
     BatchCreateContactsRequestSourcesItemEnum,
@@ -1374,7 +1364,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1416,7 +1406,7 @@ export const PersonResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PersonResponse" }) as any as S.Schema<PersonResponse>;
 
-export type PersonResponseList = PersonResponse[];
+export type PersonResponseList = ReadonlyArray<PersonResponse>;
 export const PersonResponseList = /*@__PURE__*/ S.Array(
   PersonResponse,
 ) as any as S.Schema<PersonResponseList>;
@@ -1514,8 +1504,7 @@ export const ContactGroupMetadata = /*@__PURE__*/ S.suspend(() =>
 export type ContactGroupGroupTypeEnum =
   | "GROUP_TYPE_UNSPECIFIED"
   | "USER_CONTACT_GROUP"
-  | "SYSTEM_CONTACT_GROUP"
-  | (string & {});
+  | "SYSTEM_CONTACT_GROUP";
 export const ContactGroupGroupTypeEnum = /*@__PURE__*/ S.String;
 
 /** Arbitrary client data that is populated by clients. Duplicate keys and values are allowed. */
@@ -1534,7 +1523,7 @@ export const GroupClientData = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupClientData",
 }) as any as S.Schema<GroupClientData>;
 
-export type GroupClientDataList = GroupClientData[];
+export type GroupClientDataList = ReadonlyArray<GroupClientData>;
 export const GroupClientDataList = /*@__PURE__*/ S.Array(
   GroupClientData,
 ) as any as S.Schema<GroupClientDataList>;
@@ -1593,7 +1582,7 @@ export const ContactGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContactGroupResponse",
 }) as any as S.Schema<ContactGroupResponse>;
 
-export type ContactGroupResponseList = ContactGroupResponse[];
+export type ContactGroupResponseList = ReadonlyArray<ContactGroupResponse>;
 export const ContactGroupResponseList = /*@__PURE__*/ S.Array(
   ContactGroupResponse,
 ) as any as S.Schema<ContactGroupResponseList>;
@@ -1622,12 +1611,11 @@ export type BatchUpdateContactsRequestSourcesItemEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const BatchUpdateContactsRequestSourcesItemEnum = /*@__PURE__*/ S.String;
 
 export type BatchUpdateContactsRequestSourcesItemEnumList =
-  BatchUpdateContactsRequestSourcesItemEnum[];
+  ReadonlyArray<BatchUpdateContactsRequestSourcesItemEnum>;
 export const BatchUpdateContactsRequestSourcesItemEnumList =
   /*@__PURE__*/ S.Array(
     BatchUpdateContactsRequestSourcesItemEnum,
@@ -1697,13 +1685,12 @@ export type CopyOtherContactToMyContactsGroupRequestSourcesItemEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList =
-  CopyOtherContactToMyContactsGroupRequestSourcesItemEnum[];
+  ReadonlyArray<CopyOtherContactToMyContactsGroupRequestSourcesItemEnum>;
 export const CopyOtherContactToMyContactsGroupRequestSourcesItemEnumList =
   /*@__PURE__*/ S.Array(
     CopyOtherContactToMyContactsGroupRequestSourcesItemEnum,
@@ -1794,12 +1781,11 @@ export type CreateContactPeopleSourcesEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const CreateContactPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
 export type CreateContactPeopleSourcesEnumList =
-  CreateContactPeopleSourcesEnum[];
+  ReadonlyArray<CreateContactPeopleSourcesEnum>;
 export const CreateContactPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
   CreateContactPeopleSourcesEnum,
 ) as any as S.Schema<CreateContactPeopleSourcesEnumList>;
@@ -1872,12 +1858,11 @@ export type DeleteContactPhotoPeopleSourcesEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const DeleteContactPhotoPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
 export type DeleteContactPhotoPeopleSourcesEnumList =
-  DeleteContactPhotoPeopleSourcesEnum[];
+  ReadonlyArray<DeleteContactPhotoPeopleSourcesEnum>;
 export const DeleteContactPhotoPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
   DeleteContactPhotoPeopleSourcesEnum,
 ) as any as S.Schema<DeleteContactPhotoPeopleSourcesEnumList>;
@@ -1926,11 +1911,11 @@ export type GetBatchGetPeopleSourcesEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const GetBatchGetPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
-export type GetBatchGetPeopleSourcesEnumList = GetBatchGetPeopleSourcesEnum[];
+export type GetBatchGetPeopleSourcesEnumList =
+  ReadonlyArray<GetBatchGetPeopleSourcesEnum>;
 export const GetBatchGetPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
   GetBatchGetPeopleSourcesEnum,
 ) as any as S.Schema<GetBatchGetPeopleSourcesEnumList>;
@@ -2004,11 +1989,10 @@ export type GetPeopleSourcesEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const GetPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
-export type GetPeopleSourcesEnumList = GetPeopleSourcesEnum[];
+export type GetPeopleSourcesEnumList = ReadonlyArray<GetPeopleSourcesEnum>;
 export const GetPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
   GetPeopleSourcesEnum,
 ) as any as S.Schema<GetPeopleSourcesEnumList>;
@@ -2067,7 +2051,7 @@ export const ListContactGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListContactGroupsRequest",
 }) as any as S.Schema<ListContactGroupsRequest>;
 
-export type ContactGroupList = ContactGroup[];
+export type ContactGroupList = ReadonlyArray<ContactGroup>;
 export const ContactGroupList = /*@__PURE__*/ S.Array(
   ContactGroup,
 ) as any as S.Schema<ContactGroupList>;
@@ -2097,24 +2081,22 @@ export const ListContactGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListDirectoryPeoplePeopleSourcesEnum =
   | "DIRECTORY_SOURCE_TYPE_UNSPECIFIED"
   | "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE"
-  | (string & {});
+  | "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE";
 export const ListDirectoryPeoplePeopleSourcesEnum = /*@__PURE__*/ S.String;
 
 export type ListDirectoryPeoplePeopleSourcesEnumList =
-  ListDirectoryPeoplePeopleSourcesEnum[];
+  ReadonlyArray<ListDirectoryPeoplePeopleSourcesEnum>;
 export const ListDirectoryPeoplePeopleSourcesEnumList = /*@__PURE__*/ S.Array(
   ListDirectoryPeoplePeopleSourcesEnum,
 ) as any as S.Schema<ListDirectoryPeoplePeopleSourcesEnumList>;
 
 export type ListDirectoryPeoplePeopleMergeSourcesEnum =
   | "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED"
-  | "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT"
-  | (string & {});
+  | "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT";
 export const ListDirectoryPeoplePeopleMergeSourcesEnum = /*@__PURE__*/ S.String;
 
 export type ListDirectoryPeoplePeopleMergeSourcesEnumList =
-  ListDirectoryPeoplePeopleMergeSourcesEnum[];
+  ReadonlyArray<ListDirectoryPeoplePeopleMergeSourcesEnum>;
 export const ListDirectoryPeoplePeopleMergeSourcesEnumList =
   /*@__PURE__*/ S.Array(
     ListDirectoryPeoplePeopleMergeSourcesEnum,
@@ -2160,7 +2142,7 @@ export const ListDirectoryPeoplePeopleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDirectoryPeoplePeopleRequest",
 }) as any as S.Schema<ListDirectoryPeoplePeopleRequest>;
 
-export type PersonList = Person[];
+export type PersonList = ReadonlyArray<Person>;
 export const PersonList = /*@__PURE__*/ S.Array(
   Person,
 ) as any as S.Schema<PersonList>;
@@ -2189,11 +2171,11 @@ export type ListOtherContactsSourcesEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const ListOtherContactsSourcesEnum = /*@__PURE__*/ S.String;
 
-export type ListOtherContactsSourcesEnumList = ListOtherContactsSourcesEnum[];
+export type ListOtherContactsSourcesEnumList =
+  ReadonlyArray<ListOtherContactsSourcesEnum>;
 export const ListOtherContactsSourcesEnumList = /*@__PURE__*/ S.Array(
   ListOtherContactsSourcesEnum,
 ) as any as S.Schema<ListOtherContactsSourcesEnumList>;
@@ -2257,8 +2239,7 @@ export type ListPeopleConnectionsSortOrderEnum =
   | "LAST_MODIFIED_ASCENDING"
   | "LAST_MODIFIED_DESCENDING"
   | "FIRST_NAME_ASCENDING"
-  | "LAST_NAME_ASCENDING"
-  | (string & {});
+  | "LAST_NAME_ASCENDING";
 export const ListPeopleConnectionsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export type ListPeopleConnectionsSourcesEnum =
@@ -2266,12 +2247,11 @@ export type ListPeopleConnectionsSourcesEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const ListPeopleConnectionsSourcesEnum = /*@__PURE__*/ S.String;
 
 export type ListPeopleConnectionsSourcesEnumList =
-  ListPeopleConnectionsSourcesEnum[];
+  ReadonlyArray<ListPeopleConnectionsSourcesEnum>;
 export const ListPeopleConnectionsSourcesEnumList = /*@__PURE__*/ S.Array(
   ListPeopleConnectionsSourcesEnum,
 ) as any as S.Schema<ListPeopleConnectionsSourcesEnumList>;
@@ -2401,12 +2381,11 @@ export type SearchContactsPeopleSourcesEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const SearchContactsPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
 export type SearchContactsPeopleSourcesEnumList =
-  SearchContactsPeopleSourcesEnum[];
+  ReadonlyArray<SearchContactsPeopleSourcesEnum>;
 export const SearchContactsPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
   SearchContactsPeopleSourcesEnum,
 ) as any as S.Schema<SearchContactsPeopleSourcesEnumList>;
@@ -2449,7 +2428,7 @@ export const SearchResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
-export type SearchResultList = SearchResult[];
+export type SearchResultList = ReadonlyArray<SearchResult>;
 export const SearchResultList = /*@__PURE__*/ S.Array(
   SearchResult,
 ) as any as S.Schema<SearchResultList>;
@@ -2467,13 +2446,12 @@ export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type SearchDirectoryPeoplePeopleMergeSourcesEnum =
   | "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED"
-  | "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT"
-  | (string & {});
+  | "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT";
 export const SearchDirectoryPeoplePeopleMergeSourcesEnum =
   /*@__PURE__*/ S.String;
 
 export type SearchDirectoryPeoplePeopleMergeSourcesEnumList =
-  SearchDirectoryPeoplePeopleMergeSourcesEnum[];
+  ReadonlyArray<SearchDirectoryPeoplePeopleMergeSourcesEnum>;
 export const SearchDirectoryPeoplePeopleMergeSourcesEnumList =
   /*@__PURE__*/ S.Array(
     SearchDirectoryPeoplePeopleMergeSourcesEnum,
@@ -2482,12 +2460,11 @@ export const SearchDirectoryPeoplePeopleMergeSourcesEnumList =
 export type SearchDirectoryPeoplePeopleSourcesEnum =
   | "DIRECTORY_SOURCE_TYPE_UNSPECIFIED"
   | "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE"
-  | (string & {});
+  | "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE";
 export const SearchDirectoryPeoplePeopleSourcesEnum = /*@__PURE__*/ S.String;
 
 export type SearchDirectoryPeoplePeopleSourcesEnumList =
-  SearchDirectoryPeoplePeopleSourcesEnum[];
+  ReadonlyArray<SearchDirectoryPeoplePeopleSourcesEnum>;
 export const SearchDirectoryPeoplePeopleSourcesEnumList = /*@__PURE__*/ S.Array(
   SearchDirectoryPeoplePeopleSourcesEnum,
 ) as any as S.Schema<SearchDirectoryPeoplePeopleSourcesEnumList>;
@@ -2617,12 +2594,11 @@ export type UpdateContactPeopleSourcesEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const UpdateContactPeopleSourcesEnum = /*@__PURE__*/ S.String;
 
 export type UpdateContactPeopleSourcesEnumList =
-  UpdateContactPeopleSourcesEnum[];
+  ReadonlyArray<UpdateContactPeopleSourcesEnum>;
 export const UpdateContactPeopleSourcesEnumList = /*@__PURE__*/ S.Array(
   UpdateContactPeopleSourcesEnum,
 ) as any as S.Schema<UpdateContactPeopleSourcesEnumList>;
@@ -2662,12 +2638,11 @@ export type UpdateContactPhotoRequestSourcesItemEnum =
   | "READ_SOURCE_TYPE_PROFILE"
   | "READ_SOURCE_TYPE_CONTACT"
   | "READ_SOURCE_TYPE_DOMAIN_CONTACT"
-  | "READ_SOURCE_TYPE_OTHER_CONTACT"
-  | (string & {});
+  | "READ_SOURCE_TYPE_OTHER_CONTACT";
 export const UpdateContactPhotoRequestSourcesItemEnum = /*@__PURE__*/ S.String;
 
 export type UpdateContactPhotoRequestSourcesItemEnumList =
-  UpdateContactPhotoRequestSourcesItemEnum[];
+  ReadonlyArray<UpdateContactPhotoRequestSourcesItemEnum>;
 export const UpdateContactPhotoRequestSourcesItemEnumList =
   /*@__PURE__*/ S.Array(
     UpdateContactPhotoRequestSourcesItemEnum,

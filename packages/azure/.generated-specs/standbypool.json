@@ -1158,16 +1158,65 @@
             "smithy.api#documentation": "Name of the standby virtual machine pool"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolResourceUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.standbypool#StandbyVirtualMachinePoolResourceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "elasticityProfile": {
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolElasticityProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies the elasticity profile of the standby virtual machine pools."
+          }
+        },
+        "virtualMachineState": {
+          "target": "com.azure.standbypool#VirtualMachineState",
+          "traits": {
+            "smithy.api#documentation": "Specifies the desired state of virtual machines in the pool."
+          }
+        },
+        "vmStateDistribution": {
+          "target": "com.azure.standbypool#VmStateDistribution",
+          "traits": {
+            "smithy.api#documentation": "Specifies the distribution of virtual machine states in the pool when virtualMachineState is set to Mix."
+          }
+        },
+        "attachedVirtualMachineScaleSetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the StandbyVirtualMachinePoolResource."
+      }
+    },
+    "com.azure.standbypool#StandbyVirtualMachinePoolsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.standbypool#StandbyVirtualMachinePoolsCreateOrUpdate": {
@@ -1279,16 +1328,73 @@
             "smithy.api#documentation": "Name of the standby virtual machine pool"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.standbypool#StandbyVirtualMachinePoolResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "elasticityProfile": {
+          "target": "com.azure.standbypool#StandbyVirtualMachinePoolElasticityProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies the elasticity profile of the standby virtual machine pools."
+          }
+        },
+        "virtualMachineState": {
+          "target": "com.azure.standbypool#VirtualMachineState",
+          "traits": {
+            "smithy.api#documentation": "Specifies the desired state of virtual machines in the pool.",
+            "smithy.api#required": {}
+          }
+        },
+        "vmStateDistribution": {
+          "target": "com.azure.standbypool#VmStateDistribution",
+          "traits": {
+            "smithy.api#documentation": "Specifies the distribution of virtual machine states in the pool when virtualMachineState is set to Mix."
+          }
+        },
+        "attachedVirtualMachineScaleSetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the StandbyVirtualMachinePool."
+      }
+    },
+    "com.azure.standbypool#StandbyVirtualMachinePoolsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.standbypool#StandbyVirtualMachinePoolsGet": {
@@ -2240,16 +2346,68 @@
             "smithy.api#documentation": "Name of the standby container group pool"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolResourceUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.standbypool#StandbyContainerGroupPoolResourceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "elasticityProfile": {
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolElasticityProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies elasticity profile of standby container group pools."
+          }
+        },
+        "containerGroupProperties": {
+          "target": "com.azure.standbypool#ContainerGroupProperties",
+          "traits": {
+            "smithy.api#documentation": "Specifies container group properties of standby container group pools."
+          }
+        },
+        "zones": {
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolResourceUpdatePropertiesZonesList",
+          "traits": {
+            "smithy.api#documentation": "Specifies zones of standby container group pools."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the StandbyContainerGroupPoolResource."
+      }
+    },
+    "com.azure.standbypool#StandbyContainerGroupPoolResourceUpdatePropertiesZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies zones of standby container group pools."
+      }
+    },
+    "com.azure.standbypool#StandbyContainerGroupPoolsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.standbypool#StandbyContainerGroupPoolsCreateOrUpdate": {
@@ -2361,16 +2519,77 @@
             "smithy.api#documentation": "Name of the standby container group pool"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.standbypool#StandbyContainerGroupPoolResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "elasticityProfile": {
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolElasticityProfile",
+          "traits": {
+            "smithy.api#documentation": "Specifies elasticity profile of standby container group pools.",
+            "smithy.api#required": {}
+          }
+        },
+        "containerGroupProperties": {
+          "target": "com.azure.standbypool#ContainerGroupProperties",
+          "traits": {
+            "smithy.api#documentation": "Specifies container group properties of standby container group pools.",
+            "smithy.api#required": {}
+          }
+        },
+        "zones": {
+          "target": "com.azure.standbypool#StandbyContainerGroupPoolResourcePropertiesInputZonesList",
+          "traits": {
+            "smithy.api#documentation": "Specifies zones of standby container group pools."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the StandbyContainerGroupPool."
+      }
+    },
+    "com.azure.standbypool#StandbyContainerGroupPoolResourcePropertiesInputZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies zones of standby container group pools."
+      }
+    },
+    "com.azure.standbypool#StandbyContainerGroupPoolsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.standbypool#StandbyContainerGroupPoolsGet": {

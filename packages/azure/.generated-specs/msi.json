@@ -314,11 +314,10 @@
             "smithy.api#documentation": "The name of the federated identity credential resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.msi#FederatedIdentityCredentialProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties associated with the federated identity credential."
           }
         }
       },
@@ -768,16 +767,39 @@
             "smithy.api#documentation": "The name of the identity resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "tags": {
+          "target": "com.azure.msi#UserAssignedIdentitiesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.msi#UserAssignedIdentityProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties associated with the identity."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.msi#UserAssignedIdentitiesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.msi#UserAssignedIdentitiesCreateOrUpdate": {
@@ -889,16 +911,40 @@
             "smithy.api#documentation": "The name of the identity resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.msi#UserAssignedIdentitiesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.msi#UserAssignedIdentityProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties associated with the identity."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.msi#UserAssignedIdentitiesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.msi#UserAssignedIdentitiesGet": {

@@ -316,8 +316,7 @@ export type LivestreamsCreateIndependentLivestreamResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
-  | "INVOKED"
-  | (string & {});
+  | "INVOKED";
 export const LivestreamsCreateIndependentLivestreamResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -371,14 +370,18 @@ export type MeetingsCreateRequestAiConfigSummarizationSummaryType =
   | "general"
   | "team_meeting"
   | "sales_call"
-  | (string & {});
+  | "client_check_in"
+  | "interview"
+  | "daily_standup"
+  | "one_on_one_meeting"
+  | "lecture"
+  | "code_review";
 export const MeetingsCreateRequestAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateRequestAiConfigSummarizationTextFormat =
   | "plain_text"
-  | "markdown"
-  | (string & {});
+  | "markdown";
 export const MeetingsCreateRequestAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
@@ -409,7 +412,8 @@ export const MeetingsCreateRequestAiConfigSummarization =
     identifier: "MeetingsCreateRequestAiConfigSummarization",
   }) as any as S.Schema<MeetingsCreateRequestAiConfigSummarization>;
 
-export type MeetingsCreateRequestAiConfigTranscriptionKeywordsList = string[];
+export type MeetingsCreateRequestAiConfigTranscriptionKeywordsList =
+  ReadonlyArray<string>;
 export const MeetingsCreateRequestAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -419,7 +423,13 @@ export type MeetingsCreateRequestAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
   | "de"
-  | (string & {});
+  | "hi"
+  | "sv"
+  | "ru"
+  | "pl"
+  | "el"
+  | "fr"
+  | "nl";
 export const MeetingsCreateRequestAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -461,15 +471,13 @@ export const MeetingsCreateRequestAiConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type MeetingsCreateRequestRecordingConfigAudioConfigChannel =
   | "mono"
-  | "stereo"
-  | (string & {});
+  | "stereo";
 export const MeetingsCreateRequestRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateRequestRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsCreateRequestRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -524,14 +532,14 @@ export type MeetingsCreateRequestRecordingConfigStorageConfigType =
   | "aws"
   | "azure"
   | "digitalocean"
-  | (string & {});
+  | "gcs"
+  | "sftp";
 export const MeetingsCreateRequestRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const MeetingsCreateRequestRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -587,8 +595,7 @@ export const MeetingsCreateRequestRecordingConfigStorageConfig =
 
 export type MeetingsCreateRequestRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsCreateRequestRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -596,8 +603,7 @@ export type MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition =
   | "left top"
   | "right top"
   | "left bottom"
-  | "right bottom"
-  | (string & {});
+  | "right bottom";
 export const MeetingsCreateRequestRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -776,14 +782,18 @@ export type MeetingsCreateResponseDataAiConfigSummarizationSummaryType =
   | "general"
   | "team_meeting"
   | "sales_call"
-  | (string & {});
+  | "client_check_in"
+  | "interview"
+  | "daily_standup"
+  | "one_on_one_meeting"
+  | "lecture"
+  | "code_review";
 export const MeetingsCreateResponseDataAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateResponseDataAiConfigSummarizationTextFormat =
   | "plain_text"
-  | "markdown"
-  | (string & {});
+  | "markdown";
 export const MeetingsCreateResponseDataAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
@@ -815,7 +825,7 @@ export const MeetingsCreateResponseDataAiConfigSummarization =
   }) as any as S.Schema<MeetingsCreateResponseDataAiConfigSummarization>;
 
 export type MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList =
-  string[];
+  ReadonlyArray<string>;
 export const MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -825,7 +835,13 @@ export type MeetingsCreateResponseDataAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
   | "de"
-  | (string & {});
+  | "hi"
+  | "sv"
+  | "ru"
+  | "pl"
+  | "el"
+  | "fr"
+  | "nl";
 export const MeetingsCreateResponseDataAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -869,15 +885,13 @@ export const MeetingsCreateResponseDataAiConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type MeetingsCreateResponseDataRecordingConfigAudioConfigChannel =
   | "mono"
-  | "stereo"
-  | (string & {});
+  | "stereo";
 export const MeetingsCreateResponseDataRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateResponseDataRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsCreateResponseDataRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -935,14 +949,14 @@ export type MeetingsCreateResponseDataRecordingConfigStorageConfigType =
   | "aws"
   | "azure"
   | "digitalocean"
-  | (string & {});
+  | "gcs"
+  | "sftp";
 export const MeetingsCreateResponseDataRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateResponseDataRecordingConfigStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const MeetingsCreateResponseDataRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -998,13 +1012,12 @@ export const MeetingsCreateResponseDataRecordingConfigStorageConfig =
 
 export type MeetingsCreateResponseDataRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsCreateResponseDataRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsCreateResponseDataRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -1124,10 +1137,7 @@ export const MeetingsCreateResponseDataRecordingConfig =
     identifier: "MeetingsCreateResponseDataRecordingConfig",
   }) as any as S.Schema<MeetingsCreateResponseDataRecordingConfig>;
 
-export type MeetingsCreateResponseDataStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type MeetingsCreateResponseDataStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsCreateResponseDataStatus = /*@__PURE__*/ S.String;
 
 export interface MeetingsCreateResponseData {
@@ -1201,7 +1211,7 @@ export const CreateMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMeetingResponse",
 }) as any as S.Schema<CreateMeetingResponse>;
 
-export type ActiveSessionCreatePollRequestOptionsList = string[];
+export type ActiveSessionCreatePollRequestOptionsList = ReadonlyArray<string>;
 export const ActiveSessionCreatePollRequestOptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ActiveSessionCreatePollRequestOptionsList>;
@@ -1258,7 +1268,7 @@ export const ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem =
   }) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem>;
 
 export type ActiveSessionCreatePollResponseDataPollOptionsItemVotesList =
-  ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem[];
+  ReadonlyArray<ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem>;
 export const ActiveSessionCreatePollResponseDataPollOptionsItemVotesList =
   /*@__PURE__*/ S.Array(
     ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem,
@@ -1282,13 +1292,14 @@ export const ActiveSessionCreatePollResponseDataPollOptionsItem =
   }) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItem>;
 
 export type ActiveSessionCreatePollResponseDataPollOptionsList =
-  ActiveSessionCreatePollResponseDataPollOptionsItem[];
+  ReadonlyArray<ActiveSessionCreatePollResponseDataPollOptionsItem>;
 export const ActiveSessionCreatePollResponseDataPollOptionsList =
   /*@__PURE__*/ S.Array(
     ActiveSessionCreatePollResponseDataPollOptionsItem,
   ) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsList>;
 
-export type ActiveSessionCreatePollResponseDataPollVotedList = string[];
+export type ActiveSessionCreatePollResponseDataPollVotedList =
+  ReadonlyArray<string>;
 export const ActiveSessionCreatePollResponseDataPollVotedList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1366,7 +1377,8 @@ export type PresetsCreateRequestConfigMediaScreenshareQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsCreateRequestConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -1390,7 +1402,8 @@ export type PresetsCreateRequestConfigMediaVideoQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsCreateRequestConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -1453,11 +1466,11 @@ export type PresetsCreateRequestConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsCreateRequestConfigViewType = /*@__PURE__*/ S.String;
 
-export type PresetsCreateRequestConfigLivestreamViewerQualitiesList = number[];
+export type PresetsCreateRequestConfigLivestreamViewerQualitiesList =
+  ReadonlyArray<number>;
 export const PresetsCreateRequestConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -1568,8 +1581,7 @@ export const PresetsCreateRequestPermissionsConnectedMeetings =
 export type PresetsCreateRequestPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateRequestPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -1591,8 +1603,7 @@ export const PresetsCreateRequestPermissionsMediaAudio =
 export type PresetsCreateRequestPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateRequestPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -1615,8 +1626,7 @@ export const PresetsCreateRequestPermissionsMediaScreenshare =
 export type PresetsCreateRequestPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateRequestPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -1654,13 +1664,37 @@ export const PresetsCreateRequestPermissionsMedia = /*@__PURE__*/ S.suspend(
   identifier: "PresetsCreateRequestPermissionsMedia",
 }) as any as S.Schema<PresetsCreateRequestPermissionsMedia>;
 
+export type PresetsCreateRequestPermissionsPluginsConfigValueAccessControl =
+  | "FULL_ACCESS"
+  | "VIEW_ONLY";
+export const PresetsCreateRequestPermissionsPluginsConfigValueAccessControl =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsCreateRequestPermissionsPluginsConfigValue {
+  accessControl?: PresetsCreateRequestPermissionsPluginsConfigValueAccessControl;
+  handlesViewOnly?: boolean;
+}
+export const PresetsCreateRequestPermissionsPluginsConfigValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accessControl: S.optional(
+        PresetsCreateRequestPermissionsPluginsConfigValueAccessControl.pipe(
+          T.Body("access_control"),
+        ),
+      ),
+      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+    }),
+  ).annotate({
+    identifier: "PresetsCreateRequestPermissionsPluginsConfigValue",
+  }) as any as S.Schema<PresetsCreateRequestPermissionsPluginsConfigValue>;
+
 export type PresetsCreateRequestPermissionsPluginsConfigMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: PresetsCreateRequestPermissionsPluginsConfigValue | undefined;
 };
 export const PresetsCreateRequestPermissionsPluginsConfigMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    PresetsCreateRequestPermissionsPluginsConfigValue,
   ) as any as S.Schema<PresetsCreateRequestPermissionsPluginsConfigMap>;
 
 export interface PresetsCreateRequestPermissionsPlugins {
@@ -1707,24 +1741,21 @@ export const PresetsCreateRequestPermissionsPolls = /*@__PURE__*/ S.suspend(
 export type PresetsCreateRequestPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsCreateRequestPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateRequestPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsCreateRequestPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateRequestPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateRequestPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
@@ -1822,16 +1853,14 @@ export type PresetsCreateRequestUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsCreateRequestUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateRequestUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsCreateRequestUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -1904,8 +1933,7 @@ export const PresetsCreateRequestUiDesignTokensColors = /*@__PURE__*/ S.suspend(
 export type PresetsCreateRequestUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsCreateRequestUiDesignTokensTheme = /*@__PURE__*/ S.String;
 
 export interface PresetsCreateRequestUiDesignTokens {
@@ -2002,7 +2030,8 @@ export type PresetsCreateResponseDataConfigMediaScreenshareQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsCreateResponseDataConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -2026,7 +2055,8 @@ export type PresetsCreateResponseDataConfigMediaVideoQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsCreateResponseDataConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -2090,12 +2120,11 @@ export type PresetsCreateResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsCreateResponseDataConfigViewType = /*@__PURE__*/ S.String;
 
 export type PresetsCreateResponseDataConfigLivestreamViewerQualitiesList =
-  number[];
+  ReadonlyArray<number>;
 export const PresetsCreateResponseDataConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -2207,8 +2236,7 @@ export const PresetsCreateResponseDataPermissionsConnectedMeetings =
 export type PresetsCreateResponseDataPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateResponseDataPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -2230,8 +2258,7 @@ export const PresetsCreateResponseDataPermissionsMediaAudio =
 export type PresetsCreateResponseDataPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateResponseDataPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -2254,8 +2281,7 @@ export const PresetsCreateResponseDataPermissionsMediaScreenshare =
 export type PresetsCreateResponseDataPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateResponseDataPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -2293,13 +2319,38 @@ export const PresetsCreateResponseDataPermissionsMedia =
     identifier: "PresetsCreateResponseDataPermissionsMedia",
   }) as any as S.Schema<PresetsCreateResponseDataPermissionsMedia>;
 
+export type PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl =
+  "FULL_ACCESS" | "VIEW_ONLY";
+export const PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsCreateResponseDataPermissionsPluginsConfigValue {
+  accessControl?: PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl;
+  handlesViewOnly?: boolean;
+}
+export const PresetsCreateResponseDataPermissionsPluginsConfigValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accessControl: S.optional(
+        PresetsCreateResponseDataPermissionsPluginsConfigValueAccessControl.pipe(
+          T.Body("access_control"),
+        ),
+      ),
+      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+    }),
+  ).annotate({
+    identifier: "PresetsCreateResponseDataPermissionsPluginsConfigValue",
+  }) as any as S.Schema<PresetsCreateResponseDataPermissionsPluginsConfigValue>;
+
 export type PresetsCreateResponseDataPermissionsPluginsConfigMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | PresetsCreateResponseDataPermissionsPluginsConfigValue
+    | undefined;
 };
 export const PresetsCreateResponseDataPermissionsPluginsConfigMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    PresetsCreateResponseDataPermissionsPluginsConfigValue,
   ) as any as S.Schema<PresetsCreateResponseDataPermissionsPluginsConfigMap>;
 
 export interface PresetsCreateResponseDataPermissionsPlugins {
@@ -2346,24 +2397,21 @@ export const PresetsCreateResponseDataPermissionsPolls =
 export type PresetsCreateResponseDataPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsCreateResponseDataPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateResponseDataPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsCreateResponseDataPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateResponseDataPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsCreateResponseDataPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
@@ -2465,16 +2513,14 @@ export type PresetsCreateResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsCreateResponseDataUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsCreateResponseDataUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsCreateResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -2547,8 +2593,7 @@ export const PresetsCreateResponseDataUiDesignTokensColors =
 export type PresetsCreateResponseDataUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsCreateResponseDataUiDesignTokensTheme =
   /*@__PURE__*/ S.String;
 
@@ -2639,11 +2684,16 @@ export type WebhooksCreateWebhookRequestEventsItem =
   | "meeting.started"
   | "meeting.ended"
   | "meeting.participantJoined"
-  | (string & {});
+  | "meeting.participantLeft"
+  | "meeting.chatSynced"
+  | "recording.statusUpdate"
+  | "livestreaming.statusUpdate"
+  | "meeting.transcript"
+  | "meeting.summary";
 export const WebhooksCreateWebhookRequestEventsItem = /*@__PURE__*/ S.String;
 
 export type WebhooksCreateWebhookRequestEventsList =
-  WebhooksCreateWebhookRequestEventsItem[];
+  ReadonlyArray<WebhooksCreateWebhookRequestEventsItem>;
 export const WebhooksCreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   WebhooksCreateWebhookRequestEventsItem,
 ) as any as S.Schema<WebhooksCreateWebhookRequestEventsList>;
@@ -2687,12 +2737,17 @@ export type WebhooksCreateWebhookResponseDataEventsItem =
   | "meeting.started"
   | "meeting.ended"
   | "meeting.participantJoined"
-  | (string & {});
+  | "meeting.participantLeft"
+  | "meeting.chatSynced"
+  | "recording.statusUpdate"
+  | "livestreaming.statusUpdate"
+  | "meeting.transcript"
+  | "meeting.summary";
 export const WebhooksCreateWebhookResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
 export type WebhooksCreateWebhookResponseDataEventsList =
-  WebhooksCreateWebhookResponseDataEventsItem[];
+  ReadonlyArray<WebhooksCreateWebhookResponseDataEventsItem>;
 export const WebhooksCreateWebhookResponseDataEventsList =
   /*@__PURE__*/ S.Array(
     WebhooksCreateWebhookResponseDataEventsItem,
@@ -2849,7 +2904,8 @@ export type PresetsDeleteResponseDataConfigMediaScreenshareQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsDeleteResponseDataConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -2873,7 +2929,8 @@ export type PresetsDeleteResponseDataConfigMediaVideoQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsDeleteResponseDataConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -2937,12 +2994,11 @@ export type PresetsDeleteResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsDeleteResponseDataConfigViewType = /*@__PURE__*/ S.String;
 
 export type PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList =
-  number[];
+  ReadonlyArray<number>;
 export const PresetsDeleteResponseDataConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -3054,8 +3110,7 @@ export const PresetsDeleteResponseDataPermissionsConnectedMeetings =
 export type PresetsDeleteResponseDataPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsDeleteResponseDataPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -3077,8 +3132,7 @@ export const PresetsDeleteResponseDataPermissionsMediaAudio =
 export type PresetsDeleteResponseDataPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsDeleteResponseDataPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -3101,8 +3155,7 @@ export const PresetsDeleteResponseDataPermissionsMediaScreenshare =
 export type PresetsDeleteResponseDataPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsDeleteResponseDataPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -3140,13 +3193,38 @@ export const PresetsDeleteResponseDataPermissionsMedia =
     identifier: "PresetsDeleteResponseDataPermissionsMedia",
   }) as any as S.Schema<PresetsDeleteResponseDataPermissionsMedia>;
 
+export type PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl =
+  "FULL_ACCESS" | "VIEW_ONLY";
+export const PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsDeleteResponseDataPermissionsPluginsConfigValue {
+  accessControl?: PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl;
+  handlesViewOnly?: boolean;
+}
+export const PresetsDeleteResponseDataPermissionsPluginsConfigValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accessControl: S.optional(
+        PresetsDeleteResponseDataPermissionsPluginsConfigValueAccessControl.pipe(
+          T.Body("access_control"),
+        ),
+      ),
+      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+    }),
+  ).annotate({
+    identifier: "PresetsDeleteResponseDataPermissionsPluginsConfigValue",
+  }) as any as S.Schema<PresetsDeleteResponseDataPermissionsPluginsConfigValue>;
+
 export type PresetsDeleteResponseDataPermissionsPluginsConfigMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | PresetsDeleteResponseDataPermissionsPluginsConfigValue
+    | undefined;
 };
 export const PresetsDeleteResponseDataPermissionsPluginsConfigMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    PresetsDeleteResponseDataPermissionsPluginsConfigValue,
   ) as any as S.Schema<PresetsDeleteResponseDataPermissionsPluginsConfigMap>;
 
 export interface PresetsDeleteResponseDataPermissionsPlugins {
@@ -3193,24 +3271,21 @@ export const PresetsDeleteResponseDataPermissionsPolls =
 export type PresetsDeleteResponseDataPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsDeleteResponseDataPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsDeleteResponseDataPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsDeleteResponseDataPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export type PresetsDeleteResponseDataPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsDeleteResponseDataPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
@@ -3312,16 +3387,14 @@ export type PresetsDeleteResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsDeleteResponseDataUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsDeleteResponseDataUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsDeleteResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -3394,8 +3467,7 @@ export const PresetsDeleteResponseDataUiDesignTokensColors =
 export type PresetsDeleteResponseDataUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsDeleteResponseDataUiDesignTokensTheme =
   /*@__PURE__*/ S.String;
 
@@ -3511,12 +3583,17 @@ export type WebhooksDeleteWebhookResponseDataEventsItem =
   | "meeting.started"
   | "meeting.ended"
   | "meeting.participantJoined"
-  | (string & {});
+  | "meeting.participantLeft"
+  | "meeting.chatSynced"
+  | "recording.statusUpdate"
+  | "livestreaming.statusUpdate"
+  | "meeting.transcript"
+  | "meeting.summary";
 export const WebhooksDeleteWebhookResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
 export type WebhooksDeleteWebhookResponseDataEventsList =
-  WebhooksDeleteWebhookResponseDataEventsItem[];
+  ReadonlyArray<WebhooksDeleteWebhookResponseDataEventsItem>;
 export const WebhooksDeleteWebhookResponseDataEventsList =
   /*@__PURE__*/ S.Array(
     WebhooksDeleteWebhookResponseDataEventsItem,
@@ -3650,11 +3727,16 @@ export type WebhooksEditWebhookRequestEventsItem =
   | "meeting.started"
   | "meeting.ended"
   | "meeting.participantJoined"
-  | (string & {});
+  | "meeting.participantLeft"
+  | "recording.statusUpdate"
+  | "livestreaming.statusUpdate"
+  | "meeting.chatSynced"
+  | "meeting.transcript"
+  | "meeting.summary";
 export const WebhooksEditWebhookRequestEventsItem = /*@__PURE__*/ S.String;
 
 export type WebhooksEditWebhookRequestEventsList =
-  WebhooksEditWebhookRequestEventsItem[];
+  ReadonlyArray<WebhooksEditWebhookRequestEventsItem>;
 export const WebhooksEditWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   WebhooksEditWebhookRequestEventsItem,
 ) as any as S.Schema<WebhooksEditWebhookRequestEventsList>;
@@ -3699,11 +3781,16 @@ export type WebhooksEditWebhookResponseDataEventsItem =
   | "meeting.started"
   | "meeting.ended"
   | "meeting.participantJoined"
-  | (string & {});
+  | "meeting.participantLeft"
+  | "meeting.chatSynced"
+  | "recording.statusUpdate"
+  | "livestreaming.statusUpdate"
+  | "meeting.transcript"
+  | "meeting.summary";
 export const WebhooksEditWebhookResponseDataEventsItem = /*@__PURE__*/ S.String;
 
 export type WebhooksEditWebhookResponseDataEventsList =
-  WebhooksEditWebhookResponseDataEventsItem[];
+  ReadonlyArray<WebhooksEditWebhookResponseDataEventsItem>;
 export const WebhooksEditWebhookResponseDataEventsList = /*@__PURE__*/ S.Array(
   WebhooksEditWebhookResponseDataEventsItem,
 ) as any as S.Schema<WebhooksEditWebhookResponseDataEventsList>;
@@ -3830,7 +3917,7 @@ export const GetActiveLivestreamsForLivestreamIdLivestreamRequest =
   }) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamRequest>;
 
 export type LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus =
-  "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {});
+  "LIVE" | "IDLE" | "ERRORED" | "INVOKED";
 export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus =
   /*@__PURE__*/ S.String;
 
@@ -3975,7 +4062,9 @@ export type RecordingsGetActiveRecordingsResponseDataStatus =
   | "INVOKED"
   | "RECORDING"
   | "UPLOADING"
-  | (string & {});
+  | "UPLOADED"
+  | "ERRORED"
+  | "PAUSED";
 export const RecordingsGetActiveRecordingsResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -4067,23 +4156,19 @@ export const GetActiveSessionActiveSessionRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetActiveSessionActiveSessionRequest",
 }) as any as S.Schema<GetActiveSessionActiveSessionRequest>;
 
-export type ActiveSessionGetActiveSessionResponseDataStatus =
-  | "LIVE"
-  | "ENDED"
-  | (string & {});
+export type ActiveSessionGetActiveSessionResponseDataStatus = "LIVE" | "ENDED";
 export const ActiveSessionGetActiveSessionResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type ActiveSessionGetActiveSessionResponseDataType =
   | "meeting"
   | "livestream"
-  | "participant"
-  | (string & {});
+  | "participant";
 export const ActiveSessionGetActiveSessionResponseDataType =
   /*@__PURE__*/ S.String;
 
 export type ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4159,10 +4244,7 @@ export const GetActiveSessionActiveSessionResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetActiveSessionActiveSessionResponse",
 }) as any as S.Schema<GetActiveSessionActiveSessionResponse>;
 
-export type LivestreamsGetAllLivestreamsRequestSortOrder =
-  | "ASC"
-  | "DSC"
-  | (string & {});
+export type LivestreamsGetAllLivestreamsRequestSortOrder = "ASC" | "DSC";
 export const LivestreamsGetAllLivestreamsRequestSortOrder =
   /*@__PURE__*/ S.String;
 
@@ -4170,8 +4252,7 @@ export type LivestreamsGetAllLivestreamsRequestStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
-  | "INVOKED"
-  | (string & {});
+  | "INVOKED";
 export const LivestreamsGetAllLivestreamsRequestStatus = /*@__PURE__*/ S.String;
 
 export interface GetAllLivestreamsLivestreamRequest {
@@ -4242,8 +4323,7 @@ export type LivestreamsGetAllLivestreamsResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
-  | "INVOKED"
-  | (string & {});
+  | "INVOKED";
 export const LivestreamsGetAllLivestreamsResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -4300,7 +4380,7 @@ export const GetAllLivestreamsLivestreamResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAllLivestreamsLivestreamResponse",
 }) as any as S.Schema<GetAllLivestreamsLivestreamResponse>;
 
-export type AppsGetRequestSortOrder = "ASC" | "DESC" | (string & {});
+export type AppsGetRequestSortOrder = "ASC" | "DESC";
 export const AppsGetRequestSortOrder = /*@__PURE__*/ S.String;
 
 export interface GetAppRequest {
@@ -4348,7 +4428,7 @@ export const AppsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppsGetResponseDataItem",
 }) as any as S.Schema<AppsGetResponseDataItem>;
 
-export type AppsGetResponseDataList = AppsGetResponseDataItem[];
+export type AppsGetResponseDataList = ReadonlyArray<AppsGetResponseDataItem>;
 export const AppsGetResponseDataList = /*@__PURE__*/ S.Array(
   AppsGetResponseDataItem,
 ) as any as S.Schema<AppsGetResponseDataList>;
@@ -4509,7 +4589,7 @@ export const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem =
   }) as any as S.Schema<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem>;
 
 export type LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList =
-  LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem[];
+  ReadonlyArray<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem>;
 export const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList =
   /*@__PURE__*/ S.Array(
     LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem,
@@ -4641,7 +4721,7 @@ export const GetLivestreamSessionForLivestreamIdLivestreamRequest =
   }) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamRequest>;
 
 export type LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus =
-  "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {});
+  "LIVE" | "IDLE" | "ERRORED" | "INVOKED";
 export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus =
   /*@__PURE__*/ S.String;
 
@@ -4780,7 +4860,7 @@ export const GetLivestreamSessionForLivestreamIdLivestreamResponse =
     identifier: "GetLivestreamSessionForLivestreamIdLivestreamResponse",
   }) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamResponse>;
 
-export type MeetingsGetRequestStatus = "ACTIVE" | "INACTIVE" | (string & {});
+export type MeetingsGetRequestStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsGetRequestStatus = /*@__PURE__*/ S.String;
 
 export interface GetMeetingRequest {
@@ -4826,15 +4906,13 @@ export const GetMeetingRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel =
   | "mono"
-  | "stereo"
-  | (string & {});
+  | "stereo";
 export const MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -4892,14 +4970,14 @@ export type MeetingsGetResponseDataItemRecordingConfigStorageConfigType =
   | "aws"
   | "azure"
   | "digitalocean"
-  | (string & {});
+  | "gcs"
+  | "sftp";
 export const MeetingsGetResponseDataItemRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -4955,13 +5033,12 @@ export const MeetingsGetResponseDataItemRecordingConfigStorageConfig =
 
 export type MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -5082,10 +5159,7 @@ export const MeetingsGetResponseDataItemRecordingConfig =
     identifier: "MeetingsGetResponseDataItemRecordingConfig",
   }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfig>;
 
-export type MeetingsGetResponseDataItemStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type MeetingsGetResponseDataItemStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsGetResponseDataItemStatus = /*@__PURE__*/ S.String;
 
 export interface MeetingsGetResponseDataItem {
@@ -5141,7 +5215,8 @@ export const MeetingsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MeetingsGetResponseDataItem",
 }) as any as S.Schema<MeetingsGetResponseDataItem>;
 
-export type MeetingsGetResponseDataList = MeetingsGetResponseDataItem[];
+export type MeetingsGetResponseDataList =
+  ReadonlyArray<MeetingsGetResponseDataItem>;
 export const MeetingsGetResponseDataList = /*@__PURE__*/ S.Array(
   MeetingsGetResponseDataItem,
 ) as any as S.Schema<MeetingsGetResponseDataList>;
@@ -5205,8 +5280,7 @@ export type LivestreamsGetMeetingActiveLivestreamsResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
-  | "INVOKED"
-  | (string & {});
+  | "INVOKED";
 export const LivestreamsGetMeetingActiveLivestreamsResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -5291,14 +5365,21 @@ export const GetMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMeetingByIdMeetingRequest>;
 
 export type MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType =
-  "general" | "team_meeting" | "sales_call" | (string & {});
+    | "general"
+    | "team_meeting"
+    | "sales_call"
+    | "client_check_in"
+    | "interview"
+    | "daily_standup"
+    | "one_on_one_meeting"
+    | "lecture"
+    | "code_review";
 export const MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat =
   | "plain_text"
-  | "markdown"
-  | (string & {});
+  | "markdown";
 export const MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
@@ -5330,7 +5411,7 @@ export const MeetingsGetMeetingByIdResponseDataAiConfigSummarization =
   }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfigSummarization>;
 
 export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  string[];
+  ReadonlyArray<string>;
 export const MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5340,7 +5421,13 @@ export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
   | "de"
-  | (string & {});
+  | "hi"
+  | "sv"
+  | "ru"
+  | "pl"
+  | "el"
+  | "fr"
+  | "nl";
 export const MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -5388,14 +5475,13 @@ export const MeetingsGetMeetingByIdResponseDataAiConfig =
   }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfig>;
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
+  "mono" | "stereo";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -5451,12 +5537,12 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketC
   }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | (string & {});
+  "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -5513,13 +5599,12 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig =
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -5640,10 +5725,7 @@ export const MeetingsGetMeetingByIdResponseDataRecordingConfig =
     identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfig",
   }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfig>;
 
-export type MeetingsGetMeetingByIdResponseDataStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type MeetingsGetMeetingByIdResponseDataStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsGetMeetingByIdResponseDataStatus = /*@__PURE__*/ S.String;
 
 export interface MeetingsGetMeetingByIdResponseData {
@@ -5853,7 +5935,7 @@ export const MeetingsGetMeetingParticipantsResponseDataItem =
   }) as any as S.Schema<MeetingsGetMeetingParticipantsResponseDataItem>;
 
 export type MeetingsGetMeetingParticipantsResponseDataList =
-  MeetingsGetMeetingParticipantsResponseDataItem[];
+  ReadonlyArray<MeetingsGetMeetingParticipantsResponseDataItem>;
 export const MeetingsGetMeetingParticipantsResponseDataList =
   /*@__PURE__*/ S.Array(
     MeetingsGetMeetingParticipantsResponseDataItem,
@@ -5919,14 +6001,15 @@ export type RecordingsGetOneRecordingResponseDataStatus =
   | "INVOKED"
   | "RECORDING"
   | "UPLOADING"
-  | (string & {});
+  | "UPLOADED"
+  | "ERRORED"
+  | "PAUSED";
 export const RecordingsGetOneRecordingResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetOneRecordingResponseDataStartReasonCallerType =
   | "ORGANIZATION"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const RecordingsGetOneRecordingResponseDataStartReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -5953,8 +6036,7 @@ export const RecordingsGetOneRecordingResponseDataStartReasonCaller =
 
 export type RecordingsGetOneRecordingResponseDataStartReasonReason =
   | "API_CALL"
-  | "RECORD_ON_START"
-  | (string & {});
+  | "RECORD_ON_START";
 export const RecordingsGetOneRecordingResponseDataStartReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -5979,8 +6061,7 @@ export const RecordingsGetOneRecordingResponseDataStartReason =
 
 export type RecordingsGetOneRecordingResponseDataStopReasonCallerType =
   | "ORGANIZATION"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const RecordingsGetOneRecordingResponseDataStopReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -6008,8 +6089,7 @@ export const RecordingsGetOneRecordingResponseDataStopReasonCaller =
 export type RecordingsGetOneRecordingResponseDataStopReasonReason =
   | "API_CALL"
   | "INTERNAL_ERROR"
-  | "ALL_PEERS_LEFT"
-  | (string & {});
+  | "ALL_PEERS_LEFT";
 export const RecordingsGetOneRecordingResponseDataStopReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -6032,14 +6112,14 @@ export type RecordingsGetOneRecordingResponseDataStorageConfigType =
   | "aws"
   | "azure"
   | "digitalocean"
-  | (string & {});
+  | "gcs"
+  | "sftp";
 export const RecordingsGetOneRecordingResponseDataStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetOneRecordingResponseDataStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const RecordingsGetOneRecordingResponseDataStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -6223,7 +6303,7 @@ export const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem =
   }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
 
 export type AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
-  AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem[];
+  ReadonlyArray<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
 export const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
   /*@__PURE__*/ S.Array(
     AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem,
@@ -6275,7 +6355,7 @@ export const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
   }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
 
 export type AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
-  AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem[];
+  ReadonlyArray<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
 export const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
   /*@__PURE__*/ S.Array(
     AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem,
@@ -6346,7 +6426,8 @@ export type SessionsGetParticipantDataFromPeerIdRequestFilters =
   | "device_info"
   | "ip_information"
   | "precall_network_information"
-  | (string & {});
+  | "events"
+  | "quality_stats";
 export const SessionsGetParticipantDataFromPeerIdRequestFilters =
   /*@__PURE__*/ S.String;
 
@@ -6387,12 +6468,12 @@ export const GetParticipantDataFromPeerIdSessionRequest =
   }) as any as S.Schema<GetParticipantDataFromPeerIdSessionRequest>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName =
-  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
+  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING";
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType =
-  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
+  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | "LIVESTREAM" | "CHAT";
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType =
   /*@__PURE__*/ S.String;
 
@@ -6446,7 +6527,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEven
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem,
@@ -6473,7 +6554,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem,
@@ -6500,7 +6581,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem,
@@ -6531,7 +6612,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem,
@@ -6672,7 +6753,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem,
@@ -6792,7 +6873,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem,
@@ -6840,17 +6921,14 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
       "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo",
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo>;
 
-export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap =
-  { [key: string]: unknown | undefined };
-export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap>;
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadata =
+  string | number | boolean;
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadata =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem {
   /** Event-specific metadata. Keys vary per event; values are primitive scalars (string, number, boolean, or null). */
-  metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap;
+  metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadata;
   /** Name of the event. */
   name?: string;
   /** Timestamp when the event occurred. */
@@ -6860,7 +6938,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       metadata: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap,
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadata,
       ),
       name: S.optional(S.String),
       timestamp: S.optional(S.String),
@@ -6871,7 +6949,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem,
@@ -6941,7 +7019,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList =
-  string[];
+  ReadonlyArray<string>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6979,7 +7057,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem,
@@ -7024,7 +7102,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem,
@@ -7051,7 +7129,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem,
@@ -7078,7 +7156,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem,
@@ -7109,7 +7187,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem,
@@ -7136,7 +7214,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem,
@@ -7163,7 +7241,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem,
@@ -7194,7 +7272,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem,
@@ -7329,7 +7407,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem,
@@ -7472,7 +7550,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem,
@@ -7627,7 +7705,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem,
@@ -7770,7 +7848,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem,
@@ -7935,7 +8013,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem,
@@ -8145,7 +8223,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason =
-  "cpu" | "bandwidth" | "none" | "other" | (string & {});
+  "cpu" | "bandwidth" | "none" | "other";
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason =
   /*@__PURE__*/ S.String;
 
@@ -8211,7 +8289,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem,
@@ -8469,7 +8547,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem,
@@ -8679,7 +8757,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason =
-  "cpu" | "bandwidth" | "none" | "other" | (string & {});
+  "cpu" | "bandwidth" | "none" | "other";
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason =
   /*@__PURE__*/ S.String;
 
@@ -8745,7 +8823,7 @@ export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerRepo
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem[];
+  ReadonlyArray<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem>;
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList =
   /*@__PURE__*/ S.Array(
     SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem,
@@ -9221,7 +9299,8 @@ export const PresetsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PresetsGetResponseDataItem",
 }) as any as S.Schema<PresetsGetResponseDataItem>;
 
-export type PresetsGetResponseDataList = PresetsGetResponseDataItem[];
+export type PresetsGetResponseDataList =
+  ReadonlyArray<PresetsGetResponseDataItem>;
 export const PresetsGetResponseDataList = /*@__PURE__*/ S.Array(
   PresetsGetResponseDataItem,
 ) as any as S.Schema<PresetsGetResponseDataList>;
@@ -9300,7 +9379,8 @@ export type PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -9324,7 +9404,8 @@ export type PresetsGetPresetByIdResponseDataConfigMediaVideoQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsGetPresetByIdResponseDataConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -9388,13 +9469,12 @@ export type PresetsGetPresetByIdResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsGetPresetByIdResponseDataConfigViewType =
   /*@__PURE__*/ S.String;
 
 export type PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList =
-  number[];
+  ReadonlyArray<number>;
 export const PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -9510,8 +9590,7 @@ export const PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings =
 export type PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -9532,7 +9611,7 @@ export const PresetsGetPresetByIdResponseDataPermissionsMediaAudio =
   }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMediaAudio>;
 
 export type PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce =
-  "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+  "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST";
 export const PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -9555,8 +9634,7 @@ export const PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare =
 export type PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -9595,13 +9673,38 @@ export const PresetsGetPresetByIdResponseDataPermissionsMedia =
     identifier: "PresetsGetPresetByIdResponseDataPermissionsMedia",
   }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMedia>;
 
+export type PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl =
+  "FULL_ACCESS" | "VIEW_ONLY";
+export const PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue {
+  accessControl?: PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl;
+  handlesViewOnly?: boolean;
+}
+export const PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accessControl: S.optional(
+        PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValueAccessControl.pipe(
+          T.Body("access_control"),
+        ),
+      ),
+      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue>;
+
 export type PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue
+    | undefined;
 };
 export const PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    PresetsGetPresetByIdResponseDataPermissionsPluginsConfigValue,
   ) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap>;
 
 export interface PresetsGetPresetByIdResponseDataPermissionsPlugins {
@@ -9648,24 +9751,21 @@ export const PresetsGetPresetByIdResponseDataPermissionsPolls =
 export type PresetsGetPresetByIdResponseDataPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsGetPresetByIdResponseDataPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export type PresetsGetPresetByIdResponseDataPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsGetPresetByIdResponseDataPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
@@ -9769,16 +9869,14 @@ export type PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -9853,8 +9951,7 @@ export const PresetsGetPresetByIdResponseDataUiDesignTokensColors =
 export type PresetsGetPresetByIdResponseDataUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsGetPresetByIdResponseDataUiDesignTokensTheme =
   /*@__PURE__*/ S.String;
 
@@ -9892,12 +9989,15 @@ export const PresetsGetPresetByIdResponseDataUiDesignTokens =
 
 export interface PresetsGetPresetByIdResponseDataUi {
   designTokens: PresetsGetPresetByIdResponseDataUiDesignTokens;
+  /** Difference between the preset's UI config and the defaults. */
+  configDiff?: unknown;
 }
 export const PresetsGetPresetByIdResponseDataUi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     designTokens: PresetsGetPresetByIdResponseDataUiDesignTokens.pipe(
       T.Body("design_tokens"),
     ),
+    configDiff: S.optional(S.Unknown.pipe(T.Body("config_diff"))),
   }),
 ).annotate({
   identifier: "PresetsGetPresetByIdResponseDataUi",
@@ -9943,26 +10043,23 @@ export const GetPresetByIdPresetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPresetByIdPresetResponse",
 }) as any as S.Schema<GetPresetByIdPresetResponse>;
 
-export type RecordingsGetRecordingsRequestSortBy =
-  | "invokedTime"
-  | (string & {});
+export type RecordingsGetRecordingsRequestSortBy = "invokedTime";
 export const RecordingsGetRecordingsRequestSortBy = /*@__PURE__*/ S.String;
 
-export type RecordingsGetRecordingsRequestSortOrder =
-  | "ASC"
-  | "DESC"
-  | (string & {});
+export type RecordingsGetRecordingsRequestSortOrder = "ASC" | "DESC";
 export const RecordingsGetRecordingsRequestSortOrder = /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsRequestStatus =
   | "INVOKED"
   | "RECORDING"
   | "UPLOADING"
-  | (string & {});
+  | "UPLOADED"
+  | "ERRORED"
+  | "PAUSED";
 export const RecordingsGetRecordingsRequestStatus = /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsRequestStatusList =
-  RecordingsGetRecordingsRequestStatus[];
+  ReadonlyArray<RecordingsGetRecordingsRequestStatus>;
 export const RecordingsGetRecordingsRequestStatusList = /*@__PURE__*/ S.Array(
   RecordingsGetRecordingsRequestStatus,
 ) as any as S.Schema<RecordingsGetRecordingsRequestStatusList>;
@@ -10028,17 +10125,19 @@ export type RecordingsGetRecordingsResponseDataItemStatus =
   | "INVOKED"
   | "RECORDING"
   | "UPLOADING"
-  | (string & {});
+  | "UPLOADED"
+  | "ERRORED"
+  | "PAUSED";
 export const RecordingsGetRecordingsResponseDataItemStatus =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
+  "mono" | "stereo";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec =
-  "MP3" | "AAC" | (string & {});
+  "MP3" | "AAC";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -10095,12 +10194,12 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealti
   }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig>;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | (string & {});
+  "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -10156,12 +10255,12 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorag
   }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig>;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec =
-  "H264" | "VP8" | (string & {});
+  "H264" | "VP8";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -10285,8 +10384,7 @@ export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig =
 
 export type RecordingsGetRecordingsResponseDataItemMeetingStatus =
   | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const RecordingsGetRecordingsResponseDataItemMeetingStatus =
   /*@__PURE__*/ S.String;
 
@@ -10348,14 +10446,14 @@ export type RecordingsGetRecordingsResponseDataItemStorageConfigType =
   | "aws"
   | "azure"
   | "digitalocean"
-  | (string & {});
+  | "gcs"
+  | "sftp";
 export const RecordingsGetRecordingsResponseDataItemStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -10466,7 +10564,7 @@ export const RecordingsGetRecordingsResponseDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordingsGetRecordingsResponseDataItem>;
 
 export type RecordingsGetRecordingsResponseDataList =
-  RecordingsGetRecordingsResponseDataItem[];
+  ReadonlyArray<RecordingsGetRecordingsResponseDataItem>;
 export const RecordingsGetRecordingsResponseDataList = /*@__PURE__*/ S.Array(
   RecordingsGetRecordingsResponseDataItem,
 ) as any as S.Schema<RecordingsGetRecordingsResponseDataList>;
@@ -10583,21 +10681,18 @@ export const GetSessionDetailsSessionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSessionDetailsSessionRequest",
 }) as any as S.Schema<GetSessionDetailsSessionRequest>;
 
-export type SessionsGetSessionDetailsResponseDataStatus =
-  | "LIVE"
-  | "ENDED"
-  | (string & {});
+export type SessionsGetSessionDetailsResponseDataStatus = "LIVE" | "ENDED";
 export const SessionsGetSessionDetailsResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionDetailsResponseDataType =
   | "meeting"
   | "livestream"
-  | "participant"
-  | (string & {});
+  | "participant";
 export const SessionsGetSessionDetailsResponseDataType = /*@__PURE__*/ S.String;
 
-export type SessionsGetSessionDetailsResponseDataBreakoutRoomsList = unknown[];
+export type SessionsGetSessionDetailsResponseDataBreakoutRoomsList =
+  ReadonlyArray<unknown>;
 export const SessionsGetSessionDetailsResponseDataBreakoutRoomsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -10706,12 +10801,12 @@ export const GetSessionParticipantDetailsSessionRequest =
   }) as any as S.Schema<GetSessionParticipantDetailsSessionRequest>;
 
 export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName =
-  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
+  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING";
 export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType =
-  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
+  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | "LIVESTREAM" | "CHAT";
 export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType =
   /*@__PURE__*/ S.String;
 
@@ -10765,7 +10860,7 @@ export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEven
   }) as any as S.Schema<SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem>;
 
 export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList =
-  SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem[];
+  ReadonlyArray<SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem>;
 export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList =
   /*@__PURE__*/ S.Array(
     SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem,
@@ -10849,22 +10944,15 @@ export const GetSessionParticipantDetailsSessionResponse =
 
 export type SessionsGetSessionParticipantsRequestSortBy =
   | "joinedAt"
-  | "duration"
-  | (string & {});
+  | "duration";
 export const SessionsGetSessionParticipantsRequestSortBy =
   /*@__PURE__*/ S.String;
 
-export type SessionsGetSessionParticipantsRequestSortOrder =
-  | "ASC"
-  | "DESC"
-  | (string & {});
+export type SessionsGetSessionParticipantsRequestSortOrder = "ASC" | "DESC";
 export const SessionsGetSessionParticipantsRequestSortOrder =
   /*@__PURE__*/ S.String;
 
-export type SessionsGetSessionParticipantsRequestView =
-  | "raw"
-  | "consolidated"
-  | (string & {});
+export type SessionsGetSessionParticipantsRequestView = "raw" | "consolidated";
 export const SessionsGetSessionParticipantsRequestView = /*@__PURE__*/ S.String;
 
 export interface GetSessionParticipantsSessionRequest {
@@ -10923,12 +11011,12 @@ export const GetSessionParticipantsSessionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetSessionParticipantsSessionRequest>;
 
 export type SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName =
-  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
+  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING";
 export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType =
-  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
+  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | "LIVESTREAM" | "CHAT";
 export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType =
   /*@__PURE__*/ S.String;
 
@@ -10982,7 +11070,7 @@ export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEvent
   }) as any as S.Schema<SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem>;
 
 export type SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList =
-  SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem[];
+  ReadonlyArray<SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem>;
 export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList =
   /*@__PURE__*/ S.Array(
     SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem,
@@ -11038,7 +11126,7 @@ export const SessionsGetSessionParticipantsResponseDataParticipantsItem =
   }) as any as S.Schema<SessionsGetSessionParticipantsResponseDataParticipantsItem>;
 
 export type SessionsGetSessionParticipantsResponseDataParticipantsList =
-  SessionsGetSessionParticipantsResponseDataParticipantsItem[];
+  ReadonlyArray<SessionsGetSessionParticipantsResponseDataParticipantsItem>;
 export const SessionsGetSessionParticipantsResponseDataParticipantsList =
   /*@__PURE__*/ S.Array(
     SessionsGetSessionParticipantsResponseDataParticipantsItem,
@@ -11071,19 +11159,13 @@ export const GetSessionParticipantsSessionResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetSessionParticipantsSessionResponse",
 }) as any as S.Schema<GetSessionParticipantsSessionResponse>;
 
-export type SessionsGetSessionsRequestSortBy =
-  | "minutesConsumed"
-  | "createdAt"
-  | (string & {});
+export type SessionsGetSessionsRequestSortBy = "minutesConsumed" | "createdAt";
 export const SessionsGetSessionsRequestSortBy = /*@__PURE__*/ S.String;
 
-export type SessionsGetSessionsRequestSortOrder =
-  | "ASC"
-  | "DESC"
-  | (string & {});
+export type SessionsGetSessionsRequestSortOrder = "ASC" | "DESC";
 export const SessionsGetSessionsRequestSortOrder = /*@__PURE__*/ S.String;
 
-export type SessionsGetSessionsRequestStatus = "LIVE" | "ENDED" | (string & {});
+export type SessionsGetSessionsRequestStatus = "LIVE" | "ENDED";
 export const SessionsGetSessionsRequestStatus = /*@__PURE__*/ S.String;
 
 export interface GetSessionsSessionRequest {
@@ -11141,21 +11223,19 @@ export const GetSessionsSessionRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SessionsGetSessionsResponseDataSessionsItemStatus =
   | "LIVE"
-  | "ENDED"
-  | (string & {});
+  | "ENDED";
 export const SessionsGetSessionsResponseDataSessionsItemStatus =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionsResponseDataSessionsItemType =
   | "meeting"
   | "livestream"
-  | "participant"
-  | (string & {});
+  | "participant";
 export const SessionsGetSessionsResponseDataSessionsItemType =
   /*@__PURE__*/ S.String;
 
 export type SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -11219,7 +11299,7 @@ export const SessionsGetSessionsResponseDataSessionsItem =
   }) as any as S.Schema<SessionsGetSessionsResponseDataSessionsItem>;
 
 export type SessionsGetSessionsResponseDataSessionsList =
-  SessionsGetSessionsResponseDataSessionsItem[];
+  ReadonlyArray<SessionsGetSessionsResponseDataSessionsItem>;
 export const SessionsGetSessionsResponseDataSessionsList =
   /*@__PURE__*/ S.Array(
     SessionsGetSessionsResponseDataSessionsItem,
@@ -11324,8 +11404,7 @@ export type SessionsGetSessionTranscriptsRequestFormat =
   | "SRT"
   | "VTT"
   | "JSON"
-  | "CSV"
-  | (string & {});
+  | "CSV";
 export const SessionsGetSessionTranscriptsRequestFormat =
   /*@__PURE__*/ S.String;
 
@@ -11421,12 +11500,17 @@ export type WebhooksGetWebhookByIdResponseDataEventsItem =
   | "meeting.started"
   | "meeting.ended"
   | "meeting.participantJoined"
-  | (string & {});
+  | "meeting.participantLeft"
+  | "meeting.chatSynced"
+  | "recording.statusUpdate"
+  | "livestreaming.statusUpdate"
+  | "meeting.transcript"
+  | "meeting.summary";
 export const WebhooksGetWebhookByIdResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
 export type WebhooksGetWebhookByIdResponseDataEventsList =
-  WebhooksGetWebhookByIdResponseDataEventsItem[];
+  ReadonlyArray<WebhooksGetWebhookByIdResponseDataEventsItem>;
 export const WebhooksGetWebhookByIdResponseDataEventsList =
   /*@__PURE__*/ S.Array(
     WebhooksGetWebhookByIdResponseDataEventsItem,
@@ -11501,12 +11585,17 @@ export type WebhooksGetWebhooksResponseDataItemEventsItem =
   | "meeting.started"
   | "meeting.ended"
   | "meeting.participantJoined"
-  | (string & {});
+  | "meeting.participantLeft"
+  | "meeting.chatSynced"
+  | "recording.statusUpdate"
+  | "livestreaming.statusUpdate"
+  | "meeting.transcript"
+  | "meeting.summary";
 export const WebhooksGetWebhooksResponseDataItemEventsItem =
   /*@__PURE__*/ S.String;
 
 export type WebhooksGetWebhooksResponseDataItemEventsList =
-  WebhooksGetWebhooksResponseDataItemEventsItem[];
+  ReadonlyArray<WebhooksGetWebhooksResponseDataItemEventsItem>;
 export const WebhooksGetWebhooksResponseDataItemEventsList =
   /*@__PURE__*/ S.Array(
     WebhooksGetWebhooksResponseDataItemEventsItem,
@@ -11543,7 +11632,7 @@ export const WebhooksGetWebhooksResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebhooksGetWebhooksResponseDataItem>;
 
 export type WebhooksGetWebhooksResponseDataList =
-  WebhooksGetWebhooksResponseDataItem[];
+  ReadonlyArray<WebhooksGetWebhooksResponseDataItem>;
 export const WebhooksGetWebhooksResponseDataList = /*@__PURE__*/ S.Array(
   WebhooksGetWebhooksResponseDataItem,
 ) as any as S.Schema<WebhooksGetWebhooksResponseDataList>;
@@ -11616,13 +11705,14 @@ export const KickAllParticipantsActiveSessionResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<KickAllParticipantsActiveSessionResponse>;
 
 export type ActiveSessionKickParticipantsRequestCustomParticipantIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const ActiveSessionKickParticipantsRequestCustomParticipantIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ActiveSessionKickParticipantsRequestCustomParticipantIdsList>;
 
-export type ActiveSessionKickParticipantsRequestParticipantIdsList = string[];
+export type ActiveSessionKickParticipantsRequestParticipantIdsList =
+  ReadonlyArray<string>;
 export const ActiveSessionKickParticipantsRequestParticipantIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11691,7 +11781,7 @@ export const ActiveSessionKickParticipantsResponseDataParticipantsItem =
   }) as any as S.Schema<ActiveSessionKickParticipantsResponseDataParticipantsItem>;
 
 export type ActiveSessionKickParticipantsResponseDataParticipantsList =
-  ActiveSessionKickParticipantsResponseDataParticipantsItem[];
+  ReadonlyArray<ActiveSessionKickParticipantsResponseDataParticipantsItem>;
 export const ActiveSessionKickParticipantsResponseDataParticipantsList =
   /*@__PURE__*/ S.Array(
     ActiveSessionKickParticipantsResponseDataParticipantsItem,
@@ -11777,7 +11867,7 @@ export const LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem =
   }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
 
 export type LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
-  LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem[];
+  ReadonlyArray<LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
 export const LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
   /*@__PURE__*/ S.Array(
     LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem,
@@ -11830,7 +11920,7 @@ export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
   }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
 
 export type LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
-  LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem[];
+  ReadonlyArray<LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
 export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
   /*@__PURE__*/ S.Array(
     LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem,
@@ -11897,7 +11987,8 @@ export const LivestreamsGetOrgAnalyticsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LivestreamsGetOrgAnalyticsResponse",
 }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponse>;
 
-export type PresetsUpdateRequestConfigLivestreamViewerQualitiesList = number[];
+export type PresetsUpdateRequestConfigLivestreamViewerQualitiesList =
+  ReadonlyArray<number>;
 export const PresetsUpdateRequestConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -11941,7 +12032,8 @@ export type PresetsUpdateRequestConfigMediaScreenshareQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsUpdateRequestConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -11965,7 +12057,8 @@ export type PresetsUpdateRequestConfigMediaVideoQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsUpdateRequestConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -12010,8 +12103,7 @@ export type PresetsUpdateRequestConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsUpdateRequestConfigViewType = /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestConfig {
@@ -12125,8 +12217,7 @@ export const PresetsUpdateRequestPermissionsConnectedMeetings =
 export type PresetsUpdateRequestPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateRequestPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -12150,8 +12241,7 @@ export const PresetsUpdateRequestPermissionsMediaAudio =
 export type PresetsUpdateRequestPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateRequestPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -12175,8 +12265,7 @@ export const PresetsUpdateRequestPermissionsMediaScreenshare =
 export type PresetsUpdateRequestPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateRequestPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -12216,13 +12305,37 @@ export const PresetsUpdateRequestPermissionsMedia = /*@__PURE__*/ S.suspend(
   identifier: "PresetsUpdateRequestPermissionsMedia",
 }) as any as S.Schema<PresetsUpdateRequestPermissionsMedia>;
 
+export type PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl =
+  | "FULL_ACCESS"
+  | "VIEW_ONLY";
+export const PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateRequestPermissionsPluginsConfigValue {
+  accessControl?: PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl;
+  handlesViewOnly?: boolean;
+}
+export const PresetsUpdateRequestPermissionsPluginsConfigValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accessControl: S.optional(
+        PresetsUpdateRequestPermissionsPluginsConfigValueAccessControl.pipe(
+          T.Body("access_control"),
+        ),
+      ),
+      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateRequestPermissionsPluginsConfigValue",
+  }) as any as S.Schema<PresetsUpdateRequestPermissionsPluginsConfigValue>;
+
 export type PresetsUpdateRequestPermissionsPluginsConfigMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: PresetsUpdateRequestPermissionsPluginsConfigValue | undefined;
 };
 export const PresetsUpdateRequestPermissionsPluginsConfigMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    PresetsUpdateRequestPermissionsPluginsConfigValue,
   ) as any as S.Schema<PresetsUpdateRequestPermissionsPluginsConfigMap>;
 
 export interface PresetsUpdateRequestPermissionsPlugins {
@@ -12269,24 +12382,21 @@ export const PresetsUpdateRequestPermissionsPolls = /*@__PURE__*/ S.suspend(
 export type PresetsUpdateRequestPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsUpdateRequestPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateRequestPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateRequestPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateRequestPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsUpdateRequestPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
@@ -12394,16 +12504,14 @@ export type PresetsUpdateRequestUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsUpdateRequestUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateRequestUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsUpdateRequestUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -12478,8 +12586,7 @@ export const PresetsUpdateRequestUiDesignTokensColors = /*@__PURE__*/ S.suspend(
 export type PresetsUpdateRequestUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsUpdateRequestUiDesignTokensTheme = /*@__PURE__*/ S.String;
 
 export interface PresetsUpdateRequestUiDesignTokens {
@@ -12582,7 +12689,8 @@ export type PresetsUpdateResponseDataConfigMediaScreenshareQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsUpdateResponseDataConfigMediaScreenshareQuality =
   /*@__PURE__*/ S.String;
 
@@ -12606,7 +12714,8 @@ export type PresetsUpdateResponseDataConfigMediaVideoQuality =
   | "hd"
   | "vga"
   | "qvga"
-  | (string & {});
+  | "fhd"
+  | "uhd";
 export const PresetsUpdateResponseDataConfigMediaVideoQuality =
   /*@__PURE__*/ S.String;
 
@@ -12670,12 +12779,11 @@ export type PresetsUpdateResponseDataConfigViewType =
   | "GROUP_CALL"
   | "WEBINAR"
   | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
+  | "LIVESTREAM";
 export const PresetsUpdateResponseDataConfigViewType = /*@__PURE__*/ S.String;
 
 export type PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList =
-  number[];
+  ReadonlyArray<number>;
 export const PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -12787,8 +12895,7 @@ export const PresetsUpdateResponseDataPermissionsConnectedMeetings =
 export type PresetsUpdateResponseDataPermissionsMediaAudioCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateResponseDataPermissionsMediaAudioCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -12810,8 +12917,7 @@ export const PresetsUpdateResponseDataPermissionsMediaAudio =
 export type PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -12834,8 +12940,7 @@ export const PresetsUpdateResponseDataPermissionsMediaScreenshare =
 export type PresetsUpdateResponseDataPermissionsMediaVideoCanProduce =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateResponseDataPermissionsMediaVideoCanProduce =
   /*@__PURE__*/ S.String;
 
@@ -12873,13 +12978,38 @@ export const PresetsUpdateResponseDataPermissionsMedia =
     identifier: "PresetsUpdateResponseDataPermissionsMedia",
   }) as any as S.Schema<PresetsUpdateResponseDataPermissionsMedia>;
 
+export type PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl =
+  "FULL_ACCESS" | "VIEW_ONLY";
+export const PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateResponseDataPermissionsPluginsConfigValue {
+  accessControl?: PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl;
+  handlesViewOnly?: boolean;
+}
+export const PresetsUpdateResponseDataPermissionsPluginsConfigValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accessControl: S.optional(
+        PresetsUpdateResponseDataPermissionsPluginsConfigValueAccessControl.pipe(
+          T.Body("access_control"),
+        ),
+      ),
+      handlesViewOnly: S.optional(S.Boolean.pipe(T.Body("handles_view_only"))),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataPermissionsPluginsConfigValue",
+  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsPluginsConfigValue>;
+
 export type PresetsUpdateResponseDataPermissionsPluginsConfigMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | PresetsUpdateResponseDataPermissionsPluginsConfigValue
+    | undefined;
 };
 export const PresetsUpdateResponseDataPermissionsPluginsConfigMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    PresetsUpdateResponseDataPermissionsPluginsConfigValue,
   ) as any as S.Schema<PresetsUpdateResponseDataPermissionsPluginsConfigMap>;
 
 export interface PresetsUpdateResponseDataPermissionsPlugins {
@@ -12926,24 +13056,21 @@ export const PresetsUpdateResponseDataPermissionsPolls =
 export type PresetsUpdateResponseDataPermissionsRecorderType =
   | "RECORDER"
   | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const PresetsUpdateResponseDataPermissionsRecorderType =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateResponseDataPermissionsWaitingRoomType =
   | "SKIP"
   | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
+  | "SKIP_ON_ACCEPT";
 export const PresetsUpdateResponseDataPermissionsWaitingRoomType =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateResponseDataPermissionsStageAccess =
   | "ALLOWED"
   | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
+  | "CAN_REQUEST";
 export const PresetsUpdateResponseDataPermissionsStageAccess =
   /*@__PURE__*/ S.String;
 
@@ -13045,16 +13172,14 @@ export type PresetsUpdateResponseDataUiDesignTokensBorderRadius =
   | "sharp"
   | "rounded"
   | "extra-rounded"
-  | "circular"
-  | (string & {});
+  | "circular";
 export const PresetsUpdateResponseDataUiDesignTokensBorderRadius =
   /*@__PURE__*/ S.String;
 
 export type PresetsUpdateResponseDataUiDesignTokensBorderWidth =
   | "none"
   | "thin"
-  | "fat"
-  | (string & {});
+  | "fat";
 export const PresetsUpdateResponseDataUiDesignTokensBorderWidth =
   /*@__PURE__*/ S.String;
 
@@ -13127,8 +13252,7 @@ export const PresetsUpdateResponseDataUiDesignTokensColors =
 export type PresetsUpdateResponseDataUiDesignTokensTheme =
   | "darkest"
   | "dark"
-  | "light"
-  | (string & {});
+  | "light";
 export const PresetsUpdateResponseDataUiDesignTokensTheme =
   /*@__PURE__*/ S.String;
 
@@ -13218,8 +13342,7 @@ export const PatchPresetResponse = /*@__PURE__*/ S.suspend(() =>
 export type RecordingsPauseResumeStopRecordingRequestAction =
   | "stop"
   | "pause"
-  | "resume"
-  | (string & {});
+  | "resume";
 export const RecordingsPauseResumeStopRecordingRequestAction =
   /*@__PURE__*/ S.String;
 
@@ -13254,12 +13377,14 @@ export type RecordingsPauseResumeStopRecordingResponseDataStatus =
   | "INVOKED"
   | "RECORDING"
   | "UPLOADING"
-  | (string & {});
+  | "UPLOADED"
+  | "ERRORED"
+  | "PAUSED";
 export const RecordingsPauseResumeStopRecordingResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType =
-  "ORGANIZATION" | "USER" | (string & {});
+  "ORGANIZATION" | "USER";
 export const RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -13287,8 +13412,7 @@ export const RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller =
 
 export type RecordingsPauseResumeStopRecordingResponseDataStartReasonReason =
   | "API_CALL"
-  | "RECORD_ON_START"
-  | (string & {});
+  | "RECORD_ON_START";
 export const RecordingsPauseResumeStopRecordingResponseDataStartReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -13312,7 +13436,7 @@ export const RecordingsPauseResumeStopRecordingResponseDataStartReason =
   }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStartReason>;
 
 export type RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType =
-  "ORGANIZATION" | "USER" | (string & {});
+  "ORGANIZATION" | "USER";
 export const RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -13341,8 +13465,7 @@ export const RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller =
 export type RecordingsPauseResumeStopRecordingResponseDataStopReasonReason =
   | "API_CALL"
   | "INTERNAL_ERROR"
-  | "ALL_PEERS_LEFT"
-  | (string & {});
+  | "ALL_PEERS_LEFT";
 export const RecordingsPauseResumeStopRecordingResponseDataStopReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -13369,12 +13492,13 @@ export type RecordingsPauseResumeStopRecordingResponseDataStorageConfigType =
   | "aws"
   | "azure"
   | "digitalocean"
-  | (string & {});
+  | "gcs"
+  | "sftp";
 export const RecordingsPauseResumeStopRecordingResponseDataStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -13625,14 +13749,18 @@ export type MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType =
   | "general"
   | "team_meeting"
   | "sales_call"
-  | (string & {});
+  | "client_check_in"
+  | "interview"
+  | "daily_standup"
+  | "one_on_one_meeting"
+  | "lecture"
+  | "code_review";
 export const MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat =
   | "plain_text"
-  | "markdown"
-  | (string & {});
+  | "markdown";
 export const MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
@@ -13664,7 +13792,7 @@ export const MeetingsReplaceMeetingByIdRequestAiConfigSummarization =
   }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigSummarization>;
 
 export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList =
-  string[];
+  ReadonlyArray<string>;
 export const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13674,7 +13802,13 @@ export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
   | "de"
-  | (string & {});
+  | "hi"
+  | "sv"
+  | "ru"
+  | "pl"
+  | "el"
+  | "fr"
+  | "nl";
 export const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -13722,14 +13856,13 @@ export const MeetingsReplaceMeetingByIdRequestAiConfig =
   }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfig>;
 
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
+  "mono" | "stereo";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -13788,12 +13921,13 @@ export type MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType =
   | "aws"
   | "azure"
   | "digitalocean"
-  | (string & {});
+  | "gcs"
+  | "sftp";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -13849,13 +13983,12 @@ export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig =
 
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -14039,12 +14172,20 @@ export const ReplaceMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplaceMeetingByIdMeetingRequest>;
 
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType =
-  "general" | "team_meeting" | "sales_call" | (string & {});
+    | "general"
+    | "team_meeting"
+    | "sales_call"
+    | "client_check_in"
+    | "interview"
+    | "daily_standup"
+    | "one_on_one_meeting"
+    | "lecture"
+    | "code_review";
 export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat =
-  "plain_text" | "markdown" | (string & {});
+  "plain_text" | "markdown";
 export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
@@ -14076,14 +14217,14 @@ export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization =
   }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization>;
 
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  string[];
+  ReadonlyArray<string>;
 export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
 
 export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage =
-  "en-US" | "en-IN" | "de" | (string & {});
+  "en-US" | "en-IN" | "de" | "hi" | "sv" | "ru" | "pl" | "el" | "fr" | "nl";
 export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -14131,12 +14272,12 @@ export const MeetingsReplaceMeetingByIdResponseDataAiConfig =
   }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfig>;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
+  "mono" | "stereo";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
-  "MP3" | "AAC" | (string & {});
+  "MP3" | "AAC";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -14193,12 +14334,12 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBuc
   }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | (string & {});
+  "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -14254,12 +14395,12 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig 
   }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig>;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
-  "H264" | "VP8" | (string & {});
+  "H264" | "VP8";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -14383,8 +14524,7 @@ export const MeetingsReplaceMeetingByIdResponseDataRecordingConfig =
 
 export type MeetingsReplaceMeetingByIdResponseDataStatus =
   | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const MeetingsReplaceMeetingByIdResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -14466,11 +14606,16 @@ export type WebhooksReplaceWebhookRequestEventsItem =
   | "meeting.started"
   | "meeting.ended"
   | "meeting.participantJoined"
-  | (string & {});
+  | "meeting.participantLeft"
+  | "meeting.chatSynced"
+  | "recording.statusUpdate"
+  | "livestreaming.statusUpdate"
+  | "meeting.transcript"
+  | "meeting.summary";
 export const WebhooksReplaceWebhookRequestEventsItem = /*@__PURE__*/ S.String;
 
 export type WebhooksReplaceWebhookRequestEventsList =
-  WebhooksReplaceWebhookRequestEventsItem[];
+  ReadonlyArray<WebhooksReplaceWebhookRequestEventsItem>;
 export const WebhooksReplaceWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   WebhooksReplaceWebhookRequestEventsItem,
 ) as any as S.Schema<WebhooksReplaceWebhookRequestEventsList>;
@@ -14516,12 +14661,17 @@ export type WebhooksReplaceWebhookResponseDataEventsItem =
   | "meeting.started"
   | "meeting.ended"
   | "meeting.participantJoined"
-  | (string & {});
+  | "meeting.participantLeft"
+  | "meeting.chatSynced"
+  | "recording.statusUpdate"
+  | "livestreaming.statusUpdate"
+  | "meeting.transcript"
+  | "meeting.summary";
 export const WebhooksReplaceWebhookResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
 export type WebhooksReplaceWebhookResponseDataEventsList =
-  WebhooksReplaceWebhookResponseDataEventsItem[];
+  ReadonlyArray<WebhooksReplaceWebhookResponseDataEventsItem>;
 export const WebhooksReplaceWebhookResponseDataEventsList =
   /*@__PURE__*/ S.Array(
     WebhooksReplaceWebhookResponseDataEventsItem,
@@ -14623,8 +14773,7 @@ export type LivestreamsStartLivestreamingAMeetingResponseDataStatus =
   | "LIVE"
   | "IDLE"
   | "ERRORED"
-  | "INVOKED"
-  | (string & {});
+  | "INVOKED";
 export const LivestreamsStartLivestreamingAMeetingResponseDataStatus =
   /*@__PURE__*/ S.String;
 
@@ -14669,15 +14818,11 @@ export const StartLivestreamingAMeetingLivestreamResponse =
 
 export type RecordingsStartRecordingsRequestAudioConfigChannel =
   | "mono"
-  | "stereo"
-  | (string & {});
+  | "stereo";
 export const RecordingsStartRecordingsRequestAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
-export type RecordingsStartRecordingsRequestAudioConfigCodec =
-  | "MP3"
-  | "AAC"
-  | (string & {});
+export type RecordingsStartRecordingsRequestAudioConfigCodec = "MP3" | "AAC";
 export const RecordingsStartRecordingsRequestAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -14700,9 +14845,7 @@ export const RecordingsStartRecordingsRequestAudioConfig =
     identifier: "RecordingsStartRecordingsRequestAudioConfig",
   }) as any as S.Schema<RecordingsStartRecordingsRequestAudioConfig>;
 
-export type RecordingsStartRecordingsRequestInteractiveConfigType =
-  | "ID3"
-  | (string & {});
+export type RecordingsStartRecordingsRequestInteractiveConfigType = "ID3";
 export const RecordingsStartRecordingsRequestInteractiveConfigType =
   /*@__PURE__*/ S.String;
 
@@ -14749,14 +14892,14 @@ export type RecordingsStartRecordingsRequestStorageConfigType =
   | "aws"
   | "azure"
   | "digitalocean"
-  | (string & {});
+  | "gcs"
+  | "sftp";
 export const RecordingsStartRecordingsRequestStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsStartRecordingsRequestStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const RecordingsStartRecordingsRequestStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -14810,10 +14953,7 @@ export const RecordingsStartRecordingsRequestStorageConfig =
     identifier: "RecordingsStartRecordingsRequestStorageConfig",
   }) as any as S.Schema<RecordingsStartRecordingsRequestStorageConfig>;
 
-export type RecordingsStartRecordingsRequestVideoConfigCodec =
-  | "H264"
-  | "VP8"
-  | (string & {});
+export type RecordingsStartRecordingsRequestVideoConfigCodec = "H264" | "VP8";
 export const RecordingsStartRecordingsRequestVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -14821,8 +14961,7 @@ export type RecordingsStartRecordingsRequestVideoConfigWatermarkPosition =
   | "left top"
   | "right top"
   | "left bottom"
-  | "right bottom"
-  | (string & {});
+  | "right bottom";
 export const RecordingsStartRecordingsRequestVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -14970,14 +15109,15 @@ export type RecordingsStartRecordingsResponseDataStatus =
   | "INVOKED"
   | "RECORDING"
   | "UPLOADING"
-  | (string & {});
+  | "UPLOADED"
+  | "ERRORED"
+  | "PAUSED";
 export const RecordingsStartRecordingsResponseDataStatus =
   /*@__PURE__*/ S.String;
 
 export type RecordingsStartRecordingsResponseDataStartReasonCallerType =
   | "ORGANIZATION"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const RecordingsStartRecordingsResponseDataStartReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -15004,8 +15144,7 @@ export const RecordingsStartRecordingsResponseDataStartReasonCaller =
 
 export type RecordingsStartRecordingsResponseDataStartReasonReason =
   | "API_CALL"
-  | "RECORD_ON_START"
-  | (string & {});
+  | "RECORD_ON_START";
 export const RecordingsStartRecordingsResponseDataStartReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -15030,8 +15169,7 @@ export const RecordingsStartRecordingsResponseDataStartReason =
 
 export type RecordingsStartRecordingsResponseDataStopReasonCallerType =
   | "ORGANIZATION"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const RecordingsStartRecordingsResponseDataStopReasonCallerType =
   /*@__PURE__*/ S.String;
 
@@ -15059,8 +15197,7 @@ export const RecordingsStartRecordingsResponseDataStopReasonCaller =
 export type RecordingsStartRecordingsResponseDataStopReasonReason =
   | "API_CALL"
   | "INTERNAL_ERROR"
-  | "ALL_PEERS_LEFT"
-  | (string & {});
+  | "ALL_PEERS_LEFT";
 export const RecordingsStartRecordingsResponseDataStopReasonReason =
   /*@__PURE__*/ S.String;
 
@@ -15083,14 +15220,14 @@ export type RecordingsStartRecordingsResponseDataStorageConfigType =
   | "aws"
   | "azure"
   | "digitalocean"
-  | (string & {});
+  | "gcs"
+  | "sftp";
 export const RecordingsStartRecordingsResponseDataStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type RecordingsStartRecordingsResponseDataStorageConfigAuthMethod =
   | "KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const RecordingsStartRecordingsResponseDataStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -15223,16 +15360,41 @@ export const StartRecordingsRecordingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartRecordingsRecordingResponse",
 }) as any as S.Schema<StartRecordingsRecordingResponse>;
 
+export type RecordingsStartTrackRecordingRequestLayersValueMediaKind = "audio";
+export const RecordingsStartTrackRecordingRequestLayersValueMediaKind =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsStartTrackRecordingRequestLayersValue {
+  /** A file name prefix to apply for files generated from this layer */
+  fileNamePrefix?: string;
+  /** Media kind to record. Track recording currently supports audio only. */
+  mediaKind?: RecordingsStartTrackRecordingRequestLayersValueMediaKind;
+}
+export const RecordingsStartTrackRecordingRequestLayersValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      mediaKind: S.optional(
+        RecordingsStartTrackRecordingRequestLayersValueMediaKind.pipe(
+          T.Body("media_kind"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartTrackRecordingRequestLayersValue",
+  }) as any as S.Schema<RecordingsStartTrackRecordingRequestLayersValue>;
+
 export type RecordingsStartTrackRecordingRequestLayersMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: RecordingsStartTrackRecordingRequestLayersValue | undefined;
 };
 export const RecordingsStartTrackRecordingRequestLayersMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    RecordingsStartTrackRecordingRequestLayersValue,
   ) as any as S.Schema<RecordingsStartTrackRecordingRequestLayersMap>;
 
-export type RecordingsStartTrackRecordingRequestUserIdsList = string[];
+export type RecordingsStartTrackRecordingRequestUserIdsList =
+  ReadonlyArray<string>;
 export const RecordingsStartTrackRecordingRequestUserIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15276,7 +15438,9 @@ export type RecordingsStartTrackRecordingResponseDataRecordingStatus =
   | "INVOKED"
   | "RECORDING"
   | "UPLOADING"
-  | (string & {});
+  | "UPLOADED"
+  | "ERRORED"
+  | "PAUSED";
 export const RecordingsStartTrackRecordingResponseDataRecordingStatus =
   /*@__PURE__*/ S.String;
 
@@ -15409,14 +15573,18 @@ export type MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType =
   | "general"
   | "team_meeting"
   | "sales_call"
-  | (string & {});
+  | "client_check_in"
+  | "interview"
+  | "daily_standup"
+  | "one_on_one_meeting"
+  | "lecture"
+  | "code_review";
 export const MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat =
   | "plain_text"
-  | "markdown"
-  | (string & {});
+  | "markdown";
 export const MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
@@ -15448,7 +15616,7 @@ export const MeetingsUpdateMeetingByIdRequestAiConfigSummarization =
   }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigSummarization>;
 
 export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList =
-  string[];
+  ReadonlyArray<string>;
 export const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15458,7 +15626,13 @@ export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
   | "en-US"
   | "en-IN"
   | "de"
-  | (string & {});
+  | "hi"
+  | "sv"
+  | "ru"
+  | "pl"
+  | "el"
+  | "fr"
+  | "nl";
 export const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -15507,15 +15681,13 @@ export const MeetingsUpdateMeetingByIdRequestAiConfig = /*@__PURE__*/ S.suspend(
 
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel =
   | "mono"
-  | "stereo"
-  | (string & {});
+  | "stereo";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec =
   | "MP3"
-  | "AAC"
-  | (string & {});
+  | "AAC";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -15574,12 +15746,13 @@ export type MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType =
   | "aws"
   | "azure"
   | "digitalocean"
-  | (string & {});
+  | "gcs"
+  | "sftp";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -15635,13 +15808,12 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig =
 
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec =
   | "H264"
-  | "VP8"
-  | (string & {});
+  | "VP8";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -15762,10 +15934,7 @@ export const MeetingsUpdateMeetingByIdRequestRecordingConfig =
     identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfig",
   }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfig>;
 
-export type MeetingsUpdateMeetingByIdRequestStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type MeetingsUpdateMeetingByIdRequestStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsUpdateMeetingByIdRequestStatus = /*@__PURE__*/ S.String;
 
 export interface UpdateMeetingByIdMeetingRequest {
@@ -15834,12 +16003,20 @@ export const UpdateMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMeetingByIdMeetingRequest>;
 
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType =
-  "general" | "team_meeting" | "sales_call" | (string & {});
+    | "general"
+    | "team_meeting"
+    | "sales_call"
+    | "client_check_in"
+    | "interview"
+    | "daily_standup"
+    | "one_on_one_meeting"
+    | "lecture"
+    | "code_review";
 export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat =
-  "plain_text" | "markdown" | (string & {});
+  "plain_text" | "markdown";
 export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat =
   /*@__PURE__*/ S.String;
 
@@ -15871,14 +16048,14 @@ export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization =
   }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization>;
 
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  string[];
+  ReadonlyArray<string>;
 export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
 
 export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
-  "en-US" | "en-IN" | "de" | (string & {});
+  "en-US" | "en-IN" | "de" | "hi" | "sv" | "ru" | "pl" | "el" | "fr" | "nl";
 export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
   /*@__PURE__*/ S.String;
 
@@ -15926,12 +16103,12 @@ export const MeetingsUpdateMeetingByIdResponseDataAiConfig =
   }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfig>;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
+  "mono" | "stereo";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
-  "MP3" | "AAC" | (string & {});
+  "MP3" | "AAC";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
   /*@__PURE__*/ S.String;
 
@@ -15988,12 +16165,12 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBuck
   }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | (string & {});
+  "aws" | "azure" | "digitalocean" | "gcs" | "sftp";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
+  "KEY" | "PASSWORD";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -16049,12 +16226,12 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig =
   }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig>;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
-  "H264" | "VP8" | (string & {});
+  "H264" | "VP8";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
   /*@__PURE__*/ S.String;
 
 export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+  "left top" | "right top" | "left bottom" | "right bottom";
 export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
   /*@__PURE__*/ S.String;
 
@@ -16176,10 +16353,7 @@ export const MeetingsUpdateMeetingByIdResponseDataRecordingConfig =
     identifier: "MeetingsUpdateMeetingByIdResponseDataRecordingConfig",
   }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfig>;
 
-export type MeetingsUpdateMeetingByIdResponseDataStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+export type MeetingsUpdateMeetingByIdResponseDataStatus = "ACTIVE" | "INACTIVE";
 export const MeetingsUpdateMeetingByIdResponseDataStatus =
   /*@__PURE__*/ S.String;
 

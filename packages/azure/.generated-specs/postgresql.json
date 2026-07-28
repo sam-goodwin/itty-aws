@@ -130,16 +130,58 @@
             "smithy.api#documentation": "Base name of the virtual endpoints."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresql#VirtualEndpointResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the pair of virtual endpoints."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#VirtualEndpointResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "endpointType": {
+          "target": "com.azure.postgresql#VirtualEndpointType",
+          "traits": {
+            "smithy.api#documentation": "Type of endpoint for the virtual endpoints."
+          }
+        },
+        "members": {
+          "target": "com.azure.postgresql#VirtualEndpointResourcePropertiesInputMembersList",
+          "traits": {
+            "smithy.api#documentation": "List of servers that one of the virtual endpoints can refer to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a pair of virtual endpoints."
+      }
+    },
+    "com.azure.postgresql#VirtualEndpointResourcePropertiesInputMembersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of servers that one of the virtual endpoints can refer to."
+      }
+    },
+    "com.azure.postgresql#VirtualEndpointType": {
+      "type": "enum",
+      "members": {
+        "READWRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ReadWrite"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of endpoint for the virtual endpoints."
       }
     },
     "com.azure.postgresql#VirtualEndpointsCreate": {
@@ -196,11 +238,10 @@
             "smithy.api#documentation": "Base name of the virtual endpoints."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresql#VirtualEndpointResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the pair of virtual endpoints."
           }
         }
       },
@@ -307,20 +348,6 @@
       },
       "traits": {
         "smithy.api#documentation": "List of servers that one of the virtual endpoints can refer to."
-      }
-    },
-    "com.azure.postgresql#VirtualEndpointType": {
-      "type": "enum",
-      "members": {
-        "READWRITE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ReadWrite"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Type of endpoint for the virtual endpoints."
       }
     },
     "com.azure.postgresql#SystemData": {
@@ -1509,16 +1536,62 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "backupSettings": {
+          "target": "com.azure.postgresql#BackupSettings",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Backup Settings",
+            "smithy.api#required": {}
+          }
+        },
+        "targetDetails": {
+          "target": "com.azure.postgresql#BackupStoreDetails",
+          "traits": {
+            "smithy.api#documentation": "Backup store detail for target server.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#BackupStoreDetails": {
+      "type": "structure",
+      "members": {
+        "sasUriList": {
+          "target": "com.azure.postgresql#BackupStoreDetailsSasUriListList",
+          "traits": {
+            "smithy.api#documentation": "List of SAS uri of storage containers where backup data is to be streamed/copied.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details about the target where the backup content will be stored."
+      }
+    },
+    "com.azure.postgresql#BackupStoreDetailsSasUriListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of SAS uri of storage containers where backup data is to be streamed/copied."
+      }
+    },
+    "com.azure.postgresql#BackupSettings": {
+      "type": "structure",
+      "members": {
+        "backupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Backup Name for the current backup",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Settings for the long term backup."
       }
     },
     "com.azure.postgresql#ServersStart": {
@@ -1618,15 +1691,53 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "restartWithFailover": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Indicates if restart the PostgreSQL database engine should failover or switch over from primary to standby. This only works if server has high availability enabled."
+          }
+        },
+        "failoverMode": {
+          "target": "com.azure.postgresql#FailoverMode",
+          "traits": {
+            "smithy.api#documentation": "Failover mode."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#FailoverMode": {
+      "type": "enum",
+      "members": {
+        "PLANNEDFAILOVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PlannedFailover"
+          }
+        },
+        "FORCEDFAILOVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ForcedFailover"
+          }
+        },
+        "PLANNEDSWITCHOVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PlannedSwitchover"
+          }
+        },
+        "FORCEDSWITCHOVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ForcedSwitchover"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Failover mode."
       }
     },
     "com.azure.postgresql#ReplicasListByServer": {
@@ -3593,16 +3704,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresql#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.postgresql#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.postgresql#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.postgresql#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.postgresql#PrivateEndpointConnectionsGet": {
@@ -5210,16 +5348,206 @@
             "smithy.api#documentation": "Name of migration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresql#MigrationPropertiesForPatch",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Migration properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.postgresql#MigrationsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#MigrationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.postgresql#MigrationPropertiesForPatch": {
+      "type": "structure",
+      "members": {
+        "sourceDbServerResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the source database server resource, when 'sourceType' is 'PostgreSQLSingleServer'. For other source types this must be set to ipaddress:port@username or hostname:port@username."
+          }
+        },
+        "sourceDbServerFullyQualifiedDomainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server."
+          }
+        },
+        "targetDbServerFullyQualifiedDomainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified domain name (FQDN) or IP address of the target server. This property is optional. When provided, the migration service will always use it to connect to the target server."
+          }
+        },
+        "secretParameters": {
+          "target": "com.azure.postgresql#MigrationSecretParametersForPatch",
+          "traits": {
+            "smithy.api#documentation": "Migration secret parameters."
+          }
+        },
+        "dbsToMigrate": {
+          "target": "com.azure.postgresql#MigrationPropertiesForPatchDbsToMigrateList",
+          "traits": {
+            "smithy.api#documentation": "Names of databases to migrate."
+          }
+        },
+        "setupLogicalReplicationOnSourceDbIfNeeded": {
+          "target": "com.azure.postgresql#LogicalReplicationOnSourceServer",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether to setup logical replication on source server, if needed."
+          }
+        },
+        "overwriteDbsInTarget": {
+          "target": "com.azure.postgresql#OverwriteDatabasesOnTargetServer",
+          "traits": {
+            "smithy.api#documentation": "Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation."
+          }
+        },
+        "migrationWindowStartTimeInUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start time (UTC) for migration window."
+          }
+        },
+        "migrateRoles": {
+          "target": "com.azure.postgresql#MigrateRolesAndPermissions",
+          "traits": {
+            "smithy.api#documentation": "Indicates if roles and permissions must be migrated."
+          }
+        },
+        "startDataMigration": {
+          "target": "com.azure.postgresql#StartDataMigration",
+          "traits": {
+            "smithy.api#documentation": "Indicates if data migration must start right away."
+          }
+        },
+        "triggerCutover": {
+          "target": "com.azure.postgresql#TriggerCutover",
+          "traits": {
+            "smithy.api#documentation": "Indicates if cutover must be triggered for the entire migration."
+          }
+        },
+        "dbsToTriggerCutoverOn": {
+          "target": "com.azure.postgresql#MigrationPropertiesForPatchDbsToTriggerCutoverOnList",
+          "traits": {
+            "smithy.api#documentation": "When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array."
+          }
+        },
+        "cancel": {
+          "target": "com.azure.postgresql#Cancel",
+          "traits": {
+            "smithy.api#documentation": "Indicates if cancel must be triggered for the entire migration."
+          }
+        },
+        "dbsToCancelMigrationOn": {
+          "target": "com.azure.postgresql#MigrationPropertiesForPatchDbsToCancelMigrationOnList",
+          "traits": {
+            "smithy.api#documentation": "When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array."
+          }
+        },
+        "migrationMode": {
+          "target": "com.azure.postgresql#MigrationMode",
+          "traits": {
+            "smithy.api#documentation": "Mode used to perform the migration: Online or Offline."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Migration properties."
+      }
+    },
+    "com.azure.postgresql#MigrationPropertiesForPatchDbsToCancelMigrationOnList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array."
+      }
+    },
+    "com.azure.postgresql#MigrationPropertiesForPatchDbsToTriggerCutoverOnList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array."
+      }
+    },
+    "com.azure.postgresql#MigrationPropertiesForPatchDbsToMigrateList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Names of databases to migrate."
+      }
+    },
+    "com.azure.postgresql#MigrationSecretParametersForPatch": {
+      "type": "structure",
+      "members": {
+        "adminCredentials": {
+          "target": "com.azure.postgresql#AdminCredentialsForPatch",
+          "traits": {
+            "smithy.api#documentation": "Credentials of administrator users for source and target servers."
+          }
+        },
+        "sourceServerUsername": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the user for the source server. This user doesn't need to be an administrator."
+          }
+        },
+        "targetServerUsername": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the user for the target server. This user doesn't need to be an administrator."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Migration secret parameters."
+      }
+    },
+    "com.azure.postgresql#AdminCredentialsForPatch": {
+      "type": "structure",
+      "members": {
+        "sourceServerPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Password for the user of the source server.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "targetServerPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Password for the user of the target server.",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Credentials of administrator users for source and target servers."
       }
     },
     "com.azure.postgresql#MigrationsCreate": {
@@ -5339,16 +5667,195 @@
             "smithy.api#documentation": "Name of migration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.postgresql#MigrationsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.postgresql#MigrationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Migration properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#MigrationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "migrationInstanceResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the private endpoint migration instance."
+          }
+        },
+        "migrationMode": {
+          "target": "com.azure.postgresql#MigrationMode",
+          "traits": {
+            "smithy.api#documentation": "Mode used to perform the migration: Online or Offline."
+          }
+        },
+        "migrationOption": {
+          "target": "com.azure.postgresql#MigrationOption",
+          "traits": {
+            "smithy.api#documentation": "Supported option for a migration."
+          }
+        },
+        "sourceType": {
+          "target": "com.azure.postgresql#SourceType",
+          "traits": {
+            "smithy.api#documentation": "Source server type used for the migration: ApsaraDB_RDS, AWS, AWS_AURORA, AWS_EC2, AWS_RDS, AzureVM, Crunchy_PostgreSQL, Digital_Ocean_Droplets, Digital_Ocean_PostgreSQL, EDB, EDB_Oracle_Server, EDB_PostgreSQL, GCP, GCP_AlloyDB, GCP_CloudSQL, GCP_Compute, Heroku_PostgreSQL, Huawei_Compute, Huawei_RDS, OnPremises, PostgreSQLCosmosDB, PostgreSQLFlexibleServer, PostgreSQLSingleServer, or Supabase_PostgreSQL"
+          }
+        },
+        "sslMode": {
+          "target": "com.azure.postgresql#SslMode",
+          "traits": {
+            "smithy.api#documentation": "SSL mode used by a migration. Default SSL mode for 'PostgreSQLSingleServer' is 'VerifyFull'. Default SSL mode for other source types is 'Prefer'."
+          }
+        },
+        "sourceDbServerResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the source database server resource, when 'sourceType' is 'PostgreSQLSingleServer'. For other source types this must be set to ipaddress:port@username or hostname:port@username."
+          }
+        },
+        "sourceDbServerFullyQualifiedDomainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server."
+          }
+        },
+        "targetDbServerFullyQualifiedDomainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified domain name (FQDN) or IP address of the target server. This property is optional. When provided, the migration service will always use it to connect to the target server."
+          }
+        },
+        "secretParameters": {
+          "target": "com.azure.postgresql#MigrationSecretParameters",
+          "traits": {
+            "smithy.api#documentation": "Migration secret parameters."
+          }
+        },
+        "dbsToMigrate": {
+          "target": "com.azure.postgresql#MigrationPropertiesInputDbsToMigrateList",
+          "traits": {
+            "smithy.api#documentation": "Names of databases to migrate."
+          }
+        },
+        "setupLogicalReplicationOnSourceDbIfNeeded": {
+          "target": "com.azure.postgresql#LogicalReplicationOnSourceServer",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether to setup logical replication on source server, if needed."
+          }
+        },
+        "overwriteDbsInTarget": {
+          "target": "com.azure.postgresql#OverwriteDatabasesOnTargetServer",
+          "traits": {
+            "smithy.api#documentation": "Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation."
+          }
+        },
+        "migrationWindowStartTimeInUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start time (UTC) for migration window."
+          }
+        },
+        "migrationWindowEndTimeInUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time (UTC) for migration window."
+          }
+        },
+        "migrateRoles": {
+          "target": "com.azure.postgresql#MigrateRolesAndPermissions",
+          "traits": {
+            "smithy.api#documentation": "Indicates if roles and permissions must be migrated."
+          }
+        },
+        "startDataMigration": {
+          "target": "com.azure.postgresql#StartDataMigration",
+          "traits": {
+            "smithy.api#documentation": "Indicates if data migration must start right away."
+          }
+        },
+        "triggerCutover": {
+          "target": "com.azure.postgresql#TriggerCutover",
+          "traits": {
+            "smithy.api#documentation": "Indicates if cutover must be triggered for the entire migration."
+          }
+        },
+        "dbsToTriggerCutoverOn": {
+          "target": "com.azure.postgresql#MigrationPropertiesInputDbsToTriggerCutoverOnList",
+          "traits": {
+            "smithy.api#documentation": "When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array."
+          }
+        },
+        "cancel": {
+          "target": "com.azure.postgresql#Cancel",
+          "traits": {
+            "smithy.api#documentation": "Indicates if cancel must be triggered for the entire migration."
+          }
+        },
+        "dbsToCancelMigrationOn": {
+          "target": "com.azure.postgresql#MigrationPropertiesInputDbsToCancelMigrationOnList",
+          "traits": {
+            "smithy.api#documentation": "When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Migration."
+      }
+    },
+    "com.azure.postgresql#MigrationPropertiesInputDbsToCancelMigrationOnList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array."
+      }
+    },
+    "com.azure.postgresql#MigrationPropertiesInputDbsToTriggerCutoverOnList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array."
+      }
+    },
+    "com.azure.postgresql#MigrationPropertiesInputDbsToMigrateList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Names of databases to migrate."
+      }
+    },
+    "com.azure.postgresql#MigrationsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.postgresql#MigrationsGet": {
@@ -5718,10 +6225,10 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "backupSettings": {
+          "target": "com.azure.postgresql#BackupSettings",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Backup Settings",
             "smithy.api#required": {}
           }
         }
@@ -6216,16 +6723,38 @@
             "smithy.api#documentation": "Name of the firewall rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresql#FirewallRuleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of a firewall rule.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#FirewallRuleProperties": {
+      "type": "structure",
+      "members": {
+        "startIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.",
+            "smithy.api#required": {}
+          }
+        },
+        "endIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a firewall rule."
       }
     },
     "com.azure.postgresql#FirewallRulesGet": {
@@ -6284,28 +6813,6 @@
       },
       "traits": {
         "smithy.api#output": {}
-      }
-    },
-    "com.azure.postgresql#FirewallRuleProperties": {
-      "type": "structure",
-      "members": {
-        "startIpAddress": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format.",
-            "smithy.api#required": {}
-          }
-        },
-        "endIpAddress": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "IP address defining the end of the range of addresses of a firewall rule. Must be expressed in IPv4 format.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Properties of a firewall rule."
       }
     },
     "com.azure.postgresql#FirewallRulesGetRequest": {
@@ -6581,16 +7088,35 @@
             "smithy.api#documentation": "Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresql#DatabaseProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a database."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#DatabaseProperties": {
+      "type": "structure",
+      "members": {
+        "charset": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Character set of the database."
+          }
+        },
+        "collation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Collation of the database."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a database."
       }
     },
     "com.azure.postgresql#DatabasesGet": {
@@ -6648,26 +7174,6 @@
       },
       "traits": {
         "smithy.api#output": {}
-      }
-    },
-    "com.azure.postgresql#DatabaseProperties": {
-      "type": "structure",
-      "members": {
-        "charset": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Character set of the database."
-          }
-        },
-        "collation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Collation of the database."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Properties of a database."
       }
     },
     "com.azure.postgresql#DatabasesGetRequest": {
@@ -6883,16 +7389,35 @@
             "smithy.api#documentation": "Name of the configuration (also known as server parameter)."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresql#ConfigurationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a configuration (also known as server parameter)."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#ConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source of the value assigned to the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a configuration (also known as server parameter)."
       }
     },
     "com.azure.postgresql#ConfigurationsPut": {
@@ -6949,11 +7474,10 @@
             "smithy.api#documentation": "Name of the configuration (also known as server parameter)."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresql#ConfigurationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a configuration (also known as server parameter)."
           }
         }
       },
@@ -7401,10 +7925,17 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Name of the migration to check for validity and availability.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of resource.",
             "smithy.api#required": {}
           }
         }
@@ -8707,16 +9238,50 @@
             "smithy.api#documentation": "Name of the advanced threat protection settings."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresql#AdvancedThreatProtectionSettingsPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Advanced threat protection properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#AdvancedThreatProtectionSettingsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.postgresql#ThreatProtectionState",
+          "traits": {
+            "smithy.api#documentation": "Specifies the state of the advanced threat protection, whether it is enabled, disabled, or a state has not been applied yet on the server.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of advanced threat protection state for a server."
+      }
+    },
+    "com.azure.postgresql#ThreatProtectionState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the state of the advanced threat protection, whether it is enabled, disabled, or a state has not been applied yet on the server."
       }
     },
     "com.azure.postgresql#ServerThreatProtectionSettingsCreateOrUpdateRequestThreatProtectionName": {
@@ -8807,26 +9372,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Properties of advanced threat protection state for a server."
-      }
-    },
-    "com.azure.postgresql#ThreatProtectionState": {
-      "type": "enum",
-      "members": {
-        "ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Enabled"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Disabled"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Specifies the state of the advanced threat protection, whether it is enabled, disabled, or a state has not been applied yet on the server."
       }
     },
     "com.azure.postgresql#AdvancedThreatProtectionSettingsGetRequest": {
@@ -9113,16 +9658,73 @@
             "smithy.api#documentation": "Object identifier of the Microsoft Entra principal."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresql#AdministratorMicrosoftEntraPropertiesForAdd",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the server administrator associated to a Microsoft Entra principal."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#AdministratorMicrosoftEntraPropertiesForAdd": {
+      "type": "structure",
+      "members": {
+        "principalType": {
+          "target": "com.azure.postgresql#PrincipalType",
+          "traits": {
+            "smithy.api#documentation": "Type of Microsoft Entra principal to which the server administrator is associated."
+          }
+        },
+        "principalName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Microsoft Entra principal."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the tenant in which the Microsoft Entra principal exists."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a server administrator associated to a Microsoft Entra principal."
+      }
+    },
+    "com.azure.postgresql#PrincipalType": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "User"
+          }
+        },
+        "GROUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Group"
+          }
+        },
+        "SERVICEPRINCIPAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServicePrincipal"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of Microsoft Entra principal to which the server administrator is associated."
       }
     },
     "com.azure.postgresql#AdministratorsMicrosoftEntraGet": {
@@ -9213,38 +9815,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Properties of a server administrator associated to a Microsoft Entra principal."
-      }
-    },
-    "com.azure.postgresql#PrincipalType": {
-      "type": "enum",
-      "members": {
-        "UNKNOWN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Unknown"
-          }
-        },
-        "USER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "User"
-          }
-        },
-        "GROUP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Group"
-          }
-        },
-        "SERVICEPRINCIPAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ServicePrincipal"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Type of Microsoft Entra principal to which the server administrator is associated."
       }
     },
     "com.azure.postgresql#AdministratorsMicrosoftEntraGetRequest": {
@@ -9504,16 +10074,381 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.postgresql#SkuForPatch",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Compute tier and size of a server."
+          }
+        },
+        "identity": {
+          "target": "com.azure.postgresql#UserAssignedIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Describes the identity of the application."
+          }
+        },
+        "properties": {
+          "target": "com.azure.postgresql#ServerPropertiesForPatchInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the server."
+          }
+        },
+        "tags": {
+          "target": "com.azure.postgresql#ServersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#ServersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.postgresql#ServerPropertiesForPatchInput": {
+      "type": "structure",
+      "members": {
+        "administratorLoginPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Password assigned to the administrator login. As long as password authentication is enabled, this password can be changed at any time.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "version": {
+          "target": "com.azure.postgresql#PostgresMajorVersion",
+          "traits": {
+            "smithy.api#documentation": "Major version of PostgreSQL database engine."
+          }
+        },
+        "storage": {
+          "target": "com.azure.postgresql#Storage",
+          "traits": {
+            "smithy.api#documentation": "Storage properties of a server."
+          }
+        },
+        "backup": {
+          "target": "com.azure.postgresql#BackupForPatchInput",
+          "traits": {
+            "smithy.api#documentation": "Backup properties of a server."
+          }
+        },
+        "highAvailability": {
+          "target": "com.azure.postgresql#HighAvailabilityForPatch",
+          "traits": {
+            "smithy.api#documentation": "High availability properties of a server."
+          }
+        },
+        "maintenanceWindow": {
+          "target": "com.azure.postgresql#MaintenanceWindowForPatch",
+          "traits": {
+            "smithy.api#documentation": "Maintenance window properties of a server."
+          }
+        },
+        "authConfig": {
+          "target": "com.azure.postgresql#AuthConfigForPatch",
+          "traits": {
+            "smithy.api#documentation": "Authentication configuration properties of a server."
+          }
+        },
+        "dataEncryption": {
+          "target": "com.azure.postgresql#DataEncryption",
+          "traits": {
+            "smithy.api#documentation": "Data encryption properties of a server."
+          }
+        },
+        "availabilityZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Availability zone of a server."
+          }
+        },
+        "createMode": {
+          "target": "com.azure.postgresql#CreateModeForPatch",
+          "traits": {
+            "smithy.api#documentation": "Update mode of an existing server."
+          }
+        },
+        "replicationRole": {
+          "target": "com.azure.postgresql#ReplicationRole",
+          "traits": {
+            "smithy.api#documentation": "Role of the server in a replication set."
+          }
+        },
+        "replica": {
+          "target": "com.azure.postgresql#ReplicaInput",
+          "traits": {
+            "smithy.api#documentation": "Read replica properties of a server. Required only in case that you want to promote a server."
+          }
+        },
+        "network": {
+          "target": "com.azure.postgresql#Network",
+          "traits": {
+            "smithy.api#documentation": "Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer."
+          }
+        },
+        "cluster": {
+          "target": "com.azure.postgresql#Cluster",
+          "traits": {
+            "smithy.api#documentation": "Cluster properties of a server."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a server."
+      }
+    },
+    "com.azure.postgresql#ReplicaInput": {
+      "type": "structure",
+      "members": {
+        "role": {
+          "target": "com.azure.postgresql#ReplicationRole",
+          "traits": {
+            "smithy.api#documentation": "Role of the server in a replication set."
+          }
+        },
+        "promoteMode": {
+          "target": "com.azure.postgresql#ReadReplicaPromoteMode",
+          "traits": {
+            "smithy.api#documentation": "Type of operation to apply on the read replica. This property is write only. Standalone means that the read replica will be promoted to a standalone server, and will become a completely independent entity from the replication set. Switchover means that the read replica will roles with the primary server."
+          }
+        },
+        "promoteOption": {
+          "target": "com.azure.postgresql#ReadReplicaPromoteOption",
+          "traits": {
+            "smithy.api#documentation": "Data synchronization option to use when processing the operation specified in the promoteMode property. This property is write only."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Replica properties of a server."
+      }
+    },
+    "com.azure.postgresql#CreateModeForPatch": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "UPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Update"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Update mode of an existing server."
+      }
+    },
+    "com.azure.postgresql#AuthConfigForPatch": {
+      "type": "structure",
+      "members": {
+        "activeDirectoryAuth": {
+          "target": "com.azure.postgresql#MicrosoftEntraAuth",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the server supports Microsoft Entra authentication."
+          }
+        },
+        "passwordAuth": {
+          "target": "com.azure.postgresql#PasswordBasedAuth",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the server supports password based authentication."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the tenant of the delegated resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Authentication configuration properties of a server."
+      }
+    },
+    "com.azure.postgresql#PasswordBasedAuth": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates if the server supports password based authentication."
+      }
+    },
+    "com.azure.postgresql#MaintenanceWindowForPatch": {
+      "type": "structure",
+      "members": {
+        "customWindow": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether custom window is enabled or disabled."
+          }
+        },
+        "startHour": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Start hour to be used for maintenance window."
+          }
+        },
+        "startMinute": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Start minute to be used for maintenance window."
+          }
+        },
+        "dayOfWeek": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Day of the week to be used for maintenance window."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Maintenance window properties of a server."
+      }
+    },
+    "com.azure.postgresql#HighAvailabilityForPatch": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.azure.postgresql#PostgreSqlFlexibleServerHighAvailabilityMode",
+          "traits": {
+            "smithy.api#documentation": "High availability mode for a server."
+          }
+        },
+        "standbyAvailabilityZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Availability zone associated to the standby server created when high availability is set to SameZone or ZoneRedundant."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "High availability properties of a server."
+      }
+    },
+    "com.azure.postgresql#PostgreSqlFlexibleServerHighAvailabilityMode": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ZONEREDUNDANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ZoneRedundant"
+          }
+        },
+        "SAMEZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SameZone"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Mode of high availability supported for this compute."
+      }
+    },
+    "com.azure.postgresql#BackupForPatchInput": {
+      "type": "structure",
+      "members": {
+        "backupRetentionDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Backup retention days for the server."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Backup properties of a server."
+      }
+    },
+    "com.azure.postgresql#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {
+        "userAssignedIdentities": {
+          "target": "com.azure.postgresql#UserAssignedIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "Map of user assigned managed identities."
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the object of the service principal associated to the user assigned managed identity."
+          }
+        },
+        "type": {
+          "target": "com.azure.postgresql#IdentityType",
+          "traits": {
+            "smithy.api#documentation": "Types of identities associated with a server.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identities associated with a server."
+      }
+    },
+    "com.azure.postgresql#UserAssignedIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.postgresql#UserIdentity"
+      },
+      "traits": {
+        "smithy.api#documentation": "Map of user assigned managed identities."
+      }
+    },
+    "com.azure.postgresql#SkuForPatch": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name by which is known a given compute size assigned to a server."
+          }
+        },
+        "tier": {
+          "target": "com.azure.postgresql#SkuTier",
+          "traits": {
+            "smithy.api#documentation": "Tier of the compute assigned to a server."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Compute information of a server."
       }
     },
     "com.azure.postgresql#ServersCreateOrUpdate": {
@@ -9562,16 +10497,203 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.postgresql#ServersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.postgresql#ServerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of a server."
+          }
+        },
+        "sku": {
+          "target": "com.azure.postgresql#Sku",
+          "traits": {
+            "smithy.api#documentation": "Compute tier and size of a server."
+          }
+        },
+        "identity": {
+          "target": "com.azure.postgresql#UserAssignedIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "User assigned managed identities assigned to the server."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresql#ServerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "administratorLogin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted."
+          }
+        },
+        "administratorLoginPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Password assigned to the administrator login. As long as password authentication is enabled, this password can be changed at any time.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "version": {
+          "target": "com.azure.postgresql#PostgresMajorVersion",
+          "traits": {
+            "smithy.api#documentation": "Major version of PostgreSQL database engine."
+          }
+        },
+        "storage": {
+          "target": "com.azure.postgresql#Storage",
+          "traits": {
+            "smithy.api#documentation": "Storage properties of a server."
+          }
+        },
+        "authConfig": {
+          "target": "com.azure.postgresql#AuthConfig",
+          "traits": {
+            "smithy.api#documentation": "Authentication configuration properties of a server."
+          }
+        },
+        "dataEncryption": {
+          "target": "com.azure.postgresql#DataEncryption",
+          "traits": {
+            "smithy.api#documentation": "Data encryption properties of a server."
+          }
+        },
+        "backup": {
+          "target": "com.azure.postgresql#BackupInput",
+          "traits": {
+            "smithy.api#documentation": "Backup properties of a server."
+          }
+        },
+        "network": {
+          "target": "com.azure.postgresql#Network",
+          "traits": {
+            "smithy.api#documentation": "Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer."
+          }
+        },
+        "highAvailability": {
+          "target": "com.azure.postgresql#HighAvailability",
+          "traits": {
+            "smithy.api#documentation": "High availability properties of a server."
+          }
+        },
+        "maintenanceWindow": {
+          "target": "com.azure.postgresql#MaintenanceWindow",
+          "traits": {
+            "smithy.api#documentation": "Maintenance window properties of a server."
+          }
+        },
+        "sourceServerResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica."
+          }
+        },
+        "pointInTimeUTC": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Creation time (in ISO8601 format) of the backup which you want to restore in the new server. It's required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', or 'ReviveDropped'."
+          }
+        },
+        "availabilityZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Availability zone of a server."
+          }
+        },
+        "replicationRole": {
+          "target": "com.azure.postgresql#ReplicationRole",
+          "traits": {
+            "smithy.api#documentation": "Role of the server in a replication set."
+          }
+        },
+        "replica": {
+          "target": "com.azure.postgresql#ReplicaInput",
+          "traits": {
+            "smithy.api#documentation": "Read replica properties of a server. Required only in case that you want to promote a server."
+          }
+        },
+        "createMode": {
+          "target": "com.azure.postgresql#CreateMode",
+          "traits": {
+            "smithy.api#documentation": "Creation mode of a new server."
+          }
+        },
+        "cluster": {
+          "target": "com.azure.postgresql#Cluster",
+          "traits": {
+            "smithy.api#documentation": "Cluster properties of a server."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a server."
+      }
+    },
+    "com.azure.postgresql#BackupInput": {
+      "type": "structure",
+      "members": {
+        "backupRetentionDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Backup retention days for the server."
+          }
+        },
+        "geoRedundantBackup": {
+          "target": "com.azure.postgresql#BackupInputGeoRedundantBackup",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the server is configured to create geographically redundant backups."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Backup properties of a server."
+      }
+    },
+    "com.azure.postgresql#BackupInputGeoRedundantBackup": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates if the server is configured to create geographically redundant backups."
+      }
+    },
+    "com.azure.postgresql#ServersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.postgresql#ServersGet": {
@@ -9962,11 +11084,10 @@
             "smithy.api#documentation": "The name of the location."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "virtualNetworkArmResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Virtual network resource id."
           }
         }
       },
@@ -10070,11 +11191,16 @@
             "smithy.api#documentation": "The name of the location."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },
@@ -10248,11 +11374,16 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },

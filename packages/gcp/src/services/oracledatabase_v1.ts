@@ -144,7 +144,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -195,7 +195,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -206,15 +206,13 @@ export type AutonomousDatabasePropertiesRoleEnum =
   | "STANDBY"
   | "DISABLED_STANDBY"
   | "BACKUP_COPY"
-  | "SNAPSHOT_STANDBY"
-  | (string & {});
+  | "SNAPSHOT_STANDBY";
 export const AutonomousDatabasePropertiesRoleEnum = /*@__PURE__*/ S.String;
 
 export type AutonomousDatabasePropertiesRefreshableModeEnum =
   | "REFRESHABLE_MODE_UNSPECIFIED"
   | "AUTOMATIC"
-  | "MANUAL"
-  | (string & {});
+  | "MANUAL";
 export const AutonomousDatabasePropertiesRefreshableModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -223,8 +221,7 @@ export type AutonomousDatabasePropertiesDbWorkloadEnum =
   | "OLTP"
   | "DW"
   | "AJD"
-  | "APEX"
-  | (string & {});
+  | "APEX";
 export const AutonomousDatabasePropertiesDbWorkloadEnum =
   /*@__PURE__*/ S.String;
 
@@ -232,32 +229,28 @@ export type DatabaseConnectionStringProfileSyntaxFormatEnum =
   | "SYNTAX_FORMAT_UNSPECIFIED"
   | "LONG"
   | "EZCONNECT"
-  | "EZCONNECTPLUS"
-  | (string & {});
+  | "EZCONNECTPLUS";
 export const DatabaseConnectionStringProfileSyntaxFormatEnum =
   /*@__PURE__*/ S.String;
 
 export type DatabaseConnectionStringProfileHostFormatEnum =
   | "HOST_FORMAT_UNSPECIFIED"
   | "FQDN"
-  | "IP"
-  | (string & {});
+  | "IP";
 export const DatabaseConnectionStringProfileHostFormatEnum =
   /*@__PURE__*/ S.String;
 
 export type DatabaseConnectionStringProfileProtocolEnum =
   | "PROTOCOL_UNSPECIFIED"
   | "TCP"
-  | "TCPS"
-  | (string & {});
+  | "TCPS";
 export const DatabaseConnectionStringProfileProtocolEnum =
   /*@__PURE__*/ S.String;
 
 export type DatabaseConnectionStringProfileTlsAuthenticationEnum =
   | "TLS_AUTHENTICATION_UNSPECIFIED"
   | "SERVER"
-  | "MUTUAL"
-  | (string & {});
+  | "MUTUAL";
 export const DatabaseConnectionStringProfileTlsAuthenticationEnum =
   /*@__PURE__*/ S.String;
 
@@ -267,16 +260,14 @@ export type DatabaseConnectionStringProfileConsumerGroupEnum =
   | "MEDIUM"
   | "LOW"
   | "TP"
-  | "TPURGENT"
-  | (string & {});
+  | "TPURGENT";
 export const DatabaseConnectionStringProfileConsumerGroupEnum =
   /*@__PURE__*/ S.String;
 
 export type DatabaseConnectionStringProfileSessionModeEnum =
   | "SESSION_MODE_UNSPECIFIED"
   | "DIRECT"
-  | "INDIRECT"
-  | (string & {});
+  | "INDIRECT";
 export const DatabaseConnectionStringProfileSessionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -320,7 +311,7 @@ export const DatabaseConnectionStringProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseConnectionStringProfile>;
 
 export type DatabaseConnectionStringProfileList =
-  DatabaseConnectionStringProfile[];
+  ReadonlyArray<DatabaseConnectionStringProfile>;
 export const DatabaseConnectionStringProfileList = /*@__PURE__*/ S.Array(
   DatabaseConnectionStringProfile,
 ) as any as S.Schema<DatabaseConnectionStringProfileList>;
@@ -379,16 +370,14 @@ export type AutonomousDatabasePropertiesOperationsInsightsStateEnum =
   | "DISABLING"
   | "NOT_ENABLED"
   | "FAILED_ENABLING"
-  | "FAILED_DISABLING"
-  | (string & {});
+  | "FAILED_DISABLING";
 export const AutonomousDatabasePropertiesOperationsInsightsStateEnum =
   /*@__PURE__*/ S.String;
 
 export type AutonomousDatabasePropertiesRefreshableStateEnum =
   | "REFRESHABLE_STATE_UNSPECIFIED"
   | "REFRESHING"
-  | "NOT_REFRESHING"
-  | (string & {});
+  | "NOT_REFRESHING";
 export const AutonomousDatabasePropertiesRefreshableStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -414,15 +403,13 @@ export type AutonomousDatabasePropertiesStateEnum =
   | "ROLE_CHANGE_IN_PROGRESS"
   | "UPGRADING"
   | "INACCESSIBLE"
-  | "STANDBY"
-  | (string & {});
+  | "STANDBY";
 export const AutonomousDatabasePropertiesStateEnum = /*@__PURE__*/ S.String;
 
 export type EncryptionKeyProviderEnum =
   | "PROVIDER_UNSPECIFIED"
   | "GOOGLE_MANAGED"
-  | "ORACLE_MANAGED"
-  | (string & {});
+  | "ORACLE_MANAGED";
 export const EncryptionKeyProviderEnum = /*@__PURE__*/ S.String;
 
 /** The encryption key used to encrypt the Autonomous Database. */
@@ -455,7 +442,8 @@ export const EncryptionKeyHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "EncryptionKeyHistoryEntry",
 }) as any as S.Schema<EncryptionKeyHistoryEntry>;
 
-export type EncryptionKeyHistoryEntryList = EncryptionKeyHistoryEntry[];
+export type EncryptionKeyHistoryEntryList =
+  ReadonlyArray<EncryptionKeyHistoryEntry>;
 export const EncryptionKeyHistoryEntryList = /*@__PURE__*/ S.Array(
   EncryptionKeyHistoryEntry,
 ) as any as S.Schema<EncryptionKeyHistoryEntryList>;
@@ -464,8 +452,7 @@ export type AutonomousDatabasePropertiesLocalDisasterRecoveryTypeEnum =
   | "LOCAL_DISASTER_RECOVERY_TYPE_UNSPECIFIED"
   | "ADG"
   | "BACKUP_BASED"
-  | "NOT_AVAILABLE"
-  | (string & {});
+  | "NOT_AVAILABLE";
 export const AutonomousDatabasePropertiesLocalDisasterRecoveryTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -491,8 +478,7 @@ export type AutonomousDatabaseStandbySummaryStateEnum =
   | "ROLE_CHANGE_IN_PROGRESS"
   | "UPGRADING"
   | "INACCESSIBLE"
-  | "STANDBY"
-  | (string & {});
+  | "STANDBY";
 export const AutonomousDatabaseStandbySummaryStateEnum = /*@__PURE__*/ S.String;
 
 /** Autonomous Data Guard standby database details. https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseStandbySummary */
@@ -533,7 +519,7 @@ export const CustomerContact = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerContact",
 }) as any as S.Schema<CustomerContact>;
 
-export type CustomerContactList = CustomerContact[];
+export type CustomerContactList = ReadonlyArray<CustomerContact>;
 export const CustomerContactList = /*@__PURE__*/ S.Array(
   CustomerContact,
 ) as any as S.Schema<CustomerContactList>;
@@ -541,16 +527,14 @@ export const CustomerContactList = /*@__PURE__*/ S.Array(
 export type AutonomousDatabasePropertiesMaintenanceScheduleTypeEnum =
   | "MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED"
   | "EARLY"
-  | "REGULAR"
-  | (string & {});
+  | "REGULAR";
 export const AutonomousDatabasePropertiesMaintenanceScheduleTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type AutonomousDatabasePropertiesOpenModeEnum =
   | "OPEN_MODE_UNSPECIFIED"
   | "READ_ONLY"
-  | "READ_WRITE"
-  | (string & {});
+  | "READ_WRITE";
 export const AutonomousDatabasePropertiesOpenModeEnum = /*@__PURE__*/ S.String;
 
 export type AutonomousDatabasePropertiesDataSafeStateEnum =
@@ -559,8 +543,7 @@ export type AutonomousDatabasePropertiesDataSafeStateEnum =
   | "REGISTERED"
   | "DEREGISTERING"
   | "NOT_REGISTERED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const AutonomousDatabasePropertiesDataSafeStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -605,8 +588,7 @@ export type AutonomousDatabasePropertiesDatabaseManagementStateEnum =
   | "DISABLING"
   | "NOT_ENABLED"
   | "FAILED_ENABLING"
-  | "FAILED_DISABLING"
-  | (string & {});
+  | "FAILED_DISABLING";
 export const AutonomousDatabasePropertiesDatabaseManagementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -618,8 +600,7 @@ export type ScheduledOperationDetailsDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const ScheduledOperationDetailsDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -661,7 +642,8 @@ export const ScheduledOperationDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScheduledOperationDetails",
 }) as any as S.Schema<ScheduledOperationDetails>;
 
-export type ScheduledOperationDetailsList = ScheduledOperationDetails[];
+export type ScheduledOperationDetailsList =
+  ReadonlyArray<ScheduledOperationDetails>;
 export const ScheduledOperationDetailsList = /*@__PURE__*/ S.Array(
   ScheduledOperationDetails,
 ) as any as S.Schema<ScheduledOperationDetailsList>;
@@ -669,16 +651,14 @@ export const ScheduledOperationDetailsList = /*@__PURE__*/ S.Array(
 export type AutonomousDatabasePropertiesLicenseTypeEnum =
   | "LICENSE_TYPE_UNSPECIFIED"
   | "LICENSE_INCLUDED"
-  | "BRING_YOUR_OWN_LICENSE"
-  | (string & {});
+  | "BRING_YOUR_OWN_LICENSE";
 export const AutonomousDatabasePropertiesLicenseTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type AutonomousDatabasePropertiesPermissionLevelEnum =
   | "PERMISSION_LEVEL_UNSPECIFIED"
   | "RESTRICTED"
-  | "UNRESTRICTED"
-  | (string & {});
+  | "UNRESTRICTED";
 export const AutonomousDatabasePropertiesPermissionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -701,8 +681,7 @@ export const AutonomousDatabaseApex = /*@__PURE__*/ S.suspend(() =>
 export type AutonomousDatabasePropertiesDbEditionEnum =
   | "DATABASE_EDITION_UNSPECIFIED"
   | "STANDARD_EDITION"
-  | "ENTERPRISE_EDITION"
-  | (string & {});
+  | "ENTERPRISE_EDITION";
 export const AutonomousDatabasePropertiesDbEditionEnum = /*@__PURE__*/ S.String;
 
 /** The properties of an Autonomous Database. */
@@ -930,8 +909,7 @@ export const AutonomousDatabaseProperties = /*@__PURE__*/ S.suspend(() =>
 export type SourceConfigRefreshableModeEnum =
   | "REFRESHABLE_MODE_UNSPECIFIED"
   | "AUTOMATIC"
-  | "MANUAL"
-  | (string & {});
+  | "MANUAL";
 export const SourceConfigRefreshableModeEnum = /*@__PURE__*/ S.String;
 
 export type SourceConfigSourceTypeEnum =
@@ -940,15 +918,13 @@ export type SourceConfigSourceTypeEnum =
   | "CROSS_REGION_DISASTER_RECOVERY"
   | "CLONE_TO_REFRESHABLE"
   | "BACKUP_FROM_ID"
-  | "BACKUP_FROM_TIMESTAMP"
-  | (string & {});
+  | "BACKUP_FROM_TIMESTAMP";
 export const SourceConfigSourceTypeEnum = /*@__PURE__*/ S.String;
 
 export type SourceConfigCloneTypeEnum =
   | "CLONE_TYPE_UNSPECIFIED"
   | "FULL"
-  | "METADATA"
-  | (string & {});
+  | "METADATA";
 export const SourceConfigCloneTypeEnum = /*@__PURE__*/ S.String;
 
 /** The source configuration for the standby Autonomous Database. */
@@ -1081,8 +1057,7 @@ export const CreateProjectsLocationsAutonomousDatabasesRequest =
 export type CloudExadataInfrastructurePropertiesComputeModelEnum =
   | "COMPUTE_MODEL_UNSPECIFIED"
   | "COMPUTE_MODEL_ECPU"
-  | "COMPUTE_MODEL_OCPU"
-  | (string & {});
+  | "COMPUTE_MODEL_OCPU";
 export const CloudExadataInfrastructurePropertiesComputeModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1094,19 +1069,17 @@ export type CloudExadataInfrastructurePropertiesStateEnum =
   | "TERMINATING"
   | "TERMINATED"
   | "FAILED"
-  | "MAINTENANCE_IN_PROGRESS"
-  | (string & {});
+  | "MAINTENANCE_IN_PROGRESS";
 export const CloudExadataInfrastructurePropertiesStateEnum =
   /*@__PURE__*/ S.String;
 
 export type MaintenanceWindowPreferenceEnum =
   | "MAINTENANCE_WINDOW_PREFERENCE_UNSPECIFIED"
   | "CUSTOM_PREFERENCE"
-  | "NO_PREFERENCE"
-  | (string & {});
+  | "NO_PREFERENCE";
 export const MaintenanceWindowPreferenceEnum = /*@__PURE__*/ S.String;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1124,12 +1097,11 @@ export type MaintenanceWindowMonthsItemEnum =
   | "SEPTEMBER"
   | "OCTOBER"
   | "NOVEMBER"
-  | "DECEMBER"
-  | (string & {});
+  | "DECEMBER";
 export const MaintenanceWindowMonthsItemEnum = /*@__PURE__*/ S.String;
 
 export type MaintenanceWindowMonthsItemEnumList =
-  MaintenanceWindowMonthsItemEnum[];
+  ReadonlyArray<MaintenanceWindowMonthsItemEnum>;
 export const MaintenanceWindowMonthsItemEnumList = /*@__PURE__*/ S.Array(
   MaintenanceWindowMonthsItemEnum,
 ) as any as S.Schema<MaintenanceWindowMonthsItemEnumList>;
@@ -1137,8 +1109,7 @@ export const MaintenanceWindowMonthsItemEnumList = /*@__PURE__*/ S.Array(
 export type MaintenanceWindowPatchingModeEnum =
   | "PATCHING_MODE_UNSPECIFIED"
   | "ROLLING"
-  | "NON_ROLLING"
-  | (string & {});
+  | "NON_ROLLING";
 export const MaintenanceWindowPatchingModeEnum = /*@__PURE__*/ S.String;
 
 export type MaintenanceWindowDaysOfWeekItemEnum =
@@ -1149,12 +1120,11 @@ export type MaintenanceWindowDaysOfWeekItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const MaintenanceWindowDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
 export type MaintenanceWindowDaysOfWeekItemEnumList =
-  MaintenanceWindowDaysOfWeekItemEnum[];
+  ReadonlyArray<MaintenanceWindowDaysOfWeekItemEnum>;
 export const MaintenanceWindowDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
   MaintenanceWindowDaysOfWeekItemEnum,
 ) as any as S.Schema<MaintenanceWindowDaysOfWeekItemEnumList>;
@@ -1380,8 +1350,7 @@ export type IdentityConnectorConnectionStateEnum =
   | "CONNECTED"
   | "PARTIALLY_CONNECTED"
   | "DISCONNECTED"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const IdentityConnectorConnectionStateEnum = /*@__PURE__*/ S.String;
 
 /** The identity connector details which will allow OCI to securely access the resources in the customer project. */
@@ -1403,8 +1372,7 @@ export const IdentityConnector = /*@__PURE__*/ S.suspend(() =>
 export type CloudVmClusterPropertiesDiskRedundancyEnum =
   | "DISK_REDUNDANCY_UNSPECIFIED"
   | "HIGH"
-  | "NORMAL"
-  | (string & {});
+  | "NORMAL";
 export const CloudVmClusterPropertiesDiskRedundancyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1430,8 +1398,7 @@ export const DataCollectionOptions = /*@__PURE__*/ S.suspend(() =>
 export type CloudVmClusterPropertiesStorageManagementTypeEnum =
   | "STORAGE_MANAGEMENT_TYPE_UNSPECIFIED"
   | "ASM"
-  | "EXASCALE"
-  | (string & {});
+  | "EXASCALE";
 export const CloudVmClusterPropertiesStorageManagementTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1452,15 +1419,13 @@ export const TimeZone = /*@__PURE__*/ S.suspend(() =>
 export type CloudVmClusterPropertiesLicenseTypeEnum =
   | "LICENSE_TYPE_UNSPECIFIED"
   | "LICENSE_INCLUDED"
-  | "BRING_YOUR_OWN_LICENSE"
-  | (string & {});
+  | "BRING_YOUR_OWN_LICENSE";
 export const CloudVmClusterPropertiesLicenseTypeEnum = /*@__PURE__*/ S.String;
 
 export type CloudVmClusterPropertiesComputeModelEnum =
   | "COMPUTE_MODEL_UNSPECIFIED"
   | "COMPUTE_MODEL_ECPU"
-  | "COMPUTE_MODEL_OCPU"
-  | (string & {});
+  | "COMPUTE_MODEL_OCPU";
 export const CloudVmClusterPropertiesComputeModelEnum = /*@__PURE__*/ S.String;
 
 export type CloudVmClusterPropertiesStateEnum =
@@ -1471,8 +1436,7 @@ export type CloudVmClusterPropertiesStateEnum =
   | "TERMINATING"
   | "TERMINATED"
   | "FAILED"
-  | "MAINTENANCE_IN_PROGRESS"
-  | (string & {});
+  | "MAINTENANCE_IN_PROGRESS";
 export const CloudVmClusterPropertiesStateEnum = /*@__PURE__*/ S.String;
 
 /** Various properties and settings associated with Exadata VM cluster. */
@@ -1677,8 +1641,7 @@ export type DatabaseOpsInsightsStatusEnum =
   | "DISABLING"
   | "NOT_ENABLED"
   | "FAILED_ENABLING"
-  | "FAILED_DISABLING"
-  | (string & {});
+  | "FAILED_DISABLING";
 export const DatabaseOpsInsightsStatusEnum = /*@__PURE__*/ S.String;
 
 export type BackupDestinationDetailsTypeEnum =
@@ -1687,8 +1650,7 @@ export type BackupDestinationDetailsTypeEnum =
   | "RECOVERY_APPLIANCE"
   | "OBJECT_STORE"
   | "LOCAL"
-  | "DBRS"
-  | (string & {});
+  | "DBRS";
 export const BackupDestinationDetailsTypeEnum = /*@__PURE__*/ S.String;
 
 /** The details of the database backup destination. */
@@ -1704,7 +1666,8 @@ export const BackupDestinationDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupDestinationDetails",
 }) as any as S.Schema<BackupDestinationDetails>;
 
-export type BackupDestinationDetailsList = BackupDestinationDetails[];
+export type BackupDestinationDetailsList =
+  ReadonlyArray<BackupDestinationDetails>;
 export const BackupDestinationDetailsList = /*@__PURE__*/ S.Array(
   BackupDestinationDetails,
 ) as any as S.Schema<BackupDestinationDetailsList>;
@@ -1717,8 +1680,7 @@ export type DbBackupConfigAutoFullBackupDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const DbBackupConfigAutoFullBackupDayEnum = /*@__PURE__*/ S.String;
 
 export type DbBackupConfigAutoFullBackupWindowEnum =
@@ -1734,8 +1696,7 @@ export type DbBackupConfigAutoFullBackupWindowEnum =
   | "SLOT_NINE"
   | "SLOT_TEN"
   | "SLOT_ELEVEN"
-  | "SLOT_TWELVE"
-  | (string & {});
+  | "SLOT_TWELVE";
 export const DbBackupConfigAutoFullBackupWindowEnum = /*@__PURE__*/ S.String;
 
 export type DbBackupConfigAutoIncrementalBackupWindowEnum =
@@ -1751,16 +1712,14 @@ export type DbBackupConfigAutoIncrementalBackupWindowEnum =
   | "SLOT_NINE"
   | "SLOT_TEN"
   | "SLOT_ELEVEN"
-  | "SLOT_TWELVE"
-  | (string & {});
+  | "SLOT_TWELVE";
 export const DbBackupConfigAutoIncrementalBackupWindowEnum =
   /*@__PURE__*/ S.String;
 
 export type DbBackupConfigBackupDeletionPolicyEnum =
   | "BACKUP_DELETION_POLICY_UNSPECIFIED"
   | "DELETE_IMMEDIATELY"
-  | "DELETE_AFTER_RETENTION_PERIOD"
-  | (string & {});
+  | "DELETE_AFTER_RETENTION_PERIOD";
 export const DbBackupConfigBackupDeletionPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Backup Options for the Database. */
@@ -1803,16 +1762,14 @@ export type DatabaseManagementConfigManagementStateEnum =
   | "UPDATING"
   | "FAILED_ENABLING"
   | "FAILED_DISABLING"
-  | "FAILED_UPDATING"
-  | (string & {});
+  | "FAILED_UPDATING";
 export const DatabaseManagementConfigManagementStateEnum =
   /*@__PURE__*/ S.String;
 
 export type DatabaseManagementConfigManagementTypeEnum =
   | "MANAGEMENT_TYPE_UNSPECIFIED"
   | "BASIC"
-  | "ADVANCED"
-  | (string & {});
+  | "ADVANCED";
 export const DatabaseManagementConfigManagementTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1843,8 +1800,7 @@ export type DatabasePropertiesStateEnum =
   | "TERMINATING"
   | "TERMINATED"
   | "RESTORE_FAILED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const DatabasePropertiesStateEnum = /*@__PURE__*/ S.String;
 
 /** The properties of a Database. */
@@ -1954,8 +1910,7 @@ export const DbHome = /*@__PURE__*/ S.suspend(() =>
 export type DbSystemPropertiesComputeModelEnum =
   | "COMPUTE_MODEL_UNSPECIFIED"
   | "ECPU"
-  | "OCPU"
-  | (string & {});
+  | "OCPU";
 export const DbSystemPropertiesComputeModelEnum = /*@__PURE__*/ S.String;
 
 /** Data collection options for DbSystem. */
@@ -1985,30 +1940,26 @@ export type DbSystemPropertiesLifecycleStateEnum =
   | "MIGRATED"
   | "MAINTENANCE_IN_PROGRESS"
   | "NEEDS_ATTENTION"
-  | "UPGRADING"
-  | (string & {});
+  | "UPGRADING";
 export const DbSystemPropertiesLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 export type DbSystemPropertiesDatabaseEditionEnum =
   | "DB_SYSTEM_DATABASE_EDITION_UNSPECIFIED"
   | "STANDARD_EDITION"
   | "ENTERPRISE_EDITION"
-  | "ENTERPRISE_EDITION_HIGH_PERFORMANCE"
-  | (string & {});
+  | "ENTERPRISE_EDITION_HIGH_PERFORMANCE";
 export const DbSystemPropertiesDatabaseEditionEnum = /*@__PURE__*/ S.String;
 
 export type DbSystemPropertiesLicenseModelEnum =
   | "LICENSE_MODEL_UNSPECIFIED"
   | "LICENSE_INCLUDED"
-  | "BRING_YOUR_OWN_LICENSE"
-  | (string & {});
+  | "BRING_YOUR_OWN_LICENSE";
 export const DbSystemPropertiesLicenseModelEnum = /*@__PURE__*/ S.String;
 
 export type DbSystemOptionsStorageManagementEnum =
   | "STORAGE_MANAGEMENT_UNSPECIFIED"
   | "ASM"
-  | "LVM"
-  | (string & {});
+  | "LVM";
 export const DbSystemOptionsStorageManagementEnum = /*@__PURE__*/ S.String;
 
 /** Details of the DbSystem Options. */
@@ -2179,8 +2130,7 @@ export const ExadbVmClusterStorageDetails = /*@__PURE__*/ S.suspend(() =>
 export type ExadbVmClusterPropertiesLicenseModelEnum =
   | "LICENSE_MODEL_UNSPECIFIED"
   | "LICENSE_INCLUDED"
-  | "BRING_YOUR_OWN_LICENSE"
-  | (string & {});
+  | "BRING_YOUR_OWN_LICENSE";
 export const ExadbVmClusterPropertiesLicenseModelEnum = /*@__PURE__*/ S.String;
 
 /** Data collection options for diagnostics. https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DataCollectionOptions */
@@ -2210,16 +2160,14 @@ export type ExadbVmClusterPropertiesLifecycleStateEnum =
   | "TERMINATING"
   | "TERMINATED"
   | "FAILED"
-  | "MAINTENANCE_IN_PROGRESS"
-  | (string & {});
+  | "MAINTENANCE_IN_PROGRESS";
 export const ExadbVmClusterPropertiesLifecycleStateEnum =
   /*@__PURE__*/ S.String;
 
 export type ExadbVmClusterPropertiesShapeAttributeEnum =
   | "SHAPE_ATTRIBUTE_UNSPECIFIED"
   | "SMART_STORAGE"
-  | "BLOCK_STORAGE"
-  | (string & {});
+  | "BLOCK_STORAGE";
 export const ExadbVmClusterPropertiesShapeAttributeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2362,13 +2310,12 @@ export const CreateProjectsLocationsExadbVmClustersRequest =
 export type ExascaleDbStorageVaultPropertiesAvailableShapeAttributesItemEnum =
   | "SHAPE_ATTRIBUTE_UNSPECIFIED"
   | "SMART_STORAGE"
-  | "BLOCK_STORAGE"
-  | (string & {});
+  | "BLOCK_STORAGE";
 export const ExascaleDbStorageVaultPropertiesAvailableShapeAttributesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ExascaleDbStorageVaultPropertiesAvailableShapeAttributesItemEnumList =
-  ExascaleDbStorageVaultPropertiesAvailableShapeAttributesItemEnum[];
+  ReadonlyArray<ExascaleDbStorageVaultPropertiesAvailableShapeAttributesItemEnum>;
 export const ExascaleDbStorageVaultPropertiesAvailableShapeAttributesItemEnumList =
   /*@__PURE__*/ S.Array(
     ExascaleDbStorageVaultPropertiesAvailableShapeAttributesItemEnum,
@@ -2393,13 +2340,12 @@ export const ExascaleDbStorageDetails = /*@__PURE__*/ S.suspend(() =>
 export type ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnum =
   | "SHAPE_ATTRIBUTE_UNSPECIFIED"
   | "SMART_STORAGE"
-  | "BLOCK_STORAGE"
-  | (string & {});
+  | "BLOCK_STORAGE";
 export const ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnumList =
-  ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnum[];
+  ReadonlyArray<ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnum>;
 export const ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnumList =
   /*@__PURE__*/ S.Array(
     ExascaleDbStorageVaultPropertiesAttachedShapeAttributesItemEnum,
@@ -2412,8 +2358,7 @@ export type ExascaleDbStorageVaultPropertiesStateEnum =
   | "UPDATING"
   | "TERMINATING"
   | "TERMINATED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ExascaleDbStorageVaultPropertiesStateEnum = /*@__PURE__*/ S.String;
 
 /** The properties of the ExascaleDbStorageVault. next ID: 12 */
@@ -2531,8 +2476,7 @@ export type GoldengateConnectionAssignmentPropertiesStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "UPDATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const GoldengateConnectionAssignmentPropertiesStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2652,11 +2596,7 @@ export const GoldengateHdfsConnectionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoldengateHdfsConnectionProperties>;
 
 export type GoldengateKafkaSchemaRegistryConnectionPropertiesAuthenticationTypeEnum =
-    | "AUTHENTICATION_TYPE_UNSPECIFIED"
-    | "NONE"
-    | "BASIC"
-    | "MUTUAL"
-    | (string & {});
+  "AUTHENTICATION_TYPE_UNSPECIFIED" | "NONE" | "BASIC" | "MUTUAL";
 export const GoldengateKafkaSchemaRegistryConnectionPropertiesAuthenticationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2756,8 +2696,7 @@ export const GoldengateOracleAIDataPlatformConnectionProperties =
 export type GoldengateDb2ConnectionPropertiesSecurityProtocolEnum =
   | "DB2_SECURITY_PROTOCOL_UNSPECIFIED"
   | "PLAIN"
-  | "TLS"
-  | (string & {});
+  | "TLS";
 export const GoldengateDb2ConnectionPropertiesSecurityProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -2775,7 +2714,7 @@ export const NameValuePair = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NameValuePair" }) as any as S.Schema<NameValuePair>;
 
-export type NameValuePairList = NameValuePair[];
+export type NameValuePairList = ReadonlyArray<NameValuePair>;
 export const NameValuePairList = /*@__PURE__*/ S.Array(
   NameValuePair,
 ) as any as S.Schema<NameValuePairList>;
@@ -2863,8 +2802,7 @@ export const GoldengateGoldengateConnectionProperties = /*@__PURE__*/ S.suspend(
 export type GoldengateDatabricksConnectionPropertiesAuthenticationTypeEnum =
   | "DATABRICKS_AUTHENTICATION_TYPE_UNSPECIFIED"
   | "PERSONAL_ACCESS_TOKEN"
-  | "OAUTH_M2M"
-  | (string & {});
+  | "OAUTH_M2M";
 export const GoldengateDatabricksConnectionPropertiesAuthenticationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2909,8 +2847,7 @@ export type GoldengateMysqlConnectionPropertiesSecurityProtocolEnum =
   | "MYSQL_SECURITY_PROTOCOL_UNSPECIFIED"
   | "PLAIN"
   | "TLS"
-  | "MTLS"
-  | (string & {});
+  | "MTLS";
 export const GoldengateMysqlConnectionPropertiesSecurityProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -2920,8 +2857,7 @@ export type GoldengateMysqlConnectionPropertiesSslModeEnum =
   | "PREFERRED"
   | "REQUIRED"
   | "VERIFY_CA"
-  | "VERIFY_IDENTITY"
-  | (string & {});
+  | "VERIFY_IDENTITY";
 export const GoldengateMysqlConnectionPropertiesSslModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3021,8 +2957,7 @@ export type GoldengateAzureDataLakeStorageConnectionPropertiesAuthenticationType
     | "AUTHENTICATION_TYPE_UNSPECIFIED"
     | "SHARED_KEY"
     | "SHARED_ACCESS_SIGNATURE"
-    | "AZURE_ACTIVE_DIRECTORY"
-    | (string & {});
+    | "AZURE_ACTIVE_DIRECTORY";
 export const GoldengateAzureDataLakeStorageConnectionPropertiesAuthenticationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3096,10 +3031,7 @@ export const GoldengateAmazonKinesisConnectionProperties =
   }) as any as S.Schema<GoldengateAmazonKinesisConnectionProperties>;
 
 export type GoldengateMicrosoftSqlserverConnectionPropertiesSecurityProtocolEnum =
-    | "MICROSOFT_SQLSERVER_SECURITY_PROTOCOL_UNSPECIFIED"
-    | "PLAIN"
-    | "TLS"
-    | (string & {});
+  "MICROSOFT_SQLSERVER_SECURITY_PROTOCOL_UNSPECIFIED" | "PLAIN" | "TLS";
 export const GoldengateMicrosoftSqlserverConnectionPropertiesSecurityProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -3153,8 +3085,7 @@ export type GoldengateMongodbConnectionPropertiesSecurityProtocolEnum =
   | "MONGODB_SECURITY_PROTOCOL_UNSPECIFIED"
   | "PLAIN"
   | "TLS"
-  | "MTLS"
-  | (string & {});
+  | "MTLS";
 export const GoldengateMongodbConnectionPropertiesSecurityProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -3231,16 +3162,12 @@ export const GoldengateMicrosoftFabricConnectionProperties =
   }) as any as S.Schema<GoldengateMicrosoftFabricConnectionProperties>;
 
 export type GoldengateJavaMessageServiceConnectionPropertiesSecurityProtocolEnum =
-    | "JMS_SECURITY_PROTOCOL_UNSPECIFIED"
-    | "PLAIN"
-    | "TLS"
-    | "MTLS"
-    | (string & {});
+  "JMS_SECURITY_PROTOCOL_UNSPECIFIED" | "PLAIN" | "TLS" | "MTLS";
 export const GoldengateJavaMessageServiceConnectionPropertiesSecurityProtocolEnum =
   /*@__PURE__*/ S.String;
 
 export type GoldengateJavaMessageServiceConnectionPropertiesAuthenticationTypeEnum =
-  "JMS_AUTHENTICATION_TYPE_UNSPECIFIED" | "NONE" | "BASIC" | (string & {});
+  "JMS_AUTHENTICATION_TYPE_UNSPECIFIED" | "NONE" | "BASIC";
 export const GoldengateJavaMessageServiceConnectionPropertiesAuthenticationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3328,16 +3255,14 @@ export const GoldengateJavaMessageServiceConnectionProperties =
 export type GoldengateElasticsearchConnectionPropertiesSecurityProtocolEnum =
   | "ELASTICSEARCH_SECURITY_PROTOCOL_UNSPECIFIED"
   | "PLAIN"
-  | "TLS"
-  | (string & {});
+  | "TLS";
 export const GoldengateElasticsearchConnectionPropertiesSecurityProtocolEnum =
   /*@__PURE__*/ S.String;
 
 export type GoldengateElasticsearchConnectionPropertiesAuthenticationTypeEnum =
   | "ELASTICSEARCH_AUTHENTICATION_TYPE_UNSPECIFIED"
   | "NONE"
-  | "BASIC"
-  | (string & {});
+  | "BASIC";
 export const GoldengateElasticsearchConnectionPropertiesAuthenticationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3383,16 +3308,14 @@ export const GoldengateElasticsearchConnectionProperties =
 export type GoldengateOracleConnectionPropertiesSessionModeEnum =
   | "SESSION_MODE_UNSPECIFIED"
   | "DIRECT"
-  | "REDIRECT"
-  | (string & {});
+  | "REDIRECT";
 export const GoldengateOracleConnectionPropertiesSessionModeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoldengateOracleConnectionPropertiesAuthenticationModeEnum =
   | "ORACLE_AUTHENTICATION_MODE_UNSPECIFIED"
   | "TLS"
-  | "MTLS"
-  | (string & {});
+  | "MTLS";
 export const GoldengateOracleConnectionPropertiesAuthenticationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3462,8 +3385,7 @@ export type GoldengateConnectionPropertiesLifecycleStateEnum =
   | "UPDATING"
   | "DELETING"
   | "DELETED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const GoldengateConnectionPropertiesLifecycleStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3497,8 +3419,7 @@ export type GoldengateConnectionPropertiesConnectionTypeEnum =
   | "DATABRICKS"
   | "GOOGLE_PUBSUB"
   | "MICROSOFT_FABRIC"
-  | "ICEBERG"
-  | (string & {});
+  | "ICEBERG";
 export const GoldengateConnectionPropertiesConnectionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3604,8 +3525,7 @@ export type IcebergCatalogCatalogTypeEnum =
   | "HADOOP"
   | "NESSIE"
   | "POLARIS"
-  | "REST"
-  | (string & {});
+  | "REST";
 export const IcebergCatalogCatalogTypeEnum = /*@__PURE__*/ S.String;
 
 /** The Iceberg catalog details. */
@@ -3634,8 +3554,7 @@ export const IcebergCatalog = /*@__PURE__*/ S.suspend(() =>
 export type AmazonS3IcebergStorageSchemeTypeEnum =
   | "SCHEME_TYPE_UNSPECIFIED"
   | "S3"
-  | "S3A"
-  | (string & {});
+  | "S3A";
 export const AmazonS3IcebergStorageSchemeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The Amazon S3 Iceberg storage. */
@@ -3711,8 +3630,7 @@ export type IcebergStorageStorageTypeEnum =
   | "STORAGE_TYPE_UNSPECIFIED"
   | "AMAZON_S3"
   | "GOOGLE_CLOUD_STORAGE"
-  | "AZURE_DATA_LAKE_STORAGE"
-  | (string & {});
+  | "AZURE_DATA_LAKE_STORAGE";
 export const IcebergStorageStorageTypeEnum = /*@__PURE__*/ S.String;
 
 /** The Iceberg storage details. */
@@ -3779,8 +3697,7 @@ export const GoldengateGenericConnectionProperties = /*@__PURE__*/ S.suspend(
 export type GoldengateRedisConnectionPropertiesAuthenticationTypeEnum =
   | "REDIS_AUTHENTICATION_TYPE_UNSPECIFIED"
   | "NONE"
-  | "BASIC"
-  | (string & {});
+  | "BASIC";
 export const GoldengateRedisConnectionPropertiesAuthenticationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3788,8 +3705,7 @@ export type GoldengateRedisConnectionPropertiesSecurityProtocolEnum =
   | "REDIS_SECURITY_PROTOCOL_UNSPECIFIED"
   | "PLAIN"
   | "TLS"
-  | "MTLS"
-  | (string & {});
+  | "MTLS";
 export const GoldengateRedisConnectionPropertiesSecurityProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -3871,8 +3787,7 @@ export type GoldengateKafkaConnectionPropertiesSecurityProtocolEnum =
   | "SSL"
   | "SASL_SSL"
   | "PLAINTEXT"
-  | "SASL_PLAINTEXT"
-  | (string & {});
+  | "SASL_PLAINTEXT";
 export const GoldengateKafkaConnectionPropertiesSecurityProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -3895,7 +3810,7 @@ export const KafkaBootstrapServer = /*@__PURE__*/ S.suspend(() =>
   identifier: "KafkaBootstrapServer",
 }) as any as S.Schema<KafkaBootstrapServer>;
 
-export type KafkaBootstrapServerList = KafkaBootstrapServer[];
+export type KafkaBootstrapServerList = ReadonlyArray<KafkaBootstrapServer>;
 export const KafkaBootstrapServerList = /*@__PURE__*/ S.Array(
   KafkaBootstrapServer,
 ) as any as S.Schema<KafkaBootstrapServerList>;
@@ -3974,8 +3889,7 @@ export type GoldengatePostgresqlConnectionPropertiesSslModeEnum =
   | "PREFER"
   | "REQUIRE"
   | "VERIFY_CA"
-  | "VERIFY_FULL"
-  | (string & {});
+  | "VERIFY_FULL";
 export const GoldengatePostgresqlConnectionPropertiesSslModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3983,8 +3897,7 @@ export type GoldengatePostgresqlConnectionPropertiesSecurityProtocolEnum =
   | "POSTGRESQL_SECURITY_PROTOCOL_UNSPECIFIED"
   | "PLAIN"
   | "TLS"
-  | "MTLS"
-  | (string & {});
+  | "MTLS";
 export const GoldengatePostgresqlConnectionPropertiesSecurityProtocolEnum =
   /*@__PURE__*/ S.String;
 
@@ -4049,8 +3962,7 @@ export const GoldengatePostgresqlConnectionProperties = /*@__PURE__*/ S.suspend(
 export type GoldengateSnowflakeConnectionPropertiesAuthenticationTypeEnum =
   | "AUTHENTICATION_TYPE_UNSPECIFIED"
   | "BASIC"
-  | "KEY_PAIR"
-  | (string & {});
+  | "KEY_PAIR";
 export const GoldengateSnowflakeConnectionPropertiesAuthenticationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4181,8 +4093,7 @@ export const GoldengateAmazonRedshiftConnectionProperties =
 export type GoldengateConnectionPropertiesRoutingMethodEnum =
   | "GOLDENGATE_CONNECTION_ROUTING_METHOD_UNSPECIFIED"
   | "SHARED_DEPLOYMENT_ENDPOINT"
-  | "DEDICATED_ENDPOINT"
-  | (string & {});
+  | "DEDICATED_ENDPOINT";
 export const GoldengateConnectionPropertiesRoutingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -4460,8 +4371,7 @@ export type GoldengateMaintenanceWindowDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const GoldengateMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** The maintenance window of the GoldengateDeployment. */
@@ -4483,8 +4393,7 @@ export const GoldengateMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 export type GoldengateDeploymentPropertiesCategoryEnum =
   | "GOLDENGATE_DEPLOYMENT_CATEGORY_UNSPECIFIED"
   | "DATA_REPLICATION"
-  | "DATA_TRANSFORMS"
-  | (string & {});
+  | "DATA_TRANSFORMS";
 export const GoldengateDeploymentPropertiesCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -4492,8 +4401,7 @@ export type DeploymentDiagnosticDataDiagnosticStateEnum =
   | "DIAGNOSTIC_STATE_UNSPECIFIED"
   | "IN_PROGRESS"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const DeploymentDiagnosticDataDiagnosticStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4527,8 +4435,7 @@ export const DeploymentDiagnosticData = /*@__PURE__*/ S.suspend(() =>
 
 export type GoldengateDeploymentPropertiesNextMaintenanceActionTypeEnum =
   | "NEXT_MAINTENANCE_ACTION_TYPE_UNSPECIFIED"
-  | "UPGRADE"
-  | (string & {});
+  | "UPGRADE";
 export const GoldengateDeploymentPropertiesNextMaintenanceActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4536,8 +4443,7 @@ export type GoldengateBackupScheduleFrequencyBackupScheduledEnum =
   | "FREQUENCY_BACKUP_SCHEDULED_UNSPECIFIED"
   | "DAILY"
   | "WEEKLY"
-  | "MONTHLY"
-  | (string & {});
+  | "MONTHLY";
 export const GoldengateBackupScheduleFrequencyBackupScheduledEnum =
   /*@__PURE__*/ S.String;
 
@@ -4585,24 +4491,21 @@ export type GoldengateDeploymentPropertiesLifecycleStateEnum =
   | "CANCELLING"
   | "CANCELLED"
   | "SUCCEEDED"
-  | "WAITING"
-  | (string & {});
+  | "WAITING";
 export const GoldengateDeploymentPropertiesLifecycleStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoldengateDeploymentPropertiesDeploymentRoleEnum =
   | "GOLDENGATE_DEPLOYMENT_ROLE_TYPE_UNSPECIFIED"
   | "PRIMARY"
-  | "STANDBY"
-  | (string & {});
+  | "STANDBY";
 export const GoldengateDeploymentPropertiesDeploymentRoleEnum =
   /*@__PURE__*/ S.String;
 
 export type GoldengateOggDeploymentCredentialStoreEnum =
   | "CREDENTIAL_STORE_UNSPECIFIED"
   | "GOLDENGATE"
-  | "IAM"
-  | (string & {});
+  | "IAM";
 export const GoldengateOggDeploymentCredentialStoreEnum =
   /*@__PURE__*/ S.String;
 
@@ -4671,8 +4574,7 @@ export const GoldengateOggDeployment = /*@__PURE__*/ S.suspend(() =>
 export type GoldengateDeploymentPropertiesLicenseModelEnum =
   | "LICENSE_MODEL_UNSPECIFIED"
   | "LICENSE_INCLUDED"
-  | "BRING_YOUR_OWN_LICENSE"
-  | (string & {});
+  | "BRING_YOUR_OWN_LICENSE";
 export const GoldengateDeploymentPropertiesLicenseModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -4687,7 +4589,7 @@ export const IngressIp = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IngressIp" }) as any as S.Schema<IngressIp>;
 
-export type IngressIpList = IngressIp[];
+export type IngressIpList = ReadonlyArray<IngressIp>;
 export const IngressIpList = /*@__PURE__*/ S.Array(
   IngressIp,
 ) as any as S.Schema<IngressIpList>;
@@ -4708,7 +4610,7 @@ export const GoldengatePlacement = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoldengatePlacement",
 }) as any as S.Schema<GoldengatePlacement>;
 
-export type GoldengatePlacementList = GoldengatePlacement[];
+export type GoldengatePlacementList = ReadonlyArray<GoldengatePlacement>;
 export const GoldengatePlacementList = /*@__PURE__*/ S.Array(
   GoldengatePlacement,
 ) as any as S.Schema<GoldengatePlacementList>;
@@ -4722,16 +4624,14 @@ export type GoldengateDeploymentPropertiesLifecycleSubStateEnum =
   | "UPGRADING"
   | "RESTORING"
   | "BACKING_UP"
-  | "ROLLING_BACK"
-  | (string & {});
+  | "ROLLING_BACK";
 export const GoldengateDeploymentPropertiesLifecycleSubStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoldengateDeploymentLockTypeEnum =
   | "LOCK_TYPE_UNSPECIFIED"
   | "FULL"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const GoldengateDeploymentLockTypeEnum = /*@__PURE__*/ S.String;
 
 /** The lock of the GoldengateDeployment. */
@@ -4759,7 +4659,8 @@ export const GoldengateDeploymentLock = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoldengateDeploymentLock",
 }) as any as S.Schema<GoldengateDeploymentLock>;
 
-export type GoldengateDeploymentLockList = GoldengateDeploymentLock[];
+export type GoldengateDeploymentLockList =
+  ReadonlyArray<GoldengateDeploymentLock>;
 export const GoldengateDeploymentLockList = /*@__PURE__*/ S.Array(
   GoldengateDeploymentLock,
 ) as any as S.Schema<GoldengateDeploymentLockList>;
@@ -4981,8 +4882,7 @@ export type OdbNetworkStateEnum =
   | "PROVISIONING"
   | "AVAILABLE"
   | "TERMINATING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const OdbNetworkStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents OdbNetwork resource. */
@@ -5045,8 +4945,7 @@ export const CreateProjectsLocationsOdbNetworksRequest =
 export type OdbSubnetPurposeEnum =
   | "PURPOSE_UNSPECIFIED"
   | "CLIENT_SUBNET"
-  | "BACKUP_SUBNET"
-  | (string & {});
+  | "BACKUP_SUBNET";
 export const OdbSubnetPurposeEnum = /*@__PURE__*/ S.String;
 
 export type OdbSubnetStateEnum =
@@ -5054,8 +4953,7 @@ export type OdbSubnetStateEnum =
   | "PROVISIONING"
   | "AVAILABLE"
   | "TERMINATING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const OdbSubnetStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents OdbSubnet resource. */
@@ -5417,8 +5315,7 @@ export const FailoverProjectsLocationsAutonomousDatabasesRequest =
 export type GenerateAutonomousDatabaseWalletRequestTypeEnum =
   | "GENERATE_TYPE_UNSPECIFIED"
   | "ALL"
-  | "SINGLE"
-  | (string & {});
+  | "SINGLE";
 export const GenerateAutonomousDatabaseWalletRequestTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5830,8 +5727,7 @@ export type PluggableDatabaseNodeLevelDetailsOpenModeEnum =
   | "READ_ONLY"
   | "READ_WRITE"
   | "MOUNTED"
-  | "MIGRATE"
-  | (string & {});
+  | "MIGRATE";
 export const PluggableDatabaseNodeLevelDetailsOpenModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5855,7 +5751,7 @@ export const PluggableDatabaseNodeLevelDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PluggableDatabaseNodeLevelDetails>;
 
 export type PluggableDatabaseNodeLevelDetailsList =
-  PluggableDatabaseNodeLevelDetails[];
+  ReadonlyArray<PluggableDatabaseNodeLevelDetails>;
 export const PluggableDatabaseNodeLevelDetailsList = /*@__PURE__*/ S.Array(
   PluggableDatabaseNodeLevelDetails,
 ) as any as S.Schema<PluggableDatabaseNodeLevelDetailsList>;
@@ -5867,8 +5763,7 @@ export type PluggableDatabasePropertiesOperationsInsightsStateEnum =
   | "DISABLING"
   | "NOT_ENABLED"
   | "FAILED_ENABLING"
-  | "FAILED_DISABLING"
-  | (string & {});
+  | "FAILED_DISABLING";
 export const PluggableDatabasePropertiesOperationsInsightsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5886,8 +5781,7 @@ export type PluggableDatabasePropertiesLifecycleStateEnum =
   | "RESTORE_IN_PROGRESS"
   | "RESTORE_FAILED"
   | "BACKUP_IN_PROGRESS"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const PluggableDatabasePropertiesLifecycleStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6001,7 +5895,7 @@ export const AutonomousDatabaseRefreshableClone = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutonomousDatabaseRefreshableClone>;
 
 export type AutonomousDatabaseRefreshableCloneList =
-  AutonomousDatabaseRefreshableClone[];
+  ReadonlyArray<AutonomousDatabaseRefreshableClone>;
 export const AutonomousDatabaseRefreshableCloneList = /*@__PURE__*/ S.Array(
   AutonomousDatabaseRefreshableClone,
 ) as any as S.Schema<AutonomousDatabaseRefreshableCloneList>;
@@ -6051,7 +5945,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -6107,8 +6001,7 @@ export type AutonomousDatabaseBackupPropertiesLifecycleStateEnum =
   | "DELETING"
   | "DELETED"
   | "FAILED"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const AutonomousDatabaseBackupPropertiesLifecycleStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6116,8 +6009,7 @@ export type AutonomousDatabaseBackupPropertiesTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "INCREMENTAL"
   | "FULL"
-  | "LONG_TERM"
-  | (string & {});
+  | "LONG_TERM";
 export const AutonomousDatabaseBackupPropertiesTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6218,7 +6110,8 @@ export const AutonomousDatabaseBackup = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutonomousDatabaseBackup",
 }) as any as S.Schema<AutonomousDatabaseBackup>;
 
-export type AutonomousDatabaseBackupList = AutonomousDatabaseBackup[];
+export type AutonomousDatabaseBackupList =
+  ReadonlyArray<AutonomousDatabaseBackup>;
 export const AutonomousDatabaseBackupList = /*@__PURE__*/ S.Array(
   AutonomousDatabaseBackup,
 ) as any as S.Schema<AutonomousDatabaseBackupList>;
@@ -6271,8 +6164,7 @@ export const ListProjectsLocationsAutonomousDatabaseCharacterSetsRequest =
 export type AutonomousDatabaseCharacterSetCharacterSetTypeEnum =
   | "CHARACTER_SET_TYPE_UNSPECIFIED"
   | "DATABASE"
-  | "NATIONAL"
-  | (string & {});
+  | "NATIONAL";
 export const AutonomousDatabaseCharacterSetCharacterSetTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6298,7 +6190,7 @@ export const AutonomousDatabaseCharacterSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutonomousDatabaseCharacterSet>;
 
 export type AutonomousDatabaseCharacterSetList =
-  AutonomousDatabaseCharacterSet[];
+  ReadonlyArray<AutonomousDatabaseCharacterSet>;
 export const AutonomousDatabaseCharacterSetList = /*@__PURE__*/ S.Array(
   AutonomousDatabaseCharacterSet,
 ) as any as S.Schema<AutonomousDatabaseCharacterSetList>;
@@ -6353,7 +6245,7 @@ export const ListProjectsLocationsAutonomousDatabasesRequest =
     identifier: "ListProjectsLocationsAutonomousDatabasesRequest",
   }) as any as S.Schema<ListProjectsLocationsAutonomousDatabasesRequest>;
 
-export type AutonomousDatabaseList = AutonomousDatabase[];
+export type AutonomousDatabaseList = ReadonlyArray<AutonomousDatabase>;
 export const AutonomousDatabaseList = /*@__PURE__*/ S.Array(
   AutonomousDatabase,
 ) as any as S.Schema<AutonomousDatabaseList>;
@@ -6407,8 +6299,7 @@ export type AutonomousDbVersionDbWorkloadEnum =
   | "OLTP"
   | "DW"
   | "AJD"
-  | "APEX"
-  | (string & {});
+  | "APEX";
 export const AutonomousDbVersionDbWorkloadEnum = /*@__PURE__*/ S.String;
 
 /** Details of the Autonomous Database version. https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/AutonomousDbVersionSummary/ */
@@ -6433,7 +6324,7 @@ export const AutonomousDbVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutonomousDbVersion",
 }) as any as S.Schema<AutonomousDbVersion>;
 
-export type AutonomousDbVersionList = AutonomousDbVersion[];
+export type AutonomousDbVersionList = ReadonlyArray<AutonomousDbVersion>;
 export const AutonomousDbVersionList = /*@__PURE__*/ S.Array(
   AutonomousDbVersion,
 ) as any as S.Schema<AutonomousDbVersionList>;
@@ -6485,7 +6376,8 @@ export const ListProjectsLocationsCloudExadataInfrastructuresRequest =
     identifier: "ListProjectsLocationsCloudExadataInfrastructuresRequest",
   }) as any as S.Schema<ListProjectsLocationsCloudExadataInfrastructuresRequest>;
 
-export type CloudExadataInfrastructureList = CloudExadataInfrastructure[];
+export type CloudExadataInfrastructureList =
+  ReadonlyArray<CloudExadataInfrastructure>;
 export const CloudExadataInfrastructureList = /*@__PURE__*/ S.Array(
   CloudExadataInfrastructure,
 ) as any as S.Schema<CloudExadataInfrastructureList>;
@@ -6542,8 +6434,7 @@ export type DbServerPropertiesStateEnum =
   | "AVAILABLE"
   | "UNAVAILABLE"
   | "DELETING"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const DbServerPropertiesStateEnum = /*@__PURE__*/ S.String;
 
 /** Various properties and settings associated with Exadata database server. */
@@ -6603,7 +6494,7 @@ export const DbServer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DbServer" }) as any as S.Schema<DbServer>;
 
-export type DbServerList = DbServer[];
+export type DbServerList = ReadonlyArray<DbServer>;
 export const DbServerList = /*@__PURE__*/ S.Array(
   DbServer,
 ) as any as S.Schema<DbServerList>;
@@ -6652,7 +6543,7 @@ export const ListProjectsLocationsCloudVmClustersRequest =
     identifier: "ListProjectsLocationsCloudVmClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsCloudVmClustersRequest>;
 
-export type CloudVmClusterList = CloudVmCluster[];
+export type CloudVmClusterList = ReadonlyArray<CloudVmCluster>;
 export const CloudVmClusterList = /*@__PURE__*/ S.Array(
   CloudVmCluster,
 ) as any as S.Schema<CloudVmClusterList>;
@@ -6711,8 +6602,7 @@ export type DbNodePropertiesStateEnum =
   | "STARTING"
   | "TERMINATING"
   | "TERMINATED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const DbNodePropertiesStateEnum = /*@__PURE__*/ S.String;
 
 /** Various properties and settings associated with Db node. */
@@ -6766,7 +6656,7 @@ export const DbNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DbNode" }) as any as S.Schema<DbNode>;
 
-export type DbNodeList = DbNode[];
+export type DbNodeList = ReadonlyArray<DbNode>;
 export const DbNodeList = /*@__PURE__*/ S.Array(
   DbNode,
 ) as any as S.Schema<DbNodeList>;
@@ -6818,8 +6708,7 @@ export const ListProjectsLocationsDatabaseCharacterSetsRequest =
 export type DatabaseCharacterSetCharacterSetTypeEnum =
   | "CHARACTER_SET_TYPE_UNSPECIFIED"
   | "DATABASE"
-  | "NATIONAL"
-  | (string & {});
+  | "NATIONAL";
 export const DatabaseCharacterSetCharacterSetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details of the Database character set resource. */
@@ -6841,7 +6730,7 @@ export const DatabaseCharacterSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseCharacterSet",
 }) as any as S.Schema<DatabaseCharacterSet>;
 
-export type DatabaseCharacterSetList = DatabaseCharacterSet[];
+export type DatabaseCharacterSetList = ReadonlyArray<DatabaseCharacterSet>;
 export const DatabaseCharacterSetList = /*@__PURE__*/ S.Array(
   DatabaseCharacterSet,
 ) as any as S.Schema<DatabaseCharacterSetList>;
@@ -6890,7 +6779,7 @@ export const ListProjectsLocationsDatabasesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDatabasesRequest",
 }) as any as S.Schema<ListProjectsLocationsDatabasesRequest>;
 
-export type DatabaseList = Database[];
+export type DatabaseList = ReadonlyArray<Database>;
 export const DatabaseList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseList>;
@@ -6952,23 +6841,21 @@ export const StorageSizeDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageSizeDetails",
 }) as any as S.Schema<StorageSizeDetails>;
 
-export type StorageSizeDetailsList = StorageSizeDetails[];
+export type StorageSizeDetailsList = ReadonlyArray<StorageSizeDetails>;
 export const StorageSizeDetailsList = /*@__PURE__*/ S.Array(
   StorageSizeDetails,
 ) as any as S.Schema<StorageSizeDetailsList>;
 
 export type DbSystemInitialStorageSizePropertiesShapeTypeEnum =
   | "SHAPE_TYPE_UNSPECIFIED"
-  | "STANDARD_X86"
-  | (string & {});
+  | "STANDARD_X86";
 export const DbSystemInitialStorageSizePropertiesShapeTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type DbSystemInitialStorageSizePropertiesStorageManagementEnum =
   | "STORAGE_MANAGEMENT_UNSPECIFIED"
   | "ASM"
-  | "LVM"
-  | (string & {});
+  | "LVM";
 export const DbSystemInitialStorageSizePropertiesStorageManagementEnum =
   /*@__PURE__*/ S.String;
 
@@ -7013,7 +6900,8 @@ export const DbSystemInitialStorageSize = /*@__PURE__*/ S.suspend(() =>
   identifier: "DbSystemInitialStorageSize",
 }) as any as S.Schema<DbSystemInitialStorageSize>;
 
-export type DbSystemInitialStorageSizeList = DbSystemInitialStorageSize[];
+export type DbSystemInitialStorageSizeList =
+  ReadonlyArray<DbSystemInitialStorageSize>;
 export const DbSystemInitialStorageSizeList = /*@__PURE__*/ S.Array(
   DbSystemInitialStorageSize,
 ) as any as S.Schema<DbSystemInitialStorageSizeList>;
@@ -7066,7 +6954,7 @@ export const ListProjectsLocationsDbSystemsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDbSystemsRequest",
 }) as any as S.Schema<ListProjectsLocationsDbSystemsRequest>;
 
-export type DbSystemList = DbSystem[];
+export type DbSystemList = ReadonlyArray<DbSystem>;
 export const DbSystemList = /*@__PURE__*/ S.Array(
   DbSystem,
 ) as any as S.Schema<DbSystemList>;
@@ -7171,7 +7059,7 @@ export const DbSystemShape = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DbSystemShape" }) as any as S.Schema<DbSystemShape>;
 
-export type DbSystemShapeList = DbSystemShape[];
+export type DbSystemShapeList = ReadonlyArray<DbSystemShape>;
 export const DbSystemShapeList = /*@__PURE__*/ S.Array(
   DbSystemShape,
 ) as any as S.Schema<DbSystemShapeList>;
@@ -7259,7 +7147,7 @@ export const DbVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DbVersion" }) as any as S.Schema<DbVersion>;
 
-export type DbVersionList = DbVersion[];
+export type DbVersionList = ReadonlyArray<DbVersion>;
 export const DbVersionList = /*@__PURE__*/ S.Array(
   DbVersion,
 ) as any as S.Schema<DbVersionList>;
@@ -7311,8 +7199,7 @@ export type EntitlementStateEnum =
   | "ACCOUNT_NOT_ACTIVE"
   | "ACTIVE"
   | "ACCOUNT_SUSPENDED"
-  | "NOT_APPROVED_IN_PRIVATE_MARKETPLACE"
-  | (string & {});
+  | "NOT_APPROVED_IN_PRIVATE_MARKETPLACE";
 export const EntitlementStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of the OCI Cloud Account. */
@@ -7357,7 +7244,7 @@ export const Entitlement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Entitlement" }) as any as S.Schema<Entitlement>;
 
-export type EntitlementList = Entitlement[];
+export type EntitlementList = ReadonlyArray<Entitlement>;
 export const EntitlementList = /*@__PURE__*/ S.Array(
   Entitlement,
 ) as any as S.Schema<EntitlementList>;
@@ -7409,7 +7296,7 @@ export const ListProjectsLocationsExadbVmClustersRequest =
     identifier: "ListProjectsLocationsExadbVmClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsExadbVmClustersRequest>;
 
-export type ExadbVmClusterList = ExadbVmCluster[];
+export type ExadbVmClusterList = ReadonlyArray<ExadbVmCluster>;
 export const ExadbVmClusterList = /*@__PURE__*/ S.Array(
   ExadbVmCluster,
 ) as any as S.Schema<ExadbVmClusterList>;
@@ -7489,7 +7376,7 @@ export const ListProjectsLocationsExascaleDbStorageVaultsRequest =
     identifier: "ListProjectsLocationsExascaleDbStorageVaultsRequest",
   }) as any as S.Schema<ListProjectsLocationsExascaleDbStorageVaultsRequest>;
 
-export type ExascaleDbStorageVaultList = ExascaleDbStorageVault[];
+export type ExascaleDbStorageVaultList = ReadonlyArray<ExascaleDbStorageVault>;
 export const ExascaleDbStorageVaultList = /*@__PURE__*/ S.Array(
   ExascaleDbStorageVault,
 ) as any as S.Schema<ExascaleDbStorageVaultList>;
@@ -7555,7 +7442,7 @@ export const GiVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GiVersion" }) as any as S.Schema<GiVersion>;
 
-export type GiVersionList = GiVersion[];
+export type GiVersionList = ReadonlyArray<GiVersion>;
 export const GiVersionList = /*@__PURE__*/ S.Array(
   GiVersion,
 ) as any as S.Schema<GiVersionList>;
@@ -7621,7 +7508,7 @@ export const MinorVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MinorVersion" }) as any as S.Schema<MinorVersion>;
 
-export type MinorVersionList = MinorVersion[];
+export type MinorVersionList = ReadonlyArray<MinorVersion>;
 export const MinorVersionList = /*@__PURE__*/ S.Array(
   MinorVersion,
 ) as any as S.Schema<MinorVersionList>;
@@ -7674,7 +7561,7 @@ export const ListProjectsLocationsGoldengateConnectionAssignmentsRequest =
   }) as any as S.Schema<ListProjectsLocationsGoldengateConnectionAssignmentsRequest>;
 
 export type GoldengateConnectionAssignmentList =
-  GoldengateConnectionAssignment[];
+  ReadonlyArray<GoldengateConnectionAssignment>;
 export const GoldengateConnectionAssignmentList = /*@__PURE__*/ S.Array(
   GoldengateConnectionAssignment,
 ) as any as S.Schema<GoldengateConnectionAssignmentList>;
@@ -7732,7 +7619,7 @@ export const ListProjectsLocationsGoldengateConnectionsRequest =
     identifier: "ListProjectsLocationsGoldengateConnectionsRequest",
   }) as any as S.Schema<ListProjectsLocationsGoldengateConnectionsRequest>;
 
-export type GoldengateConnectionList = GoldengateConnection[];
+export type GoldengateConnectionList = ReadonlyArray<GoldengateConnection>;
 export const GoldengateConnectionList = /*@__PURE__*/ S.Array(
   GoldengateConnection,
 ) as any as S.Schema<GoldengateConnectionList>;
@@ -7814,8 +7701,7 @@ export type GoldengateConnectionTypeConnectionTypeEnum =
   | "DATABRICKS"
   | "GOOGLE_PUBSUB"
   | "MICROSOFT_FABRIC"
-  | "ICEBERG"
-  | (string & {});
+  | "ICEBERG";
 export const GoldengateConnectionTypeConnectionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7838,7 +7724,8 @@ export const GoldengateConnectionType = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoldengateConnectionType",
 }) as any as S.Schema<GoldengateConnectionType>;
 
-export type GoldengateConnectionTypeList = GoldengateConnectionType[];
+export type GoldengateConnectionTypeList =
+  ReadonlyArray<GoldengateConnectionType>;
 export const GoldengateConnectionTypeList = /*@__PURE__*/ S.Array(
   GoldengateConnectionType,
 ) as any as S.Schema<GoldengateConnectionTypeList>;
@@ -7891,16 +7778,14 @@ export const ListProjectsLocationsGoldengateDeploymentEnvironmentsRequest =
 export type GoldengateDeploymentEnvironmentEnvironmentTypeEnum =
   | "DEPLOYMENT_ENVIRONMENT_TYPE_UNSPECIFIED"
   | "PRODUCTION"
-  | "DEVELOPMENT_OR_TESTING"
-  | (string & {});
+  | "DEVELOPMENT_OR_TESTING";
 export const GoldengateDeploymentEnvironmentEnvironmentTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoldengateDeploymentEnvironmentCategoryEnum =
   | "DEPLOYMENT_CATEGORY_UNSPECIFIED"
   | "DATA_REPLICATION_CATEGORY"
-  | "DATA_TRANSFORMS_CATEGORY"
-  | (string & {});
+  | "DATA_TRANSFORMS_CATEGORY";
 export const GoldengateDeploymentEnvironmentCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -7950,7 +7835,7 @@ export const GoldengateDeploymentEnvironment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoldengateDeploymentEnvironment>;
 
 export type GoldengateDeploymentEnvironmentList =
-  GoldengateDeploymentEnvironment[];
+  ReadonlyArray<GoldengateDeploymentEnvironment>;
 export const GoldengateDeploymentEnvironmentList = /*@__PURE__*/ S.Array(
   GoldengateDeploymentEnvironment,
 ) as any as S.Schema<GoldengateDeploymentEnvironmentList>;
@@ -8008,7 +7893,7 @@ export const ListProjectsLocationsGoldengateDeploymentsRequest =
     identifier: "ListProjectsLocationsGoldengateDeploymentsRequest",
   }) as any as S.Schema<ListProjectsLocationsGoldengateDeploymentsRequest>;
 
-export type GoldengateDeploymentList = GoldengateDeployment[];
+export type GoldengateDeploymentList = ReadonlyArray<GoldengateDeployment>;
 export const GoldengateDeploymentList = /*@__PURE__*/ S.Array(
   GoldengateDeployment,
 ) as any as S.Schema<GoldengateDeploymentList>;
@@ -8066,8 +7951,7 @@ export const ListProjectsLocationsGoldengateDeploymentTypesRequest =
 export type GoldengateDeploymentTypeCategoryEnum =
   | "DEPLOYMENT_CATEGORY_UNSPECIFIED"
   | "DATA_REPLICATION_CATEGORY"
-  | "DATA_TRANSFORMS_CATEGORY"
-  | (string & {});
+  | "DATA_TRANSFORMS_CATEGORY";
 export const GoldengateDeploymentTypeCategoryEnum = /*@__PURE__*/ S.String;
 
 export type GoldengateDeploymentTypeDeploymentTypeEnum =
@@ -8081,8 +7965,7 @@ export type GoldengateDeploymentTypeDeploymentTypeEnum =
   | "DATABASE_DB2ZOS"
   | "DATABASE_DB2I"
   | "GGSA"
-  | "DATA_TRANSFORMS"
-  | (string & {});
+  | "DATA_TRANSFORMS";
 export const GoldengateDeploymentTypeDeploymentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8129,7 +8012,8 @@ export const GoldengateDeploymentType = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoldengateDeploymentType",
 }) as any as S.Schema<GoldengateDeploymentType>;
 
-export type GoldengateDeploymentTypeList = GoldengateDeploymentType[];
+export type GoldengateDeploymentTypeList =
+  ReadonlyArray<GoldengateDeploymentType>;
 export const GoldengateDeploymentTypeList = /*@__PURE__*/ S.Array(
   GoldengateDeploymentType,
 ) as any as S.Schema<GoldengateDeploymentTypeList>;
@@ -8186,8 +8070,7 @@ export type GoldengateDeploymentVersionPropertiesReleaseTypeEnum =
   | "DEPLOYMENT_RELEASE_TYPE_UNSPECIFIED"
   | "MAJOR"
   | "BUNDLE"
-  | "MINOR"
-  | (string & {});
+  | "MINOR";
 export const GoldengateDeploymentVersionPropertiesReleaseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8202,8 +8085,7 @@ export type GoldengateDeploymentVersionPropertiesDeploymentTypeEnum =
   | "DATABASE_DB2ZOS"
   | "DATABASE_DB2I"
   | "GGSA"
-  | "DATA_TRANSFORMS"
-  | (string & {});
+  | "DATA_TRANSFORMS";
 export const GoldengateDeploymentVersionPropertiesDeploymentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8259,7 +8141,8 @@ export const GoldengateDeploymentVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoldengateDeploymentVersion",
 }) as any as S.Schema<GoldengateDeploymentVersion>;
 
-export type GoldengateDeploymentVersionList = GoldengateDeploymentVersion[];
+export type GoldengateDeploymentVersionList =
+  ReadonlyArray<GoldengateDeploymentVersion>;
 export const GoldengateDeploymentVersionList = /*@__PURE__*/ S.Array(
   GoldengateDeploymentVersion,
 ) as any as S.Schema<GoldengateDeploymentVersionList>;
@@ -8315,7 +8198,7 @@ export const ListProjectsLocationsOdbNetworksRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOdbNetworksRequest",
 }) as any as S.Schema<ListProjectsLocationsOdbNetworksRequest>;
 
-export type OdbNetworkList = OdbNetwork[];
+export type OdbNetworkList = ReadonlyArray<OdbNetwork>;
 export const OdbNetworkList = /*@__PURE__*/ S.Array(
   OdbNetwork,
 ) as any as S.Schema<OdbNetworkList>;
@@ -8370,7 +8253,7 @@ export const ListProjectsLocationsOdbNetworksOdbSubnetsRequest =
     identifier: "ListProjectsLocationsOdbNetworksOdbSubnetsRequest",
   }) as any as S.Schema<ListProjectsLocationsOdbNetworksOdbSubnetsRequest>;
 
-export type OdbSubnetList = OdbSubnet[];
+export type OdbSubnetList = ReadonlyArray<OdbSubnet>;
 export const OdbSubnetList = /*@__PURE__*/ S.Array(
   OdbSubnet,
 ) as any as S.Schema<OdbSubnetList>;
@@ -8425,7 +8308,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -8477,7 +8360,7 @@ export const ListProjectsLocationsPluggableDatabasesRequest =
     identifier: "ListProjectsLocationsPluggableDatabasesRequest",
   }) as any as S.Schema<ListProjectsLocationsPluggableDatabasesRequest>;
 
-export type PluggableDatabaseList = PluggableDatabase[];
+export type PluggableDatabaseList = ReadonlyArray<PluggableDatabase>;
 export const PluggableDatabaseList = /*@__PURE__*/ S.Array(
   PluggableDatabase,
 ) as any as S.Schema<PluggableDatabaseList>;
@@ -8852,8 +8735,7 @@ export const SwitchoverProjectsLocationsAutonomousDatabasesRequest =
 
 export type TestGoldengateConnectionAssignmentRequestTypeEnum =
   | "TEST_TYPE_UNSPECIFIED"
-  | "DEFAULT"
-  | (string & {});
+  | "DEFAULT";
 export const TestGoldengateConnectionAssignmentRequestTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8899,8 +8781,7 @@ export type TestGoldengateConnectionAssignmentResponseResultTypeEnum =
   | "RESULT_TYPE_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED"
-  | "TIMED_OUT"
-  | (string & {});
+  | "TIMED_OUT";
 export const TestGoldengateConnectionAssignmentResponseResultTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8926,7 +8807,8 @@ export const TestConnectionAssignmentError = /*@__PURE__*/ S.suspend(() =>
   identifier: "TestConnectionAssignmentError",
 }) as any as S.Schema<TestConnectionAssignmentError>;
 
-export type TestConnectionAssignmentErrorList = TestConnectionAssignmentError[];
+export type TestConnectionAssignmentErrorList =
+  ReadonlyArray<TestConnectionAssignmentError>;
 export const TestConnectionAssignmentErrorList = /*@__PURE__*/ S.Array(
   TestConnectionAssignmentError,
 ) as any as S.Schema<TestConnectionAssignmentErrorList>;

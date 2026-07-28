@@ -141,7 +141,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.annotations#UserBasic"
+          "target": "com.posthog.annotations#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String",
@@ -420,9 +423,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "content": {
           "target": "smithy.api#String",
           "traits": {
@@ -454,42 +454,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "dashboard_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_short_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_derived_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.annotations#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         },
         "deleted": {
           "target": "smithy.api#Boolean",
@@ -650,42 +614,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "dashboard_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_short_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_derived_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.annotations#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
         "deleted": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -795,42 +723,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "dashboard_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_short_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "insight_derived_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.annotations#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         },
         "deleted": {
           "target": "smithy.api#Boolean",

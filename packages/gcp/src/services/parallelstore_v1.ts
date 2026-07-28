@@ -101,16 +101,14 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
 export type InstanceDeploymentTypeEnum =
   | "DEPLOYMENT_TYPE_UNSPECIFIED"
   | "SCRATCH"
-  | "PERSISTENT"
-  | (string & {});
+  | "PERSISTENT";
 export const InstanceDeploymentTypeEnum = /*@__PURE__*/ S.String;
 
 export type InstanceFileStripeLevelEnum =
   | "FILE_STRIPE_LEVEL_UNSPECIFIED"
   | "FILE_STRIPE_LEVEL_MIN"
   | "FILE_STRIPE_LEVEL_BALANCED"
-  | "FILE_STRIPE_LEVEL_MAX"
-  | (string & {});
+  | "FILE_STRIPE_LEVEL_MAX";
 export const InstanceFileStripeLevelEnum = /*@__PURE__*/ S.String;
 
 export type InstanceStateEnum =
@@ -120,8 +118,7 @@ export type InstanceStateEnum =
   | "DELETING"
   | "FAILED"
   | "UPGRADING"
-  | "REPAIRING"
-  | (string & {});
+  | "REPAIRING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -134,11 +131,10 @@ export type InstanceDirectoryStripeLevelEnum =
   | "DIRECTORY_STRIPE_LEVEL_UNSPECIFIED"
   | "DIRECTORY_STRIPE_LEVEL_MIN"
   | "DIRECTORY_STRIPE_LEVEL_BALANCED"
-  | "DIRECTORY_STRIPE_LEVEL_MAX"
-  | (string & {});
+  | "DIRECTORY_STRIPE_LEVEL_MAX";
 export const InstanceDirectoryStripeLevelEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -230,7 +226,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -332,22 +328,19 @@ export const SourceParallelstore = /*@__PURE__*/ S.suspend(() =>
 export type TransferMetadataOptionsUidEnum =
   | "UID_UNSPECIFIED"
   | "UID_SKIP"
-  | "UID_NUMBER_PRESERVE"
-  | (string & {});
+  | "UID_NUMBER_PRESERVE";
 export const TransferMetadataOptionsUidEnum = /*@__PURE__*/ S.String;
 
 export type TransferMetadataOptionsModeEnum =
   | "MODE_UNSPECIFIED"
   | "MODE_SKIP"
-  | "MODE_PRESERVE"
-  | (string & {});
+  | "MODE_PRESERVE";
 export const TransferMetadataOptionsModeEnum = /*@__PURE__*/ S.String;
 
 export type TransferMetadataOptionsGidEnum =
   | "GID_UNSPECIFIED"
   | "GID_SKIP"
-  | "GID_NUMBER_PRESERVE"
-  | (string & {});
+  | "GID_NUMBER_PRESERVE";
 export const TransferMetadataOptionsGidEnum = /*@__PURE__*/ S.String;
 
 /** Transfer metadata options for the instance. */
@@ -611,7 +604,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -663,7 +656,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -718,7 +711,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

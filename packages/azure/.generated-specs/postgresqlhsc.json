@@ -669,16 +669,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresqlhsc#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresqlhsc#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.postgresqlhsc#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.postgresqlhsc#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.postgresqlhsc#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.postgresqlhsc#PrivateEndpointConnectionsGet": {
@@ -1108,16 +1135,37 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Cluster name to verify.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.postgresqlhsc#ClustersCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "Resource type used for verification.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresqlhsc#ClustersCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_DBFORPOSTGRESQL_SERVERGROUPSV2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.DBforPostgreSQL/serverGroupsv2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource type used for verification."
       }
     },
     "com.azure.postgresqlhsc#ClustersPromoteReadReplica": {
@@ -1643,16 +1691,32 @@
             "smithy.api#documentation": "The name of the cluster role."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresqlhsc#RolePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of a role.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresqlhsc#RolePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password of the cluster role.",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a cluster role."
       }
     },
     "com.azure.postgresqlhsc#RolesGet": {
@@ -2046,16 +2110,38 @@
             "smithy.api#documentation": "The name of the cluster firewall rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresqlhsc#FirewallRulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of a firewall rule.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresqlhsc#FirewallRulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "startIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start IP address of the cluster firewall rule. Must be IPv4 format.",
+            "smithy.api#required": {}
+          }
+        },
+        "endIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end IP address of the cluster firewall rule. Must be IPv4 format.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a cluster firewall rule."
       }
     },
     "com.azure.postgresqlhsc#FirewallRulesGet": {
@@ -2337,16 +2423,30 @@
             "smithy.api#documentation": "The name of the cluster configuration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresqlhsc#ServerConfigurationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a configuration."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresqlhsc#ServerConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the configuration.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a configuration."
       }
     },
     "com.azure.postgresqlhsc#ConfigurationsGetNode": {
@@ -2538,11 +2638,10 @@
             "smithy.api#documentation": "The name of the cluster configuration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresqlhsc#ServerConfigurationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a configuration."
           }
         }
       },
@@ -3946,16 +4045,132 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.postgresqlhsc#ClusterPropertiesForUpdateInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the cluster."
+          }
+        },
+        "tags": {
+          "target": "com.azure.postgresqlhsc#ClustersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresqlhsc#ClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.postgresqlhsc#ClusterPropertiesForUpdateInput": {
+      "type": "structure",
+      "members": {
+        "administratorLoginPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password of the administrator login. Each cluster is created with pre-defined administrative role called ‘citus’. ",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "postgresqlVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The major PostgreSQL version on all cluster servers."
+          }
+        },
+        "citusVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Citus extension version on all cluster servers."
+          }
+        },
+        "enableShardsOnCoordinator": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed."
+          }
+        },
+        "enableHa": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If high availability (HA) is enabled or not for the cluster."
+          }
+        },
+        "preferredPrimaryZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Preferred primary availability zone (AZ) for all cluster servers."
+          }
+        },
+        "coordinatorServerEdition": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The edition of the coordinator (default: GeneralPurpose)."
+          }
+        },
+        "coordinatorStorageQuotaInMb": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The storage of the coordinator in MB."
+          }
+        },
+        "coordinatorVCores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The vCores count of the coordinator (max: 96)."
+          }
+        },
+        "coordinatorEnablePublicIpAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If public access is enabled on coordinator."
+          }
+        },
+        "nodeServerEdition": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The edition of a node (default: MemoryOptimized)."
+          }
+        },
+        "nodeCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1."
+          }
+        },
+        "nodeStorageQuotaInMb": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The storage in MB on each worker node."
+          }
+        },
+        "nodeVCores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The compute in vCores on each worker node (max: 104)."
+          }
+        },
+        "maintenanceWindow": {
+          "target": "com.azure.postgresqlhsc#MaintenanceWindow",
+          "traits": {
+            "smithy.api#documentation": "Maintenance window of a cluster."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties used to update a cluster."
       }
     },
     "com.azure.postgresqlhsc#ClustersCreate": {
@@ -4067,16 +4282,163 @@
             "smithy.api#documentation": "The name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.postgresqlhsc#ClustersCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.postgresqlhsc#ClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the cluster."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.postgresqlhsc#ClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "administratorLoginPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password of the administrator login. Required for creation.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "postgresqlVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The major PostgreSQL version on all cluster servers."
+          }
+        },
+        "citusVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Citus extension version on all cluster servers."
+          }
+        },
+        "maintenanceWindow": {
+          "target": "com.azure.postgresqlhsc#MaintenanceWindow",
+          "traits": {
+            "smithy.api#documentation": "Maintenance window of a cluster."
+          }
+        },
+        "preferredPrimaryZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Preferred primary availability zone (AZ) for all cluster servers."
+          }
+        },
+        "enableShardsOnCoordinator": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed."
+          }
+        },
+        "enableHa": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If high availability (HA) is enabled or not for the cluster."
+          }
+        },
+        "coordinatorServerEdition": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The edition of a coordinator server (default: GeneralPurpose). Required for creation."
+          }
+        },
+        "coordinatorStorageQuotaInMb": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information."
+          }
+        },
+        "coordinatorVCores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information."
+          }
+        },
+        "coordinatorEnablePublicIpAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If public access is enabled on coordinator."
+          }
+        },
+        "nodeServerEdition": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The edition of a node server (default: MemoryOptimized)."
+          }
+        },
+        "nodeCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation."
+          }
+        },
+        "nodeStorageQuotaInMb": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information."
+          }
+        },
+        "nodeVCores": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information."
+          }
+        },
+        "nodeEnablePublicIpAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If public access is enabled on worker nodes."
+          }
+        },
+        "sourceResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of source cluster for read replica clusters."
+          }
+        },
+        "sourceLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure region of source cluster for read replica clusters."
+          }
+        },
+        "pointInTimeUTC": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time in UTC (ISO8601 format) for cluster restore."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the cluster."
+      }
+    },
+    "com.azure.postgresqlhsc#ClustersCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.postgresqlhsc#ClustersGet": {

@@ -3462,18 +3462,6 @@
     "com.axiom.api#CreateNotifierRequest": {
       "type": "structure",
       "members": {
-        "createdAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp when the notifier was created"
-          }
-        },
-        "createdBy": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Email or ID of the user who created the notifier"
-          }
-        },
         "disabledUntil": {
           "target": "smithy.api#String",
           "traits": {
@@ -3491,12 +3479,6 @@
           "target": "com.axiom.api#NotifierProperties",
           "traits": {
             "smithy.api#required": {}
-          }
-        },
-        "updatedAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp when the notifier was last updated"
           }
         }
       },
@@ -3676,18 +3658,6 @@
             "smithy.api#required": {}
           }
         },
-        "createdAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp when the notifier was created"
-          }
-        },
-        "createdBy": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Email or ID of the user who created the notifier"
-          }
-        },
         "disabledUntil": {
           "target": "smithy.api#String",
           "traits": {
@@ -3705,12 +3675,6 @@
           "target": "com.axiom.api#NotifierProperties",
           "traits": {
             "smithy.api#required": {}
-          }
-        },
-        "updatedAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp when the notifier was last updated"
           }
         }
       },
@@ -5897,12 +5861,6 @@
             "smithy.api#documentation": "Detailed description of the group's purpose and scope"
           }
         },
-        "isManaged": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the group is managed by Axiom"
-          }
-        },
         "members": {
           "target": "com.axiom.api#CreateGroupRequestMembersList",
           "traits": {
@@ -6148,12 +6106,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Detailed description of the group's purpose and scope"
-          }
-        },
-        "isManaged": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the group is managed by Axiom"
           }
         },
         "members": {
@@ -9740,13 +9692,13 @@
           }
         },
         "refreshTime": {
-          "target": "smithy.api#Double",
+          "target": "com.axiom.api#DashboardRefreshTime",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "schemaVersion": {
-          "target": "smithy.api#Double",
+          "target": "com.axiom.api#SchemaVersion",
           "traits": {
             "smithy.api#required": {}
           }
@@ -11342,6 +11294,42 @@
       "type": "list",
       "member": {
         "target": "com.axiom.api#LayoutItem"
+      },
+      "traits": {}
+    },
+    "com.axiom.api#DashboardRefreshTime": {
+      "type": "intEnum",
+      "members": {
+        "_15": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 15
+          }
+        },
+        "_60": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 60
+          }
+        },
+        "_300": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 300
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.axiom.api#SchemaVersion": {
+      "type": "intEnum",
+      "members": {
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        }
       },
       "traits": {}
     },

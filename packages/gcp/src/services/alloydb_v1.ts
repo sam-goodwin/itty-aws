@@ -107,16 +107,14 @@ export type BackupStateEnum =
   | "READY"
   | "CREATING"
   | "FAILED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 export type BackupTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ON_DEMAND"
   | "AUTOMATED"
-  | "CONTINUOUS"
-  | (string & {});
+  | "CONTINUOUS";
 export const BackupTypeEnum = /*@__PURE__*/ S.String;
 
 /** A backup's position in a quantity-based retention queue, of backups with the same source cluster and type, with length, retention, specified by the backup's retention policy. Once the position is greater than the retention, the backup is eligible to be garbage collected. Example: 5 backups from the same source cluster and type with a quantity-based retention of 3 and denoted by backup_id (position, retention). Safe: backup_5 (1, 3), backup_4, (2, 3), backup_3 (3, 3). Awaiting garbage collection: backup_2 (4, 3), backup_1 (5, 3) */
@@ -151,11 +149,10 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 export type EncryptionInfoEncryptionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
+  | "CUSTOMER_MANAGED_ENCRYPTION";
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -181,8 +178,7 @@ export type BackupDatabaseVersionEnum =
   | "POSTGRES_15"
   | "POSTGRES_16"
   | "POSTGRES_17"
-  | "POSTGRES_18"
-  | (string & {});
+  | "POSTGRES_18";
 export const BackupDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 /** Message describing Backup object */
@@ -302,7 +298,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -354,8 +350,7 @@ export type ClusterDatabaseVersionEnum =
   | "POSTGRES_15"
   | "POSTGRES_16"
   | "POSTGRES_17"
-  | "POSTGRES_18"
-  | (string & {});
+  | "POSTGRES_18";
 export const ClusterDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for the primary cluster. It has the list of clusters that are replicating from this cluster. This should be set if and only if the cluster is of type PRIMARY. */
@@ -377,8 +372,7 @@ export type MaintenanceWindowDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const MaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -419,7 +413,7 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceWindow",
 }) as any as S.Schema<MaintenanceWindow>;
 
-export type MaintenanceWindowList = MaintenanceWindow[];
+export type MaintenanceWindowList = ReadonlyArray<MaintenanceWindow>;
 export const MaintenanceWindowList = /*@__PURE__*/ S.Array(
   MaintenanceWindow,
 ) as any as S.Schema<MaintenanceWindowList>;
@@ -460,7 +454,7 @@ export const DenyMaintenancePeriod = /*@__PURE__*/ S.suspend(() =>
   identifier: "DenyMaintenancePeriod",
 }) as any as S.Schema<DenyMaintenancePeriod>;
 
-export type DenyMaintenancePeriodList = DenyMaintenancePeriod[];
+export type DenyMaintenancePeriodList = ReadonlyArray<DenyMaintenancePeriod>;
 export const DenyMaintenancePeriodList = /*@__PURE__*/ S.Array(
   DenyMaintenancePeriod,
 ) as any as S.Schema<DenyMaintenancePeriodList>;
@@ -521,7 +515,7 @@ export const QuantityBasedRetention = /*@__PURE__*/ S.suspend(() =>
   identifier: "QuantityBasedRetention",
 }) as any as S.Schema<QuantityBasedRetention>;
 
-export type GoogleTypeTimeOfDayList = GoogleTypeTimeOfDay[];
+export type GoogleTypeTimeOfDayList = ReadonlyArray<GoogleTypeTimeOfDay>;
 export const GoogleTypeTimeOfDayList = /*@__PURE__*/ S.Array(
   GoogleTypeTimeOfDay,
 ) as any as S.Schema<GoogleTypeTimeOfDayList>;
@@ -534,12 +528,11 @@ export type WeeklyScheduleDaysOfWeekItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const WeeklyScheduleDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
 export type WeeklyScheduleDaysOfWeekItemEnumList =
-  WeeklyScheduleDaysOfWeekItemEnum[];
+  ReadonlyArray<WeeklyScheduleDaysOfWeekItemEnum>;
 export const WeeklyScheduleDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
   WeeklyScheduleDaysOfWeekItemEnum,
 ) as any as S.Schema<WeeklyScheduleDaysOfWeekItemEnumList>;
@@ -679,14 +672,12 @@ export type ClusterStateEnum =
   | "BOOTSTRAPPING"
   | "MAINTENANCE"
   | "PROMOTING"
-  | "SWITCHOVER"
-  | (string & {});
+  | "SWITCHOVER";
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 export type SslConfigCaSourceEnum =
   | "CA_SOURCE_UNSPECIFIED"
-  | "CA_SOURCE_MANAGED"
-  | (string & {});
+  | "CA_SOURCE_MANAGED";
 export const SslConfigCaSourceEnum = /*@__PURE__*/ S.String;
 
 export type SslConfigSslModeEnum =
@@ -695,8 +686,7 @@ export type SslConfigSslModeEnum =
   | "SSL_MODE_REQUIRE"
   | "SSL_MODE_VERIFY_CA"
   | "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
-  | "ENCRYPTED_ONLY"
-  | (string & {});
+  | "ENCRYPTED_ONLY";
 export const SslConfigSslModeEnum = /*@__PURE__*/ S.String;
 
 /** SSL configuration. */
@@ -764,7 +754,7 @@ export const BackupDrEnabledWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupDrEnabledWindow",
 }) as any as S.Schema<BackupDrEnabledWindow>;
 
-export type BackupDrEnabledWindowList = BackupDrEnabledWindow[];
+export type BackupDrEnabledWindowList = ReadonlyArray<BackupDrEnabledWindow>;
 export const BackupDrEnabledWindowList = /*@__PURE__*/ S.Array(
   BackupDrEnabledWindow,
 ) as any as S.Schema<BackupDrEnabledWindowList>;
@@ -791,12 +781,11 @@ export type ContinuousBackupInfoScheduleItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const ContinuousBackupInfoScheduleItemEnum = /*@__PURE__*/ S.String;
 
 export type ContinuousBackupInfoScheduleItemEnumList =
-  ContinuousBackupInfoScheduleItemEnum[];
+  ReadonlyArray<ContinuousBackupInfoScheduleItemEnum>;
 export const ContinuousBackupInfoScheduleItemEnumList = /*@__PURE__*/ S.Array(
   ContinuousBackupInfoScheduleItemEnum,
 ) as any as S.Schema<ContinuousBackupInfoScheduleItemEnumList>;
@@ -826,8 +815,7 @@ export const ContinuousBackupInfo = /*@__PURE__*/ S.suspend(() =>
 export type ClusterMaintenanceVersionSelectionPolicyEnum =
   | "MAINTENANCE_VERSION_SELECTION_POLICY_UNSPECIFIED"
   | "MAINTENANCE_VERSION_SELECTION_POLICY_LATEST"
-  | "MAINTENANCE_VERSION_SELECTION_POLICY_DEFAULT"
-  | (string & {});
+  | "MAINTENANCE_VERSION_SELECTION_POLICY_DEFAULT";
 export const ClusterMaintenanceVersionSelectionPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -848,8 +836,7 @@ export const BackupSource = /*@__PURE__*/ S.suspend(() =>
 export type ClusterClusterTypeEnum =
   | "CLUSTER_TYPE_UNSPECIFIED"
   | "PRIMARY"
-  | "SECONDARY"
-  | (string & {});
+  | "SECONDARY";
 export const ClusterClusterTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration information for the secondary cluster. This should be set if and only if the cluster is of type SECONDARY. */
@@ -882,8 +869,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
 export type ClusterSubscriptionTypeEnum =
   | "SUBSCRIPTION_TYPE_UNSPECIFIED"
   | "STANDARD"
-  | "TRIAL"
-  | (string & {});
+  | "TRIAL";
 export const ClusterSubscriptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** ContinuousBackupConfig describes the continuous backups recovery configurations of a cluster. */
@@ -907,8 +893,7 @@ export const ContinuousBackupConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type MigrationSourceSourceTypeEnum =
   | "MIGRATION_SOURCE_TYPE_UNSPECIFIED"
-  | "DMS"
-  | (string & {});
+  | "DMS";
 export const MigrationSourceSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Subset of the source instance configuration that is available when reading the cluster resource. */
@@ -1119,8 +1104,7 @@ export type InstanceStateEnum =
   | "PROMOTING"
   | "SWITCHOVER"
   | "STOPPING"
-  | "STARTING"
-  | (string & {});
+  | "STARTING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a read pool instance. */
@@ -1138,16 +1122,14 @@ export type ConnectionPoolConfigPoolerScalingTypeEnum =
   | "POOLER_SCALING_TYPE_UNSPECIFIED"
   | "POOLER_NONE"
   | "POOLER_MACHINE_SIZED"
-  | "POOLER_MANUAL_OVERRIDE"
-  | (string & {});
+  | "POOLER_MANUAL_OVERRIDE";
 export const ConnectionPoolConfigPoolerScalingTypeEnum = /*@__PURE__*/ S.String;
 
 export type ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum =
   | "POOLER_SCALING_TYPE_UNSPECIFIED"
   | "POOLER_NONE"
   | "POOLER_MACHINE_SIZED"
-  | "POOLER_MANUAL_OVERRIDE"
-  | (string & {});
+  | "POOLER_MANUAL_OVERRIDE";
 export const ConnectionPoolConfigAuthproxyPoolerScalingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1184,11 +1166,10 @@ export const ConnectionPoolConfig = /*@__PURE__*/ S.suspend(() =>
 export type InstanceActivationPolicyEnum =
   | "ACTIVATION_POLICY_UNSPECIFIED"
   | "ALWAYS"
-  | "NEVER"
-  | (string & {});
+  | "NEVER";
 export const InstanceActivationPolicyEnum = /*@__PURE__*/ S.String;
 
-export type NodeList = Node[];
+export type NodeList = ReadonlyArray<Node>;
 export const NodeList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeList>;
@@ -1196,16 +1177,14 @@ export const NodeList = /*@__PURE__*/ S.Array(
 export type InstanceDataApiAccessEnum =
   | "DEFAULT_DATA_API_ENABLED_FOR_GOOGLE_CLOUD_SERVICES"
   | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const InstanceDataApiAccessEnum = /*@__PURE__*/ S.String;
 
 export type InstanceInstanceTypeEnum =
   | "INSTANCE_TYPE_UNSPECIFIED"
   | "PRIMARY"
   | "READ_POOL"
-  | "SECONDARY"
-  | (string & {});
+  | "SECONDARY";
 export const InstanceInstanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for setting up a PSC interface to enable outbound connectivity. */
@@ -1221,7 +1200,7 @@ export const PscInterfaceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PscInterfaceConfig",
 }) as any as S.Schema<PscInterfaceConfig>;
 
-export type PscInterfaceConfigList = PscInterfaceConfig[];
+export type PscInterfaceConfigList = ReadonlyArray<PscInterfaceConfig>;
 export const PscInterfaceConfigList = /*@__PURE__*/ S.Array(
   PscInterfaceConfig,
 ) as any as S.Schema<PscInterfaceConfigList>;
@@ -1251,7 +1230,8 @@ export const PscAutoConnectionConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PscAutoConnectionConfig",
 }) as any as S.Schema<PscAutoConnectionConfig>;
 
-export type PscAutoConnectionConfigList = PscAutoConnectionConfig[];
+export type PscAutoConnectionConfigList =
+  ReadonlyArray<PscAutoConnectionConfig>;
 export const PscAutoConnectionConfigList = /*@__PURE__*/ S.Array(
   PscAutoConnectionConfig,
 ) as any as S.Schema<PscAutoConnectionConfigList>;
@@ -1364,7 +1344,7 @@ export const AuthorizedNetwork = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizedNetwork",
 }) as any as S.Schema<AuthorizedNetwork>;
 
-export type AuthorizedNetworkList = AuthorizedNetwork[];
+export type AuthorizedNetworkList = ReadonlyArray<AuthorizedNetwork>;
 export const AuthorizedNetworkList = /*@__PURE__*/ S.Array(
   AuthorizedNetwork,
 ) as any as S.Schema<AuthorizedNetworkList>;
@@ -1413,8 +1393,7 @@ export const ClientConnectionConfig = /*@__PURE__*/ S.suspend(() =>
 export type InstanceAvailabilityTypeEnum =
   | "AVAILABILITY_TYPE_UNSPECIFIED"
   | "ZONAL"
-  | "REGIONAL"
-  | (string & {});
+  | "REGIONAL";
 export const InstanceAvailabilityTypeEnum = /*@__PURE__*/ S.String;
 
 /** An Instance is a computing unit that an end customer can connect to. It's the main unit of computing resources in AlloyDB. */
@@ -1555,8 +1534,7 @@ export const CreateProjectsLocationsClustersInstancesRequest =
 export type UserUserTypeEnum =
   | "USER_TYPE_UNSPECIFIED"
   | "ALLOYDB_BUILT_IN"
-  | "ALLOYDB_IAM_USER"
-  | (string & {});
+  | "ALLOYDB_IAM_USER";
 export const UserUserTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing User object. */
@@ -2031,8 +2009,7 @@ export const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsBackupsViewEnum =
   | "BACKUP_VIEW_UNSPECIFIED"
   | "BACKUP_VIEW_BASIC"
-  | "BACKUP_VIEW_CLUSTER_DELETED"
-  | (string & {});
+  | "BACKUP_VIEW_CLUSTER_DELETED";
 export const GetProjectsLocationsBackupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsBackupsRequest {
@@ -2059,8 +2036,7 @@ export const GetProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "CLUSTER_VIEW_BASIC"
-  | "CLUSTER_VIEW_CONTINUOUS_BACKUP"
-  | (string & {});
+  | "CLUSTER_VIEW_CONTINUOUS_BACKUP";
 export const GetProjectsLocationsClustersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsClustersRequest {
@@ -2087,8 +2063,7 @@ export const GetProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsClustersInstancesViewEnum =
   | "INSTANCE_VIEW_UNSPECIFIED"
   | "INSTANCE_VIEW_BASIC"
-  | "INSTANCE_VIEW_FULL"
-  | (string & {});
+  | "INSTANCE_VIEW_FULL";
 export const GetProjectsLocationsClustersInstancesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2236,8 +2211,7 @@ export const ImportProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
 
 export type InjectFaultRequestFaultTypeEnum =
   | "FAULT_TYPE_UNSPECIFIED"
-  | "STOP_VM"
-  | (string & {});
+  | "STOP_VM";
 export const InjectFaultRequestFaultTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message for triggering fault injection on an instance */
@@ -2311,7 +2285,8 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type GoogleCloudLocationLocationList = GoogleCloudLocationLocation[];
+export type GoogleCloudLocationLocationList =
+  ReadonlyArray<GoogleCloudLocationLocation>;
 export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
@@ -2336,8 +2311,7 @@ export const GoogleCloudLocationListLocationsResponse = /*@__PURE__*/ S.suspend(
 export type ListProjectsLocationsBackupsViewEnum =
   | "BACKUP_VIEW_UNSPECIFIED"
   | "BACKUP_VIEW_BASIC"
-  | "BACKUP_VIEW_CLUSTER_DELETED"
-  | (string & {});
+  | "BACKUP_VIEW_CLUSTER_DELETED";
 export const ListProjectsLocationsBackupsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsBackupsRequest {
@@ -2373,7 +2347,7 @@ export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsBackupsRequest",
 }) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
 
-export type BackupList = Backup[];
+export type BackupList = ReadonlyArray<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -2428,7 +2402,7 @@ export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsClustersRequest",
 }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
-export type ClusterList = Cluster[];
+export type ClusterList = ReadonlyArray<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -2483,7 +2457,7 @@ export const ListProjectsLocationsClustersInstancesRequest =
     identifier: "ListProjectsLocationsClustersInstancesRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -2538,7 +2512,7 @@ export const ListProjectsLocationsClustersUsersRequest =
     identifier: "ListProjectsLocationsClustersUsersRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersUsersRequest>;
 
-export type UserList = User[];
+export type UserList = ReadonlyArray<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -2593,7 +2567,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2620,8 +2594,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsSupportedDatabaseFlagsScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "DATABASE"
-  | "CONNECTION_POOL"
-  | (string & {});
+  | "CONNECTION_POOL";
 export const ListProjectsLocationsSupportedDatabaseFlagsScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2675,13 +2648,12 @@ export type SupportedDatabaseFlagSupportedDbVersionsItemEnum =
   | "POSTGRES_15"
   | "POSTGRES_16"
   | "POSTGRES_17"
-  | "POSTGRES_18"
-  | (string & {});
+  | "POSTGRES_18";
 export const SupportedDatabaseFlagSupportedDbVersionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type SupportedDatabaseFlagSupportedDbVersionsItemEnumList =
-  SupportedDatabaseFlagSupportedDbVersionsItemEnum[];
+  ReadonlyArray<SupportedDatabaseFlagSupportedDbVersionsItemEnum>;
 export const SupportedDatabaseFlagSupportedDbVersionsItemEnumList =
   /*@__PURE__*/ S.Array(
     SupportedDatabaseFlagSupportedDbVersionsItemEnum,
@@ -2692,8 +2664,7 @@ export type SupportedDatabaseFlagValueTypeEnum =
   | "STRING"
   | "INTEGER"
   | "FLOAT"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const SupportedDatabaseFlagValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Restrictions on INTEGER type values. */
@@ -2715,8 +2686,7 @@ export const IntegerRestrictions = /*@__PURE__*/ S.suspend(() =>
 export type SupportedDatabaseFlagScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "DATABASE"
-  | "CONNECTION_POOL"
-  | (string & {});
+  | "CONNECTION_POOL";
 export const SupportedDatabaseFlagScopeEnum = /*@__PURE__*/ S.String;
 
 /** SupportedDatabaseFlag gives general information about a database flag, like type and allowed values. This is a static value that is defined on the server side, and it cannot be modified by callers. To set the Database flags on a particular Instance, a caller should modify the Instance.database_flags field. */
@@ -2763,7 +2733,7 @@ export const SupportedDatabaseFlag = /*@__PURE__*/ S.suspend(() =>
   identifier: "SupportedDatabaseFlag",
 }) as any as S.Schema<SupportedDatabaseFlag>;
 
-export type SupportedDatabaseFlagList = SupportedDatabaseFlag[];
+export type SupportedDatabaseFlagList = ReadonlyArray<SupportedDatabaseFlag>;
 export const SupportedDatabaseFlagList = /*@__PURE__*/ S.Array(
   SupportedDatabaseFlag,
 ) as any as S.Schema<SupportedDatabaseFlagList>;
@@ -3175,8 +3145,7 @@ export type UpgradeClusterRequestVersionEnum =
   | "POSTGRES_15"
   | "POSTGRES_16"
   | "POSTGRES_17"
-  | "POSTGRES_18"
-  | (string & {});
+  | "POSTGRES_18";
 export const UpgradeClusterRequestVersionEnum = /*@__PURE__*/ S.String;
 
 /** Upgrades a cluster. */

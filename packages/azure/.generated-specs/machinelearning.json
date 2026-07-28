@@ -635,16 +635,109 @@
             "smithy.api#documentation": "The name of the machine learning workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.machinelearning#WorkspacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource tags for the machine learning workspace."
+          }
+        },
+        "properties": {
+          "target": "com.azure.machinelearning#WorkspacePropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties that the machine learning workspace will be updated with."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.machinelearning#WorkspacePropertiesUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "workspaceState": {
+          "target": "com.azure.machinelearning#WorkspacePropertiesUpdateParametersWorkspaceState",
+          "traits": {
+            "smithy.api#documentation": "The current state of workspace resource."
+          }
+        },
+        "keyVaultIdentifierId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key vault identifier used for encrypted workspaces."
+          }
+        },
+        "sku": {
+          "target": "com.azure.machinelearning#Sku",
+          "traits": {
+            "smithy.api#documentation": "The sku of the workspace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters for updating the properties of a machine learning workspace."
+      }
+    },
+    "com.azure.machinelearning#WorkspacePropertiesUpdateParametersWorkspaceState": {
+      "type": "enum",
+      "members": {
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleted"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "MIGRATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migrated"
+          }
+        },
+        "UPDATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Updated"
+          }
+        },
+        "REGISTERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Registered"
+          }
+        },
+        "UNREGISTERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unregistered"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current state of workspace resource."
+      }
+    },
+    "com.azure.machinelearning#WorkspacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags for the machine learning workspace."
       }
     },
     "com.azure.machinelearning#WorkspacesCreateOrUpdate": {
@@ -756,16 +849,74 @@
             "smithy.api#documentation": "The name of the machine learning workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource. This cannot be changed after the resource is created.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.machinelearning#WorkspacesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.machinelearning#Sku",
+          "traits": {
+            "smithy.api#documentation": "The sku of the workspace."
+          }
+        },
+        "properties": {
+          "target": "com.azure.machinelearning#WorkspacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the machine learning workspace."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.machinelearning#WorkspacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "userStorageAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified arm id of the storage account associated with this workspace.",
+            "smithy.api#required": {}
+          }
+        },
+        "ownerEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email id of the owner for this workspace.",
+            "smithy.api#required": {}
+          }
+        },
+        "keyVaultIdentifierId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key vault identifier used for encrypted workspaces."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a machine learning workspace."
+      }
+    },
+    "com.azure.machinelearning#WorkspacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.machinelearning#WorkspacesGet": {

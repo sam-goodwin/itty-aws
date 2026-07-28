@@ -13,16 +13,25 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Resource type used for verification. */
+export type ClustersCheckNameAvailabilityRequestType =
+  "Microsoft.DBforPostgreSQL/serverGroupsv2";
+export const ClustersCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
+
 export interface ClustersCheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** Cluster name to verify. */
+  name: string;
+  /** Resource type used for verification. */
+  type: ClustersCheckNameAvailabilityRequestType;
 }
 export const ClustersCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: ClustersCheckNameAvailabilityRequestType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -57,6 +66,104 @@ export const NameAvailability = /*@__PURE__*/ S.suspend(() =>
   identifier: "NameAvailability",
 }) as any as S.Schema<NameAvailability>;
 
+/** Resource tags. */
+export type ClustersCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ClustersCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ClustersCreateRequestTagsMap>;
+
+/** Schedule settings for regular cluster updates. */
+export interface MaintenanceWindow {
+  /** Indicates whether custom maintenance window is enabled or not. */
+  customWindow?: string;
+  /** Start hour within preferred day of the week for maintenance window. */
+  startHour?: number;
+  /** Start minute within the start hour for maintenance window. */
+  startMinute?: number;
+  /** Preferred day of the week for maintenance window. */
+  dayOfWeek?: number;
+}
+export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customWindow: S.optional(S.String),
+    startHour: S.optional(S.Number),
+    startMinute: S.optional(S.Number),
+    dayOfWeek: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MaintenanceWindow",
+}) as any as S.Schema<MaintenanceWindow>;
+
+/** Properties of the cluster. */
+export interface ClusterPropertiesInput {
+  /** The password of the administrator login. Required for creation. */
+  administratorLoginPassword?: string | Redacted.Redacted<string>;
+  /** The major PostgreSQL version on all cluster servers. */
+  postgresqlVersion?: string;
+  /** The Citus extension version on all cluster servers. */
+  citusVersion?: string;
+  /** Maintenance window of a cluster. */
+  maintenanceWindow?: MaintenanceWindow;
+  /** Preferred primary availability zone (AZ) for all cluster servers. */
+  preferredPrimaryZone?: string;
+  /** If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed. */
+  enableShardsOnCoordinator?: boolean;
+  /** If high availability (HA) is enabled or not for the cluster. */
+  enableHa?: boolean;
+  /** The edition of a coordinator server (default: GeneralPurpose). Required for creation. */
+  coordinatorServerEdition?: string;
+  /** The storage of a server in MB. Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information. */
+  coordinatorStorageQuotaInMb?: number;
+  /** The vCores count of a server (max: 96). Required for creation. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information. */
+  coordinatorVCores?: number;
+  /** If public access is enabled on coordinator. */
+  coordinatorEnablePublicIpAccess?: boolean;
+  /** The edition of a node server (default: MemoryOptimized). */
+  nodeServerEdition?: string;
+  /** Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation. */
+  nodeCount?: number;
+  /** The storage in MB on each worker node. See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information. */
+  nodeStorageQuotaInMb?: number;
+  /** The compute in vCores on each worker node (max: 104). See https://learn.microsoft.com/azure/cosmos-db/postgresql/resources-compute for more information. */
+  nodeVCores?: number;
+  /** If public access is enabled on worker nodes. */
+  nodeEnablePublicIpAccess?: boolean;
+  /** The resource id of source cluster for read replica clusters. */
+  sourceResourceId?: string;
+  /** The Azure region of source cluster for read replica clusters. */
+  sourceLocation?: string;
+  /** Date and time in UTC (ISO8601 format) for cluster restore. */
+  pointInTimeUTC?: string;
+}
+export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    postgresqlVersion: S.optional(S.String),
+    citusVersion: S.optional(S.String),
+    maintenanceWindow: S.optional(MaintenanceWindow),
+    preferredPrimaryZone: S.optional(S.String),
+    enableShardsOnCoordinator: S.optional(S.Boolean),
+    enableHa: S.optional(S.Boolean),
+    coordinatorServerEdition: S.optional(S.String),
+    coordinatorStorageQuotaInMb: S.optional(S.Number),
+    coordinatorVCores: S.optional(S.Number),
+    coordinatorEnablePublicIpAccess: S.optional(S.Boolean),
+    nodeServerEdition: S.optional(S.String),
+    nodeCount: S.optional(S.Number),
+    nodeStorageQuotaInMb: S.optional(S.Number),
+    nodeVCores: S.optional(S.Number),
+    nodeEnablePublicIpAccess: S.optional(S.Boolean),
+    sourceResourceId: S.optional(S.String),
+    sourceLocation: S.optional(S.String),
+    pointInTimeUTC: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClusterPropertiesInput",
+}) as any as S.Schema<ClusterPropertiesInput>;
+
 export interface ClustersCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -64,14 +171,21 @@ export interface ClustersCreateRequest {
   resourceGroupName: string;
   /** The name of the cluster. */
   clusterName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ClustersCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the cluster. */
+  properties?: ClusterPropertiesInput;
 }
 export const ClustersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ClustersCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ClusterPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -89,8 +203,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -98,8 +211,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -137,28 +249,6 @@ export const ClustersCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<ClustersCreateResponseTagsMap>;
 
-/** Schedule settings for regular cluster updates. */
-export interface MaintenanceWindow {
-  /** Indicates whether custom maintenance window is enabled or not. */
-  customWindow?: string;
-  /** Start hour within preferred day of the week for maintenance window. */
-  startHour?: number;
-  /** Start minute within the start hour for maintenance window. */
-  startMinute?: number;
-  /** Preferred day of the week for maintenance window. */
-  dayOfWeek?: number;
-}
-export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customWindow: S.optional(S.String),
-    startHour: S.optional(S.Number),
-    startMinute: S.optional(S.Number),
-    dayOfWeek: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MaintenanceWindow",
-}) as any as S.Schema<MaintenanceWindow>;
-
 /** The name object for a server. */
 export interface ServerNameItem {
   /** The name of a server. */
@@ -174,13 +264,13 @@ export const ServerNameItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerNameItem" }) as any as S.Schema<ServerNameItem>;
 
 /** The list of server names in the cluster */
-export type ClusterPropertiesServerNamesList = ServerNameItem[];
+export type ClusterPropertiesServerNamesList = ReadonlyArray<ServerNameItem>;
 export const ClusterPropertiesServerNamesList = /*@__PURE__*/ S.Array(
   ServerNameItem,
 ) as any as S.Schema<ClusterPropertiesServerNamesList>;
 
 /** The array of read replica clusters. */
-export type ClusterPropertiesReadReplicasList = string[];
+export type ClusterPropertiesReadReplicasList = ReadonlyArray<string>;
 export const ClusterPropertiesReadReplicasList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterPropertiesReadReplicasList>;
@@ -199,7 +289,8 @@ export const PrivateEndpointProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpointProperty>;
 
 /** Group ids of the private endpoint connection. */
-export type PrivateEndpointConnectionSimplePropertiesGroupIdsList = string[];
+export type PrivateEndpointConnectionSimplePropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionSimplePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -209,8 +300,7 @@ export const PrivateEndpointConnectionSimplePropertiesGroupIdsList =
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -285,7 +375,7 @@ export const SimplePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint connections for a cluster. */
 export type ClusterPropertiesPrivateEndpointConnectionsList =
-  SimplePrivateEndpointConnection[];
+  ReadonlyArray<SimplePrivateEndpointConnection>;
 export const ClusterPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     SimplePrivateEndpointConnection,
@@ -561,7 +651,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** The list of clusters */
-export type ClusterListResultValueList = Cluster[];
+export type ClusterListResultValueList = ReadonlyArray<Cluster>;
 export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
@@ -732,6 +822,70 @@ export const ClustersStopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClustersStopResponse",
 }) as any as S.Schema<ClustersStopResponse>;
 
+/** The properties used to update a cluster. */
+export interface ClusterPropertiesForUpdateInput {
+  /** The password of the administrator login. Each cluster is created with pre-defined administrative role called ‘citus’. */
+  administratorLoginPassword?: string | Redacted.Redacted<string>;
+  /** The major PostgreSQL version on all cluster servers. */
+  postgresqlVersion?: string;
+  /** The Citus extension version on all cluster servers. */
+  citusVersion?: string;
+  /** If distributed tables are placed on coordinator or not. Should be set to 'true' on single node clusters. Requires shard rebalancing after value is changed. */
+  enableShardsOnCoordinator?: boolean;
+  /** If high availability (HA) is enabled or not for the cluster. */
+  enableHa?: boolean;
+  /** Preferred primary availability zone (AZ) for all cluster servers. */
+  preferredPrimaryZone?: string;
+  /** The edition of the coordinator (default: GeneralPurpose). */
+  coordinatorServerEdition?: string;
+  /** The storage of the coordinator in MB. */
+  coordinatorStorageQuotaInMb?: number;
+  /** The vCores count of the coordinator (max: 96). */
+  coordinatorVCores?: number;
+  /** If public access is enabled on coordinator. */
+  coordinatorEnablePublicIpAccess?: boolean;
+  /** The edition of a node (default: MemoryOptimized). */
+  nodeServerEdition?: string;
+  /** Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. */
+  nodeCount?: number;
+  /** The storage in MB on each worker node. */
+  nodeStorageQuotaInMb?: number;
+  /** The compute in vCores on each worker node (max: 104). */
+  nodeVCores?: number;
+  /** Maintenance window of a cluster. */
+  maintenanceWindow?: MaintenanceWindow;
+}
+export const ClusterPropertiesForUpdateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    postgresqlVersion: S.optional(S.String),
+    citusVersion: S.optional(S.String),
+    enableShardsOnCoordinator: S.optional(S.Boolean),
+    enableHa: S.optional(S.Boolean),
+    preferredPrimaryZone: S.optional(S.String),
+    coordinatorServerEdition: S.optional(S.String),
+    coordinatorStorageQuotaInMb: S.optional(S.Number),
+    coordinatorVCores: S.optional(S.Number),
+    coordinatorEnablePublicIpAccess: S.optional(S.Boolean),
+    nodeServerEdition: S.optional(S.String),
+    nodeCount: S.optional(S.Number),
+    nodeStorageQuotaInMb: S.optional(S.Number),
+    nodeVCores: S.optional(S.Number),
+    maintenanceWindow: S.optional(MaintenanceWindow),
+  }),
+).annotate({
+  identifier: "ClusterPropertiesForUpdateInput",
+}) as any as S.Schema<ClusterPropertiesForUpdateInput>;
+
+/** Application-specific metadata in the form of key-value pairs. */
+export type ClustersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ClustersUpdateRequestTagsMap>;
+
 export interface ClustersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -739,14 +893,18 @@ export interface ClustersUpdateRequest {
   resourceGroupName: string;
   /** The name of the cluster. */
   clusterName: string;
-  body: unknown;
+  /** Properties of the cluster. */
+  properties?: ClusterPropertiesForUpdateInput;
+  /** Application-specific metadata in the form of key-value pairs. */
+  tags?: ClustersUpdateRequestTagsMap;
 }
 export const ClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ClusterPropertiesForUpdateInput),
+    tags: S.optional(ClustersUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -831,12 +989,11 @@ export type ConfigurationPropertiesDataType =
   | "Boolean"
   | "Numeric"
   | "Integer"
-  | "Enumeration"
-  | (string & {});
+  | "Enumeration";
 export const ConfigurationPropertiesDataType = /*@__PURE__*/ S.String;
 
 /** The role of a server. */
-export type ServerRole = "Coordinator" | "Worker" | (string & {});
+export type ServerRole = "Coordinator" | "Worker";
 export const ServerRole = /*@__PURE__*/ S.String;
 
 /** Represents server role group configuration value. */
@@ -863,7 +1020,7 @@ export const ServerRoleGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of server role group configuration values. */
 export type ConfigurationPropertiesServerRoleGroupConfigurationsList =
-  ServerRoleGroupConfiguration[];
+  ReadonlyArray<ServerRoleGroupConfiguration>;
 export const ConfigurationPropertiesServerRoleGroupConfigurationsList =
   /*@__PURE__*/ S.Array(
     ServerRoleGroupConfiguration,
@@ -874,8 +1031,7 @@ export type ProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "InProgress"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of configuration. */
@@ -964,8 +1120,7 @@ export type ServerConfigurationPropertiesDataType =
   | "Boolean"
   | "Numeric"
   | "Integer"
-  | "Enumeration"
-  | (string & {});
+  | "Enumeration";
 export const ServerConfigurationPropertiesDataType = /*@__PURE__*/ S.String;
 
 /** The properties of a configuration. */
@@ -1128,7 +1283,8 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** The list of cluster configurations. */
-export type ClusterConfigurationListResultValueList = Configuration[];
+export type ClusterConfigurationListResultValueList =
+  ReadonlyArray<Configuration>;
 export const ClusterConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ClusterConfigurationListResultValueList>;
@@ -1203,7 +1359,8 @@ export const ServerConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerConfiguration>;
 
 /** The list of server configurations. */
-export type ServerConfigurationListResultValueList = ServerConfiguration[];
+export type ServerConfigurationListResultValueList =
+  ReadonlyArray<ServerConfiguration>;
 export const ServerConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   ServerConfiguration,
 ) as any as S.Schema<ServerConfigurationListResultValueList>;
@@ -1224,6 +1381,19 @@ export const ServerConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServerConfigurationListResult",
 }) as any as S.Schema<ServerConfigurationListResult>;
 
+/** The properties of a configuration. */
+export interface ServerConfigurationPropertiesInput {
+  /** Value of the configuration. */
+  value: string;
+}
+export const ServerConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.String,
+  }),
+).annotate({
+  identifier: "ServerConfigurationPropertiesInput",
+}) as any as S.Schema<ServerConfigurationPropertiesInput>;
+
 export interface ConfigurationsUpdateOnCoordinatorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1233,7 +1403,8 @@ export interface ConfigurationsUpdateOnCoordinatorRequest {
   clusterName: string;
   /** The name of the cluster configuration. */
   configurationName: string;
-  body: unknown;
+  /** The properties of a configuration. */
+  properties?: ServerConfigurationPropertiesInput;
 }
 export const ConfigurationsUpdateOnCoordinatorRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1242,7 +1413,7 @@ export const ConfigurationsUpdateOnCoordinatorRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       configurationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ServerConfigurationPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1289,7 +1460,8 @@ export interface ConfigurationsUpdateOnNodeRequest {
   clusterName: string;
   /** The name of the cluster configuration. */
   configurationName: string;
-  body: unknown;
+  /** The properties of a configuration. */
+  properties?: ServerConfigurationPropertiesInput;
 }
 export const ConfigurationsUpdateOnNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1297,7 +1469,7 @@ export const ConfigurationsUpdateOnNodeRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     configurationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ServerConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1334,6 +1506,22 @@ export const ConfigurationsUpdateOnNodeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationsUpdateOnNodeResponse",
 }) as any as S.Schema<ConfigurationsUpdateOnNodeResponse>;
 
+/** The properties of a cluster firewall rule. */
+export interface FirewallRulePropertiesInput {
+  /** The start IP address of the cluster firewall rule. Must be IPv4 format. */
+  startIpAddress: string;
+  /** The end IP address of the cluster firewall rule. Must be IPv4 format. */
+  endIpAddress: string;
+}
+export const FirewallRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startIpAddress: S.String,
+    endIpAddress: S.String,
+  }),
+).annotate({
+  identifier: "FirewallRulePropertiesInput",
+}) as any as S.Schema<FirewallRulePropertiesInput>;
+
 export interface FirewallRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1343,7 +1531,8 @@ export interface FirewallRulesCreateOrUpdateRequest {
   clusterName: string;
   /** The name of the cluster firewall rule. */
   firewallRuleName: string;
-  body: unknown;
+  /** The properties of a firewall rule. */
+  properties: FirewallRulePropertiesInput;
 }
 export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1351,7 +1540,7 @@ export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     firewallRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: FirewallRulePropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1543,7 +1732,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
 /** The list of firewall rules in a cluster. */
-export type FirewallRuleListResultValueList = FirewallRule[];
+export type FirewallRuleListResultValueList = ReadonlyArray<FirewallRule>;
 export const FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListResultValueList>;
@@ -1598,11 +1787,7 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation. */
-export type OperationOrigin =
-  | "NotSpecified"
-  | "user"
-  | "system"
-  | (string & {});
+export type OperationOrigin = "NotSpecified" | "user" | "system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Additional descriptions for the operation. */
@@ -1636,7 +1821,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Collection of available operation details. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1657,56 +1842,13 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
-export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the cluster. */
-  clusterName: string;
-  /** The name of the private endpoint connection associated with the cluster. */
-  privateEndpointConnectionName: string;
-  body: unknown;
-}
-export const PrivateEndpointConnectionsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2022-11-08",
-      }),
-    ),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
-  }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
-
-/** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
-export const PrivateEndpointConnectionPropertiesGroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** The private endpoint resource. */
-export interface PrivateEndpoint {
-  /** The ARM identifier for private endpoint. */
-  id?: string;
-}
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "PrivateEndpoint",
-}) as any as S.Schema<PrivateEndpoint>;
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -1727,13 +1869,82 @@ export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkServiceConnectionState",
 }) as any as S.Schema<PrivateLinkServiceConnectionState>;
 
+/** Properties of the private endpoint connection. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** The private endpoint resource. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
+export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the cluster. */
+  clusterName: string;
+  /** The name of the private endpoint connection associated with the cluster. */
+  privateEndpointConnectionName: string;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
+}
+export const PrivateEndpointConnectionsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/privateEndpointConnections/{privateEndpointConnectionName}",
+        code: 200,
+        apiVersion: "2022-11-08",
+      }),
+    ),
+  ).annotate({
+    identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
+  }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
+
+/** The group ids for the private endpoint resource. */
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
+export const PrivateEndpointConnectionPropertiesGroupIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
+/** The private endpoint resource. */
+export interface PrivateEndpoint {
+  /** The ARM identifier for private endpoint. */
+  id?: string;
+}
+export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateEndpoint",
+}) as any as S.Schema<PrivateEndpoint>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1928,7 +2139,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** Array of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnectionListResultValueItem[];
+  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -1976,14 +2187,16 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2090,7 +2303,7 @@ export const PrivateLinkResourceListResultValueItem = /*@__PURE__*/ S.suspend(
 
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList =
-  PrivateLinkResourceListResultValueItem[];
+  ReadonlyArray<PrivateLinkResourceListResultValueItem>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResourceListResultValueItem,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -2108,6 +2321,19 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResourceListResult",
 }) as any as S.Schema<PrivateLinkResourceListResult>;
 
+/** The properties of a cluster role. */
+export interface RolePropertiesInput {
+  /** The password of the cluster role. */
+  password: string | Redacted.Redacted<string>;
+}
+export const RolePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    password: S.String.pipe(T.SensitiveValue({})),
+  }),
+).annotate({
+  identifier: "RolePropertiesInput",
+}) as any as S.Schema<RolePropertiesInput>;
+
 export interface RolesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2117,7 +2343,8 @@ export interface RolesCreateRequest {
   clusterName: string;
   /** The name of the cluster role. */
   roleName: string;
-  body: unknown;
+  /** The properties of a role. */
+  properties: RolePropertiesInput;
 }
 export const RolesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2125,7 +2352,7 @@ export const RolesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     roleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: RolePropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2312,7 +2539,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
 /** The list of roles in a cluster. */
-export type RoleListResultValueList = Role[];
+export type RoleListResultValueList = ReadonlyArray<Role>;
 export const RoleListResultValueList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<RoleListResultValueList>;
@@ -2481,7 +2708,7 @@ export const ClusterServer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterServer" }) as any as S.Schema<ClusterServer>;
 
 /** The list of servers in a cluster. */
-export type ClusterServerListResultValueList = ClusterServer[];
+export type ClusterServerListResultValueList = ReadonlyArray<ClusterServer>;
 export const ClusterServerListResultValueList = /*@__PURE__*/ S.Array(
   ClusterServer,
 ) as any as S.Schema<ClusterServerListResultValueList>;

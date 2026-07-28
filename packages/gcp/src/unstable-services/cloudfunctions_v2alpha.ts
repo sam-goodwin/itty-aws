@@ -96,7 +96,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -205,8 +205,7 @@ export type GoogleCloudFunctionsV2alphaStateMessageSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const GoogleCloudFunctionsV2alphaStateMessageSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -231,7 +230,7 @@ export const GoogleCloudFunctionsV2alphaStateMessage = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudFunctionsV2alphaStateMessage>;
 
 export type GoogleCloudFunctionsV2alphaStateMessageList =
-  GoogleCloudFunctionsV2alphaStateMessage[];
+  ReadonlyArray<GoogleCloudFunctionsV2alphaStateMessage>;
 export const GoogleCloudFunctionsV2alphaStateMessageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudFunctionsV2alphaStateMessage,
@@ -317,8 +316,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type BuildConfigDockerRegistryEnum =
   | "DOCKER_REGISTRY_UNSPECIFIED"
   | "CONTAINER_REGISTRY"
-  | "ARTIFACT_REGISTRY"
-  | (string & {});
+  | "ARTIFACT_REGISTRY";
 export const BuildConfigDockerRegistryEnum = /*@__PURE__*/ S.String;
 
 /** Provenance of the source. Ways to find the original source, or verify that some source was used for this build. */
@@ -406,8 +404,7 @@ export type Cloudfunctions_FunctionStateEnum =
   | "DELETING"
   | "UNKNOWN"
   | "DETACHING"
-  | "DETACH_FAILED"
-  | (string & {});
+  | "DETACH_FAILED";
 export const Cloudfunctions_FunctionStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. */
@@ -430,7 +427,7 @@ export const SecretEnvVar = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretEnvVar" }) as any as S.Schema<SecretEnvVar>;
 
-export type SecretEnvVarList = SecretEnvVar[];
+export type SecretEnvVarList = ReadonlyArray<SecretEnvVar>;
 export const SecretEnvVarList = /*@__PURE__*/ S.Array(
   SecretEnvVar,
 ) as any as S.Schema<SecretEnvVarList>;
@@ -438,15 +435,13 @@ export const SecretEnvVarList = /*@__PURE__*/ S.Array(
 export type ServiceConfigSecurityLevelEnum =
   | "SECURITY_LEVEL_UNSPECIFIED"
   | "SECURE_ALWAYS"
-  | "SECURE_OPTIONAL"
-  | (string & {});
+  | "SECURE_OPTIONAL";
 export const ServiceConfigSecurityLevelEnum = /*@__PURE__*/ S.String;
 
 export type ServiceConfigVpcConnectorEgressSettingsEnum =
   | "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED"
   | "PRIVATE_RANGES_ONLY"
-  | "ALL_TRAFFIC"
-  | (string & {});
+  | "ALL_TRAFFIC";
 export const ServiceConfigVpcConnectorEgressSettingsEnum =
   /*@__PURE__*/ S.String;
 
@@ -464,7 +459,7 @@ export const SecretVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretVersion" }) as any as S.Schema<SecretVersion>;
 
-export type SecretVersionList = SecretVersion[];
+export type SecretVersionList = ReadonlyArray<SecretVersion>;
 export const SecretVersionList = /*@__PURE__*/ S.Array(
   SecretVersion,
 ) as any as S.Schema<SecretVersionList>;
@@ -489,7 +484,7 @@ export const SecretVolume = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretVolume" }) as any as S.Schema<SecretVolume>;
 
-export type SecretVolumeList = SecretVolume[];
+export type SecretVolumeList = ReadonlyArray<SecretVolume>;
 export const SecretVolumeList = /*@__PURE__*/ S.Array(
   SecretVolume,
 ) as any as S.Schema<SecretVolumeList>;
@@ -498,11 +493,10 @@ export type ServiceConfigIngressSettingsEnum =
   | "INGRESS_SETTINGS_UNSPECIFIED"
   | "ALLOW_ALL"
   | "ALLOW_INTERNAL_ONLY"
-  | "ALLOW_INTERNAL_AND_GCLB"
-  | (string & {});
+  | "ALLOW_INTERNAL_AND_GCLB";
 export const ServiceConfigIngressSettingsEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -526,7 +520,8 @@ export const DirectVpcNetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "DirectVpcNetworkInterface",
 }) as any as S.Schema<DirectVpcNetworkInterface>;
 
-export type DirectVpcNetworkInterfaceList = DirectVpcNetworkInterface[];
+export type DirectVpcNetworkInterfaceList =
+  ReadonlyArray<DirectVpcNetworkInterface>;
 export const DirectVpcNetworkInterfaceList = /*@__PURE__*/ S.Array(
   DirectVpcNetworkInterface,
 ) as any as S.Schema<DirectVpcNetworkInterfaceList>;
@@ -534,8 +529,7 @@ export const DirectVpcNetworkInterfaceList = /*@__PURE__*/ S.Array(
 export type ServiceConfigDirectVpcEgressEnum =
   | "DIRECT_VPC_EGRESS_UNSPECIFIED"
   | "VPC_EGRESS_PRIVATE_RANGES_ONLY"
-  | "VPC_EGRESS_ALL_TRAFFIC"
-  | (string & {});
+  | "VPC_EGRESS_ALL_TRAFFIC";
 export const ServiceConfigDirectVpcEgressEnum = /*@__PURE__*/ S.String;
 
 /** Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). */
@@ -614,8 +608,7 @@ export const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
 export type Cloudfunctions_FunctionEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "GEN_1"
-  | "GEN_2"
-  | (string & {});
+  | "GEN_2";
 export const Cloudfunctions_FunctionEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export type UpgradeInfoUpgradeStateEnum =
@@ -632,15 +625,13 @@ export type UpgradeInfoUpgradeStateEnum =
   | "COMMIT_FUNCTION_UPGRADE_ERROR"
   | "COMMIT_FUNCTION_UPGRADE_ERROR_ROLLBACK_SAFE"
   | "COMMIT_FUNCTION_UPGRADE_AS_GEN2_SUCCESSFUL"
-  | "COMMIT_FUNCTION_UPGRADE_AS_GEN2_ERROR"
-  | (string & {});
+  | "COMMIT_FUNCTION_UPGRADE_AS_GEN2_ERROR";
 export const UpgradeInfoUpgradeStateEnum = /*@__PURE__*/ S.String;
 
 export type EventTriggerRetryPolicyEnum =
   | "RETRY_POLICY_UNSPECIFIED"
   | "RETRY_POLICY_DO_NOT_RETRY"
-  | "RETRY_POLICY_RETRY"
-  | (string & {});
+  | "RETRY_POLICY_RETRY";
 export const EventTriggerRetryPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Filters events based on exact matches on the CloudEvents attributes. */
@@ -660,7 +651,7 @@ export const EventFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventFilter" }) as any as S.Schema<EventFilter>;
 
-export type EventFilterList = EventFilter[];
+export type EventFilterList = ReadonlyArray<EventFilter>;
 export const EventFilterList = /*@__PURE__*/ S.Array(
   EventFilter,
 ) as any as S.Schema<EventFilterList>;
@@ -898,8 +889,7 @@ export const GenerateDownloadUrlResponse = /*@__PURE__*/ S.suspend(() =>
 export type GenerateUploadUrlRequestEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "GEN_1"
-  | "GEN_2"
-  | (string & {});
+  | "GEN_2";
 export const GenerateUploadUrlRequestEnvironmentEnum = /*@__PURE__*/ S.String;
 
 /** Request of `GenerateSourceUploadUrl` method. */
@@ -1015,7 +1005,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1024,8 +1014,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1042,7 +1031,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1061,7 +1050,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1180,7 +1169,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1232,7 +1221,8 @@ export const ListProjectsLocationsFunctionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsFunctionsRequest",
 }) as any as S.Schema<ListProjectsLocationsFunctionsRequest>;
 
-export type Cloudfunctions_FunctionList = Cloudfunctions_Function[];
+export type Cloudfunctions_FunctionList =
+  ReadonlyArray<Cloudfunctions_Function>;
 export const Cloudfunctions_FunctionList = /*@__PURE__*/ S.Array(
   Cloudfunctions_Function,
 ) as any as S.Schema<Cloudfunctions_FunctionList>;
@@ -1287,7 +1277,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1355,8 +1345,7 @@ export const Cloudfunctions_Date = /*@__PURE__*/ S.suspend(() =>
 export type RuntimeEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "GEN_1"
-  | "GEN_2"
-  | (string & {});
+  | "GEN_2";
 export const RuntimeEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export type RuntimeStageEnum =
@@ -1366,8 +1355,7 @@ export type RuntimeStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED"
-  | "DECOMMISSIONED"
-  | (string & {});
+  | "DECOMMISSIONED";
 export const RuntimeStageEnum = /*@__PURE__*/ S.String;
 
 /** Describes a runtime and any special information (e.g., deprecation status) related to it. */
@@ -1399,7 +1387,7 @@ export const Runtime = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Runtime" }) as any as S.Schema<Runtime>;
 
-export type RuntimeList = Runtime[];
+export type RuntimeList = ReadonlyArray<Runtime>;
 export const RuntimeList = /*@__PURE__*/ S.Array(
   Runtime,
 ) as any as S.Schema<RuntimeList>;

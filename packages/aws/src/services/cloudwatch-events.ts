@@ -188,8 +188,7 @@ export type ReplayState =
   | "CANCELLING"
   | "COMPLETED"
   | "CANCELLED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ReplayState = /*@__PURE__*/ S.String;
 
 export type ReplayStateReason = string;
@@ -218,8 +217,7 @@ export type ApiDestinationHttpMethod =
   | "OPTIONS"
   | "PUT"
   | "PATCH"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const ApiDestinationHttpMethod = /*@__PURE__*/ S.String;
 
 export type ApiDestinationInvocationRateLimitPerSecond = number;
@@ -254,7 +252,7 @@ export const CreateApiDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateApiDestinationRequest",
 }) as any as S.Schema<CreateApiDestinationRequest>;
 export type ApiDestinationArn = string;
-export type ApiDestinationState = "ACTIVE" | "INACTIVE" | (string & {});
+export type ApiDestinationState = "ACTIVE" | "INACTIVE";
 export const ApiDestinationState = /*@__PURE__*/ S.String;
 
 export interface CreateApiDestinationResponse {
@@ -315,8 +313,7 @@ export type ArchiveState =
   | "CREATING"
   | "UPDATING"
   | "CREATE_FAILED"
-  | "UPDATE_FAILED"
-  | (string & {});
+  | "UPDATE_FAILED";
 export const ArchiveState = /*@__PURE__*/ S.String;
 
 export type ArchiveStateReason = string;
@@ -341,8 +338,7 @@ export type ConnectionDescription = string;
 export type ConnectionAuthorizationType =
   | "BASIC"
   | "OAUTH_CLIENT_CREDENTIALS"
-  | "API_KEY"
-  | (string & {});
+  | "API_KEY";
 export const ConnectionAuthorizationType = /*@__PURE__*/ S.String;
 
 export type AuthHeaderParameters = string;
@@ -367,7 +363,7 @@ export const CreateConnectionOAuthClientRequestParameters =
   ).annotate({
     identifier: "CreateConnectionOAuthClientRequestParameters",
   }) as any as S.Schema<CreateConnectionOAuthClientRequestParameters>;
-export type ConnectionOAuthHttpMethod = "GET" | "POST" | "PUT" | (string & {});
+export type ConnectionOAuthHttpMethod = "GET" | "POST" | "PUT";
 export const ConnectionOAuthHttpMethod = /*@__PURE__*/ S.String;
 
 export type HeaderKey = string;
@@ -525,8 +521,7 @@ export type ConnectionState =
   | "AUTHORIZED"
   | "DEAUTHORIZED"
   | "AUTHORIZING"
-  | "DEAUTHORIZING"
-  | (string & {});
+  | "DEAUTHORIZING";
 export const ConnectionState = /*@__PURE__*/ S.String;
 
 export interface CreateConnectionResponse {
@@ -1108,7 +1103,7 @@ export const DescribeEventSourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEventSourceRequest",
 }) as any as S.Schema<DescribeEventSourceRequest>;
-export type EventSourceState = "PENDING" | "ACTIVE" | "DELETED" | (string & {});
+export type EventSourceState = "PENDING" | "ACTIVE" | "DELETED";
 export const EventSourceState = /*@__PURE__*/ S.String;
 
 export interface DescribeEventSourceResponse {
@@ -1245,7 +1240,7 @@ export const DescribeRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRuleRequest>;
 export type RuleArn = string;
 export type ScheduleExpression = string;
-export type RuleState = "ENABLED" | "DISABLED" | (string & {});
+export type RuleState = "ENABLED" | "DISABLED";
 export const RuleState = /*@__PURE__*/ S.String;
 
 export type RuleDescription = string;
@@ -2023,12 +2018,12 @@ export const RunCommandParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunCommandParameters",
 }) as any as S.Schema<RunCommandParameters>;
 export type LimitMin1 = number;
-export type LaunchType = "EC2" | "FARGATE" | "EXTERNAL" | (string & {});
+export type LaunchType = "EC2" | "FARGATE" | "EXTERNAL";
 export const LaunchType = /*@__PURE__*/ S.String;
 
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
-export type AssignPublicIp = "ENABLED" | "DISABLED" | (string & {});
+export type AssignPublicIp = "ENABLED" | "DISABLED";
 export const AssignPublicIp = /*@__PURE__*/ S.String;
 
 export interface AwsVpcConfiguration {
@@ -2074,10 +2069,7 @@ export type CapacityProviderStrategy = CapacityProviderStrategyItem[];
 export const CapacityProviderStrategy = /*@__PURE__*/ S.Array(
   CapacityProviderStrategyItem,
 );
-export type PlacementConstraintType =
-  | "distinctInstance"
-  | "memberOf"
-  | (string & {});
+export type PlacementConstraintType = "distinctInstance" | "memberOf";
 export const PlacementConstraintType = /*@__PURE__*/ S.String;
 
 export type PlacementConstraintExpression = string;
@@ -2095,11 +2087,7 @@ export const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementConstraint>;
 export type PlacementConstraints = PlacementConstraint[];
 export const PlacementConstraints = /*@__PURE__*/ S.Array(PlacementConstraint);
-export type PlacementStrategyType =
-  | "random"
-  | "spread"
-  | "binpack"
-  | (string & {});
+export type PlacementStrategyType = "random" | "spread" | "binpack";
 export const PlacementStrategyType = /*@__PURE__*/ S.String;
 
 export type PlacementStrategyField = string;
@@ -2117,7 +2105,7 @@ export const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementStrategy>;
 export type PlacementStrategies = PlacementStrategy[];
 export const PlacementStrategies = /*@__PURE__*/ S.Array(PlacementStrategy);
-export type PropagateTags = "TASK_DEFINITION" | (string & {});
+export type PropagateTags = "TASK_DEFINITION";
 export const PropagateTags = /*@__PURE__*/ S.String;
 
 export type ReferenceId = string;

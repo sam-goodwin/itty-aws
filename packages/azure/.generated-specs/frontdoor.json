@@ -89,10 +89,10 @@
             "smithy.api#documentation": "Name of the Front Door which is globally unique."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "hostName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The host name of the custom domain. Must be a domain name.",
             "smithy.api#required": {}
           }
         }
@@ -777,11 +777,10 @@
             "smithy.api#documentation": "Name of the Rules Engine which is unique within the Front Door."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.frontdoor#RulesEngineProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the Rules Engine Configuration."
           }
         }
       },
@@ -1039,16 +1038,25 @@
             "smithy.api#documentation": "Name of the Front Door which is globally unique."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "contentPaths": {
+          "target": "com.azure.frontdoor#EndpointsPurgeContentRequestContentPathsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The path to the content to be purged. Can describe a file path or a wild card directory.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.frontdoor#EndpointsPurgeContentRequestContentPathsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The path to the content to be purged. Can describe a file path or a wild card directory."
       }
     },
     "com.azure.frontdoor#FrontendEndpointsEnableHttps": {
@@ -1105,16 +1113,164 @@
             "smithy.api#documentation": "Name of the Frontend endpoint which is unique within the Front Door."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "certificateSource": {
+          "target": "com.azure.frontdoor#FrontDoorCertificateSource",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Defines the source of the SSL certificate",
             "smithy.api#required": {}
+          }
+        },
+        "protocolType": {
+          "target": "com.azure.frontdoor#FrontDoorTlsProtocolType",
+          "traits": {
+            "smithy.api#documentation": "Defines the TLS extension protocol that is used for secure delivery",
+            "smithy.api#required": {}
+          }
+        },
+        "minimumTlsVersion": {
+          "target": "com.azure.frontdoor#MinimumTLSVersion",
+          "traits": {
+            "smithy.api#documentation": "The minimum TLS version required from the clients to establish an SSL handshake with Front Door.",
+            "smithy.api#required": {}
+          }
+        },
+        "keyVaultCertificateSourceParameters": {
+          "target": "com.azure.frontdoor#KeyVaultCertificateSourceParameters",
+          "traits": {
+            "smithy.api#documentation": "KeyVault certificate source parameters (if certificateSource=AzureKeyVault)"
+          }
+        },
+        "frontDoorCertificateSourceParameters": {
+          "target": "com.azure.frontdoor#FrontDoorCertificateSourceParameters",
+          "traits": {
+            "smithy.api#documentation": "Parameters required for enabling SSL with Front Door-managed certificates (if certificateSource=FrontDoor)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.frontdoor#FrontDoorCertificateSourceParameters": {
+      "type": "structure",
+      "members": {
+        "certificateType": {
+          "target": "com.azure.frontdoor#FrontDoorCertificateType",
+          "traits": {
+            "smithy.api#documentation": "Defines the type of the certificate used for secure connections to a frontendEndpoint"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters required for enabling SSL with Front Door-managed certificates"
+      }
+    },
+    "com.azure.frontdoor#FrontDoorCertificateType": {
+      "type": "enum",
+      "members": {
+        "DEDICATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Dedicated"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the type of the certificate used for secure connections to a frontendEndpoint"
+      }
+    },
+    "com.azure.frontdoor#KeyVaultCertificateSourceParameters": {
+      "type": "structure",
+      "members": {
+        "vault": {
+          "target": "com.azure.frontdoor#KeyVaultCertificateSourceParametersVault",
+          "traits": {
+            "smithy.api#documentation": "The Key Vault containing the SSL certificate"
+          }
+        },
+        "secretName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Key Vault secret representing the full certificate PFX"
+          }
+        },
+        "secretVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the Key Vault secret representing the full certificate PFX"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters required for bring-your-own-certification via Key Vault"
+      }
+    },
+    "com.azure.frontdoor#KeyVaultCertificateSourceParametersVault": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Key Vault containing the SSL certificate"
+      }
+    },
+    "com.azure.frontdoor#MinimumTLSVersion": {
+      "type": "enum",
+      "members": {
+        "_1_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.0"
+          }
+        },
+        "_1_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1.2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The minimum TLS version required from the clients to establish an SSL handshake with Front Door."
+      }
+    },
+    "com.azure.frontdoor#FrontDoorTlsProtocolType": {
+      "type": "enum",
+      "members": {
+        "SERVERNAMEINDICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerNameIndication"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the TLS extension protocol that is used for secure delivery"
+      }
+    },
+    "com.azure.frontdoor#FrontDoorCertificateSource": {
+      "type": "enum",
+      "members": {
+        "AZUREKEYVAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureKeyVault"
+          }
+        },
+        "FRONTDOOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FrontDoor"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the source of the SSL certificate"
       }
     },
     "com.azure.frontdoor#FrontendEndpointsDisableHttps": {
@@ -1322,128 +1478,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Https settings for a domain"
-      }
-    },
-    "com.azure.frontdoor#FrontDoorCertificateSourceParameters": {
-      "type": "structure",
-      "members": {
-        "certificateType": {
-          "target": "com.azure.frontdoor#FrontDoorCertificateType",
-          "traits": {
-            "smithy.api#documentation": "Defines the type of the certificate used for secure connections to a frontendEndpoint"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parameters required for enabling SSL with Front Door-managed certificates"
-      }
-    },
-    "com.azure.frontdoor#FrontDoorCertificateType": {
-      "type": "enum",
-      "members": {
-        "DEDICATED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Dedicated"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Defines the type of the certificate used for secure connections to a frontendEndpoint"
-      }
-    },
-    "com.azure.frontdoor#KeyVaultCertificateSourceParameters": {
-      "type": "structure",
-      "members": {
-        "vault": {
-          "target": "com.azure.frontdoor#KeyVaultCertificateSourceParametersVault",
-          "traits": {
-            "smithy.api#documentation": "The Key Vault containing the SSL certificate"
-          }
-        },
-        "secretName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the Key Vault secret representing the full certificate PFX"
-          }
-        },
-        "secretVersion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The version of the Key Vault secret representing the full certificate PFX"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Parameters required for bring-your-own-certification via Key Vault"
-      }
-    },
-    "com.azure.frontdoor#KeyVaultCertificateSourceParametersVault": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Resource ID."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The Key Vault containing the SSL certificate"
-      }
-    },
-    "com.azure.frontdoor#MinimumTLSVersion": {
-      "type": "enum",
-      "members": {
-        "_1_0": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "1.0"
-          }
-        },
-        "_1_2": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "1.2"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The minimum TLS version required from the clients to establish an SSL handshake with Front Door."
-      }
-    },
-    "com.azure.frontdoor#FrontDoorTlsProtocolType": {
-      "type": "enum",
-      "members": {
-        "SERVERNAMEINDICATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ServerNameIndication"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Defines the TLS extension protocol that is used for secure delivery"
-      }
-    },
-    "com.azure.frontdoor#FrontDoorCertificateSource": {
-      "type": "enum",
-      "members": {
-        "AZUREKEYVAULT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AzureKeyVault"
-          }
-        },
-        "FRONTDOOR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "FrontDoor"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Defines the source of the SSL certificate"
       }
     },
     "com.azure.frontdoor#CustomHttpsProvisioningSubstate": {
@@ -2684,16 +2718,270 @@
             "smithy.api#documentation": "Name of the Front Door which is globally unique."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.frontdoor#FrontDoorsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.frontdoor#FrontDoorPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Front Door Load Balancer"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.frontdoor#FrontDoorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A friendly name for the frontDoor"
+          }
+        },
+        "routingRules": {
+          "target": "com.azure.frontdoor#FrontDoorPropertiesInputRoutingRulesList",
+          "traits": {
+            "smithy.api#documentation": "Routing rules associated with this Front Door."
+          }
+        },
+        "loadBalancingSettings": {
+          "target": "com.azure.frontdoor#FrontDoorPropertiesInputLoadBalancingSettingsList",
+          "traits": {
+            "smithy.api#documentation": "Load balancing settings associated with this Front Door instance."
+          }
+        },
+        "healthProbeSettings": {
+          "target": "com.azure.frontdoor#FrontDoorPropertiesInputHealthProbeSettingsList",
+          "traits": {
+            "smithy.api#documentation": "Health probe settings associated with this Front Door instance."
+          }
+        },
+        "backendPools": {
+          "target": "com.azure.frontdoor#FrontDoorPropertiesInputBackendPoolsList",
+          "traits": {
+            "smithy.api#documentation": "Backend pools available to routing rules."
+          }
+        },
+        "frontendEndpoints": {
+          "target": "com.azure.frontdoor#FrontDoorPropertiesInputFrontendEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "Frontend endpoints available to routing rules."
+          }
+        },
+        "backendPoolsSettings": {
+          "target": "com.azure.frontdoor#BackendPoolsSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings for all backendPools"
+          }
+        },
+        "enabledState": {
+          "target": "com.azure.frontdoor#FrontDoorEnabledState",
+          "traits": {
+            "smithy.api#documentation": "Operational status of the Front Door load balancer. Permitted values are 'Enabled' or 'Disabled'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The JSON object that contains the properties required to create an endpoint."
+      }
+    },
+    "com.azure.frontdoor#FrontDoorPropertiesInputFrontendEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.frontdoor#FrontendEndpointInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Frontend endpoints available to routing rules."
+      }
+    },
+    "com.azure.frontdoor#FrontendEndpointInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource name."
+          }
+        },
+        "properties": {
+          "target": "com.azure.frontdoor#FrontendEndpointProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Frontend endpoint"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A frontend endpoint used for routing."
+      }
+    },
+    "com.azure.frontdoor#FrontDoorPropertiesInputBackendPoolsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.frontdoor#BackendPoolInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Backend pools available to routing rules."
+      }
+    },
+    "com.azure.frontdoor#BackendPoolInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        },
+        "properties": {
+          "target": "com.azure.frontdoor#BackendPoolProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Front Door Backend Pool"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A backend pool is a collection of backends that can be routed to."
+      }
+    },
+    "com.azure.frontdoor#FrontDoorPropertiesInputHealthProbeSettingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.frontdoor#HealthProbeSettingsModelInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Health probe settings associated with this Front Door instance."
+      }
+    },
+    "com.azure.frontdoor#HealthProbeSettingsModelInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        },
+        "properties": {
+          "target": "com.azure.frontdoor#HealthProbeSettingsProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the health probe settings"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Load balancing settings for a backend pool"
+      }
+    },
+    "com.azure.frontdoor#FrontDoorPropertiesInputLoadBalancingSettingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.frontdoor#LoadBalancingSettingsModelInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Load balancing settings associated with this Front Door instance."
+      }
+    },
+    "com.azure.frontdoor#LoadBalancingSettingsModelInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        },
+        "properties": {
+          "target": "com.azure.frontdoor#LoadBalancingSettingsProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the load balancing settings"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Load balancing settings for a backend pool"
+      }
+    },
+    "com.azure.frontdoor#FrontDoorPropertiesInputRoutingRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.frontdoor#RoutingRuleInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Routing rules associated with this Front Door."
+      }
+    },
+    "com.azure.frontdoor#RoutingRuleInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID."
+          }
+        },
+        "properties": {
+          "target": "com.azure.frontdoor#RoutingRuleProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Front Door Routing Rule"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A routing rule represents a specification for traffic to treat and where to send it, along with health probe information."
+      }
+    },
+    "com.azure.frontdoor#FrontDoorsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.frontdoor#FrontDoorsGet": {
@@ -4076,16 +4364,53 @@
             "smithy.api#documentation": "The Experiment identifier associated with the Experiment"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.frontdoor#ExperimentsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.frontdoor#ExperimentUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of a Profile"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.frontdoor#ExperimentUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the intent or details of the Experiment"
+          }
+        },
+        "enabledState": {
+          "target": "com.azure.frontdoor#State",
+          "traits": {
+            "smithy.api#documentation": "The state of the Experiment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the properties of an experiment"
+      }
+    },
+    "com.azure.frontdoor#ExperimentsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.frontdoor#ExperimentsCreateOrUpdate": {
@@ -4198,16 +4523,71 @@
             "smithy.api#documentation": "The Experiment identifier associated with the Experiment"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.frontdoor#ExperimentsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.frontdoor#ExperimentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of an Experiment"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.frontdoor#ExperimentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the details or intents of the Experiment"
+          }
+        },
+        "endpointA": {
+          "target": "com.azure.frontdoor#Endpoint",
+          "traits": {
+            "smithy.api#documentation": "The endpoint A of an experiment"
+          }
+        },
+        "endpointB": {
+          "target": "com.azure.frontdoor#Endpoint",
+          "traits": {
+            "smithy.api#documentation": "The endpoint B of an experiment"
+          }
+        },
+        "enabledState": {
+          "target": "com.azure.frontdoor#State",
+          "traits": {
+            "smithy.api#documentation": "The state of the Experiment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the properties of an experiment"
+      }
+    },
+    "com.azure.frontdoor#ExperimentsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.frontdoor#ExperimentsGet": {
@@ -4641,16 +5021,47 @@
             "smithy.api#documentation": "The Profile identifier associated with the Tenant and Partner"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.frontdoor#ProfileUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a Profile"
+          }
+        },
+        "tags": {
+          "target": "com.azure.frontdoor#NetworkExperimentProfilesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.frontdoor#NetworkExperimentProfilesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.frontdoor#ProfileUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "enabledState": {
+          "target": "com.azure.frontdoor#State",
+          "traits": {
+            "smithy.api#documentation": "The enabled state of the Profile"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the properties of an experiment"
       }
     },
     "com.azure.frontdoor#NetworkExperimentProfilesCreateOrUpdate": {
@@ -4761,16 +5172,45 @@
             "smithy.api#documentation": "The Profile identifier associated with the Tenant and Partner"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.frontdoor#NetworkExperimentProfilesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.frontdoor#ProfileProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of a Profile"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets a unique read-only string that changes whenever the resource is updated."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.frontdoor#NetworkExperimentProfilesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.frontdoor#NetworkExperimentProfilesGet": {
@@ -6815,16 +7255,27 @@
             "smithy.api#documentation": "The name of the Web Application Firewall Policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.frontdoor#PoliciesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.frontdoor#PoliciesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.frontdoor#PoliciesCreateOrUpdate": {
@@ -6941,16 +7392,77 @@
             "smithy.api#documentation": "The name of the Web Application Firewall Policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.frontdoor#PoliciesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.frontdoor#WebApplicationFirewallPolicyPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the web application firewall policy."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets a unique read-only string that changes whenever the resource is updated."
+          }
+        },
+        "sku": {
+          "target": "com.azure.frontdoor#Sku",
+          "traits": {
+            "smithy.api#documentation": "The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.frontdoor#WebApplicationFirewallPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "policySettings": {
+          "target": "com.azure.frontdoor#PolicySettings",
+          "traits": {
+            "smithy.api#documentation": "Describes settings for the policy."
+          }
+        },
+        "customRules": {
+          "target": "com.azure.frontdoor#CustomRuleList",
+          "traits": {
+            "smithy.api#documentation": "Describes custom rules inside the policy."
+          }
+        },
+        "managedRules": {
+          "target": "com.azure.frontdoor#ManagedRuleSetList",
+          "traits": {
+            "smithy.api#documentation": "Describes managed rules inside the policy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines web application firewall policy properties."
+      }
+    },
+    "com.azure.frontdoor#PoliciesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.frontdoor#PoliciesGet": {
@@ -7565,16 +8077,43 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource name to validate.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.frontdoor#ResourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource whose name is to be validated.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.frontdoor#ResourceType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_NETWORK_FRONTDOORS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Network/frontDoors"
+          }
+        },
+        "MICROSOFT_NETWORK_FRONTDOORS_FRONTENDENDPOINTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Network/frontDoors/frontendEndpoints"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of Front Door resource used in CheckNameAvailability."
       }
     },
     "com.azure.frontdoor#NetworkExperimentProfilesList": {
@@ -7669,10 +8208,17 @@
     "com.azure.frontdoor#FrontDoorNameAvailabilityCheckRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource name to validate.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.frontdoor#ResourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource whose name is to be validated.",
             "smithy.api#required": {}
           }
         }

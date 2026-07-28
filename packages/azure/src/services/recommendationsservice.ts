@@ -16,13 +16,17 @@ export type { AzureOpError, AzureOpContext };
 export interface AccountsCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body: unknown;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
 }
 export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -38,8 +42,7 @@ export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 /** The reason why the given name is not available. */
 export type AccountsCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const AccountsCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -62,55 +65,24 @@ export const AccountsCheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(
   identifier: "AccountsCheckNameAvailabilityResponse",
 }) as any as S.Schema<AccountsCheckNameAvailabilityResponse>;
 
-export interface AccountsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the RecommendationsService Account resource. */
-  accountName: string;
-  body: unknown;
-}
-export const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    accountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
-      code: 200,
-      apiVersion: "2022-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "AccountsCreateOrUpdateRequest",
-}) as any as S.Schema<AccountsCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type AccountsCreateOrUpdateResponseTagsMap = {
+export type AccountsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const AccountsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<AccountsCreateOrUpdateRequestTagsMap>;
 
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
-export type AccountsCreateOrUpdateResponsePropertiesConfiguration =
+export type AccountsCreateOrUpdateRequestPropertiesConfiguration =
   | "Free"
-  | "Capacity"
-  | (string & {});
-export const AccountsCreateOrUpdateResponsePropertiesConfiguration =
+  | "Capacity";
+export const AccountsCreateOrUpdateRequestPropertiesConfiguration =
   /*@__PURE__*/ S.String;
 
 /** AAD principal type. */
-export type EndpointAuthenticationPrincipalType =
-  | "Application"
-  | "User"
-  | (string & {});
+export type EndpointAuthenticationPrincipalType = "Application" | "User";
 export const EndpointAuthenticationPrincipalType = /*@__PURE__*/ S.String;
 
 /** Service endpoints authentication details. */
@@ -133,31 +105,31 @@ export const EndpointAuthentication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointAuthentication>;
 
 /** The list of service endpoints authentication details. */
-export type EndpointAuthenticationsList = EndpointAuthentication[];
+export type EndpointAuthenticationsList = ReadonlyArray<EndpointAuthentication>;
 export const EndpointAuthenticationsList = /*@__PURE__*/ S.Array(
   EndpointAuthentication,
 ) as any as S.Schema<EndpointAuthenticationsList>;
 
 /** The origin domains that are permitted to make a request against the service via CORS. */
-export type CorsRuleAllowedOriginsList = string[];
+export type CorsRuleAllowedOriginsList = ReadonlyArray<string>;
 export const CorsRuleAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedOriginsList>;
 
 /** The methods (HTTP request verbs) that the origin domain may use for a CORS request. */
-export type CorsRuleAllowedMethodsList = string[];
+export type CorsRuleAllowedMethodsList = ReadonlyArray<string>;
 export const CorsRuleAllowedMethodsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedMethodsList>;
 
 /** The request headers that the origin domain may specify on the CORS request. */
-export type CorsRuleAllowedHeadersList = string[];
+export type CorsRuleAllowedHeadersList = ReadonlyArray<string>;
 export const CorsRuleAllowedHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleAllowedHeadersList>;
 
 /** The response headers to expose to CORS clients. */
-export type CorsRuleExposedHeadersList = string[];
+export type CorsRuleExposedHeadersList = ReadonlyArray<string>;
 export const CorsRuleExposedHeadersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsRuleExposedHeadersList>;
@@ -186,10 +158,85 @@ export const CorsRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CorsRule" }) as any as S.Schema<CorsRule>;
 
 /** The list of CORS details. */
-export type CorsRuleList = CorsRule[];
+export type CorsRuleList = ReadonlyArray<CorsRule>;
 export const CorsRuleList = /*@__PURE__*/ S.Array(
   CorsRule,
 ) as any as S.Schema<CorsRuleList>;
+
+/** Account resource properties. */
+export interface AccountsCreateOrUpdateRequestProperties {
+  /** Account configuration. This can only be set at RecommendationsService Account creation. */
+  configuration?: AccountsCreateOrUpdateRequestPropertiesConfiguration;
+  /** The list of service endpoints authentication details. */
+  endpointAuthentications?: EndpointAuthenticationsList;
+  /** The list of CORS details. */
+  cors?: CorsRuleList;
+  /** Connection string to write Accounts reports to. */
+  reportsConnectionString?: string;
+}
+export const AccountsCreateOrUpdateRequestProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      configuration: S.optional(
+        AccountsCreateOrUpdateRequestPropertiesConfiguration,
+      ),
+      endpointAuthentications: S.optional(EndpointAuthenticationsList),
+      cors: S.optional(CorsRuleList),
+      reportsConnectionString: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AccountsCreateOrUpdateRequestProperties",
+}) as any as S.Schema<AccountsCreateOrUpdateRequestProperties>;
+
+export interface AccountsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the RecommendationsService Account resource. */
+  accountName: string;
+  /** Resource tags. */
+  tags?: AccountsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Account resource properties. */
+  properties?: AccountsCreateOrUpdateRequestProperties;
+}
+export const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    accountName: S.String.pipe(T.Label()),
+    tags: S.optional(AccountsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(AccountsCreateOrUpdateRequestProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecommendationsService/accounts/{accountName}",
+      code: 200,
+      apiVersion: "2022-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "AccountsCreateOrUpdateRequest",
+}) as any as S.Schema<AccountsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type AccountsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
+
+/** Account configuration. This can only be set at RecommendationsService Account creation. */
+export type AccountsCreateOrUpdateResponsePropertiesConfiguration =
+  | "Free"
+  | "Capacity";
+export const AccountsCreateOrUpdateResponsePropertiesConfiguration =
+  /*@__PURE__*/ S.String;
 
 /** Account resource properties. */
 export interface AccountsCreateOrUpdateResponseProperties {
@@ -224,8 +271,7 @@ export type AccountsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -234,8 +280,7 @@ export type AccountsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -367,10 +412,7 @@ export const AccountsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsGetResponseTagsMap>;
 
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
-export type AccountsGetResponsePropertiesConfiguration =
-  | "Free"
-  | "Capacity"
-  | (string & {});
+export type AccountsGetResponsePropertiesConfiguration = "Free" | "Capacity";
 export const AccountsGetResponsePropertiesConfiguration =
   /*@__PURE__*/ S.String;
 
@@ -404,8 +446,7 @@ export type AccountsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -414,8 +455,7 @@ export type AccountsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -522,7 +562,7 @@ export const StageStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageStatus" }) as any as S.Schema<StageStatus>;
 
 /** Scope stage statuses. */
-export type ScopeStatusesStatusesList = StageStatus[];
+export type ScopeStatusesStatusesList = ReadonlyArray<StageStatus>;
 export const ScopeStatusesStatusesList = /*@__PURE__*/ S.Array(
   StageStatus,
 ) as any as S.Schema<ScopeStatusesStatusesList>;
@@ -542,7 +582,7 @@ export const ScopeStatuses = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScopeStatuses" }) as any as S.Schema<ScopeStatuses>;
 
 /** The list of scopes statuses. */
-export type AccountStatusScopesStatusesList = ScopeStatuses[];
+export type AccountStatusScopesStatusesList = ReadonlyArray<ScopeStatuses>;
 export const AccountStatusScopesStatusesList = /*@__PURE__*/ S.Array(
   ScopeStatuses,
 ) as any as S.Schema<AccountStatusScopesStatusesList>;
@@ -588,10 +628,7 @@ export const AccountResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountResourceTagsMap>;
 
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
-export type AccountResourcePropertiesConfiguration =
-  | "Free"
-  | "Capacity"
-  | (string & {});
+export type AccountResourcePropertiesConfiguration = "Free" | "Capacity";
 export const AccountResourcePropertiesConfiguration = /*@__PURE__*/ S.String;
 
 /** Account resource properties. */
@@ -624,8 +661,7 @@ export type AccountResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountResourceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -633,8 +669,7 @@ export type AccountResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -698,7 +733,7 @@ export const AccountResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountResource>;
 
 /** The list of RecommendationsService Account resources. */
-export type AccountResourceListValueList = AccountResource[];
+export type AccountResourceListValueList = ReadonlyArray<AccountResource>;
 export const AccountResourceListValueList = /*@__PURE__*/ S.Array(
   AccountResource,
 ) as any as S.Schema<AccountResourceListValueList>;
@@ -738,6 +773,32 @@ export const AccountsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsListBySubscriptionRequest",
 }) as any as S.Schema<AccountsListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type Tags = { [key: string]: string | undefined };
+export const Tags = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<Tags>;
+
+/** Account resource patch properties. */
+export interface AccountsUpdateRequestProperties {
+  /** The list of service endpoints authentication details. */
+  endpointAuthentications?: EndpointAuthenticationsList;
+  /** The list of CORS details. */
+  cors?: CorsRuleList;
+  /** Connection string to write Accounts reports to. */
+  reportsConnectionString?: string;
+}
+export const AccountsUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpointAuthentications: S.optional(EndpointAuthenticationsList),
+    cors: S.optional(CorsRuleList),
+    reportsConnectionString: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AccountsUpdateRequestProperties",
+}) as any as S.Schema<AccountsUpdateRequestProperties>;
+
 export interface AccountsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -745,14 +806,18 @@ export interface AccountsUpdateRequest {
   resourceGroupName: string;
   /** The name of the RecommendationsService Account resource. */
   accountName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: Tags;
+  /** Account resource patch properties. */
+  properties?: AccountsUpdateRequestProperties;
 }
 export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(Tags),
+    properties: S.optional(AccountsUpdateRequestProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -775,10 +840,7 @@ export const AccountsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsUpdateResponseTagsMap>;
 
 /** Account configuration. This can only be set at RecommendationsService Account creation. */
-export type AccountsUpdateResponsePropertiesConfiguration =
-  | "Free"
-  | "Capacity"
-  | (string & {});
+export type AccountsUpdateResponsePropertiesConfiguration = "Free" | "Capacity";
 export const AccountsUpdateResponsePropertiesConfiguration =
   /*@__PURE__*/ S.String;
 
@@ -812,8 +874,7 @@ export type AccountsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -822,8 +883,7 @@ export type AccountsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const AccountsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -887,6 +947,75 @@ export const AccountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsUpdateResponse",
 }) as any as S.Schema<AccountsUpdateResponse>;
 
+/** Resource tags. */
+export type ModelingCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ModelingCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ModelingCreateOrUpdateRequestTagsMap>;
+
+/** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
+export type ModelingCreateOrUpdateRequestPropertiesFeatures =
+  | "Basic"
+  | "Standard"
+  | "Premium";
+export const ModelingCreateOrUpdateRequestPropertiesFeatures =
+  /*@__PURE__*/ S.String;
+
+/** Modeling frequency controls the modeling compute frequency. */
+export type ModelingCreateOrUpdateRequestPropertiesFrequency =
+  | "Low"
+  | "Medium"
+  | "High";
+export const ModelingCreateOrUpdateRequestPropertiesFrequency =
+  /*@__PURE__*/ S.String;
+
+/** Modeling size controls the maximum supported input data size. */
+export type ModelingCreateOrUpdateRequestPropertiesSize =
+  | "Small"
+  | "Medium"
+  | "Large";
+export const ModelingCreateOrUpdateRequestPropertiesSize =
+  /*@__PURE__*/ S.String;
+
+/** The configuration to raw CDM data to be used as Modeling resource input. */
+export interface ModelingInputData {
+  /** Connection string to raw input data. */
+  connectionString?: string | Redacted.Redacted<string>;
+}
+export const ModelingInputData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+  }),
+).annotate({
+  identifier: "ModelingInputData",
+}) as any as S.Schema<ModelingInputData>;
+
+/** Modeling resource properties. */
+export interface ModelingCreateOrUpdateRequestProperties {
+  /** Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation. */
+  features?: ModelingCreateOrUpdateRequestPropertiesFeatures;
+  /** Modeling frequency controls the modeling compute frequency. */
+  frequency?: ModelingCreateOrUpdateRequestPropertiesFrequency;
+  /** Modeling size controls the maximum supported input data size. */
+  size?: ModelingCreateOrUpdateRequestPropertiesSize;
+  /** The configuration to raw CDM data to be used as Modeling resource input. */
+  inputData?: ModelingInputData;
+}
+export const ModelingCreateOrUpdateRequestProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      features: S.optional(ModelingCreateOrUpdateRequestPropertiesFeatures),
+      frequency: S.optional(ModelingCreateOrUpdateRequestPropertiesFrequency),
+      size: S.optional(ModelingCreateOrUpdateRequestPropertiesSize),
+      inputData: S.optional(ModelingInputData),
+    }),
+).annotate({
+  identifier: "ModelingCreateOrUpdateRequestProperties",
+}) as any as S.Schema<ModelingCreateOrUpdateRequestProperties>;
+
 export interface ModelingCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -896,7 +1025,12 @@ export interface ModelingCreateOrUpdateRequest {
   accountName: string;
   /** The name of the Modeling resource. */
   modelingName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ModelingCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Modeling resource properties. */
+  properties?: ModelingCreateOrUpdateRequestProperties;
 }
 export const ModelingCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -904,7 +1038,9 @@ export const ModelingCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     modelingName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ModelingCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ModelingCreateOrUpdateRequestProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -930,8 +1066,7 @@ export const ModelingCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 export type ModelingCreateOrUpdateResponsePropertiesFeatures =
   | "Basic"
   | "Standard"
-  | "Premium"
-  | (string & {});
+  | "Premium";
 export const ModelingCreateOrUpdateResponsePropertiesFeatures =
   /*@__PURE__*/ S.String;
 
@@ -939,8 +1074,7 @@ export const ModelingCreateOrUpdateResponsePropertiesFeatures =
 export type ModelingCreateOrUpdateResponsePropertiesFrequency =
   | "Low"
   | "Medium"
-  | "High"
-  | (string & {});
+  | "High";
 export const ModelingCreateOrUpdateResponsePropertiesFrequency =
   /*@__PURE__*/ S.String;
 
@@ -948,23 +1082,9 @@ export const ModelingCreateOrUpdateResponsePropertiesFrequency =
 export type ModelingCreateOrUpdateResponsePropertiesSize =
   | "Small"
   | "Medium"
-  | "Large"
-  | (string & {});
+  | "Large";
 export const ModelingCreateOrUpdateResponsePropertiesSize =
   /*@__PURE__*/ S.String;
-
-/** The configuration to raw CDM data to be used as Modeling resource input. */
-export interface ModelingInputData {
-  /** Connection string to raw input data. */
-  connectionString?: string | Redacted.Redacted<string>;
-}
-export const ModelingInputData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({
-  identifier: "ModelingInputData",
-}) as any as S.Schema<ModelingInputData>;
 
 /** Modeling resource properties. */
 export interface ModelingCreateOrUpdateResponseProperties {
@@ -997,8 +1117,7 @@ export type ModelingCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ModelingCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1007,8 +1126,7 @@ export type ModelingCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ModelingCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1149,24 +1267,15 @@ export const ModelingGetResponseTagsMap = /*@__PURE__*/ S.Record(
 export type ModelingGetResponsePropertiesFeatures =
   | "Basic"
   | "Standard"
-  | "Premium"
-  | (string & {});
+  | "Premium";
 export const ModelingGetResponsePropertiesFeatures = /*@__PURE__*/ S.String;
 
 /** Modeling frequency controls the modeling compute frequency. */
-export type ModelingGetResponsePropertiesFrequency =
-  | "Low"
-  | "Medium"
-  | "High"
-  | (string & {});
+export type ModelingGetResponsePropertiesFrequency = "Low" | "Medium" | "High";
 export const ModelingGetResponsePropertiesFrequency = /*@__PURE__*/ S.String;
 
 /** Modeling size controls the maximum supported input data size. */
-export type ModelingGetResponsePropertiesSize =
-  | "Small"
-  | "Medium"
-  | "Large"
-  | (string & {});
+export type ModelingGetResponsePropertiesSize = "Small" | "Medium" | "Large";
 export const ModelingGetResponsePropertiesSize = /*@__PURE__*/ S.String;
 
 /** Modeling resource properties. */
@@ -1199,8 +1308,7 @@ export type ModelingGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ModelingGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1209,8 +1317,7 @@ export type ModelingGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ModelingGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1311,24 +1418,15 @@ export const ModelingResourceTagsMap = /*@__PURE__*/ S.Record(
 export type ModelingResourcePropertiesFeatures =
   | "Basic"
   | "Standard"
-  | "Premium"
-  | (string & {});
+  | "Premium";
 export const ModelingResourcePropertiesFeatures = /*@__PURE__*/ S.String;
 
 /** Modeling frequency controls the modeling compute frequency. */
-export type ModelingResourcePropertiesFrequency =
-  | "Low"
-  | "Medium"
-  | "High"
-  | (string & {});
+export type ModelingResourcePropertiesFrequency = "Low" | "Medium" | "High";
 export const ModelingResourcePropertiesFrequency = /*@__PURE__*/ S.String;
 
 /** Modeling size controls the maximum supported input data size. */
-export type ModelingResourcePropertiesSize =
-  | "Small"
-  | "Medium"
-  | "Large"
-  | (string & {});
+export type ModelingResourcePropertiesSize = "Small" | "Medium" | "Large";
 export const ModelingResourcePropertiesSize = /*@__PURE__*/ S.String;
 
 /** Modeling resource properties. */
@@ -1361,8 +1459,7 @@ export type ModelingResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ModelingResourceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -1370,8 +1467,7 @@ export type ModelingResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ModelingResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1437,7 +1533,7 @@ export const ModelingResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModelingResource>;
 
 /** The list of Modeling resources. */
-export type ModelingResourceListValueList = ModelingResource[];
+export type ModelingResourceListValueList = ReadonlyArray<ModelingResource>;
 export const ModelingResourceListValueList = /*@__PURE__*/ S.Array(
   ModelingResource,
 ) as any as S.Schema<ModelingResourceListValueList>;
@@ -1458,6 +1554,19 @@ export const ModelingResourceList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModelingResourceList",
 }) as any as S.Schema<ModelingResourceList>;
 
+/** Modeling resource properties to update. */
+export interface ModelingUpdateRequestProperties {
+  /** The configuration to raw CDM data to be used as Modeling resource input. */
+  inputData?: ModelingInputData;
+}
+export const ModelingUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inputData: S.optional(ModelingInputData),
+  }),
+).annotate({
+  identifier: "ModelingUpdateRequestProperties",
+}) as any as S.Schema<ModelingUpdateRequestProperties>;
+
 export interface ModelingUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1467,7 +1576,10 @@ export interface ModelingUpdateRequest {
   accountName: string;
   /** The name of the Modeling resource. */
   modelingName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: Tags;
+  /** Modeling resource properties to update. */
+  properties?: ModelingUpdateRequestProperties;
 }
 export const ModelingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1475,7 +1587,8 @@ export const ModelingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     modelingName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(Tags),
+    properties: S.optional(ModelingUpdateRequestProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1501,24 +1614,18 @@ export const ModelingUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 export type ModelingUpdateResponsePropertiesFeatures =
   | "Basic"
   | "Standard"
-  | "Premium"
-  | (string & {});
+  | "Premium";
 export const ModelingUpdateResponsePropertiesFeatures = /*@__PURE__*/ S.String;
 
 /** Modeling frequency controls the modeling compute frequency. */
 export type ModelingUpdateResponsePropertiesFrequency =
   | "Low"
   | "Medium"
-  | "High"
-  | (string & {});
+  | "High";
 export const ModelingUpdateResponsePropertiesFrequency = /*@__PURE__*/ S.String;
 
 /** Modeling size controls the maximum supported input data size. */
-export type ModelingUpdateResponsePropertiesSize =
-  | "Small"
-  | "Medium"
-  | "Large"
-  | (string & {});
+export type ModelingUpdateResponsePropertiesSize = "Small" | "Medium" | "Large";
 export const ModelingUpdateResponsePropertiesSize = /*@__PURE__*/ S.String;
 
 /** Modeling resource properties. */
@@ -1551,8 +1658,7 @@ export type ModelingUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ModelingUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1561,8 +1667,7 @@ export type ModelingUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ModelingUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1663,11 +1768,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1694,7 +1799,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1737,13 +1842,14 @@ export const OperationStatusesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusesGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList = OperationStatusResult[];
+export type OperationStatusResultOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1765,7 +1871,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1832,7 +1938,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusesGetResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusesGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationStatusesGetResponseOperationsList>;
@@ -1876,6 +1982,30 @@ export const OperationStatusesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationStatusesGetResponse",
 }) as any as S.Schema<OperationStatusesGetResponse>;
 
+/** Resource tags. */
+export type ServiceEndpointsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServiceEndpointsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ServiceEndpointsCreateOrUpdateRequestTagsMap>;
+
+/** ServiceEndpoint resource properties. */
+export interface ServiceEndpointsCreateOrUpdateRequestProperties {
+  /** ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity. */
+  preAllocatedCapacity?: number;
+}
+export const ServiceEndpointsCreateOrUpdateRequestProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      preAllocatedCapacity: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "ServiceEndpointsCreateOrUpdateRequestProperties",
+  }) as any as S.Schema<ServiceEndpointsCreateOrUpdateRequestProperties>;
+
 export interface ServiceEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1885,7 +2015,12 @@ export interface ServiceEndpointsCreateOrUpdateRequest {
   accountName: string;
   /** The name of the ServiceEndpoint resource. */
   serviceEndpointName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ServiceEndpointsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** ServiceEndpoint resource properties. */
+  properties?: ServiceEndpointsCreateOrUpdateRequestProperties;
 }
 export const ServiceEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1894,7 +2029,9 @@ export const ServiceEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       serviceEndpointName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ServiceEndpointsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(ServiceEndpointsCreateOrUpdateRequestProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1945,14 +2082,13 @@ export type ServiceEndpointsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ServiceEndpointsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ServiceEndpointsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ServiceEndpointsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2120,8 +2256,7 @@ export type ServiceEndpointsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ServiceEndpointsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2130,8 +2265,7 @@ export type ServiceEndpointsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ServiceEndpointsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2260,8 +2394,7 @@ export type ServiceEndpointResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ServiceEndpointResourceSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2270,8 +2403,7 @@ export type ServiceEndpointResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ServiceEndpointResourceSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2337,7 +2469,8 @@ export const ServiceEndpointResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceEndpointResource>;
 
 /** The list of ServiceEndpoint resources. */
-export type ServiceEndpointResourceListValueList = ServiceEndpointResource[];
+export type ServiceEndpointResourceListValueList =
+  ReadonlyArray<ServiceEndpointResource>;
 export const ServiceEndpointResourceListValueList = /*@__PURE__*/ S.Array(
   ServiceEndpointResource,
 ) as any as S.Schema<ServiceEndpointResourceListValueList>;
@@ -2367,7 +2500,8 @@ export interface ServiceEndpointsUpdateRequest {
   accountName: string;
   /** The name of the ServiceEndpoint resource. */
   serviceEndpointName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: Tags;
 }
 export const ServiceEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2375,7 +2509,7 @@ export const ServiceEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     serviceEndpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(Tags),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2425,8 +2559,7 @@ export type ServiceEndpointsUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ServiceEndpointsUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2435,8 +2568,7 @@ export type ServiceEndpointsUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ServiceEndpointsUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 

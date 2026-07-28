@@ -420,16 +420,44 @@
             "smithy.api#documentation": "The name of the mongo cluster user."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mongocluster#UserPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mongocluster#UserPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "identityProvider": {
+          "target": "com.azure.mongocluster#IdentityProvider",
+          "traits": {
+            "smithy.api#documentation": "The user's identity provider definition."
+          }
+        },
+        "roles": {
+          "target": "com.azure.mongocluster#UserPropertiesInputRolesList",
+          "traits": {
+            "smithy.api#documentation": "Database roles that are assigned to the user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of Mongo user resource on a cluster."
+      }
+    },
+    "com.azure.mongocluster#UserPropertiesInputRolesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.mongocluster#DatabaseRole"
+      },
+      "traits": {
+        "smithy.api#documentation": "Database roles that are assigned to the user."
       }
     },
     "com.azure.mongocluster#UsersGet": {
@@ -1712,16 +1740,50 @@
             "smithy.api#documentation": "The name of the mongo cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "promoteOption": {
+          "target": "com.azure.mongocluster#PromoteOption",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The promote option to apply to the operation.",
             "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.azure.mongocluster#PromoteMode",
+          "traits": {
+            "smithy.api#documentation": "The mode to apply to the promote operation. Value is optional and default value is 'Switchover'."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mongocluster#PromoteMode": {
+      "type": "enum",
+      "members": {
+        "SWITCHOVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Switchover"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The mode to apply to a promote operation."
+      }
+    },
+    "com.azure.mongocluster#PromoteOption": {
+      "type": "enum",
+      "members": {
+        "FORCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Forced"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The option to apply to a promote operation."
       }
     },
     "com.azure.mongocluster#PrivateLinksListByMongoCluster": {
@@ -2080,16 +2142,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mongocluster#PrivateEndpointConnectionsCreateRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the private endpoint connection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mongocluster#PrivateEndpointConnectionsCreateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.mongocluster#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.mongocluster#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.mongocluster#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.mongocluster#PrivateEndpointConnectionsGet": {
@@ -2672,16 +2761,37 @@
             "smithy.api#documentation": "The name of the mongo cluster firewall rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mongocluster#FirewallRulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mongocluster#FirewallRulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "startIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start IP address of the mongo cluster firewall rule. Must be IPv4 format.",
+            "smithy.api#required": {}
+          }
+        },
+        "endIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end IP address of the mongo cluster firewall rule. Must be IPv4 format.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a mongo cluster firewall rule."
       }
     },
     "com.azure.mongocluster#FirewallRulesGet": {
@@ -3159,16 +3269,177 @@
             "smithy.api#documentation": "The name of the mongo cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.mongocluster#MongoClustersUpdateRequestIdentity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "tags": {
+          "target": "com.azure.mongocluster#MongoClustersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.mongocluster#MongoClusterUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mongocluster#MongoClusterUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "administrator": {
+          "target": "com.azure.mongocluster#AdministratorProperties",
+          "traits": {
+            "smithy.api#documentation": "The local administrator properties for the mongo cluster."
+          }
+        },
+        "serverVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Mongo DB server version. Defaults to the latest available version if not specified."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.mongocluster#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public endpoint access is allowed for this mongo cluster."
+          }
+        },
+        "highAvailability": {
+          "target": "com.azure.mongocluster#HighAvailabilityProperties",
+          "traits": {
+            "smithy.api#documentation": "The high availability properties of the mongo cluster."
+          }
+        },
+        "storage": {
+          "target": "com.azure.mongocluster#StorageProperties",
+          "traits": {
+            "smithy.api#documentation": "The storage properties of the mongo cluster."
+          }
+        },
+        "sharding": {
+          "target": "com.azure.mongocluster#ShardingProperties",
+          "traits": {
+            "smithy.api#documentation": "The sharding properties of the mongo cluster."
+          }
+        },
+        "compute": {
+          "target": "com.azure.mongocluster#ComputeProperties",
+          "traits": {
+            "smithy.api#documentation": "The compute properties of the mongo cluster."
+          }
+        },
+        "backup": {
+          "target": "com.azure.mongocluster#BackupPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The backup properties of the mongo cluster."
+          }
+        },
+        "dataApi": {
+          "target": "com.azure.mongocluster#DataApiProperties",
+          "traits": {
+            "smithy.api#documentation": "The Data API properties of the mongo cluster."
+          }
+        },
+        "previewFeatures": {
+          "target": "com.azure.mongocluster#MongoClusterUpdatePropertiesInputPreviewFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "List of private endpoint connections."
+          }
+        },
+        "authConfig": {
+          "target": "com.azure.mongocluster#AuthConfigProperties",
+          "traits": {
+            "smithy.api#documentation": "The authentication configuration for the cluster."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.mongocluster#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "The encryption configuration for the cluster. Depends on identity being configured."
+          }
+        },
+        "networkBypassMode": {
+          "target": "com.azure.mongocluster#NetworkBypassMode",
+          "traits": {
+            "smithy.api#documentation": "The network bypass mode for the cluster. Setting to 'AzureCosmosDB' allows Azure Cosmos DB service to bypass network restrictions."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the MongoCluster."
+      }
+    },
+    "com.azure.mongocluster#MongoClusterUpdatePropertiesInputPreviewFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.mongocluster#PreviewFeature"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of private endpoint connections."
+      }
+    },
+    "com.azure.mongocluster#BackupPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The backup properties of the cluster. This includes the earliest restore time and retention settings."
+      }
+    },
+    "com.azure.mongocluster#MongoClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.mongocluster#MongoClustersUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.mongocluster#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.mongocluster#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.mongocluster#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.mongocluster#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.mongocluster#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
       }
     },
     "com.azure.mongocluster#MongoClustersCreateOrUpdate": {
@@ -3315,16 +3586,176 @@
             "smithy.api#documentation": "The name of the mongo cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.mongocluster#MongoClustersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.mongocluster#MongoClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.mongocluster#MongoClustersCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mongocluster#MongoClustersCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.mongocluster#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.mongocluster#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.mongocluster#MongoClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "createMode": {
+          "target": "com.azure.mongocluster#CreateMode",
+          "traits": {
+            "smithy.api#documentation": "The mode to create a mongo cluster."
+          }
+        },
+        "restoreParameters": {
+          "target": "com.azure.mongocluster#MongoClusterRestoreParameters",
+          "traits": {
+            "smithy.api#documentation": "The parameters to create a point-in-time restore mongo cluster."
+          }
+        },
+        "replicaParameters": {
+          "target": "com.azure.mongocluster#MongoClusterReplicaParameters",
+          "traits": {
+            "smithy.api#documentation": "The parameters to create a replica mongo cluster."
+          }
+        },
+        "administrator": {
+          "target": "com.azure.mongocluster#AdministratorProperties",
+          "traits": {
+            "smithy.api#documentation": "The local administrator properties for the mongo cluster."
+          }
+        },
+        "serverVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Mongo DB server version. Defaults to the latest available version if not specified."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.mongocluster#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public endpoint access is allowed for this mongo cluster."
+          }
+        },
+        "highAvailability": {
+          "target": "com.azure.mongocluster#HighAvailabilityProperties",
+          "traits": {
+            "smithy.api#documentation": "The high availability properties of the mongo cluster."
+          }
+        },
+        "storage": {
+          "target": "com.azure.mongocluster#StorageProperties",
+          "traits": {
+            "smithy.api#documentation": "The storage properties of the mongo cluster."
+          }
+        },
+        "sharding": {
+          "target": "com.azure.mongocluster#ShardingProperties",
+          "traits": {
+            "smithy.api#documentation": "The sharding properties of the mongo cluster."
+          }
+        },
+        "compute": {
+          "target": "com.azure.mongocluster#ComputeProperties",
+          "traits": {
+            "smithy.api#documentation": "The compute properties of the mongo cluster."
+          }
+        },
+        "backup": {
+          "target": "com.azure.mongocluster#BackupPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The backup properties of the mongo cluster."
+          }
+        },
+        "dataApi": {
+          "target": "com.azure.mongocluster#DataApiProperties",
+          "traits": {
+            "smithy.api#documentation": "The Data API properties of the mongo cluster."
+          }
+        },
+        "previewFeatures": {
+          "target": "com.azure.mongocluster#MongoClusterPropertiesInputPreviewFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "List of private endpoint connections."
+          }
+        },
+        "authConfig": {
+          "target": "com.azure.mongocluster#AuthConfigProperties",
+          "traits": {
+            "smithy.api#documentation": "The authentication configuration for the cluster."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.mongocluster#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "The encryption configuration for the cluster. Depends on identity being configured."
+          }
+        },
+        "networkBypassMode": {
+          "target": "com.azure.mongocluster#NetworkBypassMode",
+          "traits": {
+            "smithy.api#documentation": "The network bypass mode for the cluster. Setting to 'AzureCosmosDB' allows Azure Cosmos DB service to bypass network restrictions."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a mongo cluster."
+      }
+    },
+    "com.azure.mongocluster#MongoClusterPropertiesInputPreviewFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.mongocluster#PreviewFeature"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of private endpoint connections."
+      }
+    },
+    "com.azure.mongocluster#MongoClustersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.mongocluster#MongoClustersGet": {
@@ -3766,11 +4197,16 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },

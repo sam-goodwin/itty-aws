@@ -47,7 +47,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.announcements#PaginatedAnnouncementList": {
+    "com.posthog.announcements#PaginatedAnnouncementListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -69,7 +69,7 @@
           }
         },
         "results": {
-          "target": "com.posthog.announcements#PaginatedAnnouncementListResultsList",
+          "target": "com.posthog.announcements#PaginatedAnnouncementListOutputResultsList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -77,7 +77,7 @@
       },
       "traits": {}
     },
-    "com.posthog.announcements#Announcement": {
+    "com.posthog.announcements#AnnouncementOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -150,16 +150,9 @@
           }
         },
         "deliveries": {
-          "target": "com.posthog.announcements#AnnouncementDeliveriesList",
+          "target": "com.posthog.announcements#AnnouncementOutputDeliveriesList",
           "traits": {
             "smithy.api#documentation": "Per-channel delivery rows, one per selected Slack channel.",
-            "smithy.api#required": {}
-          }
-        },
-        "channels": {
-          "target": "com.posthog.announcements#AnnouncementChannelsList",
-          "traits": {
-            "smithy.api#documentation": "Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side.",
             "smithy.api#required": {}
           }
         }
@@ -420,7 +413,7 @@
         "smithy.api#documentation": "* `pending` - Pending\n* `sent` - Sent\n* `failed` - Failed"
       }
     },
-    "com.posthog.announcements#AnnouncementDeliveriesList": {
+    "com.posthog.announcements#AnnouncementOutputDeliveriesList": {
       "type": "list",
       "member": {
         "target": "com.posthog.announcements#AnnouncementDelivery"
@@ -429,19 +422,10 @@
         "smithy.api#documentation": "Per-channel delivery rows, one per selected Slack channel."
       }
     },
-    "com.posthog.announcements#AnnouncementChannelsList": {
+    "com.posthog.announcements#PaginatedAnnouncementListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side."
-      }
-    },
-    "com.posthog.announcements#PaginatedAnnouncementListResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.announcements#Announcement"
+        "target": "com.posthog.announcements#AnnouncementOutput"
       },
       "traits": {}
     },
@@ -451,7 +435,7 @@
         "target": "com.posthog.announcements#AnnouncementsListRequest"
       },
       "output": {
-        "target": "com.posthog.announcements#PaginatedAnnouncementList"
+        "target": "com.posthog.announcements#PaginatedAnnouncementListOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -459,15 +443,6 @@
           "uri": "/api/projects/{project_id}/announcements/",
           "code": 200
         }
-      }
-    },
-    "com.posthog.announcements#AnnouncementsCreateRequestDeliveriesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.announcements#AnnouncementDelivery"
-      },
-      "traits": {
-        "smithy.api#documentation": "Per-channel delivery rows, one per selected Slack channel."
       }
     },
     "com.posthog.announcements#AnnouncementsCreateRequestChannelsList": {
@@ -490,79 +465,10 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "short_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Short human-friendly identifier for the announcement.",
-            "smithy.api#required": {}
-          }
-        },
         "message": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Message body to send, rendered as Slack mrkdwn.",
-            "smithy.api#required": {}
-          }
-        },
-        "status": {
-          "target": "com.posthog.announcements#AnnouncementStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "Overall status: pending, sending, sent, partially_failed, or failed.\n\n* `pending` - Pending\n* `sending` - Sending\n* `sent` - Sent\n* `partially_failed` - Partially failed\n* `failed` - Failed",
-            "smithy.api#required": {}
-          }
-        },
-        "total_channels": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of channels this announcement targets.",
-            "smithy.api#required": {}
-          }
-        },
-        "sent_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of channels the message was successfully delivered to.",
-            "smithy.api#required": {}
-          }
-        },
-        "failed_count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Number of channels delivery failed for.",
-            "smithy.api#required": {}
-          }
-        },
-        "sent_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When delivery finished (all channels resolved). Null while pending/sending.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the announcement was created.",
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.announcements#UserBasic",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "deliveries": {
-          "target": "com.posthog.announcements#AnnouncementsCreateRequestDeliveriesList",
-          "traits": {
-            "smithy.api#documentation": "Per-channel delivery rows, one per selected Slack channel.",
             "smithy.api#required": {}
           }
         },
@@ -584,7 +490,7 @@
         "target": "com.posthog.announcements#AnnouncementsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.announcements#Announcement"
+        "target": "com.posthog.announcements#AnnouncementOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -623,7 +529,7 @@
         "target": "com.posthog.announcements#AnnouncementsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.announcements#Announcement"
+        "target": "com.posthog.announcements#AnnouncementOutput"
       },
       "traits": {
         "smithy.api#http": {

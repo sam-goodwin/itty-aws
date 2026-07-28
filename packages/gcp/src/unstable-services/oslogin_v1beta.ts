@@ -146,8 +146,7 @@ export const DeleteUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetLoginProfileUsersViewEnum =
   | "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "SECURITY_KEY"
-  | (string & {});
+  | "SECURITY_KEY";
 export const GetLoginProfileUsersViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetLoginProfileUsersRequest {
@@ -180,8 +179,7 @@ export const GetLoginProfileUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export type PosixAccountOperatingSystemTypeEnum =
   | "OPERATING_SYSTEM_TYPE_UNSPECIFIED"
   | "LINUX"
-  | "WINDOWS"
-  | (string & {});
+  | "WINDOWS";
 export const PosixAccountOperatingSystemTypeEnum = /*@__PURE__*/ S.String;
 
 /** The POSIX account information associated with a Google account. */
@@ -225,7 +223,7 @@ export const PosixAccount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PosixAccount" }) as any as S.Schema<PosixAccount>;
 
-export type PosixAccountList = PosixAccount[];
+export type PosixAccountList = ReadonlyArray<PosixAccount>;
 export const PosixAccountList = /*@__PURE__*/ S.Array(
   PosixAccount,
 ) as any as S.Schema<PosixAccountList>;
@@ -283,7 +281,7 @@ export const SecurityKey = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecurityKey" }) as any as S.Schema<SecurityKey>;
 
-export type SecurityKeyList = SecurityKey[];
+export type SecurityKeyList = ReadonlyArray<SecurityKey>;
 export const SecurityKeyList = /*@__PURE__*/ S.Array(
   SecurityKey,
 ) as any as S.Schema<SecurityKeyList>;
@@ -329,11 +327,10 @@ export const GetUsersSshPublicKeysRequest = /*@__PURE__*/ S.suspend(() =>
 export type ImportSshPublicKeyUsersViewEnum =
   | "LOGIN_PROFILE_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "SECURITY_KEY"
-  | (string & {});
+  | "SECURITY_KEY";
 export const ImportSshPublicKeyUsersViewEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;

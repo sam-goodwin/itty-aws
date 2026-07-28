@@ -1003,7 +1003,10 @@
           "target": "smithy.api#String"
         },
         "user": {
-          "target": "com.posthog.activity_logs#UserBasic"
+          "target": "com.posthog.activity_logs#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "unread": {
           "target": "smithy.api#Boolean",

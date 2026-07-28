@@ -118,7 +118,7 @@ export const HostAddress = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HostAddress" }) as any as S.Schema<HostAddress>;
 
-export type HostAddressList = HostAddress[];
+export type HostAddressList = ReadonlyArray<HostAddress>;
 export const HostAddressList = /*@__PURE__*/ S.Array(
   HostAddress,
 ) as any as S.Schema<HostAddressList>;
@@ -878,7 +878,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -929,8 +929,7 @@ export type PrivateConnectionStateEnum =
   | "CREATED"
   | "FAILED"
   | "DELETING"
-  | "FAILED_TO_DELETE"
-  | (string & {});
+  | "FAILED_TO_DELETE";
 export const PrivateConnectionStateEnum = /*@__PURE__*/ S.String;
 
 /** The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC. */
@@ -1130,8 +1129,7 @@ export type StreamStateEnum =
   | "FAILED"
   | "FAILED_PERMANENTLY"
   | "STARTING"
-  | "DRAINING"
-  | (string & {});
+  | "DRAINING";
 export const StreamStateEnum = /*@__PURE__*/ S.String;
 
 /** PostgreSQL Column. */
@@ -1168,7 +1166,7 @@ export const PostgresqlColumn = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresqlColumn",
 }) as any as S.Schema<PostgresqlColumn>;
 
-export type PostgresqlColumnList = PostgresqlColumn[];
+export type PostgresqlColumnList = ReadonlyArray<PostgresqlColumn>;
 export const PostgresqlColumnList = /*@__PURE__*/ S.Array(
   PostgresqlColumn,
 ) as any as S.Schema<PostgresqlColumnList>;
@@ -1189,7 +1187,7 @@ export const PostgresqlTable = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresqlTable",
 }) as any as S.Schema<PostgresqlTable>;
 
-export type PostgresqlTableList = PostgresqlTable[];
+export type PostgresqlTableList = ReadonlyArray<PostgresqlTable>;
 export const PostgresqlTableList = /*@__PURE__*/ S.Array(
   PostgresqlTable,
 ) as any as S.Schema<PostgresqlTableList>;
@@ -1210,7 +1208,7 @@ export const PostgresqlSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresqlSchema",
 }) as any as S.Schema<PostgresqlSchema>;
 
-export type PostgresqlSchemaList = PostgresqlSchema[];
+export type PostgresqlSchemaList = ReadonlyArray<PostgresqlSchema>;
 export const PostgresqlSchemaList = /*@__PURE__*/ S.Array(
   PostgresqlSchema,
 ) as any as S.Schema<PostgresqlSchemaList>;
@@ -1239,7 +1237,7 @@ export const MongodbField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MongodbField" }) as any as S.Schema<MongodbField>;
 
-export type MongodbFieldList = MongodbField[];
+export type MongodbFieldList = ReadonlyArray<MongodbField>;
 export const MongodbFieldList = /*@__PURE__*/ S.Array(
   MongodbField,
 ) as any as S.Schema<MongodbFieldList>;
@@ -1260,7 +1258,7 @@ export const MongodbCollection = /*@__PURE__*/ S.suspend(() =>
   identifier: "MongodbCollection",
 }) as any as S.Schema<MongodbCollection>;
 
-export type MongodbCollectionList = MongodbCollection[];
+export type MongodbCollectionList = ReadonlyArray<MongodbCollection>;
 export const MongodbCollectionList = /*@__PURE__*/ S.Array(
   MongodbCollection,
 ) as any as S.Schema<MongodbCollectionList>;
@@ -1281,7 +1279,7 @@ export const MongodbDatabase = /*@__PURE__*/ S.suspend(() =>
   identifier: "MongodbDatabase",
 }) as any as S.Schema<MongodbDatabase>;
 
-export type MongodbDatabaseList = MongodbDatabase[];
+export type MongodbDatabaseList = ReadonlyArray<MongodbDatabase>;
 export const MongodbDatabaseList = /*@__PURE__*/ S.Array(
   MongodbDatabase,
 ) as any as S.Schema<MongodbDatabaseList>;
@@ -1331,7 +1329,7 @@ export const SqlServerColumn = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerColumn",
 }) as any as S.Schema<SqlServerColumn>;
 
-export type SqlServerColumnList = SqlServerColumn[];
+export type SqlServerColumnList = ReadonlyArray<SqlServerColumn>;
 export const SqlServerColumnList = /*@__PURE__*/ S.Array(
   SqlServerColumn,
 ) as any as S.Schema<SqlServerColumnList>;
@@ -1350,7 +1348,7 @@ export const SqlServerTable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SqlServerTable" }) as any as S.Schema<SqlServerTable>;
 
-export type SqlServerTableList = SqlServerTable[];
+export type SqlServerTableList = ReadonlyArray<SqlServerTable>;
 export const SqlServerTableList = /*@__PURE__*/ S.Array(
   SqlServerTable,
 ) as any as S.Schema<SqlServerTableList>;
@@ -1371,7 +1369,7 @@ export const SqlServerSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerSchema",
 }) as any as S.Schema<SqlServerSchema>;
 
-export type SqlServerSchemaList = SqlServerSchema[];
+export type SqlServerSchemaList = ReadonlyArray<SqlServerSchema>;
 export const SqlServerSchemaList = /*@__PURE__*/ S.Array(
   SqlServerSchema,
 ) as any as S.Schema<SqlServerSchemaList>;
@@ -1406,7 +1404,7 @@ export const SalesforceField = /*@__PURE__*/ S.suspend(() =>
   identifier: "SalesforceField",
 }) as any as S.Schema<SalesforceField>;
 
-export type SalesforceFieldList = SalesforceField[];
+export type SalesforceFieldList = ReadonlyArray<SalesforceField>;
 export const SalesforceFieldList = /*@__PURE__*/ S.Array(
   SalesforceField,
 ) as any as S.Schema<SalesforceFieldList>;
@@ -1427,7 +1425,7 @@ export const SalesforceObject = /*@__PURE__*/ S.suspend(() =>
   identifier: "SalesforceObject",
 }) as any as S.Schema<SalesforceObject>;
 
-export type SalesforceObjectList = SalesforceObject[];
+export type SalesforceObjectList = ReadonlyArray<SalesforceObject>;
 export const SalesforceObjectList = /*@__PURE__*/ S.Array(
   SalesforceObject,
 ) as any as S.Schema<SalesforceObjectList>;
@@ -1460,7 +1458,7 @@ export const SourceProperty = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceProperty" }) as any as S.Schema<SourceProperty>;
 
-export type SourcePropertyList = SourceProperty[];
+export type SourcePropertyList = ReadonlyArray<SourceProperty>;
 export const SourcePropertyList = /*@__PURE__*/ S.Array(
   SourceProperty,
 ) as any as S.Schema<SourcePropertyList>;
@@ -1479,7 +1477,7 @@ export const SourceObject = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceObject" }) as any as S.Schema<SourceObject>;
 
-export type SourceObjectList = SourceObject[];
+export type SourceObjectList = ReadonlyArray<SourceObject>;
 export const SourceObjectList = /*@__PURE__*/ S.Array(
   SourceObject,
 ) as any as S.Schema<SourceObjectList>;
@@ -1530,7 +1528,7 @@ export const OracleColumn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OracleColumn" }) as any as S.Schema<OracleColumn>;
 
-export type OracleColumnList = OracleColumn[];
+export type OracleColumnList = ReadonlyArray<OracleColumn>;
 export const OracleColumnList = /*@__PURE__*/ S.Array(
   OracleColumn,
 ) as any as S.Schema<OracleColumnList>;
@@ -1549,7 +1547,7 @@ export const OracleTable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OracleTable" }) as any as S.Schema<OracleTable>;
 
-export type OracleTableList = OracleTable[];
+export type OracleTableList = ReadonlyArray<OracleTable>;
 export const OracleTableList = /*@__PURE__*/ S.Array(
   OracleTable,
 ) as any as S.Schema<OracleTableList>;
@@ -1568,7 +1566,7 @@ export const OracleSchema = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OracleSchema" }) as any as S.Schema<OracleSchema>;
 
-export type OracleSchemaList = OracleSchema[];
+export type OracleSchemaList = ReadonlyArray<OracleSchema>;
 export const OracleSchemaList = /*@__PURE__*/ S.Array(
   OracleSchema,
 ) as any as S.Schema<OracleSchemaList>;
@@ -1604,7 +1602,7 @@ export const SpannerColumn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpannerColumn" }) as any as S.Schema<SpannerColumn>;
 
-export type SpannerColumnList = SpannerColumn[];
+export type SpannerColumnList = ReadonlyArray<SpannerColumn>;
 export const SpannerColumnList = /*@__PURE__*/ S.Array(
   SpannerColumn,
 ) as any as S.Schema<SpannerColumnList>;
@@ -1623,7 +1621,7 @@ export const SpannerTable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpannerTable" }) as any as S.Schema<SpannerTable>;
 
-export type SpannerTableList = SpannerTable[];
+export type SpannerTableList = ReadonlyArray<SpannerTable>;
 export const SpannerTableList = /*@__PURE__*/ S.Array(
   SpannerTable,
 ) as any as S.Schema<SpannerTableList>;
@@ -1642,7 +1640,7 @@ export const SpannerSchema = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpannerSchema" }) as any as S.Schema<SpannerSchema>;
 
-export type SpannerSchemaList = SpannerSchema[];
+export type SpannerSchemaList = ReadonlyArray<SpannerSchema>;
 export const SpannerSchemaList = /*@__PURE__*/ S.Array(
   SpannerSchema,
 ) as any as S.Schema<SpannerSchemaList>;
@@ -1695,7 +1693,7 @@ export const MysqlColumn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MysqlColumn" }) as any as S.Schema<MysqlColumn>;
 
-export type MysqlColumnList = MysqlColumn[];
+export type MysqlColumnList = ReadonlyArray<MysqlColumn>;
 export const MysqlColumnList = /*@__PURE__*/ S.Array(
   MysqlColumn,
 ) as any as S.Schema<MysqlColumnList>;
@@ -1714,7 +1712,7 @@ export const MysqlTable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MysqlTable" }) as any as S.Schema<MysqlTable>;
 
-export type MysqlTableList = MysqlTable[];
+export type MysqlTableList = ReadonlyArray<MysqlTable>;
 export const MysqlTableList = /*@__PURE__*/ S.Array(
   MysqlTable,
 ) as any as S.Schema<MysqlTableList>;
@@ -1733,7 +1731,7 @@ export const MysqlDatabase = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MysqlDatabase" }) as any as S.Schema<MysqlDatabase>;
 
-export type MysqlDatabaseList = MysqlDatabase[];
+export type MysqlDatabaseList = ReadonlyArray<MysqlDatabase>;
 export const MysqlDatabaseList = /*@__PURE__*/ S.Array(
   MysqlDatabase,
 ) as any as S.Schema<MysqlDatabaseList>;
@@ -1930,8 +1928,7 @@ export type SpannerSourceConfigSpannerRpcPriorityEnum =
   | "SPANNER_RPC_PRIORITY_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const SpannerSourceConfigSpannerRpcPriorityEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for syncing data from a Spanner source. */
@@ -1996,8 +1993,7 @@ export const PostgresqlSourceConfig = /*@__PURE__*/ S.suspend(() =>
 export type MongodbSourceConfigJsonModeEnum =
   | "MONGODB_JSON_MODE_UNSPECIFIED"
   | "STRICT"
-  | "CANONICAL"
-  | (string & {});
+  | "CANONICAL";
 export const MongodbSourceConfigJsonModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for syncing data from a MongoDB source. */
@@ -2184,7 +2180,7 @@ export const SourceConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceConfig" }) as any as S.Schema<SourceConfig>;
 
-export type Datastream_ErrorList = Datastream_Error[];
+export type Datastream_ErrorList = ReadonlyArray<Datastream_Error>;
 export const Datastream_ErrorList = /*@__PURE__*/ S.Array(
   Datastream_Error,
 ) as any as S.Schema<Datastream_ErrorList>;
@@ -2198,15 +2194,13 @@ export const AvroFileFormat = /*@__PURE__*/ S.suspend(() =>
 export type JsonFileFormatSchemaFileFormatEnum =
   | "SCHEMA_FILE_FORMAT_UNSPECIFIED"
   | "NO_SCHEMA_FILE"
-  | "AVRO_SCHEMA_FILE"
-  | (string & {});
+  | "AVRO_SCHEMA_FILE";
 export const JsonFileFormatSchemaFileFormatEnum = /*@__PURE__*/ S.String;
 
 export type JsonFileFormatCompressionEnum =
   | "JSON_COMPRESSION_UNSPECIFIED"
   | "NO_COMPRESSION"
-  | "GZIP"
-  | (string & {});
+  | "GZIP";
 export const JsonFileFormatCompressionEnum = /*@__PURE__*/ S.String;
 
 /** JSON file format configuration. */
@@ -2261,16 +2255,10 @@ export const SingleTargetDataset = /*@__PURE__*/ S.suspend(() =>
   identifier: "SingleTargetDataset",
 }) as any as S.Schema<SingleTargetDataset>;
 
-export type BlmtConfigTableFormatEnum =
-  | "TABLE_FORMAT_UNSPECIFIED"
-  | "ICEBERG"
-  | (string & {});
+export type BlmtConfigTableFormatEnum = "TABLE_FORMAT_UNSPECIFIED" | "ICEBERG";
 export const BlmtConfigTableFormatEnum = /*@__PURE__*/ S.String;
 
-export type BlmtConfigFileFormatEnum =
-  | "FILE_FORMAT_UNSPECIFIED"
-  | "PARQUET"
-  | (string & {});
+export type BlmtConfigFileFormatEnum = "FILE_FORMAT_UNSPECIFIED" | "PARQUET";
 export const BlmtConfigFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** The configuration for BLMT. */
@@ -2398,7 +2386,7 @@ export const BackfillNoneStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackfillNoneStrategy",
 }) as any as S.Schema<BackfillNoneStrategy>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -2443,8 +2431,7 @@ export type TimeUnitPartitionPartitioningTimeGranularityEnum =
   | "PARTITIONING_TIME_GRANULARITY_HOUR"
   | "PARTITIONING_TIME_GRANULARITY_DAY"
   | "PARTITIONING_TIME_GRANULARITY_MONTH"
-  | "PARTITIONING_TIME_GRANULARITY_YEAR"
-  | (string & {});
+  | "PARTITIONING_TIME_GRANULARITY_YEAR";
 export const TimeUnitPartitionPartitioningTimeGranularityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2471,8 +2458,7 @@ export type IngestionTimePartitionPartitioningTimeGranularityEnum =
   | "PARTITIONING_TIME_GRANULARITY_HOUR"
   | "PARTITIONING_TIME_GRANULARITY_DAY"
   | "PARTITIONING_TIME_GRANULARITY_MONTH"
-  | "PARTITIONING_TIME_GRANULARITY_YEAR"
-  | (string & {});
+  | "PARTITIONING_TIME_GRANULARITY_YEAR";
 export const IngestionTimePartitionPartitioningTimeGranularityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2529,7 +2515,7 @@ export const CustomizationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomizationRule",
 }) as any as S.Schema<CustomizationRule>;
 
-export type CustomizationRuleList = CustomizationRule[];
+export type CustomizationRuleList = ReadonlyArray<CustomizationRule>;
 export const CustomizationRuleList = /*@__PURE__*/ S.Array(
   CustomizationRule,
 ) as any as S.Schema<CustomizationRuleList>;
@@ -2699,7 +2685,7 @@ export const RuleSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleSet" }) as any as S.Schema<RuleSet>;
 
-export type RuleSetList = RuleSet[];
+export type RuleSetList = ReadonlyArray<RuleSet>;
 export const RuleSetList = /*@__PURE__*/ S.Array(
   RuleSet,
 ) as any as S.Schema<RuleSetList>;
@@ -3220,15 +3206,13 @@ export type BackfillJobStateEnum =
   | "STOPPED"
   | "FAILED"
   | "COMPLETED"
-  | "UNSUPPORTED"
-  | (string & {});
+  | "UNSUPPORTED";
 export const BackfillJobStateEnum = /*@__PURE__*/ S.String;
 
 export type BackfillJobTriggerEnum =
   | "TRIGGER_UNSPECIFIED"
   | "AUTOMATIC"
-  | "MANUAL"
-  | (string & {});
+  | "MANUAL";
 export const BackfillJobTriggerEnum = /*@__PURE__*/ S.String;
 
 /** Represents a backfill job on a specific stream object. */
@@ -3319,7 +3303,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3371,7 +3355,7 @@ export const ListProjectsLocationsConnectionProfilesRequest =
     identifier: "ListProjectsLocationsConnectionProfilesRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>;
 
-export type ConnectionProfileList = ConnectionProfile[];
+export type ConnectionProfileList = ReadonlyArray<ConnectionProfile>;
 export const ConnectionProfileList = /*@__PURE__*/ S.Array(
   ConnectionProfile,
 ) as any as S.Schema<ConnectionProfileList>;
@@ -3426,7 +3410,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -3481,7 +3465,7 @@ export const ListProjectsLocationsPrivateConnectionsRequest =
     identifier: "ListProjectsLocationsPrivateConnectionsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
 
-export type PrivateConnectionList = PrivateConnection[];
+export type PrivateConnectionList = ReadonlyArray<PrivateConnection>;
 export const PrivateConnectionList = /*@__PURE__*/ S.Array(
   PrivateConnection,
 ) as any as S.Schema<PrivateConnectionList>;
@@ -3536,7 +3520,7 @@ export const ListProjectsLocationsPrivateConnectionsRoutesRequest =
     identifier: "ListProjectsLocationsPrivateConnectionsRoutesRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRoutesRequest>;
 
-export type RouteList = Route[];
+export type RouteList = ReadonlyArray<Route>;
 export const RouteList = /*@__PURE__*/ S.Array(
   Route,
 ) as any as S.Schema<RouteList>;
@@ -3590,7 +3574,7 @@ export const ListProjectsLocationsStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsStreamsRequest",
 }) as any as S.Schema<ListProjectsLocationsStreamsRequest>;
 
-export type StreamList = Stream[];
+export type StreamList = ReadonlyArray<Stream>;
 export const StreamList = /*@__PURE__*/ S.Array(
   Stream,
 ) as any as S.Schema<StreamList>;
@@ -3639,7 +3623,7 @@ export const ListProjectsLocationsStreamsObjectsRequest =
     identifier: "ListProjectsLocationsStreamsObjectsRequest",
   }) as any as S.Schema<ListProjectsLocationsStreamsObjectsRequest>;
 
-export type StreamObjectList = StreamObject[];
+export type StreamObjectList = ReadonlyArray<StreamObject>;
 export const StreamObjectList = /*@__PURE__*/ S.Array(
   StreamObject,
 ) as any as S.Schema<StreamObjectList>;

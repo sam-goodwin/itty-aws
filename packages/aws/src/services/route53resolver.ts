@@ -163,7 +163,7 @@ export type CreatorRequestId = string;
 export type ResourceId = string;
 export type Priority = number;
 export type Name = string;
-export type MutationProtectionStatus = "ENABLED" | "DISABLED" | (string & {});
+export type MutationProtectionStatus = "ENABLED" | "DISABLED";
 export const MutationProtectionStatus = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -206,8 +206,7 @@ export type ServicePrinciple = string;
 export type FirewallRuleGroupAssociationStatus =
   | "COMPLETE"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const FirewallRuleGroupAssociationStatus = /*@__PURE__*/ S.String;
 
 export type StatusMessage = string;
@@ -292,8 +291,7 @@ export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type ResolverEndpointDirection =
   | "INBOUND"
   | "OUTBOUND"
-  | "INBOUND_DELEGATION"
-  | (string & {});
+  | "INBOUND_DELEGATION";
 export const ResolverEndpointDirection = /*@__PURE__*/ S.String;
 
 export type IpAddressCount = number;
@@ -303,20 +301,15 @@ export type ResolverEndpointStatus =
   | "UPDATING"
   | "AUTO_RECOVERING"
   | "ACTION_NEEDED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const ResolverEndpointStatus = /*@__PURE__*/ S.String;
 
 export type OutpostArn = string;
 export type OutpostInstanceType = string;
-export type ResolverEndpointType =
-  | "IPV6"
-  | "IPV4"
-  | "DUALSTACK"
-  | (string & {});
+export type ResolverEndpointType = "IPV6" | "IPV4" | "DUALSTACK";
 export const ResolverEndpointType = /*@__PURE__*/ S.String;
 
-export type Protocol = "DoH" | "Do53" | "DoH-FIPS" | (string & {});
+export type Protocol = "DoH" | "Do53" | "DoH-FIPS";
 export const Protocol = /*@__PURE__*/ S.String;
 
 export type ProtocolList = Protocol[];
@@ -399,16 +392,14 @@ export type ResolverQueryLogConfigAssociationStatus =
   | "ACTIVE"
   | "ACTION_NEEDED"
   | "DELETING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ResolverQueryLogConfigAssociationStatus = /*@__PURE__*/ S.String;
 
 export type ResolverQueryLogConfigAssociationError =
   | "NONE"
   | "DESTINATION_NOT_FOUND"
   | "ACCESS_DENIED"
-  | "INTERNAL_SERVICE_ERROR"
-  | (string & {});
+  | "INTERNAL_SERVICE_ERROR";
 export const ResolverQueryLogConfigAssociationError = /*@__PURE__*/ S.String;
 
 export type ResolverQueryLogConfigAssociationErrorMessage = string;
@@ -468,8 +459,7 @@ export type ResolverRuleAssociationStatus =
   | "COMPLETE"
   | "DELETING"
   | "FAILED"
-  | "OVERRIDDEN"
-  | (string & {});
+  | "OVERRIDDEN";
 export const ResolverRuleAssociationStatus = /*@__PURE__*/ S.String;
 
 export interface ResolverRuleAssociation {
@@ -500,32 +490,27 @@ export const AssociateResolverRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateResolverRuleResponse",
 }) as any as S.Schema<AssociateResolverRuleResponse>;
-export type Action = "ALLOW" | "BLOCK" | "ALERT" | (string & {});
+export type Action = "ALLOW" | "BLOCK" | "ALERT";
 export const Action = /*@__PURE__*/ S.String;
 
-export type BlockResponse = "NODATA" | "NXDOMAIN" | "OVERRIDE" | (string & {});
+export type BlockResponse = "NODATA" | "NXDOMAIN" | "OVERRIDE";
 export const BlockResponse = /*@__PURE__*/ S.String;
 
 export type BlockOverrideDomain = string;
-export type BlockOverrideDnsType = "CNAME" | (string & {});
+export type BlockOverrideDnsType = "CNAME";
 export const BlockOverrideDnsType = /*@__PURE__*/ S.String;
 
 export type BlockOverrideTtl = number;
 export type FirewallDomainRedirectionAction =
   | "INSPECT_REDIRECTION_DOMAIN"
-  | "TRUST_REDIRECTION_DOMAIN"
-  | (string & {});
+  | "TRUST_REDIRECTION_DOMAIN";
 export const FirewallDomainRedirectionAction = /*@__PURE__*/ S.String;
 
 export type Qtype = string;
-export type DnsThreatProtection =
-  | "DGA"
-  | "DNS_TUNNELING"
-  | "DICTIONARY_DGA"
-  | (string & {});
+export type DnsThreatProtection = "DGA" | "DNS_TUNNELING" | "DICTIONARY_DGA";
 export const DnsThreatProtection = /*@__PURE__*/ S.String;
 
-export type ConfidenceThreshold = "LOW" | "MEDIUM" | "HIGH" | (string & {});
+export type ConfidenceThreshold = "LOW" | "MEDIUM" | "HIGH";
 export const ConfidenceThreshold = /*@__PURE__*/ S.String;
 
 export type PartnerValue = string;
@@ -887,12 +872,11 @@ export type FirewallDomainListStatus =
   | "COMPLETE_IMPORT_FAILED"
   | "IMPORTING"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const FirewallDomainListStatus = /*@__PURE__*/ S.String;
 
 export type Category = string;
-export type DomainListType = "THREAT" | "CONTENT" | (string & {});
+export type DomainListType = "THREAT" | "CONTENT";
 export const DomainListType = /*@__PURE__*/ S.String;
 
 export interface FirewallDomainList {
@@ -1001,19 +985,11 @@ export const CreateFirewallRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFirewallRuleGroupRequest",
 }) as any as S.Schema<CreateFirewallRuleGroupRequest>;
-export type FirewallRuleGroupStatus =
-  | "COMPLETE"
-  | "DELETING"
-  | "UPDATING"
-  | (string & {});
+export type FirewallRuleGroupStatus = "COMPLETE" | "DELETING" | "UPDATING";
 export const FirewallRuleGroupStatus = /*@__PURE__*/ S.String;
 
 export type AccountId = string;
-export type ShareStatus =
-  | "NOT_SHARED"
-  | "SHARED_WITH_ME"
-  | "SHARED_BY_ME"
-  | (string & {});
+export type ShareStatus = "NOT_SHARED" | "SHARED_WITH_ME" | "SHARED_BY_ME";
 export const ShareStatus = /*@__PURE__*/ S.String;
 
 export interface FirewallRuleGroup {
@@ -1085,8 +1061,7 @@ export type OutpostResolverStatus =
   | "DELETING"
   | "ACTION_NEEDED"
   | "FAILED_CREATION"
-  | "FAILED_DELETION"
-  | (string & {});
+  | "FAILED_DELETION";
 export const OutpostResolverStatus = /*@__PURE__*/ S.String;
 
 export type OutpostResolverStatusMessage = string;
@@ -1214,8 +1189,7 @@ export type ResolverQueryLogConfigStatus =
   | "CREATING"
   | "CREATED"
   | "DELETING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ResolverQueryLogConfigStatus = /*@__PURE__*/ S.String;
 
 export type Count = number;
@@ -1256,12 +1230,7 @@ export const CreateResolverQueryLogConfigResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateResolverQueryLogConfigResponse",
 }) as any as S.Schema<CreateResolverQueryLogConfigResponse>;
-export type RuleTypeOption =
-  | "FORWARD"
-  | "SYSTEM"
-  | "RECURSIVE"
-  | "DELEGATE"
-  | (string & {});
+export type RuleTypeOption = "FORWARD" | "SYSTEM" | "RECURSIVE" | "DELEGATE";
 export const RuleTypeOption = /*@__PURE__*/ S.String;
 
 export type DomainName = string;
@@ -1316,8 +1285,7 @@ export type ResolverRuleStatus =
   | "COMPLETE"
   | "DELETING"
   | "UPDATING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ResolverRuleStatus = /*@__PURE__*/ S.String;
 
 export interface ResolverRule {
@@ -1599,8 +1567,7 @@ export const GetFirewallConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type FirewallFailOpenStatus =
   | "ENABLED"
   | "DISABLED"
-  | "USE_LOCAL_RESOURCE_SETTING"
-  | (string & {});
+  | "USE_LOCAL_RESOURCE_SETTING";
 export const FirewallFailOpenStatus = /*@__PURE__*/ S.String;
 
 export interface FirewallConfig {
@@ -1736,8 +1703,7 @@ export type ResolverAutodefinedReverseStatus =
   | "DISABLING"
   | "DISABLED"
   | "UPDATING_TO_USE_LOCAL_RESOURCE_SETTING"
-  | "USE_LOCAL_RESOURCE_SETTING"
-  | (string & {});
+  | "USE_LOCAL_RESOURCE_SETTING";
 export const ResolverAutodefinedReverseStatus = /*@__PURE__*/ S.String;
 
 export interface ResolverConfig {
@@ -1778,8 +1744,7 @@ export type ResolverDNSSECValidationStatus =
   | "DISABLING"
   | "DISABLED"
   | "UPDATING_TO_USE_LOCAL_RESOURCE_SETTING"
-  | "USE_LOCAL_RESOURCE_SETTING"
-  | (string & {});
+  | "USE_LOCAL_RESOURCE_SETTING";
 export const ResolverDNSSECValidationStatus = /*@__PURE__*/ S.String;
 
 export interface ResolverDnssecConfig {
@@ -1941,7 +1906,7 @@ export const GetResolverRulePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResolverRulePolicyResponse",
 }) as any as S.Schema<GetResolverRulePolicyResponse>;
-export type FirewallDomainImportOperation = "REPLACE" | (string & {});
+export type FirewallDomainImportOperation = "REPLACE";
 export const FirewallDomainImportOperation = /*@__PURE__*/ S.String;
 
 export type DomainListFileUrl = string;
@@ -2416,8 +2381,7 @@ export type IpAddressStatus =
   | "DELETE_FAILED_FAS_EXPIRED"
   | "UPDATING"
   | "UPDATE_FAILED"
-  | "ISOLATED"
-  | (string & {});
+  | "ISOLATED";
 export const IpAddressStatus = /*@__PURE__*/ S.String;
 
 export interface IpAddressResponse {
@@ -2494,7 +2458,7 @@ export const ListResolverEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResolverEndpointsResponse",
 }) as any as S.Schema<ListResolverEndpointsResponse>;
 export type SortByKey = string;
-export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
+export type SortOrder = "ASCENDING" | "DESCENDING";
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface ListResolverQueryLogConfigAssociationsRequest {
@@ -2790,11 +2754,7 @@ export const UpdateFirewallConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateFirewallConfigResponse",
 }) as any as S.Schema<UpdateFirewallConfigResponse>;
-export type FirewallDomainUpdateOperation =
-  | "ADD"
-  | "REMOVE"
-  | "REPLACE"
-  | (string & {});
+export type FirewallDomainUpdateOperation = "ADD" | "REMOVE" | "REPLACE";
 export const FirewallDomainUpdateOperation = /*@__PURE__*/ S.String;
 
 export interface UpdateFirewallDomainsRequest {
@@ -2938,8 +2898,7 @@ export const UpdateOutpostResolverResponse = /*@__PURE__*/ S.suspend(() =>
 export type AutodefinedReverseFlag =
   | "ENABLE"
   | "DISABLE"
-  | "USE_LOCAL_RESOURCE_SETTING"
-  | (string & {});
+  | "USE_LOCAL_RESOURCE_SETTING";
 export const AutodefinedReverseFlag = /*@__PURE__*/ S.String;
 
 export interface UpdateResolverConfigRequest {
@@ -2964,11 +2923,7 @@ export const UpdateResolverConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateResolverConfigResponse",
 }) as any as S.Schema<UpdateResolverConfigResponse>;
-export type Validation =
-  | "ENABLE"
-  | "DISABLE"
-  | "USE_LOCAL_RESOURCE_SETTING"
-  | (string & {});
+export type Validation = "ENABLE" | "DISABLE" | "USE_LOCAL_RESOURCE_SETTING";
 export const Validation = /*@__PURE__*/ S.String;
 
 export interface UpdateResolverDnssecConfigRequest {

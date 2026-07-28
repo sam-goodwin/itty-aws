@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -73,13 +73,12 @@ export type GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum =
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
-  | "POTENTIALLY_HARMFUL_APPLICATION"
-  | (string & {});
+  | "POTENTIALLY_HARMFUL_APPLICATION";
 export const GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnumList =
-  GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum>;
 export const GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV5HashListMetadataThreatTypesItemEnum,
@@ -90,22 +89,17 @@ export type GoogleSecuritySafebrowsingV5HashListMetadataHashLengthEnum =
   | "FOUR_BYTES"
   | "EIGHT_BYTES"
   | "SIXTEEN_BYTES"
-  | "THIRTY_TWO_BYTES"
-  | (string & {});
+  | "THIRTY_TWO_BYTES";
 export const GoogleSecuritySafebrowsingV5HashListMetadataHashLengthEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum =
-    | "LIKELY_SAFE_TYPE_UNSPECIFIED"
-    | "GENERAL_BROWSING"
-    | "CSD"
-    | "DOWNLOAD"
-    | (string & {});
+  "LIKELY_SAFE_TYPE_UNSPECIFIED" | "GENERAL_BROWSING" | "CSD" | "DOWNLOAD";
 export const GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnumList =
-  GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum>;
 export const GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV5HashListMetadataLikelySafeTypesItemEnum,
@@ -299,7 +293,7 @@ export const GoogleSecuritySafebrowsingV5HashList = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleSecuritySafebrowsingV5HashList>;
 
 export type GoogleSecuritySafebrowsingV5HashListList =
-  GoogleSecuritySafebrowsingV5HashList[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV5HashList>;
 export const GoogleSecuritySafebrowsingV5HashListList = /*@__PURE__*/ S.Array(
   GoogleSecuritySafebrowsingV5HashList,
 ) as any as S.Schema<GoogleSecuritySafebrowsingV5HashListList>;
@@ -406,18 +400,17 @@ export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailThreatTypeEnum =
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
-  | "POTENTIALLY_HARMFUL_APPLICATION"
-  | (string & {});
+  | "POTENTIALLY_HARMFUL_APPLICATION";
 export const GoogleSecuritySafebrowsingV5FullHashFullHashDetailThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum =
-  "THREAT_ATTRIBUTE_UNSPECIFIED" | "CANARY" | "FRAME_ONLY" | (string & {});
+  "THREAT_ATTRIBUTE_UNSPECIFIED" | "CANARY" | "FRAME_ONLY";
 export const GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnumList =
-  GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum>;
 export const GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV5FullHashFullHashDetailAttributesItemEnum,
@@ -445,7 +438,7 @@ export const GoogleSecuritySafebrowsingV5FullHashFullHashDetail =
   }) as any as S.Schema<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>;
 
 export type GoogleSecuritySafebrowsingV5FullHashFullHashDetailList =
-  GoogleSecuritySafebrowsingV5FullHashFullHashDetail[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>;
 export const GoogleSecuritySafebrowsingV5FullHashFullHashDetailList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV5FullHashFullHashDetail,
@@ -471,7 +464,7 @@ export const GoogleSecuritySafebrowsingV5FullHash = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleSecuritySafebrowsingV5FullHash>;
 
 export type GoogleSecuritySafebrowsingV5FullHashList =
-  GoogleSecuritySafebrowsingV5FullHash[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV5FullHash>;
 export const GoogleSecuritySafebrowsingV5FullHashList = /*@__PURE__*/ S.Array(
   GoogleSecuritySafebrowsingV5FullHash,
 ) as any as S.Schema<GoogleSecuritySafebrowsingV5FullHashList>;
@@ -516,13 +509,12 @@ export type GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum =
   | "MALWARE"
   | "SOCIAL_ENGINEERING"
   | "UNWANTED_SOFTWARE"
-  | "POTENTIALLY_HARMFUL_APPLICATION"
-  | (string & {});
+  | "POTENTIALLY_HARMFUL_APPLICATION";
 export const GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnumList =
-  GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum>;
 export const GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV5ThreatUrlThreatTypesItemEnum,
@@ -548,7 +540,7 @@ export const GoogleSecuritySafebrowsingV5ThreatUrl = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleSecuritySafebrowsingV5ThreatUrl>;
 
 export type GoogleSecuritySafebrowsingV5ThreatUrlList =
-  GoogleSecuritySafebrowsingV5ThreatUrl[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV5ThreatUrl>;
 export const GoogleSecuritySafebrowsingV5ThreatUrlList = /*@__PURE__*/ S.Array(
   GoogleSecuritySafebrowsingV5ThreatUrl,
 ) as any as S.Schema<GoogleSecuritySafebrowsingV5ThreatUrlList>;

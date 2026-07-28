@@ -47,8 +47,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -56,8 +55,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -112,7 +110,7 @@ export const BinaryHardeningFeatures = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BinaryHardeningFeatures>;
 
 /** String to indicate if the executable is 32 or 64 bit. */
-export type ExecutableClass = "x86" | "x64" | (string & {});
+export type ExecutableClass = "x86" | "x64";
 export const ExecutableClass = /*@__PURE__*/ S.String;
 
 /** The status of a firmware analysis job. */
@@ -122,8 +120,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Pending"
   | "Extracting"
-  | "Analyzing"
-  | (string & {});
+  | "Analyzing";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Binary hardening of a firmware. */
@@ -187,7 +184,7 @@ export const BinaryHardeningResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The BinaryHardeningResource items on this page */
 export type BinaryHardeningResourceListResultValueList =
-  BinaryHardeningResource[];
+  ReadonlyArray<BinaryHardeningResource>;
 export const BinaryHardeningResourceListResultValueList = /*@__PURE__*/ S.Array(
   BinaryHardeningResource,
 ) as any as S.Schema<BinaryHardeningResourceListResultValueList>;
@@ -279,18 +276,18 @@ export type CertificateUsage =
   | "codeSigning"
   | "emailProtection"
   | "timeStamping"
-  | "ocspSigning"
-  | (string & {});
+  | "ocspSigning";
 export const CertificateUsage = /*@__PURE__*/ S.String;
 
 /** List of functions the certificate can fulfill. */
-export type CryptoCertificateCertificateUsageList = CertificateUsage[];
+export type CryptoCertificateCertificateUsageList =
+  ReadonlyArray<CertificateUsage>;
 export const CryptoCertificateCertificateUsageList = /*@__PURE__*/ S.Array(
   CertificateUsage,
 ) as any as S.Schema<CryptoCertificateCertificateUsageList>;
 
 /** List of files where this certificate was found. */
-export type CryptoCertificateFilePathsList = string[];
+export type CryptoCertificateFilePathsList = ReadonlyArray<string>;
 export const CryptoCertificateFilePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CryptoCertificateFilePathsList>;
@@ -409,7 +406,7 @@ export const CryptoCertificateResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The CryptoCertificateResource items on this page */
 export type CryptoCertificateResourceListResultValueList =
-  CryptoCertificateResource[];
+  ReadonlyArray<CryptoCertificateResource>;
 export const CryptoCertificateResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     CryptoCertificateResource,
@@ -460,17 +457,17 @@ export const CryptoKeysListByFirmwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CryptoKeysListByFirmwareRequest>;
 
 /** Different types of cryptographic keys. */
-export type CryptoKeyType = "Public" | "Private" | (string & {});
+export type CryptoKeyType = "Public" | "Private";
 export const CryptoKeyType = /*@__PURE__*/ S.String;
 
 /** Functions the key can fulfill. */
-export type CryptoKeyUsageList = string[];
+export type CryptoKeyUsageList = ReadonlyArray<string>;
 export const CryptoKeyUsageList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CryptoKeyUsageList>;
 
 /** List of files where this key was found. */
-export type CryptoKeyFilePathsList = string[];
+export type CryptoKeyFilePathsList = ReadonlyArray<string>;
 export const CryptoKeyFilePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CryptoKeyFilePathsList>;
@@ -536,7 +533,8 @@ export const CryptoKeyResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CryptoKeyResource>;
 
 /** The CryptoKeyResource items on this page */
-export type CryptoKeyResourceListResultValueList = CryptoKeyResource[];
+export type CryptoKeyResourceListResultValueList =
+  ReadonlyArray<CryptoKeyResource>;
 export const CryptoKeyResourceListResultValueList = /*@__PURE__*/ S.Array(
   CryptoKeyResource,
 ) as any as S.Schema<CryptoKeyResourceListResultValueList>;
@@ -617,7 +615,7 @@ export const CvssScore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CvssScore" }) as any as S.Schema<CvssScore>;
 
 /** All known CVSS scores for the CVE. */
-export type CveResultCvssScoresList = CvssScore[];
+export type CveResultCvssScoresList = ReadonlyArray<CvssScore>;
 export const CveResultCvssScoresList = /*@__PURE__*/ S.Array(
   CvssScore,
 ) as any as S.Schema<CveResultCvssScoresList>;
@@ -637,7 +635,7 @@ export const CveLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CveLink" }) as any as S.Schema<CveLink>;
 
 /** The list of reference links for the CVE. */
-export type CveResultLinksList = CveLink[];
+export type CveResultLinksList = ReadonlyArray<CveLink>;
 export const CveResultLinksList = /*@__PURE__*/ S.Array(
   CveLink,
 ) as any as S.Schema<CveResultLinksList>;
@@ -725,7 +723,7 @@ export const CveResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CveResource" }) as any as S.Schema<CveResource>;
 
 /** The CveResource items on this page */
-export type CveResourceListResultValueList = CveResource[];
+export type CveResourceListResultValueList = ReadonlyArray<CveResource>;
 export const CveResourceListResultValueList = /*@__PURE__*/ S.Array(
   CveResource,
 ) as any as S.Schema<CveResourceListResultValueList>;
@@ -746,44 +744,8 @@ export const CveResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CveResourceListResult",
 }) as any as S.Schema<CveResourceListResult>;
 
-export interface FirmwaresCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the firmware analysis workspace. */
-  workspaceName: string;
-  /** The id of the firmware. */
-  firmwareId: string;
-  body: unknown;
-}
-export const FirmwaresCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    firmwareId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
-      code: 200,
-      apiVersion: "2025-08-02",
-    }),
-  ),
-).annotate({
-  identifier: "FirmwaresCreateRequest",
-}) as any as S.Schema<FirmwaresCreateRequest>;
-
 /** The status of a firmware analysis job. */
-export type Status =
-  | "Pending"
-  | "Extracting"
-  | "Analyzing"
-  | "Ready"
-  | "Error"
-  | (string & {});
+export type Status = "Pending" | "Extracting" | "Analyzing" | "Ready" | "Error";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Error and status message */
@@ -801,7 +763,79 @@ export const StatusMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatusMessage" }) as any as S.Schema<StatusMessage>;
 
 /** A list of errors or other messages generated during firmware analysis */
-export type FirmwarePropertiesStatusMessagesList = StatusMessage[];
+export type FirmwarePropertiesInputStatusMessagesList =
+  ReadonlyArray<StatusMessage>;
+export const FirmwarePropertiesInputStatusMessagesList = /*@__PURE__*/ S.Array(
+  StatusMessage,
+) as any as S.Schema<FirmwarePropertiesInputStatusMessagesList>;
+
+/** Firmware properties. */
+export interface FirmwarePropertiesInput {
+  /** File name for a firmware that user uploaded. */
+  fileName?: string;
+  /** Firmware vendor. */
+  vendor?: string;
+  /** Firmware model. */
+  model?: string;
+  /** Firmware version. */
+  version?: string;
+  /** User-specified description of the firmware. */
+  description?: string;
+  /** File size of the uploaded firmware image. */
+  fileSize?: number;
+  /** The status of firmware scan. */
+  status?: Status;
+  /** A list of errors or other messages generated during firmware analysis */
+  statusMessages?: FirmwarePropertiesInputStatusMessagesList;
+}
+export const FirmwarePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fileName: S.optional(S.String),
+    vendor: S.optional(S.String),
+    model: S.optional(S.String),
+    version: S.optional(S.String),
+    description: S.optional(S.String),
+    fileSize: S.optional(S.Number),
+    status: S.optional(Status),
+    statusMessages: S.optional(FirmwarePropertiesInputStatusMessagesList),
+  }),
+).annotate({
+  identifier: "FirmwarePropertiesInput",
+}) as any as S.Schema<FirmwarePropertiesInput>;
+
+export interface FirmwaresCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the firmware analysis workspace. */
+  workspaceName: string;
+  /** The id of the firmware. */
+  firmwareId: string;
+  /** The resource-specific properties for this resource. */
+  properties?: FirmwarePropertiesInput;
+}
+export const FirmwaresCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    firmwareId: S.String.pipe(T.Label()),
+    properties: S.optional(FirmwarePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}",
+      code: 200,
+      apiVersion: "2025-08-02",
+    }),
+  ),
+).annotate({
+  identifier: "FirmwaresCreateRequest",
+}) as any as S.Schema<FirmwaresCreateRequest>;
+
+/** A list of errors or other messages generated during firmware analysis */
+export type FirmwarePropertiesStatusMessagesList = ReadonlyArray<StatusMessage>;
 export const FirmwarePropertiesStatusMessagesList = /*@__PURE__*/ S.Array(
   StatusMessage,
 ) as any as S.Schema<FirmwarePropertiesStatusMessagesList>;
@@ -1003,7 +1037,7 @@ export const Firmware = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Firmware" }) as any as S.Schema<Firmware>;
 
 /** The Firmware items on this page */
-export type FirmwareListResultValueList = Firmware[];
+export type FirmwareListResultValueList = ReadonlyArray<Firmware>;
 export const FirmwareListResultValueList = /*@__PURE__*/ S.Array(
   Firmware,
 ) as any as S.Schema<FirmwareListResultValueList>;
@@ -1033,7 +1067,8 @@ export interface FirmwaresUpdateRequest {
   workspaceName: string;
   /** The id of the firmware. */
   firmwareId: string;
-  body: unknown;
+  /** The editable properties of a firmware */
+  properties?: FirmwarePropertiesInput;
 }
 export const FirmwaresUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1041,7 +1076,7 @@ export const FirmwaresUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     firmwareId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(FirmwarePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1115,11 +1150,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1146,7 +1181,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1252,7 +1287,8 @@ export const PasswordHashResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PasswordHashResource>;
 
 /** The PasswordHashResource items on this page */
-export type PasswordHashResourceListResultValueList = PasswordHashResource[];
+export type PasswordHashResourceListResultValueList =
+  ReadonlyArray<PasswordHashResource>;
 export const PasswordHashResourceListResultValueList = /*@__PURE__*/ S.Array(
   PasswordHashResource,
 ) as any as S.Schema<PasswordHashResourceListResultValueList>;
@@ -1302,7 +1338,7 @@ export const SbomComponentsListByFirmwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SbomComponentsListByFirmwareRequest>;
 
 /** File paths related to the component. Note, relatedFiles should be used instead of this property. */
-export type SbomComponentFilePathsList = string[];
+export type SbomComponentFilePathsList = ReadonlyArray<string>;
 export const SbomComponentFilePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SbomComponentFilePathsList>;
@@ -1359,7 +1395,8 @@ export const SbomComponentResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SbomComponentResource>;
 
 /** The SbomComponentResource items on this page */
-export type SbomComponentResourceListResultValueList = SbomComponentResource[];
+export type SbomComponentResourceListResultValueList =
+  ReadonlyArray<SbomComponentResource>;
 export const SbomComponentResourceListResultValueList = /*@__PURE__*/ S.Array(
   SbomComponentResource,
 ) as any as S.Schema<SbomComponentResourceListResultValueList>;
@@ -1385,8 +1422,7 @@ export type SummariesGetRequestSummaryType =
   | "CommonVulnerabilitiesAndExposures"
   | "BinaryHardening"
   | "CryptoCertificate"
-  | "CryptoKey"
-  | (string & {});
+  | "CryptoKey";
 export const SummariesGetRequestSummaryType = /*@__PURE__*/ S.String;
 
 export interface SummariesGetRequest {
@@ -1426,8 +1462,7 @@ export type SummaryType =
   | "CommonVulnerabilitiesAndExposures"
   | "BinaryHardening"
   | "CryptoCertificate"
-  | "CryptoKey"
-  | (string & {});
+  | "CryptoKey";
 export const SummaryType = /*@__PURE__*/ S.String;
 
 /** Properties of an analysis summary. */
@@ -1524,7 +1559,7 @@ export const SummaryResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SummaryResource>;
 
 /** The SummaryResource items on this page */
-export type SummaryResourceListResultValueList = SummaryResource[];
+export type SummaryResourceListResultValueList = ReadonlyArray<SummaryResource>;
 export const SummaryResourceListResultValueList = /*@__PURE__*/ S.Array(
   SummaryResource,
 ) as any as S.Schema<SummaryResourceListResultValueList>;
@@ -1665,7 +1700,7 @@ export const UsageMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageMetric" }) as any as S.Schema<UsageMetric>;
 
 /** The UsageMetric items on this page */
-export type UsageMetricListResultValueList = UsageMetric[];
+export type UsageMetricListResultValueList = ReadonlyArray<UsageMetric>;
 export const UsageMetricListResultValueList = /*@__PURE__*/ S.Array(
   UsageMetric,
 ) as any as S.Schema<UsageMetricListResultValueList>;
@@ -1686,6 +1721,51 @@ export const UsageMetricListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsageMetricListResult",
 }) as any as S.Schema<UsageMetricListResult>;
 
+/** Resource tags. */
+export type WorkspacesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkspacesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkspacesCreateRequestTagsMap>;
+
+/** Workspace properties. */
+export interface WorkspacePropertiesInput {}
+export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "WorkspacePropertiesInput",
+}) as any as S.Schema<WorkspacePropertiesInput>;
+
+/** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+export const SkuTier = /*@__PURE__*/ S.String;
+
+/** The resource model definition representing SKU */
+export interface WorkspacesCreateRequestSku {
+  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
+  name: string;
+  tier?: SkuTier;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+}
+export const WorkspacesCreateRequestSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: S.optional(SkuTier),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "WorkspacesCreateRequestSku",
+}) as any as S.Schema<WorkspacesCreateRequestSku>;
+
 export interface WorkspacesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1693,14 +1773,24 @@ export interface WorkspacesCreateRequest {
   resourceGroupName: string;
   /** The name of the firmware analysis workspace. */
   workspaceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: WorkspacesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: WorkspacePropertiesInput;
+  /** The resource model definition representing SKU */
+  sku?: WorkspacesCreateRequestSku;
 }
 export const WorkspacesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(WorkspacesCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(WorkspacePropertiesInput),
+    sku: S.optional(WorkspacesCreateRequestSku),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1734,10 +1824,6 @@ export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkspaceProperties",
 }) as any as S.Schema<WorkspaceProperties>;
-
-/** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
-export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
 export interface WorkspacesCreateResponseSku {
@@ -1835,14 +1921,15 @@ export interface WorkspacesGenerateUploadUrlRequest {
   resourceGroupName: string;
   /** The name of the firmware analysis workspace. */
   workspaceName: string;
-  body: unknown;
+  /** A unique ID for the firmware to be uploaded. */
+  firmwareId?: string;
 }
 export const WorkspacesGenerateUploadUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    firmwareId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2042,7 +2129,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
-export type WorkspaceListResultValueList = Workspace[];
+export type WorkspaceListResultValueList = ReadonlyArray<Workspace>;
 export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;
@@ -2082,6 +2169,50 @@ export const WorkspacesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspacesListBySubscriptionRequest",
 }) as any as S.Schema<WorkspacesListBySubscriptionRequest>;
 
+/** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
+export type AzureResourceManagerCommonTypesSkuUpdateTier =
+  | "Free"
+  | "Basic"
+  | "Standard"
+  | "Premium";
+export const AzureResourceManagerCommonTypesSkuUpdateTier =
+  /*@__PURE__*/ S.String;
+
+/** The resource model definition representing SKU */
+export interface AzureResourceManagerCommonTypesSkuUpdate {
+  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
+  name?: string;
+  /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
+  tier?: AzureResourceManagerCommonTypesSkuUpdateTier;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+}
+export const AzureResourceManagerCommonTypesSkuUpdate = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.optional(S.String),
+      tier: S.optional(AzureResourceManagerCommonTypesSkuUpdateTier),
+      size: S.optional(S.String),
+      family: S.optional(S.String),
+      capacity: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "AzureResourceManagerCommonTypesSkuUpdate",
+}) as any as S.Schema<AzureResourceManagerCommonTypesSkuUpdate>;
+
+/** Resource tags. */
+export type WorkspacesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkspacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkspacesUpdateRequestTagsMap>;
+
 export interface WorkspacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2089,14 +2220,18 @@ export interface WorkspacesUpdateRequest {
   resourceGroupName: string;
   /** The name of the firmware analysis workspace. */
   workspaceName: string;
-  body: unknown;
+  /** The SKU (Stock Keeping Unit) assigned to this resource. */
+  sku?: AzureResourceManagerCommonTypesSkuUpdate;
+  /** Resource tags. */
+  tags?: WorkspacesUpdateRequestTagsMap;
 }
 export const WorkspacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sku: S.optional(AzureResourceManagerCommonTypesSkuUpdate),
+    tags: S.optional(WorkspacesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",

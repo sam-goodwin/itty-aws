@@ -457,15 +457,53 @@
             "smithy.api#documentation": "Rule set name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datadog#MonitoringTagRulesPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Definition of the properties for a TagRules resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datadog#MonitoringTagRulesPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "logRules": {
+          "target": "com.azure.datadog#LogRules",
+          "traits": {
+            "smithy.api#documentation": "Set of rules for sending logs for the Monitor resource."
+          }
+        },
+        "metricRules": {
+          "target": "com.azure.datadog#MetricRules",
+          "traits": {
+            "smithy.api#documentation": "Set of rules for sending metrics for the Monitor resource."
+          }
+        },
+        "agentRules": {
+          "target": "com.azure.datadog#AgentRules",
+          "traits": {
+            "smithy.api#documentation": "Set of rules for managing agents for the Monitor resource."
+          }
+        },
+        "automuting": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Configuration to enable/disable auto-muting flag"
+          }
+        },
+        "customMetrics": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of the properties for a TagRules resource."
       }
     },
     "com.azure.datadog#TagRulesGet": {
@@ -832,16 +870,31 @@
             "smithy.api#documentation": "Configuration name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {}
-          }
+        "properties": {
+          "target": "com.azure.datadog#DatadogSingleSignOnPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.datadog#DatadogSingleSignOnPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "singleSignOnState": {
+          "target": "com.azure.datadog#SingleSignOnStates",
+          "traits": {
+            "smithy.api#documentation": "Various states of the SSO resource"
+          }
+        },
+        "enterpriseAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the Enterprise App used for Single sign-on."
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.datadog#SingleSignOnConfigurationsGet": {
       "type": "operation",
@@ -1099,10 +1152,29 @@
             "smithy.api#documentation": "Monitor resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "createdBy": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The user that created the API key."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the API key."
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the API key.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time of creation of the API key."
           }
         }
       },
@@ -1491,10 +1563,19 @@
             "smithy.api#documentation": "Monitor resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.datadog#ResourceSku"
+        },
+        "azureSubscriptionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Newly selected Azure Subscription Id in which the new Marketplace subscription will be created for Resubscribe"
+          }
+        },
+        "resourceGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Newly selected Azure resource group in which the new Marketplace subscription will be created for Resubscribe"
           }
         }
       },
@@ -1847,15 +1928,76 @@
             "smithy.api#documentation": "The configuration name. Only 'default' value is supported."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datadog#SubscriptionListInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The request to update subscriptions needed to be monitored by the Datadog monitor resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datadog#SubscriptionListInput": {
+      "type": "structure",
+      "members": {
+        "operation": {
+          "target": "com.azure.datadog#Operation",
+          "traits": {
+            "smithy.api#documentation": "The operation for the patch on the resource."
+          }
+        },
+        "monitoredSubscriptionList": {
+          "target": "com.azure.datadog#SubscriptionListInputMonitoredSubscriptionListList",
+          "traits": {
+            "smithy.api#documentation": "List of subscriptions and the state of the monitoring."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The request to update subscriptions needed to be monitored by the Datadog monitor resource."
+      }
+    },
+    "com.azure.datadog#SubscriptionListInputMonitoredSubscriptionListList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datadog#MonitoredSubscriptionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of subscriptions and the state of the monitoring."
+      }
+    },
+    "com.azure.datadog#MonitoredSubscriptionInput": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subscriptionId to be monitored."
+          }
+        },
+        "status": {
+          "target": "com.azure.datadog#Status",
+          "traits": {
+            "smithy.api#documentation": "The state of monitoring."
+          }
+        },
+        "error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The reason of not monitoring the subscription."
+          }
+        },
+        "tagRules": {
+          "target": "com.azure.datadog#MonitoringTagRulesPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Definition of the properties for a TagRules resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of subscriptions and it's monitoring status by current Datadog monitor."
       }
     },
     "com.azure.datadog#MonitoredSubscriptionsCreateorUpdate": {
@@ -1950,10 +2092,10 @@
             "smithy.api#documentation": "The configuration name. Only 'default' value is supported."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datadog#SubscriptionListInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The request to update subscriptions needed to be monitored by the Datadog monitor resource."
           }
         }
       },
@@ -3041,15 +3183,82 @@
             "smithy.api#documentation": "Monitor resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datadog#MonitorUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The set of properties that can be update in a PATCH request to a monitor resource."
           }
+        },
+        "tags": {
+          "target": "com.azure.datadog#MonitorsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The new tags of the monitor resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.datadog#ResourceSku"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datadog#MonitorsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The new tags of the monitor resource."
+      }
+    },
+    "com.azure.datadog#MonitorUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "monitoringStatus": {
+          "target": "com.azure.datadog#MonitorUpdatePropertiesMonitoringStatus",
+          "traits": {
+            "smithy.api#documentation": "Flag specifying if the resource monitoring is enabled or disabled."
+          }
+        },
+        "cspm": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The new cloud security posture management value of the monitor resource. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks."
+          }
+        },
+        "resourceCollection": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The new resource collection value of the monitor resource. This collects configuration information for all resources in a subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of properties that can be update in a PATCH request to a monitor resource."
+      }
+    },
+    "com.azure.datadog#MonitorUpdatePropertiesMonitoringStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Flag specifying if the resource monitoring is enabled or disabled."
       }
     },
     "com.azure.datadog#MonitorsCreate": {
@@ -3167,15 +3376,104 @@
             "smithy.api#documentation": "Monitor resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.datadog#MonitorsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.datadog#MonitorPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to the monitor resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.datadog#ResourceSku"
+        },
+        "identity": {
+          "target": "com.azure.datadog#IdentityPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datadog#IdentityPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.datadog#ManagedIdentityTypes",
+          "traits": {
+            "smithy.api#documentation": "Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.datadog#MonitorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "monitoringStatus": {
+          "target": "com.azure.datadog#MonitorPropertiesInputMonitoringStatus",
+          "traits": {
+            "smithy.api#documentation": "Flag specifying if the resource monitoring is enabled or disabled."
+          }
+        },
+        "datadogOrganizationProperties": {
+          "target": "com.azure.datadog#DatadogOrganizationProperties",
+          "traits": {
+            "smithy.api#documentation": "Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well."
+          }
+        },
+        "userInfo": {
+          "target": "com.azure.datadog#UserInfo",
+          "traits": {
+            "smithy.api#documentation": "Includes name, email and optionally, phone number. User Information can't be null."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties specific to the monitor resource."
+      }
+    },
+    "com.azure.datadog#MonitorPropertiesInputMonitoringStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Flag specifying if the resource monitoring is enabled or disabled."
+      }
+    },
+    "com.azure.datadog#MonitorsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.datadog#MonitorsGet": {
@@ -3855,10 +4153,10 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datadog#DatadogAgreementProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Represents the properties of the resource."
           }
         }
       },

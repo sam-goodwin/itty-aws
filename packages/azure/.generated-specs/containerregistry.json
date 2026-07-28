@@ -1006,16 +1006,92 @@
             "smithy.api#documentation": "The name of the webhook."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerregistry#WebhooksUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags for the webhook."
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerregistry#WebhookPropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties that the webhook will be updated with."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#WebhookPropertiesUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "serviceUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service URI for the webhook to post notifications."
+          }
+        },
+        "customHeaders": {
+          "target": "com.azure.containerregistry#WebhookPropertiesUpdateParametersCustomHeadersMap",
+          "traits": {
+            "smithy.api#documentation": "Custom headers that will be added to the webhook notifications."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerregistry#WebhookStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the webhook at the time the operation was called."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope of repositories where the event can be triggered. For example, 'foo:*' means events for all tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to 'foo:latest'. Empty means all events."
+          }
+        },
+        "actions": {
+          "target": "com.azure.containerregistry#WebhookPropertiesUpdateParametersActionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of actions that trigger the webhook to post notifications."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters for updating the properties of a webhook."
+      }
+    },
+    "com.azure.containerregistry#WebhookPropertiesUpdateParametersActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry#WebhookAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of actions that trigger the webhook to post notifications."
+      }
+    },
+    "com.azure.containerregistry#WebhookPropertiesUpdateParametersCustomHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom headers that will be added to the webhook notifications."
+      }
+    },
+    "com.azure.containerregistry#WebhooksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags for the webhook."
       }
     },
     "com.azure.containerregistry#WebhooksCreate": {
@@ -1135,16 +1211,101 @@
             "smithy.api#documentation": "The name of the webhook."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerregistry#WebhooksCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The tags for the webhook."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the webhook. This cannot be changed after the resource is created.",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerregistry#WebhookPropertiesCreateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties that the webhook will be created with."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#WebhookPropertiesCreateParameters": {
+      "type": "structure",
+      "members": {
+        "serviceUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service URI for the webhook to post notifications.",
+            "smithy.api#required": {}
+          }
+        },
+        "customHeaders": {
+          "target": "com.azure.containerregistry#WebhookPropertiesCreateParametersCustomHeadersMap",
+          "traits": {
+            "smithy.api#documentation": "Custom headers that will be added to the webhook notifications."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerregistry#WebhookStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the webhook at the time the operation was called."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope of repositories where the event can be triggered. For example, 'foo:*' means events for all tags under repository 'foo'. 'foo:bar' means events for 'foo:bar' only. 'foo' is equivalent to 'foo:latest'. Empty means all events."
+          }
+        },
+        "actions": {
+          "target": "com.azure.containerregistry#WebhookPropertiesCreateParametersActionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of actions that trigger the webhook to post notifications.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters for creating the properties of a webhook."
+      }
+    },
+    "com.azure.containerregistry#WebhookPropertiesCreateParametersActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry#WebhookAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of actions that trigger the webhook to post notifications."
+      }
+    },
+    "com.azure.containerregistry#WebhookPropertiesCreateParametersCustomHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom headers that will be added to the webhook notifications."
+      }
+    },
+    "com.azure.containerregistry#WebhooksCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags for the webhook."
       }
     },
     "com.azure.containerregistry#WebhooksGet": {
@@ -1748,17 +1909,96 @@
             "smithy.api#documentation": "The name of the token."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerregistry#TokenUpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the token update parameters."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.containerregistry#TokenUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "scopeMapId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the scope map to which the token will be associated with."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerregistry#TokenStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the token example enabled or disabled."
+          }
+        },
+        "credentials": {
+          "target": "com.azure.containerregistry#TokenCredentialsPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The credentials that can be used for authenticating the token."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters for updating token properties."
+      }
+    },
+    "com.azure.containerregistry#TokenCredentialsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "certificates": {
+          "target": "com.azure.containerregistry#TokenCredentialsPropertiesInputCertificatesList"
+        },
+        "passwords": {
+          "target": "com.azure.containerregistry#TokenCredentialsPropertiesInputPasswordsList"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the credentials that can be used for authenticating the token."
+      }
+    },
+    "com.azure.containerregistry#TokenCredentialsPropertiesInputPasswordsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry#TokenPasswordInput"
+      },
+      "traits": {}
+    },
+    "com.azure.containerregistry#TokenPasswordInput": {
+      "type": "structure",
+      "members": {
+        "creationTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation datetime of the password."
+          }
+        },
+        "expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiry datetime of the password."
+          }
+        },
+        "name": {
+          "target": "com.azure.containerregistry#TokenPasswordName",
+          "traits": {
+            "smithy.api#documentation": "The password name \"password1\" or \"password2\""
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The password that will be used for authenticating the token of a container registry."
+      }
+    },
+    "com.azure.containerregistry#TokenCredentialsPropertiesInputCertificatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry#TokenCertificate"
+      },
+      "traits": {}
     },
     "com.azure.containerregistry#TokensCreate": {
       "type": "operation",
@@ -1852,16 +2092,41 @@
             "smithy.api#documentation": "The name of the token."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerregistry#TokenPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the token."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#TokenPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "scopeMapId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the scope map to which the token will be associated with."
+          }
+        },
+        "credentials": {
+          "target": "com.azure.containerregistry#TokenCredentialsPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The credentials that can be used for authenticating the token."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerregistry#TokenStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the token example enabled or disabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a token."
       }
     },
     "com.azure.containerregistry#TokensGet": {
@@ -2278,16 +2543,44 @@
             "smithy.api#documentation": "The name of the scope map."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerregistry#ScopeMapPropertiesUpdateParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The update parameters for scope map properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#ScopeMapPropertiesUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user friendly description of the scope map."
+          }
+        },
+        "actions": {
+          "target": "com.azure.containerregistry#ScopeMapPropertiesUpdateParametersActionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of scope permissions for registry artifacts.\nE.g. repositories/repository-name/pull,\nrepositories/repository-name/delete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The update parameters for scope map properties."
+      }
+    },
+    "com.azure.containerregistry#ScopeMapPropertiesUpdateParametersActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of scope permissions for registry artifacts.\nE.g. repositories/repository-name/pull,\nrepositories/repository-name/delete"
       }
     },
     "com.azure.containerregistry#ScopeMapsCreate": {
@@ -2382,16 +2675,45 @@
             "smithy.api#documentation": "The name of the scope map."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerregistry#ScopeMapPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the scope map."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#ScopeMapPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user friendly description of the scope map."
+          }
+        },
+        "actions": {
+          "target": "com.azure.containerregistry#ScopeMapPropertiesInputActionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of scoped permissions for registry artifacts.\nE.g. repositories/repository-name/content/read,\nrepositories/repository-name/metadata/write",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a scope map."
+      }
+    },
+    "com.azure.containerregistry#ScopeMapPropertiesInputActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of scoped permissions for registry artifacts.\nE.g. repositories/repository-name/content/read,\nrepositories/repository-name/metadata/write"
       }
     },
     "com.azure.containerregistry#ScopeMapsGet": {
@@ -2863,16 +3185,45 @@
             "smithy.api#documentation": "The name of the replication."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerregistry#ReplicationsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags for the replication."
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerregistry#ReplicationUpdateParametersProperties",
+          "traits": {
+            "smithy.api#documentation": "The parameters for updating a replication's properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#ReplicationUpdateParametersProperties": {
+      "type": "structure",
+      "members": {
+        "regionEndpointEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the replication's regional endpoint is enabled. Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.containerregistry#ReplicationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags for the replication."
       }
     },
     "com.azure.containerregistry#ReplicationsCreate": {
@@ -2992,16 +3343,80 @@
             "smithy.api#documentation": "The name of the replication."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerregistry#ReplicationsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerregistry#ReplicationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the replication."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#ReplicationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "regionEndpointEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the replication's regional endpoint is enabled. Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications."
+          }
+        },
+        "zoneRedundancy": {
+          "target": "com.azure.containerregistry#ReplicationPropertiesInputZoneRedundancy",
+          "traits": {
+            "smithy.api#documentation": "Whether or not zone redundancy is enabled for this container registry replication"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a replication."
+      }
+    },
+    "com.azure.containerregistry#ReplicationPropertiesInputZoneRedundancy": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether or not zone redundancy is enabled for this container registry replication"
+      }
+    },
+    "com.azure.containerregistry#ReplicationsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerregistry#ReplicationsGet": {
@@ -3384,10 +3799,10 @@
             "smithy.api#documentation": "The name of the container registry."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "com.azure.containerregistry#PasswordName",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Specifies name of the password which should be regenerated -- password or password2.",
             "smithy.api#required": {}
           }
         }
@@ -3924,11 +4339,10 @@
             "smithy.api#documentation": "The name of the private endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerregistry#PrivateEndpointConnectionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a private endpoint connection."
           }
         }
       },
@@ -4374,17 +4788,124 @@
             "smithy.api#documentation": "The name of the container registry."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "source": {
+          "target": "com.azure.containerregistry#ImportSource",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The source of the image.",
             "smithy.api#required": {}
+          }
+        },
+        "targetTags": {
+          "target": "com.azure.containerregistry#RegistriesImportImageRequestTargetTagsList",
+          "traits": {
+            "smithy.api#documentation": "List of strings of the form repo[:tag]. When tag is omitted the source will be used (or 'latest' if source tag is also omitted)."
+          }
+        },
+        "untaggedTargetRepositories": {
+          "target": "com.azure.containerregistry#RegistriesImportImageRequestUntaggedTargetRepositoriesList",
+          "traits": {
+            "smithy.api#documentation": "List of strings of repository names to do a manifest only copy. No tag will be created."
+          }
+        },
+        "mode": {
+          "target": "com.azure.containerregistry#RegistriesImportImageRequestMode",
+          "traits": {
+            "smithy.api#documentation": "When Force, any existing target tags will be overwritten. When NoForce, any existing target tags will fail the operation before any copying begins."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.containerregistry#RegistriesImportImageRequestMode": {
+      "type": "enum",
+      "members": {
+        "NOFORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NoForce"
+          }
+        },
+        "FORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Force"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "When Force, any existing target tags will be overwritten. When NoForce, any existing target tags will fail the operation before any copying begins."
+      }
+    },
+    "com.azure.containerregistry#RegistriesImportImageRequestUntaggedTargetRepositoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of strings of repository names to do a manifest only copy. No tag will be created."
+      }
+    },
+    "com.azure.containerregistry#RegistriesImportImageRequestTargetTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of strings of the form repo[:tag]. When tag is omitted the source will be used (or 'latest' if source tag is also omitted)."
+      }
+    },
+    "com.azure.containerregistry#ImportSource": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource identifier of the source Azure Container Registry."
+          }
+        },
+        "registryUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The address of the source registry (e.g. 'mcr.microsoft.com')."
+          }
+        },
+        "credentials": {
+          "target": "com.azure.containerregistry#ImportSourceCredentials",
+          "traits": {
+            "smithy.api#documentation": "Credentials used when importing from a registry uri."
+          }
+        },
+        "sourceImage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Repository name of the source image.\nSpecify an image by repository ('hello-world'). This will use the 'latest' tag.\nSpecify an image by tag ('hello-world:latest').\nSpecify an image by sha256-based manifest digest ('hello-world@sha256:abc123').",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.containerregistry#ImportSourceCredentials": {
+      "type": "structure",
+      "members": {
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The username to authenticate with the source registry."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password used to authenticate with the source registry.",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.containerregistry#RegistriesGenerateCredentials": {
       "type": "operation",
@@ -4461,11 +4982,22 @@
             "smithy.api#documentation": "The name of the container registry."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tokenId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource ID of the token for which credentials have to be generated."
+          }
+        },
+        "expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiry date of the generated credentials after which the credentials become invalid."
+          }
+        },
+        "name": {
+          "target": "com.azure.containerregistry#TokenPasswordName",
+          "traits": {
+            "smithy.api#documentation": "Specifies name of the password which should be regenerated if any -- password1 or password2."
           }
         }
       },
@@ -4858,16 +5390,81 @@
             "smithy.api#documentation": "The name of the credential set."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerregistry#CredentialSetUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the credential set update parameters"
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerregistry#IdentityPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Identities associated with the resource. This is used to access the KeyVault secrets."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#IdentityPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerregistry#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.containerregistry#IdentityPropertiesInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource. The user identity\ndictionary key references will be ARM resource ids in the form:\n'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/\nproviders/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed identity for the resource."
+      }
+    },
+    "com.azure.containerregistry#IdentityPropertiesInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.containerregistry#UserIdentityPropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity\ndictionary key references will be ARM resource ids in the form:\n'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/\nproviders/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.containerregistry#UserIdentityPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
+    },
+    "com.azure.containerregistry#CredentialSetUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "authCredentials": {
+          "target": "com.azure.containerregistry#CredentialSetUpdatePropertiesAuthCredentialsList",
+          "traits": {
+            "smithy.api#documentation": "List of authentication credentials stored for an upstream.\nUsually consists of a primary and an optional secondary credential."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters for updating credential set properties."
+      }
+    },
+    "com.azure.containerregistry#CredentialSetUpdatePropertiesAuthCredentialsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry#AuthCredential"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of authentication credentials stored for an upstream.\nUsually consists of a primary and an optional secondary credential."
       }
     },
     "com.azure.containerregistry#CredentialSetsCreate": {
@@ -4968,16 +5565,50 @@
             "smithy.api#documentation": "The name of the credential set."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerregistry#CredentialSetPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the credential set."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerregistry#IdentityPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Identities associated with the resource. This is used to access the KeyVault secrets."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#CredentialSetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "loginServer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The credentials are stored for this upstream or login server."
+          }
+        },
+        "authCredentials": {
+          "target": "com.azure.containerregistry#CredentialSetPropertiesInputAuthCredentialsList",
+          "traits": {
+            "smithy.api#documentation": "List of authentication credentials stored for an upstream.\nUsually consists of a primary and an optional secondary credential."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a credential set resource."
+      }
+    },
+    "com.azure.containerregistry#CredentialSetPropertiesInputAuthCredentialsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry#AuthCredential"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of authentication credentials stored for an upstream.\nUsually consists of a primary and an optional secondary credential."
       }
     },
     "com.azure.containerregistry#CredentialSetsGet": {
@@ -5927,16 +6558,97 @@
             "smithy.api#documentation": "The name of the connected registry."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerregistry#ConnectedRegistryUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the connected registry update parameters."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#ConnectedRegistryUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "syncProperties": {
+          "target": "com.azure.containerregistry#SyncUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The sync properties of the connected registry with its parent."
+          }
+        },
+        "logging": {
+          "target": "com.azure.containerregistry#LoggingProperties",
+          "traits": {
+            "smithy.api#documentation": "The logging properties of the connected registry."
+          }
+        },
+        "clientTokenIds": {
+          "target": "com.azure.containerregistry#ConnectedRegistryUpdatePropertiesClientTokenIdsList",
+          "traits": {
+            "smithy.api#documentation": "The list of the ACR token resource IDs used to authenticate clients to the connected registry."
+          }
+        },
+        "notificationsList": {
+          "target": "com.azure.containerregistry#ConnectedRegistryUpdatePropertiesNotificationsListList",
+          "traits": {
+            "smithy.api#documentation": "The list of notifications subscription information for the connected registry."
+          }
+        },
+        "garbageCollection": {
+          "target": "com.azure.containerregistry#GarbageCollectionProperties",
+          "traits": {
+            "smithy.api#documentation": "The garbage collection properties of the connected registry."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters for updating token properties."
+      }
+    },
+    "com.azure.containerregistry#ConnectedRegistryUpdatePropertiesNotificationsListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of notifications subscription information for the connected registry."
+      }
+    },
+    "com.azure.containerregistry#ConnectedRegistryUpdatePropertiesClientTokenIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of the ACR token resource IDs used to authenticate clients to the connected registry."
+      }
+    },
+    "com.azure.containerregistry#SyncUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "schedule": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cron expression indicating the schedule that the connected registry will sync with its parent."
+          }
+        },
+        "syncWindow": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time window during which sync is enabled for each schedule occurrence. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601."
+          }
+        },
+        "messageTtl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The period of time for which a message is available to sync before it is expired. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters for updating the sync properties of the connected registry with its parent."
       }
     },
     "com.azure.containerregistry#ConnectedRegistriesCreate": {
@@ -6031,16 +6743,147 @@
             "smithy.api#documentation": "The name of the connected registry."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerregistry#ConnectedRegistryPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the connected registry."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#ConnectedRegistryPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.azure.containerregistry#ConnectedRegistryMode",
+          "traits": {
+            "smithy.api#documentation": "The mode of the connected registry resource that indicates the permissions of the registry.",
+            "smithy.api#required": {}
+          }
+        },
+        "parent": {
+          "target": "com.azure.containerregistry#ParentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The parent of the connected registry.",
+            "smithy.api#required": {}
+          }
+        },
+        "clientTokenIds": {
+          "target": "com.azure.containerregistry#ConnectedRegistryPropertiesInputClientTokenIdsList",
+          "traits": {
+            "smithy.api#documentation": "The list of the ACR token resource IDs used to authenticate clients to the connected registry."
+          }
+        },
+        "loginServer": {
+          "target": "com.azure.containerregistry#LoginServerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The login server properties of the connected registry."
+          }
+        },
+        "logging": {
+          "target": "com.azure.containerregistry#LoggingProperties",
+          "traits": {
+            "smithy.api#documentation": "The logging properties of the connected registry."
+          }
+        },
+        "notificationsList": {
+          "target": "com.azure.containerregistry#ConnectedRegistryPropertiesInputNotificationsListList",
+          "traits": {
+            "smithy.api#documentation": "The list of notifications subscription information for the connected registry."
+          }
+        },
+        "garbageCollection": {
+          "target": "com.azure.containerregistry#GarbageCollectionProperties",
+          "traits": {
+            "smithy.api#documentation": "The garbage collection properties of the connected registry."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a connected registry."
+      }
+    },
+    "com.azure.containerregistry#ConnectedRegistryPropertiesInputNotificationsListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of notifications subscription information for the connected registry."
+      }
+    },
+    "com.azure.containerregistry#LoginServerPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The login server properties of the connected registry."
+      }
+    },
+    "com.azure.containerregistry#ConnectedRegistryPropertiesInputClientTokenIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of the ACR token resource IDs used to authenticate clients to the connected registry."
+      }
+    },
+    "com.azure.containerregistry#ParentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the parent to which the connected registry will be associated."
+          }
+        },
+        "syncProperties": {
+          "target": "com.azure.containerregistry#SyncPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The sync properties of the connected registry with its parent.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the connected registry parent."
+      }
+    },
+    "com.azure.containerregistry#SyncPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "tokenId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the ACR token used to authenticate the connected registry to its parent during sync.",
+            "smithy.api#required": {}
+          }
+        },
+        "schedule": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cron expression indicating the schedule that the connected registry will sync with its parent."
+          }
+        },
+        "syncWindow": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time window during which sync is enabled for each schedule occurrence. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601."
+          }
+        },
+        "messageTtl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The period of time for which a message is available to sync before it is expired. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The sync properties of the connected registry with its parent."
       }
     },
     "com.azure.containerregistry#ConnectedRegistriesGet": {
@@ -6454,16 +7297,29 @@
             "smithy.api#documentation": "The name of the cache rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerregistry#CacheRuleUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the cache rule update parameters."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#CacheRuleUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "credentialSetResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource ID of the credential store which is associated with the Cache rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters for updating cache rule properties."
       }
     },
     "com.azure.containerregistry#CacheRulesCreate": {
@@ -6558,16 +7414,41 @@
             "smithy.api#documentation": "The name of the cache rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerregistry#CacheRulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the cache rule."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#CacheRulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "credentialSetResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource ID of the credential store which is associated with the cache rule."
+          }
+        },
+        "sourceRepository": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source repository pulled from upstream."
+          }
+        },
+        "targetRepository": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target repository specified in docker pull command.\nEg: docker pull myregistry.azurecr.io/{targetRepository}:{tag}"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a cache rule."
       }
     },
     "com.azure.containerregistry#CacheRulesGet": {
@@ -7650,16 +8531,287 @@
             "smithy.api#documentation": "The name of the container registry."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.containerregistry#IdentityPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The identity of the container registry."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerregistry#RegistriesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags for the container registry."
+          }
+        },
+        "sku": {
+          "target": "com.azure.containerregistry#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the container registry."
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerregistry#RegistryPropertiesUpdateParametersInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that the container registry will be updated with."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#RegistryPropertiesUpdateParametersInput": {
+      "type": "structure",
+      "members": {
+        "adminUserEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value that indicates whether the admin user is enabled."
+          }
+        },
+        "networkRuleSet": {
+          "target": "com.azure.containerregistry#NetworkRuleSet",
+          "traits": {
+            "smithy.api#documentation": "The network rule set for a container registry."
+          }
+        },
+        "policies": {
+          "target": "com.azure.containerregistry#PoliciesInput",
+          "traits": {
+            "smithy.api#documentation": "The policies for a container registry."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.containerregistry#EncryptionPropertyInput",
+          "traits": {
+            "smithy.api#documentation": "The encryption settings of container registry."
+          }
+        },
+        "dataEndpointEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable a single data endpoint per region for serving data."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.containerregistry#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network access is allowed for the container registry."
+          }
+        },
+        "networkRuleBypassOptions": {
+          "target": "com.azure.containerregistry#RegistryPropertiesUpdateParametersInputNetworkRuleBypassOptions",
+          "traits": {
+            "smithy.api#documentation": "Whether to allow trusted Azure services to access a network restricted registry."
+          }
+        },
+        "networkRuleBypassAllowedForTasks": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to allow ACR Tasks service to access a network restricted registry."
+          }
+        },
+        "anonymousPullEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables registry-wide pull from unauthenticated clients."
+          }
+        },
+        "roleAssignmentMode": {
+          "target": "com.azure.containerregistry#RoleAssignmentMode",
+          "traits": {
+            "smithy.api#documentation": "Determines registry role assignment mode."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters for updating the properties of a container registry."
+      }
+    },
+    "com.azure.containerregistry#RoleAssignmentMode": {
+      "type": "enum",
+      "members": {
+        "ABACREPOSITORYPERMISSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AbacRepositoryPermissions"
+          }
+        },
+        "LEGACYREGISTRYPERMISSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LegacyRegistryPermissions"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Determines registry role assignment mode."
+      }
+    },
+    "com.azure.containerregistry#RegistryPropertiesUpdateParametersInputNetworkRuleBypassOptions": {
+      "type": "enum",
+      "members": {
+        "AZURESERVICES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureServices"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether to allow trusted Azure services to access a network restricted registry."
+      }
+    },
+    "com.azure.containerregistry#PublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether or not public network access is allowed for the container registry."
+      }
+    },
+    "com.azure.containerregistry#EncryptionPropertyInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.containerregistry#EncryptionStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether or not the encryption is enabled for container registry."
+          }
+        },
+        "keyVaultProperties": {
+          "target": "com.azure.containerregistry#KeyVaultPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Key vault properties."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.containerregistry#KeyVaultPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "keyIdentifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key vault uri to access the encryption key."
+          }
+        },
+        "identity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The client id of the identity which will be used to access key vault."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.containerregistry#PoliciesInput": {
+      "type": "structure",
+      "members": {
+        "quarantinePolicy": {
+          "target": "com.azure.containerregistry#QuarantinePolicy",
+          "traits": {
+            "smithy.api#documentation": "The quarantine policy for a container registry."
+          }
+        },
+        "trustPolicy": {
+          "target": "com.azure.containerregistry#TrustPolicy",
+          "traits": {
+            "smithy.api#documentation": "The content trust policy for a container registry."
+          }
+        },
+        "retentionPolicy": {
+          "target": "com.azure.containerregistry#RetentionPolicyInput",
+          "traits": {
+            "smithy.api#documentation": "The retention policy for a container registry."
+          }
+        },
+        "exportPolicy": {
+          "target": "com.azure.containerregistry#ExportPolicy",
+          "traits": {
+            "smithy.api#documentation": "The export policy for a container registry."
+          }
+        },
+        "azureADAuthenticationAsArmPolicy": {
+          "target": "com.azure.containerregistry#AzureADAuthenticationAsArmPolicy",
+          "traits": {
+            "smithy.api#documentation": "The policy for using Azure Resource Manager audience token for a container registry."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The policies for a container registry."
+      }
+    },
+    "com.azure.containerregistry#RetentionPolicyInput": {
+      "type": "structure",
+      "members": {
+        "days": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of days to retain an untagged manifest after which it gets purged."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerregistry#RetentionPolicyInputStatus",
+          "traits": {
+            "smithy.api#documentation": "The value that indicates whether the policy is enabled or not."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The retention policy for a container registry."
+      }
+    },
+    "com.azure.containerregistry#RetentionPolicyInputStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The value that indicates whether the policy is enabled or not."
+      }
+    },
+    "com.azure.containerregistry#RegistriesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags for the container registry."
       }
     },
     "com.azure.containerregistry#RegistriesCreate": {
@@ -7784,16 +8936,207 @@
             "smithy.api#documentation": "The name of the container registry."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerregistry#RegistriesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerregistry#RegistryPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the container registry."
+          }
+        },
+        "sku": {
+          "target": "com.azure.containerregistry#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the container registry.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerregistry#IdentityPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the container registry."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#RegistryPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "adminUserEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value that indicates whether the admin user is enabled."
+          }
+        },
+        "networkRuleSet": {
+          "target": "com.azure.containerregistry#NetworkRuleSet",
+          "traits": {
+            "smithy.api#documentation": "The network rule set for a container registry."
+          }
+        },
+        "policies": {
+          "target": "com.azure.containerregistry#PoliciesInput",
+          "traits": {
+            "smithy.api#documentation": "The policies for a container registry."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.containerregistry#EncryptionPropertyInput",
+          "traits": {
+            "smithy.api#documentation": "The encryption settings of container registry."
+          }
+        },
+        "dataEndpointEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable a single data endpoint per region for serving data."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.containerregistry#RegistryPropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network access is allowed for the container registry."
+          }
+        },
+        "networkRuleBypassOptions": {
+          "target": "com.azure.containerregistry#RegistryPropertiesInputNetworkRuleBypassOptions",
+          "traits": {
+            "smithy.api#documentation": "Whether to allow trusted Azure services to access a network restricted registry."
+          }
+        },
+        "networkRuleBypassAllowedForTasks": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not Tasks allowed to bypass the network rules for this container registry."
+          }
+        },
+        "zoneRedundancy": {
+          "target": "com.azure.containerregistry#RegistryPropertiesInputZoneRedundancy",
+          "traits": {
+            "smithy.api#documentation": "Whether or not zone redundancy is enabled for this container registry"
+          }
+        },
+        "anonymousPullEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables registry-wide pull from unauthenticated clients."
+          }
+        },
+        "roleAssignmentMode": {
+          "target": "com.azure.containerregistry#RegistryPropertiesInputRoleAssignmentMode",
+          "traits": {
+            "smithy.api#documentation": "Determines registry role assignment mode."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a container registry."
+      }
+    },
+    "com.azure.containerregistry#RegistryPropertiesInputRoleAssignmentMode": {
+      "type": "enum",
+      "members": {
+        "ABACREPOSITORYPERMISSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AbacRepositoryPermissions"
+          }
+        },
+        "LEGACYREGISTRYPERMISSIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LegacyRegistryPermissions"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Determines registry role assignment mode."
+      }
+    },
+    "com.azure.containerregistry#RegistryPropertiesInputZoneRedundancy": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether or not zone redundancy is enabled for this container registry"
+      }
+    },
+    "com.azure.containerregistry#RegistryPropertiesInputNetworkRuleBypassOptions": {
+      "type": "enum",
+      "members": {
+        "AZURESERVICES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureServices"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether to allow trusted Azure services to access a network restricted registry."
+      }
+    },
+    "com.azure.containerregistry#RegistryPropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether or not public network access is allowed for the container registry."
+      }
+    },
+    "com.azure.containerregistry#RegistriesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerregistry#RegistriesGet": {
@@ -8162,16 +9505,37 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name of the container registry.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.containerregistry#ContainerRegistryResourceType",
+          "traits": {
+            "smithy.api#documentation": "The resource type of the container registry. This field must be set to 'Microsoft.ContainerRegistry/registries'.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#ContainerRegistryResourceType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_CONTAINERREGISTRY_REGISTRIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.ContainerRegistry/registries"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource type for Container Registry."
       }
     },
     "com.azure.containerregistry#OperationsList": {
@@ -9644,16 +11008,609 @@
             "smithy.api#documentation": "The name of the container registry task."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.containerregistry#IdentityProperties_2",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerregistry#TaskPropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties for updating a task."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerregistry#TasksUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#TasksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The ARM resource tags."
+      }
+    },
+    "com.azure.containerregistry#TaskPropertiesUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.containerregistry#TaskPropertiesUpdateParametersStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of task."
+          }
+        },
+        "platform": {
+          "target": "com.azure.containerregistry#PlatformUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The platform properties against which the run has to happen."
+          }
+        },
+        "agentConfiguration": {
+          "target": "com.azure.containerregistry#AgentProperties",
+          "traits": {
+            "smithy.api#documentation": "The machine configuration of the run agent."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Run timeout in seconds."
+          }
+        },
+        "step": {
+          "target": "com.azure.containerregistry#TaskStepUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties for updating a task step."
+          }
+        },
+        "trigger": {
+          "target": "com.azure.containerregistry#TriggerUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties for updating trigger properties."
+          }
+        },
+        "credentials": {
+          "target": "com.azure.containerregistry#Credentials",
+          "traits": {
+            "smithy.api#documentation": "The parameters that describes a set of credentials that will be used when this run is invoked."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for updating a task."
+      }
+    },
+    "com.azure.containerregistry#TriggerUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "timerTriggers": {
+          "target": "com.azure.containerregistry#TriggerUpdateParametersTimerTriggersList",
+          "traits": {
+            "smithy.api#documentation": "The collection of timer triggers."
+          }
+        },
+        "sourceTriggers": {
+          "target": "com.azure.containerregistry#TriggerUpdateParametersSourceTriggersList",
+          "traits": {
+            "smithy.api#documentation": "The collection of triggers based on source code repository."
+          }
+        },
+        "baseImageTrigger": {
+          "target": "com.azure.containerregistry#BaseImageTriggerUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The trigger based on base image dependencies."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for updating triggers."
+      }
+    },
+    "com.azure.containerregistry#BaseImageTriggerUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "baseImageTriggerType": {
+          "target": "com.azure.containerregistry#BaseImageTriggerUpdateParametersBaseImageTriggerType",
+          "traits": {
+            "smithy.api#documentation": "The type of the auto trigger for base image dependency updates."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerregistry#BaseImageTriggerUpdateParametersStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of trigger."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the trigger.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for updating base image dependency trigger."
+      }
+    },
+    "com.azure.containerregistry#BaseImageTriggerUpdateParametersStatus": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current status of trigger."
+      }
+    },
+    "com.azure.containerregistry#BaseImageTriggerUpdateParametersBaseImageTriggerType": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "All"
+          }
+        },
+        "RUNTIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Runtime"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the auto trigger for base image dependency updates."
+      }
+    },
+    "com.azure.containerregistry#TriggerUpdateParametersSourceTriggersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry#SourceTriggerUpdateParameters"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of triggers based on source code repository."
+      }
+    },
+    "com.azure.containerregistry#SourceTriggerUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "sourceRepository": {
+          "target": "com.azure.containerregistry#SourceUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties that describes the source(code) for the task."
+          }
+        },
+        "sourceTriggerEvents": {
+          "target": "com.azure.containerregistry#SourceTriggerUpdateParametersSourceTriggerEventsList",
+          "traits": {
+            "smithy.api#documentation": "The source event corresponding to the trigger."
+          }
+        },
+        "status": {
+          "target": "com.azure.containerregistry#SourceTriggerUpdateParametersStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of trigger."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the trigger.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for updating a source based trigger."
+      }
+    },
+    "com.azure.containerregistry#SourceTriggerUpdateParametersStatus": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current status of trigger."
+      }
+    },
+    "com.azure.containerregistry#SourceTriggerUpdateParametersSourceTriggerEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry#SourceTriggerUpdateParametersSourceTriggerEventsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The source event corresponding to the trigger."
+      }
+    },
+    "com.azure.containerregistry#SourceTriggerUpdateParametersSourceTriggerEventsItem": {
+      "type": "enum",
+      "members": {
+        "COMMIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "commit"
+          }
+        },
+        "PULLREQUEST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pullrequest"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.containerregistry#SourceUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "sourceControlType": {
+          "target": "com.azure.containerregistry#SourceUpdateParametersSourceControlType",
+          "traits": {
+            "smithy.api#documentation": "The type of source control service."
+          }
+        },
+        "repositoryUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The full URL to the source code repository"
+          }
+        },
+        "branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The branch name of the source code."
+          }
+        },
+        "sourceControlAuthProperties": {
+          "target": "com.azure.containerregistry#AuthInfoUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The authorization properties for accessing the source code repository and to set up\r\nwebhooks for notifications."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for updating the source code repository."
+      }
+    },
+    "com.azure.containerregistry#AuthInfoUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "tokenType": {
+          "target": "com.azure.containerregistry#AuthInfoUpdateParametersTokenType",
+          "traits": {
+            "smithy.api#documentation": "The type of Auth token."
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access token used to access the source control provider."
+          }
+        },
+        "refreshToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The refresh token used to refresh the access token.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope of the access token."
+          }
+        },
+        "expiresIn": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds that the token remains valid"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The authorization properties for accessing the source code repository."
+      }
+    },
+    "com.azure.containerregistry#AuthInfoUpdateParametersTokenType": {
+      "type": "enum",
+      "members": {
+        "PAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PAT"
+          }
+        },
+        "OAUTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OAuth"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of Auth token."
+      }
+    },
+    "com.azure.containerregistry#SourceUpdateParametersSourceControlType": {
+      "type": "enum",
+      "members": {
+        "GITHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Github"
+          }
+        },
+        "VISUALSTUDIOTEAMSERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "VisualStudioTeamService"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of source control service."
+      }
+    },
+    "com.azure.containerregistry#TriggerUpdateParametersTimerTriggersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerregistry#TimerTriggerUpdateParameters"
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection of timer triggers."
+      }
+    },
+    "com.azure.containerregistry#TimerTriggerUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "schedule": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CRON expression for the task schedule"
+          }
+        },
+        "status": {
+          "target": "com.azure.containerregistry#TimerTriggerUpdateParametersStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of trigger."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the trigger.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for updating a timer trigger."
+      }
+    },
+    "com.azure.containerregistry#TimerTriggerUpdateParametersStatus": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current status of trigger."
+      }
+    },
+    "com.azure.containerregistry#TaskStepUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerregistry#TaskStepUpdateParametersType",
+          "traits": {
+            "smithy.api#documentation": "The type of the step.",
+            "smithy.api#required": {}
+          }
+        },
+        "contextPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL(absolute or relative) of the source context for the task step."
+          }
+        },
+        "contextAccessToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The token (git PAT or SAS token of storage account blob) associated with the context for a step."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base properties for updating any task step."
+      }
+    },
+    "com.azure.containerregistry#TaskStepUpdateParametersType": {
+      "type": "enum",
+      "members": {
+        "DOCKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Docker"
+          }
+        },
+        "FILETASK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FileTask"
+          }
+        },
+        "ENCODEDTASK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EncodedTask"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the step."
+      }
+    },
+    "com.azure.containerregistry#PlatformUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "os": {
+          "target": "com.azure.containerregistry#PlatformUpdateParametersOs",
+          "traits": {
+            "smithy.api#documentation": "The operating system type required for the run."
+          }
+        },
+        "architecture": {
+          "target": "com.azure.containerregistry#PlatformUpdateParametersArchitecture",
+          "traits": {
+            "smithy.api#documentation": "The OS architecture."
+          }
+        },
+        "variant": {
+          "target": "com.azure.containerregistry#PlatformUpdateParametersVariant",
+          "traits": {
+            "smithy.api#documentation": "Variant of the CPU."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for updating the platform configuration."
+      }
+    },
+    "com.azure.containerregistry#PlatformUpdateParametersVariant": {
+      "type": "enum",
+      "members": {
+        "V6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v6"
+          }
+        },
+        "V7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v7"
+          }
+        },
+        "V8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v8"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Variant of the CPU."
+      }
+    },
+    "com.azure.containerregistry#PlatformUpdateParametersArchitecture": {
+      "type": "enum",
+      "members": {
+        "AMD64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amd64"
+          }
+        },
+        "X86": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "x86"
+          }
+        },
+        "ARM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "arm"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The OS architecture."
+      }
+    },
+    "com.azure.containerregistry#PlatformUpdateParametersOs": {
+      "type": "enum",
+      "members": {
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        },
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The operating system type required for the run."
+      }
+    },
+    "com.azure.containerregistry#TaskPropertiesUpdateParametersStatus": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current status of task."
       }
     },
     "com.azure.containerregistry#TasksCreate": {
@@ -9773,16 +11730,171 @@
             "smithy.api#documentation": "The name of the container registry task."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource. This cannot be changed after the resource is created.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerregistry#TasksCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags of the resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerregistry#IdentityProperties_2",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerregistry#TaskPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of a task."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerregistry#TaskPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.containerregistry#TaskPropertiesInputStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of task."
+          }
+        },
+        "platform": {
+          "target": "com.azure.containerregistry#PlatformProperties",
+          "traits": {
+            "smithy.api#documentation": "The platform properties against which the run has to happen.",
+            "smithy.api#required": {}
+          }
+        },
+        "agentConfiguration": {
+          "target": "com.azure.containerregistry#AgentProperties",
+          "traits": {
+            "smithy.api#documentation": "The machine configuration of the run agent."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Run timeout in seconds."
+          }
+        },
+        "step": {
+          "target": "com.azure.containerregistry#TaskStepPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of a task step.",
+            "smithy.api#required": {}
+          }
+        },
+        "trigger": {
+          "target": "com.azure.containerregistry#TriggerProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties that describe all triggers for the task."
+          }
+        },
+        "credentials": {
+          "target": "com.azure.containerregistry#Credentials",
+          "traits": {
+            "smithy.api#documentation": "The properties that describes a set of credentials that will be used when this run is invoked."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a task."
+      }
+    },
+    "com.azure.containerregistry#TaskStepPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerregistry#TaskStepPropertiesInputType",
+          "traits": {
+            "smithy.api#documentation": "The type of the step.",
+            "smithy.api#required": {}
+          }
+        },
+        "contextPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL(absolute or relative) of the source context for the task step."
+          }
+        },
+        "contextAccessToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The token (git PAT or SAS token of storage account blob) associated with the context for a step."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base properties for any task step."
+      }
+    },
+    "com.azure.containerregistry#TaskStepPropertiesInputType": {
+      "type": "enum",
+      "members": {
+        "DOCKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Docker"
+          }
+        },
+        "FILETASK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FileTask"
+          }
+        },
+        "ENCODEDTASK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EncodedTask"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the step."
+      }
+    },
+    "com.azure.containerregistry#TaskPropertiesInputStatus": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current status of task."
+      }
+    },
+    "com.azure.containerregistry#TasksCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.containerregistry#TasksGet": {
@@ -10675,11 +12787,10 @@
             "smithy.api#documentation": "The run ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "isArchiveEnabled": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The value that indicates whether archiving is enabled or not."
           }
         }
       },
@@ -11053,11 +13164,17 @@
             "smithy.api#documentation": "The name of the container registry."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The type of the run request.",
             "smithy.api#required": {}
+          }
+        },
+        "isArchiveEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The value that indicates whether archiving is enabled for the run or not."
           }
         }
       },

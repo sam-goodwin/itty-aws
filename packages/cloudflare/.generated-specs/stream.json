@@ -327,6 +327,30 @@
           "traits": {
             "smithy.api#enumValue": "queued"
           }
+        },
+        "INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inprogress"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "LIVE_INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "live-inprogress"
+          }
         }
       }
     },
@@ -707,6 +731,30 @@
           "traits": {
             "smithy.api#enumValue": "queued"
           }
+        },
+        "INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inprogress"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "LIVE_INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "live-inprogress"
+          }
         }
       }
     },
@@ -1004,6 +1052,30 @@
           "traits": {
             "smithy.api#enumValue": "queued"
           }
+        },
+        "INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inprogress"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "LIVE_INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "live-inprogress"
+          }
         }
       }
     },
@@ -1207,6 +1279,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "queued"
+          }
+        },
+        "INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inprogress"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "LIVE_INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "live-inprogress"
           }
         }
       }
@@ -2647,6 +2743,30 @@
           "traits": {
             "smithy.api#enumValue": "queued"
           }
+        },
+        "INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inprogress"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "LIVE_INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "live-inprogress"
+          }
         }
       }
     },
@@ -3099,6 +3219,30 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "queued"
+          }
+        },
+        "INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inprogress"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "LIVE_INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "live-inprogress"
           }
         }
       }
@@ -4012,13 +4156,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
-          }
         }
       },
       "traits": {
@@ -4478,6 +4615,36 @@
           "traits": {
             "smithy.api#enumValue": "reconnecting"
           }
+        },
+        "CLIENT_DISCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client_disconnect"
+          }
+        },
+        "TTL_EXCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ttl_exceeded"
+          }
+        },
+        "FAILED_TO_CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed_to_connect"
+          }
+        },
+        "FAILED_TO_RECONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed_to_reconnect"
+          }
+        },
+        "NEW_CONFIGURATION_ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "new_configuration_accepted"
+          }
         }
       }
     },
@@ -4848,6 +5015,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "reconnecting"
+          }
+        },
+        "CLIENT_DISCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client_disconnect"
+          }
+        },
+        "TTL_EXCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ttl_exceeded"
+          }
+        },
+        "FAILED_TO_CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed_to_connect"
+          }
+        },
+        "FAILED_TO_RECONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed_to_reconnect"
+          }
+        },
+        "NEW_CONFIGURATION_ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "new_configuration_accepted"
           }
         }
       }
@@ -5384,6 +5581,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "reconnecting"
+          }
+        },
+        "CLIENT_DISCONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client_disconnect"
+          }
+        },
+        "TTL_EXCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ttl_exceeded"
+          }
+        },
+        "FAILED_TO_CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed_to_connect"
+          }
+        },
+        "FAILED_TO_RECONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed_to_reconnect"
+          }
+        },
+        "NEW_CONFIGURATION_ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "new_configuration_accepted"
           }
         }
       }

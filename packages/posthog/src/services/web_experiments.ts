@@ -38,20 +38,16 @@ export class NotFound extends T.applyErrorMatchers(
 export interface WebExperimentsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: number;
   name?: string;
   created_at?: string;
-  feature_flag_key?: string;
   /** Variants for the web experiment. Example: { "control": { "transforms": [ { "text": "Here comes Superman!", "html": "", "selector": "#page > #body > .header h1" } ], "conditions": "None", "rollout_percentage": 50 }, } */
   variants?: unknown;
 }
 export const WebExperimentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.Number),
     name: S.optional(S.String),
     created_at: S.optional(S.String),
-    feature_flag_key: S.optional(S.String),
     variants: S.optional(S.Unknown),
   }).pipe(
     T.Http({
@@ -137,7 +133,8 @@ export const WebExperimentsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebExperimentsListRequest",
 }) as any as S.Schema<WebExperimentsListRequest>;
 
-export type PaginatedWebExperimentsAPIListResultsList = WebExperimentsAPI[];
+export type PaginatedWebExperimentsAPIListResultsList =
+  ReadonlyArray<WebExperimentsAPI>;
 export const PaginatedWebExperimentsAPIListResultsList = /*@__PURE__*/ S.Array(
   WebExperimentsAPI,
 ) as any as S.Schema<PaginatedWebExperimentsAPIListResultsList>;
@@ -166,7 +163,6 @@ export interface WebExperimentsPartialUpdateRequest {
   id: number;
   name?: string;
   created_at?: string;
-  feature_flag_key?: string;
   /** Variants for the web experiment. Example: { "control": { "transforms": [ { "text": "Here comes Superman!", "html": "", "selector": "#page > #body > .header h1" } ], "conditions": "None", "rollout_percentage": 50 }, } */
   variants?: unknown;
 }
@@ -176,7 +172,6 @@ export const WebExperimentsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
     created_at: S.optional(S.String),
-    feature_flag_key: S.optional(S.String),
     variants: S.optional(S.Unknown),
   }).pipe(
     T.Http({
@@ -217,7 +212,6 @@ export interface WebExperimentsUpdateRequest {
   id: number;
   name?: string;
   created_at?: string;
-  feature_flag_key?: string;
   /** Variants for the web experiment. Example: { "control": { "transforms": [ { "text": "Here comes Superman!", "html": "", "selector": "#page > #body > .header h1" } ], "conditions": "None", "rollout_percentage": 50 }, } */
   variants?: unknown;
 }
@@ -227,7 +221,6 @@ export const WebExperimentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
     created_at: S.optional(S.String),
-    feature_flag_key: S.optional(S.String),
     variants: S.optional(S.Unknown),
   }).pipe(
     T.Http({

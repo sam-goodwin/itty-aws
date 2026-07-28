@@ -96,7 +96,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -118,7 +118,7 @@ export const DeploymentUnit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeploymentUnit" }) as any as S.Schema<DeploymentUnit>;
 
-export type DeploymentUnitList = DeploymentUnit[];
+export type DeploymentUnitList = ReadonlyArray<DeploymentUnit>;
 export const DeploymentUnitList = /*@__PURE__*/ S.Array(
   DeploymentUnit,
 ) as any as S.Schema<DeploymentUnitList>;
@@ -129,7 +129,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -158,8 +158,7 @@ export type DeploymentGroupProvisioningStateEnum =
   | "FAILED_TO_PROVISION"
   | "DEPROVISIONING"
   | "DEPROVISIONED"
-  | "FAILED_TO_DEPROVISION"
-  | (string & {});
+  | "FAILED_TO_DEPROVISION";
 export const DeploymentGroupProvisioningStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -176,8 +175,7 @@ export type DeploymentGroupStateEnum =
   | "DELETING"
   | "FAILED"
   | "SUSPENDED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const DeploymentGroupStateEnum = /*@__PURE__*/ S.String;
 
 /** A DeploymentGroup is a collection of DeploymentUnits that in a DAG-like structure. */
@@ -333,15 +331,14 @@ export const TerraformError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TerraformError" }) as any as S.Schema<TerraformError>;
 
-export type TerraformErrorList = TerraformError[];
+export type TerraformErrorList = ReadonlyArray<TerraformError>;
 export const TerraformErrorList = /*@__PURE__*/ S.Array(
   TerraformError,
 ) as any as S.Schema<TerraformErrorList>;
 
 export type ProviderConfigSourceTypeEnum =
   | "PROVIDER_SOURCE_UNSPECIFIED"
-  | "SERVICE_MAINTAINED"
-  | (string & {});
+  | "SERVICE_MAINTAINED";
 export const ProviderConfigSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** ProviderConfig contains the provider configurations. */
@@ -362,8 +359,7 @@ export type DeploymentLockStateEnum =
   | "LOCKING"
   | "UNLOCKING"
   | "LOCK_FAILED"
-  | "UNLOCK_FAILED"
-  | (string & {});
+  | "UNLOCK_FAILED";
 export const DeploymentLockStateEnum = /*@__PURE__*/ S.String;
 
 export type DeploymentStateEnum =
@@ -374,15 +370,13 @@ export type DeploymentStateEnum =
   | "DELETING"
   | "FAILED"
   | "SUSPENDED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const DeploymentStateEnum = /*@__PURE__*/ S.String;
 
 export type DeploymentQuotaValidationEnum =
   | "QUOTA_VALIDATION_UNSPECIFIED"
   | "ENABLED"
-  | "ENFORCED"
-  | (string & {});
+  | "ENFORCED";
 export const DeploymentQuotaValidationEnum = /*@__PURE__*/ S.String;
 
 export type DeploymentErrorCodeEnum =
@@ -393,8 +387,7 @@ export type DeploymentErrorCodeEnum =
   | "DELETE_BUILD_RUN_FAILED"
   | "BUCKET_CREATION_PERMISSION_DENIED"
   | "BUCKET_CREATION_FAILED"
-  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED"
-  | (string & {});
+  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED";
 export const DeploymentErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** A set of files in a Git repository. */
@@ -610,8 +603,7 @@ export type PreviewErrorCodeEnum =
   | "DEPLOYMENT_LOCK_ACQUIRE_FAILED"
   | "PREVIEW_BUILD_API_FAILED"
   | "PREVIEW_BUILD_RUN_FAILED"
-  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED"
-  | (string & {});
+  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED";
 export const PreviewErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export type PreviewStateEnum =
@@ -622,8 +614,7 @@ export type PreviewStateEnum =
   | "STALE"
   | "DELETING"
   | "FAILED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const PreviewStateEnum = /*@__PURE__*/ S.String;
 
 /** Artifacts created by preview. */
@@ -645,8 +636,7 @@ export const PreviewArtifacts = /*@__PURE__*/ S.suspend(() =>
 export type PreviewPreviewModeEnum =
   | "PREVIEW_MODE_UNSPECIFIED"
   | "DEFAULT"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const PreviewPreviewModeEnum = /*@__PURE__*/ S.String;
 
 /** A preview represents a set of actions Infra Manager would perform to move the resources towards the desired state as specified in the configuration. */
@@ -752,8 +742,7 @@ export type DeleteProjectsLocationsDeploymentGroupsDeploymentReferencePolicyEnum
     | "DEPLOYMENT_REFERENCE_POLICY_UNSPECIFIED"
     | "FAIL_IF_ANY_REFERENCES_EXIST"
     | "FAIL_IF_METADATA_REFERENCES_EXIST"
-    | "IGNORE_DEPLOYMENT_REFERENCES"
-    | (string & {});
+    | "IGNORE_DEPLOYMENT_REFERENCES";
 export const DeleteProjectsLocationsDeploymentGroupsDeploymentReferencePolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -792,8 +781,7 @@ export const DeleteProjectsLocationsDeploymentGroupsRequest =
 export type DeleteProjectsLocationsDeploymentsDeletePolicyEnum =
   | "DELETE_POLICY_UNSPECIFIED"
   | "DELETE"
-  | "ABANDON"
-  | (string & {});
+  | "ABANDON";
 export const DeleteProjectsLocationsDeploymentsDeletePolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -906,8 +894,7 @@ export const DeleteStateProjectsLocationsDeploymentsRequest =
 export type DeprovisionDeploymentGroupRequestDeletePolicyEnum =
   | "DELETE_POLICY_UNSPECIFIED"
   | "DELETE"
-  | "ABANDON"
-  | (string & {});
+  | "ABANDON";
 export const DeprovisionDeploymentGroupRequestDeletePolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1191,8 +1178,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1209,7 +1195,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1228,7 +1214,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1270,7 +1256,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1438,15 +1424,13 @@ export type RevisionActionEnum =
   | "ACTION_UNSPECIFIED"
   | "CREATE"
   | "UPDATE"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const RevisionActionEnum = /*@__PURE__*/ S.String;
 
 export type RevisionQuotaValidationEnum =
   | "QUOTA_VALIDATION_UNSPECIFIED"
   | "ENABLED"
-  | "ENFORCED"
-  | (string & {});
+  | "ENFORCED";
 export const RevisionQuotaValidationEnum = /*@__PURE__*/ S.String;
 
 export type RevisionErrorCodeEnum =
@@ -1455,16 +1439,14 @@ export type RevisionErrorCodeEnum =
   | "APPLY_BUILD_API_FAILED"
   | "APPLY_BUILD_RUN_FAILED"
   | "QUOTA_VALIDATION_FAILED"
-  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED"
-  | (string & {});
+  | "EXTERNAL_VALUE_SOURCE_IMPORT_FAILED";
 export const RevisionErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export type RevisionStateEnum =
   | "STATE_UNSPECIFIED"
   | "APPLYING"
   | "APPLIED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const RevisionStateEnum = /*@__PURE__*/ S.String;
 
 /** A child resource of a Deployment generated by a 'CreateDeployment' or 'UpdateDeployment' call. Each Revision contains metadata pertaining to a snapshot of a particular Deployment. */
@@ -1582,8 +1564,7 @@ export type ResourceIntentEnum =
   | "UPDATE"
   | "DELETE"
   | "RECREATE"
-  | "UNCHANGED"
-  | (string & {});
+  | "UNCHANGED";
 export const ResourceIntentEnum = /*@__PURE__*/ S.String;
 
 export type ResourceStateEnum =
@@ -1591,8 +1572,7 @@ export type ResourceStateEnum =
   | "PLANNED"
   | "IN_PROGRESS"
   | "RECONCILED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ResourceStateEnum = /*@__PURE__*/ S.String;
 
 /** Terraform info of a Resource. */
@@ -1699,8 +1679,7 @@ export type ResourceChangeIntentEnum =
   | "UPDATE"
   | "DELETE"
   | "RECREATE"
-  | "UNCHANGED"
-  | (string & {});
+  | "UNCHANGED";
 export const ResourceChangeIntentEnum = /*@__PURE__*/ S.String;
 
 /** Terraform info of a ResourceChange. */
@@ -1751,7 +1730,7 @@ export const PropertyChange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyChange" }) as any as S.Schema<PropertyChange>;
 
-export type PropertyChangeList = PropertyChange[];
+export type PropertyChangeList = ReadonlyArray<PropertyChange>;
 export const PropertyChangeList = /*@__PURE__*/ S.Array(
   PropertyChange,
 ) as any as S.Schema<PropertyChangeList>;
@@ -1840,7 +1819,7 @@ export const PropertyDrift = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyDrift" }) as any as S.Schema<PropertyDrift>;
 
-export type PropertyDriftList = PropertyDrift[];
+export type PropertyDriftList = ReadonlyArray<PropertyDrift>;
 export const PropertyDriftList = /*@__PURE__*/ S.Array(
   PropertyDrift,
 ) as any as S.Schema<PropertyDriftList>;
@@ -1885,8 +1864,7 @@ export type TerraformVersionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "DEPRECATED"
-  | "OBSOLETE"
-  | (string & {});
+  | "OBSOLETE";
 export const TerraformVersionStateEnum = /*@__PURE__*/ S.String;
 
 /** A TerraformVersion represents the support state the corresponding Terraform version. */
@@ -1979,7 +1957,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2031,7 +2009,7 @@ export const ListProjectsLocationsDeploymentGroupsRequest =
     identifier: "ListProjectsLocationsDeploymentGroupsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeploymentGroupsRequest>;
 
-export type DeploymentGroupList = DeploymentGroup[];
+export type DeploymentGroupList = ReadonlyArray<DeploymentGroup>;
 export const DeploymentGroupList = /*@__PURE__*/ S.Array(
   DeploymentGroup,
 ) as any as S.Schema<DeploymentGroupList>;
@@ -2080,7 +2058,8 @@ export const ListProjectsLocationsDeploymentGroupsRevisionsRequest =
     identifier: "ListProjectsLocationsDeploymentGroupsRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeploymentGroupsRevisionsRequest>;
 
-export type DeploymentGroupRevisionList = DeploymentGroupRevision[];
+export type DeploymentGroupRevisionList =
+  ReadonlyArray<DeploymentGroupRevision>;
 export const DeploymentGroupRevisionList = /*@__PURE__*/ S.Array(
   DeploymentGroupRevision,
 ) as any as S.Schema<DeploymentGroupRevisionList>;
@@ -2136,7 +2115,7 @@ export const ListProjectsLocationsDeploymentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsDeploymentsRequest",
 }) as any as S.Schema<ListProjectsLocationsDeploymentsRequest>;
 
-export type DeploymentList = Deployment[];
+export type DeploymentList = ReadonlyArray<Deployment>;
 export const DeploymentList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentList>;
@@ -2190,7 +2169,7 @@ export const ListProjectsLocationsDeploymentsRevisionsRequest =
     identifier: "ListProjectsLocationsDeploymentsRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsDeploymentsRevisionsRequest>;
 
-export type RevisionList = Revision[];
+export type RevisionList = ReadonlyArray<Revision>;
 export const RevisionList = /*@__PURE__*/ S.Array(
   Revision,
 ) as any as S.Schema<RevisionList>;
@@ -2245,7 +2224,7 @@ export const ListProjectsLocationsDeploymentsRevisionsResourcesRequest =
     identifier: "ListProjectsLocationsDeploymentsRevisionsResourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsDeploymentsRevisionsResourcesRequest>;
 
-export type ResourceList = Resource[];
+export type ResourceList = ReadonlyArray<Resource>;
 export const ResourceList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<ResourceList>;
@@ -2300,7 +2279,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -2355,7 +2334,7 @@ export const ListProjectsLocationsPreviewsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsPreviewsRequest",
 }) as any as S.Schema<ListProjectsLocationsPreviewsRequest>;
 
-export type PreviewList = Preview[];
+export type PreviewList = ReadonlyArray<Preview>;
 export const PreviewList = /*@__PURE__*/ S.Array(
   Preview,
 ) as any as S.Schema<PreviewList>;
@@ -2410,7 +2389,7 @@ export const ListProjectsLocationsPreviewsResourceChangesRequest =
     identifier: "ListProjectsLocationsPreviewsResourceChangesRequest",
   }) as any as S.Schema<ListProjectsLocationsPreviewsResourceChangesRequest>;
 
-export type ResourceChangeList = ResourceChange[];
+export type ResourceChangeList = ReadonlyArray<ResourceChange>;
 export const ResourceChangeList = /*@__PURE__*/ S.Array(
   ResourceChange,
 ) as any as S.Schema<ResourceChangeList>;
@@ -2465,7 +2444,7 @@ export const ListProjectsLocationsPreviewsResourceDriftsRequest =
     identifier: "ListProjectsLocationsPreviewsResourceDriftsRequest",
   }) as any as S.Schema<ListProjectsLocationsPreviewsResourceDriftsRequest>;
 
-export type ResourceDriftList = ResourceDrift[];
+export type ResourceDriftList = ReadonlyArray<ResourceDrift>;
 export const ResourceDriftList = /*@__PURE__*/ S.Array(
   ResourceDrift,
 ) as any as S.Schema<ResourceDriftList>;
@@ -2520,7 +2499,7 @@ export const ListProjectsLocationsTerraformVersionsRequest =
     identifier: "ListProjectsLocationsTerraformVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsTerraformVersionsRequest>;
 
-export type TerraformVersionList = TerraformVersion[];
+export type TerraformVersionList = ReadonlyArray<TerraformVersion>;
 export const TerraformVersionList = /*@__PURE__*/ S.Array(
   TerraformVersion,
 ) as any as S.Schema<TerraformVersionList>;

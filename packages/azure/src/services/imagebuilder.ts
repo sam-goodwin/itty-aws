@@ -72,7 +72,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The list of operations supported by the resource provider. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -93,6 +93,19 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
+/** Describes the properties of a trigger */
+export interface TriggerPropertiesInput {
+  /** The kind of trigger. */
+  kind: string;
+}
+export const TriggerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.String,
+  }),
+).annotate({
+  identifier: "TriggerPropertiesInput",
+}) as any as S.Schema<TriggerPropertiesInput>;
+
 export interface TriggersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -102,7 +115,8 @@ export interface TriggersCreateOrUpdateRequest {
   imageTemplateName: string;
   /** The name of the trigger */
   triggerName: string;
-  body: unknown;
+  /** The properties of a trigger */
+  properties?: TriggerPropertiesInput;
 }
 export const TriggersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -110,7 +124,7 @@ export const TriggersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     imageTemplateName: S.String.pipe(T.Label()),
     triggerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(TriggerPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -128,8 +142,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -137,8 +150,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -191,8 +203,7 @@ export type ProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Deleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a trigger */
@@ -374,7 +385,7 @@ export const Trigger = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
 
 /** The Trigger items on this page */
-export type TriggerCollectionValueList = Trigger[];
+export type TriggerCollectionValueList = ReadonlyArray<Trigger>;
 export const TriggerCollectionValueList = /*@__PURE__*/ S.Array(
   Trigger,
 ) as any as S.Schema<TriggerCollectionValueList>;
@@ -427,43 +438,15 @@ export const VirtualMachineImageTemplatesCancelResponse =
     identifier: "VirtualMachineImageTemplatesCancelResponse",
   }) as any as S.Schema<VirtualMachineImageTemplatesCancelResponse>;
 
-export interface VirtualMachineImageTemplatesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the image Template */
-  imageTemplateName: string;
-  body: unknown;
-}
-export const VirtualMachineImageTemplatesCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      imageTemplateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "VirtualMachineImageTemplatesCreateOrUpdateRequest",
-  }) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap = {
+export type VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap =
+export const VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap>;
 
 /** Describes a virtual machine image source for building, customizing and distributing */
 export interface ImageTemplateSource {
@@ -495,13 +478,14 @@ export const ImageTemplateCustomizer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageTemplateCustomizer>;
 
 /** Specifies the properties used to describe the customization steps of the image, like Image source etc */
-export type ImageTemplatePropertiesCustomizeList = ImageTemplateCustomizer[];
-export const ImageTemplatePropertiesCustomizeList = /*@__PURE__*/ S.Array(
+export type ImageTemplatePropertiesInputCustomizeList =
+  ReadonlyArray<ImageTemplateCustomizer>;
+export const ImageTemplatePropertiesInputCustomizeList = /*@__PURE__*/ S.Array(
   ImageTemplateCustomizer,
-) as any as S.Schema<ImageTemplatePropertiesCustomizeList>;
+) as any as S.Schema<ImageTemplatePropertiesInputCustomizeList>;
 
 /** Enabling this field will improve VM boot time by optimizing the final customized image output. */
-export type VMBootOptimizationState = "Enabled" | "Disabled" | (string & {});
+export type VMBootOptimizationState = "Enabled" | "Disabled";
 export const VMBootOptimizationState = /*@__PURE__*/ S.String;
 
 /** Optimization is applied on the image for a faster VM boot. */
@@ -519,7 +503,7 @@ export const ImageTemplatePropertiesOptimizeVmBoot = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ImageTemplatePropertiesOptimizeVmBoot>;
 
 /** Enabling this field will optimize vm images for specific workloads. */
-export type WorkloadOptimizationState = "Enabled" | "Disabled" | (string & {});
+export type WorkloadOptimizationState = "Enabled" | "Disabled";
 export const WorkloadOptimizationState = /*@__PURE__*/ S.String;
 
 /** Optimization is applied on the image for specific workloads. */
@@ -576,7 +560,7 @@ export const ImageTemplateInVMValidator = /*@__PURE__*/ S.suspend(() =>
 
 /** List of validations to be performed. */
 export type ImageTemplatePropertiesValidateInVMValidationsList =
-  ImageTemplateInVMValidator[];
+  ReadonlyArray<ImageTemplateInVMValidator>;
 export const ImageTemplatePropertiesValidateInVMValidationsList =
   /*@__PURE__*/ S.Array(
     ImageTemplateInVMValidator,
@@ -632,24 +616,23 @@ export const ImageTemplateDistributor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageTemplateDistributor>;
 
 /** The distribution targets where the image output needs to go to. */
-export type ImageTemplatePropertiesDistributeList = ImageTemplateDistributor[];
-export const ImageTemplatePropertiesDistributeList = /*@__PURE__*/ S.Array(
+export type ImageTemplatePropertiesInputDistributeList =
+  ReadonlyArray<ImageTemplateDistributor>;
+export const ImageTemplatePropertiesInputDistributeList = /*@__PURE__*/ S.Array(
   ImageTemplateDistributor,
-) as any as S.Schema<ImageTemplatePropertiesDistributeList>;
+) as any as S.Schema<ImageTemplatePropertiesInputDistributeList>;
 
 /** If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved. */
 export type ImageTemplatePropertiesErrorHandlingOnCustomizerError =
   | "cleanup"
-  | "abort"
-  | (string & {});
+  | "abort";
 export const ImageTemplatePropertiesErrorHandlingOnCustomizerError =
   /*@__PURE__*/ S.String;
 
 /** If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved. */
 export type ImageTemplatePropertiesErrorHandlingOnValidationError =
   | "cleanup"
-  | "abort"
-  | (string & {});
+  | "abort";
 export const ImageTemplatePropertiesErrorHandlingOnValidationError =
   /*@__PURE__*/ S.String;
 
@@ -674,91 +657,9 @@ export const ImageTemplatePropertiesErrorHandling = /*@__PURE__*/ S.suspend(
   identifier: "ImageTemplatePropertiesErrorHandling",
 }) as any as S.Schema<ImageTemplatePropertiesErrorHandling>;
 
-/** Error code of the provisioning failure */
-export type ProvisioningErrorCode =
-  | "BadSourceType"
-  | "BadPIRSource"
-  | "BadManagedImageSource"
-  | "BadSharedImageVersionSource"
-  | "BadCustomizerType"
-  | "UnsupportedCustomizerType"
-  | "NoCustomizerScript"
-  | "BadValidatorType"
-  | "UnsupportedValidatorType"
-  | "NoValidatorScript"
-  | "BadDistributeType"
-  | "BadSharedImageDistribute"
-  | "BadStagingResourceGroup"
-  | "ServerError"
-  | "Other"
-  | (string & {});
-export const ProvisioningErrorCode = /*@__PURE__*/ S.String;
-
-/** Describes the error happened when create or update an image template */
-export interface ProvisioningError {
-  /** Error code of the provisioning failure */
-  provisioningErrorCode?: ProvisioningErrorCode;
-  /** Verbose error message about the provisioning failure */
-  message?: string;
-}
-export const ProvisioningError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningErrorCode: S.optional(ProvisioningErrorCode),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProvisioningError",
-}) as any as S.Schema<ProvisioningError>;
-
-/** State of the last run */
-export type RunState =
-  | "Running"
-  | "Canceling"
-  | "Succeeded"
-  | "PartiallySucceeded"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
-export const RunState = /*@__PURE__*/ S.String;
-
-/** Sub-state of the last run */
-export type RunSubState =
-  | "Queued"
-  | "Building"
-  | "Customizing"
-  | "Optimizing"
-  | "Validating"
-  | "Distributing"
-  | (string & {});
-export const RunSubState = /*@__PURE__*/ S.String;
-
-/** Describes the latest status of running an image template */
-export interface ImageTemplateLastRunStatus {
-  /** Start time of the last run (UTC) */
-  startTime?: string;
-  /** End time of the last run (UTC) */
-  endTime?: string;
-  /** State of the last run */
-  runState?: RunState;
-  /** Sub-state of the last run */
-  runSubState?: RunSubState;
-  /** Verbose information about the last run state */
-  message?: string;
-}
-export const ImageTemplateLastRunStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    runState: S.optional(RunState),
-    runSubState: S.optional(RunSubState),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImageTemplateLastRunStatus",
-}) as any as S.Schema<ImageTemplateLastRunStatus>;
-
 /** Optional array of resource IDs of user assigned managed identities to be configured on the build VM and validation VM. This may include the identity of the image template. */
-export type ImageTemplateVmProfileUserAssignedIdentitiesList = string[];
+export type ImageTemplateVmProfileUserAssignedIdentitiesList =
+  ReadonlyArray<string>;
 export const ImageTemplateVmProfileUserAssignedIdentitiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -819,14 +720,15 @@ export const DataDisk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataDisk" }) as any as S.Schema<DataDisk>;
 
 /** Optional array of additional data disks to be added to the image. */
-export type ImageTemplatePropertiesAdditionalDataDisksList = DataDisk[];
-export const ImageTemplatePropertiesAdditionalDataDisksList =
+export type ImageTemplatePropertiesInputAdditionalDataDisksList =
+  ReadonlyArray<DataDisk>;
+export const ImageTemplatePropertiesInputAdditionalDataDisksList =
   /*@__PURE__*/ S.Array(
     DataDisk,
-  ) as any as S.Schema<ImageTemplatePropertiesAdditionalDataDisksList>;
+  ) as any as S.Schema<ImageTemplatePropertiesInputAdditionalDataDisksList>;
 
 /** Enabling this field will trigger an automatic build on image template creation or update. */
-export type AutoRunState = "Enabled" | "Disabled" | (string & {});
+export type AutoRunState = "Enabled" | "Disabled";
 export const AutoRunState = /*@__PURE__*/ S.String;
 
 /** Indicates if the image template needs to be built on create/update */
@@ -841,6 +743,258 @@ export const ImageTemplateAutoRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageTemplateAutoRun",
 }) as any as S.Schema<ImageTemplateAutoRun>;
+
+/** Tags that will be applied to the resource group and/or resources created by the service. */
+export type ImageTemplatePropertiesInputManagedResourceTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ImageTemplatePropertiesInputManagedResourceTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ImageTemplatePropertiesInputManagedResourceTagsMap>;
+
+/** Describes the properties of an image template */
+export interface ImageTemplatePropertiesInput {
+  /** Specifies the properties used to describe the source image. */
+  source: ImageTemplateSource;
+  /** Specifies the properties used to describe the customization steps of the image, like Image source etc */
+  customize?: ImageTemplatePropertiesInputCustomizeList;
+  /** Specifies optimization to be performed on image. */
+  optimize?: ImageTemplatePropertiesOptimize;
+  /** Configuration options and list of validations to be performed on the resulting image. */
+  validate?: ImageTemplatePropertiesValidate;
+  /** The distribution targets where the image output needs to go to. */
+  distribute: ImageTemplatePropertiesInputDistributeList;
+  /** Error handling options upon a build failure */
+  errorHandling?: ImageTemplatePropertiesErrorHandling;
+  /** Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours). */
+  buildTimeoutInMinutes?: number;
+  /** Describes how virtual machine is set up to build images */
+  vmProfile?: ImageTemplateVmProfile;
+  /** Optional array of additional data disks to be added to the image. */
+  additionalDataDisks?: ImageTemplatePropertiesInputAdditionalDataDisksList;
+  /** The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain. */
+  stagingResourceGroup?: string;
+  /** Indicates whether or not to automatically run the image template build on template creation or update. */
+  autoRun?: ImageTemplateAutoRun;
+  /** Tags that will be applied to the resource group and/or resources created by the service. */
+  managedResourceTags?: ImageTemplatePropertiesInputManagedResourceTagsMap;
+}
+export const ImageTemplatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    source: ImageTemplateSource,
+    customize: S.optional(ImageTemplatePropertiesInputCustomizeList),
+    optimize: S.optional(ImageTemplatePropertiesOptimize),
+    validate: S.optional(ImageTemplatePropertiesValidate),
+    distribute: ImageTemplatePropertiesInputDistributeList,
+    errorHandling: S.optional(ImageTemplatePropertiesErrorHandling),
+    buildTimeoutInMinutes: S.optional(S.Number),
+    vmProfile: S.optional(ImageTemplateVmProfile),
+    additionalDataDisks: S.optional(
+      ImageTemplatePropertiesInputAdditionalDataDisksList,
+    ),
+    stagingResourceGroup: S.optional(S.String),
+    autoRun: S.optional(ImageTemplateAutoRun),
+    managedResourceTags: S.optional(
+      ImageTemplatePropertiesInputManagedResourceTagsMap,
+    ),
+  }),
+).annotate({
+  identifier: "ImageTemplatePropertiesInput",
+}) as any as S.Schema<ImageTemplatePropertiesInput>;
+
+/** The type of identity used for the image template. The type 'None' will remove any identities from the image template. */
+export type ResourceIdentityType = "UserAssigned" | "None";
+export const ResourceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type ImageTemplateIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const ImageTemplateIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<ImageTemplateIdentityInputUserAssignedIdentitiesMap>;
+
+/** Identity for the image template. */
+export interface ImageTemplateIdentityInput {
+  /** The type of identity used for the image template. The type 'None' will remove any identities from the image template. */
+  type?: ResourceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: ImageTemplateIdentityInputUserAssignedIdentitiesMap;
+}
+export const ImageTemplateIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ResourceIdentityType),
+    userAssignedIdentities: S.optional(
+      ImageTemplateIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ImageTemplateIdentityInput",
+}) as any as S.Schema<ImageTemplateIdentityInput>;
+
+export interface VirtualMachineImageTemplatesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the image Template */
+  imageTemplateName: string;
+  /** Resource tags. */
+  tags?: VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The properties of the image template */
+  properties?: ImageTemplatePropertiesInput;
+  /** The identity of the image template, if configured. */
+  identity: ImageTemplateIdentityInput;
+}
+export const VirtualMachineImageTemplatesCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      imageTemplateName: S.String.pipe(T.Label()),
+      tags: S.optional(
+        VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap,
+      ),
+      location: S.String,
+      properties: S.optional(ImageTemplatePropertiesInput),
+      identity: ImageTemplateIdentityInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VirtualMachineImages/imageTemplates/{imageTemplateName}",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "VirtualMachineImageTemplatesCreateOrUpdateRequest",
+  }) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<VirtualMachineImageTemplatesCreateOrUpdateResponseTagsMap>;
+
+/** Specifies the properties used to describe the customization steps of the image, like Image source etc */
+export type ImageTemplatePropertiesCustomizeList =
+  ReadonlyArray<ImageTemplateCustomizer>;
+export const ImageTemplatePropertiesCustomizeList = /*@__PURE__*/ S.Array(
+  ImageTemplateCustomizer,
+) as any as S.Schema<ImageTemplatePropertiesCustomizeList>;
+
+/** The distribution targets where the image output needs to go to. */
+export type ImageTemplatePropertiesDistributeList =
+  ReadonlyArray<ImageTemplateDistributor>;
+export const ImageTemplatePropertiesDistributeList = /*@__PURE__*/ S.Array(
+  ImageTemplateDistributor,
+) as any as S.Schema<ImageTemplatePropertiesDistributeList>;
+
+/** Error code of the provisioning failure */
+export type ProvisioningErrorCode =
+  | "BadSourceType"
+  | "BadPIRSource"
+  | "BadManagedImageSource"
+  | "BadSharedImageVersionSource"
+  | "BadCustomizerType"
+  | "UnsupportedCustomizerType"
+  | "NoCustomizerScript"
+  | "BadValidatorType"
+  | "UnsupportedValidatorType"
+  | "NoValidatorScript"
+  | "BadDistributeType"
+  | "BadSharedImageDistribute"
+  | "BadStagingResourceGroup"
+  | "ServerError"
+  | "Other";
+export const ProvisioningErrorCode = /*@__PURE__*/ S.String;
+
+/** Describes the error happened when create or update an image template */
+export interface ProvisioningError {
+  /** Error code of the provisioning failure */
+  provisioningErrorCode?: ProvisioningErrorCode;
+  /** Verbose error message about the provisioning failure */
+  message?: string;
+}
+export const ProvisioningError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningErrorCode: S.optional(ProvisioningErrorCode),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProvisioningError",
+}) as any as S.Schema<ProvisioningError>;
+
+/** State of the last run */
+export type RunState =
+  | "Running"
+  | "Canceling"
+  | "Succeeded"
+  | "PartiallySucceeded"
+  | "Failed"
+  | "Canceled";
+export const RunState = /*@__PURE__*/ S.String;
+
+/** Sub-state of the last run */
+export type RunSubState =
+  | "Queued"
+  | "Building"
+  | "Customizing"
+  | "Optimizing"
+  | "Validating"
+  | "Distributing";
+export const RunSubState = /*@__PURE__*/ S.String;
+
+/** Describes the latest status of running an image template */
+export interface ImageTemplateLastRunStatus {
+  /** Start time of the last run (UTC) */
+  startTime?: string;
+  /** End time of the last run (UTC) */
+  endTime?: string;
+  /** State of the last run */
+  runState?: RunState;
+  /** Sub-state of the last run */
+  runSubState?: RunSubState;
+  /** Verbose information about the last run state */
+  message?: string;
+}
+export const ImageTemplateLastRunStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    runState: S.optional(RunState),
+    runSubState: S.optional(RunSubState),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ImageTemplateLastRunStatus",
+}) as any as S.Schema<ImageTemplateLastRunStatus>;
+
+/** Optional array of additional data disks to be added to the image. */
+export type ImageTemplatePropertiesAdditionalDataDisksList =
+  ReadonlyArray<DataDisk>;
+export const ImageTemplatePropertiesAdditionalDataDisksList =
+  /*@__PURE__*/ S.Array(
+    DataDisk,
+  ) as any as S.Schema<ImageTemplatePropertiesAdditionalDataDisksList>;
 
 /** Tags that will be applied to the resource group and/or resources created by the service. */
 export type ImageTemplatePropertiesManagedResourceTagsMap = {
@@ -913,10 +1067,6 @@ export const ImageTemplateProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageTemplateProperties",
 }) as any as S.Schema<ImageTemplateProperties>;
-
-/** The type of identity used for the image template. The type 'None' will remove any identities from the image template. */
-export type ResourceIdentityType = "UserAssigned" | "None" | (string & {});
-export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -1233,7 +1383,7 @@ export const ImageTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageTemplate" }) as any as S.Schema<ImageTemplate>;
 
 /** The ImageTemplate items on this page */
-export type ImageTemplateListResultValueList = ImageTemplate[];
+export type ImageTemplateListResultValueList = ReadonlyArray<ImageTemplate>;
 export const ImageTemplateListResultValueList = /*@__PURE__*/ S.Array(
   ImageTemplate,
 ) as any as S.Schema<ImageTemplateListResultValueList>;
@@ -1327,7 +1477,7 @@ export const RunOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunOutput" }) as any as S.Schema<RunOutput>;
 
 /** The RunOutput items on this page */
-export type RunOutputCollectionValueList = RunOutput[];
+export type RunOutputCollectionValueList = ReadonlyArray<RunOutput>;
 export const RunOutputCollectionValueList = /*@__PURE__*/ S.Array(
   RunOutput,
 ) as any as S.Schema<RunOutputCollectionValueList>;
@@ -1381,6 +1531,43 @@ export const VirtualMachineImageTemplatesRunResponse = /*@__PURE__*/ S.suspend(
   identifier: "VirtualMachineImageTemplatesRunResponse",
 }) as any as S.Schema<VirtualMachineImageTemplatesRunResponse>;
 
+/** The user-specified tags associated with the image template. */
+export type VirtualMachineImageTemplatesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const VirtualMachineImageTemplatesUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<VirtualMachineImageTemplatesUpdateRequestTagsMap>;
+
+/** The distribution targets where the image output needs to go to. */
+export type ImageTemplateUpdateParametersPropertiesDistributeList =
+  ReadonlyArray<ImageTemplateDistributor>;
+export const ImageTemplateUpdateParametersPropertiesDistributeList =
+  /*@__PURE__*/ S.Array(
+    ImageTemplateDistributor,
+  ) as any as S.Schema<ImageTemplateUpdateParametersPropertiesDistributeList>;
+
+/** Parameters for updating an image template. */
+export interface ImageTemplateUpdateParametersProperties {
+  /** The distribution targets where the image output needs to go to. */
+  distribute?: ImageTemplateUpdateParametersPropertiesDistributeList;
+  /** Describes how virtual machine is set up to build images */
+  vmProfile?: ImageTemplateVmProfile;
+}
+export const ImageTemplateUpdateParametersProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      distribute: S.optional(
+        ImageTemplateUpdateParametersPropertiesDistributeList,
+      ),
+      vmProfile: S.optional(ImageTemplateVmProfile),
+    }),
+).annotate({
+  identifier: "ImageTemplateUpdateParametersProperties",
+}) as any as S.Schema<ImageTemplateUpdateParametersProperties>;
+
 export interface VirtualMachineImageTemplatesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1388,7 +1575,12 @@ export interface VirtualMachineImageTemplatesUpdateRequest {
   resourceGroupName: string;
   /** The name of the image Template */
   imageTemplateName: string;
-  body: unknown;
+  /** The identity of the image template, if configured. */
+  identity?: ImageTemplateIdentityInput;
+  /** The user-specified tags associated with the image template. */
+  tags?: VirtualMachineImageTemplatesUpdateRequestTagsMap;
+  /** Parameters for updating an image template. */
+  properties?: ImageTemplateUpdateParametersProperties;
 }
 export const VirtualMachineImageTemplatesUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1396,7 +1588,9 @@ export const VirtualMachineImageTemplatesUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       imageTemplateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      identity: S.optional(ImageTemplateIdentityInput),
+      tags: S.optional(VirtualMachineImageTemplatesUpdateRequestTagsMap),
+      properties: S.optional(ImageTemplateUpdateParametersProperties),
     }).pipe(
       T.Http({
         method: "PATCH",

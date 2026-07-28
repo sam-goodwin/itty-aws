@@ -91,8 +91,7 @@ export type NodeHealthEnum =
   | "DEPRECATED_UNHEALTHY"
   | "TIMEOUT"
   | "UNHEALTHY_TENSORFLOW"
-  | "UNHEALTHY_MAINTENANCE"
-  | (string & {});
+  | "UNHEALTHY_MAINTENANCE";
 export const NodeHealthEnum = /*@__PURE__*/ S.String;
 
 export type NodeStateEnum =
@@ -111,8 +110,7 @@ export type NodeStateEnum =
   | "HIDING"
   | "HIDDEN"
   | "UNHIDING"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const NodeStateEnum = /*@__PURE__*/ S.String;
 
 /** A network endpoint over which a TPU worker can be reached. */
@@ -131,7 +129,7 @@ export const NetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkEndpoint",
 }) as any as S.Schema<NetworkEndpoint>;
 
-export type NetworkEndpointList = NetworkEndpoint[];
+export type NetworkEndpointList = ReadonlyArray<NetworkEndpoint>;
 export const NetworkEndpointList = /*@__PURE__*/ S.Array(
   NetworkEndpoint,
 ) as any as S.Schema<NetworkEndpointList>;
@@ -140,8 +138,7 @@ export type NodeApiVersionEnum =
   | "API_VERSION_UNSPECIFIED"
   | "V1_ALPHA1"
   | "V1"
-  | "V2_ALPHA1"
-  | (string & {});
+  | "V2_ALPHA1";
 export const NodeApiVersionEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -173,8 +170,7 @@ export type SymptomSymptomTypeEnum =
   | "EXECUTE_TIMED_OUT"
   | "MESH_BUILD_FAIL"
   | "HBM_OUT_OF_MEMORY"
-  | "PROJECT_ABUSE"
-  | (string & {});
+  | "PROJECT_ABUSE";
 export const SymptomSymptomTypeEnum = /*@__PURE__*/ S.String;
 
 /** A Symptom instance. */
@@ -197,7 +193,7 @@ export const Symptom = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Symptom" }) as any as S.Schema<Symptom>;
 
-export type SymptomList = Symptom[];
+export type SymptomList = ReadonlyArray<Symptom>;
 export const SymptomList = /*@__PURE__*/ S.Array(
   Symptom,
 ) as any as S.Schema<SymptomList>;
@@ -297,7 +293,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -527,7 +523,7 @@ export const TensorFlowVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "TensorFlowVersion",
 }) as any as S.Schema<TensorFlowVersion>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -562,7 +558,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -614,7 +610,7 @@ export const ListProjectsLocationsAcceleratorTypesRequest =
     identifier: "ListProjectsLocationsAcceleratorTypesRequest",
   }) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
 
-export type AcceleratorTypeList = AcceleratorType[];
+export type AcceleratorTypeList = ReadonlyArray<AcceleratorType>;
 export const AcceleratorTypeList = /*@__PURE__*/ S.Array(
   AcceleratorType,
 ) as any as S.Schema<AcceleratorTypeList>;
@@ -662,7 +658,7 @@ export const ListProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsNodesRequest",
 }) as any as S.Schema<ListProjectsLocationsNodesRequest>;
 
-export type NodeList = Node[];
+export type NodeList = ReadonlyArray<Node>;
 export const NodeList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeList>;
@@ -717,7 +713,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -772,7 +768,7 @@ export const ListProjectsLocationsTensorflowVersionsRequest =
     identifier: "ListProjectsLocationsTensorflowVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsTensorflowVersionsRequest>;
 
-export type TensorFlowVersionList = TensorFlowVersion[];
+export type TensorFlowVersionList = ReadonlyArray<TensorFlowVersion>;
 export const TensorFlowVersionList = /*@__PURE__*/ S.Array(
   TensorFlowVersion,
 ) as any as S.Schema<TensorFlowVersionList>;

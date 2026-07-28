@@ -12,12 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `trends` - trends * `funnel` - funnel * `retention` - retention * `sql` - sql */
-export type InsightTypeEnum =
-  | "trends"
-  | "funnel"
-  | "retention"
-  | "sql"
-  | (string & {});
+export type InsightTypeEnum = "trends" | "funnel" | "retention" | "sql";
 export const InsightTypeEnum = /*@__PURE__*/ S.String;
 
 export interface MaxToolsCreateAndQueryInsightCreateRequest {
@@ -43,9 +38,23 @@ export const MaxToolsCreateAndQueryInsightCreateRequest =
     identifier: "MaxToolsCreateAndQueryInsightCreateRequest",
   }) as any as S.Schema<MaxToolsCreateAndQueryInsightCreateRequest>;
 
-export type MaxToolsCreateAndQueryInsightCreateResponse = unknown;
+export type MaxToolsCreateAndQueryInsightCreateResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const MaxToolsCreateAndQueryInsightCreateResponseBodyMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<MaxToolsCreateAndQueryInsightCreateResponseBodyMap>;
+
+export type MaxToolsCreateAndQueryInsightCreateResponse =
+  MaxToolsCreateAndQueryInsightCreateResponseBodyMap;
 export const MaxToolsCreateAndQueryInsightCreateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    MaxToolsCreateAndQueryInsightCreateResponseBodyMap.pipe(
+      T.RawResponseRoot(),
+    ),
+  ).annotate({
     identifier: "MaxToolsCreateAndQueryInsightCreateResponse",
   }) as any as S.Schema<MaxToolsCreateAndQueryInsightCreateResponse>;
 

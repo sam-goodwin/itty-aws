@@ -58,6 +58,35 @@
         }
       }
     },
+    "com.cloudflare.client_certificates#CreateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "PENDING_REACTIVATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_reactivation"
+          }
+        },
+        "PENDING_REVOCATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_revocation"
+          }
+        },
+        "REVOKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "revoked"
+          }
+        }
+      }
+    },
     "com.cloudflare.client_certificates#CreateResponse": {
       "type": "structure",
       "members": {
@@ -158,7 +187,7 @@
           }
         },
         "status": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.client_certificates#CreateResponseStatus",
           "traits": {
             "smithy.api#documentation": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions."
           }
@@ -224,6 +253,35 @@
         },
         "name": {
           "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.client_certificates#DeleteResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "PENDING_REACTIVATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_reactivation"
+          }
+        },
+        "PENDING_REVOCATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_revocation"
+          }
+        },
+        "REVOKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "revoked"
+          }
         }
       }
     },
@@ -327,7 +385,7 @@
           }
         },
         "status": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.client_certificates#DeleteResponseStatus",
           "traits": {
             "smithy.api#documentation": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions."
           }
@@ -397,6 +455,35 @@
         },
         "name": {
           "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.client_certificates#EditResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "PENDING_REACTIVATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_reactivation"
+          }
+        },
+        "PENDING_REVOCATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_revocation"
+          }
+        },
+        "REVOKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "revoked"
+          }
         }
       }
     },
@@ -500,7 +587,7 @@
           }
         },
         "status": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.client_certificates#EditResponseStatus",
           "traits": {
             "smithy.api#documentation": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions."
           }
@@ -566,6 +653,35 @@
         },
         "name": {
           "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.client_certificates#GetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "PENDING_REACTIVATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_reactivation"
+          }
+        },
+        "PENDING_REVOCATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_revocation"
+          }
+        },
+        "REVOKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "revoked"
+          }
         }
       }
     },
@@ -669,7 +785,7 @@
           }
         },
         "status": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.client_certificates#GetResponseStatus",
           "traits": {
             "smithy.api#documentation": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions."
           }
@@ -723,6 +839,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "pending_reactivation"
+          }
+        },
+        "PENDING_REVOCATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_revocation"
+          }
+        },
+        "REVOKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "revoked"
           }
         }
       }
@@ -786,6 +914,35 @@
         },
         "name": {
           "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.client_certificates#ListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "PENDING_REACTIVATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_reactivation"
+          }
+        },
+        "PENDING_REVOCATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_revocation"
+          }
+        },
+        "REVOKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "revoked"
+          }
         }
       }
     },
@@ -889,7 +1046,7 @@
           }
         },
         "status": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.client_certificates#ListResultItemStatus",
           "traits": {
             "smithy.api#documentation": "Client Certificates may be active or revoked, and the pending_reactivation or pending_revocation represent in-progress asynchronous transitions."
           }

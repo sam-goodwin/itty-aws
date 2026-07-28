@@ -70,13 +70,12 @@ export type AggregateRequestFilteredDataQualityStandardItemEnum =
   | "dataQualityBloodPressureBhsBA"
   | "dataQualityBloodPressureBhsBB"
   | "dataQualityBloodGlucoseIso151972003"
-  | "dataQualityBloodGlucoseIso151972013"
-  | (string & {});
+  | "dataQualityBloodGlucoseIso151972013";
 export const AggregateRequestFilteredDataQualityStandardItemEnum =
   /*@__PURE__*/ S.String;
 
 export type AggregateRequestFilteredDataQualityStandardItemEnumList =
-  AggregateRequestFilteredDataQualityStandardItemEnum[];
+  ReadonlyArray<AggregateRequestFilteredDataQualityStandardItemEnum>;
 export const AggregateRequestFilteredDataQualityStandardItemEnumList =
   /*@__PURE__*/ S.Array(
     AggregateRequestFilteredDataQualityStandardItemEnum,
@@ -96,7 +95,7 @@ export const AggregateBy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AggregateBy" }) as any as S.Schema<AggregateBy>;
 
-export type AggregateByList = AggregateBy[];
+export type AggregateByList = ReadonlyArray<AggregateBy>;
 export const AggregateByList = /*@__PURE__*/ S.Array(
   AggregateBy,
 ) as any as S.Schema<AggregateByList>;
@@ -128,11 +127,7 @@ export const BucketBySession = /*@__PURE__*/ S.suspend(() =>
   identifier: "BucketBySession",
 }) as any as S.Schema<BucketBySession>;
 
-export type BucketByTimePeriodTypeEnum =
-  | "day"
-  | "week"
-  | "month"
-  | (string & {});
+export type BucketByTimePeriodTypeEnum = "day" | "week" | "month";
 export const BucketByTimePeriodTypeEnum = /*@__PURE__*/ S.String;
 
 export interface BucketByTimePeriod {
@@ -279,8 +274,7 @@ export type AggregateBucketTypeEnum =
   | "time"
   | "session"
   | "activityType"
-  | "activitySegment"
-  | (string & {});
+  | "activitySegment";
 export const AggregateBucketTypeEnum = /*@__PURE__*/ S.String;
 
 /** Holder object for the value of an entry in a map field of a data point. A map value supports a subset of the formats that the regular Value supports. */
@@ -307,7 +301,7 @@ export const ValueMapValEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValueMapValEntry",
 }) as any as S.Schema<ValueMapValEntry>;
 
-export type ValueMapValEntryList = ValueMapValEntry[];
+export type ValueMapValEntryList = ReadonlyArray<ValueMapValEntry>;
 export const ValueMapValEntryList = /*@__PURE__*/ S.Array(
   ValueMapValEntry,
 ) as any as S.Schema<ValueMapValEntryList>;
@@ -332,7 +326,7 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
-export type ValueList = Value[];
+export type ValueList = ReadonlyArray<Value>;
 export const ValueList = /*@__PURE__*/ S.Array(
   Value,
 ) as any as S.Schema<ValueList>;
@@ -369,7 +363,7 @@ export const DataPoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataPoint" }) as any as S.Schema<DataPoint>;
 
-export type DataPointList = DataPoint[];
+export type DataPointList = ReadonlyArray<DataPoint>;
 export const DataPointList = /*@__PURE__*/ S.Array(
   DataPoint,
 ) as any as S.Schema<DataPointList>;
@@ -397,7 +391,7 @@ export const Dataset = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
 
-export type DatasetList = Dataset[];
+export type DatasetList = ReadonlyArray<Dataset>;
 export const DatasetList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<DatasetList>;
@@ -429,7 +423,7 @@ export const AggregateBucket = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregateBucket",
 }) as any as S.Schema<AggregateBucket>;
 
-export type AggregateBucketList = AggregateBucket[];
+export type AggregateBucketList = ReadonlyArray<AggregateBucket>;
 export const AggregateBucketList = /*@__PURE__*/ S.Array(
   AggregateBucket,
 ) as any as S.Schema<AggregateBucketList>;
@@ -453,8 +447,7 @@ export type DataTypeFieldFormatEnum =
   | "map"
   | "integerList"
   | "floatList"
-  | "blob"
-  | (string & {});
+  | "blob";
 export const DataTypeFieldFormatEnum = /*@__PURE__*/ S.String;
 
 /** In case of multi-dimensional data (such as an accelerometer with x, y, and z axes) each field represents one dimension. Each data type field has a unique name which identifies it. The field also defines the format of the data (int, float, etc.). This message is only instantiated in code and not used for wire comms or stored in any way. */
@@ -473,7 +466,7 @@ export const DataTypeField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataTypeField" }) as any as S.Schema<DataTypeField>;
 
-export type DataTypeFieldList = DataTypeField[];
+export type DataTypeFieldList = ReadonlyArray<DataTypeField>;
 export const DataTypeFieldList = /*@__PURE__*/ S.Array(
   DataTypeField,
 ) as any as S.Schema<DataTypeFieldList>;
@@ -501,12 +494,11 @@ export type DataSourceDataQualityStandardItemEnum =
   | "dataQualityBloodPressureBhsBA"
   | "dataQualityBloodPressureBhsBB"
   | "dataQualityBloodGlucoseIso151972003"
-  | "dataQualityBloodGlucoseIso151972013"
-  | (string & {});
+  | "dataQualityBloodGlucoseIso151972013";
 export const DataSourceDataQualityStandardItemEnum = /*@__PURE__*/ S.String;
 
 export type DataSourceDataQualityStandardItemEnumList =
-  DataSourceDataQualityStandardItemEnum[];
+  ReadonlyArray<DataSourceDataQualityStandardItemEnum>;
 export const DataSourceDataQualityStandardItemEnumList = /*@__PURE__*/ S.Array(
   DataSourceDataQualityStandardItemEnum,
 ) as any as S.Schema<DataSourceDataQualityStandardItemEnumList>;
@@ -519,8 +511,7 @@ export type DeviceTypeEnum =
   | "chestStrap"
   | "scale"
   | "headMounted"
-  | "smartDisplay"
-  | (string & {});
+  | "smartDisplay";
 export const DeviceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an integrated device (such as a phone or a wearable) that can hold sensors. Each sensor is exposed as a data source. The main purpose of the device information contained in this class is to identify the hardware of a particular data source. This can be useful in different ways, including: - Distinguishing two similar sensors on different devices (the step counter on two nexus 5 phones, for instance) - Display the source of data to the user (by using the device make / model) - Treat data differently depending on sensor type (accelerometers on a watch may give different patterns than those on a phone) - Build different analysis models for each device/version. */
@@ -546,7 +537,7 @@ export const Device = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
 
-export type DataSourceTypeEnum = "raw" | "derived" | (string & {});
+export type DataSourceTypeEnum = "raw" | "derived";
 export const DataSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Definition of a unique source of sensor data. Data sources can expose raw data coming from hardware sensors on local or companion devices. They can also expose derived data, created by transforming or merging other data sources. Multiple data sources can exist for the same data type. Every data point inserted into or read from this service has an associated data source. The data source contains enough information to uniquely identify its data, including the hardware device and the application that collected and/or transformed the data. It also holds useful metadata, such as the hardware and application versions, and the device type. Each data source produces a unique stream of data, with a unique identifier. Not all changes to data source affect the stream identifier, so that data collected by updated versions of the same application/device can still be considered to belong to the same data stream. */
@@ -734,7 +725,7 @@ export const GetUsersDataSourcesDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUsersDataSourcesDatasetsRequest",
 }) as any as S.Schema<GetUsersDataSourcesDatasetsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -760,7 +751,7 @@ export const ListUsersDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersDataSourcesRequest",
 }) as any as S.Schema<ListUsersDataSourcesRequest>;
 
-export type DataSourceList = DataSource[];
+export type DataSourceList = ReadonlyArray<DataSource>;
 export const DataSourceList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceList>;
@@ -826,7 +817,7 @@ export const ListDataPointChangesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataPointChangesResponse",
 }) as any as S.Schema<ListDataPointChangesResponse>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -864,7 +855,7 @@ export const ListUsersSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersSessionsRequest",
 }) as any as S.Schema<ListUsersSessionsRequest>;
 
-export type SessionList = Session[];
+export type SessionList = ReadonlyArray<Session>;
 export const SessionList = /*@__PURE__*/ S.Array(
   Session,
 ) as any as S.Schema<SessionList>;

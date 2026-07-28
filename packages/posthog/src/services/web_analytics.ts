@@ -36,7 +36,7 @@ export const WebAnalyticsRecapRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAnalyticsRecapRequest>;
 
 /** * `Up` - Up * `Down` - Down */
-export type WoWChangeDirectionEnum = "Up" | "Down" | (string & {});
+export type WoWChangeDirectionEnum = "Up" | "Down";
 export const WoWChangeDirectionEnum = /*@__PURE__*/ S.String;
 
 export interface WoWChange {
@@ -113,7 +113,7 @@ export const TopPage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopPage" }) as any as S.Schema<TopPage>;
 
 /** Top 5 pages by unique visitors. */
-export type WebAnalyticsRecapResponseTopPagesList = TopPage[];
+export type WebAnalyticsRecapResponseTopPagesList = ReadonlyArray<TopPage>;
 export const WebAnalyticsRecapResponseTopPagesList = /*@__PURE__*/ S.Array(
   TopPage,
 ) as any as S.Schema<WebAnalyticsRecapResponseTopPagesList>;
@@ -135,7 +135,7 @@ export const TopSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopSource" }) as any as S.Schema<TopSource>;
 
 /** Top 5 traffic sources by unique visitors. */
-export type WebAnalyticsRecapResponseTopSourcesList = TopSource[];
+export type WebAnalyticsRecapResponseTopSourcesList = ReadonlyArray<TopSource>;
 export const WebAnalyticsRecapResponseTopSourcesList = /*@__PURE__*/ S.Array(
   TopSource,
 ) as any as S.Schema<WebAnalyticsRecapResponseTopSourcesList>;
@@ -157,7 +157,7 @@ export const Goal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Goal" }) as any as S.Schema<Goal>;
 
 /** Goal conversions. */
-export type WebAnalyticsRecapResponseGoalsList = Goal[];
+export type WebAnalyticsRecapResponseGoalsList = ReadonlyArray<Goal>;
 export const WebAnalyticsRecapResponseGoalsList = /*@__PURE__*/ S.Array(
   Goal,
 ) as any as S.Schema<WebAnalyticsRecapResponseGoalsList>;
@@ -207,7 +207,8 @@ export const RecapHighlight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecapHighlight" }) as any as S.Schema<RecapHighlight>;
 
 /** Up to three screenshot-worthy superlatives for the week. */
-export type WebAnalyticsRecapResponseHighlightsList = RecapHighlight[];
+export type WebAnalyticsRecapResponseHighlightsList =
+  ReadonlyArray<RecapHighlight>;
 export const WebAnalyticsRecapResponseHighlightsList = /*@__PURE__*/ S.Array(
   RecapHighlight,
 ) as any as S.Schema<WebAnalyticsRecapResponseHighlightsList>;
@@ -294,19 +295,19 @@ export const WebAnalyticsWeeklyDigestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAnalyticsWeeklyDigestRequest>;
 
 /** Top 5 pages by unique visitors. */
-export type WeeklyDigestResponseTopPagesList = TopPage[];
+export type WeeklyDigestResponseTopPagesList = ReadonlyArray<TopPage>;
 export const WeeklyDigestResponseTopPagesList = /*@__PURE__*/ S.Array(
   TopPage,
 ) as any as S.Schema<WeeklyDigestResponseTopPagesList>;
 
 /** Top 5 traffic sources by unique visitors. */
-export type WeeklyDigestResponseTopSourcesList = TopSource[];
+export type WeeklyDigestResponseTopSourcesList = ReadonlyArray<TopSource>;
 export const WeeklyDigestResponseTopSourcesList = /*@__PURE__*/ S.Array(
   TopSource,
 ) as any as S.Schema<WeeklyDigestResponseTopSourcesList>;
 
 /** Goal conversions. */
-export type WeeklyDigestResponseGoalsList = Goal[];
+export type WeeklyDigestResponseGoalsList = ReadonlyArray<Goal>;
 export const WeeklyDigestResponseGoalsList = /*@__PURE__*/ S.Array(
   Goal,
 ) as any as S.Schema<WeeklyDigestResponseGoalsList>;

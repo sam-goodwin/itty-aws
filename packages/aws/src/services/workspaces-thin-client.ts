@@ -161,11 +161,10 @@ export type Arn = string;
 export type DesktopEndpoint = string | redacted.Redacted<string>;
 export type SoftwareSetUpdateSchedule =
   | "USE_MAINTENANCE_WINDOW"
-  | "APPLY_IMMEDIATELY"
-  | (string & {});
+  | "APPLY_IMMEDIATELY";
 export const SoftwareSetUpdateSchedule = /*@__PURE__*/ S.String;
 
-export type MaintenanceWindowType = "SYSTEM" | "CUSTOM" | (string & {});
+export type MaintenanceWindowType = "SYSTEM" | "CUSTOM";
 export const MaintenanceWindowType = /*@__PURE__*/ S.String;
 
 export type Hour = number;
@@ -177,13 +176,12 @@ export type DayOfWeek =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 export type DayOfWeekList = DayOfWeek[];
 export const DayOfWeekList = /*@__PURE__*/ S.Array(DayOfWeek);
-export type ApplyTimeOf = "UTC" | "DEVICE" | (string & {});
+export type ApplyTimeOf = "UTC" | "DEVICE";
 export const ApplyTimeOf = /*@__PURE__*/ S.String;
 
 export interface MaintenanceWindow {
@@ -208,10 +206,7 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MaintenanceWindow",
 }) as any as S.Schema<MaintenanceWindow>;
-export type SoftwareSetUpdateMode =
-  | "USE_LATEST"
-  | "USE_DESIRED"
-  | (string & {});
+export type SoftwareSetUpdateMode = "USE_LATEST" | "USE_DESIRED";
 export const SoftwareSetUpdateMode = /*@__PURE__*/ S.String;
 
 export type SoftwareSetId = string;
@@ -269,11 +264,7 @@ export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEnvironmentRequest",
 }) as any as S.Schema<CreateEnvironmentRequest>;
 export type EnvironmentId = string;
-export type DesktopType =
-  | "workspaces"
-  | "appstream"
-  | "workspaces-web"
-  | (string & {});
+export type DesktopType = "workspaces" | "appstream" | "workspaces-web";
 export const DesktopType = /*@__PURE__*/ S.String;
 
 export type ActivationCode = string | redacted.Redacted<string>;
@@ -382,7 +373,7 @@ export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteEnvironmentResponse",
 }) as any as S.Schema<DeleteEnvironmentResponse>;
-export type TargetDeviceStatus = "DEREGISTERED" | "ARCHIVED" | (string & {});
+export type TargetDeviceStatus = "DEREGISTERED" | "ARCHIVED";
 export const TargetDeviceStatus = /*@__PURE__*/ S.String;
 
 export interface DeregisterDeviceRequest {
@@ -436,22 +427,19 @@ export type DeviceStatus =
   | "REGISTERED"
   | "DEREGISTERING"
   | "DEREGISTERED"
-  | "ARCHIVED"
-  | (string & {});
+  | "ARCHIVED";
 export const DeviceStatus = /*@__PURE__*/ S.String;
 
 export type DeviceSoftwareSetComplianceStatus =
   | "NONE"
   | "COMPLIANT"
-  | "NOT_COMPLIANT"
-  | (string & {});
+  | "NOT_COMPLIANT";
 export const DeviceSoftwareSetComplianceStatus = /*@__PURE__*/ S.String;
 
 export type SoftwareSetUpdateStatus =
   | "AVAILABLE"
   | "IN_PROGRESS"
-  | "UP_TO_DATE"
-  | (string & {});
+  | "UP_TO_DATE";
 export const SoftwareSetUpdateStatus = /*@__PURE__*/ S.String;
 
 export type UserId = string | redacted.Redacted<string>;
@@ -533,8 +521,7 @@ export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export type EnvironmentSoftwareSetComplianceStatus =
   | "NO_REGISTERED_DEVICES"
   | "COMPLIANT"
-  | "NOT_COMPLIANT"
-  | (string & {});
+  | "NOT_COMPLIANT";
 export const EnvironmentSoftwareSetComplianceStatus = /*@__PURE__*/ S.String;
 
 export interface Environment {
@@ -608,10 +595,7 @@ export const GetSoftwareSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSoftwareSetRequest",
 }) as any as S.Schema<GetSoftwareSetRequest>;
-export type SoftwareSetValidationStatus =
-  | "VALIDATED"
-  | "NOT_VALIDATED"
-  | (string & {});
+export type SoftwareSetValidationStatus = "VALIDATED" | "NOT_VALIDATED";
 export const SoftwareSetValidationStatus = /*@__PURE__*/ S.String;
 
 export interface Software {
@@ -1013,8 +997,7 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other"
-  | (string & {});
+  | "other";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type FieldName = string;

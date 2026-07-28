@@ -372,16 +372,44 @@
             "smithy.api#documentation": "The name of the private endpoint connection"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.deviceprovisioningservices#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of a private endpoint connection",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioningservices#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.deviceprovisioningservices#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint property of a private endpoint connection"
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.deviceprovisioningservices#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "The current state of a private endpoint connection",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a private endpoint connection"
+      }
+    },
+    "com.azure.deviceprovisioningservices#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint property of a private endpoint connection"
       }
     },
     "com.azure.deviceprovisioningservices#IotDpsResourceGetPrivateEndpointConnection": {
@@ -1021,10 +1049,10 @@
             "smithy.api#documentation": "The subscription identifier."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name of the Provisioning Service to check.",
             "smithy.api#required": {}
           }
         }
@@ -1345,11 +1373,10 @@
             "smithy.api#documentation": "Random number generated to indicate Proof of Possession."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "certificate": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "base-64 representation of X509 certificate .cer file or just .pem file content."
           }
         }
       },
@@ -2900,16 +2927,27 @@
             "smithy.api#documentation": "Name of provisioning service to create or update."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsResourceUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsResourceUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.deviceprovisioningservices#IotDpsResourceCreateOrUpdate": {
@@ -3155,16 +3193,380 @@
             "smithy.api#documentation": "Name of provisioning service to create or update."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourcegroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource group of the resource."
+          }
+        },
+        "subscriptionid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subscription id of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsResourceCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention."
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInput",
+          "traits": {
+            "smithy.api#documentation": "Service specific properties for a provisioning service",
+            "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsSkuInfoInput",
+          "traits": {
+            "smithy.api#documentation": "Sku info for a provisioning Service.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsSkuInfoInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsSkuInfoInputName",
+          "traits": {
+            "smithy.api#documentation": "Sku name."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of units to provision"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of possible provisioning service SKUs."
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsSkuInfoInputName": {
+      "type": "enum",
+      "members": {
+        "S1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "S1"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Sku name."
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInput": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputState",
+          "traits": {
+            "smithy.api#documentation": "Current state of the provisioning service."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether requests from Public Network are allowed"
+          }
+        },
+        "ipFilterRules": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputIpFilterRulesList",
+          "traits": {
+            "smithy.api#documentation": "The IP filter rules."
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "Private endpoint connections created on this IotHub"
+          }
+        },
+        "provisioningState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM provisioning state of the provisioning service."
+          }
+        },
+        "iotHubs": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputIotHubsList",
+          "traits": {
+            "smithy.api#documentation": "List of IoT hubs associated with this provisioning service."
+          }
+        },
+        "allocationPolicy": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputAllocationPolicy",
+          "traits": {
+            "smithy.api#documentation": "Allocation policy to be used by this provisioning service."
+          }
+        },
+        "authorizationPolicies": {
+          "target": "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputAuthorizationPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "List of authorization keys for a provisioning service."
+          }
+        },
+        "enableDataResidency": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Optional.\nIndicates if the DPS instance has Data Residency enabled, removing the cross geo-pair disaster recovery."
+          }
+        },
+        "portalOperationsHostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Portal endpoint to enable CORS for this provisioning service."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "the service specific properties of a provisioning service, including keys, linked iot hubs, current state, and system generated properties such as hostname and idScope"
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputAuthorizationPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceprovisioningservices#SharedAccessSignatureAuthorizationRuleAccessRightsDescription"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of authorization keys for a provisioning service."
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputAllocationPolicy": {
+      "type": "enum",
+      "members": {
+        "HASHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hashed"
+          }
+        },
+        "GEOLATENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GeoLatency"
+          }
+        },
+        "STATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Static"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Allocation policy to be used by this provisioning service."
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputIotHubsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceprovisioningservices#IotHubDefinitionDescriptionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of IoT hubs associated with this provisioning service."
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotHubDefinitionDescriptionInput": {
+      "type": "structure",
+      "members": {
+        "applyAllocationPolicy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "flag for applying allocationPolicy or not for a given iot hub."
+          }
+        },
+        "allocationWeight": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "weight to apply for a given iot h."
+          }
+        },
+        "connectionString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Connection string of the IoT hub.",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM region of the IoT hub.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Description of the IoT hub."
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceprovisioningservices#PrivateEndpointConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Private endpoint connections created on this IotHub"
+      }
+    },
+    "com.azure.deviceprovisioningservices#PrivateEndpointConnectionInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.deviceprovisioningservices#PrivateEndpointConnectionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of a private endpoint connection",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private endpoint connection of a provisioning service"
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputIpFilterRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceprovisioningservices#IpFilterRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IP filter rules."
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether requests from Public Network are allowed"
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsPropertiesDescriptionInputState": {
+      "type": "enum",
+      "members": {
+        "ACTIVATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Activating"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleting"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleted"
+          }
+        },
+        "ACTIVATIONFAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActivationFailed"
+          }
+        },
+        "DELETIONFAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DeletionFailed"
+          }
+        },
+        "TRANSITIONING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Transitioning"
+          }
+        },
+        "SUSPENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Suspending"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Suspended"
+          }
+        },
+        "RESUMING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Resuming"
+          }
+        },
+        "FAILINGOVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FailingOver"
+          }
+        },
+        "FAILOVERFAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FailoverFailed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Current state of the provisioning service."
+      }
+    },
+    "com.azure.deviceprovisioningservices#IotDpsResourceCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.deviceprovisioningservices#IotDpsResourceGet": {
@@ -3602,16 +4004,35 @@
             "smithy.api#documentation": "The name of the certificate create or update."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.deviceprovisioningservices#CertificatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "properties of a certificate"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceprovisioningservices#CertificatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "isVerified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Determines whether certificate has been verified."
+          }
+        },
+        "certificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "base-64 representation of X509 certificate .cer file or just .pem file content."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The description of an X509 CA Certificate."
       }
     },
     "com.azure.deviceprovisioningservices#DpsCertificateGet": {

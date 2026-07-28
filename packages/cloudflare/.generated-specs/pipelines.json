@@ -195,7 +195,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#CreateRequestSourceItemFormat": {
+    "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -206,34 +206,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#CreateRequestSourceItemCorsOriginsList": {
+    "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.pipelines#CreateRequestSourceItemCors": {
+    "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors": {
       "type": "structure",
       "members": {
         "origins": {
-          "target": "com.cloudflare.pipelines#CreateRequestSourceItemCorsOriginsList",
+          "target": "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList",
           "traits": {
             "smithy.api#documentation": "Specifies allowed origins to allow Cross Origin HTTP Requests."
           }
         }
       }
     },
-    "com.cloudflare.pipelines#CreateRequestSourceItem": {
+    "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource": {
       "type": "structure",
       "members": {
         "format": {
-          "target": "com.cloudflare.pipelines#CreateRequestSourceItemFormat",
+          "target": "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat",
           "traits": {
-            "smithy.api#documentation": "Specifies the format of source data."
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "authentication": {
           "target": "smithy.api#Boolean",
@@ -242,7 +246,47 @@
           }
         },
         "cors": {
-          "target": "com.cloudflare.pipelines#CreateRequestSourceItemCors"
+          "target": "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource": {
+      "type": "structure",
+      "members": {
+        "format": {
+          "target": "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestSourceItem": {
+      "type": "union",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource": {
+          "target": "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource"
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource": {
+          "target": "com.cloudflare.pipelines#CreateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource"
         }
       }
     },
@@ -437,7 +481,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#CreateResponseSourceItemFormat": {
+    "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -448,34 +492,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#CreateResponseSourceItemCorsOriginsList": {
+    "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.pipelines#CreateResponseSourceItemCors": {
+    "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors": {
       "type": "structure",
       "members": {
         "origins": {
-          "target": "com.cloudflare.pipelines#CreateResponseSourceItemCorsOriginsList",
+          "target": "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList",
           "traits": {
             "smithy.api#documentation": "Specifies allowed origins to allow Cross Origin HTTP Requests."
           }
         }
       }
     },
-    "com.cloudflare.pipelines#CreateResponseSourceItem": {
+    "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource": {
       "type": "structure",
       "members": {
         "format": {
-          "target": "com.cloudflare.pipelines#CreateResponseSourceItemFormat",
+          "target": "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat",
           "traits": {
-            "smithy.api#documentation": "Specifies the format of source data."
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "authentication": {
           "target": "smithy.api#Boolean",
@@ -484,7 +532,47 @@
           }
         },
         "cors": {
-          "target": "com.cloudflare.pipelines#CreateResponseSourceItemCors"
+          "target": "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource": {
+      "type": "structure",
+      "members": {
+        "format": {
+          "target": "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseSourceItem": {
+      "type": "union",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource": {
+          "target": "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource"
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource": {
+          "target": "com.cloudflare.pipelines#CreateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource"
         }
       }
     },
@@ -929,7 +1017,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#GetResponseSourceItemFormat": {
+    "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -940,34 +1028,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#GetResponseSourceItemCorsOriginsList": {
+    "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.pipelines#GetResponseSourceItemCors": {
+    "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors": {
       "type": "structure",
       "members": {
         "origins": {
-          "target": "com.cloudflare.pipelines#GetResponseSourceItemCorsOriginsList",
+          "target": "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList",
           "traits": {
             "smithy.api#documentation": "Specifies allowed origins to allow Cross Origin HTTP Requests."
           }
         }
       }
     },
-    "com.cloudflare.pipelines#GetResponseSourceItem": {
+    "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource": {
       "type": "structure",
       "members": {
         "format": {
-          "target": "com.cloudflare.pipelines#GetResponseSourceItemFormat",
+          "target": "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat",
           "traits": {
-            "smithy.api#documentation": "Specifies the format of source data."
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "authentication": {
           "target": "smithy.api#Boolean",
@@ -976,7 +1068,47 @@
           }
         },
         "cors": {
-          "target": "com.cloudflare.pipelines#GetResponseSourceItemCors"
+          "target": "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource": {
+      "type": "structure",
+      "members": {
+        "format": {
+          "target": "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseSourceItem": {
+      "type": "union",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource": {
+          "target": "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource"
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource": {
+          "target": "com.cloudflare.pipelines#GetResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource"
         }
       }
     },
@@ -1407,7 +1539,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#ListResponseResultsItemSourceItemFormat": {
+    "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -1418,34 +1550,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCorsOriginsList": {
+    "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCors": {
+    "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors": {
       "type": "structure",
       "members": {
         "origins": {
-          "target": "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCorsOriginsList",
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList",
           "traits": {
             "smithy.api#documentation": "Specifies allowed origins to allow Cross Origin HTTP Requests."
           }
         }
       }
     },
-    "com.cloudflare.pipelines#ListResponseResultsItemSourceItem": {
+    "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource": {
       "type": "structure",
       "members": {
         "format": {
-          "target": "com.cloudflare.pipelines#ListResponseResultsItemSourceItemFormat",
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat",
           "traits": {
-            "smithy.api#documentation": "Specifies the format of source data."
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "authentication": {
           "target": "smithy.api#Boolean",
@@ -1454,7 +1590,47 @@
           }
         },
         "cors": {
-          "target": "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCors"
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesBindingSource": {
+      "type": "structure",
+      "members": {
+        "format": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemSourceItem": {
+      "type": "union",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource"
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemSourceItemCloudflarePipelinesWorkersPipelinesBindingSource"
         }
       }
     },
@@ -1842,7 +2018,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#UpdateRequestSourceItemFormat": {
+    "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -1853,34 +2029,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#UpdateRequestSourceItemCorsOriginsList": {
+    "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.pipelines#UpdateRequestSourceItemCors": {
+    "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors": {
       "type": "structure",
       "members": {
         "origins": {
-          "target": "com.cloudflare.pipelines#UpdateRequestSourceItemCorsOriginsList",
+          "target": "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList",
           "traits": {
             "smithy.api#documentation": "Specifies allowed origins to allow Cross Origin HTTP Requests."
           }
         }
       }
     },
-    "com.cloudflare.pipelines#UpdateRequestSourceItem": {
+    "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource": {
       "type": "structure",
       "members": {
         "format": {
-          "target": "com.cloudflare.pipelines#UpdateRequestSourceItemFormat",
+          "target": "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat",
           "traits": {
-            "smithy.api#documentation": "Specifies the format of source data."
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "authentication": {
           "target": "smithy.api#Boolean",
@@ -1889,7 +2069,47 @@
           }
         },
         "cors": {
-          "target": "com.cloudflare.pipelines#UpdateRequestSourceItemCors"
+          "target": "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource": {
+      "type": "structure",
+      "members": {
+        "format": {
+          "target": "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestSourceItem": {
+      "type": "union",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource": {
+          "target": "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource"
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource": {
+          "target": "com.cloudflare.pipelines#UpdateRequestSourceItemCloudflarePipelinesWorkersPipelinesBindingSource"
         }
       }
     },
@@ -2092,7 +2312,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#UpdateResponseSourceItemFormat": {
+    "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat": {
       "type": "enum",
       "members": {
         "JSON": {
@@ -2103,34 +2323,38 @@
         }
       }
     },
-    "com.cloudflare.pipelines#UpdateResponseSourceItemCorsOriginsList": {
+    "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.pipelines#UpdateResponseSourceItemCors": {
+    "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors": {
       "type": "structure",
       "members": {
         "origins": {
-          "target": "com.cloudflare.pipelines#UpdateResponseSourceItemCorsOriginsList",
+          "target": "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCorsOriginsList",
           "traits": {
             "smithy.api#documentation": "Specifies allowed origins to allow Cross Origin HTTP Requests."
           }
         }
       }
     },
-    "com.cloudflare.pipelines#UpdateResponseSourceItem": {
+    "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource": {
       "type": "structure",
       "members": {
         "format": {
-          "target": "com.cloudflare.pipelines#UpdateResponseSourceItemFormat",
+          "target": "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceFormat",
           "traits": {
-            "smithy.api#documentation": "Specifies the format of source data."
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "authentication": {
           "target": "smithy.api#Boolean",
@@ -2139,7 +2363,47 @@
           }
         },
         "cors": {
-          "target": "com.cloudflare.pipelines#UpdateResponseSourceItemCors"
+          "target": "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSourceCors"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource": {
+      "type": "structure",
+      "members": {
+        "format": {
+          "target": "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSourceFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of source data.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseSourceItem": {
+      "type": "union",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource": {
+          "target": "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesHTTPSource"
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource": {
+          "target": "com.cloudflare.pipelines#UpdateResponseSourceItemCloudflarePipelinesWorkersPipelinesBindingSource"
         }
       }
     },
@@ -2239,13 +2503,42 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.pipelines#ValidateSqlResponseTablesValue": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.pipelines#ValidateSqlResponseTablesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.pipelines#ValidateSqlResponseTablesValue"
       }
     },
     "com.cloudflare.pipelines#ValidateSqlResponseGraphEdgesItem": {
@@ -2735,6 +3028,18 @@
           "traits": {
             "smithy.api#enumValue": "gzip"
           }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
+          }
         }
       }
     },
@@ -2766,7 +3071,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemType": {
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemInt32Type": {
       "type": "enum",
       "members": {
         "INT32": {
@@ -2777,7 +3082,245 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemUnit": {
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemInt32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemInt32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemInt64Type": {
+      "type": "enum",
+      "members": {
+        "INT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "int64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemInt64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemInt64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemFloat32Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT32": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float32"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemFloat32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemFloat32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemFloat64Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemFloat64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemFloat64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemBoolType": {
+      "type": "enum",
+      "members": {
+        "BOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bool"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemBool": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemBoolType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemStringType": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemString": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemStringType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemBinaryType": {
+      "type": "enum",
+      "members": {
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binary"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemBinary": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemBinaryType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemTimestampType": {
+      "type": "enum",
+      "members": {
+        "TIMESTAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timestamp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemTimestampUnit": {
       "type": "enum",
       "members": {
         "SECOND": {
@@ -2806,11 +3349,14 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItem": {
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemTimestamp": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemType"
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemTimestampType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "metadata_key": {
           "target": "smithy.api#String"
@@ -2825,26 +3371,48 @@
           "target": "smithy.api#String"
         },
         "unit": {
-          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemUnit"
-        },
-        "Struct": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemTimestampUnit"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemJsonType": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItemJsonType",
           "traits": {
             "smithy.api#required": {}
           }
         },
-        "List": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
         }
       }
     },
     "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.pipelines#SinksCreateRequestSchemaFormatJsonType": {
@@ -2948,6 +3516,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gzip"
+          }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
           }
         }
       }
@@ -3394,6 +3974,18 @@
           "traits": {
             "smithy.api#enumValue": "gzip"
           }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
+          }
         }
       }
     },
@@ -3425,7 +4017,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemType": {
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemInt32Type": {
       "type": "enum",
       "members": {
         "INT32": {
@@ -3436,7 +4028,245 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemUnit": {
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemInt32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemInt32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemInt64Type": {
+      "type": "enum",
+      "members": {
+        "INT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "int64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemInt64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemInt64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemFloat32Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT32": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float32"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemFloat32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemFloat32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemFloat64Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemFloat64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemFloat64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemBoolType": {
+      "type": "enum",
+      "members": {
+        "BOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bool"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemBool": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemBoolType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemStringType": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemString": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemStringType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemBinaryType": {
+      "type": "enum",
+      "members": {
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binary"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemBinary": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemBinaryType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemTimestampType": {
+      "type": "enum",
+      "members": {
+        "TIMESTAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timestamp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemTimestampUnit": {
       "type": "enum",
       "members": {
         "SECOND": {
@@ -3465,11 +4295,14 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItem": {
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemTimestamp": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemType"
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemTimestampType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "metadata_key": {
           "target": "smithy.api#String"
@@ -3484,26 +4317,48 @@
           "target": "smithy.api#String"
         },
         "unit": {
-          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemUnit"
-        },
-        "Struct": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemTimestampUnit"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemJsonType": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItemJsonType",
           "traits": {
             "smithy.api#required": {}
           }
         },
-        "List": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
         }
       }
     },
     "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.pipelines#SinksCreateResponseSchemaFormatJsonType": {
@@ -3607,6 +4462,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gzip"
+          }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
           }
         }
       }
@@ -4138,6 +5005,18 @@
           "traits": {
             "smithy.api#enumValue": "gzip"
           }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
+          }
         }
       }
     },
@@ -4169,7 +5048,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemType": {
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemInt32Type": {
       "type": "enum",
       "members": {
         "INT32": {
@@ -4180,7 +5059,245 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemUnit": {
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemInt32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemInt32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemInt64Type": {
+      "type": "enum",
+      "members": {
+        "INT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "int64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemInt64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemInt64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemFloat32Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT32": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float32"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemFloat32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemFloat32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemFloat64Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemFloat64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemFloat64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemBoolType": {
+      "type": "enum",
+      "members": {
+        "BOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bool"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemBool": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemBoolType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemStringType": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemString": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemStringType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemBinaryType": {
+      "type": "enum",
+      "members": {
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binary"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemBinary": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemBinaryType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemTimestampType": {
+      "type": "enum",
+      "members": {
+        "TIMESTAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timestamp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemTimestampUnit": {
       "type": "enum",
       "members": {
         "SECOND": {
@@ -4209,11 +5326,14 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItem": {
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemTimestamp": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemType"
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemTimestampType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "metadata_key": {
           "target": "smithy.api#String"
@@ -4228,26 +5348,48 @@
           "target": "smithy.api#String"
         },
         "unit": {
-          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemUnit"
-        },
-        "Struct": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemTimestampUnit"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemJsonType": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItemJsonType",
           "traits": {
             "smithy.api#required": {}
           }
         },
-        "List": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
         }
       }
     },
     "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.pipelines#SinksGetResponseSchemaFormatJsonType": {
@@ -4351,6 +5493,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gzip"
+          }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
           }
         }
       }
@@ -4836,6 +5990,18 @@
           "traits": {
             "smithy.api#enumValue": "gzip"
           }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
+          }
         }
       }
     },
@@ -4867,7 +6033,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemType": {
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemInt32Type": {
       "type": "enum",
       "members": {
         "INT32": {
@@ -4878,7 +6044,245 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemUnit": {
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemInt32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemInt32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemInt64Type": {
+      "type": "enum",
+      "members": {
+        "INT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "int64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemInt64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemInt64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemFloat32Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT32": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float32"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemFloat32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemFloat32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemFloat64Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemFloat64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemFloat64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemBoolType": {
+      "type": "enum",
+      "members": {
+        "BOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bool"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemBool": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemBoolType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemStringType": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemString": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemStringType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemBinaryType": {
+      "type": "enum",
+      "members": {
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binary"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemBinary": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemBinaryType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemTimestampType": {
+      "type": "enum",
+      "members": {
+        "TIMESTAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timestamp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemTimestampUnit": {
       "type": "enum",
       "members": {
         "SECOND": {
@@ -4907,11 +6311,14 @@
         }
       }
     },
-    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItem": {
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemTimestamp": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemType"
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemTimestampType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "metadata_key": {
           "target": "smithy.api#String"
@@ -4926,26 +6333,48 @@
           "target": "smithy.api#String"
         },
         "unit": {
-          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemUnit"
-        },
-        "Struct": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemTimestampUnit"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemJsonType": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItemJsonType",
           "traits": {
             "smithy.api#required": {}
           }
         },
-        "List": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
         }
       }
     },
     "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.pipelines#SinksListResultItemSchemaFormatJsonType": {
@@ -5049,6 +6478,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gzip"
+          }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
           }
         }
       }
@@ -5286,6 +6727,18 @@
           "traits": {
             "smithy.api#enumValue": "gzip"
           }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
+          }
         }
       }
     },
@@ -5356,7 +6809,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemType": {
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemInt32Type": {
       "type": "enum",
       "members": {
         "INT32": {
@@ -5367,7 +6820,245 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemUnit": {
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemInt32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemInt32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemInt64Type": {
+      "type": "enum",
+      "members": {
+        "INT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "int64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemInt64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemInt64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemFloat32Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT32": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float32"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemFloat32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemFloat32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemFloat64Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemFloat64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemFloat64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemBoolType": {
+      "type": "enum",
+      "members": {
+        "BOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bool"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemBool": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemBoolType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemStringType": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemString": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemStringType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemBinaryType": {
+      "type": "enum",
+      "members": {
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binary"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemBinary": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemBinaryType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemTimestampType": {
+      "type": "enum",
+      "members": {
+        "TIMESTAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timestamp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemTimestampUnit": {
       "type": "enum",
       "members": {
         "SECOND": {
@@ -5396,11 +7087,14 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItem": {
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemTimestamp": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemType"
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemTimestampType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "metadata_key": {
           "target": "smithy.api#String"
@@ -5415,26 +7109,48 @@
           "target": "smithy.api#String"
         },
         "unit": {
-          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemUnit"
-        },
-        "Struct": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemTimestampUnit"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemJsonType": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItemJsonType",
           "traits": {
             "smithy.api#required": {}
           }
         },
-        "List": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
         }
       }
     },
     "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormatJsonType": {
@@ -5538,6 +7254,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gzip"
+          }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
           }
         }
       }
@@ -5784,6 +7512,18 @@
           "traits": {
             "smithy.api#enumValue": "gzip"
           }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
+          }
         }
       }
     },
@@ -5815,7 +7555,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemType": {
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemInt32Type": {
       "type": "enum",
       "members": {
         "INT32": {
@@ -5826,7 +7566,245 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemUnit": {
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemInt32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemInt32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemInt64Type": {
+      "type": "enum",
+      "members": {
+        "INT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "int64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemInt64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemInt64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemFloat32Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT32": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float32"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemFloat32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemFloat32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemFloat64Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemFloat64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemFloat64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemBoolType": {
+      "type": "enum",
+      "members": {
+        "BOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bool"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemBool": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemBoolType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemStringType": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemString": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemStringType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemBinaryType": {
+      "type": "enum",
+      "members": {
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binary"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemBinary": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemBinaryType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemTimestampType": {
+      "type": "enum",
+      "members": {
+        "TIMESTAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timestamp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemTimestampUnit": {
       "type": "enum",
       "members": {
         "SECOND": {
@@ -5855,11 +7833,14 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItem": {
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemTimestamp": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemType"
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemTimestampType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "metadata_key": {
           "target": "smithy.api#String"
@@ -5874,26 +7855,48 @@
           "target": "smithy.api#String"
         },
         "unit": {
-          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemUnit"
-        },
-        "Struct": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemTimestampUnit"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemJsonType": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItemJsonType",
           "traits": {
             "smithy.api#required": {}
           }
         },
-        "List": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
         }
       }
     },
     "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormatJsonType": {
@@ -5997,6 +8000,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gzip"
+          }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
           }
         }
       }
@@ -6367,6 +8382,18 @@
           "traits": {
             "smithy.api#enumValue": "gzip"
           }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
+          }
         }
       }
     },
@@ -6398,7 +8425,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemType": {
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemInt32Type": {
       "type": "enum",
       "members": {
         "INT32": {
@@ -6409,7 +8436,245 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemUnit": {
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemInt32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemInt32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemInt64Type": {
+      "type": "enum",
+      "members": {
+        "INT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "int64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemInt64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemInt64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemFloat32Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT32": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float32"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemFloat32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemFloat32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemFloat64Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemFloat64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemFloat64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemBoolType": {
+      "type": "enum",
+      "members": {
+        "BOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bool"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemBool": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemBoolType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemStringType": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemString": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemStringType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemBinaryType": {
+      "type": "enum",
+      "members": {
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binary"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemBinary": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemBinaryType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemTimestampType": {
+      "type": "enum",
+      "members": {
+        "TIMESTAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timestamp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemTimestampUnit": {
       "type": "enum",
       "members": {
         "SECOND": {
@@ -6438,11 +8703,14 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItem": {
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemTimestamp": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemType"
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemTimestampType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "metadata_key": {
           "target": "smithy.api#String"
@@ -6457,26 +8725,48 @@
           "target": "smithy.api#String"
         },
         "unit": {
-          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemUnit"
-        },
-        "Struct": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemTimestampUnit"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemJsonType": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItemJsonType",
           "traits": {
             "smithy.api#required": {}
           }
         },
-        "List": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
         }
       }
     },
     "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.pipelines#StreamsGetResponseSchemaFormatJsonType": {
@@ -6580,6 +8870,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gzip"
+          }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
           }
         }
       }
@@ -6905,6 +9207,18 @@
           "traits": {
             "smithy.api#enumValue": "gzip"
           }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
+          }
         }
       }
     },
@@ -6936,7 +9250,7 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemType": {
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemInt32Type": {
       "type": "enum",
       "members": {
         "INT32": {
@@ -6947,7 +9261,245 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemUnit": {
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemInt32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemInt32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemInt64Type": {
+      "type": "enum",
+      "members": {
+        "INT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "int64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemInt64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemInt64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemFloat32Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT32": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float32"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemFloat32": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemFloat32Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemFloat64Type": {
+      "type": "enum",
+      "members": {
+        "FLOAT64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "float64"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemFloat64": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemFloat64Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemBoolType": {
+      "type": "enum",
+      "members": {
+        "BOOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bool"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemBool": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemBoolType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemStringType": {
+      "type": "enum",
+      "members": {
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemString": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemStringType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemBinaryType": {
+      "type": "enum",
+      "members": {
+        "BINARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binary"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemBinary": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemBinaryType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemTimestampType": {
+      "type": "enum",
+      "members": {
+        "TIMESTAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timestamp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemTimestampUnit": {
       "type": "enum",
       "members": {
         "SECOND": {
@@ -6976,11 +9528,14 @@
         }
       }
     },
-    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItem": {
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemTimestamp": {
       "type": "structure",
       "members": {
         "type": {
-          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemType"
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemTimestampType",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "metadata_key": {
           "target": "smithy.api#String"
@@ -6995,26 +9550,48 @@
           "target": "smithy.api#String"
         },
         "unit": {
-          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemUnit"
-        },
-        "Struct": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemTimestampUnit"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemJsonType": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemJson": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItemJsonType",
           "traits": {
             "smithy.api#required": {}
           }
         },
-        "List": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
+        "metadata_key": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "required": {
+          "target": "smithy.api#Boolean"
+        },
+        "sql_name": {
+          "target": "smithy.api#String"
         }
       }
     },
     "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.pipelines#StreamsListResultItemSchemaFormatJsonType": {
@@ -7118,6 +9695,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gzip"
+          }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
           }
         }
       }
@@ -7498,6 +10087,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gzip"
+          }
+        },
+        "ZSTD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zstd"
+          }
+        },
+        "LZ4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lz4"
           }
         }
       }

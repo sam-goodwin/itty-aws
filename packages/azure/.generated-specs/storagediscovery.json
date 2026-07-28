@@ -168,16 +168,25 @@
             "smithy.api#documentation": "The name of the ReportResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "queries": {
+          "target": "com.azure.storagediscovery#ReportGenerateReportRequestQueriesList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The queries to execute against Storage Discovery data.\nFormat: Base64-encoded JSON object with structure:\n{\"queries\":[{\"name\":\"queryName\",\"query\":\"KQL query\"}]}\nFor query syntax and available tables, see: https://aka.ms/storageDiscoveryQuery",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagediscovery#ReportGenerateReportRequestQueriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The queries to execute against Storage Discovery data.\nFormat: Base64-encoded JSON object with structure:\n{\"queries\":[{\"name\":\"queryName\",\"query\":\"KQL query\"}]}\nFor query syntax and available tables, see: https://aka.ms/storageDiscoveryQuery"
       }
     },
     "com.azure.storagediscovery#ReportGet": {
@@ -590,16 +599,25 @@
             "smithy.api#documentation": "The name of the StorageDiscoveryWorkspace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "queries": {
+          "target": "com.azure.storagediscovery#StorageDiscoveryWorkspacesReportRequestQueriesList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The queries to execute against Storage Discovery data.\nFormat: Base64-encoded JSON object with structure:\n{\"queries\":[{\"name\":\"queryName\",\"query\":\"KQL query\"}]}\nFor query syntax and available tables, see: https://aka.ms/storageDiscoveryQuery",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagediscovery#StorageDiscoveryWorkspacesReportRequestQueriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The queries to execute against Storage Discovery data.\nFormat: Base64-encoded JSON object with structure:\n{\"queries\":[{\"name\":\"queryName\",\"query\":\"KQL query\"}]}\nFor query syntax and available tables, see: https://aka.ms/storageDiscoveryQuery"
       }
     },
     "com.azure.storagediscovery#StorageDiscoveryWorkspacesDelete": {
@@ -918,16 +936,103 @@
             "smithy.api#documentation": "The name of the StorageDiscoveryWorkspace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storagediscovery#StorageDiscoveryWorkspacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "sku": {
+          "target": "com.azure.storagediscovery#StorageDiscoverySku",
+          "traits": {
+            "smithy.api#documentation": "The storage discovery sku"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the storage discovery workspace"
+          }
+        },
+        "workspaceRoots": {
+          "target": "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList",
+          "traits": {
+            "smithy.api#documentation": "The view level storage discovery data estate"
+          }
+        },
+        "scopes": {
+          "target": "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesUpdateScopesList",
+          "traits": {
+            "smithy.api#documentation": "The scopes of the storage discovery workspace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The template for adding updateable properties."
+      }
+    },
+    "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesUpdateScopesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storagediscovery#StorageDiscoveryScope"
+      },
+      "traits": {
+        "smithy.api#documentation": "The scopes of the storage discovery workspace."
+      }
+    },
+    "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The view level storage discovery data estate"
+      }
+    },
+    "com.azure.storagediscovery#StorageDiscoverySku": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "FREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Free"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage Discovery Sku"
+      }
+    },
+    "com.azure.storagediscovery#StorageDiscoveryWorkspacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.storagediscovery#StorageDiscoveryWorkspacesCreateOrUpdate": {
@@ -1039,16 +1144,112 @@
             "smithy.api#documentation": "The name of the StorageDiscoveryWorkspace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storagediscovery#StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sku": {
+          "target": "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesInputSku",
+          "traits": {
+            "smithy.api#documentation": "The storage discovery sku"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the storage discovery workspace"
+          }
+        },
+        "workspaceRoots": {
+          "target": "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList",
+          "traits": {
+            "smithy.api#documentation": "The view level storage discovery data estate",
+            "smithy.api#required": {}
+          }
+        },
+        "scopes": {
+          "target": "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesInputScopesList",
+          "traits": {
+            "smithy.api#documentation": "The scopes of the storage discovery workspace.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage Discovery Workspace Properties"
+      }
+    },
+    "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesInputScopesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storagediscovery#StorageDiscoveryScope"
+      },
+      "traits": {
+        "smithy.api#documentation": "The scopes of the storage discovery workspace."
+      }
+    },
+    "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The view level storage discovery data estate"
+      }
+    },
+    "com.azure.storagediscovery#StorageDiscoveryWorkspacePropertiesInputSku": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "FREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Free"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage discovery sku"
+      }
+    },
+    "com.azure.storagediscovery#StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.storagediscovery#StorageDiscoveryWorkspacesGet": {

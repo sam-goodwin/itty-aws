@@ -69,7 +69,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** The dimensions of the metrics. */
-export type MetricSpecificationDimensionsList = Dimension[];
+export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -110,7 +110,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifications of the Metrics for Azure Monitoring. */
 export type ServiceSpecificationMetricSpecificationsList =
-  MetricSpecification[];
+  ReadonlyArray<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -133,7 +133,8 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Specifications of the Logs for Azure Monitoring. */
-export type ServiceSpecificationLogSpecificationsList = LogSpecification[];
+export type ServiceSpecificationLogSpecificationsList =
+  ReadonlyArray<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -190,7 +191,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider. */
-export type OperationListValueList = Operation[];
+export type OperationListValueList = ReadonlyArray<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -214,13 +215,17 @@ export interface SignalRCheckNameAvailabilityRequest {
   subscriptionId: string;
   /** the region */
   location: string;
-  body: unknown;
+  /** The resource type. Can be "Microsoft.SignalRService/SignalR", "Microsoft.SignalRService/WebPubSub", "Microsoft.SignalRService/SignalR/replicas" or "Microsoft.SignalRService/WebPubSub/replicas" */
+  type: string;
+  /** The resource name to validate. e.g."my-resource-name" */
+  name: string;
 }
 export const SignalRCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    type: S.String,
+    name: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -252,6 +257,469 @@ export const NameAvailability = /*@__PURE__*/ S.suspend(() =>
   identifier: "NameAvailability",
 }) as any as S.Schema<NameAvailability>;
 
+/** Resource tags. */
+export type SignalRCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SignalRCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SignalRCreateOrUpdateRequestTagsMap>;
+
+/** Optional tier of this particular SKU. 'Standard' or 'Free'. `Basic` is deprecated, use `Standard` instead. */
+export type SignalRSkuTier = "Free" | "Basic" | "Standard" | "Premium";
+export const SignalRSkuTier = /*@__PURE__*/ S.String;
+
+/** The billing information of the resource. */
+export interface ResourceSkuInput {
+  /** The name of the SKU. Required. Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2 */
+  name: string;
+  tier?: SignalRSkuTier;
+  /** Optional, integer. The unit count of the resource. 1 for Free_F1/Standard_S1/Premium_P1, 100 for Premium_P2 by default. If present, following values are allowed: Free_F1: 1; Standard_S1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P1: 1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100; Premium_P2: 100,200,300,400,500,600,700,800,900,1000; */
+  capacity?: number;
+}
+export const ResourceSkuInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: S.optional(SignalRSkuTier),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ResourceSkuInput",
+}) as any as S.Schema<ResourceSkuInput>;
+
+/** TLS settings for the resource */
+export interface SignalRTlsSettings {
+  /** Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier. */
+  clientCertEnabled?: boolean;
+}
+export const SignalRTlsSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientCertEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SignalRTlsSettings",
+}) as any as S.Schema<SignalRTlsSettings>;
+
+/** FeatureFlags is the supported features of Azure SignalR service. - ServiceMode: Flag for backend server for SignalR service. Values allowed: "Default": have your own backend server; "Serverless": your application doesn't have a backend server; "Classic": for backward compatibility. Support both Default and Serverless mode but not recommended; "PredefinedOnly": for future use. - EnableConnectivityLogs: "true"/"false", to enable/disable the connectivity log category respectively. - EnableMessagingLogs: "true"/"false", to enable/disable the connectivity log category respectively. - EnableLiveTrace: Live Trace allows you to know what's happening inside Azure SignalR service, it will give you live traces in real time, it will be helpful when you developing your own Azure SignalR based web application or self-troubleshooting some issues. Please note that live traces are counted as outbound messages that will be charged. Values allowed: "true"/"false", to enable/disable live trace feature. */
+export type FeatureFlags =
+  | "ServiceMode"
+  | "EnableConnectivityLogs"
+  | "EnableMessagingLogs"
+  | "EnableLiveTrace";
+export const FeatureFlags = /*@__PURE__*/ S.String;
+
+/** Optional properties related to this feature. */
+export type SignalRFeaturePropertiesMap = { [key: string]: string | undefined };
+export const SignalRFeaturePropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SignalRFeaturePropertiesMap>;
+
+/** Feature of a resource, which controls the runtime behavior. */
+export interface SignalRFeature {
+  flag: FeatureFlags;
+  /** Value of the feature flag. See Azure SignalR service document https://docs.microsoft.com/azure/azure-signalr/ for allowed values. */
+  value: string;
+  /** Optional properties related to this feature. */
+  properties?: SignalRFeaturePropertiesMap;
+}
+export const SignalRFeature = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flag: FeatureFlags,
+    value: S.String,
+    properties: S.optional(SignalRFeaturePropertiesMap),
+  }),
+).annotate({ identifier: "SignalRFeature" }) as any as S.Schema<SignalRFeature>;
+
+/** List of the featureFlags. FeatureFlags that are not included in the parameters for the update operation will not be modified. And the response will only include featureFlags that are explicitly set. When a featureFlag is not explicitly set, its globally default value will be used But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags. */
+export type SignalRPropertiesInputFeaturesList = ReadonlyArray<SignalRFeature>;
+export const SignalRPropertiesInputFeaturesList = /*@__PURE__*/ S.Array(
+  SignalRFeature,
+) as any as S.Schema<SignalRPropertiesInputFeaturesList>;
+
+/** Live trace category configuration of a Microsoft.SignalRService resource. */
+export interface LiveTraceCategory {
+  /** Gets or sets the live trace category's name. Available values: ConnectivityLogs, MessagingLogs. Case insensitive. */
+  name?: string;
+  /** Indicates whether or the live trace category is enabled. Available values: true, false. Case insensitive. */
+  enabled?: string;
+}
+export const LiveTraceCategory = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    enabled: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LiveTraceCategory",
+}) as any as S.Schema<LiveTraceCategory>;
+
+/** Gets or sets the list of category configurations. */
+export type LiveTraceConfigurationCategoriesList =
+  ReadonlyArray<LiveTraceCategory>;
+export const LiveTraceConfigurationCategoriesList = /*@__PURE__*/ S.Array(
+  LiveTraceCategory,
+) as any as S.Schema<LiveTraceConfigurationCategoriesList>;
+
+/** Live trace configuration of a Microsoft.SignalRService resource. */
+export interface LiveTraceConfiguration {
+  /** Indicates whether or not enable live trace. When it's set to true, live trace client can connect to the service. Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories". Available values: true, false. Case insensitive. */
+  enabled?: string;
+  /** Gets or sets the list of category configurations. */
+  categories?: LiveTraceConfigurationCategoriesList;
+}
+export const LiveTraceConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.String),
+    categories: S.optional(LiveTraceConfigurationCategoriesList),
+  }),
+).annotate({
+  identifier: "LiveTraceConfiguration",
+}) as any as S.Schema<LiveTraceConfiguration>;
+
+/** Resource log category configuration of a Microsoft.SignalRService resource. */
+export interface ResourceLogCategory {
+  /** Gets or sets the resource log category's name. Available values: ConnectivityLogs, MessagingLogs. Case insensitive. */
+  name?: string;
+  /** Indicates whether or the resource log category is enabled. Available values: true, false. Case insensitive. */
+  enabled?: string;
+}
+export const ResourceLogCategory = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    enabled: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceLogCategory",
+}) as any as S.Schema<ResourceLogCategory>;
+
+/** Gets or sets the list of category configurations. */
+export type ResourceLogConfigurationCategoriesList =
+  ReadonlyArray<ResourceLogCategory>;
+export const ResourceLogConfigurationCategoriesList = /*@__PURE__*/ S.Array(
+  ResourceLogCategory,
+) as any as S.Schema<ResourceLogConfigurationCategoriesList>;
+
+/** Resource log configuration of a Microsoft.SignalRService resource. */
+export interface ResourceLogConfiguration {
+  /** Gets or sets the list of category configurations. */
+  categories?: ResourceLogConfigurationCategoriesList;
+}
+export const ResourceLogConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    categories: S.optional(ResourceLogConfigurationCategoriesList),
+  }),
+).annotate({
+  identifier: "ResourceLogConfiguration",
+}) as any as S.Schema<ResourceLogConfiguration>;
+
+/** Gets or sets the list of origins that should be allowed to make cross-origin calls (for example: http://example.com:12345). Use "*" to allow all. If omitted, allow all by default. */
+export type SignalRCorsSettingsAllowedOriginsList = ReadonlyArray<string>;
+export const SignalRCorsSettingsAllowedOriginsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SignalRCorsSettingsAllowedOriginsList>;
+
+/** Cross-Origin Resource Sharing (CORS) settings. */
+export interface SignalRCorsSettings {
+  /** Gets or sets the list of origins that should be allowed to make cross-origin calls (for example: http://example.com:12345). Use "*" to allow all. If omitted, allow all by default. */
+  allowedOrigins?: SignalRCorsSettingsAllowedOriginsList;
+}
+export const SignalRCorsSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedOrigins: S.optional(SignalRCorsSettingsAllowedOriginsList),
+  }),
+).annotate({
+  identifier: "SignalRCorsSettings",
+}) as any as S.Schema<SignalRCorsSettings>;
+
+/** Serverless settings. */
+export interface ServerlessSettings {
+  /** Gets or sets Client Connection Timeout. Optional to be set. Value in seconds. Default value is 30 seconds. Customer should set the timeout to a shorter period if messages are expected to be sent in shorter intervals, and want the client to disconnect more quickly after the last message is sent. You can set the timeout to a longer period if messages are expected to be sent in longer intervals, and they want to keep the same client connection alive during this session. The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval. */
+  connectionTimeoutInSeconds?: number;
+}
+export const ServerlessSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectionTimeoutInSeconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ServerlessSettings",
+}) as any as S.Schema<ServerlessSettings>;
+
+/** Upstream auth type enum. */
+export type UpstreamAuthType = "None" | "ManagedIdentity";
+export const UpstreamAuthType = /*@__PURE__*/ S.String;
+
+/** Managed identity settings for upstream. */
+export interface ManagedIdentitySettings {
+  /** The Resource indicating the App ID URI of the target resource. It also appears in the aud (audience) claim of the issued token. */
+  resource?: string;
+}
+export const ManagedIdentitySettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedIdentitySettings",
+}) as any as S.Schema<ManagedIdentitySettings>;
+
+/** Upstream auth settings. If not set, no auth is used for upstream messages. */
+export interface UpstreamAuthSettings {
+  type?: UpstreamAuthType;
+  managedIdentity?: ManagedIdentitySettings;
+}
+export const UpstreamAuthSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(UpstreamAuthType),
+    managedIdentity: S.optional(ManagedIdentitySettings),
+  }),
+).annotate({
+  identifier: "UpstreamAuthSettings",
+}) as any as S.Schema<UpstreamAuthSettings>;
+
+/** Upstream template item settings. It defines the Upstream URL of the incoming requests. The template defines the pattern of the event, the hub or the category of the incoming request that matches current URL template. */
+export interface UpstreamTemplate {
+  /** Gets or sets the matching pattern for hub names. If not set, it matches any hub. There are 3 kind of patterns supported: 1. "*", it to matches any hub name. 2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2". 3. The single hub name, for example, "hub1", it matches "hub1". */
+  hubPattern?: string;
+  /** Gets or sets the matching pattern for event names. If not set, it matches any event. There are 3 kind of patterns supported: 1. "*", it to matches any event name. 2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect". 3. The single event name, for example, "connect", it matches "connect". */
+  eventPattern?: string;
+  /** Gets or sets the matching pattern for category names. If not set, it matches any category. There are 3 kind of patterns supported: 1. "*", it to matches any category name. 2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages". 3. The single category name, for example, "connections", it matches the category "connections". */
+  categoryPattern?: string;
+  /** Gets or sets the Upstream URL template. You can use 3 predefined parameters {hub}, {category} {event} inside the template, the value of the Upstream URL is dynamically calculated when the client request comes in. For example, if the urlTemplate is `http://example.com/{hub}/api/{event}`, with a client request from hub `chat` connects, it will first POST to this URL: `http://example.com/chat/api/connect`. */
+  urlTemplate: string;
+  auth?: UpstreamAuthSettings;
+}
+export const UpstreamTemplate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hubPattern: S.optional(S.String),
+    eventPattern: S.optional(S.String),
+    categoryPattern: S.optional(S.String),
+    urlTemplate: S.String,
+    auth: S.optional(UpstreamAuthSettings),
+  }),
+).annotate({
+  identifier: "UpstreamTemplate",
+}) as any as S.Schema<UpstreamTemplate>;
+
+/** Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects. */
+export type ServerlessUpstreamSettingsTemplatesList =
+  ReadonlyArray<UpstreamTemplate>;
+export const ServerlessUpstreamSettingsTemplatesList = /*@__PURE__*/ S.Array(
+  UpstreamTemplate,
+) as any as S.Schema<ServerlessUpstreamSettingsTemplatesList>;
+
+/** The settings for the Upstream when the service is in server-less mode. */
+export interface ServerlessUpstreamSettings {
+  /** Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects. */
+  templates?: ServerlessUpstreamSettingsTemplatesList;
+}
+export const ServerlessUpstreamSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    templates: S.optional(ServerlessUpstreamSettingsTemplatesList),
+  }),
+).annotate({
+  identifier: "ServerlessUpstreamSettings",
+}) as any as S.Schema<ServerlessUpstreamSettings>;
+
+/** Azure Networking ACL Action. */
+export type ACLAction = "Allow" | "Deny";
+export const ACLAction = /*@__PURE__*/ S.String;
+
+/** The incoming request type to the service */
+export type SignalRRequestType =
+  | "ClientConnection"
+  | "ServerConnection"
+  | "RESTAPI"
+  | "Trace";
+export const SignalRRequestType = /*@__PURE__*/ S.String;
+
+/** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
+export type NetworkACLAllowList = ReadonlyArray<SignalRRequestType>;
+export const NetworkACLAllowList = /*@__PURE__*/ S.Array(
+  SignalRRequestType,
+) as any as S.Schema<NetworkACLAllowList>;
+
+/** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
+export type NetworkACLDenyList = ReadonlyArray<SignalRRequestType>;
+export const NetworkACLDenyList = /*@__PURE__*/ S.Array(
+  SignalRRequestType,
+) as any as S.Schema<NetworkACLDenyList>;
+
+/** Network ACL */
+export interface NetworkACL {
+  /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
+  allow?: NetworkACLAllowList;
+  /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
+  deny?: NetworkACLDenyList;
+}
+export const NetworkACL = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allow: S.optional(NetworkACLAllowList),
+    deny: S.optional(NetworkACLDenyList),
+  }),
+).annotate({ identifier: "NetworkACL" }) as any as S.Schema<NetworkACL>;
+
+/** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
+export type PrivateEndpointACLAllowList = ReadonlyArray<SignalRRequestType>;
+export const PrivateEndpointACLAllowList = /*@__PURE__*/ S.Array(
+  SignalRRequestType,
+) as any as S.Schema<PrivateEndpointACLAllowList>;
+
+/** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
+export type PrivateEndpointACLDenyList = ReadonlyArray<SignalRRequestType>;
+export const PrivateEndpointACLDenyList = /*@__PURE__*/ S.Array(
+  SignalRRequestType,
+) as any as S.Schema<PrivateEndpointACLDenyList>;
+
+/** ACL for a private endpoint */
+export interface PrivateEndpointACL {
+  /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
+  allow?: PrivateEndpointACLAllowList;
+  /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
+  deny?: PrivateEndpointACLDenyList;
+  /** Name of the private endpoint connection */
+  name: string;
+}
+export const PrivateEndpointACL = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allow: S.optional(PrivateEndpointACLAllowList),
+    deny: S.optional(PrivateEndpointACLDenyList),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "PrivateEndpointACL",
+}) as any as S.Schema<PrivateEndpointACL>;
+
+/** ACLs for requests from private endpoints */
+export type SignalRNetworkACLsPrivateEndpointsList =
+  ReadonlyArray<PrivateEndpointACL>;
+export const SignalRNetworkACLsPrivateEndpointsList = /*@__PURE__*/ S.Array(
+  PrivateEndpointACL,
+) as any as S.Schema<SignalRNetworkACLsPrivateEndpointsList>;
+
+/** An IP rule */
+export interface IPRule {
+  /** An IP or CIDR or ServiceTag */
+  value?: string;
+  action?: ACLAction;
+}
+export const IPRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    action: S.optional(ACLAction),
+  }),
+).annotate({ identifier: "IPRule" }) as any as S.Schema<IPRule>;
+
+/** IP rules for filtering public traffic */
+export type SignalRNetworkACLsIpRulesList = ReadonlyArray<IPRule>;
+export const SignalRNetworkACLsIpRulesList = /*@__PURE__*/ S.Array(
+  IPRule,
+) as any as S.Schema<SignalRNetworkACLsIpRulesList>;
+
+/** Network ACLs for the resource */
+export interface SignalRNetworkACLs {
+  defaultAction?: ACLAction;
+  publicNetwork?: NetworkACL;
+  /** ACLs for requests from private endpoints */
+  privateEndpoints?: SignalRNetworkACLsPrivateEndpointsList;
+  /** IP rules for filtering public traffic */
+  ipRules?: SignalRNetworkACLsIpRulesList;
+}
+export const SignalRNetworkACLs = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultAction: S.optional(ACLAction),
+    publicNetwork: S.optional(NetworkACL),
+    privateEndpoints: S.optional(SignalRNetworkACLsPrivateEndpointsList),
+    ipRules: S.optional(SignalRNetworkACLsIpRulesList),
+  }),
+).annotate({
+  identifier: "SignalRNetworkACLs",
+}) as any as S.Schema<SignalRNetworkACLs>;
+
+/** A class that describes the properties of the resource */
+export interface SignalRPropertiesInput {
+  tls?: SignalRTlsSettings;
+  /** List of the featureFlags. FeatureFlags that are not included in the parameters for the update operation will not be modified. And the response will only include featureFlags that are explicitly set. When a featureFlag is not explicitly set, its globally default value will be used But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags. */
+  features?: SignalRPropertiesInputFeaturesList;
+  liveTraceConfiguration?: LiveTraceConfiguration;
+  resourceLogConfiguration?: ResourceLogConfiguration;
+  cors?: SignalRCorsSettings;
+  serverless?: ServerlessSettings;
+  upstream?: ServerlessUpstreamSettings;
+  networkACLs?: SignalRNetworkACLs;
+  /** Enable or disable public network access. Default to "Enabled". When it's Enabled, network ACLs still apply. When it's Disabled, public network access is always disabled no matter what you set in network ACLs. */
+  publicNetworkAccess?: string;
+  /** DisableLocalAuth Enable or disable local auth with AccessKey When set as true, connection with AccessKey=xxx won't work. */
+  disableLocalAuth?: boolean;
+  /** DisableLocalAuth Enable or disable aad auth When set as true, connection with AuthType=aad won't work. */
+  disableAadAuth?: boolean;
+  /** Enable or disable the regional endpoint. Default to "Enabled". When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected. This property is replica specific. Disable the regional endpoint without replica is not allowed. */
+  regionEndpointEnabled?: string;
+  /** Stop or start the resource. Default to "False". When it's true, the data plane of the resource is shutdown. When it's false, the data plane of the resource is started. */
+  resourceStopped?: string;
+}
+export const SignalRPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tls: S.optional(SignalRTlsSettings),
+    features: S.optional(SignalRPropertiesInputFeaturesList),
+    liveTraceConfiguration: S.optional(LiveTraceConfiguration),
+    resourceLogConfiguration: S.optional(ResourceLogConfiguration),
+    cors: S.optional(SignalRCorsSettings),
+    serverless: S.optional(ServerlessSettings),
+    upstream: S.optional(ServerlessUpstreamSettings),
+    networkACLs: S.optional(SignalRNetworkACLs),
+    publicNetworkAccess: S.optional(S.String),
+    disableLocalAuth: S.optional(S.Boolean),
+    disableAadAuth: S.optional(S.Boolean),
+    regionEndpointEnabled: S.optional(S.String),
+    resourceStopped: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SignalRPropertiesInput",
+}) as any as S.Schema<SignalRPropertiesInput>;
+
+/** The kind of the service */
+export type ServiceKind = "SignalR" | "RawWebSockets";
+export const ServiceKind = /*@__PURE__*/ S.String;
+
+/** Represents the identity type: systemAssigned, userAssigned, None */
+export type ManagedIdentityType = "None" | "SystemAssigned" | "UserAssigned";
+export const ManagedIdentityType = /*@__PURE__*/ S.String;
+
+/** Properties of user assigned identity. */
+export interface UserAssignedIdentityPropertyInput {}
+export const UserAssignedIdentityPropertyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityPropertyInput",
+}) as any as S.Schema<UserAssignedIdentityPropertyInput>;
+
+/** Get or set the user assigned identities */
+export type ManagedIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityPropertyInput | undefined;
+};
+export const ManagedIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityPropertyInput,
+  ) as any as S.Schema<ManagedIdentityInputUserAssignedIdentitiesMap>;
+
+/** A class represent managed identities used for request and response */
+export interface ManagedIdentityInput {
+  type?: ManagedIdentityType;
+  /** Get or set the user assigned identities */
+  userAssignedIdentities?: ManagedIdentityInputUserAssignedIdentitiesMap;
+}
+export const ManagedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ManagedIdentityType),
+    userAssignedIdentities: S.optional(
+      ManagedIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ManagedIdentityInput",
+}) as any as S.Schema<ManagedIdentityInput>;
+
 export interface SignalRCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -259,14 +727,26 @@ export interface SignalRCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the resource. */
   resourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SignalRCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  sku?: ResourceSkuInput;
+  properties?: SignalRPropertiesInput;
+  kind?: ServiceKind;
+  identity?: ManagedIdentityInput;
 }
 export const SignalRCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SignalRCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    sku: S.optional(ResourceSkuInput),
+    properties: S.optional(SignalRPropertiesInput),
+    kind: S.optional(ServiceKind),
+    identity: S.optional(ManagedIdentityInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -284,8 +764,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -293,8 +772,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -332,15 +810,6 @@ export const SignalRCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<SignalRCreateOrUpdateResponseTagsMap>;
 
-/** Optional tier of this particular SKU. 'Standard' or 'Free'. `Basic` is deprecated, use `Standard` instead. */
-export type SignalRSkuTier =
-  | "Free"
-  | "Basic"
-  | "Standard"
-  | "Premium"
-  | (string & {});
-export const SignalRSkuTier = /*@__PURE__*/ S.String;
-
 /** The billing information of the resource. */
 export interface ResourceSku {
   /** The name of the SKU. Required. Allowed values: Standard_S1, Free_F1, Premium_P1, Premium_P2 */
@@ -373,8 +842,7 @@ export type ProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting"
-  | "Moving"
-  | (string & {});
+  | "Moving";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Private endpoint */
@@ -391,7 +859,8 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpoint>;
 
 /** Group IDs */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -402,8 +871,7 @@ export type PrivateLinkServiceConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const PrivateLinkServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** Connection state of the private endpoint connection */
@@ -471,7 +939,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint connections to the resource. */
 export type SignalRPropertiesPrivateEndpointConnectionsList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const SignalRPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -483,8 +951,7 @@ export type SharedPrivateLinkResourceStatus =
   | "Approved"
   | "Rejected"
   | "Disconnected"
-  | "Timeout"
-  | (string & {});
+  | "Timeout";
 export const SharedPrivateLinkResourceStatus = /*@__PURE__*/ S.String;
 
 /** Describes the properties of an existing Shared Private Link Resource */
@@ -536,356 +1003,17 @@ export const SharedPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of shared private link resources. */
 export type SignalRPropertiesSharedPrivateLinkResourcesList =
-  SharedPrivateLinkResource[];
+  ReadonlyArray<SharedPrivateLinkResource>;
 export const SignalRPropertiesSharedPrivateLinkResourcesList =
   /*@__PURE__*/ S.Array(
     SharedPrivateLinkResource,
   ) as any as S.Schema<SignalRPropertiesSharedPrivateLinkResourcesList>;
 
-/** TLS settings for the resource */
-export interface SignalRTlsSettings {
-  /** Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier. */
-  clientCertEnabled?: boolean;
-}
-export const SignalRTlsSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientCertEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SignalRTlsSettings",
-}) as any as S.Schema<SignalRTlsSettings>;
-
-/** FeatureFlags is the supported features of Azure SignalR service. - ServiceMode: Flag for backend server for SignalR service. Values allowed: "Default": have your own backend server; "Serverless": your application doesn't have a backend server; "Classic": for backward compatibility. Support both Default and Serverless mode but not recommended; "PredefinedOnly": for future use. - EnableConnectivityLogs: "true"/"false", to enable/disable the connectivity log category respectively. - EnableMessagingLogs: "true"/"false", to enable/disable the connectivity log category respectively. - EnableLiveTrace: Live Trace allows you to know what's happening inside Azure SignalR service, it will give you live traces in real time, it will be helpful when you developing your own Azure SignalR based web application or self-troubleshooting some issues. Please note that live traces are counted as outbound messages that will be charged. Values allowed: "true"/"false", to enable/disable live trace feature. */
-export type FeatureFlags =
-  | "ServiceMode"
-  | "EnableConnectivityLogs"
-  | "EnableMessagingLogs"
-  | "EnableLiveTrace"
-  | (string & {});
-export const FeatureFlags = /*@__PURE__*/ S.String;
-
-/** Optional properties related to this feature. */
-export type SignalRFeaturePropertiesMap = { [key: string]: string | undefined };
-export const SignalRFeaturePropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SignalRFeaturePropertiesMap>;
-
-/** Feature of a resource, which controls the runtime behavior. */
-export interface SignalRFeature {
-  flag: FeatureFlags;
-  /** Value of the feature flag. See Azure SignalR service document https://docs.microsoft.com/azure/azure-signalr/ for allowed values. */
-  value: string;
-  /** Optional properties related to this feature. */
-  properties?: SignalRFeaturePropertiesMap;
-}
-export const SignalRFeature = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flag: FeatureFlags,
-    value: S.String,
-    properties: S.optional(SignalRFeaturePropertiesMap),
-  }),
-).annotate({ identifier: "SignalRFeature" }) as any as S.Schema<SignalRFeature>;
-
 /** List of the featureFlags. FeatureFlags that are not included in the parameters for the update operation will not be modified. And the response will only include featureFlags that are explicitly set. When a featureFlag is not explicitly set, its globally default value will be used But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags. */
-export type SignalRPropertiesFeaturesList = SignalRFeature[];
+export type SignalRPropertiesFeaturesList = ReadonlyArray<SignalRFeature>;
 export const SignalRPropertiesFeaturesList = /*@__PURE__*/ S.Array(
   SignalRFeature,
 ) as any as S.Schema<SignalRPropertiesFeaturesList>;
-
-/** Live trace category configuration of a Microsoft.SignalRService resource. */
-export interface LiveTraceCategory {
-  /** Gets or sets the live trace category's name. Available values: ConnectivityLogs, MessagingLogs. Case insensitive. */
-  name?: string;
-  /** Indicates whether or the live trace category is enabled. Available values: true, false. Case insensitive. */
-  enabled?: string;
-}
-export const LiveTraceCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    enabled: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveTraceCategory",
-}) as any as S.Schema<LiveTraceCategory>;
-
-/** Gets or sets the list of category configurations. */
-export type LiveTraceConfigurationCategoriesList = LiveTraceCategory[];
-export const LiveTraceConfigurationCategoriesList = /*@__PURE__*/ S.Array(
-  LiveTraceCategory,
-) as any as S.Schema<LiveTraceConfigurationCategoriesList>;
-
-/** Live trace configuration of a Microsoft.SignalRService resource. */
-export interface LiveTraceConfiguration {
-  /** Indicates whether or not enable live trace. When it's set to true, live trace client can connect to the service. Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories". Available values: true, false. Case insensitive. */
-  enabled?: string;
-  /** Gets or sets the list of category configurations. */
-  categories?: LiveTraceConfigurationCategoriesList;
-}
-export const LiveTraceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.String),
-    categories: S.optional(LiveTraceConfigurationCategoriesList),
-  }),
-).annotate({
-  identifier: "LiveTraceConfiguration",
-}) as any as S.Schema<LiveTraceConfiguration>;
-
-/** Resource log category configuration of a Microsoft.SignalRService resource. */
-export interface ResourceLogCategory {
-  /** Gets or sets the resource log category's name. Available values: ConnectivityLogs, MessagingLogs. Case insensitive. */
-  name?: string;
-  /** Indicates whether or the resource log category is enabled. Available values: true, false. Case insensitive. */
-  enabled?: string;
-}
-export const ResourceLogCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    enabled: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceLogCategory",
-}) as any as S.Schema<ResourceLogCategory>;
-
-/** Gets or sets the list of category configurations. */
-export type ResourceLogConfigurationCategoriesList = ResourceLogCategory[];
-export const ResourceLogConfigurationCategoriesList = /*@__PURE__*/ S.Array(
-  ResourceLogCategory,
-) as any as S.Schema<ResourceLogConfigurationCategoriesList>;
-
-/** Resource log configuration of a Microsoft.SignalRService resource. */
-export interface ResourceLogConfiguration {
-  /** Gets or sets the list of category configurations. */
-  categories?: ResourceLogConfigurationCategoriesList;
-}
-export const ResourceLogConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categories: S.optional(ResourceLogConfigurationCategoriesList),
-  }),
-).annotate({
-  identifier: "ResourceLogConfiguration",
-}) as any as S.Schema<ResourceLogConfiguration>;
-
-/** Gets or sets the list of origins that should be allowed to make cross-origin calls (for example: http://example.com:12345). Use "*" to allow all. If omitted, allow all by default. */
-export type SignalRCorsSettingsAllowedOriginsList = string[];
-export const SignalRCorsSettingsAllowedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SignalRCorsSettingsAllowedOriginsList>;
-
-/** Cross-Origin Resource Sharing (CORS) settings. */
-export interface SignalRCorsSettings {
-  /** Gets or sets the list of origins that should be allowed to make cross-origin calls (for example: http://example.com:12345). Use "*" to allow all. If omitted, allow all by default. */
-  allowedOrigins?: SignalRCorsSettingsAllowedOriginsList;
-}
-export const SignalRCorsSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedOrigins: S.optional(SignalRCorsSettingsAllowedOriginsList),
-  }),
-).annotate({
-  identifier: "SignalRCorsSettings",
-}) as any as S.Schema<SignalRCorsSettings>;
-
-/** Serverless settings. */
-export interface ServerlessSettings {
-  /** Gets or sets Client Connection Timeout. Optional to be set. Value in seconds. Default value is 30 seconds. Customer should set the timeout to a shorter period if messages are expected to be sent in shorter intervals, and want the client to disconnect more quickly after the last message is sent. You can set the timeout to a longer period if messages are expected to be sent in longer intervals, and they want to keep the same client connection alive during this session. The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval. */
-  connectionTimeoutInSeconds?: number;
-}
-export const ServerlessSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectionTimeoutInSeconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ServerlessSettings",
-}) as any as S.Schema<ServerlessSettings>;
-
-/** Upstream auth type enum. */
-export type UpstreamAuthType = "None" | "ManagedIdentity" | (string & {});
-export const UpstreamAuthType = /*@__PURE__*/ S.String;
-
-/** Managed identity settings for upstream. */
-export interface ManagedIdentitySettings {
-  /** The Resource indicating the App ID URI of the target resource. It also appears in the aud (audience) claim of the issued token. */
-  resource?: string;
-}
-export const ManagedIdentitySettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resource: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedIdentitySettings",
-}) as any as S.Schema<ManagedIdentitySettings>;
-
-/** Upstream auth settings. If not set, no auth is used for upstream messages. */
-export interface UpstreamAuthSettings {
-  type?: UpstreamAuthType;
-  managedIdentity?: ManagedIdentitySettings;
-}
-export const UpstreamAuthSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(UpstreamAuthType),
-    managedIdentity: S.optional(ManagedIdentitySettings),
-  }),
-).annotate({
-  identifier: "UpstreamAuthSettings",
-}) as any as S.Schema<UpstreamAuthSettings>;
-
-/** Upstream template item settings. It defines the Upstream URL of the incoming requests. The template defines the pattern of the event, the hub or the category of the incoming request that matches current URL template. */
-export interface UpstreamTemplate {
-  /** Gets or sets the matching pattern for hub names. If not set, it matches any hub. There are 3 kind of patterns supported: 1. "*", it to matches any hub name. 2. Combine multiple hubs with ",", for example "hub1,hub2", it matches "hub1" and "hub2". 3. The single hub name, for example, "hub1", it matches "hub1". */
-  hubPattern?: string;
-  /** Gets or sets the matching pattern for event names. If not set, it matches any event. There are 3 kind of patterns supported: 1. "*", it to matches any event name. 2. Combine multiple events with ",", for example "connect,disconnect", it matches event "connect" and "disconnect". 3. The single event name, for example, "connect", it matches "connect". */
-  eventPattern?: string;
-  /** Gets or sets the matching pattern for category names. If not set, it matches any category. There are 3 kind of patterns supported: 1. "*", it to matches any category name. 2. Combine multiple categories with ",", for example "connections,messages", it matches category "connections" and "messages". 3. The single category name, for example, "connections", it matches the category "connections". */
-  categoryPattern?: string;
-  /** Gets or sets the Upstream URL template. You can use 3 predefined parameters {hub}, {category} {event} inside the template, the value of the Upstream URL is dynamically calculated when the client request comes in. For example, if the urlTemplate is `http://example.com/{hub}/api/{event}`, with a client request from hub `chat` connects, it will first POST to this URL: `http://example.com/chat/api/connect`. */
-  urlTemplate: string;
-  auth?: UpstreamAuthSettings;
-}
-export const UpstreamTemplate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hubPattern: S.optional(S.String),
-    eventPattern: S.optional(S.String),
-    categoryPattern: S.optional(S.String),
-    urlTemplate: S.String,
-    auth: S.optional(UpstreamAuthSettings),
-  }),
-).annotate({
-  identifier: "UpstreamTemplate",
-}) as any as S.Schema<UpstreamTemplate>;
-
-/** Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects. */
-export type ServerlessUpstreamSettingsTemplatesList = UpstreamTemplate[];
-export const ServerlessUpstreamSettingsTemplatesList = /*@__PURE__*/ S.Array(
-  UpstreamTemplate,
-) as any as S.Schema<ServerlessUpstreamSettingsTemplatesList>;
-
-/** The settings for the Upstream when the service is in server-less mode. */
-export interface ServerlessUpstreamSettings {
-  /** Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects. */
-  templates?: ServerlessUpstreamSettingsTemplatesList;
-}
-export const ServerlessUpstreamSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    templates: S.optional(ServerlessUpstreamSettingsTemplatesList),
-  }),
-).annotate({
-  identifier: "ServerlessUpstreamSettings",
-}) as any as S.Schema<ServerlessUpstreamSettings>;
-
-/** Azure Networking ACL Action. */
-export type ACLAction = "Allow" | "Deny" | (string & {});
-export const ACLAction = /*@__PURE__*/ S.String;
-
-/** The incoming request type to the service */
-export type SignalRRequestType =
-  | "ClientConnection"
-  | "ServerConnection"
-  | "RESTAPI"
-  | "Trace"
-  | (string & {});
-export const SignalRRequestType = /*@__PURE__*/ S.String;
-
-/** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type NetworkACLAllowList = SignalRRequestType[];
-export const NetworkACLAllowList = /*@__PURE__*/ S.Array(
-  SignalRRequestType,
-) as any as S.Schema<NetworkACLAllowList>;
-
-/** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type NetworkACLDenyList = SignalRRequestType[];
-export const NetworkACLDenyList = /*@__PURE__*/ S.Array(
-  SignalRRequestType,
-) as any as S.Schema<NetworkACLDenyList>;
-
-/** Network ACL */
-export interface NetworkACL {
-  /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-  allow?: NetworkACLAllowList;
-  /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-  deny?: NetworkACLDenyList;
-}
-export const NetworkACL = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(NetworkACLAllowList),
-    deny: S.optional(NetworkACLDenyList),
-  }),
-).annotate({ identifier: "NetworkACL" }) as any as S.Schema<NetworkACL>;
-
-/** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type PrivateEndpointACLAllowList = SignalRRequestType[];
-export const PrivateEndpointACLAllowList = /*@__PURE__*/ S.Array(
-  SignalRRequestType,
-) as any as S.Schema<PrivateEndpointACLAllowList>;
-
-/** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-export type PrivateEndpointACLDenyList = SignalRRequestType[];
-export const PrivateEndpointACLDenyList = /*@__PURE__*/ S.Array(
-  SignalRRequestType,
-) as any as S.Schema<PrivateEndpointACLDenyList>;
-
-/** ACL for a private endpoint */
-export interface PrivateEndpointACL {
-  /** Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-  allow?: PrivateEndpointACLAllowList;
-  /** Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI. */
-  deny?: PrivateEndpointACLDenyList;
-  /** Name of the private endpoint connection */
-  name: string;
-}
-export const PrivateEndpointACL = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow: S.optional(PrivateEndpointACLAllowList),
-    deny: S.optional(PrivateEndpointACLDenyList),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "PrivateEndpointACL",
-}) as any as S.Schema<PrivateEndpointACL>;
-
-/** ACLs for requests from private endpoints */
-export type SignalRNetworkACLsPrivateEndpointsList = PrivateEndpointACL[];
-export const SignalRNetworkACLsPrivateEndpointsList = /*@__PURE__*/ S.Array(
-  PrivateEndpointACL,
-) as any as S.Schema<SignalRNetworkACLsPrivateEndpointsList>;
-
-/** An IP rule */
-export interface IPRule {
-  /** An IP or CIDR or ServiceTag */
-  value?: string;
-  action?: ACLAction;
-}
-export const IPRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    action: S.optional(ACLAction),
-  }),
-).annotate({ identifier: "IPRule" }) as any as S.Schema<IPRule>;
-
-/** IP rules for filtering public traffic */
-export type SignalRNetworkACLsIpRulesList = IPRule[];
-export const SignalRNetworkACLsIpRulesList = /*@__PURE__*/ S.Array(
-  IPRule,
-) as any as S.Schema<SignalRNetworkACLsIpRulesList>;
-
-/** Network ACLs for the resource */
-export interface SignalRNetworkACLs {
-  defaultAction?: ACLAction;
-  publicNetwork?: NetworkACL;
-  /** ACLs for requests from private endpoints */
-  privateEndpoints?: SignalRNetworkACLsPrivateEndpointsList;
-  /** IP rules for filtering public traffic */
-  ipRules?: SignalRNetworkACLsIpRulesList;
-}
-export const SignalRNetworkACLs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultAction: S.optional(ACLAction),
-    publicNetwork: S.optional(NetworkACL),
-    privateEndpoints: S.optional(SignalRNetworkACLsPrivateEndpointsList),
-    ipRules: S.optional(SignalRNetworkACLsIpRulesList),
-  }),
-).annotate({
-  identifier: "SignalRNetworkACLs",
-}) as any as S.Schema<SignalRNetworkACLs>;
 
 /** A class that describes the properties of the resource */
 export interface SignalRProperties {
@@ -958,18 +1086,6 @@ export const SignalRProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SignalRProperties",
 }) as any as S.Schema<SignalRProperties>;
-
-/** The kind of the service */
-export type ServiceKind = "SignalR" | "RawWebSockets" | (string & {});
-export const ServiceKind = /*@__PURE__*/ S.String;
-
-/** Represents the identity type: systemAssigned, userAssigned, None */
-export type ManagedIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
-export const ManagedIdentityType = /*@__PURE__*/ S.String;
 
 /** Properties of user assigned identity. */
 export interface UserAssignedIdentityProperty {
@@ -1054,6 +1170,25 @@ export const SignalRCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalRCreateOrUpdateResponse",
 }) as any as S.Schema<SignalRCreateOrUpdateResponse>;
 
+/** Custom certificate properties. */
+export interface CustomCertificatePropertiesInput {
+  /** Base uri of the KeyVault that stores certificate. */
+  keyVaultBaseUri: string;
+  /** Certificate secret name. */
+  keyVaultSecretName: string;
+  /** Certificate secret version. */
+  keyVaultSecretVersion?: string;
+}
+export const CustomCertificatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyVaultBaseUri: S.String,
+    keyVaultSecretName: S.String,
+    keyVaultSecretVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomCertificatePropertiesInput",
+}) as any as S.Schema<CustomCertificatePropertiesInput>;
+
 export interface SignalRCustomCertificatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1063,7 +1198,7 @@ export interface SignalRCustomCertificatesCreateOrUpdateRequest {
   resourceName: string;
   /** Custom certificate name */
   certificateName: string;
-  body: unknown;
+  properties: CustomCertificatePropertiesInput;
 }
 export const SignalRCustomCertificatesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1072,7 +1207,7 @@ export const SignalRCustomCertificatesCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
       certificateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: CustomCertificatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1269,7 +1404,7 @@ export const CustomCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomCertificate>;
 
 /** List of custom certificates of this resource. */
-export type CustomCertificateListValueList = CustomCertificate[];
+export type CustomCertificateListValueList = ReadonlyArray<CustomCertificate>;
 export const CustomCertificateListValueList = /*@__PURE__*/ S.Array(
   CustomCertificate,
 ) as any as S.Schema<CustomCertificateListValueList>;
@@ -1290,37 +1425,6 @@ export const CustomCertificateList = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomCertificateList",
 }) as any as S.Schema<CustomCertificateList>;
 
-export interface SignalRCustomDomainsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the resource. */
-  resourceName: string;
-  /** Custom domain name. */
-  name: string;
-  body: unknown;
-}
-export const SignalRCustomDomainsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceName: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
-        code: 200,
-        apiVersion: "2024-03-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SignalRCustomDomainsCreateOrUpdateRequest",
-  }) as any as S.Schema<SignalRCustomDomainsCreateOrUpdateRequest>;
-
 /** Reference to a resource. */
 export interface ResourceReference {
   /** Resource ID. */
@@ -1333,6 +1437,52 @@ export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceReference",
 }) as any as S.Schema<ResourceReference>;
+
+/** Properties of a custom domain. */
+export interface CustomDomainPropertiesInput {
+  /** The custom domain name. */
+  domainName: string;
+  customCertificate: ResourceReference;
+}
+export const CustomDomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainName: S.String,
+    customCertificate: ResourceReference,
+  }),
+).annotate({
+  identifier: "CustomDomainPropertiesInput",
+}) as any as S.Schema<CustomDomainPropertiesInput>;
+
+export interface SignalRCustomDomainsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the resource. */
+  resourceName: string;
+  /** Custom domain name. */
+  name: string;
+  properties: CustomDomainPropertiesInput;
+}
+export const SignalRCustomDomainsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      resourceName: S.String.pipe(T.Label()),
+      name: S.String.pipe(T.Label()),
+      properties: CustomDomainPropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SignalRService/signalR/{resourceName}/customDomains/{name}",
+        code: 200,
+        apiVersion: "2024-03-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "SignalRCustomDomainsCreateOrUpdateRequest",
+  }) as any as S.Schema<SignalRCustomDomainsCreateOrUpdateRequest>;
 
 /** Properties of a custom domain. */
 export interface CustomDomainProperties {
@@ -1509,7 +1659,7 @@ export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomDomain" }) as any as S.Schema<CustomDomain>;
 
 /** List of custom domains that bind to this resource. */
-export type CustomDomainListValueList = CustomDomain[];
+export type CustomDomainListValueList = ReadonlyArray<CustomDomain>;
 export const CustomDomainListValueList = /*@__PURE__*/ S.Array(
   CustomDomain,
 ) as any as S.Schema<CustomDomainListValueList>;
@@ -1695,7 +1845,7 @@ export const SignalRResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalRResource>;
 
 /** List of the resources */
-export type SignalRResourceListValueList = SignalRResource[];
+export type SignalRResourceListValueList = ReadonlyArray<SignalRResource>;
 export const SignalRResourceListValueList = /*@__PURE__*/ S.Array(
   SignalRResource,
 ) as any as S.Schema<SignalRResourceListValueList>;
@@ -1809,13 +1959,13 @@ export const SignalRListReplicaSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalRListReplicaSkusRequest>;
 
 /** Allows capacity value list. */
-export type SkuCapacityAllowedValuesList = number[];
+export type SkuCapacityAllowedValuesList = ReadonlyArray<number>;
 export const SkuCapacityAllowedValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SkuCapacityAllowedValuesList>;
 
 /** The scale type applicable to the sku. */
-export type ScaleType = "None" | "Manual" | "Automatic" | (string & {});
+export type ScaleType = "None" | "Manual" | "Automatic";
 export const ScaleType = /*@__PURE__*/ S.String;
 
 /** Describes scaling information of a sku. */
@@ -1856,7 +2006,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** The list of skus available for the resource. */
-export type SkuListValueList = Sku[];
+export type SkuListValueList = ReadonlyArray<Sku>;
 export const SkuListValueList = /*@__PURE__*/ S.Array(
   Sku,
 ) as any as S.Schema<SkuListValueList>;
@@ -2016,7 +2166,7 @@ export const SignalRPrivateEndpointConnectionsListRequest =
 
 /** The list of the private endpoint connections */
 export type PrivateEndpointConnectionListValueList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<PrivateEndpointConnectionListValueList>;
@@ -2037,6 +2187,23 @@ export const PrivateEndpointConnectionList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateEndpointConnectionList",
 }) as any as S.Schema<PrivateEndpointConnectionList>;
 
+/** Private endpoint connection properties */
+export interface PrivateEndpointConnectionPropertiesInput {
+  privateEndpoint?: PrivateEndpoint;
+  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpoint),
+      privateLinkServiceConnectionState: S.optional(
+        PrivateLinkServiceConnectionState,
+      ),
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface SignalRPrivateEndpointConnectionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2046,7 +2213,7 @@ export interface SignalRPrivateEndpointConnectionsUpdateRequest {
   resourceName: string;
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  properties?: PrivateEndpointConnectionPropertiesInput;
 }
 export const SignalRPrivateEndpointConnectionsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2055,7 +2222,7 @@ export const SignalRPrivateEndpointConnectionsUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2119,14 +2286,16 @@ export const SignalRPrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SignalRPrivateLinkResourcesListRequest>;
 
 /** Required members of the private link resource */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required private DNS zone names */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2169,7 +2338,7 @@ export const ShareablePrivateLinkResourceType = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of resources that are onboarded to private link service */
 export type PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
-  ShareablePrivateLinkResourceType[];
+  ReadonlyArray<ShareablePrivateLinkResourceType>;
 export const PrivateLinkResourcePropertiesShareablePrivateLinkResourceTypesList =
   /*@__PURE__*/ S.Array(
     ShareablePrivateLinkResourceType,
@@ -2228,7 +2397,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** List of PrivateLinkResource */
-export type PrivateLinkResourceListValueList = PrivateLinkResource[];
+export type PrivateLinkResourceListValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListValueList>;
@@ -2249,6 +2419,10 @@ export const PrivateLinkResourceList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResourceList",
 }) as any as S.Schema<PrivateLinkResourceList>;
 
+/** The type of access key. */
+export type KeyType = "Primary" | "Secondary" | "Salt";
+export const KeyType = /*@__PURE__*/ S.String;
+
 export interface SignalRRegenerateKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2256,14 +2430,14 @@ export interface SignalRRegenerateKeyRequest {
   resourceGroupName: string;
   /** The name of the resource. */
   resourceName: string;
-  body: unknown;
+  keyType?: KeyType;
 }
 export const SignalRRegenerateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    keyType: S.optional(KeyType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2276,6 +2450,31 @@ export const SignalRRegenerateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalRRegenerateKeyRequest",
 }) as any as S.Schema<SignalRRegenerateKeyRequest>;
 
+/** Resource tags. */
+export type SignalRReplicasCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SignalRReplicasCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SignalRReplicasCreateOrUpdateRequestTagsMap>;
+
+export interface ReplicaPropertiesInput {
+  /** Enable or disable the regional endpoint. Default to "Enabled". When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected. */
+  regionEndpointEnabled?: string;
+  /** Stop or start the resource. Default to "false". When it's true, the data plane of the resource is shutdown. When it's false, the data plane of the resource is started. */
+  resourceStopped?: string;
+}
+export const ReplicaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    regionEndpointEnabled: S.optional(S.String),
+    resourceStopped: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReplicaPropertiesInput",
+}) as any as S.Schema<ReplicaPropertiesInput>;
+
 export interface SignalRReplicasCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2285,7 +2484,12 @@ export interface SignalRReplicasCreateOrUpdateRequest {
   resourceName: string;
   /** The name of the replica. */
   replicaName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SignalRReplicasCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  sku?: ResourceSkuInput;
+  properties?: ReplicaPropertiesInput;
 }
 export const SignalRReplicasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2294,7 +2498,10 @@ export const SignalRReplicasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
       replicaName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(SignalRReplicasCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      sku: S.optional(ResourceSkuInput),
+      properties: S.optional(ReplicaPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2469,6 +2676,26 @@ export const SignalRReplicasGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalRReplicasGetResponse",
 }) as any as S.Schema<SignalRReplicasGetResponse>;
 
+/** Describes the properties of an existing Shared Private Link Resource */
+export interface SharedPrivateLinkResourcePropertiesInput {
+  /** The group id from the provider of resource the shared private link resource is for */
+  groupId: string;
+  /** The resource id of the resource the shared private link resource is for */
+  privateLinkResourceId: string;
+  /** The request message for requesting approval of the shared private link resource */
+  requestMessage?: string;
+}
+export const SharedPrivateLinkResourcePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      groupId: S.String,
+      privateLinkResourceId: S.String,
+      requestMessage: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "SharedPrivateLinkResourcePropertiesInput",
+}) as any as S.Schema<SharedPrivateLinkResourcePropertiesInput>;
+
 export interface SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2480,7 +2707,7 @@ export interface SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest {
   replicaName: string;
   /** The name of the shared private link resource. */
   sharedPrivateLinkResourceName: string;
-  body: unknown;
+  properties?: SharedPrivateLinkResourcePropertiesInput;
 }
 export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2490,7 +2717,7 @@ export const SignalRReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest =
       resourceName: S.String.pipe(T.Label()),
       replicaName: S.String.pipe(T.Label()),
       sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SharedPrivateLinkResourcePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2615,7 +2842,7 @@ export const SignalRReplicaSharedPrivateLinkResourcesListRequest =
 
 /** The list of the shared private link resources */
 export type SharedPrivateLinkResourceListValueList =
-  SharedPrivateLinkResource[];
+  ReadonlyArray<SharedPrivateLinkResource>;
 export const SharedPrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
   SharedPrivateLinkResource,
 ) as any as S.Schema<SharedPrivateLinkResourceListValueList>;
@@ -2699,7 +2926,7 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
 /** List of the replica */
-export type ReplicaListValueList = Replica[];
+export type ReplicaListValueList = ReadonlyArray<Replica>;
 export const ReplicaListValueList = /*@__PURE__*/ S.Array(
   Replica,
 ) as any as S.Schema<ReplicaListValueList>;
@@ -2752,6 +2979,15 @@ export const SignalRReplicasRestartResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalRReplicasRestartResponse",
 }) as any as S.Schema<SignalRReplicasRestartResponse>;
 
+/** Resource tags. */
+export type SignalRReplicasUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SignalRReplicasUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SignalRReplicasUpdateRequestTagsMap>;
+
 export interface SignalRReplicasUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2761,7 +2997,12 @@ export interface SignalRReplicasUpdateRequest {
   resourceName: string;
   /** The name of the replica. */
   replicaName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SignalRReplicasUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  sku?: ResourceSkuInput;
+  properties?: ReplicaPropertiesInput;
 }
 export const SignalRReplicasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2769,7 +3010,10 @@ export const SignalRReplicasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
     replicaName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SignalRReplicasUpdateRequestTagsMap),
+    location: S.String,
+    sku: S.optional(ResourceSkuInput),
+    properties: S.optional(ReplicaPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2863,7 +3107,7 @@ export interface SignalRSharedPrivateLinkResourcesCreateOrUpdateRequest {
   resourceName: string;
   /** The name of the shared private link resource. */
   sharedPrivateLinkResourceName: string;
-  body: unknown;
+  properties?: SharedPrivateLinkResourcePropertiesInput;
 }
 export const SignalRSharedPrivateLinkResourcesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2872,7 +3116,7 @@ export const SignalRSharedPrivateLinkResourcesCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
       sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SharedPrivateLinkResourcePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3023,6 +3267,13 @@ export const SignalRSharedPrivateLinkResourcesListRequest =
     identifier: "SignalRSharedPrivateLinkResourcesListRequest",
   }) as any as S.Schema<SignalRSharedPrivateLinkResourcesListRequest>;
 
+/** Resource tags. */
+export type SignalRUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const SignalRUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SignalRUpdateRequestTagsMap>;
+
 export interface SignalRUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3030,14 +3281,26 @@ export interface SignalRUpdateRequest {
   resourceGroupName: string;
   /** The name of the resource. */
   resourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SignalRUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  sku?: ResourceSkuInput;
+  properties?: SignalRPropertiesInput;
+  kind?: ServiceKind;
+  identity?: ManagedIdentityInput;
 }
 export const SignalRUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SignalRUpdateRequestTagsMap),
+    location: S.String,
+    sku: S.optional(ResourceSkuInput),
+    properties: S.optional(SignalRPropertiesInput),
+    kind: S.optional(ServiceKind),
+    identity: S.optional(ManagedIdentityInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3155,7 +3418,7 @@ export const SignalRUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignalRUsage" }) as any as S.Schema<SignalRUsage>;
 
 /** List of the resource usages */
-export type SignalRUsageListValueList = SignalRUsage[];
+export type SignalRUsageListValueList = ReadonlyArray<SignalRUsage>;
 export const SignalRUsageListValueList = /*@__PURE__*/ S.Array(
   SignalRUsage,
 ) as any as S.Schema<SignalRUsageListValueList>;

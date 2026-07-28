@@ -474,16 +474,62 @@
             "smithy.api#documentation": "The name of the dashboard."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.portal#DashboardProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The shared dashboard properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.portal#DashboardsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.portal#DashboardsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
+      }
+    },
+    "com.azure.portal#DashboardProperties": {
+      "type": "structure",
+      "members": {
+        "lenses": {
+          "target": "com.azure.portal#DashboardPropertiesLensesList",
+          "traits": {
+            "smithy.api#documentation": "The dashboard lenses."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The dashboard metadata."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The shared dashboard properties."
+      }
+    },
+    "com.azure.portal#DashboardPropertiesLensesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.portal#DashboardLens"
+      },
+      "traits": {
+        "smithy.api#documentation": "The dashboard lenses."
       }
     },
     "com.azure.portal#DashboardsCreateOrUpdate": {
@@ -595,16 +641,69 @@
             "smithy.api#documentation": "The name of the dashboard."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.portal#DashboardsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.portal#DashboardPropertiesWithProvisioningStateInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.portal#DashboardPropertiesWithProvisioningStateInput": {
+      "type": "structure",
+      "members": {
+        "lenses": {
+          "target": "com.azure.portal#DashboardPropertiesWithProvisioningStateInputLensesList",
+          "traits": {
+            "smithy.api#documentation": "The dashboard lenses."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The dashboard metadata."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dashboard Properties with Provisioning state"
+      }
+    },
+    "com.azure.portal#DashboardPropertiesWithProvisioningStateInputLensesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.portal#DashboardLens"
+      },
+      "traits": {
+        "smithy.api#documentation": "The dashboard lenses."
+      }
+    },
+    "com.azure.portal#DashboardsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.portal#DashboardsGet": {
@@ -1173,16 +1272,29 @@
             "smithy.api#documentation": "The name of the Configuration"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.portal#ConfigurationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.portal#ConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "enforcePrivateMarkdownStorage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Tenant Configuration Properties with Provisioning state"
       }
     },
     "com.azure.portal#TenantConfigurationsGet": {

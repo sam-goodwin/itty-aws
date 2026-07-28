@@ -229,11 +229,16 @@
             "smithy.api#documentation": "The subscription identifier"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource name to verify for availability"
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource type which includes provider namespace"
           }
         }
       },
@@ -820,16 +825,35 @@
             "smithy.api#documentation": "Name of the private endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.purview#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The connection identifier."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.purview#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.purview#PrivateEndpoint",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint information."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.purview#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A private endpoint connection properties class."
       }
     },
     "com.azure.purview#PrivateEndpointConnectionsGet": {
@@ -1821,11 +1845,10 @@
             "smithy.api#documentation": "The kafka configuration name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.purview#KafkaConfigurationProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the kafka configuration properties."
           }
         }
       },
@@ -1994,16 +2017,24 @@
             "smithy.api#documentation": "Location of feature."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "features": {
+          "target": "com.azure.purview#FeaturesSubscriptionGetRequestFeaturesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Set of features"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.purview#FeaturesSubscriptionGetRequestFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of features"
       }
     },
     "com.azure.purview#FeaturesAccountGet": {
@@ -2052,16 +2083,24 @@
             "smithy.api#documentation": "The name of the account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "features": {
+          "target": "com.azure.purview#FeaturesAccountGetRequestFeaturesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Set of features"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.purview#FeaturesAccountGetRequestFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of features"
       }
     },
     "com.azure.purview#DefaultAccountsRemove": {
@@ -2218,16 +2257,65 @@
     "com.azure.purview#DefaultAccountsSetRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "accountName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the account that is set as the default."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource group name of the account that is set as the default."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope object ID. For example, sub ID or tenant ID."
+          }
+        },
+        "scopeTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope tenant in which the default account is set."
+          }
+        },
+        "scopeType": {
+          "target": "com.azure.purview#DefaultAccountsSetRequestScopeType",
+          "traits": {
+            "smithy.api#documentation": "The scope where the default account is set."
+          }
+        },
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subscription ID of the account that is set as the default."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.purview#DefaultAccountsSetRequestScopeType": {
+      "type": "enum",
+      "members": {
+        "TENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tenant"
+          }
+        },
+        "SUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Subscription"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The scope where the default account is set."
       }
     },
     "com.azure.purview#DefaultAccountsGet": {
@@ -2344,11 +2432,10 @@
             "smithy.api#documentation": "The name of the account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "objectId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the object identifier of the admin."
           }
         }
       },
@@ -3158,16 +3245,227 @@
             "smithy.api#documentation": "The name of the account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.purview#IdentityInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Identity related info to add/remove userAssignedIdentities."
+          }
+        },
+        "properties": {
+          "target": "com.azure.purview#AccountPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The account properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.purview#AccountsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags on the azure resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.purview#AccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags on the azure resource."
+      }
+    },
+    "com.azure.purview#AccountPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "cloudConnectors": {
+          "target": "com.azure.purview#CloudConnectorsInput",
+          "traits": {
+            "smithy.api#documentation": "Cloud connectors.\r\nExternal cloud identifier used as part of scanning configuration."
+          }
+        },
+        "managedEventHubState": {
+          "target": "com.azure.purview#AccountPropertiesInputManagedEventHubState",
+          "traits": {
+            "smithy.api#documentation": " Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed."
+          }
+        },
+        "managedResourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the managed resource group name"
+          }
+        },
+        "managedResourcesPublicNetworkAccess": {
+          "target": "com.azure.purview#AccountPropertiesInputManagedResourcesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the public network access for managed resources."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.purview#AccountPropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the public network access."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The account properties"
+      }
+    },
+    "com.azure.purview#AccountPropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the public network access."
+      }
+    },
+    "com.azure.purview#AccountPropertiesInputManagedResourcesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the public network access for managed resources."
+      }
+    },
+    "com.azure.purview#AccountPropertiesInputManagedEventHubState": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": " Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed."
+      }
+    },
+    "com.azure.purview#CloudConnectorsInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "External Cloud Service connectors"
+      }
+    },
+    "com.azure.purview#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.purview#IdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "Identity Type"
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.purview#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "User Assigned Identities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Managed Identity of the resource"
+      }
+    },
+    "com.azure.purview#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.purview#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "User Assigned Identities"
+      }
+    },
+    "com.azure.purview#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Uses client ID and Principal ID"
+      }
+    },
+    "com.azure.purview#IdentityInputType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity Type"
       }
     },
     "com.azure.purview#AccountsCreateOrUpdate": {
@@ -3290,16 +3588,45 @@
             "smithy.api#documentation": "The name of the account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.purview#IdentityInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Identity Info on the tracked resource"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.purview#AccountsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags on the azure resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.purview#AccountPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.purview#AccountsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags on the azure resource."
       }
     },
     "com.azure.purview#AccountsGet": {

@@ -640,16 +640,49 @@
             "smithy.api#documentation": "The Azure subscription ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.advisor#PredictionRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Request properties for prediction recommendation."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.advisor#PredictionRequestProperties": {
+      "type": "structure",
+      "members": {
+        "predictionType": {
+          "target": "com.azure.advisor#PredictionRequestPropertiesPredictionType",
+          "traits": {
+            "smithy.api#documentation": "Type of the prediction."
+          }
+        },
+        "extendedProperties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Extended properties are arguments specific for each prediction type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties given for the predictor."
+      }
+    },
+    "com.azure.advisor#PredictionRequestPropertiesPredictionType": {
+      "type": "enum",
+      "members": {
+        "PREDICTIVERIGHTSIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PredictiveRightsizing"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of the prediction."
       }
     },
     "com.azure.advisor#SuppressionsList": {
@@ -929,16 +962,35 @@
             "smithy.api#documentation": "The name of the suppression."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.advisor#SuppressionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the suppression."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.advisor#SuppressionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "suppressionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The GUID of the suppression."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The duration for which the suppression is valid."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the suppression."
       }
     },
     "com.azure.advisor#SuppressionsGet": {
@@ -2128,11 +2180,10 @@
             "smithy.api#documentation": "Advisor configuration name. Value must be 'default'"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.advisor#ConfigDataProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The Advisor configuration data structure."
           }
         }
       },
@@ -2338,11 +2389,10 @@
             "smithy.api#documentation": "Advisor configuration name. Value must be 'default'"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.advisor#ConfigDataProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The Advisor configuration data structure."
           }
         }
       },

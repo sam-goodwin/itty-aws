@@ -37,6 +37,48 @@
           "traits": {
             "smithy.api#enumValue": "basic_challenge"
           }
+        },
+        "COUNTRY_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "country_challenge"
+          }
+        },
+        "IP_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_block"
+          }
+        },
+        "MANAGED_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_challenge"
+          }
+        },
+        "RATELIMIT_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ratelimit_block"
+          }
+        },
+        "UNDER_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "under_attack"
+          }
+        },
+        "WAF_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "waf_block"
+          }
+        },
+        "WAF_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "waf_challenge"
+          }
         }
       }
     },
@@ -163,6 +205,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "basic_challenge"
+          }
+        },
+        "COUNTRY_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "country_challenge"
+          }
+        },
+        "IP_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_block"
+          }
+        },
+        "MANAGED_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_challenge"
+          }
+        },
+        "RATELIMIT_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ratelimit_block"
+          }
+        },
+        "UNDER_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "under_attack"
+          }
+        },
+        "WAF_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "waf_block"
+          }
+        },
+        "WAF_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "waf_challenge"
           }
         }
       }
@@ -517,6 +601,48 @@
           "traits": {
             "smithy.api#enumValue": "basic_challenge"
           }
+        },
+        "COUNTRY_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "country_challenge"
+          }
+        },
+        "IP_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_block"
+          }
+        },
+        "MANAGED_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_challenge"
+          }
+        },
+        "RATELIMIT_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ratelimit_block"
+          }
+        },
+        "UNDER_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "under_attack"
+          }
+        },
+        "WAF_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "waf_block"
+          }
+        },
+        "WAF_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "waf_challenge"
+          }
         }
       }
     },
@@ -674,6 +800,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "basic_challenge"
+          }
+        },
+        "COUNTRY_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "country_challenge"
+          }
+        },
+        "IP_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_block"
+          }
+        },
+        "MANAGED_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_challenge"
+          }
+        },
+        "RATELIMIT_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ratelimit_block"
+          }
+        },
+        "UNDER_ATTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "under_attack"
+          }
+        },
+        "WAF_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "waf_block"
+          }
+        },
+        "WAF_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "waf_challenge"
           }
         }
       }

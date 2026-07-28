@@ -896,6 +896,60 @@
           "traits": {
             "smithy.api#enumValue": "200M"
           }
+        },
+        "_300M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "300M"
+          }
+        },
+        "_400M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "400M"
+          }
+        },
+        "_500M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "500M"
+          }
+        },
+        "_1G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1G"
+          }
+        },
+        "_2G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "2G"
+          }
+        },
+        "_5G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "5G"
+          }
+        },
+        "_10G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "10G"
+          }
+        },
+        "_20G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20G"
+          }
+        },
+        "_50G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "50G"
+          }
         }
       }
     },
@@ -964,63 +1018,9 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.network_interconnects#InterconnectsCreateResponseFacilityAddressList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.network_interconnects#InterconnectsCreateResponseFacility": {
-      "type": "structure",
-      "members": {
-        "address": {
-          "target": "com.cloudflare.network_interconnects#InterconnectsCreateResponseFacilityAddressList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
     "com.cloudflare.network_interconnects#InterconnectsCreateResponse": {
       "type": "structure",
-      "members": {
-        "account": {
-          "target": "smithy.api#String"
-        },
-        "facility": {
-          "target": "com.cloudflare.network_interconnects#InterconnectsCreateResponseFacility"
-        },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "site": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Cloudflare site name."
-          }
-        },
-        "slot_id": {
-          "target": "smithy.api#String"
-        },
-        "speed": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "owner": {
-          "target": "smithy.api#String"
-        },
-        "region": {
-          "target": "smithy.api#String"
-        }
-      },
+      "members": {},
       "traits": {
         "smithy.api#output": {},
         "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
@@ -1107,63 +1107,9 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.network_interconnects#InterconnectsGetResponseFacilityAddressList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.network_interconnects#InterconnectsGetResponseFacility": {
-      "type": "structure",
-      "members": {
-        "address": {
-          "target": "com.cloudflare.network_interconnects#InterconnectsGetResponseFacilityAddressList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
     "com.cloudflare.network_interconnects#InterconnectsGetResponse": {
       "type": "structure",
-      "members": {
-        "account": {
-          "target": "smithy.api#String"
-        },
-        "facility": {
-          "target": "com.cloudflare.network_interconnects#InterconnectsGetResponseFacility"
-        },
-        "name": {
-          "target": "smithy.api#String"
-        },
-        "site": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "A Cloudflare site name."
-          }
-        },
-        "slot_id": {
-          "target": "smithy.api#String"
-        },
-        "speed": {
-          "target": "smithy.api#String"
-        },
-        "type": {
-          "target": "smithy.api#String"
-        },
-        "owner": {
-          "target": "smithy.api#String"
-        },
-        "region": {
-          "target": "smithy.api#String"
-        }
-      },
+      "members": {},
       "traits": {
         "smithy.api#output": {},
         "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
@@ -1229,17 +1175,17 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemFacilityAddressList": {
+    "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemFacility": {
+    "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility": {
       "type": "structure",
       "members": {
         "address": {
-          "target": "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemFacilityAddressList",
+          "target": "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacilityAddressList",
           "traits": {
             "smithy.api#required": {}
           }
@@ -1252,38 +1198,180 @@
         }
       }
     },
-    "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItem": {
+    "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemNscInterconnectPhysicalBody": {
       "type": "structure",
       "members": {
         "account": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "facility": {
-          "target": "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemFacility"
+          "target": "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemNscInterconnectPhysicalBodyFacility",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "site": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A Cloudflare site name."
+            "smithy.api#documentation": "A Cloudflare site name.",
+            "smithy.api#required": {}
           }
         },
         "slot_id": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "speed": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "owner": {
           "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed": {
+      "type": "enum",
+      "members": {
+        "_50M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "50M"
+          }
+        },
+        "_100M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "100M"
+          }
+        },
+        "_200M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "200M"
+          }
+        },
+        "_300M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "300M"
+          }
+        },
+        "_400M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "400M"
+          }
+        },
+        "_500M": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "500M"
+          }
+        },
+        "_1G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1G"
+          }
+        },
+        "_2G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "2G"
+          }
+        },
+        "_5G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "5G"
+          }
+        },
+        "_10G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "10G"
+          }
+        },
+        "_20G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20G"
+          }
+        },
+        "_50G": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "50G"
+          }
+        }
+      }
+    },
+    "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody": {
+      "type": "structure",
+      "members": {
+        "account": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "owner": {
           "target": "smithy.api#String"
         },
-        "region": {
-          "target": "smithy.api#String"
+        "speed": {
+          "target": "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBodySpeed",
+          "traits": {
+            "smithy.api#documentation": "Bandwidth structure as visible through the customer-facing API."
+          }
+        }
+      }
+    },
+    "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItem": {
+      "type": "union",
+      "members": {
+        "NscInterconnectPhysicalBody": {
+          "target": "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemNscInterconnectPhysicalBody"
+        },
+        "NscInterconnectGcpPartnerBody": {
+          "target": "com.cloudflare.network_interconnects#InterconnectsListResponseItemsItemNscInterconnectGcpPartnerBody"
         }
       }
     },
@@ -1393,30 +1481,9 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.network_interconnects#InterconnectsStatusResponseState": {
-      "type": "enum",
-      "members": {
-        "PENDING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Pending"
-          }
-        }
-      }
-    },
     "com.cloudflare.network_interconnects#InterconnectsStatusResponse": {
       "type": "structure",
-      "members": {
-        "state": {
-          "target": "com.cloudflare.network_interconnects#InterconnectsStatusResponseState"
-        },
-        "reason": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Diagnostic information, if available"
-          }
-        }
-      },
+      "members": {},
       "traits": {
         "smithy.api#output": {},
         "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."

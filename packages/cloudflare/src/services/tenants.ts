@@ -69,9 +69,7 @@ export const GetEntitlementRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEntitlementRequest",
 }) as any as S.Schema<GetEntitlementRequest>;
 
-export type EntitlementsGetResponseAllowAddSubdomainType =
-  | "bool"
-  | (string & {});
+export type EntitlementsGetResponseAllowAddSubdomainType = "bool";
 export const EntitlementsGetResponseAllowAddSubdomainType =
   /*@__PURE__*/ S.String;
 
@@ -89,9 +87,7 @@ export const EntitlementsGetResponseAllowAddSubdomain = /*@__PURE__*/ S.suspend(
   identifier: "EntitlementsGetResponseAllowAddSubdomain",
 }) as any as S.Schema<EntitlementsGetResponseAllowAddSubdomain>;
 
-export type EntitlementsGetResponseAllowAutoAcceptInvitesType =
-  | "bool"
-  | (string & {});
+export type EntitlementsGetResponseAllowAutoAcceptInvitesType = "bool";
 export const EntitlementsGetResponseAllowAutoAcceptInvitesType =
   /*@__PURE__*/ S.String;
 
@@ -109,9 +105,7 @@ export const EntitlementsGetResponseAllowAutoAcceptInvites =
     identifier: "EntitlementsGetResponseAllowAutoAcceptInvites",
   }) as any as S.Schema<EntitlementsGetResponseAllowAutoAcceptInvites>;
 
-export type EntitlementsGetResponseCnameSetupAllowedType =
-  | "bool"
-  | (string & {});
+export type EntitlementsGetResponseCnameSetupAllowedType = "bool";
 export const EntitlementsGetResponseCnameSetupAllowedType =
   /*@__PURE__*/ S.String;
 
@@ -130,7 +124,7 @@ export const EntitlementsGetResponseCnameSetupAllowed = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EntitlementsGetResponseCnameSetupAllowed>;
 
 export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
-  "max_count" | (string & {});
+  "max_count";
 export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocationType =
   /*@__PURE__*/ S.String;
 
@@ -150,7 +144,7 @@ export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganization
   }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIMaxCountAllocation>;
 
 export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType =
-  "bool" | (string & {});
+  "bool";
 export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocationType =
   /*@__PURE__*/ S.String;
 
@@ -170,7 +164,7 @@ export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganization
   }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPIBoolAllocation>;
 
 export type EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType =
-  "" | (string & {});
+  "";
 export const EntitlementsGetResponseCustomEntitlementsItemAllocationOrganizationsAPINullAllocationType =
   /*@__PURE__*/ S.String;
 
@@ -229,15 +223,13 @@ export const EntitlementsGetResponseCustomEntitlementsItem =
   }) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsItem>;
 
 export type EntitlementsGetResponseCustomEntitlementsList =
-  EntitlementsGetResponseCustomEntitlementsItem[];
+  ReadonlyArray<EntitlementsGetResponseCustomEntitlementsItem>;
 export const EntitlementsGetResponseCustomEntitlementsList =
   /*@__PURE__*/ S.Array(
     EntitlementsGetResponseCustomEntitlementsItem,
   ) as any as S.Schema<EntitlementsGetResponseCustomEntitlementsList>;
 
-export type EntitlementsGetResponseMhsCertificateCountType =
-  | "max_count"
-  | (string & {});
+export type EntitlementsGetResponseMhsCertificateCountType = "max_count";
 export const EntitlementsGetResponseMhsCertificateCountType =
   /*@__PURE__*/ S.String;
 
@@ -255,9 +247,7 @@ export const EntitlementsGetResponseMhsCertificateCount =
     identifier: "EntitlementsGetResponseMhsCertificateCount",
   }) as any as S.Schema<EntitlementsGetResponseMhsCertificateCount>;
 
-export type EntitlementsGetResponsePartialSetupAllowedType =
-  | "bool"
-  | (string & {});
+export type EntitlementsGetResponsePartialSetupAllowedType = "bool";
 export const EntitlementsGetResponsePartialSetupAllowedType =
   /*@__PURE__*/ S.String;
 
@@ -335,7 +325,7 @@ export const GetResponseTenantContacts = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseTenantContacts",
 }) as any as S.Schema<GetResponseTenantContacts>;
 
-export type GetResponseTenantLabelsList = string[];
+export type GetResponseTenantLabelsList = ReadonlyArray<string>;
 export const GetResponseTenantLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseTenantLabelsList>;
@@ -375,7 +365,8 @@ export const GetResponseTenantMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseTenantMetadata",
 }) as any as S.Schema<GetResponseTenantMetadata>;
 
-export type GetResponseTenantUnitsItemUnitMembershipsList = unknown[];
+export type GetResponseTenantUnitsItemUnitMembershipsList =
+  ReadonlyArray<unknown>;
 export const GetResponseTenantUnitsItemUnitMembershipsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -402,7 +393,8 @@ export const GetResponseTenantUnitsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseTenantUnitsItem",
 }) as any as S.Schema<GetResponseTenantUnitsItem>;
 
-export type GetResponseTenantUnitsList = GetResponseTenantUnitsItem[];
+export type GetResponseTenantUnitsList =
+  ReadonlyArray<GetResponseTenantUnitsItem>;
 export const GetResponseTenantUnitsList = /*@__PURE__*/ S.Array(
   GetResponseTenantUnitsItem,
 ) as any as S.Schema<GetResponseTenantUnitsList>;
@@ -485,10 +477,7 @@ export const AccountsListResultItemSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsListResultItemSettings",
 }) as any as S.Schema<AccountsListResultItemSettings>;
 
-export type AccountsListResultItemType =
-  | "standard"
-  | "enterprise"
-  | (string & {});
+export type AccountsListResultItemType = "standard" | "enterprise";
 export const AccountsListResultItemType = /*@__PURE__*/ S.String;
 
 export interface AccountsListResultItem {
@@ -510,7 +499,7 @@ export const AccountsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsListResultItem",
 }) as any as S.Schema<AccountsListResultItem>;
 
-export type AccountsListResultList = AccountsListResultItem[];
+export type AccountsListResultList = ReadonlyArray<AccountsListResultItem>;
 export const AccountsListResultList = /*@__PURE__*/ S.Array(
   AccountsListResultItem,
 ) as any as S.Schema<AccountsListResultList>;
@@ -549,7 +538,7 @@ export const ListAccountTypesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountTypesRequest",
 }) as any as S.Schema<ListAccountTypesRequest>;
 
-export type AccountTypesListResultList = string[];
+export type AccountTypesListResultList = ReadonlyArray<string>;
 export const AccountTypesListResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountTypesListResultList>;
@@ -603,7 +592,8 @@ export const MembershipsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembershipsListResultItem",
 }) as any as S.Schema<MembershipsListResultItem>;
 
-export type MembershipsListResultList = MembershipsListResultItem[];
+export type MembershipsListResultList =
+  ReadonlyArray<MembershipsListResultItem>;
 export const MembershipsListResultList = /*@__PURE__*/ S.Array(
   MembershipsListResultItem,
 ) as any as S.Schema<MembershipsListResultList>;

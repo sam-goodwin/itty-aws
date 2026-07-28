@@ -263,16 +263,29 @@
             "smithy.api#documentation": "The name of the MetricsContainer"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.monitoringservice#MetricsContainerInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitoringservice#MetricsContainerInput": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of Metrics Query Service that this AMW will use for all metric queries."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a metrics container."
       }
     },
     "com.azure.monitoringservice#MetricsContainersGet": {
@@ -545,10 +558,10 @@
             "smithy.api#documentation": "The name of the IssueResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "visualization": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The background visualization content, in Adaptive Card format",
             "smithy.api#required": {}
           }
         }
@@ -752,11 +765,10 @@
             "smithy.api#documentation": "The name of the IssueResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "filter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The filter to apply on the operation. For example, to filter by relevance, use \"$filter=relevance eq 'Relevant'\". Note: this property is currently a placeholder and is not in use."
           }
         }
       },
@@ -891,11 +903,10 @@
             "smithy.api#documentation": "The name of the IssueResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "filter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The filter to apply on the operation. For example, to filter by relevance, use \"$filter=relevance eq 'Relevant'\". Note: this property is currently a placeholder and is not in use."
           }
         }
       },
@@ -997,10 +1008,10 @@
             "smithy.api#documentation": "The name of the IssueResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "investigationId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The unique identifier of the investigation",
             "smithy.api#required": {}
           }
         }
@@ -1168,16 +1179,47 @@
             "smithy.api#documentation": "The name of the IssueResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.monitoringservice#IssueAddOrUpdateResourcesRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "A list of related resources",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitoringservice#IssueAddOrUpdateResourcesRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitoringservice#RelatedResourceInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of related resources"
+      }
+    },
+    "com.azure.monitoringservice#RelatedResourceInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID",
+            "smithy.api#required": {}
+          }
+        },
+        "relevance": {
+          "target": "com.azure.monitoringservice#Relevance",
+          "traits": {
+            "smithy.api#documentation": "The resource's relevance status",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a resource which is related to the issue"
       }
     },
     "com.azure.monitoringservice#IssueAddOrUpdateAlerts": {
@@ -1258,16 +1300,47 @@
             "smithy.api#documentation": "The name of the IssueResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.monitoringservice#IssueAddOrUpdateAlertsRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "A list of related alerts",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitoringservice#IssueAddOrUpdateAlertsRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitoringservice#RelatedAlertInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of related alerts"
+      }
+    },
+    "com.azure.monitoringservice#RelatedAlertInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The alert ID",
+            "smithy.api#required": {}
+          }
+        },
+        "relevance": {
+          "target": "com.azure.monitoringservice#Relevance",
+          "traits": {
+            "smithy.api#documentation": "The alerts's relevance status",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an alert which is related to the issue"
       }
     },
     "com.azure.monitoringservice#IssueAddInvestigationResult": {
@@ -1324,10 +1397,35 @@
             "smithy.api#documentation": "The name of the IssueResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The identifier of the investigation",
+            "smithy.api#required": {}
+          }
+        },
+        "origin": {
+          "target": "com.azure.monitoringservice#Origin",
+          "traits": {
+            "smithy.api#documentation": "The origin of the investigation"
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The creation time of the investigation (in UTC)"
+          }
+        },
+        "lastModifiedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last update time of the investigation (in UTC)"
+          }
+        },
+        "result": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The result of this investigation",
             "smithy.api#required": {}
           }
         }
@@ -1766,16 +1864,59 @@
             "smithy.api#documentation": "The name of the IssueResource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.monitoringservice#IssuePropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitoringservice#IssuePropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issue title"
+          }
+        },
+        "status": {
+          "target": "com.azure.monitoringservice#Status",
+          "traits": {
+            "smithy.api#documentation": "The issue status"
+          }
+        },
+        "severity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issue severity"
+          }
+        },
+        "impactTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issue impact time (in UTC)"
+          }
+        },
+        "background": {
+          "target": "com.azure.monitoringservice#Background",
+          "traits": {
+            "smithy.api#documentation": "The issue background information"
+          }
+        },
+        "notifications": {
+          "target": "com.azure.monitoringservice#Notifications",
+          "traits": {
+            "smithy.api#documentation": "The issue notification settings"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The issue properties for update"
       }
     },
     "com.azure.monitoringservice#IssueCreate": {
@@ -1877,16 +2018,63 @@
             "smithy.api#documentation": "Related resource or alert that is to be added to the issue (default: empty - the issue will be created without any related resources or alerts)"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.monitoringservice#IssuePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitoringservice#IssuePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issue title",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.azure.monitoringservice#Status",
+          "traits": {
+            "smithy.api#documentation": "The issue status",
+            "smithy.api#required": {}
+          }
+        },
+        "severity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issue severity",
+            "smithy.api#required": {}
+          }
+        },
+        "impactTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The issue impact time (in UTC)",
+            "smithy.api#required": {}
+          }
+        },
+        "background": {
+          "target": "com.azure.monitoringservice#Background",
+          "traits": {
+            "smithy.api#documentation": "The issue background information"
+          }
+        },
+        "notifications": {
+          "target": "com.azure.monitoringservice#Notifications",
+          "traits": {
+            "smithy.api#documentation": "The issue notification settings"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The issue properties"
       }
     },
     "com.azure.monitoringservice#IssueGet": {
@@ -2696,16 +2884,112 @@
             "smithy.api#documentation": "The name of the Azure Monitor Workspace. The name is case insensitive"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.monitoringservice#AzureMonitorWorkspacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.monitoringservice#AzureMonitorWorkspacesUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.monitoringservice#AzureMonitorWorkspaceInput",
+          "traits": {
+            "smithy.api#documentation": "Resource properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitoringservice#AzureMonitorWorkspaceInput": {
+      "type": "structure",
+      "members": {
+        "metrics": {
+          "target": "com.azure.monitoringservice#AzureMonitorWorkspaceMetricsInput",
+          "traits": {
+            "smithy.api#documentation": "Properties related to the metrics container in the Azure Monitor Workspace"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.monitoringservice#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets allow or disallow public network access to Azure Monitor Workspace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an Azure Monitor Workspace"
+      }
+    },
+    "com.azure.monitoringservice#AzureMonitorWorkspaceMetricsInput": {
+      "type": "structure",
+      "members": {
+        "enableAccessUsingResourcePermissions": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag that indicates whether to enable access using resource permissions."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties related to the metrics container in the Azure Monitor Workspace"
+      }
+    },
+    "com.azure.monitoringservice#AzureMonitorWorkspacesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.monitoringservice#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.monitoringservice#AzureMonitorWorkspacesUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.monitoringservice#AzureMonitorWorkspacesUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.monitoringservice#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.monitoringservice#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.monitoringservice#AzureMonitorWorkspacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.monitoringservice#AzureMonitorWorkspacesCreateOrUpdate": {
@@ -2873,16 +3157,78 @@
             "smithy.api#documentation": "The name of the Azure Monitor Workspace. The name is case insensitive"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.monitoringservice#AzureMonitorWorkspacesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.monitoringservice#AzureMonitorWorkspaceInput",
+          "traits": {
+            "smithy.api#documentation": "Resource properties"
+          }
+        },
+        "identity": {
+          "target": "com.azure.monitoringservice#AzureMonitorWorkspacesCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitoringservice#AzureMonitorWorkspacesCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.monitoringservice#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.monitoringservice#AzureMonitorWorkspacesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.monitoringservice#AzureMonitorWorkspacesCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.monitoringservice#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.monitoringservice#AzureMonitorWorkspacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.monitoringservice#AzureMonitorWorkspacesGet": {
@@ -4713,16 +5059,162 @@
             "smithy.api#documentation": "The name of pipeline group. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.monitoringservice#PipelineGroupsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.monitoringservice#PipelineGroupPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "replicas": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Defines the amount of replicas of the pipeline group instance."
+          }
+        },
+        "receivers": {
+          "target": "com.azure.monitoringservice#PipelineGroupPropertiesUpdateReceiversList",
+          "traits": {
+            "smithy.api#documentation": "The receivers specified for a pipeline group instance."
+          }
+        },
+        "processors": {
+          "target": "com.azure.monitoringservice#PipelineGroupPropertiesUpdateProcessorsList",
+          "traits": {
+            "smithy.api#documentation": "The processors specified for a pipeline group instance."
+          }
+        },
+        "exporters": {
+          "target": "com.azure.monitoringservice#PipelineGroupPropertiesUpdateExportersList",
+          "traits": {
+            "smithy.api#documentation": "The exporters specified for a pipeline group instance."
+          }
+        },
+        "service": {
+          "target": "com.azure.monitoringservice#ServiceUpdate",
+          "traits": {
+            "smithy.api#documentation": "The service section for a given pipeline group instance."
+          }
+        },
+        "executionPlacement": {
+          "target": "com.azure.monitoringservice#ExecutionPlacement",
+          "traits": {
+            "smithy.api#documentation": "Constraints for guiding the execution environment of the pipeline group."
+          }
+        },
+        "tlsConfigurations": {
+          "target": "com.azure.monitoringservice#PipelineGroupPropertiesUpdateTlsConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "TLS configurations for the pipeline group instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties that need to be specified to create a new pipeline group instance."
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupPropertiesUpdateTlsConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitoringservice#TlsConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "TLS configurations for the pipeline group instance."
+      }
+    },
+    "com.azure.monitoringservice#ServiceUpdate": {
+      "type": "structure",
+      "members": {
+        "pipelines": {
+          "target": "com.azure.monitoringservice#ServiceUpdatePipelinesList",
+          "traits": {
+            "smithy.api#documentation": "Pipelines belonging to a given pipeline group."
+          }
+        },
+        "persistence": {
+          "target": "com.azure.monitoringservice#PersistenceConfigurationsUpdate",
+          "traits": {
+            "smithy.api#documentation": "Persistence options to all pipelines in the instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Service Info."
+      }
+    },
+    "com.azure.monitoringservice#PersistenceConfigurationsUpdate": {
+      "type": "structure",
+      "members": {
+        "persistentVolumeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the mounted persistent volume."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Persistence options to all pipelines in the instance."
+      }
+    },
+    "com.azure.monitoringservice#ServiceUpdatePipelinesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitoringservice#Pipeline"
+      },
+      "traits": {
+        "smithy.api#documentation": "Pipelines belonging to a given pipeline group."
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupPropertiesUpdateExportersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitoringservice#Exporter"
+      },
+      "traits": {
+        "smithy.api#documentation": "The exporters specified for a pipeline group instance."
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupPropertiesUpdateProcessorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitoringservice#Processor"
+      },
+      "traits": {
+        "smithy.api#documentation": "The processors specified for a pipeline group instance."
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupPropertiesUpdateReceiversList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitoringservice#Receiver"
+      },
+      "traits": {
+        "smithy.api#documentation": "The receivers specified for a pipeline group instance."
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.monitoringservice#PipelineGroupsCreateOrUpdate": {
@@ -4837,16 +5329,133 @@
             "smithy.api#documentation": "The name of pipeline group. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.monitoringservice#PipelineGroupsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "properties": {
+          "target": "com.azure.monitoringservice#PipelineGroupPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.monitoringservice#AzureResourceManagerCommonTypesExtendedLocation"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "replicas": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Defines the amount of replicas of the pipeline group instance."
+          }
+        },
+        "receivers": {
+          "target": "com.azure.monitoringservice#PipelineGroupPropertiesInputReceiversList",
+          "traits": {
+            "smithy.api#documentation": "The receivers specified for a pipeline group instance.",
+            "smithy.api#required": {}
+          }
+        },
+        "processors": {
+          "target": "com.azure.monitoringservice#PipelineGroupPropertiesInputProcessorsList",
+          "traits": {
+            "smithy.api#documentation": "The processors specified for a pipeline group instance.",
+            "smithy.api#required": {}
+          }
+        },
+        "exporters": {
+          "target": "com.azure.monitoringservice#PipelineGroupPropertiesInputExportersList",
+          "traits": {
+            "smithy.api#documentation": "The exporters specified for a pipeline group instance.",
+            "smithy.api#required": {}
+          }
+        },
+        "service": {
+          "target": "com.azure.monitoringservice#Service",
+          "traits": {
+            "smithy.api#documentation": "The service section for a given pipeline group instance.",
+            "smithy.api#required": {}
+          }
+        },
+        "executionPlacement": {
+          "target": "com.azure.monitoringservice#ExecutionPlacement",
+          "traits": {
+            "smithy.api#documentation": "Constraints for guiding the execution environment of the pipeline group."
+          }
+        },
+        "tlsConfigurations": {
+          "target": "com.azure.monitoringservice#PipelineGroupPropertiesInputTlsConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "TLS configurations for the pipeline group instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties that need to be specified to create a new pipeline group instance."
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupPropertiesInputTlsConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitoringservice#TlsConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "TLS configurations for the pipeline group instance."
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupPropertiesInputExportersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitoringservice#Exporter"
+      },
+      "traits": {
+        "smithy.api#documentation": "The exporters specified for a pipeline group instance."
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupPropertiesInputProcessorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitoringservice#Processor"
+      },
+      "traits": {
+        "smithy.api#documentation": "The processors specified for a pipeline group instance."
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupPropertiesInputReceiversList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.monitoringservice#Receiver"
+      },
+      "traits": {
+        "smithy.api#documentation": "The receivers specified for a pipeline group instance."
+      }
+    },
+    "com.azure.monitoringservice#PipelineGroupsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.monitoringservice#PipelineGroupsGet": {

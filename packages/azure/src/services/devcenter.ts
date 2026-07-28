@@ -13,6 +13,50 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Health check status values */
+export type AttachedNetworkConnectionPropertiesInputHealthCheckStatus =
+  | "Unknown"
+  | "Pending"
+  | "Running"
+  | "Passed"
+  | "Warning"
+  | "Failed"
+  | "Informational";
+export const AttachedNetworkConnectionPropertiesInputHealthCheckStatus =
+  /*@__PURE__*/ S.String;
+
+/** Active Directory join type */
+export type AttachedNetworkConnectionPropertiesInputDomainJoinType =
+  | "HybridAzureADJoin"
+  | "AzureADJoin"
+  | "None";
+export const AttachedNetworkConnectionPropertiesInputDomainJoinType =
+  /*@__PURE__*/ S.String;
+
+/** Properties of an attached NetworkConnection. */
+export interface AttachedNetworkConnectionPropertiesInput {
+  /** The resource ID of the NetworkConnection you want to attach. */
+  networkConnectionId: string;
+  /** Health check status values */
+  healthCheckStatus?: AttachedNetworkConnectionPropertiesInputHealthCheckStatus;
+  /** Active Directory join type */
+  domainJoinType?: AttachedNetworkConnectionPropertiesInputDomainJoinType;
+}
+export const AttachedNetworkConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      networkConnectionId: S.String,
+      healthCheckStatus: S.optional(
+        AttachedNetworkConnectionPropertiesInputHealthCheckStatus,
+      ),
+      domainJoinType: S.optional(
+        AttachedNetworkConnectionPropertiesInputDomainJoinType,
+      ),
+    }),
+).annotate({
+  identifier: "AttachedNetworkConnectionPropertiesInput",
+}) as any as S.Schema<AttachedNetworkConnectionPropertiesInput>;
+
 export interface AttachedNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -22,7 +66,8 @@ export interface AttachedNetworksCreateOrUpdateRequest {
   devCenterName: string;
   /** The name of the attached NetworkConnection. */
   attachedNetworkConnectionName: string;
-  body: unknown;
+  /** Attached NetworkConnection properties. */
+  properties?: AttachedNetworkConnectionPropertiesInput;
 }
 export const AttachedNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -31,7 +76,7 @@ export const AttachedNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       devCenterName: S.String.pipe(T.Label()),
       attachedNetworkConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AttachedNetworkConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -49,8 +94,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -58,8 +102,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -105,8 +148,7 @@ export type AttachedNetworkConnectionPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const AttachedNetworkConnectionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -118,8 +160,7 @@ export type AttachedNetworkConnectionPropertiesHealthCheckStatus =
   | "Passed"
   | "Warning"
   | "Failed"
-  | "Informational"
-  | (string & {});
+  | "Informational";
 export const AttachedNetworkConnectionPropertiesHealthCheckStatus =
   /*@__PURE__*/ S.String;
 
@@ -127,8 +168,7 @@ export const AttachedNetworkConnectionPropertiesHealthCheckStatus =
 export type AttachedNetworkConnectionPropertiesDomainJoinType =
   | "HybridAzureADJoin"
   | "AzureADJoin"
-  | "None"
-  | (string & {});
+  | "None";
 export const AttachedNetworkConnectionPropertiesDomainJoinType =
   /*@__PURE__*/ S.String;
 
@@ -385,7 +425,8 @@ export const AttachedNetworkConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttachedNetworkConnection>;
 
 /** Current page of results. */
-export type AttachedNetworkListResultValueList = AttachedNetworkConnection[];
+export type AttachedNetworkListResultValueList =
+  ReadonlyArray<AttachedNetworkConnection>;
 export const AttachedNetworkListResultValueList = /*@__PURE__*/ S.Array(
   AttachedNetworkConnection,
 ) as any as S.Schema<AttachedNetworkListResultValueList>;
@@ -470,36 +511,6 @@ export const CatalogsConnectResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CatalogsConnectResponse",
 }) as any as S.Schema<CatalogsConnectResponse>;
 
-export interface CatalogsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the devcenter. */
-  devCenterName: string;
-  /** The name of the Catalog. */
-  catalogName: string;
-  body: unknown;
-}
-export const CatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    devCenterName: S.String.pipe(T.Label()),
-    catalogName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
-      code: 200,
-      apiVersion: "2025-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "CatalogsCreateOrUpdateRequest",
-}) as any as S.Schema<CatalogsCreateOrUpdateRequest>;
-
 /** Properties for a Git repository catalog. */
 export interface GitCatalog {
   /** Git URI. */
@@ -521,7 +532,73 @@ export const GitCatalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitCatalog" }) as any as S.Schema<GitCatalog>;
 
 /** Indicates the type of sync that is configured for the catalog. */
-export type CatalogPropertiesSyncType = "Manual" | "Scheduled" | (string & {});
+export type CatalogPropertiesInputSyncType = "Manual" | "Scheduled";
+export const CatalogPropertiesInputSyncType = /*@__PURE__*/ S.String;
+
+/** Resource tags. */
+export type CatalogPropertiesInputTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CatalogPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CatalogPropertiesInputTagsMap>;
+
+/** Properties of a catalog. */
+export interface CatalogPropertiesInput {
+  /** Properties for a GitHub catalog type. */
+  gitHub?: GitCatalog;
+  /** Properties for an Azure DevOps catalog type. */
+  adoGit?: GitCatalog;
+  /** Indicates the type of sync that is configured for the catalog. */
+  syncType?: CatalogPropertiesInputSyncType;
+  /** Resource tags. */
+  tags?: CatalogPropertiesInputTagsMap;
+}
+export const CatalogPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gitHub: S.optional(GitCatalog),
+    adoGit: S.optional(GitCatalog),
+    syncType: S.optional(CatalogPropertiesInputSyncType),
+    tags: S.optional(CatalogPropertiesInputTagsMap),
+  }),
+).annotate({
+  identifier: "CatalogPropertiesInput",
+}) as any as S.Schema<CatalogPropertiesInput>;
+
+export interface CatalogsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the devcenter. */
+  devCenterName: string;
+  /** The name of the Catalog. */
+  catalogName: string;
+  /** Catalog properties. */
+  properties?: CatalogPropertiesInput;
+}
+export const CatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    devCenterName: S.String.pipe(T.Label()),
+    catalogName: S.String.pipe(T.Label()),
+    properties: S.optional(CatalogPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/catalogs/{catalogName}",
+      code: 200,
+      apiVersion: "2025-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "CatalogsCreateOrUpdateRequest",
+}) as any as S.Schema<CatalogsCreateOrUpdateRequest>;
+
+/** Indicates the type of sync that is configured for the catalog. */
+export type CatalogPropertiesSyncType = "Manual" | "Scheduled";
 export const CatalogPropertiesSyncType = /*@__PURE__*/ S.String;
 
 /** Resource tags. */
@@ -548,8 +625,7 @@ export type CatalogPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const CatalogPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The synchronization state of the catalog. */
@@ -557,19 +633,16 @@ export type CatalogPropertiesSyncState =
   | "Succeeded"
   | "InProgress"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const CatalogPropertiesSyncState = /*@__PURE__*/ S.String;
 
 /** Indicates catalog item types. */
-export type CatalogItemType =
-  | "EnvironmentDefinition"
-  | "ImageDefinition"
-  | (string & {});
+export type CatalogItemType = "EnvironmentDefinition" | "ImageDefinition";
 export const CatalogItemType = /*@__PURE__*/ S.String;
 
 /** Indicates catalog item types that were synced. */
-export type SyncStatsSyncedCatalogItemTypesList = CatalogItemType[];
+export type SyncStatsSyncedCatalogItemTypesList =
+  ReadonlyArray<CatalogItemType>;
 export const SyncStatsSyncedCatalogItemTypesList = /*@__PURE__*/ S.Array(
   CatalogItemType,
 ) as any as S.Schema<SyncStatsSyncedCatalogItemTypesList>;
@@ -604,10 +677,7 @@ export const SyncStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncStats" }) as any as S.Schema<SyncStats>;
 
 /** The connection state of the catalog. */
-export type CatalogPropertiesConnectionState =
-  | "Connected"
-  | "Disconnected"
-  | (string & {});
+export type CatalogPropertiesConnectionState = "Connected" | "Disconnected";
 export const CatalogPropertiesConnectionState = /*@__PURE__*/ S.String;
 
 /** Properties of a catalog. */
@@ -822,7 +892,7 @@ export const CatalogConflictError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CatalogConflictError>;
 
 /** Catalog items that have conflicting names. */
-export type SyncErrorDetailsConflictsList = CatalogConflictError[];
+export type SyncErrorDetailsConflictsList = ReadonlyArray<CatalogConflictError>;
 export const SyncErrorDetailsConflictsList = /*@__PURE__*/ S.Array(
   CatalogConflictError,
 ) as any as S.Schema<SyncErrorDetailsConflictsList>;
@@ -845,7 +915,7 @@ export const CatalogSyncErrorErrorDetailsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors associated with the file. */
 export type CatalogSyncErrorErrorDetailsList =
-  CatalogSyncErrorErrorDetailsItem[];
+  ReadonlyArray<CatalogSyncErrorErrorDetailsItem>;
 export const CatalogSyncErrorErrorDetailsList = /*@__PURE__*/ S.Array(
   CatalogSyncErrorErrorDetailsItem,
 ) as any as S.Schema<CatalogSyncErrorErrorDetailsList>;
@@ -867,7 +937,7 @@ export const CatalogSyncError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CatalogSyncError>;
 
 /** Errors that occured during synchronization. */
-export type SyncErrorDetailsErrorsList = CatalogSyncError[];
+export type SyncErrorDetailsErrorsList = ReadonlyArray<CatalogSyncError>;
 export const SyncErrorDetailsErrorsList = /*@__PURE__*/ S.Array(
   CatalogSyncError,
 ) as any as S.Schema<SyncErrorDetailsErrorsList>;
@@ -943,7 +1013,7 @@ export const Catalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Catalog" }) as any as S.Schema<Catalog>;
 
 /** Current page of results. */
-export type CatalogListResultValueList = Catalog[];
+export type CatalogListResultValueList = ReadonlyArray<Catalog>;
 export const CatalogListResultValueList = /*@__PURE__*/ S.Array(
   Catalog,
 ) as any as S.Schema<CatalogListResultValueList>;
@@ -999,6 +1069,41 @@ export const CatalogsSyncResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CatalogsSyncResponse",
 }) as any as S.Schema<CatalogsSyncResponse>;
 
+/** Indicates the type of sync that is configured for the catalog. */
+export type CatalogUpdatePropertiesSyncType = "Manual" | "Scheduled";
+export const CatalogUpdatePropertiesSyncType = /*@__PURE__*/ S.String;
+
+/** Resource tags. */
+export type CatalogUpdatePropertiesTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CatalogUpdatePropertiesTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CatalogUpdatePropertiesTagsMap>;
+
+/** Properties of a catalog. These properties can be updated after the resource has been created. */
+export interface CatalogUpdateProperties {
+  /** Properties for a GitHub catalog type. */
+  gitHub?: GitCatalog;
+  /** Properties for an Azure DevOps catalog type. */
+  adoGit?: GitCatalog;
+  /** Indicates the type of sync that is configured for the catalog. */
+  syncType?: CatalogUpdatePropertiesSyncType;
+  /** Resource tags. */
+  tags?: CatalogUpdatePropertiesTagsMap;
+}
+export const CatalogUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gitHub: S.optional(GitCatalog),
+    adoGit: S.optional(GitCatalog),
+    syncType: S.optional(CatalogUpdatePropertiesSyncType),
+    tags: S.optional(CatalogUpdatePropertiesTagsMap),
+  }),
+).annotate({
+  identifier: "CatalogUpdateProperties",
+}) as any as S.Schema<CatalogUpdateProperties>;
+
 export interface CatalogsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1008,7 +1113,8 @@ export interface CatalogsUpdateRequest {
   devCenterName: string;
   /** The name of the Catalog. */
   catalogName: string;
-  body: unknown;
+  /** Catalog properties for update. */
+  properties?: CatalogUpdateProperties;
 }
 export const CatalogsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1016,7 +1122,7 @@ export const CatalogsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     devCenterName: S.String.pipe(T.Label()),
     catalogName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(CatalogUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1056,12 +1162,16 @@ export const CatalogsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CheckNameAvailabilityExecuteRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body: unknown;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
 }
 export const CheckNameAvailabilityExecuteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1077,8 +1187,7 @@ export const CheckNameAvailabilityExecuteRequest = /*@__PURE__*/ S.suspend(() =>
 /** The reason why the given name is not available. */
 export type CheckNameAvailabilityExecuteResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const CheckNameAvailabilityExecuteResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -1104,13 +1213,20 @@ export const CheckNameAvailabilityExecuteResponse = /*@__PURE__*/ S.suspend(
 export interface CheckScopedNameAvailabilityExecuteRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body: unknown;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
+  /** The resource id to scope the name check. */
+  scope?: string;
 }
 export const CheckScopedNameAvailabilityExecuteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      scope: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1126,8 +1242,7 @@ export const CheckScopedNameAvailabilityExecuteRequest =
 /** The reason why the given name is not available. */
 export type CheckScopedNameAvailabilityExecuteResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const CheckScopedNameAvailabilityExecuteResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -1182,11 +1297,7 @@ export const CustomizationTasksGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizationTasksGetRequest>;
 
 /** Type of the input. */
-export type CustomizationTaskInputType =
-  | "string"
-  | "number"
-  | "boolean"
-  | (string & {});
+export type CustomizationTaskInputType = "string" | "number" | "boolean";
 export const CustomizationTaskInputType = /*@__PURE__*/ S.String;
 
 /** Input for a Task. */
@@ -1222,8 +1333,7 @@ export type CustomizationTaskPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const CustomizationTaskPropertiesValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -1320,7 +1430,7 @@ export const CatalogErrorDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors associated with resources synchronized from the catalog. */
 export type CustomizationTasksGetErrorDetailsResponseErrorsList =
-  CatalogErrorDetails[];
+  ReadonlyArray<CatalogErrorDetails>;
 export const CustomizationTasksGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
     CatalogErrorDetails,
@@ -1397,7 +1507,8 @@ export const CustomizationTask = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomizationTask>;
 
 /** Current page of results. */
-export type CustomizationTaskListResultValueList = CustomizationTask[];
+export type CustomizationTaskListResultValueList =
+  ReadonlyArray<CustomizationTask>;
 export const CustomizationTaskListResultValueList = /*@__PURE__*/ S.Array(
   CustomizationTask,
 ) as any as S.Schema<CustomizationTaskListResultValueList>;
@@ -1418,6 +1529,154 @@ export const CustomizationTaskListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomizationTaskListResult",
 }) as any as S.Schema<CustomizationTaskListResult>;
 
+/** Resource tags. */
+export type DevBoxDefinitionsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DevBoxDefinitionsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DevBoxDefinitionsCreateOrUpdateRequestTagsMap>;
+
+/** Image reference information */
+export interface DevBoxDefinitionPropertiesInputImageReference {
+  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
+  id?: string;
+}
+export const DevBoxDefinitionPropertiesInputImageReference =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevBoxDefinitionPropertiesInputImageReference",
+  }) as any as S.Schema<DevBoxDefinitionPropertiesInputImageReference>;
+
+/** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+export const SkuTier = /*@__PURE__*/ S.String;
+
+/** The resource model definition representing SKU */
+export interface DevBoxDefinitionPropertiesInputSku {
+  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
+  name: string;
+  tier?: SkuTier;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+}
+export const DevBoxDefinitionPropertiesInputSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: S.optional(SkuTier),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DevBoxDefinitionPropertiesInputSku",
+}) as any as S.Schema<DevBoxDefinitionPropertiesInputSku>;
+
+/** Indicates whether hibernate is enabled/disabled. */
+export type HibernateSupport = "Disabled" | "Enabled";
+export const HibernateSupport = /*@__PURE__*/ S.String;
+
+/** Image validation status */
+export type DevBoxDefinitionPropertiesInputImageValidationStatus =
+  | "Unknown"
+  | "Pending"
+  | "Succeeded"
+  | "Failed"
+  | "TimedOut";
+export const DevBoxDefinitionPropertiesInputImageValidationStatus =
+  /*@__PURE__*/ S.String;
+
+/** Image validation error details */
+export interface DevBoxDefinitionPropertiesInputImageValidationErrorDetails {
+  /** An identifier for the error. */
+  code?: string;
+  /** A message describing the error. */
+  message?: string;
+}
+export const DevBoxDefinitionPropertiesInputImageValidationErrorDetails =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.optional(S.String),
+      message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevBoxDefinitionPropertiesInputImageValidationErrorDetails",
+  }) as any as S.Schema<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
+
+/** Catalog resource validation status */
+export type DevBoxDefinitionPropertiesInputValidationStatus =
+  | "Unknown"
+  | "Pending"
+  | "Succeeded"
+  | "Failed";
+export const DevBoxDefinitionPropertiesInputValidationStatus =
+  /*@__PURE__*/ S.String;
+
+/** Image reference information */
+export interface DevBoxDefinitionPropertiesInputActiveImageReference {
+  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
+  id?: string;
+}
+export const DevBoxDefinitionPropertiesInputActiveImageReference =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevBoxDefinitionPropertiesInputActiveImageReference",
+  }) as any as S.Schema<DevBoxDefinitionPropertiesInputActiveImageReference>;
+
+/** Properties of a Dev Box definition. */
+export interface DevBoxDefinitionPropertiesInput {
+  /** Image reference information */
+  imageReference: DevBoxDefinitionPropertiesInputImageReference;
+  /** The resource model definition representing SKU */
+  sku: DevBoxDefinitionPropertiesInputSku;
+  /** The storage type used for the Operating System disk of Dev Boxes created using this definition. */
+  osStorageType?: string;
+  /** Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate */
+  hibernateSupport?: HibernateSupport;
+  /** Image validation status */
+  imageValidationStatus?: DevBoxDefinitionPropertiesInputImageValidationStatus;
+  /** Image validation error details */
+  imageValidationErrorDetails?: DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
+  /** Catalog resource validation status */
+  validationStatus?: DevBoxDefinitionPropertiesInputValidationStatus;
+  /** Image reference information */
+  activeImageReference?: DevBoxDefinitionPropertiesInputActiveImageReference;
+}
+export const DevBoxDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageReference: DevBoxDefinitionPropertiesInputImageReference,
+    sku: DevBoxDefinitionPropertiesInputSku,
+    osStorageType: S.optional(S.String),
+    hibernateSupport: S.optional(HibernateSupport),
+    imageValidationStatus: S.optional(
+      DevBoxDefinitionPropertiesInputImageValidationStatus,
+    ),
+    imageValidationErrorDetails: S.optional(
+      DevBoxDefinitionPropertiesInputImageValidationErrorDetails,
+    ),
+    validationStatus: S.optional(
+      DevBoxDefinitionPropertiesInputValidationStatus,
+    ),
+    activeImageReference: S.optional(
+      DevBoxDefinitionPropertiesInputActiveImageReference,
+    ),
+  }),
+).annotate({
+  identifier: "DevBoxDefinitionPropertiesInput",
+}) as any as S.Schema<DevBoxDefinitionPropertiesInput>;
+
 export interface DevBoxDefinitionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1427,7 +1686,12 @@ export interface DevBoxDefinitionsCreateOrUpdateRequest {
   devCenterName: string;
   /** The name of the Dev Box definition. */
   devBoxDefinitionName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DevBoxDefinitionsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Dev Box definition properties */
+  properties?: DevBoxDefinitionPropertiesInput;
 }
 export const DevBoxDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1436,7 +1700,9 @@ export const DevBoxDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       devCenterName: S.String.pipe(T.Label()),
       devBoxDefinitionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(DevBoxDefinitionsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(DevBoxDefinitionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1476,10 +1742,6 @@ export const DevBoxDefinitionPropertiesImageReference = /*@__PURE__*/ S.suspend(
   identifier: "DevBoxDefinitionPropertiesImageReference",
 }) as any as S.Schema<DevBoxDefinitionPropertiesImageReference>;
 
-/** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
-export const SkuTier = /*@__PURE__*/ S.String;
-
 /** The resource model definition representing SKU */
 export interface DevBoxDefinitionPropertiesSku {
   /** The name of the SKU. E.g. P3. It is typically a letter+number code */
@@ -1504,10 +1766,6 @@ export const DevBoxDefinitionPropertiesSku = /*@__PURE__*/ S.suspend(() =>
   identifier: "DevBoxDefinitionPropertiesSku",
 }) as any as S.Schema<DevBoxDefinitionPropertiesSku>;
 
-/** Indicates whether hibernate is enabled/disabled. */
-export type HibernateSupport = "Disabled" | "Enabled" | (string & {});
-export const HibernateSupport = /*@__PURE__*/ S.String;
-
 /** Provisioning state of the resource. */
 export type DevBoxDefinitionPropertiesProvisioningState =
   | "NotSpecified"
@@ -1525,8 +1783,7 @@ export type DevBoxDefinitionPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const DevBoxDefinitionPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1536,8 +1793,7 @@ export type DevBoxDefinitionPropertiesImageValidationStatus =
   | "Pending"
   | "Succeeded"
   | "Failed"
-  | "TimedOut"
-  | (string & {});
+  | "TimedOut";
 export const DevBoxDefinitionPropertiesImageValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -1563,8 +1819,7 @@ export type DevBoxDefinitionPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const DevBoxDefinitionPropertiesValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -1899,7 +2154,8 @@ export const DevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevBoxDefinition>;
 
 /** Current page of results. */
-export type DevBoxDefinitionListResultValueList = DevBoxDefinition[];
+export type DevBoxDefinitionListResultValueList =
+  ReadonlyArray<DevBoxDefinition>;
 export const DevBoxDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   DevBoxDefinition,
 ) as any as S.Schema<DevBoxDefinitionListResultValueList>;
@@ -1949,6 +2205,77 @@ export const DevBoxDefinitionsListByProjectRequest = /*@__PURE__*/ S.suspend(
   identifier: "DevBoxDefinitionsListByProjectRequest",
 }) as any as S.Schema<DevBoxDefinitionsListByProjectRequest>;
 
+/** Resource tags. */
+export type Tags = { [key: string]: string | undefined };
+export const Tags = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<Tags>;
+
+/** Image reference information */
+export interface DevBoxDefinitionUpdatePropertiesInputImageReference {
+  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
+  id?: string;
+}
+export const DevBoxDefinitionUpdatePropertiesInputImageReference =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DevBoxDefinitionUpdatePropertiesInputImageReference",
+  }) as any as S.Schema<DevBoxDefinitionUpdatePropertiesInputImageReference>;
+
+/** The resource model definition representing SKU */
+export interface DevBoxDefinitionUpdatePropertiesInputSku {
+  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
+  name: string;
+  tier?: SkuTier;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+}
+export const DevBoxDefinitionUpdatePropertiesInputSku = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      tier: S.optional(SkuTier),
+      size: S.optional(S.String),
+      family: S.optional(S.String),
+      capacity: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "DevBoxDefinitionUpdatePropertiesInputSku",
+}) as any as S.Schema<DevBoxDefinitionUpdatePropertiesInputSku>;
+
+/** Properties of a Dev Box definition. These properties can be updated after the resource has been created. */
+export interface DevBoxDefinitionUpdatePropertiesInput {
+  /** Image reference information */
+  imageReference?: DevBoxDefinitionUpdatePropertiesInputImageReference;
+  /** The resource model definition representing SKU */
+  sku?: DevBoxDefinitionUpdatePropertiesInputSku;
+  /** The storage type used for the Operating System disk of Dev Boxes created using this definition. */
+  osStorageType?: string;
+  /** Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate */
+  hibernateSupport?: HibernateSupport;
+}
+export const DevBoxDefinitionUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      imageReference: S.optional(
+        DevBoxDefinitionUpdatePropertiesInputImageReference,
+      ),
+      sku: S.optional(DevBoxDefinitionUpdatePropertiesInputSku),
+      osStorageType: S.optional(S.String),
+      hibernateSupport: S.optional(HibernateSupport),
+    }),
+).annotate({
+  identifier: "DevBoxDefinitionUpdatePropertiesInput",
+}) as any as S.Schema<DevBoxDefinitionUpdatePropertiesInput>;
+
 export interface DevBoxDefinitionsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1958,7 +2285,12 @@ export interface DevBoxDefinitionsUpdateRequest {
   devCenterName: string;
   /** The name of the Dev Box definition. */
   devBoxDefinitionName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: Tags;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Properties of a Dev Box definition to be updated. */
+  properties?: DevBoxDefinitionUpdatePropertiesInput;
 }
 export const DevBoxDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1966,7 +2298,9 @@ export const DevBoxDefinitionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     devCenterName: S.String.pipe(T.Label()),
     devBoxDefinitionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(Tags),
+    location: S.optional(S.String),
+    properties: S.optional(DevBoxDefinitionUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2018,48 +2352,20 @@ export const DevBoxDefinitionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DevBoxDefinitionsUpdateResponse",
 }) as any as S.Schema<DevBoxDefinitionsUpdateResponse>;
 
-export interface DevCentersCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the devcenter. */
-  devCenterName: string;
-  body: unknown;
-}
-export const DevCentersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    devCenterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}",
-      code: 200,
-      apiVersion: "2025-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "DevCentersCreateOrUpdateRequest",
-}) as any as S.Schema<DevCentersCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type DevCentersCreateOrUpdateResponseTagsMap = {
+export type DevCentersCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const DevCentersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const DevCentersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<DevCentersCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<DevCentersCreateOrUpdateRequestTagsMap>;
 
 /** Values can be systemAssignedIdentity or userAssignedIdentity */
 export type EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
     | "systemAssignedIdentity"
     | "userAssignedIdentity"
-    | "delegatedResourceIdentity"
-    | (string & {});
+    | "delegatedResourceIdentity";
 export const EncryptionCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -2118,10 +2424,7 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
 /** Catalog item sync types enable or disable status. Indicates whether project catalogs are allowed to sync catalog items under projects associated to this dev center. */
-export type CatalogItemSyncEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type CatalogItemSyncEnableStatus = "Enabled" | "Disabled";
 export const CatalogItemSyncEnableStatus = /*@__PURE__*/ S.String;
 
 /** Project catalog settings for project catalogs under a project associated to this dev center. */
@@ -2138,10 +2441,7 @@ export const DevCenterProjectCatalogSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevCenterProjectCatalogSettings>;
 
 /** Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set. */
-export type MicrosoftHostedNetworkEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type MicrosoftHostedNetworkEnableStatus = "Enabled" | "Disabled";
 export const MicrosoftHostedNetworkEnableStatus = /*@__PURE__*/ S.String;
 
 /** Network settings for the Dev Center. */
@@ -2159,10 +2459,7 @@ export const DevCenterNetworkSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevCenterNetworkSettings>;
 
 /** Setting to be used when determining whether to install the Azure Monitor Agent service on Dev Boxes that belong to this dev center. */
-export type InstallAzureMonitorAgentEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type InstallAzureMonitorAgentEnableStatus = "Enabled" | "Disabled";
 export const InstallAzureMonitorAgentEnableStatus = /*@__PURE__*/ S.String;
 
 /** Provisioning settings that apply to all Dev Boxes created in this dev center */
@@ -2179,6 +2476,117 @@ export const DevBoxProvisioningSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DevBoxProvisioningSettings",
 }) as any as S.Schema<DevBoxProvisioningSettings>;
+
+/** Properties of the devcenter. */
+export interface DevCenterPropertiesInput {
+  /** Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations). */
+  encryption?: Encryption;
+  /** The display name of the devcenter. */
+  displayName?: string;
+  /** Dev Center settings to be used when associating a project with a catalog. */
+  projectCatalogSettings?: DevCenterProjectCatalogSettings;
+  /** Network settings that will be enforced on network resources associated with the Dev Center. */
+  networkSettings?: DevCenterNetworkSettings;
+  /** Settings to be used in the provisioning of all Dev Boxes that belong to this dev center. */
+  devBoxProvisioningSettings?: DevBoxProvisioningSettings;
+}
+export const DevCenterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encryption: S.optional(Encryption),
+    displayName: S.optional(S.String),
+    projectCatalogSettings: S.optional(DevCenterProjectCatalogSettings),
+    networkSettings: S.optional(DevCenterNetworkSettings),
+    devBoxProvisioningSettings: S.optional(DevBoxProvisioningSettings),
+  }),
+).annotate({
+  identifier: "DevCenterPropertiesInput",
+}) as any as S.Schema<DevCenterPropertiesInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned, UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface DevCentersCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const DevCentersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "DevCentersCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<DevCentersCreateOrUpdateRequestIdentity>;
+
+export interface DevCentersCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the devcenter. */
+  devCenterName: string;
+  /** Resource tags. */
+  tags?: DevCentersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** DevCenter properties */
+  properties?: DevCenterPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: DevCentersCreateOrUpdateRequestIdentity;
+}
+export const DevCentersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    devCenterName: S.String.pipe(T.Label()),
+    tags: S.optional(DevCentersCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(DevCenterPropertiesInput),
+    identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}",
+      code: 200,
+      apiVersion: "2025-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "DevCentersCreateOrUpdateRequest",
+}) as any as S.Schema<DevCentersCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type DevCentersCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DevCentersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DevCentersCreateOrUpdateResponseTagsMap>;
 
 /** Provisioning state of the resource. */
 export type DevCenterPropertiesProvisioningState =
@@ -2197,8 +2605,7 @@ export type DevCenterPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const DevCenterPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the devcenter. */
@@ -2231,15 +2638,6 @@ export const DevCenterProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DevCenterProperties",
 }) as any as S.Schema<DevCenterProperties>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -2525,7 +2923,7 @@ export const DevCenter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DevCenter" }) as any as S.Schema<DevCenter>;
 
 /** Current page of results. */
-export type DevCenterListResultValueList = DevCenter[];
+export type DevCenterListResultValueList = ReadonlyArray<DevCenter>;
 export const DevCenterListResultValueList = /*@__PURE__*/ S.Array(
   DevCenter,
 ) as any as S.Schema<DevCenterListResultValueList>;
@@ -2568,6 +2966,45 @@ export const DevCentersListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DevCentersListBySubscriptionRequest",
 }) as any as S.Schema<DevCentersListBySubscriptionRequest>;
 
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface DevCentersUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const DevCentersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "DevCentersUpdateRequestIdentity",
+}) as any as S.Schema<DevCentersUpdateRequestIdentity>;
+
+/** Properties of the devcenter. These properties can be updated after the resource has been created. */
+export interface DevCenterUpdateProperties {
+  /** Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations). */
+  encryption?: Encryption;
+  /** The display name of the devcenter. */
+  displayName?: string;
+  /** Dev Center settings to be used when associating a project with a catalog. */
+  projectCatalogSettings?: DevCenterProjectCatalogSettings;
+  /** Network settings that will be enforced on network resources associated with the Dev Center. */
+  networkSettings?: DevCenterNetworkSettings;
+  /** Settings to be used in the provisioning of all Dev Boxes that belong to this dev center. */
+  devBoxProvisioningSettings?: DevBoxProvisioningSettings;
+}
+export const DevCenterUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encryption: S.optional(Encryption),
+    displayName: S.optional(S.String),
+    projectCatalogSettings: S.optional(DevCenterProjectCatalogSettings),
+    networkSettings: S.optional(DevCenterNetworkSettings),
+    devBoxProvisioningSettings: S.optional(DevBoxProvisioningSettings),
+  }),
+).annotate({
+  identifier: "DevCenterUpdateProperties",
+}) as any as S.Schema<DevCenterUpdateProperties>;
+
 export interface DevCentersUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2575,14 +3012,24 @@ export interface DevCentersUpdateRequest {
   resourceGroupName: string;
   /** The name of the devcenter. */
   devCenterName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: Tags;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: DevCentersUpdateRequestIdentity;
+  /** Properties of a Dev Center to be updated. */
+  properties?: DevCenterUpdateProperties;
 }
 export const DevCentersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     devCenterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(Tags),
+    location: S.optional(S.String),
+    identity: S.optional(DevCentersUpdateRequestIdentity),
+    properties: S.optional(DevCenterUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2695,8 +3142,7 @@ export type ParameterType =
   | "integer"
   | "number"
   | "object"
-  | "string"
-  | (string & {});
+  | "string";
 export const ParameterType = /*@__PURE__*/ S.String;
 
 /** Properties of an Environment Definition parameter */
@@ -2729,7 +3175,7 @@ export const EnvironmentDefinitionParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Input parameters passed to an environment. */
 export type EnvironmentDefinitionPropertiesParametersList =
-  EnvironmentDefinitionParameter[];
+  ReadonlyArray<EnvironmentDefinitionParameter>;
 export const EnvironmentDefinitionPropertiesParametersList =
   /*@__PURE__*/ S.Array(
     EnvironmentDefinitionParameter,
@@ -2740,8 +3186,7 @@ export type EnvironmentDefinitionPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const EnvironmentDefinitionPropertiesValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -2884,7 +3329,7 @@ export const EnvironmentDefinitionsGetErrorDetailsRequest =
 
 /** Errors associated with resources synchronized from the catalog. */
 export type EnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
-  CatalogErrorDetails[];
+  ReadonlyArray<CatalogErrorDetails>;
 export const EnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
     CatalogErrorDetails,
@@ -2963,7 +3408,8 @@ export const EnvironmentDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentDefinition>;
 
 /** Current page of results. */
-export type EnvironmentDefinitionListResultValueList = EnvironmentDefinition[];
+export type EnvironmentDefinitionListResultValueList =
+  ReadonlyArray<EnvironmentDefinition>;
 export const EnvironmentDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   EnvironmentDefinition,
 ) as any as S.Schema<EnvironmentDefinitionListResultValueList>;
@@ -3013,6 +3459,29 @@ export const EnvironmentDefinitionsListByProjectCatalogRequest =
     identifier: "EnvironmentDefinitionsListByProjectCatalogRequest",
   }) as any as S.Schema<EnvironmentDefinitionsListByProjectCatalogRequest>;
 
+/** Properties of an environment type. */
+export interface EnvironmentTypePropertiesInput {
+  /** The display name of the environment type. */
+  displayName?: string;
+}
+export const EnvironmentTypePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EnvironmentTypePropertiesInput",
+}) as any as S.Schema<EnvironmentTypePropertiesInput>;
+
+/** Resource tags. */
+export type EnvironmentTypesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EnvironmentTypesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<EnvironmentTypesCreateOrUpdateRequestTagsMap>;
+
 export interface EnvironmentTypesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3022,7 +3491,10 @@ export interface EnvironmentTypesCreateOrUpdateRequest {
   devCenterName: string;
   /** The name of the environment type. */
   environmentTypeName: string;
-  body: unknown;
+  /** Properties of an environment type. */
+  properties?: EnvironmentTypePropertiesInput;
+  /** Resource tags. */
+  tags?: EnvironmentTypesCreateOrUpdateRequestTagsMap;
 }
 export const EnvironmentTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3031,7 +3503,8 @@ export const EnvironmentTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       devCenterName: S.String.pipe(T.Label()),
       environmentTypeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(EnvironmentTypePropertiesInput),
+      tags: S.optional(EnvironmentTypesCreateOrUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3061,8 +3534,7 @@ export type EnvironmentTypePropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const EnvironmentTypePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3284,7 +3756,7 @@ export const EnvironmentType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentType>;
 
 /** Current page of results. */
-export type EnvironmentTypeListResultValueList = EnvironmentType[];
+export type EnvironmentTypeListResultValueList = ReadonlyArray<EnvironmentType>;
 export const EnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
   EnvironmentType,
 ) as any as S.Schema<EnvironmentTypeListResultValueList>;
@@ -3305,6 +3777,28 @@ export const EnvironmentTypeListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentTypeListResult",
 }) as any as S.Schema<EnvironmentTypeListResult>;
 
+/** Properties of an environment type. These properties can be updated after the resource has been created. */
+export interface EnvironmentTypeUpdateProperties {
+  /** The display name of the environment type. */
+  displayName?: string;
+}
+export const EnvironmentTypeUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EnvironmentTypeUpdateProperties",
+}) as any as S.Schema<EnvironmentTypeUpdateProperties>;
+
+/** Resource tags. */
+export type EnvironmentTypesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EnvironmentTypesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<EnvironmentTypesUpdateRequestTagsMap>;
+
 export interface EnvironmentTypesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3314,7 +3808,10 @@ export interface EnvironmentTypesUpdateRequest {
   devCenterName: string;
   /** The name of the environment type. */
   environmentTypeName: string;
-  body: unknown;
+  /** Properties of an environment type to be updated. */
+  properties?: EnvironmentTypeUpdateProperties;
+  /** Resource tags. */
+  tags?: EnvironmentTypesUpdateRequestTagsMap;
 }
 export const EnvironmentTypesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3322,7 +3819,8 @@ export const EnvironmentTypesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     devCenterName: S.String.pipe(T.Label()),
     environmentTypeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(EnvironmentTypeUpdateProperties),
+    tags: S.optional(EnvironmentTypesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3371,6 +3869,19 @@ export const EnvironmentTypesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentTypesUpdateResponse",
 }) as any as S.Schema<EnvironmentTypesUpdateResponse>;
 
+/** Properties of a gallery. */
+export interface GalleryPropertiesInput {
+  /** The resource ID of the backing Azure Compute Gallery. */
+  galleryResourceId: string;
+}
+export const GalleryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    galleryResourceId: S.String,
+  }),
+).annotate({
+  identifier: "GalleryPropertiesInput",
+}) as any as S.Schema<GalleryPropertiesInput>;
+
 export interface GalleriesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3380,7 +3891,8 @@ export interface GalleriesCreateOrUpdateRequest {
   devCenterName: string;
   /** The name of the gallery. */
   galleryName: string;
-  body: unknown;
+  /** Gallery properties. */
+  properties?: GalleryPropertiesInput;
 }
 export const GalleriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3388,7 +3900,7 @@ export const GalleriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     devCenterName: S.String.pipe(T.Label()),
     galleryName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(GalleryPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3418,8 +3930,7 @@ export type GalleryPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const GalleryPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of a gallery. */
@@ -3601,7 +4112,7 @@ export const Gallery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Gallery" }) as any as S.Schema<Gallery>;
 
 /** Current page of results. */
-export type GalleryListResultValueList = Gallery[];
+export type GalleryListResultValueList = ReadonlyArray<Gallery>;
 export const GalleryListResultValueList = /*@__PURE__*/ S.Array(
   Gallery,
 ) as any as S.Schema<GalleryListResultValueList>;
@@ -3700,8 +4211,7 @@ export type ImagePropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const ImagePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of an image. */
@@ -3865,7 +4375,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 /** Current page of results. */
-export type ImageListResultValueList = Image[];
+export type ImageListResultValueList = ReadonlyArray<Image>;
 export const ImageListResultValueList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageListResultValueList>;
@@ -3993,8 +4503,7 @@ export type ImageVersionPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const ImageVersionPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of an image version. */
@@ -4156,7 +4665,7 @@ export const ImageVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageVersion" }) as any as S.Schema<ImageVersion>;
 
 /** Current page of results. */
-export type ImageVersionListResultValueList = ImageVersion[];
+export type ImageVersionListResultValueList = ReadonlyArray<ImageVersion>;
 export const ImageVersionListResultValueList = /*@__PURE__*/ S.Array(
   ImageVersion,
 ) as any as S.Schema<ImageVersionListResultValueList>;
@@ -4205,6 +4714,68 @@ export const ImageVersionsListByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageVersionsListByProjectRequest",
 }) as any as S.Schema<ImageVersionsListByProjectRequest>;
 
+/** Resource tags. */
+export type NetworkConnectionsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkConnectionsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkConnectionsCreateOrUpdateRequestTagsMap>;
+
+/** Health check status values */
+export type NetworkPropertiesInputHealthCheckStatus =
+  | "Unknown"
+  | "Pending"
+  | "Running"
+  | "Passed"
+  | "Warning"
+  | "Failed"
+  | "Informational";
+export const NetworkPropertiesInputHealthCheckStatus = /*@__PURE__*/ S.String;
+
+/** Active Directory join type */
+export type NetworkPropertiesInputDomainJoinType =
+  | "HybridAzureADJoin"
+  | "AzureADJoin"
+  | "None";
+export const NetworkPropertiesInputDomainJoinType = /*@__PURE__*/ S.String;
+
+/** Network properties */
+export interface NetworkPropertiesInput {
+  /** The subnet to attach Virtual Machines to */
+  subnetId: string;
+  /** Active Directory domain name */
+  domainName?: string;
+  /** Active Directory domain Organization Unit (OU) */
+  organizationUnit?: string;
+  /** The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com. */
+  domainUsername?: string;
+  /** The password for the account used to join domain */
+  domainPassword?: string | Redacted.Redacted<string>;
+  /** Health check status values */
+  healthCheckStatus?: NetworkPropertiesInputHealthCheckStatus;
+  /** The name for resource group where NICs will be placed. */
+  networkingResourceGroupName?: string;
+  /** Active Directory join type */
+  domainJoinType: NetworkPropertiesInputDomainJoinType;
+}
+export const NetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subnetId: S.String,
+    domainName: S.optional(S.String),
+    organizationUnit: S.optional(S.String),
+    domainUsername: S.optional(S.String),
+    domainPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    healthCheckStatus: S.optional(NetworkPropertiesInputHealthCheckStatus),
+    networkingResourceGroupName: S.optional(S.String),
+    domainJoinType: NetworkPropertiesInputDomainJoinType,
+  }),
+).annotate({
+  identifier: "NetworkPropertiesInput",
+}) as any as S.Schema<NetworkPropertiesInput>;
+
 export interface NetworkConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4212,7 +4783,12 @@ export interface NetworkConnectionsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkConnectionsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of a Network Connection */
+  properties?: NetworkPropertiesInput;
 }
 export const NetworkConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4220,7 +4796,9 @@ export const NetworkConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NetworkConnectionsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(NetworkPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4260,8 +4838,7 @@ export type NetworkPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const NetworkPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Health check status values */
@@ -4272,16 +4849,14 @@ export type NetworkPropertiesHealthCheckStatus =
   | "Passed"
   | "Warning"
   | "Failed"
-  | "Informational"
-  | (string & {});
+  | "Informational";
 export const NetworkPropertiesHealthCheckStatus = /*@__PURE__*/ S.String;
 
 /** Active Directory join type */
 export type NetworkPropertiesDomainJoinType =
   | "HybridAzureADJoin"
   | "AzureADJoin"
-  | "None"
-  | (string & {});
+  | "None";
 export const NetworkPropertiesDomainJoinType = /*@__PURE__*/ S.String;
 
 /** Network properties */
@@ -4482,8 +5057,7 @@ export type HealthCheckStatus =
   | "Passed"
   | "Warning"
   | "Failed"
-  | "Informational"
-  | (string & {});
+  | "Informational";
 export const HealthCheckStatus = /*@__PURE__*/ S.String;
 
 /** An individual health check item */
@@ -4516,7 +5090,8 @@ export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
 
 /** Details for each health check item. */
-export type HealthCheckStatusDetailsPropertiesHealthChecksList = HealthCheck[];
+export type HealthCheckStatusDetailsPropertiesHealthChecksList =
+  ReadonlyArray<HealthCheck>;
 export const HealthCheckStatusDetailsPropertiesHealthChecksList =
   /*@__PURE__*/ S.Array(
     HealthCheck,
@@ -4633,7 +5208,8 @@ export const NetworkConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkConnection>;
 
 /** Current page of results. */
-export type NetworkConnectionListResultValueList = NetworkConnection[];
+export type NetworkConnectionListResultValueList =
+  ReadonlyArray<NetworkConnection>;
 export const NetworkConnectionListResultValueList = /*@__PURE__*/ S.Array(
   NetworkConnection,
 ) as any as S.Schema<NetworkConnectionListResultValueList>;
@@ -4733,7 +5309,7 @@ export const HealthCheckStatusDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type HealthCheckStatusDetailsListResultValueList =
-  HealthCheckStatusDetails[];
+  ReadonlyArray<HealthCheckStatusDetails>;
 export const HealthCheckStatusDetailsListResultValueList =
   /*@__PURE__*/ S.Array(
     HealthCheckStatusDetails,
@@ -4797,7 +5373,8 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The list of connection details for this endpoint. */
-export type EndpointDependencyEndpointDetailsList = EndpointDetail[];
+export type EndpointDependencyEndpointDetailsList =
+  ReadonlyArray<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -4822,7 +5399,8 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointDependency>;
 
 /** The endpoints for this service for which the agent requires outbound access. */
-export type OutboundEnvironmentEndpointEndpointsList = EndpointDependency[];
+export type OutboundEnvironmentEndpointEndpointsList =
+  ReadonlyArray<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -4845,7 +5423,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of outbound network dependency endpoints returned by the listing operation. */
 export type OutboundEnvironmentEndpointCollectionValueList =
-  OutboundEnvironmentEndpoint[];
+  ReadonlyArray<OutboundEnvironmentEndpoint>;
 export const OutboundEnvironmentEndpointCollectionValueList =
   /*@__PURE__*/ S.Array(
     OutboundEnvironmentEndpoint,
@@ -4900,6 +5478,31 @@ export const NetworkConnectionsRunHealthChecksResponse =
     identifier: "NetworkConnectionsRunHealthChecksResponse",
   }) as any as S.Schema<NetworkConnectionsRunHealthChecksResponse>;
 
+/** Properties of network connection. These properties can be updated after the resource has been created. */
+export interface NetworkConnectionUpdateProperties {
+  /** The subnet to attach Virtual Machines to */
+  subnetId?: string;
+  /** Active Directory domain name */
+  domainName?: string;
+  /** Active Directory domain Organization Unit (OU) */
+  organizationUnit?: string;
+  /** The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com. */
+  domainUsername?: string;
+  /** The password for the account used to join domain */
+  domainPassword?: string | Redacted.Redacted<string>;
+}
+export const NetworkConnectionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subnetId: S.optional(S.String),
+    domainName: S.optional(S.String),
+    organizationUnit: S.optional(S.String),
+    domainUsername: S.optional(S.String),
+    domainPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+  }),
+).annotate({
+  identifier: "NetworkConnectionUpdateProperties",
+}) as any as S.Schema<NetworkConnectionUpdateProperties>;
+
 export interface NetworkConnectionsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4907,14 +5510,21 @@ export interface NetworkConnectionsUpdateRequest {
   resourceGroupName: string;
   /** Name of the Network Connection that can be applied to a Pool. */
   networkConnectionName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: Tags;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Properties of a network connection resource to be updated. */
+  properties?: NetworkConnectionUpdateProperties;
 }
 export const NetworkConnectionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkConnectionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(Tags),
+    location: S.optional(S.String),
+    properties: S.optional(NetworkConnectionUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5003,11 +5613,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -5034,7 +5644,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -5080,13 +5690,14 @@ export const OperationStatusesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusesGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList = OperationStatusResult[];
+export type OperationStatusResultOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -5108,7 +5719,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -5175,7 +5786,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusesGetResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusesGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationStatusesGetResponseOperationsList>;
@@ -5219,6 +5830,204 @@ export const OperationStatusesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationStatusesGetResponse",
 }) as any as S.Schema<OperationStatusesGetResponse>;
 
+/** Resource tags. */
+export type PoolsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PoolsCreateOrUpdateRequestTagsMap>;
+
+/** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
+export type PoolDevBoxDefinitionType = "Reference" | "Value";
+export const PoolDevBoxDefinitionType = /*@__PURE__*/ S.String;
+
+/** Image reference information */
+export interface PoolDevBoxDefinitionInputImageReference {
+  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
+  id?: string;
+}
+export const PoolDevBoxDefinitionInputImageReference = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "PoolDevBoxDefinitionInputImageReference",
+}) as any as S.Schema<PoolDevBoxDefinitionInputImageReference>;
+
+/** The resource model definition representing SKU */
+export interface PoolDevBoxDefinitionInputSku {
+  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
+  name: string;
+  tier?: SkuTier;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+}
+export const PoolDevBoxDefinitionInputSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: S.optional(SkuTier),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PoolDevBoxDefinitionInputSku",
+}) as any as S.Schema<PoolDevBoxDefinitionInputSku>;
+
+/** Image reference information */
+export interface PoolDevBoxDefinitionInputActiveImageReference {
+  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
+  id?: string;
+}
+export const PoolDevBoxDefinitionInputActiveImageReference =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PoolDevBoxDefinitionInputActiveImageReference",
+  }) as any as S.Schema<PoolDevBoxDefinitionInputActiveImageReference>;
+
+/** Represents a definition for a Developer Machine. */
+export interface PoolDevBoxDefinitionInput {
+  /** Image reference information */
+  imageReference?: PoolDevBoxDefinitionInputImageReference;
+  /** The resource model definition representing SKU */
+  sku?: PoolDevBoxDefinitionInputSku;
+  /** Image reference information */
+  activeImageReference?: PoolDevBoxDefinitionInputActiveImageReference;
+}
+export const PoolDevBoxDefinitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageReference: S.optional(PoolDevBoxDefinitionInputImageReference),
+    sku: S.optional(PoolDevBoxDefinitionInputSku),
+    activeImageReference: S.optional(
+      PoolDevBoxDefinitionInputActiveImageReference,
+    ),
+  }),
+).annotate({
+  identifier: "PoolDevBoxDefinitionInput",
+}) as any as S.Schema<PoolDevBoxDefinitionInput>;
+
+/** License Types */
+export type LicenseType = "Windows_Client";
+export const LicenseType = /*@__PURE__*/ S.String;
+
+/** Local Administrator enable or disable status. Indicates whether owners of Dev Boxes are added as local administrators on the Dev Box. */
+export type LocalAdminStatus = "Disabled" | "Enabled";
+export const LocalAdminStatus = /*@__PURE__*/ S.String;
+
+/** Stop on disconnect enable or disable status. Indicates whether stop on disconnect to is either enabled or disabled. */
+export type StopOnDisconnectEnableStatus = "Enabled" | "Disabled";
+export const StopOnDisconnectEnableStatus = /*@__PURE__*/ S.String;
+
+/** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
+export interface StopOnDisconnectConfiguration {
+  /** Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled. */
+  status?: StopOnDisconnectEnableStatus;
+  /** The specified time in minutes to wait before stopping a Dev Box once disconnect is detected. */
+  gracePeriodMinutes?: number;
+}
+export const StopOnDisconnectConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(StopOnDisconnectEnableStatus),
+    gracePeriodMinutes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "StopOnDisconnectConfiguration",
+}) as any as S.Schema<StopOnDisconnectConfiguration>;
+
+/** Stop on no connect enable or disable status. */
+export type StopOnNoConnectEnableStatus = "Enabled" | "Disabled";
+export const StopOnNoConnectEnableStatus = /*@__PURE__*/ S.String;
+
+/** Stop on no connect configuration settings for Dev Boxes created in this pool. */
+export interface StopOnNoConnectConfiguration {
+  /** Enables the feature to stop a started Dev Box when it has not been connected to, once the grace period has lapsed. */
+  status?: StopOnNoConnectEnableStatus;
+  /** The specified time in minutes to wait before stopping a Dev Box if no connection is made. */
+  gracePeriodMinutes?: number;
+}
+export const StopOnNoConnectConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(StopOnNoConnectEnableStatus),
+    gracePeriodMinutes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "StopOnNoConnectConfiguration",
+}) as any as S.Schema<StopOnNoConnectConfiguration>;
+
+/** SingleSignOn (SSO) enable or disable status. Indicates whether Dev Boxes in the Pool will have SSO enabled or disabled. */
+export type SingleSignOnStatus = "Disabled" | "Enabled";
+export const SingleSignOnStatus = /*@__PURE__*/ S.String;
+
+/** Indicates a pool uses a Virtual Network managed by Microsoft (Managed), or a customer provided Network (Unmanaged). */
+export type VirtualNetworkType = "Managed" | "Unmanaged";
+export const VirtualNetworkType = /*@__PURE__*/ S.String;
+
+/** The regions of the managed virtual network (required when managedNetworkType is Managed). */
+export type PoolPropertiesInputManagedVirtualNetworkRegionsList =
+  ReadonlyArray<string>;
+export const PoolPropertiesInputManagedVirtualNetworkRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoolPropertiesInputManagedVirtualNetworkRegionsList>;
+
+/** Properties of a Pool */
+export interface PoolPropertiesInput {
+  /** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
+  devBoxDefinitionType?: PoolDevBoxDefinitionType;
+  /** Name of a Dev Box definition in parent Project of this Pool. Will be ignored if devBoxDefinitionType is Value. */
+  devBoxDefinitionName: string;
+  /** A definition of the machines that are created from this Pool. Will be ignored if devBoxDefinitionType is Reference or not provided. */
+  devBoxDefinition?: PoolDevBoxDefinitionInput;
+  /** Name of a Network Connection in parent Project of this Pool */
+  networkConnectionName: string;
+  /** Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created. */
+  licenseType: LicenseType;
+  /** Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box. */
+  localAdministrator: LocalAdminStatus;
+  /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
+  stopOnDisconnect?: StopOnDisconnectConfiguration;
+  /** Stop on no connect configuration settings for Dev Boxes created in this pool. */
+  stopOnNoConnect?: StopOnNoConnectConfiguration;
+  /** Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant. */
+  singleSignOnStatus?: SingleSignOnStatus;
+  /** The display name of the pool. */
+  displayName?: string;
+  /** Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network. */
+  virtualNetworkType?: VirtualNetworkType;
+  /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
+  managedVirtualNetworkRegions?: PoolPropertiesInputManagedVirtualNetworkRegionsList;
+}
+export const PoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    devBoxDefinitionType: S.optional(PoolDevBoxDefinitionType),
+    devBoxDefinitionName: S.String,
+    devBoxDefinition: S.optional(PoolDevBoxDefinitionInput),
+    networkConnectionName: S.String,
+    licenseType: LicenseType,
+    localAdministrator: LocalAdminStatus,
+    stopOnDisconnect: S.optional(StopOnDisconnectConfiguration),
+    stopOnNoConnect: S.optional(StopOnNoConnectConfiguration),
+    singleSignOnStatus: S.optional(SingleSignOnStatus),
+    displayName: S.optional(S.String),
+    virtualNetworkType: S.optional(VirtualNetworkType),
+    managedVirtualNetworkRegions: S.optional(
+      PoolPropertiesInputManagedVirtualNetworkRegionsList,
+    ),
+  }),
+).annotate({
+  identifier: "PoolPropertiesInput",
+}) as any as S.Schema<PoolPropertiesInput>;
+
 export interface PoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5228,7 +6037,12 @@ export interface PoolsCreateOrUpdateRequest {
   projectName: string;
   /** Name of the pool. */
   poolName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: PoolsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Pool properties */
+  properties?: PoolPropertiesInput;
 }
 export const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5236,7 +6050,9 @@ export const PoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
     poolName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(PoolsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(PoolPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5257,10 +6073,6 @@ export const PoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
-
-/** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
-export type PoolDevBoxDefinitionType = "Reference" | "Value" | (string & {});
-export const PoolDevBoxDefinitionType = /*@__PURE__*/ S.String;
 
 /** Image reference information */
 export interface PoolDevBoxDefinitionImageReference {
@@ -5338,70 +6150,9 @@ export const PoolDevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolDevBoxDefinition",
 }) as any as S.Schema<PoolDevBoxDefinition>;
 
-/** License Types */
-export type LicenseType = "Windows_Client" | (string & {});
-export const LicenseType = /*@__PURE__*/ S.String;
-
-/** Local Administrator enable or disable status. Indicates whether owners of Dev Boxes are added as local administrators on the Dev Box. */
-export type LocalAdminStatus = "Disabled" | "Enabled" | (string & {});
-export const LocalAdminStatus = /*@__PURE__*/ S.String;
-
-/** Stop on disconnect enable or disable status. Indicates whether stop on disconnect to is either enabled or disabled. */
-export type StopOnDisconnectEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const StopOnDisconnectEnableStatus = /*@__PURE__*/ S.String;
-
-/** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
-export interface StopOnDisconnectConfiguration {
-  /** Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled. */
-  status?: StopOnDisconnectEnableStatus;
-  /** The specified time in minutes to wait before stopping a Dev Box once disconnect is detected. */
-  gracePeriodMinutes?: number;
-}
-export const StopOnDisconnectConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(StopOnDisconnectEnableStatus),
-    gracePeriodMinutes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "StopOnDisconnectConfiguration",
-}) as any as S.Schema<StopOnDisconnectConfiguration>;
-
-/** Stop on no connect enable or disable status. */
-export type StopOnNoConnectEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const StopOnNoConnectEnableStatus = /*@__PURE__*/ S.String;
-
-/** Stop on no connect configuration settings for Dev Boxes created in this pool. */
-export interface StopOnNoConnectConfiguration {
-  /** Enables the feature to stop a started Dev Box when it has not been connected to, once the grace period has lapsed. */
-  status?: StopOnNoConnectEnableStatus;
-  /** The specified time in minutes to wait before stopping a Dev Box if no connection is made. */
-  gracePeriodMinutes?: number;
-}
-export const StopOnNoConnectConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(StopOnNoConnectEnableStatus),
-    gracePeriodMinutes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "StopOnNoConnectConfiguration",
-}) as any as S.Schema<StopOnNoConnectConfiguration>;
-
-/** SingleSignOn (SSO) enable or disable status. Indicates whether Dev Boxes in the Pool will have SSO enabled or disabled. */
-export type SingleSignOnStatus = "Disabled" | "Enabled" | (string & {});
-export const SingleSignOnStatus = /*@__PURE__*/ S.String;
-
-/** Indicates a pool uses a Virtual Network managed by Microsoft (Managed), or a customer provided Network (Unmanaged). */
-export type VirtualNetworkType = "Managed" | "Unmanaged" | (string & {});
-export const VirtualNetworkType = /*@__PURE__*/ S.String;
-
 /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
-export type PoolPropertiesManagedVirtualNetworkRegionsList = string[];
+export type PoolPropertiesManagedVirtualNetworkRegionsList =
+  ReadonlyArray<string>;
 export const PoolPropertiesManagedVirtualNetworkRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5413,8 +6164,7 @@ export type HealthStatus =
   | "Pending"
   | "Healthy"
   | "Warning"
-  | "Unhealthy"
-  | (string & {});
+  | "Unhealthy";
 export const HealthStatus = /*@__PURE__*/ S.String;
 
 /** Pool health status detail. */
@@ -5434,7 +6184,8 @@ export const HealthStatusDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthStatusDetail>;
 
 /** Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state */
-export type PoolPropertiesHealthStatusDetailsList = HealthStatusDetail[];
+export type PoolPropertiesHealthStatusDetailsList =
+  ReadonlyArray<HealthStatusDetail>;
 export const PoolPropertiesHealthStatusDetailsList = /*@__PURE__*/ S.Array(
   HealthStatusDetail,
 ) as any as S.Schema<PoolPropertiesHealthStatusDetailsList>;
@@ -5456,8 +6207,7 @@ export type PoolPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const PoolPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of a Pool */
@@ -5713,7 +6463,7 @@ export const Pool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pool" }) as any as S.Schema<Pool>;
 
 /** Current page of results. */
-export type PoolListResultValueList = Pool[];
+export type PoolListResultValueList = ReadonlyArray<Pool>;
 export const PoolListResultValueList = /*@__PURE__*/ S.Array(
   Pool,
 ) as any as S.Schema<PoolListResultValueList>;
@@ -5767,6 +6517,62 @@ export const PoolsRunHealthChecksResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsRunHealthChecksResponse",
 }) as any as S.Schema<PoolsRunHealthChecksResponse>;
 
+/** The regions of the managed virtual network (required when managedNetworkType is Managed). */
+export type PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList =
+  ReadonlyArray<string>;
+export const PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList>;
+
+/** Properties of a Pool. These properties can be updated after the resource has been created. */
+export interface PoolUpdatePropertiesInput {
+  /** Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly. */
+  devBoxDefinitionType?: PoolDevBoxDefinitionType;
+  /** Name of a Dev Box definition in parent Project of this Pool. Will be ignored if devBoxDefinitionType is Value. */
+  devBoxDefinitionName?: string;
+  /** A definition of the machines that are created from this Pool. Will be ignored if devBoxDefinitionType is Reference or not provided. */
+  devBoxDefinition?: PoolDevBoxDefinitionInput;
+  /** Name of a Network Connection in parent Project of this Pool */
+  networkConnectionName?: string;
+  /** Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created. */
+  licenseType?: LicenseType;
+  /** Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box. */
+  localAdministrator?: LocalAdminStatus;
+  /** Stop on disconnect configuration settings for Dev Boxes created in this pool. */
+  stopOnDisconnect?: StopOnDisconnectConfiguration;
+  /** Stop on no connect configuration settings for Dev Boxes created in this pool. */
+  stopOnNoConnect?: StopOnNoConnectConfiguration;
+  /** Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant. */
+  singleSignOnStatus?: SingleSignOnStatus;
+  /** The display name of the pool. */
+  displayName?: string;
+  /** Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network. */
+  virtualNetworkType?: VirtualNetworkType;
+  /** The regions of the managed virtual network (required when managedNetworkType is Managed). */
+  managedVirtualNetworkRegions?: PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList;
+}
+export const PoolUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    devBoxDefinitionType: S.optional(PoolDevBoxDefinitionType),
+    devBoxDefinitionName: S.optional(S.String),
+    devBoxDefinition: S.optional(PoolDevBoxDefinitionInput),
+    networkConnectionName: S.optional(S.String),
+    licenseType: S.optional(LicenseType),
+    localAdministrator: S.optional(LocalAdminStatus),
+    stopOnDisconnect: S.optional(StopOnDisconnectConfiguration),
+    stopOnNoConnect: S.optional(StopOnNoConnectConfiguration),
+    singleSignOnStatus: S.optional(SingleSignOnStatus),
+    displayName: S.optional(S.String),
+    virtualNetworkType: S.optional(VirtualNetworkType),
+    managedVirtualNetworkRegions: S.optional(
+      PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList,
+    ),
+  }),
+).annotate({
+  identifier: "PoolUpdatePropertiesInput",
+}) as any as S.Schema<PoolUpdatePropertiesInput>;
+
 export interface PoolsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5776,7 +6582,12 @@ export interface PoolsUpdateRequest {
   projectName: string;
   /** Name of the pool. */
   poolName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: Tags;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Properties of a pool to be updated. */
+  properties?: PoolUpdatePropertiesInput;
 }
 export const PoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5784,7 +6595,9 @@ export const PoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
     poolName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(Tags),
+    location: S.optional(S.String),
+    properties: S.optional(PoolUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5880,8 +6693,7 @@ export type AllowedEnvironmentTypePropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const AllowedEnvironmentTypePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -5984,7 +6796,7 @@ export const AllowedEnvironmentType = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type AllowedEnvironmentTypeListResultValueList =
-  AllowedEnvironmentType[];
+  ReadonlyArray<AllowedEnvironmentType>;
 export const AllowedEnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
   AllowedEnvironmentType,
 ) as any as S.Schema<AllowedEnvironmentTypeListResultValueList>;
@@ -6039,7 +6851,7 @@ export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsRequest =
 
 /** Errors associated with resources synchronized from the catalog. */
 export type ProjectCatalogEnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
-  CatalogErrorDetails[];
+  ReadonlyArray<CatalogErrorDetails>;
 export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
     CatalogErrorDetails,
@@ -6160,8 +6972,7 @@ export type ImageDefinitionBuildStatus =
   | "ValidationFailed"
   | "Failed"
   | "Cancelled"
-  | "TimedOut"
-  | (string & {});
+  | "TimedOut";
 export const ImageDefinitionBuildStatus = /*@__PURE__*/ S.String;
 
 /** Image creation error details */
@@ -6299,7 +7110,7 @@ export const ImageDefinitionBuildTaskParametersItem = /*@__PURE__*/ S.suspend(
 
 /** Parameters for the task. */
 export type ImageDefinitionBuildTaskParametersList =
-  ImageDefinitionBuildTaskParametersItem[];
+  ReadonlyArray<ImageDefinitionBuildTaskParametersItem>;
 export const ImageDefinitionBuildTaskParametersList = /*@__PURE__*/ S.Array(
   ImageDefinitionBuildTaskParametersItem,
 ) as any as S.Schema<ImageDefinitionBuildTaskParametersList>;
@@ -6339,7 +7150,8 @@ export const ImageDefinitionBuildTask = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageDefinitionBuildTask>;
 
 /** The list of tasks executed during the task group. */
-export type ImageDefinitionBuildTaskGroupTasksList = ImageDefinitionBuildTask[];
+export type ImageDefinitionBuildTaskGroupTasksList =
+  ReadonlyArray<ImageDefinitionBuildTask>;
 export const ImageDefinitionBuildTaskGroupTasksList = /*@__PURE__*/ S.Array(
   ImageDefinitionBuildTask,
 ) as any as S.Schema<ImageDefinitionBuildTaskGroupTasksList>;
@@ -6371,7 +7183,7 @@ export const ImageDefinitionBuildTaskGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of task groups executed during the image definition build. */
 export type ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseTaskGroupsList =
-  ImageDefinitionBuildTaskGroup[];
+  ReadonlyArray<ImageDefinitionBuildTaskGroup>;
 export const ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseTaskGroupsList =
   /*@__PURE__*/ S.Array(
     ImageDefinitionBuildTaskGroup,
@@ -6480,7 +7292,8 @@ export const ImageDefinitionBuild = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageDefinitionBuild>;
 
 /** Current page of results. */
-export type ImageDefinitionBuildListResultValueList = ImageDefinitionBuild[];
+export type ImageDefinitionBuildListResultValueList =
+  ReadonlyArray<ImageDefinitionBuild>;
 export const ImageDefinitionBuildListResultValueList = /*@__PURE__*/ S.Array(
   ImageDefinitionBuild,
 ) as any as S.Schema<ImageDefinitionBuildListResultValueList>;
@@ -6616,8 +7429,7 @@ export type ImageDefinitionPropertiesImageValidationStatus =
   | "Pending"
   | "Succeeded"
   | "Failed"
-  | "TimedOut"
-  | (string & {});
+  | "TimedOut";
 export const ImageDefinitionPropertiesImageValidationStatus =
   /*@__PURE__*/ S.String;
 
@@ -6643,8 +7455,7 @@ export type ImageDefinitionPropertiesValidationStatus =
   | "Unknown"
   | "Pending"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ImageDefinitionPropertiesValidationStatus = /*@__PURE__*/ S.String;
 
 /** Image reference information */
@@ -6665,7 +7476,7 @@ export const ImageDefinitionPropertiesActiveImageReference =
   }) as any as S.Schema<ImageDefinitionPropertiesActiveImageReference>;
 
 /** Indicates whether auto image build is enabled/disabled. */
-export type AutoImageBuildStatus = "Disabled" | "Enabled" | (string & {});
+export type AutoImageBuildStatus = "Disabled" | "Enabled";
 export const AutoImageBuildStatus = /*@__PURE__*/ S.String;
 
 /** Properties of an Image Definition. */
@@ -6767,7 +7578,7 @@ export const ProjectCatalogImageDefinitionsGetErrorDetailsRequest =
 
 /** Errors associated with resources synchronized from the catalog. */
 export type ProjectCatalogImageDefinitionsGetErrorDetailsResponseErrorsList =
-  CatalogErrorDetails[];
+  ReadonlyArray<CatalogErrorDetails>;
 export const ProjectCatalogImageDefinitionsGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
     CatalogErrorDetails,
@@ -6846,7 +7657,7 @@ export const ImageDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageDefinition>;
 
 /** Current page of results. */
-export type ImageDefinitionListResultValueList = ImageDefinition[];
+export type ImageDefinitionListResultValueList = ReadonlyArray<ImageDefinition>;
 export const ImageDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   ImageDefinition,
 ) as any as S.Schema<ImageDefinitionListResultValueList>;
@@ -6911,7 +7722,8 @@ export interface ProjectCatalogsCreateOrUpdateRequest {
   projectName: string;
   /** The name of the Catalog. */
   catalogName: string;
-  body: unknown;
+  /** Catalog properties. */
+  properties?: CatalogPropertiesInput;
 }
 export const ProjectCatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6920,7 +7732,7 @@ export const ProjectCatalogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       projectName: S.String.pipe(T.Label()),
       catalogName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(CatalogPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -7111,7 +7923,8 @@ export interface ProjectCatalogsPatchRequest {
   projectName: string;
   /** The name of the Catalog. */
   catalogName: string;
-  body: unknown;
+  /** Catalog properties for update. */
+  properties?: CatalogUpdateProperties;
 }
 export const ProjectCatalogsPatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7119,7 +7932,7 @@ export const ProjectCatalogsPatchRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
     catalogName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(CatalogUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7191,6 +8004,130 @@ export const ProjectCatalogsSyncResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectCatalogsSyncResponse",
 }) as any as S.Schema<ProjectCatalogsSyncResponse>;
 
+/** Indicates whether the environment type is either enabled or disabled. */
+export type EnvironmentTypeEnableStatus = "Enabled" | "Disabled";
+export const EnvironmentTypeEnableStatus = /*@__PURE__*/ S.String;
+
+/** A role that can be assigned to a user. */
+export interface EnvironmentRoleInput {}
+export const EnvironmentRoleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "EnvironmentRoleInput",
+}) as any as S.Schema<EnvironmentRoleInput>;
+
+/** A map of roles to assign to the environment creator. */
+export type ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap =
+  { [key: string]: EnvironmentRoleInput | undefined };
+export const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    EnvironmentRoleInput,
+  ) as any as S.Schema<ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap>;
+
+/** The role definition assigned to the environment creator on backing resources. */
+export interface ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment {
+  /** A map of roles to assign to the environment creator. */
+  roles?: ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap;
+}
+export const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      roles: S.optional(
+        ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment",
+  }) as any as S.Schema<ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment>;
+
+/** A map of roles to assign to the parent user. */
+export type UserRoleAssignmentInputRolesMap = {
+  [key: string]: EnvironmentRoleInput | undefined;
+};
+export const UserRoleAssignmentInputRolesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  EnvironmentRoleInput,
+) as any as S.Schema<UserRoleAssignmentInputRolesMap>;
+
+/** Mapping of user object ID to role assignments. */
+export interface UserRoleAssignmentInput {
+  /** A map of roles to assign to the parent user. */
+  roles?: UserRoleAssignmentInputRolesMap;
+}
+export const UserRoleAssignmentInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    roles: S.optional(UserRoleAssignmentInputRolesMap),
+  }),
+).annotate({
+  identifier: "UserRoleAssignmentInput",
+}) as any as S.Schema<UserRoleAssignmentInput>;
+
+/** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
+export type ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap = {
+  [key: string]: UserRoleAssignmentInput | undefined;
+};
+export const ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserRoleAssignmentInput,
+  ) as any as S.Schema<ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap>;
+
+/** Properties of a project environment type. */
+export interface ProjectEnvironmentTypePropertiesInput {
+  /** Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription. */
+  deploymentTargetId?: string;
+  /** The display name of the project environment type. */
+  displayName?: string;
+  /** Defines whether this Environment Type can be used in this Project. */
+  status?: EnvironmentTypeEnableStatus;
+  /** The role definition assigned to the environment creator on backing resources. */
+  creatorRoleAssignment?: ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment;
+  /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
+  userRoleAssignments?: ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap;
+}
+export const ProjectEnvironmentTypePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deploymentTargetId: S.optional(S.String),
+      displayName: S.optional(S.String),
+      status: S.optional(EnvironmentTypeEnableStatus),
+      creatorRoleAssignment: S.optional(
+        ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment,
+      ),
+      userRoleAssignments: S.optional(
+        ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap,
+      ),
+    }),
+).annotate({
+  identifier: "ProjectEnvironmentTypePropertiesInput",
+}) as any as S.Schema<ProjectEnvironmentTypePropertiesInput>;
+
+/** Resource tags. */
+export type ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ProjectEnvironmentTypesCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ProjectEnvironmentTypesCreateOrUpdateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+  ).annotate({
+    identifier: "ProjectEnvironmentTypesCreateOrUpdateRequestIdentity",
+  }) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequestIdentity>;
+
 export interface ProjectEnvironmentTypesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7200,7 +8137,14 @@ export interface ProjectEnvironmentTypesCreateOrUpdateRequest {
   projectName: string;
   /** The name of the environment type. */
   environmentTypeName: string;
-  body: unknown;
+  /** Properties of an environment type. */
+  properties?: ProjectEnvironmentTypePropertiesInput;
+  /** Resource tags. */
+  tags?: ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ProjectEnvironmentTypesCreateOrUpdateRequestIdentity;
+  /** The geo-location for the environment type */
+  location?: string;
 }
 export const ProjectEnvironmentTypesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7209,7 +8153,12 @@ export const ProjectEnvironmentTypesCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       projectName: S.String.pipe(T.Label()),
       environmentTypeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ProjectEnvironmentTypePropertiesInput),
+      tags: S.optional(ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap),
+      identity: S.optional(
+        ProjectEnvironmentTypesCreateOrUpdateRequestIdentity,
+      ),
+      location: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -7221,13 +8170,6 @@ export const ProjectEnvironmentTypesCreateOrUpdateRequest =
   ).annotate({
     identifier: "ProjectEnvironmentTypesCreateOrUpdateRequest",
   }) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequest>;
-
-/** Indicates whether the environment type is either enabled or disabled. */
-export type EnvironmentTypeEnableStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const EnvironmentTypeEnableStatus = /*@__PURE__*/ S.String;
 
 /** A role that can be assigned to a user. */
 export interface EnvironmentRole {
@@ -7320,8 +8262,7 @@ export type ProjectEnvironmentTypePropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const ProjectEnvironmentTypePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -7649,7 +8590,7 @@ export const ProjectEnvironmentType = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type ProjectEnvironmentTypeListResultValueList =
-  ProjectEnvironmentType[];
+  ReadonlyArray<ProjectEnvironmentType>;
 export const ProjectEnvironmentTypeListResultValueList = /*@__PURE__*/ S.Array(
   ProjectEnvironmentType,
 ) as any as S.Schema<ProjectEnvironmentTypeListResultValueList>;
@@ -7670,6 +8611,96 @@ export const ProjectEnvironmentTypeListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectEnvironmentTypeListResult",
 }) as any as S.Schema<ProjectEnvironmentTypeListResult>;
 
+/** A map of roles to assign to the environment creator. */
+export type ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap =
+  { [key: string]: EnvironmentRoleInput | undefined };
+export const ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    EnvironmentRoleInput,
+  ) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap>;
+
+/** The role definition assigned to the environment creator on backing resources. */
+export interface ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment {
+  /** A map of roles to assign to the environment creator. */
+  roles?: ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap;
+}
+export const ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      roles: S.optional(
+        ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment",
+  }) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment>;
+
+/** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
+export type ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap =
+  { [key: string]: UserRoleAssignmentInput | undefined };
+export const ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserRoleAssignmentInput,
+  ) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap>;
+
+/** Properties of a project environment type. These properties can be updated after the resource has been created. */
+export interface ProjectEnvironmentTypeUpdatePropertiesInput {
+  /** Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription. */
+  deploymentTargetId?: string;
+  /** The display name of the project environment type. */
+  displayName?: string;
+  /** Defines whether this Environment Type can be used in this Project. */
+  status?: EnvironmentTypeEnableStatus;
+  /** The role definition assigned to the environment creator on backing resources. */
+  creatorRoleAssignment?: ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment;
+  /** Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs. */
+  userRoleAssignments?: ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap;
+}
+export const ProjectEnvironmentTypeUpdatePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deploymentTargetId: S.optional(S.String),
+      displayName: S.optional(S.String),
+      status: S.optional(EnvironmentTypeEnableStatus),
+      creatorRoleAssignment: S.optional(
+        ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment,
+      ),
+      userRoleAssignments: S.optional(
+        ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "ProjectEnvironmentTypeUpdatePropertiesInput",
+  }) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInput>;
+
+/** Resource tags. */
+export type ProjectEnvironmentTypesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectEnvironmentTypesUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProjectEnvironmentTypesUpdateRequestTagsMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ProjectEnvironmentTypesUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ProjectEnvironmentTypesUpdateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+  ).annotate({
+    identifier: "ProjectEnvironmentTypesUpdateRequestIdentity",
+  }) as any as S.Schema<ProjectEnvironmentTypesUpdateRequestIdentity>;
+
 export interface ProjectEnvironmentTypesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7679,7 +8710,12 @@ export interface ProjectEnvironmentTypesUpdateRequest {
   projectName: string;
   /** The name of the environment type. */
   environmentTypeName: string;
-  body: unknown;
+  /** Properties to configure an environment type. */
+  properties?: ProjectEnvironmentTypeUpdatePropertiesInput;
+  /** Resource tags. */
+  tags?: ProjectEnvironmentTypesUpdateRequestTagsMap;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ProjectEnvironmentTypesUpdateRequestIdentity;
 }
 export const ProjectEnvironmentTypesUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7688,7 +8724,9 @@ export const ProjectEnvironmentTypesUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       projectName: S.String.pipe(T.Label()),
       environmentTypeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ProjectEnvironmentTypeUpdatePropertiesInput),
+      tags: S.optional(ProjectEnvironmentTypesUpdateRequestTagsMap),
+      identity: S.optional(ProjectEnvironmentTypesUpdateRequestIdentity),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -7766,47 +8804,12 @@ export const ProjectEnvironmentTypesUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ProjectEnvironmentTypesUpdateResponse",
 }) as any as S.Schema<ProjectEnvironmentTypesUpdateResponse>;
 
-export interface ProjectPoliciesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the devcenter. */
-  devCenterName: string;
-  /** The name of the project policy. */
-  projectPolicyName: string;
-  body: unknown;
-}
-export const ProjectPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      devCenterName: S.String.pipe(T.Label()),
-      projectPolicyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
-        code: 200,
-        apiVersion: "2025-02-01",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectPoliciesCreateOrUpdateRequest",
-}) as any as S.Schema<ProjectPoliciesCreateOrUpdateRequest>;
-
 /** Indicates what action to perform for the policy. */
-export type PolicyAction = "Allow" | "Deny" | (string & {});
+export type PolicyAction = "Allow" | "Deny";
 export const PolicyAction = /*@__PURE__*/ S.String;
 
 /** Indicates dev center resource types. */
-export type DevCenterResourceType =
-  | "Images"
-  | "AttachedNetworks"
-  | "Skus"
-  | (string & {});
+export type DevCenterResourceType = "Images" | "AttachedNetworks" | "Skus";
 export const DevCenterResourceType = /*@__PURE__*/ S.String;
 
 /** A resource policy. */
@@ -7830,14 +8833,79 @@ export const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourcePolicy" }) as any as S.Schema<ResourcePolicy>;
 
 /** Resource policies that are a part of this project policy. */
-export type ProjectPolicyPropertiesResourcePoliciesList = ResourcePolicy[];
+export type ProjectPolicyPropertiesInputResourcePoliciesList =
+  ReadonlyArray<ResourcePolicy>;
+export const ProjectPolicyPropertiesInputResourcePoliciesList =
+  /*@__PURE__*/ S.Array(
+    ResourcePolicy,
+  ) as any as S.Schema<ProjectPolicyPropertiesInputResourcePoliciesList>;
+
+/** Resources that have access to the shared resources that are a part of this project policy. */
+export type ProjectPolicyPropertiesInputScopesList = ReadonlyArray<string>;
+export const ProjectPolicyPropertiesInputScopesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ProjectPolicyPropertiesInputScopesList>;
+
+/** Properties of an project policy. */
+export interface ProjectPolicyPropertiesInput {
+  /** Resource policies that are a part of this project policy. */
+  resourcePolicies?: ProjectPolicyPropertiesInputResourcePoliciesList;
+  /** Resources that have access to the shared resources that are a part of this project policy. */
+  scopes?: ProjectPolicyPropertiesInputScopesList;
+}
+export const ProjectPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourcePolicies: S.optional(
+      ProjectPolicyPropertiesInputResourcePoliciesList,
+    ),
+    scopes: S.optional(ProjectPolicyPropertiesInputScopesList),
+  }),
+).annotate({
+  identifier: "ProjectPolicyPropertiesInput",
+}) as any as S.Schema<ProjectPolicyPropertiesInput>;
+
+export interface ProjectPoliciesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the devcenter. */
+  devCenterName: string;
+  /** The name of the project policy. */
+  projectPolicyName: string;
+  /** Properties of an project policy. */
+  properties?: ProjectPolicyPropertiesInput;
+}
+export const ProjectPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      devCenterName: S.String.pipe(T.Label()),
+      projectPolicyName: S.String.pipe(T.Label()),
+      properties: S.optional(ProjectPolicyPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/projectPolicies/{projectPolicyName}",
+        code: 200,
+        apiVersion: "2025-02-01",
+      }),
+    ),
+).annotate({
+  identifier: "ProjectPoliciesCreateOrUpdateRequest",
+}) as any as S.Schema<ProjectPoliciesCreateOrUpdateRequest>;
+
+/** Resource policies that are a part of this project policy. */
+export type ProjectPolicyPropertiesResourcePoliciesList =
+  ReadonlyArray<ResourcePolicy>;
 export const ProjectPolicyPropertiesResourcePoliciesList =
   /*@__PURE__*/ S.Array(
     ResourcePolicy,
   ) as any as S.Schema<ProjectPolicyPropertiesResourcePoliciesList>;
 
 /** Resources that have access to the shared resources that are a part of this project policy. */
-export type ProjectPolicyPropertiesScopesList = string[];
+export type ProjectPolicyPropertiesScopesList = ReadonlyArray<string>;
 export const ProjectPolicyPropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectPolicyPropertiesScopesList>;
@@ -7859,8 +8927,7 @@ export type ProjectPolicyPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const ProjectPolicyPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of an project policy. */
@@ -8047,7 +9114,7 @@ export const ProjectPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectPolicy" }) as any as S.Schema<ProjectPolicy>;
 
 /** Current page of results. */
-export type ProjectPolicyListResultValueList = ProjectPolicy[];
+export type ProjectPolicyListResultValueList = ReadonlyArray<ProjectPolicy>;
 export const ProjectPolicyListResultValueList = /*@__PURE__*/ S.Array(
   ProjectPolicy,
 ) as any as S.Schema<ProjectPolicyListResultValueList>;
@@ -8068,6 +9135,38 @@ export const ProjectPolicyListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectPolicyListResult",
 }) as any as S.Schema<ProjectPolicyListResult>;
 
+/** Resource policies that are a part of this project policy. */
+export type ProjectPolicyUpdatePropertiesResourcePoliciesList =
+  ReadonlyArray<ResourcePolicy>;
+export const ProjectPolicyUpdatePropertiesResourcePoliciesList =
+  /*@__PURE__*/ S.Array(
+    ResourcePolicy,
+  ) as any as S.Schema<ProjectPolicyUpdatePropertiesResourcePoliciesList>;
+
+/** Resources that have access to the shared resources that are a part of this project policy. */
+export type ProjectPolicyUpdatePropertiesScopesList = ReadonlyArray<string>;
+export const ProjectPolicyUpdatePropertiesScopesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ProjectPolicyUpdatePropertiesScopesList>;
+
+/** Properties of an project policy. These properties can be updated after the resource has been created. */
+export interface ProjectPolicyUpdateProperties {
+  /** Resource policies that are a part of this project policy. */
+  resourcePolicies?: ProjectPolicyUpdatePropertiesResourcePoliciesList;
+  /** Resources that have access to the shared resources that are a part of this project policy. */
+  scopes?: ProjectPolicyUpdatePropertiesScopesList;
+}
+export const ProjectPolicyUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourcePolicies: S.optional(
+      ProjectPolicyUpdatePropertiesResourcePoliciesList,
+    ),
+    scopes: S.optional(ProjectPolicyUpdatePropertiesScopesList),
+  }),
+).annotate({
+  identifier: "ProjectPolicyUpdateProperties",
+}) as any as S.Schema<ProjectPolicyUpdateProperties>;
+
 export interface ProjectPoliciesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8077,7 +9176,8 @@ export interface ProjectPoliciesUpdateRequest {
   devCenterName: string;
   /** The name of the project policy. */
   projectPolicyName: string;
-  body: unknown;
+  /** Properties of an project policy to be updated. */
+  properties?: ProjectPolicyUpdateProperties;
 }
 export const ProjectPoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8085,7 +9185,7 @@ export const ProjectPoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     devCenterName: S.String.pipe(T.Label()),
     projectPolicyName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ProjectPolicyUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -8122,6 +9222,78 @@ export const ProjectPoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectPoliciesUpdateResponse",
 }) as any as S.Schema<ProjectPoliciesUpdateResponse>;
 
+/** Resource tags. */
+export type ProjectsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
+
+/** Indicates catalog item types that can be synced. */
+export type ProjectCatalogSettingsCatalogItemSyncTypesList =
+  ReadonlyArray<CatalogItemType>;
+export const ProjectCatalogSettingsCatalogItemSyncTypesList =
+  /*@__PURE__*/ S.Array(
+    CatalogItemType,
+  ) as any as S.Schema<ProjectCatalogSettingsCatalogItemSyncTypesList>;
+
+/** Settings to be used when associating a project with a catalog. */
+export interface ProjectCatalogSettings {
+  /** Indicates catalog item types that can be synced. */
+  catalogItemSyncTypes?: ProjectCatalogSettingsCatalogItemSyncTypesList;
+}
+export const ProjectCatalogSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    catalogItemSyncTypes: S.optional(
+      ProjectCatalogSettingsCatalogItemSyncTypesList,
+    ),
+  }),
+).annotate({
+  identifier: "ProjectCatalogSettings",
+}) as any as S.Schema<ProjectCatalogSettings>;
+
+/** Properties of a project. */
+export interface ProjectPropertiesInput {
+  /** Resource Id of an associated DevCenter */
+  devCenterId?: string;
+  /** Description of the project. */
+  description?: string;
+  /** When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced. */
+  maxDevBoxesPerUser?: number;
+  /** The display name of the project. */
+  displayName?: string;
+  /** Settings to be used when associating a project with a catalog. */
+  catalogSettings?: ProjectCatalogSettings;
+}
+export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    devCenterId: S.optional(S.String),
+    description: S.optional(S.String),
+    maxDevBoxesPerUser: S.optional(S.Number),
+    displayName: S.optional(S.String),
+    catalogSettings: S.optional(ProjectCatalogSettings),
+  }),
+).annotate({
+  identifier: "ProjectPropertiesInput",
+}) as any as S.Schema<ProjectPropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ProjectsCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ProjectsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "ProjectsCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<ProjectsCreateOrUpdateRequestIdentity>;
+
 export interface ProjectsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8129,14 +9301,24 @@ export interface ProjectsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the project. */
   projectName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ProjectsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of a project. */
+  properties?: ProjectPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ProjectsCreateOrUpdateRequestIdentity;
 }
 export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ProjectsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ProjectPropertiesInput),
+    identity: S.optional(ProjectsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -8158,28 +9340,6 @@ export const ProjectsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
 
-/** Indicates catalog item types that can be synced. */
-export type ProjectCatalogSettingsCatalogItemSyncTypesList = CatalogItemType[];
-export const ProjectCatalogSettingsCatalogItemSyncTypesList =
-  /*@__PURE__*/ S.Array(
-    CatalogItemType,
-  ) as any as S.Schema<ProjectCatalogSettingsCatalogItemSyncTypesList>;
-
-/** Settings to be used when associating a project with a catalog. */
-export interface ProjectCatalogSettings {
-  /** Indicates catalog item types that can be synced. */
-  catalogItemSyncTypes?: ProjectCatalogSettingsCatalogItemSyncTypesList;
-}
-export const ProjectCatalogSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    catalogItemSyncTypes: S.optional(
-      ProjectCatalogSettingsCatalogItemSyncTypesList,
-    ),
-  }),
-).annotate({
-  identifier: "ProjectCatalogSettings",
-}) as any as S.Schema<ProjectCatalogSettings>;
-
 /** Provisioning state of the resource. */
 export type ProjectPropertiesProvisioningState =
   | "NotSpecified"
@@ -8197,8 +9357,7 @@ export type ProjectPropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const ProjectPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of a project. */
@@ -8543,7 +9702,7 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
 
 /** Current page of results. */
-export type ProjectListResultValueList = Project[];
+export type ProjectListResultValueList = ReadonlyArray<Project>;
 export const ProjectListResultValueList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectListResultValueList>;
@@ -8586,6 +9745,45 @@ export const ProjectsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsListBySubscriptionRequest",
 }) as any as S.Schema<ProjectsListBySubscriptionRequest>;
 
+/** Properties of a project. These properties can be updated after the resource has been created. */
+export interface ProjectUpdateProperties {
+  /** Resource Id of an associated DevCenter */
+  devCenterId?: string;
+  /** Description of the project. */
+  description?: string;
+  /** When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced. */
+  maxDevBoxesPerUser?: number;
+  /** The display name of the project. */
+  displayName?: string;
+  /** Settings to be used when associating a project with a catalog. */
+  catalogSettings?: ProjectCatalogSettings;
+}
+export const ProjectUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    devCenterId: S.optional(S.String),
+    description: S.optional(S.String),
+    maxDevBoxesPerUser: S.optional(S.Number),
+    displayName: S.optional(S.String),
+    catalogSettings: S.optional(ProjectCatalogSettings),
+  }),
+).annotate({
+  identifier: "ProjectUpdateProperties",
+}) as any as S.Schema<ProjectUpdateProperties>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ProjectsUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ProjectsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "ProjectsUpdateRequestIdentity",
+}) as any as S.Schema<ProjectsUpdateRequestIdentity>;
+
 export interface ProjectsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8593,14 +9791,24 @@ export interface ProjectsUpdateRequest {
   resourceGroupName: string;
   /** The name of the project. */
   projectName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: Tags;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Properties of a project to be updated. */
+  properties?: ProjectUpdateProperties;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ProjectsUpdateRequestIdentity;
 }
 export const ProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(Tags),
+    location: S.optional(S.String),
+    properties: S.optional(ProjectUpdateProperties),
+    identity: S.optional(ProjectsUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -8675,6 +9883,49 @@ export const ProjectsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsUpdateResponse",
 }) as any as S.Schema<ProjectsUpdateResponse>;
 
+/** The supported types for a scheduled task. */
+export type ScheduledType = "StopDevBox";
+export const ScheduledType = /*@__PURE__*/ S.String;
+
+/** The frequency of task execution. */
+export type ScheduledFrequency = "Daily";
+export const ScheduledFrequency = /*@__PURE__*/ S.String;
+
+/** Schedule enable or disable status. Indicates whether the schedule applied to is either enabled or disabled. */
+export type ScheduleEnableStatus = "Enabled" | "Disabled";
+export const ScheduleEnableStatus = /*@__PURE__*/ S.String;
+
+/** The Schedule properties defining when and what to execute. */
+export interface SchedulePropertiesInput {
+  /** Resource tags. */
+  tags?: Tags;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Supported type this scheduled task represents. */
+  type: ScheduledType;
+  /** The frequency of this scheduled task. */
+  frequency: ScheduledFrequency;
+  /** The target time to trigger the action. The format is HH:MM. */
+  time: string;
+  /** The IANA timezone id at which the schedule should execute. */
+  timeZone: string;
+  /** Indicates whether or not this scheduled task is enabled. */
+  state?: ScheduleEnableStatus;
+}
+export const SchedulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tags: S.optional(Tags),
+    location: S.optional(S.String),
+    type: ScheduledType,
+    frequency: ScheduledFrequency,
+    time: S.String,
+    timeZone: S.String,
+    state: S.optional(ScheduleEnableStatus),
+  }),
+).annotate({
+  identifier: "SchedulePropertiesInput",
+}) as any as S.Schema<SchedulePropertiesInput>;
+
 export interface SchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8688,7 +9939,8 @@ export interface SchedulesCreateOrUpdateRequest {
   scheduleName: string;
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
-  body: unknown;
+  /** Properties of a Schedule resource */
+  properties?: SchedulePropertiesInput;
 }
 export const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8698,7 +9950,7 @@ export const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     poolName: S.String.pipe(T.Label()),
     scheduleName: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SchedulePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -8710,25 +9962,6 @@ export const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SchedulesCreateOrUpdateRequest",
 }) as any as S.Schema<SchedulesCreateOrUpdateRequest>;
-
-/** Resource tags. */
-export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<Tags>;
-
-/** The supported types for a scheduled task. */
-export type ScheduledType = "StopDevBox" | (string & {});
-export const ScheduledType = /*@__PURE__*/ S.String;
-
-/** The frequency of task execution. */
-export type ScheduledFrequency = "Daily" | (string & {});
-export const ScheduledFrequency = /*@__PURE__*/ S.String;
-
-/** Schedule enable or disable status. Indicates whether the schedule applied to is either enabled or disabled. */
-export type ScheduleEnableStatus = "Enabled" | "Disabled" | (string & {});
-export const ScheduleEnableStatus = /*@__PURE__*/ S.String;
 
 /** Provisioning state of the resource. */
 export type SchedulePropertiesProvisioningState =
@@ -8747,8 +9980,7 @@ export type SchedulePropertiesProvisioningState =
   | "MovingResources"
   | "TransientFailure"
   | "RolloutInProgress"
-  | "StorageProvisioningFailed"
-  | (string & {});
+  | "StorageProvisioningFailed";
 export const SchedulePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The Schedule properties defining when and what to execute. */
@@ -8963,7 +10195,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
 /** Current page of results. */
-export type ScheduleListResultValueList = Schedule[];
+export type ScheduleListResultValueList = ReadonlyArray<Schedule>;
 export const ScheduleListResultValueList = /*@__PURE__*/ S.Array(
   Schedule,
 ) as any as S.Schema<ScheduleListResultValueList>;
@@ -8984,6 +10216,37 @@ export const ScheduleListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScheduleListResult",
 }) as any as S.Schema<ScheduleListResult>;
 
+/** Updatable properties of a Schedule. */
+export interface ScheduleUpdateProperties {
+  /** Resource tags. */
+  tags?: Tags;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Supported type this scheduled task represents. */
+  type?: ScheduledType;
+  /** The frequency of this scheduled task. */
+  frequency?: ScheduledFrequency;
+  /** The target time to trigger the action. The format is HH:MM. */
+  time?: string;
+  /** The IANA timezone id at which the schedule should execute. */
+  timeZone?: string;
+  /** Indicates whether or not this scheduled task is enabled. */
+  state?: ScheduleEnableStatus;
+}
+export const ScheduleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tags: S.optional(Tags),
+    location: S.optional(S.String),
+    type: S.optional(ScheduledType),
+    frequency: S.optional(ScheduledFrequency),
+    time: S.optional(S.String),
+    timeZone: S.optional(S.String),
+    state: S.optional(ScheduleEnableStatus),
+  }),
+).annotate({
+  identifier: "ScheduleUpdateProperties",
+}) as any as S.Schema<ScheduleUpdateProperties>;
+
 export interface SchedulesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8997,7 +10260,8 @@ export interface SchedulesUpdateRequest {
   scheduleName: string;
   /** The maximum number of resources to return from the operation. Example: '$top=10'. */
   _top?: number;
-  body: unknown;
+  /** Properties of a schedule resource to be updated. */
+  properties?: ScheduleUpdateProperties;
 }
 export const SchedulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9007,7 +10271,7 @@ export const SchedulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     poolName: S.String.pipe(T.Label()),
     scheduleName: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ScheduleUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -9070,7 +10334,8 @@ export const SkusListByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkusListByProjectRequest>;
 
 /** SKU supported locations. */
-export type SkusListByProjectResponseValueItemLocationsList = string[];
+export type SkusListByProjectResponseValueItemLocationsList =
+  ReadonlyArray<string>;
 export const SkusListByProjectResponseValueItemLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9091,7 +10356,8 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
 
 /** Collection of name/value pairs to describe the SKU capabilities. */
-export type SkusListByProjectResponseValueItemCapabilitiesList = Capability[];
+export type SkusListByProjectResponseValueItemCapabilitiesList =
+  ReadonlyArray<Capability>;
 export const SkusListByProjectResponseValueItemCapabilitiesList =
   /*@__PURE__*/ S.Array(
     Capability,
@@ -9134,7 +10400,7 @@ export const SkusListByProjectResponseValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Current page of results. */
 export type SkusListByProjectResponseValueList =
-  SkusListByProjectResponseValueItem[];
+  ReadonlyArray<SkusListByProjectResponseValueItem>;
 export const SkusListByProjectResponseValueList = /*@__PURE__*/ S.Array(
   SkusListByProjectResponseValueItem,
 ) as any as S.Schema<SkusListByProjectResponseValueList>;
@@ -9177,13 +10443,13 @@ export const SkusListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkusListBySubscriptionRequest>;
 
 /** SKU supported locations. */
-export type SkuListResultValueItemLocationsList = string[];
+export type SkuListResultValueItemLocationsList = ReadonlyArray<string>;
 export const SkuListResultValueItemLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuListResultValueItemLocationsList>;
 
 /** Collection of name/value pairs to describe the SKU capabilities. */
-export type SkuListResultValueItemCapabilitiesList = Capability[];
+export type SkuListResultValueItemCapabilitiesList = ReadonlyArray<Capability>;
 export const SkuListResultValueItemCapabilitiesList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<SkuListResultValueItemCapabilitiesList>;
@@ -9222,7 +10488,7 @@ export const SkuListResultValueItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuListResultValueItem>;
 
 /** Current page of results. */
-export type SkuListResultValueList = SkuListResultValueItem[];
+export type SkuListResultValueList = ReadonlyArray<SkuListResultValueItem>;
 export const SkuListResultValueList = /*@__PURE__*/ S.Array(
   SkuListResultValueItem,
 ) as any as S.Schema<SkuListResultValueList>;
@@ -9264,7 +10530,7 @@ export const UsagesListByLocationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsagesListByLocationRequest>;
 
 /** The unit details. */
-export type UsageUnit = "Count" | (string & {});
+export type UsageUnit = "Count";
 export const UsageUnit = /*@__PURE__*/ S.String;
 
 /** The Usage Names. */
@@ -9305,7 +10571,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The array page of Usages. */
-export type ListUsagesResultValueList = Usage[];
+export type ListUsagesResultValueList = ReadonlyArray<Usage>;
 export const ListUsagesResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<ListUsagesResultValueList>;

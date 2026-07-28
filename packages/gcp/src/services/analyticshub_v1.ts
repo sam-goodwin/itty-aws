@@ -95,14 +95,12 @@ export type QueryTemplateStateEnum =
   | "DRAFTED"
   | "PENDING"
   | "DELETED"
-  | "APPROVED"
-  | (string & {});
+  | "APPROVED";
 export const QueryTemplateStateEnum = /*@__PURE__*/ S.String;
 
 export type RoutineRoutineTypeEnum =
   | "ROUTINE_TYPE_UNSPECIFIED"
-  | "TABLE_VALUED_FUNCTION"
-  | (string & {});
+  | "TABLE_VALUED_FUNCTION";
 export const RoutineRoutineTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a bigquery routine. */
@@ -200,8 +198,7 @@ export const SharingEnvironmentConfig = /*@__PURE__*/ S.suspend(() =>
 export type DataExchangeDiscoveryTypeEnum =
   | "DISCOVERY_TYPE_UNSPECIFIED"
   | "DISCOVERY_TYPE_PRIVATE"
-  | "DISCOVERY_TYPE_PUBLIC"
-  | (string & {});
+  | "DISCOVERY_TYPE_PUBLIC";
 export const DataExchangeDiscoveryTypeEnum = /*@__PURE__*/ S.String;
 
 /** A data exchange is a container that lets you share data. Along with the descriptive information about the data exchange, it contains listings that reference shared datasets. */
@@ -307,11 +304,11 @@ export type ListingCategoriesItemEnum =
   | "CATEGORY_SCIENCE_AND_RESEARCH"
   | "CATEGORY_TRANSPORTATION_AND_LOGISTICS"
   | "CATEGORY_TRAVEL_AND_TOURISM"
-  | "CATEGORY_GOOGLE_EARTH_ENGINE"
-  | (string & {});
+  | "CATEGORY_GOOGLE_EARTH_ENGINE";
 export const ListingCategoriesItemEnum = /*@__PURE__*/ S.String;
 
-export type ListingCategoriesItemEnumList = ListingCategoriesItemEnum[];
+export type ListingCategoriesItemEnumList =
+  ReadonlyArray<ListingCategoriesItemEnum>;
 export const ListingCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   ListingCategoriesItemEnum,
 ) as any as S.Schema<ListingCategoriesItemEnumList>;
@@ -344,7 +341,7 @@ export const DataProvider = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataProvider" }) as any as S.Schema<DataProvider>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -367,13 +364,12 @@ export const PubSubTopicSource = /*@__PURE__*/ S.suspend(() =>
 
 export type StoredProcedureConfigAllowedStoredProcedureTypesItemEnum =
   | "STORED_PROCEDURE_TYPE_UNSPECIFIED"
-  | "SQL_PROCEDURE"
-  | (string & {});
+  | "SQL_PROCEDURE";
 export const StoredProcedureConfigAllowedStoredProcedureTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList =
-  StoredProcedureConfigAllowedStoredProcedureTypesItemEnum[];
+  ReadonlyArray<StoredProcedureConfigAllowedStoredProcedureTypesItemEnum>;
 export const StoredProcedureConfigAllowedStoredProcedureTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     StoredProcedureConfigAllowedStoredProcedureTypesItemEnum,
@@ -398,7 +394,7 @@ export const StoredProcedureConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoredProcedureConfig>;
 
 export type GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfoCommercialStateEnum =
-  "COMMERCIAL_STATE_UNSPECIFIED" | "ONBOARDING" | "ACTIVE" | (string & {});
+  "COMMERCIAL_STATE_UNSPECIFIED" | "ONBOARDING" | "ACTIVE";
 export const GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfoGoogleCloudMarketplaceInfoCommercialStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -441,21 +437,18 @@ export const GoogleCloudBigqueryAnalyticshubV1ListingCommercialInfo =
 export type ListingResourceTypeEnum =
   | "SHARED_RESOURCE_TYPE_UNSPECIFIED"
   | "BIGQUERY_DATASET"
-  | "PUBSUB_TOPIC"
-  | (string & {});
+  | "PUBSUB_TOPIC";
 export const ListingResourceTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReplicaReplicaStateEnum =
   | "REPLICA_STATE_UNSPECIFIED"
   | "READY_TO_USE"
-  | "UNAVAILABLE"
-  | (string & {});
+  | "UNAVAILABLE";
 export const ReplicaReplicaStateEnum = /*@__PURE__*/ S.String;
 
 export type ReplicaPrimaryStateEnum =
   | "PRIMARY_STATE_UNSPECIFIED"
-  | "PRIMARY_REPLICA"
-  | (string & {});
+  | "PRIMARY_REPLICA";
 export const ReplicaPrimaryStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the state of a replica of a shared dataset. It includes the geographic location of the replica and system-computed, output-only fields indicating its replication state and whether it is the primary replica. */
@@ -475,7 +468,7 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
-export type ReplicaList = Replica[];
+export type ReplicaList = ReadonlyArray<Replica>;
 export const ReplicaList = /*@__PURE__*/ S.Array(
   Replica,
 ) as any as S.Schema<ReplicaList>;
@@ -496,7 +489,7 @@ export const SelectedResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "SelectedResource",
 }) as any as S.Schema<SelectedResource>;
 
-export type SelectedResourceList = SelectedResource[];
+export type SelectedResourceList = ReadonlyArray<SelectedResource>;
 export const SelectedResourceList = /*@__PURE__*/ S.Array(
   SelectedResource,
 ) as any as S.Schema<SelectedResourceList>;
@@ -548,11 +541,10 @@ export const BigQueryDatasetSource = /*@__PURE__*/ S.suspend(() =>
 export type ListingDiscoveryTypeEnum =
   | "DISCOVERY_TYPE_UNSPECIFIED"
   | "DISCOVERY_TYPE_PRIVATE"
-  | "DISCOVERY_TYPE_PUBLIC"
-  | (string & {});
+  | "DISCOVERY_TYPE_PUBLIC";
 export const ListingDiscoveryTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListingStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | (string & {});
+export type ListingStateEnum = "STATE_UNSPECIFIED" | "ACTIVE";
 export const ListingStateEnum = /*@__PURE__*/ S.String;
 
 /** A listing is what gets published into a data exchange that a subscriber can subscribe to. It contains a reference to the data source along with descriptive information that will help subscribers find and subscribe the data. */
@@ -766,7 +758,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -863,8 +855,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -881,7 +872,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -900,7 +891,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -942,7 +933,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1144,11 +1135,10 @@ export const GoogleCloudBigqueryAnalyticshubV1SubscriptionCommercialInfo =
 export type SubscriptionResourceTypeEnum =
   | "SHARED_RESOURCE_TYPE_UNSPECIFIED"
   | "BIGQUERY_DATASET"
-  | "PUBSUB_TOPIC"
-  | (string & {});
+  | "PUBSUB_TOPIC";
 export const SubscriptionResourceTypeEnum = /*@__PURE__*/ S.String;
 
-export type LinkedResourceList = LinkedResource[];
+export type LinkedResourceList = ReadonlyArray<LinkedResource>;
 export const LinkedResourceList = /*@__PURE__*/ S.Array(
   LinkedResource,
 ) as any as S.Schema<LinkedResourceList>;
@@ -1206,8 +1196,7 @@ export type SubscriptionStateEnum =
   | "STATE_UNSPECIFIED"
   | "STATE_ACTIVE"
   | "STATE_STALE"
-  | "STATE_INACTIVE"
-  | (string & {});
+  | "STATE_INACTIVE";
 export const SubscriptionStateEnum = /*@__PURE__*/ S.String;
 
 /** A subscription represents a subscribers' access to a particular set of published data. It contains references to associated listings, data exchanges, and linked datasets. */
@@ -1290,7 +1279,7 @@ export const ListOrganizationsLocationsDataExchangesRequest =
     identifier: "ListOrganizationsLocationsDataExchangesRequest",
   }) as any as S.Schema<ListOrganizationsLocationsDataExchangesRequest>;
 
-export type DataExchangeList = DataExchange[];
+export type DataExchangeList = ReadonlyArray<DataExchange>;
 export const DataExchangeList = /*@__PURE__*/ S.Array(
   DataExchange,
 ) as any as S.Schema<DataExchangeList>;
@@ -1377,7 +1366,7 @@ export const ListProjectsLocationsDataExchangesListingsRequest =
     identifier: "ListProjectsLocationsDataExchangesListingsRequest",
   }) as any as S.Schema<ListProjectsLocationsDataExchangesListingsRequest>;
 
-export type ListingList = Listing[];
+export type ListingList = ReadonlyArray<Listing>;
 export const ListingList = /*@__PURE__*/ S.Array(
   Listing,
 ) as any as S.Schema<ListingList>;
@@ -1423,7 +1412,7 @@ export const ListProjectsLocationsDataExchangesQueryTemplatesRequest =
     identifier: "ListProjectsLocationsDataExchangesQueryTemplatesRequest",
   }) as any as S.Schema<ListProjectsLocationsDataExchangesQueryTemplatesRequest>;
 
-export type QueryTemplateList = QueryTemplate[];
+export type QueryTemplateList = ReadonlyArray<QueryTemplate>;
 export const QueryTemplateList = /*@__PURE__*/ S.Array(
   QueryTemplate,
 ) as any as S.Schema<QueryTemplateList>;
@@ -1472,7 +1461,7 @@ export const ListProjectsLocationsSubscriptionsRequest =
     identifier: "ListProjectsLocationsSubscriptionsRequest",
   }) as any as S.Schema<ListProjectsLocationsSubscriptionsRequest>;
 
-export type SubscriptionList = Subscription[];
+export type SubscriptionList = ReadonlyArray<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -1928,15 +1917,13 @@ export const ExpirationPolicy = /*@__PURE__*/ S.suspend(() =>
 
 export type CompressionCompressionAlgorithmEnum =
   | "COMPRESSION_ALGORITHM_UNSPECIFIED"
-  | "ZLIB"
-  | (string & {});
+  | "ZLIB";
 export const CompressionCompressionAlgorithmEnum = /*@__PURE__*/ S.String;
 
 export type CompressionCompressionModeEnum =
   | "COMPRESSION_MODE_UNSPECIFIED"
   | "COMPRESS"
-  | "DECOMPRESS"
-  | (string & {});
+  | "DECOMPRESS";
 export const CompressionCompressionModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for compressing/decompressing message data using a user-specified compression algorithm. */
@@ -2022,7 +2009,7 @@ export const MessageTransform = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessageTransform",
 }) as any as S.Schema<MessageTransform>;
 
-export type MessageTransformList = MessageTransform[];
+export type MessageTransformList = ReadonlyArray<MessageTransform>;
 export const MessageTransformList = /*@__PURE__*/ S.Array(
   MessageTransform,
 ) as any as S.Schema<MessageTransformList>;

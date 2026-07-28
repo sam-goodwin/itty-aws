@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -147,8 +147,7 @@ export type BulkInsertOperationStatusStatusEnum =
   | "CREATING"
   | "DONE"
   | "ROLLING_BACK"
-  | "STATUS_UNSPECIFIED"
-  | (string & {});
+  | "STATUS_UNSPECIFIED";
 export const BulkInsertOperationStatusStatusEnum = /*@__PURE__*/ S.String;
 
 export interface BulkInsertOperationStatus {
@@ -227,7 +226,7 @@ export const HelpLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HelpLink" }) as any as S.Schema<HelpLink>;
 
-export type HelpLinkList = HelpLink[];
+export type HelpLinkList = ReadonlyArray<HelpLink>;
 export const HelpLinkList = /*@__PURE__*/ S.Array(
   HelpLink,
 ) as any as S.Schema<HelpLinkList>;
@@ -245,8 +244,7 @@ export const Help = /*@__PURE__*/ S.suspend(() =>
 
 export type QuotaExceededInfoRolloutStatusEnum =
   | "IN_PROGRESS"
-  | "ROLLOUT_STATUS_UNSPECIFIED"
-  | (string & {});
+  | "ROLLOUT_STATUS_UNSPECIFIED";
 export const QuotaExceededInfoRolloutStatusEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for quota exceeded error for resource quota. */
@@ -316,7 +314,7 @@ export const OperationErrorErrorsItemErrorDetailsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationErrorErrorsItemErrorDetailsItem>;
 
 export type OperationErrorErrorsItemErrorDetailsItemList =
-  OperationErrorErrorsItemErrorDetailsItem[];
+  ReadonlyArray<OperationErrorErrorsItemErrorDetailsItem>;
 export const OperationErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     OperationErrorErrorsItemErrorDetailsItem,
@@ -343,7 +341,8 @@ export const OperationErrorErrorsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationErrorErrorsItem",
 }) as any as S.Schema<OperationErrorErrorsItem>;
 
-export type OperationErrorErrorsItemList = OperationErrorErrorsItem[];
+export type OperationErrorErrorsItemList =
+  ReadonlyArray<OperationErrorErrorsItem>;
 export const OperationErrorErrorsItemList = /*@__PURE__*/ S.Array(
   OperationErrorErrorsItem,
 ) as any as S.Schema<OperationErrorErrorsItemList>;
@@ -358,11 +357,7 @@ export const OperationError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OperationError" }) as any as S.Schema<OperationError>;
 
-export type OperationStatusEnum =
-  | "DONE"
-  | "PENDING"
-  | "RUNNING"
-  | (string & {});
+export type OperationStatusEnum = "DONE" | "PENDING" | "RUNNING";
 export const OperationStatusEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -371,7 +366,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -399,8 +394,7 @@ export type SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoSt
     | "FAILED"
     | "PROPAGATED"
     | "PROPAGATING"
-    | "UNSPECIFIED"
-    | (string & {});
+    | "UNSPECIFIED";
 export const SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfoStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -482,8 +476,7 @@ export type OperationWarningsItemCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const OperationWarningsItemCodeEnum = /*@__PURE__*/ S.String;
 
 export interface OperationWarningsItemDataItem {
@@ -501,7 +494,8 @@ export const OperationWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationWarningsItemDataItem",
 }) as any as S.Schema<OperationWarningsItemDataItem>;
 
-export type OperationWarningsItemDataItemList = OperationWarningsItemDataItem[];
+export type OperationWarningsItemDataItemList =
+  ReadonlyArray<OperationWarningsItemDataItem>;
 export const OperationWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   OperationWarningsItemDataItem,
 ) as any as S.Schema<OperationWarningsItemDataItemList>;
@@ -524,7 +518,7 @@ export const OperationWarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationWarningsItem",
 }) as any as S.Schema<OperationWarningsItem>;
 
-export type OperationWarningsItemList = OperationWarningsItem[];
+export type OperationWarningsItemList = ReadonlyArray<OperationWarningsItem>;
 export const OperationWarningsItemList = /*@__PURE__*/ S.Array(
   OperationWarningsItem,
 ) as any as S.Schema<OperationWarningsItemList>;
@@ -666,18 +660,14 @@ export const AbandonInstancesRegionInstanceGroupManagersRequest =
     identifier: "AbandonInstancesRegionInstanceGroupManagersRequest",
   }) as any as S.Schema<AbandonInstancesRegionInstanceGroupManagersRequest>;
 
-export type AccessConfigTypeEnum =
-  | "DIRECT_IPV6"
-  | "ONE_TO_ONE_NAT"
-  | (string & {});
+export type AccessConfigTypeEnum = "DIRECT_IPV6" | "ONE_TO_ONE_NAT";
 export const AccessConfigTypeEnum = /*@__PURE__*/ S.String;
 
 export type AccessConfigNetworkTierEnum =
   | "FIXED_STANDARD"
   | "PREMIUM"
   | "STANDARD"
-  | "STANDARD_OVERRIDES_FIXED_STANDARD"
-  | (string & {});
+  | "STANDARD_OVERRIDES_FIXED_STANDARD";
 export const AccessConfigNetworkTierEnum = /*@__PURE__*/ S.String;
 
 /** An access configuration attached to an instance's network interface. Only one access config per instance is supported. */
@@ -990,7 +980,7 @@ export const HealthCheckReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthCheckReference",
 }) as any as S.Schema<HealthCheckReference>;
 
-export type HealthCheckReferenceList = HealthCheckReference[];
+export type HealthCheckReferenceList = ReadonlyArray<HealthCheckReference>;
 export const HealthCheckReferenceList = /*@__PURE__*/ S.Array(
   HealthCheckReference,
 ) as any as S.Schema<HealthCheckReferenceList>;
@@ -1049,7 +1039,7 @@ export const InstanceReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceReference",
 }) as any as S.Schema<InstanceReference>;
 
-export type InstanceReferenceList = InstanceReference[];
+export type InstanceReferenceList = ReadonlyArray<InstanceReference>;
 export const InstanceReferenceList = /*@__PURE__*/ S.Array(
   InstanceReference,
 ) as any as S.Schema<InstanceReferenceList>;
@@ -1140,8 +1130,7 @@ export const AddInstanceTargetPoolsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type NetworkInterfaceIgmpQueryEnum =
   | "IGMP_QUERY_DISABLED"
-  | "IGMP_QUERY_V2"
-  | (string & {});
+  | "IGMP_QUERY_V2";
 export const NetworkInterfaceIgmpQueryEnum = /*@__PURE__*/ S.String;
 
 /** An alias IP range attached to an instance's network interface. */
@@ -1158,7 +1147,7 @@ export const AliasIpRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AliasIpRange" }) as any as S.Schema<AliasIpRange>;
 
-export type AliasIpRangeList = AliasIpRange[];
+export type AliasIpRangeList = ReadonlyArray<AliasIpRange>;
 export const AliasIpRangeList = /*@__PURE__*/ S.Array(
   AliasIpRange,
 ) as any as S.Schema<AliasIpRangeList>;
@@ -1169,24 +1158,19 @@ export type NetworkInterfaceNicTypeEnum =
   | "IRDMA"
   | "MRDMA"
   | "UNSPECIFIED_NIC_TYPE"
-  | "VIRTIO_NET"
-  | (string & {});
+  | "VIRTIO_NET";
 export const NetworkInterfaceNicTypeEnum = /*@__PURE__*/ S.String;
 
-export type NetworkInterfaceIpv6AccessTypeEnum =
-  | "EXTERNAL"
-  | "INTERNAL"
-  | (string & {});
+export type NetworkInterfaceIpv6AccessTypeEnum = "EXTERNAL" | "INTERNAL";
 export const NetworkInterfaceIpv6AccessTypeEnum = /*@__PURE__*/ S.String;
 
 export type NetworkInterfaceStackTypeEnum =
   | "IPV4_IPV6"
   | "IPV4_ONLY"
-  | "IPV6_ONLY"
-  | (string & {});
+  | "IPV6_ONLY";
 export const NetworkInterfaceStackTypeEnum = /*@__PURE__*/ S.String;
 
-export type AccessConfigList = AccessConfig[];
+export type AccessConfigList = ReadonlyArray<AccessConfig>;
 export const AccessConfigList = /*@__PURE__*/ S.Array(
   AccessConfig,
 ) as any as S.Schema<AccessConfigList>;
@@ -1342,10 +1326,7 @@ export const AddNodesNodeGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddNodesNodeGroupsRequest",
 }) as any as S.Schema<AddNodesNodeGroupsRequest>;
 
-export type FirewallPolicyRuleSecureTagStateEnum =
-  | "EFFECTIVE"
-  | "INEFFECTIVE"
-  | (string & {});
+export type FirewallPolicyRuleSecureTagStateEnum = "EFFECTIVE" | "INEFFECTIVE";
 export const FirewallPolicyRuleSecureTagStateEnum = /*@__PURE__*/ S.String;
 
 export interface FirewallPolicyRuleSecureTag {
@@ -1363,7 +1344,8 @@ export const FirewallPolicyRuleSecureTag = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallPolicyRuleSecureTag",
 }) as any as S.Schema<FirewallPolicyRuleSecureTag>;
 
-export type FirewallPolicyRuleSecureTagList = FirewallPolicyRuleSecureTag[];
+export type FirewallPolicyRuleSecureTagList =
+  ReadonlyArray<FirewallPolicyRuleSecureTag>;
 export const FirewallPolicyRuleSecureTagList = /*@__PURE__*/ S.Array(
   FirewallPolicyRuleSecureTag,
 ) as any as S.Schema<FirewallPolicyRuleSecureTagList>;
@@ -1373,8 +1355,7 @@ export type FirewallPolicyRuleMatcherDestNetworkScopeEnum =
   | "INTRA_VPC"
   | "NON_INTERNET"
   | "UNSPECIFIED"
-  | "VPC_NETWORKS"
-  | (string & {});
+  | "VPC_NETWORKS";
 export const FirewallPolicyRuleMatcherDestNetworkScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1383,8 +1364,7 @@ export type FirewallPolicyRuleMatcherSrcNetworkContextEnum =
   | "INTRA_VPC"
   | "NON_INTERNET"
   | "UNSPECIFIED"
-  | "VPC_NETWORKS"
-  | (string & {});
+  | "VPC_NETWORKS";
 export const FirewallPolicyRuleMatcherSrcNetworkContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -1393,8 +1373,7 @@ export type FirewallPolicyRuleMatcherDestNetworkTypeEnum =
   | "INTRA_VPC"
   | "NON_INTERNET"
   | "UNSPECIFIED"
-  | "VPC_NETWORKS"
-  | (string & {});
+  | "VPC_NETWORKS";
 export const FirewallPolicyRuleMatcherDestNetworkTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1415,7 +1394,7 @@ export const FirewallPolicyRuleMatcherLayer4Config = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FirewallPolicyRuleMatcherLayer4Config>;
 
 export type FirewallPolicyRuleMatcherLayer4ConfigList =
-  FirewallPolicyRuleMatcherLayer4Config[];
+  ReadonlyArray<FirewallPolicyRuleMatcherLayer4Config>;
 export const FirewallPolicyRuleMatcherLayer4ConfigList = /*@__PURE__*/ S.Array(
   FirewallPolicyRuleMatcherLayer4Config,
 ) as any as S.Schema<FirewallPolicyRuleMatcherLayer4ConfigList>;
@@ -1425,8 +1404,7 @@ export type FirewallPolicyRuleMatcherDestNetworkContextEnum =
   | "INTRA_VPC"
   | "NON_INTERNET"
   | "UNSPECIFIED"
-  | "VPC_NETWORKS"
-  | (string & {});
+  | "VPC_NETWORKS";
 export const FirewallPolicyRuleMatcherDestNetworkContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -1435,8 +1413,7 @@ export type FirewallPolicyRuleMatcherSrcNetworkScopeEnum =
   | "INTRA_VPC"
   | "NON_INTERNET"
   | "UNSPECIFIED"
-  | "VPC_NETWORKS"
-  | (string & {});
+  | "VPC_NETWORKS";
 export const FirewallPolicyRuleMatcherSrcNetworkScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1445,8 +1422,7 @@ export type FirewallPolicyRuleMatcherSrcNetworkTypeEnum =
   | "INTRA_VPC"
   | "NON_INTERNET"
   | "UNSPECIFIED"
-  | "VPC_NETWORKS"
-  | (string & {});
+  | "VPC_NETWORKS";
 export const FirewallPolicyRuleMatcherSrcNetworkTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1521,16 +1497,12 @@ export const FirewallPolicyRuleMatcher = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallPolicyRuleMatcher",
 }) as any as S.Schema<FirewallPolicyRuleMatcher>;
 
-export type FirewallPolicyRuleDirectionEnum =
-  | "EGRESS"
-  | "INGRESS"
-  | (string & {});
+export type FirewallPolicyRuleDirectionEnum = "EGRESS" | "INGRESS";
 export const FirewallPolicyRuleDirectionEnum = /*@__PURE__*/ S.String;
 
 export type FirewallPolicyRuleTargetTypeEnum =
   | "INSTANCES"
-  | "INTERNAL_MANAGED_LB"
-  | (string & {});
+  | "INTERNAL_MANAGED_LB";
 export const FirewallPolicyRuleTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny). */
@@ -1653,21 +1625,19 @@ export const AddPacketMirroringRuleNetworkFirewallPoliciesRequest =
     identifier: "AddPacketMirroringRuleNetworkFirewallPoliciesRequest",
   }) as any as S.Schema<AddPacketMirroringRuleNetworkFirewallPoliciesRequest>;
 
-export type NetworkPeeringStateEnum = "ACTIVE" | "INACTIVE" | (string & {});
+export type NetworkPeeringStateEnum = "ACTIVE" | "INACTIVE";
 export const NetworkPeeringStateEnum = /*@__PURE__*/ S.String;
 
 export type NetworkPeeringUpdateStrategyEnum =
   | "CONSENSUS"
   | "INDEPENDENT"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const NetworkPeeringUpdateStrategyEnum = /*@__PURE__*/ S.String;
 
 export type NetworkPeeringConnectionStatusUpdateStrategyEnum =
   | "CONSENSUS"
   | "INDEPENDENT"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const NetworkPeeringConnectionStatusUpdateStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1677,8 +1647,7 @@ export type NetworkPeeringConnectionStatusConsensusStateDeleteStatusEnum =
   | "LOCAL_CANCEL_REQUESTED"
   | "LOCAL_DELETE_REQUESTED"
   | "PEER_CANCEL_REQUESTED"
-  | "PEER_DELETE_REQUESTED"
-  | (string & {});
+  | "PEER_DELETE_REQUESTED";
 export const NetworkPeeringConnectionStatusConsensusStateDeleteStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1686,8 +1655,7 @@ export type NetworkPeeringConnectionStatusConsensusStateUpdateStatusEnum =
   | "IN_SYNC"
   | "PENDING_LOCAL_ACKNOWLEDMENT"
   | "PENDING_PEER_ACKNOWLEDGEMENT"
-  | "UPDATE_STATUS_UNSPECIFIED"
-  | (string & {});
+  | "UPDATE_STATUS_UNSPECIFIED";
 export const NetworkPeeringConnectionStatusConsensusStateUpdateStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1714,8 +1682,7 @@ export const NetworkPeeringConnectionStatusConsensusState =
 
 export type NetworkPeeringConnectionStatusTrafficConfigurationStackTypeEnum =
   | "IPV4_IPV6"
-  | "IPV4_ONLY"
-  | (string & {});
+  | "IPV4_ONLY";
 export const NetworkPeeringConnectionStatusTrafficConfigurationStackTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1769,10 +1736,7 @@ export const NetworkPeeringConnectionStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkPeeringConnectionStatus",
 }) as any as S.Schema<NetworkPeeringConnectionStatus>;
 
-export type NetworkPeeringStackTypeEnum =
-  | "IPV4_IPV6"
-  | "IPV4_ONLY"
-  | (string & {});
+export type NetworkPeeringStackTypeEnum = "IPV4_IPV6" | "IPV4_ONLY";
 export const NetworkPeeringStackTypeEnum = /*@__PURE__*/ S.String;
 
 /** A network peering attached to a network resource. The message includes the peering name, peer network, peering state, and a flag indicating whether Google Compute Engine should automatically create routes for the peering. */
@@ -2061,13 +2025,10 @@ export const AddRuleNetworkFirewallPoliciesRequest = /*@__PURE__*/ S.suspend(
   identifier: "AddRuleNetworkFirewallPoliciesRequest",
 }) as any as S.Schema<AddRuleNetworkFirewallPoliciesRequest>;
 
-export type SecurityPolicyRuleDirectionEnum =
-  | "EGRESS"
-  | "INGRESS"
-  | (string & {});
+export type SecurityPolicyRuleDirectionEnum = "EGRESS" | "INGRESS";
 export const SecurityPolicyRuleDirectionEnum = /*@__PURE__*/ S.String;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -2089,7 +2050,7 @@ export const SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch =
   }) as any as S.Schema<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch>;
 
 export type SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchList =
-  SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch[];
+  ReadonlyArray<SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch>;
 export const SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatch,
@@ -2148,7 +2109,7 @@ export const SecurityPolicyRuleMatcherConfigLayer4Config =
   }) as any as S.Schema<SecurityPolicyRuleMatcherConfigLayer4Config>;
 
 export type SecurityPolicyRuleMatcherConfigLayer4ConfigList =
-  SecurityPolicyRuleMatcherConfigLayer4Config[];
+  ReadonlyArray<SecurityPolicyRuleMatcherConfigLayer4Config>;
 export const SecurityPolicyRuleMatcherConfigLayer4ConfigList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRuleMatcherConfigLayer4Config,
@@ -2225,8 +2186,7 @@ export const SecurityPolicyRuleMatcherExprOptions = /*@__PURE__*/ S.suspend(
 
 export type SecurityPolicyRuleMatcherVersionedExprEnum =
   | "FIREWALL"
-  | "SRC_IPS_V1"
-  | (string & {});
+  | "SRC_IPS_V1";
 export const SecurityPolicyRuleMatcherVersionedExprEnum =
   /*@__PURE__*/ S.String;
 
@@ -2269,7 +2229,7 @@ export const SecurityPolicyRuleHttpHeaderActionHttpHeaderOption =
   }) as any as S.Schema<SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>;
 
 export type SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionList =
-  SecurityPolicyRuleHttpHeaderActionHttpHeaderOption[];
+  ReadonlyArray<SecurityPolicyRuleHttpHeaderActionHttpHeaderOption>;
 export const SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRuleHttpHeaderActionHttpHeaderOption,
@@ -2317,8 +2277,7 @@ export type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyEnum =
   | "TLS_JA3_FINGERPRINT"
   | "TLS_JA4_FINGERPRINT"
   | "USER_IP"
-  | "XFF_IP"
-  | (string & {});
+  | "XFF_IP";
 export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyEnum =
   /*@__PURE__*/ S.String;
 
@@ -2334,8 +2293,7 @@ export type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType
     | "TLS_JA3_FINGERPRINT"
     | "TLS_JA4_FINGERPRINT"
     | "USER_IP"
-    | "XFF_IP"
-    | (string & {});
+    | "XFF_IP";
 export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2358,7 +2316,7 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig =
   }) as any as S.Schema<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig>;
 
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigList =
-  SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig[];
+  ReadonlyArray<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig>;
 export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig,
@@ -2366,8 +2324,7 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigList =
 
 export type SecurityPolicyRuleRedirectOptionsTypeEnum =
   | "EXTERNAL_302"
-  | "GOOGLE_RECAPTCHA"
-  | (string & {});
+  | "GOOGLE_RECAPTCHA";
 export const SecurityPolicyRuleRedirectOptionsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SecurityPolicyRuleRedirectOptions {
@@ -2426,12 +2383,7 @@ export const SecurityPolicyRuleRateLimitOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityPolicyRuleRateLimitOptions>;
 
 export type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEnum =
-    | "CONTAINS"
-    | "ENDS_WITH"
-    | "EQUALS"
-    | "EQUALS_ANY"
-    | "STARTS_WITH"
-    | (string & {});
+  "CONTAINS" | "ENDS_WITH" | "EQUALS" | "EQUALS_ANY" | "STARTS_WITH";
 export const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEnum =
   /*@__PURE__*/ S.String;
 
@@ -2454,7 +2406,7 @@ export const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams =
   }) as any as S.Schema<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
 
 export type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsList =
-  SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams[];
+  ReadonlyArray<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams>;
 export const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams,
@@ -2502,7 +2454,7 @@ export const SecurityPolicyRulePreconfiguredWafConfigExclusion =
   }) as any as S.Schema<SecurityPolicyRulePreconfiguredWafConfigExclusion>;
 
 export type SecurityPolicyRulePreconfiguredWafConfigExclusionList =
-  SecurityPolicyRulePreconfiguredWafConfigExclusion[];
+  ReadonlyArray<SecurityPolicyRulePreconfiguredWafConfigExclusion>;
 export const SecurityPolicyRulePreconfiguredWafConfigExclusionList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyRulePreconfiguredWafConfigExclusion,
@@ -2793,7 +2745,7 @@ export const NetworkPolicyTrafficClassificationRuleMatcherLayer4Config =
   }) as any as S.Schema<NetworkPolicyTrafficClassificationRuleMatcherLayer4Config>;
 
 export type NetworkPolicyTrafficClassificationRuleMatcherLayer4ConfigList =
-  NetworkPolicyTrafficClassificationRuleMatcherLayer4Config[];
+  ReadonlyArray<NetworkPolicyTrafficClassificationRuleMatcherLayer4Config>;
 export const NetworkPolicyTrafficClassificationRuleMatcherLayer4ConfigList =
   /*@__PURE__*/ S.Array(
     NetworkPolicyTrafficClassificationRuleMatcherLayer4Config,
@@ -2827,15 +2779,13 @@ export type NetworkPolicyTrafficClassificationRuleActionTrafficClassEnum =
   | "TC3"
   | "TC4"
   | "TC5"
-  | "TC6"
-  | (string & {});
+  | "TC6";
 export const NetworkPolicyTrafficClassificationRuleActionTrafficClassEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkPolicyTrafficClassificationRuleActionDscpModeEnum =
   | "AUTO"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const NetworkPolicyTrafficClassificationRuleActionDscpModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2868,8 +2818,7 @@ export const NetworkPolicyTrafficClassificationRuleAction =
 export type NetworkPolicyTrafficClassificationRuleSecureTagStateEnum =
   | "EFFECTIVE"
   | "INEFFECTIVE"
-  | "STATE_UNSPECIFIED"
-  | (string & {});
+  | "STATE_UNSPECIFIED";
 export const NetworkPolicyTrafficClassificationRuleSecureTagStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2892,7 +2841,7 @@ export const NetworkPolicyTrafficClassificationRuleSecureTag =
   }) as any as S.Schema<NetworkPolicyTrafficClassificationRuleSecureTag>;
 
 export type NetworkPolicyTrafficClassificationRuleSecureTagList =
-  NetworkPolicyTrafficClassificationRuleSecureTag[];
+  ReadonlyArray<NetworkPolicyTrafficClassificationRuleSecureTag>;
 export const NetworkPolicyTrafficClassificationRuleSecureTagList =
   /*@__PURE__*/ S.Array(
     NetworkPolicyTrafficClassificationRuleSecureTag,
@@ -2974,16 +2923,12 @@ export const AddTrafficClassificationRuleRegionNetworkPoliciesRequest =
     identifier: "AddTrafficClassificationRuleRegionNetworkPoliciesRequest",
   }) as any as S.Schema<AddTrafficClassificationRuleRegionNetworkPoliciesRequest>;
 
-export type PreservedStatePreservedDiskModeEnum =
-  | "READ_ONLY"
-  | "READ_WRITE"
-  | (string & {});
+export type PreservedStatePreservedDiskModeEnum = "READ_ONLY" | "READ_WRITE";
 export const PreservedStatePreservedDiskModeEnum = /*@__PURE__*/ S.String;
 
 export type PreservedStatePreservedDiskAutoDeleteEnum =
   | "NEVER"
-  | "ON_PERMANENT_INSTANCE_DELETION"
-  | (string & {});
+  | "ON_PERMANENT_INSTANCE_DELETION";
 export const PreservedStatePreservedDiskAutoDeleteEnum = /*@__PURE__*/ S.String;
 
 export interface PreservedStatePreservedDisk {
@@ -3014,8 +2959,7 @@ export const PreservedStatePreservedDiskMap = /*@__PURE__*/ S.Record(
 
 export type PreservedStatePreservedNetworkIpAutoDeleteEnum =
   | "NEVER"
-  | "ON_PERMANENT_INSTANCE_DELETION"
-  | (string & {});
+  | "ON_PERMANENT_INSTANCE_DELETION";
 export const PreservedStatePreservedNetworkIpAutoDeleteEnum =
   /*@__PURE__*/ S.String;
 
@@ -3084,8 +3028,7 @@ export type PerInstanceConfigStatusEnum =
   | "EFFECTIVE"
   | "NONE"
   | "UNAPPLIED"
-  | "UNAPPLIED_DELETION"
-  | (string & {});
+  | "UNAPPLIED_DELETION";
 export const PerInstanceConfigStatusEnum = /*@__PURE__*/ S.String;
 
 export interface PerInstanceConfig {
@@ -3109,7 +3052,7 @@ export const PerInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "PerInstanceConfig",
 }) as any as S.Schema<PerInstanceConfig>;
 
-export type PerInstanceConfigList = PerInstanceConfig[];
+export type PerInstanceConfigList = ReadonlyArray<PerInstanceConfig>;
 export const PerInstanceConfigList = /*@__PURE__*/ S.Array(
   PerInstanceConfig,
 ) as any as S.Schema<PerInstanceConfigList>;
@@ -3258,8 +3201,7 @@ export type DeprecationStatusStateEnum =
   | "ACTIVE"
   | "DELETED"
   | "DEPRECATED"
-  | "OBSOLETE"
-  | (string & {});
+  | "OBSOLETE";
 export const DeprecationStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** A rollout policy configuration. */
@@ -3341,7 +3283,7 @@ export const AcceleratorType = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorType",
 }) as any as S.Schema<AcceleratorType>;
 
-export type AcceleratorTypeList_ = AcceleratorType[];
+export type AcceleratorTypeList_ = ReadonlyArray<AcceleratorType>;
 export const AcceleratorTypeList_ = /*@__PURE__*/ S.Array(
   AcceleratorType,
 ) as any as S.Schema<AcceleratorTypeList_>;
@@ -3375,8 +3317,7 @@ export type AcceleratorTypesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const AcceleratorTypesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface AcceleratorTypesScopedListWarningDataItem {
@@ -3396,7 +3337,7 @@ export const AcceleratorTypesScopedListWarningDataItem =
   }) as any as S.Schema<AcceleratorTypesScopedListWarningDataItem>;
 
 export type AcceleratorTypesScopedListWarningDataItemList =
-  AcceleratorTypesScopedListWarningDataItem[];
+  ReadonlyArray<AcceleratorTypesScopedListWarningDataItem>;
 export const AcceleratorTypesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     AcceleratorTypesScopedListWarningDataItem,
@@ -3472,8 +3413,7 @@ export type AcceleratorTypeAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const AcceleratorTypeAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3494,7 +3434,7 @@ export const AcceleratorTypeAggregatedListWarningDataItem =
   }) as any as S.Schema<AcceleratorTypeAggregatedListWarningDataItem>;
 
 export type AcceleratorTypeAggregatedListWarningDataItemList =
-  AcceleratorTypeAggregatedListWarningDataItem[];
+  ReadonlyArray<AcceleratorTypeAggregatedListWarningDataItem>;
 export const AcceleratorTypeAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     AcceleratorTypeAggregatedListWarningDataItem,
@@ -3588,11 +3528,7 @@ export const AggregatedListAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregatedListAddressesRequest",
 }) as any as S.Schema<AggregatedListAddressesRequest>;
 
-export type AddressStatusEnum =
-  | "IN_USE"
-  | "RESERVED"
-  | "RESERVING"
-  | (string & {});
+export type AddressStatusEnum = "IN_USE" | "RESERVED" | "RESERVING";
 export const AddressStatusEnum = /*@__PURE__*/ S.String;
 
 export type AddressPurposeEnum =
@@ -3606,33 +3542,26 @@ export type AddressPurposeEnum =
   | "SERVERLESS"
   | "SHARED_LOADBALANCER_VIP"
   | "SYSTEM_MANAGED"
-  | "VPC_PEERING"
-  | (string & {});
+  | "VPC_PEERING";
 export const AddressPurposeEnum = /*@__PURE__*/ S.String;
 
 export type AddressNetworkTierEnum =
   | "FIXED_STANDARD"
   | "PREMIUM"
   | "STANDARD"
-  | "STANDARD_OVERRIDES_FIXED_STANDARD"
-  | (string & {});
+  | "STANDARD_OVERRIDES_FIXED_STANDARD";
 export const AddressNetworkTierEnum = /*@__PURE__*/ S.String;
 
-export type AddressIpv6EndpointTypeEnum = "NETLB" | "VM" | (string & {});
+export type AddressIpv6EndpointTypeEnum = "NETLB" | "VM";
 export const AddressIpv6EndpointTypeEnum = /*@__PURE__*/ S.String;
 
-export type AddressIpVersionEnum =
-  | "IPV4"
-  | "IPV6"
-  | "UNSPECIFIED_VERSION"
-  | (string & {});
+export type AddressIpVersionEnum = "IPV4" | "IPV6" | "UNSPECIFIED_VERSION";
 export const AddressIpVersionEnum = /*@__PURE__*/ S.String;
 
 export type AddressAddressTypeEnum =
   | "EXTERNAL"
   | "INTERNAL"
-  | "UNSPECIFIED_TYPE"
-  | (string & {});
+  | "UNSPECIFIED_TYPE";
 export const AddressAddressTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an IP Address resource. Google Compute Engine has two IP Address resources: * [Global (external and internal)](https://cloud.google.com/compute/docs/reference/rest/beta/globalAddresses) * [Regional (external and internal)](https://cloud.google.com/compute/docs/reference/rest/beta/addresses) For more information, see Reserving a static external IP address. */
@@ -3706,7 +3635,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
-export type AddressList_ = Address[];
+export type AddressList_ = ReadonlyArray<Address>;
 export const AddressList_ = /*@__PURE__*/ S.Array(
   Address,
 ) as any as S.Schema<AddressList_>;
@@ -3740,8 +3669,7 @@ export type AddressesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const AddressesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface AddressesScopedListWarningDataItem {
@@ -3760,7 +3688,7 @@ export const AddressesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressesScopedListWarningDataItem>;
 
 export type AddressesScopedListWarningDataItemList =
-  AddressesScopedListWarningDataItem[];
+  ReadonlyArray<AddressesScopedListWarningDataItem>;
 export const AddressesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   AddressesScopedListWarningDataItem,
 ) as any as S.Schema<AddressesScopedListWarningDataItemList>;
@@ -3835,8 +3763,7 @@ export type AddressAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const AddressAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface AddressAggregatedListWarningDataItem {
@@ -3856,7 +3783,7 @@ export const AddressAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddressAggregatedListWarningDataItem>;
 
 export type AddressAggregatedListWarningDataItemList =
-  AddressAggregatedListWarningDataItem[];
+  ReadonlyArray<AddressAggregatedListWarningDataItem>;
 export const AddressAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   AddressAggregatedListWarningDataItem,
 ) as any as S.Schema<AddressAggregatedListWarningDataItemList>;
@@ -3977,8 +3904,7 @@ export type AutoscalersScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const AutoscalersScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface AutoscalersScopedListWarningDataItem {
@@ -3998,7 +3924,7 @@ export const AutoscalersScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AutoscalersScopedListWarningDataItem>;
 
 export type AutoscalersScopedListWarningDataItemList =
-  AutoscalersScopedListWarningDataItem[];
+  ReadonlyArray<AutoscalersScopedListWarningDataItem>;
 export const AutoscalersScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   AutoscalersScopedListWarningDataItem,
 ) as any as S.Schema<AutoscalersScopedListWarningDataItemList>;
@@ -4021,20 +3947,14 @@ export const AutoscalersScopedListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoscalersScopedListWarning",
 }) as any as S.Schema<AutoscalersScopedListWarning>;
 
-export type AutoscalerStatusEnum =
-  | "ACTIVE"
-  | "DELETING"
-  | "ERROR"
-  | "PENDING"
-  | (string & {});
+export type AutoscalerStatusEnum = "ACTIVE" | "DELETING" | "ERROR" | "PENDING";
 export const AutoscalerStatusEnum = /*@__PURE__*/ S.String;
 
 export type ScalingScheduleStatusStateEnum =
   | "ACTIVE"
   | "DISABLED"
   | "OBSOLETE"
-  | "READY"
-  | (string & {});
+  | "READY";
 export const ScalingScheduleStatusStateEnum = /*@__PURE__*/ S.String;
 
 export interface ScalingScheduleStatus {
@@ -4083,8 +4003,7 @@ export type AutoscalerStatusDetailsTypeEnum =
   | "SCHEDULED_INSTANCES_LESS_THAN_AUTOSCALER_MIN"
   | "UNKNOWN"
   | "UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION"
-  | "ZONE_RESOURCE_STOCKOUT"
-  | (string & {});
+  | "ZONE_RESOURCE_STOCKOUT";
 export const AutoscalerStatusDetailsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface AutoscalerStatusDetails {
@@ -4102,7 +4021,8 @@ export const AutoscalerStatusDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoscalerStatusDetails",
 }) as any as S.Schema<AutoscalerStatusDetails>;
 
-export type AutoscalerStatusDetailsList = AutoscalerStatusDetails[];
+export type AutoscalerStatusDetailsList =
+  ReadonlyArray<AutoscalerStatusDetails>;
 export const AutoscalerStatusDetailsList = /*@__PURE__*/ S.Array(
   AutoscalerStatusDetails,
 ) as any as S.Schema<AutoscalerStatusDetailsList>;
@@ -4180,8 +4100,7 @@ export type AutoscalingPolicyModeEnum =
   | "OFF"
   | "ON"
   | "ONLY_SCALE_OUT"
-  | "ONLY_UP"
-  | (string & {});
+  | "ONLY_UP";
 export const AutoscalingPolicyModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration parameters of autoscaling based on load balancing. */
@@ -4201,8 +4120,7 @@ export const AutoscalingPolicyLoadBalancingUtilization =
 export type AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeEnum =
   | "DELTA_PER_MINUTE"
   | "DELTA_PER_SECOND"
-  | "GAUGE"
-  | (string & {});
+  | "GAUGE";
 export const AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4235,7 +4153,7 @@ export const AutoscalingPolicyCustomMetricUtilization = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AutoscalingPolicyCustomMetricUtilization>;
 
 export type AutoscalingPolicyCustomMetricUtilizationList =
-  AutoscalingPolicyCustomMetricUtilization[];
+  ReadonlyArray<AutoscalingPolicyCustomMetricUtilization>;
 export const AutoscalingPolicyCustomMetricUtilizationList =
   /*@__PURE__*/ S.Array(
     AutoscalingPolicyCustomMetricUtilization,
@@ -4260,8 +4178,7 @@ export const AutoscalingPolicyScaleInControl = /*@__PURE__*/ S.suspend(() =>
 export type AutoscalingPolicyCpuUtilizationPredictiveMethodEnum =
   | "NONE"
   | "OPTIMIZE_AVAILABILITY"
-  | "PREDICTIVE_METHOD_UNSPECIFIED"
-  | (string & {});
+  | "PREDICTIVE_METHOD_UNSPECIFIED";
 export const AutoscalingPolicyCpuUtilizationPredictiveMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -4378,7 +4295,7 @@ export const Autoscaler = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Autoscaler" }) as any as S.Schema<Autoscaler>;
 
-export type AutoscalerList_ = Autoscaler[];
+export type AutoscalerList_ = ReadonlyArray<Autoscaler>;
 export const AutoscalerList_ = /*@__PURE__*/ S.Array(
   Autoscaler,
 ) as any as S.Schema<AutoscalerList_>;
@@ -4435,8 +4352,7 @@ export type AutoscalerAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const AutoscalerAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface AutoscalerAggregatedListWarningDataItem {
@@ -4456,7 +4372,7 @@ export const AutoscalerAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AutoscalerAggregatedListWarningDataItem>;
 
 export type AutoscalerAggregatedListWarningDataItemList =
-  AutoscalerAggregatedListWarningDataItem[];
+  ReadonlyArray<AutoscalerAggregatedListWarningDataItem>;
 export const AutoscalerAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     AutoscalerAggregatedListWarningDataItem,
@@ -4551,14 +4467,10 @@ export const AggregatedListBackendBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type BackendBucketLoadBalancingSchemeEnum =
   | "EXTERNAL_MANAGED"
-  | "INTERNAL_MANAGED"
-  | (string & {});
+  | "INTERNAL_MANAGED";
 export const BackendBucketLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 
-export type BackendBucketCompressionModeEnum =
-  | "AUTOMATIC"
-  | "DISABLED"
-  | (string & {});
+export type BackendBucketCompressionModeEnum = "AUTOMATIC" | "DISABLED";
 export const BackendBucketCompressionModeEnum = /*@__PURE__*/ S.String;
 
 /** Additional Backend Bucket parameters. */
@@ -4586,7 +4498,7 @@ export const BackendBucketUsedBy = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackendBucketUsedBy",
 }) as any as S.Schema<BackendBucketUsedBy>;
 
-export type BackendBucketUsedByList = BackendBucketUsedBy[];
+export type BackendBucketUsedByList = ReadonlyArray<BackendBucketUsedBy>;
 export const BackendBucketUsedByList = /*@__PURE__*/ S.Array(
   BackendBucketUsedBy,
 ) as any as S.Schema<BackendBucketUsedByList>;
@@ -4609,7 +4521,7 @@ export const BackendBucketCdnPolicyNegativeCachingPolicy =
   }) as any as S.Schema<BackendBucketCdnPolicyNegativeCachingPolicy>;
 
 export type BackendBucketCdnPolicyNegativeCachingPolicyList =
-  BackendBucketCdnPolicyNegativeCachingPolicy[];
+  ReadonlyArray<BackendBucketCdnPolicyNegativeCachingPolicy>;
 export const BackendBucketCdnPolicyNegativeCachingPolicyList =
   /*@__PURE__*/ S.Array(
     BackendBucketCdnPolicyNegativeCachingPolicy,
@@ -4630,7 +4542,7 @@ export const BackendBucketCdnPolicyBypassCacheOnRequestHeader =
   }) as any as S.Schema<BackendBucketCdnPolicyBypassCacheOnRequestHeader>;
 
 export type BackendBucketCdnPolicyBypassCacheOnRequestHeaderList =
-  BackendBucketCdnPolicyBypassCacheOnRequestHeader[];
+  ReadonlyArray<BackendBucketCdnPolicyBypassCacheOnRequestHeader>;
 export const BackendBucketCdnPolicyBypassCacheOnRequestHeaderList =
   /*@__PURE__*/ S.Array(
     BackendBucketCdnPolicyBypassCacheOnRequestHeader,
@@ -4640,8 +4552,7 @@ export type BackendBucketCdnPolicyCacheModeEnum =
   | "CACHE_ALL_STATIC"
   | "FORCE_CACHE_ALL"
   | "INVALID_CACHE_MODE"
-  | "USE_ORIGIN_HEADERS"
-  | (string & {});
+  | "USE_ORIGIN_HEADERS";
 export const BackendBucketCdnPolicyCacheModeEnum = /*@__PURE__*/ S.String;
 
 /** Message containing what to include in the cache key for a request for Cloud CDN. */
@@ -4767,7 +4678,7 @@ export const BackendBucket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackendBucket" }) as any as S.Schema<BackendBucket>;
 
-export type BackendBucketList_ = BackendBucket[];
+export type BackendBucketList_ = ReadonlyArray<BackendBucket>;
 export const BackendBucketList_ = /*@__PURE__*/ S.Array(
   BackendBucket,
 ) as any as S.Schema<BackendBucketList_>;
@@ -4801,8 +4712,7 @@ export type BackendBucketsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const BackendBucketsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface BackendBucketsScopedListWarningDataItem {
@@ -4822,7 +4732,7 @@ export const BackendBucketsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendBucketsScopedListWarningDataItem>;
 
 export type BackendBucketsScopedListWarningDataItemList =
-  BackendBucketsScopedListWarningDataItem[];
+  ReadonlyArray<BackendBucketsScopedListWarningDataItem>;
 export const BackendBucketsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     BackendBucketsScopedListWarningDataItem,
@@ -4898,8 +4808,7 @@ export type BackendBucketAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const BackendBucketAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4920,7 +4829,7 @@ export const BackendBucketAggregatedListWarningDataItem =
   }) as any as S.Schema<BackendBucketAggregatedListWarningDataItem>;
 
 export type BackendBucketAggregatedListWarningDataItemList =
-  BackendBucketAggregatedListWarningDataItem[];
+  ReadonlyArray<BackendBucketAggregatedListWarningDataItem>;
 export const BackendBucketAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     BackendBucketAggregatedListWarningDataItem,
@@ -5064,10 +4973,7 @@ export const ConsistentHashLoadBalancerSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsistentHashLoadBalancerSettings",
 }) as any as S.Schema<ConsistentHashLoadBalancerSettings>;
 
-export type SubsettingPolicyEnum =
-  | "CONSISTENT_HASH_SUBSETTING"
-  | "NONE"
-  | (string & {});
+export type SubsettingPolicyEnum = "CONSISTENT_HASH_SUBSETTING" | "NONE";
 export const SubsettingPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director. */
@@ -5083,10 +4989,7 @@ export const Subsetting = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Subsetting" }) as any as S.Schema<Subsetting>;
 
-export type BackendServiceHAPolicyFastIPMoveEnum =
-  | "DISABLED"
-  | "GARP_RA"
-  | (string & {});
+export type BackendServiceHAPolicyFastIPMoveEnum = "DISABLED" | "GARP_RA";
 export const BackendServiceHAPolicyFastIPMoveEnum = /*@__PURE__*/ S.String;
 
 export interface BackendServiceHAPolicyLeaderNetworkEndpoint {
@@ -5176,8 +5079,7 @@ export const BackendServiceIAP = /*@__PURE__*/ S.suspend(() =>
 export type BackendServiceExternalManagedMigrationStateEnum =
   | "PREPARE"
   | "TEST_ALL_TRAFFIC"
-  | "TEST_BY_PERCENTAGE"
-  | (string & {});
+  | "TEST_BY_PERCENTAGE";
 export const BackendServiceExternalManagedMigrationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5191,8 +5093,7 @@ export type BackendServiceLocalityLbPolicyEnum =
   | "ROUND_ROBIN"
   | "WEIGHTED_GCP_RENDEZVOUS"
   | "WEIGHTED_MAGLEV"
-  | "WEIGHTED_ROUND_ROBIN"
-  | (string & {});
+  | "WEIGHTED_ROUND_ROBIN";
 export const BackendServiceLocalityLbPolicyEnum = /*@__PURE__*/ S.String;
 
 export type BackendServiceLoadBalancingSchemeEnum =
@@ -5202,8 +5103,7 @@ export type BackendServiceLoadBalancingSchemeEnum =
   | "INTERNAL"
   | "INTERNAL_MANAGED"
   | "INTERNAL_SELF_MANAGED"
-  | "INVALID_LOAD_BALANCING_SCHEME"
-  | (string & {});
+  | "INVALID_LOAD_BALANCING_SCHEME";
 export const BackendServiceLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 
 /** Contains the configurations necessary to generate a signature for access to private storage buckets that support Signature Version 4 for authentication. The service name for generating the authentication header will always default to 's3'. */
@@ -5257,8 +5157,7 @@ export type BackendServiceSessionAffinityEnum =
   | "HEADER_FIELD"
   | "HTTP_COOKIE"
   | "NONE"
-  | "STRONG_COOKIE_AFFINITY"
-  | (string & {});
+  | "STRONG_COOKIE_AFFINITY";
 export const BackendServiceSessionAffinityEnum = /*@__PURE__*/ S.String;
 
 /** For load balancers that have configurable failover: [Internal passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external passthrough Network Load Balancers](https://cloud.google.com/load-balancing/docs/network/networklb-failover-overview). On failover or failback, this field indicates whether connection draining will be honored. Google Cloud has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes). */
@@ -5289,16 +5188,14 @@ export type BackendServiceProtocolEnum =
   | "SSL"
   | "TCP"
   | "UDP"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const BackendServiceProtocolEnum = /*@__PURE__*/ S.String;
 
 export type BackendServiceIpAddressSelectionPolicyEnum =
   | "IPV4_ONLY"
   | "IPV6_ONLY"
   | "IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED"
-  | "PREFER_IPV6"
-  | (string & {});
+  | "PREFER_IPV6";
 export const BackendServiceIpAddressSelectionPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -5345,7 +5242,7 @@ export const BackendServiceLogConfigLoggingHttpHeader = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendServiceLogConfigLoggingHttpHeader>;
 
 export type BackendServiceLogConfigLoggingHttpHeaderList =
-  BackendServiceLogConfigLoggingHttpHeader[];
+  ReadonlyArray<BackendServiceLogConfigLoggingHttpHeader>;
 export const BackendServiceLogConfigLoggingHttpHeaderList =
   /*@__PURE__*/ S.Array(
     BackendServiceLogConfigLoggingHttpHeader,
@@ -5354,8 +5251,7 @@ export const BackendServiceLogConfigLoggingHttpHeaderList =
 export type BackendServiceLogConfigOptionalModeEnum =
   | "CUSTOM"
   | "EXCLUDE_ALL_OPTIONAL"
-  | "INCLUDE_ALL_OPTIONAL"
-  | (string & {});
+  | "INCLUDE_ALL_OPTIONAL";
 export const BackendServiceLogConfigOptionalModeEnum = /*@__PURE__*/ S.String;
 
 /** The available logging options for the load balancer traffic served by this backend service. */
@@ -5402,7 +5298,7 @@ export const BackendServiceUsedBy = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackendServiceUsedBy",
 }) as any as S.Schema<BackendServiceUsedBy>;
 
-export type BackendServiceUsedByList = BackendServiceUsedBy[];
+export type BackendServiceUsedByList = ReadonlyArray<BackendServiceUsedBy>;
 export const BackendServiceUsedByList = /*@__PURE__*/ S.Array(
   BackendServiceUsedBy,
 ) as any as S.Schema<BackendServiceUsedByList>;
@@ -5426,7 +5322,7 @@ export const BackendCustomMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackendCustomMetric",
 }) as any as S.Schema<BackendCustomMetric>;
 
-export type BackendCustomMetricList = BackendCustomMetric[];
+export type BackendCustomMetricList = ReadonlyArray<BackendCustomMetric>;
 export const BackendCustomMetricList = /*@__PURE__*/ S.Array(
   BackendCustomMetric,
 ) as any as S.Schema<BackendCustomMetricList>;
@@ -5434,15 +5330,13 @@ export const BackendCustomMetricList = /*@__PURE__*/ S.Array(
 export type BackendTrafficDurationEnum =
   | "LONG"
   | "SHORT"
-  | "TRAFFIC_DURATION_UNSPECIFIED"
-  | (string & {});
+  | "TRAFFIC_DURATION_UNSPECIFIED";
 export const BackendTrafficDurationEnum = /*@__PURE__*/ S.String;
 
 export type BackendPreferenceEnum =
   | "DEFAULT"
   | "PREFERENCE_UNSPECIFIED"
-  | "PREFERRED"
-  | (string & {});
+  | "PREFERRED";
 export const BackendPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type BackendBalancingModeEnum =
@@ -5450,8 +5344,7 @@ export type BackendBalancingModeEnum =
   | "CUSTOM_METRICS"
   | "IN_FLIGHT"
   | "RATE"
-  | "UTILIZATION"
-  | (string & {});
+  | "UTILIZATION";
 export const BackendBalancingModeEnum = /*@__PURE__*/ S.String;
 
 /** A message containing information about the resource or system that manages the backend. */
@@ -5534,7 +5427,7 @@ export const Backend = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Backend" }) as any as S.Schema<Backend>;
 
-export type BackendList = Backend[];
+export type BackendList = ReadonlyArray<Backend>;
 export const BackendList = /*@__PURE__*/ S.Array(
   Backend,
 ) as any as S.Schema<BackendList>;
@@ -5557,7 +5450,7 @@ export const BackendServiceTlsSettingsSubjectAltName = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendServiceTlsSettingsSubjectAltName>;
 
 export type BackendServiceTlsSettingsSubjectAltNameList =
-  BackendServiceTlsSettingsSubjectAltName[];
+  ReadonlyArray<BackendServiceTlsSettingsSubjectAltName>;
 export const BackendServiceTlsSettingsSubjectAltNameList =
   /*@__PURE__*/ S.Array(
     BackendServiceTlsSettingsSubjectAltName,
@@ -5607,8 +5500,7 @@ export type BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameEnum =
   | "ROUND_ROBIN"
   | "WEIGHTED_GCP_RENDEZVOUS"
   | "WEIGHTED_MAGLEV"
-  | "WEIGHTED_ROUND_ROBIN"
-  | (string & {});
+  | "WEIGHTED_ROUND_ROBIN";
 export const BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameEnum =
   /*@__PURE__*/ S.String;
 
@@ -5663,7 +5555,7 @@ export const BackendServiceLocalityLoadBalancingPolicyConfig =
   }) as any as S.Schema<BackendServiceLocalityLoadBalancingPolicyConfig>;
 
 export type BackendServiceLocalityLoadBalancingPolicyConfigList =
-  BackendServiceLocalityLoadBalancingPolicyConfig[];
+  ReadonlyArray<BackendServiceLocalityLoadBalancingPolicyConfig>;
 export const BackendServiceLocalityLoadBalancingPolicyConfigList =
   /*@__PURE__*/ S.Array(
     BackendServiceLocalityLoadBalancingPolicyConfig,
@@ -5685,7 +5577,8 @@ export const BackendServiceCustomMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackendServiceCustomMetric",
 }) as any as S.Schema<BackendServiceCustomMetric>;
 
-export type BackendServiceCustomMetricList = BackendServiceCustomMetric[];
+export type BackendServiceCustomMetricList =
+  ReadonlyArray<BackendServiceCustomMetric>;
 export const BackendServiceCustomMetricList = /*@__PURE__*/ S.Array(
   BackendServiceCustomMetric,
 ) as any as S.Schema<BackendServiceCustomMetricList>;
@@ -5708,7 +5601,7 @@ export const BackendServiceCdnPolicyNegativeCachingPolicy =
   }) as any as S.Schema<BackendServiceCdnPolicyNegativeCachingPolicy>;
 
 export type BackendServiceCdnPolicyNegativeCachingPolicyList =
-  BackendServiceCdnPolicyNegativeCachingPolicy[];
+  ReadonlyArray<BackendServiceCdnPolicyNegativeCachingPolicy>;
 export const BackendServiceCdnPolicyNegativeCachingPolicyList =
   /*@__PURE__*/ S.Array(
     BackendServiceCdnPolicyNegativeCachingPolicy,
@@ -5729,7 +5622,7 @@ export const BackendServiceCdnPolicyBypassCacheOnRequestHeader =
   }) as any as S.Schema<BackendServiceCdnPolicyBypassCacheOnRequestHeader>;
 
 export type BackendServiceCdnPolicyBypassCacheOnRequestHeaderList =
-  BackendServiceCdnPolicyBypassCacheOnRequestHeader[];
+  ReadonlyArray<BackendServiceCdnPolicyBypassCacheOnRequestHeader>;
 export const BackendServiceCdnPolicyBypassCacheOnRequestHeaderList =
   /*@__PURE__*/ S.Array(
     BackendServiceCdnPolicyBypassCacheOnRequestHeader,
@@ -5768,8 +5661,7 @@ export type BackendServiceCdnPolicyCacheModeEnum =
   | "CACHE_ALL_STATIC"
   | "FORCE_CACHE_ALL"
   | "INVALID_CACHE_MODE"
-  | "USE_ORIGIN_HEADERS"
-  | (string & {});
+  | "USE_ORIGIN_HEADERS";
 export const BackendServiceCdnPolicyCacheModeEnum = /*@__PURE__*/ S.String;
 
 /** Message containing Cloud CDN configuration for a backend service. */
@@ -5881,8 +5773,7 @@ export const BackendServiceDynamicForwardingIpPortSelection =
 
 export type BackendServiceDynamicForwardingForwardProxyProxyModeEnum =
   | "CLOUD_RUN"
-  | "DIRECT_FORWARDING"
-  | (string & {});
+  | "DIRECT_FORWARDING";
 export const BackendServiceDynamicForwardingForwardProxyProxyModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5937,13 +5828,12 @@ export const BackendServiceOrchestrationInfo = /*@__PURE__*/ S.suspend(() =>
 export type BackendServiceConnectionTrackingPolicyTrackingModeEnum =
   | "INVALID_TRACKING_MODE"
   | "PER_CONNECTION"
-  | "PER_SESSION"
-  | (string & {});
+  | "PER_SESSION";
 export const BackendServiceConnectionTrackingPolicyTrackingModeEnum =
   /*@__PURE__*/ S.String;
 
 export type BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsEnum =
-  "ALWAYS_PERSIST" | "DEFAULT_FOR_PROTOCOL" | "NEVER_PERSIST" | (string & {});
+  "ALWAYS_PERSIST" | "DEFAULT_FOR_PROTOCOL" | "NEVER_PERSIST";
 export const BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsEnum =
   /*@__PURE__*/ S.String;
 
@@ -5974,17 +5864,13 @@ export const BackendServiceConnectionTrackingPolicy = /*@__PURE__*/ S.suspend(
   identifier: "BackendServiceConnectionTrackingPolicy",
 }) as any as S.Schema<BackendServiceConnectionTrackingPolicy>;
 
-export type BackendServiceCompressionModeEnum =
-  | "AUTOMATIC"
-  | "DISABLED"
-  | (string & {});
+export type BackendServiceCompressionModeEnum = "AUTOMATIC" | "DISABLED";
 export const BackendServiceCompressionModeEnum = /*@__PURE__*/ S.String;
 
 export type BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinitySpilloverEnum =
     | "ZONAL_AFFINITY_DISABLED"
     | "ZONAL_AFFINITY_SPILL_CROSS_ZONE"
-    | "ZONAL_AFFINITY_STAY_WITHIN_ZONE"
-    | (string & {});
+    | "ZONAL_AFFINITY_STAY_WITHIN_ZONE";
 export const BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinitySpilloverEnum =
   /*@__PURE__*/ S.String;
 
@@ -6210,7 +6096,7 @@ export const BackendService = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackendService" }) as any as S.Schema<BackendService>;
 
-export type BackendServiceList_ = BackendService[];
+export type BackendServiceList_ = ReadonlyArray<BackendService>;
 export const BackendServiceList_ = /*@__PURE__*/ S.Array(
   BackendService,
 ) as any as S.Schema<BackendServiceList_>;
@@ -6244,8 +6130,7 @@ export type BackendServicesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const BackendServicesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface BackendServicesScopedListWarningDataItem {
@@ -6265,7 +6150,7 @@ export const BackendServicesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendServicesScopedListWarningDataItem>;
 
 export type BackendServicesScopedListWarningDataItemList =
-  BackendServicesScopedListWarningDataItem[];
+  ReadonlyArray<BackendServicesScopedListWarningDataItem>;
 export const BackendServicesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     BackendServicesScopedListWarningDataItem,
@@ -6341,8 +6226,7 @@ export type BackendServiceAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const BackendServiceAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6363,7 +6247,7 @@ export const BackendServiceAggregatedListWarningDataItem =
   }) as any as S.Schema<BackendServiceAggregatedListWarningDataItem>;
 
 export type BackendServiceAggregatedListWarningDataItemList =
-  BackendServiceAggregatedListWarningDataItem[];
+  ReadonlyArray<BackendServiceAggregatedListWarningDataItem>;
 export const BackendServiceAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     BackendServiceAggregatedListWarningDataItem,
@@ -6486,8 +6370,7 @@ export type DisksScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const DisksScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface DisksScopedListWarningDataItem {
@@ -6506,7 +6389,7 @@ export const DisksScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisksScopedListWarningDataItem>;
 
 export type DisksScopedListWarningDataItemList =
-  DisksScopedListWarningDataItem[];
+  ReadonlyArray<DisksScopedListWarningDataItem>;
 export const DisksScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   DisksScopedListWarningDataItem,
 ) as any as S.Schema<DisksScopedListWarningDataItemList>;
@@ -6532,8 +6415,7 @@ export const DisksScopedListWarning = /*@__PURE__*/ S.suspend(() =>
 export type DiskAccessModeEnum =
   | "READ_ONLY_MANY"
   | "READ_WRITE_MANY"
-  | "READ_WRITE_SINGLE"
-  | (string & {});
+  | "READ_WRITE_SINGLE";
 export const DiskAccessModeEnum = /*@__PURE__*/ S.String;
 
 export interface CustomerEncryptionKey {
@@ -6576,8 +6458,7 @@ export type GuestOsFeatureTypeEnum =
   | "TDX_CAPABLE"
   | "UEFI_COMPATIBLE"
   | "VIRTIO_SCSI_MULTIQUEUE"
-  | "WINDOWS"
-  | (string & {});
+  | "WINDOWS";
 export const GuestOsFeatureTypeEnum = /*@__PURE__*/ S.String;
 
 /** Guest OS features. */
@@ -6591,7 +6472,7 @@ export const GuestOsFeature = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GuestOsFeature" }) as any as S.Schema<GuestOsFeature>;
 
-export type GuestOsFeatureList = GuestOsFeature[];
+export type GuestOsFeatureList = ReadonlyArray<GuestOsFeature>;
 export const GuestOsFeatureList = /*@__PURE__*/ S.Array(
   GuestOsFeature,
 ) as any as S.Schema<GuestOsFeatureList>;
@@ -6602,8 +6483,7 @@ export type DiskResourceStatusAsyncReplicationStatusStateEnum =
   | "STARTING"
   | "STATE_UNSPECIFIED"
   | "STOPPED"
-  | "STOPPING"
-  | (string & {});
+  | "STOPPING";
 export const DiskResourceStatusAsyncReplicationStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6665,7 +6545,7 @@ export const DiskAsyncReplication = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskAsyncReplication",
 }) as any as S.Schema<DiskAsyncReplication>;
 
-export type DiskInterfaceEnum = "NVME" | "SCSI" | "UNSPECIFIED" | (string & {});
+export type DiskInterfaceEnum = "NVME" | "SCSI" | "UNSPECIFIED";
 export const DiskInterfaceEnum = /*@__PURE__*/ S.String;
 
 export interface DiskAsyncReplicationList {
@@ -6690,11 +6570,10 @@ export const DiskAsyncReplicationListMap = /*@__PURE__*/ S.Record(
 export type DiskArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "ARM64"
-  | "X86_64"
-  | (string & {});
+  | "X86_64";
 export const DiskArchitectureEnum = /*@__PURE__*/ S.String;
 
-export type DiskStorageTypeEnum = "HDD" | "SSD" | (string & {});
+export type DiskStorageTypeEnum = "HDD" | "SSD";
 export const DiskStorageTypeEnum = /*@__PURE__*/ S.String;
 
 /** Additional disk params. */
@@ -6714,8 +6593,7 @@ export type DiskStatusEnum =
   | "FAILED"
   | "READY"
   | "RESTORING"
-  | "UNAVAILABLE"
-  | (string & {});
+  | "UNAVAILABLE";
 export const DiskStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Persistent Disk resource. Google Compute Engine has two Disk resources: * [Zonal](/compute/docs/reference/rest/beta/disks) * [Regional](/compute/docs/reference/rest/beta/regionDisks) Persistent disks are required for running your VM instances. Create both boot and non-boot (data) persistent disks. For more information, read Persistent Disks. For more storage options, read Storage options. The disks resource represents a zonal persistent disk. For more information, readZonal persistent disks. The regionDisks resource represents a regional persistent disk. For more information, read Regional resources. */
@@ -6903,7 +6781,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
-export type DiskList_ = Disk[];
+export type DiskList_ = ReadonlyArray<Disk>;
 export const DiskList_ = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskList_>;
@@ -6958,8 +6836,7 @@ export type DiskAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const DiskAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface DiskAggregatedListWarningDataItem {
@@ -6978,7 +6855,7 @@ export const DiskAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskAggregatedListWarningDataItem>;
 
 export type DiskAggregatedListWarningDataItemList =
-  DiskAggregatedListWarningDataItem[];
+  ReadonlyArray<DiskAggregatedListWarningDataItem>;
 export const DiskAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   DiskAggregatedListWarningDataItem,
 ) as any as S.Schema<DiskAggregatedListWarningDataItemList>;
@@ -7111,7 +6988,7 @@ export const DiskType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DiskType" }) as any as S.Schema<DiskType>;
 
-export type DiskTypeList_ = DiskType[];
+export type DiskTypeList_ = ReadonlyArray<DiskType>;
 export const DiskTypeList_ = /*@__PURE__*/ S.Array(
   DiskType,
 ) as any as S.Schema<DiskTypeList_>;
@@ -7145,8 +7022,7 @@ export type DiskTypesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const DiskTypesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface DiskTypesScopedListWarningDataItem {
@@ -7165,7 +7041,7 @@ export const DiskTypesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskTypesScopedListWarningDataItem>;
 
 export type DiskTypesScopedListWarningDataItemList =
-  DiskTypesScopedListWarningDataItem[];
+  ReadonlyArray<DiskTypesScopedListWarningDataItem>;
 export const DiskTypesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   DiskTypesScopedListWarningDataItem,
 ) as any as S.Schema<DiskTypesScopedListWarningDataItemList>;
@@ -7240,8 +7116,7 @@ export type DiskTypeAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const DiskTypeAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface DiskTypeAggregatedListWarningDataItem {
@@ -7261,7 +7136,7 @@ export const DiskTypeAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DiskTypeAggregatedListWarningDataItem>;
 
 export type DiskTypeAggregatedListWarningDataItemList =
-  DiskTypeAggregatedListWarningDataItem[];
+  ReadonlyArray<DiskTypeAggregatedListWarningDataItem>;
 export const DiskTypeAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   DiskTypeAggregatedListWarningDataItem,
 ) as any as S.Schema<DiskTypeAggregatedListWarningDataItemList>;
@@ -7375,7 +7250,7 @@ export const ForwardingRuleServiceDirectoryRegistration =
   }) as any as S.Schema<ForwardingRuleServiceDirectoryRegistration>;
 
 export type ForwardingRuleServiceDirectoryRegistrationList =
-  ForwardingRuleServiceDirectoryRegistration[];
+  ReadonlyArray<ForwardingRuleServiceDirectoryRegistration>;
 export const ForwardingRuleServiceDirectoryRegistrationList =
   /*@__PURE__*/ S.Array(
     ForwardingRuleServiceDirectoryRegistration,
@@ -7387,16 +7262,14 @@ export type ForwardingRulePscConnectionStatusEnum =
   | "NEEDS_ATTENTION"
   | "PENDING"
   | "REJECTED"
-  | "STATUS_UNSPECIFIED"
-  | (string & {});
+  | "STATUS_UNSPECIFIED";
 export const ForwardingRulePscConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 export type ForwardingRuleNetworkTierEnum =
   | "FIXED_STANDARD"
   | "PREMIUM"
   | "STANDARD"
-  | "STANDARD_OVERRIDES_FIXED_STANDARD"
-  | (string & {});
+  | "STANDARD_OVERRIDES_FIXED_STANDARD";
 export const ForwardingRuleNetworkTierEnum = /*@__PURE__*/ S.String;
 
 /** Reference to an extension resource that is attached to this ForwardingRule. */
@@ -7413,7 +7286,7 @@ export const ForwardingRuleAttachedExtension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ForwardingRuleAttachedExtension>;
 
 export type ForwardingRuleAttachedExtensionList =
-  ForwardingRuleAttachedExtension[];
+  ReadonlyArray<ForwardingRuleAttachedExtension>;
 export const ForwardingRuleAttachedExtensionList = /*@__PURE__*/ S.Array(
   ForwardingRuleAttachedExtension,
 ) as any as S.Schema<ForwardingRuleAttachedExtensionList>;
@@ -7421,8 +7294,7 @@ export const ForwardingRuleAttachedExtensionList = /*@__PURE__*/ S.Array(
 export type MetadataFilterFilterMatchCriteriaEnum =
   | "MATCH_ALL"
   | "MATCH_ANY"
-  | "NOT_SET"
-  | (string & {});
+  | "NOT_SET";
 export const MetadataFilterFilterMatchCriteriaEnum = /*@__PURE__*/ S.String;
 
 /** MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer. */
@@ -7441,7 +7313,8 @@ export const MetadataFilterLabelMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetadataFilterLabelMatch",
 }) as any as S.Schema<MetadataFilterLabelMatch>;
 
-export type MetadataFilterLabelMatchList = MetadataFilterLabelMatch[];
+export type MetadataFilterLabelMatchList =
+  ReadonlyArray<MetadataFilterLabelMatch>;
 export const MetadataFilterLabelMatchList = /*@__PURE__*/ S.Array(
   MetadataFilterLabelMatch,
 ) as any as S.Schema<MetadataFilterLabelMatchList>;
@@ -7460,7 +7333,7 @@ export const MetadataFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetadataFilter" }) as any as S.Schema<MetadataFilter>;
 
-export type MetadataFilterList = MetadataFilter[];
+export type MetadataFilterList = ReadonlyArray<MetadataFilter>;
 export const MetadataFilterList = /*@__PURE__*/ S.Array(
   MetadataFilter,
 ) as any as S.Schema<MetadataFilterList>;
@@ -7468,8 +7341,7 @@ export const MetadataFilterList = /*@__PURE__*/ S.Array(
 export type ForwardingRuleIpVersionEnum =
   | "IPV4"
   | "IPV6"
-  | "UNSPECIFIED_VERSION"
-  | (string & {});
+  | "UNSPECIFIED_VERSION";
 export const ForwardingRuleIpVersionEnum = /*@__PURE__*/ S.String;
 
 export type ForwardingRuleIPProtocolEnum =
@@ -7479,15 +7351,13 @@ export type ForwardingRuleIPProtocolEnum =
   | "L3_DEFAULT"
   | "SCTP"
   | "TCP"
-  | "UDP"
-  | (string & {});
+  | "UDP";
 export const ForwardingRuleIPProtocolEnum = /*@__PURE__*/ S.String;
 
 export type ForwardingRuleExternalManagedBackendBucketMigrationStateEnum =
   | "PREPARE"
   | "TEST_ALL_TRAFFIC"
-  | "TEST_BY_PERCENTAGE"
-  | (string & {});
+  | "TEST_BY_PERCENTAGE";
 export const ForwardingRuleExternalManagedBackendBucketMigrationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -7498,15 +7368,13 @@ export type ForwardingRuleLoadBalancingSchemeEnum =
   | "INTERNAL"
   | "INTERNAL_MANAGED"
   | "INTERNAL_SELF_MANAGED"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const ForwardingRuleLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 
 export type ForwardingRuleAvailabilityGroupEnum =
   | "AVAILABILITY_GROUP0"
   | "AVAILABILITY_GROUP1"
-  | "AVAILABILITY_GROUP_UNSPECIFIED"
-  | (string & {});
+  | "AVAILABILITY_GROUP_UNSPECIFIED";
 export const ForwardingRuleAvailabilityGroupEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Forwarding Rule resource. Forwarding rule resources in Google Cloud can be either regional or global in scope: * [Global](https://cloud.google.com/compute/docs/reference/rest/beta/globalForwardingRules) * [Regional](https://cloud.google.com/compute/docs/reference/rest/beta/forwardingRules) A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud load balancer. Forwarding rules can also reference target instances and Cloud VPN Classic gateways (targetVpnGateway). For more information, read Forwarding rule concepts and Using protocol forwarding. */
@@ -7650,7 +7518,7 @@ export const ForwardingRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ForwardingRule" }) as any as S.Schema<ForwardingRule>;
 
-export type ForwardingRuleList_ = ForwardingRule[];
+export type ForwardingRuleList_ = ReadonlyArray<ForwardingRule>;
 export const ForwardingRuleList_ = /*@__PURE__*/ S.Array(
   ForwardingRule,
 ) as any as S.Schema<ForwardingRuleList_>;
@@ -7684,8 +7552,7 @@ export type ForwardingRulesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ForwardingRulesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ForwardingRulesScopedListWarningDataItem {
@@ -7705,7 +7572,7 @@ export const ForwardingRulesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ForwardingRulesScopedListWarningDataItem>;
 
 export type ForwardingRulesScopedListWarningDataItemList =
-  ForwardingRulesScopedListWarningDataItem[];
+  ReadonlyArray<ForwardingRulesScopedListWarningDataItem>;
 export const ForwardingRulesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ForwardingRulesScopedListWarningDataItem,
@@ -7781,8 +7648,7 @@ export type ForwardingRuleAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ForwardingRuleAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7803,7 +7669,7 @@ export const ForwardingRuleAggregatedListWarningDataItem =
   }) as any as S.Schema<ForwardingRuleAggregatedListWarningDataItem>;
 
 export type ForwardingRuleAggregatedListWarningDataItemList =
-  ForwardingRuleAggregatedListWarningDataItem[];
+  ReadonlyArray<ForwardingRuleAggregatedListWarningDataItem>;
 export const ForwardingRuleAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ForwardingRuleAggregatedListWarningDataItem,
@@ -7926,8 +7792,7 @@ export type FutureReservationsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const FutureReservationsScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7948,7 +7813,7 @@ export const FutureReservationsScopedListWarningDataItem =
   }) as any as S.Schema<FutureReservationsScopedListWarningDataItem>;
 
 export type FutureReservationsScopedListWarningDataItemList =
-  FutureReservationsScopedListWarningDataItem[];
+  ReadonlyArray<FutureReservationsScopedListWarningDataItem>;
 export const FutureReservationsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     FutureReservationsScopedListWarningDataItem,
@@ -7975,8 +7840,7 @@ export const FutureReservationsScopedListWarning = /*@__PURE__*/ S.suspend(() =>
 export type FutureReservationDeploymentTypeEnum =
   | "DENSE"
   | "DEPLOYMENT_TYPE_UNSPECIFIED"
-  | "FLEXIBLE"
-  | (string & {});
+  | "FLEXIBLE";
 export const FutureReservationDeploymentTypeEnum = /*@__PURE__*/ S.String;
 
 export type FutureReservationStatusProcurementStatusEnum =
@@ -7992,8 +7856,7 @@ export type FutureReservationStatusProcurementStatusEnum =
   | "PENDING_APPROVAL"
   | "PROCUREMENT_STATUS_UNSPECIFIED"
   | "PROCURING"
-  | "PROVISIONING"
-  | (string & {});
+  | "PROVISIONING";
 export const FutureReservationStatusProcurementStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -8041,8 +7904,7 @@ export type FutureReservationStatusLastKnownGoodStateProcurementStatusEnum =
   | "PENDING_APPROVAL"
   | "PROCUREMENT_STATUS_UNSPECIFIED"
   | "PROCURING"
-  | "PROVISIONING"
-  | (string & {});
+  | "PROVISIONING";
 export const FutureReservationStatusLastKnownGoodStateProcurementStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -8088,8 +7950,7 @@ export type ShareSettingsShareTypeEnum =
   | "LOCAL"
   | "ORGANIZATION"
   | "SHARE_TYPE_UNSPECIFIED"
-  | "SPECIFIC_PROJECTS"
-  | (string & {});
+  | "SPECIFIC_PROJECTS";
 export const ShareSettingsShareTypeEnum = /*@__PURE__*/ S.String;
 
 /** Config for each folder in the share settings. */
@@ -8134,7 +7995,7 @@ export const ShareSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ShareSettings" }) as any as S.Schema<ShareSettings>;
 
 export type AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalEnum =
-  "AS_NEEDED" | "PERIODIC" | "RECURRENT" | (string & {});
+  "AS_NEEDED" | "PERIODIC" | "RECURRENT";
 export const AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalEnum =
   /*@__PURE__*/ S.String;
 
@@ -8154,13 +8015,13 @@ export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorConfig",
 }) as any as S.Schema<AcceleratorConfig>;
 
-export type AcceleratorConfigList = AcceleratorConfig[];
+export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
 export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
 
 export type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceEnum =
-  "NVME" | "SCSI" | (string & {});
+  "NVME" | "SCSI";
 export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceEnum =
   /*@__PURE__*/ S.String;
 
@@ -8184,7 +8045,7 @@ export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedD
   }) as any as S.Schema<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>;
 
 export type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskList =
-  AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk[];
+  ReadonlyArray<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>;
 export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskList =
   /*@__PURE__*/ S.Array(
     AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk,
@@ -8306,8 +8167,7 @@ export type FutureReservationStatusAmendmentStatusEnum =
   | "AMENDMENT_APPROVED"
   | "AMENDMENT_DECLINED"
   | "AMENDMENT_IN_REVIEW"
-  | "AMENDMENT_STATUS_UNSPECIFIED"
-  | (string & {});
+  | "AMENDMENT_STATUS_UNSPECIFIED";
 export const FutureReservationStatusAmendmentStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -8351,15 +8211,13 @@ export const FutureReservationStatus = /*@__PURE__*/ S.suspend(() =>
 export type FutureReservationSchedulingTypeEnum =
   | "GROUPED"
   | "GROUP_MAINTENANCE_TYPE_UNSPECIFIED"
-  | "INDEPENDENT"
-  | (string & {});
+  | "INDEPENDENT";
 export const FutureReservationSchedulingTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReservationAdvancedDeploymentControlReservationOperationalModeEnum =
     | "ALL_CAPACITY"
     | "HIGHLY_AVAILABLE_CAPACITY"
-    | "RESERVATION_OPERATIONAL_MODE_UNSPECIFIED"
-    | (string & {});
+    | "RESERVATION_OPERATIONAL_MODE_UNSPECIFIED";
 export const ReservationAdvancedDeploymentControlReservationOperationalModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8400,8 +8258,7 @@ export type AllocationAggregateReservationVmFamilyEnum =
   | "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT3P"
   | "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P"
   | "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT5P"
-  | "VM_FAMILY_CLOUD_TPU_POD_SLICE_TPU7X"
-  | (string & {});
+  | "VM_FAMILY_CLOUD_TPU_POD_SLICE_TPU7X";
 export const AllocationAggregateReservationVmFamilyEnum =
   /*@__PURE__*/ S.String;
 
@@ -8437,7 +8294,7 @@ export const AllocationAggregateReservationReservedResourceInfo =
   }) as any as S.Schema<AllocationAggregateReservationReservedResourceInfo>;
 
 export type AllocationAggregateReservationReservedResourceInfoList =
-  AllocationAggregateReservationReservedResourceInfo[];
+  ReadonlyArray<AllocationAggregateReservationReservedResourceInfo>;
 export const AllocationAggregateReservationReservedResourceInfoList =
   /*@__PURE__*/ S.Array(
     AllocationAggregateReservationReservedResourceInfo,
@@ -8446,8 +8303,7 @@ export const AllocationAggregateReservationReservedResourceInfoList =
 export type AllocationAggregateReservationWorkloadTypeEnum =
   | "BATCH"
   | "SERVING"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const AllocationAggregateReservationWorkloadTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8489,22 +8345,19 @@ export const AllocationAggregateReservation = /*@__PURE__*/ S.suspend(() =>
 export type FutureReservationProtectionTierEnum =
   | "CAPACITY_OPTIMIZED"
   | "PROTECTION_TIER_UNSPECIFIED"
-  | "STANDARD"
-  | (string & {});
+  | "STANDARD";
 export const FutureReservationProtectionTierEnum = /*@__PURE__*/ S.String;
 
 export type FutureReservationCommitmentInfoCommitmentPlanEnum =
   | "INVALID"
   | "THIRTY_SIX_MONTH"
-  | "TWELVE_MONTH"
-  | (string & {});
+  | "TWELVE_MONTH";
 export const FutureReservationCommitmentInfoCommitmentPlanEnum =
   /*@__PURE__*/ S.String;
 
 export type FutureReservationCommitmentInfoPreviousCommitmentTermsEnum =
   | "EXTEND"
-  | "PREVIOUSCOMMITMENTTERM_UNSPECIFIED"
-  | (string & {});
+  | "PREVIOUSCOMMITMENTTERM_UNSPECIFIED";
 export const FutureReservationCommitmentInfoPreviousCommitmentTermsEnum =
   /*@__PURE__*/ S.String;
 
@@ -8533,21 +8386,18 @@ export const FutureReservationCommitmentInfo = /*@__PURE__*/ S.suspend(() =>
 export type FutureReservationPlanningStatusEnum =
   | "DRAFT"
   | "PLANNING_STATUS_UNSPECIFIED"
-  | "SUBMITTED"
-  | (string & {});
+  | "SUBMITTED";
 export const FutureReservationPlanningStatusEnum = /*@__PURE__*/ S.String;
 
 export type FutureReservationReservationModeEnum =
   | "CALENDAR"
   | "DEFAULT"
-  | "RESERVATION_MODE_UNSPECIFIED"
-  | (string & {});
+  | "RESERVATION_MODE_UNSPECIFIED";
 export const FutureReservationReservationModeEnum = /*@__PURE__*/ S.String;
 
 export type FutureReservationConfidentialComputeTypeEnum =
   | "CONFIDENTIAL_COMPUTE_TYPE_TDX"
-  | "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
-  | (string & {});
+  | "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED";
 export const FutureReservationConfidentialComputeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8648,7 +8498,7 @@ export const FutureReservation = /*@__PURE__*/ S.suspend(() =>
   identifier: "FutureReservation",
 }) as any as S.Schema<FutureReservation>;
 
-export type FutureReservationList = FutureReservation[];
+export type FutureReservationList = ReadonlyArray<FutureReservation>;
 export const FutureReservationList = /*@__PURE__*/ S.Array(
   FutureReservation,
 ) as any as S.Schema<FutureReservationList>;
@@ -8705,8 +8555,7 @@ export type FutureReservationsAggregatedListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const FutureReservationsAggregatedListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8727,7 +8576,7 @@ export const FutureReservationsAggregatedListResponseWarningDataItem =
   }) as any as S.Schema<FutureReservationsAggregatedListResponseWarningDataItem>;
 
 export type FutureReservationsAggregatedListResponseWarningDataItemList =
-  FutureReservationsAggregatedListResponseWarningDataItem[];
+  ReadonlyArray<FutureReservationsAggregatedListResponseWarningDataItem>;
 export const FutureReservationsAggregatedListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     FutureReservationsAggregatedListResponseWarningDataItem,
@@ -8857,8 +8706,7 @@ export type OperationsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const OperationsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface OperationsScopedListWarningDataItem {
@@ -8877,7 +8725,7 @@ export const OperationsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsScopedListWarningDataItem>;
 
 export type OperationsScopedListWarningDataItemList =
-  OperationsScopedListWarningDataItem[];
+  ReadonlyArray<OperationsScopedListWarningDataItem>;
 export const OperationsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   OperationsScopedListWarningDataItem,
 ) as any as S.Schema<OperationsScopedListWarningDataItemList>;
@@ -8900,7 +8748,7 @@ export const OperationsScopedListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsScopedListWarning",
 }) as any as S.Schema<OperationsScopedListWarning>;
 
-export type OperationList_ = Operation[];
+export type OperationList_ = ReadonlyArray<Operation>;
 export const OperationList_ = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList_>;
@@ -8957,8 +8805,7 @@ export type OperationAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const OperationAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface OperationAggregatedListWarningDataItem {
@@ -8978,7 +8825,7 @@ export const OperationAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationAggregatedListWarningDataItem>;
 
 export type OperationAggregatedListWarningDataItemList =
-  OperationAggregatedListWarningDataItem[];
+  ReadonlyArray<OperationAggregatedListWarningDataItem>;
 export const OperationAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   OperationAggregatedListWarningDataItem,
 ) as any as S.Schema<OperationAggregatedListWarningDataItemList>;
@@ -9122,7 +8969,7 @@ export const VmExtensionPolicyInstanceSelector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VmExtensionPolicyInstanceSelector>;
 
 export type VmExtensionPolicyInstanceSelectorList =
-  VmExtensionPolicyInstanceSelector[];
+  ReadonlyArray<VmExtensionPolicyInstanceSelector>;
 export const VmExtensionPolicyInstanceSelectorList = /*@__PURE__*/ S.Array(
   VmExtensionPolicyInstanceSelector,
 ) as any as S.Schema<VmExtensionPolicyInstanceSelectorList>;
@@ -9130,8 +8977,7 @@ export const VmExtensionPolicyInstanceSelectorList = /*@__PURE__*/ S.Array(
 export type VmExtensionPolicyStateEnum =
   | "ACTIVE"
   | "DELETING"
-  | "STATE_UNSPECIFIED"
-  | (string & {});
+  | "STATE_UNSPECIFIED";
 export const VmExtensionPolicyStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a VM extension policy. */
@@ -9186,7 +9032,7 @@ export const VmExtensionPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmExtensionPolicy",
 }) as any as S.Schema<VmExtensionPolicy>;
 
-export type VmExtensionPolicyList_ = VmExtensionPolicy[];
+export type VmExtensionPolicyList_ = ReadonlyArray<VmExtensionPolicy>;
 export const VmExtensionPolicyList_ = /*@__PURE__*/ S.Array(
   VmExtensionPolicy,
 ) as any as S.Schema<VmExtensionPolicyList_>;
@@ -9220,8 +9066,7 @@ export type VmExtensionPoliciesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const VmExtensionPoliciesScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9242,7 +9087,7 @@ export const VmExtensionPoliciesScopedListWarningDataItem =
   }) as any as S.Schema<VmExtensionPoliciesScopedListWarningDataItem>;
 
 export type VmExtensionPoliciesScopedListWarningDataItemList =
-  VmExtensionPoliciesScopedListWarningDataItem[];
+  ReadonlyArray<VmExtensionPoliciesScopedListWarningDataItem>;
 export const VmExtensionPoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     VmExtensionPoliciesScopedListWarningDataItem,
@@ -9319,8 +9164,7 @@ export type VmExtensionPolicyAggregatedListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const VmExtensionPolicyAggregatedListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9341,7 +9185,7 @@ export const VmExtensionPolicyAggregatedListResponseWarningDataItem =
   }) as any as S.Schema<VmExtensionPolicyAggregatedListResponseWarningDataItem>;
 
 export type VmExtensionPolicyAggregatedListResponseWarningDataItemList =
-  VmExtensionPolicyAggregatedListResponseWarningDataItem[];
+  ReadonlyArray<VmExtensionPolicyAggregatedListResponseWarningDataItem>;
 export const VmExtensionPolicyAggregatedListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     VmExtensionPolicyAggregatedListResponseWarningDataItem,
@@ -9444,14 +9288,10 @@ export const AggregatedListHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
 export type HTTP2HealthCheckPortSpecificationEnum =
   | "USE_FIXED_PORT"
   | "USE_NAMED_PORT"
-  | "USE_SERVING_PORT"
-  | (string & {});
+  | "USE_SERVING_PORT";
 export const HTTP2HealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
-export type HTTP2HealthCheckProxyHeaderEnum =
-  | "NONE"
-  | "PROXY_V1"
-  | (string & {});
+export type HTTP2HealthCheckProxyHeaderEnum = "NONE" | "PROXY_V1";
 export const HTTP2HealthCheckProxyHeaderEnum = /*@__PURE__*/ S.String;
 
 export interface HTTP2HealthCheck {
@@ -9492,18 +9332,16 @@ export type HealthCheckTypeEnum =
   | "HTTPS"
   | "INVALID"
   | "SSL"
-  | "TCP"
-  | (string & {});
+  | "TCP";
 export const HealthCheckTypeEnum = /*@__PURE__*/ S.String;
 
 export type TCPHealthCheckPortSpecificationEnum =
   | "USE_FIXED_PORT"
   | "USE_NAMED_PORT"
-  | "USE_SERVING_PORT"
-  | (string & {});
+  | "USE_SERVING_PORT";
 export const TCPHealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
-export type TCPHealthCheckProxyHeaderEnum = "NONE" | "PROXY_V1" | (string & {});
+export type TCPHealthCheckProxyHeaderEnum = "NONE" | "PROXY_V1";
 export const TCPHealthCheckProxyHeaderEnum = /*@__PURE__*/ S.String;
 
 export interface TCPHealthCheck {
@@ -9531,17 +9369,13 @@ export const TCPHealthCheck = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TCPHealthCheck" }) as any as S.Schema<TCPHealthCheck>;
 
-export type HTTPHealthCheckProxyHeaderEnum =
-  | "NONE"
-  | "PROXY_V1"
-  | (string & {});
+export type HTTPHealthCheckProxyHeaderEnum = "NONE" | "PROXY_V1";
 export const HTTPHealthCheckProxyHeaderEnum = /*@__PURE__*/ S.String;
 
 export type HTTPHealthCheckPortSpecificationEnum =
   | "USE_FIXED_PORT"
   | "USE_NAMED_PORT"
-  | "USE_SERVING_PORT"
-  | (string & {});
+  | "USE_SERVING_PORT";
 export const HTTPHealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
 export interface HTTPHealthCheck {
@@ -9577,8 +9411,7 @@ export const HTTPHealthCheck = /*@__PURE__*/ S.suspend(() =>
 export type GRPCHealthCheckPortSpecificationEnum =
   | "USE_FIXED_PORT"
   | "USE_NAMED_PORT"
-  | "USE_SERVING_PORT"
-  | (string & {});
+  | "USE_SERVING_PORT";
 export const GRPCHealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
 export interface GRPCHealthCheck {
@@ -9602,17 +9435,13 @@ export const GRPCHealthCheck = /*@__PURE__*/ S.suspend(() =>
   identifier: "GRPCHealthCheck",
 }) as any as S.Schema<GRPCHealthCheck>;
 
-export type HTTPSHealthCheckProxyHeaderEnum =
-  | "NONE"
-  | "PROXY_V1"
-  | (string & {});
+export type HTTPSHealthCheckProxyHeaderEnum = "NONE" | "PROXY_V1";
 export const HTTPSHealthCheckProxyHeaderEnum = /*@__PURE__*/ S.String;
 
 export type HTTPSHealthCheckPortSpecificationEnum =
   | "USE_FIXED_PORT"
   | "USE_NAMED_PORT"
-  | "USE_SERVING_PORT"
-  | (string & {});
+  | "USE_SERVING_PORT";
 export const HTTPSHealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
 export interface HTTPSHealthCheck {
@@ -9661,11 +9490,10 @@ export const HealthCheckLogConfig = /*@__PURE__*/ S.suspend(() =>
 export type SSLHealthCheckPortSpecificationEnum =
   | "USE_FIXED_PORT"
   | "USE_NAMED_PORT"
-  | "USE_SERVING_PORT"
-  | (string & {});
+  | "USE_SERVING_PORT";
 export const SSLHealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
-export type SSLHealthCheckProxyHeaderEnum = "NONE" | "PROXY_V1" | (string & {});
+export type SSLHealthCheckProxyHeaderEnum = "NONE" | "PROXY_V1";
 export const SSLHealthCheckProxyHeaderEnum = /*@__PURE__*/ S.String;
 
 export interface SSLHealthCheck {
@@ -9696,8 +9524,7 @@ export const SSLHealthCheck = /*@__PURE__*/ S.suspend(() =>
 export type GRPCTLSHealthCheckPortSpecificationEnum =
   | "USE_FIXED_PORT"
   | "USE_NAMED_PORT"
-  | "USE_SERVING_PORT"
-  | (string & {});
+  | "USE_SERVING_PORT";
 export const GRPCTLSHealthCheckPortSpecificationEnum = /*@__PURE__*/ S.String;
 
 export interface GRPCTLSHealthCheck {
@@ -9782,7 +9609,7 @@ export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
 
-export type HealthCheckList_ = HealthCheck[];
+export type HealthCheckList_ = ReadonlyArray<HealthCheck>;
 export const HealthCheckList_ = /*@__PURE__*/ S.Array(
   HealthCheck,
 ) as any as S.Schema<HealthCheckList_>;
@@ -9816,8 +9643,7 @@ export type HealthChecksScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthChecksScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface HealthChecksScopedListWarningDataItem {
@@ -9837,7 +9663,7 @@ export const HealthChecksScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthChecksScopedListWarningDataItem>;
 
 export type HealthChecksScopedListWarningDataItemList =
-  HealthChecksScopedListWarningDataItem[];
+  ReadonlyArray<HealthChecksScopedListWarningDataItem>;
 export const HealthChecksScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   HealthChecksScopedListWarningDataItem,
 ) as any as S.Schema<HealthChecksScopedListWarningDataItemList>;
@@ -9912,8 +9738,7 @@ export type HealthChecksAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthChecksAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface HealthChecksAggregatedListWarningDataItem {
@@ -9933,7 +9758,7 @@ export const HealthChecksAggregatedListWarningDataItem =
   }) as any as S.Schema<HealthChecksAggregatedListWarningDataItem>;
 
 export type HealthChecksAggregatedListWarningDataItemList =
-  HealthChecksAggregatedListWarningDataItem[];
+  ReadonlyArray<HealthChecksAggregatedListWarningDataItem>;
 export const HealthChecksAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthChecksAggregatedListWarningDataItem,
@@ -10056,8 +9881,7 @@ export type InstanceGroupManagersScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceGroupManagersScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10078,7 +9902,7 @@ export const InstanceGroupManagersScopedListWarningDataItem =
   }) as any as S.Schema<InstanceGroupManagersScopedListWarningDataItem>;
 
 export type InstanceGroupManagersScopedListWarningDataItemList =
-  InstanceGroupManagersScopedListWarningDataItem[];
+  ReadonlyArray<InstanceGroupManagersScopedListWarningDataItem>;
 export const InstanceGroupManagersScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagersScopedListWarningDataItem,
@@ -10105,8 +9929,7 @@ export const InstanceGroupManagersScopedListWarning = /*@__PURE__*/ S.suspend(
 
 export type StatefulPolicyPreservedStateNetworkIpAutoDeleteEnum =
   | "NEVER"
-  | "ON_PERMANENT_INSTANCE_DELETION"
-  | (string & {});
+  | "ON_PERMANENT_INSTANCE_DELETION";
 export const StatefulPolicyPreservedStateNetworkIpAutoDeleteEnum =
   /*@__PURE__*/ S.String;
 
@@ -10135,8 +9958,7 @@ export const StatefulPolicyPreservedStateNetworkIpMap = /*@__PURE__*/ S.Record(
 
 export type StatefulPolicyPreservedStateDiskDeviceAutoDeleteEnum =
   | "NEVER"
-  | "ON_PERMANENT_INSTANCE_DELETION"
-  | (string & {});
+  | "ON_PERMANENT_INSTANCE_DELETION";
 export const StatefulPolicyPreservedStateDiskDeviceAutoDeleteEnum =
   /*@__PURE__*/ S.String;
 
@@ -10194,8 +10016,7 @@ export const StatefulPolicy = /*@__PURE__*/ S.suspend(() =>
 export type InstanceGroupManagerTargetSizePolicyModeEnum =
   | "BULK"
   | "INDIVIDUAL"
-  | "UNSPECIFIED_MODE"
-  | (string & {});
+  | "UNSPECIFIED_MODE";
 export const InstanceGroupManagerTargetSizePolicyModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10229,35 +10050,29 @@ export const InstanceGroupManagerAutoHealingPolicy = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceGroupManagerAutoHealingPolicy>;
 
 export type InstanceGroupManagerAutoHealingPolicyList =
-  InstanceGroupManagerAutoHealingPolicy[];
+  ReadonlyArray<InstanceGroupManagerAutoHealingPolicy>;
 export const InstanceGroupManagerAutoHealingPolicyList = /*@__PURE__*/ S.Array(
   InstanceGroupManagerAutoHealingPolicy,
 ) as any as S.Schema<InstanceGroupManagerAutoHealingPolicyList>;
 
 export type InstanceGroupManagerListManagedInstancesResultsEnum =
   | "PAGELESS"
-  | "PAGINATED"
-  | (string & {});
+  | "PAGINATED";
 export const InstanceGroupManagerListManagedInstancesResultsEnum =
   /*@__PURE__*/ S.String;
 
 export type AttachedDiskSavedStateEnum =
   | "DISK_SAVED_STATE_UNSPECIFIED"
-  | "PRESERVED"
-  | (string & {});
+  | "PRESERVED";
 export const AttachedDiskSavedStateEnum = /*@__PURE__*/ S.String;
 
-export type AttachedDiskModeEnum = "READ_ONLY" | "READ_WRITE" | (string & {});
+export type AttachedDiskModeEnum = "READ_ONLY" | "READ_WRITE";
 export const AttachedDiskModeEnum = /*@__PURE__*/ S.String;
 
-export type AttachedDiskInterfaceEnum = "NVME" | "SCSI" | (string & {});
+export type AttachedDiskInterfaceEnum = "NVME" | "SCSI";
 export const AttachedDiskInterfaceEnum = /*@__PURE__*/ S.String;
 
-export type FileContentBufferFileTypeEnum =
-  | "BIN"
-  | "UNDEFINED"
-  | "X509"
-  | (string & {});
+export type FileContentBufferFileTypeEnum = "BIN" | "UNDEFINED" | "X509";
 export const FileContentBufferFileTypeEnum = /*@__PURE__*/ S.String;
 
 export interface FileContentBuffer {
@@ -10275,7 +10090,7 @@ export const FileContentBuffer = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileContentBuffer",
 }) as any as S.Schema<FileContentBuffer>;
 
-export type FileContentBufferList = FileContentBuffer[];
+export type FileContentBufferList = ReadonlyArray<FileContentBuffer>;
 export const FileContentBufferList = /*@__PURE__*/ S.Array(
   FileContentBuffer,
 ) as any as S.Schema<FileContentBufferList>;
@@ -10305,16 +10120,14 @@ export const InitialStateConfig = /*@__PURE__*/ S.suspend(() =>
 export type AttachedDiskInitializeParamsOnUpdateActionEnum =
   | "RECREATE_DISK"
   | "RECREATE_DISK_IF_SOURCE_CHANGED"
-  | "USE_EXISTING_DISK"
-  | (string & {});
+  | "USE_EXISTING_DISK";
 export const AttachedDiskInitializeParamsOnUpdateActionEnum =
   /*@__PURE__*/ S.String;
 
 export type AttachedDiskInitializeParamsArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "ARM64"
-  | "X86_64"
-  | (string & {});
+  | "X86_64";
 export const AttachedDiskInitializeParamsArchitectureEnum =
   /*@__PURE__*/ S.String;
 
@@ -10393,14 +10206,13 @@ export const AttachedDiskInitializeParams = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttachedDiskInitializeParams",
 }) as any as S.Schema<AttachedDiskInitializeParams>;
 
-export type AttachedDiskTypeEnum = "PERSISTENT" | "SCRATCH" | (string & {});
+export type AttachedDiskTypeEnum = "PERSISTENT" | "SCRATCH";
 export const AttachedDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type AttachedDiskArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "ARM64"
-  | "X86_64"
-  | (string & {});
+  | "X86_64";
 export const AttachedDiskArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** An instance-attached disk resource. */
@@ -10468,7 +10280,7 @@ export const AttachedDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AttachedDisk" }) as any as S.Schema<AttachedDisk>;
 
-export type AttachedDiskList = AttachedDisk[];
+export type AttachedDiskList = ReadonlyArray<AttachedDisk>;
 export const AttachedDiskList = /*@__PURE__*/ S.Array(
   AttachedDisk,
 ) as any as S.Schema<AttachedDiskList>;
@@ -10545,10 +10357,7 @@ export const InstanceGroupManagerInstanceFlexibilityPolicy =
     identifier: "InstanceGroupManagerInstanceFlexibilityPolicy",
   }) as any as S.Schema<InstanceGroupManagerInstanceFlexibilityPolicy>;
 
-export type InstanceGroupManagerFailoverActionEnum =
-  | "NO_FAILOVER"
-  | "UNKNOWN"
-  | (string & {});
+export type InstanceGroupManagerFailoverActionEnum = "NO_FAILOVER" | "UNKNOWN";
 export const InstanceGroupManagerFailoverActionEnum = /*@__PURE__*/ S.String;
 
 export interface DistributionPolicyZoneConfiguration {
@@ -10564,7 +10373,7 @@ export const DistributionPolicyZoneConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DistributionPolicyZoneConfiguration>;
 
 export type DistributionPolicyZoneConfigurationList =
-  DistributionPolicyZoneConfiguration[];
+  ReadonlyArray<DistributionPolicyZoneConfiguration>;
 export const DistributionPolicyZoneConfigurationList = /*@__PURE__*/ S.Array(
   DistributionPolicyZoneConfiguration,
 ) as any as S.Schema<DistributionPolicyZoneConfigurationList>;
@@ -10573,8 +10382,7 @@ export type DistributionPolicyTargetShapeEnum =
   | "ANY"
   | "ANY_SINGLE_ZONE"
   | "BALANCED"
-  | "EVEN"
-  | (string & {});
+  | "EVEN";
 export const DistributionPolicyTargetShapeEnum = /*@__PURE__*/ S.String;
 
 export interface DistributionPolicy {
@@ -10594,8 +10402,7 @@ export const DistributionPolicy = /*@__PURE__*/ S.suspend(() =>
 
 export type InstanceGroupManagerStandbyPolicyModeEnum =
   | "MANUAL"
-  | "SCALE_OUT_POOL"
-  | (string & {});
+  | "SCALE_OUT_POOL";
 export const InstanceGroupManagerStandbyPolicyModeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceGroupManagerStandbyPolicy {
@@ -10618,13 +10425,12 @@ export type InstanceGroupManagerUpdatePolicyAllowedActionsItemEnum =
   | "REFRESH"
   | "REPLACE"
   | "RESTART"
-  | "RESTART_IN_PLACE"
-  | (string & {});
+  | "RESTART_IN_PLACE";
 export const InstanceGroupManagerUpdatePolicyAllowedActionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList =
-  InstanceGroupManagerUpdatePolicyAllowedActionsItemEnum[];
+  ReadonlyArray<InstanceGroupManagerUpdatePolicyAllowedActionsItemEnum>;
 export const InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerUpdatePolicyAllowedActionsItemEnum,
@@ -10632,14 +10438,12 @@ export const InstanceGroupManagerUpdatePolicyAllowedActionsItemEnumList =
 
 export type InstanceGroupManagerUpdatePolicyTypeEnum =
   | "OPPORTUNISTIC"
-  | "PROACTIVE"
-  | (string & {});
+  | "PROACTIVE";
 export const InstanceGroupManagerUpdatePolicyTypeEnum = /*@__PURE__*/ S.String;
 
 export type InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeEnum =
   | "NONE"
-  | "PROACTIVE"
-  | (string & {});
+  | "PROACTIVE";
 export const InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10648,8 +10452,7 @@ export type InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionEnum =
   | "REFRESH"
   | "REPLACE"
   | "RESTART"
-  | "RESTART_IN_PLACE"
-  | (string & {});
+  | "RESTART_IN_PLACE";
 export const InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -10658,15 +10461,13 @@ export type InstanceGroupManagerUpdatePolicyMinimalActionEnum =
   | "REFRESH"
   | "REPLACE"
   | "RESTART"
-  | "RESTART_IN_PLACE"
-  | (string & {});
+  | "RESTART_IN_PLACE";
 export const InstanceGroupManagerUpdatePolicyMinimalActionEnum =
   /*@__PURE__*/ S.String;
 
 export type InstanceGroupManagerUpdatePolicyReplacementMethodEnum =
   | "RECREATE"
-  | "SUBSTITUTE"
-  | (string & {});
+  | "SUBSTITUTE";
 export const InstanceGroupManagerUpdatePolicyReplacementMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -10769,7 +10570,7 @@ export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErr
   }) as any as S.Schema<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItem>;
 
 export type InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItemList =
-  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItem[];
+  ReadonlyArray<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItem>;
 export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemErrorDetailsItem,
@@ -10801,7 +10602,7 @@ export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErr
   }) as any as S.Schema<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItem>;
 
 export type InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemList =
-  InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItem[];
+  ReadonlyArray<InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItem>;
 export const InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerStatusBulkInstanceOperationLastProgressCheckErrorErrorsItem,
@@ -10947,7 +10748,7 @@ export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologySta
   }) as any as S.Schema<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItem>;
 
 export type InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItemList =
-  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItem[];
+  ReadonlyArray<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItem>;
 export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemErrorDetailsItem,
@@ -10979,7 +10780,7 @@ export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologySta
   }) as any as S.Schema<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItem>;
 
 export type InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemList =
-  InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItem[];
+  ReadonlyArray<InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItem>;
 export const InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerStatusAcceleratorTopologyAcceleratorTopologyStateDetailsErrorErrorsItem,
@@ -11026,8 +10827,7 @@ export type InstanceGroupManagerStatusAcceleratorTopologyStateEnum =
   | "DEACTIVATING"
   | "FAILED"
   | "INCOMPLETE"
-  | "REACTIVATING"
-  | (string & {});
+  | "REACTIVATING";
 export const InstanceGroupManagerStatusAcceleratorTopologyStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -11053,7 +10853,7 @@ export const InstanceGroupManagerStatusAcceleratorTopology =
   }) as any as S.Schema<InstanceGroupManagerStatusAcceleratorTopology>;
 
 export type InstanceGroupManagerStatusAcceleratorTopologyList =
-  InstanceGroupManagerStatusAcceleratorTopology[];
+  ReadonlyArray<InstanceGroupManagerStatusAcceleratorTopology>;
 export const InstanceGroupManagerStatusAcceleratorTopologyList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerStatusAcceleratorTopology,
@@ -11164,7 +10964,7 @@ export const NamedPort = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NamedPort" }) as any as S.Schema<NamedPort>;
 
-export type NamedPortList = NamedPort[];
+export type NamedPortList = ReadonlyArray<NamedPort>;
 export const NamedPortList = /*@__PURE__*/ S.Array(
   NamedPort,
 ) as any as S.Schema<NamedPortList>;
@@ -11187,7 +10987,8 @@ export const InstanceGroupManagerVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceGroupManagerVersion",
 }) as any as S.Schema<InstanceGroupManagerVersion>;
 
-export type InstanceGroupManagerVersionList = InstanceGroupManagerVersion[];
+export type InstanceGroupManagerVersionList =
+  ReadonlyArray<InstanceGroupManagerVersion>;
 export const InstanceGroupManagerVersionList = /*@__PURE__*/ S.Array(
   InstanceGroupManagerVersion,
 ) as any as S.Schema<InstanceGroupManagerVersionList>;
@@ -11260,7 +11061,7 @@ export const InstanceGroupManagerParams = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceGroupManagerParams>;
 
 export type InstanceGroupManagerInstanceLifecyclePolicyOnRepairAllowChangingZoneEnum =
-  "NO" | "YES" | (string & {});
+  "NO" | "YES";
 export const InstanceGroupManagerInstanceLifecyclePolicyOnRepairAllowChangingZoneEnum =
   /*@__PURE__*/ S.String;
 
@@ -11281,17 +11082,17 @@ export const InstanceGroupManagerInstanceLifecyclePolicyOnRepair =
   }) as any as S.Schema<InstanceGroupManagerInstanceLifecyclePolicyOnRepair>;
 
 export type InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureEnum =
-  "DELETE" | "DO_NOTHING" | "REPAIR" | (string & {});
+  "DELETE" | "DO_NOTHING" | "REPAIR";
 export const InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureEnum =
   /*@__PURE__*/ S.String;
 
 export type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairEnum =
-  "NO" | "YES" | (string & {});
+  "NO" | "YES";
 export const InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairEnum =
   /*@__PURE__*/ S.String;
 
 export type InstanceGroupManagerInstanceLifecyclePolicyOnFailedHealthCheckEnum =
-  "DEFAULT_ACTION" | "DO_NOTHING" | "REPAIR" | (string & {});
+  "DEFAULT_ACTION" | "DO_NOTHING" | "REPAIR";
 export const InstanceGroupManagerInstanceLifecyclePolicyOnFailedHealthCheckEnum =
   /*@__PURE__*/ S.String;
 
@@ -11463,7 +11264,7 @@ export const InstanceGroupManager = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceGroupManager",
 }) as any as S.Schema<InstanceGroupManager>;
 
-export type InstanceGroupManagerList_ = InstanceGroupManager[];
+export type InstanceGroupManagerList_ = ReadonlyArray<InstanceGroupManager>;
 export const InstanceGroupManagerList_ = /*@__PURE__*/ S.Array(
   InstanceGroupManager,
 ) as any as S.Schema<InstanceGroupManagerList_>;
@@ -11520,8 +11321,7 @@ export type InstanceGroupManagerAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceGroupManagerAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -11542,7 +11342,7 @@ export const InstanceGroupManagerAggregatedListWarningDataItem =
   }) as any as S.Schema<InstanceGroupManagerAggregatedListWarningDataItem>;
 
 export type InstanceGroupManagerAggregatedListWarningDataItemList =
-  InstanceGroupManagerAggregatedListWarningDataItem[];
+  ReadonlyArray<InstanceGroupManagerAggregatedListWarningDataItem>;
 export const InstanceGroupManagerAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerAggregatedListWarningDataItem,
@@ -11683,7 +11483,7 @@ export const InstanceGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InstanceGroup" }) as any as S.Schema<InstanceGroup>;
 
-export type InstanceGroupList_ = InstanceGroup[];
+export type InstanceGroupList_ = ReadonlyArray<InstanceGroup>;
 export const InstanceGroupList_ = /*@__PURE__*/ S.Array(
   InstanceGroup,
 ) as any as S.Schema<InstanceGroupList_>;
@@ -11717,8 +11517,7 @@ export type InstanceGroupsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceGroupsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceGroupsScopedListWarningDataItem {
@@ -11738,7 +11537,7 @@ export const InstanceGroupsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceGroupsScopedListWarningDataItem>;
 
 export type InstanceGroupsScopedListWarningDataItemList =
-  InstanceGroupsScopedListWarningDataItem[];
+  ReadonlyArray<InstanceGroupsScopedListWarningDataItem>;
 export const InstanceGroupsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupsScopedListWarningDataItem,
@@ -11814,8 +11613,7 @@ export type InstanceGroupAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceGroupAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -11836,7 +11634,7 @@ export const InstanceGroupAggregatedListWarningDataItem =
   }) as any as S.Schema<InstanceGroupAggregatedListWarningDataItem>;
 
 export type InstanceGroupAggregatedListWarningDataItemList =
-  InstanceGroupAggregatedListWarningDataItem[];
+  ReadonlyArray<InstanceGroupAggregatedListWarningDataItem>;
 export const InstanceGroupAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupAggregatedListWarningDataItem,
@@ -11943,7 +11741,7 @@ export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
-export type ServiceAccountList = ServiceAccount[];
+export type ServiceAccountList = ReadonlyArray<ServiceAccount>;
 export const ServiceAccountList = /*@__PURE__*/ S.Array(
   ServiceAccount,
 ) as any as S.Schema<ServiceAccountList>;
@@ -11951,15 +11749,13 @@ export const ServiceAccountList = /*@__PURE__*/ S.Array(
 export type InstancePrivateIpv6GoogleAccessEnum =
   | "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
   | "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
-  | "INHERIT_FROM_SUBNETWORK"
-  | (string & {});
+  | "INHERIT_FROM_SUBNETWORK";
 export const InstancePrivateIpv6GoogleAccessEnum = /*@__PURE__*/ S.String;
 
 export type InstanceLocalSsdEncryptionModeEnum =
   | "EPHEMERAL_KEY_ENCRYPTION"
   | "LOCAL_SSD_ENCRYPTION_MODE_UNSPECIFIED"
-  | "STANDARD_ENCRYPTION"
-  | (string & {});
+  | "STANDARD_ENCRYPTION";
 export const InstanceLocalSsdEncryptionModeEnum = /*@__PURE__*/ S.String;
 
 /** The policy describes the baseline against which VM instance boot integrity is measured. */
@@ -12014,8 +11810,7 @@ export type InstanceStatusEnum =
   | "STOPPING"
   | "SUSPENDED"
   | "SUSPENDING"
-  | "TERMINATED"
-  | (string & {});
+  | "TERMINATED";
 export const InstanceStatusEnum = /*@__PURE__*/ S.String;
 
 /** A set of Shielded Instance options. */
@@ -12037,7 +11832,7 @@ export const ShieldedInstanceConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ShieldedInstanceConfig",
 }) as any as S.Schema<ShieldedInstanceConfig>;
 
-export type NetworkInterfaceList = NetworkInterface[];
+export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
 export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfaceList>;
@@ -12046,8 +11841,7 @@ export type AdvancedMachineFeaturesPerformanceMonitoringUnitEnum =
   | "ARCHITECTURAL"
   | "ENHANCED"
   | "PERFORMANCE_MONITORING_UNIT_UNSPECIFIED"
-  | "STANDARD"
-  | (string & {});
+  | "STANDARD";
 export const AdvancedMachineFeaturesPerformanceMonitoringUnitEnum =
   /*@__PURE__*/ S.String;
 
@@ -12104,8 +11898,7 @@ export const StructuredEntriesMap = /*@__PURE__*/ S.Record(
 export type SchedulingNodeAffinityOperatorEnum =
   | "IN"
   | "NOT_IN"
-  | "OPERATOR_UNSPECIFIED"
-  | (string & {});
+  | "OPERATOR_UNSPECIFIED";
 export const SchedulingNodeAffinityOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. */
@@ -12127,15 +11920,12 @@ export const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchedulingNodeAffinity",
 }) as any as S.Schema<SchedulingNodeAffinity>;
 
-export type SchedulingNodeAffinityList = SchedulingNodeAffinity[];
+export type SchedulingNodeAffinityList = ReadonlyArray<SchedulingNodeAffinity>;
 export const SchedulingNodeAffinityList = /*@__PURE__*/ S.Array(
   SchedulingNodeAffinity,
 ) as any as S.Schema<SchedulingNodeAffinityList>;
 
-export type SchedulingOnHostMaintenanceEnum =
-  | "MIGRATE"
-  | "TERMINATE"
-  | (string & {});
+export type SchedulingOnHostMaintenanceEnum = "MIGRATE" | "TERMINATE";
 export const SchedulingOnHostMaintenanceEnum = /*@__PURE__*/ S.String;
 
 /** The configuration for gracefully shutting down the instance. */
@@ -12158,8 +11948,7 @@ export type SchedulingProvisioningModelEnum =
   | "FLEX_START"
   | "RESERVATION_BOUND"
   | "SPOT"
-  | "STANDARD"
-  | (string & {});
+  | "STANDARD";
 export const SchedulingProvisioningModelEnum = /*@__PURE__*/ S.String;
 
 /** Defines the behaviour for instances with the instance_termination_actionSTOP. */
@@ -12178,15 +11967,13 @@ export const SchedulingOnInstanceStopAction = /*@__PURE__*/ S.suspend(() =>
 export type SchedulingMaintenanceIntervalEnum =
   | "AS_NEEDED"
   | "PERIODIC"
-  | "RECURRENT"
-  | (string & {});
+  | "RECURRENT";
 export const SchedulingMaintenanceIntervalEnum = /*@__PURE__*/ S.String;
 
 export type SchedulingInstanceTerminationActionEnum =
   | "DELETE"
   | "INSTANCE_TERMINATION_ACTION_UNSPECIFIED"
-  | "STOP"
-  | (string & {});
+  | "STOP";
 export const SchedulingInstanceTerminationActionEnum = /*@__PURE__*/ S.String;
 
 /** Sets the scheduling options for an Instance. */
@@ -12282,7 +12069,7 @@ export const MetadataItemsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetadataItemsItem",
 }) as any as S.Schema<MetadataItemsItem>;
 
-export type MetadataItemsItemList = MetadataItemsItem[];
+export type MetadataItemsItemList = ReadonlyArray<MetadataItemsItem>;
 export const MetadataItemsItemList = /*@__PURE__*/ S.Array(
   MetadataItemsItem,
 ) as any as S.Schema<MetadataItemsItemList>;
@@ -12339,8 +12126,7 @@ export type ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
   | "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"
   | "SEV"
   | "SEV_SNP"
-  | "TDX"
-  | (string & {});
+  | "TDX";
 export const ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -12365,14 +12151,12 @@ export const ConfidentialInstanceConfig = /*@__PURE__*/ S.suspend(() =>
 export type InstancePostKeyRevocationActionTypeEnum =
   | "NOOP"
   | "POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
-  | "SHUTDOWN"
-  | (string & {});
+  | "SHUTDOWN";
 export const InstancePostKeyRevocationActionTypeEnum = /*@__PURE__*/ S.String;
 
 export type NetworkPerformanceConfigTotalEgressBandwidthTierEnum =
   | "DEFAULT"
-  | "TIER_1"
-  | (string & {});
+  | "TIER_1";
 export const NetworkPerformanceConfigTotalEgressBandwidthTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -12392,8 +12176,7 @@ export const NetworkPerformanceConfig = /*@__PURE__*/ S.suspend(() =>
 export type InstanceKeyRevocationActionTypeEnum =
   | "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
   | "NONE"
-  | "STOP"
-  | (string & {});
+  | "STOP";
 export const InstanceKeyRevocationActionTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ResourceStatusScheduling {
@@ -12414,8 +12197,7 @@ export const ResourceStatusScheduling = /*@__PURE__*/ S.suspend(() =>
 export type UpcomingMaintenanceMaintenanceStatusEnum =
   | "ONGOING"
   | "PENDING"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const UpcomingMaintenanceMaintenanceStatusEnum = /*@__PURE__*/ S.String;
 
 export type UpcomingMaintenanceMaintenanceReasonsItemEnum =
@@ -12435,13 +12217,12 @@ export type UpcomingMaintenanceMaintenanceReasonsItemEnum =
   | "INFRASTRUCTURE_RELOCATION"
   | "MAINTENANCE_REASON_UNKNOWN"
   | "PLANNED_NETWORK_UPDATE"
-  | "PLANNED_UPDATE"
-  | (string & {});
+  | "PLANNED_UPDATE";
 export const UpcomingMaintenanceMaintenanceReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type UpcomingMaintenanceMaintenanceReasonsItemEnumList =
-  UpcomingMaintenanceMaintenanceReasonsItemEnum[];
+  ReadonlyArray<UpcomingMaintenanceMaintenanceReasonsItemEnum>;
 export const UpcomingMaintenanceMaintenanceReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     UpcomingMaintenanceMaintenanceReasonsItemEnum,
@@ -12451,8 +12232,7 @@ export type UpcomingMaintenanceTypeEnum =
   | "MULTIPLE"
   | "SCHEDULED"
   | "UNKNOWN_TYPE"
-  | "UNSCHEDULED"
-  | (string & {});
+  | "UNSCHEDULED";
 export const UpcomingMaintenanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Upcoming Maintenance notification information. */
@@ -12571,15 +12351,13 @@ export const ResourceStatusEffectiveInstanceMetadata = /*@__PURE__*/ S.suspend(
 
 export type ResourceStatusShutdownDetailsTargetStateEnum =
   | "DELETED"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const ResourceStatusShutdownDetailsTargetStateEnum =
   /*@__PURE__*/ S.String;
 
 export type ResourceStatusShutdownDetailsStopStateEnum =
   | "PENDING_STOP"
-  | "STOPPING"
-  | (string & {});
+  | "STOPPING";
 export const ResourceStatusShutdownDetailsStopStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -12677,8 +12455,7 @@ export type ReservationAffinityConsumeReservationTypeEnum =
   | "SPECIFIC_RESERVATION"
   | "SPECIFIC_THEN_ANY_RESERVATION"
   | "SPECIFIC_THEN_NO_RESERVATION"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const ReservationAffinityConsumeReservationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -12869,7 +12646,7 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
-export type InstanceList_ = Instance[];
+export type InstanceList_ = ReadonlyArray<Instance>;
 export const InstanceList_ = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList_>;
@@ -12903,8 +12680,7 @@ export type InstancesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstancesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstancesScopedListWarningDataItem {
@@ -12923,7 +12699,7 @@ export const InstancesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesScopedListWarningDataItem>;
 
 export type InstancesScopedListWarningDataItemList =
-  InstancesScopedListWarningDataItem[];
+  ReadonlyArray<InstancesScopedListWarningDataItem>;
 export const InstancesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstancesScopedListWarningDataItem,
 ) as any as S.Schema<InstancesScopedListWarningDataItemList>;
@@ -12998,8 +12774,7 @@ export type InstanceAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceAggregatedListWarningDataItem {
@@ -13019,7 +12794,7 @@ export const InstanceAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceAggregatedListWarningDataItem>;
 
 export type InstanceAggregatedListWarningDataItemList =
-  InstanceAggregatedListWarningDataItem[];
+  ReadonlyArray<InstanceAggregatedListWarningDataItem>;
 export const InstanceAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstanceAggregatedListWarningDataItem,
 ) as any as S.Schema<InstanceAggregatedListWarningDataItemList>;
@@ -13119,8 +12894,7 @@ export type DiskInstantiationConfigInstantiateFromEnum =
   | "DEFAULT"
   | "DO_NOT_INCLUDE"
   | "SOURCE_IMAGE"
-  | "SOURCE_IMAGE_FAMILY"
-  | (string & {});
+  | "SOURCE_IMAGE_FAMILY";
 export const DiskInstantiationConfigInstantiateFromEnum =
   /*@__PURE__*/ S.String;
 
@@ -13146,7 +12920,8 @@ export const DiskInstantiationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskInstantiationConfig",
 }) as any as S.Schema<DiskInstantiationConfig>;
 
-export type DiskInstantiationConfigList = DiskInstantiationConfig[];
+export type DiskInstantiationConfigList =
+  ReadonlyArray<DiskInstantiationConfig>;
 export const DiskInstantiationConfigList = /*@__PURE__*/ S.Array(
   DiskInstantiationConfig,
 ) as any as S.Schema<DiskInstantiationConfigList>;
@@ -13167,32 +12942,28 @@ export const SourceInstanceParams = /*@__PURE__*/ S.suspend(() =>
 export type InstancePropertiesLocalSsdEncryptionModeEnum =
   | "EPHEMERAL_KEY_ENCRYPTION"
   | "LOCAL_SSD_ENCRYPTION_MODE_UNSPECIFIED"
-  | "STANDARD_ENCRYPTION"
-  | (string & {});
+  | "STANDARD_ENCRYPTION";
 export const InstancePropertiesLocalSsdEncryptionModeEnum =
   /*@__PURE__*/ S.String;
 
 export type InstancePropertiesPrivateIpv6GoogleAccessEnum =
   | "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
   | "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
-  | "INHERIT_FROM_SUBNETWORK"
-  | (string & {});
+  | "INHERIT_FROM_SUBNETWORK";
 export const InstancePropertiesPrivateIpv6GoogleAccessEnum =
   /*@__PURE__*/ S.String;
 
 export type InstancePropertiesPostKeyRevocationActionTypeEnum =
   | "NOOP"
   | "POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
-  | "SHUTDOWN"
-  | (string & {});
+  | "SHUTDOWN";
 export const InstancePropertiesPostKeyRevocationActionTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type InstancePropertiesKeyRevocationActionTypeEnum =
   | "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
   | "NONE"
-  | "STOP"
-  | (string & {});
+  | "STOP";
 export const InstancePropertiesKeyRevocationActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -13333,7 +13104,7 @@ export const InstanceTemplate = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceTemplate",
 }) as any as S.Schema<InstanceTemplate>;
 
-export type InstanceTemplateList_ = InstanceTemplate[];
+export type InstanceTemplateList_ = ReadonlyArray<InstanceTemplate>;
 export const InstanceTemplateList_ = /*@__PURE__*/ S.Array(
   InstanceTemplate,
 ) as any as S.Schema<InstanceTemplateList_>;
@@ -13367,8 +13138,7 @@ export type InstanceTemplatesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceTemplatesScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -13389,7 +13159,7 @@ export const InstanceTemplatesScopedListWarningDataItem =
   }) as any as S.Schema<InstanceTemplatesScopedListWarningDataItem>;
 
 export type InstanceTemplatesScopedListWarningDataItemList =
-  InstanceTemplatesScopedListWarningDataItem[];
+  ReadonlyArray<InstanceTemplatesScopedListWarningDataItem>;
 export const InstanceTemplatesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceTemplatesScopedListWarningDataItem,
@@ -13465,8 +13235,7 @@ export type InstanceTemplateAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceTemplateAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -13487,7 +13256,7 @@ export const InstanceTemplateAggregatedListWarningDataItem =
   }) as any as S.Schema<InstanceTemplateAggregatedListWarningDataItem>;
 
 export type InstanceTemplateAggregatedListWarningDataItemList =
-  InstanceTemplateAggregatedListWarningDataItem[];
+  ReadonlyArray<InstanceTemplateAggregatedListWarningDataItem>;
 export const InstanceTemplateAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceTemplateAggregatedListWarningDataItem,
@@ -13583,8 +13352,7 @@ export const AggregatedListInstantSnapshotsRequest = /*@__PURE__*/ S.suspend(
 export type InstantSnapshotArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "ARM64"
-  | "X86_64"
-  | (string & {});
+  | "X86_64";
 export const InstantSnapshotArchitectureEnum = /*@__PURE__*/ S.String;
 
 export interface InstantSnapshotResourceStatus {
@@ -13604,8 +13372,7 @@ export type InstantSnapshotStatusEnum =
   | "DELETING"
   | "FAILED"
   | "READY"
-  | "UNAVAILABLE"
-  | (string & {});
+  | "UNAVAILABLE";
 export const InstantSnapshotStatusEnum = /*@__PURE__*/ S.String;
 
 /** Additional instant snapshot params. */
@@ -13697,7 +13464,7 @@ export const InstantSnapshot = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstantSnapshot",
 }) as any as S.Schema<InstantSnapshot>;
 
-export type InstantSnapshotList_ = InstantSnapshot[];
+export type InstantSnapshotList_ = ReadonlyArray<InstantSnapshot>;
 export const InstantSnapshotList_ = /*@__PURE__*/ S.Array(
   InstantSnapshot,
 ) as any as S.Schema<InstantSnapshotList_>;
@@ -13731,8 +13498,7 @@ export type InstantSnapshotsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstantSnapshotsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstantSnapshotsScopedListWarningDataItem {
@@ -13752,7 +13518,7 @@ export const InstantSnapshotsScopedListWarningDataItem =
   }) as any as S.Schema<InstantSnapshotsScopedListWarningDataItem>;
 
 export type InstantSnapshotsScopedListWarningDataItemList =
-  InstantSnapshotsScopedListWarningDataItem[];
+  ReadonlyArray<InstantSnapshotsScopedListWarningDataItem>;
 export const InstantSnapshotsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstantSnapshotsScopedListWarningDataItem,
@@ -13828,8 +13594,7 @@ export type InstantSnapshotAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstantSnapshotAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -13850,7 +13615,7 @@ export const InstantSnapshotAggregatedListWarningDataItem =
   }) as any as S.Schema<InstantSnapshotAggregatedListWarningDataItem>;
 
 export type InstantSnapshotAggregatedListWarningDataItemList =
-  InstantSnapshotAggregatedListWarningDataItem[];
+  ReadonlyArray<InstantSnapshotAggregatedListWarningDataItem>;
 export const InstantSnapshotAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstantSnapshotAggregatedListWarningDataItem,
@@ -13974,8 +13739,7 @@ export type InterconnectAttachmentsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InterconnectAttachmentsScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -13996,7 +13760,7 @@ export const InterconnectAttachmentsScopedListWarningDataItem =
   }) as any as S.Schema<InterconnectAttachmentsScopedListWarningDataItem>;
 
 export type InterconnectAttachmentsScopedListWarningDataItemList =
-  InterconnectAttachmentsScopedListWarningDataItem[];
+  ReadonlyArray<InterconnectAttachmentsScopedListWarningDataItem>;
 export const InterconnectAttachmentsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentsScopedListWarningDataItem,
@@ -14048,8 +13812,7 @@ export type InterconnectAttachmentStateEnum =
   | "PENDING_CUSTOMER"
   | "PENDING_PARTNER"
   | "STATE_UNSPECIFIED"
-  | "UNPROVISIONED"
-  | (string & {});
+  | "UNPROVISIONED";
 export const InterconnectAttachmentStateEnum = /*@__PURE__*/ S.String;
 
 /** Information for an interconnect attachment when this belongs to an interconnect of type DEDICATED. */
@@ -14069,15 +13832,13 @@ export type InterconnectAttachmentTypeEnum =
   | "DEDICATED"
   | "L2_DEDICATED"
   | "PARTNER"
-  | "PARTNER_PROVIDER"
-  | (string & {});
+  | "PARTNER_PROVIDER";
 export const InterconnectAttachmentTypeEnum = /*@__PURE__*/ S.String;
 
 export type InterconnectAttachmentConfigurationConstraintsBgpMd5Enum =
   | "MD5_OPTIONAL"
   | "MD5_REQUIRED"
-  | "MD5_UNSUPPORTED"
-  | (string & {});
+  | "MD5_UNSUPPORTED";
 export const InterconnectAttachmentConfigurationConstraintsBgpMd5Enum =
   /*@__PURE__*/ S.String;
 
@@ -14096,7 +13857,7 @@ export const InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange =
   }) as any as S.Schema<InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange>;
 
 export type InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeList =
-  InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange[];
+  ReadonlyArray<InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange>;
 export const InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentConfigurationConstraintsBgpPeerASNRange,
@@ -14125,8 +13886,7 @@ export const InterconnectAttachmentConfigurationConstraints =
 export type InterconnectAttachmentEdgeAvailabilityDomainEnum =
   | "AVAILABILITY_DOMAIN_1"
   | "AVAILABILITY_DOMAIN_2"
-  | "AVAILABILITY_DOMAIN_ANY"
-  | (string & {});
+  | "AVAILABILITY_DOMAIN_ANY";
 export const InterconnectAttachmentEdgeAvailabilityDomainEnum =
   /*@__PURE__*/ S.String;
 
@@ -14144,8 +13904,7 @@ export type InterconnectAttachmentBandwidthEnum =
   | "BPS_500M"
   | "BPS_50G"
   | "BPS_50M"
-  | "BPS_5G"
-  | (string & {});
+  | "BPS_5G";
 export const InterconnectAttachmentBandwidthEnum = /*@__PURE__*/ S.String;
 
 /** The inner VLAN-to-Appliance mapping. */
@@ -14167,7 +13926,7 @@ export const InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplia
   }) as any as S.Schema<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>;
 
 export type InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMappingList =
-  InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping[];
+  ReadonlyArray<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>;
 export const InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMappingList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping,
@@ -14247,21 +14006,14 @@ export const InterconnectAttachmentL2Forwarding = /*@__PURE__*/ S.suspend(() =>
 
 export type InterconnectAttachmentOperationalStatusEnum =
   | "OS_ACTIVE"
-  | "OS_UNPROVISIONED"
-  | (string & {});
+  | "OS_UNPROVISIONED";
 export const InterconnectAttachmentOperationalStatusEnum =
   /*@__PURE__*/ S.String;
 
-export type InterconnectAttachmentEncryptionEnum =
-  | "IPSEC"
-  | "NONE"
-  | (string & {});
+export type InterconnectAttachmentEncryptionEnum = "IPSEC" | "NONE";
 export const InterconnectAttachmentEncryptionEnum = /*@__PURE__*/ S.String;
 
-export type InterconnectAttachmentStackTypeEnum =
-  | "IPV4_IPV6"
-  | "IPV4_ONLY"
-  | (string & {});
+export type InterconnectAttachmentStackTypeEnum = "IPV4_IPV6" | "IPV4_ONLY";
 export const InterconnectAttachmentStackTypeEnum = /*@__PURE__*/ S.String;
 
 /** Additional interconnect attachment parameters. */
@@ -14432,7 +14184,7 @@ export const InterconnectAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "InterconnectAttachment",
 }) as any as S.Schema<InterconnectAttachment>;
 
-export type InterconnectAttachmentList_ = InterconnectAttachment[];
+export type InterconnectAttachmentList_ = ReadonlyArray<InterconnectAttachment>;
 export const InterconnectAttachmentList_ = /*@__PURE__*/ S.Array(
   InterconnectAttachment,
 ) as any as S.Schema<InterconnectAttachmentList_>;
@@ -14489,8 +14241,7 @@ export type InterconnectAttachmentAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InterconnectAttachmentAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -14511,7 +14262,7 @@ export const InterconnectAttachmentAggregatedListWarningDataItem =
   }) as any as S.Schema<InterconnectAttachmentAggregatedListWarningDataItem>;
 
 export type InterconnectAttachmentAggregatedListWarningDataItemList =
-  InterconnectAttachmentAggregatedListWarningDataItem[];
+  ReadonlyArray<InterconnectAttachmentAggregatedListWarningDataItem>;
 export const InterconnectAttachmentAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentAggregatedListWarningDataItem,
@@ -14624,8 +14375,7 @@ export const BundledLocalSsds = /*@__PURE__*/ S.suspend(() =>
 export type MachineTypeArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "ARM64"
-  | "X86_64"
-  | (string & {});
+  | "X86_64";
 export const MachineTypeArchitectureEnum = /*@__PURE__*/ S.String;
 
 export interface MachineTypeAcceleratorsItem {
@@ -14643,7 +14393,8 @@ export const MachineTypeAcceleratorsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachineTypeAcceleratorsItem",
 }) as any as S.Schema<MachineTypeAcceleratorsItem>;
 
-export type MachineTypeAcceleratorsItemList = MachineTypeAcceleratorsItem[];
+export type MachineTypeAcceleratorsItemList =
+  ReadonlyArray<MachineTypeAcceleratorsItem>;
 export const MachineTypeAcceleratorsItemList = /*@__PURE__*/ S.Array(
   MachineTypeAcceleratorsItem,
 ) as any as S.Schema<MachineTypeAcceleratorsItemList>;
@@ -14704,7 +14455,7 @@ export const MachineType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MachineType" }) as any as S.Schema<MachineType>;
 
-export type MachineTypeList_ = MachineType[];
+export type MachineTypeList_ = ReadonlyArray<MachineType>;
 export const MachineTypeList_ = /*@__PURE__*/ S.Array(
   MachineType,
 ) as any as S.Schema<MachineTypeList_>;
@@ -14738,8 +14489,7 @@ export type MachineTypesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const MachineTypesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface MachineTypesScopedListWarningDataItem {
@@ -14759,7 +14509,7 @@ export const MachineTypesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MachineTypesScopedListWarningDataItem>;
 
 export type MachineTypesScopedListWarningDataItemList =
-  MachineTypesScopedListWarningDataItem[];
+  ReadonlyArray<MachineTypesScopedListWarningDataItem>;
 export const MachineTypesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   MachineTypesScopedListWarningDataItem,
 ) as any as S.Schema<MachineTypesScopedListWarningDataItemList>;
@@ -14834,8 +14584,7 @@ export type MachineTypeAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const MachineTypeAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface MachineTypeAggregatedListWarningDataItem {
@@ -14855,7 +14604,7 @@ export const MachineTypeAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MachineTypeAggregatedListWarningDataItem>;
 
 export type MachineTypeAggregatedListWarningDataItemList =
-  MachineTypeAggregatedListWarningDataItem[];
+  ReadonlyArray<MachineTypeAggregatedListWarningDataItem>;
 export const MachineTypeAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     MachineTypeAggregatedListWarningDataItem,
@@ -14955,8 +14704,7 @@ export type NetworkAttachmentConnectedEndpointStatusEnum =
   | "NEEDS_ATTENTION"
   | "PENDING"
   | "REJECTED"
-  | "STATUS_UNSPECIFIED"
-  | (string & {});
+  | "STATUS_UNSPECIFIED";
 export const NetworkAttachmentConnectedEndpointStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -14995,7 +14743,7 @@ export const NetworkAttachmentConnectedEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkAttachmentConnectedEndpoint>;
 
 export type NetworkAttachmentConnectedEndpointList =
-  NetworkAttachmentConnectedEndpoint[];
+  ReadonlyArray<NetworkAttachmentConnectedEndpoint>;
 export const NetworkAttachmentConnectedEndpointList = /*@__PURE__*/ S.Array(
   NetworkAttachmentConnectedEndpoint,
 ) as any as S.Schema<NetworkAttachmentConnectedEndpointList>;
@@ -15003,8 +14751,7 @@ export const NetworkAttachmentConnectedEndpointList = /*@__PURE__*/ S.Array(
 export type NetworkAttachmentConnectionPreferenceEnum =
   | "ACCEPT_AUTOMATIC"
   | "ACCEPT_MANUAL"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const NetworkAttachmentConnectionPreferenceEnum = /*@__PURE__*/ S.String;
 
 /** NetworkAttachments A network attachment resource ... */
@@ -15061,7 +14808,7 @@ export const NetworkAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkAttachment",
 }) as any as S.Schema<NetworkAttachment>;
 
-export type NetworkAttachmentList_ = NetworkAttachment[];
+export type NetworkAttachmentList_ = ReadonlyArray<NetworkAttachment>;
 export const NetworkAttachmentList_ = /*@__PURE__*/ S.Array(
   NetworkAttachment,
 ) as any as S.Schema<NetworkAttachmentList_>;
@@ -15095,8 +14842,7 @@ export type NetworkAttachmentsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkAttachmentsScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -15117,7 +14863,7 @@ export const NetworkAttachmentsScopedListWarningDataItem =
   }) as any as S.Schema<NetworkAttachmentsScopedListWarningDataItem>;
 
 export type NetworkAttachmentsScopedListWarningDataItemList =
-  NetworkAttachmentsScopedListWarningDataItem[];
+  ReadonlyArray<NetworkAttachmentsScopedListWarningDataItem>;
 export const NetworkAttachmentsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkAttachmentsScopedListWarningDataItem,
@@ -15193,8 +14939,7 @@ export type NetworkAttachmentAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkAttachmentAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -15215,7 +14960,7 @@ export const NetworkAttachmentAggregatedListWarningDataItem =
   }) as any as S.Schema<NetworkAttachmentAggregatedListWarningDataItem>;
 
 export type NetworkAttachmentAggregatedListWarningDataItemList =
-  NetworkAttachmentAggregatedListWarningDataItem[];
+  ReadonlyArray<NetworkAttachmentAggregatedListWarningDataItem>;
 export const NetworkAttachmentAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkAttachmentAggregatedListWarningDataItem,
@@ -15347,7 +15092,8 @@ export const NetworkEdgeSecurityService = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkEdgeSecurityService",
 }) as any as S.Schema<NetworkEdgeSecurityService>;
 
-export type NetworkEdgeSecurityServiceList = NetworkEdgeSecurityService[];
+export type NetworkEdgeSecurityServiceList =
+  ReadonlyArray<NetworkEdgeSecurityService>;
 export const NetworkEdgeSecurityServiceList = /*@__PURE__*/ S.Array(
   NetworkEdgeSecurityService,
 ) as any as S.Schema<NetworkEdgeSecurityServiceList>;
@@ -15381,8 +15127,7 @@ export type NetworkEdgeSecurityServicesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkEdgeSecurityServicesScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -15403,7 +15148,7 @@ export const NetworkEdgeSecurityServicesScopedListWarningDataItem =
   }) as any as S.Schema<NetworkEdgeSecurityServicesScopedListWarningDataItem>;
 
 export type NetworkEdgeSecurityServicesScopedListWarningDataItemList =
-  NetworkEdgeSecurityServicesScopedListWarningDataItem[];
+  ReadonlyArray<NetworkEdgeSecurityServicesScopedListWarningDataItem>;
 export const NetworkEdgeSecurityServicesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEdgeSecurityServicesScopedListWarningDataItem,
@@ -15483,8 +15228,7 @@ export type NetworkEdgeSecurityServiceAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkEdgeSecurityServiceAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -15505,7 +15249,7 @@ export const NetworkEdgeSecurityServiceAggregatedListWarningDataItem =
   }) as any as S.Schema<NetworkEdgeSecurityServiceAggregatedListWarningDataItem>;
 
 export type NetworkEdgeSecurityServiceAggregatedListWarningDataItemList =
-  NetworkEdgeSecurityServiceAggregatedListWarningDataItem[];
+  ReadonlyArray<NetworkEdgeSecurityServiceAggregatedListWarningDataItem>;
 export const NetworkEdgeSecurityServiceAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEdgeSecurityServiceAggregatedListWarningDataItem,
@@ -15674,8 +15418,7 @@ export type NetworkEndpointGroupNetworkEndpointTypeEnum =
   | "INTERNET_IP_PORT"
   | "NON_GCP_PRIVATE_IP_PORT"
   | "PRIVATE_SERVICE_CONNECT"
-  | "SERVERLESS"
-  | (string & {});
+  | "SERVERLESS";
 export const NetworkEndpointGroupNetworkEndpointTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -15724,8 +15467,7 @@ export type NetworkEndpointGroupPscDataPscConnectionStatusEnum =
   | "NEEDS_ATTENTION"
   | "PENDING"
   | "REJECTED"
-  | "STATUS_UNSPECIFIED"
-  | (string & {});
+  | "STATUS_UNSPECIFIED";
 export const NetworkEndpointGroupPscDataPscConnectionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -15828,7 +15570,7 @@ export const NetworkEndpointGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkEndpointGroup",
 }) as any as S.Schema<NetworkEndpointGroup>;
 
-export type NetworkEndpointGroupList_ = NetworkEndpointGroup[];
+export type NetworkEndpointGroupList_ = ReadonlyArray<NetworkEndpointGroup>;
 export const NetworkEndpointGroupList_ = /*@__PURE__*/ S.Array(
   NetworkEndpointGroup,
 ) as any as S.Schema<NetworkEndpointGroupList_>;
@@ -15862,8 +15604,7 @@ export type NetworkEndpointGroupsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkEndpointGroupsScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -15884,7 +15625,7 @@ export const NetworkEndpointGroupsScopedListWarningDataItem =
   }) as any as S.Schema<NetworkEndpointGroupsScopedListWarningDataItem>;
 
 export type NetworkEndpointGroupsScopedListWarningDataItemList =
-  NetworkEndpointGroupsScopedListWarningDataItem[];
+  ReadonlyArray<NetworkEndpointGroupsScopedListWarningDataItem>;
 export const NetworkEndpointGroupsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEndpointGroupsScopedListWarningDataItem,
@@ -15961,8 +15702,7 @@ export type NetworkEndpointGroupAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkEndpointGroupAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -15983,7 +15723,7 @@ export const NetworkEndpointGroupAggregatedListWarningDataItem =
   }) as any as S.Schema<NetworkEndpointGroupAggregatedListWarningDataItem>;
 
 export type NetworkEndpointGroupAggregatedListWarningDataItemList =
-  NetworkEndpointGroupAggregatedListWarningDataItem[];
+  ReadonlyArray<NetworkEndpointGroupAggregatedListWarningDataItem>;
 export const NetworkEndpointGroupAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEndpointGroupAggregatedListWarningDataItem,
@@ -16107,8 +15847,7 @@ export type FirewallPoliciesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const FirewallPoliciesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface FirewallPoliciesScopedListWarningDataItem {
@@ -16128,7 +15867,7 @@ export const FirewallPoliciesScopedListWarningDataItem =
   }) as any as S.Schema<FirewallPoliciesScopedListWarningDataItem>;
 
 export type FirewallPoliciesScopedListWarningDataItemList =
-  FirewallPoliciesScopedListWarningDataItem[];
+  ReadonlyArray<FirewallPoliciesScopedListWarningDataItem>;
 export const FirewallPoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     FirewallPoliciesScopedListWarningDataItem,
@@ -16152,7 +15891,8 @@ export const FirewallPoliciesScopedListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallPoliciesScopedListWarning",
 }) as any as S.Schema<FirewallPoliciesScopedListWarning>;
 
-export type FirewallPolicyAssociationList = FirewallPolicyAssociation[];
+export type FirewallPolicyAssociationList =
+  ReadonlyArray<FirewallPolicyAssociation>;
 export const FirewallPolicyAssociationList = /*@__PURE__*/ S.Array(
   FirewallPolicyAssociation,
 ) as any as S.Schema<FirewallPolicyAssociationList>;
@@ -16161,19 +15901,15 @@ export type FirewallPolicyPolicyTypeEnum =
   | "RDMA_FALCON_POLICY"
   | "RDMA_ROCE_POLICY"
   | "ULL_POLICY"
-  | "VPC_POLICY"
-  | (string & {});
+  | "VPC_POLICY";
 export const FirewallPolicyPolicyTypeEnum = /*@__PURE__*/ S.String;
 
-export type FirewallPolicyRuleList = FirewallPolicyRule[];
+export type FirewallPolicyRuleList = ReadonlyArray<FirewallPolicyRule>;
 export const FirewallPolicyRuleList = /*@__PURE__*/ S.Array(
   FirewallPolicyRule,
 ) as any as S.Schema<FirewallPolicyRuleList>;
 
-export type FirewallPolicyPolicySourceEnum =
-  | "SYSTEM"
-  | "USER_DEFINED"
-  | (string & {});
+export type FirewallPolicyPolicySourceEnum = "SYSTEM" | "USER_DEFINED";
 export const FirewallPolicyPolicySourceEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Firewall Policy resource. */
@@ -16238,7 +15974,7 @@ export const FirewallPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FirewallPolicy" }) as any as S.Schema<FirewallPolicy>;
 
-export type FirewallPolicyList_ = FirewallPolicy[];
+export type FirewallPolicyList_ = ReadonlyArray<FirewallPolicy>;
 export const FirewallPolicyList_ = /*@__PURE__*/ S.Array(
   FirewallPolicy,
 ) as any as S.Schema<FirewallPolicyList_>;
@@ -16295,8 +16031,7 @@ export type NetworkFirewallPolicyAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkFirewallPolicyAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -16317,7 +16052,7 @@ export const NetworkFirewallPolicyAggregatedListWarningDataItem =
   }) as any as S.Schema<NetworkFirewallPolicyAggregatedListWarningDataItem>;
 
 export type NetworkFirewallPolicyAggregatedListWarningDataItemList =
-  NetworkFirewallPolicyAggregatedListWarningDataItem[];
+  ReadonlyArray<NetworkFirewallPolicyAggregatedListWarningDataItem>;
 export const NetworkFirewallPolicyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkFirewallPolicyAggregatedListWarningDataItem,
@@ -16440,8 +16175,7 @@ export type NodeGroupsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NodeGroupsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeGroupsScopedListWarningDataItem {
@@ -16460,7 +16194,7 @@ export const NodeGroupsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeGroupsScopedListWarningDataItem>;
 
 export type NodeGroupsScopedListWarningDataItemList =
-  NodeGroupsScopedListWarningDataItem[];
+  ReadonlyArray<NodeGroupsScopedListWarningDataItem>;
 export const NodeGroupsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeGroupsScopedListWarningDataItem,
 ) as any as S.Schema<NodeGroupsScopedListWarningDataItemList>;
@@ -16487,8 +16221,7 @@ export type NodeGroupMaintenancePolicyEnum =
   | "DEFAULT"
   | "MAINTENANCE_POLICY_UNSPECIFIED"
   | "MIGRATE_WITHIN_NODE_GROUP"
-  | "RESTART_IN_PLACE"
-  | (string & {});
+  | "RESTART_IN_PLACE";
 export const NodeGroupMaintenancePolicyEnum = /*@__PURE__*/ S.String;
 
 /** Time window specified for daily maintenance operations. GCE's internal maintenance will be performed within this window. */
@@ -16510,24 +16243,17 @@ export const NodeGroupMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 export type NodeGroupMaintenanceIntervalEnum =
   | "AS_NEEDED"
   | "PERIODIC"
-  | "RECURRENT"
-  | (string & {});
+  | "RECURRENT";
 export const NodeGroupMaintenanceIntervalEnum = /*@__PURE__*/ S.String;
 
-export type NodeGroupStatusEnum =
-  | "CREATING"
-  | "DELETING"
-  | "INVALID"
-  | "READY"
-  | (string & {});
+export type NodeGroupStatusEnum = "CREATING" | "DELETING" | "INVALID" | "READY";
 export const NodeGroupStatusEnum = /*@__PURE__*/ S.String;
 
 export type NodeGroupAutoscalingPolicyModeEnum =
   | "MODE_UNSPECIFIED"
   | "OFF"
   | "ON"
-  | "ONLY_SCALE_OUT"
-  | (string & {});
+  | "ONLY_SCALE_OUT";
 export const NodeGroupAutoscalingPolicyModeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeGroupAutoscalingPolicy {
@@ -16604,7 +16330,7 @@ export const NodeGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeGroup" }) as any as S.Schema<NodeGroup>;
 
-export type NodeGroupList_ = NodeGroup[];
+export type NodeGroupList_ = ReadonlyArray<NodeGroup>;
 export const NodeGroupList_ = /*@__PURE__*/ S.Array(
   NodeGroup,
 ) as any as S.Schema<NodeGroupList_>;
@@ -16661,8 +16387,7 @@ export type NodeGroupAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NodeGroupAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeGroupAggregatedListWarningDataItem {
@@ -16682,7 +16407,7 @@ export const NodeGroupAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NodeGroupAggregatedListWarningDataItem>;
 
 export type NodeGroupAggregatedListWarningDataItemList =
-  NodeGroupAggregatedListWarningDataItem[];
+  ReadonlyArray<NodeGroupAggregatedListWarningDataItem>;
 export const NodeGroupAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeGroupAggregatedListWarningDataItem,
 ) as any as S.Schema<NodeGroupAggregatedListWarningDataItemList>;
@@ -16790,7 +16515,7 @@ export const LocalDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LocalDisk" }) as any as S.Schema<LocalDisk>;
 
-export type LocalDiskList = LocalDisk[];
+export type LocalDiskList = ReadonlyArray<LocalDisk>;
 export const LocalDiskList = /*@__PURE__*/ S.Array(
   LocalDisk,
 ) as any as S.Schema<LocalDiskList>;
@@ -16798,8 +16523,7 @@ export const LocalDiskList = /*@__PURE__*/ S.Array(
 export type ServerBindingTypeEnum =
   | "RESTART_NODE_ON_ANY_SERVER"
   | "RESTART_NODE_ON_MINIMAL_SERVERS"
-  | "SERVER_BINDING_TYPE_UNSPECIFIED"
-  | (string & {});
+  | "SERVER_BINDING_TYPE_UNSPECIFIED";
 export const ServerBindingTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ServerBinding {
@@ -16814,16 +16538,14 @@ export const ServerBinding = /*@__PURE__*/ S.suspend(() =>
 export type NodeTemplateCpuOvercommitTypeEnum =
   | "CPU_OVERCOMMIT_TYPE_UNSPECIFIED"
   | "ENABLED"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const NodeTemplateCpuOvercommitTypeEnum = /*@__PURE__*/ S.String;
 
 export type NodeTemplateStatusEnum =
   | "CREATING"
   | "DELETING"
   | "INVALID"
-  | "READY"
-  | (string & {});
+  | "READY";
 export const NodeTemplateStatusEnum = /*@__PURE__*/ S.String;
 
 export interface NodeTemplateNodeTypeFlexibility {
@@ -16895,7 +16617,7 @@ export const NodeTemplate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeTemplate" }) as any as S.Schema<NodeTemplate>;
 
-export type NodeTemplateList_ = NodeTemplate[];
+export type NodeTemplateList_ = ReadonlyArray<NodeTemplate>;
 export const NodeTemplateList_ = /*@__PURE__*/ S.Array(
   NodeTemplate,
 ) as any as S.Schema<NodeTemplateList_>;
@@ -16929,8 +16651,7 @@ export type NodeTemplatesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NodeTemplatesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeTemplatesScopedListWarningDataItem {
@@ -16950,7 +16671,7 @@ export const NodeTemplatesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NodeTemplatesScopedListWarningDataItem>;
 
 export type NodeTemplatesScopedListWarningDataItemList =
-  NodeTemplatesScopedListWarningDataItem[];
+  ReadonlyArray<NodeTemplatesScopedListWarningDataItem>;
 export const NodeTemplatesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeTemplatesScopedListWarningDataItem,
 ) as any as S.Schema<NodeTemplatesScopedListWarningDataItemList>;
@@ -17025,8 +16746,7 @@ export type NodeTemplateAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NodeTemplateAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeTemplateAggregatedListWarningDataItem {
@@ -17046,7 +16766,7 @@ export const NodeTemplateAggregatedListWarningDataItem =
   }) as any as S.Schema<NodeTemplateAggregatedListWarningDataItem>;
 
 export type NodeTemplateAggregatedListWarningDataItemList =
-  NodeTemplateAggregatedListWarningDataItem[];
+  ReadonlyArray<NodeTemplateAggregatedListWarningDataItem>;
 export const NodeTemplateAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NodeTemplateAggregatedListWarningDataItem,
@@ -17186,7 +16906,7 @@ export const NodeType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeType" }) as any as S.Schema<NodeType>;
 
-export type NodeTypeList_ = NodeType[];
+export type NodeTypeList_ = ReadonlyArray<NodeType>;
 export const NodeTypeList_ = /*@__PURE__*/ S.Array(
   NodeType,
 ) as any as S.Schema<NodeTypeList_>;
@@ -17220,8 +16940,7 @@ export type NodeTypesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NodeTypesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeTypesScopedListWarningDataItem {
@@ -17240,7 +16959,7 @@ export const NodeTypesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeTypesScopedListWarningDataItem>;
 
 export type NodeTypesScopedListWarningDataItemList =
-  NodeTypesScopedListWarningDataItem[];
+  ReadonlyArray<NodeTypesScopedListWarningDataItem>;
 export const NodeTypesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeTypesScopedListWarningDataItem,
 ) as any as S.Schema<NodeTypesScopedListWarningDataItemList>;
@@ -17315,8 +17034,7 @@ export type NodeTypeAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NodeTypeAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeTypeAggregatedListWarningDataItem {
@@ -17336,7 +17054,7 @@ export const NodeTypeAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NodeTypeAggregatedListWarningDataItem>;
 
 export type NodeTypeAggregatedListWarningDataItemList =
-  NodeTypeAggregatedListWarningDataItem[];
+  ReadonlyArray<NodeTypeAggregatedListWarningDataItem>;
 export const NodeTypeAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeTypeAggregatedListWarningDataItem,
 ) as any as S.Schema<NodeTypeAggregatedListWarningDataItemList>;
@@ -17429,11 +17147,7 @@ export const AggregatedListPacketMirroringsRequest = /*@__PURE__*/ S.suspend(
   identifier: "AggregatedListPacketMirroringsRequest",
 }) as any as S.Schema<AggregatedListPacketMirroringsRequest>;
 
-export type PacketMirroringFilterDirectionEnum =
-  | "BOTH"
-  | "EGRESS"
-  | "INGRESS"
-  | (string & {});
+export type PacketMirroringFilterDirectionEnum = "BOTH" | "EGRESS" | "INGRESS";
 export const PacketMirroringFilterDirectionEnum = /*@__PURE__*/ S.String;
 
 export interface PacketMirroringFilter {
@@ -17454,7 +17168,7 @@ export const PacketMirroringFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PacketMirroringFilter",
 }) as any as S.Schema<PacketMirroringFilter>;
 
-export type PacketMirroringEnableEnum = "FALSE" | "TRUE" | (string & {});
+export type PacketMirroringEnableEnum = "FALSE" | "TRUE";
 export const PacketMirroringEnableEnum = /*@__PURE__*/ S.String;
 
 export interface PacketMirroringForwardingRuleInfo {
@@ -17489,7 +17203,7 @@ export const PacketMirroringMirroredResourceInfoSubnetInfo =
   }) as any as S.Schema<PacketMirroringMirroredResourceInfoSubnetInfo>;
 
 export type PacketMirroringMirroredResourceInfoSubnetInfoList =
-  PacketMirroringMirroredResourceInfoSubnetInfo[];
+  ReadonlyArray<PacketMirroringMirroredResourceInfoSubnetInfo>;
 export const PacketMirroringMirroredResourceInfoSubnetInfoList =
   /*@__PURE__*/ S.Array(
     PacketMirroringMirroredResourceInfoSubnetInfo,
@@ -17512,7 +17226,7 @@ export const PacketMirroringMirroredResourceInfoInstanceInfo =
   }) as any as S.Schema<PacketMirroringMirroredResourceInfoInstanceInfo>;
 
 export type PacketMirroringMirroredResourceInfoInstanceInfoList =
-  PacketMirroringMirroredResourceInfoInstanceInfo[];
+  ReadonlyArray<PacketMirroringMirroredResourceInfoInstanceInfo>;
 export const PacketMirroringMirroredResourceInfoInstanceInfoList =
   /*@__PURE__*/ S.Array(
     PacketMirroringMirroredResourceInfoInstanceInfo,
@@ -17600,7 +17314,7 @@ export const PacketMirroring = /*@__PURE__*/ S.suspend(() =>
   identifier: "PacketMirroring",
 }) as any as S.Schema<PacketMirroring>;
 
-export type PacketMirroringList_ = PacketMirroring[];
+export type PacketMirroringList_ = ReadonlyArray<PacketMirroring>;
 export const PacketMirroringList_ = /*@__PURE__*/ S.Array(
   PacketMirroring,
 ) as any as S.Schema<PacketMirroringList_>;
@@ -17634,8 +17348,7 @@ export type PacketMirroringsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const PacketMirroringsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface PacketMirroringsScopedListWarningDataItem {
@@ -17655,7 +17368,7 @@ export const PacketMirroringsScopedListWarningDataItem =
   }) as any as S.Schema<PacketMirroringsScopedListWarningDataItem>;
 
 export type PacketMirroringsScopedListWarningDataItemList =
-  PacketMirroringsScopedListWarningDataItem[];
+  ReadonlyArray<PacketMirroringsScopedListWarningDataItem>;
 export const PacketMirroringsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PacketMirroringsScopedListWarningDataItem,
@@ -17731,8 +17444,7 @@ export type PacketMirroringAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const PacketMirroringAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -17753,7 +17465,7 @@ export const PacketMirroringAggregatedListWarningDataItem =
   }) as any as S.Schema<PacketMirroringAggregatedListWarningDataItem>;
 
 export type PacketMirroringAggregatedListWarningDataItemList =
-  PacketMirroringAggregatedListWarningDataItem[];
+  ReadonlyArray<PacketMirroringAggregatedListWarningDataItem>;
 export const PacketMirroringAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PacketMirroringAggregatedListWarningDataItem,
@@ -17878,8 +17590,7 @@ export type PublicDelegatedPrefixesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const PublicDelegatedPrefixesScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -17900,7 +17611,7 @@ export const PublicDelegatedPrefixesScopedListWarningDataItem =
   }) as any as S.Schema<PublicDelegatedPrefixesScopedListWarningDataItem>;
 
 export type PublicDelegatedPrefixesScopedListWarningDataItemList =
-  PublicDelegatedPrefixesScopedListWarningDataItem[];
+  ReadonlyArray<PublicDelegatedPrefixesScopedListWarningDataItem>;
 export const PublicDelegatedPrefixesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PublicDelegatedPrefixesScopedListWarningDataItem,
@@ -17929,30 +17640,26 @@ export type PublicDelegatedPrefixPublicDelegatedSubPrefixModeEnum =
   | "DELEGATION"
   | "EXTERNAL_IPV6_FORWARDING_RULE_CREATION"
   | "EXTERNAL_IPV6_SUBNETWORK_CREATION"
-  | "INTERNAL_IPV6_SUBNETWORK_CREATION"
-  | (string & {});
+  | "INTERNAL_IPV6_SUBNETWORK_CREATION";
 export const PublicDelegatedPrefixPublicDelegatedSubPrefixModeEnum =
   /*@__PURE__*/ S.String;
 
 export type PublicDelegatedPrefixPublicDelegatedSubPrefixStatusEnum =
   | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const PublicDelegatedPrefixPublicDelegatedSubPrefixStatusEnum =
   /*@__PURE__*/ S.String;
 
 export type PublicDelegatedPrefixPublicDelegatedSubPrefixIpv6AccessTypeEnum =
   | "EXTERNAL"
-  | "INTERNAL"
-  | (string & {});
+  | "INTERNAL";
 export const PublicDelegatedPrefixPublicDelegatedSubPrefixIpv6AccessTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type PublicDelegatedPrefixPublicDelegatedSubPrefixPurposeEnum =
   | "APPLICATION_AND_PROXY_LOAD_BALANCERS"
   | "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0"
-  | "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1"
-  | (string & {});
+  | "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1";
 export const PublicDelegatedPrefixPublicDelegatedSubPrefixPurposeEnum =
   /*@__PURE__*/ S.String;
 
@@ -18010,7 +17717,7 @@ export const PublicDelegatedPrefixPublicDelegatedSubPrefix =
   }) as any as S.Schema<PublicDelegatedPrefixPublicDelegatedSubPrefix>;
 
 export type PublicDelegatedPrefixPublicDelegatedSubPrefixList =
-  PublicDelegatedPrefixPublicDelegatedSubPrefix[];
+  ReadonlyArray<PublicDelegatedPrefixPublicDelegatedSubPrefix>;
 export const PublicDelegatedPrefixPublicDelegatedSubPrefixList =
   /*@__PURE__*/ S.Array(
     PublicDelegatedPrefixPublicDelegatedSubPrefix,
@@ -18020,8 +17727,7 @@ export type PublicDelegatedPrefixModeEnum =
   | "DELEGATION"
   | "EXTERNAL_IPV6_FORWARDING_RULE_CREATION"
   | "EXTERNAL_IPV6_SUBNETWORK_CREATION"
-  | "INTERNAL_IPV6_SUBNETWORK_CREATION"
-  | (string & {});
+  | "INTERNAL_IPV6_SUBNETWORK_CREATION";
 export const PublicDelegatedPrefixModeEnum = /*@__PURE__*/ S.String;
 
 export type PublicDelegatedPrefixStatusEnum =
@@ -18031,35 +17737,26 @@ export type PublicDelegatedPrefixStatusEnum =
   | "ANNOUNCED_TO_INTERNET"
   | "DELETING"
   | "INITIALIZING"
-  | "READY_TO_ANNOUNCE"
-  | (string & {});
+  | "READY_TO_ANNOUNCE";
 export const PublicDelegatedPrefixStatusEnum = /*@__PURE__*/ S.String;
 
-export type PublicDelegatedPrefixIpv6AccessTypeEnum =
-  | "EXTERNAL"
-  | "INTERNAL"
-  | (string & {});
+export type PublicDelegatedPrefixIpv6AccessTypeEnum = "EXTERNAL" | "INTERNAL";
 export const PublicDelegatedPrefixIpv6AccessTypeEnum = /*@__PURE__*/ S.String;
 
 export type PublicDelegatedPrefixPurposeEnum =
   | "APPLICATION_AND_PROXY_LOAD_BALANCERS"
   | "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP0"
-  | "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1"
-  | (string & {});
+  | "PASSTHROUGH_LOAD_BALANCER_AVAILABILITY_GROUP1";
 export const PublicDelegatedPrefixPurposeEnum = /*@__PURE__*/ S.String;
 
 export type PublicDelegatedPrefixNetworkTierEnum =
   | "FIXED_STANDARD"
   | "PREMIUM"
   | "STANDARD"
-  | "STANDARD_OVERRIDES_FIXED_STANDARD"
-  | (string & {});
+  | "STANDARD_OVERRIDES_FIXED_STANDARD";
 export const PublicDelegatedPrefixNetworkTierEnum = /*@__PURE__*/ S.String;
 
-export type PublicDelegatedPrefixByoipApiVersionEnum =
-  | "V1"
-  | "V2"
-  | (string & {});
+export type PublicDelegatedPrefixByoipApiVersionEnum = "V1" | "V2";
 export const PublicDelegatedPrefixByoipApiVersionEnum = /*@__PURE__*/ S.String;
 
 /** A PublicDelegatedPrefix resource represents an IP block within a PublicAdvertisedPrefix that is configured within a single cloud scope (global or region). IPs in the block can be allocated to resources within that scope. Public delegated prefixes may be further broken up into smaller IP blocks in the same scope as the parent block. */
@@ -18134,7 +17831,7 @@ export const PublicDelegatedPrefix = /*@__PURE__*/ S.suspend(() =>
   identifier: "PublicDelegatedPrefix",
 }) as any as S.Schema<PublicDelegatedPrefix>;
 
-export type PublicDelegatedPrefixList_ = PublicDelegatedPrefix[];
+export type PublicDelegatedPrefixList_ = ReadonlyArray<PublicDelegatedPrefix>;
 export const PublicDelegatedPrefixList_ = /*@__PURE__*/ S.Array(
   PublicDelegatedPrefix,
 ) as any as S.Schema<PublicDelegatedPrefixList_>;
@@ -18191,8 +17888,7 @@ export type PublicDelegatedPrefixAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const PublicDelegatedPrefixAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -18213,7 +17909,7 @@ export const PublicDelegatedPrefixAggregatedListWarningDataItem =
   }) as any as S.Schema<PublicDelegatedPrefixAggregatedListWarningDataItem>;
 
 export type PublicDelegatedPrefixAggregatedListWarningDataItemList =
-  PublicDelegatedPrefixAggregatedListWarningDataItem[];
+  ReadonlyArray<PublicDelegatedPrefixAggregatedListWarningDataItem>;
 export const PublicDelegatedPrefixAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PublicDelegatedPrefixAggregatedListWarningDataItem,
@@ -18326,23 +18022,20 @@ export type CommitmentStatusEnum =
   | "CANCELLED"
   | "CREATING"
   | "EXPIRED"
-  | "NOT_YET_ACTIVE"
-  | (string & {});
+  | "NOT_YET_ACTIVE";
 export const CommitmentStatusEnum = /*@__PURE__*/ S.String;
 
 export type CommitmentCategoryEnum =
   | "CATEGORY_UNSPECIFIED"
   | "LICENSE"
   | "MACHINE"
-  | "PERSISTENT_DISK"
-  | (string & {});
+  | "PERSISTENT_DISK";
 export const CommitmentCategoryEnum = /*@__PURE__*/ S.String;
 
 export type ReservationEarlyAccessMaintenanceEnum =
   | "NO_EARLY_ACCESS"
   | "WAVE1"
-  | "WAVE2"
-  | (string & {});
+  | "WAVE2";
 export const ReservationEarlyAccessMaintenanceEnum = /*@__PURE__*/ S.String;
 
 /** Additional reservation params. */
@@ -18363,42 +18056,36 @@ export type ReservationStatusEnum =
   | "DELETING"
   | "INVALID"
   | "READY"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const ReservationStatusEnum = /*@__PURE__*/ S.String;
 
 export type ReservationSchedulingTypeEnum =
   | "GROUPED"
   | "GROUP_MAINTENANCE_TYPE_UNSPECIFIED"
-  | "INDEPENDENT"
-  | (string & {});
+  | "INDEPENDENT";
 export const ReservationSchedulingTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReservationDeploymentTypeEnum =
   | "DENSE"
   | "DEPLOYMENT_TYPE_UNSPECIFIED"
-  | "FLEXIBLE"
-  | (string & {});
+  | "FLEXIBLE";
 export const ReservationDeploymentTypeEnum = /*@__PURE__*/ S.String;
 
 export type ReservationReservationModeEnum =
   | "CALENDAR"
   | "DEFAULT"
-  | "RESERVATION_MODE_UNSPECIFIED"
-  | (string & {});
+  | "RESERVATION_MODE_UNSPECIFIED";
 export const ReservationReservationModeEnum = /*@__PURE__*/ S.String;
 
 export type ReservationConfidentialComputeTypeEnum =
   | "CONFIDENTIAL_COMPUTE_TYPE_TDX"
-  | "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED"
-  | (string & {});
+  | "CONFIDENTIAL_COMPUTE_TYPE_UNSPECIFIED";
 export const ReservationConfidentialComputeTypeEnum = /*@__PURE__*/ S.String;
 
 export type AllocationReservationSharingPolicyServiceShareTypeEnum =
   | "ALLOW_ALL"
   | "DISALLOW_ALL"
-  | "SERVICE_SHARE_TYPE_UNSPECIFIED"
-  | (string & {});
+  | "SERVICE_SHARE_TYPE_UNSPECIFIED";
 export const AllocationReservationSharingPolicyServiceShareTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -18419,15 +18106,13 @@ export const AllocationReservationSharingPolicy = /*@__PURE__*/ S.suspend(() =>
 export type ReservationProtectionTierEnum =
   | "CAPACITY_OPTIMIZED"
   | "PROTECTION_TIER_UNSPECIFIED"
-  | "STANDARD"
-  | (string & {});
+  | "STANDARD";
 export const ReservationProtectionTierEnum = /*@__PURE__*/ S.String;
 
 export type GroupMaintenanceInfoSchedulingTypeEnum =
   | "GROUPED"
   | "GROUP_MAINTENANCE_TYPE_UNSPECIFIED"
-  | "INDEPENDENT"
-  | (string & {});
+  | "INDEPENDENT";
 export const GroupMaintenanceInfoSchedulingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Maintenance Info for ReservationBlocks. */
@@ -18484,8 +18169,7 @@ export const AllocationResourceStatusSpecificSKUAllocation =
 export type AllocationResourceStatusHealthInfoHealthStatusEnum =
   | "DEGRADED"
   | "HEALTHY"
-  | "HEALTH_STATUS_UNSPECIFIED"
-  | (string & {});
+  | "HEALTH_STATUS_UNSPECIFIED";
 export const AllocationResourceStatusHealthInfoHealthStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -18655,7 +18339,7 @@ export const Reservation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reservation" }) as any as S.Schema<Reservation>;
 
-export type ReservationList_ = Reservation[];
+export type ReservationList_ = ReadonlyArray<Reservation>;
 export const ReservationList_ = /*@__PURE__*/ S.Array(
   Reservation,
 ) as any as S.Schema<ReservationList_>;
@@ -18695,8 +18379,7 @@ export const LicenseResourceCommitment = /*@__PURE__*/ S.suspend(() =>
 export type PersistentDiskResourceCommitmentProductTypeEnum =
   | "HYPERDISK_EXAPOOL_BALANCED"
   | "HYPERDISK_EXAPOOL_THROUGHPUT"
-  | "PRODUCT_TYPE_UNSPECIFIED"
-  | (string & {});
+  | "PRODUCT_TYPE_UNSPECIFIED";
 export const PersistentDiskResourceCommitmentProductTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -18704,8 +18387,7 @@ export type PersistentDiskResourceCommitmentDimensionTypeEnum =
   | "CAPACITY_OPTIMIZED"
   | "DIMENSION_TYPE_UNSPECIFIED"
   | "READ_OPTIMIZED"
-  | "WRITE_OPTIMIZED"
-  | (string & {});
+  | "WRITE_OPTIMIZED";
 export const PersistentDiskResourceCommitmentDimensionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -18731,7 +18413,7 @@ export const PersistentDiskResourceCommitment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PersistentDiskResourceCommitment>;
 
 export type PersistentDiskResourceCommitmentList =
-  PersistentDiskResourceCommitment[];
+  ReadonlyArray<PersistentDiskResourceCommitment>;
 export const PersistentDiskResourceCommitmentList = /*@__PURE__*/ S.Array(
   PersistentDiskResourceCommitment,
 ) as any as S.Schema<PersistentDiskResourceCommitmentList>;
@@ -18739,8 +18421,7 @@ export const PersistentDiskResourceCommitmentList = /*@__PURE__*/ S.Array(
 export type CommitmentPlanEnum =
   | "INVALID"
   | "THIRTY_SIX_MONTH"
-  | "TWELVE_MONTH"
-  | (string & {});
+  | "TWELVE_MONTH";
 export const CommitmentPlanEnum = /*@__PURE__*/ S.String;
 
 export type CommitmentTypeEnum =
@@ -18783,8 +18464,7 @@ export type CommitmentTypeEnum =
   | "MEMORY_OPTIMIZED_X4_960_12T"
   | "MEMORY_OPTIMIZED_X4_960_16T"
   | "STORAGE_OPTIMIZED_Z3"
-  | "TYPE_UNSPECIFIED"
-  | (string & {});
+  | "TYPE_UNSPECIFIED";
 export const CommitmentTypeEnum = /*@__PURE__*/ S.String;
 
 export type ResourceCommitmentTypeEnum =
@@ -18792,8 +18472,7 @@ export type ResourceCommitmentTypeEnum =
   | "LOCAL_SSD"
   | "MEMORY"
   | "UNSPECIFIED"
-  | "VCPU"
-  | (string & {});
+  | "VCPU";
 export const ResourceCommitmentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Commitment for a particular hardware resource (a commitment is composed of one or more of these). */
@@ -18815,7 +18494,7 @@ export const ResourceCommitment = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceCommitment",
 }) as any as S.Schema<ResourceCommitment>;
 
-export type ResourceCommitmentList = ResourceCommitment[];
+export type ResourceCommitmentList = ReadonlyArray<ResourceCommitment>;
 export const ResourceCommitmentList = /*@__PURE__*/ S.Array(
   ResourceCommitment,
 ) as any as S.Schema<ResourceCommitmentList>;
@@ -18902,7 +18581,7 @@ export const Commitment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Commitment" }) as any as S.Schema<Commitment>;
 
-export type CommitmentList_ = Commitment[];
+export type CommitmentList_ = ReadonlyArray<Commitment>;
 export const CommitmentList_ = /*@__PURE__*/ S.Array(
   Commitment,
 ) as any as S.Schema<CommitmentList_>;
@@ -18936,8 +18615,7 @@ export type CommitmentsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const CommitmentsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface CommitmentsScopedListWarningDataItem {
@@ -18957,7 +18635,7 @@ export const CommitmentsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CommitmentsScopedListWarningDataItem>;
 
 export type CommitmentsScopedListWarningDataItemList =
-  CommitmentsScopedListWarningDataItem[];
+  ReadonlyArray<CommitmentsScopedListWarningDataItem>;
 export const CommitmentsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   CommitmentsScopedListWarningDataItem,
 ) as any as S.Schema<CommitmentsScopedListWarningDataItemList>;
@@ -19032,8 +18710,7 @@ export type CommitmentAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const CommitmentAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface CommitmentAggregatedListWarningDataItem {
@@ -19053,7 +18730,7 @@ export const CommitmentAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CommitmentAggregatedListWarningDataItem>;
 
 export type CommitmentAggregatedListWarningDataItemList =
-  CommitmentAggregatedListWarningDataItem[];
+  ReadonlyArray<CommitmentAggregatedListWarningDataItem>;
 export const CommitmentAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     CommitmentAggregatedListWarningDataItem,
@@ -19176,8 +18853,7 @@ export type CompositeHealthChecksScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const CompositeHealthChecksScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -19198,7 +18874,7 @@ export const CompositeHealthChecksScopedListWarningDataItem =
   }) as any as S.Schema<CompositeHealthChecksScopedListWarningDataItem>;
 
 export type CompositeHealthChecksScopedListWarningDataItemList =
-  CompositeHealthChecksScopedListWarningDataItem[];
+  ReadonlyArray<CompositeHealthChecksScopedListWarningDataItem>;
 export const CompositeHealthChecksScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     CompositeHealthChecksScopedListWarningDataItem,
@@ -19266,7 +18942,7 @@ export const CompositeHealthCheck = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompositeHealthCheck",
 }) as any as S.Schema<CompositeHealthCheck>;
 
-export type CompositeHealthCheckList_ = CompositeHealthCheck[];
+export type CompositeHealthCheckList_ = ReadonlyArray<CompositeHealthCheck>;
 export const CompositeHealthCheckList_ = /*@__PURE__*/ S.Array(
   CompositeHealthCheck,
 ) as any as S.Schema<CompositeHealthCheckList_>;
@@ -19323,8 +18999,7 @@ export type CompositeHealthCheckAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const CompositeHealthCheckAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -19345,7 +19020,7 @@ export const CompositeHealthCheckAggregatedListWarningDataItem =
   }) as any as S.Schema<CompositeHealthCheckAggregatedListWarningDataItem>;
 
 export type CompositeHealthCheckAggregatedListWarningDataItemList =
-  CompositeHealthCheckAggregatedListWarningDataItem[];
+  ReadonlyArray<CompositeHealthCheckAggregatedListWarningDataItem>;
 export const CompositeHealthCheckAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     CompositeHealthCheckAggregatedListWarningDataItem,
@@ -19443,8 +19118,7 @@ export const AggregatedListRegionHealthAggregationPoliciesRequest =
 
 export type HealthAggregationPolicyPolicyTypeEnum =
   | "BACKEND_SERVICE_POLICY"
-  | "DNS_PUBLIC_IP_POLICY"
-  | (string & {});
+  | "DNS_PUBLIC_IP_POLICY";
 export const HealthAggregationPolicyPolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a health aggregation policy. A health aggregation policy resource defines a policy to aggregate health. For more information, see Health checks overview. */
@@ -19493,7 +19167,8 @@ export const HealthAggregationPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthAggregationPolicy",
 }) as any as S.Schema<HealthAggregationPolicy>;
 
-export type HealthAggregationPolicyList_ = HealthAggregationPolicy[];
+export type HealthAggregationPolicyList_ =
+  ReadonlyArray<HealthAggregationPolicy>;
 export const HealthAggregationPolicyList_ = /*@__PURE__*/ S.Array(
   HealthAggregationPolicy,
 ) as any as S.Schema<HealthAggregationPolicyList_>;
@@ -19527,8 +19202,7 @@ export type HealthAggregationPoliciesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthAggregationPoliciesScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -19549,7 +19223,7 @@ export const HealthAggregationPoliciesScopedListWarningDataItem =
   }) as any as S.Schema<HealthAggregationPoliciesScopedListWarningDataItem>;
 
 export type HealthAggregationPoliciesScopedListWarningDataItemList =
-  HealthAggregationPoliciesScopedListWarningDataItem[];
+  ReadonlyArray<HealthAggregationPoliciesScopedListWarningDataItem>;
 export const HealthAggregationPoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthAggregationPoliciesScopedListWarningDataItem,
@@ -19626,8 +19300,7 @@ export type HealthAggregationPolicyAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthAggregationPolicyAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -19648,7 +19321,7 @@ export const HealthAggregationPolicyAggregatedListWarningDataItem =
   }) as any as S.Schema<HealthAggregationPolicyAggregatedListWarningDataItem>;
 
 export type HealthAggregationPolicyAggregatedListWarningDataItemList =
-  HealthAggregationPolicyAggregatedListWarningDataItem[];
+  ReadonlyArray<HealthAggregationPolicyAggregatedListWarningDataItem>;
 export const HealthAggregationPolicyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthAggregationPolicyAggregatedListWarningDataItem,
@@ -19749,15 +19422,13 @@ export const AggregatedListRegionHealthCheckServicesRequest =
 
 export type HealthCheckServiceHealthStatusAggregationStrategyEnum =
   | "AND"
-  | "NO_AGGREGATION"
-  | (string & {});
+  | "NO_AGGREGATION";
 export const HealthCheckServiceHealthStatusAggregationStrategyEnum =
   /*@__PURE__*/ S.String;
 
 export type HealthCheckServiceHealthStatusAggregationPolicyEnum =
   | "AND"
-  | "NO_AGGREGATION"
-  | (string & {});
+  | "NO_AGGREGATION";
 export const HealthCheckServiceHealthStatusAggregationPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -19814,7 +19485,7 @@ export const HealthCheckService = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthCheckService",
 }) as any as S.Schema<HealthCheckService>;
 
-export type HealthCheckServiceList = HealthCheckService[];
+export type HealthCheckServiceList = ReadonlyArray<HealthCheckService>;
 export const HealthCheckServiceList = /*@__PURE__*/ S.Array(
   HealthCheckService,
 ) as any as S.Schema<HealthCheckServiceList>;
@@ -19848,8 +19519,7 @@ export type HealthCheckServicesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthCheckServicesScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -19870,7 +19540,7 @@ export const HealthCheckServicesScopedListWarningDataItem =
   }) as any as S.Schema<HealthCheckServicesScopedListWarningDataItem>;
 
 export type HealthCheckServicesScopedListWarningDataItemList =
-  HealthCheckServicesScopedListWarningDataItem[];
+  ReadonlyArray<HealthCheckServicesScopedListWarningDataItem>;
 export const HealthCheckServicesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthCheckServicesScopedListWarningDataItem,
@@ -19947,8 +19617,7 @@ export type HealthCheckServiceAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthCheckServiceAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -19969,7 +19638,7 @@ export const HealthCheckServiceAggregatedListWarningDataItem =
   }) as any as S.Schema<HealthCheckServiceAggregatedListWarningDataItem>;
 
 export type HealthCheckServiceAggregatedListWarningDataItemList =
-  HealthCheckServiceAggregatedListWarningDataItem[];
+  ReadonlyArray<HealthCheckServiceAggregatedListWarningDataItem>;
 export const HealthCheckServiceAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthCheckServiceAggregatedListWarningDataItem,
@@ -20065,7 +19734,7 @@ export const AggregatedListRegionHealthSourcesRequest = /*@__PURE__*/ S.suspend(
   identifier: "AggregatedListRegionHealthSourcesRequest",
 }) as any as S.Schema<AggregatedListRegionHealthSourcesRequest>;
 
-export type HealthSourceSourceTypeEnum = "BACKEND_SERVICE" | (string & {});
+export type HealthSourceSourceTypeEnum = "BACKEND_SERVICE";
 export const HealthSourceSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a health source. A health source resource specifies the source resources and the health aggregation policy applied to the source resources to determine the aggregated health status. */
@@ -20112,7 +19781,7 @@ export const HealthSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthSource" }) as any as S.Schema<HealthSource>;
 
-export type HealthSourceList_ = HealthSource[];
+export type HealthSourceList_ = ReadonlyArray<HealthSource>;
 export const HealthSourceList_ = /*@__PURE__*/ S.Array(
   HealthSource,
 ) as any as S.Schema<HealthSourceList_>;
@@ -20146,8 +19815,7 @@ export type HealthSourcesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthSourcesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface HealthSourcesScopedListWarningDataItem {
@@ -20167,7 +19835,7 @@ export const HealthSourcesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthSourcesScopedListWarningDataItem>;
 
 export type HealthSourcesScopedListWarningDataItemList =
-  HealthSourcesScopedListWarningDataItem[];
+  ReadonlyArray<HealthSourcesScopedListWarningDataItem>;
 export const HealthSourcesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   HealthSourcesScopedListWarningDataItem,
 ) as any as S.Schema<HealthSourcesScopedListWarningDataItemList>;
@@ -20242,8 +19910,7 @@ export type HealthSourceAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthSourceAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface HealthSourceAggregatedListWarningDataItem {
@@ -20263,7 +19930,7 @@ export const HealthSourceAggregatedListWarningDataItem =
   }) as any as S.Schema<HealthSourceAggregatedListWarningDataItem>;
 
 export type HealthSourceAggregatedListWarningDataItemList =
-  HealthSourceAggregatedListWarningDataItem[];
+  ReadonlyArray<HealthSourceAggregatedListWarningDataItem>;
 export const HealthSourceAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthSourceAggregatedListWarningDataItem,
@@ -20359,12 +20026,13 @@ export const AggregatedListRegionNetworkPoliciesRequest =
   }) as any as S.Schema<AggregatedListRegionNetworkPoliciesRequest>;
 
 export type NetworkPolicyTrafficClassificationRuleList =
-  NetworkPolicyTrafficClassificationRule[];
+  ReadonlyArray<NetworkPolicyTrafficClassificationRule>;
 export const NetworkPolicyTrafficClassificationRuleList = /*@__PURE__*/ S.Array(
   NetworkPolicyTrafficClassificationRule,
 ) as any as S.Schema<NetworkPolicyTrafficClassificationRuleList>;
 
-export type NetworkPolicyAssociationList = NetworkPolicyAssociation[];
+export type NetworkPolicyAssociationList =
+  ReadonlyArray<NetworkPolicyAssociation>;
 export const NetworkPolicyAssociationList = /*@__PURE__*/ S.Array(
   NetworkPolicyAssociation,
 ) as any as S.Schema<NetworkPolicyAssociationList>;
@@ -20412,7 +20080,7 @@ export const NetworkPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkPolicy" }) as any as S.Schema<NetworkPolicy>;
 
-export type NetworkPolicyList_ = NetworkPolicy[];
+export type NetworkPolicyList_ = ReadonlyArray<NetworkPolicy>;
 export const NetworkPolicyList_ = /*@__PURE__*/ S.Array(
   NetworkPolicy,
 ) as any as S.Schema<NetworkPolicyList_>;
@@ -20446,8 +20114,7 @@ export type NetworkPoliciesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkPoliciesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NetworkPoliciesScopedListWarningDataItem {
@@ -20467,7 +20134,7 @@ export const NetworkPoliciesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkPoliciesScopedListWarningDataItem>;
 
 export type NetworkPoliciesScopedListWarningDataItemList =
-  NetworkPoliciesScopedListWarningDataItem[];
+  ReadonlyArray<NetworkPoliciesScopedListWarningDataItem>;
 export const NetworkPoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkPoliciesScopedListWarningDataItem,
@@ -20543,8 +20210,7 @@ export type NetworkPolicyAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkPolicyAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -20565,7 +20231,7 @@ export const NetworkPolicyAggregatedListWarningDataItem =
   }) as any as S.Schema<NetworkPolicyAggregatedListWarningDataItem>;
 
 export type NetworkPolicyAggregatedListWarningDataItemList =
-  NetworkPolicyAggregatedListWarningDataItem[];
+  ReadonlyArray<NetworkPolicyAggregatedListWarningDataItem>;
 export const NetworkPolicyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkPolicyAggregatedListWarningDataItem,
@@ -20688,8 +20354,7 @@ export type NotificationEndpointsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NotificationEndpointsScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -20710,7 +20375,7 @@ export const NotificationEndpointsScopedListWarningDataItem =
   }) as any as S.Schema<NotificationEndpointsScopedListWarningDataItem>;
 
 export type NotificationEndpointsScopedListWarningDataItemList =
-  NotificationEndpointsScopedListWarningDataItem[];
+  ReadonlyArray<NotificationEndpointsScopedListWarningDataItem>;
 export const NotificationEndpointsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NotificationEndpointsScopedListWarningDataItem,
@@ -20794,7 +20459,7 @@ export const NotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotificationEndpoint",
 }) as any as S.Schema<NotificationEndpoint>;
 
-export type NotificationEndpointList_ = NotificationEndpoint[];
+export type NotificationEndpointList_ = ReadonlyArray<NotificationEndpoint>;
 export const NotificationEndpointList_ = /*@__PURE__*/ S.Array(
   NotificationEndpoint,
 ) as any as S.Schema<NotificationEndpointList_>;
@@ -20851,8 +20516,7 @@ export type NotificationEndpointAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NotificationEndpointAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -20873,7 +20537,7 @@ export const NotificationEndpointAggregatedListWarningDataItem =
   }) as any as S.Schema<NotificationEndpointAggregatedListWarningDataItem>;
 
 export type NotificationEndpointAggregatedListWarningDataItemList =
-  NotificationEndpointAggregatedListWarningDataItem[];
+  ReadonlyArray<NotificationEndpointAggregatedListWarningDataItem>;
 export const NotificationEndpointAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NotificationEndpointAggregatedListWarningDataItem,
@@ -20997,8 +20661,7 @@ export type ReservationsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ReservationsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ReservationsScopedListWarningDataItem {
@@ -21018,7 +20681,7 @@ export const ReservationsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReservationsScopedListWarningDataItem>;
 
 export type ReservationsScopedListWarningDataItemList =
-  ReservationsScopedListWarningDataItem[];
+  ReadonlyArray<ReservationsScopedListWarningDataItem>;
 export const ReservationsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   ReservationsScopedListWarningDataItem,
 ) as any as S.Schema<ReservationsScopedListWarningDataItemList>;
@@ -21093,8 +20756,7 @@ export type ReservationAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ReservationAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ReservationAggregatedListWarningDataItem {
@@ -21114,7 +20776,7 @@ export const ReservationAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReservationAggregatedListWarningDataItem>;
 
 export type ReservationAggregatedListWarningDataItemList =
-  ReservationAggregatedListWarningDataItem[];
+  ReadonlyArray<ReservationAggregatedListWarningDataItem>;
 export const ReservationAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ReservationAggregatedListWarningDataItem,
@@ -21219,15 +20881,13 @@ export const ResourcePolicyDiskConsistencyGroupPolicy = /*@__PURE__*/ S.suspend(
 
 export type ResourcePolicyGroupPlacementPolicyAcceleratorTopologyModeEnum =
   | "AUTO_CONNECT"
-  | "PROVISION_ONLY"
-  | (string & {});
+  | "PROVISION_ONLY";
 export const ResourcePolicyGroupPlacementPolicyAcceleratorTopologyModeEnum =
   /*@__PURE__*/ S.String;
 
 export type ResourcePolicyGroupPlacementPolicyCollocationEnum =
   | "COLLOCATED"
-  | "UNSPECIFIED_COLLOCATION"
-  | (string & {});
+  | "UNSPECIFIED_COLLOCATION";
 export const ResourcePolicyGroupPlacementPolicyCollocationEnum =
   /*@__PURE__*/ S.String;
 
@@ -21296,8 +20956,7 @@ export const ResourcePolicySnapshotSchedulePolicySnapshotProperties =
 export type ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteEnum =
     | "APPLY_RETENTION_POLICY"
     | "KEEP_AUTO_SNAPSHOTS"
-    | "UNSPECIFIED_ON_SOURCE_DISK_DELETE"
-    | (string & {});
+    | "UNSPECIFIED_ON_SOURCE_DISK_DELETE";
 export const ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteEnum =
   /*@__PURE__*/ S.String;
 
@@ -21328,8 +20987,7 @@ export type ResourcePolicyWeeklyCycleDayOfWeekDayEnum =
   | "SUNDAY"
   | "THURSDAY"
   | "TUESDAY"
-  | "WEDNESDAY"
-  | (string & {});
+  | "WEDNESDAY";
 export const ResourcePolicyWeeklyCycleDayOfWeekDayEnum = /*@__PURE__*/ S.String;
 
 export interface ResourcePolicyWeeklyCycleDayOfWeek {
@@ -21351,7 +21009,7 @@ export const ResourcePolicyWeeklyCycleDayOfWeek = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcePolicyWeeklyCycleDayOfWeek>;
 
 export type ResourcePolicyWeeklyCycleDayOfWeekList =
-  ResourcePolicyWeeklyCycleDayOfWeek[];
+  ReadonlyArray<ResourcePolicyWeeklyCycleDayOfWeek>;
 export const ResourcePolicyWeeklyCycleDayOfWeekList = /*@__PURE__*/ S.Array(
   ResourcePolicyWeeklyCycleDayOfWeek,
 ) as any as S.Schema<ResourcePolicyWeeklyCycleDayOfWeekList>;
@@ -21453,8 +21111,7 @@ export type ResourcePolicyStatusEnum =
   | "DELETING"
   | "EXPIRED"
   | "INVALID"
-  | "READY"
-  | (string & {});
+  | "READY";
 export const ResourcePolicyStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ResourcePolicyResourceStatusInstanceSchedulePolicyStatus {
@@ -21490,22 +21147,19 @@ export const ResourcePolicyResourceStatus = /*@__PURE__*/ S.suspend(() =>
 
 export type ResourcePolicyWorkloadPolicyTypeEnum =
   | "HIGH_AVAILABILITY"
-  | "HIGH_THROUGHPUT"
-  | (string & {});
+  | "HIGH_THROUGHPUT";
 export const ResourcePolicyWorkloadPolicyTypeEnum = /*@__PURE__*/ S.String;
 
 export type ResourcePolicyWorkloadPolicyMaxTopologyDistanceEnum =
   | "BLOCK"
   | "CLUSTER"
-  | "SUBBLOCK"
-  | (string & {});
+  | "SUBBLOCK";
 export const ResourcePolicyWorkloadPolicyMaxTopologyDistanceEnum =
   /*@__PURE__*/ S.String;
 
 export type ResourcePolicyWorkloadPolicyAcceleratorTopologyModeEnum =
   | "AUTO_CONNECT"
-  | "PROVISION_ONLY"
-  | (string & {});
+  | "PROVISION_ONLY";
 export const ResourcePolicyWorkloadPolicyAcceleratorTopologyModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -21625,7 +21279,7 @@ export const ResourcePolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourcePolicy" }) as any as S.Schema<ResourcePolicy>;
 
-export type ResourcePolicyList_ = ResourcePolicy[];
+export type ResourcePolicyList_ = ReadonlyArray<ResourcePolicy>;
 export const ResourcePolicyList_ = /*@__PURE__*/ S.Array(
   ResourcePolicy,
 ) as any as S.Schema<ResourcePolicyList_>;
@@ -21659,8 +21313,7 @@ export type ResourcePoliciesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ResourcePoliciesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ResourcePoliciesScopedListWarningDataItem {
@@ -21680,7 +21333,7 @@ export const ResourcePoliciesScopedListWarningDataItem =
   }) as any as S.Schema<ResourcePoliciesScopedListWarningDataItem>;
 
 export type ResourcePoliciesScopedListWarningDataItemList =
-  ResourcePoliciesScopedListWarningDataItem[];
+  ReadonlyArray<ResourcePoliciesScopedListWarningDataItem>;
 export const ResourcePoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ResourcePoliciesScopedListWarningDataItem,
@@ -21756,8 +21409,7 @@ export type ResourcePolicyAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ResourcePolicyAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -21778,7 +21430,7 @@ export const ResourcePolicyAggregatedListWarningDataItem =
   }) as any as S.Schema<ResourcePolicyAggregatedListWarningDataItem>;
 
 export type ResourcePolicyAggregatedListWarningDataItemList =
-  ResourcePolicyAggregatedListWarningDataItem[];
+  ReadonlyArray<ResourcePolicyAggregatedListWarningDataItem>;
 export const ResourcePolicyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ResourcePolicyAggregatedListWarningDataItem,
@@ -21885,11 +21537,11 @@ export const RouterParams = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouterParams" }) as any as S.Schema<RouterParams>;
 
-export type RouterBgpAdvertisedGroupsItemEnum = "ALL_SUBNETS" | (string & {});
+export type RouterBgpAdvertisedGroupsItemEnum = "ALL_SUBNETS";
 export const RouterBgpAdvertisedGroupsItemEnum = /*@__PURE__*/ S.String;
 
 export type RouterBgpAdvertisedGroupsItemEnumList =
-  RouterBgpAdvertisedGroupsItemEnum[];
+  ReadonlyArray<RouterBgpAdvertisedGroupsItemEnum>;
 export const RouterBgpAdvertisedGroupsItemEnumList = /*@__PURE__*/ S.Array(
   RouterBgpAdvertisedGroupsItemEnum,
 ) as any as S.Schema<RouterBgpAdvertisedGroupsItemEnumList>;
@@ -21910,12 +21562,13 @@ export const RouterAdvertisedIpRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterAdvertisedIpRange",
 }) as any as S.Schema<RouterAdvertisedIpRange>;
 
-export type RouterAdvertisedIpRangeList = RouterAdvertisedIpRange[];
+export type RouterAdvertisedIpRangeList =
+  ReadonlyArray<RouterAdvertisedIpRange>;
 export const RouterAdvertisedIpRangeList = /*@__PURE__*/ S.Array(
   RouterAdvertisedIpRange,
 ) as any as S.Schema<RouterAdvertisedIpRangeList>;
 
-export type RouterBgpAdvertiseModeEnum = "CUSTOM" | "DEFAULT" | (string & {});
+export type RouterBgpAdvertiseModeEnum = "CUSTOM" | "DEFAULT";
 export const RouterBgpAdvertiseModeEnum = /*@__PURE__*/ S.String;
 
 export interface RouterBgp {
@@ -21947,27 +21600,24 @@ export type RouterNatAutoNetworkTierEnum =
   | "FIXED_STANDARD"
   | "PREMIUM"
   | "STANDARD"
-  | "STANDARD_OVERRIDES_FIXED_STANDARD"
-  | (string & {});
+  | "STANDARD_OVERRIDES_FIXED_STANDARD";
 export const RouterNatAutoNetworkTierEnum = /*@__PURE__*/ S.String;
 
 export type RouterNatSourceSubnetworkIpRangesToNatEnum =
   | "ALL_SUBNETWORKS_ALL_IP_RANGES"
   | "ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES"
-  | "LIST_OF_SUBNETWORKS"
-  | (string & {});
+  | "LIST_OF_SUBNETWORKS";
 export const RouterNatSourceSubnetworkIpRangesToNatEnum =
   /*@__PURE__*/ S.String;
 
 export type RouterNatEndpointTypesItemEnum =
   | "ENDPOINT_TYPE_MANAGED_PROXY_LB"
   | "ENDPOINT_TYPE_SWG"
-  | "ENDPOINT_TYPE_VM"
-  | (string & {});
+  | "ENDPOINT_TYPE_VM";
 export const RouterNatEndpointTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type RouterNatEndpointTypesItemEnumList =
-  RouterNatEndpointTypesItemEnum[];
+  ReadonlyArray<RouterNatEndpointTypesItemEnum>;
 export const RouterNatEndpointTypesItemEnumList = /*@__PURE__*/ S.Array(
   RouterNatEndpointTypesItemEnum,
 ) as any as S.Schema<RouterNatEndpointTypesItemEnumList>;
@@ -21975,8 +21625,7 @@ export const RouterNatEndpointTypesItemEnumList = /*@__PURE__*/ S.Array(
 export type RouterNatLogConfigFilterEnum =
   | "ALL"
   | "ERRORS_ONLY"
-  | "TRANSLATIONS_ONLY"
-  | (string & {});
+  | "TRANSLATIONS_ONLY";
 export const RouterNatLogConfigFilterEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of logging on a NAT. */
@@ -21995,29 +21644,24 @@ export const RouterNatLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterNatLogConfig",
 }) as any as S.Schema<RouterNatLogConfig>;
 
-export type RouterNatNatIpAllocateOptionEnum =
-  | "AUTO_ONLY"
-  | "MANUAL_ONLY"
-  | (string & {});
+export type RouterNatNatIpAllocateOptionEnum = "AUTO_ONLY" | "MANUAL_ONLY";
 export const RouterNatNatIpAllocateOptionEnum = /*@__PURE__*/ S.String;
 
 export type RouterNatSourceSubnetworkIpRangesToNat64Enum =
   | "ALL_IPV6_SUBNETWORKS"
-  | "LIST_OF_IPV6_SUBNETWORKS"
-  | (string & {});
+  | "LIST_OF_IPV6_SUBNETWORKS";
 export const RouterNatSourceSubnetworkIpRangesToNat64Enum =
   /*@__PURE__*/ S.String;
 
 export type RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum =
   | "ALL_IP_RANGES"
   | "LIST_OF_SECONDARY_IP_RANGES"
-  | "PRIMARY_IP_RANGE"
-  | (string & {});
+  | "PRIMARY_IP_RANGE";
 export const RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum =
   /*@__PURE__*/ S.String;
 
 export type RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList =
-  RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum[];
+  ReadonlyArray<RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum>;
 export const RouterNatSubnetworkToNatSourceIpRangesToNatItemEnumList =
   /*@__PURE__*/ S.Array(
     RouterNatSubnetworkToNatSourceIpRangesToNatItemEnum,
@@ -22044,12 +21688,13 @@ export const RouterNatSubnetworkToNat = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterNatSubnetworkToNat",
 }) as any as S.Schema<RouterNatSubnetworkToNat>;
 
-export type RouterNatSubnetworkToNatList = RouterNatSubnetworkToNat[];
+export type RouterNatSubnetworkToNatList =
+  ReadonlyArray<RouterNatSubnetworkToNat>;
 export const RouterNatSubnetworkToNatList = /*@__PURE__*/ S.Array(
   RouterNatSubnetworkToNat,
 ) as any as S.Schema<RouterNatSubnetworkToNatList>;
 
-export type RouterNatTypeEnum = "PRIVATE" | "PUBLIC" | (string & {});
+export type RouterNatTypeEnum = "PRIVATE" | "PUBLIC";
 export const RouterNatTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RouterNatRuleAction {
@@ -22092,7 +21737,7 @@ export const RouterNatRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouterNatRule" }) as any as S.Schema<RouterNatRule>;
 
-export type RouterNatRuleList = RouterNatRule[];
+export type RouterNatRuleList = ReadonlyArray<RouterNatRule>;
 export const RouterNatRuleList = /*@__PURE__*/ S.Array(
   RouterNatRule,
 ) as any as S.Schema<RouterNatRuleList>;
@@ -22110,7 +21755,8 @@ export const RouterNatSubnetworkToNat64 = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterNatSubnetworkToNat64",
 }) as any as S.Schema<RouterNatSubnetworkToNat64>;
 
-export type RouterNatSubnetworkToNat64List = RouterNatSubnetworkToNat64[];
+export type RouterNatSubnetworkToNat64List =
+  ReadonlyArray<RouterNatSubnetworkToNat64>;
 export const RouterNatSubnetworkToNat64List = /*@__PURE__*/ S.Array(
   RouterNatSubnetworkToNat64,
 ) as any as S.Schema<RouterNatSubnetworkToNat64List>;
@@ -22195,36 +21841,30 @@ export const RouterNat = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouterNat" }) as any as S.Schema<RouterNat>;
 
-export type RouterNatList = RouterNat[];
+export type RouterNatList = ReadonlyArray<RouterNat>;
 export const RouterNatList = /*@__PURE__*/ S.Array(
   RouterNat,
 ) as any as S.Schema<RouterNatList>;
 
-export type RouterBgpPeerAdvertisedGroupsItemEnum =
-  | "ALL_SUBNETS"
-  | (string & {});
+export type RouterBgpPeerAdvertisedGroupsItemEnum = "ALL_SUBNETS";
 export const RouterBgpPeerAdvertisedGroupsItemEnum = /*@__PURE__*/ S.String;
 
 export type RouterBgpPeerAdvertisedGroupsItemEnumList =
-  RouterBgpPeerAdvertisedGroupsItemEnum[];
+  ReadonlyArray<RouterBgpPeerAdvertisedGroupsItemEnum>;
 export const RouterBgpPeerAdvertisedGroupsItemEnumList = /*@__PURE__*/ S.Array(
   RouterBgpPeerAdvertisedGroupsItemEnum,
 ) as any as S.Schema<RouterBgpPeerAdvertisedGroupsItemEnumList>;
 
-export type RouterBgpPeerEnableEnum = "FALSE" | "TRUE" | (string & {});
+export type RouterBgpPeerEnableEnum = "FALSE" | "TRUE";
 export const RouterBgpPeerEnableEnum = /*@__PURE__*/ S.String;
 
-export type RouterBgpPeerAdvertiseModeEnum =
-  | "CUSTOM"
-  | "DEFAULT"
-  | (string & {});
+export type RouterBgpPeerAdvertiseModeEnum = "CUSTOM" | "DEFAULT";
 export const RouterBgpPeerAdvertiseModeEnum = /*@__PURE__*/ S.String;
 
 export type RouterBgpPeerBfdSessionInitializationModeEnum =
   | "ACTIVE"
   | "DISABLED"
-  | "PASSIVE"
-  | (string & {});
+  | "PASSIVE";
 export const RouterBgpPeerBfdSessionInitializationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -22253,8 +21893,7 @@ export const RouterBgpPeerBfd = /*@__PURE__*/ S.suspend(() =>
 
 export type RouterBgpPeerManagementTypeEnum =
   | "MANAGED_BY_ATTACHMENT"
-  | "MANAGED_BY_USER"
-  | (string & {});
+  | "MANAGED_BY_USER";
 export const RouterBgpPeerManagementTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RouterBgpPeerCustomLearnedIpRange {
@@ -22270,7 +21909,7 @@ export const RouterBgpPeerCustomLearnedIpRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouterBgpPeerCustomLearnedIpRange>;
 
 export type RouterBgpPeerCustomLearnedIpRangeList =
-  RouterBgpPeerCustomLearnedIpRange[];
+  ReadonlyArray<RouterBgpPeerCustomLearnedIpRange>;
 export const RouterBgpPeerCustomLearnedIpRangeList = /*@__PURE__*/ S.Array(
   RouterBgpPeerCustomLearnedIpRange,
 ) as any as S.Schema<RouterBgpPeerCustomLearnedIpRangeList>;
@@ -22354,7 +21993,7 @@ export const RouterBgpPeer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouterBgpPeer" }) as any as S.Schema<RouterBgpPeer>;
 
-export type RouterBgpPeerList = RouterBgpPeer[];
+export type RouterBgpPeerList = ReadonlyArray<RouterBgpPeer>;
 export const RouterBgpPeerList = /*@__PURE__*/ S.Array(
   RouterBgpPeer,
 ) as any as S.Schema<RouterBgpPeerList>;
@@ -22374,18 +22013,18 @@ export const RouterMd5AuthenticationKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterMd5AuthenticationKey",
 }) as any as S.Schema<RouterMd5AuthenticationKey>;
 
-export type RouterMd5AuthenticationKeyList = RouterMd5AuthenticationKey[];
+export type RouterMd5AuthenticationKeyList =
+  ReadonlyArray<RouterMd5AuthenticationKey>;
 export const RouterMd5AuthenticationKeyList = /*@__PURE__*/ S.Array(
   RouterMd5AuthenticationKey,
 ) as any as S.Schema<RouterMd5AuthenticationKeyList>;
 
-export type RouterInterfaceIpVersionEnum = "IPV4" | "IPV6" | (string & {});
+export type RouterInterfaceIpVersionEnum = "IPV4" | "IPV6";
 export const RouterInterfaceIpVersionEnum = /*@__PURE__*/ S.String;
 
 export type RouterInterfaceManagementTypeEnum =
   | "MANAGED_BY_ATTACHMENT"
-  | "MANAGED_BY_USER"
-  | (string & {});
+  | "MANAGED_BY_USER";
 export const RouterInterfaceManagementTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RouterInterface {
@@ -22424,7 +22063,7 @@ export const RouterInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterInterface",
 }) as any as S.Schema<RouterInterface>;
 
-export type RouterInterfaceList = RouterInterface[];
+export type RouterInterfaceList = ReadonlyArray<RouterInterface>;
 export const RouterInterfaceList = /*@__PURE__*/ S.Array(
   RouterInterface,
 ) as any as S.Schema<RouterInterfaceList>;
@@ -22485,7 +22124,7 @@ export const Router = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Router" }) as any as S.Schema<Router>;
 
-export type RouterList_ = Router[];
+export type RouterList_ = ReadonlyArray<Router>;
 export const RouterList_ = /*@__PURE__*/ S.Array(
   Router,
 ) as any as S.Schema<RouterList_>;
@@ -22519,8 +22158,7 @@ export type RoutersScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RoutersScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RoutersScopedListWarningDataItem {
@@ -22539,7 +22177,7 @@ export const RoutersScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutersScopedListWarningDataItem>;
 
 export type RoutersScopedListWarningDataItemList =
-  RoutersScopedListWarningDataItem[];
+  ReadonlyArray<RoutersScopedListWarningDataItem>;
 export const RoutersScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   RoutersScopedListWarningDataItem,
 ) as any as S.Schema<RoutersScopedListWarningDataItemList>;
@@ -22614,8 +22252,7 @@ export type RouterAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RouterAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RouterAggregatedListWarningDataItem {
@@ -22634,7 +22271,7 @@ export const RouterAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouterAggregatedListWarningDataItem>;
 
 export type RouterAggregatedListWarningDataItemList =
-  RouterAggregatedListWarningDataItem[];
+  ReadonlyArray<RouterAggregatedListWarningDataItem>;
 export const RouterAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   RouterAggregatedListWarningDataItem,
 ) as any as S.Schema<RouterAggregatedListWarningDataItemList>;
@@ -22748,7 +22385,7 @@ export const SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig =
   }) as any as S.Schema<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig>;
 
 export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeEnum =
-  "HTTP_HEADER_HOST" | "HTTP_PATH" | "UNSPECIFIED_TYPE" | (string & {});
+  "HTTP_HEADER_HOST" | "HTTP_PATH" | "UNSPECIFIED_TYPE";
 export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -22776,7 +22413,7 @@ export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresh
   }) as any as S.Schema<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>;
 
 export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigList =
-  SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig[];
+  ReadonlyArray<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>;
 export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig,
@@ -22816,14 +22453,14 @@ export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresh
   }) as any as S.Schema<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>;
 
 export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigList =
-  SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig[];
+  ReadonlyArray<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>;
 export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigList =
   /*@__PURE__*/ S.Array(
     SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig,
   ) as any as S.Schema<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigList>;
 
 export type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityEnum =
-  "PREMIUM" | "STANDARD" | (string & {});
+  "PREMIUM" | "STANDARD";
 export const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -22871,7 +22508,8 @@ export const SecurityPolicyAdaptiveProtectionConfig = /*@__PURE__*/ S.suspend(
   identifier: "SecurityPolicyAdaptiveProtectionConfig",
 }) as any as S.Schema<SecurityPolicyAdaptiveProtectionConfig>;
 
-export type SecurityPolicyAssociationList = SecurityPolicyAssociation[];
+export type SecurityPolicyAssociationList =
+  ReadonlyArray<SecurityPolicyAssociation>;
 export const SecurityPolicyAssociationList = /*@__PURE__*/ S.Array(
   SecurityPolicyAssociation,
 ) as any as S.Schema<SecurityPolicyAssociationList>;
@@ -22894,11 +22532,10 @@ export type SecurityPolicyTypeEnum =
   | "CLOUD_ARMOR_EDGE"
   | "CLOUD_ARMOR_INTERNAL_SERVICE"
   | "CLOUD_ARMOR_NETWORK"
-  | "FIREWALL"
-  | (string & {});
+  | "FIREWALL";
 export const SecurityPolicyTypeEnum = /*@__PURE__*/ S.String;
 
-export type SecurityPolicyRuleList = SecurityPolicyRule[];
+export type SecurityPolicyRuleList = ReadonlyArray<SecurityPolicyRule>;
 export const SecurityPolicyRuleList = /*@__PURE__*/ S.Array(
   SecurityPolicyRule,
 ) as any as S.Schema<SecurityPolicyRuleList>;
@@ -22919,15 +22556,13 @@ export const SecurityPolicyAdvancedOptionsConfigJsonCustomConfig =
 export type SecurityPolicyAdvancedOptionsConfigJsonParsingEnum =
   | "DISABLED"
   | "STANDARD"
-  | "STANDARD_WITH_GRAPHQL"
-  | (string & {});
+  | "STANDARD_WITH_GRAPHQL";
 export const SecurityPolicyAdvancedOptionsConfigJsonParsingEnum =
   /*@__PURE__*/ S.String;
 
 export type SecurityPolicyAdvancedOptionsConfigLogLevelEnum =
   | "NORMAL"
-  | "VERBOSE"
-  | (string & {});
+  | "VERBOSE";
 export const SecurityPolicyAdvancedOptionsConfigLogLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -22958,8 +22593,7 @@ export const SecurityPolicyAdvancedOptionsConfig = /*@__PURE__*/ S.suspend(() =>
 export type SecurityPolicyDdosProtectionConfigDdosProtectionEnum =
   | "ADVANCED"
   | "ADVANCED_PREVIEW"
-  | "STANDARD"
-  | (string & {});
+  | "STANDARD";
 export const SecurityPolicyDdosProtectionConfigDdosProtectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -22968,8 +22602,7 @@ export type SecurityPolicyDdosProtectionConfigDdosAdaptiveProtectionEnum =
   | "DISABLED"
   | "ENABLED"
   | "PREVIEW"
-  | "UNSPECIFIED_ADAPTIVE_PROTECTION"
-  | (string & {});
+  | "UNSPECIFIED_ADAPTIVE_PROTECTION";
 export const SecurityPolicyDdosProtectionConfigDdosAdaptiveProtectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -22997,8 +22630,7 @@ export type SecurityPolicyUserDefinedFieldBaseEnum =
   | "IPV4"
   | "IPV6"
   | "TCP"
-  | "UDP"
-  | (string & {});
+  | "UDP";
 export const SecurityPolicyUserDefinedFieldBaseEnum = /*@__PURE__*/ S.String;
 
 export interface SecurityPolicyUserDefinedField {
@@ -23026,7 +22658,7 @@ export const SecurityPolicyUserDefinedField = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityPolicyUserDefinedField>;
 
 export type SecurityPolicyUserDefinedFieldList =
-  SecurityPolicyUserDefinedField[];
+  ReadonlyArray<SecurityPolicyUserDefinedField>;
 export const SecurityPolicyUserDefinedFieldList = /*@__PURE__*/ S.Array(
   SecurityPolicyUserDefinedField,
 ) as any as S.Schema<SecurityPolicyUserDefinedFieldList>;
@@ -23106,7 +22738,7 @@ export const SecurityPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecurityPolicy" }) as any as S.Schema<SecurityPolicy>;
 
-export type SecurityPolicyList_ = SecurityPolicy[];
+export type SecurityPolicyList_ = ReadonlyArray<SecurityPolicy>;
 export const SecurityPolicyList_ = /*@__PURE__*/ S.Array(
   SecurityPolicy,
 ) as any as S.Schema<SecurityPolicyList_>;
@@ -23140,8 +22772,7 @@ export type SecurityPoliciesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SecurityPoliciesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SecurityPoliciesScopedListWarningDataItem {
@@ -23161,7 +22792,7 @@ export const SecurityPoliciesScopedListWarningDataItem =
   }) as any as S.Schema<SecurityPoliciesScopedListWarningDataItem>;
 
 export type SecurityPoliciesScopedListWarningDataItemList =
-  SecurityPoliciesScopedListWarningDataItem[];
+  ReadonlyArray<SecurityPoliciesScopedListWarningDataItem>;
 export const SecurityPoliciesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SecurityPoliciesScopedListWarningDataItem,
@@ -23237,8 +22868,7 @@ export type SecurityPoliciesAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SecurityPoliciesAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -23259,7 +22889,7 @@ export const SecurityPoliciesAggregatedListWarningDataItem =
   }) as any as S.Schema<SecurityPoliciesAggregatedListWarningDataItem>;
 
 export type SecurityPoliciesAggregatedListWarningDataItemList =
-  SecurityPoliciesAggregatedListWarningDataItem[];
+  ReadonlyArray<SecurityPoliciesAggregatedListWarningDataItem>;
 export const SecurityPoliciesAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SecurityPoliciesAggregatedListWarningDataItem,
@@ -23370,15 +23000,13 @@ export const Uint128 = /*@__PURE__*/ S.suspend(() =>
 export type ServiceAttachmentTunnelingConfigRoutingModeEnum =
   | "PACKET_INJECTION"
   | "STANDARD_ROUTING"
-  | "UNSPECIFIED_ROUTING_MODE"
-  | (string & {});
+  | "UNSPECIFIED_ROUTING_MODE";
 export const ServiceAttachmentTunnelingConfigRoutingModeEnum =
   /*@__PURE__*/ S.String;
 
 export type ServiceAttachmentTunnelingConfigEncapsulationProfileEnum =
   | "GENEVE_SECURITY_V1"
-  | "UNSPECIFIED_ENCAPSULATION_PROFILE"
-  | (string & {});
+  | "UNSPECIFIED_ENCAPSULATION_PROFILE";
 export const ServiceAttachmentTunnelingConfigEncapsulationProfileEnum =
   /*@__PURE__*/ S.String;
 
@@ -23406,8 +23034,7 @@ export type ServiceAttachmentConnectedEndpointStatusEnum =
   | "NEEDS_ATTENTION"
   | "PENDING"
   | "REJECTED"
-  | "STATUS_UNSPECIFIED"
-  | (string & {});
+  | "STATUS_UNSPECIFIED";
 export const ServiceAttachmentConnectedEndpointStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -23443,7 +23070,7 @@ export const ServiceAttachmentConnectedEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAttachmentConnectedEndpoint>;
 
 export type ServiceAttachmentConnectedEndpointList =
-  ServiceAttachmentConnectedEndpoint[];
+  ReadonlyArray<ServiceAttachmentConnectedEndpoint>;
 export const ServiceAttachmentConnectedEndpointList = /*@__PURE__*/ S.Array(
   ServiceAttachmentConnectedEndpoint,
 ) as any as S.Schema<ServiceAttachmentConnectedEndpointList>;
@@ -23451,8 +23078,7 @@ export const ServiceAttachmentConnectedEndpointList = /*@__PURE__*/ S.Array(
 export type ServiceAttachmentConnectionPreferenceEnum =
   | "ACCEPT_AUTOMATIC"
   | "ACCEPT_MANUAL"
-  | "CONNECTION_PREFERENCE_UNSPECIFIED"
-  | (string & {});
+  | "CONNECTION_PREFERENCE_UNSPECIFIED";
 export const ServiceAttachmentConnectionPreferenceEnum = /*@__PURE__*/ S.String;
 
 export interface ServiceAttachmentConsumerProjectLimit {
@@ -23478,7 +23104,7 @@ export const ServiceAttachmentConsumerProjectLimit = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServiceAttachmentConsumerProjectLimit>;
 
 export type ServiceAttachmentConsumerProjectLimitList =
-  ServiceAttachmentConsumerProjectLimit[];
+  ReadonlyArray<ServiceAttachmentConsumerProjectLimit>;
 export const ServiceAttachmentConsumerProjectLimitList = /*@__PURE__*/ S.Array(
   ServiceAttachmentConsumerProjectLimit,
 ) as any as S.Schema<ServiceAttachmentConsumerProjectLimitList>;
@@ -23562,7 +23188,7 @@ export const ServiceAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceAttachment",
 }) as any as S.Schema<ServiceAttachment>;
 
-export type ServiceAttachmentList_ = ServiceAttachment[];
+export type ServiceAttachmentList_ = ReadonlyArray<ServiceAttachment>;
 export const ServiceAttachmentList_ = /*@__PURE__*/ S.Array(
   ServiceAttachment,
 ) as any as S.Schema<ServiceAttachmentList_>;
@@ -23596,8 +23222,7 @@ export type ServiceAttachmentsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ServiceAttachmentsScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -23618,7 +23243,7 @@ export const ServiceAttachmentsScopedListWarningDataItem =
   }) as any as S.Schema<ServiceAttachmentsScopedListWarningDataItem>;
 
 export type ServiceAttachmentsScopedListWarningDataItemList =
-  ServiceAttachmentsScopedListWarningDataItem[];
+  ReadonlyArray<ServiceAttachmentsScopedListWarningDataItem>;
 export const ServiceAttachmentsScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ServiceAttachmentsScopedListWarningDataItem,
@@ -23694,8 +23319,7 @@ export type ServiceAttachmentAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ServiceAttachmentAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -23716,7 +23340,7 @@ export const ServiceAttachmentAggregatedListWarningDataItem =
   }) as any as S.Schema<ServiceAttachmentAggregatedListWarningDataItem>;
 
 export type ServiceAttachmentAggregatedListWarningDataItemList =
-  ServiceAttachmentAggregatedListWarningDataItem[];
+  ReadonlyArray<ServiceAttachmentAggregatedListWarningDataItem>;
 export const ServiceAttachmentAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ServiceAttachmentAggregatedListWarningDataItem,
@@ -23816,8 +23440,7 @@ export type SnapshotStatusEnum =
   | "DELETING"
   | "FAILED"
   | "READY"
-  | "UPLOADING"
-  | (string & {});
+  | "UPLOADING";
 export const SnapshotStatusEnum = /*@__PURE__*/ S.String;
 
 /** Additional snapshot params. */
@@ -23831,20 +23454,16 @@ export const SnapshotParams = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SnapshotParams" }) as any as S.Schema<SnapshotParams>;
 
-export type SnapshotStorageBytesStatusEnum =
-  | "UPDATING"
-  | "UP_TO_DATE"
-  | (string & {});
+export type SnapshotStorageBytesStatusEnum = "UPDATING" | "UP_TO_DATE";
 export const SnapshotStorageBytesStatusEnum = /*@__PURE__*/ S.String;
 
-export type SnapshotSnapshotTypeEnum = "ARCHIVE" | "STANDARD" | (string & {});
+export type SnapshotSnapshotTypeEnum = "ARCHIVE" | "STANDARD";
 export const SnapshotSnapshotTypeEnum = /*@__PURE__*/ S.String;
 
 export type SnapshotArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "ARM64"
-  | "X86_64"
-  | (string & {});
+  | "X86_64";
 export const SnapshotArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Persistent Disk Snapshot resource. You can use snapshots to back up data on a regular interval. For more information, read Creating persistent disk snapshots. */
@@ -23978,7 +23597,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
-export type SnapshotList_ = Snapshot[];
+export type SnapshotList_ = ReadonlyArray<Snapshot>;
 export const SnapshotList_ = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotList_>;
@@ -24012,8 +23631,7 @@ export type SnapshotsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SnapshotsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SnapshotsScopedListWarningDataItem {
@@ -24032,7 +23650,7 @@ export const SnapshotsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotsScopedListWarningDataItem>;
 
 export type SnapshotsScopedListWarningDataItemList =
-  SnapshotsScopedListWarningDataItem[];
+  ReadonlyArray<SnapshotsScopedListWarningDataItem>;
 export const SnapshotsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   SnapshotsScopedListWarningDataItem,
 ) as any as S.Schema<SnapshotsScopedListWarningDataItemList>;
@@ -24107,8 +23725,7 @@ export type SnapshotAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SnapshotAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SnapshotAggregatedListWarningDataItem {
@@ -24128,7 +23745,7 @@ export const SnapshotAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SnapshotAggregatedListWarningDataItem>;
 
 export type SnapshotAggregatedListWarningDataItemList =
-  SnapshotAggregatedListWarningDataItem[];
+  ReadonlyArray<SnapshotAggregatedListWarningDataItem>;
 export const SnapshotAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   SnapshotAggregatedListWarningDataItem,
 ) as any as S.Schema<SnapshotAggregatedListWarningDataItemList>;
@@ -24229,8 +23846,7 @@ export type SslCertificateManagedSslCertificateStatusEnum =
   | "PROVISIONING"
   | "PROVISIONING_FAILED"
   | "PROVISIONING_FAILED_PERMANENTLY"
-  | "RENEWAL_FAILED"
-  | (string & {});
+  | "RENEWAL_FAILED";
 export const SslCertificateManagedSslCertificateStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -24241,8 +23857,7 @@ export type SslCertificateManagedSslCertificateDomainStatusValueEnum =
   | "FAILED_CAA_FORBIDDEN"
   | "FAILED_NOT_VISIBLE"
   | "FAILED_RATE_LIMITED"
-  | "PROVISIONING"
-  | (string & {});
+  | "PROVISIONING";
 export const SslCertificateManagedSslCertificateDomainStatusValueEnum =
   /*@__PURE__*/ S.String;
 
@@ -24298,8 +23913,7 @@ export const SslCertificateSelfManagedSslCertificate = /*@__PURE__*/ S.suspend(
 export type SslCertificateTypeEnum =
   | "MANAGED"
   | "SELF_MANAGED"
-  | "TYPE_UNSPECIFIED"
-  | (string & {});
+  | "TYPE_UNSPECIFIED";
 export const SslCertificateTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an SSL certificate resource. Google Compute Engine has two SSL certificate resources: * [Global](/compute/docs/reference/rest/beta/sslCertificates) * [Regional](/compute/docs/reference/rest/beta/regionSslCertificates) The global SSL certificates (sslCertificates) are used by: - Global external Application Load Balancers - Classic Application Load Balancers - Proxy Network Load Balancers (with target SSL proxies) The regional SSL certificates (regionSslCertificates) are used by: - Regional external Application Load Balancers - Regional internal Application Load Balancers Optionally, certificate file contents that you upload can contain a set of up to five PEM-encoded certificates. The API call creates an object (sslCertificate) that holds this data. You can use SSL keys and certificates to secure connections to a load balancer. For more information, read Creating and using SSL certificates,SSL certificates quotas and limits, and Troubleshooting SSL certificates. */
@@ -24352,7 +23966,7 @@ export const SslCertificate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SslCertificate" }) as any as S.Schema<SslCertificate>;
 
-export type SslCertificateList_ = SslCertificate[];
+export type SslCertificateList_ = ReadonlyArray<SslCertificate>;
 export const SslCertificateList_ = /*@__PURE__*/ S.Array(
   SslCertificate,
 ) as any as S.Schema<SslCertificateList_>;
@@ -24386,8 +24000,7 @@ export type SslCertificatesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SslCertificatesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SslCertificatesScopedListWarningDataItem {
@@ -24407,7 +24020,7 @@ export const SslCertificatesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SslCertificatesScopedListWarningDataItem>;
 
 export type SslCertificatesScopedListWarningDataItemList =
-  SslCertificatesScopedListWarningDataItem[];
+  ReadonlyArray<SslCertificatesScopedListWarningDataItem>;
 export const SslCertificatesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SslCertificatesScopedListWarningDataItem,
@@ -24483,8 +24096,7 @@ export type SslCertificateAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SslCertificateAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -24505,7 +24117,7 @@ export const SslCertificateAggregatedListWarningDataItem =
   }) as any as S.Schema<SslCertificateAggregatedListWarningDataItem>;
 
 export type SslCertificateAggregatedListWarningDataItemList =
-  SslCertificateAggregatedListWarningDataItem[];
+  ReadonlyArray<SslCertificateAggregatedListWarningDataItem>;
 export const SslCertificateAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SslCertificateAggregatedListWarningDataItem,
@@ -24603,16 +24215,14 @@ export type SslPolicyProfileEnum =
   | "CUSTOM"
   | "FIPS_202205"
   | "MODERN"
-  | "RESTRICTED"
-  | (string & {});
+  | "RESTRICTED";
 export const SslPolicyProfileEnum = /*@__PURE__*/ S.String;
 
 export type SslPolicyMinTlsVersionEnum =
   | "TLS_1_0"
   | "TLS_1_1"
   | "TLS_1_2"
-  | "TLS_1_3"
-  | (string & {});
+  | "TLS_1_3";
 export const SslPolicyMinTlsVersionEnum = /*@__PURE__*/ S.String;
 
 export type SslPolicyWarningsItemCodeEnum =
@@ -24644,8 +24254,7 @@ export type SslPolicyWarningsItemCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SslPolicyWarningsItemCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SslPolicyWarningsItemDataItem {
@@ -24663,7 +24272,8 @@ export const SslPolicyWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SslPolicyWarningsItemDataItem",
 }) as any as S.Schema<SslPolicyWarningsItemDataItem>;
 
-export type SslPolicyWarningsItemDataItemList = SslPolicyWarningsItemDataItem[];
+export type SslPolicyWarningsItemDataItemList =
+  ReadonlyArray<SslPolicyWarningsItemDataItem>;
 export const SslPolicyWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   SslPolicyWarningsItemDataItem,
 ) as any as S.Schema<SslPolicyWarningsItemDataItemList>;
@@ -24686,7 +24296,7 @@ export const SslPolicyWarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SslPolicyWarningsItem",
 }) as any as S.Schema<SslPolicyWarningsItem>;
 
-export type SslPolicyWarningsItemList = SslPolicyWarningsItem[];
+export type SslPolicyWarningsItemList = ReadonlyArray<SslPolicyWarningsItem>;
 export const SslPolicyWarningsItemList = /*@__PURE__*/ S.Array(
   SslPolicyWarningsItem,
 ) as any as S.Schema<SslPolicyWarningsItemList>;
@@ -24694,8 +24304,7 @@ export const SslPolicyWarningsItemList = /*@__PURE__*/ S.Array(
 export type SslPolicyPostQuantumKeyExchangeEnum =
   | "DEFAULT"
   | "DEFERRED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const SslPolicyPostQuantumKeyExchangeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an SSL Policy resource. Use SSL policies to control SSL features, such as versions and cipher suites, that are offered by Application Load Balancers and proxy Network Load Balancers. For more information, read SSL policies overview. */
@@ -24748,7 +24357,7 @@ export const SslPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SslPolicy" }) as any as S.Schema<SslPolicy>;
 
-export type SslPolicyList = SslPolicy[];
+export type SslPolicyList = ReadonlyArray<SslPolicy>;
 export const SslPolicyList = /*@__PURE__*/ S.Array(
   SslPolicy,
 ) as any as S.Schema<SslPolicyList>;
@@ -24782,8 +24391,7 @@ export type SslPoliciesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SslPoliciesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SslPoliciesScopedListWarningDataItem {
@@ -24803,7 +24411,7 @@ export const SslPoliciesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SslPoliciesScopedListWarningDataItem>;
 
 export type SslPoliciesScopedListWarningDataItemList =
-  SslPoliciesScopedListWarningDataItem[];
+  ReadonlyArray<SslPoliciesScopedListWarningDataItem>;
 export const SslPoliciesScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   SslPoliciesScopedListWarningDataItem,
 ) as any as S.Schema<SslPoliciesScopedListWarningDataItemList>;
@@ -24878,8 +24486,7 @@ export type SslPoliciesAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SslPoliciesAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SslPoliciesAggregatedListWarningDataItem {
@@ -24899,7 +24506,7 @@ export const SslPoliciesAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SslPoliciesAggregatedListWarningDataItem>;
 
 export type SslPoliciesAggregatedListWarningDataItemList =
-  SslPoliciesAggregatedListWarningDataItem[];
+  ReadonlyArray<SslPoliciesAggregatedListWarningDataItem>;
 export const SslPoliciesAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SslPoliciesAggregatedListWarningDataItem,
@@ -25079,27 +24686,20 @@ export const StoragePoolExapoolProvisionedCapacityGb = /*@__PURE__*/ S.suspend(
   identifier: "StoragePoolExapoolProvisionedCapacityGb",
 }) as any as S.Schema<StoragePoolExapoolProvisionedCapacityGb>;
 
-export type StoragePoolStateEnum =
-  | "CREATING"
-  | "DELETING"
-  | "FAILED"
-  | "READY"
-  | (string & {});
+export type StoragePoolStateEnum = "CREATING" | "DELETING" | "FAILED" | "READY";
 export const StoragePoolStateEnum = /*@__PURE__*/ S.String;
 
 export type StoragePoolPerformanceProvisioningTypeEnum =
   | "ADVANCED"
   | "STANDARD"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const StoragePoolPerformanceProvisioningTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type StoragePoolCapacityProvisioningTypeEnum =
   | "ADVANCED"
   | "STANDARD"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const StoragePoolCapacityProvisioningTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a zonal storage pool resource. */
@@ -25179,7 +24779,7 @@ export const StoragePool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StoragePool" }) as any as S.Schema<StoragePool>;
 
-export type StoragePoolList_ = StoragePool[];
+export type StoragePoolList_ = ReadonlyArray<StoragePool>;
 export const StoragePoolList_ = /*@__PURE__*/ S.Array(
   StoragePool,
 ) as any as S.Schema<StoragePoolList_>;
@@ -25213,8 +24813,7 @@ export type StoragePoolsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const StoragePoolsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface StoragePoolsScopedListWarningDataItem {
@@ -25234,7 +24833,7 @@ export const StoragePoolsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StoragePoolsScopedListWarningDataItem>;
 
 export type StoragePoolsScopedListWarningDataItemList =
-  StoragePoolsScopedListWarningDataItem[];
+  ReadonlyArray<StoragePoolsScopedListWarningDataItem>;
 export const StoragePoolsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   StoragePoolsScopedListWarningDataItem,
 ) as any as S.Schema<StoragePoolsScopedListWarningDataItemList>;
@@ -25309,8 +24908,7 @@ export type StoragePoolAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const StoragePoolAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface StoragePoolAggregatedListWarningDataItem {
@@ -25330,7 +24928,7 @@ export const StoragePoolAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StoragePoolAggregatedListWarningDataItem>;
 
 export type StoragePoolAggregatedListWarningDataItemList =
-  StoragePoolAggregatedListWarningDataItem[];
+  ReadonlyArray<StoragePoolAggregatedListWarningDataItem>;
 export const StoragePoolAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     StoragePoolAggregatedListWarningDataItem,
@@ -25486,7 +25084,7 @@ export const StoragePoolType = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoragePoolType",
 }) as any as S.Schema<StoragePoolType>;
 
-export type StoragePoolTypeList_ = StoragePoolType[];
+export type StoragePoolTypeList_ = ReadonlyArray<StoragePoolType>;
 export const StoragePoolTypeList_ = /*@__PURE__*/ S.Array(
   StoragePoolType,
 ) as any as S.Schema<StoragePoolTypeList_>;
@@ -25520,8 +25118,7 @@ export type StoragePoolTypesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const StoragePoolTypesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface StoragePoolTypesScopedListWarningDataItem {
@@ -25541,7 +25138,7 @@ export const StoragePoolTypesScopedListWarningDataItem =
   }) as any as S.Schema<StoragePoolTypesScopedListWarningDataItem>;
 
 export type StoragePoolTypesScopedListWarningDataItemList =
-  StoragePoolTypesScopedListWarningDataItem[];
+  ReadonlyArray<StoragePoolTypesScopedListWarningDataItem>;
 export const StoragePoolTypesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     StoragePoolTypesScopedListWarningDataItem,
@@ -25617,8 +25214,7 @@ export type StoragePoolTypeAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const StoragePoolTypeAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -25639,7 +25235,7 @@ export const StoragePoolTypeAggregatedListWarningDataItem =
   }) as any as S.Schema<StoragePoolTypeAggregatedListWarningDataItem>;
 
 export type StoragePoolTypeAggregatedListWarningDataItemList =
-  StoragePoolTypeAggregatedListWarningDataItem[];
+  ReadonlyArray<StoragePoolTypeAggregatedListWarningDataItem>;
 export const StoragePoolTypeAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     StoragePoolTypeAggregatedListWarningDataItem,
@@ -25691,14 +25287,11 @@ export const StoragePoolTypeAggregatedList = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoragePoolTypeAggregatedList",
 }) as any as S.Schema<StoragePoolTypeAggregatedList>;
 
-export type AggregatedListSubnetworksViewsEnum =
-  | "DEFAULT"
-  | "WITH_UTILIZATION"
-  | (string & {});
+export type AggregatedListSubnetworksViewsEnum = "DEFAULT" | "WITH_UTILIZATION";
 export const AggregatedListSubnetworksViewsEnum = /*@__PURE__*/ S.String;
 
 export type AggregatedListSubnetworksViewsEnumList =
-  AggregatedListSubnetworksViewsEnum[];
+  ReadonlyArray<AggregatedListSubnetworksViewsEnum>;
 export const AggregatedListSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
   AggregatedListSubnetworksViewsEnum,
 ) as any as S.Schema<AggregatedListSubnetworksViewsEnumList>;
@@ -25754,20 +25347,15 @@ export type SubnetworkPurposeEnum =
   | "PRIVATE_NAT"
   | "PRIVATE_RFC_1918"
   | "PRIVATE_SERVICE_CONNECT"
-  | "REGIONAL_MANAGED_PROXY"
-  | (string & {});
+  | "REGIONAL_MANAGED_PROXY";
 export const SubnetworkPurposeEnum = /*@__PURE__*/ S.String;
 
-export type SubnetworkIpv6AccessTypeEnum =
-  | "EXTERNAL"
-  | "INTERNAL"
-  | (string & {});
+export type SubnetworkIpv6AccessTypeEnum = "EXTERNAL" | "INTERNAL";
 export const SubnetworkIpv6AccessTypeEnum = /*@__PURE__*/ S.String;
 
 export type SubnetworkResolveSubnetMaskEnum =
   | "ARP_ALL_RANGES"
-  | "ARP_PRIMARY_RANGE"
-  | (string & {});
+  | "ARP_PRIMARY_RANGE";
 export const SubnetworkResolveSubnetMaskEnum = /*@__PURE__*/ S.String;
 
 export type SubnetworkLogConfigAggregationIntervalEnum =
@@ -25776,16 +25364,14 @@ export type SubnetworkLogConfigAggregationIntervalEnum =
   | "INTERVAL_1_MIN"
   | "INTERVAL_30_SEC"
   | "INTERVAL_5_MIN"
-  | "INTERVAL_5_SEC"
-  | (string & {});
+  | "INTERVAL_5_SEC";
 export const SubnetworkLogConfigAggregationIntervalEnum =
   /*@__PURE__*/ S.String;
 
 export type SubnetworkLogConfigMetadataEnum =
   | "CUSTOM_METADATA"
   | "EXCLUDE_ALL_METADATA"
-  | "INCLUDE_ALL_METADATA"
-  | (string & {});
+  | "INCLUDE_ALL_METADATA";
 export const SubnetworkLogConfigMetadataEnum = /*@__PURE__*/ S.String;
 
 /** The available logging options for this subnetwork. */
@@ -25816,23 +25402,16 @@ export const SubnetworkLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubnetworkLogConfig",
 }) as any as S.Schema<SubnetworkLogConfig>;
 
-export type SubnetworkRoleEnum = "ACTIVE" | "BACKUP" | (string & {});
+export type SubnetworkRoleEnum = "ACTIVE" | "BACKUP";
 export const SubnetworkRoleEnum = /*@__PURE__*/ S.String;
 
-export type SubnetworkIpv6GceEndpointEnum =
-  | "VM_AND_FR"
-  | "VM_ONLY"
-  | (string & {});
+export type SubnetworkIpv6GceEndpointEnum = "VM_AND_FR" | "VM_ONLY";
 export const SubnetworkIpv6GceEndpointEnum = /*@__PURE__*/ S.String;
 
-export type SubnetworkStateEnum = "DRAINING" | "READY" | (string & {});
+export type SubnetworkStateEnum = "DRAINING" | "READY";
 export const SubnetworkStateEnum = /*@__PURE__*/ S.String;
 
-export type SubnetworkStackTypeEnum =
-  | "IPV4_IPV6"
-  | "IPV4_ONLY"
-  | "IPV6_ONLY"
-  | (string & {});
+export type SubnetworkStackTypeEnum = "IPV4_IPV6" | "IPV4_ONLY" | "IPV6_ONLY";
 export const SubnetworkStackTypeEnum = /*@__PURE__*/ S.String;
 
 /** Additional subnetwork parameters. */
@@ -25867,7 +25446,7 @@ export const SubnetworkUtilizationDetailsIPV4Utilization =
   }) as any as S.Schema<SubnetworkUtilizationDetailsIPV4Utilization>;
 
 export type SubnetworkUtilizationDetailsIPV4UtilizationList =
-  SubnetworkUtilizationDetailsIPV4Utilization[];
+  ReadonlyArray<SubnetworkUtilizationDetailsIPV4Utilization>;
 export const SubnetworkUtilizationDetailsIPV4UtilizationList =
   /*@__PURE__*/ S.Array(
     SubnetworkUtilizationDetailsIPV4Utilization,
@@ -25921,8 +25500,7 @@ export const SubnetworkUtilizationDetails = /*@__PURE__*/ S.suspend(() =>
 export type SubnetworkSecondaryRangeIpVersionEnum =
   | "IPV4"
   | "IPV6"
-  | "IP_VERSION_UNSPECIFIED"
-  | (string & {});
+  | "IP_VERSION_UNSPECIFIED";
 export const SubnetworkSecondaryRangeIpVersionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a secondary IP range of a subnetwork. */
@@ -25949,7 +25527,8 @@ export const SubnetworkSecondaryRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubnetworkSecondaryRange",
 }) as any as S.Schema<SubnetworkSecondaryRange>;
 
-export type SubnetworkSecondaryRangeList = SubnetworkSecondaryRange[];
+export type SubnetworkSecondaryRangeList =
+  ReadonlyArray<SubnetworkSecondaryRange>;
 export const SubnetworkSecondaryRangeList = /*@__PURE__*/ S.Array(
   SubnetworkSecondaryRange,
 ) as any as S.Schema<SubnetworkSecondaryRangeList>;
@@ -25957,16 +25536,14 @@ export const SubnetworkSecondaryRangeList = /*@__PURE__*/ S.Array(
 export type SubnetworkPrivateIpv6GoogleAccessEnum =
   | "DISABLE_GOOGLE_ACCESS"
   | "ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE"
-  | "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE"
-  | (string & {});
+  | "ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE";
 export const SubnetworkPrivateIpv6GoogleAccessEnum = /*@__PURE__*/ S.String;
 
 export type SubnetworkIpv6NetworkTierEnum =
   | "FIXED_STANDARD"
   | "PREMIUM"
   | "STANDARD"
-  | "STANDARD_OVERRIDES_FIXED_STANDARD"
-  | (string & {});
+  | "STANDARD_OVERRIDES_FIXED_STANDARD";
 export const SubnetworkIpv6NetworkTierEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Subnetwork resource. A subnetwork (also known as a subnet) is a logical partition of a Virtual Private Cloud network with one primary IP range and zero or more secondary IP ranges. For more information, read Virtual Private Cloud (VPC) Network. */
@@ -26078,7 +25655,7 @@ export const Subnetwork = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Subnetwork" }) as any as S.Schema<Subnetwork>;
 
-export type SubnetworkList_ = Subnetwork[];
+export type SubnetworkList_ = ReadonlyArray<Subnetwork>;
 export const SubnetworkList_ = /*@__PURE__*/ S.Array(
   Subnetwork,
 ) as any as S.Schema<SubnetworkList_>;
@@ -26112,8 +25689,7 @@ export type SubnetworksScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SubnetworksScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SubnetworksScopedListWarningDataItem {
@@ -26133,7 +25709,7 @@ export const SubnetworksScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SubnetworksScopedListWarningDataItem>;
 
 export type SubnetworksScopedListWarningDataItemList =
-  SubnetworksScopedListWarningDataItem[];
+  ReadonlyArray<SubnetworksScopedListWarningDataItem>;
 export const SubnetworksScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   SubnetworksScopedListWarningDataItem,
 ) as any as S.Schema<SubnetworksScopedListWarningDataItemList>;
@@ -26208,8 +25784,7 @@ export type SubnetworkAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SubnetworkAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SubnetworkAggregatedListWarningDataItem {
@@ -26229,7 +25804,7 @@ export const SubnetworkAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SubnetworkAggregatedListWarningDataItem>;
 
 export type SubnetworkAggregatedListWarningDataItemList =
-  SubnetworkAggregatedListWarningDataItem[];
+  ReadonlyArray<SubnetworkAggregatedListWarningDataItem>;
 export const SubnetworkAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SubnetworkAggregatedListWarningDataItem,
@@ -26352,8 +25927,7 @@ export type TargetHttpProxiesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetHttpProxiesScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -26374,7 +25948,7 @@ export const TargetHttpProxiesScopedListWarningDataItem =
   }) as any as S.Schema<TargetHttpProxiesScopedListWarningDataItem>;
 
 export type TargetHttpProxiesScopedListWarningDataItemList =
-  TargetHttpProxiesScopedListWarningDataItem[];
+  ReadonlyArray<TargetHttpProxiesScopedListWarningDataItem>;
 export const TargetHttpProxiesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetHttpProxiesScopedListWarningDataItem,
@@ -26444,7 +26018,7 @@ export const TargetHttpProxy = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetHttpProxy",
 }) as any as S.Schema<TargetHttpProxy>;
 
-export type TargetHttpProxyList_ = TargetHttpProxy[];
+export type TargetHttpProxyList_ = ReadonlyArray<TargetHttpProxy>;
 export const TargetHttpProxyList_ = /*@__PURE__*/ S.Array(
   TargetHttpProxy,
 ) as any as S.Schema<TargetHttpProxyList_>;
@@ -26501,8 +26075,7 @@ export type TargetHttpProxyAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetHttpProxyAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -26523,7 +26096,7 @@ export const TargetHttpProxyAggregatedListWarningDataItem =
   }) as any as S.Schema<TargetHttpProxyAggregatedListWarningDataItem>;
 
 export type TargetHttpProxyAggregatedListWarningDataItemList =
-  TargetHttpProxyAggregatedListWarningDataItem[];
+  ReadonlyArray<TargetHttpProxyAggregatedListWarningDataItem>;
 export const TargetHttpProxyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetHttpProxyAggregatedListWarningDataItem,
@@ -26622,15 +26195,10 @@ export type TargetHttpsProxyTlsEarlyDataEnum =
   | "DISABLED"
   | "PERMISSIVE"
   | "STRICT"
-  | "UNRESTRICTED"
-  | (string & {});
+  | "UNRESTRICTED";
 export const TargetHttpsProxyTlsEarlyDataEnum = /*@__PURE__*/ S.String;
 
-export type TargetHttpsProxyQuicOverrideEnum =
-  | "DISABLE"
-  | "ENABLE"
-  | "NONE"
-  | (string & {});
+export type TargetHttpsProxyQuicOverrideEnum = "DISABLE" | "ENABLE" | "NONE";
 export const TargetHttpsProxyQuicOverrideEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Target HTTPS Proxy resource. Google Compute Engine has two Target HTTPS Proxy resources: * [Global](/compute/docs/reference/rest/beta/targetHttpsProxies) * [Regional](/compute/docs/reference/rest/beta/regionTargetHttpsProxies) A target HTTPS proxy is a component of Google Cloud HTTPS load balancers. * targetHttpsProxies are used by global external Application Load Balancers, classic Application Load Balancers, cross-region internal Application Load Balancers, and Traffic Director. * regionTargetHttpsProxies are used by regional internal Application Load Balancers and regional external Application Load Balancers. Forwarding rules reference a target HTTPS proxy, and the target proxy then references a URL map. For more information, readUsing Target Proxies and Forwarding rule concepts. */
@@ -26706,7 +26274,7 @@ export const TargetHttpsProxy = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetHttpsProxy",
 }) as any as S.Schema<TargetHttpsProxy>;
 
-export type TargetHttpsProxyList_ = TargetHttpsProxy[];
+export type TargetHttpsProxyList_ = ReadonlyArray<TargetHttpsProxy>;
 export const TargetHttpsProxyList_ = /*@__PURE__*/ S.Array(
   TargetHttpsProxy,
 ) as any as S.Schema<TargetHttpsProxyList_>;
@@ -26740,8 +26308,7 @@ export type TargetHttpsProxiesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetHttpsProxiesScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -26762,7 +26329,7 @@ export const TargetHttpsProxiesScopedListWarningDataItem =
   }) as any as S.Schema<TargetHttpsProxiesScopedListWarningDataItem>;
 
 export type TargetHttpsProxiesScopedListWarningDataItemList =
-  TargetHttpsProxiesScopedListWarningDataItem[];
+  ReadonlyArray<TargetHttpsProxiesScopedListWarningDataItem>;
 export const TargetHttpsProxiesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetHttpsProxiesScopedListWarningDataItem,
@@ -26838,8 +26405,7 @@ export type TargetHttpsProxyAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetHttpsProxyAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -26860,7 +26426,7 @@ export const TargetHttpsProxyAggregatedListWarningDataItem =
   }) as any as S.Schema<TargetHttpsProxyAggregatedListWarningDataItem>;
 
 export type TargetHttpsProxyAggregatedListWarningDataItemList =
-  TargetHttpsProxyAggregatedListWarningDataItem[];
+  ReadonlyArray<TargetHttpsProxyAggregatedListWarningDataItem>;
 export const TargetHttpsProxyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetHttpsProxyAggregatedListWarningDataItem,
@@ -26984,8 +26550,7 @@ export type TargetInstancesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetInstancesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetInstancesScopedListWarningDataItem {
@@ -27005,7 +26570,7 @@ export const TargetInstancesScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TargetInstancesScopedListWarningDataItem>;
 
 export type TargetInstancesScopedListWarningDataItemList =
-  TargetInstancesScopedListWarningDataItem[];
+  ReadonlyArray<TargetInstancesScopedListWarningDataItem>;
 export const TargetInstancesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetInstancesScopedListWarningDataItem,
@@ -27029,7 +26594,7 @@ export const TargetInstancesScopedListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetInstancesScopedListWarning",
 }) as any as S.Schema<TargetInstancesScopedListWarning>;
 
-export type TargetInstanceNatPolicyEnum = "NO_NAT" | (string & {});
+export type TargetInstanceNatPolicyEnum = "NO_NAT";
 export const TargetInstanceNatPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Target Instance resource. You can use a target instance to handle traffic for one or more forwarding rules, which is ideal for forwarding protocol traffic that is managed by a single source. For example, ESP, AH, TCP, or UDP. For more information, readTarget instances. */
@@ -27073,7 +26638,7 @@ export const TargetInstance = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetInstance" }) as any as S.Schema<TargetInstance>;
 
-export type TargetInstanceList_ = TargetInstance[];
+export type TargetInstanceList_ = ReadonlyArray<TargetInstance>;
 export const TargetInstanceList_ = /*@__PURE__*/ S.Array(
   TargetInstance,
 ) as any as S.Schema<TargetInstanceList_>;
@@ -27130,8 +26695,7 @@ export type TargetInstanceAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetInstanceAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -27152,7 +26716,7 @@ export const TargetInstanceAggregatedListWarningDataItem =
   }) as any as S.Schema<TargetInstanceAggregatedListWarningDataItem>;
 
 export type TargetInstanceAggregatedListWarningDataItemList =
-  TargetInstanceAggregatedListWarningDataItem[];
+  ReadonlyArray<TargetInstanceAggregatedListWarningDataItem>;
 export const TargetInstanceAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetInstanceAggregatedListWarningDataItem,
@@ -27254,8 +26818,7 @@ export type TargetPoolSessionAffinityEnum =
   | "HEADER_FIELD"
   | "HTTP_COOKIE"
   | "NONE"
-  | "STRONG_COOKIE_AFFINITY"
-  | (string & {});
+  | "STRONG_COOKIE_AFFINITY";
 export const TargetPoolSessionAffinityEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Target Pool resource. Target pools are used with external passthrough Network Load Balancers. A target pool references member instances, an associated legacy HttpHealthCheck resource, and, optionally, a backup target pool. For more information, readUsing target pools. */
@@ -27305,7 +26868,7 @@ export const TargetPool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetPool" }) as any as S.Schema<TargetPool>;
 
-export type TargetPoolList_ = TargetPool[];
+export type TargetPoolList_ = ReadonlyArray<TargetPool>;
 export const TargetPoolList_ = /*@__PURE__*/ S.Array(
   TargetPool,
 ) as any as S.Schema<TargetPoolList_>;
@@ -27339,8 +26902,7 @@ export type TargetPoolsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetPoolsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetPoolsScopedListWarningDataItem {
@@ -27360,7 +26922,7 @@ export const TargetPoolsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TargetPoolsScopedListWarningDataItem>;
 
 export type TargetPoolsScopedListWarningDataItemList =
-  TargetPoolsScopedListWarningDataItem[];
+  ReadonlyArray<TargetPoolsScopedListWarningDataItem>;
 export const TargetPoolsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetPoolsScopedListWarningDataItem,
 ) as any as S.Schema<TargetPoolsScopedListWarningDataItemList>;
@@ -27435,8 +26997,7 @@ export type TargetPoolAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetPoolAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetPoolAggregatedListWarningDataItem {
@@ -27456,7 +27017,7 @@ export const TargetPoolAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TargetPoolAggregatedListWarningDataItem>;
 
 export type TargetPoolAggregatedListWarningDataItemList =
-  TargetPoolAggregatedListWarningDataItem[];
+  ReadonlyArray<TargetPoolAggregatedListWarningDataItem>;
 export const TargetPoolAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetPoolAggregatedListWarningDataItem,
@@ -27554,11 +27115,10 @@ export type TargetTcpProxyLoadBalancingSchemeEnum =
   | "EXTERNAL"
   | "EXTERNAL_MANAGED"
   | "INTERNAL_MANAGED"
-  | "LOAD_BALANCING_SCHEME_UNSPECIFIED"
-  | (string & {});
+  | "LOAD_BALANCING_SCHEME_UNSPECIFIED";
 export const TargetTcpProxyLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 
-export type TargetTcpProxyProxyHeaderEnum = "NONE" | "PROXY_V1" | (string & {});
+export type TargetTcpProxyProxyHeaderEnum = "NONE" | "PROXY_V1";
 export const TargetTcpProxyProxyHeaderEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Target TCP Proxy resource. A target TCP proxy is a component of a Proxy Network Load Balancer. The forwarding rule references the target TCP proxy, and the target proxy then references a backend service. For more information, readProxy Network Load Balancer overview. */
@@ -27602,7 +27162,7 @@ export const TargetTcpProxy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TargetTcpProxy" }) as any as S.Schema<TargetTcpProxy>;
 
-export type TargetTcpProxyList_ = TargetTcpProxy[];
+export type TargetTcpProxyList_ = ReadonlyArray<TargetTcpProxy>;
 export const TargetTcpProxyList_ = /*@__PURE__*/ S.Array(
   TargetTcpProxy,
 ) as any as S.Schema<TargetTcpProxyList_>;
@@ -27636,8 +27196,7 @@ export type TargetTcpProxiesScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetTcpProxiesScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetTcpProxiesScopedListWarningDataItem {
@@ -27657,7 +27216,7 @@ export const TargetTcpProxiesScopedListWarningDataItem =
   }) as any as S.Schema<TargetTcpProxiesScopedListWarningDataItem>;
 
 export type TargetTcpProxiesScopedListWarningDataItemList =
-  TargetTcpProxiesScopedListWarningDataItem[];
+  ReadonlyArray<TargetTcpProxiesScopedListWarningDataItem>;
 export const TargetTcpProxiesScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetTcpProxiesScopedListWarningDataItem,
@@ -27733,8 +27292,7 @@ export type TargetTcpProxyAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetTcpProxyAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -27755,7 +27313,7 @@ export const TargetTcpProxyAggregatedListWarningDataItem =
   }) as any as S.Schema<TargetTcpProxyAggregatedListWarningDataItem>;
 
 export type TargetTcpProxyAggregatedListWarningDataItemList =
-  TargetTcpProxyAggregatedListWarningDataItem[];
+  ReadonlyArray<TargetTcpProxyAggregatedListWarningDataItem>;
 export const TargetTcpProxyAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetTcpProxyAggregatedListWarningDataItem,
@@ -27878,8 +27436,7 @@ export type TargetVpnGatewaysScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetVpnGatewaysScopedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -27900,7 +27457,7 @@ export const TargetVpnGatewaysScopedListWarningDataItem =
   }) as any as S.Schema<TargetVpnGatewaysScopedListWarningDataItem>;
 
 export type TargetVpnGatewaysScopedListWarningDataItemList =
-  TargetVpnGatewaysScopedListWarningDataItem[];
+  ReadonlyArray<TargetVpnGatewaysScopedListWarningDataItem>;
 export const TargetVpnGatewaysScopedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetVpnGatewaysScopedListWarningDataItem,
@@ -27928,8 +27485,7 @@ export type TargetVpnGatewayStatusEnum =
   | "CREATING"
   | "DELETING"
   | "FAILED"
-  | "READY"
-  | (string & {});
+  | "READY";
 export const TargetVpnGatewayStatusEnum = /*@__PURE__*/ S.String;
 
 export interface TargetVpnGatewayParams {
@@ -27996,7 +27552,7 @@ export const TargetVpnGateway = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetVpnGateway",
 }) as any as S.Schema<TargetVpnGateway>;
 
-export type TargetVpnGatewayList_ = TargetVpnGateway[];
+export type TargetVpnGatewayList_ = ReadonlyArray<TargetVpnGateway>;
 export const TargetVpnGatewayList_ = /*@__PURE__*/ S.Array(
   TargetVpnGateway,
 ) as any as S.Schema<TargetVpnGatewayList_>;
@@ -28053,8 +27609,7 @@ export type TargetVpnGatewayAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetVpnGatewayAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -28075,7 +27630,7 @@ export const TargetVpnGatewayAggregatedListWarningDataItem =
   }) as any as S.Schema<TargetVpnGatewayAggregatedListWarningDataItem>;
 
 export type TargetVpnGatewayAggregatedListWarningDataItemList =
-  TargetVpnGatewayAggregatedListWarningDataItem[];
+  ReadonlyArray<TargetVpnGatewayAggregatedListWarningDataItem>;
 export const TargetVpnGatewayAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     TargetVpnGatewayAggregatedListWarningDataItem,
@@ -28198,8 +27753,7 @@ export type UrlMapsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const UrlMapsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface UrlMapsScopedListWarningDataItem {
@@ -28218,7 +27772,7 @@ export const UrlMapsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UrlMapsScopedListWarningDataItem>;
 
 export type UrlMapsScopedListWarningDataItemList =
-  UrlMapsScopedListWarningDataItem[];
+  ReadonlyArray<UrlMapsScopedListWarningDataItem>;
 export const UrlMapsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   UrlMapsScopedListWarningDataItem,
 ) as any as S.Schema<UrlMapsScopedListWarningDataItemList>;
@@ -28246,8 +27800,7 @@ export type HttpRedirectActionRedirectResponseCodeEnum =
   | "MOVED_PERMANENTLY_DEFAULT"
   | "PERMANENT_REDIRECT"
   | "SEE_OTHER"
-  | "TEMPORARY_REDIRECT"
-  | (string & {});
+  | "TEMPORARY_REDIRECT";
 export const HttpRedirectActionRedirectResponseCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -28300,7 +27853,7 @@ export const HttpHeaderOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpHeaderOption",
 }) as any as S.Schema<HttpHeaderOption>;
 
-export type HttpHeaderOptionList = HttpHeaderOption[];
+export type HttpHeaderOptionList = ReadonlyArray<HttpHeaderOption>;
 export const HttpHeaderOptionList = /*@__PURE__*/ S.Array(
   HttpHeaderOption,
 ) as any as S.Schema<HttpHeaderOptionList>;
@@ -28346,7 +27899,7 @@ export const WeightedBackendService = /*@__PURE__*/ S.suspend(() =>
   identifier: "WeightedBackendService",
 }) as any as S.Schema<WeightedBackendService>;
 
-export type WeightedBackendServiceList = WeightedBackendService[];
+export type WeightedBackendServiceList = ReadonlyArray<WeightedBackendService>;
 export const WeightedBackendServiceList = /*@__PURE__*/ S.Array(
   WeightedBackendService,
 ) as any as S.Schema<WeightedBackendServiceList>;
@@ -28403,7 +27956,7 @@ export const CachePolicyNegativeCachingPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CachePolicyNegativeCachingPolicy>;
 
 export type CachePolicyNegativeCachingPolicyList =
-  CachePolicyNegativeCachingPolicy[];
+  ReadonlyArray<CachePolicyNegativeCachingPolicy>;
 export const CachePolicyNegativeCachingPolicyList = /*@__PURE__*/ S.Array(
   CachePolicyNegativeCachingPolicy,
 ) as any as S.Schema<CachePolicyNegativeCachingPolicyList>;
@@ -28442,8 +27995,7 @@ export const CachePolicyCacheKeyPolicy = /*@__PURE__*/ S.suspend(() =>
 export type CachePolicyCacheModeEnum =
   | "CACHE_ALL_STATIC"
   | "FORCE_CACHE_ALL"
-  | "USE_ORIGIN_HEADERS"
-  | (string & {});
+  | "USE_ORIGIN_HEADERS";
 export const CachePolicyCacheModeEnum = /*@__PURE__*/ S.String;
 
 /** Message containing CachePolicy configuration for URL Map's Route Action. */
@@ -28553,8 +28105,7 @@ export const CorsPolicy = /*@__PURE__*/ S.suspend(() =>
 export type ImageOptimizationPolicyQueryParameterInterpretationEnum =
   | "DISABLED"
   | "ENABLED"
-  | "QUERY_PARAMETER_INTERPRETATION_UNSPECIFIED"
-  | (string & {});
+  | "QUERY_PARAMETER_INTERPRETATION_UNSPECIFIED";
 export const ImageOptimizationPolicyQueryParameterInterpretationEnum =
   /*@__PURE__*/ S.String;
 
@@ -28699,7 +28250,7 @@ export const UrlMapTestHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "UrlMapTestHeader",
 }) as any as S.Schema<UrlMapTestHeader>;
 
-export type UrlMapTestHeaderList = UrlMapTestHeader[];
+export type UrlMapTestHeaderList = ReadonlyArray<UrlMapTestHeader>;
 export const UrlMapTestHeaderList = /*@__PURE__*/ S.Array(
   UrlMapTestHeader,
 ) as any as S.Schema<UrlMapTestHeaderList>;
@@ -28733,7 +28284,7 @@ export const UrlMapTest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UrlMapTest" }) as any as S.Schema<UrlMapTest>;
 
-export type UrlMapTestList = UrlMapTest[];
+export type UrlMapTestList = ReadonlyArray<UrlMapTest>;
 export const UrlMapTestList = /*@__PURE__*/ S.Array(
   UrlMapTest,
 ) as any as S.Schema<UrlMapTestList>;
@@ -28760,7 +28311,8 @@ export const HttpQueryParameterMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpQueryParameterMatch",
 }) as any as S.Schema<HttpQueryParameterMatch>;
 
-export type HttpQueryParameterMatchList = HttpQueryParameterMatch[];
+export type HttpQueryParameterMatchList =
+  ReadonlyArray<HttpQueryParameterMatch>;
 export const HttpQueryParameterMatchList = /*@__PURE__*/ S.Array(
   HttpQueryParameterMatch,
 ) as any as S.Schema<HttpQueryParameterMatchList>;
@@ -28815,7 +28367,7 @@ export const HttpHeaderMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpHeaderMatch",
 }) as any as S.Schema<HttpHeaderMatch>;
 
-export type HttpHeaderMatchList = HttpHeaderMatch[];
+export type HttpHeaderMatchList = ReadonlyArray<HttpHeaderMatch>;
 export const HttpHeaderMatchList = /*@__PURE__*/ S.Array(
   HttpHeaderMatch,
 ) as any as S.Schema<HttpHeaderMatchList>;
@@ -28854,7 +28406,7 @@ export const HttpRouteRuleMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRouteRuleMatch",
 }) as any as S.Schema<HttpRouteRuleMatch>;
 
-export type HttpRouteRuleMatchList = HttpRouteRuleMatch[];
+export type HttpRouteRuleMatchList = ReadonlyArray<HttpRouteRuleMatch>;
 export const HttpRouteRuleMatchList = /*@__PURE__*/ S.Array(
   HttpRouteRuleMatch,
 ) as any as S.Schema<HttpRouteRuleMatchList>;
@@ -28880,7 +28432,7 @@ export const CustomErrorResponsePolicyCustomErrorResponseRule =
   }) as any as S.Schema<CustomErrorResponsePolicyCustomErrorResponseRule>;
 
 export type CustomErrorResponsePolicyCustomErrorResponseRuleList =
-  CustomErrorResponsePolicyCustomErrorResponseRule[];
+  ReadonlyArray<CustomErrorResponsePolicyCustomErrorResponseRule>;
 export const CustomErrorResponsePolicyCustomErrorResponseRuleList =
   /*@__PURE__*/ S.Array(
     CustomErrorResponsePolicyCustomErrorResponseRule,
@@ -28923,7 +28475,7 @@ export const HttpFilterConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpFilterConfig",
 }) as any as S.Schema<HttpFilterConfig>;
 
-export type HttpFilterConfigList = HttpFilterConfig[];
+export type HttpFilterConfigList = ReadonlyArray<HttpFilterConfig>;
 export const HttpFilterConfigList = /*@__PURE__*/ S.Array(
   HttpFilterConfig,
 ) as any as S.Schema<HttpFilterConfigList>;
@@ -28966,7 +28518,7 @@ export const HttpRouteRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HttpRouteRule" }) as any as S.Schema<HttpRouteRule>;
 
-export type HttpRouteRuleList = HttpRouteRule[];
+export type HttpRouteRuleList = ReadonlyArray<HttpRouteRule>;
 export const HttpRouteRuleList = /*@__PURE__*/ S.Array(
   HttpRouteRule,
 ) as any as S.Schema<HttpRouteRuleList>;
@@ -28994,7 +28546,7 @@ export const PathRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathRule" }) as any as S.Schema<PathRule>;
 
-export type PathRuleList = PathRule[];
+export type PathRuleList = ReadonlyArray<PathRule>;
 export const PathRuleList = /*@__PURE__*/ S.Array(
   PathRule,
 ) as any as S.Schema<PathRuleList>;
@@ -29034,7 +28586,7 @@ export const PathMatcher = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathMatcher" }) as any as S.Schema<PathMatcher>;
 
-export type PathMatcherList = PathMatcher[];
+export type PathMatcherList = ReadonlyArray<PathMatcher>;
 export const PathMatcherList = /*@__PURE__*/ S.Array(
   PathMatcher,
 ) as any as S.Schema<PathMatcherList>;
@@ -29056,7 +28608,7 @@ export const HostRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HostRule" }) as any as S.Schema<HostRule>;
 
-export type HostRuleList = HostRule[];
+export type HostRuleList = ReadonlyArray<HostRule>;
 export const HostRuleList = /*@__PURE__*/ S.Array(
   HostRule,
 ) as any as S.Schema<HostRuleList>;
@@ -29120,7 +28672,7 @@ export const UrlMap = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UrlMap" }) as any as S.Schema<UrlMap>;
 
-export type UrlMapList_ = UrlMap[];
+export type UrlMapList_ = ReadonlyArray<UrlMap>;
 export const UrlMapList_ = /*@__PURE__*/ S.Array(
   UrlMap,
 ) as any as S.Schema<UrlMapList_>;
@@ -29177,8 +28729,7 @@ export type UrlMapsAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const UrlMapsAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface UrlMapsAggregatedListWarningDataItem {
@@ -29198,7 +28749,7 @@ export const UrlMapsAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UrlMapsAggregatedListWarningDataItem>;
 
 export type UrlMapsAggregatedListWarningDataItemList =
-  UrlMapsAggregatedListWarningDataItem[];
+  ReadonlyArray<UrlMapsAggregatedListWarningDataItem>;
 export const UrlMapsAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   UrlMapsAggregatedListWarningDataItem,
 ) as any as S.Schema<UrlMapsAggregatedListWarningDataItemList>;
@@ -29312,16 +28863,13 @@ export const VpnGatewayVpnGatewayInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpnGatewayVpnGatewayInterface",
 }) as any as S.Schema<VpnGatewayVpnGatewayInterface>;
 
-export type VpnGatewayVpnGatewayInterfaceList = VpnGatewayVpnGatewayInterface[];
+export type VpnGatewayVpnGatewayInterfaceList =
+  ReadonlyArray<VpnGatewayVpnGatewayInterface>;
 export const VpnGatewayVpnGatewayInterfaceList = /*@__PURE__*/ S.Array(
   VpnGatewayVpnGatewayInterface,
 ) as any as S.Schema<VpnGatewayVpnGatewayInterfaceList>;
 
-export type VpnGatewayStackTypeEnum =
-  | "IPV4_IPV6"
-  | "IPV4_ONLY"
-  | "IPV6_ONLY"
-  | (string & {});
+export type VpnGatewayStackTypeEnum = "IPV4_IPV6" | "IPV4_ONLY" | "IPV6_ONLY";
 export const VpnGatewayStackTypeEnum = /*@__PURE__*/ S.String;
 
 export interface VpnGatewayParams {
@@ -29336,7 +28884,7 @@ export const VpnGatewayParams = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpnGatewayParams",
 }) as any as S.Schema<VpnGatewayParams>;
 
-export type VpnGatewayGatewayIpVersionEnum = "IPV4" | "IPV6" | (string & {});
+export type VpnGatewayGatewayIpVersionEnum = "IPV4" | "IPV6";
 export const VpnGatewayGatewayIpVersionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a HA VPN gateway. HA VPN is a high-availability (HA) Cloud VPN solution that lets you securely connect your on-premises network to your Google Cloud Virtual Private Cloud network through an IPsec VPN connection in a single region. For more information about Cloud HA VPN solutions, see Cloud VPN topologies . */
@@ -29389,7 +28937,7 @@ export const VpnGateway = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VpnGateway" }) as any as S.Schema<VpnGateway>;
 
-export type VpnGatewayList_ = VpnGateway[];
+export type VpnGatewayList_ = ReadonlyArray<VpnGateway>;
 export const VpnGatewayList_ = /*@__PURE__*/ S.Array(
   VpnGateway,
 ) as any as S.Schema<VpnGatewayList_>;
@@ -29423,8 +28971,7 @@ export type VpnGatewaysScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const VpnGatewaysScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface VpnGatewaysScopedListWarningDataItem {
@@ -29444,7 +28991,7 @@ export const VpnGatewaysScopedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VpnGatewaysScopedListWarningDataItem>;
 
 export type VpnGatewaysScopedListWarningDataItemList =
-  VpnGatewaysScopedListWarningDataItem[];
+  ReadonlyArray<VpnGatewaysScopedListWarningDataItem>;
 export const VpnGatewaysScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   VpnGatewaysScopedListWarningDataItem,
 ) as any as S.Schema<VpnGatewaysScopedListWarningDataItemList>;
@@ -29519,8 +29066,7 @@ export type VpnGatewayAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const VpnGatewayAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface VpnGatewayAggregatedListWarningDataItem {
@@ -29540,7 +29086,7 @@ export const VpnGatewayAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VpnGatewayAggregatedListWarningDataItem>;
 
 export type VpnGatewayAggregatedListWarningDataItemList =
-  VpnGatewayAggregatedListWarningDataItem[];
+  ReadonlyArray<VpnGatewayAggregatedListWarningDataItem>;
 export const VpnGatewayAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     VpnGatewayAggregatedListWarningDataItem,
@@ -29662,8 +29208,7 @@ export type VpnTunnelsScopedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const VpnTunnelsScopedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface VpnTunnelsScopedListWarningDataItem {
@@ -29682,7 +29227,7 @@ export const VpnTunnelsScopedListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnTunnelsScopedListWarningDataItem>;
 
 export type VpnTunnelsScopedListWarningDataItemList =
-  VpnTunnelsScopedListWarningDataItem[];
+  ReadonlyArray<VpnTunnelsScopedListWarningDataItem>;
 export const VpnTunnelsScopedListWarningDataItemList = /*@__PURE__*/ S.Array(
   VpnTunnelsScopedListWarningDataItem,
 ) as any as S.Schema<VpnTunnelsScopedListWarningDataItemList>;
@@ -29705,7 +29250,7 @@ export const VpnTunnelsScopedListWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpnTunnelsScopedListWarning",
 }) as any as S.Schema<VpnTunnelsScopedListWarning>;
 
-export type VpnTunnelCapacityTierEnum = "DEFAULT" | "HIGH" | (string & {});
+export type VpnTunnelCapacityTierEnum = "DEFAULT" | "HIGH";
 export const VpnTunnelCapacityTierEnum = /*@__PURE__*/ S.String;
 
 export interface VpnTunnelPhase1Algorithms {
@@ -29766,8 +29311,7 @@ export type VpnTunnelStatusEnum =
   | "PROVISIONING"
   | "REJECTED"
   | "STOPPED"
-  | "WAITING_FOR_FULL_CONFIG"
-  | (string & {});
+  | "WAITING_FOR_FULL_CONFIG";
 export const VpnTunnelStatusEnum = /*@__PURE__*/ S.String;
 
 export interface VpnTunnelParams {
@@ -29871,7 +29415,7 @@ export const VpnTunnel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VpnTunnel" }) as any as S.Schema<VpnTunnel>;
 
-export type VpnTunnelList_ = VpnTunnel[];
+export type VpnTunnelList_ = ReadonlyArray<VpnTunnel>;
 export const VpnTunnelList_ = /*@__PURE__*/ S.Array(
   VpnTunnel,
 ) as any as S.Schema<VpnTunnelList_>;
@@ -29928,8 +29472,7 @@ export type VpnTunnelAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const VpnTunnelAggregatedListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface VpnTunnelAggregatedListWarningDataItem {
@@ -29949,7 +29492,7 @@ export const VpnTunnelAggregatedListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VpnTunnelAggregatedListWarningDataItem>;
 
 export type VpnTunnelAggregatedListWarningDataItemList =
-  VpnTunnelAggregatedListWarningDataItem[];
+  ReadonlyArray<VpnTunnelAggregatedListWarningDataItem>;
 export const VpnTunnelAggregatedListWarningDataItemList = /*@__PURE__*/ S.Array(
   VpnTunnelAggregatedListWarningDataItem,
 ) as any as S.Schema<VpnTunnelAggregatedListWarningDataItemList>;
@@ -30060,25 +29603,19 @@ export type InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum =
   | "REFRESH"
   | "REPLACE"
   | "RESTART"
-  | "RESTART_IN_PLACE"
-  | (string & {});
+  | "RESTART_IN_PLACE";
 export const InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList =
-  InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum[];
+  ReadonlyArray<InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum>;
 export const InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum,
   ) as any as S.Schema<InstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList>;
 
 export type InstanceGroupManagersApplyUpdatesRequestMostDisruptiveAllowedActionEnum =
-    | "NONE"
-    | "REFRESH"
-    | "REPLACE"
-    | "RESTART"
-    | "RESTART_IN_PLACE"
-    | (string & {});
+  "NONE" | "REFRESH" | "REPLACE" | "RESTART" | "RESTART_IN_PLACE";
 export const InstanceGroupManagersApplyUpdatesRequestMostDisruptiveAllowedActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -30087,8 +29624,7 @@ export type InstanceGroupManagersApplyUpdatesRequestMinimalActionEnum =
   | "REFRESH"
   | "REPLACE"
   | "RESTART"
-  | "RESTART_IN_PLACE"
-  | (string & {});
+  | "RESTART_IN_PLACE";
 export const InstanceGroupManagersApplyUpdatesRequestMinimalActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -30155,29 +29691,19 @@ export const ApplyUpdatesToInstancesInstanceGroupManagersRequest =
   }) as any as S.Schema<ApplyUpdatesToInstancesInstanceGroupManagersRequest>;
 
 export type RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum =
-    | "NONE"
-    | "REFRESH"
-    | "REPLACE"
-    | "RESTART"
-    | "RESTART_IN_PLACE"
-    | (string & {});
+  "NONE" | "REFRESH" | "REPLACE" | "RESTART" | "RESTART_IN_PLACE";
 export const RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList =
-  RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum[];
+  ReadonlyArray<RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum>;
 export const RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList =
   /*@__PURE__*/ S.Array(
     RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnum,
   ) as any as S.Schema<RegionInstanceGroupManagersApplyUpdatesRequestAllowedActionsItemEnumList>;
 
 export type RegionInstanceGroupManagersApplyUpdatesRequestMostDisruptiveAllowedActionEnum =
-    | "NONE"
-    | "REFRESH"
-    | "REPLACE"
-    | "RESTART"
-    | "RESTART_IN_PLACE"
-    | (string & {});
+  "NONE" | "REFRESH" | "REPLACE" | "RESTART" | "RESTART_IN_PLACE";
 export const RegionInstanceGroupManagersApplyUpdatesRequestMostDisruptiveAllowedActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -30186,8 +29712,7 @@ export type RegionInstanceGroupManagersApplyUpdatesRequestMinimalActionEnum =
   | "REFRESH"
   | "REPLACE"
   | "RESTART"
-  | "RESTART_IN_PLACE"
-  | (string & {});
+  | "RESTART_IN_PLACE";
 export const RegionInstanceGroupManagersApplyUpdatesRequestMinimalActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -30317,7 +29842,7 @@ export const NetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkEndpoint",
 }) as any as S.Schema<NetworkEndpoint>;
 
-export type NetworkEndpointList = NetworkEndpoint[];
+export type NetworkEndpointList = ReadonlyArray<NetworkEndpoint>;
 export const NetworkEndpointList = /*@__PURE__*/ S.Array(
   NetworkEndpoint,
 ) as any as S.Schema<NetworkEndpointList>;
@@ -30580,8 +30105,7 @@ export const InstanceFlexibilityPolicy = /*@__PURE__*/ S.suspend(() =>
 export type LocationPolicyLocationPreferenceEnum =
   | "ALLOW"
   | "DENY"
-  | "PREFERENCE_UNSPECIFIED"
-  | (string & {});
+  | "PREFERENCE_UNSPECIFIED";
 export const LocationPolicyLocationPreferenceEnum = /*@__PURE__*/ S.String;
 
 /** Per-zone constraints on location policy for this zone. */
@@ -30623,8 +30147,7 @@ export const LocationPolicyLocationMap = /*@__PURE__*/ S.Record(
 export type LocationPolicyTargetShapeEnum =
   | "ANY"
   | "ANY_SINGLE_ZONE"
-  | "BALANCED"
-  | (string & {});
+  | "BALANCED";
 export const LocationPolicyTargetShapeEnum = /*@__PURE__*/ S.String;
 
 export interface LocationPolicyZoneConfiguration {
@@ -30640,7 +30163,7 @@ export const LocationPolicyZoneConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationPolicyZoneConfiguration>;
 
 export type LocationPolicyZoneConfigurationList =
-  LocationPolicyZoneConfiguration[];
+  ReadonlyArray<LocationPolicyZoneConfiguration>;
 export const LocationPolicyZoneConfigurationList = /*@__PURE__*/ S.Array(
   LocationPolicyZoneConfiguration,
 ) as any as S.Schema<LocationPolicyZoneConfigurationList>;
@@ -30820,7 +30343,7 @@ export const BulkSetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkSetLabelsRequest",
 }) as any as S.Schema<BulkSetLabelsRequest>;
 
-export type BulkSetLabelsRequestList = BulkSetLabelsRequest[];
+export type BulkSetLabelsRequestList = ReadonlyArray<BulkSetLabelsRequest>;
 export const BulkSetLabelsRequestList = /*@__PURE__*/ S.Array(
   BulkSetLabelsRequest,
 ) as any as S.Schema<BulkSetLabelsRequestList>;
@@ -30869,8 +30392,7 @@ export const BulkSetLabelsDisksRequest = /*@__PURE__*/ S.suspend(() =>
 export type FutureResourcesSpecLocationPolicyLocationPreferenceEnum =
   | "ALLOW"
   | "DENY"
-  | "PREFERENCE_UNSPECIFIED"
-  | (string & {});
+  | "PREFERENCE_UNSPECIFIED";
 export const FutureResourcesSpecLocationPolicyLocationPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -30937,14 +30459,12 @@ export const FlexibleTimeRange = /*@__PURE__*/ S.suspend(() =>
 export type FutureResourcesSpecDeploymentTypeEnum =
   | "DENSE"
   | "DEPLOYMENT_TYPE_UNSPECIFIED"
-  | "FLEXIBLE"
-  | (string & {});
+  | "FLEXIBLE";
 export const FutureResourcesSpecDeploymentTypeEnum = /*@__PURE__*/ S.String;
 
 export type FutureResourcesSpecLocalSsdPartitionDiskInterfaceEnum =
   | "NVME"
-  | "SCSI"
-  | (string & {});
+  | "SCSI";
 export const FutureResourcesSpecLocalSsdPartitionDiskInterfaceEnum =
   /*@__PURE__*/ S.String;
 
@@ -30967,7 +30487,7 @@ export const FutureResourcesSpecLocalSsdPartition = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FutureResourcesSpecLocalSsdPartition>;
 
 export type FutureResourcesSpecLocalSsdPartitionList =
-  FutureResourcesSpecLocalSsdPartition[];
+  ReadonlyArray<FutureResourcesSpecLocalSsdPartition>;
 export const FutureResourcesSpecLocalSsdPartitionList = /*@__PURE__*/ S.Array(
   FutureResourcesSpecLocalSsdPartition,
 ) as any as S.Schema<FutureResourcesSpecLocalSsdPartitionList>;
@@ -30994,8 +30514,7 @@ export const FutureResourcesSpecSpecificSKUResources = /*@__PURE__*/ S.suspend(
 export type FutureResourcesSpecAggregateResourcesWorkloadTypeEnum =
   | "BATCH"
   | "SERVING"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const FutureResourcesSpecAggregateResourcesWorkloadTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -31007,8 +30526,7 @@ export type FutureResourcesSpecAggregateResourcesVmFamilyEnum =
   | "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT3P"
   | "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P"
   | "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT5P"
-  | "VM_FAMILY_CLOUD_TPU_POD_SLICE_TPU7X"
-  | (string & {});
+  | "VM_FAMILY_CLOUD_TPU_POD_SLICE_TPU7X";
 export const FutureResourcesSpecAggregateResourcesVmFamilyEnum =
   /*@__PURE__*/ S.String;
 
@@ -31119,8 +30637,7 @@ export type FutureResourcesRecommendationOtherLocationStatusEnum =
   | "NOT_SUPPORTED"
   | "NO_CAPACITY"
   | "OTHER_LOCATION_STATUS_UNDEFINED"
-  | "RECOMMENDED"
-  | (string & {});
+  | "RECOMMENDED";
 export const FutureResourcesRecommendationOtherLocationStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -31152,8 +30669,7 @@ export const FutureResourcesRecommendationOtherLocationMap =
 
 export type FutureResourcesRecommendationRecommendationTypeEnum =
   | "FUTURE_RESERVATION"
-  | "RECOMMENDATION_TYPE_UNSPECIFIED"
-  | (string & {});
+  | "RECOMMENDATION_TYPE_UNSPECIFIED";
 export const FutureResourcesRecommendationRecommendationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -31206,7 +30722,8 @@ export const CalendarModeRecommendation = /*@__PURE__*/ S.suspend(() =>
   identifier: "CalendarModeRecommendation",
 }) as any as S.Schema<CalendarModeRecommendation>;
 
-export type CalendarModeRecommendationList = CalendarModeRecommendation[];
+export type CalendarModeRecommendationList =
+  ReadonlyArray<CalendarModeRecommendation>;
 export const CalendarModeRecommendationList = /*@__PURE__*/ S.Array(
   CalendarModeRecommendation,
 ) as any as S.Schema<CalendarModeRecommendationList>;
@@ -31425,7 +30942,7 @@ export const CapacityAdviceRequestDistributionPolicyZoneConfiguration =
   }) as any as S.Schema<CapacityAdviceRequestDistributionPolicyZoneConfiguration>;
 
 export type CapacityAdviceRequestDistributionPolicyZoneConfigurationList =
-  CapacityAdviceRequestDistributionPolicyZoneConfiguration[];
+  ReadonlyArray<CapacityAdviceRequestDistributionPolicyZoneConfiguration>;
 export const CapacityAdviceRequestDistributionPolicyZoneConfigurationList =
   /*@__PURE__*/ S.Array(
     CapacityAdviceRequestDistributionPolicyZoneConfiguration,
@@ -31435,8 +30952,7 @@ export type CapacityAdviceRequestDistributionPolicyTargetShapeEnum =
   | "ANY"
   | "ANY_SINGLE_ZONE"
   | "BALANCED"
-  | "TARGET_SHAPE_UNSPECIFIED"
-  | (string & {});
+  | "TARGET_SHAPE_UNSPECIFIED";
 export const CapacityAdviceRequestDistributionPolicyTargetShapeEnum =
   /*@__PURE__*/ S.String;
 
@@ -31462,7 +30978,7 @@ export const CapacityAdviceRequestDistributionPolicy = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CapacityAdviceRequestDistributionPolicy>;
 
 export type CapacityAdviceRequestInstancePropertiesSchedulingProvisioningModelEnum =
-  "FLEX_START" | "RESERVATION_BOUND" | "SPOT" | "STANDARD" | (string & {});
+  "FLEX_START" | "RESERVATION_BOUND" | "SPOT" | "STANDARD";
 export const CapacityAdviceRequestInstancePropertiesSchedulingProvisioningModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -31497,7 +31013,7 @@ export const CapacityAdviceRequestInstanceProperties = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CapacityAdviceRequestInstanceProperties>;
 
 export type CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDiskTypeEnum =
-  "DISK_TYPE_UNSPECIFIED" | "SCRATCH" | (string & {});
+  "DISK_TYPE_UNSPECIFIED" | "SCRATCH";
 export const CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDiskTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -31519,7 +31035,7 @@ export const CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAtta
   }) as any as S.Schema<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk>;
 
 export type CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDiskList =
-  CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk[];
+  ReadonlyArray<CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk>;
 export const CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDiskList =
   /*@__PURE__*/ S.Array(
     CapacityAdviceRequestInstanceFlexibilityPolicyInstanceSelectionAttachedDisk,
@@ -31645,8 +31161,7 @@ export type CapacityAdviceResponseRecommendationShardProvisioningModelEnum =
   | "FLEX_START"
   | "RESERVATION_BOUND"
   | "SPOT"
-  | "STANDARD"
-  | (string & {});
+  | "STANDARD";
 export const CapacityAdviceResponseRecommendationShardProvisioningModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -31676,7 +31191,7 @@ export const CapacityAdviceResponseRecommendationShard =
   }) as any as S.Schema<CapacityAdviceResponseRecommendationShard>;
 
 export type CapacityAdviceResponseRecommendationShardList =
-  CapacityAdviceResponseRecommendationShard[];
+  ReadonlyArray<CapacityAdviceResponseRecommendationShard>;
 export const CapacityAdviceResponseRecommendationShardList =
   /*@__PURE__*/ S.Array(
     CapacityAdviceResponseRecommendationShard,
@@ -31700,7 +31215,7 @@ export const CapacityAdviceResponseRecommendation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CapacityAdviceResponseRecommendation>;
 
 export type CapacityAdviceResponseRecommendationList =
-  CapacityAdviceResponseRecommendation[];
+  ReadonlyArray<CapacityAdviceResponseRecommendation>;
 export const CapacityAdviceResponseRecommendationList = /*@__PURE__*/ S.Array(
   CapacityAdviceResponseRecommendation,
 ) as any as S.Schema<CapacityAdviceResponseRecommendationList>;
@@ -31719,7 +31234,7 @@ export const CapacityAdviceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityAdviceResponse>;
 
 export type CapacityHistoryRequestInstancePropertiesSchedulingProvisioningModelEnum =
-  "FLEX_START" | "RESERVATION_BOUND" | "SPOT" | "STANDARD" | (string & {});
+  "FLEX_START" | "RESERVATION_BOUND" | "SPOT" | "STANDARD";
 export const CapacityHistoryRequestInstancePropertiesSchedulingProvisioningModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -31775,12 +31290,11 @@ export const CapacityHistoryRequestLocationPolicy = /*@__PURE__*/ S.suspend(
 export type CapacityHistoryRequestTypesItemEnum =
   | "HISTORY_TYPE_UNSPECIFIED"
   | "PREEMPTION"
-  | "PRICE"
-  | (string & {});
+  | "PRICE";
 export const CapacityHistoryRequestTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type CapacityHistoryRequestTypesItemEnumList =
-  CapacityHistoryRequestTypesItemEnum[];
+  ReadonlyArray<CapacityHistoryRequestTypesItemEnum>;
 export const CapacityHistoryRequestTypesItemEnumList = /*@__PURE__*/ S.Array(
   CapacityHistoryRequestTypesItemEnum,
 ) as any as S.Schema<CapacityHistoryRequestTypesItemEnumList>;
@@ -31860,7 +31374,7 @@ export const CapacityHistoryResponsePreemptionRecord = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CapacityHistoryResponsePreemptionRecord>;
 
 export type CapacityHistoryResponsePreemptionRecordList =
-  CapacityHistoryResponsePreemptionRecord[];
+  ReadonlyArray<CapacityHistoryResponsePreemptionRecord>;
 export const CapacityHistoryResponsePreemptionRecordList =
   /*@__PURE__*/ S.Array(
     CapacityHistoryResponsePreemptionRecord,
@@ -31900,7 +31414,7 @@ export const CapacityHistoryResponsePriceRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityHistoryResponsePriceRecord>;
 
 export type CapacityHistoryResponsePriceRecordList =
-  CapacityHistoryResponsePriceRecord[];
+  ReadonlyArray<CapacityHistoryResponsePriceRecord>;
 export const CapacityHistoryResponsePriceRecordList = /*@__PURE__*/ S.Array(
   CapacityHistoryResponsePriceRecord,
 ) as any as S.Schema<CapacityHistoryResponsePriceRecordList>;
@@ -32011,10 +31525,7 @@ export const CloneRulesRegionNetworkFirewallPoliciesRequest =
   }) as any as S.Schema<CloneRulesRegionNetworkFirewallPoliciesRequest>;
 
 export type InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyActionsValueEnum =
-    | "ACCELERATOR_TOPOLOGY_ACTION_UNSPECIFIED"
-    | "ACTIVATE"
-    | "DEACTIVATE"
-    | (string & {});
+  "ACCELERATOR_TOPOLOGY_ACTION_UNSPECIFIED" | "ACTIVATE" | "DEACTIVATE";
 export const InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyActionsValueEnum =
   /*@__PURE__*/ S.String;
 
@@ -32031,10 +31542,7 @@ export const InstanceGroupManagersConfigureAcceleratorTopologiesRequestAccelerat
   ) as any as S.Schema<InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyActionsValueEnumMap>;
 
 export type InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfigurationActionEnum =
-    | "ACCELERATOR_TOPOLOGY_ACTION_UNSPECIFIED"
-    | "ACTIVATE"
-    | "DEACTIVATE"
-    | (string & {});
+  "ACCELERATOR_TOPOLOGY_ACTION_UNSPECIFIED" | "ACTIVATE" | "DEACTIVATE";
 export const InstanceGroupManagersConfigureAcceleratorTopologiesRequestAcceleratorTopologyConfigurationActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -32247,18 +31755,17 @@ export const CreateInstancesRegionInstanceGroupManagersRequest =
 export type InterconnectGroupsCreateMembersIntentMismatchBehaviorEnum =
   | "CREATE"
   | "REJECT"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const InterconnectGroupsCreateMembersIntentMismatchBehaviorEnum =
   /*@__PURE__*/ S.String;
 
 export type InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnum =
-  "IF_CROSS_SITE_NETWORK" | "IF_L2_FORWARDING" | "IF_MACSEC" | (string & {});
+  "IF_CROSS_SITE_NETWORK" | "IF_L2_FORWARDING" | "IF_MACSEC";
 export const InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnumList =
-  InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnum[];
+  ReadonlyArray<InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnum>;
 export const InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnumList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesItemEnum,
@@ -32267,13 +31774,12 @@ export const InterconnectGroupsCreateMembersInterconnectInputRequestedFeaturesIt
 export type InterconnectGroupsCreateMembersInterconnectInputLinkTypeEnum =
   | "LINK_TYPE_ETHERNET_100G_LR"
   | "LINK_TYPE_ETHERNET_10G_LR"
-  | "LINK_TYPE_ETHERNET_400G_LR4"
-  | (string & {});
+  | "LINK_TYPE_ETHERNET_400G_LR4";
 export const InterconnectGroupsCreateMembersInterconnectInputLinkTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type InterconnectGroupsCreateMembersInterconnectInputInterconnectTypeEnum =
-  "DEDICATED" | "IT_PRIVATE" | "PARTNER" | (string & {});
+  "DEDICATED" | "IT_PRIVATE" | "PARTNER";
 export const InterconnectGroupsCreateMembersInterconnectInputInterconnectTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -32327,7 +31833,7 @@ export const InterconnectGroupsCreateMembersInterconnectInput =
   }) as any as S.Schema<InterconnectGroupsCreateMembersInterconnectInput>;
 
 export type InterconnectGroupsCreateMembersInterconnectInputList =
-  InterconnectGroupsCreateMembersInterconnectInput[];
+  ReadonlyArray<InterconnectGroupsCreateMembersInterconnectInput>;
 export const InterconnectGroupsCreateMembersInterconnectInputList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupsCreateMembersInterconnectInput,
@@ -32922,7 +32428,7 @@ export const DeleteGlobalPublicDelegatedPrefixesRequest =
   }) as any as S.Schema<DeleteGlobalPublicDelegatedPrefixesRequest>;
 
 export type GlobalVmExtensionPolicyRolloutOperationRolloutInputPredefinedRolloutPlanEnum =
-  "FAST_ROLLOUT" | "ROLLOUT_PLAN_UNSPECIFIED" | "SLOW_ROLLOUT" | (string & {});
+  "FAST_ROLLOUT" | "ROLLOUT_PLAN_UNSPECIFIED" | "SLOW_ROLLOUT";
 export const GlobalVmExtensionPolicyRolloutOperationRolloutInputPredefinedRolloutPlanEnum =
   /*@__PURE__*/ S.String;
 
@@ -35850,10 +35356,7 @@ export const DisableXpnHostProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableXpnHostProjectsRequest",
 }) as any as S.Schema<DisableXpnHostProjectsRequest>;
 
-export type XpnResourceIdTypeEnum =
-  | "PROJECT"
-  | "XPN_RESOURCE_TYPE_UNSPECIFIED"
-  | (string & {});
+export type XpnResourceIdTypeEnum = "PROJECT" | "XPN_RESOURCE_TYPE_UNSPECIFIED";
 export const XpnResourceIdTypeEnum = /*@__PURE__*/ S.String;
 
 /** Service resource (a.k.a service project) ID. */
@@ -36228,12 +35731,12 @@ export const GetAvailableAcceleratorTopologiesInstanceGroupManagersRequest =
   }) as any as S.Schema<GetAvailableAcceleratorTopologiesInstanceGroupManagersRequest>;
 
 export type InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyInfoInstancesHealthEnum =
-  "ALL_HEALTHY" | "UNHEALTHY_OR_MISSING" | (string & {});
+  "ALL_HEALTHY" | "UNHEALTHY_OR_MISSING";
 export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyInfoInstancesHealthEnum =
   /*@__PURE__*/ S.String;
 
 export type InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyInfoAcceleratorTopologyHealthEnum =
-  "DEGRADED" | "HEALTHY" | "UNHEALTHY" | (string & {});
+  "DEGRADED" | "HEALTHY" | "UNHEALTHY";
 export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyInfoAcceleratorTopologyHealthEnum =
   /*@__PURE__*/ S.String;
 
@@ -36244,8 +35747,7 @@ export type InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAccele
     | "DEACTIVATING"
     | "FAILED"
     | "INACTIVE"
-    | "INCOMPLETE"
-    | (string & {});
+    | "INCOMPLETE";
 export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateCurrentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -36273,7 +35775,7 @@ export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAccel
   }) as any as S.Schema<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItem>;
 
 export type InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItemList =
-  InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItem[];
+  ReadonlyArray<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItem>;
 export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemErrorDetailsItem,
@@ -36305,7 +35807,7 @@ export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAccel
   }) as any as S.Schema<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItem>;
 
 export type InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemList =
-  InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItem[];
+  ReadonlyArray<InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItem>;
 export const InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagersGetAvailableAcceleratorTopologiesResponseAcceleratorTopologyStateErrorErrorsItem,
@@ -36528,8 +36030,7 @@ export const GetDiagnosticsInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type InterconnectDiagnosticsBundleAggregationTypeEnum =
   | "BUNDLE_AGGREGATION_TYPE_LACP"
-  | "BUNDLE_AGGREGATION_TYPE_STATIC"
-  | (string & {});
+  | "BUNDLE_AGGREGATION_TYPE_STATIC";
 export const InterconnectDiagnosticsBundleAggregationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -36554,8 +36055,7 @@ export type InterconnectDiagnosticsLinkOpticalPowerStateEnum =
   | "HIGH_WARNING"
   | "LOW_ALARM"
   | "LOW_WARNING"
-  | "OK"
-  | (string & {});
+  | "OK";
 export const InterconnectDiagnosticsLinkOpticalPowerStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -36577,8 +36077,7 @@ export const InterconnectDiagnosticsLinkOpticalPower = /*@__PURE__*/ S.suspend(
 
 export type InterconnectDiagnosticsLinkLACPStatusStateEnum =
   | "ACTIVE"
-  | "DETACHED"
-  | (string & {});
+  | "DETACHED";
 export const InterconnectDiagnosticsLinkLACPStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -36618,15 +36117,14 @@ export const InterconnectDiagnosticsARPEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectDiagnosticsARPEntry>;
 
 export type InterconnectDiagnosticsARPEntryList =
-  InterconnectDiagnosticsARPEntry[];
+  ReadonlyArray<InterconnectDiagnosticsARPEntry>;
 export const InterconnectDiagnosticsARPEntryList = /*@__PURE__*/ S.Array(
   InterconnectDiagnosticsARPEntry,
 ) as any as S.Schema<InterconnectDiagnosticsARPEntryList>;
 
 export type InterconnectDiagnosticsLinkStatusOperationalStatusEnum =
   | "LINK_OPERATIONAL_STATUS_DOWN"
-  | "LINK_OPERATIONAL_STATUS_UP"
-  | (string & {});
+  | "LINK_OPERATIONAL_STATUS_UP";
 export const InterconnectDiagnosticsLinkStatusOperationalStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -36667,15 +36165,14 @@ export const InterconnectDiagnosticsLinkStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectDiagnosticsLinkStatus>;
 
 export type InterconnectDiagnosticsLinkStatusList =
-  InterconnectDiagnosticsLinkStatus[];
+  ReadonlyArray<InterconnectDiagnosticsLinkStatus>;
 export const InterconnectDiagnosticsLinkStatusList = /*@__PURE__*/ S.Array(
   InterconnectDiagnosticsLinkStatus,
 ) as any as S.Schema<InterconnectDiagnosticsLinkStatusList>;
 
 export type InterconnectDiagnosticsBundleOperationalStatusEnum =
   | "BUNDLE_OPERATIONAL_STATUS_DOWN"
-  | "BUNDLE_OPERATIONAL_STATUS_UP"
-  | (string & {});
+  | "BUNDLE_OPERATIONAL_STATUS_UP";
 export const InterconnectDiagnosticsBundleOperationalStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -36791,8 +36288,7 @@ export const DiskSettingsAccessLocationAccessLocationPreferenceMap =
 export type DiskSettingsAccessLocationPolicyEnum =
   | "ALL_REGIONS"
   | "POLICY_UNSPECIFIED"
-  | "SPECIFIC_REGIONS"
-  | (string & {});
+  | "SPECIFIC_REGIONS";
 export const DiskSettingsAccessLocationPolicyEnum = /*@__PURE__*/ S.String;
 
 /** AccessLocation is only used for regional snapshot. It contains which regions are allowed to create a regional snapshot from disks located in the given region/zone. It includes key-value pairs designed to store the following structure. The keys should match their corresponding values, which must be provided: access_location: { locations { us-central1 { region: "us-central1" }, asia-west2 { region: "asia-west2" } } } */
@@ -36881,8 +36377,7 @@ export type InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicyTypeEnu
     | "NETWORK_REGIONAL"
     | "SYSTEM_GLOBAL"
     | "SYSTEM_REGIONAL"
-    | "UNSPECIFIED"
-    | (string & {});
+    | "UNSPECIFIED";
 export const InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -36920,7 +36415,7 @@ export const InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy =
   }) as any as S.Schema<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 
 export type InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
-  InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy[];
+  ReadonlyArray<InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 export const InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
   /*@__PURE__*/ S.Array(
     InstancesGetEffectiveFirewallsResponseEffectiveFirewallPolicy,
@@ -36945,13 +36440,13 @@ export const InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy =
   }) as any as S.Schema<InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy>;
 
 export type InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicyList =
-  InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy[];
+  ReadonlyArray<InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy>;
 export const InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicyList =
   /*@__PURE__*/ S.Array(
     InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy,
   ) as any as S.Schema<InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicyList>;
 
-export type FirewallDirectionEnum = "EGRESS" | "INGRESS" | (string & {});
+export type FirewallDirectionEnum = "EGRESS" | "INGRESS";
 export const FirewallDirectionEnum = /*@__PURE__*/ S.String;
 
 export interface FirewallAllowedItem {
@@ -36969,7 +36464,7 @@ export const FirewallAllowedItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallAllowedItem",
 }) as any as S.Schema<FirewallAllowedItem>;
 
-export type FirewallAllowedItemList = FirewallAllowedItem[];
+export type FirewallAllowedItemList = ReadonlyArray<FirewallAllowedItem>;
 export const FirewallAllowedItemList = /*@__PURE__*/ S.Array(
   FirewallAllowedItem,
 ) as any as S.Schema<FirewallAllowedItemList>;
@@ -37000,15 +36495,14 @@ export const FirewallDeniedItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallDeniedItem",
 }) as any as S.Schema<FirewallDeniedItem>;
 
-export type FirewallDeniedItemList = FirewallDeniedItem[];
+export type FirewallDeniedItemList = ReadonlyArray<FirewallDeniedItem>;
 export const FirewallDeniedItemList = /*@__PURE__*/ S.Array(
   FirewallDeniedItem,
 ) as any as S.Schema<FirewallDeniedItemList>;
 
 export type FirewallLogConfigMetadataEnum =
   | "EXCLUDE_ALL_METADATA"
-  | "INCLUDE_ALL_METADATA"
-  | (string & {});
+  | "INCLUDE_ALL_METADATA";
 export const FirewallLogConfigMetadataEnum = /*@__PURE__*/ S.String;
 
 /** The available logging options for a firewall rule. */
@@ -37098,7 +36592,7 @@ export const Firewall = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Firewall" }) as any as S.Schema<Firewall>;
 
-export type FirewallList_ = Firewall[];
+export type FirewallList_ = ReadonlyArray<Firewall>;
 export const FirewallList_ = /*@__PURE__*/ S.Array(
   Firewall,
 ) as any as S.Schema<FirewallList_>;
@@ -37167,14 +36661,14 @@ export const NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy =
   }) as any as S.Schema<NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy>;
 
 export type NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicyList =
-  NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy[];
+  ReadonlyArray<NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy>;
 export const NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicyList =
   /*@__PURE__*/ S.Array(
     NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy,
   ) as any as S.Schema<NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicyList>;
 
 export type NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicyTypeEnum =
-  "HIERARCHY" | "NETWORK" | "SYSTEM" | "UNSPECIFIED" | (string & {});
+  "HIERARCHY" | "NETWORK" | "SYSTEM" | "UNSPECIFIED";
 export const NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -37212,7 +36706,7 @@ export const NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy =
   }) as any as S.Schema<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 
 export type NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
-  NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy[];
+  ReadonlyArray<NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 export const NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
   /*@__PURE__*/ S.Array(
     NetworksGetEffectiveFirewallsResponseEffectiveFirewallPolicy,
@@ -37272,8 +36766,7 @@ export type RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveF
     | "NETWORK_REGIONAL"
     | "SYSTEM_GLOBAL"
     | "SYSTEM_REGIONAL"
-    | "UNSPECIFIED"
-    | (string & {});
+    | "UNSPECIFIED";
 export const RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -37309,7 +36802,7 @@ export const RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffective
   }) as any as S.Schema<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 
 export type RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
-  RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy[];
+  ReadonlyArray<RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy>;
 export const RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicyList =
   /*@__PURE__*/ S.Array(
     RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponseEffectiveFirewallPolicy,
@@ -37408,7 +36901,8 @@ export const ExternalVpnGatewayInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalVpnGatewayInterface",
 }) as any as S.Schema<ExternalVpnGatewayInterface>;
 
-export type ExternalVpnGatewayInterfaceList = ExternalVpnGatewayInterface[];
+export type ExternalVpnGatewayInterfaceList =
+  ReadonlyArray<ExternalVpnGatewayInterface>;
 export const ExternalVpnGatewayInterfaceList = /*@__PURE__*/ S.Array(
   ExternalVpnGatewayInterface,
 ) as any as S.Schema<ExternalVpnGatewayInterfaceList>;
@@ -37416,8 +36910,7 @@ export const ExternalVpnGatewayInterfaceList = /*@__PURE__*/ S.Array(
 export type ExternalVpnGatewayRedundancyTypeEnum =
   | "FOUR_IPS_REDUNDANCY"
   | "SINGLE_IP_INTERNALLY_REDUNDANT"
-  | "TWO_IPS_REDUNDANCY"
-  | (string & {});
+  | "TWO_IPS_REDUNDANCY";
 export const ExternalVpnGatewayRedundancyTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ExternalVpnGatewayParams {
@@ -37514,7 +37007,7 @@ export const GetFirewallsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetFirewallsRequest",
 }) as any as S.Schema<GetFirewallsRequest>;
 
-export type GetForwardingRulesViewEnum = "BASIC" | "FULL" | (string & {});
+export type GetForwardingRulesViewEnum = "BASIC" | "FULL";
 export const GetForwardingRulesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetForwardingRulesRequest {
@@ -37575,18 +37068,13 @@ export const ImageParams = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageParams" }) as any as S.Schema<ImageParams>;
 
-export type ImageStatusEnum =
-  | "DELETING"
-  | "FAILED"
-  | "PENDING"
-  | "READY"
-  | (string & {});
+export type ImageStatusEnum = "DELETING" | "FAILED" | "PENDING" | "READY";
 export const ImageStatusEnum = /*@__PURE__*/ S.String;
 
-export type ImageSourceTypeEnum = "RAW" | (string & {});
+export type ImageSourceTypeEnum = "RAW";
 export const ImageSourceTypeEnum = /*@__PURE__*/ S.String;
 
-export type ImageRawDiskContainerTypeEnum = "TAR" | (string & {});
+export type ImageRawDiskContainerTypeEnum = "TAR";
 export const ImageRawDiskContainerTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ImageRawDisk {
@@ -37608,8 +37096,7 @@ export const ImageRawDisk = /*@__PURE__*/ S.suspend(() =>
 export type ImageArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "ARM64"
-  | "X86_64"
-  | (string & {});
+  | "X86_64";
 export const ImageArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** Represents an Image resource. You can use images to create boot disks for your VM instances. For more information, read Images. */
@@ -37776,7 +37263,7 @@ export const GetGlobalAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetGlobalAddressesRequest",
 }) as any as S.Schema<GetGlobalAddressesRequest>;
 
-export type GetGlobalForwardingRulesViewEnum = "BASIC" | "FULL" | (string & {});
+export type GetGlobalForwardingRulesViewEnum = "BASIC" | "FULL";
 export const GetGlobalForwardingRulesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetGlobalForwardingRulesRequest {
@@ -37939,7 +37426,7 @@ export const GlobalVmExtensionPolicyInstanceSelector = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GlobalVmExtensionPolicyInstanceSelector>;
 
 export type GlobalVmExtensionPolicyInstanceSelectorList =
-  GlobalVmExtensionPolicyInstanceSelector[];
+  ReadonlyArray<GlobalVmExtensionPolicyInstanceSelector>;
 export const GlobalVmExtensionPolicyInstanceSelectorList =
   /*@__PURE__*/ S.Array(
     GlobalVmExtensionPolicyInstanceSelector,
@@ -37950,8 +37437,7 @@ export type GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataL
     | "LOCATION_ROLLOUT_STATE_FAILED"
     | "LOCATION_ROLLOUT_STATE_NOT_STARTED"
     | "LOCATION_ROLLOUT_STATE_SKIPPED"
-    | "LOCATION_ROLLOUT_STATE_UNSPECIFIED"
-    | (string & {});
+    | "LOCATION_ROLLOUT_STATE_UNSPECIFIED";
 export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataLocationRolloutStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -37990,8 +37476,7 @@ export type GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataS
     | "STATE_PAUSED"
     | "STATE_PROCESSING"
     | "STATE_UNKNOWN"
-    | "STATE_UNSPECIFIED"
-    | (string & {});
+    | "STATE_UNSPECIFIED";
 export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -38023,7 +37508,7 @@ export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata
   }) as any as S.Schema<GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata>;
 
 export type GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataList =
-  GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata[];
+  ReadonlyArray<GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata>;
 export const GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadataList =
   /*@__PURE__*/ S.Array(
     GlobalVmExtensionPolicyRolloutOperationRolloutStatusRolloutMetadata,
@@ -38072,8 +37557,7 @@ export const GlobalVmExtensionPolicyRolloutOperation = /*@__PURE__*/ S.suspend(
 
 export type GlobalVmExtensionPolicyScopedResourceStatusEnum =
   | "SCOPED_RESOURCE_STATUS_DELETING"
-  | "SCOPED_RESOURCE_STATUS_UNSPECIFIED"
-  | (string & {});
+  | "SCOPED_RESOURCE_STATUS_UNSPECIFIED";
 export const GlobalVmExtensionPolicyScopedResourceStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -38202,7 +37686,7 @@ export const GuestAttributesEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "GuestAttributesEntry",
 }) as any as S.Schema<GuestAttributesEntry>;
 
-export type GuestAttributesEntryList = GuestAttributesEntry[];
+export type GuestAttributesEntryList = ReadonlyArray<GuestAttributesEntry>;
 export const GuestAttributesEntryList = /*@__PURE__*/ S.Array(
   GuestAttributesEntry,
 ) as any as S.Schema<GuestAttributesEntryList>;
@@ -38282,24 +37766,17 @@ export const GetHealthBackendServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetHealthBackendServicesRequest",
 }) as any as S.Schema<GetHealthBackendServicesRequest>;
 
-export type HealthStatusHealthStateEnum =
-  | "HEALTHY"
-  | "UNHEALTHY"
-  | (string & {});
+export type HealthStatusHealthStateEnum = "HEALTHY" | "UNHEALTHY";
 export const HealthStatusHealthStateEnum = /*@__PURE__*/ S.String;
 
 export type HealthStatusWeightErrorEnum =
   | "INVALID_WEIGHT"
   | "MISSING_WEIGHT"
   | "UNAVAILABLE_WEIGHT"
-  | "WEIGHT_NONE"
-  | (string & {});
+  | "WEIGHT_NONE";
 export const HealthStatusWeightErrorEnum = /*@__PURE__*/ S.String;
 
-export type HealthStatusIpv6HealthStateEnum =
-  | "HEALTHY"
-  | "UNHEALTHY"
-  | (string & {});
+export type HealthStatusIpv6HealthStateEnum = "HEALTHY" | "UNHEALTHY";
 export const HealthStatusIpv6HealthStateEnum = /*@__PURE__*/ S.String;
 
 export interface HealthStatus {
@@ -38339,7 +37816,7 @@ export const HealthStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthStatus" }) as any as S.Schema<HealthStatus>;
 
-export type HealthStatusList = HealthStatus[];
+export type HealthStatusList = ReadonlyArray<HealthStatus>;
 export const HealthStatusList = /*@__PURE__*/ S.Array(
   HealthStatus,
 ) as any as S.Schema<HealthStatusList>;
@@ -38438,12 +37915,11 @@ export const GetHealthRegionCompositeHealthChecksRequest =
 export type CompositeHealthCheckHealthHealthStateEnum =
   | "HEALTHY"
   | "UNHEALTHY"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const CompositeHealthCheckHealthHealthStateEnum = /*@__PURE__*/ S.String;
 
 export type CompositeHealthChecksGetHealthResponseHealthSourceHealthHealthStateEnum =
-  "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
+  "HEALTHY" | "UNHEALTHY" | "UNKNOWN";
 export const CompositeHealthChecksGetHealthResponseHealthSourceHealthHealthStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -38466,7 +37942,7 @@ export const CompositeHealthChecksGetHealthResponseHealthSourceHealth =
   }) as any as S.Schema<CompositeHealthChecksGetHealthResponseHealthSourceHealth>;
 
 export type CompositeHealthChecksGetHealthResponseHealthSourceHealthList =
-  CompositeHealthChecksGetHealthResponseHealthSourceHealth[];
+  ReadonlyArray<CompositeHealthChecksGetHealthResponseHealthSourceHealth>;
 export const CompositeHealthChecksGetHealthResponseHealthSourceHealthList =
   /*@__PURE__*/ S.Array(
     CompositeHealthChecksGetHealthResponseHealthSourceHealth,
@@ -38520,8 +37996,7 @@ export const GetHealthRegionHealthSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 export type HealthSourceHealthHealthStateEnum =
   | "HEALTHY"
   | "UNHEALTHY"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const HealthSourceHealthHealthStateEnum = /*@__PURE__*/ S.String;
 
 export interface HealthSourcesGetHealthResponseSourceInfoBackendInfo {
@@ -38544,7 +38019,7 @@ export const HealthSourcesGetHealthResponseSourceInfoBackendInfo =
   }) as any as S.Schema<HealthSourcesGetHealthResponseSourceInfoBackendInfo>;
 
 export type HealthSourcesGetHealthResponseSourceInfoBackendInfoList =
-  HealthSourcesGetHealthResponseSourceInfoBackendInfo[];
+  ReadonlyArray<HealthSourcesGetHealthResponseSourceInfoBackendInfo>;
 export const HealthSourcesGetHealthResponseSourceInfoBackendInfoList =
   /*@__PURE__*/ S.Array(
     HealthSourcesGetHealthResponseSourceInfoBackendInfo,
@@ -38572,7 +38047,7 @@ export const HealthSourcesGetHealthResponseSourceInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthSourcesGetHealthResponseSourceInfo>;
 
 export type HealthSourcesGetHealthResponseSourceInfoList =
-  HealthSourcesGetHealthResponseSourceInfo[];
+  ReadonlyArray<HealthSourcesGetHealthResponseSourceInfo>;
 export const HealthSourcesGetHealthResponseSourceInfoList =
   /*@__PURE__*/ S.Array(
     HealthSourcesGetHealthResponseSourceInfo,
@@ -38704,8 +38179,7 @@ export type HostStateEnum =
   | "CREATING"
   | "DELETING"
   | "STATE_UNSPECIFIED"
-  | "UNAVAILABLE"
-  | (string & {});
+  | "UNAVAILABLE";
 export const HostStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a host resource. */
@@ -38917,8 +38391,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_READ"
   | "DATA_WRITE"
-  | "LOG_TYPE_UNSPECIFIED"
-  | (string & {});
+  | "LOG_TYPE_UNSPECIFIED";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -38935,7 +38408,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -38954,7 +38427,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -38976,7 +38449,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -40016,7 +39489,7 @@ export const InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsI
   }) as any as S.Schema<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItem>;
 
 export type InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemList =
-  InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItem[];
+  ReadonlyArray<InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItem>;
 export const InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItem,
@@ -40047,7 +39520,7 @@ export const InstanceGroupManagerResizeRequestStatusErrorErrorsItem =
   }) as any as S.Schema<InstanceGroupManagerResizeRequestStatusErrorErrorsItem>;
 
 export type InstanceGroupManagerResizeRequestStatusErrorErrorsItemList =
-  InstanceGroupManagerResizeRequestStatusErrorErrorsItem[];
+  ReadonlyArray<InstanceGroupManagerResizeRequestStatusErrorErrorsItem>;
 export const InstanceGroupManagerResizeRequestStatusErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerResizeRequestStatusErrorErrorsItem,
@@ -40092,7 +39565,7 @@ export const InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemEr
   }) as any as S.Schema<InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItem>;
 
 export type InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemList =
-  InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItem[];
+  ReadonlyArray<InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItem>;
 export const InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemErrorDetailsItem,
@@ -40124,7 +39597,7 @@ export const InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItem =
   }) as any as S.Schema<InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItem>;
 
 export type InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemList =
-  InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItem[];
+  ReadonlyArray<InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItem>;
 export const InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerResizeRequestStatusLastAttemptErrorErrorsItem,
@@ -40185,8 +39658,7 @@ export type InstanceGroupManagerResizeRequestStateEnum =
   | "FAILED"
   | "PROVISIONING"
   | "STATE_UNSPECIFIED"
-  | "SUCCEEDED"
-  | (string & {});
+  | "SUCCEEDED";
 export const InstanceGroupManagerResizeRequestStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -40296,8 +39768,7 @@ export const GetInstanceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetInstancesViewEnum =
   | "BASIC"
   | "FULL"
-  | "INSTANCE_VIEW_UNSPECIFIED"
-  | (string & {});
+  | "INSTANCE_VIEW_UNSPECIFIED";
 export const GetInstancesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetInstancesRequest {
@@ -40388,8 +39859,7 @@ export const InstanceSettings = /*@__PURE__*/ S.suspend(() =>
 export type GetInstanceTemplatesViewEnum =
   | "BASIC"
   | "FULL"
-  | "INSTANCE_VIEW_UNSPECIFIED"
-  | (string & {});
+  | "INSTANCE_VIEW_UNSPECIFIED";
 export const GetInstanceTemplatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetInstanceTemplatesRequest {
@@ -40446,8 +39916,7 @@ export type InstantSnapshotGroupStatusEnum =
   | "FAILED"
   | "INVALID"
   | "READY"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const InstantSnapshotGroupStatusEnum = /*@__PURE__*/ S.String;
 
 export interface InstantSnapshotGroupSourceInfo {
@@ -40572,8 +40041,7 @@ export type InterconnectAttachmentGroupConfiguredAvailabilitySLAEffectiveSlaEnum
     | "EFFECTIVE_SLA_UNSPECIFIED"
     | "NO_SLA"
     | "PRODUCTION_CRITICAL"
-    | "PRODUCTION_NON_CRITICAL"
-    | (string & {});
+    | "PRODUCTION_NON_CRITICAL";
 export const InterconnectAttachmentGroupConfiguredAvailabilitySLAEffectiveSlaEnum =
   /*@__PURE__*/ S.String;
 
@@ -40584,8 +40052,7 @@ export type InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlock
     | "MISSING_GLOBAL_ROUTING"
     | "NO_ATTACHMENTS"
     | "NO_ATTACHMENTS_IN_METRO_AND_ZONE"
-    | "OTHER"
-    | (string & {});
+    | "OTHER";
 export const InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockersBlockerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -40624,7 +40091,7 @@ export const InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBloc
   }) as any as S.Schema<InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers>;
 
 export type InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockersList =
-  InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers[];
+  ReadonlyArray<InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers>;
 export const InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockersList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupConfiguredAvailabilitySLAIntendedSlaBlockers,
@@ -40704,7 +40171,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone 
   }) as any as S.Schema<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>;
 
 export type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneList =
-  InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone[];
+  ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>;
 export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZoneList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone,
@@ -40730,7 +40197,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacility =
   }) as any as S.Schema<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>;
 
 export type InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityList =
-  InterconnectAttachmentGroupLogicalStructureRegionMetroFacility[];
+  ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegionMetroFacility>;
 export const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupLogicalStructureRegionMetroFacility,
@@ -40755,7 +40222,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegionMetro =
   }) as any as S.Schema<InterconnectAttachmentGroupLogicalStructureRegionMetro>;
 
 export type InterconnectAttachmentGroupLogicalStructureRegionMetroList =
-  InterconnectAttachmentGroupLogicalStructureRegionMetro[];
+  ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegionMetro>;
 export const InterconnectAttachmentGroupLogicalStructureRegionMetroList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupLogicalStructureRegionMetro,
@@ -40780,7 +40247,7 @@ export const InterconnectAttachmentGroupLogicalStructureRegion =
   }) as any as S.Schema<InterconnectAttachmentGroupLogicalStructureRegion>;
 
 export type InterconnectAttachmentGroupLogicalStructureRegionList =
-  InterconnectAttachmentGroupLogicalStructureRegion[];
+  ReadonlyArray<InterconnectAttachmentGroupLogicalStructureRegion>;
 export const InterconnectAttachmentGroupLogicalStructureRegionList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupLogicalStructureRegion,
@@ -40805,8 +40272,7 @@ export type InterconnectAttachmentGroupIntentAvailabilitySlaEnum =
   | "AVAILABILITY_SLA_UNSPECIFIED"
   | "NO_SLA"
   | "PRODUCTION_CRITICAL"
-  | "PRODUCTION_NON_CRITICAL"
-  | (string & {});
+  | "PRODUCTION_NON_CRITICAL";
 export const InterconnectAttachmentGroupIntentAvailabilitySlaEnum =
   /*@__PURE__*/ S.String;
 
@@ -40937,8 +40403,7 @@ export type InterconnectGroupIntentTopologyCapabilityEnum =
   | "NO_SLA"
   | "PRODUCTION_CRITICAL"
   | "PRODUCTION_NON_CRITICAL"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const InterconnectGroupIntentTopologyCapabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -40974,7 +40439,7 @@ export const InterconnectGroupPhysicalStructureMetrosFacilitiesZones =
   }) as any as S.Schema<InterconnectGroupPhysicalStructureMetrosFacilitiesZones>;
 
 export type InterconnectGroupPhysicalStructureMetrosFacilitiesZonesList =
-  InterconnectGroupPhysicalStructureMetrosFacilitiesZones[];
+  ReadonlyArray<InterconnectGroupPhysicalStructureMetrosFacilitiesZones>;
 export const InterconnectGroupPhysicalStructureMetrosFacilitiesZonesList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupPhysicalStructureMetrosFacilitiesZones,
@@ -40999,7 +40464,7 @@ export const InterconnectGroupPhysicalStructureMetrosFacilities =
   }) as any as S.Schema<InterconnectGroupPhysicalStructureMetrosFacilities>;
 
 export type InterconnectGroupPhysicalStructureMetrosFacilitiesList =
-  InterconnectGroupPhysicalStructureMetrosFacilities[];
+  ReadonlyArray<InterconnectGroupPhysicalStructureMetrosFacilities>;
 export const InterconnectGroupPhysicalStructureMetrosFacilitiesList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupPhysicalStructureMetrosFacilities,
@@ -41024,7 +40489,7 @@ export const InterconnectGroupPhysicalStructureMetros = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InterconnectGroupPhysicalStructureMetros>;
 
 export type InterconnectGroupPhysicalStructureMetrosList =
-  InterconnectGroupPhysicalStructureMetros[];
+  ReadonlyArray<InterconnectGroupPhysicalStructureMetros>;
 export const InterconnectGroupPhysicalStructureMetrosList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupPhysicalStructureMetros,
@@ -41046,8 +40511,7 @@ export type InterconnectGroupConfiguredTopologyCapabilitySupportedSlaEnum =
   | "NO_SLA"
   | "PRODUCTION_CRITICAL"
   | "PRODUCTION_NON_CRITICAL"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const InterconnectGroupConfiguredTopologyCapabilitySupportedSlaEnum =
   /*@__PURE__*/ S.String;
 
@@ -41057,8 +40521,7 @@ export type InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlock
     | "NO_INTERCONNECTS"
     | "NO_INTERCONNECTS_IN_METRO_AND_ZONE"
     | "OTHER"
-    | "UNSPECIFIED"
-    | (string & {});
+    | "UNSPECIFIED";
 export const InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockersBlockerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -41097,7 +40560,7 @@ export const InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBloc
   }) as any as S.Schema<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers>;
 
 export type InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockersList =
-  InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers[];
+  ReadonlyArray<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers>;
 export const InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockersList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlockers,
@@ -41212,24 +40675,20 @@ export const InterconnectLocationCrossSiteInterconnectInfo =
   }) as any as S.Schema<InterconnectLocationCrossSiteInterconnectInfo>;
 
 export type InterconnectLocationCrossSiteInterconnectInfoList =
-  InterconnectLocationCrossSiteInterconnectInfo[];
+  ReadonlyArray<InterconnectLocationCrossSiteInterconnectInfo>;
 export const InterconnectLocationCrossSiteInterconnectInfoList =
   /*@__PURE__*/ S.Array(
     InterconnectLocationCrossSiteInterconnectInfo,
   ) as any as S.Schema<InterconnectLocationCrossSiteInterconnectInfoList>;
 
-export type InterconnectLocationStatusEnum =
-  | "AVAILABLE"
-  | "CLOSED"
-  | (string & {});
+export type InterconnectLocationStatusEnum = "AVAILABLE" | "CLOSED";
 export const InterconnectLocationStatusEnum = /*@__PURE__*/ S.String;
 
 export type InterconnectLocationRegionInfoLocationPresenceEnum =
   | "GLOBAL"
   | "LOCAL_REGION"
   | "LP_GLOBAL"
-  | "LP_LOCAL_REGION"
-  | (string & {});
+  | "LP_LOCAL_REGION";
 export const InterconnectLocationRegionInfoLocationPresenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -41258,7 +40717,7 @@ export const InterconnectLocationRegionInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectLocationRegionInfo>;
 
 export type InterconnectLocationRegionInfoList =
-  InterconnectLocationRegionInfo[];
+  ReadonlyArray<InterconnectLocationRegionInfo>;
 export const InterconnectLocationRegionInfoList = /*@__PURE__*/ S.Array(
   InterconnectLocationRegionInfo,
 ) as any as S.Schema<InterconnectLocationRegionInfoList>;
@@ -41273,20 +40732,18 @@ export type InterconnectLocationContinentEnum =
   | "C_SOUTH_AMERICA"
   | "EUROPE"
   | "NORTH_AMERICA"
-  | "SOUTH_AMERICA"
-  | (string & {});
+  | "SOUTH_AMERICA";
 export const InterconnectLocationContinentEnum = /*@__PURE__*/ S.String;
 
 export type InterconnectLocationAvailableLinkTypesItemEnum =
   | "LINK_TYPE_ETHERNET_100G_LR"
   | "LINK_TYPE_ETHERNET_10G_LR"
-  | "LINK_TYPE_ETHERNET_400G_LR4"
-  | (string & {});
+  | "LINK_TYPE_ETHERNET_400G_LR4";
 export const InterconnectLocationAvailableLinkTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type InterconnectLocationAvailableLinkTypesItemEnumList =
-  InterconnectLocationAvailableLinkTypesItemEnum[];
+  ReadonlyArray<InterconnectLocationAvailableLinkTypesItemEnum>;
 export const InterconnectLocationAvailableLinkTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     InterconnectLocationAvailableLinkTypesItemEnum,
@@ -41295,13 +40752,12 @@ export const InterconnectLocationAvailableLinkTypesItemEnumList =
 export type InterconnectLocationAvailableFeaturesItemEnum =
   | "IF_CROSS_SITE_NETWORK"
   | "IF_L2_FORWARDING"
-  | "IF_MACSEC"
-  | (string & {});
+  | "IF_MACSEC";
 export const InterconnectLocationAvailableFeaturesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type InterconnectLocationAvailableFeaturesItemEnumList =
-  InterconnectLocationAvailableFeaturesItemEnum[];
+  ReadonlyArray<InterconnectLocationAvailableFeaturesItemEnum>;
 export const InterconnectLocationAvailableFeaturesItemEnumList =
   /*@__PURE__*/ S.Array(
     InterconnectLocationAvailableFeaturesItemEnum,
@@ -41407,8 +40863,7 @@ export const GetInterconnectRemoteLocationsRequest = /*@__PURE__*/ S.suspend(
 
 export type InterconnectRemoteLocationLacpEnum =
   | "LACP_SUPPORTED"
-  | "LACP_UNSUPPORTED"
-  | (string & {});
+  | "LACP_UNSUPPORTED";
 export const InterconnectRemoteLocationLacpEnum = /*@__PURE__*/ S.String;
 
 export interface InterconnectRemoteLocationConstraintsSubnetLengthRange {
@@ -41427,15 +40882,13 @@ export const InterconnectRemoteLocationConstraintsSubnetLengthRange =
 
 export type InterconnectRemoteLocationConstraintsPortPairVlanEnum =
   | "PORT_PAIR_MATCHING_VLAN"
-  | "PORT_PAIR_UNCONSTRAINED_VLAN"
-  | (string & {});
+  | "PORT_PAIR_UNCONSTRAINED_VLAN";
 export const InterconnectRemoteLocationConstraintsPortPairVlanEnum =
   /*@__PURE__*/ S.String;
 
 export type InterconnectRemoteLocationConstraintsPortPairRemoteLocationEnum =
   | "PORT_PAIR_MATCHING_REMOTE_LOCATION"
-  | "PORT_PAIR_UNCONSTRAINED_REMOTE_LOCATION"
-  | (string & {});
+  | "PORT_PAIR_UNCONSTRAINED_REMOTE_LOCATION";
 export const InterconnectRemoteLocationConstraintsPortPairRemoteLocationEnum =
   /*@__PURE__*/ S.String;
 
@@ -41464,10 +40917,7 @@ export const InterconnectRemoteLocationConstraints = /*@__PURE__*/ S.suspend(
   identifier: "InterconnectRemoteLocationConstraints",
 }) as any as S.Schema<InterconnectRemoteLocationConstraints>;
 
-export type InterconnectRemoteLocationStatusEnum =
-  | "AVAILABLE"
-  | "CLOSED"
-  | (string & {});
+export type InterconnectRemoteLocationStatusEnum = "AVAILABLE" | "CLOSED";
 export const InterconnectRemoteLocationStatusEnum = /*@__PURE__*/ S.String;
 
 export type InterconnectRemoteLocationContinentEnum =
@@ -41475,8 +40925,7 @@ export type InterconnectRemoteLocationContinentEnum =
   | "ASIA_PAC"
   | "EUROPE"
   | "NORTH_AMERICA"
-  | "SOUTH_AMERICA"
-  | (string & {});
+  | "SOUTH_AMERICA";
 export const InterconnectRemoteLocationContinentEnum = /*@__PURE__*/ S.String;
 
 export interface InterconnectRemoteLocationPermittedConnections {
@@ -41493,7 +40942,7 @@ export const InterconnectRemoteLocationPermittedConnections =
   }) as any as S.Schema<InterconnectRemoteLocationPermittedConnections>;
 
 export type InterconnectRemoteLocationPermittedConnectionsList =
-  InterconnectRemoteLocationPermittedConnections[];
+  ReadonlyArray<InterconnectRemoteLocationPermittedConnections>;
 export const InterconnectRemoteLocationPermittedConnectionsList =
   /*@__PURE__*/ S.Array(
     InterconnectRemoteLocationPermittedConnections,
@@ -41597,7 +41046,7 @@ export const GetInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInterconnectsRequest",
 }) as any as S.Schema<GetInterconnectsRequest>;
 
-export type InterconnectStateEnum = "ACTIVE" | "UNPROVISIONED" | (string & {});
+export type InterconnectStateEnum = "ACTIVE" | "UNPROVISIONED";
 export const InterconnectStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes a single physical circuit between the Customer and Google. CircuitInfo objects are created by Google, so all fields are output only. */
@@ -41619,35 +41068,34 @@ export const InterconnectCircuitInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "InterconnectCircuitInfo",
 }) as any as S.Schema<InterconnectCircuitInfo>;
 
-export type InterconnectCircuitInfoList = InterconnectCircuitInfo[];
+export type InterconnectCircuitInfoList =
+  ReadonlyArray<InterconnectCircuitInfo>;
 export const InterconnectCircuitInfoList = /*@__PURE__*/ S.Array(
   InterconnectCircuitInfo,
 ) as any as S.Schema<InterconnectCircuitInfoList>;
 
-export type InterconnectSubzoneEnum = "SUBZONE_A" | "SUBZONE_B" | (string & {});
+export type InterconnectSubzoneEnum = "SUBZONE_A" | "SUBZONE_B";
 export const InterconnectSubzoneEnum = /*@__PURE__*/ S.String;
 
 export type InterconnectOperationalStatusEnum =
   | "OS_ACTIVE"
-  | "OS_UNPROVISIONED"
-  | (string & {});
+  | "OS_UNPROVISIONED";
 export const InterconnectOperationalStatusEnum = /*@__PURE__*/ S.String;
 
 export type InterconnectAvailableFeaturesItemEnum =
   | "IF_CROSS_SITE_NETWORK"
   | "IF_L2_FORWARDING"
-  | "IF_MACSEC"
-  | (string & {});
+  | "IF_MACSEC";
 export const InterconnectAvailableFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type InterconnectAvailableFeaturesItemEnumList =
-  InterconnectAvailableFeaturesItemEnum[];
+  ReadonlyArray<InterconnectAvailableFeaturesItemEnum>;
 export const InterconnectAvailableFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   InterconnectAvailableFeaturesItemEnum,
 ) as any as S.Schema<InterconnectAvailableFeaturesItemEnumList>;
 
 export type InterconnectApplicationAwareInterconnectBandwidthPercentageTrafficClassEnum =
-  "TC1" | "TC2" | "TC3" | "TC4" | "TC5" | "TC6" | (string & {});
+  "TC1" | "TC2" | "TC3" | "TC4" | "TC5" | "TC6";
 export const InterconnectApplicationAwareInterconnectBandwidthPercentageTrafficClassEnum =
   /*@__PURE__*/ S.String;
 
@@ -41671,7 +41119,7 @@ export const InterconnectApplicationAwareInterconnectBandwidthPercentage =
   }) as any as S.Schema<InterconnectApplicationAwareInterconnectBandwidthPercentage>;
 
 export type InterconnectApplicationAwareInterconnectBandwidthPercentageList =
-  InterconnectApplicationAwareInterconnectBandwidthPercentage[];
+  ReadonlyArray<InterconnectApplicationAwareInterconnectBandwidthPercentage>;
 export const InterconnectApplicationAwareInterconnectBandwidthPercentageList =
   /*@__PURE__*/ S.Array(
     InterconnectApplicationAwareInterconnectBandwidthPercentage,
@@ -41730,12 +41178,11 @@ export const InterconnectApplicationAwareInterconnect = /*@__PURE__*/ S.suspend(
 export type InterconnectRequestedFeaturesItemEnum =
   | "IF_CROSS_SITE_NETWORK"
   | "IF_L2_FORWARDING"
-  | "IF_MACSEC"
-  | (string & {});
+  | "IF_MACSEC";
 export const InterconnectRequestedFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type InterconnectRequestedFeaturesItemEnumList =
-  InterconnectRequestedFeaturesItemEnum[];
+  ReadonlyArray<InterconnectRequestedFeaturesItemEnum>;
 export const InterconnectRequestedFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   InterconnectRequestedFeaturesItemEnum,
 ) as any as S.Schema<InterconnectRequestedFeaturesItemEnumList>;
@@ -41743,14 +41190,10 @@ export const InterconnectRequestedFeaturesItemEnumList = /*@__PURE__*/ S.Array(
 export type InterconnectInterconnectTypeEnum =
   | "DEDICATED"
   | "IT_PRIVATE"
-  | "PARTNER"
-  | (string & {});
+  | "PARTNER";
 export const InterconnectInterconnectTypeEnum = /*@__PURE__*/ S.String;
 
-export type InterconnectOutageNotificationSourceEnum =
-  | "GOOGLE"
-  | "NSRC_GOOGLE"
-  | (string & {});
+export type InterconnectOutageNotificationSourceEnum = "GOOGLE" | "NSRC_GOOGLE";
 export const InterconnectOutageNotificationSourceEnum = /*@__PURE__*/ S.String;
 
 export type InterconnectOutageNotificationStateEnum =
@@ -41758,16 +41201,14 @@ export type InterconnectOutageNotificationStateEnum =
   | "CANCELLED"
   | "COMPLETED"
   | "NS_ACTIVE"
-  | "NS_CANCELED"
-  | (string & {});
+  | "NS_CANCELED";
 export const InterconnectOutageNotificationStateEnum = /*@__PURE__*/ S.String;
 
 export type InterconnectOutageNotificationIssueTypeEnum =
   | "IT_OUTAGE"
   | "IT_PARTIAL_OUTAGE"
   | "OUTAGE"
-  | "PARTIAL_OUTAGE"
-  | (string & {});
+  | "PARTIAL_OUTAGE";
 export const InterconnectOutageNotificationIssueTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -41806,7 +41247,7 @@ export const InterconnectOutageNotification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectOutageNotification>;
 
 export type InterconnectOutageNotificationList =
-  InterconnectOutageNotification[];
+  ReadonlyArray<InterconnectOutageNotification>;
 export const InterconnectOutageNotificationList = /*@__PURE__*/ S.Array(
   InterconnectOutageNotification,
 ) as any as S.Schema<InterconnectOutageNotificationList>;
@@ -41828,7 +41269,7 @@ export const InterconnectMacsecPreSharedKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectMacsecPreSharedKey>;
 
 export type InterconnectMacsecPreSharedKeyList =
-  InterconnectMacsecPreSharedKey[];
+  ReadonlyArray<InterconnectMacsecPreSharedKey>;
 export const InterconnectMacsecPreSharedKeyList = /*@__PURE__*/ S.Array(
   InterconnectMacsecPreSharedKey,
 ) as any as S.Schema<InterconnectMacsecPreSharedKeyList>;
@@ -41852,8 +41293,7 @@ export const InterconnectMacsec = /*@__PURE__*/ S.suspend(() =>
 export type InterconnectLinkTypeEnum =
   | "LINK_TYPE_ETHERNET_100G_LR"
   | "LINK_TYPE_ETHERNET_10G_LR"
-  | "LINK_TYPE_ETHERNET_400G_LR4"
-  | (string & {});
+  | "LINK_TYPE_ETHERNET_400G_LR4";
 export const InterconnectLinkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Additional interconnect parameters. */
@@ -42016,8 +41456,7 @@ export type LicenseCodeStateEnum =
   | "ENABLED"
   | "RESTRICTED"
   | "STATE_UNSPECIFIED"
-  | "TERMINATED"
-  | (string & {});
+  | "TERMINATED";
 export const LicenseCodeStateEnum = /*@__PURE__*/ S.String;
 
 export interface LicenseCodeLicenseAlias {
@@ -42035,7 +41474,8 @@ export const LicenseCodeLicenseAlias = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicenseCodeLicenseAlias",
 }) as any as S.Schema<LicenseCodeLicenseAlias>;
 
-export type LicenseCodeLicenseAliasList = LicenseCodeLicenseAlias[];
+export type LicenseCodeLicenseAliasList =
+  ReadonlyArray<LicenseCodeLicenseAlias>;
 export const LicenseCodeLicenseAliasList = /*@__PURE__*/ S.Array(
   LicenseCodeLicenseAlias,
 ) as any as S.Schema<LicenseCodeLicenseAliasList>;
@@ -42247,17 +41687,13 @@ export const GetMachineImagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMachineImagesRequest",
 }) as any as S.Schema<GetMachineImagesRequest>;
 
-export type SavedDiskStorageBytesStatusEnum =
-  | "UPDATING"
-  | "UP_TO_DATE"
-  | (string & {});
+export type SavedDiskStorageBytesStatusEnum = "UPDATING" | "UP_TO_DATE";
 export const SavedDiskStorageBytesStatusEnum = /*@__PURE__*/ S.String;
 
 export type SavedDiskArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "ARM64"
-  | "X86_64"
-  | (string & {});
+  | "X86_64";
 export const SavedDiskArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** An instance-attached disk resource. */
@@ -42283,7 +41719,7 @@ export const SavedDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SavedDisk" }) as any as S.Schema<SavedDisk>;
 
-export type SavedDiskList = SavedDisk[];
+export type SavedDiskList = ReadonlyArray<SavedDisk>;
 export const SavedDiskList = /*@__PURE__*/ S.Array(
   SavedDisk,
 ) as any as S.Schema<SavedDiskList>;
@@ -42303,7 +41739,8 @@ export const SourceDiskEncryptionKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceDiskEncryptionKey",
 }) as any as S.Schema<SourceDiskEncryptionKey>;
 
-export type SourceDiskEncryptionKeyList = SourceDiskEncryptionKey[];
+export type SourceDiskEncryptionKeyList =
+  ReadonlyArray<SourceDiskEncryptionKey>;
 export const SourceDiskEncryptionKeyList = /*@__PURE__*/ S.Array(
   SourceDiskEncryptionKey,
 ) as any as S.Schema<SourceDiskEncryptionKeyList>;
@@ -42330,30 +41767,20 @@ export const MachineImageParams = /*@__PURE__*/ S.suspend(() =>
 export type SourceInstancePropertiesKeyRevocationActionTypeEnum =
   | "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
   | "NONE"
-  | "STOP"
-  | (string & {});
+  | "STOP";
 export const SourceInstancePropertiesKeyRevocationActionTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type SavedAttachedDiskModeEnum =
-  | "READ_ONLY"
-  | "READ_WRITE"
-  | (string & {});
+export type SavedAttachedDiskModeEnum = "READ_ONLY" | "READ_WRITE";
 export const SavedAttachedDiskModeEnum = /*@__PURE__*/ S.String;
 
-export type SavedAttachedDiskInterfaceEnum = "NVME" | "SCSI" | (string & {});
+export type SavedAttachedDiskInterfaceEnum = "NVME" | "SCSI";
 export const SavedAttachedDiskInterfaceEnum = /*@__PURE__*/ S.String;
 
-export type SavedAttachedDiskStorageBytesStatusEnum =
-  | "UPDATING"
-  | "UP_TO_DATE"
-  | (string & {});
+export type SavedAttachedDiskStorageBytesStatusEnum = "UPDATING" | "UP_TO_DATE";
 export const SavedAttachedDiskStorageBytesStatusEnum = /*@__PURE__*/ S.String;
 
-export type SavedAttachedDiskTypeEnum =
-  | "PERSISTENT"
-  | "SCRATCH"
-  | (string & {});
+export type SavedAttachedDiskTypeEnum = "PERSISTENT" | "SCRATCH";
 export const SavedAttachedDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** DEPRECATED: Please use compute#savedDisk instead. An instance-attached disk resource. */
@@ -42414,7 +41841,7 @@ export const SavedAttachedDisk = /*@__PURE__*/ S.suspend(() =>
   identifier: "SavedAttachedDisk",
 }) as any as S.Schema<SavedAttachedDisk>;
 
-export type SavedAttachedDiskList = SavedAttachedDisk[];
+export type SavedAttachedDiskList = ReadonlyArray<SavedAttachedDisk>;
 export const SavedAttachedDiskList = /*@__PURE__*/ S.Array(
   SavedAttachedDisk,
 ) as any as S.Schema<SavedAttachedDiskList>;
@@ -42422,8 +41849,7 @@ export const SavedAttachedDiskList = /*@__PURE__*/ S.Array(
 export type SourceInstancePropertiesPostKeyRevocationActionTypeEnum =
   | "NOOP"
   | "POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
-  | "SHUTDOWN"
-  | (string & {});
+  | "SHUTDOWN";
 export const SourceInstancePropertiesPostKeyRevocationActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -42491,8 +41917,7 @@ export type MachineImageStatusEnum =
   | "DELETING"
   | "INVALID"
   | "READY"
-  | "UPLOADING"
-  | (string & {});
+  | "UPLOADING";
 export const MachineImageStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a machine image resource. A machine image is a Compute Engine resource that stores all the configuration, metadata, permissions, and data from one or more disks required to create a Virtual machine (VM) instance. For more information, seeMachine images. */
@@ -42635,7 +42060,7 @@ export const InterconnectMacsecConfigPreSharedKey = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InterconnectMacsecConfigPreSharedKey>;
 
 export type InterconnectMacsecConfigPreSharedKeyList =
-  InterconnectMacsecConfigPreSharedKey[];
+  ReadonlyArray<InterconnectMacsecConfigPreSharedKey>;
 export const InterconnectMacsecConfigPreSharedKeyList = /*@__PURE__*/ S.Array(
   InterconnectMacsecConfigPreSharedKey,
 ) as any as S.Schema<InterconnectMacsecConfigPreSharedKeyList>;
@@ -42696,15 +42121,14 @@ export const GetNamedSetRoutersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNamedSetRoutersRequest",
 }) as any as S.Schema<GetNamedSetRoutersRequest>;
 
-export type ExprList = Expr[];
+export type ExprList = ReadonlyArray<Expr>;
 export const ExprList = /*@__PURE__*/ S.Array(
   Expr,
 ) as any as S.Schema<ExprList>;
 
 export type NamedSetTypeEnum =
   | "NAMED_SET_TYPE_COMMUNITY"
-  | "NAMED_SET_TYPE_PREFIX"
-  | (string & {});
+  | "NAMED_SET_TYPE_PREFIX";
 export const NamedSetTypeEnum = /*@__PURE__*/ S.String;
 
 export interface NamedSet {
@@ -42770,16 +42194,10 @@ export const GetNatIpInfoRoutersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNatIpInfoRoutersRequest",
 }) as any as S.Schema<GetNatIpInfoRoutersRequest>;
 
-export type NatIpInfoNatIpInfoMappingModeEnum =
-  | "AUTO"
-  | "MANUAL"
-  | (string & {});
+export type NatIpInfoNatIpInfoMappingModeEnum = "AUTO" | "MANUAL";
 export const NatIpInfoNatIpInfoMappingModeEnum = /*@__PURE__*/ S.String;
 
-export type NatIpInfoNatIpInfoMappingUsageEnum =
-  | "IN_USE"
-  | "UNUSED"
-  | (string & {});
+export type NatIpInfoNatIpInfoMappingUsageEnum = "IN_USE" | "UNUSED";
 export const NatIpInfoNatIpInfoMappingUsageEnum = /*@__PURE__*/ S.String;
 
 /** Contains information of a NAT IP. */
@@ -42801,7 +42219,8 @@ export const NatIpInfoNatIpInfoMapping = /*@__PURE__*/ S.suspend(() =>
   identifier: "NatIpInfoNatIpInfoMapping",
 }) as any as S.Schema<NatIpInfoNatIpInfoMapping>;
 
-export type NatIpInfoNatIpInfoMappingList = NatIpInfoNatIpInfoMapping[];
+export type NatIpInfoNatIpInfoMappingList =
+  ReadonlyArray<NatIpInfoNatIpInfoMapping>;
 export const NatIpInfoNatIpInfoMappingList = /*@__PURE__*/ S.Array(
   NatIpInfoNatIpInfoMapping,
 ) as any as S.Schema<NatIpInfoNatIpInfoMappingList>;
@@ -42820,7 +42239,7 @@ export const NatIpInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NatIpInfo" }) as any as S.Schema<NatIpInfo>;
 
-export type NatIpInfoList = NatIpInfo[];
+export type NatIpInfoList = ReadonlyArray<NatIpInfo>;
 export const NatIpInfoList = /*@__PURE__*/ S.Array(
   NatIpInfo,
 ) as any as S.Schema<NatIpInfoList>;
@@ -42908,8 +42327,7 @@ export type VmEndpointNatMappingsListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const VmEndpointNatMappingsListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface VmEndpointNatMappingsListWarningDataItem {
@@ -42929,7 +42347,7 @@ export const VmEndpointNatMappingsListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VmEndpointNatMappingsListWarningDataItem>;
 
 export type VmEndpointNatMappingsListWarningDataItemList =
-  VmEndpointNatMappingsListWarningDataItem[];
+  ReadonlyArray<VmEndpointNatMappingsListWarningDataItem>;
 export const VmEndpointNatMappingsListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     VmEndpointNatMappingsListWarningDataItem,
@@ -42980,7 +42398,7 @@ export const VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings =
   }) as any as S.Schema<VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings>;
 
 export type VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappingsList =
-  VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings[];
+  ReadonlyArray<VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings>;
 export const VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappingsList =
   /*@__PURE__*/ S.Array(
     VmEndpointNatMappingsInterfaceNatMappingsNatRuleMappings,
@@ -43021,7 +42439,7 @@ export const VmEndpointNatMappingsInterfaceNatMappings =
   }) as any as S.Schema<VmEndpointNatMappingsInterfaceNatMappings>;
 
 export type VmEndpointNatMappingsInterfaceNatMappingsList =
-  VmEndpointNatMappingsInterfaceNatMappings[];
+  ReadonlyArray<VmEndpointNatMappingsInterfaceNatMappings>;
 export const VmEndpointNatMappingsInterfaceNatMappingsList =
   /*@__PURE__*/ S.Array(
     VmEndpointNatMappingsInterfaceNatMappings,
@@ -43044,7 +42462,7 @@ export const VmEndpointNatMappings = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmEndpointNatMappings",
 }) as any as S.Schema<VmEndpointNatMappings>;
 
-export type VmEndpointNatMappingsList_ = VmEndpointNatMappings[];
+export type VmEndpointNatMappingsList_ = ReadonlyArray<VmEndpointNatMappings>;
 export const VmEndpointNatMappingsList_ = /*@__PURE__*/ S.Array(
   VmEndpointNatMappings,
 ) as any as S.Schema<VmEndpointNatMappingsList_>;
@@ -43194,27 +42612,19 @@ export const GetNetworkProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type NetworkProfileProfileTypeUllSubtypeEnum =
   | "OPERATOR"
-  | "PARTICIPANT"
-  | (string & {});
+  | "PARTICIPANT";
 export const NetworkProfileProfileTypeUllSubtypeEnum = /*@__PURE__*/ S.String;
 
-export type NetworkProfileProfileTypeVpcSubtypeEnum =
-  | "REGIONAL"
-  | (string & {});
+export type NetworkProfileProfileTypeVpcSubtypeEnum = "REGIONAL";
 export const NetworkProfileProfileTypeVpcSubtypeEnum = /*@__PURE__*/ S.String;
 
-export type NetworkProfileProfileTypeNetworkTypeEnum =
-  | "RDMA"
-  | "ULL"
-  | "VPC"
-  | (string & {});
+export type NetworkProfileProfileTypeNetworkTypeEnum = "RDMA" | "ULL" | "VPC";
 export const NetworkProfileProfileTypeNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 export type NetworkProfileProfileTypeRdmaSubtypeEnum =
   | "FALCON"
   | "ROCE"
-  | "ROCE_METAL"
-  | (string & {});
+  | "ROCE_METAL";
 export const NetworkProfileProfileTypeRdmaSubtypeEnum = /*@__PURE__*/ S.String;
 
 export interface NetworkProfileProfileType {
@@ -43237,13 +42647,12 @@ export const NetworkProfileProfileType = /*@__PURE__*/ S.suspend(() =>
 export type NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum =
   | "IPV4_IPV6"
   | "IPV4_ONLY"
-  | "IPV6_ONLY"
-  | (string & {});
+  | "IPV6_ONLY";
 export const NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList =
-  NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum[];
+  ReadonlyArray<NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum>;
 export const NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnum,
@@ -43251,41 +42660,36 @@ export const NetworkProfileNetworkFeaturesSubnetworkStackTypesItemEnumList =
 
 export type NetworkProfileNetworkFeaturesAllowVpnEnum =
   | "VPN_ALLOWED"
-  | "VPN_BLOCKED"
-  | (string & {});
+  | "VPN_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowVpnEnum = /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowExternalIpAccessEnum =
   | "EXTERNAL_IP_ACCESS_ALLOWED"
-  | "EXTERNAL_IP_ACCESS_BLOCKED"
-  | (string & {});
+  | "EXTERNAL_IP_ACCESS_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowExternalIpAccessEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowMultiNicInSameSubnetworkEnum =
   | "MULTI_NIC_IN_SAME_SUBNETWORK_ALLOWED"
-  | "MULTI_NIC_IN_SAME_SUBNETWORK_BLOCKED"
-  | (string & {});
+  | "MULTI_NIC_IN_SAME_SUBNETWORK_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowMultiNicInSameSubnetworkEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowInterconnectEnum =
   | "INTERCONNECT_ALLOWED"
-  | "INTERCONNECT_BLOCKED"
-  | (string & {});
+  | "INTERCONNECT_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowInterconnectEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum =
   | "SUBNET_STACK_TYPE_IPV4_IPV6"
   | "SUBNET_STACK_TYPE_IPV4_ONLY"
-  | "SUBNET_STACK_TYPE_IPV6_ONLY"
-  | (string & {});
+  | "SUBNET_STACK_TYPE_IPV6_ONLY";
 export const NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList =
-  NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum[];
+  ReadonlyArray<NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum>;
 export const NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesSubnetStackTypesItemEnum,
@@ -43293,82 +42697,71 @@ export const NetworkProfileNetworkFeaturesSubnetStackTypesItemEnumList =
 
 export type NetworkProfileNetworkFeaturesAllowCloudNatEnum =
   | "CLOUD_NAT_ALLOWED"
-  | "CLOUD_NAT_BLOCKED"
-  | (string & {});
+  | "CLOUD_NAT_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowCloudNatEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowSameNetworkUnicastEnum =
   | "SAME_NETWORK_UNICAST_ALLOWED"
-  | "SAME_NETWORK_UNICAST_BLOCKED"
-  | (string & {});
+  | "SAME_NETWORK_UNICAST_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowSameNetworkUnicastEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowVpcPeeringEnum =
   | "VPC_PEERING_ALLOWED"
-  | "VPC_PEERING_BLOCKED"
-  | (string & {});
+  | "VPC_PEERING_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowVpcPeeringEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowNetworkMigrationEnum =
   | "NETWORK_MIGRATION_ALLOWED"
-  | "NETWORK_MIGRATION_BLOCKED"
-  | (string & {});
+  | "NETWORK_MIGRATION_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowNetworkMigrationEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesMulticastEnum =
   | "MULTICAST_SDN"
-  | "MULTICAST_ULL"
-  | (string & {});
+  | "MULTICAST_ULL";
 export const NetworkProfileNetworkFeaturesMulticastEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowPscEnum =
   | "PSC_ALLOWED"
-  | "PSC_BLOCKED"
-  | (string & {});
+  | "PSC_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowPscEnum = /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowFirewallPolicyEnum =
   | "FIREWALL_POLICY_ALLOWED"
-  | "FIREWALL_POLICY_BLOCKED"
-  | (string & {});
+  | "FIREWALL_POLICY_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowFirewallPolicyEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowPrivateGoogleAccessEnum =
   | "PRIVATE_GOOGLE_ACCESS_ALLOWED"
-  | "PRIVATE_GOOGLE_ACCESS_BLOCKED"
-  | (string & {});
+  | "PRIVATE_GOOGLE_ACCESS_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowPrivateGoogleAccessEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowVpcFirewallRulesEnum =
   | "VPC_FIREWALL_RULES_ALLOWED"
-  | "VPC_FIREWALL_RULES_BLOCKED"
-  | (string & {});
+  | "VPC_FIREWALL_RULES_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowVpcFirewallRulesEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowMulticastEnum =
   | "MULTICAST_ALLOWED"
-  | "MULTICAST_BLOCKED"
-  | (string & {});
+  | "MULTICAST_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowMulticastEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetPurposesItemEnum =
   | "SUBNET_PURPOSE_CUSTOM_HARDWARE"
-  | "SUBNET_PURPOSE_PRIVATE"
-  | (string & {});
+  | "SUBNET_PURPOSE_PRIVATE";
 export const NetworkProfileNetworkFeaturesSubnetPurposesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList =
-  NetworkProfileNetworkFeaturesSubnetPurposesItemEnum[];
+  ReadonlyArray<NetworkProfileNetworkFeaturesSubnetPurposesItemEnum>;
 export const NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesSubnetPurposesItemEnum,
@@ -43376,15 +42769,13 @@ export const NetworkProfileNetworkFeaturesSubnetPurposesItemEnumList =
 
 export type NetworkProfileNetworkFeaturesAllowClassDFirewallsEnum =
   | "CLASS_D_FIREWALLS_ALLOWED"
-  | "CLASS_D_FIREWALLS_BLOCKED"
-  | (string & {});
+  | "CLASS_D_FIREWALLS_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowClassDFirewallsEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowAddressCreationEnum =
   | "ADDRESS_CREATION_ALLOWED"
-  | "ADDRESS_CREATION_BLOCKED"
-  | (string & {});
+  | "ADDRESS_CREATION_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowAddressCreationEnum =
   /*@__PURE__*/ S.String;
 
@@ -43394,13 +42785,12 @@ export type NetworkProfileNetworkFeaturesInterfaceTypesItemEnum =
   | "IRDMA"
   | "MRDMA"
   | "UNSPECIFIED_NIC_TYPE"
-  | "VIRTIO_NET"
-  | (string & {});
+  | "VIRTIO_NET";
 export const NetworkProfileNetworkFeaturesInterfaceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList =
-  NetworkProfileNetworkFeaturesInterfaceTypesItemEnum[];
+  ReadonlyArray<NetworkProfileNetworkFeaturesInterfaceTypesItemEnum>;
 export const NetworkProfileNetworkFeaturesInterfaceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesInterfaceTypesItemEnum,
@@ -43410,13 +42800,12 @@ export type NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum =
   | "RDMA_FALCON_POLICY"
   | "RDMA_ROCE_POLICY"
   | "ULL_POLICY"
-  | "VPC_POLICY"
-  | (string & {});
+  | "VPC_POLICY";
 export const NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList =
-  NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum[];
+  ReadonlyArray<NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum>;
 export const NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnum,
@@ -43424,15 +42813,13 @@ export const NetworkProfileNetworkFeaturesFirewallPolicyTypesItemEnumList =
 
 export type NetworkProfileNetworkFeaturesAllowAutoModeSubnetEnum =
   | "AUTO_MODE_SUBNET_ALLOWED"
-  | "AUTO_MODE_SUBNET_BLOCKED"
-  | (string & {});
+  | "AUTO_MODE_SUBNET_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowAutoModeSubnetEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowCloudRouterEnum =
   | "CLOUD_ROUTER_ALLOWED"
-  | "CLOUD_ROUTER_BLOCKED"
-  | (string & {});
+  | "CLOUD_ROUTER_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowCloudRouterEnum =
   /*@__PURE__*/ S.String;
 
@@ -43445,13 +42832,12 @@ export type NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum =
   | "PRIVATE_NAT"
   | "PRIVATE_RFC_1918"
   | "PRIVATE_SERVICE_CONNECT"
-  | "REGIONAL_MANAGED_PROXY"
-  | (string & {});
+  | "REGIONAL_MANAGED_PROXY";
 export const NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList =
-  NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum[];
+  ReadonlyArray<NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum>;
 export const NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnum,
@@ -43459,48 +42845,41 @@ export const NetworkProfileNetworkFeaturesSubnetworkPurposesItemEnumList =
 
 export type NetworkProfileNetworkFeaturesAllowStaticRoutesEnum =
   | "STATIC_ROUTES_ALLOWED"
-  | "STATIC_ROUTES_BLOCKED"
-  | (string & {});
+  | "STATIC_ROUTES_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowStaticRoutesEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowLoadBalancingEnum =
   | "LOAD_BALANCING_ALLOWED"
-  | "LOAD_BALANCING_BLOCKED"
-  | (string & {});
+  | "LOAD_BALANCING_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowLoadBalancingEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowAliasIpRangesEnum =
   | "ALIAS_IP_RANGES_ALLOWED"
-  | "ALIAS_IP_RANGES_BLOCKED"
-  | (string & {});
+  | "ALIAS_IP_RANGES_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowAliasIpRangesEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesUnicastEnum =
   | "UNICAST_SDN"
-  | "UNICAST_ULL"
-  | (string & {});
+  | "UNICAST_ULL";
 export const NetworkProfileNetworkFeaturesUnicastEnum = /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowNccEnum =
   | "NCC_ALLOWED"
-  | "NCC_BLOCKED"
-  | (string & {});
+  | "NCC_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowNccEnum = /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowSubInterfacesEnum =
   | "SUBINTERFACES_ALLOWED"
-  | "SUBINTERFACES_BLOCKED"
-  | (string & {});
+  | "SUBINTERFACES_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowSubInterfacesEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowIpForwardingEnum =
   | "IP_FORWARDING_ALLOWED"
-  | "IP_FORWARDING_BLOCKED"
-  | (string & {});
+  | "IP_FORWARDING_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowIpForwardingEnum =
   /*@__PURE__*/ S.String;
 
@@ -43521,7 +42900,7 @@ export const NetworkProfileNetworkFeaturesPredefinedSubnetworkRange =
   }) as any as S.Schema<NetworkProfileNetworkFeaturesPredefinedSubnetworkRange>;
 
 export type NetworkProfileNetworkFeaturesPredefinedSubnetworkRangeList =
-  NetworkProfileNetworkFeaturesPredefinedSubnetworkRange[];
+  ReadonlyArray<NetworkProfileNetworkFeaturesPredefinedSubnetworkRange>;
 export const NetworkProfileNetworkFeaturesPredefinedSubnetworkRangeList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesPredefinedSubnetworkRange,
@@ -43538,13 +42917,12 @@ export type NetworkProfileNetworkFeaturesAddressPurposesItemEnum =
   | "SERVERLESS"
   | "SHARED_LOADBALANCER_VIP"
   | "SYSTEM_MANAGED"
-  | "VPC_PEERING"
-  | (string & {});
+  | "VPC_PEERING";
 export const NetworkProfileNetworkFeaturesAddressPurposesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAddressPurposesItemEnumList =
-  NetworkProfileNetworkFeaturesAddressPurposesItemEnum[];
+  ReadonlyArray<NetworkProfileNetworkFeaturesAddressPurposesItemEnum>;
 export const NetworkProfileNetworkFeaturesAddressPurposesItemEnumList =
   /*@__PURE__*/ S.Array(
     NetworkProfileNetworkFeaturesAddressPurposesItemEnum,
@@ -43552,29 +42930,25 @@ export const NetworkProfileNetworkFeaturesAddressPurposesItemEnumList =
 
 export type NetworkProfileNetworkFeaturesAllowSubnetworkCreationEnum =
   | "SUBNETWORK_CREATION_ALLOWED"
-  | "SUBNETWORK_CREATION_BLOCKED"
-  | (string & {});
+  | "SUBNETWORK_CREATION_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowSubnetworkCreationEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowPacketMirroringEnum =
   | "PACKET_MIRRORING_ALLOWED"
-  | "PACKET_MIRRORING_BLOCKED"
-  | (string & {});
+  | "PACKET_MIRRORING_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowPacketMirroringEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowDefaultNicAttachmentEnum =
   | "DEFAULT_NIC_ATTACHMENT_ALLOWED"
-  | "DEFAULT_NIC_ATTACHMENT_BLOCKED"
-  | (string & {});
+  | "DEFAULT_NIC_ATTACHMENT_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowDefaultNicAttachmentEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkProfileNetworkFeaturesAllowMultiNicInSameNetworkEnum =
   | "MULTI_NIC_IN_SAME_NETWORK_ALLOWED"
-  | "MULTI_NIC_IN_SAME_NETWORK_BLOCKED"
-  | (string & {});
+  | "MULTI_NIC_IN_SAME_NETWORK_BLOCKED";
 export const NetworkProfileNetworkFeaturesAllowMultiNicInSameNetworkEnum =
   /*@__PURE__*/ S.String;
 
@@ -43760,7 +43134,7 @@ export const NetworkProfileNetworkFeatures = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkProfileNetworkFeatures",
 }) as any as S.Schema<NetworkProfileNetworkFeatures>;
 
-export type NetworkProfileLocationScopeEnum = "REGION" | "ZONE" | (string & {});
+export type NetworkProfileLocationScopeEnum = "REGION" | "ZONE";
 export const NetworkProfileLocationScopeEnum = /*@__PURE__*/ S.String;
 
 export interface NetworkProfileLocation {
@@ -43835,35 +43209,29 @@ export const GetNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetNetworksRequest",
 }) as any as S.Schema<GetNetworksRequest>;
 
-export type NetworkPeeringList = NetworkPeering[];
+export type NetworkPeeringList = ReadonlyArray<NetworkPeering>;
 export const NetworkPeeringList = /*@__PURE__*/ S.Array(
   NetworkPeering,
 ) as any as S.Schema<NetworkPeeringList>;
 
-export type NetworkRoutingConfigRoutingModeEnum =
-  | "GLOBAL"
-  | "REGIONAL"
-  | (string & {});
+export type NetworkRoutingConfigRoutingModeEnum = "GLOBAL" | "REGIONAL";
 export const NetworkRoutingConfigRoutingModeEnum = /*@__PURE__*/ S.String;
 
 export type NetworkRoutingConfigEffectiveBgpInterRegionCostEnum =
   | "ADD_COST_TO_MED"
-  | "DEFAULT"
-  | (string & {});
+  | "DEFAULT";
 export const NetworkRoutingConfigEffectiveBgpInterRegionCostEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkRoutingConfigBgpInterRegionCostEnum =
   | "ADD_COST_TO_MED"
-  | "DEFAULT"
-  | (string & {});
+  | "DEFAULT";
 export const NetworkRoutingConfigBgpInterRegionCostEnum =
   /*@__PURE__*/ S.String;
 
 export type NetworkRoutingConfigBgpBestPathSelectionModeEnum =
   | "LEGACY"
-  | "STANDARD"
-  | (string & {});
+  | "STANDARD";
 export const NetworkRoutingConfigBgpBestPathSelectionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -43901,8 +43269,7 @@ export const NetworkRoutingConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type NetworkNetworkFirewallPolicyEnforcementOrderEnum =
   | "AFTER_CLASSIC_FIREWALL"
-  | "BEFORE_CLASSIC_FIREWALL"
-  | (string & {});
+  | "BEFORE_CLASSIC_FIREWALL";
 export const NetworkNetworkFirewallPolicyEnforcementOrderEnum =
   /*@__PURE__*/ S.String;
 
@@ -44085,8 +43452,7 @@ export type InterconnectAttachmentGroupsOperationalStatusGroupStatusEnum =
   | "DEGRADED"
   | "FULLY_DOWN"
   | "FULLY_UP"
-  | "UNSPECIFIED"
-  | (string & {});
+  | "UNSPECIFIED";
 export const InterconnectAttachmentGroupsOperationalStatusGroupStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -44105,13 +43471,12 @@ export type InterconnectAttachmentGroupsOperationalStatusAttachmentStatusStatusE
     | "PENDING_PARTNER"
     | "PROVISIONED"
     | "ROUTER_CONFIGURATION_BROKEN"
-    | "UNPROVISIONED"
-    | (string & {});
+    | "UNPROVISIONED";
 export const InterconnectAttachmentGroupsOperationalStatusAttachmentStatusStatusEnum =
   /*@__PURE__*/ S.String;
 
 export type InterconnectAttachmentGroupsOperationalStatusAttachmentStatusIsActiveEnum =
-  "ACTIVE" | "INACTIVE" | "UNSPECIFIED" | (string & {});
+  "ACTIVE" | "INACTIVE" | "UNSPECIFIED";
 export const InterconnectAttachmentGroupsOperationalStatusAttachmentStatusIsActiveEnum =
   /*@__PURE__*/ S.String;
 
@@ -44143,7 +43508,7 @@ export const InterconnectAttachmentGroupsOperationalStatusAttachmentStatus =
   }) as any as S.Schema<InterconnectAttachmentGroupsOperationalStatusAttachmentStatus>;
 
 export type InterconnectAttachmentGroupsOperationalStatusAttachmentStatusList =
-  InterconnectAttachmentGroupsOperationalStatusAttachmentStatus[];
+  ReadonlyArray<InterconnectAttachmentGroupsOperationalStatusAttachmentStatus>;
 export const InterconnectAttachmentGroupsOperationalStatusAttachmentStatusList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupsOperationalStatusAttachmentStatus,
@@ -44215,8 +43580,7 @@ export const GetOperationalStatusInterconnectGroupsRequest =
 export type InterconnectGroupsOperationalStatusInterconnectStatusIsActiveEnum =
   | "ACTIVE"
   | "INACTIVE"
-  | "IS_ACTIVE_UNSPECIFIED"
-  | (string & {});
+  | "IS_ACTIVE_UNSPECIFIED";
 export const InterconnectGroupsOperationalStatusInterconnectStatusIsActiveEnum =
   /*@__PURE__*/ S.String;
 
@@ -44246,7 +43610,7 @@ export const InterconnectGroupsOperationalStatusInterconnectStatus =
   }) as any as S.Schema<InterconnectGroupsOperationalStatusInterconnectStatus>;
 
 export type InterconnectGroupsOperationalStatusInterconnectStatusList =
-  InterconnectGroupsOperationalStatusInterconnectStatus[];
+  ReadonlyArray<InterconnectGroupsOperationalStatusInterconnectStatus>;
 export const InterconnectGroupsOperationalStatusInterconnectStatusList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupsOperationalStatusInterconnectStatus,
@@ -44256,8 +43620,7 @@ export type InterconnectGroupsOperationalStatusGroupStatusEnum =
   | "DEGRADED"
   | "FULLY_DOWN"
   | "FULLY_UP"
-  | "GROUPS_STATUS_UNSPECIFIED"
-  | (string & {});
+  | "GROUPS_STATUS_UNSPECIFIED";
 export const InterconnectGroupsOperationalStatusGroupStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -44326,16 +43689,14 @@ export const GetOrganizationRolloutPlansRequest = /*@__PURE__*/ S.suspend(() =>
 export type RolloutPlanWaveOrchestrationOptionsDelayTypeEnum =
   | "TYPE_MINIMUM"
   | "TYPE_OFFSET"
-  | "TYPE_UNSPECIFIED"
-  | (string & {});
+  | "TYPE_UNSPECIFIED";
 export const RolloutPlanWaveOrchestrationOptionsDelayTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type RolloutPlanWaveOrchestrationOptionsDelayDelimiterEnum =
   | "DELIMITER_BATCH"
   | "DELIMITER_LOCATION"
-  | "DELIMITER_UNSPECIFIED"
-  | (string & {});
+  | "DELIMITER_UNSPECIFIED";
 export const RolloutPlanWaveOrchestrationOptionsDelayDelimiterEnum =
   /*@__PURE__*/ S.String;
 
@@ -44362,7 +43723,7 @@ export const RolloutPlanWaveOrchestrationOptionsDelay = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RolloutPlanWaveOrchestrationOptionsDelay>;
 
 export type RolloutPlanWaveOrchestrationOptionsDelayList =
-  RolloutPlanWaveOrchestrationOptionsDelay[];
+  ReadonlyArray<RolloutPlanWaveOrchestrationOptionsDelay>;
 export const RolloutPlanWaveOrchestrationOptionsDelayList =
   /*@__PURE__*/ S.Array(
     RolloutPlanWaveOrchestrationOptionsDelay,
@@ -44439,7 +43800,8 @@ export const RolloutPlanWaveSelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolloutPlanWaveSelector",
 }) as any as S.Schema<RolloutPlanWaveSelector>;
 
-export type RolloutPlanWaveSelectorList = RolloutPlanWaveSelector[];
+export type RolloutPlanWaveSelectorList =
+  ReadonlyArray<RolloutPlanWaveSelector>;
 export const RolloutPlanWaveSelectorList = /*@__PURE__*/ S.Array(
   RolloutPlanWaveSelector,
 ) as any as S.Schema<RolloutPlanWaveSelectorList>;
@@ -44501,7 +43863,7 @@ export const RolloutPlanWave = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolloutPlanWave",
 }) as any as S.Schema<RolloutPlanWave>;
 
-export type RolloutPlanWaveList = RolloutPlanWave[];
+export type RolloutPlanWaveList = ReadonlyArray<RolloutPlanWave>;
 export const RolloutPlanWaveList = /*@__PURE__*/ S.Array(
   RolloutPlanWave,
 ) as any as S.Schema<RolloutPlanWaveList>;
@@ -44509,8 +43871,7 @@ export const RolloutPlanWaveList = /*@__PURE__*/ S.Array(
 export type RolloutPlanLocationScopeEnum =
   | "LOCATION_SCOPE_UNSPECIFIED"
   | "REGIONAL"
-  | "ZONAL"
-  | (string & {});
+  | "ZONAL";
 export const RolloutPlanLocationScopeEnum = /*@__PURE__*/ S.String;
 
 /** RolloutPlan resource. A RolloutPlan is the customer-defined strategy to divide a large-scale change into smaller increments, referred to as "waves". Each wave targets a specific portion of the overall affected area and defines criteria that must be met before progressing to the subsequent wave. */
@@ -44575,8 +43936,7 @@ export type RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusStateEnum =
   | "STATE_PENDING"
   | "STATE_SKIPPED"
   | "STATE_SUCCEEDED"
-  | "STATE_UNSPECIFIED"
-  | (string & {});
+  | "STATE_UNSPECIFIED";
 export const RolloutWaveDetailsOrchestratedWaveDetailsLocationStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -44659,7 +44019,7 @@ export const RolloutWaveDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolloutWaveDetails",
 }) as any as S.Schema<RolloutWaveDetails>;
 
-export type RolloutWaveDetailsList = RolloutWaveDetails[];
+export type RolloutWaveDetailsList = ReadonlyArray<RolloutWaveDetails>;
 export const RolloutWaveDetailsList = /*@__PURE__*/ S.Array(
   RolloutWaveDetails,
 ) as any as S.Schema<RolloutWaveDetailsList>;
@@ -44682,8 +44042,7 @@ export type RolloutStateEnum =
   | "ROLLING_BACK"
   | "STATE_UNSPECIFIED"
   | "UNINITIALIZED"
-  | "WAVE_FAILED"
-  | (string & {});
+  | "WAVE_FAILED";
 export const RolloutStateEnum = /*@__PURE__*/ S.String;
 
 /** This message is used if the resource type follows the Orchestrated integration model with ProgressiveRollout. */
@@ -44935,8 +44294,7 @@ export const GetPreviewFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PreviewFeatureRolloutOperationRolloutInputPredefinedRolloutPlanEnum =
     | "ROLLOUT_PLAN_FAST_ROLLOUT"
     | "ROLLOUT_PLAN_TWO_DAY_ROLLOUT"
-    | "ROLLOUT_PLAN_UNSPECIFIED"
-    | (string & {});
+    | "ROLLOUT_PLAN_UNSPECIFIED";
 export const PreviewFeatureRolloutOperationRolloutInputPredefinedRolloutPlanEnum =
   /*@__PURE__*/ S.String;
 
@@ -44976,8 +44334,7 @@ export type PreviewFeatureStatusReleaseStatusStageEnum =
   | "DEPRECATED"
   | "GA"
   | "PREVIEW"
-  | "STAGE_UNSPECIFIED"
-  | (string & {});
+  | "STAGE_UNSPECIFIED";
 export const PreviewFeatureStatusReleaseStatusStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -45035,8 +44392,7 @@ export const PreviewFeatureStatus = /*@__PURE__*/ S.suspend(() =>
 export type PreviewFeatureActivationStatusEnum =
   | "ACTIVATION_STATE_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const PreviewFeatureActivationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single Google Compute Engine preview feature. */
@@ -45094,24 +44450,21 @@ export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ProjectXpnProjectStatusEnum =
   | "HOST"
-  | "UNSPECIFIED_XPN_PROJECT_STATUS"
-  | (string & {});
+  | "UNSPECIFIED_XPN_PROJECT_STATUS";
 export const ProjectXpnProjectStatusEnum = /*@__PURE__*/ S.String;
 
 export type ProjectDefaultNetworkTierEnum =
   | "FIXED_STANDARD"
   | "PREMIUM"
   | "STANDARD"
-  | "STANDARD_OVERRIDES_FIXED_STANDARD"
-  | (string & {});
+  | "STANDARD_OVERRIDES_FIXED_STANDARD";
 export const ProjectDefaultNetworkTierEnum = /*@__PURE__*/ S.String;
 
 export type ProjectVmDnsSettingEnum =
   | "GLOBAL_DEFAULT"
   | "UNSPECIFIED_VM_DNS_SETTING"
   | "ZONAL_DEFAULT"
-  | "ZONAL_ONLY"
-  | (string & {});
+  | "ZONAL_ONLY";
 export const ProjectVmDnsSettingEnum = /*@__PURE__*/ S.String;
 
 /** The location in Cloud Storage and naming method of the daily usage report. Contains bucket_name and report_name prefix. */
@@ -45295,8 +44648,7 @@ export type QuotaMetricEnum =
   | "VARIABLE_IPV6_PUBLIC_DELEGATED_PREFIXES"
   | "VPN_GATEWAYS"
   | "VPN_TUNNELS"
-  | "XPN_SERVICE_PROJECTS"
-  | (string & {});
+  | "XPN_SERVICE_PROJECTS";
 export const QuotaMetricEnum = /*@__PURE__*/ S.String;
 
 /** A quotas entry. */
@@ -45319,7 +44671,7 @@ export const Quota = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
 
-export type QuotaList = Quota[];
+export type QuotaList = ReadonlyArray<Quota>;
 export const QuotaList = /*@__PURE__*/ S.Array(
   Quota,
 ) as any as S.Schema<QuotaList>;
@@ -45327,15 +44679,13 @@ export const QuotaList = /*@__PURE__*/ S.Array(
 export type ProjectManagedProtectionTierEnum =
   | "CAMP_PLUS_ANNUAL"
   | "CAMP_PLUS_PAYGO"
-  | "CA_STANDARD"
-  | (string & {});
+  | "CA_STANDARD";
 export const ProjectManagedProtectionTierEnum = /*@__PURE__*/ S.String;
 
 export type ProjectCloudArmorTierEnum =
   | "CA_ENTERPRISE_ANNUAL"
   | "CA_ENTERPRISE_PAYGO"
-  | "CA_STANDARD"
-  | (string & {});
+  | "CA_STANDARD";
 export const ProjectCloudArmorTierEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Project resource. A project is used to organize resources in a Google Cloud Platform environment. For more information, read about the Resource Hierarchy. */
@@ -45456,22 +44806,17 @@ export type PublicAdvertisedPrefixStatusEnum =
   | "PTR_CONFIGURED"
   | "READY_TO_ANNOUNCE"
   | "REVERSE_DNS_LOOKUP_FAILED"
-  | "VALIDATED"
-  | (string & {});
+  | "VALIDATED";
 export const PublicAdvertisedPrefixStatusEnum = /*@__PURE__*/ S.String;
 
-export type PublicAdvertisedPrefixIpv6AccessTypeEnum =
-  | "EXTERNAL"
-  | "INTERNAL"
-  | (string & {});
+export type PublicAdvertisedPrefixIpv6AccessTypeEnum = "EXTERNAL" | "INTERNAL";
 export const PublicAdvertisedPrefixIpv6AccessTypeEnum = /*@__PURE__*/ S.String;
 
 export type PublicAdvertisedPrefixNetworkTierEnum =
   | "FIXED_STANDARD"
   | "PREMIUM"
   | "STANDARD"
-  | "STANDARD_OVERRIDES_FIXED_STANDARD"
-  | (string & {});
+  | "STANDARD_OVERRIDES_FIXED_STANDARD";
 export const PublicAdvertisedPrefixNetworkTierEnum = /*@__PURE__*/ S.String;
 
 /** Represents a CIDR range which can be used to assign addresses. */
@@ -45501,23 +44846,19 @@ export const PublicAdvertisedPrefixPublicDelegatedPrefix =
   }) as any as S.Schema<PublicAdvertisedPrefixPublicDelegatedPrefix>;
 
 export type PublicAdvertisedPrefixPublicDelegatedPrefixList =
-  PublicAdvertisedPrefixPublicDelegatedPrefix[];
+  ReadonlyArray<PublicAdvertisedPrefixPublicDelegatedPrefix>;
 export const PublicAdvertisedPrefixPublicDelegatedPrefixList =
   /*@__PURE__*/ S.Array(
     PublicAdvertisedPrefixPublicDelegatedPrefix,
   ) as any as S.Schema<PublicAdvertisedPrefixPublicDelegatedPrefixList>;
 
-export type PublicAdvertisedPrefixByoipApiVersionEnum =
-  | "V1"
-  | "V2"
-  | (string & {});
+export type PublicAdvertisedPrefixByoipApiVersionEnum = "V1" | "V2";
 export const PublicAdvertisedPrefixByoipApiVersionEnum = /*@__PURE__*/ S.String;
 
 export type PublicAdvertisedPrefixPdpScopeEnum =
   | "GLOBAL"
   | "GLOBAL_AND_REGIONAL"
-  | "REGIONAL"
-  | (string & {});
+  | "REGIONAL";
 export const PublicAdvertisedPrefixPdpScopeEnum = /*@__PURE__*/ S.String;
 
 /** A public advertised prefix represents an aggregated IP prefix or netblock which customers bring to cloud. The IP prefix is a single unit of route advertisement and is announced globally to the internet. */
@@ -45971,8 +45312,7 @@ export const GetRegionInstanceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetRegionInstanceTemplatesViewEnum =
   | "BASIC"
   | "FULL"
-  | "INSTANCE_VIEW_UNSPECIFIED"
-  | (string & {});
+  | "INSTANCE_VIEW_UNSPECIFIED";
 export const GetRegionInstanceTemplatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetRegionInstanceTemplatesRequest {
@@ -46180,7 +45520,7 @@ export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckE
   }) as any as S.Schema<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItem>;
 
 export type MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItemList =
-  MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItem[];
+  ReadonlyArray<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItem>;
 export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemErrorDetailsItem,
@@ -46212,7 +45552,7 @@ export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckE
   }) as any as S.Schema<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItem>;
 
 export type MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemList =
-  MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItem[];
+  ReadonlyArray<MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItem>;
 export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItemList =
   /*@__PURE__*/ S.Array(
     MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateLastCheckErrorErrorsItem,
@@ -46259,8 +45599,7 @@ export type MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateEnum =
   | "ACTIVE_DEGRADED"
   | "DEACTIVATING"
   | "FAILED"
-  | "INCOMPLETE"
-  | (string & {});
+  | "INCOMPLETE";
 export const MultiMigStatusAcceleratorTopologyAcceleratorTopologyStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -46287,7 +45626,7 @@ export const MultiMigStatusAcceleratorTopology = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MultiMigStatusAcceleratorTopology>;
 
 export type MultiMigStatusAcceleratorTopologyList =
-  MultiMigStatusAcceleratorTopology[];
+  ReadonlyArray<MultiMigStatusAcceleratorTopology>;
 export const MultiMigStatusAcceleratorTopologyList = /*@__PURE__*/ S.Array(
   MultiMigStatusAcceleratorTopology,
 ) as any as S.Schema<MultiMigStatusAcceleratorTopologyList>;
@@ -46514,8 +45853,7 @@ export type RegionQuotaStatusWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RegionQuotaStatusWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RegionQuotaStatusWarningDataItem {
@@ -46534,7 +45872,7 @@ export const RegionQuotaStatusWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionQuotaStatusWarningDataItem>;
 
 export type RegionQuotaStatusWarningDataItemList =
-  RegionQuotaStatusWarningDataItem[];
+  ReadonlyArray<RegionQuotaStatusWarningDataItem>;
 export const RegionQuotaStatusWarningDataItemList = /*@__PURE__*/ S.Array(
   RegionQuotaStatusWarningDataItem,
 ) as any as S.Schema<RegionQuotaStatusWarningDataItemList>;
@@ -46557,7 +45895,7 @@ export const RegionQuotaStatusWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionQuotaStatusWarning",
 }) as any as S.Schema<RegionQuotaStatusWarning>;
 
-export type RegionStatusEnum = "DOWN" | "UP" | (string & {});
+export type RegionStatusEnum = "DOWN" | "UP";
 export const RegionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Region resource. A region is a geographical area where a resource is located. For more information, readRegions and Zones. */
@@ -46677,8 +46015,7 @@ export type SnapshotSettingsStorageLocationSettingsPolicyEnum =
   | "LOCAL_REGION"
   | "NEAREST_MULTI_REGION"
   | "SPECIFIC_LOCATIONS"
-  | "STORAGE_LOCATION_POLICY_UNSPECIFIED"
-  | (string & {});
+  | "STORAGE_LOCATION_POLICY_UNSPECIFIED";
 export const SnapshotSettingsStorageLocationSettingsPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -46730,8 +46067,7 @@ export const SnapshotSettingsStorageLocationSettings = /*@__PURE__*/ S.suspend(
 export type SnapshotSettingsAccessLocationPolicyEnum =
   | "ALL_REGIONS"
   | "POLICY_UNSPECIFIED"
-  | "SPECIFIC_REGIONS"
-  | (string & {});
+  | "SPECIFIC_REGIONS";
 export const SnapshotSettingsAccessLocationPolicyEnum = /*@__PURE__*/ S.String;
 
 /** A structure for specifying an allowed target region. */
@@ -46994,10 +46330,7 @@ export const RiskDetailsGlobalDnsInsight = /*@__PURE__*/ S.suspend(() =>
   identifier: "RiskDetailsGlobalDnsInsight",
 }) as any as S.Schema<RiskDetailsGlobalDnsInsight>;
 
-export type RiskDetailsTypeEnum =
-  | "GLOBAL_DNS"
-  | "RISK_TYPE_UNSPECIFIED"
-  | (string & {});
+export type RiskDetailsTypeEnum = "GLOBAL_DNS" | "RISK_TYPE_UNSPECIFIED";
 export const RiskDetailsTypeEnum = /*@__PURE__*/ S.String;
 
 export type RiskDetailsSeverityEnum =
@@ -47005,8 +46338,7 @@ export type RiskDetailsSeverityEnum =
   | "HIGH"
   | "LOW"
   | "MEDIUM"
-  | "SEVERITY_UNSPECIFIED"
-  | (string & {});
+  | "SEVERITY_UNSPECIFIED";
 export const RiskDetailsSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Detailed insights and metrics about a detected reliability risk. */
@@ -47072,8 +46404,7 @@ export const ReliabilityRisk = /*@__PURE__*/ S.suspend(() =>
 export type GetReservationBlocksViewEnum =
   | "BASIC"
   | "BLOCK_VIEW_UNSPECIFIED"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetReservationBlocksViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetReservationBlocksRequest {
@@ -47110,15 +46441,13 @@ export type ReservationBlockStatusEnum =
   | "CREATING"
   | "DELETING"
   | "INVALID"
-  | "READY"
-  | (string & {});
+  | "READY";
 export const ReservationBlockStatusEnum = /*@__PURE__*/ S.String;
 
 export type ReservationBlockHealthInfoHealthStatusEnum =
   | "DEGRADED"
   | "HEALTHY"
-  | "HEALTH_STATUS_UNSPECIFIED"
-  | (string & {});
+  | "HEALTH_STATUS_UNSPECIFIED";
 export const ReservationBlockHealthInfoHealthStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -47181,7 +46510,7 @@ export const ReservationBlockPhysicalTopologyInstance = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReservationBlockPhysicalTopologyInstance>;
 
 export type ReservationBlockPhysicalTopologyInstanceList =
-  ReservationBlockPhysicalTopologyInstance[];
+  ReadonlyArray<ReservationBlockPhysicalTopologyInstance>;
 export const ReservationBlockPhysicalTopologyInstanceList =
   /*@__PURE__*/ S.Array(
     ReservationBlockPhysicalTopologyInstance,
@@ -47369,8 +46698,7 @@ export type ReservationSlotStateEnum =
   | "CREATING"
   | "DELETING"
   | "STATE_UNSPECIFIED"
-  | "UNAVAILABLE"
-  | (string & {});
+  | "UNAVAILABLE";
 export const ReservationSlotStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a reservation slot resource. */
@@ -47430,8 +46758,7 @@ export const ReservationSlotsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type GetReservationSubBlocksViewEnum =
   | "SUB_BLOCK_VIEW_BASIC"
   | "SUB_BLOCK_VIEW_FULL"
-  | "SUB_BLOCK_VIEW_UNSPECIFIED"
-  | (string & {});
+  | "SUB_BLOCK_VIEW_UNSPECIFIED";
 export const GetReservationSubBlocksViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetReservationSubBlocksRequest {
@@ -47469,8 +46796,7 @@ export type AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState
     | "DEGRADED"
     | "RUNNING"
     | "TOPOLOGY_STATE_UNSPECIFIED"
-    | "UNHEALTHY"
-    | (string & {});
+    | "UNHEALTHY";
 export const AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyStateStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -47495,7 +46821,7 @@ export const AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyStat
   }) as any as S.Schema<AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState>;
 
 export type AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyStateList =
-  AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState[];
+  ReadonlyArray<AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState>;
 export const AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyStateList =
   /*@__PURE__*/ S.Array(
     AcceleratorTopologiesInfoAcceleratorTopologyInfoInfoPerTopologyState,
@@ -47521,7 +46847,7 @@ export const AcceleratorTopologiesInfoAcceleratorTopologyInfo =
   }) as any as S.Schema<AcceleratorTopologiesInfoAcceleratorTopologyInfo>;
 
 export type AcceleratorTopologiesInfoAcceleratorTopologyInfoList =
-  AcceleratorTopologiesInfoAcceleratorTopologyInfo[];
+  ReadonlyArray<AcceleratorTopologiesInfoAcceleratorTopologyInfo>;
 export const AcceleratorTopologiesInfoAcceleratorTopologyInfoList =
   /*@__PURE__*/ S.Array(
     AcceleratorTopologiesInfoAcceleratorTopologyInfo,
@@ -47546,8 +46872,7 @@ export type ReservationSubBlockStatusEnum =
   | "CREATING"
   | "DELETING"
   | "INVALID"
-  | "READY"
-  | (string & {});
+  | "READY";
 export const ReservationSubBlockStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ReservationSubBlockPhysicalTopology {
@@ -47571,8 +46896,7 @@ export const ReservationSubBlockPhysicalTopology = /*@__PURE__*/ S.suspend(() =>
 export type ReservationSubBlockHealthInfoHealthStatusEnum =
   | "DEGRADED"
   | "HEALTHY"
-  | "HEALTH_STATUS_UNSPECIFIED"
-  | (string & {});
+  | "HEALTH_STATUS_UNSPECIFIED";
 export const ReservationSubBlockHealthInfoHealthStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -47778,15 +47102,14 @@ export const RoutePolicyPolicyTerm = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoutePolicyPolicyTerm",
 }) as any as S.Schema<RoutePolicyPolicyTerm>;
 
-export type RoutePolicyPolicyTermList = RoutePolicyPolicyTerm[];
+export type RoutePolicyPolicyTermList = ReadonlyArray<RoutePolicyPolicyTerm>;
 export const RoutePolicyPolicyTermList = /*@__PURE__*/ S.Array(
   RoutePolicyPolicyTerm,
 ) as any as S.Schema<RoutePolicyPolicyTermList>;
 
 export type RoutePolicyTypeEnum =
   | "ROUTE_POLICY_TYPE_EXPORT"
-  | "ROUTE_POLICY_TYPE_IMPORT"
-  | (string & {});
+  | "ROUTE_POLICY_TYPE_IMPORT";
 export const RoutePolicyTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RoutePolicy {
@@ -47873,8 +47196,7 @@ export type RouteAsPathPathSegmentTypeEnum =
   | "AS_CONFED_SEQUENCE"
   | "AS_CONFED_SET"
   | "AS_SEQUENCE"
-  | "AS_SET"
-  | (string & {});
+  | "AS_SET";
 export const RouteAsPathPathSegmentTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RouteAsPath {
@@ -47890,7 +47212,7 @@ export const RouteAsPath = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RouteAsPath" }) as any as S.Schema<RouteAsPath>;
 
-export type RouteAsPathList = RouteAsPath[];
+export type RouteAsPathList = ReadonlyArray<RouteAsPath>;
 export const RouteAsPathList = /*@__PURE__*/ S.Array(
   RouteAsPath,
 ) as any as S.Schema<RouteAsPathList>;
@@ -47924,8 +47246,7 @@ export type RouteWarningsItemCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RouteWarningsItemCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RouteWarningsItemDataItem {
@@ -47943,7 +47264,8 @@ export const RouteWarningsItemDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouteWarningsItemDataItem",
 }) as any as S.Schema<RouteWarningsItemDataItem>;
 
-export type RouteWarningsItemDataItemList = RouteWarningsItemDataItem[];
+export type RouteWarningsItemDataItemList =
+  ReadonlyArray<RouteWarningsItemDataItem>;
 export const RouteWarningsItemDataItemList = /*@__PURE__*/ S.Array(
   RouteWarningsItemDataItem,
 ) as any as S.Schema<RouteWarningsItemDataItemList>;
@@ -47966,32 +47288,22 @@ export const RouteWarningsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouteWarningsItem",
 }) as any as S.Schema<RouteWarningsItem>;
 
-export type RouteWarningsItemList = RouteWarningsItem[];
+export type RouteWarningsItemList = ReadonlyArray<RouteWarningsItem>;
 export const RouteWarningsItemList = /*@__PURE__*/ S.Array(
   RouteWarningsItem,
 ) as any as S.Schema<RouteWarningsItemList>;
 
-export type RouteRouteTypeEnum =
-  | "BGP"
-  | "STATIC"
-  | "SUBNET"
-  | "TRANSIT"
-  | (string & {});
+export type RouteRouteTypeEnum = "BGP" | "STATIC" | "SUBNET" | "TRANSIT";
 export const RouteRouteTypeEnum = /*@__PURE__*/ S.String;
 
 export type RouteRouteStatusEnum =
   | "ACTIVE"
   | "DROPPED"
   | "INACTIVE"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const RouteRouteStatusEnum = /*@__PURE__*/ S.String;
 
-export type RouteNextHopOriginEnum =
-  | "EGP"
-  | "IGP"
-  | "INCOMPLETE"
-  | (string & {});
+export type RouteNextHopOriginEnum = "EGP" | "IGP" | "INCOMPLETE";
 export const RouteNextHopOriginEnum = /*@__PURE__*/ S.String;
 
 /** Additional route parameters. */
@@ -48094,7 +47406,7 @@ export const Route = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
 
-export type RouteList_ = Route[];
+export type RouteList_ = ReadonlyArray<Route>;
 export const RouteList_ = /*@__PURE__*/ S.Array(
   Route,
 ) as any as S.Schema<RouteList_>;
@@ -48103,22 +47415,16 @@ export type RouterStatusBgpPeerStatusStatusReasonEnum =
   | "IPV4_PEER_ON_IPV6_ONLY_CONNECTION"
   | "IPV6_PEER_ON_IPV4_ONLY_CONNECTION"
   | "MD5_AUTH_INTERNAL_PROBLEM"
-  | "STATUS_REASON_UNSPECIFIED"
-  | (string & {});
+  | "STATUS_REASON_UNSPECIFIED";
 export const RouterStatusBgpPeerStatusStatusReasonEnum = /*@__PURE__*/ S.String;
 
-export type RouterStatusBgpPeerStatusStatusEnum =
-  | "DOWN"
-  | "UNKNOWN"
-  | "UP"
-  | (string & {});
+export type RouterStatusBgpPeerStatusStatusEnum = "DOWN" | "UNKNOWN" | "UP";
 export const RouterStatusBgpPeerStatusStatusEnum = /*@__PURE__*/ S.String;
 
 export type BfdStatusBfdSessionInitializationModeEnum =
   | "ACTIVE"
   | "DISABLED"
-  | "PASSIVE"
-  | (string & {});
+  | "PASSIVE";
 export const BfdStatusBfdSessionInitializationModeEnum = /*@__PURE__*/ S.String;
 
 export type BfdStatusLocalStateEnum =
@@ -48126,24 +47432,21 @@ export type BfdStatusLocalStateEnum =
   | "DOWN"
   | "INIT"
   | "STATE_UNSPECIFIED"
-  | "UP"
-  | (string & {});
+  | "UP";
 export const BfdStatusLocalStateEnum = /*@__PURE__*/ S.String;
 
 export type PacketIntervalsTypeEnum =
   | "LOOPBACK"
   | "RECEIVE"
   | "TRANSMIT"
-  | "TYPE_UNSPECIFIED"
-  | (string & {});
+  | "TYPE_UNSPECIFIED";
 export const PacketIntervalsTypeEnum = /*@__PURE__*/ S.String;
 
 export type PacketIntervalsDurationEnum =
   | "DURATION_UNSPECIFIED"
   | "HOUR"
   | "MAX"
-  | "MINUTE"
-  | (string & {});
+  | "MINUTE";
 export const PacketIntervalsDurationEnum = /*@__PURE__*/ S.String;
 
 /** Next free: 7 */
@@ -48174,7 +47477,7 @@ export const PacketIntervals = /*@__PURE__*/ S.suspend(() =>
   identifier: "PacketIntervals",
 }) as any as S.Schema<PacketIntervals>;
 
-export type PacketIntervalsList = PacketIntervals[];
+export type PacketIntervalsList = ReadonlyArray<PacketIntervals>;
 export const PacketIntervalsList = /*@__PURE__*/ S.Array(
   PacketIntervals,
 ) as any as S.Schema<PacketIntervalsList>;
@@ -48189,8 +47492,7 @@ export type BfdStatusLocalDiagnosticEnum =
   | "NEIGHBOR_SIGNALED_SESSION_DOWN"
   | "NO_DIAGNOSTIC"
   | "PATH_DOWN"
-  | "REVERSE_CONCATENATED_PATH_DOWN"
-  | (string & {});
+  | "REVERSE_CONCATENATED_PATH_DOWN";
 export const BfdStatusLocalDiagnosticEnum = /*@__PURE__*/ S.String;
 
 export interface BfdStatusPacketCounts {
@@ -48224,8 +47526,7 @@ export type BfdPacketDiagnosticEnum =
   | "NEIGHBOR_SIGNALED_SESSION_DOWN"
   | "NO_DIAGNOSTIC"
   | "PATH_DOWN"
-  | "REVERSE_CONCATENATED_PATH_DOWN"
-  | (string & {});
+  | "REVERSE_CONCATENATED_PATH_DOWN";
 export const BfdPacketDiagnosticEnum = /*@__PURE__*/ S.String;
 
 export type BfdPacketStateEnum =
@@ -48233,8 +47534,7 @@ export type BfdPacketStateEnum =
   | "DOWN"
   | "INIT"
   | "STATE_UNSPECIFIED"
-  | "UP"
-  | (string & {});
+  | "UP";
 export const BfdPacketStateEnum = /*@__PURE__*/ S.String;
 
 export interface BfdPacket {
@@ -48400,7 +47700,8 @@ export const RouterStatusBgpPeerStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterStatusBgpPeerStatus",
 }) as any as S.Schema<RouterStatusBgpPeerStatus>;
 
-export type RouterStatusBgpPeerStatusList = RouterStatusBgpPeerStatus[];
+export type RouterStatusBgpPeerStatusList =
+  ReadonlyArray<RouterStatusBgpPeerStatus>;
 export const RouterStatusBgpPeerStatusList = /*@__PURE__*/ S.Array(
   RouterStatusBgpPeerStatus,
 ) as any as S.Schema<RouterStatusBgpPeerStatusList>;
@@ -48431,7 +47732,7 @@ export const RouterStatusNatStatusNatRuleStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouterStatusNatStatusNatRuleStatus>;
 
 export type RouterStatusNatStatusNatRuleStatusList =
-  RouterStatusNatStatusNatRuleStatus[];
+  ReadonlyArray<RouterStatusNatStatusNatRuleStatus>;
 export const RouterStatusNatStatusNatRuleStatusList = /*@__PURE__*/ S.Array(
   RouterStatusNatStatusNatRuleStatus,
 ) as any as S.Schema<RouterStatusNatStatusNatRuleStatusList>;
@@ -48473,7 +47774,7 @@ export const RouterStatusNatStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterStatusNatStatus",
 }) as any as S.Schema<RouterStatusNatStatus>;
 
-export type RouterStatusNatStatusList = RouterStatusNatStatus[];
+export type RouterStatusNatStatusList = ReadonlyArray<RouterStatusNatStatus>;
 export const RouterStatusNatStatusList = /*@__PURE__*/ S.Array(
   RouterStatusNatStatus,
 ) as any as S.Schema<RouterStatusNatStatusList>;
@@ -48979,8 +48280,7 @@ export type SnapshotGroupStatusEnum =
   | "INVALID"
   | "READY"
   | "UNKNOWN"
-  | "UPLOADING"
-  | (string & {});
+  | "UPLOADING";
 export const SnapshotGroupStatusEnum = /*@__PURE__*/ S.String;
 
 export interface SnapshotGroupSourceInfo {
@@ -49160,13 +48460,12 @@ export const GetStatusVpnGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type VpnGatewayStatusHighAvailabilityRequirementStateStateEnum =
   | "CONNECTION_REDUNDANCY_MET"
-  | "CONNECTION_REDUNDANCY_NOT_MET"
-  | (string & {});
+  | "CONNECTION_REDUNDANCY_NOT_MET";
 export const VpnGatewayStatusHighAvailabilityRequirementStateStateEnum =
   /*@__PURE__*/ S.String;
 
 export type VpnGatewayStatusHighAvailabilityRequirementStateUnsatisfiedReasonEnum =
-  "INCOMPLETE_TUNNELS_COVERAGE" | (string & {});
+  "INCOMPLETE_TUNNELS_COVERAGE";
 export const VpnGatewayStatusHighAvailabilityRequirementStateUnsatisfiedReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -49210,7 +48509,7 @@ export const VpnGatewayStatusTunnel = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpnGatewayStatusTunnel",
 }) as any as S.Schema<VpnGatewayStatusTunnel>;
 
-export type VpnGatewayStatusTunnelList = VpnGatewayStatusTunnel[];
+export type VpnGatewayStatusTunnelList = ReadonlyArray<VpnGatewayStatusTunnel>;
 export const VpnGatewayStatusTunnelList = /*@__PURE__*/ S.Array(
   VpnGatewayStatusTunnel,
 ) as any as S.Schema<VpnGatewayStatusTunnelList>;
@@ -49237,7 +48536,8 @@ export const VpnGatewayStatusVpnConnection = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpnGatewayStatusVpnConnection",
 }) as any as S.Schema<VpnGatewayStatusVpnConnection>;
 
-export type VpnGatewayStatusVpnConnectionList = VpnGatewayStatusVpnConnection[];
+export type VpnGatewayStatusVpnConnectionList =
+  ReadonlyArray<VpnGatewayStatusVpnConnection>;
 export const VpnGatewayStatusVpnConnectionList = /*@__PURE__*/ S.Array(
   VpnGatewayStatusVpnConnection,
 ) as any as S.Schema<VpnGatewayStatusVpnConnectionList>;
@@ -49313,13 +48613,11 @@ export const GetStoragePoolTypesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStoragePoolTypesRequest",
 }) as any as S.Schema<GetStoragePoolTypesRequest>;
 
-export type GetSubnetworksViewsEnum =
-  | "DEFAULT"
-  | "WITH_UTILIZATION"
-  | (string & {});
+export type GetSubnetworksViewsEnum = "DEFAULT" | "WITH_UTILIZATION";
 export const GetSubnetworksViewsEnum = /*@__PURE__*/ S.String;
 
-export type GetSubnetworksViewsEnumList = GetSubnetworksViewsEnum[];
+export type GetSubnetworksViewsEnumList =
+  ReadonlyArray<GetSubnetworksViewsEnum>;
 export const GetSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
   GetSubnetworksViewsEnum,
 ) as any as S.Schema<GetSubnetworksViewsEnumList>;
@@ -49523,7 +48821,7 @@ export const GetTargetSslProxiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetTargetSslProxiesRequest",
 }) as any as S.Schema<GetTargetSslProxiesRequest>;
 
-export type TargetSslProxyProxyHeaderEnum = "NONE" | "PROXY_V1" | (string & {});
+export type TargetSslProxyProxyHeaderEnum = "NONE" | "PROXY_V1";
 export const TargetSslProxyProxyHeaderEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Target SSL Proxy resource. A target SSL proxy is a component of a Proxy Network Load Balancer. The forwarding rule references the target SSL proxy, and the target proxy then references a backend service. For more information, readProxy Network Load Balancer overview. */
@@ -49664,13 +48962,12 @@ export const GetUrlMapsRequest = /*@__PURE__*/ S.suspend(() =>
 export type HostsGetVersionRequestSbomSelectionsItemEnum =
   | "SBOM_SELECTION_CURRENT"
   | "SBOM_SELECTION_TARGET"
-  | "SBOM_SELECTION_UNSPECIFIED"
-  | (string & {});
+  | "SBOM_SELECTION_UNSPECIFIED";
 export const HostsGetVersionRequestSbomSelectionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type HostsGetVersionRequestSbomSelectionsItemEnumList =
-  HostsGetVersionRequestSbomSelectionsItemEnum[];
+  ReadonlyArray<HostsGetVersionRequestSbomSelectionsItemEnum>;
 export const HostsGetVersionRequestSbomSelectionsItemEnumList =
   /*@__PURE__*/ S.Array(
     HostsGetVersionRequestSbomSelectionsItemEnum,
@@ -49726,13 +49023,12 @@ export const GetVersionHostsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ReservationSlotsGetVersionRequestSbomSelectionsItemEnum =
   | "SBOM_SELECTION_CURRENT"
   | "SBOM_SELECTION_TARGET"
-  | "SBOM_SELECTION_UNSPECIFIED"
-  | (string & {});
+  | "SBOM_SELECTION_UNSPECIFIED";
 export const ReservationSlotsGetVersionRequestSbomSelectionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList =
-  ReservationSlotsGetVersionRequestSbomSelectionsItemEnum[];
+  ReadonlyArray<ReservationSlotsGetVersionRequestSbomSelectionsItemEnum>;
 export const ReservationSlotsGetVersionRequestSbomSelectionsItemEnumList =
   /*@__PURE__*/ S.Array(
     ReservationSlotsGetVersionRequestSbomSelectionsItemEnum,
@@ -49788,13 +49084,12 @@ export const GetVersionReservationSlotsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnum =
   | "SBOM_SELECTION_CURRENT"
   | "SBOM_SELECTION_TARGET"
-  | "SBOM_SELECTION_UNSPECIFIED"
-  | (string & {});
+  | "SBOM_SELECTION_UNSPECIFIED";
 export const ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList =
-  ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnum[];
+  ReadonlyArray<ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnum>;
 export const ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnumList =
   /*@__PURE__*/ S.Array(
     ReservationSubBlocksGetVersionRequestSbomSelectionsItemEnum,
@@ -49967,16 +49262,12 @@ export const WireGroupEndpointMap = /*@__PURE__*/ S.Record(
   WireGroupEndpoint,
 ) as any as S.Schema<WireGroupEndpointMap>;
 
-export type WirePropertiesFaultResponseEnum =
-  | "DISABLE_PORT"
-  | "NONE"
-  | (string & {});
+export type WirePropertiesFaultResponseEnum = "DISABLE_PORT" | "NONE";
 export const WirePropertiesFaultResponseEnum = /*@__PURE__*/ S.String;
 
 export type WirePropertiesBandwidthAllocationEnum =
   | "ALLOCATE_PER_WIRE"
-  | "SHARED_WITH_WIRE_GROUP"
-  | (string & {});
+  | "SHARED_WITH_WIRE_GROUP";
 export const WirePropertiesBandwidthAllocationEnum = /*@__PURE__*/ S.String;
 
 /** The properties of a wire. */
@@ -50008,7 +49299,7 @@ export const WireEndpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WireEndpoint" }) as any as S.Schema<WireEndpoint>;
 
-export type WireEndpointList = WireEndpoint[];
+export type WireEndpointList = ReadonlyArray<WireEndpoint>;
 export const WireEndpointList = /*@__PURE__*/ S.Array(
   WireEndpoint,
 ) as any as S.Schema<WireEndpointList>;
@@ -50033,7 +49324,7 @@ export const Wire = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Wire" }) as any as S.Schema<Wire>;
 
-export type WireList = Wire[];
+export type WireList = ReadonlyArray<Wire>;
 export const WireList = /*@__PURE__*/ S.Array(
   Wire,
 ) as any as S.Schema<WireList>;
@@ -50054,7 +49345,8 @@ export const WireGroupTopologyEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "WireGroupTopologyEndpoint",
 }) as any as S.Schema<WireGroupTopologyEndpoint>;
 
-export type WireGroupTopologyEndpointList = WireGroupTopologyEndpoint[];
+export type WireGroupTopologyEndpointList =
+  ReadonlyArray<WireGroupTopologyEndpoint>;
 export const WireGroupTopologyEndpointList = /*@__PURE__*/ S.Array(
   WireGroupTopologyEndpoint,
 ) as any as S.Schema<WireGroupTopologyEndpointList>;
@@ -50075,8 +49367,7 @@ export const WireGroupTopology = /*@__PURE__*/ S.suspend(() =>
 export type WireGroupPropertiesTypeEnum =
   | "BOX_AND_CROSS"
   | "REDUNDANT"
-  | "WIRE"
-  | (string & {});
+  | "WIRE";
 export const WireGroupPropertiesTypeEnum = /*@__PURE__*/ S.String;
 
 /** The properties of a wire group. These properties determine how a group of redundant wires are created and managed. */
@@ -50190,7 +49481,7 @@ export const GetXpnResourcesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetXpnResourcesProjectsRequest",
 }) as any as S.Schema<GetXpnResourcesProjectsRequest>;
 
-export type XpnResourceIdList = XpnResourceId[];
+export type XpnResourceIdList = ReadonlyArray<XpnResourceId>;
 export const XpnResourceIdList = /*@__PURE__*/ S.Array(
   XpnResourceId,
 ) as any as S.Schema<XpnResourceIdList>;
@@ -50258,7 +49549,7 @@ export const GetZonesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetZonesRequest",
 }) as any as S.Schema<GetZonesRequest>;
 
-export type ZoneStatusEnum = "DOWN" | "UP" | (string & {});
+export type ZoneStatusEnum = "DOWN" | "UP";
 export const ZoneStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
@@ -50315,15 +49606,13 @@ export type PeriodicPartialMaintenanceScheduleSubTypeEnum =
   | "MAINTENANCE_TYPE_CUSTOMER_MAINTENANCE"
   | "MAINTENANCE_TYPE_DISRUPTIVE_UPGRADE"
   | "MAINTENANCE_TYPE_STABLE"
-  | "MAINTENANCE_TYPE_TRANSITION"
-  | (string & {});
+  | "MAINTENANCE_TYPE_TRANSITION";
 export const PeriodicPartialMaintenanceScheduleSubTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type PeriodicPartialMaintenanceScheduleTypeEnum =
   | "MAINTENANCE_TYPE_UNSPECIFIED"
-  | "PRIVATE_ZONE_MAINTENANCE"
-  | (string & {});
+  | "PRIVATE_ZONE_MAINTENANCE";
 export const PeriodicPartialMaintenanceScheduleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -50352,7 +49641,7 @@ export const PeriodicPartialMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PeriodicPartialMaintenanceSchedule>;
 
 export type PeriodicPartialMaintenanceScheduleList =
-  PeriodicPartialMaintenanceSchedule[];
+  ReadonlyArray<PeriodicPartialMaintenanceSchedule>;
 export const PeriodicPartialMaintenanceScheduleList = /*@__PURE__*/ S.Array(
   PeriodicPartialMaintenanceSchedule,
 ) as any as S.Schema<PeriodicPartialMaintenanceScheduleList>;
@@ -53206,8 +52495,7 @@ export type AcceleratorTypeListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const AcceleratorTypeListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface AcceleratorTypeListWarningDataItem {
@@ -53226,7 +52514,7 @@ export const AcceleratorTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceleratorTypeListWarningDataItem>;
 
 export type AcceleratorTypeListWarningDataItemList =
-  AcceleratorTypeListWarningDataItem[];
+  ReadonlyArray<AcceleratorTypeListWarningDataItem>;
 export const AcceleratorTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   AcceleratorTypeListWarningDataItem,
 ) as any as S.Schema<AcceleratorTypeListWarningDataItemList>;
@@ -53342,8 +52630,7 @@ export type AddressListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const AddressListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface AddressListWarningDataItem {
@@ -53361,7 +52648,8 @@ export const AddressListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressListWarningDataItem",
 }) as any as S.Schema<AddressListWarningDataItem>;
 
-export type AddressListWarningDataItemList = AddressListWarningDataItem[];
+export type AddressListWarningDataItemList =
+  ReadonlyArray<AddressListWarningDataItem>;
 export const AddressListWarningDataItemList = /*@__PURE__*/ S.Array(
   AddressListWarningDataItem,
 ) as any as S.Schema<AddressListWarningDataItemList>;
@@ -53548,8 +52836,7 @@ export type AutoscalerListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const AutoscalerListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface AutoscalerListWarningDataItem {
@@ -53567,7 +52854,8 @@ export const AutoscalerListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoscalerListWarningDataItem",
 }) as any as S.Schema<AutoscalerListWarningDataItem>;
 
-export type AutoscalerListWarningDataItemList = AutoscalerListWarningDataItem[];
+export type AutoscalerListWarningDataItemList =
+  ReadonlyArray<AutoscalerListWarningDataItem>;
 export const AutoscalerListWarningDataItemList = /*@__PURE__*/ S.Array(
   AutoscalerListWarningDataItem,
 ) as any as S.Schema<AutoscalerListWarningDataItemList>;
@@ -53761,8 +53049,7 @@ export type BackendBucketListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const BackendBucketListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface BackendBucketListWarningDataItem {
@@ -53781,7 +53068,7 @@ export const BackendBucketListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendBucketListWarningDataItem>;
 
 export type BackendBucketListWarningDataItemList =
-  BackendBucketListWarningDataItem[];
+  ReadonlyArray<BackendBucketListWarningDataItem>;
 export const BackendBucketListWarningDataItemList = /*@__PURE__*/ S.Array(
   BackendBucketListWarningDataItem,
 ) as any as S.Schema<BackendBucketListWarningDataItemList>;
@@ -53894,8 +53181,7 @@ export type BackendServiceListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const BackendServiceListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface BackendServiceListWarningDataItem {
@@ -53914,7 +53200,7 @@ export const BackendServiceListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendServiceListWarningDataItem>;
 
 export type BackendServiceListWarningDataItemList =
-  BackendServiceListWarningDataItem[];
+  ReadonlyArray<BackendServiceListWarningDataItem>;
 export const BackendServiceListWarningDataItemList = /*@__PURE__*/ S.Array(
   BackendServiceListWarningDataItem,
 ) as any as S.Schema<BackendServiceListWarningDataItemList>;
@@ -53968,15 +53254,13 @@ export const BackendServiceList = /*@__PURE__*/ S.suspend(() =>
 export type ListBgpRoutesRoutersAddressFamilyEnum =
   | "IPV4"
   | "IPV6"
-  | "UNSPECIFIED_IP_VERSION"
-  | (string & {});
+  | "UNSPECIFIED_IP_VERSION";
 export const ListBgpRoutesRoutersAddressFamilyEnum = /*@__PURE__*/ S.String;
 
 export type ListBgpRoutesRoutersRouteTypeEnum =
   | "ADVERTISED"
   | "LEARNED"
-  | "UNSPECIFIED_ROUTE_TYPE"
-  | (string & {});
+  | "UNSPECIFIED_ROUTE_TYPE";
 export const ListBgpRoutesRoutersRouteTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListBgpRoutesRoutersRequest {
@@ -54038,8 +53322,7 @@ export const ListBgpRoutesRoutersRequest = /*@__PURE__*/ S.suspend(() =>
 export type BgpRouteOriginEnum =
   | "BGP_ORIGIN_EGP"
   | "BGP_ORIGIN_IGP"
-  | "BGP_ORIGIN_INCOMPLETE"
-  | (string & {});
+  | "BGP_ORIGIN_INCOMPLETE";
 export const BgpRouteOriginEnum = /*@__PURE__*/ S.String;
 
 /** Network Layer Reachability Information (NLRI) for a route. */
@@ -54061,8 +53344,7 @@ export const BgpRouteNetworkLayerReachabilityInformation =
 
 export type BgpRouteAsPathTypeEnum =
   | "AS_PATH_TYPE_SEQUENCE"
-  | "AS_PATH_TYPE_SET"
-  | (string & {});
+  | "AS_PATH_TYPE_SET";
 export const BgpRouteAsPathTypeEnum = /*@__PURE__*/ S.String;
 
 export interface BgpRouteAsPath {
@@ -54081,7 +53363,7 @@ export const BgpRouteAsPath = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BgpRouteAsPath" }) as any as S.Schema<BgpRouteAsPath>;
 
-export type BgpRouteAsPathList = BgpRouteAsPath[];
+export type BgpRouteAsPathList = ReadonlyArray<BgpRouteAsPath>;
 export const BgpRouteAsPathList = /*@__PURE__*/ S.Array(
   BgpRouteAsPath,
 ) as any as S.Schema<BgpRouteAsPathList>;
@@ -54108,7 +53390,7 @@ export const BgpRoute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BgpRoute" }) as any as S.Schema<BgpRoute>;
 
-export type BgpRouteList = BgpRoute[];
+export type BgpRouteList = ReadonlyArray<BgpRoute>;
 export const BgpRouteList = /*@__PURE__*/ S.Array(
   BgpRoute,
 ) as any as S.Schema<BgpRouteList>;
@@ -54142,8 +53424,7 @@ export type RoutersListBgpRoutesWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RoutersListBgpRoutesWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RoutersListBgpRoutesWarningDataItem {
@@ -54162,7 +53443,7 @@ export const RoutersListBgpRoutesWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutersListBgpRoutesWarningDataItem>;
 
 export type RoutersListBgpRoutesWarningDataItemList =
-  RoutersListBgpRoutesWarningDataItem[];
+  ReadonlyArray<RoutersListBgpRoutesWarningDataItem>;
 export const RoutersListBgpRoutesWarningDataItemList = /*@__PURE__*/ S.Array(
   RoutersListBgpRoutesWarningDataItem,
 ) as any as S.Schema<RoutersListBgpRoutesWarningDataItemList>;
@@ -54250,7 +53531,7 @@ export const ListCrossSiteNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCrossSiteNetworksRequest",
 }) as any as S.Schema<ListCrossSiteNetworksRequest>;
 
-export type CrossSiteNetworkList_ = CrossSiteNetwork[];
+export type CrossSiteNetworkList_ = ReadonlyArray<CrossSiteNetwork>;
 export const CrossSiteNetworkList_ = /*@__PURE__*/ S.Array(
   CrossSiteNetwork,
 ) as any as S.Schema<CrossSiteNetworkList_>;
@@ -54284,8 +53565,7 @@ export type CrossSiteNetworkListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const CrossSiteNetworkListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface CrossSiteNetworkListWarningDataItem {
@@ -54304,7 +53584,7 @@ export const CrossSiteNetworkListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CrossSiteNetworkListWarningDataItem>;
 
 export type CrossSiteNetworkListWarningDataItemList =
-  CrossSiteNetworkListWarningDataItem[];
+  ReadonlyArray<CrossSiteNetworkListWarningDataItem>;
 export const CrossSiteNetworkListWarningDataItemList = /*@__PURE__*/ S.Array(
   CrossSiteNetworkListWarningDataItem,
 ) as any as S.Schema<CrossSiteNetworkListWarningDataItemList>;
@@ -54425,8 +53705,7 @@ export type DiskListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const DiskListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface DiskListWarningDataItem {
@@ -54444,7 +53723,8 @@ export const DiskListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskListWarningDataItem",
 }) as any as S.Schema<DiskListWarningDataItem>;
 
-export type DiskListWarningDataItemList = DiskListWarningDataItem[];
+export type DiskListWarningDataItemList =
+  ReadonlyArray<DiskListWarningDataItem>;
 export const DiskListWarningDataItemList = /*@__PURE__*/ S.Array(
   DiskListWarningDataItem,
 ) as any as S.Schema<DiskListWarningDataItemList>;
@@ -54538,8 +53818,7 @@ export type StoragePoolDiskStatusEnum =
   | "FAILED"
   | "READY"
   | "RESTORING"
-  | "UNAVAILABLE"
-  | (string & {});
+  | "UNAVAILABLE";
 export const StoragePoolDiskStatusEnum = /*@__PURE__*/ S.String;
 
 export interface StoragePoolDisk {
@@ -54584,7 +53863,7 @@ export const StoragePoolDisk = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoragePoolDisk",
 }) as any as S.Schema<StoragePoolDisk>;
 
-export type StoragePoolDiskList = StoragePoolDisk[];
+export type StoragePoolDiskList = ReadonlyArray<StoragePoolDisk>;
 export const StoragePoolDiskList = /*@__PURE__*/ S.Array(
   StoragePoolDisk,
 ) as any as S.Schema<StoragePoolDiskList>;
@@ -54618,8 +53897,7 @@ export type StoragePoolListDisksWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const StoragePoolListDisksWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface StoragePoolListDisksWarningDataItem {
@@ -54638,7 +53916,7 @@ export const StoragePoolListDisksWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoragePoolListDisksWarningDataItem>;
 
 export type StoragePoolListDisksWarningDataItemList =
-  StoragePoolListDisksWarningDataItem[];
+  ReadonlyArray<StoragePoolListDisksWarningDataItem>;
 export const StoragePoolListDisksWarningDataItemList = /*@__PURE__*/ S.Array(
   StoragePoolListDisksWarningDataItem,
 ) as any as S.Schema<StoragePoolListDisksWarningDataItemList>;
@@ -54758,8 +54036,7 @@ export type DiskTypeListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const DiskTypeListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface DiskTypeListWarningDataItem {
@@ -54777,7 +54054,8 @@ export const DiskTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskTypeListWarningDataItem",
 }) as any as S.Schema<DiskTypeListWarningDataItem>;
 
-export type DiskTypeListWarningDataItemList = DiskTypeListWarningDataItem[];
+export type DiskTypeListWarningDataItemList =
+  ReadonlyArray<DiskTypeListWarningDataItem>;
 export const DiskTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   DiskTypeListWarningDataItem,
 ) as any as S.Schema<DiskTypeListWarningDataItemList>;
@@ -54912,8 +54190,7 @@ export type InstanceManagedByIgmErrorInstanceActionDetailsActionEnum =
   | "STARTING"
   | "STOPPING"
   | "SUSPENDING"
-  | "VERIFYING"
-  | (string & {});
+  | "VERIFYING";
 export const InstanceManagedByIgmErrorInstanceActionDetailsActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -54958,7 +54235,8 @@ export const InstanceManagedByIgmError = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceManagedByIgmError",
 }) as any as S.Schema<InstanceManagedByIgmError>;
 
-export type InstanceManagedByIgmErrorList = InstanceManagedByIgmError[];
+export type InstanceManagedByIgmErrorList =
+  ReadonlyArray<InstanceManagedByIgmError>;
 export const InstanceManagedByIgmErrorList = /*@__PURE__*/ S.Array(
   InstanceManagedByIgmError,
 ) as any as S.Schema<InstanceManagedByIgmErrorList>;
@@ -55068,7 +54346,7 @@ export const ListExternalVpnGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListExternalVpnGatewaysRequest",
 }) as any as S.Schema<ListExternalVpnGatewaysRequest>;
 
-export type ExternalVpnGatewayList_ = ExternalVpnGateway[];
+export type ExternalVpnGatewayList_ = ReadonlyArray<ExternalVpnGateway>;
 export const ExternalVpnGatewayList_ = /*@__PURE__*/ S.Array(
   ExternalVpnGateway,
 ) as any as S.Schema<ExternalVpnGatewayList_>;
@@ -55102,8 +54380,7 @@ export type ExternalVpnGatewayListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ExternalVpnGatewayListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ExternalVpnGatewayListWarningDataItem {
@@ -55123,7 +54400,7 @@ export const ExternalVpnGatewayListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ExternalVpnGatewayListWarningDataItem>;
 
 export type ExternalVpnGatewayListWarningDataItemList =
-  ExternalVpnGatewayListWarningDataItem[];
+  ReadonlyArray<ExternalVpnGatewayListWarningDataItem>;
 export const ExternalVpnGatewayListWarningDataItemList = /*@__PURE__*/ S.Array(
   ExternalVpnGatewayListWarningDataItem,
 ) as any as S.Schema<ExternalVpnGatewayListWarningDataItemList>;
@@ -55238,8 +54515,7 @@ export type FirewallPolicyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const FirewallPolicyListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface FirewallPolicyListWarningDataItem {
@@ -55258,7 +54534,7 @@ export const FirewallPolicyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallPolicyListWarningDataItem>;
 
 export type FirewallPolicyListWarningDataItemList =
-  FirewallPolicyListWarningDataItem[];
+  ReadonlyArray<FirewallPolicyListWarningDataItem>;
 export const FirewallPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
   FirewallPolicyListWarningDataItem,
 ) as any as S.Schema<FirewallPolicyListWarningDataItemList>;
@@ -55367,8 +54643,7 @@ export type FirewallListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const FirewallListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface FirewallListWarningDataItem {
@@ -55386,7 +54661,8 @@ export const FirewallListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallListWarningDataItem",
 }) as any as S.Schema<FirewallListWarningDataItem>;
 
-export type FirewallListWarningDataItemList = FirewallListWarningDataItem[];
+export type FirewallListWarningDataItemList =
+  ReadonlyArray<FirewallListWarningDataItem>;
 export const FirewallListWarningDataItemList = /*@__PURE__*/ S.Array(
   FirewallListWarningDataItem,
 ) as any as S.Schema<FirewallListWarningDataItemList>;
@@ -55500,8 +54776,7 @@ export type ForwardingRuleListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ForwardingRuleListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ForwardingRuleListWarningDataItem {
@@ -55520,7 +54795,7 @@ export const ForwardingRuleListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ForwardingRuleListWarningDataItem>;
 
 export type ForwardingRuleListWarningDataItemList =
-  ForwardingRuleListWarningDataItem[];
+  ReadonlyArray<ForwardingRuleListWarningDataItem>;
 export const ForwardingRuleListWarningDataItemList = /*@__PURE__*/ S.Array(
   ForwardingRuleListWarningDataItem,
 ) as any as S.Schema<ForwardingRuleListWarningDataItemList>;
@@ -55636,8 +54911,7 @@ export type FutureReservationsListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const FutureReservationsListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -55658,7 +54932,7 @@ export const FutureReservationsListResponseWarningDataItem =
   }) as any as S.Schema<FutureReservationsListResponseWarningDataItem>;
 
 export type FutureReservationsListResponseWarningDataItemList =
-  FutureReservationsListResponseWarningDataItem[];
+  ReadonlyArray<FutureReservationsListResponseWarningDataItem>;
 export const FutureReservationsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     FutureReservationsListResponseWarningDataItem,
@@ -55844,8 +55118,7 @@ export type NetworkEndpointGroupListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkEndpointGroupListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NetworkEndpointGroupListWarningDataItem {
@@ -55865,7 +55138,7 @@ export const NetworkEndpointGroupListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkEndpointGroupListWarningDataItem>;
 
 export type NetworkEndpointGroupListWarningDataItemList =
-  NetworkEndpointGroupListWarningDataItem[];
+  ReadonlyArray<NetworkEndpointGroupListWarningDataItem>;
 export const NetworkEndpointGroupListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEndpointGroupListWarningDataItem,
@@ -55978,8 +55251,7 @@ export type OperationListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const OperationListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface OperationListWarningDataItem {
@@ -55997,7 +55269,8 @@ export const OperationListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListWarningDataItem",
 }) as any as S.Schema<OperationListWarningDataItem>;
 
-export type OperationListWarningDataItemList = OperationListWarningDataItem[];
+export type OperationListWarningDataItemList =
+  ReadonlyArray<OperationListWarningDataItem>;
 export const OperationListWarningDataItemList = /*@__PURE__*/ S.Array(
   OperationListWarningDataItem,
 ) as any as S.Schema<OperationListWarningDataItemList>;
@@ -56143,8 +55416,7 @@ export type PublicDelegatedPrefixListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const PublicDelegatedPrefixListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface PublicDelegatedPrefixListWarningDataItem {
@@ -56164,7 +55436,7 @@ export const PublicDelegatedPrefixListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PublicDelegatedPrefixListWarningDataItem>;
 
 export type PublicDelegatedPrefixListWarningDataItemList =
-  PublicDelegatedPrefixListWarningDataItem[];
+  ReadonlyArray<PublicDelegatedPrefixListWarningDataItem>;
 export const PublicDelegatedPrefixListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PublicDelegatedPrefixListWarningDataItem,
@@ -56249,7 +55521,8 @@ export const ListGlobalVmExtensionPoliciesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListGlobalVmExtensionPoliciesRequest",
 }) as any as S.Schema<ListGlobalVmExtensionPoliciesRequest>;
 
-export type GlobalVmExtensionPolicyList_ = GlobalVmExtensionPolicy[];
+export type GlobalVmExtensionPolicyList_ =
+  ReadonlyArray<GlobalVmExtensionPolicy>;
 export const GlobalVmExtensionPolicyList_ = /*@__PURE__*/ S.Array(
   GlobalVmExtensionPolicy,
 ) as any as S.Schema<GlobalVmExtensionPolicyList_>;
@@ -56283,8 +55556,7 @@ export type GlobalVmExtensionPolicyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const GlobalVmExtensionPolicyListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -56305,7 +55577,7 @@ export const GlobalVmExtensionPolicyListWarningDataItem =
   }) as any as S.Schema<GlobalVmExtensionPolicyListWarningDataItem>;
 
 export type GlobalVmExtensionPolicyListWarningDataItemList =
-  GlobalVmExtensionPolicyListWarningDataItem[];
+  ReadonlyArray<GlobalVmExtensionPolicyListWarningDataItem>;
 export const GlobalVmExtensionPolicyListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     GlobalVmExtensionPolicyListWarningDataItem,
@@ -56424,8 +55696,7 @@ export type HealthCheckListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthCheckListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface HealthCheckListWarningDataItem {
@@ -56444,7 +55715,7 @@ export const HealthCheckListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthCheckListWarningDataItem>;
 
 export type HealthCheckListWarningDataItemList =
-  HealthCheckListWarningDataItem[];
+  ReadonlyArray<HealthCheckListWarningDataItem>;
 export const HealthCheckListWarningDataItemList = /*@__PURE__*/ S.Array(
   HealthCheckListWarningDataItem,
 ) as any as S.Schema<HealthCheckListWarningDataItemList>;
@@ -56534,7 +55805,7 @@ export const ListHostsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListHostsRequest",
 }) as any as S.Schema<ListHostsRequest>;
 
-export type HostList = Host[];
+export type HostList = ReadonlyArray<Host>;
 export const HostList = /*@__PURE__*/ S.Array(
   Host,
 ) as any as S.Schema<HostList>;
@@ -56568,8 +55839,7 @@ export type HostsListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HostsListResponseWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface HostsListResponseWarningDataItem {
@@ -56588,7 +55858,7 @@ export const HostsListResponseWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostsListResponseWarningDataItem>;
 
 export type HostsListResponseWarningDataItemList =
-  HostsListResponseWarningDataItem[];
+  ReadonlyArray<HostsListResponseWarningDataItem>;
 export const HostsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
   HostsListResponseWarningDataItem,
 ) as any as S.Schema<HostsListResponseWarningDataItemList>;
@@ -56676,7 +55946,7 @@ export const ListHttpHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListHttpHealthChecksRequest",
 }) as any as S.Schema<ListHttpHealthChecksRequest>;
 
-export type HttpHealthCheckList_ = HttpHealthCheck[];
+export type HttpHealthCheckList_ = ReadonlyArray<HttpHealthCheck>;
 export const HttpHealthCheckList_ = /*@__PURE__*/ S.Array(
   HttpHealthCheck,
 ) as any as S.Schema<HttpHealthCheckList_>;
@@ -56710,8 +55980,7 @@ export type HttpHealthCheckListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HttpHealthCheckListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface HttpHealthCheckListWarningDataItem {
@@ -56730,7 +55999,7 @@ export const HttpHealthCheckListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpHealthCheckListWarningDataItem>;
 
 export type HttpHealthCheckListWarningDataItemList =
-  HttpHealthCheckListWarningDataItem[];
+  ReadonlyArray<HttpHealthCheckListWarningDataItem>;
 export const HttpHealthCheckListWarningDataItemList = /*@__PURE__*/ S.Array(
   HttpHealthCheckListWarningDataItem,
 ) as any as S.Schema<HttpHealthCheckListWarningDataItemList>;
@@ -56814,7 +56083,7 @@ export const ListHttpsHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListHttpsHealthChecksRequest",
 }) as any as S.Schema<ListHttpsHealthChecksRequest>;
 
-export type HttpsHealthCheckList_ = HttpsHealthCheck[];
+export type HttpsHealthCheckList_ = ReadonlyArray<HttpsHealthCheck>;
 export const HttpsHealthCheckList_ = /*@__PURE__*/ S.Array(
   HttpsHealthCheck,
 ) as any as S.Schema<HttpsHealthCheckList_>;
@@ -56848,8 +56117,7 @@ export type HttpsHealthCheckListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HttpsHealthCheckListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface HttpsHealthCheckListWarningDataItem {
@@ -56868,7 +56136,7 @@ export const HttpsHealthCheckListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpsHealthCheckListWarningDataItem>;
 
 export type HttpsHealthCheckListWarningDataItemList =
-  HttpsHealthCheckListWarningDataItem[];
+  ReadonlyArray<HttpsHealthCheckListWarningDataItem>;
 export const HttpsHealthCheckListWarningDataItemList = /*@__PURE__*/ S.Array(
   HttpsHealthCheckListWarningDataItem,
 ) as any as S.Schema<HttpsHealthCheckListWarningDataItemList>;
@@ -56955,7 +56223,7 @@ export const ListImagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListImagesRequest",
 }) as any as S.Schema<ListImagesRequest>;
 
-export type ImageList_ = Image[];
+export type ImageList_ = ReadonlyArray<Image>;
 export const ImageList_ = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageList_>;
@@ -56989,8 +56257,7 @@ export type ImageListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ImageListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ImageListWarningDataItem {
@@ -57008,7 +56275,8 @@ export const ImageListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageListWarningDataItem",
 }) as any as S.Schema<ImageListWarningDataItem>;
 
-export type ImageListWarningDataItemList = ImageListWarningDataItem[];
+export type ImageListWarningDataItemList =
+  ReadonlyArray<ImageListWarningDataItem>;
 export const ImageListWarningDataItemList = /*@__PURE__*/ S.Array(
   ImageListWarningDataItem,
 ) as any as S.Schema<ImageListWarningDataItemList>;
@@ -57098,7 +56366,7 @@ export const ListInstanceGroupManagerResizeRequestsRequest =
   }) as any as S.Schema<ListInstanceGroupManagerResizeRequestsRequest>;
 
 export type InstanceGroupManagerResizeRequestList =
-  InstanceGroupManagerResizeRequest[];
+  ReadonlyArray<InstanceGroupManagerResizeRequest>;
 export const InstanceGroupManagerResizeRequestList = /*@__PURE__*/ S.Array(
   InstanceGroupManagerResizeRequest,
 ) as any as S.Schema<InstanceGroupManagerResizeRequestList>;
@@ -57132,8 +56400,7 @@ export type InstanceGroupManagerResizeRequestsListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceGroupManagerResizeRequestsListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -57154,7 +56421,7 @@ export const InstanceGroupManagerResizeRequestsListResponseWarningDataItem =
   }) as any as S.Schema<InstanceGroupManagerResizeRequestsListResponseWarningDataItem>;
 
 export type InstanceGroupManagerResizeRequestsListResponseWarningDataItemList =
-  InstanceGroupManagerResizeRequestsListResponseWarningDataItem[];
+  ReadonlyArray<InstanceGroupManagerResizeRequestsListResponseWarningDataItem>;
 export const InstanceGroupManagerResizeRequestsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerResizeRequestsListResponseWarningDataItem,
@@ -57279,8 +56546,7 @@ export type InstanceGroupManagerListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceGroupManagerListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceGroupManagerListWarningDataItem {
@@ -57300,7 +56566,7 @@ export const InstanceGroupManagerListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceGroupManagerListWarningDataItem>;
 
 export type InstanceGroupManagerListWarningDataItemList =
-  InstanceGroupManagerListWarningDataItem[];
+  ReadonlyArray<InstanceGroupManagerListWarningDataItem>;
 export const InstanceGroupManagerListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagerListWarningDataItem,
@@ -57417,8 +56683,7 @@ export type InstanceGroupListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceGroupListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceGroupListWarningDataItem {
@@ -57437,7 +56702,7 @@ export const InstanceGroupListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceGroupListWarningDataItem>;
 
 export type InstanceGroupListWarningDataItemList =
-  InstanceGroupListWarningDataItem[];
+  ReadonlyArray<InstanceGroupListWarningDataItem>;
 export const InstanceGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstanceGroupListWarningDataItem,
 ) as any as S.Schema<InstanceGroupListWarningDataItemList>;
@@ -57491,8 +56756,7 @@ export const InstanceGroupList = /*@__PURE__*/ S.suspend(() =>
 export type ListInstancesViewEnum =
   | "BASIC"
   | "FULL"
-  | "INSTANCE_VIEW_UNSPECIFIED"
-  | (string & {});
+  | "INSTANCE_VIEW_UNSPECIFIED";
 export const ListInstancesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListInstancesRequest {
@@ -57563,8 +56827,7 @@ export type InstanceListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceListWarningDataItem {
@@ -57582,7 +56845,8 @@ export const InstanceListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceListWarningDataItem",
 }) as any as S.Schema<InstanceListWarningDataItem>;
 
-export type InstanceListWarningDataItemList = InstanceListWarningDataItem[];
+export type InstanceListWarningDataItemList =
+  ReadonlyArray<InstanceListWarningDataItem>;
 export const InstanceListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstanceListWarningDataItem,
 ) as any as S.Schema<InstanceListWarningDataItemList>;
@@ -57633,8 +56897,7 @@ export const InstanceList = /*@__PURE__*/ S.suspend(() =>
 
 export type InstanceGroupsListInstancesRequestInstanceStateEnum =
   | "ALL"
-  | "RUNNING"
-  | (string & {});
+  | "RUNNING";
 export const InstanceGroupsListInstancesRequestInstanceStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -57706,8 +56969,7 @@ export type InstanceWithNamedPortsStatusEnum =
   | "STOPPING"
   | "SUSPENDED"
   | "SUSPENDING"
-  | "TERMINATED"
-  | (string & {});
+  | "TERMINATED";
 export const InstanceWithNamedPortsStatusEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceWithNamedPorts {
@@ -57728,7 +56990,7 @@ export const InstanceWithNamedPorts = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceWithNamedPorts",
 }) as any as S.Schema<InstanceWithNamedPorts>;
 
-export type InstanceWithNamedPortsList = InstanceWithNamedPorts[];
+export type InstanceWithNamedPortsList = ReadonlyArray<InstanceWithNamedPorts>;
 export const InstanceWithNamedPortsList = /*@__PURE__*/ S.Array(
   InstanceWithNamedPorts,
 ) as any as S.Schema<InstanceWithNamedPortsList>;
@@ -57762,8 +57024,7 @@ export type InstanceGroupsListInstancesWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceGroupsListInstancesWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -57784,7 +57045,7 @@ export const InstanceGroupsListInstancesWarningDataItem =
   }) as any as S.Schema<InstanceGroupsListInstancesWarningDataItem>;
 
 export type InstanceGroupsListInstancesWarningDataItemList =
-  InstanceGroupsListInstancesWarningDataItem[];
+  ReadonlyArray<InstanceGroupsListInstancesWarningDataItem>;
 export const InstanceGroupsListInstancesWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupsListInstancesWarningDataItem,
@@ -57837,8 +57098,7 @@ export const InstanceGroupsListInstances = /*@__PURE__*/ S.suspend(() =>
 
 export type RegionInstanceGroupsListInstancesRequestInstanceStateEnum =
   | "ALL"
-  | "RUNNING"
-  | (string & {});
+  | "RUNNING";
 export const RegionInstanceGroupsListInstancesRequestInstanceStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -57934,8 +57194,7 @@ export type RegionInstanceGroupsListInstancesWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RegionInstanceGroupsListInstancesWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -57956,7 +57215,7 @@ export const RegionInstanceGroupsListInstancesWarningDataItem =
   }) as any as S.Schema<RegionInstanceGroupsListInstancesWarningDataItem>;
 
 export type RegionInstanceGroupsListInstancesWarningDataItemList =
-  RegionInstanceGroupsListInstancesWarningDataItem[];
+  ReadonlyArray<RegionInstanceGroupsListInstancesWarningDataItem>;
 export const RegionInstanceGroupsListInstancesWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RegionInstanceGroupsListInstancesWarningDataItem,
@@ -58011,8 +57270,7 @@ export const RegionInstanceGroupsListInstances = /*@__PURE__*/ S.suspend(() =>
 export type ListInstanceTemplatesViewEnum =
   | "BASIC"
   | "FULL"
-  | "INSTANCE_VIEW_UNSPECIFIED"
-  | (string & {});
+  | "INSTANCE_VIEW_UNSPECIFIED";
 export const ListInstanceTemplatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListInstanceTemplatesRequest {
@@ -58080,8 +57338,7 @@ export type InstanceTemplateListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceTemplateListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceTemplateListWarningDataItem {
@@ -58100,7 +57357,7 @@ export const InstanceTemplateListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceTemplateListWarningDataItem>;
 
 export type InstanceTemplateListWarningDataItemList =
-  InstanceTemplateListWarningDataItem[];
+  ReadonlyArray<InstanceTemplateListWarningDataItem>;
 export const InstanceTemplateListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstanceTemplateListWarningDataItem,
 ) as any as S.Schema<InstanceTemplateListWarningDataItemList>;
@@ -58187,7 +57444,7 @@ export const ListInstantSnapshotGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInstantSnapshotGroupsRequest",
 }) as any as S.Schema<ListInstantSnapshotGroupsRequest>;
 
-export type InstantSnapshotGroupList = InstantSnapshotGroup[];
+export type InstantSnapshotGroupList = ReadonlyArray<InstantSnapshotGroup>;
 export const InstantSnapshotGroupList = /*@__PURE__*/ S.Array(
   InstantSnapshotGroup,
 ) as any as S.Schema<InstantSnapshotGroupList>;
@@ -58221,8 +57478,7 @@ export type ListInstantSnapshotGroupsWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ListInstantSnapshotGroupsWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ListInstantSnapshotGroupsWarningDataItem {
@@ -58242,7 +57498,7 @@ export const ListInstantSnapshotGroupsWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListInstantSnapshotGroupsWarningDataItem>;
 
 export type ListInstantSnapshotGroupsWarningDataItemList =
-  ListInstantSnapshotGroupsWarningDataItem[];
+  ReadonlyArray<ListInstantSnapshotGroupsWarningDataItem>;
 export const ListInstantSnapshotGroupsWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ListInstantSnapshotGroupsWarningDataItem,
@@ -58364,8 +57620,7 @@ export type InstantSnapshotListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstantSnapshotListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstantSnapshotListWarningDataItem {
@@ -58384,7 +57639,7 @@ export const InstantSnapshotListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstantSnapshotListWarningDataItem>;
 
 export type InstantSnapshotListWarningDataItemList =
-  InstantSnapshotListWarningDataItem[];
+  ReadonlyArray<InstantSnapshotListWarningDataItem>;
 export const InstantSnapshotListWarningDataItemList = /*@__PURE__*/ S.Array(
   InstantSnapshotListWarningDataItem,
 ) as any as S.Schema<InstantSnapshotListWarningDataItemList>;
@@ -58469,7 +57724,8 @@ export const ListInterconnectAttachmentGroupsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListInterconnectAttachmentGroupsRequest",
 }) as any as S.Schema<ListInterconnectAttachmentGroupsRequest>;
 
-export type InterconnectAttachmentGroupList = InterconnectAttachmentGroup[];
+export type InterconnectAttachmentGroupList =
+  ReadonlyArray<InterconnectAttachmentGroup>;
 export const InterconnectAttachmentGroupList = /*@__PURE__*/ S.Array(
   InterconnectAttachmentGroup,
 ) as any as S.Schema<InterconnectAttachmentGroupList>;
@@ -58503,8 +57759,7 @@ export type InterconnectAttachmentGroupsListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InterconnectAttachmentGroupsListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -58525,7 +57780,7 @@ export const InterconnectAttachmentGroupsListResponseWarningDataItem =
   }) as any as S.Schema<InterconnectAttachmentGroupsListResponseWarningDataItem>;
 
 export type InterconnectAttachmentGroupsListResponseWarningDataItemList =
-  InterconnectAttachmentGroupsListResponseWarningDataItem[];
+  ReadonlyArray<InterconnectAttachmentGroupsListResponseWarningDataItem>;
 export const InterconnectAttachmentGroupsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentGroupsListResponseWarningDataItem,
@@ -58649,8 +57904,7 @@ export type InterconnectAttachmentListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InterconnectAttachmentListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InterconnectAttachmentListWarningDataItem {
@@ -58670,7 +57924,7 @@ export const InterconnectAttachmentListWarningDataItem =
   }) as any as S.Schema<InterconnectAttachmentListWarningDataItem>;
 
 export type InterconnectAttachmentListWarningDataItemList =
-  InterconnectAttachmentListWarningDataItem[];
+  ReadonlyArray<InterconnectAttachmentListWarningDataItem>;
 export const InterconnectAttachmentListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectAttachmentListWarningDataItem,
@@ -58755,7 +58009,7 @@ export const ListInterconnectGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInterconnectGroupsRequest",
 }) as any as S.Schema<ListInterconnectGroupsRequest>;
 
-export type InterconnectGroupList = InterconnectGroup[];
+export type InterconnectGroupList = ReadonlyArray<InterconnectGroup>;
 export const InterconnectGroupList = /*@__PURE__*/ S.Array(
   InterconnectGroup,
 ) as any as S.Schema<InterconnectGroupList>;
@@ -58789,8 +58043,7 @@ export type InterconnectGroupsListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InterconnectGroupsListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -58811,7 +58064,7 @@ export const InterconnectGroupsListResponseWarningDataItem =
   }) as any as S.Schema<InterconnectGroupsListResponseWarningDataItem>;
 
 export type InterconnectGroupsListResponseWarningDataItemList =
-  InterconnectGroupsListResponseWarningDataItem[];
+  ReadonlyArray<InterconnectGroupsListResponseWarningDataItem>;
 export const InterconnectGroupsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectGroupsListResponseWarningDataItem,
@@ -58900,7 +58153,7 @@ export const ListInterconnectLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInterconnectLocationsRequest",
 }) as any as S.Schema<ListInterconnectLocationsRequest>;
 
-export type InterconnectLocationList_ = InterconnectLocation[];
+export type InterconnectLocationList_ = ReadonlyArray<InterconnectLocation>;
 export const InterconnectLocationList_ = /*@__PURE__*/ S.Array(
   InterconnectLocation,
 ) as any as S.Schema<InterconnectLocationList_>;
@@ -58934,8 +58187,7 @@ export type InterconnectLocationListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InterconnectLocationListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InterconnectLocationListWarningDataItem {
@@ -58955,7 +58207,7 @@ export const InterconnectLocationListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InterconnectLocationListWarningDataItem>;
 
 export type InterconnectLocationListWarningDataItemList =
-  InterconnectLocationListWarningDataItem[];
+  ReadonlyArray<InterconnectLocationListWarningDataItem>;
 export const InterconnectLocationListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectLocationListWarningDataItem,
@@ -59041,7 +58293,8 @@ export const ListInterconnectRemoteLocationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListInterconnectRemoteLocationsRequest",
 }) as any as S.Schema<ListInterconnectRemoteLocationsRequest>;
 
-export type InterconnectRemoteLocationList_ = InterconnectRemoteLocation[];
+export type InterconnectRemoteLocationList_ =
+  ReadonlyArray<InterconnectRemoteLocation>;
 export const InterconnectRemoteLocationList_ = /*@__PURE__*/ S.Array(
   InterconnectRemoteLocation,
 ) as any as S.Schema<InterconnectRemoteLocationList_>;
@@ -59075,8 +58328,7 @@ export type InterconnectRemoteLocationListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InterconnectRemoteLocationListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -59097,7 +58349,7 @@ export const InterconnectRemoteLocationListWarningDataItem =
   }) as any as S.Schema<InterconnectRemoteLocationListWarningDataItem>;
 
 export type InterconnectRemoteLocationListWarningDataItemList =
-  InterconnectRemoteLocationListWarningDataItem[];
+  ReadonlyArray<InterconnectRemoteLocationListWarningDataItem>;
 export const InterconnectRemoteLocationListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InterconnectRemoteLocationListWarningDataItem,
@@ -59183,7 +58435,7 @@ export const ListInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInterconnectsRequest",
 }) as any as S.Schema<ListInterconnectsRequest>;
 
-export type InterconnectList_ = Interconnect[];
+export type InterconnectList_ = ReadonlyArray<Interconnect>;
 export const InterconnectList_ = /*@__PURE__*/ S.Array(
   Interconnect,
 ) as any as S.Schema<InterconnectList_>;
@@ -59217,8 +58469,7 @@ export type InterconnectListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InterconnectListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InterconnectListWarningDataItem {
@@ -59237,7 +58488,7 @@ export const InterconnectListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterconnectListWarningDataItem>;
 
 export type InterconnectListWarningDataItemList =
-  InterconnectListWarningDataItem[];
+  ReadonlyArray<InterconnectListWarningDataItem>;
 export const InterconnectListWarningDataItemList = /*@__PURE__*/ S.Array(
   InterconnectListWarningDataItem,
 ) as any as S.Schema<InterconnectListWarningDataItemList>;
@@ -59321,7 +58572,7 @@ export const ListLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLicensesRequest",
 }) as any as S.Schema<ListLicensesRequest>;
 
-export type LicenseList = License[];
+export type LicenseList = ReadonlyArray<License>;
 export const LicenseList = /*@__PURE__*/ S.Array(
   License,
 ) as any as S.Schema<LicenseList>;
@@ -59355,8 +58606,7 @@ export type LicensesListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const LicensesListResponseWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface LicensesListResponseWarningDataItem {
@@ -59375,7 +58625,7 @@ export const LicensesListResponseWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LicensesListResponseWarningDataItem>;
 
 export type LicensesListResponseWarningDataItemList =
-  LicensesListResponseWarningDataItem[];
+  ReadonlyArray<LicensesListResponseWarningDataItem>;
 export const LicensesListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
   LicensesListResponseWarningDataItem,
 ) as any as S.Schema<LicensesListResponseWarningDataItemList>;
@@ -59455,7 +58705,7 @@ export const ListMachineImagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMachineImagesRequest",
 }) as any as S.Schema<ListMachineImagesRequest>;
 
-export type MachineImageList_ = MachineImage[];
+export type MachineImageList_ = ReadonlyArray<MachineImage>;
 export const MachineImageList_ = /*@__PURE__*/ S.Array(
   MachineImage,
 ) as any as S.Schema<MachineImageList_>;
@@ -59489,8 +58739,7 @@ export type MachineImageListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const MachineImageListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface MachineImageListWarningDataItem {
@@ -59509,7 +58758,7 @@ export const MachineImageListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineImageListWarningDataItem>;
 
 export type MachineImageListWarningDataItemList =
-  MachineImageListWarningDataItem[];
+  ReadonlyArray<MachineImageListWarningDataItem>;
 export const MachineImageListWarningDataItemList = /*@__PURE__*/ S.Array(
   MachineImageListWarningDataItem,
 ) as any as S.Schema<MachineImageListWarningDataItemList>;
@@ -59625,8 +58874,7 @@ export type MachineTypeListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const MachineTypeListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface MachineTypeListWarningDataItem {
@@ -59645,7 +58893,7 @@ export const MachineTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineTypeListWarningDataItem>;
 
 export type MachineTypeListWarningDataItemList =
-  MachineTypeListWarningDataItem[];
+  ReadonlyArray<MachineTypeListWarningDataItem>;
 export const MachineTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   MachineTypeListWarningDataItem,
 ) as any as S.Schema<MachineTypeListWarningDataItemList>;
@@ -59741,8 +58989,7 @@ export type ManagedInstanceInstanceHealthDetailedHealthStateEnum =
   | "HEALTHY"
   | "TIMEOUT"
   | "UNHEALTHY"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const ManagedInstanceInstanceHealthDetailedHealthStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -59763,13 +59010,14 @@ export const ManagedInstanceInstanceHealth = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedInstanceInstanceHealth",
 }) as any as S.Schema<ManagedInstanceInstanceHealth>;
 
-export type ManagedInstanceInstanceHealthList = ManagedInstanceInstanceHealth[];
+export type ManagedInstanceInstanceHealthList =
+  ReadonlyArray<ManagedInstanceInstanceHealth>;
 export const ManagedInstanceInstanceHealthList = /*@__PURE__*/ S.Array(
   ManagedInstanceInstanceHealth,
 ) as any as S.Schema<ManagedInstanceInstanceHealthList>;
 
 export type ManagedInstancePropertiesFromFlexibilityPolicyProvisioningModelEnum =
-  "FLEX_START" | "RESERVATION_BOUND" | "SPOT" | "STANDARD" | (string & {});
+  "FLEX_START" | "RESERVATION_BOUND" | "SPOT" | "STANDARD";
 export const ManagedInstancePropertiesFromFlexibilityPolicyProvisioningModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -59832,7 +59080,7 @@ export const ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItem =
   }) as any as S.Schema<ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItem>;
 
 export type ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItemList =
-  ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItem[];
+  ReadonlyArray<ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItem>;
 export const ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItemList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceLastAttemptErrorsErrorsItemErrorDetailsItem,
@@ -59863,7 +59111,7 @@ export const ManagedInstanceLastAttemptErrorsErrorsItem =
   }) as any as S.Schema<ManagedInstanceLastAttemptErrorsErrorsItem>;
 
 export type ManagedInstanceLastAttemptErrorsErrorsItemList =
-  ManagedInstanceLastAttemptErrorsErrorsItem[];
+  ReadonlyArray<ManagedInstanceLastAttemptErrorsErrorsItem>;
 export const ManagedInstanceLastAttemptErrorsErrorsItemList =
   /*@__PURE__*/ S.Array(
     ManagedInstanceLastAttemptErrorsErrorsItem,
@@ -59898,8 +59146,7 @@ export type ManagedInstanceTargetStatusEnum =
   | "DELETED"
   | "RUNNING"
   | "STOPPED"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const ManagedInstanceTargetStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ManagedInstanceScheduling {
@@ -59929,8 +59176,7 @@ export type ManagedInstanceInstanceStatusEnum =
   | "STOPPING"
   | "SUSPENDED"
   | "SUSPENDING"
-  | "TERMINATED"
-  | (string & {});
+  | "TERMINATED";
 export const ManagedInstanceInstanceStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ManagedInstanceShutdownDetails {
@@ -59963,8 +59209,7 @@ export type ManagedInstanceCurrentActionEnum =
   | "STARTING"
   | "STOPPING"
   | "SUSPENDING"
-  | "VERIFYING"
-  | (string & {});
+  | "VERIFYING";
 export const ManagedInstanceCurrentActionEnum = /*@__PURE__*/ S.String;
 
 /** A Managed Instance resource. */
@@ -60024,7 +59269,7 @@ export const ManagedInstance = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedInstance",
 }) as any as S.Schema<ManagedInstance>;
 
-export type ManagedInstanceList = ManagedInstance[];
+export type ManagedInstanceList = ReadonlyArray<ManagedInstance>;
 export const ManagedInstanceList = /*@__PURE__*/ S.Array(
   ManagedInstance,
 ) as any as S.Schema<ManagedInstanceList>;
@@ -60140,7 +59385,7 @@ export const ListNamedSetsRoutersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamedSetsRoutersRequest",
 }) as any as S.Schema<ListNamedSetsRoutersRequest>;
 
-export type NamedSetList = NamedSet[];
+export type NamedSetList = ReadonlyArray<NamedSet>;
 export const NamedSetList = /*@__PURE__*/ S.Array(
   NamedSet,
 ) as any as S.Schema<NamedSetList>;
@@ -60174,8 +59419,7 @@ export type RoutersListNamedSetsWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RoutersListNamedSetsWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RoutersListNamedSetsWarningDataItem {
@@ -60194,7 +59438,7 @@ export const RoutersListNamedSetsWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoutersListNamedSetsWarningDataItem>;
 
 export type RoutersListNamedSetsWarningDataItemList =
-  RoutersListNamedSetsWarningDataItem[];
+  ReadonlyArray<RoutersListNamedSetsWarningDataItem>;
 export const RoutersListNamedSetsWarningDataItemList = /*@__PURE__*/ S.Array(
   RoutersListNamedSetsWarningDataItem,
 ) as any as S.Schema<RoutersListNamedSetsWarningDataItemList>;
@@ -60314,8 +59558,7 @@ export type NetworkAttachmentListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkAttachmentListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NetworkAttachmentListWarningDataItem {
@@ -60335,7 +59578,7 @@ export const NetworkAttachmentListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkAttachmentListWarningDataItem>;
 
 export type NetworkAttachmentListWarningDataItemList =
-  NetworkAttachmentListWarningDataItem[];
+  ReadonlyArray<NetworkAttachmentListWarningDataItem>;
 export const NetworkAttachmentListWarningDataItemList = /*@__PURE__*/ S.Array(
   NetworkAttachmentListWarningDataItem,
 ) as any as S.Schema<NetworkAttachmentListWarningDataItemList>;
@@ -60472,8 +59715,7 @@ export type HealthStatusForNetworkEndpointIpv6HealthStateEnum =
   | "DRAINING"
   | "HEALTHY"
   | "UNHEALTHY"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const HealthStatusForNetworkEndpointIpv6HealthStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -60481,8 +59723,7 @@ export type HealthStatusForNetworkEndpointHealthStateEnum =
   | "DRAINING"
   | "HEALTHY"
   | "UNHEALTHY"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const HealthStatusForNetworkEndpointHealthStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -60539,7 +59780,7 @@ export const HealthStatusForNetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthStatusForNetworkEndpoint>;
 
 export type HealthStatusForNetworkEndpointList =
-  HealthStatusForNetworkEndpoint[];
+  ReadonlyArray<HealthStatusForNetworkEndpoint>;
 export const HealthStatusForNetworkEndpointList = /*@__PURE__*/ S.Array(
   HealthStatusForNetworkEndpoint,
 ) as any as S.Schema<HealthStatusForNetworkEndpointList>;
@@ -60560,7 +59801,7 @@ export const NetworkEndpointWithHealthStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkEndpointWithHealthStatus>;
 
 export type NetworkEndpointWithHealthStatusList =
-  NetworkEndpointWithHealthStatus[];
+  ReadonlyArray<NetworkEndpointWithHealthStatus>;
 export const NetworkEndpointWithHealthStatusList = /*@__PURE__*/ S.Array(
   NetworkEndpointWithHealthStatus,
 ) as any as S.Schema<NetworkEndpointWithHealthStatusList>;
@@ -60594,8 +59835,7 @@ export type NetworkEndpointGroupsListNetworkEndpointsWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkEndpointGroupsListNetworkEndpointsWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -60616,7 +59856,7 @@ export const NetworkEndpointGroupsListNetworkEndpointsWarningDataItem =
   }) as any as S.Schema<NetworkEndpointGroupsListNetworkEndpointsWarningDataItem>;
 
 export type NetworkEndpointGroupsListNetworkEndpointsWarningDataItemList =
-  NetworkEndpointGroupsListNetworkEndpointsWarningDataItem[];
+  ReadonlyArray<NetworkEndpointGroupsListNetworkEndpointsWarningDataItem>;
 export const NetworkEndpointGroupsListNetworkEndpointsWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkEndpointGroupsListNetworkEndpointsWarningDataItem,
@@ -60672,8 +59912,7 @@ export const NetworkEndpointGroupsListNetworkEndpoints =
 
 export type NetworkEndpointGroupsListEndpointsRequestHealthStatusEnum =
   | "SHOW"
-  | "SKIP"
-  | (string & {});
+  | "SKIP";
 export const NetworkEndpointGroupsListEndpointsRequestHealthStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -60691,7 +59930,7 @@ export const NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter =
   }) as any as S.Schema<NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter>;
 
 export type NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilterList =
-  NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter[];
+  ReadonlyArray<NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter>;
 export const NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilterList =
   /*@__PURE__*/ S.Array(
     NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter,
@@ -60868,7 +60107,7 @@ export const ListNetworkProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNetworkProfilesRequest",
 }) as any as S.Schema<ListNetworkProfilesRequest>;
 
-export type NetworkProfileList = NetworkProfile[];
+export type NetworkProfileList = ReadonlyArray<NetworkProfile>;
 export const NetworkProfileList = /*@__PURE__*/ S.Array(
   NetworkProfile,
 ) as any as S.Schema<NetworkProfileList>;
@@ -60902,8 +60141,7 @@ export type NetworkProfilesListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkProfilesListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -60924,7 +60162,7 @@ export const NetworkProfilesListResponseWarningDataItem =
   }) as any as S.Schema<NetworkProfilesListResponseWarningDataItem>;
 
 export type NetworkProfilesListResponseWarningDataItemList =
-  NetworkProfilesListResponseWarningDataItem[];
+  ReadonlyArray<NetworkProfilesListResponseWarningDataItem>;
 export const NetworkProfilesListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NetworkProfilesListResponseWarningDataItem,
@@ -61014,7 +60252,7 @@ export const ListNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNetworksRequest",
 }) as any as S.Schema<ListNetworksRequest>;
 
-export type NetworkList_ = Network[];
+export type NetworkList_ = ReadonlyArray<Network>;
 export const NetworkList_ = /*@__PURE__*/ S.Array(
   Network,
 ) as any as S.Schema<NetworkList_>;
@@ -61048,8 +60286,7 @@ export type NetworkListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NetworkListWarningDataItem {
@@ -61067,7 +60304,8 @@ export const NetworkListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkListWarningDataItem",
 }) as any as S.Schema<NetworkListWarningDataItem>;
 
-export type NetworkListWarningDataItemList = NetworkListWarningDataItem[];
+export type NetworkListWarningDataItemList =
+  ReadonlyArray<NetworkListWarningDataItem>;
 export const NetworkListWarningDataItemList = /*@__PURE__*/ S.Array(
   NetworkListWarningDataItem,
 ) as any as S.Schema<NetworkListWarningDataItemList>;
@@ -61181,8 +60419,7 @@ export type NodeGroupListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NodeGroupListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeGroupListWarningDataItem {
@@ -61200,7 +60437,8 @@ export const NodeGroupListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeGroupListWarningDataItem",
 }) as any as S.Schema<NodeGroupListWarningDataItem>;
 
-export type NodeGroupListWarningDataItemList = NodeGroupListWarningDataItem[];
+export type NodeGroupListWarningDataItemList =
+  ReadonlyArray<NodeGroupListWarningDataItem>;
 export const NodeGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeGroupListWarningDataItem,
 ) as any as S.Schema<NodeGroupListWarningDataItemList>;
@@ -61324,7 +60562,8 @@ export const InstanceConsumptionData = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceConsumptionData",
 }) as any as S.Schema<InstanceConsumptionData>;
 
-export type InstanceConsumptionDataList = InstanceConsumptionData[];
+export type InstanceConsumptionDataList =
+  ReadonlyArray<InstanceConsumptionData>;
 export const InstanceConsumptionDataList = /*@__PURE__*/ S.Array(
   InstanceConsumptionData,
 ) as any as S.Schema<InstanceConsumptionDataList>;
@@ -61334,15 +60573,13 @@ export type NodeGroupNodeStatusEnum =
   | "DELETING"
   | "INVALID"
   | "READY"
-  | "REPAIRING"
-  | (string & {});
+  | "REPAIRING";
 export const NodeGroupNodeStatusEnum = /*@__PURE__*/ S.String;
 
 export type NodeGroupNodeCpuOvercommitTypeEnum =
   | "CPU_OVERCOMMIT_TYPE_UNSPECIFIED"
   | "ENABLED"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const NodeGroupNodeCpuOvercommitTypeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeGroupNode {
@@ -61393,7 +60630,7 @@ export const NodeGroupNode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeGroupNode" }) as any as S.Schema<NodeGroupNode>;
 
-export type NodeGroupNodeList = NodeGroupNode[];
+export type NodeGroupNodeList = ReadonlyArray<NodeGroupNode>;
 export const NodeGroupNodeList = /*@__PURE__*/ S.Array(
   NodeGroupNode,
 ) as any as S.Schema<NodeGroupNodeList>;
@@ -61427,8 +60664,7 @@ export type NodeGroupsListNodesWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NodeGroupsListNodesWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeGroupsListNodesWarningDataItem {
@@ -61447,7 +60683,7 @@ export const NodeGroupsListNodesWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeGroupsListNodesWarningDataItem>;
 
 export type NodeGroupsListNodesWarningDataItemList =
-  NodeGroupsListNodesWarningDataItem[];
+  ReadonlyArray<NodeGroupsListNodesWarningDataItem>;
 export const NodeGroupsListNodesWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeGroupsListNodesWarningDataItem,
 ) as any as S.Schema<NodeGroupsListNodesWarningDataItemList>;
@@ -61562,8 +60798,7 @@ export type NodeTemplateListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NodeTemplateListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeTemplateListWarningDataItem {
@@ -61582,7 +60817,7 @@ export const NodeTemplateListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeTemplateListWarningDataItem>;
 
 export type NodeTemplateListWarningDataItemList =
-  NodeTemplateListWarningDataItem[];
+  ReadonlyArray<NodeTemplateListWarningDataItem>;
 export const NodeTemplateListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeTemplateListWarningDataItem,
 ) as any as S.Schema<NodeTemplateListWarningDataItemList>;
@@ -61698,8 +60933,7 @@ export type NodeTypeListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NodeTypeListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NodeTypeListWarningDataItem {
@@ -61717,7 +60951,8 @@ export const NodeTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodeTypeListWarningDataItem",
 }) as any as S.Schema<NodeTypeListWarningDataItem>;
 
-export type NodeTypeListWarningDataItemList = NodeTypeListWarningDataItem[];
+export type NodeTypeListWarningDataItemList =
+  ReadonlyArray<NodeTypeListWarningDataItem>;
 export const NodeTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   NodeTypeListWarningDataItem,
 ) as any as S.Schema<NodeTypeListWarningDataItemList>;
@@ -61799,7 +61034,7 @@ export const ListOrganizationRolloutPlansRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationRolloutPlansRequest",
 }) as any as S.Schema<ListOrganizationRolloutPlansRequest>;
 
-export type RolloutPlanList = RolloutPlan[];
+export type RolloutPlanList = ReadonlyArray<RolloutPlan>;
 export const RolloutPlanList = /*@__PURE__*/ S.Array(
   RolloutPlan,
 ) as any as S.Schema<RolloutPlanList>;
@@ -61833,8 +61068,7 @@ export type RolloutPlansListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RolloutPlansListResponseWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RolloutPlansListResponseWarningDataItem {
@@ -61854,7 +61088,7 @@ export const RolloutPlansListResponseWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RolloutPlansListResponseWarningDataItem>;
 
 export type RolloutPlansListResponseWarningDataItemList =
-  RolloutPlansListResponseWarningDataItem[];
+  ReadonlyArray<RolloutPlansListResponseWarningDataItem>;
 export const RolloutPlansListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RolloutPlansListResponseWarningDataItem,
@@ -61941,7 +61175,7 @@ export const ListOrganizationRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationRolloutsRequest",
 }) as any as S.Schema<ListOrganizationRolloutsRequest>;
 
-export type RolloutList = Rollout[];
+export type RolloutList = ReadonlyArray<Rollout>;
 export const RolloutList = /*@__PURE__*/ S.Array(
   Rollout,
 ) as any as S.Schema<RolloutList>;
@@ -61975,8 +61209,7 @@ export type OrganizationRolloutsListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const OrganizationRolloutsListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -61997,7 +61230,7 @@ export const OrganizationRolloutsListResponseWarningDataItem =
   }) as any as S.Schema<OrganizationRolloutsListResponseWarningDataItem>;
 
 export type OrganizationRolloutsListResponseWarningDataItemList =
-  OrganizationRolloutsListResponseWarningDataItem[];
+  ReadonlyArray<OrganizationRolloutsListResponseWarningDataItem>;
 export const OrganizationRolloutsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     OrganizationRolloutsListResponseWarningDataItem,
@@ -62114,8 +61347,7 @@ export type SecurityPolicyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SecurityPolicyListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SecurityPolicyListWarningDataItem {
@@ -62134,7 +61366,7 @@ export const SecurityPolicyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityPolicyListWarningDataItem>;
 
 export type SecurityPolicyListWarningDataItemList =
-  SecurityPolicyListWarningDataItem[];
+  ReadonlyArray<SecurityPolicyListWarningDataItem>;
 export const SecurityPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
   SecurityPolicyListWarningDataItem,
 ) as any as S.Schema<SecurityPolicyListWarningDataItemList>;
@@ -62246,8 +61478,7 @@ export type PacketMirroringListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const PacketMirroringListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface PacketMirroringListWarningDataItem {
@@ -62266,7 +61497,7 @@ export const PacketMirroringListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PacketMirroringListWarningDataItem>;
 
 export type PacketMirroringListWarningDataItemList =
-  PacketMirroringListWarningDataItem[];
+  ReadonlyArray<PacketMirroringListWarningDataItem>;
 export const PacketMirroringListWarningDataItemList = /*@__PURE__*/ S.Array(
   PacketMirroringListWarningDataItem,
 ) as any as S.Schema<PacketMirroringListWarningDataItemList>;
@@ -62317,10 +61548,7 @@ export const PacketMirroringList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PacketMirroringList",
 }) as any as S.Schema<PacketMirroringList>;
 
-export type ListPeeringRoutesNetworksDirectionEnum =
-  | "INCOMING"
-  | "OUTGOING"
-  | (string & {});
+export type ListPeeringRoutesNetworksDirectionEnum = "INCOMING" | "OUTGOING";
 export const ListPeeringRoutesNetworksDirectionEnum = /*@__PURE__*/ S.String;
 
 export interface ListPeeringRoutesNetworksRequest {
@@ -62373,8 +61601,7 @@ export const ListPeeringRoutesNetworksRequest = /*@__PURE__*/ S.suspend(() =>
 export type ExchangedPeeringRouteTypeEnum =
   | "DYNAMIC_PEERING_ROUTE"
   | "STATIC_PEERING_ROUTE"
-  | "SUBNET_PEERING_ROUTE"
-  | (string & {});
+  | "SUBNET_PEERING_ROUTE";
 export const ExchangedPeeringRouteTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ExchangedPeeringRoute {
@@ -62401,7 +61628,7 @@ export const ExchangedPeeringRoute = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExchangedPeeringRoute",
 }) as any as S.Schema<ExchangedPeeringRoute>;
 
-export type ExchangedPeeringRouteList = ExchangedPeeringRoute[];
+export type ExchangedPeeringRouteList = ReadonlyArray<ExchangedPeeringRoute>;
 export const ExchangedPeeringRouteList = /*@__PURE__*/ S.Array(
   ExchangedPeeringRoute,
 ) as any as S.Schema<ExchangedPeeringRouteList>;
@@ -62435,8 +61662,7 @@ export type ExchangedPeeringRoutesListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ExchangedPeeringRoutesListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ExchangedPeeringRoutesListWarningDataItem {
@@ -62456,7 +61682,7 @@ export const ExchangedPeeringRoutesListWarningDataItem =
   }) as any as S.Schema<ExchangedPeeringRoutesListWarningDataItem>;
 
 export type ExchangedPeeringRoutesListWarningDataItemList =
-  ExchangedPeeringRoutesListWarningDataItem[];
+  ReadonlyArray<ExchangedPeeringRoutesListWarningDataItem>;
 export const ExchangedPeeringRoutesListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ExchangedPeeringRoutesListWarningDataItem,
@@ -62576,8 +61802,7 @@ export type InstanceGroupManagersListPerInstanceConfigsRespWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceGroupManagersListPerInstanceConfigsRespWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -62599,7 +61824,7 @@ export const InstanceGroupManagersListPerInstanceConfigsRespWarningDataItem =
   }) as any as S.Schema<InstanceGroupManagersListPerInstanceConfigsRespWarningDataItem>;
 
 export type InstanceGroupManagersListPerInstanceConfigsRespWarningDataItemList =
-  InstanceGroupManagersListPerInstanceConfigsRespWarningDataItem[];
+  ReadonlyArray<InstanceGroupManagersListPerInstanceConfigsRespWarningDataItem>;
 export const InstanceGroupManagersListPerInstanceConfigsRespWarningDataItemList =
   /*@__PURE__*/ S.Array(
     InstanceGroupManagersListPerInstanceConfigsRespWarningDataItem,
@@ -62718,8 +61943,7 @@ export type RegionInstanceGroupManagersListInstanceConfigsRespWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RegionInstanceGroupManagersListInstanceConfigsRespWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -62741,7 +61965,7 @@ export const RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItem =
   }) as any as S.Schema<RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItem>;
 
 export type RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItemList =
-  RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItem[];
+  ReadonlyArray<RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItem>;
 export const RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RegionInstanceGroupManagersListInstanceConfigsRespWarningDataItem,
@@ -62841,7 +62065,8 @@ export const WafExpressionSetExpression = /*@__PURE__*/ S.suspend(() =>
   identifier: "WafExpressionSetExpression",
 }) as any as S.Schema<WafExpressionSetExpression>;
 
-export type WafExpressionSetExpressionList = WafExpressionSetExpression[];
+export type WafExpressionSetExpressionList =
+  ReadonlyArray<WafExpressionSetExpression>;
 export const WafExpressionSetExpressionList = /*@__PURE__*/ S.Array(
   WafExpressionSetExpression,
 ) as any as S.Schema<WafExpressionSetExpressionList>;
@@ -62864,7 +62089,7 @@ export const WafExpressionSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "WafExpressionSet",
 }) as any as S.Schema<WafExpressionSet>;
 
-export type WafExpressionSetList = WafExpressionSet[];
+export type WafExpressionSetList = ReadonlyArray<WafExpressionSet>;
 export const WafExpressionSetList = /*@__PURE__*/ S.Array(
   WafExpressionSet,
 ) as any as S.Schema<WafExpressionSetList>;
@@ -62971,7 +62196,7 @@ export const ListPreviewFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPreviewFeaturesRequest",
 }) as any as S.Schema<ListPreviewFeaturesRequest>;
 
-export type PreviewFeatureList_ = PreviewFeature[];
+export type PreviewFeatureList_ = ReadonlyArray<PreviewFeature>;
 export const PreviewFeatureList_ = /*@__PURE__*/ S.Array(
   PreviewFeature,
 ) as any as S.Schema<PreviewFeatureList_>;
@@ -63005,8 +62230,7 @@ export type PreviewFeatureListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const PreviewFeatureListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface PreviewFeatureListWarningDataItem {
@@ -63025,7 +62249,7 @@ export const PreviewFeatureListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreviewFeatureListWarningDataItem>;
 
 export type PreviewFeatureListWarningDataItemList =
-  PreviewFeatureListWarningDataItem[];
+  ReadonlyArray<PreviewFeatureListWarningDataItem>;
 export const PreviewFeatureListWarningDataItemList = /*@__PURE__*/ S.Array(
   PreviewFeatureListWarningDataItem,
 ) as any as S.Schema<PreviewFeatureListWarningDataItemList>;
@@ -63110,7 +62334,7 @@ export const ListPublicAdvertisedPrefixesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPublicAdvertisedPrefixesRequest",
 }) as any as S.Schema<ListPublicAdvertisedPrefixesRequest>;
 
-export type PublicAdvertisedPrefixList_ = PublicAdvertisedPrefix[];
+export type PublicAdvertisedPrefixList_ = ReadonlyArray<PublicAdvertisedPrefix>;
 export const PublicAdvertisedPrefixList_ = /*@__PURE__*/ S.Array(
   PublicAdvertisedPrefix,
 ) as any as S.Schema<PublicAdvertisedPrefixList_>;
@@ -63144,8 +62368,7 @@ export type PublicAdvertisedPrefixListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const PublicAdvertisedPrefixListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface PublicAdvertisedPrefixListWarningDataItem {
@@ -63165,7 +62388,7 @@ export const PublicAdvertisedPrefixListWarningDataItem =
   }) as any as S.Schema<PublicAdvertisedPrefixListWarningDataItem>;
 
 export type PublicAdvertisedPrefixListWarningDataItemList =
-  PublicAdvertisedPrefixListWarningDataItem[];
+  ReadonlyArray<PublicAdvertisedPrefixListWarningDataItem>;
 export const PublicAdvertisedPrefixListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     PublicAdvertisedPrefixListWarningDataItem,
@@ -63311,7 +62534,7 @@ export const Reference = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reference" }) as any as S.Schema<Reference>;
 
-export type ReferenceList = Reference[];
+export type ReferenceList = ReadonlyArray<Reference>;
 export const ReferenceList = /*@__PURE__*/ S.Array(
   Reference,
 ) as any as S.Schema<ReferenceList>;
@@ -63345,8 +62568,7 @@ export type InstanceListReferrersWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const InstanceListReferrersWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceListReferrersWarningDataItem {
@@ -63366,7 +62588,7 @@ export const InstanceListReferrersWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstanceListReferrersWarningDataItem>;
 
 export type InstanceListReferrersWarningDataItemList =
-  InstanceListReferrersWarningDataItem[];
+  ReadonlyArray<InstanceListReferrersWarningDataItem>;
 export const InstanceListReferrersWarningDataItemList = /*@__PURE__*/ S.Array(
   InstanceListReferrersWarningDataItem,
 ) as any as S.Schema<InstanceListReferrersWarningDataItemList>;
@@ -63482,8 +62704,7 @@ export type RegionAutoscalerListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RegionAutoscalerListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RegionAutoscalerListWarningDataItem {
@@ -63502,7 +62723,7 @@ export const RegionAutoscalerListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionAutoscalerListWarningDataItem>;
 
 export type RegionAutoscalerListWarningDataItemList =
-  RegionAutoscalerListWarningDataItem[];
+  ReadonlyArray<RegionAutoscalerListWarningDataItem>;
 export const RegionAutoscalerListWarningDataItemList = /*@__PURE__*/ S.Array(
   RegionAutoscalerListWarningDataItem,
 ) as any as S.Schema<RegionAutoscalerListWarningDataItemList>;
@@ -63690,8 +62911,7 @@ export type CommitmentListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const CommitmentListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface CommitmentListWarningDataItem {
@@ -63709,7 +62929,8 @@ export const CommitmentListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommitmentListWarningDataItem",
 }) as any as S.Schema<CommitmentListWarningDataItem>;
 
-export type CommitmentListWarningDataItemList = CommitmentListWarningDataItem[];
+export type CommitmentListWarningDataItemList =
+  ReadonlyArray<CommitmentListWarningDataItem>;
 export const CommitmentListWarningDataItemList = /*@__PURE__*/ S.Array(
   CommitmentListWarningDataItem,
 ) as any as S.Schema<CommitmentListWarningDataItemList>;
@@ -63824,8 +63045,7 @@ export type CompositeHealthCheckListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const CompositeHealthCheckListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface CompositeHealthCheckListWarningDataItem {
@@ -63845,7 +63065,7 @@ export const CompositeHealthCheckListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CompositeHealthCheckListWarningDataItem>;
 
 export type CompositeHealthCheckListWarningDataItemList =
-  CompositeHealthCheckListWarningDataItem[];
+  ReadonlyArray<CompositeHealthCheckListWarningDataItem>;
 export const CompositeHealthCheckListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     CompositeHealthCheckListWarningDataItem,
@@ -63997,8 +63217,7 @@ export type RegionDiskTypeListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RegionDiskTypeListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RegionDiskTypeListWarningDataItem {
@@ -64017,7 +63236,7 @@ export const RegionDiskTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionDiskTypeListWarningDataItem>;
 
 export type RegionDiskTypeListWarningDataItemList =
-  RegionDiskTypeListWarningDataItem[];
+  ReadonlyArray<RegionDiskTypeListWarningDataItem>;
 export const RegionDiskTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   RegionDiskTypeListWarningDataItem,
 ) as any as S.Schema<RegionDiskTypeListWarningDataItemList>;
@@ -64133,8 +63352,7 @@ export type HealthAggregationPolicyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthAggregationPolicyListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -64155,7 +63373,7 @@ export const HealthAggregationPolicyListWarningDataItem =
   }) as any as S.Schema<HealthAggregationPolicyListWarningDataItem>;
 
 export type HealthAggregationPolicyListWarningDataItemList =
-  HealthAggregationPolicyListWarningDataItem[];
+  ReadonlyArray<HealthAggregationPolicyListWarningDataItem>;
 export const HealthAggregationPolicyListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     HealthAggregationPolicyListWarningDataItem,
@@ -64308,8 +63526,7 @@ export type HealthCheckServicesListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthCheckServicesListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface HealthCheckServicesListWarningDataItem {
@@ -64329,7 +63546,7 @@ export const HealthCheckServicesListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthCheckServicesListWarningDataItem>;
 
 export type HealthCheckServicesListWarningDataItemList =
-  HealthCheckServicesListWarningDataItem[];
+  ReadonlyArray<HealthCheckServicesListWarningDataItem>;
 export const HealthCheckServicesListWarningDataItemList = /*@__PURE__*/ S.Array(
   HealthCheckServicesListWarningDataItem,
 ) as any as S.Schema<HealthCheckServicesListWarningDataItemList>;
@@ -64444,8 +63661,7 @@ export type HealthSourceListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const HealthSourceListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface HealthSourceListWarningDataItem {
@@ -64464,7 +63680,7 @@ export const HealthSourceListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthSourceListWarningDataItem>;
 
 export type HealthSourceListWarningDataItemList =
-  HealthSourceListWarningDataItem[];
+  ReadonlyArray<HealthSourceListWarningDataItem>;
 export const HealthSourceListWarningDataItemList = /*@__PURE__*/ S.Array(
   HealthSourceListWarningDataItem,
 ) as any as S.Schema<HealthSourceListWarningDataItemList>;
@@ -64583,8 +63799,7 @@ export type RegionInstanceGroupManagerResizeRequestsListResponseWarningCodeEnum 
     | "SCHEMA_VALIDATION_IGNORED"
     | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
     | "UNDECLARED_PROPERTIES"
-    | "UNREACHABLE"
-    | (string & {});
+    | "UNREACHABLE";
 export const RegionInstanceGroupManagerResizeRequestsListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -64606,7 +63821,7 @@ export const RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItem
   }) as any as S.Schema<RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItem>;
 
 export type RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItemList =
-  RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItem[];
+  ReadonlyArray<RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItem>;
 export const RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RegionInstanceGroupManagerResizeRequestsListResponseWarningDataItem,
@@ -64736,8 +63951,7 @@ export type RegionInstanceGroupManagerListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RegionInstanceGroupManagerListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -64758,7 +63972,7 @@ export const RegionInstanceGroupManagerListWarningDataItem =
   }) as any as S.Schema<RegionInstanceGroupManagerListWarningDataItem>;
 
 export type RegionInstanceGroupManagerListWarningDataItemList =
-  RegionInstanceGroupManagerListWarningDataItem[];
+  ReadonlyArray<RegionInstanceGroupManagerListWarningDataItem>;
 export const RegionInstanceGroupManagerListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RegionInstanceGroupManagerListWarningDataItem,
@@ -64876,8 +64090,7 @@ export type RegionInstanceGroupListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RegionInstanceGroupListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RegionInstanceGroupListWarningDataItem {
@@ -64897,7 +64110,7 @@ export const RegionInstanceGroupListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegionInstanceGroupListWarningDataItem>;
 
 export type RegionInstanceGroupListWarningDataItemList =
-  RegionInstanceGroupListWarningDataItem[];
+  ReadonlyArray<RegionInstanceGroupListWarningDataItem>;
 export const RegionInstanceGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
   RegionInstanceGroupListWarningDataItem,
 ) as any as S.Schema<RegionInstanceGroupListWarningDataItemList>;
@@ -64951,8 +64164,7 @@ export const RegionInstanceGroupList = /*@__PURE__*/ S.suspend(() =>
 export type ListRegionInstanceTemplatesViewEnum =
   | "BASIC"
   | "FULL"
-  | "INSTANCE_VIEW_UNSPECIFIED"
-  | (string & {});
+  | "INSTANCE_VIEW_UNSPECIFIED";
 export const ListRegionInstanceTemplatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListRegionInstanceTemplatesRequest {
@@ -65106,7 +64318,7 @@ export const ListRegionMultiMigMembersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRegionMultiMigMembersRequest",
 }) as any as S.Schema<ListRegionMultiMigMembersRequest>;
 
-export type MultiMigMemberList_ = MultiMigMember[];
+export type MultiMigMemberList_ = ReadonlyArray<MultiMigMember>;
 export const MultiMigMemberList_ = /*@__PURE__*/ S.Array(
   MultiMigMember,
 ) as any as S.Schema<MultiMigMemberList_>;
@@ -65140,8 +64352,7 @@ export type MultiMigMemberListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const MultiMigMemberListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface MultiMigMemberListWarningDataItem {
@@ -65160,7 +64371,7 @@ export const MultiMigMemberListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MultiMigMemberListWarningDataItem>;
 
 export type MultiMigMemberListWarningDataItemList =
-  MultiMigMemberListWarningDataItem[];
+  ReadonlyArray<MultiMigMemberListWarningDataItem>;
 export const MultiMigMemberListWarningDataItemList = /*@__PURE__*/ S.Array(
   MultiMigMemberListWarningDataItem,
 ) as any as S.Schema<MultiMigMemberListWarningDataItemList>;
@@ -65246,7 +64457,7 @@ export const ListRegionMultiMigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRegionMultiMigsRequest",
 }) as any as S.Schema<ListRegionMultiMigsRequest>;
 
-export type MultiMigList = MultiMig[];
+export type MultiMigList = ReadonlyArray<MultiMig>;
 export const MultiMigList = /*@__PURE__*/ S.Array(
   MultiMig,
 ) as any as S.Schema<MultiMigList>;
@@ -65280,8 +64491,7 @@ export type MultiMigsListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const MultiMigsListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface MultiMigsListWarningDataItem {
@@ -65299,7 +64509,8 @@ export const MultiMigsListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiMigsListWarningDataItem",
 }) as any as S.Schema<MultiMigsListWarningDataItem>;
 
-export type MultiMigsListWarningDataItemList = MultiMigsListWarningDataItem[];
+export type MultiMigsListWarningDataItemList =
+  ReadonlyArray<MultiMigsListWarningDataItem>;
 export const MultiMigsListWarningDataItemList = /*@__PURE__*/ S.Array(
   MultiMigsListWarningDataItem,
 ) as any as S.Schema<MultiMigsListWarningDataItemList>;
@@ -65486,8 +64697,7 @@ export type NetworkPolicyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NetworkPolicyListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NetworkPolicyListWarningDataItem {
@@ -65506,7 +64716,7 @@ export const NetworkPolicyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkPolicyListWarningDataItem>;
 
 export type NetworkPolicyListWarningDataItemList =
-  NetworkPolicyListWarningDataItem[];
+  ReadonlyArray<NetworkPolicyListWarningDataItem>;
 export const NetworkPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
   NetworkPolicyListWarningDataItem,
 ) as any as S.Schema<NetworkPolicyListWarningDataItemList>;
@@ -65619,8 +64829,7 @@ export type NotificationEndpointListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const NotificationEndpointListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface NotificationEndpointListWarningDataItem {
@@ -65640,7 +64849,7 @@ export const NotificationEndpointListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NotificationEndpointListWarningDataItem>;
 
 export type NotificationEndpointListWarningDataItemList =
-  NotificationEndpointListWarningDataItem[];
+  ReadonlyArray<NotificationEndpointListWarningDataItem>;
 export const NotificationEndpointListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     NotificationEndpointListWarningDataItem,
@@ -65760,7 +64969,7 @@ export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRegionsRequest",
 }) as any as S.Schema<ListRegionsRequest>;
 
-export type RegionList_ = Region[];
+export type RegionList_ = ReadonlyArray<Region>;
 export const RegionList_ = /*@__PURE__*/ S.Array(
   Region,
 ) as any as S.Schema<RegionList_>;
@@ -65794,8 +65003,7 @@ export type RegionListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RegionListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RegionListWarningDataItem {
@@ -65813,7 +65021,8 @@ export const RegionListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionListWarningDataItem",
 }) as any as S.Schema<RegionListWarningDataItem>;
 
-export type RegionListWarningDataItemList = RegionListWarningDataItem[];
+export type RegionListWarningDataItemList =
+  ReadonlyArray<RegionListWarningDataItem>;
 export const RegionListWarningDataItemList = /*@__PURE__*/ S.Array(
   RegionListWarningDataItem,
 ) as any as S.Schema<RegionListWarningDataItemList>;
@@ -65963,8 +65172,7 @@ export type SnapshotListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SnapshotListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SnapshotListWarningDataItem {
@@ -65982,7 +65190,8 @@ export const SnapshotListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnapshotListWarningDataItem",
 }) as any as S.Schema<SnapshotListWarningDataItem>;
 
-export type SnapshotListWarningDataItemList = SnapshotListWarningDataItem[];
+export type SnapshotListWarningDataItemList =
+  ReadonlyArray<SnapshotListWarningDataItem>;
 export const SnapshotListWarningDataItemList = /*@__PURE__*/ S.Array(
   SnapshotListWarningDataItem,
 ) as any as S.Schema<SnapshotListWarningDataItemList>;
@@ -66096,8 +65305,7 @@ export type SslCertificateListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SslCertificateListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SslCertificateListWarningDataItem {
@@ -66116,7 +65324,7 @@ export const SslCertificateListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SslCertificateListWarningDataItem>;
 
 export type SslCertificateListWarningDataItemList =
-  SslCertificateListWarningDataItem[];
+  ReadonlyArray<SslCertificateListWarningDataItem>;
 export const SslCertificateListWarningDataItemList = /*@__PURE__*/ S.Array(
   SslCertificateListWarningDataItem,
 ) as any as S.Schema<SslCertificateListWarningDataItemList>;
@@ -66232,8 +65440,7 @@ export type SslPoliciesListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SslPoliciesListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SslPoliciesListWarningDataItem {
@@ -66252,7 +65459,7 @@ export const SslPoliciesListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SslPoliciesListWarningDataItem>;
 
 export type SslPoliciesListWarningDataItemList =
-  SslPoliciesListWarningDataItem[];
+  ReadonlyArray<SslPoliciesListWarningDataItem>;
 export const SslPoliciesListWarningDataItemList = /*@__PURE__*/ S.Array(
   SslPoliciesListWarningDataItem,
 ) as any as S.Schema<SslPoliciesListWarningDataItemList>;
@@ -66367,8 +65574,7 @@ export type TargetHttpProxyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetHttpProxyListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetHttpProxyListWarningDataItem {
@@ -66387,7 +65593,7 @@ export const TargetHttpProxyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetHttpProxyListWarningDataItem>;
 
 export type TargetHttpProxyListWarningDataItemList =
-  TargetHttpProxyListWarningDataItem[];
+  ReadonlyArray<TargetHttpProxyListWarningDataItem>;
 export const TargetHttpProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetHttpProxyListWarningDataItem,
 ) as any as S.Schema<TargetHttpProxyListWarningDataItemList>;
@@ -66503,8 +65709,7 @@ export type TargetHttpsProxyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetHttpsProxyListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetHttpsProxyListWarningDataItem {
@@ -66523,7 +65728,7 @@ export const TargetHttpsProxyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetHttpsProxyListWarningDataItem>;
 
 export type TargetHttpsProxyListWarningDataItemList =
-  TargetHttpsProxyListWarningDataItem[];
+  ReadonlyArray<TargetHttpsProxyListWarningDataItem>;
 export const TargetHttpsProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetHttpsProxyListWarningDataItem,
 ) as any as S.Schema<TargetHttpsProxyListWarningDataItemList>;
@@ -66639,8 +65844,7 @@ export type TargetTcpProxyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetTcpProxyListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetTcpProxyListWarningDataItem {
@@ -66659,7 +65863,7 @@ export const TargetTcpProxyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetTcpProxyListWarningDataItem>;
 
 export type TargetTcpProxyListWarningDataItemList =
-  TargetTcpProxyListWarningDataItem[];
+  ReadonlyArray<TargetTcpProxyListWarningDataItem>;
 export const TargetTcpProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetTcpProxyListWarningDataItem,
 ) as any as S.Schema<TargetTcpProxyListWarningDataItemList>;
@@ -66775,8 +65979,7 @@ export type UrlMapListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const UrlMapListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface UrlMapListWarningDataItem {
@@ -66794,7 +65997,8 @@ export const UrlMapListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UrlMapListWarningDataItem",
 }) as any as S.Schema<UrlMapListWarningDataItem>;
 
-export type UrlMapListWarningDataItemList = UrlMapListWarningDataItem[];
+export type UrlMapListWarningDataItemList =
+  ReadonlyArray<UrlMapListWarningDataItem>;
 export const UrlMapListWarningDataItemList = /*@__PURE__*/ S.Array(
   UrlMapListWarningDataItem,
 ) as any as S.Schema<UrlMapListWarningDataItemList>;
@@ -66879,7 +66083,7 @@ export const ListRegionZonesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRegionZonesRequest",
 }) as any as S.Schema<ListRegionZonesRequest>;
 
-export type ZoneList_ = Zone[];
+export type ZoneList_ = ReadonlyArray<Zone>;
 export const ZoneList_ = /*@__PURE__*/ S.Array(
   Zone,
 ) as any as S.Schema<ZoneList_>;
@@ -66913,8 +66117,7 @@ export type ZoneListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ZoneListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ZoneListWarningDataItem {
@@ -66932,7 +66135,8 @@ export const ZoneListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneListWarningDataItem",
 }) as any as S.Schema<ZoneListWarningDataItem>;
 
-export type ZoneListWarningDataItemList = ZoneListWarningDataItem[];
+export type ZoneListWarningDataItemList =
+  ReadonlyArray<ZoneListWarningDataItem>;
 export const ZoneListWarningDataItemList = /*@__PURE__*/ S.Array(
   ZoneListWarningDataItem,
 ) as any as S.Schema<ZoneListWarningDataItemList>;
@@ -67014,7 +66218,7 @@ export const ListReliabilityRisksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReliabilityRisksRequest",
 }) as any as S.Schema<ListReliabilityRisksRequest>;
 
-export type ReliabilityRiskList = ReliabilityRisk[];
+export type ReliabilityRiskList = ReadonlyArray<ReliabilityRisk>;
 export const ReliabilityRiskList = /*@__PURE__*/ S.Array(
   ReliabilityRisk,
 ) as any as S.Schema<ReliabilityRiskList>;
@@ -67048,8 +66252,7 @@ export type ReliabilityRisksListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ReliabilityRisksListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -67070,7 +66273,7 @@ export const ReliabilityRisksListResponseWarningDataItem =
   }) as any as S.Schema<ReliabilityRisksListResponseWarningDataItem>;
 
 export type ReliabilityRisksListResponseWarningDataItemList =
-  ReliabilityRisksListResponseWarningDataItem[];
+  ReadonlyArray<ReliabilityRisksListResponseWarningDataItem>;
 export const ReliabilityRisksListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ReliabilityRisksListResponseWarningDataItem,
@@ -67163,7 +66366,7 @@ export const ListReservationBlocksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReservationBlocksRequest",
 }) as any as S.Schema<ListReservationBlocksRequest>;
 
-export type ReservationBlockList = ReservationBlock[];
+export type ReservationBlockList = ReadonlyArray<ReservationBlock>;
 export const ReservationBlockList = /*@__PURE__*/ S.Array(
   ReservationBlock,
 ) as any as S.Schema<ReservationBlockList>;
@@ -67197,8 +66400,7 @@ export type ReservationBlocksListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ReservationBlocksListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -67219,7 +66421,7 @@ export const ReservationBlocksListResponseWarningDataItem =
   }) as any as S.Schema<ReservationBlocksListResponseWarningDataItem>;
 
 export type ReservationBlocksListResponseWarningDataItemList =
-  ReservationBlocksListResponseWarningDataItem[];
+  ReadonlyArray<ReservationBlocksListResponseWarningDataItem>;
 export const ReservationBlocksListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ReservationBlocksListResponseWarningDataItem,
@@ -67337,8 +66539,7 @@ export type ReservationListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ReservationListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ReservationListWarningDataItem {
@@ -67357,7 +66558,7 @@ export const ReservationListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationListWarningDataItem>;
 
 export type ReservationListWarningDataItemList =
-  ReservationListWarningDataItem[];
+  ReadonlyArray<ReservationListWarningDataItem>;
 export const ReservationListWarningDataItemList = /*@__PURE__*/ S.Array(
   ReservationListWarningDataItem,
 ) as any as S.Schema<ReservationListWarningDataItemList>;
@@ -67446,7 +66647,7 @@ export const ListReservationSlotsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReservationSlotsRequest",
 }) as any as S.Schema<ListReservationSlotsRequest>;
 
-export type ReservationSlotList = ReservationSlot[];
+export type ReservationSlotList = ReadonlyArray<ReservationSlot>;
 export const ReservationSlotList = /*@__PURE__*/ S.Array(
   ReservationSlot,
 ) as any as S.Schema<ReservationSlotList>;
@@ -67480,8 +66681,7 @@ export type ReservationSlotsListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ReservationSlotsListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -67502,7 +66702,7 @@ export const ReservationSlotsListResponseWarningDataItem =
   }) as any as S.Schema<ReservationSlotsListResponseWarningDataItem>;
 
 export type ReservationSlotsListResponseWarningDataItemList =
-  ReservationSlotsListResponseWarningDataItem[];
+  ReadonlyArray<ReservationSlotsListResponseWarningDataItem>;
 export const ReservationSlotsListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ReservationSlotsListResponseWarningDataItem,
@@ -67593,7 +66793,7 @@ export const ListReservationSubBlocksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReservationSubBlocksRequest",
 }) as any as S.Schema<ListReservationSubBlocksRequest>;
 
-export type ReservationSubBlockList = ReservationSubBlock[];
+export type ReservationSubBlockList = ReadonlyArray<ReservationSubBlock>;
 export const ReservationSubBlockList = /*@__PURE__*/ S.Array(
   ReservationSubBlock,
 ) as any as S.Schema<ReservationSubBlockList>;
@@ -67627,8 +66827,7 @@ export type ReservationSubBlocksListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ReservationSubBlocksListResponseWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -67649,7 +66848,7 @@ export const ReservationSubBlocksListResponseWarningDataItem =
   }) as any as S.Schema<ReservationSubBlocksListResponseWarningDataItem>;
 
 export type ReservationSubBlocksListResponseWarningDataItemList =
-  ReservationSubBlocksListResponseWarningDataItem[];
+  ReadonlyArray<ReservationSubBlocksListResponseWarningDataItem>;
 export const ReservationSubBlocksListResponseWarningDataItemList =
   /*@__PURE__*/ S.Array(
     ReservationSubBlocksListResponseWarningDataItem,
@@ -67767,8 +66966,7 @@ export type ResourcePolicyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ResourcePolicyListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ResourcePolicyListWarningDataItem {
@@ -67787,7 +66985,7 @@ export const ResourcePolicyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcePolicyListWarningDataItem>;
 
 export type ResourcePolicyListWarningDataItemList =
-  ResourcePolicyListWarningDataItem[];
+  ReadonlyArray<ResourcePolicyListWarningDataItem>;
 export const ResourcePolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
   ResourcePolicyListWarningDataItem,
 ) as any as S.Schema<ResourcePolicyListWarningDataItemList>;
@@ -67934,8 +67132,7 @@ export type RolloutsListResponseWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RolloutsListResponseWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RolloutsListResponseWarningDataItem {
@@ -67954,7 +67151,7 @@ export const RolloutsListResponseWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RolloutsListResponseWarningDataItem>;
 
 export type RolloutsListResponseWarningDataItemList =
-  RolloutsListResponseWarningDataItem[];
+  ReadonlyArray<RolloutsListResponseWarningDataItem>;
 export const RolloutsListResponseWarningDataItemList = /*@__PURE__*/ S.Array(
   RolloutsListResponseWarningDataItem,
 ) as any as S.Schema<RolloutsListResponseWarningDataItemList>;
@@ -68074,8 +67271,7 @@ export type RoutersListRoutePoliciesWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RoutersListRoutePoliciesWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RoutersListRoutePoliciesWarningDataItem {
@@ -68095,7 +67291,7 @@ export const RoutersListRoutePoliciesWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RoutersListRoutePoliciesWarningDataItem>;
 
 export type RoutersListRoutePoliciesWarningDataItemList =
-  RoutersListRoutePoliciesWarningDataItem[];
+  ReadonlyArray<RoutersListRoutePoliciesWarningDataItem>;
 export const RoutersListRoutePoliciesWarningDataItemList =
   /*@__PURE__*/ S.Array(
     RoutersListRoutePoliciesWarningDataItem,
@@ -68119,7 +67315,7 @@ export const RoutersListRoutePoliciesWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoutersListRoutePoliciesWarning",
 }) as any as S.Schema<RoutersListRoutePoliciesWarning>;
 
-export type RoutePolicyList = RoutePolicy[];
+export type RoutePolicyList = ReadonlyArray<RoutePolicy>;
 export const RoutePolicyList = /*@__PURE__*/ S.Array(
   RoutePolicy,
 ) as any as S.Schema<RoutePolicyList>;
@@ -68221,8 +67417,7 @@ export type RouterListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RouterListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RouterListWarningDataItem {
@@ -68240,7 +67435,8 @@ export const RouterListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouterListWarningDataItem",
 }) as any as S.Schema<RouterListWarningDataItem>;
 
-export type RouterListWarningDataItemList = RouterListWarningDataItem[];
+export type RouterListWarningDataItemList =
+  ReadonlyArray<RouterListWarningDataItem>;
 export const RouterListWarningDataItemList = /*@__PURE__*/ S.Array(
   RouterListWarningDataItem,
 ) as any as S.Schema<RouterListWarningDataItemList>;
@@ -68351,8 +67547,7 @@ export type RouteListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const RouteListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface RouteListWarningDataItem {
@@ -68370,7 +67565,8 @@ export const RouteListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RouteListWarningDataItem",
 }) as any as S.Schema<RouteListWarningDataItem>;
 
-export type RouteListWarningDataItemList = RouteListWarningDataItem[];
+export type RouteListWarningDataItemList =
+  ReadonlyArray<RouteListWarningDataItem>;
 export const RouteListWarningDataItemList = /*@__PURE__*/ S.Array(
   RouteListWarningDataItem,
 ) as any as S.Schema<RouteListWarningDataItemList>;
@@ -68517,8 +67713,7 @@ export type ServiceAttachmentListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ServiceAttachmentListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ServiceAttachmentListWarningDataItem {
@@ -68538,7 +67733,7 @@ export const ServiceAttachmentListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServiceAttachmentListWarningDataItem>;
 
 export type ServiceAttachmentListWarningDataItemList =
-  ServiceAttachmentListWarningDataItem[];
+  ReadonlyArray<ServiceAttachmentListWarningDataItem>;
 export const ServiceAttachmentListWarningDataItemList = /*@__PURE__*/ S.Array(
   ServiceAttachmentListWarningDataItem,
 ) as any as S.Schema<ServiceAttachmentListWarningDataItemList>;
@@ -68621,7 +67816,7 @@ export const ListSnapshotGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSnapshotGroupsRequest",
 }) as any as S.Schema<ListSnapshotGroupsRequest>;
 
-export type SnapshotGroupList = SnapshotGroup[];
+export type SnapshotGroupList = ReadonlyArray<SnapshotGroup>;
 export const SnapshotGroupList = /*@__PURE__*/ S.Array(
   SnapshotGroup,
 ) as any as S.Schema<SnapshotGroupList>;
@@ -68655,8 +67850,7 @@ export type ListSnapshotGroupsWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ListSnapshotGroupsWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ListSnapshotGroupsWarningDataItem {
@@ -68675,7 +67869,7 @@ export const ListSnapshotGroupsWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSnapshotGroupsWarningDataItem>;
 
 export type ListSnapshotGroupsWarningDataItemList =
-  ListSnapshotGroupsWarningDataItem[];
+  ReadonlyArray<ListSnapshotGroupsWarningDataItem>;
 export const ListSnapshotGroupsWarningDataItemList = /*@__PURE__*/ S.Array(
   ListSnapshotGroupsWarningDataItem,
 ) as any as S.Schema<ListSnapshotGroupsWarningDataItemList>;
@@ -68895,8 +68089,7 @@ export type StoragePoolListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const StoragePoolListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface StoragePoolListWarningDataItem {
@@ -68915,7 +68108,7 @@ export const StoragePoolListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoragePoolListWarningDataItem>;
 
 export type StoragePoolListWarningDataItemList =
-  StoragePoolListWarningDataItem[];
+  ReadonlyArray<StoragePoolListWarningDataItem>;
 export const StoragePoolListWarningDataItemList = /*@__PURE__*/ S.Array(
   StoragePoolListWarningDataItem,
 ) as any as S.Schema<StoragePoolListWarningDataItemList>;
@@ -69036,8 +68229,7 @@ export type StoragePoolTypeListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const StoragePoolTypeListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface StoragePoolTypeListWarningDataItem {
@@ -69056,7 +68248,7 @@ export const StoragePoolTypeListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoragePoolTypeListWarningDataItem>;
 
 export type StoragePoolTypeListWarningDataItemList =
-  StoragePoolTypeListWarningDataItem[];
+  ReadonlyArray<StoragePoolTypeListWarningDataItem>;
 export const StoragePoolTypeListWarningDataItemList = /*@__PURE__*/ S.Array(
   StoragePoolTypeListWarningDataItem,
 ) as any as S.Schema<StoragePoolTypeListWarningDataItemList>;
@@ -69107,13 +68299,11 @@ export const StoragePoolTypeList = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoragePoolTypeList",
 }) as any as S.Schema<StoragePoolTypeList>;
 
-export type ListSubnetworksViewsEnum =
-  | "DEFAULT"
-  | "WITH_UTILIZATION"
-  | (string & {});
+export type ListSubnetworksViewsEnum = "DEFAULT" | "WITH_UTILIZATION";
 export const ListSubnetworksViewsEnum = /*@__PURE__*/ S.String;
 
-export type ListSubnetworksViewsEnumList = ListSubnetworksViewsEnum[];
+export type ListSubnetworksViewsEnumList =
+  ReadonlyArray<ListSubnetworksViewsEnum>;
 export const ListSubnetworksViewsEnumList = /*@__PURE__*/ S.Array(
   ListSubnetworksViewsEnum,
 ) as any as S.Schema<ListSubnetworksViewsEnumList>;
@@ -69186,8 +68376,7 @@ export type SubnetworkListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SubnetworkListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SubnetworkListWarningDataItem {
@@ -69205,7 +68394,8 @@ export const SubnetworkListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubnetworkListWarningDataItem",
 }) as any as S.Schema<SubnetworkListWarningDataItem>;
 
-export type SubnetworkListWarningDataItemList = SubnetworkListWarningDataItem[];
+export type SubnetworkListWarningDataItemList =
+  ReadonlyArray<SubnetworkListWarningDataItem>;
 export const SubnetworkListWarningDataItemList = /*@__PURE__*/ S.Array(
   SubnetworkListWarningDataItem,
 ) as any as S.Schema<SubnetworkListWarningDataItemList>;
@@ -69287,7 +68477,7 @@ export const ListTargetGrpcProxiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTargetGrpcProxiesRequest",
 }) as any as S.Schema<ListTargetGrpcProxiesRequest>;
 
-export type TargetGrpcProxyList_ = TargetGrpcProxy[];
+export type TargetGrpcProxyList_ = ReadonlyArray<TargetGrpcProxy>;
 export const TargetGrpcProxyList_ = /*@__PURE__*/ S.Array(
   TargetGrpcProxy,
 ) as any as S.Schema<TargetGrpcProxyList_>;
@@ -69321,8 +68511,7 @@ export type TargetGrpcProxyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetGrpcProxyListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetGrpcProxyListWarningDataItem {
@@ -69341,7 +68530,7 @@ export const TargetGrpcProxyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetGrpcProxyListWarningDataItem>;
 
 export type TargetGrpcProxyListWarningDataItemList =
-  TargetGrpcProxyListWarningDataItem[];
+  ReadonlyArray<TargetGrpcProxyListWarningDataItem>;
 export const TargetGrpcProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetGrpcProxyListWarningDataItem,
 ) as any as S.Schema<TargetGrpcProxyListWarningDataItemList>;
@@ -69522,8 +68711,7 @@ export type TargetInstanceListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetInstanceListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetInstanceListWarningDataItem {
@@ -69542,7 +68730,7 @@ export const TargetInstanceListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetInstanceListWarningDataItem>;
 
 export type TargetInstanceListWarningDataItemList =
-  TargetInstanceListWarningDataItem[];
+  ReadonlyArray<TargetInstanceListWarningDataItem>;
 export const TargetInstanceListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetInstanceListWarningDataItem,
 ) as any as S.Schema<TargetInstanceListWarningDataItemList>;
@@ -69658,8 +68846,7 @@ export type TargetPoolListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetPoolListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetPoolListWarningDataItem {
@@ -69677,7 +68864,8 @@ export const TargetPoolListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetPoolListWarningDataItem",
 }) as any as S.Schema<TargetPoolListWarningDataItem>;
 
-export type TargetPoolListWarningDataItemList = TargetPoolListWarningDataItem[];
+export type TargetPoolListWarningDataItemList =
+  ReadonlyArray<TargetPoolListWarningDataItem>;
 export const TargetPoolListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetPoolListWarningDataItem,
 ) as any as S.Schema<TargetPoolListWarningDataItemList>;
@@ -69759,7 +68947,7 @@ export const ListTargetSslProxiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTargetSslProxiesRequest",
 }) as any as S.Schema<ListTargetSslProxiesRequest>;
 
-export type TargetSslProxyList_ = TargetSslProxy[];
+export type TargetSslProxyList_ = ReadonlyArray<TargetSslProxy>;
 export const TargetSslProxyList_ = /*@__PURE__*/ S.Array(
   TargetSslProxy,
 ) as any as S.Schema<TargetSslProxyList_>;
@@ -69793,8 +68981,7 @@ export type TargetSslProxyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetSslProxyListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetSslProxyListWarningDataItem {
@@ -69813,7 +69000,7 @@ export const TargetSslProxyListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetSslProxyListWarningDataItem>;
 
 export type TargetSslProxyListWarningDataItemList =
-  TargetSslProxyListWarningDataItem[];
+  ReadonlyArray<TargetSslProxyListWarningDataItem>;
 export const TargetSslProxyListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetSslProxyListWarningDataItem,
 ) as any as S.Schema<TargetSslProxyListWarningDataItemList>;
@@ -69962,8 +69149,7 @@ export type TargetVpnGatewayListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const TargetVpnGatewayListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface TargetVpnGatewayListWarningDataItem {
@@ -69982,7 +69168,7 @@ export const TargetVpnGatewayListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetVpnGatewayListWarningDataItem>;
 
 export type TargetVpnGatewayListWarningDataItemList =
-  TargetVpnGatewayListWarningDataItem[];
+  ReadonlyArray<TargetVpnGatewayListWarningDataItem>;
 export const TargetVpnGatewayListWarningDataItemList = /*@__PURE__*/ S.Array(
   TargetVpnGatewayListWarningDataItem,
 ) as any as S.Schema<TargetVpnGatewayListWarningDataItemList>;
@@ -70128,8 +69314,7 @@ export type BackendBucketListUsableWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const BackendBucketListUsableWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface BackendBucketListUsableWarningDataItem {
@@ -70149,7 +69334,7 @@ export const BackendBucketListUsableWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendBucketListUsableWarningDataItem>;
 
 export type BackendBucketListUsableWarningDataItemList =
-  BackendBucketListUsableWarningDataItem[];
+  ReadonlyArray<BackendBucketListUsableWarningDataItem>;
 export const BackendBucketListUsableWarningDataItemList = /*@__PURE__*/ S.Array(
   BackendBucketListUsableWarningDataItem,
 ) as any as S.Schema<BackendBucketListUsableWarningDataItemList>;
@@ -70261,8 +69446,7 @@ export type BackendServiceListUsableWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const BackendServiceListUsableWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface BackendServiceListUsableWarningDataItem {
@@ -70282,7 +69466,7 @@ export const BackendServiceListUsableWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BackendServiceListUsableWarningDataItem>;
 
 export type BackendServiceListUsableWarningDataItemList =
-  BackendServiceListUsableWarningDataItem[];
+  ReadonlyArray<BackendServiceListUsableWarningDataItem>;
 export const BackendServiceListUsableWarningDataItemList =
   /*@__PURE__*/ S.Array(
     BackendServiceListUsableWarningDataItem,
@@ -70473,8 +69657,7 @@ export type SubnetworksScopedWarningWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const SubnetworksScopedWarningWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface SubnetworksScopedWarningWarningDataItem {
@@ -70494,7 +69677,7 @@ export const SubnetworksScopedWarningWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SubnetworksScopedWarningWarningDataItem>;
 
 export type SubnetworksScopedWarningWarningDataItemList =
-  SubnetworksScopedWarningWarningDataItem[];
+  ReadonlyArray<SubnetworksScopedWarningWarningDataItem>;
 export const SubnetworksScopedWarningWarningDataItemList =
   /*@__PURE__*/ S.Array(
     SubnetworksScopedWarningWarningDataItem,
@@ -70533,7 +69716,8 @@ export const SubnetworksScopedWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubnetworksScopedWarning",
 }) as any as S.Schema<SubnetworksScopedWarning>;
 
-export type SubnetworksScopedWarningList = SubnetworksScopedWarning[];
+export type SubnetworksScopedWarningList =
+  ReadonlyArray<SubnetworksScopedWarning>;
 export const SubnetworksScopedWarningList = /*@__PURE__*/ S.Array(
   SubnetworksScopedWarning,
 ) as any as S.Schema<SubnetworksScopedWarningList>;
@@ -70555,25 +69739,21 @@ export const UsableSubnetworkSecondaryRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsableSubnetworkSecondaryRange>;
 
 export type UsableSubnetworkSecondaryRangeList =
-  UsableSubnetworkSecondaryRange[];
+  ReadonlyArray<UsableSubnetworkSecondaryRange>;
 export const UsableSubnetworkSecondaryRangeList = /*@__PURE__*/ S.Array(
   UsableSubnetworkSecondaryRange,
 ) as any as S.Schema<UsableSubnetworkSecondaryRangeList>;
 
-export type UsableSubnetworkRoleEnum = "ACTIVE" | "BACKUP" | (string & {});
+export type UsableSubnetworkRoleEnum = "ACTIVE" | "BACKUP";
 export const UsableSubnetworkRoleEnum = /*@__PURE__*/ S.String;
 
 export type UsableSubnetworkStackTypeEnum =
   | "IPV4_IPV6"
   | "IPV4_ONLY"
-  | "IPV6_ONLY"
-  | (string & {});
+  | "IPV6_ONLY";
 export const UsableSubnetworkStackTypeEnum = /*@__PURE__*/ S.String;
 
-export type UsableSubnetworkIpv6AccessTypeEnum =
-  | "EXTERNAL"
-  | "INTERNAL"
-  | (string & {});
+export type UsableSubnetworkIpv6AccessTypeEnum = "EXTERNAL" | "INTERNAL";
 export const UsableSubnetworkIpv6AccessTypeEnum = /*@__PURE__*/ S.String;
 
 export type UsableSubnetworkPurposeEnum =
@@ -70585,8 +69765,7 @@ export type UsableSubnetworkPurposeEnum =
   | "PRIVATE_NAT"
   | "PRIVATE_RFC_1918"
   | "PRIVATE_SERVICE_CONNECT"
-  | "REGIONAL_MANAGED_PROXY"
-  | (string & {});
+  | "REGIONAL_MANAGED_PROXY";
 export const UsableSubnetworkPurposeEnum = /*@__PURE__*/ S.String;
 
 /** Subnetwork which the current user has compute.subnetworks.use permission on. */
@@ -70628,7 +69807,7 @@ export const UsableSubnetwork = /*@__PURE__*/ S.suspend(() =>
   identifier: "UsableSubnetwork",
 }) as any as S.Schema<UsableSubnetwork>;
 
-export type UsableSubnetworkList = UsableSubnetwork[];
+export type UsableSubnetworkList = ReadonlyArray<UsableSubnetwork>;
 export const UsableSubnetworkList = /*@__PURE__*/ S.Array(
   UsableSubnetwork,
 ) as any as S.Schema<UsableSubnetworkList>;
@@ -70662,8 +69841,7 @@ export type UsableSubnetworksAggregatedListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const UsableSubnetworksAggregatedListWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -70684,7 +69862,7 @@ export const UsableSubnetworksAggregatedListWarningDataItem =
   }) as any as S.Schema<UsableSubnetworksAggregatedListWarningDataItem>;
 
 export type UsableSubnetworksAggregatedListWarningDataItemList =
-  UsableSubnetworksAggregatedListWarningDataItem[];
+  ReadonlyArray<UsableSubnetworksAggregatedListWarningDataItem>;
 export const UsableSubnetworksAggregatedListWarningDataItemList =
   /*@__PURE__*/ S.Array(
     UsableSubnetworksAggregatedListWarningDataItem,
@@ -70807,8 +69985,7 @@ export type VpnGatewayListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const VpnGatewayListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface VpnGatewayListWarningDataItem {
@@ -70826,7 +70003,8 @@ export const VpnGatewayListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpnGatewayListWarningDataItem",
 }) as any as S.Schema<VpnGatewayListWarningDataItem>;
 
-export type VpnGatewayListWarningDataItemList = VpnGatewayListWarningDataItem[];
+export type VpnGatewayListWarningDataItemList =
+  ReadonlyArray<VpnGatewayListWarningDataItem>;
 export const VpnGatewayListWarningDataItemList = /*@__PURE__*/ S.Array(
   VpnGatewayListWarningDataItem,
 ) as any as S.Schema<VpnGatewayListWarningDataItemList>;
@@ -70940,8 +70118,7 @@ export type VpnTunnelListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const VpnTunnelListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface VpnTunnelListWarningDataItem {
@@ -70959,7 +70136,8 @@ export const VpnTunnelListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpnTunnelListWarningDataItem",
 }) as any as S.Schema<VpnTunnelListWarningDataItem>;
 
-export type VpnTunnelListWarningDataItemList = VpnTunnelListWarningDataItem[];
+export type VpnTunnelListWarningDataItemList =
+  ReadonlyArray<VpnTunnelListWarningDataItem>;
 export const VpnTunnelListWarningDataItemList = /*@__PURE__*/ S.Array(
   VpnTunnelListWarningDataItem,
 ) as any as S.Schema<VpnTunnelListWarningDataItemList>;
@@ -71043,7 +70221,7 @@ export const ListWireGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListWireGroupsRequest",
 }) as any as S.Schema<ListWireGroupsRequest>;
 
-export type WireGroupList_ = WireGroup[];
+export type WireGroupList_ = ReadonlyArray<WireGroup>;
 export const WireGroupList_ = /*@__PURE__*/ S.Array(
   WireGroup,
 ) as any as S.Schema<WireGroupList_>;
@@ -71077,8 +70255,7 @@ export type WireGroupListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const WireGroupListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface WireGroupListWarningDataItem {
@@ -71096,7 +70273,8 @@ export const WireGroupListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "WireGroupListWarningDataItem",
 }) as any as S.Schema<WireGroupListWarningDataItem>;
 
-export type WireGroupListWarningDataItemList = WireGroupListWarningDataItem[];
+export type WireGroupListWarningDataItemList =
+  ReadonlyArray<WireGroupListWarningDataItem>;
 export const WireGroupListWarningDataItemList = /*@__PURE__*/ S.Array(
   WireGroupListWarningDataItem,
 ) as any as S.Schema<WireGroupListWarningDataItemList>;
@@ -71198,7 +70376,7 @@ export const ListXpnHostsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListXpnHostsProjectsRequest",
 }) as any as S.Schema<ListXpnHostsProjectsRequest>;
 
-export type ProjectList = Project[];
+export type ProjectList = ReadonlyArray<Project>;
 export const ProjectList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectList>;
@@ -71232,8 +70410,7 @@ export type XpnHostListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const XpnHostListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface XpnHostListWarningDataItem {
@@ -71251,7 +70428,8 @@ export const XpnHostListWarningDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "XpnHostListWarningDataItem",
 }) as any as S.Schema<XpnHostListWarningDataItem>;
 
-export type XpnHostListWarningDataItemList = XpnHostListWarningDataItem[];
+export type XpnHostListWarningDataItemList =
+  ReadonlyArray<XpnHostListWarningDataItem>;
 export const XpnHostListWarningDataItemList = /*@__PURE__*/ S.Array(
   XpnHostListWarningDataItem,
 ) as any as S.Schema<XpnHostListWarningDataItemList>;
@@ -71433,8 +70611,7 @@ export type VmExtensionPolicyListWarningCodeEnum =
   | "SCHEMA_VALIDATION_IGNORED"
   | "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
   | "UNDECLARED_PROPERTIES"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const VmExtensionPolicyListWarningCodeEnum = /*@__PURE__*/ S.String;
 
 export interface VmExtensionPolicyListWarningDataItem {
@@ -71454,7 +70631,7 @@ export const VmExtensionPolicyListWarningDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VmExtensionPolicyListWarningDataItem>;
 
 export type VmExtensionPolicyListWarningDataItemList =
-  VmExtensionPolicyListWarningDataItem[];
+  ReadonlyArray<VmExtensionPolicyListWarningDataItem>;
 export const VmExtensionPolicyListWarningDataItemList = /*@__PURE__*/ S.Array(
   VmExtensionPolicyListWarningDataItem,
 ) as any as S.Schema<VmExtensionPolicyListWarningDataItemList>;
@@ -74065,8 +73242,7 @@ export type ReservationsBlocksPerformMaintenanceRequestMaintenanceScopeEnum =
   | "ALL"
   | "MAINTENANCE_SCOPE_UNSPECIFIED"
   | "RUNNING_VMS"
-  | "UNUSED_CAPACITY"
-  | (string & {});
+  | "UNUSED_CAPACITY";
 export const ReservationsBlocksPerformMaintenanceRequestMaintenanceScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -74125,8 +73301,7 @@ export type ReservationsPerformMaintenanceRequestMaintenanceScopeEnum =
   | "ALL"
   | "MAINTENANCE_SCOPE_UNSPECIFIED"
   | "RUNNING_VMS"
-  | "UNUSED_CAPACITY"
-  | (string & {});
+  | "UNUSED_CAPACITY";
 export const ReservationsPerformMaintenanceRequestMaintenanceScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -75036,8 +74211,7 @@ export type ReservationSubBlocksReportFaultyRequestFaultReasonBehaviorEnum =
   | "GPU_ERROR"
   | "PERFORMANCE"
   | "SILENT_DATA_CORRUPTION"
-  | "SWITCH_FAILURE"
-  | (string & {});
+  | "SWITCH_FAILURE";
 export const ReservationSubBlocksReportFaultyRequestFaultReasonBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -75061,7 +74235,7 @@ export const ReservationSubBlocksReportFaultyRequestFaultReason =
   }) as any as S.Schema<ReservationSubBlocksReportFaultyRequestFaultReason>;
 
 export type ReservationSubBlocksReportFaultyRequestFaultReasonList =
-  ReservationSubBlocksReportFaultyRequestFaultReason[];
+  ReadonlyArray<ReservationSubBlocksReportFaultyRequestFaultReason>;
 export const ReservationSubBlocksReportFaultyRequestFaultReasonList =
   /*@__PURE__*/ S.Array(
     ReservationSubBlocksReportFaultyRequestFaultReason,
@@ -75069,16 +74243,14 @@ export const ReservationSubBlocksReportFaultyRequestFaultReasonList =
 
 export type ReservationSubBlocksReportFaultyRequestDisruptionScheduleEnum =
   | "DISRUPTION_SCHEDULE_UNSPECIFIED"
-  | "IMMEDIATE"
-  | (string & {});
+  | "IMMEDIATE";
 export const ReservationSubBlocksReportFaultyRequestDisruptionScheduleEnum =
   /*@__PURE__*/ S.String;
 
 export type ReservationSubBlocksReportFaultyRequestFailureComponentEnum =
   | "FAILURE_COMPONENT_UNSPECIFIED"
   | "MULTIPLE_FAULTY_HOSTS"
-  | "NVLINK_SWITCH"
-  | (string & {});
+  | "NVLINK_SWITCH";
 export const ReservationSubBlocksReportFaultyRequestFailureComponentEnum =
   /*@__PURE__*/ S.String;
 
@@ -75148,8 +74320,7 @@ export type InstancesReportHostAsFaultyRequestFaultReasonBehaviorEnum =
   | "CHIP_ERROR"
   | "PERFORMANCE"
   | "SILENT_DATA_CORRUPTION"
-  | "UNRECOVERABLE_GPU_ERROR"
-  | (string & {});
+  | "UNRECOVERABLE_GPU_ERROR";
 export const InstancesReportHostAsFaultyRequestFaultReasonBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -75170,7 +74341,7 @@ export const InstancesReportHostAsFaultyRequestFaultReason =
   }) as any as S.Schema<InstancesReportHostAsFaultyRequestFaultReason>;
 
 export type InstancesReportHostAsFaultyRequestFaultReasonList =
-  InstancesReportHostAsFaultyRequestFaultReason[];
+  ReadonlyArray<InstancesReportHostAsFaultyRequestFaultReason>;
 export const InstancesReportHostAsFaultyRequestFaultReasonList =
   /*@__PURE__*/ S.Array(
     InstancesReportHostAsFaultyRequestFaultReason,
@@ -75179,8 +74350,7 @@ export const InstancesReportHostAsFaultyRequestFaultReasonList =
 export type InstancesReportHostAsFaultyRequestDisruptionScheduleEnum =
   | "DISRUPTION_SCHEDULE_UNSPECIFIED"
   | "FUTURE"
-  | "IMMEDIATE"
-  | (string & {});
+  | "IMMEDIATE";
 export const InstancesReportHostAsFaultyRequestDisruptionScheduleEnum =
   /*@__PURE__*/ S.String;
 
@@ -75597,7 +74767,7 @@ export const CustomerEncryptionKeyProtectedDisk = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerEncryptionKeyProtectedDisk>;
 
 export type CustomerEncryptionKeyProtectedDiskList =
-  CustomerEncryptionKeyProtectedDisk[];
+  ReadonlyArray<CustomerEncryptionKeyProtectedDisk>;
 export const CustomerEncryptionKeyProtectedDiskList = /*@__PURE__*/ S.Array(
   CustomerEncryptionKeyProtectedDisk,
 ) as any as S.Schema<CustomerEncryptionKeyProtectedDiskList>;
@@ -76138,8 +75308,7 @@ export const SetCertificateMapTargetSslProxiesRequest = /*@__PURE__*/ S.suspend(
 export type ProjectsSetCloudArmorTierRequestCloudArmorTierEnum =
   | "CA_ENTERPRISE_ANNUAL"
   | "CA_ENTERPRISE_PAYGO"
-  | "CA_STANDARD"
-  | (string & {});
+  | "CA_STANDARD";
 export const ProjectsSetCloudArmorTierRequestCloudArmorTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -76210,8 +75379,7 @@ export type ProjectsSetDefaultNetworkTierRequestNetworkTierEnum =
   | "FIXED_STANDARD"
   | "PREMIUM"
   | "STANDARD"
-  | "STANDARD_OVERRIDES_FIXED_STANDARD"
-  | (string & {});
+  | "STANDARD_OVERRIDES_FIXED_STANDARD";
 export const ProjectsSetDefaultNetworkTierRequestNetworkTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -78196,8 +77364,7 @@ export const SetMachineTypeInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ProjectsSetManagedProtectionTierRequestManagedProtectionTierEnum =
   | "CAMP_PLUS_ANNUAL"
   | "CAMP_PLUS_PAYGO"
-  | "CA_STANDARD"
-  | (string & {});
+  | "CA_STANDARD";
 export const ProjectsSetManagedProtectionTierRequestManagedProtectionTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -78543,8 +77710,7 @@ export const SetPrivateIpGoogleAccessSubnetworksRequest =
 
 export type TargetSslProxiesSetProxyHeaderRequestProxyHeaderEnum =
   | "NONE"
-  | "PROXY_V1"
-  | (string & {});
+  | "PROXY_V1";
 export const TargetSslProxiesSetProxyHeaderRequestProxyHeaderEnum =
   /*@__PURE__*/ S.String;
 
@@ -78595,8 +77761,7 @@ export const SetProxyHeaderTargetSslProxiesRequest = /*@__PURE__*/ S.suspend(
 
 export type TargetTcpProxiesSetProxyHeaderRequestProxyHeaderEnum =
   | "NONE"
-  | "PROXY_V1"
-  | (string & {});
+  | "PROXY_V1";
 export const TargetTcpProxiesSetProxyHeaderRequestProxyHeaderEnum =
   /*@__PURE__*/ S.String;
 
@@ -78648,8 +77813,7 @@ export const SetProxyHeaderTargetTcpProxiesRequest = /*@__PURE__*/ S.suspend(
 export type TargetHttpsProxiesSetQuicOverrideRequestQuicOverrideEnum =
   | "DISABLE"
   | "ENABLE"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const TargetHttpsProxiesSetQuicOverrideRequestQuicOverrideEnum =
   /*@__PURE__*/ S.String;
 
@@ -82910,16 +82074,14 @@ export type UpdateInstancesMinimalActionEnum =
   | "INVALID"
   | "NO_EFFECT"
   | "REFRESH"
-  | "RESTART"
-  | (string & {});
+  | "RESTART";
 export const UpdateInstancesMinimalActionEnum = /*@__PURE__*/ S.String;
 
 export type UpdateInstancesMostDisruptiveAllowedActionEnum =
   | "INVALID"
   | "NO_EFFECT"
   | "REFRESH"
-  | "RESTART"
-  | (string & {});
+  | "RESTART";
 export const UpdateInstancesMostDisruptiveAllowedActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -84003,7 +83165,7 @@ export const TestFailure = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestFailure" }) as any as S.Schema<TestFailure>;
 
-export type TestFailureList = TestFailure[];
+export type TestFailureList = ReadonlyArray<TestFailure>;
 export const TestFailureList = /*@__PURE__*/ S.Array(
   TestFailure,
 ) as any as S.Schema<TestFailureList>;
@@ -84045,13 +83207,12 @@ export const UrlMapsValidateResponse = /*@__PURE__*/ S.suspend(() =>
 export type UrlMapsValidateRequestLoadBalancingSchemesItemEnum =
   | "EXTERNAL"
   | "EXTERNAL_MANAGED"
-  | "LOAD_BALANCING_SCHEME_UNSPECIFIED"
-  | (string & {});
+  | "LOAD_BALANCING_SCHEME_UNSPECIFIED";
 export const UrlMapsValidateRequestLoadBalancingSchemesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type UrlMapsValidateRequestLoadBalancingSchemesItemEnumList =
-  UrlMapsValidateRequestLoadBalancingSchemesItemEnum[];
+  ReadonlyArray<UrlMapsValidateRequestLoadBalancingSchemesItemEnum>;
 export const UrlMapsValidateRequestLoadBalancingSchemesItemEnumList =
   /*@__PURE__*/ S.Array(
     UrlMapsValidateRequestLoadBalancingSchemesItemEnum,

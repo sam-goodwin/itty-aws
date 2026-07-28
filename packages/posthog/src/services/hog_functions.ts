@@ -43,60 +43,8 @@ export type HogFunctionTypeEnum =
   | "source_webhook"
   | "warehouse_source_webhook"
   | "site_app"
-  | "transformation"
-  | (string & {});
+  | "transformation";
 export const HogFunctionTypeEnum = /*@__PURE__*/ S.String;
-
-export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
-export type RoleAtOrganizationEnum =
-  | "engineering"
-  | "data"
-  | "product"
-  | "founder"
-  | "leadership"
-  | "marketing"
-  | "sales"
-  | "other"
-  | (string & {});
-export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
-
-export type BlankEnum = "" | (string & {});
-export const BlankEnum = /*@__PURE__*/ S.String;
-
-export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
-export interface UserBasic {
-  id?: number;
-  uuid?: string;
-  distinct_id?: string | null;
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-  is_email_verified?: boolean | null;
-  hedgehog_config?: UserBasicHedgehogConfigMap | null;
-  role_at_organization?: UserBasicRoleAtOrganization | null;
-}
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    uuid: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
-    first_name: S.optional(S.String),
-    last_name: S.optional(S.String),
-    email: S.optional(S.String),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
-    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
-  }),
-).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 /** * `string` - string * `number` - number * `boolean` - boolean * `dictionary` - dictionary * `choice` - choice * `json` - json * `integration` - integration * `integration_multi` - integration_multi * `integration_field` - integration_field * `email` - email * `native_email` - native_email * `posthog_assignee` - posthog_assignee * `posthog_ticket_tags` - posthog_ticket_tags * `posthog_business_hours` - posthog_business_hours * `non_failure_status_codes` - non_failure_status_codes * `customer_analytics_account_properties` - customer_analytics_account_properties * `customer_analytics_account_relationships` - customer_analytics_account_relationships */
 export type InputsSchemaItemTypeEnum =
@@ -116,8 +64,7 @@ export type InputsSchemaItemTypeEnum =
   | "posthog_business_hours"
   | "non_failure_status_codes"
   | "customer_analytics_account_properties"
-  | "customer_analytics_account_relationships"
-  | (string & {});
+  | "customer_analytics_account_relationships";
 export const InputsSchemaItemTypeEnum = /*@__PURE__*/ S.String;
 
 export type InputsSchemaItemChoicesItemMap = {
@@ -128,12 +75,13 @@ export const InputsSchemaItemChoicesItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<InputsSchemaItemChoicesItemMap>;
 
-export type InputsSchemaItemChoicesList = InputsSchemaItemChoicesItemMap[];
+export type InputsSchemaItemChoicesList =
+  ReadonlyArray<InputsSchemaItemChoicesItemMap>;
 export const InputsSchemaItemChoicesList = /*@__PURE__*/ S.Array(
   InputsSchemaItemChoicesItemMap,
 ) as any as S.Schema<InputsSchemaItemChoicesList>;
 
-export type InputsSchemaItemTemplatingCase1 = "hog" | "liquid" | (string & {});
+export type InputsSchemaItemTemplatingCase1 = "hog" | "liquid";
 export const InputsSchemaItemTemplatingCase1 = /*@__PURE__*/ S.String;
 
 export type InputsSchemaItemTemplating =
@@ -184,52 +132,43 @@ export const InputsSchemaItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InputsSchemaItem>;
 
 /** Schema defining the configurable input parameters for this function. */
-export type HogFunctionsCreateRequestInputsSchemaList = InputsSchemaItem[];
+export type HogFunctionsCreateRequestInputsSchemaList =
+  ReadonlyArray<InputsSchemaItem>;
 export const HogFunctionsCreateRequestInputsSchemaList = /*@__PURE__*/ S.Array(
   InputsSchemaItem,
 ) as any as S.Schema<HogFunctionsCreateRequestInputsSchemaList>;
 
 /** * `hog` - hog * `liquid` - liquid */
-export type HogFunctionTemplatingEnum = "hog" | "liquid" | (string & {});
+export type HogFunctionTemplatingEnum = "hog" | "liquid";
 export const HogFunctionTemplatingEnum = /*@__PURE__*/ S.String;
 
-export type InputsItemBytecodeList = unknown[];
-export const InputsItemBytecodeList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<InputsItemBytecodeList>;
-
-export interface InputsItem {
+export interface InputsItemInput {
   value?: unknown;
   templating?: HogFunctionTemplatingEnum;
-  bytecode?: InputsItemBytecodeList;
-  order?: number;
-  transpiled?: unknown;
 }
-export const InputsItem = /*@__PURE__*/ S.suspend(() =>
+export const InputsItemInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Unknown),
     templating: S.optional(HogFunctionTemplatingEnum),
-    bytecode: S.optional(InputsItemBytecodeList),
-    order: S.optional(S.Number),
-    transpiled: S.optional(S.Unknown),
   }),
-).annotate({ identifier: "InputsItem" }) as any as S.Schema<InputsItem>;
+).annotate({
+  identifier: "InputsItemInput",
+}) as any as S.Schema<InputsItemInput>;
 
 /** Values for each input defined in inputs_schema. */
 export type HogFunctionsCreateRequestInputsMap = {
-  [key: string]: InputsItem | undefined;
+  [key: string]: InputsItemInput | undefined;
 };
 export const HogFunctionsCreateRequestInputsMap = /*@__PURE__*/ S.Record(
   S.String,
-  InputsItem,
+  InputsItemInput,
 ) as any as S.Schema<HogFunctionsCreateRequestInputsMap>;
 
 /** * `events` - events * `person-updates` - person-updates * `data-warehouse-table` - data-warehouse-table */
 export type HogFunctionFiltersSourceEnum =
   | "events"
   | "person-updates"
-  | "data-warehouse-table"
-  | (string & {});
+  | "data-warehouse-table";
 export const HogFunctionFiltersSourceEnum = /*@__PURE__*/ S.String;
 
 export type HogFunctionFiltersActionsItemMap = {
@@ -240,7 +179,8 @@ export const HogFunctionFiltersActionsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<HogFunctionFiltersActionsItemMap>;
 
-export type HogFunctionFiltersActionsList = HogFunctionFiltersActionsItemMap[];
+export type HogFunctionFiltersActionsList =
+  ReadonlyArray<HogFunctionFiltersActionsItemMap>;
 export const HogFunctionFiltersActionsList = /*@__PURE__*/ S.Array(
   HogFunctionFiltersActionsItemMap,
 ) as any as S.Schema<HogFunctionFiltersActionsList>;
@@ -253,7 +193,8 @@ export const HogFunctionFiltersEventsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<HogFunctionFiltersEventsItemMap>;
 
-export type HogFunctionFiltersEventsList = HogFunctionFiltersEventsItemMap[];
+export type HogFunctionFiltersEventsList =
+  ReadonlyArray<HogFunctionFiltersEventsItemMap>;
 export const HogFunctionFiltersEventsList = /*@__PURE__*/ S.Array(
   HogFunctionFiltersEventsItemMap,
 ) as any as S.Schema<HogFunctionFiltersEventsList>;
@@ -267,7 +208,7 @@ export const HogFunctionFiltersDataWarehouseItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HogFunctionFiltersDataWarehouseItemMap>;
 
 export type HogFunctionFiltersDataWarehouseList =
-  HogFunctionFiltersDataWarehouseItemMap[];
+  ReadonlyArray<HogFunctionFiltersDataWarehouseItemMap>;
 export const HogFunctionFiltersDataWarehouseList = /*@__PURE__*/ S.Array(
   HogFunctionFiltersDataWarehouseItemMap,
 ) as any as S.Schema<HogFunctionFiltersDataWarehouseList>;
@@ -281,7 +222,7 @@ export const HogFunctionFiltersPropertiesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HogFunctionFiltersPropertiesItemMap>;
 
 export type HogFunctionFiltersPropertiesList =
-  HogFunctionFiltersPropertiesItemMap[];
+  ReadonlyArray<HogFunctionFiltersPropertiesItemMap>;
 export const HogFunctionFiltersPropertiesList = /*@__PURE__*/ S.Array(
   HogFunctionFiltersPropertiesItemMap,
 ) as any as S.Schema<HogFunctionFiltersPropertiesList>;
@@ -334,7 +275,191 @@ export const HogFunctionMasking = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionMasking",
 }) as any as S.Schema<HogFunctionMasking>;
 
-export type MappingsInputsSchemaList = InputsSchemaItem[];
+export type MappingsInputInputsSchemaList = ReadonlyArray<InputsSchemaItem>;
+export const MappingsInputInputsSchemaList = /*@__PURE__*/ S.Array(
+  InputsSchemaItem,
+) as any as S.Schema<MappingsInputInputsSchemaList>;
+
+export type MappingsInputInputsMap = {
+  [key: string]: InputsItemInput | undefined;
+};
+export const MappingsInputInputsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  InputsItemInput,
+) as any as S.Schema<MappingsInputInputsMap>;
+
+export interface MappingsInput {
+  name?: string;
+  inputs_schema?: MappingsInputInputsSchemaList;
+  inputs?: MappingsInputInputsMap;
+  filters?: HogFunctionFilters;
+}
+export const MappingsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    inputs_schema: S.optional(MappingsInputInputsSchemaList),
+    inputs: S.optional(MappingsInputInputsMap),
+    filters: S.optional(HogFunctionFilters),
+  }),
+).annotate({ identifier: "MappingsInput" }) as any as S.Schema<MappingsInput>;
+
+/** Event-to-destination field mappings. Only for destination and site_destination types. */
+export type HogFunctionsCreateRequestMappingsList =
+  ReadonlyArray<MappingsInput>;
+export const HogFunctionsCreateRequestMappingsList = /*@__PURE__*/ S.Array(
+  MappingsInput,
+) as any as S.Schema<HogFunctionsCreateRequestMappingsList>;
+
+export interface HogFunctionsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
+  type?: HogFunctionTypeEnum | null;
+  /** Display name for the function. */
+  name?: string | null;
+  /** Human-readable description of what this function does. */
+  description?: string;
+  /** Whether the function is active and processing events. */
+  enabled?: boolean;
+  /** Soft-delete flag. Set to true to archive the function. */
+  deleted?: boolean;
+  /** Source code. Hog language for most types; TypeScript for site_destination and site_app. */
+  hog?: string;
+  /** Schema defining the configurable input parameters for this function. */
+  inputs_schema?: HogFunctionsCreateRequestInputsSchemaList;
+  /** Values for each input defined in inputs_schema. */
+  inputs?: HogFunctionsCreateRequestInputsMap;
+  /** Event filters that control which events trigger this function. */
+  filters?: HogFunctionFilters;
+  /** PII masking configuration with TTL, threshold, and hash expression. */
+  masking?: HogFunctionMasking | null;
+  /** Event-to-destination field mappings. Only for destination and site_destination types. */
+  mappings?: HogFunctionsCreateRequestMappingsList | null;
+  /** URL for the function's icon displayed in the UI. */
+  icon_url?: string | null;
+  /** ID of the template to create this function from. */
+  template_id?: string | null;
+  /** Execution priority for transformations. Lower values run first. */
+  execution_order?: number | null;
+  _create_in_folder?: string;
+}
+export const HogFunctionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    type: S.optional(S.NullOr(HogFunctionTypeEnum)),
+    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    deleted: S.optional(S.Boolean),
+    hog: S.optional(S.String),
+    inputs_schema: S.optional(HogFunctionsCreateRequestInputsSchemaList),
+    inputs: S.optional(HogFunctionsCreateRequestInputsMap),
+    filters: S.optional(HogFunctionFilters),
+    masking: S.optional(S.NullOr(HogFunctionMasking)),
+    mappings: S.optional(S.NullOr(HogFunctionsCreateRequestMappingsList)),
+    icon_url: S.optional(S.NullOr(S.String)),
+    template_id: S.optional(S.NullOr(S.String)),
+    execution_order: S.optional(S.NullOr(S.Number)),
+    _create_in_folder: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/hog_functions/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "HogFunctionsCreateRequest",
+}) as any as S.Schema<HogFunctionsCreateRequest>;
+
+export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+export type RoleAtOrganizationEnum =
+  | "engineering"
+  | "data"
+  | "product"
+  | "founder"
+  | "leadership"
+  | "marketing"
+  | "sales"
+  | "other";
+export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
+
+export type BlankEnum = "";
+export const BlankEnum = /*@__PURE__*/ S.String;
+
+export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+export const UserBasicRoleAtOrganization =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
+export interface UserBasic {
+  id?: number;
+  uuid?: string;
+  distinct_id?: string | null;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  is_email_verified?: boolean | null;
+  hedgehog_config?: UserBasicHedgehogConfigMap | null;
+  role_at_organization?: UserBasicRoleAtOrganization | null;
+}
+export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    uuid: S.optional(S.String),
+    distinct_id: S.optional(S.NullOr(S.String)),
+    first_name: S.optional(S.String),
+    last_name: S.optional(S.String),
+    email: S.optional(S.String),
+    is_email_verified: S.optional(S.NullOr(S.Boolean)),
+    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+  }),
+).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
+
+/** Schema defining the configurable input parameters for this function. */
+export type HogFunctionOutputInputsSchemaList = ReadonlyArray<InputsSchemaItem>;
+export const HogFunctionOutputInputsSchemaList = /*@__PURE__*/ S.Array(
+  InputsSchemaItem,
+) as any as S.Schema<HogFunctionOutputInputsSchemaList>;
+
+export type InputsItemBytecodeList = ReadonlyArray<unknown>;
+export const InputsItemBytecodeList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<InputsItemBytecodeList>;
+
+export interface InputsItem {
+  value?: unknown;
+  templating?: HogFunctionTemplatingEnum;
+  bytecode?: InputsItemBytecodeList;
+  order?: number;
+  transpiled?: unknown;
+}
+export const InputsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.Unknown),
+    templating: S.optional(HogFunctionTemplatingEnum),
+    bytecode: S.optional(InputsItemBytecodeList),
+    order: S.optional(S.Number),
+    transpiled: S.optional(S.Unknown),
+  }),
+).annotate({ identifier: "InputsItem" }) as any as S.Schema<InputsItem>;
+
+/** Values for each input defined in inputs_schema. */
+export type HogFunctionOutputInputsMap = {
+  [key: string]: InputsItem | undefined;
+};
+export const HogFunctionOutputInputsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  InputsItem,
+) as any as S.Schema<HogFunctionOutputInputsMap>;
+
+export type MappingsInputsSchemaList = ReadonlyArray<InputsSchemaItem>;
 export const MappingsInputsSchemaList = /*@__PURE__*/ S.Array(
   InputsSchemaItem,
 ) as any as S.Schema<MappingsInputsSchemaList>;
@@ -361,10 +486,10 @@ export const Mappings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Mappings" }) as any as S.Schema<Mappings>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionsCreateRequestMappingsList = Mappings[];
-export const HogFunctionsCreateRequestMappingsList = /*@__PURE__*/ S.Array(
+export type HogFunctionOutputMappingsList = ReadonlyArray<Mappings>;
+export const HogFunctionOutputMappingsList = /*@__PURE__*/ S.Array(
   Mappings,
-) as any as S.Schema<HogFunctionsCreateRequestMappingsList>;
+) as any as S.Schema<HogFunctionOutputMappingsList>;
 
 export interface HogFunctionMappingTemplate {
   /** Name of this mapping template. */
@@ -395,7 +520,7 @@ export const HogFunctionMappingTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** Pre-defined mapping configurations for destination templates. */
 export type HogFunctionTemplateMappingTemplatesList =
-  HogFunctionMappingTemplate[];
+  ReadonlyArray<HogFunctionMappingTemplate>;
 export const HogFunctionTemplateMappingTemplatesList = /*@__PURE__*/ S.Array(
   HogFunctionMappingTemplate,
 ) as any as S.Schema<HogFunctionTemplateMappingTemplatesList>;
@@ -453,25 +578,27 @@ export const HogFunctionTemplate = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionTemplate",
 }) as any as S.Schema<HogFunctionTemplate>;
 
+/** * `0` - 0 * `1` - 1 * `2` - 2 * `3` - 3 * `11` - 11 * `12` - 12 */
+export type HogFunctionStatusStateEnum = 0 | 1 | 2 | 3 | 11 | 12;
+export const HogFunctionStatusStateEnum = /*@__PURE__*/ S.Number;
+
 export interface HogFunctionStatus {
-  state?: number;
+  state?: HogFunctionStatusStateEnum;
   tokens?: number;
 }
 export const HogFunctionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    state: S.optional(S.Number),
+    state: S.optional(HogFunctionStatusStateEnum),
     tokens: S.optional(S.Number),
   }),
 ).annotate({
   identifier: "HogFunctionStatus",
 }) as any as S.Schema<HogFunctionStatus>;
 
-export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
+export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
-export interface HogFunctionsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
+export interface HogFunctionOutput {
   id?: string;
   /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
   type?: HogFunctionTypeEnum | null;
@@ -480,168 +607,62 @@ export interface HogFunctionsCreateRequest {
   /** Human-readable description of what this function does. */
   description?: string;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   updated_at?: string;
   /** Whether the function is active and processing events. */
   enabled?: boolean;
-  /** Soft-delete flag. Set to true to archive the function. */
-  deleted?: boolean;
   /** Source code. Hog language for most types; TypeScript for site_destination and site_app. */
   hog?: string;
   bytecode?: unknown;
   transpiled?: string | null;
   /** Schema defining the configurable input parameters for this function. */
-  inputs_schema?: HogFunctionsCreateRequestInputsSchemaList;
+  inputs_schema?: HogFunctionOutputInputsSchemaList;
   /** Values for each input defined in inputs_schema. */
-  inputs?: HogFunctionsCreateRequestInputsMap;
+  inputs?: HogFunctionOutputInputsMap;
   /** Event filters that control which events trigger this function. */
   filters?: HogFunctionFilters;
   /** PII masking configuration with TTL, threshold, and hash expression. */
   masking?: HogFunctionMasking | null;
   /** Event-to-destination field mappings. Only for destination and site_destination types. */
-  mappings?: HogFunctionsCreateRequestMappingsList | null;
+  mappings?: HogFunctionOutputMappingsList | null;
   /** URL for the function's icon displayed in the UI. */
   icon_url?: string | null;
   template?: HogFunctionTemplate;
-  /** ID of the template to create this function from. */
-  template_id?: string | null;
   status?: HogFunctionStatus | null;
   /** Execution priority for transformations. Lower values run first. */
   execution_order?: number | null;
-  _create_in_folder?: string;
   batch_export_id?: string | null;
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
   search_match_type?: SearchMatchTypeEnum | null;
 }
-export const HogFunctionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    type: S.optional(S.NullOr(HogFunctionTypeEnum)),
-    name: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.String),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    deleted: S.optional(S.Boolean),
-    hog: S.optional(S.String),
-    bytecode: S.optional(S.Unknown),
-    transpiled: S.optional(S.NullOr(S.String)),
-    inputs_schema: S.optional(HogFunctionsCreateRequestInputsSchemaList),
-    inputs: S.optional(HogFunctionsCreateRequestInputsMap),
-    filters: S.optional(HogFunctionFilters),
-    masking: S.optional(S.NullOr(HogFunctionMasking)),
-    mappings: S.optional(S.NullOr(HogFunctionsCreateRequestMappingsList)),
-    icon_url: S.optional(S.NullOr(S.String)),
-    template: S.optional(HogFunctionTemplate),
-    template_id: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(HogFunctionStatus)),
-    execution_order: S.optional(S.NullOr(S.Number)),
-    _create_in_folder: S.optional(S.String),
-    batch_export_id: S.optional(S.NullOr(S.String)),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/hog_functions/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HogFunctionsCreateRequest",
-}) as any as S.Schema<HogFunctionsCreateRequest>;
-
-/** Schema defining the configurable input parameters for this function. */
-export type HogFunctionInputsSchemaList = InputsSchemaItem[];
-export const HogFunctionInputsSchemaList = /*@__PURE__*/ S.Array(
-  InputsSchemaItem,
-) as any as S.Schema<HogFunctionInputsSchemaList>;
-
-/** Values for each input defined in inputs_schema. */
-export type HogFunctionInputsMap = { [key: string]: InputsItem | undefined };
-export const HogFunctionInputsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InputsItem,
-) as any as S.Schema<HogFunctionInputsMap>;
-
-/** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionMappingsList = Mappings[];
-export const HogFunctionMappingsList = /*@__PURE__*/ S.Array(
-  Mappings,
-) as any as S.Schema<HogFunctionMappingsList>;
-
-export interface HogFunction {
-  id?: string;
-  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
-  type?: HogFunctionTypeEnum | null;
-  /** Display name for the function. */
-  name?: string | null;
-  /** Human-readable description of what this function does. */
-  description?: string;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string;
-  /** Whether the function is active and processing events. */
-  enabled?: boolean;
-  /** Soft-delete flag. Set to true to archive the function. */
-  deleted?: boolean;
-  /** Source code. Hog language for most types; TypeScript for site_destination and site_app. */
-  hog?: string;
-  bytecode?: unknown;
-  transpiled?: string | null;
-  /** Schema defining the configurable input parameters for this function. */
-  inputs_schema?: HogFunctionInputsSchemaList;
-  /** Values for each input defined in inputs_schema. */
-  inputs?: HogFunctionInputsMap;
-  /** Event filters that control which events trigger this function. */
-  filters?: HogFunctionFilters;
-  /** PII masking configuration with TTL, threshold, and hash expression. */
-  masking?: HogFunctionMasking | null;
-  /** Event-to-destination field mappings. Only for destination and site_destination types. */
-  mappings?: HogFunctionMappingsList | null;
-  /** URL for the function's icon displayed in the UI. */
-  icon_url?: string | null;
-  template?: HogFunctionTemplate;
-  /** ID of the template to create this function from. */
-  template_id?: string | null;
-  status?: HogFunctionStatus | null;
-  /** Execution priority for transformations. Lower values run first. */
-  execution_order?: number | null;
-  _create_in_folder?: string;
-  batch_export_id?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
-}
-export const HogFunction = /*@__PURE__*/ S.suspend(() =>
+export const HogFunctionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.NullOr(HogFunctionTypeEnum)),
     name: S.optional(S.NullOr(S.String)),
     description: S.optional(S.String),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     updated_at: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    deleted: S.optional(S.Boolean),
     hog: S.optional(S.String),
     bytecode: S.optional(S.Unknown),
     transpiled: S.optional(S.NullOr(S.String)),
-    inputs_schema: S.optional(HogFunctionInputsSchemaList),
-    inputs: S.optional(HogFunctionInputsMap),
+    inputs_schema: S.optional(HogFunctionOutputInputsSchemaList),
+    inputs: S.optional(HogFunctionOutputInputsMap),
     filters: S.optional(HogFunctionFilters),
     masking: S.optional(S.NullOr(HogFunctionMasking)),
-    mappings: S.optional(S.NullOr(HogFunctionMappingsList)),
+    mappings: S.optional(S.NullOr(HogFunctionOutputMappingsList)),
     icon_url: S.optional(S.NullOr(S.String)),
     template: S.optional(HogFunctionTemplate),
-    template_id: S.optional(S.NullOr(S.String)),
     status: S.optional(S.NullOr(HogFunctionStatus)),
     execution_order: S.optional(S.NullOr(S.Number)),
-    _create_in_folder: S.optional(S.String),
     batch_export_id: S.optional(S.NullOr(S.String)),
     search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }),
-).annotate({ identifier: "HogFunction" }) as any as S.Schema<HogFunction>;
+).annotate({
+  identifier: "HogFunctionOutput",
+}) as any as S.Schema<HogFunctionOutput>;
 
 export interface HogFunctionsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -673,7 +694,7 @@ export const HogFunctionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Schema defining the configurable input parameters for this function. */
 export type HogFunctionsEnableBackfillsCreateRequestInputsSchemaList =
-  InputsSchemaItem[];
+  ReadonlyArray<InputsSchemaItem>;
 export const HogFunctionsEnableBackfillsCreateRequestInputsSchemaList =
   /*@__PURE__*/ S.Array(
     InputsSchemaItem,
@@ -681,19 +702,20 @@ export const HogFunctionsEnableBackfillsCreateRequestInputsSchemaList =
 
 /** Values for each input defined in inputs_schema. */
 export type HogFunctionsEnableBackfillsCreateRequestInputsMap = {
-  [key: string]: InputsItem | undefined;
+  [key: string]: InputsItemInput | undefined;
 };
 export const HogFunctionsEnableBackfillsCreateRequestInputsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    InputsItem,
+    InputsItemInput,
   ) as any as S.Schema<HogFunctionsEnableBackfillsCreateRequestInputsMap>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionsEnableBackfillsCreateRequestMappingsList = Mappings[];
+export type HogFunctionsEnableBackfillsCreateRequestMappingsList =
+  ReadonlyArray<MappingsInput>;
 export const HogFunctionsEnableBackfillsCreateRequestMappingsList =
   /*@__PURE__*/ S.Array(
-    Mappings,
+    MappingsInput,
   ) as any as S.Schema<HogFunctionsEnableBackfillsCreateRequestMappingsList>;
 
 export interface HogFunctionsEnableBackfillsCreateRequest {
@@ -707,17 +729,12 @@ export interface HogFunctionsEnableBackfillsCreateRequest {
   name?: string | null;
   /** Human-readable description of what this function does. */
   description?: string;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string;
   /** Whether the function is active and processing events. */
   enabled?: boolean;
   /** Soft-delete flag. Set to true to archive the function. */
   deleted?: boolean;
   /** Source code. Hog language for most types; TypeScript for site_destination and site_app. */
   hog?: string;
-  bytecode?: unknown;
-  transpiled?: string | null;
   /** Schema defining the configurable input parameters for this function. */
   inputs_schema?: HogFunctionsEnableBackfillsCreateRequestInputsSchemaList;
   /** Values for each input defined in inputs_schema. */
@@ -730,16 +747,11 @@ export interface HogFunctionsEnableBackfillsCreateRequest {
   mappings?: HogFunctionsEnableBackfillsCreateRequestMappingsList | null;
   /** URL for the function's icon displayed in the UI. */
   icon_url?: string | null;
-  template?: HogFunctionTemplate;
   /** ID of the template to create this function from. */
   template_id?: string | null;
-  status?: HogFunctionStatus | null;
   /** Execution priority for transformations. Lower values run first. */
   execution_order?: number | null;
   _create_in_folder?: string;
-  batch_export_id?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const HogFunctionsEnableBackfillsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -749,14 +761,9 @@ export const HogFunctionsEnableBackfillsCreateRequest = /*@__PURE__*/ S.suspend(
       type: S.optional(S.NullOr(HogFunctionTypeEnum)),
       name: S.optional(S.NullOr(S.String)),
       description: S.optional(S.String),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      updated_at: S.optional(S.String),
       enabled: S.optional(S.Boolean),
       deleted: S.optional(S.Boolean),
       hog: S.optional(S.String),
-      bytecode: S.optional(S.Unknown),
-      transpiled: S.optional(S.NullOr(S.String)),
       inputs_schema: S.optional(
         HogFunctionsEnableBackfillsCreateRequestInputsSchemaList,
       ),
@@ -767,13 +774,9 @@ export const HogFunctionsEnableBackfillsCreateRequest = /*@__PURE__*/ S.suspend(
         S.NullOr(HogFunctionsEnableBackfillsCreateRequestMappingsList),
       ),
       icon_url: S.optional(S.NullOr(S.String)),
-      template: S.optional(HogFunctionTemplate),
       template_id: S.optional(S.NullOr(S.String)),
-      status: S.optional(S.NullOr(HogFunctionStatus)),
       execution_order: S.optional(S.NullOr(S.Number)),
       _create_in_folder: S.optional(S.String),
-      batch_export_id: S.optional(S.NullOr(S.String)),
-      search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -841,6 +844,80 @@ export const HogFunctionsIconsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionsIconsRetrieveResponse",
 }) as any as S.Schema<HogFunctionsIconsRetrieveResponse>;
 
+/** Schema defining the configurable input parameters for this function. */
+export type HogFunctionInputInputsSchemaList = ReadonlyArray<InputsSchemaItem>;
+export const HogFunctionInputInputsSchemaList = /*@__PURE__*/ S.Array(
+  InputsSchemaItem,
+) as any as S.Schema<HogFunctionInputInputsSchemaList>;
+
+/** Values for each input defined in inputs_schema. */
+export type HogFunctionInputInputsMap = {
+  [key: string]: InputsItemInput | undefined;
+};
+export const HogFunctionInputInputsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  InputsItemInput,
+) as any as S.Schema<HogFunctionInputInputsMap>;
+
+/** Event-to-destination field mappings. Only for destination and site_destination types. */
+export type HogFunctionInputMappingsList = ReadonlyArray<MappingsInput>;
+export const HogFunctionInputMappingsList = /*@__PURE__*/ S.Array(
+  MappingsInput,
+) as any as S.Schema<HogFunctionInputMappingsList>;
+
+export interface HogFunctionInput {
+  /** Function type: destination, site_destination, internal_destination, source_webhook, warehouse_source_webhook, site_app, or transformation. * `destination` - Destination * `site_destination` - Site Destination * `internal_destination` - Internal Destination * `source_webhook` - Source Webhook * `warehouse_source_webhook` - Warehouse Source Webhook * `site_app` - Site App * `transformation` - Transformation */
+  type?: HogFunctionTypeEnum | null;
+  /** Display name for the function. */
+  name?: string | null;
+  /** Human-readable description of what this function does. */
+  description?: string;
+  /** Whether the function is active and processing events. */
+  enabled?: boolean;
+  /** Soft-delete flag. Set to true to archive the function. */
+  deleted?: boolean;
+  /** Source code. Hog language for most types; TypeScript for site_destination and site_app. */
+  hog?: string;
+  /** Schema defining the configurable input parameters for this function. */
+  inputs_schema?: HogFunctionInputInputsSchemaList;
+  /** Values for each input defined in inputs_schema. */
+  inputs?: HogFunctionInputInputsMap;
+  /** Event filters that control which events trigger this function. */
+  filters?: HogFunctionFilters;
+  /** PII masking configuration with TTL, threshold, and hash expression. */
+  masking?: HogFunctionMasking | null;
+  /** Event-to-destination field mappings. Only for destination and site_destination types. */
+  mappings?: HogFunctionInputMappingsList | null;
+  /** URL for the function's icon displayed in the UI. */
+  icon_url?: string | null;
+  /** ID of the template to create this function from. */
+  template_id?: string | null;
+  /** Execution priority for transformations. Lower values run first. */
+  execution_order?: number | null;
+  _create_in_folder?: string;
+}
+export const HogFunctionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.NullOr(HogFunctionTypeEnum)),
+    name: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    deleted: S.optional(S.Boolean),
+    hog: S.optional(S.String),
+    inputs_schema: S.optional(HogFunctionInputInputsSchemaList),
+    inputs: S.optional(HogFunctionInputInputsMap),
+    filters: S.optional(HogFunctionFilters),
+    masking: S.optional(S.NullOr(HogFunctionMasking)),
+    mappings: S.optional(S.NullOr(HogFunctionInputMappingsList)),
+    icon_url: S.optional(S.NullOr(S.String)),
+    template_id: S.optional(S.NullOr(S.String)),
+    execution_order: S.optional(S.NullOr(S.Number)),
+    _create_in_folder: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HogFunctionInput",
+}) as any as S.Schema<HogFunctionInput>;
+
 /** Mock global variables available during test invocation. */
 export type HogFunctionsInvocationsCreateRequestGlobalsMap = {
   [key: string]: unknown | undefined;
@@ -861,30 +938,19 @@ export const HogFunctionsInvocationsCreateRequestClickhouseEventMap =
     S.Unknown,
   ) as any as S.Schema<HogFunctionsInvocationsCreateRequestClickhouseEventMap>;
 
-/** Execution logs from the test invocation. */
-export type HogFunctionsInvocationsCreateRequestLogsList = unknown[];
-export const HogFunctionsInvocationsCreateRequestLogsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<HogFunctionsInvocationsCreateRequestLogsList>;
-
 export interface HogFunctionsInvocationsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this hog function. */
   id: string;
   /** Full function configuration to test. */
-  configuration?: HogFunction;
+  configuration?: HogFunctionInput;
   /** Mock global variables available during test invocation. */
   globals?: HogFunctionsInvocationsCreateRequestGlobalsMap;
   /** Mock ClickHouse event data to test the function with. */
   clickhouse_event?: HogFunctionsInvocationsCreateRequestClickhouseEventMap;
   /** When true (default), async functions like fetch() are simulated. */
   mock_async_functions?: boolean;
-  /** Invocation result status. */
-  status?: string;
-  /** Execution logs from the test invocation. */
-  logs?: HogFunctionsInvocationsCreateRequestLogsList;
   /** Optional invocation ID for correlation. */
   invocation_id?: string | null;
 }
@@ -893,14 +959,12 @@ export const HogFunctionsInvocationsCreateRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      configuration: S.optional(HogFunction),
+      configuration: S.optional(HogFunctionInput),
       globals: S.optional(HogFunctionsInvocationsCreateRequestGlobalsMap),
       clickhouse_event: S.optional(
         HogFunctionsInvocationsCreateRequestClickhouseEventMap,
       ),
       mock_async_functions: S.optional(S.Boolean),
-      status: S.optional(S.String),
-      logs: S.optional(HogFunctionsInvocationsCreateRequestLogsList),
       invocation_id: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
@@ -913,61 +977,31 @@ export const HogFunctionsInvocationsCreateRequest = /*@__PURE__*/ S.suspend(
   identifier: "HogFunctionsInvocationsCreateRequest",
 }) as any as S.Schema<HogFunctionsInvocationsCreateRequest>;
 
-/** Mock global variables available during test invocation. */
-export type HogFunctionInvocationGlobalsMap = {
-  [key: string]: unknown | undefined;
-};
-export const HogFunctionInvocationGlobalsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HogFunctionInvocationGlobalsMap>;
-
-/** Mock ClickHouse event data to test the function with. */
-export type HogFunctionInvocationClickhouseEventMap = {
-  [key: string]: unknown | undefined;
-};
-export const HogFunctionInvocationClickhouseEventMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HogFunctionInvocationClickhouseEventMap>;
-
 /** Execution logs from the test invocation. */
-export type HogFunctionInvocationLogsList = unknown[];
-export const HogFunctionInvocationLogsList = /*@__PURE__*/ S.Array(
+export type HogFunctionInvocationOutputLogsList = ReadonlyArray<unknown>;
+export const HogFunctionInvocationOutputLogsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<HogFunctionInvocationLogsList>;
+) as any as S.Schema<HogFunctionInvocationOutputLogsList>;
 
-export interface HogFunctionInvocation {
-  /** Full function configuration to test. */
-  configuration?: HogFunction;
-  /** Mock global variables available during test invocation. */
-  globals?: HogFunctionInvocationGlobalsMap;
-  /** Mock ClickHouse event data to test the function with. */
-  clickhouse_event?: HogFunctionInvocationClickhouseEventMap;
-  /** When true (default), async functions like fetch() are simulated. */
-  mock_async_functions?: boolean;
+export interface HogFunctionInvocationOutput {
   /** Invocation result status. */
   status?: string;
   /** Execution logs from the test invocation. */
-  logs?: HogFunctionInvocationLogsList;
+  logs?: HogFunctionInvocationOutputLogsList;
   /** Optional invocation ID for correlation. */
   invocation_id?: string | null;
 }
-export const HogFunctionInvocation = /*@__PURE__*/ S.suspend(() =>
+export const HogFunctionInvocationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    configuration: S.optional(HogFunction),
-    globals: S.optional(HogFunctionInvocationGlobalsMap),
-    clickhouse_event: S.optional(HogFunctionInvocationClickhouseEventMap),
-    mock_async_functions: S.optional(S.Boolean),
     status: S.optional(S.String),
-    logs: S.optional(HogFunctionInvocationLogsList),
+    logs: S.optional(HogFunctionInvocationOutputLogsList),
     invocation_id: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
-  identifier: "HogFunctionInvocation",
-}) as any as S.Schema<HogFunctionInvocation>;
+  identifier: "HogFunctionInvocationOutput",
+}) as any as S.Schema<HogFunctionInvocationOutput>;
 
-export type HogFunctionsListRequestTypeList = string[];
+export type HogFunctionsListRequestTypeList = ReadonlyArray<string>;
 export const HogFunctionsListRequestTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogFunctionsListRequestTypeList>;
@@ -1015,7 +1049,7 @@ export interface HogFunctionMinimal {
   name?: string | null;
   description?: string;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   updated_at?: string;
   enabled?: boolean;
   hog?: string;
@@ -1034,7 +1068,7 @@ export const HogFunctionMinimal = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.NullOr(S.String)),
     description: S.optional(S.String),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     updated_at: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     hog: S.optional(S.String),
@@ -1049,7 +1083,8 @@ export const HogFunctionMinimal = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionMinimal",
 }) as any as S.Schema<HogFunctionMinimal>;
 
-export type PaginatedHogFunctionMinimalListResultsList = HogFunctionMinimal[];
+export type PaginatedHogFunctionMinimalListResultsList =
+  ReadonlyArray<HogFunctionMinimal>;
 export const PaginatedHogFunctionMinimalListResultsList = /*@__PURE__*/ S.Array(
   HogFunctionMinimal,
 ) as any as S.Schema<PaginatedHogFunctionMinimalListResultsList>;
@@ -1117,18 +1152,14 @@ export const HogFunctionsLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionsLogsRetrieveResponse",
 }) as any as S.Schema<HogFunctionsLogsRetrieveResponse>;
 
-export type HogFunctionsMetricsRetrieveRequestBreakdownBy =
-  | "name"
-  | "kind"
-  | (string & {});
+export type HogFunctionsMetricsRetrieveRequestBreakdownBy = "name" | "kind";
 export const HogFunctionsMetricsRetrieveRequestBreakdownBy =
   /*@__PURE__*/ S.String;
 
 export type HogFunctionsMetricsRetrieveRequestInterval =
   | "hour"
   | "day"
-  | "week"
-  | (string & {});
+  | "week";
 export const HogFunctionsMetricsRetrieveRequestInterval =
   /*@__PURE__*/ S.String;
 
@@ -1178,12 +1209,12 @@ export const HogFunctionsMetricsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "HogFunctionsMetricsRetrieveRequest",
 }) as any as S.Schema<HogFunctionsMetricsRetrieveRequest>;
 
-export type AppMetricsResponseLabelsList = string[];
+export type AppMetricsResponseLabelsList = ReadonlyArray<string>;
 export const AppMetricsResponseLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppMetricsResponseLabelsList>;
 
-export type AppMetricSeriesValuesList = number[];
+export type AppMetricSeriesValuesList = ReadonlyArray<number>;
 export const AppMetricSeriesValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AppMetricSeriesValuesList>;
@@ -1201,7 +1232,7 @@ export const AppMetricSeries = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppMetricSeries",
 }) as any as S.Schema<AppMetricSeries>;
 
-export type AppMetricsResponseSeriesList = AppMetricSeries[];
+export type AppMetricsResponseSeriesList = ReadonlyArray<AppMetricSeries>;
 export const AppMetricsResponseSeriesList = /*@__PURE__*/ S.Array(
   AppMetricSeries,
 ) as any as S.Schema<AppMetricsResponseSeriesList>;
@@ -1221,16 +1252,14 @@ export const AppMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type HogFunctionsMetricsTotalsRetrieveRequestBreakdownBy =
   | "name"
-  | "kind"
-  | (string & {});
+  | "kind";
 export const HogFunctionsMetricsTotalsRetrieveRequestBreakdownBy =
   /*@__PURE__*/ S.String;
 
 export type HogFunctionsMetricsTotalsRetrieveRequestInterval =
   | "hour"
   | "day"
-  | "week"
-  | (string & {});
+  | "week";
 export const HogFunctionsMetricsTotalsRetrieveRequestInterval =
   /*@__PURE__*/ S.String;
 
@@ -1302,7 +1331,7 @@ export const AppMetricsTotalsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Schema defining the configurable input parameters for this function. */
 export type HogFunctionsPartialUpdateRequestInputsSchemaList =
-  InputsSchemaItem[];
+  ReadonlyArray<InputsSchemaItem>;
 export const HogFunctionsPartialUpdateRequestInputsSchemaList =
   /*@__PURE__*/ S.Array(
     InputsSchemaItem,
@@ -1310,18 +1339,19 @@ export const HogFunctionsPartialUpdateRequestInputsSchemaList =
 
 /** Values for each input defined in inputs_schema. */
 export type HogFunctionsPartialUpdateRequestInputsMap = {
-  [key: string]: InputsItem | undefined;
+  [key: string]: InputsItemInput | undefined;
 };
 export const HogFunctionsPartialUpdateRequestInputsMap = /*@__PURE__*/ S.Record(
   S.String,
-  InputsItem,
+  InputsItemInput,
 ) as any as S.Schema<HogFunctionsPartialUpdateRequestInputsMap>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionsPartialUpdateRequestMappingsList = Mappings[];
+export type HogFunctionsPartialUpdateRequestMappingsList =
+  ReadonlyArray<MappingsInput>;
 export const HogFunctionsPartialUpdateRequestMappingsList =
   /*@__PURE__*/ S.Array(
-    Mappings,
+    MappingsInput,
   ) as any as S.Schema<HogFunctionsPartialUpdateRequestMappingsList>;
 
 export interface HogFunctionsPartialUpdateRequest {
@@ -1335,17 +1365,12 @@ export interface HogFunctionsPartialUpdateRequest {
   name?: string | null;
   /** Human-readable description of what this function does. */
   description?: string;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string;
   /** Whether the function is active and processing events. */
   enabled?: boolean;
   /** Soft-delete flag. Set to true to archive the function. */
   deleted?: boolean;
   /** Source code. Hog language for most types; TypeScript for site_destination and site_app. */
   hog?: string;
-  bytecode?: unknown;
-  transpiled?: string | null;
   /** Schema defining the configurable input parameters for this function. */
   inputs_schema?: HogFunctionsPartialUpdateRequestInputsSchemaList;
   /** Values for each input defined in inputs_schema. */
@@ -1358,16 +1383,11 @@ export interface HogFunctionsPartialUpdateRequest {
   mappings?: HogFunctionsPartialUpdateRequestMappingsList | null;
   /** URL for the function's icon displayed in the UI. */
   icon_url?: string | null;
-  template?: HogFunctionTemplate;
   /** ID of the template to create this function from. */
   template_id?: string | null;
-  status?: HogFunctionStatus | null;
   /** Execution priority for transformations. Lower values run first. */
   execution_order?: number | null;
   _create_in_folder?: string;
-  batch_export_id?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const HogFunctionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1376,14 +1396,9 @@ export const HogFunctionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.NullOr(HogFunctionTypeEnum)),
     name: S.optional(S.NullOr(S.String)),
     description: S.optional(S.String),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     deleted: S.optional(S.Boolean),
     hog: S.optional(S.String),
-    bytecode: S.optional(S.Unknown),
-    transpiled: S.optional(S.NullOr(S.String)),
     inputs_schema: S.optional(HogFunctionsPartialUpdateRequestInputsSchemaList),
     inputs: S.optional(HogFunctionsPartialUpdateRequestInputsMap),
     filters: S.optional(HogFunctionFilters),
@@ -1392,13 +1407,9 @@ export const HogFunctionsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       S.NullOr(HogFunctionsPartialUpdateRequestMappingsList),
     ),
     icon_url: S.optional(S.NullOr(S.String)),
-    template: S.optional(HogFunctionTemplate),
     template_id: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(HogFunctionStatus)),
     execution_order: S.optional(S.NullOr(S.Number)),
     _create_in_folder: S.optional(S.String),
-    batch_export_id: S.optional(S.NullOr(S.String)),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1442,10 +1453,11 @@ export const HogFunctionsRearrangePartialUpdateRequest =
     identifier: "HogFunctionsRearrangePartialUpdateRequest",
   }) as any as S.Schema<HogFunctionsRearrangePartialUpdateRequest>;
 
-export type HogFunctionsRearrangePartialUpdateResponseBodyList = HogFunction[];
+export type HogFunctionsRearrangePartialUpdateResponseBodyList =
+  ReadonlyArray<HogFunctionOutput>;
 export const HogFunctionsRearrangePartialUpdateResponseBodyList =
   /*@__PURE__*/ S.Array(
-    HogFunction,
+    HogFunctionOutput,
   ) as any as S.Schema<HogFunctionsRearrangePartialUpdateResponseBodyList>;
 
 export type HogFunctionsRearrangePartialUpdateResponse =
@@ -1463,25 +1475,24 @@ export const HogFunctionsRearrangePartialUpdateResponse =
 export type HogInvocationRerunFilterStatusEnum =
   | "running"
   | "succeeded"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const HogInvocationRerunFilterStatusEnum = /*@__PURE__*/ S.String;
 
 /** Restrict to invocations whose latest status is one of these. Defaults to ['failed']. */
 export type HogInvocationRerunFilterStatusList =
-  HogInvocationRerunFilterStatusEnum[];
+  ReadonlyArray<HogInvocationRerunFilterStatusEnum>;
 export const HogInvocationRerunFilterStatusList = /*@__PURE__*/ S.Array(
   HogInvocationRerunFilterStatusEnum,
 ) as any as S.Schema<HogInvocationRerunFilterStatusList>;
 
 /** Restrict to invocations whose error_kind matches one of these (e.g. 'http_5xx', 'timeout'). */
-export type HogInvocationRerunFilterErrorKindList = string[];
+export type HogInvocationRerunFilterErrorKindList = ReadonlyArray<string>;
 export const HogInvocationRerunFilterErrorKindList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogInvocationRerunFilterErrorKindList>;
 
 /** Optional restriction to specific invocation IDs within the window. Capped at 10000 per request. Always combined with `window_start`/`window_end` so the ClickHouse query can be partition-pruned. */
-export type HogInvocationRerunFilterInvocationIdsList = string[];
+export type HogInvocationRerunFilterInvocationIdsList = ReadonlyArray<string>;
 export const HogInvocationRerunFilterInvocationIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HogInvocationRerunFilterInvocationIdsList>;
@@ -1582,24 +1593,26 @@ export const HogFunctionsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HogFunctionsRetrieveRequest>;
 
 /** Schema defining the configurable input parameters for this function. */
-export type HogFunctionsUpdateRequestInputsSchemaList = InputsSchemaItem[];
+export type HogFunctionsUpdateRequestInputsSchemaList =
+  ReadonlyArray<InputsSchemaItem>;
 export const HogFunctionsUpdateRequestInputsSchemaList = /*@__PURE__*/ S.Array(
   InputsSchemaItem,
 ) as any as S.Schema<HogFunctionsUpdateRequestInputsSchemaList>;
 
 /** Values for each input defined in inputs_schema. */
 export type HogFunctionsUpdateRequestInputsMap = {
-  [key: string]: InputsItem | undefined;
+  [key: string]: InputsItemInput | undefined;
 };
 export const HogFunctionsUpdateRequestInputsMap = /*@__PURE__*/ S.Record(
   S.String,
-  InputsItem,
+  InputsItemInput,
 ) as any as S.Schema<HogFunctionsUpdateRequestInputsMap>;
 
 /** Event-to-destination field mappings. Only for destination and site_destination types. */
-export type HogFunctionsUpdateRequestMappingsList = Mappings[];
+export type HogFunctionsUpdateRequestMappingsList =
+  ReadonlyArray<MappingsInput>;
 export const HogFunctionsUpdateRequestMappingsList = /*@__PURE__*/ S.Array(
-  Mappings,
+  MappingsInput,
 ) as any as S.Schema<HogFunctionsUpdateRequestMappingsList>;
 
 export interface HogFunctionsUpdateRequest {
@@ -1613,17 +1626,12 @@ export interface HogFunctionsUpdateRequest {
   name?: string | null;
   /** Human-readable description of what this function does. */
   description?: string;
-  created_at?: string;
-  created_by?: UserBasic;
-  updated_at?: string;
   /** Whether the function is active and processing events. */
   enabled?: boolean;
   /** Soft-delete flag. Set to true to archive the function. */
   deleted?: boolean;
   /** Source code. Hog language for most types; TypeScript for site_destination and site_app. */
   hog?: string;
-  bytecode?: unknown;
-  transpiled?: string | null;
   /** Schema defining the configurable input parameters for this function. */
   inputs_schema?: HogFunctionsUpdateRequestInputsSchemaList;
   /** Values for each input defined in inputs_schema. */
@@ -1636,16 +1644,11 @@ export interface HogFunctionsUpdateRequest {
   mappings?: HogFunctionsUpdateRequestMappingsList | null;
   /** URL for the function's icon displayed in the UI. */
   icon_url?: string | null;
-  template?: HogFunctionTemplate;
   /** ID of the template to create this function from. */
   template_id?: string | null;
-  status?: HogFunctionStatus | null;
   /** Execution priority for transformations. Lower values run first. */
   execution_order?: number | null;
   _create_in_folder?: string;
-  batch_export_id?: string | null;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
 }
 export const HogFunctionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1654,27 +1657,18 @@ export const HogFunctionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.NullOr(HogFunctionTypeEnum)),
     name: S.optional(S.NullOr(S.String)),
     description: S.optional(S.String),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    updated_at: S.optional(S.String),
     enabled: S.optional(S.Boolean),
     deleted: S.optional(S.Boolean),
     hog: S.optional(S.String),
-    bytecode: S.optional(S.Unknown),
-    transpiled: S.optional(S.NullOr(S.String)),
     inputs_schema: S.optional(HogFunctionsUpdateRequestInputsSchemaList),
     inputs: S.optional(HogFunctionsUpdateRequestInputsMap),
     filters: S.optional(HogFunctionFilters),
     masking: S.optional(S.NullOr(HogFunctionMasking)),
     mappings: S.optional(S.NullOr(HogFunctionsUpdateRequestMappingsList)),
     icon_url: S.optional(S.NullOr(S.String)),
-    template: S.optional(HogFunctionTemplate),
     template_id: S.optional(S.NullOr(S.String)),
-    status: S.optional(S.NullOr(HogFunctionStatus)),
     execution_order: S.optional(S.NullOr(S.Number)),
     _create_in_folder: S.optional(S.String),
-    batch_export_id: S.optional(S.NullOr(S.String)),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1693,12 +1687,12 @@ export type HogFunctionsCreateError =
   | PosthogOpError;
 export const hogFunctionsCreate: API.OperationMethod<
   HogFunctionsCreateRequest,
-  HogFunction,
+  HogFunctionOutput,
   HogFunctionsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HogFunctionsCreateRequest,
-  output: HogFunction,
+  output: HogFunctionOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1778,12 +1772,12 @@ export type HogFunctionsInvocationsCreateError =
   | PosthogOpError;
 export const hogFunctionsInvocationsCreate: API.OperationMethod<
   HogFunctionsInvocationsCreateRequest,
-  HogFunctionInvocation,
+  HogFunctionInvocationOutput,
   HogFunctionsInvocationsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HogFunctionsInvocationsCreateRequest,
-  output: HogFunctionInvocation,
+  output: HogFunctionInvocationOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1868,12 +1862,12 @@ export type HogFunctionsPartialUpdateError =
   | PosthogOpError;
 export const hogFunctionsPartialUpdate: API.OperationMethod<
   HogFunctionsPartialUpdateRequest,
-  HogFunction,
+  HogFunctionOutput,
   HogFunctionsPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HogFunctionsPartialUpdateRequest,
-  output: HogFunction,
+  output: HogFunctionOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1916,12 +1910,12 @@ export const hogFunctionsRerunCreate: API.OperationMethod<
 export type HogFunctionsRetrieveError = Forbidden | NotFound | PosthogOpError;
 export const hogFunctionsRetrieve: API.OperationMethod<
   HogFunctionsRetrieveRequest,
-  HogFunction,
+  HogFunctionOutput,
   HogFunctionsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HogFunctionsRetrieveRequest,
-  output: HogFunction,
+  output: HogFunctionOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1934,12 +1928,12 @@ export type HogFunctionsUpdateError =
   | PosthogOpError;
 export const hogFunctionsUpdate: API.OperationMethod<
   HogFunctionsUpdateRequest,
-  HogFunction,
+  HogFunctionOutput,
   HogFunctionsUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: HogFunctionsUpdateRequest,
-  output: HogFunction,
+  output: HogFunctionOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

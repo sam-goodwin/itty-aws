@@ -158,7 +158,8 @@
         "created_by": {
           "target": "com.posthog.endpoints#UserBasic",
           "traits": {
-            "smithy.api#documentation": "User who created the endpoint."
+            "smithy.api#documentation": "User who created the endpoint.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "is_materialized": {
@@ -773,7 +774,8 @@
         "created_by": {
           "target": "com.posthog.endpoints#UserBasic",
           "traits": {
-            "smithy.api#documentation": "User who created the endpoint."
+            "smithy.api#documentation": "User who created the endpoint.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "is_materialized": {

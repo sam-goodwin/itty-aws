@@ -71,7 +71,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationEntity>;
 
 /** List of Windows IoT Device Service operations supported by the Microsoft.WindowsIoT resource provider. */
-export type OperationListResultValueList = OperationEntity[];
+export type OperationListResultValueList = ReadonlyArray<OperationEntity>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -95,13 +95,14 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 export interface ServicesCheckDeviceServiceNameAvailabilityRequest {
   /** The subscription identifier. */
   subscriptionId: string;
-  body: unknown;
+  /** The name of the Windows IoT Device Service to check. */
+  name: string;
 }
 export const ServicesCheckDeviceServiceNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -117,8 +118,7 @@ export const ServicesCheckDeviceServiceNameAvailabilityRequest =
 /** The reason for unavailability. */
 export type DeviceServiceNameAvailabilityInfoReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const DeviceServiceNameAvailabilityInfoReason = /*@__PURE__*/ S.String;
 
 /** The properties indicating whether a given Windows IoT Device Service name is available. */
@@ -140,6 +140,37 @@ export const DeviceServiceNameAvailabilityInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceServiceNameAvailabilityInfo",
 }) as any as S.Schema<DeviceServiceNameAvailabilityInfo>;
 
+/** Resource tags. */
+export type ServicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
+
+/** The properties of a Windows IoT Device Service. */
+export interface DeviceServicePropertiesInput {
+  /** Windows IoT Device Service notes. */
+  notes?: string;
+  /** Windows IoT Device Service device allocation, */
+  quantity?: number;
+  /** Windows IoT Device Service ODM AAD domain */
+  billingDomainName?: string;
+  /** Windows IoT Device Service OEM AAD domain */
+  adminDomainName?: string;
+}
+export const DeviceServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notes: S.optional(S.String),
+    quantity: S.optional(S.Number),
+    billingDomainName: S.optional(S.String),
+    adminDomainName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeviceServicePropertiesInput",
+}) as any as S.Schema<DeviceServicePropertiesInput>;
+
 export interface ServicesCreateOrUpdateRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -147,14 +178,24 @@ export interface ServicesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Windows IoT Device Service. */
   deviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ServicesCreateOrUpdateRequestTagsMap;
+  /** The Azure Region where the resource lives */
+  location?: string;
+  /** The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention. */
+  etag?: string;
+  /** The properties of a Windows IoT Device Service. */
+  properties?: DeviceServicePropertiesInput;
 }
 export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     deviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ServicesCreateOrUpdateRequestTagsMap),
+    location: S.optional(S.String),
+    etag: S.optional(S.String),
+    properties: S.optional(DeviceServicePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -413,7 +454,8 @@ export const DeviceService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceService" }) as any as S.Schema<DeviceService>;
 
 /** The array of DeviceService objects. */
-export type DeviceServiceDescriptionListResultValueList = DeviceService[];
+export type DeviceServiceDescriptionListResultValueList =
+  ReadonlyArray<DeviceService>;
 export const DeviceServiceDescriptionListResultValueList =
   /*@__PURE__*/ S.Array(
     DeviceService,
@@ -457,6 +499,15 @@ export const ServicesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServicesListByResourceGroupRequest",
 }) as any as S.Schema<ServicesListByResourceGroupRequest>;
 
+/** Resource tags. */
+export type ServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesUpdateRequestTagsMap>;
+
 export interface ServicesUpdateRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -464,14 +515,24 @@ export interface ServicesUpdateRequest {
   resourceGroupName: string;
   /** The name of the Windows IoT Device Service. */
   deviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ServicesUpdateRequestTagsMap;
+  /** The Azure Region where the resource lives */
+  location?: string;
+  /** The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention. */
+  etag?: string;
+  /** The properties of a Windows IoT Device Service. */
+  properties?: DeviceServicePropertiesInput;
 }
 export const ServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     deviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ServicesUpdateRequestTagsMap),
+    location: S.optional(S.String),
+    etag: S.optional(S.String),
+    properties: S.optional(DeviceServicePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

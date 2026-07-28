@@ -132,12 +132,12 @@ export const CheckAccessResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckAccessResponse",
 }) as any as S.Schema<CheckAccessResponse>;
 
-export type GSuitePrincipalList = GSuitePrincipal[];
+export type GSuitePrincipalList = ReadonlyArray<GSuitePrincipal>;
 export const GSuitePrincipalList = /*@__PURE__*/ S.Array(
   GSuitePrincipal,
 ) as any as S.Schema<GSuitePrincipalList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -201,7 +201,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -246,10 +246,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type SortOptionsSortOrderEnum =
-  | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+export type SortOptionsSortOrderEnum = "ASCENDING" | "DESCENDING";
 export const SortOptionsSortOrderEnum = /*@__PURE__*/ S.String;
 
 export interface SortOptions {
@@ -317,14 +314,10 @@ export const ValueFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ValueFilter" }) as any as S.Schema<ValueFilter>;
 
-export type CompositeFilterLogicOperatorEnum =
-  | "AND"
-  | "OR"
-  | "NOT"
-  | (string & {});
+export type CompositeFilterLogicOperatorEnum = "AND" | "OR" | "NOT";
 export const CompositeFilterLogicOperatorEnum = /*@__PURE__*/ S.String;
 
-export type FilterList = Filter[];
+export type FilterList = ReadonlyArray<Filter>;
 export const FilterList = /*@__PURE__*/ S.Array(
   S.suspend(() => Filter),
 ) as any as S.Schema<FilterList>;
@@ -370,7 +363,7 @@ export const FilterOptions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FilterOptions" }) as any as S.Schema<FilterOptions>;
 
-export type FilterOptionsList = FilterOptions[];
+export type FilterOptionsList = ReadonlyArray<FilterOptions>;
 export const FilterOptionsList = /*@__PURE__*/ S.Array(
   FilterOptions,
 ) as any as S.Schema<FilterOptionsList>;
@@ -384,8 +377,7 @@ export type SourcePredefinedSourceEnum =
   | "GOOGLE_SITES"
   | "GOOGLE_GROUPS"
   | "GOOGLE_CALENDAR"
-  | "GOOGLE_KEEP"
-  | (string & {});
+  | "GOOGLE_KEEP";
 export const SourcePredefinedSourceEnum = /*@__PURE__*/ S.String;
 
 /** Defines sources for the suggest/search APIs. */
@@ -418,7 +410,7 @@ export const DataSourceRestriction = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceRestriction",
 }) as any as S.Schema<DataSourceRestriction>;
 
-export type DataSourceRestrictionList = DataSourceRestriction[];
+export type DataSourceRestrictionList = ReadonlyArray<DataSourceRestriction>;
 export const DataSourceRestrictionList = /*@__PURE__*/ S.Array(
   DataSourceRestriction,
 ) as any as S.Schema<DataSourceRestrictionList>;
@@ -459,7 +451,7 @@ export const FacetOptions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FacetOptions" }) as any as S.Schema<FacetOptions>;
 
-export type FacetOptionsList = FacetOptions[];
+export type FacetOptionsList = ReadonlyArray<FacetOptions>;
 export const FacetOptionsList = /*@__PURE__*/ S.Array(
   FacetOptions,
 ) as any as S.Schema<FacetOptionsList>;
@@ -483,8 +475,7 @@ export const QueryInterpretationConfig = /*@__PURE__*/ S.suspend(() =>
 export type SourceScoringConfigSourceImportanceEnum =
   | "DEFAULT"
   | "LOW"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const SourceScoringConfigSourceImportanceEnum = /*@__PURE__*/ S.String;
 
 /** Set the scoring configuration. This allows modifying the ranking of results for a source. */
@@ -533,7 +524,7 @@ export const SourceConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceConfig" }) as any as S.Schema<SourceConfig>;
 
-export type SourceConfigList = SourceConfig[];
+export type SourceConfigList = ReadonlyArray<SourceConfig>;
 export const SourceConfigList = /*@__PURE__*/ S.Array(
   SourceConfig,
 ) as any as S.Schema<SourceConfigList>;
@@ -617,8 +608,7 @@ export const CreateSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
 export type DeleteIndexingDatasourcesItemsModeEnum =
   | "UNSPECIFIED"
   | "SYNCHRONOUS"
-  | "ASYNCHRONOUS"
-  | (string & {});
+  | "ASYNCHRONOUS";
 export const DeleteIndexingDatasourcesItemsModeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteIndexingDatasourcesItemsRequest {
@@ -865,7 +855,7 @@ export const TimestampValues = /*@__PURE__*/ S.suspend(() =>
   identifier: "TimestampValues",
 }) as any as S.Schema<TimestampValues>;
 
-export type StructuredDataObjectList = StructuredDataObject[];
+export type StructuredDataObjectList = ReadonlyArray<StructuredDataObject>;
 export const StructuredDataObjectList = /*@__PURE__*/ S.Array(
   S.suspend(() => StructuredDataObject),
 ) as any as S.Schema<StructuredDataObjectList>;
@@ -912,7 +902,7 @@ export const HtmlValues = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HtmlValues" }) as any as S.Schema<HtmlValues>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -927,7 +917,7 @@ export const DoubleValues = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DoubleValues" }) as any as S.Schema<DoubleValues>;
 
-export type Cloudsearch_DateList = Cloudsearch_Date[];
+export type Cloudsearch_DateList = ReadonlyArray<Cloudsearch_Date>;
 export const Cloudsearch_DateList = /*@__PURE__*/ S.Array(
   Cloudsearch_Date,
 ) as any as S.Schema<Cloudsearch_DateList>;
@@ -982,7 +972,7 @@ export const NamedProperty = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NamedProperty" }) as any as S.Schema<NamedProperty>;
 
-export type NamedPropertyList = NamedProperty[];
+export type NamedPropertyList = ReadonlyArray<NamedProperty>;
 export const NamedPropertyList = /*@__PURE__*/ S.Array(
   NamedProperty,
 ) as any as S.Schema<NamedPropertyList>;
@@ -1021,8 +1011,7 @@ export type ItemStatusCodeEnum =
   | "ERROR"
   | "MODIFIED"
   | "NEW_ITEM"
-  | "ACCEPTED"
-  | (string & {});
+  | "ACCEPTED";
 export const ItemStatusCodeEnum = /*@__PURE__*/ S.String;
 
 export type ProcessingErrorCodeEnum =
@@ -1030,8 +1019,7 @@ export type ProcessingErrorCodeEnum =
   | "MALFORMED_REQUEST"
   | "UNSUPPORTED_CONTENT_FORMAT"
   | "INDIRECT_BROKEN_ACL"
-  | "ACL_CYCLE"
-  | (string & {});
+  | "ACL_CYCLE";
 export const ProcessingErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export interface FieldViolation {
@@ -1047,7 +1035,7 @@ export const FieldViolation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldViolation" }) as any as S.Schema<FieldViolation>;
 
-export type FieldViolationList = FieldViolation[];
+export type FieldViolationList = ReadonlyArray<FieldViolation>;
 export const FieldViolationList = /*@__PURE__*/ S.Array(
   FieldViolation,
 ) as any as S.Schema<FieldViolationList>;
@@ -1070,7 +1058,7 @@ export const ProcessingError = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProcessingError",
 }) as any as S.Schema<ProcessingError>;
 
-export type ProcessingErrorList = ProcessingError[];
+export type ProcessingErrorList = ReadonlyArray<ProcessingError>;
 export const ProcessingErrorList = /*@__PURE__*/ S.Array(
   ProcessingError,
 ) as any as S.Schema<ProcessingErrorList>;
@@ -1085,8 +1073,7 @@ export type RepositoryErrorTypeEnum =
   | "SERVER_ERROR"
   | "QUOTA_EXCEEDED"
   | "SERVICE_UNAVAILABLE"
-  | "CLIENT_ERROR"
-  | (string & {});
+  | "CLIENT_ERROR";
 export const RepositoryErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Errors when the connector is communicating to the source repository. */
@@ -1108,7 +1095,7 @@ export const RepositoryError = /*@__PURE__*/ S.suspend(() =>
   identifier: "RepositoryError",
 }) as any as S.Schema<RepositoryError>;
 
-export type RepositoryErrorList = RepositoryError[];
+export type RepositoryErrorList = ReadonlyArray<RepositoryError>;
 export const RepositoryErrorList = /*@__PURE__*/ S.Array(
   RepositoryError,
 ) as any as S.Schema<RepositoryErrorList>;
@@ -1134,16 +1121,14 @@ export type ItemItemTypeEnum =
   | "UNSPECIFIED"
   | "CONTENT_ITEM"
   | "CONTAINER_ITEM"
-  | "VIRTUAL_CONTAINER_ITEM"
-  | (string & {});
+  | "VIRTUAL_CONTAINER_ITEM";
 export const ItemItemTypeEnum = /*@__PURE__*/ S.String;
 
 export type ItemContentContentFormatEnum =
   | "UNSPECIFIED"
   | "HTML"
   | "TEXT"
-  | "RAW"
-  | (string & {});
+  | "RAW";
 export const ItemContentContentFormatEnum = /*@__PURE__*/ S.String;
 
 /** Represents an upload session reference. This reference is created via upload method. This reference is valid for 30 days after its creation. Updating of item content may refer to this uploaded content via contentDataRef. */
@@ -1176,7 +1161,7 @@ export const ItemContent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemContent" }) as any as S.Schema<ItemContent>;
 
-export type PrincipalList = Principal[];
+export type PrincipalList = ReadonlyArray<Principal>;
 export const PrincipalList = /*@__PURE__*/ S.Array(
   Principal,
 ) as any as S.Schema<PrincipalList>;
@@ -1185,8 +1170,7 @@ export type ItemAclAclInheritanceTypeEnum =
   | "NOT_APPLICABLE"
   | "CHILD_OVERRIDE"
   | "PARENT_OVERRIDE"
-  | "BOTH_PERMIT"
-  | (string & {});
+  | "BOTH_PERMIT";
 export const ItemAclAclInheritanceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Access control list information for the item. For more information see [Map ACLs](https://developers.google.com/workspace/cloud-search/docs/guides/acls). */
@@ -1228,7 +1212,7 @@ export const ContextAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContextAttribute",
 }) as any as S.Schema<ContextAttribute>;
 
-export type ContextAttributeList = ContextAttribute[];
+export type ContextAttributeList = ReadonlyArray<ContextAttribute>;
 export const ContextAttributeList = /*@__PURE__*/ S.Array(
   ContextAttribute,
 ) as any as S.Schema<ContextAttributeList>;
@@ -1246,11 +1230,7 @@ export const SearchQualityMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchQualityMetadata",
 }) as any as S.Schema<SearchQualityMetadata>;
 
-export type InteractionTypeEnum =
-  | "UNSPECIFIED"
-  | "VIEW"
-  | "EDIT"
-  | (string & {});
+export type InteractionTypeEnum = "UNSPECIFIED" | "VIEW" | "EDIT";
 export const InteractionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an interaction between a user and an item. */
@@ -1269,7 +1249,7 @@ export const Interaction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Interaction" }) as any as S.Schema<Interaction>;
 
-export type InteractionList = Interaction[];
+export type InteractionList = ReadonlyArray<Interaction>;
 export const InteractionList = /*@__PURE__*/ S.Array(
   Interaction,
 ) as any as S.Schema<InteractionList>;
@@ -1397,8 +1377,7 @@ export type ItemCountByStatusStatusCodeEnum =
   | "ERROR"
   | "MODIFIED"
   | "NEW_ITEM"
-  | "ACCEPTED"
-  | (string & {});
+  | "ACCEPTED";
 export const ItemCountByStatusStatusCodeEnum = /*@__PURE__*/ S.String;
 
 export interface ItemCountByStatus {
@@ -1419,7 +1398,7 @@ export const ItemCountByStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "ItemCountByStatus",
 }) as any as S.Schema<ItemCountByStatus>;
 
-export type ItemCountByStatusList = ItemCountByStatus[];
+export type ItemCountByStatusList = ReadonlyArray<ItemCountByStatus>;
 export const ItemCountByStatusList = /*@__PURE__*/ S.Array(
   ItemCountByStatus,
 ) as any as S.Schema<ItemCountByStatusList>;
@@ -1440,7 +1419,7 @@ export const CustomerIndexStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerIndexStats",
 }) as any as S.Schema<CustomerIndexStats>;
 
-export type CustomerIndexStatsList = CustomerIndexStats[];
+export type CustomerIndexStatsList = ReadonlyArray<CustomerIndexStats>;
 export const CustomerIndexStatsList = /*@__PURE__*/ S.Array(
   CustomerIndexStats,
 ) as any as S.Schema<CustomerIndexStatsList>;
@@ -1525,7 +1504,7 @@ export const QueryCountByStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryCountByStatus",
 }) as any as S.Schema<QueryCountByStatus>;
 
-export type QueryCountByStatusList = QueryCountByStatus[];
+export type QueryCountByStatusList = ReadonlyArray<QueryCountByStatus>;
 export const QueryCountByStatusList = /*@__PURE__*/ S.Array(
   QueryCountByStatus,
 ) as any as S.Schema<QueryCountByStatusList>;
@@ -1544,7 +1523,7 @@ export const CustomerQueryStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerQueryStats",
 }) as any as S.Schema<CustomerQueryStats>;
 
-export type CustomerQueryStatsList = CustomerQueryStats[];
+export type CustomerQueryStatsList = ReadonlyArray<CustomerQueryStats>;
 export const CustomerQueryStatsList = /*@__PURE__*/ S.Array(
   CustomerQueryStats,
 ) as any as S.Schema<CustomerQueryStatsList>;
@@ -1597,7 +1576,7 @@ export const DisplayedProperty = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisplayedProperty",
 }) as any as S.Schema<DisplayedProperty>;
 
-export type DisplayedPropertyList = DisplayedProperty[];
+export type DisplayedPropertyList = ReadonlyArray<DisplayedProperty>;
 export const DisplayedPropertyList = /*@__PURE__*/ S.Array(
   DisplayedProperty,
 ) as any as S.Schema<DisplayedPropertyList>;
@@ -1613,7 +1592,7 @@ export const Metaline = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Metaline" }) as any as S.Schema<Metaline>;
 
-export type MetalineList = Metaline[];
+export type MetalineList = ReadonlyArray<Metaline>;
 export const MetalineList = /*@__PURE__*/ S.Array(
   Metaline,
 ) as any as S.Schema<MetalineList>;
@@ -1714,8 +1693,7 @@ export type RetrievalImportanceImportanceEnum =
   | "HIGHEST"
   | "HIGH"
   | "LOW"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const RetrievalImportanceImportanceEnum = /*@__PURE__*/ S.String;
 
 export interface RetrievalImportance {
@@ -1797,8 +1775,7 @@ export const IntegerOperatorOptions = /*@__PURE__*/ S.suspend(() =>
 export type IntegerPropertyOptionsOrderedRankingEnum =
   | "NO_ORDER"
   | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+  | "DESCENDING";
 export const IntegerPropertyOptionsOrderedRankingEnum = /*@__PURE__*/ S.String;
 
 /** The options for integer properties. */
@@ -1913,8 +1890,7 @@ export const ObjectPropertyOptions = /*@__PURE__*/ S.suspend(() =>
 export type EnumPropertyOptionsOrderedRankingEnum =
   | "NO_ORDER"
   | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+  | "DESCENDING";
 export const EnumPropertyOptionsOrderedRankingEnum = /*@__PURE__*/ S.String;
 
 /** Used to provide a search operator for enum properties. This is optional. Search operators let users restrict the query to specific fields relevant to the type of item being searched. For example, if you provide no operator for a *priority* enum property with possible values *p0* and *p1*, a query that contains the term *p0* returns items that have *p0* as the value of the *priority* property, as well as any items that contain the string *p0* in other fields. If you provide an operator name for the enum, such as *priority*, then search users can use that operator to refine results to only items that have *p0* as this property's value, with the query *priority:p0*. */
@@ -1944,7 +1920,7 @@ export const EnumValuePair = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EnumValuePair" }) as any as S.Schema<EnumValuePair>;
 
-export type EnumValuePairList = EnumValuePair[];
+export type EnumValuePairList = ReadonlyArray<EnumValuePair>;
 export const EnumValuePairList = /*@__PURE__*/ S.Array(
   EnumValuePair,
 ) as any as S.Schema<EnumValuePairList>;
@@ -2052,7 +2028,7 @@ export const PropertyDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyDefinition",
 }) as any as S.Schema<PropertyDefinition>;
 
-export type PropertyDefinitionList = PropertyDefinition[];
+export type PropertyDefinitionList = ReadonlyArray<PropertyDefinition>;
 export const PropertyDefinitionList = /*@__PURE__*/ S.Array(
   PropertyDefinition,
 ) as any as S.Schema<PropertyDefinitionList>;
@@ -2076,7 +2052,7 @@ export const ObjectDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectDefinition",
 }) as any as S.Schema<ObjectDefinition>;
 
-export type ObjectDefinitionList = ObjectDefinition[];
+export type ObjectDefinitionList = ReadonlyArray<ObjectDefinition>;
 export const ObjectDefinitionList = /*@__PURE__*/ S.Array(
   ObjectDefinition,
 ) as any as S.Schema<ObjectDefinitionList>;
@@ -2147,7 +2123,7 @@ export const CustomerSearchApplicationStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerSearchApplicationStats>;
 
 export type CustomerSearchApplicationStatsList =
-  CustomerSearchApplicationStats[];
+  ReadonlyArray<CustomerSearchApplicationStats>;
 export const CustomerSearchApplicationStatsList = /*@__PURE__*/ S.Array(
   CustomerSearchApplicationStats,
 ) as any as S.Schema<CustomerSearchApplicationStatsList>;
@@ -2217,7 +2193,7 @@ export const CustomerSessionStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerSessionStats",
 }) as any as S.Schema<CustomerSessionStats>;
 
-export type CustomerSessionStatsList = CustomerSessionStats[];
+export type CustomerSessionStatsList = ReadonlyArray<CustomerSessionStats>;
 export const CustomerSessionStatsList = /*@__PURE__*/ S.Array(
   CustomerSessionStats,
 ) as any as S.Schema<CustomerSessionStatsList>;
@@ -2328,7 +2304,7 @@ export const DataSourceIndexStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceIndexStats",
 }) as any as S.Schema<DataSourceIndexStats>;
 
-export type DataSourceIndexStatsList = DataSourceIndexStats[];
+export type DataSourceIndexStatsList = ReadonlyArray<DataSourceIndexStats>;
 export const DataSourceIndexStatsList = /*@__PURE__*/ S.Array(
   DataSourceIndexStats,
 ) as any as S.Schema<DataSourceIndexStatsList>;
@@ -2400,7 +2376,8 @@ export const SearchApplicationQueryStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchApplicationQueryStats",
 }) as any as S.Schema<SearchApplicationQueryStats>;
 
-export type SearchApplicationQueryStatsList = SearchApplicationQueryStats[];
+export type SearchApplicationQueryStatsList =
+  ReadonlyArray<SearchApplicationQueryStats>;
 export const SearchApplicationQueryStatsList = /*@__PURE__*/ S.Array(
   SearchApplicationQueryStats,
 ) as any as S.Schema<SearchApplicationQueryStatsList>;
@@ -2474,7 +2451,8 @@ export const SearchApplicationSessionStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchApplicationSessionStats",
 }) as any as S.Schema<SearchApplicationSessionStats>;
 
-export type SearchApplicationSessionStatsList = SearchApplicationSessionStats[];
+export type SearchApplicationSessionStatsList =
+  ReadonlyArray<SearchApplicationSessionStats>;
 export const SearchApplicationSessionStatsList = /*@__PURE__*/ S.Array(
   SearchApplicationSessionStats,
 ) as any as S.Schema<SearchApplicationSessionStatsList>;
@@ -2549,7 +2527,8 @@ export const SearchApplicationUserStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchApplicationUserStats",
 }) as any as S.Schema<SearchApplicationUserStats>;
 
-export type SearchApplicationUserStatsList = SearchApplicationUserStats[];
+export type SearchApplicationUserStatsList =
+  ReadonlyArray<SearchApplicationUserStats>;
 export const SearchApplicationUserStatsList = /*@__PURE__*/ S.Array(
   SearchApplicationUserStats,
 ) as any as S.Schema<SearchApplicationUserStatsList>;
@@ -2620,7 +2599,7 @@ export const CustomerUserStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerUserStats",
 }) as any as S.Schema<CustomerUserStats>;
 
-export type CustomerUserStatsList = CustomerUserStats[];
+export type CustomerUserStatsList = ReadonlyArray<CustomerUserStats>;
 export const CustomerUserStatsList = /*@__PURE__*/ S.Array(
   CustomerUserStats,
 ) as any as S.Schema<CustomerUserStatsList>;
@@ -2651,8 +2630,7 @@ export const IndexItemOptions = /*@__PURE__*/ S.suspend(() =>
 export type IndexItemRequestModeEnum =
   | "UNSPECIFIED"
   | "SYNCHRONOUS"
-  | "ASYNCHRONOUS"
-  | (string & {});
+  | "ASYNCHRONOUS";
 export const IndexItemRequestModeEnum = /*@__PURE__*/ S.String;
 
 export interface IndexItemRequest {
@@ -2760,8 +2738,7 @@ export type UnmappedIdentityResolutionStatusCodeEnum =
   | "IDENTITY_SOURCE_NOT_FOUND"
   | "IDENTITY_SOURCE_MISCONFIGURED"
   | "TOO_MANY_MAPPINGS_FOUND"
-  | "INTERNAL_ERROR"
-  | (string & {});
+  | "INTERNAL_ERROR";
 export const UnmappedIdentityResolutionStatusCodeEnum = /*@__PURE__*/ S.String;
 
 export interface UnmappedIdentity {
@@ -2779,7 +2756,7 @@ export const UnmappedIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "UnmappedIdentity",
 }) as any as S.Schema<UnmappedIdentity>;
 
-export type UnmappedIdentityList = UnmappedIdentity[];
+export type UnmappedIdentityList = ReadonlyArray<UnmappedIdentity>;
 export const UnmappedIdentityList = /*@__PURE__*/ S.Array(
   UnmappedIdentity,
 ) as any as S.Schema<UnmappedIdentityList>;
@@ -2804,8 +2781,7 @@ export type ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum =
   | "IDENTITY_SOURCE_NOT_FOUND"
   | "IDENTITY_SOURCE_MISCONFIGURED"
   | "TOO_MANY_MAPPINGS_FOUND"
-  | "INTERNAL_ERROR"
-  | (string & {});
+  | "INTERNAL_ERROR";
 export const ListDebugIdentitysourcesUnmappedidsResolutionStatusCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2924,7 +2900,7 @@ export const ListIndexingDatasourcesItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListIndexingDatasourcesItemsRequest",
 }) as any as S.Schema<ListIndexingDatasourcesItemsRequest>;
 
-export type ItemList = Item[];
+export type ItemList = ReadonlyArray<Item>;
 export const ItemList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<ItemList>;
@@ -2973,7 +2949,7 @@ export const ListOperationsLroRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsLroRequest",
 }) as any as S.Schema<ListOperationsLroRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -3043,8 +3019,7 @@ export type QueryOperatorTypeEnum =
   | "ENUM"
   | "DATE"
   | "TEXT"
-  | "HTML"
-  | (string & {});
+  | "HTML";
 export const QueryOperatorTypeEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a operator that can be used in a Search/Suggest request. */
@@ -3091,7 +3066,7 @@ export const QueryOperator = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryOperator" }) as any as S.Schema<QueryOperator>;
 
-export type QueryOperatorList = QueryOperator[];
+export type QueryOperatorList = ReadonlyArray<QueryOperator>;
 export const QueryOperatorList = /*@__PURE__*/ S.Array(
   QueryOperator,
 ) as any as S.Schema<QueryOperatorList>;
@@ -3116,7 +3091,7 @@ export const QuerySource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuerySource" }) as any as S.Schema<QuerySource>;
 
-export type QuerySourceList = QuerySource[];
+export type QuerySourceList = ReadonlyArray<QuerySource>;
 export const QuerySourceList = /*@__PURE__*/ S.Array(
   QuerySource,
 ) as any as S.Schema<QuerySourceList>;
@@ -3159,7 +3134,7 @@ export const ListSettingsDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSettingsDatasourcesRequest",
 }) as any as S.Schema<ListSettingsDatasourcesRequest>;
 
-export type DataSourceList = DataSource[];
+export type DataSourceList = ReadonlyArray<DataSource>;
 export const DataSourceList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceList>;
@@ -3203,7 +3178,7 @@ export const ListSettingsSearchapplicationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListSettingsSearchapplicationsRequest",
 }) as any as S.Schema<ListSettingsSearchapplicationsRequest>;
 
-export type SearchApplicationList = SearchApplication[];
+export type SearchApplicationList = ReadonlyArray<SearchApplication>;
 export const SearchApplicationList = /*@__PURE__*/ S.Array(
   SearchApplication,
 ) as any as S.Schema<SearchApplicationList>;
@@ -3279,12 +3254,11 @@ export type PollItemsRequestStatusCodesItemEnum =
   | "ERROR"
   | "MODIFIED"
   | "NEW_ITEM"
-  | "ACCEPTED"
-  | (string & {});
+  | "ACCEPTED";
 export const PollItemsRequestStatusCodesItemEnum = /*@__PURE__*/ S.String;
 
 export type PollItemsRequestStatusCodesItemEnumList =
-  PollItemsRequestStatusCodesItemEnum[];
+  ReadonlyArray<PollItemsRequestStatusCodesItemEnum>;
 export const PollItemsRequestStatusCodesItemEnumList = /*@__PURE__*/ S.Array(
   PollItemsRequestStatusCodesItemEnum,
 ) as any as S.Schema<PollItemsRequestStatusCodesItemEnumList>;
@@ -3351,8 +3325,7 @@ export type PushItemTypeEnum =
   | "MODIFIED"
   | "NOT_MODIFIED"
   | "REPOSITORY_ERROR"
-  | "REQUEUE"
-  | (string & {});
+  | "REQUEUE";
 export const PushItemTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents an item to be pushed to the indexing queue. */
@@ -3672,8 +3645,7 @@ export const SearchQueryRequest = /*@__PURE__*/ S.suspend(() =>
 export type SpellResultSuggestionTypeEnum =
   | "SUGGESTION_TYPE_UNSPECIFIED"
   | "NON_EMPTY_RESULTS_SPELL_SUGGESTION"
-  | "ZERO_RESULTS_FULL_PAGE_REPLACEMENT"
-  | (string & {});
+  | "ZERO_RESULTS_FULL_PAGE_REPLACEMENT";
 export const SpellResultSuggestionTypeEnum = /*@__PURE__*/ S.String;
 
 /** IMPORTANT: It is unsafe to accept this message from an untrusted source, since it's trivial for an attacker to forge serialized messages that don't fulfill the type's safety contract -- for example, it could contain attacker controlled script. A system which receives a SafeHtmlProto implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe to return this message in RPC responses, but generally unsafe to accept it in RPC requests. */
@@ -3703,7 +3675,7 @@ export const SpellResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpellResult" }) as any as S.Schema<SpellResult>;
 
-export type SpellResultList = SpellResult[];
+export type SpellResultList = ReadonlyArray<SpellResult>;
 export const SpellResultList = /*@__PURE__*/ S.Array(
   SpellResult,
 ) as any as S.Schema<SpellResultList>;
@@ -3720,7 +3692,7 @@ export const ErrorMessage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorMessage" }) as any as S.Schema<ErrorMessage>;
 
-export type ErrorMessageList = ErrorMessage[];
+export type ErrorMessageList = ReadonlyArray<ErrorMessage>;
 export const ErrorMessageList = /*@__PURE__*/ S.Array(
   ErrorMessage,
 ) as any as S.Schema<ErrorMessageList>;
@@ -3738,15 +3710,13 @@ export const ErrorInfo = /*@__PURE__*/ S.suspend(() =>
 export type QueryInterpretationReasonEnum =
   | "UNSPECIFIED"
   | "QUERY_HAS_NATURAL_LANGUAGE_INTENT"
-  | "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY"
-  | (string & {});
+  | "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY";
 export const QueryInterpretationReasonEnum = /*@__PURE__*/ S.String;
 
 export type QueryInterpretationInterpretationTypeEnum =
   | "NONE"
   | "BLEND"
-  | "REPLACE"
-  | (string & {});
+  | "REPLACE";
 export const QueryInterpretationInterpretationTypeEnum = /*@__PURE__*/ S.String;
 
 export interface QueryInterpretation {
@@ -3804,7 +3774,7 @@ export const ResultDisplayField = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResultDisplayField",
 }) as any as S.Schema<ResultDisplayField>;
 
-export type ResultDisplayFieldList = ResultDisplayField[];
+export type ResultDisplayFieldList = ReadonlyArray<ResultDisplayField>;
 export const ResultDisplayFieldList = /*@__PURE__*/ S.Array(
   ResultDisplayField,
 ) as any as S.Schema<ResultDisplayFieldList>;
@@ -3821,7 +3791,7 @@ export const ResultDisplayLine = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResultDisplayLine",
 }) as any as S.Schema<ResultDisplayLine>;
 
-export type ResultDisplayLineList = ResultDisplayLine[];
+export type ResultDisplayLineList = ReadonlyArray<ResultDisplayLine>;
 export const ResultDisplayLineList = /*@__PURE__*/ S.Array(
   ResultDisplayLine,
 ) as any as S.Schema<ResultDisplayLineList>;
@@ -3852,7 +3822,7 @@ export const Name = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Name" }) as any as S.Schema<Name>;
 
-export type NameList = Name[];
+export type NameList = ReadonlyArray<Name>;
 export const NameList = /*@__PURE__*/ S.Array(
   Name,
 ) as any as S.Schema<NameList>;
@@ -3880,7 +3850,7 @@ export const EmailAddress = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EmailAddress" }) as any as S.Schema<EmailAddress>;
 
-export type EmailAddressList = EmailAddress[];
+export type EmailAddressList = ReadonlyArray<EmailAddress>;
 export const EmailAddressList = /*@__PURE__*/ S.Array(
   EmailAddress,
 ) as any as S.Schema<EmailAddressList>;
@@ -3896,12 +3866,12 @@ export const Photo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Photo" }) as any as S.Schema<Photo>;
 
-export type PhotoList = Photo[];
+export type PhotoList = ReadonlyArray<Photo>;
 export const PhotoList = /*@__PURE__*/ S.Array(
   Photo,
 ) as any as S.Schema<PhotoList>;
 
-export type PhoneNumberTypeEnum = "OTHER" | "MOBILE" | "OFFICE" | (string & {});
+export type PhoneNumberTypeEnum = "OTHER" | "MOBILE" | "OFFICE";
 export const PhoneNumberTypeEnum = /*@__PURE__*/ S.String;
 
 /** A person's Phone Number */
@@ -3917,7 +3887,7 @@ export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PhoneNumber" }) as any as S.Schema<PhoneNumber>;
 
-export type PhoneNumberList = PhoneNumber[];
+export type PhoneNumberList = ReadonlyArray<PhoneNumber>;
 export const PhoneNumberList = /*@__PURE__*/ S.Array(
   PhoneNumber,
 ) as any as S.Schema<PhoneNumberList>;
@@ -3997,7 +3967,7 @@ export const MatchRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MatchRange" }) as any as S.Schema<MatchRange>;
 
-export type MatchRangeList = MatchRange[];
+export type MatchRangeList = ReadonlyArray<MatchRange>;
 export const MatchRangeList = /*@__PURE__*/ S.Array(
   MatchRange,
 ) as any as S.Schema<MatchRangeList>;
@@ -4055,7 +4025,7 @@ export const SearchResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
-export type SearchResultList = SearchResult[];
+export type SearchResultList = ReadonlyArray<SearchResult>;
 export const SearchResultList = /*@__PURE__*/ S.Array(
   SearchResult,
 ) as any as S.Schema<SearchResultList>;
@@ -4079,7 +4049,7 @@ export const FacetBucket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FacetBucket" }) as any as S.Schema<FacetBucket>;
 
-export type FacetBucketList = FacetBucket[];
+export type FacetBucketList = ReadonlyArray<FacetBucket>;
 export const FacetBucketList = /*@__PURE__*/ S.Array(
   FacetBucket,
 ) as any as S.Schema<FacetBucketList>;
@@ -4104,7 +4074,7 @@ export const FacetResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FacetResult" }) as any as S.Schema<FacetResult>;
 
-export type FacetResultList = FacetResult[];
+export type FacetResultList = ReadonlyArray<FacetResult>;
 export const FacetResultList = /*@__PURE__*/ S.Array(
   FacetResult,
 ) as any as S.Schema<FacetResultList>;
@@ -4131,7 +4101,7 @@ export const SourceResultCount = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceResultCount",
 }) as any as S.Schema<SourceResultCount>;
 
-export type SourceResultCountList = SourceResultCount[];
+export type SourceResultCountList = ReadonlyArray<SourceResultCount>;
 export const SourceResultCountList = /*@__PURE__*/ S.Array(
   SourceResultCount,
 ) as any as S.Schema<SourceResultCountList>;
@@ -4160,7 +4130,7 @@ export const StructuredResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "StructuredResult",
 }) as any as S.Schema<StructuredResult>;
 
-export type StructuredResultList = StructuredResult[];
+export type StructuredResultList = ReadonlyArray<StructuredResult>;
 export const StructuredResultList = /*@__PURE__*/ S.Array(
   StructuredResult,
 ) as any as S.Schema<StructuredResultList>;
@@ -4246,8 +4216,7 @@ export type QuerySuggestionSourceCorpusEnum =
   | "GMAIL"
   | "DRIVE"
   | "CHAT"
-  | "CALENDAR"
-  | (string & {});
+  | "CALENDAR";
 export const QuerySuggestionSourceCorpusEnum = /*@__PURE__*/ S.String;
 
 export interface QuerySuggestion {
@@ -4298,7 +4267,7 @@ export const SuggestResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SuggestResult" }) as any as S.Schema<SuggestResult>;
 
-export type SuggestResultList = SuggestResult[];
+export type SuggestResultList = ReadonlyArray<SuggestResult>;
 export const SuggestResultList = /*@__PURE__*/ S.Array(
   SuggestResult,
 ) as any as S.Schema<SuggestResultList>;

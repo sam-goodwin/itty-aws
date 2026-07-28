@@ -27,12 +27,12 @@ export class Forbidden extends T.applyErrorMatchers(
   [{ status: 403 }],
 ) {}
 
-export type AccountNotesListRequestAssignedToList = number[];
+export type AccountNotesListRequestAssignedToList = ReadonlyArray<number>;
 export const AccountNotesListRequestAssignedToList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AccountNotesListRequestAssignedToList>;
 
-export type AccountNotesListRequestCreatedByList = number[];
+export type AccountNotesListRequestCreatedByList = ReadonlyArray<number>;
 export const AccountNotesListRequestCreatedByList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AccountNotesListRequestCreatedByList>;
@@ -92,11 +92,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -157,7 +156,7 @@ export const AccountNote = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountNote" }) as any as S.Schema<AccountNote>;
 
-export type PaginatedAccountNoteListResultsList = AccountNote[];
+export type PaginatedAccountNoteListResultsList = ReadonlyArray<AccountNote>;
 export const PaginatedAccountNoteListResultsList = /*@__PURE__*/ S.Array(
   AccountNote,
 ) as any as S.Schema<PaginatedAccountNoteListResultsList>;
@@ -271,7 +270,7 @@ export const AccountsCustomPropertyValuesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountsCustomPropertyValuesListRequest>;
 
 export type AccountsCustomPropertyValuesListResponseBodyList =
-  CustomPropertyValue[];
+  ReadonlyArray<CustomPropertyValue>;
 export const AccountsCustomPropertyValuesListResponseBodyList =
   /*@__PURE__*/ S.Array(
     CustomPropertyValue,
@@ -291,32 +290,20 @@ export interface AccountsNotebooksCreateRequest {
   project_id: string;
   /** UUID of the parent account. */
   account_id: string;
-  id: string;
-  short_id: string;
   /** Human-readable title of the account notebook. */
   title?: string | null;
   /** Notebook content as a ProseMirror JSON document structure. */
   content?: unknown;
   /** Plain text representation of the notebook content for search. */
   text_content?: string | null;
-  created_at: string;
-  created_by: UserBasic;
-  last_modified_at: string;
-  last_modified_by: UserBasic;
 }
 export const AccountsNotebooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Label()),
-    id: S.String,
-    short_id: S.String,
     title: S.optional(S.NullOr(S.String)),
     content: S.optional(S.Unknown),
     text_content: S.optional(S.NullOr(S.String)),
-    created_at: S.String,
-    created_by: UserBasic,
-    last_modified_at: S.String,
-    last_modified_by: UserBasic,
   }).pipe(
     T.Http({
       method: "POST",
@@ -392,8 +379,7 @@ export type AccountsNotebooksListRequestOrdering =
   | "-created_at"
   | "-created_by"
   | "created_at"
-  | "created_by"
-  | (string & {});
+  | "created_by";
 export const AccountsNotebooksListRequestOrdering = /*@__PURE__*/ S.String;
 
 export interface AccountsNotebooksListRequest {
@@ -429,7 +415,8 @@ export const AccountsNotebooksListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsNotebooksListRequest",
 }) as any as S.Schema<AccountsNotebooksListRequest>;
 
-export type PaginatedAccountNotebookListResultsList = AccountNotebook[];
+export type PaginatedAccountNotebookListResultsList =
+  ReadonlyArray<AccountNotebook>;
 export const PaginatedAccountNotebookListResultsList = /*@__PURE__*/ S.Array(
   AccountNotebook,
 ) as any as S.Schema<PaginatedAccountNotebookListResultsList>;
@@ -612,7 +599,8 @@ export const AccountsRelationshipsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsRelationshipsListRequest",
 }) as any as S.Schema<AccountsRelationshipsListRequest>;
 
-export type AccountsRelationshipsListResponseBodyList = AccountRelationship[];
+export type AccountsRelationshipsListResponseBodyList =
+  ReadonlyArray<AccountRelationship>;
 export const AccountsRelationshipsListResponseBodyList = /*@__PURE__*/ S.Array(
   AccountRelationship,
 ) as any as S.Schema<AccountsRelationshipsListResponseBodyList>;
@@ -669,7 +657,7 @@ export const ExternalAccountListAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalAccountListAssignment>;
 
 export type ExternalAccountListItemRelationshipsValueList =
-  ExternalAccountListAssignment[];
+  ReadonlyArray<ExternalAccountListAssignment>;
 export const ExternalAccountListItemRelationshipsValueList =
   /*@__PURE__*/ S.Array(
     ExternalAccountListAssignment,
@@ -703,7 +691,8 @@ export const ExternalAccountListItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalAccountListItem>;
 
 /** Accounts in this page, ordered by account id. */
-export type ExternalAccountListPageResultsList = ExternalAccountListItem[];
+export type ExternalAccountListPageResultsList =
+  ReadonlyArray<ExternalAccountListItem>;
 export const ExternalAccountListPageResultsList = /*@__PURE__*/ S.Array(
   ExternalAccountListItem,
 ) as any as S.Schema<ExternalAccountListPageResultsList>;

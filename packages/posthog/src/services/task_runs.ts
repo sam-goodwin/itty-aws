@@ -46,7 +46,7 @@ export const TasksRunsAppendLogCreateRequestEntriesItemMap =
 
 /** Array of log entry dictionaries to append */
 export type TasksRunsAppendLogCreateRequestEntriesList =
-  TasksRunsAppendLogCreateRequestEntriesItemMap[];
+  ReadonlyArray<TasksRunsAppendLogCreateRequestEntriesItemMap>;
 export const TasksRunsAppendLogCreateRequestEntriesList = /*@__PURE__*/ S.Array(
   TasksRunsAppendLogCreateRequestEntriesItemMap,
 ) as any as S.Schema<TasksRunsAppendLogCreateRequestEntriesList>;
@@ -77,24 +77,15 @@ export const TasksRunsAppendLogCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsAppendLogCreateRequest>;
 
 /** * `claude` - claude * `codex` - codex */
-export type RuntimeAdapterEnum = "claude" | "codex" | (string & {});
+export type RuntimeAdapterEnum = "claude" | "codex";
 export const RuntimeAdapterEnum = /*@__PURE__*/ S.String;
 
 /** * `anthropic` - anthropic * `openai` - openai */
-export type TaskRunDetailDTOProviderEnum =
-  | "anthropic"
-  | "openai"
-  | (string & {});
+export type TaskRunDetailDTOProviderEnum = "anthropic" | "openai";
 export const TaskRunDetailDTOProviderEnum = /*@__PURE__*/ S.String;
 
 /** * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max */
-export type ReasoningEffortEnum =
-  | "low"
-  | "medium"
-  | "high"
-  | "xhigh"
-  | "max"
-  | (string & {});
+export type ReasoningEffortEnum = "low" | "medium" | "high" | "xhigh" | "max";
 export const ReasoningEffortEnum = /*@__PURE__*/ S.String;
 
 export type TaskRunDetailDTOOutputMap = { [key: string]: unknown | undefined };
@@ -110,16 +101,11 @@ export const TaskRunDetailDTOStateMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<TaskRunDetailDTOStateMap>;
 
 /** * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
-export type SkillSourceEnum =
-  | "user"
-  | "repo"
-  | "marketplace"
-  | "codex"
-  | (string & {});
+export type SkillSourceEnum = "user" | "repo" | "marketplace" | "codex";
 export const SkillSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `zip` - zip */
-export type BundleFormatEnum = "zip" | (string & {});
+export type BundleFormatEnum = "zip";
 export const BundleFormatEnum = /*@__PURE__*/ S.String;
 
 export interface TaskRunArtifactMetadata {
@@ -182,7 +168,8 @@ export const TaskRunArtifactResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaskRunArtifactResponse",
 }) as any as S.Schema<TaskRunArtifactResponse>;
 
-export type TaskRunDetailDTOArtifactsList = TaskRunArtifactResponse[];
+export type TaskRunDetailDTOArtifactsList =
+  ReadonlyArray<TaskRunArtifactResponse>;
 export const TaskRunDetailDTOArtifactsList = /*@__PURE__*/ S.Array(
   TaskRunArtifactResponse,
 ) as any as S.Schema<TaskRunDetailDTOArtifactsList>;
@@ -248,12 +235,11 @@ export type TaskRunArtifactTypeEnum =
   | "artifact"
   | "tree_snapshot"
   | "user_attachment"
-  | "skill_bundle"
-  | (string & {});
+  | "skill_bundle";
 export const TaskRunArtifactTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `utf-8` - utf-8 * `base64` - base64 */
-export type ContentEncodingEnum = "utf-8" | "base64" | (string & {});
+export type ContentEncodingEnum = "utf-8" | "base64";
 export const ContentEncodingEnum = /*@__PURE__*/ S.String;
 
 export interface TaskRunArtifactUpload {
@@ -288,7 +274,7 @@ export const TaskRunArtifactUpload = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of artifacts to upload */
 export type TasksRunsArtifactsCreateRequestArtifactsList =
-  TaskRunArtifactUpload[];
+  ReadonlyArray<TaskRunArtifactUpload>;
 export const TasksRunsArtifactsCreateRequestArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactUpload,
@@ -321,7 +307,7 @@ export const TasksRunsArtifactsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsUploadResponseArtifactsList =
-  TaskRunArtifactResponse[];
+  ReadonlyArray<TaskRunArtifactResponse>;
 export const TaskRunArtifactsUploadResponseArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactResponse,
@@ -404,7 +390,7 @@ export const TaskRunArtifactFinalizeUpload = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of uploaded artifacts to finalize */
 export type TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList =
-  TaskRunArtifactFinalizeUpload[];
+  ReadonlyArray<TaskRunArtifactFinalizeUpload>;
 export const TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactFinalizeUpload,
@@ -440,7 +426,7 @@ export const TasksRunsArtifactsFinalizeUploadCreateRequest =
 
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsFinalizeUploadResponseArtifactsList =
-  TaskRunArtifactResponse[];
+  ReadonlyArray<TaskRunArtifactResponse>;
 export const TaskRunArtifactsFinalizeUploadResponseArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactResponse,
@@ -490,7 +476,7 @@ export const TaskRunArtifactPrepareUpload = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of artifacts to prepare */
 export type TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList =
-  TaskRunArtifactPrepareUpload[];
+  ReadonlyArray<TaskRunArtifactPrepareUpload>;
 export const TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactPrepareUpload,
@@ -588,7 +574,7 @@ export const TaskRunArtifactPrepareUploadResponse = /*@__PURE__*/ S.suspend(
 
 /** Prepared uploads for the requested artifacts */
 export type TaskRunArtifactsPrepareUploadResponseArtifactsList =
-  TaskRunArtifactPrepareUploadResponse[];
+  ReadonlyArray<TaskRunArtifactPrepareUploadResponse>;
 export const TaskRunArtifactsPrepareUploadResponseArtifactsList =
   /*@__PURE__*/ S.Array(
     TaskRunArtifactPrepareUploadResponse,
@@ -674,7 +660,7 @@ export const TasksRunsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsCancelCreateRequest>;
 
 /** * `2.0` - 2.0 */
-export type JsonrpcEnum = "2.0" | (string & {});
+export type JsonrpcEnum = "2.0";
 export const JsonrpcEnum = /*@__PURE__*/ S.String;
 
 /** * `user_message` - user_message * `cancel` - cancel * `close` - close * `permission_response` - permission_response * `set_config_option` - set_config_option * `mcp_response` - mcp_response */
@@ -684,8 +670,7 @@ export type MethodEnum =
   | "close"
   | "permission_response"
   | "set_config_option"
-  | "mcp_response"
-  | (string & {});
+  | "mcp_response";
 export const MethodEnum = /*@__PURE__*/ S.String;
 
 /** Parameters for the command */
@@ -805,7 +790,7 @@ export const ConnectionTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionTokenResponse>;
 
 /** * `http` - http * `sse` - sse */
-export type ImportedMcpServerTypeEnum = "http" | "sse" | (string & {});
+export type ImportedMcpServerTypeEnum = "http" | "sse";
 export const ImportedMcpServerTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ImportedMcpServerHeader {
@@ -821,7 +806,8 @@ export const ImportedMcpServerHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportedMcpServerHeader",
 }) as any as S.Schema<ImportedMcpServerHeader>;
 
-export type ImportedMcpServerHeadersList = ImportedMcpServerHeader[];
+export type ImportedMcpServerHeadersList =
+  ReadonlyArray<ImportedMcpServerHeader>;
 export const ImportedMcpServerHeadersList = /*@__PURE__*/ S.Array(
   ImportedMcpServerHeader,
 ) as any as S.Schema<ImportedMcpServerHeadersList>;
@@ -845,7 +831,8 @@ export const ImportedMcpServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportedMcpServer>;
 
 /** Local url-based MCP servers from the creating client (PostHog Code) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
-export type TasksRunsCreateRequestImportedMcpServersList = ImportedMcpServer[];
+export type TasksRunsCreateRequestImportedMcpServersList =
+  ReadonlyArray<ImportedMcpServer>;
 export const TasksRunsCreateRequestImportedMcpServersList =
   /*@__PURE__*/ S.Array(
     ImportedMcpServer,
@@ -864,33 +851,28 @@ export const RelayedMcpServer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RelayedMcpServer>;
 
 /** Names of desktop-only MCP servers the creating client (PostHog Code) relays into the cloud sandbox over the durable event/command channel. Names only — the server configuration (command, env, URL, headers) never crosses the wire. */
-export type TasksRunsCreateRequestRelayedMcpServersList = RelayedMcpServer[];
+export type TasksRunsCreateRequestRelayedMcpServersList =
+  ReadonlyArray<RelayedMcpServer>;
 export const TasksRunsCreateRequestRelayedMcpServersList =
   /*@__PURE__*/ S.Array(
     RelayedMcpServer,
   ) as any as S.Schema<TasksRunsCreateRequestRelayedMcpServersList>;
 
 /** * `local` - local * `cloud` - cloud */
-export type TaskRunBootstrapCreateRequestEnvironmentEnum =
-  | "local"
-  | "cloud"
-  | (string & {});
+export type TaskRunBootstrapCreateRequestEnvironmentEnum = "local" | "cloud";
 export const TaskRunBootstrapCreateRequestEnvironmentEnum =
   /*@__PURE__*/ S.String;
 
 /** * `interactive` - interactive * `background` - background */
-export type TaskExecutionModeEnum =
-  | "interactive"
-  | "background"
-  | (string & {});
+export type TaskExecutionModeEnum = "interactive" | "background";
 export const TaskExecutionModeEnum = /*@__PURE__*/ S.String;
 
 /** * `user` - user * `bot` - bot */
-export type PrAuthorshipModeEnum = "user" | "bot" | (string & {});
+export type PrAuthorshipModeEnum = "user" | "bot";
 export const PrAuthorshipModeEnum = /*@__PURE__*/ S.String;
 
 /** * `manual` - manual * `signal_report` - signal_report */
-export type RunSourceEnum = "manual" | "signal_report" | (string & {});
+export type RunSourceEnum = "manual" | "signal_report";
 export const RunSourceEnum = /*@__PURE__*/ S.String;
 
 /** * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
@@ -901,8 +883,7 @@ export type TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   | "bypassPermissions"
   | "auto"
   | "read-only"
-  | "full-access"
-  | (string & {});
+  | "full-access";
 export const TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1009,7 +990,8 @@ export const TasksRunsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TasksRunsListRequest",
 }) as any as S.Schema<TasksRunsListRequest>;
 
-export type PaginatedTaskRunDetailDTOListResultsList = TaskRunDetailDTO[];
+export type PaginatedTaskRunDetailDTOListResultsList =
+  ReadonlyArray<TaskRunDetailDTO>;
 export const PaginatedTaskRunDetailDTOListResultsList = /*@__PURE__*/ S.Array(
   TaskRunDetailDTO,
 ) as any as S.Schema<PaginatedTaskRunDetailDTOListResultsList>;
@@ -1067,19 +1049,19 @@ export type RunStatusEnum =
   | "in_progress"
   | "completed"
   | "failed"
-  | "cancelled"
-  | (string & {});
+  | "cancelled";
 export const RunStatusEnum = /*@__PURE__*/ S.String;
 
 /** State keys to remove atomically before applying any state updates. */
-export type TasksRunsPartialUpdateRequestStateRemoveKeysList = string[];
+export type TasksRunsPartialUpdateRequestStateRemoveKeysList =
+  ReadonlyArray<string>;
 export const TasksRunsPartialUpdateRequestStateRemoveKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TasksRunsPartialUpdateRequestStateRemoveKeysList>;
 
 /** * `local` - local */
-export type TaskRunUpdateEnvironmentEnum = "local" | (string & {});
+export type TaskRunUpdateEnvironmentEnum = "local";
 export const TaskRunUpdateEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export interface TasksRunsPartialUpdateRequest {
@@ -1131,7 +1113,8 @@ export const TasksRunsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsPartialUpdateRequest>;
 
 /** Ordered assistant text blocks. When present, the last non-empty entry is posted instead of text. */
-export type TasksRunsRelayMessageCreateRequestTextPartsList = string[];
+export type TasksRunsRelayMessageCreateRequestTextPartsList =
+  ReadonlyArray<string>;
 export const TasksRunsRelayMessageCreateRequestTextPartsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1298,7 +1281,8 @@ export const TasksRunsSetOutputPartialUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TasksRunsSetOutputPartialUpdateRequest>;
 
 /** Identifiers for run artifacts that should be attached to the next user message delivered to the sandbox. */
-export type TasksRunsStartCreateRequestPendingUserArtifactIdsList = string[];
+export type TasksRunsStartCreateRequestPendingUserArtifactIdsList =
+  ReadonlyArray<string>;
 export const TasksRunsStartCreateRequestPendingUserArtifactIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1335,7 +1319,7 @@ export const TasksRunsStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TasksRunsStartCreateRequest>;
 
 /** * `acp` - ACP * `pi` - Pi */
-export type RuntimeEnum = "acp" | "pi" | (string & {});
+export type RuntimeEnum = "acp" | "pi";
 export const RuntimeEnum = /*@__PURE__*/ S.String;
 
 export type TaskDetailDTOJsonSchemaMap = { [key: string]: unknown | undefined };

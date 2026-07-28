@@ -1,0 +1,71 @@
+{
+  "description": "Docs gap: the tag DELETE endpoints list no query parameters, but the API identifies WHICH resource to untag via query params (account: resource_id/resource_type/worker_id; zone: resource_id/resource_type/access_application_id) — without them the operation cannot target a resource and the schema-driven serializer would drop them.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#DeleteAccountTagRequest/members/resource_id",
+      "value": {
+        "target": "smithy.api#String",
+        "traits": {
+          "smithy.api#httpQuery": "resource_id",
+          "smithy.api#documentation": "Identifier of the resource to remove tags from."
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#DeleteAccountTagRequest/members/resource_type",
+      "value": {
+        "target": "smithy.api#String",
+        "traits": {
+          "smithy.api#httpQuery": "resource_type",
+          "smithy.api#documentation": "Type of the resource to remove tags from."
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#DeleteAccountTagRequest/members/worker_id",
+      "value": {
+        "target": "smithy.api#String",
+        "traits": {
+          "smithy.api#httpQuery": "worker_id",
+          "smithy.api#documentation": "Identifier of the Worker to remove tags from."
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#DeleteZoneTagRequest/members/resource_id",
+      "value": {
+        "target": "smithy.api#String",
+        "traits": {
+          "smithy.api#httpQuery": "resource_id",
+          "smithy.api#documentation": "Identifier of the resource to remove tags from."
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#DeleteZoneTagRequest/members/resource_type",
+      "value": {
+        "target": "smithy.api#String",
+        "traits": {
+          "smithy.api#httpQuery": "resource_type",
+          "smithy.api#documentation": "Type of the resource to remove tags from."
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#DeleteZoneTagRequest/members/access_application_id",
+      "value": {
+        "target": "smithy.api#String",
+        "traits": {
+          "smithy.api#httpQuery": "access_application_id",
+          "smithy.api#documentation": "Identifier of the Access application to remove tags from."
+        }
+      }
+    }
+  ]
+}

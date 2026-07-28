@@ -35,17 +35,18 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type EventsListRequestFormat = "csv" | "json" | (string & {});
+export type EventsListRequestFormat = "csv" | "json";
 export const EventsListRequestFormat = /*@__PURE__*/ S.String;
 
-export type PropertyGroupOperator = "AND" | "OR" | (string & {});
+export type PropertyGroupOperator = "AND" | "OR";
 export const PropertyGroupOperator = /*@__PURE__*/ S.String;
 
 export type PropertyItemValueCase3Item = string | number;
 export const PropertyItemValueCase3Item =
   /*@__PURE__*/ S.Unknown as any as S.Schema<PropertyItemValueCase3Item>;
 
-export type PropertyItemValueCase3List = PropertyItemValueCase3Item[];
+export type PropertyItemValueCase3List =
+  ReadonlyArray<PropertyItemValueCase3Item>;
 export const PropertyItemValueCase3List = /*@__PURE__*/ S.Array(
   PropertyItemValueCase3Item,
 ) as any as S.Schema<PropertyItemValueCase3List>;
@@ -77,11 +78,10 @@ export type PropertyItemOperatorEnum =
   | "is_date_after"
   | "is_date_before"
   | "in"
-  | "not_in"
-  | (string & {});
+  | "not_in";
 export const PropertyItemOperatorEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemOperator = PropertyItemOperatorEnum | BlankEnum;
@@ -119,8 +119,7 @@ export type PropertyFilterTypeEnum =
   | "revenue_analytics"
   | "account_custom_property"
   | "flag"
-  | "workflow_variable"
-  | (string & {});
+  | "workflow_variable";
 export const PropertyFilterTypeEnum = /*@__PURE__*/ S.String;
 
 export type PropertyItemType = PropertyFilterTypeEnum | BlankEnum;
@@ -144,7 +143,7 @@ export const PropertyItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyItem" }) as any as S.Schema<PropertyItem>;
 
-export type PropertyValuesList = PropertyItem[];
+export type PropertyValuesList = ReadonlyArray<PropertyItem>;
 export const PropertyValuesList = /*@__PURE__*/ S.Array(
   PropertyItem,
 ) as any as S.Schema<PropertyValuesList>;
@@ -161,17 +160,17 @@ export const Property = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Property" }) as any as S.Schema<Property>;
 
-export type EventsListRequestPropertiesList = Property[];
+export type EventsListRequestPropertiesList = ReadonlyArray<Property>;
 export const EventsListRequestPropertiesList = /*@__PURE__*/ S.Array(
   Property,
 ) as any as S.Schema<EventsListRequestPropertiesList>;
 
-export type EventsListRequestSelectList = string[];
+export type EventsListRequestSelectList = ReadonlyArray<string>;
 export const EventsListRequestSelectList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsListRequestSelectList>;
 
-export type EventsListRequestWhereList = string[];
+export type EventsListRequestWhereList = ReadonlyArray<string>;
 export const EventsListRequestWhereList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsListRequestWhereList>;
@@ -243,7 +242,7 @@ export const ClickhouseEventPersonMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ClickhouseEventPersonMap>;
 
-export type EventElementAttrClassList = string[];
+export type EventElementAttrClassList = ReadonlyArray<string>;
 export const EventElementAttrClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventElementAttrClassList>;
@@ -275,7 +274,7 @@ export const EventElement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventElement" }) as any as S.Schema<EventElement>;
 
-export type ClickhouseEventElementsList = EventElement[];
+export type ClickhouseEventElementsList = ReadonlyArray<EventElement>;
 export const ClickhouseEventElementsList = /*@__PURE__*/ S.Array(
   EventElement,
 ) as any as S.Schema<ClickhouseEventElementsList>;
@@ -305,7 +304,8 @@ export const ClickhouseEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClickhouseEvent",
 }) as any as S.Schema<ClickhouseEvent>;
 
-export type PaginatedClickhouseEventListResultsList = ClickhouseEvent[];
+export type PaginatedClickhouseEventListResultsList =
+  ReadonlyArray<ClickhouseEvent>;
 export const PaginatedClickhouseEventListResultsList = /*@__PURE__*/ S.Array(
   ClickhouseEvent,
 ) as any as S.Schema<PaginatedClickhouseEventListResultsList>;
@@ -323,7 +323,7 @@ export const PaginatedClickhouseEventList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedClickhouseEventList",
 }) as any as S.Schema<PaginatedClickhouseEventList>;
 
-export type EventsRetrieveRequestFormat = "csv" | "json" | (string & {});
+export type EventsRetrieveRequestFormat = "csv" | "json";
 export const EventsRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface EventsRetrieveRequest {
@@ -351,14 +351,22 @@ export const EventsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventsRetrieveRequest",
 }) as any as S.Schema<EventsRetrieveRequest>;
 
-export type EventsRetrieveResponse = unknown;
+export type EventsRetrieveResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const EventsRetrieveResponseBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EventsRetrieveResponseBodyMap>;
+
+export type EventsRetrieveResponse = EventsRetrieveResponseBodyMap;
 export const EventsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  EventsRetrieveResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EventsRetrieveResponse",
 }) as any as S.Schema<EventsRetrieveResponse>;
 
-export type EventsValuesRetrieveRequestFormat = "csv" | "json" | (string & {});
+export type EventsValuesRetrieveRequestFormat = "csv" | "json";
 export const EventsValuesRetrieveRequestFormat = /*@__PURE__*/ S.String;
 
 export interface EventsValuesRetrieveRequest {

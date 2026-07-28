@@ -107,7 +107,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -152,7 +152,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -186,8 +186,7 @@ export type EventAnnotationEventTypeEnum =
   | "INTERCONNECT_MAINTENANCE_STARTED"
   | "INTERCONNECT_MAINTENANCE_COMPLETED"
   | "VPN_TRAFFIC_SELECTOR_NARROWING"
-  | "VPN_MAINTENANCE"
-  | (string & {});
+  | "VPN_MAINTENANCE";
 export const EventAnnotationEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** Annotation configuration for one event type on a dashboard */
@@ -215,7 +214,7 @@ export const EventAnnotation = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventAnnotation",
 }) as any as S.Schema<EventAnnotation>;
 
-export type EventAnnotationList = EventAnnotation[];
+export type EventAnnotationList = ReadonlyArray<EventAnnotation>;
 export const EventAnnotationList = /*@__PURE__*/ S.Array(
   EventAnnotation,
 ) as any as S.Schema<EventAnnotationList>;
@@ -238,8 +237,7 @@ export const DashboardAnnotations = /*@__PURE__*/ S.suspend(() =>
 
 export type StatisticalTimeSeriesFilterRankingMethodEnum =
   | "METHOD_UNSPECIFIED"
-  | "METHOD_CLUSTER_OUTLIER"
-  | (string & {});
+  | "METHOD_CLUSTER_OUTLIER";
 export const StatisticalTimeSeriesFilterRankingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -273,8 +271,7 @@ export type AggregationCrossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_99"
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
-  | "REDUCE_PERCENTILE_05"
-  | (string & {});
+  | "REDUCE_PERCENTILE_05";
 export const AggregationCrossSeriesReducerEnum = /*@__PURE__*/ S.String;
 
 export type AggregationPerSeriesAlignerEnum =
@@ -296,8 +293,7 @@ export type AggregationPerSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_95"
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
-  | "ALIGN_PERCENT_CHANGE"
-  | (string & {});
+  | "ALIGN_PERCENT_CHANGE";
 export const AggregationPerSeriesAlignerEnum = /*@__PURE__*/ S.String;
 
 /** Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation). */
@@ -326,15 +322,13 @@ export type PickTimeSeriesFilterRankingMethodEnum =
   | "METHOD_MAX"
   | "METHOD_MIN"
   | "METHOD_SUM"
-  | "METHOD_LATEST"
-  | (string & {});
+  | "METHOD_LATEST";
 export const PickTimeSeriesFilterRankingMethodEnum = /*@__PURE__*/ S.String;
 
 export type PickTimeSeriesFilterDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "TOP"
-  | "BOTTOM"
-  | (string & {});
+  | "BOTTOM";
 export const PickTimeSeriesFilterDirectionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
@@ -402,8 +396,7 @@ export type TraceQuerySpanDataValueEnum =
   | "SPAN_DATA_VALUE_UNSPECIFIED"
   | "SPAN_COUNT"
   | "SPAN_DURATION"
-  | "SPAN_DURATION_PERCENTILES"
-  | (string & {});
+  | "SPAN_DURATION_PERCENTILES";
 export const TraceQuerySpanDataValueEnum = /*@__PURE__*/ S.String;
 
 /** Span attribute key and list of values to be used for filtering. */
@@ -422,7 +415,7 @@ export const SpanAttributeFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpanAttributeFilter",
 }) as any as S.Schema<SpanAttributeFilter>;
 
-export type SpanAttributeFilterList = SpanAttributeFilter[];
+export type SpanAttributeFilterList = ReadonlyArray<SpanAttributeFilter>;
 export const SpanAttributeFilterList = /*@__PURE__*/ S.Array(
   SpanAttributeFilter,
 ) as any as S.Schema<SpanAttributeFilterList>;
@@ -575,8 +568,7 @@ export type DimensionSortOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
-  | "SORT_ORDER_DESCENDING"
-  | (string & {});
+  | "SORT_ORDER_DESCENDING";
 export const DimensionSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data. */
@@ -617,7 +609,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
-export type DimensionList = Dimension[];
+export type DimensionList = ReadonlyArray<Dimension>;
 export const DimensionList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<DimensionList>;
@@ -636,7 +628,7 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 
-export type ParameterList = Parameter[];
+export type ParameterList = ReadonlyArray<Parameter>;
 export const ParameterList = /*@__PURE__*/ S.Array(
   Parameter,
 ) as any as S.Schema<ParameterList>;
@@ -671,7 +663,7 @@ export const Measure = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Measure" }) as any as S.Schema<Measure>;
 
-export type MeasureList = Measure[];
+export type MeasureList = ReadonlyArray<Measure>;
 export const MeasureList = /*@__PURE__*/ S.Array(
   Measure,
 ) as any as S.Schema<MeasureList>;
@@ -679,8 +671,7 @@ export const MeasureList = /*@__PURE__*/ S.Array(
 export type SparkChartViewSparkChartTypeEnum =
   | "SPARK_CHART_TYPE_UNSPECIFIED"
   | "SPARK_LINE"
-  | "SPARK_BAR"
-  | (string & {});
+  | "SPARK_BAR";
 export const SparkChartViewSparkChartTypeEnum = /*@__PURE__*/ S.String;
 
 /** A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries. */
@@ -700,22 +691,13 @@ export const SparkChartView = /*@__PURE__*/ S.suspend(() =>
 export type ThresholdDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "ABOVE"
-  | "BELOW"
-  | (string & {});
+  | "BELOW";
 export const ThresholdDirectionEnum = /*@__PURE__*/ S.String;
 
-export type ThresholdTargetAxisEnum =
-  | "TARGET_AXIS_UNSPECIFIED"
-  | "Y1"
-  | "Y2"
-  | (string & {});
+export type ThresholdTargetAxisEnum = "TARGET_AXIS_UNSPECIFIED" | "Y1" | "Y2";
 export const ThresholdTargetAxisEnum = /*@__PURE__*/ S.String;
 
-export type ThresholdColorEnum =
-  | "COLOR_UNSPECIFIED"
-  | "YELLOW"
-  | "RED"
-  | (string & {});
+export type ThresholdColorEnum = "COLOR_UNSPECIFIED" | "YELLOW" | "RED";
 export const ThresholdColorEnum = /*@__PURE__*/ S.String;
 
 /** Defines a threshold for categorizing time series values. */
@@ -741,7 +723,7 @@ export const Threshold = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Threshold" }) as any as S.Schema<Threshold>;
 
-export type ThresholdList = Threshold[];
+export type ThresholdList = ReadonlyArray<Threshold>;
 export const ThresholdList = /*@__PURE__*/ S.Array(
   Threshold,
 ) as any as S.Schema<ThresholdList>;
@@ -770,8 +752,7 @@ export type BreakdownSortOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
-  | "SORT_ORDER_DESCENDING"
-  | (string & {});
+  | "SORT_ORDER_DESCENDING";
 export const BreakdownSortOrderEnum = /*@__PURE__*/ S.String;
 
 /** Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release. */
@@ -794,7 +775,7 @@ export const Breakdown = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
-export type BreakdownList = Breakdown[];
+export type BreakdownList = ReadonlyArray<Breakdown>;
 export const BreakdownList = /*@__PURE__*/ S.Array(
   Breakdown,
 ) as any as S.Schema<BreakdownList>;
@@ -848,8 +829,7 @@ export const SectionHeader = /*@__PURE__*/ S.suspend(() =>
 export type PieChartChartTypeEnum =
   | "PIE_CHART_TYPE_UNSPECIFIED"
   | "PIE"
-  | "DONUT"
-  | (string & {});
+  | "DONUT";
 export const PieChartChartTypeEnum = /*@__PURE__*/ S.String;
 
 /** Groups a time series query definition. */
@@ -877,7 +857,7 @@ export const PieChartDataSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "PieChartDataSet",
 }) as any as S.Schema<PieChartDataSet>;
 
-export type PieChartDataSetList = PieChartDataSet[];
+export type PieChartDataSetList = ReadonlyArray<PieChartDataSet>;
 export const PieChartDataSetList = /*@__PURE__*/ S.Array(
   PieChartDataSet,
 ) as any as S.Schema<PieChartDataSetList>;
@@ -899,11 +879,7 @@ export const PieChart = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PieChart" }) as any as S.Schema<PieChart>;
 
-export type AxisScaleEnum =
-  | "SCALE_UNSPECIFIED"
-  | "LINEAR"
-  | "LOG10"
-  | (string & {});
+export type AxisScaleEnum = "SCALE_UNSPECIFIED" | "LINEAR" | "LOG10";
 export const AxisScaleEnum = /*@__PURE__*/ S.String;
 
 /** A chart axis. */
@@ -924,8 +900,7 @@ export type ColumnSortingOptionsDirectionEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
-  | "SORT_ORDER_DESCENDING"
-  | (string & {});
+  | "SORT_ORDER_DESCENDING";
 export const ColumnSortingOptionsDirectionEnum = /*@__PURE__*/ S.String;
 
 /** Data structure to storing column's sort strategy */
@@ -944,7 +919,7 @@ export const ColumnSortingOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "ColumnSortingOptions",
 }) as any as S.Schema<ColumnSortingOptions>;
 
-export type ColumnSortingOptionsList = ColumnSortingOptions[];
+export type ColumnSortingOptionsList = ReadonlyArray<ColumnSortingOptions>;
 export const ColumnSortingOptionsList = /*@__PURE__*/ S.Array(
   ColumnSortingOptions,
 ) as any as S.Schema<ColumnSortingOptionsList>;
@@ -954,15 +929,10 @@ export type DataSetPlotTypeEnum =
   | "LINE"
   | "STACKED_AREA"
   | "STACKED_BAR"
-  | "HEATMAP"
-  | (string & {});
+  | "HEATMAP";
 export const DataSetPlotTypeEnum = /*@__PURE__*/ S.String;
 
-export type DataSetTargetAxisEnum =
-  | "TARGET_AXIS_UNSPECIFIED"
-  | "Y1"
-  | "Y2"
-  | (string & {});
+export type DataSetTargetAxisEnum = "TARGET_AXIS_UNSPECIFIED" | "Y1" | "Y2";
 export const DataSetTargetAxisEnum = /*@__PURE__*/ S.String;
 
 /** Groups a time series query definition with charting options. */
@@ -1000,7 +970,7 @@ export const DataSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataSet" }) as any as S.Schema<DataSet>;
 
-export type DataSetList = DataSet[];
+export type DataSetList = ReadonlyArray<DataSet>;
 export const DataSetList = /*@__PURE__*/ S.Array(
   DataSet,
 ) as any as S.Schema<DataSetList>;
@@ -1009,8 +979,7 @@ export type ChartOptionsModeEnum =
   | "MODE_UNSPECIFIED"
   | "COLOR"
   | "X_RAY"
-  | "STATS"
-  | (string & {});
+  | "STATS";
 export const ChartOptionsModeEnum = /*@__PURE__*/ S.String;
 
 /** Options to control visual rendering of a chart. */
@@ -1089,8 +1058,7 @@ export const ErrorReportingPanel = /*@__PURE__*/ S.suspend(() =>
 export type SingleViewGroupDisplayTypeEnum =
   | "DISPLAY_TYPE_UNSPECIFIED"
   | "DROPDOWN"
-  | "TAB"
-  | (string & {});
+  | "TAB";
 export const SingleViewGroupDisplayTypeEnum = /*@__PURE__*/ S.String;
 
 /** A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets. */
@@ -1153,7 +1121,7 @@ export const TableDataSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableDataSet" }) as any as S.Schema<TableDataSet>;
 
-export type TableDataSetList = TableDataSet[];
+export type TableDataSetList = ReadonlyArray<TableDataSet>;
 export const TableDataSetList = /*@__PURE__*/ S.Array(
   TableDataSet,
 ) as any as S.Schema<TableDataSetList>;
@@ -1161,16 +1129,14 @@ export const TableDataSetList = /*@__PURE__*/ S.Array(
 export type TimeSeriesTableMetricVisualizationEnum =
   | "METRIC_VISUALIZATION_UNSPECIFIED"
   | "NUMBER"
-  | "BAR"
-  | (string & {});
+  | "BAR";
 export const TimeSeriesTableMetricVisualizationEnum = /*@__PURE__*/ S.String;
 
 export type ColumnSettingsAlignmentEnum =
   | "CELL_ALIGNMENT_UNSPECIFIED"
   | "LEFT"
   | "CENTER"
-  | "RIGHT"
-  | (string & {});
+  | "RIGHT";
 export const ColumnSettingsAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** The persistent settings for a table's columns. */
@@ -1196,7 +1162,7 @@ export const ColumnSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ColumnSettings" }) as any as S.Schema<ColumnSettings>;
 
-export type ColumnSettingsList = ColumnSettings[];
+export type ColumnSettingsList = ReadonlyArray<ColumnSettings>;
 export const ColumnSettingsList = /*@__PURE__*/ S.Array(
   ColumnSettings,
 ) as any as S.Schema<ColumnSettingsList>;
@@ -1248,7 +1214,7 @@ export const TreemapDataSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TreemapDataSet" }) as any as S.Schema<TreemapDataSet>;
 
-export type TreemapDataSetList = TreemapDataSet[];
+export type TreemapDataSetList = ReadonlyArray<TreemapDataSet>;
 export const TreemapDataSetList = /*@__PURE__*/ S.Array(
   TreemapDataSet,
 ) as any as S.Schema<TreemapDataSetList>;
@@ -1289,7 +1255,7 @@ export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitoredResource",
 }) as any as S.Schema<MonitoredResource>;
 
-export type MonitoredResourceList = MonitoredResource[];
+export type MonitoredResourceList = ReadonlyArray<MonitoredResource>;
 export const MonitoredResourceList = /*@__PURE__*/ S.Array(
   MonitoredResource,
 ) as any as S.Schema<MonitoredResourceList>;
@@ -1308,11 +1274,7 @@ export const IncidentList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IncidentList" }) as any as S.Schema<IncidentList>;
 
-export type TextFormatEnum =
-  | "FORMAT_UNSPECIFIED"
-  | "MARKDOWN"
-  | "RAW"
-  | (string & {});
+export type TextFormatEnum = "FORMAT_UNSPECIFIED" | "MARKDOWN" | "RAW";
 export const TextFormatEnum = /*@__PURE__*/ S.String;
 
 export type TextStylePointerLocationEnum =
@@ -1328,8 +1290,7 @@ export type TextStylePointerLocationEnum =
   | "PL_BOTTOM_RIGHT"
   | "PL_BOTTOM_LEFT"
   | "PL_LEFT_BOTTOM"
-  | "PL_LEFT_TOP"
-  | (string & {});
+  | "PL_LEFT_TOP";
 export const TextStylePointerLocationEnum = /*@__PURE__*/ S.String;
 
 export type TextStylePaddingEnum =
@@ -1338,16 +1299,14 @@ export type TextStylePaddingEnum =
   | "P_SMALL"
   | "P_MEDIUM"
   | "P_LARGE"
-  | "P_EXTRA_LARGE"
-  | (string & {});
+  | "P_EXTRA_LARGE";
 export const TextStylePaddingEnum = /*@__PURE__*/ S.String;
 
 export type TextStyleHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
   | "H_LEFT"
   | "H_CENTER"
-  | "H_RIGHT"
-  | (string & {});
+  | "H_RIGHT";
 export const TextStyleHorizontalAlignmentEnum = /*@__PURE__*/ S.String;
 
 export type TextStyleFontSizeEnum =
@@ -1356,16 +1315,14 @@ export type TextStyleFontSizeEnum =
   | "FS_SMALL"
   | "FS_MEDIUM"
   | "FS_LARGE"
-  | "FS_EXTRA_LARGE"
-  | (string & {});
+  | "FS_EXTRA_LARGE";
 export const TextStyleFontSizeEnum = /*@__PURE__*/ S.String;
 
 export type TextStyleVerticalAlignmentEnum =
   | "VERTICAL_ALIGNMENT_UNSPECIFIED"
   | "V_TOP"
   | "V_CENTER"
-  | "V_BOTTOM"
-  | (string & {});
+  | "V_BOTTOM";
 export const TextStyleVerticalAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Properties that determine how the title and content are styled */
@@ -1416,8 +1373,7 @@ export const Text = /*@__PURE__*/ S.suspend(() =>
 
 export type TemplateVariableConditionComparatorEnum =
   | "COMPARATOR_UNSPECIFIED"
-  | "REGEX_FULL_MATCH"
-  | (string & {});
+  | "REGEX_FULL_MATCH";
 export const TemplateVariableConditionComparatorEnum = /*@__PURE__*/ S.String;
 
 /** A condition whose evaluation is based on the value of a template variable. */
@@ -1527,7 +1483,7 @@ export const Widget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Widget" }) as any as S.Schema<Widget>;
 
-export type WidgetList = Widget[];
+export type WidgetList = ReadonlyArray<Widget>;
 export const WidgetList = /*@__PURE__*/ S.Array(
   Widget,
 ) as any as S.Schema<WidgetList>;
@@ -1560,7 +1516,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
-export type RowList = Row[];
+export type RowList = ReadonlyArray<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row. */
@@ -1577,8 +1533,7 @@ export const RowLayout = /*@__PURE__*/ S.suspend(() =>
 export type DashboardFilterValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"
   | "STRING"
-  | "STRING_ARRAY"
-  | (string & {});
+  | "STRING_ARRAY";
 export const DashboardFilterValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type DashboardFilterFilterTypeEnum =
@@ -1588,8 +1543,7 @@ export type DashboardFilterFilterTypeEnum =
   | "USER_METADATA_LABEL"
   | "SYSTEM_METADATA_LABEL"
   | "GROUP"
-  | "VALUE_ONLY"
-  | (string & {});
+  | "VALUE_ONLY";
 export const DashboardFilterFilterTypeEnum = /*@__PURE__*/ S.String;
 
 /** An array of strings */
@@ -1637,7 +1591,7 @@ export const DashboardFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "DashboardFilter",
 }) as any as S.Schema<DashboardFilter>;
 
-export type DashboardFilterList = DashboardFilter[];
+export type DashboardFilterList = ReadonlyArray<DashboardFilter>;
 export const DashboardFilterList = /*@__PURE__*/ S.Array(
   DashboardFilter,
 ) as any as S.Schema<DashboardFilterList>;
@@ -1656,7 +1610,7 @@ export const Column = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Column" }) as any as S.Schema<Column>;
 
-export type ColumnList = Column[];
+export type ColumnList = ReadonlyArray<Column>;
 export const ColumnList = /*@__PURE__*/ S.Array(
   Column,
 ) as any as S.Schema<ColumnList>;
@@ -1695,7 +1649,7 @@ export const Tile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tile" }) as any as S.Schema<Tile>;
 
-export type TileList = Tile[];
+export type TileList = ReadonlyArray<Tile>;
 export const TileList = /*@__PURE__*/ S.Array(
   Tile,
 ) as any as S.Schema<TileList>;
@@ -1832,7 +1786,7 @@ export const GetLocationsGlobalMetricsScopesRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetLocationsGlobalMetricsScopesRequest",
 }) as any as S.Schema<GetLocationsGlobalMetricsScopesRequest>;
 
-export type MonitoredProjectList = MonitoredProject[];
+export type MonitoredProjectList = ReadonlyArray<MonitoredProject>;
 export const MonitoredProjectList = /*@__PURE__*/ S.Array(
   MonitoredProject,
 ) as any as S.Schema<MonitoredProjectList>;
@@ -1974,7 +1928,7 @@ export const ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequ
       "ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest",
   }) as any as S.Schema<ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest>;
 
-export type MetricsScopeList = MetricsScope[];
+export type MetricsScopeList = ReadonlyArray<MetricsScope>;
 export const MetricsScopeList = /*@__PURE__*/ S.Array(
   MetricsScope,
 ) as any as S.Schema<MetricsScopeList>;
@@ -2017,7 +1971,7 @@ export const ListProjectsDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsDashboardsRequest",
 }) as any as S.Schema<ListProjectsDashboardsRequest>;
 
-export type DashboardList = Dashboard[];
+export type DashboardList = ReadonlyArray<Dashboard>;
 export const DashboardList = /*@__PURE__*/ S.Array(
   Dashboard,
 ) as any as S.Schema<DashboardList>;

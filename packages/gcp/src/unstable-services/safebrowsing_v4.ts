@@ -98,8 +98,7 @@ export type GoogleSecuritySafebrowsingV4ThreatHitThreatTypeEnum =
   | "SUSPICIOUS"
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
-  | "ACCURACY_TIPS"
-  | (string & {});
+  | "ACCURACY_TIPS";
 export const GoogleSecuritySafebrowsingV4ThreatHitThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -112,8 +111,7 @@ export type GoogleSecuritySafebrowsingV4ThreatHitPlatformTypeEnum =
   | "IOS"
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
-  | "CHROME"
-  | (string & {});
+  | "CHROME";
 export const GoogleSecuritySafebrowsingV4ThreatHitPlatformTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -122,8 +120,7 @@ export type GoogleSecuritySafebrowsingV4ThreatHitThreatSourceTypeEnum =
   | "MATCHING_URL"
   | "TAB_URL"
   | "TAB_REDIRECT"
-  | "TAB_RESOURCE"
-  | (string & {});
+  | "TAB_RESOURCE";
 export const GoogleSecuritySafebrowsingV4ThreatHitThreatSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -153,7 +150,7 @@ export const GoogleSecuritySafebrowsingV4ThreatHitThreatSource =
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatHitThreatSource>;
 
 export type GoogleSecuritySafebrowsingV4ThreatHitThreatSourceList =
-  GoogleSecuritySafebrowsingV4ThreatHitThreatSource[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatHitThreatSource>;
 export const GoogleSecuritySafebrowsingV4ThreatHitThreatSourceList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatHitThreatSource,
@@ -271,18 +268,17 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateR
     | "SUSPICIOUS"
     | "TRICK_TO_BILL"
     | "HIGH_CONFIDENCE_ALLOWLIST"
-    | "ACCURACY_TIPS"
-    | (string & {});
+    | "ACCURACY_TIPS";
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum =
-  "COMPRESSION_TYPE_UNSPECIFIED" | "RAW" | "RICE" | (string & {});
+  "COMPRESSION_TYPE_UNSPECIFIED" | "RAW" | "RICE";
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList =
-  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum>;
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraintsSupportedCompressionsItemEnum,
@@ -329,8 +325,7 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateR
     | "IOS"
     | "ANY_PLATFORM"
     | "ALL_PLATFORMS"
-    | "CHROME"
-    | (string & {});
+    | "CHROME";
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestPlatformTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -341,8 +336,7 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateR
     | "IP_RANGE"
     | "CHROME_EXTENSION"
     | "FILENAME"
-    | "CERT"
-    | (string & {});
+    | "CERT";
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestThreatEntryTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -382,7 +376,7 @@ export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdate
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>;
 
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestList =
-  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest>;
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest,
@@ -432,8 +426,7 @@ export const FetchThreatListUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionTypeEnum =
   | "COMPRESSION_TYPE_UNSPECIFIED"
   | "RAW"
-  | "RICE"
-  | (string & {});
+  | "RICE";
 export const GoogleSecuritySafebrowsingV4ThreatEntrySetCompressionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -477,7 +470,7 @@ export const GoogleSecuritySafebrowsingV4RiceDeltaEncoding =
     identifier: "GoogleSecuritySafebrowsingV4RiceDeltaEncoding",
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4RiceDeltaEncoding>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -525,17 +518,14 @@ export const GoogleSecuritySafebrowsingV4ThreatEntrySet =
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntrySet>;
 
 export type GoogleSecuritySafebrowsingV4ThreatEntrySetList =
-  GoogleSecuritySafebrowsingV4ThreatEntrySet[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntrySet>;
 export const GoogleSecuritySafebrowsingV4ThreatEntrySetList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatEntrySet,
   ) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntrySetList>;
 
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseTypeEnum =
-    | "RESPONSE_TYPE_UNSPECIFIED"
-    | "PARTIAL_UPDATE"
-    | "FULL_UPDATE"
-    | (string & {});
+  "RESPONSE_TYPE_UNSPECIFIED" | "PARTIAL_UPDATE" | "FULL_UPDATE";
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseResponseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -546,8 +536,7 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdate
     | "IP_RANGE"
     | "CHROME_EXTENSION"
     | "FILENAME"
-    | "CERT"
-    | (string & {});
+    | "CERT";
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatEntryTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -560,8 +549,7 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdate
     | "IOS"
     | "ANY_PLATFORM"
     | "ALL_PLATFORMS"
-    | "CHROME"
-    | (string & {});
+    | "CHROME";
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponsePlatformTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -597,8 +585,7 @@ export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdate
     | "SUSPICIOUS"
     | "TRICK_TO_BILL"
     | "HIGH_CONFIDENCE_ALLOWLIST"
-    | "ACCURACY_TIPS"
-    | (string & {});
+    | "ACCURACY_TIPS";
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -647,7 +634,7 @@ export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdat
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>;
 
 export type GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseList =
-  GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse>;
 export const GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponseList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse,
@@ -689,13 +676,12 @@ export type GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum =
   | "SUSPICIOUS"
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
-  | "ACCURACY_TIPS"
-  | (string & {});
+  | "ACCURACY_TIPS";
 export const GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnumList =
-  GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum>;
 export const GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatInfoThreatTypesItemEnum,
@@ -710,13 +696,12 @@ export type GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum =
   | "IOS"
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
-  | "CHROME"
-  | (string & {});
+  | "CHROME";
 export const GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList =
-  GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum>;
 export const GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatInfoPlatformTypesItemEnum,
@@ -729,20 +714,19 @@ export type GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum =
   | "IP_RANGE"
   | "CHROME_EXTENSION"
   | "FILENAME"
-  | "CERT"
-  | (string & {});
+  | "CERT";
 export const GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList =
-  GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum>;
 export const GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnum,
   ) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfoThreatEntryTypesItemEnumList>;
 
 export type GoogleSecuritySafebrowsingV4ThreatEntryList =
-  GoogleSecuritySafebrowsingV4ThreatEntry[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntry>;
 export const GoogleSecuritySafebrowsingV4ThreatEntryList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatEntry,
@@ -777,7 +761,7 @@ export const GoogleSecuritySafebrowsingV4ThreatInfo = /*@__PURE__*/ S.suspend(
   identifier: "GoogleSecuritySafebrowsingV4ThreatInfo",
 }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatInfo>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -843,8 +827,7 @@ export type GoogleSecuritySafebrowsingV4ThreatMatchThreatTypeEnum =
   | "SUSPICIOUS"
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
-  | "ACCURACY_TIPS"
-  | (string & {});
+  | "ACCURACY_TIPS";
 export const GoogleSecuritySafebrowsingV4ThreatMatchThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -866,7 +849,7 @@ export const GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry =
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>;
 
 export type GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntryList =
-  GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry>;
 export const GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntryList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry,
@@ -897,8 +880,7 @@ export type GoogleSecuritySafebrowsingV4ThreatMatchPlatformTypeEnum =
   | "IOS"
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
-  | "CHROME"
-  | (string & {});
+  | "CHROME";
 export const GoogleSecuritySafebrowsingV4ThreatMatchPlatformTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -909,8 +891,7 @@ export type GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryTypeEnum =
   | "IP_RANGE"
   | "CHROME_EXTENSION"
   | "FILENAME"
-  | "CERT"
-  | (string & {});
+  | "CERT";
 export const GoogleSecuritySafebrowsingV4ThreatMatchThreatEntryTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -952,7 +933,7 @@ export const GoogleSecuritySafebrowsingV4ThreatMatch = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatMatch>;
 
 export type GoogleSecuritySafebrowsingV4ThreatMatchList =
-  GoogleSecuritySafebrowsingV4ThreatMatch[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatMatch>;
 export const GoogleSecuritySafebrowsingV4ThreatMatchList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatMatch,
@@ -1106,8 +1087,7 @@ export type GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatTypeEnum =
   | "SUSPICIOUS"
   | "TRICK_TO_BILL"
   | "HIGH_CONFIDENCE_ALLOWLIST"
-  | "ACCURACY_TIPS"
-  | (string & {});
+  | "ACCURACY_TIPS";
 export const GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1120,8 +1100,7 @@ export type GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformTypeEnum =
   | "IOS"
   | "ANY_PLATFORM"
   | "ALL_PLATFORMS"
-  | "CHROME"
-  | (string & {});
+  | "CHROME";
 export const GoogleSecuritySafebrowsingV4ThreatListDescriptorPlatformTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1132,8 +1111,7 @@ export type GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryTypeEnum 
     | "IP_RANGE"
     | "CHROME_EXTENSION"
     | "FILENAME"
-    | "CERT"
-    | (string & {});
+    | "CERT";
 export const GoogleSecuritySafebrowsingV4ThreatListDescriptorThreatEntryTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1164,7 +1142,7 @@ export const GoogleSecuritySafebrowsingV4ThreatListDescriptor =
   }) as any as S.Schema<GoogleSecuritySafebrowsingV4ThreatListDescriptor>;
 
 export type GoogleSecuritySafebrowsingV4ThreatListDescriptorList =
-  GoogleSecuritySafebrowsingV4ThreatListDescriptor[];
+  ReadonlyArray<GoogleSecuritySafebrowsingV4ThreatListDescriptor>;
 export const GoogleSecuritySafebrowsingV4ThreatListDescriptorList =
   /*@__PURE__*/ S.Array(
     GoogleSecuritySafebrowsingV4ThreatListDescriptor,

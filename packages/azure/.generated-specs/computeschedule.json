@@ -374,16 +374,172 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "schedule": {
+          "target": "com.azure.computeschedule#Schedule",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The schedule for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "executionParameters": {
+          "target": "com.azure.computeschedule#ExecutionParameters",
+          "traits": {
+            "smithy.api#documentation": "The execution parameters for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.computeschedule#Resources",
+          "traits": {
+            "smithy.api#documentation": "The resources for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "correlationid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CorrelationId item",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.computeschedule#Resources": {
+      "type": "structure",
+      "members": {
+        "ids": {
+          "target": "com.azure.computeschedule#ResourcesIdsList",
+          "traits": {
+            "smithy.api#documentation": "The resource ids used for the request",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resources needed for the user request"
+      }
+    },
+    "com.azure.computeschedule#ResourcesIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource ids used for the request"
+      }
+    },
+    "com.azure.computeschedule#ExecutionParameters": {
+      "type": "structure",
+      "members": {
+        "optimizationPreference": {
+          "target": "com.azure.computeschedule#OptimizationPreference",
+          "traits": {
+            "smithy.api#documentation": "Details that could optimize the user's request"
+          }
+        },
+        "retryPolicy": {
+          "target": "com.azure.computeschedule#RetryPolicy",
+          "traits": {
+            "smithy.api#documentation": "Retry policy the user can pass"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Extra details needed to run the user's request"
+      }
+    },
+    "com.azure.computeschedule#OptimizationPreference": {
+      "type": "enum",
+      "members": {
+        "COST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cost"
+          }
+        },
+        "AVAILABILITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Availability"
+          }
+        },
+        "COSTAVAILABILITYBALANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CostAvailabilityBalanced"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The preferences customers can select to optimize their requests to ScheduledActions"
+      }
+    },
+    "com.azure.computeschedule#Schedule": {
+      "type": "structure",
+      "members": {
+        "deadline": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The deadline for the operation"
+          }
+        },
+        "deadLine": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The deadline for the operation"
+          }
+        },
+        "timezone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timezone for the operation"
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timezone for the operation"
+          }
+        },
+        "deadlineType": {
+          "target": "com.azure.computeschedule#ScheduleDeadlineType",
+          "traits": {
+            "smithy.api#documentation": "The deadlinetype of the operation, this can either be InitiateAt or CompleteBy",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The schedule details for the user request"
+      }
+    },
+    "com.azure.computeschedule#ScheduleDeadlineType": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "INITIATEAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InitiateAt"
+          }
+        },
+        "COMPLETEBY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CompleteBy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The deadlinetype of the operation, this can either be InitiateAt or CompleteBy"
       }
     },
     "com.azure.computeschedule#ScheduledActionsVirtualMachinesSubmitHibernate": {
@@ -468,10 +624,31 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "schedule": {
+          "target": "com.azure.computeschedule#Schedule",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The schedule for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "executionParameters": {
+          "target": "com.azure.computeschedule#ExecutionParameters",
+          "traits": {
+            "smithy.api#documentation": "The execution parameters for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.computeschedule#Resources",
+          "traits": {
+            "smithy.api#documentation": "The resources for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "correlationid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CorrelationId item",
             "smithy.api#required": {}
           }
         }
@@ -562,10 +739,31 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "schedule": {
+          "target": "com.azure.computeschedule#Schedule",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The schedule for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "executionParameters": {
+          "target": "com.azure.computeschedule#ExecutionParameters",
+          "traits": {
+            "smithy.api#documentation": "The execution parameters for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.computeschedule#Resources",
+          "traits": {
+            "smithy.api#documentation": "The resources for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "correlationid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CorrelationId item",
             "smithy.api#required": {}
           }
         }
@@ -636,16 +834,32 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "operationIds": {
+          "target": "com.azure.computeschedule#ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The list of operation ids to get the status of",
+            "smithy.api#required": {}
+          }
+        },
+        "correlationid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CorrelationId item",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.computeschedule#ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of operation ids to get the status of"
       }
     },
     "com.azure.computeschedule#ScheduledActionsVirtualMachinesGetOperationErrors": {
@@ -815,16 +1029,25 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "operationIds": {
+          "target": "com.azure.computeschedule#ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The list of operation ids to query errors of",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.computeschedule#ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of operation ids to query errors of"
       }
     },
     "com.azure.computeschedule#ScheduledActionsVirtualMachinesExecuteStart": {
@@ -865,10 +1088,24 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "executionParameters": {
+          "target": "com.azure.computeschedule#ExecutionParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The execution parameters for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.computeschedule#Resources",
+          "traits": {
+            "smithy.api#documentation": "The resources for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "correlationid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CorrelationId item",
             "smithy.api#required": {}
           }
         }
@@ -915,10 +1152,24 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "executionParameters": {
+          "target": "com.azure.computeschedule#ExecutionParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The execution parameters for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.computeschedule#Resources",
+          "traits": {
+            "smithy.api#documentation": "The resources for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "correlationid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CorrelationId item",
             "smithy.api#required": {}
           }
         }
@@ -1009,11 +1260,30 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "executionParameters": {
+          "target": "com.azure.computeschedule#ExecutionParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The execution parameters for the request",
             "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.computeschedule#Resources",
+          "traits": {
+            "smithy.api#documentation": "The resources for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "correlationid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CorrelationId item"
+          }
+        },
+        "forceDeletion": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Forced delete resource item"
           }
         }
       },
@@ -1059,10 +1329,24 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "executionParameters": {
+          "target": "com.azure.computeschedule#ExecutionParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The execution parameters for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "resources": {
+          "target": "com.azure.computeschedule#Resources",
+          "traits": {
+            "smithy.api#documentation": "The resources for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "correlationid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CorrelationId item",
             "smithy.api#required": {}
           }
         }
@@ -1153,16 +1437,93 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resourceConfigParameters": {
+          "target": "com.azure.computeschedule#ResourceProvisionPayload",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "resource creation payload",
             "smithy.api#required": {}
+          }
+        },
+        "executionParameters": {
+          "target": "com.azure.computeschedule#ExecutionParameters",
+          "traits": {
+            "smithy.api#documentation": "The execution parameters for the request",
+            "smithy.api#required": {}
+          }
+        },
+        "correlationid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CorrelationId item"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.computeschedule#ResourceProvisionPayload": {
+      "type": "structure",
+      "members": {
+        "baseProfile": {
+          "target": "com.azure.computeschedule#ResourceProvisionPayloadBaseProfileMap",
+          "traits": {
+            "smithy.api#documentation": "Virtual machine profile object that contains VM properties that are common across all VMs in this batch  (if you want to create 100 VMs in this request, and they all have same vmSize, then include vmSize in baseProfile)"
+          }
+        },
+        "resourceOverrides": {
+          "target": "com.azure.computeschedule#ResourceProvisionPayloadResourceOverridesList",
+          "traits": {
+            "smithy.api#documentation": "Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile."
+          }
+        },
+        "resourceCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of VMs to be created",
+            "smithy.api#required": {}
+          }
+        },
+        "resourcePrefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "if resourceOverrides doesn't contain \"name\", service will create name based of prefix and ResourceCount e.g. resourceprefix-0,resourceprefix-1.."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource creation data model"
+      }
+    },
+    "com.azure.computeschedule#ResourceProvisionPayloadResourceOverridesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.computeschedule#ResourceProvisionPayloadResourceOverridesItemMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile."
+      }
+    },
+    "com.azure.computeschedule#ResourceProvisionPayloadResourceOverridesItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.azure.computeschedule#ResourceProvisionPayloadBaseProfileMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual machine profile object that contains VM properties that are common across all VMs in this batch  (if you want to create 100 VMs in this request, and they all have same vmSize, then include vmSize in baseProfile)"
       }
     },
     "com.azure.computeschedule#ScheduledActionsVirtualMachinesCancelOperations": {
@@ -1227,16 +1588,32 @@
             "smithy.api#documentation": "The location name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "operationIds": {
+          "target": "com.azure.computeschedule#ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The list of operation ids to cancel operations on",
+            "smithy.api#required": {}
+          }
+        },
+        "correlationid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CorrelationId item",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.computeschedule#ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of operation ids to cancel operations on"
       }
     },
     "com.azure.computeschedule#OperationsList": {

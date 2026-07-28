@@ -53,7 +53,8 @@ export const QueriesBulkRequestQueriesItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<QueriesBulkRequestQueriesItemMap>;
 
-export type QueriesBulkRequestQueriesList = QueriesBulkRequestQueriesItemMap[];
+export type QueriesBulkRequestQueriesList =
+  ReadonlyArray<QueriesBulkRequestQueriesItemMap>;
 export const QueriesBulkRequestQueriesList = /*@__PURE__*/ S.Array(
   QueriesBulkRequestQueriesItemMap,
 ) as any as S.Schema<QueriesBulkRequestQueriesList>;
@@ -307,7 +308,7 @@ export const DeleteV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteV2LogoResponse",
 }) as any as S.Schema<DeleteV2LogoResponse>;
 
-export type LogoMatchesDownloadRequestLogoIdList = string[];
+export type LogoMatchesDownloadRequestLogoIdList = ReadonlyArray<string>;
 export const LogoMatchesDownloadRequestLogoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogoMatchesDownloadRequestLogoIdList>;
@@ -348,7 +349,7 @@ export const LogoMatchesDownloadResponseMatchesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LogoMatchesDownloadResponseMatchesItemMap>;
 
 export type LogoMatchesDownloadResponseMatchesList =
-  LogoMatchesDownloadResponseMatchesItemMap[];
+  ReadonlyArray<LogoMatchesDownloadResponseMatchesItemMap>;
 export const LogoMatchesDownloadResponseMatchesList = /*@__PURE__*/ S.Array(
   LogoMatchesDownloadResponseMatchesItemMap,
 ) as any as S.Schema<LogoMatchesDownloadResponseMatchesList>;
@@ -403,7 +404,7 @@ export const MatchesDownloadResponseMatchesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MatchesDownloadResponseMatchesItemMap>;
 
 export type MatchesDownloadResponseMatchesList =
-  MatchesDownloadResponseMatchesItemMap[];
+  ReadonlyArray<MatchesDownloadResponseMatchesItemMap>;
 export const MatchesDownloadResponseMatchesList = /*@__PURE__*/ S.Array(
   MatchesDownloadResponseMatchesItemMap,
 ) as any as S.Schema<MatchesDownloadResponseMatchesList>;
@@ -422,7 +423,7 @@ export const DownloadMatchResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DownloadMatchResponse",
 }) as any as S.Schema<DownloadMatchResponse>;
 
-export type LogoMatchesGetRequestLogoIdList = string[];
+export type LogoMatchesGetRequestLogoIdList = ReadonlyArray<string>;
 export const LogoMatchesGetRequestLogoIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LogoMatchesGetRequestLogoIdList>;
@@ -463,7 +464,7 @@ export const LogoMatchesGetResponseMatchesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LogoMatchesGetResponseMatchesItemMap>;
 
 export type LogoMatchesGetResponseMatchesList =
-  LogoMatchesGetResponseMatchesItemMap[];
+  ReadonlyArray<LogoMatchesGetResponseMatchesItemMap>;
 export const LogoMatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
   LogoMatchesGetResponseMatchesItemMap,
 ) as any as S.Schema<LogoMatchesGetResponseMatchesList>;
@@ -517,7 +518,8 @@ export const MatchesGetResponseMatchesItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<MatchesGetResponseMatchesItemMap>;
 
-export type MatchesGetResponseMatchesList = MatchesGetResponseMatchesItemMap[];
+export type MatchesGetResponseMatchesList =
+  ReadonlyArray<MatchesGetResponseMatchesItemMap>;
 export const MatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
   MatchesGetResponseMatchesItemMap,
 ) as any as S.Schema<MatchesGetResponseMatchesList>;
@@ -587,15 +589,14 @@ export const GetV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV2LogoResponse",
 }) as any as S.Schema<GetV2LogoResponse>;
 
-export type V2LogoMatchesGetRequestOrder = "asc" | "desc" | (string & {});
+export type V2LogoMatchesGetRequestOrder = "asc" | "desc";
 export const V2LogoMatchesGetRequestOrder = /*@__PURE__*/ S.String;
 
 export type V2LogoMatchesGetRequestOrderBy =
   | "matchedAt"
   | "domain"
   | "similarityScore"
-  | "registrar"
-  | (string & {});
+  | "registrar";
 export const V2LogoMatchesGetRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface GetV2LogoMatchRequest {
@@ -659,7 +660,7 @@ export const V2LogoMatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2LogoMatchesGetResponseMatchesItem>;
 
 export type V2LogoMatchesGetResponseMatchesList =
-  V2LogoMatchesGetResponseMatchesItem[];
+  ReadonlyArray<V2LogoMatchesGetResponseMatchesItem>;
 export const V2LogoMatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
   V2LogoMatchesGetResponseMatchesItem,
 ) as any as S.Schema<V2LogoMatchesGetResponseMatchesList>;
@@ -678,19 +679,15 @@ export const GetV2LogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV2LogoMatchResponse",
 }) as any as S.Schema<GetV2LogoMatchResponse>;
 
-export type V2MatchesGetRequestQueryIdList = string[];
+export type V2MatchesGetRequestQueryIdList = ReadonlyArray<string>;
 export const V2MatchesGetRequestQueryIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V2MatchesGetRequestQueryIdList>;
 
-export type V2MatchesGetRequestOrder = "asc" | "desc" | (string & {});
+export type V2MatchesGetRequestOrder = "asc" | "desc";
 export const V2MatchesGetRequestOrder = /*@__PURE__*/ S.String;
 
-export type V2MatchesGetRequestOrderBy =
-  | "domain"
-  | "first_seen"
-  | "registrar"
-  | (string & {});
+export type V2MatchesGetRequestOrderBy = "domain" | "first_seen" | "registrar";
 export const V2MatchesGetRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface GetV2MatchRequest {
@@ -765,7 +762,7 @@ export const V2MatchesGetResponseMatchesItemMatchDetailsItem =
   }) as any as S.Schema<V2MatchesGetResponseMatchesItemMatchDetailsItem>;
 
 export type V2MatchesGetResponseMatchesItemMatchDetailsList =
-  V2MatchesGetResponseMatchesItemMatchDetailsItem[];
+  ReadonlyArray<V2MatchesGetResponseMatchesItemMatchDetailsItem>;
 export const V2MatchesGetResponseMatchesItemMatchDetailsList =
   /*@__PURE__*/ S.Array(
     V2MatchesGetResponseMatchesItemMatchDetailsItem,
@@ -806,7 +803,8 @@ export const V2MatchesGetResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "V2MatchesGetResponseMatchesItem",
 }) as any as S.Schema<V2MatchesGetResponseMatchesItem>;
 
-export type V2MatchesGetResponseMatchesList = V2MatchesGetResponseMatchesItem[];
+export type V2MatchesGetResponseMatchesList =
+  ReadonlyArray<V2MatchesGetResponseMatchesItem>;
 export const V2MatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
   V2MatchesGetResponseMatchesItem,
 ) as any as S.Schema<V2MatchesGetResponseMatchesList>;
@@ -859,7 +857,7 @@ export const V2QueriesGetResponseParametersStringMatchesItem =
   }) as any as S.Schema<V2QueriesGetResponseParametersStringMatchesItem>;
 
 export type V2QueriesGetResponseParametersStringMatchesList =
-  V2QueriesGetResponseParametersStringMatchesItem[];
+  ReadonlyArray<V2QueriesGetResponseParametersStringMatchesItem>;
 export const V2QueriesGetResponseParametersStringMatchesList =
   /*@__PURE__*/ S.Array(
     V2QueriesGetResponseParametersStringMatchesItem,
@@ -931,7 +929,8 @@ export const SubmitResponseSkippedUrlsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<SubmitResponseSkippedUrlsItemMap>;
 
-export type SubmitResponseSkippedUrlsList = SubmitResponseSkippedUrlsItemMap[];
+export type SubmitResponseSkippedUrlsList =
+  ReadonlyArray<SubmitResponseSkippedUrlsItemMap>;
 export const SubmitResponseSkippedUrlsList = /*@__PURE__*/ S.Array(
   SubmitResponseSkippedUrlsItemMap,
 ) as any as S.Schema<SubmitResponseSkippedUrlsList>;
@@ -945,7 +944,7 @@ export const SubmitResponseSubmittedUrlsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SubmitResponseSubmittedUrlsItemMap>;
 
 export type SubmitResponseSubmittedUrlsList =
-  SubmitResponseSubmittedUrlsItemMap[];
+  ReadonlyArray<SubmitResponseSubmittedUrlsItemMap>;
 export const SubmitResponseSubmittedUrlsList = /*@__PURE__*/ S.Array(
   SubmitResponseSubmittedUrlsItemMap,
 ) as any as S.Schema<SubmitResponseSubmittedUrlsList>;
@@ -993,7 +992,7 @@ export const UrlInfoResultItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UrlInfoResultItemMap>;
 
-export type UrlInfoResultList = UrlInfoResultItemMap[];
+export type UrlInfoResultList = ReadonlyArray<UrlInfoResultItemMap>;
 export const UrlInfoResultList = /*@__PURE__*/ S.Array(
   UrlInfoResultItemMap,
 ) as any as S.Schema<UrlInfoResultList>;

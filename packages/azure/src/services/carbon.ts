@@ -44,13 +44,107 @@ export const CarbonEmissionDataAvailableDateRange = /*@__PURE__*/ S.suspend(
   identifier: "CarbonEmissionDataAvailableDateRange",
 }) as any as S.Schema<CarbonEmissionDataAvailableDateRange>;
 
+/** Enum for Report Type, specifying different report formats for carbon emissions data. Each report type returns different aggregations of carbon emissions across various categories, date range, emissions scope, and other parameters. */
+export type ReportTypeEnum =
+  | "OverallSummaryReport"
+  | "MonthlySummaryReport"
+  | "TopItemsSummaryReport"
+  | "TopItemsMonthlySummaryReport"
+  | "ItemDetailsReport";
+export const ReportTypeEnum = /*@__PURE__*/ S.String;
+
+/** Date range to be used with QueryParameter, it should be within 12 months between start and end date. In certain cases, start and end dates must be the same date. */
+export interface DateRange {
+  /** Start date parameter in yyyy-MM-01 format. Only the first day of each month is accepted. */
+  start: string;
+  /** End date parameter in yyyy-MM-01 format. Only the first day of each month is accepted. */
+  end: string;
+}
+export const DateRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    start: S.String,
+    end: S.String,
+  }),
+).annotate({ identifier: "DateRange" }) as any as S.Schema<DateRange>;
+
+/** List of subscription IDs for which carbon emissions data is requested. Required. Each subscription ID should be in lowercase format. The max length of list is 100. */
+export type CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList =
+  ReadonlyArray<string>;
+export const CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList>;
+
+/** List of resource group URLs for carbon emissions data. Optional. Each URL must follow the format '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}', and should be in all lowercase. */
+export type CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList =
+  ReadonlyArray<string>;
+export const CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList>;
+
+/** List of resource types for carbon emissions data. Optional. Each resource type should be specified in lowercase, following the format 'microsoft.{service}/{resourceType}', e.g., 'microsoft.storage/storageaccounts'. */
+export type CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList =
+  ReadonlyArray<string>;
+export const CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList>;
+
+/** List of locations(Azure Region Display Name) for carbon emissions data, with each location specified in lowercase (e.g., 'east us'). Optional. You can use the command 'az account list-locations -o table' to find Azure Region Display Names. */
+export type CarbonServiceQueryCarbonEmissionReportsRequestLocationListList =
+  ReadonlyArray<string>;
+export const CarbonServiceQueryCarbonEmissionReportsRequestLocationListList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestLocationListList>;
+
+/** Supported carbon emission scopes to be used with QueryParameter, as defined by the GHG Protocol. At least one scope must be specified. The output will return a total of all specified scopes. */
+export type EmissionScopeEnum = "Scope1" | "Scope2" | "Scope3";
+export const EmissionScopeEnum = /*@__PURE__*/ S.String;
+
+/** List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes. */
+export type CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList =
+  ReadonlyArray<EmissionScopeEnum>;
+export const CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList =
+  /*@__PURE__*/ S.Array(
+    EmissionScopeEnum,
+  ) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList>;
+
 export interface CarbonServiceQueryCarbonEmissionReportsRequest {
-  body: unknown;
+  /** The ReportType requested for carbon emissions data. Required. Specifies how data is aggregated and displayed in the output, as explained in the ReportTypeEnum. */
+  reportType: ReportTypeEnum;
+  /** The start and end dates for carbon emissions data. Required. For ItemDetailsReport and TopItemsSummaryReport, only one month of data is supported at a time, so start and end dates should be equal within DateRange (e.g., start: 2024-06-01 and end: 2024-06-01). */
+  dateRange: DateRange;
+  /** List of subscription IDs for which carbon emissions data is requested. Required. Each subscription ID should be in lowercase format. The max length of list is 100. */
+  subscriptionList: CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList;
+  /** List of resource group URLs for carbon emissions data. Optional. Each URL must follow the format '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}', and should be in all lowercase. */
+  resourceGroupUrlList?: CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList;
+  /** List of resource types for carbon emissions data. Optional. Each resource type should be specified in lowercase, following the format 'microsoft.{service}/{resourceType}', e.g., 'microsoft.storage/storageaccounts'. */
+  resourceTypeList?: CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList;
+  /** List of locations(Azure Region Display Name) for carbon emissions data, with each location specified in lowercase (e.g., 'east us'). Optional. You can use the command 'az account list-locations -o table' to find Azure Region Display Names. */
+  locationList?: CarbonServiceQueryCarbonEmissionReportsRequestLocationListList;
+  /** List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes. */
+  carbonScopeList: CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList;
 }
 export const CarbonServiceQueryCarbonEmissionReportsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      reportType: ReportTypeEnum,
+      dateRange: DateRange,
+      subscriptionList:
+        CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList,
+      resourceGroupUrlList: S.optional(
+        CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList,
+      ),
+      resourceTypeList: S.optional(
+        CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList,
+      ),
+      locationList: S.optional(
+        CarbonServiceQueryCarbonEmissionReportsRequestLocationListList,
+      ),
+      carbonScopeList:
+        CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList,
     }).pipe(
       T.Http({
         method: "POST",
@@ -75,8 +169,7 @@ export type ResponseDataTypeEnum =
   | "ResourceGroupTopItemsMonthlySummaryData"
   | "ItemDetailsData"
   | "ResourceItemDetailsData"
-  | "ResourceGroupItemDetailsData"
-  | (string & {});
+  | "ResourceGroupItemDetailsData";
 export const ResponseDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** The basic response for different query report, all query report result will have these information */
@@ -105,13 +198,14 @@ export const CarbonEmissionData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CarbonEmissionData>;
 
 /** The CarbonEmissionData items on this page */
-export type CarbonEmissionDataListResultValueList = CarbonEmissionData[];
+export type CarbonEmissionDataListResultValueList =
+  ReadonlyArray<CarbonEmissionData>;
 export const CarbonEmissionDataListResultValueList = /*@__PURE__*/ S.Array(
   CarbonEmissionData,
 ) as any as S.Schema<CarbonEmissionDataListResultValueList>;
 
 /** Enum for Access Decision */
-export type AccessDecisionEnum = "Allowed" | "Denied" | (string & {});
+export type AccessDecisionEnum = "Allowed" | "Denied";
 export const AccessDecisionEnum = /*@__PURE__*/ S.String;
 
 /** Access Decision for each Subscription */
@@ -135,7 +229,7 @@ export const SubscriptionAccessDecision = /*@__PURE__*/ S.suspend(() =>
 
 /** The access decision list for each input subscription */
 export type CarbonEmissionDataListResultSubscriptionAccessDecisionListList =
-  SubscriptionAccessDecision[];
+  ReadonlyArray<SubscriptionAccessDecision>;
 export const CarbonEmissionDataListResultSubscriptionAccessDecisionListList =
   /*@__PURE__*/ S.Array(
     SubscriptionAccessDecision,
@@ -199,11 +293,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -230,7 +324,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

@@ -99,8 +99,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type SslConfigTypeEnum =
   | "SSL_TYPE_UNSPECIFIED"
   | "SERVER_ONLY"
-  | "SERVER_CLIENT"
-  | (string & {});
+  | "SERVER_CLIENT";
 export const SslConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** SSL configuration information. */
@@ -162,15 +161,13 @@ export type ConnectionProfileStateEnum =
   | "UPDATING"
   | "DELETING"
   | "DELETED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ConnectionProfileStateEnum = /*@__PURE__*/ S.String;
 
 export type CloudSqlSettingsDataDiskTypeEnum =
   | "SQL_DATA_DISK_TYPE_UNSPECIFIED"
   | "PD_SSD"
-  | "PD_HDD"
-  | (string & {});
+  | "PD_HDD";
 export const CloudSqlSettingsDataDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** An entry for an Access Control list. */
@@ -193,7 +190,7 @@ export const SqlAclEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SqlAclEntry" }) as any as S.Schema<SqlAclEntry>;
 
-export type SqlAclEntryList = SqlAclEntry[];
+export type SqlAclEntryList = ReadonlyArray<SqlAclEntry>;
 export const SqlAclEntryList = /*@__PURE__*/ S.Array(
   SqlAclEntry,
 ) as any as S.Schema<SqlAclEntryList>;
@@ -227,16 +224,14 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type CloudSqlSettingsActivationPolicyEnum =
   | "SQL_ACTIVATION_POLICY_UNSPECIFIED"
   | "ALWAYS"
-  | "NEVER"
-  | (string & {});
+  | "NEVER";
 export const CloudSqlSettingsActivationPolicyEnum = /*@__PURE__*/ S.String;
 
 export type CloudSqlSettingsDatabaseVersionEnum =
   | "SQL_DATABASE_VERSION_UNSPECIFIED"
   | "MYSQL_5_6"
   | "MYSQL_5_7"
-  | "MYSQL_8_0"
-  | (string & {});
+  | "MYSQL_8_0";
 export const CloudSqlSettingsDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 /** Settings for creating a Cloud SQL database instance. */
@@ -316,8 +311,7 @@ export const CloudSqlConnectionProfile = /*@__PURE__*/ S.suspend(() =>
 export type ConnectionProfileProviderEnum =
   | "DATABASE_PROVIDER_UNSPECIFIED"
   | "CLOUDSQL"
-  | "RDS"
-  | (string & {});
+  | "RDS";
 export const ConnectionProfileProviderEnum = /*@__PURE__*/ S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
@@ -326,7 +320,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -476,28 +470,22 @@ export type MigrationJobStateEnum =
   | "UPDATING"
   | "STARTING"
   | "RESTARTING"
-  | "RESUMING"
-  | (string & {});
+  | "RESUMING";
 export const MigrationJobStateEnum = /*@__PURE__*/ S.String;
 
 export type MigrationJobTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ONE_TIME"
-  | "CONTINUOUS"
-  | (string & {});
+  | "CONTINUOUS";
 export const MigrationJobTypeEnum = /*@__PURE__*/ S.String;
 
 export type DatabaseTypeProviderEnum =
   | "DATABASE_PROVIDER_UNSPECIFIED"
   | "CLOUDSQL"
-  | "RDS"
-  | (string & {});
+  | "RDS";
 export const DatabaseTypeProviderEnum = /*@__PURE__*/ S.String;
 
-export type DatabaseTypeEngineEnum =
-  | "DATABASE_ENGINE_UNSPECIFIED"
-  | "MYSQL"
-  | (string & {});
+export type DatabaseTypeEngineEnum = "DATABASE_ENGINE_UNSPECIFIED" | "MYSQL";
 export const DatabaseTypeEngineEnum = /*@__PURE__*/ S.String;
 
 /** A message defining the database engine and provider. */
@@ -520,8 +508,7 @@ export type MigrationJobPhaseEnum =
   | "CDC"
   | "PROMOTE_IN_PROGRESS"
   | "WAITING_FOR_SOURCE_WRITES_TO_STOP"
-  | "PREPARING_THE_DUMP"
-  | (string & {});
+  | "PREPARING_THE_DUMP";
 export const MigrationJobPhaseEnum = /*@__PURE__*/ S.String;
 
 /** The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1beta1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC. */
@@ -821,11 +808,10 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -844,7 +830,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -863,7 +849,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -905,7 +891,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1080,7 +1066,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1132,7 +1118,7 @@ export const ListProjectsLocationsConnectionProfilesRequest =
     identifier: "ListProjectsLocationsConnectionProfilesRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>;
 
-export type ConnectionProfileList = ConnectionProfile[];
+export type ConnectionProfileList = ReadonlyArray<ConnectionProfile>;
 export const ConnectionProfileList = /*@__PURE__*/ S.Array(
   ConnectionProfile,
 ) as any as S.Schema<ConnectionProfileList>;
@@ -1187,7 +1173,7 @@ export const ListProjectsLocationsMigrationJobsRequest =
     identifier: "ListProjectsLocationsMigrationJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsMigrationJobsRequest>;
 
-export type MigrationJobList = MigrationJob[];
+export type MigrationJobList = ReadonlyArray<MigrationJob>;
 export const MigrationJobList = /*@__PURE__*/ S.Array(
   MigrationJob,
 ) as any as S.Schema<MigrationJobList>;
@@ -1242,7 +1228,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

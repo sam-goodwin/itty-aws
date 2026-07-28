@@ -68,12 +68,12 @@ export class SiteNotFound extends T.applyErrorMatchers(
   [{ code: 10015 }],
 ) {}
 
-export type RulesBulkCreateRequestDeleteRulesList = string[];
+export type RulesBulkCreateRequestDeleteRulesList = ReadonlyArray<string>;
 export const RulesBulkCreateRequestDeleteRulesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesBulkCreateRequestDeleteRulesList>;
 
-export type RulesBulkCreateRequestRulesItemPathsList = string[];
+export type RulesBulkCreateRequestRulesItemPathsList = ReadonlyArray<string>;
 export const RulesBulkCreateRequestRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesBulkCreateRequestRulesItemPathsList>;
@@ -98,7 +98,8 @@ export const RulesBulkCreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesBulkCreateRequestRulesItem",
 }) as any as S.Schema<RulesBulkCreateRequestRulesItem>;
 
-export type RulesBulkCreateRequestRulesList = RulesBulkCreateRequestRulesItem[];
+export type RulesBulkCreateRequestRulesList =
+  ReadonlyArray<RulesBulkCreateRequestRulesItem>;
 export const RulesBulkCreateRequestRulesList = /*@__PURE__*/ S.Array(
   RulesBulkCreateRequestRulesItem,
 ) as any as S.Schema<RulesBulkCreateRequestRulesList>;
@@ -134,7 +135,7 @@ export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkCreateRulesRequest",
 }) as any as S.Schema<BulkCreateRulesRequest>;
 
-export type RulesBulkCreateResponseRulesItemPathsList = string[];
+export type RulesBulkCreateResponseRulesItemPathsList = ReadonlyArray<string>;
 export const RulesBulkCreateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesBulkCreateResponseRulesItemPathsList>;
@@ -168,7 +169,7 @@ export const RulesBulkCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesBulkCreateResponseRulesItem>;
 
 export type RulesBulkCreateResponseRulesList =
-  RulesBulkCreateResponseRulesItem[];
+  ReadonlyArray<RulesBulkCreateResponseRulesItem>;
 export const RulesBulkCreateResponseRulesList = /*@__PURE__*/ S.Array(
   RulesBulkCreateResponseRulesItem,
 ) as any as S.Schema<RulesBulkCreateResponseRulesList>;
@@ -208,7 +209,7 @@ export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkCreateRulesResponse",
 }) as any as S.Schema<BulkCreateRulesResponse>;
 
-export type RulesCreateRequestPathsList = string[];
+export type RulesCreateRequestPathsList = ReadonlyArray<string>;
 export const RulesCreateRequestPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesCreateRequestPathsList>;
@@ -246,7 +247,7 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
 
-export type RulesCreateResponsePathsList = string[];
+export type RulesCreateResponsePathsList = ReadonlyArray<string>;
 export const RulesCreateResponsePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesCreateResponsePathsList>;
@@ -309,7 +310,7 @@ export const CreateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSiteInfoRequest",
 }) as any as S.Schema<CreateSiteInfoRequest>;
 
-export type SiteInfoCreateResponseRulesItemPathsList = string[];
+export type SiteInfoCreateResponseRulesItemPathsList = ReadonlyArray<string>;
 export const SiteInfoCreateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteInfoCreateResponseRulesItemPathsList>;
@@ -342,7 +343,8 @@ export const SiteInfoCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SiteInfoCreateResponseRulesItem",
 }) as any as S.Schema<SiteInfoCreateResponseRulesItem>;
 
-export type SiteInfoCreateResponseRulesList = SiteInfoCreateResponseRulesItem[];
+export type SiteInfoCreateResponseRulesList =
+  ReadonlyArray<SiteInfoCreateResponseRulesItem>;
 export const SiteInfoCreateResponseRulesList = /*@__PURE__*/ S.Array(
   SiteInfoCreateResponseRulesItem,
 ) as any as S.Schema<SiteInfoCreateResponseRulesList>;
@@ -497,7 +499,7 @@ export const GetSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSiteInfoRequest",
 }) as any as S.Schema<GetSiteInfoRequest>;
 
-export type SiteInfoGetResponseRulesItemPathsList = string[];
+export type SiteInfoGetResponseRulesItemPathsList = ReadonlyArray<string>;
 export const SiteInfoGetResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteInfoGetResponseRulesItemPathsList>;
@@ -530,7 +532,8 @@ export const SiteInfoGetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SiteInfoGetResponseRulesItem",
 }) as any as S.Schema<SiteInfoGetResponseRulesItem>;
 
-export type SiteInfoGetResponseRulesList = SiteInfoGetResponseRulesItem[];
+export type SiteInfoGetResponseRulesList =
+  ReadonlyArray<SiteInfoGetResponseRulesItem>;
 export const SiteInfoGetResponseRulesList = /*@__PURE__*/ S.Array(
   SiteInfoGetResponseRulesItem,
 ) as any as S.Schema<SiteInfoGetResponseRulesList>;
@@ -610,7 +613,7 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRulesRequest",
 }) as any as S.Schema<ListRulesRequest>;
 
-export type RulesListResponseRulesItemPathsList = string[];
+export type RulesListResponseRulesItemPathsList = ReadonlyArray<string>;
 export const RulesListResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesListResponseRulesItemPathsList>;
@@ -643,7 +646,8 @@ export const RulesListResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesListResponseRulesItem",
 }) as any as S.Schema<RulesListResponseRulesItem>;
 
-export type RulesListResponseRulesList = RulesListResponseRulesItem[];
+export type RulesListResponseRulesList =
+  ReadonlyArray<RulesListResponseRulesItem>;
 export const RulesListResponseRulesList = /*@__PURE__*/ S.Array(
   RulesListResponseRulesItem,
 ) as any as S.Schema<RulesListResponseRulesList>;
@@ -683,7 +687,7 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRulesResponse",
 }) as any as S.Schema<ListRulesResponse>;
 
-export type SiteInfoListRequestOrderBy = "host" | "created" | (string & {});
+export type SiteInfoListRequestOrderBy = "host" | "created";
 export const SiteInfoListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ListSiteInfosRequest {
@@ -715,7 +719,7 @@ export const ListSiteInfosRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSiteInfosRequest",
 }) as any as S.Schema<ListSiteInfosRequest>;
 
-export type SiteInfoListResultItemRulesItemPathsList = string[];
+export type SiteInfoListResultItemRulesItemPathsList = ReadonlyArray<string>;
 export const SiteInfoListResultItemRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteInfoListResultItemRulesItemPathsList>;
@@ -748,7 +752,8 @@ export const SiteInfoListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SiteInfoListResultItemRulesItem",
 }) as any as S.Schema<SiteInfoListResultItemRulesItem>;
 
-export type SiteInfoListResultItemRulesList = SiteInfoListResultItemRulesItem[];
+export type SiteInfoListResultItemRulesList =
+  ReadonlyArray<SiteInfoListResultItemRulesItem>;
 export const SiteInfoListResultItemRulesList = /*@__PURE__*/ S.Array(
   SiteInfoListResultItemRulesItem,
 ) as any as S.Schema<SiteInfoListResultItemRulesList>;
@@ -804,7 +809,7 @@ export const SiteInfoListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SiteInfoListResultItem",
 }) as any as S.Schema<SiteInfoListResultItem>;
 
-export type SiteInfoListResultList = SiteInfoListResultItem[];
+export type SiteInfoListResultList = ReadonlyArray<SiteInfoListResultItem>;
 export const SiteInfoListResultList = /*@__PURE__*/ S.Array(
   SiteInfoListResultItem,
 ) as any as S.Schema<SiteInfoListResultList>;
@@ -824,7 +829,7 @@ export const ListSiteInfosResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSiteInfosResponse",
 }) as any as S.Schema<ListSiteInfosResponse>;
 
-export type RulesUpdateRequestPathsList = string[];
+export type RulesUpdateRequestPathsList = ReadonlyArray<string>;
 export const RulesUpdateRequestPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesUpdateRequestPathsList>;
@@ -865,7 +870,7 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRuleRequest",
 }) as any as S.Schema<UpdateRuleRequest>;
 
-export type RulesUpdateResponsePathsList = string[];
+export type RulesUpdateResponsePathsList = ReadonlyArray<string>;
 export const RulesUpdateResponsePathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesUpdateResponsePathsList>;
@@ -937,7 +942,7 @@ export const UpdateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSiteInfoRequest",
 }) as any as S.Schema<UpdateSiteInfoRequest>;
 
-export type SiteInfoUpdateResponseRulesItemPathsList = string[];
+export type SiteInfoUpdateResponseRulesItemPathsList = ReadonlyArray<string>;
 export const SiteInfoUpdateResponseRulesItemPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteInfoUpdateResponseRulesItemPathsList>;
@@ -970,7 +975,8 @@ export const SiteInfoUpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SiteInfoUpdateResponseRulesItem",
 }) as any as S.Schema<SiteInfoUpdateResponseRulesItem>;
 
-export type SiteInfoUpdateResponseRulesList = SiteInfoUpdateResponseRulesItem[];
+export type SiteInfoUpdateResponseRulesList =
+  ReadonlyArray<SiteInfoUpdateResponseRulesItem>;
 export const SiteInfoUpdateResponseRulesList = /*@__PURE__*/ S.Array(
   SiteInfoUpdateResponseRulesItem,
 ) as any as S.Schema<SiteInfoUpdateResponseRulesList>;

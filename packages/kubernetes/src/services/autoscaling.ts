@@ -47,7 +47,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
-export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = string[];
+export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -97,7 +98,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry =
 
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
-  IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
@@ -134,7 +135,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference =
 
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
-  IoK8sApimachineryPkgApisMetaV1OwnerReference[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1OwnerReference,
@@ -367,7 +368,7 @@ export const IoK8sApiAutoscalingV2HPAScalingPolicy = /*@__PURE__*/ S.suspend(
 
 /** policies is a list of potential scaling polices which can be used during scaling. If not set, use the default values: - For scale up: allow doubling the number of pods, or an absolute change of 4 pods in a 15s window. - For scale down: allow all pods to be removed in a 15s window. */
 export type IoK8sApiAutoscalingV2HPAScalingRulesPoliciesList =
-  IoK8sApiAutoscalingV2HPAScalingPolicy[];
+  ReadonlyArray<IoK8sApiAutoscalingV2HPAScalingPolicy>;
 export const IoK8sApiAutoscalingV2HPAScalingRulesPoliciesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAutoscalingV2HPAScalingPolicy,
@@ -457,7 +458,7 @@ export const IoK8sApiAutoscalingV2ContainerResourceMetricSource =
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
-  string[];
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -487,7 +488,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement =
 
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
-  IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
@@ -664,7 +665,7 @@ export const IoK8sApiAutoscalingV2MetricSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used). The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods. Ergo, metrics used must decrease as the pod count is increased, and vice-versa. See the individual metric source types for more information about how each type of metric must respond. If not set, the default metric will be set to 80% average CPU utilization. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpecMetricsList =
-  IoK8sApiAutoscalingV2MetricSpec[];
+  ReadonlyArray<IoK8sApiAutoscalingV2MetricSpec>;
 export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpecMetricsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAutoscalingV2MetricSpec,
@@ -731,7 +732,7 @@ export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition =
 
 /** conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList =
-  IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition[];
+  ReadonlyArray<IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition>;
 export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition,
@@ -880,7 +881,7 @@ export const IoK8sApiAutoscalingV2MetricStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** currentMetrics is the last read state of the metrics used by this autoscaler. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusCurrentMetricsList =
-  IoK8sApiAutoscalingV2MetricStatus[];
+  ReadonlyArray<IoK8sApiAutoscalingV2MetricStatus>;
 export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusCurrentMetricsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAutoscalingV2MetricStatus,
@@ -1106,7 +1107,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause =
 
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
-  IoK8sApimachineryPkgApisMetaV1StatusCause[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1StatusCause>;
 export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1StatusCause,
@@ -1439,7 +1440,7 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR =
 
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
@@ -1447,7 +1448,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsLis
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
-  IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
@@ -1496,21 +1497,24 @@ export const GetAutoscalingV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAutoscalingV1APIResourcesRequest>;
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1563,7 +1567,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource =
 
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
-  IoK8sApimachineryPkgApisMetaV1APIResource[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1APIResource>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1APIResource,
@@ -1656,7 +1660,7 @@ export const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest =
 
 /** items is the list of horizontal pod autoscaler objects. */
 export type IoK8sApiAutoscalingV1HorizontalPodAutoscalerListItemsList =
-  IoK8sApiAutoscalingV1HorizontalPodAutoscaler[];
+  ReadonlyArray<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>;
 export const IoK8sApiAutoscalingV1HorizontalPodAutoscalerListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAutoscalingV1HorizontalPodAutoscaler,
@@ -1795,7 +1799,7 @@ export const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest =
 
 /** items is the list of horizontal pod autoscaler objects. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerListItemsList =
-  IoK8sApiAutoscalingV2HorizontalPodAutoscaler[];
+  ReadonlyArray<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>;
 export const IoK8sApiAutoscalingV2HorizontalPodAutoscalerListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiAutoscalingV2HorizontalPodAutoscaler,

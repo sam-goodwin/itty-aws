@@ -63,8 +63,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type ApprovalResultDecisionEnum =
   | "DECISION_UNSPECIFIED"
   | "APPROVED"
-  | "REJECTED"
-  | (string & {});
+  | "REJECTED";
 export const ApprovalResultDecisionEnum = /*@__PURE__*/ S.String;
 
 /** ApprovalResult describes the decision and associated metadata of a manual approval of a build. */
@@ -130,7 +129,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -255,7 +254,7 @@ export const CreateBitbucketServerConnectedRepositoryRequest =
   }) as any as S.Schema<CreateBitbucketServerConnectedRepositoryRequest>;
 
 export type CreateBitbucketServerConnectedRepositoryRequestList =
-  CreateBitbucketServerConnectedRepositoryRequest[];
+  ReadonlyArray<CreateBitbucketServerConnectedRepositoryRequest>;
 export const CreateBitbucketServerConnectedRepositoryRequestList =
   /*@__PURE__*/ S.Array(
     CreateBitbucketServerConnectedRepositoryRequest,
@@ -355,7 +354,7 @@ export const CreateGitLabConnectedRepositoryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateGitLabConnectedRepositoryRequest>;
 
 export type CreateGitLabConnectedRepositoryRequestList =
-  CreateGitLabConnectedRepositoryRequest[];
+  ReadonlyArray<CreateGitLabConnectedRepositoryRequest>;
 export const CreateGitLabConnectedRepositoryRequestList = /*@__PURE__*/ S.Array(
   CreateGitLabConnectedRepositoryRequest,
 ) as any as S.Schema<CreateGitLabConnectedRepositoryRequestList>;
@@ -484,8 +483,7 @@ export type BuildOptionsMachineTypeEnum =
   | "E2_HIGHCPU_8"
   | "E2_HIGHCPU_32"
   | "E2_MEDIUM"
-  | "E2_STANDARD_2"
-  | (string & {});
+  | "E2_STANDARD_2";
 export const BuildOptionsMachineTypeEnum = /*@__PURE__*/ S.String;
 
 export type BuildOptionsSourceProvenanceHashItemEnum =
@@ -494,12 +492,11 @@ export type BuildOptionsSourceProvenanceHashItemEnum =
   | "MD5"
   | "GO_MODULE_H1"
   | "SHA512"
-  | "DIRSUM_SHA256"
-  | (string & {});
+  | "DIRSUM_SHA256";
 export const BuildOptionsSourceProvenanceHashItemEnum = /*@__PURE__*/ S.String;
 
 export type BuildOptionsSourceProvenanceHashItemEnumList =
-  BuildOptionsSourceProvenanceHashItemEnum[];
+  ReadonlyArray<BuildOptionsSourceProvenanceHashItemEnum>;
 export const BuildOptionsSourceProvenanceHashItemEnumList =
   /*@__PURE__*/ S.Array(
     BuildOptionsSourceProvenanceHashItemEnum,
@@ -508,8 +505,7 @@ export const BuildOptionsSourceProvenanceHashItemEnumList =
 export type BuildOptionsDefaultLogsBucketBehaviorEnum =
   | "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"
   | "REGIONAL_USER_OWNED_BUCKET"
-  | "LEGACY_BUCKET"
-  | (string & {});
+  | "LEGACY_BUCKET";
 export const BuildOptionsDefaultLogsBucketBehaviorEnum = /*@__PURE__*/ S.String;
 
 export type BuildOptionsLoggingEnum =
@@ -518,14 +514,10 @@ export type BuildOptionsLoggingEnum =
   | "GCS_ONLY"
   | "STACKDRIVER_ONLY"
   | "CLOUD_LOGGING_ONLY"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const BuildOptionsLoggingEnum = /*@__PURE__*/ S.String;
 
-export type BuildOptionsRequestedVerifyOptionEnum =
-  | "NOT_VERIFIED"
-  | "VERIFIED"
-  | (string & {});
+export type BuildOptionsRequestedVerifyOptionEnum = "NOT_VERIFIED" | "VERIFIED";
 export const BuildOptionsRequestedVerifyOptionEnum = /*@__PURE__*/ S.String;
 
 /** Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information. */
@@ -539,10 +531,7 @@ export const PoolOption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PoolOption" }) as any as S.Schema<PoolOption>;
 
-export type BuildOptionsSubstitutionOptionEnum =
-  | "MUST_MATCH"
-  | "ALLOW_LOOSE"
-  | (string & {});
+export type BuildOptionsSubstitutionOptionEnum = "MUST_MATCH" | "ALLOW_LOOSE";
 export const BuildOptionsSubstitutionOptionEnum = /*@__PURE__*/ S.String;
 
 /** Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution. */
@@ -559,12 +548,12 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
-export type VolumeList = Volume[];
+export type VolumeList = ReadonlyArray<Volume>;
 export const VolumeList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumeList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -572,8 +561,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type BuildOptionsLogStreamingOptionEnum =
   | "STREAM_DEFAULT"
   | "STREAM_ON"
-  | "STREAM_OFF"
-  | (string & {});
+  | "STREAM_OFF";
 export const BuildOptionsLogStreamingOptionEnum = /*@__PURE__*/ S.String;
 
 /** Optional arguments to enable specific features of builds. */
@@ -644,8 +632,7 @@ export type BuildApprovalStateEnum =
   | "PENDING"
   | "APPROVED"
   | "REJECTED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const BuildApprovalStateEnum = /*@__PURE__*/ S.String;
 
 /** ApprovalConfig describes configuration for manual approval of a build. */
@@ -692,7 +679,7 @@ export const SecretManagerSecret = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretManagerSecret",
 }) as any as S.Schema<SecretManagerSecret>;
 
-export type SecretManagerSecretList = SecretManagerSecret[];
+export type SecretManagerSecretList = ReadonlyArray<SecretManagerSecret>;
 export const SecretManagerSecretList = /*@__PURE__*/ S.Array(
   SecretManagerSecret,
 ) as any as S.Schema<SecretManagerSecretList>;
@@ -717,7 +704,7 @@ export const InlineSecret = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InlineSecret" }) as any as S.Schema<InlineSecret>;
 
-export type InlineSecretList = InlineSecret[];
+export type InlineSecretList = ReadonlyArray<InlineSecret>;
 export const InlineSecretList = /*@__PURE__*/ S.Array(
   InlineSecret,
 ) as any as S.Schema<InlineSecretList>;
@@ -770,7 +757,7 @@ export const Secret = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
 
-export type SecretList = Secret[];
+export type SecretList = ReadonlyArray<Secret>;
 export const SecretList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<SecretList>;
@@ -781,8 +768,7 @@ export type HashTypeEnum =
   | "MD5"
   | "GO_MODULE_H1"
   | "SHA512"
-  | "DIRSUM_SHA256"
-  | (string & {});
+  | "DIRSUM_SHA256";
 export const HashTypeEnum = /*@__PURE__*/ S.String;
 
 /** Container message for hash values. */
@@ -799,7 +785,7 @@ export const Hash = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Hash" }) as any as S.Schema<Hash>;
 
-export type HashList = Hash[];
+export type HashList = ReadonlyArray<Hash>;
 export const HashList = /*@__PURE__*/ S.Array(
   Hash,
 ) as any as S.Schema<HashList>;
@@ -837,7 +823,7 @@ export const UploadedMavenArtifact = /*@__PURE__*/ S.suspend(() =>
   identifier: "UploadedMavenArtifact",
 }) as any as S.Schema<UploadedMavenArtifact>;
 
-export type UploadedMavenArtifactList = UploadedMavenArtifact[];
+export type UploadedMavenArtifactList = ReadonlyArray<UploadedMavenArtifact>;
 export const UploadedMavenArtifactList = /*@__PURE__*/ S.Array(
   UploadedMavenArtifact,
 ) as any as S.Schema<UploadedMavenArtifactList>;
@@ -894,7 +880,8 @@ export const UploadedGenericArtifact = /*@__PURE__*/ S.suspend(() =>
   identifier: "UploadedGenericArtifact",
 }) as any as S.Schema<UploadedGenericArtifact>;
 
-export type UploadedGenericArtifactList = UploadedGenericArtifact[];
+export type UploadedGenericArtifactList =
+  ReadonlyArray<UploadedGenericArtifact>;
 export const UploadedGenericArtifactList = /*@__PURE__*/ S.Array(
   UploadedGenericArtifact,
 ) as any as S.Schema<UploadedGenericArtifactList>;
@@ -921,7 +908,7 @@ export const UploadedNpmPackage = /*@__PURE__*/ S.suspend(() =>
   identifier: "UploadedNpmPackage",
 }) as any as S.Schema<UploadedNpmPackage>;
 
-export type UploadedNpmPackageList = UploadedNpmPackage[];
+export type UploadedNpmPackageList = ReadonlyArray<UploadedNpmPackage>;
 export const UploadedNpmPackageList = /*@__PURE__*/ S.Array(
   UploadedNpmPackage,
 ) as any as S.Schema<UploadedNpmPackageList>;
@@ -929,8 +916,7 @@ export const UploadedNpmPackageList = /*@__PURE__*/ S.Array(
 export type BuiltImageOciMediaTypeEnum =
   | "OCI_MEDIA_TYPE_UNSPECIFIED"
   | "IMAGE_MANIFEST"
-  | "IMAGE_INDEX"
-  | (string & {});
+  | "IMAGE_INDEX";
 export const BuiltImageOciMediaTypeEnum = /*@__PURE__*/ S.String;
 
 /** An image built by the pipeline. */
@@ -956,7 +942,7 @@ export const BuiltImage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BuiltImage" }) as any as S.Schema<BuiltImage>;
 
-export type BuiltImageList = BuiltImage[];
+export type BuiltImageList = ReadonlyArray<BuiltImage>;
 export const BuiltImageList = /*@__PURE__*/ S.Array(
   BuiltImage,
 ) as any as S.Schema<BuiltImageList>;
@@ -983,7 +969,7 @@ export const UploadedGoModule = /*@__PURE__*/ S.suspend(() =>
   identifier: "UploadedGoModule",
 }) as any as S.Schema<UploadedGoModule>;
 
-export type UploadedGoModuleList = UploadedGoModule[];
+export type UploadedGoModuleList = ReadonlyArray<UploadedGoModule>;
 export const UploadedGoModuleList = /*@__PURE__*/ S.Array(
   UploadedGoModule,
 ) as any as S.Schema<UploadedGoModuleList>;
@@ -1010,7 +996,7 @@ export const UploadedPythonPackage = /*@__PURE__*/ S.suspend(() =>
   identifier: "UploadedPythonPackage",
 }) as any as S.Schema<UploadedPythonPackage>;
 
-export type UploadedPythonPackageList = UploadedPythonPackage[];
+export type UploadedPythonPackageList = ReadonlyArray<UploadedPythonPackage>;
 export const UploadedPythonPackageList = /*@__PURE__*/ S.Array(
   UploadedPythonPackage,
 ) as any as S.Schema<UploadedPythonPackageList>;
@@ -1084,8 +1070,7 @@ export const GitConfig = /*@__PURE__*/ S.suspend(() =>
 export type StorageSourceSourceFetcherEnum =
   | "SOURCE_FETCHER_UNSPECIFIED"
   | "GSUTIL"
-  | "GCS_FETCHER"
-  | (string & {});
+  | "GCS_FETCHER";
 export const StorageSourceSourceFetcherEnum = /*@__PURE__*/ S.String;
 
 /** Location of the source in an archive file in Cloud Storage. */
@@ -1233,8 +1218,7 @@ export type BuildStatusEnum =
   | "INTERNAL_ERROR"
   | "TIMEOUT"
   | "CANCELLED"
-  | "EXPIRED"
-  | (string & {});
+  | "EXPIRED";
 export const BuildStatusEnum = /*@__PURE__*/ S.String;
 
 /** StepResult is the declaration of a result for a build step. */
@@ -1254,12 +1238,12 @@ export const StepResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StepResult" }) as any as S.Schema<StepResult>;
 
-export type StepResultList = StepResult[];
+export type StepResultList = ReadonlyArray<StepResult>;
 export const StepResultList = /*@__PURE__*/ S.Array(
   StepResult,
 ) as any as S.Schema<StepResultList>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1274,8 +1258,7 @@ export type BuildStepStatusEnum =
   | "INTERNAL_ERROR"
   | "TIMEOUT"
   | "CANCELLED"
-  | "EXPIRED"
-  | (string & {});
+  | "EXPIRED";
 export const BuildStepStatusEnum = /*@__PURE__*/ S.String;
 
 /** A step in the build pipeline. */
@@ -1343,7 +1326,7 @@ export const BuildStep = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BuildStep" }) as any as S.Schema<BuildStep>;
 
-export type BuildStepList = BuildStep[];
+export type BuildStepList = ReadonlyArray<BuildStep>;
 export const BuildStepList = /*@__PURE__*/ S.Array(
   BuildStep,
 ) as any as S.Schema<BuildStepList>;
@@ -1355,8 +1338,7 @@ export type FailureInfoTypeEnum =
   | "PUSH_NOT_AUTHORIZED"
   | "LOGGING_FAILURE"
   | "USER_BUILD_STEP"
-  | "FETCH_SOURCE_FAILED"
-  | (string & {});
+  | "FETCH_SOURCE_FAILED";
 export const FailureInfoTypeEnum = /*@__PURE__*/ S.String;
 
 /** A fatal problem encountered during the execution of the build. */
@@ -1447,7 +1429,7 @@ export const Dependency = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dependency" }) as any as S.Schema<Dependency>;
 
-export type DependencyList = Dependency[];
+export type DependencyList = ReadonlyArray<Dependency>;
 export const DependencyList = /*@__PURE__*/ S.Array(
   Dependency,
 ) as any as S.Schema<DependencyList>;
@@ -1523,7 +1505,7 @@ export const MavenArtifact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MavenArtifact" }) as any as S.Schema<MavenArtifact>;
 
-export type MavenArtifactList = MavenArtifact[];
+export type MavenArtifactList = ReadonlyArray<MavenArtifact>;
 export const MavenArtifactList = /*@__PURE__*/ S.Array(
   MavenArtifact,
 ) as any as S.Schema<MavenArtifactList>;
@@ -1542,7 +1524,7 @@ export const NpmPackage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NpmPackage" }) as any as S.Schema<NpmPackage>;
 
-export type NpmPackageList = NpmPackage[];
+export type NpmPackageList = ReadonlyArray<NpmPackage>;
 export const NpmPackageList = /*@__PURE__*/ S.Array(
   NpmPackage,
 ) as any as S.Schema<NpmPackageList>;
@@ -1573,7 +1555,7 @@ export const GoModule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GoModule" }) as any as S.Schema<GoModule>;
 
-export type GoModuleList = GoModule[];
+export type GoModuleList = ReadonlyArray<GoModule>;
 export const GoModuleList = /*@__PURE__*/ S.Array(
   GoModule,
 ) as any as S.Schema<GoModuleList>;
@@ -1595,7 +1577,7 @@ export const Oci = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Oci" }) as any as S.Schema<Oci>;
 
-export type OciList = Oci[];
+export type OciList = ReadonlyArray<Oci>;
 export const OciList = /*@__PURE__*/ S.Array(Oci) as any as S.Schema<OciList>;
 
 /** Files in the workspace to upload to Cloud Storage upon successful completion of all build steps. */
@@ -1633,7 +1615,7 @@ export const GenericArtifact = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenericArtifact",
 }) as any as S.Schema<GenericArtifact>;
 
-export type GenericArtifactList = GenericArtifact[];
+export type GenericArtifactList = ReadonlyArray<GenericArtifact>;
 export const GenericArtifactList = /*@__PURE__*/ S.Array(
   GenericArtifact,
 ) as any as S.Schema<GenericArtifactList>;
@@ -1652,7 +1634,7 @@ export const PythonPackage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PythonPackage" }) as any as S.Schema<PythonPackage>;
 
-export type PythonPackageList = PythonPackage[];
+export type PythonPackageList = ReadonlyArray<PythonPackage>;
 export const PythonPackageList = /*@__PURE__*/ S.Array(
   PythonPackage,
 ) as any as S.Schema<PythonPackageList>;
@@ -1693,8 +1675,7 @@ export type WarningPriorityEnum =
   | "PRIORITY_UNSPECIFIED"
   | "INFO"
   | "WARNING"
-  | "ALERT"
-  | (string & {});
+  | "ALERT";
 export const WarningPriorityEnum = /*@__PURE__*/ S.String;
 
 /** A non-fatal problem encountered during the execution of the build. */
@@ -1711,7 +1692,7 @@ export const Warning = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Warning" }) as any as S.Schema<Warning>;
 
-export type WarningList = Warning[];
+export type WarningList = ReadonlyArray<Warning>;
 export const WarningList = /*@__PURE__*/ S.Array(
   Warning,
 ) as any as S.Schema<WarningList>;
@@ -2003,7 +1984,8 @@ export const BitbucketServerSecrets = /*@__PURE__*/ S.suspend(() =>
   identifier: "BitbucketServerSecrets",
 }) as any as S.Schema<BitbucketServerSecrets>;
 
-export type BitbucketServerRepositoryIdList = BitbucketServerRepositoryId[];
+export type BitbucketServerRepositoryIdList =
+  ReadonlyArray<BitbucketServerRepositoryId>;
 export const BitbucketServerRepositoryIdList = /*@__PURE__*/ S.Array(
   BitbucketServerRepositoryId,
 ) as any as S.Schema<BitbucketServerRepositoryIdList>;
@@ -2149,7 +2131,7 @@ export const GitLabSecrets = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GitLabSecrets" }) as any as S.Schema<GitLabSecrets>;
 
-export type GitLabRepositoryIdList = GitLabRepositoryId[];
+export type GitLabRepositoryIdList = ReadonlyArray<GitLabRepositoryId>;
 export const GitLabRepositoryIdList = /*@__PURE__*/ S.Array(
   GitLabRepositoryId,
 ) as any as S.Schema<GitLabRepositoryIdList>;
@@ -2242,8 +2224,7 @@ export const CreateProjectsLocationsGitLabConfigsRequest =
 
 export type BuildTriggerIncludeBuildLogsEnum =
   | "INCLUDE_BUILD_LOGS_UNSPECIFIED"
-  | "INCLUDE_BUILD_LOGS_WITH_STATUS"
-  | (string & {});
+  | "INCLUDE_BUILD_LOGS_WITH_STATUS";
 export const BuildTriggerIncludeBuildLogsEnum = /*@__PURE__*/ S.String;
 
 export type GitRepoSourceRepoTypeEnum =
@@ -2252,8 +2233,7 @@ export type GitRepoSourceRepoTypeEnum =
   | "GITHUB"
   | "BITBUCKET_SERVER"
   | "GITLAB"
-  | "BITBUCKET_CLOUD"
-  | (string & {});
+  | "BITBUCKET_CLOUD";
 export const GitRepoSourceRepoTypeEnum = /*@__PURE__*/ S.String;
 
 /** GitRepoSource describes a repo and ref of a code repository. */
@@ -2285,8 +2265,7 @@ export const GitRepoSource = /*@__PURE__*/ S.suspend(() =>
 export type WebhookConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "OK"
-  | "SECRET_DELETED"
-  | (string & {});
+  | "SECRET_DELETED";
 export const WebhookConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL. */
@@ -2306,8 +2285,7 @@ export const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
 export type PullRequestFilterCommentControlEnum =
   | "COMMENTS_DISABLED"
   | "COMMENTS_ENABLED"
-  | "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"
-  | (string & {});
+  | "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY";
 export const PullRequestFilterCommentControlEnum = /*@__PURE__*/ S.String;
 
 /** PullRequestFilter contains filter properties for matching GitHub Pull Requests. */
@@ -2352,8 +2330,7 @@ export type RepositoryEventConfigRepositoryTypeEnum =
   | "GITHUB_ENTERPRISE"
   | "GITLAB_ENTERPRISE"
   | "BITBUCKET_DATA_CENTER"
-  | "BITBUCKET_CLOUD"
-  | (string & {});
+  | "BITBUCKET_CLOUD";
 export const RepositoryEventConfigRepositoryTypeEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of a trigger that creates a build whenever an event from Repo API is received. */
@@ -2383,8 +2360,7 @@ export type PubsubConfigStateEnum =
   | "OK"
   | "SUBSCRIPTION_DELETED"
   | "TOPIC_DELETED"
-  | "SUBSCRIPTION_MISCONFIGURED"
-  | (string & {});
+  | "SUBSCRIPTION_MISCONFIGURED";
 export const PubsubConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published. */
@@ -2414,8 +2390,7 @@ export type DeveloperConnectEventConfigGitRepositoryLinkTypeEnum =
   | "GITLAB"
   | "GITLAB_ENTERPRISE"
   | "BITBUCKET_DATA_CENTER"
-  | "BITBUCKET_CLOUD"
-  | (string & {});
+  | "BITBUCKET_CLOUD";
 export const DeveloperConnectEventConfigGitRepositoryLinkTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2449,8 +2424,7 @@ export type GitFileSourceRepoTypeEnum =
   | "GITHUB"
   | "BITBUCKET_SERVER"
   | "GITLAB"
-  | "BITBUCKET_CLOUD"
-  | (string & {});
+  | "BITBUCKET_CLOUD";
 export const GitFileSourceRepoTypeEnum = /*@__PURE__*/ S.String;
 
 /** GitFileSource describes a file within a (possibly remote) code repository. */
@@ -2487,8 +2461,7 @@ export type BuildTriggerEventTypeEnum =
   | "REPO"
   | "WEBHOOK"
   | "PUBSUB"
-  | "MANUAL"
-  | (string & {});
+  | "MANUAL";
 export const BuildTriggerEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received. */
@@ -2709,8 +2682,7 @@ export const WorkerConfig = /*@__PURE__*/ S.suspend(() =>
 export type NetworkConfigEgressOptionEnum =
   | "EGRESS_OPTION_UNSPECIFIED"
   | "NO_PUBLIC_EGRESS"
-  | "PUBLIC_EGRESS"
-  | (string & {});
+  | "PUBLIC_EGRESS";
 export const NetworkConfigEgressOptionEnum = /*@__PURE__*/ S.String;
 
 /** Defines the network configuration for the pool. */
@@ -2774,8 +2746,7 @@ export type WorkerPoolStateEnum =
   | "RUNNING"
   | "DELETING"
   | "DELETED"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const WorkerPoolStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a `WorkerPool`. Cloud Build owns and maintains a pool of workers for general use and have no access to a project's private network. By default, builds submitted to Cloud Build will use a worker from this pool. If your build needs access to resources on a private network, create and use a `WorkerPool` to run your builds. Private `WorkerPool`s give your builds access to any single VPC network that you administer, including any on-prem resources connected to that VPC network. For an overview of private pools, see [Private pools overview](https://cloud.google.com/build/docs/private-pools/private-pools-overview). */
@@ -3338,7 +3309,7 @@ export const ListProjectsBuildsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsBuildsRequest",
 }) as any as S.Schema<ListProjectsBuildsRequest>;
 
-export type BuildList = Build[];
+export type BuildList = ReadonlyArray<Build>;
 export const BuildList = /*@__PURE__*/ S.Array(
   Build,
 ) as any as S.Schema<BuildList>;
@@ -3381,7 +3352,7 @@ export const ListProjectsGithubEnterpriseConfigsRequest =
     identifier: "ListProjectsGithubEnterpriseConfigsRequest",
   }) as any as S.Schema<ListProjectsGithubEnterpriseConfigsRequest>;
 
-export type GitHubEnterpriseConfigList = GitHubEnterpriseConfig[];
+export type GitHubEnterpriseConfigList = ReadonlyArray<GitHubEnterpriseConfig>;
 export const GitHubEnterpriseConfigList = /*@__PURE__*/ S.Array(
   GitHubEnterpriseConfig,
 ) as any as S.Schema<GitHubEnterpriseConfigList>;
@@ -3424,7 +3395,7 @@ export const ListProjectsLocationsBitbucketServerConfigsRequest =
     identifier: "ListProjectsLocationsBitbucketServerConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsBitbucketServerConfigsRequest>;
 
-export type BitbucketServerConfigList = BitbucketServerConfig[];
+export type BitbucketServerConfigList = ReadonlyArray<BitbucketServerConfig>;
 export const BitbucketServerConfigList = /*@__PURE__*/ S.Array(
   BitbucketServerConfig,
 ) as any as S.Schema<BitbucketServerConfigList>;
@@ -3495,7 +3466,8 @@ export const BitbucketServerRepository = /*@__PURE__*/ S.suspend(() =>
   identifier: "BitbucketServerRepository",
 }) as any as S.Schema<BitbucketServerRepository>;
 
-export type BitbucketServerRepositoryList = BitbucketServerRepository[];
+export type BitbucketServerRepositoryList =
+  ReadonlyArray<BitbucketServerRepository>;
 export const BitbucketServerRepositoryList = /*@__PURE__*/ S.Array(
   BitbucketServerRepository,
 ) as any as S.Schema<BitbucketServerRepositoryList>;
@@ -3594,7 +3566,7 @@ export const ListProjectsLocationsGitLabConfigsRequest =
     identifier: "ListProjectsLocationsGitLabConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsGitLabConfigsRequest>;
 
-export type GitLabConfigList = GitLabConfig[];
+export type GitLabConfigList = ReadonlyArray<GitLabConfig>;
 export const GitLabConfigList = /*@__PURE__*/ S.Array(
   GitLabConfig,
 ) as any as S.Schema<GitLabConfigList>;
@@ -3665,7 +3637,7 @@ export const GitLabRepository = /*@__PURE__*/ S.suspend(() =>
   identifier: "GitLabRepository",
 }) as any as S.Schema<GitLabRepository>;
 
-export type GitLabRepositoryList = GitLabRepository[];
+export type GitLabRepositoryList = ReadonlyArray<GitLabRepository>;
 export const GitLabRepositoryList = /*@__PURE__*/ S.Array(
   GitLabRepository,
 ) as any as S.Schema<GitLabRepositoryList>;
@@ -3714,7 +3686,7 @@ export const ListProjectsLocationsTriggersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsTriggersRequest",
 }) as any as S.Schema<ListProjectsLocationsTriggersRequest>;
 
-export type BuildTriggerList = BuildTrigger[];
+export type BuildTriggerList = ReadonlyArray<BuildTrigger>;
 export const BuildTriggerList = /*@__PURE__*/ S.Array(
   BuildTrigger,
 ) as any as S.Schema<BuildTriggerList>;
@@ -3760,7 +3732,7 @@ export const ListProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsWorkerPoolsRequest",
 }) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>;
 
-export type WorkerPoolList = WorkerPool[];
+export type WorkerPoolList = ReadonlyArray<WorkerPool>;
 export const WorkerPoolList = /*@__PURE__*/ S.Array(
   WorkerPool,
 ) as any as S.Schema<WorkerPoolList>;

@@ -652,16 +652,101 @@
             "smithy.api#documentation": "The name of the Bot resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.healthbot#HealthBotPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of Azure Health Bot."
           }
+        },
+        "tags": {
+          "target": "com.azure.healthbot#BotsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags for a Azure Health Bot."
+          }
+        },
+        "sku": {
+          "target": "com.azure.healthbot#Sku",
+          "traits": {
+            "smithy.api#documentation": "SKU of the Azure Health Bot."
+          }
+        },
+        "identity": {
+          "target": "com.azure.healthbot#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the Azure Health Bot."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthbot#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.healthbot#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the Azure Health Bot"
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.healthbot#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:\n'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.healthbot#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.healthbot#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:\n'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.healthbot#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The details of the user assigned managed identity used by the Video Analyzer resource."
+      }
+    },
+    "com.azure.healthbot#BotsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for a Azure Health Bot."
+      }
+    },
+    "com.azure.healthbot#HealthBotPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "keyVaultProperties": {
+          "target": "com.azure.healthbot#KeyVaultProperties",
+          "traits": {
+            "smithy.api#documentation": "KeyVault properties for the resource encryption."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a Azure Health Bot. The Health Bot Service is a cloud platform that empowers developers in Healthcare organizations to build and deploy their compliant, AI-powered virtual health assistants and health bots, that help them improve processes and reduce costs."
       }
     },
     "com.azure.healthbot#BotsCreate": {
@@ -786,16 +871,53 @@
             "smithy.api#documentation": "The name of the Bot resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.healthbot#BotsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.healthbot#HealthBotPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The set of properties specific to Azure Health Bot resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.healthbot#Sku",
+          "traits": {
+            "smithy.api#documentation": "SKU of the Azure Health Bot.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.healthbot#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the Azure Health Bot."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.healthbot#BotsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.healthbot#BotsGet": {

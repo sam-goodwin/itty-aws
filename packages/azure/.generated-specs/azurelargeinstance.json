@@ -406,16 +406,27 @@
             "smithy.api#documentation": "Name of the AzureLargeStorageInstance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurelargeinstance#AzureLargeStorageInstanceUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurelargeinstance#AzureLargeStorageInstanceUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurelargeinstance#AzureLargeStorageInstanceGet": {
@@ -1180,15 +1191,35 @@
             "smithy.api#documentation": "Name of the AzureLargeInstance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "forceState": {
+          "target": "com.azure.azurelargeinstance#AzureLargeInstanceForcePowerState",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Whether to force restart by shutting all processes."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurelargeinstance#AzureLargeInstanceForcePowerState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactive"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum of two possible values to determine if the ALI instance restart operation should forcefully terminate and halt any existing processes that may be running on the server or not."
       }
     },
     "com.azure.azurelargeinstance#AzureLargeInstanceUpdate": {
@@ -1890,16 +1921,27 @@
             "smithy.api#documentation": "Name of the AzureLargeInstance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azurelargeinstance#AzureLargeInstanceUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azurelargeinstance#AzureLargeInstanceUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azurelargeinstance#AzureLargeInstanceGet": {

@@ -35,6 +35,40 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export interface DatasetItemsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  dataset?: string;
+  input?: unknown;
+  output?: unknown;
+  metadata?: unknown;
+  ref_trace_id?: string | null;
+  ref_timestamp?: string | null;
+  ref_source_id?: string | null;
+  deleted?: boolean | null;
+}
+export const DatasetItemsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    dataset: S.optional(S.String),
+    input: S.optional(S.Unknown),
+    output: S.optional(S.Unknown),
+    metadata: S.optional(S.Unknown),
+    ref_trace_id: S.optional(S.NullOr(S.String)),
+    ref_timestamp: S.optional(S.NullOr(S.String)),
+    ref_source_id: S.optional(S.NullOr(S.String)),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/dataset_items/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DatasetItemsCreateRequest",
+}) as any as S.Schema<DatasetItemsCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -50,11 +84,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -86,50 +119,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export interface DatasetItemsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: string;
-  dataset?: string;
-  input?: unknown;
-  output?: unknown;
-  metadata?: unknown;
-  ref_trace_id?: string | null;
-  ref_timestamp?: string | null;
-  ref_source_id?: string | null;
-  deleted?: boolean | null;
-  created_at?: string;
-  updated_at?: string | null;
-  created_by?: UserBasic;
-  team?: number;
-}
-export const DatasetItemsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    dataset: S.optional(S.String),
-    input: S.optional(S.Unknown),
-    output: S.optional(S.Unknown),
-    metadata: S.optional(S.Unknown),
-    ref_trace_id: S.optional(S.NullOr(S.String)),
-    ref_timestamp: S.optional(S.NullOr(S.String)),
-    ref_source_id: S.optional(S.NullOr(S.String)),
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-    team: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/dataset_items/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DatasetItemsCreateRequest",
-}) as any as S.Schema<DatasetItemsCreateRequest>;
-
 export interface DatasetItem {
   id?: string;
   dataset?: string;
@@ -142,7 +131,7 @@ export interface DatasetItem {
   deleted?: boolean | null;
   created_at?: string;
   updated_at?: string | null;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   team?: number;
 }
 export const DatasetItem = /*@__PURE__*/ S.suspend(() =>
@@ -158,7 +147,7 @@ export const DatasetItem = /*@__PURE__*/ S.suspend(() =>
     deleted: S.optional(S.NullOr(S.Boolean)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     team: S.optional(S.Number),
   }),
 ).annotate({ identifier: "DatasetItem" }) as any as S.Schema<DatasetItem>;
@@ -218,7 +207,7 @@ export const DatasetItemsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetItemsListRequest",
 }) as any as S.Schema<DatasetItemsListRequest>;
 
-export type PaginatedDatasetItemListResultsList = DatasetItem[];
+export type PaginatedDatasetItemListResultsList = ReadonlyArray<DatasetItem>;
 export const PaginatedDatasetItemListResultsList = /*@__PURE__*/ S.Array(
   DatasetItem,
 ) as any as S.Schema<PaginatedDatasetItemListResultsList>;
@@ -253,10 +242,6 @@ export interface DatasetItemsPartialUpdateRequest {
   ref_timestamp?: string | null;
   ref_source_id?: string | null;
   deleted?: boolean | null;
-  created_at?: string;
-  updated_at?: string | null;
-  created_by?: UserBasic;
-  team?: number;
 }
 export const DatasetItemsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -270,10 +255,6 @@ export const DatasetItemsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     ref_timestamp: S.optional(S.NullOr(S.String)),
     ref_source_id: S.optional(S.NullOr(S.String)),
     deleted: S.optional(S.NullOr(S.Boolean)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-    team: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -319,10 +300,6 @@ export interface DatasetItemsUpdateRequest {
   ref_timestamp?: string | null;
   ref_source_id?: string | null;
   deleted?: boolean | null;
-  created_at?: string;
-  updated_at?: string | null;
-  created_by?: UserBasic;
-  team?: number;
 }
 export const DatasetItemsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -336,10 +313,6 @@ export const DatasetItemsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     ref_timestamp: S.optional(S.NullOr(S.String)),
     ref_source_id: S.optional(S.NullOr(S.String)),
     deleted: S.optional(S.NullOr(S.Boolean)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-    team: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "PUT",

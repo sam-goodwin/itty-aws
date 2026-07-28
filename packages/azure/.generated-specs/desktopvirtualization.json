@@ -416,16 +416,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#PrivateEndpointConnectionsUpdateByHostPoolRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the private endpoint connection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#PrivateEndpointConnectionsUpdateByHostPoolRequestProperties": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.desktopvirtualization#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.desktopvirtualization#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.desktopvirtualization#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.desktopvirtualization#PrivateEndpointConnectionsGetByHostPool": {
@@ -1570,10 +1597,16 @@
             "smithy.api#documentation": "The name of the user session within the specified session host"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "messageTitle": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Title of message."
+          }
+        },
+        "messageBody": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Body of message."
           }
         }
       },
@@ -2756,15 +2789,56 @@
             "smithy.api#documentation": "The name of the App Attach package"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#AppAttachPackagePatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Detailed properties for App Attach Package"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#AppAttachPackagePatchProperties": {
+      "type": "structure",
+      "members": {
+        "image": {
+          "target": "com.azure.desktopvirtualization#AppAttachPackageInfoProperties",
+          "traits": {
+            "smithy.api#documentation": "Detailed properties for App Attach Package"
+          }
+        },
+        "hostPoolReferences": {
+          "target": "com.azure.desktopvirtualization#AppAttachPackagePatchPropertiesHostPoolReferencesList",
+          "traits": {
+            "smithy.api#documentation": "List of Hostpool resource Ids."
+          }
+        },
+        "keyVaultURL": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL path to certificate name located in keyVault"
+          }
+        },
+        "failHealthCheckOnStagingFailure": {
+          "target": "com.azure.desktopvirtualization#FailHealthCheckOnStagingFailureEnum",
+          "traits": {
+            "smithy.api#documentation": "Parameter indicating how the health check should behave if this package fails staging"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema for patchable fields on an App Attach Package."
+      }
+    },
+    "com.azure.desktopvirtualization#AppAttachPackagePatchPropertiesHostPoolReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Hostpool resource Ids."
       }
     },
     "com.azure.desktopvirtualization#AppAttachPackageCreateOrUpdate": {
@@ -2877,16 +2951,82 @@
             "smithy.api#documentation": "The name of the App Attach package"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.desktopvirtualization#AppAttachPackageCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.desktopvirtualization#AppAttachPackagePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Detailed properties for App Attach Package",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#AppAttachPackagePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "image": {
+          "target": "com.azure.desktopvirtualization#AppAttachPackageInfoProperties",
+          "traits": {
+            "smithy.api#documentation": "Detailed properties for App Attach Package"
+          }
+        },
+        "hostPoolReferences": {
+          "target": "com.azure.desktopvirtualization#AppAttachPackagePropertiesInputHostPoolReferencesList",
+          "traits": {
+            "smithy.api#documentation": "List of Hostpool resource Ids."
+          }
+        },
+        "keyVaultURL": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL path to certificate name located in keyVault"
+          }
+        },
+        "failHealthCheckOnStagingFailure": {
+          "target": "com.azure.desktopvirtualization#FailHealthCheckOnStagingFailureEnum",
+          "traits": {
+            "smithy.api#documentation": "Parameter indicating how the health check should behave if this package fails staging"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema for App Attach Package properties."
+      }
+    },
+    "com.azure.desktopvirtualization#AppAttachPackagePropertiesInputHostPoolReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Hostpool resource Ids."
+      }
+    },
+    "com.azure.desktopvirtualization#AppAttachPackageCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.desktopvirtualization#AppAttachPackageGet": {
@@ -3237,11 +3377,10 @@
             "smithy.api#documentation": "The name of the host pool within the specified resource group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "uri": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "URI to Image"
           }
         }
       },
@@ -3295,16 +3434,72 @@
             "smithy.api#documentation": "The name of the host pool within the specified resource group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "path": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "URI to Image"
+          }
+        },
+        "packageArchitecture": {
+          "target": "com.azure.desktopvirtualization#AppAttachPackageInfoImportRequestPackageArchitecture",
+          "traits": {
+            "smithy.api#documentation": "Possible device architectures that an app attach package can be configured for",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#AppAttachPackageInfoImportRequestPackageArchitecture": {
+      "type": "enum",
+      "members": {
+        "ARM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ARM"
+          }
+        },
+        "ARM64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ARM64"
+          }
+        },
+        "X86": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "x86"
+          }
+        },
+        "X64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "x64"
+          }
+        },
+        "NEUTRAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Neutral"
+          }
+        },
+        "X86A64": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "x86a64"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Possible device architectures that an app attach package can be configured for"
       }
     },
     "com.azure.desktopvirtualization#MSIXPackagesList": {
@@ -3692,15 +3887,41 @@
             "smithy.api#documentation": "The version specific package full name of the MSIX package within specified hostpool"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#MSIXPackagePatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Detailed properties for MSIX Package"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#MSIXPackagePatchProperties": {
+      "type": "structure",
+      "members": {
+        "isActive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set a version of the package to be active across hostpool. "
+          }
+        },
+        "isRegularRegistration": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set Registration mode. Regular or Delayed."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for MSIX Package."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "MSIX Package properties that can be patched."
       }
     },
     "com.azure.desktopvirtualization#MSIXPackagesCreateOrUpdate": {
@@ -3796,10 +4017,10 @@
             "smithy.api#documentation": "The version specific package full name of the MSIX package within specified hostpool"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#MSIXPackageProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Detailed properties for MSIX Package",
             "smithy.api#required": {}
           }
         }
@@ -4605,15 +4826,41 @@
             "smithy.api#documentation": "Force flag to update assign, unassign or reassign personal desktop."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#SessionHostPatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Detailed properties for SessionHost"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#SessionHostPatchProperties": {
+      "type": "structure",
+      "members": {
+        "allowNewSession": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allow a new session."
+          }
+        },
+        "assignedUser": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User assigned to SessionHost."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of SessionHost"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SessionHost properties that can be patched."
       }
     },
     "com.azure.desktopvirtualization#SessionHostsGet": {
@@ -5388,7 +5635,8 @@
         "registrationInfo": {
           "target": "com.azure.desktopvirtualization#RegistrationInfo",
           "traits": {
-            "smithy.api#documentation": "The registration info of HostPool."
+            "smithy.api#documentation": "The registration info of HostPool.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "vmTemplate": {
@@ -5467,7 +5715,8 @@
         "agentUpdate": {
           "target": "com.azure.desktopvirtualization#AgentUpdateProperties",
           "traits": {
-            "smithy.api#documentation": "The session host configuration for updating agent, monitoring agent, and stack component."
+            "smithy.api#documentation": "The session host configuration for updating agent, monitoring agent, and stack component.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "privateEndpointConnections": {
@@ -6412,15 +6661,501 @@
             "smithy.api#documentation": "The name of the host pool within the specified resource group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.desktopvirtualization#HostPoolsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "tags to be updated",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.desktopvirtualization#HostPoolPatchProperties",
+          "traits": {
+            "smithy.api#documentation": "HostPool properties that can be patched."
+          }
+        },
+        "identity": {
+          "target": "com.azure.desktopvirtualization#HostPoolsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.desktopvirtualization#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPatchProperties": {
+      "type": "structure",
+      "members": {
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of HostPool."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of HostPool."
+          }
+        },
+        "customRdpProperty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom rdp property of HostPool."
+          }
+        },
+        "maxSessionLimit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The max session limit of HostPool.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "personalDesktopAssignmentType": {
+          "target": "com.azure.desktopvirtualization#HostPoolPatchPropertiesPersonalDesktopAssignmentType",
+          "traits": {
+            "smithy.api#documentation": "PersonalDesktopAssignment type for HostPool.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "loadBalancerType": {
+          "target": "com.azure.desktopvirtualization#HostPoolPatchPropertiesLoadBalancerType",
+          "traits": {
+            "smithy.api#documentation": "The type of the load balancer."
+          }
+        },
+        "ring": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The ring number of HostPool.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "validationEnvironment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is validation environment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "registrationInfo": {
+          "target": "com.azure.desktopvirtualization#RegistrationInfoPatch",
+          "traits": {
+            "smithy.api#documentation": "The registration info of HostPool.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "vmTemplate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "VM template for sessionhosts configuration within hostpool."
+          }
+        },
+        "ssoadfsAuthority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to customer ADFS server for signing WVD SSO certificates."
+          }
+        },
+        "ssoClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ClientId for the registered Relying Party used to issue WVD SSO certificates."
+          }
+        },
+        "ssoClientSecretKeyVaultPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path to Azure KeyVault storing the secret used for communication to ADFS.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "ssoSecretType": {
+          "target": "com.azure.desktopvirtualization#HostPoolPatchPropertiesSsoSecretType",
+          "traits": {
+            "smithy.api#documentation": "The type of single sign on Secret Type.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "preferredAppGroupType": {
+          "target": "com.azure.desktopvirtualization#HostPoolPatchPropertiesPreferredAppGroupType",
+          "traits": {
+            "smithy.api#documentation": "The type of preferred application group type, default to Desktop Application Group"
+          }
+        },
+        "startVMOnConnect": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The flag to turn on/off StartVMOnConnect feature.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.desktopvirtualization#HostPoolPatchPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Enabled to allow this resource to be access from the public network",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "agentUpdate": {
+          "target": "com.azure.desktopvirtualization#AgentUpdatePatchProperties",
+          "traits": {
+            "smithy.api#documentation": "The session host configuration for updating agent, monitoring agent, and stack component.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of HostPool."
+      }
+    },
+    "com.azure.desktopvirtualization#AgentUpdatePatchProperties": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.desktopvirtualization#AgentUpdatePatchPropertiesType",
+          "traits": {
+            "smithy.api#documentation": "The type of maintenance for session host components."
+          }
+        },
+        "useSessionHostLocalTime": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to use localTime of the virtual machine."
+          }
+        },
+        "maintenanceWindowTimeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true."
+          }
+        },
+        "maintenanceWindows": {
+          "target": "com.azure.desktopvirtualization#AgentUpdatePatchPropertiesMaintenanceWindowsList",
+          "traits": {
+            "smithy.api#documentation": "List of maintenance windows. Maintenance windows are 2 hours long.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The session host configuration for updating agent, monitoring agent, and stack component."
+      }
+    },
+    "com.azure.desktopvirtualization#AgentUpdatePatchPropertiesMaintenanceWindowsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.desktopvirtualization#MaintenanceWindowPatchProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of maintenance windows. Maintenance windows are 2 hours long."
+      }
+    },
+    "com.azure.desktopvirtualization#MaintenanceWindowPatchProperties": {
+      "type": "structure",
+      "members": {
+        "hour": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The update start hour of the day. (0 - 23)"
+          }
+        },
+        "dayOfWeek": {
+          "target": "com.azure.desktopvirtualization#MaintenanceWindowPatchPropertiesDayOfWeek",
+          "traits": {
+            "smithy.api#documentation": "Day of the week."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Maintenance window starting hour and day of week."
+      }
+    },
+    "com.azure.desktopvirtualization#MaintenanceWindowPatchPropertiesDayOfWeek": {
+      "type": "enum",
+      "members": {
+        "MONDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Monday"
+          }
+        },
+        "TUESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tuesday"
+          }
+        },
+        "WEDNESDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Wednesday"
+          }
+        },
+        "THURSDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Thursday"
+          }
+        },
+        "FRIDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Friday"
+          }
+        },
+        "SATURDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Saturday"
+          }
+        },
+        "SUNDAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Sunday"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Day of the week."
+      }
+    },
+    "com.azure.desktopvirtualization#AgentUpdatePatchPropertiesType": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "SCHEDULED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Scheduled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of maintenance for session host components."
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPatchPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLEDFORSESSIONHOSTSONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EnabledForSessionHostsOnly"
+          }
+        },
+        "ENABLEDFORCLIENTSONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EnabledForClientsOnly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enabled to allow this resource to be access from the public network"
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPatchPropertiesPreferredAppGroupType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "DESKTOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Desktop"
+          }
+        },
+        "RAILAPPLICATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RailApplications"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of preferred application group type, default to Desktop Application Group"
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPatchPropertiesSsoSecretType": {
+      "type": "enum",
+      "members": {
+        "SHAREDKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SharedKey"
+          }
+        },
+        "CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate"
+          }
+        },
+        "SHAREDKEYINKEYVAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SharedKeyInKeyVault"
+          }
+        },
+        "CERTIFICATEINKEYVAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CertificateInKeyVault"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of single sign on Secret Type."
+      }
+    },
+    "com.azure.desktopvirtualization#RegistrationInfoPatch": {
+      "type": "structure",
+      "members": {
+        "expirationTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration time of registration token.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "registrationTokenOperation": {
+          "target": "com.azure.desktopvirtualization#RegistrationInfoPatchRegistrationTokenOperation",
+          "traits": {
+            "smithy.api#documentation": "The type of resetting the token."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a RegistrationInfo definition."
+      }
+    },
+    "com.azure.desktopvirtualization#RegistrationInfoPatchRegistrationTokenOperation": {
+      "type": "enum",
+      "members": {
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Delete"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "UPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Update"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resetting the token."
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPatchPropertiesLoadBalancerType": {
+      "type": "enum",
+      "members": {
+        "BREADTHFIRST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BreadthFirst"
+          }
+        },
+        "DEPTHFIRST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DepthFirst"
+          }
+        },
+        "PERSISTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Persistent"
+          }
+        },
+        "MULTIPLEPERSISTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiplePersistent"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the load balancer."
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPatchPropertiesPersonalDesktopAssignmentType": {
+      "type": "enum",
+      "members": {
+        "AUTOMATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Automatic"
+          }
+        },
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Direct"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PersonalDesktopAssignment type for HostPool."
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "tags to be updated"
       }
     },
     "com.azure.desktopvirtualization#HostPoolsCreateOrUpdate": {
@@ -6672,16 +7407,465 @@
             "smithy.api#documentation": "The name of the host pool within the specified resource group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.desktopvirtualization#HostPoolsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
+          }
+        },
+        "identity": {
+          "target": "com.azure.desktopvirtualization#HostPoolsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.desktopvirtualization#HostPoolsCreateOrUpdateRequestSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "plan": {
+          "target": "com.azure.desktopvirtualization#HostPoolsCreateOrUpdateRequestPlan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.desktopvirtualization#HostPoolPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Detailed properties for HostPool",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of HostPool."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of HostPool."
+          }
+        },
+        "hostPoolType": {
+          "target": "com.azure.desktopvirtualization#HostPoolPropertiesInputHostPoolType",
+          "traits": {
+            "smithy.api#documentation": "HostPool type for desktop.",
+            "smithy.api#required": {}
+          }
+        },
+        "personalDesktopAssignmentType": {
+          "target": "com.azure.desktopvirtualization#HostPoolPropertiesInputPersonalDesktopAssignmentType",
+          "traits": {
+            "smithy.api#documentation": "PersonalDesktopAssignment type for HostPool.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "customRdpProperty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom rdp property of HostPool."
+          }
+        },
+        "maxSessionLimit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The max session limit of HostPool.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "loadBalancerType": {
+          "target": "com.azure.desktopvirtualization#HostPoolPropertiesInputLoadBalancerType",
+          "traits": {
+            "smithy.api#documentation": "The type of the load balancer.",
+            "smithy.api#required": {}
+          }
+        },
+        "ring": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The ring number of HostPool.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "validationEnvironment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is validation environment.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "registrationInfo": {
+          "target": "com.azure.desktopvirtualization#RegistrationInfo",
+          "traits": {
+            "smithy.api#documentation": "The registration info of HostPool.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "vmTemplate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "VM template for sessionhosts configuration within hostpool."
+          }
+        },
+        "ssoadfsAuthority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL to customer ADFS server for signing WVD SSO certificates."
+          }
+        },
+        "ssoClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ClientId for the registered Relying Party used to issue WVD SSO certificates."
+          }
+        },
+        "ssoClientSecretKeyVaultPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path to Azure KeyVault storing the secret used for communication to ADFS.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "ssoSecretType": {
+          "target": "com.azure.desktopvirtualization#HostPoolPropertiesInputSsoSecretType",
+          "traits": {
+            "smithy.api#documentation": "The type of single sign on Secret Type.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "preferredAppGroupType": {
+          "target": "com.azure.desktopvirtualization#HostPoolPropertiesInputPreferredAppGroupType",
+          "traits": {
+            "smithy.api#documentation": "The type of preferred application group type, default to Desktop Application Group",
+            "smithy.api#required": {}
+          }
+        },
+        "startVMOnConnect": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The flag to turn on/off StartVMOnConnect feature.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.desktopvirtualization#HostPoolPropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "agentUpdate": {
+          "target": "com.azure.desktopvirtualization#AgentUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The session host configuration for updating agent, monitoring agent, and stack component.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of HostPool."
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "ENABLEDFORSESSIONHOSTSONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EnabledForSessionHostsOnly"
+          }
+        },
+        "ENABLEDFORCLIENTSONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EnabledForClientsOnly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints"
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPropertiesInputPreferredAppGroupType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "DESKTOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Desktop"
+          }
+        },
+        "RAILAPPLICATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RailApplications"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of preferred application group type, default to Desktop Application Group"
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPropertiesInputSsoSecretType": {
+      "type": "enum",
+      "members": {
+        "SHAREDKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SharedKey"
+          }
+        },
+        "CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate"
+          }
+        },
+        "SHAREDKEYINKEYVAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SharedKeyInKeyVault"
+          }
+        },
+        "CERTIFICATEINKEYVAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CertificateInKeyVault"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of single sign on Secret Type."
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPropertiesInputLoadBalancerType": {
+      "type": "enum",
+      "members": {
+        "BREADTHFIRST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BreadthFirst"
+          }
+        },
+        "DEPTHFIRST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DepthFirst"
+          }
+        },
+        "PERSISTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Persistent"
+          }
+        },
+        "MULTIPLEPERSISTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiplePersistent"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the load balancer."
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPropertiesInputPersonalDesktopAssignmentType": {
+      "type": "enum",
+      "members": {
+        "AUTOMATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Automatic"
+          }
+        },
+        "DIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Direct"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PersonalDesktopAssignment type for HostPool."
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolPropertiesInputHostPoolType": {
+      "type": "enum",
+      "members": {
+        "PERSONAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Personal"
+          }
+        },
+        "POOLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pooled"
+          }
+        },
+        "BYODESKTOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BYODesktop"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "HostPool type for desktop."
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolsCreateOrUpdateRequestPlan": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user defined name of the 3rd Party Artifact that is being procured.",
+            "smithy.api#required": {}
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic",
+            "smithy.api#required": {}
+          }
+        },
+        "product": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. ",
+            "smithy.api#required": {}
+          }
+        },
+        "promotionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A publisher provided promotion code as provisioned in Data Market for the said product/artifact."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the desired product/artifact."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Plan for the resource."
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolsCreateOrUpdateRequestSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.desktopvirtualization#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.desktopvirtualization#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.desktopvirtualization#HostPoolsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.desktopvirtualization#HostPoolsGet": {
@@ -7207,15 +8391,35 @@
             "smithy.api#documentation": "The name of the desktop within the specified desktop group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#DesktopPatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Detailed properties for Desktop"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#DesktopPatchProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of Desktop."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of Desktop."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Desktop properties that can be patched."
       }
     },
     "com.azure.desktopvirtualization#DesktopsGet": {
@@ -7748,15 +8952,137 @@
             "smithy.api#documentation": "The name of the application within the specified application group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#ApplicationPatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Detailed properties for Application"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationPatchProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of Application."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of Application."
+          }
+        },
+        "filePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies a path for the executable file for the application."
+          }
+        },
+        "commandLineSetting": {
+          "target": "com.azure.desktopvirtualization#ApplicationPatchPropertiesCommandLineSetting",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all."
+          }
+        },
+        "commandLineArguments": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Command Line Arguments for Application."
+          }
+        },
+        "showInPortal": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether to show the RemoteApp program in the RD Web Access server."
+          }
+        },
+        "iconPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path to icon."
+          }
+        },
+        "iconIndex": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Index of the icon."
+          }
+        },
+        "msixPackageFamilyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the package family name for MSIX applications",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "msixPackageApplicationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the package application Id for MSIX applications",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "applicationType": {
+          "target": "com.azure.desktopvirtualization#ApplicationPatchPropertiesApplicationType",
+          "traits": {
+            "smithy.api#documentation": "Resource Type of Application."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Application properties that can be patched."
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationPatchPropertiesApplicationType": {
+      "type": "enum",
+      "members": {
+        "INBUILT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InBuilt"
+          }
+        },
+        "MSIXAPPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MsixApplication"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource Type of Application."
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationPatchPropertiesCommandLineSetting": {
+      "type": "enum",
+      "members": {
+        "DONOTALLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DoNotAllow"
+          }
+        },
+        "ALLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Allow"
+          }
+        },
+        "REQUIRE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Require"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all."
       }
     },
     "com.azure.desktopvirtualization#ApplicationsCreateOrUpdate": {
@@ -7852,16 +9178,139 @@
             "smithy.api#documentation": "The name of the application within the specified application group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#ApplicationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Detailed properties for Application",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of Application."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of Application."
+          }
+        },
+        "filePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies a path for the executable file for the application."
+          }
+        },
+        "msixPackageFamilyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the package family name for MSIX applications",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "msixPackageApplicationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the package application Id for MSIX applications",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "applicationType": {
+          "target": "com.azure.desktopvirtualization#ApplicationPropertiesInputApplicationType",
+          "traits": {
+            "smithy.api#documentation": "Resource Type of Application."
+          }
+        },
+        "commandLineSetting": {
+          "target": "com.azure.desktopvirtualization#ApplicationPropertiesInputCommandLineSetting",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.",
+            "smithy.api#required": {}
+          }
+        },
+        "commandLineArguments": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Command Line Arguments for Application."
+          }
+        },
+        "showInPortal": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether to show the RemoteApp program in the RD Web Access server."
+          }
+        },
+        "iconPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Path to icon."
+          }
+        },
+        "iconIndex": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Index of the icon."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema for Application properties."
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationPropertiesInputCommandLineSetting": {
+      "type": "enum",
+      "members": {
+        "DONOTALLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DoNotAllow"
+          }
+        },
+        "ALLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Allow"
+          }
+        },
+        "REQUIRE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Require"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all."
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationPropertiesInputApplicationType": {
+      "type": "enum",
+      "members": {
+        "INBUILT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InBuilt"
+          }
+        },
+        "MSIXAPPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MsixApplication"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource Type of Application."
       }
     },
     "com.azure.desktopvirtualization#ApplicationsGet": {
@@ -8863,15 +10312,60 @@
             "smithy.api#documentation": "The name of the application group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.desktopvirtualization#ApplicationGroupsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "tags to be updated",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.desktopvirtualization#ApplicationGroupPatchProperties",
+          "traits": {
+            "smithy.api#documentation": "ApplicationGroup properties that can be patched."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationGroupPatchProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of ApplicationGroup."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of ApplicationGroup."
+          }
+        },
+        "showInFeed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Boolean representing whether the applicationGroup is show in the feed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ApplicationGroup properties that can be patched."
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationGroupsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "tags to be updated"
       }
     },
     "com.azure.desktopvirtualization#ApplicationGroupsCreateOrUpdate": {
@@ -9123,16 +10617,222 @@
             "smithy.api#documentation": "The name of the application group"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.desktopvirtualization#ApplicationGroupsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
+          }
+        },
+        "identity": {
+          "target": "com.azure.desktopvirtualization#ApplicationGroupsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.desktopvirtualization#ApplicationGroupsCreateOrUpdateRequestSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "plan": {
+          "target": "com.azure.desktopvirtualization#ApplicationGroupsCreateOrUpdateRequestPlan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.desktopvirtualization#ApplicationGroupPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Detailed properties for ApplicationGroup",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of ApplicationGroup."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of ApplicationGroup."
+          }
+        },
+        "hostPoolArmPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HostPool arm path of ApplicationGroup.",
+            "smithy.api#required": {}
+          }
+        },
+        "applicationGroupType": {
+          "target": "com.azure.desktopvirtualization#ApplicationGroupPropertiesInputApplicationGroupType",
+          "traits": {
+            "smithy.api#documentation": "Resource Type of ApplicationGroup.",
+            "smithy.api#required": {}
+          }
+        },
+        "showInFeed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Boolean representing whether the applicationGroup is show in the feed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema for ApplicationGroup properties."
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationGroupPropertiesInputApplicationGroupType": {
+      "type": "enum",
+      "members": {
+        "REMOTEAPP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RemoteApp"
+          }
+        },
+        "DESKTOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Desktop"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource Type of ApplicationGroup."
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationGroupsCreateOrUpdateRequestPlan": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user defined name of the 3rd Party Artifact that is being procured.",
+            "smithy.api#required": {}
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic",
+            "smithy.api#required": {}
+          }
+        },
+        "product": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. ",
+            "smithy.api#required": {}
+          }
+        },
+        "promotionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A publisher provided promotion code as provisioned in Data Market for the said product/artifact."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the desired product/artifact."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Plan for the resource."
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationGroupsCreateOrUpdateRequestSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.desktopvirtualization#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationGroupsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.desktopvirtualization#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.desktopvirtualization#ApplicationGroupsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.desktopvirtualization#ApplicationGroupsGet": {
@@ -10242,10 +11942,10 @@
             "smithy.api#documentation": "The name of the ScalingPlanSchedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#ScalingPlanPersonalScheduleProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Detailed properties for ScalingPlanPersonalSchedule"
           }
         }
       },
@@ -10346,10 +12046,10 @@
             "smithy.api#documentation": "The name of the ScalingPlanSchedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#ScalingPlanPersonalScheduleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Detailed properties for ScalingPlanPersonalSchedule",
             "smithy.api#required": {}
           }
         }
@@ -11015,10 +12715,10 @@
             "smithy.api#documentation": "The name of the ScalingPlanSchedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#ScalingPlanPooledScheduleProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Detailed properties for ScalingPlanPooledSchedule"
           }
         }
       },
@@ -11119,10 +12819,10 @@
             "smithy.api#documentation": "The name of the ScalingPlanSchedule"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#ScalingPlanPooledScheduleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Detailed properties for ScalingPlanPooledSchedule",
             "smithy.api#required": {}
           }
         }
@@ -11593,15 +13293,96 @@
             "smithy.api#documentation": "The name of the scaling plan."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.desktopvirtualization#ScalingPlansUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "tags to be updated",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.desktopvirtualization#ScalingPlanPatchProperties",
+          "traits": {
+            "smithy.api#documentation": "Detailed properties for scaling plan"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlanPatchProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of scaling plan."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User friendly name of scaling plan."
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timezone of the scaling plan."
+          }
+        },
+        "exclusionTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Exclusion tag for scaling plan."
+          }
+        },
+        "schedules": {
+          "target": "com.azure.desktopvirtualization#ScalingPlanPatchPropertiesSchedulesList",
+          "traits": {
+            "smithy.api#documentation": "List of ScalingSchedule definitions."
+          }
+        },
+        "hostPoolReferences": {
+          "target": "com.azure.desktopvirtualization#ScalingPlanPatchPropertiesHostPoolReferencesList",
+          "traits": {
+            "smithy.api#documentation": "List of ScalingHostPoolReference definitions."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Scaling plan properties."
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlanPatchPropertiesHostPoolReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.desktopvirtualization#ScalingHostPoolReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of ScalingHostPoolReference definitions."
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlanPatchPropertiesSchedulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.desktopvirtualization#ScalingSchedule"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of ScalingSchedule definitions."
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlansUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "tags to be updated"
       }
     },
     "com.azure.desktopvirtualization#ScalingPlansCreate": {
@@ -11853,16 +13634,245 @@
             "smithy.api#documentation": "The name of the scaling plan."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.desktopvirtualization#ScalingPlansCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
+          }
+        },
+        "identity": {
+          "target": "com.azure.desktopvirtualization#ScalingPlansCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.desktopvirtualization#ScalingPlansCreateRequestSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "plan": {
+          "target": "com.azure.desktopvirtualization#ScalingPlansCreateRequestPlan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.desktopvirtualization#ScalingPlanPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Detailed properties for scaling plan.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlanPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of scaling plan."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User friendly name of scaling plan."
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timezone of the scaling plan.",
+            "smithy.api#required": {}
+          }
+        },
+        "hostPoolType": {
+          "target": "com.azure.desktopvirtualization#ScalingPlanPropertiesInputHostPoolType",
+          "traits": {
+            "smithy.api#documentation": "HostPool type for desktop."
+          }
+        },
+        "exclusionTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Exclusion tag for scaling plan."
+          }
+        },
+        "schedules": {
+          "target": "com.azure.desktopvirtualization#ScalingPlanPropertiesInputSchedulesList",
+          "traits": {
+            "smithy.api#documentation": "List of ScalingPlanPooledSchedule definitions."
+          }
+        },
+        "hostPoolReferences": {
+          "target": "com.azure.desktopvirtualization#ScalingPlanPropertiesInputHostPoolReferencesList",
+          "traits": {
+            "smithy.api#documentation": "List of ScalingHostPoolReference definitions."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Scaling plan properties."
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlanPropertiesInputHostPoolReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.desktopvirtualization#ScalingHostPoolReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of ScalingHostPoolReference definitions."
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlanPropertiesInputSchedulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.desktopvirtualization#ScalingSchedule"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of ScalingPlanPooledSchedule definitions."
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlanPropertiesInputHostPoolType": {
+      "type": "enum",
+      "members": {
+        "POOLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pooled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "HostPool type for desktop."
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlansCreateRequestPlan": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user defined name of the 3rd Party Artifact that is being procured.",
+            "smithy.api#required": {}
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic",
+            "smithy.api#required": {}
+          }
+        },
+        "product": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. ",
+            "smithy.api#required": {}
+          }
+        },
+        "promotionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A publisher provided promotion code as provisioned in Data Market for the said product/artifact."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the desired product/artifact."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Plan for the resource."
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlansCreateRequestSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.desktopvirtualization#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlansCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.desktopvirtualization#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.desktopvirtualization#ScalingPlansCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.desktopvirtualization#ScalingPlansGet": {
@@ -12844,16 +14854,36 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.desktopvirtualization#PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the private endpoint connection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.desktopvirtualization#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.desktopvirtualization#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
       }
     },
     "com.azure.desktopvirtualization#PrivateEndpointConnectionsGetByWorkspace": {
@@ -13345,15 +15375,97 @@
             "smithy.api#documentation": "The name of the workspace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.desktopvirtualization#WorkspacesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "tags to be updated",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.desktopvirtualization#WorkspacePatchProperties",
+          "traits": {
+            "smithy.api#documentation": "Detailed properties for Workspace"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#WorkspacePatchProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of Workspace."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of Workspace."
+          }
+        },
+        "applicationGroupReferences": {
+          "target": "com.azure.desktopvirtualization#WorkspacePatchPropertiesApplicationGroupReferencesList",
+          "traits": {
+            "smithy.api#documentation": "List of applicationGroup links.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.desktopvirtualization#WorkspacePatchPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Enabled to allow this resource to be access from the public network",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Workspace properties that can be patched."
+      }
+    },
+    "com.azure.desktopvirtualization#WorkspacePatchPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enabled to allow this resource to be access from the public network"
+      }
+    },
+    "com.azure.desktopvirtualization#WorkspacePatchPropertiesApplicationGroupReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of applicationGroup links."
+      }
+    },
+    "com.azure.desktopvirtualization#WorkspacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "tags to be updated"
       }
     },
     "com.azure.desktopvirtualization#WorkspacesCreateOrUpdate": {
@@ -13604,16 +15716,224 @@
             "smithy.api#documentation": "The name of the workspace"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.desktopvirtualization#WorkspacesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
+          }
+        },
+        "identity": {
+          "target": "com.azure.desktopvirtualization#WorkspacesCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.desktopvirtualization#WorkspacesCreateOrUpdateRequestSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "plan": {
+          "target": "com.azure.desktopvirtualization#WorkspacesCreateOrUpdateRequestPlan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.desktopvirtualization#WorkspacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Detailed properties for Workspace"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.desktopvirtualization#WorkspacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of Workspace."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of Workspace."
+          }
+        },
+        "applicationGroupReferences": {
+          "target": "com.azure.desktopvirtualization#WorkspacePropertiesInputApplicationGroupReferencesList",
+          "traits": {
+            "smithy.api#documentation": "List of applicationGroup resource Ids.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.desktopvirtualization#WorkspacePropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema for Workspace properties."
+      }
+    },
+    "com.azure.desktopvirtualization#WorkspacePropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints"
+      }
+    },
+    "com.azure.desktopvirtualization#WorkspacePropertiesInputApplicationGroupReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of applicationGroup resource Ids."
+      }
+    },
+    "com.azure.desktopvirtualization#WorkspacesCreateOrUpdateRequestPlan": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A user defined name of the 3rd Party Artifact that is being procured.",
+            "smithy.api#required": {}
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic",
+            "smithy.api#required": {}
+          }
+        },
+        "product": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. ",
+            "smithy.api#required": {}
+          }
+        },
+        "promotionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A publisher provided promotion code as provisioned in Data Market for the said product/artifact."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the desired product/artifact."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Plan for the resource."
+      }
+    },
+    "com.azure.desktopvirtualization#WorkspacesCreateOrUpdateRequestSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.desktopvirtualization#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.desktopvirtualization#WorkspacesCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.desktopvirtualization#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.desktopvirtualization#WorkspacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.desktopvirtualization#WorkspacesGet": {

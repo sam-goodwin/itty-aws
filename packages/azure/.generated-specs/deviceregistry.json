@@ -369,16 +369,36 @@
             "smithy.api#documentation": "Schema version name parameter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.deviceregistry#SchemaVersionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#SchemaVersionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable description of the schema."
+          }
+        },
+        "schemaContent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema content.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the schema version properties."
       }
     },
     "com.azure.deviceregistry#SchemaVersionsGet": {
@@ -862,16 +882,67 @@
             "smithy.api#documentation": "Schema name parameter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.deviceregistry#SchemaPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#SchemaPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable description of the schema."
+          }
+        },
+        "format": {
+          "target": "com.azure.deviceregistry#Format",
+          "traits": {
+            "smithy.api#documentation": "Format of the schema.",
+            "smithy.api#required": {}
+          }
+        },
+        "schemaType": {
+          "target": "com.azure.deviceregistry#SchemaType",
+          "traits": {
+            "smithy.api#documentation": "Type of the schema.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.deviceregistry#SchemaPropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Schema tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the schema properties."
+      }
+    },
+    "com.azure.deviceregistry#SchemaPropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Schema tags."
       }
     },
     "com.azure.deviceregistry#SchemasGet": {
@@ -1348,16 +1419,73 @@
             "smithy.api#documentation": "Schema registry name parameter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.deviceregistry#SchemaRegistriesUpdateRequestIdentity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+          }
+        },
+        "tags": {
+          "target": "com.azure.deviceregistry#SchemaRegistriesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#SchemaRegistryUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#SchemaRegistryUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable description of the schema registry."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the SchemaRegistry."
+      }
+    },
+    "com.azure.deviceregistry#SchemaRegistriesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.deviceregistry#SchemaRegistriesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.deviceregistry#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
       }
     },
     "com.azure.deviceregistry#SchemaRegistriesCreateOrReplace": {
@@ -1501,16 +1629,94 @@
             "smithy.api#documentation": "Schema registry name parameter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#SchemaRegistriesCreateOrReplaceRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#SchemaRegistryPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.deviceregistry#SchemaRegistriesCreateOrReplaceRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#SchemaRegistriesCreateOrReplaceRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.deviceregistry#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.deviceregistry#SchemaRegistryPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema registry namespace. Uniquely identifies a schema registry within a tenant.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable description of the schema registry."
+          }
+        },
+        "storageAccountContainerUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Storage Account's Container URL where schemas will be stored.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the schema registry properties."
+      }
+    },
+    "com.azure.deviceregistry#SchemaRegistriesCreateOrReplaceRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#SchemaRegistriesGet": {
@@ -2009,16 +2215,44 @@
             "smithy.api#documentation": "The name of the namespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "scope": {
+          "target": "com.azure.deviceregistry#Scope",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Scope of the migrate resources operation."
+          }
+        },
+        "resourceIds": {
+          "target": "com.azure.deviceregistry#NamespacesMigrateRequestResourceIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of asset resources to be migrated."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespacesMigrateRequestResourceIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of asset resources to be migrated."
+      }
+    },
+    "com.azure.deviceregistry#Scope": {
+      "type": "enum",
+      "members": {
+        "RESOURCES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Resources"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Scope of the migrate resources operation."
       }
     },
     "com.azure.deviceregistry#NamespaceDiscoveredDevicesDelete": {
@@ -2469,16 +2703,220 @@
             "smithy.api#documentation": "The name of the discovered device."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredDevicesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredDeviceUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredDeviceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "externalDeviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A device ID that represents the device in a system external to Azure. Unique within scope of an Azure tenant."
+          }
+        },
+        "endpoints": {
+          "target": "com.azure.deviceregistry#DiscoveredMessagingEndpointsUpdate",
+          "traits": {
+            "smithy.api#documentation": "Endpoints for discovered devices."
+          }
+        },
+        "operatingSystemVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device operating system version."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that contain custom attributes."
+          }
+        },
+        "discoveryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier used to detect changes in the discovered device."
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "An integer that is incremented each time the resource is modified."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the NamespaceDiscoveredDevice."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that contain custom attributes."
+      }
+    },
+    "com.azure.deviceregistry#DiscoveredMessagingEndpointsUpdate": {
+      "type": "structure",
+      "members": {
+        "inbound": {
+          "target": "com.azure.deviceregistry#DiscoveredMessagingEndpointsUpdateInboundMap",
+          "traits": {
+            "smithy.api#documentation": "Set of endpoints to connect to the device."
+          }
+        },
+        "outbound": {
+          "target": "com.azure.deviceregistry#DiscoveredOutboundEndpointsUpdate",
+          "traits": {
+            "smithy.api#documentation": "Set of endpoints a device can connect to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Connection endpoint URL a device can use to connect to a service."
+      }
+    },
+    "com.azure.deviceregistry#DiscoveredOutboundEndpointsUpdate": {
+      "type": "structure",
+      "members": {
+        "assigned": {
+          "target": "com.azure.deviceregistry#DiscoveredOutboundEndpointsUpdateAssignedMap",
+          "traits": {
+            "smithy.api#documentation": "Endpoints the device can connect to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property bag contains the device's outbound endpoints"
+      }
+    },
+    "com.azure.deviceregistry#DiscoveredOutboundEndpointsUpdateAssignedMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.deviceregistry#DeviceMessagingEndpointUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "Endpoints the device can connect to."
+      }
+    },
+    "com.azure.deviceregistry#DeviceMessagingEndpointUpdate": {
+      "type": "structure",
+      "members": {
+        "endpointType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of connection used for the messaging endpoint."
+          }
+        },
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint address to connect to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Device messaging endpoint model."
+      }
+    },
+    "com.azure.deviceregistry#DiscoveredMessagingEndpointsUpdateInboundMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.deviceregistry#DiscoveredInboundEndpointsUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of endpoints to connect to the device."
+      }
+    },
+    "com.azure.deviceregistry#DiscoveredInboundEndpointsUpdate": {
+      "type": "structure",
+      "members": {
+        "endpointType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of connection endpoint."
+          }
+        },
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com)."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc."
+          }
+        },
+        "supportedAuthenticationMethods": {
+          "target": "com.azure.deviceregistry#DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList",
+          "traits": {
+            "smithy.api#documentation": "List of supported authentication methods supported by device for Inbound connections."
+          }
+        },
+        "additionalConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF)."
+          }
+        },
+        "lastUpdatedOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp (in UTC) when the endpoint was discovered."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An endpoint to connect to the device."
+      }
+    },
+    "com.azure.deviceregistry#DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#AuthenticationMethod2"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of supported authentication methods supported by device for Inbound connections."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredDevicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#NamespaceDiscoveredDevicesCreateOrReplace": {
@@ -2605,16 +3043,123 @@
             "smithy.api#documentation": "The name of the discovered device."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredDevicePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.deviceregistry#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredDevicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "externalDeviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A device ID that represents the device in a system external to Azure. Unique within scope of an Azure tenant."
+          }
+        },
+        "endpoints": {
+          "target": "com.azure.deviceregistry#DiscoveredMessagingEndpoints",
+          "traits": {
+            "smithy.api#documentation": "Endpoints for discovered devices."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device manufacturer."
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device model."
+          }
+        },
+        "operatingSystem": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device operating system name."
+          }
+        },
+        "operatingSystemVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device operating system version."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredDevicePropertiesInputAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that contain custom attributes."
+          }
+        },
+        "discoveryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier used to detect changes in the discovered device.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "An integer that is incremented each time the resource is modified.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the discovered device properties."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredDevicePropertiesInputAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that contain custom attributes."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#NamespaceDiscoveredDevicesGet": {
@@ -3900,16 +4445,301 @@
             "smithy.api#documentation": "The name of the discovered asset."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "deviceRef": {
+          "target": "com.azure.deviceregistry#DeviceRefUpdate",
+          "traits": {
+            "smithy.api#documentation": "Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable display name."
+          }
+        },
+        "assetTypeRefs": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList",
+          "traits": {
+            "smithy.api#documentation": "URIs or type definition IDs."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable description of the asset."
+          }
+        },
+        "discoveryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier used to detect changes in the asset."
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "An integer that is incremented each time the resource is modified."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer."
+          }
+        },
+        "manufacturerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer URI."
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset model."
+          }
+        },
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset product code."
+          }
+        },
+        "hardwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset hardware revision number."
+          }
+        },
+        "softwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset software revision number."
+          }
+        },
+        "documentationUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset documentation reference."
+          }
+        },
+        "serialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset serial number."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that contain custom attributes."
+          }
+        },
+        "defaultDatasetsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultEventsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultStreamsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultManagementGroupsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultDatasetsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for a dataset."
+          }
+        },
+        "defaultEventsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for an event."
+          }
+        },
+        "defaultStreamsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for a stream."
+          }
+        },
+        "datasets": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesDatasetsList",
+          "traits": {
+            "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set."
+          }
+        },
+        "eventGroups": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Array of event groups that are part of the asset. Each event group can have per-event group configuration."
+          }
+        },
+        "streams": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesStreamsList",
+          "traits": {
+            "smithy.api#documentation": "Array of streams that are part of the asset. Each stream can have a per-stream configuration."
+          }
+        },
+        "managementGroups": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Array of management groups that are part of the asset. Each management group can have a per-group configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the NamespaceDiscoveredAsset."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceDiscoveredManagementGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of management groups that are part of the asset. Each management group can have a per-group configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesStreamsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceDiscoveredStream"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of streams that are part of the asset. Each stream can have a per-stream configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceDiscoveredEventGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of event groups that are part of the asset. Each event group can have per-event group configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesDatasetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceDiscoveredDataset"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#StreamDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for a stream."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#EventDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for an event."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#DatasetDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for a dataset."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that contain custom attributes."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "URIs or type definition IDs."
+      }
+    },
+    "com.azure.deviceregistry#DeviceRefUpdate": {
+      "type": "structure",
+      "members": {
+        "deviceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the device resource"
+          }
+        },
+        "endpointName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of endpoint to use"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines which device and endpoint to use for this asset"
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#NamespaceDiscoveredAssetsCreateOrReplace": {
@@ -4036,16 +4866,304 @@
             "smithy.api#documentation": "The name of the discovered asset."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.deviceregistry#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "deviceRef": {
+          "target": "com.azure.deviceregistry#DeviceRef",
+          "traits": {
+            "smithy.api#documentation": "Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable display name."
+          }
+        },
+        "assetTypeRefs": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList",
+          "traits": {
+            "smithy.api#documentation": "URIs or type definition IDs."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable description of the asset."
+          }
+        },
+        "discoveryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier used to detect changes in the asset.",
+            "smithy.api#required": {}
+          }
+        },
+        "externalAssetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset ID provided by the customer."
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "An integer that is incremented each time the resource is modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer."
+          }
+        },
+        "manufacturerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer URI."
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset model."
+          }
+        },
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset product code."
+          }
+        },
+        "hardwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset hardware revision number."
+          }
+        },
+        "softwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset software revision number."
+          }
+        },
+        "documentationUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset documentation reference."
+          }
+        },
+        "serialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset serial number."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that contain custom attributes."
+          }
+        },
+        "defaultDatasetsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultEventsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultStreamsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultManagementGroupsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultDatasetsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for a dataset."
+          }
+        },
+        "defaultEventsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for an event."
+          }
+        },
+        "defaultStreamsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for a stream."
+          }
+        },
+        "datasets": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputDatasetsList",
+          "traits": {
+            "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set."
+          }
+        },
+        "eventGroups": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputEventGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Array of event groups that are part of the asset. Each event group can have per-event group configuration."
+          }
+        },
+        "streams": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputStreamsList",
+          "traits": {
+            "smithy.api#documentation": "Array of streams that are part of the asset. Each stream can have a per-stream configuration."
+          }
+        },
+        "managementGroups": {
+          "target": "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputManagementGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Array of management groups that are part of the asset. Each management group can have a per-group configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the discovered asset properties."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputManagementGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceDiscoveredManagementGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of management groups that are part of the asset. Each management group can have a per-group configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputStreamsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceDiscoveredStream"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of streams that are part of the asset. Each stream can have a per-stream configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputEventGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceDiscoveredEventGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of event groups that are part of the asset. Each event group can have per-event group configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputDatasetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceDiscoveredDataset"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#StreamDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for a stream."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#EventDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for an event."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#DatasetDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for a dataset."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that contain custom attributes."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "URIs or type definition IDs."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#NamespaceDiscoveredAssetsGet": {
@@ -5057,16 +6175,296 @@
             "smithy.api#documentation": "The name of the device."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#NamespaceDevicesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#NamespaceDeviceUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDeviceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "operatingSystemVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device operating system version."
+          }
+        },
+        "endpoints": {
+          "target": "com.azure.deviceregistry#MessagingEndpointsUpdate",
+          "traits": {
+            "smithy.api#documentation": "Property bag containing the device's unassigned and assigned endpoints."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.deviceregistry#NamespaceDeviceUpdatePropertiesAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the resource and identity are enabled or not. A disabled device cannot authenticate with Microsoft Entra ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the NamespaceDevice."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDeviceUpdatePropertiesAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+      }
+    },
+    "com.azure.deviceregistry#MessagingEndpointsUpdate": {
+      "type": "structure",
+      "members": {
+        "inbound": {
+          "target": "com.azure.deviceregistry#MessagingEndpointsUpdateInboundMap",
+          "traits": {
+            "smithy.api#documentation": "Set of endpoints to connect to the device."
+          }
+        },
+        "outbound": {
+          "target": "com.azure.deviceregistry#OutboundEndpointsUpdate",
+          "traits": {
+            "smithy.api#documentation": "Set of endpoints a device can connect to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Connection endpoint URL a device can use to connect to a service."
+      }
+    },
+    "com.azure.deviceregistry#OutboundEndpointsUpdate": {
+      "type": "structure",
+      "members": {
+        "assigned": {
+          "target": "com.azure.deviceregistry#OutboundEndpointsUpdateAssignedMap",
+          "traits": {
+            "smithy.api#documentation": "Endpoints the device can connect to."
+          }
+        },
+        "unassigned": {
+          "target": "com.azure.deviceregistry#OutboundEndpointsUpdateUnassignedMap",
+          "traits": {
+            "smithy.api#documentation": "Set of most recently removed endpoints."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property bag contains the device's outbound endpoints"
+      }
+    },
+    "com.azure.deviceregistry#OutboundEndpointsUpdateUnassignedMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.deviceregistry#DeviceMessagingEndpointUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of most recently removed endpoints."
+      }
+    },
+    "com.azure.deviceregistry#OutboundEndpointsUpdateAssignedMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.deviceregistry#DeviceMessagingEndpointUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "Endpoints the device can connect to."
+      }
+    },
+    "com.azure.deviceregistry#MessagingEndpointsUpdateInboundMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.deviceregistry#InboundEndpointsUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "Set of endpoints to connect to the device."
+      }
+    },
+    "com.azure.deviceregistry#InboundEndpointsUpdate": {
+      "type": "structure",
+      "members": {
+        "endpointType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of connection endpoint."
+          }
+        },
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com)."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc."
+          }
+        },
+        "authentication": {
+          "target": "com.azure.deviceregistry#HostAuthenticationUpdate",
+          "traits": {
+            "smithy.api#documentation": "Defines the client authentication mechanism to the server."
+          }
+        },
+        "trustSettings": {
+          "target": "com.azure.deviceregistry#TrustSettings",
+          "traits": {
+            "smithy.api#documentation": "Defines server trust settings for the endpoint."
+          }
+        },
+        "additionalConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An endpoint to connect to the device."
+      }
+    },
+    "com.azure.deviceregistry#HostAuthenticationUpdate": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "com.azure.deviceregistry#HostAuthenticationUpdateMethod",
+          "traits": {
+            "smithy.api#documentation": "Defines the method to authenticate the user of the client at the server."
+          }
+        },
+        "usernamePasswordCredentials": {
+          "target": "com.azure.deviceregistry#UsernamePasswordCredentialsUpdate",
+          "traits": {
+            "smithy.api#documentation": "Defines the username and password references when UsernamePassword user authentication mode is selected."
+          }
+        },
+        "x509Credentials": {
+          "target": "com.azure.deviceregistry#X509CertificateCredentialsUpdate",
+          "traits": {
+            "smithy.api#documentation": "Defines the certificate reference when Certificate user authentication mode is selected."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of the client authentication mechanism to the host."
+      }
+    },
+    "com.azure.deviceregistry#X509CertificateCredentialsUpdate": {
+      "type": "structure",
+      "members": {
+        "certificateSecretName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx)."
+          }
+        },
+        "keySecretName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the secret containing the certificate private key in PEM or DER format."
+          }
+        },
+        "intermediateCertificatesSecretName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the secret containing the combined intermediate certificates in PEM format."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The x509 certificate for authentication mode Certificate."
+      }
+    },
+    "com.azure.deviceregistry#UsernamePasswordCredentialsUpdate": {
+      "type": "structure",
+      "members": {
+        "usernameSecretName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the secret containing the username."
+          }
+        },
+        "passwordSecretName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the secret containing the password.",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The credentials for authentication mode UsernamePassword."
+      }
+    },
+    "com.azure.deviceregistry#HostAuthenticationUpdateMethod": {
+      "type": "enum",
+      "members": {
+        "ANONYMOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Anonymous"
+          }
+        },
+        "CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate"
+          }
+        },
+        "USERNAMEPASSWORD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UsernamePassword"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the method to authenticate the user of the client at the server."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDevicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#NamespaceDevicesCreateOrReplace": {
@@ -5198,16 +6596,120 @@
             "smithy.api#documentation": "The name of the device."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#NamespaceDevicesCreateOrReplaceRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#NamespaceDevicePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.deviceregistry#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDevicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the resource is enabled or not."
+          }
+        },
+        "externalDeviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Device ID provided by the customer."
+          }
+        },
+        "discoveredDeviceRef": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reference to a device. Populated only if the device had been created from discovery flow. Discovered device name must be provided."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device manufacturer."
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device model."
+          }
+        },
+        "operatingSystem": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device operating system."
+          }
+        },
+        "operatingSystemVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device operating system version."
+          }
+        },
+        "endpoints": {
+          "target": "com.azure.deviceregistry#MessagingEndpoints",
+          "traits": {
+            "smithy.api#documentation": "Property bag containing the device's unassigned and assigned endpoints."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.deviceregistry#NamespaceDevicePropertiesInputAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the device properties."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDevicePropertiesInputAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceDevicesCreateOrReplaceRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#NamespaceDevicesGet": {
@@ -5634,16 +7136,41 @@
             "smithy.api#documentation": "The name of the asset."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "managementActionName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Name of the management action to be executed.",
             "smithy.api#required": {}
+          }
+        },
+        "managementGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the management group under which the action is to be executed.",
+            "smithy.api#required": {}
+          }
+        },
+        "payload": {
+          "target": "com.azure.deviceregistry#NamespaceAssetsExecuteActionRequestPayloadMap",
+          "traits": {
+            "smithy.api#documentation": "Payload required for executing the management action."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetsExecuteActionRequestPayloadMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Payload required for executing the management action."
       }
     },
     "com.azure.deviceregistry#NamespaceAssetsDelete": {
@@ -6794,16 +8321,269 @@
             "smithy.api#documentation": "The name of the asset."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#NamespaceAssetsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#NamespaceAssetUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enabled/disabled status of the asset."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable description of the asset."
+          }
+        },
+        "assetTypeRefs": {
+          "target": "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesAssetTypeRefsList",
+          "traits": {
+            "smithy.api#documentation": "URIs or type definition IDs."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer."
+          }
+        },
+        "manufacturerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer URI."
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset model."
+          }
+        },
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset product code."
+          }
+        },
+        "hardwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset hardware revision number."
+          }
+        },
+        "softwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset software revision number."
+          }
+        },
+        "documentationUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset documentation reference."
+          }
+        },
+        "serialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset serial number."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+          }
+        },
+        "defaultDatasetsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultEventsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultStreamsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultManagementGroupsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultDatasetsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for a dataset."
+          }
+        },
+        "defaultEventsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for an event."
+          }
+        },
+        "defaultStreamsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for a stream."
+          }
+        },
+        "datasets": {
+          "target": "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesDatasetsList",
+          "traits": {
+            "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset describes the data points that make up the set."
+          }
+        },
+        "eventGroups": {
+          "target": "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesEventGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Array of event groups that are part of the asset. Each event group can have per-event group configuration."
+          }
+        },
+        "streams": {
+          "target": "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesStreamsList",
+          "traits": {
+            "smithy.api#documentation": "Array of streams that are part of the asset. Each stream can have a per-stream configuration."
+          }
+        },
+        "managementGroups": {
+          "target": "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesManagementGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Array of management groups that are part of the asset. Each management group can have a per-group configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the NamespaceAsset."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesManagementGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#ManagementGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of management groups that are part of the asset. Each management group can have a per-group configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesStreamsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceStream"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of streams that are part of the asset. Each stream can have a per-stream configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesEventGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceEventGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of event groups that are part of the asset. Each event group can have per-event group configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesDatasetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceDataset"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset describes the data points that make up the set."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#StreamDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for a stream."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#EventDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for an event."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#DatasetDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for a dataset."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetUpdatePropertiesAssetTypeRefsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "URIs or type definition IDs."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#NamespaceAssetsCreateOrReplace": {
@@ -6930,16 +8710,311 @@
             "smithy.api#documentation": "The name of the asset."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#NamespaceAssetsCreateOrReplaceRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#NamespaceAssetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.deviceregistry#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enabled/disabled status of the asset."
+          }
+        },
+        "externalAssetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset ID provided by the customer."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable description of the asset."
+          }
+        },
+        "deviceRef": {
+          "target": "com.azure.deviceregistry#DeviceRef",
+          "traits": {
+            "smithy.api#documentation": "Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use.",
+            "smithy.api#required": {}
+          }
+        },
+        "assetTypeRefs": {
+          "target": "com.azure.deviceregistry#NamespaceAssetPropertiesInputAssetTypeRefsList",
+          "traits": {
+            "smithy.api#documentation": "URIs or type definition IDs."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer."
+          }
+        },
+        "manufacturerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer URI."
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset model."
+          }
+        },
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset product code."
+          }
+        },
+        "hardwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset hardware revision number."
+          }
+        },
+        "softwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset software revision number."
+          }
+        },
+        "documentationUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset documentation reference."
+          }
+        },
+        "serialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset serial number."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.deviceregistry#NamespaceAssetPropertiesInputAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+          }
+        },
+        "discoveredAssetRefs": {
+          "target": "com.azure.deviceregistry#NamespaceAssetPropertiesInputDiscoveredAssetRefsList",
+          "traits": {
+            "smithy.api#documentation": "Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided."
+          }
+        },
+        "defaultDatasetsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultEventsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultStreamsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultManagementGroupsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultDatasetsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for a dataset."
+          }
+        },
+        "defaultEventsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceAssetPropertiesInputDefaultEventsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for an event."
+          }
+        },
+        "defaultStreamsDestinations": {
+          "target": "com.azure.deviceregistry#NamespaceAssetPropertiesInputDefaultStreamsDestinationsList",
+          "traits": {
+            "smithy.api#documentation": "Default destinations for a stream."
+          }
+        },
+        "datasets": {
+          "target": "com.azure.deviceregistry#NamespaceAssetPropertiesInputDatasetsList",
+          "traits": {
+            "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset describes the data points that make up the set."
+          }
+        },
+        "eventGroups": {
+          "target": "com.azure.deviceregistry#NamespaceAssetPropertiesInputEventGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Array of event groups that are part of the asset. Each event group can have per-event group configuration."
+          }
+        },
+        "streams": {
+          "target": "com.azure.deviceregistry#NamespaceAssetPropertiesInputStreamsList",
+          "traits": {
+            "smithy.api#documentation": "Array of streams that are part of the asset. Each stream can have a per-stream configuration."
+          }
+        },
+        "managementGroups": {
+          "target": "com.azure.deviceregistry#NamespaceAssetPropertiesInputManagementGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Array of management groups that are part of the asset. Each management group can have a per-group configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the asset properties."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetPropertiesInputManagementGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#ManagementGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of management groups that are part of the asset. Each management group can have a per-group configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetPropertiesInputStreamsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceStream"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of streams that are part of the asset. Each stream can have a per-stream configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetPropertiesInputEventGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceEventGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of event groups that are part of the asset. Each event group can have per-event group configuration."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetPropertiesInputDatasetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#NamespaceDataset"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset describes the data points that make up the set."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetPropertiesInputDefaultStreamsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#StreamDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for a stream."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetPropertiesInputDefaultEventsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#EventDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for an event."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#DatasetDestination"
+      },
+      "traits": {
+        "smithy.api#documentation": "Default destinations for a dataset."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetPropertiesInputDiscoveredAssetRefsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetPropertiesInputAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetPropertiesInputAssetTypeRefsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "URIs or type definition IDs."
+      }
+    },
+    "com.azure.deviceregistry#NamespaceAssetsCreateOrReplaceRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#NamespaceAssetsGet": {
@@ -7561,16 +9636,73 @@
             "smithy.api#documentation": "The name of the namespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.deviceregistry#NamespacesUpdateRequestIdentity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+          }
+        },
+        "tags": {
+          "target": "com.azure.deviceregistry#NamespacesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#NamespaceUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespaceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "messaging": {
+          "target": "com.azure.deviceregistry#Messaging",
+          "traits": {
+            "smithy.api#documentation": "Assigned and unassigned messaging endpoints."
+          }
+        },
+        "management": {
+          "target": "com.azure.deviceregistry#Management",
+          "traits": {
+            "smithy.api#documentation": "Assigned and unassigned management endpoints."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Namespace."
+      }
+    },
+    "com.azure.deviceregistry#NamespacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.deviceregistry#NamespacesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.deviceregistry#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
       }
     },
     "com.azure.deviceregistry#NamespacesCreateOrReplace": {
@@ -7714,16 +9846,80 @@
             "smithy.api#documentation": "The name of the namespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#NamespacesCreateOrReplaceRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#NamespacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.deviceregistry#NamespacesCreateOrReplaceRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#NamespacesCreateOrReplaceRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.deviceregistry#SystemAssignedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
+      }
+    },
+    "com.azure.deviceregistry#NamespacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "messaging": {
+          "target": "com.azure.deviceregistry#Messaging",
+          "traits": {
+            "smithy.api#documentation": "Assigned and unassigned messaging endpoints."
+          }
+        },
+        "management": {
+          "target": "com.azure.deviceregistry#Management",
+          "traits": {
+            "smithy.api#documentation": "Assigned and unassigned management endpoints."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The namespace properties model."
+      }
+    },
+    "com.azure.deviceregistry#NamespacesCreateOrReplaceRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#NamespacesGet": {
@@ -8764,16 +10960,213 @@
             "smithy.api#documentation": "Asset name parameter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#AssetsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#AssetUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#AssetUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enabled/Disabled status of the asset."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable description of the asset."
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer name."
+          }
+        },
+        "manufacturerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer URI."
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset model name."
+          }
+        },
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset product code."
+          }
+        },
+        "hardwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Revision number of the hardware."
+          }
+        },
+        "softwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Revision number of the software."
+          }
+        },
+        "documentationUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reference to the documentation."
+          }
+        },
+        "serialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset serial number."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.deviceregistry#AssetUpdatePropertiesAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+          }
+        },
+        "defaultDatasetsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultEventsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultTopic": {
+          "target": "com.azure.deviceregistry#TopicUpdate",
+          "traits": {
+            "smithy.api#documentation": "Object that describes the default topic information for the asset."
+          }
+        },
+        "datasets": {
+          "target": "com.azure.deviceregistry#AssetUpdatePropertiesDatasetsList",
+          "traits": {
+            "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset describes the data points that make up the set."
+          }
+        },
+        "events": {
+          "target": "com.azure.deviceregistry#AssetUpdatePropertiesEventsList",
+          "traits": {
+            "smithy.api#documentation": "Array of events that are part of the asset. Each event can have per-event configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Asset."
+      }
+    },
+    "com.azure.deviceregistry#AssetUpdatePropertiesEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#Event"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of events that are part of the asset. Each event can have per-event configuration."
+      }
+    },
+    "com.azure.deviceregistry#AssetUpdatePropertiesDatasetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#Dataset"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset describes the data points that make up the set."
+      }
+    },
+    "com.azure.deviceregistry#TopicUpdate": {
+      "type": "structure",
+      "members": {
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The topic path for messages published to an MQTT broker."
+          }
+        },
+        "retain": {
+          "target": "com.azure.deviceregistry#TopicUpdateRetain",
+          "traits": {
+            "smithy.api#documentation": "When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object that describes the topic information."
+      }
+    },
+    "com.azure.deviceregistry#TopicUpdateRetain": {
+      "type": "enum",
+      "members": {
+        "KEEP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Keep"
+          }
+        },
+        "NEVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Never"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'."
+      }
+    },
+    "com.azure.deviceregistry#AssetUpdatePropertiesAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+      }
+    },
+    "com.azure.deviceregistry#AssetsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#AssetsCreateOrReplace": {
@@ -8892,16 +11285,215 @@
             "smithy.api#documentation": "Asset name parameter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#AssetsCreateOrReplaceRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#AssetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.deviceregistry#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#AssetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enabled/Disabled status of the asset."
+          }
+        },
+        "externalAssetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset id provided by the customer."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable description of the asset."
+          }
+        },
+        "assetEndpointProfileRef": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.",
+            "smithy.api#required": {}
+          }
+        },
+        "manufacturer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer name."
+          }
+        },
+        "manufacturerUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset manufacturer URI."
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset model name."
+          }
+        },
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset product code."
+          }
+        },
+        "hardwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Revision number of the hardware."
+          }
+        },
+        "softwareRevision": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Revision number of the software."
+          }
+        },
+        "documentationUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reference to the documentation."
+          }
+        },
+        "serialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Asset serial number."
+          }
+        },
+        "attributes": {
+          "target": "com.azure.deviceregistry#AssetPropertiesInputAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+          }
+        },
+        "discoveredAssetRefs": {
+          "target": "com.azure.deviceregistry#AssetPropertiesInputDiscoveredAssetRefsList",
+          "traits": {
+            "smithy.api#documentation": "Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided."
+          }
+        },
+        "defaultDatasetsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultEventsConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here."
+          }
+        },
+        "defaultTopic": {
+          "target": "com.azure.deviceregistry#Topic",
+          "traits": {
+            "smithy.api#documentation": "Object that describes the default topic information for the asset."
+          }
+        },
+        "datasets": {
+          "target": "com.azure.deviceregistry#AssetPropertiesInputDatasetsList",
+          "traits": {
+            "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset describes the data points that make up the set."
+          }
+        },
+        "events": {
+          "target": "com.azure.deviceregistry#AssetPropertiesInputEventsList",
+          "traits": {
+            "smithy.api#documentation": "Array of events that are part of the asset. Each event can have per-event configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the asset properties."
+      }
+    },
+    "com.azure.deviceregistry#AssetPropertiesInputEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#Event"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of events that are part of the asset. Each event can have per-event configuration."
+      }
+    },
+    "com.azure.deviceregistry#AssetPropertiesInputDatasetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.deviceregistry#Dataset"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of datasets that are part of the asset. Each dataset describes the data points that make up the set."
+      }
+    },
+    "com.azure.deviceregistry#AssetPropertiesInputDiscoveredAssetRefsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided."
+      }
+    },
+    "com.azure.deviceregistry#AssetPropertiesInputAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A set of key-value pairs that contain custom attributes set by the customer."
+      }
+    },
+    "com.azure.deviceregistry#AssetsCreateOrReplaceRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#AssetsGet": {
@@ -9504,16 +12096,131 @@
             "smithy.api#documentation": "Asset Endpoint Profile name parameter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#AssetEndpointProfilesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#AssetEndpointProfileUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#AssetEndpointProfileUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "targetAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration."
+          }
+        },
+        "endpointProfileType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the configuration for the connector type that is being used with the endpoint profile."
+          }
+        },
+        "authentication": {
+          "target": "com.azure.deviceregistry#AuthenticationUpdate",
+          "traits": {
+            "smithy.api#documentation": "Defines the client authentication mechanism to the server."
+          }
+        },
+        "additionalConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the AssetEndpointProfile."
+      }
+    },
+    "com.azure.deviceregistry#AuthenticationUpdate": {
+      "type": "structure",
+      "members": {
+        "method": {
+          "target": "com.azure.deviceregistry#AuthenticationUpdateMethod",
+          "traits": {
+            "smithy.api#documentation": "Defines the method to authenticate the user of the client at the server."
+          }
+        },
+        "usernamePasswordCredentials": {
+          "target": "com.azure.deviceregistry#UsernamePasswordCredentialsUpdate",
+          "traits": {
+            "smithy.api#documentation": "Defines the username and password references when UsernamePassword user authentication mode is selected."
+          }
+        },
+        "x509Credentials": {
+          "target": "com.azure.deviceregistry#X509CredentialsUpdate",
+          "traits": {
+            "smithy.api#documentation": "Defines the certificate reference when Certificate user authentication mode is selected."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of the client authentication mechanism to the server."
+      }
+    },
+    "com.azure.deviceregistry#X509CredentialsUpdate": {
+      "type": "structure",
+      "members": {
+        "certificateSecretName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The x509 certificate for authentication mode Certificate."
+      }
+    },
+    "com.azure.deviceregistry#AuthenticationUpdateMethod": {
+      "type": "enum",
+      "members": {
+        "ANONYMOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Anonymous"
+          }
+        },
+        "CERTIFICATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Certificate"
+          }
+        },
+        "USERNAMEPASSWORD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UsernamePassword"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the method to authenticate the user of the client at the server."
+      }
+    },
+    "com.azure.deviceregistry#AssetEndpointProfilesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#AssetEndpointProfilesCreateOrReplace": {
@@ -9632,16 +12339,87 @@
             "smithy.api#documentation": "Asset Endpoint Profile name parameter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.deviceregistry#AssetEndpointProfilesCreateOrReplaceRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.deviceregistry#AssetEndpointProfilePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.deviceregistry#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.deviceregistry#AssetEndpointProfilePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "targetAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "endpointProfileType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the configuration for the connector type that is being used with the endpoint profile.",
+            "smithy.api#required": {}
+          }
+        },
+        "authentication": {
+          "target": "com.azure.deviceregistry#Authentication",
+          "traits": {
+            "smithy.api#documentation": "Defines the client authentication mechanism to the server."
+          }
+        },
+        "additionalConfiguration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF)."
+          }
+        },
+        "discoveredAssetEndpointProfileRef": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Reference to a discovered asset endpoint profile. Populated only if the asset endpoint profile has been created from discovery flow. Discovered asset endpoint profile name must be provided."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the Asset Endpoint Profile properties."
+      }
+    },
+    "com.azure.deviceregistry#AssetEndpointProfilesCreateOrReplaceRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.deviceregistry#AssetEndpointProfilesGet": {

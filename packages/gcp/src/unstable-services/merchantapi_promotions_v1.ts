@@ -78,7 +78,7 @@ export const GetAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsPromotionsRequest",
 }) as any as S.Schema<GetAccountsPromotionsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -100,8 +100,7 @@ export const Interval = /*@__PURE__*/ S.suspend(() =>
 export type AttributesProductApplicabilityEnum =
   | "PRODUCT_APPLICABILITY_UNSPECIFIED"
   | "ALL_PRODUCTS"
-  | "SPECIFIC_PRODUCTS"
-  | (string & {});
+  | "SPECIFIC_PRODUCTS";
 export const AttributesProductApplicabilityEnum = /*@__PURE__*/ S.String;
 
 /** The price represented as a number and currency. */
@@ -133,8 +132,7 @@ export type AttributesCouponValueTypeEnum =
   | "FREE_SHIPPING_OVERNIGHT"
   | "FREE_SHIPPING_TWO_DAY"
   | "MONEY_OFF_RANGE"
-  | "PERCENT_OFF_RANGE"
-  | (string & {});
+  | "PERCENT_OFF_RANGE";
 export const AttributesCouponValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type AttributesPromotionDestinationsItemEnum =
@@ -150,12 +148,11 @@ export type AttributesPromotionDestinationsItemEnum =
   | "FREE_VEHICLE_LISTINGS"
   | "VEHICLE_ADS"
   | "CLOUD_RETAIL"
-  | "LOCAL_CLOUD_RETAIL"
-  | (string & {});
+  | "LOCAL_CLOUD_RETAIL";
 export const AttributesPromotionDestinationsItemEnum = /*@__PURE__*/ S.String;
 
 export type AttributesPromotionDestinationsItemEnumList =
-  AttributesPromotionDestinationsItemEnum[];
+  ReadonlyArray<AttributesPromotionDestinationsItemEnum>;
 export const AttributesPromotionDestinationsItemEnumList =
   /*@__PURE__*/ S.Array(
     AttributesPromotionDestinationsItemEnum,
@@ -167,36 +164,31 @@ export type AttributesRedemptionRestrictionEnum =
   | "FIRST_ORDER"
   | "SIGNUP_FOR_EMAIL"
   | "SIGNUP_FOR_TEXT"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const AttributesRedemptionRestrictionEnum = /*@__PURE__*/ S.String;
 
 export type AttributesStoreApplicabilityEnum =
   | "STORE_APPLICABILITY_UNSPECIFIED"
   | "ALL_STORES"
-  | "SPECIFIC_STORES"
-  | (string & {});
+  | "SPECIFIC_STORES";
 export const AttributesStoreApplicabilityEnum = /*@__PURE__*/ S.String;
 
 export type AttributesOfferTypeEnum =
   | "OFFER_TYPE_UNSPECIFIED"
   | "NO_CODE"
-  | "GENERIC_CODE"
-  | (string & {});
+  | "GENERIC_CODE";
 export const AttributesOfferTypeEnum = /*@__PURE__*/ S.String;
 
 export type AttributesEventApplicabilityEnum =
   | "EVENT_APPLICABILITY_UNSPECIFIED"
   | "SITEWIDE"
-  | "SPECIFIC_CATEGORIES"
-  | (string & {});
+  | "SPECIFIC_CATEGORIES";
 export const AttributesEventApplicabilityEnum = /*@__PURE__*/ S.String;
 
 export type AttributesAudienceEnum =
   | "AUDIENCE_UNSPECIFIED"
   | "NEW_CUSTOMERS"
-  | "LOCATION"
-  | (string & {});
+  | "LOCATION";
 export const AttributesAudienceEnum = /*@__PURE__*/ S.String;
 
 /** Attributes. */
@@ -334,12 +326,11 @@ export const Attributes = /*@__PURE__*/ S.suspend(() =>
 export type PromotionRedemptionChannelItemEnum =
   | "REDEMPTION_CHANNEL_UNSPECIFIED"
   | "IN_STORE"
-  | "ONLINE"
-  | (string & {});
+  | "ONLINE";
 export const PromotionRedemptionChannelItemEnum = /*@__PURE__*/ S.String;
 
 export type PromotionRedemptionChannelItemEnumList =
-  PromotionRedemptionChannelItemEnum[];
+  ReadonlyArray<PromotionRedemptionChannelItemEnum>;
 export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
   PromotionRedemptionChannelItemEnum,
 ) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
@@ -363,7 +354,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = CustomAttribute[];
+export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -388,8 +379,7 @@ export type DestinationStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const DestinationStatusReportingContextEnum = /*@__PURE__*/ S.String;
 
 export type DestinationStatusStatusEnum =
@@ -399,8 +389,7 @@ export type DestinationStatusStatusEnum =
   | "LIVE"
   | "STOPPED"
   | "EXPIRED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const DestinationStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The status for the specified destination. */
@@ -419,7 +408,7 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationStatus",
 }) as any as S.Schema<DestinationStatus>;
 
-export type DestinationStatusList = DestinationStatus[];
+export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
 export const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
@@ -428,8 +417,7 @@ export type ItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DEMOTED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const ItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type ItemLevelIssueReportingContextEnum =
@@ -452,8 +440,7 @@ export type ItemLevelIssueReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const ItemLevelIssueReportingContextEnum = /*@__PURE__*/ S.String;
 
 /** The issue associated with the promotion. */
@@ -491,7 +478,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
-export type ItemLevelIssueList = ItemLevelIssue[];
+export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
 export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
@@ -617,7 +604,7 @@ export const ListAccountsPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsPromotionsRequest",
 }) as any as S.Schema<ListAccountsPromotionsRequest>;
 
-export type PromotionList = Promotion[];
+export type PromotionList = ReadonlyArray<Promotion>;
 export const PromotionList = /*@__PURE__*/ S.Array(
   Promotion,
 ) as any as S.Schema<PromotionList>;

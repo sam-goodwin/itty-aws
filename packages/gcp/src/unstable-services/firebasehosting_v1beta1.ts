@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -124,7 +124,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -196,11 +196,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type SiteTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "DEFAULT_SITE"
-  | "USER_SITE"
-  | (string & {});
+export type SiteTypeEnum = "TYPE_UNSPECIFIED" | "DEFAULT_SITE" | "USER_SITE";
 export const SiteTypeEnum = /*@__PURE__*/ S.String;
 
 /** A `Site` represents a Firebase Hosting site. */
@@ -271,8 +267,7 @@ export type ReleaseTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "DEPLOY"
   | "ROLLBACK"
-  | "SITE_DISABLE"
-  | (string & {});
+  | "SITE_DISABLE";
 export const ReleaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers. */
@@ -292,7 +287,7 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
 
-export type HeaderList = Header[];
+export type HeaderList = ReadonlyArray<Header>;
 export const HeaderList = /*@__PURE__*/ S.Array(
   Header,
 ) as any as S.Schema<HeaderList>;
@@ -345,7 +340,7 @@ export const Rewrite = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Rewrite" }) as any as S.Schema<Rewrite>;
 
-export type RewriteList = Rewrite[];
+export type RewriteList = ReadonlyArray<Rewrite>;
 export const RewriteList = /*@__PURE__*/ S.Array(
   Rewrite,
 ) as any as S.Schema<RewriteList>;
@@ -353,11 +348,10 @@ export const RewriteList = /*@__PURE__*/ S.Array(
 export type ServingConfigTrailingSlashBehaviorEnum =
   | "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED"
   | "ADD"
-  | "REMOVE"
-  | (string & {});
+  | "REMOVE";
 export const ServingConfigTrailingSlashBehaviorEnum = /*@__PURE__*/ S.String;
 
-export type ServingConfigAppAssociationEnum = "AUTO" | "NONE" | (string & {});
+export type ServingConfigAppAssociationEnum = "AUTO" | "NONE";
 export const ServingConfigAppAssociationEnum = /*@__PURE__*/ S.String;
 
 /** If provided, i18n rewrites are enabled. */
@@ -391,7 +385,7 @@ export const Redirect = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Redirect" }) as any as S.Schema<Redirect>;
 
-export type RedirectList = Redirect[];
+export type RedirectList = ReadonlyArray<Redirect>;
 export const RedirectList = /*@__PURE__*/ S.Array(
   Redirect,
 ) as any as S.Schema<RedirectList>;
@@ -432,8 +426,7 @@ export type VersionStatusEnum =
   | "DELETED"
   | "ABANDONED"
   | "EXPIRED"
-  | "CLONING"
-  | (string & {});
+  | "CLONING";
 export const VersionStatusEnum = /*@__PURE__*/ S.String;
 
 /** A `Version` is a configuration and a collection of static files which determine how a site is displayed. */
@@ -590,7 +583,7 @@ export const CreateProjectsSitesChannelsReleasesRequest =
     identifier: "CreateProjectsSitesChannelsReleasesRequest",
   }) as any as S.Schema<CreateProjectsSitesChannelsReleasesRequest>;
 
-export type StatusList = Status[];
+export type StatusList = ReadonlyArray<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -600,8 +593,7 @@ export type CertificateTypeEnum =
   | "TEMPORARY"
   | "GROUPED"
   | "PROJECT_GROUPED"
-  | "DEDICATED"
-  | (string & {});
+  | "DEDICATED";
 export const CertificateTypeEnum = /*@__PURE__*/ S.String;
 
 /** A file you can add to your existing, non-Hosting hosting service that confirms your intent to allow Hosting's Certificate Authorities to create an SSL certificate for your domain. */
@@ -633,15 +625,10 @@ export type DnsRecordTypeEnum =
   | "CNAME"
   | "TXT"
   | "AAAA"
-  | "CAA"
-  | (string & {});
+  | "CAA";
 export const DnsRecordTypeEnum = /*@__PURE__*/ S.String;
 
-export type DnsRecordRequiredActionEnum =
-  | "NONE"
-  | "ADD"
-  | "REMOVE"
-  | (string & {});
+export type DnsRecordRequiredActionEnum = "NONE" | "ADD" | "REMOVE";
 export const DnsRecordRequiredActionEnum = /*@__PURE__*/ S.String;
 
 /** DNS records are resource records that define how systems and services should behave when handling requests for a domain name. For example, when you add `A` records to your domain name's DNS records, you're informing other systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your domain name (such as your Hosting site files). */
@@ -664,7 +651,7 @@ export const DnsRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsRecord" }) as any as S.Schema<DnsRecord>;
 
-export type DnsRecordList = DnsRecord[];
+export type DnsRecordList = ReadonlyArray<DnsRecord>;
 export const DnsRecordList = /*@__PURE__*/ S.Array(
   DnsRecord,
 ) as any as S.Schema<DnsRecordList>;
@@ -686,7 +673,7 @@ export const DnsRecordSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsRecordSet" }) as any as S.Schema<DnsRecordSet>;
 
-export type DnsRecordSetList = DnsRecordSet[];
+export type DnsRecordSetList = ReadonlyArray<DnsRecordSet>;
 export const DnsRecordSetList = /*@__PURE__*/ S.Array(
   DnsRecordSet,
 ) as any as S.Schema<DnsRecordSetList>;
@@ -731,8 +718,7 @@ export type CertificateStateEnum =
   | "CERT_PROPAGATING"
   | "CERT_ACTIVE"
   | "CERT_EXPIRING_SOON"
-  | "CERT_EXPIRED"
-  | (string & {});
+  | "CERT_EXPIRED";
 export const CertificateStateEnum = /*@__PURE__*/ S.String;
 
 /** An SSL certificate used to provide end-to-end encryption for requests against your domain name. A `Certificate` can be an actual SSL certificate or, for newly-created custom domains, Hosting's intent to create one. */
@@ -766,8 +752,7 @@ export type CustomDomainCertPreferenceEnum =
   | "TEMPORARY"
   | "GROUPED"
   | "PROJECT_GROUPED"
-  | "DEDICATED"
-  | (string & {});
+  | "DEDICATED";
 export const CustomDomainCertPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type CustomDomainHostStateEnum =
@@ -776,8 +761,7 @@ export type CustomDomainHostStateEnum =
   | "HOST_UNREACHABLE"
   | "HOST_MISMATCH"
   | "HOST_CONFLICT"
-  | "HOST_ACTIVE"
-  | (string & {});
+  | "HOST_ACTIVE";
 export const CustomDomainHostStateEnum = /*@__PURE__*/ S.String;
 
 export type CustomDomainOwnershipStateEnum =
@@ -787,8 +771,7 @@ export type CustomDomainOwnershipStateEnum =
   | "OWNERSHIP_MISMATCH"
   | "OWNERSHIP_CONFLICT"
   | "OWNERSHIP_PENDING"
-  | "OWNERSHIP_ACTIVE"
-  | (string & {});
+  | "OWNERSHIP_ACTIVE";
 export const CustomDomainOwnershipStateEnum = /*@__PURE__*/ S.String;
 
 /** A `CustomDomain` is an entity that links a domain name to a Firebase Hosting site. Add a `CustomDomain` to your site to allow Hosting to serve the site's content in response to requests against your domain name. */
@@ -877,8 +860,7 @@ export const CreateProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(
 
 export type DomainRedirectTypeEnum =
   | "REDIRECT_TYPE_UNSPECIFIED"
-  | "MOVED_PERMANENTLY"
-  | (string & {});
+  | "MOVED_PERMANENTLY";
 export const DomainRedirectTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration. */
@@ -902,8 +884,7 @@ export type DomainProvisioningCertStatusEnum =
   | "CERT_PROCESSING"
   | "CERT_PROPAGATING"
   | "CERT_ACTIVE"
-  | "CERT_ERROR"
-  | (string & {});
+  | "CERT_ERROR";
 export const DomainProvisioningCertStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a DNS certificate challenge. */
@@ -944,8 +925,7 @@ export type DomainProvisioningDnsStatusEnum =
   | "DNS_MISSING"
   | "DNS_PARTIAL_MATCH"
   | "DNS_MATCH"
-  | "DNS_EXTRANEOUS_MATCH"
-  | (string & {});
+  | "DNS_EXTRANEOUS_MATCH";
 export const DomainProvisioningDnsStatusEnum = /*@__PURE__*/ S.String;
 
 /** The current certificate provisioning status information for a domain. */
@@ -987,8 +967,7 @@ export type DomainStatusEnum =
   | "DOMAIN_CHANGE_PENDING"
   | "DOMAIN_ACTIVE"
   | "DOMAIN_VERIFICATION_REQUIRED"
-  | "DOMAIN_VERIFICATION_LOST"
-  | (string & {});
+  | "DOMAIN_VERIFICATION_LOST";
 export const DomainStatusEnum = /*@__PURE__*/ S.String;
 
 /** The intended behavior and status information of a domain. */
@@ -1698,7 +1677,7 @@ export const ListProjectsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSitesRequest",
 }) as any as S.Schema<ListProjectsSitesRequest>;
 
-export type SiteList = Site[];
+export type SiteList = ReadonlyArray<Site>;
 export const SiteList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteList>;
@@ -1742,7 +1721,7 @@ export const ListProjectsSitesChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSitesChannelsRequest",
 }) as any as S.Schema<ListProjectsSitesChannelsRequest>;
 
-export type ChannelList = Channel[];
+export type ChannelList = ReadonlyArray<Channel>;
 export const ChannelList = /*@__PURE__*/ S.Array(
   Channel,
 ) as any as S.Schema<ChannelList>;
@@ -1787,7 +1766,7 @@ export const ListProjectsSitesChannelsReleasesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsSitesChannelsReleasesRequest",
 }) as any as S.Schema<ListProjectsSitesChannelsReleasesRequest>;
 
-export type ReleaseList = Release[];
+export type ReleaseList = ReadonlyArray<Release>;
 export const ReleaseList = /*@__PURE__*/ S.Array(
   Release,
 ) as any as S.Schema<ReleaseList>;
@@ -1835,7 +1814,7 @@ export const ListProjectsSitesCustomDomainsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsSitesCustomDomainsRequest",
 }) as any as S.Schema<ListProjectsSitesCustomDomainsRequest>;
 
-export type CustomDomainList = CustomDomain[];
+export type CustomDomainList = ReadonlyArray<CustomDomain>;
 export const CustomDomainList = /*@__PURE__*/ S.Array(
   CustomDomain,
 ) as any as S.Schema<CustomDomainList>;
@@ -1887,7 +1866,7 @@ export const ListProjectsSitesCustomDomainsOperationsRequest =
     identifier: "ListProjectsSitesCustomDomainsOperationsRequest",
   }) as any as S.Schema<ListProjectsSitesCustomDomainsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1935,7 +1914,7 @@ export const ListProjectsSitesDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSitesDomainsRequest",
 }) as any as S.Schema<ListProjectsSitesDomainsRequest>;
 
-export type DomainList = Domain[];
+export type DomainList = ReadonlyArray<Domain>;
 export const DomainList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainList>;
@@ -2007,7 +1986,7 @@ export const ListProjectsSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsSitesVersionsRequest",
 }) as any as S.Schema<ListProjectsSitesVersionsRequest>;
 
-export type VersionList = Version[];
+export type VersionList = ReadonlyArray<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -2030,8 +2009,7 @@ export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsSitesVersionsFilesStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "EXPECTED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const ListProjectsSitesVersionsFilesStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsSitesVersionsFilesRequest {
@@ -2067,8 +2045,7 @@ export const ListProjectsSitesVersionsFilesRequest = /*@__PURE__*/ S.suspend(
 export type VersionFileStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "EXPECTED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const VersionFileStatusEnum = /*@__PURE__*/ S.String;
 
 /** A static content file that is part of a version. */
@@ -2088,7 +2065,7 @@ export const VersionFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VersionFile" }) as any as S.Schema<VersionFile>;
 
-export type VersionFileList = VersionFile[];
+export type VersionFileList = ReadonlyArray<VersionFile>;
 export const VersionFileList = /*@__PURE__*/ S.Array(
   VersionFile,
 ) as any as S.Schema<VersionFileList>;
@@ -2234,8 +2211,7 @@ export const ListSitesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListSitesVersionsFilesStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "EXPECTED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const ListSitesVersionsFilesStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ListSitesVersionsFilesRequest {

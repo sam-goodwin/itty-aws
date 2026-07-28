@@ -122,8 +122,7 @@ export const CheckEnablementStatusCustomersEnterpriseSecurityInsightsRequest =
 export type GoogleChromeManagementVersionsV1CheckEnablementStatusResponseInsightsStateEnum =
     | "INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED"
     | "INSIGHTS_ENABLED"
-    | "INSIGHTS_DISABLED"
-    | (string & {});
+    | "INSIGHTS_DISABLED";
 export const GoogleChromeManagementVersionsV1CheckEnablementStatusResponseInsightsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -301,7 +300,7 @@ export const GoogleChromeManagementV1ChromeAppRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1ChromeAppRequest>;
 
 export type GoogleChromeManagementV1ChromeAppRequestList =
-  GoogleChromeManagementV1ChromeAppRequest[];
+  ReadonlyArray<GoogleChromeManagementV1ChromeAppRequest>;
 export const GoogleChromeManagementV1ChromeAppRequestList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1ChromeAppRequest,
@@ -437,7 +436,7 @@ export const GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCou
   }) as any as S.Schema<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>;
 
 export type GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCountList =
-  GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount[];
+  ReadonlyArray<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>;
 export const GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCountList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount,
@@ -501,8 +500,7 @@ export type GoogleChromeManagementV1DeviceAueCountReportAueMonthEnum =
   | "SEPTEMBER"
   | "OCTOBER"
   | "NOVEMBER"
-  | "DECEMBER"
-  | (string & {});
+  | "DECEMBER";
 export const GoogleChromeManagementV1DeviceAueCountReportAueMonthEnum =
   /*@__PURE__*/ S.String;
 
@@ -535,7 +533,7 @@ export const GoogleChromeManagementV1DeviceAueCountReport =
   }) as any as S.Schema<GoogleChromeManagementV1DeviceAueCountReport>;
 
 export type GoogleChromeManagementV1DeviceAueCountReportList =
-  GoogleChromeManagementV1DeviceAueCountReport[];
+  ReadonlyArray<GoogleChromeManagementV1DeviceAueCountReport>;
 export const GoogleChromeManagementV1DeviceAueCountReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1DeviceAueCountReport,
@@ -653,7 +651,7 @@ export const GoogleChromeManagementV1DeviceHardwareCountReport =
   }) as any as S.Schema<GoogleChromeManagementV1DeviceHardwareCountReport>;
 
 export type GoogleChromeManagementV1DeviceHardwareCountReportList =
-  GoogleChromeManagementV1DeviceHardwareCountReport[];
+  ReadonlyArray<GoogleChromeManagementV1DeviceHardwareCountReport>;
 export const GoogleChromeManagementV1DeviceHardwareCountReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1DeviceHardwareCountReport,
@@ -727,8 +725,7 @@ export type GoogleChromeManagementV1BrowserVersionChannelEnum =
   | "CANARY"
   | "DEV"
   | "BETA"
-  | "STABLE"
-  | (string & {});
+  | "STABLE";
 export const GoogleChromeManagementV1BrowserVersionChannelEnum =
   /*@__PURE__*/ S.String;
 
@@ -740,8 +737,7 @@ export type GoogleChromeManagementV1BrowserVersionSystemEnum =
   | "SYSTEM_CROS"
   | "SYSTEM_WINDOWS"
   | "SYSTEM_MAC"
-  | "SYSTEM_LINUX"
-  | (string & {});
+  | "SYSTEM_LINUX";
 export const GoogleChromeManagementV1BrowserVersionSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -772,7 +768,7 @@ export const GoogleChromeManagementV1BrowserVersion = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1BrowserVersion>;
 
 export type GoogleChromeManagementV1BrowserVersionList =
-  GoogleChromeManagementV1BrowserVersion[];
+  ReadonlyArray<GoogleChromeManagementV1BrowserVersion>;
 export const GoogleChromeManagementV1BrowserVersionList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1BrowserVersion,
 ) as any as S.Schema<GoogleChromeManagementV1BrowserVersionList>;
@@ -998,8 +994,7 @@ export const CountInstalledAppsCustomersReportsRequest =
 export type GoogleChromeManagementV1InstalledAppAppSourceEnum =
   | "APP_SOURCE_UNSPECIFIED"
   | "CHROME_WEBSTORE"
-  | "PLAY_STORE"
-  | (string & {});
+  | "PLAY_STORE";
 export const GoogleChromeManagementV1InstalledAppAppSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1009,12 +1004,11 @@ export type GoogleChromeManagementV1InstalledAppAppTypeEnum =
   | "APP"
   | "THEME"
   | "HOSTED_APP"
-  | "ANDROID_APP"
-  | (string & {});
+  | "ANDROID_APP";
 export const GoogleChromeManagementV1InstalledAppAppTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -1026,8 +1020,7 @@ export type GoogleChromeManagementV1InstalledAppAppInstallTypeEnum =
   | "ADMIN"
   | "DEVELOPMENT"
   | "SIDELOAD"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const GoogleChromeManagementV1InstalledAppAppInstallTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1036,8 +1029,7 @@ export type GoogleChromeManagementV1RiskAssessmentEntryProviderEnum =
   | "RISK_ASSESSMENT_PROVIDER_CRXCAVATOR"
   | "RISK_ASSESSMENT_PROVIDER_SPIN_AI"
   | "RISK_ASSESSMENT_PROVIDER_LAYERX"
-  | "RISK_ASSESSMENT_PROVIDER_SPIN_AI_V2"
-  | (string & {});
+  | "RISK_ASSESSMENT_PROVIDER_SPIN_AI_V2";
 export const GoogleChromeManagementV1RiskAssessmentEntryProviderEnum =
   /*@__PURE__*/ S.String;
 
@@ -1045,8 +1037,7 @@ export type GoogleChromeManagementV1RiskAssessmentEntryRiskLevelEnum =
   | "RISK_LEVEL_UNSPECIFIED"
   | "RISK_LEVEL_LOW"
   | "RISK_LEVEL_MEDIUM"
-  | "RISK_LEVEL_HIGH"
-  | (string & {});
+  | "RISK_LEVEL_HIGH";
 export const GoogleChromeManagementV1RiskAssessmentEntryRiskLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1095,7 +1086,7 @@ export const GoogleChromeManagementV1RiskAssessmentEntry =
   }) as any as S.Schema<GoogleChromeManagementV1RiskAssessmentEntry>;
 
 export type GoogleChromeManagementV1RiskAssessmentEntryList =
-  GoogleChromeManagementV1RiskAssessmentEntry[];
+  ReadonlyArray<GoogleChromeManagementV1RiskAssessmentEntry>;
 export const GoogleChromeManagementV1RiskAssessmentEntryList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1RiskAssessmentEntry,
@@ -1105,8 +1096,7 @@ export type GoogleChromeManagementV1RiskAssessmentDataOverallRiskLevelEnum =
   | "RISK_LEVEL_UNSPECIFIED"
   | "RISK_LEVEL_LOW"
   | "RISK_LEVEL_MEDIUM"
-  | "RISK_LEVEL_HIGH"
-  | (string & {});
+  | "RISK_LEVEL_HIGH";
 export const GoogleChromeManagementV1RiskAssessmentDataOverallRiskLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1182,7 +1172,7 @@ export const GoogleChromeManagementV1InstalledApp = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1InstalledApp>;
 
 export type GoogleChromeManagementV1InstalledAppList =
-  GoogleChromeManagementV1InstalledApp[];
+  ReadonlyArray<GoogleChromeManagementV1InstalledApp>;
 export const GoogleChromeManagementV1InstalledAppList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1InstalledApp,
 ) as any as S.Schema<GoogleChromeManagementV1InstalledAppList>;
@@ -1271,7 +1261,7 @@ export const GoogleChromeManagementV1PrinterReport = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1PrinterReport>;
 
 export type GoogleChromeManagementV1PrinterReportList =
-  GoogleChromeManagementV1PrinterReport[];
+  ReadonlyArray<GoogleChromeManagementV1PrinterReport>;
 export const GoogleChromeManagementV1PrinterReportList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1PrinterReport,
 ) as any as S.Schema<GoogleChromeManagementV1PrinterReportList>;
@@ -1357,7 +1347,7 @@ export const GoogleChromeManagementV1UserPrintReport = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1UserPrintReport>;
 
 export type GoogleChromeManagementV1UserPrintReportList =
-  GoogleChromeManagementV1UserPrintReport[];
+  ReadonlyArray<GoogleChromeManagementV1UserPrintReport>;
 export const GoogleChromeManagementV1UserPrintReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1UserPrintReport,
@@ -1391,16 +1381,14 @@ export type GoogleChromeManagementVersionsV1ConnectorConfigTypeEnum =
   | "IDENTITY_BASED_ENROLLMENT"
   | "CERTIFICATE_AUTHORITY"
   | "ROOT_STORE"
-  | "CONTENT_ANALYSIS"
-  | (string & {});
+  | "CONTENT_ANALYSIS";
 export const GoogleChromeManagementVersionsV1ConnectorConfigTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ConnectorConfigStatusStateEnum =
   | "CONFIG_STATE_UNKNOWN"
   | "ENABLED"
-  | "DISABLED_BY_FAILURES"
-  | (string & {});
+  | "DISABLED_BY_FAILURES";
 export const GoogleChromeManagementVersionsV1ConnectorConfigStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1440,13 +1428,12 @@ export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEvent
     | "SENSITIVE_DATA_TRANSFER_EVENT"
     | "SUSPICIOUS_URL_EVENT"
     | "UNSAFE_SITE_VISIT_EVENT"
-    | "URL_FILTERING_INTERSTITIAL_EVENT"
-    | (string & {});
+    | "URL_FILTERING_INTERSTITIAL_EVENT";
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnumList =
-  GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum>;
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingSettingsEnabledDefaultEventsItemEnum,
@@ -1458,13 +1445,12 @@ export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsI
     | "LOGIN_EVENT"
     | "PASSWORD_BREACH_EVENT"
     | "URL_NAVIGATION_EVENT"
-    | "EXTENSION_TELEMETRY_EVENT"
-    | (string & {});
+    | "EXTENSION_TELEMETRY_EVENT";
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList =
-  GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum>;
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingSettingsEnabledOptInEventsItemEnum,
@@ -1476,13 +1462,12 @@ export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEvents
     | "ADD_REMOVE_USER_EVENT"
     | "LOGIN_LOGOUT_EVENT"
     | "CRD_EVENT"
-    | "PERIPHERAL_EVENT"
-    | (string & {});
+    | "PERIPHERAL_EVENT";
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnumList =
-  GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum>;
 export const GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingSettingsEnabledDeviceEventsItemEnum,
@@ -1540,8 +1525,7 @@ export type GoogleChromeManagementVersionsV1DeviceTrustConfigScopeEnum =
   | "BROWSER_ENFORCEMENT_SCOPE_UNSPECIFIED"
   | "BROWSERS_ONLY"
   | "PROFILES_ONLY"
-  | "BROWSERS_AND_PROFILES"
-  | (string & {});
+  | "BROWSERS_AND_PROFILES";
 export const GoogleChromeManagementVersionsV1DeviceTrustConfigScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1554,8 +1538,7 @@ export type GoogleChromeManagementVersionsV1DeviceTrustConfigServiceProviderEnum
     | "DUO"
     | "ZSCALER"
     | "OMNISSA"
-    | "JUMPCLOUD"
-    | (string & {});
+    | "JUMPCLOUD";
 export const GoogleChromeManagementVersionsV1DeviceTrustConfigServiceProviderEnum =
   /*@__PURE__*/ S.String;
 
@@ -1890,11 +1873,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DocumentMap>;
 
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResultResultTypeEnum =
-    | "COMMAND_RESULT_TYPE_UNSPECIFIED"
-    | "IGNORED"
-    | "FAILURE"
-    | "SUCCESS"
-    | (string & {});
+  "COMMAND_RESULT_TYPE_UNSPECIFIED" | "IGNORED" | "FAILURE" | "SUCCESS";
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResultResultTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1922,11 +1901,7 @@ export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandR
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult>;
 
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandStateEnum =
-    | "COMMAND_STATE_UNSPECIFIED"
-    | "PENDING"
-    | "EXPIRED"
-    | "EXECUTED_BY_CLIENT"
-    | (string & {});
+  "COMMAND_STATE_UNSPECIFIED" | "PENDING" | "EXPIRED" | "EXECUTED_BY_CLIENT";
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2007,13 +1982,12 @@ export type GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesIt
     | "APP_LAUNCHED"
     | "OS_CRASH"
     | "EXTERNAL_DISPLAY_CONNECTED"
-    | "EXTERNAL_DISPLAY_DISCONNECTED"
-    | (string & {});
+    | "EXTERNAL_DISPLAY_DISCONNECTED";
 export const GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList =
-  GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum[];
+  ReadonlyArray<GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum>;
 export const GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TelemetryEventNotificationFilterEventTypesItemEnum,
@@ -2220,8 +2194,7 @@ export const DisableCustomersEnterpriseSecurityInsightsRequest =
 export type GoogleChromeManagementVersionsV1DisableInsightsResponseInsightsStateEnum =
     | "INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED"
     | "INSIGHTS_ENABLED"
-    | "INSIGHTS_DISABLED"
-    | (string & {});
+    | "INSIGHTS_DISABLED";
 export const GoogleChromeManagementVersionsV1DisableInsightsResponseInsightsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2284,8 +2257,7 @@ export const EnableCustomersEnterpriseSecurityInsightsRequest =
 export type GoogleChromeManagementVersionsV1EnableInsightsResponseInsightsStateEnum =
     | "INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED"
     | "INSIGHTS_ENABLED"
-    | "INSIGHTS_DISABLED"
-    | (string & {});
+    | "INSIGHTS_DISABLED";
 export const GoogleChromeManagementVersionsV1EnableInsightsResponseInsightsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2343,15 +2315,13 @@ export type GoogleChromeManagementV1PrintJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "PRINTED"
   | "CANCELLED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const GoogleChromeManagementV1PrintJobStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementV1PrintJobColorModeEnum =
   | "COLOR_MODE_UNSPECIFIED"
   | "BLACK_AND_WHITE"
-  | "COLOR"
-  | (string & {});
+  | "COLOR";
 export const GoogleChromeManagementV1PrintJobColorModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2359,8 +2329,7 @@ export type GoogleChromeManagementV1PrintJobDuplexModeEnum =
   | "DUPLEX_MODE_UNSPECIFIED"
   | "ONE_SIDED"
   | "TWO_SIDED_LONG_EDGE"
-  | "TWO_SIDED_SHORT_EDGE"
-  | (string & {});
+  | "TWO_SIDED_SHORT_EDGE";
 export const GoogleChromeManagementV1PrintJobDuplexModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2414,7 +2383,7 @@ export const GoogleChromeManagementV1PrintJob = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1PrintJob>;
 
 export type GoogleChromeManagementV1PrintJobList =
-  GoogleChromeManagementV1PrintJob[];
+  ReadonlyArray<GoogleChromeManagementV1PrintJob>;
 export const GoogleChromeManagementV1PrintJobList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1PrintJob,
 ) as any as S.Schema<GoogleChromeManagementV1PrintJobList>;
@@ -2488,7 +2457,7 @@ export const GoogleChromeManagementV1DeviceRequestingExtensionDetails =
   }) as any as S.Schema<GoogleChromeManagementV1DeviceRequestingExtensionDetails>;
 
 export type GoogleChromeManagementV1DeviceRequestingExtensionDetailsList =
-  GoogleChromeManagementV1DeviceRequestingExtensionDetails[];
+  ReadonlyArray<GoogleChromeManagementV1DeviceRequestingExtensionDetails>;
 export const GoogleChromeManagementV1DeviceRequestingExtensionDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1DeviceRequestingExtensionDetails,
@@ -2566,7 +2535,7 @@ export const GoogleChromeManagementV1UserRequestingExtensionDetails =
   }) as any as S.Schema<GoogleChromeManagementV1UserRequestingExtensionDetails>;
 
 export type GoogleChromeManagementV1UserRequestingExtensionDetailsList =
-  GoogleChromeManagementV1UserRequestingExtensionDetails[];
+  ReadonlyArray<GoogleChromeManagementV1UserRequestingExtensionDetails>;
 export const GoogleChromeManagementV1UserRequestingExtensionDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1UserRequestingExtensionDetails,
@@ -2600,8 +2569,7 @@ export type FindInstalledAppDevicesCustomersReportsAppTypeEnum =
   | "APP"
   | "THEME"
   | "HOSTED_APP"
-  | "ANDROID_APP"
-  | (string & {});
+  | "ANDROID_APP";
 export const FindInstalledAppDevicesCustomersReportsAppTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2664,7 +2632,7 @@ export const GoogleChromeManagementV1Device = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1Device>;
 
 export type GoogleChromeManagementV1DeviceList =
-  GoogleChromeManagementV1Device[];
+  ReadonlyArray<GoogleChromeManagementV1Device>;
 export const GoogleChromeManagementV1DeviceList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1Device,
 ) as any as S.Schema<GoogleChromeManagementV1DeviceList>;
@@ -2695,8 +2663,7 @@ export type FindInstalledAppProfilesCustomersReportsAppTypeEnum =
   | "APP"
   | "THEME"
   | "HOSTED_APP"
-  | "ANDROID_APP"
-  | (string & {});
+  | "ANDROID_APP";
 export const FindInstalledAppProfilesCustomersReportsAppTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2766,7 +2733,7 @@ export const GoogleChromeManagementV1ProfileAppInstallInstance =
   }) as any as S.Schema<GoogleChromeManagementV1ProfileAppInstallInstance>;
 
 export type GoogleChromeManagementV1ProfileAppInstallInstanceList =
-  GoogleChromeManagementV1ProfileAppInstallInstance[];
+  ReadonlyArray<GoogleChromeManagementV1ProfileAppInstallInstance>;
 export const GoogleChromeManagementV1ProfileAppInstallInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1ProfileAppInstallInstance,
@@ -2833,7 +2800,7 @@ export const GoogleChromeManagementV1ChromeAppPermission =
   }) as any as S.Schema<GoogleChromeManagementV1ChromeAppPermission>;
 
 export type GoogleChromeManagementV1ChromeAppPermissionList =
-  GoogleChromeManagementV1ChromeAppPermission[];
+  ReadonlyArray<GoogleChromeManagementV1ChromeAppPermission>;
 export const GoogleChromeManagementV1ChromeAppPermissionList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1ChromeAppPermission,
@@ -2854,7 +2821,7 @@ export const GoogleChromeManagementV1ChromeAppSiteAccess =
   }) as any as S.Schema<GoogleChromeManagementV1ChromeAppSiteAccess>;
 
 export type GoogleChromeManagementV1ChromeAppSiteAccessList =
-  GoogleChromeManagementV1ChromeAppSiteAccess[];
+  ReadonlyArray<GoogleChromeManagementV1ChromeAppSiteAccess>;
 export const GoogleChromeManagementV1ChromeAppSiteAccessList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1ChromeAppSiteAccess,
@@ -2863,8 +2830,7 @@ export const GoogleChromeManagementV1ChromeAppSiteAccessList =
 export type GoogleChromeManagementV1ChromeAppInfoTypeEnum =
   | "ITEM_TYPE_UNSPECIFIED"
   | "EXTENSION"
-  | "OTHERS"
-  | (string & {});
+  | "OTHERS";
 export const GoogleChromeManagementV1ChromeAppInfoTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2919,12 +2885,11 @@ export type GoogleChromeManagementV1AppDetailsTypeEnum =
   | "APP_ITEM_TYPE_UNSPECIFIED"
   | "CHROME"
   | "ANDROID"
-  | "WEB"
-  | (string & {});
+  | "WEB";
 export const GoogleChromeManagementV1AppDetailsTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2963,7 +2928,7 @@ export const GoogleChromeManagementV1AndroidAppPermission =
   }) as any as S.Schema<GoogleChromeManagementV1AndroidAppPermission>;
 
 export type GoogleChromeManagementV1AndroidAppPermissionList =
-  GoogleChromeManagementV1AndroidAppPermission[];
+  ReadonlyArray<GoogleChromeManagementV1AndroidAppPermission>;
 export const GoogleChromeManagementV1AndroidAppPermissionList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1AndroidAppPermission,
@@ -3178,13 +3143,12 @@ export const GoogleChromeManagementVersionsV1GenericCaConnection =
 export type GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum =
   | "KEY_USAGE_UNSPECIFIED"
   | "KEY_USAGE_SIGNING"
-  | "KEY_USAGE_KEY_ENCIPHERMENT"
-  | (string & {});
+  | "KEY_USAGE_KEY_ENCIPHERMENT";
 export const GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList =
-  GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum>;
 export const GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ScepProfileKeyUsagesItemEnum,
@@ -3195,8 +3159,7 @@ export type GoogleChromeManagementVersionsV1SubjectAltNameTypeEnum =
   | "RFC822_NAME"
   | "DNS_NAME"
   | "OTHER_NAME_USER_PRINCIPAL_NAME"
-  | "UNIFORM_RESOURCE_IDENTIFIER"
-  | (string & {});
+  | "UNIFORM_RESOURCE_IDENTIFIER";
 export const GoogleChromeManagementVersionsV1SubjectAltNameTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3218,7 +3181,7 @@ export const GoogleChromeManagementVersionsV1SubjectAltName =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1SubjectAltName>;
 
 export type GoogleChromeManagementVersionsV1SubjectAltNameList =
-  GoogleChromeManagementVersionsV1SubjectAltName[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1SubjectAltName>;
 export const GoogleChromeManagementVersionsV1SubjectAltNameList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1SubjectAltName,
@@ -3283,8 +3246,7 @@ export const GoogleChromeManagementVersionsV1GenericProfile =
 export type GoogleChromeManagementVersionsV1CertificateProvisioningProcessSignatureAlgorithmEnum =
     | "SIGNATURE_ALGORITHM_UNSPECIFIED"
     | "SIGNATURE_ALGORITHM_RSA_PKCS1_V1_5_SHA256"
-    | "SIGNATURE_ALGORITHM_ECDSA_SHA256"
-    | (string & {});
+    | "SIGNATURE_ALGORITHM_ECDSA_SHA256";
 export const GoogleChromeManagementVersionsV1CertificateProvisioningProcessSignatureAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -3439,8 +3401,7 @@ export const GetCustomersProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleChromeManagementVersionsV1DeviceInfoDeviceTypeEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
-  | "CHROME_BROWSER"
-  | (string & {});
+  | "CHROME_BROWSER";
 export const GoogleChromeManagementVersionsV1DeviceInfoDeviceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3476,18 +3437,12 @@ export type GoogleChromeManagementVersionsV1ReportingDataExtensionDataInstallati
     | "ADMIN"
     | "DEVELOPMENT"
     | "SIDELOAD"
-    | "OTHER"
-    | (string & {});
+    | "OTHER";
 export const GoogleChromeManagementVersionsV1ReportingDataExtensionDataInstallationTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1ReportingDataExtensionDataExtensionTypeEnum =
-    | "EXTENSION_TYPE_UNSPECIFIED"
-    | "EXTENSION"
-    | "APP"
-    | "THEME"
-    | "HOSTED_APP"
-    | (string & {});
+  "EXTENSION_TYPE_UNSPECIFIED" | "EXTENSION" | "APP" | "THEME" | "HOSTED_APP";
 export const GoogleChromeManagementVersionsV1ReportingDataExtensionDataExtensionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3540,7 +3495,7 @@ export const GoogleChromeManagementVersionsV1ReportingDataExtensionData =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionData>;
 
 export type GoogleChromeManagementVersionsV1ReportingDataExtensionDataList =
-  GoogleChromeManagementVersionsV1ReportingDataExtensionData[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataExtensionData>;
 export const GoogleChromeManagementVersionsV1ReportingDataExtensionDataList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingDataExtensionData,
@@ -3552,8 +3507,7 @@ export type GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataSo
     | "USER_PLATFORM"
     | "MACHINE_LEVEL_USER_CLOUD"
     | "USER_CLOUD"
-    | "MACHINE_MERGED"
-    | (string & {});
+    | "MACHINE_MERGED";
 export const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3575,7 +3529,7 @@ export const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData 
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData>;
 
 export type GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataList =
-  GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData>;
 export const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyDataList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData,
@@ -3587,8 +3541,7 @@ export type GoogleChromeManagementVersionsV1ReportingDataPolicyDataSourceEnum =
   | "USER_PLATFORM"
   | "MACHINE_LEVEL_USER_CLOUD"
   | "USER_CLOUD"
-  | "MACHINE_MERGED"
-  | (string & {});
+  | "MACHINE_MERGED";
 export const GoogleChromeManagementVersionsV1ReportingDataPolicyDataSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3623,7 +3576,7 @@ export const GoogleChromeManagementVersionsV1ReportingDataPolicyData =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
 
 export type GoogleChromeManagementVersionsV1ReportingDataPolicyDataList =
-  GoogleChromeManagementVersionsV1ReportingDataPolicyData[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
 export const GoogleChromeManagementVersionsV1ReportingDataPolicyDataList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingDataPolicyData,
@@ -3653,7 +3606,7 @@ export const GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData>;
 
 export type GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyDataList =
-  GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData>;
 export const GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyDataList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData,
@@ -3697,16 +3650,14 @@ export const GoogleChromeManagementVersionsV1ReportingData =
 export type GoogleChromeManagementVersionsV1AttestationCredentialKeyTrustLevelEnum =
     | "KEY_TRUST_LEVEL_UNSPECIFIED"
     | "CHROME_BROWSER_HW_KEY"
-    | "CHROME_BROWSER_OS_KEY"
-    | (string & {});
+    | "CHROME_BROWSER_OS_KEY";
 export const GoogleChromeManagementVersionsV1AttestationCredentialKeyTrustLevelEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementVersionsV1AttestationCredentialKeyTypeEnum =
   | "KEY_TYPE_UNSPECIFIED"
   | "RSA_KEY"
-  | "EC_KEY"
-  | (string & {});
+  | "EC_KEY";
 export const GoogleChromeManagementVersionsV1AttestationCredentialKeyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3740,8 +3691,7 @@ export const GoogleChromeManagementVersionsV1AttestationCredential =
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileIdentityProviderEnum =
     | "IDENTITY_PROVIDER_UNSPECIFIED"
     | "GOOGLE_IDENTITY_PROVIDER"
-    | "EXTERNAL_IDENTITY_PROVIDER"
-    | (string & {});
+    | "EXTERNAL_IDENTITY_PROVIDER";
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileIdentityProviderEnum =
   /*@__PURE__*/ S.String;
 
@@ -3751,8 +3701,7 @@ export type GoogleChromeManagementVersionsV1ChromeBrowserProfileAffiliationState
     | "PROFILE_ONLY"
     | "UNAFFILIATED_LOCAL_MACHINE"
     | "UNAFFILIATED_CLOUD_MACHINE"
-    | "AFFILIATED_CLOUD_MANAGED"
-    | (string & {});
+    | "AFFILIATED_CLOUD_MANAGED";
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileAffiliationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3911,7 +3860,7 @@ export const GoogleChromeManagementV1CpuTemperatureInfo =
   }) as any as S.Schema<GoogleChromeManagementV1CpuTemperatureInfo>;
 
 export type GoogleChromeManagementV1CpuTemperatureInfoList =
-  GoogleChromeManagementV1CpuTemperatureInfo[];
+  ReadonlyArray<GoogleChromeManagementV1CpuTemperatureInfo>;
 export const GoogleChromeManagementV1CpuTemperatureInfoList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1CpuTemperatureInfo,
@@ -3943,7 +3892,7 @@ export const GoogleChromeManagementV1CpuStatusReport = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1CpuStatusReport>;
 
 export type GoogleChromeManagementV1CpuStatusReportList =
-  GoogleChromeManagementV1CpuStatusReport[];
+  ReadonlyArray<GoogleChromeManagementV1CpuStatusReport>;
 export const GoogleChromeManagementV1CpuStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1CpuStatusReport,
@@ -3978,7 +3927,7 @@ export const GoogleChromeManagementV1BatteryInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1BatteryInfo>;
 
 export type GoogleChromeManagementV1BatteryInfoList =
-  GoogleChromeManagementV1BatteryInfo[];
+  ReadonlyArray<GoogleChromeManagementV1BatteryInfo>;
 export const GoogleChromeManagementV1BatteryInfoList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1BatteryInfo,
 ) as any as S.Schema<GoogleChromeManagementV1BatteryInfoList>;
@@ -4004,7 +3953,7 @@ export const GoogleChromeManagementV1StorageInfoDiskVolume =
   }) as any as S.Schema<GoogleChromeManagementV1StorageInfoDiskVolume>;
 
 export type GoogleChromeManagementV1StorageInfoDiskVolumeList =
-  GoogleChromeManagementV1StorageInfoDiskVolume[];
+  ReadonlyArray<GoogleChromeManagementV1StorageInfoDiskVolume>;
 export const GoogleChromeManagementV1StorageInfoDiskVolumeList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1StorageInfoDiskVolume,
@@ -4056,7 +4005,7 @@ export const GoogleChromeManagementV1RuntimeCountersReport =
   }) as any as S.Schema<GoogleChromeManagementV1RuntimeCountersReport>;
 
 export type GoogleChromeManagementV1RuntimeCountersReportList =
-  GoogleChromeManagementV1RuntimeCountersReport[];
+  ReadonlyArray<GoogleChromeManagementV1RuntimeCountersReport>;
 export const GoogleChromeManagementV1RuntimeCountersReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1RuntimeCountersReport,
@@ -4098,7 +4047,7 @@ export const GoogleChromeManagementV1UsbPeripheralReport =
   }) as any as S.Schema<GoogleChromeManagementV1UsbPeripheralReport>;
 
 export type GoogleChromeManagementV1UsbPeripheralReportList =
-  GoogleChromeManagementV1UsbPeripheralReport[];
+  ReadonlyArray<GoogleChromeManagementV1UsbPeripheralReport>;
 export const GoogleChromeManagementV1UsbPeripheralReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1UsbPeripheralReport,
@@ -4124,7 +4073,7 @@ export const GoogleChromeManagementV1PeripheralsReport =
   }) as any as S.Schema<GoogleChromeManagementV1PeripheralsReport>;
 
 export type GoogleChromeManagementV1PeripheralsReportList =
-  GoogleChromeManagementV1PeripheralsReport[];
+  ReadonlyArray<GoogleChromeManagementV1PeripheralsReport>;
 export const GoogleChromeManagementV1PeripheralsReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1PeripheralsReport,
@@ -4165,7 +4114,7 @@ export const GoogleChromeManagementV1DisplayInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1DisplayInfo>;
 
 export type GoogleChromeManagementV1DisplayInfoList =
-  GoogleChromeManagementV1DisplayInfo[];
+  ReadonlyArray<GoogleChromeManagementV1DisplayInfo>;
 export const GoogleChromeManagementV1DisplayInfoList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1DisplayInfo,
 ) as any as S.Schema<GoogleChromeManagementV1DisplayInfoList>;
@@ -4188,7 +4137,7 @@ export const GoogleChromeManagementV1GraphicsStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1GraphicsStatusReport>;
 
 export type GoogleChromeManagementV1GraphicsStatusReportList =
-  GoogleChromeManagementV1GraphicsStatusReport[];
+  ReadonlyArray<GoogleChromeManagementV1GraphicsStatusReport>;
 export const GoogleChromeManagementV1GraphicsStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1GraphicsStatusReport,
@@ -4199,8 +4148,7 @@ export type GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionStateEnum
     | "MEMORY_ENCRYPTION_STATE_UNKNOWN"
     | "MEMORY_ENCRYPTION_STATE_DISABLED"
     | "MEMORY_ENCRYPTION_STATE_TME"
-    | "MEMORY_ENCRYPTION_STATE_MKTME"
-    | (string & {});
+    | "MEMORY_ENCRYPTION_STATE_MKTME";
 export const GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4208,8 +4156,7 @@ export type GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionAlgorithm
     | "MEMORY_ENCRYPTION_ALGORITHM_UNSPECIFIED"
     | "MEMORY_ENCRYPTION_ALGORITHM_UNKNOWN"
     | "MEMORY_ENCRYPTION_ALGORITHM_AES_XTS_128"
-    | "MEMORY_ENCRYPTION_ALGORITHM_AES_XTS_256"
-    | (string & {});
+    | "MEMORY_ENCRYPTION_ALGORITHM_AES_XTS_256";
 export const GoogleChromeManagementV1TotalMemoryEncryptionInfoEncryptionAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -4285,7 +4232,7 @@ export const GoogleChromeManagementV1MemoryStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1MemoryStatusReport>;
 
 export type GoogleChromeManagementV1MemoryStatusReportList =
-  GoogleChromeManagementV1MemoryStatusReport[];
+  ReadonlyArray<GoogleChromeManagementV1MemoryStatusReport>;
 export const GoogleChromeManagementV1MemoryStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1MemoryStatusReport,
@@ -4341,7 +4288,7 @@ export const GoogleChromeManagementV1DiskInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1DiskInfo>;
 
 export type GoogleChromeManagementV1DiskInfoList =
-  GoogleChromeManagementV1DiskInfo[];
+  ReadonlyArray<GoogleChromeManagementV1DiskInfo>;
 export const GoogleChromeManagementV1DiskInfoList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1DiskInfo,
 ) as any as S.Schema<GoogleChromeManagementV1DiskInfoList>;
@@ -4364,7 +4311,7 @@ export const GoogleChromeManagementV1StorageStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1StorageStatusReport>;
 
 export type GoogleChromeManagementV1StorageStatusReportList =
-  GoogleChromeManagementV1StorageStatusReport[];
+  ReadonlyArray<GoogleChromeManagementV1StorageStatusReport>;
 export const GoogleChromeManagementV1StorageStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1StorageStatusReport,
@@ -4406,7 +4353,7 @@ export const GoogleChromeManagementV1BatterySampleReport =
   }) as any as S.Schema<GoogleChromeManagementV1BatterySampleReport>;
 
 export type GoogleChromeManagementV1BatterySampleReportList =
-  GoogleChromeManagementV1BatterySampleReport[];
+  ReadonlyArray<GoogleChromeManagementV1BatterySampleReport>;
 export const GoogleChromeManagementV1BatterySampleReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1BatterySampleReport,
@@ -4416,8 +4363,7 @@ export type GoogleChromeManagementV1BatteryStatusReportBatteryHealthEnum =
   | "BATTERY_HEALTH_UNSPECIFIED"
   | "BATTERY_HEALTH_NORMAL"
   | "BATTERY_REPLACE_SOON"
-  | "BATTERY_REPLACE_NOW"
-  | (string & {});
+  | "BATTERY_REPLACE_NOW";
 export const GoogleChromeManagementV1BatteryStatusReportBatteryHealthEnum =
   /*@__PURE__*/ S.String;
 
@@ -4453,7 +4399,7 @@ export const GoogleChromeManagementV1BatteryStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1BatteryStatusReport>;
 
 export type GoogleChromeManagementV1BatteryStatusReportList =
-  GoogleChromeManagementV1BatteryStatusReport[];
+  ReadonlyArray<GoogleChromeManagementV1BatteryStatusReport>;
 export const GoogleChromeManagementV1BatteryStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1BatteryStatusReport,
@@ -4464,8 +4410,7 @@ export type GoogleChromeManagementV1HttpsLatencyRoutineDataProblemEnum =
   | "FAILED_DNS_RESOLUTIONS"
   | "FAILED_HTTPS_REQUESTS"
   | "HIGH_LATENCY"
-  | "VERY_HIGH_LATENCY"
-  | (string & {});
+  | "VERY_HIGH_LATENCY";
 export const GoogleChromeManagementV1HttpsLatencyRoutineDataProblemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4508,7 +4453,7 @@ export const GoogleChromeManagementV1NetworkDiagnosticsReport =
   }) as any as S.Schema<GoogleChromeManagementV1NetworkDiagnosticsReport>;
 
 export type GoogleChromeManagementV1NetworkDiagnosticsReportList =
-  GoogleChromeManagementV1NetworkDiagnosticsReport[];
+  ReadonlyArray<GoogleChromeManagementV1NetworkDiagnosticsReport>;
 export const GoogleChromeManagementV1NetworkDiagnosticsReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1NetworkDiagnosticsReport,
@@ -4518,8 +4463,7 @@ export type GoogleChromeManagementV1NetworkDeviceTypeEnum =
   | "NETWORK_DEVICE_TYPE_UNSPECIFIED"
   | "CELLULAR_DEVICE"
   | "ETHERNET_DEVICE"
-  | "WIFI_DEVICE"
-  | (string & {});
+  | "WIFI_DEVICE";
 export const GoogleChromeManagementV1NetworkDeviceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4553,7 +4497,7 @@ export const GoogleChromeManagementV1NetworkDevice = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1NetworkDevice>;
 
 export type GoogleChromeManagementV1NetworkDeviceList =
-  GoogleChromeManagementV1NetworkDevice[];
+  ReadonlyArray<GoogleChromeManagementV1NetworkDevice>;
 export const GoogleChromeManagementV1NetworkDeviceList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1NetworkDevice,
 ) as any as S.Schema<GoogleChromeManagementV1NetworkDeviceList>;
@@ -4589,7 +4533,7 @@ export const GoogleChromeManagementV1NetworkBandwidthReport =
   }) as any as S.Schema<GoogleChromeManagementV1NetworkBandwidthReport>;
 
 export type GoogleChromeManagementV1NetworkBandwidthReportList =
-  GoogleChromeManagementV1NetworkBandwidthReport[];
+  ReadonlyArray<GoogleChromeManagementV1NetworkBandwidthReport>;
 export const GoogleChromeManagementV1NetworkBandwidthReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1NetworkBandwidthReport,
@@ -4600,8 +4544,7 @@ export type GoogleChromeManagementV1BootPerformanceReportShutdownReasonEnum =
   | "USER_REQUEST"
   | "SYSTEM_UPDATE"
   | "LOW_BATTERY"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const GoogleChromeManagementV1BootPerformanceReportShutdownReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -4637,7 +4580,7 @@ export const GoogleChromeManagementV1BootPerformanceReport =
   }) as any as S.Schema<GoogleChromeManagementV1BootPerformanceReport>;
 
 export type GoogleChromeManagementV1BootPerformanceReportList =
-  GoogleChromeManagementV1BootPerformanceReport[];
+  ReadonlyArray<GoogleChromeManagementV1BootPerformanceReport>;
 export const GoogleChromeManagementV1BootPerformanceReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1BootPerformanceReport,
@@ -4676,7 +4619,7 @@ export const GoogleChromeManagementV1AudioStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1AudioStatusReport>;
 
 export type GoogleChromeManagementV1AudioStatusReportList =
-  GoogleChromeManagementV1AudioStatusReport[];
+  ReadonlyArray<GoogleChromeManagementV1AudioStatusReport>;
 export const GoogleChromeManagementV1AudioStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1AudioStatusReport,
@@ -4686,8 +4629,7 @@ export type GoogleChromeManagementV1OsUpdateStatusUpdateStateEnum =
   | "UPDATE_STATE_UNSPECIFIED"
   | "OS_IMAGE_DOWNLOAD_NOT_STARTED"
   | "OS_IMAGE_DOWNLOAD_IN_PROGRESS"
-  | "OS_UPDATE_NEED_REBOOT"
-  | (string & {});
+  | "OS_UPDATE_NEED_REBOOT";
 export const GoogleChromeManagementV1OsUpdateStatusUpdateStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4723,7 +4665,7 @@ export const GoogleChromeManagementV1OsUpdateStatus = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1OsUpdateStatus>;
 
 export type GoogleChromeManagementV1OsUpdateStatusList =
-  GoogleChromeManagementV1OsUpdateStatus[];
+  ReadonlyArray<GoogleChromeManagementV1OsUpdateStatus>;
 export const GoogleChromeManagementV1OsUpdateStatusList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1OsUpdateStatus,
 ) as any as S.Schema<GoogleChromeManagementV1OsUpdateStatusList>;
@@ -4744,8 +4686,7 @@ export type GoogleChromeManagementV1AppUsageDataAppTypeEnum =
   | "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP"
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
-  | "APPLICATION_TYPE_BRUSCHETTA"
-  | (string & {});
+  | "APPLICATION_TYPE_BRUSCHETTA";
 export const GoogleChromeManagementV1AppUsageDataAppTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4773,7 +4714,7 @@ export const GoogleChromeManagementV1AppUsageData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1AppUsageData>;
 
 export type GoogleChromeManagementV1AppUsageDataList =
-  GoogleChromeManagementV1AppUsageData[];
+  ReadonlyArray<GoogleChromeManagementV1AppUsageData>;
 export const GoogleChromeManagementV1AppUsageDataList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1AppUsageData,
 ) as any as S.Schema<GoogleChromeManagementV1AppUsageDataList>;
@@ -4795,7 +4736,7 @@ export const GoogleChromeManagementV1AppReport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1AppReport>;
 
 export type GoogleChromeManagementV1AppReportList =
-  GoogleChromeManagementV1AppReport[];
+  ReadonlyArray<GoogleChromeManagementV1AppReport>;
 export const GoogleChromeManagementV1AppReportList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1AppReport,
 ) as any as S.Schema<GoogleChromeManagementV1AppReportList>;
@@ -4806,8 +4747,7 @@ export type GoogleChromeManagementV1NetworkStatusReportConnectionTypeEnum =
   | "ETHERNET"
   | "TETHER"
   | "VPN"
-  | "WIFI"
-  | (string & {});
+  | "WIFI";
 export const GoogleChromeManagementV1NetworkStatusReportConnectionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4817,8 +4757,7 @@ export type GoogleChromeManagementV1NetworkStatusReportConnectionStateEnum =
   | "CONNECTED"
   | "PORTAL"
   | "CONNECTING"
-  | "NOT_CONNECTED"
-  | (string & {});
+  | "NOT_CONNECTED";
 export const GoogleChromeManagementV1NetworkStatusReportConnectionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4892,7 +4831,7 @@ export const GoogleChromeManagementV1NetworkStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1NetworkStatusReport>;
 
 export type GoogleChromeManagementV1NetworkStatusReportList =
-  GoogleChromeManagementV1NetworkStatusReport[];
+  ReadonlyArray<GoogleChromeManagementV1NetworkStatusReport>;
 export const GoogleChromeManagementV1NetworkStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1NetworkStatusReport,
@@ -4919,7 +4858,7 @@ export const GoogleChromeManagementV1KioskAppStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1KioskAppStatusReport>;
 
 export type GoogleChromeManagementV1KioskAppStatusReportList =
-  GoogleChromeManagementV1KioskAppStatusReport[];
+  ReadonlyArray<GoogleChromeManagementV1KioskAppStatusReport>;
 export const GoogleChromeManagementV1KioskAppStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1KioskAppStatusReport,
@@ -4932,8 +4871,7 @@ export type GoogleChromeManagementV1ThunderboltInfoSecurityLevelEnum =
   | "THUNDERBOLT_SECURITY_SECURE_LEVEL"
   | "THUNDERBOLT_SECURITY_DP_ONLY_LEVEL"
   | "THUNDERBOLT_SECURITY_USB_ONLY_LEVEL"
-  | "THUNDERBOLT_SECURITY_NO_PCIE_LEVEL"
-  | (string & {});
+  | "THUNDERBOLT_SECURITY_NO_PCIE_LEVEL";
 export const GoogleChromeManagementV1ThunderboltInfoSecurityLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -4954,7 +4892,7 @@ export const GoogleChromeManagementV1ThunderboltInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1ThunderboltInfo>;
 
 export type GoogleChromeManagementV1ThunderboltInfoList =
-  GoogleChromeManagementV1ThunderboltInfo[];
+  ReadonlyArray<GoogleChromeManagementV1ThunderboltInfo>;
 export const GoogleChromeManagementV1ThunderboltInfoList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1ThunderboltInfo,
@@ -5001,7 +4939,7 @@ export const GoogleChromeManagementV1TouchScreenDevice =
   }) as any as S.Schema<GoogleChromeManagementV1TouchScreenDevice>;
 
 export type GoogleChromeManagementV1TouchScreenDeviceList =
-  GoogleChromeManagementV1TouchScreenDevice[];
+  ReadonlyArray<GoogleChromeManagementV1TouchScreenDevice>;
 export const GoogleChromeManagementV1TouchScreenDeviceList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TouchScreenDevice,
@@ -5063,7 +5001,7 @@ export const GoogleChromeManagementV1DisplayDevice = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1DisplayDevice>;
 
 export type GoogleChromeManagementV1DisplayDeviceList =
-  GoogleChromeManagementV1DisplayDevice[];
+  ReadonlyArray<GoogleChromeManagementV1DisplayDevice>;
 export const GoogleChromeManagementV1DisplayDeviceList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1DisplayDevice,
 ) as any as S.Schema<GoogleChromeManagementV1DisplayDeviceList>;
@@ -5093,8 +5031,7 @@ export const GoogleChromeManagementV1GraphicsInfo = /*@__PURE__*/ S.suspend(
 
 export type GoogleChromeManagementV1CpuInfoArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
-  | "X64"
-  | (string & {});
+  | "X64";
 export const GoogleChromeManagementV1CpuInfoArchitectureEnum =
   /*@__PURE__*/ S.String;
 
@@ -5124,7 +5061,7 @@ export const GoogleChromeManagementV1CpuInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleChromeManagementV1CpuInfo>;
 
 export type GoogleChromeManagementV1CpuInfoList =
-  GoogleChromeManagementV1CpuInfo[];
+  ReadonlyArray<GoogleChromeManagementV1CpuInfo>;
 export const GoogleChromeManagementV1CpuInfoList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1CpuInfo,
 ) as any as S.Schema<GoogleChromeManagementV1CpuInfoList>;
@@ -5134,8 +5071,7 @@ export type GoogleChromeManagementV1HeartbeatStatusReportStateEnum =
   | "UNKNOWN"
   | "ONLINE"
   | "OFFLINE"
-  | "DEVICE_OUTDATED"
-  | (string & {});
+  | "DEVICE_OUTDATED";
 export const GoogleChromeManagementV1HeartbeatStatusReportStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5157,7 +5093,7 @@ export const GoogleChromeManagementV1HeartbeatStatusReport =
   }) as any as S.Schema<GoogleChromeManagementV1HeartbeatStatusReport>;
 
 export type GoogleChromeManagementV1HeartbeatStatusReportList =
-  GoogleChromeManagementV1HeartbeatStatusReport[];
+  ReadonlyArray<GoogleChromeManagementV1HeartbeatStatusReport>;
 export const GoogleChromeManagementV1HeartbeatStatusReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1HeartbeatStatusReport,
@@ -5306,11 +5242,7 @@ export const GetCustomersTelemetryUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomersTelemetryUsersRequest>;
 
 export type GoogleChromeManagementV1DeviceActivityReportDeviceActivityStateEnum =
-    | "DEVICE_ACTIVITY_STATE_UNSPECIFIED"
-    | "ACTIVE"
-    | "IDLE"
-    | "LOCKED"
-    | (string & {});
+  "DEVICE_ACTIVITY_STATE_UNSPECIFIED" | "ACTIVE" | "IDLE" | "LOCKED";
 export const GoogleChromeManagementV1DeviceActivityReportDeviceActivityStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5334,7 +5266,7 @@ export const GoogleChromeManagementV1DeviceActivityReport =
   }) as any as S.Schema<GoogleChromeManagementV1DeviceActivityReport>;
 
 export type GoogleChromeManagementV1DeviceActivityReportList =
-  GoogleChromeManagementV1DeviceActivityReport[];
+  ReadonlyArray<GoogleChromeManagementV1DeviceActivityReport>;
 export const GoogleChromeManagementV1DeviceActivityReportList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1DeviceActivityReport,
@@ -5378,7 +5310,7 @@ export const GoogleChromeManagementV1TelemetryUserDevice =
   }) as any as S.Schema<GoogleChromeManagementV1TelemetryUserDevice>;
 
 export type GoogleChromeManagementV1TelemetryUserDeviceList =
-  GoogleChromeManagementV1TelemetryUserDevice[];
+  ReadonlyArray<GoogleChromeManagementV1TelemetryUserDevice>;
 export const GoogleChromeManagementV1TelemetryUserDeviceList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TelemetryUserDevice,
@@ -5439,7 +5371,7 @@ export const ListCustomersConnectorConfigsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCustomersConnectorConfigsRequest>;
 
 export type GoogleChromeManagementVersionsV1ConnectorConfigList =
-  GoogleChromeManagementVersionsV1ConnectorConfig[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ConnectorConfig>;
 export const GoogleChromeManagementVersionsV1ConnectorConfigList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ConnectorConfig,
@@ -5495,7 +5427,7 @@ export const ListCustomersProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersProfilesRequest>;
 
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileList =
-  GoogleChromeManagementVersionsV1ChromeBrowserProfile[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ChromeBrowserProfile>;
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ChromeBrowserProfile,
@@ -5550,7 +5482,7 @@ export const ListCustomersProfilesCommandsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCustomersProfilesCommandsRequest>;
 
 export type GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandList =
-  GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>;
 export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand,
@@ -5611,7 +5543,7 @@ export const ListCustomersTelemetryDevicesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListCustomersTelemetryDevicesRequest>;
 
 export type GoogleChromeManagementV1TelemetryDeviceList =
-  GoogleChromeManagementV1TelemetryDevice[];
+  ReadonlyArray<GoogleChromeManagementV1TelemetryDevice>;
 export const GoogleChromeManagementV1TelemetryDeviceList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TelemetryDevice,
@@ -5664,7 +5596,7 @@ export const ListCustomersTelemetryEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersTelemetryEventsRequest>;
 
 export type GoogleChromeManagementV1TelemetryHttpsLatencyChangeEventHttpsLatencyStateEnum =
-  "HTTPS_LATENCY_STATE_UNSPECIFIED" | "RECOVERY" | "PROBLEM" | (string & {});
+  "HTTPS_LATENCY_STATE_UNSPECIFIED" | "RECOVERY" | "PROBLEM";
 export const GoogleChromeManagementV1TelemetryHttpsLatencyChangeEventHttpsLatencyStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5719,7 +5651,7 @@ export const GoogleChromeManagementV1TelemetryExternalDisplayData =
   }) as any as S.Schema<GoogleChromeManagementV1TelemetryExternalDisplayData>;
 
 export type GoogleChromeManagementV1TelemetryExternalDisplayDataList =
-  GoogleChromeManagementV1TelemetryExternalDisplayData[];
+  ReadonlyArray<GoogleChromeManagementV1TelemetryExternalDisplayData>;
 export const GoogleChromeManagementV1TelemetryExternalDisplayDataList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TelemetryExternalDisplayData,
@@ -5754,8 +5686,7 @@ export type GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEventCo
     | "CONNECTED"
     | "PORTAL"
     | "CONNECTING"
-    | "NOT_CONNECTED"
-    | (string & {});
+    | "NOT_CONNECTED";
 export const GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEventConnectionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5844,8 +5775,7 @@ export type GoogleChromeManagementV1TelemetryEventEventTypeEnum =
   | "APP_LAUNCHED"
   | "OS_CRASH"
   | "EXTERNAL_DISPLAY_CONNECTED"
-  | "EXTERNAL_DISPLAY_DISCONNECTED"
-  | (string & {});
+  | "EXTERNAL_DISPLAY_DISCONNECTED";
 export const GoogleChromeManagementV1TelemetryEventEventTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5872,8 +5802,7 @@ export type GoogleChromeManagementV1TelemetryAppInstallEventAppInstallSourceEnum
     | "APPLICATION_INSTALL_SOURCE_SYNC"
     | "APPLICATION_INSTALL_SOURCE_PLAY_STORE"
     | "APPLICATION_INSTALL_SOURCE_CHROME_WEB_STORE"
-    | "APPLICATION_INSTALL_SOURCE_BROWSER"
-    | (string & {});
+    | "APPLICATION_INSTALL_SOURCE_BROWSER";
 export const GoogleChromeManagementV1TelemetryAppInstallEventAppInstallSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -5887,8 +5816,7 @@ export type GoogleChromeManagementV1TelemetryAppInstallEventAppInstallReasonEnum
     | "APPLICATION_INSTALL_REASON_USER"
     | "APPLICATION_INSTALL_REASON_SUB_APP"
     | "APPLICATION_INSTALL_REASON_KIOSK"
-    | "APPLICATION_INSTALL_REASON_COMMAND_LINE"
-    | (string & {});
+    | "APPLICATION_INSTALL_REASON_COMMAND_LINE";
 export const GoogleChromeManagementV1TelemetryAppInstallEventAppInstallReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -5908,16 +5836,14 @@ export type GoogleChromeManagementV1TelemetryAppInstallEventAppTypeEnum =
   | "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP"
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
-  | "APPLICATION_TYPE_BRUSCHETTA"
-  | (string & {});
+  | "APPLICATION_TYPE_BRUSCHETTA";
 export const GoogleChromeManagementV1TelemetryAppInstallEventAppTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleChromeManagementV1TelemetryAppInstallEventAppInstallTimeEnum =
     | "APPLICATION_INSTALL_TIME_UNSPECIFIED"
     | "APPLICATION_INSTALL_TIME_INIT"
-    | "APPLICATION_INSTALL_TIME_RUNNING"
-    | (string & {});
+    | "APPLICATION_INSTALL_TIME_RUNNING";
 export const GoogleChromeManagementV1TelemetryAppInstallEventAppInstallTimeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5960,8 +5886,7 @@ export type GoogleChromeManagementV1TelemetryAppUninstallEventAppUninstallSource
     | "APPLICATION_UNINSTALL_SOURCE_APP_LIST"
     | "APPLICATION_UNINSTALL_SOURCE_APP_MANAGEMENT"
     | "APPLICATION_UNINSTALL_SOURCE_SHELF"
-    | "APPLICATION_UNINSTALL_SOURCE_MIGRATION"
-    | (string & {});
+    | "APPLICATION_UNINSTALL_SOURCE_MIGRATION";
 export const GoogleChromeManagementV1TelemetryAppUninstallEventAppUninstallSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -5981,8 +5906,7 @@ export type GoogleChromeManagementV1TelemetryAppUninstallEventAppTypeEnum =
   | "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP"
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
-  | "APPLICATION_TYPE_BRUSCHETTA"
-  | (string & {});
+  | "APPLICATION_TYPE_BRUSCHETTA";
 export const GoogleChromeManagementV1TelemetryAppUninstallEventAppTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6054,8 +5978,7 @@ export type GoogleChromeManagementV1TelemetryAppLaunchEventAppLaunchSourceEnum =
     | "APPLICATION_LAUNCH_SOURCE_FOCUS_MODE"
     | "APPLICATION_LAUNCH_SOURCE_SPARKY"
     | "APPLICATION_LAUNCH_SOURCE_NAVIGATION_CAPTURING"
-    | "APPLICATION_LAUNCH_SOURCE_WEB_INSTALL_API"
-    | (string & {});
+    | "APPLICATION_LAUNCH_SOURCE_WEB_INSTALL_API";
 export const GoogleChromeManagementV1TelemetryAppLaunchEventAppLaunchSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -6075,8 +5998,7 @@ export type GoogleChromeManagementV1TelemetryAppLaunchEventAppTypeEnum =
   | "APPLICATION_TYPE_STANDALONE_BROWSER_CHROME_APP"
   | "APPLICATION_TYPE_EXTENSION"
   | "APPLICATION_TYPE_STANDALONE_BROWSER_EXTENSION"
-  | "APPLICATION_TYPE_BRUSCHETTA"
-  | (string & {});
+  | "APPLICATION_TYPE_BRUSCHETTA";
 export const GoogleChromeManagementV1TelemetryAppLaunchEventAppTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6107,8 +6029,7 @@ export const GoogleChromeManagementV1TelemetryAppLaunchEvent =
 export type GoogleChromeManagementV1TelemetryOsCrashEventCrashTypeEnum =
   | "CRASH_TYPE_UNSPECIFIED"
   | "CRASH_TYPE_KERNEL"
-  | "CRASH_TYPE_EMBEDDED_CONTROLLER"
-  | (string & {});
+  | "CRASH_TYPE_EMBEDDED_CONTROLLER";
 export const GoogleChromeManagementV1TelemetryOsCrashEventCrashTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6117,8 +6038,7 @@ export type GoogleChromeManagementV1TelemetryOsCrashEventSessionTypeEnum =
   | "SESSION_TYPE_SIGNED_IN_USER"
   | "SESSION_TYPE_KIOSK"
   | "SESSION_TYPE_MANAGED_GUEST"
-  | "SESSION_TYPE_ACTIVE_DIRECTORY"
-  | (string & {});
+  | "SESSION_TYPE_ACTIVE_DIRECTORY";
 export const GoogleChromeManagementV1TelemetryOsCrashEventSessionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6228,7 +6148,7 @@ export const GoogleChromeManagementV1TelemetryEvent = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleChromeManagementV1TelemetryEvent>;
 
 export type GoogleChromeManagementV1TelemetryEventList =
-  GoogleChromeManagementV1TelemetryEvent[];
+  ReadonlyArray<GoogleChromeManagementV1TelemetryEvent>;
 export const GoogleChromeManagementV1TelemetryEventList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1TelemetryEvent,
 ) as any as S.Schema<GoogleChromeManagementV1TelemetryEventList>;
@@ -6276,7 +6196,7 @@ export const ListCustomersTelemetryNotificationConfigsRequest =
   }) as any as S.Schema<ListCustomersTelemetryNotificationConfigsRequest>;
 
 export type GoogleChromeManagementV1TelemetryNotificationConfigList =
-  GoogleChromeManagementV1TelemetryNotificationConfig[];
+  ReadonlyArray<GoogleChromeManagementV1TelemetryNotificationConfig>;
 export const GoogleChromeManagementV1TelemetryNotificationConfigList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementV1TelemetryNotificationConfig,
@@ -6333,7 +6253,7 @@ export const ListCustomersTelemetryUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersTelemetryUsersRequest>;
 
 export type GoogleChromeManagementV1TelemetryUserList =
-  GoogleChromeManagementV1TelemetryUser[];
+  ReadonlyArray<GoogleChromeManagementV1TelemetryUser>;
 export const GoogleChromeManagementV1TelemetryUserList = /*@__PURE__*/ S.Array(
   GoogleChromeManagementV1TelemetryUser,
 ) as any as S.Schema<GoogleChromeManagementV1TelemetryUserList>;
@@ -6385,7 +6305,8 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -6517,8 +6438,7 @@ export type QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsFi
     | "FIXED_TIME_RANGE_FOUR_HOURS"
     | "FIXED_TIME_RANGE_ONE_DAY"
     | "FIXED_TIME_RANGE_ONE_WEEK"
-    | "FIXED_TIME_RANGE_FOUR_WEEKS"
-    | (string & {});
+    | "FIXED_TIME_RANGE_FOUR_WEEKS";
 export const QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsFixedTimeRangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6531,8 +6451,7 @@ export type QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsMe
     | "CONTENT_TRANSFERS_METRIC_TOTAL_SENSITIVE_TRANSFERS"
     | "CONTENT_TRANSFERS_METRIC_SENSITIVE_UPLOADS"
     | "CONTENT_TRANSFERS_METRIC_SENSITIVE_DOWNLOADS"
-    | "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS"
-    | (string & {});
+    | "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS";
 export const QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsMetricEnum =
   /*@__PURE__*/ S.String;
 
@@ -6540,8 +6459,7 @@ export type QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsBr
     | "CONTENT_TRANSFERS_BREAKDOWN_DIMENSION_UNSPECIFIED"
     | "USER"
     | "EVENT_DOMAIN"
-    | "CONTENT_CATEGORY"
-    | (string & {});
+    | "CONTENT_CATEGORY";
 export const QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum =
   /*@__PURE__*/ S.String;
 
@@ -6604,8 +6522,7 @@ export type GoogleChromeManagementVersionsV1ContentTransfersSummaryMetricEnum =
   | "CONTENT_TRANSFERS_METRIC_TOTAL_SENSITIVE_TRANSFERS"
   | "CONTENT_TRANSFERS_METRIC_SENSITIVE_UPLOADS"
   | "CONTENT_TRANSFERS_METRIC_SENSITIVE_DOWNLOADS"
-  | "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS"
-  | (string & {});
+  | "CONTENT_TRANSFERS_METRIC_SENSITIVE_PRINTS";
 export const GoogleChromeManagementVersionsV1ContentTransfersSummaryMetricEnum =
   /*@__PURE__*/ S.String;
 
@@ -6654,7 +6571,7 @@ export const GoogleChromeManagementVersionsV1ContentTransfersBreakdown =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1ContentTransfersBreakdown>;
 
 export type GoogleChromeManagementVersionsV1ContentTransfersBreakdownList =
-  GoogleChromeManagementVersionsV1ContentTransfersBreakdown[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ContentTransfersBreakdown>;
 export const GoogleChromeManagementVersionsV1ContentTransfersBreakdownList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ContentTransfersBreakdown,
@@ -6704,7 +6621,7 @@ export const QueryContentTransfersCustomersEnterpriseSecurityInsightsRequest =
   }) as any as S.Schema<QueryContentTransfersCustomersEnterpriseSecurityInsightsRequest>;
 
 export type GoogleChromeManagementVersionsV1ContentTransfersSummaryList =
-  GoogleChromeManagementVersionsV1ContentTransfersSummary[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1ContentTransfersSummary>;
 export const GoogleChromeManagementVersionsV1ContentTransfersSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1ContentTransfersSummary,
@@ -6731,8 +6648,7 @@ export type QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsFixedTime
     | "FIXED_TIME_RANGE_FOUR_HOURS"
     | "FIXED_TIME_RANGE_ONE_DAY"
     | "FIXED_TIME_RANGE_ONE_WEEK"
-    | "FIXED_TIME_RANGE_FOUR_WEEKS"
-    | (string & {});
+    | "FIXED_TIME_RANGE_FOUR_WEEKS";
 export const QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsFixedTimeRangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6741,16 +6657,12 @@ export type QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsMetricEnu
     | "URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS"
     | "URL_VISITS_METRIC_HIGH_RISK_URL_VISITS"
     | "URL_VISITS_METRIC_MEDIUM_RISK_URL_VISITS"
-    | "URL_VISITS_METRIC_LOW_RISK_URL_VISITS"
-    | (string & {});
+    | "URL_VISITS_METRIC_LOW_RISK_URL_VISITS";
 export const QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsMetricEnum =
   /*@__PURE__*/ S.String;
 
 export type QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum =
-    | "URL_VISITS_BREAKDOWN_DIMENSION_UNSPECIFIED"
-    | "USER"
-    | "EVENT_DOMAIN"
-    | (string & {});
+  "URL_VISITS_BREAKDOWN_DIMENSION_UNSPECIFIED" | "USER" | "EVENT_DOMAIN";
 export const QueryUrlVisitsBreakdownsCustomersEnterpriseSecurityInsightsBreakdownEnum =
   /*@__PURE__*/ S.String;
 
@@ -6809,8 +6721,7 @@ export type GoogleChromeManagementVersionsV1UrlVisitsSummaryMetricEnum =
   | "URL_VISITS_METRIC_TOTAL_SUSPICIOUS_URL_VISITS"
   | "URL_VISITS_METRIC_HIGH_RISK_URL_VISITS"
   | "URL_VISITS_METRIC_MEDIUM_RISK_URL_VISITS"
-  | "URL_VISITS_METRIC_LOW_RISK_URL_VISITS"
-  | (string & {});
+  | "URL_VISITS_METRIC_LOW_RISK_URL_VISITS";
 export const GoogleChromeManagementVersionsV1UrlVisitsSummaryMetricEnum =
   /*@__PURE__*/ S.String;
 
@@ -6854,7 +6765,7 @@ export const GoogleChromeManagementVersionsV1UrlVisitsBreakdown =
   }) as any as S.Schema<GoogleChromeManagementVersionsV1UrlVisitsBreakdown>;
 
 export type GoogleChromeManagementVersionsV1UrlVisitsBreakdownList =
-  GoogleChromeManagementVersionsV1UrlVisitsBreakdown[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1UrlVisitsBreakdown>;
 export const GoogleChromeManagementVersionsV1UrlVisitsBreakdownList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1UrlVisitsBreakdown,
@@ -6903,7 +6814,7 @@ export const QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest =
   }) as any as S.Schema<QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest>;
 
 export type GoogleChromeManagementVersionsV1UrlVisitsSummaryList =
-  GoogleChromeManagementVersionsV1UrlVisitsSummary[];
+  ReadonlyArray<GoogleChromeManagementVersionsV1UrlVisitsSummary>;
 export const GoogleChromeManagementVersionsV1UrlVisitsSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleChromeManagementVersionsV1UrlVisitsSummary,
@@ -6973,8 +6884,7 @@ export const GoogleChromeManagementVersionsV1SetFailureResponse =
 export type GoogleChromeManagementVersionsV1SignDataRequestSignatureAlgorithmEnum =
     | "SIGNATURE_ALGORITHM_UNSPECIFIED"
     | "SIGNATURE_ALGORITHM_RSA_PKCS1_V1_5_SHA256"
-    | "SIGNATURE_ALGORITHM_ECDSA_SHA256"
-    | (string & {});
+    | "SIGNATURE_ALGORITHM_ECDSA_SHA256";
 export const GoogleChromeManagementVersionsV1SignDataRequestSignatureAlgorithmEnum =
   /*@__PURE__*/ S.String;
 

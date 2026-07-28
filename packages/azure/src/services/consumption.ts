@@ -40,8 +40,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -49,8 +48,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -124,7 +122,7 @@ export const ManagementGroupAggregatedCostResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Children of a management group */
 export type ManagementGroupAggregatedCostPropertiesChildrenList =
-  ManagementGroupAggregatedCostResult[];
+  ReadonlyArray<ManagementGroupAggregatedCostResult>;
 export const ManagementGroupAggregatedCostPropertiesChildrenList =
   /*@__PURE__*/ S.Array(
     ManagementGroupAggregatedCostResult,
@@ -132,7 +130,7 @@ export const ManagementGroupAggregatedCostPropertiesChildrenList =
 
 /** List of subscription Guids included in the calculation of aggregated cost */
 export type ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList =
-  string[];
+  ReadonlyArray<string>;
 export const ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -140,7 +138,7 @@ export const ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList =
 
 /** List of subscription Guids excluded from the calculation of aggregated cost */
 export type ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList =
-  string[];
+  ReadonlyArray<string>;
 export const ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -317,7 +315,7 @@ export const BalancesGetByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BalancesGetByBillingAccountRequest>;
 
 /** The billing frequency. */
-export type BillingFrequency = "Month" | "Quarter" | "Year" | (string & {});
+export type BillingFrequency = "Month" | "Quarter" | "Year";
 export const BillingFrequency = /*@__PURE__*/ S.String;
 
 export interface BalancePropertiesNewPurchasesDetailsItem {
@@ -338,7 +336,7 @@ export const BalancePropertiesNewPurchasesDetailsItem = /*@__PURE__*/ S.suspend(
 
 /** List of new purchases. */
 export type BalancePropertiesNewPurchasesDetailsList =
-  BalancePropertiesNewPurchasesDetailsItem[];
+  ReadonlyArray<BalancePropertiesNewPurchasesDetailsItem>;
 export const BalancePropertiesNewPurchasesDetailsList = /*@__PURE__*/ S.Array(
   BalancePropertiesNewPurchasesDetailsItem,
 ) as any as S.Schema<BalancePropertiesNewPurchasesDetailsList>;
@@ -361,7 +359,7 @@ export const BalancePropertiesAdjustmentDetailsItem = /*@__PURE__*/ S.suspend(
 
 /** List of Adjustments (Promo credit, SIE credit etc.). */
 export type BalancePropertiesAdjustmentDetailsList =
-  BalancePropertiesAdjustmentDetailsItem[];
+  ReadonlyArray<BalancePropertiesAdjustmentDetailsItem>;
 export const BalancePropertiesAdjustmentDetailsList = /*@__PURE__*/ S.Array(
   BalancePropertiesAdjustmentDetailsItem,
 ) as any as S.Schema<BalancePropertiesAdjustmentDetailsList>;
@@ -530,32 +528,8 @@ export const BalancesGetForBillingPeriodByBillingAccountResponse =
     identifier: "BalancesGetForBillingPeriodByBillingAccountResponse",
   }) as any as S.Schema<BalancesGetForBillingPeriodByBillingAccountResponse>;
 
-export interface BudgetsCreateOrUpdateRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** Budget Name. */
-  budgetName: string;
-  body: unknown;
-}
-export const BudgetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    budgetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
-      code: 200,
-      apiVersion: "2024-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "BudgetsCreateOrUpdateRequest",
-}) as any as S.Schema<BudgetsCreateOrUpdateRequest>;
-
 /** The category of the budget, whether the budget tracks cost or usage. */
-export type CategoryType = "Cost" | (string & {});
+export type CategoryType = "Cost";
 export const CategoryType = /*@__PURE__*/ S.String;
 
 /** The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers */
@@ -565,8 +539,7 @@ export type TimeGrainType =
   | "Annually"
   | "BillingMonth"
   | "BillingQuarter"
-  | "BillingAnnual"
-  | (string & {});
+  | "BillingAnnual";
 export const TimeGrainType = /*@__PURE__*/ S.String;
 
 /** The start and end date for a budget. */
@@ -586,11 +559,11 @@ export const BudgetTimePeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BudgetTimePeriod>;
 
 /** The operator to use for comparison. */
-export type BudgetOperatorType = "In" | (string & {});
+export type BudgetOperatorType = "In";
 export const BudgetOperatorType = /*@__PURE__*/ S.String;
 
 /** Array of values to use for comparison */
-export type BudgetComparisonExpressionValuesList = string[];
+export type BudgetComparisonExpressionValuesList = ReadonlyArray<string>;
 export const BudgetComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BudgetComparisonExpressionValuesList>;
@@ -631,7 +604,7 @@ export const BudgetFilterProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BudgetFilterProperties>;
 
 /** The logical "AND" expression. Must have at least 2 items. */
-export type BudgetFilterAndList = BudgetFilterProperties[];
+export type BudgetFilterAndList = ReadonlyArray<BudgetFilterProperties>;
 export const BudgetFilterAndList = /*@__PURE__*/ S.Array(
   BudgetFilterProperties,
 ) as any as S.Schema<BudgetFilterAndList>;
@@ -653,48 +626,30 @@ export const BudgetFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BudgetFilter" }) as any as S.Schema<BudgetFilter>;
 
-/** The current amount of cost which is being tracked for a budget. */
-export interface CurrentSpend {
-  /** The total amount of cost which is being tracked by the budget. */
-  amount?: number;
-  /** The unit of measure for the budget amount. */
-  unit?: string;
-}
-export const CurrentSpend = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "CurrentSpend" }) as any as S.Schema<CurrentSpend>;
-
 /** The comparison operator. */
-export type OperatorType =
-  | "EqualTo"
-  | "GreaterThan"
-  | "GreaterThanOrEqualTo"
-  | (string & {});
+export type OperatorType = "EqualTo" | "GreaterThan" | "GreaterThanOrEqualTo";
 export const OperatorType = /*@__PURE__*/ S.String;
 
 /** Email addresses to send the budget notification to when the threshold is exceeded. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified. */
-export type NotificationContactEmailsList = string[];
+export type NotificationContactEmailsList = ReadonlyArray<string>;
 export const NotificationContactEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationContactEmailsList>;
 
 /** Contact roles to send the budget notification to when the threshold is exceeded. */
-export type NotificationContactRolesList = string[];
+export type NotificationContactRolesList = ReadonlyArray<string>;
 export const NotificationContactRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationContactRolesList>;
 
 /** Action groups to send the budget notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id. Only supported at Subscription or Resource Group scopes. */
-export type NotificationContactGroupsList = string[];
+export type NotificationContactGroupsList = ReadonlyArray<string>;
 export const NotificationContactGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationContactGroupsList>;
 
 /** The type of threshold */
-export type NotificationThresholdType = "Actual" | "Forecasted" | (string & {});
+export type NotificationThresholdType = "Actual" | "Forecasted";
 export const NotificationThresholdType = /*@__PURE__*/ S.String;
 
 /** Language in which the recipient will receive the notification */
@@ -719,8 +674,7 @@ export type CultureCode =
   | "nb-no"
   | "nl-nl"
   | "pt-pt"
-  | "sv-se"
-  | (string & {});
+  | "sv-se";
 export const CultureCode = /*@__PURE__*/ S.String;
 
 /** The notification associated with a budget. */
@@ -754,6 +708,85 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
     locale: S.optional(CultureCode),
   }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
+
+/** Dictionary of notifications associated with the budget. Budget can have up to five notifications. */
+export type BudgetPropertiesInputNotificationsMap = {
+  [key: string]: Notification | undefined;
+};
+export const BudgetPropertiesInputNotificationsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  Notification,
+) as any as S.Schema<BudgetPropertiesInputNotificationsMap>;
+
+/** The properties of the budget. */
+export interface BudgetPropertiesInput {
+  /** The category of the budget, whether the budget tracks cost or usage. */
+  category: CategoryType;
+  /** The total amount of cost to track with the budget */
+  amount: number;
+  /** The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers */
+  timeGrain: TimeGrainType;
+  /** Has start and end date of the budget. The start date must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should be selected within the timegrain period. There are no restrictions on the end date. */
+  timePeriod: BudgetTimePeriod;
+  /** May be used to filter budgets by user-specified dimensions and/or tags. */
+  filter?: BudgetFilter;
+  /** Dictionary of notifications associated with the budget. Budget can have up to five notifications. */
+  notifications?: BudgetPropertiesInputNotificationsMap;
+}
+export const BudgetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    category: CategoryType,
+    amount: S.Number,
+    timeGrain: TimeGrainType,
+    timePeriod: BudgetTimePeriod,
+    filter: S.optional(BudgetFilter),
+    notifications: S.optional(BudgetPropertiesInputNotificationsMap),
+  }),
+).annotate({
+  identifier: "BudgetPropertiesInput",
+}) as any as S.Schema<BudgetPropertiesInput>;
+
+export interface BudgetsCreateOrUpdateRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** Budget Name. */
+  budgetName: string;
+  /** The properties of the budget. */
+  properties?: BudgetPropertiesInput;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const BudgetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    budgetName: S.String.pipe(T.Label()),
+    properties: S.optional(BudgetPropertiesInput),
+    eTag: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}",
+      code: 200,
+      apiVersion: "2024-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "BudgetsCreateOrUpdateRequest",
+}) as any as S.Schema<BudgetsCreateOrUpdateRequest>;
+
+/** The current amount of cost which is being tracked for a budget. */
+export interface CurrentSpend {
+  /** The total amount of cost which is being tracked by the budget. */
+  amount?: number;
+  /** The unit of measure for the budget amount. */
+  unit?: string;
+}
+export const CurrentSpend = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    amount: S.optional(S.Number),
+    unit: S.optional(S.String),
+  }),
+).annotate({ identifier: "CurrentSpend" }) as any as S.Schema<CurrentSpend>;
 
 /** Dictionary of notifications associated with the budget. Budget can have up to five notifications. */
 export type BudgetPropertiesNotificationsMap = {
@@ -963,7 +996,7 @@ export const Budget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Budget" }) as any as S.Schema<Budget>;
 
 /** The list of budgets. */
-export type BudgetsListResultValueList = Budget[];
+export type BudgetsListResultValueList = ReadonlyArray<Budget>;
 export const BudgetsListResultValueList = /*@__PURE__*/ S.Array(
   Budget,
 ) as any as S.Schema<BudgetsListResultValueList>;
@@ -1016,7 +1049,7 @@ export const ChargesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChargesListRequest>;
 
 /** Specifies the kind of charge summary. */
-export type ChargeSummaryKind = "legacy" | "modern" | (string & {});
+export type ChargeSummaryKind = "legacy" | "modern";
 export const ChargeSummaryKind = /*@__PURE__*/ S.String;
 
 /** A charge summary resource. */
@@ -1046,7 +1079,7 @@ export const ChargeSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChargeSummary" }) as any as S.Schema<ChargeSummary>;
 
 /** The list of charge summary */
-export type ChargesListResultValueList = ChargeSummary[];
+export type ChargesListResultValueList = ReadonlyArray<ChargeSummary>;
 export const ChargesListResultValueList = /*@__PURE__*/ S.Array(
   ChargeSummary,
 ) as any as S.Schema<ChargesListResultValueList>;
@@ -1260,8 +1293,7 @@ export type EventType =
   | "PendingExpiredCredit"
   | "UnKnown"
   | "NewCredit"
-  | "CreditExpired"
-  | (string & {});
+  | "CreditExpired";
 export const EventType = /*@__PURE__*/ S.String;
 
 /** The event properties. */
@@ -1379,7 +1411,7 @@ export const EventSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventSummary" }) as any as S.Schema<EventSummary>;
 
 /** The list of event summary. */
-export type EventsValueList = EventSummary[];
+export type EventsValueList = ReadonlyArray<EventSummary>;
 export const EventsValueList = /*@__PURE__*/ S.Array(
   EventSummary,
 ) as any as S.Schema<EventsValueList>;
@@ -1452,8 +1484,7 @@ export const LotsListByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export type LotSource =
   | "PurchasedCredit"
   | "PromotionalCredit"
-  | "ConsumptionCommitment"
-  | (string & {});
+  | "ConsumptionCommitment";
 export const LotSource = /*@__PURE__*/ S.String;
 
 /** The status of the lot. */
@@ -1463,12 +1494,11 @@ export type Status =
   | "Inactive"
   | "Expired"
   | "Complete"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const Status = /*@__PURE__*/ S.String;
 
 /** The organization type of the lot. */
-export type OrganizationType = "Primary" | "Contributor" | (string & {});
+export type OrganizationType = "Primary" | "Contributor";
 export const OrganizationType = /*@__PURE__*/ S.String;
 
 /** The lot properties. */
@@ -1557,7 +1587,7 @@ export const LotSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LotSummary" }) as any as S.Schema<LotSummary>;
 
 /** The list of lot summary. */
-export type LotsValueList = LotSummary[];
+export type LotsValueList = ReadonlyArray<LotSummary>;
 export const LotsValueList = /*@__PURE__*/ S.Array(
   LotSummary,
 ) as any as S.Schema<LotsValueList>;
@@ -1776,7 +1806,7 @@ export const Marketplace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Marketplace" }) as any as S.Schema<Marketplace>;
 
 /** The list of marketplaces. */
-export type MarketplacesListResultValueList = Marketplace[];
+export type MarketplacesListResultValueList = ReadonlyArray<Marketplace>;
 export const MarketplacesListResultValueList = /*@__PURE__*/ S.Array(
   Marketplace,
 ) as any as S.Schema<MarketplacesListResultValueList>;
@@ -1851,7 +1881,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of consumption operations supported by the Microsoft.Consumption resource provider. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1896,11 +1926,7 @@ export const PriceSheetDownloadByBillingAccountPeriodRequest =
   }) as any as S.Schema<PriceSheetDownloadByBillingAccountPeriodRequest>;
 
 /** The status of the long running operation. */
-export type OperationStatusType =
-  | "Running"
-  | "Completed"
-  | "Failed"
-  | (string & {});
+export type OperationStatusType = "Running" | "Completed" | "Failed";
 export const OperationStatusType = /*@__PURE__*/ S.String;
 
 /** The properties of the price sheet download. */
@@ -2056,7 +2082,8 @@ export const PriceSheetProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PriceSheetProperties>;
 
 /** Price sheet */
-export type PriceSheetModelPricesheetsList = PriceSheetProperties[];
+export type PriceSheetModelPricesheetsList =
+  ReadonlyArray<PriceSheetProperties>;
 export const PriceSheetModelPricesheetsList = /*@__PURE__*/ S.Array(
   PriceSheetProperties,
 ) as any as S.Schema<PriceSheetModelPricesheetsList>;
@@ -2193,24 +2220,21 @@ export const PriceSheetGetByBillingPeriodResponse = /*@__PURE__*/ S.suspend(
 
 export type ReservationRecommendationDetailsGetRequestScope =
   | "Single"
-  | "Shared"
-  | (string & {});
+  | "Shared";
 export const ReservationRecommendationDetailsGetRequestScope =
   /*@__PURE__*/ S.String;
 
 export type ReservationRecommendationDetailsGetRequestTerm =
   | "P1M"
   | "P1Y"
-  | "P3Y"
-  | (string & {});
+  | "P3Y";
 export const ReservationRecommendationDetailsGetRequestTerm =
   /*@__PURE__*/ S.String;
 
 export type ReservationRecommendationDetailsGetRequestLookBackPeriod =
   | "Last7Days"
   | "Last30Days"
-  | "Last60Days"
-  | (string & {});
+  | "Last60Days";
 export const ReservationRecommendationDetailsGetRequestLookBackPeriod =
   /*@__PURE__*/ S.String;
 
@@ -2257,7 +2281,7 @@ export const ReservationRecommendationDetailsGetRequest =
 
 /** List of subscriptions for which the reservation is applied. */
 export type ReservationRecommendationDetailsResourcePropertiesAppliedScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const ReservationRecommendationDetailsResourcePropertiesAppliedScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2328,7 +2352,7 @@ export const ReservationRecommendationDetailsCalculatedSavingsProperties =
 
 /** List of calculated savings. */
 export type ReservationRecommendationDetailsSavingsPropertiesCalculatedSavingsList =
-  ReservationRecommendationDetailsCalculatedSavingsProperties[];
+  ReadonlyArray<ReservationRecommendationDetailsCalculatedSavingsProperties>;
 export const ReservationRecommendationDetailsSavingsPropertiesCalculatedSavingsList =
   /*@__PURE__*/ S.Array(
     ReservationRecommendationDetailsCalculatedSavingsProperties,
@@ -2367,7 +2391,7 @@ export const ReservationRecommendationDetailsSavingsProperties =
 
 /** The breakdown of historical resource usage. The values are in the order of usage between the firstConsumptionDate and the lastConsumptionDate. */
 export type ReservationRecommendationDetailsUsagePropertiesUsageDataList =
-  number[];
+  ReadonlyArray<number>;
 export const ReservationRecommendationDetailsUsagePropertiesUsageDataList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -2505,8 +2529,7 @@ export type ReservationRecommendationSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ReservationRecommendationSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2515,8 +2538,7 @@ export type ReservationRecommendationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ReservationRecommendationSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2560,7 +2582,7 @@ export const ReservationRecommendationTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ReservationRecommendationTagsMap>;
 
 /** Specifies the kind of reservation recommendation. */
-export type ReservationRecommendationKind = "legacy" | "modern" | (string & {});
+export type ReservationRecommendationKind = "legacy" | "modern";
 export const ReservationRecommendationKind = /*@__PURE__*/ S.String;
 
 /** A reservation recommendation resource. */
@@ -2602,7 +2624,7 @@ export const ReservationRecommendation = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of reservation recommendations. */
 export type ReservationRecommendationsListResultValueList =
-  ReservationRecommendation[];
+  ReadonlyArray<ReservationRecommendation>;
 export const ReservationRecommendationsListResultValueList =
   /*@__PURE__*/ S.Array(
     ReservationRecommendation,
@@ -2744,7 +2766,8 @@ export const ReservationDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationDetail>;
 
 /** The list of reservation details. */
-export type ReservationDetailsListResultValueList = ReservationDetail[];
+export type ReservationDetailsListResultValueList =
+  ReadonlyArray<ReservationDetail>;
 export const ReservationDetailsListResultValueList = /*@__PURE__*/ S.Array(
   ReservationDetail,
 ) as any as S.Schema<ReservationDetailsListResultValueList>;
@@ -2815,10 +2838,7 @@ export const ReservationsDetailsListByReservationOrderAndReservationRequest =
       "ReservationsDetailsListByReservationOrderAndReservationRequest",
   }) as any as S.Schema<ReservationsDetailsListByReservationOrderAndReservationRequest>;
 
-export type ReservationsSummariesListRequestGrain =
-  | "daily"
-  | "monthly"
-  | (string & {});
+export type ReservationsSummariesListRequestGrain = "daily" | "monthly";
 export const ReservationsSummariesListRequestGrain = /*@__PURE__*/ S.String;
 
 export interface ReservationsSummariesListRequest {
@@ -2952,7 +2972,8 @@ export const ReservationSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationSummary>;
 
 /** The list of reservation summaries. */
-export type ReservationSummariesListResultValueList = ReservationSummary[];
+export type ReservationSummariesListResultValueList =
+  ReadonlyArray<ReservationSummary>;
 export const ReservationSummariesListResultValueList = /*@__PURE__*/ S.Array(
   ReservationSummary,
 ) as any as S.Schema<ReservationSummariesListResultValueList>;
@@ -2975,8 +2996,7 @@ export const ReservationSummariesListResult = /*@__PURE__*/ S.suspend(() =>
 
 export type ReservationsSummariesListByReservationOrderRequestGrain =
   | "daily"
-  | "monthly"
-  | (string & {});
+  | "monthly";
 export const ReservationsSummariesListByReservationOrderRequestGrain =
   /*@__PURE__*/ S.String;
 
@@ -3009,7 +3029,7 @@ export const ReservationsSummariesListByReservationOrderRequest =
   }) as any as S.Schema<ReservationsSummariesListByReservationOrderRequest>;
 
 export type ReservationsSummariesListByReservationOrderAndReservationRequestGrain =
-  "daily" | "monthly" | (string & {});
+  "daily" | "monthly";
 export const ReservationsSummariesListByReservationOrderAndReservationRequestGrain =
   /*@__PURE__*/ S.String;
 
@@ -3155,7 +3175,7 @@ export const LegacyReservationTransactionProperties = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LegacyReservationTransactionProperties>;
 
 /** Resource tags. */
-export type ReservationTransactionTagsList = string[];
+export type ReservationTransactionTagsList = ReadonlyArray<string>;
 export const ReservationTransactionTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReservationTransactionTagsList>;
@@ -3190,7 +3210,7 @@ export const ReservationTransaction = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of reservation recommendations. */
 export type ReservationTransactionsListResultValueList =
-  ReservationTransaction[];
+  ReadonlyArray<ReservationTransaction>;
 export const ReservationTransactionsListResultValueList = /*@__PURE__*/ S.Array(
   ReservationTransaction,
 ) as any as S.Schema<ReservationTransactionsListResultValueList>;
@@ -3309,7 +3329,7 @@ export const ModernReservationTransactionProperties = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ModernReservationTransactionProperties>;
 
 /** Resource tags. */
-export type ModernReservationTransactionTagsList = string[];
+export type ModernReservationTransactionTagsList = ReadonlyArray<string>;
 export const ModernReservationTransactionTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ModernReservationTransactionTagsList>;
@@ -3344,7 +3364,7 @@ export const ModernReservationTransaction = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of reservation recommendations. */
 export type ModernReservationTransactionsListResultValueList =
-  ModernReservationTransaction[];
+  ReadonlyArray<ModernReservationTransaction>;
 export const ModernReservationTransactionsListResultValueList =
   /*@__PURE__*/ S.Array(
     ModernReservationTransaction,
@@ -3385,7 +3405,7 @@ export const TagsGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagsGetRequest" }) as any as S.Schema<TagsGetRequest>;
 
 /** Tag values. */
-export type TagValueList = string[];
+export type TagValueList = ReadonlyArray<string>;
 export const TagValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TagValueList>;
@@ -3405,7 +3425,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 /** A list of Tag. */
-export type TagPropertiesTagsList = Tag[];
+export type TagPropertiesTagsList = ReadonlyArray<Tag>;
 export const TagPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag,
 ) as any as S.Schema<TagPropertiesTagsList>;
@@ -3457,8 +3477,7 @@ export const TagsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export type UsageDetailsListRequestMetric =
   | "actualcost"
   | "amortizedcost"
-  | "usage"
-  | (string & {});
+  | "usage";
 export const UsageDetailsListRequestMetric = /*@__PURE__*/ S.String;
 
 export interface UsageDetailsListRequest {
@@ -3496,7 +3515,7 @@ export const UsageDetailsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageDetailsListRequest>;
 
 /** Specifies the kind of usage details. */
-export type UsageDetailsKind = "legacy" | "modern" | (string & {});
+export type UsageDetailsKind = "legacy" | "modern";
 export const UsageDetailsKind = /*@__PURE__*/ S.String;
 
 /** Resource tags. */
@@ -3536,7 +3555,7 @@ export const UsageDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageDetail" }) as any as S.Schema<UsageDetail>;
 
 /** The list of usage details. */
-export type UsageDetailsListResultValueList = UsageDetail[];
+export type UsageDetailsListResultValueList = ReadonlyArray<UsageDetail>;
 export const UsageDetailsListResultValueList = /*@__PURE__*/ S.Array(
   UsageDetail,
 ) as any as S.Schema<UsageDetailsListResultValueList>;

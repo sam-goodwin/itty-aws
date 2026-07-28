@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -112,20 +112,18 @@ export type SasPortalDeviceStateEnum =
   | "DEVICE_STATE_UNSPECIFIED"
   | "RESERVED"
   | "REGISTERED"
-  | "DEREGISTERED"
-  | (string & {});
+  | "DEREGISTERED";
 export const SasPortalDeviceStateEnum = /*@__PURE__*/ S.String;
 
 export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnum =
   | "MEASUREMENT_CAPABILITY_UNSPECIFIED"
   | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITH_GRANT"
-  | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT"
-  | (string & {});
+  | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT";
 export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList =
-  SasPortalDeviceConfigMeasurementCapabilitiesItemEnum[];
+  ReadonlyArray<SasPortalDeviceConfigMeasurementCapabilitiesItemEnum>;
 export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList =
   /*@__PURE__*/ S.Array(
     SasPortalDeviceConfigMeasurementCapabilitiesItemEnum,
@@ -134,8 +132,7 @@ export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList =
 export type SasPortalDeviceConfigCategoryEnum =
   | "DEVICE_CATEGORY_UNSPECIFIED"
   | "DEVICE_CATEGORY_A"
-  | "DEVICE_CATEGORY_B"
-  | (string & {});
+  | "DEVICE_CATEGORY_B";
 export const SasPortalDeviceConfigCategoryEnum = /*@__PURE__*/ S.String;
 
 export type SasPortalDeviceAirInterfaceRadioTechnologyEnum =
@@ -148,8 +145,7 @@ export type SasPortalDeviceAirInterfaceRadioTechnologyEnum =
   | "CW"
   | "REDLINE"
   | "TARANA_WIRELESS"
-  | "FAROS"
-  | (string & {});
+  | "FAROS";
 export const SasPortalDeviceAirInterfaceRadioTechnologyEnum =
   /*@__PURE__*/ S.String;
 
@@ -172,8 +168,7 @@ export const SasPortalDeviceAirInterface = /*@__PURE__*/ S.suspend(() =>
 export type SasPortalInstallationParamsHeightTypeEnum =
   | "HEIGHT_TYPE_UNSPECIFIED"
   | "HEIGHT_TYPE_AGL"
-  | "HEIGHT_TYPE_AMSL"
-  | (string & {});
+  | "HEIGHT_TYPE_AMSL";
 export const SasPortalInstallationParamsHeightTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about the device installation parameters. */
@@ -256,8 +251,7 @@ export const SasPortalDeviceModel = /*@__PURE__*/ S.suspend(() =>
 export type SasPortalDeviceConfigStateEnum =
   | "DEVICE_CONFIG_STATE_UNSPECIFIED"
   | "DRAFT"
-  | "FINAL"
-  | (string & {});
+  | "FINAL";
 export const SasPortalDeviceConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about the device configuration. */
@@ -334,7 +328,7 @@ export const SasPortalDpaMoveList = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalDpaMoveList",
 }) as any as S.Schema<SasPortalDpaMoveList>;
 
-export type SasPortalDpaMoveListList = SasPortalDpaMoveList[];
+export type SasPortalDpaMoveListList = ReadonlyArray<SasPortalDpaMoveList>;
 export const SasPortalDpaMoveListList = /*@__PURE__*/ S.Array(
   SasPortalDpaMoveList,
 ) as any as S.Schema<SasPortalDpaMoveListList>;
@@ -345,15 +339,13 @@ export type SasPortalDeviceGrantStateEnum =
   | "GRANT_STATE_TERMINATED"
   | "GRANT_STATE_SUSPENDED"
   | "GRANT_STATE_AUTHORIZED"
-  | "GRANT_STATE_EXPIRED"
-  | (string & {});
+  | "GRANT_STATE_EXPIRED";
 export const SasPortalDeviceGrantStateEnum = /*@__PURE__*/ S.String;
 
 export type SasPortalDeviceGrantChannelTypeEnum =
   | "CHANNEL_TYPE_UNSPECIFIED"
   | "CHANNEL_TYPE_GAA"
-  | "CHANNEL_TYPE_PAL"
-  | (string & {});
+  | "CHANNEL_TYPE_PAL";
 export const SasPortalDeviceGrantChannelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Device grant. It is an authorization provided by the Spectrum Access System to a device to transmit using specified operating parameters after a successful heartbeat by the device. */
@@ -393,7 +385,7 @@ export const SasPortalDeviceGrant = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalDeviceGrant",
 }) as any as S.Schema<SasPortalDeviceGrant>;
 
-export type SasPortalDeviceGrantList = SasPortalDeviceGrant[];
+export type SasPortalDeviceGrantList = ReadonlyArray<SasPortalDeviceGrant>;
 export const SasPortalDeviceGrantList = /*@__PURE__*/ S.Array(
   SasPortalDeviceGrant,
 ) as any as S.Schema<SasPortalDeviceGrantList>;
@@ -401,8 +393,7 @@ export const SasPortalDeviceGrantList = /*@__PURE__*/ S.Array(
 export type SasPortalNrqzValidationStateEnum =
   | "STATE_UNSPECIFIED"
   | "DRAFT"
-  | "FINAL"
-  | (string & {});
+  | "FINAL";
 export const SasPortalNrqzValidationStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about National Radio Quiet Zone validation. */
@@ -455,7 +446,8 @@ export const SasPortalDeviceMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalDeviceMetadata",
 }) as any as S.Schema<SasPortalDeviceMetadata>;
 
-export type SasPortalFrequencyRangeList = SasPortalFrequencyRange[];
+export type SasPortalFrequencyRangeList =
+  ReadonlyArray<SasPortalFrequencyRange>;
 export const SasPortalFrequencyRangeList = /*@__PURE__*/ S.Array(
   SasPortalFrequencyRange,
 ) as any as S.Schema<SasPortalFrequencyRangeList>;
@@ -476,7 +468,8 @@ export const SasPortalChannelWithScore = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalChannelWithScore",
 }) as any as S.Schema<SasPortalChannelWithScore>;
 
-export type SasPortalChannelWithScoreList = SasPortalChannelWithScore[];
+export type SasPortalChannelWithScoreList =
+  ReadonlyArray<SasPortalChannelWithScore>;
 export const SasPortalChannelWithScoreList = /*@__PURE__*/ S.Array(
   SasPortalChannelWithScore,
 ) as any as S.Schema<SasPortalChannelWithScoreList>;
@@ -1358,7 +1351,7 @@ export const SasPortalAssignment = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalAssignment",
 }) as any as S.Schema<SasPortalAssignment>;
 
-export type SasPortalAssignmentList = SasPortalAssignment[];
+export type SasPortalAssignmentList = ReadonlyArray<SasPortalAssignment>;
 export const SasPortalAssignmentList = /*@__PURE__*/ S.Array(
   SasPortalAssignment,
 ) as any as S.Schema<SasPortalAssignmentList>;
@@ -1400,7 +1393,7 @@ export const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersRequest",
 }) as any as S.Schema<ListCustomersRequest>;
 
-export type SasPortalCustomerList = SasPortalCustomer[];
+export type SasPortalCustomerList = ReadonlyArray<SasPortalCustomer>;
 export const SasPortalCustomerList = /*@__PURE__*/ S.Array(
   SasPortalCustomer,
 ) as any as S.Schema<SasPortalCustomerList>;
@@ -1448,7 +1441,7 @@ export const ListCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersDeploymentsRequest",
 }) as any as S.Schema<ListCustomersDeploymentsRequest>;
 
-export type SasPortalDeploymentList = SasPortalDeployment[];
+export type SasPortalDeploymentList = ReadonlyArray<SasPortalDeployment>;
 export const SasPortalDeploymentList = /*@__PURE__*/ S.Array(
   SasPortalDeployment,
 ) as any as S.Schema<SasPortalDeploymentList>;
@@ -1497,7 +1490,7 @@ export const ListCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListCustomersDeploymentsDevicesRequest",
 }) as any as S.Schema<ListCustomersDeploymentsDevicesRequest>;
 
-export type SasPortalDeviceList = SasPortalDevice[];
+export type SasPortalDeviceList = ReadonlyArray<SasPortalDevice>;
 export const SasPortalDeviceList = /*@__PURE__*/ S.Array(
   SasPortalDevice,
 ) as any as S.Schema<SasPortalDeviceList>;
@@ -1572,7 +1565,7 @@ export const ListCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomersNodesRequest",
 }) as any as S.Schema<ListCustomersNodesRequest>;
 
-export type SasPortalNodeList = SasPortalNode[];
+export type SasPortalNodeList = ReadonlyArray<SasPortalNode>;
 export const SasPortalNodeList = /*@__PURE__*/ S.Array(
   SasPortalNode,
 ) as any as S.Schema<SasPortalNodeList>;
@@ -1705,7 +1698,8 @@ export const SasPortalGcpProjectDeployment = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalGcpProjectDeployment",
 }) as any as S.Schema<SasPortalGcpProjectDeployment>;
 
-export type SasPortalGcpProjectDeploymentList = SasPortalGcpProjectDeployment[];
+export type SasPortalGcpProjectDeploymentList =
+  ReadonlyArray<SasPortalGcpProjectDeployment>;
 export const SasPortalGcpProjectDeploymentList = /*@__PURE__*/ S.Array(
   SasPortalGcpProjectDeployment,
 ) as any as S.Schema<SasPortalGcpProjectDeploymentList>;
@@ -1754,7 +1748,7 @@ export const SasPortalOrganization = /*@__PURE__*/ S.suspend(() =>
   identifier: "SasPortalOrganization",
 }) as any as S.Schema<SasPortalOrganization>;
 
-export type SasPortalOrganizationList = SasPortalOrganization[];
+export type SasPortalOrganizationList = ReadonlyArray<SasPortalOrganization>;
 export const SasPortalOrganizationList = /*@__PURE__*/ S.Array(
   SasPortalOrganization,
 ) as any as S.Schema<SasPortalOrganizationList>;
@@ -1999,7 +1993,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;

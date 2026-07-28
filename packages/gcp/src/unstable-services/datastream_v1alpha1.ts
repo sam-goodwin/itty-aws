@@ -323,7 +323,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -390,8 +390,7 @@ export type PrivateConnectionStateEnum =
   | "CREATED"
   | "FAILED"
   | "DELETING"
-  | "FAILED_TO_DELETE"
-  | (string & {});
+  | "FAILED_TO_DELETE";
 export const PrivateConnectionStateEnum = /*@__PURE__*/ S.String;
 
 /** Represent a user-facing Error. */
@@ -538,15 +537,14 @@ export const CreateProjectsLocationsPrivateConnectionsRoutesRequest =
     identifier: "CreateProjectsLocationsPrivateConnectionsRoutesRequest",
   }) as any as S.Schema<CreateProjectsLocationsPrivateConnectionsRoutesRequest>;
 
-export type Datastream_ErrorList = Datastream_Error[];
+export type Datastream_ErrorList = ReadonlyArray<Datastream_Error>;
 export const Datastream_ErrorList = /*@__PURE__*/ S.Array(
   Datastream_Error,
 ) as any as S.Schema<Datastream_ErrorList>;
 
 export type GcsDestinationConfigGcsFileFormatEnum =
   | "GCS_FILE_FORMAT_UNSPECIFIED"
-  | "AVRO"
-  | (string & {});
+  | "AVRO";
 export const GcsDestinationConfigGcsFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** AVRO file format configuration. */
@@ -558,15 +556,13 @@ export const AvroFileFormat = /*@__PURE__*/ S.suspend(() =>
 export type JsonFileFormatSchemaFileFormatEnum =
   | "SCHEMA_FILE_FORMAT_UNSPECIFIED"
   | "NO_SCHEMA_FILE"
-  | "AVRO_SCHEMA_FILE"
-  | (string & {});
+  | "AVRO_SCHEMA_FILE";
 export const JsonFileFormatSchemaFileFormatEnum = /*@__PURE__*/ S.String;
 
 export type JsonFileFormatCompressionEnum =
   | "JSON_COMPRESSION_UNSPECIFIED"
   | "NO_COMPRESSION"
-  | "GZIP"
-  | (string & {});
+  | "GZIP";
 export const JsonFileFormatCompressionEnum = /*@__PURE__*/ S.String;
 
 /** JSON file format configuration. */
@@ -662,7 +658,7 @@ export const OracleColumn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OracleColumn" }) as any as S.Schema<OracleColumn>;
 
-export type OracleColumnList = OracleColumn[];
+export type OracleColumnList = ReadonlyArray<OracleColumn>;
 export const OracleColumnList = /*@__PURE__*/ S.Array(
   OracleColumn,
 ) as any as S.Schema<OracleColumnList>;
@@ -681,7 +677,7 @@ export const OracleTable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OracleTable" }) as any as S.Schema<OracleTable>;
 
-export type OracleTableList = OracleTable[];
+export type OracleTableList = ReadonlyArray<OracleTable>;
 export const OracleTableList = /*@__PURE__*/ S.Array(
   OracleTable,
 ) as any as S.Schema<OracleTableList>;
@@ -700,7 +696,7 @@ export const OracleSchema = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OracleSchema" }) as any as S.Schema<OracleSchema>;
 
-export type OracleSchemaList = OracleSchema[];
+export type OracleSchemaList = ReadonlyArray<OracleSchema>;
 export const OracleSchemaList = /*@__PURE__*/ S.Array(
   OracleSchema,
 ) as any as S.Schema<OracleSchemaList>;
@@ -745,7 +741,7 @@ export const MysqlColumn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MysqlColumn" }) as any as S.Schema<MysqlColumn>;
 
-export type MysqlColumnList = MysqlColumn[];
+export type MysqlColumnList = ReadonlyArray<MysqlColumn>;
 export const MysqlColumnList = /*@__PURE__*/ S.Array(
   MysqlColumn,
 ) as any as S.Schema<MysqlColumnList>;
@@ -764,7 +760,7 @@ export const MysqlTable = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MysqlTable" }) as any as S.Schema<MysqlTable>;
 
-export type MysqlTableList = MysqlTable[];
+export type MysqlTableList = ReadonlyArray<MysqlTable>;
 export const MysqlTableList = /*@__PURE__*/ S.Array(
   MysqlTable,
 ) as any as S.Schema<MysqlTableList>;
@@ -783,7 +779,7 @@ export const MysqlDatabase = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MysqlDatabase" }) as any as S.Schema<MysqlDatabase>;
 
-export type MysqlDatabaseList = MysqlDatabase[];
+export type MysqlDatabaseList = ReadonlyArray<MysqlDatabase>;
 export const MysqlDatabaseList = /*@__PURE__*/ S.Array(
   MysqlDatabase,
 ) as any as S.Schema<MysqlDatabaseList>;
@@ -884,8 +880,7 @@ export type StreamStateEnum =
   | "FAILED"
   | "FAILED_PERMANENTLY"
   | "STARTING"
-  | "DRAINING"
-  | (string & {});
+  | "DRAINING";
 export const StreamStateEnum = /*@__PURE__*/ S.String;
 
 /** Backfill strategy to disable automatic backfill for the Stream's objects. */
@@ -1203,7 +1198,7 @@ export const FetchStaticIpsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "FetchStaticIpsProjectsLocationsRequest",
 }) as any as S.Schema<FetchStaticIpsProjectsLocationsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -1434,15 +1429,13 @@ export type BackfillJobStateEnum =
   | "STOPPED"
   | "FAILED"
   | "COMPLETED"
-  | "UNSUPPORTED"
-  | (string & {});
+  | "UNSUPPORTED";
 export const BackfillJobStateEnum = /*@__PURE__*/ S.String;
 
 export type BackfillJobTriggerEnum =
   | "TRIGGER_UNSPECIFIED"
   | "AUTOMATIC"
-  | "MANUAL"
-  | (string & {});
+  | "MANUAL";
 export const BackfillJobTriggerEnum = /*@__PURE__*/ S.String;
 
 /** Represents a backfill job on a specific stream object. */
@@ -1527,7 +1520,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1579,7 +1572,7 @@ export const ListProjectsLocationsConnectionProfilesRequest =
     identifier: "ListProjectsLocationsConnectionProfilesRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>;
 
-export type ConnectionProfileList = ConnectionProfile[];
+export type ConnectionProfileList = ReadonlyArray<ConnectionProfile>;
 export const ConnectionProfileList = /*@__PURE__*/ S.Array(
   ConnectionProfile,
 ) as any as S.Schema<ConnectionProfileList>;
@@ -1633,7 +1626,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1688,7 +1681,7 @@ export const ListProjectsLocationsPrivateConnectionsRequest =
     identifier: "ListProjectsLocationsPrivateConnectionsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
 
-export type PrivateConnectionList = PrivateConnection[];
+export type PrivateConnectionList = ReadonlyArray<PrivateConnection>;
 export const PrivateConnectionList = /*@__PURE__*/ S.Array(
   PrivateConnection,
 ) as any as S.Schema<PrivateConnectionList>;
@@ -1742,7 +1735,7 @@ export const ListProjectsLocationsPrivateConnectionsRoutesRequest =
     identifier: "ListProjectsLocationsPrivateConnectionsRoutesRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRoutesRequest>;
 
-export type RouteList = Route[];
+export type RouteList = ReadonlyArray<Route>;
 export const RouteList = /*@__PURE__*/ S.Array(
   Route,
 ) as any as S.Schema<RouteList>;
@@ -1796,7 +1789,7 @@ export const ListProjectsLocationsStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsStreamsRequest",
 }) as any as S.Schema<ListProjectsLocationsStreamsRequest>;
 
-export type StreamList = Stream[];
+export type StreamList = ReadonlyArray<Stream>;
 export const StreamList = /*@__PURE__*/ S.Array(
   Stream,
 ) as any as S.Schema<StreamList>;
@@ -1844,7 +1837,7 @@ export const ListProjectsLocationsStreamsObjectsRequest =
     identifier: "ListProjectsLocationsStreamsObjectsRequest",
   }) as any as S.Schema<ListProjectsLocationsStreamsObjectsRequest>;
 
-export type StreamObjectList = StreamObject[];
+export type StreamObjectList = ReadonlyArray<StreamObject>;
 export const StreamObjectList = /*@__PURE__*/ S.Array(
   StreamObject,
 ) as any as S.Schema<StreamObjectList>;

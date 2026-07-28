@@ -13,94 +13,21 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface AssetEndpointProfilesCreateOrReplaceRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Asset Endpoint Profile name parameter. */
-  assetEndpointProfileName: string;
-  body: unknown;
-}
-export const AssetEndpointProfilesCreateOrReplaceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      assetEndpointProfileName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
-        code: 200,
-        apiVersion: "2026-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "AssetEndpointProfilesCreateOrReplaceRequest",
-  }) as any as S.Schema<AssetEndpointProfilesCreateOrReplaceRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
-export type AssetEndpointProfilesCreateOrReplaceResponseTagsMap = {
+export type AssetEndpointProfilesCreateOrReplaceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const AssetEndpointProfilesCreateOrReplaceResponseTagsMap =
+export const AssetEndpointProfilesCreateOrReplaceRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<AssetEndpointProfilesCreateOrReplaceResponseTagsMap>;
+  ) as any as S.Schema<AssetEndpointProfilesCreateOrReplaceRequestTagsMap>;
 
 /** Defines the method to authenticate the user of the client at the server. */
 export type AuthenticationMethod =
   | "Anonymous"
   | "Certificate"
-  | "UsernamePassword"
-  | (string & {});
+  | "UsernamePassword";
 export const AuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** The credentials for authentication mode UsernamePassword. */
@@ -149,6 +76,137 @@ export const Authentication = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Authentication" }) as any as S.Schema<Authentication>;
 
+/** Defines the Asset Endpoint Profile properties. */
+export interface AssetEndpointProfilePropertiesInput {
+  /** The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration. */
+  targetAddress: string;
+  /** Defines the configuration for the connector type that is being used with the endpoint profile. */
+  endpointProfileType: string;
+  /** Defines the client authentication mechanism to the server. */
+  authentication?: Authentication;
+  /** Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF). */
+  additionalConfiguration?: string;
+  /** Reference to a discovered asset endpoint profile. Populated only if the asset endpoint profile has been created from discovery flow. Discovered asset endpoint profile name must be provided. */
+  discoveredAssetEndpointProfileRef?: string;
+}
+export const AssetEndpointProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetAddress: S.String,
+    endpointProfileType: S.String,
+    authentication: S.optional(Authentication),
+    additionalConfiguration: S.optional(S.String),
+    discoveredAssetEndpointProfileRef: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AssetEndpointProfilePropertiesInput",
+}) as any as S.Schema<AssetEndpointProfilePropertiesInput>;
+
+/** The extended location. */
+export interface ExtendedLocation {
+  /** The extended location type. */
+  type: string;
+  /** The extended location name. */
+  name: string;
+}
+export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "ExtendedLocation",
+}) as any as S.Schema<ExtendedLocation>;
+
+export interface AssetEndpointProfilesCreateOrReplaceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Asset Endpoint Profile name parameter. */
+  assetEndpointProfileName: string;
+  /** Resource tags. */
+  tags?: AssetEndpointProfilesCreateOrReplaceRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: AssetEndpointProfilePropertiesInput;
+  /** The extended location. */
+  extendedLocation: ExtendedLocation;
+}
+export const AssetEndpointProfilesCreateOrReplaceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      assetEndpointProfileName: S.String.pipe(T.Label()),
+      tags: S.optional(AssetEndpointProfilesCreateOrReplaceRequestTagsMap),
+      location: S.String,
+      properties: S.optional(AssetEndpointProfilePropertiesInput),
+      extendedLocation: ExtendedLocation,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/assetEndpointProfiles/{assetEndpointProfileName}",
+        code: 200,
+        apiVersion: "2026-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "AssetEndpointProfilesCreateOrReplaceRequest",
+  }) as any as S.Schema<AssetEndpointProfilesCreateOrReplaceRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** Resource tags. */
+export type AssetEndpointProfilesCreateOrReplaceResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AssetEndpointProfilesCreateOrReplaceResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AssetEndpointProfilesCreateOrReplaceResponseTagsMap>;
+
 /** Defines the asset endpoint profile status error properties. */
 export interface AssetEndpointProfileStatusError {
   /** Error code for classification of errors (ex: 400, 404, 500, etc.). */
@@ -167,7 +225,7 @@ export const AssetEndpointProfileStatusError = /*@__PURE__*/ S.suspend(() =>
 
 /** Array object to transfer and persist errors that originate from the Edge. */
 export type AssetEndpointProfileStatusErrorsList =
-  AssetEndpointProfileStatusError[];
+  ReadonlyArray<AssetEndpointProfileStatusError>;
 export const AssetEndpointProfileStatusErrorsList = /*@__PURE__*/ S.Array(
   AssetEndpointProfileStatusError,
 ) as any as S.Schema<AssetEndpointProfileStatusErrorsList>;
@@ -191,8 +249,7 @@ export type ProvisioningState =
   | "Failed"
   | "Canceled"
   | "Accepted"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Defines the Asset Endpoint Profile properties. */
@@ -228,22 +285,6 @@ export const AssetEndpointProfileProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssetEndpointProfileProperties",
 }) as any as S.Schema<AssetEndpointProfileProperties>;
-
-/** The extended location. */
-export interface ExtendedLocation {
-  /** The extended location type. */
-  type: string;
-  /** The extended location name. */
-  name: string;
-}
-export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ExtendedLocation",
-}) as any as S.Schema<ExtendedLocation>;
 
 export interface AssetEndpointProfilesCreateOrReplaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -443,7 +484,8 @@ export const AssetEndpointProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetEndpointProfile>;
 
 /** The AssetEndpointProfile items on this page */
-export type AssetEndpointProfileListResultValueList = AssetEndpointProfile[];
+export type AssetEndpointProfileListResultValueList =
+  ReadonlyArray<AssetEndpointProfile>;
 export const AssetEndpointProfileListResultValueList = /*@__PURE__*/ S.Array(
   AssetEndpointProfile,
 ) as any as S.Schema<AssetEndpointProfileListResultValueList>;
@@ -484,6 +526,93 @@ export const AssetEndpointProfilesListBySubscriptionRequest =
     identifier: "AssetEndpointProfilesListBySubscriptionRequest",
   }) as any as S.Schema<AssetEndpointProfilesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type AssetEndpointProfilesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AssetEndpointProfilesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AssetEndpointProfilesUpdateRequestTagsMap>;
+
+/** Defines the method to authenticate the user of the client at the server. */
+export type AuthenticationUpdateMethod =
+  | "Anonymous"
+  | "Certificate"
+  | "UsernamePassword";
+export const AuthenticationUpdateMethod = /*@__PURE__*/ S.String;
+
+/** The credentials for authentication mode UsernamePassword. */
+export interface UsernamePasswordCredentialsUpdate {
+  /** The name of the secret containing the username. */
+  usernameSecretName?: string;
+  /** The name of the secret containing the password. */
+  passwordSecretName?: string | Redacted.Redacted<string>;
+}
+export const UsernamePasswordCredentialsUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    usernameSecretName: S.optional(S.String),
+    passwordSecretName: S.optional(S.String.pipe(T.SensitiveValue({}))),
+  }),
+).annotate({
+  identifier: "UsernamePasswordCredentialsUpdate",
+}) as any as S.Schema<UsernamePasswordCredentialsUpdate>;
+
+/** The x509 certificate for authentication mode Certificate. */
+export interface X509CredentialsUpdate {
+  /** The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx). */
+  certificateSecretName?: string;
+}
+export const X509CredentialsUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    certificateSecretName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "X509CredentialsUpdate",
+}) as any as S.Schema<X509CredentialsUpdate>;
+
+/** Definition of the client authentication mechanism to the server. */
+export interface AuthenticationUpdate {
+  /** Defines the method to authenticate the user of the client at the server. */
+  method?: AuthenticationUpdateMethod;
+  /** Defines the username and password references when UsernamePassword user authentication mode is selected. */
+  usernamePasswordCredentials?: UsernamePasswordCredentialsUpdate;
+  /** Defines the certificate reference when Certificate user authentication mode is selected. */
+  x509Credentials?: X509CredentialsUpdate;
+}
+export const AuthenticationUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    method: S.optional(AuthenticationUpdateMethod),
+    usernamePasswordCredentials: S.optional(UsernamePasswordCredentialsUpdate),
+    x509Credentials: S.optional(X509CredentialsUpdate),
+  }),
+).annotate({
+  identifier: "AuthenticationUpdate",
+}) as any as S.Schema<AuthenticationUpdate>;
+
+/** The updatable properties of the AssetEndpointProfile. */
+export interface AssetEndpointProfileUpdateProperties {
+  /** The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration. */
+  targetAddress?: string;
+  /** Defines the configuration for the connector type that is being used with the endpoint profile. */
+  endpointProfileType?: string;
+  /** Defines the client authentication mechanism to the server. */
+  authentication?: AuthenticationUpdate;
+  /** Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF). */
+  additionalConfiguration?: string;
+}
+export const AssetEndpointProfileUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      targetAddress: S.optional(S.String),
+      endpointProfileType: S.optional(S.String),
+      authentication: S.optional(AuthenticationUpdate),
+      additionalConfiguration: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AssetEndpointProfileUpdateProperties",
+}) as any as S.Schema<AssetEndpointProfileUpdateProperties>;
+
 export interface AssetEndpointProfilesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -491,14 +620,18 @@ export interface AssetEndpointProfilesUpdateRequest {
   resourceGroupName: string;
   /** Asset Endpoint Profile name parameter. */
   assetEndpointProfileName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AssetEndpointProfilesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: AssetEndpointProfileUpdateProperties;
 }
 export const AssetEndpointProfilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     assetEndpointProfileName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AssetEndpointProfilesUpdateRequestTagsMap),
+    properties: S.optional(AssetEndpointProfileUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -554,6 +687,215 @@ export const AssetEndpointProfilesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssetEndpointProfilesUpdateResponse",
 }) as any as S.Schema<AssetEndpointProfilesUpdateResponse>;
 
+/** Resource tags. */
+export type AssetsCreateOrReplaceRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AssetsCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AssetsCreateOrReplaceRequestTagsMap>;
+
+/** A set of key-value pairs that contain custom attributes set by the customer. */
+export type AssetPropertiesInputAttributesMap = {
+  [key: string]: unknown | undefined;
+};
+export const AssetPropertiesInputAttributesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<AssetPropertiesInputAttributesMap>;
+
+/** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
+export type AssetPropertiesInputDiscoveredAssetRefsList = ReadonlyArray<string>;
+export const AssetPropertiesInputDiscoveredAssetRefsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AssetPropertiesInputDiscoveredAssetRefsList>;
+
+/** When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'. */
+export type TopicRetain = "Keep" | "Never";
+export const TopicRetain = /*@__PURE__*/ S.String;
+
+/** Object that describes the topic information. */
+export interface Topic {
+  /** The topic path for messages published to an MQTT broker. */
+  path: string;
+  /** When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'. */
+  retain?: TopicRetain;
+}
+export const Topic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.String,
+    retain: S.optional(TopicRetain),
+  }),
+).annotate({ identifier: "Topic" }) as any as S.Schema<Topic>;
+
+/** An indication of how the data point should be mapped to OpenTelemetry. */
+export type DataPointObservabilityMode =
+  | "None"
+  | "Counter"
+  | "Gauge"
+  | "Histogram"
+  | "Log";
+export const DataPointObservabilityMode = /*@__PURE__*/ S.String;
+
+/** Defines the data point properties. */
+export interface DataPoint {
+  /** The name of the data point. */
+  name: string;
+  /** The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset. */
+  dataSource: string;
+  /** Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize. */
+  dataPointConfiguration?: string;
+  /** An indication of how the data point should be mapped to OpenTelemetry. */
+  observabilityMode?: DataPointObservabilityMode;
+}
+export const DataPoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    dataSource: S.String,
+    dataPointConfiguration: S.optional(S.String),
+    observabilityMode: S.optional(DataPointObservabilityMode),
+  }),
+).annotate({ identifier: "DataPoint" }) as any as S.Schema<DataPoint>;
+
+/** Array of data points that are part of the dataset. Each data point can have per-data point configuration. */
+export type DatasetDataPointsList = ReadonlyArray<DataPoint>;
+export const DatasetDataPointsList = /*@__PURE__*/ S.Array(
+  DataPoint,
+) as any as S.Schema<DatasetDataPointsList>;
+
+/** Defines the dataset properties. */
+export interface Dataset {
+  /** Name of the dataset. */
+  name: string;
+  /** Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset. */
+  datasetConfiguration?: string;
+  /** Object that describes the topic information for the specific dataset. */
+  topic?: Topic;
+  /** Array of data points that are part of the dataset. Each data point can have per-data point configuration. */
+  dataPoints?: DatasetDataPointsList;
+}
+export const Dataset = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    datasetConfiguration: S.optional(S.String),
+    topic: S.optional(Topic),
+    dataPoints: S.optional(DatasetDataPointsList),
+  }),
+).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
+
+/** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
+export type AssetPropertiesInputDatasetsList = ReadonlyArray<Dataset>;
+export const AssetPropertiesInputDatasetsList = /*@__PURE__*/ S.Array(
+  Dataset,
+) as any as S.Schema<AssetPropertiesInputDatasetsList>;
+
+/** An indication of how the event should be mapped to OpenTelemetry. */
+export type EventObservabilityMode = "None" | "Log";
+export const EventObservabilityMode = /*@__PURE__*/ S.String;
+
+/** Defines the event properties. */
+export interface Event {
+  /** The name of the event. */
+  name: string;
+  /** The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset. */
+  eventNotifier: string;
+  /** Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize. */
+  eventConfiguration?: string;
+  /** Object that describes the topic information for the specific event. */
+  topic?: Topic;
+  /** An indication of how the event should be mapped to OpenTelemetry. */
+  observabilityMode?: EventObservabilityMode;
+}
+export const Event = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    eventNotifier: S.String,
+    eventConfiguration: S.optional(S.String),
+    topic: S.optional(Topic),
+    observabilityMode: S.optional(EventObservabilityMode),
+  }),
+).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
+
+/** Array of events that are part of the asset. Each event can have per-event configuration. */
+export type AssetPropertiesInputEventsList = ReadonlyArray<Event>;
+export const AssetPropertiesInputEventsList = /*@__PURE__*/ S.Array(
+  Event,
+) as any as S.Schema<AssetPropertiesInputEventsList>;
+
+/** Defines the asset properties. */
+export interface AssetPropertiesInput {
+  /** Enabled/Disabled status of the asset. */
+  enabled?: boolean;
+  /** Asset id provided by the customer. */
+  externalAssetId?: string;
+  /** Human-readable display name. */
+  displayName?: string;
+  /** Human-readable description of the asset. */
+  description?: string;
+  /** A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name. */
+  assetEndpointProfileRef: string;
+  /** Asset manufacturer name. */
+  manufacturer?: string;
+  /** Asset manufacturer URI. */
+  manufacturerUri?: string;
+  /** Asset model name. */
+  model?: string;
+  /** Asset product code. */
+  productCode?: string;
+  /** Revision number of the hardware. */
+  hardwareRevision?: string;
+  /** Revision number of the software. */
+  softwareRevision?: string;
+  /** Reference to the documentation. */
+  documentationUri?: string;
+  /** Asset serial number. */
+  serialNumber?: string;
+  /** A set of key-value pairs that contain custom attributes set by the customer. */
+  attributes?: AssetPropertiesInputAttributesMap;
+  /** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
+  discoveredAssetRefs?: AssetPropertiesInputDiscoveredAssetRefsList;
+  /** Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here. */
+  defaultDatasetsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. */
+  defaultEventsConfiguration?: string;
+  /** Object that describes the default topic information for the asset. */
+  defaultTopic?: Topic;
+  /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
+  datasets?: AssetPropertiesInputDatasetsList;
+  /** Array of events that are part of the asset. Each event can have per-event configuration. */
+  events?: AssetPropertiesInputEventsList;
+}
+export const AssetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    externalAssetId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    assetEndpointProfileRef: S.String,
+    manufacturer: S.optional(S.String),
+    manufacturerUri: S.optional(S.String),
+    model: S.optional(S.String),
+    productCode: S.optional(S.String),
+    hardwareRevision: S.optional(S.String),
+    softwareRevision: S.optional(S.String),
+    documentationUri: S.optional(S.String),
+    serialNumber: S.optional(S.String),
+    attributes: S.optional(AssetPropertiesInputAttributesMap),
+    discoveredAssetRefs: S.optional(
+      AssetPropertiesInputDiscoveredAssetRefsList,
+    ),
+    defaultDatasetsConfiguration: S.optional(S.String),
+    defaultEventsConfiguration: S.optional(S.String),
+    defaultTopic: S.optional(Topic),
+    datasets: S.optional(AssetPropertiesInputDatasetsList),
+    events: S.optional(AssetPropertiesInputEventsList),
+  }),
+).annotate({
+  identifier: "AssetPropertiesInput",
+}) as any as S.Schema<AssetPropertiesInput>;
+
 export interface AssetsCreateOrReplaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -561,14 +903,24 @@ export interface AssetsCreateOrReplaceRequest {
   resourceGroupName: string;
   /** Asset name parameter. */
   assetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AssetsCreateOrReplaceRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: AssetPropertiesInput;
+  /** The extended location. */
+  extendedLocation: ExtendedLocation;
 }
 export const AssetsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     assetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AssetsCreateOrReplaceRequestTagsMap),
+    location: S.String,
+    properties: S.optional(AssetPropertiesInput),
+    extendedLocation: ExtendedLocation,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -600,120 +952,19 @@ export const AssetPropertiesAttributesMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AssetPropertiesAttributesMap>;
 
 /** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
-export type AssetPropertiesDiscoveredAssetRefsList = string[];
+export type AssetPropertiesDiscoveredAssetRefsList = ReadonlyArray<string>;
 export const AssetPropertiesDiscoveredAssetRefsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AssetPropertiesDiscoveredAssetRefsList>;
 
-/** When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'. */
-export type TopicRetain = "Keep" | "Never" | (string & {});
-export const TopicRetain = /*@__PURE__*/ S.String;
-
-/** Object that describes the topic information. */
-export interface Topic {
-  /** The topic path for messages published to an MQTT broker. */
-  path: string;
-  /** When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'. */
-  retain?: TopicRetain;
-}
-export const Topic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.String,
-    retain: S.optional(TopicRetain),
-  }),
-).annotate({ identifier: "Topic" }) as any as S.Schema<Topic>;
-
-/** An indication of how the data point should be mapped to OpenTelemetry. */
-export type DataPointObservabilityMode =
-  | "None"
-  | "Counter"
-  | "Gauge"
-  | "Histogram"
-  | "Log"
-  | (string & {});
-export const DataPointObservabilityMode = /*@__PURE__*/ S.String;
-
-/** Defines the data point properties. */
-export interface DataPoint {
-  /** The name of the data point. */
-  name: string;
-  /** The address of the source of the data in the asset (e.g. URL) so that a client can access the data source on the asset. */
-  dataSource: string;
-  /** Stringified JSON that contains connector-specific configuration for the data point. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize. */
-  dataPointConfiguration?: string;
-  /** An indication of how the data point should be mapped to OpenTelemetry. */
-  observabilityMode?: DataPointObservabilityMode;
-}
-export const DataPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    dataSource: S.String,
-    dataPointConfiguration: S.optional(S.String),
-    observabilityMode: S.optional(DataPointObservabilityMode),
-  }),
-).annotate({ identifier: "DataPoint" }) as any as S.Schema<DataPoint>;
-
-/** Array of data points that are part of the dataset. Each data point can have per-data point configuration. */
-export type DatasetDataPointsList = DataPoint[];
-export const DatasetDataPointsList = /*@__PURE__*/ S.Array(
-  DataPoint,
-) as any as S.Schema<DatasetDataPointsList>;
-
-/** Defines the dataset properties. */
-export interface Dataset {
-  /** Name of the dataset. */
-  name: string;
-  /** Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset. */
-  datasetConfiguration?: string;
-  /** Object that describes the topic information for the specific dataset. */
-  topic?: Topic;
-  /** Array of data points that are part of the dataset. Each data point can have per-data point configuration. */
-  dataPoints?: DatasetDataPointsList;
-}
-export const Dataset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    datasetConfiguration: S.optional(S.String),
-    topic: S.optional(Topic),
-    dataPoints: S.optional(DatasetDataPointsList),
-  }),
-).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
-
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
-export type AssetPropertiesDatasetsList = Dataset[];
+export type AssetPropertiesDatasetsList = ReadonlyArray<Dataset>;
 export const AssetPropertiesDatasetsList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<AssetPropertiesDatasetsList>;
 
-/** An indication of how the event should be mapped to OpenTelemetry. */
-export type EventObservabilityMode = "None" | "Log" | (string & {});
-export const EventObservabilityMode = /*@__PURE__*/ S.String;
-
-/** Defines the event properties. */
-export interface Event {
-  /** The name of the event. */
-  name: string;
-  /** The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset. */
-  eventNotifier: string;
-  /** Stringified JSON that contains connector-specific configuration for the event. For OPC UA, this could include configuration like, publishingInterval, samplingInterval, and queueSize. */
-  eventConfiguration?: string;
-  /** Object that describes the topic information for the specific event. */
-  topic?: Topic;
-  /** An indication of how the event should be mapped to OpenTelemetry. */
-  observabilityMode?: EventObservabilityMode;
-}
-export const Event = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    eventNotifier: S.String,
-    eventConfiguration: S.optional(S.String),
-    topic: S.optional(Topic),
-    observabilityMode: S.optional(EventObservabilityMode),
-  }),
-).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
-
 /** Array of events that are part of the asset. Each event can have per-event configuration. */
-export type AssetPropertiesEventsList = Event[];
+export type AssetPropertiesEventsList = ReadonlyArray<Event>;
 export const AssetPropertiesEventsList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<AssetPropertiesEventsList>;
@@ -735,7 +986,7 @@ export const AssetStatusError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetStatusError>;
 
 /** Array object to transfer and persist errors that originate from the Edge. */
-export type AssetStatusErrorsList = AssetStatusError[];
+export type AssetStatusErrorsList = ReadonlyArray<AssetStatusError>;
 export const AssetStatusErrorsList = /*@__PURE__*/ S.Array(
   AssetStatusError,
 ) as any as S.Schema<AssetStatusErrorsList>;
@@ -776,7 +1027,7 @@ export const AssetStatusDataset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetStatusDataset>;
 
 /** Array of dataset statuses that describe the status of each dataset. */
-export type AssetStatusDatasetsList = AssetStatusDataset[];
+export type AssetStatusDatasetsList = ReadonlyArray<AssetStatusDataset>;
 export const AssetStatusDatasetsList = /*@__PURE__*/ S.Array(
   AssetStatusDataset,
 ) as any as S.Schema<AssetStatusDatasetsList>;
@@ -798,7 +1049,7 @@ export const AssetStatusEvent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetStatusEvent>;
 
 /** Array of event statuses that describe the status of each event. */
-export type AssetStatusEventsList = AssetStatusEvent[];
+export type AssetStatusEventsList = ReadonlyArray<AssetStatusEvent>;
 export const AssetStatusEventsList = /*@__PURE__*/ S.Array(
   AssetStatusEvent,
 ) as any as S.Schema<AssetStatusEventsList>;
@@ -1097,7 +1348,7 @@ export const Asset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Asset" }) as any as S.Schema<Asset>;
 
 /** The Asset items on this page */
-export type AssetListResultValueList = Asset[];
+export type AssetListResultValueList = ReadonlyArray<Asset>;
 export const AssetListResultValueList = /*@__PURE__*/ S.Array(
   Asset,
 ) as any as S.Schema<AssetListResultValueList>;
@@ -1137,6 +1388,113 @@ export const AssetsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssetsListBySubscriptionRequest",
 }) as any as S.Schema<AssetsListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type AssetsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const AssetsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AssetsUpdateRequestTagsMap>;
+
+/** A set of key-value pairs that contain custom attributes set by the customer. */
+export type AssetUpdatePropertiesAttributesMap = {
+  [key: string]: unknown | undefined;
+};
+export const AssetUpdatePropertiesAttributesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<AssetUpdatePropertiesAttributesMap>;
+
+/** When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'. */
+export type TopicUpdateRetain = "Keep" | "Never";
+export const TopicUpdateRetain = /*@__PURE__*/ S.String;
+
+/** Object that describes the topic information. */
+export interface TopicUpdate {
+  /** The topic path for messages published to an MQTT broker. */
+  path?: string;
+  /** When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'. */
+  retain?: TopicUpdateRetain;
+}
+export const TopicUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.optional(S.String),
+    retain: S.optional(TopicUpdateRetain),
+  }),
+).annotate({ identifier: "TopicUpdate" }) as any as S.Schema<TopicUpdate>;
+
+/** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
+export type AssetUpdatePropertiesDatasetsList = ReadonlyArray<Dataset>;
+export const AssetUpdatePropertiesDatasetsList = /*@__PURE__*/ S.Array(
+  Dataset,
+) as any as S.Schema<AssetUpdatePropertiesDatasetsList>;
+
+/** Array of events that are part of the asset. Each event can have per-event configuration. */
+export type AssetUpdatePropertiesEventsList = ReadonlyArray<Event>;
+export const AssetUpdatePropertiesEventsList = /*@__PURE__*/ S.Array(
+  Event,
+) as any as S.Schema<AssetUpdatePropertiesEventsList>;
+
+/** The updatable properties of the Asset. */
+export interface AssetUpdateProperties {
+  /** Enabled/Disabled status of the asset. */
+  enabled?: boolean;
+  /** Human-readable display name. */
+  displayName?: string;
+  /** Human-readable description of the asset. */
+  description?: string;
+  /** Asset manufacturer name. */
+  manufacturer?: string;
+  /** Asset manufacturer URI. */
+  manufacturerUri?: string;
+  /** Asset model name. */
+  model?: string;
+  /** Asset product code. */
+  productCode?: string;
+  /** Revision number of the hardware. */
+  hardwareRevision?: string;
+  /** Revision number of the software. */
+  softwareRevision?: string;
+  /** Reference to the documentation. */
+  documentationUri?: string;
+  /** Asset serial number. */
+  serialNumber?: string;
+  /** A set of key-value pairs that contain custom attributes set by the customer. */
+  attributes?: AssetUpdatePropertiesAttributesMap;
+  /** Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here. */
+  defaultDatasetsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. */
+  defaultEventsConfiguration?: string;
+  /** Object that describes the default topic information for the asset. */
+  defaultTopic?: TopicUpdate;
+  /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
+  datasets?: AssetUpdatePropertiesDatasetsList;
+  /** Array of events that are part of the asset. Each event can have per-event configuration. */
+  events?: AssetUpdatePropertiesEventsList;
+}
+export const AssetUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    manufacturer: S.optional(S.String),
+    manufacturerUri: S.optional(S.String),
+    model: S.optional(S.String),
+    productCode: S.optional(S.String),
+    hardwareRevision: S.optional(S.String),
+    softwareRevision: S.optional(S.String),
+    documentationUri: S.optional(S.String),
+    serialNumber: S.optional(S.String),
+    attributes: S.optional(AssetUpdatePropertiesAttributesMap),
+    defaultDatasetsConfiguration: S.optional(S.String),
+    defaultEventsConfiguration: S.optional(S.String),
+    defaultTopic: S.optional(TopicUpdate),
+    datasets: S.optional(AssetUpdatePropertiesDatasetsList),
+    events: S.optional(AssetUpdatePropertiesEventsList),
+  }),
+).annotate({
+  identifier: "AssetUpdateProperties",
+}) as any as S.Schema<AssetUpdateProperties>;
+
 export interface AssetsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1144,14 +1502,18 @@ export interface AssetsUpdateRequest {
   resourceGroupName: string;
   /** Asset name parameter. */
   assetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AssetsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: AssetUpdateProperties;
 }
 export const AssetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     assetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AssetsUpdateRequestTagsMap),
+    properties: S.optional(AssetUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1315,7 +1677,8 @@ export const BillingContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BillingContainer>;
 
 /** The BillingContainer items on this page */
-export type BillingContainerListResultValueList = BillingContainer[];
+export type BillingContainerListResultValueList =
+  ReadonlyArray<BillingContainer>;
 export const BillingContainerListResultValueList = /*@__PURE__*/ S.Array(
   BillingContainer,
 ) as any as S.Schema<BillingContainerListResultValueList>;
@@ -1336,46 +1699,15 @@ export const BillingContainerListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingContainerListResult",
 }) as any as S.Schema<BillingContainerListResult>;
 
-export interface NamespaceAssetsCreateOrReplaceRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the namespace. */
-  namespaceName: string;
-  /** The name of the asset. */
-  assetName: string;
-  body: unknown;
-}
-export const NamespaceAssetsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      namespaceName: S.String.pipe(T.Label()),
-      assetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
-        code: 200,
-        apiVersion: "2026-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "NamespaceAssetsCreateOrReplaceRequest",
-}) as any as S.Schema<NamespaceAssetsCreateOrReplaceRequest>;
-
 /** Resource tags. */
-export type NamespaceAssetsCreateOrReplaceResponseTagsMap = {
+export type NamespaceAssetsCreateOrReplaceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespaceAssetsCreateOrReplaceResponseTagsMap =
+export const NamespaceAssetsCreateOrReplaceRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<NamespaceAssetsCreateOrReplaceResponseTagsMap>;
+  ) as any as S.Schema<NamespaceAssetsCreateOrReplaceRequestTagsMap>;
 
 /** Defines which device and endpoint to use for this asset */
 export interface DeviceRef {
@@ -1392,33 +1724,33 @@ export const DeviceRef = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceRef" }) as any as S.Schema<DeviceRef>;
 
 /** URIs or type definition IDs. */
-export type NamespaceAssetPropertiesAssetTypeRefsList = string[];
-export const NamespaceAssetPropertiesAssetTypeRefsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespaceAssetPropertiesAssetTypeRefsList>;
-
-/** A set of key-value pairs that contain custom attributes set by the customer. */
-export type NamespaceAssetPropertiesAttributesMap = {
-  [key: string]: unknown | undefined;
-};
-export const NamespaceAssetPropertiesAttributesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NamespaceAssetPropertiesAttributesMap>;
-
-/** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
-export type NamespaceAssetPropertiesDiscoveredAssetRefsList = string[];
-export const NamespaceAssetPropertiesDiscoveredAssetRefsList =
+export type NamespaceAssetPropertiesInputAssetTypeRefsList =
+  ReadonlyArray<string>;
+export const NamespaceAssetPropertiesInputAssetTypeRefsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<NamespaceAssetPropertiesDiscoveredAssetRefsList>;
+  ) as any as S.Schema<NamespaceAssetPropertiesInputAssetTypeRefsList>;
+
+/** A set of key-value pairs that contain custom attributes set by the customer. */
+export type NamespaceAssetPropertiesInputAttributesMap = {
+  [key: string]: unknown | undefined;
+};
+export const NamespaceAssetPropertiesInputAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<NamespaceAssetPropertiesInputAttributesMap>;
+
+/** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
+export type NamespaceAssetPropertiesInputDiscoveredAssetRefsList =
+  ReadonlyArray<string>;
+export const NamespaceAssetPropertiesInputDiscoveredAssetRefsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespaceAssetPropertiesInputDiscoveredAssetRefsList>;
 
 /** The set of supported dataset destinations for an asset. */
-export type DatasetDestinationTarget =
-  | "Mqtt"
-  | "BrokerStateStore"
-  | "Storage"
-  | (string & {});
+export type DatasetDestinationTarget = "Mqtt" | "BrokerStateStore" | "Storage";
 export const DatasetDestinationTarget = /*@__PURE__*/ S.String;
 
 /** The type of the destination. */
@@ -1435,15 +1767,15 @@ export const DatasetDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetDestination>;
 
 /** Default destinations for a dataset. */
-export type NamespaceAssetPropertiesDefaultDatasetsDestinationsList =
-  DatasetDestination[];
-export const NamespaceAssetPropertiesDefaultDatasetsDestinationsList =
+export type NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList =
+  ReadonlyArray<DatasetDestination>;
+export const NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList =
   /*@__PURE__*/ S.Array(
     DatasetDestination,
-  ) as any as S.Schema<NamespaceAssetPropertiesDefaultDatasetsDestinationsList>;
+  ) as any as S.Schema<NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList>;
 
 /** The set of supported event destinations for an asset. */
-export type EventDestinationTarget = "Mqtt" | "Storage" | (string & {});
+export type EventDestinationTarget = "Mqtt" | "Storage";
 export const EventDestinationTarget = /*@__PURE__*/ S.String;
 
 /** The type of the destination. */
@@ -1460,15 +1792,15 @@ export const EventDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventDestination>;
 
 /** Default destinations for an event. */
-export type NamespaceAssetPropertiesDefaultEventsDestinationsList =
-  EventDestination[];
-export const NamespaceAssetPropertiesDefaultEventsDestinationsList =
+export type NamespaceAssetPropertiesInputDefaultEventsDestinationsList =
+  ReadonlyArray<EventDestination>;
+export const NamespaceAssetPropertiesInputDefaultEventsDestinationsList =
   /*@__PURE__*/ S.Array(
     EventDestination,
-  ) as any as S.Schema<NamespaceAssetPropertiesDefaultEventsDestinationsList>;
+  ) as any as S.Schema<NamespaceAssetPropertiesInputDefaultEventsDestinationsList>;
 
 /** The set of supported stream destinations for an asset. */
-export type StreamDestinationTarget = "Mqtt" | "Storage" | (string & {});
+export type StreamDestinationTarget = "Mqtt" | "Storage";
 export const StreamDestinationTarget = /*@__PURE__*/ S.String;
 
 /** The type of the destination. */
@@ -1485,15 +1817,16 @@ export const StreamDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamDestination>;
 
 /** Default destinations for a stream. */
-export type NamespaceAssetPropertiesDefaultStreamsDestinationsList =
-  StreamDestination[];
-export const NamespaceAssetPropertiesDefaultStreamsDestinationsList =
+export type NamespaceAssetPropertiesInputDefaultStreamsDestinationsList =
+  ReadonlyArray<StreamDestination>;
+export const NamespaceAssetPropertiesInputDefaultStreamsDestinationsList =
   /*@__PURE__*/ S.Array(
     StreamDestination,
-  ) as any as S.Schema<NamespaceAssetPropertiesDefaultStreamsDestinationsList>;
+  ) as any as S.Schema<NamespaceAssetPropertiesInputDefaultStreamsDestinationsList>;
 
 /** Destinations for a dataset. */
-export type NamespaceDatasetDestinationsList = DatasetDestination[];
+export type NamespaceDatasetDestinationsList =
+  ReadonlyArray<DatasetDestination>;
 export const NamespaceDatasetDestinationsList = /*@__PURE__*/ S.Array(
   DatasetDestination,
 ) as any as S.Schema<NamespaceDatasetDestinationsList>;
@@ -1521,7 +1854,8 @@ export const NamespaceDatasetDataPoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceDatasetDataPoint>;
 
 /** Array of data points that are part of the dataset. Each data point can have per-data point configuration. */
-export type NamespaceDatasetDataPointsList = NamespaceDatasetDataPoint[];
+export type NamespaceDatasetDataPointsList =
+  ReadonlyArray<NamespaceDatasetDataPoint>;
 export const NamespaceDatasetDataPointsList = /*@__PURE__*/ S.Array(
   NamespaceDatasetDataPoint,
 ) as any as S.Schema<NamespaceDatasetDataPointsList>;
@@ -1555,19 +1889,21 @@ export const NamespaceDataset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceDataset>;
 
 /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
-export type NamespaceAssetPropertiesDatasetsList = NamespaceDataset[];
-export const NamespaceAssetPropertiesDatasetsList = /*@__PURE__*/ S.Array(
+export type NamespaceAssetPropertiesInputDatasetsList =
+  ReadonlyArray<NamespaceDataset>;
+export const NamespaceAssetPropertiesInputDatasetsList = /*@__PURE__*/ S.Array(
   NamespaceDataset,
-) as any as S.Schema<NamespaceAssetPropertiesDatasetsList>;
+) as any as S.Schema<NamespaceAssetPropertiesInputDatasetsList>;
 
 /** Destinations for events. Default destinations when destinations is not defined at the event level. */
-export type NamespaceEventGroupDefaultDestinationsList = EventDestination[];
+export type NamespaceEventGroupDefaultDestinationsList =
+  ReadonlyArray<EventDestination>;
 export const NamespaceEventGroupDefaultDestinationsList = /*@__PURE__*/ S.Array(
   EventDestination,
 ) as any as S.Schema<NamespaceEventGroupDefaultDestinationsList>;
 
 /** Destinations for an event. */
-export type NamespaceEventDestinationsList = EventDestination[];
+export type NamespaceEventDestinationsList = ReadonlyArray<EventDestination>;
 export const NamespaceEventDestinationsList = /*@__PURE__*/ S.Array(
   EventDestination,
 ) as any as S.Schema<NamespaceEventDestinationsList>;
@@ -1596,7 +1932,7 @@ export const NamespaceEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamespaceEvent" }) as any as S.Schema<NamespaceEvent>;
 
 /** Array of events that are part of the event group. */
-export type NamespaceEventGroupEventsList = NamespaceEvent[];
+export type NamespaceEventGroupEventsList = ReadonlyArray<NamespaceEvent>;
 export const NamespaceEventGroupEventsList = /*@__PURE__*/ S.Array(
   NamespaceEvent,
 ) as any as S.Schema<NamespaceEventGroupEventsList>;
@@ -1630,13 +1966,15 @@ export const NamespaceEventGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceEventGroup>;
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
-export type NamespaceAssetPropertiesEventGroupsList = NamespaceEventGroup[];
-export const NamespaceAssetPropertiesEventGroupsList = /*@__PURE__*/ S.Array(
-  NamespaceEventGroup,
-) as any as S.Schema<NamespaceAssetPropertiesEventGroupsList>;
+export type NamespaceAssetPropertiesInputEventGroupsList =
+  ReadonlyArray<NamespaceEventGroup>;
+export const NamespaceAssetPropertiesInputEventGroupsList =
+  /*@__PURE__*/ S.Array(
+    NamespaceEventGroup,
+  ) as any as S.Schema<NamespaceAssetPropertiesInputEventGroupsList>;
 
 /** Destinations for a stream. */
-export type NamespaceStreamDestinationsList = StreamDestination[];
+export type NamespaceStreamDestinationsList = ReadonlyArray<StreamDestination>;
 export const NamespaceStreamDestinationsList = /*@__PURE__*/ S.Array(
   StreamDestination,
 ) as any as S.Schema<NamespaceStreamDestinationsList>;
@@ -1664,17 +2002,14 @@ export const NamespaceStream = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceStream>;
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
-export type NamespaceAssetPropertiesStreamsList = NamespaceStream[];
-export const NamespaceAssetPropertiesStreamsList = /*@__PURE__*/ S.Array(
+export type NamespaceAssetPropertiesInputStreamsList =
+  ReadonlyArray<NamespaceStream>;
+export const NamespaceAssetPropertiesInputStreamsList = /*@__PURE__*/ S.Array(
   NamespaceStream,
-) as any as S.Schema<NamespaceAssetPropertiesStreamsList>;
+) as any as S.Schema<NamespaceAssetPropertiesInputStreamsList>;
 
 /** The type of the action. */
-export type ManagementActionActionType =
-  | "Call"
-  | "Read"
-  | "Write"
-  | (string & {});
+export type ManagementActionActionType = "Call" | "Read" | "Write";
 export const ManagementActionActionType = /*@__PURE__*/ S.String;
 
 /** Defines the action properties. */
@@ -1709,7 +2044,7 @@ export const ManagementAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementAction>;
 
 /** Array of actions that are part of the management group. Each action can have an individual configuration. */
-export type ManagementGroupActionsList = ManagementAction[];
+export type ManagementGroupActionsList = ReadonlyArray<ManagementAction>;
 export const ManagementGroupActionsList = /*@__PURE__*/ S.Array(
   ManagementAction,
 ) as any as S.Schema<ManagementGroupActionsList>;
@@ -1746,7 +2081,236 @@ export const ManagementGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementGroup>;
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
-export type NamespaceAssetPropertiesManagementGroupsList = ManagementGroup[];
+export type NamespaceAssetPropertiesInputManagementGroupsList =
+  ReadonlyArray<ManagementGroup>;
+export const NamespaceAssetPropertiesInputManagementGroupsList =
+  /*@__PURE__*/ S.Array(
+    ManagementGroup,
+  ) as any as S.Schema<NamespaceAssetPropertiesInputManagementGroupsList>;
+
+/** Defines the asset properties. */
+export interface NamespaceAssetPropertiesInput {
+  /** Enabled/disabled status of the asset. */
+  enabled?: boolean;
+  /** Asset ID provided by the customer. */
+  externalAssetId?: string;
+  /** Human-readable display name. */
+  displayName?: string;
+  /** Human-readable description of the asset. */
+  description?: string;
+  /** Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use. */
+  deviceRef: DeviceRef;
+  /** URIs or type definition IDs. */
+  assetTypeRefs?: NamespaceAssetPropertiesInputAssetTypeRefsList;
+  /** Asset manufacturer. */
+  manufacturer?: string;
+  /** Asset manufacturer URI. */
+  manufacturerUri?: string;
+  /** Asset model. */
+  model?: string;
+  /** Asset product code. */
+  productCode?: string;
+  /** Asset hardware revision number. */
+  hardwareRevision?: string;
+  /** Asset software revision number. */
+  softwareRevision?: string;
+  /** Asset documentation reference. */
+  documentationUri?: string;
+  /** Asset serial number. */
+  serialNumber?: string;
+  /** A set of key-value pairs that contain custom attributes set by the customer. */
+  attributes?: NamespaceAssetPropertiesInputAttributesMap;
+  /** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
+  discoveredAssetRefs?: NamespaceAssetPropertiesInputDiscoveredAssetRefsList;
+  /** Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here. */
+  defaultDatasetsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. */
+  defaultEventsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here. */
+  defaultStreamsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here. */
+  defaultManagementGroupsConfiguration?: string;
+  /** Default destinations for a dataset. */
+  defaultDatasetsDestinations?: NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList;
+  /** Default destinations for an event. */
+  defaultEventsDestinations?: NamespaceAssetPropertiesInputDefaultEventsDestinationsList;
+  /** Default destinations for a stream. */
+  defaultStreamsDestinations?: NamespaceAssetPropertiesInputDefaultStreamsDestinationsList;
+  /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
+  datasets?: NamespaceAssetPropertiesInputDatasetsList;
+  /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
+  eventGroups?: NamespaceAssetPropertiesInputEventGroupsList;
+  /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
+  streams?: NamespaceAssetPropertiesInputStreamsList;
+  /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
+  managementGroups?: NamespaceAssetPropertiesInputManagementGroupsList;
+}
+export const NamespaceAssetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    externalAssetId: S.optional(S.String),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    deviceRef: DeviceRef,
+    assetTypeRefs: S.optional(NamespaceAssetPropertiesInputAssetTypeRefsList),
+    manufacturer: S.optional(S.String),
+    manufacturerUri: S.optional(S.String),
+    model: S.optional(S.String),
+    productCode: S.optional(S.String),
+    hardwareRevision: S.optional(S.String),
+    softwareRevision: S.optional(S.String),
+    documentationUri: S.optional(S.String),
+    serialNumber: S.optional(S.String),
+    attributes: S.optional(NamespaceAssetPropertiesInputAttributesMap),
+    discoveredAssetRefs: S.optional(
+      NamespaceAssetPropertiesInputDiscoveredAssetRefsList,
+    ),
+    defaultDatasetsConfiguration: S.optional(S.String),
+    defaultEventsConfiguration: S.optional(S.String),
+    defaultStreamsConfiguration: S.optional(S.String),
+    defaultManagementGroupsConfiguration: S.optional(S.String),
+    defaultDatasetsDestinations: S.optional(
+      NamespaceAssetPropertiesInputDefaultDatasetsDestinationsList,
+    ),
+    defaultEventsDestinations: S.optional(
+      NamespaceAssetPropertiesInputDefaultEventsDestinationsList,
+    ),
+    defaultStreamsDestinations: S.optional(
+      NamespaceAssetPropertiesInputDefaultStreamsDestinationsList,
+    ),
+    datasets: S.optional(NamespaceAssetPropertiesInputDatasetsList),
+    eventGroups: S.optional(NamespaceAssetPropertiesInputEventGroupsList),
+    streams: S.optional(NamespaceAssetPropertiesInputStreamsList),
+    managementGroups: S.optional(
+      NamespaceAssetPropertiesInputManagementGroupsList,
+    ),
+  }),
+).annotate({
+  identifier: "NamespaceAssetPropertiesInput",
+}) as any as S.Schema<NamespaceAssetPropertiesInput>;
+
+export interface NamespaceAssetsCreateOrReplaceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the namespace. */
+  namespaceName: string;
+  /** The name of the asset. */
+  assetName: string;
+  /** Resource tags. */
+  tags?: NamespaceAssetsCreateOrReplaceRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: NamespaceAssetPropertiesInput;
+  /** The extended location. */
+  extendedLocation: ExtendedLocation;
+}
+export const NamespaceAssetsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      namespaceName: S.String.pipe(T.Label()),
+      assetName: S.String.pipe(T.Label()),
+      tags: S.optional(NamespaceAssetsCreateOrReplaceRequestTagsMap),
+      location: S.String,
+      properties: S.optional(NamespaceAssetPropertiesInput),
+      extendedLocation: ExtendedLocation,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/assets/{assetName}",
+        code: 200,
+        apiVersion: "2026-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "NamespaceAssetsCreateOrReplaceRequest",
+}) as any as S.Schema<NamespaceAssetsCreateOrReplaceRequest>;
+
+/** Resource tags. */
+export type NamespaceAssetsCreateOrReplaceResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespaceAssetsCreateOrReplaceResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NamespaceAssetsCreateOrReplaceResponseTagsMap>;
+
+/** URIs or type definition IDs. */
+export type NamespaceAssetPropertiesAssetTypeRefsList = ReadonlyArray<string>;
+export const NamespaceAssetPropertiesAssetTypeRefsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NamespaceAssetPropertiesAssetTypeRefsList>;
+
+/** A set of key-value pairs that contain custom attributes set by the customer. */
+export type NamespaceAssetPropertiesAttributesMap = {
+  [key: string]: unknown | undefined;
+};
+export const NamespaceAssetPropertiesAttributesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<NamespaceAssetPropertiesAttributesMap>;
+
+/** Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided. */
+export type NamespaceAssetPropertiesDiscoveredAssetRefsList =
+  ReadonlyArray<string>;
+export const NamespaceAssetPropertiesDiscoveredAssetRefsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespaceAssetPropertiesDiscoveredAssetRefsList>;
+
+/** Default destinations for a dataset. */
+export type NamespaceAssetPropertiesDefaultDatasetsDestinationsList =
+  ReadonlyArray<DatasetDestination>;
+export const NamespaceAssetPropertiesDefaultDatasetsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    DatasetDestination,
+  ) as any as S.Schema<NamespaceAssetPropertiesDefaultDatasetsDestinationsList>;
+
+/** Default destinations for an event. */
+export type NamespaceAssetPropertiesDefaultEventsDestinationsList =
+  ReadonlyArray<EventDestination>;
+export const NamespaceAssetPropertiesDefaultEventsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    EventDestination,
+  ) as any as S.Schema<NamespaceAssetPropertiesDefaultEventsDestinationsList>;
+
+/** Default destinations for a stream. */
+export type NamespaceAssetPropertiesDefaultStreamsDestinationsList =
+  ReadonlyArray<StreamDestination>;
+export const NamespaceAssetPropertiesDefaultStreamsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    StreamDestination,
+  ) as any as S.Schema<NamespaceAssetPropertiesDefaultStreamsDestinationsList>;
+
+/** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
+export type NamespaceAssetPropertiesDatasetsList =
+  ReadonlyArray<NamespaceDataset>;
+export const NamespaceAssetPropertiesDatasetsList = /*@__PURE__*/ S.Array(
+  NamespaceDataset,
+) as any as S.Schema<NamespaceAssetPropertiesDatasetsList>;
+
+/** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
+export type NamespaceAssetPropertiesEventGroupsList =
+  ReadonlyArray<NamespaceEventGroup>;
+export const NamespaceAssetPropertiesEventGroupsList = /*@__PURE__*/ S.Array(
+  NamespaceEventGroup,
+) as any as S.Schema<NamespaceAssetPropertiesEventGroupsList>;
+
+/** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
+export type NamespaceAssetPropertiesStreamsList =
+  ReadonlyArray<NamespaceStream>;
+export const NamespaceAssetPropertiesStreamsList = /*@__PURE__*/ S.Array(
+  NamespaceStream,
+) as any as S.Schema<NamespaceAssetPropertiesStreamsList>;
+
+/** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
+export type NamespaceAssetPropertiesManagementGroupsList =
+  ReadonlyArray<ManagementGroup>;
 export const NamespaceAssetPropertiesManagementGroupsList =
   /*@__PURE__*/ S.Array(
     ManagementGroup,
@@ -1773,7 +2337,7 @@ export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
 
 /** Array of error details that describe the status of each error. */
-export type StatusErrorDetailsList = ErrorDetails[];
+export type StatusErrorDetailsList = ReadonlyArray<ErrorDetails>;
 export const StatusErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetails,
 ) as any as S.Schema<StatusErrorDetailsList>;
@@ -1851,7 +2415,8 @@ export const NamespaceAssetStatusDataset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceAssetStatusDataset>;
 
 /** Array of dataset statuses that describe the status of each dataset. */
-export type NamespaceAssetStatusDatasetsList = NamespaceAssetStatusDataset[];
+export type NamespaceAssetStatusDatasetsList =
+  ReadonlyArray<NamespaceAssetStatusDataset>;
 export const NamespaceAssetStatusDatasetsList = /*@__PURE__*/ S.Array(
   NamespaceAssetStatusDataset,
 ) as any as S.Schema<NamespaceAssetStatusDatasetsList>;
@@ -1877,7 +2442,7 @@ export const NamespaceAssetStatusEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of event statuses that describe the status of each event in the event group. */
 export type NamespaceAssetStatusEventGroupEventsList =
-  NamespaceAssetStatusEvent[];
+  ReadonlyArray<NamespaceAssetStatusEvent>;
 export const NamespaceAssetStatusEventGroupEventsList = /*@__PURE__*/ S.Array(
   NamespaceAssetStatusEvent,
 ) as any as S.Schema<NamespaceAssetStatusEventGroupEventsList>;
@@ -1900,7 +2465,7 @@ export const NamespaceAssetStatusEventGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of event group statuses that describe the status of each event group. */
 export type NamespaceAssetStatusEventGroupsList =
-  NamespaceAssetStatusEventGroup[];
+  ReadonlyArray<NamespaceAssetStatusEventGroup>;
 export const NamespaceAssetStatusEventGroupsList = /*@__PURE__*/ S.Array(
   NamespaceAssetStatusEventGroup,
 ) as any as S.Schema<NamespaceAssetStatusEventGroupsList>;
@@ -1925,7 +2490,8 @@ export const NamespaceAssetStatusStream = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceAssetStatusStream>;
 
 /** Array of stream statuses that describe the status of each stream. */
-export type NamespaceAssetStatusStreamsList = NamespaceAssetStatusStream[];
+export type NamespaceAssetStatusStreamsList =
+  ReadonlyArray<NamespaceAssetStatusStream>;
 export const NamespaceAssetStatusStreamsList = /*@__PURE__*/ S.Array(
   NamespaceAssetStatusStream,
 ) as any as S.Schema<NamespaceAssetStatusStreamsList>;
@@ -1959,7 +2525,7 @@ export const NamespaceAssetStatusManagementAction = /*@__PURE__*/ S.suspend(
 
 /** Array of action statuses that describe the status of each action. */
 export type NamespaceAssetStatusManagementGroupActionsList =
-  NamespaceAssetStatusManagementAction[];
+  ReadonlyArray<NamespaceAssetStatusManagementAction>;
 export const NamespaceAssetStatusManagementGroupActionsList =
   /*@__PURE__*/ S.Array(
     NamespaceAssetStatusManagementAction,
@@ -1983,18 +2549,13 @@ export const NamespaceAssetStatusManagementGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of management group statuses that describe the status of each management group. */
 export type NamespaceAssetStatusManagementGroupsList =
-  NamespaceAssetStatusManagementGroup[];
+  ReadonlyArray<NamespaceAssetStatusManagementGroup>;
 export const NamespaceAssetStatusManagementGroupsList = /*@__PURE__*/ S.Array(
   NamespaceAssetStatusManagementGroup,
 ) as any as S.Schema<NamespaceAssetStatusManagementGroupsList>;
 
 /** Defines the health state of the resource. */
-export type HealthStatus =
-  | "Unknown"
-  | "Available"
-  | "Degraded"
-  | "Unavailable"
-  | (string & {});
+export type HealthStatus = "Unknown" | "Available" | "Degraded" | "Unavailable";
 export const HealthStatus = /*@__PURE__*/ S.String;
 
 /** Represents the health state of a resource. */
@@ -2231,6 +2792,16 @@ export const NamespaceAssetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespaceAssetsDeleteResponse",
 }) as any as S.Schema<NamespaceAssetsDeleteResponse>;
 
+/** Payload required for executing the management action. */
+export type NamespaceAssetsExecuteActionRequestPayloadMap = {
+  [key: string]: unknown | undefined;
+};
+export const NamespaceAssetsExecuteActionRequestPayloadMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<NamespaceAssetsExecuteActionRequestPayloadMap>;
+
 export interface NamespaceAssetsExecuteActionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2240,7 +2811,12 @@ export interface NamespaceAssetsExecuteActionRequest {
   namespaceName: string;
   /** The name of the asset. */
   assetName: string;
-  body: unknown;
+  /** Name of the management action to be executed. */
+  managementActionName: string;
+  /** Name of the management group under which the action is to be executed. */
+  managementGroupName: string;
+  /** Payload required for executing the management action. */
+  payload?: NamespaceAssetsExecuteActionRequestPayloadMap;
 }
 export const NamespaceAssetsExecuteActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2248,7 +2824,9 @@ export const NamespaceAssetsExecuteActionRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
     assetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    managementActionName: S.String,
+    managementGroupName: S.String,
+    payload: S.optional(NamespaceAssetsExecuteActionRequestPayloadMap),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2266,12 +2844,11 @@ export type ManagementActionExecutionStatus =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const ManagementActionExecutionStatus = /*@__PURE__*/ S.String;
 
 /** Array of error details that describe the status of each error. */
-export type ErrorDetailsList = ErrorDetails[];
+export type ErrorDetailsList = ReadonlyArray<ErrorDetails>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetails,
 ) as any as S.Schema<ErrorDetailsList>;
@@ -2457,7 +3034,7 @@ export const NamespaceAsset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamespaceAsset" }) as any as S.Schema<NamespaceAsset>;
 
 /** The NamespaceAsset items on this page */
-export type NamespaceAssetListResultValueList = NamespaceAsset[];
+export type NamespaceAssetListResultValueList = ReadonlyArray<NamespaceAsset>;
 export const NamespaceAssetListResultValueList = /*@__PURE__*/ S.Array(
   NamespaceAsset,
 ) as any as S.Schema<NamespaceAssetListResultValueList>;
@@ -2478,6 +3055,177 @@ export const NamespaceAssetListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespaceAssetListResult",
 }) as any as S.Schema<NamespaceAssetListResult>;
 
+/** Resource tags. */
+export type NamespaceAssetsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespaceAssetsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NamespaceAssetsUpdateRequestTagsMap>;
+
+/** URIs or type definition IDs. */
+export type NamespaceAssetUpdatePropertiesAssetTypeRefsList =
+  ReadonlyArray<string>;
+export const NamespaceAssetUpdatePropertiesAssetTypeRefsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespaceAssetUpdatePropertiesAssetTypeRefsList>;
+
+/** A set of key-value pairs that contain custom attributes set by the customer. */
+export type NamespaceAssetUpdatePropertiesAttributesMap = {
+  [key: string]: unknown | undefined;
+};
+export const NamespaceAssetUpdatePropertiesAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<NamespaceAssetUpdatePropertiesAttributesMap>;
+
+/** Default destinations for a dataset. */
+export type NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList =
+  ReadonlyArray<DatasetDestination>;
+export const NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    DatasetDestination,
+  ) as any as S.Schema<NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList>;
+
+/** Default destinations for an event. */
+export type NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList =
+  ReadonlyArray<EventDestination>;
+export const NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    EventDestination,
+  ) as any as S.Schema<NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList>;
+
+/** Default destinations for a stream. */
+export type NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList =
+  ReadonlyArray<StreamDestination>;
+export const NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    StreamDestination,
+  ) as any as S.Schema<NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList>;
+
+/** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
+export type NamespaceAssetUpdatePropertiesDatasetsList =
+  ReadonlyArray<NamespaceDataset>;
+export const NamespaceAssetUpdatePropertiesDatasetsList = /*@__PURE__*/ S.Array(
+  NamespaceDataset,
+) as any as S.Schema<NamespaceAssetUpdatePropertiesDatasetsList>;
+
+/** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
+export type NamespaceAssetUpdatePropertiesEventGroupsList =
+  ReadonlyArray<NamespaceEventGroup>;
+export const NamespaceAssetUpdatePropertiesEventGroupsList =
+  /*@__PURE__*/ S.Array(
+    NamespaceEventGroup,
+  ) as any as S.Schema<NamespaceAssetUpdatePropertiesEventGroupsList>;
+
+/** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
+export type NamespaceAssetUpdatePropertiesStreamsList =
+  ReadonlyArray<NamespaceStream>;
+export const NamespaceAssetUpdatePropertiesStreamsList = /*@__PURE__*/ S.Array(
+  NamespaceStream,
+) as any as S.Schema<NamespaceAssetUpdatePropertiesStreamsList>;
+
+/** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
+export type NamespaceAssetUpdatePropertiesManagementGroupsList =
+  ReadonlyArray<ManagementGroup>;
+export const NamespaceAssetUpdatePropertiesManagementGroupsList =
+  /*@__PURE__*/ S.Array(
+    ManagementGroup,
+  ) as any as S.Schema<NamespaceAssetUpdatePropertiesManagementGroupsList>;
+
+/** The updatable properties of the NamespaceAsset. */
+export interface NamespaceAssetUpdateProperties {
+  /** Enabled/disabled status of the asset. */
+  enabled?: boolean;
+  /** Human-readable display name. */
+  displayName?: string;
+  /** Human-readable description of the asset. */
+  description?: string;
+  /** URIs or type definition IDs. */
+  assetTypeRefs?: NamespaceAssetUpdatePropertiesAssetTypeRefsList;
+  /** Asset manufacturer. */
+  manufacturer?: string;
+  /** Asset manufacturer URI. */
+  manufacturerUri?: string;
+  /** Asset model. */
+  model?: string;
+  /** Asset product code. */
+  productCode?: string;
+  /** Asset hardware revision number. */
+  hardwareRevision?: string;
+  /** Asset software revision number. */
+  softwareRevision?: string;
+  /** Asset documentation reference. */
+  documentationUri?: string;
+  /** Asset serial number. */
+  serialNumber?: string;
+  /** A set of key-value pairs that contain custom attributes set by the customer. */
+  attributes?: NamespaceAssetUpdatePropertiesAttributesMap;
+  /** Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here. */
+  defaultDatasetsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. */
+  defaultEventsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here. */
+  defaultStreamsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here. */
+  defaultManagementGroupsConfiguration?: string;
+  /** Default destinations for a dataset. */
+  defaultDatasetsDestinations?: NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList;
+  /** Default destinations for an event. */
+  defaultEventsDestinations?: NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList;
+  /** Default destinations for a stream. */
+  defaultStreamsDestinations?: NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList;
+  /** Array of datasets that are part of the asset. Each dataset describes the data points that make up the set. */
+  datasets?: NamespaceAssetUpdatePropertiesDatasetsList;
+  /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
+  eventGroups?: NamespaceAssetUpdatePropertiesEventGroupsList;
+  /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
+  streams?: NamespaceAssetUpdatePropertiesStreamsList;
+  /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
+  managementGroups?: NamespaceAssetUpdatePropertiesManagementGroupsList;
+}
+export const NamespaceAssetUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    assetTypeRefs: S.optional(NamespaceAssetUpdatePropertiesAssetTypeRefsList),
+    manufacturer: S.optional(S.String),
+    manufacturerUri: S.optional(S.String),
+    model: S.optional(S.String),
+    productCode: S.optional(S.String),
+    hardwareRevision: S.optional(S.String),
+    softwareRevision: S.optional(S.String),
+    documentationUri: S.optional(S.String),
+    serialNumber: S.optional(S.String),
+    attributes: S.optional(NamespaceAssetUpdatePropertiesAttributesMap),
+    defaultDatasetsConfiguration: S.optional(S.String),
+    defaultEventsConfiguration: S.optional(S.String),
+    defaultStreamsConfiguration: S.optional(S.String),
+    defaultManagementGroupsConfiguration: S.optional(S.String),
+    defaultDatasetsDestinations: S.optional(
+      NamespaceAssetUpdatePropertiesDefaultDatasetsDestinationsList,
+    ),
+    defaultEventsDestinations: S.optional(
+      NamespaceAssetUpdatePropertiesDefaultEventsDestinationsList,
+    ),
+    defaultStreamsDestinations: S.optional(
+      NamespaceAssetUpdatePropertiesDefaultStreamsDestinationsList,
+    ),
+    datasets: S.optional(NamespaceAssetUpdatePropertiesDatasetsList),
+    eventGroups: S.optional(NamespaceAssetUpdatePropertiesEventGroupsList),
+    streams: S.optional(NamespaceAssetUpdatePropertiesStreamsList),
+    managementGroups: S.optional(
+      NamespaceAssetUpdatePropertiesManagementGroupsList,
+    ),
+  }),
+).annotate({
+  identifier: "NamespaceAssetUpdateProperties",
+}) as any as S.Schema<NamespaceAssetUpdateProperties>;
+
 export interface NamespaceAssetsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2487,7 +3235,10 @@ export interface NamespaceAssetsUpdateRequest {
   namespaceName: string;
   /** The name of the asset. */
   assetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NamespaceAssetsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: NamespaceAssetUpdateProperties;
 }
 export const NamespaceAssetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2495,7 +3246,8 @@ export const NamespaceAssetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
     assetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NamespaceAssetsUpdateRequestTagsMap),
+    properties: S.optional(NamespaceAssetUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2550,53 +3302,21 @@ export const NamespaceAssetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespaceAssetsUpdateResponse",
 }) as any as S.Schema<NamespaceAssetsUpdateResponse>;
 
-export interface NamespaceDevicesCreateOrReplaceRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the namespace. */
-  namespaceName: string;
-  /** The name of the device. */
-  deviceName: string;
-  body: unknown;
-}
-export const NamespaceDevicesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      namespaceName: S.String.pipe(T.Label()),
-      deviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
-        code: 200,
-        apiVersion: "2026-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "NamespaceDevicesCreateOrReplaceRequest",
-}) as any as S.Schema<NamespaceDevicesCreateOrReplaceRequest>;
-
 /** Resource tags. */
-export type NamespaceDevicesCreateOrReplaceResponseTagsMap = {
+export type NamespaceDevicesCreateOrReplaceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespaceDevicesCreateOrReplaceResponseTagsMap =
+export const NamespaceDevicesCreateOrReplaceRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<NamespaceDevicesCreateOrReplaceResponseTagsMap>;
+  ) as any as S.Schema<NamespaceDevicesCreateOrReplaceRequestTagsMap>;
 
 /** Defines the method to authenticate the user of the client at the server. */
 export type HostAuthenticationMethod =
   | "Anonymous"
   | "Certificate"
-  | "UsernamePassword"
-  | (string & {});
+  | "UsernamePassword";
 export const HostAuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** The x509 certificate for authentication mode Certificate. */
@@ -2750,6 +3470,104 @@ export const MessagingEndpoints = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MessagingEndpoints",
 }) as any as S.Schema<MessagingEndpoints>;
+
+/** A set of key-value pairs that contain custom attributes set by the customer. */
+export type NamespaceDevicePropertiesInputAttributesMap = {
+  [key: string]: unknown | undefined;
+};
+export const NamespaceDevicePropertiesInputAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<NamespaceDevicePropertiesInputAttributesMap>;
+
+/** Defines the device properties. */
+export interface NamespaceDevicePropertiesInput {
+  /** Indicates if the resource is enabled or not. */
+  enabled?: boolean;
+  /** The Device ID provided by the customer. */
+  externalDeviceId?: string;
+  /** Reference to a device. Populated only if the device had been created from discovery flow. Discovered device name must be provided. */
+  discoveredDeviceRef?: string;
+  /** Device manufacturer. */
+  manufacturer?: string;
+  /** Device model. */
+  model?: string;
+  /** Device operating system. */
+  operatingSystem?: string;
+  /** Device operating system version. */
+  operatingSystemVersion?: string;
+  /** Property bag containing the device's unassigned and assigned endpoints. */
+  endpoints?: MessagingEndpoints;
+  /** A set of key-value pairs that contain custom attributes set by the customer. */
+  attributes?: NamespaceDevicePropertiesInputAttributesMap;
+}
+export const NamespaceDevicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    externalDeviceId: S.optional(S.String),
+    discoveredDeviceRef: S.optional(S.String),
+    manufacturer: S.optional(S.String),
+    model: S.optional(S.String),
+    operatingSystem: S.optional(S.String),
+    operatingSystemVersion: S.optional(S.String),
+    endpoints: S.optional(MessagingEndpoints),
+    attributes: S.optional(NamespaceDevicePropertiesInputAttributesMap),
+  }),
+).annotate({
+  identifier: "NamespaceDevicePropertiesInput",
+}) as any as S.Schema<NamespaceDevicePropertiesInput>;
+
+export interface NamespaceDevicesCreateOrReplaceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the namespace. */
+  namespaceName: string;
+  /** The name of the device. */
+  deviceName: string;
+  /** Resource tags. */
+  tags?: NamespaceDevicesCreateOrReplaceRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: NamespaceDevicePropertiesInput;
+  /** The extended location. */
+  extendedLocation?: ExtendedLocation;
+}
+export const NamespaceDevicesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      namespaceName: S.String.pipe(T.Label()),
+      deviceName: S.String.pipe(T.Label()),
+      tags: S.optional(NamespaceDevicesCreateOrReplaceRequestTagsMap),
+      location: S.String,
+      properties: S.optional(NamespaceDevicePropertiesInput),
+      extendedLocation: S.optional(ExtendedLocation),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/devices/{deviceName}",
+        code: 200,
+        apiVersion: "2026-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "NamespaceDevicesCreateOrReplaceRequest",
+}) as any as S.Schema<NamespaceDevicesCreateOrReplaceRequest>;
+
+/** Resource tags. */
+export type NamespaceDevicesCreateOrReplaceResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespaceDevicesCreateOrReplaceResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NamespaceDevicesCreateOrReplaceResponseTagsMap>;
 
 /** A set of key-value pairs that contain custom attributes set by the customer. */
 export type NamespaceDevicePropertiesAttributesMap = {
@@ -3080,7 +3898,7 @@ export const NamespaceDevice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceDevice>;
 
 /** The NamespaceDevice items on this page */
-export type NamespaceDeviceListResultValueList = NamespaceDevice[];
+export type NamespaceDeviceListResultValueList = ReadonlyArray<NamespaceDevice>;
 export const NamespaceDeviceListResultValueList = /*@__PURE__*/ S.Array(
   NamespaceDevice,
 ) as any as S.Schema<NamespaceDeviceListResultValueList>;
@@ -3101,6 +3919,195 @@ export const NamespaceDeviceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespaceDeviceListResult",
 }) as any as S.Schema<NamespaceDeviceListResult>;
 
+/** Resource tags. */
+export type NamespaceDevicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespaceDevicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NamespaceDevicesUpdateRequestTagsMap>;
+
+/** Defines the method to authenticate the user of the client at the server. */
+export type HostAuthenticationUpdateMethod =
+  | "Anonymous"
+  | "Certificate"
+  | "UsernamePassword";
+export const HostAuthenticationUpdateMethod = /*@__PURE__*/ S.String;
+
+/** The x509 certificate for authentication mode Certificate. */
+export interface X509CertificateCredentialsUpdate {
+  /** The name of the secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx). */
+  certificateSecretName?: string;
+  /** The name of the secret containing the certificate private key in PEM or DER format. */
+  keySecretName?: string;
+  /** The name of the secret containing the combined intermediate certificates in PEM format. */
+  intermediateCertificatesSecretName?: string;
+}
+export const X509CertificateCredentialsUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    certificateSecretName: S.optional(S.String),
+    keySecretName: S.optional(S.String),
+    intermediateCertificatesSecretName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "X509CertificateCredentialsUpdate",
+}) as any as S.Schema<X509CertificateCredentialsUpdate>;
+
+/** Definition of the client authentication mechanism to the host. */
+export interface HostAuthenticationUpdate {
+  /** Defines the method to authenticate the user of the client at the server. */
+  method?: HostAuthenticationUpdateMethod;
+  /** Defines the username and password references when UsernamePassword user authentication mode is selected. */
+  usernamePasswordCredentials?: UsernamePasswordCredentialsUpdate;
+  /** Defines the certificate reference when Certificate user authentication mode is selected. */
+  x509Credentials?: X509CertificateCredentialsUpdate;
+}
+export const HostAuthenticationUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    method: S.optional(HostAuthenticationUpdateMethod),
+    usernamePasswordCredentials: S.optional(UsernamePasswordCredentialsUpdate),
+    x509Credentials: S.optional(X509CertificateCredentialsUpdate),
+  }),
+).annotate({
+  identifier: "HostAuthenticationUpdate",
+}) as any as S.Schema<HostAuthenticationUpdate>;
+
+/** An endpoint to connect to the device. */
+export interface InboundEndpointsUpdate {
+  /** Type of connection endpoint. */
+  endpointType?: string;
+  /** The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com). */
+  address?: string;
+  /** Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc. */
+  version?: string;
+  /** Defines the client authentication mechanism to the server. */
+  authentication?: HostAuthenticationUpdate;
+  /** Defines server trust settings for the endpoint. */
+  trustSettings?: TrustSettings;
+  /** Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF). */
+  additionalConfiguration?: string;
+}
+export const InboundEndpointsUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpointType: S.optional(S.String),
+    address: S.optional(S.String),
+    version: S.optional(S.String),
+    authentication: S.optional(HostAuthenticationUpdate),
+    trustSettings: S.optional(TrustSettings),
+    additionalConfiguration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InboundEndpointsUpdate",
+}) as any as S.Schema<InboundEndpointsUpdate>;
+
+/** Set of endpoints to connect to the device. */
+export type MessagingEndpointsUpdateInboundMap = {
+  [key: string]: InboundEndpointsUpdate | undefined;
+};
+export const MessagingEndpointsUpdateInboundMap = /*@__PURE__*/ S.Record(
+  S.String,
+  InboundEndpointsUpdate,
+) as any as S.Schema<MessagingEndpointsUpdateInboundMap>;
+
+/** Device messaging endpoint model. */
+export interface DeviceMessagingEndpointUpdate {
+  /** Type of connection used for the messaging endpoint. */
+  endpointType?: string;
+  /** The endpoint address to connect to. */
+  address?: string;
+}
+export const DeviceMessagingEndpointUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpointType: S.optional(S.String),
+    address: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeviceMessagingEndpointUpdate",
+}) as any as S.Schema<DeviceMessagingEndpointUpdate>;
+
+/** Endpoints the device can connect to. */
+export type OutboundEndpointsUpdateAssignedMap = {
+  [key: string]: DeviceMessagingEndpointUpdate | undefined;
+};
+export const OutboundEndpointsUpdateAssignedMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DeviceMessagingEndpointUpdate,
+) as any as S.Schema<OutboundEndpointsUpdateAssignedMap>;
+
+/** Set of most recently removed endpoints. */
+export type OutboundEndpointsUpdateUnassignedMap = {
+  [key: string]: DeviceMessagingEndpointUpdate | undefined;
+};
+export const OutboundEndpointsUpdateUnassignedMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DeviceMessagingEndpointUpdate,
+) as any as S.Schema<OutboundEndpointsUpdateUnassignedMap>;
+
+/** Property bag contains the device's outbound endpoints */
+export interface OutboundEndpointsUpdate {
+  /** Endpoints the device can connect to. */
+  assigned?: OutboundEndpointsUpdateAssignedMap;
+  /** Set of most recently removed endpoints. */
+  unassigned?: OutboundEndpointsUpdateUnassignedMap;
+}
+export const OutboundEndpointsUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assigned: S.optional(OutboundEndpointsUpdateAssignedMap),
+    unassigned: S.optional(OutboundEndpointsUpdateUnassignedMap),
+  }),
+).annotate({
+  identifier: "OutboundEndpointsUpdate",
+}) as any as S.Schema<OutboundEndpointsUpdate>;
+
+/** Connection endpoint URL a device can use to connect to a service. */
+export interface MessagingEndpointsUpdate {
+  /** Set of endpoints to connect to the device. */
+  inbound?: MessagingEndpointsUpdateInboundMap;
+  /** Set of endpoints a device can connect to. */
+  outbound?: OutboundEndpointsUpdate;
+}
+export const MessagingEndpointsUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inbound: S.optional(MessagingEndpointsUpdateInboundMap),
+    outbound: S.optional(OutboundEndpointsUpdate),
+  }),
+).annotate({
+  identifier: "MessagingEndpointsUpdate",
+}) as any as S.Schema<MessagingEndpointsUpdate>;
+
+/** A set of key-value pairs that contain custom attributes set by the customer. */
+export type NamespaceDeviceUpdatePropertiesAttributesMap = {
+  [key: string]: unknown | undefined;
+};
+export const NamespaceDeviceUpdatePropertiesAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<NamespaceDeviceUpdatePropertiesAttributesMap>;
+
+/** The updatable properties of the NamespaceDevice. */
+export interface NamespaceDeviceUpdateProperties {
+  /** Device operating system version. */
+  operatingSystemVersion?: string;
+  /** Property bag containing the device's unassigned and assigned endpoints. */
+  endpoints?: MessagingEndpointsUpdate;
+  /** A set of key-value pairs that contain custom attributes set by the customer. */
+  attributes?: NamespaceDeviceUpdatePropertiesAttributesMap;
+  /** Indicates if the resource and identity are enabled or not. A disabled device cannot authenticate with Microsoft Entra ID. */
+  enabled?: boolean;
+}
+export const NamespaceDeviceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operatingSystemVersion: S.optional(S.String),
+    endpoints: S.optional(MessagingEndpointsUpdate),
+    attributes: S.optional(NamespaceDeviceUpdatePropertiesAttributesMap),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "NamespaceDeviceUpdateProperties",
+}) as any as S.Schema<NamespaceDeviceUpdateProperties>;
+
 export interface NamespaceDevicesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3110,7 +4117,10 @@ export interface NamespaceDevicesUpdateRequest {
   namespaceName: string;
   /** The name of the device. */
   deviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NamespaceDevicesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: NamespaceDeviceUpdateProperties;
 }
 export const NamespaceDevicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3118,7 +4128,8 @@ export const NamespaceDevicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
     deviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NamespaceDevicesUpdateRequestTagsMap),
+    properties: S.optional(NamespaceDeviceUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3176,90 +4187,61 @@ export const NamespaceDevicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespaceDevicesUpdateResponse",
 }) as any as S.Schema<NamespaceDevicesUpdateResponse>;
 
-export interface NamespaceDiscoveredAssetsCreateOrReplaceRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the namespace. */
-  namespaceName: string;
-  /** The name of the discovered asset. */
-  discoveredAssetName: string;
-  body: unknown;
-}
-export const NamespaceDiscoveredAssetsCreateOrReplaceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      namespaceName: S.String.pipe(T.Label()),
-      discoveredAssetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
-        code: 200,
-        apiVersion: "2026-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "NamespaceDiscoveredAssetsCreateOrReplaceRequest",
-  }) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceRequest>;
-
 /** Resource tags. */
-export type NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap = {
+export type NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap =
+export const NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap>;
+  ) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap>;
 
 /** URIs or type definition IDs. */
-export type NamespaceDiscoveredAssetPropertiesAssetTypeRefsList = string[];
-export const NamespaceDiscoveredAssetPropertiesAssetTypeRefsList =
+export type NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList =
+  ReadonlyArray<string>;
+export const NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesAssetTypeRefsList>;
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList>;
 
 /** A set of key-value pairs that contain custom attributes. */
-export type NamespaceDiscoveredAssetPropertiesAttributesMap = {
+export type NamespaceDiscoveredAssetPropertiesInputAttributesMap = {
   [key: string]: unknown | undefined;
 };
-export const NamespaceDiscoveredAssetPropertiesAttributesMap =
+export const NamespaceDiscoveredAssetPropertiesInputAttributesMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesAttributesMap>;
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputAttributesMap>;
 
 /** Default destinations for a dataset. */
-export type NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList =
-  DatasetDestination[];
-export const NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList =
+export type NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList =
+  ReadonlyArray<DatasetDestination>;
+export const NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList =
   /*@__PURE__*/ S.Array(
     DatasetDestination,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList>;
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList>;
 
 /** Default destinations for an event. */
-export type NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList =
-  EventDestination[];
-export const NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList =
+export type NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList =
+  ReadonlyArray<EventDestination>;
+export const NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList =
   /*@__PURE__*/ S.Array(
     EventDestination,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList>;
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList>;
 
 /** Default destinations for a stream. */
-export type NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList =
-  StreamDestination[];
-export const NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList =
+export type NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList =
+  ReadonlyArray<StreamDestination>;
+export const NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList =
   /*@__PURE__*/ S.Array(
     StreamDestination,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList>;
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList>;
 
 /** Destinations for a dataset. */
-export type NamespaceDiscoveredDatasetDestinationsList = DatasetDestination[];
+export type NamespaceDiscoveredDatasetDestinationsList =
+  ReadonlyArray<DatasetDestination>;
 export const NamespaceDiscoveredDatasetDestinationsList = /*@__PURE__*/ S.Array(
   DatasetDestination,
 ) as any as S.Schema<NamespaceDiscoveredDatasetDestinationsList>;
@@ -3291,7 +4273,7 @@ export const NamespaceDiscoveredDatasetDataPoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of data points that are part of the dataset. Each data point can have per-data point configuration. */
 export type NamespaceDiscoveredDatasetDataPointsList =
-  NamespaceDiscoveredDatasetDataPoint[];
+  ReadonlyArray<NamespaceDiscoveredDatasetDataPoint>;
 export const NamespaceDiscoveredDatasetDataPointsList = /*@__PURE__*/ S.Array(
   NamespaceDiscoveredDatasetDataPoint,
 ) as any as S.Schema<NamespaceDiscoveredDatasetDataPointsList>;
@@ -3328,23 +4310,24 @@ export const NamespaceDiscoveredDataset = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceDiscoveredDataset>;
 
 /** Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set. */
-export type NamespaceDiscoveredAssetPropertiesDatasetsList =
-  NamespaceDiscoveredDataset[];
-export const NamespaceDiscoveredAssetPropertiesDatasetsList =
+export type NamespaceDiscoveredAssetPropertiesInputDatasetsList =
+  ReadonlyArray<NamespaceDiscoveredDataset>;
+export const NamespaceDiscoveredAssetPropertiesInputDatasetsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredDataset,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesDatasetsList>;
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputDatasetsList>;
 
 /** Destinations for events. Default destinations when destinations is not defined at the event level. */
 export type NamespaceDiscoveredEventGroupDefaultDestinationsList =
-  EventDestination[];
+  ReadonlyArray<EventDestination>;
 export const NamespaceDiscoveredEventGroupDefaultDestinationsList =
   /*@__PURE__*/ S.Array(
     EventDestination,
   ) as any as S.Schema<NamespaceDiscoveredEventGroupDefaultDestinationsList>;
 
 /** Destinations for an event. */
-export type NamespaceDiscoveredEventDestinationsList = EventDestination[];
+export type NamespaceDiscoveredEventDestinationsList =
+  ReadonlyArray<EventDestination>;
 export const NamespaceDiscoveredEventDestinationsList = /*@__PURE__*/ S.Array(
   EventDestination,
 ) as any as S.Schema<NamespaceDiscoveredEventDestinationsList>;
@@ -3379,7 +4362,7 @@ export const NamespaceDiscoveredEvent = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of events that are part of the event group. */
 export type NamespaceDiscoveredEventGroupEventsList =
-  NamespaceDiscoveredEvent[];
+  ReadonlyArray<NamespaceDiscoveredEvent>;
 export const NamespaceDiscoveredEventGroupEventsList = /*@__PURE__*/ S.Array(
   NamespaceDiscoveredEvent,
 ) as any as S.Schema<NamespaceDiscoveredEventGroupEventsList>;
@@ -3415,15 +4398,16 @@ export const NamespaceDiscoveredEventGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceDiscoveredEventGroup>;
 
 /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
-export type NamespaceDiscoveredAssetPropertiesEventGroupsList =
-  NamespaceDiscoveredEventGroup[];
-export const NamespaceDiscoveredAssetPropertiesEventGroupsList =
+export type NamespaceDiscoveredAssetPropertiesInputEventGroupsList =
+  ReadonlyArray<NamespaceDiscoveredEventGroup>;
+export const NamespaceDiscoveredAssetPropertiesInputEventGroupsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredEventGroup,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesEventGroupsList>;
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputEventGroupsList>;
 
 /** Destinations for a stream. */
-export type NamespaceDiscoveredStreamDestinationsList = StreamDestination[];
+export type NamespaceDiscoveredStreamDestinationsList =
+  ReadonlyArray<StreamDestination>;
 export const NamespaceDiscoveredStreamDestinationsList = /*@__PURE__*/ S.Array(
   StreamDestination,
 ) as any as S.Schema<NamespaceDiscoveredStreamDestinationsList>;
@@ -3454,19 +4438,18 @@ export const NamespaceDiscoveredStream = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceDiscoveredStream>;
 
 /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
-export type NamespaceDiscoveredAssetPropertiesStreamsList =
-  NamespaceDiscoveredStream[];
-export const NamespaceDiscoveredAssetPropertiesStreamsList =
+export type NamespaceDiscoveredAssetPropertiesInputStreamsList =
+  ReadonlyArray<NamespaceDiscoveredStream>;
+export const NamespaceDiscoveredAssetPropertiesInputStreamsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredStream,
-  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesStreamsList>;
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputStreamsList>;
 
 /** The type of the action. */
 export type NamespaceDiscoveredManagementActionActionType =
   | "Call"
   | "Read"
-  | "Write"
-  | (string & {});
+  | "Write";
 export const NamespaceDiscoveredManagementActionActionType =
   /*@__PURE__*/ S.String;
 
@@ -3506,7 +4489,7 @@ export const NamespaceDiscoveredManagementAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of actions that are part of the management group. Each action can have an individual configuration. */
 export type NamespaceDiscoveredManagementGroupActionsList =
-  NamespaceDiscoveredManagementAction[];
+  ReadonlyArray<NamespaceDiscoveredManagementAction>;
 export const NamespaceDiscoveredManagementGroupActionsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredManagementAction,
@@ -3547,8 +4530,239 @@ export const NamespaceDiscoveredManagementGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceDiscoveredManagementGroup>;
 
 /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
+export type NamespaceDiscoveredAssetPropertiesInputManagementGroupsList =
+  ReadonlyArray<NamespaceDiscoveredManagementGroup>;
+export const NamespaceDiscoveredAssetPropertiesInputManagementGroupsList =
+  /*@__PURE__*/ S.Array(
+    NamespaceDiscoveredManagementGroup,
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInputManagementGroupsList>;
+
+/** Defines the discovered asset properties. */
+export interface NamespaceDiscoveredAssetPropertiesInput {
+  /** Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use. */
+  deviceRef: DeviceRef;
+  /** Human-readable display name. */
+  displayName?: string;
+  /** URIs or type definition IDs. */
+  assetTypeRefs?: NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList;
+  /** Human-readable description of the asset. */
+  description?: string;
+  /** Identifier used to detect changes in the asset. */
+  discoveryId: string;
+  /** Asset ID provided by the customer. */
+  externalAssetId?: string;
+  /** An integer that is incremented each time the resource is modified. */
+  version: number;
+  /** Asset manufacturer. */
+  manufacturer?: string;
+  /** Asset manufacturer URI. */
+  manufacturerUri?: string;
+  /** Asset model. */
+  model?: string;
+  /** Asset product code. */
+  productCode?: string;
+  /** Asset hardware revision number. */
+  hardwareRevision?: string;
+  /** Asset software revision number. */
+  softwareRevision?: string;
+  /** Asset documentation reference. */
+  documentationUri?: string;
+  /** Asset serial number. */
+  serialNumber?: string;
+  /** A set of key-value pairs that contain custom attributes. */
+  attributes?: NamespaceDiscoveredAssetPropertiesInputAttributesMap;
+  /** Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here. */
+  defaultDatasetsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. */
+  defaultEventsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here. */
+  defaultStreamsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here. */
+  defaultManagementGroupsConfiguration?: string;
+  /** Default destinations for a dataset. */
+  defaultDatasetsDestinations?: NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList;
+  /** Default destinations for an event. */
+  defaultEventsDestinations?: NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList;
+  /** Default destinations for a stream. */
+  defaultStreamsDestinations?: NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList;
+  /** Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set. */
+  datasets?: NamespaceDiscoveredAssetPropertiesInputDatasetsList;
+  /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
+  eventGroups?: NamespaceDiscoveredAssetPropertiesInputEventGroupsList;
+  /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
+  streams?: NamespaceDiscoveredAssetPropertiesInputStreamsList;
+  /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
+  managementGroups?: NamespaceDiscoveredAssetPropertiesInputManagementGroupsList;
+}
+export const NamespaceDiscoveredAssetPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deviceRef: DeviceRef,
+      displayName: S.optional(S.String),
+      assetTypeRefs: S.optional(
+        NamespaceDiscoveredAssetPropertiesInputAssetTypeRefsList,
+      ),
+      description: S.optional(S.String),
+      discoveryId: S.String,
+      externalAssetId: S.optional(S.String),
+      version: S.Number,
+      manufacturer: S.optional(S.String),
+      manufacturerUri: S.optional(S.String),
+      model: S.optional(S.String),
+      productCode: S.optional(S.String),
+      hardwareRevision: S.optional(S.String),
+      softwareRevision: S.optional(S.String),
+      documentationUri: S.optional(S.String),
+      serialNumber: S.optional(S.String),
+      attributes: S.optional(
+        NamespaceDiscoveredAssetPropertiesInputAttributesMap,
+      ),
+      defaultDatasetsConfiguration: S.optional(S.String),
+      defaultEventsConfiguration: S.optional(S.String),
+      defaultStreamsConfiguration: S.optional(S.String),
+      defaultManagementGroupsConfiguration: S.optional(S.String),
+      defaultDatasetsDestinations: S.optional(
+        NamespaceDiscoveredAssetPropertiesInputDefaultDatasetsDestinationsList,
+      ),
+      defaultEventsDestinations: S.optional(
+        NamespaceDiscoveredAssetPropertiesInputDefaultEventsDestinationsList,
+      ),
+      defaultStreamsDestinations: S.optional(
+        NamespaceDiscoveredAssetPropertiesInputDefaultStreamsDestinationsList,
+      ),
+      datasets: S.optional(NamespaceDiscoveredAssetPropertiesInputDatasetsList),
+      eventGroups: S.optional(
+        NamespaceDiscoveredAssetPropertiesInputEventGroupsList,
+      ),
+      streams: S.optional(NamespaceDiscoveredAssetPropertiesInputStreamsList),
+      managementGroups: S.optional(
+        NamespaceDiscoveredAssetPropertiesInputManagementGroupsList,
+      ),
+    }),
+).annotate({
+  identifier: "NamespaceDiscoveredAssetPropertiesInput",
+}) as any as S.Schema<NamespaceDiscoveredAssetPropertiesInput>;
+
+export interface NamespaceDiscoveredAssetsCreateOrReplaceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the namespace. */
+  namespaceName: string;
+  /** The name of the discovered asset. */
+  discoveredAssetName: string;
+  /** Resource tags. */
+  tags?: NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: NamespaceDiscoveredAssetPropertiesInput;
+  /** The extended location. */
+  extendedLocation: ExtendedLocation;
+}
+export const NamespaceDiscoveredAssetsCreateOrReplaceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      namespaceName: S.String.pipe(T.Label()),
+      discoveredAssetName: S.String.pipe(T.Label()),
+      tags: S.optional(NamespaceDiscoveredAssetsCreateOrReplaceRequestTagsMap),
+      location: S.String,
+      properties: S.optional(NamespaceDiscoveredAssetPropertiesInput),
+      extendedLocation: ExtendedLocation,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredAssets/{discoveredAssetName}",
+        code: 200,
+        apiVersion: "2026-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "NamespaceDiscoveredAssetsCreateOrReplaceRequest",
+  }) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceRequest>;
+
+/** Resource tags. */
+export type NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NamespaceDiscoveredAssetsCreateOrReplaceResponseTagsMap>;
+
+/** URIs or type definition IDs. */
+export type NamespaceDiscoveredAssetPropertiesAssetTypeRefsList =
+  ReadonlyArray<string>;
+export const NamespaceDiscoveredAssetPropertiesAssetTypeRefsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesAssetTypeRefsList>;
+
+/** A set of key-value pairs that contain custom attributes. */
+export type NamespaceDiscoveredAssetPropertiesAttributesMap = {
+  [key: string]: unknown | undefined;
+};
+export const NamespaceDiscoveredAssetPropertiesAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesAttributesMap>;
+
+/** Default destinations for a dataset. */
+export type NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList =
+  ReadonlyArray<DatasetDestination>;
+export const NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    DatasetDestination,
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesDefaultDatasetsDestinationsList>;
+
+/** Default destinations for an event. */
+export type NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList =
+  ReadonlyArray<EventDestination>;
+export const NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    EventDestination,
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesDefaultEventsDestinationsList>;
+
+/** Default destinations for a stream. */
+export type NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList =
+  ReadonlyArray<StreamDestination>;
+export const NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    StreamDestination,
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesDefaultStreamsDestinationsList>;
+
+/** Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set. */
+export type NamespaceDiscoveredAssetPropertiesDatasetsList =
+  ReadonlyArray<NamespaceDiscoveredDataset>;
+export const NamespaceDiscoveredAssetPropertiesDatasetsList =
+  /*@__PURE__*/ S.Array(
+    NamespaceDiscoveredDataset,
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesDatasetsList>;
+
+/** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
+export type NamespaceDiscoveredAssetPropertiesEventGroupsList =
+  ReadonlyArray<NamespaceDiscoveredEventGroup>;
+export const NamespaceDiscoveredAssetPropertiesEventGroupsList =
+  /*@__PURE__*/ S.Array(
+    NamespaceDiscoveredEventGroup,
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesEventGroupsList>;
+
+/** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
+export type NamespaceDiscoveredAssetPropertiesStreamsList =
+  ReadonlyArray<NamespaceDiscoveredStream>;
+export const NamespaceDiscoveredAssetPropertiesStreamsList =
+  /*@__PURE__*/ S.Array(
+    NamespaceDiscoveredStream,
+  ) as any as S.Schema<NamespaceDiscoveredAssetPropertiesStreamsList>;
+
+/** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
 export type NamespaceDiscoveredAssetPropertiesManagementGroupsList =
-  NamespaceDiscoveredManagementGroup[];
+  ReadonlyArray<NamespaceDiscoveredManagementGroup>;
 export const NamespaceDiscoveredAssetPropertiesManagementGroupsList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredManagementGroup,
@@ -3871,7 +5085,7 @@ export const NamespaceDiscoveredAsset = /*@__PURE__*/ S.suspend(() =>
 
 /** The NamespaceDiscoveredAsset items on this page */
 export type NamespaceDiscoveredAssetListResultValueList =
-  NamespaceDiscoveredAsset[];
+  ReadonlyArray<NamespaceDiscoveredAsset>;
 export const NamespaceDiscoveredAssetListResultValueList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredAsset,
@@ -3893,6 +5107,211 @@ export const NamespaceDiscoveredAssetListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespaceDiscoveredAssetListResult",
 }) as any as S.Schema<NamespaceDiscoveredAssetListResult>;
 
+/** Resource tags. */
+export type NamespaceDiscoveredAssetsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespaceDiscoveredAssetsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NamespaceDiscoveredAssetsUpdateRequestTagsMap>;
+
+/** Defines which device and endpoint to use for this asset */
+export interface DeviceRefUpdate {
+  /** Name of the device resource */
+  deviceName?: string;
+  /** The name of endpoint to use */
+  endpointName?: string;
+}
+export const DeviceRefUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deviceName: S.optional(S.String),
+    endpointName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeviceRefUpdate",
+}) as any as S.Schema<DeviceRefUpdate>;
+
+/** URIs or type definition IDs. */
+export type NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList =
+  ReadonlyArray<string>;
+export const NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList>;
+
+/** A set of key-value pairs that contain custom attributes. */
+export type NamespaceDiscoveredAssetUpdatePropertiesAttributesMap = {
+  [key: string]: unknown | undefined;
+};
+export const NamespaceDiscoveredAssetUpdatePropertiesAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesAttributesMap>;
+
+/** Default destinations for a dataset. */
+export type NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList =
+  ReadonlyArray<DatasetDestination>;
+export const NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    DatasetDestination,
+  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList>;
+
+/** Default destinations for an event. */
+export type NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList =
+  ReadonlyArray<EventDestination>;
+export const NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    EventDestination,
+  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList>;
+
+/** Default destinations for a stream. */
+export type NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList =
+  ReadonlyArray<StreamDestination>;
+export const NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList =
+  /*@__PURE__*/ S.Array(
+    StreamDestination,
+  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList>;
+
+/** Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set. */
+export type NamespaceDiscoveredAssetUpdatePropertiesDatasetsList =
+  ReadonlyArray<NamespaceDiscoveredDataset>;
+export const NamespaceDiscoveredAssetUpdatePropertiesDatasetsList =
+  /*@__PURE__*/ S.Array(
+    NamespaceDiscoveredDataset,
+  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesDatasetsList>;
+
+/** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
+export type NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList =
+  ReadonlyArray<NamespaceDiscoveredEventGroup>;
+export const NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList =
+  /*@__PURE__*/ S.Array(
+    NamespaceDiscoveredEventGroup,
+  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList>;
+
+/** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
+export type NamespaceDiscoveredAssetUpdatePropertiesStreamsList =
+  ReadonlyArray<NamespaceDiscoveredStream>;
+export const NamespaceDiscoveredAssetUpdatePropertiesStreamsList =
+  /*@__PURE__*/ S.Array(
+    NamespaceDiscoveredStream,
+  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesStreamsList>;
+
+/** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
+export type NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList =
+  ReadonlyArray<NamespaceDiscoveredManagementGroup>;
+export const NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList =
+  /*@__PURE__*/ S.Array(
+    NamespaceDiscoveredManagementGroup,
+  ) as any as S.Schema<NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList>;
+
+/** The updatable properties of the NamespaceDiscoveredAsset. */
+export interface NamespaceDiscoveredAssetUpdateProperties {
+  /** Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use. */
+  deviceRef?: DeviceRefUpdate;
+  /** Human-readable display name. */
+  displayName?: string;
+  /** URIs or type definition IDs. */
+  assetTypeRefs?: NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList;
+  /** Human-readable description of the asset. */
+  description?: string;
+  /** Identifier used to detect changes in the asset. */
+  discoveryId?: string;
+  /** An integer that is incremented each time the resource is modified. */
+  version?: number;
+  /** Asset manufacturer. */
+  manufacturer?: string;
+  /** Asset manufacturer URI. */
+  manufacturerUri?: string;
+  /** Asset model. */
+  model?: string;
+  /** Asset product code. */
+  productCode?: string;
+  /** Asset hardware revision number. */
+  hardwareRevision?: string;
+  /** Asset software revision number. */
+  softwareRevision?: string;
+  /** Asset documentation reference. */
+  documentationUri?: string;
+  /** Asset serial number. */
+  serialNumber?: string;
+  /** A set of key-value pairs that contain custom attributes. */
+  attributes?: NamespaceDiscoveredAssetUpdatePropertiesAttributesMap;
+  /** Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here. */
+  defaultDatasetsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. */
+  defaultEventsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here. */
+  defaultStreamsConfiguration?: string;
+  /** Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here. */
+  defaultManagementGroupsConfiguration?: string;
+  /** Default destinations for a dataset. */
+  defaultDatasetsDestinations?: NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList;
+  /** Default destinations for an event. */
+  defaultEventsDestinations?: NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList;
+  /** Default destinations for a stream. */
+  defaultStreamsDestinations?: NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList;
+  /** Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set. */
+  datasets?: NamespaceDiscoveredAssetUpdatePropertiesDatasetsList;
+  /** Array of event groups that are part of the asset. Each event group can have per-event group configuration. */
+  eventGroups?: NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList;
+  /** Array of streams that are part of the asset. Each stream can have a per-stream configuration. */
+  streams?: NamespaceDiscoveredAssetUpdatePropertiesStreamsList;
+  /** Array of management groups that are part of the asset. Each management group can have a per-group configuration. */
+  managementGroups?: NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList;
+}
+export const NamespaceDiscoveredAssetUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      deviceRef: S.optional(DeviceRefUpdate),
+      displayName: S.optional(S.String),
+      assetTypeRefs: S.optional(
+        NamespaceDiscoveredAssetUpdatePropertiesAssetTypeRefsList,
+      ),
+      description: S.optional(S.String),
+      discoveryId: S.optional(S.String),
+      version: S.optional(S.Number),
+      manufacturer: S.optional(S.String),
+      manufacturerUri: S.optional(S.String),
+      model: S.optional(S.String),
+      productCode: S.optional(S.String),
+      hardwareRevision: S.optional(S.String),
+      softwareRevision: S.optional(S.String),
+      documentationUri: S.optional(S.String),
+      serialNumber: S.optional(S.String),
+      attributes: S.optional(
+        NamespaceDiscoveredAssetUpdatePropertiesAttributesMap,
+      ),
+      defaultDatasetsConfiguration: S.optional(S.String),
+      defaultEventsConfiguration: S.optional(S.String),
+      defaultStreamsConfiguration: S.optional(S.String),
+      defaultManagementGroupsConfiguration: S.optional(S.String),
+      defaultDatasetsDestinations: S.optional(
+        NamespaceDiscoveredAssetUpdatePropertiesDefaultDatasetsDestinationsList,
+      ),
+      defaultEventsDestinations: S.optional(
+        NamespaceDiscoveredAssetUpdatePropertiesDefaultEventsDestinationsList,
+      ),
+      defaultStreamsDestinations: S.optional(
+        NamespaceDiscoveredAssetUpdatePropertiesDefaultStreamsDestinationsList,
+      ),
+      datasets: S.optional(
+        NamespaceDiscoveredAssetUpdatePropertiesDatasetsList,
+      ),
+      eventGroups: S.optional(
+        NamespaceDiscoveredAssetUpdatePropertiesEventGroupsList,
+      ),
+      streams: S.optional(NamespaceDiscoveredAssetUpdatePropertiesStreamsList),
+      managementGroups: S.optional(
+        NamespaceDiscoveredAssetUpdatePropertiesManagementGroupsList,
+      ),
+    }),
+).annotate({
+  identifier: "NamespaceDiscoveredAssetUpdateProperties",
+}) as any as S.Schema<NamespaceDiscoveredAssetUpdateProperties>;
+
 export interface NamespaceDiscoveredAssetsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3902,7 +5321,10 @@ export interface NamespaceDiscoveredAssetsUpdateRequest {
   namespaceName: string;
   /** The name of the discovered asset. */
   discoveredAssetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NamespaceDiscoveredAssetsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: NamespaceDiscoveredAssetUpdateProperties;
 }
 export const NamespaceDiscoveredAssetsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3911,7 +5333,8 @@ export const NamespaceDiscoveredAssetsUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       discoveredAssetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NamespaceDiscoveredAssetsUpdateRequestTagsMap),
+      properties: S.optional(NamespaceDiscoveredAssetUpdateProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -3968,58 +5391,26 @@ export const NamespaceDiscoveredAssetsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NamespaceDiscoveredAssetsUpdateResponse",
 }) as any as S.Schema<NamespaceDiscoveredAssetsUpdateResponse>;
 
-export interface NamespaceDiscoveredDevicesCreateOrReplaceRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the namespace. */
-  namespaceName: string;
-  /** The name of the discovered device. */
-  discoveredDeviceName: string;
-  body: unknown;
-}
-export const NamespaceDiscoveredDevicesCreateOrReplaceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      namespaceName: S.String.pipe(T.Label()),
-      discoveredDeviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
-        code: 200,
-        apiVersion: "2026-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "NamespaceDiscoveredDevicesCreateOrReplaceRequest",
-  }) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceRequest>;
-
 /** Resource tags. */
-export type NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap = {
+export type NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap =
+export const NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap>;
+  ) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap>;
 
 /** The method to authenticate the user of the client at the server. */
 export type AuthenticationMethod2 =
   | "Anonymous"
   | "Certificate"
-  | "UsernamePassword"
-  | (string & {});
+  | "UsernamePassword";
 export const AuthenticationMethod2 = /*@__PURE__*/ S.String;
 
 /** List of supported authentication methods supported by device for Inbound connections. */
 export type DiscoveredInboundEndpointsSupportedAuthenticationMethodsList =
-  AuthenticationMethod2[];
+  ReadonlyArray<AuthenticationMethod2>;
 export const DiscoveredInboundEndpointsSupportedAuthenticationMethodsList =
   /*@__PURE__*/ S.Array(
     AuthenticationMethod2,
@@ -4101,6 +5492,107 @@ export const DiscoveredMessagingEndpoints = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DiscoveredMessagingEndpoints",
 }) as any as S.Schema<DiscoveredMessagingEndpoints>;
+
+/** A set of key-value pairs that contain custom attributes. */
+export type NamespaceDiscoveredDevicePropertiesInputAttributesMap = {
+  [key: string]: unknown | undefined;
+};
+export const NamespaceDiscoveredDevicePropertiesInputAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<NamespaceDiscoveredDevicePropertiesInputAttributesMap>;
+
+/** Defines the discovered device properties. */
+export interface NamespaceDiscoveredDevicePropertiesInput {
+  /** A device ID that represents the device in a system external to Azure. Unique within scope of an Azure tenant. */
+  externalDeviceId?: string;
+  /** Endpoints for discovered devices. */
+  endpoints?: DiscoveredMessagingEndpoints;
+  /** Device manufacturer. */
+  manufacturer?: string;
+  /** Device model. */
+  model?: string;
+  /** Device operating system name. */
+  operatingSystem?: string;
+  /** Device operating system version. */
+  operatingSystemVersion?: string;
+  /** A set of key-value pairs that contain custom attributes. */
+  attributes?: NamespaceDiscoveredDevicePropertiesInputAttributesMap;
+  /** Identifier used to detect changes in the discovered device. */
+  discoveryId: string;
+  /** An integer that is incremented each time the resource is modified. */
+  version: number;
+}
+export const NamespaceDiscoveredDevicePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      externalDeviceId: S.optional(S.String),
+      endpoints: S.optional(DiscoveredMessagingEndpoints),
+      manufacturer: S.optional(S.String),
+      model: S.optional(S.String),
+      operatingSystem: S.optional(S.String),
+      operatingSystemVersion: S.optional(S.String),
+      attributes: S.optional(
+        NamespaceDiscoveredDevicePropertiesInputAttributesMap,
+      ),
+      discoveryId: S.String,
+      version: S.Number,
+    }),
+).annotate({
+  identifier: "NamespaceDiscoveredDevicePropertiesInput",
+}) as any as S.Schema<NamespaceDiscoveredDevicePropertiesInput>;
+
+export interface NamespaceDiscoveredDevicesCreateOrReplaceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the namespace. */
+  namespaceName: string;
+  /** The name of the discovered device. */
+  discoveredDeviceName: string;
+  /** Resource tags. */
+  tags?: NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: NamespaceDiscoveredDevicePropertiesInput;
+  /** The extended location. */
+  extendedLocation: ExtendedLocation;
+}
+export const NamespaceDiscoveredDevicesCreateOrReplaceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      namespaceName: S.String.pipe(T.Label()),
+      discoveredDeviceName: S.String.pipe(T.Label()),
+      tags: S.optional(NamespaceDiscoveredDevicesCreateOrReplaceRequestTagsMap),
+      location: S.String,
+      properties: S.optional(NamespaceDiscoveredDevicePropertiesInput),
+      extendedLocation: ExtendedLocation,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}/discoveredDevices/{discoveredDeviceName}",
+        code: 200,
+        apiVersion: "2026-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "NamespaceDiscoveredDevicesCreateOrReplaceRequest",
+  }) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceRequest>;
+
+/** Resource tags. */
+export type NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NamespaceDiscoveredDevicesCreateOrReplaceResponseTagsMap>;
 
 /** A set of key-value pairs that contain custom attributes. */
 export type NamespaceDiscoveredDevicePropertiesAttributesMap = {
@@ -4368,7 +5860,7 @@ export const NamespaceDiscoveredDevice = /*@__PURE__*/ S.suspend(() =>
 
 /** The NamespaceDiscoveredDevice items on this page */
 export type NamespaceDiscoveredDeviceListResultValueList =
-  NamespaceDiscoveredDevice[];
+  ReadonlyArray<NamespaceDiscoveredDevice>;
 export const NamespaceDiscoveredDeviceListResultValueList =
   /*@__PURE__*/ S.Array(
     NamespaceDiscoveredDevice,
@@ -4390,6 +5882,144 @@ export const NamespaceDiscoveredDeviceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespaceDiscoveredDeviceListResult",
 }) as any as S.Schema<NamespaceDiscoveredDeviceListResult>;
 
+/** Resource tags. */
+export type NamespaceDiscoveredDevicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespaceDiscoveredDevicesUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NamespaceDiscoveredDevicesUpdateRequestTagsMap>;
+
+/** List of supported authentication methods supported by device for Inbound connections. */
+export type DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList =
+  ReadonlyArray<AuthenticationMethod2>;
+export const DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList =
+  /*@__PURE__*/ S.Array(
+    AuthenticationMethod2,
+  ) as any as S.Schema<DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList>;
+
+/** An endpoint to connect to the device. */
+export interface DiscoveredInboundEndpointsUpdate {
+  /** Type of connection endpoint. */
+  endpointType?: string;
+  /** The endpoint address & port. This can be either an IP address (e.g., 192.168.1.1) or a fully qualified domain name (FQDN, e.g., server.example.com). */
+  address?: string;
+  /** Protocol version associated with the endpoint e.g. 1 or 2 for endpointType Microsoft.HTTP, and 3.5 or 5.0 for endpointType Microsoft.Mqtt etc. */
+  version?: string;
+  /** List of supported authentication methods supported by device for Inbound connections. */
+  supportedAuthenticationMethods?: DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList;
+  /** Stringified JSON that contains configuration to be used by the connector (e.g., OPC UA, ONVIF). */
+  additionalConfiguration?: string;
+  /** The timestamp (in UTC) when the endpoint was discovered. */
+  lastUpdatedOn?: string;
+}
+export const DiscoveredInboundEndpointsUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpointType: S.optional(S.String),
+    address: S.optional(S.String),
+    version: S.optional(S.String),
+    supportedAuthenticationMethods: S.optional(
+      DiscoveredInboundEndpointsUpdateSupportedAuthenticationMethodsList,
+    ),
+    additionalConfiguration: S.optional(S.String),
+    lastUpdatedOn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DiscoveredInboundEndpointsUpdate",
+}) as any as S.Schema<DiscoveredInboundEndpointsUpdate>;
+
+/** Set of endpoints to connect to the device. */
+export type DiscoveredMessagingEndpointsUpdateInboundMap = {
+  [key: string]: DiscoveredInboundEndpointsUpdate | undefined;
+};
+export const DiscoveredMessagingEndpointsUpdateInboundMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DiscoveredInboundEndpointsUpdate,
+  ) as any as S.Schema<DiscoveredMessagingEndpointsUpdateInboundMap>;
+
+/** Endpoints the device can connect to. */
+export type DiscoveredOutboundEndpointsUpdateAssignedMap = {
+  [key: string]: DeviceMessagingEndpointUpdate | undefined;
+};
+export const DiscoveredOutboundEndpointsUpdateAssignedMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    DeviceMessagingEndpointUpdate,
+  ) as any as S.Schema<DiscoveredOutboundEndpointsUpdateAssignedMap>;
+
+/** Property bag contains the device's outbound endpoints */
+export interface DiscoveredOutboundEndpointsUpdate {
+  /** Endpoints the device can connect to. */
+  assigned?: DiscoveredOutboundEndpointsUpdateAssignedMap;
+}
+export const DiscoveredOutboundEndpointsUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assigned: S.optional(DiscoveredOutboundEndpointsUpdateAssignedMap),
+  }),
+).annotate({
+  identifier: "DiscoveredOutboundEndpointsUpdate",
+}) as any as S.Schema<DiscoveredOutboundEndpointsUpdate>;
+
+/** Connection endpoint URL a device can use to connect to a service. */
+export interface DiscoveredMessagingEndpointsUpdate {
+  /** Set of endpoints to connect to the device. */
+  inbound?: DiscoveredMessagingEndpointsUpdateInboundMap;
+  /** Set of endpoints a device can connect to. */
+  outbound?: DiscoveredOutboundEndpointsUpdate;
+}
+export const DiscoveredMessagingEndpointsUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inbound: S.optional(DiscoveredMessagingEndpointsUpdateInboundMap),
+    outbound: S.optional(DiscoveredOutboundEndpointsUpdate),
+  }),
+).annotate({
+  identifier: "DiscoveredMessagingEndpointsUpdate",
+}) as any as S.Schema<DiscoveredMessagingEndpointsUpdate>;
+
+/** A set of key-value pairs that contain custom attributes. */
+export type NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap = {
+  [key: string]: unknown | undefined;
+};
+export const NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap>;
+
+/** The updatable properties of the NamespaceDiscoveredDevice. */
+export interface NamespaceDiscoveredDeviceUpdateProperties {
+  /** A device ID that represents the device in a system external to Azure. Unique within scope of an Azure tenant. */
+  externalDeviceId?: string;
+  /** Endpoints for discovered devices. */
+  endpoints?: DiscoveredMessagingEndpointsUpdate;
+  /** Device operating system version. */
+  operatingSystemVersion?: string;
+  /** A set of key-value pairs that contain custom attributes. */
+  attributes?: NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap;
+  /** Identifier used to detect changes in the discovered device. */
+  discoveryId?: string;
+  /** An integer that is incremented each time the resource is modified. */
+  version?: number;
+}
+export const NamespaceDiscoveredDeviceUpdateProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      externalDeviceId: S.optional(S.String),
+      endpoints: S.optional(DiscoveredMessagingEndpointsUpdate),
+      operatingSystemVersion: S.optional(S.String),
+      attributes: S.optional(
+        NamespaceDiscoveredDeviceUpdatePropertiesAttributesMap,
+      ),
+      discoveryId: S.optional(S.String),
+      version: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "NamespaceDiscoveredDeviceUpdateProperties",
+  }) as any as S.Schema<NamespaceDiscoveredDeviceUpdateProperties>;
+
 export interface NamespaceDiscoveredDevicesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4399,7 +6029,10 @@ export interface NamespaceDiscoveredDevicesUpdateRequest {
   namespaceName: string;
   /** The name of the discovered device. */
   discoveredDeviceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NamespaceDiscoveredDevicesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: NamespaceDiscoveredDeviceUpdateProperties;
 }
 export const NamespaceDiscoveredDevicesUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4408,7 +6041,8 @@ export const NamespaceDiscoveredDevicesUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       discoveredDeviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NamespaceDiscoveredDevicesUpdateRequestTagsMap),
+      properties: S.optional(NamespaceDiscoveredDeviceUpdateProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -4465,41 +6099,14 @@ export const NamespaceDiscoveredDevicesUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NamespaceDiscoveredDevicesUpdateResponse",
 }) as any as S.Schema<NamespaceDiscoveredDevicesUpdateResponse>;
 
-export interface NamespacesCreateOrReplaceRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the namespace. */
-  namespaceName: string;
-  body: unknown;
-}
-export const NamespacesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    namespaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
-      code: 200,
-      apiVersion: "2026-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "NamespacesCreateOrReplaceRequest",
-}) as any as S.Schema<NamespacesCreateOrReplaceRequest>;
-
 /** Resource tags. */
-export type NamespacesCreateOrReplaceResponseTagsMap = {
+export type NamespacesCreateOrReplaceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespacesCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
+export const NamespacesCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<NamespacesCreateOrReplaceResponseTagsMap>;
+) as any as S.Schema<NamespacesCreateOrReplaceRequestTagsMap>;
 
 /** Namespace messaging endpoint model used by a device to connect to a service. */
 export interface MessagingEndpoint {
@@ -4583,6 +6190,85 @@ export const Management = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Management" }) as any as S.Schema<Management>;
 
 /** The namespace properties model. */
+export interface NamespacePropertiesInput {
+  /** Assigned and unassigned messaging endpoints. */
+  messaging?: Messaging;
+  /** Assigned and unassigned management endpoints. */
+  management?: Management;
+}
+export const NamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    messaging: S.optional(Messaging),
+    management: S.optional(Management),
+  }),
+).annotate({
+  identifier: "NamespacePropertiesInput",
+}) as any as S.Schema<NamespacePropertiesInput>;
+
+/** Type of managed service identity (either system assigned, or none). */
+export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
+export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** Managed service identity (either system assigned, or none) */
+export interface NamespacesCreateOrReplaceRequestIdentity {
+  type: SystemAssignedServiceIdentityType;
+}
+export const NamespacesCreateOrReplaceRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: SystemAssignedServiceIdentityType,
+    }),
+).annotate({
+  identifier: "NamespacesCreateOrReplaceRequestIdentity",
+}) as any as S.Schema<NamespacesCreateOrReplaceRequestIdentity>;
+
+export interface NamespacesCreateOrReplaceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the namespace. */
+  namespaceName: string;
+  /** Resource tags. */
+  tags?: NamespacesCreateOrReplaceRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: NamespacePropertiesInput;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: NamespacesCreateOrReplaceRequestIdentity;
+}
+export const NamespacesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    namespaceName: S.String.pipe(T.Label()),
+    tags: S.optional(NamespacesCreateOrReplaceRequestTagsMap),
+    location: S.String,
+    properties: S.optional(NamespacePropertiesInput),
+    identity: S.optional(NamespacesCreateOrReplaceRequestIdentity),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DeviceRegistry/namespaces/{namespaceName}",
+      code: 200,
+      apiVersion: "2026-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "NamespacesCreateOrReplaceRequest",
+}) as any as S.Schema<NamespacesCreateOrReplaceRequest>;
+
+/** Resource tags. */
+export type NamespacesCreateOrReplaceResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespacesCreateOrReplaceResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NamespacesCreateOrReplaceResponseTagsMap>;
+
+/** The namespace properties model. */
 export interface NamespaceProperties {
   /** Globally unique, immutable, non-reusable ID. */
   uuid?: string;
@@ -4603,13 +6289,6 @@ export const NamespaceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NamespaceProperties",
 }) as any as S.Schema<NamespaceProperties>;
-
-/** Type of managed service identity (either system assigned, or none). */
-export type SystemAssignedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | (string & {});
-export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** Managed service identity (either system assigned, or none) */
 export interface NamespacesCreateOrReplaceResponseIdentity {
@@ -4861,7 +6540,7 @@ export const Namespace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Namespace" }) as any as S.Schema<Namespace>;
 
 /** The Namespace items on this page */
-export type NamespaceListResultValueList = Namespace[];
+export type NamespaceListResultValueList = ReadonlyArray<Namespace>;
 export const NamespaceListResultValueList = /*@__PURE__*/ S.Array(
   Namespace,
 ) as any as S.Schema<NamespaceListResultValueList>;
@@ -4901,6 +6580,16 @@ export const NamespacesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesListBySubscriptionRequest",
 }) as any as S.Schema<NamespacesListBySubscriptionRequest>;
 
+/** Scope of the migrate resources operation. */
+export type Scope = "Resources";
+export const Scope = /*@__PURE__*/ S.String;
+
+/** List of asset resources to be migrated. */
+export type NamespacesMigrateRequestResourceIdsList = ReadonlyArray<string>;
+export const NamespacesMigrateRequestResourceIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NamespacesMigrateRequestResourceIdsList>;
+
 export interface NamespacesMigrateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4908,14 +6597,18 @@ export interface NamespacesMigrateRequest {
   resourceGroupName: string;
   /** The name of the namespace. */
   namespaceName: string;
-  body: unknown;
+  /** Scope of the migrate resources operation. */
+  scope?: Scope;
+  /** List of asset resources to be migrated. */
+  resourceIds?: NamespacesMigrateRequestResourceIdsList;
 }
 export const NamespacesMigrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    scope: S.optional(Scope),
+    resourceIds: S.optional(NamespacesMigrateRequestResourceIdsList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4929,7 +6622,7 @@ export const NamespacesMigrateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesMigrateRequest>;
 
 /** Result Type of Migrate Operation. */
-export type MigrateResultType = "Succeeded" | "Failed" | (string & {});
+export type MigrateResultType = "Succeeded" | "Failed";
 export const MigrateResultType = /*@__PURE__*/ S.String;
 
 /** Result of Migrate operation of asset resource into Namespace resource. */
@@ -4950,7 +6643,8 @@ export const MigrateResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MigrateResult" }) as any as S.Schema<MigrateResult>;
 
 /** List of migrate results containing result of each asset migrate operation. */
-export type NamespaceMigrateResponseMigrateResultsList = MigrateResult[];
+export type NamespaceMigrateResponseMigrateResultsList =
+  ReadonlyArray<MigrateResult>;
 export const NamespaceMigrateResponseMigrateResultsList = /*@__PURE__*/ S.Array(
   MigrateResult,
 ) as any as S.Schema<NamespaceMigrateResponseMigrateResultsList>;
@@ -4968,6 +6662,43 @@ export const NamespaceMigrateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespaceMigrateResponse",
 }) as any as S.Schema<NamespaceMigrateResponse>;
 
+/** Managed service identity (either system assigned, or none) */
+export interface NamespacesUpdateRequestIdentity {
+  type: SystemAssignedServiceIdentityType;
+}
+export const NamespacesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SystemAssignedServiceIdentityType,
+  }),
+).annotate({
+  identifier: "NamespacesUpdateRequestIdentity",
+}) as any as S.Schema<NamespacesUpdateRequestIdentity>;
+
+/** Resource tags. */
+export type NamespacesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NamespacesUpdateRequestTagsMap>;
+
+/** The updatable properties of the Namespace. */
+export interface NamespaceUpdateProperties {
+  /** Assigned and unassigned messaging endpoints. */
+  messaging?: Messaging;
+  /** Assigned and unassigned management endpoints. */
+  management?: Management;
+}
+export const NamespaceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    messaging: S.optional(Messaging),
+    management: S.optional(Management),
+  }),
+).annotate({
+  identifier: "NamespaceUpdateProperties",
+}) as any as S.Schema<NamespaceUpdateProperties>;
+
 export interface NamespacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4975,14 +6706,21 @@ export interface NamespacesUpdateRequest {
   resourceGroupName: string;
   /** The name of the namespace. */
   namespaceName: string;
-  body: unknown;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: NamespacesUpdateRequestIdentity;
+  /** Resource tags. */
+  tags?: NamespacesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: NamespaceUpdateProperties;
 }
 export const NamespacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(NamespacesUpdateRequestIdentity),
+    tags: S.optional(NamespacesUpdateRequestTagsMap),
+    properties: S.optional(NamespaceUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5092,11 +6830,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -5123,7 +6861,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -5169,13 +6907,14 @@ export const OperationStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList = OperationStatusResult[];
+export type OperationStatusResultOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -5197,7 +6936,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -5263,7 +7002,8 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusResult>;
 
 /** The operations list. */
-export type OperationStatusGetResponseOperationsList = OperationStatusResult[];
+export type OperationStatusGetResponseOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationStatusGetResponseOperationsList>;
@@ -5304,6 +7044,51 @@ export const OperationStatusGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationStatusGetResponse",
 }) as any as S.Schema<OperationStatusGetResponse>;
 
+/** Resource tags. */
+export type SchemaRegistriesCreateOrReplaceRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SchemaRegistriesCreateOrReplaceRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SchemaRegistriesCreateOrReplaceRequestTagsMap>;
+
+/** Defines the schema registry properties. */
+export interface SchemaRegistryPropertiesInput {
+  /** Schema registry namespace. Uniquely identifies a schema registry within a tenant. */
+  namespace: string;
+  /** Human-readable display name. */
+  displayName?: string;
+  /** Human-readable description of the schema registry. */
+  description?: string;
+  /** The Storage Account's Container URL where schemas will be stored. */
+  storageAccountContainerUrl: string;
+}
+export const SchemaRegistryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String,
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    storageAccountContainerUrl: S.String,
+  }),
+).annotate({
+  identifier: "SchemaRegistryPropertiesInput",
+}) as any as S.Schema<SchemaRegistryPropertiesInput>;
+
+/** Managed service identity (either system assigned, or none) */
+export interface SchemaRegistriesCreateOrReplaceRequestIdentity {
+  type: SystemAssignedServiceIdentityType;
+}
+export const SchemaRegistriesCreateOrReplaceRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: SystemAssignedServiceIdentityType,
+    }),
+  ).annotate({
+    identifier: "SchemaRegistriesCreateOrReplaceRequestIdentity",
+  }) as any as S.Schema<SchemaRegistriesCreateOrReplaceRequestIdentity>;
+
 export interface SchemaRegistriesCreateOrReplaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5311,7 +7096,14 @@ export interface SchemaRegistriesCreateOrReplaceRequest {
   resourceGroupName: string;
   /** Schema registry name parameter. */
   schemaRegistryName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SchemaRegistriesCreateOrReplaceRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaRegistryPropertiesInput;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: SchemaRegistriesCreateOrReplaceRequestIdentity;
 }
 export const SchemaRegistriesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5319,7 +7111,10 @@ export const SchemaRegistriesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       schemaRegistryName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(SchemaRegistriesCreateOrReplaceRequestTagsMap),
+      location: S.String,
+      properties: S.optional(SchemaRegistryPropertiesInput),
+      identity: S.optional(SchemaRegistriesCreateOrReplaceRequestIdentity),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5621,7 +7416,7 @@ export const SchemaRegistry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaRegistry" }) as any as S.Schema<SchemaRegistry>;
 
 /** The SchemaRegistry items on this page */
-export type SchemaRegistryListResultValueList = SchemaRegistry[];
+export type SchemaRegistryListResultValueList = ReadonlyArray<SchemaRegistry>;
 export const SchemaRegistryListResultValueList = /*@__PURE__*/ S.Array(
   SchemaRegistry,
 ) as any as S.Schema<SchemaRegistryListResultValueList>;
@@ -5662,6 +7457,44 @@ export const SchemaRegistriesListBySubscriptionRequest =
     identifier: "SchemaRegistriesListBySubscriptionRequest",
   }) as any as S.Schema<SchemaRegistriesListBySubscriptionRequest>;
 
+/** Managed service identity (either system assigned, or none) */
+export interface SchemaRegistriesUpdateRequestIdentity {
+  type: SystemAssignedServiceIdentityType;
+}
+export const SchemaRegistriesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: SystemAssignedServiceIdentityType,
+    }),
+).annotate({
+  identifier: "SchemaRegistriesUpdateRequestIdentity",
+}) as any as S.Schema<SchemaRegistriesUpdateRequestIdentity>;
+
+/** Resource tags. */
+export type SchemaRegistriesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SchemaRegistriesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SchemaRegistriesUpdateRequestTagsMap>;
+
+/** The updatable properties of the SchemaRegistry. */
+export interface SchemaRegistryUpdateProperties {
+  /** Human-readable display name. */
+  displayName?: string;
+  /** Human-readable description of the schema registry. */
+  description?: string;
+}
+export const SchemaRegistryUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SchemaRegistryUpdateProperties",
+}) as any as S.Schema<SchemaRegistryUpdateProperties>;
+
 export interface SchemaRegistriesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5669,14 +7502,21 @@ export interface SchemaRegistriesUpdateRequest {
   resourceGroupName: string;
   /** Schema registry name parameter. */
   schemaRegistryName: string;
-  body: unknown;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: SchemaRegistriesUpdateRequestIdentity;
+  /** Resource tags. */
+  tags?: SchemaRegistriesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaRegistryUpdateProperties;
 }
 export const SchemaRegistriesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     schemaRegistryName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(SchemaRegistriesUpdateRequestIdentity),
+    tags: S.optional(SchemaRegistriesUpdateRequestTagsMap),
+    properties: S.optional(SchemaRegistryUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5750,6 +7590,48 @@ export const SchemaRegistriesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemaRegistriesUpdateResponse",
 }) as any as S.Schema<SchemaRegistriesUpdateResponse>;
 
+/** Defines the schema format. */
+export type Format = "JsonSchema/draft-07" | "Delta/1.0";
+export const Format = /*@__PURE__*/ S.String;
+
+/** Defines the schema type. */
+export type SchemaType = "MessageSchema";
+export const SchemaType = /*@__PURE__*/ S.String;
+
+/** Schema tags. */
+export type SchemaPropertiesInputTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SchemaPropertiesInputTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SchemaPropertiesInputTagsMap>;
+
+/** Defines the schema properties. */
+export interface SchemaPropertiesInput {
+  /** Human-readable display name. */
+  displayName?: string;
+  /** Human-readable description of the schema. */
+  description?: string;
+  /** Format of the schema. */
+  format: Format;
+  /** Type of the schema. */
+  schemaType: SchemaType;
+  /** Schema tags. */
+  tags?: SchemaPropertiesInputTagsMap;
+}
+export const SchemaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    format: Format,
+    schemaType: SchemaType,
+    tags: S.optional(SchemaPropertiesInputTagsMap),
+  }),
+).annotate({
+  identifier: "SchemaPropertiesInput",
+}) as any as S.Schema<SchemaPropertiesInput>;
+
 export interface SchemasCreateOrReplaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5759,7 +7641,8 @@ export interface SchemasCreateOrReplaceRequest {
   schemaRegistryName: string;
   /** Schema name parameter. */
   schemaName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaPropertiesInput;
 }
 export const SchemasCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5767,7 +7650,7 @@ export const SchemasCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     schemaRegistryName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SchemaPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5779,14 +7662,6 @@ export const SchemasCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SchemasCreateOrReplaceRequest",
 }) as any as S.Schema<SchemasCreateOrReplaceRequest>;
-
-/** Defines the schema format. */
-export type Format = "JsonSchema/draft-07" | "Delta/1.0" | (string & {});
-export const Format = /*@__PURE__*/ S.String;
-
-/** Defines the schema type. */
-export type SchemaType = "MessageSchema" | (string & {});
-export const SchemaType = /*@__PURE__*/ S.String;
 
 /** Schema tags. */
 export type SchemaPropertiesTagsMap = { [key: string]: string | undefined };
@@ -5986,7 +7861,7 @@ export const Schema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schema" }) as any as S.Schema<Schema>;
 
 /** The Schema items on this page */
-export type SchemaListResultValueList = Schema[];
+export type SchemaListResultValueList = ReadonlyArray<Schema>;
 export const SchemaListResultValueList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<SchemaListResultValueList>;
@@ -6007,6 +7882,22 @@ export const SchemaListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemaListResult",
 }) as any as S.Schema<SchemaListResult>;
 
+/** Defines the schema version properties. */
+export interface SchemaVersionPropertiesInput {
+  /** Human-readable description of the schema. */
+  description?: string;
+  /** Schema content. */
+  schemaContent: string;
+}
+export const SchemaVersionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    schemaContent: S.String,
+  }),
+).annotate({
+  identifier: "SchemaVersionPropertiesInput",
+}) as any as S.Schema<SchemaVersionPropertiesInput>;
+
 export interface SchemaVersionsCreateOrReplaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6018,7 +7909,8 @@ export interface SchemaVersionsCreateOrReplaceRequest {
   schemaName: string;
   /** Schema version name parameter. */
   schemaVersionName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SchemaVersionPropertiesInput;
 }
 export const SchemaVersionsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6028,7 +7920,7 @@ export const SchemaVersionsCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
       schemaRegistryName: S.String.pipe(T.Label()),
       schemaName: S.String.pipe(T.Label()),
       schemaVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SchemaVersionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6236,7 +8128,7 @@ export const SchemaVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaVersion" }) as any as S.Schema<SchemaVersion>;
 
 /** The SchemaVersion items on this page */
-export type SchemaVersionListResultValueList = SchemaVersion[];
+export type SchemaVersionListResultValueList = ReadonlyArray<SchemaVersion>;
 export const SchemaVersionListResultValueList = /*@__PURE__*/ S.Array(
   SchemaVersion,
 ) as any as S.Schema<SchemaVersionListResultValueList>;

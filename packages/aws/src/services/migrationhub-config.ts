@@ -114,7 +114,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
   T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export type HomeRegion = string;
-export type TargetType = "ACCOUNT" | (string & {});
+export type TargetType = "ACCOUNT";
 export const TargetType = /*@__PURE__*/ S.String;
 
 export type TargetId = string;

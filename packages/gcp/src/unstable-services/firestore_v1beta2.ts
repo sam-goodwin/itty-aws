@@ -64,30 +64,26 @@ export type GoogleFirestoreAdminV1beta2IndexStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "READY"
-  | "NEEDS_REPAIR"
-  | (string & {});
+  | "NEEDS_REPAIR";
 export const GoogleFirestoreAdminV1beta2IndexStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleFirestoreAdminV1beta2IndexQueryScopeEnum =
   | "QUERY_SCOPE_UNSPECIFIED"
   | "COLLECTION"
-  | "COLLECTION_GROUP"
-  | (string & {});
+  | "COLLECTION_GROUP";
 export const GoogleFirestoreAdminV1beta2IndexQueryScopeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleFirestoreAdminV1beta2IndexFieldArrayConfigEnum =
   | "ARRAY_CONFIG_UNSPECIFIED"
-  | "CONTAINS"
-  | (string & {});
+  | "CONTAINS";
 export const GoogleFirestoreAdminV1beta2IndexFieldArrayConfigEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleFirestoreAdminV1beta2IndexFieldOrderEnum =
   | "ORDER_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+  | "DESCENDING";
 export const GoogleFirestoreAdminV1beta2IndexFieldOrderEnum =
   /*@__PURE__*/ S.String;
 
@@ -114,7 +110,7 @@ export const GoogleFirestoreAdminV1beta2IndexField = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirestoreAdminV1beta2IndexField>;
 
 export type GoogleFirestoreAdminV1beta2IndexFieldList =
-  GoogleFirestoreAdminV1beta2IndexField[];
+  ReadonlyArray<GoogleFirestoreAdminV1beta2IndexField>;
 export const GoogleFirestoreAdminV1beta2IndexFieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta2IndexField,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta2IndexFieldList>;
@@ -169,7 +165,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -241,7 +237,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -307,7 +303,7 @@ export const GetProjectsDatabasesCollectionGroupsFieldsRequest =
   }) as any as S.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type GoogleFirestoreAdminV1beta2IndexList =
-  GoogleFirestoreAdminV1beta2Index[];
+  ReadonlyArray<GoogleFirestoreAdminV1beta2Index>;
 export const GoogleFirestoreAdminV1beta2IndexList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta2Index,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta2IndexList>;
@@ -440,7 +436,7 @@ export const ListProjectsDatabasesCollectionGroupsFieldsRequest =
   }) as any as S.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type GoogleFirestoreAdminV1beta2FieldList =
-  GoogleFirestoreAdminV1beta2Field[];
+  ReadonlyArray<GoogleFirestoreAdminV1beta2Field>;
 export const GoogleFirestoreAdminV1beta2FieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta2Field,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta2FieldList>;

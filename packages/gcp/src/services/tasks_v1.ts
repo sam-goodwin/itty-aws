@@ -206,8 +206,7 @@ export type AssignmentInfoSurfaceTypeEnum =
   | "CONTEXT_TYPE_UNSPECIFIED"
   | "GMAIL"
   | "DOCUMENT"
-  | "SPACE"
-  | (string & {});
+  | "SPACE";
 export const AssignmentInfoSurfaceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about the Drive resource where a task was assigned from (the document, sheet, etc.). */
@@ -273,7 +272,7 @@ export const TaskLinksItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskLinksItem" }) as any as S.Schema<TaskLinksItem>;
 
-export type TaskLinksItemList = TaskLinksItem[];
+export type TaskLinksItemList = ReadonlyArray<TaskLinksItem>;
 export const TaskLinksItemList = /*@__PURE__*/ S.Array(
   TaskLinksItem,
 ) as any as S.Schema<TaskLinksItemList>;
@@ -402,7 +401,7 @@ export const ListTasklistsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTasklistsRequest",
 }) as any as S.Schema<ListTasklistsRequest>;
 
-export type TaskListList = TaskList[];
+export type TaskListList = ReadonlyArray<TaskList>;
 export const TaskListList = /*@__PURE__*/ S.Array(
   TaskList,
 ) as any as S.Schema<TaskListList>;
@@ -477,7 +476,7 @@ export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTasksRequest",
 }) as any as S.Schema<ListTasksRequest>;
 
-export type TaskList_ = Task[];
+export type TaskList_ = ReadonlyArray<Task>;
 export const TaskList_ = /*@__PURE__*/ S.Array(
   Task,
 ) as any as S.Schema<TaskList_>;

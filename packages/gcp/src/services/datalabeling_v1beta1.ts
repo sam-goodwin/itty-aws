@@ -86,7 +86,7 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -112,7 +112,7 @@ export const GoogleCloudDatalabelingV1beta1AnnotationSpec =
   }) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpec>;
 
 export type GoogleCloudDatalabelingV1beta1AnnotationSpecList =
-  GoogleCloudDatalabelingV1beta1AnnotationSpec[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1AnnotationSpec>;
 export const GoogleCloudDatalabelingV1beta1AnnotationSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1AnnotationSpec,
@@ -193,8 +193,7 @@ export type GoogleCloudDatalabelingV1beta1InputConfigDataTypeEnum =
   | "IMAGE"
   | "VIDEO"
   | "TEXT"
-  | "GENERAL_DATA"
-  | (string & {});
+  | "GENERAL_DATA";
 export const GoogleCloudDatalabelingV1beta1InputConfigDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -271,8 +270,7 @@ export type GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum =
   | "VIDEO_EVENT_ANNOTATION"
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
-  | "GENERAL_CLASSIFICATION_ANNOTATION"
-  | (string & {});
+  | "GENERAL_CLASSIFICATION_ANNOTATION";
 export const GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -312,7 +310,7 @@ export const GoogleCloudDatalabelingV1beta1InputConfig =
   }) as any as S.Schema<GoogleCloudDatalabelingV1beta1InputConfig>;
 
 export type GoogleCloudDatalabelingV1beta1InputConfigList =
-  GoogleCloudDatalabelingV1beta1InputConfig[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1InputConfig>;
 export const GoogleCloudDatalabelingV1beta1InputConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1InputConfig,
@@ -466,7 +464,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -520,12 +518,11 @@ export type GoogleCloudDatalabelingV1beta1EvaluationJobStateEnum =
   | "SCHEDULED"
   | "RUNNING"
   | "PAUSED"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const GoogleCloudDatalabelingV1beta1EvaluationJobStateEnum =
   /*@__PURE__*/ S.String;
 
-export type GoogleRpcStatusList = GoogleRpcStatus[];
+export type GoogleRpcStatusList = ReadonlyArray<GoogleRpcStatus>;
 export const GoogleRpcStatusList = /*@__PURE__*/ S.Array(
   GoogleRpcStatus,
 ) as any as S.Schema<GoogleRpcStatusList>;
@@ -547,7 +544,7 @@ export const GoogleCloudDatalabelingV1beta1Attempt = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1Attempt>;
 
 export type GoogleCloudDatalabelingV1beta1AttemptList =
-  GoogleCloudDatalabelingV1beta1Attempt[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1Attempt>;
 export const GoogleCloudDatalabelingV1beta1AttemptList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Attempt,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1AttemptList>;
@@ -670,8 +667,7 @@ export type GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggrega
     | "STRING_AGGREGATION_TYPE_UNSPECIFIED"
     | "MAJORITY_VOTE"
     | "UNANIMOUS_VOTE"
-    | "NO_AGGREGATION"
-    | (string & {});
+    | "NO_AGGREGATION";
 export const GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -881,8 +877,7 @@ export type GoogleCloudDatalabelingV1beta1InstructionDataTypeEnum =
   | "IMAGE"
   | "VIDEO"
   | "TEXT"
-  | "GENERAL_DATA"
-  | (string & {});
+  | "GENERAL_DATA";
 export const GoogleCloudDatalabelingV1beta1InstructionDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1347,7 +1342,7 @@ export const GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig =
   }) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>;
 
 export type GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList =
-  GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig>;
 export const GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig,
@@ -1489,7 +1484,7 @@ export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata =
   }) as any as S.Schema<GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata>;
 
 export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationSourceEnum =
-  "ANNOTATION_SOURCE_UNSPECIFIED" | "OPERATOR" | (string & {});
+  "ANNOTATION_SOURCE_UNSPECIFIED" | "OPERATOR";
 export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1521,8 +1516,7 @@ export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationTypeEnum =
   | "VIDEO_EVENT_ANNOTATION"
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
-  | "GENERAL_CLASSIFICATION_ANNOTATION"
-  | (string & {});
+  | "GENERAL_CLASSIFICATION_ANNOTATION";
 export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetAnnotationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1613,7 +1607,7 @@ export const GoogleCloudDatalabelingV1beta1VideoThumbnail =
   }) as any as S.Schema<GoogleCloudDatalabelingV1beta1VideoThumbnail>;
 
 export type GoogleCloudDatalabelingV1beta1VideoThumbnailList =
-  GoogleCloudDatalabelingV1beta1VideoThumbnail[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1VideoThumbnail>;
 export const GoogleCloudDatalabelingV1beta1VideoThumbnailList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1VideoThumbnail,
@@ -1731,16 +1725,14 @@ export const GetProjectsDatasetsAnnotatedDatasetsExamplesRequest =
 
 export type GoogleCloudDatalabelingV1beta1AnnotationAnnotationSourceEnum =
   | "ANNOTATION_SOURCE_UNSPECIFIED"
-  | "OPERATOR"
-  | (string & {});
+  | "OPERATOR";
 export const GoogleCloudDatalabelingV1beta1AnnotationAnnotationSourceEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatalabelingV1beta1AnnotationAnnotationSentimentEnum =
   | "ANNOTATION_SENTIMENT_UNSPECIFIED"
   | "NEGATIVE"
-  | "POSITIVE"
-  | (string & {});
+  | "POSITIVE";
 export const GoogleCloudDatalabelingV1beta1AnnotationAnnotationSentimentEnum =
   /*@__PURE__*/ S.String;
 
@@ -1801,7 +1793,7 @@ export const GoogleCloudDatalabelingV1beta1NormalizedVertex =
   }) as any as S.Schema<GoogleCloudDatalabelingV1beta1NormalizedVertex>;
 
 export type GoogleCloudDatalabelingV1beta1NormalizedVertexList =
-  GoogleCloudDatalabelingV1beta1NormalizedVertex[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1NormalizedVertex>;
 export const GoogleCloudDatalabelingV1beta1NormalizedVertexList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1NormalizedVertex,
@@ -1841,7 +1833,7 @@ export const GoogleCloudDatalabelingV1beta1Vertex = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1Vertex>;
 
 export type GoogleCloudDatalabelingV1beta1VertexList =
-  GoogleCloudDatalabelingV1beta1Vertex[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1Vertex>;
 export const GoogleCloudDatalabelingV1beta1VertexList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Vertex,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1VertexList>;
@@ -1948,7 +1940,7 @@ export const GoogleCloudDatalabelingV1beta1ObjectTrackingFrame =
   }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>;
 
 export type GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList =
-  GoogleCloudDatalabelingV1beta1ObjectTrackingFrame[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1ObjectTrackingFrame>;
 export const GoogleCloudDatalabelingV1beta1ObjectTrackingFrameList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1ObjectTrackingFrame,
@@ -2216,7 +2208,7 @@ export const GoogleCloudDatalabelingV1beta1Annotation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1Annotation>;
 
 export type GoogleCloudDatalabelingV1beta1AnnotationList =
-  GoogleCloudDatalabelingV1beta1Annotation[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1Annotation>;
 export const GoogleCloudDatalabelingV1beta1AnnotationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1Annotation,
@@ -2270,8 +2262,7 @@ export const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest =
 export type GoogleCloudDatalabelingV1beta1FeedbackThreadMetadataStatusEnum =
   | "FEEDBACK_THREAD_STATUS_UNSPECIFIED"
   | "NEW"
-  | "REPLIED"
-  | (string & {});
+  | "REPLIED";
 export const GoogleCloudDatalabelingV1beta1FeedbackThreadMetadataStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2388,8 +2379,7 @@ export type GoogleCloudDatalabelingV1beta1EvaluationAnnotationTypeEnum =
   | "VIDEO_EVENT_ANNOTATION"
   | "TEXT_CLASSIFICATION_ANNOTATION"
   | "TEXT_ENTITY_EXTRACTION_ANNOTATION"
-  | "GENERAL_CLASSIFICATION_ANNOTATION"
-  | (string & {});
+  | "GENERAL_CLASSIFICATION_ANNOTATION";
 export const GoogleCloudDatalabelingV1beta1EvaluationAnnotationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2410,7 +2400,7 @@ export const GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry =
   }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>;
 
 export type GoogleCloudDatalabelingV1beta1ConfusionMatrixEntryList =
-  GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry>;
 export const GoogleCloudDatalabelingV1beta1ConfusionMatrixEntryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry,
@@ -2433,7 +2423,7 @@ export const GoogleCloudDatalabelingV1beta1Row = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDatalabelingV1beta1Row>;
 
 export type GoogleCloudDatalabelingV1beta1RowList =
-  GoogleCloudDatalabelingV1beta1Row[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1Row>;
 export const GoogleCloudDatalabelingV1beta1RowList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Row,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1RowList>;
@@ -2492,7 +2482,7 @@ export const GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry =
   }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>;
 
 export type GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntryList =
-  GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry>;
 export const GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry,
@@ -2710,8 +2700,7 @@ export type GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum =
   | "ORIENTED_BOUNDING_BOX"
   | "BOUNDING_POLY"
   | "POLYLINE"
-  | "SEGMENTATION"
-  | (string & {});
+  | "SEGMENTATION";
 export const GoogleCloudDatalabelingV1beta1LabelImageRequestFeatureEnum =
   /*@__PURE__*/ S.String;
 
@@ -2780,8 +2769,7 @@ export const LabelProjectsDatasetsImageRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum =
   | "FEATURE_UNSPECIFIED"
   | "TEXT_CLASSIFICATION"
-  | "TEXT_ENTITY_EXTRACTION"
-  | (string & {});
+  | "TEXT_ENTITY_EXTRACTION";
 export const GoogleCloudDatalabelingV1beta1LabelTextRequestFeatureEnum =
   /*@__PURE__*/ S.String;
 
@@ -2844,8 +2832,7 @@ export type GoogleCloudDatalabelingV1beta1LabelVideoRequestFeatureEnum =
   | "CLASSIFICATION"
   | "OBJECT_DETECTION"
   | "OBJECT_TRACKING"
-  | "EVENT"
-  | (string & {});
+  | "EVENT";
 export const GoogleCloudDatalabelingV1beta1LabelVideoRequestFeatureEnum =
   /*@__PURE__*/ S.String;
 
@@ -2940,7 +2927,7 @@ export const ListProjectsAnnotationSpecSetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsAnnotationSpecSetsRequest>;
 
 export type GoogleCloudDatalabelingV1beta1AnnotationSpecSetList =
-  GoogleCloudDatalabelingV1beta1AnnotationSpecSet[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1AnnotationSpecSet>;
 export const GoogleCloudDatalabelingV1beta1AnnotationSpecSetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1AnnotationSpecSet,
@@ -2993,7 +2980,7 @@ export const ListProjectsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsDatasetsRequest>;
 
 export type GoogleCloudDatalabelingV1beta1DatasetList =
-  GoogleCloudDatalabelingV1beta1Dataset[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1Dataset>;
 export const GoogleCloudDatalabelingV1beta1DatasetList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Dataset,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1DatasetList>;
@@ -3044,7 +3031,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsRequest =
   }) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsRequest>;
 
 export type GoogleCloudDatalabelingV1beta1AnnotatedDatasetList =
-  GoogleCloudDatalabelingV1beta1AnnotatedDataset[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1AnnotatedDataset>;
 export const GoogleCloudDatalabelingV1beta1AnnotatedDatasetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1AnnotatedDataset,
@@ -3098,7 +3085,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest =
   }) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest>;
 
 export type GoogleCloudDatalabelingV1beta1DataItemList =
-  GoogleCloudDatalabelingV1beta1DataItem[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1DataItem>;
 export const GoogleCloudDatalabelingV1beta1DataItemList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1DataItem,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1DataItemList>;
@@ -3149,7 +3136,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsExamplesRequest =
   }) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsExamplesRequest>;
 
 export type GoogleCloudDatalabelingV1beta1ExampleList =
-  GoogleCloudDatalabelingV1beta1Example[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1Example>;
 export const GoogleCloudDatalabelingV1beta1ExampleList = /*@__PURE__*/ S.Array(
   GoogleCloudDatalabelingV1beta1Example,
 ) as any as S.Schema<GoogleCloudDatalabelingV1beta1ExampleList>;
@@ -3197,7 +3184,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest =
   }) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest>;
 
 export type GoogleCloudDatalabelingV1beta1FeedbackThreadList =
-  GoogleCloudDatalabelingV1beta1FeedbackThread[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1FeedbackThread>;
 export const GoogleCloudDatalabelingV1beta1FeedbackThreadList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1FeedbackThread,
@@ -3249,7 +3236,7 @@ export const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessage
   }) as any as S.Schema<ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest>;
 
 export type GoogleCloudDatalabelingV1beta1FeedbackMessageList =
-  GoogleCloudDatalabelingV1beta1FeedbackMessage[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1FeedbackMessage>;
 export const GoogleCloudDatalabelingV1beta1FeedbackMessageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1FeedbackMessage,
@@ -3330,7 +3317,7 @@ export const ListProjectsEvaluationJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsEvaluationJobsRequest>;
 
 export type GoogleCloudDatalabelingV1beta1EvaluationJobList =
-  GoogleCloudDatalabelingV1beta1EvaluationJob[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1EvaluationJob>;
 export const GoogleCloudDatalabelingV1beta1EvaluationJobList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1EvaluationJob,
@@ -3383,7 +3370,7 @@ export const ListProjectsInstructionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsInstructionsRequest>;
 
 export type GoogleCloudDatalabelingV1beta1InstructionList =
-  GoogleCloudDatalabelingV1beta1Instruction[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1Instruction>;
 export const GoogleCloudDatalabelingV1beta1InstructionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1Instruction,
@@ -3436,7 +3423,8 @@ export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsOperationsRequest",
 }) as any as S.Schema<ListProjectsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -3614,7 +3602,7 @@ export const GoogleCloudDatalabelingV1beta1ExampleComparison =
   }) as any as S.Schema<GoogleCloudDatalabelingV1beta1ExampleComparison>;
 
 export type GoogleCloudDatalabelingV1beta1ExampleComparisonList =
-  GoogleCloudDatalabelingV1beta1ExampleComparison[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1ExampleComparison>;
 export const GoogleCloudDatalabelingV1beta1ExampleComparisonList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1ExampleComparison,
@@ -3668,7 +3656,7 @@ export const SearchProjectsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchProjectsEvaluationsRequest>;
 
 export type GoogleCloudDatalabelingV1beta1EvaluationList =
-  GoogleCloudDatalabelingV1beta1Evaluation[];
+  ReadonlyArray<GoogleCloudDatalabelingV1beta1Evaluation>;
 export const GoogleCloudDatalabelingV1beta1EvaluationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatalabelingV1beta1Evaluation,

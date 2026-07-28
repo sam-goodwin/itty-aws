@@ -13,6 +13,251 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The status of the resource at the time the operation was called. */
+export type ManagedCassandraProvisioningState =
+  | "Creating"
+  | "Updating"
+  | "Deleting"
+  | "Succeeded"
+  | "Failed"
+  | "Canceled";
+export const ManagedCassandraProvisioningState = /*@__PURE__*/ S.String;
+
+/** Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'. */
+export type AuthenticationMethod = "None" | "Cassandra" | "Ldap";
+export const AuthenticationMethod = /*@__PURE__*/ S.String;
+
+export interface SeedNode {
+  /** IP address of this seed node. */
+  ipAddress?: string;
+}
+export const SeedNode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipAddress: S.optional(S.String),
+  }),
+).annotate({ identifier: "SeedNode" }) as any as S.Schema<SeedNode>;
+
+/** The form of AutoReplicate that is being used by this cluster. */
+export type AutoReplicate = "None" | "SystemKeyspaces" | "AllKeyspaces";
+export const AutoReplicate = /*@__PURE__*/ S.String;
+
+export interface Certificate {
+  /** PEM formatted public key. */
+  pem?: string;
+}
+export const Certificate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pem: S.optional(S.String),
+  }),
+).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
+
+/** List of TLS certificates used to authorize clients connecting to the cluster. All connections are TLS encrypted whether clientCertificates is set or not, but if clientCertificates is set, the managed Cassandra cluster will reject all connections not bearing a TLS client certificate that can be validated from one or more of the public certificates in this property. */
+export type ClusterResourcePropertiesInputClientCertificatesList =
+  ReadonlyArray<Certificate>;
+export const ClusterResourcePropertiesInputClientCertificatesList =
+  /*@__PURE__*/ S.Array(
+    Certificate,
+  ) as any as S.Schema<ClusterResourcePropertiesInputClientCertificatesList>;
+
+/** List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property. */
+export type ClusterResourcePropertiesInputExternalGossipCertificatesList =
+  ReadonlyArray<Certificate>;
+export const ClusterResourcePropertiesInputExternalGossipCertificatesList =
+  /*@__PURE__*/ S.Array(
+    Certificate,
+  ) as any as S.Schema<ClusterResourcePropertiesInputExternalGossipCertificatesList>;
+
+/** List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes. */
+export type ClusterResourcePropertiesInputExternalSeedNodesList =
+  ReadonlyArray<SeedNode>;
+export const ClusterResourcePropertiesInputExternalSeedNodesList =
+  /*@__PURE__*/ S.Array(
+    SeedNode,
+  ) as any as S.Schema<ClusterResourcePropertiesInputExternalSeedNodesList>;
+
+/** List of the data center names for unmanaged data centers in this cluster to be included in auto-replication. */
+export type ClusterResourcePropertiesInputExternalDataCentersList =
+  ReadonlyArray<string>;
+export const ClusterResourcePropertiesInputExternalDataCentersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ClusterResourcePropertiesInputExternalDataCentersList>;
+
+export interface CassandraError {
+  /** The code of error that occurred. */
+  code?: string;
+  /** The message of the error. */
+  message?: string;
+  /** The target resource of the error. */
+  target?: string;
+  /** Additional information about the error. */
+  additionalErrorInfo?: string;
+}
+export const CassandraError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+    target: S.optional(S.String),
+    additionalErrorInfo: S.optional(S.String),
+  }),
+).annotate({ identifier: "CassandraError" }) as any as S.Schema<CassandraError>;
+
+/** Extensions to be added or updated on cluster. */
+export type ClusterResourcePropertiesInputExtensionsList =
+  ReadonlyArray<string>;
+export const ClusterResourcePropertiesInputExtensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ClusterResourcePropertiesInputExtensionsList>;
+
+export interface BackupSchedule {
+  /** The unique identifier of backup schedule. */
+  scheduleName?: string;
+  /** The cron expression that defines when you want to back up your data. */
+  cronExpression?: string;
+  /** The retention period (hours) of the backups. If you want to retain data forever, set retention to 0. */
+  retentionInHours?: number;
+}
+export const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scheduleName: S.optional(S.String),
+    cronExpression: S.optional(S.String),
+    retentionInHours: S.optional(S.Number),
+  }),
+).annotate({ identifier: "BackupSchedule" }) as any as S.Schema<BackupSchedule>;
+
+/** List of backup schedules that define when you want to back up your data. */
+export type ClusterResourcePropertiesInputBackupSchedulesList =
+  ReadonlyArray<BackupSchedule>;
+export const ClusterResourcePropertiesInputBackupSchedulesList =
+  /*@__PURE__*/ S.Array(
+    BackupSchedule,
+  ) as any as S.Schema<ClusterResourcePropertiesInputBackupSchedulesList>;
+
+/** How the nodes in the cluster react to scheduled events */
+export type ScheduledEventStrategy = "Ignore" | "StopAny" | "StopByRack";
+export const ScheduledEventStrategy = /*@__PURE__*/ S.String;
+
+/** How to connect to the azure services needed for running the cluster */
+export type AzureConnectionType = "None" | "VPN";
+export const AzureConnectionType = /*@__PURE__*/ S.String;
+
+/** Properties of a managed Cassandra cluster. */
+export interface ClusterResourcePropertiesInput {
+  /** The status of the resource at the time the operation was called. */
+  provisioningState?: ManagedCassandraProvisioningState;
+  /** To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup. */
+  restoreFromBackupId?: string;
+  /** Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>' */
+  delegatedManagementSubnetId?: string;
+  /** Which version of Cassandra should this cluster converge to running (e.g., 3.11). When updated, the cluster may take some time to migrate to the new version. */
+  cassandraVersion?: string;
+  /** If you need to set the clusterName property in cassandra.yaml to something besides the resource name of the cluster, set the value to use on this property. */
+  clusterNameOverride?: string;
+  /** Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'. */
+  authenticationMethod?: AuthenticationMethod;
+  /** Initial password for clients connecting as admin to the cluster. Should be changed after cluster creation. Returns null on GET. This field only applies when the authenticationMethod field is 'Cassandra'. */
+  initialCassandraAdminPassword?: string | Redacted.Redacted<string>;
+  /** Hostname or IP address where the Prometheus endpoint containing data about the managed Cassandra nodes can be reached. */
+  prometheusEndpoint?: SeedNode;
+  /** Should automatic repairs run on this cluster? If omitted, this is true, and should stay true unless you are running a hybrid cluster where you are already doing your own repairs. */
+  repairEnabled?: boolean;
+  /** The form of AutoReplicate that is being used by this cluster. */
+  autoReplicate?: AutoReplicate;
+  /** List of TLS certificates used to authorize clients connecting to the cluster. All connections are TLS encrypted whether clientCertificates is set or not, but if clientCertificates is set, the managed Cassandra cluster will reject all connections not bearing a TLS client certificate that can be validated from one or more of the public certificates in this property. */
+  clientCertificates?: ClusterResourcePropertiesInputClientCertificatesList;
+  /** List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property. */
+  externalGossipCertificates?: ClusterResourcePropertiesInputExternalGossipCertificatesList;
+  /** List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes. */
+  externalSeedNodes?: ClusterResourcePropertiesInputExternalSeedNodesList;
+  /** List of the data center names for unmanaged data centers in this cluster to be included in auto-replication. */
+  externalDataCenters?: ClusterResourcePropertiesInputExternalDataCentersList;
+  /** (Deprecated) Number of hours to wait between taking a backup of the cluster. */
+  hoursBetweenBackups?: number;
+  /** Whether the cluster and associated data centers has been deallocated. */
+  deallocated?: boolean;
+  /** Whether Cassandra audit logging is enabled */
+  cassandraAuditLoggingEnabled?: boolean;
+  /** Error related to resource provisioning. */
+  provisionError?: CassandraError;
+  /** Extensions to be added or updated on cluster. */
+  extensions?: ClusterResourcePropertiesInputExtensionsList;
+  /** List of backup schedules that define when you want to back up your data. */
+  backupSchedules?: ClusterResourcePropertiesInputBackupSchedulesList;
+  /** How the nodes in the cluster react to scheduled events */
+  scheduledEventStrategy?: ScheduledEventStrategy;
+  /** How to connect to the azure services needed for running the cluster */
+  azureConnectionMethod?: AzureConnectionType;
+}
+export const ClusterResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(ManagedCassandraProvisioningState),
+    restoreFromBackupId: S.optional(S.String),
+    delegatedManagementSubnetId: S.optional(S.String),
+    cassandraVersion: S.optional(S.String),
+    clusterNameOverride: S.optional(S.String),
+    authenticationMethod: S.optional(AuthenticationMethod),
+    initialCassandraAdminPassword: S.optional(
+      S.String.pipe(T.SensitiveValue({})),
+    ),
+    prometheusEndpoint: S.optional(SeedNode),
+    repairEnabled: S.optional(S.Boolean),
+    autoReplicate: S.optional(AutoReplicate),
+    clientCertificates: S.optional(
+      ClusterResourcePropertiesInputClientCertificatesList,
+    ),
+    externalGossipCertificates: S.optional(
+      ClusterResourcePropertiesInputExternalGossipCertificatesList,
+    ),
+    externalSeedNodes: S.optional(
+      ClusterResourcePropertiesInputExternalSeedNodesList,
+    ),
+    externalDataCenters: S.optional(
+      ClusterResourcePropertiesInputExternalDataCentersList,
+    ),
+    hoursBetweenBackups: S.optional(S.Number),
+    deallocated: S.optional(S.Boolean),
+    cassandraAuditLoggingEnabled: S.optional(S.Boolean),
+    provisionError: S.optional(CassandraError),
+    extensions: S.optional(ClusterResourcePropertiesInputExtensionsList),
+    backupSchedules: S.optional(
+      ClusterResourcePropertiesInputBackupSchedulesList,
+    ),
+    scheduledEventStrategy: S.optional(ScheduledEventStrategy),
+    azureConnectionMethod: S.optional(AzureConnectionType),
+  }),
+).annotate({
+  identifier: "ClusterResourcePropertiesInput",
+}) as any as S.Schema<ClusterResourcePropertiesInput>;
+
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
+export type CassandraClustersCreateUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CassandraClustersCreateUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<CassandraClustersCreateUpdateRequestTagsMap>;
+
+/** The type of the resource. */
+export type ManagedCassandraResourceIdentityType = "SystemAssigned" | "None";
+export const ManagedCassandraResourceIdentityType = /*@__PURE__*/ S.String;
+
+/** Identity for the resource. */
+export interface ManagedCassandraManagedServiceIdentityInput {
+  /** The type of the resource. */
+  type?: ManagedCassandraResourceIdentityType;
+}
+export const ManagedCassandraManagedServiceIdentityInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(ManagedCassandraResourceIdentityType),
+    }),
+  ).annotate({
+    identifier: "ManagedCassandraManagedServiceIdentityInput",
+  }) as any as S.Schema<ManagedCassandraManagedServiceIdentityInput>;
+
 export interface CassandraClustersCreateUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -20,7 +265,14 @@ export interface CassandraClustersCreateUpdateRequest {
   resourceGroupName: string;
   /** Managed Cassandra cluster name. */
   clusterName: string;
-  body: unknown;
+  /** Properties of a managed Cassandra cluster. */
+  properties?: ClusterResourcePropertiesInput;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
+  tags?: CassandraClustersCreateUpdateRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedCassandraManagedServiceIdentityInput;
 }
 export const CassandraClustersCreateUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -28,7 +280,10 @@ export const CassandraClustersCreateUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ClusterResourcePropertiesInput),
+      location: S.optional(S.String),
+      tags: S.optional(CassandraClustersCreateUpdateRequestTagsMap),
+      identity: S.optional(ManagedCassandraManagedServiceIdentityInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -46,8 +301,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -55,8 +309,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -85,55 +338,9 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
-/** The status of the resource at the time the operation was called. */
-export type ManagedCassandraProvisioningState =
-  | "Creating"
-  | "Updating"
-  | "Deleting"
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
-export const ManagedCassandraProvisioningState = /*@__PURE__*/ S.String;
-
-/** Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'. */
-export type AuthenticationMethod =
-  | "None"
-  | "Cassandra"
-  | "Ldap"
-  | (string & {});
-export const AuthenticationMethod = /*@__PURE__*/ S.String;
-
-export interface SeedNode {
-  /** IP address of this seed node. */
-  ipAddress?: string;
-}
-export const SeedNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipAddress: S.optional(S.String),
-  }),
-).annotate({ identifier: "SeedNode" }) as any as S.Schema<SeedNode>;
-
-/** The form of AutoReplicate that is being used by this cluster. */
-export type AutoReplicate =
-  | "None"
-  | "SystemKeyspaces"
-  | "AllKeyspaces"
-  | (string & {});
-export const AutoReplicate = /*@__PURE__*/ S.String;
-
-export interface Certificate {
-  /** PEM formatted public key. */
-  pem?: string;
-}
-export const Certificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pem: S.optional(S.String),
-  }),
-).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
-
 /** List of TLS certificates used to authorize clients connecting to the cluster. All connections are TLS encrypted whether clientCertificates is set or not, but if clientCertificates is set, the managed Cassandra cluster will reject all connections not bearing a TLS client certificate that can be validated from one or more of the public certificates in this property. */
-export type ClusterResourcePropertiesClientCertificatesList = Certificate[];
+export type ClusterResourcePropertiesClientCertificatesList =
+  ReadonlyArray<Certificate>;
 export const ClusterResourcePropertiesClientCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate,
@@ -141,98 +348,55 @@ export const ClusterResourcePropertiesClientCertificatesList =
 
 /** List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property. */
 export type ClusterResourcePropertiesExternalGossipCertificatesList =
-  Certificate[];
+  ReadonlyArray<Certificate>;
 export const ClusterResourcePropertiesExternalGossipCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate,
   ) as any as S.Schema<ClusterResourcePropertiesExternalGossipCertificatesList>;
 
 /** List of TLS certificates that unmanaged nodes must trust for gossip with managed nodes. All managed nodes will present TLS client certificates that are verifiable using one of the certificates provided in this property. */
-export type ClusterResourcePropertiesGossipCertificatesList = Certificate[];
+export type ClusterResourcePropertiesGossipCertificatesList =
+  ReadonlyArray<Certificate>;
 export const ClusterResourcePropertiesGossipCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate,
   ) as any as S.Schema<ClusterResourcePropertiesGossipCertificatesList>;
 
 /** List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes. */
-export type ClusterResourcePropertiesExternalSeedNodesList = SeedNode[];
+export type ClusterResourcePropertiesExternalSeedNodesList =
+  ReadonlyArray<SeedNode>;
 export const ClusterResourcePropertiesExternalSeedNodesList =
   /*@__PURE__*/ S.Array(
     SeedNode,
   ) as any as S.Schema<ClusterResourcePropertiesExternalSeedNodesList>;
 
 /** List of IP addresses of seed nodes in the managed data centers. These should be added to the seed node lists of all unmanaged nodes. */
-export type ClusterResourcePropertiesSeedNodesList = SeedNode[];
+export type ClusterResourcePropertiesSeedNodesList = ReadonlyArray<SeedNode>;
 export const ClusterResourcePropertiesSeedNodesList = /*@__PURE__*/ S.Array(
   SeedNode,
 ) as any as S.Schema<ClusterResourcePropertiesSeedNodesList>;
 
 /** List of the data center names for unmanaged data centers in this cluster to be included in auto-replication. */
-export type ClusterResourcePropertiesExternalDataCentersList = string[];
+export type ClusterResourcePropertiesExternalDataCentersList =
+  ReadonlyArray<string>;
 export const ClusterResourcePropertiesExternalDataCentersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ClusterResourcePropertiesExternalDataCentersList>;
 
-export interface CassandraError {
-  /** The code of error that occurred. */
-  code?: string;
-  /** The message of the error. */
-  message?: string;
-  /** The target resource of the error. */
-  target?: string;
-  /** Additional information about the error. */
-  additionalErrorInfo?: string;
-}
-export const CassandraError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    target: S.optional(S.String),
-    additionalErrorInfo: S.optional(S.String),
-  }),
-).annotate({ identifier: "CassandraError" }) as any as S.Schema<CassandraError>;
-
 /** Extensions to be added or updated on cluster. */
-export type ClusterResourcePropertiesExtensionsList = string[];
+export type ClusterResourcePropertiesExtensionsList = ReadonlyArray<string>;
 export const ClusterResourcePropertiesExtensionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterResourcePropertiesExtensionsList>;
 
-export interface BackupSchedule {
-  /** The unique identifier of backup schedule. */
-  scheduleName?: string;
-  /** The cron expression that defines when you want to back up your data. */
-  cronExpression?: string;
-  /** The retention period (hours) of the backups. If you want to retain data forever, set retention to 0. */
-  retentionInHours?: number;
-}
-export const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scheduleName: S.optional(S.String),
-    cronExpression: S.optional(S.String),
-    retentionInHours: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BackupSchedule" }) as any as S.Schema<BackupSchedule>;
-
 /** List of backup schedules that define when you want to back up your data. */
-export type ClusterResourcePropertiesBackupSchedulesList = BackupSchedule[];
+export type ClusterResourcePropertiesBackupSchedulesList =
+  ReadonlyArray<BackupSchedule>;
 export const ClusterResourcePropertiesBackupSchedulesList =
   /*@__PURE__*/ S.Array(
     BackupSchedule,
   ) as any as S.Schema<ClusterResourcePropertiesBackupSchedulesList>;
-
-/** How the nodes in the cluster react to scheduled events */
-export type ScheduledEventStrategy =
-  | "Ignore"
-  | "StopAny"
-  | "StopByRack"
-  | (string & {});
-export const ScheduledEventStrategy = /*@__PURE__*/ S.String;
-
-/** How to connect to the azure services needed for running the cluster */
-export type AzureConnectionType = "None" | "VPN" | (string & {});
-export const AzureConnectionType = /*@__PURE__*/ S.String;
 
 /** Properties of a managed Cassandra cluster. */
 export interface ClusterResourceProperties {
@@ -340,13 +504,6 @@ export const CassandraClustersCreateUpdateResponseTagsMap =
     S.String,
     S.String,
   ) as any as S.Schema<CassandraClustersCreateUpdateResponseTagsMap>;
-
-/** The type of the resource. */
-export type ManagedCassandraResourceIdentityType =
-  | "SystemAssigned"
-  | "None"
-  | (string & {});
-export const ManagedCassandraResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
 export interface ManagedCassandraManagedServiceIdentity {
@@ -533,6 +690,16 @@ export const CassandraClustersGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CassandraClustersGetResponse",
 }) as any as S.Schema<CassandraClustersGetResponse>;
 
+/** The arguments for the command to be run */
+export type CassandraClustersInvokeCommandRequestArgumentsMap = {
+  [key: string]: string | undefined;
+};
+export const CassandraClustersInvokeCommandRequestArgumentsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<CassandraClustersInvokeCommandRequestArgumentsMap>;
+
 export interface CassandraClustersInvokeCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -540,7 +707,16 @@ export interface CassandraClustersInvokeCommandRequest {
   resourceGroupName: string;
   /** Managed Cassandra cluster name. */
   clusterName: string;
-  body: unknown;
+  /** The command which should be run */
+  command: string;
+  /** The arguments for the command to be run */
+  arguments?: CassandraClustersInvokeCommandRequestArgumentsMap;
+  /** IP address of the cassandra host to run the command on */
+  host: string;
+  /** If true, stops cassandra before executing the command and then start it again */
+  cassandra_stop_start?: boolean;
+  /** If true, allows the command to *write* to the cassandra directory, otherwise read-only. */
+  readwrite?: boolean;
 }
 export const CassandraClustersInvokeCommandRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -548,7 +724,13 @@ export const CassandraClustersInvokeCommandRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      command: S.String,
+      arguments: S.optional(CassandraClustersInvokeCommandRequestArgumentsMap),
+      host: S.String,
+      cassandra_stop_start: S.optional(
+        S.Boolean.pipe(T.Body("cassandra-stop-start")),
+      ),
+      readwrite: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -633,7 +815,7 @@ export const ClusterResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterResource>;
 
 /** Container for the array of clusters. */
-export type ListClustersValueList = ClusterResource[];
+export type ListClustersValueList = ReadonlyArray<ClusterResource>;
 export const ListClustersValueList = /*@__PURE__*/ S.Array(
   ClusterResource,
 ) as any as S.Schema<ListClustersValueList>;
@@ -772,8 +954,7 @@ export type ConnectionState =
   | "OperatorToDataCenterNetworkError"
   | "DatacenterToDatacenterNetworkError"
   | "InternalOperatorToDataCenterCertificateError"
-  | "InternalError"
-  | (string & {});
+  | "InternalError";
 export const ConnectionState = /*@__PURE__*/ S.String;
 
 export interface ConnectionError {
@@ -802,38 +983,34 @@ export const ConnectionError = /*@__PURE__*/ S.suspend(() =>
 
 /** List relevant information about any connection errors to the Datacenters. */
 export type CassandraClusterPublicStatusConnectionErrorsList =
-  ConnectionError[];
+  ReadonlyArray<ConnectionError>;
 export const CassandraClusterPublicStatusConnectionErrorsList =
   /*@__PURE__*/ S.Array(
     ConnectionError,
   ) as any as S.Schema<CassandraClusterPublicStatusConnectionErrorsList>;
 
 /** List relevant information about any errors about cluster, data center and connection error. */
-export type CassandraClusterPublicStatusErrorsList = CassandraError[];
+export type CassandraClusterPublicStatusErrorsList =
+  ReadonlyArray<CassandraError>;
 export const CassandraClusterPublicStatusErrorsList = /*@__PURE__*/ S.Array(
   CassandraError,
 ) as any as S.Schema<CassandraClusterPublicStatusErrorsList>;
 
 /** A list of all seed nodes in the cluster, managed and unmanaged. */
-export type CassandraClusterPublicStatusDataCentersItemSeedNodesList = string[];
+export type CassandraClusterPublicStatusDataCentersItemSeedNodesList =
+  ReadonlyArray<string>;
 export const CassandraClusterPublicStatusDataCentersItemSeedNodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CassandraClusterPublicStatusDataCentersItemSeedNodesList>;
 
 /** The state of the node in Cassandra ring. */
-export type NodeState =
-  | "Normal"
-  | "Leaving"
-  | "Joining"
-  | "Moving"
-  | "Stopped"
-  | (string & {});
+export type NodeState = "Normal" | "Leaving" | "Joining" | "Moving" | "Stopped";
 export const NodeState = /*@__PURE__*/ S.String;
 
 /** List of tokens this node covers. */
 export type ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItemsTokensList =
-  string[];
+  ReadonlyArray<string>;
 export const ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItemsTokensList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -905,7 +1082,7 @@ export const ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatace
   }) as any as S.Schema<ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItems>;
 
 export type CassandraClusterPublicStatusDataCentersItemNodesList =
-  ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItems[];
+  ReadonlyArray<ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItems>;
 export const CassandraClusterPublicStatusDataCentersItemNodesList =
   /*@__PURE__*/ S.Array(
     ComponentsM9L909SchemasCassandraclusterpublicstatusPropertiesDatacentersItemsPropertiesNodesItems,
@@ -933,7 +1110,7 @@ export const CassandraClusterPublicStatusDataCentersItem =
 
 /** List of the status of each datacenter in this cluster. */
 export type CassandraClusterPublicStatusDataCentersList =
-  CassandraClusterPublicStatusDataCentersItem[];
+  ReadonlyArray<CassandraClusterPublicStatusDataCentersItem>;
 export const CassandraClusterPublicStatusDataCentersList =
   /*@__PURE__*/ S.Array(
     CassandraClusterPublicStatusDataCentersItem,
@@ -964,6 +1141,15 @@ export const CassandraClusterPublicStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "CassandraClusterPublicStatus",
 }) as any as S.Schema<CassandraClusterPublicStatus>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
+export type CassandraClustersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CassandraClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CassandraClustersUpdateRequestTagsMap>;
+
 export interface CassandraClustersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -971,14 +1157,24 @@ export interface CassandraClustersUpdateRequest {
   resourceGroupName: string;
   /** Managed Cassandra cluster name. */
   clusterName: string;
-  body: unknown;
+  /** Properties of a managed Cassandra cluster. */
+  properties?: ClusterResourcePropertiesInput;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\". */
+  tags?: CassandraClustersUpdateRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedCassandraManagedServiceIdentityInput;
 }
 export const CassandraClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ClusterResourcePropertiesInput),
+    location: S.optional(S.String),
+    tags: S.optional(CassandraClustersUpdateRequestTagsMap),
+    identity: S.optional(ManagedCassandraManagedServiceIdentityInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1033,45 +1229,8 @@ export const CassandraClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CassandraClustersUpdateResponse",
 }) as any as S.Schema<CassandraClustersUpdateResponse>;
 
-export interface CassandraDataCentersCreateUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Managed Cassandra cluster name. */
-  clusterName: string;
-  /** Data center name in a managed Cassandra cluster. */
-  dataCenterName: string;
-  body: unknown;
-}
-export const CassandraDataCentersCreateUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      dataCenterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-).annotate({
-  identifier: "CassandraDataCentersCreateUpdateRequest",
-}) as any as S.Schema<CassandraDataCentersCreateUpdateRequest>;
-
-/** IP addresses for seed nodes in this data center. This is for reference. Generally you will want to use the seedNodes property on the cluster, which aggregates the seed nodes from all data centers in the cluster. */
-export type DataCenterResourcePropertiesSeedNodesList = SeedNode[];
-export const DataCenterResourcePropertiesSeedNodesList = /*@__PURE__*/ S.Array(
-  SeedNode,
-) as any as S.Schema<DataCenterResourcePropertiesSeedNodesList>;
-
 export type AuthenticationMethodLdapPropertiesServerCertificatesList =
-  Certificate[];
+  ReadonlyArray<Certificate>;
 export const AuthenticationMethodLdapPropertiesServerCertificatesList =
   /*@__PURE__*/ S.Array(
     Certificate,
@@ -1111,6 +1270,101 @@ export const AuthenticationMethodLdapProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthenticationMethodLdapProperties",
 }) as any as S.Schema<AuthenticationMethodLdapProperties>;
+
+/** Properties of a managed Cassandra data center. */
+export interface DataCenterResourcePropertiesInput {
+  /** The status of the resource at the time the operation was called. */
+  provisioningState?: ManagedCassandraProvisioningState;
+  /** The region this data center should be created in. */
+  dataCenterLocation?: string;
+  /** Resource id of a subnet the nodes in this data center should have their network interfaces connected to. The subnet must be in the same region specified in 'dataCenterLocation' and must be able to route to the subnet specified in the cluster's 'delegatedManagementSubnetId' property. This resource id will be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'. */
+  delegatedSubnetId?: string;
+  /** The number of nodes the data center should have. This is the desired number. After it is set, it may take some time for the data center to be scaled to match. To monitor the number of nodes and their status, use the fetchNodeStatus method on the cluster. */
+  nodeCount?: number;
+  /** A fragment of a cassandra.yaml configuration file to be included in the cassandra.yaml for all nodes in this data center. The fragment should be Base64 encoded, and only a subset of keys are allowed. */
+  base64EncodedCassandraYamlFragment?: string;
+  /** Key uri to use for encryption of managed disks. Ensure the system assigned identity of the cluster has been assigned appropriate permissions(key get/wrap/unwrap permissions) on the key. */
+  managedDiskCustomerKeyUri?: string;
+  /** Indicates the Key Uri of the customer key to use for encryption of the backup storage account. */
+  backupStorageCustomerKeyUri?: string;
+  /** Virtual Machine SKU used for data centers. Default value is Standard_DS14_v2 */
+  sku?: string;
+  /** Disk SKU used for data centers. Default value is P30. */
+  diskSku?: string;
+  /** Number of disks attached to each node. Default is 4. */
+  diskCapacity?: number;
+  /** If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the cassandra data center virtual machines. */
+  availabilityZone?: boolean;
+  /** Ldap authentication method properties. This feature is in preview. */
+  authenticationMethodLdapProperties?: AuthenticationMethodLdapProperties;
+  /** Whether the data center has been deallocated. */
+  deallocated?: boolean;
+  /** Error related to resource provisioning. */
+  provisionError?: CassandraError;
+  /** Ip of the VPN Endpoint for this data center. */
+  privateEndpointIpAddress?: string;
+}
+export const DataCenterResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(ManagedCassandraProvisioningState),
+    dataCenterLocation: S.optional(S.String),
+    delegatedSubnetId: S.optional(S.String),
+    nodeCount: S.optional(S.Number),
+    base64EncodedCassandraYamlFragment: S.optional(S.String),
+    managedDiskCustomerKeyUri: S.optional(S.String),
+    backupStorageCustomerKeyUri: S.optional(S.String),
+    sku: S.optional(S.String),
+    diskSku: S.optional(S.String),
+    diskCapacity: S.optional(S.Number),
+    availabilityZone: S.optional(S.Boolean),
+    authenticationMethodLdapProperties: S.optional(
+      AuthenticationMethodLdapProperties,
+    ),
+    deallocated: S.optional(S.Boolean),
+    provisionError: S.optional(CassandraError),
+    privateEndpointIpAddress: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataCenterResourcePropertiesInput",
+}) as any as S.Schema<DataCenterResourcePropertiesInput>;
+
+export interface CassandraDataCentersCreateUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Managed Cassandra cluster name. */
+  clusterName: string;
+  /** Data center name in a managed Cassandra cluster. */
+  dataCenterName: string;
+  /** Properties of a managed Cassandra data center. */
+  properties?: DataCenterResourcePropertiesInput;
+}
+export const CassandraDataCentersCreateUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      dataCenterName: S.String.pipe(T.Label()),
+      properties: S.optional(DataCenterResourcePropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/cassandraClusters/{clusterName}/dataCenters/{dataCenterName}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+).annotate({
+  identifier: "CassandraDataCentersCreateUpdateRequest",
+}) as any as S.Schema<CassandraDataCentersCreateUpdateRequest>;
+
+/** IP addresses for seed nodes in this data center. This is for reference. Generally you will want to use the seedNodes property on the cluster, which aggregates the seed nodes from all data centers in the cluster. */
+export type DataCenterResourcePropertiesSeedNodesList = ReadonlyArray<SeedNode>;
+export const DataCenterResourcePropertiesSeedNodesList = /*@__PURE__*/ S.Array(
+  SeedNode,
+) as any as S.Schema<DataCenterResourcePropertiesSeedNodesList>;
 
 /** Properties of a managed Cassandra data center. */
 export interface DataCenterResourceProperties {
@@ -1335,7 +1589,7 @@ export const DataCenterResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataCenterResource>;
 
 /** Container for array of data centers. */
-export type ListDataCentersValueList = DataCenterResource[];
+export type ListDataCentersValueList = ReadonlyArray<DataCenterResource>;
 export const ListDataCentersValueList = /*@__PURE__*/ S.Array(
   DataCenterResource,
 ) as any as S.Schema<ListDataCentersValueList>;
@@ -1364,7 +1618,8 @@ export interface CassandraDataCentersUpdateRequest {
   clusterName: string;
   /** Data center name in a managed Cassandra cluster. */
   dataCenterName: string;
-  body: unknown;
+  /** Properties of a managed Cassandra data center. */
+  properties?: DataCenterResourcePropertiesInput;
 }
 export const CassandraDataCentersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1372,7 +1627,7 @@ export const CassandraDataCentersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     dataCenterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DataCenterResourcePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1409,6 +1664,116 @@ export const CassandraDataCentersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CassandraDataCentersUpdateResponse",
 }) as any as S.Schema<CassandraDataCentersUpdateResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type CassandraResourcesCreateUpdateCassandraKeyspaceRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CassandraResourcesCreateUpdateCassandraKeyspaceRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraKeyspaceRequestTagsMap>;
+
+/** The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service. */
+export type ResourceIdentityType =
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned"
+  | "None";
+export const ResourceIdentityType = /*@__PURE__*/ S.String;
+
+export interface ManagedServiceIdentityUserAssignedIdentitiesInput {}
+export const ManagedServiceIdentityUserAssignedIdentitiesInput =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "ManagedServiceIdentityUserAssignedIdentitiesInput",
+  }) as any as S.Schema<ManagedServiceIdentityUserAssignedIdentitiesInput>;
+
+/** The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type ManagedServiceIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: ManagedServiceIdentityUserAssignedIdentitiesInput | undefined;
+};
+export const ManagedServiceIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ManagedServiceIdentityUserAssignedIdentitiesInput,
+  ) as any as S.Schema<ManagedServiceIdentityInputUserAssignedIdentitiesMap>;
+
+/** Identity for the resource. */
+export interface ManagedServiceIdentityInput {
+  /** The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service. */
+  type?: ResourceIdentityType;
+  /** The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
+}
+export const ManagedServiceIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ResourceIdentityType),
+    userAssignedIdentities: S.optional(
+      ManagedServiceIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ManagedServiceIdentityInput",
+}) as any as S.Schema<ManagedServiceIdentityInput>;
+
+/** Cosmos DB Cassandra keyspace resource object */
+export interface CassandraKeyspaceResource {
+  /** Name of the Cosmos DB Cassandra keyspace */
+  id: string;
+}
+export const CassandraKeyspaceResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "CassandraKeyspaceResource",
+}) as any as S.Schema<CassandraKeyspaceResource>;
+
+export interface AutoscaleSettings {
+  /** Represents maximum throughput, the resource can scale up to. */
+  maxThroughput?: number;
+}
+export const AutoscaleSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxThroughput: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AutoscaleSettings",
+}) as any as S.Schema<AutoscaleSettings>;
+
+/** CreateUpdateOptions are a list of key-value pairs that describe the resource. Supported keys are "If-Match", "If-None-Match", "Session-Token" and "Throughput" */
+export interface CreateUpdateOptions {
+  /** Request Units per second. For example, "throughput": 10000. */
+  throughput?: number;
+  /** Specifies the Autoscale settings. Note: Either throughput or autoscaleSettings is required, but not both. */
+  autoscaleSettings?: AutoscaleSettings;
+}
+export const CreateUpdateOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    throughput: S.optional(S.Number),
+    autoscaleSettings: S.optional(AutoscaleSettings),
+  }),
+).annotate({
+  identifier: "CreateUpdateOptions",
+}) as any as S.Schema<CreateUpdateOptions>;
+
+/** Properties to create and update Azure Cosmos DB Cassandra keyspace. */
+export interface CassandraKeyspaceCreateUpdateProperties {
+  /** The standard JSON format of a Cassandra keyspace */
+  resource: CassandraKeyspaceResource;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const CassandraKeyspaceCreateUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: CassandraKeyspaceResource,
+      options: S.optional(CreateUpdateOptions),
+    }),
+).annotate({
+  identifier: "CassandraKeyspaceCreateUpdateProperties",
+}) as any as S.Schema<CassandraKeyspaceCreateUpdateProperties>;
+
 export interface CassandraResourcesCreateUpdateCassandraKeyspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1418,7 +1783,14 @@ export interface CassandraResourcesCreateUpdateCassandraKeyspaceRequest {
   accountName: string;
   /** Cosmos DB keyspace name. */
   keyspaceName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: CassandraResourcesCreateUpdateCassandraKeyspaceRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB Cassandra keyspace. */
+  properties: CassandraKeyspaceCreateUpdateProperties;
 }
 export const CassandraResourcesCreateUpdateCassandraKeyspaceRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1427,7 +1799,12 @@ export const CassandraResourcesCreateUpdateCassandraKeyspaceRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       keyspaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        CassandraResourcesCreateUpdateCassandraKeyspaceRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: CassandraKeyspaceCreateUpdateProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1461,18 +1838,6 @@ export const CassandraKeyspaceGetPropertiesResource = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CassandraKeyspaceGetPropertiesResource",
 }) as any as S.Schema<CassandraKeyspaceGetPropertiesResource>;
-
-export interface AutoscaleSettings {
-  /** Represents maximum throughput, the resource can scale up to. */
-  maxThroughput?: number;
-}
-export const AutoscaleSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxThroughput: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AutoscaleSettings",
-}) as any as S.Schema<AutoscaleSettings>;
 
 /** Cosmos DB options resource object */
 export interface OptionsResource {
@@ -1513,15 +1878,6 @@ export const CassandraResourcesCreateUpdateCassandraKeyspaceResponseTagsMap =
     S.String,
     S.String,
   ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraKeyspaceResponseTagsMap>;
-
-/** The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service. */
-export type ResourceIdentityType =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | "None"
-  | (string & {});
-export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 export interface ManagedServiceIdentityUserAssignedIdentities {
   /** The principal id of user assigned identity. */
@@ -1609,6 +1965,26 @@ export const CassandraResourcesCreateUpdateCassandraKeyspaceResponse =
     identifier: "CassandraResourcesCreateUpdateCassandraKeyspaceResponse",
   }) as any as S.Schema<CassandraResourcesCreateUpdateCassandraKeyspaceResponse>;
 
+/** Azure Cosmos DB Cassandra Role Assignment resource object. */
+export interface CassandraRoleAssignmentResourcePropertiesInput {
+  /** The unique identifier for the associated Role Definition. */
+  roleDefinitionId?: string;
+  /** The data plane resource path for which access is being granted through this Cassandra Role Assignment. */
+  scope?: string;
+  /** The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this Cassandra Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription. */
+  principalId?: string;
+}
+export const CassandraRoleAssignmentResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      roleDefinitionId: S.optional(S.String),
+      scope: S.optional(S.String),
+      principalId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CassandraRoleAssignmentResourcePropertiesInput",
+  }) as any as S.Schema<CassandraRoleAssignmentResourcePropertiesInput>;
+
 export interface CassandraResourcesCreateUpdateCassandraRoleAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1618,7 +1994,8 @@ export interface CassandraResourcesCreateUpdateCassandraRoleAssignmentRequest {
   accountName: string;
   /** The GUID for the Role Assignment. */
   roleAssignmentId: string;
-  body: unknown;
+  /** Properties to create and update an Azure Cosmos DB Cassandra Role Assignment. */
+  properties?: CassandraRoleAssignmentResourcePropertiesInput;
 }
 export const CassandraResourcesCreateUpdateCassandraRoleAssignmentRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1627,7 +2004,7 @@ export const CassandraResourcesCreateUpdateCassandraRoleAssignmentRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       roleAssignmentId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(CassandraRoleAssignmentResourcePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1688,57 +2065,26 @@ export const CassandraResourcesCreateUpdateCassandraRoleAssignmentResponse =
     identifier: "CassandraResourcesCreateUpdateCassandraRoleAssignmentResponse",
   }) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleAssignmentResponse>;
 
-export interface CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** The GUID for the Role Definition. */
-  roleDefinitionId: string;
-  body: unknown;
-}
-export const CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      roleDefinitionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest",
-  }) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest>;
-
 /** Indicates whether the Role Definition was built-in or user created. */
-export type RoleDefinitionType = "BuiltInRole" | "CustomRole" | (string & {});
+export type RoleDefinitionType = "BuiltInRole" | "CustomRole";
 export const RoleDefinitionType = /*@__PURE__*/ S.String;
 
 /** A set of fully qualified Scopes at or below which Cassandra Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
 export type CassandraRoleDefinitionResourcePropertiesAssignableScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const CassandraRoleDefinitionResourcePropertiesAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CassandraRoleDefinitionResourcePropertiesAssignableScopesList>;
 
 /** An array of data actions that are allowed. */
-export type PermissionDataActionsList = string[];
+export type PermissionDataActionsList = ReadonlyArray<string>;
 export const PermissionDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionDataActionsList>;
 
 /** An array of data actions that are denied. */
-export type PermissionNotDataActionsList = string[];
+export type PermissionNotDataActionsList = ReadonlyArray<string>;
 export const PermissionNotDataActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionNotDataActionsList>;
@@ -1762,7 +2108,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of operations allowed through this Role Definition. */
 export type CassandraRoleDefinitionResourcePropertiesPermissionsList =
-  Permission[];
+  ReadonlyArray<Permission>;
 export const CassandraRoleDefinitionResourcePropertiesPermissionsList =
   /*@__PURE__*/ S.Array(
     Permission,
@@ -1798,6 +2144,38 @@ export const CassandraRoleDefinitionResourceProperties =
     identifier: "CassandraRoleDefinitionResourceProperties",
   }) as any as S.Schema<CassandraRoleDefinitionResourceProperties>;
 
+export interface CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** The GUID for the Role Definition. */
+  roleDefinitionId: string;
+  /** Properties to create and update an Azure Cosmos DB Cassandra Role Definition. */
+  properties?: CassandraRoleDefinitionResourceProperties;
+}
+export const CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      roleDefinitionId: S.String.pipe(T.Label()),
+      properties: S.optional(CassandraRoleDefinitionResourceProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraRoleDefinitions/{roleDefinitionId}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest",
+  }) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleDefinitionRequest>;
+
 export interface CassandraResourcesCreateUpdateCassandraRoleDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1823,39 +2201,15 @@ export const CassandraResourcesCreateUpdateCassandraRoleDefinitionResponse =
     identifier: "CassandraResourcesCreateUpdateCassandraRoleDefinitionResponse",
   }) as any as S.Schema<CassandraResourcesCreateUpdateCassandraRoleDefinitionResponse>;
 
-export interface CassandraResourcesCreateUpdateCassandraTableRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** Cosmos DB keyspace name. */
-  keyspaceName: string;
-  /** Cosmos DB table name. */
-  tableName: string;
-  body: unknown;
-}
-export const CassandraResourcesCreateUpdateCassandraTableRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      keyspaceName: S.String.pipe(T.Label()),
-      tableName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "CassandraResourcesCreateUpdateCassandraTableRequest",
-  }) as any as S.Schema<CassandraResourcesCreateUpdateCassandraTableRequest>;
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type CassandraResourcesCreateUpdateCassandraTableRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CassandraResourcesCreateUpdateCassandraTableRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<CassandraResourcesCreateUpdateCassandraTableRequestTagsMap>;
 
 /** Cosmos DB Cassandra table column */
 export interface Column {
@@ -1872,7 +2226,7 @@ export const Column = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Column" }) as any as S.Schema<Column>;
 
 /** List of Cassandra table columns. */
-export type CassandraSchemaColumnsList = Column[];
+export type CassandraSchemaColumnsList = ReadonlyArray<Column>;
 export const CassandraSchemaColumnsList = /*@__PURE__*/ S.Array(
   Column,
 ) as any as S.Schema<CassandraSchemaColumnsList>;
@@ -1891,7 +2245,8 @@ export const CassandraPartitionKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CassandraPartitionKey>;
 
 /** List of partition key. */
-export type CassandraSchemaPartitionKeysList = CassandraPartitionKey[];
+export type CassandraSchemaPartitionKeysList =
+  ReadonlyArray<CassandraPartitionKey>;
 export const CassandraSchemaPartitionKeysList = /*@__PURE__*/ S.Array(
   CassandraPartitionKey,
 ) as any as S.Schema<CassandraSchemaPartitionKeysList>;
@@ -1911,7 +2266,7 @@ export const ClusterKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterKey" }) as any as S.Schema<ClusterKey>;
 
 /** List of cluster key. */
-export type CassandraSchemaClusterKeysList = ClusterKey[];
+export type CassandraSchemaClusterKeysList = ReadonlyArray<ClusterKey>;
 export const CassandraSchemaClusterKeysList = /*@__PURE__*/ S.Array(
   ClusterKey,
 ) as any as S.Schema<CassandraSchemaClusterKeysList>;
@@ -1934,6 +2289,91 @@ export const CassandraSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CassandraSchema",
 }) as any as S.Schema<CassandraSchema>;
+
+/** Cosmos DB Cassandra table resource object */
+export interface CassandraTableResource {
+  /** Name of the Cosmos DB Cassandra table */
+  id: string;
+  /** Time to live of the Cosmos DB Cassandra table */
+  defaultTtl?: number;
+  /** Schema of the Cosmos DB Cassandra table */
+  schema?: CassandraSchema;
+  /** Analytical TTL. */
+  analyticalStorageTtl?: number;
+}
+export const CassandraTableResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    defaultTtl: S.optional(S.Number),
+    schema: S.optional(CassandraSchema),
+    analyticalStorageTtl: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CassandraTableResource",
+}) as any as S.Schema<CassandraTableResource>;
+
+/** Properties to create and update Azure Cosmos DB Cassandra table. */
+export interface CassandraTableCreateUpdateProperties {
+  /** The standard JSON format of a Cassandra table */
+  resource: CassandraTableResource;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const CassandraTableCreateUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: CassandraTableResource,
+      options: S.optional(CreateUpdateOptions),
+    }),
+).annotate({
+  identifier: "CassandraTableCreateUpdateProperties",
+}) as any as S.Schema<CassandraTableCreateUpdateProperties>;
+
+export interface CassandraResourcesCreateUpdateCassandraTableRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** Cosmos DB keyspace name. */
+  keyspaceName: string;
+  /** Cosmos DB table name. */
+  tableName: string;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: CassandraResourcesCreateUpdateCassandraTableRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB Cassandra table. */
+  properties: CassandraTableCreateUpdateProperties;
+}
+export const CassandraResourcesCreateUpdateCassandraTableRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      keyspaceName: S.String.pipe(T.Label()),
+      tableName: S.String.pipe(T.Label()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        CassandraResourcesCreateUpdateCassandraTableRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: CassandraTableCreateUpdateProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/cassandraKeyspaces/{keyspaceName}/tables/{tableName}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "CassandraResourcesCreateUpdateCassandraTableRequest",
+  }) as any as S.Schema<CassandraResourcesCreateUpdateCassandraTableRequest>;
 
 export interface CassandraTableGetPropertiesResource {
   /** Name of the Cosmos DB Cassandra table */
@@ -2746,7 +3186,7 @@ export const CassandraKeyspaceGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Cassandra keyspaces and their properties. */
 export type CassandraKeyspaceListResultValueList =
-  CassandraKeyspaceGetResults[];
+  ReadonlyArray<CassandraKeyspaceGetResults>;
 export const CassandraKeyspaceListResultValueList = /*@__PURE__*/ S.Array(
   CassandraKeyspaceGetResults,
 ) as any as S.Schema<CassandraKeyspaceListResultValueList>;
@@ -2819,7 +3259,7 @@ export const CassandraRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The CassandraRoleAssignmentResource items on this page */
 export type CassandraRoleAssignmentListResultValueList =
-  CassandraRoleAssignmentResource[];
+  ReadonlyArray<CassandraRoleAssignmentResource>;
 export const CassandraRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   CassandraRoleAssignmentResource,
 ) as any as S.Schema<CassandraRoleAssignmentListResultValueList>;
@@ -2893,7 +3333,7 @@ export const CassandraRoleDefinitionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The CassandraRoleDefinitionResource items on this page */
 export type CassandraRoleDefinitionListResultValueList =
-  CassandraRoleDefinitionResource[];
+  ReadonlyArray<CassandraRoleDefinitionResource>;
 export const CassandraRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   CassandraRoleDefinitionResource,
 ) as any as S.Schema<CassandraRoleDefinitionListResultValueList>;
@@ -2987,7 +3427,8 @@ export const CassandraTableGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CassandraTableGetResults>;
 
 /** List of Cassandra tables and their properties. */
-export type CassandraTableListResultValueList = CassandraTableGetResults[];
+export type CassandraTableListResultValueList =
+  ReadonlyArray<CassandraTableGetResults>;
 export const CassandraTableListResultValueList = /*@__PURE__*/ S.Array(
   CassandraTableGetResults,
 ) as any as S.Schema<CassandraTableListResultValueList>;
@@ -3313,6 +3754,61 @@ export const CassandraResourcesMigrateCassandraTableToManualThroughputResponse =
       "CassandraResourcesMigrateCassandraTableToManualThroughputResponse",
   }) as any as S.Schema<CassandraResourcesMigrateCassandraTableToManualThroughputResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type CassandraResourcesUpdateCassandraKeyspaceThroughputRequestTagsMap =
+  { [key: string]: string | undefined };
+export const CassandraResourcesUpdateCassandraKeyspaceThroughputRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<CassandraResourcesUpdateCassandraKeyspaceThroughputRequestTagsMap>;
+
+/** Cosmos DB provisioned throughput settings object */
+export interface AutoscaleSettingsResourceInput {
+  /** Represents maximum throughput container can scale up to. */
+  maxThroughput: number;
+  /** Cosmos DB resource auto-upgrade policy */
+  autoUpgradePolicy?: AutoUpgradePolicyResource;
+}
+export const AutoscaleSettingsResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxThroughput: S.Number,
+    autoUpgradePolicy: S.optional(AutoUpgradePolicyResource),
+  }),
+).annotate({
+  identifier: "AutoscaleSettingsResourceInput",
+}) as any as S.Schema<AutoscaleSettingsResourceInput>;
+
+/** Cosmos DB resource throughput object. Either throughput is required or autoscaleSettings is required, but not both. */
+export interface ThroughputSettingsResourceInput {
+  /** Value of the Cosmos DB resource throughput. Either throughput is required or autoscaleSettings is required, but not both. */
+  throughput?: number;
+  /** Cosmos DB resource for autoscale settings. Either throughput is required or autoscaleSettings is required, but not both. */
+  autoscaleSettings?: AutoscaleSettingsResourceInput;
+}
+export const ThroughputSettingsResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    throughput: S.optional(S.Number),
+    autoscaleSettings: S.optional(AutoscaleSettingsResourceInput),
+  }),
+).annotate({
+  identifier: "ThroughputSettingsResourceInput",
+}) as any as S.Schema<ThroughputSettingsResourceInput>;
+
+/** Properties to update Azure Cosmos DB resource throughput. */
+export interface ThroughputSettingsUpdatePropertiesInput {
+  /** The standard JSON format of a resource throughput */
+  resource: ThroughputSettingsResourceInput;
+}
+export const ThroughputSettingsUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: ThroughputSettingsResourceInput,
+    }),
+).annotate({
+  identifier: "ThroughputSettingsUpdatePropertiesInput",
+}) as any as S.Schema<ThroughputSettingsUpdatePropertiesInput>;
+
 export interface CassandraResourcesUpdateCassandraKeyspaceThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3322,7 +3818,14 @@ export interface CassandraResourcesUpdateCassandraKeyspaceThroughputRequest {
   accountName: string;
   /** Cosmos DB keyspace name. */
   keyspaceName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: CassandraResourcesUpdateCassandraKeyspaceThroughputRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to update Azure Cosmos DB resource throughput. */
+  properties: ThroughputSettingsUpdatePropertiesInput;
 }
 export const CassandraResourcesUpdateCassandraKeyspaceThroughputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3331,7 +3834,12 @@ export const CassandraResourcesUpdateCassandraKeyspaceThroughputRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       keyspaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        CassandraResourcesUpdateCassandraKeyspaceThroughputRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: ThroughputSettingsUpdatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3389,6 +3897,16 @@ export const CassandraResourcesUpdateCassandraKeyspaceThroughputResponse =
     identifier: "CassandraResourcesUpdateCassandraKeyspaceThroughputResponse",
   }) as any as S.Schema<CassandraResourcesUpdateCassandraKeyspaceThroughputResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type CassandraResourcesUpdateCassandraTableThroughputRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CassandraResourcesUpdateCassandraTableThroughputRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<CassandraResourcesUpdateCassandraTableThroughputRequestTagsMap>;
+
 export interface CassandraResourcesUpdateCassandraTableThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3400,7 +3918,14 @@ export interface CassandraResourcesUpdateCassandraTableThroughputRequest {
   keyspaceName: string;
   /** Cosmos DB table name. */
   tableName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: CassandraResourcesUpdateCassandraTableThroughputRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to update Azure Cosmos DB resource throughput. */
+  properties: ThroughputSettingsUpdatePropertiesInput;
 }
 export const CassandraResourcesUpdateCassandraTableThroughputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3410,7 +3935,12 @@ export const CassandraResourcesUpdateCassandraTableThroughputRequest =
       accountName: S.String.pipe(T.Label()),
       keyspaceName: S.String.pipe(T.Label()),
       tableName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        CassandraResourcesUpdateCassandraTableThroughputRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: ThroughputSettingsUpdatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3518,7 +4048,8 @@ export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricAvailability>;
 
 /** The list of metric availabilities for the account. */
-export type MetricDefinitionMetricAvailabilitiesList = MetricAvailability[];
+export type MetricDefinitionMetricAvailabilitiesList =
+  ReadonlyArray<MetricAvailability>;
 export const MetricDefinitionMetricAvailabilitiesList = /*@__PURE__*/ S.Array(
   MetricAvailability,
 ) as any as S.Schema<MetricDefinitionMetricAvailabilitiesList>;
@@ -3530,8 +4061,7 @@ export type PrimaryAggregationType =
   | "Total"
   | "Minimum"
   | "Maximum"
-  | "Last"
-  | (string & {});
+  | "Last";
 export const PrimaryAggregationType = /*@__PURE__*/ S.String;
 
 /** The unit of the metric. */
@@ -3542,8 +4072,7 @@ export type UnitType =
   | "Percent"
   | "CountPerSecond"
   | "BytesPerSecond"
-  | "Milliseconds"
-  | (string & {});
+  | "Milliseconds";
 export const UnitType = /*@__PURE__*/ S.String;
 
 /** A metric name. */
@@ -3586,7 +4115,8 @@ export const MetricDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricDefinition>;
 
 /** The list of metric definitions for the account. */
-export type MetricDefinitionsListResultValueList = MetricDefinition[];
+export type MetricDefinitionsListResultValueList =
+  ReadonlyArray<MetricDefinition>;
 export const MetricDefinitionsListResultValueList = /*@__PURE__*/ S.Array(
   MetricDefinition,
 ) as any as S.Schema<MetricDefinitionsListResultValueList>;
@@ -3667,7 +4197,7 @@ export const MetricValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 
 /** The metric values for the specified time window and timestep. */
-export type MetricMetricValuesList = MetricValue[];
+export type MetricMetricValuesList = ReadonlyArray<MetricValue>;
 export const MetricMetricValuesList = /*@__PURE__*/ S.Array(
   MetricValue,
 ) as any as S.Schema<MetricMetricValuesList>;
@@ -3699,7 +4229,7 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
 
 /** The list of metrics for the account. */
-export type MetricListResultValueList = Metric[];
+export type MetricListResultValueList = ReadonlyArray<Metric>;
 export const MetricListResultValueList = /*@__PURE__*/ S.Array(
   Metric,
 ) as any as S.Schema<MetricListResultValueList>;
@@ -3777,7 +4307,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The list of usages for the database. A usage is a point in time metric */
-export type UsagesResultValueList = Usage[];
+export type UsagesResultValueList = ReadonlyArray<Usage>;
 export const UsagesResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsagesResultValueList>;
@@ -3831,7 +4361,7 @@ export const CollectionPartitionListMetricsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CollectionPartitionListMetricsRequest>;
 
 /** The metric values for the specified time window and timestep. */
-export type PartitionMetricMetricValuesList = MetricValue[];
+export type PartitionMetricMetricValuesList = ReadonlyArray<MetricValue>;
 export const PartitionMetricMetricValuesList = /*@__PURE__*/ S.Array(
   MetricValue,
 ) as any as S.Schema<PartitionMetricMetricValuesList>;
@@ -3871,7 +4401,7 @@ export const PartitionMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartitionMetric>;
 
 /** The list of partition-level metrics for the account. */
-export type PartitionMetricListResultValueList = PartitionMetric[];
+export type PartitionMetricListResultValueList = ReadonlyArray<PartitionMetric>;
 export const PartitionMetricListResultValueList = /*@__PURE__*/ S.Array(
   PartitionMetric,
 ) as any as S.Schema<PartitionMetricListResultValueList>;
@@ -3956,7 +4486,7 @@ export const PartitionUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartitionUsage" }) as any as S.Schema<PartitionUsage>;
 
 /** The list of partition-level usages for the database. A usage is a point in time metric */
-export type PartitionUsagesResultValueList = PartitionUsage[];
+export type PartitionUsagesResultValueList = ReadonlyArray<PartitionUsage>;
 export const PartitionUsagesResultValueList = /*@__PURE__*/ S.Array(
   PartitionUsage,
 ) as any as S.Schema<PartitionUsagesResultValueList>;
@@ -4083,59 +4613,22 @@ export const DatabaseAccountRegionListMetricsRequest = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseAccountRegionListMetricsRequest",
 }) as any as S.Schema<DatabaseAccountRegionListMetricsRequest>;
 
-export interface DatabaseAccountsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  body: unknown;
-}
-export const DatabaseAccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-).annotate({
-  identifier: "DatabaseAccountsCreateOrUpdateRequest",
-}) as any as S.Schema<DatabaseAccountsCreateOrUpdateRequest>;
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type DatabaseAccountsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DatabaseAccountsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DatabaseAccountsCreateOrUpdateRequestTagsMap>;
 
-/** The offer type for the Cosmos DB database account. Default value: Standard. */
-export type DatabaseAccountGetPropertiesDatabaseAccountOfferType =
-  | "Standard"
-  | (string & {});
-export const DatabaseAccountGetPropertiesDatabaseAccountOfferType =
-  /*@__PURE__*/ S.String;
-
-/** IpAddressOrRange object */
-export interface IpAddressOrRange {
-  /** A single IPv4 address or a single IPv4 address range in CIDR format. Provided IPs must be well-formatted and cannot be contained in one of the following ranges: 10.0.0.0/8, 100.64.0.0/10, 172.16.0.0/12, 192.168.0.0/16, since these are not enforceable by the IP address filter. Example of valid inputs: “23.40.210.245” or “23.40.210.0/8”. */
-  ipAddressOrRange?: string;
-}
-export const IpAddressOrRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipAddressOrRange: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IpAddressOrRange",
-}) as any as S.Schema<IpAddressOrRange>;
-
-/** List of IpRules. */
-export type DatabaseAccountGetPropertiesIpRulesList = IpAddressOrRange[];
-export const DatabaseAccountGetPropertiesIpRulesList = /*@__PURE__*/ S.Array(
-  IpAddressOrRange,
-) as any as S.Schema<DatabaseAccountGetPropertiesIpRulesList>;
+/** Indicates the type of database account. This can only be set at database account creation. */
+export type DatabaseAccountsCreateOrUpdateRequestKind =
+  | "GlobalDocumentDB"
+  | "MongoDB"
+  | "Parse";
+export const DatabaseAccountsCreateOrUpdateRequestKind = /*@__PURE__*/ S.String;
 
 /** The default consistency level and configuration settings of the Cosmos DB account. */
 export type DefaultConsistencyLevel =
@@ -4143,8 +4636,7 @@ export type DefaultConsistencyLevel =
   | "Session"
   | "BoundedStaleness"
   | "Strong"
-  | "ConsistentPrefix"
-  | (string & {});
+  | "ConsistentPrefix";
 export const DefaultConsistencyLevel = /*@__PURE__*/ S.String;
 
 /** The consistency policy for the Cosmos DB database account. */
@@ -4166,6 +4658,58 @@ export const ConsistencyPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConsistencyPolicy",
 }) as any as S.Schema<ConsistencyPolicy>;
 
+/** A region in which the Azure Cosmos DB database account is deployed. */
+export interface LocationInput {
+  /** The name of the region. */
+  locationName?: string;
+  /** The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. */
+  failoverPriority?: number;
+  /** Flag to indicate whether or not this region is an AvailabilityZone region */
+  isZoneRedundant?: boolean;
+}
+export const LocationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    locationName: S.optional(S.String),
+    failoverPriority: S.optional(S.Number),
+    isZoneRedundant: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "LocationInput" }) as any as S.Schema<LocationInput>;
+
+/** An array that contains the georeplication locations enabled for the Cosmos DB account. */
+export type DatabaseAccountCreateUpdatePropertiesInputLocationsList =
+  ReadonlyArray<LocationInput>;
+export const DatabaseAccountCreateUpdatePropertiesInputLocationsList =
+  /*@__PURE__*/ S.Array(
+    LocationInput,
+  ) as any as S.Schema<DatabaseAccountCreateUpdatePropertiesInputLocationsList>;
+
+/** The offer type for the Cosmos DB database account. */
+export type DatabaseAccountCreateUpdatePropertiesInputDatabaseAccountOfferType =
+  "Standard";
+export const DatabaseAccountCreateUpdatePropertiesInputDatabaseAccountOfferType =
+  /*@__PURE__*/ S.String;
+
+/** IpAddressOrRange object */
+export interface IpAddressOrRange {
+  /** A single IPv4 address or a single IPv4 address range in CIDR format. Provided IPs must be well-formatted and cannot be contained in one of the following ranges: 10.0.0.0/8, 100.64.0.0/10, 172.16.0.0/12, 192.168.0.0/16, since these are not enforceable by the IP address filter. Example of valid inputs: “23.40.210.245” or “23.40.210.0/8”. */
+  ipAddressOrRange?: string;
+}
+export const IpAddressOrRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipAddressOrRange: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IpAddressOrRange",
+}) as any as S.Schema<IpAddressOrRange>;
+
+/** List of IpRules. */
+export type DatabaseAccountCreateUpdatePropertiesInputIpRulesList =
+  ReadonlyArray<IpAddressOrRange>;
+export const DatabaseAccountCreateUpdatePropertiesInputIpRulesList =
+  /*@__PURE__*/ S.Array(
+    IpAddressOrRange,
+  ) as any as S.Schema<DatabaseAccountCreateUpdatePropertiesInputIpRulesList>;
+
 /** Cosmos DB capability object */
 export interface Capability {
   /** Name of the Cosmos DB capability. For example, "name": "EnableCassandra". Current values also include "EnableTable" and "EnableGremlin". */
@@ -4178,7 +4722,489 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
 
 /** List of Cosmos DB capabilities for the account */
-export type DatabaseAccountGetPropertiesCapabilitiesList = Capability[];
+export type DatabaseAccountCreateUpdatePropertiesInputCapabilitiesList =
+  ReadonlyArray<Capability>;
+export const DatabaseAccountCreateUpdatePropertiesInputCapabilitiesList =
+  /*@__PURE__*/ S.Array(
+    Capability,
+  ) as any as S.Schema<DatabaseAccountCreateUpdatePropertiesInputCapabilitiesList>;
+
+/** Virtual Network ACL Rule object */
+export interface VirtualNetworkRule {
+  /** Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}. */
+  id?: string;
+  /** Create firewall rule before the virtual network has vnet service endpoint enabled. */
+  ignoreMissingVNetServiceEndpoint?: boolean;
+}
+export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    ignoreMissingVNetServiceEndpoint: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "VirtualNetworkRule",
+}) as any as S.Schema<VirtualNetworkRule>;
+
+/** List of Virtual Network ACL rules configured for the Cosmos DB account. */
+export type DatabaseAccountCreateUpdatePropertiesInputVirtualNetworkRulesList =
+  ReadonlyArray<VirtualNetworkRule>;
+export const DatabaseAccountCreateUpdatePropertiesInputVirtualNetworkRulesList =
+  /*@__PURE__*/ S.Array(
+    VirtualNetworkRule,
+  ) as any as S.Schema<DatabaseAccountCreateUpdatePropertiesInputVirtualNetworkRulesList>;
+
+/** The cassandra connector offer type for the Cosmos DB C* database account. */
+export type ConnectorOffer = "Small";
+export const ConnectorOffer = /*@__PURE__*/ S.String;
+
+/** Whether requests from Public Network are allowed */
+export type PublicNetworkAccess = "Enabled" | "Disabled" | "SecuredByPerimeter";
+export const PublicNetworkAccess = /*@__PURE__*/ S.String;
+
+/** Describes the version of the MongoDB account. */
+export type ServerVersion =
+  | "3.2"
+  | "3.6"
+  | "4.0"
+  | "4.2"
+  | "5.0"
+  | "6.0"
+  | "7.0";
+export const ServerVersion = /*@__PURE__*/ S.String;
+
+export interface ApiProperties {
+  /** Describes the version of the MongoDB account. */
+  serverVersion?: ServerVersion;
+}
+export const ApiProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serverVersion: S.optional(ServerVersion),
+  }),
+).annotate({ identifier: "ApiProperties" }) as any as S.Schema<ApiProperties>;
+
+/** Describes the types of schema for analytical storage. */
+export type AnalyticalStorageSchemaType = "WellDefined" | "FullFidelity";
+export const AnalyticalStorageSchemaType = /*@__PURE__*/ S.String;
+
+/** Analytical storage specific properties. */
+export interface AnalyticalStorageConfiguration {
+  /** Describes the types of schema for analytical storage. */
+  schemaType?: AnalyticalStorageSchemaType;
+}
+export const AnalyticalStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaType: S.optional(AnalyticalStorageSchemaType),
+  }),
+).annotate({
+  identifier: "AnalyticalStorageConfiguration",
+}) as any as S.Schema<AnalyticalStorageConfiguration>;
+
+/** Enum to indicate the mode of account creation. */
+export type DatabaseAccountCreateUpdatePropertiesInputCreateMode =
+  | "Default"
+  | "Restore";
+export const DatabaseAccountCreateUpdatePropertiesInputCreateMode =
+  /*@__PURE__*/ S.String;
+
+/** Describes the mode of backups. */
+export type BackupPolicyType = "Periodic" | "Continuous";
+export const BackupPolicyType = /*@__PURE__*/ S.String;
+
+/** Describes the status of migration between backup policy types. */
+export type BackupPolicyMigrationStatus =
+  | "Invalid"
+  | "InProgress"
+  | "Completed"
+  | "Failed";
+export const BackupPolicyMigrationStatus = /*@__PURE__*/ S.String;
+
+/** The object representing the state of the migration between the backup policies. */
+export interface BackupPolicyMigrationState {
+  /** Describes the status of migration between backup policy types. */
+  status?: BackupPolicyMigrationStatus;
+  /** Describes the target backup policy type of the backup policy migration. */
+  targetType?: BackupPolicyType;
+  /** Time at which the backup policy migration started (ISO-8601 format). */
+  startTime?: string;
+}
+export const BackupPolicyMigrationState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(BackupPolicyMigrationStatus),
+    targetType: S.optional(BackupPolicyType),
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BackupPolicyMigrationState",
+}) as any as S.Schema<BackupPolicyMigrationState>;
+
+/** The object representing the policy for taking backups on an account. */
+export interface BackupPolicy {
+  /** Describes the mode of backups. */
+  type: BackupPolicyType;
+  /** The object representing the state of the migration between the backup policies. */
+  migrationState?: BackupPolicyMigrationState;
+}
+export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: BackupPolicyType,
+    migrationState: S.optional(BackupPolicyMigrationState),
+  }),
+).annotate({ identifier: "BackupPolicy" }) as any as S.Schema<BackupPolicy>;
+
+/** The CORS policy for the Cosmos DB database account. */
+export interface CorsPolicy {
+  /** The origin domains that are permitted to make a request against the service via CORS. */
+  allowedOrigins: string;
+  /** The methods (HTTP request verbs) that the origin domain may use for a CORS request. */
+  allowedMethods?: string;
+  /** The request headers that the origin domain may specify on the CORS request. */
+  allowedHeaders?: string;
+  /** The response headers that may be sent in the response to the CORS request and exposed by the browser to the request issuer. */
+  exposedHeaders?: string;
+  /** The maximum amount time that a browser should cache the preflight OPTIONS request. */
+  maxAgeInSeconds?: number;
+}
+export const CorsPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedOrigins: S.String,
+    allowedMethods: S.optional(S.String),
+    allowedHeaders: S.optional(S.String),
+    exposedHeaders: S.optional(S.String),
+    maxAgeInSeconds: S.optional(S.Number),
+  }),
+).annotate({ identifier: "CorsPolicy" }) as any as S.Schema<CorsPolicy>;
+
+/** The CORS policy for the Cosmos DB database account. */
+export type DatabaseAccountCreateUpdatePropertiesInputCorsList =
+  ReadonlyArray<CorsPolicy>;
+export const DatabaseAccountCreateUpdatePropertiesInputCorsList =
+  /*@__PURE__*/ S.Array(
+    CorsPolicy,
+  ) as any as S.Schema<DatabaseAccountCreateUpdatePropertiesInputCorsList>;
+
+/** Indicates what services are allowed to bypass firewall checks. */
+export type NetworkAclBypass = "None" | "AzureServices";
+export const NetworkAclBypass = /*@__PURE__*/ S.String;
+
+/** An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account. */
+export type DatabaseAccountCreateUpdatePropertiesInputNetworkAclBypassResourceIdsList =
+  ReadonlyArray<string>;
+export const DatabaseAccountCreateUpdatePropertiesInputNetworkAclBypassResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DatabaseAccountCreateUpdatePropertiesInputNetworkAclBypassResourceIdsList>;
+
+/** Describes the mode of the restore. */
+export type RestoreMode = "PointInTime";
+export const RestoreMode = /*@__PURE__*/ S.String;
+
+/** The names of the collections available for restore. */
+export type DatabaseRestoreResourceCollectionNamesList = ReadonlyArray<string>;
+export const DatabaseRestoreResourceCollectionNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DatabaseRestoreResourceCollectionNamesList>;
+
+/** Specific Databases to restore. */
+export interface DatabaseRestoreResource {
+  /** The name of the database available for restore. */
+  databaseName?: string;
+  /** The names of the collections available for restore. */
+  collectionNames?: DatabaseRestoreResourceCollectionNamesList;
+}
+export const DatabaseRestoreResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    databaseName: S.optional(S.String),
+    collectionNames: S.optional(DatabaseRestoreResourceCollectionNamesList),
+  }),
+).annotate({
+  identifier: "DatabaseRestoreResource",
+}) as any as S.Schema<DatabaseRestoreResource>;
+
+/** List of specific databases available for restore. */
+export type RestoreParametersDatabasesToRestoreList =
+  ReadonlyArray<DatabaseRestoreResource>;
+export const RestoreParametersDatabasesToRestoreList = /*@__PURE__*/ S.Array(
+  DatabaseRestoreResource,
+) as any as S.Schema<RestoreParametersDatabasesToRestoreList>;
+
+/** The names of the graphs available for restore. */
+export type GremlinDatabaseRestoreResourceGraphNamesList =
+  ReadonlyArray<string>;
+export const GremlinDatabaseRestoreResourceGraphNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GremlinDatabaseRestoreResourceGraphNamesList>;
+
+/** Specific Gremlin Databases to restore. */
+export interface GremlinDatabaseRestoreResource {
+  /** The name of the gremlin database available for restore. */
+  databaseName?: string;
+  /** The names of the graphs available for restore. */
+  graphNames?: GremlinDatabaseRestoreResourceGraphNamesList;
+}
+export const GremlinDatabaseRestoreResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    databaseName: S.optional(S.String),
+    graphNames: S.optional(GremlinDatabaseRestoreResourceGraphNamesList),
+  }),
+).annotate({
+  identifier: "GremlinDatabaseRestoreResource",
+}) as any as S.Schema<GremlinDatabaseRestoreResource>;
+
+/** List of specific gremlin databases available for restore. */
+export type RestoreParametersGremlinDatabasesToRestoreList =
+  ReadonlyArray<GremlinDatabaseRestoreResource>;
+export const RestoreParametersGremlinDatabasesToRestoreList =
+  /*@__PURE__*/ S.Array(
+    GremlinDatabaseRestoreResource,
+  ) as any as S.Schema<RestoreParametersGremlinDatabasesToRestoreList>;
+
+/** List of specific tables available for restore. */
+export type RestoreParametersTablesToRestoreList = ReadonlyArray<string>;
+export const RestoreParametersTablesToRestoreList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RestoreParametersTablesToRestoreList>;
+
+/** Parameters to indicate the information about the restore. */
+export interface RestoreParameters {
+  /** The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName} */
+  restoreSource?: string;
+  /** Time to which the account has to be restored (ISO-8601 format). */
+  restoreTimestampInUtc?: string;
+  /** Specifies whether the restored account will have Time-To-Live disabled upon the successful restore. */
+  restoreWithTtlDisabled?: boolean;
+  /** Describes the mode of the restore. */
+  restoreMode?: RestoreMode;
+  /** List of specific databases available for restore. */
+  databasesToRestore?: RestoreParametersDatabasesToRestoreList;
+  /** List of specific gremlin databases available for restore. */
+  gremlinDatabasesToRestore?: RestoreParametersGremlinDatabasesToRestoreList;
+  /** List of specific tables available for restore. */
+  tablesToRestore?: RestoreParametersTablesToRestoreList;
+  /** The source backup location for restore. */
+  sourceBackupLocation?: string;
+}
+export const RestoreParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    restoreSource: S.optional(S.String),
+    restoreTimestampInUtc: S.optional(S.String),
+    restoreWithTtlDisabled: S.optional(S.Boolean),
+    restoreMode: S.optional(RestoreMode),
+    databasesToRestore: S.optional(RestoreParametersDatabasesToRestoreList),
+    gremlinDatabasesToRestore: S.optional(
+      RestoreParametersGremlinDatabasesToRestoreList,
+    ),
+    tablesToRestore: S.optional(RestoreParametersTablesToRestoreList),
+    sourceBackupLocation: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RestoreParameters",
+}) as any as S.Schema<RestoreParameters>;
+
+/** The object that represents all properties related to capacity enforcement on an account. */
+export interface Capacity {
+  /** The total throughput limit imposed on the account. A totalThroughputLimit of 2000 imposes a strict limit of max throughput that can be provisioned on that account to be 2000. A totalThroughputLimit of -1 indicates no limits on provisioning of throughput. */
+  totalThroughputLimit?: number;
+}
+export const Capacity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    totalThroughputLimit: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Capacity" }) as any as S.Schema<Capacity>;
+
+/** Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2. */
+export type MinimalTlsVersion = "Tls" | "Tls11" | "Tls12";
+export const MinimalTlsVersion = /*@__PURE__*/ S.String;
+
+/** Enum to indicate default priorityLevel of requests */
+export type DefaultPriorityLevel = "High" | "Low";
+export const DefaultPriorityLevel = /*@__PURE__*/ S.String;
+
+/** Properties to create and update Azure Cosmos DB database accounts. */
+export interface DatabaseAccountCreateUpdatePropertiesInput {
+  /** The consistency policy for the Cosmos DB account. */
+  consistencyPolicy?: ConsistencyPolicy;
+  /** An array that contains the georeplication locations enabled for the Cosmos DB account. */
+  locations: DatabaseAccountCreateUpdatePropertiesInputLocationsList;
+  /** The offer type for the Cosmos DB database account. */
+  databaseAccountOfferType: DatabaseAccountCreateUpdatePropertiesInputDatabaseAccountOfferType;
+  /** List of IpRules. */
+  ipRules?: DatabaseAccountCreateUpdatePropertiesInputIpRulesList;
+  /** Flag to indicate whether to enable/disable Virtual Network ACL rules. */
+  isVirtualNetworkFilterEnabled?: boolean;
+  /** Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account. */
+  enableAutomaticFailover?: boolean;
+  /** List of Cosmos DB capabilities for the account */
+  capabilities?: DatabaseAccountCreateUpdatePropertiesInputCapabilitiesList;
+  /** List of Virtual Network ACL rules configured for the Cosmos DB account. */
+  virtualNetworkRules?: DatabaseAccountCreateUpdatePropertiesInputVirtualNetworkRulesList;
+  /** Enables the account to write in multiple locations */
+  enableMultipleWriteLocations?: boolean;
+  /** Enables the cassandra connector on the Cosmos DB C* account */
+  enableCassandraConnector?: boolean;
+  /** The cassandra connector offer type for the Cosmos DB database C* account. */
+  connectorOffer?: ConnectorOffer;
+  /** Disable write operations on metadata resources (databases, containers, throughput) via account keys */
+  disableKeyBasedMetadataWriteAccess?: boolean;
+  /** The URI of the key vault */
+  keyVaultKeyUri?: string;
+  /** The default identity for accessing key vault used in features like customer managed keys. The default identity needs to be explicitly set by the users. It can be "FirstPartyIdentity", "SystemAssignedIdentity" and more. */
+  defaultIdentity?: string;
+  /** Whether requests from Public Network are allowed */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** Flag to indicate whether Free Tier is enabled. */
+  enableFreeTier?: boolean;
+  /** API specific properties. Currently, supported only for MongoDB API. */
+  apiProperties?: ApiProperties;
+  /** Flag to indicate whether to enable storage analytics. */
+  enableAnalyticalStorage?: boolean;
+  /** Analytical storage specific properties. */
+  analyticalStorageConfiguration?: AnalyticalStorageConfiguration;
+  /** Enum to indicate the mode of account creation. */
+  createMode?: DatabaseAccountCreateUpdatePropertiesInputCreateMode;
+  /** The object representing the policy for taking backups on an account. */
+  backupPolicy?: BackupPolicy;
+  /** The CORS policy for the Cosmos DB database account. */
+  cors?: DatabaseAccountCreateUpdatePropertiesInputCorsList;
+  /** Indicates what services are allowed to bypass firewall checks. */
+  networkAclBypass?: NetworkAclBypass;
+  /** An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account. */
+  networkAclBypassResourceIds?: DatabaseAccountCreateUpdatePropertiesInputNetworkAclBypassResourceIdsList;
+  /** Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication. */
+  disableLocalAuth?: boolean;
+  /** Parameters to indicate the information about the restore. */
+  restoreParameters?: RestoreParameters;
+  /** The object that represents all properties related to capacity enforcement on an account. */
+  capacity?: Capacity;
+  /** Flag to indicate enabling/disabling of Partition Merge feature on the account */
+  enablePartitionMerge?: boolean;
+  /** Flag to indicate enabling/disabling of Burst Capacity Preview feature on the account */
+  enableBurstCapacity?: boolean;
+  /** Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2. */
+  minimalTlsVersion?: MinimalTlsVersion;
+  /** Indicates the status of the Customer Managed Key feature on the account. In case there are errors, the property provides troubleshooting guidance. */
+  customerManagedKeyStatus?: string;
+  /** Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account */
+  enablePriorityBasedExecution?: boolean;
+  /** Enum to indicate default Priority Level of request for Priority Based Execution. */
+  defaultPriorityLevel?: DefaultPriorityLevel;
+  /** Flag to indicate enabling/disabling of Per-Region Per-partition autoscale Preview feature on the account */
+  enablePerRegionPerPartitionAutoscale?: boolean;
+  /** Flag to indicate enabling/disabling of hierarchical partition key ID last level enforcement on the account. */
+  enforceHierarchicalPartitionKeyIdLastLevel?: boolean;
+}
+export const DatabaseAccountCreateUpdatePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      consistencyPolicy: S.optional(ConsistencyPolicy),
+      locations: DatabaseAccountCreateUpdatePropertiesInputLocationsList,
+      databaseAccountOfferType:
+        DatabaseAccountCreateUpdatePropertiesInputDatabaseAccountOfferType,
+      ipRules: S.optional(
+        DatabaseAccountCreateUpdatePropertiesInputIpRulesList,
+      ),
+      isVirtualNetworkFilterEnabled: S.optional(S.Boolean),
+      enableAutomaticFailover: S.optional(S.Boolean),
+      capabilities: S.optional(
+        DatabaseAccountCreateUpdatePropertiesInputCapabilitiesList,
+      ),
+      virtualNetworkRules: S.optional(
+        DatabaseAccountCreateUpdatePropertiesInputVirtualNetworkRulesList,
+      ),
+      enableMultipleWriteLocations: S.optional(S.Boolean),
+      enableCassandraConnector: S.optional(S.Boolean),
+      connectorOffer: S.optional(ConnectorOffer),
+      disableKeyBasedMetadataWriteAccess: S.optional(S.Boolean),
+      keyVaultKeyUri: S.optional(S.String),
+      defaultIdentity: S.optional(S.String),
+      publicNetworkAccess: S.optional(PublicNetworkAccess),
+      enableFreeTier: S.optional(S.Boolean),
+      apiProperties: S.optional(ApiProperties),
+      enableAnalyticalStorage: S.optional(S.Boolean),
+      analyticalStorageConfiguration: S.optional(
+        AnalyticalStorageConfiguration,
+      ),
+      createMode: S.optional(
+        DatabaseAccountCreateUpdatePropertiesInputCreateMode,
+      ),
+      backupPolicy: S.optional(BackupPolicy),
+      cors: S.optional(DatabaseAccountCreateUpdatePropertiesInputCorsList),
+      networkAclBypass: S.optional(NetworkAclBypass),
+      networkAclBypassResourceIds: S.optional(
+        DatabaseAccountCreateUpdatePropertiesInputNetworkAclBypassResourceIdsList,
+      ),
+      disableLocalAuth: S.optional(S.Boolean),
+      restoreParameters: S.optional(RestoreParameters),
+      capacity: S.optional(Capacity),
+      enablePartitionMerge: S.optional(S.Boolean),
+      enableBurstCapacity: S.optional(S.Boolean),
+      minimalTlsVersion: S.optional(MinimalTlsVersion),
+      customerManagedKeyStatus: S.optional(S.String),
+      enablePriorityBasedExecution: S.optional(S.Boolean),
+      defaultPriorityLevel: S.optional(DefaultPriorityLevel),
+      enablePerRegionPerPartitionAutoscale: S.optional(S.Boolean),
+      enforceHierarchicalPartitionKeyIdLastLevel: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "DatabaseAccountCreateUpdatePropertiesInput",
+  }) as any as S.Schema<DatabaseAccountCreateUpdatePropertiesInput>;
+
+export interface DatabaseAccountsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: DatabaseAccountsCreateOrUpdateRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Indicates the type of database account. This can only be set at database account creation. */
+  kind?: DatabaseAccountsCreateOrUpdateRequestKind;
+  /** Properties to create and update Azure Cosmos DB database accounts. */
+  properties: DatabaseAccountCreateUpdatePropertiesInput;
+}
+export const DatabaseAccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      location: S.optional(S.String),
+      tags: S.optional(DatabaseAccountsCreateOrUpdateRequestTagsMap),
+      identity: S.optional(ManagedServiceIdentityInput),
+      kind: S.optional(DatabaseAccountsCreateOrUpdateRequestKind),
+      properties: DatabaseAccountCreateUpdatePropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+).annotate({
+  identifier: "DatabaseAccountsCreateOrUpdateRequest",
+}) as any as S.Schema<DatabaseAccountsCreateOrUpdateRequest>;
+
+/** The offer type for the Cosmos DB database account. Default value: Standard. */
+export type DatabaseAccountGetPropertiesDatabaseAccountOfferType = "Standard";
+export const DatabaseAccountGetPropertiesDatabaseAccountOfferType =
+  /*@__PURE__*/ S.String;
+
+/** List of IpRules. */
+export type DatabaseAccountGetPropertiesIpRulesList =
+  ReadonlyArray<IpAddressOrRange>;
+export const DatabaseAccountGetPropertiesIpRulesList = /*@__PURE__*/ S.Array(
+  IpAddressOrRange,
+) as any as S.Schema<DatabaseAccountGetPropertiesIpRulesList>;
+
+/** List of Cosmos DB capabilities for the account */
+export type DatabaseAccountGetPropertiesCapabilitiesList =
+  ReadonlyArray<Capability>;
 export const DatabaseAccountGetPropertiesCapabilitiesList =
   /*@__PURE__*/ S.Array(
     Capability,
@@ -4211,21 +5237,23 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 /** An array that contains the write location for the Cosmos DB account. */
-export type DatabaseAccountGetPropertiesWriteLocationsList = Location[];
+export type DatabaseAccountGetPropertiesWriteLocationsList =
+  ReadonlyArray<Location>;
 export const DatabaseAccountGetPropertiesWriteLocationsList =
   /*@__PURE__*/ S.Array(
     Location,
   ) as any as S.Schema<DatabaseAccountGetPropertiesWriteLocationsList>;
 
 /** An array that contains of the read locations enabled for the Cosmos DB account. */
-export type DatabaseAccountGetPropertiesReadLocationsList = Location[];
+export type DatabaseAccountGetPropertiesReadLocationsList =
+  ReadonlyArray<Location>;
 export const DatabaseAccountGetPropertiesReadLocationsList =
   /*@__PURE__*/ S.Array(
     Location,
   ) as any as S.Schema<DatabaseAccountGetPropertiesReadLocationsList>;
 
 /** An array that contains all of the locations enabled for the Cosmos DB account. */
-export type DatabaseAccountGetPropertiesLocationsList = Location[];
+export type DatabaseAccountGetPropertiesLocationsList = ReadonlyArray<Location>;
 export const DatabaseAccountGetPropertiesLocationsList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<DatabaseAccountGetPropertiesLocationsList>;
@@ -4248,31 +5276,16 @@ export const FailoverPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FailoverPolicy" }) as any as S.Schema<FailoverPolicy>;
 
 /** An array that contains the regions ordered by their failover priorities. */
-export type DatabaseAccountGetPropertiesFailoverPoliciesList = FailoverPolicy[];
+export type DatabaseAccountGetPropertiesFailoverPoliciesList =
+  ReadonlyArray<FailoverPolicy>;
 export const DatabaseAccountGetPropertiesFailoverPoliciesList =
   /*@__PURE__*/ S.Array(
     FailoverPolicy,
   ) as any as S.Schema<DatabaseAccountGetPropertiesFailoverPoliciesList>;
 
-/** Virtual Network ACL Rule object */
-export interface VirtualNetworkRule {
-  /** Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}. */
-  id?: string;
-  /** Create firewall rule before the virtual network has vnet service endpoint enabled. */
-  ignoreMissingVNetServiceEndpoint?: boolean;
-}
-export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    ignoreMissingVNetServiceEndpoint: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VirtualNetworkRule",
-}) as any as S.Schema<VirtualNetworkRule>;
-
 /** List of Virtual Network ACL rules configured for the Cosmos DB account. */
 export type DatabaseAccountGetPropertiesVirtualNetworkRulesList =
-  VirtualNetworkRule[];
+  ReadonlyArray<VirtualNetworkRule>;
 export const DatabaseAccountGetPropertiesVirtualNetworkRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkRule,
@@ -4362,275 +5375,29 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Private Endpoint Connections configured for the Cosmos DB account. */
 export type DatabaseAccountGetPropertiesPrivateEndpointConnectionsList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const DatabaseAccountGetPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
   ) as any as S.Schema<DatabaseAccountGetPropertiesPrivateEndpointConnectionsList>;
 
-/** The cassandra connector offer type for the Cosmos DB C* database account. */
-export type ConnectorOffer = "Small" | (string & {});
-export const ConnectorOffer = /*@__PURE__*/ S.String;
-
-/** Whether requests from Public Network are allowed */
-export type PublicNetworkAccess =
-  | "Enabled"
-  | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
-export const PublicNetworkAccess = /*@__PURE__*/ S.String;
-
-/** Describes the version of the MongoDB account. */
-export type ServerVersion =
-  | "3.2"
-  | "3.6"
-  | "4.0"
-  | "4.2"
-  | "5.0"
-  | "6.0"
-  | "7.0"
-  | (string & {});
-export const ServerVersion = /*@__PURE__*/ S.String;
-
-export interface ApiProperties {
-  /** Describes the version of the MongoDB account. */
-  serverVersion?: ServerVersion;
-}
-export const ApiProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serverVersion: S.optional(ServerVersion),
-  }),
-).annotate({ identifier: "ApiProperties" }) as any as S.Schema<ApiProperties>;
-
-/** Describes the types of schema for analytical storage. */
-export type AnalyticalStorageSchemaType =
-  | "WellDefined"
-  | "FullFidelity"
-  | (string & {});
-export const AnalyticalStorageSchemaType = /*@__PURE__*/ S.String;
-
-/** Analytical storage specific properties. */
-export interface AnalyticalStorageConfiguration {
-  /** Describes the types of schema for analytical storage. */
-  schemaType?: AnalyticalStorageSchemaType;
-}
-export const AnalyticalStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaType: S.optional(AnalyticalStorageSchemaType),
-  }),
-).annotate({
-  identifier: "AnalyticalStorageConfiguration",
-}) as any as S.Schema<AnalyticalStorageConfiguration>;
-
 /** Enum to indicate the mode of account creation. */
-export type DatabaseAccountGetPropertiesCreateMode =
-  | "Default"
-  | "Restore"
-  | (string & {});
+export type DatabaseAccountGetPropertiesCreateMode = "Default" | "Restore";
 export const DatabaseAccountGetPropertiesCreateMode = /*@__PURE__*/ S.String;
 
-/** Describes the mode of the restore. */
-export type RestoreMode = "PointInTime" | (string & {});
-export const RestoreMode = /*@__PURE__*/ S.String;
-
-/** The names of the collections available for restore. */
-export type DatabaseRestoreResourceCollectionNamesList = string[];
-export const DatabaseRestoreResourceCollectionNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DatabaseRestoreResourceCollectionNamesList>;
-
-/** Specific Databases to restore. */
-export interface DatabaseRestoreResource {
-  /** The name of the database available for restore. */
-  databaseName?: string;
-  /** The names of the collections available for restore. */
-  collectionNames?: DatabaseRestoreResourceCollectionNamesList;
-}
-export const DatabaseRestoreResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseName: S.optional(S.String),
-    collectionNames: S.optional(DatabaseRestoreResourceCollectionNamesList),
-  }),
-).annotate({
-  identifier: "DatabaseRestoreResource",
-}) as any as S.Schema<DatabaseRestoreResource>;
-
-/** List of specific databases available for restore. */
-export type RestoreParametersDatabasesToRestoreList = DatabaseRestoreResource[];
-export const RestoreParametersDatabasesToRestoreList = /*@__PURE__*/ S.Array(
-  DatabaseRestoreResource,
-) as any as S.Schema<RestoreParametersDatabasesToRestoreList>;
-
-/** The names of the graphs available for restore. */
-export type GremlinDatabaseRestoreResourceGraphNamesList = string[];
-export const GremlinDatabaseRestoreResourceGraphNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GremlinDatabaseRestoreResourceGraphNamesList>;
-
-/** Specific Gremlin Databases to restore. */
-export interface GremlinDatabaseRestoreResource {
-  /** The name of the gremlin database available for restore. */
-  databaseName?: string;
-  /** The names of the graphs available for restore. */
-  graphNames?: GremlinDatabaseRestoreResourceGraphNamesList;
-}
-export const GremlinDatabaseRestoreResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseName: S.optional(S.String),
-    graphNames: S.optional(GremlinDatabaseRestoreResourceGraphNamesList),
-  }),
-).annotate({
-  identifier: "GremlinDatabaseRestoreResource",
-}) as any as S.Schema<GremlinDatabaseRestoreResource>;
-
-/** List of specific gremlin databases available for restore. */
-export type RestoreParametersGremlinDatabasesToRestoreList =
-  GremlinDatabaseRestoreResource[];
-export const RestoreParametersGremlinDatabasesToRestoreList =
-  /*@__PURE__*/ S.Array(
-    GremlinDatabaseRestoreResource,
-  ) as any as S.Schema<RestoreParametersGremlinDatabasesToRestoreList>;
-
-/** List of specific tables available for restore. */
-export type RestoreParametersTablesToRestoreList = string[];
-export const RestoreParametersTablesToRestoreList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RestoreParametersTablesToRestoreList>;
-
-/** Parameters to indicate the information about the restore. */
-export interface RestoreParameters {
-  /** The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName} */
-  restoreSource?: string;
-  /** Time to which the account has to be restored (ISO-8601 format). */
-  restoreTimestampInUtc?: string;
-  /** Specifies whether the restored account will have Time-To-Live disabled upon the successful restore. */
-  restoreWithTtlDisabled?: boolean;
-  /** Describes the mode of the restore. */
-  restoreMode?: RestoreMode;
-  /** List of specific databases available for restore. */
-  databasesToRestore?: RestoreParametersDatabasesToRestoreList;
-  /** List of specific gremlin databases available for restore. */
-  gremlinDatabasesToRestore?: RestoreParametersGremlinDatabasesToRestoreList;
-  /** List of specific tables available for restore. */
-  tablesToRestore?: RestoreParametersTablesToRestoreList;
-  /** The source backup location for restore. */
-  sourceBackupLocation?: string;
-}
-export const RestoreParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    restoreSource: S.optional(S.String),
-    restoreTimestampInUtc: S.optional(S.String),
-    restoreWithTtlDisabled: S.optional(S.Boolean),
-    restoreMode: S.optional(RestoreMode),
-    databasesToRestore: S.optional(RestoreParametersDatabasesToRestoreList),
-    gremlinDatabasesToRestore: S.optional(
-      RestoreParametersGremlinDatabasesToRestoreList,
-    ),
-    tablesToRestore: S.optional(RestoreParametersTablesToRestoreList),
-    sourceBackupLocation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RestoreParameters",
-}) as any as S.Schema<RestoreParameters>;
-
-/** Describes the mode of backups. */
-export type BackupPolicyType = "Periodic" | "Continuous" | (string & {});
-export const BackupPolicyType = /*@__PURE__*/ S.String;
-
-/** Describes the status of migration between backup policy types. */
-export type BackupPolicyMigrationStatus =
-  | "Invalid"
-  | "InProgress"
-  | "Completed"
-  | "Failed"
-  | (string & {});
-export const BackupPolicyMigrationStatus = /*@__PURE__*/ S.String;
-
-/** The object representing the state of the migration between the backup policies. */
-export interface BackupPolicyMigrationState {
-  /** Describes the status of migration between backup policy types. */
-  status?: BackupPolicyMigrationStatus;
-  /** Describes the target backup policy type of the backup policy migration. */
-  targetType?: BackupPolicyType;
-  /** Time at which the backup policy migration started (ISO-8601 format). */
-  startTime?: string;
-}
-export const BackupPolicyMigrationState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(BackupPolicyMigrationStatus),
-    targetType: S.optional(BackupPolicyType),
-    startTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BackupPolicyMigrationState",
-}) as any as S.Schema<BackupPolicyMigrationState>;
-
-/** The object representing the policy for taking backups on an account. */
-export interface BackupPolicy {
-  /** Describes the mode of backups. */
-  type: BackupPolicyType;
-  /** The object representing the state of the migration between the backup policies. */
-  migrationState?: BackupPolicyMigrationState;
-}
-export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: BackupPolicyType,
-    migrationState: S.optional(BackupPolicyMigrationState),
-  }),
-).annotate({ identifier: "BackupPolicy" }) as any as S.Schema<BackupPolicy>;
-
 /** The CORS policy for the Cosmos DB database account. */
-export interface CorsPolicy {
-  /** The origin domains that are permitted to make a request against the service via CORS. */
-  allowedOrigins: string;
-  /** The methods (HTTP request verbs) that the origin domain may use for a CORS request. */
-  allowedMethods?: string;
-  /** The request headers that the origin domain may specify on the CORS request. */
-  allowedHeaders?: string;
-  /** The response headers that may be sent in the response to the CORS request and exposed by the browser to the request issuer. */
-  exposedHeaders?: string;
-  /** The maximum amount time that a browser should cache the preflight OPTIONS request. */
-  maxAgeInSeconds?: number;
-}
-export const CorsPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedOrigins: S.String,
-    allowedMethods: S.optional(S.String),
-    allowedHeaders: S.optional(S.String),
-    exposedHeaders: S.optional(S.String),
-    maxAgeInSeconds: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CorsPolicy" }) as any as S.Schema<CorsPolicy>;
-
-/** The CORS policy for the Cosmos DB database account. */
-export type DatabaseAccountGetPropertiesCorsList = CorsPolicy[];
+export type DatabaseAccountGetPropertiesCorsList = ReadonlyArray<CorsPolicy>;
 export const DatabaseAccountGetPropertiesCorsList = /*@__PURE__*/ S.Array(
   CorsPolicy,
 ) as any as S.Schema<DatabaseAccountGetPropertiesCorsList>;
 
-/** Indicates what services are allowed to bypass firewall checks. */
-export type NetworkAclBypass = "None" | "AzureServices" | (string & {});
-export const NetworkAclBypass = /*@__PURE__*/ S.String;
-
 /** An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account. */
 export type DatabaseAccountGetPropertiesNetworkAclBypassResourceIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const DatabaseAccountGetPropertiesNetworkAclBypassResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DatabaseAccountGetPropertiesNetworkAclBypassResourceIdsList>;
-
-/** The object that represents all properties related to capacity enforcement on an account. */
-export interface Capacity {
-  /** The total throughput limit imposed on the account. A totalThroughputLimit of 2000 imposes a strict limit of max throughput that can be provisioned on that account to be 2000. A totalThroughputLimit of -1 indicates no limits on provisioning of throughput. */
-  totalThroughputLimit?: number;
-}
-export const Capacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    totalThroughputLimit: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Capacity" }) as any as S.Schema<Capacity>;
 
 /** The metadata related to an access key for a given database account. */
 export interface AccountKeyMetadata {
@@ -4666,14 +5433,6 @@ export const DatabaseAccountKeysMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatabaseAccountKeysMetadata",
 }) as any as S.Schema<DatabaseAccountKeysMetadata>;
-
-/** Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2. */
-export type MinimalTlsVersion = "Tls" | "Tls11" | "Tls12" | (string & {});
-export const MinimalTlsVersion = /*@__PURE__*/ S.String;
-
-/** Enum to indicate default priorityLevel of requests */
-export type DefaultPriorityLevel = "High" | "Low" | (string & {});
-export const DefaultPriorityLevel = /*@__PURE__*/ S.String;
 
 /** Properties for the database account. */
 export interface DatabaseAccountGetProperties {
@@ -4841,8 +5600,7 @@ export const DatabaseAccountsCreateOrUpdateResponseTagsMap =
 export type DatabaseAccountsCreateOrUpdateResponseKind =
   | "GlobalDocumentDB"
   | "MongoDB"
-  | "Parse"
-  | (string & {});
+  | "Parse";
 export const DatabaseAccountsCreateOrUpdateResponseKind =
   /*@__PURE__*/ S.String;
 
@@ -4915,6 +5673,30 @@ export const DatabaseAccountsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseAccountsDeleteResponse",
 }) as any as S.Schema<DatabaseAccountsDeleteResponse>;
 
+/** The failover policy for a given region of a database account. */
+export interface FailoverPolicyInput {
+  /** The name of the region in which the database account exists. */
+  locationName?: string;
+  /** The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists. */
+  failoverPriority?: number;
+}
+export const FailoverPolicyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    locationName: S.optional(S.String),
+    failoverPriority: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "FailoverPolicyInput",
+}) as any as S.Schema<FailoverPolicyInput>;
+
+/** List of failover policies. */
+export type DatabaseAccountsFailoverPriorityChangeRequestFailoverPoliciesList =
+  ReadonlyArray<FailoverPolicyInput>;
+export const DatabaseAccountsFailoverPriorityChangeRequestFailoverPoliciesList =
+  /*@__PURE__*/ S.Array(
+    FailoverPolicyInput,
+  ) as any as S.Schema<DatabaseAccountsFailoverPriorityChangeRequestFailoverPoliciesList>;
+
 export interface DatabaseAccountsFailoverPriorityChangeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4922,7 +5704,8 @@ export interface DatabaseAccountsFailoverPriorityChangeRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
-  body: unknown;
+  /** List of failover policies. */
+  failoverPolicies: DatabaseAccountsFailoverPriorityChangeRequestFailoverPoliciesList;
 }
 export const DatabaseAccountsFailoverPriorityChangeRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4930,7 +5713,8 @@ export const DatabaseAccountsFailoverPriorityChangeRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      failoverPolicies:
+        DatabaseAccountsFailoverPriorityChangeRequestFailoverPoliciesList,
     }).pipe(
       T.Http({
         method: "POST",
@@ -4987,8 +5771,7 @@ export const DatabaseAccountsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 export type DatabaseAccountsGetResponseKind =
   | "GlobalDocumentDB"
   | "MongoDB"
-  | "Parse"
-  | (string & {});
+  | "Parse";
 export const DatabaseAccountsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface DatabaseAccountsGetResponse {
@@ -5102,8 +5885,7 @@ export const DatabaseAccountGetResultsTagsMap = /*@__PURE__*/ S.Record(
 export type DatabaseAccountGetResultsKind =
   | "GlobalDocumentDB"
   | "MongoDB"
-  | "Parse"
-  | (string & {});
+  | "Parse";
 export const DatabaseAccountGetResultsKind = /*@__PURE__*/ S.String;
 
 /** An Azure Cosmos DB database account. */
@@ -5144,7 +5926,8 @@ export const DatabaseAccountGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseAccountGetResults>;
 
 /** List of database account and their properties. */
-export type DatabaseAccountsListResultValueList = DatabaseAccountGetResults[];
+export type DatabaseAccountsListResultValueList =
+  ReadonlyArray<DatabaseAccountGetResults>;
 export const DatabaseAccountsListResultValueList = /*@__PURE__*/ S.Array(
   DatabaseAccountGetResults,
 ) as any as S.Schema<DatabaseAccountsListResultValueList>;
@@ -5218,8 +6001,7 @@ export type Kind =
   | "Primary"
   | "Secondary"
   | "PrimaryReadonly"
-  | "SecondaryReadonly"
-  | (string & {});
+  | "SecondaryReadonly";
 export const Kind = /*@__PURE__*/ S.String;
 
 /** Type of the connection string */
@@ -5232,8 +6014,7 @@ export type Type =
   | "Gremlin"
   | "SqlDedicatedGateway"
   | "GremlinV2"
-  | "Undefined"
-  | (string & {});
+  | "Undefined";
 export const Type = /*@__PURE__*/ S.String;
 
 /** Connection string for the Cosmos DB account */
@@ -5260,7 +6041,7 @@ export const DatabaseAccountConnectionString = /*@__PURE__*/ S.suspend(() =>
 
 /** An array that contains the connection strings for the Cosmos DB account. */
 export type DatabaseAccountListConnectionStringsResultConnectionStringsList =
-  DatabaseAccountConnectionString[];
+  ReadonlyArray<DatabaseAccountConnectionString>;
 export const DatabaseAccountListConnectionStringsResultConnectionStringsList =
   /*@__PURE__*/ S.Array(
     DatabaseAccountConnectionString,
@@ -5443,7 +6224,8 @@ export interface DatabaseAccountsOfflineRegionRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
-  body: unknown;
+  /** Cosmos DB region, with spaces between words and each word capitalized. */
+  region: string;
 }
 export const DatabaseAccountsOfflineRegionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5451,7 +6233,7 @@ export const DatabaseAccountsOfflineRegionRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      region: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -5478,14 +6260,15 @@ export interface DatabaseAccountsOnlineRegionRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
-  body: unknown;
+  /** Cosmos DB region, with spaces between words and each word capitalized. */
+  region: string;
 }
 export const DatabaseAccountsOnlineRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    region: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -5505,6 +6288,14 @@ export const DatabaseAccountsOnlineRegionResponse = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseAccountsOnlineRegionResponse",
 }) as any as S.Schema<DatabaseAccountsOnlineRegionResponse>;
 
+/** The access key to regenerate. */
+export type KeyKind =
+  | "primary"
+  | "secondary"
+  | "primaryReadonly"
+  | "secondaryReadonly";
+export const KeyKind = /*@__PURE__*/ S.String;
+
 export interface DatabaseAccountsRegenerateKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5512,7 +6303,8 @@ export interface DatabaseAccountsRegenerateKeyRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
-  body: unknown;
+  /** The access key to regenerate. */
+  keyKind: KeyKind;
 }
 export const DatabaseAccountsRegenerateKeyRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5520,7 +6312,7 @@ export const DatabaseAccountsRegenerateKeyRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      keyKind: KeyKind,
     }).pipe(
       T.Http({
         method: "POST",
@@ -5540,6 +6332,178 @@ export const DatabaseAccountsRegenerateKeyResponse = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseAccountsRegenerateKeyResponse",
 }) as any as S.Schema<DatabaseAccountsRegenerateKeyResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type DatabaseAccountsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DatabaseAccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DatabaseAccountsUpdateRequestTagsMap>;
+
+/** An array that contains the georeplication locations enabled for the Cosmos DB account. */
+export type DatabaseAccountUpdatePropertiesInputLocationsList =
+  ReadonlyArray<LocationInput>;
+export const DatabaseAccountUpdatePropertiesInputLocationsList =
+  /*@__PURE__*/ S.Array(
+    LocationInput,
+  ) as any as S.Schema<DatabaseAccountUpdatePropertiesInputLocationsList>;
+
+/** List of IpRules. */
+export type DatabaseAccountUpdatePropertiesInputIpRulesList =
+  ReadonlyArray<IpAddressOrRange>;
+export const DatabaseAccountUpdatePropertiesInputIpRulesList =
+  /*@__PURE__*/ S.Array(
+    IpAddressOrRange,
+  ) as any as S.Schema<DatabaseAccountUpdatePropertiesInputIpRulesList>;
+
+/** List of Cosmos DB capabilities for the account */
+export type DatabaseAccountUpdatePropertiesInputCapabilitiesList =
+  ReadonlyArray<Capability>;
+export const DatabaseAccountUpdatePropertiesInputCapabilitiesList =
+  /*@__PURE__*/ S.Array(
+    Capability,
+  ) as any as S.Schema<DatabaseAccountUpdatePropertiesInputCapabilitiesList>;
+
+/** List of Virtual Network ACL rules configured for the Cosmos DB account. */
+export type DatabaseAccountUpdatePropertiesInputVirtualNetworkRulesList =
+  ReadonlyArray<VirtualNetworkRule>;
+export const DatabaseAccountUpdatePropertiesInputVirtualNetworkRulesList =
+  /*@__PURE__*/ S.Array(
+    VirtualNetworkRule,
+  ) as any as S.Schema<DatabaseAccountUpdatePropertiesInputVirtualNetworkRulesList>;
+
+/** The CORS policy for the Cosmos DB database account. */
+export type DatabaseAccountUpdatePropertiesInputCorsList =
+  ReadonlyArray<CorsPolicy>;
+export const DatabaseAccountUpdatePropertiesInputCorsList =
+  /*@__PURE__*/ S.Array(
+    CorsPolicy,
+  ) as any as S.Schema<DatabaseAccountUpdatePropertiesInputCorsList>;
+
+/** An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account. */
+export type DatabaseAccountUpdatePropertiesInputNetworkAclBypassResourceIdsList =
+  ReadonlyArray<string>;
+export const DatabaseAccountUpdatePropertiesInputNetworkAclBypassResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DatabaseAccountUpdatePropertiesInputNetworkAclBypassResourceIdsList>;
+
+/** Properties to update Azure Cosmos DB database accounts. */
+export interface DatabaseAccountUpdatePropertiesInput {
+  /** The consistency policy for the Cosmos DB account. */
+  consistencyPolicy?: ConsistencyPolicy;
+  /** An array that contains the georeplication locations enabled for the Cosmos DB account. */
+  locations?: DatabaseAccountUpdatePropertiesInputLocationsList;
+  /** List of IpRules. */
+  ipRules?: DatabaseAccountUpdatePropertiesInputIpRulesList;
+  /** Flag to indicate whether to enable/disable Virtual Network ACL rules. */
+  isVirtualNetworkFilterEnabled?: boolean;
+  /** Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account. */
+  enableAutomaticFailover?: boolean;
+  /** List of Cosmos DB capabilities for the account */
+  capabilities?: DatabaseAccountUpdatePropertiesInputCapabilitiesList;
+  /** List of Virtual Network ACL rules configured for the Cosmos DB account. */
+  virtualNetworkRules?: DatabaseAccountUpdatePropertiesInputVirtualNetworkRulesList;
+  /** Enables the account to write in multiple locations */
+  enableMultipleWriteLocations?: boolean;
+  /** Enables the cassandra connector on the Cosmos DB C* account */
+  enableCassandraConnector?: boolean;
+  /** The cassandra connector offer type for the Cosmos DB database C* account. */
+  connectorOffer?: ConnectorOffer;
+  /** Disable write operations on metadata resources (databases, containers, throughput) via account keys */
+  disableKeyBasedMetadataWriteAccess?: boolean;
+  /** The URI of the key vault */
+  keyVaultKeyUri?: string;
+  /** The default identity for accessing key vault used in features like customer managed keys. The default identity needs to be explicitly set by the users. It can be "FirstPartyIdentity", "SystemAssignedIdentity" and more. */
+  defaultIdentity?: string;
+  /** Whether requests from Public Network are allowed */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** Flag to indicate whether Free Tier is enabled. */
+  enableFreeTier?: boolean;
+  /** API specific properties. Currently, supported only for MongoDB API. */
+  apiProperties?: ApiProperties;
+  /** Flag to indicate whether to enable storage analytics. */
+  enableAnalyticalStorage?: boolean;
+  /** Analytical storage specific properties. */
+  analyticalStorageConfiguration?: AnalyticalStorageConfiguration;
+  /** The object representing the policy for taking backups on an account. */
+  backupPolicy?: BackupPolicy;
+  /** The CORS policy for the Cosmos DB database account. */
+  cors?: DatabaseAccountUpdatePropertiesInputCorsList;
+  /** Indicates what services are allowed to bypass firewall checks. */
+  networkAclBypass?: NetworkAclBypass;
+  /** An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account. */
+  networkAclBypassResourceIds?: DatabaseAccountUpdatePropertiesInputNetworkAclBypassResourceIdsList;
+  /** Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication. */
+  disableLocalAuth?: boolean;
+  /** The object that represents all properties related to capacity enforcement on an account. */
+  capacity?: Capacity;
+  /** Flag to indicate enabling/disabling of Partition Merge feature on the account */
+  enablePartitionMerge?: boolean;
+  /** Flag to indicate enabling/disabling of Burst Capacity Preview feature on the account */
+  enableBurstCapacity?: boolean;
+  /** Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2. */
+  minimalTlsVersion?: MinimalTlsVersion;
+  /** Indicates the status of the Customer Managed Key feature on the account. In case there are errors, the property provides troubleshooting guidance. */
+  customerManagedKeyStatus?: string;
+  /** Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account */
+  enablePriorityBasedExecution?: boolean;
+  /** Enum to indicate default Priority Level of request for Priority Based Execution. */
+  defaultPriorityLevel?: DefaultPriorityLevel;
+  /** Flag to indicate enabling/disabling of Per-Region Per-partition autoscale Preview feature on the account */
+  enablePerRegionPerPartitionAutoscale?: boolean;
+  /** Flag to indicate enabling/disabling of hierarchical partition key ID last level enforcement on the account. */
+  enforceHierarchicalPartitionKeyIdLastLevel?: boolean;
+}
+export const DatabaseAccountUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      consistencyPolicy: S.optional(ConsistencyPolicy),
+      locations: S.optional(DatabaseAccountUpdatePropertiesInputLocationsList),
+      ipRules: S.optional(DatabaseAccountUpdatePropertiesInputIpRulesList),
+      isVirtualNetworkFilterEnabled: S.optional(S.Boolean),
+      enableAutomaticFailover: S.optional(S.Boolean),
+      capabilities: S.optional(
+        DatabaseAccountUpdatePropertiesInputCapabilitiesList,
+      ),
+      virtualNetworkRules: S.optional(
+        DatabaseAccountUpdatePropertiesInputVirtualNetworkRulesList,
+      ),
+      enableMultipleWriteLocations: S.optional(S.Boolean),
+      enableCassandraConnector: S.optional(S.Boolean),
+      connectorOffer: S.optional(ConnectorOffer),
+      disableKeyBasedMetadataWriteAccess: S.optional(S.Boolean),
+      keyVaultKeyUri: S.optional(S.String),
+      defaultIdentity: S.optional(S.String),
+      publicNetworkAccess: S.optional(PublicNetworkAccess),
+      enableFreeTier: S.optional(S.Boolean),
+      apiProperties: S.optional(ApiProperties),
+      enableAnalyticalStorage: S.optional(S.Boolean),
+      analyticalStorageConfiguration: S.optional(
+        AnalyticalStorageConfiguration,
+      ),
+      backupPolicy: S.optional(BackupPolicy),
+      cors: S.optional(DatabaseAccountUpdatePropertiesInputCorsList),
+      networkAclBypass: S.optional(NetworkAclBypass),
+      networkAclBypassResourceIds: S.optional(
+        DatabaseAccountUpdatePropertiesInputNetworkAclBypassResourceIdsList,
+      ),
+      disableLocalAuth: S.optional(S.Boolean),
+      capacity: S.optional(Capacity),
+      enablePartitionMerge: S.optional(S.Boolean),
+      enableBurstCapacity: S.optional(S.Boolean),
+      minimalTlsVersion: S.optional(MinimalTlsVersion),
+      customerManagedKeyStatus: S.optional(S.String),
+      enablePriorityBasedExecution: S.optional(S.Boolean),
+      defaultPriorityLevel: S.optional(DefaultPriorityLevel),
+      enablePerRegionPerPartitionAutoscale: S.optional(S.Boolean),
+      enforceHierarchicalPartitionKeyIdLastLevel: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "DatabaseAccountUpdatePropertiesInput",
+}) as any as S.Schema<DatabaseAccountUpdatePropertiesInput>;
+
 export interface DatabaseAccountsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5547,14 +6511,24 @@ export interface DatabaseAccountsUpdateRequest {
   resourceGroupName: string;
   /** Cosmos DB database account name. */
   accountName: string;
-  body: unknown;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: DatabaseAccountsUpdateRequestTagsMap;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to update Azure Cosmos DB database accounts. */
+  properties?: DatabaseAccountUpdatePropertiesInput;
 }
 export const DatabaseAccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DatabaseAccountsUpdateRequestTagsMap),
+    location: S.optional(S.String),
+    identity: S.optional(ManagedServiceIdentityInput),
+    properties: S.optional(DatabaseAccountUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5580,8 +6554,7 @@ export const DatabaseAccountsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 export type DatabaseAccountsUpdateResponseKind =
   | "GlobalDocumentDB"
   | "MongoDB"
-  | "Parse"
-  | (string & {});
+  | "Parse";
 export const DatabaseAccountsUpdateResponseKind = /*@__PURE__*/ S.String;
 
 export interface DatabaseAccountsUpdateResponse {
@@ -5711,6 +6684,40 @@ export const DatabaseListUsagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseListUsagesRequest",
 }) as any as S.Schema<DatabaseListUsagesRequest>;
 
+/** Resource tags. */
+export type FleetCreateRequestTagsMap = { [key: string]: string | undefined };
+export const FleetCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FleetCreateRequestTagsMap>;
+
+/** Enum to indicate current buildout status of the region. */
+export type Status =
+  | "Uninitialized"
+  | "Initializing"
+  | "InternallyReady"
+  | "Online"
+  | "Deleting"
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Updating"
+  | "Creating";
+export const Status = /*@__PURE__*/ S.String;
+
+/** Properties to update Azure Cosmos DB fleet resource. */
+export interface FleetResourceProperties {
+  /** A provisioning state of the Fleet. */
+  provisioningState?: Status;
+}
+export const FleetResourceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(Status),
+  }),
+).annotate({
+  identifier: "FleetResourceProperties",
+}) as any as S.Schema<FleetResourceProperties>;
+
 export interface FleetCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5718,14 +6725,21 @@ export interface FleetCreateRequest {
   resourceGroupName: string;
   /** Cosmos DB fleet name. Needs to be unique under a subscription. */
   fleetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: FleetCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties to update Azure Cosmos DB fleet resource. */
+  properties?: FleetResourceProperties;
 }
 export const FleetCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     fleetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(FleetCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(FleetResourceProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5744,34 +6758,6 @@ export const FleetCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<FleetCreateResponseTagsMap>;
-
-/** Enum to indicate current buildout status of the region. */
-export type Status =
-  | "Uninitialized"
-  | "Initializing"
-  | "InternallyReady"
-  | "Online"
-  | "Deleting"
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Updating"
-  | "Creating"
-  | (string & {});
-export const Status = /*@__PURE__*/ S.String;
-
-/** Properties to update Azure Cosmos DB fleet resource. */
-export interface FleetResourceProperties {
-  /** A provisioning state of the Fleet. */
-  provisioningState?: Status;
-}
-export const FleetResourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(Status),
-  }),
-).annotate({
-  identifier: "FleetResourceProperties",
-}) as any as S.Schema<FleetResourceProperties>;
 
 export interface FleetCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5953,7 +6939,7 @@ export const FleetResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FleetResource" }) as any as S.Schema<FleetResource>;
 
 /** The FleetResource items on this page */
-export type FleetListResultValueList = FleetResource[];
+export type FleetListResultValueList = ReadonlyArray<FleetResource>;
 export const FleetListResultValueList = /*@__PURE__*/ S.Array(
   FleetResource,
 ) as any as S.Schema<FleetListResultValueList>;
@@ -5996,39 +6982,6 @@ export const FleetListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FleetListByResourceGroupRequest",
 }) as any as S.Schema<FleetListByResourceGroupRequest>;
 
-export interface FleetspaceAccountCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB fleet name. Needs to be unique under a subscription. */
-  fleetName: string;
-  /** Cosmos DB fleetspace name. Needs to be unique under a fleet. */
-  fleetspaceName: string;
-  /** Cosmos DB fleetspace account name. */
-  fleetspaceAccountName: string;
-  body: unknown;
-}
-export const FleetspaceAccountCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    fleetName: S.String.pipe(T.Label()),
-    fleetspaceName: S.String.pipe(T.Label()),
-    fleetspaceAccountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
-      code: 200,
-      apiVersion: "2026-03-15",
-    }),
-  ),
-).annotate({
-  identifier: "FleetspaceAccountCreateRequest",
-}) as any as S.Schema<FleetspaceAccountCreateRequest>;
-
 /** Configuration for fleetspace Account in the fleetspace. */
 export interface FleetspaceAccountPropertiesGlobalDatabaseAccountProperties {
   /** The resource identifier of global database account in the Fleetspace Account. */
@@ -6063,6 +7016,40 @@ export const FleetspaceAccountProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FleetspaceAccountProperties",
 }) as any as S.Schema<FleetspaceAccountProperties>;
+
+export interface FleetspaceAccountCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB fleet name. Needs to be unique under a subscription. */
+  fleetName: string;
+  /** Cosmos DB fleetspace name. Needs to be unique under a fleet. */
+  fleetspaceName: string;
+  /** Cosmos DB fleetspace account name. */
+  fleetspaceAccountName: string;
+  /** An Azure Cosmos DB Global Database Account which is part of a Fleetspace Account. */
+  properties?: FleetspaceAccountProperties;
+}
+export const FleetspaceAccountCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    fleetName: S.String.pipe(T.Label()),
+    fleetspaceName: S.String.pipe(T.Label()),
+    fleetspaceAccountName: S.String.pipe(T.Label()),
+    properties: S.optional(FleetspaceAccountProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}/fleetspaceAccounts/{fleetspaceAccountName}",
+      code: 200,
+      apiVersion: "2026-03-15",
+    }),
+  ),
+).annotate({
+  identifier: "FleetspaceAccountCreateRequest",
+}) as any as S.Schema<FleetspaceAccountCreateRequest>;
 
 export interface FleetspaceAccountCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6235,7 +7222,8 @@ export const FleetspaceAccountResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetspaceAccountResource>;
 
 /** The FleetspaceAccountResource items on this page */
-export type FleetspaceAccountListResultValueList = FleetspaceAccountResource[];
+export type FleetspaceAccountListResultValueList =
+  ReadonlyArray<FleetspaceAccountResource>;
 export const FleetspaceAccountListResultValueList = /*@__PURE__*/ S.Array(
   FleetspaceAccountResource,
 ) as any as S.Schema<FleetspaceAccountListResultValueList>;
@@ -6256,49 +7244,18 @@ export const FleetspaceAccountListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "FleetspaceAccountListResult",
 }) as any as S.Schema<FleetspaceAccountListResult>;
 
-export interface FleetspaceCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB fleet name. Needs to be unique under a subscription. */
-  fleetName: string;
-  /** Cosmos DB fleetspace name. Needs to be unique under a fleet. */
-  fleetspaceName: string;
-  body: unknown;
-}
-export const FleetspaceCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    fleetName: S.String.pipe(T.Label()),
-    fleetspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
-      code: 200,
-      apiVersion: "2026-03-15",
-    }),
-  ),
-).annotate({
-  identifier: "FleetspaceCreateRequest",
-}) as any as S.Schema<FleetspaceCreateRequest>;
-
 /** The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL' */
-export type FleetspacePropertiesFleetspaceApiKind = "NoSQL" | (string & {});
+export type FleetspacePropertiesFleetspaceApiKind = "NoSQL";
 export const FleetspacePropertiesFleetspaceApiKind = /*@__PURE__*/ S.String;
 
 /** Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region. */
 export type FleetspacePropertiesServiceTier =
   | "GeneralPurpose"
-  | "BusinessCritical"
-  | (string & {});
+  | "BusinessCritical";
 export const FleetspacePropertiesServiceTier = /*@__PURE__*/ S.String;
 
 /** List of data regions assigned to the fleetspace. Eg [westus2] */
-export type FleetspacePropertiesDataRegionsList = string[];
+export type FleetspacePropertiesDataRegionsList = ReadonlyArray<string>;
 export const FleetspacePropertiesDataRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FleetspacePropertiesDataRegionsList>;
@@ -6352,6 +7309,37 @@ export const FleetspaceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FleetspaceProperties",
 }) as any as S.Schema<FleetspaceProperties>;
+
+export interface FleetspaceCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB fleet name. Needs to be unique under a subscription. */
+  fleetName: string;
+  /** Cosmos DB fleetspace name. Needs to be unique under a fleet. */
+  fleetspaceName: string;
+  /** Properties to update Azure Cosmos DB Fleetspace. */
+  properties?: FleetspaceProperties;
+}
+export const FleetspaceCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    fleetName: S.String.pipe(T.Label()),
+    fleetspaceName: S.String.pipe(T.Label()),
+    properties: S.optional(FleetspaceProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/fleets/{fleetName}/fleetspaces/{fleetspaceName}",
+      code: 200,
+      apiVersion: "2026-03-15",
+    }),
+  ),
+).annotate({
+  identifier: "FleetspaceCreateRequest",
+}) as any as S.Schema<FleetspaceCreateRequest>;
 
 export interface FleetspaceCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6515,7 +7503,7 @@ export const FleetspaceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FleetspaceResource>;
 
 /** The FleetspaceResource items on this page */
-export type FleetspaceListResultValueList = FleetspaceResource[];
+export type FleetspaceListResultValueList = ReadonlyArray<FleetspaceResource>;
 export const FleetspaceListResultValueList = /*@__PURE__*/ S.Array(
   FleetspaceResource,
 ) as any as S.Schema<FleetspaceListResultValueList>;
@@ -6545,7 +7533,8 @@ export interface FleetspaceUpdateRequest {
   fleetName: string;
   /** Cosmos DB fleetspace name. Needs to be unique under a fleet. */
   fleetspaceName: string;
-  body?: unknown;
+  /** Properties of the fleetspace. */
+  properties?: FleetspaceProperties;
 }
 export const FleetspaceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6553,7 +7542,7 @@ export const FleetspaceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     fleetName: S.String.pipe(T.Label()),
     fleetspaceName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(FleetspaceProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -6590,6 +7579,13 @@ export const FleetspaceUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FleetspaceUpdateResponse",
 }) as any as S.Schema<FleetspaceUpdateResponse>;
 
+/** Resource tags. */
+export type FleetUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const FleetUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FleetUpdateRequestTagsMap>;
+
 export interface FleetUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6597,14 +7593,18 @@ export interface FleetUpdateRequest {
   resourceGroupName: string;
   /** Cosmos DB fleet name. Needs to be unique under a subscription. */
   fleetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: FleetUpdateRequestTagsMap;
+  /** Properties to update Azure Cosmos DB fleet resource. */
+  properties?: FleetResourceProperties;
 }
 export const FleetUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     fleetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(FleetUpdateRequestTagsMap),
+    properties: S.optional(FleetResourceProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -6654,36 +7654,15 @@ export const FleetUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FleetUpdateResponse",
 }) as any as S.Schema<FleetUpdateResponse>;
 
-export interface GremlinResourcesCreateUpdateGremlinDatabaseRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** Cosmos DB database name. */
-  databaseName: string;
-  body: unknown;
-}
-export const GremlinResourcesCreateUpdateGremlinDatabaseRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      databaseName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "GremlinResourcesCreateUpdateGremlinDatabaseRequest",
-  }) as any as S.Schema<GremlinResourcesCreateUpdateGremlinDatabaseRequest>;
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type GremlinResourcesCreateUpdateGremlinDatabaseRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const GremlinResourcesCreateUpdateGremlinDatabaseRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinDatabaseRequestTagsMap>;
 
 /** Parameters to indicate the information about the restore. */
 export interface RestoreParametersBase {
@@ -6705,10 +7684,92 @@ export const RestoreParametersBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreParametersBase>;
 
 /** Enum to indicate the mode of resource creation. */
+export type GremlinDatabaseResourceCreateMode = "Default" | "Restore";
+export const GremlinDatabaseResourceCreateMode = /*@__PURE__*/ S.String;
+
+/** Cosmos DB Gremlin database resource object */
+export interface GremlinDatabaseResource {
+  /** Name of the Cosmos DB Gremlin database */
+  id: string;
+  /** Parameters to indicate the information about the restore */
+  restoreParameters?: RestoreParametersBase;
+  /** Enum to indicate the mode of resource creation. */
+  createMode?: GremlinDatabaseResourceCreateMode;
+}
+export const GremlinDatabaseResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    restoreParameters: S.optional(RestoreParametersBase),
+    createMode: S.optional(GremlinDatabaseResourceCreateMode),
+  }),
+).annotate({
+  identifier: "GremlinDatabaseResource",
+}) as any as S.Schema<GremlinDatabaseResource>;
+
+/** Properties to create and update Azure Cosmos DB Gremlin database. */
+export interface GremlinDatabaseCreateUpdateProperties {
+  /** The standard JSON format of a Gremlin database */
+  resource: GremlinDatabaseResource;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const GremlinDatabaseCreateUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: GremlinDatabaseResource,
+      options: S.optional(CreateUpdateOptions),
+    }),
+).annotate({
+  identifier: "GremlinDatabaseCreateUpdateProperties",
+}) as any as S.Schema<GremlinDatabaseCreateUpdateProperties>;
+
+export interface GremlinResourcesCreateUpdateGremlinDatabaseRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** Cosmos DB database name. */
+  databaseName: string;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: GremlinResourcesCreateUpdateGremlinDatabaseRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB Gremlin database. */
+  properties: GremlinDatabaseCreateUpdateProperties;
+}
+export const GremlinResourcesCreateUpdateGremlinDatabaseRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      databaseName: S.String.pipe(T.Label()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        GremlinResourcesCreateUpdateGremlinDatabaseRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: GremlinDatabaseCreateUpdateProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "GremlinResourcesCreateUpdateGremlinDatabaseRequest",
+  }) as any as S.Schema<GremlinResourcesCreateUpdateGremlinDatabaseRequest>;
+
+/** Enum to indicate the mode of resource creation. */
 export type GremlinDatabaseGetPropertiesResourceCreateMode =
   | "Default"
-  | "Restore"
-  | (string & {});
+  | "Restore";
 export const GremlinDatabaseGetPropertiesResourceCreateMode =
   /*@__PURE__*/ S.String;
 
@@ -6800,46 +7861,18 @@ export const GremlinResourcesCreateUpdateGremlinDatabaseResponse =
     identifier: "GremlinResourcesCreateUpdateGremlinDatabaseResponse",
   }) as any as S.Schema<GremlinResourcesCreateUpdateGremlinDatabaseResponse>;
 
-export interface GremlinResourcesCreateUpdateGremlinGraphRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** Cosmos DB database name. */
-  databaseName: string;
-  /** Cosmos DB graph name. */
-  graphName: string;
-  body: unknown;
-}
-export const GremlinResourcesCreateUpdateGremlinGraphRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      databaseName: S.String.pipe(T.Label()),
-      graphName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "GremlinResourcesCreateUpdateGremlinGraphRequest",
-  }) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphRequest>;
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type GremlinResourcesCreateUpdateGremlinGraphRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const GremlinResourcesCreateUpdateGremlinGraphRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphRequestTagsMap>;
 
 /** Indicates the indexing mode. */
-export type IndexingPolicyIndexingMode =
-  | "consistent"
-  | "lazy"
-  | "none"
-  | (string & {});
+export type IndexingPolicyIndexingMode = "consistent" | "lazy" | "none";
 export const IndexingPolicyIndexingMode = /*@__PURE__*/ S.String;
 
 /** The datatype for which the indexing behavior is applied to. */
@@ -6849,12 +7882,11 @@ export type IndexesDataType =
   | "Point"
   | "Polygon"
   | "LineString"
-  | "MultiPolygon"
-  | (string & {});
+  | "MultiPolygon";
 export const IndexesDataType = /*@__PURE__*/ S.String;
 
 /** Indicates the type of index. */
-export type IndexesKind = "Hash" | "Range" | "Spatial" | (string & {});
+export type IndexesKind = "Hash" | "Range" | "Spatial";
 export const IndexesKind = /*@__PURE__*/ S.String;
 
 /** The indexes for the path. */
@@ -6875,7 +7907,7 @@ export const Indexes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Indexes" }) as any as S.Schema<Indexes>;
 
 /** List of indexes for this path */
-export type IncludedPathIndexesList = Indexes[];
+export type IncludedPathIndexesList = ReadonlyArray<Indexes>;
 export const IncludedPathIndexesList = /*@__PURE__*/ S.Array(
   Indexes,
 ) as any as S.Schema<IncludedPathIndexesList>;
@@ -6895,7 +7927,7 @@ export const IncludedPath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IncludedPath" }) as any as S.Schema<IncludedPath>;
 
 /** List of paths to include in the indexing */
-export type IndexingPolicyIncludedPathsList = IncludedPath[];
+export type IndexingPolicyIncludedPathsList = ReadonlyArray<IncludedPath>;
 export const IndexingPolicyIncludedPathsList = /*@__PURE__*/ S.Array(
   IncludedPath,
 ) as any as S.Schema<IndexingPolicyIncludedPathsList>;
@@ -6911,13 +7943,13 @@ export const ExcludedPath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExcludedPath" }) as any as S.Schema<ExcludedPath>;
 
 /** List of paths to exclude from indexing */
-export type IndexingPolicyExcludedPathsList = ExcludedPath[];
+export type IndexingPolicyExcludedPathsList = ReadonlyArray<ExcludedPath>;
 export const IndexingPolicyExcludedPathsList = /*@__PURE__*/ S.Array(
   ExcludedPath,
 ) as any as S.Schema<IndexingPolicyExcludedPathsList>;
 
 /** Sort order for composite paths. */
-export type CompositePathSortOrder = "ascending" | "descending" | (string & {});
+export type CompositePathSortOrder = "ascending" | "descending";
 export const CompositePathSortOrder = /*@__PURE__*/ S.String;
 
 export interface CompositePath {
@@ -6933,29 +7965,25 @@ export const CompositePath = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CompositePath" }) as any as S.Schema<CompositePath>;
 
-export type IndexingPolicyCompositeIndexesItemList = CompositePath[];
+export type IndexingPolicyCompositeIndexesItemList =
+  ReadonlyArray<CompositePath>;
 export const IndexingPolicyCompositeIndexesItemList = /*@__PURE__*/ S.Array(
   CompositePath,
 ) as any as S.Schema<IndexingPolicyCompositeIndexesItemList>;
 
 /** List of composite path list */
 export type IndexingPolicyCompositeIndexesList =
-  IndexingPolicyCompositeIndexesItemList[];
+  ReadonlyArray<IndexingPolicyCompositeIndexesItemList>;
 export const IndexingPolicyCompositeIndexesList = /*@__PURE__*/ S.Array(
   IndexingPolicyCompositeIndexesItemList,
 ) as any as S.Schema<IndexingPolicyCompositeIndexesList>;
 
 /** Indicates the spatial type of index. */
-export type SpatialType =
-  | "Point"
-  | "LineString"
-  | "Polygon"
-  | "MultiPolygon"
-  | (string & {});
+export type SpatialType = "Point" | "LineString" | "Polygon" | "MultiPolygon";
 export const SpatialType = /*@__PURE__*/ S.String;
 
 /** List of path's spatial type */
-export type SpatialSpecTypesList = SpatialType[];
+export type SpatialSpecTypesList = ReadonlyArray<SpatialType>;
 export const SpatialSpecTypesList = /*@__PURE__*/ S.Array(
   SpatialType,
 ) as any as S.Schema<SpatialSpecTypesList>;
@@ -6974,21 +8002,17 @@ export const SpatialSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpatialSpec" }) as any as S.Schema<SpatialSpec>;
 
 /** List of spatial specifics */
-export type IndexingPolicySpatialIndexesList = SpatialSpec[];
+export type IndexingPolicySpatialIndexesList = ReadonlyArray<SpatialSpec>;
 export const IndexingPolicySpatialIndexesList = /*@__PURE__*/ S.Array(
   SpatialSpec,
 ) as any as S.Schema<IndexingPolicySpatialIndexesList>;
 
 /** The index type of the vector. Currently, flat, diskANN, and quantizedFlat are supported. */
-export type VectorIndexType =
-  | "flat"
-  | "diskANN"
-  | "quantizedFlat"
-  | (string & {});
+export type VectorIndexType = "flat" | "diskANN" | "quantizedFlat";
 export const VectorIndexType = /*@__PURE__*/ S.String;
 
 /** Array of shard keys for the vector index. This is only applicable for the quantizedFlat and diskANN vector index types. */
-export type VectorIndexVectorIndexShardKeyList = string[];
+export type VectorIndexVectorIndexShardKeyList = ReadonlyArray<string>;
 export const VectorIndexVectorIndexShardKeyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VectorIndexVectorIndexShardKeyList>;
@@ -7016,7 +8040,7 @@ export const VectorIndex = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VectorIndex" }) as any as S.Schema<VectorIndex>;
 
 /** List of paths to include in the vector indexing */
-export type IndexingPolicyVectorIndexesList = VectorIndex[];
+export type IndexingPolicyVectorIndexesList = ReadonlyArray<VectorIndex>;
 export const IndexingPolicyVectorIndexesList = /*@__PURE__*/ S.Array(
   VectorIndex,
 ) as any as S.Schema<IndexingPolicyVectorIndexesList>;
@@ -7035,7 +8059,8 @@ export const FullTextIndexPath = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FullTextIndexPath>;
 
 /** List of paths to include in the full text indexing */
-export type IndexingPolicyFullTextIndexesList = FullTextIndexPath[];
+export type IndexingPolicyFullTextIndexesList =
+  ReadonlyArray<FullTextIndexPath>;
 export const IndexingPolicyFullTextIndexesList = /*@__PURE__*/ S.Array(
   FullTextIndexPath,
 ) as any as S.Schema<IndexingPolicyFullTextIndexesList>;
@@ -7073,17 +8098,203 @@ export const IndexingPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexingPolicy" }) as any as S.Schema<IndexingPolicy>;
 
 /** List of paths using which data within the container can be partitioned */
-export type ContainerPartitionKeyPathsList = string[];
+export type ContainerPartitionKeyInputPathsList = ReadonlyArray<string>;
+export const ContainerPartitionKeyInputPathsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ContainerPartitionKeyInputPathsList>;
+
+/** Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create */
+export type ContainerPartitionKeyInputKind = "Hash" | "Range" | "MultiHash";
+export const ContainerPartitionKeyInputKind = /*@__PURE__*/ S.String;
+
+/** The configuration of the partition key to be used for partitioning data into multiple partitions */
+export interface ContainerPartitionKeyInput {
+  /** List of paths using which data within the container can be partitioned */
+  paths?: ContainerPartitionKeyInputPathsList;
+  /** Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create */
+  kind?: ContainerPartitionKeyInputKind;
+  /** Indicates the version of the partition key definition */
+  version?: number;
+}
+export const ContainerPartitionKeyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paths: S.optional(ContainerPartitionKeyInputPathsList),
+    kind: S.optional(ContainerPartitionKeyInputKind),
+    version: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ContainerPartitionKeyInput",
+}) as any as S.Schema<ContainerPartitionKeyInput>;
+
+/** List of paths must be unique for each document in the Azure Cosmos DB service */
+export type UniqueKeyPathsList = ReadonlyArray<string>;
+export const UniqueKeyPathsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UniqueKeyPathsList>;
+
+/** The unique key on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service. */
+export interface UniqueKey {
+  /** List of paths must be unique for each document in the Azure Cosmos DB service */
+  paths?: UniqueKeyPathsList;
+}
+export const UniqueKey = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paths: S.optional(UniqueKeyPathsList),
+  }),
+).annotate({ identifier: "UniqueKey" }) as any as S.Schema<UniqueKey>;
+
+/** List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service. */
+export type UniqueKeyPolicyUniqueKeysList = ReadonlyArray<UniqueKey>;
+export const UniqueKeyPolicyUniqueKeysList = /*@__PURE__*/ S.Array(
+  UniqueKey,
+) as any as S.Schema<UniqueKeyPolicyUniqueKeysList>;
+
+/** The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service. */
+export interface UniqueKeyPolicy {
+  /** List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service. */
+  uniqueKeys?: UniqueKeyPolicyUniqueKeysList;
+}
+export const UniqueKeyPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uniqueKeys: S.optional(UniqueKeyPolicyUniqueKeysList),
+  }),
+).annotate({
+  identifier: "UniqueKeyPolicy",
+}) as any as S.Schema<UniqueKeyPolicy>;
+
+/** Indicates the conflict resolution mode. */
+export type ConflictResolutionPolicyMode = "LastWriterWins" | "Custom";
+export const ConflictResolutionPolicyMode = /*@__PURE__*/ S.String;
+
+/** The conflict resolution policy for the container. */
+export interface ConflictResolutionPolicy {
+  /** Indicates the conflict resolution mode. */
+  mode?: ConflictResolutionPolicyMode;
+  /** The conflict resolution path in the case of LastWriterWins mode. */
+  conflictResolutionPath?: string;
+  /** The procedure to resolve conflicts in the case of custom mode. */
+  conflictResolutionProcedure?: string;
+}
+export const ConflictResolutionPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.optional(ConflictResolutionPolicyMode),
+    conflictResolutionPath: S.optional(S.String),
+    conflictResolutionProcedure: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConflictResolutionPolicy",
+}) as any as S.Schema<ConflictResolutionPolicy>;
+
+/** Enum to indicate the mode of resource creation. */
+export type GremlinGraphResourceInputCreateMode = "Default" | "Restore";
+export const GremlinGraphResourceInputCreateMode = /*@__PURE__*/ S.String;
+
+/** Cosmos DB Gremlin graph resource object */
+export interface GremlinGraphResourceInput {
+  /** Name of the Cosmos DB Gremlin graph */
+  id: string;
+  /** The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph */
+  indexingPolicy?: IndexingPolicy;
+  /** The configuration of the partition key to be used for partitioning data into multiple partitions */
+  partitionKey?: ContainerPartitionKeyInput;
+  /** Default time to live */
+  defaultTtl?: number;
+  /** The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service. */
+  uniqueKeyPolicy?: UniqueKeyPolicy;
+  /** The conflict resolution policy for the graph. */
+  conflictResolutionPolicy?: ConflictResolutionPolicy;
+  /** Analytical TTL. */
+  analyticalStorageTtl?: number;
+  /** Parameters to indicate the information about the restore */
+  restoreParameters?: RestoreParametersBase;
+  /** Enum to indicate the mode of resource creation. */
+  createMode?: GremlinGraphResourceInputCreateMode;
+}
+export const GremlinGraphResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    indexingPolicy: S.optional(IndexingPolicy),
+    partitionKey: S.optional(ContainerPartitionKeyInput),
+    defaultTtl: S.optional(S.Number),
+    uniqueKeyPolicy: S.optional(UniqueKeyPolicy),
+    conflictResolutionPolicy: S.optional(ConflictResolutionPolicy),
+    analyticalStorageTtl: S.optional(S.Number),
+    restoreParameters: S.optional(RestoreParametersBase),
+    createMode: S.optional(GremlinGraphResourceInputCreateMode),
+  }),
+).annotate({
+  identifier: "GremlinGraphResourceInput",
+}) as any as S.Schema<GremlinGraphResourceInput>;
+
+/** Properties to create and update Azure Cosmos DB Gremlin graph. */
+export interface GremlinGraphCreateUpdatePropertiesInput {
+  /** The standard JSON format of a Gremlin graph */
+  resource: GremlinGraphResourceInput;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const GremlinGraphCreateUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: GremlinGraphResourceInput,
+      options: S.optional(CreateUpdateOptions),
+    }),
+).annotate({
+  identifier: "GremlinGraphCreateUpdatePropertiesInput",
+}) as any as S.Schema<GremlinGraphCreateUpdatePropertiesInput>;
+
+export interface GremlinResourcesCreateUpdateGremlinGraphRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** Cosmos DB database name. */
+  databaseName: string;
+  /** Cosmos DB graph name. */
+  graphName: string;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: GremlinResourcesCreateUpdateGremlinGraphRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB Gremlin graph. */
+  properties: GremlinGraphCreateUpdatePropertiesInput;
+}
+export const GremlinResourcesCreateUpdateGremlinGraphRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      databaseName: S.String.pipe(T.Label()),
+      graphName: S.String.pipe(T.Label()),
+      location: S.optional(S.String),
+      tags: S.optional(GremlinResourcesCreateUpdateGremlinGraphRequestTagsMap),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: GremlinGraphCreateUpdatePropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinDatabases/{databaseName}/graphs/{graphName}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "GremlinResourcesCreateUpdateGremlinGraphRequest",
+  }) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphRequest>;
+
+/** List of paths using which data within the container can be partitioned */
+export type ContainerPartitionKeyPathsList = ReadonlyArray<string>;
 export const ContainerPartitionKeyPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContainerPartitionKeyPathsList>;
 
 /** Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create */
-export type ContainerPartitionKeyKind =
-  | "Hash"
-  | "Range"
-  | "MultiHash"
-  | (string & {});
+export type ContainerPartitionKeyKind = "Hash" | "Range" | "MultiHash";
 export const ContainerPartitionKeyKind = /*@__PURE__*/ S.String;
 
 /** The configuration of the partition key to be used for partitioning data into multiple partitions */
@@ -7108,73 +8319,8 @@ export const ContainerPartitionKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContainerPartitionKey",
 }) as any as S.Schema<ContainerPartitionKey>;
 
-/** List of paths must be unique for each document in the Azure Cosmos DB service */
-export type UniqueKeyPathsList = string[];
-export const UniqueKeyPathsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UniqueKeyPathsList>;
-
-/** The unique key on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service. */
-export interface UniqueKey {
-  /** List of paths must be unique for each document in the Azure Cosmos DB service */
-  paths?: UniqueKeyPathsList;
-}
-export const UniqueKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paths: S.optional(UniqueKeyPathsList),
-  }),
-).annotate({ identifier: "UniqueKey" }) as any as S.Schema<UniqueKey>;
-
-/** List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service. */
-export type UniqueKeyPolicyUniqueKeysList = UniqueKey[];
-export const UniqueKeyPolicyUniqueKeysList = /*@__PURE__*/ S.Array(
-  UniqueKey,
-) as any as S.Schema<UniqueKeyPolicyUniqueKeysList>;
-
-/** The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service. */
-export interface UniqueKeyPolicy {
-  /** List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service. */
-  uniqueKeys?: UniqueKeyPolicyUniqueKeysList;
-}
-export const UniqueKeyPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uniqueKeys: S.optional(UniqueKeyPolicyUniqueKeysList),
-  }),
-).annotate({
-  identifier: "UniqueKeyPolicy",
-}) as any as S.Schema<UniqueKeyPolicy>;
-
-/** Indicates the conflict resolution mode. */
-export type ConflictResolutionPolicyMode =
-  | "LastWriterWins"
-  | "Custom"
-  | (string & {});
-export const ConflictResolutionPolicyMode = /*@__PURE__*/ S.String;
-
-/** The conflict resolution policy for the container. */
-export interface ConflictResolutionPolicy {
-  /** Indicates the conflict resolution mode. */
-  mode?: ConflictResolutionPolicyMode;
-  /** The conflict resolution path in the case of LastWriterWins mode. */
-  conflictResolutionPath?: string;
-  /** The procedure to resolve conflicts in the case of custom mode. */
-  conflictResolutionProcedure?: string;
-}
-export const ConflictResolutionPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(ConflictResolutionPolicyMode),
-    conflictResolutionPath: S.optional(S.String),
-    conflictResolutionProcedure: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConflictResolutionPolicy",
-}) as any as S.Schema<ConflictResolutionPolicy>;
-
 /** Enum to indicate the mode of resource creation. */
-export type GremlinGraphGetPropertiesResourceCreateMode =
-  | "Default"
-  | "Restore"
-  | (string & {});
+export type GremlinGraphGetPropertiesResourceCreateMode = "Default" | "Restore";
 export const GremlinGraphGetPropertiesResourceCreateMode =
   /*@__PURE__*/ S.String;
 
@@ -7281,6 +8427,26 @@ export const GremlinResourcesCreateUpdateGremlinGraphResponse =
     identifier: "GremlinResourcesCreateUpdateGremlinGraphResponse",
   }) as any as S.Schema<GremlinResourcesCreateUpdateGremlinGraphResponse>;
 
+/** Azure Cosmos DB Gremlin Role Assignment resource object. */
+export interface GremlinRoleAssignmentResourcePropertiesInput {
+  /** The unique identifier for the associated Role Definition. */
+  roleDefinitionId?: string;
+  /** The data plane resource path for which access is being granted through this Gremlin Role Assignment. */
+  scope?: string;
+  /** The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this Gremlin Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription. */
+  principalId?: string;
+}
+export const GremlinRoleAssignmentResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      roleDefinitionId: S.optional(S.String),
+      scope: S.optional(S.String),
+      principalId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GremlinRoleAssignmentResourcePropertiesInput",
+  }) as any as S.Schema<GremlinRoleAssignmentResourcePropertiesInput>;
+
 export interface GremlinResourcesCreateUpdateGremlinRoleAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7290,7 +8456,8 @@ export interface GremlinResourcesCreateUpdateGremlinRoleAssignmentRequest {
   accountName: string;
   /** The GUID for the Role Assignment. */
   roleAssignmentId: string;
-  body: unknown;
+  /** Properties to create and update an Azure Cosmos DB Gremlin Role Assignment. */
+  properties?: GremlinRoleAssignmentResourcePropertiesInput;
 }
 export const GremlinResourcesCreateUpdateGremlinRoleAssignmentRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7299,7 +8466,7 @@ export const GremlinResourcesCreateUpdateGremlinRoleAssignmentRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       roleAssignmentId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(GremlinRoleAssignmentResourcePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -7360,40 +8527,9 @@ export const GremlinResourcesCreateUpdateGremlinRoleAssignmentResponse =
     identifier: "GremlinResourcesCreateUpdateGremlinRoleAssignmentResponse",
   }) as any as S.Schema<GremlinResourcesCreateUpdateGremlinRoleAssignmentResponse>;
 
-export interface GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** The GUID for the Role Definition. */
-  roleDefinitionId: string;
-  body: unknown;
-}
-export const GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      roleDefinitionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest",
-  }) as any as S.Schema<GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest>;
-
 /** A set of fully qualified Scopes at or below which Gremlin Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
 export type GremlinRoleDefinitionResourcePropertiesAssignableScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const GremlinRoleDefinitionResourcePropertiesAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7401,7 +8537,7 @@ export const GremlinRoleDefinitionResourcePropertiesAssignableScopesList =
 
 /** The set of operations allowed through this Role Definition. */
 export type GremlinRoleDefinitionResourcePropertiesPermissionsList =
-  Permission[];
+  ReadonlyArray<Permission>;
 export const GremlinRoleDefinitionResourcePropertiesPermissionsList =
   /*@__PURE__*/ S.Array(
     Permission,
@@ -7436,6 +8572,38 @@ export const GremlinRoleDefinitionResourceProperties = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GremlinRoleDefinitionResourceProperties",
 }) as any as S.Schema<GremlinRoleDefinitionResourceProperties>;
+
+export interface GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** The GUID for the Role Definition. */
+  roleDefinitionId: string;
+  /** Properties to create and update an Azure Cosmos DB Gremlin Role Definition. */
+  properties?: GremlinRoleDefinitionResourceProperties;
+}
+export const GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      roleDefinitionId: S.String.pipe(T.Label()),
+      properties: S.optional(GremlinRoleDefinitionResourceProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/gremlinRoleDefinitions/{roleDefinitionId}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest",
+  }) as any as S.Schema<GremlinResourcesCreateUpdateGremlinRoleDefinitionRequest>;
 
 export interface GremlinResourcesCreateUpdateGremlinRoleDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8085,7 +9253,8 @@ export const GremlinDatabaseGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GremlinDatabaseGetResults>;
 
 /** List of Gremlin databases and their properties. */
-export type GremlinDatabaseListResultValueList = GremlinDatabaseGetResults[];
+export type GremlinDatabaseListResultValueList =
+  ReadonlyArray<GremlinDatabaseGetResults>;
 export const GremlinDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   GremlinDatabaseGetResults,
 ) as any as S.Schema<GremlinDatabaseListResultValueList>;
@@ -8178,7 +9347,8 @@ export const GremlinGraphGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GremlinGraphGetResults>;
 
 /** List of graphs and their properties. */
-export type GremlinGraphListResultValueList = GremlinGraphGetResults[];
+export type GremlinGraphListResultValueList =
+  ReadonlyArray<GremlinGraphGetResults>;
 export const GremlinGraphListResultValueList = /*@__PURE__*/ S.Array(
   GremlinGraphGetResults,
 ) as any as S.Schema<GremlinGraphListResultValueList>;
@@ -8251,7 +9421,7 @@ export const GremlinRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The GremlinRoleAssignmentResource items on this page */
 export type GremlinRoleAssignmentListResultValueList =
-  GremlinRoleAssignmentResource[];
+  ReadonlyArray<GremlinRoleAssignmentResource>;
 export const GremlinRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   GremlinRoleAssignmentResource,
 ) as any as S.Schema<GremlinRoleAssignmentListResultValueList>;
@@ -8325,7 +9495,7 @@ export const GremlinRoleDefinitionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The GremlinRoleDefinitionResource items on this page */
 export type GremlinRoleDefinitionListResultValueList =
-  GremlinRoleDefinitionResource[];
+  ReadonlyArray<GremlinRoleDefinitionResource>;
 export const GremlinRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   GremlinRoleDefinitionResource,
 ) as any as S.Schema<GremlinRoleDefinitionListResultValueList>;
@@ -8663,7 +9833,8 @@ export interface GremlinResourcesRetrieveContinuousBackupInformationRequest {
   databaseName: string;
   /** Cosmos DB graph name. */
   graphName: string;
-  body: unknown;
+  /** The name of the continuous backup restore location. */
+  location?: string;
 }
 export const GremlinResourcesRetrieveContinuousBackupInformationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8673,7 +9844,7 @@ export const GremlinResourcesRetrieveContinuousBackupInformationRequest =
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
       graphName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -8712,6 +9883,16 @@ export const BackupInformation = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupInformation",
 }) as any as S.Schema<BackupInformation>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type GremlinResourcesUpdateGremlinDatabaseThroughputRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const GremlinResourcesUpdateGremlinDatabaseThroughputRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<GremlinResourcesUpdateGremlinDatabaseThroughputRequestTagsMap>;
+
 export interface GremlinResourcesUpdateGremlinDatabaseThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8721,7 +9902,14 @@ export interface GremlinResourcesUpdateGremlinDatabaseThroughputRequest {
   accountName: string;
   /** Cosmos DB database name. */
   databaseName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: GremlinResourcesUpdateGremlinDatabaseThroughputRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to update Azure Cosmos DB resource throughput. */
+  properties: ThroughputSettingsUpdatePropertiesInput;
 }
 export const GremlinResourcesUpdateGremlinDatabaseThroughputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8730,7 +9918,12 @@ export const GremlinResourcesUpdateGremlinDatabaseThroughputRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        GremlinResourcesUpdateGremlinDatabaseThroughputRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: ThroughputSettingsUpdatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -8789,6 +9982,16 @@ export const GremlinResourcesUpdateGremlinDatabaseThroughputResponse =
     identifier: "GremlinResourcesUpdateGremlinDatabaseThroughputResponse",
   }) as any as S.Schema<GremlinResourcesUpdateGremlinDatabaseThroughputResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type GremlinResourcesUpdateGremlinGraphThroughputRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const GremlinResourcesUpdateGremlinGraphThroughputRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<GremlinResourcesUpdateGremlinGraphThroughputRequestTagsMap>;
+
 export interface GremlinResourcesUpdateGremlinGraphThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8800,7 +10003,14 @@ export interface GremlinResourcesUpdateGremlinGraphThroughputRequest {
   databaseName: string;
   /** Cosmos DB graph name. */
   graphName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: GremlinResourcesUpdateGremlinGraphThroughputRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to update Azure Cosmos DB resource throughput. */
+  properties: ThroughputSettingsUpdatePropertiesInput;
 }
 export const GremlinResourcesUpdateGremlinGraphThroughputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8810,7 +10020,12 @@ export const GremlinResourcesUpdateGremlinGraphThroughputRequest =
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
       graphName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        GremlinResourcesUpdateGremlinGraphThroughputRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: ThroughputSettingsUpdatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -8892,12 +10107,12 @@ export const LocationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationsGetRequest>;
 
 /** Enum to indicate type of backup storage redundancy. */
-export type BackupStorageRedundancy = "Geo" | "Local" | "Zone" | (string & {});
+export type BackupStorageRedundancy = "Geo" | "Local" | "Zone";
 export const BackupStorageRedundancy = /*@__PURE__*/ S.String;
 
 /** The properties of available backup storage redundancies. */
 export type LocationPropertiesBackupStorageRedundanciesList =
-  BackupStorageRedundancy[];
+  ReadonlyArray<BackupStorageRedundancy>;
 export const LocationPropertiesBackupStorageRedundanciesList =
   /*@__PURE__*/ S.Array(
     BackupStorageRedundancy,
@@ -9002,7 +10217,7 @@ export const LocationGetResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LocationGetResult>;
 
 /** List of Cosmos DB locations and their properties. */
-export type LocationListResultValueList = LocationGetResult[];
+export type LocationListResultValueList = ReadonlyArray<LocationGetResult>;
 export const LocationListResultValueList = /*@__PURE__*/ S.Array(
   LocationGetResult,
 ) as any as S.Schema<LocationListResultValueList>;
@@ -9022,52 +10237,27 @@ export const LocationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocationListResult",
 }) as any as S.Schema<LocationListResult>;
 
-export interface MongoDBResourcesCreateUpdateMongoDBCollectionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** Cosmos DB database name. */
-  databaseName: string;
-  /** Cosmos DB collection name. */
-  collectionName: string;
-  body: unknown;
-}
-export const MongoDBResourcesCreateUpdateMongoDBCollectionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      databaseName: S.String.pipe(T.Label()),
-      collectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "MongoDBResourcesCreateUpdateMongoDBCollectionRequest",
-  }) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBCollectionRequest>;
-
-/** A key-value pair of shard keys to be applied for the request. */
-export type MongoDBCollectionGetPropertiesResourceShardKeyMap = {
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type MongoDBResourcesCreateUpdateMongoDBCollectionRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const MongoDBCollectionGetPropertiesResourceShardKeyMap =
+export const MongoDBResourcesCreateUpdateMongoDBCollectionRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<MongoDBCollectionGetPropertiesResourceShardKeyMap>;
+  ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBCollectionRequestTagsMap>;
+
+/** A key-value pair of shard keys to be applied for the request. */
+export type MongoDBCollectionResourceShardKeyMap = {
+  [key: string]: string | undefined;
+};
+export const MongoDBCollectionResourceShardKeyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MongoDBCollectionResourceShardKeyMap>;
 
 /** List of keys for each MongoDB collection in the Azure Cosmos DB service */
-export type MongoIndexKeysKeysList = string[];
+export type MongoIndexKeysKeysList = ReadonlyArray<string>;
 export const MongoIndexKeysKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MongoIndexKeysKeysList>;
@@ -9114,7 +10304,119 @@ export const MongoIndex = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MongoIndex" }) as any as S.Schema<MongoIndex>;
 
 /** List of index keys */
-export type MongoDBCollectionGetPropertiesResourceIndexesList = MongoIndex[];
+export type MongoDBCollectionResourceIndexesList = ReadonlyArray<MongoIndex>;
+export const MongoDBCollectionResourceIndexesList = /*@__PURE__*/ S.Array(
+  MongoIndex,
+) as any as S.Schema<MongoDBCollectionResourceIndexesList>;
+
+/** Enum to indicate the mode of resource creation. */
+export type MongoDBCollectionResourceCreateMode = "Default" | "Restore";
+export const MongoDBCollectionResourceCreateMode = /*@__PURE__*/ S.String;
+
+/** Cosmos DB MongoDB collection resource object */
+export interface MongoDBCollectionResource {
+  /** Name of the Cosmos DB MongoDB collection */
+  id: string;
+  /** A key-value pair of shard keys to be applied for the request. */
+  shardKey?: MongoDBCollectionResourceShardKeyMap;
+  /** List of index keys */
+  indexes?: MongoDBCollectionResourceIndexesList;
+  /** Analytical TTL. */
+  analyticalStorageTtl?: number;
+  /** Parameters to indicate the information about the restore */
+  restoreParameters?: RestoreParametersBase;
+  /** Enum to indicate the mode of resource creation. */
+  createMode?: MongoDBCollectionResourceCreateMode;
+}
+export const MongoDBCollectionResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    shardKey: S.optional(MongoDBCollectionResourceShardKeyMap),
+    indexes: S.optional(MongoDBCollectionResourceIndexesList),
+    analyticalStorageTtl: S.optional(S.Number),
+    restoreParameters: S.optional(RestoreParametersBase),
+    createMode: S.optional(MongoDBCollectionResourceCreateMode),
+  }),
+).annotate({
+  identifier: "MongoDBCollectionResource",
+}) as any as S.Schema<MongoDBCollectionResource>;
+
+/** Properties to create and update Azure Cosmos DB MongoDB collection. */
+export interface MongoDBCollectionCreateUpdateProperties {
+  /** The standard JSON format of a MongoDB collection */
+  resource: MongoDBCollectionResource;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const MongoDBCollectionCreateUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: MongoDBCollectionResource,
+      options: S.optional(CreateUpdateOptions),
+    }),
+).annotate({
+  identifier: "MongoDBCollectionCreateUpdateProperties",
+}) as any as S.Schema<MongoDBCollectionCreateUpdateProperties>;
+
+export interface MongoDBResourcesCreateUpdateMongoDBCollectionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** Cosmos DB database name. */
+  databaseName: string;
+  /** Cosmos DB collection name. */
+  collectionName: string;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: MongoDBResourcesCreateUpdateMongoDBCollectionRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB MongoDB collection. */
+  properties: MongoDBCollectionCreateUpdateProperties;
+}
+export const MongoDBResourcesCreateUpdateMongoDBCollectionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      databaseName: S.String.pipe(T.Label()),
+      collectionName: S.String.pipe(T.Label()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        MongoDBResourcesCreateUpdateMongoDBCollectionRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: MongoDBCollectionCreateUpdateProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbDatabases/{databaseName}/collections/{collectionName}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "MongoDBResourcesCreateUpdateMongoDBCollectionRequest",
+  }) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBCollectionRequest>;
+
+/** A key-value pair of shard keys to be applied for the request. */
+export type MongoDBCollectionGetPropertiesResourceShardKeyMap = {
+  [key: string]: string | undefined;
+};
+export const MongoDBCollectionGetPropertiesResourceShardKeyMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<MongoDBCollectionGetPropertiesResourceShardKeyMap>;
+
+/** List of index keys */
+export type MongoDBCollectionGetPropertiesResourceIndexesList =
+  ReadonlyArray<MongoIndex>;
 export const MongoDBCollectionGetPropertiesResourceIndexesList =
   /*@__PURE__*/ S.Array(
     MongoIndex,
@@ -9123,8 +10425,7 @@ export const MongoDBCollectionGetPropertiesResourceIndexesList =
 /** Enum to indicate the mode of resource creation. */
 export type MongoDBCollectionGetPropertiesResourceCreateMode =
   | "Default"
-  | "Restore"
-  | (string & {});
+  | "Restore";
 export const MongoDBCollectionGetPropertiesResourceCreateMode =
   /*@__PURE__*/ S.String;
 
@@ -9225,6 +10526,56 @@ export const MongoDBResourcesCreateUpdateMongoDBCollectionResponse =
     identifier: "MongoDBResourcesCreateUpdateMongoDBCollectionResponse",
   }) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBCollectionResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type MongoDBResourcesCreateUpdateMongoDBDatabaseRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MongoDBResourcesCreateUpdateMongoDBDatabaseRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBDatabaseRequestTagsMap>;
+
+/** Enum to indicate the mode of account creation. */
+export type MongoDBDatabaseResourceCreateMode = "Default" | "Restore";
+export const MongoDBDatabaseResourceCreateMode = /*@__PURE__*/ S.String;
+
+/** Cosmos DB MongoDB database resource object */
+export interface MongoDBDatabaseResource {
+  /** Name of the Cosmos DB MongoDB database */
+  id: string;
+  /** Parameters to indicate the information about the restore */
+  restoreParameters?: RestoreParametersBase;
+  /** Enum to indicate the mode of account creation. */
+  createMode?: MongoDBDatabaseResourceCreateMode;
+}
+export const MongoDBDatabaseResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    restoreParameters: S.optional(RestoreParametersBase),
+    createMode: S.optional(MongoDBDatabaseResourceCreateMode),
+  }),
+).annotate({
+  identifier: "MongoDBDatabaseResource",
+}) as any as S.Schema<MongoDBDatabaseResource>;
+
+/** Properties to create and update Azure Cosmos DB MongoDB database. */
+export interface MongoDBDatabaseCreateUpdateProperties {
+  /** The standard JSON format of a MongoDB database */
+  resource: MongoDBDatabaseResource;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const MongoDBDatabaseCreateUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: MongoDBDatabaseResource,
+      options: S.optional(CreateUpdateOptions),
+    }),
+).annotate({
+  identifier: "MongoDBDatabaseCreateUpdateProperties",
+}) as any as S.Schema<MongoDBDatabaseCreateUpdateProperties>;
+
 export interface MongoDBResourcesCreateUpdateMongoDBDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9234,7 +10585,14 @@ export interface MongoDBResourcesCreateUpdateMongoDBDatabaseRequest {
   accountName: string;
   /** Cosmos DB database name. */
   databaseName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: MongoDBResourcesCreateUpdateMongoDBDatabaseRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB MongoDB database. */
+  properties: MongoDBDatabaseCreateUpdateProperties;
 }
 export const MongoDBResourcesCreateUpdateMongoDBDatabaseRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9243,7 +10601,12 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabaseRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        MongoDBResourcesCreateUpdateMongoDBDatabaseRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: MongoDBDatabaseCreateUpdateProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -9259,8 +10622,7 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabaseRequest =
 /** Enum to indicate the mode of account creation. */
 export type MongoDBDatabaseGetPropertiesResourceCreateMode =
   | "Default"
-  | "Restore"
-  | (string & {});
+  | "Restore";
 export const MongoDBDatabaseGetPropertiesResourceCreateMode =
   /*@__PURE__*/ S.String;
 
@@ -9352,42 +10714,8 @@ export const MongoDBResourcesCreateUpdateMongoDBDatabaseResponse =
     identifier: "MongoDBResourcesCreateUpdateMongoDBDatabaseResponse",
   }) as any as S.Schema<MongoDBResourcesCreateUpdateMongoDBDatabaseResponse>;
 
-export interface MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** The ID for the Role Definition {dbName.roleName}. */
-  mongoRoleDefinitionId: string;
-  body: unknown;
-}
-export const MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      mongoRoleDefinitionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest",
-  }) as any as S.Schema<MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest>;
-
 /** Indicates whether the Role Definition was built-in or user created. */
-export type MongoRoleDefinitionType =
-  | "BuiltInRole"
-  | "CustomRole"
-  | (string & {});
+export type MongoRoleDefinitionType = "BuiltInRole" | "CustomRole";
 export const MongoRoleDefinitionType = /*@__PURE__*/ S.String;
 
 /** An Azure Cosmos DB Mongo DB Resource. */
@@ -9407,7 +10735,7 @@ export const PrivilegeResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivilegeResource>;
 
 /** An array of actions that are allowed. */
-export type PrivilegeActionsList = string[];
+export type PrivilegeActionsList = ReadonlyArray<string>;
 export const PrivilegeActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivilegeActionsList>;
@@ -9427,7 +10755,8 @@ export const Privilege = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Privilege" }) as any as S.Schema<Privilege>;
 
 /** A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege. */
-export type MongoRoleDefinitionResourcePrivilegesList = Privilege[];
+export type MongoRoleDefinitionResourcePrivilegesList =
+  ReadonlyArray<Privilege>;
 export const MongoRoleDefinitionResourcePrivilegesList = /*@__PURE__*/ S.Array(
   Privilege,
 ) as any as S.Schema<MongoRoleDefinitionResourcePrivilegesList>;
@@ -9447,7 +10776,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
 /** The set of roles inherited by this Role Definition. */
-export type MongoRoleDefinitionResourceRolesList = Role[];
+export type MongoRoleDefinitionResourceRolesList = ReadonlyArray<Role>;
 export const MongoRoleDefinitionResourceRolesList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<MongoRoleDefinitionResourceRolesList>;
@@ -9477,6 +10806,38 @@ export const MongoRoleDefinitionResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "MongoRoleDefinitionResource",
 }) as any as S.Schema<MongoRoleDefinitionResource>;
 
+export interface MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** The ID for the Role Definition {dbName.roleName}. */
+  mongoRoleDefinitionId: string;
+  /** Properties to create and update an Azure Cosmos DB Mongo Role Definition. */
+  properties?: MongoRoleDefinitionResource;
+}
+export const MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      mongoRoleDefinitionId: S.String.pipe(T.Label()),
+      properties: S.optional(MongoRoleDefinitionResource),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbRoleDefinitions/{mongoRoleDefinitionId}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest",
+  }) as any as S.Schema<MongoDBResourcesCreateUpdateMongoRoleDefinitionRequest>;
+
 export interface MongoDBResourcesCreateUpdateMongoRoleDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -9502,39 +10863,8 @@ export const MongoDBResourcesCreateUpdateMongoRoleDefinitionResponse =
     identifier: "MongoDBResourcesCreateUpdateMongoRoleDefinitionResponse",
   }) as any as S.Schema<MongoDBResourcesCreateUpdateMongoRoleDefinitionResponse>;
 
-export interface MongoDBResourcesCreateUpdateMongoUserDefinitionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** The ID for the User Definition {dbName.userName}. */
-  mongoUserDefinitionId: string;
-  body: unknown;
-}
-export const MongoDBResourcesCreateUpdateMongoUserDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      mongoUserDefinitionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "MongoDBResourcesCreateUpdateMongoUserDefinitionRequest",
-  }) as any as S.Schema<MongoDBResourcesCreateUpdateMongoUserDefinitionRequest>;
-
 /** The set of roles inherited by the User Definition. */
-export type MongoUserDefinitionResourceRolesList = Role[];
+export type MongoUserDefinitionResourceRolesList = ReadonlyArray<Role>;
 export const MongoUserDefinitionResourceRolesList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<MongoUserDefinitionResourceRolesList>;
@@ -9566,6 +10896,38 @@ export const MongoUserDefinitionResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MongoUserDefinitionResource",
 }) as any as S.Schema<MongoUserDefinitionResource>;
+
+export interface MongoDBResourcesCreateUpdateMongoUserDefinitionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** The ID for the User Definition {dbName.userName}. */
+  mongoUserDefinitionId: string;
+  /** Properties to create and update an Azure Cosmos DB Mongo User Definition. */
+  properties?: MongoUserDefinitionResource;
+}
+export const MongoDBResourcesCreateUpdateMongoUserDefinitionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      mongoUserDefinitionId: S.String.pipe(T.Label()),
+      properties: S.optional(MongoUserDefinitionResource),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongodbUserDefinitions/{mongoUserDefinitionId}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "MongoDBResourcesCreateUpdateMongoUserDefinitionRequest",
+  }) as any as S.Schema<MongoDBResourcesCreateUpdateMongoUserDefinitionRequest>;
 
 export interface MongoDBResourcesCreateUpdateMongoUserDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10219,7 +11581,7 @@ export const MongoDBCollectionGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of MongoDB collections and their properties. */
 export type MongoDBCollectionListResultValueList =
-  MongoDBCollectionGetResults[];
+  ReadonlyArray<MongoDBCollectionGetResults>;
 export const MongoDBCollectionListResultValueList = /*@__PURE__*/ S.Array(
   MongoDBCollectionGetResults,
 ) as any as S.Schema<MongoDBCollectionListResultValueList>;
@@ -10309,7 +11671,8 @@ export const MongoDBDatabaseGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MongoDBDatabaseGetResults>;
 
 /** List of MongoDB databases and their properties. */
-export type MongoDBDatabaseListResultValueList = MongoDBDatabaseGetResults[];
+export type MongoDBDatabaseListResultValueList =
+  ReadonlyArray<MongoDBDatabaseGetResults>;
 export const MongoDBDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   MongoDBDatabaseGetResults,
 ) as any as S.Schema<MongoDBDatabaseListResultValueList>;
@@ -10382,7 +11745,7 @@ export const MongoRoleDefinitionGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Mongo Role Definitions and their properties. */
 export type MongoRoleDefinitionListResultValueList =
-  MongoRoleDefinitionGetResults[];
+  ReadonlyArray<MongoRoleDefinitionGetResults>;
 export const MongoRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   MongoRoleDefinitionGetResults,
 ) as any as S.Schema<MongoRoleDefinitionListResultValueList>;
@@ -10455,7 +11818,7 @@ export const MongoUserDefinitionGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of User Definition and their properties */
 export type MongoUserDefinitionListResultValueList =
-  MongoUserDefinitionGetResults[];
+  ReadonlyArray<MongoUserDefinitionGetResults>;
 export const MongoUserDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   MongoUserDefinitionGetResults,
 ) as any as S.Schema<MongoUserDefinitionListResultValueList>;
@@ -10793,7 +12156,8 @@ export interface MongoDBResourcesRetrieveContinuousBackupInformationRequest {
   databaseName: string;
   /** Cosmos DB collection name. */
   collectionName: string;
-  body: unknown;
+  /** The name of the continuous backup restore location. */
+  location?: string;
 }
 export const MongoDBResourcesRetrieveContinuousBackupInformationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10803,7 +12167,7 @@ export const MongoDBResourcesRetrieveContinuousBackupInformationRequest =
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
       collectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -10816,6 +12180,16 @@ export const MongoDBResourcesRetrieveContinuousBackupInformationRequest =
     identifier: "MongoDBResourcesRetrieveContinuousBackupInformationRequest",
   }) as any as S.Schema<MongoDBResourcesRetrieveContinuousBackupInformationRequest>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type MongoDBResourcesUpdateMongoDBCollectionThroughputRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MongoDBResourcesUpdateMongoDBCollectionThroughputRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<MongoDBResourcesUpdateMongoDBCollectionThroughputRequestTagsMap>;
+
 export interface MongoDBResourcesUpdateMongoDBCollectionThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10827,7 +12201,14 @@ export interface MongoDBResourcesUpdateMongoDBCollectionThroughputRequest {
   databaseName: string;
   /** Cosmos DB collection name. */
   collectionName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: MongoDBResourcesUpdateMongoDBCollectionThroughputRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to update Azure Cosmos DB resource throughput. */
+  properties: ThroughputSettingsUpdatePropertiesInput;
 }
 export const MongoDBResourcesUpdateMongoDBCollectionThroughputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10837,7 +12218,12 @@ export const MongoDBResourcesUpdateMongoDBCollectionThroughputRequest =
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
       collectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        MongoDBResourcesUpdateMongoDBCollectionThroughputRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: ThroughputSettingsUpdatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -10896,6 +12282,16 @@ export const MongoDBResourcesUpdateMongoDBCollectionThroughputResponse =
     identifier: "MongoDBResourcesUpdateMongoDBCollectionThroughputResponse",
   }) as any as S.Schema<MongoDBResourcesUpdateMongoDBCollectionThroughputResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type MongoDBResourcesUpdateMongoDBDatabaseThroughputRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MongoDBResourcesUpdateMongoDBDatabaseThroughputRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<MongoDBResourcesUpdateMongoDBDatabaseThroughputRequestTagsMap>;
+
 export interface MongoDBResourcesUpdateMongoDBDatabaseThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10905,7 +12301,14 @@ export interface MongoDBResourcesUpdateMongoDBDatabaseThroughputRequest {
   accountName: string;
   /** Cosmos DB database name. */
   databaseName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: MongoDBResourcesUpdateMongoDBDatabaseThroughputRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to update Azure Cosmos DB resource throughput. */
+  properties: ThroughputSettingsUpdatePropertiesInput;
 }
 export const MongoDBResourcesUpdateMongoDBDatabaseThroughputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10914,7 +12317,12 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughputRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        MongoDBResourcesUpdateMongoDBDatabaseThroughputRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: ThroughputSettingsUpdatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -10973,6 +12381,26 @@ export const MongoDBResourcesUpdateMongoDBDatabaseThroughputResponse =
     identifier: "MongoDBResourcesUpdateMongoDBDatabaseThroughputResponse",
   }) as any as S.Schema<MongoDBResourcesUpdateMongoDBDatabaseThroughputResponse>;
 
+/** Azure Cosmos DB MongoMI Role Assignment resource object. */
+export interface MongoMIRoleAssignmentResourcePropertiesInput {
+  /** The unique identifier for the associated Role Definition. */
+  roleDefinitionId?: string;
+  /** The data plane resource path for which access is being granted through this MongoMI Role Assignment. */
+  scope?: string;
+  /** The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this MongoMI Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription. */
+  principalId?: string;
+}
+export const MongoMIRoleAssignmentResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      roleDefinitionId: S.optional(S.String),
+      scope: S.optional(S.String),
+      principalId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "MongoMIRoleAssignmentResourcePropertiesInput",
+  }) as any as S.Schema<MongoMIRoleAssignmentResourcePropertiesInput>;
+
 export interface MongoMIResourcesCreateUpdateMongoMIRoleAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -10982,7 +12410,8 @@ export interface MongoMIResourcesCreateUpdateMongoMIRoleAssignmentRequest {
   accountName: string;
   /** The GUID for the Role Assignment. */
   roleAssignmentId: string;
-  body: unknown;
+  /** Properties to create and update an Azure Cosmos DB MongoMI Role Assignment. */
+  properties?: MongoMIRoleAssignmentResourcePropertiesInput;
 }
 export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -10991,7 +12420,7 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       roleAssignmentId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(MongoMIRoleAssignmentResourcePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -11052,40 +12481,9 @@ export const MongoMIResourcesCreateUpdateMongoMIRoleAssignmentResponse =
     identifier: "MongoMIResourcesCreateUpdateMongoMIRoleAssignmentResponse",
   }) as any as S.Schema<MongoMIResourcesCreateUpdateMongoMIRoleAssignmentResponse>;
 
-export interface MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** The GUID for the Role Definition. */
-  roleDefinitionId: string;
-  body: unknown;
-}
-export const MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      roleDefinitionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest",
-  }) as any as S.Schema<MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest>;
-
 /** A set of fully qualified Scopes at or below which MongoMI Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
 export type MongoMIRoleDefinitionResourcePropertiesAssignableScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const MongoMIRoleDefinitionResourcePropertiesAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11093,7 +12491,7 @@ export const MongoMIRoleDefinitionResourcePropertiesAssignableScopesList =
 
 /** The set of operations allowed through this Role Definition. */
 export type MongoMIRoleDefinitionResourcePropertiesPermissionsList =
-  Permission[];
+  ReadonlyArray<Permission>;
 export const MongoMIRoleDefinitionResourcePropertiesPermissionsList =
   /*@__PURE__*/ S.Array(
     Permission,
@@ -11128,6 +12526,38 @@ export const MongoMIRoleDefinitionResourceProperties = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "MongoMIRoleDefinitionResourceProperties",
 }) as any as S.Schema<MongoMIRoleDefinitionResourceProperties>;
+
+export interface MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** The GUID for the Role Definition. */
+  roleDefinitionId: string;
+  /** Properties to create and update an Azure Cosmos DB MongoMI Role Definition. */
+  properties?: MongoMIRoleDefinitionResourceProperties;
+}
+export const MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      roleDefinitionId: S.String.pipe(T.Label()),
+      properties: S.optional(MongoMIRoleDefinitionResourceProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/mongoMIRoleDefinitions/{roleDefinitionId}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest",
+  }) as any as S.Schema<MongoMIResourcesCreateUpdateMongoMIRoleDefinitionRequest>;
 
 export interface MongoMIResourcesCreateUpdateMongoMIRoleDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -11385,7 +12815,7 @@ export const MongoMIRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The MongoMIRoleAssignmentResource items on this page */
 export type MongoMIRoleAssignmentListResultValueList =
-  MongoMIRoleAssignmentResource[];
+  ReadonlyArray<MongoMIRoleAssignmentResource>;
 export const MongoMIRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   MongoMIRoleAssignmentResource,
 ) as any as S.Schema<MongoMIRoleAssignmentListResultValueList>;
@@ -11459,7 +12889,7 @@ export const MongoMIRoleDefinitionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The MongoMIRoleDefinitionResource items on this page */
 export type MongoMIRoleDefinitionListResultValueList =
-  MongoMIRoleDefinitionResource[];
+  ReadonlyArray<MongoMIRoleDefinitionResource>;
 export const MongoMIRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   MongoMIRoleDefinitionResource,
 ) as any as S.Schema<MongoMIRoleDefinitionListResultValueList>;
@@ -11481,8 +12911,7 @@ export const MongoMIRoleDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MongoMIRoleDefinitionListResult>;
 
 export type NotebookWorkspacesCreateOrUpdateRequestNotebookWorkspaceName =
-  | "default"
-  | (string & {});
+  "default";
 export const NotebookWorkspacesCreateOrUpdateRequestNotebookWorkspaceName =
   /*@__PURE__*/ S.String;
 
@@ -11495,7 +12924,6 @@ export interface NotebookWorkspacesCreateOrUpdateRequest {
   accountName: string;
   /** The name of the notebook workspace resource. */
   notebookWorkspaceName: NotebookWorkspacesCreateOrUpdateRequestNotebookWorkspaceName;
-  body: unknown;
 }
 export const NotebookWorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -11507,7 +12935,6 @@ export const NotebookWorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
         NotebookWorkspacesCreateOrUpdateRequestNotebookWorkspaceName.pipe(
           T.Label(),
         ),
-      body: S.Unknown.pipe(T.HttpBody()),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -11561,9 +12988,7 @@ export const NotebookWorkspacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NotebookWorkspacesCreateOrUpdateResponse",
 }) as any as S.Schema<NotebookWorkspacesCreateOrUpdateResponse>;
 
-export type NotebookWorkspacesDeleteRequestNotebookWorkspaceName =
-  | "default"
-  | (string & {});
+export type NotebookWorkspacesDeleteRequestNotebookWorkspaceName = "default";
 export const NotebookWorkspacesDeleteRequestNotebookWorkspaceName =
   /*@__PURE__*/ S.String;
 
@@ -11603,9 +13028,7 @@ export const NotebookWorkspacesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotebookWorkspacesDeleteResponse",
 }) as any as S.Schema<NotebookWorkspacesDeleteResponse>;
 
-export type NotebookWorkspacesGetRequestNotebookWorkspaceName =
-  | "default"
-  | (string & {});
+export type NotebookWorkspacesGetRequestNotebookWorkspaceName = "default";
 export const NotebookWorkspacesGetRequestNotebookWorkspaceName =
   /*@__PURE__*/ S.String;
 
@@ -11714,7 +13137,8 @@ export const NotebookWorkspace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebookWorkspace>;
 
 /** Array of notebook workspace resources */
-export type NotebookWorkspaceListResultValueList = NotebookWorkspace[];
+export type NotebookWorkspaceListResultValueList =
+  ReadonlyArray<NotebookWorkspace>;
 export const NotebookWorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   NotebookWorkspace,
 ) as any as S.Schema<NotebookWorkspaceListResultValueList>;
@@ -11735,8 +13159,7 @@ export const NotebookWorkspaceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebookWorkspaceListResult>;
 
 export type NotebookWorkspacesListConnectionInfoRequestNotebookWorkspaceName =
-  | "default"
-  | (string & {});
+  "default";
 export const NotebookWorkspacesListConnectionInfoRequestNotebookWorkspaceName =
   /*@__PURE__*/ S.String;
 
@@ -11790,8 +13213,7 @@ export const NotebookWorkspaceConnectionInfoResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NotebookWorkspaceConnectionInfoResult>;
 
 export type NotebookWorkspacesRegenerateAuthTokenRequestNotebookWorkspaceName =
-  | "default"
-  | (string & {});
+  "default";
 export const NotebookWorkspacesRegenerateAuthTokenRequestNotebookWorkspaceName =
   /*@__PURE__*/ S.String;
 
@@ -11833,9 +13255,7 @@ export const NotebookWorkspacesRegenerateAuthTokenResponse =
     identifier: "NotebookWorkspacesRegenerateAuthTokenResponse",
   }) as any as S.Schema<NotebookWorkspacesRegenerateAuthTokenResponse>;
 
-export type NotebookWorkspacesStartRequestNotebookWorkspaceName =
-  | "default"
-  | (string & {});
+export type NotebookWorkspacesStartRequestNotebookWorkspaceName = "default";
 export const NotebookWorkspacesStartRequestNotebookWorkspaceName =
   /*@__PURE__*/ S.String;
 
@@ -11926,7 +13346,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the Resource Provider. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -12104,7 +13524,8 @@ export const PercentileMetricValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PercentileMetricValue>;
 
 /** The percentile metric values for the specified time window and timestep. */
-export type PercentileMetricMetricValuesList = PercentileMetricValue[];
+export type PercentileMetricMetricValuesList =
+  ReadonlyArray<PercentileMetricValue>;
 export const PercentileMetricMetricValuesList = /*@__PURE__*/ S.Array(
   PercentileMetricValue,
 ) as any as S.Schema<PercentileMetricMetricValuesList>;
@@ -12138,7 +13559,8 @@ export const PercentileMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PercentileMetric>;
 
 /** The list of percentile metrics for the account. */
-export type PercentileMetricListResultValueList = PercentileMetric[];
+export type PercentileMetricListResultValueList =
+  ReadonlyArray<PercentileMetric>;
 export const PercentileMetricListResultValueList = /*@__PURE__*/ S.Array(
   PercentileMetric,
 ) as any as S.Schema<PercentileMetricListResultValueList>;
@@ -12224,6 +13646,48 @@ export const PercentileTargetListMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PercentileTargetListMetricsRequest",
 }) as any as S.Schema<PercentileTargetListMetricsRequest>;
 
+/** Connection State of the Private Endpoint Connection. */
+export interface PrivateLinkServiceConnectionStatePropertyInput {
+  /** The private link service connection status. */
+  status?: string;
+  /** The private link service connection description. */
+  description?: string;
+}
+export const PrivateLinkServiceConnectionStatePropertyInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: S.optional(S.String),
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PrivateLinkServiceConnectionStatePropertyInput",
+  }) as any as S.Schema<PrivateLinkServiceConnectionStatePropertyInput>;
+
+/** Properties of a private endpoint connection. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** Private endpoint which the connection belongs to. */
+  privateEndpoint?: PrivateEndpointProperty;
+  /** Connection State of the Private Endpoint Connection. */
+  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStatePropertyInput;
+  /** Group id of the private endpoint. */
+  groupId?: string;
+  /** Provisioning state of the private endpoint. */
+  provisioningState?: string;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointProperty),
+      privateLinkServiceConnectionState: S.optional(
+        PrivateLinkServiceConnectionStatePropertyInput,
+      ),
+      groupId: S.optional(S.String),
+      provisioningState: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -12233,7 +13697,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   accountName: string;
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
 }
 export const PrivateEndpointConnectionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -12242,7 +13707,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -12398,7 +13863,7 @@ export const PrivateEndpointConnectionsListByDatabaseAccountRequest =
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -12448,14 +13913,16 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource required zone names. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12560,7 +14027,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList = PrivateLinkResource[];
+export type PrivateLinkResourceListResultValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -12613,8 +14081,7 @@ export type ApiType =
   | "Cassandra"
   | "Table"
   | "Sql"
-  | "GremlinV2"
-  | (string & {});
+  | "GremlinV2";
 export const ApiType = /*@__PURE__*/ S.String;
 
 /** Properties of the regional restorable account. */
@@ -12641,7 +14108,7 @@ export const RestorableLocationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of regions where the of the database account can be restored from. */
 export type RestorableDatabaseAccountPropertiesRestorableLocationsList =
-  RestorableLocationResource[];
+  ReadonlyArray<RestorableLocationResource>;
 export const RestorableDatabaseAccountPropertiesRestorableLocationsList =
   /*@__PURE__*/ S.Array(
     RestorableLocationResource,
@@ -12755,7 +14222,7 @@ export const RestorableDatabaseAccountGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of restorable database accounts and their properties. */
 export type RestorableDatabaseAccountsListResultValueList =
-  RestorableDatabaseAccountGetResult[];
+  ReadonlyArray<RestorableDatabaseAccountGetResult>;
 export const RestorableDatabaseAccountsListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableDatabaseAccountGetResult,
@@ -12832,8 +14299,7 @@ export type OperationType =
   | "Replace"
   | "Delete"
   | "Recreate"
-  | "SystemOperation"
-  | (string & {});
+  | "SystemOperation";
 export const OperationType = /*@__PURE__*/ S.String;
 
 /** The resource of an Azure Cosmos DB Gremlin database event */
@@ -12905,7 +14371,7 @@ export const RestorableGremlinDatabaseGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Gremlin database events and their properties. */
 export type RestorableGremlinDatabasesListResultValueList =
-  RestorableGremlinDatabaseGetResult[];
+  ReadonlyArray<RestorableGremlinDatabaseGetResult>;
 export const RestorableGremlinDatabasesListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableGremlinDatabaseGetResult,
@@ -13030,7 +14496,7 @@ export const RestorableGremlinGraphGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Gremlin graph events and their properties. */
 export type RestorableGremlinGraphsListResultValueList =
-  RestorableGremlinGraphGetResult[];
+  ReadonlyArray<RestorableGremlinGraphGetResult>;
 export const RestorableGremlinGraphsListResultValueList = /*@__PURE__*/ S.Array(
   RestorableGremlinGraphGetResult,
 ) as any as S.Schema<RestorableGremlinGraphsListResultValueList>;
@@ -13083,7 +14549,8 @@ export const RestorableGremlinResourcesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RestorableGremlinResourcesListRequest>;
 
 /** The names of the graphs available for restore. */
-export type RestorableGremlinResourcesGetResultGraphNamesList = string[];
+export type RestorableGremlinResourcesGetResultGraphNamesList =
+  ReadonlyArray<string>;
 export const RestorableGremlinResourcesGetResultGraphNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13116,7 +14583,7 @@ export const RestorableGremlinResourcesGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of restorable Gremlin resources, including the gremlin database and graph names. */
 export type RestorableGremlinResourcesListResultValueList =
-  RestorableGremlinResourcesGetResult[];
+  ReadonlyArray<RestorableGremlinResourcesGetResult>;
 export const RestorableGremlinResourcesListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableGremlinResourcesGetResult,
@@ -13244,7 +14711,7 @@ export const RestorableMongodbCollectionGetResult = /*@__PURE__*/ S.suspend(
 
 /** List of MongoDB collection events and their properties. */
 export type RestorableMongodbCollectionsListResultValueList =
-  RestorableMongodbCollectionGetResult[];
+  ReadonlyArray<RestorableMongodbCollectionGetResult>;
 export const RestorableMongodbCollectionsListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableMongodbCollectionGetResult,
@@ -13361,7 +14828,7 @@ export const RestorableMongodbDatabaseGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of MongoDB database events and their properties. */
 export type RestorableMongodbDatabasesListResultValueList =
-  RestorableMongodbDatabaseGetResult[];
+  ReadonlyArray<RestorableMongodbDatabaseGetResult>;
 export const RestorableMongodbDatabasesListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableMongodbDatabaseGetResult,
@@ -13416,7 +14883,8 @@ export const RestorableMongodbResourcesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RestorableMongodbResourcesListRequest>;
 
 /** The names of the collections available for restore. */
-export type RestorableMongodbResourcesGetResultCollectionNamesList = string[];
+export type RestorableMongodbResourcesGetResultCollectionNamesList =
+  ReadonlyArray<string>;
 export const RestorableMongodbResourcesGetResultCollectionNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13451,7 +14919,7 @@ export const RestorableMongodbResourcesGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of restorable MongoDB resources, including the database and collection names. */
 export type RestorableMongodbResourcesListResultValueList =
-  RestorableMongodbResourcesGetResult[];
+  ReadonlyArray<RestorableMongodbResourcesGetResult>;
 export const RestorableMongodbResourcesListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableMongodbResourcesGetResult,
@@ -13531,7 +14999,7 @@ export const ClientEncryptionIncludedPath = /*@__PURE__*/ S.suspend(() =>
 
 /** Paths of the item that need encryption along with path-specific settings. */
 export type ClientEncryptionPolicyIncludedPathsList =
-  ClientEncryptionIncludedPath[];
+  ReadonlyArray<ClientEncryptionIncludedPath>;
 export const ClientEncryptionPolicyIncludedPathsList = /*@__PURE__*/ S.Array(
   ClientEncryptionIncludedPath,
 ) as any as S.Schema<ClientEncryptionPolicyIncludedPathsList>;
@@ -13555,8 +15023,7 @@ export const ClientEncryptionPolicy = /*@__PURE__*/ S.suspend(() =>
 /** Enum to indicate the mode of account creation. */
 export type RestorableSqlContainerPropertiesResourceContainerCreateMode =
   | "Default"
-  | "Restore"
-  | (string & {});
+  | "Restore";
 export const RestorableSqlContainerPropertiesResourceContainerCreateMode =
   /*@__PURE__*/ S.String;
 
@@ -13578,27 +15045,18 @@ export const ComputedProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** List of computed properties */
 export type RestorableSqlContainerPropertiesResourceContainerComputedPropertiesList =
-  ComputedProperty[];
+  ReadonlyArray<ComputedProperty>;
 export const RestorableSqlContainerPropertiesResourceContainerComputedPropertiesList =
   /*@__PURE__*/ S.Array(
     ComputedProperty,
   ) as any as S.Schema<RestorableSqlContainerPropertiesResourceContainerComputedPropertiesList>;
 
 /** Indicates the data type of vector. */
-export type VectorDataType =
-  | "float32"
-  | "uint8"
-  | "int8"
-  | "float16"
-  | (string & {});
+export type VectorDataType = "float32" | "uint8" | "int8" | "float16";
 export const VectorDataType = /*@__PURE__*/ S.String;
 
 /** The distance function to use for distance calculation in between vectors. */
-export type DistanceFunction =
-  | "euclidean"
-  | "cosine"
-  | "dotproduct"
-  | (string & {});
+export type DistanceFunction = "euclidean" | "cosine" | "dotproduct";
 export const DistanceFunction = /*@__PURE__*/ S.String;
 
 /** Represents a vector embedding. A vector embedding is used to define a vector field in the documents. */
@@ -13624,7 +15082,8 @@ export const VectorEmbedding = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VectorEmbedding>;
 
 /** List of vector embeddings */
-export type VectorEmbeddingPolicyVectorEmbeddingsList = VectorEmbedding[];
+export type VectorEmbeddingPolicyVectorEmbeddingsList =
+  ReadonlyArray<VectorEmbedding>;
 export const VectorEmbeddingPolicyVectorEmbeddingsList = /*@__PURE__*/ S.Array(
   VectorEmbedding,
 ) as any as S.Schema<VectorEmbeddingPolicyVectorEmbeddingsList>;
@@ -13657,7 +15116,7 @@ export const FullTextPath = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FullTextPath" }) as any as S.Schema<FullTextPath>;
 
 /** List of FullText Paths */
-export type FullTextPolicyFullTextPathsList = FullTextPath[];
+export type FullTextPolicyFullTextPathsList = ReadonlyArray<FullTextPath>;
 export const FullTextPolicyFullTextPathsList = /*@__PURE__*/ S.Array(
   FullTextPath,
 ) as any as S.Schema<FullTextPolicyFullTextPathsList>;
@@ -13814,7 +15273,7 @@ export const RestorableSqlContainerGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of SQL container events and their properties. */
 export type RestorableSqlContainersListResultValueList =
-  RestorableSqlContainerGetResult[];
+  ReadonlyArray<RestorableSqlContainerGetResult>;
 export const RestorableSqlContainersListResultValueList = /*@__PURE__*/ S.Array(
   RestorableSqlContainerGetResult,
 ) as any as S.Schema<RestorableSqlContainersListResultValueList>;
@@ -13862,8 +15321,7 @@ export const RestorableSqlDatabasesListRequest = /*@__PURE__*/ S.suspend(() =>
 /** Enum to indicate the mode of account creation. */
 export type RestorableSqlDatabasePropertiesResourceDatabaseCreateMode =
   | "Default"
-  | "Restore"
-  | (string & {});
+  | "Restore";
 export const RestorableSqlDatabasePropertiesResourceDatabaseCreateMode =
   /*@__PURE__*/ S.String;
 
@@ -13979,7 +15437,7 @@ export const RestorableSqlDatabaseGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of SQL database events and their properties. */
 export type RestorableSqlDatabasesListResultValueList =
-  RestorableSqlDatabaseGetResult[];
+  ReadonlyArray<RestorableSqlDatabaseGetResult>;
 export const RestorableSqlDatabasesListResultValueList = /*@__PURE__*/ S.Array(
   RestorableSqlDatabaseGetResult,
 ) as any as S.Schema<RestorableSqlDatabasesListResultValueList>;
@@ -14031,7 +15489,8 @@ export const RestorableSqlResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorableSqlResourcesListRequest>;
 
 /** The names of the collections available for restore. */
-export type RestorableSqlResourcesGetResultCollectionNamesList = string[];
+export type RestorableSqlResourcesGetResultCollectionNamesList =
+  ReadonlyArray<string>;
 export const RestorableSqlResourcesGetResultCollectionNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14066,7 +15525,7 @@ export const RestorableSqlResourcesGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of restorable SQL resources, including the database and collection names. */
 export type RestorableSqlResourcesListResultValueList =
-  RestorableSqlResourcesGetResult[];
+  ReadonlyArray<RestorableSqlResourcesGetResult>;
 export const RestorableSqlResourcesListResultValueList = /*@__PURE__*/ S.Array(
   RestorableSqlResourcesGetResult,
 ) as any as S.Schema<RestorableSqlResourcesListResultValueList>;
@@ -14138,7 +15597,7 @@ export const RestorableTableResourcesGetResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of restorable table names. */
 export type RestorableTableResourcesListResultValueList =
-  RestorableTableResourcesGetResult[];
+  ReadonlyArray<RestorableTableResourcesGetResult>;
 export const RestorableTableResourcesListResultValueList =
   /*@__PURE__*/ S.Array(
     RestorableTableResourcesGetResult,
@@ -14257,7 +15716,8 @@ export const RestorableTableGetResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorableTableGetResult>;
 
 /** List of Table events and their properties. */
-export type RestorableTablesListResultValueList = RestorableTableGetResult[];
+export type RestorableTablesListResultValueList =
+  ReadonlyArray<RestorableTableGetResult>;
 export const RestorableTablesListResultValueList = /*@__PURE__*/ S.Array(
   RestorableTableGetResult,
 ) as any as S.Schema<RestorableTablesListResultValueList>;
@@ -14277,6 +15737,38 @@ export const RestorableTablesListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestorableTablesListResult",
 }) as any as S.Schema<RestorableTablesListResult>;
 
+/** Instance type for the service. */
+export type ServiceSize = "Cosmos.D4s" | "Cosmos.D8s" | "Cosmos.D16s";
+export const ServiceSize = /*@__PURE__*/ S.String;
+
+/** ServiceType for the service. */
+export type ServiceType =
+  | "SqlDedicatedGateway"
+  | "DataTransfer"
+  | "GraphAPICompute"
+  | "MaterializedViewsBuilder";
+export const ServiceType = /*@__PURE__*/ S.String;
+
+/** Properties in ServiceResourceCreateUpdateParameters. */
+export interface ServiceResourceCreateUpdateProperties {
+  /** Instance type for the service. */
+  instanceSize?: ServiceSize;
+  /** Instance count for the service. */
+  instanceCount?: number;
+  /** ServiceType for the service. */
+  serviceType: ServiceType;
+}
+export const ServiceResourceCreateUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      instanceSize: S.optional(ServiceSize),
+      instanceCount: S.optional(S.Number),
+      serviceType: ServiceType,
+    }),
+).annotate({
+  identifier: "ServiceResourceCreateUpdateProperties",
+}) as any as S.Schema<ServiceResourceCreateUpdateProperties>;
+
 export interface ServiceCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14286,7 +15778,8 @@ export interface ServiceCreateRequest {
   accountName: string;
   /** Cosmos DB service name. */
   serviceName: string;
-  body: unknown;
+  /** Properties in ServiceResourceCreateUpdateParameters. */
+  properties?: ServiceResourceCreateUpdateProperties;
 }
 export const ServiceCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14294,7 +15787,7 @@ export const ServiceCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ServiceResourceCreateUpdateProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -14307,23 +15800,6 @@ export const ServiceCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceCreateRequest",
 }) as any as S.Schema<ServiceCreateRequest>;
 
-/** Instance type for the service. */
-export type ServiceSize =
-  | "Cosmos.D4s"
-  | "Cosmos.D8s"
-  | "Cosmos.D16s"
-  | (string & {});
-export const ServiceSize = /*@__PURE__*/ S.String;
-
-/** ServiceType for the service. */
-export type ServiceType =
-  | "SqlDedicatedGateway"
-  | "DataTransfer"
-  | "GraphAPICompute"
-  | "MaterializedViewsBuilder"
-  | (string & {});
-export const ServiceType = /*@__PURE__*/ S.String;
-
 /** Describes the status of a service. */
 export type ServiceStatus =
   | "Creating"
@@ -14331,8 +15807,7 @@ export type ServiceStatus =
   | "Updating"
   | "Deleting"
   | "Error"
-  | "Stopped"
-  | (string & {});
+  | "Stopped";
 export const ServiceStatus = /*@__PURE__*/ S.String;
 
 /** Services response resource. */
@@ -14522,7 +15997,7 @@ export const ServiceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceResource>;
 
 /** List of Service Resource and their properties. */
-export type ServiceResourceListResultValueList = ServiceResource[];
+export type ServiceResourceListResultValueList = ReadonlyArray<ServiceResource>;
 export const ServiceResourceListResultValueList = /*@__PURE__*/ S.Array(
   ServiceResource,
 ) as any as S.Schema<ServiceResourceListResultValueList>;
@@ -14541,40 +16016,6 @@ export const ServiceResourceListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceResourceListResult",
 }) as any as S.Schema<ServiceResourceListResult>;
-
-export interface SqlResourcesCreateUpdateClientEncryptionKeyRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** Cosmos DB database name. */
-  databaseName: string;
-  /** Cosmos DB ClientEncryptionKey name. */
-  clientEncryptionKeyName: string;
-  body: unknown;
-}
-export const SqlResourcesCreateUpdateClientEncryptionKeyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      databaseName: S.String.pipe(T.Label()),
-      clientEncryptionKeyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlResourcesCreateUpdateClientEncryptionKeyRequest",
-  }) as any as S.Schema<SqlResourcesCreateUpdateClientEncryptionKeyRequest>;
 
 /** Represents key wrap metadata that a key wrapping provider can use to wrap/unwrap a client encryption key. */
 export interface KeyWrapMetadata {
@@ -14597,6 +16038,77 @@ export const KeyWrapMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KeyWrapMetadata",
 }) as any as S.Schema<KeyWrapMetadata>;
+
+/** Cosmos DB client encryption key resource object. */
+export interface ClientEncryptionKeyResource {
+  /** Name of the ClientEncryptionKey */
+  id?: string;
+  /** Encryption algorithm that will be used along with this client encryption key to encrypt/decrypt data. */
+  encryptionAlgorithm?: string;
+  /** Wrapped (encrypted) form of the key represented as a byte array. */
+  wrappedDataEncryptionKey?: string;
+  /** Metadata for the wrapping provider that can be used to unwrap the wrapped client encryption key. */
+  keyWrapMetadata?: KeyWrapMetadata;
+}
+export const ClientEncryptionKeyResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    encryptionAlgorithm: S.optional(S.String),
+    wrappedDataEncryptionKey: S.optional(S.String),
+    keyWrapMetadata: S.optional(KeyWrapMetadata),
+  }),
+).annotate({
+  identifier: "ClientEncryptionKeyResource",
+}) as any as S.Schema<ClientEncryptionKeyResource>;
+
+/** Properties to create and update ClientEncryptionKey. */
+export interface ClientEncryptionKeyCreateUpdateProperties {
+  /** The standard JSON format of a ClientEncryptionKey */
+  resource: ClientEncryptionKeyResource;
+}
+export const ClientEncryptionKeyCreateUpdateProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: ClientEncryptionKeyResource,
+    }),
+  ).annotate({
+    identifier: "ClientEncryptionKeyCreateUpdateProperties",
+  }) as any as S.Schema<ClientEncryptionKeyCreateUpdateProperties>;
+
+export interface SqlResourcesCreateUpdateClientEncryptionKeyRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** Cosmos DB database name. */
+  databaseName: string;
+  /** Cosmos DB ClientEncryptionKey name. */
+  clientEncryptionKeyName: string;
+  /** Properties to create and update ClientEncryptionKey. */
+  properties: ClientEncryptionKeyCreateUpdateProperties;
+}
+export const SqlResourcesCreateUpdateClientEncryptionKeyRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      databaseName: S.String.pipe(T.Label()),
+      clientEncryptionKeyName: S.String.pipe(T.Label()),
+      properties: ClientEncryptionKeyCreateUpdateProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlDatabases/{databaseName}/clientEncryptionKeys/{clientEncryptionKeyName}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "SqlResourcesCreateUpdateClientEncryptionKeyRequest",
+  }) as any as S.Schema<SqlResourcesCreateUpdateClientEncryptionKeyRequest>;
 
 export interface ClientEncryptionKeyGetPropertiesResource {
   /** Name of the ClientEncryptionKey */
@@ -14666,6 +16178,96 @@ export const SqlResourcesCreateUpdateClientEncryptionKeyResponse =
     identifier: "SqlResourcesCreateUpdateClientEncryptionKeyResponse",
   }) as any as S.Schema<SqlResourcesCreateUpdateClientEncryptionKeyResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type SqlResourcesCreateUpdateSqlContainerRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlResourcesCreateUpdateSqlContainerRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlResourcesCreateUpdateSqlContainerRequestTagsMap>;
+
+/** Enum to indicate the mode of account creation. */
+export type SqlContainerResourceInputCreateMode = "Default" | "Restore";
+export const SqlContainerResourceInputCreateMode = /*@__PURE__*/ S.String;
+
+/** List of computed properties */
+export type SqlContainerResourceInputComputedPropertiesList =
+  ReadonlyArray<ComputedProperty>;
+export const SqlContainerResourceInputComputedPropertiesList =
+  /*@__PURE__*/ S.Array(
+    ComputedProperty,
+  ) as any as S.Schema<SqlContainerResourceInputComputedPropertiesList>;
+
+/** Cosmos DB SQL container resource object */
+export interface SqlContainerResourceInput {
+  /** Name of the Cosmos DB SQL container */
+  id: string;
+  /** The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container */
+  indexingPolicy?: IndexingPolicy;
+  /** The configuration of the partition key to be used for partitioning data into multiple partitions */
+  partitionKey?: ContainerPartitionKeyInput;
+  /** Default time to live */
+  defaultTtl?: number;
+  /** The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service. */
+  uniqueKeyPolicy?: UniqueKeyPolicy;
+  /** The conflict resolution policy for the container. */
+  conflictResolutionPolicy?: ConflictResolutionPolicy;
+  /** The client encryption policy for the container. */
+  clientEncryptionPolicy?: ClientEncryptionPolicy;
+  /** Analytical TTL. */
+  analyticalStorageTtl?: number;
+  /** Parameters to indicate the information about the restore */
+  restoreParameters?: RestoreParametersBase;
+  /** Enum to indicate the mode of account creation. */
+  createMode?: SqlContainerResourceInputCreateMode;
+  /** List of computed properties */
+  computedProperties?: SqlContainerResourceInputComputedPropertiesList;
+  /** The vector embedding policy for the container. */
+  vectorEmbeddingPolicy?: VectorEmbeddingPolicy;
+  /** The FullText policy for the container. */
+  fullTextPolicy?: FullTextPolicy;
+}
+export const SqlContainerResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    indexingPolicy: S.optional(IndexingPolicy),
+    partitionKey: S.optional(ContainerPartitionKeyInput),
+    defaultTtl: S.optional(S.Number),
+    uniqueKeyPolicy: S.optional(UniqueKeyPolicy),
+    conflictResolutionPolicy: S.optional(ConflictResolutionPolicy),
+    clientEncryptionPolicy: S.optional(ClientEncryptionPolicy),
+    analyticalStorageTtl: S.optional(S.Number),
+    restoreParameters: S.optional(RestoreParametersBase),
+    createMode: S.optional(SqlContainerResourceInputCreateMode),
+    computedProperties: S.optional(
+      SqlContainerResourceInputComputedPropertiesList,
+    ),
+    vectorEmbeddingPolicy: S.optional(VectorEmbeddingPolicy),
+    fullTextPolicy: S.optional(FullTextPolicy),
+  }),
+).annotate({
+  identifier: "SqlContainerResourceInput",
+}) as any as S.Schema<SqlContainerResourceInput>;
+
+/** Properties to create and update Azure Cosmos DB container. */
+export interface SqlContainerCreateUpdatePropertiesInput {
+  /** The standard JSON format of a container */
+  resource: SqlContainerResourceInput;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const SqlContainerCreateUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: SqlContainerResourceInput,
+      options: S.optional(CreateUpdateOptions),
+    }),
+).annotate({
+  identifier: "SqlContainerCreateUpdatePropertiesInput",
+}) as any as S.Schema<SqlContainerCreateUpdatePropertiesInput>;
+
 export interface SqlResourcesCreateUpdateSqlContainerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14677,7 +16279,14 @@ export interface SqlResourcesCreateUpdateSqlContainerRequest {
   databaseName: string;
   /** Cosmos DB container name. */
   containerName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: SqlResourcesCreateUpdateSqlContainerRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB container. */
+  properties: SqlContainerCreateUpdatePropertiesInput;
 }
 export const SqlResourcesCreateUpdateSqlContainerRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -14687,7 +16296,10 @@ export const SqlResourcesCreateUpdateSqlContainerRequest =
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
       containerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(SqlResourcesCreateUpdateSqlContainerRequestTagsMap),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: SqlContainerCreateUpdatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -14701,16 +16313,13 @@ export const SqlResourcesCreateUpdateSqlContainerRequest =
   }) as any as S.Schema<SqlResourcesCreateUpdateSqlContainerRequest>;
 
 /** Enum to indicate the mode of account creation. */
-export type SqlContainerGetPropertiesResourceCreateMode =
-  | "Default"
-  | "Restore"
-  | (string & {});
+export type SqlContainerGetPropertiesResourceCreateMode = "Default" | "Restore";
 export const SqlContainerGetPropertiesResourceCreateMode =
   /*@__PURE__*/ S.String;
 
 /** List of computed properties */
 export type SqlContainerGetPropertiesResourceComputedPropertiesList =
-  ComputedProperty[];
+  ReadonlyArray<ComputedProperty>;
 export const SqlContainerGetPropertiesResourceComputedPropertiesList =
   /*@__PURE__*/ S.Array(
     ComputedProperty,
@@ -14833,6 +16442,55 @@ export const SqlResourcesCreateUpdateSqlContainerResponse =
     identifier: "SqlResourcesCreateUpdateSqlContainerResponse",
   }) as any as S.Schema<SqlResourcesCreateUpdateSqlContainerResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type SqlResourcesCreateUpdateSqlDatabaseRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlResourcesCreateUpdateSqlDatabaseRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlResourcesCreateUpdateSqlDatabaseRequestTagsMap>;
+
+/** Enum to indicate the mode of account creation. */
+export type SqlDatabaseResourceCreateMode = "Default" | "Restore";
+export const SqlDatabaseResourceCreateMode = /*@__PURE__*/ S.String;
+
+/** Cosmos DB SQL database resource object */
+export interface SqlDatabaseResource {
+  /** Name of the Cosmos DB SQL database */
+  id: string;
+  /** Parameters to indicate the information about the restore */
+  restoreParameters?: RestoreParametersBase;
+  /** Enum to indicate the mode of account creation. */
+  createMode?: SqlDatabaseResourceCreateMode;
+}
+export const SqlDatabaseResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    restoreParameters: S.optional(RestoreParametersBase),
+    createMode: S.optional(SqlDatabaseResourceCreateMode),
+  }),
+).annotate({
+  identifier: "SqlDatabaseResource",
+}) as any as S.Schema<SqlDatabaseResource>;
+
+/** Properties to create and update Azure Cosmos DB SQL database. */
+export interface SqlDatabaseCreateUpdateProperties {
+  /** The standard JSON format of a SQL database */
+  resource: SqlDatabaseResource;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const SqlDatabaseCreateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: SqlDatabaseResource,
+    options: S.optional(CreateUpdateOptions),
+  }),
+).annotate({
+  identifier: "SqlDatabaseCreateUpdateProperties",
+}) as any as S.Schema<SqlDatabaseCreateUpdateProperties>;
+
 export interface SqlResourcesCreateUpdateSqlDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14842,7 +16500,14 @@ export interface SqlResourcesCreateUpdateSqlDatabaseRequest {
   accountName: string;
   /** Cosmos DB database name. */
   databaseName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: SqlResourcesCreateUpdateSqlDatabaseRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB SQL database. */
+  properties: SqlDatabaseCreateUpdateProperties;
 }
 export const SqlResourcesCreateUpdateSqlDatabaseRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -14851,7 +16516,10 @@ export const SqlResourcesCreateUpdateSqlDatabaseRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(SqlResourcesCreateUpdateSqlDatabaseRequestTagsMap),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: SqlDatabaseCreateUpdateProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -14865,10 +16533,7 @@ export const SqlResourcesCreateUpdateSqlDatabaseRequest =
   }) as any as S.Schema<SqlResourcesCreateUpdateSqlDatabaseRequest>;
 
 /** Enum to indicate the mode of account creation. */
-export type SqlDatabaseGetPropertiesResourceCreateMode =
-  | "Default"
-  | "Restore"
-  | (string & {});
+export type SqlDatabaseGetPropertiesResourceCreateMode = "Default" | "Restore";
 export const SqlDatabaseGetPropertiesResourceCreateMode =
   /*@__PURE__*/ S.String;
 
@@ -14963,37 +16628,6 @@ export const SqlResourcesCreateUpdateSqlDatabaseResponse =
     identifier: "SqlResourcesCreateUpdateSqlDatabaseResponse",
   }) as any as S.Schema<SqlResourcesCreateUpdateSqlDatabaseResponse>;
 
-export interface SqlResourcesCreateUpdateSqlRoleAssignmentRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** The GUID for the Role Assignment. */
-  roleAssignmentId: string;
-  body: unknown;
-}
-export const SqlResourcesCreateUpdateSqlRoleAssignmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      roleAssignmentId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlResourcesCreateUpdateSqlRoleAssignmentRequest",
-  }) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleAssignmentRequest>;
-
 /** Azure Cosmos DB SQL Role Assignment resource object. */
 export interface SqlRoleAssignmentResource {
   /** The unique identifier for the associated Role Definition. */
@@ -15012,6 +16646,38 @@ export const SqlRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SqlRoleAssignmentResource",
 }) as any as S.Schema<SqlRoleAssignmentResource>;
+
+export interface SqlResourcesCreateUpdateSqlRoleAssignmentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** The GUID for the Role Assignment. */
+  roleAssignmentId: string;
+  /** Properties to create and update an Azure Cosmos DB SQL Role Assignment. */
+  properties?: SqlRoleAssignmentResource;
+}
+export const SqlResourcesCreateUpdateSqlRoleAssignmentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      roleAssignmentId: S.String.pipe(T.Label()),
+      properties: S.optional(SqlRoleAssignmentResource),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleAssignments/{roleAssignmentId}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "SqlResourcesCreateUpdateSqlRoleAssignmentRequest",
+  }) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleAssignmentRequest>;
 
 export interface SqlResourcesCreateUpdateSqlRoleAssignmentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -15038,46 +16704,17 @@ export const SqlResourcesCreateUpdateSqlRoleAssignmentResponse =
     identifier: "SqlResourcesCreateUpdateSqlRoleAssignmentResponse",
   }) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleAssignmentResponse>;
 
-export interface SqlResourcesCreateUpdateSqlRoleDefinitionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** The GUID for the Role Definition. */
-  roleDefinitionId: string;
-  body: unknown;
-}
-export const SqlResourcesCreateUpdateSqlRoleDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      roleDefinitionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlResourcesCreateUpdateSqlRoleDefinitionRequest",
-  }) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleDefinitionRequest>;
-
 /** A set of fully qualified Scopes at or below which Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
-export type SqlRoleDefinitionResourceAssignableScopesList = string[];
+export type SqlRoleDefinitionResourceAssignableScopesList =
+  ReadonlyArray<string>;
 export const SqlRoleDefinitionResourceAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SqlRoleDefinitionResourceAssignableScopesList>;
 
 /** The set of operations allowed through this Role Definition. */
-export type SqlRoleDefinitionResourcePermissionsList = Permission[];
+export type SqlRoleDefinitionResourcePermissionsList =
+  ReadonlyArray<Permission>;
 export const SqlRoleDefinitionResourcePermissionsList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<SqlRoleDefinitionResourcePermissionsList>;
@@ -15104,6 +16741,38 @@ export const SqlRoleDefinitionResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlRoleDefinitionResource",
 }) as any as S.Schema<SqlRoleDefinitionResource>;
 
+export interface SqlResourcesCreateUpdateSqlRoleDefinitionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** The GUID for the Role Definition. */
+  roleDefinitionId: string;
+  /** Properties to create and update an Azure Cosmos DB SQL Role Definition. */
+  properties?: SqlRoleDefinitionResource;
+}
+export const SqlResourcesCreateUpdateSqlRoleDefinitionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      roleDefinitionId: S.String.pipe(T.Label()),
+      properties: S.optional(SqlRoleDefinitionResource),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/sqlRoleDefinitions/{roleDefinitionId}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "SqlResourcesCreateUpdateSqlRoleDefinitionRequest",
+  }) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleDefinitionRequest>;
+
 export interface SqlResourcesCreateUpdateSqlRoleDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -15129,6 +16798,49 @@ export const SqlResourcesCreateUpdateSqlRoleDefinitionResponse =
     identifier: "SqlResourcesCreateUpdateSqlRoleDefinitionResponse",
   }) as any as S.Schema<SqlResourcesCreateUpdateSqlRoleDefinitionResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type SqlResourcesCreateUpdateSqlStoredProcedureRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlResourcesCreateUpdateSqlStoredProcedureRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlResourcesCreateUpdateSqlStoredProcedureRequestTagsMap>;
+
+/** Cosmos DB SQL storedProcedure resource object */
+export interface SqlStoredProcedureResource {
+  /** Name of the Cosmos DB SQL storedProcedure */
+  id: string;
+  /** Body of the Stored Procedure */
+  body?: string;
+}
+export const SqlStoredProcedureResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    body: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlStoredProcedureResource",
+}) as any as S.Schema<SqlStoredProcedureResource>;
+
+/** Properties to create and update Azure Cosmos DB storedProcedure. */
+export interface SqlStoredProcedureCreateUpdateProperties {
+  /** The standard JSON format of a storedProcedure */
+  resource: SqlStoredProcedureResource;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const SqlStoredProcedureCreateUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resource: SqlStoredProcedureResource,
+      options: S.optional(CreateUpdateOptions),
+    }),
+).annotate({
+  identifier: "SqlStoredProcedureCreateUpdateProperties",
+}) as any as S.Schema<SqlStoredProcedureCreateUpdateProperties>;
+
 export interface SqlResourcesCreateUpdateSqlStoredProcedureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15142,7 +16854,14 @@ export interface SqlResourcesCreateUpdateSqlStoredProcedureRequest {
   containerName: string;
   /** Cosmos DB storedProcedure name. */
   storedProcedureName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: SqlResourcesCreateUpdateSqlStoredProcedureRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB storedProcedure. */
+  properties: SqlStoredProcedureCreateUpdateProperties;
 }
 export const SqlResourcesCreateUpdateSqlStoredProcedureRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -15153,7 +16872,12 @@ export const SqlResourcesCreateUpdateSqlStoredProcedureRequest =
       databaseName: S.String.pipe(T.Label()),
       containerName: S.String.pipe(T.Label()),
       storedProcedureName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        SqlResourcesCreateUpdateSqlStoredProcedureRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: SqlStoredProcedureCreateUpdateProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -15249,6 +16973,67 @@ export const SqlResourcesCreateUpdateSqlStoredProcedureResponse =
     identifier: "SqlResourcesCreateUpdateSqlStoredProcedureResponse",
   }) as any as S.Schema<SqlResourcesCreateUpdateSqlStoredProcedureResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type SqlResourcesCreateUpdateSqlTriggerRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlResourcesCreateUpdateSqlTriggerRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlResourcesCreateUpdateSqlTriggerRequestTagsMap>;
+
+/** Type of the Trigger */
+export type TriggerType = "Pre" | "Post";
+export const TriggerType = /*@__PURE__*/ S.String;
+
+/** The operation the trigger is associated with */
+export type TriggerOperation =
+  | "All"
+  | "Create"
+  | "Update"
+  | "Delete"
+  | "Replace";
+export const TriggerOperation = /*@__PURE__*/ S.String;
+
+/** Cosmos DB SQL trigger resource object */
+export interface SqlTriggerResource {
+  /** Name of the Cosmos DB SQL trigger */
+  id: string;
+  /** Body of the Trigger */
+  body?: string;
+  /** Type of the Trigger */
+  triggerType?: TriggerType;
+  /** The operation the trigger is associated with */
+  triggerOperation?: TriggerOperation;
+}
+export const SqlTriggerResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    body: S.optional(S.String),
+    triggerType: S.optional(TriggerType),
+    triggerOperation: S.optional(TriggerOperation),
+  }),
+).annotate({
+  identifier: "SqlTriggerResource",
+}) as any as S.Schema<SqlTriggerResource>;
+
+/** Properties to create and update Azure Cosmos DB trigger. */
+export interface SqlTriggerCreateUpdateProperties {
+  /** The standard JSON format of a trigger */
+  resource: SqlTriggerResource;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const SqlTriggerCreateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: SqlTriggerResource,
+    options: S.optional(CreateUpdateOptions),
+  }),
+).annotate({
+  identifier: "SqlTriggerCreateUpdateProperties",
+}) as any as S.Schema<SqlTriggerCreateUpdateProperties>;
+
 export interface SqlResourcesCreateUpdateSqlTriggerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15262,7 +17047,14 @@ export interface SqlResourcesCreateUpdateSqlTriggerRequest {
   containerName: string;
   /** Cosmos DB trigger name. */
   triggerName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: SqlResourcesCreateUpdateSqlTriggerRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB trigger. */
+  properties: SqlTriggerCreateUpdateProperties;
 }
 export const SqlResourcesCreateUpdateSqlTriggerRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -15273,7 +17065,10 @@ export const SqlResourcesCreateUpdateSqlTriggerRequest =
       databaseName: S.String.pipe(T.Label()),
       containerName: S.String.pipe(T.Label()),
       triggerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(SqlResourcesCreateUpdateSqlTriggerRequestTagsMap),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: SqlTriggerCreateUpdateProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -15285,20 +17080,6 @@ export const SqlResourcesCreateUpdateSqlTriggerRequest =
   ).annotate({
     identifier: "SqlResourcesCreateUpdateSqlTriggerRequest",
   }) as any as S.Schema<SqlResourcesCreateUpdateSqlTriggerRequest>;
-
-/** Type of the Trigger */
-export type TriggerType = "Pre" | "Post" | (string & {});
-export const TriggerType = /*@__PURE__*/ S.String;
-
-/** The operation the trigger is associated with */
-export type TriggerOperation =
-  | "All"
-  | "Create"
-  | "Update"
-  | "Delete"
-  | "Replace"
-  | (string & {});
-export const TriggerOperation = /*@__PURE__*/ S.String;
 
 export interface SqlTriggerGetPropertiesResource {
   /** Name of the Cosmos DB SQL trigger */
@@ -15386,6 +17167,49 @@ export const SqlResourcesCreateUpdateSqlTriggerResponse =
     identifier: "SqlResourcesCreateUpdateSqlTriggerResponse",
   }) as any as S.Schema<SqlResourcesCreateUpdateSqlTriggerResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type SqlResourcesCreateUpdateSqlUserDefinedFunctionRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlResourcesCreateUpdateSqlUserDefinedFunctionRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlResourcesCreateUpdateSqlUserDefinedFunctionRequestTagsMap>;
+
+/** Cosmos DB SQL userDefinedFunction resource object */
+export interface SqlUserDefinedFunctionResource {
+  /** Name of the Cosmos DB SQL userDefinedFunction */
+  id: string;
+  /** Body of the User Defined Function */
+  body?: string;
+}
+export const SqlUserDefinedFunctionResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    body: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlUserDefinedFunctionResource",
+}) as any as S.Schema<SqlUserDefinedFunctionResource>;
+
+/** Properties to create and update Azure Cosmos DB userDefinedFunction. */
+export interface SqlUserDefinedFunctionCreateUpdateProperties {
+  /** The standard JSON format of a userDefinedFunction */
+  resource: SqlUserDefinedFunctionResource;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const SqlUserDefinedFunctionCreateUpdateProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: SqlUserDefinedFunctionResource,
+      options: S.optional(CreateUpdateOptions),
+    }),
+  ).annotate({
+    identifier: "SqlUserDefinedFunctionCreateUpdateProperties",
+  }) as any as S.Schema<SqlUserDefinedFunctionCreateUpdateProperties>;
+
 export interface SqlResourcesCreateUpdateSqlUserDefinedFunctionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -15399,7 +17223,14 @@ export interface SqlResourcesCreateUpdateSqlUserDefinedFunctionRequest {
   containerName: string;
   /** Cosmos DB userDefinedFunction name. */
   userDefinedFunctionName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: SqlResourcesCreateUpdateSqlUserDefinedFunctionRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB userDefinedFunction. */
+  properties: SqlUserDefinedFunctionCreateUpdateProperties;
 }
 export const SqlResourcesCreateUpdateSqlUserDefinedFunctionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -15410,7 +17241,12 @@ export const SqlResourcesCreateUpdateSqlUserDefinedFunctionRequest =
       databaseName: S.String.pipe(T.Label()),
       containerName: S.String.pipe(T.Label()),
       userDefinedFunctionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(
+        SqlResourcesCreateUpdateSqlUserDefinedFunctionRequestTagsMap,
+      ),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: SqlUserDefinedFunctionCreateUpdateProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -16522,7 +18358,7 @@ export const ClientEncryptionKeyGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of client encryption keys and their properties. */
 export type ClientEncryptionKeysListResultValueList =
-  ClientEncryptionKeyGetResults[];
+  ReadonlyArray<ClientEncryptionKeyGetResults>;
 export const ClientEncryptionKeysListResultValueList = /*@__PURE__*/ S.Array(
   ClientEncryptionKeyGetResults,
 ) as any as S.Schema<ClientEncryptionKeysListResultValueList>;
@@ -16615,7 +18451,8 @@ export const SqlContainerGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlContainerGetResults>;
 
 /** List of containers and their properties. */
-export type SqlContainerListResultValueList = SqlContainerGetResults[];
+export type SqlContainerListResultValueList =
+  ReadonlyArray<SqlContainerGetResults>;
 export const SqlContainerListResultValueList = /*@__PURE__*/ S.Array(
   SqlContainerGetResults,
 ) as any as S.Schema<SqlContainerListResultValueList>;
@@ -16704,7 +18541,8 @@ export const SqlDatabaseGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlDatabaseGetResults>;
 
 /** List of SQL databases and their properties. */
-export type SqlDatabaseListResultValueList = SqlDatabaseGetResults[];
+export type SqlDatabaseListResultValueList =
+  ReadonlyArray<SqlDatabaseGetResults>;
 export const SqlDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   SqlDatabaseGetResults,
 ) as any as S.Schema<SqlDatabaseListResultValueList>;
@@ -16777,7 +18615,7 @@ export const SqlRoleAssignmentGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Role Assignments and their properties */
 export type SqlRoleAssignmentListResultValueList =
-  SqlRoleAssignmentGetResults[];
+  ReadonlyArray<SqlRoleAssignmentGetResults>;
 export const SqlRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   SqlRoleAssignmentGetResults,
 ) as any as S.Schema<SqlRoleAssignmentListResultValueList>;
@@ -16850,7 +18688,7 @@ export const SqlRoleDefinitionGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Role Definitions and their properties. */
 export type SqlRoleDefinitionListResultValueList =
-  SqlRoleDefinitionGetResults[];
+  ReadonlyArray<SqlRoleDefinitionGetResults>;
 export const SqlRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   SqlRoleDefinitionGetResults,
 ) as any as S.Schema<SqlRoleDefinitionListResultValueList>;
@@ -16947,7 +18785,7 @@ export const SqlStoredProcedureGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of storedProcedures and their properties. */
 export type SqlStoredProcedureListResultValueList =
-  SqlStoredProcedureGetResults[];
+  ReadonlyArray<SqlStoredProcedureGetResults>;
 export const SqlStoredProcedureListResultValueList = /*@__PURE__*/ S.Array(
   SqlStoredProcedureGetResults,
 ) as any as S.Schema<SqlStoredProcedureListResultValueList>;
@@ -17040,7 +18878,7 @@ export const SqlTriggerGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlTriggerGetResults>;
 
 /** List of triggers and their properties. */
-export type SqlTriggerListResultValueList = SqlTriggerGetResults[];
+export type SqlTriggerListResultValueList = ReadonlyArray<SqlTriggerGetResults>;
 export const SqlTriggerListResultValueList = /*@__PURE__*/ S.Array(
   SqlTriggerGetResults,
 ) as any as S.Schema<SqlTriggerListResultValueList>;
@@ -17137,7 +18975,7 @@ export const SqlUserDefinedFunctionGetResults = /*@__PURE__*/ S.suspend(() =>
 
 /** List of userDefinedFunctions and their properties. */
 export type SqlUserDefinedFunctionListResultValueList =
-  SqlUserDefinedFunctionGetResults[];
+  ReadonlyArray<SqlUserDefinedFunctionGetResults>;
 export const SqlUserDefinedFunctionListResultValueList = /*@__PURE__*/ S.Array(
   SqlUserDefinedFunctionGetResults,
 ) as any as S.Schema<SqlUserDefinedFunctionListResultValueList>;
@@ -17474,7 +19312,8 @@ export interface SqlResourcesRetrieveContinuousBackupInformationRequest {
   databaseName: string;
   /** Cosmos DB container name. */
   containerName: string;
-  body: unknown;
+  /** The name of the continuous backup restore location. */
+  location?: string;
 }
 export const SqlResourcesRetrieveContinuousBackupInformationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -17484,7 +19323,7 @@ export const SqlResourcesRetrieveContinuousBackupInformationRequest =
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
       containerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -17497,6 +19336,16 @@ export const SqlResourcesRetrieveContinuousBackupInformationRequest =
     identifier: "SqlResourcesRetrieveContinuousBackupInformationRequest",
   }) as any as S.Schema<SqlResourcesRetrieveContinuousBackupInformationRequest>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type SqlResourcesUpdateSqlContainerThroughputRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlResourcesUpdateSqlContainerThroughputRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlResourcesUpdateSqlContainerThroughputRequestTagsMap>;
+
 export interface SqlResourcesUpdateSqlContainerThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -17508,7 +19357,14 @@ export interface SqlResourcesUpdateSqlContainerThroughputRequest {
   databaseName: string;
   /** Cosmos DB container name. */
   containerName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: SqlResourcesUpdateSqlContainerThroughputRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to update Azure Cosmos DB resource throughput. */
+  properties: ThroughputSettingsUpdatePropertiesInput;
 }
 export const SqlResourcesUpdateSqlContainerThroughputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -17518,7 +19374,10 @@ export const SqlResourcesUpdateSqlContainerThroughputRequest =
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
       containerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(SqlResourcesUpdateSqlContainerThroughputRequestTagsMap),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: ThroughputSettingsUpdatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -17575,6 +19434,16 @@ export const SqlResourcesUpdateSqlContainerThroughputResponse =
     identifier: "SqlResourcesUpdateSqlContainerThroughputResponse",
   }) as any as S.Schema<SqlResourcesUpdateSqlContainerThroughputResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type SqlResourcesUpdateSqlDatabaseThroughputRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlResourcesUpdateSqlDatabaseThroughputRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlResourcesUpdateSqlDatabaseThroughputRequestTagsMap>;
+
 export interface SqlResourcesUpdateSqlDatabaseThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -17584,7 +19453,14 @@ export interface SqlResourcesUpdateSqlDatabaseThroughputRequest {
   accountName: string;
   /** Cosmos DB database name. */
   databaseName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: SqlResourcesUpdateSqlDatabaseThroughputRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to update Azure Cosmos DB resource throughput. */
+  properties: ThroughputSettingsUpdatePropertiesInput;
 }
 export const SqlResourcesUpdateSqlDatabaseThroughputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -17593,7 +19469,10 @@ export const SqlResourcesUpdateSqlDatabaseThroughputRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(SqlResourcesUpdateSqlDatabaseThroughputRequestTagsMap),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: ThroughputSettingsUpdatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -17650,6 +19529,53 @@ export const SqlResourcesUpdateSqlDatabaseThroughputResponse =
     identifier: "SqlResourcesUpdateSqlDatabaseThroughputResponse",
   }) as any as S.Schema<SqlResourcesUpdateSqlDatabaseThroughputResponse>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type TableResourcesCreateUpdateTableRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const TableResourcesCreateUpdateTableRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<TableResourcesCreateUpdateTableRequestTagsMap>;
+
+/** Enum to indicate the mode of account creation. */
+export type TableResourceCreateMode = "Default" | "Restore";
+export const TableResourceCreateMode = /*@__PURE__*/ S.String;
+
+/** Cosmos DB table resource object */
+export interface TableResource {
+  /** Name of the Cosmos DB table */
+  id: string;
+  /** Parameters to indicate the information about the restore */
+  restoreParameters?: RestoreParametersBase;
+  /** Enum to indicate the mode of account creation. */
+  createMode?: TableResourceCreateMode;
+}
+export const TableResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    restoreParameters: S.optional(RestoreParametersBase),
+    createMode: S.optional(TableResourceCreateMode),
+  }),
+).annotate({ identifier: "TableResource" }) as any as S.Schema<TableResource>;
+
+/** Properties to create and update Azure Cosmos DB Table. */
+export interface TableCreateUpdateProperties {
+  /** The standard JSON format of a Table */
+  resource: TableResource;
+  /** A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request. */
+  options?: CreateUpdateOptions;
+}
+export const TableCreateUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: TableResource,
+    options: S.optional(CreateUpdateOptions),
+  }),
+).annotate({
+  identifier: "TableCreateUpdateProperties",
+}) as any as S.Schema<TableCreateUpdateProperties>;
+
 export interface TableResourcesCreateUpdateTableRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -17659,7 +19585,14 @@ export interface TableResourcesCreateUpdateTableRequest {
   accountName: string;
   /** Cosmos DB table name. */
   tableName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: TableResourcesCreateUpdateTableRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to create and update Azure Cosmos DB Table. */
+  properties: TableCreateUpdateProperties;
 }
 export const TableResourcesCreateUpdateTableRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -17668,7 +19601,10 @@ export const TableResourcesCreateUpdateTableRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       tableName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(TableResourcesCreateUpdateTableRequestTagsMap),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: TableCreateUpdateProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -17682,10 +19618,7 @@ export const TableResourcesCreateUpdateTableRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TableResourcesCreateUpdateTableRequest>;
 
 /** Enum to indicate the mode of account creation. */
-export type TableGetPropertiesResourceCreateMode =
-  | "Default"
-  | "Restore"
-  | (string & {});
+export type TableGetPropertiesResourceCreateMode = "Default" | "Restore";
 export const TableGetPropertiesResourceCreateMode = /*@__PURE__*/ S.String;
 
 export interface TableGetPropertiesResource {
@@ -17773,6 +19706,26 @@ export const TableResourcesCreateUpdateTableResponse = /*@__PURE__*/ S.suspend(
   identifier: "TableResourcesCreateUpdateTableResponse",
 }) as any as S.Schema<TableResourcesCreateUpdateTableResponse>;
 
+/** Azure Cosmos DB Table Role Assignment resource object. */
+export interface TableRoleAssignmentResourcePropertiesInput {
+  /** The unique identifier for the associated Role Definition. */
+  roleDefinitionId?: string;
+  /** The data plane resource path for which access is being granted through this Table Role Assignment. */
+  scope?: string;
+  /** The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this Table Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription. */
+  principalId?: string;
+}
+export const TableRoleAssignmentResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      roleDefinitionId: S.optional(S.String),
+      scope: S.optional(S.String),
+      principalId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "TableRoleAssignmentResourcePropertiesInput",
+  }) as any as S.Schema<TableRoleAssignmentResourcePropertiesInput>;
+
 export interface TableResourcesCreateUpdateTableRoleAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -17782,7 +19735,8 @@ export interface TableResourcesCreateUpdateTableRoleAssignmentRequest {
   accountName: string;
   /** The GUID for the Role Assignment. */
   roleAssignmentId: string;
-  body: unknown;
+  /** Properties to create and update an Azure Cosmos DB Table Role Assignment. */
+  properties?: TableRoleAssignmentResourcePropertiesInput;
 }
 export const TableResourcesCreateUpdateTableRoleAssignmentRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -17791,7 +19745,7 @@ export const TableResourcesCreateUpdateTableRoleAssignmentRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       roleAssignmentId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(TableRoleAssignmentResourcePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -17852,47 +19806,17 @@ export const TableResourcesCreateUpdateTableRoleAssignmentResponse =
     identifier: "TableResourcesCreateUpdateTableRoleAssignmentResponse",
   }) as any as S.Schema<TableResourcesCreateUpdateTableRoleAssignmentResponse>;
 
-export interface TableResourcesCreateUpdateTableRoleDefinitionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Cosmos DB database account name. */
-  accountName: string;
-  /** The GUID for the Role Definition. */
-  roleDefinitionId: string;
-  body: unknown;
-}
-export const TableResourcesCreateUpdateTableRoleDefinitionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      roleDefinitionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
-        code: 200,
-        apiVersion: "2026-03-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "TableResourcesCreateUpdateTableRoleDefinitionRequest",
-  }) as any as S.Schema<TableResourcesCreateUpdateTableRoleDefinitionRequest>;
-
 /** A set of fully qualified Scopes at or below which Table Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist. */
 export type TableRoleDefinitionResourcePropertiesAssignableScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const TableRoleDefinitionResourcePropertiesAssignableScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TableRoleDefinitionResourcePropertiesAssignableScopesList>;
 
 /** The set of operations allowed through this Role Definition. */
-export type TableRoleDefinitionResourcePropertiesPermissionsList = Permission[];
+export type TableRoleDefinitionResourcePropertiesPermissionsList =
+  ReadonlyArray<Permission>;
 export const TableRoleDefinitionResourcePropertiesPermissionsList =
   /*@__PURE__*/ S.Array(
     Permission,
@@ -17927,6 +19851,38 @@ export const TableRoleDefinitionResourceProperties = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "TableRoleDefinitionResourceProperties",
 }) as any as S.Schema<TableRoleDefinitionResourceProperties>;
+
+export interface TableResourcesCreateUpdateTableRoleDefinitionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Cosmos DB database account name. */
+  accountName: string;
+  /** The GUID for the Role Definition. */
+  roleDefinitionId: string;
+  /** Properties to create and update an Azure Cosmos DB Table Role Definition. */
+  properties?: TableRoleDefinitionResourceProperties;
+}
+export const TableResourcesCreateUpdateTableRoleDefinitionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      roleDefinitionId: S.String.pipe(T.Label()),
+      properties: S.optional(TableRoleDefinitionResourceProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/tableRoleDefinitions/{roleDefinitionId}",
+        code: 200,
+        apiVersion: "2026-03-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "TableResourcesCreateUpdateTableRoleDefinitionRequest",
+  }) as any as S.Schema<TableResourcesCreateUpdateTableRoleDefinitionRequest>;
 
 export interface TableResourcesCreateUpdateTableRoleDefinitionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -18362,7 +20318,7 @@ export const TableRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The TableRoleAssignmentResource items on this page */
 export type TableRoleAssignmentListResultValueList =
-  TableRoleAssignmentResource[];
+  ReadonlyArray<TableRoleAssignmentResource>;
 export const TableRoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   TableRoleAssignmentResource,
 ) as any as S.Schema<TableRoleAssignmentListResultValueList>;
@@ -18436,7 +20392,7 @@ export const TableRoleDefinitionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The TableRoleDefinitionResource items on this page */
 export type TableRoleDefinitionListResultValueList =
-  TableRoleDefinitionResource[];
+  ReadonlyArray<TableRoleDefinitionResource>;
 export const TableRoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   TableRoleDefinitionResource,
 ) as any as S.Schema<TableRoleDefinitionListResultValueList>;
@@ -18524,7 +20480,7 @@ export const TableGetResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableGetResults>;
 
 /** List of Table and their properties. */
-export type TableListResultValueList = TableGetResults[];
+export type TableListResultValueList = ReadonlyArray<TableGetResults>;
 export const TableListResultValueList = /*@__PURE__*/ S.Array(
   TableGetResults,
 ) as any as S.Schema<TableListResultValueList>;
@@ -18701,7 +20657,8 @@ export interface TableResourcesRetrieveContinuousBackupInformationRequest {
   accountName: string;
   /** Cosmos DB table name. */
   tableName: string;
-  body: unknown;
+  /** The name of the continuous backup restore location. */
+  location?: string;
 }
 export const TableResourcesRetrieveContinuousBackupInformationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -18710,7 +20667,7 @@ export const TableResourcesRetrieveContinuousBackupInformationRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       tableName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -18723,6 +20680,16 @@ export const TableResourcesRetrieveContinuousBackupInformationRequest =
     identifier: "TableResourcesRetrieveContinuousBackupInformationRequest",
   }) as any as S.Schema<TableResourcesRetrieveContinuousBackupInformationRequest>;
 
+/** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+export type TableResourcesUpdateTableThroughputRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const TableResourcesUpdateTableThroughputRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<TableResourcesUpdateTableThroughputRequestTagsMap>;
+
 export interface TableResourcesUpdateTableThroughputRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -18732,7 +20699,14 @@ export interface TableResourcesUpdateTableThroughputRequest {
   accountName: string;
   /** Cosmos DB table name. */
   tableName: string;
-  body: unknown;
+  /** The location of the resource group to which the resource belongs. */
+  location?: string;
+  /** Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB". */
+  tags?: TableResourcesUpdateTableThroughputRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: ManagedServiceIdentityInput;
+  /** Properties to update Azure Cosmos DB resource throughput. */
+  properties: ThroughputSettingsUpdatePropertiesInput;
 }
 export const TableResourcesUpdateTableThroughputRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -18741,7 +20715,10 @@ export const TableResourcesUpdateTableThroughputRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       tableName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      tags: S.optional(TableResourcesUpdateTableThroughputRequestTagsMap),
+      identity: S.optional(ManagedServiceIdentityInput),
+      properties: ThroughputSettingsUpdatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",

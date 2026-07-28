@@ -138,7 +138,7 @@ export const LabelsUserBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabelsUserBulkCreateRequestBodyItem>;
 
 export type LabelsUserBulkCreateRequestBodyList =
-  LabelsUserBulkCreateRequestBodyItem[];
+  ReadonlyArray<LabelsUserBulkCreateRequestBodyItem>;
 export const LabelsUserBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
   LabelsUserBulkCreateRequestBodyItem,
 ) as any as S.Schema<LabelsUserBulkCreateRequestBodyList>;
@@ -165,10 +165,7 @@ export const BulkCreateLabelUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkCreateLabelUsersRequest",
 }) as any as S.Schema<BulkCreateLabelUsersRequest>;
 
-export type LabelsUserBulkCreateResultItemSource =
-  | "user"
-  | "managed"
-  | (string & {});
+export type LabelsUserBulkCreateResultItemSource = "user" | "managed";
 export const LabelsUserBulkCreateResultItemSource = /*@__PURE__*/ S.String;
 
 export interface LabelsUserBulkCreateResultItem {
@@ -196,7 +193,8 @@ export const LabelsUserBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelsUserBulkCreateResultItem",
 }) as any as S.Schema<LabelsUserBulkCreateResultItem>;
 
-export type LabelsUserBulkCreateResultList = LabelsUserBulkCreateResultItem[];
+export type LabelsUserBulkCreateResultList =
+  ReadonlyArray<LabelsUserBulkCreateResultItem>;
 export const LabelsUserBulkCreateResultList = /*@__PURE__*/ S.Array(
   LabelsUserBulkCreateResultItem,
 ) as any as S.Schema<LabelsUserBulkCreateResultList>;
@@ -217,7 +215,7 @@ export const BulkCreateLabelUsersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkCreateLabelUsersResponse>;
 
 export type OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const OperationsLabelsBulkCreateRequestSelectorIncludeOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -250,7 +248,8 @@ export const OperationsLabelsBulkCreateRequestSelector =
     identifier: "OperationsLabelsBulkCreateRequestSelector",
   }) as any as S.Schema<OperationsLabelsBulkCreateRequestSelector>;
 
-export type OperationsLabelsBulkCreateRequestManagedLabelsList = string[];
+export type OperationsLabelsBulkCreateRequestManagedLabelsList =
+  ReadonlyArray<string>;
 export const OperationsLabelsBulkCreateRequestManagedLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -269,7 +268,8 @@ export const OperationsLabelsBulkCreateRequestManaged = /*@__PURE__*/ S.suspend(
   identifier: "OperationsLabelsBulkCreateRequestManaged",
 }) as any as S.Schema<OperationsLabelsBulkCreateRequestManaged>;
 
-export type OperationsLabelsBulkCreateRequestUserLabelsList = string[];
+export type OperationsLabelsBulkCreateRequestUserLabelsList =
+  ReadonlyArray<string>;
 export const OperationsLabelsBulkCreateRequestUserLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -319,14 +319,18 @@ export type OperationsLabelsBulkCreateResultItemMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsLabelsBulkCreateResultItemMethod =
   /*@__PURE__*/ S.String;
 
 export type OperationsLabelsBulkCreateResultItemLabelsItemSource =
   | "user"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const OperationsLabelsBulkCreateResultItemLabelsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -357,7 +361,7 @@ export const OperationsLabelsBulkCreateResultItemLabelsItem =
   }) as any as S.Schema<OperationsLabelsBulkCreateResultItemLabelsItem>;
 
 export type OperationsLabelsBulkCreateResultItemLabelsList =
-  OperationsLabelsBulkCreateResultItemLabelsItem[];
+  ReadonlyArray<OperationsLabelsBulkCreateResultItemLabelsItem>;
 export const OperationsLabelsBulkCreateResultItemLabelsList =
   /*@__PURE__*/ S.Array(
     OperationsLabelsBulkCreateResultItemLabelsItem,
@@ -390,7 +394,7 @@ export const OperationsLabelsBulkCreateResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsBulkCreateResultItem>;
 
 export type OperationsLabelsBulkCreateResultList =
-  OperationsLabelsBulkCreateResultItem[];
+  ReadonlyArray<OperationsLabelsBulkCreateResultItem>;
 export const OperationsLabelsBulkCreateResultList = /*@__PURE__*/ S.Array(
   OperationsLabelsBulkCreateResultItem,
 ) as any as S.Schema<OperationsLabelsBulkCreateResultList>;
@@ -414,7 +418,12 @@ export type OperationsBulkCreateRequestBodyItemMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsBulkCreateRequestBodyItemMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsBulkCreateRequestBodyItem {
@@ -436,7 +445,7 @@ export const OperationsBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsBulkCreateRequestBodyItem>;
 
 export type OperationsBulkCreateRequestBodyList =
-  OperationsBulkCreateRequestBodyItem[];
+  ReadonlyArray<OperationsBulkCreateRequestBodyItem>;
 export const OperationsBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
   OperationsBulkCreateRequestBodyItem,
 ) as any as S.Schema<OperationsBulkCreateRequestBodyList>;
@@ -467,7 +476,12 @@ export type OperationsBulkCreateResultItemMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsBulkCreateResultItemMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds {
@@ -525,7 +539,7 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThre
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureThresholds>;
 
 export type OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -776,7 +790,7 @@ export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSche
   }) as any as S.Schema<OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
 export type OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const OperationsBulkCreateResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -867,7 +881,8 @@ export const OperationsBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsBulkCreateResultItem",
 }) as any as S.Schema<OperationsBulkCreateResultItem>;
 
-export type OperationsBulkCreateResultList = OperationsBulkCreateResultItem[];
+export type OperationsBulkCreateResultList =
+  ReadonlyArray<OperationsBulkCreateResultItem>;
 export const OperationsBulkCreateResultList = /*@__PURE__*/ S.Array(
   OperationsBulkCreateResultItem,
 ) as any as S.Schema<OperationsBulkCreateResultList>;
@@ -907,10 +922,7 @@ export const BulkDeleteLabelUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkDeleteLabelUsersRequest",
 }) as any as S.Schema<BulkDeleteLabelUsersRequest>;
 
-export type LabelsUserBulkDeleteResultItemSource =
-  | "user"
-  | "managed"
-  | (string & {});
+export type LabelsUserBulkDeleteResultItemSource = "user" | "managed";
 export const LabelsUserBulkDeleteResultItemSource = /*@__PURE__*/ S.String;
 
 export interface LabelsUserBulkDeleteResultItem {
@@ -938,7 +950,8 @@ export const LabelsUserBulkDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelsUserBulkDeleteResultItem",
 }) as any as S.Schema<LabelsUserBulkDeleteResultItem>;
 
-export type LabelsUserBulkDeleteResultList = LabelsUserBulkDeleteResultItem[];
+export type LabelsUserBulkDeleteResultList =
+  ReadonlyArray<LabelsUserBulkDeleteResultItem>;
 export const LabelsUserBulkDeleteResultList = /*@__PURE__*/ S.Array(
   LabelsUserBulkDeleteResultItem,
 ) as any as S.Schema<LabelsUserBulkDeleteResultList>;
@@ -982,14 +995,18 @@ export type OperationsLabelsBulkDeleteResultItemMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsLabelsBulkDeleteResultItemMethod =
   /*@__PURE__*/ S.String;
 
 export type OperationsLabelsBulkDeleteResultItemLabelsItemSource =
   | "user"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const OperationsLabelsBulkDeleteResultItemLabelsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -1020,7 +1037,7 @@ export const OperationsLabelsBulkDeleteResultItemLabelsItem =
   }) as any as S.Schema<OperationsLabelsBulkDeleteResultItemLabelsItem>;
 
 export type OperationsLabelsBulkDeleteResultItemLabelsList =
-  OperationsLabelsBulkDeleteResultItemLabelsItem[];
+  ReadonlyArray<OperationsLabelsBulkDeleteResultItemLabelsItem>;
 export const OperationsLabelsBulkDeleteResultItemLabelsList =
   /*@__PURE__*/ S.Array(
     OperationsLabelsBulkDeleteResultItemLabelsItem,
@@ -1053,7 +1070,7 @@ export const OperationsLabelsBulkDeleteResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsBulkDeleteResultItem>;
 
 export type OperationsLabelsBulkDeleteResultList =
-  OperationsLabelsBulkDeleteResultItem[];
+  ReadonlyArray<OperationsLabelsBulkDeleteResultItem>;
 export const OperationsLabelsBulkDeleteResultList = /*@__PURE__*/ S.Array(
   OperationsLabelsBulkDeleteResultItem,
 ) as any as S.Schema<OperationsLabelsBulkDeleteResultList>;
@@ -1100,12 +1117,31 @@ export const BulkDeleteOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkDeleteOperationsResponse",
 }) as any as S.Schema<BulkDeleteOperationsResponse>;
 
+export type DiscoveryOperationsBulkEditRequestBodyValueState =
+  | "review"
+  | "ignored";
+export const DiscoveryOperationsBulkEditRequestBodyValueState =
+  /*@__PURE__*/ S.String;
+
+export interface DiscoveryOperationsBulkEditRequestBodyValue {
+  /** Mark state of operation in API Discovery */
+  state?: DiscoveryOperationsBulkEditRequestBodyValueState;
+}
+export const DiscoveryOperationsBulkEditRequestBodyValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: S.optional(DiscoveryOperationsBulkEditRequestBodyValueState),
+    }),
+  ).annotate({
+    identifier: "DiscoveryOperationsBulkEditRequestBodyValue",
+  }) as any as S.Schema<DiscoveryOperationsBulkEditRequestBodyValue>;
+
 export type DiscoveryOperationsBulkEditRequestBodyMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: DiscoveryOperationsBulkEditRequestBodyValue | undefined;
 };
 export const DiscoveryOperationsBulkEditRequestBodyMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  DiscoveryOperationsBulkEditRequestBodyValue,
 ) as any as S.Schema<DiscoveryOperationsBulkEditRequestBodyMap>;
 
 export interface BulkPatchDiscoveryOperationsRequest {
@@ -1130,12 +1166,29 @@ export const BulkPatchDiscoveryOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPatchDiscoveryOperationsRequest",
 }) as any as S.Schema<BulkPatchDiscoveryOperationsRequest>;
 
+export type DiscoveryOperationsBulkEditResultValueState = "review" | "ignored";
+export const DiscoveryOperationsBulkEditResultValueState =
+  /*@__PURE__*/ S.String;
+
+export interface DiscoveryOperationsBulkEditResultValue {
+  /** Mark state of operation in API Discovery */
+  state?: DiscoveryOperationsBulkEditResultValueState;
+}
+export const DiscoveryOperationsBulkEditResultValue = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: S.optional(DiscoveryOperationsBulkEditResultValueState),
+    }),
+).annotate({
+  identifier: "DiscoveryOperationsBulkEditResultValue",
+}) as any as S.Schema<DiscoveryOperationsBulkEditResultValue>;
+
 export type DiscoveryOperationsBulkEditResultMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: DiscoveryOperationsBulkEditResultValue | undefined;
 };
 export const DiscoveryOperationsBulkEditResultMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  DiscoveryOperationsBulkEditResultValue,
 ) as any as S.Schema<DiscoveryOperationsBulkEditResultMap>;
 
 export type BulkPatchDiscoveryOperationsResponse =
@@ -1146,7 +1199,8 @@ export const BulkPatchDiscoveryOperationsResponse = /*@__PURE__*/ S.suspend(
   identifier: "BulkPatchDiscoveryOperationsResponse",
 }) as any as S.Schema<BulkPatchDiscoveryOperationsResponse>;
 
-export type OperationsLabelsBulkUpdateRequestManagedLabelsList = string[];
+export type OperationsLabelsBulkUpdateRequestManagedLabelsList =
+  ReadonlyArray<string>;
 export const OperationsLabelsBulkUpdateRequestManagedLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1166,7 +1220,7 @@ export const OperationsLabelsBulkUpdateRequestManaged = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsBulkUpdateRequestManaged>;
 
 export type OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const OperationsLabelsBulkUpdateRequestSelectorIncludeOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1199,7 +1253,8 @@ export const OperationsLabelsBulkUpdateRequestSelector =
     identifier: "OperationsLabelsBulkUpdateRequestSelector",
   }) as any as S.Schema<OperationsLabelsBulkUpdateRequestSelector>;
 
-export type OperationsLabelsBulkUpdateRequestUserLabelsList = string[];
+export type OperationsLabelsBulkUpdateRequestUserLabelsList =
+  ReadonlyArray<string>;
 export const OperationsLabelsBulkUpdateRequestUserLabelsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1251,14 +1306,18 @@ export type OperationsLabelsBulkUpdateResultItemMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsLabelsBulkUpdateResultItemMethod =
   /*@__PURE__*/ S.String;
 
 export type OperationsLabelsBulkUpdateResultItemLabelsItemSource =
   | "user"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const OperationsLabelsBulkUpdateResultItemLabelsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -1289,7 +1348,7 @@ export const OperationsLabelsBulkUpdateResultItemLabelsItem =
   }) as any as S.Schema<OperationsLabelsBulkUpdateResultItemLabelsItem>;
 
 export type OperationsLabelsBulkUpdateResultItemLabelsList =
-  OperationsLabelsBulkUpdateResultItemLabelsItem[];
+  ReadonlyArray<OperationsLabelsBulkUpdateResultItemLabelsItem>;
 export const OperationsLabelsBulkUpdateResultItemLabelsList =
   /*@__PURE__*/ S.Array(
     OperationsLabelsBulkUpdateResultItemLabelsItem,
@@ -1322,7 +1381,7 @@ export const OperationsLabelsBulkUpdateResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsBulkUpdateResultItem>;
 
 export type OperationsLabelsBulkUpdateResultList =
-  OperationsLabelsBulkUpdateResultItem[];
+  ReadonlyArray<OperationsLabelsBulkUpdateResultItem>;
 export const OperationsLabelsBulkUpdateResultList = /*@__PURE__*/ S.Array(
   OperationsLabelsBulkUpdateResultItem,
 ) as any as S.Schema<OperationsLabelsBulkUpdateResultList>;
@@ -1342,7 +1401,8 @@ export const BulkUpdateOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkUpdateOperationLabelsResponse",
 }) as any as S.Schema<BulkUpdateOperationLabelsResponse>;
 
-export type ExpressionTemplateFallthroughCreateRequestHostsList = string[];
+export type ExpressionTemplateFallthroughCreateRequestHostsList =
+  ReadonlyArray<string>;
 export const ExpressionTemplateFallthroughCreateRequestHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1393,7 +1453,12 @@ export type OperationsCreateRequestMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsCreateRequestMethod = /*@__PURE__*/ S.String;
 
 export interface CreateOperationRequest {
@@ -1429,7 +1494,12 @@ export type OperationsCreateResponseMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsCreateResponseMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds {
@@ -1487,7 +1557,7 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureThresholds>;
 
 export type OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -1738,7 +1808,7 @@ export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfo
   }) as any as S.Schema<OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
 export type OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const OperationsCreateResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -1813,7 +1883,7 @@ export const OperationsCreateResponseSchemasLearnedParametersItemMap =
   ) as any as S.Schema<OperationsCreateResponseSchemasLearnedParametersItemMap>;
 
 export type OperationsCreateResponseSchemasLearnedParametersList =
-  OperationsCreateResponseSchemasLearnedParametersItemMap[];
+  ReadonlyArray<OperationsCreateResponseSchemasLearnedParametersItemMap>;
 export const OperationsCreateResponseSchemasLearnedParametersList =
   /*@__PURE__*/ S.Array(
     OperationsCreateResponseSchemasLearnedParametersItemMap,
@@ -1858,7 +1928,7 @@ export const OperationsCreateResponseSchemasUploadedParametersItemMap =
   ) as any as S.Schema<OperationsCreateResponseSchemasUploadedParametersItemMap>;
 
 export type OperationsCreateResponseSchemasUploadedParametersList =
-  OperationsCreateResponseSchemasUploadedParametersItemMap[];
+  ReadonlyArray<OperationsCreateResponseSchemasUploadedParametersItemMap>;
 export const OperationsCreateResponseSchemasUploadedParametersList =
   /*@__PURE__*/ S.Array(
     OperationsCreateResponseSchemasUploadedParametersItemMap,
@@ -1937,12 +2007,12 @@ export const CreateOperationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOperationResponse",
 }) as any as S.Schema<CreateOperationResponse>;
 
-export type OperationsLabelsCreateRequestManagedList = string[];
+export type OperationsLabelsCreateRequestManagedList = ReadonlyArray<string>;
 export const OperationsLabelsCreateRequestManagedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsLabelsCreateRequestManagedList>;
 
-export type OperationsLabelsCreateRequestUserList = string[];
+export type OperationsLabelsCreateRequestUserList = ReadonlyArray<string>;
 export const OperationsLabelsCreateRequestUserList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsLabelsCreateRequestUserList>;
@@ -1980,13 +2050,15 @@ export type OperationsLabelsCreateResponseMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsLabelsCreateResponseMethod = /*@__PURE__*/ S.String;
 
-export type OperationsLabelsCreateResponseLabelsItemSource =
-  | "user"
-  | "managed"
-  | (string & {});
+export type OperationsLabelsCreateResponseLabelsItemSource = "user" | "managed";
 export const OperationsLabelsCreateResponseLabelsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -2017,7 +2089,7 @@ export const OperationsLabelsCreateResponseLabelsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsCreateResponseLabelsItem>;
 
 export type OperationsLabelsCreateResponseLabelsList =
-  OperationsLabelsCreateResponseLabelsItem[];
+  ReadonlyArray<OperationsLabelsCreateResponseLabelsItem>;
 export const OperationsLabelsCreateResponseLabelsList = /*@__PURE__*/ S.Array(
   OperationsLabelsCreateResponseLabelsItem,
 ) as any as S.Schema<OperationsLabelsCreateResponseLabelsList>;
@@ -2081,7 +2153,7 @@ export const CreateUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateUserSchemaRequest",
 }) as any as S.Schema<CreateUserSchemaRequest>;
 
-export type UserSchemasCreateResponseSchemaKind = "openapi_v3" | (string & {});
+export type UserSchemasCreateResponseSchemaKind = "openapi_v3";
 export const UserSchemasCreateResponseSchemaKind = /*@__PURE__*/ S.String;
 
 export interface UserSchemasCreateResponseSchema {
@@ -2111,7 +2183,7 @@ export const UserSchemasCreateResponseSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserSchemasCreateResponseSchema>;
 
 export type UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList =
-  string[];
+  ReadonlyArray<string>;
 export const UserSchemasCreateResponseUploadDetailsWarningsItemLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2139,7 +2211,7 @@ export const UserSchemasCreateResponseUploadDetailsWarningsItem =
   }) as any as S.Schema<UserSchemasCreateResponseUploadDetailsWarningsItem>;
 
 export type UserSchemasCreateResponseUploadDetailsWarningsList =
-  UserSchemasCreateResponseUploadDetailsWarningsItem[];
+  ReadonlyArray<UserSchemasCreateResponseUploadDetailsWarningsItem>;
 export const UserSchemasCreateResponseUploadDetailsWarningsList =
   /*@__PURE__*/ S.Array(
     UserSchemasCreateResponseUploadDetailsWarningsItem,
@@ -2197,7 +2269,7 @@ export const DeleteLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteLabelUserRequest",
 }) as any as S.Schema<DeleteLabelUserRequest>;
 
-export type LabelsUserDeleteResponseSource = "user" | "managed" | (string & {});
+export type LabelsUserDeleteResponseSource = "user" | "managed";
 export const LabelsUserDeleteResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2283,13 +2355,15 @@ export type OperationsLabelsDeleteResponseMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsLabelsDeleteResponseMethod = /*@__PURE__*/ S.String;
 
-export type OperationsLabelsDeleteResponseLabelsItemSource =
-  | "user"
-  | "managed"
-  | (string & {});
+export type OperationsLabelsDeleteResponseLabelsItemSource = "user" | "managed";
 export const OperationsLabelsDeleteResponseLabelsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -2320,7 +2394,7 @@ export const OperationsLabelsDeleteResponseLabelsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsDeleteResponseLabelsItem>;
 
 export type OperationsLabelsDeleteResponseLabelsList =
-  OperationsLabelsDeleteResponseLabelsItem[];
+  ReadonlyArray<OperationsLabelsDeleteResponseLabelsItem>;
 export const OperationsLabelsDeleteResponseLabelsList = /*@__PURE__*/ S.Array(
   OperationsLabelsDeleteResponseLabelsItem,
 ) as any as S.Schema<OperationsLabelsDeleteResponseLabelsList>;
@@ -2403,31 +2477,63 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConfigurationRequest",
 }) as any as S.Schema<GetConfigurationRequest>;
 
-export type ConfigurationsGetResponseAuthIdCharacteristicsItemType =
-  | "header"
-  | "cookie"
-  | (string & {});
-export const ConfigurationsGetResponseAuthIdCharacteristicsItemType =
+export type ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
+  "header" | "cookie";
+export const ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   /*@__PURE__*/ S.String;
 
-export interface ConfigurationsGetResponseAuthIdCharacteristicsItem {
+export interface ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic {
   /** The name of the characteristic field, i.e., the header or cookie name. */
-  name?: string;
+  name: string;
   /** The type of characteristic. */
-  type?: ConfigurationsGetResponseAuthIdCharacteristicsItemType;
+  type: ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType;
 }
-export const ConfigurationsGetResponseAuthIdCharacteristicsItem =
+export const ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ConfigurationsGetResponseAuthIdCharacteristicsItemType),
+      name: S.String,
+      type: ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType,
     }),
   ).annotate({
-    identifier: "ConfigurationsGetResponseAuthIdCharacteristicsItem",
-  }) as any as S.Schema<ConfigurationsGetResponseAuthIdCharacteristicsItem>;
+    identifier:
+      "ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic",
+  }) as any as S.Schema<ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic>;
+
+export type ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
+  "jwt";
+export const ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
+  /*@__PURE__*/ S.String;
+
+export interface ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim {
+  /** Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` */
+  name: string;
+  /** The type of characteristic. */
+  type: ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType;
+}
+export const ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      type: ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType,
+    }),
+  ).annotate({
+    identifier:
+      "ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim",
+  }) as any as S.Schema<ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim>;
+
+export type ConfigurationsGetResponseAuthIdCharacteristicsItem =
+  | ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
+  | ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
+export const ConfigurationsGetResponseAuthIdCharacteristicsItem =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["name", "type"],
+    ]),
+  );
 
 export type ConfigurationsGetResponseAuthIdCharacteristicsList =
-  ConfigurationsGetResponseAuthIdCharacteristicsItem[];
+  ReadonlyArray<ConfigurationsGetResponseAuthIdCharacteristicsItem>;
 export const ConfigurationsGetResponseAuthIdCharacteristicsList =
   /*@__PURE__*/ S.Array(
     ConfigurationsGetResponseAuthIdCharacteristicsItem,
@@ -2468,7 +2574,7 @@ export const GetDiscoveryRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDiscoveryRequest",
 }) as any as S.Schema<GetDiscoveryRequest>;
 
-export type DiscoveryGetResponseSchemasList = unknown[];
+export type DiscoveryGetResponseSchemasList = ReadonlyArray<unknown>;
 export const DiscoveryGetResponseSchemasList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DiscoveryGetResponseSchemasList>;
@@ -2515,7 +2621,7 @@ export const GetLabelManagedRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLabelManagedRequest",
 }) as any as S.Schema<GetLabelManagedRequest>;
 
-export type LabelsManagedGetResponseSource = "user" | "managed" | (string & {});
+export type LabelsManagedGetResponseSource = "user" | "managed";
 export const LabelsManagedGetResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2575,7 +2681,7 @@ export const GetLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLabelUserRequest",
 }) as any as S.Schema<GetLabelUserRequest>;
 
-export type LabelsUserGetResponseSource = "user" | "managed" | (string & {});
+export type LabelsUserGetResponseSource = "user" | "managed";
 export const LabelsUserGetResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2610,11 +2716,11 @@ export const GetLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
 export type OperationsGetRequestFeature =
   | "thresholds"
   | "parameter_schemas"
-  | "schema_info"
-  | (string & {});
+  | "schema_info";
 export const OperationsGetRequestFeature = /*@__PURE__*/ S.String;
 
-export type OperationsGetRequestFeatureList = OperationsGetRequestFeature[];
+export type OperationsGetRequestFeatureList =
+  ReadonlyArray<OperationsGetRequestFeature>;
 export const OperationsGetRequestFeatureList = /*@__PURE__*/ S.Array(
   OperationsGetRequestFeature,
 ) as any as S.Schema<OperationsGetRequestFeatureList>;
@@ -2652,7 +2758,12 @@ export type OperationsGetResponseMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsGetResponseMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholdsThresholds {
@@ -2710,7 +2821,7 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds =
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureThresholds>;
 
 export type OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2961,7 +3072,7 @@ export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSch
   }) as any as S.Schema<OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
 export type OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const OperationsGetResponseFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -3036,7 +3147,7 @@ export const OperationsGetResponseSchemasLearnedParametersItemMap =
   ) as any as S.Schema<OperationsGetResponseSchemasLearnedParametersItemMap>;
 
 export type OperationsGetResponseSchemasLearnedParametersList =
-  OperationsGetResponseSchemasLearnedParametersItemMap[];
+  ReadonlyArray<OperationsGetResponseSchemasLearnedParametersItemMap>;
 export const OperationsGetResponseSchemasLearnedParametersList =
   /*@__PURE__*/ S.Array(
     OperationsGetResponseSchemasLearnedParametersItemMap,
@@ -3076,7 +3187,7 @@ export const OperationsGetResponseSchemasUploadedParametersItemMap =
   ) as any as S.Schema<OperationsGetResponseSchemasUploadedParametersItemMap>;
 
 export type OperationsGetResponseSchemasUploadedParametersList =
-  OperationsGetResponseSchemasUploadedParametersItemMap[];
+  ReadonlyArray<OperationsGetResponseSchemasUploadedParametersItemMap>;
 export const OperationsGetResponseSchemasUploadedParametersList =
   /*@__PURE__*/ S.Array(
     OperationsGetResponseSchemasUploadedParametersItemMap,
@@ -3181,8 +3292,7 @@ export const GetOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
 export type OperationsSchemaValidationGetResponseMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const OperationsSchemaValidationGetResponseMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -3227,36 +3337,10 @@ export const GetSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSettingSchemaValidationRequest",
 }) as any as S.Schema<GetSettingSchemaValidationRequest>;
 
-export type SettingsSchemaValidationGetResponseValidationDefaultMitigationAction =
-  "none" | "log" | "block" | (string & {});
-export const SettingsSchemaValidationGetResponseValidationDefaultMitigationAction =
-  /*@__PURE__*/ S.String;
-
-export type SettingsSchemaValidationGetResponseValidationOverrideMitigationAction =
-  "none" | (string & {});
-export const SettingsSchemaValidationGetResponseValidationOverrideMitigationAction =
-  /*@__PURE__*/ S.String;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface GetSettingSchemaValidationResponse {
-  /** The default mitigation action used when there is no mitigation action defined on the operation */
-  validationDefaultMitigationAction?: SettingsSchemaValidationGetResponseValidationDefaultMitigationAction;
-  /** When set, this overrides both zone level and operation level mitigation actions. */
-  validationOverrideMitigationAction?: SettingsSchemaValidationGetResponseValidationOverrideMitigationAction;
-}
+export interface GetSettingSchemaValidationResponse {}
 export const GetSettingSchemaValidationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validationDefaultMitigationAction: S.optional(
-      SettingsSchemaValidationGetResponseValidationDefaultMitigationAction.pipe(
-        T.Body("validation_default_mitigation_action"),
-      ),
-    ),
-    validationOverrideMitigationAction: S.optional(
-      SettingsSchemaValidationGetResponseValidationOverrideMitigationAction.pipe(
-        T.Body("validation_override_mitigation_action"),
-      ),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetSettingSchemaValidationResponse",
 }) as any as S.Schema<GetSettingSchemaValidationResponse>;
@@ -3286,7 +3370,7 @@ export const GetUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserSchemaRequest",
 }) as any as S.Schema<GetUserSchemaRequest>;
 
-export type UserSchemasGetResponseKind = "openapi_v3" | (string & {});
+export type UserSchemasGetResponseKind = "openapi_v3";
 export const UserSchemasGetResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3316,18 +3400,15 @@ export const GetUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUserSchemaResponse",
 }) as any as S.Schema<GetUserSchemaResponse>;
 
-export type DiscoveryOperationsListRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type DiscoveryOperationsListRequestDirection = "asc" | "desc";
 export const DiscoveryOperationsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type DiscoveryOperationsListRequestHostList = string[];
+export type DiscoveryOperationsListRequestHostList = ReadonlyArray<string>;
 export const DiscoveryOperationsListRequestHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiscoveryOperationsListRequestHostList>;
 
-export type DiscoveryOperationsListRequestMethodList = string[];
+export type DiscoveryOperationsListRequestMethodList = ReadonlyArray<string>;
 export const DiscoveryOperationsListRequestMethodList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiscoveryOperationsListRequestMethodList>;
@@ -3336,21 +3417,20 @@ export type DiscoveryOperationsListRequestOrder =
   | "host"
   | "method"
   | "endpoint"
-  | (string & {});
+  | "traffic_stats.requests"
+  | "traffic_stats.last_updated";
 export const DiscoveryOperationsListRequestOrder = /*@__PURE__*/ S.String;
 
 export type DiscoveryOperationsListRequestOrigin =
   | "ML"
   | "SessionIdentifier"
-  | "LabelDiscovery"
-  | (string & {});
+  | "LabelDiscovery";
 export const DiscoveryOperationsListRequestOrigin = /*@__PURE__*/ S.String;
 
 export type DiscoveryOperationsListRequestState =
   | "review"
   | "saved"
-  | "ignored"
-  | (string & {});
+  | "ignored";
 export const DiscoveryOperationsListRequestState = /*@__PURE__*/ S.String;
 
 export interface ListDiscoveryOperationsRequest {
@@ -3411,19 +3491,23 @@ export type DiscoveryOperationsListResultItemMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const DiscoveryOperationsListResultItemMethod = /*@__PURE__*/ S.String;
 
 export type DiscoveryOperationsListResultItemOriginItem =
   | "ML"
   | "SessionIdentifier"
-  | "LabelDiscovery"
-  | (string & {});
+  | "LabelDiscovery";
 export const DiscoveryOperationsListResultItemOriginItem =
   /*@__PURE__*/ S.String;
 
 export type DiscoveryOperationsListResultItemOriginList =
-  DiscoveryOperationsListResultItemOriginItem[];
+  ReadonlyArray<DiscoveryOperationsListResultItemOriginItem>;
 export const DiscoveryOperationsListResultItemOriginList =
   /*@__PURE__*/ S.Array(
     DiscoveryOperationsListResultItemOriginItem,
@@ -3432,8 +3516,7 @@ export const DiscoveryOperationsListResultItemOriginList =
 export type DiscoveryOperationsListResultItemState =
   | "review"
   | "saved"
-  | "ignored"
-  | (string & {});
+  | "ignored";
 export const DiscoveryOperationsListResultItemState = /*@__PURE__*/ S.String;
 
 export interface DiscoveryOperationsListResultItemFeaturesTrafficStats {
@@ -3502,7 +3585,7 @@ export const DiscoveryOperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscoveryOperationsListResultItem>;
 
 export type DiscoveryOperationsListResultList =
-  DiscoveryOperationsListResultItem[];
+  ReadonlyArray<DiscoveryOperationsListResultItem>;
 export const DiscoveryOperationsListResultList = /*@__PURE__*/ S.Array(
   DiscoveryOperationsListResultItem,
 ) as any as S.Schema<DiscoveryOperationsListResultList>;
@@ -3522,17 +3605,18 @@ export const ListDiscoveryOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDiscoveryOperationsResponse",
 }) as any as S.Schema<ListDiscoveryOperationsResponse>;
 
-export type LabelsListRequestDirection = "asc" | "desc" | (string & {});
+export type LabelsListRequestDirection = "asc" | "desc";
 export const LabelsListRequestDirection = /*@__PURE__*/ S.String;
 
 export type LabelsListRequestOrder =
   | "name"
   | "description"
   | "created_at"
-  | (string & {});
+  | "last_updated"
+  | "mapped_resources.operations";
 export const LabelsListRequestOrder = /*@__PURE__*/ S.String;
 
-export type LabelsListRequestSource = "user" | "managed" | (string & {});
+export type LabelsListRequestSource = "user" | "managed";
 export const LabelsListRequestSource = /*@__PURE__*/ S.String;
 
 export interface ListLabelsRequest {
@@ -3578,7 +3662,7 @@ export const ListLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLabelsRequest",
 }) as any as S.Schema<ListLabelsRequest>;
 
-export type LabelsListResultItemSource = "user" | "managed" | (string & {});
+export type LabelsListResultItemSource = "user" | "managed";
 export const LabelsListResultItemSource = /*@__PURE__*/ S.String;
 
 export interface LabelsListResultItem {
@@ -3609,7 +3693,7 @@ export const LabelsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelsListResultItem",
 }) as any as S.Schema<LabelsListResultItem>;
 
-export type LabelsListResultList = LabelsListResultItem[];
+export type LabelsListResultList = ReadonlyArray<LabelsListResultItem>;
 export const LabelsListResultList = /*@__PURE__*/ S.Array(
   LabelsListResultItem,
 ) as any as S.Schema<LabelsListResultList>;
@@ -3629,27 +3713,27 @@ export const ListLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLabelsResponse",
 }) as any as S.Schema<ListLabelsResponse>;
 
-export type OperationsListRequestDirection = "asc" | "desc" | (string & {});
+export type OperationsListRequestDirection = "asc" | "desc";
 export const OperationsListRequestDirection = /*@__PURE__*/ S.String;
 
 export type OperationsListRequestFeature =
   | "thresholds"
   | "parameter_schemas"
-  | "schema_info"
-  | (string & {});
+  | "schema_info";
 export const OperationsListRequestFeature = /*@__PURE__*/ S.String;
 
-export type OperationsListRequestFeatureList = OperationsListRequestFeature[];
+export type OperationsListRequestFeatureList =
+  ReadonlyArray<OperationsListRequestFeature>;
 export const OperationsListRequestFeatureList = /*@__PURE__*/ S.Array(
   OperationsListRequestFeature,
 ) as any as S.Schema<OperationsListRequestFeatureList>;
 
-export type OperationsListRequestHostList = string[];
+export type OperationsListRequestHostList = ReadonlyArray<string>;
 export const OperationsListRequestHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsListRequestHostList>;
 
-export type OperationsListRequestMethodList = string[];
+export type OperationsListRequestMethodList = ReadonlyArray<string>;
 export const OperationsListRequestMethodList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsListRequestMethodList>;
@@ -3658,8 +3742,7 @@ export type OperationsListRequestOrder =
   | "method"
   | "host"
   | "endpoint"
-  | "thresholds.$key"
-  | (string & {});
+  | "thresholds.$key";
 export const OperationsListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListOperationsRequest {
@@ -3710,7 +3793,12 @@ export type OperationsListResultItemMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsListResultItemMethod = /*@__PURE__*/ S.String;
 
 export interface OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds {
@@ -3768,7 +3856,7 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds>;
 
 export type OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4019,7 +4107,7 @@ export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo
   }) as any as S.Schema<OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
 export type OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const OperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -4109,7 +4197,7 @@ export const OperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResultItem",
 }) as any as S.Schema<OperationsListResultItem>;
 
-export type OperationsListResultList = OperationsListResultItem[];
+export type OperationsListResultList = ReadonlyArray<OperationsListResultItem>;
 export const OperationsListResultList = /*@__PURE__*/ S.Array(
   OperationsListResultItem,
 ) as any as S.Schema<OperationsListResultList>;
@@ -4132,16 +4220,16 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SchemasListRequestFeature =
   | "thresholds"
   | "parameter_schemas"
-  | "schema_info"
-  | (string & {});
+  | "schema_info";
 export const SchemasListRequestFeature = /*@__PURE__*/ S.String;
 
-export type SchemasListRequestFeatureList = SchemasListRequestFeature[];
+export type SchemasListRequestFeatureList =
+  ReadonlyArray<SchemasListRequestFeature>;
 export const SchemasListRequestFeatureList = /*@__PURE__*/ S.Array(
   SchemasListRequestFeature,
 ) as any as S.Schema<SchemasListRequestFeatureList>;
 
-export type SchemasListRequestHostList = string[];
+export type SchemasListRequestHostList = ReadonlyArray<string>;
 export const SchemasListRequestHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SchemasListRequestHostList>;
@@ -4172,7 +4260,7 @@ export const ListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSchemasRequest",
 }) as any as S.Schema<ListSchemasRequest>;
 
-export type SchemasListResponseSchemasList = unknown[];
+export type SchemasListResponseSchemasList = ReadonlyArray<unknown>;
 export const SchemasListResponseSchemasList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SchemasListResponseSchemasList>;
@@ -4217,7 +4305,7 @@ export const ListUserSchemaHostsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserSchemaHostsRequest",
 }) as any as S.Schema<ListUserSchemaHostsRequest>;
 
-export type UserSchemasHostsListResultItemHostsList = string[];
+export type UserSchemasHostsListResultItemHostsList = ReadonlyArray<string>;
 export const UserSchemasHostsListResultItemHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserSchemasHostsListResultItemHostsList>;
@@ -4242,7 +4330,8 @@ export const UserSchemasHostsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserSchemasHostsListResultItem",
 }) as any as S.Schema<UserSchemasHostsListResultItem>;
 
-export type UserSchemasHostsListResultList = UserSchemasHostsListResultItem[];
+export type UserSchemasHostsListResultList =
+  ReadonlyArray<UserSchemasHostsListResultItem>;
 export const UserSchemasHostsListResultList = /*@__PURE__*/ S.Array(
   UserSchemasHostsListResultItem,
 ) as any as S.Schema<UserSchemasHostsListResultList>;
@@ -4265,31 +4354,29 @@ export const ListUserSchemaHostsResponse = /*@__PURE__*/ S.suspend(() =>
 export type UserSchemasOperationsListRequestFeature =
   | "thresholds"
   | "parameter_schemas"
-  | "schema_info"
-  | (string & {});
+  | "schema_info";
 export const UserSchemasOperationsListRequestFeature = /*@__PURE__*/ S.String;
 
 export type UserSchemasOperationsListRequestFeatureList =
-  UserSchemasOperationsListRequestFeature[];
+  ReadonlyArray<UserSchemasOperationsListRequestFeature>;
 export const UserSchemasOperationsListRequestFeatureList =
   /*@__PURE__*/ S.Array(
     UserSchemasOperationsListRequestFeature,
   ) as any as S.Schema<UserSchemasOperationsListRequestFeatureList>;
 
-export type UserSchemasOperationsListRequestHostList = string[];
+export type UserSchemasOperationsListRequestHostList = ReadonlyArray<string>;
 export const UserSchemasOperationsListRequestHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserSchemasOperationsListRequestHostList>;
 
-export type UserSchemasOperationsListRequestMethodList = string[];
+export type UserSchemasOperationsListRequestMethodList = ReadonlyArray<string>;
 export const UserSchemasOperationsListRequestMethodList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserSchemasOperationsListRequestMethodList>;
 
 export type UserSchemasOperationsListRequestOperationStatus =
   | "new"
-  | "existing"
-  | (string & {});
+  | "existing";
 export const UserSchemasOperationsListRequestOperationStatus =
   /*@__PURE__*/ S.String;
 
@@ -4344,14 +4431,20 @@ export const ListUserSchemaOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserSchemaOperationsRequest",
 }) as any as S.Schema<ListUserSchemaOperationsRequest>;
 
-export type UserSchemasOperationsListResultItemMethod =
+export type UserSchemasOperationsListResultItemAPIShieldOperationMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
-export const UserSchemasOperationsListResultItemMethod = /*@__PURE__*/ S.String;
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
+export const UserSchemasOperationsListResultItemAPIShieldOperationMethod =
+  /*@__PURE__*/ S.String;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds {
   /** The total number of auth-ids seen across this calculation. */
   authIdTokens?: number;
   /** The number of data points used for the threshold suggestion calculation. */
@@ -4370,7 +4463,7 @@ export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFe
   /** The suggested threshold in requests done by the same auth_id or period_seconds. */
   suggestedThreshold?: number;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       authIdTokens: S.optional(S.Number.pipe(T.Body("auth_id_tokens"))),
@@ -4387,92 +4480,92 @@ export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatur
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds {
-  thresholds?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds;
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholds {
+  thresholds?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       thresholds: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds,
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds,
       ),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholds",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholds>;
 
-export type UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
-  unknown[];
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
+export type UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
+  ReadonlyArray<unknown>;
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
-  ) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
+  ) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas {
   /** An array containing the learned parameter schemas. */
-  parameters?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
+  parameters?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList;
   /** An empty response object. This field is required to yield a valid operation schema. */
   responses?: unknown;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameters: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList,
       ),
       responses: S.optional(S.Unknown),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas {
   lastUpdated?: string;
   /** An operation schema object containing a response. */
-  parameterSchemas?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
+  parameterSchemas?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       parameterSchemas: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas.pipe(
           T.Body("parameter_schemas"),
         ),
       ),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas {
-  parameterSchemas: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemas {
+  parameterSchemas: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parameterSchemas:
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas.pipe(
           T.Body("parameter_schemas"),
         ),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemas",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemas>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting {
   lastUpdated?: string;
   /** Target route. */
   route?: string;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
@@ -4480,34 +4573,34 @@ export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatur
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRouting {
   /** API Routing settings on endpoint. */
-  apiRouting?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
+  apiRouting?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRouting =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       apiRouting: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting.pipe(
           T.Body("api_routing"),
         ),
       ),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRouting",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRouting>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -4515,16 +4608,16 @@ export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatur
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -4532,16 +4625,16 @@ export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatur
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 {
   /** Lower bound for percentile estimate */
   lower?: number;
   /** Upper bound for percentile estimate */
   upper?: number;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99 =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lower: S.optional(S.Number),
@@ -4549,45 +4642,45 @@ export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatur
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals {
   /** Upper and lower bound for percentile estimate */
-  p90?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
+  p90?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90;
   /** Upper and lower bound for percentile estimate */
-  p95?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
+  p95?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95;
   /** Upper and lower bound for percentile estimate */
-  p99?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
+  p99?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       p90: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90,
       ),
       p95: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95,
       ),
       p99: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99,
       ),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
-  confidenceIntervals?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold {
+  confidenceIntervals?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals;
   /** Suggested threshold. */
   mean?: number;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals.pipe(
           T.Body("confidence_intervals"),
         ),
       ),
@@ -4595,46 +4688,46 @@ export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatur
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals {
   lastUpdated?: string;
-  suggestedThreshold?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
+  suggestedThreshold?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
       suggestedThreshold: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold.pipe(
           T.Body("suggested_threshold"),
         ),
       ),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals {
-  confidenceIntervals?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervals {
+  confidenceIntervals?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervals =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       confidenceIntervals: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals.pipe(
           T.Body("confidence_intervals"),
         ),
       ),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervals",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervals>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema {
   /** UUID. */
   id?: string;
   createdAt?: string;
@@ -4643,7 +4736,7 @@ export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFe
   /** Schema file name. */
   name?: string;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -4653,66 +4746,66 @@ export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatur
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema>;
 
-export type UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
-  "none" | "log" | "block" | (string & {});
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
+export type UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
+  "none" | "log" | "block";
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction =
   /*@__PURE__*/ S.String;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo {
   /** Schema active on endpoint. */
-  activeSchema?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
+  activeSchema?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema;
   /** True if a Cloudflare-provided learned schema is available for this endpoint. */
   learnedAvailable?: boolean;
   /** Action taken on requests failing validation. */
-  mitigationAction?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
+  mitigationAction?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activeSchema: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema.pipe(
           T.Body("active_schema"),
         ),
       ),
       learnedAvailable: S.optional(S.Boolean.pipe(T.Body("learned_available"))),
       mitigationAction: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction.pipe(
           T.Body("mitigation_action"),
         ),
       ),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo>;
 
-export interface UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo {
-  schemaInfo?: UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
+export interface UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo {
+  schemaInfo?: UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo;
 }
-export const UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo =
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       schemaInfo: S.optional(
-        UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo.pipe(
           T.Body("schema_info"),
         ),
       ),
     }),
   ).annotate({
     identifier:
-      "UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo",
-  }) as any as S.Schema<UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo>;
+      "UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo>;
 
-export type UserSchemasOperationsListResultItemFeatures =
-  | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds
-  | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas
-  | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting
-  | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals
-  | UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo;
-export const UserSchemasOperationsListResultItemFeatures =
+export type UserSchemasOperationsListResultItemAPIShieldOperationFeatures =
+  | UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholds
+  | UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemas
+  | UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRouting
+  | UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervals
+  | UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo;
+export const UserSchemasOperationsListResultItemAPIShieldOperationFeatures =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
       ["thresholds"],
@@ -4723,33 +4816,78 @@ export const UserSchemasOperationsListResultItemFeatures =
     ]),
   );
 
-export interface UserSchemasOperationsListResultItem {
+export interface UserSchemasOperationsListResultItemAPIShieldOperation {
   /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
-  endpoint?: string;
+  endpoint: string;
   /** RFC3986-compliant host. */
-  host?: string;
-  lastUpdated?: string;
+  host: string;
+  lastUpdated: string;
   /** The HTTP method used to access the endpoint. */
-  method?: UserSchemasOperationsListResultItemMethod;
+  method: UserSchemasOperationsListResultItemAPIShieldOperationMethod;
   /** UUID. */
-  operationId?: string;
-  features?: UserSchemasOperationsListResultItemFeatures;
+  operationId: string;
+  features?: UserSchemasOperationsListResultItemAPIShieldOperationFeatures;
 }
-export const UserSchemasOperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpoint: S.optional(S.String),
-    host: S.optional(S.String),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    method: S.optional(UserSchemasOperationsListResultItemMethod),
-    operationId: S.optional(S.String.pipe(T.Body("operation_id"))),
-    features: S.optional(UserSchemasOperationsListResultItemFeatures),
-  }),
-).annotate({
-  identifier: "UserSchemasOperationsListResultItem",
-}) as any as S.Schema<UserSchemasOperationsListResultItem>;
+export const UserSchemasOperationsListResultItemAPIShieldOperation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      endpoint: S.String,
+      host: S.String,
+      lastUpdated: S.String.pipe(T.Body("last_updated")),
+      method: UserSchemasOperationsListResultItemAPIShieldOperationMethod,
+      operationId: S.String.pipe(T.Body("operation_id")),
+      features: S.optional(
+        UserSchemasOperationsListResultItemAPIShieldOperationFeatures,
+      ),
+    }),
+  ).annotate({
+    identifier: "UserSchemasOperationsListResultItemAPIShieldOperation",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldOperation>;
+
+export type UserSchemasOperationsListResultItemAPIShieldBasicOperationMethod =
+  | "GET"
+  | "POST"
+  | "HEAD"
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
+export const UserSchemasOperationsListResultItemAPIShieldBasicOperationMethod =
+  /*@__PURE__*/ S.String;
+
+export interface UserSchemasOperationsListResultItemAPIShieldBasicOperation {
+  /** The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/. */
+  endpoint: string;
+  /** RFC3986-compliant host. */
+  host: string;
+  /** The HTTP method used to access the endpoint. */
+  method: UserSchemasOperationsListResultItemAPIShieldBasicOperationMethod;
+}
+export const UserSchemasOperationsListResultItemAPIShieldBasicOperation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      endpoint: S.String,
+      host: S.String,
+      method: UserSchemasOperationsListResultItemAPIShieldBasicOperationMethod,
+    }),
+  ).annotate({
+    identifier: "UserSchemasOperationsListResultItemAPIShieldBasicOperation",
+  }) as any as S.Schema<UserSchemasOperationsListResultItemAPIShieldBasicOperation>;
+
+export type UserSchemasOperationsListResultItem =
+  | UserSchemasOperationsListResultItemAPIShieldOperation
+  | UserSchemasOperationsListResultItemAPIShieldBasicOperation;
+export const UserSchemasOperationsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["endpoint", "host", "lastUpdated", "method", "operationId", "features"],
+    ["endpoint", "host", "method"],
+  ]),
+);
 
 export type UserSchemasOperationsListResultList =
-  UserSchemasOperationsListResultItem[];
+  ReadonlyArray<UserSchemasOperationsListResultItem>;
 export const UserSchemasOperationsListResultList = /*@__PURE__*/ S.Array(
   UserSchemasOperationsListResultItem,
 ) as any as S.Schema<UserSchemasOperationsListResultList>;
@@ -4803,7 +4941,7 @@ export const ListUserSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserSchemasRequest",
 }) as any as S.Schema<ListUserSchemasRequest>;
 
-export type UserSchemasListResultItemKind = "openapi_v3" | (string & {});
+export type UserSchemasListResultItemKind = "openapi_v3";
 export const UserSchemasListResultItemKind = /*@__PURE__*/ S.String;
 
 export interface UserSchemasListResultItem {
@@ -4832,7 +4970,8 @@ export const UserSchemasListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserSchemasListResultItem",
 }) as any as S.Schema<UserSchemasListResultItem>;
 
-export type UserSchemasListResultList = UserSchemasListResultItem[];
+export type UserSchemasListResultList =
+  ReadonlyArray<UserSchemasListResultItem>;
 export const UserSchemasListResultList = /*@__PURE__*/ S.Array(
   UserSchemasListResultItem,
 ) as any as S.Schema<UserSchemasListResultList>;
@@ -4881,7 +5020,7 @@ export const PatchLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchLabelUserRequest",
 }) as any as S.Schema<PatchLabelUserRequest>;
 
-export type LabelsUserEditResponseSource = "user" | "managed" | (string & {});
+export type LabelsUserEditResponseSource = "user" | "managed";
 export const LabelsUserEditResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -4911,7 +5050,7 @@ export const PatchLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchLabelUserResponse>;
 
 export type OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction =
-  "log" | "block" | "none" | (string & {});
+  "log" | "block" | "none";
 export const OperationsSchemaValidationEditRequestSettingsMultipleRequestMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -4961,8 +5100,7 @@ export const PatchOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(
 export type OperationsSchemaValidationEditResponseMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const OperationsSchemaValidationEditResponseMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -4985,12 +5123,12 @@ export const PatchOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchOperationSchemaValidationResponse>;
 
 export type SettingsSchemaValidationEditRequestValidationDefaultMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const SettingsSchemaValidationEditRequestValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
 export type SettingsSchemaValidationEditRequestValidationOverrideMitigationAction =
-  "none" | "disable_override" | (string & {});
+  "none" | "disable_override";
 export const SettingsSchemaValidationEditRequestValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -5028,37 +5166,10 @@ export const PatchSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSettingSchemaValidationRequest",
 }) as any as S.Schema<PatchSettingSchemaValidationRequest>;
 
-export type SettingsSchemaValidationEditResponseValidationDefaultMitigationAction =
-  "none" | "log" | "block" | (string & {});
-export const SettingsSchemaValidationEditResponseValidationDefaultMitigationAction =
-  /*@__PURE__*/ S.String;
-
-export type SettingsSchemaValidationEditResponseValidationOverrideMitigationAction =
-  "none" | (string & {});
-export const SettingsSchemaValidationEditResponseValidationOverrideMitigationAction =
-  /*@__PURE__*/ S.String;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface PatchSettingSchemaValidationResponse {
-  /** The default mitigation action used when there is no mitigation action defined on the operation */
-  validationDefaultMitigationAction?: SettingsSchemaValidationEditResponseValidationDefaultMitigationAction;
-  /** When set, this overrides both zone level and operation level mitigation actions. */
-  validationOverrideMitigationAction?: SettingsSchemaValidationEditResponseValidationOverrideMitigationAction;
-}
+export interface PatchSettingSchemaValidationResponse {}
 export const PatchSettingSchemaValidationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      validationDefaultMitigationAction: S.optional(
-        SettingsSchemaValidationEditResponseValidationDefaultMitigationAction.pipe(
-          T.Body("validation_default_mitigation_action"),
-        ),
-      ),
-      validationOverrideMitigationAction: S.optional(
-        SettingsSchemaValidationEditResponseValidationOverrideMitigationAction.pipe(
-          T.Body("validation_override_mitigation_action"),
-        ),
-      ),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PatchSettingSchemaValidationResponse",
 }) as any as S.Schema<PatchSettingSchemaValidationResponse>;
@@ -5088,7 +5199,7 @@ export const PatchUserSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchUserSchemaRequest",
 }) as any as S.Schema<PatchUserSchemaRequest>;
 
-export type UserSchemasEditResponseKind = "openapi_v3" | (string & {});
+export type UserSchemasEditResponseKind = "openapi_v3";
 export const UserSchemasEditResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5118,33 +5229,63 @@ export const PatchUserSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchUserSchemaResponse",
 }) as any as S.Schema<PatchUserSchemaResponse>;
 
-export type ConfigurationsUpdateRequestAuthIdCharacteristicsItemType =
-  | "header"
-  | "cookie"
-  | (string & {});
-export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemType =
+export type ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
+  "header" | "cookie";
+export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   /*@__PURE__*/ S.String;
 
-export interface ConfigurationsUpdateRequestAuthIdCharacteristicsItem {
+export interface ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic {
   /** The name of the characteristic field, i.e., the header or cookie name. */
-  name?: string;
+  name: string;
   /** The type of characteristic. */
-  type?: ConfigurationsUpdateRequestAuthIdCharacteristicsItemType;
+  type: ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType;
 }
-export const ConfigurationsUpdateRequestAuthIdCharacteristicsItem =
+export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(
-        ConfigurationsUpdateRequestAuthIdCharacteristicsItemType,
-      ),
+      name: S.String,
+      type: ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType,
     }),
   ).annotate({
-    identifier: "ConfigurationsUpdateRequestAuthIdCharacteristicsItem",
-  }) as any as S.Schema<ConfigurationsUpdateRequestAuthIdCharacteristicsItem>;
+    identifier:
+      "ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic",
+  }) as any as S.Schema<ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic>;
+
+export type ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
+  "jwt";
+export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
+  /*@__PURE__*/ S.String;
+
+export interface ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim {
+  /** Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` */
+  name: string;
+  /** The type of characteristic. */
+  type: ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType;
+}
+export const ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      type: ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType,
+    }),
+  ).annotate({
+    identifier:
+      "ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim",
+  }) as any as S.Schema<ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim>;
+
+export type ConfigurationsUpdateRequestAuthIdCharacteristicsItem =
+  | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
+  | ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
+export const ConfigurationsUpdateRequestAuthIdCharacteristicsItem =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["name", "type"],
+    ]),
+  );
 
 export type ConfigurationsUpdateRequestAuthIdCharacteristicsList =
-  ConfigurationsUpdateRequestAuthIdCharacteristicsItem[];
+  ReadonlyArray<ConfigurationsUpdateRequestAuthIdCharacteristicsItem>;
 export const ConfigurationsUpdateRequestAuthIdCharacteristicsList =
   /*@__PURE__*/ S.Array(
     ConfigurationsUpdateRequestAuthIdCharacteristicsItem,
@@ -5178,33 +5319,63 @@ export const PutConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutConfigurationRequest",
 }) as any as S.Schema<PutConfigurationRequest>;
 
-export type ConfigurationsUpdateResponseAuthIdCharacteristicsItemType =
-  | "header"
-  | "cookie"
-  | (string & {});
-export const ConfigurationsUpdateResponseAuthIdCharacteristicsItemType =
+export type ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
+  "header" | "cookie";
+export const ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType =
   /*@__PURE__*/ S.String;
 
-export interface ConfigurationsUpdateResponseAuthIdCharacteristicsItem {
+export interface ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic {
   /** The name of the characteristic field, i.e., the header or cookie name. */
-  name?: string;
+  name: string;
   /** The type of characteristic. */
-  type?: ConfigurationsUpdateResponseAuthIdCharacteristicsItemType;
+  type: ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType;
 }
-export const ConfigurationsUpdateResponseAuthIdCharacteristicsItem =
+export const ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(
-        ConfigurationsUpdateResponseAuthIdCharacteristicsItemType,
-      ),
+      name: S.String,
+      type: ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType,
     }),
   ).annotate({
-    identifier: "ConfigurationsUpdateResponseAuthIdCharacteristicsItem",
-  }) as any as S.Schema<ConfigurationsUpdateResponseAuthIdCharacteristicsItem>;
+    identifier:
+      "ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic",
+  }) as any as S.Schema<ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic>;
+
+export type ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
+  "jwt";
+export const ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType =
+  /*@__PURE__*/ S.String;
+
+export interface ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim {
+  /** Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id` */
+  name: string;
+  /** The type of characteristic. */
+  type: ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType;
+}
+export const ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      type: ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType,
+    }),
+  ).annotate({
+    identifier:
+      "ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim",
+  }) as any as S.Schema<ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim>;
+
+export type ConfigurationsUpdateResponseAuthIdCharacteristicsItem =
+  | ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic
+  | ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim;
+export const ConfigurationsUpdateResponseAuthIdCharacteristicsItem =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["name", "type"],
+      ["name", "type"],
+    ]),
+  );
 
 export type ConfigurationsUpdateResponseAuthIdCharacteristicsList =
-  ConfigurationsUpdateResponseAuthIdCharacteristicsItem[];
+  ReadonlyArray<ConfigurationsUpdateResponseAuthIdCharacteristicsItem>;
 export const ConfigurationsUpdateResponseAuthIdCharacteristicsList =
   /*@__PURE__*/ S.Array(
     ConfigurationsUpdateResponseAuthIdCharacteristicsItem,
@@ -5226,7 +5397,7 @@ export const PutConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutConfigurationResponse>;
 
 export type LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const LabelsManagedResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5288,8 +5459,7 @@ export const PutLabelManagedResourceOperationRequest = /*@__PURE__*/ S.suspend(
 
 export type LabelsManagedResourcesOperationUpdateResponseSource =
   | "user"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const LabelsManagedResourcesOperationUpdateResponseSource =
   /*@__PURE__*/ S.String;
 
@@ -5352,7 +5522,7 @@ export const PutLabelUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutLabelUserRequest",
 }) as any as S.Schema<PutLabelUserRequest>;
 
-export type LabelsUserUpdateResponseSource = "user" | "managed" | (string & {});
+export type LabelsUserUpdateResponseSource = "user" | "managed";
 export const LabelsUserUpdateResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5382,7 +5552,7 @@ export const PutLabelUserResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutLabelUserResponse>;
 
 export type LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const LabelsUserResourcesOperationUpdateRequestSelectorIncludeOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5444,8 +5614,7 @@ export const PutLabelUserResourceOperationRequest = /*@__PURE__*/ S.suspend(
 
 export type LabelsUserResourcesOperationUpdateResponseSource =
   | "user"
-  | "managed"
-  | (string & {});
+  | "managed";
 export const LabelsUserResourcesOperationUpdateResponseSource =
   /*@__PURE__*/ S.String;
 
@@ -5482,8 +5651,7 @@ export const PutLabelUserResourceOperationResponse = /*@__PURE__*/ S.suspend(
 export type OperationsSchemaValidationUpdateRequestMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const OperationsSchemaValidationUpdateRequestMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -5520,8 +5688,7 @@ export const PutOperationSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
 export type OperationsSchemaValidationUpdateResponseMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const OperationsSchemaValidationUpdateResponseMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -5547,12 +5714,12 @@ export const PutOperationSchemaValidationResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutOperationSchemaValidationResponse>;
 
 export type SettingsSchemaValidationUpdateRequestValidationDefaultMitigationAction =
-  "none" | "log" | "block" | (string & {});
+  "none" | "log" | "block";
 export const SettingsSchemaValidationUpdateRequestValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
 export type SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction =
-  "none" | "disable_override" | (string & {});
+  "none" | "disable_override";
 export const SettingsSchemaValidationUpdateRequestValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -5589,46 +5756,20 @@ export const PutSettingSchemaValidationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutSettingSchemaValidationRequest",
 }) as any as S.Schema<PutSettingSchemaValidationRequest>;
 
-export type SettingsSchemaValidationUpdateResponseValidationDefaultMitigationAction =
-  "none" | "log" | "block" | (string & {});
-export const SettingsSchemaValidationUpdateResponseValidationDefaultMitigationAction =
-  /*@__PURE__*/ S.String;
-
-export type SettingsSchemaValidationUpdateResponseValidationOverrideMitigationAction =
-  "none" | (string & {});
-export const SettingsSchemaValidationUpdateResponseValidationOverrideMitigationAction =
-  /*@__PURE__*/ S.String;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface PutSettingSchemaValidationResponse {
-  /** The default mitigation action used when there is no mitigation action defined on the operation */
-  validationDefaultMitigationAction?: SettingsSchemaValidationUpdateResponseValidationDefaultMitigationAction;
-  /** When set, this overrides both zone level and operation level mitigation actions. */
-  validationOverrideMitigationAction?: SettingsSchemaValidationUpdateResponseValidationOverrideMitigationAction;
-}
+export interface PutSettingSchemaValidationResponse {}
 export const PutSettingSchemaValidationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validationDefaultMitigationAction: S.optional(
-      SettingsSchemaValidationUpdateResponseValidationDefaultMitigationAction.pipe(
-        T.Body("validation_default_mitigation_action"),
-      ),
-    ),
-    validationOverrideMitigationAction: S.optional(
-      SettingsSchemaValidationUpdateResponseValidationOverrideMitigationAction.pipe(
-        T.Body("validation_override_mitigation_action"),
-      ),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PutSettingSchemaValidationResponse",
 }) as any as S.Schema<PutSettingSchemaValidationResponse>;
 
-export type OperationsLabelsUpdateRequestManagedList = string[];
+export type OperationsLabelsUpdateRequestManagedList = ReadonlyArray<string>;
 export const OperationsLabelsUpdateRequestManagedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsLabelsUpdateRequestManagedList>;
 
-export type OperationsLabelsUpdateRequestUserList = string[];
+export type OperationsLabelsUpdateRequestUserList = ReadonlyArray<string>;
 export const OperationsLabelsUpdateRequestUserList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OperationsLabelsUpdateRequestUserList>;
@@ -5666,13 +5807,15 @@ export type OperationsLabelsUpdateResponseMethod =
   | "GET"
   | "POST"
   | "HEAD"
-  | (string & {});
+  | "OPTIONS"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "PATCH"
+  | "TRACE";
 export const OperationsLabelsUpdateResponseMethod = /*@__PURE__*/ S.String;
 
-export type OperationsLabelsUpdateResponseLabelsItemSource =
-  | "user"
-  | "managed"
-  | (string & {});
+export type OperationsLabelsUpdateResponseLabelsItemSource = "user" | "managed";
 export const OperationsLabelsUpdateResponseLabelsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -5703,7 +5846,7 @@ export const OperationsLabelsUpdateResponseLabelsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OperationsLabelsUpdateResponseLabelsItem>;
 
 export type OperationsLabelsUpdateResponseLabelsList =
-  OperationsLabelsUpdateResponseLabelsItem[];
+  ReadonlyArray<OperationsLabelsUpdateResponseLabelsItem>;
 export const OperationsLabelsUpdateResponseLabelsList = /*@__PURE__*/ S.Array(
   OperationsLabelsUpdateResponseLabelsItem,
 ) as any as S.Schema<OperationsLabelsUpdateResponseLabelsList>;

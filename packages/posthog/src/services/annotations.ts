@@ -36,8 +36,60 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** * `USR` - user * `GIT` - GitHub */
-export type CreationTypeEnum = "USR" | "GIT" | (string & {});
+export type CreationTypeEnum = "USR" | "GIT";
 export const CreationTypeEnum = /*@__PURE__*/ S.String;
+
+/** * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
+export type AnnotationScopeEnum =
+  | "dashboard_item"
+  | "dashboard"
+  | "project"
+  | "organization"
+  | "recording";
+export const AnnotationScopeEnum = /*@__PURE__*/ S.String;
+
+export interface AnnotationsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Annotation text shown on charts to describe the change, release, or incident. */
+  content?: string | null;
+  /** When this annotation happened (ISO 8601 timestamp). Used to position it on charts. */
+  date_marker?: string | null;
+  /** Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes. * `USR` - user * `GIT` - GitHub */
+  creation_type?: CreationTypeEnum;
+  dashboard_item?: number | null;
+  dashboard_id?: number | null;
+  /** Soft-delete flag. Set to true to hide the annotation, or false to restore it. */
+  deleted?: boolean;
+  /** Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected. * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
+  scope?: AnnotationScopeEnum;
+  /** Optional emoji shown in place of the default badge when this annotation is surfaced on a chart. */
+  emoji?: string | null;
+  /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
+  hidden_in_user_interface?: boolean | null;
+}
+export const AnnotationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    content: S.optional(S.NullOr(S.String)),
+    date_marker: S.optional(S.NullOr(S.String)),
+    creation_type: S.optional(CreationTypeEnum),
+    dashboard_item: S.optional(S.NullOr(S.Number)),
+    dashboard_id: S.optional(S.NullOr(S.Number)),
+    deleted: S.optional(S.Boolean),
+    scope: S.optional(AnnotationScopeEnum),
+    emoji: S.optional(S.NullOr(S.String)),
+    hidden_in_user_interface: S.optional(S.NullOr(S.Boolean)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/annotations/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "AnnotationsCreateRequest",
+}) as any as S.Schema<AnnotationsCreateRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -54,11 +106,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -90,75 +141,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-/** * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
-export type AnnotationScopeEnum =
-  | "dashboard_item"
-  | "dashboard"
-  | "project"
-  | "organization"
-  | "recording"
-  | (string & {});
-export const AnnotationScopeEnum = /*@__PURE__*/ S.String;
-
-export interface AnnotationsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: number;
-  /** Annotation text shown on charts to describe the change, release, or incident. */
-  content?: string | null;
-  /** When this annotation happened (ISO 8601 timestamp). Used to position it on charts. */
-  date_marker?: string | null;
-  /** Who created this annotation. Use `USR` for user-created notes and `GIT` for bot/deployment notes. * `USR` - user * `GIT` - GitHub */
-  creation_type?: CreationTypeEnum;
-  dashboard_item?: number | null;
-  dashboard_id?: number | null;
-  dashboard_name?: string | null;
-  insight_short_id?: string | null;
-  insight_name?: string | null;
-  insight_derived_name?: string | null;
-  created_by?: UserBasic;
-  created_at?: string | null;
-  updated_at?: string;
-  /** Soft-delete flag. Set to true to hide the annotation, or false to restore it. */
-  deleted?: boolean;
-  /** Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected. * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
-  scope?: AnnotationScopeEnum;
-  /** Optional emoji shown in place of the default badge when this annotation is surfaced on a chart. */
-  emoji?: string | null;
-  /** When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown. */
-  hidden_in_user_interface?: boolean | null;
-}
-export const AnnotationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.Number),
-    content: S.optional(S.NullOr(S.String)),
-    date_marker: S.optional(S.NullOr(S.String)),
-    creation_type: S.optional(CreationTypeEnum),
-    dashboard_item: S.optional(S.NullOr(S.Number)),
-    dashboard_id: S.optional(S.NullOr(S.Number)),
-    dashboard_name: S.optional(S.NullOr(S.String)),
-    insight_short_id: S.optional(S.NullOr(S.String)),
-    insight_name: S.optional(S.NullOr(S.String)),
-    insight_derived_name: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-    scope: S.optional(AnnotationScopeEnum),
-    emoji: S.optional(S.NullOr(S.String)),
-    hidden_in_user_interface: S.optional(S.NullOr(S.Boolean)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/annotations/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AnnotationsCreateRequest",
-}) as any as S.Schema<AnnotationsCreateRequest>;
-
 export interface Annotation {
   id?: number;
   /** Annotation text shown on charts to describe the change, release, or incident. */
@@ -173,7 +155,7 @@ export interface Annotation {
   insight_short_id?: string | null;
   insight_name?: string | null;
   insight_derived_name?: string | null;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   created_at?: string | null;
   updated_at?: string;
   /** Soft-delete flag. Set to true to hide the annotation, or false to restore it. */
@@ -197,7 +179,7 @@ export const Annotation = /*@__PURE__*/ S.suspend(() =>
     insight_short_id: S.optional(S.NullOr(S.String)),
     insight_name: S.optional(S.NullOr(S.String)),
     insight_derived_name: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.NullOr(S.String)),
     updated_at: S.optional(S.String),
     deleted: S.optional(S.Boolean),
@@ -262,7 +244,7 @@ export const AnnotationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnnotationsListRequest",
 }) as any as S.Schema<AnnotationsListRequest>;
 
-export type PaginatedAnnotationListResultsList = Annotation[];
+export type PaginatedAnnotationListResultsList = ReadonlyArray<Annotation>;
 export const PaginatedAnnotationListResultsList = /*@__PURE__*/ S.Array(
   Annotation,
 ) as any as S.Schema<PaginatedAnnotationListResultsList>;
@@ -297,13 +279,6 @@ export interface AnnotationsPartialUpdateRequest {
   creation_type?: CreationTypeEnum;
   dashboard_item?: number | null;
   dashboard_id?: number | null;
-  dashboard_name?: string | null;
-  insight_short_id?: string | null;
-  insight_name?: string | null;
-  insight_derived_name?: string | null;
-  created_by?: UserBasic;
-  created_at?: string | null;
-  updated_at?: string;
   /** Soft-delete flag. Set to true to hide the annotation, or false to restore it. */
   deleted?: boolean;
   /** Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected. * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
@@ -322,13 +297,6 @@ export const AnnotationsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     creation_type: S.optional(CreationTypeEnum),
     dashboard_item: S.optional(S.NullOr(S.Number)),
     dashboard_id: S.optional(S.NullOr(S.Number)),
-    dashboard_name: S.optional(S.NullOr(S.String)),
-    insight_short_id: S.optional(S.NullOr(S.String)),
-    insight_name: S.optional(S.NullOr(S.String)),
-    insight_derived_name: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.String),
     deleted: S.optional(S.Boolean),
     scope: S.optional(AnnotationScopeEnum),
     emoji: S.optional(S.NullOr(S.String)),
@@ -378,13 +346,6 @@ export interface AnnotationsUpdateRequest {
   creation_type?: CreationTypeEnum;
   dashboard_item?: number | null;
   dashboard_id?: number | null;
-  dashboard_name?: string | null;
-  insight_short_id?: string | null;
-  insight_name?: string | null;
-  insight_derived_name?: string | null;
-  created_by?: UserBasic;
-  created_at?: string | null;
-  updated_at?: string;
   /** Soft-delete flag. Set to true to hide the annotation, or false to restore it. */
   deleted?: boolean;
   /** Annotation visibility scope: `project`, `organization`, `dashboard`, or `dashboard_item`. `recording` is deprecated and rejected. * `dashboard_item` - insight * `dashboard` - dashboard * `project` - project * `organization` - organization * `recording` - recording */
@@ -403,13 +364,6 @@ export const AnnotationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     creation_type: S.optional(CreationTypeEnum),
     dashboard_item: S.optional(S.NullOr(S.Number)),
     dashboard_id: S.optional(S.NullOr(S.Number)),
-    dashboard_name: S.optional(S.NullOr(S.String)),
-    insight_short_id: S.optional(S.NullOr(S.String)),
-    insight_name: S.optional(S.NullOr(S.String)),
-    insight_derived_name: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.String),
     deleted: S.optional(S.Boolean),
     scope: S.optional(AnnotationScopeEnum),
     emoji: S.optional(S.NullOr(S.String)),

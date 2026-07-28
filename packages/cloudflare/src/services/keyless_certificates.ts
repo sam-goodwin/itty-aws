@@ -50,6 +50,9 @@ export class KeylessSslNotAvailable extends T.applyErrorMatchers(
   [{ code: 1067, message: { includes: "Keyless SSL is not available" } }],
 ) {}
 
+export type CreateRequestBundleMethod = "ubiquitous" | "optimal" | "force";
+export const CreateRequestBundleMethod = /*@__PURE__*/ S.String;
+
 export interface CreateRequestTunnel {
   /** Private IP of the Key Server Host. */
   privateIp: string;
@@ -75,7 +78,7 @@ export interface CreateKeylessCertificateRequest {
   /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
   port: number;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: unknown;
+  bundleMethod?: CreateRequestBundleMethod;
   /** The keyless SSL name. */
   name?: string;
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
@@ -87,7 +90,9 @@ export const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     certificate: S.String,
     host: S.String,
     port: S.Number,
-    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    bundleMethod: S.optional(
+      CreateRequestBundleMethod.pipe(T.Body("bundle_method")),
+    ),
     name: S.optional(S.String),
     tunnel: S.optional(CreateRequestTunnel),
   })
@@ -103,12 +108,12 @@ export const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateKeylessCertificateRequest",
 }) as any as S.Schema<CreateKeylessCertificateRequest>;
 
-export type CreateResponsePermissionsList = string[];
+export type CreateResponsePermissionsList = ReadonlyArray<string>;
 export const CreateResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponsePermissionsList>;
 
-export type CreateResponseStatus = "active" | "deleted" | (string & {});
+export type CreateResponseStatus = "active" | "deleted";
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 export interface CreateResponseTunnel {
@@ -225,12 +230,12 @@ export const GetKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetKeylessCertificateRequest",
 }) as any as S.Schema<GetKeylessCertificateRequest>;
 
-export type GetResponsePermissionsList = string[];
+export type GetResponsePermissionsList = ReadonlyArray<string>;
 export const GetResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponsePermissionsList>;
 
-export type GetResponseStatus = "active" | "deleted" | (string & {});
+export type GetResponseStatus = "active" | "deleted";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 export interface GetResponseTunnel {
@@ -308,12 +313,12 @@ export const ListKeylessCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListKeylessCertificatesRequest",
 }) as any as S.Schema<ListKeylessCertificatesRequest>;
 
-export type ListResultItemPermissionsList = string[];
+export type ListResultItemPermissionsList = ReadonlyArray<string>;
 export const ListResultItemPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemPermissionsList>;
 
-export type ListResultItemStatus = "active" | "deleted" | (string & {});
+export type ListResultItemStatus = "active" | "deleted";
 export const ListResultItemStatus = /*@__PURE__*/ S.String;
 
 export interface ListResultItemTunnel {
@@ -368,7 +373,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ListResultItem[];
+export type ListResultList = ReadonlyArray<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -441,12 +446,12 @@ export const PatchKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchKeylessCertificateRequest",
 }) as any as S.Schema<PatchKeylessCertificateRequest>;
 
-export type EditResponsePermissionsList = string[];
+export type EditResponsePermissionsList = ReadonlyArray<string>;
 export const EditResponsePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponsePermissionsList>;
 
-export type EditResponseStatus = "active" | "deleted" | (string & {});
+export type EditResponseStatus = "active" | "deleted";
 export const EditResponseStatus = /*@__PURE__*/ S.String;
 
 export interface EditResponseTunnel {

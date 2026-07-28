@@ -136,7 +136,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -181,7 +181,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -254,7 +254,7 @@ export const VpcNetworkSource = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpcNetworkSource",
 }) as any as S.Schema<VpcNetworkSource>;
 
-export type VpcNetworkSourceList = VpcNetworkSource[];
+export type VpcNetworkSourceList = ReadonlyArray<VpcNetworkSource>;
 export const VpcNetworkSourceList = /*@__PURE__*/ S.Array(
   VpcNetworkSource,
 ) as any as S.Schema<VpcNetworkSourceList>;
@@ -266,8 +266,7 @@ export type OsConstraintOsTypeEnum =
   | "DESKTOP_LINUX"
   | "DESKTOP_CHROME_OS"
   | "ANDROID"
-  | "IOS"
-  | (string & {});
+  | "IOS";
 export const OsConstraintOsTypeEnum = /*@__PURE__*/ S.String;
 
 /** A restriction on the OS type and version of devices making requests. */
@@ -287,7 +286,7 @@ export const OsConstraint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OsConstraint" }) as any as S.Schema<OsConstraint>;
 
-export type OsConstraintList = OsConstraint[];
+export type OsConstraintList = ReadonlyArray<OsConstraint>;
 export const OsConstraintList = /*@__PURE__*/ S.Array(
   OsConstraint,
 ) as any as S.Schema<OsConstraintList>;
@@ -296,13 +295,12 @@ export type DevicePolicyAllowedEncryptionStatusesItemEnum =
   | "ENCRYPTION_UNSPECIFIED"
   | "ENCRYPTION_UNSUPPORTED"
   | "UNENCRYPTED"
-  | "ENCRYPTED"
-  | (string & {});
+  | "ENCRYPTED";
 export const DevicePolicyAllowedEncryptionStatusesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DevicePolicyAllowedEncryptionStatusesItemEnumList =
-  DevicePolicyAllowedEncryptionStatusesItemEnum[];
+  ReadonlyArray<DevicePolicyAllowedEncryptionStatusesItemEnum>;
 export const DevicePolicyAllowedEncryptionStatusesItemEnumList =
   /*@__PURE__*/ S.Array(
     DevicePolicyAllowedEncryptionStatusesItemEnum,
@@ -312,13 +310,12 @@ export type DevicePolicyAllowedDeviceManagementLevelsItemEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "NONE"
   | "BASIC"
-  | "COMPLETE"
-  | (string & {});
+  | "COMPLETE";
 export const DevicePolicyAllowedDeviceManagementLevelsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
-  DevicePolicyAllowedDeviceManagementLevelsItemEnum[];
+  ReadonlyArray<DevicePolicyAllowedDeviceManagementLevelsItemEnum>;
 export const DevicePolicyAllowedDeviceManagementLevelsItemEnumList =
   /*@__PURE__*/ S.Array(
     DevicePolicyAllowedDeviceManagementLevelsItemEnum,
@@ -383,12 +380,12 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 
-export type ConditionList = Condition[];
+export type ConditionList = ReadonlyArray<Condition>;
 export const ConditionList = /*@__PURE__*/ S.Array(
   Condition,
 ) as any as S.Schema<ConditionList>;
 
-export type BasicLevelCombiningFunctionEnum = "AND" | "OR" | (string & {});
+export type BasicLevelCombiningFunctionEnum = "AND" | "OR";
 export const BasicLevelCombiningFunctionEnum = /*@__PURE__*/ S.String;
 
 /** `BasicLevel` is an `AccessLevel` using a set of recommended features. */
@@ -483,22 +480,19 @@ export const CreateAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(
 
 export type AuthorizedOrgsDescAuthorizationTypeEnum =
   | "AUTHORIZATION_TYPE_UNSPECIFIED"
-  | "AUTHORIZATION_TYPE_TRUST"
-  | (string & {});
+  | "AUTHORIZATION_TYPE_TRUST";
 export const AuthorizedOrgsDescAuthorizationTypeEnum = /*@__PURE__*/ S.String;
 
 export type AuthorizedOrgsDescAssetTypeEnum =
   | "ASSET_TYPE_UNSPECIFIED"
   | "ASSET_TYPE_DEVICE"
-  | "ASSET_TYPE_CREDENTIAL_STRENGTH"
-  | (string & {});
+  | "ASSET_TYPE_CREDENTIAL_STRENGTH";
 export const AuthorizedOrgsDescAssetTypeEnum = /*@__PURE__*/ S.String;
 
 export type AuthorizedOrgsDescAuthorizationDirectionEnum =
   | "AUTHORIZATION_DIRECTION_UNSPECIFIED"
   | "AUTHORIZATION_DIRECTION_TO"
-  | "AUTHORIZATION_DIRECTION_FROM"
-  | (string & {});
+  | "AUTHORIZATION_DIRECTION_FROM";
 export const AuthorizedOrgsDescAuthorizationDirectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -553,16 +547,14 @@ export const CreateAccessPoliciesAuthorizedOrgsDescsRequest =
 
 export type ServicePerimeterPerimeterTypeEnum =
   | "PERIMETER_TYPE_REGULAR"
-  | "PERIMETER_TYPE_BRIDGE"
-  | (string & {});
+  | "PERIMETER_TYPE_BRIDGE";
 export const ServicePerimeterPerimeterTypeEnum = /*@__PURE__*/ S.String;
 
 export type IngressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
-  | "ANY_SERVICE_ACCOUNT"
-  | (string & {});
+  | "ANY_SERVICE_ACCOUNT";
 export const IngressFromIdentityTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the Private Service Connect endpoint that an API call refers to. */
@@ -595,7 +587,7 @@ export const IngressSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IngressSource" }) as any as S.Schema<IngressSource>;
 
-export type IngressSourceList = IngressSource[];
+export type IngressSourceList = ReadonlyArray<IngressSource>;
 export const IngressSourceList = /*@__PURE__*/ S.Array(
   IngressSource,
 ) as any as S.Schema<IngressSourceList>;
@@ -631,7 +623,7 @@ export const MethodSelector = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MethodSelector" }) as any as S.Schema<MethodSelector>;
 
-export type MethodSelectorList = MethodSelector[];
+export type MethodSelectorList = ReadonlyArray<MethodSelector>;
 export const MethodSelectorList = /*@__PURE__*/ S.Array(
   MethodSelector,
 ) as any as S.Schema<MethodSelectorList>;
@@ -650,7 +642,7 @@ export const ApiOperation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApiOperation" }) as any as S.Schema<ApiOperation>;
 
-export type ApiOperationList = ApiOperation[];
+export type ApiOperationList = ReadonlyArray<ApiOperation>;
 export const ApiOperationList = /*@__PURE__*/ S.Array(
   ApiOperation,
 ) as any as S.Schema<ApiOperationList>;
@@ -689,7 +681,7 @@ export const IngressPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IngressPolicy" }) as any as S.Schema<IngressPolicy>;
 
-export type IngressPolicyList = IngressPolicy[];
+export type IngressPolicyList = ReadonlyArray<IngressPolicy>;
 export const IngressPolicyList = /*@__PURE__*/ S.Array(
   IngressPolicy,
 ) as any as S.Schema<IngressPolicyList>;
@@ -721,7 +713,7 @@ export const Modifier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Modifier" }) as any as S.Schema<Modifier>;
 
-export type ModifierList = Modifier[];
+export type ModifierList = ReadonlyArray<Modifier>;
 export const ModifierList = /*@__PURE__*/ S.Array(
   Modifier,
 ) as any as S.Schema<ModifierList>;
@@ -743,20 +735,19 @@ export const ServicePattern = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServicePattern" }) as any as S.Schema<ServicePattern>;
 
-export type ServicePatternList = ServicePattern[];
+export type ServicePatternList = ReadonlyArray<ServicePattern>;
 export const ServicePatternList = /*@__PURE__*/ S.Array(
   ServicePattern,
 ) as any as S.Schema<ServicePatternList>;
 
 export type VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
   | "SERVICE_PATTERNS_ENFORCEMENT_SCOPE_UNSPECIFIED"
-  | "GOOGLE_APIS_VIA_PRIVATE_PATH"
-  | (string & {});
+  | "GOOGLE_APIS_VIA_PRIVATE_PATH";
 export const VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
-  VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum[];
+  ReadonlyArray<VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum>;
 export const VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
   /*@__PURE__*/ S.Array(
     VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum,
@@ -803,7 +794,7 @@ export const EgressSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EgressSource" }) as any as S.Schema<EgressSource>;
 
-export type EgressSourceList = EgressSource[];
+export type EgressSourceList = ReadonlyArray<EgressSource>;
 export const EgressSourceList = /*@__PURE__*/ S.Array(
   EgressSource,
 ) as any as S.Schema<EgressSourceList>;
@@ -812,15 +803,13 @@ export type EgressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
-  | "ANY_SERVICE_ACCOUNT"
-  | (string & {});
+  | "ANY_SERVICE_ACCOUNT";
 export const EgressFromIdentityTypeEnum = /*@__PURE__*/ S.String;
 
 export type EgressFromSourceRestrictionEnum =
   | "SOURCE_RESTRICTION_UNSPECIFIED"
   | "SOURCE_RESTRICTION_ENABLED"
-  | "SOURCE_RESTRICTION_DISABLED"
-  | (string & {});
+  | "SOURCE_RESTRICTION_DISABLED";
 export const EgressFromSourceRestrictionEnum = /*@__PURE__*/ S.String;
 
 /** Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. */
@@ -880,7 +869,7 @@ export const EgressPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EgressPolicy" }) as any as S.Schema<EgressPolicy>;
 
-export type EgressPolicyList = EgressPolicy[];
+export type EgressPolicyList = ReadonlyArray<EgressPolicy>;
 export const EgressPolicyList = /*@__PURE__*/ S.Array(
   EgressPolicy,
 ) as any as S.Schema<EgressPolicyList>;
@@ -973,8 +962,7 @@ export type SessionSettingsSessionReauthMethodEnum =
   | "SESSION_REAUTH_METHOD_UNSPECIFIED"
   | "LOGIN"
   | "SECURITY_KEY"
-  | "PASSWORD"
-  | (string & {});
+  | "PASSWORD";
 export const SessionSettingsSessionReauthMethodEnum = /*@__PURE__*/ S.String;
 
 /** Stores settings related to Google Cloud Session Length including session duration, the type of challenge (i.e. method) they should face when their session expires, and other related settings. */
@@ -1016,7 +1004,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
-export type ApplicationList = Application[];
+export type ApplicationList = ReadonlyArray<Application>;
 export const ApplicationList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationList>;
@@ -1076,7 +1064,7 @@ export const ScopedAccessSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScopedAccessSettings",
 }) as any as S.Schema<ScopedAccessSettings>;
 
-export type ScopedAccessSettingsList = ScopedAccessSettings[];
+export type ScopedAccessSettingsList = ReadonlyArray<ScopedAccessSettings>;
 export const ScopedAccessSettingsList = /*@__PURE__*/ S.Array(
   ScopedAccessSettings,
 ) as any as S.Schema<ScopedAccessSettingsList>;
@@ -1267,8 +1255,7 @@ export const GetAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetAccessPoliciesAccessLevelsAccessLevelFormatEnum =
   | "LEVEL_FORMAT_UNSPECIFIED"
   | "AS_DEFINED"
-  | "CEL"
-  | (string & {});
+  | "CEL";
 export const GetAccessPoliciesAccessLevelsAccessLevelFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -1385,8 +1372,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1403,7 +1389,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1422,7 +1408,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1444,7 +1430,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1532,16 +1518,14 @@ export type SupportedServiceSupportStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const SupportedServiceSupportStageEnum = /*@__PURE__*/ S.String;
 
 export type SupportedServiceServiceSupportStageEnum =
   | "SERVICE_SUPPORT_STAGE_UNSPECIFIED"
   | "GA"
   | "PREVIEW"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const SupportedServiceServiceSupportStageEnum = /*@__PURE__*/ S.String;
 
 /** `SupportedService` specifies the VPC Service Controls and its properties. */
@@ -1599,7 +1583,7 @@ export const ListAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccessPoliciesRequest",
 }) as any as S.Schema<ListAccessPoliciesRequest>;
 
-export type AccessPolicyList = AccessPolicy[];
+export type AccessPolicyList = ReadonlyArray<AccessPolicy>;
 export const AccessPolicyList = /*@__PURE__*/ S.Array(
   AccessPolicy,
 ) as any as S.Schema<AccessPolicyList>;
@@ -1623,8 +1607,7 @@ export const ListAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListAccessPoliciesAccessLevelsAccessLevelFormatEnum =
   | "LEVEL_FORMAT_UNSPECIFIED"
   | "AS_DEFINED"
-  | "CEL"
-  | (string & {});
+  | "CEL";
 export const ListAccessPoliciesAccessLevelsAccessLevelFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -1658,7 +1641,7 @@ export const ListAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAccessPoliciesAccessLevelsRequest",
 }) as any as S.Schema<ListAccessPoliciesAccessLevelsRequest>;
 
-export type AccessLevelList = AccessLevel[];
+export type AccessLevelList = ReadonlyArray<AccessLevel>;
 export const AccessLevelList = /*@__PURE__*/ S.Array(
   AccessLevel,
 ) as any as S.Schema<AccessLevelList>;
@@ -1704,7 +1687,7 @@ export const ListAccessPoliciesAuthorizedOrgsDescsRequest =
     identifier: "ListAccessPoliciesAuthorizedOrgsDescsRequest",
   }) as any as S.Schema<ListAccessPoliciesAuthorizedOrgsDescsRequest>;
 
-export type AuthorizedOrgsDescList = AuthorizedOrgsDesc[];
+export type AuthorizedOrgsDescList = ReadonlyArray<AuthorizedOrgsDesc>;
 export const AuthorizedOrgsDescList = /*@__PURE__*/ S.Array(
   AuthorizedOrgsDesc,
 ) as any as S.Schema<AuthorizedOrgsDescList>;
@@ -1750,7 +1733,7 @@ export const ListAccessPoliciesServicePerimetersRequest =
     identifier: "ListAccessPoliciesServicePerimetersRequest",
   }) as any as S.Schema<ListAccessPoliciesServicePerimetersRequest>;
 
-export type ServicePerimeterList = ServicePerimeter[];
+export type ServicePerimeterList = ReadonlyArray<ServicePerimeter>;
 export const ServicePerimeterList = /*@__PURE__*/ S.Array(
   ServicePerimeter,
 ) as any as S.Schema<ServicePerimeterList>;
@@ -1801,7 +1784,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1850,7 +1833,7 @@ export const ListOrganizationsGcpUserAccessBindingsRequest =
     identifier: "ListOrganizationsGcpUserAccessBindingsRequest",
   }) as any as S.Schema<ListOrganizationsGcpUserAccessBindingsRequest>;
 
-export type GcpUserAccessBindingList = GcpUserAccessBinding[];
+export type GcpUserAccessBindingList = ReadonlyArray<GcpUserAccessBinding>;
 export const GcpUserAccessBindingList = /*@__PURE__*/ S.Array(
   GcpUserAccessBinding,
 ) as any as S.Schema<GcpUserAccessBindingList>;
@@ -1929,7 +1912,7 @@ export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesRequest",
 }) as any as S.Schema<ListServicesRequest>;
 
-export type SupportedServiceList = SupportedService[];
+export type SupportedServiceList = ReadonlyArray<SupportedService>;
 export const SupportedServiceList = /*@__PURE__*/ S.Array(
   SupportedService,
 ) as any as S.Schema<SupportedServiceList>;

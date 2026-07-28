@@ -214,10 +214,7 @@ export class UpdateInProgressException extends S.TaggedErrorClass<UpdateInProgre
   "UpdateInProgressException",
   { message: S.optional(S.String) },
 ).pipe(C.withConflictError, C.withRetryableError) {}
-export type DeploymentLifecycleHookAction =
-  | "ROLLBACK"
-  | "CONTINUE"
-  | (string & {});
+export type DeploymentLifecycleHookAction = "ROLLBACK" | "CONTINUE";
 export const DeploymentLifecycleHookAction = /*@__PURE__*/ S.String;
 
 export interface ContinueServiceDeploymentRequest {
@@ -252,7 +249,7 @@ export const ContinueServiceDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContinueServiceDeploymentResponse",
 }) as any as S.Schema<ContinueServiceDeploymentResponse>;
-export type ManagedScalingStatus = "ENABLED" | "DISABLED" | (string & {});
+export type ManagedScalingStatus = "ENABLED" | "DISABLED";
 export const ManagedScalingStatus = /*@__PURE__*/ S.String;
 
 export type ManagedScalingTargetCapacity = number;
@@ -274,13 +271,10 @@ export const ManagedScaling = /*@__PURE__*/ S.suspend(() =>
     instanceWarmupPeriod: S.optional(S.Number),
   }),
 ).annotate({ identifier: "ManagedScaling" }) as any as S.Schema<ManagedScaling>;
-export type ManagedTerminationProtection =
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type ManagedTerminationProtection = "ENABLED" | "DISABLED";
 export const ManagedTerminationProtection = /*@__PURE__*/ S.String;
 
-export type ManagedDraining = "ENABLED" | "DISABLED" | (string & {});
+export type ManagedDraining = "ENABLED" | "DISABLED";
 export const ManagedDraining = /*@__PURE__*/ S.String;
 
 export interface AutoScalingGroupProvider {
@@ -332,17 +326,10 @@ export const ManagedInstancesLocalStorageConfiguration =
   ).annotate({
     identifier: "ManagedInstancesLocalStorageConfiguration",
   }) as any as S.Schema<ManagedInstancesLocalStorageConfiguration>;
-export type ManagedInstancesMonitoringOptions =
-  | "BASIC"
-  | "DETAILED"
-  | (string & {});
+export type ManagedInstancesMonitoringOptions = "BASIC" | "DETAILED";
 export const ManagedInstancesMonitoringOptions = /*@__PURE__*/ S.String;
 
-export type CapacityOptionType =
-  | "ON_DEMAND"
-  | "SPOT"
-  | "RESERVED"
-  | (string & {});
+export type CapacityOptionType = "ON_DEMAND" | "SPOT" | "RESERVED";
 export const CapacityOptionType = /*@__PURE__*/ S.String;
 
 export type BoxedBoolean = boolean;
@@ -365,11 +352,7 @@ export const MemoryMiBRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MemoryMiBRequest",
 }) as any as S.Schema<MemoryMiBRequest>;
-export type CpuManufacturer =
-  | "intel"
-  | "amd"
-  | "amazon-web-services"
-  | (string & {});
+export type CpuManufacturer = "intel" | "amd" | "amazon-web-services";
 export const CpuManufacturer = /*@__PURE__*/ S.String;
 
 export type CpuManufacturerSet = CpuManufacturer[];
@@ -391,21 +374,17 @@ export type ExcludedInstanceTypeSet = string[];
 export const ExcludedInstanceTypeSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
-export type InstanceGeneration = "current" | "previous" | (string & {});
+export type InstanceGeneration = "current" | "previous";
 export const InstanceGeneration = /*@__PURE__*/ S.String;
 
 export type InstanceGenerationSet = InstanceGeneration[];
 export const InstanceGenerationSet = /*@__PURE__*/ S.Array(
   InstanceGeneration.pipe(T.XmlName("item")),
 );
-export type BareMetal = "included" | "required" | "excluded" | (string & {});
+export type BareMetal = "included" | "required" | "excluded";
 export const BareMetal = /*@__PURE__*/ S.String;
 
-export type BurstablePerformance =
-  | "included"
-  | "required"
-  | "excluded"
-  | (string & {});
+export type BurstablePerformance = "included" | "required" | "excluded";
 export const BurstablePerformance = /*@__PURE__*/ S.String;
 
 export interface NetworkInterfaceCountRequest {
@@ -417,10 +396,10 @@ export const NetworkInterfaceCountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkInterfaceCountRequest",
 }) as any as S.Schema<NetworkInterfaceCountRequest>;
-export type LocalStorage = "included" | "required" | "excluded" | (string & {});
+export type LocalStorage = "included" | "required" | "excluded";
 export const LocalStorage = /*@__PURE__*/ S.String;
 
-export type LocalStorageType = "hdd" | "ssd" | (string & {});
+export type LocalStorageType = "hdd" | "ssd";
 export const LocalStorageType = /*@__PURE__*/ S.String;
 
 export type LocalStorageTypeSet = LocalStorageType[];
@@ -445,7 +424,7 @@ export const BaselineEbsBandwidthMbpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BaselineEbsBandwidthMbpsRequest",
 }) as any as S.Schema<BaselineEbsBandwidthMbpsRequest>;
-export type AcceleratorType = "gpu" | "fpga" | "inference" | (string & {});
+export type AcceleratorType = "gpu" | "fpga" | "inference";
 export const AcceleratorType = /*@__PURE__*/ S.String;
 
 export type AcceleratorTypeSet = AcceleratorType[];
@@ -466,8 +445,7 @@ export type AcceleratorManufacturer =
   | "amd"
   | "nvidia"
   | "xilinx"
-  | "habana"
-  | (string & {});
+  | "habana";
 export const AcceleratorManufacturer = /*@__PURE__*/ S.String;
 
 export type AcceleratorManufacturerSet = AcceleratorManufacturer[];
@@ -486,8 +464,7 @@ export type AcceleratorName =
   | "v100"
   | "a10g"
   | "h100"
-  | "t4g"
-  | (string & {});
+  | "t4g";
 export const AcceleratorName = /*@__PURE__*/ S.String;
 
 export type AcceleratorNameSet = AcceleratorName[];
@@ -592,8 +569,7 @@ export const InstanceRequirementsRequest = /*@__PURE__*/ S.suspend(() =>
 export type CapacityReservationPreference =
   | "RESERVATIONS_ONLY"
   | "RESERVATIONS_FIRST"
-  | "RESERVATIONS_EXCLUDED"
-  | (string & {});
+  | "RESERVATIONS_EXCLUDED";
 export const CapacityReservationPreference = /*@__PURE__*/ S.String;
 
 export interface CapacityReservationRequest {
@@ -638,7 +614,7 @@ export const InstanceLaunchTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceLaunchTemplate",
 }) as any as S.Schema<InstanceLaunchTemplate>;
-export type PropagateMITags = "CAPACITY_PROVIDER" | "NONE" | (string & {});
+export type PropagateMITags = "CAPACITY_PROVIDER" | "NONE";
 export const PropagateMITags = /*@__PURE__*/ S.String;
 
 export interface InfrastructureOptimization {
@@ -649,7 +625,7 @@ export const InfrastructureOptimization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InfrastructureOptimization",
 }) as any as S.Schema<InfrastructureOptimization>;
-export type AutoRepairActionsStatus = "ENABLED" | "DISABLED" | (string & {});
+export type AutoRepairActionsStatus = "ENABLED" | "DISABLED";
 export const AutoRepairActionsStatus = /*@__PURE__*/ S.String;
 
 export interface AutoRepairConfiguration {
@@ -724,8 +700,7 @@ export type CapacityProviderStatus =
   | "PROVISIONING"
   | "ACTIVE"
   | "DEPROVISIONING"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const CapacityProviderStatus = /*@__PURE__*/ S.String;
 
 export interface ManagedInstancesProvider {
@@ -755,16 +730,14 @@ export type CapacityProviderUpdateStatus =
   | "DELETE_FAILED"
   | "UPDATE_IN_PROGRESS"
   | "UPDATE_COMPLETE"
-  | "UPDATE_FAILED"
-  | (string & {});
+  | "UPDATE_FAILED";
 export const CapacityProviderUpdateStatus = /*@__PURE__*/ S.String;
 
 export type CapacityProviderType =
   | "EC2_AUTOSCALING"
   | "MANAGED_INSTANCES"
   | "FARGATE"
-  | "FARGATE_SPOT"
-  | (string & {});
+  | "FARGATE_SPOT";
 export const CapacityProviderType = /*@__PURE__*/ S.String;
 
 export interface CapacityProvider {
@@ -803,7 +776,7 @@ export const CreateCapacityProviderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCapacityProviderResponse",
 }) as any as S.Schema<CreateCapacityProviderResponse>;
-export type ClusterSettingName = "containerInsights" | (string & {});
+export type ClusterSettingName = "containerInsights";
 export const ClusterSettingName = /*@__PURE__*/ S.String;
 
 export interface ClusterSetting {
@@ -818,11 +791,7 @@ export const ClusterSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterSetting" }) as any as S.Schema<ClusterSetting>;
 export type ClusterSettings = ClusterSetting[];
 export const ClusterSettings = /*@__PURE__*/ S.Array(ClusterSetting);
-export type ExecuteCommandLogging =
-  | "NONE"
-  | "DEFAULT"
-  | "OVERRIDE"
-  | (string & {});
+export type ExecuteCommandLogging = "NONE" | "DEFAULT" | "OVERRIDE";
 export const ExecuteCommandLogging = /*@__PURE__*/ S.String;
 
 export interface ExecuteCommandLogConfiguration {
@@ -1049,7 +1018,7 @@ export const DaemonDeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DaemonDeploymentConfiguration",
 }) as any as S.Schema<DaemonDeploymentConfiguration>;
-export type DaemonPropagateTags = "DAEMON" | "NONE" | (string & {});
+export type DaemonPropagateTags = "DAEMON" | "NONE";
 export const DaemonPropagateTags = /*@__PURE__*/ S.String;
 
 export interface CreateDaemonRequest {
@@ -1090,7 +1059,7 @@ export const CreateDaemonRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDaemonRequest",
 }) as any as S.Schema<CreateDaemonRequest>;
-export type DaemonStatus = "ACTIVE" | "DELETE_IN_PROGRESS" | (string & {});
+export type DaemonStatus = "ACTIVE" | "DELETE_IN_PROGRESS";
 export const DaemonStatus = /*@__PURE__*/ S.String;
 
 export interface CreateDaemonResponse {
@@ -1176,8 +1145,7 @@ export const ExpressGatewayServiceNetworkConfiguration =
 export type ExpressGatewayServiceScalingMetric =
   | "AVERAGE_CPU"
   | "AVERAGE_MEMORY"
-  | "REQUEST_COUNT_PER_TARGET"
-  | (string & {});
+  | "REQUEST_COUNT_PER_TARGET";
 export const ExpressGatewayServiceScalingMetric = /*@__PURE__*/ S.String;
 
 export interface ExpressGatewayScalingTarget {
@@ -1243,8 +1211,7 @@ export const CreateExpressGatewayServiceRequest = /*@__PURE__*/ S.suspend(() =>
 export type ExpressGatewayServiceStatusCode =
   | "ACTIVE"
   | "DRAINING"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const ExpressGatewayServiceStatusCode = /*@__PURE__*/ S.String;
 
 export interface ExpressGatewayServiceStatus {
@@ -1259,7 +1226,7 @@ export const ExpressGatewayServiceStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExpressGatewayServiceStatus",
 }) as any as S.Schema<ExpressGatewayServiceStatus>;
-export type AccessType = "PUBLIC" | "PRIVATE" | (string & {});
+export type AccessType = "PUBLIC" | "PRIVATE";
 export const AccessType = /*@__PURE__*/ S.String;
 
 export interface IngressPathSummary {
@@ -1346,10 +1313,7 @@ export const CreateExpressGatewayServiceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExpressGatewayServiceResponse",
 }) as any as S.Schema<CreateExpressGatewayServiceResponse>;
-export type AvailabilityZoneRebalancing =
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+export type AvailabilityZoneRebalancing = "ENABLED" | "DISABLED";
 export const AvailabilityZoneRebalancing = /*@__PURE__*/ S.String;
 
 export interface AdvancedConfiguration {
@@ -1404,19 +1368,10 @@ export const ServiceRegistry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceRegistry>;
 export type ServiceRegistries = ServiceRegistry[];
 export const ServiceRegistries = /*@__PURE__*/ S.Array(ServiceRegistry);
-export type LaunchType =
-  | "EC2"
-  | "FARGATE"
-  | "EXTERNAL"
-  | "MANAGED_INSTANCES"
-  | (string & {});
+export type LaunchType = "EC2" | "FARGATE" | "EXTERNAL" | "MANAGED_INSTANCES";
 export const LaunchType = /*@__PURE__*/ S.String;
 
-export type ThresholdType =
-  | "COUNT"
-  | "BOUNDED_PERCENT"
-  | "UNBOUNDED_PERCENT"
-  | (string & {});
+export type ThresholdType = "COUNT" | "BOUNDED_PERCENT" | "UNBOUNDED_PERCENT";
 export const ThresholdType = /*@__PURE__*/ S.String;
 
 export interface ThresholdConfiguration {
@@ -1454,18 +1409,10 @@ export const DeploymentAlarms = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeploymentAlarms",
 }) as any as S.Schema<DeploymentAlarms>;
-export type DeploymentStrategy =
-  | "ROLLING"
-  | "BLUE_GREEN"
-  | "LINEAR"
-  | "CANARY"
-  | (string & {});
+export type DeploymentStrategy = "ROLLING" | "BLUE_GREEN" | "LINEAR" | "CANARY";
 export const DeploymentStrategy = /*@__PURE__*/ S.String;
 
-export type DeploymentLifecycleHookTargetType =
-  | "AWS_LAMBDA"
-  | "PAUSE"
-  | (string & {});
+export type DeploymentLifecycleHookTargetType = "AWS_LAMBDA" | "PAUSE";
 export const DeploymentLifecycleHookTargetType = /*@__PURE__*/ S.String;
 
 export type IAMRoleArn = string;
@@ -1477,8 +1424,7 @@ export type DeploymentLifecycleHookStage =
   | "POST_TEST_TRAFFIC_SHIFT"
   | "PRE_PRODUCTION_TRAFFIC_SHIFT"
   | "PRODUCTION_TRAFFIC_SHIFT"
-  | "POST_PRODUCTION_TRAFFIC_SHIFT"
-  | (string & {});
+  | "POST_PRODUCTION_TRAFFIC_SHIFT";
 export const DeploymentLifecycleHookStage = /*@__PURE__*/ S.String;
 
 export type DeploymentLifecycleHookStageList = DeploymentLifecycleHookStage[];
@@ -1576,10 +1522,7 @@ export const DeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeploymentConfiguration",
 }) as any as S.Schema<DeploymentConfiguration>;
-export type PlacementConstraintType =
-  | "distinctInstance"
-  | "memberOf"
-  | (string & {});
+export type PlacementConstraintType = "distinctInstance" | "memberOf";
 export const PlacementConstraintType = /*@__PURE__*/ S.String;
 
 export interface PlacementConstraint {
@@ -1596,11 +1539,7 @@ export const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementConstraint>;
 export type PlacementConstraints = PlacementConstraint[];
 export const PlacementConstraints = /*@__PURE__*/ S.Array(PlacementConstraint);
-export type PlacementStrategyType =
-  | "random"
-  | "spread"
-  | "binpack"
-  | (string & {});
+export type PlacementStrategyType = "random" | "spread" | "binpack";
 export const PlacementStrategyType = /*@__PURE__*/ S.String;
 
 export interface PlacementStrategy {
@@ -1617,7 +1556,7 @@ export const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementStrategy>;
 export type PlacementStrategies = PlacementStrategy[];
 export const PlacementStrategies = /*@__PURE__*/ S.Array(PlacementStrategy);
-export type AssignPublicIp = "ENABLED" | "DISABLED" | (string & {});
+export type AssignPublicIp = "ENABLED" | "DISABLED";
 export const AssignPublicIp = /*@__PURE__*/ S.String;
 
 export interface AwsVpcConfiguration {
@@ -1642,14 +1581,10 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkConfiguration",
 }) as any as S.Schema<NetworkConfiguration>;
-export type SchedulingStrategy = "REPLICA" | "DAEMON" | (string & {});
+export type SchedulingStrategy = "REPLICA" | "DAEMON";
 export const SchedulingStrategy = /*@__PURE__*/ S.String;
 
-export type DeploymentControllerType =
-  | "ECS"
-  | "CODE_DEPLOY"
-  | "EXTERNAL"
-  | (string & {});
+export type DeploymentControllerType = "ECS" | "CODE_DEPLOY" | "EXTERNAL";
 export const DeploymentControllerType = /*@__PURE__*/ S.String;
 
 export interface DeploymentController {
@@ -1660,11 +1595,7 @@ export const DeploymentController = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeploymentController",
 }) as any as S.Schema<DeploymentController>;
-export type PropagateTags =
-  | "TASK_DEFINITION"
-  | "SERVICE"
-  | "NONE"
-  | (string & {});
+export type PropagateTags = "TASK_DEFINITION" | "SERVICE" | "NONE";
 export const PropagateTags = /*@__PURE__*/ S.String;
 
 export type PortNumber = number;
@@ -1781,8 +1712,7 @@ export type LogDriver =
   | "fluentd"
   | "awslogs"
   | "splunk"
-  | "awsfirelens"
-  | (string & {});
+  | "awsfirelens";
 export const LogDriver = /*@__PURE__*/ S.String;
 
 export type LogConfigurationOptionsMap = { [key: string]: string | undefined };
@@ -1804,13 +1734,10 @@ export const LogConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LogConfiguration",
 }) as any as S.Schema<LogConfiguration>;
-export type ServiceConnectAccessLoggingFormat = "TEXT" | "JSON" | (string & {});
+export type ServiceConnectAccessLoggingFormat = "TEXT" | "JSON";
 export const ServiceConnectAccessLoggingFormat = /*@__PURE__*/ S.String;
 
-export type ServiceConnectIncludeQueryParameters =
-  | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+export type ServiceConnectIncludeQueryParameters = "DISABLED" | "ENABLED";
 export const ServiceConnectIncludeQueryParameters = /*@__PURE__*/ S.String;
 
 export interface ServiceConnectAccessLogConfiguration {
@@ -1848,7 +1775,7 @@ export type ECSVolumeName = string;
 export type EBSKMSKeyId = string;
 export type EBSVolumeType = string;
 export type EBSSnapshotId = string;
-export type EBSResourceType = "volume" | (string & {});
+export type EBSResourceType = "volume";
 export const EBSResourceType = /*@__PURE__*/ S.String;
 
 export interface EBSTagSpecification {
@@ -1867,12 +1794,7 @@ export const EBSTagSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EBSTagSpecification>;
 export type EBSTagSpecifications = EBSTagSpecification[];
 export const EBSTagSpecifications = /*@__PURE__*/ S.Array(EBSTagSpecification);
-export type TaskFilesystemType =
-  | "ext3"
-  | "ext4"
-  | "xfs"
-  | "ntfs"
-  | (string & {});
+export type TaskFilesystemType = "ext3" | "ext4" | "xfs" | "ntfs";
 export const TaskFilesystemType = /*@__PURE__*/ S.String;
 
 export interface ServiceManagedEBSVolumeConfiguration {
@@ -2032,7 +1954,7 @@ export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceRequest",
 }) as any as S.Schema<CreateServiceRequest>;
-export type ScaleUnit = "PERCENT" | (string & {});
+export type ScaleUnit = "PERCENT";
 export const ScaleUnit = /*@__PURE__*/ S.String;
 
 export interface Scale {
@@ -2042,7 +1964,7 @@ export interface Scale {
 export const Scale = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.optional(S.Number), unit: S.optional(ScaleUnit) }),
 ).annotate({ identifier: "Scale" }) as any as S.Schema<Scale>;
-export type StabilityStatus = "STEADY_STATE" | "STABILIZING" | (string & {});
+export type StabilityStatus = "STEADY_STATE" | "STABILIZING";
 export const StabilityStatus = /*@__PURE__*/ S.String;
 
 export interface DeploymentEphemeralStorage {
@@ -2113,11 +2035,7 @@ export const TaskSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskSet" }) as any as S.Schema<TaskSet>;
 export type TaskSets = TaskSet[];
 export const TaskSets = /*@__PURE__*/ S.Array(TaskSet);
-export type DeploymentRolloutState =
-  | "COMPLETED"
-  | "FAILED"
-  | "IN_PROGRESS"
-  | (string & {});
+export type DeploymentRolloutState = "COMPLETED" | "FAILED" | "IN_PROGRESS";
 export const DeploymentRolloutState = /*@__PURE__*/ S.String;
 
 export interface ServiceConnectServiceResource {
@@ -2220,7 +2138,7 @@ export type ServiceCurrentRevisionSummaryList = ServiceCurrentRevisionSummary[];
 export const ServiceCurrentRevisionSummaryList = /*@__PURE__*/ S.Array(
   ServiceCurrentRevisionSummary,
 );
-export type ResourceManagementType = "CUSTOMER" | "ECS" | (string & {});
+export type ResourceManagementType = "CUSTOMER" | "ECS";
 export const ResourceManagementType = /*@__PURE__*/ S.String;
 
 export interface Service {
@@ -2370,8 +2288,7 @@ export type SettingName =
   | "fargateTaskRetirementWaitPeriod"
   | "guardDutyActivate"
   | "defaultLogDriverMode"
-  | "fargateEventWindows"
-  | (string & {});
+  | "fargateEventWindows";
 export const SettingName = /*@__PURE__*/ S.String;
 
 export interface DeleteAccountSettingRequest {
@@ -2393,7 +2310,7 @@ export const DeleteAccountSettingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAccountSettingRequest",
 }) as any as S.Schema<DeleteAccountSettingRequest>;
-export type SettingType = "user" | "aws_managed" | (string & {});
+export type SettingType = "user" | "aws_managed";
 export const SettingType = /*@__PURE__*/ S.String;
 
 export interface Setting {
@@ -2418,7 +2335,7 @@ export const DeleteAccountSettingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAccountSettingResponse",
 }) as any as S.Schema<DeleteAccountSettingResponse>;
-export type TargetType = "container-instance" | (string & {});
+export type TargetType = "container-instance";
 export const TargetType = /*@__PURE__*/ S.String;
 
 export interface Attribute {
@@ -2663,10 +2580,10 @@ export const RepositoryCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RepositoryCredentials",
 }) as any as S.Schema<RepositoryCredentials>;
-export type TransportProtocol = "tcp" | "udp" | (string & {});
+export type TransportProtocol = "tcp" | "udp";
 export const TransportProtocol = /*@__PURE__*/ S.String;
 
-export type ApplicationProtocol = "http" | "http2" | "grpc" | (string & {});
+export type ApplicationProtocol = "http" | "http2" | "grpc";
 export const ApplicationProtocol = /*@__PURE__*/ S.String;
 
 export interface PortMapping {
@@ -2705,7 +2622,7 @@ export const ContainerRestartPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContainerRestartPolicy",
 }) as any as S.Schema<ContainerRestartPolicy>;
-export type EnvironmentFileType = "s3" | (string & {});
+export type EnvironmentFileType = "s3";
 export const EnvironmentFileType = /*@__PURE__*/ S.String;
 
 export interface EnvironmentFile {
@@ -2754,7 +2671,7 @@ export const KernelCapabilities = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KernelCapabilities",
 }) as any as S.Schema<KernelCapabilities>;
-export type DeviceCgroupPermission = "read" | "write" | "mknod" | (string & {});
+export type DeviceCgroupPermission = "read" | "write" | "mknod";
 export const DeviceCgroupPermission = /*@__PURE__*/ S.String;
 
 export type DeviceCgroupPermissions = DeviceCgroupPermission[];
@@ -2811,12 +2728,7 @@ export const LinuxParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LinuxParameters",
 }) as any as S.Schema<LinuxParameters>;
-export type ContainerCondition =
-  | "START"
-  | "COMPLETE"
-  | "SUCCESS"
-  | "HEALTHY"
-  | (string & {});
+export type ContainerCondition = "START" | "COMPLETE" | "SUCCESS" | "HEALTHY";
 export const ContainerCondition = /*@__PURE__*/ S.String;
 
 export interface ContainerDependency {
@@ -2830,7 +2742,7 @@ export const ContainerDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerDependency>;
 export type ContainerDependencies = ContainerDependency[];
 export const ContainerDependencies = /*@__PURE__*/ S.Array(ContainerDependency);
-export type VersionConsistency = "enabled" | "disabled" | (string & {});
+export type VersionConsistency = "enabled" | "disabled";
 export const VersionConsistency = /*@__PURE__*/ S.String;
 
 export interface HostEntry {
@@ -2862,8 +2774,7 @@ export type UlimitName =
   | "rtprio"
   | "rttime"
   | "sigpending"
-  | "stack"
-  | (string & {});
+  | "stack";
 export const UlimitName = /*@__PURE__*/ S.String;
 
 export interface Ulimit {
@@ -2901,11 +2812,7 @@ export const SystemControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemControl" }) as any as S.Schema<SystemControl>;
 export type SystemControls = SystemControl[];
 export const SystemControls = /*@__PURE__*/ S.Array(SystemControl);
-export type ResourceType =
-  | "GPU"
-  | "InferenceAccelerator"
-  | "NeuronDevice"
-  | (string & {});
+export type ResourceType = "GPU" | "InferenceAccelerator" | "NeuronDevice";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export interface ResourceRequirement {
@@ -2919,7 +2826,7 @@ export const ResourceRequirement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceRequirement>;
 export type ResourceRequirements = ResourceRequirement[];
 export const ResourceRequirements = /*@__PURE__*/ S.Array(ResourceRequirement);
-export type FirelensConfigurationType = "fluentd" | "fluentbit" | (string & {});
+export type FirelensConfigurationType = "fluentd" | "fluentbit";
 export const FirelensConfigurationType = /*@__PURE__*/ S.String;
 
 export type FirelensConfigurationOptionsMap = {
@@ -3035,7 +2942,7 @@ export const ContainerDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerDefinition>;
 export type ContainerDefinitions = ContainerDefinition[];
 export const ContainerDefinitions = /*@__PURE__*/ S.Array(ContainerDefinition);
-export type NetworkMode = "bridge" | "host" | "awsvpc" | "none" | (string & {});
+export type NetworkMode = "bridge" | "host" | "awsvpc" | "none";
 export const NetworkMode = /*@__PURE__*/ S.String;
 
 export interface HostVolumeProperties {
@@ -3046,7 +2953,7 @@ export const HostVolumeProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HostVolumeProperties",
 }) as any as S.Schema<HostVolumeProperties>;
-export type Scope = "task" | "shared" | (string & {});
+export type Scope = "task" | "shared";
 export const Scope = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -3072,10 +2979,10 @@ export const DockerVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DockerVolumeConfiguration",
 }) as any as S.Schema<DockerVolumeConfiguration>;
-export type EFSTransitEncryption = "ENABLED" | "DISABLED" | (string & {});
+export type EFSTransitEncryption = "ENABLED" | "DISABLED";
 export const EFSTransitEncryption = /*@__PURE__*/ S.String;
 
-export type EFSAuthorizationConfigIAM = "ENABLED" | "DISABLED" | (string & {});
+export type EFSAuthorizationConfigIAM = "ENABLED" | "DISABLED";
 export const EFSAuthorizationConfigIAM = /*@__PURE__*/ S.String;
 
 export interface EFSAuthorizationConfig {
@@ -3172,16 +3079,12 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 export type VolumeList = Volume[];
 export const VolumeList = /*@__PURE__*/ S.Array(Volume);
-export type TaskDefinitionStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | "DELETE_IN_PROGRESS"
-  | (string & {});
+export type TaskDefinitionStatus = "ACTIVE" | "INACTIVE" | "DELETE_IN_PROGRESS";
 export const TaskDefinitionStatus = /*@__PURE__*/ S.String;
 
 export type RequiresAttributes = Attribute[];
 export const RequiresAttributes = /*@__PURE__*/ S.Array(Attribute);
-export type TaskDefinitionPlacementConstraintType = "memberOf" | (string & {});
+export type TaskDefinitionPlacementConstraintType = "memberOf";
 export const TaskDefinitionPlacementConstraintType = /*@__PURE__*/ S.String;
 
 export interface TaskDefinitionPlacementConstraint {
@@ -3205,13 +3108,12 @@ export type Compatibility =
   | "EC2"
   | "FARGATE"
   | "EXTERNAL"
-  | "MANAGED_INSTANCES"
-  | (string & {});
+  | "MANAGED_INSTANCES";
 export const Compatibility = /*@__PURE__*/ S.String;
 
 export type CompatibilityList = Compatibility[];
 export const CompatibilityList = /*@__PURE__*/ S.Array(Compatibility);
-export type CPUArchitecture = "X86_64" | "ARM64" | (string & {});
+export type CPUArchitecture = "X86_64" | "ARM64";
 export const CPUArchitecture = /*@__PURE__*/ S.String;
 
 export type OSFamily =
@@ -3224,8 +3126,7 @@ export type OSFamily =
   | "WINDOWS_SERVER_2025_CORE"
   | "WINDOWS_SERVER_2025_FULL"
   | "WINDOWS_SERVER_20H2_CORE"
-  | "LINUX"
-  | (string & {});
+  | "LINUX";
 export const OSFamily = /*@__PURE__*/ S.String;
 
 export interface RuntimePlatform {
@@ -3252,13 +3153,13 @@ export const InferenceAccelerator = /*@__PURE__*/ S.suspend(() =>
 export type InferenceAccelerators = InferenceAccelerator[];
 export const InferenceAccelerators =
   /*@__PURE__*/ S.Array(InferenceAccelerator);
-export type PidMode = "host" | "task" | (string & {});
+export type PidMode = "host" | "task";
 export const PidMode = /*@__PURE__*/ S.String;
 
-export type IpcMode = "host" | "task" | "none" | (string & {});
+export type IpcMode = "host" | "task" | "none";
 export const IpcMode = /*@__PURE__*/ S.String;
 
-export type ProxyConfigurationType = "APPMESH" | (string & {});
+export type ProxyConfigurationType = "APPMESH";
 export const ProxyConfigurationType = /*@__PURE__*/ S.String;
 
 export type ProxyConfigurationProperties = KeyValuePair[];
@@ -3469,23 +3370,20 @@ export type AgentUpdateStatus =
   | "STAGED"
   | "UPDATING"
   | "UPDATED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const AgentUpdateStatus = /*@__PURE__*/ S.String;
 
 export type InstanceHealthCheckState =
   | "OK"
   | "IMPAIRED"
   | "INSUFFICIENT_DATA"
-  | "INITIALIZING"
-  | (string & {});
+  | "INITIALIZING";
 export const InstanceHealthCheckState = /*@__PURE__*/ S.String;
 
 export type InstanceHealthCheckType =
   | "CONTAINER_RUNTIME"
   | "ACCELERATED_COMPUTE"
-  | "DAEMON"
-  | (string & {});
+  | "DAEMON";
 export const InstanceHealthCheckType = /*@__PURE__*/ S.String;
 
 export interface InstanceHealthCheckResult {
@@ -3602,7 +3500,7 @@ export const DeregisterTaskDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeregisterTaskDefinitionResponse",
 }) as any as S.Schema<DeregisterTaskDefinitionResponse>;
-export type CapacityProviderField = "TAGS" | (string & {});
+export type CapacityProviderField = "TAGS";
 export const CapacityProviderField = /*@__PURE__*/ S.String;
 
 export type CapacityProviderFieldList = CapacityProviderField[];
@@ -3658,8 +3556,7 @@ export type ClusterField =
   | "CONFIGURATIONS"
   | "SETTINGS"
   | "STATISTICS"
-  | "TAGS"
-  | (string & {});
+  | "TAGS";
 export const ClusterField = /*@__PURE__*/ S.String;
 
 export type ClusterFieldList = ClusterField[];
@@ -3700,10 +3597,7 @@ export const DescribeClustersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeClustersResponse",
 }) as any as S.Schema<DescribeClustersResponse>;
-export type ContainerInstanceField =
-  | "TAGS"
-  | "CONTAINER_INSTANCE_HEALTH"
-  | (string & {});
+export type ContainerInstanceField = "TAGS" | "CONTAINER_INSTANCE_HEALTH";
 export const ContainerInstanceField = /*@__PURE__*/ S.String;
 
 export type ContainerInstanceFieldList = ContainerInstanceField[];
@@ -3850,8 +3744,7 @@ export type DaemonDeploymentStatus =
   | "IN_PROGRESS"
   | "ROLLBACK_IN_PROGRESS"
   | "ROLLBACK_SUCCESSFUL"
-  | "ROLLBACK_FAILED"
-  | (string & {});
+  | "ROLLBACK_FAILED";
 export const DaemonDeploymentStatus = /*@__PURE__*/ S.String;
 
 export interface DaemonDeploymentCapacityProvider {
@@ -3898,8 +3791,7 @@ export type DaemonDeploymentRollbackMonitorsStatus =
   | "TRIGGERED"
   | "MONITORING"
   | "MONITORING_COMPLETE"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const DaemonDeploymentRollbackMonitorsStatus = /*@__PURE__*/ S.String;
 
 export interface DaemonCircuitBreaker {
@@ -4186,14 +4078,13 @@ export const DaemonVolumeList = /*@__PURE__*/ S.Array(DaemonVolume);
 export type DaemonTaskDefinitionStatus =
   | "ACTIVE"
   | "DELETE_IN_PROGRESS"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const DaemonTaskDefinitionStatus = /*@__PURE__*/ S.String;
 
-export type DaemonPidMode = "none" | "shared" | (string & {});
+export type DaemonPidMode = "none" | "shared";
 export const DaemonPidMode = /*@__PURE__*/ S.String;
 
-export type DaemonIpcMode = "none" | "shared" | (string & {});
+export type DaemonIpcMode = "none" | "shared";
 export const DaemonIpcMode = /*@__PURE__*/ S.String;
 
 export interface DaemonTaskDefinition {
@@ -4247,7 +4138,7 @@ export const DescribeDaemonTaskDefinitionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeDaemonTaskDefinitionResponse",
 }) as any as S.Schema<DescribeDaemonTaskDefinitionResponse>;
-export type ExpressGatewayServiceInclude = "TAGS" | (string & {});
+export type ExpressGatewayServiceInclude = "TAGS";
 export const ExpressGatewayServiceInclude = /*@__PURE__*/ S.String;
 
 export type ExpressGatewayServiceIncludeList = ExpressGatewayServiceInclude[];
@@ -4336,8 +4227,7 @@ export type ServiceDeploymentStatus =
   | "ROLLBACK_REQUESTED"
   | "ROLLBACK_IN_PROGRESS"
   | "ROLLBACK_SUCCESSFUL"
-  | "ROLLBACK_FAILED"
-  | (string & {});
+  | "ROLLBACK_FAILED";
 export const ServiceDeploymentStatus = /*@__PURE__*/ S.String;
 
 export type ServiceDeploymentLifecycleStage =
@@ -4350,8 +4240,7 @@ export type ServiceDeploymentLifecycleStage =
   | "PRODUCTION_TRAFFIC_SHIFT"
   | "POST_PRODUCTION_TRAFFIC_SHIFT"
   | "BAKE_TIME"
-  | "CLEAN_UP"
-  | (string & {});
+  | "CLEAN_UP";
 export const ServiceDeploymentLifecycleStage = /*@__PURE__*/ S.String;
 
 export type DeploymentLifecycleHookStatus =
@@ -4359,8 +4248,7 @@ export type DeploymentLifecycleHookStatus =
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | "FAILED"
-  | "TIMED_OUT"
-  | (string & {});
+  | "TIMED_OUT";
 export const DeploymentLifecycleHookStatus = /*@__PURE__*/ S.String;
 
 export interface DeploymentLifecycleHookDetail {
@@ -4403,8 +4291,7 @@ export type ServiceDeploymentRollbackMonitorsStatus =
   | "TRIGGERED"
   | "MONITORING"
   | "MONITORING_COMPLETE"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const ServiceDeploymentRollbackMonitorsStatus = /*@__PURE__*/ S.String;
 
 export interface ServiceDeploymentCircuitBreaker {
@@ -4554,8 +4441,7 @@ export type ManagedResourceStatus =
   | "ACTIVE"
   | "DEPROVISIONING"
   | "DELETED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ManagedResourceStatus = /*@__PURE__*/ S.String;
 
 export interface ManagedLoadBalancer {
@@ -4880,7 +4766,7 @@ export const DescribeServiceRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeServiceRevisionsResponse",
 }) as any as S.Schema<DescribeServiceRevisionsResponse>;
-export type ServiceField = "TAGS" | (string & {});
+export type ServiceField = "TAGS";
 export const ServiceField = /*@__PURE__*/ S.String;
 
 export type ServiceFieldList = ServiceField[];
@@ -4923,7 +4809,7 @@ export const DescribeServicesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeServicesResponse",
 }) as any as S.Schema<DescribeServicesResponse>;
-export type TaskDefinitionField = "TAGS" | (string & {});
+export type TaskDefinitionField = "TAGS";
 export const TaskDefinitionField = /*@__PURE__*/ S.String;
 
 export type TaskDefinitionFieldList = TaskDefinitionField[];
@@ -4963,7 +4849,7 @@ export const DescribeTaskDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTaskDefinitionResponse",
 }) as any as S.Schema<DescribeTaskDefinitionResponse>;
-export type TaskField = "TAGS" | (string & {});
+export type TaskField = "TAGS";
 export const TaskField = /*@__PURE__*/ S.String;
 
 export type TaskFieldList = TaskField[];
@@ -4992,7 +4878,7 @@ export const DescribeTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTasksRequest",
 }) as any as S.Schema<DescribeTasksRequest>;
-export type Connectivity = "CONNECTED" | "DISCONNECTED" | (string & {});
+export type Connectivity = "CONNECTED" | "DISCONNECTED";
 export const Connectivity = /*@__PURE__*/ S.String;
 
 export interface NetworkBinding {
@@ -5031,10 +4917,10 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaces = NetworkInterface[];
 export const NetworkInterfaces = /*@__PURE__*/ S.Array(NetworkInterface);
-export type HealthStatus = "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
+export type HealthStatus = "HEALTHY" | "UNHEALTHY" | "UNKNOWN";
 export const HealthStatus = /*@__PURE__*/ S.String;
 
-export type ManagedAgentName = "ExecuteCommandAgent" | (string & {});
+export type ManagedAgentName = "ExecuteCommandAgent";
 export const ManagedAgentName = /*@__PURE__*/ S.String;
 
 export interface ManagedAgent {
@@ -5169,8 +5055,7 @@ export type TaskStopCode =
   | "UserInitiated"
   | "ServiceSchedulerInitiated"
   | "SpotInterruption"
-  | "TerminationNotice"
-  | (string & {});
+  | "TerminationNotice";
 export const TaskStopCode = /*@__PURE__*/ S.String;
 
 export interface TaskEphemeralStorage {
@@ -5277,7 +5162,7 @@ export const DescribeTasksResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTasksResponse",
 }) as any as S.Schema<DescribeTasksResponse>;
-export type TaskSetField = "TAGS" | (string & {});
+export type TaskSetField = "TAGS";
 export const TaskSetField = /*@__PURE__*/ S.String;
 
 export type TaskSetFieldList = TaskSetField[];
@@ -5587,8 +5472,7 @@ export type ContainerInstanceStatus =
   | "DRAINING"
   | "REGISTERING"
   | "DEREGISTERING"
-  | "REGISTRATION_FAILED"
-  | (string & {});
+  | "REGISTRATION_FAILED";
 export const ContainerInstanceStatus = /*@__PURE__*/ S.String;
 
 export interface ListContainerInstancesRequest {
@@ -5771,19 +5655,16 @@ export const ListDaemonsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDaemonsResponse",
 }) as any as S.Schema<ListDaemonsResponse>;
-export type DaemonTaskDefinitionRevisionFilter =
-  | "LAST_REGISTERED"
-  | (string & {});
+export type DaemonTaskDefinitionRevisionFilter = "LAST_REGISTERED";
 export const DaemonTaskDefinitionRevisionFilter = /*@__PURE__*/ S.String;
 
 export type DaemonTaskDefinitionStatusFilter =
   | "ACTIVE"
   | "DELETE_IN_PROGRESS"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const DaemonTaskDefinitionStatusFilter = /*@__PURE__*/ S.String;
 
-export type SortOrder = "ASC" | "DESC" | (string & {});
+export type SortOrder = "ASC" | "DESC";
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface ListDaemonTaskDefinitionsRequest {
@@ -6034,11 +5915,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
-export type TaskDefinitionFamilyStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | "ALL"
-  | (string & {});
+export type TaskDefinitionFamilyStatus = "ACTIVE" | "INACTIVE" | "ALL";
 export const TaskDefinitionFamilyStatus = /*@__PURE__*/ S.String;
 
 export interface ListTaskDefinitionFamiliesRequest {
@@ -6119,7 +5996,7 @@ export const ListTaskDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTaskDefinitionsResponse",
 }) as any as S.Schema<ListTaskDefinitionsResponse>;
-export type DesiredStatus = "RUNNING" | "PENDING" | "STOPPED" | (string & {});
+export type DesiredStatus = "RUNNING" | "PENDING" | "STOPPED";
 export const DesiredStatus = /*@__PURE__*/ S.String;
 
 export interface ListTasksRequest {
@@ -6290,7 +6167,7 @@ export const PutClusterCapacityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutClusterCapacityProvidersResponse",
 }) as any as S.Schema<PutClusterCapacityProvidersResponse>;
-export type PlatformDeviceType = "GPU" | "NEURON_DEVICE" | (string & {});
+export type PlatformDeviceType = "GPU" | "NEURON_DEVICE";
 export const PlatformDeviceType = /*@__PURE__*/ S.String;
 
 export interface PlatformDevice {
@@ -6634,10 +6511,7 @@ export const StartTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartTaskResponse",
 }) as any as S.Schema<StartTaskResponse>;
-export type StopServiceDeploymentStopType =
-  | "ABORT"
-  | "ROLLBACK"
-  | (string & {});
+export type StopServiceDeploymentStopType = "ABORT" | "ROLLBACK";
 export const StopServiceDeploymentStopType = /*@__PURE__*/ S.String;
 
 export interface StopServiceDeploymentRequest {

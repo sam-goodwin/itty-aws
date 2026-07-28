@@ -63,8 +63,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type NotificationSubscriptionRegisteredEventEnum =
   | "NOTIFICATION_EVENT_TYPE_UNSPECIFIED"
   | "PRODUCT_STATUS_CHANGE"
-  | "ACCOUNT_SERVICE_CHANGE"
-  | (string & {});
+  | "ACCOUNT_SERVICE_CHANGE";
 export const NotificationSubscriptionRegisteredEventEnum =
   /*@__PURE__*/ S.String;
 
@@ -184,7 +183,8 @@ export const ListAccountsNotificationsubscriptionsRequest =
     identifier: "ListAccountsNotificationsubscriptionsRequest",
   }) as any as S.Schema<ListAccountsNotificationsubscriptionsRequest>;
 
-export type NotificationSubscriptionList = NotificationSubscription[];
+export type NotificationSubscriptionList =
+  ReadonlyArray<NotificationSubscription>;
 export const NotificationSubscriptionList = /*@__PURE__*/ S.Array(
   NotificationSubscription,
 ) as any as S.Schema<NotificationSubscriptionList>;

@@ -56,11 +56,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -241,7 +240,7 @@ export const DataCatalogCertificationsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataCatalogCertificationsListRequest>;
 
 export type PaginatedDataCatalogCertificationListResultsList =
-  DataCatalogCertification[];
+  ReadonlyArray<DataCatalogCertification>;
 export const PaginatedDataCatalogCertificationListResultsList =
   /*@__PURE__*/ S.Array(
     DataCatalogCertification,
@@ -318,7 +317,7 @@ export const DataCatalogMetricDefinitionMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DataCatalogMetricDefinitionMap>;
 
 /** * `user` - user * `ai_generated` - ai_generated */
-export type CreatedSourceEnum = "user" | "ai_generated" | (string & {});
+export type CreatedSourceEnum = "user" | "ai_generated";
 export const CreatedSourceEnum = /*@__PURE__*/ S.String;
 
 export interface DataCatalogMetric {
@@ -405,7 +404,6 @@ export const DataCatalogMetricsCreateRequestDefinitionMap =
 export interface DataCatalogMetricsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id: string;
   /** Identifier-safe run handle, unique per team and reserved forever. Write-once. */
   name: string;
   /** Human-friendly label. Mutable, unlike name. */
@@ -414,25 +412,10 @@ export interface DataCatalogMetricsCreateRequest {
   description: string;
   /** Unit of the result, e.g. usd, percent, cents. */
   unit?: string;
-  /** Email of the human accountable for this metric, or null. */
-  owner: string | null;
   /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
   definition?: DataCatalogMetricsCreateRequestDefinitionMap | null;
-  /** Query kind of the definition (HogQLQuery, TrendsQuery, ...), or null for a stub. */
-  definition_kind: string | null;
-  /** Tables the definition directly references, extracted at write time for the catalog's denied-table filter. */
-  referenced_table_names: unknown;
-  /** Persisted lifecycle state: 'proposed' or 'approved'. Drift is reported separately. */
-  status: string;
-  /** True when the definition has drifted from its linked source insight (or the insight is gone). */
-  is_drifted: boolean;
-  approved_at: string | null;
-  /** User who approved this metric as canonical, or null. */
-  approved_by: UserBasic | null;
   /** Create the metric from this insight's query (snapshotted server-side). Set to null to unlink. Mutually exclusive with definition. */
   source_insight_short_id?: string | null;
-  /** When the metric was last run (30-minute throttle). */
-  last_run_at: string | null;
   /** Whether a human ('user') or an agent ('ai_generated') authored this metric. * `user` - user * `ai_generated` - ai_generated */
   created_source?: CreatedSourceEnum;
   /** Model that generated the metric, if AI-authored. */
@@ -441,38 +424,22 @@ export interface DataCatalogMetricsCreateRequest {
   confidence?: number | null;
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
-  /** User who first created this metric. */
-  created_by: UserBasic;
-  created_at: string;
-  updated_at: string | null;
 }
 export const DataCatalogMetricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.String,
     name: S.String,
     display_name: S.optional(S.String),
     description: S.String,
     unit: S.optional(S.String),
-    owner: S.NullOr(S.String),
     definition: S.optional(
       S.NullOr(DataCatalogMetricsCreateRequestDefinitionMap),
     ),
-    definition_kind: S.NullOr(S.String),
-    referenced_table_names: S.Unknown,
-    status: S.String,
-    is_drifted: S.Boolean,
-    approved_at: S.NullOr(S.String),
-    approved_by: S.NullOr(UserBasic),
     source_insight_short_id: S.optional(S.NullOr(S.String)),
-    last_run_at: S.NullOr(S.String),
     created_source: S.optional(CreatedSourceEnum),
     ai_model: S.optional(S.String),
     confidence: S.optional(S.NullOr(S.Number)),
     reasoning: S.optional(S.String),
-    created_by: UserBasic,
-    created_at: S.String,
-    updated_at: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -535,7 +502,8 @@ export const DataCatalogMetricsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataCatalogMetricsListRequest",
 }) as any as S.Schema<DataCatalogMetricsListRequest>;
 
-export type PaginatedDataCatalogMetricListResultsList = DataCatalogMetric[];
+export type PaginatedDataCatalogMetricListResultsList =
+  ReadonlyArray<DataCatalogMetric>;
 export const PaginatedDataCatalogMetricListResultsList = /*@__PURE__*/ S.Array(
   DataCatalogMetric,
 ) as any as S.Schema<PaginatedDataCatalogMetricListResultsList>;
@@ -571,32 +539,16 @@ export interface DataCatalogMetricsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   name: string;
-  id?: string;
   /** Human-friendly label. Mutable, unlike name. */
   display_name?: string;
   /** What the metric means and how to interpret it. */
   description?: string;
   /** Unit of the result, e.g. usd, percent, cents. */
   unit?: string;
-  /** Email of the human accountable for this metric, or null. */
-  owner?: string | null;
   /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
   definition?: DataCatalogMetricsPartialUpdateRequestDefinitionMap | null;
-  /** Query kind of the definition (HogQLQuery, TrendsQuery, ...), or null for a stub. */
-  definition_kind?: string | null;
-  /** Tables the definition directly references, extracted at write time for the catalog's denied-table filter. */
-  referenced_table_names?: unknown;
-  /** Persisted lifecycle state: 'proposed' or 'approved'. Drift is reported separately. */
-  status?: string;
-  /** True when the definition has drifted from its linked source insight (or the insight is gone). */
-  is_drifted?: boolean;
-  approved_at?: string | null;
-  /** User who approved this metric as canonical, or null. */
-  approved_by?: UserBasic | null;
   /** Create the metric from this insight's query (snapshotted server-side). Set to null to unlink. Mutually exclusive with definition. */
   source_insight_short_id?: string | null;
-  /** When the metric was last run (30-minute throttle). */
-  last_run_at?: string | null;
   /** Whether a human ('user') or an agent ('ai_generated') authored this metric. * `user` - user * `ai_generated` - ai_generated */
   created_source?: CreatedSourceEnum;
   /** Model that generated the metric, if AI-authored. */
@@ -605,39 +557,23 @@ export interface DataCatalogMetricsPartialUpdateRequest {
   confidence?: number | null;
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
-  /** User who first created this metric. */
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const DataCatalogMetricsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
       display_name: S.optional(S.String),
       description: S.optional(S.String),
       unit: S.optional(S.String),
-      owner: S.optional(S.NullOr(S.String)),
       definition: S.optional(
         S.NullOr(DataCatalogMetricsPartialUpdateRequestDefinitionMap),
       ),
-      definition_kind: S.optional(S.NullOr(S.String)),
-      referenced_table_names: S.optional(S.Unknown),
-      status: S.optional(S.String),
-      is_drifted: S.optional(S.Boolean),
-      approved_at: S.optional(S.NullOr(S.String)),
-      approved_by: S.optional(S.NullOr(UserBasic)),
       source_insight_short_id: S.optional(S.NullOr(S.String)),
-      last_run_at: S.optional(S.NullOr(S.String)),
       created_source: S.optional(CreatedSourceEnum),
       ai_model: S.optional(S.String),
       confidence: S.optional(S.NullOr(S.Number)),
       reasoning: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -696,8 +632,7 @@ export type DataCatalogMetricsRunCreateRequestRefresh =
   | "lazy_async"
   | "force_blocking"
   | "force_async"
-  | "force_cache"
-  | (string & {});
+  | "force_cache";
 export const DataCatalogMetricsRunCreateRequestRefresh = /*@__PURE__*/ S.String;
 
 /** * `second` - second * `minute` - minute * `hour` - hour * `day` - day * `week` - week * `month` - month * `quarter` - quarter * `year` - year */
@@ -709,8 +644,7 @@ export type DataCatalogMetricRunRequestIntervalEnum =
   | "week"
   | "month"
   | "quarter"
-  | "year"
-  | (string & {});
+  | "year";
 export const DataCatalogMetricRunRequestIntervalEnum = /*@__PURE__*/ S.String;
 
 export interface DataCatalogMetricsRunCreateRequest {
@@ -801,32 +735,16 @@ export interface DataCatalogMetricsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   name: string;
-  id: string;
   /** Human-friendly label. Mutable, unlike name. */
   display_name?: string;
   /** What the metric means and how to interpret it. */
   description: string;
   /** Unit of the result, e.g. usd, percent, cents. */
   unit?: string;
-  /** Email of the human accountable for this metric, or null. */
-  owner: string | null;
   /** Machine-readable query. Omit for a name+description-only stub. Stored upgrade-canonical. */
   definition?: DataCatalogMetricsUpdateRequestDefinitionMap | null;
-  /** Query kind of the definition (HogQLQuery, TrendsQuery, ...), or null for a stub. */
-  definition_kind: string | null;
-  /** Tables the definition directly references, extracted at write time for the catalog's denied-table filter. */
-  referenced_table_names: unknown;
-  /** Persisted lifecycle state: 'proposed' or 'approved'. Drift is reported separately. */
-  status: string;
-  /** True when the definition has drifted from its linked source insight (or the insight is gone). */
-  is_drifted: boolean;
-  approved_at: string | null;
-  /** User who approved this metric as canonical, or null. */
-  approved_by: UserBasic | null;
   /** Create the metric from this insight's query (snapshotted server-side). Set to null to unlink. Mutually exclusive with definition. */
   source_insight_short_id?: string | null;
-  /** When the metric was last run (30-minute throttle). */
-  last_run_at: string | null;
   /** Whether a human ('user') or an agent ('ai_generated') authored this metric. * `user` - user * `ai_generated` - ai_generated */
   created_source?: CreatedSourceEnum;
   /** Model that generated the metric, if AI-authored. */
@@ -835,38 +753,22 @@ export interface DataCatalogMetricsUpdateRequest {
   confidence?: number | null;
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
-  /** User who first created this metric. */
-  created_by: UserBasic;
-  created_at: string;
-  updated_at: string | null;
 }
 export const DataCatalogMetricsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    id: S.String,
     display_name: S.optional(S.String),
     description: S.String,
     unit: S.optional(S.String),
-    owner: S.NullOr(S.String),
     definition: S.optional(
       S.NullOr(DataCatalogMetricsUpdateRequestDefinitionMap),
     ),
-    definition_kind: S.NullOr(S.String),
-    referenced_table_names: S.Unknown,
-    status: S.String,
-    is_drifted: S.Boolean,
-    approved_at: S.NullOr(S.String),
-    approved_by: S.NullOr(UserBasic),
     source_insight_short_id: S.optional(S.NullOr(S.String)),
-    last_run_at: S.NullOr(S.String),
     created_source: S.optional(CreatedSourceEnum),
     ai_model: S.optional(S.String),
     confidence: S.optional(S.NullOr(S.Number)),
     reasoning: S.optional(S.String),
-    created_by: UserBasic,
-    created_at: S.String,
-    updated_at: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -959,7 +861,6 @@ export const DataCatalogRelationshipProposal = /*@__PURE__*/ S.suspend(() =>
 export interface DataCatalogRelationshipProposalsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id: string;
   /** Name of the table the join starts from. */
   source_table_name: string;
   /** HogQL key expression on the source table (casts allowed). */
@@ -978,23 +879,11 @@ export interface DataCatalogRelationshipProposalsCreateRequest {
   reasoning?: string;
   /** Sampling evidence: match rates, sample values. */
   evidence?: unknown;
-  /** proposed, accepted (promoted to a real join), or rejected (never re-proposed). */
-  status: string;
-  /** User who accepted or rejected the proposal. */
-  reviewed_by: UserBasic | null;
-  reviewed_at: string | null;
-  /** Why the proposal was rejected. */
-  rejection_reason: string;
-  /** The join created when this proposal was accepted (promotion provenance). */
-  created_join: string | null;
-  created_by: number | null;
-  created_at: string;
 }
 export const DataCatalogRelationshipProposalsCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      id: S.String,
       source_table_name: S.String,
       source_table_key: S.String,
       joining_table_name: S.String,
@@ -1004,13 +893,6 @@ export const DataCatalogRelationshipProposalsCreateRequest =
       confidence: S.optional(S.NullOr(S.Number)),
       reasoning: S.optional(S.String),
       evidence: S.optional(S.Unknown),
-      status: S.String,
-      reviewed_by: S.NullOr(UserBasic),
-      reviewed_at: S.NullOr(S.String),
-      rejection_reason: S.String,
-      created_join: S.NullOr(S.String),
-      created_by: S.NullOr(S.Number),
-      created_at: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -1051,7 +933,7 @@ export const DataCatalogRelationshipProposalsListRequest =
   }) as any as S.Schema<DataCatalogRelationshipProposalsListRequest>;
 
 export type PaginatedDataCatalogRelationshipProposalListResultsList =
-  DataCatalogRelationshipProposal[];
+  ReadonlyArray<DataCatalogRelationshipProposal>;
 export const PaginatedDataCatalogRelationshipProposalListResultsList =
   /*@__PURE__*/ S.Array(
     DataCatalogRelationshipProposal,

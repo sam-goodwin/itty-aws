@@ -289,8 +289,7 @@ export type AnomalyDetectorStatusCode =
   | "DELETING"
   | "CREATION_FAILED"
   | "UPDATE_FAILED"
-  | "DELETION_FAILED"
-  | (string & {});
+  | "DELETION_FAILED";
 export const AnomalyDetectorStatusCode = /*@__PURE__*/ S.String;
 
 export interface AnomalyDetectorStatus {

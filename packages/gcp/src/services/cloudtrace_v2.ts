@@ -116,8 +116,7 @@ export const Attributes = /*@__PURE__*/ S.suspend(() =>
 export type LinkTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "CHILD_LINKED_SPAN"
-  | "PARENT_LINKED_SPAN"
-  | (string & {});
+  | "PARENT_LINKED_SPAN";
 export const LinkTypeEnum = /*@__PURE__*/ S.String;
 
 /** A pointer from the current span to another span in the same trace or in a different trace. For example, this can be used in batching operations, where a single batch handler processes multiple requests from different traces or when the handler receives a request from a different project. */
@@ -140,7 +139,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
-export type LinkList = Link[];
+export type LinkList = ReadonlyArray<Link>;
 export const LinkList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<LinkList>;
@@ -202,7 +201,7 @@ export const StackFrame = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StackFrame" }) as any as S.Schema<StackFrame>;
 
-export type StackFrameList = StackFrame[];
+export type StackFrameList = ReadonlyArray<StackFrame>;
 export const StackFrameList = /*@__PURE__*/ S.Array(
   StackFrame,
 ) as any as S.Schema<StackFrameList>;
@@ -249,11 +248,7 @@ export const Annotation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Annotation" }) as any as S.Schema<Annotation>;
 
-export type MessageEventTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "SENT"
-  | "RECEIVED"
-  | (string & {});
+export type MessageEventTypeEnum = "TYPE_UNSPECIFIED" | "SENT" | "RECEIVED";
 export const MessageEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** An event describing a message sent/received between Spans. */
@@ -293,7 +288,7 @@ export const TimeEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimeEvent" }) as any as S.Schema<TimeEvent>;
 
-export type TimeEventList = TimeEvent[];
+export type TimeEventList = ReadonlyArray<TimeEvent>;
 export const TimeEventList = /*@__PURE__*/ S.Array(
   TimeEvent,
 ) as any as S.Schema<TimeEventList>;
@@ -321,7 +316,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -349,8 +344,7 @@ export type SpanSpanKindEnum =
   | "SERVER"
   | "CLIENT"
   | "PRODUCER"
-  | "CONSUMER"
-  | (string & {});
+  | "CONSUMER";
 export const SpanSpanKindEnum = /*@__PURE__*/ S.String;
 
 /** A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous. There might be gaps or overlaps between spans in a trace. */
@@ -403,7 +397,7 @@ export const Span = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Span" }) as any as S.Schema<Span>;
 
-export type SpanList = Span[];
+export type SpanList = ReadonlyArray<Span>;
 export const SpanList = /*@__PURE__*/ S.Array(
   Span,
 ) as any as S.Schema<SpanList>;

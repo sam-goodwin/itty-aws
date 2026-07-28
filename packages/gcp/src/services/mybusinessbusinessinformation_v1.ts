@@ -63,11 +63,10 @@ export class NotFound extends T.applyErrorMatchers(
 export type BatchGetCategoriesViewEnum =
   | "CATEGORY_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const BatchGetCategoriesViewEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -116,7 +115,7 @@ export const MoreHoursType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MoreHoursType" }) as any as S.Schema<MoreHoursType>;
 
-export type MoreHoursTypeList = MoreHoursType[];
+export type MoreHoursTypeList = ReadonlyArray<MoreHoursType>;
 export const MoreHoursTypeList = /*@__PURE__*/ S.Array(
   MoreHoursType,
 ) as any as S.Schema<MoreHoursTypeList>;
@@ -135,7 +134,7 @@ export const ServiceType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceType" }) as any as S.Schema<ServiceType>;
 
-export type ServiceTypeList = ServiceType[];
+export type ServiceTypeList = ReadonlyArray<ServiceType>;
 export const ServiceTypeList = /*@__PURE__*/ S.Array(
   ServiceType,
 ) as any as S.Schema<ServiceTypeList>;
@@ -160,7 +159,7 @@ export const Category = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
-export type CategoryList = Category[];
+export type CategoryList = ReadonlyArray<Category>;
 export const CategoryList = /*@__PURE__*/ S.Array(
   Category,
 ) as any as S.Schema<CategoryList>;
@@ -261,7 +260,7 @@ export const ServiceItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceItem" }) as any as S.Schema<ServiceItem>;
 
-export type ServiceItemList = ServiceItem[];
+export type ServiceItemList = ReadonlyArray<ServiceItem>;
 export const ServiceItemList = /*@__PURE__*/ S.Array(
   ServiceItem,
 ) as any as S.Schema<ServiceItemList>;
@@ -270,8 +269,7 @@ export type OpenInfoStatusEnum =
   | "OPEN_FOR_BUSINESS_UNSPECIFIED"
   | "OPEN"
   | "CLOSED_PERMANENTLY"
-  | "CLOSED_TEMPORARILY"
-  | (string & {});
+  | "CLOSED_TEMPORARILY";
 export const OpenInfoStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -331,8 +329,7 @@ export type TimePeriodOpenDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const TimePeriodOpenDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -363,8 +360,7 @@ export type TimePeriodCloseDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const TimePeriodCloseDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a span of time that the business is open, starting on the specified open day/time and closing on the specified close day/time. The closing time must occur after the opening time, for example later in the same day, or on a subsequent day. */
@@ -387,7 +383,7 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 
-export type TimePeriodList = TimePeriod[];
+export type TimePeriodList = ReadonlyArray<TimePeriod>;
 export const TimePeriodList = /*@__PURE__*/ S.Array(
   TimePeriod,
 ) as any as S.Schema<TimePeriodList>;
@@ -406,7 +402,7 @@ export const MoreHours = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MoreHours" }) as any as S.Schema<MoreHours>;
 
-export type MoreHoursList = MoreHours[];
+export type MoreHoursList = ReadonlyArray<MoreHours>;
 export const MoreHoursList = /*@__PURE__*/ S.Array(
   MoreHours,
 ) as any as S.Schema<MoreHoursList>;
@@ -450,7 +446,7 @@ export const SpecialHourPeriod = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpecialHourPeriod",
 }) as any as S.Schema<SpecialHourPeriod>;
 
-export type SpecialHourPeriodList = SpecialHourPeriod[];
+export type SpecialHourPeriodList = ReadonlyArray<SpecialHourPeriod>;
 export const SpecialHourPeriodList = /*@__PURE__*/ S.Array(
   SpecialHourPeriod,
 ) as any as S.Schema<SpecialHourPeriodList>;
@@ -480,8 +476,7 @@ export const Profile = /*@__PURE__*/ S.suspend(() =>
 export type ServiceAreaBusinessBusinessTypeEnum =
   | "BUSINESS_TYPE_UNSPECIFIED"
   | "CUSTOMER_LOCATION_ONLY"
-  | "CUSTOMER_AND_BUSINESS_LOCATION"
-  | (string & {});
+  | "CUSTOMER_AND_BUSINESS_LOCATION";
 export const ServiceAreaBusinessBusinessTypeEnum = /*@__PURE__*/ S.String;
 
 /** Defines an area that's represented by a place ID. */
@@ -498,7 +493,7 @@ export const PlaceInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlaceInfo" }) as any as S.Schema<PlaceInfo>;
 
-export type PlaceInfoList = PlaceInfo[];
+export type PlaceInfoList = ReadonlyArray<PlaceInfo>;
 export const PlaceInfoList = /*@__PURE__*/ S.Array(
   PlaceInfo,
 ) as any as S.Schema<PlaceInfoList>;
@@ -591,8 +586,7 @@ export const Categories = /*@__PURE__*/ S.suspend(() =>
 export type RelevantLocationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "DEPARTMENT_OF"
-  | "INDEPENDENT_ESTABLISHMENT_IN"
-  | (string & {});
+  | "INDEPENDENT_ESTABLISHMENT_IN";
 export const RelevantLocationRelationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about another location that is related to current one. The relation can be any one of DEPARTMENT_OF or INDEPENDENT_ESTABLISHMENT_OF, and the location specified here can be on either side (parent/child) of the location. */
@@ -611,7 +605,7 @@ export const RelevantLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "RelevantLocation",
 }) as any as S.Schema<RelevantLocation>;
 
-export type RelevantLocationList = RelevantLocation[];
+export type RelevantLocationList = ReadonlyArray<RelevantLocation>;
 export const RelevantLocationList = /*@__PURE__*/ S.Array(
   RelevantLocation,
 ) as any as S.Schema<RelevantLocationList>;
@@ -855,8 +849,7 @@ export type AttributeValueTypeEnum =
   | "BOOL"
   | "ENUM"
   | "URL"
-  | "REPEATED_ENUM"
-  | (string & {});
+  | "REPEATED_ENUM";
 export const AttributeValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Values for an attribute with a `value_type` of REPEATED_ENUM. This consists of two lists of value IDs: those that are set (true) and those that are unset (false). Values absent are considered unknown. At least one value must be specified. */
@@ -875,7 +868,7 @@ export const RepeatedEnumAttributeValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "RepeatedEnumAttributeValue",
 }) as any as S.Schema<RepeatedEnumAttributeValue>;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -893,7 +886,7 @@ export const UriAttributeValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "UriAttributeValue",
 }) as any as S.Schema<UriAttributeValue>;
 
-export type UriAttributeValueList = UriAttributeValue[];
+export type UriAttributeValueList = ReadonlyArray<UriAttributeValue>;
 export const UriAttributeValueList = /*@__PURE__*/ S.Array(
   UriAttributeValue,
 ) as any as S.Schema<UriAttributeValueList>;
@@ -921,7 +914,7 @@ export const Attribute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 
-export type AttributeList = Attribute[];
+export type AttributeList = ReadonlyArray<Attribute>;
 export const AttributeList = /*@__PURE__*/ S.Array(
   Attribute,
 ) as any as S.Schema<AttributeList>;
@@ -972,7 +965,7 @@ export const ChainName = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChainName" }) as any as S.Schema<ChainName>;
 
-export type ChainNameList = ChainName[];
+export type ChainNameList = ReadonlyArray<ChainName>;
 export const ChainNameList = /*@__PURE__*/ S.Array(
   ChainName,
 ) as any as S.Schema<ChainNameList>;
@@ -988,7 +981,7 @@ export const ChainUri = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChainUri" }) as any as S.Schema<ChainUri>;
 
-export type ChainUriList = ChainUri[];
+export type ChainUriList = ReadonlyArray<ChainUri>;
 export const ChainUriList = /*@__PURE__*/ S.Array(
   ChainUri,
 ) as any as S.Schema<ChainUriList>;
@@ -1126,7 +1119,7 @@ export const ListAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsLocationsRequest",
 }) as any as S.Schema<ListAccountsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1191,8 +1184,7 @@ export type AttributeMetadataValueTypeEnum =
   | "BOOL"
   | "ENUM"
   | "URL"
-  | "REPEATED_ENUM"
-  | (string & {});
+  | "REPEATED_ENUM";
 export const AttributeMetadataValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata for supported attribute values. */
@@ -1211,7 +1203,7 @@ export const AttributeValueMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttributeValueMetadata",
 }) as any as S.Schema<AttributeValueMetadata>;
 
-export type AttributeValueMetadataList = AttributeValueMetadata[];
+export type AttributeValueMetadataList = ReadonlyArray<AttributeValueMetadata>;
 export const AttributeValueMetadataList = /*@__PURE__*/ S.Array(
   AttributeValueMetadata,
 ) as any as S.Schema<AttributeValueMetadataList>;
@@ -1247,7 +1239,7 @@ export const AttributeMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttributeMetadata",
 }) as any as S.Schema<AttributeMetadata>;
 
-export type AttributeMetadataList = AttributeMetadata[];
+export type AttributeMetadataList = ReadonlyArray<AttributeMetadata>;
 export const AttributeMetadataList = /*@__PURE__*/ S.Array(
   AttributeMetadata,
 ) as any as S.Schema<AttributeMetadataList>;
@@ -1271,8 +1263,7 @@ export const ListAttributeMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListCategoriesViewEnum =
   | "CATEGORY_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListCategoriesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListCategoriesRequest {
@@ -1372,7 +1363,7 @@ export const SearchChainsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchChainsRequest",
 }) as any as S.Schema<SearchChainsRequest>;
 
-export type ChainList = Chain[];
+export type ChainList = ReadonlyArray<Chain>;
 export const ChainList = /*@__PURE__*/ S.Array(
   Chain,
 ) as any as S.Schema<ChainList>;
@@ -1444,7 +1435,7 @@ export const GoogleLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GoogleLocation" }) as any as S.Schema<GoogleLocation>;
 
-export type GoogleLocationList = GoogleLocation[];
+export type GoogleLocationList = ReadonlyArray<GoogleLocation>;
 export const GoogleLocationList = /*@__PURE__*/ S.Array(
   GoogleLocation,
 ) as any as S.Schema<GoogleLocationList>;

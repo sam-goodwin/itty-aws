@@ -1385,7 +1385,7 @@
           }
         },
         "minute": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.storagemover#SchedulerTimeMinute",
           "traits": {
             "smithy.api#documentation": "The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0."
           }
@@ -1393,6 +1393,26 @@
       },
       "traits": {
         "smithy.api#documentation": "The time of day."
+      }
+    },
+    "com.azure.storagemover#SchedulerTimeMinute": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_30": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 30
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0."
       }
     },
     "com.azure.storagemover#Frequency": {
@@ -1661,16 +1681,106 @@
             "smithy.api#documentation": "The name of the Job Definition resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagemover#JobDefinitionUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Job definition properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagemover#JobDefinitionUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description for the Job Definition."
+          }
+        },
+        "copyMode": {
+          "target": "com.azure.storagemover#CopyMode",
+          "traits": {
+            "smithy.api#documentation": "Strategy to use for copy."
+          }
+        },
+        "agentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Agent to assign for new Job Runs of this Job Definition."
+          }
+        },
+        "connections": {
+          "target": "com.azure.storagemover#JobDefinitionUpdatePropertiesConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of connections associated to this job"
+          }
+        },
+        "dataIntegrityValidation": {
+          "target": "com.azure.storagemover#DataIntegrityValidation",
+          "traits": {
+            "smithy.api#documentation": "Data Integrity Validation mode."
+          }
+        },
+        "schedule": {
+          "target": "com.azure.storagemover#ScheduleInfo",
+          "traits": {
+            "smithy.api#documentation": "Schedule information for the Job Definition."
+          }
+        },
+        "syncMode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The synchronization mode for the Job Definition."
+          }
+        },
+        "moverSyncedUntil": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the mover was synchronized."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Job definition properties."
+      }
+    },
+    "com.azure.storagemover#DataIntegrityValidation": {
+      "type": "enum",
+      "members": {
+        "SAVEVERIFYFILEMD5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SaveVerifyFileMD5"
+          }
+        },
+        "SAVEFILEMD5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SaveFileMD5"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Data integrity validation mode."
+      }
+    },
+    "com.azure.storagemover#JobDefinitionUpdatePropertiesConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of connections associated to this job"
       }
     },
     "com.azure.storagemover#JobDefinitionsCreateOrUpdate": {
@@ -1774,16 +1884,203 @@
             "smithy.api#documentation": "The name of the Job Definition resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagemover#JobDefinitionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Job definition properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagemover#JobDefinitionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud."
+          }
+        },
+        "jobType": {
+          "target": "com.azure.storagemover#JobDefinitionPropertiesInputJobType",
+          "traits": {
+            "smithy.api#documentation": "The type of the Job."
+          }
+        },
+        "copyMode": {
+          "target": "com.azure.storagemover#CopyMode",
+          "traits": {
+            "smithy.api#documentation": "Strategy to use for copy.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the source Endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceSubpath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subpath to use when reading from the source Endpoint."
+          }
+        },
+        "targetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the target Endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "targetSubpath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subpath to use when writing to the target Endpoint."
+          }
+        },
+        "agentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Agent to assign for new Job Runs of this Job Definition."
+          }
+        },
+        "sourceTargetMap": {
+          "target": "com.azure.storagemover#JobDefinitionPropertiesInputSourceTargetMap",
+          "traits": {
+            "smithy.api#documentation": "The list of cloud endpoints to migrate."
+          }
+        },
+        "connections": {
+          "target": "com.azure.storagemover#JobDefinitionPropertiesInputConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "List of connections associated to this job"
+          }
+        },
+        "schedule": {
+          "target": "com.azure.storagemover#ScheduleInfo",
+          "traits": {
+            "smithy.api#documentation": "Schedule information for the Job Definition."
+          }
+        },
+        "dataIntegrityValidation": {
+          "target": "com.azure.storagemover#JobDefinitionPropertiesInputDataIntegrityValidation",
+          "traits": {
+            "smithy.api#documentation": "The checksum validation mode for the job definition."
+          }
+        },
+        "preservePermissions": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Boolean to preserve permissions or not."
+          }
+        },
+        "isCrossTenantJob": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that this Job Definition is a cross-tenant job where the\ncounterpart endpoint resides in a different Azure AD tenant. When true,\n`crossTenantEndpointTenantId` and `crossTenantEndpointResourceId` must be\nprovided. Defaults to false. Cannot be modified after the Job Definition is\ncreated."
+          }
+        },
+        "crossTenantEndpointTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure AD tenant ID of the cross-tenant source endpoint. Required when\n`isCrossTenantJob` is true. Cannot be modified after the Job Definition is\ncreated."
+          }
+        },
+        "crossTenantEndpointResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Full ARM resource ID of the cross-tenant (foreign) endpoint. On the\nsource-tenant copy this is the TARGET endpoint; on the\ntarget-tenant copy this is the SOURCE endpoint."
+          }
+        },
+        "syncMode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The synchronization mode for the Job Definition."
+          }
+        },
+        "moverSyncedUntil": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last time the mover was synchronized."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Job definition properties."
+      }
+    },
+    "com.azure.storagemover#JobDefinitionPropertiesInputDataIntegrityValidation": {
+      "type": "enum",
+      "members": {
+        "SAVEVERIFYFILEMD5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SaveVerifyFileMD5"
+          }
+        },
+        "SAVEFILEMD5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SaveFileMD5"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The checksum validation mode for the job definition."
+      }
+    },
+    "com.azure.storagemover#JobDefinitionPropertiesInputConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of connections associated to this job"
+      }
+    },
+    "com.azure.storagemover#JobDefinitionPropertiesInputSourceTargetMap": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The list of cloud endpoints to migrate."
+      }
+    },
+    "com.azure.storagemover#JobDefinitionPropertiesInputJobType": {
+      "type": "enum",
+      "members": {
+        "ONPREMTOCLOUD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OnPremToCloud"
+          }
+        },
+        "CLOUDTOCLOUD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudToCloud"
+          }
+        },
+        "ONPREMTOCLOUDAGENTLESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OnPremToCloudAgentLess"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the Job."
       }
     },
     "com.azure.storagemover#JobDefinitionsGet": {
@@ -2191,16 +2488,29 @@
             "smithy.api#documentation": "The name of the Project resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagemover#ProjectUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Project properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagemover#ProjectUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description for the Project."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Project properties."
       }
     },
     "com.azure.storagemover#ProjectsCreateOrUpdate": {
@@ -2295,16 +2605,29 @@
             "smithy.api#documentation": "The name of the Project resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagemover#ProjectPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Project properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagemover#ProjectPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description for the Project."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Project properties."
       }
     },
     "com.azure.storagemover#ProjectsGet": {
@@ -2880,16 +3203,81 @@
             "smithy.api#documentation": "The name of the Endpoint resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagemover#EndpointBaseUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The Endpoint resource, which contains information about file sources and targets."
+          }
+        },
+        "identity": {
+          "target": "com.azure.storagemover#EndpointsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagemover#EndpointsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.storagemover#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.storagemover#UserAssignedIdentitiesInput",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.storagemover#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.storagemover#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.storagemover#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.storagemover#EndpointBaseUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "endpointType": {
+          "target": "com.azure.storagemover#EndpointType",
+          "traits": {
+            "smithy.api#documentation": "The Endpoint resource type.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description for the Endpoint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Endpoint resource, which contains information about file sources and targets."
       }
     },
     "com.azure.storagemover#EndpointsCreateOrUpdate": {
@@ -3023,16 +3411,69 @@
             "smithy.api#documentation": "The name of the Endpoint resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagemover#EndpointBasePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource specific properties for the Storage Mover resource.",
             "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.storagemover#EndpointsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagemover#EndpointsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.storagemover#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.storagemover#UserAssignedIdentitiesInput",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.storagemover#EndpointBasePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "endpointType": {
+          "target": "com.azure.storagemover#EndpointType",
+          "traits": {
+            "smithy.api#documentation": "The Endpoint resource type.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description for the Endpoint."
+          }
+        },
+        "endpointKind": {
+          "target": "com.azure.storagemover#EndpointKind",
+          "traits": {
+            "smithy.api#documentation": "The Endpoint resource kind source or target."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource specific properties for the Storage Mover resource."
       }
     },
     "com.azure.storagemover#EndpointsGet": {
@@ -3579,16 +4020,52 @@
             "smithy.api#documentation": "The name of the Connection resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagemover#ConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Connection properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagemover#ConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description for the Connection."
+          }
+        },
+        "privateLinkServiceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The PrivateLinkServiceId for the connection.",
+            "smithy.api#required": {}
+          }
+        },
+        "jobList": {
+          "target": "com.azure.storagemover#ConnectionPropertiesInputJobListList",
+          "traits": {
+            "smithy.api#documentation": "List of job definitions associated with this connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the Connection resource."
+      }
+    },
+    "com.azure.storagemover#ConnectionPropertiesInputJobListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of job definitions associated with this connection."
       }
     },
     "com.azure.storagemover#ConnectionsGet": {
@@ -4161,7 +4638,7 @@
           }
         },
         "minute": {
-          "target": "smithy.api#Double",
+          "target": "com.azure.storagemover#TimeMinute",
           "traits": {
             "smithy.api#documentation": "The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0."
           }
@@ -4169,6 +4646,26 @@
       },
       "traits": {
         "smithy.api#documentation": "The time of day."
+      }
+    },
+    "com.azure.storagemover#TimeMinute": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_30": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 30
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0."
       }
     },
     "com.azure.storagemover#AgentStatus": {
@@ -4250,17 +4747,31 @@
             "smithy.api#documentation": "The name of the Agent resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.storagemover#AgentUpdateProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.storagemover#AgentUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description for the Agent."
+          }
+        },
+        "uploadLimitSchedule": {
+          "target": "com.azure.storagemover#UploadLimitSchedule",
+          "traits": {
+            "smithy.api#documentation": "The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time."
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.storagemover#AgentsCreateOrUpdate": {
       "type": "operation",
@@ -4354,10 +4865,9 @@
             "smithy.api#documentation": "The name of the Agent resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagemover#AgentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
@@ -4365,6 +4875,38 @@
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.storagemover#AgentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description for the Agent."
+          }
+        },
+        "arcResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the Hybrid Compute resource for the Agent.",
+            "smithy.api#required": {}
+          }
+        },
+        "arcVmUuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The VM UUID of the Hybrid Compute resource for the Agent.",
+            "smithy.api#required": {}
+          }
+        },
+        "uploadLimitSchedule": {
+          "target": "com.azure.storagemover#UploadLimitSchedule",
+          "traits": {
+            "smithy.api#documentation": "The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time."
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.storagemover#AgentsGet": {
       "type": "operation",
@@ -4762,16 +5304,47 @@
             "smithy.api#documentation": "The name of the Storage Mover resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagemover#StorageMoverUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource specific properties for the Storage Mover resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.storagemover#StorageMoversUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagemover#StorageMoversUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.storagemover#StorageMoverUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description for the Storage Mover."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource specific properties for the Storage Mover resource."
       }
     },
     "com.azure.storagemover#StorageMoversCreateOrUpdate": {
@@ -4883,16 +5456,54 @@
             "smithy.api#documentation": "The name of the Storage Mover resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storagemover#StorageMoversCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagemover#StorageMoverPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource specific properties for the Storage Mover resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagemover#StorageMoverPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description for the Storage Mover."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource specific properties for the Storage Mover resource."
+      }
+    },
+    "com.azure.storagemover#StorageMoversCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.storagemover#StorageMoversGet": {

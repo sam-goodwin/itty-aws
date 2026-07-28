@@ -87,8 +87,7 @@ export type QueryScheduleFrequencyEnum =
   | "SEMI_MONTHLY"
   | "MONTHLY"
   | "QUARTERLY"
-  | "YEARLY"
-  | (string & {});
+  | "YEARLY";
 export const QueryScheduleFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** Settings on when and how frequently to run a query. */
@@ -111,7 +110,7 @@ export const QuerySchedule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuerySchedule" }) as any as S.Schema<QuerySchedule>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -128,8 +127,7 @@ export type ParametersTypeEnum =
   | "REACH"
   | "UNIQUE_REACH_AUDIENCE"
   | "FULL_PATH"
-  | "PATH_ATTRIBUTION"
-  | (string & {});
+  | "PATH_ATTRIBUTION";
 export const ParametersTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a single filter rule. */
@@ -146,7 +144,7 @@ export const FilterPair = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FilterPair" }) as any as S.Schema<FilterPair>;
 
-export type FilterPairList = FilterPair[];
+export type FilterPairList = ReadonlyArray<FilterPair>;
 export const FilterPairList = /*@__PURE__*/ S.Array(
   FilterPair,
 ) as any as S.Schema<FilterPairList>;
@@ -204,8 +202,7 @@ export type DataRangeRangeEnum =
   | "LAST_365_DAYS"
   | "ALL_TIME"
   | "LAST_14_DAYS"
-  | "LAST_60_DAYS"
-  | (string & {});
+  | "LAST_60_DAYS";
 export const DataRangeRangeEnum = /*@__PURE__*/ S.String;
 
 /** The date range to be reported on. */
@@ -225,11 +222,7 @@ export const DataRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataRange" }) as any as S.Schema<DataRange>;
 
-export type QueryMetadataFormatEnum =
-  | "FORMAT_UNSPECIFIED"
-  | "CSV"
-  | "XLSX"
-  | (string & {});
+export type QueryMetadataFormatEnum = "FORMAT_UNSPECIFIED" | "CSV" | "XLSX";
 export const QueryMetadataFormatEnum = /*@__PURE__*/ S.String;
 
 /** The metadata of the query. */
@@ -376,15 +369,10 @@ export type ReportStatusStateEnum =
   | "QUEUED"
   | "RUNNING"
   | "DONE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ReportStatusStateEnum = /*@__PURE__*/ S.String;
 
-export type ReportStatusFormatEnum =
-  | "FORMAT_UNSPECIFIED"
-  | "CSV"
-  | "XLSX"
-  | (string & {});
+export type ReportStatusFormatEnum = "FORMAT_UNSPECIFIED" | "CSV" | "XLSX";
 export const ReportStatusFormatEnum = /*@__PURE__*/ S.String;
 
 /** The status of a report. */
@@ -465,7 +453,7 @@ export const ListQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListQueriesRequest",
 }) as any as S.Schema<ListQueriesRequest>;
 
-export type QueryList = Query[];
+export type QueryList = ReadonlyArray<Query>;
 export const QueryList = /*@__PURE__*/ S.Array(
   Query,
 ) as any as S.Schema<QueryList>;
@@ -512,7 +500,7 @@ export const ListQueriesReportsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListQueriesReportsRequest",
 }) as any as S.Schema<ListQueriesReportsRequest>;
 
-export type ReportList = Report[];
+export type ReportList = ReadonlyArray<Report>;
 export const ReportList = /*@__PURE__*/ S.Array(
   Report,
 ) as any as S.Schema<ReportList>;

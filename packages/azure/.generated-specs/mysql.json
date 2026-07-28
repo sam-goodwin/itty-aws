@@ -89,11 +89,10 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "expectedStandbyAvailabilityZone": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Expected Availability zone of the standby server."
           }
         }
       },
@@ -555,16 +554,90 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.mysql#ConfigurationsBatchUpdateRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The list of server configurations."
+          }
+        },
+        "resetAllToDefault": {
+          "target": "com.azure.mysql#ResetAllToDefault",
+          "traits": {
+            "smithy.api#documentation": "Whether to reset all server parameters to default."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#ResetAllToDefault": {
+      "type": "enum",
+      "members": {
+        "TRUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "True"
+          }
+        },
+        "FALSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "False"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether to reset all server parameters to default."
+      }
+    },
+    "com.azure.mysql#ConfigurationsBatchUpdateRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.mysql#ConfigurationForBatchUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of server configurations."
+      }
+    },
+    "com.azure.mysql#ConfigurationForBatchUpdate": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the configuration."
+          }
+        },
+        "properties": {
+          "target": "com.azure.mysql#ConfigurationForBatchUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties can be updated for a configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a Configuration."
+      }
+    },
+    "com.azure.mysql#ConfigurationForBatchUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the configuration."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source of the configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties can be updated for a configuration."
       }
     },
     "com.azure.mysql#ServersStop": {
@@ -715,16 +788,41 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "restartWithFailover": {
+          "target": "com.azure.mysql#EnableStatusEnum",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Whether or not failover to standby server when restarting a server with high availability enabled."
+          }
+        },
+        "maxFailoverSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The maximum allowed failover time in seconds."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#EnableStatusEnum": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum to indicate whether value is 'Enabled' or 'Disabled'"
       }
     },
     "com.azure.mysql#ServersResetGtid": {
@@ -773,11 +871,10 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "gtidSet": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The Gtid set of server."
           }
         }
       },
@@ -1518,26 +1615,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Network related properties of a server"
-      }
-    },
-    "com.azure.mysql#EnableStatusEnum": {
-      "type": "enum",
-      "members": {
-        "ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Enabled"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Disabled"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Enum to indicate whether value is 'Enabled' or 'Disabled'"
       }
     },
     "com.azure.mysql#HighAvailability": {
@@ -2446,16 +2523,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.mysql#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.mysql#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.mysql#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.mysql#PrivateEndpointConnectionsGet": {
@@ -2949,15 +3053,29 @@
             "smithy.api#documentation": "The name of the maintenance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#MaintenancePropertiesForUpdate",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The properties of a maintenance update parameter"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#MaintenancePropertiesForUpdate": {
+      "type": "structure",
+      "members": {
+        "maintenanceStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start time for a maintenance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a maintenance update parameter."
       }
     },
     "com.azure.mysql#MaintenancesRead": {
@@ -3507,10 +3625,10 @@
             "smithy.api#documentation": "The name of the server firewall rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#FirewallRuleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of a firewall rule.",
             "smithy.api#required": {}
           }
         }
@@ -3908,11 +4026,10 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "publicNetworkAccess": {
+          "target": "com.azure.mysql#EnableStatusEnum",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Whether or not public network access is allowed for this server. Value is 'Disabled' when server has VNet integration."
           }
         }
       },
@@ -4091,11 +4208,10 @@
             "smithy.api#documentation": "The name of the database."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#DatabaseProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a database."
           }
         }
       },
@@ -4536,16 +4652,41 @@
             "smithy.api#documentation": "The name of the server configuration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#ConfigurationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a configuration."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#ConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the configuration."
+          }
+        },
+        "currentValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current value of the configuration."
+          }
+        },
+        "source": {
+          "target": "com.azure.mysql#ConfigurationSource",
+          "traits": {
+            "smithy.api#documentation": "Source of the configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a configuration."
       }
     },
     "com.azure.mysql#ConfigurationsCreateOrUpdate": {
@@ -4640,11 +4781,10 @@
             "smithy.api#documentation": "The name of the server configuration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#ConfigurationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a configuration."
           }
         }
       },
@@ -5005,10 +5145,10 @@
             "smithy.api#documentation": "The name of the backup."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#ServerBackupPropertiesV2",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The properties of a server backup."
           }
         }
       },
@@ -5886,16 +6026,79 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "backupSettings": {
+          "target": "com.azure.mysql#BackupSettings",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Backup Settings",
+            "smithy.api#required": {}
+          }
+        },
+        "targetDetails": {
+          "target": "com.azure.mysql#BackupStoreDetails",
+          "traits": {
+            "smithy.api#documentation": "Backup Target Store Details",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#BackupStoreDetails": {
+      "type": "structure",
+      "members": {
+        "objectType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of the specific object - used for deserializing",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details about the target where the backup content will be stored."
+      }
+    },
+    "com.azure.mysql#BackupSettings": {
+      "type": "structure",
+      "members": {
+        "backupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the backup.",
+            "smithy.api#required": {}
+          }
+        },
+        "backupFormat": {
+          "target": "com.azure.mysql#BackupFormat",
+          "traits": {
+            "smithy.api#documentation": "Backup Format for the current backup. (CollatedFormat is INTERNAL – DO NOT USE)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Backup Settings"
+      }
+    },
+    "com.azure.mysql#BackupFormat": {
+      "type": "enum",
+      "members": {
+        "COLLATEDFORMAT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CollatedFormat"
+          }
+        },
+        "RAW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Raw"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Backup Format for the current backup. (CollatedFormat is INTERNAL – DO NOT USE)"
       }
     },
     "com.azure.mysql#AdvancedThreatProtectionSettingsUpdate": {
@@ -6068,16 +6271,30 @@
             "smithy.api#documentation": "The name of the Advanced Threat Protection state."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#AdvancedThreatProtectionUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource update properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#AdvancedThreatProtectionUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.mysql#AdvancedThreatProtectionState",
+          "traits": {
+            "smithy.api#documentation": "Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Advanced Threat Protection that can be updated."
       }
     },
     "com.azure.mysql#AdvancedThreatProtectionSettingsUpdateRequestAdvancedThreatProtectionName": {
@@ -6184,16 +6401,29 @@
             "smithy.api#documentation": "The name of the Advanced Threat Protection state."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#AdvancedThreatProtectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#AdvancedThreatProtectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.mysql#AdvancedThreatProtectionState",
+          "traits": {
+            "smithy.api#documentation": "Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an Advanced Threat Protection setting."
       }
     },
     "com.azure.mysql#AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName": {
@@ -6650,11 +6880,10 @@
             "smithy.api#documentation": "The name of the Azure AD Administrator."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#AdministratorProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of an administrator."
           }
         }
       },
@@ -7073,16 +7302,323 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.mysql#MySQLServerIdentityInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The cmk identity for the server."
+          }
+        },
+        "sku": {
+          "target": "com.azure.mysql#MySQLServerSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU (pricing tier) of the server."
+          }
+        },
+        "properties": {
+          "target": "com.azure.mysql#ServerPropertiesForUpdateInput",
+          "traits": {
+            "smithy.api#documentation": "The properties that can be updated for a server."
+          }
+        },
+        "tags": {
+          "target": "com.azure.mysql#ServersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#ServersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Application-specific metadata in the form of key-value pairs."
+      }
+    },
+    "com.azure.mysql#ServerPropertiesForUpdateInput": {
+      "type": "structure",
+      "members": {
+        "administratorLoginPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password of the administrator login.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "version": {
+          "target": "com.azure.mysql#ServerVersion",
+          "traits": {
+            "smithy.api#documentation": "Server version."
+          }
+        },
+        "storage": {
+          "target": "com.azure.mysql#StorageInput",
+          "traits": {
+            "smithy.api#documentation": "Storage related properties of a server."
+          }
+        },
+        "backup": {
+          "target": "com.azure.mysql#BackupInput",
+          "traits": {
+            "smithy.api#documentation": "Backup related properties of a server."
+          }
+        },
+        "highAvailability": {
+          "target": "com.azure.mysql#HighAvailability",
+          "traits": {
+            "smithy.api#documentation": "High availability related properties of a server."
+          }
+        },
+        "maintenancePolicy": {
+          "target": "com.azure.mysql#MaintenancePolicy",
+          "traits": {
+            "smithy.api#documentation": "Maintenance policy of a server."
+          }
+        },
+        "maintenanceWindow": {
+          "target": "com.azure.mysql#MaintenanceWindow",
+          "traits": {
+            "smithy.api#documentation": "Maintenance window of a server."
+          }
+        },
+        "replicationRole": {
+          "target": "com.azure.mysql#ReplicationRole",
+          "traits": {
+            "smithy.api#documentation": "The replication role of the server."
+          }
+        },
+        "dataEncryption": {
+          "target": "com.azure.mysql#DataEncryption",
+          "traits": {
+            "smithy.api#documentation": "The Data Encryption for CMK."
+          }
+        },
+        "network": {
+          "target": "com.azure.mysql#Network",
+          "traits": {
+            "smithy.api#documentation": "Network related properties of a server"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that can be updated for a server."
+      }
+    },
+    "com.azure.mysql#BackupInput": {
+      "type": "structure",
+      "members": {
+        "backupRetentionDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Backup retention days for the server."
+          }
+        },
+        "backupIntervalHours": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Backup interval hours for the server."
+          }
+        },
+        "geoRedundantBackup": {
+          "target": "com.azure.mysql#BackupInputGeoRedundantBackup",
+          "traits": {
+            "smithy.api#documentation": "Whether or not geo redundant backup is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage Profile properties of a server"
+      }
+    },
+    "com.azure.mysql#BackupInputGeoRedundantBackup": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether or not geo redundant backup is enabled."
+      }
+    },
+    "com.azure.mysql#StorageInput": {
+      "type": "structure",
+      "members": {
+        "storageSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Max storage size allowed for a server."
+          }
+        },
+        "iops": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Storage IOPS for a server."
+          }
+        },
+        "autoGrow": {
+          "target": "com.azure.mysql#StorageInputAutoGrow",
+          "traits": {
+            "smithy.api#documentation": "Enable Storage Auto Grow or not."
+          }
+        },
+        "logOnDisk": {
+          "target": "com.azure.mysql#StorageInputLogOnDisk",
+          "traits": {
+            "smithy.api#documentation": "Enable Log On Disk or not."
+          }
+        },
+        "autoIoScaling": {
+          "target": "com.azure.mysql#StorageInputAutoIoScaling",
+          "traits": {
+            "smithy.api#documentation": "Enable IO Auto Scaling or not."
+          }
+        },
+        "storageRedundancy": {
+          "target": "com.azure.mysql#StorageInputStorageRedundancy",
+          "traits": {
+            "smithy.api#documentation": "The redundant type of the server storage. The parameter is used for server creation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Storage Profile properties of a server"
+      }
+    },
+    "com.azure.mysql#StorageInputStorageRedundancy": {
+      "type": "enum",
+      "members": {
+        "LOCALREDUNDANCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LocalRedundancy"
+          }
+        },
+        "ZONEREDUNDANCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ZoneRedundancy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The redundant type of the server storage. The parameter is used for server creation."
+      }
+    },
+    "com.azure.mysql#StorageInputAutoIoScaling": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enable IO Auto Scaling or not."
+      }
+    },
+    "com.azure.mysql#StorageInputLogOnDisk": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enable Log On Disk or not."
+      }
+    },
+    "com.azure.mysql#StorageInputAutoGrow": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enable Storage Auto Grow or not."
+      }
+    },
+    "com.azure.mysql#MySQLServerIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.mysql#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of managed service identity."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.mysql#MySQLServerIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "Metadata of user assigned identity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to configure Identity for Bring your Own Keys"
+      }
+    },
+    "com.azure.mysql#MySQLServerIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.mysql#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata of user assigned identity."
+      }
+    },
+    "com.azure.mysql#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Metadata of user assigned identity."
       }
     },
     "com.azure.mysql#ServersCreate": {
@@ -7206,16 +7742,163 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.mysql#ServersCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.mysql#ServerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the server."
+          }
+        },
+        "identity": {
+          "target": "com.azure.mysql#MySQLServerIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The cmk identity for the server."
+          }
+        },
+        "sku": {
+          "target": "com.azure.mysql#MySQLServerSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU (pricing tier) of the server."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#ServerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "administratorLogin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation)."
+          }
+        },
+        "administratorLoginPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password of the administrator login (required for server creation).",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "version": {
+          "target": "com.azure.mysql#ServerVersion",
+          "traits": {
+            "smithy.api#documentation": "Major version of MySQL. 8.0.21 stands for MySQL 8.0, 5.7.44 stands for MySQL 5.7"
+          }
+        },
+        "availabilityZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "availability Zone information of the server."
+          }
+        },
+        "createMode": {
+          "target": "com.azure.mysql#CreateMode",
+          "traits": {
+            "smithy.api#documentation": "The mode to create a new MySQL server."
+          }
+        },
+        "sourceServerResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The source MySQL server id."
+          }
+        },
+        "restorePointInTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Restore point creation time (ISO8601 format), specifying the time to restore from."
+          }
+        },
+        "replicationRole": {
+          "target": "com.azure.mysql#ReplicationRole",
+          "traits": {
+            "smithy.api#documentation": "The replication role."
+          }
+        },
+        "dataEncryption": {
+          "target": "com.azure.mysql#DataEncryption",
+          "traits": {
+            "smithy.api#documentation": "The Data Encryption for CMK."
+          }
+        },
+        "databasePort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The server database port. Can only be specified when the server is being created."
+          }
+        },
+        "storage": {
+          "target": "com.azure.mysql#StorageInput",
+          "traits": {
+            "smithy.api#documentation": "Storage related properties of a server."
+          }
+        },
+        "backup": {
+          "target": "com.azure.mysql#BackupInput",
+          "traits": {
+            "smithy.api#documentation": "Backup related properties of a server."
+          }
+        },
+        "highAvailability": {
+          "target": "com.azure.mysql#HighAvailability",
+          "traits": {
+            "smithy.api#documentation": "High availability related properties of a server."
+          }
+        },
+        "network": {
+          "target": "com.azure.mysql#Network",
+          "traits": {
+            "smithy.api#documentation": "Network related properties of a server."
+          }
+        },
+        "maintenancePolicy": {
+          "target": "com.azure.mysql#MaintenancePolicy",
+          "traits": {
+            "smithy.api#documentation": "Maintenance policy of a server."
+          }
+        },
+        "maintenanceWindow": {
+          "target": "com.azure.mysql#MaintenanceWindow",
+          "traits": {
+            "smithy.api#documentation": "Maintenance window of a server. Known issue: cannot be set during server creation or updated with other properties during server update; must be updated separately."
+          }
+        },
+        "importSourceProperties": {
+          "target": "com.azure.mysql#ImportSourceProperties",
+          "traits": {
+            "smithy.api#documentation": "Source properties for import from storage."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a server."
+      }
+    },
+    "com.azure.mysql#ServersCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.mysql#ServersGet": {
@@ -7857,11 +8540,10 @@
             "smithy.api#documentation": "The name of the location."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "virtualNetworkResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Virtual network resource id."
           }
         }
       },
@@ -7933,11 +8615,17 @@
             "smithy.api#documentation": "The name of the location."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource name to verify.",
             "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource type used for verification."
           }
         }
       },
@@ -8715,11 +9403,17 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource name to verify.",
             "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource type used for verification."
           }
         }
       },
@@ -9102,16 +9796,50 @@
             "smithy.api#documentation": "The name of the MySQL Server key to be operated on (updated or created)."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#ServerKeyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the ServerKey Resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#ServerKeyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "serverKeyType": {
+          "target": "com.azure.mysql#ServerKeyPropertiesInputServerKeyType",
+          "traits": {
+            "smithy.api#documentation": "The key type like 'AzureKeyVault'.",
+            "smithy.api#required": {}
+          }
+        },
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI of the key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for a key execution."
+      }
+    },
+    "com.azure.mysql#ServerKeyPropertiesInputServerKeyType": {
+      "type": "enum",
+      "members": {
+        "AZUREKEYVAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureKeyVault"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key type like 'AzureKeyVault'."
       }
     },
     "com.azure.mysql#ServerKeysGet": {
@@ -9375,16 +10103,29 @@
             "smithy.api#documentation": "The name of the server."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.mysql#ServersUpgradeRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties that can be updated for a server."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.mysql#ServersUpgradeRequestProperties": {
+      "type": "structure",
+      "members": {
+        "targetServerVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents an server storage profile."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that can be updated for a server."
       }
     },
     "com.azure.mysql#Mysql": {

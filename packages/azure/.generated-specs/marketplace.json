@@ -55,15 +55,35 @@
             "smithy.api#documentation": "The request approval ID to get create or update"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#WithdrawDetails",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Withdraw properties details"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#WithdrawDetails": {
+      "type": "structure",
+      "members": {
+        "planId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets Plan Id"
+          }
+        },
+        "publisherId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The offer's publisher id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Withdraw properties details"
       }
     },
     "com.azure.marketplace#PrivateStoreQueryRequestApproval": {
@@ -224,15 +244,50 @@
             "smithy.api#documentation": "The request approval ID to get create or update"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#RequestDetails",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The details to get the request plans statuses"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#RequestDetails": {
+      "type": "structure",
+      "members": {
+        "publisherId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The offer's publisher id"
+          }
+        },
+        "planIds": {
+          "target": "com.azure.marketplace#RequestDetailsPlanIdsList",
+          "traits": {
+            "smithy.api#documentation": "Current plans list"
+          }
+        },
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the subscription id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Request details needed to get the plans statuses"
+      }
+    },
+    "com.azure.marketplace#RequestDetailsPlanIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Current plans list"
       }
     },
     "com.azure.marketplace#PrivateStoreCreateApprovalRequest": {
@@ -440,16 +495,88 @@
             "smithy.api#documentation": "The request approval ID to get create or update"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#RequestApprovalPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The privateStore approval request data structure."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#RequestApprovalPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "offerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets unique offer id."
+          }
+        },
+        "publisherId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The offer's publisher id"
+          }
+        },
+        "plansDetails": {
+          "target": "com.azure.marketplace#RequestApprovalPropertiesInputPlansDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the plans details"
+          }
+        },
+        "messageCode": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the request approval message code"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Approval request resource properties"
+      }
+    },
+    "com.azure.marketplace#RequestApprovalPropertiesInputPlansDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.marketplace#PlanDetailsInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the plans details"
+      }
+    },
+    "com.azure.marketplace#PlanDetailsInput": {
+      "type": "structure",
+      "members": {
+        "planId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets Plan Id"
+          }
+        },
+        "justification": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user's justification for the plan's request"
+          }
+        },
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the subscription id that the user is requesting to add the plan to"
+          }
+        },
+        "subscriptionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the subscription name that the user is requesting to add the plan to"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Return plan with request details"
       }
     },
     "com.azure.marketplace#PrivateStoreGetRequestApproval": {
@@ -724,15 +851,38 @@
             "smithy.api#documentation": "The store ID - must use the tenant ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#QueryUserRulesDetails",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Query user's rules details"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#QueryUserRulesDetails": {
+      "type": "structure",
+      "members": {
+        "subscriptionIds": {
+          "target": "com.azure.marketplace#QueryUserRulesDetailsSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of subscription IDs"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of subscriptions IDs to query the user's rules"
+      }
+    },
+    "com.azure.marketplace#QueryUserRulesDetailsSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of subscription IDs"
       }
     },
     "com.azure.marketplace#PrivateStoreQueryUserOffers": {
@@ -977,15 +1127,53 @@
             "smithy.api#documentation": "The store ID - must use the tenant ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#QueryUserOffersDetails",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Query user's offers details"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#QueryUserOffersDetails": {
+      "type": "structure",
+      "members": {
+        "offerIds": {
+          "target": "com.azure.marketplace#QueryUserOffersDetailsOfferIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of offer IDs"
+          }
+        },
+        "subscriptionIds": {
+          "target": "com.azure.marketplace#QueryUserOffersDetailsSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of subscription IDs"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of offers IDs and list of user's subscriptions IDs to query the user's approved offers"
+      }
+    },
+    "com.azure.marketplace#QueryUserOffersDetailsSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of subscription IDs"
+      }
+    },
+    "com.azure.marketplace#QueryUserOffersDetailsOfferIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of offer IDs"
       }
     },
     "com.azure.marketplace#PrivateStoreQueryOffers": {
@@ -1363,15 +1551,59 @@
             "smithy.api#documentation": "The store ID - must use the tenant ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#QueryApprovedPlans",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Query approved plans details"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#QueryApprovedPlans": {
+      "type": "structure",
+      "members": {
+        "offerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Offer id"
+          }
+        },
+        "planIds": {
+          "target": "com.azure.marketplace#QueryApprovedPlansPlanIdsList",
+          "traits": {
+            "smithy.api#documentation": "Offer plan ids"
+          }
+        },
+        "subscriptionIds": {
+          "target": "com.azure.marketplace#QueryApprovedPlansSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of subscription IDs"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Query approved plans details"
+      }
+    },
+    "com.azure.marketplace#QueryApprovedPlansSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of subscription IDs"
+      }
+    },
+    "com.azure.marketplace#QueryApprovedPlansPlanIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Offer plan ids"
       }
     },
     "com.azure.marketplace#PrivateStoreAcknowledgeOfferNotification": {
@@ -1412,15 +1644,71 @@
             "smithy.api#documentation": "The offer ID to update or delete"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#AcknowledgeOfferNotificationDetails",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Notification update request payload details"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#AcknowledgeOfferNotificationDetails": {
+      "type": "structure",
+      "members": {
+        "acknowledge": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether acknowledge action flag is enabled"
+          }
+        },
+        "dismiss": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether dismiss action flag is enabled"
+          }
+        },
+        "removeOffer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether remove offer action flag is enabled"
+          }
+        },
+        "addPlans": {
+          "target": "com.azure.marketplace#AcknowledgeOfferNotificationDetailsAddPlansList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets added plans"
+          }
+        },
+        "removePlans": {
+          "target": "com.azure.marketplace#AcknowledgeOfferNotificationDetailsRemovePlansList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets remove plans"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Notification update request payload details"
+      }
+    },
+    "com.azure.marketplace#AcknowledgeOfferNotificationDetailsRemovePlansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets remove plans"
+      }
+    },
+    "com.azure.marketplace#AcknowledgeOfferNotificationDetailsAddPlansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets added plans"
       }
     },
     "com.azure.marketplace#PrivateStoreListSubscriptionsContext": {
@@ -1598,16 +1886,20 @@
             "smithy.api#documentation": "The store ID - must use the tenant ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {}
-          }
+        "subscriptions": {
+          "target": "com.azure.marketplace#PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.marketplace#PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.marketplace#PrivateStoreListNewPlansNotifications": {
       "type": "operation",
@@ -1887,15 +2179,38 @@
             "smithy.api#documentation": "The store ID - must use the tenant ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#CollectionsToSubscriptionsMappingProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Subscriptions ids list"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#CollectionsToSubscriptionsMappingProperties": {
+      "type": "structure",
+      "members": {
+        "subscriptionIds": {
+          "target": "com.azure.marketplace#CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "Subscriptions ids list"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The subscriptions list to get the related collections"
+      }
+    },
+    "com.azure.marketplace#CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Subscriptions ids list"
       }
     },
     "com.azure.marketplace#PrivateStoreCollectionTransferOffers": {
@@ -1994,15 +2309,59 @@
             "smithy.api#documentation": "The collection ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#TransferOffersDetails",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "transfer offers properties details"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#TransferOffersDetails": {
+      "type": "structure",
+      "members": {
+        "targetCollections": {
+          "target": "com.azure.marketplace#TransferOffersDetailsTargetCollectionsList",
+          "traits": {
+            "smithy.api#documentation": "Target collections ids"
+          }
+        },
+        "operation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Operation to perform (For example: Copy or Move)"
+          }
+        },
+        "offerIdsList": {
+          "target": "com.azure.marketplace#TransferOffersDetailsOfferIdsListList",
+          "traits": {
+            "smithy.api#documentation": "Offers ids list to transfer from source collection to target collection(s)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Transfer offers response details"
+      }
+    },
+    "com.azure.marketplace#TransferOffersDetailsOfferIdsListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Offers ids list to transfer from source collection to target collection(s)"
+      }
+    },
+    "com.azure.marketplace#TransferOffersDetailsTargetCollectionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Target collections ids"
       }
     },
     "com.azure.marketplace#SetCollectionRules": {
@@ -2043,16 +2402,26 @@
             "smithy.api#documentation": "The collection ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.marketplace#SetCollectionRulesRequestValueList"
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "URL to get the next set of rules list results if there are any."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.marketplace#SetCollectionRulesRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.marketplace#Rule"
+      },
+      "traits": {}
     },
     "com.azure.marketplace#QueryRules": {
       "type": "operation",
@@ -2181,15 +2550,74 @@
             "smithy.api#documentation": "The offer ID to update or delete"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#MultiContextAndPlansProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Object describes multiple context and plans."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#MultiContextAndPlansProperties": {
+      "type": "structure",
+      "members": {
+        "offerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The offer ID which contains the plans."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The offer's eTag."
+          }
+        },
+        "plansContext": {
+          "target": "com.azure.marketplace#MultiContextAndPlansPropertiesPlansContextList"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object describes multiple context and plans."
+      }
+    },
+    "com.azure.marketplace#MultiContextAndPlansPropertiesPlansContextList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.marketplace#ContextAndPlansDetails"
+      },
+      "traits": {}
+    },
+    "com.azure.marketplace#ContextAndPlansDetails": {
+      "type": "structure",
+      "members": {
+        "context": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Plan's context, e.g. subscription ID, tenant ID."
+          }
+        },
+        "planIds": {
+          "target": "com.azure.marketplace#ContextAndPlansDetailsPlanIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of plan IDs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object of plans per context."
+      }
+    },
+    "com.azure.marketplace#ContextAndPlansDetailsPlanIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of plan IDs."
       }
     },
     "com.azure.marketplace#PrivateStoreCollectionOfferContextsView": {
@@ -2276,15 +2704,38 @@
             "smithy.api#documentation": "The offer ID to update or delete"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#CollectionOffersByAllContextsProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Subscriptions ids list"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#CollectionOffersByAllContextsProperties": {
+      "type": "structure",
+      "members": {
+        "subscriptionIds": {
+          "target": "com.azure.marketplace#CollectionOffersByAllContextsPropertiesSubscriptionIdsList",
+          "traits": {
+            "smithy.api#documentation": "Subscription ids list"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Suggested subscription list"
+      }
+    },
+    "com.azure.marketplace#CollectionOffersByAllContextsPropertiesSubscriptionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Subscription ids list"
       }
     },
     "com.azure.marketplace#PrivateStoreCollectionOfferDelete": {
@@ -2422,16 +2873,93 @@
             "smithy.api#documentation": "The offer ID to update or delete"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#OfferPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The privateStore offer data structure."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#OfferPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for purposes of race condition"
+          }
+        },
+        "specificPlanIdsLimitation": {
+          "target": "com.azure.marketplace#OfferPropertiesInputSpecificPlanIdsLimitationList",
+          "traits": {
+            "smithy.api#documentation": "Plan ids limitation for this offer"
+          }
+        },
+        "updateSuppressedDueIdempotence": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated."
+          }
+        },
+        "iconFileUris": {
+          "target": "com.azure.marketplace#OfferPropertiesInputIconFileUrisMap",
+          "traits": {
+            "smithy.api#documentation": "Icon File Uris"
+          }
+        },
+        "plans": {
+          "target": "com.azure.marketplace#OfferPropertiesInputPlansList",
+          "traits": {
+            "smithy.api#documentation": "Offer plans"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.marketplace#OfferPropertiesInputPlansList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.marketplace#PlanInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Offer plans"
+      }
+    },
+    "com.azure.marketplace#PlanInput": {
+      "type": "structure",
+      "members": {
+        "accessibility": {
+          "target": "com.azure.marketplace#Accessibility",
+          "traits": {
+            "smithy.api#documentation": "Plan accessibility"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.marketplace#OfferPropertiesInputIconFileUrisMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Icon File Uris"
+      }
+    },
+    "com.azure.marketplace#OfferPropertiesInputSpecificPlanIdsLimitationList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Plan ids limitation for this offer"
       }
     },
     "com.azure.marketplace#PrivateStoreCollectionOfferPost": {
@@ -2481,7 +3009,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.marketplace#Operation",
           "traits": {
             "smithy.api#httpPayload": {}
           }
@@ -2489,6 +3017,38 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#Operation": {
+      "type": "enum",
+      "members": {
+        "DELETEPRIVATESTOREOFFER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DeletePrivateStoreOffer"
+          }
+        },
+        "DELETEPRIVATESTORECOLLECTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DeletePrivateStoreCollection"
+          }
+        },
+        "DELETEPRIVATESTORECOLLECTIONOFFER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DeletePrivateStoreCollectionOffer"
+          }
+        },
+        "PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ping"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Set the Operation for the POST method. Ping or Delete"
       }
     },
     "com.azure.marketplace#PrivateStoreCollectionOfferGet": {
@@ -2791,10 +3351,10 @@
             "smithy.api#documentation": "The collection ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#CollectionOffersByAllContextsProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Subscriptions ids list"
           }
         }
       },
@@ -3169,15 +3729,62 @@
             "smithy.api#documentation": "The collection ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#CollectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The collection data structure."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#CollectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "collectionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets collection name."
+          }
+        },
+        "claim": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the association with Commercial's Billing Account."
+          }
+        },
+        "allSubscriptions": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicating whether all subscriptions are selected (=true) or not (=false)."
+          }
+        },
+        "subscriptionsList": {
+          "target": "com.azure.marketplace#CollectionPropertiesInputSubscriptionsListList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request"
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicating whether the collection is enabled or disabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The collection details"
+      }
+    },
+    "com.azure.marketplace#CollectionPropertiesInputSubscriptionsListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request"
       }
     },
     "com.azure.marketplace#PrivateStoreCollectionPost": {
@@ -3219,7 +3826,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.marketplace#Operation",
           "traits": {
             "smithy.api#httpPayload": {}
           }
@@ -3473,15 +4080,44 @@
             "smithy.api#documentation": "The store ID - must use the tenant ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#BulkCollectionsDetails",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "bulk collections properties details"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#BulkCollectionsDetails": {
+      "type": "structure",
+      "members": {
+        "collectionIds": {
+          "target": "com.azure.marketplace#BulkCollectionsDetailsCollectionIdsList",
+          "traits": {
+            "smithy.api#documentation": "collection ids list that the action is performed on"
+          }
+        },
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Action to perform (For example: EnableCollections, DisableCollections)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Bulk collection details"
+      }
+    },
+    "com.azure.marketplace#BulkCollectionsDetailsCollectionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "collection ids list that the action is performed on"
       }
     },
     "com.azure.marketplace#PrivateStoreBillingAccounts": {
@@ -3855,15 +4491,83 @@
             "smithy.api#documentation": "The admin request approval ID to get create or update"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#AdminRequestApprovalPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The privateStore admin Approval request data structure."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#AdminRequestApprovalPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "offerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets offer Id"
+          }
+        },
+        "publisherId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets publisher Id"
+          }
+        },
+        "adminAction": {
+          "target": "com.azure.marketplace#AdminAction",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets admin action"
+          }
+        },
+        "approvedPlans": {
+          "target": "com.azure.marketplace#AdminRequestApprovalPropertiesInputApprovedPlansList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets Approved plans ids, empty in case of rejected"
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets admin comment"
+          }
+        },
+        "administrator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets admin details"
+          }
+        },
+        "collectionIds": {
+          "target": "com.azure.marketplace#AdminRequestApprovalPropertiesInputCollectionIdsList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets list of associated collection ids"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Admin approval request resource properties"
+      }
+    },
+    "com.azure.marketplace#AdminRequestApprovalPropertiesInputCollectionIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets list of associated collection ids"
+      }
+    },
+    "com.azure.marketplace#AdminRequestApprovalPropertiesInputApprovedPlansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets Approved plans ids, empty in case of rejected"
       }
     },
     "com.azure.marketplace#PrivateStoreGetAdminRequestApproval": {
@@ -4117,15 +4821,140 @@
             "smithy.api#documentation": "The store ID - must use the tenant ID"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.marketplace#PrivateStorePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The PrivateStore data structure."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.marketplace#PrivateStorePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "availability": {
+          "target": "com.azure.marketplace#Availability",
+          "traits": {
+            "smithy.api#documentation": "Indicates private store availability"
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for purposes of race condition"
+          }
+        },
+        "privateStoreName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Private Store Name"
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tenant id"
+          }
+        },
+        "isGov": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is government"
+          }
+        },
+        "branding": {
+          "target": "com.azure.marketplace#PrivateStorePropertiesInputBrandingMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets list of branding characteristics"
+          }
+        },
+        "notificationsSettings": {
+          "target": "com.azure.marketplace#NotificationsSettingsPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets notifications settings"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the json payload on whether or not the private store is enabled for a given tenant"
+      }
+    },
+    "com.azure.marketplace#NotificationsSettingsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "recipients": {
+          "target": "com.azure.marketplace#NotificationsSettingsPropertiesInputRecipientsList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets list of notified recipients for new requests"
+          }
+        },
+        "sendToAllMarketplaceAdmins": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets whether to send email to all marketplace admins for new requests"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the json payload for notifications settings"
+      }
+    },
+    "com.azure.marketplace#NotificationsSettingsPropertiesInputRecipientsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.marketplace#RecipientInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets list of notified recipients for new requests"
+      }
+    },
+    "com.azure.marketplace#RecipientInput": {
+      "type": "structure",
+      "members": {
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Principal ID"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the json payload for a notified recipient for new requests"
+      }
+    },
+    "com.azure.marketplace#PrivateStorePropertiesInputBrandingMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets list of branding characteristics"
+      }
+    },
+    "com.azure.marketplace#Availability": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates private store availability"
       }
     },
     "com.azure.marketplace#PrivateStoreGet": {
@@ -4321,26 +5150,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Gets list of associated collection ids"
-      }
-    },
-    "com.azure.marketplace#Availability": {
-      "type": "enum",
-      "members": {
-        "ENABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "enabled"
-          }
-        },
-        "DISABLED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "disabled"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Indicates private store availability"
       }
     },
     "com.azure.marketplace#PrivateStoreGetRequest": {

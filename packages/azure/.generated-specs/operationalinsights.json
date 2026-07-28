@@ -1119,16 +1119,202 @@
             "smithy.api#documentation": "The name of the table."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#TablePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Table's properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#TablePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "retentionInDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property."
+          }
+        },
+        "totalRetentionInDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays."
+          }
+        },
+        "searchResults": {
+          "target": "com.azure.operationalinsights#SearchResultsInput",
+          "traits": {
+            "smithy.api#documentation": "Parameters of the search job that initiated this table."
+          }
+        },
+        "restoredLogs": {
+          "target": "com.azure.operationalinsights#RestoredLogsInput",
+          "traits": {
+            "smithy.api#documentation": "Parameters of the restore operation that initiated this table."
+          }
+        },
+        "plan": {
+          "target": "com.azure.operationalinsights#TablePlanEnum",
+          "traits": {
+            "smithy.api#documentation": "Instruct the system how to handle and charge the logs ingested to this table."
+          }
+        },
+        "schema": {
+          "target": "com.azure.operationalinsights#SchemaInput",
+          "traits": {
+            "smithy.api#documentation": "Table schema."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Table properties."
+      }
+    },
+    "com.azure.operationalinsights#SchemaInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Table name."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Table display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Table description."
+          }
+        },
+        "columns": {
+          "target": "com.azure.operationalinsights#SchemaInputColumnsList",
+          "traits": {
+            "smithy.api#documentation": "A list of table custom columns."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Table's schema."
+      }
+    },
+    "com.azure.operationalinsights#SchemaInputColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.operationalinsights#ColumnInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of table custom columns."
+      }
+    },
+    "com.azure.operationalinsights#ColumnInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Column name."
+          }
+        },
+        "type": {
+          "target": "com.azure.operationalinsights#ColumnTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Column data type."
+          }
+        },
+        "dataTypeHint": {
+          "target": "com.azure.operationalinsights#ColumnDataTypeHintEnum",
+          "traits": {
+            "smithy.api#documentation": "Column data type logical hint."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Column display name."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Column description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Table column."
+      }
+    },
+    "com.azure.operationalinsights#RestoredLogsInput": {
+      "type": "structure",
+      "members": {
+        "startRestoreTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp to start the restore from (UTC)."
+          }
+        },
+        "endRestoreTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp to end the restore by (UTC)."
+          }
+        },
+        "sourceTable": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The table to restore data from."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Restore parameters."
+      }
+    },
+    "com.azure.operationalinsights#SearchResultsInput": {
+      "type": "structure",
+      "members": {
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Search job query."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Search job Description."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Limit the search job to return up to specified number of rows."
+          }
+        },
+        "startSearchTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp to start the search from (UTC)"
+          }
+        },
+        "endSearchTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp to end the search by (UTC)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters of the search job that initiated this table."
       }
     },
     "com.azure.operationalinsights#TablesCreateOrUpdate": {
@@ -1223,11 +1409,10 @@
             "smithy.api#documentation": "The name of the table."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#TablePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Table's properties."
           }
         }
       },
@@ -1622,16 +1807,30 @@
             "smithy.api#documentation": "The name of the summary logs. Must not contain '/'."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#SummaryLogsRetryBinProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Retry bin properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#SummaryLogsRetryBinProperties": {
+      "type": "structure",
+      "members": {
+        "retryBinStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time (UTC) of the bin to retry.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for retrying a Summary rule bin."
       }
     },
     "com.azure.operationalinsights#SummaryLogsDelete": {
@@ -1965,16 +2164,47 @@
             "smithy.api#documentation": "The name of the summary logs. Must not contain '/'."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#SummaryLogsPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Summary rule properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#SummaryLogsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "ruleType": {
+          "target": "com.azure.operationalinsights#RuleTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "SummaryRules rule type: User."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the Summary rule."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the Summary rule."
+          }
+        },
+        "ruleDefinition": {
+          "target": "com.azure.operationalinsights#RuleDefinition",
+          "traits": {
+            "smithy.api#documentation": "Rule definition parameters."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Summary rule properties."
       }
     },
     "com.azure.operationalinsights#SummaryLogsGet": {
@@ -2482,16 +2712,39 @@
             "smithy.api#documentation": "Name of the storageInsightsConfigs resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#StorageInsightProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Storage insight properties."
+          }
+        },
+        "eTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ETag of the storage insight."
+          }
+        },
+        "tags": {
+          "target": "com.azure.operationalinsights#StorageInsightConfigsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#StorageInsightConfigsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.operationalinsights#StorageInsightConfigsGet": {
@@ -3422,11 +3675,17 @@
             "smithy.api#documentation": "The id of the saved search."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#SavedSearchProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the saved search.",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ETag of the saved search. To override an existing saved search, use \"*\" or specify the current Etag"
           }
         }
       },
@@ -3754,16 +4013,64 @@
             "smithy.api#documentation": "The name of the workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "table": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Table from which to purge data.",
+            "smithy.api#required": {}
+          }
+        },
+        "filters": {
+          "target": "com.azure.operationalinsights#WorkspacePurgePurgeRequestFiltersList",
+          "traits": {
+            "smithy.api#documentation": "The set of columns and filters (queries) to run over them to purge the resulting data.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#WorkspacePurgePurgeRequestFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.operationalinsights#WorkspacePurgeBodyFilters"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of columns and filters (queries) to run over them to purge the resulting data."
+      }
+    },
+    "com.azure.operationalinsights#WorkspacePurgeBodyFilters": {
+      "type": "structure",
+      "members": {
+        "column": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The column of the table over which the given query should run"
+          }
+        },
+        "operator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A query operator to evaluate over the provided column and value(s). Supported operators are ==, =~, in, in~, >, >=, <, <=, between, and have the same behavior as they would in a KQL query."
+          }
+        },
+        "value": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "the value for the operator to function over. This can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array of values."
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When filtering over custom dimensions, this key will be used as the name of the custom dimension."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "User-defined filters to return data which will be purged from the table."
       }
     },
     "com.azure.operationalinsights#WorkspacePurgeGetPurgeStatus": {
@@ -5020,10 +5327,10 @@
             "smithy.api#documentation": "Linked storage accounts type."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#LinkedStorageAccountsProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Linked storage accounts properties.",
             "smithy.api#required": {}
           }
         }
@@ -5606,16 +5913,34 @@
             "smithy.api#documentation": "Name of the linked service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#LinkedServiceProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the linked service.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.operationalinsights#LinkedServicesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#LinkedServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.operationalinsights#LinkedServicesGet": {
@@ -6587,16 +6912,47 @@
             "smithy.api#documentation": "Name of the datasource"
           }
         },
-        "body": {
+        "properties": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The data source properties in raw json format, each kind of data source have it's own schema.",
             "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ETag of the data source."
+          }
+        },
+        "kind": {
+          "target": "com.azure.operationalinsights#DataSourceKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of the DataSource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.operationalinsights#DataSourcesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#DataSourcesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.operationalinsights#DataSourcesGet": {
@@ -7160,11 +7516,10 @@
             "smithy.api#documentation": "The data export rule name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#DataExportProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "data export properties."
           }
         }
       },
@@ -8437,16 +8792,306 @@
             "smithy.api#documentation": "The name of the workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#WorkspacePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Workspace properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.operationalinsights#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.operationalinsights#WorkspacesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags. Optional."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#WorkspacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags. Optional."
+      }
+    },
+    "com.azure.operationalinsights#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.operationalinsights#IdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of managed service identity.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.operationalinsights#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.operationalinsights#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.operationalinsights#UserIdentityPropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.operationalinsights#UserIdentityPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties."
+      }
+    },
+    "com.azure.operationalinsights#WorkspacePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sku": {
+          "target": "com.azure.operationalinsights#WorkspaceSkuInput",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the workspace."
+          }
+        },
+        "retentionInDays": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The workspace data retention in days. Allowed values are per pricing plan. See pricing tiers documentation for details.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "workspaceCapping": {
+          "target": "com.azure.operationalinsights#WorkspaceCappingInput",
+          "traits": {
+            "smithy.api#documentation": "The daily volume cap for ingestion."
+          }
+        },
+        "publicNetworkAccessForIngestion": {
+          "target": "com.azure.operationalinsights#WorkspacePropertiesInputPublicNetworkAccessForIngestion",
+          "traits": {
+            "smithy.api#documentation": "The network access type for accessing Log Analytics ingestion."
+          }
+        },
+        "publicNetworkAccessForQuery": {
+          "target": "com.azure.operationalinsights#WorkspacePropertiesInputPublicNetworkAccessForQuery",
+          "traits": {
+            "smithy.api#documentation": "The network access type for accessing Log Analytics query."
+          }
+        },
+        "forceCmkForQuery": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether customer managed storage is mandatory for query management."
+          }
+        },
+        "features": {
+          "target": "com.azure.operationalinsights#WorkspaceFeaturesInput",
+          "traits": {
+            "smithy.api#documentation": "Workspace features."
+          }
+        },
+        "defaultDataCollectionRuleResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the default Data Collection Rule to use for this workspace. Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}."
+          }
+        },
+        "replication": {
+          "target": "com.azure.operationalinsights#WorkspaceReplicationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "workspace replication properties."
+          }
+        },
+        "failover": {
+          "target": "com.azure.operationalinsights#WorkspaceFailoverPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "workspace failover properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Workspace properties."
+      }
+    },
+    "com.azure.operationalinsights#WorkspaceFailoverPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The failover state of the replication."
+      }
+    },
+    "com.azure.operationalinsights#WorkspaceReplicationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the replication."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the replication is enabled or not. When true, workspace configuration and data is replicated to the specified location. If replication is been enabled, location must be provided."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Workspace replication properties."
+      }
+    },
+    "com.azure.operationalinsights#WorkspaceFeaturesInput": {
+      "type": "structure",
+      "members": {
+        "enableDataExport": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag that indicate if data should be exported.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "immediatePurgeDataOn30Days": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag that describes if we want to remove the data after 30 days.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "enableLogAccessUsingOnlyResourcePermissions": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag that indicate which permission to use - resource or workspace or both.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "clusterResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Dedicated LA cluster resourceId that is linked to the workspaces.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Disable Non-AAD based Auth.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Workspace features."
+      }
+    },
+    "com.azure.operationalinsights#WorkspacePropertiesInputPublicNetworkAccessForQuery": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "SECUREDBYPERIMETER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecuredByPerimeter"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The network access type for accessing Log Analytics query."
+      }
+    },
+    "com.azure.operationalinsights#WorkspacePropertiesInputPublicNetworkAccessForIngestion": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "SECUREDBYPERIMETER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecuredByPerimeter"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The network access type for accessing Log Analytics ingestion."
+      }
+    },
+    "com.azure.operationalinsights#WorkspaceCappingInput": {
+      "type": "structure",
+      "members": {
+        "dailyQuotaGb": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The workspace daily quota for ingestion."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The daily volume cap for ingestion."
+      }
+    },
+    "com.azure.operationalinsights#WorkspaceSkuInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "com.azure.operationalinsights#WorkspaceSkuNameEnum",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU.",
+            "smithy.api#required": {}
+          }
+        },
+        "capacityReservationLevel": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SKU (tier) of a workspace."
       }
     },
     "com.azure.operationalinsights#WorkspacesCreateOrUpdate": {
@@ -8570,16 +9215,52 @@
             "smithy.api#documentation": "The name of the workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.operationalinsights#WorkspacesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.operationalinsights#WorkspacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Workspace properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.operationalinsights#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The etag of the workspace."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#WorkspacesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.operationalinsights#WorkspacesGet": {
@@ -9132,16 +9813,93 @@
             "smithy.api#documentation": "Base64 encoded token used to fetch the next page of items. Default is null."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "related": {
+          "target": "com.azure.operationalinsights#LogAnalyticsQueryPackQuerySearchPropertiesRelated",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The related metadata items for the function."
+          }
+        },
+        "tags": {
+          "target": "com.azure.operationalinsights#QueriesSearchRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags associated with the query."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#QueriesSearchRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.operationalinsights#QueriesSearchRequestTagsValueList"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated with the query."
+      }
+    },
+    "com.azure.operationalinsights#QueriesSearchRequestTagsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.operationalinsights#LogAnalyticsQueryPackQuerySearchPropertiesRelated": {
+      "type": "structure",
+      "members": {
+        "categories": {
+          "target": "com.azure.operationalinsights#LogAnalyticsQueryPackQuerySearchPropertiesRelatedCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "The related categories for the function."
+          }
+        },
+        "resourceTypes": {
+          "target": "com.azure.operationalinsights#LogAnalyticsQueryPackQuerySearchPropertiesRelatedResourceTypesList",
+          "traits": {
+            "smithy.api#documentation": "The related resource types for the function."
+          }
+        },
+        "solutions": {
+          "target": "com.azure.operationalinsights#LogAnalyticsQueryPackQuerySearchPropertiesRelatedSolutionsList",
+          "traits": {
+            "smithy.api#documentation": "The related Log Analytics solutions for the function."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The related metadata items for the function."
+      }
+    },
+    "com.azure.operationalinsights#LogAnalyticsQueryPackQuerySearchPropertiesRelatedSolutionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related Log Analytics solutions for the function."
+      }
+    },
+    "com.azure.operationalinsights#LogAnalyticsQueryPackQuerySearchPropertiesRelatedResourceTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related resource types for the function."
+      }
+    },
+    "com.azure.operationalinsights#LogAnalyticsQueryPackQuerySearchPropertiesRelatedCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The related categories for the function."
       }
     },
     "com.azure.operationalinsights#QueriesDelete": {
@@ -9295,17 +10053,81 @@
             "smithy.api#documentation": "The id of a specific query defined in the Log Analytics QueryPack"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#LogAnalyticsQueryPackQueryPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties that define an Log Analytics QueryPack-Query resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.operationalinsights#LogAnalyticsQueryPackQueryPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique display name for your query within the Query Pack.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the query."
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Body of the query.",
+            "smithy.api#required": {}
+          }
+        },
+        "related": {
+          "target": "com.azure.operationalinsights#LogAnalyticsQueryPackQueryPropertiesRelated",
+          "traits": {
+            "smithy.api#documentation": "The related metadata items for the function."
+          }
+        },
+        "tags": {
+          "target": "com.azure.operationalinsights#LogAnalyticsQueryPackQueryPropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags associated with the query."
+          }
+        },
+        "properties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Additional properties that can be set for the query."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties that define an Log Analytics QueryPack-Query resource."
+      }
+    },
+    "com.azure.operationalinsights#LogAnalyticsQueryPackQueryPropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.operationalinsights#LogAnalyticsQueryPackQueryPropertiesInputTagsValueList"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated with the query."
+      }
+    },
+    "com.azure.operationalinsights#LogAnalyticsQueryPackQueryPropertiesInputTagsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.operationalinsights#QueriesPut": {
       "type": "operation",
@@ -9399,11 +10221,10 @@
             "smithy.api#documentation": "The id of a specific query defined in the Log Analytics QueryPack"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#LogAnalyticsQueryPackQueryPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties that define an Log Analytics QueryPack-Query resource."
           }
         }
       },
@@ -9773,16 +10594,27 @@
             "smithy.api#documentation": "The name of the Log Analytics QueryPack resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.operationalinsights#QueryPacksUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#QueryPacksUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.operationalinsights#QueryPacksCreateOrUpdate": {
@@ -9895,16 +10727,48 @@
             "smithy.api#documentation": "The name of the Log Analytics QueryPack resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.operationalinsights#QueryPacksCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.operationalinsights#LogAnalyticsQueryPackPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties that define a Log Analytics QueryPack resource.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#LogAnalyticsQueryPackPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Properties that define a Log Analytics QueryPack resource."
+      }
+    },
+    "com.azure.operationalinsights#QueryPacksCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.operationalinsights#QueryPacksGet": {
@@ -10124,16 +10988,41 @@
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.operationalinsights#QueryPacksCreateOrUpdateWithoutNameRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.operationalinsights#LogAnalyticsQueryPackPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties that define a Log Analytics QueryPack resource.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#QueryPacksCreateOrUpdateWithoutNameRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.operationalinsights#QueryPacksListByResourceGroup": {
@@ -11018,16 +11907,101 @@
             "smithy.api#documentation": "Name of the Log Analytics Cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.operationalinsights#ClusterPatchProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Log Analytics cluster properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.operationalinsights#ClustersUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.operationalinsights#ClusterSku",
+          "traits": {
+            "smithy.api#documentation": "The sku properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.operationalinsights#ClustersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#ClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.operationalinsights#ClustersUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.operationalinsights#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.operationalinsights#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.operationalinsights#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.operationalinsights#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.operationalinsights#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.operationalinsights#ClusterPatchProperties": {
+      "type": "structure",
+      "members": {
+        "keyVaultProperties": {
+          "target": "com.azure.operationalinsights#KeyVaultProperties",
+          "traits": {
+            "smithy.api#documentation": "The associated key properties."
+          }
+        },
+        "billingType": {
+          "target": "com.azure.operationalinsights#BillingType",
+          "traits": {
+            "smithy.api#documentation": "The cluster's billing type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Log Analytics cluster patch properties."
       }
     },
     "com.azure.operationalinsights#ClustersCreateOrUpdate": {
@@ -11180,16 +12154,168 @@
             "smithy.api#documentation": "Name of the Log Analytics Cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.operationalinsights#ClustersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.operationalinsights#ClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Log Analytics cluster properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.operationalinsights#ClustersCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.operationalinsights#ClusterSku",
+          "traits": {
+            "smithy.api#documentation": "The sku properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.operationalinsights#ClustersCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.operationalinsights#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.operationalinsights#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.operationalinsights#ClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "isDoubleEncryptionEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Configures whether cluster will use double encryption. This Property can not be modified after cluster creation. Default value is 'true'"
+          }
+        },
+        "isAvailabilityZonesEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones."
+          }
+        },
+        "billingType": {
+          "target": "com.azure.operationalinsights#BillingType",
+          "traits": {
+            "smithy.api#documentation": "The cluster's billing type."
+          }
+        },
+        "keyVaultProperties": {
+          "target": "com.azure.operationalinsights#KeyVaultProperties",
+          "traits": {
+            "smithy.api#documentation": "The associated key properties."
+          }
+        },
+        "associatedWorkspaces": {
+          "target": "com.azure.operationalinsights#ClusterPropertiesInputAssociatedWorkspacesList",
+          "traits": {
+            "smithy.api#documentation": "The list of Log Analytics workspaces associated with the cluster"
+          }
+        },
+        "capacityReservationProperties": {
+          "target": "com.azure.operationalinsights#CapacityReservationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Additional properties for capacity reservation"
+          }
+        },
+        "replication": {
+          "target": "com.azure.operationalinsights#ClusterReplicationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Cluster's replication properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cluster properties."
+      }
+    },
+    "com.azure.operationalinsights#ClusterReplicationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The secondary location of the replication. If replication is being enabled, enabled must be provided."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether the replication is enabled or not. When true the cluster is replicate to the specified location."
+          }
+        },
+        "isAvailabilityZonesEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Should enable AvailabilityZones for the given replicated cluster"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cluster replication properties."
+      }
+    },
+    "com.azure.operationalinsights#CapacityReservationPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The Capacity Reservation properties."
+      }
+    },
+    "com.azure.operationalinsights#ClusterPropertiesInputAssociatedWorkspacesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.operationalinsights#AssociatedWorkspaceInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Log Analytics workspaces associated with the cluster"
+      }
+    },
+    "com.azure.operationalinsights#AssociatedWorkspaceInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The list of Log Analytics workspaces associated with the cluster."
+      }
+    },
+    "com.azure.operationalinsights#ClustersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.operationalinsights#ClustersGet": {

@@ -129,11 +129,16 @@
             "smithy.api#documentation": "Name of the certificate order.."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "lightTheme": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "If <code>true</code> use the light color theme for site seal; otherwise, use the default color theme."
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Locale of site seal."
           }
         }
       },
@@ -465,11 +470,10 @@
             "smithy.api#documentation": "Name of the certificate order.."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name of the object."
           }
         }
       },
@@ -574,16 +578,47 @@
             "smithy.api#documentation": "Name of the certificate order.."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.certificateregistration#RenewCertificateOrderRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "RenewCertificateOrderRequest resource specific properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.certificateregistration#RenewCertificateOrderRequestProperties": {
+      "type": "structure",
+      "members": {
+        "keySize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Certificate Key Size."
+          }
+        },
+        "csr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Csr to be used for re-key operation."
+          }
+        },
+        "isPrivateKeyExternal": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Should we change the ASC type (from managed private key to external private key and vice versa)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "RenewCertificateOrderRequest resource specific properties"
       }
     },
     "com.azure.certificateregistration#AppServiceCertificateOrdersReissue": {
@@ -632,16 +667,53 @@
             "smithy.api#documentation": "Name of the certificate order.."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.certificateregistration#ReissueCertificateOrderRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "ReissueCertificateOrderRequest resource specific properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.certificateregistration#ReissueCertificateOrderRequestProperties": {
+      "type": "structure",
+      "members": {
+        "keySize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Certificate Key Size."
+          }
+        },
+        "delayExistingRevokeInHours": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Delay in hours to revoke existing certificate after the new certificate is issued."
+          }
+        },
+        "csr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Csr to be used for re-key operation."
+          }
+        },
+        "isPrivateKeyExternal": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Should we change the ASC type (from managed private key to external private key and vice versa)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ReissueCertificateOrderRequest resource specific properties"
       }
     },
     "com.azure.certificateregistration#CertificateOrdersDiagnosticsGetAppServiceCertificateOrderDetectorResponse": {
@@ -1941,11 +2013,16 @@
             "smithy.api#documentation": "Name of the certificate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.certificateregistration#AppServiceCertificate",
+          "traits": {
+            "smithy.api#documentation": "Core resource properties"
           }
         }
       },
@@ -2076,16 +2153,46 @@
             "smithy.api#documentation": "Name of the certificate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.certificateregistration#AppServiceCertificate",
+          "traits": {
+            "smithy.api#documentation": "Core resource properties"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.certificateregistration#AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.certificateregistration#AppServiceCertificateOrdersGetCertificate": {
@@ -2912,16 +3019,84 @@
             "smithy.api#documentation": "Name of the certificate order.."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.certificateregistration#AppServiceCertificateOrderPatchResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "AppServiceCertificateOrderPatchResource resource specific properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.certificateregistration#AppServiceCertificateOrderPatchResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "certificates": {
+          "target": "com.azure.certificateregistration#AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap",
+          "traits": {
+            "smithy.api#documentation": "State of the Key Vault secret."
+          }
+        },
+        "distinguishedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate distinguished name."
+          }
+        },
+        "validityInYears": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Duration in years (must be 1)."
+          }
+        },
+        "keySize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Certificate key size."
+          }
+        },
+        "productType": {
+          "target": "com.azure.certificateregistration#CertificateProductType",
+          "traits": {
+            "smithy.api#documentation": "Certificate product type.",
+            "smithy.api#required": {}
+          }
+        },
+        "autoRenew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "<code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>."
+          }
+        },
+        "csr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last CSR that was created for this order."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "AppServiceCertificateOrderPatchResource resource specific properties"
+      }
+    },
+    "com.azure.certificateregistration#AppServiceCertificateOrderPatchResourcePropertiesInputCertificatesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.certificateregistration#AppServiceCertificate"
+      },
+      "traits": {
+        "smithy.api#documentation": "State of the Key Vault secret."
       }
     },
     "com.azure.certificateregistration#AppServiceCertificateOrdersCreateOrUpdate": {
@@ -3039,16 +3214,109 @@
             "smithy.api#documentation": "Name of the certificate order.."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.certificateregistration#AppServiceCertificateOrderPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "AppServiceCertificateOrder resource specific properties"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.certificateregistration#AppServiceCertificateOrderPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "certificates": {
+          "target": "com.azure.certificateregistration#AppServiceCertificateOrderPropertiesInputCertificatesMap",
+          "traits": {
+            "smithy.api#documentation": "State of the Key Vault secret."
+          }
+        },
+        "distinguishedName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificate distinguished name."
+          }
+        },
+        "validityInYears": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Duration in years (must be 1)."
+          }
+        },
+        "keySize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Certificate key size."
+          }
+        },
+        "productType": {
+          "target": "com.azure.certificateregistration#CertificateProductType",
+          "traits": {
+            "smithy.api#documentation": "Certificate product type.",
+            "smithy.api#required": {}
+          }
+        },
+        "autoRenew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "<code>true</code> if the certificate should be automatically renewed when it expires; otherwise, <code>false</code>."
+          }
+        },
+        "csr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last CSR that was created for this order."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "AppServiceCertificateOrder resource specific properties"
+      }
+    },
+    "com.azure.certificateregistration#AppServiceCertificateOrderPropertiesInputCertificatesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.certificateregistration#AppServiceCertificate"
+      },
+      "traits": {
+        "smithy.api#documentation": "State of the Key Vault secret."
+      }
+    },
+    "com.azure.certificateregistration#AppServiceCertificateOrdersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.certificateregistration#AppServiceCertificateOrdersGet": {
@@ -3343,16 +3611,46 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.certificateregistration#AppServiceCertificateOrdersValidatePurchaseInformationRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.certificateregistration#AppServiceCertificateOrderPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "AppServiceCertificateOrder resource specific properties"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.certificateregistration#AppServiceCertificateOrdersValidatePurchaseInformationRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.certificateregistration#AppServiceCertificateOrdersList": {

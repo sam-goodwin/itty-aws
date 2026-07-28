@@ -68,7 +68,7 @@ export const AddLocationToGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddLocationToGroupRequest>;
 
 /** An array of location keys the group is located. */
-export type GroupLocationsList = string[];
+export type GroupLocationsList = ReadonlyArray<string>;
 export const GroupLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupLocationsList>;
@@ -111,11 +111,7 @@ export const AddLocationToGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddLocationToGroupResponse>;
 
 /** The role given to the user. */
-export type AddOrganizationMemberRequestRole =
-  | "admin"
-  | "member"
-  | "viewer"
-  | (string & {});
+export type AddOrganizationMemberRequestRole = "admin" | "member" | "viewer";
 export const AddOrganizationMemberRequestRole = /*@__PURE__*/ S.String;
 
 export interface AddOrganizationMemberRequest {
@@ -143,7 +139,7 @@ export const AddOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddOrganizationMemberRequest>;
 
 /** The role assigned to the member. */
-export type Role = "owner" | "admin" | "member" | "viewer" | (string & {});
+export type Role = "owner" | "admin" | "member" | "viewer";
 export const Role = /*@__PURE__*/ S.String;
 
 export interface AddOrganizationMemberResponse {
@@ -170,12 +166,12 @@ export type CreateAPITokenRequestScopesItem =
   | "group:mint-token"
   | "group:rotate-creds"
   | "read-only"
-  | "full-access"
-  | (string & {});
+  | "full-access";
 export const CreateAPITokenRequestScopesItem = /*@__PURE__*/ S.String;
 
 /** Permissions to grant a group-scoped token. Each entry is either an individual scope or one of the presets `read-only` (expands to `read`) and `full-access` (expands to every scope). Required and must be non-empty when `group` is set. `db:mint-token` lets the token issue new SQL credentials; `db:rotate-creds` invalidates every existing SQL token for the database — they are deliberately separate because rotation is destructive. */
-export type CreateAPITokenRequestScopesList = CreateAPITokenRequestScopesItem[];
+export type CreateAPITokenRequestScopesList =
+  ReadonlyArray<CreateAPITokenRequestScopesItem>;
 export const CreateAPITokenRequestScopesList = /*@__PURE__*/ S.Array(
   CreateAPITokenRequestScopesItem,
 ) as any as S.Schema<CreateAPITokenRequestScopesList>;
@@ -224,10 +220,7 @@ export const CreateAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAPITokenResponse>;
 
 /** The type of seed to be used to create a new database. Use `database` to copy from an existing database, or `database_upload` to [upload a SQLite database file](/api-reference/databases/upload). */
-export type CreateDatabaseRequestSeedType =
-  | "database"
-  | "database_upload"
-  | (string & {});
+export type CreateDatabaseRequestSeedType = "database" | "database_upload";
 export const CreateDatabaseRequestSeedType = /*@__PURE__*/ S.String;
 
 export interface CreateDatabaseRequestSeed {
@@ -258,8 +251,7 @@ export type CreateDatabaseRequestRemoteEncryptionEncryptionCipher =
   | "aegis128x4"
   | "aegis256"
   | "aegis256x2"
-  | "aegis256x4"
-  | (string & {});
+  | "aegis256x4";
 export const CreateDatabaseRequestRemoteEncryptionEncryptionCipher =
   /*@__PURE__*/ S.String;
 
@@ -343,12 +335,11 @@ export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateDatabaseTokenRequestAuthorization =
   | "full-access"
-  | "read-only"
-  | (string & {});
+  | "read-only";
 export const CreateDatabaseTokenRequestAuthorization = /*@__PURE__*/ S.String;
 
 export type CreateDatabaseTokenRequestPermissionsReadAttachDatabasesList =
-  string[];
+  ReadonlyArray<string>;
 export const CreateDatabaseTokenRequestPermissionsReadAttachDatabasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -428,7 +419,7 @@ export const CreateDatabaseTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabaseTokenResponse>;
 
 /** Set to `all` to enable all extensions. */
-export type ExtensionsCase0 = "all" | (string & {});
+export type ExtensionsCase0 = "all";
 export const ExtensionsCase0 = /*@__PURE__*/ S.String;
 
 export type ExtensionsCase1Item =
@@ -441,12 +432,11 @@ export type ExtensionsCase1Item =
   | "unicode"
   | "uuid"
   | "regexp"
-  | "vec"
-  | (string & {});
+  | "vec";
 export const ExtensionsCase1Item = /*@__PURE__*/ S.String;
 
 /** Array of extensions to enable. */
-export type ExtensionsCase1List = ExtensionsCase1Item[];
+export type ExtensionsCase1List = ReadonlyArray<ExtensionsCase1Item>;
 export const ExtensionsCase1List = /*@__PURE__*/ S.Array(
   ExtensionsCase1Item,
 ) as any as S.Schema<ExtensionsCase1List>;
@@ -494,14 +484,11 @@ export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateGroupResponse",
 }) as any as S.Schema<CreateGroupResponse>;
 
-export type CreateGroupTokenRequestAuthorization =
-  | "full-access"
-  | "read-only"
-  | (string & {});
+export type CreateGroupTokenRequestAuthorization = "full-access" | "read-only";
 export const CreateGroupTokenRequestAuthorization = /*@__PURE__*/ S.String;
 
 export type CreateGroupTokenRequestPermissionsReadAttachDatabasesList =
-  string[];
+  ReadonlyArray<string>;
 export const CreateGroupTokenRequestPermissionsReadAttachDatabasesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -741,7 +728,7 @@ export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseRequest>;
 
 /** A list of regions for the group the database belongs to. */
-export type DatabaseRegionsList = string[];
+export type DatabaseRegionsList = ReadonlyArray<string>;
 export const DatabaseRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseRegionsList>;
@@ -831,14 +818,15 @@ export const GetDatabaseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseConfigurationRequest>;
 
 /** List of allowed IP addresses and CIDR blocks. Empty means no IP restriction. */
-export type DatabaseConfigurationResponseAllowedIpsList = string[];
+export type DatabaseConfigurationResponseAllowedIpsList = ReadonlyArray<string>;
 export const DatabaseConfigurationResponseAllowedIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DatabaseConfigurationResponseAllowedIpsList>;
 
 /** List of allowed AWS VPC endpoint IDs. Empty means no VPC endpoint restriction. */
-export type DatabaseConfigurationResponseAllowedAwsVpcIdsList = string[];
+export type DatabaseConfigurationResponseAllowedAwsVpcIdsList =
+  ReadonlyArray<string>;
 export const DatabaseConfigurationResponseAllowedAwsVpcIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -901,7 +889,7 @@ export const GetDatabaseInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseInstanceRequest>;
 
 /** The type of database instance this, will be `primary` or `replica`. */
-export type InstanceType = "primary" | "replica" | (string & {});
+export type InstanceType = "primary" | "replica";
 export const InstanceType = /*@__PURE__*/ S.String;
 
 export interface Instance {
@@ -977,7 +965,8 @@ export const DatabaseStatsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseStatsOutput>;
 
 /** The top queries performed on the given database as well as the total rows read and written. */
-export type GetDatabaseStatsResponseTopQueriesList = DatabaseStatsOutput[];
+export type GetDatabaseStatsResponseTopQueriesList =
+  ReadonlyArray<DatabaseStatsOutput>;
 export const GetDatabaseStatsResponseTopQueriesList = /*@__PURE__*/ S.Array(
   DatabaseStatsOutput,
 ) as any as S.Schema<GetDatabaseStatsResponseTopQueriesList>;
@@ -1059,7 +1048,7 @@ export const DatabaseUsageOutputInstancesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The usage objects for instances of the current database. */
 export type DatabaseUsageOutputInstancesList =
-  DatabaseUsageOutputInstancesItem[];
+  ReadonlyArray<DatabaseUsageOutputInstancesItem>;
 export const DatabaseUsageOutputInstancesList = /*@__PURE__*/ S.Array(
   DatabaseUsageOutputInstancesItem,
 ) as any as S.Schema<DatabaseUsageOutputInstancesList>;
@@ -1177,7 +1166,7 @@ export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationRequest>;
 
 /** The type of account this organization is. Will always be `personal` or `team`. */
-export type OrganizationType = "personal" | "team" | (string & {});
+export type OrganizationType = "personal" | "team";
 export const OrganizationType = /*@__PURE__*/ S.String;
 
 export interface Organization {
@@ -1250,12 +1239,7 @@ export const GetOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationMemberRequest>;
 
 /** The role assigned to the member. */
-export type MemberRole =
-  | "owner"
-  | "admin"
-  | "member"
-  | "viewer"
-  | (string & {});
+export type MemberRole = "owner" | "admin" | "member" | "viewer";
 export const MemberRole = /*@__PURE__*/ S.String;
 
 export interface Member {
@@ -1388,7 +1372,7 @@ export const GetOrganizationUsageResponseOrganizationUsage =
 
 /** The databases for the organization and their usage. */
 export type GetOrganizationUsageResponseOrganizationDatabasesList =
-  DatabaseUsageOutput[];
+  ReadonlyArray<DatabaseUsageOutput>;
 export const GetOrganizationUsageResponseOrganizationDatabasesList =
   /*@__PURE__*/ S.Array(
     DatabaseUsageOutput,
@@ -1488,8 +1472,7 @@ export const InvalidateGroupTokensResponse = /*@__PURE__*/ S.suspend(() =>
 export type InviteOrganizationMemberV2RequestRole =
   | "admin"
   | "member"
-  | "viewer"
-  | (string & {});
+  | "viewer";
 export const InviteOrganizationMemberV2RequestRole = /*@__PURE__*/ S.String;
 
 export interface InviteOrganizationMemberV2Request {
@@ -1520,7 +1503,7 @@ export const InviteOrganizationMemberV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InviteOrganizationMemberV2Request>;
 
 /** The assigned role for the invited user. */
-export type InviteCreatedV2Role = "admin" | "member" | "viewer" | (string & {});
+export type InviteCreatedV2Role = "admin" | "member" | "viewer";
 export const InviteCreatedV2Role = /*@__PURE__*/ S.String;
 
 export interface InviteCreatedV2 {
@@ -1562,7 +1545,7 @@ export const ListAPITokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAPITokensRequest>;
 
 /** The expanded list of scopes granted to this token. Present only for group-scoped tokens. Presets passed at creation time (`read-only`, `full-access`) are stored as the underlying individual scopes and are returned in that form. */
-export type APITokenScopesList = string[];
+export type APITokenScopesList = ReadonlyArray<string>;
 export const APITokenScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<APITokenScopesList>;
@@ -1592,7 +1575,7 @@ export const APIToken = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "APIToken" }) as any as S.Schema<APIToken>;
 
-export type ListAPITokensResponseTokensList = APIToken[];
+export type ListAPITokensResponseTokensList = ReadonlyArray<APIToken>;
 export const ListAPITokensResponseTokensList = /*@__PURE__*/ S.Array(
   APIToken,
 ) as any as S.Schema<ListAPITokensResponseTokensList>;
@@ -1629,7 +1612,8 @@ export const ListDatabaseInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDatabaseInstancesRequest",
 }) as any as S.Schema<ListDatabaseInstancesRequest>;
 
-export type ListDatabaseInstancesResponseInstancesList = Instance[];
+export type ListDatabaseInstancesResponseInstancesList =
+  ReadonlyArray<Instance>;
 export const ListDatabaseInstancesResponseInstancesList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<ListDatabaseInstancesResponseInstancesList>;
@@ -1672,7 +1656,7 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDatabasesRequest",
 }) as any as S.Schema<ListDatabasesRequest>;
 
-export type ListDatabasesResponseDatabasesList = Database[];
+export type ListDatabasesResponseDatabasesList = ReadonlyArray<Database>;
 export const ListDatabasesResponseDatabasesList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<ListDatabasesResponseDatabasesList>;
@@ -1706,7 +1690,7 @@ export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupsRequest",
 }) as any as S.Schema<ListGroupsRequest>;
 
-export type ListGroupsResponseGroupsList = Group[];
+export type ListGroupsResponseGroupsList = ReadonlyArray<Group>;
 export const ListGroupsResponseGroupsList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<ListGroupsResponseGroupsList>;
@@ -1769,7 +1753,8 @@ export const ListOrganizationAPITokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationAPITokensRequest>;
 
 /** The expanded scope list. Present only for group-scoped tokens. */
-export type ListOrganizationAPITokensResponseTokensItemScopesList = string[];
+export type ListOrganizationAPITokensResponseTokensItemScopesList =
+  ReadonlyArray<string>;
 export const ListOrganizationAPITokensResponseTokensItemScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1822,7 +1807,7 @@ export const ListOrganizationAPITokensResponseTokensItem =
   }) as any as S.Schema<ListOrganizationAPITokensResponseTokensItem>;
 
 export type ListOrganizationAPITokensResponseTokensList =
-  ListOrganizationAPITokensResponseTokensItem[];
+  ReadonlyArray<ListOrganizationAPITokensResponseTokensItem>;
 export const ListOrganizationAPITokensResponseTokensList =
   /*@__PURE__*/ S.Array(
     ListOrganizationAPITokensResponseTokensItem,
@@ -1888,8 +1873,7 @@ export type AuditLogCode =
   | "group-protect"
   | "group-unprotect"
   | "db-aunrchive"
-  | "user-delete"
-  | (string & {});
+  | "user-delete";
 export const AuditLogCode = /*@__PURE__*/ S.String;
 
 export interface AuditLog {
@@ -1917,7 +1901,8 @@ export const AuditLog = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLog" }) as any as S.Schema<AuditLog>;
 
-export type ListOrganizationAuditLogsResponseAuditLogsList = AuditLog[];
+export type ListOrganizationAuditLogsResponseAuditLogsList =
+  ReadonlyArray<AuditLog>;
 export const ListOrganizationAuditLogsResponseAuditLogsList =
   /*@__PURE__*/ S.Array(
     AuditLog,
@@ -1977,7 +1962,7 @@ export const ListOrganizationInvitesV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationInvitesV2Request>;
 
 /** The assigned role for the invited user. */
-export type InviteV2Role = "admin" | "member" | "viewer" | (string & {});
+export type InviteV2Role = "admin" | "member" | "viewer";
 export const InviteV2Role = /*@__PURE__*/ S.String;
 
 export interface InviteV2 {
@@ -1999,7 +1984,8 @@ export const InviteV2 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InviteV2" }) as any as S.Schema<InviteV2>;
 
-export type ListOrganizationInvitesV2ResponseInvitesList = InviteV2[];
+export type ListOrganizationInvitesV2ResponseInvitesList =
+  ReadonlyArray<InviteV2>;
 export const ListOrganizationInvitesV2ResponseInvitesList =
   /*@__PURE__*/ S.Array(
     InviteV2,
@@ -2016,11 +2002,7 @@ export const ListOrganizationInvitesV2Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationInvitesV2Response",
 }) as any as S.Schema<ListOrganizationInvitesV2Response>;
 
-export type ListOrganizationInvoicesRequestType =
-  | "all"
-  | "upcoming"
-  | "issued"
-  | (string & {});
+export type ListOrganizationInvoicesRequestType = "all" | "upcoming" | "issued";
 export const ListOrganizationInvoicesRequestType = /*@__PURE__*/ S.String;
 
 export interface ListOrganizationInvoicesRequest {
@@ -2074,7 +2056,7 @@ export const ListOrganizationInvoicesResponseInvoicesItem =
 
 /** The list of invoices for the organization. */
 export type ListOrganizationInvoicesResponseInvoicesList =
-  ListOrganizationInvoicesResponseInvoicesItem[];
+  ReadonlyArray<ListOrganizationInvoicesResponseInvoicesItem>;
 export const ListOrganizationInvoicesResponseInvoicesList =
   /*@__PURE__*/ S.Array(
     ListOrganizationInvoicesResponseInvoicesItem,
@@ -2110,7 +2092,7 @@ export const ListOrganizationMembersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationMembersRequest",
 }) as any as S.Schema<ListOrganizationMembersRequest>;
 
-export type ListOrganizationMembersResponseMembersList = Member[];
+export type ListOrganizationMembersResponseMembersList = ReadonlyArray<Member>;
 export const ListOrganizationMembersResponseMembersList = /*@__PURE__*/ S.Array(
   Member,
 ) as any as S.Schema<ListOrganizationMembersResponseMembersList>;
@@ -2157,7 +2139,7 @@ export const PlanPrice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlanPrice" }) as any as S.Schema<PlanPrice>;
 
-export type OrganizationPlanPricesList = PlanPrice[];
+export type OrganizationPlanPricesList = ReadonlyArray<PlanPrice>;
 export const OrganizationPlanPricesList = /*@__PURE__*/ S.Array(
   PlanPrice,
 ) as any as S.Schema<OrganizationPlanPricesList>;
@@ -2210,7 +2192,8 @@ export const OrganizationPlan = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationPlan>;
 
 /** List of available plans. */
-export type ListOrganizationPlansResponsePlansList = OrganizationPlan[];
+export type ListOrganizationPlansResponsePlansList =
+  ReadonlyArray<OrganizationPlan>;
 export const ListOrganizationPlansResponsePlansList = /*@__PURE__*/ S.Array(
   OrganizationPlan,
 ) as any as S.Schema<ListOrganizationPlansResponsePlansList>;
@@ -2236,7 +2219,7 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationsRequest",
 }) as any as S.Schema<ListOrganizationsRequest>;
 
-export type ListOrganizationsResponseBodyList = Organization[];
+export type ListOrganizationsResponseBodyList = ReadonlyArray<Organization>;
 export const ListOrganizationsResponseBodyList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<ListOrganizationsResponseBodyList>;
@@ -2404,7 +2387,7 @@ export const TransferGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransferGroupRequest>;
 
 /** An array of location keys the group is located. */
-export type TransferGroupResponseLocationsList = string[];
+export type TransferGroupResponseLocationsList = ReadonlyArray<string>;
 export const TransferGroupResponseLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TransferGroupResponseLocationsList>;
@@ -2470,14 +2453,16 @@ export const UnarchiveGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnarchiveGroupResponse>;
 
 /** List of allowed IP addresses and CIDR blocks. Only connections from these sources are accepted. Pass an empty array to clear the list. Omit to leave unchanged. */
-export type UpdateDatabaseConfigurationRequestAllowedIpsList = string[];
+export type UpdateDatabaseConfigurationRequestAllowedIpsList =
+  ReadonlyArray<string>;
 export const UpdateDatabaseConfigurationRequestAllowedIpsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateDatabaseConfigurationRequestAllowedIpsList>;
 
 /** List of allowed AWS VPC endpoint IDs (vpce-...). Only connections arriving through these endpoints are accepted. Pass an empty array to clear the list. Omit to leave unchanged. */
-export type UpdateDatabaseConfigurationRequestAllowedAwsVpcIdsList = string[];
+export type UpdateDatabaseConfigurationRequestAllowedAwsVpcIdsList =
+  ReadonlyArray<string>;
 export const UpdateDatabaseConfigurationRequestAllowedAwsVpcIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2580,11 +2565,7 @@ export const UpdateGroupDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGroupDatabasesResponse>;
 
 /** The new role to assign to the member. */
-export type UpdateMemberRoleRequestRole =
-  | "admin"
-  | "member"
-  | "viewer"
-  | (string & {});
+export type UpdateMemberRoleRequestRole = "admin" | "member" | "viewer";
 export const UpdateMemberRoleRequestRole = /*@__PURE__*/ S.String;
 
 export interface UpdateMemberRoleRequest {
@@ -2612,11 +2593,7 @@ export const UpdateMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMemberRoleRequest>;
 
 /** The new role of the updated member. */
-export type UpdateMemberRoleResponseMemberRole =
-  | "admin"
-  | "member"
-  | "viewer"
-  | (string & {});
+export type UpdateMemberRoleResponseMemberRole = "admin" | "member" | "viewer";
 export const UpdateMemberRoleResponseMemberRole = /*@__PURE__*/ S.String;
 
 export interface UpdateMemberRoleResponseMember {

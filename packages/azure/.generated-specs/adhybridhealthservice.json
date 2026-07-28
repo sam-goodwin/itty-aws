@@ -91,11 +91,40 @@
             "smithy.api#documentation": "The name of the service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Unique ID for the entree"
+          }
+        },
+        "badPasswordAndExtranetLockoutCombinedDailyThreshold": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "This threshold setting defines the per day trigger for a new event to be generated in the report."
+          }
+        },
+        "badPasswordAndExtranetLockoutCombinedHourlyThreshold": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "This threshold setting defines the per hour trigger for a new event to be generated in the report."
+          }
+        },
+        "extranetLockoutDailyThreshold": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "This threshold setting defines the per hour trigger for a new event to be generated in the report."
+          }
+        },
+        "extranetLockoutHourlyThreshold": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "This threshold setting defines the per hour trigger for a new event to be generated in the report."
+          }
+        },
+        "emailNotificationEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A value indicating whether email notification has been enabled."
           }
         }
       },
@@ -2457,16 +2486,191 @@
             "smithy.api#documentation": "The name of the service under which the server is to be onboarded."
           }
         },
-        "body": {
+        "serviceMemberId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the server."
+          }
+        },
+        "serviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service id to whom this server belongs."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant id to whom this server belongs."
+          }
+        },
+        "activeAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of alerts that are currently active for the server."
+          }
+        },
+        "additionalInformation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The additional information, if any, for the server."
+          }
+        },
+        "createdDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date time , in UTC, when the server was onboarded to Azure Active Directory Connect Health."
+          }
+        },
+        "dimensions": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The server specific configuration related dimensions."
+          }
+        },
+        "disabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the server is disabled or not. "
+          }
+        },
+        "disabledReason": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The reason for disabling the server."
+          }
+        },
+        "installedQfes": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The list of installed QFEs for the server."
+          }
+        },
+        "lastDisabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time , in UTC, when the server was last disabled."
+          }
+        },
+        "lastReboot": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the server was last rebooted."
+          }
+        },
+        "lastServerReportedMonitoringLevelChange": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the server's data monitoring configuration was last changed."
+          }
+        },
+        "lastUpdated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the server properties were last updated."
+          }
+        },
+        "machineId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the machine."
+          }
+        },
+        "machineName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the server."
+          }
+        },
+        "monitoringConfigurationsComputed": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "monitoringConfigurationsCustomized": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "osName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the operating system installed in the machine."
+          }
+        },
+        "osVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the operating system installed in the machine."
+          }
+        },
+        "properties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Server specific properties."
+          }
+        },
+        "recommendedQfes": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The list of recommended hotfixes for the server."
+          }
+        },
+        "resolvedAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total count of alerts that are resolved for this server."
+          }
+        },
+        "role": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service role that is being monitored in the server."
+          }
+        },
+        "serverReportedMonitoringLevel": {
+          "target": "com.azure.adhybridhealthservice#ServiceMembersAddRequestServerReportedMonitoringLevel",
+          "traits": {
+            "smithy.api#documentation": "The monitoring level reported by the server."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The health status of the server."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.adhybridhealthservice#ServiceMembersAddRequestServerReportedMonitoringLevel": {
+      "type": "enum",
+      "members": {
+        "PARTIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Partial"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Full"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Off"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The monitoring level reported by the server."
       }
     },
     "com.azure.adhybridhealthservice#ServiceMembersList": {
@@ -2757,11 +2961,16 @@
             "smithy.api#documentation": "The name of the service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "key": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The key for the property."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value for the key."
           }
         }
       },
@@ -3450,11 +3659,52 @@
             "smithy.api#documentation": "The name of the service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "level": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The alert level which indicates the severity of the alert."
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The alert state which can be either active or resolved with multiple resolution types."
+          }
+        },
+        "shortName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The alert short name."
+          }
+        },
+        "feedback": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The feedback for the alert which indicates if the customer likes or dislikes the alert."
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Additional comments related to the alert."
+          }
+        },
+        "consentedToShare": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the alert feedback can be shared from product team."
+          }
+        },
+        "serviceMemberId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The server Id of the alert."
+          }
+        },
+        "createdDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time,in UTC,when the alert was created."
           }
         }
       },
@@ -4215,16 +4465,165 @@
             "smithy.api#documentation": "The name of the service which needs to be deleted."
           }
         },
-        "body": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the service."
+          }
+        },
+        "activeAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The count of alerts that are currently active for the service."
+          }
+        },
+        "additionalInformation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The additional information related to the service."
+          }
+        },
+        "createdDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health."
+          }
+        },
+        "customNotificationEmails": {
+          "target": "com.azure.adhybridhealthservice#ServicesUpdateRequestCustomNotificationEmailsList",
+          "traits": {
+            "smithy.api#documentation": "The list of additional emails that are configured to receive notifications about the service."
+          }
+        },
+        "disabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the service is disabled or not."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the service."
+          }
+        },
+        "health": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The health of the service."
+          }
+        },
+        "lastDisabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the service was last disabled."
+          }
+        },
+        "lastUpdated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date or time , in UTC, when the service properties were last updated."
+          }
+        },
+        "monitoringConfigurationsComputed": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "monitoringConfigurationsCustomized": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "notificationEmailEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled or not."
+          }
+        },
+        "notificationEmailEnabledForGlobalAdmins": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled for global administrators of the tenant."
+          }
+        },
+        "notificationEmailsEnabledForGlobalAdmins": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled for global administrators of the tenant."
+          }
+        },
+        "notificationEmails": {
+          "target": "com.azure.adhybridhealthservice#ServicesUpdateRequestNotificationEmailsList",
+          "traits": {
+            "smithy.api#documentation": "The list of emails to whom service notifications will be sent."
+          }
+        },
+        "originalDisabledState": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets the original disable state."
+          }
+        },
+        "resolvedAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total count of alerts that has been resolved for the service."
+          }
+        },
+        "serviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the service."
+          }
+        },
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The signature of the service."
+          }
+        },
+        "simpleProperties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "List of service specific configuration properties."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the tenant to which the service is registered to."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.adhybridhealthservice#ServicesUpdateRequestNotificationEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of emails to whom service notifications will be sent."
+      }
+    },
+    "com.azure.adhybridhealthservice#ServicesUpdateRequestCustomNotificationEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of additional emails that are configured to receive notifications about the service."
       }
     },
     "com.azure.adhybridhealthservice#ServicesGet": {
@@ -4380,16 +4779,171 @@
     "com.azure.adhybridhealthservice#ServicesAddRequest": {
       "type": "structure",
       "members": {
-        "body": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the service."
+          }
+        },
+        "activeAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The count of alerts that are currently active for the service."
+          }
+        },
+        "additionalInformation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The additional information related to the service."
+          }
+        },
+        "createdDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health."
+          }
+        },
+        "customNotificationEmails": {
+          "target": "com.azure.adhybridhealthservice#ServicesAddRequestCustomNotificationEmailsList",
+          "traits": {
+            "smithy.api#documentation": "The list of additional emails that are configured to receive notifications about the service."
+          }
+        },
+        "disabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the service is disabled or not."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the service."
+          }
+        },
+        "health": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The health of the service."
+          }
+        },
+        "lastDisabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the service was last disabled."
+          }
+        },
+        "lastUpdated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date or time , in UTC, when the service properties were last updated."
+          }
+        },
+        "monitoringConfigurationsComputed": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "monitoringConfigurationsCustomized": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "notificationEmailEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled or not."
+          }
+        },
+        "notificationEmailEnabledForGlobalAdmins": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled for global administrators of the tenant."
+          }
+        },
+        "notificationEmailsEnabledForGlobalAdmins": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled for global administrators of the tenant."
+          }
+        },
+        "notificationEmails": {
+          "target": "com.azure.adhybridhealthservice#ServicesAddRequestNotificationEmailsList",
+          "traits": {
+            "smithy.api#documentation": "The list of emails to whom service notifications will be sent."
+          }
+        },
+        "originalDisabledState": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets the original disable state."
+          }
+        },
+        "resolvedAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total count of alerts that has been resolved for the service."
+          }
+        },
+        "serviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the service."
+          }
+        },
+        "serviceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service."
+          }
+        },
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The signature of the service."
+          }
+        },
+        "simpleProperties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "List of service specific configuration properties."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the tenant to which the service is registered to."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.adhybridhealthservice#ServicesAddRequestNotificationEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of emails to whom service notifications will be sent."
+      }
+    },
+    "com.azure.adhybridhealthservice#ServicesAddRequestCustomNotificationEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of additional emails that are configured to receive notifications about the service."
       }
     },
     "com.azure.adhybridhealthservice#ServicesList": {
@@ -4631,16 +5185,144 @@
     "com.azure.adhybridhealthservice#ConfigurationUpdateRequest": {
       "type": "structure",
       "members": {
-        "body": {
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Id of the tenant."
+          }
+        },
+        "aadLicense": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Active Directory license of the tenant."
+          }
+        },
+        "aadPremium": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicate if the tenant has Azure Active Directory Premium license or not."
+          }
+        },
+        "agentAutoUpdate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the tenant is configured to automatically receive updates for Azure Active Directory Connect Health client side features."
+          }
+        },
+        "alertSuppressionTimeInMins": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The time in minutes after which an alert will be auto-suppressed."
+          }
+        },
+        "consentedToMicrosoftDevOps": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the tenant data can be seen by Microsoft through Azure portal."
+          }
+        },
+        "countryLetterCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The country letter code of the tenant."
+          }
+        },
+        "createdDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date, in UTC, when the tenant was onboarded to Azure Active Directory Connect Health."
+          }
+        },
+        "devOpsTtl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, till when the tenant data can be seen by Microsoft through Azure portal."
+          }
+        },
+        "disabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the tenant is disabled in Azure Active Directory Connect Health."
+          }
+        },
+        "disabledReason": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The reason due to which the tenant was disabled in Azure Active Directory Connect Health."
+          }
+        },
+        "globalAdminsEmail": {
+          "target": "com.azure.adhybridhealthservice#ConfigurationUpdateRequestGlobalAdminsEmailList",
+          "traits": {
+            "smithy.api#documentation": "The list of global administrators for the tenant."
+          }
+        },
+        "initialDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The initial domain of the tenant."
+          }
+        },
+        "lastDisabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the tenant was last disabled in Azure Active Directory Connect Health."
+          }
+        },
+        "lastVerified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the tenant onboarding status in Azure Active Directory Connect Health was last verified."
+          }
+        },
+        "onboardingAllowed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the tenant is allowed to  onboard to Azure Active Directory Connect Health."
+          }
+        },
+        "onboarded": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the tenant is already onboarded to Azure Active Directory Connect Health."
+          }
+        },
+        "pksCertificate": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The certificate associated with the tenant to onboard data to Azure Active Directory Connect Health."
+          }
+        },
+        "privatePreviewTenant": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the tenant has signed up for private preview of Azure Active Directory Connect Health features."
+          }
+        },
+        "tenantInQuarantine": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if data collection for this tenant is disabled or not."
+          }
+        },
+        "tenantName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the tenant."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.adhybridhealthservice#ConfigurationUpdateRequestGlobalAdminsEmailList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of global administrators for the tenant."
       }
     },
     "com.azure.adhybridhealthservice#ConfigurationAdd": {
@@ -5060,16 +5742,191 @@
             "smithy.api#documentation": "The name of the service under which the server is to be onboarded."
           }
         },
-        "body": {
+        "serviceMemberId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the server."
+          }
+        },
+        "serviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service id to whom this server belongs."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant id to whom this server belongs."
+          }
+        },
+        "activeAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of alerts that are currently active for the server."
+          }
+        },
+        "additionalInformation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The additional information, if any, for the server."
+          }
+        },
+        "createdDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date time , in UTC, when the server was onboarded to Azure Active Directory Connect Health."
+          }
+        },
+        "dimensions": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The server specific configuration related dimensions."
+          }
+        },
+        "disabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the server is disabled or not. "
+          }
+        },
+        "disabledReason": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The reason for disabling the server."
+          }
+        },
+        "installedQfes": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The list of installed QFEs for the server."
+          }
+        },
+        "lastDisabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time , in UTC, when the server was last disabled."
+          }
+        },
+        "lastReboot": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the server was last rebooted."
+          }
+        },
+        "lastServerReportedMonitoringLevelChange": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the server's data monitoring configuration was last changed."
+          }
+        },
+        "lastUpdated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the server properties were last updated."
+          }
+        },
+        "machineId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the machine."
+          }
+        },
+        "machineName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the server."
+          }
+        },
+        "monitoringConfigurationsComputed": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "monitoringConfigurationsCustomized": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "osName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the operating system installed in the machine."
+          }
+        },
+        "osVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the operating system installed in the machine."
+          }
+        },
+        "properties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Server specific properties."
+          }
+        },
+        "recommendedQfes": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The list of recommended hotfixes for the server."
+          }
+        },
+        "resolvedAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total count of alerts that are resolved for this server."
+          }
+        },
+        "role": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service role that is being monitored in the server."
+          }
+        },
+        "serverReportedMonitoringLevel": {
+          "target": "com.azure.adhybridhealthservice#AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel",
+          "traits": {
+            "smithy.api#documentation": "The monitoring level reported by the server."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The health status of the server."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.adhybridhealthservice#AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel": {
+      "type": "enum",
+      "members": {
+        "PARTIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Partial"
+          }
+        },
+        "FULL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Full"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Off"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The monitoring level reported by the server."
       }
     },
     "com.azure.adhybridhealthservice#AddsServicesServiceMembersList": {
@@ -6074,16 +6931,24 @@
             "smithy.api#documentation": "The name of the feature."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "metricNames": {
+          "target": "com.azure.adhybridhealthservice#AddsServicesUserPreferenceAddRequestMetricNamesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the metric."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.adhybridhealthservice#AddsServicesUserPreferenceAddRequestMetricNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The name of the metric."
       }
     },
     "com.azure.adhybridhealthservice#AddsServicesUserPreferenceGet": {
@@ -7077,16 +7942,165 @@
             "smithy.api#documentation": "The name of the service which needs to be deleted."
           }
         },
-        "body": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the service."
+          }
+        },
+        "activeAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The count of alerts that are currently active for the service."
+          }
+        },
+        "additionalInformation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The additional information related to the service."
+          }
+        },
+        "createdDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health."
+          }
+        },
+        "customNotificationEmails": {
+          "target": "com.azure.adhybridhealthservice#AddsServicesUpdateRequestCustomNotificationEmailsList",
+          "traits": {
+            "smithy.api#documentation": "The list of additional emails that are configured to receive notifications about the service."
+          }
+        },
+        "disabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the service is disabled or not."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the service."
+          }
+        },
+        "health": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The health of the service."
+          }
+        },
+        "lastDisabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the service was last disabled."
+          }
+        },
+        "lastUpdated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date or time , in UTC, when the service properties were last updated."
+          }
+        },
+        "monitoringConfigurationsComputed": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "monitoringConfigurationsCustomized": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "notificationEmailEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled or not."
+          }
+        },
+        "notificationEmailEnabledForGlobalAdmins": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled for global administrators of the tenant."
+          }
+        },
+        "notificationEmailsEnabledForGlobalAdmins": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled for global administrators of the tenant."
+          }
+        },
+        "notificationEmails": {
+          "target": "com.azure.adhybridhealthservice#AddsServicesUpdateRequestNotificationEmailsList",
+          "traits": {
+            "smithy.api#documentation": "The list of emails to whom service notifications will be sent."
+          }
+        },
+        "originalDisabledState": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets the original disable state."
+          }
+        },
+        "resolvedAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total count of alerts that has been resolved for the service."
+          }
+        },
+        "serviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the service."
+          }
+        },
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The signature of the service."
+          }
+        },
+        "simpleProperties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "List of service specific configuration properties."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the tenant to which the service is registered to."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.adhybridhealthservice#AddsServicesUpdateRequestNotificationEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of emails to whom service notifications will be sent."
+      }
+    },
+    "com.azure.adhybridhealthservice#AddsServicesUpdateRequestCustomNotificationEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of additional emails that are configured to receive notifications about the service."
       }
     },
     "com.azure.adhybridhealthservice#AddsServicesGet": {
@@ -7146,16 +8160,171 @@
     "com.azure.adhybridhealthservice#AddsServicesAddRequest": {
       "type": "structure",
       "members": {
-        "body": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the service."
+          }
+        },
+        "activeAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The count of alerts that are currently active for the service."
+          }
+        },
+        "additionalInformation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The additional information related to the service."
+          }
+        },
+        "createdDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health."
+          }
+        },
+        "customNotificationEmails": {
+          "target": "com.azure.adhybridhealthservice#AddsServicesAddRequestCustomNotificationEmailsList",
+          "traits": {
+            "smithy.api#documentation": "The list of additional emails that are configured to receive notifications about the service."
+          }
+        },
+        "disabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the service is disabled or not."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the service."
+          }
+        },
+        "health": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The health of the service."
+          }
+        },
+        "lastDisabled": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date and time, in UTC, when the service was last disabled."
+          }
+        },
+        "lastUpdated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date or time , in UTC, when the service properties were last updated."
+          }
+        },
+        "monitoringConfigurationsComputed": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "monitoringConfigurationsCustomized": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health."
+          }
+        },
+        "notificationEmailEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled or not."
+          }
+        },
+        "notificationEmailEnabledForGlobalAdmins": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled for global administrators of the tenant."
+          }
+        },
+        "notificationEmailsEnabledForGlobalAdmins": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if email notification is enabled for global administrators of the tenant."
+          }
+        },
+        "notificationEmails": {
+          "target": "com.azure.adhybridhealthservice#AddsServicesAddRequestNotificationEmailsList",
+          "traits": {
+            "smithy.api#documentation": "The list of emails to whom service notifications will be sent."
+          }
+        },
+        "originalDisabledState": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets the original disable state."
+          }
+        },
+        "resolvedAlerts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total count of alerts that has been resolved for the service."
+          }
+        },
+        "serviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the service."
+          }
+        },
+        "serviceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the service."
+          }
+        },
+        "signature": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The signature of the service."
+          }
+        },
+        "simpleProperties": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "List of service specific configuration properties."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the tenant to which the service is registered to."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.adhybridhealthservice#AddsServicesAddRequestNotificationEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of emails to whom service notifications will be sent."
+      }
+    },
+    "com.azure.adhybridhealthservice#AddsServicesAddRequestCustomNotificationEmailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of additional emails that are configured to receive notifications about the service."
       }
     },
     "com.azure.adhybridhealthservice#AddsServicesList": {

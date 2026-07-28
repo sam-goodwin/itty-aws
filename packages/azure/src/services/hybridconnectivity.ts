@@ -12,18 +12,39 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The type of endpoint. */
+export type Type = "default" | "custom";
+export const Type = /*@__PURE__*/ S.String;
+
+/** Endpoint details */
+export interface EndpointPropertiesInput {
+  /** The type of endpoint. */
+  type: Type;
+  /** The resource Id of the connectivity endpoint (optional). */
+  resourceId?: string;
+}
+export const EndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: Type,
+    resourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EndpointPropertiesInput",
+}) as any as S.Schema<EndpointPropertiesInput>;
+
 export interface EndpointsCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The endpoint name. */
   endpointName: string;
-  body: unknown;
+  /** The endpoint properties. */
+  properties?: EndpointPropertiesInput;
 }
 export const EndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     endpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(EndpointPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -41,8 +62,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -50,8 +70,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -79,10 +98,6 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
     lastModifiedAt: S.optional(S.String),
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-/** The type of endpoint. */
-export type Type = "default" | "custom" | (string & {});
-export const Type = /*@__PURE__*/ S.String;
 
 /** Endpoint details */
 export interface EndpointProperties {
@@ -247,7 +262,7 @@ export const EndpointResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointResource>;
 
 /** The list of endpoint. */
-export type EndpointsListValueList = EndpointResource[];
+export type EndpointsListValueList = ReadonlyArray<EndpointResource>;
 export const EndpointsListValueList = /*@__PURE__*/ S.Array(
   EndpointResource,
 ) as any as S.Schema<EndpointsListValueList>;
@@ -266,6 +281,10 @@ export const EndpointsList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EndpointsList" }) as any as S.Schema<EndpointsList>;
 
+/** Name of the service. */
+export type ServiceName = "SSH" | "WAC";
+export const ServiceName = /*@__PURE__*/ S.String;
+
 export interface EndpointsListCredentialsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -273,14 +292,15 @@ export interface EndpointsListCredentialsRequest {
   endpointName: string;
   /** The is how long the endpoint access token is valid (in seconds). */
   expiresin?: number;
-  body?: unknown;
+  /** The name of the service. If not provided, the request will by pass the generation of service configuration token */
+  serviceName?: ServiceName;
 }
 export const EndpointsListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     endpointName: S.String.pipe(T.Label()),
     expiresin: S.optional(S.Number.pipe(T.Query())),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    serviceName: S.optional(ServiceName),
   }).pipe(
     T.Http({
       method: "POST",
@@ -341,7 +361,8 @@ export interface EndpointsListIngressGatewayCredentialsRequest {
   endpointName: string;
   /** The is how long the endpoint access token is valid (in seconds). */
   expiresin?: number;
-  body?: unknown;
+  /** The name of the service. If not provided, the request will by pass the generation of service configuration token. */
+  serviceName?: ServiceName;
 }
 export const EndpointsListIngressGatewayCredentialsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -349,7 +370,7 @@ export const EndpointsListIngressGatewayCredentialsRequest =
       resourceUri: S.String.pipe(T.Label()),
       endpointName: S.String.pipe(T.Label()),
       expiresin: S.optional(S.Number.pipe(T.Query())),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      serviceName: S.optional(ServiceName),
     }).pipe(
       T.Http({
         method: "POST",
@@ -415,14 +436,21 @@ export interface EndpointsListManagedProxyDetailsRequest {
   resourceUri: string;
   /** The endpoint name. */
   endpointName: string;
-  body: unknown;
+  /** The name of the service. */
+  service: string;
+  /** The target host name. */
+  hostname?: string;
+  /** The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed. */
+  serviceName?: ServiceName;
 }
 export const EndpointsListManagedProxyDetailsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       resourceUri: S.String.pipe(T.Label()),
       endpointName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      service: S.String,
+      hostname: S.optional(S.String),
+      serviceName: S.optional(ServiceName),
     }).pipe(
       T.Http({
         method: "POST",
@@ -456,13 +484,14 @@ export interface EndpointsUpdateRequest {
   resourceUri: string;
   /** The endpoint name. */
   endpointName: string;
-  body: unknown;
+  /** The endpoint properties. */
+  properties?: EndpointPropertiesInput;
 }
 export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     endpointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(EndpointPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -499,15 +528,50 @@ export const EndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointsUpdateResponse",
 }) as any as S.Schema<EndpointsUpdateResponse>;
 
+/** Solution settings */
+export type SolutionSettings = { [key: string]: string | undefined };
+export const SolutionSettings = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SolutionSettings>;
+
+/** The properties of Solution Type */
+export interface SolutionTypeSettings {
+  /** The type of the solution */
+  solutionType: string;
+  /** Solution settings */
+  solutionSettings?: SolutionSettings;
+}
+export const SolutionTypeSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    solutionType: S.String,
+    solutionSettings: S.optional(SolutionSettings),
+  }),
+).annotate({
+  identifier: "SolutionTypeSettings",
+}) as any as S.Schema<SolutionTypeSettings>;
+
+/** The list of solution types and their settings */
+export type GenerateAwsTemplatePostRequestSolutionTypesList =
+  ReadonlyArray<SolutionTypeSettings>;
+export const GenerateAwsTemplatePostRequestSolutionTypesList =
+  /*@__PURE__*/ S.Array(
+    SolutionTypeSettings,
+  ) as any as S.Schema<GenerateAwsTemplatePostRequestSolutionTypesList>;
+
 export interface GenerateAwsTemplatePostRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** The name of public cloud connector */
+  connectorId: string;
+  /** The list of solution types and their settings */
+  solutionTypes?: GenerateAwsTemplatePostRequestSolutionTypesList;
 }
 export const GenerateAwsTemplatePostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    connectorId: S.String,
+    solutionTypes: S.optional(GenerateAwsTemplatePostRequestSolutionTypesList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -553,7 +617,7 @@ export const InventoryGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InventoryGetRequest>;
 
 /** Cloud Native Type enum. */
-export type CloudNativeType = "ec2" | (string & {});
+export type CloudNativeType = "ec2";
 export const CloudNativeType = /*@__PURE__*/ S.String;
 
 /** Solution Configuration Status. */
@@ -561,16 +625,14 @@ export type SolutionConfigurationStatus =
   | "New"
   | "InProgress"
   | "Completed"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SolutionConfigurationStatus = /*@__PURE__*/ S.String;
 
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -677,7 +739,8 @@ export const InventoryResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InventoryResource>;
 
 /** The InventoryResource items on this page */
-export type InventoryResourceListResultValueList = InventoryResource[];
+export type InventoryResourceListResultValueList =
+  ReadonlyArray<InventoryResource>;
 export const InventoryResourceListResultValueList = /*@__PURE__*/ S.Array(
   InventoryResource,
 ) as any as S.Schema<InventoryResourceListResultValueList>;
@@ -735,11 +798,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -766,7 +829,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -786,46 +849,18 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
-export interface PublicCloudConnectorsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Represent public cloud connectors resource. */
-  publicCloudConnector: string;
-  body: unknown;
-}
-export const PublicCloudConnectorsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      publicCloudConnector: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
-        code: 200,
-        apiVersion: "2024-12-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PublicCloudConnectorsCreateOrUpdateRequest",
-  }) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type PublicCloudConnectorsCreateOrUpdateResponseTagsMap = {
+export type PublicCloudConnectorsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const PublicCloudConnectorsCreateOrUpdateResponseTagsMap =
+export const PublicCloudConnectorsCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateRequestTagsMap>;
 
 /** List of AWS accounts which need to be excluded. */
-export type AwsCloudProfileExcludedAccountsList = string[];
+export type AwsCloudProfileExcludedAccountsList = ReadonlyArray<string>;
 export const AwsCloudProfileExcludedAccountsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AwsCloudProfileExcludedAccountsList>;
@@ -850,8 +885,69 @@ export const AwsCloudProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AwsCloudProfile>;
 
 /** Enum of host cloud the public cloud connector is referencing. */
-export type HostType = "AWS" | (string & {});
+export type HostType = "AWS";
 export const HostType = /*@__PURE__*/ S.String;
+
+/** Properties of public cloud connectors. */
+export interface PublicCloudConnectorPropertiesInput {
+  /** Cloud profile for AWS. */
+  awsCloudProfile: AwsCloudProfile;
+  /** Host cloud the public cloud connector. */
+  hostType: HostType;
+}
+export const PublicCloudConnectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    awsCloudProfile: AwsCloudProfile,
+    hostType: HostType,
+  }),
+).annotate({
+  identifier: "PublicCloudConnectorPropertiesInput",
+}) as any as S.Schema<PublicCloudConnectorPropertiesInput>;
+
+export interface PublicCloudConnectorsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Represent public cloud connectors resource. */
+  publicCloudConnector: string;
+  /** Resource tags. */
+  tags?: PublicCloudConnectorsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: PublicCloudConnectorPropertiesInput;
+}
+export const PublicCloudConnectorsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      publicCloudConnector: S.String.pipe(T.Label()),
+      tags: S.optional(PublicCloudConnectorsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(PublicCloudConnectorPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridConnectivity/publicCloudConnectors/{publicCloudConnector}",
+        code: 200,
+        apiVersion: "2024-12-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "PublicCloudConnectorsCreateOrUpdateRequest",
+  }) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type PublicCloudConnectorsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PublicCloudConnectorsCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<PublicCloudConnectorsCreateOrUpdateResponseTagsMap>;
 
 /** Properties of public cloud connectors. */
 export interface PublicCloudConnectorProperties {
@@ -1066,7 +1162,8 @@ export const PublicCloudConnector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublicCloudConnector>;
 
 /** The PublicCloudConnector items on this page */
-export type PublicCloudConnectorListResultValueList = PublicCloudConnector[];
+export type PublicCloudConnectorListResultValueList =
+  ReadonlyArray<PublicCloudConnector>;
 export const PublicCloudConnectorListResultValueList = /*@__PURE__*/ S.Array(
   PublicCloudConnector,
 ) as any as S.Schema<PublicCloudConnectorListResultValueList>;
@@ -1134,13 +1231,14 @@ export const PublicCloudConnectorsTestPermissionsRequest =
   }) as any as S.Schema<PublicCloudConnectorsTestPermissionsRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList = OperationStatusResult[];
+export type OperationStatusResultOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1162,7 +1260,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1229,7 +1327,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type PublicCloudConnectorsTestPermissionsResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const PublicCloudConnectorsTestPermissionsResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -1274,6 +1372,48 @@ export const PublicCloudConnectorsTestPermissionsResponse =
     identifier: "PublicCloudConnectorsTestPermissionsResponse",
   }) as any as S.Schema<PublicCloudConnectorsTestPermissionsResponse>;
 
+/** Resource tags. */
+export type PublicCloudConnectorsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PublicCloudConnectorsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PublicCloudConnectorsUpdateRequestTagsMap>;
+
+/** List of AWS accounts which need to be excluded. */
+export type AwsCloudProfileUpdateExcludedAccountsList = ReadonlyArray<string>;
+export const AwsCloudProfileUpdateExcludedAccountsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AwsCloudProfileUpdateExcludedAccountsList>;
+
+/** cloud profile for AWS. */
+export interface AwsCloudProfileUpdate {
+  /** List of AWS accounts which need to be excluded. */
+  excludedAccounts?: AwsCloudProfileUpdateExcludedAccountsList;
+}
+export const AwsCloudProfileUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    excludedAccounts: S.optional(AwsCloudProfileUpdateExcludedAccountsList),
+  }),
+).annotate({
+  identifier: "AwsCloudProfileUpdate",
+}) as any as S.Schema<AwsCloudProfileUpdate>;
+
+/** Properties of public cloud connectors. */
+export interface PublicCloudConnectorPropertiesUpdate {
+  /** Cloud profile for AWS. */
+  awsCloudProfile?: AwsCloudProfileUpdate;
+}
+export const PublicCloudConnectorPropertiesUpdate = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      awsCloudProfile: S.optional(AwsCloudProfileUpdate),
+    }),
+).annotate({
+  identifier: "PublicCloudConnectorPropertiesUpdate",
+}) as any as S.Schema<PublicCloudConnectorPropertiesUpdate>;
+
 export interface PublicCloudConnectorsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1281,14 +1421,18 @@ export interface PublicCloudConnectorsUpdateRequest {
   resourceGroupName: string;
   /** Represent public cloud connectors resource. */
   publicCloudConnector: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: PublicCloudConnectorsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: PublicCloudConnectorPropertiesUpdate;
 }
 export const PublicCloudConnectorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     publicCloudConnector: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(PublicCloudConnectorsUpdateRequestTagsMap),
+    properties: S.optional(PublicCloudConnectorPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1341,6 +1485,25 @@ export const PublicCloudConnectorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PublicCloudConnectorsUpdateResponse",
 }) as any as S.Schema<PublicCloudConnectorsUpdateResponse>;
 
+/** Service configuration details */
+export interface ServiceConfigurationPropertiesInput {
+  /** Name of the service. */
+  serviceName: ServiceName;
+  /** The resource Id of the connectivity endpoint (optional). */
+  resourceId?: string;
+  /** The port on which service is enabled. */
+  port?: number;
+}
+export const ServiceConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: ServiceName,
+    resourceId: S.optional(S.String),
+    port: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ServiceConfigurationPropertiesInput",
+}) as any as S.Schema<ServiceConfigurationPropertiesInput>;
+
 export interface ServiceConfigurationsCreateOrupdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -1348,7 +1511,8 @@ export interface ServiceConfigurationsCreateOrupdateRequest {
   endpointName: string;
   /** The service name. */
   serviceConfigurationName: string;
-  body: unknown;
+  /** The service configuration properties. */
+  properties?: ServiceConfigurationPropertiesInput;
 }
 export const ServiceConfigurationsCreateOrupdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1356,7 +1520,7 @@ export const ServiceConfigurationsCreateOrupdateRequest =
       resourceUri: S.String.pipe(T.Label()),
       endpointName: S.String.pipe(T.Label()),
       serviceConfigurationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ServiceConfigurationPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1369,18 +1533,13 @@ export const ServiceConfigurationsCreateOrupdateRequest =
     identifier: "ServiceConfigurationsCreateOrupdateRequest",
   }) as any as S.Schema<ServiceConfigurationsCreateOrupdateRequest>;
 
-/** Name of the service. */
-export type ServiceName = "SSH" | "WAC" | (string & {});
-export const ServiceName = /*@__PURE__*/ S.String;
-
 /** The resource provisioning state. */
 export type ProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Updating"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Service configuration details */
@@ -1560,7 +1719,8 @@ export const ServiceConfigurationResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceConfigurationResource>;
 
 /** The list of service configuration */
-export type ServiceConfigurationListValueList = ServiceConfigurationResource[];
+export type ServiceConfigurationListValueList =
+  ReadonlyArray<ServiceConfigurationResource>;
 export const ServiceConfigurationListValueList = /*@__PURE__*/ S.Array(
   ServiceConfigurationResource,
 ) as any as S.Schema<ServiceConfigurationListValueList>;
@@ -1581,6 +1741,19 @@ export const ServiceConfigurationList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceConfigurationList",
 }) as any as S.Schema<ServiceConfigurationList>;
 
+/** Service configuration details */
+export interface ServiceConfigurationPropertiesPatch {
+  /** The port on which service is enabled. */
+  port?: number;
+}
+export const ServiceConfigurationPropertiesPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    port: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ServiceConfigurationPropertiesPatch",
+}) as any as S.Schema<ServiceConfigurationPropertiesPatch>;
+
 export interface ServiceConfigurationsUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -1588,14 +1761,15 @@ export interface ServiceConfigurationsUpdateRequest {
   endpointName: string;
   /** The service name. */
   serviceConfigurationName: string;
-  body: unknown;
+  /** The service configuration properties. */
+  properties?: ServiceConfigurationPropertiesPatch;
 }
 export const ServiceConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     endpointName: S.String.pipe(T.Label()),
     serviceConfigurationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ServiceConfigurationPropertiesPatch),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1632,19 +1806,37 @@ export const ServiceConfigurationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceConfigurationsUpdateResponse",
 }) as any as S.Schema<ServiceConfigurationsUpdateResponse>;
 
+/** Solution configuration resource. */
+export interface SolutionConfigurationPropertiesInput {
+  /** The type of the solution */
+  solutionType: string;
+  /** Solution settings */
+  solutionSettings?: SolutionSettings;
+}
+export const SolutionConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      solutionType: S.String,
+      solutionSettings: S.optional(SolutionSettings),
+    }),
+).annotate({
+  identifier: "SolutionConfigurationPropertiesInput",
+}) as any as S.Schema<SolutionConfigurationPropertiesInput>;
+
 export interface SolutionConfigurationsCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** Represent Solution Configuration Resource. */
   solutionConfiguration: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SolutionConfigurationPropertiesInput;
 }
 export const SolutionConfigurationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceUri: S.String.pipe(T.Label()),
       solutionConfiguration: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SolutionConfigurationPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1656,13 +1848,6 @@ export const SolutionConfigurationsCreateOrUpdateRequest =
   ).annotate({
     identifier: "SolutionConfigurationsCreateOrUpdateRequest",
   }) as any as S.Schema<SolutionConfigurationsCreateOrUpdateRequest>;
-
-/** Solution settings */
-export type SolutionSettings = { [key: string]: string | undefined };
-export const SolutionSettings = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SolutionSettings>;
 
 /** Solution configuration resource. */
 export interface SolutionConfigurationProperties {
@@ -1839,7 +2024,8 @@ export const SolutionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionConfiguration>;
 
 /** The SolutionConfiguration items on this page */
-export type SolutionConfigurationListResultValueList = SolutionConfiguration[];
+export type SolutionConfigurationListResultValueList =
+  ReadonlyArray<SolutionConfiguration>;
 export const SolutionConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   SolutionConfiguration,
 ) as any as S.Schema<SolutionConfigurationListResultValueList>;
@@ -1885,7 +2071,7 @@ export const SolutionConfigurationsSyncNowRequest = /*@__PURE__*/ S.suspend(
 
 /** The operations list. */
 export type SolutionConfigurationsSyncNowResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const SolutionConfigurationsSyncNowResponseOperationsList =
   /*@__PURE__*/ S.Array(
     OperationStatusResult,
@@ -1930,18 +2116,36 @@ export const SolutionConfigurationsSyncNowResponse = /*@__PURE__*/ S.suspend(
   identifier: "SolutionConfigurationsSyncNowResponse",
 }) as any as S.Schema<SolutionConfigurationsSyncNowResponse>;
 
+/** Solution configuration resource. */
+export interface SolutionConfigurationPropertiesUpdate {
+  /** The type of the solution */
+  solutionType?: string;
+  /** Solution settings */
+  solutionSettings?: SolutionSettings;
+}
+export const SolutionConfigurationPropertiesUpdate = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      solutionType: S.optional(S.String),
+      solutionSettings: S.optional(SolutionSettings),
+    }),
+).annotate({
+  identifier: "SolutionConfigurationPropertiesUpdate",
+}) as any as S.Schema<SolutionConfigurationPropertiesUpdate>;
+
 export interface SolutionConfigurationsUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** Represent Solution Configuration Resource. */
   solutionConfiguration: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SolutionConfigurationPropertiesUpdate;
 }
 export const SolutionConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     solutionConfiguration: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SolutionConfigurationPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2005,14 +2209,16 @@ export const SolutionTypesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionTypesGetRequest>;
 
 /** The locations this solution is supported in. */
-export type SolutionTypePropertiesSupportedAzureRegionsList = string[];
+export type SolutionTypePropertiesSupportedAzureRegionsList =
+  ReadonlyArray<string>;
 export const SolutionTypePropertiesSupportedAzureRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SolutionTypePropertiesSupportedAzureRegionsList>;
 
 /** Array of allowed values for this solution settings property. */
-export type SolutionTypeSettingsPropertiesAllowedValuesList = string[];
+export type SolutionTypeSettingsPropertiesAllowedValuesList =
+  ReadonlyArray<string>;
 export const SolutionTypeSettingsPropertiesAllowedValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2048,7 +2254,7 @@ export const SolutionTypeSettingsProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of solution settings and its description. */
 export type SolutionTypePropertiesSolutionSettingsList =
-  SolutionTypeSettingsProperties[];
+  ReadonlyArray<SolutionTypeSettingsProperties>;
 export const SolutionTypePropertiesSolutionSettingsList = /*@__PURE__*/ S.Array(
   SolutionTypeSettingsProperties,
 ) as any as S.Schema<SolutionTypePropertiesSolutionSettingsList>;
@@ -2150,7 +2356,8 @@ export const SolutionTypeResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionTypeResource>;
 
 /** The SolutionTypeResource items on this page */
-export type SolutionTypeResourceListResultValueList = SolutionTypeResource[];
+export type SolutionTypeResourceListResultValueList =
+  ReadonlyArray<SolutionTypeResource>;
 export const SolutionTypeResourceListResultValueList = /*@__PURE__*/ S.Array(
   SolutionTypeResource,
 ) as any as S.Schema<SolutionTypeResourceListResultValueList>;

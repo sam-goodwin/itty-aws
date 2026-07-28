@@ -11,6 +11,33 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
+export interface LlmPromptsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Unique prompt name using letters, numbers, hyphens, and underscores only. */
+  name?: string;
+  /** Prompt payload as JSON or string data. */
+  prompt?: unknown;
+  /** Optional note describing what changed in this version. Set when the version is published. */
+  version_description?: string | null;
+}
+export const LlmPromptsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    prompt: S.optional(S.Unknown),
+    version_description: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/llm_prompts/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "LlmPromptsCreateRequest",
+}) as any as S.Schema<LlmPromptsCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -26,11 +53,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -77,79 +103,13 @@ export const LLMPromptOutlineEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "LLMPromptOutlineEntry",
 }) as any as S.Schema<LLMPromptOutlineEntry>;
 
-export type LlmPromptsCreateRequestOutlineList = LLMPromptOutlineEntry[];
-export const LlmPromptsCreateRequestOutlineList = /*@__PURE__*/ S.Array(
-  LLMPromptOutlineEntry,
-) as any as S.Schema<LlmPromptsCreateRequestOutlineList>;
-
-/** Names of the labels currently pointing at this version. */
-export type LlmPromptsCreateRequestLabelsList = string[];
-export const LlmPromptsCreateRequestLabelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LlmPromptsCreateRequestLabelsList>;
-
-export interface LlmPromptsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: string;
-  /** Unique prompt name using letters, numbers, hyphens, and underscores only. */
-  name?: string;
-  /** Prompt payload as JSON or string data. */
-  prompt?: unknown;
-  version?: number;
-  /** Optional note describing what changed in this version. Set when the version is published. */
-  version_description?: string | null;
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string;
-  deleted?: boolean;
-  is_latest?: boolean;
-  latest_version?: number;
-  version_count?: number;
-  first_version_created_at?: string;
-  outline?: LlmPromptsCreateRequestOutlineList;
-  /** Names of the labels currently pointing at this version. */
-  labels?: LlmPromptsCreateRequestLabelsList;
-  /** Key for this prompt's rows in the activity log, e.g. for the History tab. Derived from the name, at most 72 characters. */
-  activity_item_id?: string;
-}
-export const LlmPromptsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    prompt: S.optional(S.Unknown),
-    version: S.optional(S.Number),
-    version_description: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-    is_latest: S.optional(S.Boolean),
-    latest_version: S.optional(S.Number),
-    version_count: S.optional(S.Number),
-    first_version_created_at: S.optional(S.String),
-    outline: S.optional(LlmPromptsCreateRequestOutlineList),
-    labels: S.optional(LlmPromptsCreateRequestLabelsList),
-    activity_item_id: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/llm_prompts/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LlmPromptsCreateRequest",
-}) as any as S.Schema<LlmPromptsCreateRequest>;
-
-export type LLMPromptOutlineList = LLMPromptOutlineEntry[];
+export type LLMPromptOutlineList = ReadonlyArray<LLMPromptOutlineEntry>;
 export const LLMPromptOutlineList = /*@__PURE__*/ S.Array(
   LLMPromptOutlineEntry,
 ) as any as S.Schema<LLMPromptOutlineList>;
 
 /** Names of the labels currently pointing at this version. */
-export type LLMPromptLabelsList = string[];
+export type LLMPromptLabelsList = ReadonlyArray<string>;
 export const LLMPromptLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LLMPromptLabelsList>;
@@ -163,7 +123,7 @@ export interface LLMPrompt {
   version?: number;
   /** Optional note describing what changed in this version. Set when the version is published. */
   version_description?: string | null;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   created_at?: string;
   updated_at?: string;
   deleted?: boolean;
@@ -184,7 +144,7 @@ export const LLMPrompt = /*@__PURE__*/ S.suspend(() =>
     prompt: S.optional(S.Unknown),
     version: S.optional(S.Number),
     version_description: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
     deleted: S.optional(S.Boolean),
@@ -198,11 +158,7 @@ export const LLMPrompt = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMPrompt" }) as any as S.Schema<LLMPrompt>;
 
-export type LlmPromptsListRequestContent =
-  | "full"
-  | "preview"
-  | "none"
-  | (string & {});
+export type LlmPromptsListRequestContent = "full" | "preview" | "none";
 export const LlmPromptsListRequestContent = /*@__PURE__*/ S.String;
 
 export interface LlmPromptsListRequest {
@@ -238,13 +194,13 @@ export const LlmPromptsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmPromptsListRequest",
 }) as any as S.Schema<LlmPromptsListRequest>;
 
-export type LLMPromptListOutlineList = LLMPromptOutlineEntry[];
+export type LLMPromptListOutlineList = ReadonlyArray<LLMPromptOutlineEntry>;
 export const LLMPromptListOutlineList = /*@__PURE__*/ S.Array(
   LLMPromptOutlineEntry,
 ) as any as S.Schema<LLMPromptListOutlineList>;
 
 /** Names of the labels currently pointing at this version. */
-export type LLMPromptListLabelsList = string[];
+export type LLMPromptListLabelsList = ReadonlyArray<string>;
 export const LLMPromptListLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LLMPromptListLabelsList>;
@@ -264,7 +220,7 @@ export const LLMPromptLabelSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "LLMPromptLabelSummary",
 }) as any as S.Schema<LLMPromptLabelSummary>;
 
-export type LLMPromptListAllLabelsList = LLMPromptLabelSummary[];
+export type LLMPromptListAllLabelsList = ReadonlyArray<LLMPromptLabelSummary>;
 export const LLMPromptListAllLabelsList = /*@__PURE__*/ S.Array(
   LLMPromptLabelSummary,
 ) as any as S.Schema<LLMPromptListAllLabelsList>;
@@ -278,7 +234,7 @@ export interface LLMPromptList {
   version?: number;
   /** Optional note describing what changed in this version. Set when the version is published. */
   version_description?: string | null;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   created_at?: string;
   updated_at?: string;
   deleted?: boolean;
@@ -302,7 +258,7 @@ export const LLMPromptList = /*@__PURE__*/ S.suspend(() =>
     prompt: S.optional(S.Unknown),
     version: S.optional(S.Number),
     version_description: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
     deleted: S.optional(S.Boolean),
@@ -319,7 +275,8 @@ export const LLMPromptList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LLMPromptList" }) as any as S.Schema<LLMPromptList>;
 
-export type PaginatedLLMPromptListListResultsList = LLMPromptList[];
+export type PaginatedLLMPromptListListResultsList =
+  ReadonlyArray<LLMPromptList>;
 export const PaginatedLLMPromptListListResultsList = /*@__PURE__*/ S.Array(
   LLMPromptList,
 ) as any as S.Schema<PaginatedLLMPromptListListResultsList>;
@@ -341,66 +298,24 @@ export const PaginatedLLMPromptListList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedLLMPromptListList",
 }) as any as S.Schema<PaginatedLLMPromptListList>;
 
-export type LlmPromptsNameArchiveCreateRequestOutlineList =
-  LLMPromptOutlineEntry[];
-export const LlmPromptsNameArchiveCreateRequestOutlineList =
-  /*@__PURE__*/ S.Array(
-    LLMPromptOutlineEntry,
-  ) as any as S.Schema<LlmPromptsNameArchiveCreateRequestOutlineList>;
-
-/** Names of the labels currently pointing at this version. */
-export type LlmPromptsNameArchiveCreateRequestLabelsList = string[];
-export const LlmPromptsNameArchiveCreateRequestLabelsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<LlmPromptsNameArchiveCreateRequestLabelsList>;
-
 export interface LlmPromptsNameArchiveCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   prompt_name: string;
-  id?: string;
   /** Unique prompt name using letters, numbers, hyphens, and underscores only. */
   name?: string;
   /** Prompt payload as JSON or string data. */
   prompt?: unknown;
-  version?: number;
   /** Optional note describing what changed in this version. Set when the version is published. */
   version_description?: string | null;
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string;
-  deleted?: boolean;
-  is_latest?: boolean;
-  latest_version?: number;
-  version_count?: number;
-  first_version_created_at?: string;
-  outline?: LlmPromptsNameArchiveCreateRequestOutlineList;
-  /** Names of the labels currently pointing at this version. */
-  labels?: LlmPromptsNameArchiveCreateRequestLabelsList;
-  /** Key for this prompt's rows in the activity log, e.g. for the History tab. Derived from the name, at most 72 characters. */
-  activity_item_id?: string;
 }
 export const LlmPromptsNameArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     prompt_name: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     name: S.optional(S.String),
     prompt: S.optional(S.Unknown),
-    version: S.optional(S.Number),
     version_description: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-    is_latest: S.optional(S.Boolean),
-    latest_version: S.optional(S.Number),
-    version_count: S.optional(S.Number),
-    first_version_created_at: S.optional(S.String),
-    outline: S.optional(LlmPromptsNameArchiveCreateRequestOutlineList),
-    labels: S.optional(LlmPromptsNameArchiveCreateRequestLabelsList),
-    activity_item_id: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -530,7 +445,7 @@ export const LLMPromptEditOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of find/replace operations to apply to the current prompt version. Each edit's 'old' text must match exactly once. Edits are applied sequentially. Mutually exclusive with prompt. */
 export type LlmPromptsNamePartialUpdateRequestEditsList =
-  LLMPromptEditOperation[];
+  ReadonlyArray<LLMPromptEditOperation>;
 export const LlmPromptsNamePartialUpdateRequestEditsList =
   /*@__PURE__*/ S.Array(
     LLMPromptEditOperation,
@@ -568,11 +483,7 @@ export const LlmPromptsNamePartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmPromptsNamePartialUpdateRequest",
 }) as any as S.Schema<LlmPromptsNamePartialUpdateRequest>;
 
-export type LlmPromptsNameRetrieveRequestContent =
-  | "full"
-  | "preview"
-  | "none"
-  | (string & {});
+export type LlmPromptsNameRetrieveRequestContent = "full" | "preview" | "none";
 export const LlmPromptsNameRetrieveRequestContent = /*@__PURE__*/ S.String;
 
 export interface LlmPromptsNameRetrieveRequest {
@@ -605,7 +516,7 @@ export const LlmPromptsNameRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LlmPromptsNameRetrieveRequest>;
 
 /** Flat list of markdown headings parsed from the prompt. Useful as a lightweight table of contents. */
-export type LLMPromptPublicOutlineList = LLMPromptOutlineEntry[];
+export type LLMPromptPublicOutlineList = ReadonlyArray<LLMPromptOutlineEntry>;
 export const LLMPromptPublicOutlineList = /*@__PURE__*/ S.Array(
   LLMPromptOutlineEntry,
 ) as any as S.Schema<LLMPromptPublicOutlineList>;
@@ -688,7 +599,7 @@ export const LlmPromptsResolveNameRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LlmPromptsResolveNameRetrieveRequest>;
 
 /** Names of the labels currently pointing at this version. */
-export type LLMPromptVersionSummaryLabelsList = string[];
+export type LLMPromptVersionSummaryLabelsList = ReadonlyArray<string>;
 export const LLMPromptVersionSummaryLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LLMPromptVersionSummaryLabelsList>;
@@ -697,7 +608,7 @@ export interface LLMPromptVersionSummary {
   id?: string;
   version?: number;
   version_description?: string | null;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   created_at?: string;
   is_latest?: boolean;
   /** Names of the labels currently pointing at this version. */
@@ -708,7 +619,7 @@ export const LLMPromptVersionSummary = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     version: S.optional(S.Number),
     version_description: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.String),
     is_latest: S.optional(S.Boolean),
     labels: S.optional(LLMPromptVersionSummaryLabelsList),
@@ -717,13 +628,14 @@ export const LLMPromptVersionSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "LLMPromptVersionSummary",
 }) as any as S.Schema<LLMPromptVersionSummary>;
 
-export type LLMPromptResolveResponseVersionsList = LLMPromptVersionSummary[];
+export type LLMPromptResolveResponseVersionsList =
+  ReadonlyArray<LLMPromptVersionSummary>;
 export const LLMPromptResolveResponseVersionsList = /*@__PURE__*/ S.Array(
   LLMPromptVersionSummary,
 ) as any as S.Schema<LLMPromptResolveResponseVersionsList>;
 
 /** All labels on this prompt with the version each one currently points to, across all versions (not just the returned page). */
-export type LLMPromptResolveResponseLabelsList = LLMPromptLabel[];
+export type LLMPromptResolveResponseLabelsList = ReadonlyArray<LLMPromptLabel>;
 export const LLMPromptResolveResponseLabelsList = /*@__PURE__*/ S.Array(
   LLMPromptLabel,
 ) as any as S.Schema<LLMPromptResolveResponseLabelsList>;

@@ -57,8 +57,7 @@ export const ElectionQueryElectionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type CivicinfoSchemaV2ElectionShapeLookupBehaviorEnum =
   | "shapeLookupDefault"
   | "shapeLookupDisabled"
-  | "shapeLookupEnabled"
-  | (string & {});
+  | "shapeLookupEnabled";
 export const CivicinfoSchemaV2ElectionShapeLookupBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -88,7 +87,8 @@ export const CivicinfoSchemaV2Election = /*@__PURE__*/ S.suspend(() =>
   identifier: "CivicinfoSchemaV2Election",
 }) as any as S.Schema<CivicinfoSchemaV2Election>;
 
-export type CivicinfoSchemaV2ElectionList = CivicinfoSchemaV2Election[];
+export type CivicinfoSchemaV2ElectionList =
+  ReadonlyArray<CivicinfoSchemaV2Election>;
 export const CivicinfoSchemaV2ElectionList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Election,
 ) as any as S.Schema<CivicinfoSchemaV2ElectionList>;
@@ -128,7 +128,7 @@ export const QueryDivisionByAddressDivisionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "QueryDivisionByAddressDivisionsRequest",
 }) as any as S.Schema<QueryDivisionByAddressDivisionsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -166,7 +166,7 @@ export const CivicinfoSchemaV2SimpleAddressType = /*@__PURE__*/ S.suspend(() =>
   identifier: "CivicinfoSchemaV2SimpleAddressType",
 }) as any as S.Schema<CivicinfoSchemaV2SimpleAddressType>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -252,7 +252,7 @@ export const CivicinfoApiprotosV2DivisionSearchResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CivicinfoApiprotosV2DivisionSearchResult>;
 
 export type CivicinfoApiprotosV2DivisionSearchResultList =
-  CivicinfoApiprotosV2DivisionSearchResult[];
+  ReadonlyArray<CivicinfoApiprotosV2DivisionSearchResult>;
 export const CivicinfoApiprotosV2DivisionSearchResultList =
   /*@__PURE__*/ S.Array(
     CivicinfoApiprotosV2DivisionSearchResult,
@@ -320,7 +320,8 @@ export const CivicinfoSchemaV2Source = /*@__PURE__*/ S.suspend(() =>
   identifier: "CivicinfoSchemaV2Source",
 }) as any as S.Schema<CivicinfoSchemaV2Source>;
 
-export type CivicinfoSchemaV2SourceList = CivicinfoSchemaV2Source[];
+export type CivicinfoSchemaV2SourceList =
+  ReadonlyArray<CivicinfoSchemaV2Source>;
 export const CivicinfoSchemaV2SourceList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Source,
 ) as any as S.Schema<CivicinfoSchemaV2SourceList>;
@@ -366,7 +367,7 @@ export const CivicinfoSchemaV2PollingLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CivicinfoSchemaV2PollingLocation>;
 
 export type CivicinfoSchemaV2PollingLocationList =
-  CivicinfoSchemaV2PollingLocation[];
+  ReadonlyArray<CivicinfoSchemaV2PollingLocation>;
 export const CivicinfoSchemaV2PollingLocationList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2PollingLocation,
 ) as any as S.Schema<CivicinfoSchemaV2PollingLocationList>;
@@ -422,7 +423,8 @@ export const CivicinfoSchemaV2Precinct = /*@__PURE__*/ S.suspend(() =>
   identifier: "CivicinfoSchemaV2Precinct",
 }) as any as S.Schema<CivicinfoSchemaV2Precinct>;
 
-export type CivicinfoSchemaV2PrecinctList = CivicinfoSchemaV2Precinct[];
+export type CivicinfoSchemaV2PrecinctList =
+  ReadonlyArray<CivicinfoSchemaV2Precinct>;
 export const CivicinfoSchemaV2PrecinctList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Precinct,
 ) as any as S.Schema<CivicinfoSchemaV2PrecinctList>;
@@ -436,12 +438,11 @@ export type CivicinfoSchemaV2ContestLevelItemEnum =
   | "locality"
   | "subLocality1"
   | "subLocality2"
-  | "special"
-  | (string & {});
+  | "special";
 export const CivicinfoSchemaV2ContestLevelItemEnum = /*@__PURE__*/ S.String;
 
 export type CivicinfoSchemaV2ContestLevelItemEnumList =
-  CivicinfoSchemaV2ContestLevelItemEnum[];
+  ReadonlyArray<CivicinfoSchemaV2ContestLevelItemEnum>;
 export const CivicinfoSchemaV2ContestLevelItemEnumList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2ContestLevelItemEnum,
 ) as any as S.Schema<CivicinfoSchemaV2ContestLevelItemEnumList>;
@@ -460,8 +461,7 @@ export type CivicinfoSchemaV2ElectoralDistrictScopeEnum =
   | "township"
   | "ward"
   | "cityCouncil"
-  | "national"
-  | (string & {});
+  | "national";
 export const CivicinfoSchemaV2ElectoralDistrictScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -496,12 +496,11 @@ export type CivicinfoSchemaV2ContestRolesItemEnum =
   | "judge"
   | "schoolBoard"
   | "specialPurposeOfficer"
-  | "otherRole"
-  | (string & {});
+  | "otherRole";
 export const CivicinfoSchemaV2ContestRolesItemEnum = /*@__PURE__*/ S.String;
 
 export type CivicinfoSchemaV2ContestRolesItemEnumList =
-  CivicinfoSchemaV2ContestRolesItemEnum[];
+  ReadonlyArray<CivicinfoSchemaV2ContestRolesItemEnum>;
 export const CivicinfoSchemaV2ContestRolesItemEnumList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2ContestRolesItemEnum,
 ) as any as S.Schema<CivicinfoSchemaV2ContestRolesItemEnumList>;
@@ -522,7 +521,8 @@ export const CivicinfoSchemaV2Channel = /*@__PURE__*/ S.suspend(() =>
   identifier: "CivicinfoSchemaV2Channel",
 }) as any as S.Schema<CivicinfoSchemaV2Channel>;
 
-export type CivicinfoSchemaV2ChannelList = CivicinfoSchemaV2Channel[];
+export type CivicinfoSchemaV2ChannelList =
+  ReadonlyArray<CivicinfoSchemaV2Channel>;
 export const CivicinfoSchemaV2ChannelList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Channel,
 ) as any as S.Schema<CivicinfoSchemaV2ChannelList>;
@@ -561,7 +561,8 @@ export const CivicinfoSchemaV2Candidate = /*@__PURE__*/ S.suspend(() =>
   identifier: "CivicinfoSchemaV2Candidate",
 }) as any as S.Schema<CivicinfoSchemaV2Candidate>;
 
-export type CivicinfoSchemaV2CandidateList = CivicinfoSchemaV2Candidate[];
+export type CivicinfoSchemaV2CandidateList =
+  ReadonlyArray<CivicinfoSchemaV2Candidate>;
 export const CivicinfoSchemaV2CandidateList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Candidate,
 ) as any as S.Schema<CivicinfoSchemaV2CandidateList>;
@@ -648,7 +649,8 @@ export const CivicinfoSchemaV2Contest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CivicinfoSchemaV2Contest",
 }) as any as S.Schema<CivicinfoSchemaV2Contest>;
 
-export type CivicinfoSchemaV2ContestList = CivicinfoSchemaV2Contest[];
+export type CivicinfoSchemaV2ContestList =
+  ReadonlyArray<CivicinfoSchemaV2Contest>;
 export const CivicinfoSchemaV2ContestList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2Contest,
 ) as any as S.Schema<CivicinfoSchemaV2ContestList>;
@@ -679,7 +681,7 @@ export const CivicinfoSchemaV2ElectionOfficial = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CivicinfoSchemaV2ElectionOfficial>;
 
 export type CivicinfoSchemaV2ElectionOfficialList =
-  CivicinfoSchemaV2ElectionOfficial[];
+  ReadonlyArray<CivicinfoSchemaV2ElectionOfficial>;
 export const CivicinfoSchemaV2ElectionOfficialList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2ElectionOfficial,
 ) as any as S.Schema<CivicinfoSchemaV2ElectionOfficialList>;
@@ -765,7 +767,7 @@ export const CivicinfoSchemaV2AdministrationRegion = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CivicinfoSchemaV2AdministrationRegion>;
 
 export type CivicinfoSchemaV2AdministrationRegionList =
-  CivicinfoSchemaV2AdministrationRegion[];
+  ReadonlyArray<CivicinfoSchemaV2AdministrationRegion>;
 export const CivicinfoSchemaV2AdministrationRegionList = /*@__PURE__*/ S.Array(
   CivicinfoSchemaV2AdministrationRegion,
 ) as any as S.Schema<CivicinfoSchemaV2AdministrationRegionList>;

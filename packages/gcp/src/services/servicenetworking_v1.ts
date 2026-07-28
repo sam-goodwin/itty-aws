@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -131,7 +131,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -230,7 +230,7 @@ export const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicyBinding" }) as any as S.Schema<PolicyBinding>;
 
-export type PolicyBindingList = PolicyBinding[];
+export type PolicyBindingList = ReadonlyArray<PolicyBinding>;
 export const PolicyBindingList = /*@__PURE__*/ S.Array(
   PolicyBinding,
 ) as any as S.Schema<PolicyBindingList>;
@@ -293,7 +293,7 @@ export const SecondaryIpRangeSpec = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecondaryIpRangeSpec",
 }) as any as S.Schema<SecondaryIpRangeSpec>;
 
-export type SecondaryIpRangeSpecList = SecondaryIpRangeSpec[];
+export type SecondaryIpRangeSpecList = ReadonlyArray<SecondaryIpRangeSpec>;
 export const SecondaryIpRangeSpecList = /*@__PURE__*/ S.Array(
   SecondaryIpRangeSpec,
 ) as any as S.Schema<SecondaryIpRangeSpecList>;
@@ -732,7 +732,7 @@ export const CloudSQLConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CloudSQLConfig" }) as any as S.Schema<CloudSQLConfig>;
 
-export type CloudSQLConfigList = CloudSQLConfig[];
+export type CloudSQLConfigList = ReadonlyArray<CloudSQLConfig>;
 export const CloudSQLConfigList = /*@__PURE__*/ S.Array(
   CloudSQLConfig,
 ) as any as S.Schema<CloudSQLConfigList>;
@@ -758,7 +758,7 @@ export const GoogleCloudServicenetworkingV1ConsumerConfigReservedRange =
   }) as any as S.Schema<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange>;
 
 export type GoogleCloudServicenetworkingV1ConsumerConfigReservedRangeList =
-  GoogleCloudServicenetworkingV1ConsumerConfigReservedRange[];
+  ReadonlyArray<GoogleCloudServicenetworkingV1ConsumerConfigReservedRange>;
 export const GoogleCloudServicenetworkingV1ConsumerConfigReservedRangeList =
   /*@__PURE__*/ S.Array(
     GoogleCloudServicenetworkingV1ConsumerConfigReservedRange,
@@ -927,7 +927,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -972,7 +972,7 @@ export const ListServicesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesConnectionsRequest",
 }) as any as S.Schema<ListServicesConnectionsRequest>;
 
-export type ConnectionList = Connection[];
+export type ConnectionList = ReadonlyArray<Connection>;
 export const ConnectionList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionList>;
@@ -1014,7 +1014,7 @@ export const ListServicesDnsRecordSetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesDnsRecordSetsRequest",
 }) as any as S.Schema<ListServicesDnsRecordSetsRequest>;
 
-export type DnsRecordSetList = DnsRecordSet[];
+export type DnsRecordSetList = ReadonlyArray<DnsRecordSet>;
 export const DnsRecordSetList = /*@__PURE__*/ S.Array(
   DnsRecordSet,
 ) as any as S.Schema<DnsRecordSetList>;
@@ -1065,7 +1065,7 @@ export const DnsZonePair = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsZonePair" }) as any as S.Schema<DnsZonePair>;
 
-export type DnsZonePairList = DnsZonePair[];
+export type DnsZonePairList = ReadonlyArray<DnsZonePair>;
 export const DnsZonePairList = /*@__PURE__*/ S.Array(
   DnsZonePair,
 ) as any as S.Schema<DnsZonePairList>;
@@ -1102,7 +1102,7 @@ export const ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest =
     identifier: "ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest",
   }) as any as S.Schema<ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest>;
 
-export type PeeredDnsDomainList = PeeredDnsDomain[];
+export type PeeredDnsDomainList = ReadonlyArray<PeeredDnsDomain>;
 export const PeeredDnsDomainList = /*@__PURE__*/ S.Array(
   PeeredDnsDomain,
 ) as any as S.Schema<PeeredDnsDomainList>;
@@ -1354,7 +1354,7 @@ export const SecondaryIpRange = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecondaryIpRange",
 }) as any as S.Schema<SecondaryIpRange>;
 
-export type SecondaryIpRangeList = SecondaryIpRange[];
+export type SecondaryIpRangeList = ReadonlyArray<SecondaryIpRange>;
 export const SecondaryIpRangeList = /*@__PURE__*/ S.Array(
   SecondaryIpRange,
 ) as any as S.Schema<SecondaryIpRangeList>;
@@ -1385,12 +1385,12 @@ export const Subnetwork = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Subnetwork" }) as any as S.Schema<Subnetwork>;
 
-export type SubnetworkList = Subnetwork[];
+export type SubnetworkList = ReadonlyArray<Subnetwork>;
 export const SubnetworkList = /*@__PURE__*/ S.Array(
   Subnetwork,
 ) as any as S.Schema<SubnetworkList>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -1491,8 +1491,7 @@ export type ValidateConsumerConfigResponseValidationErrorEnum =
   | "RANGES_DELETED_LATER"
   | "COMPUTE_API_NOT_ENABLED"
   | "USE_PERMISSION_NOT_FOUND"
-  | "SN_SERVICE_AGENT_PERMISSION_DENIED_ON_CONSUMER_PROJECT"
-  | (string & {});
+  | "SN_SERVICE_AGENT_PERMISSION_DENIED_ON_CONSUMER_PROJECT";
 export const ValidateConsumerConfigResponseValidationErrorEnum =
   /*@__PURE__*/ S.String;
 

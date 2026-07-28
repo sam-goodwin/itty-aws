@@ -222,29 +222,33 @@ export class UnsupportedBindingConfiguration extends T.applyErrorMatchers(
   [{ code: 1003 }],
 ) {}
 
-export type AddressMapsCreateRequestIpsList = string[];
+export type AddressMapsCreateRequestIpsList = ReadonlyArray<string>;
 export const AddressMapsCreateRequestIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddressMapsCreateRequestIpsList>;
+
+export type AddressMapsCreateRequestMembershipsItemKind = "zone" | "account";
+export const AddressMapsCreateRequestMembershipsItemKind =
+  /*@__PURE__*/ S.String;
 
 export interface AddressMapsCreateRequestMembershipsItem {
   /** The identifier for the membership (eg. a zone or account tag). */
   identifier?: string;
   /** The type of the membership. */
-  kind?: unknown;
+  kind?: AddressMapsCreateRequestMembershipsItemKind;
 }
 export const AddressMapsCreateRequestMembershipsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       identifier: S.optional(S.String),
-      kind: S.optional(S.Unknown),
+      kind: S.optional(AddressMapsCreateRequestMembershipsItemKind),
     }),
 ).annotate({
   identifier: "AddressMapsCreateRequestMembershipsItem",
 }) as any as S.Schema<AddressMapsCreateRequestMembershipsItem>;
 
 export type AddressMapsCreateRequestMembershipsList =
-  AddressMapsCreateRequestMembershipsItem[];
+  ReadonlyArray<AddressMapsCreateRequestMembershipsItem>;
 export const AddressMapsCreateRequestMembershipsList = /*@__PURE__*/ S.Array(
   AddressMapsCreateRequestMembershipsItem,
 ) as any as S.Schema<AddressMapsCreateRequestMembershipsList>;
@@ -294,6 +298,16 @@ export const AddressMapsCreateResponseIps = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressMapsCreateResponseIps",
 }) as any as S.Schema<AddressMapsCreateResponseIps>;
 
+export type AddressMapsCreateResponseIpsList =
+  ReadonlyArray<AddressMapsCreateResponseIps>;
+export const AddressMapsCreateResponseIpsList = /*@__PURE__*/ S.Array(
+  AddressMapsCreateResponseIps,
+) as any as S.Schema<AddressMapsCreateResponseIpsList>;
+
+export type AddressMapsCreateResponseMembershipsItemKind = "zone" | "account";
+export const AddressMapsCreateResponseMembershipsItemKind =
+  /*@__PURE__*/ S.String;
+
 export interface AddressMapsCreateResponseMembershipsItem {
   /** Controls whether the membership can be deleted via the API or not. */
   canDelete?: boolean;
@@ -301,7 +315,7 @@ export interface AddressMapsCreateResponseMembershipsItem {
   /** The identifier for the membership (eg. a zone or account tag). */
   identifier?: string;
   /** The type of the membership. */
-  kind?: unknown;
+  kind?: AddressMapsCreateResponseMembershipsItemKind;
 }
 export const AddressMapsCreateResponseMembershipsItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -309,14 +323,14 @@ export const AddressMapsCreateResponseMembershipsItem = /*@__PURE__*/ S.suspend(
       canDelete: S.optional(S.Boolean.pipe(T.Body("can_delete"))),
       createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
       identifier: S.optional(S.String),
-      kind: S.optional(S.Unknown),
+      kind: S.optional(AddressMapsCreateResponseMembershipsItemKind),
     }),
 ).annotate({
   identifier: "AddressMapsCreateResponseMembershipsItem",
 }) as any as S.Schema<AddressMapsCreateResponseMembershipsItem>;
 
 export type AddressMapsCreateResponseMembershipsList =
-  AddressMapsCreateResponseMembershipsItem[];
+  ReadonlyArray<AddressMapsCreateResponseMembershipsItem>;
 export const AddressMapsCreateResponseMembershipsList = /*@__PURE__*/ S.Array(
   AddressMapsCreateResponseMembershipsItem,
 ) as any as S.Schema<AddressMapsCreateResponseMembershipsList>;
@@ -337,7 +351,7 @@ export interface CreateAddressMapResponse {
   /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean;
   /** The set of IPs on the Address Map. */
-  ips?: AddressMapsCreateResponseIps;
+  ips?: AddressMapsCreateResponseIpsList;
   /** Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
   memberships?: AddressMapsCreateResponseMembershipsList;
   modifiedAt?: string;
@@ -351,7 +365,7 @@ export const CreateAddressMapResponse = /*@__PURE__*/ S.suspend(() =>
     defaultSni: S.optional(S.String.pipe(T.Body("default_sni"))),
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    ips: S.optional(AddressMapsCreateResponseIps),
+    ips: S.optional(AddressMapsCreateResponseIpsList),
     memberships: S.optional(AddressMapsCreateResponseMembershipsList),
     modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -718,8 +732,7 @@ export const CreatePrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PrefixesServiceBindingsCreateResponseProvisioningState =
   | "provisioning"
-  | "active"
-  | (string & {});
+  | "active";
 export const PrefixesServiceBindingsCreateResponseProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1110,6 +1123,15 @@ export const AddressMapsGetResponseIps = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressMapsGetResponseIps",
 }) as any as S.Schema<AddressMapsGetResponseIps>;
 
+export type AddressMapsGetResponseIpsList =
+  ReadonlyArray<AddressMapsGetResponseIps>;
+export const AddressMapsGetResponseIpsList = /*@__PURE__*/ S.Array(
+  AddressMapsGetResponseIps,
+) as any as S.Schema<AddressMapsGetResponseIpsList>;
+
+export type AddressMapsGetResponseMembershipsItemKind = "zone" | "account";
+export const AddressMapsGetResponseMembershipsItemKind = /*@__PURE__*/ S.String;
+
 export interface AddressMapsGetResponseMembershipsItem {
   /** Controls whether the membership can be deleted via the API or not. */
   canDelete?: boolean;
@@ -1117,7 +1139,7 @@ export interface AddressMapsGetResponseMembershipsItem {
   /** The identifier for the membership (eg. a zone or account tag). */
   identifier?: string;
   /** The type of the membership. */
-  kind?: unknown;
+  kind?: AddressMapsGetResponseMembershipsItemKind;
 }
 export const AddressMapsGetResponseMembershipsItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -1125,14 +1147,14 @@ export const AddressMapsGetResponseMembershipsItem = /*@__PURE__*/ S.suspend(
       canDelete: S.optional(S.Boolean.pipe(T.Body("can_delete"))),
       createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
       identifier: S.optional(S.String),
-      kind: S.optional(S.Unknown),
+      kind: S.optional(AddressMapsGetResponseMembershipsItemKind),
     }),
 ).annotate({
   identifier: "AddressMapsGetResponseMembershipsItem",
 }) as any as S.Schema<AddressMapsGetResponseMembershipsItem>;
 
 export type AddressMapsGetResponseMembershipsList =
-  AddressMapsGetResponseMembershipsItem[];
+  ReadonlyArray<AddressMapsGetResponseMembershipsItem>;
 export const AddressMapsGetResponseMembershipsList = /*@__PURE__*/ S.Array(
   AddressMapsGetResponseMembershipsItem,
 ) as any as S.Schema<AddressMapsGetResponseMembershipsList>;
@@ -1153,7 +1175,7 @@ export interface GetAddressMapResponse {
   /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean;
   /** The set of IPs on the Address Map. */
-  ips?: AddressMapsGetResponseIps;
+  ips?: AddressMapsGetResponseIpsList;
   /** Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
   memberships?: AddressMapsGetResponseMembershipsList;
   modifiedAt?: string;
@@ -1167,7 +1189,7 @@ export const GetAddressMapResponse = /*@__PURE__*/ S.suspend(() =>
     defaultSni: S.optional(S.String.pipe(T.Body("default_sni"))),
     description: S.optional(S.String),
     enabled: S.optional(S.Boolean),
-    ips: S.optional(AddressMapsGetResponseIps),
+    ips: S.optional(AddressMapsGetResponseIpsList),
     memberships: S.optional(AddressMapsGetResponseMembershipsList),
     modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1479,8 +1501,7 @@ export const GetPrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PrefixesServiceBindingsGetResponseProvisioningState =
   | "provisioning"
-  | "active"
-  | (string & {});
+  | "active";
 export const PrefixesServiceBindingsGetResponseProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1618,7 +1639,8 @@ export const AddressMapsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressMapsListResultItem",
 }) as any as S.Schema<AddressMapsListResultItem>;
 
-export type AddressMapsListResultList = AddressMapsListResultItem[];
+export type AddressMapsListResultList =
+  ReadonlyArray<AddressMapsListResultItem>;
 export const AddressMapsListResultList = /*@__PURE__*/ S.Array(
   AddressMapsListResultItem,
 ) as any as S.Schema<AddressMapsListResultList>;
@@ -1742,7 +1764,7 @@ export const PrefixesBgpPrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesBgpPrefixesListResultItem>;
 
 export type PrefixesBgpPrefixesListResultList =
-  PrefixesBgpPrefixesListResultItem[];
+  ReadonlyArray<PrefixesBgpPrefixesListResultItem>;
 export const PrefixesBgpPrefixesListResultList = /*@__PURE__*/ S.Array(
   PrefixesBgpPrefixesListResultItem,
 ) as any as S.Schema<PrefixesBgpPrefixesListResultList>;
@@ -1813,7 +1835,7 @@ export const PrefixesDelegationsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesDelegationsListResultItem>;
 
 export type PrefixesDelegationsListResultList =
-  PrefixesDelegationsListResultItem[];
+  ReadonlyArray<PrefixesDelegationsListResultItem>;
 export const PrefixesDelegationsListResultList = /*@__PURE__*/ S.Array(
   PrefixesDelegationsListResultItem,
 ) as any as S.Schema<PrefixesDelegationsListResultList>;
@@ -1926,7 +1948,7 @@ export const PrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrefixesListResultItem",
 }) as any as S.Schema<PrefixesListResultItem>;
 
-export type PrefixesListResultList = PrefixesListResultItem[];
+export type PrefixesListResultList = ReadonlyArray<PrefixesListResultItem>;
 export const PrefixesListResultList = /*@__PURE__*/ S.Array(
   PrefixesListResultItem,
 ) as any as S.Schema<PrefixesListResultList>;
@@ -1971,8 +1993,7 @@ export const ListPrefixServiceBindingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PrefixesServiceBindingsListResultItemProvisioningState =
   | "provisioning"
-  | "active"
-  | (string & {});
+  | "active";
 export const PrefixesServiceBindingsListResultItemProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2017,7 +2038,7 @@ export const PrefixesServiceBindingsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrefixesServiceBindingsListResultItem>;
 
 export type PrefixesServiceBindingsListResultList =
-  PrefixesServiceBindingsListResultItem[];
+  ReadonlyArray<PrefixesServiceBindingsListResultItem>;
 export const PrefixesServiceBindingsListResultList = /*@__PURE__*/ S.Array(
   PrefixesServiceBindingsListResultItem,
 ) as any as S.Schema<PrefixesServiceBindingsListResultList>;
@@ -2074,7 +2095,7 @@ export const RegionalHostnamesRegionsListResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RegionalHostnamesRegionsListResultItem>;
 
 export type RegionalHostnamesRegionsListResultList =
-  RegionalHostnamesRegionsListResultItem[];
+  ReadonlyArray<RegionalHostnamesRegionsListResultItem>;
 export const RegionalHostnamesRegionsListResultList = /*@__PURE__*/ S.Array(
   RegionalHostnamesRegionsListResultItem,
 ) as any as S.Schema<RegionalHostnamesRegionsListResultList>;
@@ -2135,7 +2156,8 @@ export const RegionalHostnamesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionalHostnamesListResultItem",
 }) as any as S.Schema<RegionalHostnamesListResultItem>;
 
-export type RegionalHostnamesListResultList = RegionalHostnamesListResultItem[];
+export type RegionalHostnamesListResultList =
+  ReadonlyArray<RegionalHostnamesListResultItem>;
 export const RegionalHostnamesListResultList = /*@__PURE__*/ S.Array(
   RegionalHostnamesListResultItem,
 ) as any as S.Schema<RegionalHostnamesListResultList>;
@@ -2190,7 +2212,7 @@ export const ServicesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServicesListResultItem",
 }) as any as S.Schema<ServicesListResultItem>;
 
-export type ServicesListResultList = ServicesListResultItem[];
+export type ServicesListResultList = ReadonlyArray<ServicesListResultItem>;
 export const ServicesListResultList = /*@__PURE__*/ S.Array(
   ServicesListResultItem,
 ) as any as S.Schema<ServicesListResultList>;
@@ -2606,14 +2628,12 @@ export interface PutAddressMapAccountRequest {
   addressMapId: string;
   /** Identifier of a Cloudflare account. */
   accountId2: string;
-  body: unknown;
 }
 export const PutAddressMapAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
     accountId2: S.String.pipe(T.Label("account_id_2")),
-    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -2641,14 +2661,12 @@ export interface PutAddressMapIpRequest {
   addressMapId: string;
   /** An IPv4 or IPv6 address. */
   ipAddress: string;
-  body: unknown;
 }
 export const PutAddressMapIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
     ipAddress: S.String.pipe(T.Label("ip_address")),
-    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -2676,14 +2694,12 @@ export interface PutAddressMapZoneRequest {
   addressMapId: string;
   /** Identifier of a zone. */
   zoneId: string;
-  body: unknown;
 }
 export const PutAddressMapZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({

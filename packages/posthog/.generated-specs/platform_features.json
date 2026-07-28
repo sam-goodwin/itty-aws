@@ -105,7 +105,10 @@
           "target": "smithy.api#Boolean"
         },
         "created_by": {
-          "target": "com.posthog.platform_features#UserBasic"
+          "target": "com.posthog.platform_features#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -302,9 +305,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "action_key": {
           "target": "smithy.api#String"
         },
@@ -331,18 +331,6 @@
         },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "created_by": {
-          "target": "com.posthog.platform_features#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -457,18 +445,6 @@
         },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "created_by": {
-          "target": "com.posthog.platform_features#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -543,18 +519,6 @@
         },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "created_by": {
-          "target": "com.posthog.platform_features#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -755,10 +719,16 @@
           "target": "com.posthog.platform_features#ChangeRequestStateEnum"
         },
         "created_by": {
-          "target": "com.posthog.platform_features#UserBasic"
+          "target": "com.posthog.platform_features#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "applied_by": {
-          "target": "com.posthog.platform_features#UserBasic"
+          "target": "com.posthog.platform_features#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -1042,23 +1012,6 @@
         "smithy.api#documentation": "Approve a change request.\nIf quorum is reached, automatically applies the change immediately."
       }
     },
-    "com.posthog.platform_features#ChangeRequestsCancelCreateRequestApprovalsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.platform_features#ChangeRequestsCancelCreateRequestApprovalsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.platform_features#ChangeRequestsCancelCreateRequestApprovalsItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.platform_features#ChangeRequestsCancelCreateRequest": {
       "type": "structure",
       "members": {
@@ -1076,100 +1029,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "A UUID string identifying this change request."
-          }
-        },
-        "action_key": {
-          "target": "smithy.api#String"
-        },
-        "action_version": {
-          "target": "smithy.api#Integer"
-        },
-        "resource_type": {
-          "target": "smithy.api#String"
-        },
-        "resource_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "intent": {
-          "target": "smithy.api#Document"
-        },
-        "intent_display": {
-          "target": "smithy.api#Document"
-        },
-        "policy_snapshot": {
-          "target": "smithy.api#Document"
-        },
-        "validation_status": {
-          "target": "com.posthog.platform_features#ValidationStatusEnum"
-        },
-        "validation_errors": {
-          "target": "smithy.api#Document"
-        },
-        "validated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "state": {
-          "target": "com.posthog.platform_features#ChangeRequestStateEnum"
-        },
-        "created_by": {
-          "target": "com.posthog.platform_features#UserBasic"
-        },
-        "applied_by": {
-          "target": "com.posthog.platform_features#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "expires_at": {
-          "target": "smithy.api#String"
-        },
-        "applied_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "apply_error": {
-          "target": "smithy.api#String"
-        },
-        "result_data": {
-          "target": "smithy.api#Document"
-        },
-        "approvals": {
-          "target": "com.posthog.platform_features#ChangeRequestsCancelCreateRequestApprovalsList"
-        },
-        "can_approve": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Check if current user can approve this change request."
-          }
-        },
-        "can_cancel": {
-          "target": "smithy.api#Boolean"
-        },
-        "is_requester": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Check if current user is the requester."
-          }
-        },
-        "user_decision": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Get the current user's approval decision if they have voted.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },

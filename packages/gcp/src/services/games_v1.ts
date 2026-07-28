@@ -81,8 +81,7 @@ export const CheckRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type RevisionCheckResponseRevisionStatusEnum =
   | "OK"
   | "DEPRECATED"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const RevisionCheckResponseRevisionStatusEnum = /*@__PURE__*/ S.String;
 
 /** A third party checking a revision response. */
@@ -104,7 +103,7 @@ export const RevisionCheckResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevisionCheckResponse",
 }) as any as S.Schema<RevisionCheckResponse>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -163,7 +162,7 @@ export const GamePlayerToken = /*@__PURE__*/ S.suspend(() =>
   identifier: "GamePlayerToken",
 }) as any as S.Schema<GamePlayerToken>;
 
-export type GamePlayerTokenList = GamePlayerToken[];
+export type GamePlayerTokenList = ReadonlyArray<GamePlayerToken>;
 export const GamePlayerTokenList = /*@__PURE__*/ S.Array(
   GamePlayerToken,
 ) as any as S.Schema<GamePlayerTokenList>;
@@ -269,11 +268,7 @@ export const GenerateRecallPlayGroupingApiTokenResponse =
     identifier: "GenerateRecallPlayGroupingApiTokenResponse",
   }) as any as S.Schema<GenerateRecallPlayGroupingApiTokenResponse>;
 
-export type GetApplicationsPlatformTypeEnum =
-  | "ANDROID"
-  | "IOS"
-  | "WEB_APP"
-  | (string & {});
+export type GetApplicationsPlatformTypeEnum = "ANDROID" | "IOS" | "WEB_APP";
 export const GetApplicationsPlatformTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetApplicationsRequest {
@@ -323,7 +318,7 @@ export const ImageAsset = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageAsset" }) as any as S.Schema<ImageAsset>;
 
-export type ImageAssetList = ImageAsset[];
+export type ImageAssetList = ReadonlyArray<ImageAsset>;
 export const ImageAssetList = /*@__PURE__*/ S.Array(
   ImageAsset,
 ) as any as S.Schema<ImageAssetList>;
@@ -400,11 +395,7 @@ export const InstanceIosDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceIosDetails",
 }) as any as S.Schema<InstanceIosDetails>;
 
-export type InstancePlatformTypeEnum =
-  | "ANDROID"
-  | "IOS"
-  | "WEB_APP"
-  | (string & {});
+export type InstancePlatformTypeEnum = "ANDROID" | "IOS" | "WEB_APP";
 export const InstancePlatformTypeEnum = /*@__PURE__*/ S.String;
 
 /** The Web details resource. */
@@ -461,16 +452,16 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
 
-export type ApplicationEnabledFeaturesItemEnum = "SNAPSHOTS" | (string & {});
+export type ApplicationEnabledFeaturesItemEnum = "SNAPSHOTS";
 export const ApplicationEnabledFeaturesItemEnum = /*@__PURE__*/ S.String;
 
 export type ApplicationEnabledFeaturesItemEnumList =
-  ApplicationEnabledFeaturesItemEnum[];
+  ReadonlyArray<ApplicationEnabledFeaturesItemEnum>;
 export const ApplicationEnabledFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   ApplicationEnabledFeaturesItemEnum,
 ) as any as S.Schema<ApplicationEnabledFeaturesItemEnumList>;
@@ -524,8 +515,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 
 export type GetEndPointApplicationsEndPointTypeEnum =
   | "PROFILE_CREATION"
-  | "PROFILE_SETTINGS"
-  | (string & {});
+  | "PROFILE_SETTINGS";
 export const GetEndPointApplicationsEndPointTypeEnum = /*@__PURE__*/ S.String;
 
 export interface GetEndPointApplicationsRequest {
@@ -583,10 +573,7 @@ export const GetLeaderboardsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLeaderboardsRequest",
 }) as any as S.Schema<GetLeaderboardsRequest>;
 
-export type LeaderboardOrderEnum =
-  | "LARGER_IS_BETTER"
-  | "SMALLER_IS_BETTER"
-  | (string & {});
+export type LeaderboardOrderEnum = "LARGER_IS_BETTER" | "SMALLER_IS_BETTER";
 export const LeaderboardOrderEnum = /*@__PURE__*/ S.String;
 
 /** The Leaderboard resource. */
@@ -648,7 +635,7 @@ export const PlayerLevel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlayerLevel" }) as any as S.Schema<PlayerLevel>;
 
-export type PlayerLevelList = PlayerLevel[];
+export type PlayerLevelList = ReadonlyArray<PlayerLevel>;
 export const PlayerLevelList = /*@__PURE__*/ S.Array(
   PlayerLevel,
 ) as any as S.Schema<PlayerLevelList>;
@@ -705,7 +692,7 @@ export const ApplicationPlayerId = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationPlayerId",
 }) as any as S.Schema<ApplicationPlayerId>;
 
-export type ApplicationPlayerIdList = ApplicationPlayerId[];
+export type ApplicationPlayerIdList = ReadonlyArray<ApplicationPlayerId>;
 export const ApplicationPlayerIdList = /*@__PURE__*/ S.Array(
   ApplicationPlayerId,
 ) as any as S.Schema<ApplicationPlayerIdList>;
@@ -776,8 +763,7 @@ export const PlayerExperienceInfo = /*@__PURE__*/ S.suspend(() =>
 export type ProfileSettingsFriendsListVisibilityEnum =
   | "VISIBLE"
   | "REQUEST_REQUIRED"
-  | "UNAVAILABLE"
-  | (string & {});
+  | "UNAVAILABLE";
 export const ProfileSettingsFriendsListVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Profile settings */
@@ -811,10 +797,7 @@ export const PlayerName = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlayerName" }) as any as S.Schema<PlayerName>;
 
-export type PlayerFriendStatusEnum =
-  | "NO_RELATIONSHIP"
-  | "FRIEND"
-  | (string & {});
+export type PlayerFriendStatusEnum = "NO_RELATIONSHIP" | "FRIEND";
 export const PlayerFriendStatusEnum = /*@__PURE__*/ S.String;
 
 /** A Player resource. */
@@ -897,16 +880,10 @@ export type GetScoresIncludeRankTypeEnum =
   | "ALL"
   | "PUBLIC"
   | "SOCIAL"
-  | "FRIENDS"
-  | (string & {});
+  | "FRIENDS";
 export const GetScoresIncludeRankTypeEnum = /*@__PURE__*/ S.String;
 
-export type GetScoresTimeSpanEnum =
-  | "ALL"
-  | "ALL_TIME"
-  | "WEEKLY"
-  | "DAILY"
-  | (string & {});
+export type GetScoresTimeSpanEnum = "ALL" | "ALL_TIME" | "WEEKLY" | "DAILY";
 export const GetScoresTimeSpanEnum = /*@__PURE__*/ S.String;
 
 export interface GetScoresRequest {
@@ -973,8 +950,7 @@ export const LeaderboardScoreRank = /*@__PURE__*/ S.suspend(() =>
 export type PlayerLeaderboardScoreTimeSpanEnum =
   | "ALL_TIME"
   | "WEEKLY"
-  | "DAILY"
-  | (string & {});
+  | "DAILY";
 export const PlayerLeaderboardScoreTimeSpanEnum = /*@__PURE__*/ S.String;
 
 /** A player leaderboard score object. */
@@ -1017,7 +993,7 @@ export const PlayerLeaderboardScore = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlayerLeaderboardScore",
 }) as any as S.Schema<PlayerLeaderboardScore>;
 
-export type PlayerLeaderboardScoreList = PlayerLeaderboardScore[];
+export type PlayerLeaderboardScoreList = ReadonlyArray<PlayerLeaderboardScore>;
 export const PlayerLeaderboardScoreList = /*@__PURE__*/ S.Array(
   PlayerLeaderboardScore,
 ) as any as S.Schema<PlayerLeaderboardScoreList>;
@@ -1088,7 +1064,7 @@ export const SnapshotImage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SnapshotImage" }) as any as S.Schema<SnapshotImage>;
 
-export type SnapshotTypeEnum = "SAVE_GAME" | (string & {});
+export type SnapshotTypeEnum = "SAVE_GAME";
 export const SnapshotTypeEnum = /*@__PURE__*/ S.String;
 
 /** An snapshot object. */
@@ -1263,15 +1239,13 @@ export const RetrieveDeveloperGamesLastPlayerTokenResponse =
   }) as any as S.Schema<RetrieveDeveloperGamesLastPlayerTokenResponse>;
 
 export type LinkPersonaRequestCardinalityConstraintEnum =
-  | "ONE_PERSONA_TO_ONE_PLAYER"
-  | (string & {});
+  "ONE_PERSONA_TO_ONE_PLAYER";
 export const LinkPersonaRequestCardinalityConstraintEnum =
   /*@__PURE__*/ S.String;
 
 export type LinkPersonaRequestConflictingLinksResolutionPolicyEnum =
   | "KEEP_EXISTING_LINKS"
-  | "CREATE_NEW_LINK"
-  | (string & {});
+  | "CREATE_NEW_LINK";
 export const LinkPersonaRequestConflictingLinksResolutionPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1330,8 +1304,7 @@ export const LinkPersonaRecallRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type LinkPersonaResponseStateEnum =
   | "LINK_CREATED"
-  | "PERSONA_OR_PLAYER_ALREADY_LINKED"
-  | (string & {});
+  | "PERSONA_OR_PLAYER_ALREADY_LINKED";
 export const LinkPersonaResponseStateEnum = /*@__PURE__*/ S.String;
 
 /** Outcome of a persona linking attempt. */
@@ -1373,23 +1346,20 @@ export const ListAchievementDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type AchievementDefinitionAchievementTypeEnum =
   | "STANDARD"
-  | "INCREMENTAL"
-  | (string & {});
+  | "INCREMENTAL";
 export const AchievementDefinitionAchievementTypeEnum = /*@__PURE__*/ S.String;
 
 export type AchievementDefinitionAchievementLifecycleStateEnum =
   | "ACHIEVEMENT_LIFECYCLE_STATE_UNSPECIFIED"
   | "ACHIEVEMENT_LIFECYCLE_STATE_ACTIVE"
-  | "ACHIEVEMENT_LIFECYCLE_STATE_ARCHIVED"
-  | (string & {});
+  | "ACHIEVEMENT_LIFECYCLE_STATE_ARCHIVED";
 export const AchievementDefinitionAchievementLifecycleStateEnum =
   /*@__PURE__*/ S.String;
 
 export type AchievementDefinitionInitialStateEnum =
   | "HIDDEN"
   | "REVEALED"
-  | "UNLOCKED"
-  | (string & {});
+  | "UNLOCKED";
 export const AchievementDefinitionInitialStateEnum = /*@__PURE__*/ S.String;
 
 /** An achievement definition object. */
@@ -1446,7 +1416,7 @@ export const AchievementDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "AchievementDefinition",
 }) as any as S.Schema<AchievementDefinition>;
 
-export type AchievementDefinitionList = AchievementDefinition[];
+export type AchievementDefinitionList = ReadonlyArray<AchievementDefinition>;
 export const AchievementDefinitionList = /*@__PURE__*/ S.Array(
   AchievementDefinition,
 ) as any as S.Schema<AchievementDefinitionList>;
@@ -1474,8 +1444,7 @@ export type ListAchievementsStateEnum =
   | "ALL"
   | "HIDDEN"
   | "REVEALED"
-  | "UNLOCKED"
-  | (string & {});
+  | "UNLOCKED";
 export const ListAchievementsStateEnum = /*@__PURE__*/ S.String;
 
 export interface ListAchievementsRequest {
@@ -1511,8 +1480,7 @@ export const ListAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PlayerAchievementAchievementStateEnum =
   | "HIDDEN"
   | "REVEALED"
-  | "UNLOCKED"
-  | (string & {});
+  | "UNLOCKED";
 export const PlayerAchievementAchievementStateEnum = /*@__PURE__*/ S.String;
 
 /** An achievement object. */
@@ -1546,7 +1514,7 @@ export const PlayerAchievement = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlayerAchievement",
 }) as any as S.Schema<PlayerAchievement>;
 
-export type PlayerAchievementList = PlayerAchievement[];
+export type PlayerAchievementList = ReadonlyArray<PlayerAchievement>;
 export const PlayerAchievementList = /*@__PURE__*/ S.Array(
   PlayerAchievement,
 ) as any as S.Schema<PlayerAchievementList>;
@@ -1617,7 +1585,7 @@ export const PlayerEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlayerEvent" }) as any as S.Schema<PlayerEvent>;
 
-export type PlayerEventList = PlayerEvent[];
+export type PlayerEventList = ReadonlyArray<PlayerEvent>;
 export const PlayerEventList = /*@__PURE__*/ S.Array(
   PlayerEvent,
 ) as any as S.Schema<PlayerEventList>;
@@ -1641,9 +1609,7 @@ export const PlayerEventListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlayerEventListResponse",
 }) as any as S.Schema<PlayerEventListResponse>;
 
-export type ListCategoriesByPlayerMetagameCollectionEnum =
-  | "ALL"
-  | (string & {});
+export type ListCategoriesByPlayerMetagameCollectionEnum = "ALL";
 export const ListCategoriesByPlayerMetagameCollectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1695,7 +1661,7 @@ export const Category = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
-export type CategoryList = Category[];
+export type CategoryList = ReadonlyArray<Category>;
 export const CategoryList = /*@__PURE__*/ S.Array(
   Category,
 ) as any as S.Schema<CategoryList>;
@@ -1743,10 +1709,7 @@ export const ListDefinitionsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDefinitionsEventsRequest",
 }) as any as S.Schema<ListDefinitionsEventsRequest>;
 
-export type EventDefinitionVisibilityEnum =
-  | "REVEALED"
-  | "HIDDEN"
-  | (string & {});
+export type EventDefinitionVisibilityEnum = "REVEALED" | "HIDDEN";
 export const EventDefinitionVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** An event child relationship resource. */
@@ -1763,7 +1726,7 @@ export const EventChild = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EventChild" }) as any as S.Schema<EventChild>;
 
-export type EventChildList = EventChild[];
+export type EventChildList = ReadonlyArray<EventChild>;
 export const EventChildList = /*@__PURE__*/ S.Array(
   EventChild,
 ) as any as S.Schema<EventChildList>;
@@ -1802,7 +1765,7 @@ export const EventDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventDefinition",
 }) as any as S.Schema<EventDefinition>;
 
-export type EventDefinitionList = EventDefinition[];
+export type EventDefinitionList = ReadonlyArray<EventDefinition>;
 export const EventDefinitionList = /*@__PURE__*/ S.Array(
   EventDefinition,
 ) as any as S.Schema<EventDefinitionList>;
@@ -1850,7 +1813,7 @@ export const ListLeaderboardsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLeaderboardsRequest",
 }) as any as S.Schema<ListLeaderboardsRequest>;
 
-export type LeaderboardList = Leaderboard[];
+export type LeaderboardList = ReadonlyArray<Leaderboard>;
 export const LeaderboardList = /*@__PURE__*/ S.Array(
   Leaderboard,
 ) as any as S.Schema<LeaderboardList>;
@@ -1874,11 +1837,7 @@ export const LeaderboardListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LeaderboardListResponse",
 }) as any as S.Schema<LeaderboardListResponse>;
 
-export type ListPlayersCollectionEnum =
-  | "CONNECTED"
-  | "VISIBLE"
-  | "FRIENDS_ALL"
-  | (string & {});
+export type ListPlayersCollectionEnum = "CONNECTED" | "VISIBLE" | "FRIENDS_ALL";
 export const ListPlayersCollectionEnum = /*@__PURE__*/ S.String;
 
 export interface ListPlayersRequest {
@@ -1908,7 +1867,7 @@ export const ListPlayersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlayersRequest",
 }) as any as S.Schema<ListPlayersRequest>;
 
-export type PlayerList = Player[];
+export type PlayerList = ReadonlyArray<Player>;
 export const PlayerList = /*@__PURE__*/ S.Array(
   Player,
 ) as any as S.Schema<PlayerList>;
@@ -1932,18 +1891,10 @@ export const PlayerListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlayerListResponse",
 }) as any as S.Schema<PlayerListResponse>;
 
-export type ListScoresCollectionEnum =
-  | "PUBLIC"
-  | "SOCIAL"
-  | "FRIENDS"
-  | (string & {});
+export type ListScoresCollectionEnum = "PUBLIC" | "SOCIAL" | "FRIENDS";
 export const ListScoresCollectionEnum = /*@__PURE__*/ S.String;
 
-export type ListScoresTimeSpanEnum =
-  | "ALL_TIME"
-  | "WEEKLY"
-  | "DAILY"
-  | (string & {});
+export type ListScoresTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
 export const ListScoresTimeSpanEnum = /*@__PURE__*/ S.String;
 
 export interface ListScoresRequest {
@@ -1979,11 +1930,7 @@ export const ListScoresRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScoresRequest",
 }) as any as S.Schema<ListScoresRequest>;
 
-export type LeaderboardEntryTimeSpanEnum =
-  | "ALL_TIME"
-  | "WEEKLY"
-  | "DAILY"
-  | (string & {});
+export type LeaderboardEntryTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
 export const LeaderboardEntryTimeSpanEnum = /*@__PURE__*/ S.String;
 
 /** The Leaderboard Entry resource. */
@@ -2023,7 +1970,7 @@ export const LeaderboardEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "LeaderboardEntry",
 }) as any as S.Schema<LeaderboardEntry>;
 
-export type LeaderboardEntryList = LeaderboardEntry[];
+export type LeaderboardEntryList = ReadonlyArray<LeaderboardEntry>;
 export const LeaderboardEntryList = /*@__PURE__*/ S.Array(
   LeaderboardEntry,
 ) as any as S.Schema<LeaderboardEntryList>;
@@ -2083,7 +2030,7 @@ export const ListSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSnapshotsRequest",
 }) as any as S.Schema<ListSnapshotsRequest>;
 
-export type SnapshotList = Snapshot[];
+export type SnapshotList = ReadonlyArray<Snapshot>;
 export const SnapshotList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotList>;
@@ -2107,18 +2054,10 @@ export const SnapshotListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnapshotListResponse",
 }) as any as S.Schema<SnapshotListResponse>;
 
-export type ListWindowScoresCollectionEnum =
-  | "PUBLIC"
-  | "SOCIAL"
-  | "FRIENDS"
-  | (string & {});
+export type ListWindowScoresCollectionEnum = "PUBLIC" | "SOCIAL" | "FRIENDS";
 export const ListWindowScoresCollectionEnum = /*@__PURE__*/ S.String;
 
-export type ListWindowScoresTimeSpanEnum =
-  | "ALL_TIME"
-  | "WEEKLY"
-  | "DAILY"
-  | (string & {});
+export type ListWindowScoresTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
 export const ListWindowScoresTimeSpanEnum = /*@__PURE__*/ S.String;
 
 export interface ListWindowScoresRequest {
@@ -2199,7 +2138,7 @@ export const EventUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventUpdateRequest",
 }) as any as S.Schema<EventUpdateRequest>;
 
-export type EventUpdateRequestList = EventUpdateRequest[];
+export type EventUpdateRequestList = ReadonlyArray<EventUpdateRequest>;
 export const EventUpdateRequestList = /*@__PURE__*/ S.Array(
   EventUpdateRequest,
 ) as any as S.Schema<EventUpdateRequestList>;
@@ -2242,7 +2181,7 @@ export const EventPeriodUpdate = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventPeriodUpdate",
 }) as any as S.Schema<EventPeriodUpdate>;
 
-export type EventPeriodUpdateList = EventPeriodUpdate[];
+export type EventPeriodUpdateList = ReadonlyArray<EventPeriodUpdate>;
 export const EventPeriodUpdateList = /*@__PURE__*/ S.Array(
   EventPeriodUpdate,
 ) as any as S.Schema<EventPeriodUpdateList>;
@@ -2292,8 +2231,7 @@ export const RecordEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type EventRecordFailureFailureCauseEnum =
   | "NOT_FOUND"
-  | "INVALID_UPDATE_VALUE"
-  | (string & {});
+  | "INVALID_UPDATE_VALUE";
 export const EventRecordFailureFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** An event update failure resource. */
@@ -2315,7 +2253,7 @@ export const EventRecordFailure = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventRecordFailure",
 }) as any as S.Schema<EventRecordFailure>;
 
-export type EventRecordFailureList = EventRecordFailure[];
+export type EventRecordFailureList = ReadonlyArray<EventRecordFailure>;
 export const EventRecordFailureList = /*@__PURE__*/ S.Array(
   EventRecordFailure,
 ) as any as S.Schema<EventRecordFailureList>;
@@ -2326,8 +2264,7 @@ export type EventBatchRecordFailureFailureCauseEnum =
   | "TIME_PERIOD_SHORT"
   | "TIME_PERIOD_LONG"
   | "ALREADY_UPDATED"
-  | "RECORD_RATE_HIGH"
-  | (string & {});
+  | "RECORD_RATE_HIGH";
 export const EventBatchRecordFailureFailureCauseEnum = /*@__PURE__*/ S.String;
 
 /** A batch update failure resource. */
@@ -2349,7 +2286,8 @@ export const EventBatchRecordFailure = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventBatchRecordFailure",
 }) as any as S.Schema<EventBatchRecordFailure>;
 
-export type EventBatchRecordFailureList = EventBatchRecordFailure[];
+export type EventBatchRecordFailureList =
+  ReadonlyArray<EventBatchRecordFailure>;
 export const EventBatchRecordFailureList = /*@__PURE__*/ S.Array(
   EventBatchRecordFailure,
 ) as any as S.Schema<EventBatchRecordFailureList>;
@@ -2438,7 +2376,7 @@ export const RetrieveTokensRecallRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrieveTokensRecallRequest",
 }) as any as S.Schema<RetrieveTokensRecallRequest>;
 
-export type RecallTokenList = RecallToken[];
+export type RecallTokenList = ReadonlyArray<RecallToken>;
 export const RecallTokenList = /*@__PURE__*/ S.Array(
   RecallToken,
 ) as any as S.Schema<RecallTokenList>;
@@ -2474,10 +2412,7 @@ export const RevealAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevealAchievementsRequest",
 }) as any as S.Schema<RevealAchievementsRequest>;
 
-export type AchievementRevealResponseCurrentStateEnum =
-  | "REVEALED"
-  | "UNLOCKED"
-  | (string & {});
+export type AchievementRevealResponseCurrentStateEnum = "REVEALED" | "UNLOCKED";
 export const AchievementRevealResponseCurrentStateEnum = /*@__PURE__*/ S.String;
 
 /** An achievement reveal response */
@@ -2561,7 +2496,7 @@ export const ScoreSubmission = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScoreSubmission",
 }) as any as S.Schema<ScoreSubmission>;
 
-export type ScoreSubmissionList = ScoreSubmission[];
+export type ScoreSubmissionList = ReadonlyArray<ScoreSubmission>;
 export const ScoreSubmissionList = /*@__PURE__*/ S.Array(
   ScoreSubmission,
 ) as any as S.Schema<ScoreSubmissionList>;
@@ -2603,11 +2538,7 @@ export const SubmitMultipleScoresRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubmitMultipleScoresRequest",
 }) as any as S.Schema<SubmitMultipleScoresRequest>;
 
-export type PlayerScoreTimeSpanEnum =
-  | "ALL_TIME"
-  | "WEEKLY"
-  | "DAILY"
-  | (string & {});
+export type PlayerScoreTimeSpanEnum = "ALL_TIME" | "WEEKLY" | "DAILY";
 export const PlayerScoreTimeSpanEnum = /*@__PURE__*/ S.String;
 
 /** A player score. */
@@ -2633,7 +2564,7 @@ export const PlayerScore = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlayerScore" }) as any as S.Schema<PlayerScore>;
 
-export type PlayerScoreList = PlayerScore[];
+export type PlayerScoreList = ReadonlyArray<PlayerScore>;
 export const PlayerScoreList = /*@__PURE__*/ S.Array(
   PlayerScore,
 ) as any as S.Schema<PlayerScoreList>;
@@ -2641,13 +2572,12 @@ export const PlayerScoreList = /*@__PURE__*/ S.Array(
 export type PlayerScoreResponseBeatenScoreTimeSpansItemEnum =
   | "ALL_TIME"
   | "WEEKLY"
-  | "DAILY"
-  | (string & {});
+  | "DAILY";
 export const PlayerScoreResponseBeatenScoreTimeSpansItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PlayerScoreResponseBeatenScoreTimeSpansItemEnumList =
-  PlayerScoreResponseBeatenScoreTimeSpansItemEnum[];
+  ReadonlyArray<PlayerScoreResponseBeatenScoreTimeSpansItemEnum>;
 export const PlayerScoreResponseBeatenScoreTimeSpansItemEnumList =
   /*@__PURE__*/ S.Array(
     PlayerScoreResponseBeatenScoreTimeSpansItemEnum,
@@ -2683,7 +2613,7 @@ export const PlayerScoreResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlayerScoreResponse",
 }) as any as S.Schema<PlayerScoreResponse>;
 
-export type PlayerScoreResponseList = PlayerScoreResponse[];
+export type PlayerScoreResponseList = ReadonlyArray<PlayerScoreResponse>;
 export const PlayerScoreResponseList = /*@__PURE__*/ S.Array(
   PlayerScoreResponse,
 ) as any as S.Schema<PlayerScoreResponseList>;
@@ -2819,8 +2749,7 @@ export type AchievementUpdateRequestUpdateTypeEnum =
   | "REVEAL"
   | "UNLOCK"
   | "INCREMENT"
-  | "SET_STEPS_AT_LEAST"
-  | (string & {});
+  | "SET_STEPS_AT_LEAST";
 export const AchievementUpdateRequestUpdateTypeEnum = /*@__PURE__*/ S.String;
 
 /** The payload to request to increment an achievement. */
@@ -2883,7 +2812,8 @@ export const AchievementUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AchievementUpdateRequest",
 }) as any as S.Schema<AchievementUpdateRequest>;
 
-export type AchievementUpdateRequestList = AchievementUpdateRequest[];
+export type AchievementUpdateRequestList =
+  ReadonlyArray<AchievementUpdateRequest>;
 export const AchievementUpdateRequestList = /*@__PURE__*/ S.Array(
   AchievementUpdateRequest,
 ) as any as S.Schema<AchievementUpdateRequestList>;
@@ -2925,8 +2855,7 @@ export const UpdateMultipleAchievementsRequest = /*@__PURE__*/ S.suspend(() =>
 export type AchievementUpdateResponseCurrentStateEnum =
   | "HIDDEN"
   | "REVEALED"
-  | "UNLOCKED"
-  | (string & {});
+  | "UNLOCKED";
 export const AchievementUpdateResponseCurrentStateEnum = /*@__PURE__*/ S.String;
 
 /** An updated achievement. */
@@ -2957,7 +2886,8 @@ export const AchievementUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AchievementUpdateResponse",
 }) as any as S.Schema<AchievementUpdateResponse>;
 
-export type AchievementUpdateResponseList = AchievementUpdateResponse[];
+export type AchievementUpdateResponseList =
+  ReadonlyArray<AchievementUpdateResponse>;
 export const AchievementUpdateResponseList = /*@__PURE__*/ S.Array(
   AchievementUpdateResponse,
 ) as any as S.Schema<AchievementUpdateResponseList>;

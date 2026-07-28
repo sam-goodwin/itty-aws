@@ -62,7 +62,7 @@ export const CompactDbRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompactDbRequest",
 }) as any as S.Schema<CompactDbRequest>;
 
-export type CreateAnalyticsEventRequestDataDocIdsList = string[];
+export type CreateAnalyticsEventRequestDataDocIdsList = ReadonlyArray<string>;
 export const CreateAnalyticsEventRequestDataDocIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAnalyticsEventRequestDataDocIdsList>;
@@ -120,11 +120,10 @@ export type AnalyticsRuleType =
   | "popular_queries"
   | "nohits_queries"
   | "counter"
-  | "log"
-  | (string & {});
+  | "log";
 export const AnalyticsRuleType = /*@__PURE__*/ S.String;
 
-export type AnalyticsRuleCreateParamsMetaFieldsList = string[];
+export type AnalyticsRuleCreateParamsMetaFieldsList = ReadonlyArray<string>;
 export const AnalyticsRuleCreateParamsMetaFieldsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AnalyticsRuleCreateParamsMetaFieldsList>;
@@ -173,7 +172,8 @@ export const AnalyticsRuleCreate = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnalyticsRuleCreate",
 }) as any as S.Schema<AnalyticsRuleCreate>;
 
-export type CreateAnalyticsRuleRequestBodyCase1List = AnalyticsRuleCreate[];
+export type CreateAnalyticsRuleRequestBodyCase1List =
+  ReadonlyArray<AnalyticsRuleCreate>;
 export const CreateAnalyticsRuleRequestBodyCase1List = /*@__PURE__*/ S.Array(
   AnalyticsRuleCreate,
 ) as any as S.Schema<CreateAnalyticsRuleRequestBodyCase1List>;
@@ -199,7 +199,7 @@ export const CreateAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAnalyticsRuleRequest",
 }) as any as S.Schema<CreateAnalyticsRuleRequest>;
 
-export type AnalyticsRuleParamsMetaFieldsList = string[];
+export type AnalyticsRuleParamsMetaFieldsList = ReadonlyArray<string>;
 export const AnalyticsRuleParamsMetaFieldsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AnalyticsRuleParamsMetaFieldsList>;
@@ -270,7 +270,7 @@ export const CreateAnalyticsRuleResponseBodyCase1Item =
   );
 
 export type CreateAnalyticsRuleResponseBodyCase1List =
-  CreateAnalyticsRuleResponseBodyCase1Item[];
+  ReadonlyArray<CreateAnalyticsRuleResponseBodyCase1Item>;
 export const CreateAnalyticsRuleResponseBodyCase1List = /*@__PURE__*/ S.Array(
   CreateAnalyticsRuleResponseBodyCase1Item,
 ) as any as S.Schema<CreateAnalyticsRuleResponseBodyCase1List>;
@@ -293,18 +293,18 @@ export const CreateAnalyticsRuleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAnalyticsRuleResponse>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
-export type FieldTokenSeparatorsList = string[];
+export type FieldTokenSeparatorsList = ReadonlyArray<string>;
 export const FieldTokenSeparatorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FieldTokenSeparatorsList>;
 
 /** List of symbols or special characters to be indexed. */
-export type FieldSymbolsToIndexList = string[];
+export type FieldSymbolsToIndexList = ReadonlyArray<string>;
 export const FieldSymbolsToIndexList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FieldSymbolsToIndexList>;
 
-export type FieldEmbedFromList = string[];
+export type FieldEmbedFromList = ReadonlyArray<string>;
 export const FieldEmbedFromList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FieldEmbedFromList>;
@@ -406,25 +406,25 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
 /** A list of fields for querying, filtering and faceting */
-export type CreateCollectionRequestFieldsList = Field[];
+export type CreateCollectionRequestFieldsList = ReadonlyArray<Field>;
 export const CreateCollectionRequestFieldsList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<CreateCollectionRequestFieldsList>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
-export type CreateCollectionRequestTokenSeparatorsList = string[];
+export type CreateCollectionRequestTokenSeparatorsList = ReadonlyArray<string>;
 export const CreateCollectionRequestTokenSeparatorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateCollectionRequestTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
-export type CreateCollectionRequestSynonymSetsList = string[];
+export type CreateCollectionRequestSynonymSetsList = ReadonlyArray<string>;
 export const CreateCollectionRequestSynonymSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateCollectionRequestSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
-export type CreateCollectionRequestSymbolsToIndexList = string[];
+export type CreateCollectionRequestSymbolsToIndexList = ReadonlyArray<string>;
 export const CreateCollectionRequestSymbolsToIndexList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateCollectionRequestSymbolsToIndexList>;
@@ -477,26 +477,26 @@ export const CreateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCollectionRequest>;
 
 /** A list of fields for querying, filtering and faceting */
-export type CreateCollectionResponseFieldsList = Field[];
+export type CreateCollectionResponseFieldsList = ReadonlyArray<Field>;
 export const CreateCollectionResponseFieldsList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<CreateCollectionResponseFieldsList>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
-export type CreateCollectionResponseTokenSeparatorsList = string[];
+export type CreateCollectionResponseTokenSeparatorsList = ReadonlyArray<string>;
 export const CreateCollectionResponseTokenSeparatorsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateCollectionResponseTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
-export type CreateCollectionResponseSynonymSetsList = string[];
+export type CreateCollectionResponseSynonymSetsList = ReadonlyArray<string>;
 export const CreateCollectionResponseSynonymSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateCollectionResponseSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
-export type CreateCollectionResponseSymbolsToIndexList = string[];
+export type CreateCollectionResponseSymbolsToIndexList = ReadonlyArray<string>;
 export const CreateCollectionResponseSymbolsToIndexList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateCollectionResponseSymbolsToIndexList>;
@@ -614,12 +614,12 @@ export const CreateConversationModelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateConversationModelResponse",
 }) as any as S.Schema<CreateConversationModelResponse>;
 
-export type CreateKeyRequestActionsList = string[];
+export type CreateKeyRequestActionsList = ReadonlyArray<string>;
 export const CreateKeyRequestActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateKeyRequestActionsList>;
 
-export type CreateKeyRequestCollectionsList = string[];
+export type CreateKeyRequestCollectionsList = ReadonlyArray<string>;
 export const CreateKeyRequestCollectionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateKeyRequestCollectionsList>;
@@ -643,12 +643,12 @@ export const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateKeyRequest",
 }) as any as S.Schema<CreateKeyRequest>;
 
-export type CreateKeyResponseActionsList = string[];
+export type CreateKeyResponseActionsList = ReadonlyArray<string>;
 export const CreateKeyResponseActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateKeyResponseActionsList>;
 
-export type CreateKeyResponseCollectionsList = string[];
+export type CreateKeyResponseCollectionsList = ReadonlyArray<string>;
 export const CreateKeyResponseCollectionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateKeyResponseCollectionsList>;
@@ -677,7 +677,7 @@ export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateKeyResponse>;
 
 /** Stop sequences for the NL model (Google-specific) */
-export type CreateNLSearchModelRequestStopSequencesList = string[];
+export type CreateNLSearchModelRequestStopSequencesList = ReadonlyArray<string>;
 export const CreateNLSearchModelRequestStopSequencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -750,7 +750,8 @@ export const CreateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNLSearchModelRequest>;
 
 /** Stop sequences for the NL model (Google-specific) */
-export type CreateNLSearchModelResponseStopSequencesList = string[];
+export type CreateNLSearchModelResponseStopSequencesList =
+  ReadonlyArray<string>;
 export const CreateNLSearchModelResponseStopSequencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -877,7 +878,8 @@ export const DeleteAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAnalyticsRuleRequest",
 }) as any as S.Schema<DeleteAnalyticsRuleRequest>;
 
-export type DeleteAnalyticsRuleResponseParamsMetaFieldsList = string[];
+export type DeleteAnalyticsRuleResponseParamsMetaFieldsList =
+  ReadonlyArray<string>;
 export const DeleteAnalyticsRuleResponseParamsMetaFieldsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -946,26 +948,26 @@ export const DeleteCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCollectionRequest>;
 
 /** A list of fields for querying, filtering and faceting */
-export type DeleteCollectionResponseFieldsList = Field[];
+export type DeleteCollectionResponseFieldsList = ReadonlyArray<Field>;
 export const DeleteCollectionResponseFieldsList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<DeleteCollectionResponseFieldsList>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
-export type DeleteCollectionResponseTokenSeparatorsList = string[];
+export type DeleteCollectionResponseTokenSeparatorsList = ReadonlyArray<string>;
 export const DeleteCollectionResponseTokenSeparatorsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DeleteCollectionResponseTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
-export type DeleteCollectionResponseSynonymSetsList = string[];
+export type DeleteCollectionResponseSynonymSetsList = ReadonlyArray<string>;
 export const DeleteCollectionResponseSynonymSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteCollectionResponseSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
-export type DeleteCollectionResponseSymbolsToIndexList = string[];
+export type DeleteCollectionResponseSymbolsToIndexList = ReadonlyArray<string>;
 export const DeleteCollectionResponseSymbolsToIndexList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteCollectionResponseSymbolsToIndexList>;
@@ -1444,7 +1446,8 @@ export const GetAliasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAliasesRequest",
 }) as any as S.Schema<GetAliasesRequest>;
 
-export type CollectionAliasesResponseAliasesList = CollectionAlias[];
+export type CollectionAliasesResponseAliasesList =
+  ReadonlyArray<CollectionAlias>;
 export const CollectionAliasesResponseAliasesList = /*@__PURE__*/ S.Array(
   CollectionAlias,
 ) as any as S.Schema<CollectionAliasesResponseAliasesList>;
@@ -1477,7 +1480,7 @@ export const GetAnalyticsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAnalyticsEventsRequest",
 }) as any as S.Schema<GetAnalyticsEventsRequest>;
 
-export type AnalyticsEventsResponseEventsItemDocIdsList = string[];
+export type AnalyticsEventsResponseEventsItemDocIdsList = ReadonlyArray<string>;
 export const AnalyticsEventsResponseEventsItemDocIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1509,7 +1512,7 @@ export const AnalyticsEventsResponseEventsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalyticsEventsResponseEventsItem>;
 
 export type AnalyticsEventsResponseEventsList =
-  AnalyticsEventsResponseEventsItem[];
+  ReadonlyArray<AnalyticsEventsResponseEventsItem>;
 export const AnalyticsEventsResponseEventsList = /*@__PURE__*/ S.Array(
   AnalyticsEventsResponseEventsItem,
 ) as any as S.Schema<AnalyticsEventsResponseEventsList>;
@@ -1572,25 +1575,25 @@ export const GetCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCollectionRequest>;
 
 /** A list of fields for querying, filtering and faceting */
-export type GetCollectionResponseFieldsList = Field[];
+export type GetCollectionResponseFieldsList = ReadonlyArray<Field>;
 export const GetCollectionResponseFieldsList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<GetCollectionResponseFieldsList>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
-export type GetCollectionResponseTokenSeparatorsList = string[];
+export type GetCollectionResponseTokenSeparatorsList = ReadonlyArray<string>;
 export const GetCollectionResponseTokenSeparatorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCollectionResponseTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
-export type GetCollectionResponseSynonymSetsList = string[];
+export type GetCollectionResponseSynonymSetsList = ReadonlyArray<string>;
 export const GetCollectionResponseSynonymSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCollectionResponseSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
-export type GetCollectionResponseSymbolsToIndexList = string[];
+export type GetCollectionResponseSymbolsToIndexList = ReadonlyArray<string>;
 export const GetCollectionResponseSymbolsToIndexList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetCollectionResponseSymbolsToIndexList>;
@@ -1669,25 +1672,25 @@ export const GetCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCollectionsRequest>;
 
 /** A list of fields for querying, filtering and faceting */
-export type CollectionResponseFieldsList = Field[];
+export type CollectionResponseFieldsList = ReadonlyArray<Field>;
 export const CollectionResponseFieldsList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<CollectionResponseFieldsList>;
 
 /** List of symbols or special characters to be used for splitting the text into individual words in addition to space and new-line characters. */
-export type CollectionResponseTokenSeparatorsList = string[];
+export type CollectionResponseTokenSeparatorsList = ReadonlyArray<string>;
 export const CollectionResponseTokenSeparatorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CollectionResponseTokenSeparatorsList>;
 
 /** List of synonym set names to associate with this collection */
-export type CollectionResponseSynonymSetsList = string[];
+export type CollectionResponseSynonymSetsList = ReadonlyArray<string>;
 export const CollectionResponseSynonymSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CollectionResponseSynonymSetsList>;
 
 /** List of symbols or special characters to be indexed. */
-export type CollectionResponseSymbolsToIndexList = string[];
+export type CollectionResponseSymbolsToIndexList = ReadonlyArray<string>;
 export const CollectionResponseSymbolsToIndexList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CollectionResponseSymbolsToIndexList>;
@@ -1733,7 +1736,7 @@ export const CollectionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectionResponse",
 }) as any as S.Schema<CollectionResponse>;
 
-export type GetCollectionsResponseBodyList = CollectionResponse[];
+export type GetCollectionsResponseBodyList = ReadonlyArray<CollectionResponse>;
 export const GetCollectionsResponseBodyList = /*@__PURE__*/ S.Array(
   CollectionResponse,
 ) as any as S.Schema<GetCollectionsResponseBodyList>;
@@ -1783,12 +1786,12 @@ export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "GET", uri: "/keys/{keyId}", code: 200 })),
 ).annotate({ identifier: "GetKeyRequest" }) as any as S.Schema<GetKeyRequest>;
 
-export type GetKeyResponseActionsList = string[];
+export type GetKeyResponseActionsList = ReadonlyArray<string>;
 export const GetKeyResponseActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetKeyResponseActionsList>;
 
-export type GetKeyResponseCollectionsList = string[];
+export type GetKeyResponseCollectionsList = ReadonlyArray<string>;
 export const GetKeyResponseCollectionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetKeyResponseCollectionsList>;
@@ -1819,12 +1822,12 @@ export const GetKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/keys", code: 200 })),
 ).annotate({ identifier: "GetKeysRequest" }) as any as S.Schema<GetKeysRequest>;
 
-export type ApiKeyActionsList = string[];
+export type ApiKeyActionsList = ReadonlyArray<string>;
 export const ApiKeyActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiKeyActionsList>;
 
-export type ApiKeyCollectionsList = string[];
+export type ApiKeyCollectionsList = ReadonlyArray<string>;
 export const ApiKeyCollectionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiKeyCollectionsList>;
@@ -1850,7 +1853,7 @@ export const ApiKey = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApiKey" }) as any as S.Schema<ApiKey>;
 
-export type ApiKeysResponseKeysList = ApiKey[];
+export type ApiKeysResponseKeysList = ReadonlyArray<ApiKey>;
 export const ApiKeysResponseKeysList = /*@__PURE__*/ S.Array(
   ApiKey,
 ) as any as S.Schema<ApiKeysResponseKeysList>;
@@ -1893,7 +1896,8 @@ export const SchemaChangeStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemaChangeStatus",
 }) as any as S.Schema<SchemaChangeStatus>;
 
-export type GetSchemaChangesResponseBodyList = SchemaChangeStatus[];
+export type GetSchemaChangesResponseBodyList =
+  ReadonlyArray<SchemaChangeStatus>;
 export const GetSchemaChangesResponseBodyList = /*@__PURE__*/ S.Array(
   SchemaChangeStatus,
 ) as any as S.Schema<GetSchemaChangesResponseBodyList>;
@@ -1939,7 +1943,8 @@ export const StemmingDictionaryWordsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StemmingDictionaryWordsItem>;
 
 /** List of word mappings in the dictionary */
-export type StemmingDictionaryWordsList = StemmingDictionaryWordsItem[];
+export type StemmingDictionaryWordsList =
+  ReadonlyArray<StemmingDictionaryWordsItem>;
 export const StemmingDictionaryWordsList = /*@__PURE__*/ S.Array(
   StemmingDictionaryWordsItem,
 ) as any as S.Schema<StemmingDictionaryWordsList>;
@@ -1973,20 +1978,14 @@ export const HealthStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HealthStatus" }) as any as S.Schema<HealthStatus>;
 
-export type IndexAction =
-  | "create"
-  | "update"
-  | "upsert"
-  | "emplace"
-  | (string & {});
+export type IndexAction = "create" | "update" | "upsert" | "emplace";
 export const IndexAction = /*@__PURE__*/ S.String;
 
 export type DirtyValues =
   | "coerce_or_reject"
   | "coerce_or_drop"
   | "drop"
-  | "reject"
-  | (string & {});
+  | "reject";
 export const DirtyValues = /*@__PURE__*/ S.String;
 
 export interface ImportDocumentsRequestImportDocumentsParameters {
@@ -2104,7 +2103,8 @@ export const ListStemmingDictionariesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStemmingDictionariesRequest",
 }) as any as S.Schema<ListStemmingDictionariesRequest>;
 
-export type ListStemmingDictionariesResponseDictionariesList = string[];
+export type ListStemmingDictionariesResponseDictionariesList =
+  ReadonlyArray<string>;
 export const ListStemmingDictionariesResponseDictionariesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2122,11 +2122,7 @@ export const ListStemmingDictionariesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStemmingDictionariesResponse>;
 
 /** Dictates the direction in which the words in the query must be dropped when the original words in the query do not appear in any document. Values: right_to_left (default), left_to_right, both_sides:3 A note on both_sides:3 - for queries up to 3 tokens (words) in length, this mode will drop tokens from both sides and exhaustively rank all matching results. If query length is greater than 3 words, Typesense will just fallback to default behavior of right_to_left */
-export type DropTokensMode =
-  | "right_to_left"
-  | "left_to_right"
-  | "both_sides:3"
-  | (string & {});
+export type DropTokensMode = "right_to_left" | "left_to_right" | "both_sides:3";
 export const DropTokensMode = /*@__PURE__*/ S.String;
 
 /** Parameters for the multi search API. */
@@ -2547,7 +2543,8 @@ export const MultiSearchCollectionParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiSearchCollectionParameters",
 }) as any as S.Schema<MultiSearchCollectionParameters>;
 
-export type MultiSearchRequestSearchesList = MultiSearchCollectionParameters[];
+export type MultiSearchRequestSearchesList =
+  ReadonlyArray<MultiSearchCollectionParameters>;
 export const MultiSearchRequestSearchesList = /*@__PURE__*/ S.Array(
   MultiSearchCollectionParameters,
 ) as any as S.Schema<MultiSearchRequestSearchesList>;
@@ -2585,7 +2582,7 @@ export const FacetCountsCountsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FacetCountsCountsItem",
 }) as any as S.Schema<FacetCountsCountsItem>;
 
-export type FacetCountsCountsList = FacetCountsCountsItem[];
+export type FacetCountsCountsList = ReadonlyArray<FacetCountsCountsItem>;
 export const FacetCountsCountsList = /*@__PURE__*/ S.Array(
   FacetCountsCountsItem,
 ) as any as S.Schema<FacetCountsCountsList>;
@@ -2624,35 +2621,35 @@ export const FacetCounts = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FacetCounts" }) as any as S.Schema<FacetCounts>;
 
-export type MultiSearchResultItemFacetCountsList = FacetCounts[];
+export type MultiSearchResultItemFacetCountsList = ReadonlyArray<FacetCounts>;
 export const MultiSearchResultItemFacetCountsList = /*@__PURE__*/ S.Array(
   FacetCounts,
 ) as any as S.Schema<MultiSearchResultItemFacetCountsList>;
 
-export type SearchGroupedHitGroupKeyList = unknown[];
+export type SearchGroupedHitGroupKeyList = ReadonlyArray<unknown>;
 export const SearchGroupedHitGroupKeyList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SearchGroupedHitGroupKeyList>;
 
 /** Present only for (array) string[] fields */
-export type SearchHighlightSnippetsList = string[];
+export type SearchHighlightSnippetsList = ReadonlyArray<string>;
 export const SearchHighlightSnippetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchHighlightSnippetsList>;
 
 /** Full field value with highlighting, present only for (array) string[] fields */
-export type SearchHighlightValuesList = string[];
+export type SearchHighlightValuesList = ReadonlyArray<string>;
 export const SearchHighlightValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchHighlightValuesList>;
 
 /** The indices property will be present only for string[] fields and will contain the corresponding indices of the snippets in the search field */
-export type SearchHighlightIndicesList = number[];
+export type SearchHighlightIndicesList = ReadonlyArray<number>;
 export const SearchHighlightIndicesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SearchHighlightIndicesList>;
 
-export type SearchHighlightMatchedTokensList = unknown[];
+export type SearchHighlightMatchedTokensList = ReadonlyArray<unknown>;
 export const SearchHighlightMatchedTokensList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SearchHighlightMatchedTokensList>;
@@ -2686,7 +2683,7 @@ export const SearchHighlight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchHighlight>;
 
 /** (Deprecated) Contains highlighted portions of the search fields */
-export type SearchResultHitHighlightsList = SearchHighlight[];
+export type SearchResultHitHighlightsList = ReadonlyArray<SearchHighlight>;
 export const SearchResultHitHighlightsList = /*@__PURE__*/ S.Array(
   SearchHighlight,
 ) as any as S.Schema<SearchResultHitHighlightsList>;
@@ -2787,7 +2784,7 @@ export const SearchResultHit = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchResultHit>;
 
 /** The documents that matched the search query */
-export type SearchGroupedHitHitsList = SearchResultHit[];
+export type SearchGroupedHitHitsList = ReadonlyArray<SearchResultHit>;
 export const SearchGroupedHitHitsList = /*@__PURE__*/ S.Array(
   SearchResultHit,
 ) as any as S.Schema<SearchGroupedHitHitsList>;
@@ -2808,13 +2805,14 @@ export const SearchGroupedHit = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchGroupedHit",
 }) as any as S.Schema<SearchGroupedHit>;
 
-export type MultiSearchResultItemGroupedHitsList = SearchGroupedHit[];
+export type MultiSearchResultItemGroupedHitsList =
+  ReadonlyArray<SearchGroupedHit>;
 export const MultiSearchResultItemGroupedHitsList = /*@__PURE__*/ S.Array(
   SearchGroupedHit,
 ) as any as S.Schema<MultiSearchResultItemGroupedHitsList>;
 
 /** The documents that matched the search query */
-export type MultiSearchResultItemHitsList = SearchResultHit[];
+export type MultiSearchResultItemHitsList = ReadonlyArray<SearchResultHit>;
 export const MultiSearchResultItemHitsList = /*@__PURE__*/ S.Array(
   SearchResultHit,
 ) as any as S.Schema<MultiSearchResultItemHitsList>;
@@ -2849,7 +2847,8 @@ export const SearchRequestParams = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchRequestParams",
 }) as any as S.Schema<SearchRequestParams>;
 
-export type SearchResultConversationConversationHistoryList = unknown[];
+export type SearchResultConversationConversationHistoryList =
+  ReadonlyArray<unknown>;
 export const SearchResultConversationConversationHistoryList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -2873,7 +2872,8 @@ export const SearchResultConversation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchResultConversation>;
 
 /** Returned only for union query response. */
-export type MultiSearchResultItemUnionRequestParamsList = SearchRequestParams[];
+export type MultiSearchResultItemUnionRequestParamsList =
+  ReadonlyArray<SearchRequestParams>;
 export const MultiSearchResultItemUnionRequestParamsList =
   /*@__PURE__*/ S.Array(
     SearchRequestParams,
@@ -2939,7 +2939,7 @@ export const MultiSearchResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiSearchResultItem",
 }) as any as S.Schema<MultiSearchResultItem>;
 
-export type MultiSearchResultResultsList = MultiSearchResultItem[];
+export type MultiSearchResultResultsList = ReadonlyArray<MultiSearchResultItem>;
 export const MultiSearchResultResultsList = /*@__PURE__*/ S.Array(
   MultiSearchResultItem,
 ) as any as S.Schema<MultiSearchResultResultsList>;
@@ -3004,7 +3004,7 @@ export const ConversationModelSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConversationModelSchema>;
 
 export type RetrieveAllConversationModelsResponseBodyList =
-  ConversationModelSchema[];
+  ReadonlyArray<ConversationModelSchema>;
 export const RetrieveAllConversationModelsResponseBodyList =
   /*@__PURE__*/ S.Array(
     ConversationModelSchema,
@@ -3028,7 +3028,7 @@ export const RetrieveAllNLSearchModelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetrieveAllNLSearchModelsRequest>;
 
 /** Stop sequences for the NL model (Google-specific) */
-export type NLSearchModelSchemaStopSequencesList = string[];
+export type NLSearchModelSchemaStopSequencesList = ReadonlyArray<string>;
 export const NLSearchModelSchemaStopSequencesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NLSearchModelSchemaStopSequencesList>;
@@ -3099,7 +3099,8 @@ export const NLSearchModelSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "NLSearchModelSchema",
 }) as any as S.Schema<NLSearchModelSchema>;
 
-export type RetrieveAllNLSearchModelsResponseBodyList = NLSearchModelSchema[];
+export type RetrieveAllNLSearchModelsResponseBodyList =
+  ReadonlyArray<NLSearchModelSchema>;
 export const RetrieveAllNLSearchModelsResponseBodyList = /*@__PURE__*/ S.Array(
   NLSearchModelSchema,
 ) as any as S.Schema<RetrieveAllNLSearchModelsResponseBodyList>;
@@ -3344,7 +3345,7 @@ export const SearchParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchParameters>;
 
 export type MultiSearchSearchesParameterSearchesList =
-  MultiSearchCollectionParameters[];
+  ReadonlyArray<MultiSearchCollectionParameters>;
 export const MultiSearchSearchesParameterSearchesList = /*@__PURE__*/ S.Array(
   MultiSearchCollectionParameters,
 ) as any as S.Schema<MultiSearchSearchesParameterSearchesList>;
@@ -3455,7 +3456,7 @@ export const PresetSchema = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PresetSchema" }) as any as S.Schema<PresetSchema>;
 
-export type PresetsRetrieveSchemaPresetsList = PresetSchema[];
+export type PresetsRetrieveSchemaPresetsList = ReadonlyArray<PresetSchema>;
 export const PresetsRetrieveSchemaPresetsList = /*@__PURE__*/ S.Array(
   PresetSchema,
 ) as any as S.Schema<PresetsRetrieveSchemaPresetsList>;
@@ -3485,7 +3486,8 @@ export const RetrieveAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrieveAnalyticsRuleRequest",
 }) as any as S.Schema<RetrieveAnalyticsRuleRequest>;
 
-export type RetrieveAnalyticsRuleResponseParamsMetaFieldsList = string[];
+export type RetrieveAnalyticsRuleResponseParamsMetaFieldsList =
+  ReadonlyArray<string>;
 export const RetrieveAnalyticsRuleResponseParamsMetaFieldsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3547,7 +3549,8 @@ export const RetrieveAnalyticsRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrieveAnalyticsRulesRequest",
 }) as any as S.Schema<RetrieveAnalyticsRulesRequest>;
 
-export type RetrieveAnalyticsRulesResponseBodyList = AnalyticsRule[];
+export type RetrieveAnalyticsRulesResponseBodyList =
+  ReadonlyArray<AnalyticsRule>;
 export const RetrieveAnalyticsRulesResponseBodyList = /*@__PURE__*/ S.Array(
   AnalyticsRule,
 ) as any as S.Schema<RetrieveAnalyticsRulesResponseBodyList>;
@@ -3675,13 +3678,13 @@ export const RetrieveCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetrieveCurationSetRequest>;
 
 /** List of tag values to associate with this curation rule. */
-export type CurationRuleTagsList = string[];
+export type CurationRuleTagsList = ReadonlyArray<string>;
 export const CurationRuleTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CurationRuleTagsList>;
 
 /** Indicates whether the match on the query term should be `exact` or `contains`. If we want to match all queries that contained the word `apple`, we will use the `contains` match instead. */
-export type CurationRuleMatch = "exact" | "contains" | (string & {});
+export type CurationRuleMatch = "exact" | "contains";
 export const CurationRuleMatch = /*@__PURE__*/ S.String;
 
 export interface CurationRule {
@@ -3719,7 +3722,8 @@ export const CurationInclude = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CurationInclude>;
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
-export type CurationItemCreateSchemaIncludesList = CurationInclude[];
+export type CurationItemCreateSchemaIncludesList =
+  ReadonlyArray<CurationInclude>;
 export const CurationItemCreateSchemaIncludesList = /*@__PURE__*/ S.Array(
   CurationInclude,
 ) as any as S.Schema<CurationItemCreateSchemaIncludesList>;
@@ -3737,7 +3741,8 @@ export const CurationExclude = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CurationExclude>;
 
 /** List of document `id`s that should be excluded from the search results. */
-export type CurationItemCreateSchemaExcludesList = CurationExclude[];
+export type CurationItemCreateSchemaExcludesList =
+  ReadonlyArray<CurationExclude>;
 export const CurationItemCreateSchemaExcludesList = /*@__PURE__*/ S.Array(
   CurationExclude,
 ) as any as S.Schema<CurationItemCreateSchemaExcludesList>;
@@ -3790,7 +3795,8 @@ export const CurationItemCreateSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CurationItemCreateSchema>;
 
 /** Array of curation items */
-export type RetrieveCurationSetResponseItemsList = CurationItemCreateSchema[];
+export type RetrieveCurationSetResponseItemsList =
+  ReadonlyArray<CurationItemCreateSchema>;
 export const RetrieveCurationSetResponseItemsList = /*@__PURE__*/ S.Array(
   CurationItemCreateSchema,
 ) as any as S.Schema<RetrieveCurationSetResponseItemsList>;
@@ -3834,14 +3840,16 @@ export const RetrieveCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetrieveCurationSetItemRequest>;
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
-export type RetrieveCurationSetItemResponseIncludesList = CurationInclude[];
+export type RetrieveCurationSetItemResponseIncludesList =
+  ReadonlyArray<CurationInclude>;
 export const RetrieveCurationSetItemResponseIncludesList =
   /*@__PURE__*/ S.Array(
     CurationInclude,
   ) as any as S.Schema<RetrieveCurationSetItemResponseIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
-export type RetrieveCurationSetItemResponseExcludesList = CurationExclude[];
+export type RetrieveCurationSetItemResponseExcludesList =
+  ReadonlyArray<CurationExclude>;
 export const RetrieveCurationSetItemResponseExcludesList =
   /*@__PURE__*/ S.Array(
     CurationExclude,
@@ -3913,13 +3921,13 @@ export const RetrieveCurationSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetrieveCurationSetItemsRequest>;
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
-export type CurationItemSchemaIncludesList = CurationInclude[];
+export type CurationItemSchemaIncludesList = ReadonlyArray<CurationInclude>;
 export const CurationItemSchemaIncludesList = /*@__PURE__*/ S.Array(
   CurationInclude,
 ) as any as S.Schema<CurationItemSchemaIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
-export type CurationItemSchemaExcludesList = CurationExclude[];
+export type CurationItemSchemaExcludesList = ReadonlyArray<CurationExclude>;
 export const CurationItemSchemaExcludesList = /*@__PURE__*/ S.Array(
   CurationExclude,
 ) as any as S.Schema<CurationItemSchemaExcludesList>;
@@ -3971,7 +3979,8 @@ export const CurationItemSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "CurationItemSchema",
 }) as any as S.Schema<CurationItemSchema>;
 
-export type RetrieveCurationSetItemsResponseBodyList = CurationItemSchema[];
+export type RetrieveCurationSetItemsResponseBodyList =
+  ReadonlyArray<CurationItemSchema>;
 export const RetrieveCurationSetItemsResponseBodyList = /*@__PURE__*/ S.Array(
   CurationItemSchema,
 ) as any as S.Schema<RetrieveCurationSetItemsResponseBodyList>;
@@ -3994,7 +4003,8 @@ export const RetrieveCurationSetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetrieveCurationSetsRequest>;
 
 /** Array of curation items */
-export type CurationSetSchemaItemsList = CurationItemCreateSchema[];
+export type CurationSetSchemaItemsList =
+  ReadonlyArray<CurationItemCreateSchema>;
 export const CurationSetSchemaItemsList = /*@__PURE__*/ S.Array(
   CurationItemCreateSchema,
 ) as any as S.Schema<CurationSetSchemaItemsList>;
@@ -4016,7 +4026,8 @@ export const CurationSetSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "CurationSetSchema",
 }) as any as S.Schema<CurationSetSchema>;
 
-export type RetrieveCurationSetsResponseBodyList = CurationSetSchema[];
+export type RetrieveCurationSetsResponseBodyList =
+  ReadonlyArray<CurationSetSchema>;
 export const RetrieveCurationSetsResponseBodyList = /*@__PURE__*/ S.Array(
   CurationSetSchema,
 ) as any as S.Schema<RetrieveCurationSetsResponseBodyList>;
@@ -4057,7 +4068,8 @@ export const RetrieveNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetrieveNLSearchModelRequest>;
 
 /** Stop sequences for the NL model (Google-specific) */
-export type RetrieveNLSearchModelResponseStopSequencesList = string[];
+export type RetrieveNLSearchModelResponseStopSequencesList =
+  ReadonlyArray<string>;
 export const RetrieveNLSearchModelResponseStopSequencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4249,7 +4261,7 @@ export const RetrieveStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrieveStopwordsSetRequest",
 }) as any as S.Schema<RetrieveStopwordsSetRequest>;
 
-export type StopwordsSetSchemaStopwordsList = string[];
+export type StopwordsSetSchemaStopwordsList = ReadonlyArray<string>;
 export const StopwordsSetSchemaStopwordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StopwordsSetSchemaStopwordsList>;
@@ -4287,7 +4299,8 @@ export const RetrieveStopwordsSetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrieveStopwordsSetsRequest",
 }) as any as S.Schema<RetrieveStopwordsSetsRequest>;
 
-export type StopwordsSetsRetrieveAllSchemaStopwordsList = StopwordsSetSchema[];
+export type StopwordsSetsRetrieveAllSchemaStopwordsList =
+  ReadonlyArray<StopwordsSetSchema>;
 export const StopwordsSetsRetrieveAllSchemaStopwordsList =
   /*@__PURE__*/ S.Array(
     StopwordsSetSchema,
@@ -4319,13 +4332,13 @@ export const RetrieveSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetrieveSynonymSetRequest>;
 
 /** Array of words that should be considered as synonyms */
-export type SynonymItemSchemaSynonymsList = string[];
+export type SynonymItemSchemaSynonymsList = ReadonlyArray<string>;
 export const SynonymItemSchemaSynonymsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SynonymItemSchemaSynonymsList>;
 
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
-export type SynonymItemSchemaSymbolsToIndexList = string[];
+export type SynonymItemSchemaSymbolsToIndexList = ReadonlyArray<string>;
 export const SynonymItemSchemaSymbolsToIndexList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SynonymItemSchemaSymbolsToIndexList>;
@@ -4355,7 +4368,8 @@ export const SynonymItemSchema = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SynonymItemSchema>;
 
 /** Array of synonym items */
-export type RetrieveSynonymSetResponseItemsList = SynonymItemSchema[];
+export type RetrieveSynonymSetResponseItemsList =
+  ReadonlyArray<SynonymItemSchema>;
 export const RetrieveSynonymSetResponseItemsList = /*@__PURE__*/ S.Array(
   SynonymItemSchema,
 ) as any as S.Schema<RetrieveSynonymSetResponseItemsList>;
@@ -4397,13 +4411,14 @@ export const RetrieveSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetrieveSynonymSetItemRequest>;
 
 /** Array of words that should be considered as synonyms */
-export type RetrieveSynonymSetItemResponseSynonymsList = string[];
+export type RetrieveSynonymSetItemResponseSynonymsList = ReadonlyArray<string>;
 export const RetrieveSynonymSetItemResponseSynonymsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RetrieveSynonymSetItemResponseSynonymsList>;
 
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
-export type RetrieveSynonymSetItemResponseSymbolsToIndexList = string[];
+export type RetrieveSynonymSetItemResponseSymbolsToIndexList =
+  ReadonlyArray<string>;
 export const RetrieveSynonymSetItemResponseSymbolsToIndexList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4453,7 +4468,8 @@ export const RetrieveSynonymSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrieveSynonymSetItemsRequest",
 }) as any as S.Schema<RetrieveSynonymSetItemsRequest>;
 
-export type RetrieveSynonymSetItemsResponseBodyList = SynonymItemSchema[];
+export type RetrieveSynonymSetItemsResponseBodyList =
+  ReadonlyArray<SynonymItemSchema>;
 export const RetrieveSynonymSetItemsResponseBodyList = /*@__PURE__*/ S.Array(
   SynonymItemSchema,
 ) as any as S.Schema<RetrieveSynonymSetItemsResponseBodyList>;
@@ -4474,7 +4490,7 @@ export const RetrieveSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetrieveSynonymSetsRequest>;
 
 /** Array of synonym items */
-export type SynonymSetSchemaItemsList = SynonymItemSchema[];
+export type SynonymSetSchemaItemsList = ReadonlyArray<SynonymItemSchema>;
 export const SynonymSetSchemaItemsList = /*@__PURE__*/ S.Array(
   SynonymItemSchema,
 ) as any as S.Schema<SynonymSetSchemaItemsList>;
@@ -4494,7 +4510,8 @@ export const SynonymSetSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "SynonymSetSchema",
 }) as any as S.Schema<SynonymSetSchema>;
 
-export type RetrieveSynonymSetsResponseBodyList = SynonymSetSchema[];
+export type RetrieveSynonymSetsResponseBodyList =
+  ReadonlyArray<SynonymSetSchema>;
 export const RetrieveSynonymSetsResponseBodyList = /*@__PURE__*/ S.Array(
   SynonymSetSchema,
 ) as any as S.Schema<RetrieveSynonymSetsResponseBodyList>;
@@ -4526,24 +4543,25 @@ export const SearchCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchCollectionRequest",
 }) as any as S.Schema<SearchCollectionRequest>;
 
-export type SearchResultFacetCountsList = FacetCounts[];
+export type SearchResultFacetCountsList = ReadonlyArray<FacetCounts>;
 export const SearchResultFacetCountsList = /*@__PURE__*/ S.Array(
   FacetCounts,
 ) as any as S.Schema<SearchResultFacetCountsList>;
 
-export type SearchResultGroupedHitsList = SearchGroupedHit[];
+export type SearchResultGroupedHitsList = ReadonlyArray<SearchGroupedHit>;
 export const SearchResultGroupedHitsList = /*@__PURE__*/ S.Array(
   SearchGroupedHit,
 ) as any as S.Schema<SearchResultGroupedHitsList>;
 
 /** The documents that matched the search query */
-export type SearchResultHitsList = SearchResultHit[];
+export type SearchResultHitsList = ReadonlyArray<SearchResultHit>;
 export const SearchResultHitsList = /*@__PURE__*/ S.Array(
   SearchResultHit,
 ) as any as S.Schema<SearchResultHitsList>;
 
 /** Returned only for union query response. */
-export type SearchResultUnionRequestParamsList = SearchRequestParams[];
+export type SearchResultUnionRequestParamsList =
+  ReadonlyArray<SearchRequestParams>;
 export const SearchResultUnionRequestParamsList = /*@__PURE__*/ S.Array(
   SearchRequestParams,
 ) as any as S.Schema<SearchResultUnionRequestParamsList>;
@@ -4622,13 +4640,13 @@ export const ToggleSlowRequestLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ToggleSlowRequestLogRequest>;
 
 /** A list of fields for querying, filtering and faceting */
-export type UpdateCollectionRequestFieldsList = Field[];
+export type UpdateCollectionRequestFieldsList = ReadonlyArray<Field>;
 export const UpdateCollectionRequestFieldsList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<UpdateCollectionRequestFieldsList>;
 
 /** List of synonym set names to associate with this collection */
-export type UpdateCollectionRequestSynonymSetsList = string[];
+export type UpdateCollectionRequestSynonymSetsList = ReadonlyArray<string>;
 export const UpdateCollectionRequestSynonymSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateCollectionRequestSynonymSetsList>;
@@ -4661,13 +4679,13 @@ export const UpdateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCollectionRequest>;
 
 /** A list of fields for querying, filtering and faceting */
-export type CollectionUpdateSchemaFieldsList = Field[];
+export type CollectionUpdateSchemaFieldsList = ReadonlyArray<Field>;
 export const CollectionUpdateSchemaFieldsList = /*@__PURE__*/ S.Array(
   Field,
 ) as any as S.Schema<CollectionUpdateSchemaFieldsList>;
 
 /** List of synonym set names to associate with this collection */
-export type CollectionUpdateSchemaSynonymSetsList = string[];
+export type CollectionUpdateSchemaSynonymSetsList = ReadonlyArray<string>;
 export const CollectionUpdateSchemaSynonymSetsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CollectionUpdateSchemaSynonymSetsList>;
@@ -4849,7 +4867,7 @@ export const UpdateDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDocumentsResponse>;
 
 /** Stop sequences for the NL model (Google-specific) */
-export type UpdateNLSearchModelRequestStopSequencesList = string[];
+export type UpdateNLSearchModelRequestStopSequencesList = ReadonlyArray<string>;
 export const UpdateNLSearchModelRequestStopSequencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4927,7 +4945,8 @@ export const UpdateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateNLSearchModelRequest>;
 
 /** Stop sequences for the NL model (Google-specific) */
-export type UpdateNLSearchModelResponseStopSequencesList = string[];
+export type UpdateNLSearchModelResponseStopSequencesList =
+  ReadonlyArray<string>;
 export const UpdateNLSearchModelResponseStopSequencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5014,7 +5033,8 @@ export const UpsertAliasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpsertAliasRequest",
 }) as any as S.Schema<UpsertAliasRequest>;
 
-export type UpsertAnalyticsRuleRequestParamsMetaFieldsList = string[];
+export type UpsertAnalyticsRuleRequestParamsMetaFieldsList =
+  ReadonlyArray<string>;
 export const UpsertAnalyticsRuleRequestParamsMetaFieldsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5063,7 +5083,8 @@ export const UpsertAnalyticsRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpsertAnalyticsRuleRequest",
 }) as any as S.Schema<UpsertAnalyticsRuleRequest>;
 
-export type UpsertAnalyticsRuleResponseParamsMetaFieldsList = string[];
+export type UpsertAnalyticsRuleResponseParamsMetaFieldsList =
+  ReadonlyArray<string>;
 export const UpsertAnalyticsRuleResponseParamsMetaFieldsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5114,7 +5135,8 @@ export const UpsertAnalyticsRuleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertAnalyticsRuleResponse>;
 
 /** Array of curation items */
-export type UpsertCurationSetRequestItemsList = CurationItemCreateSchema[];
+export type UpsertCurationSetRequestItemsList =
+  ReadonlyArray<CurationItemCreateSchema>;
 export const UpsertCurationSetRequestItemsList = /*@__PURE__*/ S.Array(
   CurationItemCreateSchema,
 ) as any as S.Schema<UpsertCurationSetRequestItemsList>;
@@ -5144,7 +5166,8 @@ export const UpsertCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertCurationSetRequest>;
 
 /** Array of curation items */
-export type UpsertCurationSetResponseItemsList = CurationItemCreateSchema[];
+export type UpsertCurationSetResponseItemsList =
+  ReadonlyArray<CurationItemCreateSchema>;
 export const UpsertCurationSetResponseItemsList = /*@__PURE__*/ S.Array(
   CurationItemCreateSchema,
 ) as any as S.Schema<UpsertCurationSetResponseItemsList>;
@@ -5167,13 +5190,15 @@ export const UpsertCurationSetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertCurationSetResponse>;
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
-export type UpsertCurationSetItemRequestIncludesList = CurationInclude[];
+export type UpsertCurationSetItemRequestIncludesList =
+  ReadonlyArray<CurationInclude>;
 export const UpsertCurationSetItemRequestIncludesList = /*@__PURE__*/ S.Array(
   CurationInclude,
 ) as any as S.Schema<UpsertCurationSetItemRequestIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
-export type UpsertCurationSetItemRequestExcludesList = CurationExclude[];
+export type UpsertCurationSetItemRequestExcludesList =
+  ReadonlyArray<CurationExclude>;
 export const UpsertCurationSetItemRequestExcludesList = /*@__PURE__*/ S.Array(
   CurationExclude,
 ) as any as S.Schema<UpsertCurationSetItemRequestExcludesList>;
@@ -5238,13 +5263,15 @@ export const UpsertCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertCurationSetItemRequest>;
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
-export type UpsertCurationSetItemResponseIncludesList = CurationInclude[];
+export type UpsertCurationSetItemResponseIncludesList =
+  ReadonlyArray<CurationInclude>;
 export const UpsertCurationSetItemResponseIncludesList = /*@__PURE__*/ S.Array(
   CurationInclude,
 ) as any as S.Schema<UpsertCurationSetItemResponseIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
-export type UpsertCurationSetItemResponseExcludesList = CurationExclude[];
+export type UpsertCurationSetItemResponseExcludesList =
+  ReadonlyArray<CurationExclude>;
 export const UpsertCurationSetItemResponseExcludesList = /*@__PURE__*/ S.Array(
   CurationExclude,
 ) as any as S.Schema<UpsertCurationSetItemResponseExcludesList>;
@@ -5489,7 +5516,7 @@ export const UpsertPresetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpsertPresetResponse",
 }) as any as S.Schema<UpsertPresetResponse>;
 
-export type UpsertStopwordsSetRequestStopwordsList = string[];
+export type UpsertStopwordsSetRequestStopwordsList = ReadonlyArray<string>;
 export const UpsertStopwordsSetRequestStopwordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpsertStopwordsSetRequestStopwordsList>;
@@ -5511,7 +5538,7 @@ export const UpsertStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertStopwordsSetRequest>;
 
 /** Array of synonym items */
-export type UpsertSynonymSetRequestItemsList = SynonymItemSchema[];
+export type UpsertSynonymSetRequestItemsList = ReadonlyArray<SynonymItemSchema>;
 export const UpsertSynonymSetRequestItemsList = /*@__PURE__*/ S.Array(
   SynonymItemSchema,
 ) as any as S.Schema<UpsertSynonymSetRequestItemsList>;
@@ -5534,7 +5561,8 @@ export const UpsertSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertSynonymSetRequest>;
 
 /** Array of synonym items */
-export type UpsertSynonymSetResponseItemsList = SynonymItemSchema[];
+export type UpsertSynonymSetResponseItemsList =
+  ReadonlyArray<SynonymItemSchema>;
 export const UpsertSynonymSetResponseItemsList = /*@__PURE__*/ S.Array(
   SynonymItemSchema,
 ) as any as S.Schema<UpsertSynonymSetResponseItemsList>;
@@ -5555,13 +5583,14 @@ export const UpsertSynonymSetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertSynonymSetResponse>;
 
 /** Array of words that should be considered as synonyms */
-export type UpsertSynonymSetItemRequestSynonymsList = string[];
+export type UpsertSynonymSetItemRequestSynonymsList = ReadonlyArray<string>;
 export const UpsertSynonymSetItemRequestSynonymsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpsertSynonymSetItemRequestSynonymsList>;
 
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
-export type UpsertSynonymSetItemRequestSymbolsToIndexList = string[];
+export type UpsertSynonymSetItemRequestSymbolsToIndexList =
+  ReadonlyArray<string>;
 export const UpsertSynonymSetItemRequestSymbolsToIndexList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5601,13 +5630,14 @@ export const UpsertSynonymSetItemRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpsertSynonymSetItemRequest>;
 
 /** Array of words that should be considered as synonyms */
-export type UpsertSynonymSetItemResponseSynonymsList = string[];
+export type UpsertSynonymSetItemResponseSynonymsList = ReadonlyArray<string>;
 export const UpsertSynonymSetItemResponseSynonymsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpsertSynonymSetItemResponseSynonymsList>;
 
 /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
-export type UpsertSynonymSetItemResponseSymbolsToIndexList = string[];
+export type UpsertSynonymSetItemResponseSymbolsToIndexList =
+  ReadonlyArray<string>;
 export const UpsertSynonymSetItemResponseSymbolsToIndexList =
   /*@__PURE__*/ S.Array(
     S.String,

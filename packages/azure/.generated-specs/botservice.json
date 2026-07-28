@@ -452,16 +452,58 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.botservice#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.botservice#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.botservice#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The resource of private end point."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.botservice#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        },
+        "groupIds": {
+          "target": "com.azure.botservice#PrivateEndpointConnectionPropertiesInputGroupIdsList",
+          "traits": {
+            "smithy.api#documentation": "Group ids"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the PrivateEndpointConnectProperties."
+      }
+    },
+    "com.azure.botservice#PrivateEndpointConnectionPropertiesInputGroupIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Group ids"
+      }
+    },
+    "com.azure.botservice#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
     "com.azure.botservice#PrivateEndpointConnectionsGet": {
@@ -955,7 +997,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -1352,7 +1395,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -1434,16 +1478,145 @@
             "smithy.api#documentation": "The name of the Bot Service Connection Setting resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.botservice#BotConnectionUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
+          }
+        },
+        "sku": {
+          "target": "com.azure.botservice#SkuInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SKU of the resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.botservice#Kind",
+          "traits": {
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Tag."
+          }
+        },
+        "properties": {
+          "target": "com.azure.botservice#ConnectionSettingPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The set of properties specific to bot channel resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.botservice#ConnectionSettingPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the Connection Setting."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Connection Setting."
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Client Id associated with the Connection Setting."
+          }
+        },
+        "clientSecret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Client Secret associated with the Connection Setting",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "scopes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Scopes associated with the Connection Setting"
+          }
+        },
+        "serviceProviderId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Service Provider Id associated with the Connection Setting"
+          }
+        },
+        "serviceProviderDisplayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Service Provider Display Name associated with the Connection Setting"
+          }
+        },
+        "parameters": {
+          "target": "com.azure.botservice#ConnectionSettingPropertiesInputParametersList",
+          "traits": {
+            "smithy.api#documentation": "Service Provider Parameters associated with the Connection Setting"
+          }
+        },
+        "provisioningState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Provisioning state of the resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for a Connection Setting Item"
+      }
+    },
+    "com.azure.botservice#ConnectionSettingPropertiesInputParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.botservice#ConnectionSettingParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Service Provider Parameters associated with the Connection Setting"
+      }
+    },
+    "com.azure.botservice#SkuInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "com.azure.botservice#SkuName",
+          "traits": {
+            "smithy.api#documentation": "The sku name",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SKU of the cognitive services account."
+      }
+    },
+    "com.azure.botservice#BotConnectionUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
     "com.azure.botservice#BotConnectionCreate": {
@@ -1507,7 +1680,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -1589,16 +1763,58 @@
             "smithy.api#documentation": "The name of the Bot Service Connection Setting resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.botservice#BotConnectionCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
+          }
+        },
+        "sku": {
+          "target": "com.azure.botservice#SkuInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SKU of the resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.botservice#Kind",
+          "traits": {
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Tag."
+          }
+        },
+        "properties": {
+          "target": "com.azure.botservice#ConnectionSettingPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The set of properties specific to bot channel resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.botservice#BotConnectionCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
     "com.azure.botservice#BotConnectionGet": {
@@ -1662,7 +1878,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -1810,7 +2027,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -1959,11 +2177,16 @@
             "smithy.api#documentation": "Azure Subscription ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "hostname": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "the host name of the QnA Maker endpoint"
+          }
+        },
+        "authkey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription key which provides access to this API."
           }
         }
       },
@@ -2340,11 +2563,16 @@
     "com.azure.botservice#BotsGetCheckNameAvailabilityRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "the name of the bot for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the type of the bot for which availability needs to be checked"
           }
         }
       },
@@ -2504,7 +2732,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -2620,16 +2849,43 @@
             "smithy.api#documentation": "The name of the Channel resource for which keys are to be regenerated."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "siteName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The site name",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "com.azure.botservice#DirectLineRegenerateKeysRequestKey",
+          "traits": {
+            "smithy.api#documentation": "Determines which key is to be regenerated",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.botservice#DirectLineRegenerateKeysRequestKey": {
+      "type": "enum",
+      "members": {
+        "KEY1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key1"
+          }
+        },
+        "KEY2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Determines which key is to be regenerated"
       }
     },
     "com.azure.botservice#DirectLineRegenerateKeysRequestChannelName": {
@@ -2740,7 +2996,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -2880,7 +3137,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -3448,7 +3706,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -3530,16 +3789,86 @@
             "smithy.api#documentation": "The name of the Channel resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.botservice#ChannelsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
+          }
+        },
+        "sku": {
+          "target": "com.azure.botservice#SkuInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SKU of the resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.botservice#Kind",
+          "traits": {
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Tag."
+          }
+        },
+        "properties": {
+          "target": "com.azure.botservice#ChannelInput",
+          "traits": {
+            "smithy.api#documentation": "The set of properties specific to bot channel resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.botservice#ChannelInput": {
+      "type": "structure",
+      "members": {
+        "channelName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The channel name",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Tag of the resource",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the location of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Channel definition"
+      }
+    },
+    "com.azure.botservice#ChannelsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
     "com.azure.botservice#ChannelsUpdateRequestChannelName": {
@@ -3723,7 +4052,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -3805,16 +4135,58 @@
             "smithy.api#documentation": "The name of the Channel resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.botservice#ChannelsCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
+          }
+        },
+        "sku": {
+          "target": "com.azure.botservice#SkuInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SKU of the resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.botservice#Kind",
+          "traits": {
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Tag."
+          }
+        },
+        "properties": {
+          "target": "com.azure.botservice#ChannelInput",
+          "traits": {
+            "smithy.api#documentation": "The set of properties specific to bot channel resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.botservice#ChannelsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
     "com.azure.botservice#ChannelsCreateRequestChannelName": {
@@ -3998,7 +4370,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -4175,7 +4548,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -4755,7 +5129,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -4829,16 +5204,313 @@
             "smithy.api#documentation": "The name of the Bot resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.botservice#BotsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
+          }
+        },
+        "sku": {
+          "target": "com.azure.botservice#SkuInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SKU of the resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.botservice#Kind",
+          "traits": {
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Tag."
+          }
+        },
+        "properties": {
+          "target": "com.azure.botservice#BotPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The set of properties specific to bot resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.botservice#BotPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Name of the bot",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the bot"
+          }
+        },
+        "iconUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Icon Url of the bot"
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The bot's endpoint",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "allSettings": {
+          "target": "com.azure.botservice#BotPropertiesInputAllSettingsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains resource all settings defined as key/value pairs."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.botservice#BotPropertiesInputParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Contains resource parameters defined as key/value pairs."
+          }
+        },
+        "manifestUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The bot's manifest url"
+          }
+        },
+        "msaAppType": {
+          "target": "com.azure.botservice#BotPropertiesInputMsaAppType",
+          "traits": {
+            "smithy.api#documentation": "Microsoft App Type for the bot"
+          }
+        },
+        "msaAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft App Id for the bot",
+            "smithy.api#required": {}
+          }
+        },
+        "msaAppTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft App Tenant Id for the bot"
+          }
+        },
+        "msaAppMSIResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Microsoft App Managed Identity Resource Id for the bot"
+          }
+        },
+        "developerAppInsightKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Application Insights key"
+          }
+        },
+        "developerAppInsightsApiKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Application Insights Api Key"
+          }
+        },
+        "developerAppInsightsApplicationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Application Insights App Id"
+          }
+        },
+        "luisAppIds": {
+          "target": "com.azure.botservice#BotPropertiesInputLuisAppIdsList",
+          "traits": {
+            "smithy.api#documentation": "Collection of LUIS App Ids"
+          }
+        },
+        "luisKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The LUIS Key"
+          }
+        },
+        "isCmekEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Cmek is enabled"
+          }
+        },
+        "cmekKeyVaultUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CMK Url"
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Tenant Id for the bot"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.botservice#BotPropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether the bot is in an isolated network"
+          }
+        },
+        "isStreamingSupported": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the bot is streaming supported"
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication."
+          }
+        },
+        "schemaTransformationVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The channel schema transformation version for the bot",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "storageResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The storage resourceId for the bot"
+          }
+        },
+        "openWithHint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hint to browser (e.g. protocol handler) on how to open the bot for authoring"
+          }
+        },
+        "appPasswordHint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hint (e.g. keyVault secret resourceId) on how to fetch the app secret",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "publishingCredentials": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Publishing credentials of the resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters to provide for the Bot."
+      }
+    },
+    "com.azure.botservice#BotPropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the bot is in an isolated network"
+      }
+    },
+    "com.azure.botservice#BotPropertiesInputLuisAppIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of LUIS App Ids"
+      }
+    },
+    "com.azure.botservice#BotPropertiesInputMsaAppType": {
+      "type": "enum",
+      "members": {
+        "USERASSIGNEDMSI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssignedMSI"
+          }
+        },
+        "SINGLETENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SingleTenant"
+          }
+        },
+        "MULTITENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiTenant"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Microsoft App Type for the bot"
+      }
+    },
+    "com.azure.botservice#BotPropertiesInputParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains resource parameters defined as key/value pairs."
+      }
+    },
+    "com.azure.botservice#BotPropertiesInputAllSettingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains resource all settings defined as key/value pairs."
+      }
+    },
+    "com.azure.botservice#BotsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
     "com.azure.botservice#BotsCreate": {
@@ -4902,7 +5574,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {
@@ -4976,16 +5649,58 @@
             "smithy.api#documentation": "The name of the Bot resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.botservice#BotsCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
+          }
+        },
+        "sku": {
+          "target": "com.azure.botservice#SkuInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SKU of the resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.botservice#Kind",
+          "traits": {
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Entity Tag."
+          }
+        },
+        "properties": {
+          "target": "com.azure.botservice#BotPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The set of properties specific to bot resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.botservice#BotsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
     "com.azure.botservice#BotsGet": {
@@ -5049,7 +5764,8 @@
         "kind": {
           "target": "com.azure.botservice#Kind",
           "traits": {
-            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource."
+            "smithy.api#documentation": "Required. Gets or sets the Kind of the resource.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "etag": {

@@ -48,8 +48,7 @@ export type ClientType =
   | "springBoot"
   | "kafka-springBoot"
   | "jms-springBoot"
-  | "dapr"
-  | (string & {});
+  | "dapr";
 export const ClientType = /*@__PURE__*/ S.String;
 
 /** The authentication type. */
@@ -61,16 +60,15 @@ export type AuthType =
   | "secret"
   | "accessKey"
   | "userAccount"
-  | "easyAuthMicrosoftEntraID"
-  | (string & {});
+  | "easyAuthMicrosoftEntraID";
 export const AuthType = /*@__PURE__*/ S.String;
 
 /** The type of secret source. */
-export type SecretSourceType = "rawValue" | "keyVaultSecret" | (string & {});
+export type SecretSourceType = "rawValue" | "keyVaultSecret";
 export const SecretSourceType = /*@__PURE__*/ S.String;
 
 /** The value indicating whether the metadata is required or not */
-export type DaprMetadataRequired = "true" | "false" | (string & {});
+export type DaprMetadataRequired = "true" | "false";
 export const DaprMetadataRequired = /*@__PURE__*/ S.String;
 
 /** The dapr component metadata. */
@@ -97,22 +95,19 @@ export const DaprMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DaprMetadata" }) as any as S.Schema<DaprMetadata>;
 
 /** Additional dapr metadata */
-export type DaprPropertiesMetadataList = DaprMetadata[];
+export type DaprPropertiesMetadataList = ReadonlyArray<DaprMetadata>;
 export const DaprPropertiesMetadataList = /*@__PURE__*/ S.Array(
   DaprMetadata,
 ) as any as S.Schema<DaprPropertiesMetadataList>;
 
 /** The dapr component scopes */
-export type DaprPropertiesScopesList = string[];
+export type DaprPropertiesScopesList = ReadonlyArray<string>;
 export const DaprPropertiesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DaprPropertiesScopesList>;
 
 /** The direction supported by the dapr binding component */
-export type DaprPropertiesBindingComponentDirection =
-  | "input"
-  | "output"
-  | (string & {});
+export type DaprPropertiesBindingComponentDirection = "input" | "output";
 export const DaprPropertiesBindingComponentDirection = /*@__PURE__*/ S.String;
 
 /** Indicates some additional properties for dapr client type */
@@ -165,7 +160,7 @@ export const ConfigurationName = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationName>;
 
 /** The configuration names to be set in compute service environment. */
-export type ConfigurationNamesNamesList = ConfigurationName[];
+export type ConfigurationNamesNamesList = ReadonlyArray<ConfigurationName>;
 export const ConfigurationNamesNamesList = /*@__PURE__*/ S.Array(
   ConfigurationName,
 ) as any as S.Schema<ConfigurationNamesNamesList>;
@@ -200,18 +195,19 @@ export const ConfigurationNames = /*@__PURE__*/ S.suspend(() =>
 
 export interface ConfigurationNameItem {
   /** The result detail. */
-  properties?: ConfigurationNames;
+  properties?: ConfigurationNames | null;
 }
 export const ConfigurationNameItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    properties: S.optional(ConfigurationNames),
+    properties: S.optional(S.NullOr(ConfigurationNames)),
   }),
 ).annotate({
   identifier: "ConfigurationNameItem",
 }) as any as S.Schema<ConfigurationNameItem>;
 
 /** Expected configuration names for each target service. */
-export type ConfigurationNameResultValueList = ConfigurationNameItem[];
+export type ConfigurationNameResultValueList =
+  ReadonlyArray<ConfigurationNameItem>;
 export const ConfigurationNameResultValueList = /*@__PURE__*/ S.Array(
   ConfigurationNameItem,
 ) as any as S.Schema<ConfigurationNameResultValueList>;
@@ -232,6 +228,35 @@ export const ConfigurationNameResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationNameResult",
 }) as any as S.Schema<ConfigurationNameResult>;
 
+/** The name of action for you dryrun job. */
+export type DryrunActionName = "createOrUpdate";
+export const DryrunActionName = /*@__PURE__*/ S.String;
+
+/** The parameters of the dryrun */
+export interface DryrunParameters {
+  actionName: DryrunActionName;
+}
+export const DryrunParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionName: DryrunActionName,
+  }),
+).annotate({
+  identifier: "DryrunParameters",
+}) as any as S.Schema<DryrunParameters>;
+
+/** The properties of the dryrun job */
+export interface DryrunPropertiesInput {
+  /** The parameters of the dryrun */
+  parameters?: DryrunParameters;
+}
+export const DryrunPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameters: S.optional(DryrunParameters),
+  }),
+).annotate({
+  identifier: "DryrunPropertiesInput",
+}) as any as S.Schema<DryrunPropertiesInput>;
+
 export interface ConnectorCreateDryrunRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -241,7 +266,8 @@ export interface ConnectorCreateDryrunRequest {
   location: string;
   /** The name of dryrun. */
   dryrunName: string;
-  body: unknown;
+  /** The properties of the dryrun job. */
+  properties?: DryrunPropertiesInput;
 }
 export const ConnectorCreateDryrunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -249,7 +275,7 @@ export const ConnectorCreateDryrunRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
     dryrunName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DryrunPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -267,8 +293,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -276,8 +301,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -306,27 +330,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
-/** The name of action for you dryrun job. */
-export type DryrunActionName = "createOrUpdate" | (string & {});
-export const DryrunActionName = /*@__PURE__*/ S.String;
-
-/** The parameters of the dryrun */
-export interface DryrunParameters {
-  actionName: DryrunActionName;
-}
-export const DryrunParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionName: DryrunActionName,
-  }),
-).annotate({
-  identifier: "DryrunParameters",
-}) as any as S.Schema<DryrunParameters>;
-
 /** The type of dryrun result. */
-export type DryrunPrerequisiteResultType =
-  | "basicError"
-  | "permissionsMissing"
-  | (string & {});
+export type DryrunPrerequisiteResultType = "basicError" | "permissionsMissing";
 export const DryrunPrerequisiteResultType = /*@__PURE__*/ S.String;
 
 /** A result of dryrun */
@@ -343,7 +348,7 @@ export const DryrunPrerequisiteResult = /*@__PURE__*/ S.suspend(() =>
 
 /** the result of the dryrun */
 export type DryrunPropertiesPrerequisiteResultsList =
-  DryrunPrerequisiteResult[];
+  ReadonlyArray<DryrunPrerequisiteResult>;
 export const DryrunPropertiesPrerequisiteResultsList = /*@__PURE__*/ S.Array(
   DryrunPrerequisiteResult,
 ) as any as S.Schema<DryrunPropertiesPrerequisiteResultsList>;
@@ -352,8 +357,7 @@ export const DryrunPropertiesPrerequisiteResultsList = /*@__PURE__*/ S.Array(
 export type DryrunOperationPreviewOperationType =
   | "configConnection"
   | "configNetwork"
-  | "configAuth"
-  | (string & {});
+  | "configAuth";
 export const DryrunOperationPreviewOperationType = /*@__PURE__*/ S.String;
 
 /** The preview of the operations for creation */
@@ -382,7 +386,8 @@ export const DryrunOperationPreview = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DryrunOperationPreview>;
 
 /** the preview of the operations for creation */
-export type DryrunPropertiesOperationPreviewsList = DryrunOperationPreview[];
+export type DryrunPropertiesOperationPreviewsList =
+  ReadonlyArray<DryrunOperationPreview>;
 export const DryrunPropertiesOperationPreviewsList = /*@__PURE__*/ S.Array(
   DryrunOperationPreview,
 ) as any as S.Schema<DryrunPropertiesOperationPreviewsList>;
@@ -433,43 +438,12 @@ export const ConnectorCreateDryrunResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorCreateDryrunResponse",
 }) as any as S.Schema<ConnectorCreateDryrunResponse>;
 
-export interface ConnectorCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure region. */
-  location: string;
-  /** The name of resource. */
-  connectorName: string;
-  body: unknown;
-}
-export const ConnectorCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    connectorName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorCreateOrUpdateRequest",
-}) as any as S.Schema<ConnectorCreateOrUpdateRequest>;
-
 /** The target service type. */
 export type TargetServiceType =
   | "AzureResource"
   | "ConfluentBootstrapServer"
   | "ConfluentSchemaRegistry"
-  | "SelfHostedServer"
-  | (string & {});
+  | "SelfHostedServer";
 export const TargetServiceType = /*@__PURE__*/ S.String;
 
 /** The target service properties */
@@ -486,7 +460,7 @@ export const TargetServiceBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetServiceBase>;
 
 /** Indicates how to apply the authentication configuration operations. */
-export type AuthMode = "optInAllAuth" | "optOutAllAuth" | (string & {});
+export type AuthMode = "optInAllAuth" | "optOutAllAuth";
 export const AuthMode = /*@__PURE__*/ S.String;
 
 /** The authentication info */
@@ -504,17 +478,11 @@ export const AuthInfoBase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthInfoBase" }) as any as S.Schema<AuthInfoBase>;
 
 /** Type of VNet solution. */
-export type VNetSolutionType =
-  | "serviceEndpoint"
-  | "privateLink"
-  | (string & {});
+export type VNetSolutionType = "serviceEndpoint" | "privateLink";
 export const VNetSolutionType = /*@__PURE__*/ S.String;
 
 /** The cleanup behavior to indicate whether clean up operation when resource is deleted or updated */
-export type DeleteOrUpdateBehavior =
-  | "Default"
-  | "ForcedCleanup"
-  | (string & {});
+export type DeleteOrUpdateBehavior = "Default" | "ForcedCleanup";
 export const DeleteOrUpdateBehavior = /*@__PURE__*/ S.String;
 
 /** The VNet solution for linker */
@@ -546,17 +514,17 @@ export const SecretStore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretStore" }) as any as S.Schema<SecretStore>;
 
 /** Indicates how to apply the connector operations, such as opt out network configuration, opt in configuration. */
-export type ActionType = "enable" | "optOut" | (string & {});
+export type ActionType = "enable" | "optOut";
 export const ActionType = /*@__PURE__*/ S.String;
 
 /** This value specifies the set of IP addresses or IP address ranges in CIDR form to be included as the allowed list of client IPs for a given database account. */
-export type FirewallRulesIpRangesList = string[];
+export type FirewallRulesIpRangesList = ReadonlyArray<string>;
 export const FirewallRulesIpRangesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FirewallRulesIpRangesList>;
 
 /** Whether to allow firewall rules. */
-export type AllowType = "true" | "false" | (string & {});
+export type AllowType = "true" | "false";
 export const AllowType = /*@__PURE__*/ S.String;
 
 /** Target service's firewall rules. to allow connections from source service. */
@@ -596,6 +564,185 @@ export const PublicNetworkSolution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublicNetworkSolution>;
 
 /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
+export type ConfigurationInfoInputCustomizedKeysMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationInfoInputCustomizedKeysMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConfigurationInfoInputCustomizedKeysMap>;
+
+/** Additional dapr metadata */
+export type DaprPropertiesInputMetadataList = ReadonlyArray<DaprMetadata>;
+export const DaprPropertiesInputMetadataList = /*@__PURE__*/ S.Array(
+  DaprMetadata,
+) as any as S.Schema<DaprPropertiesInputMetadataList>;
+
+/** The dapr component scopes */
+export type DaprPropertiesInputScopesList = ReadonlyArray<string>;
+export const DaprPropertiesInputScopesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DaprPropertiesInputScopesList>;
+
+/** Indicates some additional properties for dapr client type */
+export interface DaprPropertiesInput {
+  /** The dapr component version */
+  version?: string | null;
+  /** The dapr component type */
+  componentType?: string | null;
+  /** The name of a secret store dapr to retrieve secret */
+  secretStoreComponent?: string | null;
+  /** Additional dapr metadata */
+  metadata?: DaprPropertiesInputMetadataList;
+  /** The dapr component scopes */
+  scopes?: DaprPropertiesInputScopesList;
+}
+export const DaprPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.optional(S.NullOr(S.String)),
+    componentType: S.optional(S.NullOr(S.String)),
+    secretStoreComponent: S.optional(S.NullOr(S.String)),
+    metadata: S.optional(DaprPropertiesInputMetadataList),
+    scopes: S.optional(DaprPropertiesInputScopesList),
+  }),
+).annotate({
+  identifier: "DaprPropertiesInput",
+}) as any as S.Schema<DaprPropertiesInput>;
+
+/** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
+export type ConfigurationInfoInputAdditionalConfigurationsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationInfoInputAdditionalConfigurationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConfigurationInfoInputAdditionalConfigurationsMap>;
+
+/** A dictionary of additional properties to be added in the end of connection string. */
+export type ConfigurationInfoInputAdditionalConnectionStringPropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationInfoInputAdditionalConnectionStringPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConfigurationInfoInputAdditionalConnectionStringPropertiesMap>;
+
+/** An option to store configuration into different place */
+export interface ConfigurationStore {
+  /** The app configuration id to store configuration */
+  appConfigurationId?: string | null;
+}
+export const ConfigurationStore = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appConfigurationId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "ConfigurationStore",
+}) as any as S.Schema<ConfigurationStore>;
+
+/** The configuration information, used to generate configurations or save to applications */
+export interface ConfigurationInfoInput {
+  /** Indicates whether to clean up previous operation when Linker is updating or deleting */
+  deleteOrUpdateBehavior?: DeleteOrUpdateBehavior;
+  /** Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source. */
+  action?: ActionType;
+  /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
+  customizedKeys?: ConfigurationInfoInputCustomizedKeysMap;
+  /** Indicates some additional properties for dapr client type */
+  daprProperties?: DaprPropertiesInput;
+  /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
+  additionalConfigurations?: ConfigurationInfoInputAdditionalConfigurationsMap;
+  /** A dictionary of additional properties to be added in the end of connection string. */
+  additionalConnectionStringProperties?: ConfigurationInfoInputAdditionalConnectionStringPropertiesMap;
+  /** An option to store configuration into different place */
+  configurationStore?: ConfigurationStore | null;
+}
+export const ConfigurationInfoInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
+    action: S.optional(ActionType),
+    customizedKeys: S.optional(ConfigurationInfoInputCustomizedKeysMap),
+    daprProperties: S.optional(DaprPropertiesInput),
+    additionalConfigurations: S.optional(
+      ConfigurationInfoInputAdditionalConfigurationsMap,
+    ),
+    additionalConnectionStringProperties: S.optional(
+      ConfigurationInfoInputAdditionalConnectionStringPropertiesMap,
+    ),
+    configurationStore: S.optional(S.NullOr(ConfigurationStore)),
+  }),
+).annotate({
+  identifier: "ConfigurationInfoInput",
+}) as any as S.Schema<ConfigurationInfoInput>;
+
+/** The properties of the Linker. */
+export interface LinkerPropertiesInput {
+  /** The target service properties */
+  targetService?: TargetServiceBase;
+  /** The authentication type. */
+  authInfo?: AuthInfoBase;
+  /** The application client type */
+  clientType?: ClientType;
+  /** The VNet solution. */
+  vNetSolution?: VNetSolution | null;
+  /** An option to store secret value in secure place */
+  secretStore?: SecretStore | null;
+  /** connection scope in source service. */
+  scope?: string | null;
+  /** The network solution. */
+  publicNetworkSolution?: PublicNetworkSolution | null;
+  /** The connection information consumed by applications, including secrets, connection strings. */
+  configurationInfo?: ConfigurationInfoInput | null;
+}
+export const LinkerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetService: S.optional(TargetServiceBase),
+    authInfo: S.optional(AuthInfoBase),
+    clientType: S.optional(ClientType),
+    vNetSolution: S.optional(S.NullOr(VNetSolution)),
+    secretStore: S.optional(S.NullOr(SecretStore)),
+    scope: S.optional(S.NullOr(S.String)),
+    publicNetworkSolution: S.optional(S.NullOr(PublicNetworkSolution)),
+    configurationInfo: S.optional(S.NullOr(ConfigurationInfoInput)),
+  }),
+).annotate({
+  identifier: "LinkerPropertiesInput",
+}) as any as S.Schema<LinkerPropertiesInput>;
+
+export interface ConnectorCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure region. */
+  location: string;
+  /** The name of resource. */
+  connectorName: string;
+  /** The properties of the Linker. */
+  properties: LinkerPropertiesInput;
+}
+export const ConnectorCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    connectorName: S.String.pipe(T.Label()),
+    properties: LinkerPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ConnectorCreateOrUpdateRequest",
+}) as any as S.Schema<ConnectorCreateOrUpdateRequest>;
+
+/** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
 export type ConfigurationInfoCustomizedKeysMap = {
   [key: string]: string | undefined;
 };
@@ -624,19 +771,6 @@ export const ConfigurationInfoAdditionalConnectionStringPropertiesMap =
     S.String,
   ) as any as S.Schema<ConfigurationInfoAdditionalConnectionStringPropertiesMap>;
 
-/** An option to store configuration into different place */
-export interface ConfigurationStore {
-  /** The app configuration id to store configuration */
-  appConfigurationId?: string | null;
-}
-export const ConfigurationStore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appConfigurationId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ConfigurationStore",
-}) as any as S.Schema<ConfigurationStore>;
-
 /** The configuration information, used to generate configurations or save to applications */
 export interface ConfigurationInfo {
   /** Indicates whether to clean up previous operation when Linker is updating or deleting */
@@ -652,7 +786,7 @@ export interface ConfigurationInfo {
   /** A dictionary of additional properties to be added in the end of connection string. */
   additionalConnectionStringProperties?: ConfigurationInfoAdditionalConnectionStringPropertiesMap;
   /** An option to store configuration into different place */
-  configurationStore?: ConfigurationStore;
+  configurationStore?: ConfigurationStore | null;
 }
 export const ConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -666,7 +800,7 @@ export const ConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
     additionalConnectionStringProperties: S.optional(
       ConfigurationInfoAdditionalConnectionStringPropertiesMap,
     ),
-    configurationStore: S.optional(ConfigurationStore),
+    configurationStore: S.optional(S.NullOr(ConfigurationStore)),
   }),
 ).annotate({
   identifier: "ConfigurationInfo",
@@ -683,15 +817,15 @@ export interface LinkerProperties {
   /** The provisioning state. */
   provisioningState?: string;
   /** The VNet solution. */
-  vNetSolution?: VNetSolution;
+  vNetSolution?: VNetSolution | null;
   /** An option to store secret value in secure place */
-  secretStore?: SecretStore;
+  secretStore?: SecretStore | null;
   /** connection scope in source service. */
   scope?: string | null;
   /** The network solution. */
-  publicNetworkSolution?: PublicNetworkSolution;
+  publicNetworkSolution?: PublicNetworkSolution | null;
   /** The connection information consumed by applications, including secrets, connection strings. */
-  configurationInfo?: ConfigurationInfo;
+  configurationInfo?: ConfigurationInfo | null;
 }
 export const LinkerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -699,11 +833,11 @@ export const LinkerProperties = /*@__PURE__*/ S.suspend(() =>
     authInfo: S.optional(AuthInfoBase),
     clientType: S.optional(ClientType),
     provisioningState: S.optional(S.String),
-    vNetSolution: S.optional(VNetSolution),
-    secretStore: S.optional(SecretStore),
+    vNetSolution: S.optional(S.NullOr(VNetSolution)),
+    secretStore: S.optional(S.NullOr(SecretStore)),
     scope: S.optional(S.NullOr(S.String)),
-    publicNetworkSolution: S.optional(PublicNetworkSolution),
-    configurationInfo: S.optional(ConfigurationInfo),
+    publicNetworkSolution: S.optional(S.NullOr(PublicNetworkSolution)),
+    configurationInfo: S.optional(S.NullOr(ConfigurationInfo)),
   }),
 ).annotate({
   identifier: "LinkerProperties",
@@ -803,6 +937,34 @@ export const ConnectorDeleteDryrunResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorDeleteDryrunResponse",
 }) as any as S.Schema<ConnectorDeleteDryrunResponse>;
 
+/** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
+export type ConnectorGenerateConfigurationsRequestCustomizedKeysMap = {
+  [key: string]: string | undefined;
+};
+export const ConnectorGenerateConfigurationsRequestCustomizedKeysMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConnectorGenerateConfigurationsRequestCustomizedKeysMap>;
+
+/** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
+export type ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap =
+  { [key: string]: string | undefined };
+export const ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap>;
+
+/** A dictionary of additional properties to be added in the end of connection string. */
+export type ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
+  { [key: string]: string | undefined };
+export const ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
+
 export interface ConnectorGenerateConfigurationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -812,7 +974,20 @@ export interface ConnectorGenerateConfigurationsRequest {
   location: string;
   /** The name of resource. */
   connectorName: string;
-  body?: unknown;
+  /** Indicates whether to clean up previous operation when Linker is updating or deleting */
+  deleteOrUpdateBehavior?: DeleteOrUpdateBehavior;
+  /** Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source. */
+  action?: ActionType;
+  /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
+  customizedKeys?: ConnectorGenerateConfigurationsRequestCustomizedKeysMap;
+  /** Indicates some additional properties for dapr client type */
+  daprProperties?: DaprPropertiesInput;
+  /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
+  additionalConfigurations?: ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap;
+  /** A dictionary of additional properties to be added in the end of connection string. */
+  additionalConnectionStringProperties?: ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap;
+  /** An option to store configuration into different place */
+  configurationStore?: ConfigurationStore | null;
 }
 export const ConnectorGenerateConfigurationsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -821,7 +996,19 @@ export const ConnectorGenerateConfigurationsRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
       connectorName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
+      action: S.optional(ActionType),
+      customizedKeys: S.optional(
+        ConnectorGenerateConfigurationsRequestCustomizedKeysMap,
+      ),
+      daprProperties: S.optional(DaprPropertiesInput),
+      additionalConfigurations: S.optional(
+        ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap,
+      ),
+      additionalConnectionStringProperties: S.optional(
+        ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap,
+      ),
+      configurationStore: S.optional(S.NullOr(ConfigurationStore)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -835,10 +1022,7 @@ export const ConnectorGenerateConfigurationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectorGenerateConfigurationsRequest>;
 
 /** Type of configuration to determine whether the configuration can be modified after creation. KeyvaultSecret means the configuration references a key vault secret, such as App Service/ACA key vault reference. Default means the configuration is real value, such as user name, raw secret, etc. */
-export type LinkerConfigurationType =
-  | "Default"
-  | "KeyVaultSecret"
-  | (string & {});
+export type LinkerConfigurationType = "Default" | "KeyVaultSecret";
 export const LinkerConfigurationType = /*@__PURE__*/ S.String;
 
 /** A configuration item for source resource */
@@ -867,7 +1051,8 @@ export const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceConfiguration>;
 
 /** The configuration properties for source resource. */
-export type ConfigurationResultConfigurationsList = SourceConfiguration[];
+export type ConfigurationResultConfigurationsList =
+  ReadonlyArray<SourceConfiguration>;
 export const ConfigurationResultConfigurationsList = /*@__PURE__*/ S.Array(
   SourceConfiguration,
 ) as any as S.Schema<ConfigurationResultConfigurationsList>;
@@ -1038,7 +1223,7 @@ export const LinkerResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkerResource" }) as any as S.Schema<LinkerResource>;
 
 /** The list of Linkers. */
-export type ResourceListValueList = LinkerResource[];
+export type ResourceListValueList = ReadonlyArray<LinkerResource>;
 export const ResourceListValueList = /*@__PURE__*/ S.Array(
   LinkerResource,
 ) as any as S.Schema<ResourceListValueList>;
@@ -1106,7 +1291,7 @@ export const DryrunResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DryrunResource" }) as any as S.Schema<DryrunResource>;
 
 /** The list of dryrun. */
-export type DryrunListValueList = DryrunResource[];
+export type DryrunListValueList = ReadonlyArray<DryrunResource>;
 export const DryrunListValueList = /*@__PURE__*/ S.Array(
   DryrunResource,
 ) as any as S.Schema<DryrunListValueList>;
@@ -1134,7 +1319,8 @@ export interface ConnectorUpdateRequest {
   location: string;
   /** The name of resource. */
   connectorName: string;
-  body: unknown;
+  /** Linker properties */
+  properties?: LinkerPropertiesInput;
 }
 export const ConnectorUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1142,7 +1328,7 @@ export const ConnectorUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
     connectorName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(LinkerPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1188,7 +1374,8 @@ export interface ConnectorUpdateDryrunRequest {
   location: string;
   /** The name of dryrun. */
   dryrunName: string;
-  body: unknown;
+  /** The properties of the dryrun job. */
+  properties?: DryrunPropertiesInput;
 }
 export const ConnectorUpdateDryrunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1196,7 +1383,7 @@ export const ConnectorUpdateDryrunRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
     dryrunName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DryrunPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1262,11 +1449,7 @@ export const ConnectorValidateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorValidateRequest>;
 
 /** The result of validation */
-export type ValidationResultItemResult =
-  | "success"
-  | "failure"
-  | "warning"
-  | (string & {});
+export type ValidationResultItemResult = "success" | "failure" | "warning";
 export const ValidationResultItemResult = /*@__PURE__*/ S.String;
 
 /** The validation item for a Linker. */
@@ -1295,7 +1478,8 @@ export const ValidationResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidationResultItem>;
 
 /** The detail of validation result */
-export type ValidateResultValidationDetailList = ValidationResultItem[];
+export type ValidateResultValidationDetailList =
+  ReadonlyArray<ValidationResultItem>;
 export const ValidateResultValidationDetailList = /*@__PURE__*/ S.Array(
   ValidationResultItem,
 ) as any as S.Schema<ValidateResultValidationDetailList>;
@@ -1315,7 +1499,7 @@ export interface ValidateResult {
   /** The resource Id of target service. */
   targetId?: string | null;
   /** The authentication type. */
-  authType?: AuthType;
+  authType?: AuthType | null;
   /** The detail of validation result */
   validationDetail?: ValidateResultValidationDetailList;
 }
@@ -1327,7 +1511,7 @@ export const ValidateResult = /*@__PURE__*/ S.suspend(() =>
     reportEndTimeUtc: S.optional(S.NullOr(S.String)),
     sourceId: S.optional(S.NullOr(S.String)),
     targetId: S.optional(S.NullOr(S.String)),
-    authType: S.optional(AuthType),
+    authType: S.optional(S.NullOr(AuthType)),
     validationDetail: S.optional(ValidateResultValidationDetailList),
   }),
 ).annotate({ identifier: "ValidateResult" }) as any as S.Schema<ValidateResult>;
@@ -1335,7 +1519,7 @@ export const ValidateResult = /*@__PURE__*/ S.suspend(() =>
 /** The validation operation result for a Linker. */
 export interface ValidateOperationResult {
   /** The validation result detail. */
-  properties?: ValidateResult;
+  properties?: ValidateResult | null;
   /** Validated Linker id. */
   resourceId?: string | null;
   /** Validation operation status. */
@@ -1343,7 +1527,7 @@ export interface ValidateOperationResult {
 }
 export const ValidateOperationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    properties: S.optional(ValidateResult),
+    properties: S.optional(S.NullOr(ValidateResult)),
     resourceId: S.optional(S.NullOr(S.String)),
     status: S.optional(S.NullOr(S.String)),
   }),
@@ -1356,13 +1540,14 @@ export interface LinkerCreateOrUpdateRequest {
   resourceUri: string;
   /** The name Linker resource. */
   linkerName: string;
-  body: unknown;
+  /** The properties of the Linker. */
+  properties: LinkerPropertiesInput;
 }
 export const LinkerCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     linkerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: LinkerPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1520,13 +1705,14 @@ export interface LinkersCreateDryrunRequest {
   resourceUri: string;
   /** The name of dryrun. */
   dryrunName: string;
-  body: unknown;
+  /** The properties of the dryrun job. */
+  properties?: DryrunPropertiesInput;
 }
 export const LinkersCreateDryrunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     dryrunName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DryrunPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1592,19 +1778,73 @@ export const LinkersDeleteDryrunResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LinkersDeleteDryrunResponse",
 }) as any as S.Schema<LinkersDeleteDryrunResponse>;
 
+/** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
+export type LinkersGenerateConfigurationsRequestCustomizedKeysMap = {
+  [key: string]: string | undefined;
+};
+export const LinkersGenerateConfigurationsRequestCustomizedKeysMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<LinkersGenerateConfigurationsRequestCustomizedKeysMap>;
+
+/** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
+export type LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap = {
+  [key: string]: string | undefined;
+};
+export const LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap>;
+
+/** A dictionary of additional properties to be added in the end of connection string. */
+export type LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
+  { [key: string]: string | undefined };
+export const LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
+
 export interface LinkersGenerateConfigurationsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
   /** The name Linker resource. */
   linkerName: string;
-  body?: unknown;
+  /** Indicates whether to clean up previous operation when Linker is updating or deleting */
+  deleteOrUpdateBehavior?: DeleteOrUpdateBehavior;
+  /** Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source. */
+  action?: ActionType;
+  /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
+  customizedKeys?: LinkersGenerateConfigurationsRequestCustomizedKeysMap;
+  /** Indicates some additional properties for dapr client type */
+  daprProperties?: DaprPropertiesInput;
+  /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
+  additionalConfigurations?: LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap;
+  /** A dictionary of additional properties to be added in the end of connection string. */
+  additionalConnectionStringProperties?: LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap;
+  /** An option to store configuration into different place */
+  configurationStore?: ConfigurationStore | null;
 }
 export const LinkersGenerateConfigurationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       resourceUri: S.String.pipe(T.Label()),
       linkerName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
+      action: S.optional(ActionType),
+      customizedKeys: S.optional(
+        LinkersGenerateConfigurationsRequestCustomizedKeysMap,
+      ),
+      daprProperties: S.optional(DaprPropertiesInput),
+      additionalConfigurations: S.optional(
+        LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap,
+      ),
+      additionalConnectionStringProperties: S.optional(
+        LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap,
+      ),
+      configurationStore: S.optional(S.NullOr(ConfigurationStore)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1713,7 +1953,8 @@ export const DaprConfigurationResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DaprConfigurationResource>;
 
 /** The list of dapr configurations */
-export type DaprConfigurationListValueList = DaprConfigurationResource[];
+export type DaprConfigurationListValueList =
+  ReadonlyArray<DaprConfigurationResource>;
 export const DaprConfigurationListValueList = /*@__PURE__*/ S.Array(
   DaprConfigurationResource,
 ) as any as S.Schema<DaprConfigurationListValueList>;
@@ -1758,13 +1999,14 @@ export interface LinkersUpdateDryrunRequest {
   resourceUri: string;
   /** The name of dryrun. */
   dryrunName: string;
-  body: unknown;
+  /** The properties of the dryrun job. */
+  properties?: DryrunPropertiesInput;
 }
 export const LinkersUpdateDryrunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     dryrunName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DryrunPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1806,13 +2048,14 @@ export interface LinkerUpdateRequest {
   resourceUri: string;
   /** The name Linker resource. */
   linkerName: string;
-  body: unknown;
+  /** Linker properties */
+  properties?: LinkerPropertiesInput;
 }
 export const LinkerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     linkerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(LinkerPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1908,11 +2151,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1939,7 +2182,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

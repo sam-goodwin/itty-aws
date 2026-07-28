@@ -99,8 +99,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type NewSpotInstancesConfigTerminationActionEnum =
   | "TERMINATION_ACTION_UNSPECIFIED"
   | "STOP"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const NewSpotInstancesConfigTerminationActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -329,15 +328,13 @@ export type NewBucketConfigStorageClassEnum =
   | "STANDARD"
   | "NEARLINE"
   | "COLDLINE"
-  | "ARCHIVE"
-  | (string & {});
+  | "ARCHIVE";
 export const NewBucketConfigStorageClassEnum = /*@__PURE__*/ S.String;
 
 export type GcsAutoclassConfigTerminalStorageClassEnum =
   | "TERMINAL_STORAGE_CLASS_UNSPECIFIED"
   | "NEARLINE"
-  | "ARCHIVE"
-  | (string & {});
+  | "ARCHIVE";
 export const GcsAutoclassConfigTerminalStorageClassEnum =
   /*@__PURE__*/ S.String;
 
@@ -461,8 +458,7 @@ export const NewLustreConfig = /*@__PURE__*/ S.suspend(() =>
 export type NewFilestoreConfigTierEnum =
   | "TIER_UNSPECIFIED"
   | "ZONAL"
-  | "REGIONAL"
-  | (string & {});
+  | "REGIONAL";
 export const NewFilestoreConfigTierEnum = /*@__PURE__*/ S.String;
 
 /** Message describing filestore configuration */
@@ -481,7 +477,7 @@ export const FileShareConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileShareConfig",
 }) as any as S.Schema<FileShareConfig>;
 
-export type FileShareConfigList = FileShareConfig[];
+export type FileShareConfigList = ReadonlyArray<FileShareConfig>;
 export const FileShareConfigList = /*@__PURE__*/ S.Array(
   FileShareConfig,
 ) as any as S.Schema<FileShareConfigList>;
@@ -489,8 +485,7 @@ export const FileShareConfigList = /*@__PURE__*/ S.Array(
 export type NewFilestoreConfigProtocolEnum =
   | "PROTOCOL_UNSPECIFIED"
   | "NFSV3"
-  | "NFSV41"
-  | (string & {});
+  | "NFSV41";
 export const NewFilestoreConfigProtocolEnum = /*@__PURE__*/ S.String;
 
 /** When set in a StorageResourceConfig, indicates that a new [Filestore](https://cloud.google.com/filestore) instance should be created. */
@@ -607,7 +602,7 @@ export const StorageConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StorageConfig" }) as any as S.Schema<StorageConfig>;
 
-export type StorageConfigList = StorageConfig[];
+export type StorageConfigList = ReadonlyArray<StorageConfig>;
 export const StorageConfigList = /*@__PURE__*/ S.Array(
   StorageConfig,
 ) as any as S.Schema<StorageConfigList>;
@@ -639,7 +634,7 @@ export const ComputeInstance = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComputeInstance",
 }) as any as S.Schema<ComputeInstance>;
 
-export type ComputeInstanceList = ComputeInstance[];
+export type ComputeInstanceList = ReadonlyArray<ComputeInstance>;
 export const ComputeInstanceList = /*@__PURE__*/ S.Array(
   ComputeInstance,
 ) as any as S.Schema<ComputeInstanceList>;
@@ -684,7 +679,7 @@ export const SlurmLoginNodes = /*@__PURE__*/ S.suspend(() =>
   identifier: "SlurmLoginNodes",
 }) as any as S.Schema<SlurmLoginNodes>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -703,7 +698,7 @@ export const SlurmPartition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SlurmPartition" }) as any as S.Schema<SlurmPartition>;
 
-export type SlurmPartitionList = SlurmPartition[];
+export type SlurmPartitionList = ReadonlyArray<SlurmPartition>;
 export const SlurmPartitionList = /*@__PURE__*/ S.Array(
   SlurmPartition,
 ) as any as S.Schema<SlurmPartitionList>;
@@ -753,7 +748,7 @@ export const SlurmNodeSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SlurmNodeSet" }) as any as S.Schema<SlurmNodeSet>;
 
-export type SlurmNodeSetList = SlurmNodeSet[];
+export type SlurmNodeSetList = ReadonlyArray<SlurmNodeSet>;
 export const SlurmNodeSetList = /*@__PURE__*/ S.Array(
   SlurmNodeSet,
 ) as any as S.Schema<SlurmNodeSetList>;
@@ -869,7 +864,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1063,7 +1058,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1115,7 +1110,7 @@ export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsClustersRequest",
 }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
-export type ClusterList = Cluster[];
+export type ClusterList = ReadonlyArray<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -1170,7 +1165,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

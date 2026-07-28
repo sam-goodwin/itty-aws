@@ -102,7 +102,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.cache#PurgeRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem": {
@@ -294,7 +294,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.cache#PurgeEnvironmentRequestBodyCachePurgeSingleFileWithURLAndHeadersFilesItem": {
@@ -419,24 +419,45 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
-          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cache#CacheReserveClearResponseId": {
+      "type": "enum",
+      "members": {
+        "CACHE_RESERVE_CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cache_reserve_clear"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cache#CacheReserveClearResponseState": {
+      "type": "enum",
+      "members": {
+        "IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "In-progress"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Completed"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#CacheReserveClearResponse": {
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.cache#CacheReserveClearResponseId",
           "traits": {
             "smithy.api#documentation": "ID of the zone setting.",
             "smithy.api#required": {}
@@ -450,7 +471,7 @@
           }
         },
         "state": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.cache#CacheReserveClearResponseState",
           "traits": {
             "smithy.api#documentation": "The current state of the Cache Reserve Clear operation.",
             "smithy.api#required": {}
@@ -531,6 +552,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cache#CacheReserveEditResponseId": {
+      "type": "enum",
+      "members": {
+        "CACHE_RESERVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cache_reserve"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#CacheReserveEditResponseValue": {
       "type": "enum",
       "members": {
@@ -552,7 +584,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.cache#CacheReserveEditResponseId",
           "traits": {
             "smithy.api#documentation": "The identifier of the caching setting.",
             "smithy.api#required": {}
@@ -617,6 +649,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cache#CacheReserveGetResponseId": {
+      "type": "enum",
+      "members": {
+        "CACHE_RESERVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cache_reserve"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#CacheReserveGetResponseValue": {
       "type": "enum",
       "members": {
@@ -638,7 +681,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.cache#CacheReserveGetResponseId",
           "traits": {
             "smithy.api#documentation": "The identifier of the caching setting.",
             "smithy.api#required": {}
@@ -704,11 +747,39 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cache#CacheReserveStatusResponseId": {
+      "type": "enum",
+      "members": {
+        "CACHE_RESERVE_CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cache_reserve_clear"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cache#CacheReserveStatusResponseState": {
+      "type": "enum",
+      "members": {
+        "IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "In-progress"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Completed"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#CacheReserveStatusResponse": {
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.cache#CacheReserveStatusResponseId",
           "traits": {
             "smithy.api#documentation": "ID of the zone setting.",
             "smithy.api#required": {}
@@ -722,7 +793,7 @@
           }
         },
         "state": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.cache#CacheReserveStatusResponseState",
           "traits": {
             "smithy.api#documentation": "The current state of the Cache Reserve Clear operation.",
             "smithy.api#required": {}
@@ -2642,13 +2713,44 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsResponseVendorsValueItemUpperTierColosList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsResponseVendorsValueItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud vendor region identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "upper_tier_colos": {
+          "target": "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsResponseVendorsValueItemUpperTierColosList",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Tiered Cache upper-tier colocation codes co-located with this cloud region. Requests from zones with a matching origin mapping will be routed through these colos.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsResponseVendorsValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsResponseVendorsValueItem"
+      }
+    },
     "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsResponseVendorsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsResponseVendorsValueList"
       }
     },
     "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsResponse": {
@@ -2708,13 +2810,44 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItemUpperTierColosList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloud vendor region identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "upper_tier_colos": {
+          "target": "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItemUpperTierColosList",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare Tiered Cache upper-tier colocation codes co-located with this cloud region. Requests from zones with a matching origin mapping will be routed through these colos.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueItem"
+      }
+    },
     "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsV1ResponseVendorsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsV1ResponseVendorsValueList"
       }
     },
     "com.cloudflare.cache#OriginCloudRegionsSupportedRegionsV1Response": {
@@ -2955,6 +3088,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cache#RegionalTieredCacheEditResponseId": {
+      "type": "enum",
+      "members": {
+        "TC_REGIONAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tc_regional"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#RegionalTieredCacheEditResponseValue": {
       "type": "enum",
       "members": {
@@ -2976,7 +3120,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.cache#RegionalTieredCacheEditResponseId",
           "traits": {
             "smithy.api#documentation": "The identifier of the caching setting.",
             "smithy.api#required": {}
@@ -3041,6 +3185,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cache#RegionalTieredCacheGetResponseId": {
+      "type": "enum",
+      "members": {
+        "TC_REGIONAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tc_regional"
+          }
+        }
+      }
+    },
     "com.cloudflare.cache#RegionalTieredCacheGetResponseValue": {
       "type": "enum",
       "members": {
@@ -3062,7 +3217,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.cache#RegionalTieredCacheGetResponseId",
           "traits": {
             "smithy.api#documentation": "The identifier of the caching setting.",
             "smithy.api#required": {}

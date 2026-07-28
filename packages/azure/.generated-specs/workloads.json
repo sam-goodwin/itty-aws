@@ -279,10 +279,10 @@
             "smithy.api#documentation": "Database resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "softStopTimeoutSeconds": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop."
           }
         }
       },
@@ -535,10 +535,10 @@
             "smithy.api#documentation": "The name of SAP Application Server instance resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "softStopTimeoutSeconds": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop."
           }
         }
       },
@@ -791,10 +791,10 @@
             "smithy.api#documentation": "Central Services Instance resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "softStopTimeoutSeconds": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop."
           }
         }
       },
@@ -1039,10 +1039,10 @@
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "softStopTimeoutSeconds": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop."
           }
         }
       },
@@ -2001,15 +2001,27 @@
             "smithy.api#documentation": "The name of SAP Application Server instance resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SAPApplicationServerInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets the Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPApplicationServerInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
     "com.azure.workloads#SAPApplicationServerInstancesCreate": {
@@ -2126,15 +2138,44 @@
             "smithy.api#documentation": "The name of SAP Application Server instance resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SAPApplicationServerInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.workloads#SAPApplicationServerPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPApplicationServerPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Defines the SAP Application Server instance properties."
+      }
+    },
+    "com.azure.workloads#SAPApplicationServerInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.workloads#SAPApplicationServerInstancesGet": {
@@ -2729,15 +2770,27 @@
             "smithy.api#documentation": "Database resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SAPDatabaseInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets the Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPDatabaseInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
     "com.azure.workloads#SAPDatabaseInstancesCreate": {
@@ -2854,15 +2907,44 @@
             "smithy.api#documentation": "Database resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SAPDatabaseInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.workloads#SAPDatabasePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPDatabasePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Defines the Database properties."
+      }
+    },
+    "com.azure.workloads#SAPDatabaseInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.workloads#SAPDatabaseInstancesGet": {
@@ -3687,15 +3769,27 @@
             "smithy.api#documentation": "Central Services Instance resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SAPCentralInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets the Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPCentralInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
     "com.azure.workloads#SAPCentralInstancesCreate": {
@@ -3812,15 +3906,85 @@
             "smithy.api#documentation": "Central Services Instance resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SAPCentralInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.workloads#SAPCentralServerPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPCentralServerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "messageServerProperties": {
+          "target": "com.azure.workloads#MessageServerPropertiesInput"
+        },
+        "enqueueServerProperties": {
+          "target": "com.azure.workloads#EnqueueServerPropertiesInput"
+        },
+        "gatewayServerProperties": {
+          "target": "com.azure.workloads#GatewayServerPropertiesInput"
+        },
+        "enqueueReplicationServerProperties": {
+          "target": "com.azure.workloads#EnqueueReplicationServerPropertiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the SAP Central Services Instance properties."
+      }
+    },
+    "com.azure.workloads#EnqueueReplicationServerPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Defines the SAP Enqueue Replication Server (ERS) properties."
+      }
+    },
+    "com.azure.workloads#GatewayServerPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Defines the SAP Gateway Server properties."
+      }
+    },
+    "com.azure.workloads#EnqueueServerPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Defines the SAP Enqueue Server properties."
+      }
+    },
+    "com.azure.workloads#MessageServerPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Defines the SAP Message Server properties."
+      }
+    },
+    "com.azure.workloads#SAPCentralInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.workloads#SAPCentralInstancesGet": {
@@ -4689,15 +4853,74 @@
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SAPVirtualInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets the Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.workloads#SAPVirtualInstancesUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPVirtualInstancesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.workloads#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of manage identity",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.workloads#SAPVirtualInstancesUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide."
+      }
+    },
+    "com.azure.workloads#SAPVirtualInstancesUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.workloads#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.workloads#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.workloads#SAPVirtualInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
     "com.azure.workloads#SAPVirtualInstancesCreate": {
@@ -4849,15 +5072,113 @@
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SAPVirtualInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.workloads#SAPVirtualInstancesCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide."
+          }
+        },
+        "properties": {
+          "target": "com.azure.workloads#SAPVirtualInstancePropertiesInput",
+          "traits": {
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPVirtualInstancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "environment": {
+          "target": "com.azure.workloads#EnvironmentType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sapProduct": {
+          "target": "com.azure.workloads#SAPProductType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "com.azure.workloads#SAPConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS",
+            "smithy.api#required": {}
+          }
+        },
+        "managedResourceGroupConfiguration": {
+          "target": "com.azure.workloads#ManagedRGConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Managed resource group configuration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the Virtual Instance for SAP solutions resource properties."
+      }
+    },
+    "com.azure.workloads#SAPVirtualInstancesCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.workloads#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of manage identity",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.workloads#SAPVirtualInstancesCreateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide."
+      }
+    },
+    "com.azure.workloads#SAPVirtualInstancesCreateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.workloads#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.workloads#SAPVirtualInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.workloads#SAPVirtualInstancesGet": {
@@ -5095,15 +5416,49 @@
             "smithy.api#documentation": "The name of Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "appLocation": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The geo-location where the SAP resources will be created.",
+            "smithy.api#required": {}
+          }
+        },
+        "sapProduct": {
+          "target": "com.azure.workloads#SAPProductType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "databaseType": {
+          "target": "com.azure.workloads#SAPDatabaseType",
+          "traits": {
+            "smithy.api#documentation": "The database type. Eg: HANA, DB2, etc",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPDatabaseType": {
+      "type": "enum",
+      "members": {
+        "HANA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HANA"
+          }
+        },
+        "DB2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DB2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the supported SAP Database types."
       }
     },
     "com.azure.workloads#SAPDiskConfigurations": {
@@ -5333,15 +5688,69 @@
             "smithy.api#documentation": "The name of Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "appLocation": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The geo-location where the SAP resources will be created.",
+            "smithy.api#required": {}
+          }
+        },
+        "environment": {
+          "target": "com.azure.workloads#EnvironmentType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sapProduct": {
+          "target": "com.azure.workloads#SAPProductType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "databaseType": {
+          "target": "com.azure.workloads#SAPDatabaseType",
+          "traits": {
+            "smithy.api#documentation": "The database type. Eg: HANA, DB2, etc",
+            "smithy.api#required": {}
+          }
+        },
+        "deploymentType": {
+          "target": "com.azure.workloads#DeploymentType",
+          "traits": {
+            "smithy.api#documentation": "The deployment type. Eg: SingleServer/ThreeTier",
+            "smithy.api#required": {}
+          }
+        },
+        "dbVmSku": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The VM SKU for database instance.",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#DeploymentType": {
+      "type": "enum",
+      "members": {
+        "SINGLESERVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SingleServer"
+          }
+        },
+        "THREETIER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ThreeTier"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of SAP deployment, single server or Three tier."
       }
     },
     "com.azure.workloads#SAPSupportedSku2": {
@@ -5431,15 +5840,68 @@
             "smithy.api#documentation": "The name of Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "appLocation": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The geo-location where the resource is to be created.",
+            "smithy.api#required": {}
+          }
+        },
+        "environment": {
+          "target": "com.azure.workloads#EnvironmentType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sapProduct": {
+          "target": "com.azure.workloads#SAPProductType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deploymentType": {
+          "target": "com.azure.workloads#DeploymentType",
+          "traits": {
+            "smithy.api#documentation": "The deployment type. Eg: SingleServer/ThreeTier",
+            "smithy.api#required": {}
+          }
+        },
+        "databaseType": {
+          "target": "com.azure.workloads#SAPDatabaseType",
+          "traits": {
+            "smithy.api#documentation": "The database type. Eg: HANA, DB2, etc",
+            "smithy.api#required": {}
+          }
+        },
+        "highAvailabilityType": {
+          "target": "com.azure.workloads#HighAvailabilityType",
+          "traits": {
+            "smithy.api#documentation": "The high availability type."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#HighAvailabilityType": {
+      "type": "enum",
+      "members": {
+        "AVAILABILITYSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AvailabilitySet"
+          }
+        },
+        "AVAILABILITYZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AvailabilityZone"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The high availability type (AvailabilitySet or AvailabilityZone)."
       }
     },
     "com.azure.workloads#SAPSizingRecommendations": {
@@ -5475,26 +5937,6 @@
         "smithy.api#documentation": "The SAP sizing recommendation result."
       }
     },
-    "com.azure.workloads#DeploymentType": {
-      "type": "enum",
-      "members": {
-        "SINGLESERVER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SingleServer"
-          }
-        },
-        "THREETIER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ThreeTier"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The type of SAP deployment, single server or Three tier."
-      }
-    },
     "com.azure.workloads#SAPSizingRecommendationsRequest": {
       "type": "structure",
       "members": {
@@ -5514,15 +5956,82 @@
             "smithy.api#documentation": "The name of Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "appLocation": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The geo-location where the resource is to be created.",
+            "smithy.api#required": {}
+          }
+        },
+        "environment": {
+          "target": "com.azure.workloads#EnvironmentType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sapProduct": {
+          "target": "com.azure.workloads#SAPProductType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deploymentType": {
+          "target": "com.azure.workloads#DeploymentType",
+          "traits": {
+            "smithy.api#documentation": "The deployment type. Eg: SingleServer/ThreeTier",
+            "smithy.api#required": {}
+          }
+        },
+        "saps": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The SAP Application Performance Standard measurement.",
+            "smithy.api#required": {}
+          }
+        },
+        "dbMemory": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The database memory configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "databaseType": {
+          "target": "com.azure.workloads#SAPDatabaseType",
+          "traits": {
+            "smithy.api#documentation": "The database type.",
+            "smithy.api#required": {}
+          }
+        },
+        "dbScaleMethod": {
+          "target": "com.azure.workloads#DatabaseScaleMethod",
+          "traits": {
+            "smithy.api#documentation": "The DB scale method."
+          }
+        },
+        "highAvailabilityType": {
+          "target": "com.azure.workloads#HighAvailabilityType",
+          "traits": {
+            "smithy.api#documentation": "The high availability type."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#DatabaseScaleMethod": {
+      "type": "enum",
+      "members": {
+        "SCALEUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ScaleUp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The database scale method."
       }
     },
     "com.azure.workloads#SapLandscapeMonitorList": {
@@ -5950,16 +6459,82 @@
             "smithy.api#documentation": "Name of the SAP monitor resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.workloads#SapLandscapeMonitorPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Sap Landscape Monitor properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SapLandscapeMonitorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "grouping": {
+          "target": "com.azure.workloads#SapLandscapeMonitorPropertiesInputGrouping",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SID groupings by landscape and Environment."
+          }
+        },
+        "topMetricsThresholds": {
+          "target": "com.azure.workloads#SapLandscapeMonitorPropertiesInputTopMetricsThresholdsList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the properties for Sap Landscape Monitor Dashboard."
+      }
+    },
+    "com.azure.workloads#SapLandscapeMonitorPropertiesInputTopMetricsThresholdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.workloads#SapLandscapeMonitorMetricThresholds"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard"
+      }
+    },
+    "com.azure.workloads#SapLandscapeMonitorPropertiesInputGrouping": {
+      "type": "structure",
+      "members": {
+        "landscape": {
+          "target": "com.azure.workloads#SapLandscapeMonitorPropertiesInputGroupingLandscapeList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of landscape to SID mappings."
+          }
+        },
+        "sapApplication": {
+          "target": "com.azure.workloads#SapLandscapeMonitorPropertiesInputGroupingSapApplicationList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of Sap Applications to SID mappings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the SID groupings by landscape and Environment."
+      }
+    },
+    "com.azure.workloads#SapLandscapeMonitorPropertiesInputGroupingSapApplicationList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.workloads#SapLandscapeMonitorSidMapping"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of Sap Applications to SID mappings."
+      }
+    },
+    "com.azure.workloads#SapLandscapeMonitorPropertiesInputGroupingLandscapeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.workloads#SapLandscapeMonitorSidMapping"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of landscape to SID mappings."
       }
     },
     "com.azure.workloads#SapLandscapeMonitorCreate": {
@@ -6046,11 +6621,10 @@
             "smithy.api#documentation": "Name of the SAP monitor resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.workloads#SapLandscapeMonitorPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Sap Landscape Monitor properties"
           }
         }
       },
@@ -6553,16 +7127,69 @@
             "smithy.api#documentation": "Name of the provider instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.workloads#ProviderInstancesCreateRequestIdentity",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide."
+          }
+        },
+        "properties": {
+          "target": "com.azure.workloads#ProviderInstancePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Provider Instance properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#ProviderInstancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "providerSettings": {
+          "target": "com.azure.workloads#ProviderSpecificProperties",
+          "traits": {
+            "smithy.api#documentation": "Defines the provider specific properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a provider instance."
+      }
+    },
+    "com.azure.workloads#ProviderInstancesCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.workloads#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of manage identity",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.workloads#ProviderInstancesCreateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide."
+      }
+    },
+    "com.azure.workloads#ProviderInstancesCreateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.workloads#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
       }
     },
     "com.azure.workloads#ProviderInstancesGet": {
@@ -7264,16 +7891,67 @@
             "smithy.api#documentation": "Name of the SAP monitor resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#MonitorsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.workloads#MonitorsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#MonitorsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.workloads#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of manage identity",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.workloads#MonitorsUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide."
+      }
+    },
+    "com.azure.workloads#MonitorsUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.workloads#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.workloads#MonitorsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
     "com.azure.workloads#MonitorsCreate": {
@@ -7425,16 +8103,144 @@
             "smithy.api#documentation": "Name of the SAP monitor resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#MonitorsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.workloads#MonitorsCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide."
+          }
+        },
+        "properties": {
+          "target": "com.azure.workloads#MonitorPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "SAP monitor properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#MonitorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "appLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region."
+          }
+        },
+        "routingPreference": {
+          "target": "com.azure.workloads#MonitorPropertiesInputRoutingPreference",
+          "traits": {
+            "smithy.api#documentation": "Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET."
+          }
+        },
+        "zoneRedundancyPreference": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sets the preference for zone redundancy on resources created for the SAP monitor. By default resources will be created which do not support zone redundancy."
+          }
+        },
+        "managedResourceGroupConfiguration": {
+          "target": "com.azure.workloads#ManagedRGConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Managed resource group configuration"
+          }
+        },
+        "logAnalyticsWorkspaceArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM ID of the Log Analytics Workspace that is used for SAP monitoring."
+          }
+        },
+        "monitorSubnet": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subnet which the SAP monitor will be deployed in"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a SAP monitor."
+      }
+    },
+    "com.azure.workloads#MonitorPropertiesInputRoutingPreference": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "ROUTEALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RouteAll"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET."
+      }
+    },
+    "com.azure.workloads#MonitorsCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.workloads#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of manage identity",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.workloads#MonitorsCreateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide."
+      }
+    },
+    "com.azure.workloads#MonitorsCreateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.workloads#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.workloads#MonitorsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.workloads#MonitorsGet": {
@@ -8149,10 +8955,16 @@
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "softStopTimeoutSeconds": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop."
+          }
+        },
+        "deallocateVm": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances."
           }
         }
       },
@@ -8278,10 +9090,10 @@
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startVm": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The boolean value indicates whether to start the virtual machines before starting the SAP instances."
           }
         }
       },
@@ -8415,10 +9227,16 @@
             "smithy.api#documentation": "Database resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "softStopTimeoutSeconds": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop."
+          }
+        },
+        "deallocateVm": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances."
           }
         }
       },
@@ -8552,10 +9370,10 @@
             "smithy.api#documentation": "Database resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startVm": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The boolean value indicates whether to start the virtual machines before starting the SAP instances."
           }
         }
       },
@@ -8917,16 +9735,27 @@
             "smithy.api#documentation": "Database resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SapDatabaseInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SapDatabaseInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
     "com.azure.workloads#SapDatabaseInstancesCreate": {
@@ -9046,16 +9875,40 @@
             "smithy.api#documentation": "Database resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SapDatabaseInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.workloads#SAPDatabasePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SapDatabaseInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.workloads#SapDatabaseInstancesGet": {
@@ -9438,10 +10291,16 @@
             "smithy.api#documentation": "Central Services Instance resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "softStopTimeoutSeconds": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop."
+          }
+        },
+        "deallocateVm": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances."
           }
         }
       },
@@ -9575,10 +10434,10 @@
             "smithy.api#documentation": "Central Services Instance resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startVm": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The boolean value indicates whether to start the virtual machines before starting the SAP instances."
           }
         }
       },
@@ -10082,16 +10941,27 @@
             "smithy.api#documentation": "Central Services Instance resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SapCentralServerInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SapCentralServerInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
     "com.azure.workloads#SapCentralServerInstancesCreate": {
@@ -10211,16 +11081,79 @@
             "smithy.api#documentation": "Central Services Instance resource name string modeled as parameter for auto generation to work correctly."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SapCentralServerInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.workloads#SAPCentralServerPropertiesInput_2",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPCentralServerPropertiesInput_2": {
+      "type": "structure",
+      "members": {
+        "messageServerProperties": {
+          "target": "com.azure.workloads#MessageServerPropertiesInput_2",
+          "traits": {
+            "smithy.api#documentation": "Defines the SAP message server properties."
+          }
+        },
+        "enqueueServerProperties": {
+          "target": "com.azure.workloads#EnqueueServerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Defines the SAP Enqueue Server properties."
+          }
+        },
+        "gatewayServerProperties": {
+          "target": "com.azure.workloads#GatewayServerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Defines the SAP Gateway Server properties."
+          }
+        },
+        "enqueueReplicationServerProperties": {
+          "target": "com.azure.workloads#EnqueueReplicationServerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Defines the SAP Enqueue Replication Server (ERS) properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the SAP Central Services Instance properties."
+      }
+    },
+    "com.azure.workloads#MessageServerPropertiesInput_2": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Defines the SAP message server properties."
+      }
+    },
+    "com.azure.workloads#SapCentralServerInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.workloads#SapCentralServerInstancesGet": {
@@ -10603,10 +11536,16 @@
             "smithy.api#documentation": "The name of SAP Application Server instance resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "softStopTimeoutSeconds": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop."
+          }
+        },
+        "deallocateVm": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances."
           }
         }
       },
@@ -10740,10 +11679,10 @@
             "smithy.api#documentation": "The name of SAP Application Server instance resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startVm": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The boolean value indicates whether to start the virtual machines before starting the SAP instances."
           }
         }
       },
@@ -11075,16 +12014,27 @@
             "smithy.api#documentation": "The name of SAP Application Server instance resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SapApplicationServerInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SapApplicationServerInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
     "com.azure.workloads#SapApplicationServerInstancesCreate": {
@@ -11204,16 +12154,40 @@
             "smithy.api#documentation": "The name of SAP Application Server instance resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SapApplicationServerInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.workloads#SAPApplicationServerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SapApplicationServerInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.workloads#SapApplicationServerInstancesGet": {
@@ -11947,16 +12921,93 @@
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SapVirtualInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.workloads#SAPVirtualInstanceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.workloads#UpdateSAPVirtualInstanceProperties",
+          "traits": {
+            "smithy.api#documentation": "The update properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#UpdateSAPVirtualInstanceProperties": {
+      "type": "structure",
+      "members": {
+        "managedResourcesNetworkAccessType": {
+          "target": "com.azure.workloads#ManagedResourcesNetworkAccessType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the network access configuration for the resources that will be deployed in the Managed Resource Group. The options to choose from are Public and Private. If 'Private' is chosen, the Storage Account service tag should be enabled on the subnets in which the SAP VMs exist. This is required for establishing connectivity between VM extensions and the managed resource group storage account. This setting is currently applicable only to Storage Account. Learn more here https://go.microsoft.com/fwlink/?linkid=2247228"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the update request body properties for updating Virtual Instance for SAP."
+      }
+    },
+    "com.azure.workloads#SAPVirtualInstanceIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.workloads#SAPVirtualInstanceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of managed identity assigned to this resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.workloads#SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The identities assigned to this resource by the user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (user assigned identities)"
+      }
+    },
+    "com.azure.workloads#SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.workloads#SAPVirtualInstanceIdentityInputUserAssignedIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The identities assigned to this resource by the user."
+      }
+    },
+    "com.azure.workloads#SAPVirtualInstanceIdentityInputUserAssignedIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.workloads#SapVirtualInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
     "com.azure.workloads#SapVirtualInstancesCreate": {
@@ -12074,16 +13125,87 @@
             "smithy.api#documentation": "The name of the Virtual Instances for SAP solutions resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.workloads#SapVirtualInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.workloads#SAPVirtualInstancePropertiesInput_2",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.workloads#SAPVirtualInstanceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The managed service identities assigned to this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPVirtualInstancePropertiesInput_2": {
+      "type": "structure",
+      "members": {
+        "environment": {
+          "target": "com.azure.workloads#SAPEnvironmentType",
+          "traits": {
+            "smithy.api#documentation": "Defines the environment type - Production/Non Production.",
+            "smithy.api#required": {}
+          }
+        },
+        "sapProduct": {
+          "target": "com.azure.workloads#SAPProductType",
+          "traits": {
+            "smithy.api#documentation": "Defines the SAP Product type.",
+            "smithy.api#required": {}
+          }
+        },
+        "managedResourcesNetworkAccessType": {
+          "target": "com.azure.workloads#ManagedResourcesNetworkAccessType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the network access configuration for the resources that will be deployed in the Managed Resource Group. The options to choose from are Public and Private. If 'Private' is chosen, the Storage Account service tag should be enabled on the subnets in which the SAP VMs exist. This is required for establishing connectivity between VM extensions and the managed resource group storage account. This setting is currently applicable only to Storage Account. Learn more here https://go.microsoft.com/fwlink/?linkid=2247228"
+          }
+        },
+        "configuration": {
+          "target": "com.azure.workloads#SAPConfiguration_2",
+          "traits": {
+            "smithy.api#documentation": "Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS",
+            "smithy.api#required": {}
+          }
+        },
+        "managedResourceGroupConfiguration": {
+          "target": "com.azure.workloads#ManagedRGConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Managed resource group configuration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the Virtual Instance for SAP solutions resource properties."
+      }
+    },
+    "com.azure.workloads#SapVirtualInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.workloads#SapVirtualInstancesGet": {
@@ -12444,16 +13566,104 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "appLocation": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The geo-location where the resource is to be created.",
             "smithy.api#required": {}
+          }
+        },
+        "environment": {
+          "target": "com.azure.workloads#SAPEnvironmentType",
+          "traits": {
+            "smithy.api#documentation": "Defines the environment type - Production/Non Production.",
+            "smithy.api#required": {}
+          }
+        },
+        "sapProduct": {
+          "target": "com.azure.workloads#SAPProductType",
+          "traits": {
+            "smithy.api#documentation": "Defines the SAP Product type.",
+            "smithy.api#required": {}
+          }
+        },
+        "deploymentType": {
+          "target": "com.azure.workloads#SAPDeploymentType",
+          "traits": {
+            "smithy.api#documentation": "The deployment type. Eg: SingleServer/ThreeTier",
+            "smithy.api#required": {}
+          }
+        },
+        "saps": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The SAP Application Performance Standard measurement.",
+            "smithy.api#required": {}
+          }
+        },
+        "dbMemory": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The database memory configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "databaseType": {
+          "target": "com.azure.workloads#SAPDatabaseType",
+          "traits": {
+            "smithy.api#documentation": "The database type.",
+            "smithy.api#required": {}
+          }
+        },
+        "dbScaleMethod": {
+          "target": "com.azure.workloads#SAPDatabaseScaleMethod",
+          "traits": {
+            "smithy.api#documentation": "The DB scale method."
+          }
+        },
+        "highAvailabilityType": {
+          "target": "com.azure.workloads#SAPHighAvailabilityType",
+          "traits": {
+            "smithy.api#documentation": "The high availability type."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.workloads#SAPHighAvailabilityType": {
+      "type": "enum",
+      "members": {
+        "AVAILABILITYSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AvailabilitySet"
+          }
+        },
+        "AVAILABILITYZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AvailabilityZone"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The high availability type (AvailabilitySet or AvailabilityZone)."
+      }
+    },
+    "com.azure.workloads#SAPDatabaseScaleMethod": {
+      "type": "enum",
+      "members": {
+        "SCALEUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ScaleUp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The database scale method."
       }
     },
     "com.azure.workloads#SapVirtualInstancesInvokeSapSupportedSku": {
@@ -12494,11 +13704,45 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "appLocation": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The geo-location where the resource is to be created.",
             "smithy.api#required": {}
+          }
+        },
+        "environment": {
+          "target": "com.azure.workloads#SAPEnvironmentType",
+          "traits": {
+            "smithy.api#documentation": "Defines the environment type - Production/Non Production.",
+            "smithy.api#required": {}
+          }
+        },
+        "sapProduct": {
+          "target": "com.azure.workloads#SAPProductType",
+          "traits": {
+            "smithy.api#documentation": "Defines the SAP Product type.",
+            "smithy.api#required": {}
+          }
+        },
+        "deploymentType": {
+          "target": "com.azure.workloads#SAPDeploymentType",
+          "traits": {
+            "smithy.api#documentation": "The deployment type. Eg: SingleServer/ThreeTier",
+            "smithy.api#required": {}
+          }
+        },
+        "databaseType": {
+          "target": "com.azure.workloads#SAPDatabaseType",
+          "traits": {
+            "smithy.api#documentation": "The database type. Eg: HANA, DB2, etc",
+            "smithy.api#required": {}
+          }
+        },
+        "highAvailabilityType": {
+          "target": "com.azure.workloads#SAPHighAvailabilityType",
+          "traits": {
+            "smithy.api#documentation": "The high availability type."
           }
         }
       },
@@ -12689,10 +13933,45 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "appLocation": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The geo-location where the SAP resources will be created.",
+            "smithy.api#required": {}
+          }
+        },
+        "environment": {
+          "target": "com.azure.workloads#SAPEnvironmentType",
+          "traits": {
+            "smithy.api#documentation": "Defines the environment type - Production/Non Production.",
+            "smithy.api#required": {}
+          }
+        },
+        "sapProduct": {
+          "target": "com.azure.workloads#SAPProductType",
+          "traits": {
+            "smithy.api#documentation": "Defines the SAP Product type.",
+            "smithy.api#required": {}
+          }
+        },
+        "databaseType": {
+          "target": "com.azure.workloads#SAPDatabaseType",
+          "traits": {
+            "smithy.api#documentation": "The database type. Eg: HANA, DB2, etc",
+            "smithy.api#required": {}
+          }
+        },
+        "deploymentType": {
+          "target": "com.azure.workloads#SAPDeploymentType",
+          "traits": {
+            "smithy.api#documentation": "The deployment type. Eg: SingleServer/ThreeTier",
+            "smithy.api#required": {}
+          }
+        },
+        "dbVmSku": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The VM SKU for database instance.",
             "smithy.api#required": {}
           }
         }
@@ -12739,10 +14018,24 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "appLocation": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The geo-location where the SAP resources will be created.",
+            "smithy.api#required": {}
+          }
+        },
+        "sapProduct": {
+          "target": "com.azure.workloads#SAPProductType",
+          "traits": {
+            "smithy.api#documentation": "Defines the SAP Product type.",
+            "smithy.api#required": {}
+          }
+        },
+        "databaseType": {
+          "target": "com.azure.workloads#SAPDatabaseType",
+          "traits": {
+            "smithy.api#documentation": "The database type. Eg: HANA, DB2, etc",
             "smithy.api#required": {}
           }
         }

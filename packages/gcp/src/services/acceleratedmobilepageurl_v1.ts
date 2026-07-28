@@ -60,15 +60,14 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
 export type BatchGetAmpUrlsRequestLookupStrategyEnum =
   | "FETCH_LIVE_DOC"
-  | "IN_INDEX_DOC"
-  | (string & {});
+  | "IN_INDEX_DOC";
 export const BatchGetAmpUrlsRequestLookupStrategyEnum = /*@__PURE__*/ S.String;
 
 /** AMP URL request for a batch of URLs. */
@@ -111,8 +110,7 @@ export type AmpUrlErrorErrorCodeEnum =
   | "NO_AMP_URL"
   | "APPLICATION_ERROR"
   | "URL_IS_VALID_AMP"
-  | "URL_IS_INVALID_AMP"
-  | (string & {});
+  | "URL_IS_INVALID_AMP";
 export const AmpUrlErrorErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** AMP URL Error resource for a requested URL that couldn't be found. */
@@ -132,7 +130,7 @@ export const AmpUrlError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AmpUrlError" }) as any as S.Schema<AmpUrlError>;
 
-export type AmpUrlErrorList = AmpUrlError[];
+export type AmpUrlErrorList = ReadonlyArray<AmpUrlError>;
 export const AmpUrlErrorList = /*@__PURE__*/ S.Array(
   AmpUrlError,
 ) as any as S.Schema<AmpUrlErrorList>;
@@ -154,7 +152,7 @@ export const AmpUrl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AmpUrl" }) as any as S.Schema<AmpUrl>;
 
-export type AmpUrlList = AmpUrl[];
+export type AmpUrlList = ReadonlyArray<AmpUrl>;
 export const AmpUrlList = /*@__PURE__*/ S.Array(
   AmpUrl,
 ) as any as S.Schema<AmpUrlList>;

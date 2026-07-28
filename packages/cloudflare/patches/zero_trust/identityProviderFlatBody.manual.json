@@ -1,0 +1,25 @@
+{
+  "description": "Docs gap: the Access identity-provider create/update pages list the whole request body under a single `identity_provider` param, but the wire body is the FLAT IdP object itself ({name, type, config, scim_config} per variant) — there is no `identity_provider` wrapper key. Bind the member as the whole http payload so the encoded body IS the IdP object.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#CreateIdentityProviderForAccountRequest/members/identity_provider/traits/smithy.api#httpPayload",
+      "value": {}
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#CreateIdentityProviderForZoneRequest/members/identity_provider/traits/smithy.api#httpPayload",
+      "value": {}
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateIdentityProviderForAccountRequest/members/identity_provider/traits/smithy.api#httpPayload",
+      "value": {}
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateIdentityProviderForZoneRequest/members/identity_provider/traits/smithy.api#httpPayload",
+      "value": {}
+    }
+  ]
+}

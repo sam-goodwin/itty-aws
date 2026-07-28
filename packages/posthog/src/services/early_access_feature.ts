@@ -42,9 +42,46 @@ export type StageEnum =
   | "alpha"
   | "beta"
   | "general-availability"
-  | "archived"
-  | (string & {});
+  | "archived";
 export const StageEnum = /*@__PURE__*/ S.String;
+
+export interface EarlyAccessFeatureCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** The name of the early access feature. */
+  name?: string;
+  /** A longer description of what this early access feature does, shown to users in the opt-in UI. */
+  description?: string;
+  /** Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users. * `draft` - draft * `concept` - concept * `alpha` - alpha * `beta` - beta * `general-availability` - general availability * `archived` - archived */
+  stage?: StageEnum;
+  /** URL to external documentation for this feature. Shown to users in the opt-in UI. */
+  documentation_url?: string;
+  /** Arbitrary JSON metadata associated with this feature. */
+  payload?: unknown;
+  /** Optional ID of an existing feature flag to link. If omitted, a new flag is auto-created from the feature name. The flag must not already be linked to another feature, must not be group-based, and must not be multivariate. */
+  feature_flag_id?: number;
+  _create_in_folder?: string;
+}
+export const EarlyAccessFeatureCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    stage: S.optional(StageEnum),
+    documentation_url: S.optional(S.String),
+    payload: S.optional(S.Unknown),
+    feature_flag_id: S.optional(S.Number),
+    _create_in_folder: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/early_access_feature/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "EarlyAccessFeatureCreateRequest",
+}) as any as S.Schema<EarlyAccessFeatureCreateRequest>;
 
 export type MinimalFeatureFlagFiltersMap = {
   [key: string]: unknown | undefined;
@@ -55,10 +92,10 @@ export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
-export type EvaluationRuntimeEnum = "server" | "client" | "all" | (string & {});
+export type EvaluationRuntimeEnum = "server" | "client" | "all";
 export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
@@ -69,10 +106,7 @@ export const MinimalFeatureFlagEvaluationRuntime =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type BucketingIdentifierEnum =
-  | "distinct_id"
-  | "device_id"
-  | (string & {});
+export type BucketingIdentifierEnum = "distinct_id" | "device_id";
 export const BucketingIdentifierEnum = /*@__PURE__*/ S.String;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
@@ -82,7 +116,7 @@ export type MinimalFeatureFlagBucketingIdentifier =
 export const MinimalFeatureFlagBucketingIdentifier =
   /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
-export type MinimalFeatureFlagEvaluationContextsList = string[];
+export type MinimalFeatureFlagEvaluationContextsList = ReadonlyArray<string>;
 export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
@@ -126,55 +160,8 @@ export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
   identifier: "MinimalFeatureFlag",
 }) as any as S.Schema<MinimalFeatureFlag>;
 
-export interface EarlyAccessFeatureCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: string;
-  /** The name of the early access feature. */
-  name?: string;
-  /** A longer description of what this early access feature does, shown to users in the opt-in UI. */
-  description?: string;
-  /** Lifecycle stage. Valid values: draft, concept, alpha, beta, general-availability, archived. Moving to an active stage (alpha/beta/general-availability) enables the feature flag for opted-in users. * `draft` - draft * `concept` - concept * `alpha` - alpha * `beta` - beta * `general-availability` - general availability * `archived` - archived */
-  stage?: StageEnum;
-  /** URL to external documentation for this feature. Shown to users in the opt-in UI. */
-  documentation_url?: string;
-  /** Arbitrary JSON metadata associated with this feature. */
-  payload?: unknown;
-  created_at?: string;
-  /** Optional ID of an existing feature flag to link. If omitted, a new flag is auto-created from the feature name. The flag must not already be linked to another feature, must not be group-based, and must not be multivariate. */
-  feature_flag_id?: number;
-  feature_flag?: MinimalFeatureFlag;
-  _create_in_folder?: string;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-}
-export const EarlyAccessFeatureCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    stage: S.optional(StageEnum),
-    documentation_url: S.optional(S.String),
-    payload: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
-    feature_flag_id: S.optional(S.Number),
-    feature_flag: S.optional(MinimalFeatureFlag),
-    _create_in_folder: S.optional(S.String),
-    user_access_level: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/early_access_feature/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EarlyAccessFeatureCreateRequest",
-}) as any as S.Schema<EarlyAccessFeatureCreateRequest>;
-
 /** Mixin for serializers to add user access control fields */
-export interface EarlyAccessFeatureSerializerCreateOnly {
+export interface EarlyAccessFeatureSerializerCreateOnlyOutput {
   id?: string;
   /** The name of the early access feature. */
   name?: string;
@@ -187,15 +174,12 @@ export interface EarlyAccessFeatureSerializerCreateOnly {
   /** Arbitrary JSON metadata associated with this feature. */
   payload?: unknown;
   created_at?: string;
-  /** Optional ID of an existing feature flag to link. If omitted, a new flag is auto-created from the feature name. The flag must not already be linked to another feature, must not be group-based, and must not be multivariate. */
-  feature_flag_id?: number;
   feature_flag?: MinimalFeatureFlag;
-  _create_in_folder?: string;
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const EarlyAccessFeatureSerializerCreateOnly = /*@__PURE__*/ S.suspend(
-  () =>
+export const EarlyAccessFeatureSerializerCreateOnlyOutput =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
@@ -204,14 +188,12 @@ export const EarlyAccessFeatureSerializerCreateOnly = /*@__PURE__*/ S.suspend(
       documentation_url: S.optional(S.String),
       payload: S.optional(S.Unknown),
       created_at: S.optional(S.String),
-      feature_flag_id: S.optional(S.Number),
       feature_flag: S.optional(MinimalFeatureFlag),
-      _create_in_folder: S.optional(S.String),
       user_access_level: S.optional(S.NullOr(S.String)),
     }),
-).annotate({
-  identifier: "EarlyAccessFeatureSerializerCreateOnly",
-}) as any as S.Schema<EarlyAccessFeatureSerializerCreateOnly>;
+  ).annotate({
+    identifier: "EarlyAccessFeatureSerializerCreateOnlyOutput",
+  }) as any as S.Schema<EarlyAccessFeatureSerializerCreateOnlyOutput>;
 
 export interface EarlyAccessFeatureDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -308,7 +290,8 @@ export const EarlyAccessFeature2 = /*@__PURE__*/ S.suspend(() =>
   identifier: "EarlyAccessFeature2",
 }) as any as S.Schema<EarlyAccessFeature2>;
 
-export type PaginatedEarlyAccessFeatureListResultsList = EarlyAccessFeature2[];
+export type PaginatedEarlyAccessFeatureListResultsList =
+  ReadonlyArray<EarlyAccessFeature2>;
 export const PaginatedEarlyAccessFeatureListResultsList = /*@__PURE__*/ S.Array(
   EarlyAccessFeature2,
 ) as any as S.Schema<PaginatedEarlyAccessFeatureListResultsList>;
@@ -330,22 +313,11 @@ export const PaginatedEarlyAccessFeatureList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedEarlyAccessFeatureList",
 }) as any as S.Schema<PaginatedEarlyAccessFeatureList>;
 
-/** Feature flag payload for this early access feature */
-export type EarlyAccessFeaturePartialUpdateRequestPayloadMap = {
-  [key: string]: unknown | undefined;
-};
-export const EarlyAccessFeaturePartialUpdateRequestPayloadMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<EarlyAccessFeaturePartialUpdateRequestPayloadMap>;
-
 export interface EarlyAccessFeaturePartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this early access feature. */
   id: string;
-  feature_flag?: MinimalFeatureFlag;
   /** The name of the early access feature. */
   name?: string;
   /** A longer description of what this early access feature does, shown to users in the opt-in UI. */
@@ -354,25 +326,16 @@ export interface EarlyAccessFeaturePartialUpdateRequest {
   stage?: StageEnum;
   /** URL to external documentation for this feature. Shown to users in the opt-in UI. */
   documentation_url?: string;
-  /** Feature flag payload for this early access feature */
-  payload?: EarlyAccessFeaturePartialUpdateRequestPayloadMap;
-  created_at?: string;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const EarlyAccessFeaturePartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      feature_flag: S.optional(MinimalFeatureFlag),
       name: S.optional(S.String),
       description: S.optional(S.String),
       stage: S.optional(StageEnum),
       documentation_url: S.optional(S.String),
-      payload: S.optional(EarlyAccessFeaturePartialUpdateRequestPayloadMap),
-      created_at: S.optional(S.String),
-      user_access_level: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -405,21 +368,11 @@ export const EarlyAccessFeatureRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EarlyAccessFeatureRetrieveRequest",
 }) as any as S.Schema<EarlyAccessFeatureRetrieveRequest>;
 
-/** Feature flag payload for this early access feature */
-export type EarlyAccessFeatureUpdateRequestPayloadMap = {
-  [key: string]: unknown | undefined;
-};
-export const EarlyAccessFeatureUpdateRequestPayloadMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EarlyAccessFeatureUpdateRequestPayloadMap>;
-
 export interface EarlyAccessFeatureUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this early access feature. */
   id: string;
-  feature_flag?: MinimalFeatureFlag;
   /** The name of the early access feature. */
   name?: string;
   /** A longer description of what this early access feature does, shown to users in the opt-in UI. */
@@ -428,24 +381,15 @@ export interface EarlyAccessFeatureUpdateRequest {
   stage?: StageEnum;
   /** URL to external documentation for this feature. Shown to users in the opt-in UI. */
   documentation_url?: string;
-  /** Feature flag payload for this early access feature */
-  payload?: EarlyAccessFeatureUpdateRequestPayloadMap;
-  created_at?: string;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const EarlyAccessFeatureUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    feature_flag: S.optional(MinimalFeatureFlag),
     name: S.optional(S.String),
     description: S.optional(S.String),
     stage: S.optional(StageEnum),
     documentation_url: S.optional(S.String),
-    payload: S.optional(EarlyAccessFeatureUpdateRequestPayloadMap),
-    created_at: S.optional(S.String),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -464,12 +408,12 @@ export type EarlyAccessFeatureCreateError =
   | PosthogOpError;
 export const earlyAccessFeatureCreate: API.OperationMethod<
   EarlyAccessFeatureCreateRequest,
-  EarlyAccessFeatureSerializerCreateOnly,
+  EarlyAccessFeatureSerializerCreateOnlyOutput,
   EarlyAccessFeatureCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EarlyAccessFeatureCreateRequest,
-  output: EarlyAccessFeatureSerializerCreateOnly,
+  output: EarlyAccessFeatureSerializerCreateOnlyOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

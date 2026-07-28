@@ -51,13 +51,14 @@ export interface AddOrganizationTeamMemberRequest {
   organization: string;
   /** The slug of the team */
   team: string;
-  body?: unknown;
+  /** The ID of the organization member to add to the team */
+  user_id: string;
 }
 export const AddOrganizationTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     team: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    user_id: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -166,13 +167,13 @@ export type OrganizationTeamMembershipPasswordsItemRole =
   | "reader"
   | "writer"
   | "admin"
-  | "readwriter"
-  | (string & {});
+  | "readwriter";
 export const OrganizationTeamMembershipPasswordsItemRole =
   /*@__PURE__*/ S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
-export type OrganizationTeamMembershipPasswordsItemCidrsList = string[];
+export type OrganizationTeamMembershipPasswordsItemCidrsList =
+  ReadonlyArray<string>;
 export const OrganizationTeamMembershipPasswordsItemCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -180,7 +181,7 @@ export const OrganizationTeamMembershipPasswordsItemCidrsList =
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -188,7 +189,7 @@ export const OrganizationTeamMembershipPasswordsItemDirectVtgateAddressesList =
 
 /** The read-only replica host URLs */
 export type OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -215,7 +216,7 @@ export const OrganizationTeamMembershipPasswordsItemActor =
 
 /** Public IP addresses for the region */
 export type OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -363,7 +364,7 @@ export const OrganizationTeamMembershipPasswordsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OrganizationTeamMembershipPasswordsItem>;
 
 export type OrganizationTeamMembershipPasswordsList =
-  OrganizationTeamMembershipPasswordsItem[];
+  ReadonlyArray<OrganizationTeamMembershipPasswordsItem>;
 export const OrganizationTeamMembershipPasswordsList = /*@__PURE__*/ S.Array(
   OrganizationTeamMembershipPasswordsItem,
 ) as any as S.Schema<OrganizationTeamMembershipPasswordsList>;
@@ -537,7 +538,7 @@ export const DatabaseDeployRequestBranchDeletedBy = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatabaseDeployRequestBranchDeletedBy>;
 
 /** Whether the deploy request is open or closed */
-export type DatabaseDeployRequestState = "open" | "closed" | (string & {});
+export type DatabaseDeployRequestState = "open" | "closed";
 export const DatabaseDeployRequestState = /*@__PURE__*/ S.String;
 
 /** The deployment state of the deploy request */
@@ -561,8 +562,7 @@ export type DatabaseDeployRequestDeploymentState =
   | "complete_revert"
   | "complete_revert_error"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const DatabaseDeployRequestDeploymentState = /*@__PURE__*/ S.String;
 
 /** The state the deployment is in */
@@ -586,8 +586,7 @@ export type DatabaseDeployRequestDeploymentState2 =
   | "complete_revert"
   | "complete_revert_error"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const DatabaseDeployRequestDeploymentState2 = /*@__PURE__*/ S.String;
 
 export type DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap = {
@@ -601,7 +600,7 @@ export const DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap =
 
 /** The deployments ahead of this one in the queue */
 export type DatabaseDeployRequestDeploymentPrecedingDeploymentsList =
-  DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap[];
+  ReadonlyArray<DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap>;
 export const DatabaseDeployRequestDeploymentPrecedingDeploymentsList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentPrecedingDeploymentsItemMap,
@@ -614,14 +613,13 @@ export type DatabaseDeployRequestDeploymentDeployOperationsItemState =
   | "in_progress"
   | "complete"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const DatabaseDeployRequestDeploymentDeployOperationsItemState =
   /*@__PURE__*/ S.String;
 
 /** Names of foreign keys removed by this operation */
 export type DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const DatabaseDeployRequestDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -697,7 +695,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationsItem =
   }) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationsItem>;
 
 export type DatabaseDeployRequestDeploymentDeployOperationsList =
-  DatabaseDeployRequestDeploymentDeployOperationsItem[];
+  ReadonlyArray<DatabaseDeployRequestDeploymentDeployOperationsItem>;
 export const DatabaseDeployRequestDeploymentDeployOperationsList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentDeployOperationsItem,
@@ -709,14 +707,13 @@ export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemState =
   | "in_progress"
   | "complete"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemState =
   /*@__PURE__*/ S.String;
 
 /** Names of foreign keys removed by this operation summary */
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -724,7 +721,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemRemovedF
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -732,13 +729,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemShardNam
 
 /** The state of the deploy operation */
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItemState =
-    | "pending"
-    | "queued"
-    | "in_progress"
-    | "complete"
-    | "cancelled"
-    | "error"
-    | (string & {});
+  "pending" | "queued" | "in_progress" | "complete" | "cancelled" | "error";
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItemState =
   /*@__PURE__*/ S.String;
 
@@ -770,7 +761,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperatio
   }) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem>;
 
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsList =
-  DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem[];
+  ReadonlyArray<DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem>;
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentDeployOperationSummariesItemOperationsItem,
@@ -849,7 +840,7 @@ export const DatabaseDeployRequestDeploymentDeployOperationSummariesItem =
   }) as any as S.Schema<DatabaseDeployRequestDeploymentDeployOperationSummariesItem>;
 
 export type DatabaseDeployRequestDeploymentDeployOperationSummariesList =
-  DatabaseDeployRequestDeploymentDeployOperationSummariesItem[];
+  ReadonlyArray<DatabaseDeployRequestDeploymentDeployOperationSummariesItem>;
 export const DatabaseDeployRequestDeploymentDeployOperationSummariesList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentDeployOperationSummariesItem,
@@ -866,7 +857,7 @@ export const DatabaseDeployRequestDeploymentLintErrorsItemMap =
 
 /** Schema lint errors preventing the deployment from completing */
 export type DatabaseDeployRequestDeploymentLintErrorsList =
-  DatabaseDeployRequestDeploymentLintErrorsItemMap[];
+  ReadonlyArray<DatabaseDeployRequestDeploymentLintErrorsItemMap>;
 export const DatabaseDeployRequestDeploymentLintErrorsList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentLintErrorsItemMap,
@@ -883,7 +874,7 @@ export const DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap =
 
 /** The schema dependencies that must be satisfied */
 export type DatabaseDeployRequestDeploymentSequentialDiffDependenciesList =
-  DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap[];
+  ReadonlyArray<DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap>;
 export const DatabaseDeployRequestDeploymentSequentialDiffDependenciesList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentSequentialDiffDependenciesItemMap,
@@ -900,7 +891,7 @@ export const DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap =
 
 /** Lookup Vitess index operations */
 export type DatabaseDeployRequestDeploymentLookupVindexOperationsList =
-  DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap[];
+  ReadonlyArray<DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap>;
 export const DatabaseDeployRequestDeploymentLookupVindexOperationsList =
   /*@__PURE__*/ S.Array(
     DatabaseDeployRequestDeploymentLookupVindexOperationsItemMap,
@@ -1320,6 +1311,10 @@ export const CheckDeployRequestStorageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckDeployRequestStorageResponse",
 }) as any as S.Schema<CheckDeployRequestStorageResponse>;
 
+/** The deploy request will be updated to this state */
+export type CloseDeployRequestRequestState = "closed";
+export const CloseDeployRequestRequestState = /*@__PURE__*/ S.String;
+
 export interface CloseDeployRequestRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -1327,14 +1322,15 @@ export interface CloseDeployRequestRequest {
   database: string;
   /** The number of the deploy request */
   number: number;
-  body?: unknown;
+  /** The deploy request will be updated to this state */
+  state?: CloseDeployRequestRequestState;
 }
 export const CloseDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     number: S.Number.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    state: S.optional(CloseDeployRequestRequestState),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1418,6 +1414,15 @@ export const CompleteRevertRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CompleteRevertRequest",
 }) as any as S.Schema<CompleteRevertRequest>;
 
+/** Unit for the retention period of the backup */
+export type CreateBackupRequestRetentionUnit =
+  | "hour"
+  | "day"
+  | "week"
+  | "month"
+  | "year";
+export const CreateBackupRequestRetentionUnit = /*@__PURE__*/ S.String;
+
 export interface CreateBackupRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
@@ -1425,14 +1430,24 @@ export interface CreateBackupRequest {
   database: string;
   /** The name of the branch */
   branch: string;
-  body?: unknown;
+  /** Name for the backup */
+  name?: string;
+  /** Unit for the retention period of the backup */
+  retention_unit?: CreateBackupRequestRetentionUnit;
+  /** Value between `1` and `1000` for the retention period of the backup (i.e retention_value `6` and retention_unit `hour` means 6 hours) */
+  retention_value?: number;
+  /** Whether the backup is an immediate backup that may affect database performance. Emergency backups are only supported for PostgreSQL databases. */
+  emergency?: boolean;
 }
 export const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    retention_unit: S.optional(CreateBackupRequestRetentionUnit),
+    retention_value: S.optional(S.Number),
+    emergency: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1451,8 +1466,7 @@ export type BackupState =
   | "success"
   | "failed"
   | "canceled"
-  | "ignored"
-  | (string & {});
+  | "ignored";
 export const BackupState = /*@__PURE__*/ S.String;
 
 export interface BackupRestoredBranchesItem {
@@ -1479,7 +1493,8 @@ export const BackupRestoredBranchesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupRestoredBranchesItem",
 }) as any as S.Schema<BackupRestoredBranchesItem>;
 
-export type BackupRestoredBranchesList = BackupRestoredBranchesItem[];
+export type BackupRestoredBranchesList =
+  ReadonlyArray<BackupRestoredBranchesItem>;
 export const BackupRestoredBranchesList = /*@__PURE__*/ S.Array(
   BackupRestoredBranchesItem,
 ) as any as S.Schema<BackupRestoredBranchesList>;
@@ -1501,10 +1516,7 @@ export const BackupActor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackupActor" }) as any as S.Schema<BackupActor>;
 
 /** Whether the policy is for production or development branches */
-export type BackupBackupPolicyTarget =
-  | "production"
-  | "development"
-  | (string & {});
+export type BackupBackupPolicyTarget = "production" | "development";
 export const BackupBackupPolicyTarget = /*@__PURE__*/ S.String;
 
 export interface BackupBackupPolicy {
@@ -1677,18 +1689,64 @@ export const Backup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
+/** Whether the policy is for production or development branches */
+export type CreateBackupPolicyRequestTarget = "production" | "development";
+export const CreateBackupPolicyRequestTarget = /*@__PURE__*/ S.String;
+
+/** The unit for the retention period of the backup policy */
+export type CreateBackupPolicyRequestRetentionUnit =
+  | "hour"
+  | "day"
+  | "week"
+  | "month"
+  | "year";
+export const CreateBackupPolicyRequestRetentionUnit = /*@__PURE__*/ S.String;
+
+/** The unit for the frequency of the backup policy */
+export type CreateBackupPolicyRequestFrequencyUnit =
+  | "hour"
+  | "day"
+  | "week"
+  | "month";
+export const CreateBackupPolicyRequestFrequencyUnit = /*@__PURE__*/ S.String;
+
 export interface CreateBackupPolicyRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
   /** Database name slug from `list_databases`. Example: `app-db`. */
   database: string;
-  body?: unknown;
+  /** The name of the backup policy */
+  name?: string;
+  /** Whether the policy is for production or development branches */
+  target?: CreateBackupPolicyRequestTarget;
+  /** A number value for the retention period of the backup policy */
+  retention_value?: number;
+  /** The unit for the retention period of the backup policy */
+  retention_unit?: CreateBackupPolicyRequestRetentionUnit;
+  /** A number value for the frequency of the backup policy */
+  frequency_value?: number;
+  /** The unit for the frequency of the backup policy */
+  frequency_unit?: CreateBackupPolicyRequestFrequencyUnit;
+  /** The time of day that the backup is scheduled, in HH:MM format */
+  schedule_time?: string;
+  /** Day of the week that the backup is scheduled. 0 is Sunday, 6 is Saturday */
+  schedule_day?: number;
+  /** Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week */
+  schedule_week?: number;
 }
 export const CreateBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    target: S.optional(CreateBackupPolicyRequestTarget),
+    retention_value: S.optional(S.Number),
+    retention_unit: S.optional(CreateBackupPolicyRequestRetentionUnit),
+    frequency_value: S.optional(S.Number),
+    frequency_unit: S.optional(CreateBackupPolicyRequestFrequencyUnit),
+    schedule_time: S.optional(S.String),
+    schedule_day: S.optional(S.Number),
+    schedule_week: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1701,7 +1759,7 @@ export const CreateBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBackupPolicyRequest>;
 
 /** Whether the policy is for production or development branches */
-export type BackupPolicyTarget = "production" | "development" | (string & {});
+export type BackupPolicyTarget = "production" | "development";
 export const BackupPolicyTarget = /*@__PURE__*/ S.String;
 
 export interface BackupPolicy {
@@ -1766,14 +1824,24 @@ export interface CreateBouncerRequest {
   database: string;
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
-  body?: unknown;
+  /** The bouncer name */
+  name?: string;
+  /** The type of server the bouncer targets */
+  target?: string;
+  /** The size SKU for the bouncer */
+  bouncer_size?: string;
+  /** The number of replica servers per cell */
+  replicas_per_cell?: number;
 }
 export const CreateBouncerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    target: S.optional(S.String),
+    bouncer_size: S.optional(S.String),
+    replicas_per_cell: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1813,8 +1881,7 @@ export const PostgresBouncerSku = /*@__PURE__*/ S.suspend(() =>
 export type PostgresBouncerTarget =
   | "primary"
   | "replica"
-  | "replica_az_affinity"
-  | (string & {});
+  | "replica_az_affinity";
 export const PostgresBouncerTarget = /*@__PURE__*/ S.String;
 
 export interface PostgresBouncerActor {
@@ -1860,9 +1927,7 @@ export const PostgresBouncerBranch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostgresBouncerBranch>;
 
 /** The namespace of the parameter */
-export type PostgresBouncerParametersItemNamespace =
-  | "pgbouncer"
-  | (string & {});
+export type PostgresBouncerParametersItemNamespace = "pgbouncer";
 export const PostgresBouncerParametersItemNamespace = /*@__PURE__*/ S.String;
 
 /** The type of the parameter */
@@ -1871,13 +1936,12 @@ export type PostgresBouncerParametersItemParameterType =
   | "integer"
   | "seconds"
   | "select"
-  | "string"
-  | (string & {});
+  | "string";
 export const PostgresBouncerParametersItemParameterType =
   /*@__PURE__*/ S.String;
 
 /** Valid options for the parameter value */
-export type PostgresBouncerParametersItemOptionsList = string[];
+export type PostgresBouncerParametersItemOptionsList = ReadonlyArray<string>;
 export const PostgresBouncerParametersItemOptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostgresBouncerParametersItemOptionsList>;
@@ -1968,7 +2032,8 @@ export const PostgresBouncerParametersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresBouncerParametersItem",
 }) as any as S.Schema<PostgresBouncerParametersItem>;
 
-export type PostgresBouncerParametersList = PostgresBouncerParametersItem[];
+export type PostgresBouncerParametersList =
+  ReadonlyArray<PostgresBouncerParametersItem>;
 export const PostgresBouncerParametersList = /*@__PURE__*/ S.Array(
   PostgresBouncerParametersItem,
 ) as any as S.Schema<PostgresBouncerParametersList>;
@@ -2014,18 +2079,83 @@ export const PostgresBouncer = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresBouncer",
 }) as any as S.Schema<PostgresBouncer>;
 
+/** If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching™ being enabled for the branch. */
+export type CreateBranchRequestSeedData = "last_successful_backup";
+export const CreateBranchRequestSeedData = /*@__PURE__*/ S.String;
+
+/** For MySQL backup restores, per-keyspace cluster sizes. Each entry is { "keyspace_name": "main", "cluster_size": "PS_40" }. When provided, each restored keyspace must have a size here or via cluster_size. */
+export type CreateBranchRequestKeyspaceClusterSizesList = ReadonlyArray<string>;
+export const CreateBranchRequestKeyspaceClusterSizesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateBranchRequestKeyspaceClusterSizesList>;
+
+export interface CreateBranchRequestStorage {
+  /** The minimum storage size in bytes. */
+  minimum_storage_bytes?: number;
+  /** The maximum storage size in bytes for autoscaling. */
+  maximum_storage_bytes?: number;
+}
+export const CreateBranchRequestStorage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minimum_storage_bytes: S.optional(S.Number),
+    maximum_storage_bytes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CreateBranchRequestStorage",
+}) as any as S.Schema<CreateBranchRequestStorage>;
+
+/** The kind of branch to create. Required when create_database_if_missing is set. */
+export type CreateBranchRequestKind = "mysql" | "postgresql";
+export const CreateBranchRequestKind = /*@__PURE__*/ S.String;
+
 export interface CreateBranchRequest {
   /** The name of the organization the branch belongs to */
   organization: string;
   /** The name of the database the branch belongs to */
   database: string;
-  body?: unknown;
+  /** The name of the branch to create */
+  name: string;
+  /** The name of the parent branch. Defaults to the database's default branch if not provided. */
+  parent_branch?: string;
+  /** If provided, restores the backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this. */
+  backup_id?: string;
+  /** The region to create the branch in. If not provided, the branch will be created in the default region for its database. */
+  region?: string;
+  /** Restore from a point-in-time recovery timestamp (e.g. 2023-01-01T00:00:00Z). Available only for PostgreSQL databases. */
+  restore_point?: string;
+  /** If provided, restores the last successful backup's schema and data to the new branch. Must have `restore_production_branch_backup(s)` or `restore_backup(s)` access to do this, in addition to Data Branching™ being enabled for the branch. */
+  seed_data?: CreateBranchRequestSeedData;
+  /** The database cluster size. Required if a backup_id is provided (unless keyspace_cluster_sizes covers every keyspace), optional otherwise. Options: PS_10, PS_20, PS_40, ..., PS_2800 */
+  cluster_size?: string;
+  /** For MySQL backup restores, per-keyspace cluster sizes. Each entry is { "keyspace_name": "main", "cluster_size": "PS_40" }. When provided, each restored keyspace must have a size here or via cluster_size. */
+  keyspace_cluster_sizes?: CreateBranchRequestKeyspaceClusterSizesList;
+  storage?: CreateBranchRequestStorage;
+  /** For PostgreSQL databases, the PostgreSQL major version to use for the branch. Defaults to the major version of the parent branch if it exists or the database's default branch major version. Ignored for branches restored from backups. */
+  major_version?: string;
+  /** Create a new database for the branch if the database does not exist. Defaults to false. */
+  create_database_if_missing?: boolean;
+  /** The kind of branch to create. Required when create_database_if_missing is set. */
+  kind?: CreateBranchRequestKind;
 }
 export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.String,
+    parent_branch: S.optional(S.String),
+    backup_id: S.optional(S.String),
+    region: S.optional(S.String),
+    restore_point: S.optional(S.String),
+    seed_data: S.optional(CreateBranchRequestSeedData),
+    cluster_size: S.optional(S.String),
+    keyspace_cluster_sizes: S.optional(
+      CreateBranchRequestKeyspaceClusterSizesList,
+    ),
+    storage: S.optional(CreateBranchRequestStorage),
+    major_version: S.optional(S.String),
+    create_database_if_missing: S.optional(S.Boolean),
+    kind: S.optional(CreateBranchRequestKind),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2038,7 +2168,7 @@ export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBranchRequest>;
 
 /** The kind of branch */
-export type DatabaseBranchKind = "mysql" | "postgresql" | (string & {});
+export type DatabaseBranchKind = "mysql" | "postgresql";
 export const DatabaseBranchKind = /*@__PURE__*/ S.String;
 
 /** The current state of the branch */
@@ -2047,8 +2177,7 @@ export type DatabaseBranchState =
   | "sleep_in_progress"
   | "sleeping"
   | "awakening"
-  | "ready"
-  | (string & {});
+  | "ready";
 export const DatabaseBranchState = /*@__PURE__*/ S.String;
 
 export interface DatabaseBranchActor {
@@ -2094,7 +2223,7 @@ export const DatabaseBranchRestoredFromBranch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseBranchRestoredFromBranch>;
 
 /** Public IP addresses for the region */
-export type DatabaseBranchRegionPublicIpAddressesList = string[];
+export type DatabaseBranchRegionPublicIpAddressesList = ReadonlyArray<string>;
 export const DatabaseBranchRegionPublicIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseBranchRegionPublicIpAddressesList>;
@@ -2258,15 +2387,52 @@ export const DatabaseBranch = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatabaseBranch" }) as any as S.Schema<DatabaseBranch>;
 
+/** The kind of database to create. */
+export type CreateDatabaseRequestKind = "mysql" | "postgresql";
+export const CreateDatabaseRequestKind = /*@__PURE__*/ S.String;
+
+export interface CreateDatabaseRequestStorage {
+  /** The initial minimum storage size in bytes. */
+  minimum_storage_bytes?: number;
+  /** The maximum storage size in bytes for autoscaling. */
+  maximum_storage_bytes?: number;
+}
+export const CreateDatabaseRequestStorage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minimum_storage_bytes: S.optional(S.Number),
+    maximum_storage_bytes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CreateDatabaseRequestStorage",
+}) as any as S.Schema<CreateDatabaseRequestStorage>;
+
 export interface CreateDatabaseRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
-  body?: unknown;
+  /** Name of the database */
+  name: string;
+  /** The region the database will be deployed in. If left blank, defaults to the organization's default region. */
+  region?: string;
+  /** The database cluster size name (e.g., 'PS_10', 'PS_80'). Use the 'List available cluster sizes' endpoint to get available options for your organization. /v1/organizations/:organization/cluster-size-skus */
+  cluster_size: string;
+  /** The number of replicas for the database. 0 for non-HA, 2+ for HA. */
+  replicas?: number;
+  /** The kind of database to create. */
+  kind?: CreateDatabaseRequestKind;
+  /** For PostgreSQL databases, the PostgreSQL major version to use for the database. Defaults to the latest available major version. */
+  major_version?: string;
+  storage?: CreateDatabaseRequestStorage;
 }
 export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.String,
+    region: S.optional(S.String),
+    cluster_size: S.String,
+    replicas: S.optional(S.Number),
+    kind: S.optional(CreateDatabaseRequestKind),
+    major_version: S.optional(S.String),
+    storage: S.optional(CreateDatabaseRequestStorage),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2320,7 +2486,7 @@ export const DatabaseDataImport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseDataImport>;
 
 /** Public IP addresses for the region */
-export type DatabaseRegionPublicIpAddressesList = string[];
+export type DatabaseRegionPublicIpAddressesList = ReadonlyArray<string>;
 export const DatabaseRegionPublicIpAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseRegionPublicIpAddressesList>;
@@ -2370,12 +2536,11 @@ export type DatabaseState =
   | "sleeping"
   | "awakening"
   | "import_ready"
-  | "ready"
-  | (string & {});
+  | "ready";
 export const DatabaseState = /*@__PURE__*/ S.String;
 
 /** The kind of database */
-export type DatabaseKind = "mysql" | "postgresql" | (string & {});
+export type DatabaseKind = "mysql" | "postgresql";
 export const DatabaseKind = /*@__PURE__*/ S.String;
 
 export interface Database {
@@ -2506,18 +2671,31 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
+/** List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Must contain at least one valid IPv4 address or range. */
+export type CreateDatabasePostgresCidrRequestCidrsList = ReadonlyArray<string>;
+export const CreateDatabasePostgresCidrRequestCidrsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateDatabasePostgresCidrRequestCidrsList>;
+
 export interface CreateDatabasePostgresCidrRequest {
   /** The name of the organization the database belongs to */
   organization: string;
   /** The name of the database */
   database: string;
-  body?: unknown;
+  /** The PostgreSQL schema to restrict access to. Leave empty or omit to allow access to all schemas. */
+  schema?: string;
+  /** The PostgreSQL role to restrict access to. Leave empty or omit to allow access for all roles. */
+  role?: string;
+  /** List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Must contain at least one valid IPv4 address or range. */
+  cidrs: CreateDatabasePostgresCidrRequestCidrsList;
 }
 export const CreateDatabasePostgresCidrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    schema: S.optional(S.String),
+    role: S.optional(S.String),
+    cidrs: CreateDatabasePostgresCidrRequestCidrsList,
   }).pipe(
     T.Http({
       method: "POST",
@@ -2530,7 +2708,7 @@ export const CreateDatabasePostgresCidrRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatabasePostgresCidrRequest>;
 
 /** List of CIDR ranges */
-export type PostgresClusterCidrCidrsList = string[];
+export type PostgresClusterCidrCidrsList = ReadonlyArray<string>;
 export const PostgresClusterCidrCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostgresClusterCidrCidrsList>;
@@ -2590,13 +2768,26 @@ export interface CreateDeployRequestRequest {
   organization: string;
   /** The name of the deploy request's database */
   database: string;
-  body?: unknown;
+  /** The name of the branch the deploy request is created from */
+  branch: string;
+  /** The name of the branch the deploy request will be merged into */
+  into_branch: string;
+  /** Notes about the deploy request */
+  notes?: string;
+  /** Whether or not to enable auto_cutover for the deploy request. When enabled, will auto cutover to the new schema as soon as it is ready. */
+  auto_cutover?: boolean;
+  /** Whether or not to enable auto_delete_branch for the deploy request. When enabled, will delete the branch once the DR successfully completes. */
+  auto_delete_branch?: boolean;
 }
 export const CreateDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    branch: S.String,
+    into_branch: S.String,
+    notes: S.optional(S.String),
+    auto_cutover: S.optional(S.Boolean),
+    auto_delete_branch: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2615,14 +2806,24 @@ export interface CreateKeyspaceRequest {
   database: string;
   /** The name of the branch */
   branch: string;
-  body?: unknown;
+  /** The name of the keyspace */
+  name: string;
+  /** The database cluster size name (e.g., 'PS_10', 'PS_80'). Use the 'List available cluster sizes' endpoint to get available options for your organization. /v1/organizations/:organization/cluster-size-skus */
+  cluster_size: string;
+  /** The number of additional replicas beyond the included default */
+  extra_replicas?: number;
+  /** The number of shards. Default: 1 */
+  shards?: number;
 }
 export const CreateKeyspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.String,
+    cluster_size: S.String,
+    extra_replicas: S.optional(S.Number),
+    shards: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2638,16 +2839,14 @@ export const CreateKeyspaceRequest = /*@__PURE__*/ S.suspend(() =>
 export type DatabaseBranchKeyspaceNodeTtlStrategy =
   | "node_ttl_follow_maintenance"
   | "node_ttl_always"
-  | "node_ttl_off"
-  | (string & {});
+  | "node_ttl_off";
 export const DatabaseBranchKeyspaceNodeTtlStrategy = /*@__PURE__*/ S.String;
 
 /** The replication durability strategy */
 export type DatabaseBranchKeyspaceReplicationDurabilityConstraintsStrategy =
   | "available"
   | "lag"
-  | "always"
-  | (string & {});
+  | "always";
 export const DatabaseBranchKeyspaceReplicationDurabilityConstraintsStrategy =
   /*@__PURE__*/ S.String;
 
@@ -2791,7 +2990,10 @@ export interface CreateKeyspaceResizeRequestRequest {
   branch: string;
   /** The name of the keyspace */
   keyspace: string;
-  body?: unknown;
+  /** The new cluster size for the keyspace: PS_10, PS_20,… */
+  cluster_size?: string;
+  /** The number of additional replicas per shard beyond the cluster size's included default (each production cluster includes 2 replicas) */
+  extra_replicas?: number;
 }
 export const CreateKeyspaceResizeRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2799,7 +3001,8 @@ export const CreateKeyspaceResizeRequestRequest = /*@__PURE__*/ S.suspend(() =>
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
     keyspace: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    cluster_size: S.optional(S.String),
+    extra_replicas: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2891,18 +3094,40 @@ export const KeyspaceResizeRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeyspaceResizeRequest",
 }) as any as S.Schema<KeyspaceResizeRequest>;
 
+/** Whether an OAuth grant code or a refresh token is being exchanged for an OAuth token */
+export type CreateOauthTokenRequestGrantType =
+  | "authorization_code"
+  | "refresh_token";
+export const CreateOauthTokenRequestGrantType = /*@__PURE__*/ S.String;
+
 export interface CreateOauthTokenRequest {
   /** The name of the organization the OAuth application belongs to */
   organization: string;
   /** The ID of the OAuth application */
   id: string;
-  body?: unknown;
+  /** The OAuth application's client ID */
+  client_id: string;
+  /** The OAuth application's client secret */
+  client_secret: Redacted.Redacted<string>;
+  /** Whether an OAuth grant code or a refresh token is being exchanged for an OAuth token */
+  grant_type: CreateOauthTokenRequestGrantType;
+  /** The OAuth grant code provided to your OAuth application's redirect URI. Required when grant_type is authorization_code */
+  code?: string;
+  /** The OAuth application's redirect URI. Required when grant_type is authorization_code */
+  redirect_uri?: string;
+  /** The refresh token from the original OAuth token grant. Required when grant_type is refresh_token */
+  refresh_token?: Redacted.Redacted<string>;
 }
 export const CreateOauthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    client_id: S.String,
+    client_secret: S.String.pipe(T.SensitiveValue({})),
+    grant_type: CreateOauthTokenRequestGrantType,
+    code: S.optional(S.String),
+    redirect_uri: S.optional(S.String),
+    refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2970,7 +3195,7 @@ export const ServiceTokenServiceTokenAccessesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServiceTokenServiceTokenAccessesItem>;
 
 export type ServiceTokenServiceTokenAccessesList =
-  ServiceTokenServiceTokenAccessesItem[];
+  ReadonlyArray<ServiceTokenServiceTokenAccessesItem>;
 export const ServiceTokenServiceTokenAccessesList = /*@__PURE__*/ S.Array(
   ServiceTokenServiceTokenAccessesItem,
 ) as any as S.Schema<ServiceTokenServiceTokenAccessesList>;
@@ -2998,7 +3223,7 @@ export const ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem>;
 
 export type ServiceTokenOauthAccessesByResourceDatabaseDatabasesList =
-  ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem[];
+  ReadonlyArray<ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem>;
 export const ServiceTokenOauthAccessesByResourceDatabaseDatabasesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem,
@@ -3021,7 +3246,7 @@ export const ServiceTokenOauthAccessesByResourceDatabaseAccessesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 
 export type ServiceTokenOauthAccessesByResourceDatabaseAccessesList =
-  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem[];
+  ReadonlyArray<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const ServiceTokenOauthAccessesByResourceDatabaseAccessesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
@@ -3062,7 +3287,7 @@ export const ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem>;
 
 export type ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList =
-  ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem[];
+  ReadonlyArray<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem>;
 export const ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem,
@@ -3085,7 +3310,7 @@ export const ServiceTokenOauthAccessesByResourceOrganizationAccessesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationAccessesItem>;
 
 export type ServiceTokenOauthAccessesByResourceOrganizationAccessesList =
-  ServiceTokenOauthAccessesByResourceOrganizationAccessesItem[];
+  ReadonlyArray<ServiceTokenOauthAccessesByResourceOrganizationAccessesItem>;
 export const ServiceTokenOauthAccessesByResourceOrganizationAccessesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceOrganizationAccessesItem,
@@ -3132,7 +3357,7 @@ export const ServiceTokenOauthAccessesByResourceBranchBranchesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchBranchesItem>;
 
 export type ServiceTokenOauthAccessesByResourceBranchBranchesList =
-  ServiceTokenOauthAccessesByResourceBranchBranchesItem[];
+  ReadonlyArray<ServiceTokenOauthAccessesByResourceBranchBranchesItem>;
 export const ServiceTokenOauthAccessesByResourceBranchBranchesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceBranchBranchesItem,
@@ -3155,7 +3380,7 @@ export const ServiceTokenOauthAccessesByResourceBranchAccessesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchAccessesItem>;
 
 export type ServiceTokenOauthAccessesByResourceBranchAccessesList =
-  ServiceTokenOauthAccessesByResourceBranchAccessesItem[];
+  ReadonlyArray<ServiceTokenOauthAccessesByResourceBranchAccessesItem>;
 export const ServiceTokenOauthAccessesByResourceBranchAccessesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceBranchAccessesItem,
@@ -3192,7 +3417,7 @@ export const ServiceTokenOauthAccessesByResourceUserUsersItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceUserUsersItem>;
 
 export type ServiceTokenOauthAccessesByResourceUserUsersList =
-  ServiceTokenOauthAccessesByResourceUserUsersItem[];
+  ReadonlyArray<ServiceTokenOauthAccessesByResourceUserUsersItem>;
 export const ServiceTokenOauthAccessesByResourceUserUsersList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceUserUsersItem,
@@ -3215,7 +3440,7 @@ export const ServiceTokenOauthAccessesByResourceUserAccessesItem =
   }) as any as S.Schema<ServiceTokenOauthAccessesByResourceUserAccessesItem>;
 
 export type ServiceTokenOauthAccessesByResourceUserAccessesList =
-  ServiceTokenOauthAccessesByResourceUserAccessesItem[];
+  ReadonlyArray<ServiceTokenOauthAccessesByResourceUserAccessesItem>;
 export const ServiceTokenOauthAccessesByResourceUserAccessesList =
   /*@__PURE__*/ S.Array(
     ServiceTokenOauthAccessesByResourceUserAccessesItem,
@@ -3311,12 +3536,16 @@ export const ServiceToken = /*@__PURE__*/ S.suspend(() =>
 export interface CreateOrganizationTeamRequest {
   /** The name of the organization */
   organization: string;
-  body?: unknown;
+  /** The name of the team */
+  name: string;
+  /** A description of the team's purpose */
+  description?: string;
 }
 export const CreateOrganizationTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.String,
+    description: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3420,7 +3649,8 @@ export const OrganizationTeamMembersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationTeamMembersItem",
 }) as any as S.Schema<OrganizationTeamMembersItem>;
 
-export type OrganizationTeamMembersList = OrganizationTeamMembersItem[];
+export type OrganizationTeamMembersList =
+  ReadonlyArray<OrganizationTeamMembersItem>;
 export const OrganizationTeamMembersList = /*@__PURE__*/ S.Array(
   OrganizationTeamMembersItem,
 ) as any as S.Schema<OrganizationTeamMembersList>;
@@ -3446,7 +3676,8 @@ export const OrganizationTeamDatabasesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationTeamDatabasesItem",
 }) as any as S.Schema<OrganizationTeamDatabasesItem>;
 
-export type OrganizationTeamDatabasesList = OrganizationTeamDatabasesItem[];
+export type OrganizationTeamDatabasesList =
+  ReadonlyArray<OrganizationTeamDatabasesItem>;
 export const OrganizationTeamDatabasesList = /*@__PURE__*/ S.Array(
   OrganizationTeamDatabasesItem,
 ) as any as S.Schema<OrganizationTeamDatabasesList>;
@@ -3474,7 +3705,7 @@ export const OrganizationTeamAnalystDatabasesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OrganizationTeamAnalystDatabasesItem>;
 
 export type OrganizationTeamAnalystDatabasesList =
-  OrganizationTeamAnalystDatabasesItem[];
+  ReadonlyArray<OrganizationTeamAnalystDatabasesItem>;
 export const OrganizationTeamAnalystDatabasesList = /*@__PURE__*/ S.Array(
   OrganizationTeamAnalystDatabasesItem,
 ) as any as S.Schema<OrganizationTeamAnalystDatabasesList>;
@@ -3520,6 +3751,20 @@ export const OrganizationTeam = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationTeam",
 }) as any as S.Schema<OrganizationTeam>;
 
+/** The database role of the password (i.e. admin) */
+export type CreatePasswordRequestRole =
+  | "reader"
+  | "writer"
+  | "admin"
+  | "readwriter";
+export const CreatePasswordRequestRole = /*@__PURE__*/ S.String;
+
+/** List of IP addresses or CIDR ranges that can use this password */
+export type CreatePasswordRequestCidrsList = ReadonlyArray<string>;
+export const CreatePasswordRequestCidrsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreatePasswordRequestCidrsList>;
+
 export interface CreatePasswordRequest {
   /** The name of the organization the password belongs to */
   organization: string;
@@ -3527,14 +3772,30 @@ export interface CreatePasswordRequest {
   database: string;
   /** The name of the branch the password belongs to */
   branch: string;
-  body?: unknown;
+  /** Optional name of the password */
+  name?: string;
+  /** The database role of the password (i.e. admin) */
+  role?: CreatePasswordRequestRole;
+  /** Whether the password is for a read replica */
+  replica?: boolean;
+  /** Time to live (in seconds) for the password. The password will be invalid when TTL has passed */
+  ttl?: number;
+  /** List of IP addresses or CIDR ranges that can use this password */
+  cidrs?: CreatePasswordRequestCidrsList;
+  /** Whether the password connects directly to a VTGate */
+  direct_vtgate?: boolean;
 }
 export const CreatePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    role: S.optional(CreatePasswordRequestRole),
+    replica: S.optional(S.Boolean),
+    ttl: S.optional(S.Number),
+    cidrs: S.optional(CreatePasswordRequestCidrsList),
+    direct_vtgate: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3551,19 +3812,18 @@ export type DatabaseBranchPasswordWithSecretRole =
   | "reader"
   | "writer"
   | "admin"
-  | "readwriter"
-  | (string & {});
+  | "readwriter";
 export const DatabaseBranchPasswordWithSecretRole = /*@__PURE__*/ S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
-export type DatabaseBranchPasswordWithSecretCidrsList = string[];
+export type DatabaseBranchPasswordWithSecretCidrsList = ReadonlyArray<string>;
 export const DatabaseBranchPasswordWithSecretCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseBranchPasswordWithSecretCidrsList>;
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type DatabaseBranchPasswordWithSecretDirectVtgateAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const DatabaseBranchPasswordWithSecretDirectVtgateAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3571,7 +3831,7 @@ export const DatabaseBranchPasswordWithSecretDirectVtgateAddressesList =
 
 /** The read-only replica host URLs */
 export type DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3598,7 +3858,7 @@ export const DatabaseBranchPasswordWithSecretActor = /*@__PURE__*/ S.suspend(
 
 /** Public IP addresses for the region */
 export type DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3769,11 +4029,7 @@ export const CreateQueryPatternsReportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateQueryPatternsReportRequest>;
 
 /** The state of the download */
-export type QueryPatternsDownloadState =
-  | "pending"
-  | "completed"
-  | "failed"
-  | (string & {});
+export type QueryPatternsDownloadState = "pending" | "completed" | "failed";
 export const QueryPatternsDownloadState = /*@__PURE__*/ S.String;
 
 export interface QueryPatternsDownloadActor {
@@ -3823,6 +4079,29 @@ export const QueryPatternsDownload = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryPatternsDownload",
 }) as any as S.Schema<QueryPatternsDownload>;
 
+export type CreateRoleRequestInheritedRolesItem =
+  | "pscale_managed"
+  | "pg_checkpoint"
+  | "pg_create_subscription"
+  | "pg_maintain"
+  | "pg_monitor"
+  | "pg_read_all_data"
+  | "pg_read_all_settings"
+  | "pg_read_all_stats"
+  | "pg_signal_backend"
+  | "pg_stat_scan_tables"
+  | "pg_use_reserved_connections"
+  | "pg_write_all_data"
+  | "postgres";
+export const CreateRoleRequestInheritedRolesItem = /*@__PURE__*/ S.String;
+
+/** Roles to inherit from */
+export type CreateRoleRequestInheritedRolesList =
+  ReadonlyArray<CreateRoleRequestInheritedRolesItem>;
+export const CreateRoleRequestInheritedRolesList = /*@__PURE__*/ S.Array(
+  CreateRoleRequestInheritedRolesItem,
+) as any as S.Schema<CreateRoleRequestInheritedRolesList>;
+
 export interface CreateRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -3830,14 +4109,30 @@ export interface CreateRoleRequest {
   database: string;
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
-  body?: unknown;
+  /** The name of the role */
+  name?: string;
+  /** Time to live in seconds */
+  ttl?: number;
+  /** Roles to inherit from */
+  inherited_roles?: CreateRoleRequestInheritedRolesList;
+  /** Whether the role should have the REPLICATION attribute */
+  with_replication?: boolean;
+  /** Require WHERE clause on DELETE statements */
+  require_where_on_delete?: string;
+  /** Require WHERE clause on UPDATE statements */
+  require_where_on_update?: string;
 }
 export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    ttl: S.optional(S.Number),
+    inherited_roles: S.optional(CreateRoleRequestInheritedRolesList),
+    with_replication: S.optional(S.Boolean),
+    require_where_on_delete: S.optional(S.String),
+    require_where_on_update: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3862,12 +4157,12 @@ export type PostgresRoleInheritedRolesItem =
   | "pg_stat_scan_tables"
   | "pg_use_reserved_connections"
   | "pg_write_all_data"
-  | "postgres"
-  | (string & {});
+  | "postgres";
 export const PostgresRoleInheritedRolesItem = /*@__PURE__*/ S.String;
 
 /** Database roles these credentials inherit */
-export type PostgresRoleInheritedRolesList = PostgresRoleInheritedRolesItem[];
+export type PostgresRoleInheritedRolesList =
+  ReadonlyArray<PostgresRoleInheritedRolesItem>;
 export const PostgresRoleInheritedRolesList = /*@__PURE__*/ S.Array(
   PostgresRoleInheritedRolesItem,
 ) as any as S.Schema<PostgresRoleInheritedRolesList>;
@@ -3918,8 +4213,7 @@ export const PostgresRoleActor = /*@__PURE__*/ S.suspend(() =>
 export type PostgresRoleQuerySafetySettingsRequireWhereOnDelete =
   | "off"
   | "warn"
-  | "on"
-  | (string & {});
+  | "on";
 export const PostgresRoleQuerySafetySettingsRequireWhereOnDelete =
   /*@__PURE__*/ S.String;
 
@@ -3927,8 +4221,7 @@ export const PostgresRoleQuerySafetySettingsRequireWhereOnDelete =
 export type PostgresRoleQuerySafetySettingsRequireWhereOnUpdate =
   | "off"
   | "warn"
-  | "on"
-  | (string & {});
+  | "on";
 export const PostgresRoleQuerySafetySettingsRequireWhereOnUpdate =
   /*@__PURE__*/ S.String;
 
@@ -4028,12 +4321,16 @@ export const PostgresRole = /*@__PURE__*/ S.suspend(() =>
 export interface CreateServiceTokenRequest {
   /** The name of the organization */
   organization: string;
-  body?: unknown;
+  /** The name of the service token */
+  name?: string;
+  /** Time to live (in seconds) for the service token. The token will be invalid when TTL has passed */
+  ttl?: number;
 }
 export const CreateServiceTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    ttl: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4045,6 +4342,16 @@ export const CreateServiceTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateServiceTokenRequest",
 }) as any as S.Schema<CreateServiceTokenRequest>;
 
+/** The mode of the traffic budget */
+export type CreateTrafficBudgetRequestMode = "enforce" | "warn" | "off";
+export const CreateTrafficBudgetRequestMode = /*@__PURE__*/ S.String;
+
+/** Array of traffic rules to apply to the budget */
+export type CreateTrafficBudgetRequestRulesList = ReadonlyArray<string>;
+export const CreateTrafficBudgetRequestRulesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateTrafficBudgetRequestRulesList>;
+
 export interface CreateTrafficBudgetRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -4052,14 +4359,36 @@ export interface CreateTrafficBudgetRequest {
   database: string;
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
-  body?: unknown;
+  /** Name of the traffic budget */
+  name?: string;
+  /** The mode of the traffic budget */
+  mode?: CreateTrafficBudgetRequestMode;
+  /** The maximum capacity that can be banked, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set. */
+  capacity?: number;
+  /** The rate at which capacity refills, as a percentage of server resources (0-100). Unlimited when not set. */
+  rate?: number;
+  /** The maximum capacity a single query can consume, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set. */
+  burst?: number;
+  /** The percentage of available worker processes this policy can use (0-100). Unlimited when not set. */
+  concurrency?: number;
+  /** A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100). */
+  warning_threshold?: number;
+  /** Array of traffic rules to apply to the budget */
+  rules?: CreateTrafficBudgetRequestRulesList;
 }
 export const CreateTrafficBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    mode: S.optional(CreateTrafficBudgetRequestMode),
+    capacity: S.optional(S.Number),
+    rate: S.optional(S.Number),
+    burst: S.optional(S.Number),
+    concurrency: S.optional(S.Number),
+    warning_threshold: S.optional(S.Number),
+    rules: S.optional(CreateTrafficBudgetRequestRulesList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4072,7 +4401,7 @@ export const CreateTrafficBudgetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTrafficBudgetRequest>;
 
 /** The mode of the budget */
-export type TrafficBudgetMode = "enforce" | "warn" | "off" | (string & {});
+export type TrafficBudgetMode = "enforce" | "warn" | "off";
 export const TrafficBudgetMode = /*@__PURE__*/ S.String;
 
 export interface TrafficBudgetActor {
@@ -4094,14 +4423,11 @@ export const TrafficBudgetActor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrafficBudgetActor>;
 
 /** The kind of rule */
-export type TrafficBudgetRulesItemKind = "match" | "each" | (string & {});
+export type TrafficBudgetRulesItemKind = "match" | "each";
 export const TrafficBudgetRulesItemKind = /*@__PURE__*/ S.String;
 
 /** The source of this tag */
-export type TrafficBudgetRulesItemTagsItemSource =
-  | "sql"
-  | "system"
-  | (string & {});
+export type TrafficBudgetRulesItemTagsItemSource = "sql" | "system";
 export const TrafficBudgetRulesItemTagsItemSource = /*@__PURE__*/ S.String;
 
 export interface TrafficBudgetRulesItemTagsItem {
@@ -4125,7 +4451,8 @@ export const TrafficBudgetRulesItemTagsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrafficBudgetRulesItemTagsItem",
 }) as any as S.Schema<TrafficBudgetRulesItemTagsItem>;
 
-export type TrafficBudgetRulesItemTagsList = TrafficBudgetRulesItemTagsItem[];
+export type TrafficBudgetRulesItemTagsList =
+  ReadonlyArray<TrafficBudgetRulesItemTagsItem>;
 export const TrafficBudgetRulesItemTagsList = /*@__PURE__*/ S.Array(
   TrafficBudgetRulesItemTagsItem,
 ) as any as S.Schema<TrafficBudgetRulesItemTagsList>;
@@ -4182,7 +4509,7 @@ export const TrafficBudgetRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrafficBudgetRulesItem",
 }) as any as S.Schema<TrafficBudgetRulesItem>;
 
-export type TrafficBudgetRulesList = TrafficBudgetRulesItem[];
+export type TrafficBudgetRulesList = ReadonlyArray<TrafficBudgetRulesItem>;
 export const TrafficBudgetRulesList = /*@__PURE__*/ S.Array(
   TrafficBudgetRulesItem,
 ) as any as S.Schema<TrafficBudgetRulesList>;
@@ -4228,6 +4555,16 @@ export const TrafficBudget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrafficBudget" }) as any as S.Schema<TrafficBudget>;
 
+/** Kind of rule */
+export type CreateTrafficRuleRequestKind = "match" | "each";
+export const CreateTrafficRuleRequestKind = /*@__PURE__*/ S.String;
+
+/** Optional array of tags for this rule. Each rules take exactly one tag. */
+export type CreateTrafficRuleRequestTagsList = ReadonlyArray<string>;
+export const CreateTrafficRuleRequestTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateTrafficRuleRequestTagsList>;
+
 export interface CreateTrafficRuleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -4237,7 +4574,14 @@ export interface CreateTrafficRuleRequest {
   branch: string;
   /** The ID of the traffic budget */
   budget_id: string;
-  body?: unknown;
+  /** Kind of rule */
+  kind?: CreateTrafficRuleRequestKind;
+  /** The keyspace to apply a query pattern rule to */
+  keyspace?: string;
+  /** Query pattern fingerprint to apply rule to */
+  fingerprint?: string;
+  /** Optional array of tags for this rule. Each rules take exactly one tag. */
+  tags?: CreateTrafficRuleRequestTagsList;
 }
 export const CreateTrafficRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4245,7 +4589,10 @@ export const CreateTrafficRuleRequest = /*@__PURE__*/ S.suspend(() =>
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
     budget_id: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    kind: S.optional(CreateTrafficRuleRequestKind),
+    keyspace: S.optional(S.String),
+    fingerprint: S.optional(S.String),
+    tags: S.optional(CreateTrafficRuleRequestTagsList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4258,11 +4605,11 @@ export const CreateTrafficRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTrafficRuleRequest>;
 
 /** The kind of rule */
-export type TrafficRuleKind = "match" | "each" | (string & {});
+export type TrafficRuleKind = "match" | "each";
 export const TrafficRuleKind = /*@__PURE__*/ S.String;
 
 /** The source of this tag */
-export type TrafficRuleTagsItemSource = "sql" | "system" | (string & {});
+export type TrafficRuleTagsItemSource = "sql" | "system";
 export const TrafficRuleTagsItemSource = /*@__PURE__*/ S.String;
 
 export interface TrafficRuleTagsItem {
@@ -4286,7 +4633,7 @@ export const TrafficRuleTagsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrafficRuleTagsItem",
 }) as any as S.Schema<TrafficRuleTagsItem>;
 
-export type TrafficRuleTagsList = TrafficRuleTagsItem[];
+export type TrafficRuleTagsList = ReadonlyArray<TrafficRuleTagsItem>;
 export const TrafficRuleTagsList = /*@__PURE__*/ S.Array(
   TrafficRuleTagsItem,
 ) as any as S.Schema<TrafficRuleTagsList>;
@@ -4341,18 +4688,31 @@ export const TrafficRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrafficRule" }) as any as S.Schema<TrafficRule>;
 
+/** The events this webhook should subscribe to */
+export type CreateWebhookRequestEventsList = ReadonlyArray<string>;
+export const CreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateWebhookRequestEventsList>;
+
 export interface CreateWebhookRequest {
   /** The name of the organization */
   organization: string;
   /** The name of the database */
   database: string;
-  body?: unknown;
+  /** The URL the webhook will send events to */
+  url: string;
+  /** Whether the webhook should be enabled */
+  enabled?: boolean;
+  /** The events this webhook should subscribe to */
+  events?: CreateWebhookRequestEventsList;
 }
 export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    url: S.String,
+    enabled: S.optional(S.Boolean),
+    events: S.optional(CreateWebhookRequestEventsList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4383,12 +4743,12 @@ export type DatabaseWebhookEventsItem =
   | "deploy_request.reverted"
   | "deploy_request.schema_applied"
   | "keyspace.storage"
-  | "webhook.test"
-  | (string & {});
+  | "webhook.test";
 export const DatabaseWebhookEventsItem = /*@__PURE__*/ S.String;
 
 /** The events this webhook subscribes to */
-export type DatabaseWebhookEventsList = DatabaseWebhookEventsItem[];
+export type DatabaseWebhookEventsList =
+  ReadonlyArray<DatabaseWebhookEventsItem>;
 export const DatabaseWebhookEventsList = /*@__PURE__*/ S.Array(
   DatabaseWebhookEventsItem,
 ) as any as S.Schema<DatabaseWebhookEventsList>;
@@ -4432,18 +4792,51 @@ export const DatabaseWebhook = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseWebhook",
 }) as any as S.Schema<DatabaseWebhook>;
 
+/** The behavior when DDL changes during the workflow */
+export type CreateWorkflowRequestOnDdl =
+  | "IGNORE"
+  | "STOP"
+  | "EXEC"
+  | "EXEC_IGNORE";
+export const CreateWorkflowRequestOnDdl = /*@__PURE__*/ S.String;
+
+/** List of tables to move */
+export type CreateWorkflowRequestTablesList = ReadonlyArray<string>;
+export const CreateWorkflowRequestTablesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateWorkflowRequestTablesList>;
+
 export interface CreateWorkflowRequest {
   /** The name of the organization the workflow belongs to */
   organization: string;
   /** The name of the database the workflow belongs to */
   database: string;
-  body?: unknown;
+  /** Name the workflow */
+  name: string;
+  /** Name of the source keyspace */
+  source_keyspace: string;
+  /** Name of the target keyspace */
+  target_keyspace: string;
+  /** Name of the global sequence keyspace */
+  global_keyspace?: string;
+  /** Defer secondary keys */
+  defer_secondary_keys?: boolean;
+  /** The behavior when DDL changes during the workflow */
+  on_ddl?: CreateWorkflowRequestOnDdl;
+  /** List of tables to move */
+  tables: CreateWorkflowRequestTablesList;
 }
 export const CreateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.String,
+    source_keyspace: S.String,
+    target_keyspace: S.String,
+    global_keyspace: S.optional(S.String),
+    defer_secondary_keys: S.optional(S.Boolean),
+    on_ddl: S.optional(CreateWorkflowRequestOnDdl),
+    tables: CreateWorkflowRequestTablesList,
   }).pipe(
     T.Http({
       method: "POST",
@@ -4475,21 +4868,15 @@ export type WorkflowState =
   | "completed"
   | "cancelling"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const WorkflowState = /*@__PURE__*/ S.String;
 
 /** The type of the workflow */
-export type WorkflowWorkflowType = "move_tables" | (string & {});
+export type WorkflowWorkflowType = "move_tables";
 export const WorkflowWorkflowType = /*@__PURE__*/ S.String;
 
 /** The behavior when DDL changes during the workflow */
-export type WorkflowOnDdl =
-  | "IGNORE"
-  | "STOP"
-  | "EXEC"
-  | "EXEC_IGNORE"
-  | (string & {});
+export type WorkflowOnDdl = "IGNORE" | "STOP" | "EXEC" | "EXEC_IGNORE";
 export const WorkflowOnDdl = /*@__PURE__*/ S.String;
 
 export interface WorkflowActor {
@@ -5455,14 +5842,15 @@ export interface DismissSchemaRecommendationRequest {
   database: string;
   /** Schema recommendation sequence number. Example: `42`. */
   number: number;
-  body?: unknown;
+  /** The reason for dismissing the recommendation (max 500 characters) */
+  reason?: string;
 }
 export const DismissSchemaRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     number: S.Number.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    reason: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5479,8 +5867,7 @@ export type SchemaRecommendationState =
   | "open"
   | "applied"
   | "dismissed"
-  | "stale"
-  | (string & {});
+  | "stale";
 export const SchemaRecommendationState = /*@__PURE__*/ S.String;
 
 /** The type of recommendation */
@@ -5493,8 +5880,7 @@ export type SchemaRecommendationRecommendationType =
   | "new_index"
   | "encoding_upgrade"
   | "bloated_table"
-  | "bloated_index"
-  | (string & {});
+  | "bloated_index";
 export const SchemaRecommendationRecommendationType = /*@__PURE__*/ S.String;
 
 export interface SchemaRecommendationClosedByDeployRequest {
@@ -5769,8 +6155,7 @@ export const GetBranchAnomalyRequest = /*@__PURE__*/ S.suspend(() =>
 export type AnomalyCorrelationsItemTabletType =
   | "primary"
   | "replica"
-  | "rdonly"
-  | (string & {});
+  | "rdonly";
 export const AnomalyCorrelationsItemTabletType = /*@__PURE__*/ S.String;
 
 export interface AnomalyCorrelationsItem {
@@ -5803,7 +6188,7 @@ export const AnomalyCorrelationsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnomalyCorrelationsItem",
 }) as any as S.Schema<AnomalyCorrelationsItem>;
 
-export type AnomalyCorrelationsList = AnomalyCorrelationsItem[];
+export type AnomalyCorrelationsList = ReadonlyArray<AnomalyCorrelationsItem>;
 export const AnomalyCorrelationsList = /*@__PURE__*/ S.Array(
   AnomalyCorrelationsItem,
 ) as any as S.Schema<AnomalyCorrelationsList>;
@@ -5874,8 +6259,7 @@ export type PostgresClusterResizeRequestState =
   | "pending"
   | "resizing"
   | "canceled"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const PostgresClusterResizeRequestState = /*@__PURE__*/ S.String;
 
 export interface PostgresClusterResizeRequestActor {
@@ -5916,11 +6300,7 @@ export const PostgresClusterResizeRequestPreviousParametersMap =
   ) as any as S.Schema<PostgresClusterResizeRequestPreviousParametersMap>;
 
 /** The storage type (gp3 or io2) */
-export type PostgresClusterResizeRequestStorageType =
-  | "gp3"
-  | "io2"
-  | "pd_ssd"
-  | (string & {});
+export type PostgresClusterResizeRequestStorageType = "gp3" | "io2" | "pd_ssd";
 export const PostgresClusterResizeRequestStorageType = /*@__PURE__*/ S.String;
 
 export interface PostgresClusterResizeRequest {
@@ -6065,13 +6445,13 @@ export const QueryTagsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<QueryTagsItemMap>;
 
 /** Tags associated with the query */
-export type QueryTagsList = QueryTagsItemMap[];
+export type QueryTagsList = ReadonlyArray<QueryTagsItemMap>;
 export const QueryTagsList = /*@__PURE__*/ S.Array(
   QueryTagsItemMap,
 ) as any as S.Schema<QueryTagsList>;
 
 /** Tables accessed by the query */
-export type QueryTablesList = string[];
+export type QueryTablesList = ReadonlyArray<string>;
 export const QueryTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QueryTablesList>;
@@ -6210,13 +6590,13 @@ export const PaginatedQueryDataItemTagsItemMap = /*@__PURE__*/ S.Record(
 
 /** Tags associated with the query */
 export type PaginatedQueryDataItemTagsList =
-  PaginatedQueryDataItemTagsItemMap[];
+  ReadonlyArray<PaginatedQueryDataItemTagsItemMap>;
 export const PaginatedQueryDataItemTagsList = /*@__PURE__*/ S.Array(
   PaginatedQueryDataItemTagsItemMap,
 ) as any as S.Schema<PaginatedQueryDataItemTagsList>;
 
 /** Tables accessed by the query */
-export type PaginatedQueryDataItemTablesList = string[];
+export type PaginatedQueryDataItemTablesList = ReadonlyArray<string>;
 export const PaginatedQueryDataItemTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PaginatedQueryDataItemTablesList>;
@@ -6296,7 +6676,7 @@ export const PaginatedQueryDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedQueryDataItem",
 }) as any as S.Schema<PaginatedQueryDataItem>;
 
-export type PaginatedQueryDataList = PaginatedQueryDataItem[];
+export type PaginatedQueryDataList = ReadonlyArray<PaginatedQueryDataItem>;
 export const PaginatedQueryDataList = /*@__PURE__*/ S.Array(
   PaginatedQueryDataItem,
 ) as any as S.Schema<PaginatedQueryDataList>;
@@ -6331,8 +6711,7 @@ export const PaginatedQuery = /*@__PURE__*/ S.suspend(() =>
 export type GetBranchQueryTagRequestTabletType =
   | "primary"
   | "replica"
-  | "rdonly"
-  | (string & {});
+  | "rdonly";
 export const GetBranchQueryTagRequestTabletType = /*@__PURE__*/ S.String;
 
 export interface GetBranchQueryTagRequest {
@@ -6387,15 +6766,11 @@ export const GetBranchQueryTagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBranchQueryTagRequest>;
 
 /** The source of the tag */
-export type QueryTagSource = "sql" | "system" | (string & {});
+export type QueryTagSource = "sql" | "system";
 export const QueryTagSource = /*@__PURE__*/ S.String;
 
 /** The kind of tag value */
-export type QueryTagValuesItemKind =
-  | "literal"
-  | "overflow"
-  | "collapsed"
-  | (string & {});
+export type QueryTagValuesItemKind = "literal" | "overflow" | "collapsed";
 export const QueryTagValuesItemKind = /*@__PURE__*/ S.String;
 
 export interface QueryTagValuesItem {
@@ -6416,7 +6791,7 @@ export const QueryTagValuesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryTagValuesItem",
 }) as any as S.Schema<QueryTagValuesItem>;
 
-export type QueryTagValuesList = QueryTagValuesItem[];
+export type QueryTagValuesList = ReadonlyArray<QueryTagValuesItem>;
 export const QueryTagValuesList = /*@__PURE__*/ S.Array(
   QueryTagValuesItem,
 ) as any as S.Schema<QueryTagValuesList>;
@@ -6490,7 +6865,8 @@ export const GetBranchSchemaResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetBranchSchemaResponseDataItem",
 }) as any as S.Schema<GetBranchSchemaResponseDataItem>;
 
-export type GetBranchSchemaResponseDataList = GetBranchSchemaResponseDataItem[];
+export type GetBranchSchemaResponseDataList =
+  ReadonlyArray<GetBranchSchemaResponseDataItem>;
 export const GetBranchSchemaResponseDataList = /*@__PURE__*/ S.Array(
   GetBranchSchemaResponseDataItem,
 ) as any as S.Schema<GetBranchSchemaResponseDataList>;
@@ -6649,7 +7025,7 @@ export const GetDatabaseThrottlerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseThrottlerRequest>;
 
 /** Keyspaces that are eligible for throttler configuration in the configurable resource (database or deploy request) */
-export type ThrottlerConfigurationsKeyspacesList = string[];
+export type ThrottlerConfigurationsKeyspacesList = ReadonlyArray<string>;
 export const ThrottlerConfigurationsKeyspacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThrottlerConfigurationsKeyspacesList>;
@@ -6695,7 +7071,7 @@ export const ThrottlerConfigurationsConfigurationsItem =
   }) as any as S.Schema<ThrottlerConfigurationsConfigurationsItem>;
 
 export type ThrottlerConfigurationsConfigurationsList =
-  ThrottlerConfigurationsConfigurationsItem[];
+  ReadonlyArray<ThrottlerConfigurationsConfigurationsItem>;
 export const ThrottlerConfigurationsConfigurationsList = /*@__PURE__*/ S.Array(
   ThrottlerConfigurationsConfigurationsItem,
 ) as any as S.Schema<ThrottlerConfigurationsConfigurationsList>;
@@ -6785,8 +7161,7 @@ export type DeploymentState =
   | "complete_revert"
   | "complete_revert_error"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const DeploymentState = /*@__PURE__*/ S.String;
 
 export type DeploymentPrecedingDeploymentsItemMap = {
@@ -6799,7 +7174,7 @@ export const DeploymentPrecedingDeploymentsItemMap = /*@__PURE__*/ S.Record(
 
 /** The deployments ahead of this one in the queue */
 export type DeploymentPrecedingDeploymentsList =
-  DeploymentPrecedingDeploymentsItemMap[];
+  ReadonlyArray<DeploymentPrecedingDeploymentsItemMap>;
 export const DeploymentPrecedingDeploymentsList = /*@__PURE__*/ S.Array(
   DeploymentPrecedingDeploymentsItemMap,
 ) as any as S.Schema<DeploymentPrecedingDeploymentsList>;
@@ -6811,12 +7186,12 @@ export type DeploymentDeployOperationsItemState =
   | "in_progress"
   | "complete"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const DeploymentDeployOperationsItemState = /*@__PURE__*/ S.String;
 
 /** Names of foreign keys removed by this operation */
-export type DeploymentDeployOperationsItemRemovedForeignKeyNamesList = string[];
+export type DeploymentDeployOperationsItemRemovedForeignKeyNamesList =
+  ReadonlyArray<string>;
 export const DeploymentDeployOperationsItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6890,7 +7265,8 @@ export const DeploymentDeployOperationsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentDeployOperationsItem",
 }) as any as S.Schema<DeploymentDeployOperationsItem>;
 
-export type DeploymentDeployOperationsList = DeploymentDeployOperationsItem[];
+export type DeploymentDeployOperationsList =
+  ReadonlyArray<DeploymentDeployOperationsItem>;
 export const DeploymentDeployOperationsList = /*@__PURE__*/ S.Array(
   DeploymentDeployOperationsItem,
 ) as any as S.Schema<DeploymentDeployOperationsList>;
@@ -6901,21 +7277,21 @@ export type DeploymentDeployOperationSummariesItemState =
   | "in_progress"
   | "complete"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const DeploymentDeployOperationSummariesItemState =
   /*@__PURE__*/ S.String;
 
 /** Names of foreign keys removed by this operation summary */
 export type DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList>;
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
-export type DeploymentDeployOperationSummariesItemShardNamesList = string[];
+export type DeploymentDeployOperationSummariesItemShardNamesList =
+  ReadonlyArray<string>;
 export const DeploymentDeployOperationSummariesItemShardNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6928,8 +7304,7 @@ export type DeploymentDeployOperationSummariesItemOperationsItemState =
   | "in_progress"
   | "complete"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const DeploymentDeployOperationSummariesItemOperationsItemState =
   /*@__PURE__*/ S.String;
 
@@ -6959,7 +7334,7 @@ export const DeploymentDeployOperationSummariesItemOperationsItem =
   }) as any as S.Schema<DeploymentDeployOperationSummariesItemOperationsItem>;
 
 export type DeploymentDeployOperationSummariesItemOperationsList =
-  DeploymentDeployOperationSummariesItemOperationsItem[];
+  ReadonlyArray<DeploymentDeployOperationSummariesItemOperationsItem>;
 export const DeploymentDeployOperationSummariesItemOperationsList =
   /*@__PURE__*/ S.Array(
     DeploymentDeployOperationSummariesItemOperationsItem,
@@ -7036,7 +7411,7 @@ export const DeploymentDeployOperationSummariesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeploymentDeployOperationSummariesItem>;
 
 export type DeploymentDeployOperationSummariesList =
-  DeploymentDeployOperationSummariesItem[];
+  ReadonlyArray<DeploymentDeployOperationSummariesItem>;
 export const DeploymentDeployOperationSummariesList = /*@__PURE__*/ S.Array(
   DeploymentDeployOperationSummariesItem,
 ) as any as S.Schema<DeploymentDeployOperationSummariesList>;
@@ -7050,7 +7425,8 @@ export const DeploymentLintErrorsItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DeploymentLintErrorsItemMap>;
 
 /** Schema lint errors preventing the deployment from completing */
-export type DeploymentLintErrorsList = DeploymentLintErrorsItemMap[];
+export type DeploymentLintErrorsList =
+  ReadonlyArray<DeploymentLintErrorsItemMap>;
 export const DeploymentLintErrorsList = /*@__PURE__*/ S.Array(
   DeploymentLintErrorsItemMap,
 ) as any as S.Schema<DeploymentLintErrorsList>;
@@ -7066,7 +7442,7 @@ export const DeploymentSequentialDiffDependenciesItemMap =
 
 /** The schema dependencies that must be satisfied */
 export type DeploymentSequentialDiffDependenciesList =
-  DeploymentSequentialDiffDependenciesItemMap[];
+  ReadonlyArray<DeploymentSequentialDiffDependenciesItemMap>;
 export const DeploymentSequentialDiffDependenciesList = /*@__PURE__*/ S.Array(
   DeploymentSequentialDiffDependenciesItemMap,
 ) as any as S.Schema<DeploymentSequentialDiffDependenciesList>;
@@ -7081,7 +7457,7 @@ export const DeploymentLookupVindexOperationsItemMap = /*@__PURE__*/ S.Record(
 
 /** Lookup Vitess index operations */
 export type DeploymentLookupVindexOperationsList =
-  DeploymentLookupVindexOperationsItemMap[];
+  ReadonlyArray<DeploymentLookupVindexOperationsItemMap>;
 export const DeploymentLookupVindexOperationsList = /*@__PURE__*/ S.Array(
   DeploymentLookupVindexOperationsItemMap,
 ) as any as S.Schema<DeploymentLookupVindexOperationsList>;
@@ -7318,8 +7694,7 @@ export type PaginatedDeploymentDataItemState =
   | "complete_revert"
   | "complete_revert_error"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const PaginatedDeploymentDataItemState = /*@__PURE__*/ S.String;
 
 export type PaginatedDeploymentDataItemPrecedingDeploymentsItemMap = {
@@ -7333,7 +7708,7 @@ export const PaginatedDeploymentDataItemPrecedingDeploymentsItemMap =
 
 /** The deployments ahead of this one in the queue */
 export type PaginatedDeploymentDataItemPrecedingDeploymentsList =
-  PaginatedDeploymentDataItemPrecedingDeploymentsItemMap[];
+  ReadonlyArray<PaginatedDeploymentDataItemPrecedingDeploymentsItemMap>;
 export const PaginatedDeploymentDataItemPrecedingDeploymentsList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemPrecedingDeploymentsItemMap,
@@ -7346,14 +7721,13 @@ export type PaginatedDeploymentDataItemDeployOperationsItemState =
   | "in_progress"
   | "complete"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const PaginatedDeploymentDataItemDeployOperationsItemState =
   /*@__PURE__*/ S.String;
 
 /** Names of foreign keys removed by this operation */
 export type PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDeploymentDataItemDeployOperationsItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7429,7 +7803,7 @@ export const PaginatedDeploymentDataItemDeployOperationsItem =
   }) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationsItem>;
 
 export type PaginatedDeploymentDataItemDeployOperationsList =
-  PaginatedDeploymentDataItemDeployOperationsItem[];
+  ReadonlyArray<PaginatedDeploymentDataItemDeployOperationsItem>;
 export const PaginatedDeploymentDataItemDeployOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemDeployOperationsItem,
@@ -7441,14 +7815,13 @@ export type PaginatedDeploymentDataItemDeployOperationSummariesItemState =
   | "in_progress"
   | "complete"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemState =
   /*@__PURE__*/ S.String;
 
 /** Names of foreign keys removed by this operation summary */
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7456,7 +7829,7 @@ export const PaginatedDeploymentDataItemDeployOperationSummariesItemRemovedForei
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7464,13 +7837,7 @@ export const PaginatedDeploymentDataItemDeployOperationSummariesItemShardNamesLi
 
 /** The state of the deploy operation */
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItemState =
-    | "pending"
-    | "queued"
-    | "in_progress"
-    | "complete"
-    | "cancelled"
-    | "error"
-    | (string & {});
+  "pending" | "queued" | "in_progress" | "complete" | "cancelled" | "error";
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItemState =
   /*@__PURE__*/ S.String;
 
@@ -7502,7 +7869,7 @@ export const PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsIt
   }) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem>;
 
 export type PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList =
-  PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem[];
+  ReadonlyArray<PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem>;
 export const PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemDeployOperationSummariesItemOperationsItem,
@@ -7581,7 +7948,7 @@ export const PaginatedDeploymentDataItemDeployOperationSummariesItem =
   }) as any as S.Schema<PaginatedDeploymentDataItemDeployOperationSummariesItem>;
 
 export type PaginatedDeploymentDataItemDeployOperationSummariesList =
-  PaginatedDeploymentDataItemDeployOperationSummariesItem[];
+  ReadonlyArray<PaginatedDeploymentDataItemDeployOperationSummariesItem>;
 export const PaginatedDeploymentDataItemDeployOperationSummariesList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemDeployOperationSummariesItem,
@@ -7598,7 +7965,7 @@ export const PaginatedDeploymentDataItemLintErrorsItemMap =
 
 /** Schema lint errors preventing the deployment from completing */
 export type PaginatedDeploymentDataItemLintErrorsList =
-  PaginatedDeploymentDataItemLintErrorsItemMap[];
+  ReadonlyArray<PaginatedDeploymentDataItemLintErrorsItemMap>;
 export const PaginatedDeploymentDataItemLintErrorsList = /*@__PURE__*/ S.Array(
   PaginatedDeploymentDataItemLintErrorsItemMap,
 ) as any as S.Schema<PaginatedDeploymentDataItemLintErrorsList>;
@@ -7614,7 +7981,7 @@ export const PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap =
 
 /** The schema dependencies that must be satisfied */
 export type PaginatedDeploymentDataItemSequentialDiffDependenciesList =
-  PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap[];
+  ReadonlyArray<PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap>;
 export const PaginatedDeploymentDataItemSequentialDiffDependenciesList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemSequentialDiffDependenciesItemMap,
@@ -7631,7 +7998,7 @@ export const PaginatedDeploymentDataItemLookupVindexOperationsItemMap =
 
 /** Lookup Vitess index operations */
 export type PaginatedDeploymentDataItemLookupVindexOperationsList =
-  PaginatedDeploymentDataItemLookupVindexOperationsItemMap[];
+  ReadonlyArray<PaginatedDeploymentDataItemLookupVindexOperationsItemMap>;
 export const PaginatedDeploymentDataItemLookupVindexOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDeploymentDataItemLookupVindexOperationsItemMap,
@@ -7836,7 +8203,8 @@ export const PaginatedDeploymentDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedDeploymentDataItem",
 }) as any as S.Schema<PaginatedDeploymentDataItem>;
 
-export type PaginatedDeploymentDataList = PaginatedDeploymentDataItem[];
+export type PaginatedDeploymentDataList =
+  ReadonlyArray<PaginatedDeploymentDataItem>;
 export const PaginatedDeploymentDataList = /*@__PURE__*/ S.Array(
   PaginatedDeploymentDataItem,
 ) as any as S.Schema<PaginatedDeploymentDataList>;
@@ -8047,7 +8415,8 @@ export const PaginatedLineItemDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedLineItemDataItem",
 }) as any as S.Schema<PaginatedLineItemDataItem>;
 
-export type PaginatedLineItemDataList = PaginatedLineItemDataItem[];
+export type PaginatedLineItemDataList =
+  ReadonlyArray<PaginatedLineItemDataItem>;
 export const PaginatedLineItemDataList = /*@__PURE__*/ S.Array(
   PaginatedLineItemDataItem,
 ) as any as S.Schema<PaginatedLineItemDataList>;
@@ -8158,7 +8527,7 @@ export const GetKeyspaceRolloutStatusResponseShardsItem =
   }) as any as S.Schema<GetKeyspaceRolloutStatusResponseShardsItem>;
 
 export type GetKeyspaceRolloutStatusResponseShardsList =
-  GetKeyspaceRolloutStatusResponseShardsItem[];
+  ReadonlyArray<GetKeyspaceRolloutStatusResponseShardsItem>;
 export const GetKeyspaceRolloutStatusResponseShardsList = /*@__PURE__*/ S.Array(
   GetKeyspaceRolloutStatusResponseShardsItem,
 ) as any as S.Schema<GetKeyspaceRolloutStatusResponseShardsList>;
@@ -8248,8 +8617,7 @@ export type BranchMaintenanceScheduleFrequencyUnit =
   | "day"
   | "week"
   | "month"
-  | "once"
-  | (string & {});
+  | "once";
 export const BranchMaintenanceScheduleFrequencyUnit = /*@__PURE__*/ S.String;
 
 export interface BranchMaintenanceSchedule {
@@ -8622,7 +8990,7 @@ export const OrganizationMembershipUser = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationMembershipUser>;
 
 /** The role of the user in the organization */
-export type OrganizationMembershipRole = "member" | "admin" | (string & {});
+export type OrganizationMembershipRole = "member" | "admin";
 export const OrganizationMembershipRole = /*@__PURE__*/ S.String;
 
 export interface OrganizationMembership {
@@ -8725,25 +9093,26 @@ export type DatabaseBranchPasswordRole =
   | "reader"
   | "writer"
   | "admin"
-  | "readwriter"
-  | (string & {});
+  | "readwriter";
 export const DatabaseBranchPasswordRole = /*@__PURE__*/ S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
-export type DatabaseBranchPasswordCidrsList = string[];
+export type DatabaseBranchPasswordCidrsList = ReadonlyArray<string>;
 export const DatabaseBranchPasswordCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatabaseBranchPasswordCidrsList>;
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
-export type DatabaseBranchPasswordDirectVtgateAddressesList = string[];
+export type DatabaseBranchPasswordDirectVtgateAddressesList =
+  ReadonlyArray<string>;
 export const DatabaseBranchPasswordDirectVtgateAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DatabaseBranchPasswordDirectVtgateAddressesList>;
 
 /** The read-only replica host URLs */
-export type DatabaseBranchPasswordAccessHostRegionalUrlsList = string[];
+export type DatabaseBranchPasswordAccessHostRegionalUrlsList =
+  ReadonlyArray<string>;
 export const DatabaseBranchPasswordAccessHostRegionalUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8768,7 +9137,8 @@ export const DatabaseBranchPasswordActor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseBranchPasswordActor>;
 
 /** Public IP addresses for the region */
-export type DatabaseBranchPasswordRegionPublicIpAddressesList = string[];
+export type DatabaseBranchPasswordRegionPublicIpAddressesList =
+  ReadonlyArray<string>;
 export const DatabaseBranchPasswordRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9056,13 +9426,13 @@ export const GetQuerySummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetQuerySummaryRequest>;
 
 /** Tables accessed by the query */
-export type QuerySummaryTablesList = string[];
+export type QuerySummaryTablesList = ReadonlyArray<string>;
 export const QuerySummaryTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QuerySummaryTablesList>;
 
 /** Fully qualified tables accessed by the query */
-export type QuerySummaryQualifiedTablesList = string[];
+export type QuerySummaryQualifiedTablesList = ReadonlyArray<string>;
 export const QuerySummaryQualifiedTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<QuerySummaryQualifiedTablesList>;
@@ -9077,7 +9447,7 @@ export const QuerySummaryTableKeyspacesItemMap = /*@__PURE__*/ S.Record(
 
 /** Mapping of tables to their keyspaces */
 export type QuerySummaryTableKeyspacesList =
-  QuerySummaryTableKeyspacesItemMap[];
+  ReadonlyArray<QuerySummaryTableKeyspacesItemMap>;
 export const QuerySummaryTableKeyspacesList = /*@__PURE__*/ S.Array(
   QuerySummaryTableKeyspacesItemMap,
 ) as any as S.Schema<QuerySummaryTableKeyspacesList>;
@@ -9091,7 +9461,8 @@ export const QuerySummaryIndexUsagesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<QuerySummaryIndexUsagesItemMap>;
 
 /** Index usage information */
-export type QuerySummaryIndexUsagesList = QuerySummaryIndexUsagesItemMap[];
+export type QuerySummaryIndexUsagesList =
+  ReadonlyArray<QuerySummaryIndexUsagesItemMap>;
 export const QuerySummaryIndexUsagesList = /*@__PURE__*/ S.Array(
   QuerySummaryIndexUsagesItemMap,
 ) as any as S.Schema<QuerySummaryIndexUsagesList>;
@@ -9106,7 +9477,7 @@ export const QuerySummaryRoutingIndexUsagesItemMap = /*@__PURE__*/ S.Record(
 
 /** Routing index usage information */
 export type QuerySummaryRoutingIndexUsagesList =
-  QuerySummaryRoutingIndexUsagesItemMap[];
+  ReadonlyArray<QuerySummaryRoutingIndexUsagesItemMap>;
 export const QuerySummaryRoutingIndexUsagesList = /*@__PURE__*/ S.Array(
   QuerySummaryRoutingIndexUsagesItemMap,
 ) as any as S.Schema<QuerySummaryRoutingIndexUsagesList>;
@@ -9444,14 +9815,13 @@ export const LintBranchSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 export type PaginatedSchemaLintErrorDataItemSubjectType =
   | "table"
   | "vschema"
-  | "routing_rules"
-  | (string & {});
+  | "routing_rules";
 export const PaginatedSchemaLintErrorDataItemSubjectType =
   /*@__PURE__*/ S.String;
 
 /** A list of invalid foreign key columns in a table */
 export type PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9459,7 +9829,7 @@ export const PaginatedSchemaLintErrorDataItemForeignKeyColumnNamesList =
 
 /** A list of invalid auto-incremented columns */
 export type PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedSchemaLintErrorDataItemAutoIncrementColumnNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9528,7 +9898,7 @@ export const PaginatedSchemaLintErrorDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedSchemaLintErrorDataItem>;
 
 export type PaginatedSchemaLintErrorDataList =
-  PaginatedSchemaLintErrorDataItem[];
+  ReadonlyArray<PaginatedSchemaLintErrorDataItem>;
 export const PaginatedSchemaLintErrorDataList = /*@__PURE__*/ S.Array(
   PaginatedSchemaLintErrorDataItem,
 ) as any as S.Schema<PaginatedSchemaLintErrorDataList>;
@@ -9658,7 +10028,8 @@ export const PaginatedAuditLogEventDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedAuditLogEventDataItem",
 }) as any as S.Schema<PaginatedAuditLogEventDataItem>;
 
-export type PaginatedAuditLogEventDataList = PaginatedAuditLogEventDataItem[];
+export type PaginatedAuditLogEventDataList =
+  ReadonlyArray<PaginatedAuditLogEventDataItem>;
 export const PaginatedAuditLogEventDataList = /*@__PURE__*/ S.Array(
   PaginatedAuditLogEventDataItem,
 ) as any as S.Schema<PaginatedAuditLogEventDataList>;
@@ -9717,10 +10088,7 @@ export const ListBackupPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBackupPoliciesRequest>;
 
 /** Whether the policy is for production or development branches */
-export type PaginatedBackupPolicyDataItemTarget =
-  | "production"
-  | "development"
-  | (string & {});
+export type PaginatedBackupPolicyDataItemTarget = "production" | "development";
 export const PaginatedBackupPolicyDataItemTarget = /*@__PURE__*/ S.String;
 
 export interface PaginatedBackupPolicyDataItem {
@@ -9780,7 +10148,8 @@ export const PaginatedBackupPolicyDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedBackupPolicyDataItem",
 }) as any as S.Schema<PaginatedBackupPolicyDataItem>;
 
-export type PaginatedBackupPolicyDataList = PaginatedBackupPolicyDataItem[];
+export type PaginatedBackupPolicyDataList =
+  ReadonlyArray<PaginatedBackupPolicyDataItem>;
 export const PaginatedBackupPolicyDataList = /*@__PURE__*/ S.Array(
   PaginatedBackupPolicyDataItem,
 ) as any as S.Schema<PaginatedBackupPolicyDataList>;
@@ -9820,8 +10189,7 @@ export type ListBackupsRequestState =
   | "success"
   | "failed"
   | "canceled"
-  | "ignored"
-  | (string & {});
+  | "ignored";
 export const ListBackupsRequestState = /*@__PURE__*/ S.String;
 
 export interface ListBackupsRequest {
@@ -9882,8 +10250,7 @@ export type PaginatedBackupDataItemState =
   | "success"
   | "failed"
   | "canceled"
-  | "ignored"
-  | (string & {});
+  | "ignored";
 export const PaginatedBackupDataItemState = /*@__PURE__*/ S.String;
 
 export interface PaginatedBackupDataItemRestoredBranchesItem {
@@ -9912,7 +10279,7 @@ export const PaginatedBackupDataItemRestoredBranchesItem =
   }) as any as S.Schema<PaginatedBackupDataItemRestoredBranchesItem>;
 
 export type PaginatedBackupDataItemRestoredBranchesList =
-  PaginatedBackupDataItemRestoredBranchesItem[];
+  ReadonlyArray<PaginatedBackupDataItemRestoredBranchesItem>;
 export const PaginatedBackupDataItemRestoredBranchesList =
   /*@__PURE__*/ S.Array(
     PaginatedBackupDataItemRestoredBranchesItem,
@@ -9939,8 +10306,7 @@ export const PaginatedBackupDataItemActor = /*@__PURE__*/ S.suspend(() =>
 /** Whether the policy is for production or development branches */
 export type PaginatedBackupDataItemBackupPolicyTarget =
   | "production"
-  | "development"
-  | (string & {});
+  | "development";
 export const PaginatedBackupDataItemBackupPolicyTarget = /*@__PURE__*/ S.String;
 
 export interface PaginatedBackupDataItemBackupPolicy {
@@ -10121,7 +10487,7 @@ export const PaginatedBackupDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedBackupDataItem",
 }) as any as S.Schema<PaginatedBackupDataItem>;
 
-export type PaginatedBackupDataList = PaginatedBackupDataItem[];
+export type PaginatedBackupDataList = ReadonlyArray<PaginatedBackupDataItem>;
 export const PaginatedBackupDataList = /*@__PURE__*/ S.Array(
   PaginatedBackupDataItem,
 ) as any as S.Schema<PaginatedBackupDataList>;
@@ -10193,8 +10559,7 @@ export type PaginatedPostgresBouncerResizeRequestDataItemState =
   | "pending"
   | "resizing"
   | "canceled"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const PaginatedPostgresBouncerResizeRequestDataItemState =
   /*@__PURE__*/ S.String;
 
@@ -10361,7 +10726,7 @@ export const PaginatedPostgresBouncerResizeRequestDataItem =
   }) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItem>;
 
 export type PaginatedPostgresBouncerResizeRequestDataList =
-  PaginatedPostgresBouncerResizeRequestDataItem[];
+  ReadonlyArray<PaginatedPostgresBouncerResizeRequestDataItem>;
 export const PaginatedPostgresBouncerResizeRequestDataList =
   /*@__PURE__*/ S.Array(
     PaginatedPostgresBouncerResizeRequestDataItem,
@@ -10455,8 +10820,7 @@ export const PaginatedPostgresBouncerDataItemSku = /*@__PURE__*/ S.suspend(() =>
 export type PaginatedPostgresBouncerDataItemTarget =
   | "primary"
   | "replica"
-  | "replica_az_affinity"
-  | (string & {});
+  | "replica_az_affinity";
 export const PaginatedPostgresBouncerDataItemTarget = /*@__PURE__*/ S.String;
 
 export interface PaginatedPostgresBouncerDataItemActor {
@@ -10505,8 +10869,7 @@ export const PaginatedPostgresBouncerDataItemBranch = /*@__PURE__*/ S.suspend(
 
 /** The namespace of the parameter */
 export type PaginatedPostgresBouncerDataItemParametersItemNamespace =
-  | "pgbouncer"
-  | (string & {});
+  "pgbouncer";
 export const PaginatedPostgresBouncerDataItemParametersItemNamespace =
   /*@__PURE__*/ S.String;
 
@@ -10516,14 +10879,13 @@ export type PaginatedPostgresBouncerDataItemParametersItemParameterType =
   | "integer"
   | "seconds"
   | "select"
-  | "string"
-  | (string & {});
+  | "string";
 export const PaginatedPostgresBouncerDataItemParametersItemParameterType =
   /*@__PURE__*/ S.String;
 
 /** Valid options for the parameter value */
 export type PaginatedPostgresBouncerDataItemParametersItemOptionsList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedPostgresBouncerDataItemParametersItemOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10619,7 +10981,7 @@ export const PaginatedPostgresBouncerDataItemParametersItem =
   }) as any as S.Schema<PaginatedPostgresBouncerDataItemParametersItem>;
 
 export type PaginatedPostgresBouncerDataItemParametersList =
-  PaginatedPostgresBouncerDataItemParametersItem[];
+  ReadonlyArray<PaginatedPostgresBouncerDataItemParametersItem>;
 export const PaginatedPostgresBouncerDataItemParametersList =
   /*@__PURE__*/ S.Array(
     PaginatedPostgresBouncerDataItemParametersItem,
@@ -10667,7 +11029,7 @@ export const PaginatedPostgresBouncerDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedPostgresBouncerDataItem>;
 
 export type PaginatedPostgresBouncerDataList =
-  PaginatedPostgresBouncerDataItem[];
+  ReadonlyArray<PaginatedPostgresBouncerDataItem>;
 export const PaginatedPostgresBouncerDataList = /*@__PURE__*/ S.Array(
   PaginatedPostgresBouncerDataItem,
 ) as any as S.Schema<PaginatedPostgresBouncerDataList>;
@@ -10744,8 +11106,7 @@ export const ListBranchAnomaliesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PaginatedAnomalyDataItemCorrelationsItemTabletType =
   | "primary"
   | "replica"
-  | "rdonly"
-  | (string & {});
+  | "rdonly";
 export const PaginatedAnomalyDataItemCorrelationsItemTabletType =
   /*@__PURE__*/ S.String;
 
@@ -10781,7 +11142,7 @@ export const PaginatedAnomalyDataItemCorrelationsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedAnomalyDataItemCorrelationsItem>;
 
 export type PaginatedAnomalyDataItemCorrelationsList =
-  PaginatedAnomalyDataItemCorrelationsItem[];
+  ReadonlyArray<PaginatedAnomalyDataItemCorrelationsItem>;
 export const PaginatedAnomalyDataItemCorrelationsList = /*@__PURE__*/ S.Array(
   PaginatedAnomalyDataItemCorrelationsItem,
 ) as any as S.Schema<PaginatedAnomalyDataItemCorrelationsList>;
@@ -10823,7 +11184,7 @@ export const PaginatedAnomalyDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedAnomalyDataItem",
 }) as any as S.Schema<PaginatedAnomalyDataItem>;
 
-export type PaginatedAnomalyDataList = PaginatedAnomalyDataItem[];
+export type PaginatedAnomalyDataList = ReadonlyArray<PaginatedAnomalyDataItem>;
 export const PaginatedAnomalyDataList = /*@__PURE__*/ S.Array(
   PaginatedAnomalyDataItem,
 ) as any as S.Schema<PaginatedAnomalyDataList>;
@@ -10924,8 +11285,7 @@ export type PaginatedPostgresClusterResizeRequestDataItemState =
   | "pending"
   | "resizing"
   | "canceled"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const PaginatedPostgresClusterResizeRequestDataItemState =
   /*@__PURE__*/ S.String;
 
@@ -10971,8 +11331,7 @@ export const PaginatedPostgresClusterResizeRequestDataItemPreviousParametersMap 
 export type PaginatedPostgresClusterResizeRequestDataItemStorageType =
   | "gp3"
   | "io2"
-  | "pd_ssd"
-  | (string & {});
+  | "pd_ssd";
 export const PaginatedPostgresClusterResizeRequestDataItemStorageType =
   /*@__PURE__*/ S.String;
 
@@ -11080,7 +11439,7 @@ export const PaginatedPostgresClusterResizeRequestDataItem =
   }) as any as S.Schema<PaginatedPostgresClusterResizeRequestDataItem>;
 
 export type PaginatedPostgresClusterResizeRequestDataList =
-  PaginatedPostgresClusterResizeRequestDataItem[];
+  ReadonlyArray<PaginatedPostgresClusterResizeRequestDataItem>;
 export const PaginatedPostgresClusterResizeRequestDataList =
   /*@__PURE__*/ S.Array(
     PaginatedPostgresClusterResizeRequestDataItem,
@@ -11116,7 +11475,7 @@ export const PaginatedPostgresClusterResizeRequest = /*@__PURE__*/ S.suspend(
   identifier: "PaginatedPostgresClusterResizeRequest",
 }) as any as S.Schema<PaginatedPostgresClusterResizeRequest>;
 
-export type ListBranchesRequestOrder = "asc" | "desc" | (string & {});
+export type ListBranchesRequestOrder = "asc" | "desc";
 export const ListBranchesRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListBranchesRequest {
@@ -11159,10 +11518,7 @@ export const ListBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBranchesRequest>;
 
 /** The kind of branch */
-export type PaginatedDatabaseBranchDataItemKind =
-  | "mysql"
-  | "postgresql"
-  | (string & {});
+export type PaginatedDatabaseBranchDataItemKind = "mysql" | "postgresql";
 export const PaginatedDatabaseBranchDataItemKind = /*@__PURE__*/ S.String;
 
 /** The current state of the branch */
@@ -11171,8 +11527,7 @@ export type PaginatedDatabaseBranchDataItemState =
   | "sleep_in_progress"
   | "sleeping"
   | "awakening"
-  | "ready"
-  | (string & {});
+  | "ready";
 export const PaginatedDatabaseBranchDataItemState = /*@__PURE__*/ S.String;
 
 export interface PaginatedDatabaseBranchDataItemActor {
@@ -11221,7 +11576,7 @@ export const PaginatedDatabaseBranchDataItemRestoredFromBranch =
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchDataItemRegionPublicIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDatabaseBranchDataItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11393,7 +11748,8 @@ export const PaginatedDatabaseBranchDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedDatabaseBranchDataItem",
 }) as any as S.Schema<PaginatedDatabaseBranchDataItem>;
 
-export type PaginatedDatabaseBranchDataList = PaginatedDatabaseBranchDataItem[];
+export type PaginatedDatabaseBranchDataList =
+  ReadonlyArray<PaginatedDatabaseBranchDataItem>;
 export const PaginatedDatabaseBranchDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseBranchDataItem,
 ) as any as S.Schema<PaginatedDatabaseBranchDataList>;
@@ -11471,29 +11827,26 @@ export type ListBranchQueriesRequestSort =
   | "trafficControlWarnings"
   | "trafficControlThrottled"
   | "trafficControlChecked"
-  | "trafficControlBudgetsUsed"
-  | (string & {});
+  | "trafficControlBudgetsUsed";
 export const ListBranchQueriesRequestSort = /*@__PURE__*/ S.String;
 
-export type ListBranchQueriesRequestDir = "asc" | "desc" | (string & {});
+export type ListBranchQueriesRequestDir = "asc" | "desc";
 export const ListBranchQueriesRequestDir = /*@__PURE__*/ S.String;
 
 export type ListBranchQueriesRequestTabletType =
   | "primary"
   | "replica"
-  | "rdonly"
-  | (string & {});
+  | "rdonly";
 export const ListBranchQueriesRequestTabletType = /*@__PURE__*/ S.String;
 
 export type ListBranchQueriesRequestType =
   | "SELECT"
   | "INSERT"
   | "UPDATE"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const ListBranchQueriesRequestType = /*@__PURE__*/ S.String;
 
-export type ListBranchQueriesRequestFieldsList = string[];
+export type ListBranchQueriesRequestFieldsList = ReadonlyArray<string>;
 export const ListBranchQueriesRequestFieldsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListBranchQueriesRequestFieldsList>;
@@ -11556,13 +11909,14 @@ export const ListBranchQueriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBranchQueriesRequest>;
 
 /** Tables accessed by the query */
-export type PaginatedQuerySummaryDataItemTablesList = string[];
+export type PaginatedQuerySummaryDataItemTablesList = ReadonlyArray<string>;
 export const PaginatedQuerySummaryDataItemTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PaginatedQuerySummaryDataItemTablesList>;
 
 /** Fully qualified tables accessed by the query */
-export type PaginatedQuerySummaryDataItemQualifiedTablesList = string[];
+export type PaginatedQuerySummaryDataItemQualifiedTablesList =
+  ReadonlyArray<string>;
 export const PaginatedQuerySummaryDataItemQualifiedTablesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11579,7 +11933,7 @@ export const PaginatedQuerySummaryDataItemTableKeyspacesItemMap =
 
 /** Mapping of tables to their keyspaces */
 export type PaginatedQuerySummaryDataItemTableKeyspacesList =
-  PaginatedQuerySummaryDataItemTableKeyspacesItemMap[];
+  ReadonlyArray<PaginatedQuerySummaryDataItemTableKeyspacesItemMap>;
 export const PaginatedQuerySummaryDataItemTableKeyspacesList =
   /*@__PURE__*/ S.Array(
     PaginatedQuerySummaryDataItemTableKeyspacesItemMap,
@@ -11596,7 +11950,7 @@ export const PaginatedQuerySummaryDataItemIndexUsagesItemMap =
 
 /** Index usage information */
 export type PaginatedQuerySummaryDataItemIndexUsagesList =
-  PaginatedQuerySummaryDataItemIndexUsagesItemMap[];
+  ReadonlyArray<PaginatedQuerySummaryDataItemIndexUsagesItemMap>;
 export const PaginatedQuerySummaryDataItemIndexUsagesList =
   /*@__PURE__*/ S.Array(
     PaginatedQuerySummaryDataItemIndexUsagesItemMap,
@@ -11613,7 +11967,7 @@ export const PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap =
 
 /** Routing index usage information */
 export type PaginatedQuerySummaryDataItemRoutingIndexUsagesList =
-  PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap[];
+  ReadonlyArray<PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap>;
 export const PaginatedQuerySummaryDataItemRoutingIndexUsagesList =
   /*@__PURE__*/ S.Array(
     PaginatedQuerySummaryDataItemRoutingIndexUsagesItemMap,
@@ -11775,7 +12129,8 @@ export const PaginatedQuerySummaryDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedQuerySummaryDataItem",
 }) as any as S.Schema<PaginatedQuerySummaryDataItem>;
 
-export type PaginatedQuerySummaryDataList = PaginatedQuerySummaryDataItem[];
+export type PaginatedQuerySummaryDataList =
+  ReadonlyArray<PaginatedQuerySummaryDataItem>;
 export const PaginatedQuerySummaryDataList = /*@__PURE__*/ S.Array(
   PaginatedQuerySummaryDataItem,
 ) as any as S.Schema<PaginatedQuerySummaryDataList>;
@@ -11814,18 +12169,16 @@ export type ListBranchQueryErrorsRequestSort =
   | "lastRun"
   | "count"
   | "totalTime"
-  | "timePerQuery"
-  | (string & {});
+  | "timePerQuery";
 export const ListBranchQueryErrorsRequestSort = /*@__PURE__*/ S.String;
 
-export type ListBranchQueryErrorsRequestDir = "asc" | "desc" | (string & {});
+export type ListBranchQueryErrorsRequestDir = "asc" | "desc";
 export const ListBranchQueryErrorsRequestDir = /*@__PURE__*/ S.String;
 
 export type ListBranchQueryErrorsRequestTabletType =
   | "primary"
   | "replica"
-  | "rdonly"
-  | (string & {});
+  | "rdonly";
 export const ListBranchQueryErrorsRequestTabletType = /*@__PURE__*/ S.String;
 
 export interface ListBranchQueryErrorsRequest {
@@ -11911,7 +12264,8 @@ export const PaginatedErrorSummaryDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedErrorSummaryDataItem",
 }) as any as S.Schema<PaginatedErrorSummaryDataItem>;
 
-export type PaginatedErrorSummaryDataList = PaginatedErrorSummaryDataItem[];
+export type PaginatedErrorSummaryDataList =
+  ReadonlyArray<PaginatedErrorSummaryDataItem>;
 export const PaginatedErrorSummaryDataList = /*@__PURE__*/ S.Array(
   PaginatedErrorSummaryDataItem,
 ) as any as S.Schema<PaginatedErrorSummaryDataList>;
@@ -11948,8 +12302,7 @@ export const PaginatedErrorSummary = /*@__PURE__*/ S.suspend(() =>
 export type ListBranchQueryTagsRequestTabletType =
   | "primary"
   | "replica"
-  | "rdonly"
-  | (string & {});
+  | "rdonly";
 export const ListBranchQueryTagsRequestTabletType = /*@__PURE__*/ S.String;
 
 export interface ListBranchQueryTagsRequest {
@@ -12012,15 +12365,14 @@ export const ListBranchQueryTagsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBranchQueryTagsRequest>;
 
 /** The source of the tag */
-export type PaginatedQueryTagDataItemSource = "sql" | "system" | (string & {});
+export type PaginatedQueryTagDataItemSource = "sql" | "system";
 export const PaginatedQueryTagDataItemSource = /*@__PURE__*/ S.String;
 
 /** The kind of tag value */
 export type PaginatedQueryTagDataItemValuesItemKind =
   | "literal"
   | "overflow"
-  | "collapsed"
-  | (string & {});
+  | "collapsed";
 export const PaginatedQueryTagDataItemValuesItemKind = /*@__PURE__*/ S.String;
 
 export interface PaginatedQueryTagDataItemValuesItem {
@@ -12042,7 +12394,7 @@ export const PaginatedQueryTagDataItemValuesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedQueryTagDataItemValuesItem>;
 
 export type PaginatedQueryTagDataItemValuesList =
-  PaginatedQueryTagDataItemValuesItem[];
+  ReadonlyArray<PaginatedQueryTagDataItemValuesItem>;
 export const PaginatedQueryTagDataItemValuesList = /*@__PURE__*/ S.Array(
   PaginatedQueryTagDataItemValuesItem,
 ) as any as S.Schema<PaginatedQueryTagDataItemValuesList>;
@@ -12070,7 +12422,8 @@ export const PaginatedQueryTagDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedQueryTagDataItem",
 }) as any as S.Schema<PaginatedQueryTagDataItem>;
 
-export type PaginatedQueryTagDataList = PaginatedQueryTagDataItem[];
+export type PaginatedQueryTagDataList =
+  ReadonlyArray<PaginatedQueryTagDataItem>;
 export const PaginatedQueryTagDataList = /*@__PURE__*/ S.Array(
   PaginatedQueryTagDataItem,
 ) as any as S.Schema<PaginatedQueryTagDataList>;
@@ -12104,7 +12457,7 @@ export const PaginatedQueryTag = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedQueryTag",
 }) as any as S.Schema<PaginatedQueryTag>;
 
-export type ListBranchQueryTagSummariesRequestTagsList = string[];
+export type ListBranchQueryTagSummariesRequestTagsList = ReadonlyArray<string>;
 export const ListBranchQueryTagSummariesRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListBranchQueryTagSummariesRequestTagsList>;
@@ -12152,21 +12505,16 @@ export type ListBranchQueryTagSummariesRequestSort =
   | "trafficControlWarnings"
   | "trafficControlThrottled"
   | "trafficControlChecked"
-  | "trafficControlBudgetsUsed"
-  | (string & {});
+  | "trafficControlBudgetsUsed";
 export const ListBranchQueryTagSummariesRequestSort = /*@__PURE__*/ S.String;
 
-export type ListBranchQueryTagSummariesRequestDir =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type ListBranchQueryTagSummariesRequestDir = "asc" | "desc";
 export const ListBranchQueryTagSummariesRequestDir = /*@__PURE__*/ S.String;
 
 export type ListBranchQueryTagSummariesRequestTabletType =
   | "primary"
   | "replica"
-  | "rdonly"
-  | (string & {});
+  | "rdonly";
 export const ListBranchQueryTagSummariesRequestTabletType =
   /*@__PURE__*/ S.String;
 
@@ -12174,11 +12522,11 @@ export type ListBranchQueryTagSummariesRequestType =
   | "SELECT"
   | "INSERT"
   | "UPDATE"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const ListBranchQueryTagSummariesRequestType = /*@__PURE__*/ S.String;
 
-export type ListBranchQueryTagSummariesRequestFieldsList = string[];
+export type ListBranchQueryTagSummariesRequestFieldsList =
+  ReadonlyArray<string>;
 export const ListBranchQueryTagSummariesRequestFieldsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12261,7 +12609,8 @@ export const PaginatedDimensionsQuerySummaryDataItemDimensionsMap =
   ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItemDimensionsMap>;
 
 /** Tables accessed by the query */
-export type PaginatedDimensionsQuerySummaryDataItemTablesList = string[];
+export type PaginatedDimensionsQuerySummaryDataItemTablesList =
+  ReadonlyArray<string>;
 export const PaginatedDimensionsQuerySummaryDataItemTablesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12269,7 +12618,7 @@ export const PaginatedDimensionsQuerySummaryDataItemTablesList =
 
 /** Fully qualified tables accessed by the query */
 export type PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDimensionsQuerySummaryDataItemQualifiedTablesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12286,7 +12635,7 @@ export const PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap =
 
 /** Mapping of tables to their keyspaces */
 export type PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList =
-  PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap[];
+  ReadonlyArray<PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap>;
 export const PaginatedDimensionsQuerySummaryDataItemTableKeyspacesList =
   /*@__PURE__*/ S.Array(
     PaginatedDimensionsQuerySummaryDataItemTableKeyspacesItemMap,
@@ -12303,7 +12652,7 @@ export const PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap =
 
 /** Index usage information */
 export type PaginatedDimensionsQuerySummaryDataItemIndexUsagesList =
-  PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap[];
+  ReadonlyArray<PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap>;
 export const PaginatedDimensionsQuerySummaryDataItemIndexUsagesList =
   /*@__PURE__*/ S.Array(
     PaginatedDimensionsQuerySummaryDataItemIndexUsagesItemMap,
@@ -12320,7 +12669,7 @@ export const PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap =
 
 /** Routing index usage information */
 export type PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList =
-  PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap[];
+  ReadonlyArray<PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap>;
 export const PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesList =
   /*@__PURE__*/ S.Array(
     PaginatedDimensionsQuerySummaryDataItemRoutingIndexUsagesItemMap,
@@ -12469,7 +12818,7 @@ export const PaginatedDimensionsQuerySummaryDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedDimensionsQuerySummaryDataItem>;
 
 export type PaginatedDimensionsQuerySummaryDataList =
-  PaginatedDimensionsQuerySummaryDataItem[];
+  ReadonlyArray<PaginatedDimensionsQuerySummaryDataItem>;
 export const PaginatedDimensionsQuerySummaryDataList = /*@__PURE__*/ S.Array(
   PaginatedDimensionsQuerySummaryDataItem,
 ) as any as S.Schema<PaginatedDimensionsQuerySummaryDataList>;
@@ -12503,10 +12852,7 @@ export const PaginatedDimensionsQuerySummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedDimensionsQuerySummary",
 }) as any as S.Schema<PaginatedDimensionsQuerySummary>;
 
-export type ListClusterSizeSkusRequestEngine =
-  | "mysql"
-  | "postgresql"
-  | (string & {});
+export type ListClusterSizeSkusRequestEngine = "mysql" | "postgresql";
 export const ListClusterSizeSkusRequestEngine = /*@__PURE__*/ S.String;
 
 export interface ListClusterSizeSkusRequest {
@@ -12596,7 +12942,8 @@ export const ClusterSizeSkuSerializer = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClusterSizeSkuSerializer",
 }) as any as S.Schema<ClusterSizeSkuSerializer>;
 
-export type ListClusterSizeSkusResponseBodyList = ClusterSizeSkuSerializer[];
+export type ListClusterSizeSkusResponseBodyList =
+  ReadonlyArray<ClusterSizeSkuSerializer>;
 export const ListClusterSizeSkusResponseBodyList = /*@__PURE__*/ S.Array(
   ClusterSizeSkuSerializer,
 ) as any as S.Schema<ListClusterSizeSkusResponseBodyList>;
@@ -12636,7 +12983,8 @@ export const ListDatabasePostgresCidrsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatabasePostgresCidrsRequest>;
 
 /** List of CIDR ranges */
-export type PaginatedPostgresClusterCidrDataItemCidrsList = string[];
+export type PaginatedPostgresClusterCidrDataItemCidrsList =
+  ReadonlyArray<string>;
 export const PaginatedPostgresClusterCidrDataItemCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12695,7 +13043,7 @@ export const PaginatedPostgresClusterCidrDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedPostgresClusterCidrDataItem>;
 
 export type PaginatedPostgresClusterCidrDataList =
-  PaginatedPostgresClusterCidrDataItem[];
+  ReadonlyArray<PaginatedPostgresClusterCidrDataItem>;
 export const PaginatedPostgresClusterCidrDataList = /*@__PURE__*/ S.Array(
   PaginatedPostgresClusterCidrDataItem,
 ) as any as S.Schema<PaginatedPostgresClusterCidrDataList>;
@@ -12757,7 +13105,8 @@ export const ListDatabaseRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatabaseRegionsRequest>;
 
 /** Public IP addresses for the region */
-export type PaginatedPlanetscaleRegionDataItemPublicIpAddressesList = string[];
+export type PaginatedPlanetscaleRegionDataItemPublicIpAddressesList =
+  ReadonlyArray<string>;
 export const PaginatedPlanetscaleRegionDataItemPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12804,7 +13153,7 @@ export const PaginatedPlanetscaleRegionDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedPlanetscaleRegionDataItem>;
 
 export type PaginatedPlanetscaleRegionDataList =
-  PaginatedPlanetscaleRegionDataItem[];
+  ReadonlyArray<PaginatedPlanetscaleRegionDataItem>;
 export const PaginatedPlanetscaleRegionDataList = /*@__PURE__*/ S.Array(
   PaginatedPlanetscaleRegionDataItem,
 ) as any as S.Schema<PaginatedPlanetscaleRegionDataList>;
@@ -12908,7 +13257,8 @@ export const PaginatedDatabaseDataItemDataImport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedDatabaseDataItemDataImport>;
 
 /** Public IP addresses for the region */
-export type PaginatedDatabaseDataItemRegionPublicIpAddressesList = string[];
+export type PaginatedDatabaseDataItemRegionPublicIpAddressesList =
+  ReadonlyArray<string>;
 export const PaginatedDatabaseDataItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12961,15 +13311,11 @@ export type PaginatedDatabaseDataItemState =
   | "sleeping"
   | "awakening"
   | "import_ready"
-  | "ready"
-  | (string & {});
+  | "ready";
 export const PaginatedDatabaseDataItemState = /*@__PURE__*/ S.String;
 
 /** The kind of database */
-export type PaginatedDatabaseDataItemKind =
-  | "mysql"
-  | "postgresql"
-  | (string & {});
+export type PaginatedDatabaseDataItemKind = "mysql" | "postgresql";
 export const PaginatedDatabaseDataItemKind = /*@__PURE__*/ S.String;
 
 export interface PaginatedDatabaseDataItem {
@@ -13102,7 +13448,8 @@ export const PaginatedDatabaseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedDatabaseDataItem",
 }) as any as S.Schema<PaginatedDatabaseDataItem>;
 
-export type PaginatedDatabaseDataList = PaginatedDatabaseDataItem[];
+export type PaginatedDatabaseDataList =
+  ReadonlyArray<PaginatedDatabaseDataItem>;
 export const PaginatedDatabaseDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseDataItem,
 ) as any as S.Schema<PaginatedDatabaseDataList>;
@@ -13173,13 +13520,12 @@ export type PaginatedDeployOperationDataItemState =
   | "in_progress"
   | "complete"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const PaginatedDeployOperationDataItemState = /*@__PURE__*/ S.String;
 
 /** Names of foreign keys removed by this operation */
 export type PaginatedDeployOperationDataItemRemovedForeignKeyNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDeployOperationDataItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13254,7 +13600,7 @@ export const PaginatedDeployOperationDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedDeployOperationDataItem>;
 
 export type PaginatedDeployOperationDataList =
-  PaginatedDeployOperationDataItem[];
+  ReadonlyArray<PaginatedDeployOperationDataItem>;
 export const PaginatedDeployOperationDataList = /*@__PURE__*/ S.Array(
   PaginatedDeployOperationDataItem,
 ) as any as S.Schema<PaginatedDeployOperationDataList>;
@@ -13321,8 +13667,7 @@ export const ListDeployRequestReviewsRequest = /*@__PURE__*/ S.suspend(() =>
 /** Whether the review is a comment or approval */
 export type PaginatedDeployRequestReviewDataItemState =
   | "commented"
-  | "approved"
-  | (string & {});
+  | "approved";
 export const PaginatedDeployRequestReviewDataItemState = /*@__PURE__*/ S.String;
 
 export interface PaginatedDeployRequestReviewDataItemActor {
@@ -13375,7 +13720,7 @@ export const PaginatedDeployRequestReviewDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedDeployRequestReviewDataItem>;
 
 export type PaginatedDeployRequestReviewDataList =
-  PaginatedDeployRequestReviewDataItem[];
+  ReadonlyArray<PaginatedDeployRequestReviewDataItem>;
 export const PaginatedDeployRequestReviewDataList = /*@__PURE__*/ S.Array(
   PaginatedDeployRequestReviewDataItem,
 ) as any as S.Schema<PaginatedDeployRequestReviewDataList>;
@@ -13509,10 +13854,7 @@ export const PaginatedDatabaseDeployRequestDataItemBranchDeletedBy =
   }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemBranchDeletedBy>;
 
 /** Whether the deploy request is open or closed */
-export type PaginatedDatabaseDeployRequestDataItemState =
-  | "open"
-  | "closed"
-  | (string & {});
+export type PaginatedDatabaseDeployRequestDataItemState = "open" | "closed";
 export const PaginatedDatabaseDeployRequestDataItemState =
   /*@__PURE__*/ S.String;
 
@@ -13537,8 +13879,7 @@ export type PaginatedDatabaseDeployRequestDataItemDeploymentState =
   | "complete_revert"
   | "complete_revert_error"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const PaginatedDatabaseDeployRequestDataItemDeploymentState =
   /*@__PURE__*/ S.String;
 
@@ -13563,8 +13904,7 @@ export type PaginatedDatabaseDeployRequestDataItemDeploymentState2 =
   | "complete_revert"
   | "complete_revert_error"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const PaginatedDatabaseDeployRequestDataItemDeploymentState2 =
   /*@__PURE__*/ S.String;
 
@@ -13578,7 +13918,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeployment
 
 /** The deployments ahead of this one in the queue */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList =
-  PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap[];
+  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeploymentsItemMap,
@@ -13586,19 +13926,13 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentPrecedingDeployment
 
 /** The state of the deploy operation */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemState =
-    | "pending"
-    | "queued"
-    | "in_progress"
-    | "complete"
-    | "cancelled"
-    | "error"
-    | (string & {});
+  "pending" | "queued" | "in_progress" | "complete" | "cancelled" | "error";
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemState =
   /*@__PURE__*/ S.String;
 
 /** Names of foreign keys removed by this operation */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13676,7 +14010,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsIte
   }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem>;
 
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsList =
-  PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem[];
+  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsItem,
@@ -13684,18 +14018,13 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationsLis
 
 /** The state of the deploy operation summary */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemState =
-    | "pending"
-    | "in_progress"
-    | "complete"
-    | "cancelled"
-    | "error"
-    | (string & {});
+  "pending" | "in_progress" | "complete" | "cancelled" | "error";
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemState =
   /*@__PURE__*/ S.String;
 
 /** Names of foreign keys removed by this operation summary */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemRemovedForeignKeyNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13703,7 +14032,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumm
 
 /** Names of shards in the keyspace modified by the deploy operation summary */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemShardNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13711,13 +14040,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumm
 
 /** The state of the deploy operation */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItemState =
-    | "pending"
-    | "queued"
-    | "in_progress"
-    | "complete"
-    | "cancelled"
-    | "error"
-    | (string & {});
+  "pending" | "queued" | "in_progress" | "complete" | "cancelled" | "error";
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItemState =
   /*@__PURE__*/ S.String;
 
@@ -13749,7 +14072,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumm
   }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem>;
 
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsList =
-  PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem[];
+  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItemOperationsItem,
@@ -13830,7 +14153,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSumm
   }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem>;
 
 export type PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesList =
-  PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem[];
+  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentDeployOperationSummariesItem,
@@ -13846,7 +14169,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap =
 
 /** Schema lint errors preventing the deployment from completing */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList =
-  PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap[];
+  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentLintErrorsItemMap,
@@ -13862,7 +14185,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDepen
 
 /** The schema dependencies that must be satisfied */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList =
-  PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap[];
+  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentSequentialDiffDependenciesItemMap,
@@ -13878,7 +14201,7 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperati
 
 /** Lookup Vitess index operations */
 export type PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList =
-  PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap[];
+  ReadonlyArray<PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap>;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseDeployRequestDataItemDeploymentLookupVindexOperationsItemMap,
@@ -14179,7 +14502,7 @@ export const PaginatedDatabaseDeployRequestDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItem>;
 
 export type PaginatedDatabaseDeployRequestDataList =
-  PaginatedDatabaseDeployRequestDataItem[];
+  ReadonlyArray<PaginatedDatabaseDeployRequestDataItem>;
 export const PaginatedDatabaseDeployRequestDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseDeployRequestDataItem,
 ) as any as S.Schema<PaginatedDatabaseDeployRequestDataList>;
@@ -14241,16 +14564,14 @@ export const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PostgresClusterExtensionLoader =
   | "shared_preload_libraries"
   | "session_preload_libraries"
-  | "create_extension"
-  | (string & {});
+  | "create_extension";
 export const PostgresClusterExtensionLoader = /*@__PURE__*/ S.String;
 
 /** The namespace of the parameter */
 export type PostgresClusterExtensionParametersItemNamespace =
   | "patroni"
   | "pgconf"
-  | "pgbouncer"
-  | (string & {});
+  | "pgbouncer";
 export const PostgresClusterExtensionParametersItemNamespace =
   /*@__PURE__*/ S.String;
 
@@ -14264,13 +14585,13 @@ export type PostgresClusterExtensionParametersItemParameterType =
   | "seconds"
   | "select"
   | "string"
-  | "time"
-  | (string & {});
+  | "time";
 export const PostgresClusterExtensionParametersItemParameterType =
   /*@__PURE__*/ S.String;
 
 /** Valid options for the parameter value */
-export type PostgresClusterExtensionParametersItemOptionsList = string[];
+export type PostgresClusterExtensionParametersItemOptionsList =
+  ReadonlyArray<string>;
 export const PostgresClusterExtensionParametersItemOptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -14368,7 +14689,7 @@ export const PostgresClusterExtensionParametersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PostgresClusterExtensionParametersItem>;
 
 export type PostgresClusterExtensionParametersList =
-  PostgresClusterExtensionParametersItem[];
+  ReadonlyArray<PostgresClusterExtensionParametersItem>;
 export const PostgresClusterExtensionParametersList = /*@__PURE__*/ S.Array(
   PostgresClusterExtensionParametersItem,
 ) as any as S.Schema<PostgresClusterExtensionParametersList>;
@@ -14408,7 +14729,8 @@ export const PostgresClusterExtension = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresClusterExtension",
 }) as any as S.Schema<PostgresClusterExtension>;
 
-export type ListExtensionsResponseBodyList = PostgresClusterExtension[];
+export type ListExtensionsResponseBodyList =
+  ReadonlyArray<PostgresClusterExtension>;
 export const ListExtensionsResponseBodyList = /*@__PURE__*/ S.Array(
   PostgresClusterExtension,
 ) as any as S.Schema<ListExtensionsResponseBodyList>;
@@ -14458,8 +14780,7 @@ export const ListGeneratedQueryPatternsReportsRequest = /*@__PURE__*/ S.suspend(
 export type PaginatedQueryPatternsDownloadDataItemState =
   | "pending"
   | "completed"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const PaginatedQueryPatternsDownloadDataItemState =
   /*@__PURE__*/ S.String;
 
@@ -14513,7 +14834,7 @@ export const PaginatedQueryPatternsDownloadDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedQueryPatternsDownloadDataItem>;
 
 export type PaginatedQueryPatternsDownloadDataList =
-  PaginatedQueryPatternsDownloadDataItem[];
+  ReadonlyArray<PaginatedQueryPatternsDownloadDataItem>;
 export const PaginatedQueryPatternsDownloadDataList = /*@__PURE__*/ S.Array(
   PaginatedQueryPatternsDownloadDataItem,
 ) as any as S.Schema<PaginatedQueryPatternsDownloadDataList>;
@@ -14595,7 +14916,7 @@ export const PaginatedInvoiceDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedInvoiceDataItem",
 }) as any as S.Schema<PaginatedInvoiceDataItem>;
 
-export type PaginatedInvoiceDataList = PaginatedInvoiceDataItem[];
+export type PaginatedInvoiceDataList = ReadonlyArray<PaginatedInvoiceDataItem>;
 export const PaginatedInvoiceDataList = /*@__PURE__*/ S.Array(
   PaginatedInvoiceDataItem,
 ) as any as S.Schema<PaginatedInvoiceDataList>;
@@ -14662,7 +14983,8 @@ export const ListKeyspaceResizeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListKeyspaceResizeRequestsRequest",
 }) as any as S.Schema<ListKeyspaceResizeRequestsRequest>;
 
-export type PaginatedKeyspaceResizeRequestDataList = KeyspaceResizeRequest[];
+export type PaginatedKeyspaceResizeRequestDataList =
+  ReadonlyArray<KeyspaceResizeRequest>;
 export const PaginatedKeyspaceResizeRequestDataList = /*@__PURE__*/ S.Array(
   KeyspaceResizeRequest,
 ) as any as S.Schema<PaginatedKeyspaceResizeRequestDataList>;
@@ -14730,14 +15052,13 @@ export const ListKeyspacesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PaginatedDatabaseBranchKeyspaceDataItemNodeTtlStrategy =
   | "node_ttl_follow_maintenance"
   | "node_ttl_always"
-  | "node_ttl_off"
-  | (string & {});
+  | "node_ttl_off";
 export const PaginatedDatabaseBranchKeyspaceDataItemNodeTtlStrategy =
   /*@__PURE__*/ S.String;
 
 /** The replication durability strategy */
 export type PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraintsStrategy =
-  "available" | "lag" | "always" | (string & {});
+  "available" | "lag" | "always";
 export const PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraintsStrategy =
   /*@__PURE__*/ S.String;
 
@@ -14879,7 +15200,7 @@ export const PaginatedDatabaseBranchKeyspaceDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItem>;
 
 export type PaginatedDatabaseBranchKeyspaceDataList =
-  PaginatedDatabaseBranchKeyspaceDataItem[];
+  ReadonlyArray<PaginatedDatabaseBranchKeyspaceDataItem>;
 export const PaginatedDatabaseBranchKeyspaceDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseBranchKeyspaceDataItem,
 ) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataList>;
@@ -14945,8 +15266,7 @@ export type PaginatedBranchMaintenanceScheduleDataItemFrequencyUnit =
   | "day"
   | "week"
   | "month"
-  | "once"
-  | (string & {});
+  | "once";
 export const PaginatedBranchMaintenanceScheduleDataItemFrequencyUnit =
   /*@__PURE__*/ S.String;
 
@@ -15021,7 +15341,7 @@ export const PaginatedBranchMaintenanceScheduleDataItem =
   }) as any as S.Schema<PaginatedBranchMaintenanceScheduleDataItem>;
 
 export type PaginatedBranchMaintenanceScheduleDataList =
-  PaginatedBranchMaintenanceScheduleDataItem[];
+  ReadonlyArray<PaginatedBranchMaintenanceScheduleDataItem>;
 export const PaginatedBranchMaintenanceScheduleDataList = /*@__PURE__*/ S.Array(
   PaginatedBranchMaintenanceScheduleDataItem,
 ) as any as S.Schema<PaginatedBranchMaintenanceScheduleDataList>;
@@ -15111,7 +15431,7 @@ export const PaginatedBranchMaintenanceWindowDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedBranchMaintenanceWindowDataItem>;
 
 export type PaginatedBranchMaintenanceWindowDataList =
-  PaginatedBranchMaintenanceWindowDataItem[];
+  ReadonlyArray<PaginatedBranchMaintenanceWindowDataItem>;
 export const PaginatedBranchMaintenanceWindowDataList = /*@__PURE__*/ S.Array(
   PaginatedBranchMaintenanceWindowDataItem,
 ) as any as S.Schema<PaginatedBranchMaintenanceWindowDataList>;
@@ -15245,7 +15565,7 @@ export const PaginatedOauthApplicationDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedOauthApplicationDataItem>;
 
 export type PaginatedOauthApplicationDataList =
-  PaginatedOauthApplicationDataItem[];
+  ReadonlyArray<PaginatedOauthApplicationDataItem>;
 export const PaginatedOauthApplicationDataList = /*@__PURE__*/ S.Array(
   PaginatedOauthApplicationDataItem,
 ) as any as S.Schema<PaginatedOauthApplicationDataList>;
@@ -15362,7 +15682,7 @@ export const PaginatedServiceTokenDataItemServiceTokenAccessesItem =
   }) as any as S.Schema<PaginatedServiceTokenDataItemServiceTokenAccessesItem>;
 
 export type PaginatedServiceTokenDataItemServiceTokenAccessesList =
-  PaginatedServiceTokenDataItemServiceTokenAccessesItem[];
+  ReadonlyArray<PaginatedServiceTokenDataItemServiceTokenAccessesItem>;
 export const PaginatedServiceTokenDataItemServiceTokenAccessesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemServiceTokenAccessesItem,
@@ -15392,7 +15712,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabas
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList =
-  PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem[];
+  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem,
@@ -15416,7 +15736,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccesse
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList =
-  PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem[];
+  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem,
@@ -15459,7 +15779,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrg
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList =
-  PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem[];
+  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem,
@@ -15483,7 +15803,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAcc
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList =
-  PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem[];
+  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem,
@@ -15533,7 +15853,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesI
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList =
-  PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem[];
+  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem,
@@ -15557,7 +15877,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesI
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList =
-  PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem[];
+  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem,
@@ -15597,7 +15917,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem =
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList =
-  PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem[];
+  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem,
@@ -15621,7 +15941,7 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesIte
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem>;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList =
-  PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem[];
+  ReadonlyArray<PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList =
   /*@__PURE__*/ S.Array(
     PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem,
@@ -15719,7 +16039,8 @@ export const PaginatedServiceTokenDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedServiceTokenDataItem",
 }) as any as S.Schema<PaginatedServiceTokenDataItem>;
 
-export type PaginatedServiceTokenDataList = PaginatedServiceTokenDataItem[];
+export type PaginatedServiceTokenDataList =
+  ReadonlyArray<PaginatedServiceTokenDataItem>;
 export const PaginatedServiceTokenDataList = /*@__PURE__*/ S.Array(
   PaginatedServiceTokenDataItem,
 ) as any as S.Schema<PaginatedServiceTokenDataList>;
@@ -15859,10 +16180,7 @@ export const PaginatedOrganizationMembershipDataItemUser =
   }) as any as S.Schema<PaginatedOrganizationMembershipDataItemUser>;
 
 /** The role of the user in the organization */
-export type PaginatedOrganizationMembershipDataItemRole =
-  | "member"
-  | "admin"
-  | (string & {});
+export type PaginatedOrganizationMembershipDataItemRole = "member" | "admin";
 export const PaginatedOrganizationMembershipDataItemRole =
   /*@__PURE__*/ S.String;
 
@@ -15891,7 +16209,7 @@ export const PaginatedOrganizationMembershipDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedOrganizationMembershipDataItem>;
 
 export type PaginatedOrganizationMembershipDataList =
-  PaginatedOrganizationMembershipDataItem[];
+  ReadonlyArray<PaginatedOrganizationMembershipDataItem>;
 export const PaginatedOrganizationMembershipDataList = /*@__PURE__*/ S.Array(
   PaginatedOrganizationMembershipDataItem,
 ) as any as S.Schema<PaginatedOrganizationMembershipDataList>;
@@ -16018,7 +16336,8 @@ export const PaginatedOrganizationDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedOrganizationDataItem",
 }) as any as S.Schema<PaginatedOrganizationDataItem>;
 
-export type PaginatedOrganizationDataList = PaginatedOrganizationDataItem[];
+export type PaginatedOrganizationDataList =
+  ReadonlyArray<PaginatedOrganizationDataItem>;
 export const PaginatedOrganizationDataList = /*@__PURE__*/ S.Array(
   PaginatedOrganizationDataItem,
 ) as any as S.Schema<PaginatedOrganizationDataList>;
@@ -16181,14 +16500,13 @@ export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemRole =
   | "reader"
   | "writer"
   | "admin"
-  | "readwriter"
-  | (string & {});
+  | "readwriter";
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRole =
   /*@__PURE__*/ S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16196,7 +16514,7 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemCidrsList =
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgateAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16204,7 +16522,7 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemDirectVtgat
 
 /** The read-only replica host URLs */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16231,7 +16549,7 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor =
 
 /** Public IP addresses for the region */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16386,7 +16704,7 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItem =
   }) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItem>;
 
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsList =
-  PaginatedOrganizationTeamMembershipDataItemPasswordsItem[];
+  ReadonlyArray<PaginatedOrganizationTeamMembershipDataItemPasswordsItem>;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsList =
   /*@__PURE__*/ S.Array(
     PaginatedOrganizationTeamMembershipDataItemPasswordsItem,
@@ -16418,7 +16736,7 @@ export const PaginatedOrganizationTeamMembershipDataItem =
   }) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItem>;
 
 export type PaginatedOrganizationTeamMembershipDataList =
-  PaginatedOrganizationTeamMembershipDataItem[];
+  ReadonlyArray<PaginatedOrganizationTeamMembershipDataItem>;
 export const PaginatedOrganizationTeamMembershipDataList =
   /*@__PURE__*/ S.Array(
     PaginatedOrganizationTeamMembershipDataItem,
@@ -16578,7 +16896,7 @@ export const PaginatedOrganizationTeamDataItemMembersItem =
   }) as any as S.Schema<PaginatedOrganizationTeamDataItemMembersItem>;
 
 export type PaginatedOrganizationTeamDataItemMembersList =
-  PaginatedOrganizationTeamDataItemMembersItem[];
+  ReadonlyArray<PaginatedOrganizationTeamDataItemMembersItem>;
 export const PaginatedOrganizationTeamDataItemMembersList =
   /*@__PURE__*/ S.Array(
     PaginatedOrganizationTeamDataItemMembersItem,
@@ -16607,7 +16925,7 @@ export const PaginatedOrganizationTeamDataItemDatabasesItem =
   }) as any as S.Schema<PaginatedOrganizationTeamDataItemDatabasesItem>;
 
 export type PaginatedOrganizationTeamDataItemDatabasesList =
-  PaginatedOrganizationTeamDataItemDatabasesItem[];
+  ReadonlyArray<PaginatedOrganizationTeamDataItemDatabasesItem>;
 export const PaginatedOrganizationTeamDataItemDatabasesList =
   /*@__PURE__*/ S.Array(
     PaginatedOrganizationTeamDataItemDatabasesItem,
@@ -16636,7 +16954,7 @@ export const PaginatedOrganizationTeamDataItemAnalystDatabasesItem =
   }) as any as S.Schema<PaginatedOrganizationTeamDataItemAnalystDatabasesItem>;
 
 export type PaginatedOrganizationTeamDataItemAnalystDatabasesList =
-  PaginatedOrganizationTeamDataItemAnalystDatabasesItem[];
+  ReadonlyArray<PaginatedOrganizationTeamDataItemAnalystDatabasesItem>;
 export const PaginatedOrganizationTeamDataItemAnalystDatabasesList =
   /*@__PURE__*/ S.Array(
     PaginatedOrganizationTeamDataItemAnalystDatabasesItem,
@@ -16684,7 +17002,7 @@ export const PaginatedOrganizationTeamDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedOrganizationTeamDataItem>;
 
 export type PaginatedOrganizationTeamDataList =
-  PaginatedOrganizationTeamDataItem[];
+  ReadonlyArray<PaginatedOrganizationTeamDataItem>;
 export const PaginatedOrganizationTeamDataList = /*@__PURE__*/ S.Array(
   PaginatedOrganizationTeamDataItem,
 ) as any as S.Schema<PaginatedOrganizationTeamDataList>;
@@ -16746,8 +17064,7 @@ export const ListParametersRequest = /*@__PURE__*/ S.suspend(() =>
 export type PostgresClusterParameterNamespace =
   | "patroni"
   | "pgconf"
-  | "pgbouncer"
-  | (string & {});
+  | "pgbouncer";
 export const PostgresClusterParameterNamespace = /*@__PURE__*/ S.String;
 
 /** The type of the parameter */
@@ -16760,12 +17077,11 @@ export type PostgresClusterParameterParameterType =
   | "seconds"
   | "select"
   | "string"
-  | "time"
-  | (string & {});
+  | "time";
 export const PostgresClusterParameterParameterType = /*@__PURE__*/ S.String;
 
 /** Valid options for the parameter value */
-export type PostgresClusterParameterOptionsList = string[];
+export type PostgresClusterParameterOptionsList = ReadonlyArray<string>;
 export const PostgresClusterParameterOptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostgresClusterParameterOptionsList>;
@@ -16859,7 +17175,8 @@ export const PostgresClusterParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresClusterParameter",
 }) as any as S.Schema<PostgresClusterParameter>;
 
-export type ListParametersResponseBodyList = PostgresClusterParameter[];
+export type ListParametersResponseBodyList =
+  ReadonlyArray<PostgresClusterParameter>;
 export const ListParametersResponseBodyList = /*@__PURE__*/ S.Array(
   PostgresClusterParameter,
 ) as any as S.Schema<ListParametersResponseBodyList>;
@@ -16915,13 +17232,13 @@ export type PaginatedDatabaseBranchPasswordDataItemRole =
   | "reader"
   | "writer"
   | "admin"
-  | "readwriter"
-  | (string & {});
+  | "readwriter";
 export const PaginatedDatabaseBranchPasswordDataItemRole =
   /*@__PURE__*/ S.String;
 
 /** List of IP addresses or CIDR ranges that can use this password */
-export type PaginatedDatabaseBranchPasswordDataItemCidrsList = string[];
+export type PaginatedDatabaseBranchPasswordDataItemCidrsList =
+  ReadonlyArray<string>;
 export const PaginatedDatabaseBranchPasswordDataItemCidrsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16929,7 +17246,7 @@ export const PaginatedDatabaseBranchPasswordDataItemCidrsList =
 
 /** The list of hosts in each availability zone providing direct access to a vtgate */
 export type PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16937,7 +17254,7 @@ export const PaginatedDatabaseBranchPasswordDataItemDirectVtgateAddressesList =
 
 /** The read-only replica host URLs */
 export type PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16964,7 +17281,7 @@ export const PaginatedDatabaseBranchPasswordDataItemActor =
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchPasswordDataItemRegionPublicIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDatabaseBranchPasswordDataItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17112,7 +17429,7 @@ export const PaginatedDatabaseBranchPasswordDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItem>;
 
 export type PaginatedDatabaseBranchPasswordDataList =
-  PaginatedDatabaseBranchPasswordDataItem[];
+  ReadonlyArray<PaginatedDatabaseBranchPasswordDataItem>;
 export const PaginatedDatabaseBranchPasswordDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseBranchPasswordDataItem,
 ) as any as S.Schema<PaginatedDatabaseBranchPasswordDataList>;
@@ -17163,7 +17480,7 @@ export const ListPublicRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of public IP addresses for the region */
 export type PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedPublicPlanetscaleRegionSerializerDataItemPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17202,7 +17519,7 @@ export const PaginatedPublicPlanetscaleRegionSerializerDataItem =
   }) as any as S.Schema<PaginatedPublicPlanetscaleRegionSerializerDataItem>;
 
 export type PaginatedPublicPlanetscaleRegionSerializerDataList =
-  PaginatedPublicPlanetscaleRegionSerializerDataItem[];
+  ReadonlyArray<PaginatedPublicPlanetscaleRegionSerializerDataItem>;
 export const PaginatedPublicPlanetscaleRegionSerializerDataList =
   /*@__PURE__*/ S.Array(
     PaginatedPublicPlanetscaleRegionSerializerDataItem,
@@ -17286,7 +17603,7 @@ export const PaginatedDatabaseBranchReadOnlyRegionDataItemActor =
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchReadOnlyRegionDataItemRegionPublicIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const PaginatedDatabaseBranchReadOnlyRegionDataItemRegionPublicIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -17366,7 +17683,7 @@ export const PaginatedDatabaseBranchReadOnlyRegionDataItem =
   }) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegionDataItem>;
 
 export type PaginatedDatabaseBranchReadOnlyRegionDataList =
-  PaginatedDatabaseBranchReadOnlyRegionDataItem[];
+  ReadonlyArray<PaginatedDatabaseBranchReadOnlyRegionDataItem>;
 export const PaginatedDatabaseBranchReadOnlyRegionDataList =
   /*@__PURE__*/ S.Array(
     PaginatedDatabaseBranchReadOnlyRegionDataItem,
@@ -17475,14 +17792,13 @@ export type PaginatedPostgresRoleDataItemInheritedRolesItem =
   | "pg_stat_scan_tables"
   | "pg_use_reserved_connections"
   | "pg_write_all_data"
-  | "postgres"
-  | (string & {});
+  | "postgres";
 export const PaginatedPostgresRoleDataItemInheritedRolesItem =
   /*@__PURE__*/ S.String;
 
 /** Database roles these credentials inherit */
 export type PaginatedPostgresRoleDataItemInheritedRolesList =
-  PaginatedPostgresRoleDataItemInheritedRolesItem[];
+  ReadonlyArray<PaginatedPostgresRoleDataItemInheritedRolesItem>;
 export const PaginatedPostgresRoleDataItemInheritedRolesList =
   /*@__PURE__*/ S.Array(
     PaginatedPostgresRoleDataItemInheritedRolesItem,
@@ -17532,13 +17848,13 @@ export const PaginatedPostgresRoleDataItemActor = /*@__PURE__*/ S.suspend(() =>
 
 /** Require WHERE clause on DELETE statements */
 export type PaginatedPostgresRoleDataItemQuerySafetySettingsRequireWhereOnDelete =
-  "off" | "warn" | "on" | (string & {});
+  "off" | "warn" | "on";
 export const PaginatedPostgresRoleDataItemQuerySafetySettingsRequireWhereOnDelete =
   /*@__PURE__*/ S.String;
 
 /** Require WHERE clause on UPDATE statements */
 export type PaginatedPostgresRoleDataItemQuerySafetySettingsRequireWhereOnUpdate =
-  "off" | "warn" | "on" | (string & {});
+  "off" | "warn" | "on";
 export const PaginatedPostgresRoleDataItemQuerySafetySettingsRequireWhereOnUpdate =
   /*@__PURE__*/ S.String;
 
@@ -17638,7 +17954,8 @@ export const PaginatedPostgresRoleDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedPostgresRoleDataItem",
 }) as any as S.Schema<PaginatedPostgresRoleDataItem>;
 
-export type PaginatedPostgresRoleDataList = PaginatedPostgresRoleDataItem[];
+export type PaginatedPostgresRoleDataList =
+  ReadonlyArray<PaginatedPostgresRoleDataItem>;
 export const PaginatedPostgresRoleDataList = /*@__PURE__*/ S.Array(
   PaginatedPostgresRoleDataItem,
 ) as any as S.Schema<PaginatedPostgresRoleDataList>;
@@ -17672,10 +17989,7 @@ export const PaginatedPostgresRole = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedPostgresRole",
 }) as any as S.Schema<PaginatedPostgresRole>;
 
-export type ListSchemaRecommendationsRequestState =
-  | "open"
-  | "closed"
-  | (string & {});
+export type ListSchemaRecommendationsRequestState = "open" | "closed";
 export const ListSchemaRecommendationsRequestState = /*@__PURE__*/ S.String;
 
 export interface ListSchemaRecommendationsRequest {
@@ -17713,8 +18027,7 @@ export type PaginatedSchemaRecommendationDataItemState =
   | "open"
   | "applied"
   | "dismissed"
-  | "stale"
-  | (string & {});
+  | "stale";
 export const PaginatedSchemaRecommendationDataItemState =
   /*@__PURE__*/ S.String;
 
@@ -17728,8 +18041,7 @@ export type PaginatedSchemaRecommendationDataItemRecommendationType =
   | "new_index"
   | "encoding_upgrade"
   | "bloated_table"
-  | "bloated_index"
-  | (string & {});
+  | "bloated_index";
 export const PaginatedSchemaRecommendationDataItemRecommendationType =
   /*@__PURE__*/ S.String;
 
@@ -17828,7 +18140,7 @@ export const PaginatedSchemaRecommendationDataItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedSchemaRecommendationDataItem>;
 
 export type PaginatedSchemaRecommendationDataList =
-  PaginatedSchemaRecommendationDataItem[];
+  ReadonlyArray<PaginatedSchemaRecommendationDataItem>;
 export const PaginatedSchemaRecommendationDataList = /*@__PURE__*/ S.Array(
   PaginatedSchemaRecommendationDataItem,
 ) as any as S.Schema<PaginatedSchemaRecommendationDataList>;
@@ -17926,11 +18238,7 @@ export const ListTrafficBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTrafficBudgetsRequest>;
 
 /** The mode of the budget */
-export type PaginatedTrafficBudgetDataItemMode =
-  | "enforce"
-  | "warn"
-  | "off"
-  | (string & {});
+export type PaginatedTrafficBudgetDataItemMode = "enforce" | "warn" | "off";
 export const PaginatedTrafficBudgetDataItemMode = /*@__PURE__*/ S.String;
 
 export interface PaginatedTrafficBudgetDataItemActor {
@@ -17952,18 +18260,14 @@ export const PaginatedTrafficBudgetDataItemActor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedTrafficBudgetDataItemActor>;
 
 /** The kind of rule */
-export type PaginatedTrafficBudgetDataItemRulesItemKind =
-  | "match"
-  | "each"
-  | (string & {});
+export type PaginatedTrafficBudgetDataItemRulesItemKind = "match" | "each";
 export const PaginatedTrafficBudgetDataItemRulesItemKind =
   /*@__PURE__*/ S.String;
 
 /** The source of this tag */
 export type PaginatedTrafficBudgetDataItemRulesItemTagsItemSource =
   | "sql"
-  | "system"
-  | (string & {});
+  | "system";
 export const PaginatedTrafficBudgetDataItemRulesItemTagsItemSource =
   /*@__PURE__*/ S.String;
 
@@ -17990,7 +18294,7 @@ export const PaginatedTrafficBudgetDataItemRulesItemTagsItem =
   }) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItemTagsItem>;
 
 export type PaginatedTrafficBudgetDataItemRulesItemTagsList =
-  PaginatedTrafficBudgetDataItemRulesItemTagsItem[];
+  ReadonlyArray<PaginatedTrafficBudgetDataItemRulesItemTagsItem>;
 export const PaginatedTrafficBudgetDataItemRulesItemTagsList =
   /*@__PURE__*/ S.Array(
     PaginatedTrafficBudgetDataItemRulesItemTagsItem,
@@ -18051,7 +18355,7 @@ export const PaginatedTrafficBudgetDataItemRulesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItem>;
 
 export type PaginatedTrafficBudgetDataItemRulesList =
-  PaginatedTrafficBudgetDataItemRulesItem[];
+  ReadonlyArray<PaginatedTrafficBudgetDataItemRulesItem>;
 export const PaginatedTrafficBudgetDataItemRulesList = /*@__PURE__*/ S.Array(
   PaginatedTrafficBudgetDataItemRulesItem,
 ) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesList>;
@@ -18099,7 +18403,8 @@ export const PaginatedTrafficBudgetDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedTrafficBudgetDataItem",
 }) as any as S.Schema<PaginatedTrafficBudgetDataItem>;
 
-export type PaginatedTrafficBudgetDataList = PaginatedTrafficBudgetDataItem[];
+export type PaginatedTrafficBudgetDataList =
+  ReadonlyArray<PaginatedTrafficBudgetDataItem>;
 export const PaginatedTrafficBudgetDataList = /*@__PURE__*/ S.Array(
   PaginatedTrafficBudgetDataItem,
 ) as any as S.Schema<PaginatedTrafficBudgetDataList>;
@@ -18215,14 +18520,13 @@ export type PaginatedDatabaseWebhookDataItemEventsItem =
   | "deploy_request.reverted"
   | "deploy_request.schema_applied"
   | "keyspace.storage"
-  | "webhook.test"
-  | (string & {});
+  | "webhook.test";
 export const PaginatedDatabaseWebhookDataItemEventsItem =
   /*@__PURE__*/ S.String;
 
 /** The events this webhook subscribes to */
 export type PaginatedDatabaseWebhookDataItemEventsList =
-  PaginatedDatabaseWebhookDataItemEventsItem[];
+  ReadonlyArray<PaginatedDatabaseWebhookDataItemEventsItem>;
 export const PaginatedDatabaseWebhookDataItemEventsList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseWebhookDataItemEventsItem,
 ) as any as S.Schema<PaginatedDatabaseWebhookDataItemEventsList>;
@@ -18267,7 +18571,7 @@ export const PaginatedDatabaseWebhookDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedDatabaseWebhookDataItem>;
 
 export type PaginatedDatabaseWebhookDataList =
-  PaginatedDatabaseWebhookDataItem[];
+  ReadonlyArray<PaginatedDatabaseWebhookDataItem>;
 export const PaginatedDatabaseWebhookDataList = /*@__PURE__*/ S.Array(
   PaginatedDatabaseWebhookDataItem,
 ) as any as S.Schema<PaginatedDatabaseWebhookDataList>;
@@ -18351,14 +18655,11 @@ export type PaginatedWorkflowDataItemState =
   | "completed"
   | "cancelling"
   | "cancelled"
-  | "error"
-  | (string & {});
+  | "error";
 export const PaginatedWorkflowDataItemState = /*@__PURE__*/ S.String;
 
 /** The type of the workflow */
-export type PaginatedWorkflowDataItemWorkflowType =
-  | "move_tables"
-  | (string & {});
+export type PaginatedWorkflowDataItemWorkflowType = "move_tables";
 export const PaginatedWorkflowDataItemWorkflowType = /*@__PURE__*/ S.String;
 
 /** The behavior when DDL changes during the workflow */
@@ -18366,8 +18667,7 @@ export type PaginatedWorkflowDataItemOnDdl =
   | "IGNORE"
   | "STOP"
   | "EXEC"
-  | "EXEC_IGNORE"
-  | (string & {});
+  | "EXEC_IGNORE";
 export const PaginatedWorkflowDataItemOnDdl = /*@__PURE__*/ S.String;
 
 export interface PaginatedWorkflowDataItemActor {
@@ -18773,7 +19073,8 @@ export const PaginatedWorkflowDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedWorkflowDataItem",
 }) as any as S.Schema<PaginatedWorkflowDataItem>;
 
-export type PaginatedWorkflowDataList = PaginatedWorkflowDataItem[];
+export type PaginatedWorkflowDataList =
+  ReadonlyArray<PaginatedWorkflowDataItem>;
 export const PaginatedWorkflowDataList = /*@__PURE__*/ S.Array(
   PaginatedWorkflowDataItem,
 ) as any as S.Schema<PaginatedWorkflowDataList>;
@@ -18838,14 +19139,15 @@ export interface QueueDeployRequestRequest {
   database: string;
   /** The number of the deploy request */
   number: number;
-  body?: unknown;
+  /** Whether or not to deploy the request with instant DDL. Defaults to false. */
+  instant_ddl?: boolean;
 }
 export const QueueDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     number: S.Number.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    instant_ddl: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -18866,7 +19168,8 @@ export interface ReassignRoleObjectsRequest {
   branch: string;
   /** The ID of the role */
   id: string;
-  body?: unknown;
+  /** The role to reassign ownership to */
+  successor: string;
 }
 export const ReassignRoleObjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18874,7 +19177,7 @@ export const ReassignRoleObjectsRequest = /*@__PURE__*/ S.suspend(() =>
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    successor: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -19039,24 +19342,6 @@ export const ResetDefaultRoleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetDefaultRoleRequest",
 }) as any as S.Schema<ResetDefaultRoleRequest>;
 
-export interface ResetDefaultRoleResponse {
-  /** The database user name */
-  username: string;
-  /** The plaintext password */
-  password: Redacted.Redacted<string>;
-  /** The database connection host */
-  access_host_url: string;
-}
-export const ResetDefaultRoleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    username: S.String,
-    password: S.String.pipe(T.SensitiveValue({})),
-    access_host_url: S.String,
-  }),
-).annotate({
-  identifier: "ResetDefaultRoleResponse",
-}) as any as S.Schema<ResetDefaultRoleResponse>;
-
 export interface ResetRoleRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -19084,6 +19369,10 @@ export const ResetRoleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResetRoleRequest",
 }) as any as S.Schema<ResetRoleRequest>;
 
+/** Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`) */
+export type ReviewDeployRequestRequestState = "commented" | "approved";
+export const ReviewDeployRequestRequestState = /*@__PURE__*/ S.String;
+
 export interface ReviewDeployRequestRequest {
   /** The name of the organization the deploy request belongs to */
   organization: string;
@@ -19091,14 +19380,18 @@ export interface ReviewDeployRequestRequest {
   database: string;
   /** The number of the deploy request */
   number: number;
-  body?: unknown;
+  /** Whether the review is a comment or approval. Service tokens must have corresponding access (either `approve_deploy_request` or `review_deploy_request`) */
+  state?: ReviewDeployRequestRequestState;
+  /** Deploy request review comments */
+  body?: string;
 }
 export const ReviewDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     number: S.Number.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    state: S.optional(ReviewDeployRequestRequestState),
+    body: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -19111,7 +19404,7 @@ export const ReviewDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReviewDeployRequestRequest>;
 
 /** Whether the review is a comment or approval */
-export type DeployRequestReviewState = "commented" | "approved" | (string & {});
+export type DeployRequestReviewState = "commented" | "approved";
 export const DeployRequestReviewState = /*@__PURE__*/ S.String;
 
 export interface DeployRequestReviewActor {
@@ -19223,14 +19516,15 @@ export interface UpdateAutoApplyRequest {
   database: string;
   /** The number of the deploy request */
   number: number;
-  body?: unknown;
+  /** Whether or not to enable auto-apply for the deploy request */
+  enable?: boolean;
 }
 export const UpdateAutoApplyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     number: S.Number.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    enable: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -19249,14 +19543,15 @@ export interface UpdateAutoDeleteBranchRequest {
   database: string;
   /** The number of the deploy request */
   number: number;
-  body?: unknown;
+  /** Whether or not to enable auto-delete branch for the deploy request */
+  enable?: boolean;
 }
 export const UpdateAutoDeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     number: S.Number.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    enable: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -19277,7 +19572,8 @@ export interface UpdateBackupRequest {
   branch: string;
   /** The ID of the backup */
   id: string;
-  body?: unknown;
+  /** Whether the backup is protected from deletion or not */
+  protected?: boolean;
 }
 export const UpdateBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19285,7 +19581,7 @@ export const UpdateBackupRequest = /*@__PURE__*/ S.suspend(() =>
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    protected: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19297,6 +19593,27 @@ export const UpdateBackupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateBackupRequest",
 }) as any as S.Schema<UpdateBackupRequest>;
 
+/** Whether the policy is for production or development branches */
+export type UpdateBackupPolicyRequestTarget = "production" | "development";
+export const UpdateBackupPolicyRequestTarget = /*@__PURE__*/ S.String;
+
+/** The unit for the retention period of the backup policy */
+export type UpdateBackupPolicyRequestRetentionUnit =
+  | "hour"
+  | "day"
+  | "week"
+  | "month"
+  | "year";
+export const UpdateBackupPolicyRequestRetentionUnit = /*@__PURE__*/ S.String;
+
+/** The unit for the frequency of the backup policy */
+export type UpdateBackupPolicyRequestFrequencyUnit =
+  | "hour"
+  | "day"
+  | "week"
+  | "month";
+export const UpdateBackupPolicyRequestFrequencyUnit = /*@__PURE__*/ S.String;
+
 export interface UpdateBackupPolicyRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -19304,14 +19621,39 @@ export interface UpdateBackupPolicyRequest {
   database: string;
   /** The ID of the backup policy */
   id: string;
-  body?: unknown;
+  /** The name of the backup policy */
+  name?: string;
+  /** Whether the policy is for production or development branches */
+  target?: UpdateBackupPolicyRequestTarget;
+  /** A number value for the retention period of the backup policy */
+  retention_value?: number;
+  /** The unit for the retention period of the backup policy */
+  retention_unit?: UpdateBackupPolicyRequestRetentionUnit;
+  /** A number value for the frequency of the backup policy */
+  frequency_value?: number;
+  /** The unit for the frequency of the backup policy */
+  frequency_unit?: UpdateBackupPolicyRequestFrequencyUnit;
+  /** The time of day that the backup is scheduled, in HH:MM format */
+  schedule_time?: string;
+  /** Day of the week that the backup is scheduled. 0 is Sunday, 6 is Saturday */
+  schedule_day?: number;
+  /** Week of the month that the backup is scheduled. 0 is the first week, 3 is the fourth week */
+  schedule_week?: number;
 }
 export const UpdateBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    target: S.optional(UpdateBackupPolicyRequestTarget),
+    retention_value: S.optional(S.Number),
+    retention_unit: S.optional(UpdateBackupPolicyRequestRetentionUnit),
+    frequency_value: S.optional(S.Number),
+    frequency_unit: S.optional(UpdateBackupPolicyRequestFrequencyUnit),
+    schedule_time: S.optional(S.String),
+    schedule_day: S.optional(S.Number),
+    schedule_week: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19323,6 +19665,16 @@ export const UpdateBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateBackupPolicyRequest",
 }) as any as S.Schema<UpdateBackupPolicyRequest>;
 
+/** Bouncer configuration parameters nested by namespace (e.g., {"pgbouncer": {"default_pool_size": "100"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Only parameters with namespace 'pgbouncer' can be updated. */
+export type UpdateBouncerResizeRequestRequestParametersMap = {
+  [key: string]: unknown | undefined;
+};
+export const UpdateBouncerResizeRequestRequestParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<UpdateBouncerResizeRequestRequestParametersMap>;
+
 export interface UpdateBouncerResizeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -19332,7 +19684,12 @@ export interface UpdateBouncerResizeRequestRequest {
   branch: string;
   /** The name of the bouncer */
   bouncer: string;
-  body?: unknown;
+  /** The bouncer size SKU name (e.g., 'PGB_5', 'PGB_10', 'PGB_20', 'PGB_40', 'PGB_80', 'PGB_160'). Defaults to 'PGB_5'. */
+  bouncer_size?: string;
+  /** The number of PgBouncers per availability zone. Defaults to 1. */
+  replicas_per_cell?: number;
+  /** Bouncer configuration parameters nested by namespace (e.g., {"pgbouncer": {"default_pool_size": "100"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Only parameters with namespace 'pgbouncer' can be updated. */
+  parameters?: UpdateBouncerResizeRequestRequestParametersMap;
 }
 export const UpdateBouncerResizeRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19340,7 +19697,9 @@ export const UpdateBouncerResizeRequestRequest = /*@__PURE__*/ S.suspend(() =>
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
     bouncer: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    bouncer_size: S.optional(S.String),
+    replicas_per_cell: S.optional(S.Number),
+    parameters: S.optional(UpdateBouncerResizeRequestRequestParametersMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19357,8 +19716,7 @@ export type PostgresBouncerResizeRequestState =
   | "pending"
   | "resizing"
   | "canceled"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const PostgresBouncerResizeRequestState = /*@__PURE__*/ S.String;
 
 /** The bouncer parameters */
@@ -19525,14 +19883,15 @@ export interface UpdateBranchRequest {
   database: string;
   /** The name of the branch */
   branch: string;
-  body?: unknown;
+  /** The name to update the branch */
+  new_name: string;
 }
 export const UpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    new_name: S.String,
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19544,6 +19903,41 @@ export const UpdateBranchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateBranchRequest",
 }) as any as S.Schema<UpdateBranchRequest>;
 
+/** Cluster configuration parameters nested by namespace (e.g., {"pgconf": {"max_connections": "200"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Supported namespaces include 'patroni', 'pgconf', and 'pgbouncer'. */
+export type UpdateBranchChangeRequestRequestParametersMap = {
+  [key: string]: unknown | undefined;
+};
+export const UpdateBranchChangeRequestRequestParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<UpdateBranchChangeRequestRequestParametersMap>;
+
+export interface UpdateBranchChangeRequestRequestStorage {
+  /** The minimum storage size in bytes. */
+  minimum_storage_bytes?: number;
+  /** The maximum storage size in bytes for autoscaling. */
+  maximum_storage_bytes?: number;
+  /** Whether storage autoscaling is enabled. */
+  storage_autoscaling?: boolean;
+  /** The storage IOPS. */
+  storage_iops?: number;
+  /** The storage throughput in MiB/s. */
+  storage_throughput_mibs?: number;
+}
+export const UpdateBranchChangeRequestRequestStorage = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      minimum_storage_bytes: S.optional(S.Number),
+      maximum_storage_bytes: S.optional(S.Number),
+      storage_autoscaling: S.optional(S.Boolean),
+      storage_iops: S.optional(S.Number),
+      storage_throughput_mibs: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "UpdateBranchChangeRequestRequestStorage",
+}) as any as S.Schema<UpdateBranchChangeRequestRequestStorage>;
+
 export interface UpdateBranchChangeRequestRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -19551,14 +19945,23 @@ export interface UpdateBranchChangeRequestRequest {
   database: string;
   /** Branch name from `list_branches`. Example: `main`. */
   branch: string;
-  body?: unknown;
+  /** The size of the cluster. Available sizes can be found using the 'List cluster sizes' endpoint. */
+  cluster_size?: string;
+  /** The total number of replicas */
+  replicas?: number;
+  /** Cluster configuration parameters nested by namespace (e.g., {"pgconf": {"max_connections": "200"}}). Use the 'List cluster parameters' endpoint to retrieve available parameters. Supported namespaces include 'patroni', 'pgconf', and 'pgbouncer'. */
+  parameters?: UpdateBranchChangeRequestRequestParametersMap;
+  storage?: UpdateBranchChangeRequestRequestStorage;
 }
 export const UpdateBranchChangeRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    cluster_size: S.optional(S.String),
+    replicas: S.optional(S.Number),
+    parameters: S.optional(UpdateBranchChangeRequestRequestParametersMap),
+    storage: S.optional(UpdateBranchChangeRequestRequestStorage),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19577,14 +19980,15 @@ export interface UpdateBranchClusterConfigRequest {
   database: string;
   /** The name of the branch to configure */
   branch: string;
-  body?: unknown;
+  /** The new size of the database cluster: PS_10, PS_20,… */
+  cluster_size: string;
 }
 export const UpdateBranchClusterConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    cluster_size: S.String,
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19603,6 +20007,12 @@ export const UpdateBranchClusterConfigResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateBranchClusterConfigResponse",
 }) as any as S.Schema<UpdateBranchClusterConfigResponse>;
 
+/** List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Only provided fields will be updated. */
+export type UpdateDatabasePostgresCidrRequestCidrsList = ReadonlyArray<string>;
+export const UpdateDatabasePostgresCidrRequestCidrsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateDatabasePostgresCidrRequestCidrsList>;
+
 export interface UpdateDatabasePostgresCidrRequest {
   /** The name of the organization the database belongs to */
   organization: string;
@@ -19610,14 +20020,21 @@ export interface UpdateDatabasePostgresCidrRequest {
   database: string;
   /** The ID of the IP restriction entry */
   id: string;
-  body?: unknown;
+  /** The PostgreSQL schema to restrict access to. Leave empty to allow access to all schemas. */
+  schema?: string;
+  /** The PostgreSQL role to restrict access to. Leave empty to allow access for all roles. */
+  role?: string;
+  /** List of IPv4 CIDR ranges (e.g., ['192.168.1.0/24', '192.168.1.1/32']). Only provided fields will be updated. */
+  cidrs?: UpdateDatabasePostgresCidrRequestCidrsList;
 }
 export const UpdateDatabasePostgresCidrRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    schema: S.optional(S.String),
+    role: S.optional(S.String),
+    cidrs: S.optional(UpdateDatabasePostgresCidrRequestCidrsList),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19634,13 +20051,44 @@ export interface UpdateDatabaseSettingsRequest {
   organization: string;
   /** Database name slug from `list_databases`. Example: `app-db`. */
   database: string;
-  body?: unknown;
+  /** The name to update the database to */
+  new_name?: string;
+  /** Whether or not to copy migration data to new branches and in deploy requests. (Vitess only) */
+  automatic_migrations?: boolean;
+  /** A migration framework to use on the database. (Vitess only) */
+  migration_framework?: string;
+  /** Name of table to use as migration table for the database. (Vitess only) */
+  migration_table_name?: string;
+  /** Whether or not deploy requests must be approved by a database administrator other than the request creator */
+  require_approval_for_deploy?: boolean;
+  /** Whether or not to limit branch creation to the same region as the one selected during database creation. */
+  restrict_branch_region?: boolean;
+  /** Whether or not data branching is allowed on the database. (Vitess only) */
+  allow_data_branching?: boolean;
+  /** Whether or not foreign key constraints are allowed on the database. (Vitess only) */
+  allow_foreign_key_constraints?: boolean;
+  /** Whether or not full queries should be collected from the database */
+  insights_raw_queries?: boolean;
+  /** Whether or not the web console can be used on the production branch of the database */
+  production_branch_web_console?: boolean;
+  /** The default branch of the database */
+  default_branch?: string;
 }
 export const UpdateDatabaseSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    new_name: S.optional(S.String),
+    automatic_migrations: S.optional(S.Boolean),
+    migration_framework: S.optional(S.String),
+    migration_table_name: S.optional(S.String),
+    require_approval_for_deploy: S.optional(S.Boolean),
+    restrict_branch_region: S.optional(S.Boolean),
+    allow_data_branching: S.optional(S.Boolean),
+    allow_foreign_key_constraints: S.optional(S.Boolean),
+    insights_raw_queries: S.optional(S.Boolean),
+    production_branch_web_console: S.optional(S.Boolean),
+    default_branch: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19652,18 +20100,32 @@ export const UpdateDatabaseSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDatabaseSettingsRequest",
 }) as any as S.Schema<UpdateDatabaseSettingsRequest>;
 
+/** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
+export type UpdateDatabaseThrottlerRequestConfigurationsList =
+  ReadonlyArray<string>;
+export const UpdateDatabaseThrottlerRequestConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateDatabaseThrottlerRequestConfigurationsList>;
+
 export interface UpdateDatabaseThrottlerRequest {
   /** The name of the organization that the throttled deploy requests belong to */
   organization: string;
   /** The name of the database that the throttled deploy requests belong to */
   database: string;
-  body?: unknown;
+  /** A throttler ratio between 0 and 95 that will apply to all keyspaces in the database. 0 effectively disables throttler, while 95 drastically slows down deploy request migrations */
+  ratio?: number;
+  /** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
+  configurations?: UpdateDatabaseThrottlerRequestConfigurationsList;
 }
 export const UpdateDatabaseThrottlerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    ratio: S.optional(S.Number),
+    configurations: S.optional(
+      UpdateDatabaseThrottlerRequestConfigurationsList,
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19675,6 +20137,14 @@ export const UpdateDatabaseThrottlerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateDatabaseThrottlerRequest",
 }) as any as S.Schema<UpdateDatabaseThrottlerRequest>;
 
+/** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
+export type UpdateDeployRequestThrottlerRequestConfigurationsList =
+  ReadonlyArray<string>;
+export const UpdateDeployRequestThrottlerRequestConfigurationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateDeployRequestThrottlerRequestConfigurationsList>;
+
 export interface UpdateDeployRequestThrottlerRequest {
   /** The name of the deploy request's organization */
   organization: string;
@@ -19682,14 +20152,20 @@ export interface UpdateDeployRequestThrottlerRequest {
   database: string;
   /** The number of the deploy request */
   number: number;
-  body?: unknown;
+  /** A throttler ratio between 0 and 95 that will apply to all keyspaces affected by the deploy request. 0 effectively disables throttler, while 95 drastically slows down migrations in the deploy request */
+  ratio?: number;
+  /** If specifying throttler ratios per keyspace, an array of { "keyspace_name": "mykeyspace", "ratio": 10 }, one for each eligible keyspace */
+  configurations?: UpdateDeployRequestThrottlerRequestConfigurationsList;
 }
 export const UpdateDeployRequestThrottlerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     number: S.Number.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    ratio: S.optional(S.Number),
+    configurations: S.optional(
+      UpdateDeployRequestThrottlerRequestConfigurationsList,
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19737,7 +20213,8 @@ export interface UpdateKeyspaceVschemaRequest {
   branch: string;
   /** The name of the keyspace */
   keyspace: string;
-  body?: unknown;
+  /** The new VSchema for the keyspace */
+  vschema: string;
 }
 export const UpdateKeyspaceVschemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19745,7 +20222,7 @@ export const UpdateKeyspaceVschemaRequest = /*@__PURE__*/ S.suspend(() =>
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
     keyspace: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    vschema: S.String,
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19772,12 +20249,19 @@ export const UpdateKeyspaceVschemaResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateOrganizationRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
-  body?: unknown;
+  /** The billing email for the organization */
+  billing_email?: string;
+  /** Whether or not the IdP provider is be responsible for managing roles in PlanetScale */
+  idp_managed_roles?: boolean;
+  /** The expected monthly budget for the organization */
+  invoice_budget_amount?: number;
 }
 export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    billing_email: S.optional(S.String),
+    idp_managed_roles: S.optional(S.Boolean),
+    invoice_budget_amount: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19794,13 +20278,14 @@ export interface UpdateOrganizationMembershipRequest {
   organization: string;
   /** The ID of the user */
   id: string;
-  body?: unknown;
+  /** The role to assign to the member (e.g., 'admin', 'member'). Note: Cannot update your own role. Roles managed by IdP cannot be updated via API. */
+  role: string;
 }
 export const UpdateOrganizationMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    role: S.String,
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19817,13 +20302,17 @@ export interface UpdateOrganizationTeamRequest {
   organization: string;
   /** The slug of the team */
   team: string;
-  body?: unknown;
+  /** The new name for the team */
+  name?: string;
+  /** The new description for the team */
+  description?: string;
 }
 export const UpdateOrganizationTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     team: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19835,6 +20324,12 @@ export const UpdateOrganizationTeamRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateOrganizationTeamRequest",
 }) as any as S.Schema<UpdateOrganizationTeamRequest>;
 
+/** List of IP addresses or CIDR ranges that can use this password */
+export type UpdatePasswordRequestCidrsList = ReadonlyArray<string>;
+export const UpdatePasswordRequestCidrsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdatePasswordRequestCidrsList>;
+
 export interface UpdatePasswordRequest {
   /** The name of the organization the password belongs to */
   organization: string;
@@ -19844,7 +20339,10 @@ export interface UpdatePasswordRequest {
   branch: string;
   /** The ID of the password */
   id: string;
-  body?: unknown;
+  /** The name for the password */
+  name?: string;
+  /** List of IP addresses or CIDR ranges that can use this password */
+  cidrs?: UpdatePasswordRequestCidrsList;
 }
 export const UpdatePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19852,7 +20350,8 @@ export const UpdatePasswordRequest = /*@__PURE__*/ S.suspend(() =>
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    cidrs: S.optional(UpdatePasswordRequestCidrsList),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19873,7 +20372,12 @@ export interface UpdateRoleRequest {
   branch: string;
   /** The ID of the role */
   id: string;
-  body?: unknown;
+  /** The new name of the role */
+  name?: string;
+  /** Require WHERE clause on DELETE statements */
+  require_where_on_delete?: string;
+  /** Require WHERE clause on UPDATE statements */
+  require_where_on_update?: string;
 }
 export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19881,7 +20385,9 @@ export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    require_where_on_delete: S.optional(S.String),
+    require_where_on_update: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19893,6 +20399,16 @@ export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRoleRequest",
 }) as any as S.Schema<UpdateRoleRequest>;
 
+/** The mode of the traffic budget */
+export type UpdateTrafficBudgetRequestMode = "enforce" | "warn" | "off";
+export const UpdateTrafficBudgetRequestMode = /*@__PURE__*/ S.String;
+
+/** Array of traffic rules to apply to the budget */
+export type UpdateTrafficBudgetRequestRulesList = ReadonlyArray<string>;
+export const UpdateTrafficBudgetRequestRulesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateTrafficBudgetRequestRulesList>;
+
 export interface UpdateTrafficBudgetRequest {
   /** Organization name slug from `list_organizations`. Example: `acme`. */
   organization: string;
@@ -19902,7 +20418,22 @@ export interface UpdateTrafficBudgetRequest {
   branch: string;
   /** The ID of the traffic budget */
   id: string;
-  body?: unknown;
+  /** Name of the traffic budget */
+  name?: string;
+  /** The mode of the traffic budget */
+  mode?: UpdateTrafficBudgetRequestMode;
+  /** The maximum capacity that can be banked, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set. */
+  capacity?: number;
+  /** The rate at which capacity refills, as a percentage of server resources (0-100). Unlimited when not set. */
+  rate?: number;
+  /** The maximum capacity a single query can consume, measured as a percentage of seconds of full server usage (0-6000). Unlimited when not set. */
+  burst?: number;
+  /** The percentage of available worker processes this policy can use (0-100). Unlimited when not set. */
+  concurrency?: number;
+  /** A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100). */
+  warning_threshold?: number;
+  /** Array of traffic rules to apply to the budget */
+  rules?: UpdateTrafficBudgetRequestRulesList;
 }
 export const UpdateTrafficBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19910,7 +20441,14 @@ export const UpdateTrafficBudgetRequest = /*@__PURE__*/ S.suspend(() =>
     database: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    name: S.optional(S.String),
+    mode: S.optional(UpdateTrafficBudgetRequestMode),
+    capacity: S.optional(S.Number),
+    rate: S.optional(S.Number),
+    burst: S.optional(S.Number),
+    concurrency: S.optional(S.Number),
+    warning_threshold: S.optional(S.Number),
+    rules: S.optional(UpdateTrafficBudgetRequestRulesList),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -19922,6 +20460,12 @@ export const UpdateTrafficBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTrafficBudgetRequest",
 }) as any as S.Schema<UpdateTrafficBudgetRequest>;
 
+/** The events this webhook should subscribe to */
+export type UpdateWebhookRequestEventsList = ReadonlyArray<string>;
+export const UpdateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateWebhookRequestEventsList>;
+
 export interface UpdateWebhookRequest {
   /** The name of the organization */
   organization: string;
@@ -19929,14 +20473,21 @@ export interface UpdateWebhookRequest {
   database: string;
   /** The ID of the webhook */
   id: string;
-  body?: unknown;
+  /** The URL the webhook will send events to */
+  url?: string;
+  /** Whether the webhook should be enabled */
+  enabled?: boolean;
+  /** The events this webhook should subscribe to */
+  events?: UpdateWebhookRequestEventsList;
 }
 export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     database: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    url: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    events: S.optional(UpdateWebhookRequestEventsList),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -23030,12 +23581,12 @@ export type ResetDefaultRoleError = Forbidden | NotFound | PlanetScaleOpError;
 /** Reset default credentials */
 export const resetDefaultRole: API.OperationMethod<
   ResetDefaultRoleRequest,
-  ResetDefaultRoleResponse,
+  PostgresRole,
   ResetDefaultRoleError,
   PlanetScaleOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetDefaultRoleRequest,
-  output: ResetDefaultRoleResponse,
+  output: PostgresRole,
   errors: [Forbidden, NotFound, UnknownPlanetScaleError],
   protocol: PlanetScaleProtocol,
   retry: Retry.Retry,
@@ -23924,7 +24475,7 @@ export type RenewPasswordOutput = DatabaseBranchPasswordWithSecret;
 export type RenewRoleInput = RenewRoleRequest;
 export type RenewRoleOutput = PostgresRole;
 export type ResetDefaultRoleInput = ResetDefaultRoleRequest;
-export type ResetDefaultRoleOutput = ResetDefaultRoleResponse;
+export type ResetDefaultRoleOutput = PostgresRole;
 export type ResetRoleInput = ResetRoleRequest;
 export type ResetRoleOutput = PostgresRole;
 export type ReviewDeployRequestInput = ReviewDeployRequestRequest;

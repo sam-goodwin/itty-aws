@@ -60,11 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type FirewallRuleActionEnum =
-  | "UNSPECIFIED_ACTION"
-  | "ALLOW"
-  | "DENY"
-  | (string & {});
+export type FirewallRuleActionEnum = "UNSPECIFIED_ACTION" | "ALLOW" | "DENY";
 export const FirewallRuleActionEnum = /*@__PURE__*/ S.String;
 
 /** A single firewall rule that is evaluated against incoming traffic and provides an action to take on matched requests. A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the user. */
@@ -86,7 +82,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
-export type FirewallRuleList = FirewallRule[];
+export type FirewallRuleList = ReadonlyArray<FirewallRule>;
 export const FirewallRuleList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleList>;
@@ -143,8 +139,7 @@ export type ApplicationServingStatusEnum =
   | "UNSPECIFIED"
   | "SERVING"
   | "USER_DISABLED"
-  | "SYSTEM_DISABLED"
-  | (string & {});
+  | "SYSTEM_DISABLED";
 export const ApplicationServingStatusEnum = /*@__PURE__*/ S.String;
 
 /** The feature specific settings to be used in the application. These define behaviors that are user configurable. */
@@ -173,8 +168,7 @@ export type ApplicationDatabaseTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
   | "CLOUD_DATASTORE"
   | "CLOUD_FIRESTORE"
-  | "CLOUD_DATASTORE_COMPATIBILITY"
-  | (string & {});
+  | "CLOUD_DATASTORE_COMPATIBILITY";
 export const ApplicationDatabaseTypeEnum = /*@__PURE__*/ S.String;
 
 /** Rules to match an HTTP request and dispatch that request to a service. */
@@ -196,7 +190,7 @@ export const UrlDispatchRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "UrlDispatchRule",
 }) as any as S.Schema<UrlDispatchRule>;
 
-export type UrlDispatchRuleList = UrlDispatchRule[];
+export type UrlDispatchRuleList = ReadonlyArray<UrlDispatchRule>;
 export const UrlDispatchRuleList = /*@__PURE__*/ S.Array(
   UrlDispatchRule,
 ) as any as S.Schema<UrlDispatchRuleList>;
@@ -204,8 +198,7 @@ export const UrlDispatchRuleList = /*@__PURE__*/ S.Array(
 export type ApplicationSslPolicyEnum =
   | "SSL_POLICY_UNSPECIFIED"
   | "DEFAULT"
-  | "MODERN"
-  | (string & {});
+  | "MODERN";
 export const ApplicationSslPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Identity-Aware Proxy */
@@ -305,7 +298,7 @@ export const CreateAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAppsRequest",
 }) as any as S.Schema<CreateAppsRequest>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -357,8 +350,7 @@ export type ManagedCertificateStatusEnum =
   | "FAILED_RETRYING_NOT_VISIBLE"
   | "FAILED_PERMANENT"
   | "FAILED_RETRYING_CAA_FORBIDDEN"
-  | "FAILED_RETRYING_CAA_CHECKING"
-  | (string & {});
+  | "FAILED_RETRYING_CAA_CHECKING";
 export const ManagedCertificateStatusEnum = /*@__PURE__*/ S.String;
 
 /** A certificate managed by App Engine. */
@@ -377,7 +369,7 @@ export const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedCertificate",
 }) as any as S.Schema<ManagedCertificate>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -460,12 +452,11 @@ export const CreateAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
 export type CreateAppsDomainMappingsOverrideStrategyEnum =
   | "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY"
   | "STRICT"
-  | "OVERRIDE"
-  | (string & {});
+  | "OVERRIDE";
 export const CreateAppsDomainMappingsOverrideStrategyEnum =
   /*@__PURE__*/ S.String;
 
-export type ResourceRecordTypeEnum = "A" | "AAAA" | "CNAME" | (string & {});
+export type ResourceRecordTypeEnum = "A" | "AAAA" | "CNAME";
 export const ResourceRecordTypeEnum = /*@__PURE__*/ S.String;
 
 /** A DNS resource record. */
@@ -485,15 +476,12 @@ export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
 
-export type ResourceRecordList = ResourceRecord[];
+export type ResourceRecordList = ReadonlyArray<ResourceRecord>;
 export const ResourceRecordList = /*@__PURE__*/ S.Array(
   ResourceRecord,
 ) as any as S.Schema<ResourceRecordList>;
 
-export type SslSettingsSslManagementTypeEnum =
-  | "AUTOMATIC"
-  | "MANUAL"
-  | (string & {});
+export type SslSettingsSslManagementTypeEnum = "AUTOMATIC" | "MANUAL";
 export const SslSettingsSslManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** SSL configuration for a DomainMapping resource. */
@@ -601,8 +589,7 @@ export const ManualScaling = /*@__PURE__*/ S.suspend(() =>
 export type UrlMapAuthFailActionEnum =
   | "AUTH_FAIL_ACTION_UNSPECIFIED"
   | "AUTH_FAIL_ACTION_REDIRECT"
-  | "AUTH_FAIL_ACTION_UNAUTHORIZED"
-  | (string & {});
+  | "AUTH_FAIL_ACTION_UNAUTHORIZED";
 export const UrlMapAuthFailActionEnum = /*@__PURE__*/ S.String;
 
 /** Executes a script to handle the request that matches the URL pattern. */
@@ -652,8 +639,7 @@ export type UrlMapSecurityLevelEnum =
   | "SECURE_DEFAULT"
   | "SECURE_NEVER"
   | "SECURE_OPTIONAL"
-  | "SECURE_ALWAYS"
-  | (string & {});
+  | "SECURE_ALWAYS";
 export const UrlMapSecurityLevelEnum = /*@__PURE__*/ S.String;
 
 /** Uses Google Cloud Endpoints to handle requests. */
@@ -673,8 +659,7 @@ export type UrlMapLoginEnum =
   | "LOGIN_UNSPECIFIED"
   | "LOGIN_OPTIONAL"
   | "LOGIN_ADMIN"
-  | "LOGIN_REQUIRED"
-  | (string & {});
+  | "LOGIN_REQUIRED";
 export const UrlMapLoginEnum = /*@__PURE__*/ S.String;
 
 export type UrlMapRedirectHttpResponseCodeEnum =
@@ -682,8 +667,7 @@ export type UrlMapRedirectHttpResponseCodeEnum =
   | "REDIRECT_HTTP_RESPONSE_CODE_301"
   | "REDIRECT_HTTP_RESPONSE_CODE_302"
   | "REDIRECT_HTTP_RESPONSE_CODE_303"
-  | "REDIRECT_HTTP_RESPONSE_CODE_307"
-  | (string & {});
+  | "REDIRECT_HTTP_RESPONSE_CODE_307";
 export const UrlMapRedirectHttpResponseCodeEnum = /*@__PURE__*/ S.String;
 
 /** URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript. */
@@ -718,7 +702,7 @@ export const UrlMap = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UrlMap" }) as any as S.Schema<UrlMap>;
 
-export type UrlMapList = UrlMap[];
+export type UrlMapList = ReadonlyArray<UrlMap>;
 export const UrlMapList = /*@__PURE__*/ S.Array(
   UrlMap,
 ) as any as S.Schema<UrlMapList>;
@@ -753,7 +737,7 @@ export const Library = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Library" }) as any as S.Schema<Library>;
 
-export type LibraryList = Library[];
+export type LibraryList = ReadonlyArray<Library>;
 export const LibraryList = /*@__PURE__*/ S.Array(
   Library,
 ) as any as S.Schema<LibraryList>;
@@ -817,7 +801,7 @@ export const CustomMetric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomMetric" }) as any as S.Schema<CustomMetric>;
 
-export type CustomMetricList = CustomMetric[];
+export type CustomMetricList = ReadonlyArray<CustomMetric>;
 export const CustomMetricList = /*@__PURE__*/ S.Array(
   CustomMetric,
 ) as any as S.Schema<CustomMetricList>;
@@ -943,12 +927,11 @@ export type VersionInboundServicesItemEnum =
   | "INBOUND_SERVICE_XMPP_SUBSCRIBE"
   | "INBOUND_SERVICE_XMPP_PRESENCE"
   | "INBOUND_SERVICE_CHANNEL_PRESENCE"
-  | "INBOUND_SERVICE_WARMUP"
-  | (string & {});
+  | "INBOUND_SERVICE_WARMUP";
 export const VersionInboundServicesItemEnum = /*@__PURE__*/ S.String;
 
 export type VersionInboundServicesItemEnumList =
-  VersionInboundServicesItemEnum[];
+  ReadonlyArray<VersionInboundServicesItemEnum>;
 export const VersionInboundServicesItemEnumList = /*@__PURE__*/ S.Array(
   VersionInboundServicesItemEnum,
 ) as any as S.Schema<VersionInboundServicesItemEnumList>;
@@ -972,7 +955,7 @@ export const VpcNetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "VpcNetworkInterface",
 }) as any as S.Schema<VpcNetworkInterface>;
 
-export type VpcNetworkInterfaceList = VpcNetworkInterface[];
+export type VpcNetworkInterfaceList = ReadonlyArray<VpcNetworkInterface>;
 export const VpcNetworkInterfaceList = /*@__PURE__*/ S.Array(
   VpcNetworkInterface,
 ) as any as S.Schema<VpcNetworkInterfaceList>;
@@ -980,8 +963,7 @@ export const VpcNetworkInterfaceList = /*@__PURE__*/ S.Array(
 export type VpcAccessVpcEgressEnum =
   | "VPC_EGRESS_UNSPECIFIED"
   | "ALL_TRAFFIC"
-  | "PRIVATE_IP_RANGES"
-  | (string & {});
+  | "PRIVATE_IP_RANGES";
 export const VpcAccessVpcEgressEnum = /*@__PURE__*/ S.String;
 
 /** VPC Access settings */
@@ -1003,8 +985,7 @@ export type ErrorHandlerErrorCodeEnum =
   | "ERROR_CODE_DEFAULT"
   | "ERROR_CODE_OVER_QUOTA"
   | "ERROR_CODE_DOS_API_DENIAL"
-  | "ERROR_CODE_TIMEOUT"
-  | (string & {});
+  | "ERROR_CODE_TIMEOUT";
 export const ErrorHandlerErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Custom static error page to be served when an error occurs. */
@@ -1024,7 +1005,7 @@ export const ErrorHandler = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorHandler" }) as any as S.Schema<ErrorHandler>;
 
-export type ErrorHandlerList = ErrorHandler[];
+export type ErrorHandlerList = ReadonlyArray<ErrorHandler>;
 export const ErrorHandlerList = /*@__PURE__*/ S.Array(
   ErrorHandler,
 ) as any as S.Schema<ErrorHandlerList>;
@@ -1032,8 +1013,7 @@ export const ErrorHandlerList = /*@__PURE__*/ S.Array(
 export type NetworkInstanceIpModeEnum =
   | "INSTANCE_IP_MODE_UNSPECIFIED"
   | "EXTERNAL"
-  | "INTERNAL"
-  | (string & {});
+  | "INTERNAL";
 export const NetworkInstanceIpModeEnum = /*@__PURE__*/ S.String;
 
 /** Extra network settings. Only applicable in the App Engine flexible environment. */
@@ -1079,8 +1059,7 @@ export const BasicScaling = /*@__PURE__*/ S.suspend(() =>
 export type EndpointsApiServiceRolloutStrategyEnum =
   | "UNSPECIFIED_ROLLOUT_STRATEGY"
   | "FIXED"
-  | "MANAGED"
-  | (string & {});
+  | "MANAGED";
 export const EndpointsApiServiceRolloutStrategyEnum = /*@__PURE__*/ S.String;
 
 /** Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview). */
@@ -1149,8 +1128,7 @@ export type ApiConfigHandlerLoginEnum =
   | "LOGIN_UNSPECIFIED"
   | "LOGIN_OPTIONAL"
   | "LOGIN_ADMIN"
-  | "LOGIN_REQUIRED"
-  | (string & {});
+  | "LOGIN_REQUIRED";
 export const ApiConfigHandlerLoginEnum = /*@__PURE__*/ S.String;
 
 export type ApiConfigHandlerSecurityLevelEnum =
@@ -1158,15 +1136,13 @@ export type ApiConfigHandlerSecurityLevelEnum =
   | "SECURE_DEFAULT"
   | "SECURE_NEVER"
   | "SECURE_OPTIONAL"
-  | "SECURE_ALWAYS"
-  | (string & {});
+  | "SECURE_ALWAYS";
 export const ApiConfigHandlerSecurityLevelEnum = /*@__PURE__*/ S.String;
 
 export type ApiConfigHandlerAuthFailActionEnum =
   | "AUTH_FAIL_ACTION_UNSPECIFIED"
   | "AUTH_FAIL_ACTION_REDIRECT"
-  | "AUTH_FAIL_ACTION_UNAUTHORIZED"
-  | (string & {});
+  | "AUTH_FAIL_ACTION_UNAUTHORIZED";
 export const ApiConfigHandlerAuthFailActionEnum = /*@__PURE__*/ S.String;
 
 /** Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers. */
@@ -1239,12 +1215,11 @@ export type VersionAppEngineBundledServicesItemEnum =
   | "BUNDLED_SERVICE_TYPE_SEARCH"
   | "BUNDLED_SERVICE_TYPE_TASKQUEUES"
   | "BUNDLED_SERVICE_TYPE_URLFETCH"
-  | "BUNDLED_SERVICE_TYPE_USERS"
-  | (string & {});
+  | "BUNDLED_SERVICE_TYPE_USERS";
 export const VersionAppEngineBundledServicesItemEnum = /*@__PURE__*/ S.String;
 
 export type VersionAppEngineBundledServicesItemEnumList =
-  VersionAppEngineBundledServicesItemEnum[];
+  ReadonlyArray<VersionAppEngineBundledServicesItemEnum>;
 export const VersionAppEngineBundledServicesItemEnumList =
   /*@__PURE__*/ S.Array(
     VersionAppEngineBundledServicesItemEnum,
@@ -1282,8 +1257,7 @@ export const ReadinessCheck = /*@__PURE__*/ S.suspend(() =>
 export type VpcAccessConnectorEgressSettingEnum =
   | "EGRESS_SETTING_UNSPECIFIED"
   | "ALL_TRAFFIC"
-  | "PRIVATE_IP_RANGES"
-  | (string & {});
+  | "PRIVATE_IP_RANGES";
 export const VpcAccessConnectorEgressSettingEnum = /*@__PURE__*/ S.String;
 
 /** VPC access connector specification. */
@@ -1319,7 +1293,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
-export type VolumeList = Volume[];
+export type VolumeList = ReadonlyArray<Volume>;
 export const VolumeList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumeList>;
@@ -1350,8 +1324,7 @@ export const Resources = /*@__PURE__*/ S.suspend(() =>
 export type VersionServingStatusEnum =
   | "SERVING_STATUS_UNSPECIFIED"
   | "SERVING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const VersionServingStatusEnum = /*@__PURE__*/ S.String;
 
 /** The zip file information for a zip deployment. */
@@ -1648,10 +1621,7 @@ export const CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest =
   }) as any as S.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export type CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum =
-    | "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY"
-    | "STRICT"
-    | "OVERRIDE"
-    | (string & {});
+  "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" | "STRICT" | "OVERRIDE";
 export const CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -2146,8 +2116,7 @@ export const ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest 
 export type GetAppsIncludeExtraDataEnum =
   | "INCLUDE_EXTRA_DATA_UNSPECIFIED"
   | "INCLUDE_EXTRA_DATA_NONE"
-  | "INCLUDE_GOOGLE_GENERATED_METADATA"
-  | (string & {});
+  | "INCLUDE_GOOGLE_GENERATED_METADATA";
 export const GetAppsIncludeExtraDataEnum = /*@__PURE__*/ S.String;
 
 export interface GetAppsRequest {
@@ -2171,8 +2140,7 @@ export const GetAppsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetAppsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE"
-  | (string & {});
+  | "FULL_CERTIFICATE";
 export const GetAppsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAppsAuthorizedCertificatesRequest {
@@ -2310,8 +2278,7 @@ export const GetAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetAppsServicesIncludeExtraDataEnum =
   | "INCLUDE_EXTRA_DATA_UNSPECIFIED"
   | "INCLUDE_EXTRA_DATA_NONE"
-  | "INCLUDE_GOOGLE_GENERATED_METADATA"
-  | (string & {});
+  | "INCLUDE_GOOGLE_GENERATED_METADATA";
 export const GetAppsServicesIncludeExtraDataEnum = /*@__PURE__*/ S.String;
 
 export interface GetAppsServicesRequest {
@@ -2344,8 +2311,7 @@ export type TrafficSplitShardByEnum =
   | "UNSPECIFIED"
   | "COOKIE"
   | "IP"
-  | "RANDOM"
-  | (string & {});
+  | "RANDOM";
 export const TrafficSplitShardByEnum = /*@__PURE__*/ S.String;
 
 export type DoubleMap = { [key: string]: number | undefined };
@@ -2372,8 +2338,7 @@ export type NetworkSettingsIngressTrafficAllowedEnum =
   | "INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED"
   | "INGRESS_TRAFFIC_ALLOWED_ALL"
   | "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY"
-  | "INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB"
-  | (string & {});
+  | "INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB";
 export const NetworkSettingsIngressTrafficAllowedEnum = /*@__PURE__*/ S.String;
 
 /** A NetworkSettings resource is a container for ingress settings for a version or service. */
@@ -2415,14 +2380,13 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
-export type GetAppsServicesVersionsViewEnum = "BASIC" | "FULL" | (string & {});
+export type GetAppsServicesVersionsViewEnum = "BASIC" | "FULL";
 export const GetAppsServicesVersionsViewEnum = /*@__PURE__*/ S.String;
 
 export type GetAppsServicesVersionsIncludeExtraDataEnum =
   | "INCLUDE_EXTRA_DATA_UNSPECIFIED"
   | "INCLUDE_EXTRA_DATA_NONE"
-  | "INCLUDE_GOOGLE_GENERATED_METADATA"
-  | (string & {});
+  | "INCLUDE_GOOGLE_GENERATED_METADATA";
 export const GetAppsServicesVersionsIncludeExtraDataEnum =
   /*@__PURE__*/ S.String;
 
@@ -2492,15 +2456,10 @@ export type InstanceVmLivenessEnum =
   | "HEALTHY"
   | "UNHEALTHY"
   | "DRAINING"
-  | "TIMEOUT"
-  | (string & {});
+  | "TIMEOUT";
 export const InstanceVmLivenessEnum = /*@__PURE__*/ S.String;
 
-export type InstanceAvailabilityEnum =
-  | "UNSPECIFIED"
-  | "RESIDENT"
-  | "DYNAMIC"
-  | (string & {});
+export type InstanceAvailabilityEnum = "UNSPECIFIED" | "RESIDENT" | "DYNAMIC";
 export const InstanceAvailabilityEnum = /*@__PURE__*/ S.String;
 
 /** An Instance resource is the computing unit that App Engine uses to automatically scale an application. */
@@ -2585,8 +2544,7 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE"
-  | (string & {});
+  | "FULL_CERTIFICATE";
 export const GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2680,8 +2638,7 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 export type ListAppsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE"
-  | (string & {});
+  | "FULL_CERTIFICATE";
 export const ListAppsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListAppsAuthorizedCertificatesRequest {
@@ -2712,7 +2669,7 @@ export const ListAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAppsAuthorizedCertificatesRequest",
 }) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>;
 
-export type AuthorizedCertificateList = AuthorizedCertificate[];
+export type AuthorizedCertificateList = ReadonlyArray<AuthorizedCertificate>;
 export const AuthorizedCertificateList = /*@__PURE__*/ S.Array(
   AuthorizedCertificate,
 ) as any as S.Schema<AuthorizedCertificateList>;
@@ -2773,7 +2730,7 @@ export const AuthorizedDomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizedDomain",
 }) as any as S.Schema<AuthorizedDomain>;
 
-export type AuthorizedDomainList = AuthorizedDomain[];
+export type AuthorizedDomainList = ReadonlyArray<AuthorizedDomain>;
 export const AuthorizedDomainList = /*@__PURE__*/ S.Array(
   AuthorizedDomain,
 ) as any as S.Schema<AuthorizedDomainList>;
@@ -2818,7 +2775,7 @@ export const ListAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsDomainMappingsRequest",
 }) as any as S.Schema<ListAppsDomainMappingsRequest>;
 
-export type DomainMappingList = DomainMapping[];
+export type DomainMappingList = ReadonlyArray<DomainMapping>;
 export const DomainMappingList = /*@__PURE__*/ S.Array(
   DomainMapping,
 ) as any as S.Schema<DomainMappingList>;
@@ -2912,7 +2869,7 @@ export const ListAppsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsLocationsRequest",
 }) as any as S.Schema<ListAppsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2963,7 +2920,7 @@ export const ListAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsOperationsRequest",
 }) as any as S.Schema<ListAppsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -3011,7 +2968,7 @@ export const ListAppsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsServicesRequest",
 }) as any as S.Schema<ListAppsServicesRequest>;
 
-export type ServiceList = Service[];
+export type ServiceList = ReadonlyArray<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -3032,7 +2989,7 @@ export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListServicesResponse",
 }) as any as S.Schema<ListServicesResponse>;
 
-export type ListAppsServicesVersionsViewEnum = "BASIC" | "FULL" | (string & {});
+export type ListAppsServicesVersionsViewEnum = "BASIC" | "FULL";
 export const ListAppsServicesVersionsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListAppsServicesVersionsRequest {
@@ -3065,7 +3022,7 @@ export const ListAppsServicesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsServicesVersionsRequest",
 }) as any as S.Schema<ListAppsServicesVersionsRequest>;
 
-export type VersionList = Version[];
+export type VersionList = ReadonlyArray<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -3117,7 +3074,7 @@ export const ListAppsServicesVersionsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAppsServicesVersionsInstancesRequest",
 }) as any as S.Schema<ListAppsServicesVersionsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -3170,8 +3127,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE"
-  | (string & {});
+  | "FULL_CERTIFICATE";
 export const ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -3313,8 +3269,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 export type ListRuntimesAppsEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "STANDARD"
-  | "FLEXIBLE"
-  | (string & {});
+  | "FLEXIBLE";
 export const ListRuntimesAppsEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export interface ListRuntimesAppsRequest {
@@ -3341,8 +3296,7 @@ export const ListRuntimesAppsRequest = /*@__PURE__*/ S.suspend(() =>
 export type RuntimeEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "STANDARD"
-  | "FLEXIBLE"
-  | (string & {});
+  | "FLEXIBLE";
 export const RuntimeEnvironmentEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: A full date, with non-zero year, month, and day values. A month and day, with a zero year (for example, an anniversary). A year on its own, with a zero month and a zero day. A year and month, with a zero day (for example, a credit card expiration date).Related types: google.type.TimeOfDay google.type.DateTime google.protobuf.Timestamp */
@@ -3370,8 +3324,7 @@ export type RuntimeStageEnum =
   | "GA"
   | "DEPRECATED"
   | "DECOMMISSIONED"
-  | "END_OF_SUPPORT"
-  | (string & {});
+  | "END_OF_SUPPORT";
 export const RuntimeStageEnum = /*@__PURE__*/ S.String;
 
 /** Runtime versions for App Engine. */
@@ -3409,7 +3362,7 @@ export const Runtime = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Runtime" }) as any as S.Schema<Runtime>;
 
-export type RuntimeList = Runtime[];
+export type RuntimeList = ReadonlyArray<Runtime>;
 export const RuntimeList = /*@__PURE__*/ S.Array(
   Runtime,
 ) as any as S.Schema<RuntimeList>;

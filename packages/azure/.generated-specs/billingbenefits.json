@@ -1862,11 +1862,10 @@
             "smithy.api#documentation": "Name of primary MACC."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billingbenefits#Shortfall",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Charge shortfall request properties"
           }
         }
       },
@@ -2308,16 +2307,110 @@
             "smithy.api#documentation": "Name of primary MACC."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billingbenefits#MaccPatchRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Macc patch request properties"
+          }
+        },
+        "tags": {
+          "target": "com.azure.billingbenefits#MaccsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#MaccsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.billingbenefits#MaccPatchRequestProperties": {
+      "type": "structure",
+      "members": {
+        "commitment": {
+          "target": "com.azure.billingbenefits#Commitment",
+          "traits": {
+            "smithy.api#documentation": "Commitment towards the benefit."
+          }
+        },
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End DateTime in UTC."
+          }
+        },
+        "allowContributors": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this to true means multi-entity."
+          }
+        },
+        "automaticShortfall": {
+          "target": "com.azure.billingbenefits#EnablementMode",
+          "traits": {
+            "smithy.api#documentation": "Represents the enablement status of a feature or settings."
+          }
+        },
+        "automaticShortfallSuppressReason": {
+          "target": "com.azure.billingbenefits#AutomaticShortfallSuppressReason",
+          "traits": {
+            "smithy.api#documentation": "Optional field to record suppression reason for automatic shortfall."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name"
+          }
+        },
+        "status": {
+          "target": "com.azure.billingbenefits#MaccMilestoneStatus",
+          "traits": {
+            "smithy.api#documentation": "Represents the current status of the Milestone."
+          }
+        },
+        "milestones": {
+          "target": "com.azure.billingbenefits#MaccPatchRequestPropertiesMilestonesList",
+          "traits": {
+            "smithy.api#documentation": "List of milestones to update or add."
+          }
+        },
+        "primaryResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}."
+          }
+        },
+        "primaryBillingAccountResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Macc patch request properties"
+      }
+    },
+    "com.azure.billingbenefits#MaccPatchRequestPropertiesMilestonesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billingbenefits#MaccMilestone"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of milestones to update or add."
       }
     },
     "com.azure.billingbenefits#MaccsCreate": {
@@ -2509,16 +2602,241 @@
             "smithy.api#documentation": "Name of primary MACC."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.billingbenefits#MaccsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.billingbenefits#MaccModelPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "MACC properties"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
+          }
+        },
+        "identity": {
+          "target": "com.azure.billingbenefits#MaccsCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.billingbenefits#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "plan": {
+          "target": "com.azure.billingbenefits#Plan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#MaccsCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.billingbenefits#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.billingbenefits#MaccsCreateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.billingbenefits#MaccsCreateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.billingbenefits#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.billingbenefits#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.billingbenefits#MaccModelPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.azure.billingbenefits#MaccStatus",
+          "traits": {
+            "smithy.api#documentation": "Represents the current status of the MACC."
+          }
+        },
+        "entityType": {
+          "target": "com.azure.billingbenefits#MaccEntityType",
+          "traits": {
+            "smithy.api#documentation": "Represents type of the object being operated on. Possible values are primary or contributor.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name"
+          }
+        },
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents catalog UPN."
+          }
+        },
+        "billingAccountResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified identifier of the billing account where the MACC is applied. Present only for Enterprise Agreement customers. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}"
+          }
+        },
+        "commitment": {
+          "target": "com.azure.billingbenefits#Commitment",
+          "traits": {
+            "smithy.api#documentation": "Commitment towards the benefit."
+          }
+        },
+        "startAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Must be start of month. Timestamp must be in the ISO date format YYYY-MM-DDT00:00:00Z."
+          }
+        },
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Must be end of month. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z."
+          }
+        },
+        "systemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC."
+          }
+        },
+        "automaticShortfall": {
+          "target": "com.azure.billingbenefits#EnablementMode",
+          "traits": {
+            "smithy.api#documentation": "Setting this to 'Enable' enables automatic shortfall charging when commitment is not met."
+          }
+        },
+        "automaticShortfallSuppressReason": {
+          "target": "com.azure.billingbenefits#AutomaticShortfallSuppressReason",
+          "traits": {
+            "smithy.api#documentation": "Optional field to record suppression reason for automatic shortfall."
+          }
+        },
+        "shortfall": {
+          "target": "com.azure.billingbenefits#Shortfall",
+          "traits": {
+            "smithy.api#documentation": "MACC shortfall"
+          }
+        },
+        "milestones": {
+          "target": "com.azure.billingbenefits#MaccModelPropertiesInputMilestonesList",
+          "traits": {
+            "smithy.api#documentation": "List of milestones associated with this MACC."
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the resource identifier of either the primary MACC or the contributor. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}."
+          }
+        },
+        "allowContributors": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this to true means multi-entity."
+          }
+        },
+        "primaryResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}."
+          }
+        },
+        "primaryBillingAccountResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}."
+          }
+        },
+        "appliedScopeType": {
+          "target": "com.azure.billingbenefits#BenefitAppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "Type of the applied scope for the MACC."
+          }
+        },
+        "invitationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Invitation identifier"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "MACC properties"
+      }
+    },
+    "com.azure.billingbenefits#MaccModelPropertiesInputMilestonesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billingbenefits#MaccMilestone"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of milestones associated with this MACC."
+      }
+    },
+    "com.azure.billingbenefits#MaccsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.billingbenefits#MaccsGet": {
@@ -3289,16 +3607,47 @@
             "smithy.api#documentation": "Name of the free service"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billingbenefits#FreeServicesPatchRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Free services patch request properties"
+          }
+        },
+        "tags": {
+          "target": "com.azure.billingbenefits#FreeServicesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#FreeServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.billingbenefits#FreeServicesPatchRequestProperties": {
+      "type": "structure",
+      "members": {
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Updated expiration date and time of the free services"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Free services patch request properties"
       }
     },
     "com.azure.billingbenefits#FreeServicesCreate": {
@@ -3490,16 +3839,152 @@
             "smithy.api#documentation": "Name of the free service"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.billingbenefits#FreeServicesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.billingbenefits#FreeServicesPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Free services properties"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
+          }
+        },
+        "identity": {
+          "target": "com.azure.billingbenefits#FreeServicesCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.billingbenefits#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "plan": {
+          "target": "com.azure.billingbenefits#Plan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#FreeServicesCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.billingbenefits#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.billingbenefits#FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.billingbenefits#FreeServicesCreateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.billingbenefits#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.billingbenefits#FreeServicesPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the catalog UPN for the product."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name"
+          }
+        },
+        "status": {
+          "target": "com.azure.billingbenefits#FreeServicesStatus",
+          "traits": {
+            "smithy.api#documentation": "Current status of the free services"
+          }
+        },
+        "startAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date and time when the free services become active"
+          }
+        },
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration date and time of the free services"
+          }
+        },
+        "invitationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Invitation identifier"
+          }
+        },
+        "systemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the globally unique identifier of the free services which will not change for its lifetime. Generated by the benefit publisher."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of free services"
+      }
+    },
+    "com.azure.billingbenefits#FreeServicesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.billingbenefits#FreeServicesGet": {
@@ -4481,16 +4966,53 @@
             "smithy.api#documentation": "Name of the discount"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billingbenefits#DiscountPatchRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Discounts patch request properties"
+          }
+        },
+        "tags": {
+          "target": "com.azure.billingbenefits#DiscountUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#DiscountUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.billingbenefits#DiscountPatchRequestProperties": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name"
+          }
+        },
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Discounts patch request properties"
       }
     },
     "com.azure.billingbenefits#DiscountsCreate": {
@@ -4638,16 +5160,169 @@
             "smithy.api#documentation": "Name of the discount"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.billingbenefits#DiscountsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.billingbenefits#DiscountPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Discount properties"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
+          }
+        },
+        "identity": {
+          "target": "com.azure.billingbenefits#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.billingbenefits#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "plan": {
+          "target": "com.azure.billingbenefits#Plan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#ManagedServiceIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.billingbenefits#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.billingbenefits#ManagedServiceIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.billingbenefits#ManagedServiceIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.billingbenefits#ManagedServiceIdentityInputUserAssignedIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.billingbenefits#ManagedServiceIdentityInputUserAssignedIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.billingbenefits#DiscountPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "entityType": {
+          "target": "com.azure.billingbenefits#DiscountEntityType",
+          "traits": {
+            "smithy.api#documentation": "This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.",
+            "smithy.api#required": {}
+          }
+        },
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the catalog UPN for the product.",
+            "smithy.api#required": {}
+          }
+        },
+        "startAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start date of the discount. Value is the date the discount started or will start in the future.",
+            "smithy.api#required": {}
+          }
+        },
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate."
+          }
+        },
+        "systemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount."
+          }
+        },
+        "invitationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Invitation identifier"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This defines a user friendly display name for the discount."
+          }
+        },
+        "appliedScopeType": {
+          "target": "com.azure.billingbenefits#BenefitAppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "List of applied scopes supported for discounts."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties belonging to discounts."
+      }
+    },
+    "com.azure.billingbenefits#DiscountsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.billingbenefits#DiscountGet": {
@@ -5538,16 +6213,27 @@
             "smithy.api#documentation": "Name of the credit source"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.billingbenefits#SourcesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource Tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#SourcesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource Tags"
       }
     },
     "com.azure.billingbenefits#SourcesCreate": {
@@ -5747,16 +6433,128 @@
             "smithy.api#documentation": "Name of the credit source"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.billingbenefits#SourcesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.billingbenefits#CreditSourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Credit source properties"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
+          }
+        },
+        "identity": {
+          "target": "com.azure.billingbenefits#SourcesCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.billingbenefits#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "plan": {
+          "target": "com.azure.billingbenefits#Plan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#SourcesCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.billingbenefits#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.billingbenefits#SourcesCreateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.billingbenefits#SourcesCreateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.billingbenefits#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.billingbenefits#CreditSourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sourceResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The uri of the resource impacted which lead to the grant of the credit."
+          }
+        },
+        "impactedBillingPeriod": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The billing period of the impact for the resource. Format YYYYMM"
+          }
+        },
+        "credit": {
+          "target": "com.azure.billingbenefits#Commitment",
+          "traits": {
+            "smithy.api#documentation": "Commitment towards the benefit."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a credit source"
+      }
+    },
+    "com.azure.billingbenefits#SourcesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.billingbenefits#SourcesGet": {
@@ -6231,11 +7029,10 @@
             "smithy.api#documentation": "Name of the credit"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sponsorId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Financial code identifying the new sponsor. This is an alphanumeric identifier assigned by the billing system, for example P20567384."
           }
         }
       },
@@ -7042,16 +7839,68 @@
             "smithy.api#documentation": "Name of the credit"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.billingbenefits#CreditsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.billingbenefits#CreditPatchProperties",
+          "traits": {
+            "smithy.api#documentation": "Credit patch properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#CreditPatchProperties": {
+      "type": "structure",
+      "members": {
+        "credit": {
+          "target": "com.azure.billingbenefits#Commitment",
+          "traits": {
+            "smithy.api#documentation": "The entire investment amount for the credit contract, including currency and amount. Only amount can be modified."
+          }
+        },
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End DateTime in UTC."
+          }
+        },
+        "breakdown": {
+          "target": "com.azure.billingbenefits#CreditPatchPropertiesBreakdownList",
+          "traits": {
+            "smithy.api#documentation": "Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Credit patch properties"
+      }
+    },
+    "com.azure.billingbenefits#CreditPatchPropertiesBreakdownList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billingbenefits#CreditBreakdownItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Credit line-items/milestones/no-charge services breakdown. Entire breakdown will be replaced in a PATCH operation."
+      }
+    },
+    "com.azure.billingbenefits#CreditsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.billingbenefits#CreditsCreate": {
@@ -7243,16 +8092,203 @@
             "smithy.api#documentation": "Name of the credit"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.billingbenefits#CreditsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.billingbenefits#CreditPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Credit properties"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
+          }
+        },
+        "identity": {
+          "target": "com.azure.billingbenefits#CreditsCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.billingbenefits#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "plan": {
+          "target": "com.azure.billingbenefits#Plan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#CreditsCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.billingbenefits#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.billingbenefits#CreditsCreateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.billingbenefits#CreditsCreateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.billingbenefits#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.billingbenefits#CreditPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Product UPN for the credit type"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name"
+          }
+        },
+        "reason": {
+          "target": "com.azure.billingbenefits#CreditReason",
+          "traits": {
+            "smithy.api#documentation": "The reason for the credit. Not required if not applicable."
+          }
+        },
+        "credit": {
+          "target": "com.azure.billingbenefits#Commitment",
+          "traits": {
+            "smithy.api#documentation": "The entire investment amount for the credit contract, including currency and amount"
+          }
+        },
+        "startAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start DateTime."
+          }
+        },
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End DateTime in UTC."
+          }
+        },
+        "policies": {
+          "target": "com.azure.billingbenefits#CreditPolicies",
+          "traits": {
+            "smithy.api#documentation": "Credit breakdown item representing a milestone, line-item, or no-charge service"
+          }
+        },
+        "billingAccountResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified identifier of the billing account where the benefit is applied. Present only for Enterprise Agreement customers."
+          }
+        },
+        "breakdown": {
+          "target": "com.azure.billingbenefits#CreditPropertiesInputBreakdownList",
+          "traits": {
+            "smithy.api#documentation": "Credit line-items/milestones/no-charge services breakdown"
+          }
+        },
+        "systemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "System identifier"
+          }
+        },
+        "fundingSystemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier (UUID) of the funding lot assigned by the benefit publisher. Used in credit transfer scenarios to trace the originating credit lot."
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}."
+          }
+        },
+        "invitationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Invitation identifier"
+          }
+        },
+        "appliedScopeType": {
+          "target": "com.azure.billingbenefits#BenefitAppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "Type of the applied scope for the credit."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a credit"
+      }
+    },
+    "com.azure.billingbenefits#CreditPropertiesInputBreakdownList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billingbenefits#CreditBreakdownItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Credit line-items/milestones/no-charge services breakdown"
+      }
+    },
+    "com.azure.billingbenefits#CreditsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.billingbenefits#CreditsGet": {
@@ -9026,16 +10062,150 @@
             "smithy.api#documentation": "Name of the conditional credit"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billingbenefits#ConditionalCreditPatchRequestPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Conditional credit patch request properties"
+          }
+        },
+        "tags": {
+          "target": "com.azure.billingbenefits#ConditionalCreditsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#ConditionalCreditsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.billingbenefits#ConditionalCreditPatchRequestPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the conditional credit"
+          }
+        },
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End DateTime in UTC."
+          }
+        },
+        "allowContributors": {
+          "target": "com.azure.billingbenefits#EnablementMode",
+          "traits": {
+            "smithy.api#documentation": "Whether this conditional credit allows contributor billing accounts"
+          }
+        },
+        "milestones": {
+          "target": "com.azure.billingbenefits#ConditionalCreditPatchRequestPropertiesInputMilestonesList",
+          "traits": {
+            "smithy.api#documentation": "Updated milestones list (only applicable for primary conditional credits)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Conditional credit patch request properties"
+      }
+    },
+    "com.azure.billingbenefits#ConditionalCreditPatchRequestPropertiesInputMilestonesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billingbenefits#ConditionalCreditMilestoneInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Updated milestones list (only applicable for primary conditional credits)"
+      }
+    },
+    "com.azure.billingbenefits#ConditionalCreditMilestoneInput": {
+      "type": "structure",
+      "members": {
+        "milestoneId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the milestone"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the milestone"
+          }
+        },
+        "status": {
+          "target": "com.azure.billingbenefits#MilestoneStatus",
+          "traits": {
+            "smithy.api#documentation": "Current status of the milestone"
+          }
+        },
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End date for this milestone"
+          }
+        },
+        "spendTarget": {
+          "target": "com.azure.billingbenefits#Price",
+          "traits": {
+            "smithy.api#documentation": "Spend target for this milestone"
+          }
+        },
+        "award": {
+          "target": "com.azure.billingbenefits#AwardInput",
+          "traits": {
+            "smithy.api#documentation": "Award details for this milestone (only present for primary conditional credits)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Milestone definition within a conditional credit"
+      }
+    },
+    "com.azure.billingbenefits#AwardInput": {
+      "type": "structure",
+      "members": {
+        "credit": {
+          "target": "com.azure.billingbenefits#Commitment",
+          "traits": {
+            "smithy.api#documentation": "Credit amount to be awarded"
+          }
+        },
+        "startAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start date when the credit becomes effective"
+          }
+        },
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End date when the credit expires"
+          }
+        },
+        "duration": {
+          "target": "com.azure.billingbenefits#Term",
+          "traits": {
+            "smithy.api#documentation": "Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Award details for milestone completion"
       }
     },
     "com.azure.billingbenefits#ConditionalCreditsCreateOrUpdate": {
@@ -9227,16 +10397,171 @@
             "smithy.api#documentation": "Name of the conditional credit"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.billingbenefits#ConditionalCreditsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.billingbenefits#ConditionalCreditPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Conditional credit properties"
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
+          }
+        },
+        "identity": {
+          "target": "com.azure.billingbenefits#ConditionalCreditsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "sku": {
+          "target": "com.azure.billingbenefits#Sku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "plan": {
+          "target": "com.azure.billingbenefits#Plan",
+          "traits": {
+            "smithy.api#documentation": "Plan for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#ConditionalCreditsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.billingbenefits#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.billingbenefits#ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.billingbenefits#ConditionalCreditsCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.billingbenefits#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.billingbenefits#ConditionalCreditPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "entityType": {
+          "target": "com.azure.billingbenefits#ConditionalCreditEntityType",
+          "traits": {
+            "smithy.api#documentation": "Type of conditional credit entity",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the conditional credit"
+          }
+        },
+        "billingAccountResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The billing account resource ID"
+          }
+        },
+        "status": {
+          "target": "com.azure.billingbenefits#ConditionalCreditStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the conditional credit"
+          }
+        },
+        "startAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start date of the conditional credit"
+          }
+        },
+        "endAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End date of the conditional credit (derived from last milestone)"
+          }
+        },
+        "productCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Product code for the conditional credit"
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}."
+          }
+        },
+        "appliedScopeType": {
+          "target": "com.azure.billingbenefits#BenefitAppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "Type of the applied scope for the conditional credit."
+          }
+        },
+        "invitationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Invitation identifier"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties belonging to conditional credits."
+      }
+    },
+    "com.azure.billingbenefits#ConditionalCreditsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.billingbenefits#ConditionalCreditsGet": {
@@ -10448,16 +11773,101 @@
     "com.azure.billingbenefits#BenefitValidateRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "benefits": {
+          "target": "com.azure.billingbenefits#BenefitValidateRequestBenefitsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Defines benefits for validation."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#BenefitValidateRequestBenefitsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billingbenefits#BenefitValidateModel"
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines benefits for validation."
+      }
+    },
+    "com.azure.billingbenefits#BenefitValidateModel": {
+      "type": "structure",
+      "members": {
+        "benefitType": {
+          "target": "com.azure.billingbenefits#BenefitType",
+          "traits": {
+            "smithy.api#documentation": "Type of benefit to validate. This is used to determine the model type for validation.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Abstract benefit model to validate."
+      }
+    },
+    "com.azure.billingbenefits#BenefitType": {
+      "type": "enum",
+      "members": {
+        "MACCS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Maccs"
+          }
+        },
+        "CREDITS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Credits"
+          }
+        },
+        "CONDITIONALCREDITS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ConditionalCredits"
+          }
+        },
+        "DISCOUNTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Discounts"
+          }
+        },
+        "FREESERVICES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FreeServices"
+          }
+        },
+        "SAVINGSPLANS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SavingsPlans"
+          }
+        },
+        "RESERVATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reservations"
+          }
+        },
+        "SAVINGSPLAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SavingsPlan"
+          }
+        },
+        "MACC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MACC"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents benefit model type for validation. Includes all resource types\nplus legacy singular-form values used by the validate API."
       }
     },
     "com.azure.billingbenefits#SavingsPlanListAll": {
@@ -11264,17 +12674,139 @@
             "smithy.api#documentation": "ID of the savings plan"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "benefits": {
+          "target": "com.azure.billingbenefits#SavingsPlanValidateUpdateRequestBenefitsList"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.billingbenefits#SavingsPlanValidateUpdateRequestBenefitsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billingbenefits#SavingsPlanUpdateRequestPropertiesInput"
+      },
+      "traits": {}
+    },
+    "com.azure.billingbenefits#SavingsPlanUpdateRequestPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name"
+          }
+        },
+        "appliedScopeType": {
+          "target": "com.azure.billingbenefits#AppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "Type of the Applied Scope."
+          }
+        },
+        "appliedScopeProperties": {
+          "target": "com.azure.billingbenefits#AppliedScopeProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to applied scope type. Not required if not applicable."
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this to true will automatically purchase a new benefit on the expiration date time."
+          }
+        },
+        "renewProperties": {
+          "target": "com.azure.billingbenefits#RenewPropertiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Savings plan patch request"
+      }
+    },
+    "com.azure.billingbenefits#RenewPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "purchaseProperties": {
+          "target": "com.azure.billingbenefits#PurchaseRequestInput"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.billingbenefits#PurchaseRequestInput": {
+      "type": "structure",
+      "members": {
+        "sku": {
+          "target": "com.azure.billingbenefits#ResourceSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU to be applied for this resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.billingbenefits#PurchaseRequestPropertiesInput"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.billingbenefits#PurchaseRequestPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of the savings plan"
+          }
+        },
+        "billingScopeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription that will be charged for purchasing the benefit"
+          }
+        },
+        "term": {
+          "target": "com.azure.billingbenefits#Term",
+          "traits": {
+            "smithy.api#documentation": "Represent benefit term in ISO 8601 format."
+          }
+        },
+        "billingPlan": {
+          "target": "com.azure.billingbenefits#BillingPlan",
+          "traits": {
+            "smithy.api#documentation": "Represents the billing plan in ISO 8601 format. Required only for monthly billing plans."
+          }
+        },
+        "appliedScopeType": {
+          "target": "com.azure.billingbenefits#AppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "Type of the Applied Scope."
+          }
+        },
+        "commitment": {
+          "target": "com.azure.billingbenefits#Commitment",
+          "traits": {
+            "smithy.api#documentation": "Commitment towards the benefit."
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this to true will automatically purchase a new benefit on the expiration date time."
+          }
+        },
+        "renewAction": {
+          "target": "com.azure.billingbenefits#RenewAction",
+          "traits": {
+            "smithy.api#documentation": "Represents the renewal action for a reservation to be a new purchase or existing renewal."
+          }
+        },
+        "appliedScopeProperties": {
+          "target": "com.azure.billingbenefits#AppliedScopeProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to applied scope type. Not required if not applicable."
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.billingbenefits#SavingsPlanUpdate": {
       "type": "operation",
@@ -11359,11 +12891,10 @@
             "smithy.api#documentation": "ID of the savings plan"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billingbenefits#SavingsPlanUpdateRequestPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Savings plan patch request"
           }
         }
       },
@@ -12150,16 +13681,84 @@
             "smithy.api#documentation": "Name of the savings plan order alias"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billingbenefits#SavingsPlanOrderAliasPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Savings plan order alias properties"
+          }
+        },
+        "sku": {
+          "target": "com.azure.billingbenefits#ResourceSku",
+          "traits": {
+            "smithy.api#documentation": "Savings plan SKU",
             "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource provider kind"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#SavingsPlanOrderAliasPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name"
+          }
+        },
+        "billingScopeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription that will be charged for purchasing the benefit"
+          }
+        },
+        "term": {
+          "target": "com.azure.billingbenefits#Term",
+          "traits": {
+            "smithy.api#documentation": "Represent benefit term in ISO 8601 format."
+          }
+        },
+        "billingPlan": {
+          "target": "com.azure.billingbenefits#BillingPlan",
+          "traits": {
+            "smithy.api#documentation": "Represents the billing plan in ISO 8601 format. Required only for monthly billing plans."
+          }
+        },
+        "appliedScopeType": {
+          "target": "com.azure.billingbenefits#AppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "Type of the Applied Scope."
+          }
+        },
+        "appliedScopeProperties": {
+          "target": "com.azure.billingbenefits#AppliedScopeProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to applied scope type. Not required if not applicable."
+          }
+        },
+        "commitment": {
+          "target": "com.azure.billingbenefits#Commitment",
+          "traits": {
+            "smithy.api#documentation": "Commitment towards the benefit."
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this to true will automatically purchase a new benefit on the expiration date time."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Savings plan properties"
       }
     },
     "com.azure.billingbenefits#SavingsPlanOrderAliasGet": {
@@ -12631,16 +14230,128 @@
             "smithy.api#documentation": "Name of the reservation order alias"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.billingbenefits#ResourceSku",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Reservation order SKU",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure Region where the reservation benefits are applied to."
+          }
+        },
+        "properties": {
+          "target": "com.azure.billingbenefits#ReservationOrderAliasRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Reservation order alias request properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#ReservationOrderAliasRequestProperties": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name"
+          }
+        },
+        "billingScopeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subscription that will be charged for purchasing the benefit"
+          }
+        },
+        "term": {
+          "target": "com.azure.billingbenefits#Term",
+          "traits": {
+            "smithy.api#documentation": "Represent benefit term in ISO 8601 format."
+          }
+        },
+        "billingPlan": {
+          "target": "com.azure.billingbenefits#BillingPlan",
+          "traits": {
+            "smithy.api#documentation": "Represents the billing plan in ISO 8601 format. Required only for monthly billing plans."
+          }
+        },
+        "appliedScopeType": {
+          "target": "com.azure.billingbenefits#AppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "Type of the Applied Scope."
+          }
+        },
+        "appliedScopeProperties": {
+          "target": "com.azure.billingbenefits#AppliedScopeProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to applied scope type. Not required if not applicable."
+          }
+        },
+        "quantity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Total Quantity of the SKUs purchased in the Reservation."
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this to true will automatically purchase a new benefit on the expiration date time."
+          }
+        },
+        "renewAction": {
+          "target": "com.azure.billingbenefits#RenewAction",
+          "traits": {
+            "smithy.api#documentation": "Represents the renewal action for a reservation to be a new purchase or existing renewal."
+          }
+        },
+        "reservedResourceType": {
+          "target": "com.azure.billingbenefits#ReservedResourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource that is being reserved."
+          }
+        },
+        "reviewDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the date-time when the Azure Hybrid Benefit needs to be reviewed."
+          }
+        },
+        "benefitStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the DateTime when the reservation benefit started."
+          }
+        },
+        "reservedResourceProperties": {
+          "target": "com.azure.billingbenefits#ReservationOrderAliasRequestPropertiesReservedResourceProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to each reserved resource type. Not required if not applicable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Reservation properties"
+      }
+    },
+    "com.azure.billingbenefits#ReservationOrderAliasRequestPropertiesReservedResourceProperties": {
+      "type": "structure",
+      "members": {
+        "instanceFlexibility": {
+          "target": "com.azure.billingbenefits#InstanceFlexibility",
+          "traits": {
+            "smithy.api#documentation": "Turning this on will apply the reservation discount to other VMs in the same VM size group."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties specific to each reserved resource type. Not required if not applicable."
       }
     },
     "com.azure.billingbenefits#ReservationOrderAliasGet": {
@@ -12931,16 +14642,55 @@
     "com.azure.billingbenefits#SellerResourceListRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billingbenefits#SellerResourceListRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Request properties to list maccs under a billing account"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billingbenefits#SellerResourceListRequestProperties": {
+      "type": "structure",
+      "members": {
+        "billingAccountResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified billing account resource identifier where the benefit is applied. Present only for Enterprise Agreement customers.",
+            "smithy.api#required": {}
+          }
+        },
+        "_filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is an OData expresssion to filter the list of MACCs based on the properties of MACC passed in the filter.",
+            "smithy.api#jsonName": "$filter"
+          }
+        },
+        "contributors": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting it to true will return the list of contributors associated with the MACC."
+          }
+        },
+        "milestones": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting it to true will return the list of milestones associated with the MACC."
+          }
+        },
+        "primaryResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Request properties to list maccs under a billing account"
       }
     },
     "com.azure.billingbenefits#BillingAccountCatalogGroupsOpsGet": {

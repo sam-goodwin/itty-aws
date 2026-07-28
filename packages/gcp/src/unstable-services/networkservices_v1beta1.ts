@@ -99,8 +99,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type AgentGatewayGoogleManagedGovernedAccessPathEnum =
   | "GOVERNED_ACCESS_PATH_UNSPECIFIED"
   | "AGENT_TO_ANYWHERE"
-  | "CLIENT_TO_AGENT"
-  | (string & {});
+  | "CLIENT_TO_AGENT";
 export const AgentGatewayGoogleManagedGovernedAccessPathEnum =
   /*@__PURE__*/ S.String;
 
@@ -119,7 +118,7 @@ export const AgentGatewayGoogleManaged = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentGatewayGoogleManaged",
 }) as any as S.Schema<AgentGatewayGoogleManaged>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -146,13 +145,11 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type AgentGatewayProtocolsItemEnum =
-  | "PROTOCOL_UNSPECIFIED"
-  | "MCP"
-  | (string & {});
+export type AgentGatewayProtocolsItemEnum = "PROTOCOL_UNSPECIFIED" | "MCP";
 export const AgentGatewayProtocolsItemEnum = /*@__PURE__*/ S.String;
 
-export type AgentGatewayProtocolsItemEnumList = AgentGatewayProtocolsItemEnum[];
+export type AgentGatewayProtocolsItemEnumList =
+  ReadonlyArray<AgentGatewayProtocolsItemEnum>;
 export const AgentGatewayProtocolsItemEnumList = /*@__PURE__*/ S.Array(
   AgentGatewayProtocolsItemEnum,
 ) as any as S.Schema<AgentGatewayProtocolsItemEnumList>;
@@ -300,7 +297,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -348,15 +345,13 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type AuthzExtensionLoadBalancingSchemeEnum =
   | "LOAD_BALANCING_SCHEME_UNSPECIFIED"
   | "INTERNAL_MANAGED"
-  | "EXTERNAL_MANAGED"
-  | (string & {});
+  | "EXTERNAL_MANAGED";
 export const AuthzExtensionLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 
 export type AuthzExtensionWireFormatEnum =
   | "WIRE_FORMAT_UNSPECIFIED"
   | "EXT_PROC_GRPC"
-  | "EXT_AUTHZ_GRPC"
-  | (string & {});
+  | "EXT_AUTHZ_GRPC";
 export const AuthzExtensionWireFormatEnum = /*@__PURE__*/ S.String;
 
 /** `AuthzExtension` is a resource that allows traffic forwarding to a callout backend service to make an authorization decision. */
@@ -440,15 +435,13 @@ export const CreateProjectsLocationsAuthzExtensionsRequest =
 export type EndpointPolicyTypeEnum =
   | "ENDPOINT_POLICY_TYPE_UNSPECIFIED"
   | "SIDECAR_PROXY"
-  | "GRPC_SERVER"
-  | (string & {});
+  | "GRPC_SERVER";
 export const EndpointPolicyTypeEnum = /*@__PURE__*/ S.String;
 
 export type MetadataLabelMatcherMetadataLabelMatchCriteriaEnum =
   | "METADATA_LABEL_MATCH_CRITERIA_UNSPECIFIED"
   | "MATCH_ANY"
-  | "MATCH_ALL"
-  | (string & {});
+  | "MATCH_ALL";
 export const MetadataLabelMatcherMetadataLabelMatchCriteriaEnum =
   /*@__PURE__*/ S.String;
 
@@ -466,7 +459,7 @@ export const MetadataLabels = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetadataLabels" }) as any as S.Schema<MetadataLabels>;
 
-export type MetadataLabelsList = MetadataLabels[];
+export type MetadataLabelsList = ReadonlyArray<MetadataLabels>;
 export const MetadataLabelsList = /*@__PURE__*/ S.Array(
   MetadataLabels,
 ) as any as S.Schema<MetadataLabelsList>;
@@ -587,33 +580,26 @@ export const CreateProjectsLocationsEndpointPoliciesRequest =
 export type GatewayTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "OPEN_MESH"
-  | "SECURE_WEB_GATEWAY"
-  | (string & {});
+  | "SECURE_WEB_GATEWAY";
 export const GatewayTypeEnum = /*@__PURE__*/ S.String;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
 
-export type GatewayIpVersionEnum =
-  | "IP_VERSION_UNSPECIFIED"
-  | "IPV4"
-  | "IPV6"
-  | (string & {});
+export type GatewayIpVersionEnum = "IP_VERSION_UNSPECIFIED" | "IPV4" | "IPV6";
 export const GatewayIpVersionEnum = /*@__PURE__*/ S.String;
 
 export type GatewayEnvoyHeadersEnum =
   | "ENVOY_HEADERS_UNSPECIFIED"
   | "NONE"
-  | "DEBUG_HEADERS"
-  | (string & {});
+  | "DEBUG_HEADERS";
 export const GatewayEnvoyHeadersEnum = /*@__PURE__*/ S.String;
 
 export type GatewayRoutingModeEnum =
   | "EXPLICIT_ROUTING_MODE"
-  | "NEXT_HOP_ROUTING_MODE"
-  | (string & {});
+  | "NEXT_HOP_ROUTING_MODE";
 export const GatewayRoutingModeEnum = /*@__PURE__*/ S.String;
 
 /** Gateway represents the configuration for a proxy, typically a load balancer. It captures the ip:port over which the services are exposed by the proxy, along with any policy configurations. Routes have reference to to Gateways to dictate how requests should be routed by this Gateway. */
@@ -712,8 +698,7 @@ export const CreateProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(
 export type GrpcRouteMethodMatchTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EXACT"
-  | "REGULAR_EXPRESSION"
-  | (string & {});
+  | "REGULAR_EXPRESSION";
 export const GrpcRouteMethodMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies a match against a method. */
@@ -741,8 +726,7 @@ export const GrpcRouteMethodMatch = /*@__PURE__*/ S.suspend(() =>
 export type GrpcRouteHeaderMatchTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EXACT"
-  | "REGULAR_EXPRESSION"
-  | (string & {});
+  | "REGULAR_EXPRESSION";
 export const GrpcRouteHeaderMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** A match against a collection of headers. */
@@ -764,7 +748,7 @@ export const GrpcRouteHeaderMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "GrpcRouteHeaderMatch",
 }) as any as S.Schema<GrpcRouteHeaderMatch>;
 
-export type GrpcRouteHeaderMatchList = GrpcRouteHeaderMatch[];
+export type GrpcRouteHeaderMatchList = ReadonlyArray<GrpcRouteHeaderMatch>;
 export const GrpcRouteHeaderMatchList = /*@__PURE__*/ S.Array(
   GrpcRouteHeaderMatch,
 ) as any as S.Schema<GrpcRouteHeaderMatchList>;
@@ -785,7 +769,7 @@ export const GrpcRouteRouteMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "GrpcRouteRouteMatch",
 }) as any as S.Schema<GrpcRouteRouteMatch>;
 
-export type GrpcRouteRouteMatchList = GrpcRouteRouteMatch[];
+export type GrpcRouteRouteMatchList = ReadonlyArray<GrpcRouteRouteMatch>;
 export const GrpcRouteRouteMatchList = /*@__PURE__*/ S.Array(
   GrpcRouteRouteMatch,
 ) as any as S.Schema<GrpcRouteRouteMatchList>;
@@ -806,7 +790,7 @@ export const GrpcRouteDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "GrpcRouteDestination",
 }) as any as S.Schema<GrpcRouteDestination>;
 
-export type GrpcRouteDestinationList = GrpcRouteDestination[];
+export type GrpcRouteDestinationList = ReadonlyArray<GrpcRouteDestination>;
 export const GrpcRouteDestinationList = /*@__PURE__*/ S.Array(
   GrpcRouteDestination,
 ) as any as S.Schema<GrpcRouteDestinationList>;
@@ -933,7 +917,7 @@ export const GrpcRouteRouteRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "GrpcRouteRouteRule",
 }) as any as S.Schema<GrpcRouteRouteRule>;
 
-export type GrpcRouteRouteRuleList = GrpcRouteRouteRule[];
+export type GrpcRouteRouteRuleList = ReadonlyArray<GrpcRouteRouteRule>;
 export const GrpcRouteRouteRuleList = /*@__PURE__*/ S.Array(
   GrpcRouteRouteRule,
 ) as any as S.Schema<GrpcRouteRouteRuleList>;
@@ -1051,7 +1035,7 @@ export const HttpRouteHeaderMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRouteHeaderMatch",
 }) as any as S.Schema<HttpRouteHeaderMatch>;
 
-export type HttpRouteHeaderMatchList = HttpRouteHeaderMatch[];
+export type HttpRouteHeaderMatchList = ReadonlyArray<HttpRouteHeaderMatch>;
 export const HttpRouteHeaderMatchList = /*@__PURE__*/ S.Array(
   HttpRouteHeaderMatch,
 ) as any as S.Schema<HttpRouteHeaderMatchList>;
@@ -1078,7 +1062,8 @@ export const HttpRouteQueryParameterMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRouteQueryParameterMatch",
 }) as any as S.Schema<HttpRouteQueryParameterMatch>;
 
-export type HttpRouteQueryParameterMatchList = HttpRouteQueryParameterMatch[];
+export type HttpRouteQueryParameterMatchList =
+  ReadonlyArray<HttpRouteQueryParameterMatch>;
 export const HttpRouteQueryParameterMatchList = /*@__PURE__*/ S.Array(
   HttpRouteQueryParameterMatch,
 ) as any as S.Schema<HttpRouteQueryParameterMatchList>;
@@ -1111,7 +1096,7 @@ export const HttpRouteRouteMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRouteRouteMatch",
 }) as any as S.Schema<HttpRouteRouteMatch>;
 
-export type HttpRouteRouteMatchList = HttpRouteRouteMatch[];
+export type HttpRouteRouteMatchList = ReadonlyArray<HttpRouteRouteMatch>;
 export const HttpRouteRouteMatchList = /*@__PURE__*/ S.Array(
   HttpRouteRouteMatch,
 ) as any as S.Schema<HttpRouteRouteMatchList>;
@@ -1157,7 +1142,7 @@ export const HttpRouteDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRouteDestination",
 }) as any as S.Schema<HttpRouteDestination>;
 
-export type HttpRouteDestinationList = HttpRouteDestination[];
+export type HttpRouteDestinationList = ReadonlyArray<HttpRouteDestination>;
 export const HttpRouteDestinationList = /*@__PURE__*/ S.Array(
   HttpRouteDestination,
 ) as any as S.Schema<HttpRouteDestinationList>;
@@ -1168,8 +1153,7 @@ export type HttpRouteRedirectResponseCodeEnum =
   | "FOUND"
   | "SEE_OTHER"
   | "TEMPORARY_REDIRECT"
-  | "PERMANENT_REDIRECT"
-  | (string & {});
+  | "PERMANENT_REDIRECT";
 export const HttpRouteRedirectResponseCodeEnum = /*@__PURE__*/ S.String;
 
 /** The specification for redirecting traffic. */
@@ -1434,7 +1418,7 @@ export const HttpRouteRouteRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpRouteRouteRule",
 }) as any as S.Schema<HttpRouteRouteRule>;
 
-export type HttpRouteRouteRuleList = HttpRouteRouteRule[];
+export type HttpRouteRouteRuleList = ReadonlyArray<HttpRouteRouteRule>;
 export const HttpRouteRouteRuleList = /*@__PURE__*/ S.Array(
   HttpRouteRouteRule,
 ) as any as S.Schema<HttpRouteRouteRuleList>;
@@ -1525,13 +1509,12 @@ export type ExtensionChainExtensionSupportedEventsItemEnum =
   | "RESPONSE_HEADERS"
   | "RESPONSE_BODY"
   | "REQUEST_TRAILERS"
-  | "RESPONSE_TRAILERS"
-  | (string & {});
+  | "RESPONSE_TRAILERS";
 export const ExtensionChainExtensionSupportedEventsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ExtensionChainExtensionSupportedEventsItemEnumList =
-  ExtensionChainExtensionSupportedEventsItemEnum[];
+  ReadonlyArray<ExtensionChainExtensionSupportedEventsItemEnum>;
 export const ExtensionChainExtensionSupportedEventsItemEnumList =
   /*@__PURE__*/ S.Array(
     ExtensionChainExtensionSupportedEventsItemEnum,
@@ -1540,16 +1523,14 @@ export const ExtensionChainExtensionSupportedEventsItemEnumList =
 export type ExtensionChainExtensionRequestBodySendModeEnum =
   | "BODY_SEND_MODE_UNSPECIFIED"
   | "BODY_SEND_MODE_STREAMED"
-  | "BODY_SEND_MODE_FULL_DUPLEX_STREAMED"
-  | (string & {});
+  | "BODY_SEND_MODE_FULL_DUPLEX_STREAMED";
 export const ExtensionChainExtensionRequestBodySendModeEnum =
   /*@__PURE__*/ S.String;
 
 export type ExtensionChainExtensionResponseBodySendModeEnum =
   | "BODY_SEND_MODE_UNSPECIFIED"
   | "BODY_SEND_MODE_STREAMED"
-  | "BODY_SEND_MODE_FULL_DUPLEX_STREAMED"
-  | (string & {});
+  | "BODY_SEND_MODE_FULL_DUPLEX_STREAMED";
 export const ExtensionChainExtensionResponseBodySendModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1608,7 +1589,8 @@ export const ExtensionChainExtension = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExtensionChainExtension",
 }) as any as S.Schema<ExtensionChainExtension>;
 
-export type ExtensionChainExtensionList = ExtensionChainExtension[];
+export type ExtensionChainExtensionList =
+  ReadonlyArray<ExtensionChainExtension>;
 export const ExtensionChainExtensionList = /*@__PURE__*/ S.Array(
   ExtensionChainExtension,
 ) as any as S.Schema<ExtensionChainExtensionList>;
@@ -1630,7 +1612,7 @@ export const ExtensionChain = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExtensionChain" }) as any as S.Schema<ExtensionChain>;
 
-export type ExtensionChainList = ExtensionChain[];
+export type ExtensionChainList = ReadonlyArray<ExtensionChain>;
 export const ExtensionChainList = /*@__PURE__*/ S.Array(
   ExtensionChain,
 ) as any as S.Schema<ExtensionChainList>;
@@ -1638,8 +1620,7 @@ export const ExtensionChainList = /*@__PURE__*/ S.Array(
 export type LbEdgeExtensionLoadBalancingSchemeEnum =
   | "LOAD_BALANCING_SCHEME_UNSPECIFIED"
   | "INTERNAL_MANAGED"
-  | "EXTERNAL_MANAGED"
-  | (string & {});
+  | "EXTERNAL_MANAGED";
 export const LbEdgeExtensionLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 
 /** `LbEdgeExtension` is a resource that lets the extension service influence the selection of backend services and Cloud CDN cache keys by modifying request headers. */
@@ -1707,8 +1688,7 @@ export const CreateProjectsLocationsLbEdgeExtensionsRequest =
 export type LbRouteExtensionLoadBalancingSchemeEnum =
   | "LOAD_BALANCING_SCHEME_UNSPECIFIED"
   | "INTERNAL_MANAGED"
-  | "EXTERNAL_MANAGED"
-  | (string & {});
+  | "EXTERNAL_MANAGED";
 export const LbRouteExtensionLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 
 /** `LbRouteExtension` is a resource that lets you control where traffic is routed to for a given request. */
@@ -1779,8 +1759,7 @@ export const CreateProjectsLocationsLbRouteExtensionsRequest =
 export type LbTcpExtensionLoadBalancingSchemeEnum =
   | "LOAD_BALANCING_SCHEME_UNSPECIFIED"
   | "INTERNAL_MANAGED"
-  | "EXTERNAL_MANAGED"
-  | (string & {});
+  | "EXTERNAL_MANAGED";
 export const LbTcpExtensionLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 
 /** `LbTcpExtension` is a resource that allows traffic forwarding to different backend services to make allow/deny decisions on TCP connections for all L7 Load Balancers within a network. Currently only internal load-balancers are supported. */
@@ -1846,8 +1825,7 @@ export const CreateProjectsLocationsLbTcpExtensionsRequest =
 export type LbTrafficExtensionLoadBalancingSchemeEnum =
   | "LOAD_BALANCING_SCHEME_UNSPECIFIED"
   | "INTERNAL_MANAGED"
-  | "EXTERNAL_MANAGED"
-  | (string & {});
+  | "EXTERNAL_MANAGED";
 export const LbTrafficExtensionLoadBalancingSchemeEnum = /*@__PURE__*/ S.String;
 
 /** `LbTrafficExtension` is a resource that lets the extension service modify the headers and payloads of both requests and responses without impacting the choice of backend services or any other security policies associated with the backend service. */
@@ -1918,8 +1896,7 @@ export const CreateProjectsLocationsLbTrafficExtensionsRequest =
 export type MeshEnvoyHeadersEnum =
   | "ENVOY_HEADERS_UNSPECIFIED"
   | "NONE"
-  | "DEBUG_HEADERS"
-  | (string & {});
+  | "DEBUG_HEADERS";
 export const MeshEnvoyHeadersEnum = /*@__PURE__*/ S.String;
 
 /** Mesh represents a logical configuration grouping for workload to workload communication within a service mesh. Routes that point to mesh dictate how requests are routed within this logical mesh boundary. */
@@ -2038,8 +2015,7 @@ export type ServiceLbPolicyLoadBalancingAlgorithmEnum =
   | "SPRAY_TO_WORLD"
   | "SPRAY_TO_REGION"
   | "WATERFALL_BY_REGION"
-  | "WATERFALL_BY_ZONE"
-  | (string & {});
+  | "WATERFALL_BY_ZONE";
 export const ServiceLbPolicyLoadBalancingAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** Option to specify if an unhealthy IG/NEG should be considered for global load balancing and traffic routing. */
@@ -2070,16 +2046,14 @@ export const ServiceLbPolicyFailoverConfig = /*@__PURE__*/ S.suspend(() =>
 
 export type ServiceLbPolicyIsolationConfigIsolationGranularityEnum =
   | "ISOLATION_GRANULARITY_UNSPECIFIED"
-  | "REGION"
-  | (string & {});
+  | "REGION";
 export const ServiceLbPolicyIsolationConfigIsolationGranularityEnum =
   /*@__PURE__*/ S.String;
 
 export type ServiceLbPolicyIsolationConfigIsolationModeEnum =
   | "ISOLATION_MODE_UNSPECIFIED"
   | "NEAREST"
-  | "STRICT"
-  | (string & {});
+  | "STRICT";
 export const ServiceLbPolicyIsolationConfigIsolationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2181,7 +2155,7 @@ export const TcpRouteRouteMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "TcpRouteRouteMatch",
 }) as any as S.Schema<TcpRouteRouteMatch>;
 
-export type TcpRouteRouteMatchList = TcpRouteRouteMatch[];
+export type TcpRouteRouteMatchList = ReadonlyArray<TcpRouteRouteMatch>;
 export const TcpRouteRouteMatchList = /*@__PURE__*/ S.Array(
   TcpRouteRouteMatch,
 ) as any as S.Schema<TcpRouteRouteMatchList>;
@@ -2202,7 +2176,8 @@ export const TcpRouteRouteDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "TcpRouteRouteDestination",
 }) as any as S.Schema<TcpRouteRouteDestination>;
 
-export type TcpRouteRouteDestinationList = TcpRouteRouteDestination[];
+export type TcpRouteRouteDestinationList =
+  ReadonlyArray<TcpRouteRouteDestination>;
 export const TcpRouteRouteDestinationList = /*@__PURE__*/ S.Array(
   TcpRouteRouteDestination,
 ) as any as S.Schema<TcpRouteRouteDestinationList>;
@@ -2242,7 +2217,7 @@ export const TcpRouteRouteRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "TcpRouteRouteRule",
 }) as any as S.Schema<TcpRouteRouteRule>;
 
-export type TcpRouteRouteRuleList = TcpRouteRouteRule[];
+export type TcpRouteRouteRuleList = ReadonlyArray<TcpRouteRouteRule>;
 export const TcpRouteRouteRuleList = /*@__PURE__*/ S.Array(
   TcpRouteRouteRule,
 ) as any as S.Schema<TcpRouteRouteRuleList>;
@@ -2323,7 +2298,7 @@ export const TlsRouteRouteMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "TlsRouteRouteMatch",
 }) as any as S.Schema<TlsRouteRouteMatch>;
 
-export type TlsRouteRouteMatchList = TlsRouteRouteMatch[];
+export type TlsRouteRouteMatchList = ReadonlyArray<TlsRouteRouteMatch>;
 export const TlsRouteRouteMatchList = /*@__PURE__*/ S.Array(
   TlsRouteRouteMatch,
 ) as any as S.Schema<TlsRouteRouteMatchList>;
@@ -2344,7 +2319,8 @@ export const TlsRouteRouteDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "TlsRouteRouteDestination",
 }) as any as S.Schema<TlsRouteRouteDestination>;
 
-export type TlsRouteRouteDestinationList = TlsRouteRouteDestination[];
+export type TlsRouteRouteDestinationList =
+  ReadonlyArray<TlsRouteRouteDestination>;
 export const TlsRouteRouteDestinationList = /*@__PURE__*/ S.Array(
   TlsRouteRouteDestination,
 ) as any as S.Schema<TlsRouteRouteDestinationList>;
@@ -2381,7 +2357,7 @@ export const TlsRouteRouteRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "TlsRouteRouteRule",
 }) as any as S.Schema<TlsRouteRouteRule>;
 
-export type TlsRouteRouteRuleList = TlsRouteRouteRule[];
+export type TlsRouteRouteRuleList = ReadonlyArray<TlsRouteRouteRule>;
 export const TlsRouteRouteRuleList = /*@__PURE__*/ S.Array(
   TlsRouteRouteRule,
 ) as any as S.Schema<TlsRouteRouteRuleList>;
@@ -2456,8 +2432,7 @@ export type WasmPluginLogConfigMinLogLevelEnum =
   | "INFO"
   | "WARN"
   | "ERROR"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const WasmPluginLogConfigMinLogLevelEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the logging options for the activity performed by this plugin. If logging is enabled, plugin logs are exported to Cloud Logging. */
@@ -2537,7 +2512,7 @@ export const WasmPluginUsedBy = /*@__PURE__*/ S.suspend(() =>
   identifier: "WasmPluginUsedBy",
 }) as any as S.Schema<WasmPluginUsedBy>;
 
-export type WasmPluginUsedByList = WasmPluginUsedBy[];
+export type WasmPluginUsedByList = ReadonlyArray<WasmPluginUsedBy>;
 export const WasmPluginUsedByList = /*@__PURE__*/ S.Array(
   WasmPluginUsedBy,
 ) as any as S.Schema<WasmPluginUsedByList>;
@@ -3465,8 +3440,7 @@ export const GetProjectsLocationsTlsRoutesRequest = /*@__PURE__*/ S.suspend(
 export type GetProjectsLocationsWasmPluginsViewEnum =
   | "WASM_PLUGIN_VIEW_UNSPECIFIED"
   | "WASM_PLUGIN_VIEW_BASIC"
-  | "WASM_PLUGIN_VIEW_FULL"
-  | (string & {});
+  | "WASM_PLUGIN_VIEW_FULL";
 export const GetProjectsLocationsWasmPluginsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsWasmPluginsRequest {
@@ -3540,7 +3514,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3589,7 +3563,7 @@ export const ListProjectsLocationsAgentGatewaysRequest =
     identifier: "ListProjectsLocationsAgentGatewaysRequest",
   }) as any as S.Schema<ListProjectsLocationsAgentGatewaysRequest>;
 
-export type AgentGatewayList = AgentGateway[];
+export type AgentGatewayList = ReadonlyArray<AgentGateway>;
 export const AgentGatewayList = /*@__PURE__*/ S.Array(
   AgentGateway,
 ) as any as S.Schema<AgentGatewayList>;
@@ -3644,7 +3618,7 @@ export const ListProjectsLocationsAuthzExtensionsRequest =
     identifier: "ListProjectsLocationsAuthzExtensionsRequest",
   }) as any as S.Schema<ListProjectsLocationsAuthzExtensionsRequest>;
 
-export type AuthzExtensionList = AuthzExtension[];
+export type AuthzExtensionList = ReadonlyArray<AuthzExtension>;
 export const AuthzExtensionList = /*@__PURE__*/ S.Array(
   AuthzExtension,
 ) as any as S.Schema<AuthzExtensionList>;
@@ -3696,7 +3670,7 @@ export const ListProjectsLocationsEndpointPoliciesRequest =
     identifier: "ListProjectsLocationsEndpointPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsEndpointPoliciesRequest>;
 
-export type EndpointPolicyList = EndpointPolicy[];
+export type EndpointPolicyList = ReadonlyArray<EndpointPolicy>;
 export const EndpointPolicyList = /*@__PURE__*/ S.Array(
   EndpointPolicy,
 ) as any as S.Schema<EndpointPolicyList>;
@@ -3745,7 +3719,7 @@ export const ListProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsGatewaysRequest",
 }) as any as S.Schema<ListProjectsLocationsGatewaysRequest>;
 
-export type GatewayList = Gateway[];
+export type GatewayList = ReadonlyArray<Gateway>;
 export const GatewayList = /*@__PURE__*/ S.Array(
   Gateway,
 ) as any as S.Schema<GatewayList>;
@@ -3794,7 +3768,7 @@ export const ListProjectsLocationsGatewaysRouteViewsRequest =
     identifier: "ListProjectsLocationsGatewaysRouteViewsRequest",
   }) as any as S.Schema<ListProjectsLocationsGatewaysRouteViewsRequest>;
 
-export type GatewayRouteViewList = GatewayRouteView[];
+export type GatewayRouteViewList = ReadonlyArray<GatewayRouteView>;
 export const GatewayRouteViewList = /*@__PURE__*/ S.Array(
   GatewayRouteView,
 ) as any as S.Schema<GatewayRouteViewList>;
@@ -3846,7 +3820,7 @@ export const ListProjectsLocationsGrpcRoutesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsGrpcRoutesRequest",
 }) as any as S.Schema<ListProjectsLocationsGrpcRoutesRequest>;
 
-export type GrpcRouteList = GrpcRoute[];
+export type GrpcRouteList = ReadonlyArray<GrpcRoute>;
 export const GrpcRouteList = /*@__PURE__*/ S.Array(
   GrpcRoute,
 ) as any as S.Schema<GrpcRouteList>;
@@ -3901,7 +3875,7 @@ export const ListProjectsLocationsHttpRoutesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsHttpRoutesRequest",
 }) as any as S.Schema<ListProjectsLocationsHttpRoutesRequest>;
 
-export type HttpRouteList = HttpRoute[];
+export type HttpRouteList = ReadonlyArray<HttpRoute>;
 export const HttpRouteList = /*@__PURE__*/ S.Array(
   HttpRoute,
 ) as any as S.Schema<HttpRouteList>;
@@ -3956,7 +3930,7 @@ export const ListProjectsLocationsLbEdgeExtensionsRequest =
     identifier: "ListProjectsLocationsLbEdgeExtensionsRequest",
   }) as any as S.Schema<ListProjectsLocationsLbEdgeExtensionsRequest>;
 
-export type LbEdgeExtensionList = LbEdgeExtension[];
+export type LbEdgeExtensionList = ReadonlyArray<LbEdgeExtension>;
 export const LbEdgeExtensionList = /*@__PURE__*/ S.Array(
   LbEdgeExtension,
 ) as any as S.Schema<LbEdgeExtensionList>;
@@ -4011,7 +3985,7 @@ export const ListProjectsLocationsLbRouteExtensionsRequest =
     identifier: "ListProjectsLocationsLbRouteExtensionsRequest",
   }) as any as S.Schema<ListProjectsLocationsLbRouteExtensionsRequest>;
 
-export type LbRouteExtensionList = LbRouteExtension[];
+export type LbRouteExtensionList = ReadonlyArray<LbRouteExtension>;
 export const LbRouteExtensionList = /*@__PURE__*/ S.Array(
   LbRouteExtension,
 ) as any as S.Schema<LbRouteExtensionList>;
@@ -4066,7 +4040,7 @@ export const ListProjectsLocationsLbTcpExtensionsRequest =
     identifier: "ListProjectsLocationsLbTcpExtensionsRequest",
   }) as any as S.Schema<ListProjectsLocationsLbTcpExtensionsRequest>;
 
-export type LbTcpExtensionList = LbTcpExtension[];
+export type LbTcpExtensionList = ReadonlyArray<LbTcpExtension>;
 export const LbTcpExtensionList = /*@__PURE__*/ S.Array(
   LbTcpExtension,
 ) as any as S.Schema<LbTcpExtensionList>;
@@ -4121,7 +4095,7 @@ export const ListProjectsLocationsLbTrafficExtensionsRequest =
     identifier: "ListProjectsLocationsLbTrafficExtensionsRequest",
   }) as any as S.Schema<ListProjectsLocationsLbTrafficExtensionsRequest>;
 
-export type LbTrafficExtensionList = LbTrafficExtension[];
+export type LbTrafficExtensionList = ReadonlyArray<LbTrafficExtension>;
 export const LbTrafficExtensionList = /*@__PURE__*/ S.Array(
   LbTrafficExtension,
 ) as any as S.Schema<LbTrafficExtensionList>;
@@ -4172,7 +4146,7 @@ export const ListProjectsLocationsMeshesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsMeshesRequest",
 }) as any as S.Schema<ListProjectsLocationsMeshesRequest>;
 
-export type MeshList = Mesh[];
+export type MeshList = ReadonlyArray<Mesh>;
 export const MeshList = /*@__PURE__*/ S.Array(
   Mesh,
 ) as any as S.Schema<MeshList>;
@@ -4221,7 +4195,7 @@ export const ListProjectsLocationsMeshesRouteViewsRequest =
     identifier: "ListProjectsLocationsMeshesRouteViewsRequest",
   }) as any as S.Schema<ListProjectsLocationsMeshesRouteViewsRequest>;
 
-export type MeshRouteViewList = MeshRouteView[];
+export type MeshRouteViewList = ReadonlyArray<MeshRouteView>;
 export const MeshRouteViewList = /*@__PURE__*/ S.Array(
   MeshRouteView,
 ) as any as S.Schema<MeshRouteViewList>;
@@ -4276,7 +4250,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4325,7 +4299,7 @@ export const ListProjectsLocationsServiceBindingsRequest =
     identifier: "ListProjectsLocationsServiceBindingsRequest",
   }) as any as S.Schema<ListProjectsLocationsServiceBindingsRequest>;
 
-export type ServiceBindingList = ServiceBinding[];
+export type ServiceBindingList = ReadonlyArray<ServiceBinding>;
 export const ServiceBindingList = /*@__PURE__*/ S.Array(
   ServiceBinding,
 ) as any as S.Schema<ServiceBindingList>;
@@ -4374,7 +4348,7 @@ export const ListProjectsLocationsServiceLbPoliciesRequest =
     identifier: "ListProjectsLocationsServiceLbPoliciesRequest",
   }) as any as S.Schema<ListProjectsLocationsServiceLbPoliciesRequest>;
 
-export type ServiceLbPolicyList = ServiceLbPolicy[];
+export type ServiceLbPolicyList = ReadonlyArray<ServiceLbPolicy>;
 export const ServiceLbPolicyList = /*@__PURE__*/ S.Array(
   ServiceLbPolicy,
 ) as any as S.Schema<ServiceLbPolicyList>;
@@ -4426,7 +4400,7 @@ export const ListProjectsLocationsTcpRoutesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsTcpRoutesRequest",
 }) as any as S.Schema<ListProjectsLocationsTcpRoutesRequest>;
 
-export type TcpRouteList = TcpRoute[];
+export type TcpRouteList = ReadonlyArray<TcpRoute>;
 export const TcpRouteList = /*@__PURE__*/ S.Array(
   TcpRoute,
 ) as any as S.Schema<TcpRouteList>;
@@ -4478,7 +4452,7 @@ export const ListProjectsLocationsTlsRoutesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsTlsRoutesRequest",
 }) as any as S.Schema<ListProjectsLocationsTlsRoutesRequest>;
 
-export type TlsRouteList = TlsRoute[];
+export type TlsRouteList = ReadonlyArray<TlsRoute>;
 export const TlsRouteList = /*@__PURE__*/ S.Array(
   TlsRoute,
 ) as any as S.Schema<TlsRouteList>;
@@ -4527,7 +4501,7 @@ export const ListProjectsLocationsWasmPluginsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsWasmPluginsRequest",
 }) as any as S.Schema<ListProjectsLocationsWasmPluginsRequest>;
 
-export type WasmPluginList = WasmPlugin[];
+export type WasmPluginList = ReadonlyArray<WasmPlugin>;
 export const WasmPluginList = /*@__PURE__*/ S.Array(
   WasmPlugin,
 ) as any as S.Schema<WasmPluginList>;
@@ -4576,7 +4550,7 @@ export const ListProjectsLocationsWasmPluginsVersionsRequest =
     identifier: "ListProjectsLocationsWasmPluginsVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsWasmPluginsVersionsRequest>;
 
-export type WasmPluginVersionList = WasmPluginVersion[];
+export type WasmPluginVersionList = ReadonlyArray<WasmPluginVersion>;
 export const WasmPluginVersionList = /*@__PURE__*/ S.Array(
   WasmPluginVersion,
 ) as any as S.Schema<WasmPluginVersionList>;

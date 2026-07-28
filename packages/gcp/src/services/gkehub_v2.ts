@@ -132,8 +132,7 @@ export const ConfigManagementHierarchyControllerConfig =
 export type ConfigManagementSpecManagementEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "MANAGEMENT_AUTOMATIC"
-  | "MANAGEMENT_MANUAL"
-  | (string & {});
+  | "MANAGEMENT_MANUAL";
 export const ConfigManagementSpecManagementEnum = /*@__PURE__*/ S.String;
 
 /** Git repo configuration for a single cluster. */
@@ -196,7 +195,7 @@ export const ConfigManagementContainerOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementContainerOverride>;
 
 export type ConfigManagementContainerOverrideList =
-  ConfigManagementContainerOverride[];
+  ReadonlyArray<ConfigManagementContainerOverride>;
 export const ConfigManagementContainerOverrideList = /*@__PURE__*/ S.Array(
   ConfigManagementContainerOverride,
 ) as any as S.Schema<ConfigManagementContainerOverrideList>;
@@ -221,7 +220,7 @@ export const ConfigManagementDeploymentOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementDeploymentOverride>;
 
 export type ConfigManagementDeploymentOverrideList =
-  ConfigManagementDeploymentOverride[];
+  ReadonlyArray<ConfigManagementDeploymentOverride>;
 export const ConfigManagementDeploymentOverrideList = /*@__PURE__*/ S.Array(
   ConfigManagementDeploymentOverride,
 ) as any as S.Schema<ConfigManagementDeploymentOverrideList>;
@@ -288,13 +287,12 @@ export const ConfigManagementConfigSync = /*@__PURE__*/ S.suspend(() =>
 export type ConfigManagementPolicyControllerMonitoringBackendsItemEnum =
   | "MONITORING_BACKEND_UNSPECIFIED"
   | "PROMETHEUS"
-  | "CLOUD_MONITORING"
-  | (string & {});
+  | "CLOUD_MONITORING";
 export const ConfigManagementPolicyControllerMonitoringBackendsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ConfigManagementPolicyControllerMonitoringBackendsItemEnumList =
-  ConfigManagementPolicyControllerMonitoringBackendsItemEnum[];
+  ReadonlyArray<ConfigManagementPolicyControllerMonitoringBackendsItemEnum>;
 export const ConfigManagementPolicyControllerMonitoringBackendsItemEnumList =
   /*@__PURE__*/ S.Array(
     ConfigManagementPolicyControllerMonitoringBackendsItemEnum,
@@ -316,7 +314,7 @@ export const ConfigManagementPolicyControllerMonitoring =
     identifier: "ConfigManagementPolicyControllerMonitoring",
   }) as any as S.Schema<ConfigManagementPolicyControllerMonitoring>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -393,8 +391,7 @@ export type OriginTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "FLEET"
   | "FLEET_OUT_OF_SYNC"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const OriginTypeEnum = /*@__PURE__*/ S.String;
 
 /** Origin defines where this FeatureSpec originated from. */
@@ -412,30 +409,26 @@ export type ServiceMeshSpecDefaultChannelEnum =
   | "CHANNEL_UNSPECIFIED"
   | "RAPID"
   | "REGULAR"
-  | "STABLE"
-  | (string & {});
+  | "STABLE";
 export const ServiceMeshSpecDefaultChannelEnum = /*@__PURE__*/ S.String;
 
 export type ServiceMeshSpecManagementEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "MANAGEMENT_AUTOMATIC"
   | "MANAGEMENT_MANUAL"
-  | "MANAGEMENT_NOT_INSTALLED"
-  | (string & {});
+  | "MANAGEMENT_NOT_INSTALLED";
 export const ServiceMeshSpecManagementEnum = /*@__PURE__*/ S.String;
 
 export type ServiceMeshSpecConfigApiEnum =
   | "CONFIG_API_UNSPECIFIED"
   | "CONFIG_API_ISTIO"
-  | "CONFIG_API_GATEWAY"
-  | (string & {});
+  | "CONFIG_API_GATEWAY";
 export const ServiceMeshSpecConfigApiEnum = /*@__PURE__*/ S.String;
 
 export type ServiceMeshSpecControlPlaneEnum =
   | "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED"
   | "AUTOMATIC"
-  | "MANUAL"
-  | (string & {});
+  | "MANUAL";
 export const ServiceMeshSpecControlPlaneEnum = /*@__PURE__*/ S.String;
 
 /** **Service Mesh**: Spec for a single Membership for the servicemesh feature */
@@ -463,8 +456,7 @@ export const ServiceMeshSpec = /*@__PURE__*/ S.suspend(() =>
 export type CloudBuildSpecSecurityPolicyEnum =
   | "SECURITY_POLICY_UNSPECIFIED"
   | "NON_PRIVILEGED"
-  | "PRIVILEGED"
-  | (string & {});
+  | "PRIVILEGED";
 export const CloudBuildSpecSecurityPolicyEnum = /*@__PURE__*/ S.String;
 
 /** **Cloud Build**: Configurations for each Cloud Build enabled cluster. */
@@ -484,13 +476,12 @@ export const CloudBuildSpec = /*@__PURE__*/ S.suspend(() =>
 export type PolicyControllerMonitoringConfigBackendsItemEnum =
   | "MONITORING_BACKEND_UNSPECIFIED"
   | "PROMETHEUS"
-  | "CLOUD_MONITORING"
-  | (string & {});
+  | "CLOUD_MONITORING";
 export const PolicyControllerMonitoringConfigBackendsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PolicyControllerMonitoringConfigBackendsItemEnumList =
-  PolicyControllerMonitoringConfigBackendsItemEnum[];
+  ReadonlyArray<PolicyControllerMonitoringConfigBackendsItemEnum>;
 export const PolicyControllerMonitoringConfigBackendsItemEnumList =
   /*@__PURE__*/ S.Array(
     PolicyControllerMonitoringConfigBackendsItemEnum,
@@ -564,7 +555,8 @@ export const PolicyControllerToleration = /*@__PURE__*/ S.suspend(() =>
   identifier: "PolicyControllerToleration",
 }) as any as S.Schema<PolicyControllerToleration>;
 
-export type PolicyControllerTolerationList = PolicyControllerToleration[];
+export type PolicyControllerTolerationList =
+  ReadonlyArray<PolicyControllerToleration>;
 export const PolicyControllerTolerationList = /*@__PURE__*/ S.Array(
   PolicyControllerToleration,
 ) as any as S.Schema<PolicyControllerTolerationList>;
@@ -572,8 +564,7 @@ export const PolicyControllerTolerationList = /*@__PURE__*/ S.Array(
 export type PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum =
   | "AFFINITY_UNSPECIFIED"
   | "NO_AFFINITY"
-  | "ANTI_AFFINITY"
-  | (string & {});
+  | "ANTI_AFFINITY";
 export const PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum =
   /*@__PURE__*/ S.String;
 
@@ -638,8 +629,7 @@ export const PolicyControllerBundleInstallSpecMap = /*@__PURE__*/ S.Record(
 export type PolicyControllerTemplateLibraryConfigInstallationEnum =
   | "INSTALLATION_UNSPECIFIED"
   | "NOT_INSTALLED"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const PolicyControllerTemplateLibraryConfigInstallationEnum =
   /*@__PURE__*/ S.String;
 
@@ -680,8 +670,7 @@ export type PolicyControllerHubConfigInstallSpecEnum =
   | "INSTALL_SPEC_NOT_INSTALLED"
   | "INSTALL_SPEC_ENABLED"
   | "INSTALL_SPEC_SUSPENDED"
-  | "INSTALL_SPEC_DETACHED"
-  | (string & {});
+  | "INSTALL_SPEC_DETACHED";
 export const PolicyControllerHubConfigInstallSpecEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for Policy Controller */
@@ -1057,7 +1046,8 @@ export const IdentityServiceAuthMethod = /*@__PURE__*/ S.suspend(() =>
   identifier: "IdentityServiceAuthMethod",
 }) as any as S.Schema<IdentityServiceAuthMethod>;
 
-export type IdentityServiceAuthMethodList = IdentityServiceAuthMethod[];
+export type IdentityServiceAuthMethodList =
+  ReadonlyArray<IdentityServiceAuthMethod>;
 export const IdentityServiceAuthMethodList = /*@__PURE__*/ S.Array(
   IdentityServiceAuthMethod,
 ) as any as S.Schema<IdentityServiceAuthMethodList>;
@@ -1081,8 +1071,7 @@ export const IdentityServiceSpec = /*@__PURE__*/ S.suspend(() =>
 export type WorkloadCertificateSpecCertificateManagementEnum =
   | "CERTIFICATE_MANAGEMENT_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const WorkloadCertificateSpecCertificateManagementEnum =
   /*@__PURE__*/ S.String;
 
@@ -1147,8 +1136,7 @@ export type LifecycleStateStateEnum =
   | "ACTIVE"
   | "DISABLING"
   | "UPDATING"
-  | "SERVICE_UPDATING"
-  | (string & {});
+  | "SERVICE_UPDATING";
 export const LifecycleStateStateEnum = /*@__PURE__*/ S.String;
 
 /** LifecycleState describes the state of a MembershipFeature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the MembershipFeature. */
@@ -1172,8 +1160,7 @@ export type PolicyControllerStateStateEnum =
   | "CLUSTER_ERROR"
   | "HUB_ERROR"
   | "SUSPENDED"
-  | "DETACHED"
-  | (string & {});
+  | "DETACHED";
 export const PolicyControllerStateStateEnum = /*@__PURE__*/ S.String;
 
 export type PolicyControllerOnClusterStateStateEnum =
@@ -1186,8 +1173,7 @@ export type PolicyControllerOnClusterStateStateEnum =
   | "CLUSTER_ERROR"
   | "HUB_ERROR"
   | "SUSPENDED"
-  | "DETACHED"
-  | (string & {});
+  | "DETACHED";
 export const PolicyControllerOnClusterStateStateEnum = /*@__PURE__*/ S.String;
 
 /** OnClusterState represents the state of a sub-component of Policy Controller. */
@@ -1291,8 +1277,7 @@ export type ClusterUpgradeUpgradeStatusCodeEnum =
   | "IN_PROGRESS"
   | "SOAKING"
   | "FORCED_SOAKING"
-  | "COMPLETE"
-  | (string & {});
+  | "COMPLETE";
 export const ClusterUpgradeUpgradeStatusCodeEnum = /*@__PURE__*/ S.String;
 
 /** UpgradeStatus provides status information for each upgrade. */
@@ -1332,7 +1317,7 @@ export const ClusterUpgradeMembershipGKEUpgradeState = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ClusterUpgradeMembershipGKEUpgradeState>;
 
 export type ClusterUpgradeMembershipGKEUpgradeStateList =
-  ClusterUpgradeMembershipGKEUpgradeState[];
+  ReadonlyArray<ClusterUpgradeMembershipGKEUpgradeState>;
 export const ClusterUpgradeMembershipGKEUpgradeStateList =
   /*@__PURE__*/ S.Array(
     ClusterUpgradeMembershipGKEUpgradeState,
@@ -1357,8 +1342,7 @@ export const ClusterUpgradeState = /*@__PURE__*/ S.suspend(() =>
 export type IdentityServiceStateStateEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "OK"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const IdentityServiceStateStateEnum = /*@__PURE__*/ S.String;
 
 /** **IdentityService**: State for a single membership, analyzed and reported by feature controller. */
@@ -1400,8 +1384,7 @@ export const MeteringState = /*@__PURE__*/ S.suspend(() =>
 export type ConfigManagementPolicyControllerMigrationStageEnum =
   | "STAGE_UNSPECIFIED"
   | "ACM_MANAGED"
-  | "POCO_MANAGED"
-  | (string & {});
+  | "POCO_MANAGED";
 export const ConfigManagementPolicyControllerMigrationStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -1441,8 +1424,7 @@ export type ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum =
   /*@__PURE__*/ S.String;
 
@@ -1451,8 +1433,7 @@ export type ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManager
     | "NOT_INSTALLED"
     | "INSTALLED"
     | "ERROR"
-    | "PENDING"
-    | (string & {});
+    | "PENDING";
 export const ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1461,8 +1442,7 @@ export type ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum =
   /*@__PURE__*/ S.String;
 
@@ -1517,8 +1497,7 @@ export type ConfigManagementBinauthzStateWebhookEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementBinauthzStateWebhookEnum = /*@__PURE__*/ S.String;
 
 /** The version of binauthz. */
@@ -1591,7 +1570,8 @@ export const ConfigManagementErrorResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigManagementErrorResource",
 }) as any as S.Schema<ConfigManagementErrorResource>;
 
-export type ConfigManagementErrorResourceList = ConfigManagementErrorResource[];
+export type ConfigManagementErrorResourceList =
+  ReadonlyArray<ConfigManagementErrorResource>;
 export const ConfigManagementErrorResourceList = /*@__PURE__*/ S.Array(
   ConfigManagementErrorResource,
 ) as any as S.Schema<ConfigManagementErrorResourceList>;
@@ -1615,7 +1595,8 @@ export const ConfigManagementSyncError = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigManagementSyncError",
 }) as any as S.Schema<ConfigManagementSyncError>;
 
-export type ConfigManagementSyncErrorList = ConfigManagementSyncError[];
+export type ConfigManagementSyncErrorList =
+  ReadonlyArray<ConfigManagementSyncError>;
 export const ConfigManagementSyncErrorList = /*@__PURE__*/ S.Array(
   ConfigManagementSyncError,
 ) as any as S.Schema<ConfigManagementSyncErrorList>;
@@ -1628,8 +1609,7 @@ export type ConfigManagementSyncStateCodeEnum =
   | "NOT_CONFIGURED"
   | "NOT_INSTALLED"
   | "UNAUTHORIZED"
-  | "UNREACHABLE"
-  | (string & {});
+  | "UNREACHABLE";
 export const ConfigManagementSyncStateCodeEnum = /*@__PURE__*/ S.String;
 
 /** State indicating an ACM's progress syncing configurations to a cluster. */
@@ -1668,8 +1648,7 @@ export type ConfigManagementConfigSyncStateRootsyncCrdEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "TERMINATING"
-  | "INSTALLING"
-  | (string & {});
+  | "INSTALLING";
 export const ConfigManagementConfigSyncStateRootsyncCrdEnum =
   /*@__PURE__*/ S.String;
 
@@ -1677,8 +1656,7 @@ export type ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum =
   | "STOP_SYNCING_STATE_UNSPECIFIED"
   | "NOT_STOPPED"
   | "PENDING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1687,8 +1665,7 @@ export type ConfigManagementConfigSyncStateReposyncCrdEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "TERMINATING"
-  | "INSTALLING"
-  | (string & {});
+  | "INSTALLING";
 export const ConfigManagementConfigSyncStateReposyncCrdEnum =
   /*@__PURE__*/ S.String;
 
@@ -1706,7 +1683,7 @@ export const ConfigManagementConfigSyncError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigManagementConfigSyncError>;
 
 export type ConfigManagementConfigSyncErrorList =
-  ConfigManagementConfigSyncError[];
+  ReadonlyArray<ConfigManagementConfigSyncError>;
 export const ConfigManagementConfigSyncErrorList = /*@__PURE__*/ S.Array(
   ConfigManagementConfigSyncError,
 ) as any as S.Schema<ConfigManagementConfigSyncErrorList>;
@@ -1716,8 +1693,7 @@ export type ConfigManagementConfigSyncStateStateEnum =
   | "CONFIG_SYNC_NOT_INSTALLED"
   | "CONFIG_SYNC_INSTALLED"
   | "CONFIG_SYNC_ERROR"
-  | "CONFIG_SYNC_PENDING"
-  | (string & {});
+  | "CONFIG_SYNC_PENDING";
 export const ConfigManagementConfigSyncStateStateEnum = /*@__PURE__*/ S.String;
 
 export type ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum =
@@ -1725,8 +1701,7 @@ export type ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum =
   /*@__PURE__*/ S.String;
 
@@ -1735,8 +1710,7 @@ export type ConfigManagementConfigSyncDeploymentStateGitSyncEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateGitSyncEnum =
   /*@__PURE__*/ S.String;
 
@@ -1745,8 +1719,7 @@ export type ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum =
   /*@__PURE__*/ S.String;
 
@@ -1755,8 +1728,7 @@ export type ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum =
   /*@__PURE__*/ S.String;
 
@@ -1765,8 +1737,7 @@ export type ConfigManagementConfigSyncDeploymentStateMonitorEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateMonitorEnum =
   /*@__PURE__*/ S.String;
 
@@ -1775,8 +1746,7 @@ export type ConfigManagementConfigSyncDeploymentStateSyncerEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateSyncerEnum =
   /*@__PURE__*/ S.String;
 
@@ -1785,8 +1755,7 @@ export type ConfigManagementConfigSyncDeploymentStateImporterEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateImporterEnum =
   /*@__PURE__*/ S.String;
 
@@ -1795,8 +1764,7 @@ export type ConfigManagementConfigSyncDeploymentStateResourceGroupControllerMana
     | "NOT_INSTALLED"
     | "INSTALLED"
     | "ERROR"
-    | "PENDING"
-    | (string & {});
+    | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum =
   /*@__PURE__*/ S.String;
 
@@ -1805,8 +1773,7 @@ export type ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum =
   /*@__PURE__*/ S.String;
 
@@ -1941,8 +1908,7 @@ export type ConfigManagementHierarchyControllerDeploymentStateHncEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementHierarchyControllerDeploymentStateHncEnum =
   /*@__PURE__*/ S.String;
 
@@ -1951,8 +1917,7 @@ export type ConfigManagementHierarchyControllerDeploymentStateExtensionEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementHierarchyControllerDeploymentStateExtensionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2016,8 +1981,7 @@ export type ConfigManagementOperatorStateDeploymentStateEnum =
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ConfigManagementOperatorStateDeploymentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2034,7 +1998,8 @@ export const ConfigManagementInstallError = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigManagementInstallError",
 }) as any as S.Schema<ConfigManagementInstallError>;
 
-export type ConfigManagementInstallErrorList = ConfigManagementInstallError[];
+export type ConfigManagementInstallErrorList =
+  ReadonlyArray<ConfigManagementInstallError>;
 export const ConfigManagementInstallErrorList = /*@__PURE__*/ S.Array(
   ConfigManagementInstallError,
 ) as any as S.Schema<ConfigManagementInstallErrorList>;
@@ -2105,8 +2070,7 @@ export type ServiceMeshControlPlaneManagementStateEnum =
   | "STALLED"
   | "NEEDS_ATTENTION"
   | "DEGRADED"
-  | "DEPROVISIONING"
-  | (string & {});
+  | "DEPROVISIONING";
 export const ServiceMeshControlPlaneManagementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2114,8 +2078,7 @@ export type ServiceMeshControlPlaneManagementImplementationEnum =
   | "IMPLEMENTATION_UNSPECIFIED"
   | "ISTIOD"
   | "TRAFFIC_DIRECTOR"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const ServiceMeshControlPlaneManagementImplementationEnum =
   /*@__PURE__*/ S.String;
 
@@ -2135,7 +2098,8 @@ export const ServiceMeshStatusDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceMeshStatusDetails",
 }) as any as S.Schema<ServiceMeshStatusDetails>;
 
-export type ServiceMeshStatusDetailsList = ServiceMeshStatusDetails[];
+export type ServiceMeshStatusDetailsList =
+  ReadonlyArray<ServiceMeshStatusDetails>;
 export const ServiceMeshStatusDetailsList = /*@__PURE__*/ S.Array(
   ServiceMeshStatusDetails,
 ) as any as S.Schema<ServiceMeshStatusDetailsList>;
@@ -2225,16 +2189,14 @@ export type ServiceMeshConditionCodeEnum =
   | "MODERNIZATION_COMPATIBLE"
   | "MODERNIZATION_INCOMPATIBLE"
   | "MODERNIZATION_INCOMPATIBLE_FLEET_SCALE"
-  | "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA"
-  | (string & {});
+  | "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA";
 export const ServiceMeshConditionCodeEnum = /*@__PURE__*/ S.String;
 
 export type ServiceMeshConditionSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const ServiceMeshConditionSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Condition being reported. */
@@ -2259,7 +2221,7 @@ export const ServiceMeshCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceMeshCondition",
 }) as any as S.Schema<ServiceMeshCondition>;
 
-export type ServiceMeshConditionList = ServiceMeshCondition[];
+export type ServiceMeshConditionList = ReadonlyArray<ServiceMeshCondition>;
 export const ServiceMeshConditionList = /*@__PURE__*/ S.Array(
   ServiceMeshCondition,
 ) as any as S.Schema<ServiceMeshConditionList>;
@@ -2268,8 +2230,7 @@ export type ServiceMeshAnalysisMessageBaseLevelEnum =
   | "LEVEL_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const ServiceMeshAnalysisMessageBaseLevelEnum = /*@__PURE__*/ S.String;
 
 /** A unique identifier for the type of message. Display_name is intended to be human-readable, code is intended to be machine readable. There should be a one-to-one mapping between display_name and code. (i.e. do not re-use display_names or codes between message types.) See istio.analysis.v1alpha1.AnalysisMessageBase.Type */
@@ -2335,7 +2296,8 @@ export const ServiceMeshAnalysisMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceMeshAnalysisMessage",
 }) as any as S.Schema<ServiceMeshAnalysisMessage>;
 
-export type ServiceMeshAnalysisMessageList = ServiceMeshAnalysisMessage[];
+export type ServiceMeshAnalysisMessageList =
+  ReadonlyArray<ServiceMeshAnalysisMessage>;
 export const ServiceMeshAnalysisMessageList = /*@__PURE__*/ S.Array(
   ServiceMeshAnalysisMessage,
 ) as any as S.Schema<ServiceMeshAnalysisMessageList>;
@@ -2349,8 +2311,7 @@ export type ServiceMeshDataPlaneManagementStateEnum =
   | "STALLED"
   | "NEEDS_ATTENTION"
   | "DEGRADED"
-  | "DEPROVISIONING"
-  | (string & {});
+  | "DEPROVISIONING";
 export const ServiceMeshDataPlaneManagementStateEnum = /*@__PURE__*/ S.String;
 
 /** Status of data plane management. Only reported per-member. */
@@ -2398,8 +2359,7 @@ export type AppDevExperienceStatusCodeEnum =
   | "CODE_UNSPECIFIED"
   | "OK"
   | "FAILED"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const AppDevExperienceStatusCodeEnum = /*@__PURE__*/ S.String;
 
 /** Status specifies state for the subcomponent. */
@@ -2434,8 +2394,7 @@ export const AppDevExperienceState = /*@__PURE__*/ S.suspend(() =>
 export type RBACRoleBindingActuationRBACRoleBindingStateStateEnum =
   | "ROLE_BINDING_STATE_UNSPECIFIED"
   | "OK"
-  | "CUSTOM_ROLE_MISSING_FROM_CLUSTER"
-  | (string & {});
+  | "CUSTOM_ROLE_MISSING_FROM_CLUSTER";
 export const RBACRoleBindingActuationRBACRoleBindingStateStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2483,12 +2442,7 @@ export const RBACRoleBindingActuationState = /*@__PURE__*/ S.suspend(() =>
   identifier: "RBACRoleBindingActuationState",
 }) as any as S.Schema<RBACRoleBindingActuationState>;
 
-export type StateCodeEnum =
-  | "CODE_UNSPECIFIED"
-  | "OK"
-  | "WARNING"
-  | "ERROR"
-  | (string & {});
+export type StateCodeEnum = "CODE_UNSPECIFIED" | "OK" | "WARNING" | "ERROR";
 export const StateCodeEnum = /*@__PURE__*/ S.String;
 
 /** High-level state of a MembershipFeature. */
@@ -2511,8 +2465,7 @@ export const State = /*@__PURE__*/ S.suspend(() =>
 export type WorkloadIdentityIdentityProviderStateDetailCodeEnum =
   | "IDENTITY_PROVIDER_STATE_UNSPECIFIED"
   | "IDENTITY_PROVIDER_STATE_OK"
-  | "IDENTITY_PROVIDER_STATE_ERROR"
-  | (string & {});
+  | "IDENTITY_PROVIDER_STATE_ERROR";
 export const WorkloadIdentityIdentityProviderStateDetailCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2660,7 +2613,7 @@ export const CreateProjectsLocationsMembershipsFeaturesRequest =
     identifier: "CreateProjectsLocationsMembershipsFeaturesRequest",
   }) as any as S.Schema<CreateProjectsLocationsMembershipsFeaturesRequest>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2838,7 +2791,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2890,7 +2843,7 @@ export const ListProjectsLocationsMembershipsFeaturesRequest =
     identifier: "ListProjectsLocationsMembershipsFeaturesRequest",
   }) as any as S.Schema<ListProjectsLocationsMembershipsFeaturesRequest>;
 
-export type MembershipFeatureList = MembershipFeature[];
+export type MembershipFeatureList = ReadonlyArray<MembershipFeature>;
 export const MembershipFeatureList = /*@__PURE__*/ S.Array(
   MembershipFeature,
 ) as any as S.Schema<MembershipFeatureList>;
@@ -2945,7 +2898,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

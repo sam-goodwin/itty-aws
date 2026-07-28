@@ -68,7 +68,7 @@ export const WebAnalyticsAchievementsOverviewRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebAnalyticsAchievementsOverviewRequest>;
 
 /** * `user` - user * `team` - team */
-export type AchievementDefinitionScopeEnum = "user" | "team" | (string & {});
+export type AchievementDefinitionScopeEnum = "user" | "team";
 export const AchievementDefinitionScopeEnum = /*@__PURE__*/ S.String;
 
 export interface AchievementStage {
@@ -90,7 +90,7 @@ export const AchievementStage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AchievementStage>;
 
 /** The five stages of this track, in ascending threshold order. */
-export type AchievementDefinitionStagesList = AchievementStage[];
+export type AchievementDefinitionStagesList = ReadonlyArray<AchievementStage>;
 export const AchievementDefinitionStagesList = /*@__PURE__*/ S.Array(
   AchievementStage,
 ) as any as S.Schema<AchievementDefinitionStagesList>;
@@ -123,7 +123,8 @@ export const AchievementDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AchievementDefinition>;
 
 /** All Wave-1 track definitions, thresholds resolved for the user's streak arm. */
-export type AchievementsListResponseDefinitionsList = AchievementDefinition[];
+export type AchievementsListResponseDefinitionsList =
+  ReadonlyArray<AchievementDefinition>;
 export const AchievementsListResponseDefinitionsList = /*@__PURE__*/ S.Array(
   AchievementDefinition,
 ) as any as S.Schema<AchievementsListResponseDefinitionsList>;
@@ -162,13 +163,15 @@ export const AchievementProgress = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AchievementProgress>;
 
 /** The requesting user's progress on per-user tracks. */
-export type AchievementsListResponseUserProgressList = AchievementProgress[];
+export type AchievementsListResponseUserProgressList =
+  ReadonlyArray<AchievementProgress>;
 export const AchievementsListResponseUserProgressList = /*@__PURE__*/ S.Array(
   AchievementProgress,
 ) as any as S.Schema<AchievementsListResponseUserProgressList>;
 
 /** The team's progress on per-team tracks. */
-export type AchievementsListResponseTeamProgressList = AchievementProgress[];
+export type AchievementsListResponseTeamProgressList =
+  ReadonlyArray<AchievementProgress>;
 export const AchievementsListResponseTeamProgressList = /*@__PURE__*/ S.Array(
   AchievementProgress,
 ) as any as S.Schema<AchievementsListResponseTeamProgressList>;
@@ -193,7 +196,7 @@ export const PendingCelebration = /*@__PURE__*/ S.suspend(() =>
 
 /** Newly unlocked stages awaiting an in-session celebration; acknowledge each to clear it. */
 export type AchievementsListResponsePendingCelebrationsList =
-  PendingCelebration[];
+  ReadonlyArray<PendingCelebration>;
 export const AchievementsListResponsePendingCelebrationsList =
   /*@__PURE__*/ S.Array(
     PendingCelebration,
@@ -252,7 +255,7 @@ export const WebAnalyticsUserPreferences = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAnalyticsUserPreferences>;
 
 /** * `data` - data * `recording` - recording */
-export type InteractionKindEnum = "data" | "recording" | (string & {});
+export type InteractionKindEnum = "data" | "recording";
 export const InteractionKindEnum = /*@__PURE__*/ S.String;
 
 export interface WebAnalyticsAchievementsRecordInteractionRequest {

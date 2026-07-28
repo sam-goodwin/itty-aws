@@ -716,12 +716,7 @@ export const GetCellReadinessSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCellReadinessSummaryRequest",
 }) as any as S.Schema<GetCellReadinessSummaryRequest>;
-export type Readiness =
-  | "READY"
-  | "NOT_READY"
-  | "UNKNOWN"
-  | "NOT_AUTHORIZED"
-  | (string & {});
+export type Readiness = "READY" | "NOT_READY" | "UNKNOWN" | "NOT_AUTHORIZED";
 export const Readiness = /*@__PURE__*/ S.String;
 
 export interface ReadinessCheckSummary {

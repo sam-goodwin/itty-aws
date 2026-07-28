@@ -95,8 +95,7 @@ export type CaseStateEnum =
   | "IN_PROGRESS_GOOGLE_SUPPORT"
   | "ACTION_REQUIRED"
   | "SOLUTION_PROVIDED"
-  | "CLOSED"
-  | (string & {});
+  | "CLOSED";
 export const CaseStateEnum = /*@__PURE__*/ S.String;
 
 export type CaseSeverityEnum =
@@ -105,8 +104,7 @@ export type CaseSeverityEnum =
   | "S1"
   | "S2"
   | "S3"
-  | "S4"
-  | (string & {});
+  | "S4";
 export const CaseSeverityEnum = /*@__PURE__*/ S.String;
 
 export type CasePriorityEnum =
@@ -115,11 +113,10 @@ export type CasePriorityEnum =
   | "P1"
   | "P2"
   | "P3"
-  | "P4"
-  | (string & {});
+  | "P4";
 export const CasePriorityEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -127,8 +124,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type ProductProductLineEnum =
   | "PRODUCT_LINE_UNSPECIFIED"
   | "GOOGLE_CLOUD"
-  | "GOOGLE_MAPS"
-  | (string & {});
+  | "GOOGLE_MAPS";
 export const ProductProductLineEnum = /*@__PURE__*/ S.String;
 
 /** The product a case may be associated with. */
@@ -306,16 +302,14 @@ export type SupportEventSubscriptionStateEnum =
   | "STATE_UNSPECIFIED"
   | "WORKING"
   | "FAILING"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const SupportEventSubscriptionStateEnum = /*@__PURE__*/ S.String;
 
 export type SupportEventSubscriptionFailureReasonEnum =
   | "FAILURE_REASON_UNSPECIFIED"
   | "PERMISSION_DENIED"
   | "TOPIC_NOT_FOUND"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const SupportEventSubscriptionFailureReasonEnum = /*@__PURE__*/ S.String;
 
 /** A support event subscription. */
@@ -462,8 +456,7 @@ export type CompositeMediaReferenceTypeEnum =
   | "BLOB_REF"
   | "INLINE"
   | "BIGSTORE_REF"
-  | "COSMO_BINARY_REFERENCE"
-  | (string & {});
+  | "COSMO_BINARY_REFERENCE";
 export const CompositeMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** # gdata.* are outside protos with mising documentation */
@@ -507,7 +500,7 @@ export const CompositeMedia = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CompositeMedia" }) as any as S.Schema<CompositeMedia>;
 
-export type CompositeMediaList = CompositeMedia[];
+export type CompositeMediaList = ReadonlyArray<CompositeMedia>;
 export const CompositeMediaList = /*@__PURE__*/ S.Array(
   CompositeMedia,
 ) as any as S.Schema<CompositeMediaList>;
@@ -632,8 +625,7 @@ export type MediaReferenceTypeEnum =
   | "DIFF_UPLOAD_REQUEST"
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
-  | "ARBITRARY_BYTES"
-  | (string & {});
+  | "ARBITRARY_BYTES";
 export const MediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** # gdata.* are outside protos with mising documentation */
@@ -770,8 +762,7 @@ export type EscalationReasonEnum =
   | "REASON_UNSPECIFIED"
   | "RESOLUTION_TIME"
   | "TECHNICAL_EXPERTISE"
-  | "BUSINESS_IMPACT"
-  | (string & {});
+  | "BUSINESS_IMPACT";
 export const EscalationReasonEnum = /*@__PURE__*/ S.String;
 
 /** An escalation of a support case. */
@@ -961,8 +952,7 @@ export const GetSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListCasesProductLineEnum =
   | "PRODUCT_LINE_UNSPECIFIED"
   | "GOOGLE_CLOUD"
-  | "GOOGLE_MAPS"
-  | (string & {});
+  | "GOOGLE_MAPS";
 export const ListCasesProductLineEnum = /*@__PURE__*/ S.String;
 
 export interface ListCasesRequest {
@@ -995,7 +985,7 @@ export const ListCasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCasesRequest",
 }) as any as S.Schema<ListCasesRequest>;
 
-export type CaseList = Case[];
+export type CaseList = ReadonlyArray<Case>;
 export const CaseList = /*@__PURE__*/ S.Array(
   Case,
 ) as any as S.Schema<CaseList>;
@@ -1040,7 +1030,7 @@ export const ListCasesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCasesAttachmentsRequest",
 }) as any as S.Schema<ListCasesAttachmentsRequest>;
 
-export type AttachmentList = Attachment[];
+export type AttachmentList = ReadonlyArray<Attachment>;
 export const AttachmentList = /*@__PURE__*/ S.Array(
   Attachment,
 ) as any as S.Schema<AttachmentList>;
@@ -1085,7 +1075,7 @@ export const ListCasesCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCasesCommentsRequest",
 }) as any as S.Schema<ListCasesCommentsRequest>;
 
-export type CommentList = Comment[];
+export type CommentList = ReadonlyArray<Comment>;
 export const CommentList = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<CommentList>;
@@ -1137,7 +1127,8 @@ export const ListSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListSupportEventSubscriptionsRequest",
 }) as any as S.Schema<ListSupportEventSubscriptionsRequest>;
 
-export type SupportEventSubscriptionList = SupportEventSubscription[];
+export type SupportEventSubscriptionList =
+  ReadonlyArray<SupportEventSubscription>;
 export const SupportEventSubscriptionList = /*@__PURE__*/ S.Array(
   SupportEventSubscription,
 ) as any as S.Schema<SupportEventSubscriptionList>;
@@ -1211,8 +1202,7 @@ export const PatchSupportEventSubscriptionsRequest = /*@__PURE__*/ S.suspend(
 export type SearchCaseClassificationsProduct_productLineEnum =
   | "PRODUCT_LINE_UNSPECIFIED"
   | "GOOGLE_CLOUD"
-  | "GOOGLE_MAPS"
-  | (string & {});
+  | "GOOGLE_MAPS";
 export const SearchCaseClassificationsProduct_productLineEnum =
   /*@__PURE__*/ S.String;
 
@@ -1245,7 +1235,7 @@ export const SearchCaseClassificationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchCaseClassificationsRequest",
 }) as any as S.Schema<SearchCaseClassificationsRequest>;
 
-export type CaseClassificationList = CaseClassification[];
+export type CaseClassificationList = ReadonlyArray<CaseClassification>;
 export const CaseClassificationList = /*@__PURE__*/ S.Array(
   CaseClassification,
 ) as any as S.Schema<CaseClassificationList>;
@@ -1399,7 +1389,7 @@ export const FeedItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeedItem" }) as any as S.Schema<FeedItem>;
 
-export type FeedItemList = FeedItem[];
+export type FeedItemList = ReadonlyArray<FeedItem>;
 export const FeedItemList = /*@__PURE__*/ S.Array(
   FeedItem,
 ) as any as S.Schema<FeedItemList>;

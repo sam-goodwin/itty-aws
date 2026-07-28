@@ -110,7 +110,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -132,7 +132,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type StatusList = Status[];
+export type StatusList = ReadonlyArray<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -148,7 +148,7 @@ export const GatewayConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GatewayConfig" }) as any as S.Schema<GatewayConfig>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -329,8 +329,7 @@ export const CustomerEncryptionKey = /*@__PURE__*/ S.suspend(() =>
 export type GceRegionalPersistentDiskReclaimPolicyEnum =
   | "RECLAIM_POLICY_UNSPECIFIED"
   | "DELETE"
-  | "RETAIN"
-  | (string & {});
+  | "RETAIN";
 export const GceRegionalPersistentDiskReclaimPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -368,8 +367,7 @@ export const GceRegionalPersistentDisk = /*@__PURE__*/ S.suspend(() =>
 export type GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum =
   | "RECLAIM_POLICY_UNSPECIFIED"
   | "DELETE"
-  | "RETAIN"
-  | (string & {});
+  | "RETAIN";
 export const GceHyperdiskBalancedHighAvailabilityReclaimPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -420,7 +418,7 @@ export const PersistentDirectory = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersistentDirectory",
 }) as any as S.Schema<PersistentDirectory>;
 
-export type PersistentDirectoryList = PersistentDirectory[];
+export type PersistentDirectoryList = ReadonlyArray<PersistentDirectory>;
 export const PersistentDirectoryList = /*@__PURE__*/ S.Array(
   PersistentDirectory,
 ) as any as S.Schema<PersistentDirectoryList>;
@@ -439,7 +437,7 @@ export const PortRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
 
-export type PortRangeList = PortRange[];
+export type PortRangeList = ReadonlyArray<PortRange>;
 export const PortRangeList = /*@__PURE__*/ S.Array(
   PortRange,
 ) as any as S.Schema<PortRangeList>;
@@ -490,7 +488,7 @@ export const Accelerator = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Accelerator" }) as any as S.Schema<Accelerator>;
 
-export type AcceleratorList = Accelerator[];
+export type AcceleratorList = ReadonlyArray<Accelerator>;
 export const AcceleratorList = /*@__PURE__*/ S.Array(
   Accelerator,
 ) as any as S.Schema<AcceleratorList>;
@@ -521,7 +519,7 @@ export const BoostConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BoostConfig" }) as any as S.Schema<BoostConfig>;
 
-export type BoostConfigList = BoostConfig[];
+export type BoostConfigList = ReadonlyArray<BoostConfig>;
 export const BoostConfigList = /*@__PURE__*/ S.Array(
   BoostConfig,
 ) as any as S.Schema<BoostConfigList>;
@@ -634,7 +632,7 @@ export const EphemeralDirectory = /*@__PURE__*/ S.suspend(() =>
   identifier: "EphemeralDirectory",
 }) as any as S.Schema<EphemeralDirectory>;
 
-export type EphemeralDirectoryList = EphemeralDirectory[];
+export type EphemeralDirectoryList = ReadonlyArray<EphemeralDirectory>;
 export const EphemeralDirectoryList = /*@__PURE__*/ S.Array(
   EphemeralDirectory,
 ) as any as S.Schema<EphemeralDirectoryList>;
@@ -653,7 +651,7 @@ export const ReadinessCheck = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReadinessCheck" }) as any as S.Schema<ReadinessCheck>;
 
-export type ReadinessCheckList = ReadinessCheck[];
+export type ReadinessCheckList = ReadonlyArray<ReadinessCheck>;
 export const ReadinessCheckList = /*@__PURE__*/ S.Array(
   ReadinessCheck,
 ) as any as S.Schema<ReadinessCheckList>;
@@ -806,8 +804,7 @@ export type WorkstationStateEnum =
   | "STATE_STARTING"
   | "STATE_RUNNING"
   | "STATE_STOPPING"
-  | "STATE_STOPPED"
-  | (string & {});
+  | "STATE_STOPPED";
 export const WorkstationStateEnum = /*@__PURE__*/ S.String;
 
 /** A directory to persist across workstation sessions. Updates to this field will only take effect on this workstation after it is restarted. */
@@ -827,7 +824,7 @@ export const WorkstationPersistentDirectory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkstationPersistentDirectory>;
 
 export type WorkstationPersistentDirectoryList =
-  WorkstationPersistentDirectory[];
+  ReadonlyArray<WorkstationPersistentDirectory>;
 export const WorkstationPersistentDirectoryList = /*@__PURE__*/ S.Array(
   WorkstationPersistentDirectory,
 ) as any as S.Schema<WorkstationPersistentDirectoryList>;
@@ -1173,7 +1170,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1182,8 +1179,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1200,7 +1196,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1219,7 +1215,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1416,7 +1412,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1468,7 +1464,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1520,7 +1516,7 @@ export const ListProjectsLocationsWorkstationClustersRequest =
     identifier: "ListProjectsLocationsWorkstationClustersRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkstationClustersRequest>;
 
-export type WorkstationClusterList = WorkstationCluster[];
+export type WorkstationClusterList = ReadonlyArray<WorkstationCluster>;
 export const WorkstationClusterList = /*@__PURE__*/ S.Array(
   WorkstationCluster,
 ) as any as S.Schema<WorkstationClusterList>;
@@ -1573,7 +1569,7 @@ export const ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest =
       "ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest>;
 
-export type WorkstationConfigList = WorkstationConfig[];
+export type WorkstationConfigList = ReadonlyArray<WorkstationConfig>;
 export const WorkstationConfigList = /*@__PURE__*/ S.Array(
   WorkstationConfig,
 ) as any as S.Schema<WorkstationConfigList>;
@@ -1626,7 +1622,7 @@ export const ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
       "ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest>;
 
-export type WorkstationList = Workstation[];
+export type WorkstationList = ReadonlyArray<Workstation>;
 export const WorkstationList = /*@__PURE__*/ S.Array(
   Workstation,
 ) as any as S.Schema<WorkstationList>;

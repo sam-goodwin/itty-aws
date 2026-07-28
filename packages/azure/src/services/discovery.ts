@@ -12,6 +12,58 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The private endpoint resource. */
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
+
+/** The private endpoint connection status. */
+export type PrivateEndpointServiceConnectionStatus =
+  | "Pending"
+  | "Approved"
+  | "Rejected";
+export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
+
+/** A collection of information about the state of the connection between service consumer and provider. */
+export interface PrivateLinkServiceConnectionState {
+  /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
+  status?: PrivateEndpointServiceConnectionStatus;
+  /** The reason for approval/rejection of the connection. */
+  description?: string;
+  /** A message indicating if changes on the service provider require any updates on the consumer. */
+  actionsRequired?: string;
+}
+export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(PrivateEndpointServiceConnectionStatus),
+    description: S.optional(S.String),
+    actionsRequired: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateLinkServiceConnectionState",
+}) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
+/** Properties of the private endpoint connection. */
+export interface BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties {
+  /** The private endpoint resource. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+  ).annotate({
+    identifier:
+      "BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties",
+  }) as any as S.Schema<BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties>;
+
 export interface BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -21,7 +73,8 @@ export interface BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest {
   bookshelfName: string;
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Properties of the private endpoint connection. */
+  properties?: BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties;
 }
 export const BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -30,7 +83,9 @@ export const BookshelfPrivateEndpointConnectionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       bookshelfName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(
+        BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -48,8 +103,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -57,8 +111,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -89,7 +142,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The group ids for the private endpoint resource. */
 export type BookshelfPrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const BookshelfPrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -108,40 +161,12 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateEndpoint",
 }) as any as S.Schema<PrivateEndpoint>;
 
-/** The private endpoint connection status. */
-export type PrivateEndpointServiceConnectionStatus =
-  | "Pending"
-  | "Approved"
-  | "Rejected"
-  | (string & {});
-export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
-
-/** A collection of information about the state of the connection between service consumer and provider. */
-export interface PrivateLinkServiceConnectionState {
-  /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
-  /** The reason for approval/rejection of the connection. */
-  description?: string;
-  /** A message indicating if changes on the service provider require any updates on the consumer. */
-  actionsRequired?: string;
-}
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(PrivateEndpointServiceConnectionStatus),
-    description: S.optional(S.String),
-    actionsRequired: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkServiceConnectionState",
-}) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -264,7 +289,7 @@ export const BookshelfPrivateEndpointConnectionsGetRequest =
 
 /** The group ids for the private endpoint resource. */
 export type BookshelfPrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const BookshelfPrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -349,7 +374,8 @@ export const BookshelfPrivateEndpointConnectionsListByBookshelfRequest =
   }) as any as S.Schema<BookshelfPrivateEndpointConnectionsListByBookshelfRequest>;
 
 /** The group ids for the private endpoint resource. */
-export type BookshelfPrivateEndpointConnectionPropertiesGroupIdsList = string[];
+export type BookshelfPrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const BookshelfPrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -407,7 +433,7 @@ export const BookshelfPrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The BookshelfPrivateEndpointConnection items on this page */
 export type BookshelfPrivateEndpointConnectionListResultValueList =
-  BookshelfPrivateEndpointConnection[];
+  ReadonlyArray<BookshelfPrivateEndpointConnection>;
 export const BookshelfPrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     BookshelfPrivateEndpointConnection,
@@ -461,7 +487,7 @@ export const BookshelfPrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The private link resource required member names. */
 export type BookshelfPrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
-  string[];
+  ReadonlyArray<string>;
 export const BookshelfPrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -469,7 +495,7 @@ export const BookshelfPrivateLinkResourcesGetResponsePropertiesRequiredMembersLi
 
 /** The private link resource private link DNS zone name. */
 export type BookshelfPrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const BookshelfPrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -554,7 +580,7 @@ export const BookshelfPrivateLinkResourcesListByBookshelfRequest =
 
 /** The private link resource required member names. */
 export type BookshelfPrivateLinkResourcePropertiesRequiredMembersList =
-  string[];
+  ReadonlyArray<string>;
 export const BookshelfPrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -562,7 +588,7 @@ export const BookshelfPrivateLinkResourcePropertiesRequiredMembersList =
 
 /** The private link resource private link DNS zone name. */
 export type BookshelfPrivateLinkResourcePropertiesRequiredZoneNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const BookshelfPrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -619,7 +645,7 @@ export const BookshelfPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The BookshelfPrivateLinkResource items on this page */
 export type BookshelfPrivateLinkResourceListResultValueList =
-  BookshelfPrivateLinkResource[];
+  ReadonlyArray<BookshelfPrivateLinkResource>;
 export const BookshelfPrivateLinkResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     BookshelfPrivateLinkResource,
@@ -642,6 +668,95 @@ export const BookshelfPrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(
   identifier: "BookshelfPrivateLinkResourceListResult",
 }) as any as S.Schema<BookshelfPrivateLinkResourceListResult>;
 
+/** Resource tags. */
+export type BookshelvesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BookshelvesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BookshelvesCreateOrUpdateRequestTagsMap>;
+
+/** User assigned identity properties */
+export interface BookshelfPropertiesInputWorkloadIdentitiesValue {}
+export const BookshelfPropertiesInputWorkloadIdentitiesValue =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "BookshelfPropertiesInputWorkloadIdentitiesValue",
+  }) as any as S.Schema<BookshelfPropertiesInputWorkloadIdentitiesValue>;
+
+/** User assigned identity IDs to be used by knowledgebase workloads. The key value must be the resource ID of the identity resource. */
+export type BookshelfPropertiesInputWorkloadIdentitiesMap = {
+  [key: string]: BookshelfPropertiesInputWorkloadIdentitiesValue | undefined;
+};
+export const BookshelfPropertiesInputWorkloadIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    BookshelfPropertiesInputWorkloadIdentitiesValue,
+  ) as any as S.Schema<BookshelfPropertiesInputWorkloadIdentitiesMap>;
+
+/** State of customer managed key usage. */
+export type CustomerManagedKeys = "Enabled" | "Disabled";
+export const CustomerManagedKeys = /*@__PURE__*/ S.String;
+
+/** Key Vault Properties with clientId selection */
+export interface BookshelfKeyVaultProperties {
+  /** The Key Vault URI */
+  keyVaultUri: string;
+  /** The Key Name in Key Vault */
+  keyName: string;
+  /** The Key Version in Key Vault */
+  keyVersion?: string;
+  /** The client ID of the identity to use for accessing the Key Vault. Must be a workload identity assigned to the Bookshelf resource. */
+  identityClientId: string;
+}
+export const BookshelfKeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyVaultUri: S.String,
+    keyName: S.String,
+    keyVersion: S.optional(S.String),
+    identityClientId: S.String,
+  }),
+).annotate({
+  identifier: "BookshelfKeyVaultProperties",
+}) as any as S.Schema<BookshelfKeyVaultProperties>;
+
+/** State of public network access. */
+export type PublicNetworkAccess = "Enabled" | "Disabled";
+export const PublicNetworkAccess = /*@__PURE__*/ S.String;
+
+/** Bookshelf properties */
+export interface BookshelfPropertiesInput {
+  /** User assigned identity IDs to be used by knowledgebase workloads. The key value must be the resource ID of the identity resource. */
+  workloadIdentities?: BookshelfPropertiesInputWorkloadIdentitiesMap;
+  /** Whether or not to use a customer managed key when encrypting data at rest */
+  customerManagedKeys?: CustomerManagedKeys;
+  /** The key to use for encrypting data at rest when customer managed keys are enabled. Required if Customer Managed Keys is enabled. */
+  keyVaultProperties?: BookshelfKeyVaultProperties;
+  /** The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled. */
+  logAnalyticsClusterId?: string;
+  /** Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible. */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** Private Endpoint Subnet ID for private endpoint connections. */
+  privateEndpointSubnetId?: string;
+  /** Search Subnet ID for search resources. */
+  searchSubnetId?: string;
+}
+export const BookshelfPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workloadIdentities: S.optional(
+      BookshelfPropertiesInputWorkloadIdentitiesMap,
+    ),
+    customerManagedKeys: S.optional(CustomerManagedKeys),
+    keyVaultProperties: S.optional(BookshelfKeyVaultProperties),
+    logAnalyticsClusterId: S.optional(S.String),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    privateEndpointSubnetId: S.optional(S.String),
+    searchSubnetId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BookshelfPropertiesInput",
+}) as any as S.Schema<BookshelfPropertiesInput>;
+
 export interface BookshelvesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -649,14 +764,21 @@ export interface BookshelvesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Bookshelf */
   bookshelfName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: BookshelvesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: BookshelfPropertiesInput;
 }
 export const BookshelvesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     bookshelfName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(BookshelvesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(BookshelfPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -686,8 +808,7 @@ export type ProvisioningState =
   | "Accepted"
   | "Provisioning"
   | "Updating"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
@@ -716,34 +837,9 @@ export const BookshelfPropertiesWorkloadIdentitiesMap = /*@__PURE__*/ S.Record(
   BookshelfPropertiesWorkloadIdentitiesValue,
 ) as any as S.Schema<BookshelfPropertiesWorkloadIdentitiesMap>;
 
-/** State of customer managed key usage. */
-export type CustomerManagedKeys = "Enabled" | "Disabled" | (string & {});
-export const CustomerManagedKeys = /*@__PURE__*/ S.String;
-
-/** Key Vault Properties with clientId selection */
-export interface BookshelfKeyVaultProperties {
-  /** The Key Vault URI */
-  keyVaultUri: string;
-  /** The Key Name in Key Vault */
-  keyName: string;
-  /** The Key Version in Key Vault */
-  keyVersion?: string;
-  /** The client ID of the identity to use for accessing the Key Vault. Must be a workload identity assigned to the Bookshelf resource. */
-  identityClientId: string;
-}
-export const BookshelfKeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyVaultUri: S.String,
-    keyName: S.String,
-    keyVersion: S.optional(S.String),
-    identityClientId: S.String,
-  }),
-).annotate({
-  identifier: "BookshelfKeyVaultProperties",
-}) as any as S.Schema<BookshelfKeyVaultProperties>;
-
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -799,15 +895,11 @@ export const BookshelfPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections. */
 export type BookshelfPropertiesPrivateEndpointConnectionsList =
-  BookshelfPropertiesPrivateEndpointConnectionsItem[];
+  ReadonlyArray<BookshelfPropertiesPrivateEndpointConnectionsItem>;
 export const BookshelfPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     BookshelfPropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<BookshelfPropertiesPrivateEndpointConnectionsList>;
-
-/** State of public network access. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
-export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Managed-On-Behalf-Of broker resource. This resource is created by the Resource Provider to manage some resources on behalf of the user. */
 export interface WithMoboBrokerResourcesMoboBrokerResourcesItem {
@@ -825,7 +917,7 @@ export const WithMoboBrokerResourcesMoboBrokerResourcesItem =
 
 /** Managed-On-Behalf-Of broker resources */
 export type WithMoboBrokerResourcesMoboBrokerResourcesList =
-  WithMoboBrokerResourcesMoboBrokerResourcesItem[];
+  ReadonlyArray<WithMoboBrokerResourcesMoboBrokerResourcesItem>;
 export const WithMoboBrokerResourcesMoboBrokerResourcesList =
   /*@__PURE__*/ S.Array(
     WithMoboBrokerResourcesMoboBrokerResourcesItem,
@@ -1080,7 +1172,7 @@ export const Bookshelf = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Bookshelf" }) as any as S.Schema<Bookshelf>;
 
 /** The Bookshelf items on this page */
-export type BookshelfListResultValueList = Bookshelf[];
+export type BookshelfListResultValueList = ReadonlyArray<Bookshelf>;
 export const BookshelfListResultValueList = /*@__PURE__*/ S.Array(
   Bookshelf,
 ) as any as S.Schema<BookshelfListResultValueList>;
@@ -1121,6 +1213,47 @@ export const BookshelvesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "BookshelvesListBySubscriptionRequest",
 }) as any as S.Schema<BookshelvesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type BookshelvesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BookshelvesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BookshelvesUpdateRequestTagsMap>;
+
+/** Key Vault Properties with clientId selection */
+export interface BookshelfKeyVaultPropertiesUpdate {
+  /** The Key Name in Key Vault */
+  keyName?: string;
+  /** The Key Version in Key Vault */
+  keyVersion?: string;
+}
+export const BookshelfKeyVaultPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyName: S.optional(S.String),
+    keyVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BookshelfKeyVaultPropertiesUpdate",
+}) as any as S.Schema<BookshelfKeyVaultPropertiesUpdate>;
+
+/** Bookshelf properties */
+export interface BookshelfPropertiesUpdate {
+  /** The key to use for encrypting data at rest when customer managed keys are enabled. Required if Customer Managed Keys is enabled. */
+  keyVaultProperties?: BookshelfKeyVaultPropertiesUpdate;
+  /** Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible. */
+  publicNetworkAccess?: PublicNetworkAccess;
+}
+export const BookshelfPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyVaultProperties: S.optional(BookshelfKeyVaultPropertiesUpdate),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+  }),
+).annotate({
+  identifier: "BookshelfPropertiesUpdate",
+}) as any as S.Schema<BookshelfPropertiesUpdate>;
+
 export interface BookshelvesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1128,14 +1261,18 @@ export interface BookshelvesUpdateRequest {
   resourceGroupName: string;
   /** The name of the Bookshelf */
   bookshelfName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: BookshelvesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: BookshelfPropertiesUpdate;
 }
 export const BookshelvesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     bookshelfName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(BookshelvesUpdateRequestTagsMap),
+    properties: S.optional(BookshelfPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1187,6 +1324,41 @@ export const BookshelvesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BookshelvesUpdateResponse",
 }) as any as S.Schema<BookshelvesUpdateResponse>;
 
+/** Resource tags. */
+export type ChatModelDeploymentsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ChatModelDeploymentsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ChatModelDeploymentsCreateOrUpdateRequestTagsMap>;
+
+/** Defines a deployment binding a specific model family to a user-defined deployment name for chat inference. */
+export interface ChatModelDeploymentPropertiesInput {
+  /** Model format as published by the provider. Verify supported formats per region using the Model Catalog API. */
+  modelFormat: string;
+  /** Canonical provider model name available in the selected region. Verify supported values per region using the Model Catalog API. */
+  modelName: string;
+  /** Provider-published version of the selected model. */
+  modelVersion?: string;
+  /** SKU tier used by this chat model deployment. */
+  skuName?: string;
+  /** Provisioned SKU capacity units for this chat model deployment. */
+  capacity?: number;
+}
+export const ChatModelDeploymentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modelFormat: S.String,
+    modelName: S.String,
+    modelVersion: S.optional(S.String),
+    skuName: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ChatModelDeploymentPropertiesInput",
+}) as any as S.Schema<ChatModelDeploymentPropertiesInput>;
+
 export interface ChatModelDeploymentsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1196,7 +1368,12 @@ export interface ChatModelDeploymentsCreateOrUpdateRequest {
   workspaceName: string;
   /** The name of the ChatModelDeployment */
   chatModelDeploymentName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ChatModelDeploymentsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ChatModelDeploymentPropertiesInput;
 }
 export const ChatModelDeploymentsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1205,7 +1382,9 @@ export const ChatModelDeploymentsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       chatModelDeploymentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ChatModelDeploymentsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(ChatModelDeploymentPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1454,7 +1633,8 @@ export const ChatModelDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChatModelDeployment>;
 
 /** The ChatModelDeployment items on this page */
-export type ChatModelDeploymentListResultValueList = ChatModelDeployment[];
+export type ChatModelDeploymentListResultValueList =
+  ReadonlyArray<ChatModelDeployment>;
 export const ChatModelDeploymentListResultValueList = /*@__PURE__*/ S.Array(
   ChatModelDeployment,
 ) as any as S.Schema<ChatModelDeploymentListResultValueList>;
@@ -1475,6 +1655,28 @@ export const ChatModelDeploymentListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChatModelDeploymentListResult",
 }) as any as S.Schema<ChatModelDeploymentListResult>;
 
+/** Resource tags. */
+export type ChatModelDeploymentsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ChatModelDeploymentsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ChatModelDeploymentsUpdateRequestTagsMap>;
+
+/** Defines a deployment binding a specific model family to a user-defined deployment name for chat inference. */
+export interface ChatModelDeploymentPropertiesUpdate {
+  /** Provisioned SKU capacity units for this chat model deployment. */
+  capacity?: number;
+}
+export const ChatModelDeploymentPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ChatModelDeploymentPropertiesUpdate",
+}) as any as S.Schema<ChatModelDeploymentPropertiesUpdate>;
+
 export interface ChatModelDeploymentsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1484,7 +1686,10 @@ export interface ChatModelDeploymentsUpdateRequest {
   workspaceName: string;
   /** The name of the ChatModelDeployment */
   chatModelDeploymentName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ChatModelDeploymentsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: ChatModelDeploymentPropertiesUpdate;
 }
 export const ChatModelDeploymentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1492,7 +1697,8 @@ export const ChatModelDeploymentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     chatModelDeploymentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ChatModelDeploymentsUpdateRequestTagsMap),
+    properties: S.optional(ChatModelDeploymentPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1544,6 +1750,71 @@ export const ChatModelDeploymentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChatModelDeploymentsUpdateResponse",
 }) as any as S.Schema<ChatModelDeploymentsUpdateResponse>;
 
+/** Resource tags. */
+export type NodePoolsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NodePoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NodePoolsCreateOrUpdateRequestTagsMap>;
+
+/** Supported Azure VM Sizes. */
+export type VmSize =
+  | "Standard_NC24ads_A100_v4"
+  | "Standard_NC48ads_A100_v4"
+  | "Standard_NC96ads_A100_v4"
+  | "Standard_NC4as_T4_v3"
+  | "Standard_NC8as_T4_v3"
+  | "Standard_NC16as_T4_v3"
+  | "Standard_NC64as_T4_v3"
+  | "Standard_NV6ads_A10_v5"
+  | "Standard_NV12ads_A10_v5"
+  | "Standard_NV24ads_A10_v5"
+  | "Standard_NV36ads_A10_v5"
+  | "Standard_NV36adms_A10_v5"
+  | "Standard_NV72ads_A10_v5"
+  | "Standard_ND40rs_v2";
+export const VmSize = /*@__PURE__*/ S.String;
+
+/** The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'. */
+export type NodePoolPropertiesInputScaleSetPriority = "Regular" | "Spot";
+export const NodePoolPropertiesInputScaleSetPriority = /*@__PURE__*/ S.String;
+
+/** NodePool properties */
+export interface NodePoolPropertiesInput {
+  /** The node pool subnet. */
+  subnetId: string;
+  /** The size of the underlying Azure VM. */
+  vmSize: VmSize;
+  /** The maximum number of nodes. */
+  maxNodeCount: number;
+  /** The minimum number of nodes. */
+  minNodeCount?: number;
+  /** The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'. */
+  scaleSetPriority?: NodePoolPropertiesInputScaleSetPriority;
+  /** The size of the OS disk in GB. If not specified, the default is 120 GB. */
+  osDiskSizeGb?: number;
+  /** The percent of disk usage before which image garbage collection is never run. This cannot be set higher than imageCacheUpperThreshold. The default is 40% */
+  imageCacheLowerThreshold?: number;
+  /** The percent of disk usage after which image garbage collection is guaranteed to run. The default is 60% */
+  imageCacheUpperThreshold?: number;
+}
+export const NodePoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subnetId: S.String,
+    vmSize: VmSize,
+    maxNodeCount: S.Number,
+    minNodeCount: S.optional(S.Number),
+    scaleSetPriority: S.optional(NodePoolPropertiesInputScaleSetPriority),
+    osDiskSizeGb: S.optional(S.Number),
+    imageCacheLowerThreshold: S.optional(S.Number),
+    imageCacheUpperThreshold: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "NodePoolPropertiesInput",
+}) as any as S.Schema<NodePoolPropertiesInput>;
+
 export interface NodePoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1553,7 +1824,12 @@ export interface NodePoolsCreateOrUpdateRequest {
   supercomputerName: string;
   /** The name of the NodePool */
   nodePoolName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NodePoolsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: NodePoolPropertiesInput;
 }
 export const NodePoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1561,7 +1837,9 @@ export const NodePoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     supercomputerName: S.String.pipe(T.Label()),
     nodePoolName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NodePoolsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(NodePoolPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1583,30 +1861,8 @@ export const NodePoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<NodePoolsCreateOrUpdateResponseTagsMap>;
 
-/** Supported Azure VM Sizes. */
-export type VmSize =
-  | "Standard_NC24ads_A100_v4"
-  | "Standard_NC48ads_A100_v4"
-  | "Standard_NC96ads_A100_v4"
-  | "Standard_NC4as_T4_v3"
-  | "Standard_NC8as_T4_v3"
-  | "Standard_NC16as_T4_v3"
-  | "Standard_NC64as_T4_v3"
-  | "Standard_NV6ads_A10_v5"
-  | "Standard_NV12ads_A10_v5"
-  | "Standard_NV24ads_A10_v5"
-  | "Standard_NV36ads_A10_v5"
-  | "Standard_NV36adms_A10_v5"
-  | "Standard_NV72ads_A10_v5"
-  | "Standard_ND40rs_v2"
-  | (string & {});
-export const VmSize = /*@__PURE__*/ S.String;
-
 /** The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'. */
-export type NodePoolPropertiesScaleSetPriority =
-  | "Regular"
-  | "Spot"
-  | (string & {});
+export type NodePoolPropertiesScaleSetPriority = "Regular" | "Spot";
 export const NodePoolPropertiesScaleSetPriority = /*@__PURE__*/ S.String;
 
 /** NodePool properties */
@@ -1838,7 +2094,7 @@ export const NodePool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodePool" }) as any as S.Schema<NodePool>;
 
 /** The NodePool items on this page */
-export type NodePoolListResultValueList = NodePool[];
+export type NodePoolListResultValueList = ReadonlyArray<NodePool>;
 export const NodePoolListResultValueList = /*@__PURE__*/ S.Array(
   NodePool,
 ) as any as S.Schema<NodePoolListResultValueList>;
@@ -1859,6 +2115,31 @@ export const NodePoolListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "NodePoolListResult",
 }) as any as S.Schema<NodePoolListResult>;
 
+/** Resource tags. */
+export type NodePoolsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NodePoolsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NodePoolsUpdateRequestTagsMap>;
+
+/** NodePool properties */
+export interface NodePoolPropertiesUpdate {
+  /** The maximum number of nodes. */
+  maxNodeCount?: number;
+  /** The minimum number of nodes. */
+  minNodeCount?: number;
+}
+export const NodePoolPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxNodeCount: S.optional(S.Number),
+    minNodeCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "NodePoolPropertiesUpdate",
+}) as any as S.Schema<NodePoolPropertiesUpdate>;
+
 export interface NodePoolsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1868,7 +2149,10 @@ export interface NodePoolsUpdateRequest {
   supercomputerName: string;
   /** The name of the NodePool */
   nodePoolName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NodePoolsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: NodePoolPropertiesUpdate;
 }
 export const NodePoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1876,7 +2160,8 @@ export const NodePoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     supercomputerName: S.String.pipe(T.Label()),
     nodePoolName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NodePoolsUpdateRequestTagsMap),
+    properties: S.optional(NodePoolPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1965,11 +2250,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1996,7 +2281,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2016,6 +2301,54 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** Resource tags. */
+export type ProjectsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
+
+/** Allowed StorageContainers (Control plane resource references). */
+export type ProjectPropertiesInputStorageContainerIdsList =
+  ReadonlyArray<string>;
+export const ProjectPropertiesInputStorageContainerIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ProjectPropertiesInputStorageContainerIdsList>;
+
+/** Settings schema for the project */
+export interface ProjectSettings {
+  /** Default preferences to guide AI behaviors in this project. */
+  behaviorPreferences?: string;
+}
+export const ProjectSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    behaviorPreferences: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProjectSettings",
+}) as any as S.Schema<ProjectSettings>;
+
+/** Project properties */
+export interface ProjectPropertiesInput {
+  /** Allowed StorageContainers (Control plane resource references). */
+  storageContainerIds?: ProjectPropertiesInputStorageContainerIdsList;
+  /** Settings for the project. */
+  settings?: ProjectSettings;
+}
+export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageContainerIds: S.optional(
+      ProjectPropertiesInputStorageContainerIdsList,
+    ),
+    settings: S.optional(ProjectSettings),
+  }),
+).annotate({
+  identifier: "ProjectPropertiesInput",
+}) as any as S.Schema<ProjectPropertiesInput>;
+
 export interface ProjectsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2025,7 +2358,12 @@ export interface ProjectsCreateOrUpdateRequest {
   workspaceName: string;
   /** The name of the Project */
   projectName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ProjectsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ProjectPropertiesInput;
 }
 export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2033,7 +2371,9 @@ export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ProjectsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ProjectPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2056,23 +2396,10 @@ export const ProjectsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
 
 /** Allowed StorageContainers (Control plane resource references). */
-export type ProjectPropertiesStorageContainerIdsList = string[];
+export type ProjectPropertiesStorageContainerIdsList = ReadonlyArray<string>;
 export const ProjectPropertiesStorageContainerIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectPropertiesStorageContainerIdsList>;
-
-/** Settings schema for the project */
-export interface ProjectSettings {
-  /** Default preferences to guide AI behaviors in this project. */
-  behaviorPreferences?: string;
-}
-export const ProjectSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    behaviorPreferences: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProjectSettings",
-}) as any as S.Schema<ProjectSettings>;
 
 /** Project properties */
 export interface ProjectProperties {
@@ -2288,7 +2615,7 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
 
 /** The Project items on this page */
-export type ProjectListResultValueList = Project[];
+export type ProjectListResultValueList = ReadonlyArray<Project>;
 export const ProjectListResultValueList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectListResultValueList>;
@@ -2309,6 +2636,15 @@ export const ProjectListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectListResult",
 }) as any as S.Schema<ProjectListResult>;
 
+/** Resource tags. */
+export type ProjectsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProjectsUpdateRequestTagsMap>;
+
 export interface ProjectsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2318,7 +2654,10 @@ export interface ProjectsUpdateRequest {
   workspaceName: string;
   /** The name of the Project */
   projectName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ProjectsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: ProjectPropertiesInput;
 }
 export const ProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2326,7 +2665,8 @@ export const ProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ProjectsUpdateRequestTagsMap),
+    properties: S.optional(ProjectPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2378,6 +2718,31 @@ export const ProjectsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsUpdateResponse",
 }) as any as S.Schema<ProjectsUpdateResponse>;
 
+/** Resource tags. */
+export type StorageAssetsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const StorageAssetsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StorageAssetsCreateOrUpdateRequestTagsMap>;
+
+/** Storage Asset properties */
+export interface StorageAssetPropertiesInput {
+  /** The description */
+  description: string;
+  /** The path to the data within its parent container. This should be relative to the root of the parent container. */
+  path?: string;
+}
+export const StorageAssetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    path: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StorageAssetPropertiesInput",
+}) as any as S.Schema<StorageAssetPropertiesInput>;
+
 export interface StorageAssetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2387,7 +2752,12 @@ export interface StorageAssetsCreateOrUpdateRequest {
   storageContainerName: string;
   /** The name of the StorageAsset */
   storageAssetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: StorageAssetsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: StorageAssetPropertiesInput;
 }
 export const StorageAssetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2395,7 +2765,9 @@ export const StorageAssetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     storageContainerName: S.String.pipe(T.Label()),
     storageAssetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(StorageAssetsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(StorageAssetPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2632,7 +3004,7 @@ export const StorageAsset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageAsset" }) as any as S.Schema<StorageAsset>;
 
 /** The StorageAsset items on this page */
-export type StorageAssetListResultValueList = StorageAsset[];
+export type StorageAssetListResultValueList = ReadonlyArray<StorageAsset>;
 export const StorageAssetListResultValueList = /*@__PURE__*/ S.Array(
   StorageAsset,
 ) as any as S.Schema<StorageAssetListResultValueList>;
@@ -2653,6 +3025,28 @@ export const StorageAssetListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageAssetListResult",
 }) as any as S.Schema<StorageAssetListResult>;
 
+/** Resource tags. */
+export type StorageAssetsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const StorageAssetsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StorageAssetsUpdateRequestTagsMap>;
+
+/** Storage Asset properties */
+export interface StorageAssetPropertiesUpdate {
+  /** The description */
+  description?: string;
+}
+export const StorageAssetPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StorageAssetPropertiesUpdate",
+}) as any as S.Schema<StorageAssetPropertiesUpdate>;
+
 export interface StorageAssetsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2662,7 +3056,10 @@ export interface StorageAssetsUpdateRequest {
   storageContainerName: string;
   /** The name of the StorageAsset */
   storageAssetName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: StorageAssetsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: StorageAssetPropertiesUpdate;
 }
 export const StorageAssetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2670,7 +3067,8 @@ export const StorageAssetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     storageContainerName: S.String.pipe(T.Label()),
     storageAssetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(StorageAssetsUpdateRequestTagsMap),
+    properties: S.optional(StorageAssetPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2722,6 +3120,44 @@ export const StorageAssetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageAssetsUpdateResponse",
 }) as any as S.Schema<StorageAssetsUpdateResponse>;
 
+/** Resource tags. */
+export type StorageContainersCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const StorageContainersCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<StorageContainersCreateOrUpdateRequestTagsMap>;
+
+/** The kind of the backing storage store. */
+export type StorageStoreType = "AzureStorageBlob" | "AzureNetAppFiles";
+export const StorageStoreType = /*@__PURE__*/ S.String;
+
+/** An abstract representation of storage store kind. */
+export interface StorageStore {
+  /** The storage store kind. */
+  kind: StorageStoreType;
+}
+export const StorageStore = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: StorageStoreType,
+  }),
+).annotate({ identifier: "StorageStore" }) as any as S.Schema<StorageStore>;
+
+/** Storage Container properties */
+export interface StorageContainerPropertiesInput {
+  /** Storage store properties */
+  storageStore: StorageStore;
+}
+export const StorageContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageStore: StorageStore,
+  }),
+).annotate({
+  identifier: "StorageContainerPropertiesInput",
+}) as any as S.Schema<StorageContainerPropertiesInput>;
+
 export interface StorageContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2729,7 +3165,12 @@ export interface StorageContainersCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the StorageContainer */
   storageContainerName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: StorageContainersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: StorageContainerPropertiesInput;
 }
 export const StorageContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2737,7 +3178,9 @@ export const StorageContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       storageContainerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(StorageContainersCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(StorageContainerPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2759,24 +3202,6 @@ export const StorageContainersCreateOrUpdateResponseTagsMap =
     S.String,
     S.String,
   ) as any as S.Schema<StorageContainersCreateOrUpdateResponseTagsMap>;
-
-/** The kind of the backing storage store. */
-export type StorageStoreType =
-  | "AzureStorageBlob"
-  | "AzureNetAppFiles"
-  | (string & {});
-export const StorageStoreType = /*@__PURE__*/ S.String;
-
-/** An abstract representation of storage store kind. */
-export interface StorageStore {
-  /** The storage store kind. */
-  kind: StorageStoreType;
-}
-export const StorageStore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: StorageStoreType,
-  }),
-).annotate({ identifier: "StorageStore" }) as any as S.Schema<StorageStore>;
 
 /** Storage Container properties */
 export interface StorageContainerProperties {
@@ -2983,7 +3408,8 @@ export const StorageContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageContainer>;
 
 /** The StorageContainer items on this page */
-export type StorageContainerListResultValueList = StorageContainer[];
+export type StorageContainerListResultValueList =
+  ReadonlyArray<StorageContainer>;
 export const StorageContainerListResultValueList = /*@__PURE__*/ S.Array(
   StorageContainer,
 ) as any as S.Schema<StorageContainerListResultValueList>;
@@ -3024,6 +3450,15 @@ export const StorageContainersListBySubscriptionRequest =
     identifier: "StorageContainersListBySubscriptionRequest",
   }) as any as S.Schema<StorageContainersListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type StorageContainersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const StorageContainersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StorageContainersUpdateRequestTagsMap>;
+
 export interface StorageContainersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3031,14 +3466,18 @@ export interface StorageContainersUpdateRequest {
   resourceGroupName: string;
   /** The name of the StorageContainer */
   storageContainerName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: StorageContainersUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: unknown;
 }
 export const StorageContainersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     storageContainerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(StorageContainersUpdateRequestTagsMap),
+    properties: S.optional(S.Unknown),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3090,6 +3529,135 @@ export const StorageContainersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageContainersUpdateResponse",
 }) as any as S.Schema<StorageContainersUpdateResponse>;
 
+/** Resource tags. */
+export type SupercomputersCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SupercomputersCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SupercomputersCreateOrUpdateRequestTagsMap>;
+
+/** Network egress type provisioned for the supercomputer workloads. Defaults to LoadBalancer if not specified. If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality. */
+export type SupercomputerPropertiesInputOutboundType = "LoadBalancer" | "None";
+export const SupercomputerPropertiesInputOutboundType = /*@__PURE__*/ S.String;
+
+/** Supported System SKU Sizes. */
+export type SystemSku =
+  | "Standard_D4s_v6"
+  | "Standard_D4s_v5"
+  | "Standard_D4s_v4";
+export const SystemSku = /*@__PURE__*/ S.String;
+
+/** For user assigned identity resource property. */
+export interface Identity {
+  /** The resource ID of the user assigned identity. */
+  id: string;
+  /** The principal ID of the assigned identity. */
+  principalId?: string;
+  /** The client ID of the assigned identity. */
+  clientId?: string;
+}
+export const Identity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    principalId: S.optional(S.String),
+    clientId: S.optional(S.String),
+  }),
+).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
+
+/** User assigned identity properties */
+export interface SupercomputerIdentitiesInputWorkloadIdentitiesValue {}
+export const SupercomputerIdentitiesInputWorkloadIdentitiesValue =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "SupercomputerIdentitiesInputWorkloadIdentitiesValue",
+  }) as any as S.Schema<SupercomputerIdentitiesInputWorkloadIdentitiesValue>;
+
+/** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
+export type SupercomputerIdentitiesInputWorkloadIdentitiesMap = {
+  [key: string]:
+    | SupercomputerIdentitiesInputWorkloadIdentitiesValue
+    | undefined;
+};
+export const SupercomputerIdentitiesInputWorkloadIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    SupercomputerIdentitiesInputWorkloadIdentitiesValue,
+  ) as any as S.Schema<SupercomputerIdentitiesInputWorkloadIdentitiesMap>;
+
+/** Dictionary of identity properties for the Supercomputer. */
+export interface SupercomputerIdentitiesInput {
+  /** Cluster identity ID. */
+  clusterIdentity: Identity;
+  /** Kubelet identity ID used by the supercomputer. This identity is used by the supercomputer at node level to access Azure resources. This identity must have ManagedIdentityOperator role on the clusterIdentity. */
+  kubeletIdentity: Identity;
+  /** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
+  workloadIdentities?: SupercomputerIdentitiesInputWorkloadIdentitiesMap;
+}
+export const SupercomputerIdentitiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterIdentity: Identity,
+    kubeletIdentity: Identity,
+    workloadIdentities: S.optional(
+      SupercomputerIdentitiesInputWorkloadIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "SupercomputerIdentitiesInput",
+}) as any as S.Schema<SupercomputerIdentitiesInput>;
+
+/** Supercomputer properties */
+export interface SupercomputerPropertiesInput {
+  /** System Subnet ID associated with managed NodePool for system resources. It should have connectivity to the child NodePool subnets. */
+  subnetId: string;
+  /** System Subnet ID associated with AKS apiserver. Must be delegated to Microsoft.ContainerService/managedClusters. It should have connectivity to the system subnet and nodepool subnets. */
+  managementSubnetId?: string;
+  /** Network egress type provisioned for the supercomputer workloads. Defaults to LoadBalancer if not specified. If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality. */
+  outboundType?: SupercomputerPropertiesInputOutboundType;
+  /** The SKU to use for the system node pool. */
+  systemSku?: SystemSku;
+  /** Dictionary of identity properties. */
+  identities: SupercomputerIdentitiesInput;
+  /** Whether or not to use a customer managed key when encrypting data at rest */
+  customerManagedKeys?: CustomerManagedKeys;
+  /** Disk Encryption Set ID to use for Customer Managed Keys encryption. Required if Customer Managed Keys is enabled. */
+  diskEncryptionSetId?: string;
+  /** The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled. */
+  logAnalyticsClusterId?: string;
+}
+export const SupercomputerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subnetId: S.String,
+    managementSubnetId: S.optional(S.String),
+    outboundType: S.optional(SupercomputerPropertiesInputOutboundType),
+    systemSku: S.optional(SystemSku),
+    identities: SupercomputerIdentitiesInput,
+    customerManagedKeys: S.optional(CustomerManagedKeys),
+    diskEncryptionSetId: S.optional(S.String),
+    logAnalyticsClusterId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SupercomputerPropertiesInput",
+}) as any as S.Schema<SupercomputerPropertiesInput>;
+
+/** Type of managed service identity (either system assigned, or none). */
+export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
+export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** Managed service identity (either system assigned, or none) */
+export interface SupercomputersCreateOrUpdateRequestIdentity {
+  type: SystemAssignedServiceIdentityType;
+}
+export const SupercomputersCreateOrUpdateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: SystemAssignedServiceIdentityType,
+    }),
+  ).annotate({
+    identifier: "SupercomputersCreateOrUpdateRequestIdentity",
+  }) as any as S.Schema<SupercomputersCreateOrUpdateRequestIdentity>;
+
 export interface SupercomputersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3097,14 +3665,24 @@ export interface SupercomputersCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Supercomputer */
   supercomputerName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SupercomputersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: SupercomputerPropertiesInput;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: SupercomputersCreateOrUpdateRequestIdentity;
 }
 export const SupercomputersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     supercomputerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SupercomputersCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(SupercomputerPropertiesInput),
+    identity: S.optional(SupercomputersCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3128,36 +3706,8 @@ export const SupercomputersCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<SupercomputersCreateOrUpdateResponseTagsMap>;
 
 /** Network egress type provisioned for the supercomputer workloads. Defaults to LoadBalancer if not specified. If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality. */
-export type SupercomputerPropertiesOutboundType =
-  | "LoadBalancer"
-  | "None"
-  | (string & {});
+export type SupercomputerPropertiesOutboundType = "LoadBalancer" | "None";
 export const SupercomputerPropertiesOutboundType = /*@__PURE__*/ S.String;
-
-/** Supported System SKU Sizes. */
-export type SystemSku =
-  | "Standard_D4s_v6"
-  | "Standard_D4s_v5"
-  | "Standard_D4s_v4"
-  | (string & {});
-export const SystemSku = /*@__PURE__*/ S.String;
-
-/** For user assigned identity resource property. */
-export interface Identity {
-  /** The resource ID of the user assigned identity. */
-  id: string;
-  /** The principal ID of the assigned identity. */
-  principalId?: string;
-  /** The client ID of the assigned identity. */
-  clientId?: string;
-}
-export const Identity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    principalId: S.optional(S.String),
-    clientId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 
 /** User assigned identity properties */
 export interface SupercomputerIdentitiesWorkloadIdentitiesValue {
@@ -3249,13 +3799,6 @@ export const SupercomputerProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SupercomputerProperties",
 }) as any as S.Schema<SupercomputerProperties>;
-
-/** Type of managed service identity (either system assigned, or none). */
-export type SystemAssignedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | (string & {});
-export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** Managed service identity (either system assigned, or none) */
 export interface SupercomputersCreateOrUpdateResponseIdentity {
@@ -3508,7 +4051,7 @@ export const Supercomputer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Supercomputer" }) as any as S.Schema<Supercomputer>;
 
 /** The Supercomputer items on this page */
-export type SupercomputerListResultValueList = Supercomputer[];
+export type SupercomputerListResultValueList = ReadonlyArray<Supercomputer>;
 export const SupercomputerListResultValueList = /*@__PURE__*/ S.Array(
   Supercomputer,
 ) as any as S.Schema<SupercomputerListResultValueList>;
@@ -3549,6 +4092,85 @@ export const SupercomputersListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "SupercomputersListBySubscriptionRequest",
 }) as any as S.Schema<SupercomputersListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type SupercomputersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SupercomputersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SupercomputersUpdateRequestTagsMap>;
+
+/** User assigned identity properties */
+export interface SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue {}
+export const SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue",
+  }) as any as S.Schema<SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue>;
+
+/** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
+export type SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap = {
+  [key: string]:
+    | SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue
+    | undefined;
+};
+export const SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue,
+  ) as any as S.Schema<SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap>;
+
+/** Dictionary of identity properties for the Supercomputer. */
+export interface SupercomputerIdentitiesUpdateInput {
+  /** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
+  workloadIdentities?: SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap;
+}
+export const SupercomputerIdentitiesUpdateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workloadIdentities: S.optional(
+      SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "SupercomputerIdentitiesUpdateInput",
+}) as any as S.Schema<SupercomputerIdentitiesUpdateInput>;
+
+/** Supercomputer properties */
+export interface SupercomputerPropertiesUpdateInput {
+  /** Dictionary of identity properties. */
+  identities?: SupercomputerIdentitiesUpdateInput;
+}
+export const SupercomputerPropertiesUpdateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identities: S.optional(SupercomputerIdentitiesUpdateInput),
+  }),
+).annotate({
+  identifier: "SupercomputerPropertiesUpdateInput",
+}) as any as S.Schema<SupercomputerPropertiesUpdateInput>;
+
+/** Type of managed service identity (either system assigned, or none). */
+export type AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType =
+  "None" | "SystemAssigned";
+export const AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType =
+  /*@__PURE__*/ S.String;
+
+/** Managed service identity (either system assigned, or none) */
+export interface AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate {
+  /** Type of managed service identity (either system assigned, or none). */
+  type?: AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType;
+}
+export const AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(
+        AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdateType,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate",
+  }) as any as S.Schema<AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate>;
+
 export interface SupercomputersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3556,14 +4178,23 @@ export interface SupercomputersUpdateRequest {
   resourceGroupName: string;
   /** The name of the Supercomputer */
   supercomputerName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SupercomputersUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: SupercomputerPropertiesUpdateInput;
+  /** The managed service identities assigned to this resource. */
+  identity?: AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate;
 }
 export const SupercomputersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     supercomputerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SupercomputersUpdateRequestTagsMap),
+    properties: S.optional(SupercomputerPropertiesUpdateInput),
+    identity: S.optional(
+      AzureResourceManagerCommonTypesSystemAssignedServiceIdentityUpdate,
+    ),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3637,6 +4268,55 @@ export const SupercomputersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SupercomputersUpdateResponse",
 }) as any as S.Schema<SupercomputersUpdateResponse>;
 
+/** Resource tags. */
+export type ToolsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ToolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ToolsCreateOrUpdateRequestTagsMap>;
+
+/** Environment variables to make available */
+export type ToolPropertiesInputEnvironmentVariablesMap = {
+  [key: string]: string | undefined;
+};
+export const ToolPropertiesInputEnvironmentVariablesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ToolPropertiesInputEnvironmentVariablesMap>;
+
+/** The JSON content for defining a resource */
+export type ToolPropertiesInputDefinitionContentMap = {
+  [key: string]: unknown | undefined;
+};
+export const ToolPropertiesInputDefinitionContentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ToolPropertiesInputDefinitionContentMap>;
+
+/** Discovery Tool list item properties */
+export interface ToolPropertiesInput {
+  /** The version of a resource definition */
+  version: string;
+  /** Environment variables to make available */
+  environmentVariables?: ToolPropertiesInputEnvironmentVariablesMap;
+  /** The JSON content for defining a resource */
+  definitionContent: ToolPropertiesInputDefinitionContentMap;
+}
+export const ToolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.String,
+    environmentVariables: S.optional(
+      ToolPropertiesInputEnvironmentVariablesMap,
+    ),
+    definitionContent: ToolPropertiesInputDefinitionContentMap,
+  }),
+).annotate({
+  identifier: "ToolPropertiesInput",
+}) as any as S.Schema<ToolPropertiesInput>;
+
 export interface ToolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3644,14 +4324,21 @@ export interface ToolsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Tool */
   toolName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ToolsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: ToolPropertiesInput;
 }
 export const ToolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     toolName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ToolsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ToolPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3894,7 +4581,7 @@ export const Tool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tool" }) as any as S.Schema<Tool>;
 
 /** The Tool items on this page */
-export type ToolListResultValueList = Tool[];
+export type ToolListResultValueList = ReadonlyArray<Tool>;
 export const ToolListResultValueList = /*@__PURE__*/ S.Array(
   Tool,
 ) as any as S.Schema<ToolListResultValueList>;
@@ -3932,6 +4619,53 @@ export const ToolsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ToolsListBySubscriptionRequest",
 }) as any as S.Schema<ToolsListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type ToolsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const ToolsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ToolsUpdateRequestTagsMap>;
+
+/** Environment variables to make available */
+export type ToolPropertiesUpdateEnvironmentVariablesMap = {
+  [key: string]: string | undefined;
+};
+export const ToolPropertiesUpdateEnvironmentVariablesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ToolPropertiesUpdateEnvironmentVariablesMap>;
+
+/** The JSON content for defining a resource */
+export type ToolPropertiesUpdateDefinitionContentMap = {
+  [key: string]: unknown | undefined;
+};
+export const ToolPropertiesUpdateDefinitionContentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ToolPropertiesUpdateDefinitionContentMap>;
+
+/** Discovery Tool list item properties */
+export interface ToolPropertiesUpdate {
+  /** The version of a resource definition */
+  version?: string;
+  /** Environment variables to make available */
+  environmentVariables?: ToolPropertiesUpdateEnvironmentVariablesMap;
+  /** The JSON content for defining a resource */
+  definitionContent?: ToolPropertiesUpdateDefinitionContentMap;
+}
+export const ToolPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.optional(S.String),
+    environmentVariables: S.optional(
+      ToolPropertiesUpdateEnvironmentVariablesMap,
+    ),
+    definitionContent: S.optional(ToolPropertiesUpdateDefinitionContentMap),
+  }),
+).annotate({
+  identifier: "ToolPropertiesUpdate",
+}) as any as S.Schema<ToolPropertiesUpdate>;
+
 export interface ToolsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3939,14 +4673,18 @@ export interface ToolsUpdateRequest {
   resourceGroupName: string;
   /** The name of the Tool */
   toolName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ToolsUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: ToolPropertiesUpdate;
 }
 export const ToolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     toolName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ToolsUpdateRequestTagsMap),
+    properties: S.optional(ToolPropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3996,6 +4734,24 @@ export const ToolsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ToolsUpdateResponse",
 }) as any as S.Schema<ToolsUpdateResponse>;
 
+/** Properties of the private endpoint connection. */
+export interface WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties {
+  /** The private endpoint resource. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+  ).annotate({
+    identifier:
+      "WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties",
+  }) as any as S.Schema<WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties>;
+
 export interface WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4005,7 +4761,8 @@ export interface WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest {
   workspaceName: string;
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Properties of the private endpoint connection. */
+  properties?: WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties;
 }
 export const WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4014,7 +4771,9 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(
+        WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4029,7 +4788,7 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest =
 
 /** The group ids for the private endpoint resource. */
 export type WorkspacePrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const WorkspacePrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4154,7 +4913,7 @@ export const WorkspacePrivateEndpointConnectionsGetRequest =
 
 /** The group ids for the private endpoint resource. */
 export type WorkspacePrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const WorkspacePrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4239,7 +4998,8 @@ export const WorkspacePrivateEndpointConnectionsListByWorkspaceRequest =
   }) as any as S.Schema<WorkspacePrivateEndpointConnectionsListByWorkspaceRequest>;
 
 /** The group ids for the private endpoint resource. */
-export type WorkspacePrivateEndpointConnectionPropertiesGroupIdsList = string[];
+export type WorkspacePrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const WorkspacePrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4297,7 +5057,7 @@ export const WorkspacePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkspacePrivateEndpointConnection items on this page */
 export type WorkspacePrivateEndpointConnectionListResultValueList =
-  WorkspacePrivateEndpointConnection[];
+  ReadonlyArray<WorkspacePrivateEndpointConnection>;
 export const WorkspacePrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     WorkspacePrivateEndpointConnection,
@@ -4351,7 +5111,7 @@ export const WorkspacePrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(
 
 /** The private link resource required member names. */
 export type WorkspacePrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
-  string[];
+  ReadonlyArray<string>;
 export const WorkspacePrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4359,7 +5119,7 @@ export const WorkspacePrivateLinkResourcesGetResponsePropertiesRequiredMembersLi
 
 /** The private link resource private link DNS zone name. */
 export type WorkspacePrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const WorkspacePrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4444,7 +5204,7 @@ export const WorkspacePrivateLinkResourcesListByWorkspaceRequest =
 
 /** The private link resource required member names. */
 export type WorkspacePrivateLinkResourcePropertiesRequiredMembersList =
-  string[];
+  ReadonlyArray<string>;
 export const WorkspacePrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4452,7 +5212,7 @@ export const WorkspacePrivateLinkResourcePropertiesRequiredMembersList =
 
 /** The private link resource private link DNS zone name. */
 export type WorkspacePrivateLinkResourcePropertiesRequiredZoneNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const WorkspacePrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4509,7 +5269,7 @@ export const WorkspacePrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkspacePrivateLinkResource items on this page */
 export type WorkspacePrivateLinkResourceListResultValueList =
-  WorkspacePrivateLinkResource[];
+  ReadonlyArray<WorkspacePrivateLinkResource>;
 export const WorkspacePrivateLinkResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     WorkspacePrivateLinkResource,
@@ -4532,6 +5292,79 @@ export const WorkspacePrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(
   identifier: "WorkspacePrivateLinkResourceListResult",
 }) as any as S.Schema<WorkspacePrivateLinkResourceListResult>;
 
+/** Resource tags. */
+export type WorkspacesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
+
+/** List of linked SuperComputers. */
+export type WorkspacePropertiesInputSupercomputerIdsList =
+  ReadonlyArray<string>;
+export const WorkspacePropertiesInputSupercomputerIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<WorkspacePropertiesInputSupercomputerIdsList>;
+
+/** For Key Vault Key references */
+export interface KeyVaultProperties {
+  /** The Key Vault URI */
+  keyVaultUri: string;
+  /** The Key Name in Key Vault */
+  keyName: string;
+  /** The Key Version in Key Vault */
+  keyVersion?: string;
+}
+export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyVaultUri: S.String,
+    keyName: S.String,
+    keyVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KeyVaultProperties",
+}) as any as S.Schema<KeyVaultProperties>;
+
+/** Workspace properties */
+export interface WorkspacePropertiesInput {
+  /** List of linked SuperComputers. */
+  supercomputerIds?: WorkspacePropertiesInputSupercomputerIdsList;
+  /** Identity IDs used for leveraging Workspace resources. */
+  workspaceIdentity: Identity;
+  /** Whether or not to use a customer managed key when encrypting data at rest */
+  customerManagedKeys?: CustomerManagedKeys;
+  /** The key to use for encrypting data at rest when customer managed keys are enabled. */
+  keyVaultProperties?: KeyVaultProperties;
+  /** The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled. */
+  logAnalyticsClusterId?: string;
+  /** Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible. */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** Agent Subnet ID for agent resources. */
+  agentSubnetId?: string;
+  /** Private Endpoint Subnet ID for private endpoint connections. */
+  privateEndpointSubnetId?: string;
+  /** Function Subnet ID for workspace resources. */
+  workspaceSubnetId?: string;
+}
+export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    supercomputerIds: S.optional(WorkspacePropertiesInputSupercomputerIdsList),
+    workspaceIdentity: Identity,
+    customerManagedKeys: S.optional(CustomerManagedKeys),
+    keyVaultProperties: S.optional(KeyVaultProperties),
+    logAnalyticsClusterId: S.optional(S.String),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    agentSubnetId: S.optional(S.String),
+    privateEndpointSubnetId: S.optional(S.String),
+    workspaceSubnetId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WorkspacePropertiesInput",
+}) as any as S.Schema<WorkspacePropertiesInput>;
+
 export interface WorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4539,14 +5372,21 @@ export interface WorkspacesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Workspace */
   workspaceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: WorkspacesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: WorkspacePropertiesInput;
 }
 export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(WorkspacesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(WorkspacePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4569,29 +5409,10 @@ export const WorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
 
 /** List of linked SuperComputers. */
-export type WorkspacePropertiesSupercomputerIdsList = string[];
+export type WorkspacePropertiesSupercomputerIdsList = ReadonlyArray<string>;
 export const WorkspacePropertiesSupercomputerIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WorkspacePropertiesSupercomputerIdsList>;
-
-/** For Key Vault Key references */
-export interface KeyVaultProperties {
-  /** The Key Vault URI */
-  keyVaultUri: string;
-  /** The Key Name in Key Vault */
-  keyName: string;
-  /** The Key Version in Key Vault */
-  keyVersion?: string;
-}
-export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyVaultUri: S.String,
-    keyName: S.String,
-    keyVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KeyVaultProperties",
-}) as any as S.Schema<KeyVaultProperties>;
 
 /** The private endpoint connection resource. */
 export interface WorkspacePropertiesPrivateEndpointConnectionsItem {
@@ -4621,7 +5442,7 @@ export const WorkspacePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  WorkspacePropertiesPrivateEndpointConnectionsItem[];
+  ReadonlyArray<WorkspacePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     WorkspacePropertiesPrivateEndpointConnectionsItem,
@@ -4870,7 +5691,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** The Workspace items on this page */
-export type WorkspaceListResultValueList = Workspace[];
+export type WorkspaceListResultValueList = ReadonlyArray<Workspace>;
 export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;
@@ -4910,6 +5731,58 @@ export const WorkspacesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspacesListBySubscriptionRequest",
 }) as any as S.Schema<WorkspacesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type WorkspacesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkspacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkspacesUpdateRequestTagsMap>;
+
+/** List of linked SuperComputers. */
+export type WorkspacePropertiesUpdateSupercomputerIdsList =
+  ReadonlyArray<string>;
+export const WorkspacePropertiesUpdateSupercomputerIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<WorkspacePropertiesUpdateSupercomputerIdsList>;
+
+/** For Key Vault Key references */
+export interface KeyVaultPropertiesUpdate {
+  /** The Key Name in Key Vault */
+  keyName?: string;
+  /** The Key Version in Key Vault */
+  keyVersion?: string;
+}
+export const KeyVaultPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyName: S.optional(S.String),
+    keyVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KeyVaultPropertiesUpdate",
+}) as any as S.Schema<KeyVaultPropertiesUpdate>;
+
+/** Workspace properties */
+export interface WorkspacePropertiesUpdate {
+  /** List of linked SuperComputers. */
+  supercomputerIds?: WorkspacePropertiesUpdateSupercomputerIdsList;
+  /** The key to use for encrypting data at rest when customer managed keys are enabled. */
+  keyVaultProperties?: KeyVaultPropertiesUpdate;
+  /** Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible. */
+  publicNetworkAccess?: PublicNetworkAccess;
+}
+export const WorkspacePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    supercomputerIds: S.optional(WorkspacePropertiesUpdateSupercomputerIdsList),
+    keyVaultProperties: S.optional(KeyVaultPropertiesUpdate),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+  }),
+).annotate({
+  identifier: "WorkspacePropertiesUpdate",
+}) as any as S.Schema<WorkspacePropertiesUpdate>;
+
 export interface WorkspacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4917,14 +5790,18 @@ export interface WorkspacesUpdateRequest {
   resourceGroupName: string;
   /** The name of the Workspace */
   workspaceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: WorkspacesUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: WorkspacePropertiesUpdate;
 }
 export const WorkspacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(WorkspacesUpdateRequestTagsMap),
+    properties: S.optional(WorkspacePropertiesUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",

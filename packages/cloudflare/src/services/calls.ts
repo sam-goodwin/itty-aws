@@ -352,7 +352,7 @@ export const SfuListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SfuListResultItem",
 }) as any as S.Schema<SfuListResultItem>;
 
-export type SfuListResultList = SfuListResultItem[];
+export type SfuListResultList = ReadonlyArray<SfuListResultItem>;
 export const SfuListResultList = /*@__PURE__*/ S.Array(
   SfuListResultItem,
 ) as any as S.Schema<SfuListResultList>;
@@ -413,7 +413,7 @@ export const TurnListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TurnListResultItem",
 }) as any as S.Schema<TurnListResultItem>;
 
-export type TurnListResultList = TurnListResultItem[];
+export type TurnListResultList = ReadonlyArray<TurnListResultItem>;
 export const TurnListResultList = /*@__PURE__*/ S.Array(
   TurnListResultItem,
 ) as any as S.Schema<TurnListResultList>;

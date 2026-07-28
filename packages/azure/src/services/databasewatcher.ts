@@ -13,6 +13,35 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The properties with which the alert rule resource was created. */
+export type AlertRuleCreationProperties = "CreatedWithActionGroup" | "None";
+export const AlertRuleCreationProperties = /*@__PURE__*/ S.String;
+
+/** The generic properties of the alert rule proxy resource. */
+export interface AlertRuleResourcePropertiesInput {
+  /** The resource ID of the alert rule resource. */
+  alertRuleResourceId: string;
+  /** The properties with which the alert rule resource was created. */
+  createdWithProperties: AlertRuleCreationProperties;
+  /** The creation time of the alert rule resource. */
+  creationTime: string;
+  /** The template ID associated with alert rule resource. */
+  alertRuleTemplateId: string;
+  /** The alert rule template version. */
+  alertRuleTemplateVersion: string;
+}
+export const AlertRuleResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    alertRuleResourceId: S.String,
+    createdWithProperties: AlertRuleCreationProperties,
+    creationTime: S.String,
+    alertRuleTemplateId: S.String,
+    alertRuleTemplateVersion: S.String,
+  }),
+).annotate({
+  identifier: "AlertRuleResourcePropertiesInput",
+}) as any as S.Schema<AlertRuleResourcePropertiesInput>;
+
 export interface AlertRuleResourcesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -22,7 +51,8 @@ export interface AlertRuleResourcesCreateOrUpdateRequest {
   watcherName: string;
   /** The alert rule proxy resource name. */
   alertRuleResourceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: AlertRuleResourcePropertiesInput;
 }
 export const AlertRuleResourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -31,7 +61,7 @@ export const AlertRuleResourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       watcherName: S.String.pipe(T.Label()),
       alertRuleResourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AlertRuleResourcePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -49,8 +79,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -58,8 +87,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -88,19 +116,11 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
-/** The properties with which the alert rule resource was created. */
-export type AlertRuleCreationProperties =
-  | "CreatedWithActionGroup"
-  | "None"
-  | (string & {});
-export const AlertRuleCreationProperties = /*@__PURE__*/ S.String;
-
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AzureResourceManagerResourceProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -298,7 +318,8 @@ export const AlertRuleResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AlertRuleResource>;
 
 /** The AlertRuleResource items on this page */
-export type AlertRuleResourceListResultValueList = AlertRuleResource[];
+export type AlertRuleResourceListResultValueList =
+  ReadonlyArray<AlertRuleResource>;
 export const AlertRuleResourceListResultValueList = /*@__PURE__*/ S.Array(
   AlertRuleResource,
 ) as any as S.Schema<AlertRuleResourceListResultValueList>;
@@ -354,8 +375,7 @@ export type ValidationStatus =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "TimedOut"
-  | (string & {});
+  | "TimedOut";
 export const ValidationStatus = /*@__PURE__*/ S.String;
 
 /** The model of a health validation issue. */
@@ -390,7 +410,8 @@ export const ValidationIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidationIssue>;
 
 /** The list of issues found by health validation. */
-export type HealthValidationPropertiesIssuesList = ValidationIssue[];
+export type HealthValidationPropertiesIssuesList =
+  ReadonlyArray<ValidationIssue>;
 export const HealthValidationPropertiesIssuesList = /*@__PURE__*/ S.Array(
   ValidationIssue,
 ) as any as S.Schema<HealthValidationPropertiesIssuesList>;
@@ -498,7 +519,8 @@ export const HealthValidation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthValidation>;
 
 /** The HealthValidation items on this page */
-export type HealthValidationListResultValueList = HealthValidation[];
+export type HealthValidationListResultValueList =
+  ReadonlyArray<HealthValidation>;
 export const HealthValidationListResultValueList = /*@__PURE__*/ S.Array(
   HealthValidation,
 ) as any as S.Schema<HealthValidationListResultValueList>;
@@ -610,11 +632,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -641,7 +663,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -661,6 +683,29 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** The generic properties of a Shared Private Link resource. */
+export interface SharedPrivateLinkResourcePropertiesInput {
+  /** The resource ID of the resource the shared private link resource is for. */
+  privateLinkResourceId: string;
+  /** The group id from the provider of resource the shared private link resource is for. */
+  groupId: string;
+  /** The request message for requesting approval of the shared private link resource. */
+  requestMessage: string;
+  /** The DNS zone segment to be included in the DNS name of the shared private link. Value is required for Azure Data Explorer clusters and SQL managed instances, and must be omitted for SQL logical servers and key vaults. The value is the second segment of the host FQDN name of the resource that the shared private link resource is for. For example: if the host name is 'adx-cluster-21187695.eastus.kusto.windows.net', then the value is 'eastus'; if the host name is 'sql-mi-23961134.767d5869f605.database.windows.net', then the value is '767d5869f605'. */
+  dnsZone?: string;
+}
+export const SharedPrivateLinkResourcePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateLinkResourceId: S.String,
+      groupId: S.String,
+      requestMessage: S.String,
+      dnsZone: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "SharedPrivateLinkResourcePropertiesInput",
+}) as any as S.Schema<SharedPrivateLinkResourcePropertiesInput>;
+
 export interface SharedPrivateLinkResourcesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -670,7 +715,8 @@ export interface SharedPrivateLinkResourcesCreateRequest {
   watcherName: string;
   /** The Shared Private Link resource name. */
   sharedPrivateLinkResourceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: SharedPrivateLinkResourcePropertiesInput;
 }
 export const SharedPrivateLinkResourcesCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -679,7 +725,7 @@ export const SharedPrivateLinkResourcesCreateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       watcherName: S.String.pipe(T.Label()),
       sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SharedPrivateLinkResourcePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -697,8 +743,7 @@ export type SharedPrivateLinkResourceStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const SharedPrivateLinkResourceStatus = /*@__PURE__*/ S.String;
 
 /** The generic properties of a Shared Private Link resource. */
@@ -899,7 +944,7 @@ export const SharedPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The SharedPrivateLinkResource items on this page */
 export type SharedPrivateLinkResourceListResultValueList =
-  SharedPrivateLinkResource[];
+  ReadonlyArray<SharedPrivateLinkResource>;
 export const SharedPrivateLinkResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     SharedPrivateLinkResource,
@@ -921,38 +966,8 @@ export const SharedPrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharedPrivateLinkResourceListResult",
 }) as any as S.Schema<SharedPrivateLinkResourceListResult>;
 
-export interface TargetsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The database watcher name. */
-  watcherName: string;
-  /** The target resource name. */
-  targetName: string;
-  body: unknown;
-}
-export const TargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    watcherName: S.String.pipe(T.Label()),
-    targetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets/{targetName}",
-      code: 200,
-      apiVersion: "2025-01-02",
-    }),
-  ),
-).annotate({
-  identifier: "TargetsCreateOrUpdateRequest",
-}) as any as S.Schema<TargetsCreateOrUpdateRequest>;
-
 /** The type of authentication to use when connecting to a target. */
-export type TargetAuthenticationType = "Aad" | "Sql" | (string & {});
+export type TargetAuthenticationType = "Aad" | "Sql";
 export const TargetAuthenticationType = /*@__PURE__*/ S.String;
 
 /** The vault specific details required if using SQL authentication to connect to a target. */
@@ -971,6 +986,59 @@ export const VaultSecret = /*@__PURE__*/ S.suspend(() =>
     akvTargetPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }),
 ).annotate({ identifier: "VaultSecret" }) as any as S.Schema<VaultSecret>;
+
+/** The generic properties of a target. */
+export interface TargetPropertiesInput {
+  /** Discriminator property for TargetProperties. */
+  targetType: string;
+  /** The type of authentication to use when connecting to a target. */
+  targetAuthenticationType: TargetAuthenticationType;
+  /** To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored. */
+  targetVault?: VaultSecret;
+  /** The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately. */
+  connectionServerName: string;
+}
+export const TargetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetType: S.String,
+    targetAuthenticationType: TargetAuthenticationType,
+    targetVault: S.optional(VaultSecret),
+    connectionServerName: S.String,
+  }),
+).annotate({
+  identifier: "TargetPropertiesInput",
+}) as any as S.Schema<TargetPropertiesInput>;
+
+export interface TargetsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The database watcher name. */
+  watcherName: string;
+  /** The target resource name. */
+  targetName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: TargetPropertiesInput;
+}
+export const TargetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    watcherName: S.String.pipe(T.Label()),
+    targetName: S.String.pipe(T.Label()),
+    properties: S.optional(TargetPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}/targets/{targetName}",
+      code: 200,
+      apiVersion: "2025-01-02",
+    }),
+  ),
+).annotate({
+  identifier: "TargetsCreateOrUpdateRequest",
+}) as any as S.Schema<TargetsCreateOrUpdateRequest>;
 
 /** The generic properties of a target. */
 export interface TargetProperties {
@@ -1159,7 +1227,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 
 /** The Target items on this page */
-export type TargetListResultValueList = Target[];
+export type TargetListResultValueList = ReadonlyArray<Target>;
 export const TargetListResultValueList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<TargetListResultValueList>;
@@ -1180,44 +1248,17 @@ export const TargetListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetListResult",
 }) as any as S.Schema<TargetListResult>;
 
-export interface WatchersCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The database watcher name. */
-  watcherName: string;
-  body: unknown;
-}
-export const WatchersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    watcherName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
-      code: 200,
-      apiVersion: "2025-01-02",
-    }),
-  ),
-).annotate({
-  identifier: "WatchersCreateOrUpdateRequest",
-}) as any as S.Schema<WatchersCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type WatchersCreateOrUpdateResponseTagsMap = {
+export type WatchersCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const WatchersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const WatchersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<WatchersCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<WatchersCreateOrUpdateRequestTagsMap>;
 
 /** The type of Kusto offering. */
-export type KustoOfferingType = "adx" | "free" | "fabric" | (string & {});
+export type KustoOfferingType = "adx" | "free" | "fabric";
 export const KustoOfferingType = /*@__PURE__*/ S.String;
 
 /** The properties of a data store. */
@@ -1249,22 +1290,122 @@ export const Datastore = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Datastore" }) as any as S.Schema<Datastore>;
 
+/** The RP specific properties of the resource. */
+export interface WatcherPropertiesInput {
+  /** The data store for collected monitoring data. */
+  datastore?: Datastore;
+  /** The resource ID of a user-assigned managed identity that will be assigned to a new alert rule. */
+  defaultAlertRuleIdentityResourceId?: string;
+}
+export const WatcherPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datastore: S.optional(Datastore),
+    defaultAlertRuleIdentityResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WatcherPropertiesInput",
+}) as any as S.Schema<WatcherPropertiesInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned, UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface WatchersCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const WatchersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "WatchersCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<WatchersCreateOrUpdateRequestIdentity>;
+
+export interface WatchersCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The database watcher name. */
+  watcherName: string;
+  /** Resource tags. */
+  tags?: WatchersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: WatcherPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: WatchersCreateOrUpdateRequestIdentity;
+}
+export const WatchersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    watcherName: S.String.pipe(T.Label()),
+    tags: S.optional(WatchersCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(WatcherPropertiesInput),
+    identity: S.optional(WatchersCreateOrUpdateRequestIdentity),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DatabaseWatcher/watchers/{watcherName}",
+      code: 200,
+      apiVersion: "2025-01-02",
+    }),
+  ),
+).annotate({
+  identifier: "WatchersCreateOrUpdateRequest",
+}) as any as S.Schema<WatchersCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type WatchersCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WatchersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WatchersCreateOrUpdateResponseTagsMap>;
+
 /** The monitoring collection status of a watcher. */
 export type WatcherStatus =
   | "Starting"
   | "Running"
   | "Stopping"
   | "Stopped"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const WatcherStatus = /*@__PURE__*/ S.String;
 
 /** The status of the last provisioning operation performed on the resource. */
 export type DatabaseWatcherProvisioningState =
   | "Succeeded"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const DatabaseWatcherProvisioningState = /*@__PURE__*/ S.String;
 
 /** The RP specific properties of the resource. */
@@ -1288,15 +1429,6 @@ export const WatcherProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WatcherProperties",
 }) as any as S.Schema<WatcherProperties>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -1576,7 +1708,7 @@ export const Watcher = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Watcher" }) as any as S.Schema<Watcher>;
 
 /** The Watcher items on this page */
-export type WatcherListResultValueList = Watcher[];
+export type WatcherListResultValueList = ReadonlyArray<Watcher>;
 export const WatcherListResultValueList = /*@__PURE__*/ S.Array(
   Watcher,
 ) as any as S.Schema<WatcherListResultValueList>;
@@ -1788,6 +1920,76 @@ export const WatchersStopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WatchersStopResponse",
 }) as any as S.Schema<WatchersStopResponse>;
 
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface WatchersUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const WatchersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "WatchersUpdateRequestIdentity",
+}) as any as S.Schema<WatchersUpdateRequestIdentity>;
+
+/** Resource tags. */
+export type WatchersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WatchersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WatchersUpdateRequestTagsMap>;
+
+/** The properties of a data store. */
+export interface DatastoreUpdate {
+  /** The Azure resource ID of an Azure Data Explorer cluster. */
+  adxClusterResourceId?: string;
+  /** The Kusto cluster display name. */
+  kustoClusterDisplayName?: string;
+  /** The Kusto cluster URI. */
+  kustoClusterUri?: string;
+  /** The Kusto data ingestion URI. */
+  kustoDataIngestionUri?: string;
+  /** The name of a Kusto database. */
+  kustoDatabaseName?: string;
+  /** The Kusto management URL. */
+  kustoManagementUrl?: string;
+  /** The type of a Kusto offering. */
+  kustoOfferingType?: KustoOfferingType;
+}
+export const DatastoreUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adxClusterResourceId: S.optional(S.String),
+    kustoClusterDisplayName: S.optional(S.String),
+    kustoClusterUri: S.optional(S.String),
+    kustoDataIngestionUri: S.optional(S.String),
+    kustoDatabaseName: S.optional(S.String),
+    kustoManagementUrl: S.optional(S.String),
+    kustoOfferingType: S.optional(KustoOfferingType),
+  }),
+).annotate({
+  identifier: "DatastoreUpdate",
+}) as any as S.Schema<DatastoreUpdate>;
+
+/** The updatable properties of the Watcher. */
+export interface WatcherUpdateProperties {
+  /** The data store for collected monitoring data. */
+  datastore?: DatastoreUpdate;
+  /** The resource ID of a user-assigned managed identity that will be assigned to a new alert rule. */
+  defaultAlertRuleIdentityResourceId?: string;
+}
+export const WatcherUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datastore: S.optional(DatastoreUpdate),
+    defaultAlertRuleIdentityResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WatcherUpdateProperties",
+}) as any as S.Schema<WatcherUpdateProperties>;
+
 export interface WatchersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1795,14 +1997,21 @@ export interface WatchersUpdateRequest {
   resourceGroupName: string;
   /** The database watcher name. */
   watcherName: string;
-  body: unknown;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: WatchersUpdateRequestIdentity;
+  /** Resource tags. */
+  tags?: WatchersUpdateRequestTagsMap;
+  /** The resource-specific properties for this resource. */
+  properties?: WatcherUpdateProperties;
 }
 export const WatchersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     watcherName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(WatchersUpdateRequestIdentity),
+    tags: S.optional(WatchersUpdateRequestTagsMap),
+    properties: S.optional(WatcherUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",

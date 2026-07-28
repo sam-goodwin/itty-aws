@@ -323,16 +323,48 @@
             "smithy.api#documentation": "The name of the Maps Creator instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.maps#CreatorsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters."
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps#CreatorPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Creator resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps#CreatorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "storageUnits": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The storage units to be allocated. Integer values from 1 to 100, inclusive.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Creator resource properties"
+      }
+    },
+    "com.azure.maps#CreatorsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters."
       }
     },
     "com.azure.maps#CreatorsCreateOrUpdate": {
@@ -561,16 +593,41 @@
             "smithy.api#documentation": "The name of the Maps Creator instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.maps#CreatorsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps#CreatorPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The Creator resource properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps#CreatorsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.maps#CreatorsGet": {
@@ -1469,16 +1526,36 @@
             "smithy.api#documentation": "The name of the Maps Account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyType": {
+          "target": "com.azure.maps#AccountsRegenerateKeysRequestKeyType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Whether the operation refers to the primary or secondary key.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps#AccountsRegenerateKeysRequestKeyType": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "primary"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether the operation refers to the primary or secondary key."
       }
     },
     "com.azure.maps#AccountsListKeys": {
@@ -1592,16 +1669,85 @@
             "smithy.api#documentation": "The name of the Maps Account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "signingKey": {
+          "target": "com.azure.maps#AccountsListSasRequestSigningKey",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The Map account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Map account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.",
+            "smithy.api#required": {}
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal Id also known as the object Id of a User Assigned Managed Identity currently assigned to the Map Account. To assign a Managed Identity of the account, use operation Create or Update an assign a User Assigned Identity resource Id.",
+            "smithy.api#required": {}
+          }
+        },
+        "regions": {
+          "target": "com.azure.maps#AccountsListSasRequestRegionsList",
+          "traits": {
+            "smithy.api#documentation": "Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: \"eastus\", \"westus2\". Omitting this parameter will allow all region locations to be accessible."
+          }
+        },
+        "maxRatePerSecond": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Required parameter which represents the desired maximum request per second to allowed for the given SAS token. This does not guarantee perfect accuracy in measurements but provides application safe guards of abuse with eventual enforcement.",
+            "smithy.api#required": {}
+          }
+        },
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date time offset of when the token validity begins. For example \"2017-05-24T10:42:03.1567373Z\". Maximum duration allowed is 24 hours between `start` and `expiry`.",
+            "smithy.api#required": {}
+          }
+        },
+        "expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date time offset of when the token validity expires. For example \"2017-05-24T10:42:03.1567373Z\". Maximum duration allowed is 24 hours between `start` and `expiry`.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps#AccountsListSasRequestRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: \"eastus\", \"westus2\". Omitting this parameter will allow all region locations to be accessible."
+      }
+    },
+    "com.azure.maps#AccountsListSasRequestSigningKey": {
+      "type": "enum",
+      "members": {
+        "PRIMARYKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "primaryKey"
+          }
+        },
+        "SECONDARYKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondaryKey"
+          }
+        },
+        "MANAGEDIDENTITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managedIdentity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Map account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Map account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS."
       }
     },
     "com.azure.maps#AccountsListBySubscription": {
@@ -2608,16 +2754,197 @@
             "smithy.api#documentation": "The name of the Maps Account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.maps#AccountsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters."
+          }
+        },
+        "kind": {
+          "target": "com.azure.maps#Kind",
+          "traits": {
+            "smithy.api#documentation": "Get or Set Kind property."
+          }
+        },
+        "sku": {
+          "target": "com.azure.maps#SkuInput",
+          "traits": {
+            "smithy.api#documentation": "The SKU of this account."
+          }
+        },
+        "identity": {
+          "target": "com.azure.maps#AccountsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps#MapsAccountPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The map account properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps#MapsAccountPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys and Shared Access Signature Token authentication from any usage."
+          }
+        },
+        "linkedResources": {
+          "target": "com.azure.maps#LinkedResources"
+        },
+        "cors": {
+          "target": "com.azure.maps#CorsRules",
+          "traits": {
+            "smithy.api#documentation": "Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.maps#MapsAccountPropertiesInputEncryption",
+          "traits": {
+            "smithy.api#documentation": "(Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional Map account properties"
+      }
+    },
+    "com.azure.maps#MapsAccountPropertiesInputEncryption": {
+      "type": "structure",
+      "members": {
+        "infrastructureEncryption": {
+          "target": "com.azure.maps#MapsAccountPropertiesInputEncryptionInfrastructureEncryption",
+          "traits": {
+            "smithy.api#documentation": "Values are enabled and disabled."
+          }
+        },
+        "customerManagedKeyEncryption": {
+          "target": "com.azure.maps#CustomerManagedKeyEncryption",
+          "traits": {
+            "smithy.api#documentation": "All Customer-managed key encryption properties for the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "(Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled."
+      }
+    },
+    "com.azure.maps#MapsAccountPropertiesInputEncryptionInfrastructureEncryption": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Values are enabled and disabled."
+      }
+    },
+    "com.azure.maps#AccountsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.maps#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.maps#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.maps#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.maps#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.maps#SkuInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "com.azure.maps#SkuInputName",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU, in standard format (such as S0).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SKU of the Maps Account."
+      }
+    },
+    "com.azure.maps#SkuInputName": {
+      "type": "enum",
+      "members": {
+        "S0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "S0"
+          }
+        },
+        "S1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "S1"
+          }
+        },
+        "G2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "G2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The name of the SKU, in standard format (such as S0)."
+      }
+    },
+    "com.azure.maps#AccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters."
       }
     },
     "com.azure.maps#AccountsCreateOrUpdate": {
@@ -2885,16 +3212,76 @@
             "smithy.api#documentation": "The name of the Maps Account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.maps#AccountsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.maps#SkuInput",
+          "traits": {
+            "smithy.api#documentation": "The SKU of this account.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.maps#Kind",
+          "traits": {
+            "smithy.api#documentation": "Get or Set Kind property."
+          }
+        },
+        "identity": {
+          "target": "com.azure.maps#AccountsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maps#MapsAccountPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The map account properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.maps#AccountsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.maps#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.maps#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.maps#AccountsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.maps#AccountsGet": {

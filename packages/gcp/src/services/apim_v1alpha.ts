@@ -60,11 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type TagActionActionEnum =
-  | "ACTION_UNSPECIFIED"
-  | "ADD"
-  | "REMOVE"
-  | (string & {});
+export type TagActionActionEnum = "ACTION_UNSPECIFIED" | "ADD" | "REMOVE";
 export const TagActionActionEnum = /*@__PURE__*/ S.String;
 
 /** Message for edit tag action */
@@ -81,7 +77,7 @@ export const TagAction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TagAction" }) as any as S.Schema<TagAction>;
 
-export type TagActionList = TagAction[];
+export type TagActionList = ReadonlyArray<TagAction>;
 export const TagActionList = /*@__PURE__*/ S.Array(
   TagAction,
 ) as any as S.Schema<TagActionList>;
@@ -103,7 +99,7 @@ export const EditTagsApiObservationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditTagsApiObservationsRequest>;
 
 export type EditTagsApiObservationsRequestList =
-  EditTagsApiObservationsRequest[];
+  ReadonlyArray<EditTagsApiObservationsRequest>;
 export const EditTagsApiObservationsRequestList = /*@__PURE__*/ S.Array(
   EditTagsApiObservationsRequest,
 ) as any as S.Schema<EditTagsApiObservationsRequestList>;
@@ -144,7 +140,7 @@ export const BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest
       "BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest",
   }) as any as S.Schema<BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -153,8 +149,7 @@ export type ApiObservationStyleEnum =
   | "STYLE_UNSPECIFIED"
   | "REST"
   | "GRPC"
-  | "GRAPHQL"
-  | (string & {});
+  | "GRAPHQL";
 export const ApiObservationStyleEnum = /*@__PURE__*/ S.String;
 
 /** Message describing ApiObservation object */
@@ -195,7 +190,7 @@ export const ApiObservation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ApiObservation" }) as any as S.Schema<ApiObservation>;
 
-export type ApiObservationList = ApiObservation[];
+export type ApiObservationList = ReadonlyArray<ApiObservation>;
 export const ApiObservationList = /*@__PURE__*/ S.Array(
   ApiObservation,
 ) as any as S.Schema<ApiObservationList>;
@@ -258,8 +253,7 @@ export type ObservationJobStateEnum =
   | "DISABLING"
   | "DISABLED"
   | "DELETING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const ObservationJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing ObservationJob object */
@@ -319,7 +313,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -369,8 +363,7 @@ export type ObservationSourceStateEnum =
   | "CREATING"
   | "CREATED"
   | "DELETING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const ObservationSourceStateEnum = /*@__PURE__*/ S.String;
 
 /** Network information for setting up a PSC connection. */
@@ -391,7 +384,7 @@ export const GclbObservationSourcePscNetworkConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GclbObservationSourcePscNetworkConfig>;
 
 export type GclbObservationSourcePscNetworkConfigList =
-  GclbObservationSourcePscNetworkConfig[];
+  ReadonlyArray<GclbObservationSourcePscNetworkConfig>;
 export const GclbObservationSourcePscNetworkConfigList = /*@__PURE__*/ S.Array(
   GclbObservationSourcePscNetworkConfig,
 ) as any as S.Schema<GclbObservationSourcePscNetworkConfigList>;
@@ -736,8 +729,7 @@ export type HttpOperationMethodEnum =
   | "DELETE"
   | "TRACE"
   | "OPTIONS"
-  | "CONNECT"
-  | (string & {});
+  | "CONNECT";
 export const HttpOperationMethodEnum = /*@__PURE__*/ S.String;
 
 export type HttpOperationQueryParamDataTypeEnum =
@@ -746,8 +738,7 @@ export type HttpOperationQueryParamDataTypeEnum =
   | "INTEGER"
   | "FLOAT"
   | "STRING"
-  | "UUID"
-  | (string & {});
+  | "UUID";
 export const HttpOperationQueryParamDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** An aggregation of HTTP query parameter occurrences. */
@@ -783,8 +774,7 @@ export type HttpOperationHeaderDataTypeEnum =
   | "INTEGER"
   | "FLOAT"
   | "STRING"
-  | "UUID"
-  | (string & {});
+  | "UUID";
 export const HttpOperationHeaderDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** An aggregation of HTTP header occurrences. */
@@ -833,8 +823,7 @@ export type HttpOperationPathParamDataTypeEnum =
   | "INTEGER"
   | "FLOAT"
   | "STRING"
-  | "UUID"
-  | (string & {});
+  | "UUID";
 export const HttpOperationPathParamDataTypeEnum = /*@__PURE__*/ S.String;
 
 /** HTTP Path parameter. */
@@ -853,7 +842,7 @@ export const HttpOperationPathParam = /*@__PURE__*/ S.suspend(() =>
   identifier: "HttpOperationPathParam",
 }) as any as S.Schema<HttpOperationPathParam>;
 
-export type HttpOperationPathParamList = HttpOperationPathParam[];
+export type HttpOperationPathParamList = ReadonlyArray<HttpOperationPathParam>;
 export const HttpOperationPathParamList = /*@__PURE__*/ S.Array(
   HttpOperationPathParam,
 ) as any as S.Schema<HttpOperationPathParamList>;
@@ -1032,7 +1021,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1078,7 +1067,7 @@ export const ListProjectsLocationsObservationJobsRequest =
     identifier: "ListProjectsLocationsObservationJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsObservationJobsRequest>;
 
-export type ObservationJobList = ObservationJob[];
+export type ObservationJobList = ReadonlyArray<ObservationJob>;
 export const ObservationJobList = /*@__PURE__*/ S.Array(
   ObservationJob,
 ) as any as S.Schema<ObservationJobList>;
@@ -1169,7 +1158,7 @@ export const ListProjectsLocationsObservationJobsApiObservationsApiOperationsReq
       "ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
 
-export type ApiOperationList = ApiOperation[];
+export type ApiOperationList = ReadonlyArray<ApiOperation>;
 export const ApiOperationList = /*@__PURE__*/ S.Array(
   ApiOperation,
 ) as any as S.Schema<ApiOperationList>;
@@ -1215,7 +1204,7 @@ export const ListProjectsLocationsObservationSourcesRequest =
     identifier: "ListProjectsLocationsObservationSourcesRequest",
   }) as any as S.Schema<ListProjectsLocationsObservationSourcesRequest>;
 
-export type ObservationSourceList = ObservationSource[];
+export type ObservationSourceList = ReadonlyArray<ObservationSource>;
 export const ObservationSourceList = /*@__PURE__*/ S.Array(
   ObservationSource,
 ) as any as S.Schema<ObservationSourceList>;
@@ -1270,7 +1259,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

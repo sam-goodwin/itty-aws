@@ -12,6 +12,34 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The list of audiences that can appear in the issued token. */
+export type FederatedIdentityCredentialPropertiesAudiencesList =
+  ReadonlyArray<string>;
+export const FederatedIdentityCredentialPropertiesAudiencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FederatedIdentityCredentialPropertiesAudiencesList>;
+
+/** The properties associated with a federated identity credential. */
+export interface FederatedIdentityCredentialProperties {
+  /** The URL of the issuer to be trusted. */
+  issuer: string;
+  /** The identifier of the external identity. */
+  subject: string;
+  /** The list of audiences that can appear in the issued token. */
+  audiences: FederatedIdentityCredentialPropertiesAudiencesList;
+}
+export const FederatedIdentityCredentialProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      issuer: S.String,
+      subject: S.String,
+      audiences: FederatedIdentityCredentialPropertiesAudiencesList,
+    }),
+).annotate({
+  identifier: "FederatedIdentityCredentialProperties",
+}) as any as S.Schema<FederatedIdentityCredentialProperties>;
+
 export interface FederatedIdentityCredentialsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -21,7 +49,8 @@ export interface FederatedIdentityCredentialsCreateOrUpdateRequest {
   resourceName: string;
   /** The name of the federated identity credential resource. */
   federatedIdentityCredentialResourceName: string;
-  body: unknown;
+  /** The properties associated with the federated identity credential. */
+  properties?: FederatedIdentityCredentialProperties;
 }
 export const FederatedIdentityCredentialsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -30,7 +59,7 @@ export const FederatedIdentityCredentialsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       resourceName: S.String.pipe(T.Label()),
       federatedIdentityCredentialResourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(FederatedIdentityCredentialProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -48,8 +77,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -57,8 +85,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -86,33 +113,6 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
     lastModifiedAt: S.optional(S.String),
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-/** The list of audiences that can appear in the issued token. */
-export type FederatedIdentityCredentialPropertiesAudiencesList = string[];
-export const FederatedIdentityCredentialPropertiesAudiencesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FederatedIdentityCredentialPropertiesAudiencesList>;
-
-/** The properties associated with a federated identity credential. */
-export interface FederatedIdentityCredentialProperties {
-  /** The URL of the issuer to be trusted. */
-  issuer: string;
-  /** The identifier of the external identity. */
-  subject: string;
-  /** The list of audiences that can appear in the issued token. */
-  audiences: FederatedIdentityCredentialPropertiesAudiencesList;
-}
-export const FederatedIdentityCredentialProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      issuer: S.String,
-      subject: S.String,
-      audiences: FederatedIdentityCredentialPropertiesAudiencesList,
-    }),
-).annotate({
-  identifier: "FederatedIdentityCredentialProperties",
-}) as any as S.Schema<FederatedIdentityCredentialProperties>;
 
 export interface FederatedIdentityCredentialsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -287,7 +287,7 @@ export const FederatedIdentityCredential = /*@__PURE__*/ S.suspend(() =>
 
 /** The FederatedIdentityCredential items on this page */
 export type FederatedIdentityCredentialsListResultValueList =
-  FederatedIdentityCredential[];
+  ReadonlyArray<FederatedIdentityCredential>;
 export const FederatedIdentityCredentialsListResultValueList =
   /*@__PURE__*/ S.Array(
     FederatedIdentityCredential,
@@ -361,7 +361,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -462,46 +462,18 @@ export const SystemAssignedIdentitiesGetByScopeResponse =
     identifier: "SystemAssignedIdentitiesGetByScopeResponse",
   }) as any as S.Schema<SystemAssignedIdentitiesGetByScopeResponse>;
 
-export interface UserAssignedIdentitiesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the identity resource. */
-  resourceName: string;
-  body: unknown;
-}
-export const UserAssignedIdentitiesCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
-        code: 200,
-        apiVersion: "2024-11-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "UserAssignedIdentitiesCreateOrUpdateRequest",
-  }) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type UserAssignedIdentitiesCreateOrUpdateResponseTagsMap = {
+export type UserAssignedIdentitiesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const UserAssignedIdentitiesCreateOrUpdateResponseTagsMap =
+export const UserAssignedIdentitiesCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateRequestTagsMap>;
 
 /** Enum to configure regional restrictions on identity assignment, as necessary. */
-export type IsolationScope = "None" | "Regional" | (string & {});
+export type IsolationScope = "None" | "Regional";
 export const IsolationScope = /*@__PURE__*/ S.String;
 
 /** The properties associated with the user assigned identity. */
@@ -525,6 +497,51 @@ export const UserAssignedIdentityProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UserAssignedIdentityProperties",
 }) as any as S.Schema<UserAssignedIdentityProperties>;
+
+export interface UserAssignedIdentitiesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the identity resource. */
+  resourceName: string;
+  /** Resource tags. */
+  tags?: UserAssignedIdentitiesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The properties associated with the identity. */
+  properties?: UserAssignedIdentityProperties;
+}
+export const UserAssignedIdentitiesCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      resourceName: S.String.pipe(T.Label()),
+      tags: S.optional(UserAssignedIdentitiesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(UserAssignedIdentityProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{resourceName}",
+        code: 200,
+        apiVersion: "2024-11-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "UserAssignedIdentitiesCreateOrUpdateRequest",
+  }) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type UserAssignedIdentitiesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const UserAssignedIdentitiesCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<UserAssignedIdentitiesCreateOrUpdateResponseTagsMap>;
 
 export interface UserAssignedIdentitiesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -713,7 +730,7 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 
 /** The Identity items on this page */
-export type UserAssignedIdentitiesListResultValueList = Identity[];
+export type UserAssignedIdentitiesListResultValueList = ReadonlyArray<Identity>;
 export const UserAssignedIdentitiesListResultValueList = /*@__PURE__*/ S.Array(
   Identity,
 ) as any as S.Schema<UserAssignedIdentitiesListResultValueList>;
@@ -754,6 +771,16 @@ export const UserAssignedIdentitiesListBySubscriptionRequest =
     identifier: "UserAssignedIdentitiesListBySubscriptionRequest",
   }) as any as S.Schema<UserAssignedIdentitiesListBySubscriptionRequest>;
 
+/** Resource tags */
+export type UserAssignedIdentitiesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const UserAssignedIdentitiesUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<UserAssignedIdentitiesUpdateRequestTagsMap>;
+
 export interface UserAssignedIdentitiesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -761,14 +788,21 @@ export interface UserAssignedIdentitiesUpdateRequest {
   resourceGroupName: string;
   /** The name of the identity resource. */
   resourceName: string;
-  body: unknown;
+  /** The geo-location where the resource lives */
+  location?: string;
+  /** Resource tags */
+  tags?: UserAssignedIdentitiesUpdateRequestTagsMap;
+  /** The properties associated with the identity. */
+  properties?: UserAssignedIdentityProperties;
 }
 export const UserAssignedIdentitiesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(UserAssignedIdentitiesUpdateRequestTagsMap),
+    properties: S.optional(UserAssignedIdentityProperties),
   }).pipe(
     T.Http({
       method: "PATCH",

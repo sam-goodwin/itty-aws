@@ -485,17 +485,21 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "smithy.api#httpPayload": {}
-          }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.smart_shield#CacheReserveClearClearResponseId": {
+      "type": "enum",
+      "members": {
+        "CACHE_RESERVE_CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cache_reserve_clear"
+          }
+        }
       }
     },
     "com.cloudflare.smart_shield#CacheReserveClearClearResponseState": {
@@ -519,7 +523,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.smart_shield#CacheReserveClearClearResponseId",
           "traits": {
             "smithy.api#documentation": "ID of the zone setting.",
             "smithy.api#required": {}
@@ -590,6 +594,17 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.smart_shield#CacheReserveClearStatusResponseId": {
+      "type": "enum",
+      "members": {
+        "CACHE_RESERVE_CLEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cache_reserve_clear"
+          }
+        }
+      }
+    },
     "com.cloudflare.smart_shield#CacheReserveClearStatusResponseState": {
       "type": "enum",
       "members": {
@@ -611,7 +626,7 @@
       "type": "structure",
       "members": {
         "id": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.smart_shield#CacheReserveClearStatusResponseId",
           "traits": {
             "smithy.api#documentation": "ID of the zone setting.",
             "smithy.api#required": {}
@@ -687,6 +702,72 @@
           "traits": {
             "smithy.api#enumValue": "WEU"
           }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
         }
       }
     },
@@ -702,13 +783,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksCreateRequestHttpConfigHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksCreateRequestHttpConfigHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.smart_shield#HealthChecksCreateRequestHttpConfigHeaderValueList"
       }
     },
     "com.cloudflare.smart_shield#HealthChecksCreateRequestHttpConfigMethod": {
@@ -925,6 +1012,72 @@
           "traits": {
             "smithy.api#enumValue": "WEU"
           }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
         }
       }
     },
@@ -940,13 +1093,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfigHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfigHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfigHeaderValueList"
       }
     },
     "com.cloudflare.smart_shield#HealthChecksCreateResponseHttpConfigMethod": {
@@ -1281,6 +1440,72 @@
           "traits": {
             "smithy.api#enumValue": "WEU"
           }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
         }
       }
     },
@@ -1296,13 +1521,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksEditRequestHttpConfigHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksEditRequestHttpConfigHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.smart_shield#HealthChecksEditRequestHttpConfigHeaderValueList"
       }
     },
     "com.cloudflare.smart_shield#HealthChecksEditRequestHttpConfigMethod": {
@@ -1527,6 +1758,72 @@
           "traits": {
             "smithy.api#enumValue": "WEU"
           }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
         }
       }
     },
@@ -1542,13 +1839,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfigHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfigHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfigHeaderValueList"
       }
     },
     "com.cloudflare.smart_shield#HealthChecksEditResponseHttpConfigMethod": {
@@ -1850,6 +2153,72 @@
           "traits": {
             "smithy.api#enumValue": "WEU"
           }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
         }
       }
     },
@@ -1865,13 +2234,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfigHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfigHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfigHeaderValueList"
       }
     },
     "com.cloudflare.smart_shield#HealthChecksGetResponseHttpConfigMethod": {
@@ -2180,6 +2555,72 @@
           "traits": {
             "smithy.api#enumValue": "WEU"
           }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
         }
       }
     },
@@ -2195,13 +2636,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfigHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfigHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfigHeaderValueList"
       }
     },
     "com.cloudflare.smart_shield#HealthChecksListResultItemHttpConfigMethod": {
@@ -2563,6 +3010,72 @@
           "traits": {
             "smithy.api#enumValue": "WEU"
           }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
         }
       }
     },
@@ -2578,13 +3091,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfigHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfigHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfigHeaderValueList"
       }
     },
     "com.cloudflare.smart_shield#HealthChecksUpdateRequestResultHttpConfigMethod": {
@@ -2890,6 +3409,72 @@
           "traits": {
             "smithy.api#enumValue": "WEU"
           }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IN"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
         }
       }
     },
@@ -2905,13 +3490,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfigHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfigHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfigHeaderValueList"
       }
     },
     "com.cloudflare.smart_shield#HealthChecksUpdateResponseHttpConfigMethod": {

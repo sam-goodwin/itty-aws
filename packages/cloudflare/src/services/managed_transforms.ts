@@ -75,7 +75,8 @@ export const ListManagedTransformsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListManagedTransformsRequest",
 }) as any as S.Schema<ListManagedTransformsRequest>;
 
-export type ListResponseManagedRequestHeadersItemConflictsWithList = string[];
+export type ListResponseManagedRequestHeadersItemConflictsWithList =
+  ReadonlyArray<string>;
 export const ListResponseManagedRequestHeadersItemConflictsWithList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -108,12 +109,13 @@ export const ListResponseManagedRequestHeadersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResponseManagedRequestHeadersItem>;
 
 export type ListResponseManagedRequestHeadersList =
-  ListResponseManagedRequestHeadersItem[];
+  ReadonlyArray<ListResponseManagedRequestHeadersItem>;
 export const ListResponseManagedRequestHeadersList = /*@__PURE__*/ S.Array(
   ListResponseManagedRequestHeadersItem,
 ) as any as S.Schema<ListResponseManagedRequestHeadersList>;
 
-export type ListResponseManagedResponseHeadersItemConflictsWithList = string[];
+export type ListResponseManagedResponseHeadersItemConflictsWithList =
+  ReadonlyArray<string>;
 export const ListResponseManagedResponseHeadersItemConflictsWithList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -146,7 +148,7 @@ export const ListResponseManagedResponseHeadersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListResponseManagedResponseHeadersItem>;
 
 export type ListResponseManagedResponseHeadersList =
-  ListResponseManagedResponseHeadersItem[];
+  ReadonlyArray<ListResponseManagedResponseHeadersItem>;
 export const ListResponseManagedResponseHeadersList = /*@__PURE__*/ S.Array(
   ListResponseManagedResponseHeadersItem,
 ) as any as S.Schema<ListResponseManagedResponseHeadersList>;
@@ -171,7 +173,8 @@ export const ListManagedTransformsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListManagedTransformsResponse",
 }) as any as S.Schema<ListManagedTransformsResponse>;
 
-export type EditRequestManagedRequestHeadersItemConflictsWithList = string[];
+export type EditRequestManagedRequestHeadersItemConflictsWithList =
+  ReadonlyArray<string>;
 export const EditRequestManagedRequestHeadersItemConflictsWithList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -183,7 +186,7 @@ export interface EditRequestManagedRequestHeadersItem {
   /** Whether the Managed Transform is enabled. */
   enabled: boolean;
   /** Whether the Managed Transform conflicts with the currently-enabled Managed Transforms. */
-  hasConflict: boolean;
+  hasConflict?: boolean;
   /** The Managed Transforms that this Managed Transform conflicts with. */
   conflictsWith?: EditRequestManagedRequestHeadersItemConflictsWithList;
 }
@@ -192,7 +195,7 @@ export const EditRequestManagedRequestHeadersItem = /*@__PURE__*/ S.suspend(
     S.Struct({
       id: S.String,
       enabled: S.Boolean,
-      hasConflict: S.Boolean.pipe(T.Body("has_conflict")),
+      hasConflict: S.optional(S.Boolean.pipe(T.Body("has_conflict"))),
       conflictsWith: S.optional(
         EditRequestManagedRequestHeadersItemConflictsWithList.pipe(
           T.Body("conflicts_with"),
@@ -204,12 +207,13 @@ export const EditRequestManagedRequestHeadersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditRequestManagedRequestHeadersItem>;
 
 export type EditRequestManagedRequestHeadersList =
-  EditRequestManagedRequestHeadersItem[];
+  ReadonlyArray<EditRequestManagedRequestHeadersItem>;
 export const EditRequestManagedRequestHeadersList = /*@__PURE__*/ S.Array(
   EditRequestManagedRequestHeadersItem,
 ) as any as S.Schema<EditRequestManagedRequestHeadersList>;
 
-export type EditRequestManagedResponseHeadersItemConflictsWithList = string[];
+export type EditRequestManagedResponseHeadersItemConflictsWithList =
+  ReadonlyArray<string>;
 export const EditRequestManagedResponseHeadersItemConflictsWithList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -221,7 +225,7 @@ export interface EditRequestManagedResponseHeadersItem {
   /** Whether the Managed Transform is enabled. */
   enabled: boolean;
   /** Whether the Managed Transform conflicts with the currently-enabled Managed Transforms. */
-  hasConflict: boolean;
+  hasConflict?: boolean;
   /** The Managed Transforms that this Managed Transform conflicts with. */
   conflictsWith?: EditRequestManagedResponseHeadersItemConflictsWithList;
 }
@@ -230,7 +234,7 @@ export const EditRequestManagedResponseHeadersItem = /*@__PURE__*/ S.suspend(
     S.Struct({
       id: S.String,
       enabled: S.Boolean,
-      hasConflict: S.Boolean.pipe(T.Body("has_conflict")),
+      hasConflict: S.optional(S.Boolean.pipe(T.Body("has_conflict"))),
       conflictsWith: S.optional(
         EditRequestManagedResponseHeadersItemConflictsWithList.pipe(
           T.Body("conflicts_with"),
@@ -242,7 +246,7 @@ export const EditRequestManagedResponseHeadersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditRequestManagedResponseHeadersItem>;
 
 export type EditRequestManagedResponseHeadersList =
-  EditRequestManagedResponseHeadersItem[];
+  ReadonlyArray<EditRequestManagedResponseHeadersItem>;
 export const EditRequestManagedResponseHeadersList = /*@__PURE__*/ S.Array(
   EditRequestManagedResponseHeadersItem,
 ) as any as S.Schema<EditRequestManagedResponseHeadersList>;
@@ -281,7 +285,8 @@ export const PatchManagedTransformRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchManagedTransformRequest",
 }) as any as S.Schema<PatchManagedTransformRequest>;
 
-export type EditResponseManagedRequestHeadersItemConflictsWithList = string[];
+export type EditResponseManagedRequestHeadersItemConflictsWithList =
+  ReadonlyArray<string>;
 export const EditResponseManagedRequestHeadersItemConflictsWithList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -314,12 +319,13 @@ export const EditResponseManagedRequestHeadersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditResponseManagedRequestHeadersItem>;
 
 export type EditResponseManagedRequestHeadersList =
-  EditResponseManagedRequestHeadersItem[];
+  ReadonlyArray<EditResponseManagedRequestHeadersItem>;
 export const EditResponseManagedRequestHeadersList = /*@__PURE__*/ S.Array(
   EditResponseManagedRequestHeadersItem,
 ) as any as S.Schema<EditResponseManagedRequestHeadersList>;
 
-export type EditResponseManagedResponseHeadersItemConflictsWithList = string[];
+export type EditResponseManagedResponseHeadersItemConflictsWithList =
+  ReadonlyArray<string>;
 export const EditResponseManagedResponseHeadersItemConflictsWithList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -352,7 +358,7 @@ export const EditResponseManagedResponseHeadersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EditResponseManagedResponseHeadersItem>;
 
 export type EditResponseManagedResponseHeadersList =
-  EditResponseManagedResponseHeadersItem[];
+  ReadonlyArray<EditResponseManagedResponseHeadersItem>;
 export const EditResponseManagedResponseHeadersList = /*@__PURE__*/ S.Array(
   EditResponseManagedResponseHeadersItem,
 ) as any as S.Schema<EditResponseManagedResponseHeadersList>;

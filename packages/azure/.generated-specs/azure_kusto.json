@@ -825,16 +825,37 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Sandbox custom image resource name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.azure_kusto#SandboxCustomImagesCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, for instance Microsoft.Kusto/clusters/sandboxCustomImages.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#SandboxCustomImagesCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_KUSTO_CLUSTERS_SANDBOXCUSTOMIMAGES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Kusto/clusters/sandboxCustomImages"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, for instance Microsoft.Kusto/clusters/sandboxCustomImages."
       }
     },
     "com.azure.azure_kusto#SandboxCustomImagesDelete": {
@@ -1199,11 +1220,10 @@
             "smithy.api#documentation": "The name of the sandbox custom image."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azure_kusto#SandboxCustomImageProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A sandbox custom image."
           }
         }
       },
@@ -1303,11 +1323,10 @@
             "smithy.api#documentation": "The name of the sandbox custom image."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azure_kusto#SandboxCustomImageProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A sandbox custom image."
           }
         }
       },
@@ -1577,16 +1596,126 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.azure_kusto#ClustersRemoveLanguageExtensionsRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The list of language extensions."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of resources."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#ClustersRemoveLanguageExtensionsRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azure_kusto#LanguageExtension"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of language extensions."
+      }
+    },
+    "com.azure.azure_kusto#LanguageExtension": {
+      "type": "structure",
+      "members": {
+        "languageExtensionName": {
+          "target": "com.azure.azure_kusto#LanguageExtensionName",
+          "traits": {
+            "smithy.api#documentation": "The language extension name."
+          }
+        },
+        "languageExtensionImageName": {
+          "target": "com.azure.azure_kusto#LanguageExtensionImageName",
+          "traits": {
+            "smithy.api#documentation": "The language extension image name."
+          }
+        },
+        "languageExtensionCustomImageName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The sandbox custom image name that should be enabled as the active language extension. Sandbox custom image is a cluster sub resource. When this property is set, LanguageExtensionImageName should be set to 'PythonCustomImage'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The language extension object."
+      }
+    },
+    "com.azure.azure_kusto#LanguageExtensionImageName": {
+      "type": "enum",
+      "members": {
+        "R": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "R"
+          }
+        },
+        "PYTHON3_6_5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Python3_6_5"
+          }
+        },
+        "PYTHON3_10_8": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Python3_10_8"
+          }
+        },
+        "PYTHON3_10_8_DL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Python3_10_8_DL"
+          }
+        },
+        "PYTHONCUSTOMIMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PythonCustomImage"
+          }
+        },
+        "PYTHON3_11_7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Python3_11_7"
+          }
+        },
+        "PYTHON3_11_7_DL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Python3_11_7_DL"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Language extension image name."
+      }
+    },
+    "com.azure.azure_kusto#LanguageExtensionName": {
+      "type": "enum",
+      "members": {
+        "PYTHON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PYTHON"
+          }
+        },
+        "R": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "R"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Language extension that can run within KQL query."
       }
     },
     "com.azure.azure_kusto#ClustersRemoveCalloutPolicy": {
@@ -1635,11 +1764,10 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "calloutId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Unique identifier for the callout configuration."
           }
         }
       },
@@ -2130,16 +2258,50 @@
             "smithy.api#documentation": "The name of the private endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azure_kusto#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.azure_kusto#PrivateLinkServiceConnectionStatePropertyInput",
+          "traits": {
+            "smithy.api#documentation": "Connection State of the Private Endpoint Connection.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a private endpoint connection."
+      }
+    },
+    "com.azure.azure_kusto#PrivateLinkServiceConnectionStatePropertyInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection status."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Connection State of the Private Endpoint Connection."
       }
     },
     "com.azure.azure_kusto#PrivateEndpointConnectionsGet": {
@@ -2619,16 +2781,50 @@
             "smithy.api#documentation": "The name of the Kusto principalAssignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azure_kusto#ClusterPrincipalPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The cluster principal."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#ClusterPrincipalPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal ID assigned to the cluster principal. It can be a user email, application ID, or security group name.",
+            "smithy.api#required": {}
+          }
+        },
+        "role": {
+          "target": "com.azure.azure_kusto#ClusterPrincipalRole",
+          "traits": {
+            "smithy.api#documentation": "Cluster principal role.",
+            "smithy.api#required": {}
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant id of the principal"
+          }
+        },
+        "principalType": {
+          "target": "com.azure.azure_kusto#PrincipalType",
+          "traits": {
+            "smithy.api#documentation": "Principal type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A class representing cluster principal property."
       }
     },
     "com.azure.azure_kusto#ClusterPrincipalAssignmentsGet": {
@@ -3101,10 +3297,10 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "clusterResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource ID of the destination cluster or kusto pool.",
             "smithy.api#required": {}
           }
         }
@@ -3159,16 +3355,37 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Managed private endpoint resource name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.azure_kusto#ManagedPrivateEndpointsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, for instance Microsoft.Kusto/clusters/managedPrivateEndpoints.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#ManagedPrivateEndpointsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_KUSTO_CLUSTERS_MANAGEDPRIVATEENDPOINTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Kusto/clusters/managedPrivateEndpoints"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, for instance Microsoft.Kusto/clusters/managedPrivateEndpoints."
       }
     },
     "com.azure.azure_kusto#ManagedPrivateEndpointsDelete": {
@@ -3362,11 +3579,10 @@
             "smithy.api#documentation": "The name of the managed private endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azure_kusto#ManagedPrivateEndpointProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A managed private endpoint."
           }
         }
       },
@@ -3466,11 +3682,10 @@
             "smithy.api#documentation": "The name of the managed private endpoint."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azure_kusto#ManagedPrivateEndpointProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A managed private endpoint."
           }
         }
       },
@@ -3739,102 +3954,6 @@
       },
       "traits": {
         "smithy.api#documentation": "The list of language extensions."
-      }
-    },
-    "com.azure.azure_kusto#LanguageExtension": {
-      "type": "structure",
-      "members": {
-        "languageExtensionName": {
-          "target": "com.azure.azure_kusto#LanguageExtensionName",
-          "traits": {
-            "smithy.api#documentation": "The language extension name."
-          }
-        },
-        "languageExtensionImageName": {
-          "target": "com.azure.azure_kusto#LanguageExtensionImageName",
-          "traits": {
-            "smithy.api#documentation": "The language extension image name."
-          }
-        },
-        "languageExtensionCustomImageName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The sandbox custom image name that should be enabled as the active language extension. Sandbox custom image is a cluster sub resource. When this property is set, LanguageExtensionImageName should be set to 'PythonCustomImage'."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The language extension object."
-      }
-    },
-    "com.azure.azure_kusto#LanguageExtensionImageName": {
-      "type": "enum",
-      "members": {
-        "R": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "R"
-          }
-        },
-        "PYTHON3_6_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Python3_6_5"
-          }
-        },
-        "PYTHON3_10_8": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Python3_10_8"
-          }
-        },
-        "PYTHON3_10_8_DL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Python3_10_8_DL"
-          }
-        },
-        "PYTHONCUSTOMIMAGE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PythonCustomImage"
-          }
-        },
-        "PYTHON3_11_7": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Python3_11_7"
-          }
-        },
-        "PYTHON3_11_7_DL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Python3_11_7_DL"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Language extension image name."
-      }
-    },
-    "com.azure.azure_kusto#LanguageExtensionName": {
-      "type": "enum",
-      "members": {
-        "PYTHON": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PYTHON"
-          }
-        },
-        "R": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "R"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Language extension that can run within KQL query."
       }
     },
     "com.azure.azure_kusto#ClustersListLanguageExtensionsRequest": {
@@ -4603,10 +4722,17 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "clusterResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource id of the cluster that follows a database owned by this cluster.",
+            "smithy.api#required": {}
+          }
+        },
+        "attachedDatabaseConfigurationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource name of the attached database configuration in the follower cluster.",
             "smithy.api#required": {}
           }
         }
@@ -4669,16 +4795,37 @@
             "smithy.api#documentation": "The name of the database in the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Script name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.azure_kusto#ScriptsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, Microsoft.Kusto/clusters/databases/scripts.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#ScriptsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_KUSTO_CLUSTERS_DATABASES_SCRIPTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Kusto/clusters/databases/scripts"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, Microsoft.Kusto/clusters/databases/scripts."
       }
     },
     "com.azure.azure_kusto#ScriptsDelete": {
@@ -4950,11 +5097,10 @@
             "smithy.api#documentation": "The name of the Kusto database script."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azure_kusto#ScriptProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The database script."
           }
         }
       },
@@ -5062,11 +5208,10 @@
             "smithy.api#documentation": "The name of the Kusto database script."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azure_kusto#ScriptProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The database script."
           }
         }
       },
@@ -5511,16 +5656,71 @@
             "smithy.api#documentation": "The name of the database in the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.azure_kusto#DatabasesRemovePrincipalsRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The list of Kusto database principals."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#DatabasesRemovePrincipalsRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azure_kusto#DatabasePrincipalInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Kusto database principals."
+      }
+    },
+    "com.azure.azure_kusto#DatabasePrincipalInput": {
+      "type": "structure",
+      "members": {
+        "role": {
+          "target": "com.azure.azure_kusto#DatabasePrincipalRole",
+          "traits": {
+            "smithy.api#documentation": "Database principal role.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Database principal name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.azure_kusto#DatabasePrincipalType",
+          "traits": {
+            "smithy.api#documentation": "Database principal type.",
+            "smithy.api#required": {}
+          }
+        },
+        "fqn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Database principal fully qualified name."
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Database principal email if exists."
+          }
+        },
+        "appId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Application id - relevant only for application principal type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A class representing database principal entity."
       }
     },
     "com.azure.azure_kusto#DatabasePrincipalAssignmentsDelete": {
@@ -5749,16 +5949,50 @@
             "smithy.api#documentation": "The name of the Kusto principalAssignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azure_kusto#DatabasePrincipalPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The database principal."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#DatabasePrincipalPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal ID assigned to the database principal. It can be a user email, application ID, or security group name.",
+            "smithy.api#required": {}
+          }
+        },
+        "role": {
+          "target": "com.azure.azure_kusto#DatabasePrincipalRole",
+          "traits": {
+            "smithy.api#documentation": "Database principal role.",
+            "smithy.api#required": {}
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant id of the principal"
+          }
+        },
+        "principalType": {
+          "target": "com.azure.azure_kusto#PrincipalType",
+          "traits": {
+            "smithy.api#documentation": "Principal type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A class representing database principal property."
       }
     },
     "com.azure.azure_kusto#DatabasePrincipalAssignmentsGet": {
@@ -6119,11 +6353,17 @@
             "smithy.api#documentation": "The name of the database in the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "inviteeEmail": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The email of the invited user for which the follower invitation is generated.",
             "smithy.api#required": {}
+          }
+        },
+        "tableLevelSharingProperties": {
+          "target": "com.azure.azure_kusto#TableLevelSharingProperties",
+          "traits": {
+            "smithy.api#documentation": "Table level sharing specifications"
           }
         }
       },
@@ -6349,10 +6589,16 @@
             "smithy.api#documentation": "The name of the data connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "kind": {
+          "target": "com.azure.azure_kusto#DataConnectionKind",
+          "traits": {
+            "smithy.api#documentation": "Kind of the endpoint for the data connection",
             "smithy.api#required": {}
           }
         }
@@ -6468,10 +6714,16 @@
             "smithy.api#documentation": "The name of the data connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "kind": {
+          "target": "com.azure.azure_kusto#DataConnectionKind",
+          "traits": {
+            "smithy.api#documentation": "Kind of the endpoint for the data connection",
             "smithy.api#required": {}
           }
         }
@@ -6816,16 +7068,42 @@
             "smithy.api#documentation": "The name of the database in the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "dataConnectionName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the data connection."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azure_kusto#DataConnectionInput",
+          "traits": {
+            "smithy.api#documentation": "The data connection properties to validate."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#DataConnectionInput": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "kind": {
+          "target": "com.azure.azure_kusto#DataConnectionKind",
+          "traits": {
+            "smithy.api#documentation": "Kind of the endpoint for the data connection",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class representing an data connection."
       }
     },
     "com.azure.azure_kusto#DatabasePrincipalAssignmentsCheckNameAvailability": {
@@ -6882,16 +7160,37 @@
             "smithy.api#documentation": "The name of the database in the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Principal Assignment resource name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.azure_kusto#DatabasePrincipalAssignmentsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, Microsoft.Kusto/clusters/databases/principalAssignments.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#DatabasePrincipalAssignmentsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_KUSTO_CLUSTERS_DATABASES_PRINCIPALASSIGNMENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Kusto/clusters/databases/principalAssignments"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, Microsoft.Kusto/clusters/databases/principalAssignments."
       }
     },
     "com.azure.azure_kusto#DataConnectionsCheckNameAvailability": {
@@ -6948,16 +7247,37 @@
             "smithy.api#documentation": "The name of the database in the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Data Connection name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.azure_kusto#DataConnectionsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, Microsoft.Kusto/clusters/databases/dataConnections.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#DataConnectionsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_KUSTO_CLUSTERS_DATABASES_DATACONNECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Kusto/clusters/databases/dataConnections"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, Microsoft.Kusto/clusters/databases/dataConnections."
       }
     },
     "com.azure.azure_kusto#DatabasesAddPrincipals": {
@@ -7014,16 +7334,24 @@
             "smithy.api#documentation": "The name of the database in the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.azure_kusto#DatabasesAddPrincipalsRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The list of Kusto database principals."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#DatabasesAddPrincipalsRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azure_kusto#DatabasePrincipalInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Kusto database principals."
       }
     },
     "com.azure.azure_kusto#DatabasesDelete": {
@@ -7211,10 +7539,16 @@
             "smithy.api#documentation": "By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "kind": {
+          "target": "com.azure.azure_kusto#Kind",
+          "traits": {
+            "smithy.api#documentation": "Kind of the database",
             "smithy.api#required": {}
           }
         }
@@ -7347,10 +7681,16 @@
             "smithy.api#documentation": "By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "kind": {
+          "target": "com.azure.azure_kusto#Kind",
+          "traits": {
+            "smithy.api#documentation": "Kind of the database",
             "smithy.api#required": {}
           }
         }
@@ -7667,16 +8007,37 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Principal Assignment resource name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.azure_kusto#ClusterPrincipalAssignmentsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, Microsoft.Kusto/clusters/principalAssignments.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#ClusterPrincipalAssignmentsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_KUSTO_CLUSTERS_PRINCIPALASSIGNMENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Kusto/clusters/principalAssignments"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, Microsoft.Kusto/clusters/principalAssignments."
       }
     },
     "com.azure.azure_kusto#DatabasesCheckNameAvailability": {
@@ -7725,16 +8086,43 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.azure_kusto#Type",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, for instance Microsoft.Kusto/clusters/databases.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#Type": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_KUSTO_CLUSTERS_DATABASES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Kusto/clusters/databases"
+          }
+        },
+        "MICROSOFT_KUSTO_CLUSTERS_ATTACHEDDATABASECONFIGURATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, for instance Microsoft.Kusto/clusters/databases."
       }
     },
     "com.azure.azure_kusto#AttachedDatabaseConfigurationsDelete": {
@@ -7988,16 +8376,68 @@
             "smithy.api#documentation": "The name of the attached database configuration."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azure_kusto#AttachedDatabaseConfigurationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the attached database configuration."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#AttachedDatabaseConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "databaseName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the database which you would like to attach, use * if you want to follow all current and future databases.",
+            "smithy.api#required": {}
+          }
+        },
+        "clusterResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the cluster where the databases you would like to attach reside.",
+            "smithy.api#required": {}
+          }
+        },
+        "defaultPrincipalsModificationKind": {
+          "target": "com.azure.azure_kusto#DefaultPrincipalsModificationKind",
+          "traits": {
+            "smithy.api#documentation": "The default principals modification kind",
+            "smithy.api#required": {}
+          }
+        },
+        "tableLevelSharingProperties": {
+          "target": "com.azure.azure_kusto#TableLevelSharingProperties",
+          "traits": {
+            "smithy.api#documentation": "Table level sharing specifications"
+          }
+        },
+        "databaseNameOverride": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Overrides the original database name. Relevant only when attaching to a specific database."
+          }
+        },
+        "databaseNamePrefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class representing the an attached database configuration properties of kind specific."
       }
     },
     "com.azure.azure_kusto#AttachedDatabaseConfigurationsGet": {
@@ -8273,16 +8713,37 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Attached database resource name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.azure_kusto#AttachedDatabaseConfigurationsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, for instance Microsoft.Kusto/clusters/attachedDatabaseConfigurations.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#AttachedDatabaseConfigurationsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_KUSTO_CLUSTERS_ATTACHEDDATABASECONFIGURATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, for instance Microsoft.Kusto/clusters/attachedDatabaseConfigurations."
       }
     },
     "com.azure.azure_kusto#ClustersAddLanguageExtensions": {
@@ -8331,16 +8792,30 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.azure_kusto#ClustersAddLanguageExtensionsRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The list of language extensions."
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of resources."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#ClustersAddLanguageExtensionsRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azure_kusto#LanguageExtension"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of language extensions."
       }
     },
     "com.azure.azure_kusto#ClustersAddCalloutPolicies": {
@@ -8389,16 +8864,57 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.azure_kusto#ClustersAddCalloutPoliciesRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The CalloutPolicy items on this page",
             "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#ClustersAddCalloutPoliciesRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azure_kusto#CalloutPolicyInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The CalloutPolicy items on this page"
+      }
+    },
+    "com.azure.azure_kusto#CalloutPolicyInput": {
+      "type": "structure",
+      "members": {
+        "calloutUriRegex": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Regular expression or FQDN pattern for the callout URI."
+          }
+        },
+        "calloutType": {
+          "target": "com.azure.azure_kusto#CalloutType",
+          "traits": {
+            "smithy.api#documentation": "Type of the callout service, specifying the kind of external resource or service being accessed."
+          }
+        },
+        "outboundAccess": {
+          "target": "com.azure.azure_kusto#OutboundAccess",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether outbound access is permitted for the specified URI pattern."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration for external callout policies, including URI patterns, access types, and service types."
       }
     },
     "com.azure.azure_kusto#ClustersDelete": {
@@ -9303,16 +9819,357 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azure_kusto#ClustersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location."
+          }
+        },
+        "sku": {
+          "target": "com.azure.azure_kusto#AzureSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the cluster."
+          }
+        },
+        "zones": {
+          "target": "com.azure.azure_kusto#ClustersUpdateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The availability zones of the cluster."
+          }
+        },
+        "identity": {
+          "target": "com.azure.azure_kusto#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the cluster, if configured."
+          }
+        },
+        "properties": {
+          "target": "com.azure.azure_kusto#ClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The cluster properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#ClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "trustedExternalTenants": {
+          "target": "com.azure.azure_kusto#ClusterPropertiesInputTrustedExternalTenantsList",
+          "traits": {
+            "smithy.api#documentation": "The cluster's external tenants."
+          }
+        },
+        "optimizedAutoscale": {
+          "target": "com.azure.azure_kusto#OptimizedAutoscale",
+          "traits": {
+            "smithy.api#documentation": "Optimized auto scale definition."
+          }
+        },
+        "enableDiskEncryption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean value that indicates if the cluster's disks are encrypted."
+          }
+        },
+        "enableStreamingIngest": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean value that indicates if the streaming ingest is enabled."
+          }
+        },
+        "virtualNetworkConfiguration": {
+          "target": "com.azure.azure_kusto#VirtualNetworkConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Virtual network definition."
+          }
+        },
+        "keyVaultProperties": {
+          "target": "com.azure.azure_kusto#KeyVaultProperties",
+          "traits": {
+            "smithy.api#documentation": "KeyVault properties for the cluster encryption."
+          }
+        },
+        "enablePurge": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean value that indicates if the purge operations are enabled."
+          }
+        },
+        "languageExtensions": {
+          "target": "com.azure.azure_kusto#LanguageExtensionsList",
+          "traits": {
+            "smithy.api#documentation": "List of the cluster's language extensions."
+          }
+        },
+        "enableDoubleEncryption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean value that indicates if double encryption is enabled."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.azure_kusto#ClusterPropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed"
+          }
+        },
+        "allowedIpRangeList": {
+          "target": "com.azure.azure_kusto#ClusterPropertiesInputAllowedIpRangeListList",
+          "traits": {
+            "smithy.api#documentation": "The list of ips in the format of CIDR allowed to connect to the cluster."
+          }
+        },
+        "engineType": {
+          "target": "com.azure.azure_kusto#ClusterPropertiesInputEngineType",
+          "traits": {
+            "smithy.api#documentation": "The engine type"
+          }
+        },
+        "acceptedAudiences": {
+          "target": "com.azure.azure_kusto#ClusterPropertiesInputAcceptedAudiencesList",
+          "traits": {
+            "smithy.api#documentation": "The cluster's accepted audiences."
+          }
+        },
+        "enableAutoStop": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean value that indicates if the cluster could be automatically stopped (due to lack of data or no activity for many days)."
+          }
+        },
+        "restrictOutboundNetworkAccess": {
+          "target": "com.azure.azure_kusto#ClusterPropertiesInputRestrictOutboundNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'"
+          }
+        },
+        "allowedFqdnList": {
+          "target": "com.azure.azure_kusto#ClusterPropertiesInputAllowedFqdnListList",
+          "traits": {
+            "smithy.api#documentation": "List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster."
+          }
+        },
+        "calloutPolicies": {
+          "target": "com.azure.azure_kusto#ClusterPropertiesInputCalloutPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "List of callout policies for egress from Cluster."
+          }
+        },
+        "publicIPType": {
+          "target": "com.azure.azure_kusto#ClusterPropertiesInputPublicIPType",
+          "traits": {
+            "smithy.api#documentation": "Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)"
+          }
+        },
+        "virtualClusterGraduationProperties": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Virtual Cluster graduation properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class representing the Kusto cluster properties."
+      }
+    },
+    "com.azure.azure_kusto#ClusterPropertiesInputPublicIPType": {
+      "type": "enum",
+      "members": {
+        "IPV4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IPv4"
+          }
+        },
+        "DUALSTACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DualStack"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)"
+      }
+    },
+    "com.azure.azure_kusto#ClusterPropertiesInputCalloutPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azure_kusto#CalloutPolicyInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of callout policies for egress from Cluster."
+      }
+    },
+    "com.azure.azure_kusto#ClusterPropertiesInputAllowedFqdnListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster."
+      }
+    },
+    "com.azure.azure_kusto#ClusterPropertiesInputRestrictOutboundNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'"
+      }
+    },
+    "com.azure.azure_kusto#ClusterPropertiesInputAcceptedAudiencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azure_kusto#AcceptedAudiences"
+      },
+      "traits": {
+        "smithy.api#documentation": "The cluster's accepted audiences."
+      }
+    },
+    "com.azure.azure_kusto#ClusterPropertiesInputEngineType": {
+      "type": "enum",
+      "members": {
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "V2"
+          }
+        },
+        "V3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "V3"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The engine type"
+      }
+    },
+    "com.azure.azure_kusto#ClusterPropertiesInputAllowedIpRangeListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of ips in the format of CIDR allowed to connect to the cluster."
+      }
+    },
+    "com.azure.azure_kusto#ClusterPropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "SECUREDBYPERIMETER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecuredByPerimeter"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed"
+      }
+    },
+    "com.azure.azure_kusto#ClusterPropertiesInputTrustedExternalTenantsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.azure_kusto#TrustedExternalTenant"
+      },
+      "traits": {
+        "smithy.api#documentation": "The cluster's external tenants."
+      }
+    },
+    "com.azure.azure_kusto#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.azure_kusto#IdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.azure_kusto#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.azure_kusto#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.azure_kusto#ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.azure_kusto#ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
+    },
+    "com.azure.azure_kusto#ClustersUpdateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The availability zones of the cluster."
+      }
+    },
+    "com.azure.azure_kusto#ClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azure_kusto#ClustersCreateOrUpdate": {
@@ -9458,16 +10315,68 @@
             "smithy.api#documentation": "The name of the Kusto cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azure_kusto#ClustersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.azure_kusto#ClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The cluster properties."
+          }
+        },
+        "sku": {
+          "target": "com.azure.azure_kusto#AzureSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the cluster.",
+            "smithy.api#required": {}
+          }
+        },
+        "zones": {
+          "target": "com.azure.azure_kusto#ClustersCreateOrUpdateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The availability zones."
+          }
+        },
+        "identity": {
+          "target": "com.azure.azure_kusto#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the cluster, if configured."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#ClustersCreateOrUpdateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The availability zones."
+      }
+    },
+    "com.azure.azure_kusto#ClustersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.azure_kusto#ClustersGet": {
@@ -10291,16 +11200,37 @@
             "smithy.api#documentation": "The name of Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Cluster name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.azure_kusto#ClustersCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, Microsoft.Kusto/clusters.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azure_kusto#ClustersCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_KUSTO_CLUSTERS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Kusto/clusters"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, Microsoft.Kusto/clusters."
       }
     },
     "com.azure.azure_kusto#ClustersList": {

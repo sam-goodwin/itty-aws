@@ -41,11 +41,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.web_vitals#WebVitalsRetrieveResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.web_vitals#WebVitalsRetrieveResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.web_vitals#WebVitalsRetrieveResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}

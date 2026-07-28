@@ -209,7 +209,7 @@ export const CopyImageSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyImageSetRequest",
 }) as any as S.Schema<CopyImageSetRequest>;
-export type ImageSetState = "ACTIVE" | "LOCKED" | "DELETED" | (string & {});
+export type ImageSetState = "ACTIVE" | "LOCKED" | "DELETED";
 export const ImageSetState = /*@__PURE__*/ S.String;
 
 export type ImageSetWorkflowStatus =
@@ -226,8 +226,7 @@ export type ImageSetWorkflowStatus =
   | "DELETED"
   | "IMPORTING"
   | "IMPORTED"
-  | "IMPORT_FAILED"
-  | (string & {});
+  | "IMPORT_FAILED";
 export const ImageSetWorkflowStatus = /*@__PURE__*/ S.String;
 
 export type Arn = string;
@@ -300,10 +299,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
 );
 export type KmsKeyArn = string;
 export type LambdaArn = string;
-export type LosslessStorageFormat =
-  | "HTJ2K"
-  | "JPEG_2000_LOSSLESS"
-  | (string & {});
+export type LosslessStorageFormat = "HTJ2K" | "JPEG_2000_LOSSLESS";
 export const LosslessStorageFormat = /*@__PURE__*/ S.String;
 
 export interface CreateDatastoreRequest {
@@ -340,8 +336,7 @@ export type DatastoreStatus =
   | "CREATE_FAILED"
   | "ACTIVE"
   | "DELETING"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const DatastoreStatus = /*@__PURE__*/ S.String;
 
 export interface CreateDatastoreResponse {
@@ -496,12 +491,7 @@ export const GetDICOMImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDICOMImportJobRequest",
 }) as any as S.Schema<GetDICOMImportJobRequest>;
 export type JobName = string;
-export type JobStatus =
-  | "SUBMITTED"
-  | "IN_PROGRESS"
-  | "COMPLETED"
-  | "FAILED"
-  | (string & {});
+export type JobStatus = "SUBMITTED" | "IN_PROGRESS" | "COMPLETED" | "FAILED";
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export type RoleArn = string;
@@ -662,10 +652,7 @@ export interface Overrides {
 export const Overrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ forced: S.optional(S.Boolean) }),
 ).annotate({ identifier: "Overrides" }) as any as S.Schema<Overrides>;
-export type StorageTier =
-  | "FREQUENT_ACCESS"
-  | "ARCHIVE_INSTANT_ACCESS"
-  | (string & {});
+export type StorageTier = "FREQUENT_ACCESS" | "ARCHIVE_INSTANT_ACCESS";
 export const StorageTier = /*@__PURE__*/ S.String;
 
 export interface GetImageSetResponse {
@@ -1101,7 +1088,7 @@ export type SearchByAttributeValues = SearchByAttributeValue[];
 export const SearchByAttributeValues = /*@__PURE__*/ S.Array(
   SearchByAttributeValue,
 );
-export type Operator = "EQUAL" | "BETWEEN" | (string & {});
+export type Operator = "EQUAL" | "BETWEEN";
 export const Operator = /*@__PURE__*/ S.String;
 
 export interface SearchFilter {
@@ -1113,14 +1100,10 @@ export const SearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchFilter" }) as any as S.Schema<SearchFilter>;
 export type SearchFilters = SearchFilter[];
 export const SearchFilters = /*@__PURE__*/ S.Array(SearchFilter);
-export type SortOrder = "ASC" | "DESC" | (string & {});
+export type SortOrder = "ASC" | "DESC";
 export const SortOrder = /*@__PURE__*/ S.String;
 
-export type SortField =
-  | "updatedAt"
-  | "createdAt"
-  | "DICOMStudyDateAndTime"
-  | (string & {});
+export type SortField = "updatedAt" | "createdAt" | "DICOMStudyDateAndTime";
 export const SortField = /*@__PURE__*/ S.String;
 
 export interface Sort {

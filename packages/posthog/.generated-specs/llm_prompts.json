@@ -145,7 +145,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.llm_prompts#UserBasic"
+          "target": "com.posthog.llm_prompts#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -414,22 +417,6 @@
         }
       }
     },
-    "com.posthog.llm_prompts#LlmPromptsCreateRequestOutlineList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.llm_prompts#LLMPromptOutlineEntry"
-      },
-      "traits": {}
-    },
-    "com.posthog.llm_prompts#LlmPromptsCreateRequestLabelsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Names of the labels currently pointing at this version."
-      }
-    },
     "com.posthog.llm_prompts#LlmPromptsCreateRequest": {
       "type": "structure",
       "members": {
@@ -440,9 +427,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "id": {
-          "target": "smithy.api#String"
         },
         "name": {
           "target": "smithy.api#String",
@@ -456,53 +440,11 @@
             "smithy.api#documentation": "Prompt payload as JSON or string data."
           }
         },
-        "version": {
-          "target": "smithy.api#Integer"
-        },
         "version_description": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Optional note describing what changed in this version. Set when the version is published.",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.llm_prompts#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "deleted": {
-          "target": "smithy.api#Boolean"
-        },
-        "is_latest": {
-          "target": "smithy.api#Boolean"
-        },
-        "latest_version": {
-          "target": "smithy.api#Integer"
-        },
-        "version_count": {
-          "target": "smithy.api#Integer"
-        },
-        "first_version_created_at": {
-          "target": "smithy.api#String"
-        },
-        "outline": {
-          "target": "com.posthog.llm_prompts#LlmPromptsCreateRequestOutlineList"
-        },
-        "labels": {
-          "target": "com.posthog.llm_prompts#LlmPromptsCreateRequestLabelsList",
-          "traits": {
-            "smithy.api#documentation": "Names of the labels currently pointing at this version."
-          }
-        },
-        "activity_item_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Key for this prompt's rows in the activity log, e.g. for the History tab. Derived from the name, at most 72 characters."
           }
         }
       },
@@ -539,7 +481,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.llm_prompts#UserBasic"
+          "target": "com.posthog.llm_prompts#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -855,22 +800,6 @@
         }
       }
     },
-    "com.posthog.llm_prompts#LlmPromptsNameArchiveCreateRequestOutlineList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.llm_prompts#LLMPromptOutlineEntry"
-      },
-      "traits": {}
-    },
-    "com.posthog.llm_prompts#LlmPromptsNameArchiveCreateRequestLabelsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Names of the labels currently pointing at this version."
-      }
-    },
     "com.posthog.llm_prompts#LlmPromptsNameArchiveCreateRequest": {
       "type": "structure",
       "members": {
@@ -889,9 +818,6 @@
             "smithy.api#required": {}
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -904,53 +830,11 @@
             "smithy.api#documentation": "Prompt payload as JSON or string data."
           }
         },
-        "version": {
-          "target": "smithy.api#Integer"
-        },
         "version_description": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Optional note describing what changed in this version. Set when the version is published.",
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.llm_prompts#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "deleted": {
-          "target": "smithy.api#Boolean"
-        },
-        "is_latest": {
-          "target": "smithy.api#Boolean"
-        },
-        "latest_version": {
-          "target": "smithy.api#Integer"
-        },
-        "version_count": {
-          "target": "smithy.api#Integer"
-        },
-        "first_version_created_at": {
-          "target": "smithy.api#String"
-        },
-        "outline": {
-          "target": "com.posthog.llm_prompts#LlmPromptsNameArchiveCreateRequestOutlineList"
-        },
-        "labels": {
-          "target": "com.posthog.llm_prompts#LlmPromptsNameArchiveCreateRequestLabelsList",
-          "traits": {
-            "smithy.api#documentation": "Names of the labels currently pointing at this version."
-          }
-        },
-        "activity_item_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Key for this prompt's rows in the activity log, e.g. for the History tab. Derived from the name, at most 72 characters."
           }
         }
       },
@@ -1263,7 +1147,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.llm_prompts#UserBasic"
+          "target": "com.posthog.llm_prompts#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"

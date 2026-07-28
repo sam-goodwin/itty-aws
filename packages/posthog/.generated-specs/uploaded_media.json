@@ -33,11 +33,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.uploaded_media#UploadedMediaCreateResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.uploaded_media#UploadedMediaCreateResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.uploaded_media#UploadedMediaCreateResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}

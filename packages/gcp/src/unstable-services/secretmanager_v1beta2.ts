@@ -203,7 +203,7 @@ export const ReplicaStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReplicaStatus" }) as any as S.Schema<ReplicaStatus>;
 
-export type ReplicaStatusList = ReplicaStatus[];
+export type ReplicaStatusList = ReadonlyArray<ReplicaStatus>;
 export const ReplicaStatusList = /*@__PURE__*/ S.Array(
   ReplicaStatus,
 ) as any as S.Schema<ReplicaStatusList>;
@@ -241,8 +241,7 @@ export type SecretVersionStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED"
-  | "DESTROYED"
-  | (string & {});
+  | "DESTROYED";
 export const SecretVersionStateEnum = /*@__PURE__*/ S.String;
 
 /** A secret version resource in the Secret Manager API. */
@@ -318,7 +317,7 @@ export const Topic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Topic" }) as any as S.Schema<Topic>;
 
-export type TopicList = Topic[];
+export type TopicList = ReadonlyArray<Topic>;
 export const TopicList = /*@__PURE__*/ S.Array(
   Topic,
 ) as any as S.Schema<TopicList>;
@@ -375,7 +374,7 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
-export type ReplicaList = Replica[];
+export type ReplicaList = ReadonlyArray<Replica>;
 export const ReplicaList = /*@__PURE__*/ S.Array(
   Replica,
 ) as any as S.Schema<ReplicaList>;
@@ -750,11 +749,10 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -773,7 +771,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -792,7 +790,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -834,7 +832,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1030,7 +1028,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1078,7 +1076,7 @@ export const ListProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsSecretsRequest",
 }) as any as S.Schema<ListProjectsLocationsSecretsRequest>;
 
-export type SecretList = Secret[];
+export type SecretList = ReadonlyArray<Secret>;
 export const SecretList = /*@__PURE__*/ S.Array(
   Secret,
 ) as any as S.Schema<SecretList>;
@@ -1130,7 +1128,7 @@ export const ListProjectsLocationsSecretsVersionsRequest =
     identifier: "ListProjectsLocationsSecretsVersionsRequest",
   }) as any as S.Schema<ListProjectsLocationsSecretsVersionsRequest>;
 
-export type SecretVersionList = SecretVersion[];
+export type SecretVersionList = ReadonlyArray<SecretVersion>;
 export const SecretVersionList = /*@__PURE__*/ S.Array(
   SecretVersion,
 ) as any as S.Schema<SecretVersionList>;

@@ -134,15 +134,41 @@
             "smithy.api#documentation": "Monitor resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "vmResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "ARM id of the VM resource."
+          }
+        },
+        "operationName": {
+          "target": "com.azure.elastic#OperationName",
+          "traits": {
+            "smithy.api#documentation": "Operation to be performed for given VM."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elastic#OperationName": {
+      "type": "enum",
+      "members": {
+        "ADD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Add"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Delete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Operation to be performed on the given vm resource id."
       }
     },
     "com.azure.elastic#MonitorUpgrade": {
@@ -191,10 +217,10 @@
             "smithy.api#documentation": "Monitor resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "version": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Version to which the elastic monitor should be upgraded to"
           }
         }
       },
@@ -628,10 +654,10 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.elastic#MonitoringTagRulesProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Properties of the monitoring tag rules."
           }
         }
       },
@@ -1484,10 +1510,28 @@
             "smithy.api#documentation": "Monitor resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "planId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Newly selected plan Id to create the new Marketplace subscription for Resubscribe"
+          }
+        },
+        "term": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Newly selected term to create the new Marketplace subscription for Resubscribe"
+          }
+        },
+        "resourceGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Newly selected Azure resource group in which the new Marketplace subscription will be created for Resubscribe"
+          }
+        },
+        "organizationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Organization Id of the Elastic Organization that needs to be resubscribed"
           }
         }
       },
@@ -1769,15 +1813,47 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.elastic#OpenAIIntegrationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Open AI Integration details."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elastic#OpenAIIntegrationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "openAIResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource name of Open AI resource"
+          }
+        },
+        "openAIResourceEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The API endpoint for Open AI resource"
+          }
+        },
+        "openAIConnectorId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The connector id of Open AI resource"
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of API key for Open AI resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Open AI Integration details."
       }
     },
     "com.azure.elastic#OpenAIGet": {
@@ -2283,10 +2359,10 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.elastic#SubscriptionList",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The request to update subscriptions needed to be monitored by the Elastic monitor resource."
           }
         }
       },
@@ -2384,10 +2460,10 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.elastic#SubscriptionList",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The request to update subscriptions needed to be monitored by the Elastic monitor resource."
           }
         }
       },
@@ -3822,15 +3898,49 @@
             "smithy.api#documentation": "Monitor resource name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "userName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Username of the user to be created or updated"
+          }
+        },
+        "fullName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Full name of the user to be created or updated"
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Password of the user to be created or updated",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "emailId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email id of the user to be created or updated"
+          }
+        },
+        "roles": {
+          "target": "com.azure.elastic#ExternalUserCreateOrUpdateRequestRolesList",
+          "traits": {
+            "smithy.api#documentation": "Roles to be assigned for  created or updated user"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elastic#ExternalUserCreateOrUpdateRequestRolesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Roles to be assigned for  created or updated user"
       }
     },
     "com.azure.elastic#CreateAndAssociatePLFilterCreate": {
@@ -4205,15 +4315,27 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.elastic#MonitorsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "elastic monitor resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elastic#MonitorsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "elastic monitor resource tags."
       }
     },
     "com.azure.elastic#MonitorsCreate": {
@@ -4342,15 +4464,186 @@
             "smithy.api#required": {}
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.elastic#MonitorsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.elastic#MonitorPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the monitor resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of the Elastic resource - observability, security, search etc."
+          }
+        },
+        "sku": {
+          "target": "com.azure.elastic#ResourceSku",
+          "traits": {
+            "smithy.api#documentation": "SKU of the monitor resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.elastic#IdentityPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Identity properties of the monitor resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.elastic#IdentityPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.elastic#ManagedIdentityTypes",
+          "traits": {
+            "smithy.api#documentation": "Managed identity type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity properties."
+      }
+    },
+    "com.azure.elastic#MonitorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "monitoringStatus": {
+          "target": "com.azure.elastic#MonitoringStatus",
+          "traits": {
+            "smithy.api#documentation": "Flag specifying if the resource monitoring is enabled or disabled."
+          }
+        },
+        "elasticProperties": {
+          "target": "com.azure.elastic#ElasticPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Elastic cloud properties."
+          }
+        },
+        "userInfo": {
+          "target": "com.azure.elastic#UserInfo",
+          "traits": {
+            "smithy.api#documentation": "User information."
+          }
+        },
+        "planDetails": {
+          "target": "com.azure.elastic#PlanDetails",
+          "traits": {
+            "smithy.api#documentation": "Plan details of the monitor resource."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of elastic of the monitor resource"
+          }
+        },
+        "subscriptionState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State of the Azure Subscription containing the monitor resource"
+          }
+        },
+        "saaSAzureSubscriptionStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Status of Azure Subscription where Marketplace SaaS is located."
+          }
+        },
+        "sourceCampaignName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the marketing campaign."
+          }
+        },
+        "sourceCampaignId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique identifier associated with the campaign."
+          }
+        },
+        "generateApiKey": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to determine if User API Key has to be generated and shared."
+          }
+        },
+        "hostingType": {
+          "target": "com.azure.elastic#HostingType",
+          "traits": {
+            "smithy.api#documentation": "Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects."
+          }
+        },
+        "projectDetails": {
+          "target": "com.azure.elastic#ProjectDetails",
+          "traits": {
+            "smithy.api#documentation": "Project details of the monitor resource IF it belongs to Serverless offer kind."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties specific to the monitor resource."
+      }
+    },
+    "com.azure.elastic#ElasticPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "elasticCloudUser": {
+          "target": "com.azure.elastic#ElasticCloudUserInput",
+          "traits": {
+            "smithy.api#documentation": "Details of the user's elastic account."
+          }
+        },
+        "elasticCloudDeployment": {
+          "target": "com.azure.elastic#ElasticCloudDeploymentInput",
+          "traits": {
+            "smithy.api#documentation": "Details of the elastic cloud deployment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Elastic Resource Properties."
+      }
+    },
+    "com.azure.elastic#ElasticCloudDeploymentInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Details of the user's elastic deployment associated with the monitor resource."
+      }
+    },
+    "com.azure.elastic#ElasticCloudUserInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Details of the user's elastic account."
+      }
+    },
+    "com.azure.elastic#MonitorsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.elastic#MonitorsGet": {
@@ -4728,10 +5021,10 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "emailId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The User email Id"
           }
         }
       },

@@ -400,11 +400,10 @@
             "smithy.api#documentation": "Cosmos DB fleetspace account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#FleetspaceAccountProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "An Azure Cosmos DB Global Database Account which is part of a Fleetspace Account."
           }
         }
       },
@@ -908,10 +907,10 @@
             "smithy.api#documentation": "Cosmos DB fleetspace name. Needs to be unique under a fleet."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#FleetspaceProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Properties of the fleetspace."
           }
         }
       },
@@ -1011,11 +1010,10 @@
             "smithy.api#documentation": "Cosmos DB fleetspace name. Needs to be unique under a fleet."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#FleetspaceProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB Fleetspace."
           }
         }
       },
@@ -1413,16 +1411,33 @@
             "smithy.api#documentation": "Cosmos DB fleet name. Needs to be unique under a subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cosmos_db#FleetUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#FleetResourceProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB fleet resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#FleetUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cosmos_db#FleetCreate": {
@@ -1534,16 +1549,40 @@
             "smithy.api#documentation": "Cosmos DB fleet name. Needs to be unique under a subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cosmos_db#FleetCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#FleetResourceProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB fleet resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#FleetCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.cosmos_db#FleetGet": {
@@ -2822,16 +2861,139 @@
             "smithy.api#documentation": "Cosmos DB table name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#TableResourcesUpdateTableThroughputRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#ThroughputSettingsUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB resource throughput.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#ThroughputSettingsUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#ThroughputSettingsResourceInput",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a resource throughput",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to update Azure Cosmos DB resource throughput."
+      }
+    },
+    "com.azure.cosmos_db#ThroughputSettingsResourceInput": {
+      "type": "structure",
+      "members": {
+        "throughput": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Value of the Cosmos DB resource throughput. Either throughput is required or autoscaleSettings is required, but not both."
+          }
+        },
+        "autoscaleSettings": {
+          "target": "com.azure.cosmos_db#AutoscaleSettingsResourceInput",
+          "traits": {
+            "smithy.api#documentation": "Cosmos DB resource for autoscale settings. Either throughput is required or autoscaleSettings is required, but not both."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB resource throughput object. Either throughput is required or autoscaleSettings is required, but not both."
+      }
+    },
+    "com.azure.cosmos_db#AutoscaleSettingsResourceInput": {
+      "type": "structure",
+      "members": {
+        "maxThroughput": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Represents maximum throughput container can scale up to.",
+            "smithy.api#required": {}
+          }
+        },
+        "autoUpgradePolicy": {
+          "target": "com.azure.cosmos_db#AutoUpgradePolicyResource",
+          "traits": {
+            "smithy.api#documentation": "Cosmos DB resource auto-upgrade policy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB provisioned throughput settings object"
+      }
+    },
+    "com.azure.cosmos_db#ManagedServiceIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.cosmos_db#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.cosmos_db#ManagedServiceIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.cosmos_db#ManagedServiceIdentityUserAssignedIdentitiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.cosmos_db#ManagedServiceIdentityUserAssignedIdentitiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
+    },
+    "com.azure.cosmos_db#TableResourcesUpdateTableThroughputRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#TableResourcesGetTableThroughput": {
@@ -3043,11 +3205,10 @@
             "smithy.api#documentation": "Cosmos DB table name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the continuous backup restore location."
           }
         }
       },
@@ -3371,16 +3532,134 @@
             "smithy.api#documentation": "Cosmos DB table name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#TableResourcesCreateUpdateTableRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#TableCreateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB Table.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#TableCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#TableResource",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a Table",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB Table."
+      }
+    },
+    "com.azure.cosmos_db#CreateUpdateOptions": {
+      "type": "structure",
+      "members": {
+        "throughput": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Request Units per second. For example, \"throughput\": 10000."
+          }
+        },
+        "autoscaleSettings": {
+          "target": "com.azure.cosmos_db#AutoscaleSettings",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Autoscale settings. Note: Either throughput or autoscaleSettings is required, but not both."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "CreateUpdateOptions are a list of key-value pairs that describe the resource. Supported keys are \"If-Match\", \"If-None-Match\", \"Session-Token\" and \"Throughput\""
+      }
+    },
+    "com.azure.cosmos_db#TableResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB table",
+            "smithy.api#required": {}
+          }
+        },
+        "restoreParameters": {
+          "target": "com.azure.cosmos_db#RestoreParametersBase",
+          "traits": {
+            "smithy.api#documentation": "Parameters to indicate the information about the restore"
+          }
+        },
+        "createMode": {
+          "target": "com.azure.cosmos_db#TableResourceCreateMode",
+          "traits": {
+            "smithy.api#documentation": "Enum to indicate the mode of account creation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB table resource object"
+      }
+    },
+    "com.azure.cosmos_db#TableResourceCreateMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Restore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum to indicate the mode of account creation."
+      }
+    },
+    "com.azure.cosmos_db#TableResourcesCreateUpdateTableRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#TableResourcesGetTable": {
@@ -3926,11 +4205,10 @@
             "smithy.api#documentation": "The GUID for the Role Definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#TableRoleDefinitionResourceProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB Table Role Definition."
           }
         }
       },
@@ -4337,16 +4615,41 @@
             "smithy.api#documentation": "The GUID for the Role Assignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#TableRoleAssignmentResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB Table Role Assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#TableRoleAssignmentResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the associated Role Definition."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The data plane resource path for which access is being granted through this Table Role Assignment."
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this Table Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Cosmos DB Table Role Assignment resource object."
       }
     },
     "com.azure.cosmos_db#TableResourcesGetTableRoleAssignment": {
@@ -4766,11 +5069,10 @@
             "smithy.api#documentation": "The GUID for the Role Definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#SqlRoleDefinitionResource",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB SQL Role Definition."
           }
         }
       },
@@ -5167,11 +5469,10 @@
             "smithy.api#documentation": "The GUID for the Role Assignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#SqlRoleAssignmentResource",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB SQL Role Assignment."
           }
         }
       },
@@ -5767,16 +6068,46 @@
             "smithy.api#documentation": "Cosmos DB database name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#SqlResourcesUpdateSqlDatabaseThroughputRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#ThroughputSettingsUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB resource throughput.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#SqlResourcesUpdateSqlDatabaseThroughputRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#SqlResourcesGetSqlDatabaseThroughput": {
@@ -6167,16 +6498,88 @@
             "smithy.api#documentation": "Cosmos DB userDefinedFunction name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#SqlResourcesCreateUpdateSqlUserDefinedFunctionRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#SqlUserDefinedFunctionCreateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB userDefinedFunction.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#SqlUserDefinedFunctionCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#SqlUserDefinedFunctionResource",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a userDefinedFunction",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB userDefinedFunction."
+      }
+    },
+    "com.azure.cosmos_db#SqlUserDefinedFunctionResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB SQL userDefinedFunction",
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Body of the User Defined Function"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB SQL userDefinedFunction resource object"
+      }
+    },
+    "com.azure.cosmos_db#SqlResourcesCreateUpdateSqlUserDefinedFunctionRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#SqlResourcesGetSqlUserDefinedFunction": {
@@ -6814,16 +7217,100 @@
             "smithy.api#documentation": "Cosmos DB trigger name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#SqlResourcesCreateUpdateSqlTriggerRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#SqlTriggerCreateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB trigger.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#SqlTriggerCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#SqlTriggerResource",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a trigger",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB trigger."
+      }
+    },
+    "com.azure.cosmos_db#SqlTriggerResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB SQL trigger",
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Body of the Trigger"
+          }
+        },
+        "triggerType": {
+          "target": "com.azure.cosmos_db#TriggerType",
+          "traits": {
+            "smithy.api#documentation": "Type of the Trigger"
+          }
+        },
+        "triggerOperation": {
+          "target": "com.azure.cosmos_db#TriggerOperation",
+          "traits": {
+            "smithy.api#documentation": "The operation the trigger is associated with"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB SQL trigger resource object"
+      }
+    },
+    "com.azure.cosmos_db#SqlResourcesCreateUpdateSqlTriggerRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#SqlResourcesGetSqlTrigger": {
@@ -7530,16 +8017,46 @@
             "smithy.api#documentation": "Cosmos DB container name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#SqlResourcesUpdateSqlContainerThroughputRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#ThroughputSettingsUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB resource throughput.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#SqlResourcesUpdateSqlContainerThroughputRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#SqlResourcesGetSqlContainerThroughput": {
@@ -7938,16 +8455,88 @@
             "smithy.api#documentation": "Cosmos DB storedProcedure name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#SqlResourcesCreateUpdateSqlStoredProcedureRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#SqlStoredProcedureCreateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB storedProcedure.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#SqlStoredProcedureCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#SqlStoredProcedureResource",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a storedProcedure",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB storedProcedure."
+      }
+    },
+    "com.azure.cosmos_db#SqlStoredProcedureResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB SQL storedProcedure",
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Body of the Stored Procedure"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB SQL storedProcedure resource object"
+      }
+    },
+    "com.azure.cosmos_db#SqlResourcesCreateUpdateSqlStoredProcedureRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#SqlResourcesGetSqlStoredProcedure": {
@@ -8316,11 +8905,10 @@
             "smithy.api#documentation": "Cosmos DB container name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the continuous backup restore location."
           }
         }
       },
@@ -9549,16 +10137,244 @@
             "smithy.api#documentation": "Cosmos DB container name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#SqlResourcesCreateUpdateSqlContainerRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#SqlContainerCreateUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB container.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#SqlContainerCreateUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#SqlContainerResourceInput",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a container",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB container."
+      }
+    },
+    "com.azure.cosmos_db#SqlContainerResourceInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB SQL container",
+            "smithy.api#required": {}
+          }
+        },
+        "indexingPolicy": {
+          "target": "com.azure.cosmos_db#IndexingPolicy",
+          "traits": {
+            "smithy.api#documentation": "The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container"
+          }
+        },
+        "partitionKey": {
+          "target": "com.azure.cosmos_db#ContainerPartitionKeyInput",
+          "traits": {
+            "smithy.api#documentation": "The configuration of the partition key to be used for partitioning data into multiple partitions"
+          }
+        },
+        "defaultTtl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Default time to live"
+          }
+        },
+        "uniqueKeyPolicy": {
+          "target": "com.azure.cosmos_db#UniqueKeyPolicy",
+          "traits": {
+            "smithy.api#documentation": "The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service."
+          }
+        },
+        "conflictResolutionPolicy": {
+          "target": "com.azure.cosmos_db#ConflictResolutionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The conflict resolution policy for the container."
+          }
+        },
+        "clientEncryptionPolicy": {
+          "target": "com.azure.cosmos_db#ClientEncryptionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The client encryption policy for the container."
+          }
+        },
+        "analyticalStorageTtl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Analytical TTL."
+          }
+        },
+        "restoreParameters": {
+          "target": "com.azure.cosmos_db#RestoreParametersBase",
+          "traits": {
+            "smithy.api#documentation": "Parameters to indicate the information about the restore"
+          }
+        },
+        "createMode": {
+          "target": "com.azure.cosmos_db#SqlContainerResourceInputCreateMode",
+          "traits": {
+            "smithy.api#documentation": "Enum to indicate the mode of account creation."
+          }
+        },
+        "computedProperties": {
+          "target": "com.azure.cosmos_db#SqlContainerResourceInputComputedPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "List of computed properties"
+          }
+        },
+        "vectorEmbeddingPolicy": {
+          "target": "com.azure.cosmos_db#VectorEmbeddingPolicy",
+          "traits": {
+            "smithy.api#documentation": "The vector embedding policy for the container."
+          }
+        },
+        "fullTextPolicy": {
+          "target": "com.azure.cosmos_db#FullTextPolicy",
+          "traits": {
+            "smithy.api#documentation": "The FullText policy for the container."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB SQL container resource object"
+      }
+    },
+    "com.azure.cosmos_db#SqlContainerResourceInputComputedPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#ComputedProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of computed properties"
+      }
+    },
+    "com.azure.cosmos_db#SqlContainerResourceInputCreateMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Restore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum to indicate the mode of account creation."
+      }
+    },
+    "com.azure.cosmos_db#ContainerPartitionKeyInput": {
+      "type": "structure",
+      "members": {
+        "paths": {
+          "target": "com.azure.cosmos_db#ContainerPartitionKeyInputPathsList",
+          "traits": {
+            "smithy.api#documentation": "List of paths using which data within the container can be partitioned"
+          }
+        },
+        "kind": {
+          "target": "com.azure.cosmos_db#ContainerPartitionKeyInputKind",
+          "traits": {
+            "smithy.api#documentation": "Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create"
+          }
+        },
+        "version": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Indicates the version of the partition key definition"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration of the partition key to be used for partitioning data into multiple partitions"
+      }
+    },
+    "com.azure.cosmos_db#ContainerPartitionKeyInputKind": {
+      "type": "enum",
+      "members": {
+        "HASH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hash"
+          }
+        },
+        "RANGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Range"
+          }
+        },
+        "MULTIHASH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MultiHash"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create"
+      }
+    },
+    "com.azure.cosmos_db#ContainerPartitionKeyInputPathsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of paths using which data within the container can be partitioned"
+      }
+    },
+    "com.azure.cosmos_db#SqlResourcesCreateUpdateSqlContainerRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#SqlResourcesGetSqlContainer": {
@@ -10040,16 +10856,63 @@
             "smithy.api#documentation": "Cosmos DB ClientEncryptionKey name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#ClientEncryptionKeyCreateUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties to create and update ClientEncryptionKey.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#ClientEncryptionKeyCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#ClientEncryptionKeyResource",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a ClientEncryptionKey",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update ClientEncryptionKey."
+      }
+    },
+    "com.azure.cosmos_db#ClientEncryptionKeyResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the ClientEncryptionKey"
+          }
+        },
+        "encryptionAlgorithm": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Encryption algorithm that will be used along with this client encryption key to encrypt/decrypt data."
+          }
+        },
+        "wrappedDataEncryptionKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Wrapped (encrypted) form of the key represented as a byte array."
+          }
+        },
+        "keyWrapMetadata": {
+          "target": "com.azure.cosmos_db#KeyWrapMetadata",
+          "traits": {
+            "smithy.api#documentation": "Metadata for the wrapping provider that can be used to unwrap the wrapped client encryption key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB client encryption key resource object."
       }
     },
     "com.azure.cosmos_db#SqlResourcesGetClientEncryptionKey": {
@@ -10550,16 +11413,114 @@
             "smithy.api#documentation": "Cosmos DB database name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#SqlResourcesCreateUpdateSqlDatabaseRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#SqlDatabaseCreateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB SQL database.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#SqlDatabaseCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#SqlDatabaseResource",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a SQL database",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB SQL database."
+      }
+    },
+    "com.azure.cosmos_db#SqlDatabaseResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB SQL database",
+            "smithy.api#required": {}
+          }
+        },
+        "restoreParameters": {
+          "target": "com.azure.cosmos_db#RestoreParametersBase",
+          "traits": {
+            "smithy.api#documentation": "Parameters to indicate the information about the restore"
+          }
+        },
+        "createMode": {
+          "target": "com.azure.cosmos_db#SqlDatabaseResourceCreateMode",
+          "traits": {
+            "smithy.api#documentation": "Enum to indicate the mode of account creation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB SQL database resource object"
+      }
+    },
+    "com.azure.cosmos_db#SqlDatabaseResourceCreateMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Restore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum to indicate the mode of account creation."
+      }
+    },
+    "com.azure.cosmos_db#SqlResourcesCreateUpdateSqlDatabaseRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#SqlResourcesGetSqlDatabase": {
@@ -11201,16 +12162,42 @@
             "smithy.api#documentation": "Cosmos DB service name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#ServiceResourceCreateUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties in ServiceResourceCreateUpdateParameters."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#ServiceResourceCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "instanceSize": {
+          "target": "com.azure.cosmos_db#ServiceSize",
+          "traits": {
+            "smithy.api#documentation": "Instance type for the service."
+          }
+        },
+        "instanceCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Instance count for the service."
+          }
+        },
+        "serviceType": {
+          "target": "com.azure.cosmos_db#ServiceType",
+          "traits": {
+            "smithy.api#documentation": "ServiceType for the service.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties in ServiceResourceCreateUpdateParameters."
       }
     },
     "com.azure.cosmos_db#ServiceGet": {
@@ -12009,16 +12996,48 @@
             "smithy.api#documentation": "Cosmos DB database account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyKind": {
+          "target": "com.azure.cosmos_db#KeyKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The access key to regenerate.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#KeyKind": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "primary"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary"
+          }
+        },
+        "PRIMARYREADONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "primaryReadonly"
+          }
+        },
+        "SECONDARYREADONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondaryReadonly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The access key to regenerate."
       }
     },
     "com.azure.cosmos_db#DatabaseAccountsListReadOnlyKeys": {
@@ -12622,16 +13641,67 @@
             "smithy.api#documentation": "The name of the private endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.cosmos_db#PrivateEndpointProperty",
+          "traits": {
+            "smithy.api#documentation": "Private endpoint which the connection belongs to."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.cosmos_db#PrivateLinkServiceConnectionStatePropertyInput",
+          "traits": {
+            "smithy.api#documentation": "Connection State of the Private Endpoint Connection."
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Group id of the private endpoint."
+          }
+        },
+        "provisioningState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Provisioning state of the private endpoint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a private endpoint connection."
+      }
+    },
+    "com.azure.cosmos_db#PrivateLinkServiceConnectionStatePropertyInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection status."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Connection State of the Private Endpoint Connection."
       }
     },
     "com.azure.cosmos_db#PrivateEndpointConnectionsGet": {
@@ -12951,10 +14021,10 @@
             "smithy.api#documentation": "Cosmos DB database account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "region": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Cosmos DB region, with spaces between words and each word capitalized.",
             "smithy.api#required": {}
           }
         }
@@ -13009,10 +14079,10 @@
             "smithy.api#documentation": "Cosmos DB database account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "region": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Cosmos DB region, with spaces between words and each word capitalized.",
             "smithy.api#required": {}
           }
         }
@@ -13435,13 +14505,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the notebook workspace resource."
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
           }
         }
       },
@@ -13910,11 +14973,10 @@
             "smithy.api#documentation": "The ID for the User Definition {dbName.userName}."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#MongoUserDefinitionResource",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB Mongo User Definition."
           }
         }
       },
@@ -14410,11 +15472,10 @@
             "smithy.api#documentation": "The ID for the Role Definition {dbName.roleName}."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#MongoRoleDefinitionResource",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB Mongo Role Definition."
           }
         }
       },
@@ -15010,16 +16071,46 @@
             "smithy.api#documentation": "Cosmos DB database name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#MongoDBResourcesUpdateMongoDBDatabaseThroughputRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#ThroughputSettingsUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB resource throughput.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#MongoDBResourcesUpdateMongoDBDatabaseThroughputRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#MongoDBResourcesGetMongoDBDatabaseThroughput": {
@@ -15549,16 +16640,46 @@
             "smithy.api#documentation": "Cosmos DB collection name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#MongoDBResourcesUpdateMongoDBCollectionThroughputRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#ThroughputSettingsUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB resource throughput.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#MongoDBResourcesUpdateMongoDBCollectionThroughputRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#MongoDBResourcesGetMongoDBCollectionThroughput": {
@@ -15758,11 +16879,10 @@
             "smithy.api#documentation": "Cosmos DB collection name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the continuous backup restore location."
           }
         }
       },
@@ -16146,16 +17266,153 @@
             "smithy.api#documentation": "Cosmos DB collection name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#MongoDBResourcesCreateUpdateMongoDBCollectionRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#MongoDBCollectionCreateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB MongoDB collection.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#MongoDBCollectionCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#MongoDBCollectionResource",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a MongoDB collection",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB MongoDB collection."
+      }
+    },
+    "com.azure.cosmos_db#MongoDBCollectionResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB MongoDB collection",
+            "smithy.api#required": {}
+          }
+        },
+        "shardKey": {
+          "target": "com.azure.cosmos_db#MongoDBCollectionResourceShardKeyMap",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of shard keys to be applied for the request."
+          }
+        },
+        "indexes": {
+          "target": "com.azure.cosmos_db#MongoDBCollectionResourceIndexesList",
+          "traits": {
+            "smithy.api#documentation": "List of index keys"
+          }
+        },
+        "analyticalStorageTtl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Analytical TTL."
+          }
+        },
+        "restoreParameters": {
+          "target": "com.azure.cosmos_db#RestoreParametersBase",
+          "traits": {
+            "smithy.api#documentation": "Parameters to indicate the information about the restore"
+          }
+        },
+        "createMode": {
+          "target": "com.azure.cosmos_db#MongoDBCollectionResourceCreateMode",
+          "traits": {
+            "smithy.api#documentation": "Enum to indicate the mode of resource creation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB MongoDB collection resource object"
+      }
+    },
+    "com.azure.cosmos_db#MongoDBCollectionResourceCreateMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Restore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum to indicate the mode of resource creation."
+      }
+    },
+    "com.azure.cosmos_db#MongoDBCollectionResourceIndexesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#MongoIndex"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of index keys"
+      }
+    },
+    "com.azure.cosmos_db#MongoDBCollectionResourceShardKeyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A key-value pair of shard keys to be applied for the request."
+      }
+    },
+    "com.azure.cosmos_db#MongoDBResourcesCreateUpdateMongoDBCollectionRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#MongoDBResourcesGetMongoDBCollection": {
@@ -16704,16 +17961,114 @@
             "smithy.api#documentation": "Cosmos DB database name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#MongoDBResourcesCreateUpdateMongoDBDatabaseRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#MongoDBDatabaseCreateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB MongoDB database.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#MongoDBDatabaseCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#MongoDBDatabaseResource",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a MongoDB database",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB MongoDB database."
+      }
+    },
+    "com.azure.cosmos_db#MongoDBDatabaseResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB MongoDB database",
+            "smithy.api#required": {}
+          }
+        },
+        "restoreParameters": {
+          "target": "com.azure.cosmos_db#RestoreParametersBase",
+          "traits": {
+            "smithy.api#documentation": "Parameters to indicate the information about the restore"
+          }
+        },
+        "createMode": {
+          "target": "com.azure.cosmos_db#MongoDBDatabaseResourceCreateMode",
+          "traits": {
+            "smithy.api#documentation": "Enum to indicate the mode of account creation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB MongoDB database resource object"
+      }
+    },
+    "com.azure.cosmos_db#MongoDBDatabaseResourceCreateMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Restore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum to indicate the mode of account creation."
+      }
+    },
+    "com.azure.cosmos_db#MongoDBResourcesCreateUpdateMongoDBDatabaseRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#MongoDBResourcesGetMongoDBDatabase": {
@@ -17195,11 +18550,10 @@
             "smithy.api#documentation": "The GUID for the Role Definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#MongoMIRoleDefinitionResourceProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB MongoMI Role Definition."
           }
         }
       },
@@ -17606,16 +18960,41 @@
             "smithy.api#documentation": "The GUID for the Role Assignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#MongoMIRoleAssignmentResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB MongoMI Role Assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#MongoMIRoleAssignmentResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the associated Role Definition."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The data plane resource path for which access is being granted through this MongoMI Role Assignment."
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this MongoMI Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Cosmos DB MongoMI Role Assignment resource object."
       }
     },
     "com.azure.cosmos_db#MongoMIResourcesGetMongoMIRoleAssignment": {
@@ -18572,11 +19951,10 @@
             "smithy.api#documentation": "The GUID for the Role Definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#GremlinRoleDefinitionResourceProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB Gremlin Role Definition."
           }
         }
       },
@@ -18983,16 +20361,41 @@
             "smithy.api#documentation": "The GUID for the Role Assignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#GremlinRoleAssignmentResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB Gremlin Role Assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#GremlinRoleAssignmentResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the associated Role Definition."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The data plane resource path for which access is being granted through this Gremlin Role Assignment."
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this Gremlin Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Cosmos DB Gremlin Role Assignment resource object."
       }
     },
     "com.azure.cosmos_db#GremlinResourcesGetGremlinRoleAssignment": {
@@ -19587,16 +20990,46 @@
             "smithy.api#documentation": "Cosmos DB database name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#GremlinResourcesUpdateGremlinDatabaseThroughputRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#ThroughputSettingsUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB resource throughput.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#GremlinResourcesUpdateGremlinDatabaseThroughputRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#GremlinResourcesGetGremlinDatabaseThroughput": {
@@ -20126,16 +21559,46 @@
             "smithy.api#documentation": "Cosmos DB graph name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#GremlinResourcesUpdateGremlinGraphThroughputRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#ThroughputSettingsUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB resource throughput.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#GremlinResourcesUpdateGremlinGraphThroughputRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#GremlinResourcesGetGremlinGraphThroughput": {
@@ -20335,11 +21798,10 @@
             "smithy.api#documentation": "Cosmos DB graph name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the continuous backup restore location."
           }
         }
       },
@@ -20657,16 +22119,150 @@
             "smithy.api#documentation": "Cosmos DB graph name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#GremlinResourcesCreateUpdateGremlinGraphRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#GremlinGraphCreateUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB Gremlin graph.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#GremlinGraphCreateUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#GremlinGraphResourceInput",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a Gremlin graph",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB Gremlin graph."
+      }
+    },
+    "com.azure.cosmos_db#GremlinGraphResourceInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB Gremlin graph",
+            "smithy.api#required": {}
+          }
+        },
+        "indexingPolicy": {
+          "target": "com.azure.cosmos_db#IndexingPolicy",
+          "traits": {
+            "smithy.api#documentation": "The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph"
+          }
+        },
+        "partitionKey": {
+          "target": "com.azure.cosmos_db#ContainerPartitionKeyInput",
+          "traits": {
+            "smithy.api#documentation": "The configuration of the partition key to be used for partitioning data into multiple partitions"
+          }
+        },
+        "defaultTtl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Default time to live"
+          }
+        },
+        "uniqueKeyPolicy": {
+          "target": "com.azure.cosmos_db#UniqueKeyPolicy",
+          "traits": {
+            "smithy.api#documentation": "The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service."
+          }
+        },
+        "conflictResolutionPolicy": {
+          "target": "com.azure.cosmos_db#ConflictResolutionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The conflict resolution policy for the graph."
+          }
+        },
+        "analyticalStorageTtl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Analytical TTL."
+          }
+        },
+        "restoreParameters": {
+          "target": "com.azure.cosmos_db#RestoreParametersBase",
+          "traits": {
+            "smithy.api#documentation": "Parameters to indicate the information about the restore"
+          }
+        },
+        "createMode": {
+          "target": "com.azure.cosmos_db#GremlinGraphResourceInputCreateMode",
+          "traits": {
+            "smithy.api#documentation": "Enum to indicate the mode of resource creation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB Gremlin graph resource object"
+      }
+    },
+    "com.azure.cosmos_db#GremlinGraphResourceInputCreateMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Restore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum to indicate the mode of resource creation."
+      }
+    },
+    "com.azure.cosmos_db#GremlinResourcesCreateUpdateGremlinGraphRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#GremlinResourcesGetGremlinGraph": {
@@ -21215,16 +22811,114 @@
             "smithy.api#documentation": "Cosmos DB database name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#GremlinResourcesCreateUpdateGremlinDatabaseRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#GremlinDatabaseCreateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB Gremlin database.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#GremlinDatabaseCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#GremlinDatabaseResource",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a Gremlin database",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB Gremlin database."
+      }
+    },
+    "com.azure.cosmos_db#GremlinDatabaseResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB Gremlin database",
+            "smithy.api#required": {}
+          }
+        },
+        "restoreParameters": {
+          "target": "com.azure.cosmos_db#RestoreParametersBase",
+          "traits": {
+            "smithy.api#documentation": "Parameters to indicate the information about the restore"
+          }
+        },
+        "createMode": {
+          "target": "com.azure.cosmos_db#GremlinDatabaseResourceCreateMode",
+          "traits": {
+            "smithy.api#documentation": "Enum to indicate the mode of resource creation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB Gremlin database resource object"
+      }
+    },
+    "com.azure.cosmos_db#GremlinDatabaseResourceCreateMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Restore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum to indicate the mode of resource creation."
+      }
+    },
+    "com.azure.cosmos_db#GremlinResourcesCreateUpdateGremlinDatabaseRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#GremlinResourcesGetGremlinDatabase": {
@@ -21545,16 +23239,45 @@
             "smithy.api#documentation": "Cosmos DB database account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "failoverPolicies": {
+          "target": "com.azure.cosmos_db#DatabaseAccountsFailoverPriorityChangeRequestFailoverPoliciesList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "List of failover policies.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountsFailoverPriorityChangeRequestFailoverPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#FailoverPolicyInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of failover policies."
+      }
+    },
+    "com.azure.cosmos_db#FailoverPolicyInput": {
+      "type": "structure",
+      "members": {
+        "locationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the region in which the database account exists."
+          }
+        },
+        "failoverPriority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The failover policy for a given region of a database account."
       }
     },
     "com.azure.cosmos_db#DatabaseListUsages": {
@@ -22480,11 +24203,10 @@
             "smithy.api#documentation": "The GUID for the Role Definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#CassandraRoleDefinitionResourceProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB Cassandra Role Definition."
           }
         }
       },
@@ -22891,16 +24613,41 @@
             "smithy.api#documentation": "The GUID for the Role Assignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#CassandraRoleAssignmentResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to create and update an Azure Cosmos DB Cassandra Role Assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#CassandraRoleAssignmentResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the associated Role Definition."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The data plane resource path for which access is being granted through this Cassandra Role Assignment."
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the associated AAD principal in the AAD graph to which access is being granted through this Cassandra Role Assignment. Tenant ID for the principal is inferred using the tenant associated with the subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Cosmos DB Cassandra Role Assignment resource object."
       }
     },
     "com.azure.cosmos_db#CassandraResourcesGetCassandraRoleAssignment": {
@@ -23495,16 +25242,46 @@
             "smithy.api#documentation": "Cosmos DB keyspace name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#CassandraResourcesUpdateCassandraKeyspaceThroughputRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#ThroughputSettingsUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB resource throughput.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#CassandraResourcesUpdateCassandraKeyspaceThroughputRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#CassandraResourcesGetCassandraKeyspaceThroughput": {
@@ -24034,16 +25811,46 @@
             "smithy.api#documentation": "Cosmos DB table name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#CassandraResourcesUpdateCassandraTableThroughputRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#ThroughputSettingsUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB resource throughput.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#CassandraResourcesUpdateCassandraTableThroughputRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#CassandraResourcesGetCassandraTableThroughput": {
@@ -24548,16 +26355,100 @@
             "smithy.api#documentation": "Cosmos DB table name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#CassandraResourcesCreateUpdateCassandraTableRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#CassandraTableCreateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB Cassandra table.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#CassandraTableCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#CassandraTableResource",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a Cassandra table",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB Cassandra table."
+      }
+    },
+    "com.azure.cosmos_db#CassandraTableResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB Cassandra table",
+            "smithy.api#required": {}
+          }
+        },
+        "defaultTtl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time to live of the Cosmos DB Cassandra table"
+          }
+        },
+        "schema": {
+          "target": "com.azure.cosmos_db#CassandraSchema",
+          "traits": {
+            "smithy.api#documentation": "Schema of the Cosmos DB Cassandra table"
+          }
+        },
+        "analyticalStorageTtl": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Analytical TTL."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB Cassandra table resource object"
+      }
+    },
+    "com.azure.cosmos_db#CassandraResourcesCreateUpdateCassandraTableRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#CassandraResourcesGetCassandraTable": {
@@ -25074,16 +26965,82 @@
             "smithy.api#documentation": "Cosmos DB keyspace name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#CassandraResourcesCreateUpdateCassandraKeyspaceRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#CassandraKeyspaceCreateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB Cassandra keyspace.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#CassandraKeyspaceCreateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resource": {
+          "target": "com.azure.cosmos_db#CassandraKeyspaceResource",
+          "traits": {
+            "smithy.api#documentation": "The standard JSON format of a Cassandra keyspace",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.azure.cosmos_db#CreateUpdateOptions",
+          "traits": {
+            "smithy.api#documentation": "A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB Cassandra keyspace."
+      }
+    },
+    "com.azure.cosmos_db#CassandraKeyspaceResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the Cosmos DB Cassandra keyspace",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cosmos DB Cassandra keyspace resource object"
+      }
+    },
+    "com.azure.cosmos_db#CassandraResourcesCreateUpdateCassandraKeyspaceRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#CassandraResourcesGetCassandraKeyspace": {
@@ -26689,16 +28646,325 @@
             "smithy.api#documentation": "Cosmos DB database account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.cosmos_db#DatabaseAccountsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to update Azure Cosmos DB database accounts."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "consistencyPolicy": {
+          "target": "com.azure.cosmos_db#ConsistencyPolicy",
+          "traits": {
+            "smithy.api#documentation": "The consistency policy for the Cosmos DB account."
+          }
+        },
+        "locations": {
+          "target": "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputLocationsList",
+          "traits": {
+            "smithy.api#documentation": "An array that contains the georeplication locations enabled for the Cosmos DB account."
+          }
+        },
+        "ipRules": {
+          "target": "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputIpRulesList",
+          "traits": {
+            "smithy.api#documentation": "List of IpRules."
+          }
+        },
+        "isVirtualNetworkFilterEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate whether to enable/disable Virtual Network ACL rules."
+          }
+        },
+        "enableAutomaticFailover": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account."
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputCapabilitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of Cosmos DB capabilities for the account"
+          }
+        },
+        "virtualNetworkRules": {
+          "target": "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputVirtualNetworkRulesList",
+          "traits": {
+            "smithy.api#documentation": "List of Virtual Network ACL rules configured for the Cosmos DB account."
+          }
+        },
+        "enableMultipleWriteLocations": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables the account to write in multiple locations"
+          }
+        },
+        "enableCassandraConnector": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables the cassandra connector on the Cosmos DB C* account"
+          }
+        },
+        "connectorOffer": {
+          "target": "com.azure.cosmos_db#ConnectorOffer",
+          "traits": {
+            "smithy.api#documentation": "The cassandra connector offer type for the Cosmos DB database C* account."
+          }
+        },
+        "disableKeyBasedMetadataWriteAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Disable write operations on metadata resources (databases, containers, throughput) via account keys"
+          }
+        },
+        "keyVaultKeyUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI of the key vault"
+          }
+        },
+        "defaultIdentity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default identity for accessing key vault used in features like customer managed keys. The default identity needs to be explicitly set by the users. It can be \"FirstPartyIdentity\", \"SystemAssignedIdentity\" and more."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.cosmos_db#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether requests from Public Network are allowed"
+          }
+        },
+        "enableFreeTier": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate whether Free Tier is enabled."
+          }
+        },
+        "apiProperties": {
+          "target": "com.azure.cosmos_db#ApiProperties",
+          "traits": {
+            "smithy.api#documentation": "API specific properties. Currently, supported only for MongoDB API."
+          }
+        },
+        "enableAnalyticalStorage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate whether to enable storage analytics."
+          }
+        },
+        "analyticalStorageConfiguration": {
+          "target": "com.azure.cosmos_db#AnalyticalStorageConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Analytical storage specific properties."
+          }
+        },
+        "backupPolicy": {
+          "target": "com.azure.cosmos_db#BackupPolicy",
+          "traits": {
+            "smithy.api#documentation": "The object representing the policy for taking backups on an account."
+          }
+        },
+        "cors": {
+          "target": "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputCorsList",
+          "traits": {
+            "smithy.api#documentation": "The CORS policy for the Cosmos DB database account."
+          }
+        },
+        "networkAclBypass": {
+          "target": "com.azure.cosmos_db#NetworkAclBypass",
+          "traits": {
+            "smithy.api#documentation": "Indicates what services are allowed to bypass firewall checks."
+          }
+        },
+        "networkAclBypassResourceIds": {
+          "target": "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputNetworkAclBypassResourceIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account."
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication."
+          }
+        },
+        "capacity": {
+          "target": "com.azure.cosmos_db#Capacity",
+          "traits": {
+            "smithy.api#documentation": "The object that represents all properties related to capacity enforcement on an account."
+          }
+        },
+        "enablePartitionMerge": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate enabling/disabling of Partition Merge feature on the account"
+          }
+        },
+        "enableBurstCapacity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate enabling/disabling of Burst Capacity Preview feature on the account"
+          }
+        },
+        "minimalTlsVersion": {
+          "target": "com.azure.cosmos_db#MinimalTlsVersion",
+          "traits": {
+            "smithy.api#documentation": "Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2."
+          }
+        },
+        "customerManagedKeyStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the status of the Customer Managed Key feature on the account. In case there are errors, the property provides troubleshooting guidance."
+          }
+        },
+        "enablePriorityBasedExecution": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account"
+          }
+        },
+        "defaultPriorityLevel": {
+          "target": "com.azure.cosmos_db#DefaultPriorityLevel",
+          "traits": {
+            "smithy.api#documentation": "Enum to indicate default Priority Level of request for Priority Based Execution."
+          }
+        },
+        "enablePerRegionPerPartitionAutoscale": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate enabling/disabling of Per-Region Per-partition autoscale Preview feature on the account"
+          }
+        },
+        "enforceHierarchicalPartitionKeyIdLastLevel": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate enabling/disabling of hierarchical partition key ID last level enforcement on the account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to update Azure Cosmos DB database accounts."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputNetworkAclBypassResourceIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputCorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#CorsPolicy"
+      },
+      "traits": {
+        "smithy.api#documentation": "The CORS policy for the Cosmos DB database account."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputVirtualNetworkRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#VirtualNetworkRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Virtual Network ACL rules configured for the Cosmos DB account."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#Capability"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Cosmos DB capabilities for the account"
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputIpRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#IpAddressOrRange"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of IpRules."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountUpdatePropertiesInputLocationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#LocationInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array that contains the georeplication locations enabled for the Cosmos DB account."
+      }
+    },
+    "com.azure.cosmos_db#LocationInput": {
+      "type": "structure",
+      "members": {
+        "locationName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the region."
+          }
+        },
+        "failoverPriority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists."
+          }
+        },
+        "isZoneRedundant": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate whether or not this region is an AvailabilityZone region"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A region in which the Azure Cosmos DB database account is deployed."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#DatabaseAccountsCreateOrUpdate": {
@@ -26847,16 +29113,386 @@
             "smithy.api#documentation": "Cosmos DB database account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#DatabaseAccountsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.cosmos_db#DatabaseAccountsCreateOrUpdateRequestKind",
+          "traits": {
+            "smithy.api#documentation": "Indicates the type of database account. This can only be set at database account creation."
+          }
+        },
+        "properties": {
+          "target": "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties to create and update Azure Cosmos DB database accounts.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "consistencyPolicy": {
+          "target": "com.azure.cosmos_db#ConsistencyPolicy",
+          "traits": {
+            "smithy.api#documentation": "The consistency policy for the Cosmos DB account."
+          }
+        },
+        "locations": {
+          "target": "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputLocationsList",
+          "traits": {
+            "smithy.api#documentation": "An array that contains the georeplication locations enabled for the Cosmos DB account.",
+            "smithy.api#required": {}
+          }
+        },
+        "databaseAccountOfferType": {
+          "target": "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputDatabaseAccountOfferType",
+          "traits": {
+            "smithy.api#documentation": "The offer type for the Cosmos DB database account.",
+            "smithy.api#required": {}
+          }
+        },
+        "ipRules": {
+          "target": "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputIpRulesList",
+          "traits": {
+            "smithy.api#documentation": "List of IpRules."
+          }
+        },
+        "isVirtualNetworkFilterEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate whether to enable/disable Virtual Network ACL rules."
+          }
+        },
+        "enableAutomaticFailover": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables automatic failover of the write region in the rare event that the region is unavailable due to an outage. Automatic failover will result in a new write region for the account and is chosen based on the failover priorities configured for the account."
+          }
+        },
+        "capabilities": {
+          "target": "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputCapabilitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of Cosmos DB capabilities for the account"
+          }
+        },
+        "virtualNetworkRules": {
+          "target": "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputVirtualNetworkRulesList",
+          "traits": {
+            "smithy.api#documentation": "List of Virtual Network ACL rules configured for the Cosmos DB account."
+          }
+        },
+        "enableMultipleWriteLocations": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables the account to write in multiple locations"
+          }
+        },
+        "enableCassandraConnector": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables the cassandra connector on the Cosmos DB C* account"
+          }
+        },
+        "connectorOffer": {
+          "target": "com.azure.cosmos_db#ConnectorOffer",
+          "traits": {
+            "smithy.api#documentation": "The cassandra connector offer type for the Cosmos DB database C* account."
+          }
+        },
+        "disableKeyBasedMetadataWriteAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Disable write operations on metadata resources (databases, containers, throughput) via account keys"
+          }
+        },
+        "keyVaultKeyUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URI of the key vault"
+          }
+        },
+        "defaultIdentity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default identity for accessing key vault used in features like customer managed keys. The default identity needs to be explicitly set by the users. It can be \"FirstPartyIdentity\", \"SystemAssignedIdentity\" and more."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.cosmos_db#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether requests from Public Network are allowed"
+          }
+        },
+        "enableFreeTier": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate whether Free Tier is enabled."
+          }
+        },
+        "apiProperties": {
+          "target": "com.azure.cosmos_db#ApiProperties",
+          "traits": {
+            "smithy.api#documentation": "API specific properties. Currently, supported only for MongoDB API."
+          }
+        },
+        "enableAnalyticalStorage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate whether to enable storage analytics."
+          }
+        },
+        "analyticalStorageConfiguration": {
+          "target": "com.azure.cosmos_db#AnalyticalStorageConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Analytical storage specific properties."
+          }
+        },
+        "createMode": {
+          "target": "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputCreateMode",
+          "traits": {
+            "smithy.api#documentation": "Enum to indicate the mode of account creation."
+          }
+        },
+        "backupPolicy": {
+          "target": "com.azure.cosmos_db#BackupPolicy",
+          "traits": {
+            "smithy.api#documentation": "The object representing the policy for taking backups on an account."
+          }
+        },
+        "cors": {
+          "target": "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputCorsList",
+          "traits": {
+            "smithy.api#documentation": "The CORS policy for the Cosmos DB database account."
+          }
+        },
+        "networkAclBypass": {
+          "target": "com.azure.cosmos_db#NetworkAclBypass",
+          "traits": {
+            "smithy.api#documentation": "Indicates what services are allowed to bypass firewall checks."
+          }
+        },
+        "networkAclBypassResourceIds": {
+          "target": "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputNetworkAclBypassResourceIdsList",
+          "traits": {
+            "smithy.api#documentation": "An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account."
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication."
+          }
+        },
+        "restoreParameters": {
+          "target": "com.azure.cosmos_db#RestoreParameters",
+          "traits": {
+            "smithy.api#documentation": "Parameters to indicate the information about the restore."
+          }
+        },
+        "capacity": {
+          "target": "com.azure.cosmos_db#Capacity",
+          "traits": {
+            "smithy.api#documentation": "The object that represents all properties related to capacity enforcement on an account."
+          }
+        },
+        "enablePartitionMerge": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate enabling/disabling of Partition Merge feature on the account"
+          }
+        },
+        "enableBurstCapacity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate enabling/disabling of Burst Capacity Preview feature on the account"
+          }
+        },
+        "minimalTlsVersion": {
+          "target": "com.azure.cosmos_db#MinimalTlsVersion",
+          "traits": {
+            "smithy.api#documentation": "Indicates the minimum allowed Tls version. The default is Tls 1.0, except for Cassandra and Mongo API's, which only work with Tls 1.2."
+          }
+        },
+        "customerManagedKeyStatus": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the status of the Customer Managed Key feature on the account. In case there are errors, the property provides troubleshooting guidance."
+          }
+        },
+        "enablePriorityBasedExecution": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account"
+          }
+        },
+        "defaultPriorityLevel": {
+          "target": "com.azure.cosmos_db#DefaultPriorityLevel",
+          "traits": {
+            "smithy.api#documentation": "Enum to indicate default Priority Level of request for Priority Based Execution."
+          }
+        },
+        "enablePerRegionPerPartitionAutoscale": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate enabling/disabling of Per-Region Per-partition autoscale Preview feature on the account"
+          }
+        },
+        "enforceHierarchicalPartitionKeyIdLastLevel": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag to indicate enabling/disabling of hierarchical partition key ID last level enforcement on the account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties to create and update Azure Cosmos DB database accounts."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputNetworkAclBypassResourceIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputCorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#CorsPolicy"
+      },
+      "traits": {
+        "smithy.api#documentation": "The CORS policy for the Cosmos DB database account."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputCreateMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Restore"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Enum to indicate the mode of account creation."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputVirtualNetworkRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#VirtualNetworkRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Virtual Network ACL rules configured for the Cosmos DB account."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#Capability"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Cosmos DB capabilities for the account"
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputIpRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#IpAddressOrRange"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of IpRules."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputDatabaseAccountOfferType": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The offer type for the Cosmos DB database account."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountCreateUpdatePropertiesInputLocationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#LocationInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array that contains the georeplication locations enabled for the Cosmos DB account."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountsCreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "GLOBALDOCUMENTDB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GlobalDocumentDB"
+          }
+        },
+        "MONGODB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MongoDB"
+          }
+        },
+        "PARSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Parse"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates the type of database account. This can only be set at database account creation."
+      }
+    },
+    "com.azure.cosmos_db#DatabaseAccountsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \"defaultExperience\": \"Cassandra\". Current \"defaultExperience\" values also include \"Table\", \"Graph\", \"DocumentDB\", and \"MongoDB\"."
       }
     },
     "com.azure.cosmos_db#DatabaseAccountsGet": {
@@ -27733,16 +30369,54 @@
             "smithy.api#documentation": "Managed Cassandra cluster name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "command": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The command which should be run",
             "smithy.api#required": {}
+          }
+        },
+        "arguments": {
+          "target": "com.azure.cosmos_db#CassandraClustersInvokeCommandRequestArgumentsMap",
+          "traits": {
+            "smithy.api#documentation": "The arguments for the command to be run"
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IP address of the cassandra host to run the command on",
+            "smithy.api#required": {}
+          }
+        },
+        "cassandra_stop_start": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, stops cassandra before executing the command and then start it again",
+            "smithy.api#jsonName": "cassandra-stop-start"
+          }
+        },
+        "readwrite": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, allows the command to *write* to the cassandra directory, otherwise read-only."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#CassandraClustersInvokeCommandRequestArgumentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The arguments for the command to be run"
       }
     },
     "com.azure.cosmos_db#CassandraClustersDeallocate": {
@@ -28189,16 +30863,113 @@
             "smithy.api#documentation": "Data center name in a managed Cassandra cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#DataCenterResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a managed Cassandra data center."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#DataCenterResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.cosmos_db#ManagedCassandraProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The status of the resource at the time the operation was called."
+          }
+        },
+        "dataCenterLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The region this data center should be created in."
+          }
+        },
+        "delegatedSubnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id of a subnet the nodes in this data center should have their network interfaces connected to. The subnet must be in the same region specified in 'dataCenterLocation' and must be able to route to the subnet specified in the cluster's 'delegatedManagementSubnetId' property. This resource id will be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'."
+          }
+        },
+        "nodeCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of nodes the data center should have. This is the desired number. After it is set, it may take some time for the data center to be scaled to match. To monitor the number of nodes and their status, use the fetchNodeStatus method on the cluster."
+          }
+        },
+        "base64EncodedCassandraYamlFragment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A fragment of a cassandra.yaml configuration file to be included in the cassandra.yaml for all nodes in this data center. The fragment should be Base64 encoded, and only a subset of keys are allowed."
+          }
+        },
+        "managedDiskCustomerKeyUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Key uri to use for encryption of managed disks. Ensure the system assigned identity of the cluster has been assigned appropriate permissions(key get/wrap/unwrap permissions) on the key."
+          }
+        },
+        "backupStorageCustomerKeyUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the Key Uri of the customer key to use for encryption of the backup storage account."
+          }
+        },
+        "sku": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Virtual Machine SKU used for data centers. Default value is Standard_DS14_v2"
+          }
+        },
+        "diskSku": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Disk SKU used for data centers. Default value is P30."
+          }
+        },
+        "diskCapacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of disks attached to each node. Default is 4."
+          }
+        },
+        "availabilityZone": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the cassandra data center virtual machines."
+          }
+        },
+        "authenticationMethodLdapProperties": {
+          "target": "com.azure.cosmos_db#AuthenticationMethodLdapProperties",
+          "traits": {
+            "smithy.api#documentation": "Ldap authentication method properties. This feature is in preview."
+          }
+        },
+        "deallocated": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the data center has been deallocated."
+          }
+        },
+        "provisionError": {
+          "target": "com.azure.cosmos_db#CassandraError",
+          "traits": {
+            "smithy.api#documentation": "Error related to resource provisioning."
+          }
+        },
+        "privateEndpointIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Ip of the VPN Endpoint for this data center."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a managed Cassandra data center."
       }
     },
     "com.azure.cosmos_db#CassandraDataCentersCreateUpdate": {
@@ -28293,11 +31064,10 @@
             "smithy.api#documentation": "Data center name in a managed Cassandra cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#DataCenterResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a managed Cassandra data center."
           }
         }
       },
@@ -29081,16 +31851,254 @@
             "smithy.api#documentation": "Managed Cassandra cluster name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#ClusterResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a managed Cassandra cluster."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#CassandraClustersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \\\"defaultExperience\\\": \\\"Cassandra\\\". Current \\\"defaultExperience\\\" values also include \\\"Table\\\", \\\"Graph\\\", \\\"DocumentDB\\\", and \\\"MongoDB\\\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedCassandraManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#ManagedCassandraManagedServiceIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.cosmos_db#ManagedCassandraResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.cosmos_db#CassandraClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \\\"defaultExperience\\\": \\\"Cassandra\\\". Current \\\"defaultExperience\\\" values also include \\\"Table\\\", \\\"Graph\\\", \\\"DocumentDB\\\", and \\\"MongoDB\\\"."
+      }
+    },
+    "com.azure.cosmos_db#ClusterResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.cosmos_db#ManagedCassandraProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The status of the resource at the time the operation was called."
+          }
+        },
+        "restoreFromBackupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "To create an empty cluster, omit this field or set it to null. To restore a backup into a new cluster, set this field to the resource id of the backup."
+          }
+        },
+        "delegatedManagementSubnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Network/virtualNetworks/<virtual network>/subnets/<subnet>'"
+          }
+        },
+        "cassandraVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Which version of Cassandra should this cluster converge to running (e.g., 3.11). When updated, the cluster may take some time to migrate to the new version."
+          }
+        },
+        "clusterNameOverride": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If you need to set the clusterName property in cassandra.yaml to something besides the resource name of the cluster, set the value to use on this property."
+          }
+        },
+        "authenticationMethod": {
+          "target": "com.azure.cosmos_db#AuthenticationMethod",
+          "traits": {
+            "smithy.api#documentation": "Which authentication method Cassandra should use to authenticate clients. 'None' turns off authentication, so should not be used except in emergencies. 'Cassandra' is the default password based authentication. The default is 'Cassandra'."
+          }
+        },
+        "initialCassandraAdminPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Initial password for clients connecting as admin to the cluster. Should be changed after cluster creation. Returns null on GET. This field only applies when the authenticationMethod field is 'Cassandra'.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "prometheusEndpoint": {
+          "target": "com.azure.cosmos_db#SeedNode",
+          "traits": {
+            "smithy.api#documentation": "Hostname or IP address where the Prometheus endpoint containing data about the managed Cassandra nodes can be reached."
+          }
+        },
+        "repairEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Should automatic repairs run on this cluster? If omitted, this is true, and should stay true unless you are running a hybrid cluster where you are already doing your own repairs."
+          }
+        },
+        "autoReplicate": {
+          "target": "com.azure.cosmos_db#AutoReplicate",
+          "traits": {
+            "smithy.api#documentation": "The form of AutoReplicate that is being used by this cluster."
+          }
+        },
+        "clientCertificates": {
+          "target": "com.azure.cosmos_db#ClusterResourcePropertiesInputClientCertificatesList",
+          "traits": {
+            "smithy.api#documentation": "List of TLS certificates used to authorize clients connecting to the cluster. All connections are TLS encrypted whether clientCertificates is set or not, but if clientCertificates is set, the managed Cassandra cluster will reject all connections not bearing a TLS client certificate that can be validated from one or more of the public certificates in this property."
+          }
+        },
+        "externalGossipCertificates": {
+          "target": "com.azure.cosmos_db#ClusterResourcePropertiesInputExternalGossipCertificatesList",
+          "traits": {
+            "smithy.api#documentation": "List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property."
+          }
+        },
+        "externalSeedNodes": {
+          "target": "com.azure.cosmos_db#ClusterResourcePropertiesInputExternalSeedNodesList",
+          "traits": {
+            "smithy.api#documentation": "List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes."
+          }
+        },
+        "externalDataCenters": {
+          "target": "com.azure.cosmos_db#ClusterResourcePropertiesInputExternalDataCentersList",
+          "traits": {
+            "smithy.api#documentation": "List of the data center names for unmanaged data centers in this cluster to be included in auto-replication."
+          }
+        },
+        "hoursBetweenBackups": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "(Deprecated) Number of hours to wait between taking a backup of the cluster."
+          }
+        },
+        "deallocated": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the cluster and associated data centers has been deallocated."
+          }
+        },
+        "cassandraAuditLoggingEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Cassandra audit logging is enabled"
+          }
+        },
+        "provisionError": {
+          "target": "com.azure.cosmos_db#CassandraError",
+          "traits": {
+            "smithy.api#documentation": "Error related to resource provisioning."
+          }
+        },
+        "extensions": {
+          "target": "com.azure.cosmos_db#ClusterResourcePropertiesInputExtensionsList",
+          "traits": {
+            "smithy.api#documentation": "Extensions to be added or updated on cluster."
+          }
+        },
+        "backupSchedules": {
+          "target": "com.azure.cosmos_db#ClusterResourcePropertiesInputBackupSchedulesList",
+          "traits": {
+            "smithy.api#documentation": "List of backup schedules that define when you want to back up your data."
+          }
+        },
+        "scheduledEventStrategy": {
+          "target": "com.azure.cosmos_db#ScheduledEventStrategy",
+          "traits": {
+            "smithy.api#documentation": "How the nodes in the cluster react to scheduled events"
+          }
+        },
+        "azureConnectionMethod": {
+          "target": "com.azure.cosmos_db#AzureConnectionType",
+          "traits": {
+            "smithy.api#documentation": "How to connect to the azure services needed for running the cluster"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a managed Cassandra cluster."
+      }
+    },
+    "com.azure.cosmos_db#ClusterResourcePropertiesInputBackupSchedulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#BackupSchedule"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of backup schedules that define when you want to back up your data."
+      }
+    },
+    "com.azure.cosmos_db#ClusterResourcePropertiesInputExtensionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Extensions to be added or updated on cluster."
+      }
+    },
+    "com.azure.cosmos_db#ClusterResourcePropertiesInputExternalDataCentersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of the data center names for unmanaged data centers in this cluster to be included in auto-replication."
+      }
+    },
+    "com.azure.cosmos_db#ClusterResourcePropertiesInputExternalSeedNodesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#SeedNode"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of IP addresses of seed nodes in unmanaged data centers. These will be added to the seed node lists of all managed nodes."
+      }
+    },
+    "com.azure.cosmos_db#ClusterResourcePropertiesInputExternalGossipCertificatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#Certificate"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of TLS certificates used to authorize gossip from unmanaged data centers. The TLS certificates of all nodes in unmanaged data centers must be verifiable using one of the certificates provided in this property."
+      }
+    },
+    "com.azure.cosmos_db#ClusterResourcePropertiesInputClientCertificatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.cosmos_db#Certificate"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of TLS certificates used to authorize clients connecting to the cluster. All connections are TLS encrypted whether clientCertificates is set or not, but if clientCertificates is set, the managed Cassandra cluster will reject all connections not bearing a TLS client certificate that can be validated from one or more of the public certificates in this property."
       }
     },
     "com.azure.cosmos_db#CassandraClustersCreateUpdate": {
@@ -29207,16 +32215,45 @@
             "smithy.api#documentation": "Managed Cassandra cluster name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.cosmos_db#ClusterResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a managed Cassandra cluster."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the resource group to which the resource belongs."
+          }
+        },
+        "tags": {
+          "target": "com.azure.cosmos_db#CassandraClustersCreateUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \\\"defaultExperience\\\": \\\"Cassandra\\\". Current \\\"defaultExperience\\\" values also include \\\"Table\\\", \\\"Graph\\\", \\\"DocumentDB\\\", and \\\"MongoDB\\\"."
+          }
+        },
+        "identity": {
+          "target": "com.azure.cosmos_db#ManagedCassandraManagedServiceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.cosmos_db#CassandraClustersCreateUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with \\\"defaultExperience\\\": \\\"Cassandra\\\". Current \\\"defaultExperience\\\" values also include \\\"Table\\\", \\\"Graph\\\", \\\"DocumentDB\\\", and \\\"MongoDB\\\"."
       }
     },
     "com.azure.cosmos_db#CassandraClustersGet": {

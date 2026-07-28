@@ -176,7 +176,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.saved#UserBasic"
+          "target": "com.posthog.saved#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"

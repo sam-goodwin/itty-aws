@@ -81,16 +81,37 @@
             "smithy.api#documentation": "The resource location without whitespace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The Data Lake Store name to check availability for.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.datalake_store#AccountsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The resource type. Note: This should not be set by the user, as the constant value is Microsoft.DataLakeStore/accounts",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datalake_store#AccountsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_DATALAKESTORE_ACCOUNTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.DataLakeStore/accounts"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource type. Note: This should not be set by the user, as the constant value is Microsoft.DataLakeStore/accounts"
       }
     },
     "com.azure.datalake_store#LocationsGetUsage": {
@@ -671,15 +692,29 @@
             "smithy.api#documentation": "The name of the trusted identity provider. This is used for differentiation of providers in the account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datalake_store#UpdateTrustedIdProviderProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The trusted identity provider properties to use when updating a trusted identity provider."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datalake_store#UpdateTrustedIdProviderProperties": {
+      "type": "structure",
+      "members": {
+        "idProvider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL of this trusted identity provider."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The trusted identity provider properties to use when updating a trusted identity provider."
       }
     },
     "com.azure.datalake_store#TrustedIdProvidersCreateOrUpdate": {
@@ -768,16 +803,31 @@
             "smithy.api#documentation": "The name of the trusted identity provider. This is used for differentiation of providers in the account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datalake_store#CreateOrUpdateTrustedIdProviderProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The trusted identity provider properties to use when creating a new trusted identity provider.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datalake_store#CreateOrUpdateTrustedIdProviderProperties": {
+      "type": "structure",
+      "members": {
+        "idProvider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL of this trusted identity provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The trusted identity provider properties to use when creating a new trusted identity provider."
       }
     },
     "com.azure.datalake_store#TrustedIdProvidersGet": {
@@ -1142,15 +1192,29 @@
             "smithy.api#documentation": "The name of the virtual network rule to update."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datalake_store#UpdateVirtualNetworkRuleProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The virtual network rule properties to use when updating a virtual network rule."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datalake_store#UpdateVirtualNetworkRuleProperties": {
+      "type": "structure",
+      "members": {
+        "subnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource identifier for the subnet."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The virtual network rule properties to use when updating a virtual network rule."
       }
     },
     "com.azure.datalake_store#VirtualNetworkRulesCreateOrUpdate": {
@@ -1239,16 +1303,31 @@
             "smithy.api#documentation": "The name of the virtual network rule to create or update."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datalake_store#CreateOrUpdateVirtualNetworkRuleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The virtual network rule properties to use when creating a new virtual network rule.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datalake_store#CreateOrUpdateVirtualNetworkRuleProperties": {
+      "type": "structure",
+      "members": {
+        "subnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource identifier for the subnet.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The virtual network rule properties to use when creating a new virtual network rule."
       }
     },
     "com.azure.datalake_store#VirtualNetworkRulesGet": {
@@ -1619,15 +1698,35 @@
             "smithy.api#documentation": "The name of the firewall rule to update."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datalake_store#UpdateFirewallRuleProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The firewall rule properties to use when updating a firewall rule."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datalake_store#UpdateFirewallRuleProperties": {
+      "type": "structure",
+      "members": {
+        "startIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol."
+          }
+        },
+        "endIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The firewall rule properties to use when updating a firewall rule."
       }
     },
     "com.azure.datalake_store#FirewallRulesCreateOrUpdate": {
@@ -1716,16 +1815,38 @@
             "smithy.api#documentation": "The name of the firewall rule to create or update."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datalake_store#CreateOrUpdateFirewallRuleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The firewall rule properties to use when creating a new firewall rule.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datalake_store#CreateOrUpdateFirewallRuleProperties": {
+      "type": "structure",
+      "members": {
+        "startIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.",
+            "smithy.api#required": {}
+          }
+        },
+        "endIpAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The firewall rule properties to use when creating a new firewall rule."
       }
     },
     "com.azure.datalake_store#FirewallRulesGet": {
@@ -2689,16 +2810,323 @@
             "smithy.api#documentation": "The name of the Data Lake Store account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.datalake_store#AccountsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.datalake_store#UpdateDataLakeStoreAccountProperties",
+          "traits": {
+            "smithy.api#documentation": "The Data Lake Store account properties to update."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datalake_store#UpdateDataLakeStoreAccountProperties": {
+      "type": "structure",
+      "members": {
+        "defaultGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default owner group for all new folders and files created in the Data Lake Store account."
+          }
+        },
+        "encryptionConfig": {
+          "target": "com.azure.datalake_store#UpdateEncryptionConfig",
+          "traits": {
+            "smithy.api#documentation": "Used for rotation of user managed Key Vault keys. Can only be used to rotate a user managed encryption Key Vault key."
+          }
+        },
+        "firewallRules": {
+          "target": "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesFirewallRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of firewall rules associated with this Data Lake Store account."
+          }
+        },
+        "virtualNetworkRules": {
+          "target": "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesVirtualNetworkRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of virtual network rules associated with this Data Lake Store account."
+          }
+        },
+        "firewallState": {
+          "target": "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesFirewallState",
+          "traits": {
+            "smithy.api#documentation": "The current state of the IP address firewall for this Data Lake Store account. Disabling the firewall does not remove existing rules, they will just be ignored until the firewall is re-enabled."
+          }
+        },
+        "firewallAllowAzureIps": {
+          "target": "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesFirewallAllowAzureIps",
+          "traits": {
+            "smithy.api#documentation": "The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced."
+          }
+        },
+        "trustedIdProviders": {
+          "target": "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesTrustedIdProvidersList",
+          "traits": {
+            "smithy.api#documentation": "The list of trusted identity providers associated with this Data Lake Store account."
+          }
+        },
+        "trustedIdProviderState": {
+          "target": "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesTrustedIdProviderState",
+          "traits": {
+            "smithy.api#documentation": "The current state of the trusted identity provider feature for this Data Lake Store account. Disabling trusted identity provider functionality does not remove the providers, they will just be ignored until this feature is re-enabled."
+          }
+        },
+        "newTier": {
+          "target": "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesNewTier",
+          "traits": {
+            "smithy.api#documentation": "The commitment tier to use for next month."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data Lake Store account properties information to be updated."
+      }
+    },
+    "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesNewTier": {
+      "type": "enum",
+      "members": {
+        "CONSUMPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Consumption"
+          }
+        },
+        "COMMITMENT_1TB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_1TB"
+          }
+        },
+        "COMMITMENT_10TB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_10TB"
+          }
+        },
+        "COMMITMENT_100TB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_100TB"
+          }
+        },
+        "COMMITMENT_500TB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_500TB"
+          }
+        },
+        "COMMITMENT_1PB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_1PB"
+          }
+        },
+        "COMMITMENT_5PB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_5PB"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The commitment tier to use for next month."
+      }
+    },
+    "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesTrustedIdProviderState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current state of the trusted identity provider feature for this Data Lake Store account. Disabling trusted identity provider functionality does not remove the providers, they will just be ignored until this feature is re-enabled."
+      }
+    },
+    "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesTrustedIdProvidersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datalake_store#UpdateTrustedIdProviderWithAccountParameters"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of trusted identity providers associated with this Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#UpdateTrustedIdProviderWithAccountParameters": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique name of the trusted identity provider to update.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.datalake_store#UpdateTrustedIdProviderProperties",
+          "traits": {
+            "smithy.api#documentation": "The trusted identity provider properties to use when updating a trusted identity provider."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters used to update a trusted identity provider while updating a Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesFirewallAllowAzureIps": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced."
+      }
+    },
+    "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesFirewallState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current state of the IP address firewall for this Data Lake Store account. Disabling the firewall does not remove existing rules, they will just be ignored until the firewall is re-enabled."
+      }
+    },
+    "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesVirtualNetworkRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datalake_store#UpdateVirtualNetworkRuleWithAccountParameters"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of virtual network rules associated with this Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#UpdateVirtualNetworkRuleWithAccountParameters": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique name of the virtual network rule to update.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.datalake_store#UpdateVirtualNetworkRuleProperties",
+          "traits": {
+            "smithy.api#documentation": "The virtual network rule properties to use when updating a virtual network rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters used to update a virtual network rule while updating a Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#UpdateDataLakeStoreAccountPropertiesFirewallRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datalake_store#UpdateFirewallRuleWithAccountParameters"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of firewall rules associated with this Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#UpdateFirewallRuleWithAccountParameters": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique name of the firewall rule to update.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.datalake_store#UpdateFirewallRuleProperties",
+          "traits": {
+            "smithy.api#documentation": "The firewall rule properties to use when updating a firewall rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters used to update a firewall rule while updating a Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#UpdateEncryptionConfig": {
+      "type": "structure",
+      "members": {
+        "keyVaultMetaInfo": {
+          "target": "com.azure.datalake_store#UpdateKeyVaultMetaInfo",
+          "traits": {
+            "smithy.api#documentation": "The updated Key Vault key to use in user managed key rotation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The encryption configuration used to update a user managed Key Vault key."
+      }
+    },
+    "com.azure.datalake_store#UpdateKeyVaultMetaInfo": {
+      "type": "structure",
+      "members": {
+        "encryptionKeyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the user managed encryption key to update through a key rotation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Key Vault update information used for user managed key rotation."
+      }
+    },
+    "com.azure.datalake_store#AccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.datalake_store#AccountsCreate": {
@@ -2809,16 +3237,364 @@
             "smithy.api#documentation": "The name of the Data Lake Store account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.datalake_store#AccountsCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.datalake_store#EncryptionIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The Key Vault encryption identity, if any."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datalake_store#CreateDataLakeStoreAccountProperties",
+          "traits": {
+            "smithy.api#documentation": "The Data Lake Store account properties to use for creating."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datalake_store#CreateDataLakeStoreAccountProperties": {
+      "type": "structure",
+      "members": {
+        "defaultGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default owner group for all new folders and files created in the Data Lake Store account."
+          }
+        },
+        "encryptionConfig": {
+          "target": "com.azure.datalake_store#EncryptionConfig",
+          "traits": {
+            "smithy.api#documentation": "The Key Vault encryption configuration."
+          }
+        },
+        "encryptionState": {
+          "target": "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesEncryptionState",
+          "traits": {
+            "smithy.api#documentation": "The current state of encryption for this Data Lake Store account."
+          }
+        },
+        "firewallRules": {
+          "target": "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesFirewallRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of firewall rules associated with this Data Lake Store account."
+          }
+        },
+        "virtualNetworkRules": {
+          "target": "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesVirtualNetworkRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of virtual network rules associated with this Data Lake Store account."
+          }
+        },
+        "firewallState": {
+          "target": "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesFirewallState",
+          "traits": {
+            "smithy.api#documentation": "The current state of the IP address firewall for this Data Lake Store account."
+          }
+        },
+        "firewallAllowAzureIps": {
+          "target": "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesFirewallAllowAzureIps",
+          "traits": {
+            "smithy.api#documentation": "The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced."
+          }
+        },
+        "trustedIdProviders": {
+          "target": "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesTrustedIdProvidersList",
+          "traits": {
+            "smithy.api#documentation": "The list of trusted identity providers associated with this Data Lake Store account."
+          }
+        },
+        "trustedIdProviderState": {
+          "target": "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesTrustedIdProviderState",
+          "traits": {
+            "smithy.api#documentation": "The current state of the trusted identity provider feature for this Data Lake Store account."
+          }
+        },
+        "newTier": {
+          "target": "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesNewTier",
+          "traits": {
+            "smithy.api#documentation": "The commitment tier to use for next month."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesNewTier": {
+      "type": "enum",
+      "members": {
+        "CONSUMPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Consumption"
+          }
+        },
+        "COMMITMENT_1TB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_1TB"
+          }
+        },
+        "COMMITMENT_10TB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_10TB"
+          }
+        },
+        "COMMITMENT_100TB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_100TB"
+          }
+        },
+        "COMMITMENT_500TB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_500TB"
+          }
+        },
+        "COMMITMENT_1PB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_1PB"
+          }
+        },
+        "COMMITMENT_5PB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Commitment_5PB"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The commitment tier to use for next month."
+      }
+    },
+    "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesTrustedIdProviderState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current state of the trusted identity provider feature for this Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesTrustedIdProvidersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datalake_store#CreateTrustedIdProviderWithAccountParameters"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of trusted identity providers associated with this Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#CreateTrustedIdProviderWithAccountParameters": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique name of the trusted identity provider to create.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.datalake_store#CreateOrUpdateTrustedIdProviderProperties",
+          "traits": {
+            "smithy.api#documentation": "The trusted identity provider properties to use when creating a new trusted identity provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters used to create a new trusted identity provider while creating a new Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesFirewallAllowAzureIps": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced."
+      }
+    },
+    "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesFirewallState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current state of the IP address firewall for this Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesVirtualNetworkRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datalake_store#CreateVirtualNetworkRuleWithAccountParameters"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of virtual network rules associated with this Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#CreateVirtualNetworkRuleWithAccountParameters": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique name of the virtual network rule to create.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.datalake_store#CreateOrUpdateVirtualNetworkRuleProperties",
+          "traits": {
+            "smithy.api#documentation": "The virtual network rule properties to use when creating a new virtual network rule.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters used to create a new virtual network rule while creating a new Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesFirewallRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datalake_store#CreateFirewallRuleWithAccountParameters"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of firewall rules associated with this Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#CreateFirewallRuleWithAccountParameters": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique name of the firewall rule to create.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.datalake_store#CreateOrUpdateFirewallRuleProperties",
+          "traits": {
+            "smithy.api#documentation": "The firewall rule properties to use when creating a new firewall rule.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters used to create a new firewall rule while creating a new Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#CreateDataLakeStoreAccountPropertiesEncryptionState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The current state of encryption for this Data Lake Store account."
+      }
+    },
+    "com.azure.datalake_store#EncryptionIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.datalake_store#EncryptionIdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "The type of encryption being used. Currently the only supported type is 'SystemAssigned'.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The encryption identity properties."
+      }
+    },
+    "com.azure.datalake_store#EncryptionIdentityInputType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of encryption being used. Currently the only supported type is 'SystemAssigned'."
+      }
+    },
+    "com.azure.datalake_store#AccountsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.datalake_store#AccountsGet": {

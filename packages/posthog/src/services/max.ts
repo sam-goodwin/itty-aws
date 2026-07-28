@@ -61,283 +61,17 @@ export const MessageMinimal = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MessageMinimal" }) as any as S.Schema<MessageMinimal>;
 
-/** * `idle` - Idle * `in_progress` - In progress * `canceling` - Canceling */
-export type ConversationStatus =
-  | "idle"
-  | "in_progress"
-  | "canceling"
-  | (string & {});
-export const ConversationStatus = /*@__PURE__*/ S.String;
-
-/** * `web_analytics` - Web analytics * `product_analytics` - Product analytics * `session_replay` - Session replay * `surveys` - Surveys * `feature_flags` - Feature flags * `experiments` - Experiments * `error_tracking` - Error tracking * `data_warehouse` - Data warehouse * `other` - Other */
-export type TopicEnum =
-  | "web_analytics"
-  | "product_analytics"
-  | "session_replay"
-  | "surveys"
-  | "feature_flags"
-  | "experiments"
-  | "error_tracking"
-  | "data_warehouse"
-  | "other"
-  | (string & {});
-export const TopicEnum = /*@__PURE__*/ S.String;
-
-export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
-export type RoleAtOrganizationEnum =
-  | "engineering"
-  | "data"
-  | "product"
-  | "founder"
-  | "leadership"
-  | "marketing"
-  | "sales"
-  | "other"
-  | (string & {});
-export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
-
-export type BlankEnum = "" | (string & {});
-export const BlankEnum = /*@__PURE__*/ S.String;
-
-export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
-export interface UserBasic {
-  id?: number;
-  uuid?: string;
-  distinct_id?: string | null;
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-  is_email_verified?: boolean | null;
-  hedgehog_config?: UserBasicHedgehogConfigMap | null;
-  role_at_organization?: UserBasicRoleAtOrganization | null;
-}
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    uuid: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
-    first_name: S.optional(S.String),
-    last_name: S.optional(S.String),
-    email: S.optional(S.String),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
-    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
-  }),
-).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-/** * `assistant` - Assistant * `tool_call` - Tool call * `deep_research` - Deep research * `slack` - Slack */
-export type ConversationType =
-  | "assistant"
-  | "tool_call"
-  | "deep_research"
-  | "slack"
-  | (string & {});
-export const ConversationType = /*@__PURE__*/ S.String;
-
-export type ConversationsCancelPartialUpdateRequestMessagesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const ConversationsCancelPartialUpdateRequestMessagesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ConversationsCancelPartialUpdateRequestMessagesItemMap>;
-
-export type ConversationsCancelPartialUpdateRequestMessagesList =
-  ConversationsCancelPartialUpdateRequestMessagesItemMap[];
-export const ConversationsCancelPartialUpdateRequestMessagesList =
-  /*@__PURE__*/ S.Array(
-    ConversationsCancelPartialUpdateRequestMessagesItemMap,
-  ) as any as S.Schema<ConversationsCancelPartialUpdateRequestMessagesList>;
-
-/** * `langgraph` - LangGraph * `sandbox` - Sandbox */
-export type AgentRuntimeEnum = "langgraph" | "sandbox" | (string & {});
-export const AgentRuntimeEnum = /*@__PURE__*/ S.String;
-
-export type ConversationsCancelPartialUpdateRequestPendingApprovalsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const ConversationsCancelPartialUpdateRequestPendingApprovalsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ConversationsCancelPartialUpdateRequestPendingApprovalsItemMap>;
-
-/** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
-export type ConversationsCancelPartialUpdateRequestPendingApprovalsList =
-  ConversationsCancelPartialUpdateRequestPendingApprovalsItemMap[];
-export const ConversationsCancelPartialUpdateRequestPendingApprovalsList =
-  /*@__PURE__*/ S.Array(
-    ConversationsCancelPartialUpdateRequestPendingApprovalsItemMap,
-  ) as any as S.Schema<ConversationsCancelPartialUpdateRequestPendingApprovalsList>;
-
-/** * `acp` - ACP * `pi` - Pi */
-export type RuntimeEnum = "acp" | "pi" | (string & {});
-export const RuntimeEnum = /*@__PURE__*/ S.String;
-
-export type ConversationTaskJsonSchemaMap = {
-  [key: string]: unknown | undefined;
-};
-export const ConversationTaskJsonSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ConversationTaskJsonSchemaMap>;
-
-export type TaskUserBasicInfoHedgehogConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
-
-/** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
-export interface TaskUserBasicInfo {
-  id: number;
-  uuid: string;
-  distinct_id: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  is_email_verified?: boolean | null;
-  hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
-  role_at_organization?: string | null;
-}
-export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    uuid: S.String,
-    distinct_id: S.String,
-    first_name: S.String,
-    last_name: S.String,
-    email: S.String,
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
-    hedgehog_config: S.optional(S.NullOr(TaskUserBasicInfoHedgehogConfigMap)),
-    role_at_organization: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "TaskUserBasicInfo",
-}) as any as S.Schema<TaskUserBasicInfo>;
-
-/** Conversation envelope variant: ``latest_run`` is just the latest run's id, not the nested run detail. The frontend only needs the id to reconnect to sandbox logs, and emitting the id avoids presigning a log URL per conversation. Read access here follows the conversation (the share-by-link unit), not per-creator task visibility — write/send stays creator-gated. See ``tasks_facade.get_conversation_task_dtos``. */
-export interface ConversationTask {
-  id: string;
-  task_number: number | null;
-  slug: string;
-  title: string;
-  title_manually_set: boolean;
-  description: string;
-  origin_product: string;
-  /** Agent protocol and harness used for this task's runs. * `acp` - ACP * `pi` - Pi */
-  runtime: RuntimeEnum;
-  repository: string | null;
-  github_integration: number | null;
-  github_user_integration: string | null;
-  signal_report: string | null;
-  json_schema: ConversationTaskJsonSchemaMap | null;
-  internal: boolean;
-  archived: boolean;
-  archived_at: string | null;
-  /** Id of the latest TaskRun; null when the task has no runs. */
-  latest_run: string | null;
-  created_at?: string | null;
-  updated_at?: string | null;
-  created_by?: TaskUserBasicInfo | null;
-  ci_prompt: string | null;
-}
-export const ConversationTask = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    task_number: S.NullOr(S.Number),
-    slug: S.String,
-    title: S.String,
-    title_manually_set: S.Boolean,
-    description: S.String,
-    origin_product: S.String,
-    runtime: RuntimeEnum,
-    repository: S.NullOr(S.String),
-    github_integration: S.NullOr(S.Number),
-    github_user_integration: S.NullOr(S.String),
-    signal_report: S.NullOr(S.String),
-    json_schema: S.NullOr(ConversationTaskJsonSchemaMap),
-    internal: S.Boolean,
-    archived: S.Boolean,
-    archived_at: S.NullOr(S.String),
-    latest_run: S.NullOr(S.String),
-    created_at: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
-    ci_prompt: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ConversationTask",
-}) as any as S.Schema<ConversationTask>;
-
 export interface ConversationsCancelPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this conversation. */
   conversation: string;
-  id?: string;
-  status?: ConversationStatus;
-  /** Title of the conversation. */
-  title?: string | null;
-  /** Product domain the conversation is about, classified from the first question. * `web_analytics` - Web analytics * `product_analytics` - Product analytics * `session_replay` - Session replay * `surveys` - Surveys * `feature_flags` - Feature flags * `experiments` - Experiments * `error_tracking` - Error tracking * `data_warehouse` - Data warehouse * `other` - Other */
-  topic?: TopicEnum | null;
-  user?: UserBasic;
-  created_at?: string | null;
-  updated_at?: string | null;
-  type?: ConversationType;
-  /** Whether this conversation was created during an impersonated session (e.g., by support agents). Internal conversations are hidden from customers. */
-  is_internal?: boolean | null;
-  /** Unique key for Slack thread: '{workspace_id}:{channel}:{thread_ts}' */
-  slack_thread_key?: string | null;
-  /** Slack workspace subdomain (e.g. 'posthog' for posthog.slack.com) */
-  slack_workspace_domain?: string | null;
-  messages?: ConversationsCancelPartialUpdateRequestMessagesList;
-  has_unsupported_content?: boolean;
-  agent_mode?: string | null;
-  /** Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field; born-'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is 'sandbox' but still returns its legacy thread in `messages`. * `langgraph` - LangGraph * `sandbox` - Sandbox */
-  agent_runtime?: AgentRuntimeEnum;
-  is_sandbox?: boolean;
-  /** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
-  pending_approvals?: ConversationsCancelPartialUpdateRequestPendingApprovalsList;
-  task?: ConversationTask | null;
 }
 export const ConversationsCancelPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       conversation: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
-      status: S.optional(ConversationStatus),
-      title: S.optional(S.NullOr(S.String)),
-      topic: S.optional(S.NullOr(TopicEnum)),
-      user: S.optional(UserBasic),
-      created_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      type: S.optional(ConversationType),
-      is_internal: S.optional(S.NullOr(S.Boolean)),
-      slack_thread_key: S.optional(S.NullOr(S.String)),
-      slack_workspace_domain: S.optional(S.NullOr(S.String)),
-      messages: S.optional(ConversationsCancelPartialUpdateRequestMessagesList),
-      has_unsupported_content: S.optional(S.Boolean),
-      agent_mode: S.optional(S.NullOr(S.String)),
-      agent_runtime: S.optional(AgentRuntimeEnum),
-      is_sandbox: S.optional(S.Boolean),
-      pending_approvals: S.optional(
-        ConversationsCancelPartialUpdateRequestPendingApprovalsList,
-      ),
-      task: S.optional(S.NullOr(ConversationTask)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -379,8 +113,7 @@ export type AgentModeEnum =
   | "llm_analytics"
   | "sandbox"
   | "user_interview"
-  | "customer_analytics"
-  | (string & {});
+  | "customer_analytics";
 export const AgentModeEnum = /*@__PURE__*/ S.String;
 
 export interface ConversationsCreateRequest {
@@ -507,6 +240,183 @@ export const ConversationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversationsListRequest",
 }) as any as S.Schema<ConversationsListRequest>;
 
+/** * `idle` - Idle * `in_progress` - In progress * `canceling` - Canceling */
+export type ConversationStatus = "idle" | "in_progress" | "canceling";
+export const ConversationStatus = /*@__PURE__*/ S.String;
+
+/** * `web_analytics` - Web analytics * `product_analytics` - Product analytics * `session_replay` - Session replay * `surveys` - Surveys * `feature_flags` - Feature flags * `experiments` - Experiments * `error_tracking` - Error tracking * `data_warehouse` - Data warehouse * `other` - Other */
+export type TopicEnum =
+  | "web_analytics"
+  | "product_analytics"
+  | "session_replay"
+  | "surveys"
+  | "feature_flags"
+  | "experiments"
+  | "error_tracking"
+  | "data_warehouse"
+  | "other";
+export const TopicEnum = /*@__PURE__*/ S.String;
+
+export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+export type RoleAtOrganizationEnum =
+  | "engineering"
+  | "data"
+  | "product"
+  | "founder"
+  | "leadership"
+  | "marketing"
+  | "sales"
+  | "other";
+export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
+
+export type BlankEnum = "";
+export const BlankEnum = /*@__PURE__*/ S.String;
+
+export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+export const UserBasicRoleAtOrganization =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
+export interface UserBasic {
+  id?: number;
+  uuid?: string;
+  distinct_id?: string | null;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  is_email_verified?: boolean | null;
+  hedgehog_config?: UserBasicHedgehogConfigMap | null;
+  role_at_organization?: UserBasicRoleAtOrganization | null;
+}
+export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    uuid: S.optional(S.String),
+    distinct_id: S.optional(S.NullOr(S.String)),
+    first_name: S.optional(S.String),
+    last_name: S.optional(S.String),
+    email: S.optional(S.String),
+    is_email_verified: S.optional(S.NullOr(S.Boolean)),
+    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+  }),
+).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
+
+/** * `assistant` - Assistant * `tool_call` - Tool call * `deep_research` - Deep research * `slack` - Slack */
+export type ConversationType =
+  | "assistant"
+  | "tool_call"
+  | "deep_research"
+  | "slack";
+export const ConversationType = /*@__PURE__*/ S.String;
+
+/** * `acp` - ACP * `pi` - Pi */
+export type RuntimeEnum = "acp" | "pi";
+export const RuntimeEnum = /*@__PURE__*/ S.String;
+
+export type ConversationTaskJsonSchemaMap = {
+  [key: string]: unknown | undefined;
+};
+export const ConversationTaskJsonSchemaMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ConversationTaskJsonSchemaMap>;
+
+export type TaskUserBasicInfoHedgehogConfigMap = {
+  [key: string]: unknown | undefined;
+};
+export const TaskUserBasicInfoHedgehogConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
+
+/** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
+export interface TaskUserBasicInfo {
+  id: number;
+  uuid: string;
+  distinct_id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  is_email_verified?: boolean | null;
+  hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
+  role_at_organization?: string | null;
+}
+export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    uuid: S.String,
+    distinct_id: S.String,
+    first_name: S.String,
+    last_name: S.String,
+    email: S.String,
+    is_email_verified: S.optional(S.NullOr(S.Boolean)),
+    hedgehog_config: S.optional(S.NullOr(TaskUserBasicInfoHedgehogConfigMap)),
+    role_at_organization: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "TaskUserBasicInfo",
+}) as any as S.Schema<TaskUserBasicInfo>;
+
+/** Conversation envelope variant: ``latest_run`` is just the latest run's id, not the nested run detail. The frontend only needs the id to reconnect to sandbox logs, and emitting the id avoids presigning a log URL per conversation. Read access here follows the conversation (the share-by-link unit), not per-creator task visibility — write/send stays creator-gated. See ``tasks_facade.get_conversation_task_dtos``. */
+export interface ConversationTask {
+  id: string;
+  task_number: number | null;
+  slug: string;
+  title: string;
+  title_manually_set: boolean;
+  description: string;
+  origin_product: string;
+  /** Agent protocol and harness used for this task's runs. * `acp` - ACP * `pi` - Pi */
+  runtime: RuntimeEnum;
+  repository: string | null;
+  github_integration: number | null;
+  github_user_integration: string | null;
+  signal_report: string | null;
+  json_schema: ConversationTaskJsonSchemaMap | null;
+  internal: boolean;
+  archived: boolean;
+  archived_at: string | null;
+  /** Id of the latest TaskRun; null when the task has no runs. */
+  latest_run: string | null;
+  created_at?: string | null;
+  updated_at?: string | null;
+  created_by?: TaskUserBasicInfo | null;
+  ci_prompt: string | null;
+}
+export const ConversationTask = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    task_number: S.NullOr(S.Number),
+    slug: S.String,
+    title: S.String,
+    title_manually_set: S.Boolean,
+    description: S.String,
+    origin_product: S.String,
+    runtime: RuntimeEnum,
+    repository: S.NullOr(S.String),
+    github_integration: S.NullOr(S.Number),
+    github_user_integration: S.NullOr(S.String),
+    signal_report: S.NullOr(S.String),
+    json_schema: S.NullOr(ConversationTaskJsonSchemaMap),
+    internal: S.Boolean,
+    archived: S.Boolean,
+    archived_at: S.NullOr(S.String),
+    latest_run: S.NullOr(S.String),
+    created_at: S.optional(S.NullOr(S.String)),
+    updated_at: S.optional(S.NullOr(S.String)),
+    created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
+    ci_prompt: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "ConversationTask",
+}) as any as S.Schema<ConversationTask>;
+
 export interface ConversationMinimal {
   id?: string;
   status?: ConversationStatus;
@@ -514,7 +424,7 @@ export interface ConversationMinimal {
   title?: string | null;
   /** Product domain the conversation is about, classified from the first question. * `web_analytics` - Web analytics * `product_analytics` - Product analytics * `session_replay` - Session replay * `surveys` - Surveys * `feature_flags` - Feature flags * `experiments` - Experiments * `error_tracking` - Error tracking * `data_warehouse` - Data warehouse * `other` - Other */
   topic?: TopicEnum | null;
-  user?: UserBasic;
+  user?: UserBasic | null;
   created_at?: string | null;
   updated_at?: string | null;
   type?: ConversationType;
@@ -532,7 +442,7 @@ export const ConversationMinimal = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(ConversationStatus),
     title: S.optional(S.NullOr(S.String)),
     topic: S.optional(S.NullOr(TopicEnum)),
-    user: S.optional(UserBasic),
+    user: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.NullOr(S.String)),
     updated_at: S.optional(S.NullOr(S.String)),
     type: S.optional(ConversationType),
@@ -545,7 +455,8 @@ export const ConversationMinimal = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversationMinimal",
 }) as any as S.Schema<ConversationMinimal>;
 
-export type PaginatedConversationMinimalListResultsList = ConversationMinimal[];
+export type PaginatedConversationMinimalListResultsList =
+  ReadonlyArray<ConversationMinimal>;
 export const PaginatedConversationMinimalListResultsList =
   /*@__PURE__*/ S.Array(
     ConversationMinimal,
@@ -577,8 +488,7 @@ export type SandboxAttachedContextItemTypeEnum =
   | "event"
   | "insight"
   | "notebook"
-  | "text"
-  | (string & {});
+  | "text";
 export const SandboxAttachedContextItemTypeEnum = /*@__PURE__*/ S.String;
 
 /** One typed attachment carried by a sandbox message. DEPRECATED PATH — do not extend. This structured `attached_context` (and its server-side wrap in `context_wrapper.py`) exists only for the legacy Max conversations bridge and is removed with it; the live path wraps context client-side (`products/posthog_ai/frontend/utils/posthogContextBlock.ts`). */
@@ -605,7 +515,7 @@ export const SandboxAttachedContextItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Typed PostHog entities (and free text) attached to this message. */
 export type ConversationsOpenCreateRequestAttachedContextList =
-  SandboxAttachedContextItem[];
+  ReadonlyArray<SandboxAttachedContextItem>;
 export const ConversationsOpenCreateRequestAttachedContextList =
   /*@__PURE__*/ S.Array(
     SandboxAttachedContextItem,
@@ -617,8 +527,7 @@ export type InitialPermissionModeEnum =
   | "acceptEdits"
   | "plan"
   | "bypassPermissions"
-  | "auto"
-  | (string & {});
+  | "auto";
 export const InitialPermissionModeEnum = /*@__PURE__*/ S.String;
 
 export interface ConversationsOpenCreateRequest {
@@ -684,95 +593,17 @@ export const SandboxMessageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SandboxMessageResponse",
 }) as any as S.Schema<SandboxMessageResponse>;
 
-export type ConversationsQueueClearCreateRequestMessagesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const ConversationsQueueClearCreateRequestMessagesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ConversationsQueueClearCreateRequestMessagesItemMap>;
-
-export type ConversationsQueueClearCreateRequestMessagesList =
-  ConversationsQueueClearCreateRequestMessagesItemMap[];
-export const ConversationsQueueClearCreateRequestMessagesList =
-  /*@__PURE__*/ S.Array(
-    ConversationsQueueClearCreateRequestMessagesItemMap,
-  ) as any as S.Schema<ConversationsQueueClearCreateRequestMessagesList>;
-
-export type ConversationsQueueClearCreateRequestPendingApprovalsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const ConversationsQueueClearCreateRequestPendingApprovalsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ConversationsQueueClearCreateRequestPendingApprovalsItemMap>;
-
-/** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
-export type ConversationsQueueClearCreateRequestPendingApprovalsList =
-  ConversationsQueueClearCreateRequestPendingApprovalsItemMap[];
-export const ConversationsQueueClearCreateRequestPendingApprovalsList =
-  /*@__PURE__*/ S.Array(
-    ConversationsQueueClearCreateRequestPendingApprovalsItemMap,
-  ) as any as S.Schema<ConversationsQueueClearCreateRequestPendingApprovalsList>;
-
 export interface ConversationsQueueClearCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this conversation. */
   conversation: string;
-  id?: string;
-  status?: ConversationStatus;
-  /** Title of the conversation. */
-  title?: string | null;
-  /** Product domain the conversation is about, classified from the first question. * `web_analytics` - Web analytics * `product_analytics` - Product analytics * `session_replay` - Session replay * `surveys` - Surveys * `feature_flags` - Feature flags * `experiments` - Experiments * `error_tracking` - Error tracking * `data_warehouse` - Data warehouse * `other` - Other */
-  topic?: TopicEnum | null;
-  user?: UserBasic;
-  created_at?: string | null;
-  updated_at?: string | null;
-  type?: ConversationType;
-  /** Whether this conversation was created during an impersonated session (e.g., by support agents). Internal conversations are hidden from customers. */
-  is_internal?: boolean | null;
-  /** Unique key for Slack thread: '{workspace_id}:{channel}:{thread_ts}' */
-  slack_thread_key?: string | null;
-  /** Slack workspace subdomain (e.g. 'posthog' for posthog.slack.com) */
-  slack_workspace_domain?: string | null;
-  messages?: ConversationsQueueClearCreateRequestMessagesList;
-  has_unsupported_content?: boolean;
-  agent_mode?: string | null;
-  /** Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field; born-'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is 'sandbox' but still returns its legacy thread in `messages`. * `langgraph` - LangGraph * `sandbox` - Sandbox */
-  agent_runtime?: AgentRuntimeEnum;
-  is_sandbox?: boolean;
-  /** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
-  pending_approvals?: ConversationsQueueClearCreateRequestPendingApprovalsList;
-  task?: ConversationTask | null;
 }
 export const ConversationsQueueClearCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       conversation: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
-      status: S.optional(ConversationStatus),
-      title: S.optional(S.NullOr(S.String)),
-      topic: S.optional(S.NullOr(TopicEnum)),
-      user: S.optional(UserBasic),
-      created_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      type: S.optional(ConversationType),
-      is_internal: S.optional(S.NullOr(S.Boolean)),
-      slack_thread_key: S.optional(S.NullOr(S.String)),
-      slack_workspace_domain: S.optional(S.NullOr(S.String)),
-      messages: S.optional(ConversationsQueueClearCreateRequestMessagesList),
-      has_unsupported_content: S.optional(S.Boolean),
-      agent_mode: S.optional(S.NullOr(S.String)),
-      agent_runtime: S.optional(AgentRuntimeEnum),
-      is_sandbox: S.optional(S.Boolean),
-      pending_approvals: S.optional(
-        ConversationsQueueClearCreateRequestPendingApprovalsList,
-      ),
-      task: S.optional(S.NullOr(ConversationTask)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -792,10 +623,15 @@ export const ConversationMessagesItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ConversationMessagesItemMap>;
 
-export type ConversationMessagesList = ConversationMessagesItemMap[];
+export type ConversationMessagesList =
+  ReadonlyArray<ConversationMessagesItemMap>;
 export const ConversationMessagesList = /*@__PURE__*/ S.Array(
   ConversationMessagesItemMap,
 ) as any as S.Schema<ConversationMessagesList>;
+
+/** * `langgraph` - LangGraph * `sandbox` - Sandbox */
+export type AgentRuntimeEnum = "langgraph" | "sandbox";
+export const AgentRuntimeEnum = /*@__PURE__*/ S.String;
 
 export type ConversationPendingApprovalsItemMap = {
   [key: string]: unknown | undefined;
@@ -807,7 +643,7 @@ export const ConversationPendingApprovalsItemMap = /*@__PURE__*/ S.Record(
 
 /** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
 export type ConversationPendingApprovalsList =
-  ConversationPendingApprovalsItemMap[];
+  ReadonlyArray<ConversationPendingApprovalsItemMap>;
 export const ConversationPendingApprovalsList = /*@__PURE__*/ S.Array(
   ConversationPendingApprovalsItemMap,
 ) as any as S.Schema<ConversationPendingApprovalsList>;
@@ -819,7 +655,7 @@ export interface Conversation {
   title?: string | null;
   /** Product domain the conversation is about, classified from the first question. * `web_analytics` - Web analytics * `product_analytics` - Product analytics * `session_replay` - Session replay * `surveys` - Surveys * `feature_flags` - Feature flags * `experiments` - Experiments * `error_tracking` - Error tracking * `data_warehouse` - Data warehouse * `other` - Other */
   topic?: TopicEnum | null;
-  user?: UserBasic;
+  user?: UserBasic | null;
   created_at?: string | null;
   updated_at?: string | null;
   type?: ConversationType;
@@ -845,7 +681,7 @@ export const Conversation = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(ConversationStatus),
     title: S.optional(S.NullOr(S.String)),
     topic: S.optional(S.NullOr(TopicEnum)),
-    user: S.optional(UserBasic),
+    user: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.NullOr(S.String)),
     updated_at: S.optional(S.NullOr(S.String)),
     type: S.optional(ConversationType),
@@ -862,94 +698,16 @@ export const Conversation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Conversation" }) as any as S.Schema<Conversation>;
 
-export type ConversationsQueueCreateRequestMessagesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const ConversationsQueueCreateRequestMessagesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ConversationsQueueCreateRequestMessagesItemMap>;
-
-export type ConversationsQueueCreateRequestMessagesList =
-  ConversationsQueueCreateRequestMessagesItemMap[];
-export const ConversationsQueueCreateRequestMessagesList =
-  /*@__PURE__*/ S.Array(
-    ConversationsQueueCreateRequestMessagesItemMap,
-  ) as any as S.Schema<ConversationsQueueCreateRequestMessagesList>;
-
-export type ConversationsQueueCreateRequestPendingApprovalsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const ConversationsQueueCreateRequestPendingApprovalsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ConversationsQueueCreateRequestPendingApprovalsItemMap>;
-
-/** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
-export type ConversationsQueueCreateRequestPendingApprovalsList =
-  ConversationsQueueCreateRequestPendingApprovalsItemMap[];
-export const ConversationsQueueCreateRequestPendingApprovalsList =
-  /*@__PURE__*/ S.Array(
-    ConversationsQueueCreateRequestPendingApprovalsItemMap,
-  ) as any as S.Schema<ConversationsQueueCreateRequestPendingApprovalsList>;
-
 export interface ConversationsQueueCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this conversation. */
   conversation: string;
-  id?: string;
-  status?: ConversationStatus;
-  /** Title of the conversation. */
-  title?: string | null;
-  /** Product domain the conversation is about, classified from the first question. * `web_analytics` - Web analytics * `product_analytics` - Product analytics * `session_replay` - Session replay * `surveys` - Surveys * `feature_flags` - Feature flags * `experiments` - Experiments * `error_tracking` - Error tracking * `data_warehouse` - Data warehouse * `other` - Other */
-  topic?: TopicEnum | null;
-  user?: UserBasic;
-  created_at?: string | null;
-  updated_at?: string | null;
-  type?: ConversationType;
-  /** Whether this conversation was created during an impersonated session (e.g., by support agents). Internal conversations are hidden from customers. */
-  is_internal?: boolean | null;
-  /** Unique key for Slack thread: '{workspace_id}:{channel}:{thread_ts}' */
-  slack_thread_key?: string | null;
-  /** Slack workspace subdomain (e.g. 'posthog' for posthog.slack.com) */
-  slack_workspace_domain?: string | null;
-  messages?: ConversationsQueueCreateRequestMessagesList;
-  has_unsupported_content?: boolean;
-  agent_mode?: string | null;
-  /** Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field; born-'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is 'sandbox' but still returns its legacy thread in `messages`. * `langgraph` - LangGraph * `sandbox` - Sandbox */
-  agent_runtime?: AgentRuntimeEnum;
-  is_sandbox?: boolean;
-  /** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
-  pending_approvals?: ConversationsQueueCreateRequestPendingApprovalsList;
-  task?: ConversationTask | null;
 }
 export const ConversationsQueueCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     conversation: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    status: S.optional(ConversationStatus),
-    title: S.optional(S.NullOr(S.String)),
-    topic: S.optional(S.NullOr(TopicEnum)),
-    user: S.optional(UserBasic),
-    created_at: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.NullOr(S.String)),
-    type: S.optional(ConversationType),
-    is_internal: S.optional(S.NullOr(S.Boolean)),
-    slack_thread_key: S.optional(S.NullOr(S.String)),
-    slack_workspace_domain: S.optional(S.NullOr(S.String)),
-    messages: S.optional(ConversationsQueueCreateRequestMessagesList),
-    has_unsupported_content: S.optional(S.Boolean),
-    agent_mode: S.optional(S.NullOr(S.String)),
-    agent_runtime: S.optional(AgentRuntimeEnum),
-    is_sandbox: S.optional(S.Boolean),
-    pending_approvals: S.optional(
-      ConversationsQueueCreateRequestPendingApprovalsList,
-    ),
-    task: S.optional(S.NullOr(ConversationTask)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -991,70 +749,12 @@ export const ConversationsQueueDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversationsQueueDestroyResponse",
 }) as any as S.Schema<ConversationsQueueDestroyResponse>;
 
-export type ConversationsQueuePartialUpdateRequestMessagesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const ConversationsQueuePartialUpdateRequestMessagesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ConversationsQueuePartialUpdateRequestMessagesItemMap>;
-
-export type ConversationsQueuePartialUpdateRequestMessagesList =
-  ConversationsQueuePartialUpdateRequestMessagesItemMap[];
-export const ConversationsQueuePartialUpdateRequestMessagesList =
-  /*@__PURE__*/ S.Array(
-    ConversationsQueuePartialUpdateRequestMessagesItemMap,
-  ) as any as S.Schema<ConversationsQueuePartialUpdateRequestMessagesList>;
-
-export type ConversationsQueuePartialUpdateRequestPendingApprovalsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const ConversationsQueuePartialUpdateRequestPendingApprovalsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ConversationsQueuePartialUpdateRequestPendingApprovalsItemMap>;
-
-/** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
-export type ConversationsQueuePartialUpdateRequestPendingApprovalsList =
-  ConversationsQueuePartialUpdateRequestPendingApprovalsItemMap[];
-export const ConversationsQueuePartialUpdateRequestPendingApprovalsList =
-  /*@__PURE__*/ S.Array(
-    ConversationsQueuePartialUpdateRequestPendingApprovalsItemMap,
-  ) as any as S.Schema<ConversationsQueuePartialUpdateRequestPendingApprovalsList>;
-
 export interface ConversationsQueuePartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this conversation. */
   conversation: string;
   queue_id: string;
-  id?: string;
-  status?: ConversationStatus;
-  /** Title of the conversation. */
-  title?: string | null;
-  /** Product domain the conversation is about, classified from the first question. * `web_analytics` - Web analytics * `product_analytics` - Product analytics * `session_replay` - Session replay * `surveys` - Surveys * `feature_flags` - Feature flags * `experiments` - Experiments * `error_tracking` - Error tracking * `data_warehouse` - Data warehouse * `other` - Other */
-  topic?: TopicEnum | null;
-  user?: UserBasic;
-  created_at?: string | null;
-  updated_at?: string | null;
-  type?: ConversationType;
-  /** Whether this conversation was created during an impersonated session (e.g., by support agents). Internal conversations are hidden from customers. */
-  is_internal?: boolean | null;
-  /** Unique key for Slack thread: '{workspace_id}:{channel}:{thread_ts}' */
-  slack_thread_key?: string | null;
-  /** Slack workspace subdomain (e.g. 'posthog' for posthog.slack.com) */
-  slack_workspace_domain?: string | null;
-  messages?: ConversationsQueuePartialUpdateRequestMessagesList;
-  has_unsupported_content?: boolean;
-  agent_mode?: string | null;
-  /** Runtime that owns this conversation. 'langgraph' conversations return their messages in the `messages` field; born-'sandbox' conversations return an empty `messages` array and load history from the products/tasks logs endpoint. A converted conversation is 'sandbox' but still returns its legacy thread in `messages`. * `langgraph` - LangGraph * `sandbox` - Sandbox */
-  agent_runtime?: AgentRuntimeEnum;
-  is_sandbox?: boolean;
-  /** Return pending approval cards as structured data. Combines metadata from conversation.approval_decisions with payload from checkpoint interrupts (single source of truth for payload data). */
-  pending_approvals?: ConversationsQueuePartialUpdateRequestPendingApprovalsList;
-  task?: ConversationTask | null;
 }
 export const ConversationsQueuePartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1062,26 +762,6 @@ export const ConversationsQueuePartialUpdateRequest = /*@__PURE__*/ S.suspend(
       project_id: S.String.pipe(T.Label()),
       conversation: S.String.pipe(T.Label()),
       queue_id: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
-      status: S.optional(ConversationStatus),
-      title: S.optional(S.NullOr(S.String)),
-      topic: S.optional(S.NullOr(TopicEnum)),
-      user: S.optional(UserBasic),
-      created_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      type: S.optional(ConversationType),
-      is_internal: S.optional(S.NullOr(S.Boolean)),
-      slack_thread_key: S.optional(S.NullOr(S.String)),
-      slack_workspace_domain: S.optional(S.NullOr(S.String)),
-      messages: S.optional(ConversationsQueuePartialUpdateRequestMessagesList),
-      has_unsupported_content: S.optional(S.Boolean),
-      agent_mode: S.optional(S.NullOr(S.String)),
-      agent_runtime: S.optional(AgentRuntimeEnum),
-      is_sandbox: S.optional(S.Boolean),
-      pending_approvals: S.optional(
-        ConversationsQueuePartialUpdateRequestPendingApprovalsList,
-      ),
-      task: S.optional(S.NullOr(ConversationTask)),
     }).pipe(
       T.Http({
         method: "PATCH",

@@ -34,7 +34,7 @@ export const MessagingSuppressionsAddSuppressionCreateRequest =
   }) as any as S.Schema<MessagingSuppressionsAddSuppressionCreateRequest>;
 
 /** * `BOUNCE` - Bounce * `MANUAL` - Manual */
-export type MessageSuppressionSourceEnum = "BOUNCE" | "MANUAL" | (string & {});
+export type MessageSuppressionSourceEnum = "BOUNCE" | "MANUAL";
 export const MessageSuppressionSourceEnum = /*@__PURE__*/ S.String;
 
 export interface MessageSuppression {
@@ -130,7 +130,8 @@ export const MessagingSuppressionsSuppressionsRetrieveRequest =
     identifier: "MessagingSuppressionsSuppressionsRetrieveRequest",
   }) as any as S.Schema<MessagingSuppressionsSuppressionsRetrieveRequest>;
 
-export type PaginatedMessageSuppressionResultsList = MessageSuppression[];
+export type PaginatedMessageSuppressionResultsList =
+  ReadonlyArray<MessageSuppression>;
 export const PaginatedMessageSuppressionResultsList = /*@__PURE__*/ S.Array(
   MessageSuppression,
 ) as any as S.Schema<PaginatedMessageSuppressionResultsList>;

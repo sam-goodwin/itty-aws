@@ -148,7 +148,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -201,8 +201,7 @@ export type PostureDeploymentStateEnum =
   | "ACTIVE"
   | "CREATE_FAILED"
   | "UPDATE_FAILED"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const PostureDeploymentStateEnum = /*@__PURE__*/ S.String;
 
 export type PostureDeploymentCategoriesItemEnum =
@@ -210,12 +209,11 @@ export type PostureDeploymentCategoriesItemEnum =
   | "AI"
   | "AWS"
   | "GCP"
-  | "AZURE"
-  | (string & {});
+  | "AZURE";
 export const PostureDeploymentCategoriesItemEnum = /*@__PURE__*/ S.String;
 
 export type PostureDeploymentCategoriesItemEnumList =
-  PostureDeploymentCategoriesItemEnum[];
+  ReadonlyArray<PostureDeploymentCategoriesItemEnum>;
 export const PostureDeploymentCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   PostureDeploymentCategoriesItemEnum,
 ) as any as S.Schema<PostureDeploymentCategoriesItemEnumList>;
@@ -310,8 +308,7 @@ export type PostureStateEnum =
   | "STATE_UNSPECIFIED"
   | "DEPRECATED"
   | "DRAFT"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const PostureStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
@@ -348,7 +345,7 @@ export const Property = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Property" }) as any as S.Schema<Property>;
 
-export type PropertyList = Property[];
+export type PropertyList = ReadonlyArray<Property>;
 export const PropertyList = /*@__PURE__*/ S.Array(
   Property,
 ) as any as S.Schema<PropertyList>;
@@ -366,7 +363,7 @@ export const CustomOutputSpec = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomOutputSpec",
 }) as any as S.Schema<CustomOutputSpec>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -389,8 +386,7 @@ export type CustomConfigSeverityEnum =
   | "CRITICAL"
   | "HIGH"
   | "MEDIUM"
-  | "LOW"
-  | (string & {});
+  | "LOW";
 export const CustomConfigSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A custom module configuration for Security Health Analytics. Use `CustomConfig` to create custom detectors that generate custom findings for resources that you specify. */
@@ -422,8 +418,7 @@ export const CustomConfig = /*@__PURE__*/ S.suspend(() =>
 export type SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const SecurityHealthAnalyticsCustomModuleModuleEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -454,8 +449,7 @@ export const SecurityHealthAnalyticsCustomModule = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const GoogleCloudSecuritypostureV1CustomConstraintActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -463,13 +457,12 @@ export type GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum =
   | "METHOD_TYPE_UNSPECIFIED"
   | "CREATE"
   | "UPDATE"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList =
-  GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum[];
+  ReadonlyArray<GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum>;
 export const GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudSecuritypostureV1CustomConstraintMethodTypesItemEnum,
@@ -575,7 +568,7 @@ export const GoogleCloudSecuritypostureV1PolicyRule = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRule>;
 
 export type GoogleCloudSecuritypostureV1PolicyRuleList =
-  GoogleCloudSecuritypostureV1PolicyRule[];
+  ReadonlyArray<GoogleCloudSecuritypostureV1PolicyRule>;
 export const GoogleCloudSecuritypostureV1PolicyRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudSecuritypostureV1PolicyRule,
 ) as any as S.Schema<GoogleCloudSecuritypostureV1PolicyRuleList>;
@@ -599,8 +592,7 @@ export const OrgPolicyConstraintCustom = /*@__PURE__*/ S.suspend(() =>
 export type SecurityHealthAnalyticsModuleModuleEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const SecurityHealthAnalyticsModuleModuleEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -676,7 +668,7 @@ export const ComplianceStandard = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComplianceStandard",
 }) as any as S.Schema<ComplianceStandard>;
 
-export type ComplianceStandardList = ComplianceStandard[];
+export type ComplianceStandardList = ReadonlyArray<ComplianceStandard>;
 export const ComplianceStandardList = /*@__PURE__*/ S.Array(
   ComplianceStandard,
 ) as any as S.Schema<ComplianceStandardList>;
@@ -701,7 +693,7 @@ export const Policy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
 
-export type PolicyList = Policy[];
+export type PolicyList = ReadonlyArray<Policy>;
 export const PolicyList = /*@__PURE__*/ S.Array(
   Policy,
 ) as any as S.Schema<PolicyList>;
@@ -723,7 +715,7 @@ export const PolicySet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PolicySet" }) as any as S.Schema<PolicySet>;
 
-export type PolicySetList = PolicySet[];
+export type PolicySetList = ReadonlyArray<PolicySet>;
 export const PolicySetList = /*@__PURE__*/ S.Array(
   PolicySet,
 ) as any as S.Schema<PolicySetList>;
@@ -733,11 +725,11 @@ export type PostureCategoriesItemEnum =
   | "AI"
   | "AWS"
   | "GCP"
-  | "AZURE"
-  | (string & {});
+  | "AZURE";
 export const PostureCategoriesItemEnum = /*@__PURE__*/ S.String;
 
-export type PostureCategoriesItemEnumList = PostureCategoriesItemEnum[];
+export type PostureCategoriesItemEnumList =
+  ReadonlyArray<PostureCategoriesItemEnum>;
 export const PostureCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   PostureCategoriesItemEnum,
 ) as any as S.Schema<PostureCategoriesItemEnumList>;
@@ -996,12 +988,11 @@ export type PostureTemplateCategoriesItemEnum =
   | "AI"
   | "AWS"
   | "GCP"
-  | "AZURE"
-  | (string & {});
+  | "AZURE";
 export const PostureTemplateCategoriesItemEnum = /*@__PURE__*/ S.String;
 
 export type PostureTemplateCategoriesItemEnumList =
-  PostureTemplateCategoriesItemEnum[];
+  ReadonlyArray<PostureTemplateCategoriesItemEnum>;
 export const PostureTemplateCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   PostureTemplateCategoriesItemEnum,
 ) as any as S.Schema<PostureTemplateCategoriesItemEnumList>;
@@ -1009,8 +1000,7 @@ export const PostureTemplateCategoriesItemEnumList = /*@__PURE__*/ S.Array(
 export type PostureTemplateStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const PostureTemplateStateEnum = /*@__PURE__*/ S.String;
 
 /** The details of a posture template. */
@@ -1065,8 +1055,7 @@ export type ViolationSeverityEnum =
   | "CRITICAL"
   | "HIGH"
   | "MEDIUM"
-  | "LOW"
-  | (string & {});
+  | "LOW";
 export const ViolationSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Details of a posture deployment. */
@@ -1098,8 +1087,7 @@ export type PolicyDetailsConstraintTypeEnum =
   | "ORG_POLICY_CUSTOM"
   | "SECURITY_HEALTH_ANALYTICS_MODULE"
   | "ORG_POLICY"
-  | "REGO_POLICY"
-  | (string & {});
+  | "REGO_POLICY";
 export const PolicyDetailsConstraintTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details of a policy that was violated. */
@@ -1165,7 +1153,7 @@ export const Violation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Violation" }) as any as S.Schema<Violation>;
 
-export type ViolationList = Violation[];
+export type ViolationList = ReadonlyArray<Violation>;
 export const ViolationList = /*@__PURE__*/ S.Array(
   Violation,
 ) as any as S.Schema<ViolationList>;
@@ -1278,7 +1266,7 @@ export const ListOrganizationsLocationsOperationsRequest =
     identifier: "ListOrganizationsLocationsOperationsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1330,7 +1318,7 @@ export const ListOrganizationsLocationsPostureDeploymentsRequest =
     identifier: "ListOrganizationsLocationsPostureDeploymentsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsPostureDeploymentsRequest>;
 
-export type PostureDeploymentList = PostureDeployment[];
+export type PostureDeploymentList = ReadonlyArray<PostureDeployment>;
 export const PostureDeploymentList = /*@__PURE__*/ S.Array(
   PostureDeployment,
 ) as any as S.Schema<PostureDeploymentList>;
@@ -1382,7 +1370,7 @@ export const ListOrganizationsLocationsPosturesRequest =
     identifier: "ListOrganizationsLocationsPosturesRequest",
   }) as any as S.Schema<ListOrganizationsLocationsPosturesRequest>;
 
-export type PostureList = Posture[];
+export type PostureList = ReadonlyArray<Posture>;
 export const PostureList = /*@__PURE__*/ S.Array(
   Posture,
 ) as any as S.Schema<PostureList>;
@@ -1434,7 +1422,7 @@ export const ListOrganizationsLocationsPostureTemplatesRequest =
     identifier: "ListOrganizationsLocationsPostureTemplatesRequest",
   }) as any as S.Schema<ListOrganizationsLocationsPostureTemplatesRequest>;
 
-export type PostureTemplateList = PostureTemplate[];
+export type PostureTemplateList = ReadonlyArray<PostureTemplate>;
 export const PostureTemplateList = /*@__PURE__*/ S.Array(
   PostureTemplate,
 ) as any as S.Schema<PostureTemplateList>;
@@ -1483,7 +1471,7 @@ export const ListOrganizationsLocationsReportsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOrganizationsLocationsReportsRequest",
 }) as any as S.Schema<ListOrganizationsLocationsReportsRequest>;
 
-export type ReportList = Report[];
+export type ReportList = ReadonlyArray<Report>;
 export const ReportList = /*@__PURE__*/ S.Array(
   Report,
 ) as any as S.Schema<ReportList>;
@@ -1537,7 +1525,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;

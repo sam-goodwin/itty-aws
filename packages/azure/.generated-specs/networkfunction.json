@@ -522,16 +522,27 @@
             "smithy.api#documentation": "Collector Policy Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.networkfunction#CollectorPoliciesUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.networkfunction#CollectorPoliciesUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.networkfunction#CollectorPoliciesCreateOrUpdate": {
@@ -657,16 +668,40 @@
             "smithy.api#documentation": "Collector Policy Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.networkfunction#CollectorPolicyPropertiesFormat",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the Collector Policy."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.networkfunction#CollectorPoliciesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.networkfunction#CollectorPoliciesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.networkfunction#CollectorPoliciesGet": {
@@ -1162,16 +1197,27 @@
             "smithy.api#documentation": "Azure Traffic Collector name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.networkfunction#AzureTrafficCollectorsUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.networkfunction#AzureTrafficCollectorsCreateOrUpdate": {
@@ -1289,16 +1335,61 @@
             "smithy.api#documentation": "Azure Traffic Collector name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.networkfunction#AzureTrafficCollectorPropertiesFormatInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the Azure Traffic Collector."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.networkfunction#AzureTrafficCollectorsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.networkfunction#AzureTrafficCollectorsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.networkfunction#AzureTrafficCollectorPropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "virtualHub": {
+          "target": "com.azure.networkfunction#ResourceReferenceInput",
+          "traits": {
+            "smithy.api#documentation": "The virtualHub to which the Azure Traffic Collector belongs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Traffic Collector resource properties."
+      }
+    },
+    "com.azure.networkfunction#ResourceReferenceInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Resource reference properties."
       }
     },
     "com.azure.networkfunction#AzureTrafficCollectorsGet": {

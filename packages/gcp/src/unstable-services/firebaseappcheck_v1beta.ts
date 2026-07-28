@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -105,7 +105,7 @@ export const GoogleFirebaseAppcheckV1betaAppAttestConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaAppAttestConfig>;
 
 export type GoogleFirebaseAppcheckV1betaAppAttestConfigList =
-  GoogleFirebaseAppcheckV1betaAppAttestConfig[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaAppAttestConfig>;
 export const GoogleFirebaseAppcheckV1betaAppAttestConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaAppAttestConfig,
@@ -174,7 +174,7 @@ export const GoogleFirebaseAppcheckV1betaDeviceCheckConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>;
 
 export type GoogleFirebaseAppcheckV1betaDeviceCheckConfigList =
-  GoogleFirebaseAppcheckV1betaDeviceCheckConfig[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>;
 export const GoogleFirebaseAppcheckV1betaDeviceCheckConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaDeviceCheckConfig,
@@ -236,8 +236,7 @@ export type GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrityMinDev
     | "NO_INTEGRITY"
     | "MEETS_BASIC_INTEGRITY"
     | "MEETS_DEVICE_INTEGRITY"
-    | "MEETS_STRONG_INTEGRITY"
-    | (string & {});
+    | "MEETS_STRONG_INTEGRITY";
 export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrityMinDeviceRecognitionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -305,7 +304,7 @@ export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>;
 
 export type GoogleFirebaseAppcheckV1betaPlayIntegrityConfigList =
-  GoogleFirebaseAppcheckV1betaPlayIntegrityConfig[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>;
 export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaPlayIntegrityConfig,
@@ -375,7 +374,7 @@ export const GoogleFirebaseAppcheckV1betaRecaptchaConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaRecaptchaConfig>;
 
 export type GoogleFirebaseAppcheckV1betaRecaptchaConfigList =
-  GoogleFirebaseAppcheckV1betaRecaptchaConfig[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaRecaptchaConfig>;
 export const GoogleFirebaseAppcheckV1betaRecaptchaConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaRecaptchaConfig,
@@ -458,7 +457,7 @@ export const GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>;
 
 export type GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigList =
-  GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>;
 export const GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig,
@@ -530,7 +529,7 @@ export const GoogleFirebaseAppcheckV1betaRecaptchaV3Config =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaRecaptchaV3Config>;
 
 export type GoogleFirebaseAppcheckV1betaRecaptchaV3ConfigList =
-  GoogleFirebaseAppcheckV1betaRecaptchaV3Config[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaRecaptchaV3Config>;
 export const GoogleFirebaseAppcheckV1betaRecaptchaV3ConfigList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaRecaptchaV3Config,
@@ -554,16 +553,14 @@ export const GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse =
 export type GoogleFirebaseAppcheckV1betaServiceEnforcementModeEnum =
   | "OFF"
   | "UNENFORCED"
-  | "ENFORCED"
-  | (string & {});
+  | "ENFORCED";
 export const GoogleFirebaseAppcheckV1betaServiceEnforcementModeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleFirebaseAppcheckV1betaServiceReplayProtectionEnum =
   | "OFF"
   | "UNENFORCED"
-  | "ENFORCED"
-  | (string & {});
+  | "ENFORCED";
 export const GoogleFirebaseAppcheckV1betaServiceReplayProtectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -614,7 +611,7 @@ export const GoogleFirebaseAppcheckV1betaUpdateServiceRequest =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaUpdateServiceRequest>;
 
 export type GoogleFirebaseAppcheckV1betaUpdateServiceRequestList =
-  GoogleFirebaseAppcheckV1betaUpdateServiceRequest[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaUpdateServiceRequest>;
 export const GoogleFirebaseAppcheckV1betaUpdateServiceRequestList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaUpdateServiceRequest,
@@ -663,7 +660,7 @@ export const BatchUpdateProjectsServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchUpdateProjectsServicesRequest>;
 
 export type GoogleFirebaseAppcheckV1betaServiceList =
-  GoogleFirebaseAppcheckV1betaService[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaService>;
 export const GoogleFirebaseAppcheckV1betaServiceList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppcheckV1betaService,
 ) as any as S.Schema<GoogleFirebaseAppcheckV1betaServiceList>;
@@ -685,8 +682,7 @@ export const GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse =
 export type GoogleFirebaseAppcheckV1betaResourcePolicyEnforcementModeEnum =
   | "OFF"
   | "UNENFORCED"
-  | "ENFORCED"
-  | (string & {});
+  | "ENFORCED";
 export const GoogleFirebaseAppcheckV1betaResourcePolicyEnforcementModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -736,7 +732,7 @@ export const GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest =
   }) as any as S.Schema<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>;
 
 export type GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequestList =
-  GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>;
 export const GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequestList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest,
@@ -789,7 +785,7 @@ export const BatchUpdateProjectsServicesResourcePoliciesRequest =
   }) as any as S.Schema<BatchUpdateProjectsServicesResourcePoliciesRequest>;
 
 export type GoogleFirebaseAppcheckV1betaResourcePolicyList =
-  GoogleFirebaseAppcheckV1betaResourcePolicy[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaResourcePolicy>;
 export const GoogleFirebaseAppcheckV1betaResourcePolicyList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppcheckV1betaResourcePolicy,
@@ -1652,7 +1648,7 @@ export const GoogleFirebaseAppcheckV1betaPublicJwk = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirebaseAppcheckV1betaPublicJwk>;
 
 export type GoogleFirebaseAppcheckV1betaPublicJwkList =
-  GoogleFirebaseAppcheckV1betaPublicJwk[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaPublicJwk>;
 export const GoogleFirebaseAppcheckV1betaPublicJwkList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppcheckV1betaPublicJwk,
 ) as any as S.Schema<GoogleFirebaseAppcheckV1betaPublicJwkList>;
@@ -1865,7 +1861,7 @@ export const ListProjectsAppsDebugTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsAppsDebugTokensRequest>;
 
 export type GoogleFirebaseAppcheckV1betaDebugTokenList =
-  GoogleFirebaseAppcheckV1betaDebugToken[];
+  ReadonlyArray<GoogleFirebaseAppcheckV1betaDebugToken>;
 export const GoogleFirebaseAppcheckV1betaDebugTokenList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppcheckV1betaDebugToken,
 ) as any as S.Schema<GoogleFirebaseAppcheckV1betaDebugTokenList>;

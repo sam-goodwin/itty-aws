@@ -154,10 +154,10 @@ export const GetReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReportDefinitionRequest",
 }) as any as S.Schema<GetReportDefinitionRequest>;
 export type ReportDescription = string;
-export type ReportFrequency = "MONTHLY" | "DAILY" | "ALL" | (string & {});
+export type ReportFrequency = "MONTHLY" | "DAILY" | "ALL";
 export const ReportFrequency = /*@__PURE__*/ S.String;
 
-export type Format = "CSV" | "PARQUET" | (string & {});
+export type Format = "CSV" | "PARQUET";
 export const Format = /*@__PURE__*/ S.String;
 
 export type S3Bucket = string;
@@ -196,8 +196,7 @@ export type S3BucketRegion =
   | "ap-east-1"
   | "me-south-1"
   | "eu-south-1"
-  | "af-south-1"
-  | (string & {});
+  | "af-south-1";
 export const S3BucketRegion = /*@__PURE__*/ S.String;
 
 export interface SourceS3Location {

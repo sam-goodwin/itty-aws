@@ -179,13 +179,10 @@ export const AssociateAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateAccountsResponse>;
 export type RuleName = string;
 export type RuleDescription = string;
-export type RuleType = "OrganizationRule" | "AccountRule" | (string & {});
+export type RuleType = "OrganizationRule" | "AccountRule";
 export const RuleType = /*@__PURE__*/ S.String;
 
-export type RuleApplyOrder =
-  | "BeforeAccountRules"
-  | "AfterAccountRules"
-  | (string & {});
+export type RuleApplyOrder = "BeforeAccountRules" | "AfterAccountRules";
 export const RuleApplyOrder = /*@__PURE__*/ S.String;
 
 export type OrganizationConfigurationAccountIds = string[];
@@ -206,8 +203,7 @@ export const OrganizationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationConfiguration>;
 export type RecommendedActionType =
   | "SnapshotAndDeleteUnattachedEbsVolume"
-  | "UpgradeEbsVolumeType"
-  | (string & {});
+  | "UpgradeEbsVolumeType";
 export const RecommendedActionType = /*@__PURE__*/ S.String;
 
 export type RecommendedActionTypeList = RecommendedActionType[];
@@ -238,8 +234,7 @@ export type ComparisonOperator =
   | "NumericLessThanIfExists"
   | "NumericLessThanEqualsIfExists"
   | "NumericGreaterThanIfExists"
-  | "NumericGreaterThanEqualsIfExists"
-  | (string & {});
+  | "NumericGreaterThanEqualsIfExists";
 export const ComparisonOperator = /*@__PURE__*/ S.String;
 
 export type StringCriteriaValue = string;
@@ -349,7 +344,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
     executionWindowInMinutes: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
-export type RuleStatus = "Active" | "Inactive" | (string & {});
+export type RuleStatus = "Active" | "Inactive";
 export const RuleStatus = /*@__PURE__*/ S.String;
 
 export type TagKey = string;
@@ -496,8 +491,7 @@ export const GetAutomationEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAutomationEventRequest>;
 export type EventType =
   | "SnapshotAndDeleteUnattachedEbsVolume"
-  | "UpgradeEbsVolumeType"
-  | (string & {});
+  | "UpgradeEbsVolumeType";
 export const EventType = /*@__PURE__*/ S.String;
 
 export type EventStatus =
@@ -509,20 +503,16 @@ export type EventStatus =
   | "RollbackReady"
   | "RollbackInProgress"
   | "RollbackComplete"
-  | "RollbackFailed"
-  | (string & {});
+  | "RollbackFailed";
 export const EventStatus = /*@__PURE__*/ S.String;
 
 export type ResourceArn = string;
 export type ResourceId = string;
 export type RecommendedActionId = string;
-export type ResourceType = "EbsVolume" | (string & {});
+export type ResourceType = "EbsVolume";
 export const ResourceType = /*@__PURE__*/ S.String;
 
-export type SavingsEstimationMode =
-  | "BeforeDiscount"
-  | "AfterDiscount"
-  | (string & {});
+export type SavingsEstimationMode = "BeforeDiscount" | "AfterDiscount";
 export const SavingsEstimationMode = /*@__PURE__*/ S.String;
 
 export interface EstimatedMonthlySavings {
@@ -645,15 +635,10 @@ export const GetEnrollmentConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnrollmentConfigurationRequest",
 }) as any as S.Schema<GetEnrollmentConfigurationRequest>;
-export type EnrollmentStatus =
-  | "Active"
-  | "Inactive"
-  | "Pending"
-  | "Failed"
-  | (string & {});
+export type EnrollmentStatus = "Active" | "Inactive" | "Pending" | "Failed";
 export const EnrollmentStatus = /*@__PURE__*/ S.String;
 
-export type OrganizationRuleMode = "AnyAllowed" | "NoneAllowed" | (string & {});
+export type OrganizationRuleMode = "AnyAllowed" | "NoneAllowed";
 export const OrganizationRuleMode = /*@__PURE__*/ S.String;
 
 export interface GetEnrollmentConfigurationResponse {
@@ -834,16 +819,10 @@ export type StepType =
   | "CreateEbsSnapshot"
   | "DeleteEbsVolume"
   | "ModifyEbsVolume"
-  | "CreateEbsVolume"
-  | (string & {});
+  | "CreateEbsVolume";
 export const StepType = /*@__PURE__*/ S.String;
 
-export type StepStatus =
-  | "Ready"
-  | "InProgress"
-  | "Complete"
-  | "Failed"
-  | (string & {});
+export type StepStatus = "Ready" | "InProgress" | "Complete" | "Failed";
 export const StepStatus = /*@__PURE__*/ S.String;
 
 export interface AutomationEventStep {

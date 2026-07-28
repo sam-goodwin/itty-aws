@@ -318,16 +318,41 @@
             "smithy.api#documentation": "The PrivateEndpointConnection name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azureactivedirectory#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.azureactivedirectory#PrivateEndpoint",
+          "traits": {
+            "smithy.api#documentation": "Properties of the private endpoint object."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.azureactivedirectory#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "Approval state of the private link connection."
+          }
+        },
+        "privateLinkConnectionTags": {
+          "target": "com.azure.azureactivedirectory#TagsResource",
+          "traits": {
+            "smithy.api#documentation": "Updated tag information to set into the PrivateLinkConnection instance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection resource."
       }
     },
     "com.azure.azureactivedirectory#PrivateEndpointConnectionsGet": {
@@ -915,15 +940,27 @@
             "smithy.api#documentation": "The name of the private link policy in Azure AD."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags to be updated."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azureactivedirectory#PrivateLinkForAzureAdUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags to be updated."
       }
     },
     "com.azure.azureactivedirectory#PrivateLinkForAzureAdCreate": {
@@ -1061,16 +1098,72 @@
             "smithy.api#documentation": "The name of the private link policy in Azure AD."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name of this resource."
+          }
+        },
+        "ownerTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Guid of the owner tenant"
+          }
+        },
+        "allTenants": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag indicating whether all tenants are allowed"
+          }
+        },
+        "tenants": {
+          "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdCreateRequestTenantsList",
+          "traits": {
+            "smithy.api#documentation": "The list of tenantIds."
+          }
+        },
+        "resourceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the private link policy resource"
+          }
+        },
+        "resourceGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the resource group"
+          }
+        },
+        "tags": {
+          "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.azureactivedirectory#PrivateLinkForAzureAdCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.azureactivedirectory#PrivateLinkForAzureAdCreateRequestTenantsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of tenantIds."
       }
     },
     "com.azure.azureactivedirectory#PrivateLinkForAzureAdGet": {

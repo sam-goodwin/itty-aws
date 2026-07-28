@@ -64,8 +64,7 @@ export type AuthTokenStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "CREATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const AuthTokenStateEnum = /*@__PURE__*/ S.String;
 
 /** Auth token for the cluster. */
@@ -129,7 +128,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -286,7 +285,7 @@ export const AclRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AclRule" }) as any as S.Schema<AclRule>;
 
-export type AclRuleList = AclRule[];
+export type AclRuleList = ReadonlyArray<AclRule>;
 export const AclRuleList = /*@__PURE__*/ S.Array(
   AclRule,
 ) as any as S.Schema<AclRuleList>;
@@ -295,16 +294,14 @@ export type AclPolicyStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "UPDATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const AclPolicyStateEnum = /*@__PURE__*/ S.String;
 
 export type AclPolicyRevisionStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "APPLYING"
   | "APPLIED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const AclPolicyRevisionStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** AclPolicyRevisionStatus stores the per-revision status for an attached cluster. */
@@ -329,7 +326,8 @@ export const AclPolicyRevisionStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "AclPolicyRevisionStatus",
 }) as any as S.Schema<AclPolicyRevisionStatus>;
 
-export type AclPolicyRevisionStatusList = AclPolicyRevisionStatus[];
+export type AclPolicyRevisionStatusList =
+  ReadonlyArray<AclPolicyRevisionStatus>;
 export const AclPolicyRevisionStatusList = /*@__PURE__*/ S.Array(
   AclPolicyRevisionStatus,
 ) as any as S.Schema<AclPolicyRevisionStatusList>;
@@ -350,7 +348,8 @@ export const ClusterAclPolicyAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClusterAclPolicyAttachment",
 }) as any as S.Schema<ClusterAclPolicyAttachment>;
 
-export type ClusterAclPolicyAttachmentList = ClusterAclPolicyAttachment[];
+export type ClusterAclPolicyAttachmentList =
+  ReadonlyArray<ClusterAclPolicyAttachment>;
 export const ClusterAclPolicyAttachmentList = /*@__PURE__*/ S.Array(
   ClusterAclPolicyAttachment,
 ) as any as S.Schema<ClusterAclPolicyAttachmentList>;
@@ -423,8 +422,7 @@ export type ClusterNodeTypeEnum =
   | "REDIS_STANDARD_SMALL"
   | "REDIS_HIGHCPU_MEDIUM"
   | "REDIS_STANDARD_LARGE"
-  | "REDIS_HIGHMEM_2XLARGE"
-  | (string & {});
+  | "REDIS_HIGHMEM_2XLARGE";
 export const ClusterNodeTypeEnum = /*@__PURE__*/ S.String;
 
 export type EncryptionInfoKmsKeyPrimaryStateEnum =
@@ -436,11 +434,10 @@ export type EncryptionInfoKmsKeyPrimaryStateEnum =
   | "DESTROY_SCHEDULED"
   | "EKM_KEY_UNREACHABLE_DETECTED"
   | "BILLING_DISABLED"
-  | "UNKNOWN_FAILURE"
-  | (string & {});
+  | "UNKNOWN_FAILURE";
 export const EncryptionInfoKmsKeyPrimaryStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -448,8 +445,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type EncryptionInfoEncryptionTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_MANAGED_ENCRYPTION"
-  | (string & {});
+  | "CUSTOMER_MANAGED_ENCRYPTION";
 export const EncryptionInfoEncryptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** EncryptionInfo describes the encryption information of a cluster or a backup. */
@@ -475,8 +471,7 @@ export const EncryptionInfo = /*@__PURE__*/ S.suspend(() =>
 export type ZoneDistributionConfigModeEnum =
   | "ZONE_DISTRIBUTION_MODE_UNSPECIFIED"
   | "MULTI_ZONE"
-  | "SINGLE_ZONE"
-  | (string & {});
+  | "SINGLE_ZONE";
 export const ZoneDistributionConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Zone distribution config for allocation of cluster resources. */
@@ -508,7 +503,7 @@ export const PscConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PscConfig" }) as any as S.Schema<PscConfig>;
 
-export type PscConfigList = PscConfig[];
+export type PscConfigList = ReadonlyArray<PscConfig>;
 export const PscConfigList = /*@__PURE__*/ S.Array(
   PscConfig,
 ) as any as S.Schema<PscConfigList>;
@@ -517,15 +512,13 @@ export type PscAutoConnectionConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "CONNECTION_TYPE_DISCOVERY"
   | "CONNECTION_TYPE_PRIMARY"
-  | "CONNECTION_TYPE_READER"
-  | (string & {});
+  | "CONNECTION_TYPE_READER";
 export const PscAutoConnectionConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type PscAutoConnectionPscConnectionStatusEnum =
   | "PSC_CONNECTION_STATUS_UNSPECIFIED"
   | "PSC_CONNECTION_STATUS_ACTIVE"
-  | "PSC_CONNECTION_STATUS_NOT_FOUND"
-  | (string & {});
+  | "PSC_CONNECTION_STATUS_NOT_FOUND";
 export const PscAutoConnectionPscConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Details of consumer resources in a PSC connection that is created through Service Connectivity Automation. */
@@ -566,15 +559,13 @@ export type PscConnectionConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "CONNECTION_TYPE_DISCOVERY"
   | "CONNECTION_TYPE_PRIMARY"
-  | "CONNECTION_TYPE_READER"
-  | (string & {});
+  | "CONNECTION_TYPE_READER";
 export const PscConnectionConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type PscConnectionPscConnectionStatusEnum =
   | "PSC_CONNECTION_STATUS_UNSPECIFIED"
   | "PSC_CONNECTION_STATUS_ACTIVE"
-  | "PSC_CONNECTION_STATUS_NOT_FOUND"
-  | (string & {});
+  | "PSC_CONNECTION_STATUS_NOT_FOUND";
 export const PscConnectionPscConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Details of consumer resources in a PSC connection. */
@@ -628,7 +619,7 @@ export const ConnectionDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionDetail",
 }) as any as S.Schema<ConnectionDetail>;
 
-export type ConnectionDetailList = ConnectionDetail[];
+export type ConnectionDetailList = ReadonlyArray<ConnectionDetail>;
 export const ConnectionDetailList = /*@__PURE__*/ S.Array(
   ConnectionDetail,
 ) as any as S.Schema<ConnectionDetailList>;
@@ -646,7 +637,7 @@ export const ClusterEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClusterEndpoint",
 }) as any as S.Schema<ClusterEndpoint>;
 
-export type ClusterEndpointList = ClusterEndpoint[];
+export type ClusterEndpointList = ReadonlyArray<ClusterEndpoint>;
 export const ClusterEndpointList = /*@__PURE__*/ S.Array(
   ClusterEndpoint,
 ) as any as S.Schema<ClusterEndpointList>;
@@ -656,8 +647,7 @@ export type RDBConfigRdbSnapshotPeriodEnum =
   | "ONE_HOUR"
   | "SIX_HOURS"
   | "TWELVE_HOURS"
-  | "TWENTY_FOUR_HOURS"
-  | (string & {});
+  | "TWENTY_FOUR_HOURS";
 export const RDBConfigRdbSnapshotPeriodEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the RDB based persistence. */
@@ -678,8 +668,7 @@ export type AOFConfigAppendFsyncEnum =
   | "APPEND_FSYNC_UNSPECIFIED"
   | "NO"
   | "EVERYSEC"
-  | "ALWAYS"
-  | (string & {});
+  | "ALWAYS";
 export const AOFConfigAppendFsyncEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the AOF based persistence. */
@@ -697,8 +686,7 @@ export type ClusterPersistenceConfigModeEnum =
   | "PERSISTENCE_MODE_UNSPECIFIED"
   | "DISABLED"
   | "RDB"
-  | "AOF"
-  | (string & {});
+  | "AOF";
 export const ClusterPersistenceConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the persistence functionality. */
@@ -723,8 +711,7 @@ export const ClusterPersistenceConfig = /*@__PURE__*/ S.suspend(() =>
 export type AutomatedBackupConfigAutomatedBackupModeEnum =
   | "AUTOMATED_BACKUP_MODE_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const AutomatedBackupConfigAutomatedBackupModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -796,7 +783,7 @@ export const RemoteCluster = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RemoteCluster" }) as any as S.Schema<RemoteCluster>;
 
-export type RemoteClusterList = RemoteCluster[];
+export type RemoteClusterList = ReadonlyArray<RemoteCluster>;
 export const RemoteClusterList = /*@__PURE__*/ S.Array(
   RemoteCluster,
 ) as any as S.Schema<RemoteClusterList>;
@@ -819,8 +806,7 @@ export type CrossClusterReplicationConfigClusterRoleEnum =
   | "CLUSTER_ROLE_UNSPECIFIED"
   | "NONE"
   | "PRIMARY"
-  | "SECONDARY"
-  | (string & {});
+  | "SECONDARY";
 export const CrossClusterReplicationConfigClusterRoleEnum =
   /*@__PURE__*/ S.String;
 
@@ -852,8 +838,7 @@ export const CrossClusterReplicationConfig = /*@__PURE__*/ S.suspend(() =>
 export type ClusterTransitEncryptionModeEnum =
   | "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
   | "TRANSIT_ENCRYPTION_MODE_DISABLED"
-  | "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"
-  | (string & {});
+  | "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION";
 export const ClusterTransitEncryptionModeEnum = /*@__PURE__*/ S.String;
 
 /** Backups stored in Cloud Storage buckets. The Cloud Storage buckets need to be the same region as the clusters. */
@@ -891,7 +876,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type PscConnectionList = PscConnection[];
+export type PscConnectionList = ReadonlyArray<PscConnection>;
 export const PscConnectionList = /*@__PURE__*/ S.Array(
   PscConnection,
 ) as any as S.Schema<PscConnectionList>;
@@ -904,8 +889,7 @@ export type ClusterWeeklyMaintenanceWindowDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const ClusterWeeklyMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** Time window specified for weekly operations. */
@@ -925,7 +909,7 @@ export const ClusterWeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterWeeklyMaintenanceWindow>;
 
 export type ClusterWeeklyMaintenanceWindowList =
-  ClusterWeeklyMaintenanceWindow[];
+  ReadonlyArray<ClusterWeeklyMaintenanceWindow>;
 export const ClusterWeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
   ClusterWeeklyMaintenanceWindow,
 ) as any as S.Schema<ClusterWeeklyMaintenanceWindowList>;
@@ -953,8 +937,7 @@ export type ClusterServerCaModeEnum =
   | "SERVER_CA_MODE_UNSPECIFIED"
   | "SERVER_CA_MODE_GOOGLE_MANAGED_PER_INSTANCE_CA"
   | "SERVER_CA_MODE_GOOGLE_MANAGED_SHARED_CA"
-  | "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA"
-  | (string & {});
+  | "SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA";
 export const ClusterServerCaModeEnum = /*@__PURE__*/ S.String;
 
 export type ClusterStateEnum =
@@ -962,8 +945,7 @@ export type ClusterStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "UPDATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const ClusterStateEnum = /*@__PURE__*/ S.String;
 
 /** Endpoints on each network, for Redis clients to connect to the cluster. */
@@ -985,7 +967,7 @@ export const DiscoveryEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiscoveryEndpoint",
 }) as any as S.Schema<DiscoveryEndpoint>;
 
-export type DiscoveryEndpointList = DiscoveryEndpoint[];
+export type DiscoveryEndpointList = ReadonlyArray<DiscoveryEndpoint>;
 export const DiscoveryEndpointList = /*@__PURE__*/ S.Array(
   DiscoveryEndpoint,
 ) as any as S.Schema<DiscoveryEndpointList>;
@@ -1027,16 +1009,14 @@ export type ClusterAuthorizationModeEnum =
   | "AUTH_MODE_UNSPECIFIED"
   | "AUTH_MODE_IAM_AUTH"
   | "AUTH_MODE_DISABLED"
-  | "AUTH_MODE_TOKEN_AUTH"
-  | (string & {});
+  | "AUTH_MODE_TOKEN_AUTH";
 export const ClusterAuthorizationModeEnum = /*@__PURE__*/ S.String;
 
 export type PscServiceAttachmentConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "CONNECTION_TYPE_DISCOVERY"
   | "CONNECTION_TYPE_PRIMARY"
-  | "CONNECTION_TYPE_READER"
-  | (string & {});
+  | "CONNECTION_TYPE_READER";
 export const PscServiceAttachmentConnectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of a service attachment of the cluster, for creating PSC connections. */
@@ -1055,7 +1035,7 @@ export const PscServiceAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "PscServiceAttachment",
 }) as any as S.Schema<PscServiceAttachment>;
 
-export type PscServiceAttachmentList = PscServiceAttachment[];
+export type PscServiceAttachmentList = ReadonlyArray<PscServiceAttachment>;
 export const PscServiceAttachmentList = /*@__PURE__*/ S.Array(
   PscServiceAttachment,
 ) as any as S.Schema<PscServiceAttachmentList>;
@@ -1068,8 +1048,7 @@ export type UpdateInfoTargetNodeTypeEnum =
   | "REDIS_STANDARD_SMALL"
   | "REDIS_HIGHCPU_MEDIUM"
   | "REDIS_STANDARD_LARGE"
-  | "REDIS_HIGHMEM_2XLARGE"
-  | (string & {});
+  | "REDIS_HIGHMEM_2XLARGE";
 export const UpdateInfoTargetNodeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents information about an updating cluster. */
@@ -1282,8 +1261,7 @@ export type WeeklyMaintenanceWindowDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const WeeklyMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window. */
@@ -1305,7 +1283,8 @@ export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "WeeklyMaintenanceWindow",
 }) as any as S.Schema<WeeklyMaintenanceWindow>;
 
-export type WeeklyMaintenanceWindowList = WeeklyMaintenanceWindow[];
+export type WeeklyMaintenanceWindowList =
+  ReadonlyArray<WeeklyMaintenanceWindow>;
 export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
   WeeklyMaintenanceWindow,
 ) as any as S.Schema<WeeklyMaintenanceWindowList>;
@@ -1332,11 +1311,7 @@ export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenancePolicy",
 }) as any as S.Schema<MaintenancePolicy>;
 
-export type InstanceTierEnum =
-  | "TIER_UNSPECIFIED"
-  | "BASIC"
-  | "STANDARD_HA"
-  | (string & {});
+export type InstanceTierEnum = "TIER_UNSPECIFIED" | "BASIC" | "STANDARD_HA";
 export const InstanceTierEnum = /*@__PURE__*/ S.String;
 
 export type InstanceStateEnum =
@@ -1348,8 +1323,7 @@ export type InstanceStateEnum =
   | "REPAIRING"
   | "MAINTENANCE"
   | "IMPORTING"
-  | "FAILING_OVER"
-  | (string & {});
+  | "FAILING_OVER";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** TlsCertificate Resource */
@@ -1375,19 +1349,18 @@ export const TlsCertificate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TlsCertificate" }) as any as S.Schema<TlsCertificate>;
 
-export type TlsCertificateList = TlsCertificate[];
+export type TlsCertificateList = ReadonlyArray<TlsCertificate>;
 export const TlsCertificateList = /*@__PURE__*/ S.Array(
   TlsCertificate,
 ) as any as S.Schema<TlsCertificateList>;
 
 export type InstanceSuspensionReasonsItemEnum =
   | "SUSPENSION_REASON_UNSPECIFIED"
-  | "CUSTOMER_MANAGED_KEY_ISSUE"
-  | (string & {});
+  | "CUSTOMER_MANAGED_KEY_ISSUE";
 export const InstanceSuspensionReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type InstanceSuspensionReasonsItemEnumList =
-  InstanceSuspensionReasonsItemEnum[];
+  ReadonlyArray<InstanceSuspensionReasonsItemEnum>;
 export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
   InstanceSuspensionReasonsItemEnum,
 ) as any as S.Schema<InstanceSuspensionReasonsItemEnumList>;
@@ -1395,8 +1368,7 @@ export const InstanceSuspensionReasonsItemEnumList = /*@__PURE__*/ S.Array(
 export type InstanceReadReplicasModeEnum =
   | "READ_REPLICAS_MODE_UNSPECIFIED"
   | "READ_REPLICAS_DISABLED"
-  | "READ_REPLICAS_ENABLED"
-  | (string & {});
+  | "READ_REPLICAS_ENABLED";
 export const InstanceReadReplicasModeEnum = /*@__PURE__*/ S.String;
 
 /** Node specific properties. */
@@ -1413,7 +1385,7 @@ export const NodeInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeInfo" }) as any as S.Schema<NodeInfo>;
 
-export type NodeInfoList = NodeInfo[];
+export type NodeInfoList = ReadonlyArray<NodeInfo>;
 export const NodeInfoList = /*@__PURE__*/ S.Array(
   NodeInfo,
 ) as any as S.Schema<NodeInfoList>;
@@ -1421,8 +1393,7 @@ export const NodeInfoList = /*@__PURE__*/ S.Array(
 export type PersistenceConfigPersistenceModeEnum =
   | "PERSISTENCE_MODE_UNSPECIFIED"
   | "DISABLED"
-  | "RDB"
-  | (string & {});
+  | "RDB";
 export const PersistenceConfigPersistenceModeEnum = /*@__PURE__*/ S.String;
 
 export type PersistenceConfigRdbSnapshotPeriodEnum =
@@ -1430,8 +1401,7 @@ export type PersistenceConfigRdbSnapshotPeriodEnum =
   | "ONE_HOUR"
   | "SIX_HOURS"
   | "TWELVE_HOURS"
-  | "TWENTY_FOUR_HOURS"
-  | (string & {});
+  | "TWENTY_FOUR_HOURS";
 export const PersistenceConfigRdbSnapshotPeriodEnum = /*@__PURE__*/ S.String;
 
 /** Configuration of the persistence functionality. */
@@ -1459,15 +1429,13 @@ export const PersistenceConfig = /*@__PURE__*/ S.suspend(() =>
 export type InstanceConnectModeEnum =
   | "CONNECT_MODE_UNSPECIFIED"
   | "DIRECT_PEERING"
-  | "PRIVATE_SERVICE_ACCESS"
-  | (string & {});
+  | "PRIVATE_SERVICE_ACCESS";
 export const InstanceConnectModeEnum = /*@__PURE__*/ S.String;
 
 export type InstanceTransitEncryptionModeEnum =
   | "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
   | "SERVER_AUTHENTICATION"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const InstanceTransitEncryptionModeEnum = /*@__PURE__*/ S.String;
 
 /** Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated. */
@@ -1886,8 +1854,7 @@ export const ExportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 export type FailoverInstanceRequestDataProtectionModeEnum =
   | "DATA_PROTECTION_MODE_UNSPECIFIED"
   | "LIMITED_DATA_LOSS"
-  | "FORCE_DATA_LOSS"
-  | (string & {});
+  | "FORCE_DATA_LOSS";
 export const FailoverInstanceRequestDataProtectionModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1989,7 +1956,7 @@ export const CertChain = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CertChain" }) as any as S.Schema<CertChain>;
 
-export type CertChainList = CertChain[];
+export type CertChainList = ReadonlyArray<CertChain>;
 export const CertChainList = /*@__PURE__*/ S.Array(
   CertChain,
 ) as any as S.Schema<CertChainList>;
@@ -2208,15 +2175,13 @@ export type BackupNodeTypeEnum =
   | "REDIS_STANDARD_SMALL"
   | "REDIS_HIGHCPU_MEDIUM"
   | "REDIS_STANDARD_LARGE"
-  | "REDIS_HIGHMEM_2XLARGE"
-  | (string & {});
+  | "REDIS_HIGHMEM_2XLARGE";
 export const BackupNodeTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackupBackupTypeEnum =
   | "BACKUP_TYPE_UNSPECIFIED"
   | "ON_DEMAND"
-  | "AUTOMATED"
-  | (string & {});
+  | "AUTOMATED";
 export const BackupBackupTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackupStateEnum =
@@ -2224,8 +2189,7 @@ export type BackupStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** Backup is consisted of multiple backup files. */
@@ -2245,7 +2209,7 @@ export const BackupFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BackupFile" }) as any as S.Schema<BackupFile>;
 
-export type BackupFileList = BackupFile[];
+export type BackupFileList = ReadonlyArray<BackupFile>;
 export const BackupFileList = /*@__PURE__*/ S.Array(
   BackupFile,
 ) as any as S.Schema<BackupFileList>;
@@ -2345,8 +2309,7 @@ export type TokenAuthUserStateEnum =
   | "ACTIVE"
   | "CREATING"
   | "UPDATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const TokenAuthUserStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a token based auth user for the cluster. */
@@ -2452,7 +2415,7 @@ export const RegionalCertChain = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegionalCertChain",
 }) as any as S.Schema<RegionalCertChain>;
 
-export type RegionalCertChainList = RegionalCertChain[];
+export type RegionalCertChainList = ReadonlyArray<RegionalCertChain>;
 export const RegionalCertChainList = /*@__PURE__*/ S.Array(
   RegionalCertChain,
 ) as any as S.Schema<RegionalCertChainList>;
@@ -2573,7 +2536,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2619,7 +2582,7 @@ export const ListProjectsLocationsAclPoliciesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsAclPoliciesRequest",
 }) as any as S.Schema<ListProjectsLocationsAclPoliciesRequest>;
 
-export type AclPolicyList = AclPolicy[];
+export type AclPolicyList = ReadonlyArray<AclPolicy>;
 export const AclPolicyList = /*@__PURE__*/ S.Array(
   AclPolicy,
 ) as any as S.Schema<AclPolicyList>;
@@ -2668,7 +2631,7 @@ export const ListProjectsLocationsAclPoliciesRevisionsRequest =
     identifier: "ListProjectsLocationsAclPoliciesRevisionsRequest",
   }) as any as S.Schema<ListProjectsLocationsAclPoliciesRevisionsRequest>;
 
-export type AclPolicyRevisionList = AclPolicyRevision[];
+export type AclPolicyRevisionList = ReadonlyArray<AclPolicyRevision>;
 export const AclPolicyRevisionList = /*@__PURE__*/ S.Array(
   AclPolicyRevision,
 ) as any as S.Schema<AclPolicyRevisionList>;
@@ -2717,7 +2680,7 @@ export const ListProjectsLocationsBackupCollectionsRequest =
     identifier: "ListProjectsLocationsBackupCollectionsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupCollectionsRequest>;
 
-export type BackupCollectionList = BackupCollection[];
+export type BackupCollectionList = ReadonlyArray<BackupCollection>;
 export const BackupCollectionList = /*@__PURE__*/ S.Array(
   BackupCollection,
 ) as any as S.Schema<BackupCollectionList>;
@@ -2766,7 +2729,7 @@ export const ListProjectsLocationsBackupCollectionsBackupsRequest =
     identifier: "ListProjectsLocationsBackupCollectionsBackupsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupCollectionsBackupsRequest>;
 
-export type BackupList = Backup[];
+export type BackupList = ReadonlyArray<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -2815,7 +2778,7 @@ export const ListProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsClustersRequest",
 }) as any as S.Schema<ListProjectsLocationsClustersRequest>;
 
-export type ClusterList = Cluster[];
+export type ClusterList = ReadonlyArray<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -2870,7 +2833,7 @@ export const ListProjectsLocationsClustersTokenAuthUsersRequest =
     identifier: "ListProjectsLocationsClustersTokenAuthUsersRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersTokenAuthUsersRequest>;
 
-export type TokenAuthUserList = TokenAuthUser[];
+export type TokenAuthUserList = ReadonlyArray<TokenAuthUser>;
 export const TokenAuthUserList = /*@__PURE__*/ S.Array(
   TokenAuthUser,
 ) as any as S.Schema<TokenAuthUserList>;
@@ -2925,7 +2888,7 @@ export const ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest =
     identifier: "ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest",
   }) as any as S.Schema<ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest>;
 
-export type AuthTokenList = AuthToken[];
+export type AuthTokenList = ReadonlyArray<AuthToken>;
 export const AuthTokenList = /*@__PURE__*/ S.Array(
   AuthToken,
 ) as any as S.Schema<AuthTokenList>;
@@ -2974,7 +2937,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -3029,7 +2992,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -3137,8 +3100,7 @@ export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 export type RescheduleClusterMaintenanceRequestRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
   | "IMMEDIATE"
-  | "SPECIFIC_TIME"
-  | (string & {});
+  | "SPECIFIC_TIME";
 export const RescheduleClusterMaintenanceRequestRescheduleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3186,8 +3148,7 @@ export type RescheduleMaintenanceRequestRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
   | "IMMEDIATE"
   | "NEXT_AVAILABLE_WINDOW"
-  | "SPECIFIC_TIME"
-  | (string & {});
+  | "SPECIFIC_TIME";
 export const RescheduleMaintenanceRequestRescheduleTypeEnum =
   /*@__PURE__*/ S.String;
 

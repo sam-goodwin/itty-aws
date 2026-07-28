@@ -49,10 +49,7 @@ export class Forbidden extends T.applyErrorMatchers(
   [{ status: 403 }],
 ) {}
 
-export type AddressesEditRequestStatus =
-  | "unverified"
-  | "verified"
-  | (string & {});
+export type AddressesEditRequestStatus = "unverified" | "verified";
 export const AddressesEditRequestStatus = /*@__PURE__*/ S.String;
 
 export interface AddressesEditRequest {
@@ -185,58 +182,20 @@ export const CreateDnsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDnsRequest",
 }) as any as S.Schema<CreateDnsRequest>;
 
-export interface DnsCreateResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const DnsCreateResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "DnsCreateResponseEnabled",
-}) as any as S.Schema<DnsCreateResponseEnabled>;
-
-export interface DnsCreateResponseSkipWizard {
-  true: unknown;
-  false: unknown;
-}
-export const DnsCreateResponseSkipWizard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "DnsCreateResponseSkipWizard",
-}) as any as S.Schema<DnsCreateResponseSkipWizard>;
-
 export type DnsCreateResponseStatus =
   | "ready"
   | "unconfigured"
   | "misconfigured"
-  | (string & {});
+  | "misconfigured/locked"
+  | "unlocked";
 export const DnsCreateResponseStatus = /*@__PURE__*/ S.String;
-
-export interface DnsCreateResponseSupportSubaddress {
-  true: unknown;
-  false: unknown;
-}
-export const DnsCreateResponseSupportSubaddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "DnsCreateResponseSupportSubaddress",
-}) as any as S.Schema<DnsCreateResponseSupportSubaddress>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDnsResponse {
   /** Email Routing settings identifier. */
   id: string;
   /** State of the zone settings for Email Routing. */
-  enabled: DnsCreateResponseEnabled;
+  enabled: boolean;
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
@@ -244,42 +203,34 @@ export interface CreateDnsResponse {
   /** The date and time the settings have been modified. */
   modified?: string;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: DnsCreateResponseSkipWizard;
+  skipWizard?: boolean;
   /** Show the state of your account, and the type or configuration error. */
   status?: DnsCreateResponseStatus;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: DnsCreateResponseSupportSubaddress;
+  supportSubaddress?: boolean;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string;
 }
 export const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    enabled: DnsCreateResponseEnabled,
+    enabled: S.Boolean,
     name: S.String,
     created: S.optional(S.String),
     modified: S.optional(S.String),
-    skipWizard: S.optional(
-      DnsCreateResponseSkipWizard.pipe(T.Body("skip_wizard")),
-    ),
+    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
     status: S.optional(DnsCreateResponseStatus),
-    supportSubaddress: S.optional(
-      DnsCreateResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
-    ),
+    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
     tag: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateDnsResponse",
 }) as any as S.Schema<CreateDnsResponse>;
 
-export type RulesCreateRequestActionsItemType =
-  | "drop"
-  | "forward"
-  | "worker"
-  | (string & {});
+export type RulesCreateRequestActionsItemType = "drop" | "forward" | "worker";
 export const RulesCreateRequestActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesCreateRequestActionsItemValueList = string[];
+export type RulesCreateRequestActionsItemValueList = ReadonlyArray<string>;
 export const RulesCreateRequestActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesCreateRequestActionsItemValueList>;
@@ -298,18 +249,16 @@ export const RulesCreateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesCreateRequestActionsItem",
 }) as any as S.Schema<RulesCreateRequestActionsItem>;
 
-export type RulesCreateRequestActionsList = RulesCreateRequestActionsItem[];
+export type RulesCreateRequestActionsList =
+  ReadonlyArray<RulesCreateRequestActionsItem>;
 export const RulesCreateRequestActionsList = /*@__PURE__*/ S.Array(
   RulesCreateRequestActionsItem,
 ) as any as S.Schema<RulesCreateRequestActionsList>;
 
-export type RulesCreateRequestMatchersItemType =
-  | "all"
-  | "literal"
-  | (string & {});
+export type RulesCreateRequestMatchersItemType = "all" | "literal";
 export const RulesCreateRequestMatchersItemType = /*@__PURE__*/ S.String;
 
-export type RulesCreateRequestMatchersItemField = "to" | (string & {});
+export type RulesCreateRequestMatchersItemField = "to";
 export const RulesCreateRequestMatchersItemField = /*@__PURE__*/ S.String;
 
 export interface RulesCreateRequestMatchersItem {
@@ -330,25 +279,13 @@ export const RulesCreateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesCreateRequestMatchersItem",
 }) as any as S.Schema<RulesCreateRequestMatchersItem>;
 
-export type RulesCreateRequestMatchersList = RulesCreateRequestMatchersItem[];
+export type RulesCreateRequestMatchersList =
+  ReadonlyArray<RulesCreateRequestMatchersItem>;
 export const RulesCreateRequestMatchersList = /*@__PURE__*/ S.Array(
   RulesCreateRequestMatchersItem,
 ) as any as S.Schema<RulesCreateRequestMatchersList>;
 
-export interface RulesCreateRequestEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const RulesCreateRequestEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "RulesCreateRequestEnabled",
-}) as any as S.Schema<RulesCreateRequestEnabled>;
-
-export type RulesCreateRequestSource = "api" | "wrangler" | (string & {});
+export type RulesCreateRequestSource = "api" | "wrangler";
 export const RulesCreateRequestSource = /*@__PURE__*/ S.String;
 
 export interface CreateRuleRequest {
@@ -359,7 +296,7 @@ export interface CreateRuleRequest {
   /** Matching patterns to forward to your actions. */
   matchers: RulesCreateRequestMatchersList;
   /** Routing rule status. */
-  enabled?: RulesCreateRequestEnabled;
+  enabled?: boolean;
   /** Routing rule name. */
   name?: string;
   /** Public tag (script_tag) of the Worker that owns this rule. Required when */
@@ -374,7 +311,7 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     actions: RulesCreateRequestActionsList,
     matchers: RulesCreateRequestMatchersList,
-    enabled: S.optional(RulesCreateRequestEnabled),
+    enabled: S.optional(S.Boolean),
     name: S.optional(S.String),
     ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
     priority: S.optional(S.Number),
@@ -392,14 +329,10 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
 
-export type RulesCreateResponseActionsItemType =
-  | "drop"
-  | "forward"
-  | "worker"
-  | (string & {});
+export type RulesCreateResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesCreateResponseActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesCreateResponseActionsItemValueList = string[];
+export type RulesCreateResponseActionsItemValueList = ReadonlyArray<string>;
 export const RulesCreateResponseActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesCreateResponseActionsItemValueList>;
@@ -418,31 +351,16 @@ export const RulesCreateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesCreateResponseActionsItem",
 }) as any as S.Schema<RulesCreateResponseActionsItem>;
 
-export type RulesCreateResponseActionsList = RulesCreateResponseActionsItem[];
+export type RulesCreateResponseActionsList =
+  ReadonlyArray<RulesCreateResponseActionsItem>;
 export const RulesCreateResponseActionsList = /*@__PURE__*/ S.Array(
   RulesCreateResponseActionsItem,
 ) as any as S.Schema<RulesCreateResponseActionsList>;
 
-export interface RulesCreateResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const RulesCreateResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "RulesCreateResponseEnabled",
-}) as any as S.Schema<RulesCreateResponseEnabled>;
-
-export type RulesCreateResponseMatchersItemType =
-  | "all"
-  | "literal"
-  | (string & {});
+export type RulesCreateResponseMatchersItemType = "all" | "literal";
 export const RulesCreateResponseMatchersItemType = /*@__PURE__*/ S.String;
 
-export type RulesCreateResponseMatchersItemField = "to" | (string & {});
+export type RulesCreateResponseMatchersItemField = "to";
 export const RulesCreateResponseMatchersItemField = /*@__PURE__*/ S.String;
 
 export interface RulesCreateResponseMatchersItem {
@@ -463,12 +381,13 @@ export const RulesCreateResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesCreateResponseMatchersItem",
 }) as any as S.Schema<RulesCreateResponseMatchersItem>;
 
-export type RulesCreateResponseMatchersList = RulesCreateResponseMatchersItem[];
+export type RulesCreateResponseMatchersList =
+  ReadonlyArray<RulesCreateResponseMatchersItem>;
 export const RulesCreateResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesCreateResponseMatchersItem,
 ) as any as S.Schema<RulesCreateResponseMatchersList>;
 
-export type RulesCreateResponseSource = "api" | "wrangler" | (string & {});
+export type RulesCreateResponseSource = "api" | "wrangler";
 export const RulesCreateResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -478,7 +397,7 @@ export interface CreateRuleResponse {
   /** List actions patterns. */
   actions?: RulesCreateResponseActionsList;
   /** Routing rule status. */
-  enabled?: RulesCreateResponseEnabled;
+  enabled?: boolean;
   /** Matching patterns to forward to your actions. */
   matchers?: RulesCreateResponseMatchersList;
   /** Routing rule name. */
@@ -494,7 +413,7 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     actions: S.optional(RulesCreateResponseActionsList),
-    enabled: S.optional(RulesCreateResponseEnabled),
+    enabled: S.optional(S.Boolean),
     matchers: S.optional(RulesCreateResponseMatchersList),
     name: S.optional(S.String),
     priority: S.optional(S.Number),
@@ -578,165 +497,10 @@ export const DeleteDnsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDnsRequest",
 }) as any as S.Schema<DeleteDnsRequest>;
 
-export interface DnsDeleteResponseErrorsItemSource {
-  pointer?: string;
-}
-export const DnsDeleteResponseErrorsItemSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pointer: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DnsDeleteResponseErrorsItemSource",
-}) as any as S.Schema<DnsDeleteResponseErrorsItemSource>;
-
-export interface DnsDeleteResponseErrorsItem {
-  code: number;
-  message: string;
-  documentationUrl?: string;
-  source?: DnsDeleteResponseErrorsItemSource;
-}
-export const DnsDeleteResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.Number,
-    message: S.String,
-    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-    source: S.optional(DnsDeleteResponseErrorsItemSource),
-  }),
-).annotate({
-  identifier: "DnsDeleteResponseErrorsItem",
-}) as any as S.Schema<DnsDeleteResponseErrorsItem>;
-
-export type DnsDeleteResponseErrorsList = DnsDeleteResponseErrorsItem[];
-export const DnsDeleteResponseErrorsList = /*@__PURE__*/ S.Array(
-  DnsDeleteResponseErrorsItem,
-) as any as S.Schema<DnsDeleteResponseErrorsList>;
-
-export interface DnsDeleteResponseMessagesItemSource {
-  pointer?: string;
-}
-export const DnsDeleteResponseMessagesItemSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pointer: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DnsDeleteResponseMessagesItemSource",
-}) as any as S.Schema<DnsDeleteResponseMessagesItemSource>;
-
-export interface DnsDeleteResponseMessagesItem {
-  code: number;
-  message: string;
-  documentationUrl?: string;
-  source?: DnsDeleteResponseMessagesItemSource;
-}
-export const DnsDeleteResponseMessagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.Number,
-    message: S.String,
-    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-    source: S.optional(DnsDeleteResponseMessagesItemSource),
-  }),
-).annotate({
-  identifier: "DnsDeleteResponseMessagesItem",
-}) as any as S.Schema<DnsDeleteResponseMessagesItem>;
-
-export type DnsDeleteResponseMessagesList = DnsDeleteResponseMessagesItem[];
-export const DnsDeleteResponseMessagesList = /*@__PURE__*/ S.Array(
-  DnsDeleteResponseMessagesItem,
-) as any as S.Schema<DnsDeleteResponseMessagesList>;
-
-export interface DnsDeleteResponseResultItemTtl {
-  number: unknown;
-  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
-  "1": unknown;
-}
-export const DnsDeleteResponseResultItemTtl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    number: S.Unknown,
-    "1": S.Unknown,
-  }),
-).annotate({
-  identifier: "DnsDeleteResponseResultItemTtl",
-}) as any as S.Schema<DnsDeleteResponseResultItemTtl>;
-
-export type DnsDeleteResponseResultItemType =
-  | "A"
-  | "AAAA"
-  | "CNAME"
-  | (string & {});
-export const DnsDeleteResponseResultItemType = /*@__PURE__*/ S.String;
-
-export interface DnsDeleteResponseResultItem {
-  /** DNS record content. */
-  content?: string;
-  /** DNS record name (or @ for the zone apex). */
-  name?: string;
-  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
-  priority?: number;
-  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
-  ttl?: DnsDeleteResponseResultItemTtl;
-  /** DNS record type. */
-  type?: DnsDeleteResponseResultItemType;
-}
-export const DnsDeleteResponseResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-    name: S.optional(S.String),
-    priority: S.optional(S.Number),
-    ttl: S.optional(DnsDeleteResponseResultItemTtl),
-    type: S.optional(DnsDeleteResponseResultItemType),
-  }),
-).annotate({
-  identifier: "DnsDeleteResponseResultItem",
-}) as any as S.Schema<DnsDeleteResponseResultItem>;
-
-export type DnsDeleteResponseResultList = DnsDeleteResponseResultItem[];
-export const DnsDeleteResponseResultList = /*@__PURE__*/ S.Array(
-  DnsDeleteResponseResultItem,
-) as any as S.Schema<DnsDeleteResponseResultList>;
-
-export interface DnsDeleteResponseResultInfo {
-  /** Total number of results for the requested service. */
-  count?: number;
-  /** Current page within paginated list of results. */
-  page?: number;
-  /** Number of results per page of results. */
-  perPage?: number;
-  /** Total results available without any search parameters. */
-  totalCount?: number;
-  /** The number of total pages in the entire result set. */
-  totalPages?: number;
-}
-export const DnsDeleteResponseResultInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    page: S.optional(S.Number),
-    perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
-    totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
-    totalPages: S.optional(S.Number.pipe(T.Body("total_pages"))),
-  }),
-).annotate({
-  identifier: "DnsDeleteResponseResultInfo",
-}) as any as S.Schema<DnsDeleteResponseResultInfo>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DeleteDnsResponse {
-  errors?: DnsDeleteResponseErrorsList;
-  messages?: DnsDeleteResponseMessagesList;
-  /** Whether the API call was successful. */
-  success?: boolean;
-  result: DnsDeleteResponseResultList;
-  resultInfo?: DnsDeleteResponseResultInfo;
-}
+export interface DeleteDnsResponse {}
 export const DeleteDnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(DnsDeleteResponseErrorsList),
-    messages: S.optional(DnsDeleteResponseMessagesList),
-    success: S.optional(S.Boolean),
-    result: DnsDeleteResponseResultList,
-    resultInfo: S.optional(
-      DnsDeleteResponseResultInfo.pipe(T.Body("result_info")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDnsResponse",
 }) as any as S.Schema<DeleteDnsResponse>;
@@ -764,14 +528,10 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteRuleRequest",
 }) as any as S.Schema<DeleteRuleRequest>;
 
-export type RulesDeleteResponseActionsItemType =
-  | "drop"
-  | "forward"
-  | "worker"
-  | (string & {});
+export type RulesDeleteResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesDeleteResponseActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesDeleteResponseActionsItemValueList = string[];
+export type RulesDeleteResponseActionsItemValueList = ReadonlyArray<string>;
 export const RulesDeleteResponseActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesDeleteResponseActionsItemValueList>;
@@ -790,31 +550,16 @@ export const RulesDeleteResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesDeleteResponseActionsItem",
 }) as any as S.Schema<RulesDeleteResponseActionsItem>;
 
-export type RulesDeleteResponseActionsList = RulesDeleteResponseActionsItem[];
+export type RulesDeleteResponseActionsList =
+  ReadonlyArray<RulesDeleteResponseActionsItem>;
 export const RulesDeleteResponseActionsList = /*@__PURE__*/ S.Array(
   RulesDeleteResponseActionsItem,
 ) as any as S.Schema<RulesDeleteResponseActionsList>;
 
-export interface RulesDeleteResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const RulesDeleteResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "RulesDeleteResponseEnabled",
-}) as any as S.Schema<RulesDeleteResponseEnabled>;
-
-export type RulesDeleteResponseMatchersItemType =
-  | "all"
-  | "literal"
-  | (string & {});
+export type RulesDeleteResponseMatchersItemType = "all" | "literal";
 export const RulesDeleteResponseMatchersItemType = /*@__PURE__*/ S.String;
 
-export type RulesDeleteResponseMatchersItemField = "to" | (string & {});
+export type RulesDeleteResponseMatchersItemField = "to";
 export const RulesDeleteResponseMatchersItemField = /*@__PURE__*/ S.String;
 
 export interface RulesDeleteResponseMatchersItem {
@@ -835,12 +580,13 @@ export const RulesDeleteResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesDeleteResponseMatchersItem",
 }) as any as S.Schema<RulesDeleteResponseMatchersItem>;
 
-export type RulesDeleteResponseMatchersList = RulesDeleteResponseMatchersItem[];
+export type RulesDeleteResponseMatchersList =
+  ReadonlyArray<RulesDeleteResponseMatchersItem>;
 export const RulesDeleteResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesDeleteResponseMatchersItem,
 ) as any as S.Schema<RulesDeleteResponseMatchersList>;
 
-export type RulesDeleteResponseSource = "api" | "wrangler" | (string & {});
+export type RulesDeleteResponseSource = "api" | "wrangler";
 export const RulesDeleteResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -850,7 +596,7 @@ export interface DeleteRuleResponse {
   /** List actions patterns. */
   actions?: RulesDeleteResponseActionsList;
   /** Routing rule status. */
-  enabled?: RulesDeleteResponseEnabled;
+  enabled?: boolean;
   /** Matching patterns to forward to your actions. */
   matchers?: RulesDeleteResponseMatchersList;
   /** Routing rule name. */
@@ -866,7 +612,7 @@ export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     actions: S.optional(RulesDeleteResponseActionsList),
-    enabled: S.optional(RulesDeleteResponseEnabled),
+    enabled: S.optional(S.Boolean),
     matchers: S.optional(RulesDeleteResponseMatchersList),
     name: S.optional(S.String),
     priority: S.optional(S.Number),
@@ -880,12 +626,10 @@ export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DisableEmailRoutingRequest {
   /** Identifier. */
   zoneId: string;
-  body: unknown;
 }
 export const DisableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -899,58 +643,20 @@ export const DisableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisableEmailRoutingRequest",
 }) as any as S.Schema<DisableEmailRoutingRequest>;
 
-export interface DisableResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const DisableResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "DisableResponseEnabled",
-}) as any as S.Schema<DisableResponseEnabled>;
-
-export interface DisableResponseSkipWizard {
-  true: unknown;
-  false: unknown;
-}
-export const DisableResponseSkipWizard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "DisableResponseSkipWizard",
-}) as any as S.Schema<DisableResponseSkipWizard>;
-
 export type DisableResponseStatus =
   | "ready"
   | "unconfigured"
   | "misconfigured"
-  | (string & {});
+  | "misconfigured/locked"
+  | "unlocked";
 export const DisableResponseStatus = /*@__PURE__*/ S.String;
-
-export interface DisableResponseSupportSubaddress {
-  true: unknown;
-  false: unknown;
-}
-export const DisableResponseSupportSubaddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "DisableResponseSupportSubaddress",
-}) as any as S.Schema<DisableResponseSupportSubaddress>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DisableEmailRoutingResponse {
   /** Email Routing settings identifier. */
   id: string;
   /** State of the zone settings for Email Routing. */
-  enabled: DisableResponseEnabled;
+  enabled: boolean;
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
@@ -958,28 +664,24 @@ export interface DisableEmailRoutingResponse {
   /** The date and time the settings have been modified. */
   modified?: string;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: DisableResponseSkipWizard;
+  skipWizard?: boolean;
   /** Show the state of your account, and the type or configuration error. */
   status?: DisableResponseStatus;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: DisableResponseSupportSubaddress;
+  supportSubaddress?: boolean;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string;
 }
 export const DisableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    enabled: DisableResponseEnabled,
+    enabled: S.Boolean,
     name: S.String,
     created: S.optional(S.String),
     modified: S.optional(S.String),
-    skipWizard: S.optional(
-      DisableResponseSkipWizard.pipe(T.Body("skip_wizard")),
-    ),
+    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
     status: S.optional(DisableResponseStatus),
-    supportSubaddress: S.optional(
-      DisableResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
-    ),
+    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
     tag: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -989,12 +691,10 @@ export const DisableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
 export interface EnableEmailRoutingRequest {
   /** Identifier. */
   zoneId: string;
-  body: unknown;
 }
 export const EnableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
@@ -1008,58 +708,20 @@ export const EnableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnableEmailRoutingRequest",
 }) as any as S.Schema<EnableEmailRoutingRequest>;
 
-export interface EnableResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const EnableResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "EnableResponseEnabled",
-}) as any as S.Schema<EnableResponseEnabled>;
-
-export interface EnableResponseSkipWizard {
-  true: unknown;
-  false: unknown;
-}
-export const EnableResponseSkipWizard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "EnableResponseSkipWizard",
-}) as any as S.Schema<EnableResponseSkipWizard>;
-
 export type EnableResponseStatus =
   | "ready"
   | "unconfigured"
   | "misconfigured"
-  | (string & {});
+  | "misconfigured/locked"
+  | "unlocked";
 export const EnableResponseStatus = /*@__PURE__*/ S.String;
-
-export interface EnableResponseSupportSubaddress {
-  true: unknown;
-  false: unknown;
-}
-export const EnableResponseSupportSubaddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "EnableResponseSupportSubaddress",
-}) as any as S.Schema<EnableResponseSupportSubaddress>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EnableEmailRoutingResponse {
   /** Email Routing settings identifier. */
   id: string;
   /** State of the zone settings for Email Routing. */
-  enabled: EnableResponseEnabled;
+  enabled: boolean;
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
@@ -1067,28 +729,24 @@ export interface EnableEmailRoutingResponse {
   /** The date and time the settings have been modified. */
   modified?: string;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: EnableResponseSkipWizard;
+  skipWizard?: boolean;
   /** Show the state of your account, and the type or configuration error. */
   status?: EnableResponseStatus;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: EnableResponseSupportSubaddress;
+  supportSubaddress?: boolean;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string;
 }
 export const EnableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    enabled: EnableResponseEnabled,
+    enabled: S.Boolean,
     name: S.String,
     created: S.optional(S.String),
     modified: S.optional(S.String),
-    skipWizard: S.optional(
-      EnableResponseSkipWizard.pipe(T.Body("skip_wizard")),
-    ),
+    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
     status: S.optional(EnableResponseStatus),
-    supportSubaddress: S.optional(
-      EnableResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
-    ),
+    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
     tag: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -1169,230 +827,10 @@ export const GetDnsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDnsRequest" }) as any as S.Schema<GetDnsRequest>;
 
-export interface DnsGetResponseErrorsItemSource {
-  pointer?: string;
-}
-export const DnsGetResponseErrorsItemSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pointer: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DnsGetResponseErrorsItemSource",
-}) as any as S.Schema<DnsGetResponseErrorsItemSource>;
-
-export interface DnsGetResponseErrorsItem {
-  code: number;
-  message: string;
-  documentationUrl?: string;
-  source?: DnsGetResponseErrorsItemSource;
-}
-export const DnsGetResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.Number,
-    message: S.String,
-    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-    source: S.optional(DnsGetResponseErrorsItemSource),
-  }),
-).annotate({
-  identifier: "DnsGetResponseErrorsItem",
-}) as any as S.Schema<DnsGetResponseErrorsItem>;
-
-export type DnsGetResponseErrorsList = DnsGetResponseErrorsItem[];
-export const DnsGetResponseErrorsList = /*@__PURE__*/ S.Array(
-  DnsGetResponseErrorsItem,
-) as any as S.Schema<DnsGetResponseErrorsList>;
-
-export interface DnsGetResponseMessagesItemSource {
-  pointer?: string;
-}
-export const DnsGetResponseMessagesItemSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pointer: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DnsGetResponseMessagesItemSource",
-}) as any as S.Schema<DnsGetResponseMessagesItemSource>;
-
-export interface DnsGetResponseMessagesItem {
-  code: number;
-  message: string;
-  documentationUrl?: string;
-  source?: DnsGetResponseMessagesItemSource;
-}
-export const DnsGetResponseMessagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.Number,
-    message: S.String,
-    documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-    source: S.optional(DnsGetResponseMessagesItemSource),
-  }),
-).annotate({
-  identifier: "DnsGetResponseMessagesItem",
-}) as any as S.Schema<DnsGetResponseMessagesItem>;
-
-export type DnsGetResponseMessagesList = DnsGetResponseMessagesItem[];
-export const DnsGetResponseMessagesList = /*@__PURE__*/ S.Array(
-  DnsGetResponseMessagesItem,
-) as any as S.Schema<DnsGetResponseMessagesList>;
-
-export interface DnsGetResponseResultErrorsItemMissingTtl {
-  number: unknown;
-  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
-  "1": unknown;
-}
-export const DnsGetResponseResultErrorsItemMissingTtl = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      number: S.Unknown,
-      "1": S.Unknown,
-    }),
-).annotate({
-  identifier: "DnsGetResponseResultErrorsItemMissingTtl",
-}) as any as S.Schema<DnsGetResponseResultErrorsItemMissingTtl>;
-
-export type DnsGetResponseResultErrorsItemMissingType =
-  | "A"
-  | "AAAA"
-  | "CNAME"
-  | (string & {});
-export const DnsGetResponseResultErrorsItemMissingType = /*@__PURE__*/ S.String;
-
-export interface DnsGetResponseResultErrorsItemMissing {
-  /** DNS record content. */
-  content?: string;
-  /** DNS record name (or @ for the zone apex). */
-  name?: string;
-  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
-  priority?: number;
-  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
-  ttl?: DnsGetResponseResultErrorsItemMissingTtl;
-  /** DNS record type. */
-  type?: DnsGetResponseResultErrorsItemMissingType;
-}
-export const DnsGetResponseResultErrorsItemMissing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      content: S.optional(S.String),
-      name: S.optional(S.String),
-      priority: S.optional(S.Number),
-      ttl: S.optional(DnsGetResponseResultErrorsItemMissingTtl),
-      type: S.optional(DnsGetResponseResultErrorsItemMissingType),
-    }),
-).annotate({
-  identifier: "DnsGetResponseResultErrorsItemMissing",
-}) as any as S.Schema<DnsGetResponseResultErrorsItemMissing>;
-
-export interface DnsGetResponseResultErrorsItem {
-  code?: string;
-  /** List of records needed to enable an Email Routing zone. */
-  missing?: DnsGetResponseResultErrorsItemMissing;
-}
-export const DnsGetResponseResultErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    missing: S.optional(DnsGetResponseResultErrorsItemMissing),
-  }),
-).annotate({
-  identifier: "DnsGetResponseResultErrorsItem",
-}) as any as S.Schema<DnsGetResponseResultErrorsItem>;
-
-export type DnsGetResponseResultErrorsList = DnsGetResponseResultErrorsItem[];
-export const DnsGetResponseResultErrorsList = /*@__PURE__*/ S.Array(
-  DnsGetResponseResultErrorsItem,
-) as any as S.Schema<DnsGetResponseResultErrorsList>;
-
-export type DnsGetResponseResultRecordItemType =
-  | "A"
-  | "AAAA"
-  | "CNAME"
-  | (string & {});
-export const DnsGetResponseResultRecordItemType = /*@__PURE__*/ S.String;
-
-export interface DnsGetResponseResultRecordItem {
-  /** DNS record content. */
-  content?: string;
-  /** DNS record name (or @ for the zone apex). */
-  name?: string;
-  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
-  priority?: number;
-  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
-  ttl?: unknown;
-  /** DNS record type. */
-  type?: DnsGetResponseResultRecordItemType;
-}
-export const DnsGetResponseResultRecordItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-    name: S.optional(S.String),
-    priority: S.optional(S.Number),
-    ttl: S.optional(S.Unknown),
-    type: S.optional(DnsGetResponseResultRecordItemType),
-  }),
-).annotate({
-  identifier: "DnsGetResponseResultRecordItem",
-}) as any as S.Schema<DnsGetResponseResultRecordItem>;
-
-export type DnsGetResponseResultRecordList = DnsGetResponseResultRecordItem[];
-export const DnsGetResponseResultRecordList = /*@__PURE__*/ S.Array(
-  DnsGetResponseResultRecordItem,
-) as any as S.Schema<DnsGetResponseResultRecordList>;
-
-export interface DnsGetResponseResult {
-  errors?: DnsGetResponseResultErrorsList;
-  record?: DnsGetResponseResultRecordList;
-}
-export const DnsGetResponseResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(DnsGetResponseResultErrorsList),
-    record: S.optional(DnsGetResponseResultRecordList),
-  }),
-).annotate({
-  identifier: "DnsGetResponseResult",
-}) as any as S.Schema<DnsGetResponseResult>;
-
-export interface DnsGetResponseResultInfo {
-  /** Total number of results for the requested service. */
-  count?: number;
-  /** Current page within paginated list of results. */
-  page?: number;
-  /** Number of results per page of results. */
-  perPage?: number;
-  /** Total results available without any search parameters. */
-  totalCount?: number;
-  /** The number of total pages in the entire result set. */
-  totalPages?: number;
-}
-export const DnsGetResponseResultInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    page: S.optional(S.Number),
-    perPage: S.optional(S.Number.pipe(T.Body("per_page"))),
-    totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
-    totalPages: S.optional(S.Number.pipe(T.Body("total_pages"))),
-  }),
-).annotate({
-  identifier: "DnsGetResponseResultInfo",
-}) as any as S.Schema<DnsGetResponseResultInfo>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface GetDnsResponse {
-  errors?: DnsGetResponseErrorsList;
-  messages?: DnsGetResponseMessagesList;
-  /** Whether the API call was successful. */
-  success?: boolean;
-  result?: DnsGetResponseResult;
-  resultInfo?: DnsGetResponseResultInfo;
-}
+export interface GetDnsResponse {}
 export const GetDnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errors: S.optional(DnsGetResponseErrorsList),
-    messages: S.optional(DnsGetResponseMessagesList),
-    success: S.optional(S.Boolean),
-    result: S.optional(DnsGetResponseResult),
-    resultInfo: S.optional(
-      DnsGetResponseResultInfo.pipe(T.Body("result_info")),
-    ),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDnsResponse" }) as any as S.Schema<GetDnsResponse>;
 
 export interface GetEmailRoutingRequest {
@@ -1415,58 +853,20 @@ export const GetEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetEmailRoutingRequest",
 }) as any as S.Schema<GetEmailRoutingRequest>;
 
-export interface GetResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const GetResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "GetResponseEnabled",
-}) as any as S.Schema<GetResponseEnabled>;
-
-export interface GetResponseSkipWizard {
-  true: unknown;
-  false: unknown;
-}
-export const GetResponseSkipWizard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "GetResponseSkipWizard",
-}) as any as S.Schema<GetResponseSkipWizard>;
-
 export type GetResponseStatus =
   | "ready"
   | "unconfigured"
   | "misconfigured"
-  | (string & {});
+  | "misconfigured/locked"
+  | "unlocked";
 export const GetResponseStatus = /*@__PURE__*/ S.String;
-
-export interface GetResponseSupportSubaddress {
-  true: unknown;
-  false: unknown;
-}
-export const GetResponseSupportSubaddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "GetResponseSupportSubaddress",
-}) as any as S.Schema<GetResponseSupportSubaddress>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEmailRoutingResponse {
   /** Email Routing settings identifier. */
   id: string;
   /** State of the zone settings for Email Routing. */
-  enabled: GetResponseEnabled;
+  enabled: boolean;
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
@@ -1474,26 +874,24 @@ export interface GetEmailRoutingResponse {
   /** The date and time the settings have been modified. */
   modified?: string;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: GetResponseSkipWizard;
+  skipWizard?: boolean;
   /** Show the state of your account, and the type or configuration error. */
   status?: GetResponseStatus;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: GetResponseSupportSubaddress;
+  supportSubaddress?: boolean;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string;
 }
 export const GetEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    enabled: GetResponseEnabled,
+    enabled: S.Boolean,
     name: S.String,
     created: S.optional(S.String),
     modified: S.optional(S.String),
-    skipWizard: S.optional(GetResponseSkipWizard.pipe(T.Body("skip_wizard"))),
+    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
     status: S.optional(GetResponseStatus),
-    supportSubaddress: S.optional(
-      GetResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
-    ),
+    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
     tag: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -1521,14 +919,10 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
-export type RulesGetResponseActionsItemType =
-  | "drop"
-  | "forward"
-  | "worker"
-  | (string & {});
+export type RulesGetResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesGetResponseActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesGetResponseActionsItemValueList = string[];
+export type RulesGetResponseActionsItemValueList = ReadonlyArray<string>;
 export const RulesGetResponseActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesGetResponseActionsItemValueList>;
@@ -1547,31 +941,16 @@ export const RulesGetResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesGetResponseActionsItem",
 }) as any as S.Schema<RulesGetResponseActionsItem>;
 
-export type RulesGetResponseActionsList = RulesGetResponseActionsItem[];
+export type RulesGetResponseActionsList =
+  ReadonlyArray<RulesGetResponseActionsItem>;
 export const RulesGetResponseActionsList = /*@__PURE__*/ S.Array(
   RulesGetResponseActionsItem,
 ) as any as S.Schema<RulesGetResponseActionsList>;
 
-export interface RulesGetResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const RulesGetResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "RulesGetResponseEnabled",
-}) as any as S.Schema<RulesGetResponseEnabled>;
-
-export type RulesGetResponseMatchersItemType =
-  | "all"
-  | "literal"
-  | (string & {});
+export type RulesGetResponseMatchersItemType = "all" | "literal";
 export const RulesGetResponseMatchersItemType = /*@__PURE__*/ S.String;
 
-export type RulesGetResponseMatchersItemField = "to" | (string & {});
+export type RulesGetResponseMatchersItemField = "to";
 export const RulesGetResponseMatchersItemField = /*@__PURE__*/ S.String;
 
 export interface RulesGetResponseMatchersItem {
@@ -1592,12 +971,13 @@ export const RulesGetResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesGetResponseMatchersItem",
 }) as any as S.Schema<RulesGetResponseMatchersItem>;
 
-export type RulesGetResponseMatchersList = RulesGetResponseMatchersItem[];
+export type RulesGetResponseMatchersList =
+  ReadonlyArray<RulesGetResponseMatchersItem>;
 export const RulesGetResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesGetResponseMatchersItem,
 ) as any as S.Schema<RulesGetResponseMatchersList>;
 
-export type RulesGetResponseSource = "api" | "wrangler" | (string & {});
+export type RulesGetResponseSource = "api" | "wrangler";
 export const RulesGetResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1607,7 +987,7 @@ export interface GetRuleResponse {
   /** List actions patterns. */
   actions?: RulesGetResponseActionsList;
   /** Routing rule status. */
-  enabled?: RulesGetResponseEnabled;
+  enabled?: boolean;
   /** Matching patterns to forward to your actions. */
   matchers?: RulesGetResponseMatchersList;
   /** Routing rule name. */
@@ -1623,7 +1003,7 @@ export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     actions: S.optional(RulesGetResponseActionsList),
-    enabled: S.optional(RulesGetResponseEnabled),
+    enabled: S.optional(S.Boolean),
     matchers: S.optional(RulesGetResponseMatchersList),
     name: S.optional(S.String),
     priority: S.optional(S.Number),
@@ -1657,11 +1037,11 @@ export const GetRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
 export type RulesCatchAllsGetResponseActionsItemType =
   | "drop"
   | "forward"
-  | "worker"
-  | (string & {});
+  | "worker";
 export const RulesCatchAllsGetResponseActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesCatchAllsGetResponseActionsItemValueList = string[];
+export type RulesCatchAllsGetResponseActionsItemValueList =
+  ReadonlyArray<string>;
 export const RulesCatchAllsGetResponseActionsItemValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1683,25 +1063,12 @@ export const RulesCatchAllsGetResponseActionsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsGetResponseActionsItem>;
 
 export type RulesCatchAllsGetResponseActionsList =
-  RulesCatchAllsGetResponseActionsItem[];
+  ReadonlyArray<RulesCatchAllsGetResponseActionsItem>;
 export const RulesCatchAllsGetResponseActionsList = /*@__PURE__*/ S.Array(
   RulesCatchAllsGetResponseActionsItem,
 ) as any as S.Schema<RulesCatchAllsGetResponseActionsList>;
 
-export interface RulesCatchAllsGetResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const RulesCatchAllsGetResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "RulesCatchAllsGetResponseEnabled",
-}) as any as S.Schema<RulesCatchAllsGetResponseEnabled>;
-
-export type RulesCatchAllsGetResponseMatchersItemType = "all" | (string & {});
+export type RulesCatchAllsGetResponseMatchersItemType = "all";
 export const RulesCatchAllsGetResponseMatchersItemType = /*@__PURE__*/ S.String;
 
 export interface RulesCatchAllsGetResponseMatchersItem {
@@ -1718,15 +1085,12 @@ export const RulesCatchAllsGetResponseMatchersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsGetResponseMatchersItem>;
 
 export type RulesCatchAllsGetResponseMatchersList =
-  RulesCatchAllsGetResponseMatchersItem[];
+  ReadonlyArray<RulesCatchAllsGetResponseMatchersItem>;
 export const RulesCatchAllsGetResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesCatchAllsGetResponseMatchersItem,
 ) as any as S.Schema<RulesCatchAllsGetResponseMatchersList>;
 
-export type RulesCatchAllsGetResponseSource =
-  | "api"
-  | "wrangler"
-  | (string & {});
+export type RulesCatchAllsGetResponseSource = "api" | "wrangler";
 export const RulesCatchAllsGetResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1736,7 +1100,7 @@ export interface GetRuleCatchAllResponse {
   /** List actions for the catch-all routing rule. */
   actions?: RulesCatchAllsGetResponseActionsList;
   /** Routing rule status. */
-  enabled?: RulesCatchAllsGetResponseEnabled;
+  enabled?: boolean;
   /** List of matchers for the catch-all routing rule. */
   matchers?: RulesCatchAllsGetResponseMatchersList;
   /** Routing rule name. */
@@ -1750,7 +1114,7 @@ export const GetRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     actions: S.optional(RulesCatchAllsGetResponseActionsList),
-    enabled: S.optional(RulesCatchAllsGetResponseEnabled),
+    enabled: S.optional(S.Boolean),
     matchers: S.optional(RulesCatchAllsGetResponseMatchersList),
     name: S.optional(S.String),
     source: S.optional(RulesCatchAllsGetResponseSource),
@@ -1760,7 +1124,7 @@ export const GetRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRuleCatchAllResponse",
 }) as any as S.Schema<GetRuleCatchAllResponse>;
 
-export type AddressesListRequestDirection = "asc" | "desc" | (string & {});
+export type AddressesListRequestDirection = "asc" | "desc";
 export const AddressesListRequestDirection = /*@__PURE__*/ S.String;
 
 export interface ListAddressesRequest {
@@ -1822,7 +1186,7 @@ export const AddressesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressesListResultItem",
 }) as any as S.Schema<AddressesListResultItem>;
 
-export type AddressesListResultList = AddressesListResultItem[];
+export type AddressesListResultList = ReadonlyArray<AddressesListResultItem>;
 export const AddressesListResultList = /*@__PURE__*/ S.Array(
   AddressesListResultItem,
 ) as any as S.Schema<AddressesListResultList>;
@@ -1869,7 +1233,7 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRulesRequest",
 }) as any as S.Schema<ListRulesRequest>;
 
-export type ListRulesResponseResultList = GetRuleResponse[];
+export type ListRulesResponseResultList = ReadonlyArray<GetRuleResponse>;
 export const ListRulesResponseResultList = /*@__PURE__*/ S.Array(
   GetRuleResponse,
 ) as any as S.Schema<ListRulesResponseResultList>;
@@ -1912,58 +1276,20 @@ export const PatchDnsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDnsRequest",
 }) as any as S.Schema<PatchDnsRequest>;
 
-export interface DnsEditResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const DnsEditResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "DnsEditResponseEnabled",
-}) as any as S.Schema<DnsEditResponseEnabled>;
-
-export interface DnsEditResponseSkipWizard {
-  true: unknown;
-  false: unknown;
-}
-export const DnsEditResponseSkipWizard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "DnsEditResponseSkipWizard",
-}) as any as S.Schema<DnsEditResponseSkipWizard>;
-
 export type DnsEditResponseStatus =
   | "ready"
   | "unconfigured"
   | "misconfigured"
-  | (string & {});
+  | "misconfigured/locked"
+  | "unlocked";
 export const DnsEditResponseStatus = /*@__PURE__*/ S.String;
-
-export interface DnsEditResponseSupportSubaddress {
-  true: unknown;
-  false: unknown;
-}
-export const DnsEditResponseSupportSubaddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "DnsEditResponseSupportSubaddress",
-}) as any as S.Schema<DnsEditResponseSupportSubaddress>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchDnsResponse {
   /** Email Routing settings identifier. */
   id: string;
   /** State of the zone settings for Email Routing. */
-  enabled: DnsEditResponseEnabled;
+  enabled: boolean;
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
@@ -1971,28 +1297,24 @@ export interface PatchDnsResponse {
   /** The date and time the settings have been modified. */
   modified?: string;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: DnsEditResponseSkipWizard;
+  skipWizard?: boolean;
   /** Show the state of your account, and the type or configuration error. */
   status?: DnsEditResponseStatus;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: DnsEditResponseSupportSubaddress;
+  supportSubaddress?: boolean;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string;
 }
 export const PatchDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    enabled: DnsEditResponseEnabled,
+    enabled: S.Boolean,
     name: S.String,
     created: S.optional(S.String),
     modified: S.optional(S.String),
-    skipWizard: S.optional(
-      DnsEditResponseSkipWizard.pipe(T.Body("skip_wizard")),
-    ),
+    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
     status: S.optional(DnsEditResponseStatus),
-    supportSubaddress: S.optional(
-      DnsEditResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
-    ),
+    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
     tag: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
@@ -2002,12 +1324,12 @@ export const PatchDnsResponse = /*@__PURE__*/ S.suspend(() =>
 export type RulesCatchAllsUpdateRequestActionsItemType =
   | "drop"
   | "forward"
-  | "worker"
-  | (string & {});
+  | "worker";
 export const RulesCatchAllsUpdateRequestActionsItemType =
   /*@__PURE__*/ S.String;
 
-export type RulesCatchAllsUpdateRequestActionsItemValueList = string[];
+export type RulesCatchAllsUpdateRequestActionsItemValueList =
+  ReadonlyArray<string>;
 export const RulesCatchAllsUpdateRequestActionsItemValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2029,12 +1351,12 @@ export const RulesCatchAllsUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsUpdateRequestActionsItem>;
 
 export type RulesCatchAllsUpdateRequestActionsList =
-  RulesCatchAllsUpdateRequestActionsItem[];
+  ReadonlyArray<RulesCatchAllsUpdateRequestActionsItem>;
 export const RulesCatchAllsUpdateRequestActionsList = /*@__PURE__*/ S.Array(
   RulesCatchAllsUpdateRequestActionsItem,
 ) as any as S.Schema<RulesCatchAllsUpdateRequestActionsList>;
 
-export type RulesCatchAllsUpdateRequestMatchersItemType = "all" | (string & {});
+export type RulesCatchAllsUpdateRequestMatchersItemType = "all";
 export const RulesCatchAllsUpdateRequestMatchersItemType =
   /*@__PURE__*/ S.String;
 
@@ -2052,28 +1374,12 @@ export const RulesCatchAllsUpdateRequestMatchersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsUpdateRequestMatchersItem>;
 
 export type RulesCatchAllsUpdateRequestMatchersList =
-  RulesCatchAllsUpdateRequestMatchersItem[];
+  ReadonlyArray<RulesCatchAllsUpdateRequestMatchersItem>;
 export const RulesCatchAllsUpdateRequestMatchersList = /*@__PURE__*/ S.Array(
   RulesCatchAllsUpdateRequestMatchersItem,
 ) as any as S.Schema<RulesCatchAllsUpdateRequestMatchersList>;
 
-export interface RulesCatchAllsUpdateRequestEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const RulesCatchAllsUpdateRequestEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "RulesCatchAllsUpdateRequestEnabled",
-}) as any as S.Schema<RulesCatchAllsUpdateRequestEnabled>;
-
-export type RulesCatchAllsUpdateRequestSource =
-  | "api"
-  | "wrangler"
-  | (string & {});
+export type RulesCatchAllsUpdateRequestSource = "api" | "wrangler";
 export const RulesCatchAllsUpdateRequestSource = /*@__PURE__*/ S.String;
 
 export interface PutRuleCatchAllRequest {
@@ -2084,7 +1390,7 @@ export interface PutRuleCatchAllRequest {
   /** List of matchers for the catch-all routing rule. */
   matchers: RulesCatchAllsUpdateRequestMatchersList;
   /** Routing rule status. */
-  enabled?: RulesCatchAllsUpdateRequestEnabled;
+  enabled?: boolean;
   /** Routing rule name. */
   name?: string;
   /** Public tag (script_tag) of the Worker that owns this rule. Required when */
@@ -2097,7 +1403,7 @@ export const PutRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.String.pipe(T.Label("zone_id")),
     actions: RulesCatchAllsUpdateRequestActionsList,
     matchers: RulesCatchAllsUpdateRequestMatchersList,
-    enabled: S.optional(RulesCatchAllsUpdateRequestEnabled),
+    enabled: S.optional(S.Boolean),
     name: S.optional(S.String),
     ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
     source: S.optional(RulesCatchAllsUpdateRequestSource),
@@ -2117,12 +1423,12 @@ export const PutRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
 export type RulesCatchAllsUpdateResponseActionsItemType =
   | "drop"
   | "forward"
-  | "worker"
-  | (string & {});
+  | "worker";
 export const RulesCatchAllsUpdateResponseActionsItemType =
   /*@__PURE__*/ S.String;
 
-export type RulesCatchAllsUpdateResponseActionsItemValueList = string[];
+export type RulesCatchAllsUpdateResponseActionsItemValueList =
+  ReadonlyArray<string>;
 export const RulesCatchAllsUpdateResponseActionsItemValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2144,27 +1450,12 @@ export const RulesCatchAllsUpdateResponseActionsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsUpdateResponseActionsItem>;
 
 export type RulesCatchAllsUpdateResponseActionsList =
-  RulesCatchAllsUpdateResponseActionsItem[];
+  ReadonlyArray<RulesCatchAllsUpdateResponseActionsItem>;
 export const RulesCatchAllsUpdateResponseActionsList = /*@__PURE__*/ S.Array(
   RulesCatchAllsUpdateResponseActionsItem,
 ) as any as S.Schema<RulesCatchAllsUpdateResponseActionsList>;
 
-export interface RulesCatchAllsUpdateResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const RulesCatchAllsUpdateResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "RulesCatchAllsUpdateResponseEnabled",
-}) as any as S.Schema<RulesCatchAllsUpdateResponseEnabled>;
-
-export type RulesCatchAllsUpdateResponseMatchersItemType =
-  | "all"
-  | (string & {});
+export type RulesCatchAllsUpdateResponseMatchersItemType = "all";
 export const RulesCatchAllsUpdateResponseMatchersItemType =
   /*@__PURE__*/ S.String;
 
@@ -2182,15 +1473,12 @@ export const RulesCatchAllsUpdateResponseMatchersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RulesCatchAllsUpdateResponseMatchersItem>;
 
 export type RulesCatchAllsUpdateResponseMatchersList =
-  RulesCatchAllsUpdateResponseMatchersItem[];
+  ReadonlyArray<RulesCatchAllsUpdateResponseMatchersItem>;
 export const RulesCatchAllsUpdateResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesCatchAllsUpdateResponseMatchersItem,
 ) as any as S.Schema<RulesCatchAllsUpdateResponseMatchersList>;
 
-export type RulesCatchAllsUpdateResponseSource =
-  | "api"
-  | "wrangler"
-  | (string & {});
+export type RulesCatchAllsUpdateResponseSource = "api" | "wrangler";
 export const RulesCatchAllsUpdateResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2200,7 +1488,7 @@ export interface PutRuleCatchAllResponse {
   /** List actions for the catch-all routing rule. */
   actions?: RulesCatchAllsUpdateResponseActionsList;
   /** Routing rule status. */
-  enabled?: RulesCatchAllsUpdateResponseEnabled;
+  enabled?: boolean;
   /** List of matchers for the catch-all routing rule. */
   matchers?: RulesCatchAllsUpdateResponseMatchersList;
   /** Routing rule name. */
@@ -2214,7 +1502,7 @@ export const PutRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     actions: S.optional(RulesCatchAllsUpdateResponseActionsList),
-    enabled: S.optional(RulesCatchAllsUpdateResponseEnabled),
+    enabled: S.optional(S.Boolean),
     matchers: S.optional(RulesCatchAllsUpdateResponseMatchersList),
     name: S.optional(S.String),
     source: S.optional(RulesCatchAllsUpdateResponseSource),
@@ -2245,58 +1533,20 @@ export const UnlockRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "UnlockRequest" }) as any as S.Schema<UnlockRequest>;
 
-export interface UnlockResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const UnlockResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "UnlockResponseEnabled",
-}) as any as S.Schema<UnlockResponseEnabled>;
-
-export interface UnlockResponseSkipWizard {
-  true: unknown;
-  false: unknown;
-}
-export const UnlockResponseSkipWizard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "UnlockResponseSkipWizard",
-}) as any as S.Schema<UnlockResponseSkipWizard>;
-
 export type UnlockResponseStatus =
   | "ready"
   | "unconfigured"
   | "misconfigured"
-  | (string & {});
+  | "misconfigured/locked"
+  | "unlocked";
 export const UnlockResponseStatus = /*@__PURE__*/ S.String;
-
-export interface UnlockResponseSupportSubaddress {
-  true: unknown;
-  false: unknown;
-}
-export const UnlockResponseSupportSubaddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "UnlockResponseSupportSubaddress",
-}) as any as S.Schema<UnlockResponseSupportSubaddress>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UnlockResponse {
   /** Email Routing settings identifier. */
   id: string;
   /** State of the zone settings for Email Routing. */
-  enabled: UnlockResponseEnabled;
+  enabled: boolean;
   /** Domain of your zone. */
   name: string;
   /** The date and time the settings have been created. */
@@ -2304,40 +1554,32 @@ export interface UnlockResponse {
   /** The date and time the settings have been modified. */
   modified?: string;
   /** Flag to check if the user skipped the configuration wizard. */
-  skipWizard?: UnlockResponseSkipWizard;
+  skipWizard?: boolean;
   /** Show the state of your account, and the type or configuration error. */
   status?: UnlockResponseStatus;
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
-  supportSubaddress?: UnlockResponseSupportSubaddress;
+  supportSubaddress?: boolean;
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string;
 }
 export const UnlockResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    enabled: UnlockResponseEnabled,
+    enabled: S.Boolean,
     name: S.String,
     created: S.optional(S.String),
     modified: S.optional(S.String),
-    skipWizard: S.optional(
-      UnlockResponseSkipWizard.pipe(T.Body("skip_wizard")),
-    ),
+    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
     status: S.optional(UnlockResponseStatus),
-    supportSubaddress: S.optional(
-      UnlockResponseSupportSubaddress.pipe(T.Body("support_subaddress")),
-    ),
+    supportSubaddress: S.optional(S.Boolean.pipe(T.Body("support_subaddress"))),
     tag: S.optional(S.String),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "UnlockResponse" }) as any as S.Schema<UnlockResponse>;
 
-export type RulesUpdateRequestActionsItemType =
-  | "drop"
-  | "forward"
-  | "worker"
-  | (string & {});
+export type RulesUpdateRequestActionsItemType = "drop" | "forward" | "worker";
 export const RulesUpdateRequestActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesUpdateRequestActionsItemValueList = string[];
+export type RulesUpdateRequestActionsItemValueList = ReadonlyArray<string>;
 export const RulesUpdateRequestActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesUpdateRequestActionsItemValueList>;
@@ -2356,18 +1598,16 @@ export const RulesUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateRequestActionsItem",
 }) as any as S.Schema<RulesUpdateRequestActionsItem>;
 
-export type RulesUpdateRequestActionsList = RulesUpdateRequestActionsItem[];
+export type RulesUpdateRequestActionsList =
+  ReadonlyArray<RulesUpdateRequestActionsItem>;
 export const RulesUpdateRequestActionsList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestActionsItem,
 ) as any as S.Schema<RulesUpdateRequestActionsList>;
 
-export type RulesUpdateRequestMatchersItemType =
-  | "all"
-  | "literal"
-  | (string & {});
+export type RulesUpdateRequestMatchersItemType = "all" | "literal";
 export const RulesUpdateRequestMatchersItemType = /*@__PURE__*/ S.String;
 
-export type RulesUpdateRequestMatchersItemField = "to" | (string & {});
+export type RulesUpdateRequestMatchersItemField = "to";
 export const RulesUpdateRequestMatchersItemField = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateRequestMatchersItem {
@@ -2388,25 +1628,13 @@ export const RulesUpdateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateRequestMatchersItem",
 }) as any as S.Schema<RulesUpdateRequestMatchersItem>;
 
-export type RulesUpdateRequestMatchersList = RulesUpdateRequestMatchersItem[];
+export type RulesUpdateRequestMatchersList =
+  ReadonlyArray<RulesUpdateRequestMatchersItem>;
 export const RulesUpdateRequestMatchersList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestMatchersItem,
 ) as any as S.Schema<RulesUpdateRequestMatchersList>;
 
-export interface RulesUpdateRequestEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const RulesUpdateRequestEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "RulesUpdateRequestEnabled",
-}) as any as S.Schema<RulesUpdateRequestEnabled>;
-
-export type RulesUpdateRequestSource = "api" | "wrangler" | (string & {});
+export type RulesUpdateRequestSource = "api" | "wrangler";
 export const RulesUpdateRequestSource = /*@__PURE__*/ S.String;
 
 export interface UpdateRuleRequest {
@@ -2419,7 +1647,7 @@ export interface UpdateRuleRequest {
   /** Matching patterns to forward to your actions. */
   matchers: RulesUpdateRequestMatchersList;
   /** Routing rule status. */
-  enabled?: RulesUpdateRequestEnabled;
+  enabled?: boolean;
   /** Routing rule name. */
   name?: string;
   /** Public tag (script_tag) of the Worker that owns this rule. Required when */
@@ -2435,7 +1663,7 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
     ruleIdentifier: S.String.pipe(T.Label("rule_identifier")),
     actions: RulesUpdateRequestActionsList,
     matchers: RulesUpdateRequestMatchersList,
-    enabled: S.optional(RulesUpdateRequestEnabled),
+    enabled: S.optional(S.Boolean),
     name: S.optional(S.String),
     ownerWorkerTag: S.optional(S.String.pipe(T.Body("owner_worker_tag"))),
     priority: S.optional(S.Number),
@@ -2453,14 +1681,10 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRuleRequest",
 }) as any as S.Schema<UpdateRuleRequest>;
 
-export type RulesUpdateResponseActionsItemType =
-  | "drop"
-  | "forward"
-  | "worker"
-  | (string & {});
+export type RulesUpdateResponseActionsItemType = "drop" | "forward" | "worker";
 export const RulesUpdateResponseActionsItemType = /*@__PURE__*/ S.String;
 
-export type RulesUpdateResponseActionsItemValueList = string[];
+export type RulesUpdateResponseActionsItemValueList = ReadonlyArray<string>;
 export const RulesUpdateResponseActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesUpdateResponseActionsItemValueList>;
@@ -2479,31 +1703,16 @@ export const RulesUpdateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateResponseActionsItem",
 }) as any as S.Schema<RulesUpdateResponseActionsItem>;
 
-export type RulesUpdateResponseActionsList = RulesUpdateResponseActionsItem[];
+export type RulesUpdateResponseActionsList =
+  ReadonlyArray<RulesUpdateResponseActionsItem>;
 export const RulesUpdateResponseActionsList = /*@__PURE__*/ S.Array(
   RulesUpdateResponseActionsItem,
 ) as any as S.Schema<RulesUpdateResponseActionsList>;
 
-export interface RulesUpdateResponseEnabled {
-  true: unknown;
-  false: unknown;
-}
-export const RulesUpdateResponseEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true: S.Unknown,
-    false: S.Unknown,
-  }),
-).annotate({
-  identifier: "RulesUpdateResponseEnabled",
-}) as any as S.Schema<RulesUpdateResponseEnabled>;
-
-export type RulesUpdateResponseMatchersItemType =
-  | "all"
-  | "literal"
-  | (string & {});
+export type RulesUpdateResponseMatchersItemType = "all" | "literal";
 export const RulesUpdateResponseMatchersItemType = /*@__PURE__*/ S.String;
 
-export type RulesUpdateResponseMatchersItemField = "to" | (string & {});
+export type RulesUpdateResponseMatchersItemField = "to";
 export const RulesUpdateResponseMatchersItemField = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateResponseMatchersItem {
@@ -2524,12 +1733,13 @@ export const RulesUpdateResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateResponseMatchersItem",
 }) as any as S.Schema<RulesUpdateResponseMatchersItem>;
 
-export type RulesUpdateResponseMatchersList = RulesUpdateResponseMatchersItem[];
+export type RulesUpdateResponseMatchersList =
+  ReadonlyArray<RulesUpdateResponseMatchersItem>;
 export const RulesUpdateResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesUpdateResponseMatchersItem,
 ) as any as S.Schema<RulesUpdateResponseMatchersList>;
 
-export type RulesUpdateResponseSource = "api" | "wrangler" | (string & {});
+export type RulesUpdateResponseSource = "api" | "wrangler";
 export const RulesUpdateResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2539,7 +1749,7 @@ export interface UpdateRuleResponse {
   /** List actions patterns. */
   actions?: RulesUpdateResponseActionsList;
   /** Routing rule status. */
-  enabled?: RulesUpdateResponseEnabled;
+  enabled?: boolean;
   /** Matching patterns to forward to your actions. */
   matchers?: RulesUpdateResponseMatchersList;
   /** Routing rule name. */
@@ -2555,7 +1765,7 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     actions: S.optional(RulesUpdateResponseActionsList),
-    enabled: S.optional(RulesUpdateResponseEnabled),
+    enabled: S.optional(S.Boolean),
     matchers: S.optional(RulesUpdateResponseMatchersList),
     name: S.optional(S.String),
     priority: S.optional(S.Number),
@@ -2643,22 +1853,18 @@ export const deleteAddress: API.OperationMethod<
 
 export type DeleteDnsError = CloudflareOpError;
 /** Disable your Email Routing zone. Also removes additional MX records previously required for Email Routing to work. */
-export const deleteDns: API.PaginatedOperationMethod<
+export const deleteDns: API.OperationMethod<
   DeleteDnsRequest,
   DeleteDnsResponse,
   DeleteDnsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: DeleteDnsRequest,
-    output: DeleteDnsResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
-    protocol: CloudflarePaginatedProtocol,
-    retry: Retry.Retry,
-    pagination: { mode: "single", items: "result" } as const,
-  }),
-  cloudflarePaginate,
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDnsRequest,
+  output: DeleteDnsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteRuleError = EmailRoutingRuleNotFound | CloudflareOpError;
 /** Delete a specific routing rule. */

@@ -1278,16 +1278,29 @@
             "smithy.api#documentation": "Name of the configuration profile assignment. Only default is supported."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automanage#ConfigurationProfileAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the configuration profile assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automanage#ConfigurationProfileAssignmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "configurationProfile": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Automanage configurationProfile ARM Resource URI."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Automanage configuration profile assignment properties."
       }
     },
     "com.azure.automanage#ConfigurationProfileHCIAssignmentsGet": {
@@ -2089,11 +2102,10 @@
             "smithy.api#documentation": "Name of the configuration profile assignment. Only default is supported."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automanage#ConfigurationProfileAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the configuration profile assignment."
           }
         }
       },
@@ -3541,11 +3553,10 @@
             "smithy.api#documentation": "Name of the configuration profile assignment. Only default is supported."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automanage#ConfigurationProfileAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the configuration profile assignment."
           }
         }
       },
@@ -4307,16 +4318,40 @@
             "smithy.api#documentation": "The configuration profile version name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.automanage#ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.automanage#ConfigurationProfileProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the configuration profile."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automanage#ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.automanage#ConfigurationProfilesVersionsGet": {
@@ -4895,16 +4930,33 @@
             "smithy.api#documentation": "Name of the configuration profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.automanage#ConfigurationProfilesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.automanage#ConfigurationProfileProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the configuration profile."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automanage#ConfigurationProfilesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags of the resource."
       }
     },
     "com.azure.automanage#ConfigurationProfilesCreateOrUpdate": {
@@ -5124,16 +5176,40 @@
             "smithy.api#documentation": "Name of the configuration profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.automanage#ConfigurationProfilesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.automanage#ConfigurationProfileProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the configuration profile."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automanage#ConfigurationProfilesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.automanage#ConfigurationProfilesGet": {

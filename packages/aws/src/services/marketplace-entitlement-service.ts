@@ -135,8 +135,7 @@ export type GetEntitlementFilterName =
   | "CUSTOMER_IDENTIFIER"
   | "DIMENSION"
   | "CUSTOMER_AWS_ACCOUNT_ID"
-  | "LICENSE_ARN"
-  | (string & {});
+  | "LICENSE_ARN";
 export const GetEntitlementFilterName = /*@__PURE__*/ S.String;
 
 export type FilterValue = string;

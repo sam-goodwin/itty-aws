@@ -71,7 +71,7 @@ export const PathSegment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathSegment" }) as any as S.Schema<PathSegment>;
 
-export type PathSegmentList = PathSegment[];
+export type PathSegmentList = ReadonlyArray<PathSegment>;
 export const PathSegmentList = /*@__PURE__*/ S.Array(
   PathSegment,
 ) as any as S.Schema<PathSegmentList>;
@@ -180,7 +180,7 @@ export const DoubleMatcher = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DoubleMatcher" }) as any as S.Schema<DoubleMatcher>;
 
-export type ValueMatcherList = ValueMatcher[];
+export type ValueMatcherList = ReadonlyArray<ValueMatcher>;
 export const ValueMatcherList = /*@__PURE__*/ S.Array(
   S.suspend(() => ValueMatcher),
 ) as any as S.Schema<ValueMatcherList>;
@@ -255,7 +255,7 @@ export const StructMatcher = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StructMatcher" }) as any as S.Schema<StructMatcher>;
 
-export type StructMatcherList = StructMatcher[];
+export type StructMatcherList = ReadonlyArray<StructMatcher>;
 export const StructMatcherList = /*@__PURE__*/ S.Array(
   StructMatcher,
 ) as any as S.Schema<StructMatcherList>;
@@ -274,7 +274,7 @@ export const NodeMatcher = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeMatcher" }) as any as S.Schema<NodeMatcher>;
 
-export type NodeMatcherList = NodeMatcher[];
+export type NodeMatcherList = ReadonlyArray<NodeMatcher>;
 export const NodeMatcherList = /*@__PURE__*/ S.Array(
   NodeMatcher,
 ) as any as S.Schema<NodeMatcherList>;
@@ -331,7 +331,7 @@ export const BuildVersion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BuildVersion" }) as any as S.Schema<BuildVersion>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -362,7 +362,7 @@ export const Extension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Extension" }) as any as S.Schema<Extension>;
 
-export type ExtensionList = Extension[];
+export type ExtensionList = ReadonlyArray<Extension>;
 export const ExtensionList = /*@__PURE__*/ S.Array(
   Extension,
 ) as any as S.Schema<ExtensionList>;
@@ -384,7 +384,7 @@ export const Locality = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Locality" }) as any as S.Schema<Locality>;
 
-export type SocketAddressProtocolEnum = "TCP" | "UDP" | (string & {});
+export type SocketAddressProtocolEnum = "TCP" | "UDP";
 export const SocketAddressProtocolEnum = /*@__PURE__*/ S.String;
 
 /** [#next-free-field: 8] */
@@ -458,7 +458,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 
-export type AddressList = Address[];
+export type AddressList = ReadonlyArray<Address>;
 export const AddressList = /*@__PURE__*/ S.Array(
   Address,
 ) as any as S.Schema<AddressList>;
@@ -569,8 +569,7 @@ export type DynamicRouteConfigClientStatusEnum =
   | "ACKED"
   | "NACKED"
   | "RECEIVED_ERROR"
-  | "TIMEOUT"
-  | (string & {});
+  | "TIMEOUT";
 export const DynamicRouteConfigClientStatusEnum = /*@__PURE__*/ S.String;
 
 /** [#next-free-field: 6] */
@@ -598,7 +597,7 @@ export const DynamicRouteConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicRouteConfig",
 }) as any as S.Schema<DynamicRouteConfig>;
 
-export type DynamicRouteConfigList = DynamicRouteConfig[];
+export type DynamicRouteConfigList = ReadonlyArray<DynamicRouteConfig>;
 export const DynamicRouteConfigList = /*@__PURE__*/ S.Array(
   DynamicRouteConfig,
 ) as any as S.Schema<DynamicRouteConfigList>;
@@ -618,7 +617,7 @@ export const StaticRouteConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "StaticRouteConfig",
 }) as any as S.Schema<StaticRouteConfig>;
 
-export type StaticRouteConfigList = StaticRouteConfig[];
+export type StaticRouteConfigList = ReadonlyArray<StaticRouteConfig>;
 export const StaticRouteConfigList = /*@__PURE__*/ S.Array(
   StaticRouteConfig,
 ) as any as S.Schema<StaticRouteConfigList>;
@@ -644,8 +643,7 @@ export type PerXdsConfigClientStatusEnum =
   | "CLIENT_REQUESTED"
   | "CLIENT_ACKED"
   | "CLIENT_NACKED"
-  | "CLIENT_RECEIVED_ERROR"
-  | (string & {});
+  | "CLIENT_RECEIVED_ERROR";
 export const PerXdsConfigClientStatusEnum = /*@__PURE__*/ S.String;
 
 export type DynamicListenerClientStatusEnum =
@@ -655,8 +653,7 @@ export type DynamicListenerClientStatusEnum =
   | "ACKED"
   | "NACKED"
   | "RECEIVED_ERROR"
-  | "TIMEOUT"
-  | (string & {});
+  | "TIMEOUT";
 export const DynamicListenerClientStatusEnum = /*@__PURE__*/ S.String;
 
 export interface DynamicListenerState {
@@ -705,7 +702,7 @@ export const DynamicListener = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicListener",
 }) as any as S.Schema<DynamicListener>;
 
-export type DynamicListenerList = DynamicListener[];
+export type DynamicListenerList = ReadonlyArray<DynamicListener>;
 export const DynamicListenerList = /*@__PURE__*/ S.Array(
   DynamicListener,
 ) as any as S.Schema<DynamicListenerList>;
@@ -724,7 +721,7 @@ export const StaticListener = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StaticListener" }) as any as S.Schema<StaticListener>;
 
-export type StaticListenerList = StaticListener[];
+export type StaticListenerList = ReadonlyArray<StaticListener>;
 export const StaticListenerList = /*@__PURE__*/ S.Array(
   StaticListener,
 ) as any as S.Schema<StaticListenerList>;
@@ -748,7 +745,7 @@ export const ListenersConfigDump = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListenersConfigDump",
 }) as any as S.Schema<ListenersConfigDump>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -771,7 +768,8 @@ export const InlineScopedRouteConfigs = /*@__PURE__*/ S.suspend(() =>
   identifier: "InlineScopedRouteConfigs",
 }) as any as S.Schema<InlineScopedRouteConfigs>;
 
-export type InlineScopedRouteConfigsList = InlineScopedRouteConfigs[];
+export type InlineScopedRouteConfigsList =
+  ReadonlyArray<InlineScopedRouteConfigs>;
 export const InlineScopedRouteConfigsList = /*@__PURE__*/ S.Array(
   InlineScopedRouteConfigs,
 ) as any as S.Schema<InlineScopedRouteConfigsList>;
@@ -783,8 +781,7 @@ export type DynamicScopedRouteConfigsClientStatusEnum =
   | "ACKED"
   | "NACKED"
   | "RECEIVED_ERROR"
-  | "TIMEOUT"
-  | (string & {});
+  | "TIMEOUT";
 export const DynamicScopedRouteConfigsClientStatusEnum = /*@__PURE__*/ S.String;
 
 /** [#next-free-field: 7] */
@@ -815,7 +812,8 @@ export const DynamicScopedRouteConfigs = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicScopedRouteConfigs",
 }) as any as S.Schema<DynamicScopedRouteConfigs>;
 
-export type DynamicScopedRouteConfigsList = DynamicScopedRouteConfigs[];
+export type DynamicScopedRouteConfigsList =
+  ReadonlyArray<DynamicScopedRouteConfigs>;
 export const DynamicScopedRouteConfigsList = /*@__PURE__*/ S.Array(
   DynamicScopedRouteConfigs,
 ) as any as S.Schema<DynamicScopedRouteConfigsList>;
@@ -850,7 +848,7 @@ export const StaticCluster = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StaticCluster" }) as any as S.Schema<StaticCluster>;
 
-export type StaticClusterList = StaticCluster[];
+export type StaticClusterList = ReadonlyArray<StaticCluster>;
 export const StaticClusterList = /*@__PURE__*/ S.Array(
   StaticCluster,
 ) as any as S.Schema<StaticClusterList>;
@@ -862,8 +860,7 @@ export type DynamicClusterClientStatusEnum =
   | "ACKED"
   | "NACKED"
   | "RECEIVED_ERROR"
-  | "TIMEOUT"
-  | (string & {});
+  | "TIMEOUT";
 export const DynamicClusterClientStatusEnum = /*@__PURE__*/ S.String;
 
 /** Describes a dynamically loaded cluster via the CDS API. [#next-free-field: 6] */
@@ -889,7 +886,7 @@ export const DynamicCluster = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DynamicCluster" }) as any as S.Schema<DynamicCluster>;
 
-export type DynamicClusterList = DynamicCluster[];
+export type DynamicClusterList = ReadonlyArray<DynamicCluster>;
 export const DynamicClusterList = /*@__PURE__*/ S.Array(
   DynamicCluster,
 ) as any as S.Schema<DynamicClusterList>;
@@ -923,8 +920,7 @@ export type DynamicEndpointConfigClientStatusEnum =
   | "ACKED"
   | "NACKED"
   | "RECEIVED_ERROR"
-  | "TIMEOUT"
-  | (string & {});
+  | "TIMEOUT";
 export const DynamicEndpointConfigClientStatusEnum = /*@__PURE__*/ S.String;
 
 /** [#next-free-field: 6] */
@@ -952,7 +948,7 @@ export const DynamicEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicEndpointConfig",
 }) as any as S.Schema<DynamicEndpointConfig>;
 
-export type DynamicEndpointConfigList = DynamicEndpointConfig[];
+export type DynamicEndpointConfigList = ReadonlyArray<DynamicEndpointConfig>;
 export const DynamicEndpointConfigList = /*@__PURE__*/ S.Array(
   DynamicEndpointConfig,
 ) as any as S.Schema<DynamicEndpointConfigList>;
@@ -972,7 +968,7 @@ export const StaticEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "StaticEndpointConfig",
 }) as any as S.Schema<StaticEndpointConfig>;
 
-export type StaticEndpointConfigList = StaticEndpointConfig[];
+export type StaticEndpointConfigList = ReadonlyArray<StaticEndpointConfig>;
 export const StaticEndpointConfigList = /*@__PURE__*/ S.Array(
   StaticEndpointConfig,
 ) as any as S.Schema<StaticEndpointConfigList>;
@@ -998,8 +994,7 @@ export type PerXdsConfigStatusEnum =
   | "SYNCED"
   | "NOT_SENT"
   | "STALE"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const PerXdsConfigStatusEnum = /*@__PURE__*/ S.String;
 
 /** Detailed config (per xDS) with status. [#next-free-field: 8] */
@@ -1026,7 +1021,7 @@ export const PerXdsConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PerXdsConfig" }) as any as S.Schema<PerXdsConfig>;
 
-export type PerXdsConfigList = PerXdsConfig[];
+export type PerXdsConfigList = ReadonlyArray<PerXdsConfig>;
 export const PerXdsConfigList = /*@__PURE__*/ S.Array(
   PerXdsConfig,
 ) as any as S.Schema<PerXdsConfigList>;
@@ -1038,8 +1033,7 @@ export type GenericXdsConfigClientStatusEnum =
   | "ACKED"
   | "NACKED"
   | "RECEIVED_ERROR"
-  | "TIMEOUT"
-  | (string & {});
+  | "TIMEOUT";
 export const GenericXdsConfigClientStatusEnum = /*@__PURE__*/ S.String;
 
 export type GenericXdsConfigConfigStatusEnum =
@@ -1047,8 +1041,7 @@ export type GenericXdsConfigConfigStatusEnum =
   | "SYNCED"
   | "NOT_SENT"
   | "STALE"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GenericXdsConfigConfigStatusEnum = /*@__PURE__*/ S.String;
 
 /** GenericXdsConfig is used to specify the config status and the dump of any xDS resource identified by their type URL. It is the generalized version of the now deprecated ListenersConfigDump, ClustersConfigDump etc [#next-free-field: 10] */
@@ -1088,7 +1081,7 @@ export const GenericXdsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenericXdsConfig",
 }) as any as S.Schema<GenericXdsConfig>;
 
-export type GenericXdsConfigList = GenericXdsConfig[];
+export type GenericXdsConfigList = ReadonlyArray<GenericXdsConfig>;
 export const GenericXdsConfigList = /*@__PURE__*/ S.Array(
   GenericXdsConfig,
 ) as any as S.Schema<GenericXdsConfigList>;
@@ -1113,7 +1106,7 @@ export const ClientConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClientConfig" }) as any as S.Schema<ClientConfig>;
 
-export type ClientConfigList = ClientConfig[];
+export type ClientConfigList = ReadonlyArray<ClientConfig>;
 export const ClientConfigList = /*@__PURE__*/ S.Array(
   ClientConfig,
 ) as any as S.Schema<ClientConfigList>;

@@ -94,7 +94,7 @@ export const PathElement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PathElement" }) as any as S.Schema<PathElement>;
 
-export type PathElementList = PathElement[];
+export type PathElementList = ReadonlyArray<PathElement>;
 export const PathElementList = /*@__PURE__*/ S.Array(
   PathElement,
 ) as any as S.Schema<PathElementList>;
@@ -113,10 +113,10 @@ export const Key = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
-export type KeyList = Key[];
+export type KeyList = ReadonlyArray<Key>;
 export const KeyList = /*@__PURE__*/ S.Array(Key) as any as S.Schema<KeyList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -303,8 +303,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
 export type CommitRequestModeEnum =
   | "MODE_UNSPECIFIED"
   | "TRANSACTIONAL"
-  | "NON_TRANSACTIONAL"
-  | (string & {});
+  | "NON_TRANSACTIONAL";
 export const CommitRequestModeEnum = /*@__PURE__*/ S.String;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
@@ -321,7 +320,7 @@ export const LatLng = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
-export type ValueList = Value[];
+export type ValueList = ReadonlyArray<Value>;
 export const ValueList = /*@__PURE__*/ S.Array(
   S.suspend(() => Value),
 ) as any as S.Schema<ValueList>;
@@ -337,7 +336,7 @@ export const ArrayValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ArrayValue" }) as any as S.Schema<ArrayValue>;
 
-export type ValueNullValueEnum = "NULL_VALUE" | (string & {});
+export type ValueNullValueEnum = "NULL_VALUE";
 export const ValueNullValueEnum = /*@__PURE__*/ S.String;
 
 /** A message that can hold any of the supported value types and associated metadata. */
@@ -409,8 +408,7 @@ export const Entity = /*@__PURE__*/ S.suspend(() =>
 
 export type PropertyTransformSetToServerValueEnum =
   | "SERVER_VALUE_UNSPECIFIED"
-  | "REQUEST_TIME"
-  | (string & {});
+  | "REQUEST_TIME";
 export const PropertyTransformSetToServerValueEnum = /*@__PURE__*/ S.String;
 
 /** A transformation of an entity property. */
@@ -444,7 +442,7 @@ export const PropertyTransform = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyTransform",
 }) as any as S.Schema<PropertyTransform>;
 
-export type PropertyTransformList = PropertyTransform[];
+export type PropertyTransformList = ReadonlyArray<PropertyTransform>;
 export const PropertyTransformList = /*@__PURE__*/ S.Array(
   PropertyTransform,
 ) as any as S.Schema<PropertyTransformList>;
@@ -452,8 +450,7 @@ export const PropertyTransformList = /*@__PURE__*/ S.Array(
 export type MutationConflictResolutionStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "SERVER_VALUE"
-  | "FAIL"
-  | (string & {});
+  | "FAIL";
 export const MutationConflictResolutionStrategyEnum = /*@__PURE__*/ S.String;
 
 /** The set of arbitrarily nested property paths used to restrict an operation to only a subset of properties in an entity. */
@@ -504,7 +501,7 @@ export const Mutation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Mutation" }) as any as S.Schema<Mutation>;
 
-export type MutationList = Mutation[];
+export type MutationList = ReadonlyArray<Mutation>;
 export const MutationList = /*@__PURE__*/ S.Array(
   Mutation,
 ) as any as S.Schema<MutationList>;
@@ -582,7 +579,7 @@ export const MutationResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MutationResult" }) as any as S.Schema<MutationResult>;
 
-export type MutationResultList = MutationResult[];
+export type MutationResultList = ReadonlyArray<MutationResult>;
 export const MutationResultList = /*@__PURE__*/ S.Array(
   MutationResult,
 ) as any as S.Schema<MutationResultList>;
@@ -607,15 +604,13 @@ export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
 export type GoogleDatastoreAdminV1IndexAncestorEnum =
   | "ANCESTOR_MODE_UNSPECIFIED"
   | "NONE"
-  | "ALL_ANCESTORS"
-  | (string & {});
+  | "ALL_ANCESTORS";
 export const GoogleDatastoreAdminV1IndexAncestorEnum = /*@__PURE__*/ S.String;
 
 export type GoogleDatastoreAdminV1IndexedPropertyDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+  | "DESCENDING";
 export const GoogleDatastoreAdminV1IndexedPropertyDirectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -637,7 +632,7 @@ export const GoogleDatastoreAdminV1IndexedProperty = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleDatastoreAdminV1IndexedProperty>;
 
 export type GoogleDatastoreAdminV1IndexedPropertyList =
-  GoogleDatastoreAdminV1IndexedProperty[];
+  ReadonlyArray<GoogleDatastoreAdminV1IndexedProperty>;
 export const GoogleDatastoreAdminV1IndexedPropertyList = /*@__PURE__*/ S.Array(
   GoogleDatastoreAdminV1IndexedProperty,
 ) as any as S.Schema<GoogleDatastoreAdminV1IndexedPropertyList>;
@@ -647,8 +642,7 @@ export type GoogleDatastoreAdminV1IndexStateEnum =
   | "CREATING"
   | "READY"
   | "DELETING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GoogleDatastoreAdminV1IndexStateEnum = /*@__PURE__*/ S.String;
 
 /** Datastore composite index definition. */
@@ -706,7 +700,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -965,7 +959,8 @@ export const ListProjectsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsIndexesRequest",
 }) as any as S.Schema<ListProjectsIndexesRequest>;
 
-export type GoogleDatastoreAdminV1IndexList = GoogleDatastoreAdminV1Index[];
+export type GoogleDatastoreAdminV1IndexList =
+  ReadonlyArray<GoogleDatastoreAdminV1Index>;
 export const GoogleDatastoreAdminV1IndexList = /*@__PURE__*/ S.Array(
   GoogleDatastoreAdminV1Index,
 ) as any as S.Schema<GoogleDatastoreAdminV1IndexList>;
@@ -1017,7 +1012,8 @@ export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsOperationsRequest",
 }) as any as S.Schema<ListProjectsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -1045,8 +1041,7 @@ export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(
 export type ReadOptionsReadConsistencyEnum =
   | "READ_CONSISTENCY_UNSPECIFIED"
   | "STRONG"
-  | "EVENTUAL"
-  | (string & {});
+  | "EVENTUAL";
 export const ReadOptionsReadConsistencyEnum = /*@__PURE__*/ S.String;
 
 /** The options shared by read requests. */
@@ -1136,7 +1131,7 @@ export const EntityResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityResult" }) as any as S.Schema<EntityResult>;
 
-export type EntityResultList = EntityResult[];
+export type EntityResultList = ReadonlyArray<EntityResult>;
 export const EntityResultList = /*@__PURE__*/ S.Array(
   EntityResult,
 ) as any as S.Schema<EntityResultList>;
@@ -1284,7 +1279,7 @@ export const GqlQueryParameterMap = /*@__PURE__*/ S.Record(
   GqlQueryParameter,
 ) as any as S.Schema<GqlQueryParameterMap>;
 
-export type GqlQueryParameterList = GqlQueryParameter[];
+export type GqlQueryParameterList = ReadonlyArray<GqlQueryParameter>;
 export const GqlQueryParameterList = /*@__PURE__*/ S.Array(
   GqlQueryParameter,
 ) as any as S.Schema<GqlQueryParameterList>;
@@ -1326,8 +1321,7 @@ export type FindNearestDistanceMeasureEnum =
   | "DISTANCE_MEASURE_UNSPECIFIED"
   | "EUCLIDEAN"
   | "COSINE"
-  | "DOT_PRODUCT"
-  | (string & {});
+  | "DOT_PRODUCT";
 export const FindNearestDistanceMeasureEnum = /*@__PURE__*/ S.String;
 
 /** Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple documents have the same vector distance, the returned document order is not guaranteed to be stable between queries. */
@@ -1367,7 +1361,7 @@ export const KindExpression = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KindExpression" }) as any as S.Schema<KindExpression>;
 
-export type KindExpressionList = KindExpression[];
+export type KindExpressionList = ReadonlyArray<KindExpression>;
 export const KindExpressionList = /*@__PURE__*/ S.Array(
   KindExpression,
 ) as any as S.Schema<KindExpressionList>;
@@ -1375,8 +1369,7 @@ export const KindExpressionList = /*@__PURE__*/ S.Array(
 export type PropertyOrderDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "ASCENDING"
-  | "DESCENDING"
-  | (string & {});
+  | "DESCENDING";
 export const PropertyOrderDirectionEnum = /*@__PURE__*/ S.String;
 
 /** The desired order for a specific property. */
@@ -1393,12 +1386,12 @@ export const PropertyOrder = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyOrder" }) as any as S.Schema<PropertyOrder>;
 
-export type PropertyOrderList = PropertyOrder[];
+export type PropertyOrderList = ReadonlyArray<PropertyOrder>;
 export const PropertyOrderList = /*@__PURE__*/ S.Array(
   PropertyOrder,
 ) as any as S.Schema<PropertyOrderList>;
 
-export type PropertyReferenceList = PropertyReference[];
+export type PropertyReferenceList = ReadonlyArray<PropertyReference>;
 export const PropertyReferenceList = /*@__PURE__*/ S.Array(
   PropertyReference,
 ) as any as S.Schema<PropertyReferenceList>;
@@ -1413,8 +1406,7 @@ export type PropertyFilterOpEnum =
   | "IN"
   | "NOT_EQUAL"
   | "HAS_ANCESTOR"
-  | "NOT_IN"
-  | (string & {});
+  | "NOT_IN";
 export const PropertyFilterOpEnum = /*@__PURE__*/ S.String;
 
 /** A filter on a specific property. */
@@ -1434,14 +1426,10 @@ export const PropertyFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyFilter" }) as any as S.Schema<PropertyFilter>;
 
-export type CompositeFilterOpEnum =
-  | "OPERATOR_UNSPECIFIED"
-  | "AND"
-  | "OR"
-  | (string & {});
+export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
 export const CompositeFilterOpEnum = /*@__PURE__*/ S.String;
 
-export type FilterList = Filter[];
+export type FilterList = ReadonlyArray<Filter>;
 export const FilterList = /*@__PURE__*/ S.Array(
   S.suspend(() => Filter),
 ) as any as S.Schema<FilterList>;
@@ -1487,7 +1475,7 @@ export const Projection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Projection" }) as any as S.Schema<Projection>;
 
-export type ProjectionList = Projection[];
+export type ProjectionList = ReadonlyArray<Projection>;
 export const ProjectionList = /*@__PURE__*/ S.Array(
   Projection,
 ) as any as S.Schema<ProjectionList>;
@@ -1583,7 +1571,7 @@ export const Aggregation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
-export type AggregationList = Aggregation[];
+export type AggregationList = ReadonlyArray<Aggregation>;
 export const AggregationList = /*@__PURE__*/ S.Array(
   Aggregation,
 ) as any as S.Schema<AggregationList>;
@@ -1672,8 +1660,7 @@ export type AggregationResultBatchMoreResultsEnum =
   | "NOT_FINISHED"
   | "MORE_RESULTS_AFTER_LIMIT"
   | "MORE_RESULTS_AFTER_CURSOR"
-  | "NO_MORE_RESULTS"
-  | (string & {});
+  | "NO_MORE_RESULTS";
 export const AggregationResultBatchMoreResultsEnum = /*@__PURE__*/ S.String;
 
 /** The result of a single bucket from a Datastore aggregation query. The keys of `aggregate_properties` are the same for all results in an aggregation query, unlike entity queries which can have different fields present for each result. */
@@ -1689,7 +1676,7 @@ export const AggregationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregationResult",
 }) as any as S.Schema<AggregationResult>;
 
-export type AggregationResultList = AggregationResult[];
+export type AggregationResultList = ReadonlyArray<AggregationResult>;
 export const AggregationResultList = /*@__PURE__*/ S.Array(
   AggregationResult,
 ) as any as S.Schema<AggregationResultList>;
@@ -1840,16 +1827,14 @@ export type QueryResultBatchMoreResultsEnum =
   | "NOT_FINISHED"
   | "MORE_RESULTS_AFTER_LIMIT"
   | "MORE_RESULTS_AFTER_CURSOR"
-  | "NO_MORE_RESULTS"
-  | (string & {});
+  | "NO_MORE_RESULTS";
 export const QueryResultBatchMoreResultsEnum = /*@__PURE__*/ S.String;
 
 export type QueryResultBatchEntityResultTypeEnum =
   | "RESULT_TYPE_UNSPECIFIED"
   | "FULL"
   | "PROJECTION"
-  | "KEY_ONLY"
-  | (string & {});
+  | "KEY_ONLY";
 export const QueryResultBatchEntityResultTypeEnum = /*@__PURE__*/ S.String;
 
 /** A batch of results produced by a query. */

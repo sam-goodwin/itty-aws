@@ -97,15 +97,13 @@ export type ExecutionStateEnum =
   | "FAILED"
   | "CANCELLED"
   | "UNAVAILABLE"
-  | "QUEUED"
-  | (string & {});
+  | "QUEUED";
 export const ExecutionStateEnum = /*@__PURE__*/ S.String;
 
 export type ExecutionCallLogLevelEnum =
   | "CALL_LOG_LEVEL_UNSPECIFIED"
   | "LOG_ALL_CALLS"
-  | "LOG_ERRORS_ONLY"
-  | (string & {});
+  | "LOG_ERRORS_ONLY";
 export const ExecutionCallLogLevelEnum = /*@__PURE__*/ S.String;
 
 /** Represents a step of the workflow this execution is running. */
@@ -122,7 +120,7 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
-export type StepList = Step[];
+export type StepList = ReadonlyArray<Step>;
 export const StepList = /*@__PURE__*/ S.Array(
   Step,
 ) as any as S.Schema<StepList>;
@@ -174,7 +172,7 @@ export const StackTraceElement = /*@__PURE__*/ S.suspend(() =>
   identifier: "StackTraceElement",
 }) as any as S.Schema<StackTraceElement>;
 
-export type StackTraceElementList = StackTraceElement[];
+export type StackTraceElementList = ReadonlyArray<StackTraceElement>;
 export const StackTraceElementList = /*@__PURE__*/ S.Array(
   StackTraceElement,
 ) as any as S.Schema<StackTraceElementList>;
@@ -272,8 +270,7 @@ export const CreateProjectsLocationsWorkflowsExecutionsRequest =
 export type GetProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsWorkflowsExecutionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -304,8 +301,7 @@ export const GetProjectsLocationsWorkflowsExecutionsRequest =
 export type ListProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsWorkflowsExecutionsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -339,7 +335,7 @@ export const ListProjectsLocationsWorkflowsExecutionsRequest =
     identifier: "ListProjectsLocationsWorkflowsExecutionsRequest",
   }) as any as S.Schema<ListProjectsLocationsWorkflowsExecutionsRequest>;
 
-export type ExecutionList = Execution[];
+export type ExecutionList = ReadonlyArray<Execution>;
 export const ExecutionList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionList>;

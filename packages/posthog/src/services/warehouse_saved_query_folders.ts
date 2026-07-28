@@ -35,6 +35,28 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export interface WarehouseSavedQueryFoldersCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Display name for the folder used to organize saved queries in the SQL editor sidebar. */
+  name?: string;
+}
+export const WarehouseSavedQueryFoldersCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/warehouse_saved_query_folders/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "WarehouseSavedQueryFoldersCreateRequest",
+}) as any as S.Schema<WarehouseSavedQueryFoldersCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -50,11 +72,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -86,46 +107,13 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export interface WarehouseSavedQueryFoldersCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: string;
-  /** Display name for the folder used to organize saved queries in the SQL editor sidebar. */
-  name?: string;
-  created_at?: string;
-  created_by?: UserBasic;
-  view_count?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-}
-export const WarehouseSavedQueryFoldersCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      view_count: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/warehouse_saved_query_folders/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "WarehouseSavedQueryFoldersCreateRequest",
-}) as any as S.Schema<WarehouseSavedQueryFoldersCreateRequest>;
-
 /** Mixin for serializers to add user access control fields */
 export interface DataWarehouseSavedQueryFolder {
   id?: string;
   /** Display name for the folder used to organize saved queries in the SQL editor sidebar. */
   name?: string;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   view_count?: number;
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
@@ -135,7 +123,7 @@ export const DataWarehouseSavedQueryFolder = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     name: S.optional(S.String),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     view_count: S.optional(S.Number),
     user_access_level: S.optional(S.NullOr(S.String)),
   }),
@@ -191,7 +179,7 @@ export const WarehouseSavedQueryFoldersListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WarehouseSavedQueryFoldersListRequest>;
 
 export type WarehouseSavedQueryFoldersListResponseBodyList =
-  DataWarehouseSavedQueryFolder[];
+  ReadonlyArray<DataWarehouseSavedQueryFolder>;
 export const WarehouseSavedQueryFoldersListResponseBodyList =
   /*@__PURE__*/ S.Array(
     DataWarehouseSavedQueryFolder,
@@ -213,11 +201,6 @@ export interface WarehouseSavedQueryFoldersPartialUpdateRequest {
   id: string;
   /** Display name for the folder used to organize saved queries in the SQL editor sidebar. */
   name?: string;
-  created_at?: string;
-  created_by?: UserBasic;
-  view_count?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const WarehouseSavedQueryFoldersPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -225,10 +208,6 @@ export const WarehouseSavedQueryFoldersPartialUpdateRequest =
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
       name: S.optional(S.String),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      view_count: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",

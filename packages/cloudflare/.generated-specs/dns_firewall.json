@@ -1204,6 +1204,48 @@
           "traits": {
             "smithy.api#enumValue": "year"
           }
+        },
+        "QUARTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarter"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        },
+        "WEEK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "HOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        },
+        "DEKAMINUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dekaminute"
+          }
+        },
+        "MINUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "minute"
+          }
         }
       }
     },
@@ -1293,10 +1335,16 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataItemMetricsItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      }
+    },
     "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataItemMetricsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataItemMetricsItemList"
       }
     },
     "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseDataItem": {
@@ -1355,6 +1403,48 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "year"
+          }
+        },
+        "QUARTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarter"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "month"
+          }
+        },
+        "WEEK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "week"
+          }
+        },
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "day"
+          }
+        },
+        "HOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hour"
+          }
+        },
+        "DEKAMINUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dekaminute"
+          }
+        },
+        "MINUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "minute"
           }
         }
       }
@@ -1424,10 +1514,16 @@
         }
       }
     },
+    "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseTimeIntervalsItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseTimeIntervalsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponseTimeIntervalsItemList"
       }
     },
     "com.cloudflare.dns_firewall#AnalyticsReportsBytimesGetResponse": {
@@ -1518,7 +1614,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.dns_firewall#ReverseDnsEditRequest": {
@@ -1557,7 +1653,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.dns_firewall#ReverseDnsEditResponse": {
@@ -1623,7 +1719,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.dns_firewall#ReverseDnsGetResponse": {

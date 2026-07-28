@@ -84,8 +84,7 @@ export const GetProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
 export type TraceSpanKindEnum =
   | "SPAN_KIND_UNSPECIFIED"
   | "RPC_SERVER"
-  | "RPC_CLIENT"
-  | (string & {});
+  | "RPC_CLIENT";
 export const TraceSpanKindEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -123,7 +122,7 @@ export const TraceSpan = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TraceSpan" }) as any as S.Schema<TraceSpan>;
 
-export type TraceSpanList = TraceSpan[];
+export type TraceSpanList = ReadonlyArray<TraceSpan>;
 export const TraceSpanList = /*@__PURE__*/ S.Array(
   TraceSpan,
 ) as any as S.Schema<TraceSpanList>;
@@ -149,8 +148,7 @@ export type ListProjectsTracesViewEnum =
   | "VIEW_TYPE_UNSPECIFIED"
   | "MINIMAL"
   | "ROOTSPAN"
-  | "COMPLETE"
-  | (string & {});
+  | "COMPLETE";
 export const ListProjectsTracesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsTracesRequest {
@@ -192,7 +190,7 @@ export const ListProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsTracesRequest",
 }) as any as S.Schema<ListProjectsTracesRequest>;
 
-export type TraceList = Trace[];
+export type TraceList = ReadonlyArray<Trace>;
 export const TraceList = /*@__PURE__*/ S.Array(
   Trace,
 ) as any as S.Schema<TraceList>;

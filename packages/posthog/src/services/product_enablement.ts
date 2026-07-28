@@ -15,12 +15,12 @@ export type { PosthogOpError, PosthogOpContext };
 export type ProductsEnum =
   | "conversations"
   | "error_tracking"
-  | "session_replay"
-  | (string & {});
+  | "session_replay";
 export const ProductsEnum = /*@__PURE__*/ S.String;
 
 /** Products to turn on for this project, each enabled with server-owned conservative defaults. */
-export type ProductEnablementCreateRequestProductsList = ProductsEnum[];
+export type ProductEnablementCreateRequestProductsList =
+  ReadonlyArray<ProductsEnum>;
 export const ProductEnablementCreateRequestProductsList = /*@__PURE__*/ S.Array(
   ProductsEnum,
 ) as any as S.Schema<ProductEnablementCreateRequestProductsList>;

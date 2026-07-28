@@ -96,8 +96,7 @@ export type GooglePrivacyDlpV2InspectConfigMinLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GooglePrivacyDlpV2InspectConfigMinLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -106,8 +105,7 @@ export type GooglePrivacyDlpV2SensitivityScoreScoreEnum =
   | "SENSITIVITY_LOW"
   | "SENSITIVITY_UNKNOWN"
   | "SENSITIVITY_MODERATE"
-  | "SENSITIVITY_HIGH"
-  | (string & {});
+  | "SENSITIVITY_HIGH";
 export const GooglePrivacyDlpV2SensitivityScoreScoreEnum =
   /*@__PURE__*/ S.String;
 
@@ -143,7 +141,8 @@ export const GooglePrivacyDlpV2InfoType = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2InfoType",
 }) as any as S.Schema<GooglePrivacyDlpV2InfoType>;
 
-export type GooglePrivacyDlpV2InfoTypeList = GooglePrivacyDlpV2InfoType[];
+export type GooglePrivacyDlpV2InfoTypeList =
+  ReadonlyArray<GooglePrivacyDlpV2InfoType>;
 export const GooglePrivacyDlpV2InfoTypeList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoType,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeList>;
@@ -154,8 +153,7 @@ export type GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GooglePrivacyDlpV2InfoTypeLikelihoodMinLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -179,7 +177,7 @@ export const GooglePrivacyDlpV2InfoTypeLikelihood = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeLikelihood>;
 
 export type GooglePrivacyDlpV2InfoTypeLikelihoodList =
-  GooglePrivacyDlpV2InfoTypeLikelihood[];
+  ReadonlyArray<GooglePrivacyDlpV2InfoTypeLikelihood>;
 export const GooglePrivacyDlpV2InfoTypeLikelihoodList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeLikelihood,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeLikelihoodList>;
@@ -201,7 +199,7 @@ export const GooglePrivacyDlpV2InfoTypeLimit = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeLimit>;
 
 export type GooglePrivacyDlpV2InfoTypeLimitList =
-  GooglePrivacyDlpV2InfoTypeLimit[];
+  ReadonlyArray<GooglePrivacyDlpV2InfoTypeLimit>;
 export const GooglePrivacyDlpV2InfoTypeLimitList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeLimit,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeLimitList>;
@@ -228,13 +226,12 @@ export const GooglePrivacyDlpV2FindingLimits = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum =
   | "CONTENT_UNSPECIFIED"
   | "CONTENT_TEXT"
-  | "CONTENT_IMAGE"
-  | (string & {});
+  | "CONTENT_IMAGE";
 export const GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2InspectConfigContentOptionsItemEnumList =
-  GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum>;
 export const GooglePrivacyDlpV2InspectConfigContentOptionsItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2InspectConfigContentOptionsItemEnum,
@@ -256,7 +253,7 @@ export const GooglePrivacyDlpV2Proximity = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Proximity",
 }) as any as S.Schema<GooglePrivacyDlpV2Proximity>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -283,8 +280,7 @@ export type GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -408,12 +404,11 @@ export type GooglePrivacyDlpV2ExclusionRuleMatchingTypeEnum =
   | "MATCHING_TYPE_FULL_MATCH"
   | "MATCHING_TYPE_PARTIAL_MATCH"
   | "MATCHING_TYPE_INVERSE_MATCH"
-  | "MATCHING_TYPE_RULE_SPECIFIC"
-  | (string & {});
+  | "MATCHING_TYPE_RULE_SPECIFIC";
 export const GooglePrivacyDlpV2ExclusionRuleMatchingTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -509,8 +504,7 @@ export type GooglePrivacyDlpV2AdjustByImageFindingsMinLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GooglePrivacyDlpV2AdjustByImageFindingsMinLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -542,8 +536,7 @@ export type GooglePrivacyDlpV2AdjustByMatchingInfoTypesMinLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GooglePrivacyDlpV2AdjustByMatchingInfoTypesMinLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -552,8 +545,7 @@ export type GooglePrivacyDlpV2AdjustByMatchingInfoTypesMatchingTypeEnum =
   | "MATCHING_TYPE_FULL_MATCH"
   | "MATCHING_TYPE_PARTIAL_MATCH"
   | "MATCHING_TYPE_INVERSE_MATCH"
-  | "MATCHING_TYPE_RULE_SPECIFIC"
-  | (string & {});
+  | "MATCHING_TYPE_RULE_SPECIFIC";
 export const GooglePrivacyDlpV2AdjustByMatchingInfoTypesMatchingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -622,7 +614,7 @@ export const GooglePrivacyDlpV2InspectionRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2InspectionRule>;
 
 export type GooglePrivacyDlpV2InspectionRuleList =
-  GooglePrivacyDlpV2InspectionRule[];
+  ReadonlyArray<GooglePrivacyDlpV2InspectionRule>;
 export const GooglePrivacyDlpV2InspectionRuleList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InspectionRule,
 ) as any as S.Schema<GooglePrivacyDlpV2InspectionRuleList>;
@@ -644,7 +636,7 @@ export const GooglePrivacyDlpV2InspectionRuleSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2InspectionRuleSet>;
 
 export type GooglePrivacyDlpV2InspectionRuleSetList =
-  GooglePrivacyDlpV2InspectionRuleSet[];
+  ReadonlyArray<GooglePrivacyDlpV2InspectionRuleSet>;
 export const GooglePrivacyDlpV2InspectionRuleSetList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InspectionRuleSet,
 ) as any as S.Schema<GooglePrivacyDlpV2InspectionRuleSetList>;
@@ -668,8 +660,7 @@ export const GooglePrivacyDlpV2MetadataKeyValueExpression =
 
 export type GooglePrivacyDlpV2CustomInfoTypeExclusionTypeEnum =
   | "EXCLUSION_TYPE_UNSPECIFIED"
-  | "EXCLUSION_TYPE_EXCLUDE"
-  | (string & {});
+  | "EXCLUSION_TYPE_EXCLUDE";
 export const GooglePrivacyDlpV2CustomInfoTypeExclusionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -695,7 +686,7 @@ export const GooglePrivacyDlpV2DetectionRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2DetectionRule>;
 
 export type GooglePrivacyDlpV2DetectionRuleList =
-  GooglePrivacyDlpV2DetectionRule[];
+  ReadonlyArray<GooglePrivacyDlpV2DetectionRule>;
 export const GooglePrivacyDlpV2DetectionRuleList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DetectionRule,
 ) as any as S.Schema<GooglePrivacyDlpV2DetectionRuleList>;
@@ -716,7 +707,8 @@ export const GooglePrivacyDlpV2LabelField = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2LabelField",
 }) as any as S.Schema<GooglePrivacyDlpV2LabelField>;
 
-export type GooglePrivacyDlpV2LabelFieldList = GooglePrivacyDlpV2LabelField[];
+export type GooglePrivacyDlpV2LabelFieldList =
+  ReadonlyArray<GooglePrivacyDlpV2LabelField>;
 export const GooglePrivacyDlpV2LabelFieldList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2LabelField,
 ) as any as S.Schema<GooglePrivacyDlpV2LabelFieldList>;
@@ -788,8 +780,7 @@ export type GooglePrivacyDlpV2CustomInfoTypeLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GooglePrivacyDlpV2CustomInfoTypeLikelihoodEnum =
   /*@__PURE__*/ S.String;
 
@@ -841,7 +832,7 @@ export const GooglePrivacyDlpV2CustomInfoType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2CustomInfoType>;
 
 export type GooglePrivacyDlpV2CustomInfoTypeList =
-  GooglePrivacyDlpV2CustomInfoType[];
+  ReadonlyArray<GooglePrivacyDlpV2CustomInfoType>;
 export const GooglePrivacyDlpV2CustomInfoTypeList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2CustomInfoType,
 ) as any as S.Schema<GooglePrivacyDlpV2CustomInfoTypeList>;
@@ -921,8 +912,7 @@ export const GooglePrivacyDlpV2InspectTemplate = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2CloudStorageOptionsSampleMethodEnum =
   | "SAMPLE_METHOD_UNSPECIFIED"
   | "TOP"
-  | "RANDOM_START"
-  | (string & {});
+  | "RANDOM_START";
 export const GooglePrivacyDlpV2CloudStorageOptionsSampleMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -973,13 +963,12 @@ export type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum =
   | "CSV"
   | "TSV"
   | "POWERPOINT"
-  | "EXCEL"
-  | (string & {});
+  | "EXCEL";
 export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnumList =
-  GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum>;
 export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemEnum,
@@ -1037,7 +1026,8 @@ export const GooglePrivacyDlpV2FieldId = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2FieldId",
 }) as any as S.Schema<GooglePrivacyDlpV2FieldId>;
 
-export type GooglePrivacyDlpV2FieldIdList = GooglePrivacyDlpV2FieldId[];
+export type GooglePrivacyDlpV2FieldIdList =
+  ReadonlyArray<GooglePrivacyDlpV2FieldId>;
 export const GooglePrivacyDlpV2FieldIdList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FieldId,
 ) as any as S.Schema<GooglePrivacyDlpV2FieldIdList>;
@@ -1121,8 +1111,7 @@ export const GooglePrivacyDlpV2BigQueryTable = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2BigQueryOptionsSampleMethodEnum =
   | "SAMPLE_METHOD_UNSPECIFIED"
   | "TOP"
-  | "RANDOM_START"
-  | (string & {});
+  | "RANDOM_START";
 export const GooglePrivacyDlpV2BigQueryOptionsSampleMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1253,8 +1242,7 @@ export type GooglePrivacyDlpV2OutputStorageConfigOutputSchemaEnum =
   | "GCS_COLUMNS"
   | "DATASTORE_COLUMNS"
   | "BIG_QUERY_COLUMNS"
-  | "ALL_COLUMNS"
-  | (string & {});
+  | "ALL_COLUMNS";
 export const GooglePrivacyDlpV2OutputStorageConfigOutputSchemaEnum =
   /*@__PURE__*/ S.String;
 
@@ -1349,13 +1337,12 @@ export type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnum =
   | "CSV"
   | "TSV"
   | "POWERPOINT"
-  | "EXCEL"
-  | (string & {});
+  | "EXCEL";
 export const GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnumList =
-  GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnum>;
 export const GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemEnum,
@@ -1445,7 +1432,8 @@ export const GooglePrivacyDlpV2Action = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Action",
 }) as any as S.Schema<GooglePrivacyDlpV2Action>;
 
-export type GooglePrivacyDlpV2ActionList = GooglePrivacyDlpV2Action[];
+export type GooglePrivacyDlpV2ActionList =
+  ReadonlyArray<GooglePrivacyDlpV2Action>;
 export const GooglePrivacyDlpV2ActionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Action,
 ) as any as S.Schema<GooglePrivacyDlpV2ActionList>;
@@ -1525,7 +1513,7 @@ export const GooglePrivacyDlpV2InfoTypeStats = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeStats>;
 
 export type GooglePrivacyDlpV2InfoTypeStatsList =
-  GooglePrivacyDlpV2InfoTypeStats[];
+  ReadonlyArray<GooglePrivacyDlpV2InfoTypeStats>;
 export const GooglePrivacyDlpV2InfoTypeStatsList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeStats,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeStatsList>;
@@ -1632,7 +1620,8 @@ export const GooglePrivacyDlpV2QuasiId = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2QuasiId",
 }) as any as S.Schema<GooglePrivacyDlpV2QuasiId>;
 
-export type GooglePrivacyDlpV2QuasiIdList = GooglePrivacyDlpV2QuasiId[];
+export type GooglePrivacyDlpV2QuasiIdList =
+  ReadonlyArray<GooglePrivacyDlpV2QuasiId>;
 export const GooglePrivacyDlpV2QuasiIdList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2QuasiId,
 ) as any as S.Schema<GooglePrivacyDlpV2QuasiIdList>;
@@ -1655,7 +1644,7 @@ export const GooglePrivacyDlpV2QuasiIdentifierField = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2QuasiIdentifierField>;
 
 export type GooglePrivacyDlpV2QuasiIdentifierFieldList =
-  GooglePrivacyDlpV2QuasiIdentifierField[];
+  ReadonlyArray<GooglePrivacyDlpV2QuasiIdentifierField>;
 export const GooglePrivacyDlpV2QuasiIdentifierFieldList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2QuasiIdentifierField,
 ) as any as S.Schema<GooglePrivacyDlpV2QuasiIdentifierFieldList>;
@@ -1680,7 +1669,7 @@ export const GooglePrivacyDlpV2StatisticalTable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2StatisticalTable>;
 
 export type GooglePrivacyDlpV2StatisticalTableList =
-  GooglePrivacyDlpV2StatisticalTable[];
+  ReadonlyArray<GooglePrivacyDlpV2StatisticalTable>;
 export const GooglePrivacyDlpV2StatisticalTableList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2StatisticalTable,
 ) as any as S.Schema<GooglePrivacyDlpV2StatisticalTableList>;
@@ -1770,7 +1759,8 @@ export const GooglePrivacyDlpV2TaggedField = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2TaggedField",
 }) as any as S.Schema<GooglePrivacyDlpV2TaggedField>;
 
-export type GooglePrivacyDlpV2TaggedFieldList = GooglePrivacyDlpV2TaggedField[];
+export type GooglePrivacyDlpV2TaggedFieldList =
+  ReadonlyArray<GooglePrivacyDlpV2TaggedField>;
 export const GooglePrivacyDlpV2TaggedFieldList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2TaggedField,
 ) as any as S.Schema<GooglePrivacyDlpV2TaggedFieldList>;
@@ -1792,7 +1782,7 @@ export const GooglePrivacyDlpV2QuasiIdField = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2QuasiIdField>;
 
 export type GooglePrivacyDlpV2QuasiIdFieldList =
-  GooglePrivacyDlpV2QuasiIdField[];
+  ReadonlyArray<GooglePrivacyDlpV2QuasiIdField>;
 export const GooglePrivacyDlpV2QuasiIdFieldList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2QuasiIdField,
 ) as any as S.Schema<GooglePrivacyDlpV2QuasiIdFieldList>;
@@ -1817,7 +1807,7 @@ export const GooglePrivacyDlpV2AuxiliaryTable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2AuxiliaryTable>;
 
 export type GooglePrivacyDlpV2AuxiliaryTableList =
-  GooglePrivacyDlpV2AuxiliaryTable[];
+  ReadonlyArray<GooglePrivacyDlpV2AuxiliaryTable>;
 export const GooglePrivacyDlpV2AuxiliaryTableList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2AuxiliaryTable,
 ) as any as S.Schema<GooglePrivacyDlpV2AuxiliaryTableList>;
@@ -1955,8 +1945,7 @@ export type GooglePrivacyDlpV2ValueDayOfWeekValueEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const GooglePrivacyDlpV2ValueDayOfWeekValueEnum = /*@__PURE__*/ S.String;
 
 /** Set of primitive values supported by the system. Note that for the purposes of inspection or transformation, the number of bytes considered to comprise a 'Value' is based on its representation as a UTF-8 encoded string. For example, if 'integer_value' is set to 123456789, the number of bytes would be counted as 9, even though an int64 only holds up to 8 bytes of data. */
@@ -1993,7 +1982,8 @@ export const GooglePrivacyDlpV2Value = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Value",
 }) as any as S.Schema<GooglePrivacyDlpV2Value>;
 
-export type GooglePrivacyDlpV2ValueList = GooglePrivacyDlpV2Value[];
+export type GooglePrivacyDlpV2ValueList =
+  ReadonlyArray<GooglePrivacyDlpV2Value>;
 export const GooglePrivacyDlpV2ValueList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Value,
 ) as any as S.Schema<GooglePrivacyDlpV2ValueList>;
@@ -2016,7 +2006,7 @@ export const GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues =
   }) as any as S.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>;
 
 export type GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesList =
-  GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues[];
+  ReadonlyArray<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>;
 export const GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues,
@@ -2051,7 +2041,7 @@ export const GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket =
   }) as any as S.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>;
 
 export type GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketList =
-  GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket[];
+  ReadonlyArray<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>;
 export const GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket,
@@ -2090,7 +2080,7 @@ export const GooglePrivacyDlpV2ValueFrequency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2ValueFrequency>;
 
 export type GooglePrivacyDlpV2ValueFrequencyList =
-  GooglePrivacyDlpV2ValueFrequency[];
+  ReadonlyArray<GooglePrivacyDlpV2ValueFrequency>;
 export const GooglePrivacyDlpV2ValueFrequencyList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ValueFrequency,
 ) as any as S.Schema<GooglePrivacyDlpV2ValueFrequencyList>;
@@ -2122,7 +2112,7 @@ export const GooglePrivacyDlpV2CategoricalStatsHistogramBucket =
   }) as any as S.Schema<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>;
 
 export type GooglePrivacyDlpV2CategoricalStatsHistogramBucketList =
-  GooglePrivacyDlpV2CategoricalStatsHistogramBucket[];
+  ReadonlyArray<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>;
 export const GooglePrivacyDlpV2CategoricalStatsHistogramBucketList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2CategoricalStatsHistogramBucket,
@@ -2182,7 +2172,7 @@ export const GooglePrivacyDlpV2KAnonymityEquivalenceClass =
   }) as any as S.Schema<GooglePrivacyDlpV2KAnonymityEquivalenceClass>;
 
 export type GooglePrivacyDlpV2KAnonymityEquivalenceClassList =
-  GooglePrivacyDlpV2KAnonymityEquivalenceClass[];
+  ReadonlyArray<GooglePrivacyDlpV2KAnonymityEquivalenceClass>;
 export const GooglePrivacyDlpV2KAnonymityEquivalenceClassList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2KAnonymityEquivalenceClass,
@@ -2217,7 +2207,7 @@ export const GooglePrivacyDlpV2KAnonymityHistogramBucket =
   }) as any as S.Schema<GooglePrivacyDlpV2KAnonymityHistogramBucket>;
 
 export type GooglePrivacyDlpV2KAnonymityHistogramBucketList =
-  GooglePrivacyDlpV2KAnonymityHistogramBucket[];
+  ReadonlyArray<GooglePrivacyDlpV2KAnonymityHistogramBucket>;
 export const GooglePrivacyDlpV2KAnonymityHistogramBucketList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2KAnonymityHistogramBucket,
@@ -2256,7 +2246,7 @@ export const GooglePrivacyDlpV2KMapEstimationQuasiIdValues =
   }) as any as S.Schema<GooglePrivacyDlpV2KMapEstimationQuasiIdValues>;
 
 export type GooglePrivacyDlpV2KMapEstimationQuasiIdValuesList =
-  GooglePrivacyDlpV2KMapEstimationQuasiIdValues[];
+  ReadonlyArray<GooglePrivacyDlpV2KMapEstimationQuasiIdValues>;
 export const GooglePrivacyDlpV2KMapEstimationQuasiIdValuesList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2KMapEstimationQuasiIdValues,
@@ -2291,7 +2281,7 @@ export const GooglePrivacyDlpV2KMapEstimationHistogramBucket =
   }) as any as S.Schema<GooglePrivacyDlpV2KMapEstimationHistogramBucket>;
 
 export type GooglePrivacyDlpV2KMapEstimationHistogramBucketList =
-  GooglePrivacyDlpV2KMapEstimationHistogramBucket[];
+  ReadonlyArray<GooglePrivacyDlpV2KMapEstimationHistogramBucket>;
 export const GooglePrivacyDlpV2KMapEstimationHistogramBucketList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2KMapEstimationHistogramBucket,
@@ -2337,7 +2327,7 @@ export const GooglePrivacyDlpV2LDiversityEquivalenceClass =
   }) as any as S.Schema<GooglePrivacyDlpV2LDiversityEquivalenceClass>;
 
 export type GooglePrivacyDlpV2LDiversityEquivalenceClassList =
-  GooglePrivacyDlpV2LDiversityEquivalenceClass[];
+  ReadonlyArray<GooglePrivacyDlpV2LDiversityEquivalenceClass>;
 export const GooglePrivacyDlpV2LDiversityEquivalenceClassList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2LDiversityEquivalenceClass,
@@ -2372,7 +2362,7 @@ export const GooglePrivacyDlpV2LDiversityHistogramBucket =
   }) as any as S.Schema<GooglePrivacyDlpV2LDiversityHistogramBucket>;
 
 export type GooglePrivacyDlpV2LDiversityHistogramBucketList =
-  GooglePrivacyDlpV2LDiversityHistogramBucket[];
+  ReadonlyArray<GooglePrivacyDlpV2LDiversityHistogramBucket>;
 export const GooglePrivacyDlpV2LDiversityHistogramBucketList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2LDiversityHistogramBucket,
@@ -2440,8 +2430,7 @@ export const GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails =
 export type GooglePrivacyDlpV2DlpJobTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB"
-  | (string & {});
+  | "RISK_ANALYSIS_JOB";
 export const GooglePrivacyDlpV2DlpJobTypeEnum = /*@__PURE__*/ S.String;
 
 /** Use this to have a random data crypto key generated. It will be discarded after the request finishes. */
@@ -2549,8 +2538,7 @@ export type GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreEnum =
   | "ALPHA_UPPER_CASE"
   | "ALPHA_LOWER_CASE"
   | "PUNCTUATION"
-  | "WHITESPACE"
-  | (string & {});
+  | "WHITESPACE";
 export const GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreEnum =
   /*@__PURE__*/ S.String;
 
@@ -2573,7 +2561,7 @@ export const GooglePrivacyDlpV2CharsToIgnore = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2CharsToIgnore>;
 
 export type GooglePrivacyDlpV2CharsToIgnoreList =
-  GooglePrivacyDlpV2CharsToIgnore[];
+  ReadonlyArray<GooglePrivacyDlpV2CharsToIgnore>;
 export const GooglePrivacyDlpV2CharsToIgnoreList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2CharsToIgnore,
 ) as any as S.Schema<GooglePrivacyDlpV2CharsToIgnoreList>;
@@ -2654,7 +2642,8 @@ export const GooglePrivacyDlpV2Bucket = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Bucket",
 }) as any as S.Schema<GooglePrivacyDlpV2Bucket>;
 
-export type GooglePrivacyDlpV2BucketList = GooglePrivacyDlpV2Bucket[];
+export type GooglePrivacyDlpV2BucketList =
+  ReadonlyArray<GooglePrivacyDlpV2Bucket>;
 export const GooglePrivacyDlpV2BucketList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Bucket,
 ) as any as S.Schema<GooglePrivacyDlpV2BucketList>;
@@ -2706,8 +2695,7 @@ export type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetEnum =
   | "NUMERIC"
   | "HEXADECIMAL"
   | "UPPER_CASE_ALPHA_NUMERIC"
-  | "ALPHA_NUMERIC"
-  | (string & {});
+  | "ALPHA_NUMERIC";
 export const GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetEnum =
   /*@__PURE__*/ S.String;
 
@@ -2749,8 +2737,7 @@ export type GooglePrivacyDlpV2TimePartConfigPartToExtractEnum =
   | "DAY_OF_MONTH"
   | "DAY_OF_WEEK"
   | "WEEK_OF_YEAR"
-  | "HOUR_OF_DAY"
-  | (string & {});
+  | "HOUR_OF_DAY";
 export const GooglePrivacyDlpV2TimePartConfigPartToExtractEnum =
   /*@__PURE__*/ S.String;
 
@@ -2866,7 +2853,7 @@ export const GooglePrivacyDlpV2InfoTypeTransformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeTransformation>;
 
 export type GooglePrivacyDlpV2InfoTypeTransformationList =
-  GooglePrivacyDlpV2InfoTypeTransformation[];
+  ReadonlyArray<GooglePrivacyDlpV2InfoTypeTransformation>;
 export const GooglePrivacyDlpV2InfoTypeTransformationList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2InfoTypeTransformation,
@@ -2894,8 +2881,7 @@ export type GooglePrivacyDlpV2ConditionOperatorEnum =
   | "LESS_THAN"
   | "GREATER_THAN_OR_EQUALS"
   | "LESS_THAN_OR_EQUALS"
-  | "EXISTS"
-  | (string & {});
+  | "EXISTS";
 export const GooglePrivacyDlpV2ConditionOperatorEnum = /*@__PURE__*/ S.String;
 
 /** The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false. */
@@ -2917,7 +2903,8 @@ export const GooglePrivacyDlpV2Condition = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Condition",
 }) as any as S.Schema<GooglePrivacyDlpV2Condition>;
 
-export type GooglePrivacyDlpV2ConditionList = GooglePrivacyDlpV2Condition[];
+export type GooglePrivacyDlpV2ConditionList =
+  ReadonlyArray<GooglePrivacyDlpV2Condition>;
 export const GooglePrivacyDlpV2ConditionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Condition,
 ) as any as S.Schema<GooglePrivacyDlpV2ConditionList>;
@@ -2937,8 +2924,7 @@ export const GooglePrivacyDlpV2Conditions = /*@__PURE__*/ S.suspend(() =>
 
 export type GooglePrivacyDlpV2ExpressionsLogicalOperatorEnum =
   | "LOGICAL_OPERATOR_UNSPECIFIED"
-  | "AND"
-  | (string & {});
+  | "AND";
 export const GooglePrivacyDlpV2ExpressionsLogicalOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -3001,7 +2987,7 @@ export const GooglePrivacyDlpV2FieldTransformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2FieldTransformation>;
 
 export type GooglePrivacyDlpV2FieldTransformationList =
-  GooglePrivacyDlpV2FieldTransformation[];
+  ReadonlyArray<GooglePrivacyDlpV2FieldTransformation>;
 export const GooglePrivacyDlpV2FieldTransformationList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FieldTransformation,
 ) as any as S.Schema<GooglePrivacyDlpV2FieldTransformationList>;
@@ -3020,7 +3006,7 @@ export const GooglePrivacyDlpV2RecordSuppression = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2RecordSuppression>;
 
 export type GooglePrivacyDlpV2RecordSuppressionList =
-  GooglePrivacyDlpV2RecordSuppression[];
+  ReadonlyArray<GooglePrivacyDlpV2RecordSuppression>;
 export const GooglePrivacyDlpV2RecordSuppressionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2RecordSuppression,
 ) as any as S.Schema<GooglePrivacyDlpV2RecordSuppressionList>;
@@ -3116,7 +3102,7 @@ export const GooglePrivacyDlpV2ImageTransformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2ImageTransformation>;
 
 export type GooglePrivacyDlpV2ImageTransformationList =
-  GooglePrivacyDlpV2ImageTransformation[];
+  ReadonlyArray<GooglePrivacyDlpV2ImageTransformation>;
 export const GooglePrivacyDlpV2ImageTransformationList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ImageTransformation,
 ) as any as S.Schema<GooglePrivacyDlpV2ImageTransformationList>;
@@ -3304,7 +3290,7 @@ export const GooglePrivacyDlpV2ActionDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2ActionDetails>;
 
 export type GooglePrivacyDlpV2ActionDetailsList =
-  GooglePrivacyDlpV2ActionDetails[];
+  ReadonlyArray<GooglePrivacyDlpV2ActionDetails>;
 export const GooglePrivacyDlpV2ActionDetailsList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ActionDetails,
 ) as any as S.Schema<GooglePrivacyDlpV2ActionDetailsList>;
@@ -3315,7 +3301,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -3342,8 +3328,7 @@ export const GoogleRpcStatus = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2ErrorExtraInfoEnum =
   | "ERROR_INFO_UNSPECIFIED"
   | "IMAGE_SCAN_UNAVAILABLE_IN_REGION"
-  | "FILE_STORE_CLUSTER_UNSUPPORTED"
-  | (string & {});
+  | "FILE_STORE_CLUSTER_UNSUPPORTED";
 export const GooglePrivacyDlpV2ErrorExtraInfoEnum = /*@__PURE__*/ S.String;
 
 /** Details information about an error encountered during job execution or the results of an unsuccessful activation of the JobTrigger. */
@@ -3365,7 +3350,8 @@ export const GooglePrivacyDlpV2Error = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Error",
 }) as any as S.Schema<GooglePrivacyDlpV2Error>;
 
-export type GooglePrivacyDlpV2ErrorList = GooglePrivacyDlpV2Error[];
+export type GooglePrivacyDlpV2ErrorList =
+  ReadonlyArray<GooglePrivacyDlpV2Error>;
 export const GooglePrivacyDlpV2ErrorList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Error,
 ) as any as S.Schema<GooglePrivacyDlpV2ErrorList>;
@@ -3377,8 +3363,7 @@ export type GooglePrivacyDlpV2DlpJobStateEnum =
   | "DONE"
   | "CANCELED"
   | "FAILED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const GooglePrivacyDlpV2DlpJobStateEnum = /*@__PURE__*/ S.String;
 
 /** Combines all of the information about a DLP job. */
@@ -3596,15 +3581,13 @@ export type GooglePrivacyDlpV2ConnectionStateEnum =
   | "CONNECTION_STATE_UNSPECIFIED"
   | "MISSING_CREDENTIALS"
   | "AVAILABLE"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GooglePrivacyDlpV2ConnectionStateEnum = /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2CloudSqlPropertiesDatabaseEngineEnum =
   | "DATABASE_ENGINE_UNKNOWN"
   | "DATABASE_ENGINE_MYSQL"
-  | "DATABASE_ENGINE_POSTGRES"
-  | (string & {});
+  | "DATABASE_ENGINE_POSTGRES";
 export const GooglePrivacyDlpV2CloudSqlPropertiesDatabaseEngineEnum =
   /*@__PURE__*/ S.String;
 
@@ -3748,13 +3731,12 @@ export const CreateOrganizationsLocationsDeidentifyTemplatesRequest =
 export type GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum =
   | "SQL_SCHEMA_MODIFICATION_UNSPECIFIED"
   | "NEW_COLUMNS"
-  | "REMOVED_COLUMNS"
-  | (string & {});
+  | "REMOVED_COLUMNS";
 export const GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnumList =
-  GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum>;
 export const GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2SchemaModifiedCadenceTypesItemEnum,
@@ -3764,8 +3746,7 @@ export type GooglePrivacyDlpV2SchemaModifiedCadenceFrequencyEnum =
   | "UPDATE_FREQUENCY_UNSPECIFIED"
   | "UPDATE_FREQUENCY_NEVER"
   | "UPDATE_FREQUENCY_DAILY"
-  | "UPDATE_FREQUENCY_MONTHLY"
-  | (string & {});
+  | "UPDATE_FREQUENCY_MONTHLY";
 export const GooglePrivacyDlpV2SchemaModifiedCadenceFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -3794,8 +3775,7 @@ export type GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadenceRefreshFrequency
     | "UPDATE_FREQUENCY_UNSPECIFIED"
     | "UPDATE_FREQUENCY_NEVER"
     | "UPDATE_FREQUENCY_DAILY"
-    | "UPDATE_FREQUENCY_MONTHLY"
-    | (string & {});
+    | "UPDATE_FREQUENCY_MONTHLY";
 export const GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadenceRefreshFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -3803,8 +3783,7 @@ export type GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadenceFrequencyEn
     | "UPDATE_FREQUENCY_UNSPECIFIED"
     | "UPDATE_FREQUENCY_NEVER"
     | "UPDATE_FREQUENCY_DAILY"
-    | "UPDATE_FREQUENCY_MONTHLY"
-    | (string & {});
+    | "UPDATE_FREQUENCY_MONTHLY";
 export const GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadenceFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -3882,7 +3861,7 @@ export const GooglePrivacyDlpV2DatabaseResourceRegex = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2DatabaseResourceRegex>;
 
 export type GooglePrivacyDlpV2DatabaseResourceRegexList =
-  GooglePrivacyDlpV2DatabaseResourceRegex[];
+  ReadonlyArray<GooglePrivacyDlpV2DatabaseResourceRegex>;
 export const GooglePrivacyDlpV2DatabaseResourceRegexList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DatabaseResourceRegex,
@@ -3972,13 +3951,12 @@ export type GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum
     | "DATABASE_ENGINE_UNSPECIFIED"
     | "ALL_SUPPORTED_DATABASE_ENGINES"
     | "MYSQL"
-    | "POSTGRES"
-    | (string & {});
+    | "POSTGRES";
 export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnumList =
-  GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum>;
 export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnum,
@@ -3987,13 +3965,12 @@ export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsDatabaseEnginesItemEnu
 export type GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum =
   | "DATABASE_RESOURCE_TYPE_UNSPECIFIED"
   | "DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES"
-  | "DATABASE_RESOURCE_TYPE_TABLE"
-  | (string & {});
+  | "DATABASE_RESOURCE_TYPE_TABLE";
 export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnumList =
-  GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum>;
 export const GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoveryCloudSqlConditionsTypesItemEnum,
@@ -4062,8 +4039,7 @@ export type GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadenceRefreshFrequen
     | "UPDATE_FREQUENCY_UNSPECIFIED"
     | "UPDATE_FREQUENCY_NEVER"
     | "UPDATE_FREQUENCY_DAILY"
-    | "UPDATE_FREQUENCY_MONTHLY"
-    | (string & {});
+    | "UPDATE_FREQUENCY_MONTHLY";
 export const GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadenceRefreshFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4176,7 +4152,7 @@ export const GooglePrivacyDlpV2OtherCloudResourceRegex =
   }) as any as S.Schema<GooglePrivacyDlpV2OtherCloudResourceRegex>;
 
 export type GooglePrivacyDlpV2OtherCloudResourceRegexList =
-  GooglePrivacyDlpV2OtherCloudResourceRegex[];
+  ReadonlyArray<GooglePrivacyDlpV2OtherCloudResourceRegex>;
 export const GooglePrivacyDlpV2OtherCloudResourceRegexList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2OtherCloudResourceRegex,
@@ -4243,13 +4219,12 @@ export const GooglePrivacyDlpV2DiscoveryOtherCloudFilter =
 export type GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum =
   | "TYPE_UNSPECIFIED"
   | "TYPE_ALL_SUPPORTED"
-  | "TYPE_GENERAL_PURPOSE"
-  | (string & {});
+  | "TYPE_GENERAL_PURPOSE";
 export const GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnumList =
-  GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum>;
 export const GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2AmazonS3BucketConditionsBucketTypesItemEnum,
@@ -4261,13 +4236,12 @@ export type GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEn
     | "STANDARD"
     | "STANDARD_INFREQUENT_ACCESS"
     | "GLACIER_INSTANT_RETRIEVAL"
-    | "INTELLIGENT_TIERING"
-    | (string & {});
+    | "INTELLIGENT_TIERING";
 export const GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnumList =
-  GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnum>;
 export const GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2AmazonS3BucketConditionsObjectStorageClassesItemEnum,
@@ -4356,7 +4330,7 @@ export const GooglePrivacyDlpV2VertexDatasetRegex = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2VertexDatasetRegex>;
 
 export type GooglePrivacyDlpV2VertexDatasetRegexList =
-  GooglePrivacyDlpV2VertexDatasetRegex[];
+  ReadonlyArray<GooglePrivacyDlpV2VertexDatasetRegex>;
 export const GooglePrivacyDlpV2VertexDatasetRegexList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2VertexDatasetRegex,
 ) as any as S.Schema<GooglePrivacyDlpV2VertexDatasetRegexList>;
@@ -4446,8 +4420,7 @@ export type GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadenceRefreshFreq
     | "UPDATE_FREQUENCY_UNSPECIFIED"
     | "UPDATE_FREQUENCY_NEVER"
     | "UPDATE_FREQUENCY_DAILY"
-    | "UPDATE_FREQUENCY_MONTHLY"
-    | (string & {});
+    | "UPDATE_FREQUENCY_MONTHLY";
 export const GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadenceRefreshFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4519,7 +4492,7 @@ export const GooglePrivacyDlpV2BigQueryRegex = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2BigQueryRegex>;
 
 export type GooglePrivacyDlpV2BigQueryRegexList =
-  GooglePrivacyDlpV2BigQueryRegex[];
+  ReadonlyArray<GooglePrivacyDlpV2BigQueryRegex>;
 export const GooglePrivacyDlpV2BigQueryRegexList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2BigQueryRegex,
 ) as any as S.Schema<GooglePrivacyDlpV2BigQueryRegexList>;
@@ -4602,13 +4575,12 @@ export type GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum =
   | "BIG_QUERY_TABLE_TYPE_UNSPECIFIED"
   | "BIG_QUERY_TABLE_TYPE_TABLE"
   | "BIG_QUERY_TABLE_TYPE_EXTERNAL_BIG_LAKE"
-  | "BIG_QUERY_TABLE_TYPE_SNAPSHOT"
-  | (string & {});
+  | "BIG_QUERY_TABLE_TYPE_SNAPSHOT";
 export const GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnumList =
-  GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum>;
 export const GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2BigQueryTableTypesTypesItemEnum,
@@ -4631,8 +4603,7 @@ export const GooglePrivacyDlpV2BigQueryTableTypes = /*@__PURE__*/ S.suspend(
 export type GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionEnum =
   | "BIG_QUERY_COLLECTION_UNSPECIFIED"
   | "BIG_QUERY_COLLECTION_ALL_TYPES"
-  | "BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES"
-  | (string & {});
+  | "BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES";
 export const GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4679,13 +4650,12 @@ export const GooglePrivacyDlpV2DiscoveryBigQueryConditions =
 
 export type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum =
   | "TABLE_MODIFICATION_UNSPECIFIED"
-  | "TABLE_MODIFIED_TIMESTAMP"
-  | (string & {});
+  | "TABLE_MODIFIED_TIMESTAMP";
 export const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnumList =
-  GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum>;
 export const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoveryTableModifiedCadenceTypesItemEnum,
@@ -4695,8 +4665,7 @@ export type GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyEnum =
   | "UPDATE_FREQUENCY_UNSPECIFIED"
   | "UPDATE_FREQUENCY_NEVER"
   | "UPDATE_FREQUENCY_DAILY"
-  | "UPDATE_FREQUENCY_MONTHLY"
-  | (string & {});
+  | "UPDATE_FREQUENCY_MONTHLY";
 export const GooglePrivacyDlpV2DiscoveryTableModifiedCadenceFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4724,13 +4693,12 @@ export const GooglePrivacyDlpV2DiscoveryTableModifiedCadence =
 export type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum =
   | "SCHEMA_MODIFICATION_UNSPECIFIED"
   | "SCHEMA_NEW_COLUMNS"
-  | "SCHEMA_REMOVED_COLUMNS"
-  | (string & {});
+  | "SCHEMA_REMOVED_COLUMNS";
 export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnumList =
-  GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum>;
 export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItemEnum,
@@ -4740,8 +4708,7 @@ export type GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyEnum =
   | "UPDATE_FREQUENCY_UNSPECIFIED"
   | "UPDATE_FREQUENCY_NEVER"
   | "UPDATE_FREQUENCY_DAILY"
-  | "UPDATE_FREQUENCY_MONTHLY"
-  | (string & {});
+  | "UPDATE_FREQUENCY_MONTHLY";
 export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4770,8 +4737,7 @@ export type GooglePrivacyDlpV2DiscoveryGenerationCadenceRefreshFrequencyEnum =
   | "UPDATE_FREQUENCY_UNSPECIFIED"
   | "UPDATE_FREQUENCY_NEVER"
   | "UPDATE_FREQUENCY_DAILY"
-  | "UPDATE_FREQUENCY_MONTHLY"
-  | (string & {});
+  | "UPDATE_FREQUENCY_MONTHLY";
 export const GooglePrivacyDlpV2DiscoveryGenerationCadenceRefreshFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4867,7 +4833,7 @@ export const GooglePrivacyDlpV2FileStoreRegex = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2FileStoreRegex>;
 
 export type GooglePrivacyDlpV2FileStoreRegexList =
-  GooglePrivacyDlpV2FileStoreRegex[];
+  ReadonlyArray<GooglePrivacyDlpV2FileStoreRegex>;
 export const GooglePrivacyDlpV2FileStoreRegexList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FileStoreRegex,
 ) as any as S.Schema<GooglePrivacyDlpV2FileStoreRegexList>;
@@ -4901,7 +4867,8 @@ export const GooglePrivacyDlpV2TagFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2TagFilter",
 }) as any as S.Schema<GooglePrivacyDlpV2TagFilter>;
 
-export type GooglePrivacyDlpV2TagFilterList = GooglePrivacyDlpV2TagFilter[];
+export type GooglePrivacyDlpV2TagFilterList =
+  ReadonlyArray<GooglePrivacyDlpV2TagFilter>;
 export const GooglePrivacyDlpV2TagFilterList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2TagFilter,
 ) as any as S.Schema<GooglePrivacyDlpV2TagFilterList>;
@@ -4984,13 +4951,12 @@ export type GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttri
     | "ARCHIVE"
     | "REGIONAL"
     | "MULTI_REGIONAL"
-    | "DURABLE_REDUCED_AVAILABILITY"
-    | (string & {});
+    | "DURABLE_REDUCED_AVAILABILITY";
 export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnumList =
-  GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnum>;
 export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedObjectAttributesItemEnum,
@@ -5000,13 +4966,12 @@ export type GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttri
     | "CLOUD_STORAGE_BUCKET_ATTRIBUTE_UNSPECIFIED"
     | "ALL_SUPPORTED_BUCKETS"
     | "AUTOCLASS_DISABLED"
-    | "AUTOCLASS_ENABLED"
-    | (string & {});
+    | "AUTOCLASS_ENABLED";
 export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnumList =
-  GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnum>;
 export const GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DiscoveryCloudStorageConditionsIncludedBucketAttributesItemEnum,
@@ -5059,8 +5024,7 @@ export type GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadenceRefreshFrequ
     | "UPDATE_FREQUENCY_UNSPECIFIED"
     | "UPDATE_FREQUENCY_NEVER"
     | "UPDATE_FREQUENCY_DAILY"
-    | "UPDATE_FREQUENCY_MONTHLY"
-    | (string & {});
+    | "UPDATE_FREQUENCY_MONTHLY";
 export const GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadenceRefreshFrequencyEnum =
   /*@__PURE__*/ S.String;
 
@@ -5143,7 +5107,7 @@ export const GooglePrivacyDlpV2DiscoveryTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2DiscoveryTarget>;
 
 export type GooglePrivacyDlpV2DiscoveryTargetList =
-  GooglePrivacyDlpV2DiscoveryTarget[];
+  ReadonlyArray<GooglePrivacyDlpV2DiscoveryTarget>;
 export const GooglePrivacyDlpV2DiscoveryTargetList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DiscoveryTarget,
 ) as any as S.Schema<GooglePrivacyDlpV2DiscoveryTargetList>;
@@ -5151,8 +5115,7 @@ export const GooglePrivacyDlpV2DiscoveryTargetList = /*@__PURE__*/ S.Array(
 export type GooglePrivacyDlpV2DiscoveryConfigStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "RUNNING"
-  | "PAUSED"
-  | (string & {});
+  | "PAUSED";
 export const GooglePrivacyDlpV2DiscoveryConfigStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -5298,24 +5261,21 @@ export const GooglePrivacyDlpV2ProcessingLocation = /*@__PURE__*/ S.suspend(
 export type GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorEnum =
   | "LOGICAL_OPERATOR_UNSPECIFIED"
   | "OR"
-  | "AND"
-  | (string & {});
+  | "AND";
 export const GooglePrivacyDlpV2PubSubExpressionsLogicalOperatorEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreEnum =
   | "PROFILE_SCORE_BUCKET_UNSPECIFIED"
   | "HIGH"
-  | "MEDIUM_OR_HIGH"
-  | (string & {});
+  | "MEDIUM_OR_HIGH";
 export const GooglePrivacyDlpV2PubSubConditionMinimumRiskScoreEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreEnum =
   | "PROFILE_SCORE_BUCKET_UNSPECIFIED"
   | "HIGH"
-  | "MEDIUM_OR_HIGH"
-  | (string & {});
+  | "MEDIUM_OR_HIGH";
 export const GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScoreEnum =
   /*@__PURE__*/ S.String;
 
@@ -5340,7 +5300,7 @@ export const GooglePrivacyDlpV2PubSubCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2PubSubCondition>;
 
 export type GooglePrivacyDlpV2PubSubConditionList =
-  GooglePrivacyDlpV2PubSubCondition[];
+  ReadonlyArray<GooglePrivacyDlpV2PubSubCondition>;
 export const GooglePrivacyDlpV2PubSubConditionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2PubSubCondition,
 ) as any as S.Schema<GooglePrivacyDlpV2PubSubConditionList>;
@@ -5381,8 +5341,7 @@ export type GooglePrivacyDlpV2PubSubNotificationDetailOfMessageEnum =
   | "DETAIL_LEVEL_UNSPECIFIED"
   | "TABLE_PROFILE"
   | "RESOURCE_NAME"
-  | "FILE_STORE_PROFILE"
-  | (string & {});
+  | "FILE_STORE_PROFILE";
 export const GooglePrivacyDlpV2PubSubNotificationDetailOfMessageEnum =
   /*@__PURE__*/ S.String;
 
@@ -5391,8 +5350,7 @@ export type GooglePrivacyDlpV2PubSubNotificationEventEnum =
   | "NEW_PROFILE"
   | "CHANGED_PROFILE"
   | "SCORE_INCREASED"
-  | "ERROR_CHANGED"
-  | (string & {});
+  | "ERROR_CHANGED";
 export const GooglePrivacyDlpV2PubSubNotificationEventEnum =
   /*@__PURE__*/ S.String;
 
@@ -5459,7 +5417,7 @@ export const GooglePrivacyDlpV2TagCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2TagCondition>;
 
 export type GooglePrivacyDlpV2TagConditionList =
-  GooglePrivacyDlpV2TagCondition[];
+  ReadonlyArray<GooglePrivacyDlpV2TagCondition>;
 export const GooglePrivacyDlpV2TagConditionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2TagCondition,
 ) as any as S.Schema<GooglePrivacyDlpV2TagConditionList>;
@@ -5467,13 +5425,12 @@ export const GooglePrivacyDlpV2TagConditionList = /*@__PURE__*/ S.Array(
 export type GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnum =
   | "PROFILE_GENERATION_UNSPECIFIED"
   | "PROFILE_GENERATION_NEW"
-  | "PROFILE_GENERATION_UPDATE"
-  | (string & {});
+  | "PROFILE_GENERATION_UPDATE";
 export const GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnumList =
-  GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnum>;
 export const GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2TagResourcesProfileGenerationsToTagItemEnum,
@@ -5568,7 +5525,7 @@ export const GooglePrivacyDlpV2DataProfileAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2DataProfileAction>;
 
 export type GooglePrivacyDlpV2DataProfileActionList =
-  GooglePrivacyDlpV2DataProfileAction[];
+  ReadonlyArray<GooglePrivacyDlpV2DataProfileAction>;
 export const GooglePrivacyDlpV2DataProfileActionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DataProfileAction,
 ) as any as S.Schema<GooglePrivacyDlpV2DataProfileActionList>;
@@ -5693,8 +5650,7 @@ export type GooglePrivacyDlpV2JobTriggerStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "HEALTHY"
   | "PAUSED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const GooglePrivacyDlpV2JobTriggerStatusEnum = /*@__PURE__*/ S.String;
 
 /** Job trigger option for hybrid jobs. Jobs must be manually created and finished. */
@@ -5734,7 +5690,8 @@ export const GooglePrivacyDlpV2Trigger = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Trigger",
 }) as any as S.Schema<GooglePrivacyDlpV2Trigger>;
 
-export type GooglePrivacyDlpV2TriggerList = GooglePrivacyDlpV2Trigger[];
+export type GooglePrivacyDlpV2TriggerList =
+  ReadonlyArray<GooglePrivacyDlpV2Trigger>;
 export const GooglePrivacyDlpV2TriggerList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Trigger,
 ) as any as S.Schema<GooglePrivacyDlpV2TriggerList>;
@@ -5980,8 +5937,7 @@ export type GooglePrivacyDlpV2StoredInfoTypeVersionStateEnum =
   | "PENDING"
   | "READY"
   | "FAILED"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const GooglePrivacyDlpV2StoredInfoTypeVersionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6012,7 +5968,7 @@ export const GooglePrivacyDlpV2StoredInfoTypeVersion = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2StoredInfoTypeVersion>;
 
 export type GooglePrivacyDlpV2StoredInfoTypeVersionList =
-  GooglePrivacyDlpV2StoredInfoTypeVersion[];
+  ReadonlyArray<GooglePrivacyDlpV2StoredInfoTypeVersion>;
 export const GooglePrivacyDlpV2StoredInfoTypeVersionList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2StoredInfoTypeVersion,
@@ -6203,8 +6159,7 @@ export const CreateProjectsLocationsConnectionsRequest =
 export type GooglePrivacyDlpV2PolicyActionReturnVerdictEnum =
   | "CONTENT_POLICY_VERDICT_UNSPECIFIED"
   | "ALLOW"
-  | "BLOCK"
-  | (string & {});
+  | "BLOCK";
 export const GooglePrivacyDlpV2PolicyActionReturnVerdictEnum =
   /*@__PURE__*/ S.String;
 
@@ -6254,7 +6209,7 @@ export const GooglePrivacyDlpV2LoggingConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2LoggingConfig>;
 
 export type GooglePrivacyDlpV2LoggingConfigList =
-  GooglePrivacyDlpV2LoggingConfig[];
+  ReadonlyArray<GooglePrivacyDlpV2LoggingConfig>;
 export const GooglePrivacyDlpV2LoggingConfigList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2LoggingConfig,
 ) as any as S.Schema<GooglePrivacyDlpV2LoggingConfigList>;
@@ -6305,7 +6260,7 @@ export const GooglePrivacyDlpV2PolicyCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2PolicyCondition>;
 
 export type GooglePrivacyDlpV2PolicyConditionList =
-  GooglePrivacyDlpV2PolicyCondition[];
+  ReadonlyArray<GooglePrivacyDlpV2PolicyCondition>;
 export const GooglePrivacyDlpV2PolicyConditionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2PolicyCondition,
 ) as any as S.Schema<GooglePrivacyDlpV2PolicyConditionList>;
@@ -6313,8 +6268,7 @@ export const GooglePrivacyDlpV2PolicyConditionList = /*@__PURE__*/ S.Array(
 export type GooglePrivacyDlpV2PolicyRuleReturnVerdictEnum =
   | "CONTENT_POLICY_VERDICT_UNSPECIFIED"
   | "ALLOW"
-  | "BLOCK"
-  | (string & {});
+  | "BLOCK";
 export const GooglePrivacyDlpV2PolicyRuleReturnVerdictEnum =
   /*@__PURE__*/ S.String;
 
@@ -6337,7 +6291,8 @@ export const GooglePrivacyDlpV2PolicyRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2PolicyRule",
 }) as any as S.Schema<GooglePrivacyDlpV2PolicyRule>;
 
-export type GooglePrivacyDlpV2PolicyRuleList = GooglePrivacyDlpV2PolicyRule[];
+export type GooglePrivacyDlpV2PolicyRuleList =
+  ReadonlyArray<GooglePrivacyDlpV2PolicyRule>;
 export const GooglePrivacyDlpV2PolicyRuleList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2PolicyRule,
 ) as any as S.Schema<GooglePrivacyDlpV2PolicyRuleList>;
@@ -6618,7 +6573,7 @@ export const GooglePrivacyDlpV2KeyValueMetadataProperty =
   }) as any as S.Schema<GooglePrivacyDlpV2KeyValueMetadataProperty>;
 
 export type GooglePrivacyDlpV2KeyValueMetadataPropertyList =
-  GooglePrivacyDlpV2KeyValueMetadataProperty[];
+  ReadonlyArray<GooglePrivacyDlpV2KeyValueMetadataProperty>;
 export const GooglePrivacyDlpV2KeyValueMetadataPropertyList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2KeyValueMetadataProperty,
@@ -6656,7 +6611,7 @@ export const GooglePrivacyDlpV2LabelFieldMetadata = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2LabelFieldMetadata>;
 
 export type GooglePrivacyDlpV2LabelFieldMetadataList =
-  GooglePrivacyDlpV2LabelFieldMetadata[];
+  ReadonlyArray<GooglePrivacyDlpV2LabelFieldMetadata>;
 export const GooglePrivacyDlpV2LabelFieldMetadataList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2LabelFieldMetadata,
 ) as any as S.Schema<GooglePrivacyDlpV2LabelFieldMetadataList>;
@@ -6694,7 +6649,8 @@ export const GooglePrivacyDlpV2FileLabel = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2FileLabel",
 }) as any as S.Schema<GooglePrivacyDlpV2FileLabel>;
 
-export type GooglePrivacyDlpV2FileLabelList = GooglePrivacyDlpV2FileLabel[];
+export type GooglePrivacyDlpV2FileLabelList =
+  ReadonlyArray<GooglePrivacyDlpV2FileLabel>;
 export const GooglePrivacyDlpV2FileLabelList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FileLabel,
 ) as any as S.Schema<GooglePrivacyDlpV2FileLabelList>;
@@ -6718,8 +6674,7 @@ export const GooglePrivacyDlpV2ContentMetadata = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2ConversationMessageMessageTypeEnum =
   | "MESSAGE_TYPE_UNSPECIFIED"
   | "CONTENT"
-  | "CONTEXT"
-  | (string & {});
+  | "CONTEXT";
 export const GooglePrivacyDlpV2ConversationMessageMessageTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6746,7 +6701,7 @@ export const GooglePrivacyDlpV2ConversationMessage = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2ConversationMessage>;
 
 export type GooglePrivacyDlpV2ConversationMessageList =
-  GooglePrivacyDlpV2ConversationMessage[];
+  ReadonlyArray<GooglePrivacyDlpV2ConversationMessage>;
 export const GooglePrivacyDlpV2ConversationMessageList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ConversationMessage,
 ) as any as S.Schema<GooglePrivacyDlpV2ConversationMessageList>;
@@ -6777,7 +6732,7 @@ export const GooglePrivacyDlpV2Row = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Row",
 }) as any as S.Schema<GooglePrivacyDlpV2Row>;
 
-export type GooglePrivacyDlpV2RowList = GooglePrivacyDlpV2Row[];
+export type GooglePrivacyDlpV2RowList = ReadonlyArray<GooglePrivacyDlpV2Row>;
 export const GooglePrivacyDlpV2RowList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Row,
 ) as any as S.Schema<GooglePrivacyDlpV2RowList>;
@@ -6842,8 +6797,7 @@ export type GooglePrivacyDlpV2ByteContentItemTypeEnum =
   | "AUDIO"
   | "VIDEO"
   | "EXECUTABLE"
-  | "AI_MODEL"
-  | (string & {});
+  | "AI_MODEL";
 export const GooglePrivacyDlpV2ByteContentItemTypeEnum = /*@__PURE__*/ S.String;
 
 /** Container for bytes to inspect or redact. */
@@ -6945,8 +6899,7 @@ export const DeidentifyProjectsContentRequest = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2SummaryResultCodeEnum =
   | "TRANSFORMATION_RESULT_CODE_UNSPECIFIED"
   | "SUCCESS"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GooglePrivacyDlpV2SummaryResultCodeEnum = /*@__PURE__*/ S.String;
 
 /** A collection that informs the user the number of times a particular `TransformationResultCode` and error details occurred. */
@@ -6969,7 +6922,7 @@ export const GooglePrivacyDlpV2SummaryResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2SummaryResult>;
 
 export type GooglePrivacyDlpV2SummaryResultList =
-  GooglePrivacyDlpV2SummaryResult[];
+  ReadonlyArray<GooglePrivacyDlpV2SummaryResult>;
 export const GooglePrivacyDlpV2SummaryResultList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2SummaryResult,
 ) as any as S.Schema<GooglePrivacyDlpV2SummaryResultList>;
@@ -7009,7 +6962,7 @@ export const GooglePrivacyDlpV2TransformationSummary = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2TransformationSummary>;
 
 export type GooglePrivacyDlpV2TransformationSummaryList =
-  GooglePrivacyDlpV2TransformationSummary[];
+  ReadonlyArray<GooglePrivacyDlpV2TransformationSummary>;
 export const GooglePrivacyDlpV2TransformationSummaryList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2TransformationSummary,
@@ -7677,7 +7630,7 @@ export const GooglePrivacyDlpV2OtherInfoTypeSummary = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2OtherInfoTypeSummary>;
 
 export type GooglePrivacyDlpV2OtherInfoTypeSummaryList =
-  GooglePrivacyDlpV2OtherInfoTypeSummary[];
+  ReadonlyArray<GooglePrivacyDlpV2OtherInfoTypeSummary>;
 export const GooglePrivacyDlpV2OtherInfoTypeSummaryList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2OtherInfoTypeSummary,
 ) as any as S.Schema<GooglePrivacyDlpV2OtherInfoTypeSummaryList>;
@@ -7686,16 +7639,14 @@ export type GooglePrivacyDlpV2ColumnDataProfileEstimatedUniquenessScoreEnum =
   | "UNIQUENESS_SCORE_LEVEL_UNSPECIFIED"
   | "UNIQUENESS_SCORE_LOW"
   | "UNIQUENESS_SCORE_MEDIUM"
-  | "UNIQUENESS_SCORE_HIGH"
-  | (string & {});
+  | "UNIQUENESS_SCORE_HIGH";
 export const GooglePrivacyDlpV2ColumnDataProfileEstimatedUniquenessScoreEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2ColumnDataProfileStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
-  | "DONE"
-  | (string & {});
+  | "DONE";
 export const GooglePrivacyDlpV2ColumnDataProfileStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -7720,8 +7671,7 @@ export type GooglePrivacyDlpV2DataRiskLevelScoreEnum =
   | "RISK_LOW"
   | "RISK_UNKNOWN"
   | "RISK_MODERATE"
-  | "RISK_HIGH"
-  | (string & {});
+  | "RISK_HIGH";
 export const GooglePrivacyDlpV2DataRiskLevelScoreEnum = /*@__PURE__*/ S.String;
 
 /** Score is a summary of all elements in the data profile. A higher number means more risk. */
@@ -7742,8 +7692,7 @@ export type GooglePrivacyDlpV2ColumnDataProfileEstimatedNullPercentageEnum =
   | "NULL_PERCENTAGE_VERY_LOW"
   | "NULL_PERCENTAGE_LOW"
   | "NULL_PERCENTAGE_MEDIUM"
-  | "NULL_PERCENTAGE_HIGH"
-  | (string & {});
+  | "NULL_PERCENTAGE_HIGH";
 export const GooglePrivacyDlpV2ColumnDataProfileEstimatedNullPercentageEnum =
   /*@__PURE__*/ S.String;
 
@@ -7766,15 +7715,13 @@ export type GooglePrivacyDlpV2ColumnDataProfileColumnTypeEnum =
   | "TYPE_INTERVAL"
   | "TYPE_RANGE_DATE"
   | "TYPE_RANGE_DATETIME"
-  | "TYPE_RANGE_TIMESTAMP"
-  | (string & {});
+  | "TYPE_RANGE_TIMESTAMP";
 export const GooglePrivacyDlpV2ColumnDataProfileColumnTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2ColumnDataProfilePolicyStateEnum =
   | "COLUMN_POLICY_STATE_UNSPECIFIED"
-  | "COLUMN_POLICY_TAGGED"
-  | (string & {});
+  | "COLUMN_POLICY_TAGGED";
 export const GooglePrivacyDlpV2ColumnDataProfilePolicyStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -7955,8 +7902,7 @@ export type GooglePrivacyDlpV2FileClusterTypeClusterEnum =
   | "CLUSTER_ARCHIVE"
   | "CLUSTER_MULTIMEDIA"
   | "CLUSTER_EXECUTABLE"
-  | "CLUSTER_AI_MODEL"
-  | (string & {});
+  | "CLUSTER_AI_MODEL";
 export const GooglePrivacyDlpV2FileClusterTypeClusterEnum =
   /*@__PURE__*/ S.String;
 
@@ -7987,7 +7933,7 @@ export const GooglePrivacyDlpV2FileExtensionInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2FileExtensionInfo>;
 
 export type GooglePrivacyDlpV2FileExtensionInfoList =
-  GooglePrivacyDlpV2FileExtensionInfo[];
+  ReadonlyArray<GooglePrivacyDlpV2FileExtensionInfo>;
 export const GooglePrivacyDlpV2FileExtensionInfoList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FileExtensionInfo,
 ) as any as S.Schema<GooglePrivacyDlpV2FileExtensionInfoList>;
@@ -8007,7 +7953,7 @@ export const GooglePrivacyDlpV2FileStoreInfoTypeSummary =
   }) as any as S.Schema<GooglePrivacyDlpV2FileStoreInfoTypeSummary>;
 
 export type GooglePrivacyDlpV2FileStoreInfoTypeSummaryList =
-  GooglePrivacyDlpV2FileStoreInfoTypeSummary[];
+  ReadonlyArray<GooglePrivacyDlpV2FileStoreInfoTypeSummary>;
 export const GooglePrivacyDlpV2FileStoreInfoTypeSummaryList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2FileStoreInfoTypeSummary,
@@ -8053,7 +7999,7 @@ export const GooglePrivacyDlpV2FileClusterSummary = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2FileClusterSummary>;
 
 export type GooglePrivacyDlpV2FileClusterSummaryList =
-  GooglePrivacyDlpV2FileClusterSummary[];
+  ReadonlyArray<GooglePrivacyDlpV2FileClusterSummary>;
 export const GooglePrivacyDlpV2FileClusterSummaryList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FileClusterSummary,
 ) as any as S.Schema<GooglePrivacyDlpV2FileClusterSummaryList>;
@@ -8133,8 +8079,7 @@ export type GooglePrivacyDlpV2FileStoreDataProfileResourceVisibilityEnum =
   | "RESOURCE_VISIBILITY_UNSPECIFIED"
   | "RESOURCE_VISIBILITY_PUBLIC"
   | "RESOURCE_VISIBILITY_INCONCLUSIVE"
-  | "RESOURCE_VISIBILITY_RESTRICTED"
-  | (string & {});
+  | "RESOURCE_VISIBILITY_RESTRICTED";
 export const GooglePrivacyDlpV2FileStoreDataProfileResourceVisibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -8160,7 +8105,7 @@ export const GooglePrivacyDlpV2RelatedResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2RelatedResource>;
 
 export type GooglePrivacyDlpV2RelatedResourceList =
-  GooglePrivacyDlpV2RelatedResource[];
+  ReadonlyArray<GooglePrivacyDlpV2RelatedResource>;
 export const GooglePrivacyDlpV2RelatedResourceList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2RelatedResource,
 ) as any as S.Schema<GooglePrivacyDlpV2RelatedResourceList>;
@@ -8184,7 +8129,7 @@ export const GooglePrivacyDlpV2Tag = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Tag",
 }) as any as S.Schema<GooglePrivacyDlpV2Tag>;
 
-export type GooglePrivacyDlpV2TagList = GooglePrivacyDlpV2Tag[];
+export type GooglePrivacyDlpV2TagList = ReadonlyArray<GooglePrivacyDlpV2Tag>;
 export const GooglePrivacyDlpV2TagList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Tag,
 ) as any as S.Schema<GooglePrivacyDlpV2TagList>;
@@ -8192,16 +8137,14 @@ export const GooglePrivacyDlpV2TagList = /*@__PURE__*/ S.Array(
 export type GooglePrivacyDlpV2FileStoreDataProfileStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
-  | "DONE"
-  | (string & {});
+  | "DONE";
 export const GooglePrivacyDlpV2FileStoreDataProfileStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DomainCategoryEnum =
   | "CATEGORY_UNSPECIFIED"
   | "AI"
-  | "CODE"
-  | (string & {});
+  | "CODE";
 export const GooglePrivacyDlpV2DomainCategoryEnum = /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DomainSignalsItemEnum =
@@ -8212,12 +8155,11 @@ export type GooglePrivacyDlpV2DomainSignalsItemEnum =
   | "VERTEX_PLUGIN"
   | "VECTOR_PLUGIN"
   | "SOURCE_CODE"
-  | "SERVICE"
-  | (string & {});
+  | "SERVICE";
 export const GooglePrivacyDlpV2DomainSignalsItemEnum = /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2DomainSignalsItemEnumList =
-  GooglePrivacyDlpV2DomainSignalsItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2DomainSignalsItemEnum>;
 export const GooglePrivacyDlpV2DomainSignalsItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2DomainSignalsItemEnum,
@@ -8239,7 +8181,8 @@ export const GooglePrivacyDlpV2Domain = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Domain",
 }) as any as S.Schema<GooglePrivacyDlpV2Domain>;
 
-export type GooglePrivacyDlpV2DomainList = GooglePrivacyDlpV2Domain[];
+export type GooglePrivacyDlpV2DomainList =
+  ReadonlyArray<GooglePrivacyDlpV2Domain>;
 export const GooglePrivacyDlpV2DomainList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Domain,
 ) as any as S.Schema<GooglePrivacyDlpV2DomainList>;
@@ -8473,7 +8416,7 @@ export const GetOrganizationsLocationsTableDataProfilesRequest =
   }) as any as S.Schema<GetOrganizationsLocationsTableDataProfilesRequest>;
 
 export type GooglePrivacyDlpV2InfoTypeSummaryList =
-  GooglePrivacyDlpV2InfoTypeSummary[];
+  ReadonlyArray<GooglePrivacyDlpV2InfoTypeSummary>;
 export const GooglePrivacyDlpV2InfoTypeSummaryList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeSummary,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeSummaryList>;
@@ -8481,16 +8424,14 @@ export const GooglePrivacyDlpV2InfoTypeSummaryList = /*@__PURE__*/ S.Array(
 export type GooglePrivacyDlpV2TableDataProfileStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
-  | "DONE"
-  | (string & {});
+  | "DONE";
 export const GooglePrivacyDlpV2TableDataProfileStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2TableDataProfileEncryptionStatusEnum =
   | "ENCRYPTION_STATUS_UNSPECIFIED"
   | "ENCRYPTION_GOOGLE_MANAGED"
-  | "ENCRYPTION_CUSTOMER_MANAGED"
-  | (string & {});
+  | "ENCRYPTION_CUSTOMER_MANAGED";
 export const GooglePrivacyDlpV2TableDataProfileEncryptionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -8498,8 +8439,7 @@ export type GooglePrivacyDlpV2TableDataProfileResourceVisibilityEnum =
   | "RESOURCE_VISIBILITY_UNSPECIFIED"
   | "RESOURCE_VISIBILITY_PUBLIC"
   | "RESOURCE_VISIBILITY_INCONCLUSIVE"
-  | "RESOURCE_VISIBILITY_RESTRICTED"
-  | (string & {});
+  | "RESOURCE_VISIBILITY_RESTRICTED";
 export const GooglePrivacyDlpV2TableDataProfileResourceVisibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -9153,8 +9093,7 @@ export type GooglePrivacyDlpV2FindingLikelihoodEnum =
   | "UNLIKELY"
   | "POSSIBLE"
   | "LIKELY"
-  | "VERY_LIKELY"
-  | (string & {});
+  | "VERY_LIKELY";
 export const GooglePrivacyDlpV2FindingLikelihoodEnum = /*@__PURE__*/ S.String;
 
 /** If set, indicates that the finding applies to all messages in the conversation. */
@@ -9200,8 +9139,7 @@ export type GooglePrivacyDlpV2MetadataLocationTypeEnum =
   | "METADATATYPE_UNSPECIFIED"
   | "STORAGE_METADATA"
   | "CONTENT_METADATA"
-  | "CLIENT_PROVIDED_METADATA"
-  | (string & {});
+  | "CLIENT_PROVIDED_METADATA";
 export const GooglePrivacyDlpV2MetadataLocationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9257,7 +9195,8 @@ export const GooglePrivacyDlpV2PathElement = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2PathElement",
 }) as any as S.Schema<GooglePrivacyDlpV2PathElement>;
 
-export type GooglePrivacyDlpV2PathElementList = GooglePrivacyDlpV2PathElement[];
+export type GooglePrivacyDlpV2PathElementList =
+  ReadonlyArray<GooglePrivacyDlpV2PathElement>;
 export const GooglePrivacyDlpV2PathElementList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2PathElement,
 ) as any as S.Schema<GooglePrivacyDlpV2PathElementList>;
@@ -9380,7 +9319,8 @@ export const GooglePrivacyDlpV2BoundingBox = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2BoundingBox",
 }) as any as S.Schema<GooglePrivacyDlpV2BoundingBox>;
 
-export type GooglePrivacyDlpV2BoundingBoxList = GooglePrivacyDlpV2BoundingBox[];
+export type GooglePrivacyDlpV2BoundingBoxList =
+  ReadonlyArray<GooglePrivacyDlpV2BoundingBox>;
 export const GooglePrivacyDlpV2BoundingBoxList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2BoundingBox,
 ) as any as S.Schema<GooglePrivacyDlpV2BoundingBoxList>;
@@ -9463,7 +9403,7 @@ export const GooglePrivacyDlpV2ContentLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2ContentLocation>;
 
 export type GooglePrivacyDlpV2ContentLocationList =
-  GooglePrivacyDlpV2ContentLocation[];
+  ReadonlyArray<GooglePrivacyDlpV2ContentLocation>;
 export const GooglePrivacyDlpV2ContentLocationList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ContentLocation,
 ) as any as S.Schema<GooglePrivacyDlpV2ContentLocationList>;
@@ -9514,8 +9454,7 @@ export type GooglePrivacyDlpV2DateTimeDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const GooglePrivacyDlpV2DateTimeDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Time zone of the date time object. */
@@ -9615,7 +9554,8 @@ export const GooglePrivacyDlpV2Finding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GooglePrivacyDlpV2Finding",
 }) as any as S.Schema<GooglePrivacyDlpV2Finding>;
 
-export type GooglePrivacyDlpV2FindingList = GooglePrivacyDlpV2Finding[];
+export type GooglePrivacyDlpV2FindingList =
+  ReadonlyArray<GooglePrivacyDlpV2Finding>;
 export const GooglePrivacyDlpV2FindingList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Finding,
 ) as any as S.Schema<GooglePrivacyDlpV2FindingList>;
@@ -9710,8 +9650,7 @@ export type GooglePrivacyDlpV2InfoTypeCategoryTypeCategoryEnum =
   | "GOVERNMENT_ID"
   | "DOCUMENT"
   | "CONTEXTUAL_INFORMATION"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const GooglePrivacyDlpV2InfoTypeCategoryTypeCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -9719,8 +9658,7 @@ export type GooglePrivacyDlpV2InfoTypeCategoryIndustryCategoryEnum =
   | "INDUSTRY_UNSPECIFIED"
   | "FINANCE"
   | "HEALTH"
-  | "TELECOMMUNICATIONS"
-  | (string & {});
+  | "TELECOMMUNICATIONS";
 export const GooglePrivacyDlpV2InfoTypeCategoryIndustryCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -9777,8 +9715,7 @@ export type GooglePrivacyDlpV2InfoTypeCategoryLocationCategoryEnum =
   | "URUGUAY"
   | "UZBEKISTAN"
   | "VENEZUELA"
-  | "INTERNAL"
-  | (string & {});
+  | "INTERNAL";
 export const GooglePrivacyDlpV2InfoTypeCategoryLocationCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -9808,7 +9745,7 @@ export const GooglePrivacyDlpV2InfoTypeCategory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeCategory>;
 
 export type GooglePrivacyDlpV2InfoTypeCategoryList =
-  GooglePrivacyDlpV2InfoTypeCategory[];
+  ReadonlyArray<GooglePrivacyDlpV2InfoTypeCategory>;
 export const GooglePrivacyDlpV2InfoTypeCategoryList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeCategory,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeCategoryList>;
@@ -9817,16 +9754,14 @@ export type GooglePrivacyDlpV2InfoTypeDescriptionLaunchStatusEnum =
   | "INFO_TYPE_LAUNCH_STATUS_UNSPECIFIED"
   | "GENERAL_AVAILABILITY"
   | "PUBLIC_PREVIEW"
-  | "PRIVATE_PREVIEW"
-  | (string & {});
+  | "PRIVATE_PREVIEW";
 export const GooglePrivacyDlpV2InfoTypeDescriptionLaunchStatusEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2LocationSupportRegionalizationScopeEnum =
   | "REGIONALIZATION_SCOPE_UNSPECIFIED"
   | "REGIONAL"
-  | "ANY_LOCATION"
-  | (string & {});
+  | "ANY_LOCATION";
 export const GooglePrivacyDlpV2LocationSupportRegionalizationScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9851,13 +9786,12 @@ export const GooglePrivacyDlpV2LocationSupport = /*@__PURE__*/ S.suspend(() =>
 export type GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum =
   | "ENUM_TYPE_UNSPECIFIED"
   | "INSPECT"
-  | "RISK_ANALYSIS"
-  | (string & {});
+  | "RISK_ANALYSIS";
 export const GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnumList =
-  GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum[];
+  ReadonlyArray<GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum>;
 export const GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnumList =
   /*@__PURE__*/ S.Array(
     GooglePrivacyDlpV2InfoTypeDescriptionSupportedByItemEnum,
@@ -9881,7 +9815,7 @@ export const GooglePrivacyDlpV2VersionDescription = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2VersionDescription>;
 
 export type GooglePrivacyDlpV2VersionDescriptionList =
-  GooglePrivacyDlpV2VersionDescription[];
+  ReadonlyArray<GooglePrivacyDlpV2VersionDescription>;
 export const GooglePrivacyDlpV2VersionDescriptionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2VersionDescription,
 ) as any as S.Schema<GooglePrivacyDlpV2VersionDescriptionList>;
@@ -9935,7 +9869,7 @@ export const GooglePrivacyDlpV2InfoTypeDescription = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2InfoTypeDescription>;
 
 export type GooglePrivacyDlpV2InfoTypeDescriptionList =
-  GooglePrivacyDlpV2InfoTypeDescription[];
+  ReadonlyArray<GooglePrivacyDlpV2InfoTypeDescription>;
 export const GooglePrivacyDlpV2InfoTypeDescriptionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InfoTypeDescription,
 ) as any as S.Schema<GooglePrivacyDlpV2InfoTypeDescriptionList>;
@@ -10013,7 +9947,7 @@ export const ListOrganizationsDeidentifyTemplatesRequest =
   }) as any as S.Schema<ListOrganizationsDeidentifyTemplatesRequest>;
 
 export type GooglePrivacyDlpV2DeidentifyTemplateList =
-  GooglePrivacyDlpV2DeidentifyTemplate[];
+  ReadonlyArray<GooglePrivacyDlpV2DeidentifyTemplate>;
 export const GooglePrivacyDlpV2DeidentifyTemplateList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DeidentifyTemplate,
 ) as any as S.Schema<GooglePrivacyDlpV2DeidentifyTemplateList>;
@@ -10067,7 +10001,7 @@ export const ListOrganizationsInspectTemplatesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationsInspectTemplatesRequest>;
 
 export type GooglePrivacyDlpV2InspectTemplateList =
-  GooglePrivacyDlpV2InspectTemplate[];
+  ReadonlyArray<GooglePrivacyDlpV2InspectTemplate>;
 export const GooglePrivacyDlpV2InspectTemplateList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2InspectTemplate,
 ) as any as S.Schema<GooglePrivacyDlpV2InspectTemplateList>;
@@ -10121,7 +10055,7 @@ export const ListOrganizationsLocationsColumnDataProfilesRequest =
   }) as any as S.Schema<ListOrganizationsLocationsColumnDataProfilesRequest>;
 
 export type GooglePrivacyDlpV2ColumnDataProfileList =
-  GooglePrivacyDlpV2ColumnDataProfile[];
+  ReadonlyArray<GooglePrivacyDlpV2ColumnDataProfile>;
 export const GooglePrivacyDlpV2ColumnDataProfileList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ColumnDataProfile,
 ) as any as S.Schema<GooglePrivacyDlpV2ColumnDataProfileList>;
@@ -10171,7 +10105,8 @@ export const ListOrganizationsLocationsConnectionsRequest =
     identifier: "ListOrganizationsLocationsConnectionsRequest",
   }) as any as S.Schema<ListOrganizationsLocationsConnectionsRequest>;
 
-export type GooglePrivacyDlpV2ConnectionList = GooglePrivacyDlpV2Connection[];
+export type GooglePrivacyDlpV2ConnectionList =
+  ReadonlyArray<GooglePrivacyDlpV2Connection>;
 export const GooglePrivacyDlpV2ConnectionList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2Connection,
 ) as any as S.Schema<GooglePrivacyDlpV2ConnectionList>;
@@ -10253,7 +10188,7 @@ export const ListOrganizationsLocationsDiscoveryConfigsRequest =
   }) as any as S.Schema<ListOrganizationsLocationsDiscoveryConfigsRequest>;
 
 export type GooglePrivacyDlpV2DiscoveryConfigList =
-  GooglePrivacyDlpV2DiscoveryConfig[];
+  ReadonlyArray<GooglePrivacyDlpV2DiscoveryConfig>;
 export const GooglePrivacyDlpV2DiscoveryConfigList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DiscoveryConfig,
 ) as any as S.Schema<GooglePrivacyDlpV2DiscoveryConfigList>;
@@ -10278,8 +10213,7 @@ export const GooglePrivacyDlpV2ListDiscoveryConfigsResponse =
 export type ListOrganizationsLocationsDlpJobsTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB"
-  | (string & {});
+  | "RISK_ANALYSIS_JOB";
 export const ListOrganizationsLocationsDlpJobsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListOrganizationsLocationsDlpJobsRequest {
@@ -10321,7 +10255,8 @@ export const ListOrganizationsLocationsDlpJobsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListOrganizationsLocationsDlpJobsRequest",
 }) as any as S.Schema<ListOrganizationsLocationsDlpJobsRequest>;
 
-export type GooglePrivacyDlpV2DlpJobList = GooglePrivacyDlpV2DlpJob[];
+export type GooglePrivacyDlpV2DlpJobList =
+  ReadonlyArray<GooglePrivacyDlpV2DlpJob>;
 export const GooglePrivacyDlpV2DlpJobList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2DlpJob,
 ) as any as S.Schema<GooglePrivacyDlpV2DlpJobList>;
@@ -10375,7 +10310,7 @@ export const ListOrganizationsLocationsFileStoreDataProfilesRequest =
   }) as any as S.Schema<ListOrganizationsLocationsFileStoreDataProfilesRequest>;
 
 export type GooglePrivacyDlpV2FileStoreDataProfileList =
-  GooglePrivacyDlpV2FileStoreDataProfile[];
+  ReadonlyArray<GooglePrivacyDlpV2FileStoreDataProfile>;
 export const GooglePrivacyDlpV2FileStoreDataProfileList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2FileStoreDataProfile,
 ) as any as S.Schema<GooglePrivacyDlpV2FileStoreDataProfileList>;
@@ -10461,8 +10396,7 @@ export const ListOrganizationsLocationsInspectTemplatesRequest =
 export type ListOrganizationsLocationsJobTriggersTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB"
-  | (string & {});
+  | "RISK_ANALYSIS_JOB";
 export const ListOrganizationsLocationsJobTriggersTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10505,7 +10439,8 @@ export const ListOrganizationsLocationsJobTriggersRequest =
     identifier: "ListOrganizationsLocationsJobTriggersRequest",
   }) as any as S.Schema<ListOrganizationsLocationsJobTriggersRequest>;
 
-export type GooglePrivacyDlpV2JobTriggerList = GooglePrivacyDlpV2JobTrigger[];
+export type GooglePrivacyDlpV2JobTriggerList =
+  ReadonlyArray<GooglePrivacyDlpV2JobTrigger>;
 export const GooglePrivacyDlpV2JobTriggerList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2JobTrigger,
 ) as any as S.Schema<GooglePrivacyDlpV2JobTriggerList>;
@@ -10559,7 +10494,7 @@ export const ListOrganizationsLocationsProjectDataProfilesRequest =
   }) as any as S.Schema<ListOrganizationsLocationsProjectDataProfilesRequest>;
 
 export type GooglePrivacyDlpV2ProjectDataProfileList =
-  GooglePrivacyDlpV2ProjectDataProfile[];
+  ReadonlyArray<GooglePrivacyDlpV2ProjectDataProfile>;
 export const GooglePrivacyDlpV2ProjectDataProfileList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ProjectDataProfile,
 ) as any as S.Schema<GooglePrivacyDlpV2ProjectDataProfileList>;
@@ -10613,7 +10548,7 @@ export const ListOrganizationsLocationsStoredInfoTypesRequest =
   }) as any as S.Schema<ListOrganizationsLocationsStoredInfoTypesRequest>;
 
 export type GooglePrivacyDlpV2StoredInfoTypeList =
-  GooglePrivacyDlpV2StoredInfoType[];
+  ReadonlyArray<GooglePrivacyDlpV2StoredInfoType>;
 export const GooglePrivacyDlpV2StoredInfoTypeList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2StoredInfoType,
 ) as any as S.Schema<GooglePrivacyDlpV2StoredInfoTypeList>;
@@ -10667,7 +10602,7 @@ export const ListOrganizationsLocationsTableDataProfilesRequest =
   }) as any as S.Schema<ListOrganizationsLocationsTableDataProfilesRequest>;
 
 export type GooglePrivacyDlpV2TableDataProfileList =
-  GooglePrivacyDlpV2TableDataProfile[];
+  ReadonlyArray<GooglePrivacyDlpV2TableDataProfile>;
 export const GooglePrivacyDlpV2TableDataProfileList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2TableDataProfile,
 ) as any as S.Schema<GooglePrivacyDlpV2TableDataProfileList>;
@@ -10754,8 +10689,7 @@ export const ListProjectsDeidentifyTemplatesRequest = /*@__PURE__*/ S.suspend(
 export type ListProjectsDlpJobsTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB"
-  | (string & {});
+  | "RISK_ANALYSIS_JOB";
 export const ListProjectsDlpJobsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsDlpJobsRequest {
@@ -10827,8 +10761,7 @@ export const ListProjectsInspectTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsJobTriggersTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB"
-  | (string & {});
+  | "RISK_ANALYSIS_JOB";
 export const ListProjectsJobTriggersTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsJobTriggersRequest {
@@ -10952,7 +10885,7 @@ export const ListProjectsLocationsContentPoliciesRequest =
   }) as any as S.Schema<ListProjectsLocationsContentPoliciesRequest>;
 
 export type GooglePrivacyDlpV2ContentPolicyList =
-  GooglePrivacyDlpV2ContentPolicy[];
+  ReadonlyArray<GooglePrivacyDlpV2ContentPolicy>;
 export const GooglePrivacyDlpV2ContentPolicyList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ContentPolicy,
 ) as any as S.Schema<GooglePrivacyDlpV2ContentPolicyList>;
@@ -11036,8 +10969,7 @@ export const ListProjectsLocationsDiscoveryConfigsRequest =
 export type ListProjectsLocationsDlpJobsTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB"
-  | (string & {});
+  | "RISK_ANALYSIS_JOB";
 export const ListProjectsLocationsDlpJobsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsDlpJobsRequest {
@@ -11169,8 +11101,7 @@ export const ListProjectsLocationsInspectTemplatesRequest =
 export type ListProjectsLocationsJobTriggersTypeEnum =
   | "DLP_JOB_TYPE_UNSPECIFIED"
   | "INSPECT_JOB"
-  | "RISK_ANALYSIS_JOB"
-  | (string & {});
+  | "RISK_ANALYSIS_JOB";
 export const ListProjectsLocationsJobTriggersTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsJobTriggersRequest {
@@ -11953,7 +11884,7 @@ export const GooglePrivacyDlpV2ImageRedactionConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePrivacyDlpV2ImageRedactionConfig>;
 
 export type GooglePrivacyDlpV2ImageRedactionConfigList =
-  GooglePrivacyDlpV2ImageRedactionConfig[];
+  ReadonlyArray<GooglePrivacyDlpV2ImageRedactionConfig>;
 export const GooglePrivacyDlpV2ImageRedactionConfigList = /*@__PURE__*/ S.Array(
   GooglePrivacyDlpV2ImageRedactionConfig,
 ) as any as S.Schema<GooglePrivacyDlpV2ImageRedactionConfigList>;

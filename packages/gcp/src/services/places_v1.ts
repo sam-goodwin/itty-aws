@@ -126,7 +126,7 @@ export const GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction =
       "GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction",
   }) as any as S.Schema<GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -241,7 +241,7 @@ export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange =
   }) as any as S.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>;
 
 export type GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRangeList =
-  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange[];
+  ReadonlyArray<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>;
 export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRangeList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange,
@@ -367,7 +367,7 @@ export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion =
   }) as any as S.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>;
 
 export type GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionList =
-  GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion[];
+  ReadonlyArray<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>;
 export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion,
@@ -531,8 +531,7 @@ export type GoogleMapsPlacesV1FuelOptionsFuelPriceTypeEnum =
   | "E100"
   | "METHANE"
   | "BIO_DIESEL"
-  | "TRUCK_DIESEL"
-  | (string & {});
+  | "TRUCK_DIESEL";
 export const GoogleMapsPlacesV1FuelOptionsFuelPriceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -557,7 +556,7 @@ export const GoogleMapsPlacesV1FuelOptionsFuelPrice = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleMapsPlacesV1FuelOptionsFuelPrice>;
 
 export type GoogleMapsPlacesV1FuelOptionsFuelPriceList =
-  GoogleMapsPlacesV1FuelOptionsFuelPrice[];
+  ReadonlyArray<GoogleMapsPlacesV1FuelOptionsFuelPrice>;
 export const GoogleMapsPlacesV1FuelOptionsFuelPriceList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1FuelOptionsFuelPrice,
 ) as any as S.Schema<GoogleMapsPlacesV1FuelOptionsFuelPriceList>;
@@ -666,8 +665,7 @@ export type GoogleMapsPlacesV1PlaceOpeningHoursSecondaryHoursTypeEnum =
   | "PICKUP"
   | "ACCESS"
   | "SENIOR_HOURS"
-  | "ONLINE_SERVICE_HOURS"
-  | (string & {});
+  | "ONLINE_SERVICE_HOURS";
 export const GoogleMapsPlacesV1PlaceOpeningHoursSecondaryHoursTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -732,7 +730,7 @@ export const GoogleMapsPlacesV1PlaceOpeningHoursPeriod =
   }) as any as S.Schema<GoogleMapsPlacesV1PlaceOpeningHoursPeriod>;
 
 export type GoogleMapsPlacesV1PlaceOpeningHoursPeriodList =
-  GoogleMapsPlacesV1PlaceOpeningHoursPeriod[];
+  ReadonlyArray<GoogleMapsPlacesV1PlaceOpeningHoursPeriod>;
 export const GoogleMapsPlacesV1PlaceOpeningHoursPeriodList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1PlaceOpeningHoursPeriod,
@@ -753,7 +751,7 @@ export const GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay =
   }) as any as S.Schema<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay>;
 
 export type GoogleMapsPlacesV1PlaceOpeningHoursSpecialDayList =
-  GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay[];
+  ReadonlyArray<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay>;
 export const GoogleMapsPlacesV1PlaceOpeningHoursSpecialDayList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay,
@@ -809,7 +807,7 @@ export const GoogleMapsPlacesV1PlaceAttribution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1PlaceAttribution>;
 
 export type GoogleMapsPlacesV1PlaceAttributionList =
-  GoogleMapsPlacesV1PlaceAttribution[];
+  ReadonlyArray<GoogleMapsPlacesV1PlaceAttribution>;
 export const GoogleMapsPlacesV1PlaceAttributionList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1PlaceAttribution,
 ) as any as S.Schema<GoogleMapsPlacesV1PlaceAttributionList>;
@@ -834,7 +832,7 @@ export const GoogleMapsPlacesV1AuthorAttribution = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1AuthorAttribution>;
 
 export type GoogleMapsPlacesV1AuthorAttributionList =
-  GoogleMapsPlacesV1AuthorAttribution[];
+  ReadonlyArray<GoogleMapsPlacesV1AuthorAttribution>;
 export const GoogleMapsPlacesV1AuthorAttributionList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1AuthorAttribution,
 ) as any as S.Schema<GoogleMapsPlacesV1AuthorAttributionList>;
@@ -867,7 +865,8 @@ export const GoogleMapsPlacesV1Photo = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleMapsPlacesV1Photo",
 }) as any as S.Schema<GoogleMapsPlacesV1Photo>;
 
-export type GoogleMapsPlacesV1PhotoList = GoogleMapsPlacesV1Photo[];
+export type GoogleMapsPlacesV1PhotoList =
+  ReadonlyArray<GoogleMapsPlacesV1Photo>;
 export const GoogleMapsPlacesV1PhotoList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1Photo,
 ) as any as S.Schema<GoogleMapsPlacesV1PhotoList>;
@@ -890,7 +889,7 @@ export const GoogleMapsPlacesV1PlaceContainingPlace = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleMapsPlacesV1PlaceContainingPlace>;
 
 export type GoogleMapsPlacesV1PlaceContainingPlaceList =
-  GoogleMapsPlacesV1PlaceContainingPlace[];
+  ReadonlyArray<GoogleMapsPlacesV1PlaceContainingPlace>;
 export const GoogleMapsPlacesV1PlaceContainingPlaceList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1PlaceContainingPlace,
 ) as any as S.Schema<GoogleMapsPlacesV1PlaceContainingPlaceList>;
@@ -902,8 +901,7 @@ export type GoogleMapsPlacesV1AddressDescriptorLandmarkSpatialRelationshipEnum =
     | "ACROSS_THE_ROAD"
     | "DOWN_THE_ROAD"
     | "AROUND_THE_CORNER"
-    | "BEHIND"
-    | (string & {});
+    | "BEHIND";
 export const GoogleMapsPlacesV1AddressDescriptorLandmarkSpatialRelationshipEnum =
   /*@__PURE__*/ S.String;
 
@@ -942,7 +940,7 @@ export const GoogleMapsPlacesV1AddressDescriptorLandmark =
   }) as any as S.Schema<GoogleMapsPlacesV1AddressDescriptorLandmark>;
 
 export type GoogleMapsPlacesV1AddressDescriptorLandmarkList =
-  GoogleMapsPlacesV1AddressDescriptorLandmark[];
+  ReadonlyArray<GoogleMapsPlacesV1AddressDescriptorLandmark>;
 export const GoogleMapsPlacesV1AddressDescriptorLandmarkList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1AddressDescriptorLandmark,
@@ -952,8 +950,7 @@ export type GoogleMapsPlacesV1AddressDescriptorAreaContainmentEnum =
   | "CONTAINMENT_UNSPECIFIED"
   | "WITHIN"
   | "OUTSKIRTS"
-  | "NEAR"
-  | (string & {});
+  | "NEAR";
 export const GoogleMapsPlacesV1AddressDescriptorAreaContainmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -983,7 +980,7 @@ export const GoogleMapsPlacesV1AddressDescriptorArea = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleMapsPlacesV1AddressDescriptorArea>;
 
 export type GoogleMapsPlacesV1AddressDescriptorAreaList =
-  GoogleMapsPlacesV1AddressDescriptorArea[];
+  ReadonlyArray<GoogleMapsPlacesV1AddressDescriptorArea>;
 export const GoogleMapsPlacesV1AddressDescriptorAreaList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1AddressDescriptorArea,
@@ -1006,7 +1003,7 @@ export const GoogleMapsPlacesV1AddressDescriptor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1AddressDescriptor>;
 
 export type GoogleMapsPlacesV1PlaceOpeningHoursList =
-  GoogleMapsPlacesV1PlaceOpeningHours[];
+  ReadonlyArray<GoogleMapsPlacesV1PlaceOpeningHours>;
 export const GoogleMapsPlacesV1PlaceOpeningHoursList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1PlaceOpeningHours,
 ) as any as S.Schema<GoogleMapsPlacesV1PlaceOpeningHoursList>;
@@ -1035,7 +1032,7 @@ export const GoogleMapsPlacesV1PlaceAddressComponent = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleMapsPlacesV1PlaceAddressComponent>;
 
 export type GoogleMapsPlacesV1PlaceAddressComponentList =
-  GoogleMapsPlacesV1PlaceAddressComponent[];
+  ReadonlyArray<GoogleMapsPlacesV1PlaceAddressComponent>;
 export const GoogleMapsPlacesV1PlaceAddressComponentList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1PlaceAddressComponent,
@@ -1104,7 +1101,8 @@ export const GoogleMapsPlacesV1Review = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleMapsPlacesV1Review",
 }) as any as S.Schema<GoogleMapsPlacesV1Review>;
 
-export type GoogleMapsPlacesV1ReviewList = GoogleMapsPlacesV1Review[];
+export type GoogleMapsPlacesV1ReviewList =
+  ReadonlyArray<GoogleMapsPlacesV1Review>;
 export const GoogleMapsPlacesV1ReviewList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1Review,
 ) as any as S.Schema<GoogleMapsPlacesV1ReviewList>;
@@ -1115,8 +1113,7 @@ export type GoogleMapsPlacesV1PlacePriceLevelEnum =
   | "PRICE_LEVEL_INEXPENSIVE"
   | "PRICE_LEVEL_MODERATE"
   | "PRICE_LEVEL_EXPENSIVE"
-  | "PRICE_LEVEL_VERY_EXPENSIVE"
-  | (string & {});
+  | "PRICE_LEVEL_VERY_EXPENSIVE";
 export const GoogleMapsPlacesV1PlacePriceLevelEnum = /*@__PURE__*/ S.String;
 
 export type GoogleMapsPlacesV1TransitLineVehicleTypeEnum =
@@ -1141,8 +1138,7 @@ export type GoogleMapsPlacesV1TransitLineVehicleTypeEnum =
   | "FUNICULAR"
   | "SPECIAL"
   | "HORSE_CARRIAGE"
-  | "AIRPLANE"
-  | (string & {});
+  | "AIRPLANE";
 export const GoogleMapsPlacesV1TransitLineVehicleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1199,7 +1195,8 @@ export const GoogleMapsPlacesV1TransitLine = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleMapsPlacesV1TransitLine",
 }) as any as S.Schema<GoogleMapsPlacesV1TransitLine>;
 
-export type GoogleMapsPlacesV1TransitLineList = GoogleMapsPlacesV1TransitLine[];
+export type GoogleMapsPlacesV1TransitLineList =
+  ReadonlyArray<GoogleMapsPlacesV1TransitLine>;
 export const GoogleMapsPlacesV1TransitLineList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1TransitLine,
 ) as any as S.Schema<GoogleMapsPlacesV1TransitLineList>;
@@ -1230,7 +1227,7 @@ export const GoogleMapsPlacesV1TransitAgency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1TransitAgency>;
 
 export type GoogleMapsPlacesV1TransitAgencyList =
-  GoogleMapsPlacesV1TransitAgency[];
+  ReadonlyArray<GoogleMapsPlacesV1TransitAgency>;
 export const GoogleMapsPlacesV1TransitAgencyList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1TransitAgency,
 ) as any as S.Schema<GoogleMapsPlacesV1TransitAgencyList>;
@@ -1266,7 +1263,8 @@ export const GoogleMapsPlacesV1TransitStop = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleMapsPlacesV1TransitStop",
 }) as any as S.Schema<GoogleMapsPlacesV1TransitStop>;
 
-export type GoogleMapsPlacesV1TransitStopList = GoogleMapsPlacesV1TransitStop[];
+export type GoogleMapsPlacesV1TransitStopList =
+  ReadonlyArray<GoogleMapsPlacesV1TransitStop>;
 export const GoogleMapsPlacesV1TransitStopList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1TransitStop,
 ) as any as S.Schema<GoogleMapsPlacesV1TransitStopList>;
@@ -1295,8 +1293,7 @@ export type GoogleMapsPlacesV1PlaceBusinessStatusEnum =
   | "OPERATIONAL"
   | "CLOSED_TEMPORARILY"
   | "CLOSED_PERMANENTLY"
-  | "FUTURE_OPENING"
-  | (string & {});
+  | "FUTURE_OPENING";
 export const GoogleMapsPlacesV1PlaceBusinessStatusEnum = /*@__PURE__*/ S.String;
 
 export type GoogleMapsPlacesV1EVChargeOptionsConnectorAggregationTypeEnum =
@@ -1310,8 +1307,7 @@ export type GoogleMapsPlacesV1EVChargeOptionsConnectorAggregationTypeEnum =
   | "EV_CONNECTOR_TYPE_TESLA"
   | "EV_CONNECTOR_TYPE_UNSPECIFIED_GB_T"
   | "EV_CONNECTOR_TYPE_UNSPECIFIED_WALL_OUTLET"
-  | "EV_CONNECTOR_TYPE_NACS"
-  | (string & {});
+  | "EV_CONNECTOR_TYPE_NACS";
 export const GoogleMapsPlacesV1EVChargeOptionsConnectorAggregationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1347,7 +1343,7 @@ export const GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation =
   }) as any as S.Schema<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation>;
 
 export type GoogleMapsPlacesV1EVChargeOptionsConnectorAggregationList =
-  GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation[];
+  ReadonlyArray<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation>;
 export const GoogleMapsPlacesV1EVChargeOptionsConnectorAggregationList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation,
@@ -1485,7 +1481,7 @@ export const GoogleMapsPlacesV1PlaceSubDestination = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleMapsPlacesV1PlaceSubDestination>;
 
 export type GoogleMapsPlacesV1PlaceSubDestinationList =
-  GoogleMapsPlacesV1PlaceSubDestination[];
+  ReadonlyArray<GoogleMapsPlacesV1PlaceSubDestination>;
 export const GoogleMapsPlacesV1PlaceSubDestinationList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1PlaceSubDestination,
 ) as any as S.Schema<GoogleMapsPlacesV1PlaceSubDestinationList>;
@@ -1896,8 +1892,7 @@ export const GoogleMapsPlacesV1Place = /*@__PURE__*/ S.suspend(() =>
 export type GoogleMapsPlacesV1SearchNearbyRequestRankPreferenceEnum =
   | "RANK_PREFERENCE_UNSPECIFIED"
   | "DISTANCE"
-  | "POPULARITY"
-  | (string & {});
+  | "POPULARITY";
 export const GoogleMapsPlacesV1SearchNearbyRequestRankPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1906,8 +1901,7 @@ export type GoogleMapsPlacesV1RoutingParametersTravelModeEnum =
   | "DRIVE"
   | "BICYCLE"
   | "WALK"
-  | "TWO_WHEELER"
-  | (string & {});
+  | "TWO_WHEELER";
 export const GoogleMapsPlacesV1RoutingParametersTravelModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1937,8 +1931,7 @@ export type GoogleMapsPlacesV1RoutingParametersRoutingPreferenceEnum =
   | "ROUTING_PREFERENCE_UNSPECIFIED"
   | "TRAFFIC_UNAWARE"
   | "TRAFFIC_AWARE"
-  | "TRAFFIC_AWARE_OPTIMAL"
-  | (string & {});
+  | "TRAFFIC_AWARE_OPTIMAL";
 export const GoogleMapsPlacesV1RoutingParametersRoutingPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -2046,7 +2039,8 @@ export const SearchNearbyPlacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchNearbyPlacesRequest",
 }) as any as S.Schema<SearchNearbyPlacesRequest>;
 
-export type GoogleMapsPlacesV1PlaceList = GoogleMapsPlacesV1Place[];
+export type GoogleMapsPlacesV1PlaceList =
+  ReadonlyArray<GoogleMapsPlacesV1Place>;
 export const GoogleMapsPlacesV1PlaceList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1Place,
 ) as any as S.Schema<GoogleMapsPlacesV1PlaceList>;
@@ -2068,7 +2062,7 @@ export const GoogleMapsPlacesV1RoutingSummaryLeg = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1RoutingSummaryLeg>;
 
 export type GoogleMapsPlacesV1RoutingSummaryLegList =
-  GoogleMapsPlacesV1RoutingSummaryLeg[];
+  ReadonlyArray<GoogleMapsPlacesV1RoutingSummaryLeg>;
 export const GoogleMapsPlacesV1RoutingSummaryLegList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1RoutingSummaryLeg,
 ) as any as S.Schema<GoogleMapsPlacesV1RoutingSummaryLegList>;
@@ -2090,7 +2084,7 @@ export const GoogleMapsPlacesV1RoutingSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1RoutingSummary>;
 
 export type GoogleMapsPlacesV1RoutingSummaryList =
-  GoogleMapsPlacesV1RoutingSummary[];
+  ReadonlyArray<GoogleMapsPlacesV1RoutingSummary>;
 export const GoogleMapsPlacesV1RoutingSummaryList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1RoutingSummary,
 ) as any as S.Schema<GoogleMapsPlacesV1RoutingSummaryList>;
@@ -2142,8 +2136,7 @@ export const GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters =
 export type GoogleMapsPlacesV1SearchTextRequestRankPreferenceEnum =
   | "RANK_PREFERENCE_UNSPECIFIED"
   | "DISTANCE"
-  | "RELEVANCE"
-  | (string & {});
+  | "RELEVANCE";
 export const GoogleMapsPlacesV1SearchTextRequestRankPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -2167,13 +2160,12 @@ export type GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum =
   | "PRICE_LEVEL_INEXPENSIVE"
   | "PRICE_LEVEL_MODERATE"
   | "PRICE_LEVEL_EXPENSIVE"
-  | "PRICE_LEVEL_VERY_EXPENSIVE"
-  | (string & {});
+  | "PRICE_LEVEL_VERY_EXPENSIVE";
 export const GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnumList =
-  GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum[];
+  ReadonlyArray<GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum>;
 export const GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1SearchTextRequestPriceLevelsItemEnum,
@@ -2190,13 +2182,12 @@ export type GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnum =
     | "EV_CONNECTOR_TYPE_TESLA"
     | "EV_CONNECTOR_TYPE_UNSPECIFIED_GB_T"
     | "EV_CONNECTOR_TYPE_UNSPECIFIED_WALL_OUTLET"
-    | "EV_CONNECTOR_TYPE_NACS"
-    | (string & {});
+    | "EV_CONNECTOR_TYPE_NACS";
 export const GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnumList =
-  GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnum[];
+  ReadonlyArray<GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnum>;
 export const GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1SearchTextRequestEVOptionsConnectorTypesItemEnum,
@@ -2348,7 +2339,7 @@ export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustification
   }) as any as S.Schema<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange>;
 
 export type GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRangeList =
-  GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange[];
+  ReadonlyArray<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange>;
 export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRangeList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange,
@@ -2433,7 +2424,7 @@ export const GoogleMapsPlacesV1ContextualContentJustification =
   }) as any as S.Schema<GoogleMapsPlacesV1ContextualContentJustification>;
 
 export type GoogleMapsPlacesV1ContextualContentJustificationList =
-  GoogleMapsPlacesV1ContextualContentJustification[];
+  ReadonlyArray<GoogleMapsPlacesV1ContextualContentJustification>;
 export const GoogleMapsPlacesV1ContextualContentJustificationList =
   /*@__PURE__*/ S.Array(
     GoogleMapsPlacesV1ContextualContentJustification,
@@ -2461,7 +2452,7 @@ export const GoogleMapsPlacesV1ContextualContent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleMapsPlacesV1ContextualContent>;
 
 export type GoogleMapsPlacesV1ContextualContentList =
-  GoogleMapsPlacesV1ContextualContent[];
+  ReadonlyArray<GoogleMapsPlacesV1ContextualContent>;
 export const GoogleMapsPlacesV1ContextualContentList = /*@__PURE__*/ S.Array(
   GoogleMapsPlacesV1ContextualContent,
 ) as any as S.Schema<GoogleMapsPlacesV1ContextualContentList>;

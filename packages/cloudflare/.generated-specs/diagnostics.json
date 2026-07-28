@@ -488,6 +488,18 @@
           "traits": {
             "smithy.api#enumValue": "udp"
           }
+        },
+        "GRE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre"
+          }
+        },
+        "GRE_ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gre+icmp"
+          }
         }
       }
     },
@@ -593,6 +605,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "Could not gather traceroute data: Code 2"
+          }
+        },
+        "COULD_NOT_GATHER_TRACEROUTE_DATA_CODE_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Could not gather traceroute data: Code 3"
+          }
+        },
+        "COULD_NOT_GATHER_TRACEROUTE_DATA_CODE_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Could not gather traceroute data: Code 4"
           }
         }
       }

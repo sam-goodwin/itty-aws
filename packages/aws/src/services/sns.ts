@@ -572,8 +572,7 @@ export type LanguageCodeString =
   | "pt-BR"
   | "kr-KR"
   | "zh-CN"
-  | "zh-TW"
-  | (string & {});
+  | "zh-TW";
 export const LanguageCodeString = /*@__PURE__*/ S.String;
 
 export interface CreateSMSSandboxPhoneNumberInput {
@@ -1014,14 +1013,10 @@ export const ListOriginationNumbersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOriginationNumbersRequest",
 }) as any as S.Schema<ListOriginationNumbersRequest>;
 export type Iso2CountryCode = string;
-export type RouteType =
-  | "Transactional"
-  | "Promotional"
-  | "Premium"
-  | (string & {});
+export type RouteType = "Transactional" | "Promotional" | "Premium";
 export const RouteType = /*@__PURE__*/ S.String;
 
-export type NumberCapability = "SMS" | "MMS" | "VOICE" | (string & {});
+export type NumberCapability = "SMS" | "MMS" | "VOICE";
 export const NumberCapability = /*@__PURE__*/ S.String;
 
 export type NumberCapabilityList = NumberCapability[];
@@ -1164,10 +1159,7 @@ export const ListSMSSandboxPhoneNumbersInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSMSSandboxPhoneNumbersInput",
 }) as any as S.Schema<ListSMSSandboxPhoneNumbersInput>;
-export type SMSSandboxPhoneNumberVerificationStatus =
-  | "Pending"
-  | "Verified"
-  | (string & {});
+export type SMSSandboxPhoneNumberVerificationStatus = "Pending" | "Verified";
 export const SMSSandboxPhoneNumberVerificationStatus = /*@__PURE__*/ S.String;
 
 export interface SMSSandboxPhoneNumber {

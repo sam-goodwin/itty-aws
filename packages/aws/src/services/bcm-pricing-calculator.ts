@@ -246,8 +246,7 @@ export const BatchCreateBillScenarioCommitmentModificationItems =
 export type BatchCreateBillScenarioCommitmentModificationErrorCode =
   | "CONFLICT"
   | "INTERNAL_SERVER_ERROR"
-  | "INVALID_ACCOUNT"
-  | (string & {});
+  | "INVALID_ACCOUNT";
 export const BatchCreateBillScenarioCommitmentModificationErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -489,8 +488,7 @@ export type BatchCreateBillScenarioUsageModificationErrorCode =
   | "BAD_REQUEST"
   | "NOT_FOUND"
   | "CONFLICT"
-  | "INTERNAL_SERVER_ERROR"
-  | (string & {});
+  | "INTERNAL_SERVER_ERROR";
 export const BatchCreateBillScenarioUsageModificationErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -585,14 +583,10 @@ export const WorkloadEstimateUsageQuantity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkloadEstimateUsageQuantity",
 }) as any as S.Schema<WorkloadEstimateUsageQuantity>;
-export type CurrencyCode = "USD" | (string & {});
+export type CurrencyCode = "USD";
 export const CurrencyCode = /*@__PURE__*/ S.String;
 
-export type WorkloadEstimateCostStatus =
-  | "VALID"
-  | "INVALID"
-  | "STALE"
-  | (string & {});
+export type WorkloadEstimateCostStatus = "VALID" | "INVALID" | "STALE";
 export const WorkloadEstimateCostStatus = /*@__PURE__*/ S.String;
 
 export interface BatchCreateWorkloadEstimateUsageItem {
@@ -639,8 +633,7 @@ export type BatchCreateWorkloadEstimateUsageCode =
   | "BAD_REQUEST"
   | "NOT_FOUND"
   | "CONFLICT"
-  | "INTERNAL_SERVER_ERROR"
-  | (string & {});
+  | "INTERNAL_SERVER_ERROR";
 export const BatchCreateWorkloadEstimateUsageCode = /*@__PURE__*/ S.String;
 
 export interface BatchCreateWorkloadEstimateUsageError_ {
@@ -697,8 +690,7 @@ export const BatchDeleteBillScenarioCommitmentModificationRequest =
 export type BatchDeleteBillScenarioCommitmentModificationErrorCode =
   | "BAD_REQUEST"
   | "CONFLICT"
-  | "INTERNAL_SERVER_ERROR"
-  | (string & {});
+  | "INTERNAL_SERVER_ERROR";
 export const BatchDeleteBillScenarioCommitmentModificationErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -755,8 +747,7 @@ export const BatchDeleteBillScenarioUsageModificationRequest =
 export type BatchDeleteBillScenarioUsageModificationErrorCode =
   | "BAD_REQUEST"
   | "CONFLICT"
-  | "INTERNAL_SERVER_ERROR"
-  | (string & {});
+  | "INTERNAL_SERVER_ERROR";
 export const BatchDeleteBillScenarioUsageModificationErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -813,8 +804,7 @@ export type WorkloadEstimateUpdateUsageErrorCode =
   | "BAD_REQUEST"
   | "NOT_FOUND"
   | "CONFLICT"
-  | "INTERNAL_SERVER_ERROR"
-  | (string & {});
+  | "INTERNAL_SERVER_ERROR";
 export const WorkloadEstimateUpdateUsageErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchDeleteWorkloadEstimateUsageError_ {
@@ -902,8 +892,7 @@ export type BatchUpdateBillScenarioCommitmentModificationErrorCode =
   | "BAD_REQUEST"
   | "NOT_FOUND"
   | "CONFLICT"
-  | "INTERNAL_SERVER_ERROR"
-  | (string & {});
+  | "INTERNAL_SERVER_ERROR";
 export const BatchUpdateBillScenarioCommitmentModificationErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -1012,8 +1001,7 @@ export type BatchUpdateBillScenarioUsageModificationErrorCode =
   | "BAD_REQUEST"
   | "NOT_FOUND"
   | "CONFLICT"
-  | "INTERNAL_SERVER_ERROR"
-  | (string & {});
+  | "INTERNAL_SERVER_ERROR";
 export const BatchUpdateBillScenarioUsageModificationErrorCode =
   /*@__PURE__*/ S.String;
 
@@ -1179,11 +1167,7 @@ export const CreateBillEstimateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBillEstimateRequest",
 }) as any as S.Schema<CreateBillEstimateRequest>;
-export type BillEstimateStatus =
-  | "IN_PROGRESS"
-  | "COMPLETE"
-  | "FAILED"
-  | (string & {});
+export type BillEstimateStatus = "IN_PROGRESS" | "COMPLETE" | "FAILED";
 export const BillEstimateStatus = /*@__PURE__*/ S.String;
 
 export interface CostAmount {
@@ -1225,11 +1209,7 @@ export const BillEstimateCostSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BillEstimateCostSummary",
 }) as any as S.Schema<BillEstimateCostSummary>;
-export type GroupSharingPreferenceEnum =
-  | "OPEN"
-  | "PRIORITIZED"
-  | "RESTRICTED"
-  | (string & {});
+export type GroupSharingPreferenceEnum = "OPEN" | "PRIORITIZED" | "RESTRICTED";
 export const GroupSharingPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type CostCategoryArn = string;
@@ -1289,12 +1269,7 @@ export const CreateBillScenarioRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBillScenarioRequest",
 }) as any as S.Schema<CreateBillScenarioRequest>;
-export type BillScenarioStatus =
-  | "READY"
-  | "LOCKED"
-  | "FAILED"
-  | "STALE"
-  | (string & {});
+export type BillScenarioStatus = "READY" | "LOCKED" | "FAILED" | "STALE";
 export const BillScenarioStatus = /*@__PURE__*/ S.String;
 
 export interface CreateBillScenarioResponse {
@@ -1327,8 +1302,7 @@ export type WorkloadEstimateName = string;
 export type WorkloadEstimateRateType =
   | "BEFORE_DISCOUNTS"
   | "AFTER_DISCOUNTS"
-  | "AFTER_DISCOUNTS_AND_COMMITMENTS"
-  | (string & {});
+  | "AFTER_DISCOUNTS_AND_COMMITMENTS";
 export const WorkloadEstimateRateType = /*@__PURE__*/ S.String;
 
 export interface CreateWorkloadEstimateRequest {
@@ -1356,8 +1330,7 @@ export type WorkloadEstimateStatus =
   | "UPDATING"
   | "VALID"
   | "INVALID"
-  | "ACTION_NEEDED"
-  | (string & {});
+  | "ACTION_NEEDED";
 export const WorkloadEstimateStatus = /*@__PURE__*/ S.String;
 
 export interface CreateWorkloadEstimateResponse {
@@ -1525,8 +1498,7 @@ export const GetPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
 export type RateType =
   | "BEFORE_DISCOUNTS"
   | "AFTER_DISCOUNTS"
-  | "AFTER_DISCOUNTS_AND_COMMITMENTS"
-  | (string & {});
+  | "AFTER_DISCOUNTS_AND_COMMITMENTS";
 export const RateType = /*@__PURE__*/ S.String;
 
 export type RateTypes = RateType[];
@@ -1601,10 +1573,7 @@ export const ListBillEstimateCommitmentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBillEstimateCommitmentsRequest",
 }) as any as S.Schema<ListBillEstimateCommitmentsRequest>;
-export type PurchaseAgreementType =
-  | "SAVINGS_PLANS"
-  | "RESERVED_INSTANCE"
-  | (string & {});
+export type PurchaseAgreementType = "SAVINGS_PLANS" | "RESERVED_INSTANCE";
 export const PurchaseAgreementType = /*@__PURE__*/ S.String;
 
 export interface BillEstimateCommitmentSummary {
@@ -1711,13 +1680,12 @@ export type ListUsageFilterName =
   | "HISTORICAL_SERVICE_CODE"
   | "HISTORICAL_USAGE_TYPE"
   | "HISTORICAL_OPERATION"
-  | "HISTORICAL_LOCATION"
-  | (string & {});
+  | "HISTORICAL_LOCATION";
 export const ListUsageFilterName = /*@__PURE__*/ S.String;
 
 export type ListUsageFilterValues = string[];
 export const ListUsageFilterValues = /*@__PURE__*/ S.Array(S.String);
-export type MatchOption = "EQUALS" | "STARTS_WITH" | "CONTAINS" | (string & {});
+export type MatchOption = "EQUALS" | "STARTS_WITH" | "CONTAINS";
 export const MatchOption = /*@__PURE__*/ S.String;
 
 export interface ListUsageFilter {
@@ -1807,8 +1775,7 @@ export type ListBillEstimateLineItemsFilterName =
   | "USAGE_TYPE"
   | "OPERATION"
   | "LOCATION"
-  | "LINE_ITEM_TYPE"
-  | (string & {});
+  | "LINE_ITEM_TYPE";
 export const ListBillEstimateLineItemsFilterName = /*@__PURE__*/ S.String;
 
 export type ListBillEstimateLineItemsFilterValues = string[];
@@ -1917,7 +1884,7 @@ export const ListBillEstimateLineItemsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBillEstimateLineItemsResponse",
 }) as any as S.Schema<ListBillEstimateLineItemsResponse>;
-export type ListBillEstimatesFilterName = "STATUS" | "NAME" | (string & {});
+export type ListBillEstimatesFilterName = "STATUS" | "NAME";
 export const ListBillEstimatesFilterName = /*@__PURE__*/ S.String;
 
 export type ListBillEstimatesFilterValues = string[];
@@ -2042,8 +2009,7 @@ export type ListBillScenariosFilterName =
   | "STATUS"
   | "NAME"
   | "GROUP_SHARING_PREFERENCE"
-  | "COST_CATEGORY_ARN"
-  | (string & {});
+  | "COST_CATEGORY_ARN";
 export const ListBillScenariosFilterName = /*@__PURE__*/ S.String;
 
 export type ListBillScenariosFilterValues = string[];
@@ -2177,7 +2143,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
-export type ListWorkloadEstimatesFilterName = "STATUS" | "NAME" | (string & {});
+export type ListWorkloadEstimatesFilterName = "STATUS" | "NAME";
 export const ListWorkloadEstimatesFilterName = /*@__PURE__*/ S.String;
 
 export type ListWorkloadEstimatesFilterValues = string[];

@@ -113,8 +113,7 @@ export type AccessReasonTypeEnum =
   | "GOOGLE_INITIATED_REVIEW"
   | "THIRD_PARTY_DATA_REQUEST"
   | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT"
-  | "CLOUD_INITIATED_ACCESS"
-  | (string & {});
+  | "CLOUD_INITIATED_ACCESS";
 export const AccessReasonTypeEnum = /*@__PURE__*/ S.String;
 
 export interface AccessReason {
@@ -194,8 +193,7 @@ export type SignatureInfoGoogleKeyAlgorithmEnum =
   | "PQ_SIGN_ML_DSA_44_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_65_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_87_EXTERNAL_MU"
-  | "AES_256_KWP"
-  | (string & {});
+  | "AES_256_KWP";
 export const SignatureInfoGoogleKeyAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** Information about the digital signature of the resource. */
@@ -526,8 +524,7 @@ export type CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum =
     | "JUSTIFICATION_BASED_APPROVAL_ENABLED_ALL"
     | "JUSTIFICATION_BASED_APPROVAL_ENABLED_EXTERNAL_JUSTIFICATIONS"
     | "JUSTIFICATION_BASED_APPROVAL_NOT_ENABLED"
-    | "JUSTIFICATION_BASED_APPROVAL_INHERITED"
-    | (string & {});
+    | "JUSTIFICATION_BASED_APPROVAL_INHERITED";
 export const CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -550,15 +547,13 @@ export type AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum =
   | "REQUEST_SCOPE_MAX_WIDTH_PREFERENCE_UNSPECIFIED"
   | "ORGANIZATION"
   | "FOLDER"
-  | "PROJECT"
-  | (string & {});
+  | "PROJECT";
 export const AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum =
   /*@__PURE__*/ S.String;
 
 export type EnrolledServiceEnrollmentLevelEnum =
   | "ENROLLMENT_LEVEL_UNSPECIFIED"
-  | "BLOCK_ALL"
-  | (string & {});
+  | "BLOCK_ALL";
 export const EnrolledServiceEnrollmentLevelEnum = /*@__PURE__*/ S.String;
 
 /** Represents the enrollment of a cloud resource into a specific service. */
@@ -577,12 +572,12 @@ export const EnrolledService = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnrolledService",
 }) as any as S.Schema<EnrolledService>;
 
-export type EnrolledServiceList = EnrolledService[];
+export type EnrolledServiceList = ReadonlyArray<EnrolledService>;
 export const EnrolledServiceList = /*@__PURE__*/ S.Array(
   EnrolledService,
 ) as any as S.Schema<EnrolledServiceList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -909,7 +904,7 @@ export const ListFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFoldersApprovalRequestsRequest",
 }) as any as S.Schema<ListFoldersApprovalRequestsRequest>;
 
-export type ApprovalRequestList = ApprovalRequest[];
+export type ApprovalRequestList = ReadonlyArray<ApprovalRequest>;
 export const ApprovalRequestList = /*@__PURE__*/ S.Array(
   ApprovalRequest,
 ) as any as S.Schema<ApprovalRequestList>;

@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `read_write` - read_write * `read` - read * `none` - none */
-export type AccessLevelEnum = "read_write" | "read" | "none" | (string & {});
+export type AccessLevelEnum = "read_write" | "read" | "none";
 export const AccessLevelEnum = /*@__PURE__*/ S.String;
 
 export interface PropertyAccessControlsCreateRequest {
@@ -131,14 +131,15 @@ export const PropertyAccessControlsRetrieveRequest = /*@__PURE__*/ S.suspend(
 
 /** List of all access control rules for this property definition. */
 export type PropertyAccessControlStateAccessControlsList =
-  PropertyAccessControlRule[];
+  ReadonlyArray<PropertyAccessControlRule>;
 export const PropertyAccessControlStateAccessControlsList =
   /*@__PURE__*/ S.Array(
     PropertyAccessControlRule,
   ) as any as S.Schema<PropertyAccessControlStateAccessControlsList>;
 
 /** Available access levels that can be assigned. */
-export type PropertyAccessControlStateAvailableAccessLevelsList = string[];
+export type PropertyAccessControlStateAvailableAccessLevelsList =
+  ReadonlyArray<string>;
 export const PropertyAccessControlStateAvailableAccessLevelsList =
   /*@__PURE__*/ S.Array(
     S.String,

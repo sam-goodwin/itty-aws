@@ -38,12 +38,6 @@ export class NotFound extends T.applyErrorMatchers(
 export interface ObjectMediaPreviewsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
-  created_at?: string;
-  updated_at?: string | null;
-  media_url?: string;
-  /** Return 'uploaded' or 'exported' based on which media is set */
-  media_type?: string;
   metadata?: unknown;
   uploaded_media_id?: string | null;
   exported_asset_id?: string | null;
@@ -52,11 +46,6 @@ export interface ObjectMediaPreviewsCreateRequest {
 export const ObjectMediaPreviewsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
-    media_url: S.optional(S.String),
-    media_type: S.optional(S.String),
     metadata: S.optional(S.Unknown),
     uploaded_media_id: S.optional(S.NullOr(S.String)),
     exported_asset_id: S.optional(S.NullOr(S.String)),
@@ -72,7 +61,7 @@ export const ObjectMediaPreviewsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectMediaPreviewsCreateRequest",
 }) as any as S.Schema<ObjectMediaPreviewsCreateRequest>;
 
-export interface ObjectMediaPreview {
+export interface ObjectMediaPreviewOutput {
   id?: string;
   created_at?: string;
   updated_at?: string | null;
@@ -80,11 +69,8 @@ export interface ObjectMediaPreview {
   /** Return 'uploaded' or 'exported' based on which media is set */
   media_type?: string;
   metadata?: unknown;
-  uploaded_media_id?: string | null;
-  exported_asset_id?: string | null;
-  event_definition_id?: string | null;
 }
-export const ObjectMediaPreview = /*@__PURE__*/ S.suspend(() =>
+export const ObjectMediaPreviewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -92,13 +78,10 @@ export const ObjectMediaPreview = /*@__PURE__*/ S.suspend(() =>
     media_url: S.optional(S.String),
     media_type: S.optional(S.String),
     metadata: S.optional(S.Unknown),
-    uploaded_media_id: S.optional(S.NullOr(S.String)),
-    exported_asset_id: S.optional(S.NullOr(S.String)),
-    event_definition_id: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
-  identifier: "ObjectMediaPreview",
-}) as any as S.Schema<ObjectMediaPreview>;
+  identifier: "ObjectMediaPreviewOutput",
+}) as any as S.Schema<ObjectMediaPreviewOutput>;
 
 export interface ObjectMediaPreviewsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -152,38 +135,36 @@ export const ObjectMediaPreviewsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectMediaPreviewsListRequest",
 }) as any as S.Schema<ObjectMediaPreviewsListRequest>;
 
-export type PaginatedObjectMediaPreviewListResultsList = ObjectMediaPreview[];
-export const PaginatedObjectMediaPreviewListResultsList = /*@__PURE__*/ S.Array(
-  ObjectMediaPreview,
-) as any as S.Schema<PaginatedObjectMediaPreviewListResultsList>;
+export type PaginatedObjectMediaPreviewListOutputResultsList =
+  ReadonlyArray<ObjectMediaPreviewOutput>;
+export const PaginatedObjectMediaPreviewListOutputResultsList =
+  /*@__PURE__*/ S.Array(
+    ObjectMediaPreviewOutput,
+  ) as any as S.Schema<PaginatedObjectMediaPreviewListOutputResultsList>;
 
-export interface PaginatedObjectMediaPreviewList {
+export interface PaginatedObjectMediaPreviewListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
-  results?: PaginatedObjectMediaPreviewListResultsList;
+  results?: PaginatedObjectMediaPreviewListOutputResultsList;
 }
-export const PaginatedObjectMediaPreviewList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedObjectMediaPreviewListResultsList),
-  }),
+export const PaginatedObjectMediaPreviewListOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      count: S.optional(S.Number),
+      next: S.optional(S.NullOr(S.String)),
+      previous: S.optional(S.NullOr(S.String)),
+      results: S.optional(PaginatedObjectMediaPreviewListOutputResultsList),
+    }),
 ).annotate({
-  identifier: "PaginatedObjectMediaPreviewList",
-}) as any as S.Schema<PaginatedObjectMediaPreviewList>;
+  identifier: "PaginatedObjectMediaPreviewListOutput",
+}) as any as S.Schema<PaginatedObjectMediaPreviewListOutput>;
 
 export interface ObjectMediaPreviewsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this object media preview. */
   id: string;
-  created_at?: string;
-  updated_at?: string | null;
-  media_url?: string;
-  /** Return 'uploaded' or 'exported' based on which media is set */
-  media_type?: string;
   metadata?: unknown;
   uploaded_media_id?: string | null;
   exported_asset_id?: string | null;
@@ -194,10 +175,6 @@ export const ObjectMediaPreviewsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.NullOr(S.String)),
-      media_url: S.optional(S.String),
-      media_type: S.optional(S.String),
       metadata: S.optional(S.Unknown),
       uploaded_media_id: S.optional(S.NullOr(S.String)),
       exported_asset_id: S.optional(S.NullOr(S.String)),
@@ -258,11 +235,6 @@ export interface ObjectMediaPreviewsUpdateRequest {
   project_id: string;
   /** A UUID string identifying this object media preview. */
   id: string;
-  created_at?: string;
-  updated_at?: string | null;
-  media_url?: string;
-  /** Return 'uploaded' or 'exported' based on which media is set */
-  media_type?: string;
   metadata?: unknown;
   uploaded_media_id?: string | null;
   exported_asset_id?: string | null;
@@ -272,10 +244,6 @@ export const ObjectMediaPreviewsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
-    media_url: S.optional(S.String),
-    media_type: S.optional(S.String),
     metadata: S.optional(S.Unknown),
     uploaded_media_id: S.optional(S.NullOr(S.String)),
     exported_asset_id: S.optional(S.NullOr(S.String)),
@@ -298,12 +266,12 @@ export type ObjectMediaPreviewsCreateError =
   | PosthogOpError;
 export const objectMediaPreviewsCreate: API.OperationMethod<
   ObjectMediaPreviewsCreateRequest,
-  ObjectMediaPreview,
+  ObjectMediaPreviewOutput,
   ObjectMediaPreviewsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObjectMediaPreviewsCreateRequest,
-  output: ObjectMediaPreview,
+  output: ObjectMediaPreviewOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -333,12 +301,12 @@ export type ObjectMediaPreviewsListError =
   | PosthogOpError;
 export const objectMediaPreviewsList: API.OperationMethod<
   ObjectMediaPreviewsListRequest,
-  PaginatedObjectMediaPreviewList,
+  PaginatedObjectMediaPreviewListOutput,
   ObjectMediaPreviewsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObjectMediaPreviewsListRequest,
-  output: PaginatedObjectMediaPreviewList,
+  output: PaginatedObjectMediaPreviewListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -351,12 +319,12 @@ export type ObjectMediaPreviewsPartialUpdateError =
   | PosthogOpError;
 export const objectMediaPreviewsPartialUpdate: API.OperationMethod<
   ObjectMediaPreviewsPartialUpdateRequest,
-  ObjectMediaPreview,
+  ObjectMediaPreviewOutput,
   ObjectMediaPreviewsPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObjectMediaPreviewsPartialUpdateRequest,
-  output: ObjectMediaPreview,
+  output: ObjectMediaPreviewOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -369,12 +337,12 @@ export type ObjectMediaPreviewsPreferredForEventRetrieveError =
 /** Get the preferred media preview for an event definition. Most recent user-uploaded, then most recent exported asset. Requires event_definition (query param). */
 export const objectMediaPreviewsPreferredForEventRetrieve: API.OperationMethod<
   ObjectMediaPreviewsPreferredForEventRetrieveRequest,
-  ObjectMediaPreview,
+  ObjectMediaPreviewOutput,
   ObjectMediaPreviewsPreferredForEventRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObjectMediaPreviewsPreferredForEventRetrieveRequest,
-  output: ObjectMediaPreview,
+  output: ObjectMediaPreviewOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -386,12 +354,12 @@ export type ObjectMediaPreviewsRetrieveError =
   | PosthogOpError;
 export const objectMediaPreviewsRetrieve: API.OperationMethod<
   ObjectMediaPreviewsRetrieveRequest,
-  ObjectMediaPreview,
+  ObjectMediaPreviewOutput,
   ObjectMediaPreviewsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObjectMediaPreviewsRetrieveRequest,
-  output: ObjectMediaPreview,
+  output: ObjectMediaPreviewOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -404,12 +372,12 @@ export type ObjectMediaPreviewsUpdateError =
   | PosthogOpError;
 export const objectMediaPreviewsUpdate: API.OperationMethod<
   ObjectMediaPreviewsUpdateRequest,
-  ObjectMediaPreview,
+  ObjectMediaPreviewOutput,
   ObjectMediaPreviewsUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ObjectMediaPreviewsUpdateRequest,
-  output: ObjectMediaPreview,
+  output: ObjectMediaPreviewOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

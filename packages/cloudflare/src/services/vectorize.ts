@@ -87,37 +87,57 @@ export class NotFound extends T.applyErrorMatchers(
   [{ code: 3000 }],
 ) {}
 
-export type IndexesCreateRequestConfigMetric =
+export type IndexesCreateRequestConfigIndexDimensionConfigurationMetric =
   | "cosine"
   | "euclidean"
-  | "dot-product"
-  | (string & {});
-export const IndexesCreateRequestConfigMetric = /*@__PURE__*/ S.String;
+  | "dot-product";
+export const IndexesCreateRequestConfigIndexDimensionConfigurationMetric =
+  /*@__PURE__*/ S.String;
 
-export type IndexesCreateRequestConfigPreset =
+export interface IndexesCreateRequestConfigIndexDimensionConfiguration {
+  /** Specifies the number of dimensions for the index */
+  dimensions: number;
+  /** Specifies the type of metric to use calculating distance. */
+  metric: IndexesCreateRequestConfigIndexDimensionConfigurationMetric;
+}
+export const IndexesCreateRequestConfigIndexDimensionConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dimensions: S.Number,
+      metric: IndexesCreateRequestConfigIndexDimensionConfigurationMetric,
+    }),
+  ).annotate({
+    identifier: "IndexesCreateRequestConfigIndexDimensionConfiguration",
+  }) as any as S.Schema<IndexesCreateRequestConfigIndexDimensionConfiguration>;
+
+export type IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset =
   | "@cf/baai/bge-small-en-v1.5"
   | "@cf/baai/bge-base-en-v1.5"
   | "@cf/baai/bge-large-en-v1.5"
-  | (string & {});
-export const IndexesCreateRequestConfigPreset = /*@__PURE__*/ S.String;
+  | "openai/text-embedding-ada-002"
+  | "cohere/embed-multilingual-v2.0";
+export const IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset =
+  /*@__PURE__*/ S.String;
 
-export interface IndexesCreateRequestConfig {
-  /** Specifies the number of dimensions for the index */
-  dimensions?: number;
-  /** Specifies the type of metric to use calculating distance. */
-  metric?: IndexesCreateRequestConfigMetric;
+export interface IndexesCreateRequestConfigVectorizeIndexPresetConfiguration {
   /** Specifies the preset to use for the index. */
-  preset?: IndexesCreateRequestConfigPreset;
+  preset: IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset;
 }
-export const IndexesCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: S.optional(S.Number),
-    metric: S.optional(IndexesCreateRequestConfigMetric),
-    preset: S.optional(IndexesCreateRequestConfigPreset),
-  }),
-).annotate({
-  identifier: "IndexesCreateRequestConfig",
-}) as any as S.Schema<IndexesCreateRequestConfig>;
+export const IndexesCreateRequestConfigVectorizeIndexPresetConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      preset: IndexesCreateRequestConfigVectorizeIndexPresetConfigurationPreset,
+    }),
+  ).annotate({
+    identifier: "IndexesCreateRequestConfigVectorizeIndexPresetConfiguration",
+  }) as any as S.Schema<IndexesCreateRequestConfigVectorizeIndexPresetConfiguration>;
+
+export type IndexesCreateRequestConfig =
+  | IndexesCreateRequestConfigIndexDimensionConfiguration
+  | IndexesCreateRequestConfigVectorizeIndexPresetConfiguration;
+export const IndexesCreateRequestConfig = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["dimensions", "metric"], ["preset"]]),
+);
 
 export interface CreateIndexRequest {
   /** Identifier */
@@ -150,8 +170,7 @@ export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
 export type IndexesCreateResponseConfigMetric =
   | "cosine"
   | "euclidean"
-  | "dot-product"
-  | (string & {});
+  | "dot-product";
 export const IndexesCreateResponseConfigMetric = /*@__PURE__*/ S.String;
 
 export interface IndexesCreateResponseConfig {
@@ -195,8 +214,7 @@ export const CreateIndexResponse = /*@__PURE__*/ S.suspend(() =>
 export type IndexesMetadataIndexCreateRequestIndexType =
   | "string"
   | "number"
-  | "boolean"
-  | (string & {});
+  | "boolean";
 export const IndexesMetadataIndexCreateRequestIndexType =
   /*@__PURE__*/ S.String;
 
@@ -241,7 +259,7 @@ export const CreateIndexMetadataIndexResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateIndexMetadataIndexResponse",
 }) as any as S.Schema<CreateIndexMetadataIndexResponse>;
 
-export type IndexesDeleteByIdsRequestIdsList = string[];
+export type IndexesDeleteByIdsRequestIdsList = ReadonlyArray<string>;
 export const IndexesDeleteByIdsRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IndexesDeleteByIdsRequestIdsList>;
@@ -306,16 +324,9 @@ export const DeleteIndexRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIndexRequest",
 }) as any as S.Schema<DeleteIndexRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteIndexResponse {
-  unknown: unknown;
-  string: unknown;
-}
+export type DeleteIndexResponse = unknown;
 export const DeleteIndexResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unknown: S.Unknown,
-    string: S.Unknown,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "DeleteIndexResponse",
 }) as any as S.Schema<DeleteIndexResponse>;
@@ -358,7 +369,7 @@ export const DeleteIndexMetadataIndexResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteIndexMetadataIndexResponse",
 }) as any as S.Schema<DeleteIndexMetadataIndexResponse>;
 
-export type IndexesGetByIdsRequestIdsList = string[];
+export type IndexesGetByIdsRequestIdsList = ReadonlyArray<string>;
 export const IndexesGetByIdsRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IndexesGetByIdsRequestIdsList>;
@@ -420,8 +431,7 @@ export const GetIndexRequest = /*@__PURE__*/ S.suspend(() =>
 export type IndexesGetResponseConfigMetric =
   | "cosine"
   | "euclidean"
-  | "dot-product"
-  | (string & {});
+  | "dot-product";
 export const IndexesGetResponseConfigMetric = /*@__PURE__*/ S.String;
 
 export interface IndexesGetResponseConfig {
@@ -506,10 +516,7 @@ export const InfoIndexResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InfoIndexResponse",
 }) as any as S.Schema<InfoIndexResponse>;
 
-export type IndexesInsertRequestUnparsableBehavior =
-  | "error"
-  | "discard"
-  | (string & {});
+export type IndexesInsertRequestUnparsableBehavior = "error" | "discard";
 export const IndexesInsertRequestUnparsableBehavior = /*@__PURE__*/ S.String;
 
 export interface InsertIndexRequest {
@@ -581,8 +588,7 @@ export const ListIndexesRequest = /*@__PURE__*/ S.suspend(() =>
 export type IndexesListResultItemConfigMetric =
   | "cosine"
   | "euclidean"
-  | "dot-product"
-  | (string & {});
+  | "dot-product";
 export const IndexesListResultItemConfigMetric = /*@__PURE__*/ S.String;
 
 export interface IndexesListResultItemConfig {
@@ -622,7 +628,7 @@ export const IndexesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexesListResultItem",
 }) as any as S.Schema<IndexesListResultItem>;
 
-export type IndexesListResultList = IndexesListResultItem[];
+export type IndexesListResultList = ReadonlyArray<IndexesListResultItem>;
 export const IndexesListResultList = /*@__PURE__*/ S.Array(
   IndexesListResultItem,
 ) as any as S.Schema<IndexesListResultList>;
@@ -667,8 +673,7 @@ export const ListIndexMetadataIndexesRequest = /*@__PURE__*/ S.suspend(() =>
 export type IndexesMetadataIndexListResponseMetadataIndexesItemIndexType =
   | "string"
   | "number"
-  | "boolean"
-  | (string & {});
+  | "boolean";
 export const IndexesMetadataIndexListResponseMetadataIndexesItemIndexType =
   /*@__PURE__*/ S.String;
 
@@ -691,7 +696,7 @@ export const IndexesMetadataIndexListResponseMetadataIndexesItem =
   }) as any as S.Schema<IndexesMetadataIndexListResponseMetadataIndexesItem>;
 
 export type IndexesMetadataIndexListResponseMetadataIndexesList =
-  IndexesMetadataIndexListResponseMetadataIndexesItem[];
+  ReadonlyArray<IndexesMetadataIndexListResponseMetadataIndexesItem>;
 export const IndexesMetadataIndexListResponseMetadataIndexesList =
   /*@__PURE__*/ S.Array(
     IndexesMetadataIndexListResponseMetadataIndexesItem,
@@ -754,7 +759,7 @@ export const IndexesListVectorsResponseVectorsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IndexesListVectorsResponseVectorsItem>;
 
 export type IndexesListVectorsResponseVectorsList =
-  IndexesListVectorsResponseVectorsItem[];
+  ReadonlyArray<IndexesListVectorsResponseVectorsItem>;
 export const IndexesListVectorsResponseVectorsList = /*@__PURE__*/ S.Array(
   IndexesListVectorsResponseVectorsItem,
 ) as any as S.Schema<IndexesListVectorsResponseVectorsList>;
@@ -787,16 +792,12 @@ export const ListVectorsIndexResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListVectorsIndexResponse",
 }) as any as S.Schema<ListVectorsIndexResponse>;
 
-export type IndexesQueryRequestVectorList = number[];
+export type IndexesQueryRequestVectorList = ReadonlyArray<number>;
 export const IndexesQueryRequestVectorList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IndexesQueryRequestVectorList>;
 
-export type IndexesQueryRequestReturnMetadata =
-  | "none"
-  | "indexed"
-  | "all"
-  | (string & {});
+export type IndexesQueryRequestReturnMetadata = "none" | "indexed" | "all";
 export const IndexesQueryRequestReturnMetadata = /*@__PURE__*/ S.String;
 
 export interface QueryIndexRequest {
@@ -836,7 +837,7 @@ export const QueryIndexRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryIndexRequest",
 }) as any as S.Schema<QueryIndexRequest>;
 
-export type IndexesQueryResponseMatchesItemValuesList = number[];
+export type IndexesQueryResponseMatchesItemValuesList = ReadonlyArray<number>;
 export const IndexesQueryResponseMatchesItemValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IndexesQueryResponseMatchesItemValuesList>;
@@ -862,7 +863,8 @@ export const IndexesQueryResponseMatchesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexesQueryResponseMatchesItem",
 }) as any as S.Schema<IndexesQueryResponseMatchesItem>;
 
-export type IndexesQueryResponseMatchesList = IndexesQueryResponseMatchesItem[];
+export type IndexesQueryResponseMatchesList =
+  ReadonlyArray<IndexesQueryResponseMatchesItem>;
 export const IndexesQueryResponseMatchesList = /*@__PURE__*/ S.Array(
   IndexesQueryResponseMatchesItem,
 ) as any as S.Schema<IndexesQueryResponseMatchesList>;
@@ -883,10 +885,7 @@ export const QueryIndexResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryIndexResponse",
 }) as any as S.Schema<QueryIndexResponse>;
 
-export type IndexesUpsertRequestUnparsableBehavior =
-  | "error"
-  | "discard"
-  | (string & {});
+export type IndexesUpsertRequestUnparsableBehavior = "error" | "discard";
 export const IndexesUpsertRequestUnparsableBehavior = /*@__PURE__*/ S.String;
 
 export interface UpsertIndexRequest {

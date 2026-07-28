@@ -45,8 +45,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -54,8 +53,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -93,8 +91,7 @@ export type RequestState =
   | "Escalated"
   | "Failed"
   | "InProgress"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const RequestState = /*@__PURE__*/ S.String;
 
 /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
@@ -131,7 +128,7 @@ export const AllocatedToSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Group Quota Limit allocated to subscriptions. */
 export type AllocatedQuotaToSubscriptionListValueList =
-  AllocatedToSubscription[];
+  ReadonlyArray<AllocatedToSubscription>;
 export const AllocatedQuotaToSubscriptionListValueList = /*@__PURE__*/ S.Array(
   AllocatedToSubscription,
 ) as any as S.Schema<AllocatedQuotaToSubscriptionListValueList>;
@@ -194,7 +191,8 @@ export const GroupQuotaLimit = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupQuotaLimit>;
 
 /** List of Group Quota Limit details. */
-export type GroupQuotaLimitListPropertiesValueList = GroupQuotaLimit[];
+export type GroupQuotaLimitListPropertiesValueList =
+  ReadonlyArray<GroupQuotaLimit>;
 export const GroupQuotaLimitListPropertiesValueList = /*@__PURE__*/ S.Array(
   GroupQuotaLimit,
 ) as any as S.Schema<GroupQuotaLimitListPropertiesValueList>;
@@ -413,7 +411,7 @@ export const SubmittedResourceRequestStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The SubmittedResourceRequestStatus items on this page */
 export type SubmittedResourceRequestStatusListValueList =
-  SubmittedResourceRequestStatus[];
+  ReadonlyArray<SubmittedResourceRequestStatus>;
 export const SubmittedResourceRequestStatusListValueList =
   /*@__PURE__*/ S.Array(
     SubmittedResourceRequestStatus,
@@ -435,6 +433,58 @@ export const SubmittedResourceRequestStatusList = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubmittedResourceRequestStatusList",
 }) as any as S.Schema<SubmittedResourceRequestStatusList>;
 
+/** Group Quota details. */
+export interface GroupQuotaDetailsInput {
+  /** The resource name, such as SKU name. */
+  resourceName?: string;
+  /** The current Group Quota Limit at the parentId level. */
+  limit?: number;
+  /** Any comment related to quota request. */
+  comment?: string;
+}
+export const GroupQuotaDetailsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceName: S.optional(S.String),
+    limit: S.optional(S.Number),
+    comment: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GroupQuotaDetailsInput",
+}) as any as S.Schema<GroupQuotaDetailsInput>;
+
+/** Group Quota limit. */
+export interface GroupQuotaLimitInput {
+  /** Group Quota properties for the specified resource. */
+  properties?: GroupQuotaDetailsInput;
+}
+export const GroupQuotaLimitInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(GroupQuotaDetailsInput),
+  }),
+).annotate({
+  identifier: "GroupQuotaLimitInput",
+}) as any as S.Schema<GroupQuotaLimitInput>;
+
+/** List of Group Quota Limit details. */
+export type GroupQuotaLimitListPropertiesInputValueList =
+  ReadonlyArray<GroupQuotaLimitInput>;
+export const GroupQuotaLimitListPropertiesInputValueList =
+  /*@__PURE__*/ S.Array(
+    GroupQuotaLimitInput,
+  ) as any as S.Schema<GroupQuotaLimitListPropertiesInputValueList>;
+
+export interface GroupQuotaLimitListPropertiesInput {
+  /** List of Group Quota Limit details. */
+  value?: GroupQuotaLimitListPropertiesInputValueList;
+}
+export const GroupQuotaLimitListPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(GroupQuotaLimitListPropertiesInputValueList),
+  }),
+).annotate({
+  identifier: "GroupQuotaLimitListPropertiesInput",
+}) as any as S.Schema<GroupQuotaLimitListPropertiesInput>;
+
 export interface GroupQuotaLimitsRequestUpdateRequest {
   /** The management group ID. */
   managementGroupId: string;
@@ -444,7 +494,7 @@ export interface GroupQuotaLimitsRequestUpdateRequest {
   resourceProviderName: string;
   /** The name of the Azure region. */
   location: string;
-  body?: unknown;
+  properties?: GroupQuotaLimitListPropertiesInput;
 }
 export const GroupQuotaLimitsRequestUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -453,7 +503,7 @@ export const GroupQuotaLimitsRequestUpdateRequest = /*@__PURE__*/ S.suspend(
       groupQuotaName: S.String.pipe(T.Label()),
       resourceProviderName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(GroupQuotaLimitListPropertiesInput),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -490,6 +540,23 @@ export const GroupQuotaLimitsRequestUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "GroupQuotaLimitsRequestUpdateResponse",
 }) as any as S.Schema<GroupQuotaLimitsRequestUpdateResponse>;
 
+/** Enforcement status. */
+export type EnforcementState = "Enabled" | "Disabled" | "NotAvailable";
+export const EnforcementState = /*@__PURE__*/ S.String;
+
+export interface GroupQuotasEnforcementStatusPropertiesInput {
+  /** Is the GroupQuota Enforcement enabled for the Azure region. */
+  enforcementEnabled?: EnforcementState;
+}
+export const GroupQuotasEnforcementStatusPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enforcementEnabled: S.optional(EnforcementState),
+    }),
+  ).annotate({
+    identifier: "GroupQuotasEnforcementStatusPropertiesInput",
+  }) as any as S.Schema<GroupQuotasEnforcementStatusPropertiesInput>;
+
 export interface GroupQuotaLocationSettingsCreateOrUpdateRequest {
   /** The management group ID. */
   managementGroupId: string;
@@ -499,7 +566,7 @@ export interface GroupQuotaLocationSettingsCreateOrUpdateRequest {
   resourceProviderName: string;
   /** The name of the Azure region. */
   location: string;
-  body?: unknown;
+  properties?: GroupQuotasEnforcementStatusPropertiesInput;
 }
 export const GroupQuotaLocationSettingsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -508,7 +575,7 @@ export const GroupQuotaLocationSettingsCreateOrUpdateRequest =
       groupQuotaName: S.String.pipe(T.Label()),
       resourceProviderName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(GroupQuotasEnforcementStatusPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -520,14 +587,6 @@ export const GroupQuotaLocationSettingsCreateOrUpdateRequest =
   ).annotate({
     identifier: "GroupQuotaLocationSettingsCreateOrUpdateRequest",
   }) as any as S.Schema<GroupQuotaLocationSettingsCreateOrUpdateRequest>;
-
-/** Enforcement status. */
-export type EnforcementState =
-  | "Enabled"
-  | "Disabled"
-  | "NotAvailable"
-  | (string & {});
-export const EnforcementState = /*@__PURE__*/ S.String;
 
 export interface GroupQuotasEnforcementStatusProperties {
   /** Is the GroupQuota Enforcement enabled for the Azure region. */
@@ -637,7 +696,7 @@ export interface GroupQuotaLocationSettingsUpdateRequest {
   resourceProviderName: string;
   /** The name of the Azure region. */
   location: string;
-  body?: unknown;
+  properties?: GroupQuotasEnforcementStatusPropertiesInput;
 }
 export const GroupQuotaLocationSettingsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -646,7 +705,7 @@ export const GroupQuotaLocationSettingsUpdateRequest = /*@__PURE__*/ S.suspend(
       groupQuotaName: S.String.pipe(T.Label()),
       resourceProviderName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(GroupQuotasEnforcementStatusPropertiesInput),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -683,18 +742,32 @@ export const GroupQuotaLocationSettingsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "GroupQuotaLocationSettingsUpdateResponse",
 }) as any as S.Schema<GroupQuotaLocationSettingsUpdateResponse>;
 
+/** Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified. */
+export interface GroupQuotasEntityBaseInput {
+  /** Display name of the GroupQuota entity. */
+  displayName?: string;
+}
+export const GroupQuotasEntityBaseInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GroupQuotasEntityBaseInput",
+}) as any as S.Schema<GroupQuotasEntityBaseInput>;
+
 export interface GroupQuotasCreateOrUpdateRequest {
   /** The management group ID. */
   managementGroupId: string;
   /** The GroupQuota name. The name should be unique for the provided context tenantId/MgId. */
   groupQuotaName: string;
-  body?: unknown;
+  /** Properties */
+  properties?: GroupQuotasEntityBaseInput;
 }
 export const GroupQuotasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(GroupQuotasEntityBaseInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -708,7 +781,7 @@ export const GroupQuotasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupQuotasCreateOrUpdateRequest>;
 
 /** Type of the group. */
-export type GroupType = "AllocationGroup" | "EnforcedGroup" | (string & {});
+export type GroupType = "AllocationGroup" | "EnforcedGroup";
 export const GroupType = /*@__PURE__*/ S.String;
 
 /** Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified. */
@@ -874,7 +947,7 @@ export const GroupQuotasEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupQuotasEntity>;
 
 /** The GroupQuotasEntity items on this page */
-export type GroupQuotaListValueList = GroupQuotasEntity[];
+export type GroupQuotaListValueList = ReadonlyArray<GroupQuotasEntity>;
 export const GroupQuotaListValueList = /*@__PURE__*/ S.Array(
   GroupQuotasEntity,
 ) as any as S.Schema<GroupQuotaListValueList>;
@@ -978,7 +1051,7 @@ export const SubscriptionQuotaAllocations = /*@__PURE__*/ S.suspend(() =>
 
 /** Subscription quota list. */
 export type SubscriptionQuotaAllocationsListPropertiesValueList =
-  SubscriptionQuotaAllocations[];
+  ReadonlyArray<SubscriptionQuotaAllocations>;
 export const SubscriptionQuotaAllocationsListPropertiesValueList =
   /*@__PURE__*/ S.Array(
     SubscriptionQuotaAllocations,
@@ -1211,7 +1284,7 @@ export const QuotaAllocationRequestStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The QuotaAllocationRequestStatus items on this page */
 export type QuotaAllocationRequestStatusListValueList =
-  QuotaAllocationRequestStatus[];
+  ReadonlyArray<QuotaAllocationRequestStatus>;
 export const QuotaAllocationRequestStatusListValueList = /*@__PURE__*/ S.Array(
   QuotaAllocationRequestStatus,
 ) as any as S.Schema<QuotaAllocationRequestStatusListValueList>;
@@ -1232,6 +1305,58 @@ export const QuotaAllocationRequestStatusList = /*@__PURE__*/ S.suspend(() =>
   identifier: "QuotaAllocationRequestStatusList",
 }) as any as S.Schema<QuotaAllocationRequestStatusList>;
 
+/** Subscription Quota details. */
+export interface SubscriptionQuotaDetailsInput {
+  /** The resource name, such as SKU name. */
+  resourceName?: string;
+  /** The total quota limit for the subscription. */
+  limit?: number;
+}
+export const SubscriptionQuotaDetailsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceName: S.optional(S.String),
+    limit: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SubscriptionQuotaDetailsInput",
+}) as any as S.Schema<SubscriptionQuotaDetailsInput>;
+
+/** Quota allocated to a subscription for the specific Resource Provider, Location, ResourceName. This will include the GroupQuota and total quota allocated to the subscription. Only the Group quota allocated to the subscription can be allocated back to the MG Group Quota. */
+export interface SubscriptionQuotaAllocationsInput {
+  /** Quota properties for the specified resource. */
+  properties?: SubscriptionQuotaDetailsInput;
+}
+export const SubscriptionQuotaAllocationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(SubscriptionQuotaDetailsInput),
+  }),
+).annotate({
+  identifier: "SubscriptionQuotaAllocationsInput",
+}) as any as S.Schema<SubscriptionQuotaAllocationsInput>;
+
+/** Subscription quota list. */
+export type SubscriptionQuotaAllocationsListPropertiesInputValueList =
+  ReadonlyArray<SubscriptionQuotaAllocationsInput>;
+export const SubscriptionQuotaAllocationsListPropertiesInputValueList =
+  /*@__PURE__*/ S.Array(
+    SubscriptionQuotaAllocationsInput,
+  ) as any as S.Schema<SubscriptionQuotaAllocationsListPropertiesInputValueList>;
+
+export interface SubscriptionQuotaAllocationsListPropertiesInput {
+  /** Subscription quota list. */
+  value?: SubscriptionQuotaAllocationsListPropertiesInputValueList;
+}
+export const SubscriptionQuotaAllocationsListPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.optional(
+        SubscriptionQuotaAllocationsListPropertiesInputValueList,
+      ),
+    }),
+  ).annotate({
+    identifier: "SubscriptionQuotaAllocationsListPropertiesInput",
+  }) as any as S.Schema<SubscriptionQuotaAllocationsListPropertiesInput>;
+
 export interface GroupQuotaSubscriptionAllocationRequestUpdateRequest {
   /** The management group ID. */
   managementGroupId: string;
@@ -1243,7 +1368,7 @@ export interface GroupQuotaSubscriptionAllocationRequestUpdateRequest {
   resourceProviderName: string;
   /** The name of the Azure region. */
   location: string;
-  body: unknown;
+  properties?: SubscriptionQuotaAllocationsListPropertiesInput;
 }
 export const GroupQuotaSubscriptionAllocationRequestUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1253,7 +1378,7 @@ export const GroupQuotaSubscriptionAllocationRequestUpdateRequest =
       groupQuotaName: S.String.pipe(T.Label()),
       resourceProviderName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SubscriptionQuotaAllocationsListPropertiesInput),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1408,7 +1533,7 @@ export const GroupQuotaSubscriptionRequestStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The GroupQuotaSubscriptionRequestStatus items on this page */
 export type GroupQuotaSubscriptionRequestStatusListValueList =
-  GroupQuotaSubscriptionRequestStatus[];
+  ReadonlyArray<GroupQuotaSubscriptionRequestStatus>;
 export const GroupQuotaSubscriptionRequestStatusListValueList =
   /*@__PURE__*/ S.Array(
     GroupQuotaSubscriptionRequestStatus,
@@ -1624,7 +1749,8 @@ export const GroupQuotaSubscriptionId = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupQuotaSubscriptionId>;
 
 /** The GroupQuotaSubscriptionId items on this page */
-export type GroupQuotaSubscriptionIdListValueList = GroupQuotaSubscriptionId[];
+export type GroupQuotaSubscriptionIdListValueList =
+  ReadonlyArray<GroupQuotaSubscriptionId>;
 export const GroupQuotaSubscriptionIdListValueList = /*@__PURE__*/ S.Array(
   GroupQuotaSubscriptionId,
 ) as any as S.Schema<GroupQuotaSubscriptionIdListValueList>;
@@ -1695,18 +1821,32 @@ export const GroupQuotaSubscriptionsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "GroupQuotaSubscriptionsUpdateResponse",
 }) as any as S.Schema<GroupQuotaSubscriptionsUpdateResponse>;
 
+/** Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified. */
+export interface GroupQuotasEntityBasePatchInput {
+  /** Display name of the GroupQuota entity. */
+  displayName?: string;
+}
+export const GroupQuotasEntityBasePatchInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GroupQuotasEntityBasePatchInput",
+}) as any as S.Schema<GroupQuotasEntityBasePatchInput>;
+
 export interface GroupQuotasUpdateRequest {
   /** The management group ID. */
   managementGroupId: string;
   /** The GroupQuota name. The name should be unique for the provided context tenantId/MgId. */
   groupQuotaName: string;
-  body?: unknown;
+  /** Properties */
+  properties?: GroupQuotasEntityBasePatchInput;
 }
 export const GroupQuotasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(GroupQuotasEntityBasePatchInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1833,7 +1973,7 @@ export const ResourceUsages = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceUsages" }) as any as S.Schema<ResourceUsages>;
 
 /** The ResourceUsages items on this page */
-export type ResourceUsageListValueList = ResourceUsages[];
+export type ResourceUsageListValueList = ReadonlyArray<ResourceUsages>;
 export const ResourceUsageListValueList = /*@__PURE__*/ S.Array(
   ResourceUsages,
 ) as any as S.Schema<ResourceUsageListValueList>;
@@ -1854,32 +1994,8 @@ export const ResourceUsageList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceUsageList",
 }) as any as S.Schema<ResourceUsageList>;
 
-export interface QuotaCreateOrUpdateRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** Resource name for a given resource provider. For example: - SKU name for Microsoft.Compute - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices For Microsoft.Network PublicIPAddresses. */
-  resourceName: string;
-  body: unknown;
-}
-export const QuotaCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}",
-      code: 200,
-      apiVersion: "2025-09-01",
-    }),
-  ),
-).annotate({
-  identifier: "QuotaCreateOrUpdateRequest",
-}) as any as S.Schema<QuotaCreateOrUpdateRequest>;
-
 /** The limit object type. */
-export type LimitType = "LimitValue" | (string & {});
+export type LimitType = "LimitValue";
 export const LimitType = /*@__PURE__*/ S.String;
 
 /** LimitJson abstract class. */
@@ -1894,6 +2010,66 @@ export const LimitJsonObject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LimitJsonObject",
 }) as any as S.Schema<LimitJsonObject>;
+
+/** Name of the resource provided by the resource Provider. When requesting quota, use this property name. */
+export interface ResourceNameInput {
+  /** Resource name. */
+  value?: string;
+}
+export const ResourceNameInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceNameInput",
+}) as any as S.Schema<ResourceNameInput>;
+
+/** Quota properties for the specified resource. */
+export interface QuotaPropertiesInput {
+  /** Resource quota limit properties. */
+  limit?: LimitJsonObject;
+  /** Resource name provided by the resource provider. Use this property name when requesting quota. */
+  name?: ResourceNameInput;
+  /** The name of the resource type. Optional field. */
+  resourceType?: string;
+  /** Additional properties for the specific resource provider. */
+  properties?: unknown;
+}
+export const QuotaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    limit: S.optional(LimitJsonObject),
+    name: S.optional(ResourceNameInput),
+    resourceType: S.optional(S.String),
+    properties: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "QuotaPropertiesInput",
+}) as any as S.Schema<QuotaPropertiesInput>;
+
+export interface QuotaCreateOrUpdateRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** Resource name for a given resource provider. For example: - SKU name for Microsoft.Compute - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices For Microsoft.Network PublicIPAddresses. */
+  resourceName: string;
+  /** Quota properties for the specified resource, based on the API called, Quotas or Usages. */
+  properties?: QuotaPropertiesInput;
+}
+export const QuotaCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+    properties: S.optional(QuotaPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}",
+      code: 200,
+      apiVersion: "2025-09-01",
+    }),
+  ),
+).annotate({
+  identifier: "QuotaCreateOrUpdateRequest",
+}) as any as S.Schema<QuotaCreateOrUpdateRequest>;
 
 /** Name of the resource provided by the resource Provider. When requesting quota, use this property name. */
 export interface ResourceName {
@@ -2055,7 +2231,7 @@ export const CurrentQuotaLimitBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CurrentQuotaLimitBase>;
 
 /** The CurrentQuotaLimitBase items on this page */
-export type QuotaLimitsValueList = CurrentQuotaLimitBase[];
+export type QuotaLimitsValueList = ReadonlyArray<CurrentQuotaLimitBase>;
 export const QuotaLimitsValueList = /*@__PURE__*/ S.Array(
   CurrentQuotaLimitBase,
 ) as any as S.Schema<QuotaLimitsValueList>;
@@ -2125,7 +2301,7 @@ export const OperationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResponse>;
 
 /** The list of connected cluster API operations. */
-export type OperationListValueList = OperationResponse[];
+export type OperationListValueList = ReadonlyArray<OperationResponse>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationResponse,
 ) as any as S.Schema<OperationListValueList>;
@@ -2172,8 +2348,7 @@ export type QuotaRequestState =
   | "Invalid"
   | "Succeeded"
   | "Failed"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const QuotaRequestState = /*@__PURE__*/ S.String;
 
 /** Error details. */
@@ -2222,7 +2397,7 @@ export const SubRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubRequest" }) as any as S.Schema<SubRequest>;
 
 /** Quota request details. */
-export type QuotaRequestPropertiesValueList = SubRequest[];
+export type QuotaRequestPropertiesValueList = ReadonlyArray<SubRequest>;
 export const QuotaRequestPropertiesValueList = /*@__PURE__*/ S.Array(
   SubRequest,
 ) as any as S.Schema<QuotaRequestPropertiesValueList>;
@@ -2330,7 +2505,8 @@ export const QuotaRequestDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuotaRequestDetails>;
 
 /** The QuotaRequestDetails items on this page */
-export type QuotaRequestDetailsListValueList = QuotaRequestDetails[];
+export type QuotaRequestDetailsListValueList =
+  ReadonlyArray<QuotaRequestDetails>;
 export const QuotaRequestDetailsListValueList = /*@__PURE__*/ S.Array(
   QuotaRequestDetails,
 ) as any as S.Schema<QuotaRequestDetailsListValueList>;
@@ -2356,13 +2532,14 @@ export interface QuotaUpdateRequest {
   scope: string;
   /** Resource name for a given resource provider. For example: - SKU name for Microsoft.Compute - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices For Microsoft.Network PublicIPAddresses. */
   resourceName: string;
-  body: unknown;
+  /** Quota properties for the specified resource, based on the API called, Quotas or Usages. */
+  properties?: QuotaPropertiesInput;
 }
 export const QuotaUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(QuotaPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2422,7 +2599,7 @@ export const UsagesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsagesGetRequest>;
 
 /** The quota or usages limit types. */
-export type UsagesTypes = "Individual" | "Combined" | (string & {});
+export type UsagesTypes = "Individual" | "Combined";
 export const UsagesTypes = /*@__PURE__*/ S.String;
 
 /** The resource usages value. */
@@ -2539,7 +2716,7 @@ export const CurrentUsagesBase = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CurrentUsagesBase>;
 
 /** The CurrentUsagesBase items on this page */
-export type UsagesLimitsValueList = CurrentUsagesBase[];
+export type UsagesLimitsValueList = ReadonlyArray<CurrentUsagesBase>;
 export const UsagesLimitsValueList = /*@__PURE__*/ S.Array(
   CurrentUsagesBase,
 ) as any as S.Schema<UsagesLimitsValueList>;

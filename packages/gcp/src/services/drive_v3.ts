@@ -100,8 +100,7 @@ export const ApproveApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ApprovalFileContentChangeBehaviorEnum =
   | "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED"
   | "RESET_APPROVAL"
-  | "NO_APPROVAL_ACTION"
-  | (string & {});
+  | "NO_APPROVAL_ACTION";
 export const ApprovalFileContentChangeBehaviorEnum = /*@__PURE__*/ S.String;
 
 export type ApprovalStatusEnum =
@@ -109,8 +108,7 @@ export type ApprovalStatusEnum =
   | "IN_PROGRESS"
   | "APPROVED"
   | "CANCELLED"
-  | "DECLINED"
-  | (string & {});
+  | "DECLINED";
 export const ApprovalStatusEnum = /*@__PURE__*/ S.String;
 
 /** Information about a Drive user. */
@@ -143,8 +141,7 @@ export type ReviewerResponseResponseEnum =
   | "RESPONSE_UNSPECIFIED"
   | "NO_RESPONSE"
   | "APPROVED"
-  | "DECLINED"
-  | (string & {});
+  | "DECLINED";
 export const ReviewerResponseResponseEnum = /*@__PURE__*/ S.String;
 
 /** A response on an approval made by a specific reviewer. */
@@ -166,7 +163,7 @@ export const ReviewerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReviewerResponse",
 }) as any as S.Schema<ReviewerResponse>;
 
-export type ReviewerResponseList = ReviewerResponse[];
+export type ReviewerResponseList = ReadonlyArray<ReviewerResponse>;
 export const ReviewerResponseList = /*@__PURE__*/ S.Array(
   ReviewerResponse,
 ) as any as S.Schema<ReviewerResponseList>;
@@ -294,7 +291,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -345,7 +342,7 @@ export const ContentRestriction = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContentRestriction",
 }) as any as S.Schema<ContentRestriction>;
 
-export type ContentRestrictionList = ContentRestriction[];
+export type ContentRestrictionList = ReadonlyArray<ContentRestriction>;
 export const ContentRestrictionList = /*@__PURE__*/ S.Array(
   ContentRestriction,
 ) as any as S.Schema<ContentRestrictionList>;
@@ -380,7 +377,7 @@ export const FileContentHints = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileContentHints",
 }) as any as S.Schema<FileContentHints>;
 
-export type UserList = User[];
+export type UserList = ReadonlyArray<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -440,7 +437,7 @@ export const PermissionTeamDrivePermissionDetailsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PermissionTeamDrivePermissionDetailsItem>;
 
 export type PermissionTeamDrivePermissionDetailsItemList =
-  PermissionTeamDrivePermissionDetailsItem[];
+  ReadonlyArray<PermissionTeamDrivePermissionDetailsItem>;
 export const PermissionTeamDrivePermissionDetailsItemList =
   /*@__PURE__*/ S.Array(
     PermissionTeamDrivePermissionDetailsItem,
@@ -468,7 +465,7 @@ export const PermissionPermissionDetailsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PermissionPermissionDetailsItem>;
 
 export type PermissionPermissionDetailsItemList =
-  PermissionPermissionDetailsItem[];
+  ReadonlyArray<PermissionPermissionDetailsItem>;
 export const PermissionPermissionDetailsItemList = /*@__PURE__*/ S.Array(
   PermissionPermissionDetailsItem,
 ) as any as S.Schema<PermissionPermissionDetailsItemList>;
@@ -531,7 +528,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
-export type PermissionList_ = Permission[];
+export type PermissionList_ = ReadonlyArray<Permission>;
 export const PermissionList_ = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<PermissionList_>;
@@ -594,7 +591,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
-export type LabelList_ = Label[];
+export type LabelList_ = ReadonlyArray<Label>;
 export const LabelList_ = /*@__PURE__*/ S.Array(
   Label,
 ) as any as S.Schema<LabelList_>;
@@ -1218,7 +1215,7 @@ export const Reply = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Reply" }) as any as S.Schema<Reply>;
 
-export type ReplyList_ = Reply[];
+export type ReplyList_ = ReadonlyArray<Reply>;
 export const ReplyList_ = /*@__PURE__*/ S.Array(
   Reply,
 ) as any as S.Schema<ReplyList_>;
@@ -2084,7 +2081,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2303,7 +2300,8 @@ export const AboutTeamDriveThemesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AboutTeamDriveThemesItem",
 }) as any as S.Schema<AboutTeamDriveThemesItem>;
 
-export type AboutTeamDriveThemesItemList = AboutTeamDriveThemesItem[];
+export type AboutTeamDriveThemesItemList =
+  ReadonlyArray<AboutTeamDriveThemesItem>;
 export const AboutTeamDriveThemesItemList = /*@__PURE__*/ S.Array(
   AboutTeamDriveThemesItem,
 ) as any as S.Schema<AboutTeamDriveThemesItemList>;
@@ -2332,7 +2330,7 @@ export const AboutDriveThemesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AboutDriveThemesItem",
 }) as any as S.Schema<AboutDriveThemesItem>;
 
-export type AboutDriveThemesItemList = AboutDriveThemesItem[];
+export type AboutDriveThemesItemList = ReadonlyArray<AboutDriveThemesItem>;
 export const AboutDriveThemesItemList = /*@__PURE__*/ S.Array(
   AboutDriveThemesItem,
 ) as any as S.Schema<AboutDriveThemesItemList>;
@@ -2442,7 +2440,8 @@ export const AccessProposalRoleAndView = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessProposalRoleAndView",
 }) as any as S.Schema<AccessProposalRoleAndView>;
 
-export type AccessProposalRoleAndViewList = AccessProposalRoleAndView[];
+export type AccessProposalRoleAndViewList =
+  ReadonlyArray<AccessProposalRoleAndView>;
 export const AccessProposalRoleAndViewList = /*@__PURE__*/ S.Array(
   AccessProposalRoleAndView,
 ) as any as S.Schema<AccessProposalRoleAndViewList>;
@@ -2529,7 +2528,7 @@ export const AppIcons = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AppIcons" }) as any as S.Schema<AppIcons>;
 
-export type AppIconsList = AppIcons[];
+export type AppIconsList = ReadonlyArray<AppIcons>;
 export const AppIconsList = /*@__PURE__*/ S.Array(
   AppIcons,
 ) as any as S.Schema<AppIconsList>;
@@ -2944,7 +2943,7 @@ export const ListAccessproposalsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccessproposalsRequest",
 }) as any as S.Schema<ListAccessproposalsRequest>;
 
-export type AccessProposalList = AccessProposal[];
+export type AccessProposalList = ReadonlyArray<AccessProposal>;
 export const AccessProposalList = /*@__PURE__*/ S.Array(
   AccessProposal,
 ) as any as S.Schema<AccessProposalList>;
@@ -2989,7 +2988,7 @@ export const ListApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListApprovalsRequest",
 }) as any as S.Schema<ListApprovalsRequest>;
 
-export type ApprovalList_ = Approval[];
+export type ApprovalList_ = ReadonlyArray<Approval>;
 export const ApprovalList_ = /*@__PURE__*/ S.Array(
   Approval,
 ) as any as S.Schema<ApprovalList_>;
@@ -3035,7 +3034,7 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsRequest",
 }) as any as S.Schema<ListAppsRequest>;
 
-export type AppList_ = App[];
+export type AppList_ = ReadonlyArray<App>;
 export const AppList_ = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList_>;
 
 /** A list of third-party applications which the user has installed or given access to Google Drive. */
@@ -3156,7 +3155,7 @@ export const Change = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
 
-export type ChangeList_ = Change[];
+export type ChangeList_ = ReadonlyArray<Change>;
 export const ChangeList_ = /*@__PURE__*/ S.Array(
   Change,
 ) as any as S.Schema<ChangeList_>;
@@ -3211,7 +3210,7 @@ export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCommentsRequest",
 }) as any as S.Schema<ListCommentsRequest>;
 
-export type CommentList_ = Comment[];
+export type CommentList_ = ReadonlyArray<Comment>;
 export const CommentList_ = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<CommentList_>;
@@ -3260,7 +3259,7 @@ export const ListDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDrivesRequest",
 }) as any as S.Schema<ListDrivesRequest>;
 
-export type DriveList_ = Drive[];
+export type DriveList_ = ReadonlyArray<Drive>;
 export const DriveList_ = /*@__PURE__*/ S.Array(
   Drive,
 ) as any as S.Schema<DriveList_>;
@@ -3282,7 +3281,7 @@ export const DriveList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DriveList" }) as any as S.Schema<DriveList>;
 
-export type ListFilesCorpusEnum = "domain" | "user" | (string & {});
+export type ListFilesCorpusEnum = "domain" | "user";
 export const ListFilesCorpusEnum = /*@__PURE__*/ S.String;
 
 export interface ListFilesRequest {
@@ -3345,7 +3344,7 @@ export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFilesRequest",
 }) as any as S.Schema<ListFilesRequest>;
 
-export type FileList_ = File[];
+export type FileList_ = ReadonlyArray<File>;
 export const FileList_ = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<FileList_>;
@@ -3535,7 +3534,7 @@ export const ListRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRevisionsRequest",
 }) as any as S.Schema<ListRevisionsRequest>;
 
-export type RevisionList_ = Revision[];
+export type RevisionList_ = ReadonlyArray<Revision>;
 export const RevisionList_ = /*@__PURE__*/ S.Array(
   Revision,
 ) as any as S.Schema<RevisionList_>;
@@ -3584,7 +3583,7 @@ export const ListTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTeamdrivesRequest",
 }) as any as S.Schema<ListTeamdrivesRequest>;
 
-export type TeamDriveList_ = TeamDrive[];
+export type TeamDriveList_ = ReadonlyArray<TeamDrive>;
 export const TeamDriveList_ = /*@__PURE__*/ S.Array(
   TeamDrive,
 ) as any as S.Schema<TeamDriveList_>;
@@ -3640,7 +3639,7 @@ export const LabelFieldModification = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelFieldModification",
 }) as any as S.Schema<LabelFieldModification>;
 
-export type LabelFieldModificationList = LabelFieldModification[];
+export type LabelFieldModificationList = ReadonlyArray<LabelFieldModification>;
 export const LabelFieldModificationList = /*@__PURE__*/ S.Array(
   LabelFieldModification,
 ) as any as S.Schema<LabelFieldModificationList>;
@@ -3667,7 +3666,7 @@ export const LabelModification = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelModification",
 }) as any as S.Schema<LabelModification>;
 
-export type LabelModificationList = LabelModification[];
+export type LabelModificationList = ReadonlyArray<LabelModification>;
 export const LabelModificationList = /*@__PURE__*/ S.Array(
   LabelModification,
 ) as any as S.Schema<LabelModificationList>;
@@ -3736,7 +3735,7 @@ export const AddReviewer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AddReviewer" }) as any as S.Schema<AddReviewer>;
 
-export type AddReviewerList = AddReviewer[];
+export type AddReviewerList = ReadonlyArray<AddReviewer>;
 export const AddReviewerList = /*@__PURE__*/ S.Array(
   AddReviewer,
 ) as any as S.Schema<AddReviewerList>;
@@ -3757,7 +3756,7 @@ export const ReplaceReviewer = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplaceReviewer",
 }) as any as S.Schema<ReplaceReviewer>;
 
-export type ReplaceReviewerList = ReplaceReviewer[];
+export type ReplaceReviewerList = ReadonlyArray<ReplaceReviewer>;
 export const ReplaceReviewerList = /*@__PURE__*/ S.Array(
   ReplaceReviewer,
 ) as any as S.Schema<ReplaceReviewerList>;
@@ -3808,8 +3807,7 @@ export const ReassignApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ResolveAccessProposalRequestActionEnum =
   | "ACTION_UNSPECIFIED"
   | "ACCEPT"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const ResolveAccessProposalRequestActionEnum = /*@__PURE__*/ S.String;
 
 /** Request message for resolving an AccessProposal on a file. */
@@ -3868,8 +3866,7 @@ export const ResolveAccessproposalsResponse = /*@__PURE__*/ S.suspend(() =>
 export type StartApprovalRequestFileContentChangeBehaviorEnum =
   | "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED"
   | "RESET_APPROVAL"
-  | "NO_APPROVAL_ACTION"
-  | (string & {});
+  | "NO_APPROVAL_ACTION";
 export const StartApprovalRequestFileContentChangeBehaviorEnum =
   /*@__PURE__*/ S.String;
 

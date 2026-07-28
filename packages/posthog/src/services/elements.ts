@@ -35,7 +35,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type ElementsCreateRequestAttrClassList = string[];
+export type ElementsCreateRequestAttrClassList = ReadonlyArray<string>;
 export const ElementsCreateRequestAttrClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ElementsCreateRequestAttrClassList>;
@@ -76,7 +76,7 @@ export const ElementsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElementsCreateRequest",
 }) as any as S.Schema<ElementsCreateRequest>;
 
-export type ElementAttrClassList = string[];
+export type ElementAttrClassList = ReadonlyArray<string>;
 export const ElementAttrClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ElementAttrClassList>;
@@ -158,7 +158,7 @@ export const ElementsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElementsListRequest",
 }) as any as S.Schema<ElementsListRequest>;
 
-export type PaginatedElementListResultsList = Element[];
+export type PaginatedElementListResultsList = ReadonlyArray<Element>;
 export const PaginatedElementListResultsList = /*@__PURE__*/ S.Array(
   Element,
 ) as any as S.Schema<PaginatedElementListResultsList>;
@@ -180,7 +180,7 @@ export const PaginatedElementList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedElementList",
 }) as any as S.Schema<PaginatedElementList>;
 
-export type ElementsPartialUpdateRequestAttrClassList = string[];
+export type ElementsPartialUpdateRequestAttrClassList = ReadonlyArray<string>;
 export const ElementsPartialUpdateRequestAttrClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ElementsPartialUpdateRequestAttrClassList>;
@@ -245,7 +245,7 @@ export const ElementsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElementsRetrieveRequest",
 }) as any as S.Schema<ElementsRetrieveRequest>;
 
-export type ElementsStatsRetrieveRequestIncludeList = string[];
+export type ElementsStatsRetrieveRequestIncludeList = ReadonlyArray<string>;
 export const ElementsStatsRetrieveRequestIncludeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ElementsStatsRetrieveRequestIncludeList>;
@@ -298,7 +298,7 @@ export const ElementsStatsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElementsStatsRetrieveRequest>;
 
 /** Parsed elements of the chain, clicked element first */
-export type ElementStatsElementsList = Element[];
+export type ElementStatsElementsList = ReadonlyArray<Element>;
 export const ElementStatsElementsList = /*@__PURE__*/ S.Array(
   Element,
 ) as any as S.Schema<ElementStatsElementsList>;
@@ -323,7 +323,7 @@ export const ElementStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ElementStats" }) as any as S.Schema<ElementStats>;
 
 /** Element chains with event counts, ordered by count */
-export type ElementStatsResponseResultsList = ElementStats[];
+export type ElementStatsResponseResultsList = ReadonlyArray<ElementStats>;
 export const ElementStatsResponseResultsList = /*@__PURE__*/ S.Array(
   ElementStats,
 ) as any as S.Schema<ElementStatsResponseResultsList>;
@@ -346,7 +346,7 @@ export const ElementStatsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElementStatsResponse",
 }) as any as S.Schema<ElementStatsResponse>;
 
-export type ElementsUpdateRequestAttrClassList = string[];
+export type ElementsUpdateRequestAttrClassList = ReadonlyArray<string>;
 export const ElementsUpdateRequestAttrClassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ElementsUpdateRequestAttrClassList>;
@@ -424,7 +424,7 @@ export const ElementValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ElementValue" }) as any as S.Schema<ElementValue>;
 
-export type ElementsValuesListResponseBodyList = ElementValue[];
+export type ElementsValuesListResponseBodyList = ReadonlyArray<ElementValue>;
 export const ElementsValuesListResponseBodyList = /*@__PURE__*/ S.Array(
   ElementValue,
 ) as any as S.Schema<ElementsValuesListResponseBodyList>;

@@ -315,16 +315,61 @@
             "smithy.api#documentation": "The name of the Time Series Insights access policy associated with the specified environment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.timeseriesinsights#AccessPolicyMutableProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.timeseriesinsights#AccessPolicyMutableProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An description of the access policy."
+          }
+        },
+        "roles": {
+          "target": "com.azure.timeseriesinsights#AccessPolicyMutablePropertiesRolesList",
+          "traits": {
+            "smithy.api#documentation": "The list of roles the principal is assigned on the environment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object that represents a set of mutable access policy resource properties."
+      }
+    },
+    "com.azure.timeseriesinsights#AccessPolicyMutablePropertiesRolesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.timeseriesinsights#AccessPolicyMutablePropertiesRolesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of roles the principal is assigned on the environment."
+      }
+    },
+    "com.azure.timeseriesinsights#AccessPolicyMutablePropertiesRolesItem": {
+      "type": "enum",
+      "members": {
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reader"
+          }
+        },
+        "CONTRIBUTOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Contributor"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A role defining the data plane operations that a principal can perform on a Time Series Insights client."
       }
     },
     "com.azure.timeseriesinsights#AccessPoliciesCreateOrUpdate": {
@@ -410,10 +455,9 @@
             "smithy.api#documentation": "Name of the access policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.timeseriesinsights#AccessPolicyResourceProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
             "smithy.api#required": {}
           }
         }
@@ -963,16 +1007,27 @@
             "smithy.api#documentation": "The name of the Time Series Insights reference data set associated with the specified environment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Key-value pairs of additional properties for the reference data set."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.timeseriesinsights#ReferenceDataSetsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional properties for the reference data set."
       }
     },
     "com.azure.timeseriesinsights#ReferenceDataSetsCreateOrUpdate": {
@@ -1083,16 +1138,90 @@
             "smithy.api#documentation": "Name of the reference data set."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs of additional properties for the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetCreationProperties",
+          "traits": {
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.timeseriesinsights#ReferenceDataSetCreationProperties": {
+      "type": "structure",
+      "members": {
+        "keyProperties": {
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetCreationPropertiesKeyPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "The list of key properties for the reference data set.",
+            "smithy.api#required": {}
+          }
+        },
+        "dataStringComparisonBehavior": {
+          "target": "com.azure.timeseriesinsights#ReferenceDataSetCreationPropertiesDataStringComparisonBehavior",
+          "traits": {
+            "smithy.api#documentation": "The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties used to create a reference data set."
+      }
+    },
+    "com.azure.timeseriesinsights#ReferenceDataSetCreationPropertiesDataStringComparisonBehavior": {
+      "type": "enum",
+      "members": {
+        "ORDINAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ordinal"
+          }
+        },
+        "ORDINALIGNORECASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OrdinalIgnoreCase"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used."
+      }
+    },
+    "com.azure.timeseriesinsights#ReferenceDataSetCreationPropertiesKeyPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.timeseriesinsights#ReferenceDataSetKeyProperty"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of key properties for the reference data set."
+      }
+    },
+    "com.azure.timeseriesinsights#ReferenceDataSetsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional properties for the resource."
       }
     },
     "com.azure.timeseriesinsights#ReferenceDataSetsGet": {
@@ -1551,16 +1680,54 @@
             "smithy.api#documentation": "The name of the Time Series Insights event source associated with the specified environment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.timeseriesinsights#EventSourcesUpdateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The kind of the event source.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.timeseriesinsights#EventSourcesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs of additional properties for the event source."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.timeseriesinsights#EventSourcesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional properties for the event source."
+      }
+    },
+    "com.azure.timeseriesinsights#EventSourcesUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_EVENTHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.EventHub"
+          }
+        },
+        "MICROSOFT_IOTHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.IoTHub"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the event source."
       }
     },
     "com.azure.timeseriesinsights#EventSourcesCreateOrUpdate": {
@@ -1695,16 +1862,115 @@
             "smithy.api#documentation": "Name of the event source."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.timeseriesinsights#EventSourcesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs of additional properties for the resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.timeseriesinsights#EventSourcesCreateOrUpdateRequestKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of the event source.",
+            "smithy.api#required": {}
+          }
+        },
+        "localTimestamp": {
+          "target": "com.azure.timeseriesinsights#LocalTimestamp",
+          "traits": {
+            "smithy.api#documentation": "An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.timeseriesinsights#LocalTimestamp": {
+      "type": "structure",
+      "members": {
+        "format": {
+          "target": "com.azure.timeseriesinsights#LocalTimestampFormat",
+          "traits": {
+            "smithy.api#documentation": "An enum that represents the format of the local timestamp property that needs to be set."
+          }
+        },
+        "timeZoneOffset": {
+          "target": "com.azure.timeseriesinsights#LocalTimestampTimeZoneOffset",
+          "traits": {
+            "smithy.api#documentation": "An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events."
+      }
+    },
+    "com.azure.timeseriesinsights#LocalTimestampTimeZoneOffset": {
+      "type": "structure",
+      "members": {
+        "propertyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The event property that will be contain the offset information to calculate the local timestamp. When the LocalTimestampFormat is Iana, the property name will contain the name of the column which contains IANA Timezone Name (eg: Americas/Los Angeles). When LocalTimestampFormat is Timespan, it contains the name of property which contains values representing the offset (eg: P1D or 1.00:00:00)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded."
+      }
+    },
+    "com.azure.timeseriesinsights#LocalTimestampFormat": {
+      "type": "enum",
+      "members": {
+        "EMBEDDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Embedded"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An enum that represents the format of the local timestamp property that needs to be set."
+      }
+    },
+    "com.azure.timeseriesinsights#EventSourcesCreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_EVENTHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.EventHub"
+          }
+        },
+        "MICROSOFT_IOTHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.IoTHub"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the event source."
+      }
+    },
+    "com.azure.timeseriesinsights#EventSourcesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional properties for the resource."
       }
     },
     "com.azure.timeseriesinsights#EventSourcesGet": {
@@ -2266,16 +2532,54 @@
             "smithy.api#documentation": "The name of the Time Series Insights environment associated with the specified resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.timeseriesinsights#EnvironmentsUpdateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The kind of the environment.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.timeseriesinsights#EnvironmentsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs of additional properties for the environment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.timeseriesinsights#EnvironmentsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional properties for the environment."
+      }
+    },
+    "com.azure.timeseriesinsights#EnvironmentsUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "GEN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Gen1"
+          }
+        },
+        "GEN2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Gen2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the environment."
       }
     },
     "com.azure.timeseriesinsights#EnvironmentsCreateOrUpdate": {
@@ -2409,16 +2713,68 @@
             "smithy.api#documentation": "Name of the environment"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The location of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.timeseriesinsights#EnvironmentsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Key-value pairs of additional properties for the resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.timeseriesinsights#EnvironmentsCreateOrUpdateRequestKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of the environment.",
+            "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.timeseriesinsights#Sku",
+          "traits": {
+            "smithy.api#documentation": "The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.timeseriesinsights#EnvironmentsCreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "GEN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Gen1"
+          }
+        },
+        "GEN2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Gen2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the environment."
+      }
+    },
+    "com.azure.timeseriesinsights#EnvironmentsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Key-value pairs of additional properties for the resource."
       }
     },
     "com.azure.timeseriesinsights#EnvironmentsGet": {

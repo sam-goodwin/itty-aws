@@ -31,9 +31,17 @@ export const McpToolsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "McpToolsCreateRequest",
 }) as any as S.Schema<McpToolsCreateRequest>;
 
-export type McpToolsCreateResponse = unknown;
+export type McpToolsCreateResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const McpToolsCreateResponseBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<McpToolsCreateResponseBodyMap>;
+
+export type McpToolsCreateResponse = McpToolsCreateResponseBodyMap;
 export const McpToolsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  McpToolsCreateResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "McpToolsCreateResponse",
 }) as any as S.Schema<McpToolsCreateResponse>;

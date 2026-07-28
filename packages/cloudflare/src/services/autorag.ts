@@ -12,117 +12,93 @@ import * as Retry from "../retry.ts";
 
 export type { CloudflareOpError, CloudflareOpContext };
 
-export type AiSearchRequestFiltersObjectKeyTypeValueType =
+export type AiSearchRequestFiltersCase0Type =
   | "eq"
   | "ne"
   | "gt"
-  | (string & {});
-export const AiSearchRequestFiltersObjectKeyTypeValueType =
-  /*@__PURE__*/ S.String;
+  | "gte"
+  | "lt"
+  | "lte";
+export const AiSearchRequestFiltersCase0Type = /*@__PURE__*/ S.String;
 
-export interface AiSearchRequestFiltersObjectKeyTypeValueValue {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const AiSearchRequestFiltersObjectKeyTypeValueValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "AiSearchRequestFiltersObjectKeyTypeValueValue",
-  }) as any as S.Schema<AiSearchRequestFiltersObjectKeyTypeValueValue>;
+export type AiSearchRequestFiltersCase0Value = string | number | boolean;
+export const AiSearchRequestFiltersCase0Value = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], [], []]),
+);
 
-export interface AiSearchRequestFiltersObjectKeyTypeValue {
+export interface AiSearchRequestFiltersCase0 {
   key: string;
-  type: AiSearchRequestFiltersObjectKeyTypeValueType;
-  value: AiSearchRequestFiltersObjectKeyTypeValueValue;
+  type: AiSearchRequestFiltersCase0Type;
+  value: AiSearchRequestFiltersCase0Value;
 }
-export const AiSearchRequestFiltersObjectKeyTypeValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.String,
-      type: AiSearchRequestFiltersObjectKeyTypeValueType,
-      value: AiSearchRequestFiltersObjectKeyTypeValueValue,
-    }),
+export const AiSearchRequestFiltersCase0 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.String,
+    type: AiSearchRequestFiltersCase0Type,
+    value: AiSearchRequestFiltersCase0Value,
+  }),
 ).annotate({
-  identifier: "AiSearchRequestFiltersObjectKeyTypeValue",
-}) as any as S.Schema<AiSearchRequestFiltersObjectKeyTypeValue>;
+  identifier: "AiSearchRequestFiltersCase0",
+}) as any as S.Schema<AiSearchRequestFiltersCase0>;
 
-export type AiSearchRequestFiltersObjectFiltersTypeFiltersItemType =
+export type AiSearchRequestFiltersCase1FiltersItemType =
   | "eq"
   | "ne"
   | "gt"
-  | (string & {});
-export const AiSearchRequestFiltersObjectFiltersTypeFiltersItemType =
+  | "gte"
+  | "lt"
+  | "lte";
+export const AiSearchRequestFiltersCase1FiltersItemType =
   /*@__PURE__*/ S.String;
 
-export interface AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue",
-  }) as any as S.Schema<AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue>;
+export type AiSearchRequestFiltersCase1FiltersItemValue =
+  | string
+  | number
+  | boolean;
+export const AiSearchRequestFiltersCase1FiltersItemValue =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
-export interface AiSearchRequestFiltersObjectFiltersTypeFiltersItem {
+export interface AiSearchRequestFiltersCase1FiltersItem {
   key: string;
-  type: AiSearchRequestFiltersObjectFiltersTypeFiltersItemType;
-  value: AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue;
+  type: AiSearchRequestFiltersCase1FiltersItemType;
+  value: AiSearchRequestFiltersCase1FiltersItemValue;
 }
-export const AiSearchRequestFiltersObjectFiltersTypeFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: AiSearchRequestFiltersObjectFiltersTypeFiltersItemType,
-      value: AiSearchRequestFiltersObjectFiltersTypeFiltersItemValue,
-    }),
-  ).annotate({
-    identifier: "AiSearchRequestFiltersObjectFiltersTypeFiltersItem",
-  }) as any as S.Schema<AiSearchRequestFiltersObjectFiltersTypeFiltersItem>;
-
-export type AiSearchRequestFiltersObjectFiltersTypeFiltersList =
-  AiSearchRequestFiltersObjectFiltersTypeFiltersItem[];
-export const AiSearchRequestFiltersObjectFiltersTypeFiltersList =
-  /*@__PURE__*/ S.Array(
-    AiSearchRequestFiltersObjectFiltersTypeFiltersItem,
-  ) as any as S.Schema<AiSearchRequestFiltersObjectFiltersTypeFiltersList>;
-
-export type AiSearchRequestFiltersObjectFiltersTypeType =
-  | "and"
-  | "or"
-  | (string & {});
-export const AiSearchRequestFiltersObjectFiltersTypeType =
-  /*@__PURE__*/ S.String;
-
-export interface AiSearchRequestFiltersObjectFiltersType {
-  filters: AiSearchRequestFiltersObjectFiltersTypeFiltersList;
-  type: AiSearchRequestFiltersObjectFiltersTypeType;
-}
-export const AiSearchRequestFiltersObjectFiltersType = /*@__PURE__*/ S.suspend(
+export const AiSearchRequestFiltersCase1FiltersItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filters: AiSearchRequestFiltersObjectFiltersTypeFiltersList,
-      type: AiSearchRequestFiltersObjectFiltersTypeType,
+      key: S.String,
+      type: AiSearchRequestFiltersCase1FiltersItemType,
+      value: AiSearchRequestFiltersCase1FiltersItemValue,
     }),
 ).annotate({
-  identifier: "AiSearchRequestFiltersObjectFiltersType",
-}) as any as S.Schema<AiSearchRequestFiltersObjectFiltersType>;
+  identifier: "AiSearchRequestFiltersCase1FiltersItem",
+}) as any as S.Schema<AiSearchRequestFiltersCase1FiltersItem>;
+
+export type AiSearchRequestFiltersCase1FiltersList =
+  ReadonlyArray<AiSearchRequestFiltersCase1FiltersItem>;
+export const AiSearchRequestFiltersCase1FiltersList = /*@__PURE__*/ S.Array(
+  AiSearchRequestFiltersCase1FiltersItem,
+) as any as S.Schema<AiSearchRequestFiltersCase1FiltersList>;
+
+export type AiSearchRequestFiltersCase1Type = "and" | "or";
+export const AiSearchRequestFiltersCase1Type = /*@__PURE__*/ S.String;
+
+export interface AiSearchRequestFiltersCase1 {
+  filters: AiSearchRequestFiltersCase1FiltersList;
+  type: AiSearchRequestFiltersCase1Type;
+}
+export const AiSearchRequestFiltersCase1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filters: AiSearchRequestFiltersCase1FiltersList,
+    type: AiSearchRequestFiltersCase1Type,
+  }),
+).annotate({
+  identifier: "AiSearchRequestFiltersCase1",
+}) as any as S.Schema<AiSearchRequestFiltersCase1>;
 
 export type AiSearchRequestFilters =
-  | AiSearchRequestFiltersObjectKeyTypeValue
-  | AiSearchRequestFiltersObjectFiltersType;
+  | AiSearchRequestFiltersCase0
+  | AiSearchRequestFiltersCase1;
 export const AiSearchRequestFilters = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["key", "type", "value"],
@@ -134,7 +110,29 @@ export type AiSearchRequestModel =
   | "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
   | "@cf/meta/llama-3.1-8b-instruct-fast"
   | "@cf/meta/llama-3.1-8b-instruct-fp8"
-  | (string & {});
+  | "@cf/meta/llama-4-scout-17b-16e-instruct"
+  | "@cf/qwen/qwen3-30b-a3b-fp8"
+  | "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
+  | "@cf/moonshotai/kimi-k2-instruct"
+  | "anthropic/claude-3-7-sonnet"
+  | "anthropic/claude-sonnet-4"
+  | "anthropic/claude-opus-4"
+  | "anthropic/claude-3-5-haiku"
+  | "cerebras/qwen-3-235b-a22b-instruct"
+  | "cerebras/qwen-3-235b-a22b-thinking"
+  | "cerebras/llama-3.3-70b"
+  | "cerebras/llama-4-maverick-17b-128e-instruct"
+  | "cerebras/llama-4-scout-17b-16e-instruct"
+  | "cerebras/gpt-oss-120b"
+  | "google-ai-studio/gemini-2.5-flash"
+  | "google-ai-studio/gemini-2.5-pro"
+  | "grok/grok-4"
+  | "groq/llama-3.3-70b-versatile"
+  | "groq/llama-3.1-8b-instant"
+  | "openai/gpt-5"
+  | "openai/gpt-5-mini"
+  | "openai/gpt-5-nano"
+  | "";
 export const AiSearchRequestModel = /*@__PURE__*/ S.String;
 
 export interface AiSearchRequestRankingOptions {
@@ -150,10 +148,7 @@ export const AiSearchRequestRankingOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "AiSearchRequestRankingOptions",
 }) as any as S.Schema<AiSearchRequestRankingOptions>;
 
-export type AiSearchRequestRerankingModel =
-  | "@cf/baai/bge-reranker-base"
-  | ""
-  | (string & {});
+export type AiSearchRequestRerankingModel = "@cf/baai/bge-reranker-base" | "";
 export const AiSearchRequestRerankingModel = /*@__PURE__*/ S.String;
 
 export interface AiSearchRequestReranking {
@@ -223,7 +218,7 @@ export const AiSearchResponseDataItemContentItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiSearchResponseDataItemContentItem>;
 
 export type AiSearchResponseDataItemContentList =
-  AiSearchResponseDataItemContentItem[];
+  ReadonlyArray<AiSearchResponseDataItemContentItem>;
 export const AiSearchResponseDataItemContentList = /*@__PURE__*/ S.Array(
   AiSearchResponseDataItemContentItem,
 ) as any as S.Schema<AiSearchResponseDataItemContentList>;
@@ -247,7 +242,7 @@ export const AiSearchResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AiSearchResponseDataItem",
 }) as any as S.Schema<AiSearchResponseDataItem>;
 
-export type AiSearchResponseDataList = AiSearchResponseDataItem[];
+export type AiSearchResponseDataList = ReadonlyArray<AiSearchResponseDataItem>;
 export const AiSearchResponseDataList = /*@__PURE__*/ S.Array(
   AiSearchResponseDataItem,
 ) as any as S.Schema<AiSearchResponseDataList>;
@@ -274,12 +269,7 @@ export const AiSearchResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AiSearchResponse",
 }) as any as S.Schema<AiSearchResponse>;
 
-export type FilesRequestStatus =
-  | "completed"
-  | "queued"
-  | "running"
-  | "error"
-  | (string & {});
+export type FilesRequestStatus = "completed" | "queued" | "running" | "error";
 export const FilesRequestStatus = /*@__PURE__*/ S.String;
 
 export interface FilesRequest {
@@ -321,7 +311,7 @@ export const FilesResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilesResultItem",
 }) as any as S.Schema<FilesResultItem>;
 
-export type FilesResultList = FilesResultItem[];
+export type FilesResultList = ReadonlyArray<FilesResultItem>;
 export const FilesResultList = /*@__PURE__*/ S.Array(
   FilesResultItem,
 ) as any as S.Schema<FilesResultList>;
@@ -351,7 +341,7 @@ export const JobsGetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "JobsGetRequest" }) as any as S.Schema<JobsGetRequest>;
 
-export type JobsGetResponseSource = "user" | "schedule" | (string & {});
+export type JobsGetResponseSource = "user" | "schedule";
 export const JobsGetResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -400,7 +390,7 @@ export const JobsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsListRequest",
 }) as any as S.Schema<JobsListRequest>;
 
-export type JobsListResultItemSource = "user" | "schedule" | (string & {});
+export type JobsListResultItemSource = "user" | "schedule";
 export const JobsListResultItemSource = /*@__PURE__*/ S.String;
 
 export interface JobsListResultItem {
@@ -424,7 +414,7 @@ export const JobsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsListResultItem",
 }) as any as S.Schema<JobsListResultItem>;
 
-export type JobsListResultList = JobsListResultItem[];
+export type JobsListResultList = ReadonlyArray<JobsListResultItem>;
 export const JobsListResultList = /*@__PURE__*/ S.Array(
   JobsListResultItem,
 ) as any as S.Schema<JobsListResultList>;
@@ -479,7 +469,7 @@ export const JobsLogsResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsLogsResultItem",
 }) as any as S.Schema<JobsLogsResultItem>;
 
-export type JobsLogsResultList = JobsLogsResultItem[];
+export type JobsLogsResultList = ReadonlyArray<JobsLogsResultItem>;
 export const JobsLogsResultList = /*@__PURE__*/ S.Array(
   JobsLogsResultItem,
 ) as any as S.Schema<JobsLogsResultList>;
@@ -491,116 +481,92 @@ export const JobsLogsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobsLogsResponse",
 }) as any as S.Schema<JobsLogsResponse>;
 
-export type SearchRequestFiltersObjectKeyTypeValueType =
+export type SearchRequestFiltersCase0Type =
   | "eq"
   | "ne"
   | "gt"
-  | (string & {});
-export const SearchRequestFiltersObjectKeyTypeValueType =
-  /*@__PURE__*/ S.String;
+  | "gte"
+  | "lt"
+  | "lte";
+export const SearchRequestFiltersCase0Type = /*@__PURE__*/ S.String;
 
-export interface SearchRequestFiltersObjectKeyTypeValueValue {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const SearchRequestFiltersObjectKeyTypeValueValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "SearchRequestFiltersObjectKeyTypeValueValue",
-  }) as any as S.Schema<SearchRequestFiltersObjectKeyTypeValueValue>;
+export type SearchRequestFiltersCase0Value = string | number | boolean;
+export const SearchRequestFiltersCase0Value = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], [], []]),
+);
 
-export interface SearchRequestFiltersObjectKeyTypeValue {
+export interface SearchRequestFiltersCase0 {
   key: string;
-  type: SearchRequestFiltersObjectKeyTypeValueType;
-  value: SearchRequestFiltersObjectKeyTypeValueValue;
+  type: SearchRequestFiltersCase0Type;
+  value: SearchRequestFiltersCase0Value;
 }
-export const SearchRequestFiltersObjectKeyTypeValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.String,
-      type: SearchRequestFiltersObjectKeyTypeValueType,
-      value: SearchRequestFiltersObjectKeyTypeValueValue,
-    }),
+export const SearchRequestFiltersCase0 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.String,
+    type: SearchRequestFiltersCase0Type,
+    value: SearchRequestFiltersCase0Value,
+  }),
 ).annotate({
-  identifier: "SearchRequestFiltersObjectKeyTypeValue",
-}) as any as S.Schema<SearchRequestFiltersObjectKeyTypeValue>;
+  identifier: "SearchRequestFiltersCase0",
+}) as any as S.Schema<SearchRequestFiltersCase0>;
 
-export type SearchRequestFiltersObjectFiltersTypeFiltersItemType =
+export type SearchRequestFiltersCase1FiltersItemType =
   | "eq"
   | "ne"
   | "gt"
-  | (string & {});
-export const SearchRequestFiltersObjectFiltersTypeFiltersItemType =
-  /*@__PURE__*/ S.String;
+  | "gte"
+  | "lt"
+  | "lte";
+export const SearchRequestFiltersCase1FiltersItemType = /*@__PURE__*/ S.String;
 
-export interface SearchRequestFiltersObjectFiltersTypeFiltersItemValue {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const SearchRequestFiltersObjectFiltersTypeFiltersItemValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "SearchRequestFiltersObjectFiltersTypeFiltersItemValue",
-  }) as any as S.Schema<SearchRequestFiltersObjectFiltersTypeFiltersItemValue>;
+export type SearchRequestFiltersCase1FiltersItemValue =
+  | string
+  | number
+  | boolean;
+export const SearchRequestFiltersCase1FiltersItemValue =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], []]));
 
-export interface SearchRequestFiltersObjectFiltersTypeFiltersItem {
+export interface SearchRequestFiltersCase1FiltersItem {
   key: string;
-  type: SearchRequestFiltersObjectFiltersTypeFiltersItemType;
-  value: SearchRequestFiltersObjectFiltersTypeFiltersItemValue;
+  type: SearchRequestFiltersCase1FiltersItemType;
+  value: SearchRequestFiltersCase1FiltersItemValue;
 }
-export const SearchRequestFiltersObjectFiltersTypeFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      type: SearchRequestFiltersObjectFiltersTypeFiltersItemType,
-      value: SearchRequestFiltersObjectFiltersTypeFiltersItemValue,
-    }),
-  ).annotate({
-    identifier: "SearchRequestFiltersObjectFiltersTypeFiltersItem",
-  }) as any as S.Schema<SearchRequestFiltersObjectFiltersTypeFiltersItem>;
-
-export type SearchRequestFiltersObjectFiltersTypeFiltersList =
-  SearchRequestFiltersObjectFiltersTypeFiltersItem[];
-export const SearchRequestFiltersObjectFiltersTypeFiltersList =
-  /*@__PURE__*/ S.Array(
-    SearchRequestFiltersObjectFiltersTypeFiltersItem,
-  ) as any as S.Schema<SearchRequestFiltersObjectFiltersTypeFiltersList>;
-
-export type SearchRequestFiltersObjectFiltersTypeType =
-  | "and"
-  | "or"
-  | (string & {});
-export const SearchRequestFiltersObjectFiltersTypeType = /*@__PURE__*/ S.String;
-
-export interface SearchRequestFiltersObjectFiltersType {
-  filters: SearchRequestFiltersObjectFiltersTypeFiltersList;
-  type: SearchRequestFiltersObjectFiltersTypeType;
-}
-export const SearchRequestFiltersObjectFiltersType = /*@__PURE__*/ S.suspend(
+export const SearchRequestFiltersCase1FiltersItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      filters: SearchRequestFiltersObjectFiltersTypeFiltersList,
-      type: SearchRequestFiltersObjectFiltersTypeType,
+      key: S.String,
+      type: SearchRequestFiltersCase1FiltersItemType,
+      value: SearchRequestFiltersCase1FiltersItemValue,
     }),
 ).annotate({
-  identifier: "SearchRequestFiltersObjectFiltersType",
-}) as any as S.Schema<SearchRequestFiltersObjectFiltersType>;
+  identifier: "SearchRequestFiltersCase1FiltersItem",
+}) as any as S.Schema<SearchRequestFiltersCase1FiltersItem>;
+
+export type SearchRequestFiltersCase1FiltersList =
+  ReadonlyArray<SearchRequestFiltersCase1FiltersItem>;
+export const SearchRequestFiltersCase1FiltersList = /*@__PURE__*/ S.Array(
+  SearchRequestFiltersCase1FiltersItem,
+) as any as S.Schema<SearchRequestFiltersCase1FiltersList>;
+
+export type SearchRequestFiltersCase1Type = "and" | "or";
+export const SearchRequestFiltersCase1Type = /*@__PURE__*/ S.String;
+
+export interface SearchRequestFiltersCase1 {
+  filters: SearchRequestFiltersCase1FiltersList;
+  type: SearchRequestFiltersCase1Type;
+}
+export const SearchRequestFiltersCase1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filters: SearchRequestFiltersCase1FiltersList,
+    type: SearchRequestFiltersCase1Type,
+  }),
+).annotate({
+  identifier: "SearchRequestFiltersCase1",
+}) as any as S.Schema<SearchRequestFiltersCase1>;
 
 export type SearchRequestFilters =
-  | SearchRequestFiltersObjectKeyTypeValue
-  | SearchRequestFiltersObjectFiltersType;
+  | SearchRequestFiltersCase0
+  | SearchRequestFiltersCase1;
 export const SearchRequestFilters = /*@__PURE__*/ S.Unknown.pipe(
   T.UnionCases([
     ["key", "type", "value"],
@@ -621,10 +587,7 @@ export const SearchRequestRankingOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchRequestRankingOptions",
 }) as any as S.Schema<SearchRequestRankingOptions>;
 
-export type SearchRequestRerankingModel =
-  | "@cf/baai/bge-reranker-base"
-  | ""
-  | (string & {});
+export type SearchRequestRerankingModel = "@cf/baai/bge-reranker-base" | "";
 export const SearchRequestRerankingModel = /*@__PURE__*/ S.String;
 
 export interface SearchRequestReranking {
@@ -686,7 +649,7 @@ export const SearchResponseDataItemContentItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchResponseDataItemContentItem>;
 
 export type SearchResponseDataItemContentList =
-  SearchResponseDataItemContentItem[];
+  ReadonlyArray<SearchResponseDataItemContentItem>;
 export const SearchResponseDataItemContentList = /*@__PURE__*/ S.Array(
   SearchResponseDataItemContentItem,
 ) as any as S.Schema<SearchResponseDataItemContentList>;
@@ -710,7 +673,7 @@ export const SearchResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchResponseDataItem",
 }) as any as S.Schema<SearchResponseDataItem>;
 
-export type SearchResponseDataList = SearchResponseDataItem[];
+export type SearchResponseDataList = ReadonlyArray<SearchResponseDataItem>;
 export const SearchResponseDataList = /*@__PURE__*/ S.Array(
   SearchResponseDataItem,
 ) as any as S.Schema<SearchResponseDataList>;

@@ -133,7 +133,7 @@ export const StatementTemplate = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatementTemplate",
 }) as any as S.Schema<StatementTemplate>;
 
-export type StatementTemplateList = StatementTemplate[];
+export type StatementTemplateList = ReadonlyArray<StatementTemplate>;
 export const StatementTemplateList = /*@__PURE__*/ S.Array(
   StatementTemplate,
 ) as any as S.Schema<StatementTemplateList>;
@@ -192,8 +192,7 @@ export type BulkCheckResponseBulkErrorCodeEnum =
   | "ERROR_CODE_WRONG_CONTENT_TYPE"
   | "ERROR_CODE_MALFORMED_CONTENT"
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
-  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
-  | (string & {});
+  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
 export const BulkCheckResponseBulkErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export type CheckResponseErrorCodeItemEnum =
@@ -207,12 +206,11 @@ export type CheckResponseErrorCodeItemEnum =
   | "ERROR_CODE_WRONG_CONTENT_TYPE"
   | "ERROR_CODE_MALFORMED_CONTENT"
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
-  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
-  | (string & {});
+  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
 export const CheckResponseErrorCodeItemEnum = /*@__PURE__*/ S.String;
 
 export type CheckResponseErrorCodeItemEnumList =
-  CheckResponseErrorCodeItemEnum[];
+  ReadonlyArray<CheckResponseErrorCodeItemEnum>;
 export const CheckResponseErrorCodeItemEnumList = /*@__PURE__*/ S.Array(
   CheckResponseErrorCodeItemEnum,
 ) as any as S.Schema<CheckResponseErrorCodeItemEnumList>;
@@ -223,7 +221,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -251,7 +249,7 @@ export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
 
-export type CheckResponseList = CheckResponse[];
+export type CheckResponseList = ReadonlyArray<CheckResponse>;
 export const CheckResponseList = /*@__PURE__*/ S.Array(
   CheckResponse,
 ) as any as S.Schema<CheckResponseList>;
@@ -367,7 +365,7 @@ export const Statement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Statement" }) as any as S.Schema<Statement>;
 
-export type StatementList = Statement[];
+export type StatementList = ReadonlyArray<Statement>;
 export const StatementList = /*@__PURE__*/ S.Array(
   Statement,
 ) as any as S.Schema<StatementList>;
@@ -383,11 +381,11 @@ export type ListResponseErrorCodeItemEnum =
   | "ERROR_CODE_WRONG_CONTENT_TYPE"
   | "ERROR_CODE_MALFORMED_CONTENT"
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
-  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
-  | (string & {});
+  | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
 export const ListResponseErrorCodeItemEnum = /*@__PURE__*/ S.String;
 
-export type ListResponseErrorCodeItemEnumList = ListResponseErrorCodeItemEnum[];
+export type ListResponseErrorCodeItemEnumList =
+  ReadonlyArray<ListResponseErrorCodeItemEnum>;
 export const ListResponseErrorCodeItemEnumList = /*@__PURE__*/ S.Array(
   ListResponseErrorCodeItemEnum,
 ) as any as S.Schema<ListResponseErrorCodeItemEnumList>;

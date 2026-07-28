@@ -102,7 +102,7 @@ export const AggregateFleetV1betaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregateFleetV1betaRequest",
 }) as any as S.Schema<AggregateFleetV1betaRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -118,8 +118,7 @@ export type ProductTypeEnum =
   | "PRODUCT_TYPE_COMPUTE_ENGINE"
   | "PRODUCT_TYPE_ORACLE_ON_GCP"
   | "PRODUCT_TYPE_BIGQUERY"
-  | "PRODUCT_TYPE_OTHER"
-  | (string & {});
+  | "PRODUCT_TYPE_OTHER";
 export const ProductTypeEnum = /*@__PURE__*/ S.String;
 
 export type ProductEngineEnum =
@@ -137,8 +136,7 @@ export type ProductEngineEnum =
   | "ENGINE_EXADATA_ORACLE"
   | "ENGINE_ADB_SERVERLESS_ORACLE"
   | "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE"
-  | "ENGINE_OTHER"
-  | (string & {});
+  | "ENGINE_OTHER";
 export const ProductEngineEnum = /*@__PURE__*/ S.String;
 
 /** Product specification for databasecenter resources. */
@@ -183,7 +181,7 @@ export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceDetails",
 }) as any as S.Schema<ResourceDetails>;
 
-export type ResourceDetailsList = ResourceDetails[];
+export type ResourceDetailsList = ReadonlyArray<ResourceDetails>;
 export const ResourceDetailsList = /*@__PURE__*/ S.Array(
   ResourceDetails,
 ) as any as S.Schema<ResourceDetailsList>;
@@ -217,8 +215,7 @@ export type DimensionProductEngineEnum =
   | "ENGINE_EXADATA_ORACLE"
   | "ENGINE_ADB_SERVERLESS_ORACLE"
   | "ENGINE_FIRESTORE_WITH_MONGODB_COMPATIBILITY_MODE"
-  | "ENGINE_OTHER"
-  | (string & {});
+  | "ENGINE_OTHER";
 export const DimensionProductEngineEnum = /*@__PURE__*/ S.String;
 
 export type DimensionProductTypeEnum =
@@ -232,16 +229,14 @@ export type DimensionProductTypeEnum =
   | "PRODUCT_TYPE_COMPUTE_ENGINE"
   | "PRODUCT_TYPE_ORACLE_ON_GCP"
   | "PRODUCT_TYPE_BIGQUERY"
-  | "PRODUCT_TYPE_OTHER"
-  | (string & {});
+  | "PRODUCT_TYPE_OTHER";
 export const DimensionProductTypeEnum = /*@__PURE__*/ S.String;
 
 export type DimensionEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "EDITION_ENTERPRISE"
   | "EDITION_ENTERPRISE_PLUS"
-  | "EDITION_STANDARD"
-  | (string & {});
+  | "EDITION_STANDARD";
 export const DimensionEditionEnum = /*@__PURE__*/ S.String;
 
 export type DimensionSubResourceTypeEnum =
@@ -253,8 +248,7 @@ export type DimensionSubResourceTypeEnum =
   | "SUB_RESOURCE_TYPE_READ_POOL"
   | "SUB_RESOURCE_TYPE_RESERVATION"
   | "SUB_RESOURCE_TYPE_DATASET"
-  | "SUB_RESOURCE_TYPE_OTHER"
-  | (string & {});
+  | "SUB_RESOURCE_TYPE_OTHER";
 export const DimensionSubResourceTypeEnum = /*@__PURE__*/ S.String;
 
 export type DimensionResourceCategoryEnum =
@@ -263,15 +257,13 @@ export type DimensionResourceCategoryEnum =
   | "CLUSTER"
   | "DATABASE"
   | "DATASET"
-  | "RESERVATION"
-  | (string & {});
+  | "RESERVATION";
 export const DimensionResourceCategoryEnum = /*@__PURE__*/ S.String;
 
 export type DimensionManagementTypeEnum =
   | "MANAGEMENT_TYPE_UNSPECIFIED"
   | "MANAGEMENT_TYPE_GCP_MANAGED"
-  | "MANAGEMENT_TYPE_SELF_MANAGED"
-  | (string & {});
+  | "MANAGEMENT_TYPE_SELF_MANAGED";
 export const DimensionManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** Dimension used to aggregate the fleet. */
@@ -339,7 +331,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
-export type DimensionList = Dimension[];
+export type DimensionList = ReadonlyArray<Dimension>;
 export const DimensionList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<DimensionList>;
@@ -366,7 +358,7 @@ export const AggregateFleetRow = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregateFleetRow",
 }) as any as S.Schema<AggregateFleetRow>;
 
-export type AggregateFleetRowList = AggregateFleetRow[];
+export type AggregateFleetRowList = ReadonlyArray<AggregateFleetRow>;
 export const AggregateFleetRowList = /*@__PURE__*/ S.Array(
   AggregateFleetRow,
 ) as any as S.Schema<AggregateFleetRowList>;
@@ -502,12 +494,11 @@ export type SignalTypeGroupSignalTypesItemEnum =
   | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
-  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION"
-  | (string & {});
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const SignalTypeGroupSignalTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type SignalTypeGroupSignalTypesItemEnumList =
-  SignalTypeGroupSignalTypesItemEnum[];
+  ReadonlyArray<SignalTypeGroupSignalTypesItemEnum>;
 export const SignalTypeGroupSignalTypesItemEnumList = /*@__PURE__*/ S.Array(
   SignalTypeGroupSignalTypesItemEnum,
 ) as any as S.Schema<SignalTypeGroupSignalTypesItemEnumList>;
@@ -528,7 +519,7 @@ export const SignalTypeGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalTypeGroup",
 }) as any as S.Schema<SignalTypeGroup>;
 
-export type SignalTypeGroupList = SignalTypeGroup[];
+export type SignalTypeGroupList = ReadonlyArray<SignalTypeGroup>;
 export const SignalTypeGroupList = /*@__PURE__*/ S.Array(
   SignalTypeGroup,
 ) as any as S.Schema<SignalTypeGroupList>;
@@ -598,8 +589,7 @@ export type IssueStatsIssueSeverityEnum =
   | "ISSUE_SEVERITY_MEDIUM"
   | "ISSUE_SEVERITY_HIGH"
   | "ISSUE_SEVERITY_CRITICAL"
-  | "ISSUE_SEVERITY_IRRELEVANT"
-  | (string & {});
+  | "ISSUE_SEVERITY_IRRELEVANT";
 export const IssueStatsIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type IssueStatsSignalTypeEnum =
@@ -705,8 +695,7 @@ export type IssueStatsSignalTypeEnum =
   | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
-  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION"
-  | (string & {});
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const IssueStatsSignalTypeEnum = /*@__PURE__*/ S.String;
 
 /** IssueStats holds stats for a particular signal category. */
@@ -729,7 +718,7 @@ export const IssueStats = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IssueStats" }) as any as S.Schema<IssueStats>;
 
-export type IssueStatsList = IssueStats[];
+export type IssueStatsList = ReadonlyArray<IssueStats>;
 export const IssueStatsList = /*@__PURE__*/ S.Array(
   IssueStats,
 ) as any as S.Schema<IssueStatsList>;
@@ -762,7 +751,7 @@ export const IssueGroupStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "IssueGroupStats",
 }) as any as S.Schema<IssueGroupStats>;
 
-export type IssueGroupStatsList = IssueGroupStats[];
+export type IssueGroupStatsList = ReadonlyArray<IssueGroupStats>;
 export const IssueGroupStatsList = /*@__PURE__*/ S.Array(
   IssueGroupStats,
 ) as any as S.Schema<IssueGroupStatsList>;
@@ -849,7 +838,7 @@ export const ResourceId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceId" }) as any as S.Schema<ResourceId>;
 
-export type ResourceIdList = ResourceId[];
+export type ResourceIdList = ReadonlyArray<ResourceId>;
 export const ResourceIdList = /*@__PURE__*/ S.Array(
   ResourceId,
 ) as any as S.Schema<ResourceIdList>;
@@ -883,8 +872,7 @@ export type QueryMetricsMetricsWindowEnum =
   | "METRICS_WINDOW_UNSPECIFIED"
   | "LAST_ONE_DAY"
   | "LAST_ONE_WEEK"
-  | "LAST_TWO_WEEKS"
-  | (string & {});
+  | "LAST_TWO_WEEKS";
 export const QueryMetricsMetricsWindowEnum = /*@__PURE__*/ S.String;
 
 /** QueryMetrics contains the metrics related to the query execution. */
@@ -936,7 +924,7 @@ export const QueryStats = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryStats" }) as any as S.Schema<QueryStats>;
 
-export type QueryStatsList = QueryStats[];
+export type QueryStatsList = ReadonlyArray<QueryStats>;
 export const QueryStatsList = /*@__PURE__*/ S.Array(
   QueryStats,
 ) as any as S.Schema<QueryStatsList>;
@@ -955,7 +943,7 @@ export const QueryStatsInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryStatsInfo" }) as any as S.Schema<QueryStatsInfo>;
 
-export type QueryStatsInfoList = QueryStatsInfo[];
+export type QueryStatsInfoList = ReadonlyArray<QueryStatsInfo>;
 export const QueryStatsInfoList = /*@__PURE__*/ S.Array(
   QueryStatsInfo,
 ) as any as S.Schema<QueryStatsInfoList>;
@@ -1022,7 +1010,7 @@ export const AggregateQueryStatsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregateQueryStatsProjectsRequest",
 }) as any as S.Schema<AggregateQueryStatsProjectsRequest>;
 
-export type ProductList = Product[];
+export type ProductList = ReadonlyArray<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;
@@ -1130,8 +1118,7 @@ export type SignalProductsFiltersSignalTypeEnum =
   | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
-  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION"
-  | (string & {});
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const SignalProductsFiltersSignalTypeEnum = /*@__PURE__*/ S.String;
 
 /** SignalProductsFilters represents a signal and list of supported products. */
@@ -1150,7 +1137,7 @@ export const SignalProductsFilters = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalProductsFilters",
 }) as any as S.Schema<SignalProductsFilters>;
 
-export type SignalProductsFiltersList = SignalProductsFilters[];
+export type SignalProductsFiltersList = ReadonlyArray<SignalProductsFilters>;
 export const SignalProductsFiltersList = /*@__PURE__*/ S.Array(
   SignalProductsFilters,
 ) as any as S.Schema<SignalProductsFiltersList>;
@@ -1258,8 +1245,7 @@ export type SignalFilterSignalTypeEnum =
   | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
-  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION"
-  | (string & {});
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const SignalFilterSignalTypeEnum = /*@__PURE__*/ S.String;
 
 export type SignalFilterSignalStatusEnum =
@@ -1267,8 +1253,7 @@ export type SignalFilterSignalStatusEnum =
   | "SIGNAL_STATUS_NOT_APPLICABLE"
   | "SIGNAL_STATUS_OK"
   | "SIGNAL_STATUS_ISSUE"
-  | "SIGNAL_STATUS_NOT_ENABLED"
-  | (string & {});
+  | "SIGNAL_STATUS_NOT_ENABLED";
 export const SignalFilterSignalStatusEnum = /*@__PURE__*/ S.String;
 
 /** A filter for Signals. If signal_type is left unset, all signals should be returned. For example, the following filter returns all issues. signal_filter: { signal_status: SIGNAL_STATUS_ISSUE; } Another example, the following filter returns issues of the given type: signal_filter: { type: SIGNAL_TYPE_NO_PROMOTABLE_REPLICA signal_status: ISSUE } If signal_status is left unset or set to SIGNAL_STATE_UNSPECIFIED, an error should be returned. */
@@ -1285,7 +1270,7 @@ export const SignalFilter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SignalFilter" }) as any as S.Schema<SignalFilter>;
 
-export type SignalFilterList = SignalFilter[];
+export type SignalFilterList = ReadonlyArray<SignalFilter>;
 export const SignalFilterList = /*@__PURE__*/ S.Array(
   SignalFilter,
 ) as any as S.Schema<SignalFilterList>;
@@ -1357,7 +1342,7 @@ export const IssueCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IssueCount" }) as any as S.Schema<IssueCount>;
 
-export type IssueCountList = IssueCount[];
+export type IssueCountList = ReadonlyArray<IssueCount>;
 export const IssueCountList = /*@__PURE__*/ S.Array(
   IssueCount,
 ) as any as S.Schema<IssueCountList>;
@@ -1369,8 +1354,7 @@ export type LineageProcessTypeEnum =
   | "DATAFLOW"
   | "BIGQUERY"
   | "DATA_FUSION"
-  | "DATAPROC"
-  | (string & {});
+  | "DATAPROC";
 export const LineageProcessTypeEnum = /*@__PURE__*/ S.String;
 
 /** lineage information of the affiliated resources This captures source, target and process which created the lineage. */
@@ -1393,7 +1377,7 @@ export const Lineage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Lineage" }) as any as S.Schema<Lineage>;
 
-export type LineageList = Lineage[];
+export type LineageList = ReadonlyArray<Lineage>;
 export const LineageList = /*@__PURE__*/ S.Array(
   Lineage,
 ) as any as S.Schema<LineageList>;
@@ -1415,7 +1399,7 @@ export const Affiliation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Affiliation" }) as any as S.Schema<Affiliation>;
 
-export type AffiliationList = Affiliation[];
+export type AffiliationList = ReadonlyArray<Affiliation>;
 export const AffiliationList = /*@__PURE__*/ S.Array(
   Affiliation,
 ) as any as S.Schema<AffiliationList>;
@@ -1452,8 +1436,7 @@ export type MaintenanceInfoStateEnum =
   | "MAINTENANCE_STATE_SCHEDULED"
   | "MAINTENANCE_STATE_IN_PROGRESS"
   | "MAINTENANCE_STATE_COMPLETED"
-  | "MAINTENANCE_STATE_FAILED"
-  | (string & {});
+  | "MAINTENANCE_STATE_FAILED";
 export const MaintenanceInfoStateEnum = /*@__PURE__*/ S.String;
 
 export type ResourceMaintenanceScheduleDayEnum =
@@ -1464,8 +1447,7 @@ export type ResourceMaintenanceScheduleDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const ResourceMaintenanceScheduleDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -1493,8 +1475,7 @@ export type ResourceMaintenanceSchedulePhaseEnum =
   | "PHASE_WEEK1"
   | "PHASE_WEEK2"
   | "PHASE_WEEK5"
-  | "PHASE_ANY"
-  | (string & {});
+  | "PHASE_ANY";
 export const ResourceMaintenanceSchedulePhaseEnum = /*@__PURE__*/ S.String;
 
 /** Maintenance window for the database resource. It specifies preferred time and day of the week and phase in some cases, when the maintenance can start. */
@@ -1519,13 +1500,12 @@ export const ResourceMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
 export type MaintenanceInfoPossibleFailureReasonsItemEnum =
   | "POSSIBLE_FAILURE_REASON_UNSPECIFIED"
   | "POSSIBLE_FAILURE_REASON_DENY_POLICY_CONFLICT"
-  | "POSSIBLE_FAILURE_REASON_INSTANCE_IN_STOPPED_STATE"
-  | (string & {});
+  | "POSSIBLE_FAILURE_REASON_INSTANCE_IN_STOPPED_STATE";
 export const MaintenanceInfoPossibleFailureReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type MaintenanceInfoPossibleFailureReasonsItemEnumList =
-  MaintenanceInfoPossibleFailureReasonsItemEnum[];
+  ReadonlyArray<MaintenanceInfoPossibleFailureReasonsItemEnum>;
 export const MaintenanceInfoPossibleFailureReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     MaintenanceInfoPossibleFailureReasonsItemEnum,
@@ -1551,7 +1531,7 @@ export const ResourceMaintenanceDenySchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceMaintenanceDenySchedule>;
 
 export type ResourceMaintenanceDenyScheduleList =
-  ResourceMaintenanceDenySchedule[];
+  ReadonlyArray<ResourceMaintenanceDenySchedule>;
 export const ResourceMaintenanceDenyScheduleList = /*@__PURE__*/ S.Array(
   ResourceMaintenanceDenySchedule,
 ) as any as S.Schema<ResourceMaintenanceDenyScheduleList>;
@@ -1609,7 +1589,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
-export type LabelList = Label[];
+export type LabelList = ReadonlyArray<Label>;
 export const LabelList = /*@__PURE__*/ S.Array(
   Label,
 ) as any as S.Schema<LabelList>;
@@ -1683,8 +1663,7 @@ export type DatabaseResourceResourceCategoryEnum =
   | "CLUSTER"
   | "DATABASE"
   | "DATASET"
-  | "RESERVATION"
-  | (string & {});
+  | "RESERVATION";
 export const DatabaseResourceResourceCategoryEnum = /*@__PURE__*/ S.String;
 
 export type SignalSignalTypeEnum =
@@ -1790,8 +1769,7 @@ export type SignalSignalTypeEnum =
   | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
-  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION"
-  | (string & {});
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const SignalSignalTypeEnum = /*@__PURE__*/ S.String;
 
 export type SignalSignalStatusEnum =
@@ -1799,11 +1777,11 @@ export type SignalSignalStatusEnum =
   | "SIGNAL_STATUS_NOT_APPLICABLE"
   | "SIGNAL_STATUS_OK"
   | "SIGNAL_STATUS_ISSUE"
-  | "SIGNAL_STATUS_NOT_ENABLED"
-  | (string & {});
+  | "SIGNAL_STATUS_NOT_ENABLED";
 export const SignalSignalStatusEnum = /*@__PURE__*/ S.String;
 
-export type ResourceMaintenanceScheduleList = ResourceMaintenanceSchedule[];
+export type ResourceMaintenanceScheduleList =
+  ReadonlyArray<ResourceMaintenanceSchedule>;
 export const ResourceMaintenanceScheduleList = /*@__PURE__*/ S.Array(
   ResourceMaintenanceSchedule,
 ) as any as S.Schema<ResourceMaintenanceScheduleList>;
@@ -1824,8 +1802,7 @@ export const MaintenanceRecommendationInfo = /*@__PURE__*/ S.suspend(() =>
 export type BackupRunInfoStateEnum =
   | "STATE_UNSPECIFIED"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const BackupRunInfoStateEnum = /*@__PURE__*/ S.String;
 
 export type BackupRunInfoOperationErrorTypeEnum =
@@ -1835,8 +1812,7 @@ export type BackupRunInfoOperationErrorTypeEnum =
   | "STOCKOUT_ERROR"
   | "CANCELLATION_ERROR"
   | "SQLSERVER_ERROR"
-  | "INTERNAL_ERROR"
-  | (string & {});
+  | "INTERNAL_ERROR";
 export const BackupRunInfoOperationErrorTypeEnum = /*@__PURE__*/ S.String;
 
 /** Sub resource details For Spanner/Bigtable instance certain data protection settings are at sub resource level like database/table. This message is used to capture such sub resource details. */
@@ -1978,8 +1954,7 @@ export type ResourceSuspensionInfoSuspensionReasonEnum =
   | "BILLING_DISABLED"
   | "ABUSER_DETECTED"
   | "ENCRYPTION_KEY_INACCESSIBLE"
-  | "REPLICATED_CLUSTER_ENCRYPTION_KEY_INACCESSIBLE"
-  | (string & {});
+  | "REPLICATED_CLUSTER_ENCRYPTION_KEY_INACCESSIBLE";
 export const ResourceSuspensionInfoSuspensionReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -2015,7 +1990,7 @@ export const RegulatoryStandard = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegulatoryStandard",
 }) as any as S.Schema<RegulatoryStandard>;
 
-export type RegulatoryStandardList = RegulatoryStandard[];
+export type RegulatoryStandardList = ReadonlyArray<RegulatoryStandard>;
 export const RegulatoryStandardList = /*@__PURE__*/ S.Array(
   RegulatoryStandard,
 ) as any as S.Schema<RegulatoryStandardList>;
@@ -2045,8 +2020,7 @@ export type AdditionalDetailSignalSourceEnum =
   | "SIGNAL_SOURCE_RESOURCE_METADATA"
   | "SIGNAL_SOURCE_SECURITY_FINDINGS"
   | "SIGNAL_SOURCE_RECOMMENDER"
-  | "SIGNAL_SOURCE_MODERN_OBSERVABILITY"
-  | (string & {});
+  | "SIGNAL_SOURCE_MODERN_OBSERVABILITY";
 export const AdditionalDetailSignalSourceEnum = /*@__PURE__*/ S.String;
 
 export type AdditionalDetailSignalTypeEnum =
@@ -2152,8 +2126,7 @@ export type AdditionalDetailSignalTypeEnum =
   | "SIGNAL_TYPE_VERSION_NEARING_END_OF_LIFE"
   | "SIGNAL_TYPE_HIGH_MAINTENANCE_DOWNTIME_RISK"
   | "SIGNAL_TYPE_LOW_CACHE_HIT_AND_MAINTENANCE_DOWNTIME"
-  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION"
-  | (string & {});
+  | "SIGNAL_TYPE_MISSING_ENHANCED_PROTECTION";
 export const AdditionalDetailSignalTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details related to signal. */
@@ -2205,7 +2178,7 @@ export const AdditionalDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdditionalDetail",
 }) as any as S.Schema<AdditionalDetail>;
 
-export type AdditionalDetailList = AdditionalDetail[];
+export type AdditionalDetailList = ReadonlyArray<AdditionalDetail>;
 export const AdditionalDetailList = /*@__PURE__*/ S.Array(
   AdditionalDetail,
 ) as any as S.Schema<AdditionalDetailList>;
@@ -2216,8 +2189,7 @@ export type SignalIssueSeverityEnum =
   | "ISSUE_SEVERITY_MEDIUM"
   | "ISSUE_SEVERITY_HIGH"
   | "ISSUE_SEVERITY_CRITICAL"
-  | "ISSUE_SEVERITY_IRRELEVANT"
-  | (string & {});
+  | "ISSUE_SEVERITY_IRRELEVANT";
 export const SignalIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Represents a signal. */
@@ -2243,7 +2215,7 @@ export const Signal = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Signal" }) as any as S.Schema<Signal>;
 
-export type SignalList = Signal[];
+export type SignalList = ReadonlyArray<Signal>;
 export const SignalList = /*@__PURE__*/ S.Array(
   Signal,
 ) as any as S.Schema<SignalList>;
@@ -2265,7 +2237,7 @@ export const SignalGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SignalGroup" }) as any as S.Schema<SignalGroup>;
 
-export type SignalGroupList = SignalGroup[];
+export type SignalGroupList = ReadonlyArray<SignalGroup>;
 export const SignalGroupList = /*@__PURE__*/ S.Array(
   SignalGroup,
 ) as any as S.Schema<SignalGroupList>;
@@ -2279,16 +2251,14 @@ export type DatabaseResourceSubResourceTypeEnum =
   | "SUB_RESOURCE_TYPE_READ_POOL"
   | "SUB_RESOURCE_TYPE_RESERVATION"
   | "SUB_RESOURCE_TYPE_DATASET"
-  | "SUB_RESOURCE_TYPE_OTHER"
-  | (string & {});
+  | "SUB_RESOURCE_TYPE_OTHER";
 export const DatabaseResourceSubResourceTypeEnum = /*@__PURE__*/ S.String;
 
 export type DatabaseResourceEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "EDITION_ENTERPRISE"
   | "EDITION_ENTERPRISE_PLUS"
-  | "EDITION_STANDARD"
-  | (string & {});
+  | "EDITION_STANDARD";
 export const DatabaseResourceEditionEnum = /*@__PURE__*/ S.String;
 
 /** Tag is a key value pair attached to a resource. */
@@ -2310,7 +2280,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
-export type TagList = Tag[];
+export type TagList = ReadonlyArray<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** MachineConfig describes the configuration of a machine specific to a Database Resource. */
@@ -2400,7 +2370,7 @@ export const DatabaseResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseResource",
 }) as any as S.Schema<DatabaseResource>;
 
-export type DatabaseResourceList = DatabaseResource[];
+export type DatabaseResourceList = ReadonlyArray<DatabaseResource>;
 export const DatabaseResourceList = /*@__PURE__*/ S.Array(
   DatabaseResource,
 ) as any as S.Schema<DatabaseResourceList>;
@@ -2421,7 +2391,7 @@ export const DatabaseResourceGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseResourceGroup",
 }) as any as S.Schema<DatabaseResourceGroup>;
 
-export type DatabaseResourceGroupList = DatabaseResourceGroup[];
+export type DatabaseResourceGroupList = ReadonlyArray<DatabaseResourceGroup>;
 export const DatabaseResourceGroupList = /*@__PURE__*/ S.Array(
   DatabaseResourceGroup,
 ) as any as S.Schema<DatabaseResourceGroupList>;
@@ -2510,7 +2480,7 @@ export const DatabaseResourceIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseResourceIssue",
 }) as any as S.Schema<DatabaseResourceIssue>;
 
-export type DatabaseResourceIssueList = DatabaseResourceIssue[];
+export type DatabaseResourceIssueList = ReadonlyArray<DatabaseResourceIssue>;
 export const DatabaseResourceIssueList = /*@__PURE__*/ S.Array(
   DatabaseResourceIssue,
 ) as any as S.Schema<DatabaseResourceIssueList>;

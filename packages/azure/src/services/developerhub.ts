@@ -12,18 +12,80 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The programming language used. */
+export type GenerationLanguage =
+  | "clojure"
+  | "csharp"
+  | "erlang"
+  | "go"
+  | "gomodule"
+  | "gradle"
+  | "java"
+  | "javascript"
+  | "php"
+  | "python"
+  | "ruby"
+  | "rust"
+  | "swift";
+export const GenerationLanguage = /*@__PURE__*/ S.String;
+
+/** The mode of generation to be used for generating Dockerfiles. */
+export type DockerfileGenerationMode = "enabled" | "disabled";
+export const DockerfileGenerationMode = /*@__PURE__*/ S.String;
+
+/** The mode of generation to be used for generating Manifest. */
+export type ManifestGenerationMode = "enabled" | "disabled";
+export const ManifestGenerationMode = /*@__PURE__*/ S.String;
+
+/** Determines the type of manifests to be generated. */
+export type GenerationManifestType = "helm" | "kube";
+export const GenerationManifestType = /*@__PURE__*/ S.String;
+
 export interface GeneratePreviewArtifactsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
-  body: unknown;
+  generationLanguage?: GenerationLanguage;
+  /** The version of the language image used for execution in the generated dockerfile. */
+  languageVersion?: string;
+  /** The version of the language image used for building the code in the generated dockerfile. */
+  builderVersion?: string;
+  /** The port the application is exposed on. */
+  port?: string;
+  /** The name of the app. */
+  appName?: string;
+  /** The directory to output the generated Dockerfile to. */
+  dockerfileOutputDirectory?: string;
+  /** The directory to output the generated manifests to. */
+  manifestOutputDirectory?: string;
+  dockerfileGenerationMode?: DockerfileGenerationMode;
+  manifestGenerationMode?: ManifestGenerationMode;
+  manifestType?: GenerationManifestType;
+  /** The name of the image to be generated. */
+  imageName?: string;
+  /** The namespace to deploy the application to. */
+  namespace?: string;
+  /** The tag to apply to the generated image. */
+  imageTag?: string;
 }
 export const GeneratePreviewArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    generationLanguage: S.optional(GenerationLanguage),
+    languageVersion: S.optional(S.String),
+    builderVersion: S.optional(S.String),
+    port: S.optional(S.String),
+    appName: S.optional(S.String),
+    dockerfileOutputDirectory: S.optional(S.String),
+    manifestOutputDirectory: S.optional(S.String),
+    dockerfileGenerationMode: S.optional(DockerfileGenerationMode),
+    manifestGenerationMode: S.optional(ManifestGenerationMode),
+    manifestType: S.optional(GenerationManifestType),
+    imageName: S.optional(S.String),
+    namespace: S.optional(S.String),
+    imageTag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -36,25 +98,36 @@ export const GeneratePreviewArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeneratePreviewArtifactsRequest",
 }) as any as S.Schema<GeneratePreviewArtifactsRequest>;
 
-export type GeneratePreviewArtifactsResponse = unknown;
-export const GeneratePreviewArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+/** Dockerfile and manifest artifacts generated as a preview are returned as a map<path string,content string> */
+export type GeneratePreviewArtifactsResponse = {
+  [key: string]: string | undefined;
+};
+export const GeneratePreviewArtifactsResponse = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<GeneratePreviewArtifactsResponse>;
+
+export type GeneratePreviewArtifactsResponse2 =
+  GeneratePreviewArtifactsResponse;
+export const GeneratePreviewArtifactsResponse2 = /*@__PURE__*/ S.suspend(() =>
+  GeneratePreviewArtifactsResponse.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "GeneratePreviewArtifactsResponse",
-}) as any as S.Schema<GeneratePreviewArtifactsResponse>;
+  identifier: "GeneratePreviewArtifactsResponse2",
+}) as any as S.Schema<GeneratePreviewArtifactsResponse2>;
 
 export interface GitHubOAuthRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
-  body?: unknown;
+  /** The URL the client will redirect to on successful authentication. If empty, no redirect will occur. */
+  redirectUrl?: string;
 }
 export const GitHubOAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    redirectUrl: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -116,8 +189,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -125,8 +197,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -240,7 +311,8 @@ export const GitHubOAuthResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GitHubOAuthResponse>;
 
 /** Singleton list response containing one GitHubOAuthResponse response */
-export type GitHubOAuthListResponseValueList = GitHubOAuthResponse[];
+export type GitHubOAuthListResponseValueList =
+  ReadonlyArray<GitHubOAuthResponse>;
 export const GitHubOAuthListResponseValueList = /*@__PURE__*/ S.Array(
   GitHubOAuthResponse,
 ) as any as S.Schema<GitHubOAuthListResponseValueList>;
@@ -295,11 +367,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -326,7 +398,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -346,47 +418,21 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
-export interface WorkflowCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workflow resource. */
-  workflowName: string;
-  body: unknown;
-}
-export const WorkflowCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workflowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevHub/workflows/{workflowName}",
-      code: 200,
-      apiVersion: "2023-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "WorkflowCreateOrUpdateRequest",
-}) as any as S.Schema<WorkflowCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type WorkflowCreateOrUpdateResponseTagsMap = {
+export type WorkflowCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const WorkflowCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const WorkflowCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<WorkflowCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<WorkflowCreateOrUpdateRequestTagsMap>;
 
 /** Determines the type of manifests within the repository. */
-export type ManifestType = "helm" | "kube" | "kustomize" | (string & {});
+export type ManifestType = "helm" | "kube" | "kustomize";
 export const ManifestType = /*@__PURE__*/ S.String;
 
-export type DeploymentPropertiesKubeManifestLocationsList = string[];
+export type DeploymentPropertiesKubeManifestLocationsList =
+  ReadonlyArray<string>;
 export const DeploymentPropertiesKubeManifestLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -446,6 +492,182 @@ export const ACR = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ACR" }) as any as S.Schema<ACR>;
 
 /** The fields needed for OIDC with GitHub. */
+export interface GitHubWorkflowProfileInputOidcCredentials {
+  /** Azure Application Client ID */
+  azureClientId?: string;
+  /** Azure Directory (tenant) ID */
+  azureTenantId?: string;
+}
+export const GitHubWorkflowProfileInputOidcCredentials =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      azureClientId: S.optional(S.String),
+      azureTenantId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GitHubWorkflowProfileInputOidcCredentials",
+  }) as any as S.Schema<GitHubWorkflowProfileInputOidcCredentials>;
+
+/** Describes the status of the workflow run */
+export type WorkflowRunStatus = "queued" | "inprogress" | "completed";
+export const WorkflowRunStatus = /*@__PURE__*/ S.String;
+
+export interface WorkflowRunInput {
+  workflowRunStatus?: WorkflowRunStatus;
+}
+export const WorkflowRunInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowRunStatus: S.optional(WorkflowRunStatus),
+  }),
+).annotate({
+  identifier: "WorkflowRunInput",
+}) as any as S.Schema<WorkflowRunInput>;
+
+/** GitHub Workflow Profile */
+export interface GitHubWorkflowProfileInput {
+  /** Repository Owner */
+  repositoryOwner?: string;
+  /** Repository Name */
+  repositoryName?: string;
+  /** Repository Branch Name */
+  branchName?: string;
+  /** Path to the Dockerfile within the repository. */
+  dockerfile?: string;
+  /** Path to Dockerfile Build Context within the repository. */
+  dockerBuildContext?: string;
+  deploymentProperties?: DeploymentProperties;
+  /** Kubernetes namespace the application is deployed to. */
+  namespace?: string;
+  acr?: ACR;
+  /** The fields needed for OIDC with GitHub. */
+  oidcCredentials?: GitHubWorkflowProfileInputOidcCredentials;
+  /** The Azure Kubernetes Cluster Resource the application will be deployed to. */
+  aksResourceId?: string;
+  lastWorkflowRun?: WorkflowRunInput;
+}
+export const GitHubWorkflowProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repositoryOwner: S.optional(S.String),
+    repositoryName: S.optional(S.String),
+    branchName: S.optional(S.String),
+    dockerfile: S.optional(S.String),
+    dockerBuildContext: S.optional(S.String),
+    deploymentProperties: S.optional(DeploymentProperties),
+    namespace: S.optional(S.String),
+    acr: S.optional(ACR),
+    oidcCredentials: S.optional(GitHubWorkflowProfileInputOidcCredentials),
+    aksResourceId: S.optional(S.String),
+    lastWorkflowRun: S.optional(WorkflowRunInput),
+  }),
+).annotate({
+  identifier: "GitHubWorkflowProfileInput",
+}) as any as S.Schema<GitHubWorkflowProfileInput>;
+
+/** Properties used for generating artifacts such as Dockerfiles and manifests. */
+export interface ArtifactGenerationProperties {
+  generationLanguage?: GenerationLanguage;
+  /** The version of the language image used for execution in the generated dockerfile. */
+  languageVersion?: string;
+  /** The version of the language image used for building the code in the generated dockerfile. */
+  builderVersion?: string;
+  /** The port the application is exposed on. */
+  port?: string;
+  /** The name of the app. */
+  appName?: string;
+  /** The directory to output the generated Dockerfile to. */
+  dockerfileOutputDirectory?: string;
+  /** The directory to output the generated manifests to. */
+  manifestOutputDirectory?: string;
+  dockerfileGenerationMode?: DockerfileGenerationMode;
+  manifestGenerationMode?: ManifestGenerationMode;
+  manifestType?: GenerationManifestType;
+  /** The name of the image to be generated. */
+  imageName?: string;
+  /** The namespace to deploy the application to. */
+  namespace?: string;
+  /** The tag to apply to the generated image. */
+  imageTag?: string;
+}
+export const ArtifactGenerationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    generationLanguage: S.optional(GenerationLanguage),
+    languageVersion: S.optional(S.String),
+    builderVersion: S.optional(S.String),
+    port: S.optional(S.String),
+    appName: S.optional(S.String),
+    dockerfileOutputDirectory: S.optional(S.String),
+    manifestOutputDirectory: S.optional(S.String),
+    dockerfileGenerationMode: S.optional(DockerfileGenerationMode),
+    manifestGenerationMode: S.optional(ManifestGenerationMode),
+    manifestType: S.optional(GenerationManifestType),
+    imageName: S.optional(S.String),
+    namespace: S.optional(S.String),
+    imageTag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ArtifactGenerationProperties",
+}) as any as S.Schema<ArtifactGenerationProperties>;
+
+/** Workflow properties */
+export interface WorkflowPropertiesInput {
+  /** Profile of a github workflow. */
+  githubWorkflowProfile?: GitHubWorkflowProfileInput;
+  /** Properties for generating artifacts like dockerfile and manifests. */
+  artifactGenerationProperties?: ArtifactGenerationProperties;
+}
+export const WorkflowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    githubWorkflowProfile: S.optional(GitHubWorkflowProfileInput),
+    artifactGenerationProperties: S.optional(ArtifactGenerationProperties),
+  }),
+).annotate({
+  identifier: "WorkflowPropertiesInput",
+}) as any as S.Schema<WorkflowPropertiesInput>;
+
+export interface WorkflowCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workflow resource. */
+  workflowName: string;
+  /** Resource tags. */
+  tags?: WorkflowCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of a workflow. */
+  properties?: WorkflowPropertiesInput;
+}
+export const WorkflowCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workflowName: S.String.pipe(T.Label()),
+    tags: S.optional(WorkflowCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(WorkflowPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevHub/workflows/{workflowName}",
+      code: 200,
+      apiVersion: "2023-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "WorkflowCreateOrUpdateRequest",
+}) as any as S.Schema<WorkflowCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type WorkflowCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkflowCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkflowCreateOrUpdateResponseTagsMap>;
+
+/** The fields needed for OIDC with GitHub. */
 export interface GitHubWorkflowProfileOidcCredentials {
   /** Azure Application Client ID */
   azureClientId?: string;
@@ -463,21 +685,8 @@ export const GitHubWorkflowProfileOidcCredentials = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GitHubWorkflowProfileOidcCredentials>;
 
 /** The status of the Pull Request submitted against the users repository. */
-export type PullRequestStatus =
-  | "unknown"
-  | "submitted"
-  | "merged"
-  | "removed"
-  | (string & {});
+export type PullRequestStatus = "unknown" | "submitted" | "merged" | "removed";
 export const PullRequestStatus = /*@__PURE__*/ S.String;
-
-/** Describes the status of the workflow run */
-export type WorkflowRunStatus =
-  | "queued"
-  | "inprogress"
-  | "completed"
-  | (string & {});
-export const WorkflowRunStatus = /*@__PURE__*/ S.String;
 
 export interface WorkflowRun {
   /** Describes if the workflow run succeeded. */
@@ -498,11 +707,7 @@ export const WorkflowRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowRun" }) as any as S.Schema<WorkflowRun>;
 
 /** Determines the authorization status of requests. */
-export type AuthorizationStatus =
-  | "Authorized"
-  | "NotFound"
-  | "Error"
-  | (string & {});
+export type AuthorizationStatus = "Authorized" | "NotFound" | "Error";
 export const AuthorizationStatus = /*@__PURE__*/ S.String;
 
 /** GitHub Workflow Profile */
@@ -554,81 +759,6 @@ export const GitHubWorkflowProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GitHubWorkflowProfile",
 }) as any as S.Schema<GitHubWorkflowProfile>;
-
-/** The programming language used. */
-export type GenerationLanguage =
-  | "clojure"
-  | "csharp"
-  | "erlang"
-  | "go"
-  | "gomodule"
-  | "gradle"
-  | "java"
-  | "javascript"
-  | "php"
-  | "python"
-  | "ruby"
-  | "rust"
-  | "swift"
-  | (string & {});
-export const GenerationLanguage = /*@__PURE__*/ S.String;
-
-/** The mode of generation to be used for generating Dockerfiles. */
-export type DockerfileGenerationMode = "enabled" | "disabled" | (string & {});
-export const DockerfileGenerationMode = /*@__PURE__*/ S.String;
-
-/** The mode of generation to be used for generating Manifest. */
-export type ManifestGenerationMode = "enabled" | "disabled" | (string & {});
-export const ManifestGenerationMode = /*@__PURE__*/ S.String;
-
-/** Determines the type of manifests to be generated. */
-export type GenerationManifestType = "helm" | "kube" | (string & {});
-export const GenerationManifestType = /*@__PURE__*/ S.String;
-
-/** Properties used for generating artifacts such as Dockerfiles and manifests. */
-export interface ArtifactGenerationProperties {
-  generationLanguage?: GenerationLanguage;
-  /** The version of the language image used for execution in the generated dockerfile. */
-  languageVersion?: string;
-  /** The version of the language image used for building the code in the generated dockerfile. */
-  builderVersion?: string;
-  /** The port the application is exposed on. */
-  port?: string;
-  /** The name of the app. */
-  appName?: string;
-  /** The directory to output the generated Dockerfile to. */
-  dockerfileOutputDirectory?: string;
-  /** The directory to output the generated manifests to. */
-  manifestOutputDirectory?: string;
-  dockerfileGenerationMode?: DockerfileGenerationMode;
-  manifestGenerationMode?: ManifestGenerationMode;
-  manifestType?: GenerationManifestType;
-  /** The name of the image to be generated. */
-  imageName?: string;
-  /** The namespace to deploy the application to. */
-  namespace?: string;
-  /** The tag to apply to the generated image. */
-  imageTag?: string;
-}
-export const ArtifactGenerationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    generationLanguage: S.optional(GenerationLanguage),
-    languageVersion: S.optional(S.String),
-    builderVersion: S.optional(S.String),
-    port: S.optional(S.String),
-    appName: S.optional(S.String),
-    dockerfileOutputDirectory: S.optional(S.String),
-    manifestOutputDirectory: S.optional(S.String),
-    dockerfileGenerationMode: S.optional(DockerfileGenerationMode),
-    manifestGenerationMode: S.optional(ManifestGenerationMode),
-    manifestType: S.optional(GenerationManifestType),
-    imageName: S.optional(S.String),
-    namespace: S.optional(S.String),
-    imageTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ArtifactGenerationProperties",
-}) as any as S.Schema<ArtifactGenerationProperties>;
 
 /** Workflow properties */
 export interface WorkflowProperties {
@@ -832,7 +962,7 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 
 /** The list of workflows. */
-export type WorkflowListResultValueList = Workflow[];
+export type WorkflowListResultValueList = ReadonlyArray<Workflow>;
 export const WorkflowListResultValueList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowListResultValueList>;
@@ -878,6 +1008,14 @@ export const WorkflowListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkflowListByResourceGroupRequest",
 }) as any as S.Schema<WorkflowListByResourceGroupRequest>;
 
+export type WorkflowUpdateTagsRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkflowUpdateTagsRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkflowUpdateTagsRequestTagsMap>;
+
 export interface WorkflowUpdateTagsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -885,14 +1023,14 @@ export interface WorkflowUpdateTagsRequest {
   resourceGroupName: string;
   /** The name of the workflow resource. */
   workflowName: string;
-  body: unknown;
+  tags?: WorkflowUpdateTagsRequestTagsMap;
 }
 export const WorkflowUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workflowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(WorkflowUpdateTagsRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -948,12 +1086,12 @@ export type GeneratePreviewArtifactsError = AzureOpError;
 /** Generate preview dockerfile and manifests. */
 export const GeneratePreviewArtifacts: API.OperationMethod<
   GeneratePreviewArtifactsRequest,
-  GeneratePreviewArtifactsResponse,
+  GeneratePreviewArtifactsResponse2,
   GeneratePreviewArtifactsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: GeneratePreviewArtifactsRequest,
-  output: GeneratePreviewArtifactsResponse,
+  output: GeneratePreviewArtifactsResponse2,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

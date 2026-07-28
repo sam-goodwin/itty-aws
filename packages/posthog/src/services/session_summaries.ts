@@ -12,7 +12,7 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** List of session IDs to summarize (max 300) */
-export type CreateSessionSummariesRequestSessionIdsList = string[];
+export type CreateSessionSummariesRequestSessionIdsList = ReadonlyArray<string>;
 export const CreateSessionSummariesRequestSessionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -43,7 +43,7 @@ export const CreateSessionSummariesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSessionSummariesRequest>;
 
 /** List of session IDs to summarize (max 300) */
-export type SessionSummariesSessionIdsList = string[];
+export type SessionSummariesSessionIdsList = ReadonlyArray<string>;
 export const SessionSummariesSessionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SessionSummariesSessionIdsList>;

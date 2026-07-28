@@ -12,46 +12,13 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface AccessPoliciesCreateOrUpdateRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** Name of an Azure Resource group. */
-  resourceGroupName: string;
-  /** The name of the Time Series Insights environment associated with the specified resource group. */
-  environmentName: string;
-  /** Name of the access policy. */
-  accessPolicyName: string;
-  body: unknown;
-}
-export const AccessPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    environmentName: S.String.pipe(T.Label()),
-    accessPolicyName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
-      code: 200,
-      apiVersion: "2020-05-15",
-    }),
-  ),
-).annotate({
-  identifier: "AccessPoliciesCreateOrUpdateRequest",
-}) as any as S.Schema<AccessPoliciesCreateOrUpdateRequest>;
-
 /** A role defining the data plane operations that a principal can perform on a Time Series Insights client. */
-export type AccessPolicyResourcePropertiesRolesItem =
-  | "Reader"
-  | "Contributor"
-  | (string & {});
+export type AccessPolicyResourcePropertiesRolesItem = "Reader" | "Contributor";
 export const AccessPolicyResourcePropertiesRolesItem = /*@__PURE__*/ S.String;
 
 /** The list of roles the principal is assigned on the environment. */
 export type AccessPolicyResourcePropertiesRolesList =
-  AccessPolicyResourcePropertiesRolesItem[];
+  ReadonlyArray<AccessPolicyResourcePropertiesRolesItem>;
 export const AccessPolicyResourcePropertiesRolesList = /*@__PURE__*/ S.Array(
   AccessPolicyResourcePropertiesRolesItem,
 ) as any as S.Schema<AccessPolicyResourcePropertiesRolesList>;
@@ -73,6 +40,36 @@ export const AccessPolicyResourceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccessPolicyResourceProperties",
 }) as any as S.Schema<AccessPolicyResourceProperties>;
+
+export interface AccessPoliciesCreateOrUpdateRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** Name of an Azure Resource group. */
+  resourceGroupName: string;
+  /** The name of the Time Series Insights environment associated with the specified resource group. */
+  environmentName: string;
+  /** Name of the access policy. */
+  accessPolicyName: string;
+  properties: AccessPolicyResourceProperties;
+}
+export const AccessPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    environmentName: S.String.pipe(T.Label()),
+    accessPolicyName: S.String.pipe(T.Label()),
+    properties: AccessPolicyResourceProperties,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
+      code: 200,
+      apiVersion: "2020-05-15",
+    }),
+  ),
+).annotate({
+  identifier: "AccessPoliciesCreateOrUpdateRequest",
+}) as any as S.Schema<AccessPoliciesCreateOrUpdateRequest>;
 
 export interface AccessPoliciesCreateOrUpdateResponse {
   /** Resource Id */
@@ -226,7 +223,8 @@ export const AccessPolicyResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessPolicyResource>;
 
 /** Result of the List access policies operation. */
-export type AccessPolicyListResponseValueList = AccessPolicyResource[];
+export type AccessPolicyListResponseValueList =
+  ReadonlyArray<AccessPolicyResource>;
 export const AccessPolicyListResponseValueList = /*@__PURE__*/ S.Array(
   AccessPolicyResource,
 ) as any as S.Schema<AccessPolicyListResponseValueList>;
@@ -244,6 +242,33 @@ export const AccessPolicyListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessPolicyListResponse",
 }) as any as S.Schema<AccessPolicyListResponse>;
 
+/** A role defining the data plane operations that a principal can perform on a Time Series Insights client. */
+export type AccessPolicyMutablePropertiesRolesItem = "Reader" | "Contributor";
+export const AccessPolicyMutablePropertiesRolesItem = /*@__PURE__*/ S.String;
+
+/** The list of roles the principal is assigned on the environment. */
+export type AccessPolicyMutablePropertiesRolesList =
+  ReadonlyArray<AccessPolicyMutablePropertiesRolesItem>;
+export const AccessPolicyMutablePropertiesRolesList = /*@__PURE__*/ S.Array(
+  AccessPolicyMutablePropertiesRolesItem,
+) as any as S.Schema<AccessPolicyMutablePropertiesRolesList>;
+
+/** An object that represents a set of mutable access policy resource properties. */
+export interface AccessPolicyMutableProperties {
+  /** An description of the access policy. */
+  description?: string;
+  /** The list of roles the principal is assigned on the environment. */
+  roles?: AccessPolicyMutablePropertiesRolesList;
+}
+export const AccessPolicyMutableProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    roles: S.optional(AccessPolicyMutablePropertiesRolesList),
+  }),
+).annotate({
+  identifier: "AccessPolicyMutableProperties",
+}) as any as S.Schema<AccessPolicyMutableProperties>;
+
 export interface AccessPoliciesUpdateRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -253,7 +278,7 @@ export interface AccessPoliciesUpdateRequest {
   environmentName: string;
   /** The name of the Time Series Insights access policy associated with the specified environment. */
   accessPolicyName: string;
-  body: unknown;
+  properties?: AccessPolicyMutableProperties;
 }
 export const AccessPoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -261,7 +286,7 @@ export const AccessPoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     environmentName: S.String.pipe(T.Label()),
     accessPolicyName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(AccessPolicyMutableProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -294,6 +319,37 @@ export const AccessPoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessPoliciesUpdateResponse",
 }) as any as S.Schema<AccessPoliciesUpdateResponse>;
 
+/** Key-value pairs of additional properties for the resource. */
+export type EnvironmentsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EnvironmentsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<EnvironmentsCreateOrUpdateRequestTagsMap>;
+
+/** The kind of the environment. */
+export type EnvironmentsCreateOrUpdateRequestKind = "Gen1" | "Gen2";
+export const EnvironmentsCreateOrUpdateRequestKind = /*@__PURE__*/ S.String;
+
+/** The name of this SKU. */
+export type SkuName = "S1" | "S2" | "P1" | "L1";
+export const SkuName = /*@__PURE__*/ S.String;
+
+/** The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate. */
+export interface Sku {
+  /** The name of this SKU. */
+  name: SkuName;
+  /** The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created. */
+  capacity: number;
+}
+export const Sku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: SkuName,
+    capacity: S.Number,
+  }),
+).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+
 export interface EnvironmentsCreateOrUpdateRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -301,14 +357,24 @@ export interface EnvironmentsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the environment */
   environmentName: string;
-  body: unknown;
+  /** The location of the resource. */
+  location: string;
+  /** Key-value pairs of additional properties for the resource. */
+  tags?: EnvironmentsCreateOrUpdateRequestTagsMap;
+  /** The kind of the environment. */
+  kind: EnvironmentsCreateOrUpdateRequestKind;
+  /** The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate. */
+  sku: Sku;
 }
 export const EnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     environmentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.String,
+    tags: S.optional(EnvironmentsCreateOrUpdateRequestTagsMap),
+    kind: EnvironmentsCreateOrUpdateRequestKind,
+    sku: Sku,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -330,29 +396,8 @@ export const EnvironmentsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<EnvironmentsCreateOrUpdateResponseTagsMap>;
 
-/** The name of this SKU. */
-export type SkuName = "S1" | "S2" | "P1" | "L1" | (string & {});
-export const SkuName = /*@__PURE__*/ S.String;
-
-/** The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate. */
-export interface Sku {
-  /** The name of this SKU. */
-  name: SkuName;
-  /** The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created. */
-  capacity: number;
-}
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SkuName,
-    capacity: S.Number,
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
-
 /** The kind of the environment. */
-export type EnvironmentsCreateOrUpdateResponseKind =
-  | "Gen1"
-  | "Gen2"
-  | (string & {});
+export type EnvironmentsCreateOrUpdateResponseKind = "Gen1" | "Gen2";
 export const EnvironmentsCreateOrUpdateResponseKind = /*@__PURE__*/ S.String;
 
 export interface EnvironmentsCreateOrUpdateResponse {
@@ -455,7 +500,7 @@ export const EnvironmentsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EnvironmentsGetResponseTagsMap>;
 
 /** The kind of the environment. */
-export type EnvironmentsGetResponseKind = "Gen1" | "Gen2" | (string & {});
+export type EnvironmentsGetResponseKind = "Gen1" | "Gen2";
 export const EnvironmentsGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface EnvironmentsGetResponse {
@@ -519,7 +564,7 @@ export const EnvironmentResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EnvironmentResourceTagsMap>;
 
 /** The kind of the environment. */
-export type EnvironmentResourceKind = "Gen1" | "Gen2" | (string & {});
+export type EnvironmentResourceKind = "Gen1" | "Gen2";
 export const EnvironmentResourceKind = /*@__PURE__*/ S.String;
 
 /** An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. */
@@ -554,7 +599,8 @@ export const EnvironmentResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentResource>;
 
 /** Result of the List Environments operation. */
-export type EnvironmentListResponseValueList = EnvironmentResource[];
+export type EnvironmentListResponseValueList =
+  ReadonlyArray<EnvironmentResource>;
 export const EnvironmentListResponseValueList = /*@__PURE__*/ S.Array(
   EnvironmentResource,
 ) as any as S.Schema<EnvironmentListResponseValueList>;
@@ -592,6 +638,19 @@ export const EnvironmentsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "EnvironmentsListBySubscriptionRequest",
 }) as any as S.Schema<EnvironmentsListBySubscriptionRequest>;
 
+/** The kind of the environment. */
+export type EnvironmentsUpdateRequestKind = "Gen1" | "Gen2";
+export const EnvironmentsUpdateRequestKind = /*@__PURE__*/ S.String;
+
+/** Key-value pairs of additional properties for the environment. */
+export type EnvironmentsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EnvironmentsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<EnvironmentsUpdateRequestTagsMap>;
+
 export interface EnvironmentsUpdateRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -599,14 +658,18 @@ export interface EnvironmentsUpdateRequest {
   resourceGroupName: string;
   /** The name of the Time Series Insights environment associated with the specified resource group. */
   environmentName: string;
-  body: unknown;
+  /** The kind of the environment. */
+  kind: EnvironmentsUpdateRequestKind;
+  /** Key-value pairs of additional properties for the environment. */
+  tags?: EnvironmentsUpdateRequestTagsMap;
 }
 export const EnvironmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     environmentName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: EnvironmentsUpdateRequestKind,
+    tags: S.optional(EnvironmentsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -629,7 +692,7 @@ export const EnvironmentsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EnvironmentsUpdateResponseTagsMap>;
 
 /** The kind of the environment. */
-export type EnvironmentsUpdateResponseKind = "Gen1" | "Gen2" | (string & {});
+export type EnvironmentsUpdateResponseKind = "Gen1" | "Gen2";
 export const EnvironmentsUpdateResponseKind = /*@__PURE__*/ S.String;
 
 export interface EnvironmentsUpdateResponse {
@@ -662,6 +725,52 @@ export const EnvironmentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentsUpdateResponse",
 }) as any as S.Schema<EnvironmentsUpdateResponse>;
 
+/** Key-value pairs of additional properties for the resource. */
+export type EventSourcesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EventSourcesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<EventSourcesCreateOrUpdateRequestTagsMap>;
+
+/** The kind of the event source. */
+export type EventSourcesCreateOrUpdateRequestKind =
+  | "Microsoft.EventHub"
+  | "Microsoft.IoTHub";
+export const EventSourcesCreateOrUpdateRequestKind = /*@__PURE__*/ S.String;
+
+/** An enum that represents the format of the local timestamp property that needs to be set. */
+export type LocalTimestampFormat = "Embedded";
+export const LocalTimestampFormat = /*@__PURE__*/ S.String;
+
+/** An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded. */
+export interface LocalTimestampTimeZoneOffset {
+  /** The event property that will be contain the offset information to calculate the local timestamp. When the LocalTimestampFormat is Iana, the property name will contain the name of the column which contains IANA Timezone Name (eg: Americas/Los Angeles). When LocalTimestampFormat is Timespan, it contains the name of property which contains values representing the offset (eg: P1D or 1.00:00:00) */
+  propertyName?: string;
+}
+export const LocalTimestampTimeZoneOffset = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    propertyName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LocalTimestampTimeZoneOffset",
+}) as any as S.Schema<LocalTimestampTimeZoneOffset>;
+
+/** An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events. */
+export interface LocalTimestamp {
+  /** An enum that represents the format of the local timestamp property that needs to be set. */
+  format?: LocalTimestampFormat;
+  /** An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded. */
+  timeZoneOffset?: LocalTimestampTimeZoneOffset;
+}
+export const LocalTimestamp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    format: S.optional(LocalTimestampFormat),
+    timeZoneOffset: S.optional(LocalTimestampTimeZoneOffset),
+  }),
+).annotate({ identifier: "LocalTimestamp" }) as any as S.Schema<LocalTimestamp>;
+
 export interface EventSourcesCreateOrUpdateRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -671,7 +780,14 @@ export interface EventSourcesCreateOrUpdateRequest {
   environmentName: string;
   /** Name of the event source. */
   eventSourceName: string;
-  body: unknown;
+  /** The location of the resource. */
+  location: string;
+  /** Key-value pairs of additional properties for the resource. */
+  tags?: EventSourcesCreateOrUpdateRequestTagsMap;
+  /** The kind of the event source. */
+  kind: EventSourcesCreateOrUpdateRequestKind;
+  /** An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events. */
+  localTimestamp?: LocalTimestamp;
 }
 export const EventSourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -679,7 +795,10 @@ export const EventSourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     environmentName: S.String.pipe(T.Label()),
     eventSourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.String,
+    tags: S.optional(EventSourcesCreateOrUpdateRequestTagsMap),
+    kind: EventSourcesCreateOrUpdateRequestKind,
+    localTimestamp: S.optional(LocalTimestamp),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -704,8 +823,7 @@ export const EventSourcesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 /** The kind of the event source. */
 export type EventSourcesCreateOrUpdateResponseKind =
   | "Microsoft.EventHub"
-  | "Microsoft.IoTHub"
-  | (string & {});
+  | "Microsoft.IoTHub";
 export const EventSourcesCreateOrUpdateResponseKind = /*@__PURE__*/ S.String;
 
 export interface EventSourcesCreateOrUpdateResponse {
@@ -810,8 +928,7 @@ export const EventSourcesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 /** The kind of the event source. */
 export type EventSourcesGetResponseKind =
   | "Microsoft.EventHub"
-  | "Microsoft.IoTHub"
-  | (string & {});
+  | "Microsoft.IoTHub";
 export const EventSourcesGetResponseKind = /*@__PURE__*/ S.String;
 
 export interface EventSourcesGetResponse {
@@ -875,10 +992,7 @@ export const EventSourceResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<EventSourceResourceTagsMap>;
 
 /** The kind of the event source. */
-export type EventSourceResourceKind =
-  | "Microsoft.EventHub"
-  | "Microsoft.IoTHub"
-  | (string & {});
+export type EventSourceResourceKind = "Microsoft.EventHub" | "Microsoft.IoTHub";
 export const EventSourceResourceKind = /*@__PURE__*/ S.String;
 
 /** An environment receives data from one or more event sources. Each event source has associated connection info that allows the Time Series Insights ingress pipeline to connect to and pull data from the event source */
@@ -910,7 +1024,8 @@ export const EventSourceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventSourceResource>;
 
 /** Result of the List EventSources operation. */
-export type EventSourceListResponseValueList = EventSourceResource[];
+export type EventSourceListResponseValueList =
+  ReadonlyArray<EventSourceResource>;
 export const EventSourceListResponseValueList = /*@__PURE__*/ S.Array(
   EventSourceResource,
 ) as any as S.Schema<EventSourceListResponseValueList>;
@@ -928,6 +1043,21 @@ export const EventSourceListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventSourceListResponse",
 }) as any as S.Schema<EventSourceListResponse>;
 
+/** The kind of the event source. */
+export type EventSourcesUpdateRequestKind =
+  | "Microsoft.EventHub"
+  | "Microsoft.IoTHub";
+export const EventSourcesUpdateRequestKind = /*@__PURE__*/ S.String;
+
+/** Key-value pairs of additional properties for the event source. */
+export type EventSourcesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EventSourcesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<EventSourcesUpdateRequestTagsMap>;
+
 export interface EventSourcesUpdateRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -937,7 +1067,10 @@ export interface EventSourcesUpdateRequest {
   environmentName: string;
   /** The name of the Time Series Insights event source associated with the specified environment. */
   eventSourceName: string;
-  body: unknown;
+  /** The kind of the event source. */
+  kind: EventSourcesUpdateRequestKind;
+  /** Key-value pairs of additional properties for the event source. */
+  tags?: EventSourcesUpdateRequestTagsMap;
 }
 export const EventSourcesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -945,7 +1078,8 @@ export const EventSourcesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     environmentName: S.String.pipe(T.Label()),
     eventSourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: EventSourcesUpdateRequestKind,
+    tags: S.optional(EventSourcesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -970,8 +1104,7 @@ export const EventSourcesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 /** The kind of the event source. */
 export type EventSourcesUpdateResponseKind =
   | "Microsoft.EventHub"
-  | "Microsoft.IoTHub"
-  | (string & {});
+  | "Microsoft.IoTHub";
 export const EventSourcesUpdateResponseKind = /*@__PURE__*/ S.String;
 
 export interface EventSourcesUpdateResponse {
@@ -1052,7 +1185,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** Dimensions of blobs, including blob type and access tier. */
-export type MetricSpecificationDimensionsList = Dimension[];
+export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -1072,7 +1205,8 @@ export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricAvailability>;
 
 /** Retention policies of a resource metric. */
-export type MetricSpecificationAvailabilitiesList = MetricAvailability[];
+export type MetricSpecificationAvailabilitiesList =
+  ReadonlyArray<MetricAvailability>;
 export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   MetricAvailability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
@@ -1116,7 +1250,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList =
-  MetricSpecification[];
+  ReadonlyArray<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -1139,7 +1273,8 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** A list of Azure Monitoring log definitions. */
-export type ServiceSpecificationLogSpecificationsList = LogSpecification[];
+export type ServiceSpecificationLogSpecificationsList =
+  ReadonlyArray<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -1194,7 +1329,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of Time Series Insights operations supported by the Microsoft.TimeSeriesInsights resource provider. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1215,6 +1350,73 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
+/** Key-value pairs of additional properties for the resource. */
+export type ReferenceDataSetsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ReferenceDataSetsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ReferenceDataSetsCreateOrUpdateRequestTagsMap>;
+
+/** The type of the key property. */
+export type ReferenceDataSetKeyPropertyType =
+  | "String"
+  | "Double"
+  | "Bool"
+  | "DateTime";
+export const ReferenceDataSetKeyPropertyType = /*@__PURE__*/ S.String;
+
+/** A key property for the reference data set. A reference data set can have multiple key properties. */
+export interface ReferenceDataSetKeyProperty {
+  /** The name of the key property. */
+  name?: string;
+  /** The type of the key property. */
+  type?: ReferenceDataSetKeyPropertyType;
+}
+export const ReferenceDataSetKeyProperty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(ReferenceDataSetKeyPropertyType),
+  }),
+).annotate({
+  identifier: "ReferenceDataSetKeyProperty",
+}) as any as S.Schema<ReferenceDataSetKeyProperty>;
+
+/** The list of key properties for the reference data set. */
+export type ReferenceDataSetCreationPropertiesKeyPropertiesList =
+  ReadonlyArray<ReferenceDataSetKeyProperty>;
+export const ReferenceDataSetCreationPropertiesKeyPropertiesList =
+  /*@__PURE__*/ S.Array(
+    ReferenceDataSetKeyProperty,
+  ) as any as S.Schema<ReferenceDataSetCreationPropertiesKeyPropertiesList>;
+
+/** The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used. */
+export type ReferenceDataSetCreationPropertiesDataStringComparisonBehavior =
+  | "Ordinal"
+  | "OrdinalIgnoreCase";
+export const ReferenceDataSetCreationPropertiesDataStringComparisonBehavior =
+  /*@__PURE__*/ S.String;
+
+/** Properties used to create a reference data set. */
+export interface ReferenceDataSetCreationProperties {
+  /** The list of key properties for the reference data set. */
+  keyProperties: ReferenceDataSetCreationPropertiesKeyPropertiesList;
+  /** The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used. */
+  dataStringComparisonBehavior?: ReferenceDataSetCreationPropertiesDataStringComparisonBehavior;
+}
+export const ReferenceDataSetCreationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyProperties: ReferenceDataSetCreationPropertiesKeyPropertiesList,
+    dataStringComparisonBehavior: S.optional(
+      ReferenceDataSetCreationPropertiesDataStringComparisonBehavior,
+    ),
+  }),
+).annotate({
+  identifier: "ReferenceDataSetCreationProperties",
+}) as any as S.Schema<ReferenceDataSetCreationProperties>;
+
 export interface ReferenceDataSetsCreateOrUpdateRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1224,7 +1426,11 @@ export interface ReferenceDataSetsCreateOrUpdateRequest {
   environmentName: string;
   /** Name of the reference data set. */
   referenceDataSetName: string;
-  body: unknown;
+  /** The location of the resource. */
+  location: string;
+  /** Key-value pairs of additional properties for the resource. */
+  tags?: ReferenceDataSetsCreateOrUpdateRequestTagsMap;
+  properties: ReferenceDataSetCreationProperties;
 }
 export const ReferenceDataSetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1233,7 +1439,9 @@ export const ReferenceDataSetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       environmentName: S.String.pipe(T.Label()),
       referenceDataSetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.String,
+      tags: S.optional(ReferenceDataSetsCreateOrUpdateRequestTagsMap),
+      properties: ReferenceDataSetCreationProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1256,34 +1464,9 @@ export const ReferenceDataSetsCreateOrUpdateResponseTagsMap =
     S.String,
   ) as any as S.Schema<ReferenceDataSetsCreateOrUpdateResponseTagsMap>;
 
-/** The type of the key property. */
-export type ReferenceDataSetKeyPropertyType =
-  | "String"
-  | "Double"
-  | "Bool"
-  | "DateTime"
-  | (string & {});
-export const ReferenceDataSetKeyPropertyType = /*@__PURE__*/ S.String;
-
-/** A key property for the reference data set. A reference data set can have multiple key properties. */
-export interface ReferenceDataSetKeyProperty {
-  /** The name of the key property. */
-  name?: string;
-  /** The type of the key property. */
-  type?: ReferenceDataSetKeyPropertyType;
-}
-export const ReferenceDataSetKeyProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ReferenceDataSetKeyPropertyType),
-  }),
-).annotate({
-  identifier: "ReferenceDataSetKeyProperty",
-}) as any as S.Schema<ReferenceDataSetKeyProperty>;
-
 /** The list of key properties for the reference data set. */
 export type ReferenceDataSetResourcePropertiesKeyPropertiesList =
-  ReferenceDataSetKeyProperty[];
+  ReadonlyArray<ReferenceDataSetKeyProperty>;
 export const ReferenceDataSetResourcePropertiesKeyPropertiesList =
   /*@__PURE__*/ S.Array(
     ReferenceDataSetKeyProperty,
@@ -1292,8 +1475,7 @@ export const ReferenceDataSetResourcePropertiesKeyPropertiesList =
 /** The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used. */
 export type ReferenceDataSetResourcePropertiesDataStringComparisonBehavior =
   | "Ordinal"
-  | "OrdinalIgnoreCase"
-  | (string & {});
+  | "OrdinalIgnoreCase";
 export const ReferenceDataSetResourcePropertiesDataStringComparisonBehavior =
   /*@__PURE__*/ S.String;
 
@@ -1304,8 +1486,7 @@ export type ProvisioningState =
   | "Updating"
   | "Succeeded"
   | "Failed"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the reference data set. */
@@ -1520,7 +1701,8 @@ export const ReferenceDataSetResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReferenceDataSetResource>;
 
 /** Result of the List Reference Data Sets operation. */
-export type ReferenceDataSetListResponseValueList = ReferenceDataSetResource[];
+export type ReferenceDataSetListResponseValueList =
+  ReadonlyArray<ReferenceDataSetResource>;
 export const ReferenceDataSetListResponseValueList = /*@__PURE__*/ S.Array(
   ReferenceDataSetResource,
 ) as any as S.Schema<ReferenceDataSetListResponseValueList>;
@@ -1538,6 +1720,15 @@ export const ReferenceDataSetListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReferenceDataSetListResponse",
 }) as any as S.Schema<ReferenceDataSetListResponse>;
 
+/** Key-value pairs of additional properties for the reference data set. */
+export type ReferenceDataSetsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ReferenceDataSetsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ReferenceDataSetsUpdateRequestTagsMap>;
+
 export interface ReferenceDataSetsUpdateRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
@@ -1547,7 +1738,8 @@ export interface ReferenceDataSetsUpdateRequest {
   environmentName: string;
   /** The name of the Time Series Insights reference data set associated with the specified environment. */
   referenceDataSetName: string;
-  body: unknown;
+  /** Key-value pairs of additional properties for the reference data set. */
+  tags?: ReferenceDataSetsUpdateRequestTagsMap;
 }
 export const ReferenceDataSetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1555,7 +1747,7 @@ export const ReferenceDataSetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     environmentName: S.String.pipe(T.Label()),
     referenceDataSetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ReferenceDataSetsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",

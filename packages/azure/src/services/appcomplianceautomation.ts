@@ -12,6 +12,35 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Evidence type */
+export type EvidenceType = "File" | "AutoCollectedEvidence" | "Data";
+export const EvidenceType = /*@__PURE__*/ S.String;
+
+/** Evidence's properties. */
+export interface EvidencePropertiesInput {
+  /** Evidence type. */
+  evidenceType?: EvidenceType;
+  /** The path of the file in storage. */
+  filePath: string;
+  /** Extra data considered as evidence. */
+  extraData?: string;
+  /** Control id. */
+  controlId?: string;
+  /** Responsibility id. */
+  responsibilityId?: string;
+}
+export const EvidencePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evidenceType: S.optional(EvidenceType),
+    filePath: S.String,
+    extraData: S.optional(S.String),
+    controlId: S.optional(S.String),
+    responsibilityId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EvidencePropertiesInput",
+}) as any as S.Schema<EvidencePropertiesInput>;
+
 export interface EvidenceCreateOrUpdateRequest {
   /** Report Name. */
   reportName: string;
@@ -21,7 +50,8 @@ export interface EvidenceCreateOrUpdateRequest {
   offerGuid?: string;
   /** The tenant id of the report creator. */
   reportCreatorTenantId?: string;
-  body: unknown;
+  /** Evidence property. */
+  properties: EvidencePropertiesInput;
 }
 export const EvidenceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -29,7 +59,7 @@ export const EvidenceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     evidenceName: S.String.pipe(T.Label()),
     offerGuid: S.optional(S.String.pipe(T.Query())),
     reportCreatorTenantId: S.optional(S.String.pipe(T.Query())),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: EvidencePropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -47,8 +77,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -56,8 +85,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -86,14 +114,6 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
-/** Evidence type */
-export type EvidenceType =
-  | "File"
-  | "AutoCollectedEvidence"
-  | "Data"
-  | (string & {});
-export const EvidenceType = /*@__PURE__*/ S.String;
-
 /** Resource provisioning states. */
 export type ProvisioningState =
   | "Succeeded"
@@ -103,8 +123,7 @@ export type ProvisioningState =
   | "Deleting"
   | "Fixing"
   | "Verifying"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Evidence's properties. */
@@ -193,13 +212,17 @@ export interface EvidenceDownloadRequest {
   reportName: string;
   /** The evidence name. */
   evidenceName: string;
-  body: unknown;
+  /** Tenant id. */
+  reportCreatorTenantId?: string;
+  /** The offerGuid which mapping to the reports. */
+  offerGuid?: string;
 }
 export const EvidenceDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportName: S.String.pipe(T.Label()),
     evidenceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    reportCreatorTenantId: S.optional(S.String),
+    offerGuid: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -351,7 +374,8 @@ export const EvidenceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvidenceResource>;
 
 /** The EvidenceResource items on this page */
-export type EvidenceResourceListResultValueList = EvidenceResource[];
+export type EvidenceResourceListResultValueList =
+  ReadonlyArray<EvidenceResource>;
 export const EvidenceResourceListResultValueList = /*@__PURE__*/ S.Array(
   EvidenceResource,
 ) as any as S.Schema<EvidenceResourceListResultValueList>;
@@ -409,11 +433,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -440,7 +464,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -461,12 +485,16 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 export interface ProviderActionsCheckNameAvailabilityRequest {
-  body: unknown;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
 }
 export const ProviderActionsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -482,8 +510,7 @@ export const ProviderActionsCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type ProviderActionsCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const ProviderActionsCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -507,12 +534,13 @@ export const ProviderActionsCheckNameAvailabilityResponse =
   }) as any as S.Schema<ProviderActionsCheckNameAvailabilityResponse>;
 
 export interface ProviderActionsGetCollectionCountRequest {
-  body: unknown;
+  /** The resource type. */
+  type?: string;
 }
 export const ProviderActionsGetCollectionCountRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -539,12 +567,13 @@ export const GetCollectionCountResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCollectionCountResponse>;
 
 export interface ProviderActionsGetOverviewStatusRequest {
-  body: unknown;
+  /** The resource type. */
+  type?: string;
 }
 export const ProviderActionsGetOverviewStatusRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -572,7 +601,7 @@ export const StatusItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatusItem" }) as any as S.Schema<StatusItem>;
 
 /** List of different status items. */
-export type GetOverviewStatusResponseStatusListList = StatusItem[];
+export type GetOverviewStatusResponseStatusListList = ReadonlyArray<StatusItem>;
 export const GetOverviewStatusResponseStatusListList = /*@__PURE__*/ S.Array(
   StatusItem,
 ) as any as S.Schema<GetOverviewStatusResponseStatusListList>;
@@ -590,13 +619,24 @@ export const GetOverviewStatusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOverviewStatusResponse",
 }) as any as S.Schema<GetOverviewStatusResponse>;
 
+/** List of subscription ids to be query. If the list is null or empty, the API will query all the subscriptions of the user. */
+export type ProviderActionsListInUseStorageAccountsRequestSubscriptionIdsList =
+  ReadonlyArray<string>;
+export const ProviderActionsListInUseStorageAccountsRequestSubscriptionIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ProviderActionsListInUseStorageAccountsRequestSubscriptionIdsList>;
+
 export interface ProviderActionsListInUseStorageAccountsRequest {
-  body: unknown;
+  /** List of subscription ids to be query. If the list is null or empty, the API will query all the subscriptions of the user. */
+  subscriptionIds?: ProviderActionsListInUseStorageAccountsRequestSubscriptionIdsList;
 }
 export const ProviderActionsListInUseStorageAccountsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      subscriptionIds: S.optional(
+        ProviderActionsListInUseStorageAccountsRequestSubscriptionIdsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -631,7 +671,7 @@ export const StorageInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The storage account list which in use in related reports. */
 export type ListInUseStorageAccountsResponseStorageAccountListList =
-  StorageInfo[];
+  ReadonlyArray<StorageInfo>;
 export const ListInUseStorageAccountsResponseStorageAccountListList =
   /*@__PURE__*/ S.Array(
     StorageInfo,
@@ -652,12 +692,21 @@ export const ListInUseStorageAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInUseStorageAccountsResponse",
 }) as any as S.Schema<ListInUseStorageAccountsResponse>;
 
+/** List of subscription ids to be onboarded */
+export type ProviderActionsOnboardRequestSubscriptionIdsList =
+  ReadonlyArray<string>;
+export const ProviderActionsOnboardRequestSubscriptionIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ProviderActionsOnboardRequestSubscriptionIdsList>;
+
 export interface ProviderActionsOnboardRequest {
-  body: unknown;
+  /** List of subscription ids to be onboarded */
+  subscriptionIds: ProviderActionsOnboardRequestSubscriptionIdsList;
 }
 export const ProviderActionsOnboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    subscriptionIds: ProviderActionsOnboardRequestSubscriptionIdsList,
   }).pipe(
     T.Http({
       method: "POST",
@@ -671,7 +720,7 @@ export const ProviderActionsOnboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProviderActionsOnboardRequest>;
 
 /** List of subscription ids that are onboarded */
-export type OnboardResponseSubscriptionIdsList = string[];
+export type OnboardResponseSubscriptionIdsList = ReadonlyArray<string>;
 export const OnboardResponseSubscriptionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnboardResponseSubscriptionIdsList>;
@@ -689,13 +738,22 @@ export const OnboardResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnboardResponse",
 }) as any as S.Schema<OnboardResponse>;
 
+/** List of resource ids to be evaluated */
+export type ProviderActionsTriggerEvaluationRequestResourceIdsList =
+  ReadonlyArray<string>;
+export const ProviderActionsTriggerEvaluationRequestResourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ProviderActionsTriggerEvaluationRequestResourceIdsList>;
+
 export interface ProviderActionsTriggerEvaluationRequest {
-  body: unknown;
+  /** List of resource ids to be evaluated */
+  resourceIds: ProviderActionsTriggerEvaluationRequestResourceIdsList;
 }
 export const ProviderActionsTriggerEvaluationRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceIds: ProviderActionsTriggerEvaluationRequestResourceIdsList,
     }).pipe(
       T.Http({
         method: "POST",
@@ -709,13 +767,13 @@ export const ProviderActionsTriggerEvaluationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProviderActionsTriggerEvaluationRequest>;
 
 /** List of resource ids to be evaluated */
-export type TriggerEvaluationPropertyResourceIdsList = string[];
+export type TriggerEvaluationPropertyResourceIdsList = ReadonlyArray<string>;
 export const TriggerEvaluationPropertyResourceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggerEvaluationPropertyResourceIdsList>;
 
 /** Indicates the resource status. */
-export type ResourceStatus = "Healthy" | "Unhealthy" | (string & {});
+export type ResourceStatus = "Healthy" | "Unhealthy";
 export const ResourceStatus = /*@__PURE__*/ S.String;
 
 /** A class represent the quick assessment. */
@@ -750,7 +808,8 @@ export const QuickAssessment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuickAssessment>;
 
 /** List of quick assessments */
-export type TriggerEvaluationPropertyQuickAssessmentsList = QuickAssessment[];
+export type TriggerEvaluationPropertyQuickAssessmentsList =
+  ReadonlyArray<QuickAssessment>;
 export const TriggerEvaluationPropertyQuickAssessmentsList =
   /*@__PURE__*/ S.Array(
     QuickAssessment,
@@ -791,29 +850,8 @@ export const TriggerEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggerEvaluationResponse",
 }) as any as S.Schema<TriggerEvaluationResponse>;
 
-export interface ReportCreateOrUpdateRequest {
-  /** Report Name. */
-  reportName: string;
-  body: unknown;
-}
-export const ReportCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
-      code: 200,
-      apiVersion: "2024-06-27",
-    }),
-  ),
-).annotate({
-  identifier: "ReportCreateOrUpdateRequest",
-}) as any as S.Schema<ReportCreateOrUpdateRequest>;
-
 /** Resource Origin. */
-export type ResourceOrigin = "Azure" | "AWS" | "GCP" | (string & {});
+export type ResourceOrigin = "Azure" | "AWS" | "GCP";
 export const ResourceOrigin = /*@__PURE__*/ S.String;
 
 /** Single resource Id's metadata. */
@@ -842,28 +880,77 @@ export const ResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceMetadata>;
 
 /** List of resource data. */
-export type ReportPropertiesResourcesList = ResourceMetadata[];
+export type ReportPropertiesInputResourcesList =
+  ReadonlyArray<ResourceMetadata>;
+export const ReportPropertiesInputResourcesList = /*@__PURE__*/ S.Array(
+  ResourceMetadata,
+) as any as S.Schema<ReportPropertiesInputResourcesList>;
+
+/** Create Report's properties. */
+export interface ReportPropertiesInput {
+  /** Report collection trigger time. */
+  triggerTime: string;
+  /** Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell. An example of valid timezone id is "Pacific Standard Time". */
+  timeZone: string;
+  /** List of resource data. */
+  resources: ReportPropertiesInputResourcesList;
+  /** A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003". */
+  offerGuid?: string;
+  /** The information of 'bring your own storage' binding to the report */
+  storageInfo?: StorageInfo;
+}
+export const ReportPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    triggerTime: S.String,
+    timeZone: S.String,
+    resources: ReportPropertiesInputResourcesList,
+    offerGuid: S.optional(S.String),
+    storageInfo: S.optional(StorageInfo),
+  }),
+).annotate({
+  identifier: "ReportPropertiesInput",
+}) as any as S.Schema<ReportPropertiesInput>;
+
+export interface ReportCreateOrUpdateRequest {
+  /** Report Name. */
+  reportName: string;
+  /** Report property. */
+  properties: ReportPropertiesInput;
+}
+export const ReportCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reportName: S.String.pipe(T.Label()),
+    properties: ReportPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}",
+      code: 200,
+      apiVersion: "2024-06-27",
+    }),
+  ),
+).annotate({
+  identifier: "ReportCreateOrUpdateRequest",
+}) as any as S.Schema<ReportCreateOrUpdateRequest>;
+
+/** List of resource data. */
+export type ReportPropertiesResourcesList = ReadonlyArray<ResourceMetadata>;
 export const ReportPropertiesResourcesList = /*@__PURE__*/ S.Array(
   ResourceMetadata,
 ) as any as S.Schema<ReportPropertiesResourcesList>;
 
 /** Report status. */
-export type ReportStatus =
-  | "Active"
-  | "Failed"
-  | "Reviewing"
-  | "Disabled"
-  | (string & {});
+export type ReportStatus = "Active" | "Failed" | "Reviewing" | "Disabled";
 export const ReportStatus = /*@__PURE__*/ S.String;
 
 /** List of report error codes. */
-export type ReportPropertiesErrorsList = string[];
+export type ReportPropertiesErrorsList = ReadonlyArray<string>;
 export const ReportPropertiesErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReportPropertiesErrorsList>;
 
 /** List of subscription Ids. */
-export type ReportPropertiesSubscriptionsList = string[];
+export type ReportPropertiesSubscriptionsList = ReadonlyArray<string>;
 export const ReportPropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReportPropertiesSubscriptionsList>;
@@ -921,7 +1008,7 @@ export const ControlSyncRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlSyncRecord>;
 
 /** The control records list to be synchronized. */
-export type CertSyncRecordControlsList = ControlSyncRecord[];
+export type CertSyncRecordControlsList = ReadonlyArray<ControlSyncRecord>;
 export const CertSyncRecordControlsList = /*@__PURE__*/ S.Array(
   ControlSyncRecord,
 ) as any as S.Schema<CertSyncRecordControlsList>;
@@ -947,7 +1034,7 @@ export const CertSyncRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CertSyncRecord" }) as any as S.Schema<CertSyncRecord>;
 
 /** List of synchronized certification records. */
-export type ReportPropertiesCertRecordsList = CertSyncRecord[];
+export type ReportPropertiesCertRecordsList = ReadonlyArray<CertSyncRecord>;
 export const ReportPropertiesCertRecordsList = /*@__PURE__*/ S.Array(
   CertSyncRecord,
 ) as any as S.Schema<ReportPropertiesCertRecordsList>;
@@ -1074,7 +1161,7 @@ export const ReportFixRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportFixRequest>;
 
 /** Indicates whether the fix action is Succeeded or Failed. */
-export type Result = "Succeeded" | "Failed" | (string & {});
+export type Result = "Succeeded" | "Failed";
 export const Result = /*@__PURE__*/ S.String;
 
 /** Report fix result. */
@@ -1174,12 +1261,11 @@ export type InputType =
   | "MultiSelectDropdown"
   | "MultiSelectDropdownCustom"
   | "Group"
-  | "Upload"
-  | (string & {});
+  | "Upload";
 export const InputType = /*@__PURE__*/ S.String;
 
 /** Option id list. */
-export type ScopingQuestionOptionIdsList = string[];
+export type ScopingQuestionOptionIdsList = ReadonlyArray<string>;
 export const ScopingQuestionOptionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScopingQuestionOptionIdsList>;
@@ -1199,12 +1285,11 @@ export type Rule =
   | "PublisherVerification"
   | "DynamicDropdown"
   | "PreventNonEnglishChar"
-  | "ValidEmail"
-  | (string & {});
+  | "ValidEmail";
 export const Rule = /*@__PURE__*/ S.String;
 
 /** The rule of the question. */
-export type ScopingQuestionRulesList = Rule[];
+export type ScopingQuestionRulesList = ReadonlyArray<Rule>;
 export const ScopingQuestionRulesList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<ScopingQuestionRulesList>;
@@ -1238,7 +1323,7 @@ export const ScopingQuestion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScopingQuestion>;
 
 /** List of scoping questions. */
-export type ScopingQuestionsQuestionsList = ScopingQuestion[];
+export type ScopingQuestionsQuestionsList = ReadonlyArray<ScopingQuestion>;
 export const ScopingQuestionsQuestionsList = /*@__PURE__*/ S.Array(
   ScopingQuestion,
 ) as any as S.Schema<ScopingQuestionsQuestionsList>;
@@ -1317,7 +1402,7 @@ export const ReportResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportResource" }) as any as S.Schema<ReportResource>;
 
 /** The ReportResource items on this page */
-export type ReportResourceListResultValueList = ReportResource[];
+export type ReportResourceListResultValueList = ReadonlyArray<ReportResource>;
 export const ReportResourceListResultValueList = /*@__PURE__*/ S.Array(
   ReportResource,
 ) as any as S.Schema<ReportResourceListResultValueList>;
@@ -1341,13 +1426,17 @@ export const ReportResourceListResult = /*@__PURE__*/ S.suspend(() =>
 export interface ReportNestedResourceCheckNameAvailabilityRequest {
   /** Report Name. */
   reportName: string;
-  body: unknown;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
 }
 export const ReportNestedResourceCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reportName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1363,8 +1452,7 @@ export const ReportNestedResourceCheckNameAvailabilityRequest =
 /** The reason why the given name is not available. */
 export type ReportNestedResourceCheckNameAvailabilityResponseReason =
   | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+  | "AlreadyExists";
 export const ReportNestedResourceCheckNameAvailabilityResponseReason =
   /*@__PURE__*/ S.String;
 
@@ -1392,12 +1480,13 @@ export const ReportNestedResourceCheckNameAvailabilityResponse =
 export interface ReportSyncCertRecordRequest {
   /** Report Name. */
   reportName: string;
-  body: unknown;
+  /** certification record to be synchronized. */
+  certRecord: CertSyncRecord;
 }
 export const ReportSyncCertRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    certRecord: CertSyncRecord,
   }).pipe(
     T.Http({
       method: "POST",
@@ -1423,15 +1512,48 @@ export const SyncCertRecordResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SyncCertRecordResponse",
 }) as any as S.Schema<SyncCertRecordResponse>;
 
+/** List of resource data. */
+export type ReportPatchPropertiesInputResourcesList =
+  ReadonlyArray<ResourceMetadata>;
+export const ReportPatchPropertiesInputResourcesList = /*@__PURE__*/ S.Array(
+  ResourceMetadata,
+) as any as S.Schema<ReportPatchPropertiesInputResourcesList>;
+
+/** Patch Report's properties. */
+export interface ReportPatchPropertiesInput {
+  /** Report collection trigger time. */
+  triggerTime?: string;
+  /** Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell. An example of valid timezone id is "Pacific Standard Time". */
+  timeZone?: string;
+  /** List of resource data. */
+  resources?: ReportPatchPropertiesInputResourcesList;
+  /** A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003". */
+  offerGuid?: string;
+  /** The information of 'bring your own storage' binding to the report */
+  storageInfo?: StorageInfo;
+}
+export const ReportPatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    triggerTime: S.optional(S.String),
+    timeZone: S.optional(S.String),
+    resources: S.optional(ReportPatchPropertiesInputResourcesList),
+    offerGuid: S.optional(S.String),
+    storageInfo: S.optional(StorageInfo),
+  }),
+).annotate({
+  identifier: "ReportPatchPropertiesInput",
+}) as any as S.Schema<ReportPatchPropertiesInput>;
+
 export interface ReportUpdateRequest {
   /** Report Name. */
   reportName: string;
-  body: unknown;
+  /** Report property. */
+  properties?: ReportPatchPropertiesInput;
 }
 export const ReportUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ReportPatchPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1503,33 +1625,8 @@ export const ReportVerificationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReportVerificationResult",
 }) as any as S.Schema<ReportVerificationResult>;
 
-export interface ScopingConfigurationCreateOrUpdateRequest {
-  /** Report Name. */
-  reportName: string;
-  /** The scoping configuration of the specific report. */
-  scopingConfigurationName: string;
-  body: unknown;
-}
-export const ScopingConfigurationCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reportName: S.String.pipe(T.Label()),
-      scopingConfigurationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
-        code: 200,
-        apiVersion: "2024-06-27",
-      }),
-    ),
-  ).annotate({
-    identifier: "ScopingConfigurationCreateOrUpdateRequest",
-  }) as any as S.Schema<ScopingConfigurationCreateOrUpdateRequest>;
-
 /** Question answer value list. */
-export type ScopingAnswerAnswersList = string[];
+export type ScopingAnswerAnswersList = ReadonlyArray<string>;
 export const ScopingAnswerAnswersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScopingAnswerAnswersList>;
@@ -1549,7 +1646,55 @@ export const ScopingAnswer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScopingAnswer" }) as any as S.Schema<ScopingAnswer>;
 
 /** List of scoping question answers. */
-export type ScopingConfigurationPropertiesAnswersList = ScopingAnswer[];
+export type ScopingConfigurationPropertiesInputAnswersList =
+  ReadonlyArray<ScopingAnswer>;
+export const ScopingConfigurationPropertiesInputAnswersList =
+  /*@__PURE__*/ S.Array(
+    ScopingAnswer,
+  ) as any as S.Schema<ScopingConfigurationPropertiesInputAnswersList>;
+
+/** ScopingConfiguration's properties. */
+export interface ScopingConfigurationPropertiesInput {
+  /** List of scoping question answers. */
+  answers?: ScopingConfigurationPropertiesInputAnswersList;
+}
+export const ScopingConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    answers: S.optional(ScopingConfigurationPropertiesInputAnswersList),
+  }),
+).annotate({
+  identifier: "ScopingConfigurationPropertiesInput",
+}) as any as S.Schema<ScopingConfigurationPropertiesInput>;
+
+export interface ScopingConfigurationCreateOrUpdateRequest {
+  /** Report Name. */
+  reportName: string;
+  /** The scoping configuration of the specific report. */
+  scopingConfigurationName: string;
+  /** ScopingConfiguration property. */
+  properties: ScopingConfigurationPropertiesInput;
+}
+export const ScopingConfigurationCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      reportName: S.String.pipe(T.Label()),
+      scopingConfigurationName: S.String.pipe(T.Label()),
+      properties: ScopingConfigurationPropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.AppComplianceAutomation/reports/{reportName}/scopingConfigurations/{scopingConfigurationName}",
+        code: 200,
+        apiVersion: "2024-06-27",
+      }),
+    ),
+  ).annotate({
+    identifier: "ScopingConfigurationCreateOrUpdateRequest",
+  }) as any as S.Schema<ScopingConfigurationCreateOrUpdateRequest>;
+
+/** List of scoping question answers. */
+export type ScopingConfigurationPropertiesAnswersList =
+  ReadonlyArray<ScopingAnswer>;
 export const ScopingConfigurationPropertiesAnswersList = /*@__PURE__*/ S.Array(
   ScopingAnswer,
 ) as any as S.Schema<ScopingConfigurationPropertiesAnswersList>;
@@ -1716,7 +1861,7 @@ export const ScopingConfigurationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The ScopingConfigurationResource items on this page */
 export type ScopingConfigurationResourceListResultValueList =
-  ScopingConfigurationResource[];
+  ReadonlyArray<ScopingConfigurationResource>;
 export const ScopingConfigurationResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     ScopingConfigurationResource,
@@ -1739,18 +1884,33 @@ export const ScopingConfigurationResourceListResult = /*@__PURE__*/ S.suspend(
   identifier: "ScopingConfigurationResourceListResult",
 }) as any as S.Schema<ScopingConfigurationResourceListResult>;
 
+/** Indicates the download type. */
+export type DownloadType =
+  | "ComplianceReport"
+  | "CompliancePdfReport"
+  | "ComplianceDetailedPdfReport"
+  | "ResourceList";
+export const DownloadType = /*@__PURE__*/ S.String;
+
 export interface SnapshotDownloadRequest {
   /** Report Name. */
   reportName: string;
   /** Snapshot Name. */
   snapshotName: string;
-  body: unknown;
+  /** Tenant id. */
+  reportCreatorTenantId?: string;
+  /** Indicates the download type. */
+  downloadType: DownloadType;
+  /** The offerGuid which mapping to the reports. */
+  offerGuid?: string;
 }
 export const SnapshotDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportName: S.String.pipe(T.Label()),
     snapshotName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    reportCreatorTenantId: S.optional(S.String),
+    downloadType: DownloadType,
+    offerGuid: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1784,7 +1944,7 @@ export const ResourceItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceItem" }) as any as S.Schema<ResourceItem>;
 
 /** Resource list of the report */
-export type DownloadResponseResourceListList = ResourceItem[];
+export type DownloadResponseResourceListList = ReadonlyArray<ResourceItem>;
 export const DownloadResponseResourceListList = /*@__PURE__*/ S.Array(
   ResourceItem,
 ) as any as S.Schema<DownloadResponseResourceListList>;
@@ -1794,8 +1954,7 @@ export type ControlStatus =
   | "Passed"
   | "Failed"
   | "NotApplicable"
-  | "PendingApproval"
-  | (string & {});
+  | "PendingApproval";
 export const ControlStatus = /*@__PURE__*/ S.String;
 
 /** Object that includes all the content for single compliance result. */
@@ -1845,7 +2004,8 @@ export const ComplianceReportItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComplianceReportItem>;
 
 /** List of the compliance result */
-export type DownloadResponseComplianceReportList = ComplianceReportItem[];
+export type DownloadResponseComplianceReportList =
+  ReadonlyArray<ComplianceReportItem>;
 export const DownloadResponseComplianceReportList = /*@__PURE__*/ S.Array(
   ComplianceReportItem,
 ) as any as S.Schema<DownloadResponseComplianceReportList>;
@@ -1928,8 +2088,7 @@ export type SnapshotPropertiesReportSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SnapshotPropertiesReportSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1938,8 +2097,7 @@ export type SnapshotPropertiesReportSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SnapshotPropertiesReportSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1978,8 +2136,7 @@ export type CategoryStatus =
   | "Passed"
   | "Failed"
   | "NotApplicable"
-  | "PendingApproval"
-  | (string & {});
+  | "PendingApproval";
 export const CategoryStatus = /*@__PURE__*/ S.String;
 
 /** Indicates the control family status. */
@@ -1987,20 +2144,15 @@ export type ControlFamilyStatus =
   | "Passed"
   | "Failed"
   | "NotApplicable"
-  | "PendingApproval"
-  | (string & {});
+  | "PendingApproval";
 export const ControlFamilyStatus = /*@__PURE__*/ S.String;
 
 /** Indicates the customer responsibility type. */
-export type ResponsibilityType =
-  | "Automated"
-  | "ScopedManual"
-  | "Manual"
-  | (string & {});
+export type ResponsibilityType = "Automated" | "ScopedManual" | "Manual";
 export const ResponsibilityType = /*@__PURE__*/ S.String;
 
 /** Indicates the customer responsibility severity. */
-export type ResponsibilitySeverity = "High" | "Medium" | "Low" | (string & {});
+export type ResponsibilitySeverity = "High" | "Medium" | "Low";
 export const ResponsibilitySeverity = /*@__PURE__*/ S.String;
 
 /** Indicates the customer responsibility status. */
@@ -2008,21 +2160,15 @@ export type ResponsibilityStatus =
   | "Passed"
   | "Failed"
   | "NotApplicable"
-  | "PendingApproval"
-  | (string & {});
+  | "PendingApproval";
 export const ResponsibilityStatus = /*@__PURE__*/ S.String;
 
 /** Indicates the customer responsibility supported cloud environment. */
-export type ResponsibilityEnvironment =
-  | "Azure"
-  | "AWS"
-  | "GCP"
-  | "General"
-  | (string & {});
+export type ResponsibilityEnvironment = "Azure" | "AWS" | "GCP" | "General";
 export const ResponsibilityEnvironment = /*@__PURE__*/ S.String;
 
 /** List of recommendation id. */
-export type ResponsibilityResourceRecommendationIdsList = string[];
+export type ResponsibilityResourceRecommendationIdsList = ReadonlyArray<string>;
 export const ResponsibilityResourceRecommendationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2060,13 +2206,14 @@ export const ResponsibilityResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResponsibilityResource>;
 
 /** List of resource. */
-export type ResponsibilityResourceListList = ResponsibilityResource[];
+export type ResponsibilityResourceListList =
+  ReadonlyArray<ResponsibilityResource>;
 export const ResponsibilityResourceListList = /*@__PURE__*/ S.Array(
   ResponsibilityResource,
 ) as any as S.Schema<ResponsibilityResourceListList>;
 
 /** Indicates whether this solution is the recommended. */
-export type IsRecommendSolution = "true" | "false" | (string & {});
+export type IsRecommendSolution = "true" | "false";
 export const IsRecommendSolution = /*@__PURE__*/ S.String;
 
 /** A class represent the recommendation solution. */
@@ -2090,7 +2237,7 @@ export const RecommendationSolution = /*@__PURE__*/ S.suspend(() =>
 
 /** List of recommendation solutions. */
 export type RecommendationRecommendationSolutionsList =
-  RecommendationSolution[];
+  ReadonlyArray<RecommendationSolution>;
 export const RecommendationRecommendationSolutionsList = /*@__PURE__*/ S.Array(
   RecommendationSolution,
 ) as any as S.Schema<RecommendationRecommendationSolutionsList>;
@@ -2115,13 +2262,14 @@ export const Recommendation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 
 /** List of recommendation. */
-export type ResponsibilityRecommendationListList = Recommendation[];
+export type ResponsibilityRecommendationListList =
+  ReadonlyArray<Recommendation>;
 export const ResponsibilityRecommendationListList = /*@__PURE__*/ S.Array(
   Recommendation,
 ) as any as S.Schema<ResponsibilityRecommendationListList>;
 
 /** List of evidence file url. */
-export type ResponsibilityEvidenceFilesList = string[];
+export type ResponsibilityEvidenceFilesList = ReadonlyArray<string>;
 export const ResponsibilityEvidenceFilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResponsibilityEvidenceFilesList>;
@@ -2177,7 +2325,7 @@ export const Responsibility = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Responsibility" }) as any as S.Schema<Responsibility>;
 
 /** List of customer responsibility. */
-export type ControlResponsibilitiesList = Responsibility[];
+export type ControlResponsibilitiesList = ReadonlyArray<Responsibility>;
 export const ControlResponsibilitiesList = /*@__PURE__*/ S.Array(
   Responsibility,
 ) as any as S.Schema<ControlResponsibilitiesList>;
@@ -2212,7 +2360,7 @@ export const Control = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Control" }) as any as S.Schema<Control>;
 
 /** List of controls. */
-export type ControlFamilyControlsList = Control[];
+export type ControlFamilyControlsList = ReadonlyArray<Control>;
 export const ControlFamilyControlsList = /*@__PURE__*/ S.Array(
   Control,
 ) as any as S.Schema<ControlFamilyControlsList>;
@@ -2235,7 +2383,7 @@ export const ControlFamily = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ControlFamily" }) as any as S.Schema<ControlFamily>;
 
 /** List of control families. */
-export type CategoryControlFamiliesList = ControlFamily[];
+export type CategoryControlFamiliesList = ReadonlyArray<ControlFamily>;
 export const CategoryControlFamiliesList = /*@__PURE__*/ S.Array(
   ControlFamily,
 ) as any as S.Schema<CategoryControlFamiliesList>;
@@ -2258,7 +2406,7 @@ export const Category = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
 /** List of categories. */
-export type ComplianceResultCategoriesList = Category[];
+export type ComplianceResultCategoriesList = ReadonlyArray<Category>;
 export const ComplianceResultCategoriesList = /*@__PURE__*/ S.Array(
   Category,
 ) as any as S.Schema<ComplianceResultCategoriesList>;
@@ -2280,7 +2428,8 @@ export const ComplianceResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComplianceResult>;
 
 /** List of compliance results. */
-export type SnapshotPropertiesComplianceResultsList = ComplianceResult[];
+export type SnapshotPropertiesComplianceResultsList =
+  ReadonlyArray<ComplianceResult>;
 export const SnapshotPropertiesComplianceResultsList = /*@__PURE__*/ S.Array(
   ComplianceResult,
 ) as any as S.Schema<SnapshotPropertiesComplianceResultsList>;
@@ -2403,7 +2552,8 @@ export const SnapshotResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotResource>;
 
 /** The SnapshotResource items on this page */
-export type SnapshotResourceListResultValueList = SnapshotResource[];
+export type SnapshotResourceListResultValueList =
+  ReadonlyArray<SnapshotResource>;
 export const SnapshotResourceListResultValueList = /*@__PURE__*/ S.Array(
   SnapshotResource,
 ) as any as S.Schema<SnapshotResourceListResultValueList>;
@@ -2424,18 +2574,88 @@ export const SnapshotResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnapshotResourceListResult",
 }) as any as S.Schema<SnapshotResourceListResult>;
 
+/** Webhook status. */
+export type WebhookStatus = "Enabled" | "Disabled";
+export const WebhookStatus = /*@__PURE__*/ S.String;
+
+/** whether to send notification under any event. */
+export type SendAllEvents = "true" | "false";
+export const SendAllEvents = /*@__PURE__*/ S.String;
+
+/** notification event. */
+export type NotificationEvent =
+  | "generate_snapshot_success"
+  | "generate_snapshot_failed"
+  | "assessment_failure"
+  | "report_configuration_changes"
+  | "report_deletion";
+export const NotificationEvent = /*@__PURE__*/ S.String;
+
+/** under which event notification should be sent. */
+export type WebhookPropertiesInputEventsList = ReadonlyArray<NotificationEvent>;
+export const WebhookPropertiesInputEventsList = /*@__PURE__*/ S.Array(
+  NotificationEvent,
+) as any as S.Schema<WebhookPropertiesInputEventsList>;
+
+/** content type */
+export type ContentType = "application/json";
+export const ContentType = /*@__PURE__*/ S.String;
+
+/** whether to update webhookKey. */
+export type UpdateWebhookKey = "true" | "false";
+export const UpdateWebhookKey = /*@__PURE__*/ S.String;
+
+/** whether to enable ssl verification */
+export type EnableSslVerification = "true" | "false";
+export const EnableSslVerification = /*@__PURE__*/ S.String;
+
+/** Webhook properties. */
+export interface WebhookPropertiesInput {
+  /** Webhook status. */
+  status?: WebhookStatus;
+  /** whether to send notification under any event. */
+  sendAllEvents?: SendAllEvents;
+  /** under which event notification should be sent. */
+  events?: WebhookPropertiesInputEventsList;
+  /** webhook payload url */
+  payloadUrl?: string;
+  /** content type */
+  contentType?: ContentType;
+  /** webhook secret token. If not set, this field value is null; otherwise, please set a string value. */
+  webhookKey?: string;
+  /** whether to update webhookKey. */
+  updateWebhookKey?: UpdateWebhookKey;
+  /** whether to enable ssl verification */
+  enableSslVerification?: EnableSslVerification;
+}
+export const WebhookPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(WebhookStatus),
+    sendAllEvents: S.optional(SendAllEvents),
+    events: S.optional(WebhookPropertiesInputEventsList),
+    payloadUrl: S.optional(S.String),
+    contentType: S.optional(ContentType),
+    webhookKey: S.optional(S.String),
+    updateWebhookKey: S.optional(UpdateWebhookKey),
+    enableSslVerification: S.optional(EnableSslVerification),
+  }),
+).annotate({
+  identifier: "WebhookPropertiesInput",
+}) as any as S.Schema<WebhookPropertiesInput>;
+
 export interface WebhookCreateOrUpdateRequest {
   /** Report Name. */
   reportName: string;
   /** Webhook Name. */
   webhookName: string;
-  body: unknown;
+  /** Webhook property. */
+  properties: WebhookPropertiesInput;
 }
 export const WebhookCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportName: S.String.pipe(T.Label()),
     webhookName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: WebhookPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2448,52 +2668,18 @@ export const WebhookCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebhookCreateOrUpdateRequest",
 }) as any as S.Schema<WebhookCreateOrUpdateRequest>;
 
-/** Webhook status. */
-export type WebhookStatus = "Enabled" | "Disabled" | (string & {});
-export const WebhookStatus = /*@__PURE__*/ S.String;
-
-/** whether to send notification under any event. */
-export type SendAllEvents = "true" | "false" | (string & {});
-export const SendAllEvents = /*@__PURE__*/ S.String;
-
-/** notification event. */
-export type NotificationEvent =
-  | "generate_snapshot_success"
-  | "generate_snapshot_failed"
-  | "assessment_failure"
-  | "report_configuration_changes"
-  | "report_deletion"
-  | (string & {});
-export const NotificationEvent = /*@__PURE__*/ S.String;
-
 /** under which event notification should be sent. */
-export type WebhookPropertiesEventsList = NotificationEvent[];
+export type WebhookPropertiesEventsList = ReadonlyArray<NotificationEvent>;
 export const WebhookPropertiesEventsList = /*@__PURE__*/ S.Array(
   NotificationEvent,
 ) as any as S.Schema<WebhookPropertiesEventsList>;
 
-/** content type */
-export type ContentType = "application/json" | (string & {});
-export const ContentType = /*@__PURE__*/ S.String;
-
-/** whether to update webhookKey. */
-export type UpdateWebhookKey = "true" | "false" | (string & {});
-export const UpdateWebhookKey = /*@__PURE__*/ S.String;
-
 /** whether webhookKey is enabled. */
-export type WebhookKeyEnabled = "true" | "false" | (string & {});
+export type WebhookKeyEnabled = "true" | "false";
 export const WebhookKeyEnabled = /*@__PURE__*/ S.String;
 
-/** whether to enable ssl verification */
-export type EnableSslVerification = "true" | "false" | (string & {});
-export const EnableSslVerification = /*@__PURE__*/ S.String;
-
 /** webhook deliveryStatus */
-export type DeliveryStatus =
-  | "Succeeded"
-  | "Failed"
-  | "NotStarted"
-  | (string & {});
+export type DeliveryStatus = "Succeeded" | "Failed" | "NotStarted";
 export const DeliveryStatus = /*@__PURE__*/ S.String;
 
 /** Webhook properties. */
@@ -2710,7 +2896,7 @@ export const WebhookResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebhookResource>;
 
 /** The WebhookResource items on this page */
-export type WebhookResourceListResultValueList = WebhookResource[];
+export type WebhookResourceListResultValueList = ReadonlyArray<WebhookResource>;
 export const WebhookResourceListResultValueList = /*@__PURE__*/ S.Array(
   WebhookResource,
 ) as any as S.Schema<WebhookResourceListResultValueList>;
@@ -2736,13 +2922,14 @@ export interface WebhookUpdateRequest {
   reportName: string;
   /** Webhook Name. */
   webhookName: string;
-  body: unknown;
+  /** Webhook property. */
+  properties?: WebhookPropertiesInput;
 }
 export const WebhookUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportName: S.String.pipe(T.Label()),
     webhookName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(WebhookPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

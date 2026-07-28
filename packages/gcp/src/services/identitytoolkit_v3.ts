@@ -145,7 +145,7 @@ export const CreateAuthUriRelyingpartyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAuthUriRelyingpartyRequest",
 }) as any as S.Schema<CreateAuthUriRelyingpartyRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -316,7 +316,8 @@ export const UserInfoProviderUserInfoItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserInfoProviderUserInfoItem",
 }) as any as S.Schema<UserInfoProviderUserInfoItem>;
 
-export type UserInfoProviderUserInfoItemList = UserInfoProviderUserInfoItem[];
+export type UserInfoProviderUserInfoItemList =
+  ReadonlyArray<UserInfoProviderUserInfoItem>;
 export const UserInfoProviderUserInfoItemList = /*@__PURE__*/ S.Array(
   UserInfoProviderUserInfoItem,
 ) as any as S.Schema<UserInfoProviderUserInfoItemList>;
@@ -386,7 +387,7 @@ export const UserInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserInfo" }) as any as S.Schema<UserInfo>;
 
-export type UserInfoList = UserInfo[];
+export type UserInfoList = ReadonlyArray<UserInfo>;
 export const UserInfoList = /*@__PURE__*/ S.Array(
   UserInfo,
 ) as any as S.Schema<UserInfoList>;
@@ -707,7 +708,7 @@ export const IdpConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IdpConfig" }) as any as S.Schema<IdpConfig>;
 
-export type IdpConfigList = IdpConfig[];
+export type IdpConfigList = ReadonlyArray<IdpConfig>;
 export const IdpConfigList = /*@__PURE__*/ S.Array(
   IdpConfig,
 ) as any as S.Schema<IdpConfigList>;
@@ -1062,7 +1063,7 @@ export const SetAccountInfoResponseProviderUserInfoItem =
   }) as any as S.Schema<SetAccountInfoResponseProviderUserInfoItem>;
 
 export type SetAccountInfoResponseProviderUserInfoItemList =
-  SetAccountInfoResponseProviderUserInfoItem[];
+  ReadonlyArray<SetAccountInfoResponseProviderUserInfoItem>;
 export const SetAccountInfoResponseProviderUserInfoItemList =
   /*@__PURE__*/ S.Array(
     SetAccountInfoResponseProviderUserInfoItem,
@@ -1435,7 +1436,7 @@ export const UploadAccountResponseErrorItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadAccountResponseErrorItem>;
 
 export type UploadAccountResponseErrorItemList =
-  UploadAccountResponseErrorItem[];
+  ReadonlyArray<UploadAccountResponseErrorItem>;
 export const UploadAccountResponseErrorItemList = /*@__PURE__*/ S.Array(
   UploadAccountResponseErrorItem,
 ) as any as S.Schema<UploadAccountResponseErrorItemList>;

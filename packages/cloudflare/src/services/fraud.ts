@@ -59,13 +59,12 @@ export const GetFraudRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFraudRequest>;
 
 export type GetResponseAuthenticationSettingsFailureCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const GetResponseAuthenticationSettingsFailureCriteriaKind =
   /*@__PURE__*/ S.String;
 
 export type GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList =
-  number[];
+  ReadonlyArray<number>;
 export const GetResponseAuthenticationSettingsFailureCriteriaStatusCodesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -92,13 +91,12 @@ export const GetResponseAuthenticationSettingsFailureCriteria =
   }) as any as S.Schema<GetResponseAuthenticationSettingsFailureCriteria>;
 
 export type GetResponseAuthenticationSettingsSuccessCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const GetResponseAuthenticationSettingsSuccessCriteriaKind =
   /*@__PURE__*/ S.String;
 
 export type GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList =
-  number[];
+  ReadonlyArray<number>;
 export const GetResponseAuthenticationSettingsSuccessCriteriaStatusCodesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -147,10 +145,10 @@ export const GetResponseAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseAuthenticationSettings",
 }) as any as S.Schema<GetResponseAuthenticationSettings>;
 
-export type GetResponseUserProfiles = "enabled" | "disabled" | (string & {});
+export type GetResponseUserProfiles = "enabled" | "disabled";
 export const GetResponseUserProfiles = /*@__PURE__*/ S.String;
 
-export type GetResponseUsernameExpressionsList = string[];
+export type GetResponseUsernameExpressionsList = ReadonlyArray<string>;
 export const GetResponseUsernameExpressionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseUsernameExpressionsList>;
@@ -181,13 +179,12 @@ export const GetFraudResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFraudResponse>;
 
 export type UpdateRequestAuthenticationSettingsFailureCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const UpdateRequestAuthenticationSettingsFailureCriteriaKind =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList =
-  number[];
+  ReadonlyArray<number>;
 export const UpdateRequestAuthenticationSettingsFailureCriteriaStatusCodesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -214,13 +211,12 @@ export const UpdateRequestAuthenticationSettingsFailureCriteria =
   }) as any as S.Schema<UpdateRequestAuthenticationSettingsFailureCriteria>;
 
 export type UpdateRequestAuthenticationSettingsSuccessCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const UpdateRequestAuthenticationSettingsSuccessCriteriaKind =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList =
-  number[];
+  ReadonlyArray<number>;
 export const UpdateRequestAuthenticationSettingsSuccessCriteriaStatusCodesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -269,10 +265,10 @@ export const UpdateRequestAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestAuthenticationSettings",
 }) as any as S.Schema<UpdateRequestAuthenticationSettings>;
 
-export type UpdateRequestUserProfiles = "enabled" | "disabled" | (string & {});
+export type UpdateRequestUserProfiles = "enabled" | "disabled";
 export const UpdateRequestUserProfiles = /*@__PURE__*/ S.String;
 
-export type UpdateRequestUsernameExpressionsList = string[];
+export type UpdateRequestUsernameExpressionsList = ReadonlyArray<string>;
 export const UpdateRequestUsernameExpressionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestUsernameExpressionsList>;
@@ -315,13 +311,12 @@ export const PutFraudRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutFraudRequest>;
 
 export type UpdateResponseAuthenticationSettingsFailureCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const UpdateResponseAuthenticationSettingsFailureCriteriaKind =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList =
-  number[];
+  ReadonlyArray<number>;
 export const UpdateResponseAuthenticationSettingsFailureCriteriaStatusCodesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -348,13 +343,12 @@ export const UpdateResponseAuthenticationSettingsFailureCriteria =
   }) as any as S.Schema<UpdateResponseAuthenticationSettingsFailureCriteria>;
 
 export type UpdateResponseAuthenticationSettingsSuccessCriteriaKind =
-  | "status_code"
-  | (string & {});
+  "status_code";
 export const UpdateResponseAuthenticationSettingsSuccessCriteriaKind =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList =
-  number[];
+  ReadonlyArray<number>;
 export const UpdateResponseAuthenticationSettingsSuccessCriteriaStatusCodesList =
   /*@__PURE__*/ S.Array(
     S.Number,
@@ -404,10 +398,10 @@ export const UpdateResponseAuthenticationSettings = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseAuthenticationSettings",
 }) as any as S.Schema<UpdateResponseAuthenticationSettings>;
 
-export type UpdateResponseUserProfiles = "enabled" | "disabled" | (string & {});
+export type UpdateResponseUserProfiles = "enabled" | "disabled";
 export const UpdateResponseUserProfiles = /*@__PURE__*/ S.String;
 
-export type UpdateResponseUsernameExpressionsList = string[];
+export type UpdateResponseUsernameExpressionsList = ReadonlyArray<string>;
 export const UpdateResponseUsernameExpressionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseUsernameExpressionsList>;

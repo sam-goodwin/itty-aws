@@ -526,7 +526,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.experiments#UserBasic"
+          "target": "com.posthog.experiments#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -1791,40 +1794,6 @@
       "traits": {
         "smithy.api#documentation": "Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`."
       }
-    },
-    "com.posthog.experiments#ExperimentToSavedMetric": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#Integer"
-        },
-        "experiment": {
-          "target": "smithy.api#Integer"
-        },
-        "saved_metric": {
-          "target": "smithy.api#Integer"
-        },
-        "metadata": {
-          "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "query": {
-          "target": "smithy.api#Document"
-        },
-        "name": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.experiments#ExperimentsCreateRequestSavedMetricsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ExperimentToSavedMetric"
-      },
-      "traits": {}
     },
     "com.posthog.experiments#ExperimentsCreateRequestSavedMetricsIdsList": {
       "type": "list",
@@ -4009,7 +3978,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.experiments#MathGroupTypeIndex",
           "traits": {
             "smithy.api#documentation": "Group type index to aggregate over. Required when math is 'unique_group'.",
             "com.distilled.openapi#nullable": {}
@@ -4112,6 +4081,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "hogql"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.experiments#MathGroupTypeIndex": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
           }
         }
       },
@@ -4276,12 +4281,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -4321,23 +4320,10 @@
             "smithy.api#documentation": "Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is)."
           }
         },
-        "holdout": {
-          "target": "com.posthog.experiments#ExperimentHoldout",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "holdout_id": {
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "ID of a holdout group to exclude from the experiment.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "exposure_cohort": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -4365,12 +4351,6 @@
         "secondary_metrics": {
           "target": "smithy.api#Document"
         },
-        "saved_metrics": {
-          "target": "com.posthog.experiments#ExperimentsCreateRequestSavedMetricsList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "saved_metrics_ids": {
           "target": "com.posthog.experiments#ExperimentsCreateRequestSavedMetricsIdsList",
           "traits": {
@@ -4391,24 +4371,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.experiments#UserBasic",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
           }
         },
         "type": {
@@ -4468,14 +4430,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "flag_cleanup_task_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the Code task opened to remove the experiment's feature-flag code, when one was requested via open_cleanup_pr on end/ship_variant. Read its status via the flag_cleanup_task action.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_metrics_ordered_uuids": {
           "target": "smithy.api#Document"
         },
@@ -4490,42 +4444,13 @@
           "traits": {
             "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
           }
-        },
-        "status": {
-          "target": "com.posthog.experiments#ExperimentStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag's release groups, not stored), 'stopped' (ended).",
-            "smithy.api#required": {}
-          }
-        },
-        "is_legacy": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the experiment uses any legacy-engine metrics (ExperimentTrendsQuery or ExperimentFunnelsQuery). Used to flag legacy experiments and gate actions that don't support them, such as duplicate and copy-to-project.",
-            "smithy.api#required": {}
-          }
-        },
-        "can_freeze_exposure": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether enrollment can be frozen right now: the experiment must be running (not draft, paused, stopped, or already frozen) and its feature flag must have release conditions that a person cohort can narrow (no group aggregation, no holdout, no early access conditions).",
-            "smithy.api#required": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#Experiment": {
+    "com.posthog.experiments#ExperimentOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -4596,7 +4521,7 @@
           }
         },
         "excluded_variants": {
-          "target": "com.posthog.experiments#ExperimentExcludedVariantsList",
+          "target": "com.posthog.experiments#ExperimentOutputExcludedVariantsList",
           "traits": {
             "smithy.api#documentation": "Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`.",
             "com.distilled.openapi#nullable": {}
@@ -4606,10 +4531,10 @@
           "target": "smithy.api#Document"
         },
         "saved_metrics": {
-          "target": "com.posthog.experiments#ExperimentSavedMetricsList"
+          "target": "com.posthog.experiments#ExperimentOutputSavedMetricsList"
         },
         "saved_metrics_ids": {
-          "target": "com.posthog.experiments#ExperimentSavedMetricsIdsList",
+          "target": "com.posthog.experiments#ExperimentOutputSavedMetricsIdsList",
           "traits": {
             "smithy.api#documentation": "IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary).",
             "com.distilled.openapi#nullable": {}
@@ -4631,7 +4556,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.experiments#UserBasic"
+          "target": "com.posthog.experiments#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -4673,15 +4601,6 @@
         "scheduling_config": {
           "target": "smithy.api#Document"
         },
-        "allow_unknown_events": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it)."
-          }
-        },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
-        },
         "conclusion": {
           "target": "com.posthog.experiments#ConclusionEnum",
           "traits": {
@@ -4711,12 +4630,6 @@
         },
         "only_count_matured_users": {
           "target": "smithy.api#Boolean"
-        },
-        "update_feature_flag_params": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
-          }
         },
         "status": {
           "target": "com.posthog.experiments#ExperimentStatusEnum",
@@ -4748,7 +4661,7 @@
         "smithy.api#documentation": "Full experiment representation for the detail, create, and update endpoints.\n\nExtends the shared read-side fields in ``ExperimentBaseSerializer`` with the metric\ndefinitions (``metrics``/``metrics_secondary``/``saved_metrics``) and the write-side\nfields, and refreshes stale action names while serializing. The list endpoint uses the\nleaner ``ExperimentBasicSerializer`` instead."
       }
     },
-    "com.posthog.experiments#ExperimentExcludedVariantsList": {
+    "com.posthog.experiments#ExperimentOutputExcludedVariantsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -4757,14 +4670,41 @@
         "smithy.api#documentation": "Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`."
       }
     },
-    "com.posthog.experiments#ExperimentSavedMetricsList": {
+    "com.posthog.experiments#ExperimentToSavedMetric": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer"
+        },
+        "experiment": {
+          "target": "smithy.api#Integer"
+        },
+        "saved_metric": {
+          "target": "smithy.api#Integer"
+        },
+        "metadata": {
+          "target": "smithy.api#Document"
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "query": {
+          "target": "smithy.api#Document"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.experiments#ExperimentOutputSavedMetricsList": {
       "type": "list",
       "member": {
         "target": "com.posthog.experiments#ExperimentToSavedMetric"
       },
       "traits": {}
     },
-    "com.posthog.experiments#ExperimentSavedMetricsIdsList": {
+    "com.posthog.experiments#ExperimentOutputSavedMetricsIdsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
@@ -4779,7 +4719,7 @@
         "target": "com.posthog.experiments#ExperimentsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -4831,7 +4771,7 @@
         "target": "com.posthog.experiments#ExperimentsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -4858,13 +4798,6 @@
       "traits": {
         "smithy.api#documentation": "Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`."
       }
-    },
-    "com.posthog.experiments#ExperimentsUpdateRequestSavedMetricsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ExperimentToSavedMetric"
-      },
-      "traits": {}
     },
     "com.posthog.experiments#ExperimentsUpdateRequestSavedMetricsIdsList": {
       "type": "list",
@@ -4933,23 +4866,10 @@
             "smithy.api#documentation": "Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is)."
           }
         },
-        "holdout": {
-          "target": "com.posthog.experiments#ExperimentHoldout",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "holdout_id": {
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "ID of a holdout group to exclude from the experiment.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "exposure_cohort": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -4977,12 +4897,6 @@
         "secondary_metrics": {
           "target": "smithy.api#Document"
         },
-        "saved_metrics": {
-          "target": "com.posthog.experiments#ExperimentsUpdateRequestSavedMetricsList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "saved_metrics_ids": {
           "target": "com.posthog.experiments#ExperimentsUpdateRequestSavedMetricsIdsList",
           "traits": {
@@ -5003,24 +4917,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.experiments#UserBasic",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
           }
         },
         "type": {
@@ -5080,14 +4976,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "flag_cleanup_task_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the Code task opened to remove the experiment's feature-flag code, when one was requested via open_cleanup_pr on end/ship_variant. Read its status via the flag_cleanup_task action.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_metrics_ordered_uuids": {
           "target": "smithy.api#Document"
         },
@@ -5102,35 +4990,6 @@
           "traits": {
             "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
           }
-        },
-        "status": {
-          "target": "com.posthog.experiments#ExperimentStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag's release groups, not stored), 'stopped' (ended).",
-            "smithy.api#required": {}
-          }
-        },
-        "is_legacy": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the experiment uses any legacy-engine metrics (ExperimentTrendsQuery or ExperimentFunnelsQuery). Used to flag legacy experiments and gate actions that don't support them, such as duplicate and copy-to-project.",
-            "smithy.api#required": {}
-          }
-        },
-        "can_freeze_exposure": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether enrollment can be frozen right now: the experiment must be running (not draft, paused, stopped, or already frozen) and its feature flag must have release conditions that a person cohort can narrow (no group aggregation, no holdout, no early access conditions).",
-            "smithy.api#required": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -5143,7 +5002,7 @@
         "target": "com.posthog.experiments#ExperimentsUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -5173,13 +5032,6 @@
       "traits": {
         "smithy.api#documentation": "Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`."
       }
-    },
-    "com.posthog.experiments#ExperimentsPartialUpdateRequestSavedMetricsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ExperimentToSavedMetric"
-      },
-      "traits": {}
     },
     "com.posthog.experiments#ExperimentsPartialUpdateRequestSavedMetricsIdsList": {
       "type": "list",
@@ -5246,19 +5098,10 @@
             "smithy.api#documentation": "Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is)."
           }
         },
-        "holdout": {
-          "target": "com.posthog.experiments#ExperimentHoldout"
-        },
         "holdout_id": {
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "ID of a holdout group to exclude from the experiment.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "exposure_cohort": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -5286,9 +5129,6 @@
         "secondary_metrics": {
           "target": "smithy.api#Document"
         },
-        "saved_metrics": {
-          "target": "com.posthog.experiments#ExperimentsPartialUpdateRequestSavedMetricsList"
-        },
         "saved_metrics_ids": {
           "target": "com.posthog.experiments#ExperimentsPartialUpdateRequestSavedMetricsIdsList",
           "traits": {
@@ -5310,15 +5150,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_by": {
-          "target": "com.posthog.experiments#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         },
         "type": {
           "target": "com.posthog.experiments#ExperimentTypeEnum",
@@ -5377,13 +5208,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "flag_cleanup_task_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the Code task opened to remove the experiment's feature-flag code, when one was requested via open_cleanup_pr on end/ship_variant. Read its status via the flag_cleanup_task action.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_metrics_ordered_uuids": {
           "target": "smithy.api#Document"
         },
@@ -5398,31 +5222,6 @@
           "traits": {
             "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
           }
-        },
-        "status": {
-          "target": "com.posthog.experiments#ExperimentStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag's release groups, not stored), 'stopped' (ended)."
-          }
-        },
-        "is_legacy": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the experiment uses any legacy-engine metrics (ExperimentTrendsQuery or ExperimentFunnelsQuery). Used to flag legacy experiments and gate actions that don't support them, such as duplicate and copy-to-project."
-          }
-        },
-        "can_freeze_exposure": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether enrollment can be frozen right now: the experiment must be running (not draft, paused, stopped, or already frozen) and its feature flag must have release conditions that a person cohort can narrow (no group aggregation, no holdout, no early access conditions)."
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -5435,7 +5234,7 @@
         "target": "com.posthog.experiments#ExperimentsPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -5542,7 +5341,7 @@
         "target": "com.posthog.experiments#ExperimentsArchiveCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -5609,7 +5408,7 @@
         "target": "com.posthog.experiments#ExperimentsCopyToProjectCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -5639,13 +5438,6 @@
       "traits": {
         "smithy.api#documentation": "Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`."
       }
-    },
-    "com.posthog.experiments#ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ExperimentToSavedMetric"
-      },
-      "traits": {}
     },
     "com.posthog.experiments#ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList": {
       "type": "list",
@@ -5706,22 +5498,10 @@
             "smithy.api#documentation": "Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible."
           }
         },
-        "feature_flag": {
-          "target": "com.posthog.experiments#MinimalFeatureFlag"
-        },
-        "holdout": {
-          "target": "com.posthog.experiments#ExperimentHoldout"
-        },
         "holdout_id": {
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "ID of a holdout group to exclude from the experiment.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "exposure_cohort": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -5749,9 +5529,6 @@
         "secondary_metrics": {
           "target": "smithy.api#Document"
         },
-        "saved_metrics": {
-          "target": "com.posthog.experiments#ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsList"
-        },
         "saved_metrics_ids": {
           "target": "com.posthog.experiments#ExperimentsCreateExposureCohortForExperimentCreateRequestSavedMetricsIdsList",
           "traits": {
@@ -5773,15 +5550,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_by": {
-          "target": "com.posthog.experiments#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         },
         "type": {
           "target": "com.posthog.experiments#ExperimentTypeEnum",
@@ -5840,13 +5608,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "flag_cleanup_task_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the Code task opened to remove the experiment's feature-flag code, when one was requested via open_cleanup_pr on end/ship_variant. Read its status via the flag_cleanup_task action.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_metrics_ordered_uuids": {
           "target": "smithy.api#Document"
         },
@@ -5860,31 +5621,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
-          }
-        },
-        "status": {
-          "target": "com.posthog.experiments#ExperimentStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag's release groups, not stored), 'stopped' (ended)."
-          }
-        },
-        "is_legacy": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the experiment uses any legacy-engine metrics (ExperimentTrendsQuery or ExperimentFunnelsQuery). Used to flag legacy experiments and gate actions that don't support them, such as duplicate and copy-to-project."
-          }
-        },
-        "can_freeze_exposure": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether enrollment can be frozen right now: the experiment must be running (not draft, paused, stopped, or already frozen) and its feature flag must have release conditions that a person cohort can narrow (no group aggregation, no holdout, no early access conditions)."
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -5928,13 +5664,6 @@
       "traits": {
         "smithy.api#documentation": "Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`."
       }
-    },
-    "com.posthog.experiments#ExperimentsDuplicateCreateRequestSavedMetricsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ExperimentToSavedMetric"
-      },
-      "traits": {}
     },
     "com.posthog.experiments#ExperimentsDuplicateCreateRequestSavedMetricsIdsList": {
       "type": "list",
@@ -5995,22 +5724,10 @@
             "smithy.api#documentation": "Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible."
           }
         },
-        "feature_flag": {
-          "target": "com.posthog.experiments#MinimalFeatureFlag"
-        },
-        "holdout": {
-          "target": "com.posthog.experiments#ExperimentHoldout"
-        },
         "holdout_id": {
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "ID of a holdout group to exclude from the experiment.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "exposure_cohort": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -6038,9 +5755,6 @@
         "secondary_metrics": {
           "target": "smithy.api#Document"
         },
-        "saved_metrics": {
-          "target": "com.posthog.experiments#ExperimentsDuplicateCreateRequestSavedMetricsList"
-        },
         "saved_metrics_ids": {
           "target": "com.posthog.experiments#ExperimentsDuplicateCreateRequestSavedMetricsIdsList",
           "traits": {
@@ -6062,15 +5776,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_by": {
-          "target": "com.posthog.experiments#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         },
         "type": {
           "target": "com.posthog.experiments#ExperimentTypeEnum",
@@ -6129,13 +5834,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "flag_cleanup_task_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the Code task opened to remove the experiment's feature-flag code, when one was requested via open_cleanup_pr on end/ship_variant. Read its status via the flag_cleanup_task action.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_metrics_ordered_uuids": {
           "target": "smithy.api#Document"
         },
@@ -6149,31 +5847,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
-          }
-        },
-        "status": {
-          "target": "com.posthog.experiments#ExperimentStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag's release groups, not stored), 'stopped' (ended)."
-          }
-        },
-        "is_legacy": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the experiment uses any legacy-engine metrics (ExperimentTrendsQuery or ExperimentFunnelsQuery). Used to flag legacy experiments and gate actions that don't support them, such as duplicate and copy-to-project."
-          }
-        },
-        "can_freeze_exposure": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether enrollment can be frozen right now: the experiment must be running (not draft, paused, stopped, or already frozen) and its feature flag must have release conditions that a person cohort can narrow (no group aggregation, no holdout, no early access conditions)."
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -6259,7 +5932,7 @@
         "target": "com.posthog.experiments#ExperimentsEndCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -6438,7 +6111,7 @@
         "target": "com.posthog.experiments#ExperimentsFreezeExposureCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -6479,7 +6152,7 @@
         "target": "com.posthog.experiments#ExperimentsLaunchCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -7021,7 +6694,7 @@
         "target": "com.posthog.experiments#ExperimentsPauseCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -7048,13 +6721,6 @@
       "traits": {
         "smithy.api#documentation": "Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`."
       }
-    },
-    "com.posthog.experiments#ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.experiments#ExperimentToSavedMetric"
-      },
-      "traits": {}
     },
     "com.posthog.experiments#ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList": {
       "type": "list",
@@ -7115,22 +6781,10 @@
             "smithy.api#documentation": "Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible."
           }
         },
-        "feature_flag": {
-          "target": "com.posthog.experiments#MinimalFeatureFlag"
-        },
-        "holdout": {
-          "target": "com.posthog.experiments#ExperimentHoldout"
-        },
         "holdout_id": {
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "ID of a holdout group to exclude from the experiment.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "exposure_cohort": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -7158,9 +6812,6 @@
         "secondary_metrics": {
           "target": "smithy.api#Document"
         },
-        "saved_metrics": {
-          "target": "com.posthog.experiments#ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsList"
-        },
         "saved_metrics_ids": {
           "target": "com.posthog.experiments#ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList",
           "traits": {
@@ -7182,15 +6833,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_by": {
-          "target": "com.posthog.experiments#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         },
         "type": {
           "target": "com.posthog.experiments#ExperimentTypeEnum",
@@ -7249,13 +6891,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "flag_cleanup_task_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the Code task opened to remove the experiment's feature-flag code, when one was requested via open_cleanup_pr on end/ship_variant. Read its status via the flag_cleanup_task action.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "primary_metrics_ordered_uuids": {
           "target": "smithy.api#Document"
         },
@@ -7269,31 +6904,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected."
-          }
-        },
-        "status": {
-          "target": "com.posthog.experiments#ExperimentStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "Experiment lifecycle state: 'draft' (not yet launched), 'running' (launched with active feature flag), 'paused' (running with feature flag deactivated — virtual state derived from feature_flag.active, not stored), 'exposure_frozen' (running with enrollment frozen to the already-exposed cohort while metrics keep flowing — virtual state derived from the flag's release groups, not stored), 'stopped' (ended)."
-          }
-        },
-        "is_legacy": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether the experiment uses any legacy-engine metrics (ExperimentTrendsQuery or ExperimentFunnelsQuery). Used to flag legacy experiments and gate actions that don't support them, such as duplicate and copy-to-project."
-          }
-        },
-        "can_freeze_exposure": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether enrollment can be frozen right now: the experiment must be running (not draft, paused, stopped, or already frozen) and its feature flag must have release conditions that a person cohort can narrow (no group aggregation, no holdout, no early access conditions)."
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -7359,7 +6969,7 @@
         "target": "com.posthog.experiments#ExperimentsResetCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -7408,7 +7018,7 @@
         "target": "com.posthog.experiments#ExperimentsResumeCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -7489,7 +7099,7 @@
         "target": "com.posthog.experiments#ExperimentsShipVariantCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "errors": [
         {
@@ -7609,7 +7219,7 @@
         "target": "com.posthog.experiments#ExperimentsUnarchiveCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -7650,7 +7260,7 @@
         "target": "com.posthog.experiments#ExperimentsUnfreezeExposureCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -7989,7 +7599,7 @@
         "target": "com.posthog.experiments#ExperimentsCreateFromPromptCreateRequest"
       },
       "output": {
-        "target": "com.posthog.experiments#Experiment"
+        "target": "com.posthog.experiments#ExperimentOutput"
       },
       "traits": {
         "smithy.api#http": {

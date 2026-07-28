@@ -1831,16 +1831,59 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#BillingPropertyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A billing property."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#BillingPropertyUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingPropertyUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+      }
+    },
+    "com.azure.billing#BillingPropertyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "costCenter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cost center applied to the subscription. Available for agreement type Microsoft Customer Agreement and Microsoft Partner Agreement. This property can be updated via patch."
+          }
+        },
+        "subscriptionServiceUsageAddress": {
+          "target": "com.azure.billing#AddressDetails",
+          "traits": {
+            "smithy.api#documentation": "The address of the individual or organization where service subscription is being used. Available for agreement type Microsoft Online Services Program. This property can be updated via patch."
+          }
+        },
+        "enrollmentDetails": {
+          "target": "com.azure.billing#SubscriptionEnrollmentDetails",
+          "traits": {
+            "smithy.api#documentation": "The enrollment details for the subscription. Available for billing accounts with agreement type Enterprise Agreement."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A billing property."
       }
     },
     "com.azure.billing#BillingPropertyGet": {
@@ -2031,11 +2074,96 @@
     "com.azure.billing#AddressValidateRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "addressLine1": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Address line 1.",
             "smithy.api#required": {}
+          }
+        },
+        "addressLine2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Address line 2."
+          }
+        },
+        "addressLine3": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Address line 3."
+          }
+        },
+        "city": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Address city."
+          }
+        },
+        "companyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Company name. Optional for MCA Individual (Pay-as-you-go)."
+          }
+        },
+        "country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Country code uses ISO 3166-1 Alpha-2 format.",
+            "smithy.api#required": {}
+          }
+        },
+        "district": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Address district."
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email address."
+          }
+        },
+        "firstName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "First name. Optional for MCA Enterprise."
+          }
+        },
+        "lastName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last name. Optional for MCA Enterprise."
+          }
+        },
+        "middleName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Middle name."
+          }
+        },
+        "phoneNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Phone number."
+          }
+        },
+        "postalCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Postal code."
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Address region."
+          }
+        },
+        "isValidAddress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the address is incomplete."
           }
         }
       },
@@ -2171,16 +2299,96 @@
             "smithy.api#documentation": "The ID that uniquely identifies a transfer request."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#AcceptTransferProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Request parameters to accept transfer."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#AcceptTransferProperties": {
+      "type": "structure",
+      "members": {
+        "productDetails": {
+          "target": "com.azure.billing#AcceptTransferPropertiesProductDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Request parameters to accept transfer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Request parameters to accept transfer."
+      }
+    },
+    "com.azure.billing#AcceptTransferPropertiesProductDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billing#ProductDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "Request parameters to accept transfer."
+      }
+    },
+    "com.azure.billing#ProductDetails": {
+      "type": "structure",
+      "members": {
+        "productType": {
+          "target": "com.azure.billing#ProductType",
+          "traits": {
+            "smithy.api#documentation": "Type of the product that is transferred."
+          }
+        },
+        "productId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the product that is transferred."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the product that is transferred."
+      }
+    },
+    "com.azure.billing#ProductType": {
+      "type": "enum",
+      "members": {
+        "AZURESUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureSubscription"
+          }
+        },
+        "AZURERESERVATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureReservation"
+          }
+        },
+        "DEPARTMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Department"
+          }
+        },
+        "SAVINGSPLAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SavingsPlan"
+          }
+        },
+        "SAAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAAS"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of product that is transferred."
       }
     },
     "com.azure.billing#RecipientTransfersDecline": {
@@ -2484,44 +2692,6 @@
         "smithy.api#documentation": "The status of a transfer."
       }
     },
-    "com.azure.billing#ProductType": {
-      "type": "enum",
-      "members": {
-        "AZURESUBSCRIPTION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AzureSubscription"
-          }
-        },
-        "AZURERESERVATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "AzureReservation"
-          }
-        },
-        "DEPARTMENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Department"
-          }
-        },
-        "SAVINGSPLAN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SavingsPlan"
-          }
-        },
-        "SAAS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SAAS"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The type of product that is transferred."
-      }
-    },
     "com.azure.billing#InitiatorCustomerType": {
       "type": "enum",
       "members": {
@@ -2735,11 +2905,10 @@
             "smithy.api#documentation": "The ID that uniquely identifies a transfer request."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#AcceptTransferProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Request parameters to accept transfer."
           }
         }
       },
@@ -3812,16 +3981,122 @@
             "smithy.api#documentation": "The ID that uniquely identifies a billing request."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#BillingRequestPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A request submitted by a user to manage billing. Users with an owner role on the scope can approve or decline these requests."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#BillingRequestsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingRequestsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+      }
+    },
+    "com.azure.billing#BillingRequestPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "additionalInformation": {
+          "target": "com.azure.billing#BillingRequestPropertiesInputAdditionalInformationMap",
+          "traits": {
+            "smithy.api#documentation": "Additional information for the billing request."
+          }
+        },
+        "reviewedBy": {
+          "target": "com.azure.billing#Principal",
+          "traits": {
+            "smithy.api#documentation": "The principal of the request reviewer. Will only be set if request is approved."
+          }
+        },
+        "createdBy": {
+          "target": "com.azure.billing#Principal",
+          "traits": {
+            "smithy.api#documentation": "The principal of the entity who created the request."
+          }
+        },
+        "decisionReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The reason to approve or decline the request."
+          }
+        },
+        "justification": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Justification for submitting request."
+          }
+        },
+        "recipients": {
+          "target": "com.azure.billing#BillingRequestPropertiesInputRecipientsList",
+          "traits": {
+            "smithy.api#documentation": "The recipients of the billing request."
+          }
+        },
+        "requestScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The billing scope for which the request was submitted (ex. '/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}')."
+          }
+        },
+        "status": {
+          "target": "com.azure.billing#BillingRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of billing request."
+          }
+        },
+        "type": {
+          "target": "com.azure.billing#BillingRequestType",
+          "traits": {
+            "smithy.api#documentation": "Type of billing request."
+          }
+        },
+        "lastUpdatedBy": {
+          "target": "com.azure.billing#Principal",
+          "traits": {
+            "smithy.api#documentation": "The principal of the entity who last updated the request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A request submitted by a user to manage billing. Users with an owner role on the scope can approve or decline these requests."
+      }
+    },
+    "com.azure.billing#BillingRequestPropertiesInputRecipientsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billing#Principal"
+      },
+      "traits": {
+        "smithy.api#documentation": "The recipients of the billing request."
+      }
+    },
+    "com.azure.billing#BillingRequestPropertiesInputAdditionalInformationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional information for the billing request."
       }
     },
     "com.azure.billing#BillingRequestsGet": {
@@ -5276,7 +5551,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.billing#InvoicesDownloadDocumentsByBillingSubscriptionRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -5285,6 +5560,33 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#InvoicesDownloadDocumentsByBillingSubscriptionRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billing#DocumentDownloadRequest"
+      },
+      "traits": {}
+    },
+    "com.azure.billing#DocumentDownloadRequest": {
+      "type": "structure",
+      "members": {
+        "documentName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID that uniquely identifies an invoice document. This ID may be an identifier for an invoice PDF, a credit note, or a tax receipt. If omitted, the most recent invoice PDF for the invoice will be returned."
+          }
+        },
+        "invoiceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID that uniquely identifies an invoice."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of download details for individual documents."
       }
     },
     "com.azure.billing#BillingAccountsValidatePaymentTerms": {
@@ -5461,7 +5763,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.billing#BillingAccountsValidatePaymentTermsRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -5470,6 +5772,39 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingAccountsValidatePaymentTermsRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billing#PaymentTermInput"
+      },
+      "traits": {}
+    },
+    "com.azure.billing#PaymentTermInput": {
+      "type": "structure",
+      "members": {
+        "term": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents duration in netXX format. Always in days."
+          }
+        },
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date on when the defined 'Payment Term' will be effective from and is always in UTC."
+          }
+        },
+        "endDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The date on when the defined 'Payment Term' will end and is always in UTC."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of payment term."
       }
     },
     "com.azure.billing#SavingsPlansListByBillingAccount": {
@@ -6305,16 +6640,62 @@
             "smithy.api#documentation": "ID of the savings plan"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "benefits": {
+          "target": "com.azure.billing#SavingsPlansValidateUpdateByBillingAccountRequestBenefitsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The benefits of a savings plan."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#SavingsPlansValidateUpdateByBillingAccountRequestBenefitsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billing#SavingsPlanUpdateRequestProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "The benefits of a savings plan."
+      }
+    },
+    "com.azure.billing#SavingsPlanUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name"
+          }
+        },
+        "appliedScopeType": {
+          "target": "com.azure.billing#AppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "Type of the Applied Scope."
+          }
+        },
+        "appliedScopeProperties": {
+          "target": "com.azure.billing#AppliedScopeProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to applied scope type. Not required if not applicable."
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this to true will automatically purchase a new benefit on the expiration date time."
+          }
+        },
+        "renewProperties": {
+          "target": "com.azure.billing#RenewProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to renew."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Savings plan patch request"
       }
     },
     "com.azure.billing#SavingsPlansUpdateByBillingAccount": {
@@ -6426,16 +6807,39 @@
             "smithy.api#documentation": "ID of the savings plan"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#SavingsPlanUpdateRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Savings plan patch request"
+          }
+        },
+        "sku": {
+          "target": "com.azure.billing#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU to be applied for this resource"
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#SavingsPlansUpdateByBillingAccountRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags for this reservation"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#SavingsPlansUpdateByBillingAccountRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for this reservation"
       }
     },
     "com.azure.billing#SavingsPlansGetByBillingAccount": {
@@ -8671,16 +9075,208 @@
             "smithy.api#documentation": "Id of the reservation item"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#PatchPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for reservation patch"
+          }
+        },
+        "sku": {
+          "target": "com.azure.billing#ReservationSkuPropertyInput",
+          "traits": {
+            "smithy.api#documentation": "The sku information associated to this reservation"
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#ReservationsUpdateByBillingAccountRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags for this reservation"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#ReservationsUpdateByBillingAccountRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for this reservation"
+      }
+    },
+    "com.azure.billing#ReservationSkuPropertyInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The property of reservation sku object."
+      }
+    },
+    "com.azure.billing#PatchPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "appliedScopeType": {
+          "target": "com.azure.billing#AppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "Type of the Applied Scope."
+          }
+        },
+        "appliedScopeProperties": {
+          "target": "com.azure.billing#ReservationAppliedScopeProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to applied scope type. Not required if not applicable. Required and need to provide tenantId and managementGroupId if AppliedScopeType is ManagementGroup"
+          }
+        },
+        "instanceFlexibility": {
+          "target": "com.azure.billing#InstanceFlexibility",
+          "traits": {
+            "smithy.api#documentation": "Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the reservation"
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this to true will automatically purchase a new benefit on the expiration date time."
+          }
+        },
+        "renewProperties": {
+          "target": "com.azure.billing#PatchPropertiesRenewPropertiesInput"
+        },
+        "reviewDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the date-time when the Azure hybrid benefit needs to be reviewed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for reservation patch"
+      }
+    },
+    "com.azure.billing#PatchPropertiesRenewPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "purchaseProperties": {
+          "target": "com.azure.billing#ReservationPurchaseRequestInput",
+          "traits": {
+            "smithy.api#documentation": "The request for reservation purchase"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.billing#ReservationPurchaseRequestInput": {
+      "type": "structure",
+      "members": {
+        "sku": {
+          "target": "com.azure.billing#SkuName",
+          "traits": {
+            "smithy.api#documentation": "The name of sku"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure region where the reserved resource lives."
+          }
+        },
+        "properties": {
+          "target": "com.azure.billing#ReservationPurchaseRequestPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of reservation purchase request"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The request for reservation purchase"
+      }
+    },
+    "com.azure.billing#ReservationPurchaseRequestPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "billingPlan": {
+          "target": "com.azure.billing#ReservationBillingPlan",
+          "traits": {
+            "smithy.api#documentation": "Represent the billing plans."
+          }
+        },
+        "quantity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Quantity of the skus that are part of the reservation. Must be greater than zero."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Friendly name of the reservation"
+          }
+        },
+        "appliedScopeType": {
+          "target": "com.azure.billing#AppliedScopeType",
+          "traits": {
+            "smithy.api#documentation": "Type of the Applied Scope."
+          }
+        },
+        "appliedScopes": {
+          "target": "com.azure.billing#ReservationPurchaseRequestPropertiesInputAppliedScopesList",
+          "traits": {
+            "smithy.api#documentation": "List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared."
+          }
+        },
+        "appliedScopeProperties": {
+          "target": "com.azure.billing#ReservationAppliedScopeProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to applied scope type. Not required if not applicable. Required and need to provide tenantId and managementGroupId if AppliedScopeType is ManagementGroup"
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Setting this to true will automatically purchase a new benefit on the expiration date time."
+          }
+        },
+        "reservedResourceProperties": {
+          "target": "com.azure.billing#ReservationPurchaseRequestPropertiesReservedResourceProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties specific to each reserved resource type. Not required if not applicable."
+          }
+        },
+        "instanceFlexibility": {
+          "target": "com.azure.billing#InstanceFlexibility",
+          "traits": {
+            "smithy.api#documentation": "Allows reservation discount to be applied across skus within the same auto fit group. Not all skus support instance size flexibility."
+          }
+        },
+        "reviewDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is the date-time when the Azure hybrid benefit needs to be reviewed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of reservation purchase request"
+      }
+    },
+    "com.azure.billing#ReservationPurchaseRequestPropertiesInputAppliedScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared."
       }
     },
     "com.azure.billing#ReservationsGetByReservationOrder": {
@@ -9545,10 +10141,10 @@
             "smithy.api#documentation": "The ID that uniquely identifies a product."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "destinationInvoiceSectionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The destination invoice section id.",
             "smithy.api#required": {}
           }
         }
@@ -9899,10 +10495,10 @@
             "smithy.api#documentation": "The ID that uniquely identifies a product."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "destinationInvoiceSectionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The destination invoice section id.",
             "smithy.api#required": {}
           }
         }
@@ -10005,16 +10601,73 @@
             "smithy.api#documentation": "The ID that uniquely identifies a product."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.billing#ProductsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+          }
+        },
+        "properties": {
+          "target": "com.azure.billing#ProductPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "A product."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#ProductPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "autoRenew": {
+          "target": "com.azure.billing#AutoRenew",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether auto renewal is turned on or off for a product."
+          }
+        },
+        "lastCharge": {
+          "target": "com.azure.billing#AmountInput",
+          "traits": {
+            "smithy.api#documentation": "The last month charges."
+          }
+        },
+        "reseller": {
+          "target": "com.azure.billing#ResellerInput",
+          "traits": {
+            "smithy.api#documentation": "Reseller for this product. The fields is not available for Microsoft Partner Agreement products."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A product."
+      }
+    },
+    "com.azure.billing#ResellerInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Details of the reseller."
+      }
+    },
+    "com.azure.billing#AmountInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The amount."
+      }
+    },
+    "com.azure.billing#ProductsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
     "com.azure.billing#ProductsGet": {
@@ -10648,16 +11301,33 @@
             "smithy.api#documentation": "The ID that uniquely identifies a billing account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#BillingAccountPolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A policy at billing account scope."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#PoliciesCreateOrUpdateByBillingAccountRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#PoliciesCreateOrUpdateByBillingAccountRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
     "com.azure.billing#PoliciesGetByBillingAccount": {
@@ -12139,16 +12809,24 @@
             "smithy.api#documentation": "The name of the enrollment account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "actions": {
+          "target": "com.azure.billing#BillingPermissionsCheckAccessByEnrollmentAccountRequestActionsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingPermissionsCheckAccessByEnrollmentAccountRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
       }
     },
     "com.azure.billing#BillingSubscriptionsListByEnrollmentAccount": {
@@ -13312,16 +13990,84 @@
             "smithy.api#documentation": "The ID that uniquely identifies a role assignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#BillingRoleAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the billing role assignment."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccountRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+      }
+    },
+    "com.azure.billing#BillingRoleAssignmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "principalPuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal PUID of the user to whom the role was assigned."
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object id of the user to whom the role was assigned."
+          }
+        },
+        "principalTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal tenant id of the user to whom the role was assigned."
+          }
+        },
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the role definition.",
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope at which the role was assigned."
+          }
+        },
+        "userAuthenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement."
+          }
+        },
+        "userEmailAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the billing role assignment."
       }
     },
     "com.azure.billing#BillingRoleAssignmentsGetByEnrollmentAccount": {
@@ -13908,7 +14654,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.billing#InvoicesDownloadDocumentsByBillingAccountRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -13918,6 +14664,13 @@
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.billing#InvoicesDownloadDocumentsByBillingAccountRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billing#DocumentDownloadRequest"
+      },
+      "traits": {}
     },
     "com.azure.billing#EnrollmentAccountsGetByDepartment": {
       "type": "operation",
@@ -14171,16 +14924,24 @@
             "smithy.api#documentation": "The name of the department."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "actions": {
+          "target": "com.azure.billing#BillingPermissionsCheckAccessByDepartmentRequestActionsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingPermissionsCheckAccessByDepartmentRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
       }
     },
     "com.azure.billing#BillingRoleDefinitionGetByDepartment": {
@@ -14486,16 +15247,33 @@
             "smithy.api#documentation": "The ID that uniquely identifies a role assignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#BillingRoleAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the billing role assignment."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingRoleAssignmentsCreateOrUpdateByDepartmentRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
     "com.azure.billing#BillingRoleAssignmentsGetByDepartment": {
@@ -15219,16 +15997,33 @@
             "smithy.api#documentation": "The ID that uniquely identifies a customer."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#CustomerPolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A policy at customer scope."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#PoliciesCreateOrUpdateByCustomerAtBillingAccountRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
     "com.azure.billing#PoliciesGetByCustomerAtBillingAccount": {
@@ -15913,11 +16708,47 @@
             "smithy.api#documentation": "The ID that uniquely identifies a billing account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "principalPuid": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The principal PUID of the user to whom the role was assigned."
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object id of the user to whom the role was assigned."
+          }
+        },
+        "principalTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal tenant id of the user to whom the role was assigned."
+          }
+        },
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the role definition.",
             "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope at which the role was assigned."
+          }
+        },
+        "userAuthenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement."
+          }
+        },
+        "userEmailAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement."
           }
         }
       },
@@ -16032,16 +16863,24 @@
             "smithy.api#documentation": "The ID that uniquely identifies a billing account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "actions": {
+          "target": "com.azure.billing#BillingPermissionsCheckAccessByBillingAccountRequestActionsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingPermissionsCheckAccessByBillingAccountRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
       }
     },
     "com.azure.billing#BillingAccountsCancelPaymentTerms": {
@@ -16759,7 +17598,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -17030,11 +17869,16 @@
             "smithy.api#documentation": "The ID that uniquely identifies a subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "destinationInvoiceSectionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The destination invoice section id."
+          }
+        },
+        "destinationEnrollmentAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The destination enrollment account id."
           }
         }
       },
@@ -17136,11 +17980,34 @@
             "smithy.api#documentation": "The ID that uniquely identifies a subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targetProductTypeId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The ID of the target product to which the subscription needs to be split into. This value is not same as the value returned in Get API call and can be retrieved from Catalog API to know the product id to split into."
+          }
+        },
+        "targetSkuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the target product to which the subscription needs to be split into. This value is not same as the value returned in Get API call and can be retrieved from Catalog API to know the sku id to split into."
+          }
+        },
+        "quantity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The quantity of the target product to which the subscription needs to be split into."
+          }
+        },
+        "termDuration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The term duration of the target in ISO8601 format product to which the subscription needs to be split into. Example: P1M, P1Y"
+          }
+        },
+        "billingFrequency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The billing frequency of the target subscription in the ISO8601 format. Example: P1M, P3M, P1Y\""
           }
         }
       },
@@ -17242,11 +18109,16 @@
             "smithy.api#documentation": "The ID that uniquely identifies a subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "destinationInvoiceSectionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The destination invoice section id."
+          }
+        },
+        "destinationEnrollmentAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The destination enrollment account id."
           }
         }
       },
@@ -17348,11 +18220,16 @@
             "smithy.api#documentation": "The ID that uniquely identifies a subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "targetBillingSubscriptionName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The ID of the target billing subscription that will be merged with the source subscription provided in the request."
+          }
+        },
+        "quantity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The quantity of the source billing subscription that will be merged with the target billing subscription."
           }
         }
       },
@@ -17398,16 +18275,48 @@
             "smithy.api#documentation": "The ID that uniquely identifies a subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "cancellationReason": {
+          "target": "com.azure.billing#CancellationReason",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Cancellation reason.",
             "smithy.api#required": {}
+          }
+        },
+        "customerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified ID that uniquely identifies a customer."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#CancellationReason": {
+      "type": "enum",
+      "members": {
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Other"
+          }
+        },
+        "COMPROMISE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Compromise"
+          }
+        },
+        "DISPUTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Dispute"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Cancellation reason."
       }
     },
     "com.azure.billing#BillingSubscriptionsDelete": {
@@ -17547,16 +18456,138 @@
             "smithy.api#documentation": "The ID that uniquely identifies a subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.billing#BillingSubscriptionsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+          }
+        },
+        "properties": {
+          "target": "com.azure.billing#BillingSubscriptionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of a(n) BillingSubscription"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingSubscriptionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "autoRenew": {
+          "target": "com.azure.billing#AutoRenew",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether auto renewal is turned on or off for a product."
+          }
+        },
+        "beneficiaryTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The provisioning tenant of the subscription."
+          }
+        },
+        "beneficiary": {
+          "target": "com.azure.billing#Beneficiary",
+          "traits": {
+            "smithy.api#documentation": "The beneficiary of the billing subscription."
+          }
+        },
+        "billingFrequency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The billing frequency in ISO8601 format of product in the subscription. Example: P1M, P3M, P1Y"
+          }
+        },
+        "billingProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified ID that uniquely identifies a billing profile."
+          }
+        },
+        "consumptionCostCenter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cost center applied to the subscription. This field is only available for consumption subscriptions of Microsoft Customer Agreement or Enterprise Agreement Type billing accounts."
+          }
+        },
+        "customerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified ID that uniquely identifies a customer."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the billing subscription."
+          }
+        },
+        "invoiceSectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified ID that uniquely identifies an invoice section."
+          }
+        },
+        "productTypeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the product for which the subscription is purchased."
+          }
+        },
+        "quantity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The quantity of licenses or fulfillment units for the subscription."
+          }
+        },
+        "skuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU ID of the product for which the subscription is purchased. This field is is only available  for Microsoft Customer Agreement billing accounts."
+          }
+        },
+        "systemOverrides": {
+          "target": "com.azure.billing#SystemOverridesInput",
+          "traits": {
+            "smithy.api#documentation": "System imposed policies that regulate behavior of the subscription."
+          }
+        },
+        "termDuration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The duration in ISO8601 format for which you can use the subscription. Example: P1M, P3M, P1Y"
+          }
+        },
+        "provisioningTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant in which the subscription is provisioned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The billing properties of a subscription."
+      }
+    },
+    "com.azure.billing#SystemOverridesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "System imposed policies that regulate behavior of the subscription."
+      }
+    },
+    "com.azure.billing#BillingSubscriptionsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
     "com.azure.billing#BillingSubscriptionsGet": {
@@ -18172,16 +19203,131 @@
             "smithy.api#documentation": "The ID that uniquely identifies a subscription alias."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#BillingSubscriptionAliasPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a(n) BillingSubscriptionAlias"
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingSubscriptionsAliasesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+      }
+    },
+    "com.azure.billing#BillingSubscriptionAliasPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "autoRenew": {
+          "target": "com.azure.billing#AutoRenew",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether auto renewal is turned on or off for a product."
+          }
+        },
+        "beneficiaryTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The provisioning tenant of the subscription."
+          }
+        },
+        "beneficiary": {
+          "target": "com.azure.billing#Beneficiary",
+          "traits": {
+            "smithy.api#documentation": "The beneficiary of the billing subscription."
+          }
+        },
+        "billingFrequency": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The billing frequency in ISO8601 format of product in the subscription. Example: P1M, P3M, P1Y"
+          }
+        },
+        "billingProfileId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified ID that uniquely identifies a billing profile."
+          }
+        },
+        "consumptionCostCenter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cost center applied to the subscription. This field is only available for consumption subscriptions of Microsoft Customer Agreement or Enterprise Agreement Type billing accounts."
+          }
+        },
+        "customerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified ID that uniquely identifies a customer."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the billing subscription."
+          }
+        },
+        "invoiceSectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fully qualified ID that uniquely identifies an invoice section."
+          }
+        },
+        "productTypeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the product for which the subscription is purchased."
+          }
+        },
+        "quantity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The quantity of licenses or fulfillment units for the subscription."
+          }
+        },
+        "skuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU ID of the product for which the subscription is purchased. This field is is only available  for Microsoft Customer Agreement billing accounts."
+          }
+        },
+        "systemOverrides": {
+          "target": "com.azure.billing#SystemOverridesInput",
+          "traits": {
+            "smithy.api#documentation": "System imposed policies that regulate behavior of the subscription."
+          }
+        },
+        "termDuration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The duration in ISO8601 format for which you can use the subscription. Example: P1M, P3M, P1Y"
+          }
+        },
+        "provisioningTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant in which the subscription is provisioned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A billing subscription alias."
       }
     },
     "com.azure.billing#BillingSubscriptionsAliasesGet": {
@@ -18724,16 +19870,33 @@
             "smithy.api#documentation": "The ID that uniquely identifies a role assignment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#BillingRoleAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of the billing role assignment."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingRoleAssignmentsCreateOrUpdateByBillingAccountRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
     "com.azure.billing#BillingRoleAssignmentsGetByBillingAccount": {
@@ -19687,16 +20850,33 @@
             "smithy.api#documentation": "The ID that uniquely identifies a billing profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#BillingProfilePolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A policy at billing profile scope."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#PoliciesCreateOrUpdateByBillingProfileRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#PoliciesCreateOrUpdateByBillingProfileRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
     "com.azure.billing#PoliciesGetByBillingProfile": {
@@ -20646,16 +21826,29 @@
             "smithy.api#documentation": "The ID that uniquely identifies a transfer request."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#InitiateTransferProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Request parameters to initiate transfer."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#InitiateTransferProperties": {
+      "type": "structure",
+      "members": {
+        "recipientEmailId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email ID of the recipient to whom the transfer request is sent."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Request parameters to initiate transfer."
       }
     },
     "com.azure.billing#TransfersGet": {
@@ -21311,11 +22504,47 @@
             "smithy.api#documentation": "The ID that uniquely identifies an invoice section."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "principalPuid": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The principal PUID of the user to whom the role was assigned."
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object id of the user to whom the role was assigned."
+          }
+        },
+        "principalTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal tenant id of the user to whom the role was assigned."
+          }
+        },
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the role definition.",
             "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope at which the role was assigned."
+          }
+        },
+        "userAuthenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement."
+          }
+        },
+        "userEmailAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement."
           }
         }
       },
@@ -21391,16 +22620,24 @@
             "smithy.api#documentation": "The ID that uniquely identifies an invoice section."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "actions": {
+          "target": "com.azure.billing#BillingPermissionsCheckAccessByInvoiceSectionRequestActionsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingPermissionsCheckAccessByInvoiceSectionRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
       }
     },
     "com.azure.billing#BillingSubscriptionsListByInvoiceSection": {
@@ -22281,16 +23518,83 @@
             "smithy.api#documentation": "The ID that uniquely identifies an invoice section."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#InvoiceSectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "An invoice section."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#InvoiceSectionsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#InvoiceSectionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+      }
+    },
+    "com.azure.billing#InvoiceSectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the invoice section."
+          }
+        },
+        "state": {
+          "target": "com.azure.billing#InvoiceSectionState",
+          "traits": {
+            "smithy.api#documentation": "Identifies the status of an invoice section."
+          }
+        },
+        "reasonCode": {
+          "target": "com.azure.billing#InvoiceSectionStateReasonCode",
+          "traits": {
+            "smithy.api#documentation": "Reason for the specified invoice section status."
+          }
+        },
+        "targetCloud": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#InvoiceSectionPropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An invoice section."
+      }
+    },
+    "com.azure.billing#InvoiceSectionPropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
     "com.azure.billing#InvoiceSectionsGet": {
@@ -22874,16 +24178,35 @@
             "smithy.api#documentation": "The ID that uniquely identifies a transfer request."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#PartnerInitiateTransferProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Request parameters to initiate partner transfer."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#PartnerInitiateTransferProperties": {
+      "type": "structure",
+      "members": {
+        "recipientEmailId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email ID of the recipient to whom the transfer request is sent."
+          }
+        },
+        "resellerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional MPN ID of the reseller for transfer requests that are sent from a Microsoft Partner Agreement billing account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Request parameters to initiate transfer."
       }
     },
     "com.azure.billing#PartnerTransfersGet": {
@@ -23446,16 +24769,33 @@
             "smithy.api#documentation": "The ID that uniquely identifies a customer."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#CustomerPolicyProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A policy at customer scope."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#PoliciesCreateOrUpdateByCustomerRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#PoliciesCreateOrUpdateByCustomerRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
     "com.azure.billing#PoliciesGetByCustomer": {
@@ -23687,11 +25027,47 @@
             "smithy.api#documentation": "The ID that uniquely identifies a customer."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "principalPuid": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The principal PUID of the user to whom the role was assigned."
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object id of the user to whom the role was assigned."
+          }
+        },
+        "principalTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal tenant id of the user to whom the role was assigned."
+          }
+        },
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the role definition.",
             "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope at which the role was assigned."
+          }
+        },
+        "userAuthenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement."
+          }
+        },
+        "userEmailAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement."
           }
         }
       },
@@ -23767,16 +25143,24 @@
             "smithy.api#documentation": "The ID that uniquely identifies a customer."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "actions": {
+          "target": "com.azure.billing#BillingPermissionsCheckAccessByCustomerRequestActionsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingPermissionsCheckAccessByCustomerRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
       }
     },
     "com.azure.billing#BillingSubscriptionsListByCustomer": {
@@ -24735,11 +26119,47 @@
             "smithy.api#documentation": "The ID that uniquely identifies a billing profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "principalPuid": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The principal PUID of the user to whom the role was assigned."
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object id of the user to whom the role was assigned."
+          }
+        },
+        "principalTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The principal tenant id of the user to whom the role was assigned."
+          }
+        },
+        "roleDefinitionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the role definition.",
             "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope at which the role was assigned."
+          }
+        },
+        "userAuthenticationType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement."
+          }
+        },
+        "userEmailAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement."
           }
         }
       },
@@ -24807,16 +26227,24 @@
             "smithy.api#documentation": "The ID that uniquely identifies a billing profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "actions": {
+          "target": "com.azure.billing#BillingPermissionsCheckAccessByBillingProfileRequestActionsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingPermissionsCheckAccessByBillingProfileRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
       }
     },
     "com.azure.billing#BillingSubscriptionsGetByBillingProfile": {
@@ -26088,16 +27516,137 @@
             "smithy.api#documentation": "The ID that uniquely identifies a billing profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#BillingProfilePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A billing profile."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#BillingProfilesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingProfilesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+      }
+    },
+    "com.azure.billing#BillingProfilePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "billTo": {
+          "target": "com.azure.billing#AddressDetails",
+          "traits": {
+            "smithy.api#documentation": "Billing address."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the billing profile."
+          }
+        },
+        "enabledAzurePlans": {
+          "target": "com.azure.billing#BillingProfilePropertiesInputEnabledAzurePlansList",
+          "traits": {
+            "smithy.api#documentation": "Information about the enabled azure plans."
+          }
+        },
+        "indirectRelationshipInfo": {
+          "target": "com.azure.billing#IndirectRelationshipInfo",
+          "traits": {
+            "smithy.api#documentation": "Identifies the billing profile that is linked to another billing profile in indirect purchase motion."
+          }
+        },
+        "invoiceEmailOptIn": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Flag controlling whether the invoices for the billing profile are sent through email."
+          }
+        },
+        "invoiceRecipients": {
+          "target": "com.azure.billing#BillingProfilePropertiesInputInvoiceRecipientsList",
+          "traits": {
+            "smithy.api#documentation": "The list of email addresses to receive invoices by email for the billing profile."
+          }
+        },
+        "poNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default purchase order number that will appear on the invoices generated for the billing profile."
+          }
+        },
+        "shipTo": {
+          "target": "com.azure.billing#AddressDetails",
+          "traits": {
+            "smithy.api#documentation": "The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used."
+          }
+        },
+        "soldTo": {
+          "target": "com.azure.billing#AddressDetails",
+          "traits": {
+            "smithy.api#documentation": "The address of the individual or organization that is responsible for the billing account."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#BillingProfilePropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+          }
+        },
+        "currentPaymentTerm": {
+          "target": "com.azure.billing#PaymentTermInput",
+          "traits": {
+            "smithy.api#documentation": "The current payment term of the billing profile."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A billing profile."
+      }
+    },
+    "com.azure.billing#BillingProfilePropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+      }
+    },
+    "com.azure.billing#BillingProfilePropertiesInputInvoiceRecipientsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of email addresses to receive invoices by email for the billing profile."
+      }
+    },
+    "com.azure.billing#BillingProfilePropertiesInputEnabledAzurePlansList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billing#AzurePlan"
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the enabled azure plans."
       }
     },
     "com.azure.billing#BillingProfilesGet": {
@@ -26758,16 +28307,65 @@
             "smithy.api#documentation": "The ID that uniquely identifies a tenant."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.billing#AssociatedTenantPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "An associated tenant."
+          }
+        },
+        "tags": {
+          "target": "com.azure.billing#AssociatedTenantsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#AssociatedTenantsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+      }
+    },
+    "com.azure.billing#AssociatedTenantPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the associated tenant."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID that uniquely identifies a tenant."
+          }
+        },
+        "billingManagementState": {
+          "target": "com.azure.billing#BillingManagementTenantState",
+          "traits": {
+            "smithy.api#documentation": "The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases."
+          }
+        },
+        "provisioningManagementState": {
+          "target": "com.azure.billing#ProvisioningTenantState",
+          "traits": {
+            "smithy.api#documentation": "The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An associated tenant."
       }
     },
     "com.azure.billing#AssociatedTenantsGet": {
@@ -27597,7 +29195,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.billing#BillingAccountsAddPaymentTermsRequestBodyList",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -27607,6 +29205,13 @@
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.billing#BillingAccountsAddPaymentTermsRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billing#PaymentTermInput"
+      },
+      "traits": {}
     },
     "com.azure.billing#BillingAccountsUpdate": {
       "type": "operation",
@@ -27694,16 +29299,150 @@
             "smithy.api#documentation": "The ID that uniquely identifies a billing account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.billing#BillingAccountsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
+          }
+        },
+        "properties": {
+          "target": "com.azure.billing#BillingAccountPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "A billing account."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.billing#BillingAccountPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The billing account name."
+          }
+        },
+        "enrollmentDetails": {
+          "target": "com.azure.billing#EnrollmentDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of an enrollment."
+          }
+        },
+        "hasReadAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether user has read access to the billing account."
+          }
+        },
+        "hasNoBillingProfiles": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether or not the billing account has any billing profiles."
+          }
+        },
+        "notificationEmailAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Notification email address for legacy account. Available for agreement type Microsoft Online Services Program."
+          }
+        },
+        "primaryBillingTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenant that was used to set up the billing account. By default, only users from this tenant can get role assignments on the billing account and all purchases are provisioned in this tenant."
+          }
+        },
+        "soldTo": {
+          "target": "com.azure.billing#AddressDetails",
+          "traits": {
+            "smithy.api#documentation": "The address of the individual or organization that is responsible for the billing account."
+          }
+        },
+        "registrationNumber": {
+          "target": "com.azure.billing#RegistrationNumberInput",
+          "traits": {
+            "smithy.api#documentation": "Describes the registration number of the organization linked with the billing account."
+          }
+        },
+        "taxIds": {
+          "target": "com.azure.billing#BillingAccountPropertiesInputTaxIdsList",
+          "traits": {
+            "smithy.api#documentation": "A list of tax identifiers for the billing account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A billing account."
+      }
+    },
+    "com.azure.billing#BillingAccountPropertiesInputTaxIdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.billing#TaxIdentifier"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of tax identifiers for the billing account."
+      }
+    },
+    "com.azure.billing#RegistrationNumberInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identification number of the organization linked with the billing account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the registration number of the organization linked with the billing account."
+      }
+    },
+    "com.azure.billing#EnrollmentDetailsInput": {
+      "type": "structure",
+      "members": {
+        "startDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start date of the enrollment."
+          }
+        },
+        "endDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end date of the enrollment."
+          }
+        },
+        "poNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The purchase order number of the enrollment."
+          }
+        },
+        "indirectRelationshipInfo": {
+          "target": "com.azure.billing#IndirectRelationshipInfo",
+          "traits": {
+            "smithy.api#documentation": "The properties of an enrollment which are applicable only for indirect enrollments."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an enrollment."
+      }
+    },
+    "com.azure.billing#BillingAccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
     "com.azure.billing#BillingAccountsGet": {

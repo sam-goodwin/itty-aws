@@ -639,13 +639,7 @@ export const PutPipelineDefinitionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutPipelineDefinitionOutput",
 }) as any as S.Schema<PutPipelineDefinitionOutput>;
-export type OperatorType =
-  | "EQ"
-  | "REF_EQ"
-  | "LE"
-  | "GE"
-  | "BETWEEN"
-  | (string & {});
+export type OperatorType = "EQ" | "REF_EQ" | "LE" | "GE" | "BETWEEN";
 export const OperatorType = /*@__PURE__*/ S.String;
 
 export type StringList = string[];
@@ -823,7 +817,7 @@ export const SetStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetStatusResponse",
 }) as any as S.Schema<SetStatusResponse>;
-export type TaskStatus = "FINISHED" | "FAILED" | "FALSE" | (string & {});
+export type TaskStatus = "FINISHED" | "FAILED" | "FALSE";
 export const TaskStatus = /*@__PURE__*/ S.String;
 
 export type ErrorMessage = string;

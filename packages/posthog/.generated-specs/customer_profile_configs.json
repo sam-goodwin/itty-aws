@@ -176,9 +176,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "scope": {
           "target": "com.posthog.customer_profile_configs#CustomerProfileConfigScopeEnum"
         },
@@ -187,15 +184,6 @@
         },
         "sidebar": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -283,15 +271,6 @@
         },
         "sidebar": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -340,15 +319,6 @@
         },
         "sidebar": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {

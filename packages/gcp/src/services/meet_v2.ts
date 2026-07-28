@@ -76,16 +76,14 @@ export const ActiveConference = /*@__PURE__*/ S.suspend(() =>
 export type SpaceConfigAttendanceReportGenerationTypeEnum =
   | "ATTENDANCE_REPORT_GENERATION_TYPE_UNSPECIFIED"
   | "GENERATE_REPORT"
-  | "DO_NOT_GENERATE"
-  | (string & {});
+  | "DO_NOT_GENERATE";
 export const SpaceConfigAttendanceReportGenerationTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type TranscriptionConfigAutoTranscriptionGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
-  | "OFF"
-  | (string & {});
+  | "OFF";
 export const TranscriptionConfigAutoTranscriptionGenerationEnum =
   /*@__PURE__*/ S.String;
 
@@ -107,8 +105,7 @@ export const TranscriptionConfig = /*@__PURE__*/ S.suspend(() =>
 export type RecordingConfigAutoRecordingGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
-  | "OFF"
-  | (string & {});
+  | "OFF";
 export const RecordingConfigAutoRecordingGenerationEnum =
   /*@__PURE__*/ S.String;
 
@@ -130,8 +127,7 @@ export const RecordingConfig = /*@__PURE__*/ S.suspend(() =>
 export type SmartNotesConfigAutoSmartNotesGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
-  | "OFF"
-  | (string & {});
+  | "OFF";
 export const SmartNotesConfigAutoSmartNotesGenerationEnum =
   /*@__PURE__*/ S.String;
 
@@ -167,49 +163,40 @@ export const ArtifactConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ArtifactConfig" }) as any as S.Schema<ArtifactConfig>;
 
-export type SpaceConfigModerationEnum =
-  | "MODERATION_UNSPECIFIED"
-  | "OFF"
-  | "ON"
-  | (string & {});
+export type SpaceConfigModerationEnum = "MODERATION_UNSPECIFIED" | "OFF" | "ON";
 export const SpaceConfigModerationEnum = /*@__PURE__*/ S.String;
 
 export type SpaceConfigAccessTypeEnum =
   | "ACCESS_TYPE_UNSPECIFIED"
   | "OPEN"
   | "TRUSTED"
-  | "RESTRICTED"
-  | (string & {});
+  | "RESTRICTED";
 export const SpaceConfigAccessTypeEnum = /*@__PURE__*/ S.String;
 
 export type ModerationRestrictionsChatRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
-  | "NO_RESTRICTION"
-  | (string & {});
+  | "NO_RESTRICTION";
 export const ModerationRestrictionsChatRestrictionEnum = /*@__PURE__*/ S.String;
 
 export type ModerationRestrictionsDefaultJoinAsViewerTypeEnum =
   | "DEFAULT_JOIN_AS_VIEWER_TYPE_UNSPECIFIED"
   | "ON"
-  | "OFF"
-  | (string & {});
+  | "OFF";
 export const ModerationRestrictionsDefaultJoinAsViewerTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type ModerationRestrictionsReactionRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
-  | "NO_RESTRICTION"
-  | (string & {});
+  | "NO_RESTRICTION";
 export const ModerationRestrictionsReactionRestrictionEnum =
   /*@__PURE__*/ S.String;
 
 export type ModerationRestrictionsPresentRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
-  | "NO_RESTRICTION"
-  | (string & {});
+  | "NO_RESTRICTION";
 export const ModerationRestrictionsPresentRestrictionEnum =
   /*@__PURE__*/ S.String;
 
@@ -244,8 +231,7 @@ export const ModerationRestrictions = /*@__PURE__*/ S.suspend(() =>
 export type SpaceConfigEntryPointAccessEnum =
   | "ENTRY_POINT_ACCESS_UNSPECIFIED"
   | "ALL"
-  | "CREATOR_APP_ONLY"
-  | (string & {});
+  | "CREATOR_APP_ONLY";
 export const SpaceConfigEntryPointAccessEnum = /*@__PURE__*/ S.String;
 
 /** The configuration pertaining to a meeting space. */
@@ -296,7 +282,7 @@ export const PhoneAccess = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PhoneAccess" }) as any as S.Schema<PhoneAccess>;
 
-export type PhoneAccessList = PhoneAccess[];
+export type PhoneAccessList = ReadonlyArray<PhoneAccess>;
 export const PhoneAccessList = /*@__PURE__*/ S.Array(
   PhoneAccess,
 ) as any as S.Schema<PhoneAccessList>;
@@ -317,7 +303,7 @@ export const GatewaySipAccess = /*@__PURE__*/ S.suspend(() =>
   identifier: "GatewaySipAccess",
 }) as any as S.Schema<GatewaySipAccess>;
 
-export type GatewaySipAccessList = GatewaySipAccess[];
+export type GatewaySipAccessList = ReadonlyArray<GatewaySipAccess>;
 export const GatewaySipAccessList = /*@__PURE__*/ S.Array(
   GatewaySipAccess,
 ) as any as S.Schema<GatewaySipAccessList>;
@@ -605,8 +591,7 @@ export type RecordingStateEnum =
   | "STATE_UNSPECIFIED"
   | "STARTED"
   | "ENDED"
-  | "FILE_GENERATED"
-  | (string & {});
+  | "FILE_GENERATED";
 export const RecordingStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about a recording created during a conference. */
@@ -655,8 +640,7 @@ export type SmartNoteStateEnum =
   | "STATE_UNSPECIFIED"
   | "STARTED"
   | "ENDED"
-  | "FILE_GENERATED"
-  | (string & {});
+  | "FILE_GENERATED";
 export const SmartNoteStateEnum = /*@__PURE__*/ S.String;
 
 /** Google Docs location where the transcript file is saved. */
@@ -721,8 +705,7 @@ export type TranscriptStateEnum =
   | "STATE_UNSPECIFIED"
   | "STARTED"
   | "ENDED"
-  | "FILE_GENERATED"
-  | (string & {});
+  | "FILE_GENERATED";
 export const TranscriptStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata for a transcript generated from a conference. It refers to the ASR (Automatic Speech Recognition) result of user's speech during the conference. */
@@ -837,7 +820,7 @@ export const ListConferenceRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConferenceRecordsRequest",
 }) as any as S.Schema<ListConferenceRecordsRequest>;
 
-export type ConferenceRecordList = ConferenceRecord[];
+export type ConferenceRecordList = ReadonlyArray<ConferenceRecord>;
 export const ConferenceRecordList = /*@__PURE__*/ S.Array(
   ConferenceRecord,
 ) as any as S.Schema<ConferenceRecordList>;
@@ -886,7 +869,7 @@ export const ListConferenceRecordsParticipantsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListConferenceRecordsParticipantsRequest",
 }) as any as S.Schema<ListConferenceRecordsParticipantsRequest>;
 
-export type ParticipantList = Participant[];
+export type ParticipantList = ReadonlyArray<Participant>;
 export const ParticipantList = /*@__PURE__*/ S.Array(
   Participant,
 ) as any as S.Schema<ParticipantList>;
@@ -938,7 +921,7 @@ export const ListConferenceRecordsParticipantsParticipantSessionsRequest =
     identifier: "ListConferenceRecordsParticipantsParticipantSessionsRequest",
   }) as any as S.Schema<ListConferenceRecordsParticipantsParticipantSessionsRequest>;
 
-export type ParticipantSessionList = ParticipantSession[];
+export type ParticipantSessionList = ReadonlyArray<ParticipantSession>;
 export const ParticipantSessionList = /*@__PURE__*/ S.Array(
   ParticipantSession,
 ) as any as S.Schema<ParticipantSessionList>;
@@ -984,7 +967,7 @@ export const ListConferenceRecordsRecordingsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListConferenceRecordsRecordingsRequest",
 }) as any as S.Schema<ListConferenceRecordsRecordingsRequest>;
 
-export type RecordingList = Recording[];
+export type RecordingList = ReadonlyArray<Recording>;
 export const RecordingList = /*@__PURE__*/ S.Array(
   Recording,
 ) as any as S.Schema<RecordingList>;
@@ -1030,7 +1013,7 @@ export const ListConferenceRecordsSmartNotesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListConferenceRecordsSmartNotesRequest",
 }) as any as S.Schema<ListConferenceRecordsSmartNotesRequest>;
 
-export type SmartNoteList = SmartNote[];
+export type SmartNoteList = ReadonlyArray<SmartNote>;
 export const SmartNoteList = /*@__PURE__*/ S.Array(
   SmartNote,
 ) as any as S.Schema<SmartNoteList>;
@@ -1076,7 +1059,7 @@ export const ListConferenceRecordsTranscriptsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListConferenceRecordsTranscriptsRequest",
 }) as any as S.Schema<ListConferenceRecordsTranscriptsRequest>;
 
-export type TranscriptList = Transcript[];
+export type TranscriptList = ReadonlyArray<Transcript>;
 export const TranscriptList = /*@__PURE__*/ S.Array(
   Transcript,
 ) as any as S.Schema<TranscriptList>;
@@ -1122,7 +1105,7 @@ export const ListConferenceRecordsTranscriptsEntriesRequest =
     identifier: "ListConferenceRecordsTranscriptsEntriesRequest",
   }) as any as S.Schema<ListConferenceRecordsTranscriptsEntriesRequest>;
 
-export type TranscriptEntryList = TranscriptEntry[];
+export type TranscriptEntryList = ReadonlyArray<TranscriptEntry>;
 export const TranscriptEntryList = /*@__PURE__*/ S.Array(
   TranscriptEntry,
 ) as any as S.Schema<TranscriptEntryList>;

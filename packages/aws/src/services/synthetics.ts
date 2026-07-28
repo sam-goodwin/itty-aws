@@ -174,7 +174,7 @@ export type CodeHandler = string;
 export type BlueprintType = string;
 export type BlueprintTypes = string[];
 export const BlueprintTypes = /*@__PURE__*/ S.Array(S.String);
-export type DependencyType = "LambdaLayer" | (string & {});
+export type DependencyType = "LambdaLayer";
 export const DependencyType = /*@__PURE__*/ S.String;
 
 export interface Dependency {
@@ -280,18 +280,15 @@ export const VpcConfigInput = /*@__PURE__*/ S.suspend(() =>
     Ipv6AllowedForDualStack: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "VpcConfigInput" }) as any as S.Schema<VpcConfigInput>;
-export type ResourceToTag = "lambda-function" | (string & {});
+export type ResourceToTag = "lambda-function";
 export const ResourceToTag = /*@__PURE__*/ S.String;
 
 export type ResourceList = ResourceToTag[];
 export const ResourceList = /*@__PURE__*/ S.Array(ResourceToTag);
-export type ProvisionedResourceCleanupSetting =
-  | "AUTOMATIC"
-  | "OFF"
-  | (string & {});
+export type ProvisionedResourceCleanupSetting = "AUTOMATIC" | "OFF";
 export const ProvisionedResourceCleanupSetting = /*@__PURE__*/ S.String;
 
-export type BrowserType = "CHROME" | "FIREFOX" | (string & {});
+export type BrowserType = "CHROME" | "FIREFOX";
 export const BrowserType = /*@__PURE__*/ S.String;
 
 export interface BrowserConfig {
@@ -323,7 +320,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export type EncryptionMode = "SSE_S3" | "SSE_KMS" | (string & {});
+export type EncryptionMode = "SSE_S3" | "SSE_KMS";
 export const EncryptionMode = /*@__PURE__*/ S.String;
 
 export type KmsKeyArn = string;
@@ -460,8 +457,7 @@ export type CanaryState =
   | "STOPPING"
   | "STOPPED"
   | "ERROR"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const CanaryState = /*@__PURE__*/ S.String;
 
 export type CanaryStateReasonCode =
@@ -476,8 +472,7 @@ export type CanaryStateReasonCode =
   | "ROLLBACK_FAILED"
   | "DELETE_IN_PROGRESS"
   | "DELETE_FAILED"
-  | "SYNC_DELETE_IN_PROGRESS"
-  | (string & {});
+  | "SYNC_DELETE_IN_PROGRESS";
 export const CanaryStateReasonCode = /*@__PURE__*/ S.String;
 
 export interface CanaryStatus {
@@ -569,14 +564,10 @@ export type VisualReferencesOutput = VisualReferenceOutput[];
 export const VisualReferencesOutput = /*@__PURE__*/ S.Array(
   VisualReferenceOutput,
 );
-export type LocationType = "Primary" | "Replica" | (string & {});
+export type LocationType = "Primary" | "Replica";
 export const LocationType = /*@__PURE__*/ S.String;
 
-export type ReplicationState =
-  | "InProgress"
-  | "InSync"
-  | "Inconsistent"
-  | (string & {});
+export type ReplicationState = "InProgress" | "InSync" | "Inconsistent";
 export const ReplicationState = /*@__PURE__*/ S.String;
 
 export interface ReplicationStatus {
@@ -876,20 +867,13 @@ export const DescribeCanariesLastRunRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeCanariesLastRunRequest",
 }) as any as S.Schema<DescribeCanariesLastRunRequest>;
 export type RetryAttempt = number;
-export type CanaryRunState = "RUNNING" | "PASSED" | "FAILED" | (string & {});
+export type CanaryRunState = "RUNNING" | "PASSED" | "FAILED";
 export const CanaryRunState = /*@__PURE__*/ S.String;
 
-export type CanaryRunStateReasonCode =
-  | "CANARY_FAILURE"
-  | "EXECUTION_FAILURE"
-  | (string & {});
+export type CanaryRunStateReasonCode = "CANARY_FAILURE" | "EXECUTION_FAILURE";
 export const CanaryRunStateReasonCode = /*@__PURE__*/ S.String;
 
-export type CanaryRunTestResult =
-  | "PASSED"
-  | "FAILED"
-  | "UNKNOWN"
-  | (string & {});
+export type CanaryRunTestResult = "PASSED" | "FAILED" | "UNKNOWN";
 export const CanaryRunTestResult = /*@__PURE__*/ S.String;
 
 export interface CanaryRunStatus {
@@ -1089,7 +1073,7 @@ export const GetCanaryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCanaryResponse",
 }) as any as S.Schema<GetCanaryResponse>;
-export type RunType = "CANARY_RUN" | "DRY_RUN" | (string & {});
+export type RunType = "CANARY_RUN" | "DRY_RUN";
 export const RunType = /*@__PURE__*/ S.String;
 
 export interface GetCanaryRunsRequest {

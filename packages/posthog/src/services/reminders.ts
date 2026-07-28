@@ -12,15 +12,10 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
-export type RecurrenceIntervalEnum =
-  | "daily"
-  | "weekly"
-  | "monthly"
-  | "yearly"
-  | (string & {});
+export type RecurrenceIntervalEnum = "daily" | "weekly" | "monthly" | "yearly";
 export const RecurrenceIntervalEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
@@ -30,12 +25,57 @@ export type RemindersCreateRequestRecurrenceInterval =
 export const RemindersCreateRequestRecurrenceInterval =
   /*@__PURE__*/ S.Unknown as any as S.Schema<RemindersCreateRequestRecurrenceInterval>;
 
+export interface RemindersCreateRequest {
+  /** ID of the organization this reminder belongs to. You must be a member of it. */
+  organization: string;
+  /** Optional ID of the project this reminder is scoped to. Required when targeting a specific resource. Must belong to the chosen organization. */
+  team?: number | null;
+  /** Short text shown as the notification title when the reminder fires. */
+  title: string;
+  /** Optional longer body for the notification. */
+  message?: string;
+  /** Optional PostHog resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided. */
+  resource_type?: string | null;
+  /** ID of the referenced resource; must exist in the chosen project. */
+  resource_id?: string | null;
+  /** For a one-off reminder: when it should fire (ISO 8601, future). */
+  scheduled_at?: string | null;
+  /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
+  recurrence_interval?: RemindersCreateRequestRecurrenceInterval | null;
+  /** For a recurring reminder: a 5-field cron expression (e.g. '0 9 * * 1' = Mondays 9am). May fire at most 4 times per day. Mutually exclusive with recurrence_interval. */
+  cron_expression?: string | null;
+  /** IANA timezone the schedule resolves in (e.g. 'America/New_York'). Defaults to the project timezone when a team is set, otherwise UTC. */
+  timezone?: string;
+  /** Optional: recurring reminders stop (status=completed) after this time. */
+  end_date?: string | null;
+}
+export const RemindersCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization: S.String,
+    team: S.optional(S.NullOr(S.Number)),
+    title: S.String,
+    message: S.optional(S.String),
+    resource_type: S.optional(S.NullOr(S.String)),
+    resource_id: S.optional(S.NullOr(S.String)),
+    scheduled_at: S.optional(S.NullOr(S.String)),
+    recurrence_interval: S.optional(
+      S.NullOr(RemindersCreateRequestRecurrenceInterval),
+    ),
+    cron_expression: S.optional(S.NullOr(S.String)),
+    timezone: S.optional(S.String),
+    end_date: S.optional(S.NullOr(S.String)),
+  }).pipe(T.Http({ method: "POST", uri: "/api/reminders/", code: 200 })),
+).annotate({
+  identifier: "RemindersCreateRequest",
+}) as any as S.Schema<RemindersCreateRequest>;
+
+/** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
+export type ReminderRecurrenceInterval = RecurrenceIntervalEnum | BlankEnum;
+export const ReminderRecurrenceInterval =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<ReminderRecurrenceInterval>;
+
 /** * `active` - Active * `completed` - Completed * `errored` - Errored */
-export type ReminderStatusEnum =
-  | "active"
-  | "completed"
-  | "errored"
-  | (string & {});
+export type ReminderStatusEnum = "active" | "completed" | "errored";
 export const ReminderStatusEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
@@ -53,8 +93,7 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -85,69 +124,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-export interface RemindersCreateRequest {
-  id: string;
-  /** ID of the organization this reminder belongs to. You must be a member of it. */
-  organization: string;
-  /** Optional ID of the project this reminder is scoped to. Required when targeting a specific resource. Must belong to the chosen organization. */
-  team?: number | null;
-  /** Short text shown as the notification title when the reminder fires. */
-  title: string;
-  /** Optional longer body for the notification. */
-  message?: string;
-  /** Optional PostHog resource this reminder is about. One of: dashboard, insight, experiment, feature_flag, survey, notebook, replay, error_tracking. Resources are project-scoped, so a team must be set when this is provided. */
-  resource_type?: string | null;
-  /** ID of the referenced resource; must exist in the chosen project. */
-  resource_id?: string | null;
-  /** For a one-off reminder: when it should fire (ISO 8601, future). */
-  scheduled_at?: string | null;
-  /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
-  recurrence_interval?: RemindersCreateRequestRecurrenceInterval | null;
-  /** For a recurring reminder: a 5-field cron expression (e.g. '0 9 * * 1' = Mondays 9am). May fire at most 4 times per day. Mutually exclusive with recurrence_interval. */
-  cron_expression?: string | null;
-  /** IANA timezone the schedule resolves in (e.g. 'America/New_York'). Defaults to the project timezone when a team is set, otherwise UTC. */
-  timezone?: string;
-  /** Optional: recurring reminders stop (status=completed) after this time. */
-  end_date?: string | null;
-  next_fire_at: string | null;
-  last_fired_at: string | null;
-  status: ReminderStatusEnum;
-  created_by: UserBasic;
-  created_at: string;
-  updated_at: string | null;
-}
-export const RemindersCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    organization: S.String,
-    team: S.optional(S.NullOr(S.Number)),
-    title: S.String,
-    message: S.optional(S.String),
-    resource_type: S.optional(S.NullOr(S.String)),
-    resource_id: S.optional(S.NullOr(S.String)),
-    scheduled_at: S.optional(S.NullOr(S.String)),
-    recurrence_interval: S.optional(
-      S.NullOr(RemindersCreateRequestRecurrenceInterval),
-    ),
-    cron_expression: S.optional(S.NullOr(S.String)),
-    timezone: S.optional(S.String),
-    end_date: S.optional(S.NullOr(S.String)),
-    next_fire_at: S.NullOr(S.String),
-    last_fired_at: S.NullOr(S.String),
-    status: ReminderStatusEnum,
-    created_by: UserBasic,
-    created_at: S.String,
-    updated_at: S.NullOr(S.String),
-  }).pipe(T.Http({ method: "POST", uri: "/api/reminders/", code: 200 })),
-).annotate({
-  identifier: "RemindersCreateRequest",
-}) as any as S.Schema<RemindersCreateRequest>;
-
-/** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
-export type ReminderRecurrenceInterval = RecurrenceIntervalEnum | BlankEnum;
-export const ReminderRecurrenceInterval =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<ReminderRecurrenceInterval>;
 
 export interface Reminder {
   id: string;
@@ -237,7 +213,7 @@ export const RemindersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemindersListRequest",
 }) as any as S.Schema<RemindersListRequest>;
 
-export type PaginatedReminderListResultsList = Reminder[];
+export type PaginatedReminderListResultsList = ReadonlyArray<Reminder>;
 export const PaginatedReminderListResultsList = /*@__PURE__*/ S.Array(
   Reminder,
 ) as any as S.Schema<PaginatedReminderListResultsList>;
@@ -291,12 +267,6 @@ export interface RemindersPartialUpdateRequest {
   timezone?: string;
   /** Optional: recurring reminders stop (status=completed) after this time. */
   end_date?: string | null;
-  next_fire_at?: string | null;
-  last_fired_at?: string | null;
-  status?: ReminderStatusEnum;
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const RemindersPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -314,12 +284,6 @@ export const RemindersPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     cron_expression: S.optional(S.NullOr(S.String)),
     timezone: S.optional(S.String),
     end_date: S.optional(S.NullOr(S.String)),
-    next_fire_at: S.optional(S.NullOr(S.String)),
-    last_fired_at: S.optional(S.NullOr(S.String)),
-    status: S.optional(ReminderStatusEnum),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(T.Http({ method: "PATCH", uri: "/api/reminders/{id}/", code: 200 })),
 ).annotate({
   identifier: "RemindersPartialUpdateRequest",
@@ -369,12 +333,6 @@ export interface RemindersUpdateRequest {
   timezone?: string;
   /** Optional: recurring reminders stop (status=completed) after this time. */
   end_date?: string | null;
-  next_fire_at: string | null;
-  last_fired_at: string | null;
-  status: ReminderStatusEnum;
-  created_by: UserBasic;
-  created_at: string;
-  updated_at: string | null;
 }
 export const RemindersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -392,12 +350,6 @@ export const RemindersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     cron_expression: S.optional(S.NullOr(S.String)),
     timezone: S.optional(S.String),
     end_date: S.optional(S.NullOr(S.String)),
-    next_fire_at: S.NullOr(S.String),
-    last_fired_at: S.NullOr(S.String),
-    status: ReminderStatusEnum,
-    created_by: UserBasic,
-    created_at: S.String,
-    updated_at: S.NullOr(S.String),
   }).pipe(T.Http({ method: "PUT", uri: "/api/reminders/{id}/", code: 200 })),
 ).annotate({
   identifier: "RemindersUpdateRequest",

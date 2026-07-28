@@ -12,6 +12,66 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Resource tags. */
+export type ArtifactManifestsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ArtifactManifestsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ArtifactManifestsCreateOrUpdateRequestTagsMap>;
+
+/** The artifact type. */
+export type ArtifactType =
+  | "Unknown"
+  | "OCIArtifact"
+  | "VhdImageFile"
+  | "ArmTemplate"
+  | "ImageFile";
+export const ArtifactType = /*@__PURE__*/ S.String;
+
+/** Manifest artifact properties. */
+export interface ManifestArtifactFormat {
+  /** The artifact name */
+  artifactName?: string;
+  /** The artifact type. */
+  artifactType?: ArtifactType;
+  /** The artifact version. */
+  artifactVersion?: string;
+}
+export const ManifestArtifactFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    artifactName: S.optional(S.String),
+    artifactType: S.optional(ArtifactType),
+    artifactVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManifestArtifactFormat",
+}) as any as S.Schema<ManifestArtifactFormat>;
+
+/** The artifacts list. */
+export type ArtifactManifestPropertiesFormatInputArtifactsList =
+  ReadonlyArray<ManifestArtifactFormat>;
+export const ArtifactManifestPropertiesFormatInputArtifactsList =
+  /*@__PURE__*/ S.Array(
+    ManifestArtifactFormat,
+  ) as any as S.Schema<ArtifactManifestPropertiesFormatInputArtifactsList>;
+
+/** Artifact manifest properties. */
+export interface ArtifactManifestPropertiesFormatInput {
+  /** The artifacts list. */
+  artifacts?: ArtifactManifestPropertiesFormatInputArtifactsList;
+}
+export const ArtifactManifestPropertiesFormatInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      artifacts: S.optional(ArtifactManifestPropertiesFormatInputArtifactsList),
+    }),
+).annotate({
+  identifier: "ArtifactManifestPropertiesFormatInput",
+}) as any as S.Schema<ArtifactManifestPropertiesFormatInput>;
+
 export interface ArtifactManifestsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -23,7 +83,12 @@ export interface ArtifactManifestsCreateOrUpdateRequest {
   artifactStoreName: string;
   /** The name of the artifact manifest. */
   artifactManifestName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ArtifactManifestsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Artifact manifest properties. */
+  properties?: ArtifactManifestPropertiesFormatInput;
 }
 export const ArtifactManifestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -33,7 +98,9 @@ export const ArtifactManifestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       publisherName: S.String.pipe(T.Label()),
       artifactStoreName: S.String.pipe(T.Label()),
       artifactManifestName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ArtifactManifestsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(ArtifactManifestPropertiesFormatInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -51,8 +118,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -60,8 +126,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -109,8 +174,7 @@ export type ArtifactManifestPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const ArtifactManifestPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -121,42 +185,12 @@ export type ArtifactManifestState =
   | "Uploaded"
   | "Validating"
   | "ValidationFailed"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const ArtifactManifestState = /*@__PURE__*/ S.String;
-
-/** The artifact type. */
-export type ArtifactType =
-  | "Unknown"
-  | "OCIArtifact"
-  | "VhdImageFile"
-  | "ArmTemplate"
-  | "ImageFile"
-  | (string & {});
-export const ArtifactType = /*@__PURE__*/ S.String;
-
-/** Manifest artifact properties. */
-export interface ManifestArtifactFormat {
-  /** The artifact name */
-  artifactName?: string;
-  /** The artifact type. */
-  artifactType?: ArtifactType;
-  /** The artifact version. */
-  artifactVersion?: string;
-}
-export const ManifestArtifactFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    artifactName: S.optional(S.String),
-    artifactType: S.optional(ArtifactType),
-    artifactVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManifestArtifactFormat",
-}) as any as S.Schema<ManifestArtifactFormat>;
 
 /** The artifacts list. */
 export type ArtifactManifestPropertiesFormatArtifactsList =
-  ManifestArtifactFormat[];
+  ReadonlyArray<ManifestArtifactFormat>;
 export const ArtifactManifestPropertiesFormatArtifactsList =
   /*@__PURE__*/ S.Array(
     ManifestArtifactFormat,
@@ -390,7 +424,8 @@ export const ArtifactManifest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArtifactManifest>;
 
 /** A list of artifact manifests. */
-export type ArtifactManifestListResultValueList = ArtifactManifest[];
+export type ArtifactManifestListResultValueList =
+  ReadonlyArray<ArtifactManifest>;
 export const ArtifactManifestListResultValueList = /*@__PURE__*/ S.Array(
   ArtifactManifest,
 ) as any as S.Schema<ArtifactManifestListResultValueList>;
@@ -447,8 +482,7 @@ export const ArtifactManifestsListCredentialRequest = /*@__PURE__*/ S.suspend(
 export type ArtifactManifestsListCredentialResponseCredentialType =
   | "Unknown"
   | "AzureContainerRegistryScopedToken"
-  | "AzureStorageAccountToken"
-  | (string & {});
+  | "AzureStorageAccountToken";
 export const ArtifactManifestsListCredentialResponseCredentialType =
   /*@__PURE__*/ S.String;
 
@@ -465,6 +499,15 @@ export const ArtifactManifestsListCredentialResponse = /*@__PURE__*/ S.suspend(
   identifier: "ArtifactManifestsListCredentialResponse",
 }) as any as S.Schema<ArtifactManifestsListCredentialResponse>;
 
+/** Resource tags. */
+export type ArtifactManifestsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ArtifactManifestsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ArtifactManifestsUpdateRequestTagsMap>;
+
 export interface ArtifactManifestsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -476,7 +519,8 @@ export interface ArtifactManifestsUpdateRequest {
   artifactStoreName: string;
   /** The name of the artifact manifest. */
   artifactManifestName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ArtifactManifestsUpdateRequestTagsMap;
 }
 export const ArtifactManifestsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -485,7 +529,7 @@ export const ArtifactManifestsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     publisherName: S.String.pipe(T.Label()),
     artifactStoreName: S.String.pipe(T.Label()),
     artifactManifestName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ArtifactManifestsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -548,7 +592,8 @@ export interface ArtifactManifestsUpdateStateRequest {
   artifactStoreName: string;
   /** The name of the artifact manifest. */
   artifactManifestName: string;
-  body: unknown;
+  /** The artifact manifest state. */
+  artifactManifestState?: ArtifactManifestState;
 }
 export const ArtifactManifestsUpdateStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -557,7 +602,7 @@ export const ArtifactManifestsUpdateStateRequest = /*@__PURE__*/ S.suspend(() =>
     publisherName: S.String.pipe(T.Label()),
     artifactStoreName: S.String.pipe(T.Label()),
     artifactManifestName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    artifactManifestState: S.optional(ArtifactManifestState),
   }).pipe(
     T.Http({
       method: "POST",
@@ -583,6 +628,29 @@ export const ArtifactManifestUpdateState = /*@__PURE__*/ S.suspend(() =>
   identifier: "ArtifactManifestUpdateState",
 }) as any as S.Schema<ArtifactManifestUpdateState>;
 
+/** Reference to another resource. */
+export interface ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem {
+  /** Resource ID. */
+  id?: string;
+}
+export const ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem",
+  }) as any as S.Schema<ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
+
+/** list of network fabric controllers. */
+export type ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
+  ReadonlyArray<ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
+export const ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
+  /*@__PURE__*/ S.Array(
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
+  ) as any as S.Schema<ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList>;
+
 export interface ArtifactStoresAddNetworkFabricControllerEndPointsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -592,7 +660,8 @@ export interface ArtifactStoresAddNetworkFabricControllerEndPointsRequest {
   publisherName: string;
   /** The name of the artifact store. */
   artifactStoreName: string;
-  body: unknown;
+  /** list of network fabric controllers. */
+  networkFabricControllerIds?: ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList;
 }
 export const ArtifactStoresAddNetworkFabricControllerEndPointsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -601,7 +670,9 @@ export const ArtifactStoresAddNetworkFabricControllerEndPointsRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       publisherName: S.String.pipe(T.Label()),
       artifactStoreName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      networkFabricControllerIds: S.optional(
+        ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -620,6 +691,29 @@ export const ArtifactStoresAddNetworkFabricControllerEndPointsResponse =
     identifier: "ArtifactStoresAddNetworkFabricControllerEndPointsResponse",
   }) as any as S.Schema<ArtifactStoresAddNetworkFabricControllerEndPointsResponse>;
 
+/** Reference to another resource. */
+export interface ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem {
+  /** Resource ID. */
+  id?: string;
+}
+export const ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem",
+  }) as any as S.Schema<ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
+
+/** list of private endpoints. */
+export type ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
+  ReadonlyArray<ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
+export const ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
+  /*@__PURE__*/ S.Array(
+    ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem,
+  ) as any as S.Schema<ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList>;
+
 export interface ArtifactStoresApprovePrivateEndPointsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -629,7 +723,8 @@ export interface ArtifactStoresApprovePrivateEndPointsRequest {
   publisherName: string;
   /** The name of the artifact store. */
   artifactStoreName: string;
-  body: unknown;
+  /** list of private endpoints. */
+  manualPrivateEndPointConnections?: ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList;
 }
 export const ArtifactStoresApprovePrivateEndPointsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -638,7 +733,9 @@ export const ArtifactStoresApprovePrivateEndPointsRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       publisherName: S.String.pipe(T.Label()),
       artifactStoreName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      manualPrivateEndPointConnections: S.optional(
+        ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -657,6 +754,81 @@ export const ArtifactStoresApprovePrivateEndPointsResponse =
     identifier: "ArtifactStoresApprovePrivateEndPointsResponse",
   }) as any as S.Schema<ArtifactStoresApprovePrivateEndPointsResponse>;
 
+/** Resource tags. */
+export type ArtifactStoresCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ArtifactStoresCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ArtifactStoresCreateOrUpdateRequestTagsMap>;
+
+/** The artifact store type. */
+export type ArtifactStorePropertiesFormatInputStoreType =
+  | "Unknown"
+  | "AzureContainerRegistry"
+  | "AzureStorageAccount";
+export const ArtifactStorePropertiesFormatInputStoreType =
+  /*@__PURE__*/ S.String;
+
+/** The backing resource network access type. */
+export type ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess =
+  "Enabled" | "Disabled";
+export const ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** The replication strategy. */
+export type ArtifactStorePropertiesFormatInputReplicationStrategy =
+  | "Unknown"
+  | "SingleReplication";
+export const ArtifactStorePropertiesFormatInputReplicationStrategy =
+  /*@__PURE__*/ S.String;
+
+export interface ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration {
+  /** The managed resource group name. */
+  name?: string;
+  /** The managed resource group location. */
+  location?: string;
+}
+export const ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      location: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration",
+  }) as any as S.Schema<ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration>;
+
+/** Artifact store properties. */
+export interface ArtifactStorePropertiesFormatInput {
+  /** The artifact store type. */
+  storeType?: ArtifactStorePropertiesFormatInputStoreType;
+  /** The backing resource network access type. */
+  backingResourcePublicNetworkAccess?: ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess;
+  /** The replication strategy. */
+  replicationStrategy?: ArtifactStorePropertiesFormatInputReplicationStrategy;
+  managedResourceGroupConfiguration?: ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration;
+}
+export const ArtifactStorePropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storeType: S.optional(ArtifactStorePropertiesFormatInputStoreType),
+    backingResourcePublicNetworkAccess: S.optional(
+      ArtifactStorePropertiesFormatInputBackingResourcePublicNetworkAccess,
+    ),
+    replicationStrategy: S.optional(
+      ArtifactStorePropertiesFormatInputReplicationStrategy,
+    ),
+    managedResourceGroupConfiguration: S.optional(
+      ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration,
+    ),
+  }),
+).annotate({
+  identifier: "ArtifactStorePropertiesFormatInput",
+}) as any as S.Schema<ArtifactStorePropertiesFormatInput>;
+
 export interface ArtifactStoresCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -666,7 +838,12 @@ export interface ArtifactStoresCreateOrUpdateRequest {
   publisherName: string;
   /** The name of the artifact store. */
   artifactStoreName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ArtifactStoresCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** ArtifactStores properties. */
+  properties?: ArtifactStorePropertiesFormatInput;
 }
 export const ArtifactStoresCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -674,7 +851,9 @@ export const ArtifactStoresCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     publisherName: S.String.pipe(T.Label()),
     artifactStoreName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ArtifactStoresCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ArtifactStorePropertiesFormatInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -706,8 +885,7 @@ export type ArtifactStorePropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const ArtifactStorePropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -715,23 +893,20 @@ export const ArtifactStorePropertiesFormatProvisioningState =
 export type ArtifactStorePropertiesFormatStoreType =
   | "Unknown"
   | "AzureContainerRegistry"
-  | "AzureStorageAccount"
-  | (string & {});
+  | "AzureStorageAccount";
 export const ArtifactStorePropertiesFormatStoreType = /*@__PURE__*/ S.String;
 
 /** The backing resource network access type. */
 export type ArtifactStorePropertiesFormatBackingResourcePublicNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ArtifactStorePropertiesFormatBackingResourcePublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** The replication strategy. */
 export type ArtifactStorePropertiesFormatReplicationStrategy =
   | "Unknown"
-  | "SingleReplication"
-  | (string & {});
+  | "SingleReplication";
 export const ArtifactStorePropertiesFormatReplicationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -853,6 +1028,29 @@ export const ArtifactStoresDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ArtifactStoresDeleteResponse",
 }) as any as S.Schema<ArtifactStoresDeleteResponse>;
 
+/** Reference to another resource. */
+export interface ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem {
+  /** Resource ID. */
+  id?: string;
+}
+export const ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem",
+  }) as any as S.Schema<ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
+
+/** list of network fabric controllers. */
+export type ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
+  ReadonlyArray<ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
+export const ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
+  /*@__PURE__*/ S.Array(
+    ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
+  ) as any as S.Schema<ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList>;
+
 export interface ArtifactStoresDeleteNetworkFabricControllerEndPointsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -862,7 +1060,8 @@ export interface ArtifactStoresDeleteNetworkFabricControllerEndPointsRequest {
   publisherName: string;
   /** The name of the artifact store. */
   artifactStoreName: string;
-  body: unknown;
+  /** list of network fabric controllers. */
+  networkFabricControllerIds?: ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList;
 }
 export const ArtifactStoresDeleteNetworkFabricControllerEndPointsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -871,7 +1070,9 @@ export const ArtifactStoresDeleteNetworkFabricControllerEndPointsRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       publisherName: S.String.pipe(T.Label()),
       artifactStoreName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      networkFabricControllerIds: S.optional(
+        ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1020,7 +1221,7 @@ export const ArtifactStore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArtifactStore" }) as any as S.Schema<ArtifactStore>;
 
 /** A list of artifact stores. */
-export type ArtifactStoreListResultValueList = ArtifactStore[];
+export type ArtifactStoreListResultValueList = ReadonlyArray<ArtifactStore>;
 export const ArtifactStoreListResultValueList = /*@__PURE__*/ S.Array(
   ArtifactStore,
 ) as any as S.Schema<ArtifactStoreListResultValueList>;
@@ -1088,7 +1289,7 @@ export const ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControlle
 
 /** list of network fabric controllers. */
 export type ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList =
-  ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem[];
+  ReadonlyArray<ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem>;
 export const ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList =
   /*@__PURE__*/ S.Array(
     ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem,
@@ -1112,7 +1313,7 @@ export const ArtifactStoreNetworkFabricControllerEndPoints =
 
 /** A list of network fabric controllers. */
 export type ArtifactStoreNetworkFabricControllerEndPointsListValueList =
-  ArtifactStoreNetworkFabricControllerEndPoints[];
+  ReadonlyArray<ArtifactStoreNetworkFabricControllerEndPoints>;
 export const ArtifactStoreNetworkFabricControllerEndPointsListValueList =
   /*@__PURE__*/ S.Array(
     ArtifactStoreNetworkFabricControllerEndPoints,
@@ -1183,7 +1384,7 @@ export const ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnections
 
 /** list of private endpoints. */
 export type ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList =
-  ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem[];
+  ReadonlyArray<ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem>;
 export const ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList =
   /*@__PURE__*/ S.Array(
     ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem,
@@ -1206,7 +1407,7 @@ export const ArtifactStorePrivateEndPointsFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of private endpoints. */
 export type ArtifactStorePrivateEndPointsListResultValueList =
-  ArtifactStorePrivateEndPointsFormat[];
+  ReadonlyArray<ArtifactStorePrivateEndPointsFormat>;
 export const ArtifactStorePrivateEndPointsListResultValueList =
   /*@__PURE__*/ S.Array(
     ArtifactStorePrivateEndPointsFormat,
@@ -1229,6 +1430,29 @@ export const ArtifactStorePrivateEndPointsListResult = /*@__PURE__*/ S.suspend(
   identifier: "ArtifactStorePrivateEndPointsListResult",
 }) as any as S.Schema<ArtifactStorePrivateEndPointsListResult>;
 
+/** Reference to another resource. */
+export interface ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem {
+  /** Resource ID. */
+  id?: string;
+}
+export const ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem",
+  }) as any as S.Schema<ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
+
+/** list of private endpoints. */
+export type ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
+  ReadonlyArray<ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
+export const ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
+  /*@__PURE__*/ S.Array(
+    ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem,
+  ) as any as S.Schema<ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList>;
+
 export interface ArtifactStoresRemovePrivateEndPointsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1238,7 +1462,8 @@ export interface ArtifactStoresRemovePrivateEndPointsRequest {
   publisherName: string;
   /** The name of the artifact store. */
   artifactStoreName: string;
-  body: unknown;
+  /** list of private endpoints. */
+  manualPrivateEndPointConnections?: ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList;
 }
 export const ArtifactStoresRemovePrivateEndPointsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1247,7 +1472,9 @@ export const ArtifactStoresRemovePrivateEndPointsRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       publisherName: S.String.pipe(T.Label()),
       artifactStoreName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      manualPrivateEndPointConnections: S.optional(
+        ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1266,6 +1493,15 @@ export const ArtifactStoresRemovePrivateEndPointsResponse =
     identifier: "ArtifactStoresRemovePrivateEndPointsResponse",
   }) as any as S.Schema<ArtifactStoresRemovePrivateEndPointsResponse>;
 
+/** Resource tags. */
+export type ArtifactStoresUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ArtifactStoresUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ArtifactStoresUpdateRequestTagsMap>;
+
 export interface ArtifactStoresUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1275,7 +1511,8 @@ export interface ArtifactStoresUpdateRequest {
   publisherName: string;
   /** The name of the artifact store. */
   artifactStoreName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ArtifactStoresUpdateRequestTagsMap;
 }
 export const ArtifactStoresUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1283,7 +1520,7 @@ export const ArtifactStoresUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     publisherName: S.String.pipe(T.Label()),
     artifactStoreName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ArtifactStoresUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1372,8 +1609,7 @@ export type ComponentPropertiesProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const ComponentPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The component resource deployment status. */
@@ -1391,8 +1627,7 @@ export type Status =
   | "Installing"
   | "Reinstalling"
   | "Rollingback"
-  | "Upgrading"
-  | (string & {});
+  | "Upgrading";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Helm Deployment status properties. */
@@ -1425,7 +1660,7 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 /** Deployments that are related to component resource. */
-export type ResourcesDeploymentsList = Deployment[];
+export type ResourcesDeploymentsList = ReadonlyArray<Deployment>;
 export const ResourcesDeploymentsList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<ResourcesDeploymentsList>;
@@ -1438,12 +1673,11 @@ export type PodStatus =
   | "Running"
   | "Pending"
   | "Terminating"
-  | "NotReady"
-  | (string & {});
+  | "NotReady";
 export const PodStatus = /*@__PURE__*/ S.String;
 
 /** The type of pod event. */
-export type PodEventType = "Normal" | "Warning" | (string & {});
+export type PodEventType = "Normal" | "Warning";
 export const PodEventType = /*@__PURE__*/ S.String;
 
 /** Pod Event properties. */
@@ -1467,7 +1701,7 @@ export const PodEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PodEvent" }) as any as S.Schema<PodEvent>;
 
 /** Last 5 Pod events. */
-export type PodEventsList = PodEvent[];
+export type PodEventsList = ReadonlyArray<PodEvent>;
 export const PodEventsList = /*@__PURE__*/ S.Array(
   PodEvent,
 ) as any as S.Schema<PodEventsList>;
@@ -1502,7 +1736,7 @@ export const Pod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pod" }) as any as S.Schema<Pod>;
 
 /** Pods related to component resource. */
-export type ResourcesPodsList = Pod[];
+export type ResourcesPodsList = ReadonlyArray<Pod>;
 export const ResourcesPodsList = /*@__PURE__*/ S.Array(
   Pod,
 ) as any as S.Schema<ResourcesPodsList>;
@@ -1534,7 +1768,7 @@ export const ReplicaSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicaSet" }) as any as S.Schema<ReplicaSet>;
 
 /** Replica sets related to component resource. */
-export type ResourcesReplicaSetsList = ReplicaSet[];
+export type ResourcesReplicaSetsList = ReadonlyArray<ReplicaSet>;
 export const ResourcesReplicaSetsList = /*@__PURE__*/ S.Array(
   ReplicaSet,
 ) as any as S.Schema<ResourcesReplicaSetsList>;
@@ -1563,7 +1797,7 @@ export const StatefulSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatefulSet" }) as any as S.Schema<StatefulSet>;
 
 /** Stateful sets related to component resource. */
-export type ResourcesStatefulSetsList = StatefulSet[];
+export type ResourcesStatefulSetsList = ReadonlyArray<StatefulSet>;
 export const ResourcesStatefulSetsList = /*@__PURE__*/ S.Array(
   StatefulSet,
 ) as any as S.Schema<ResourcesStatefulSetsList>;
@@ -1601,7 +1835,7 @@ export const DaemonSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DaemonSet" }) as any as S.Schema<DaemonSet>;
 
 /** Daemonsets related to component resource. */
-export type ResourcesDaemonSetsList = DaemonSet[];
+export type ResourcesDaemonSetsList = ReadonlyArray<DaemonSet>;
 export const ResourcesDaemonSetsList = /*@__PURE__*/ S.Array(
   DaemonSet,
 ) as any as S.Schema<ResourcesDaemonSetsList>;
@@ -1741,7 +1975,7 @@ export const Component = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Component" }) as any as S.Schema<Component>;
 
 /** A list of component resources in a networkFunction. */
-export type ComponentListResultValueList = Component[];
+export type ComponentListResultValueList = ReadonlyArray<Component>;
 export const ComponentListResultValueList = /*@__PURE__*/ S.Array(
   Component,
 ) as any as S.Schema<ComponentListResultValueList>;
@@ -1762,6 +1996,33 @@ export const ComponentListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComponentListResult",
 }) as any as S.Schema<ComponentListResult>;
 
+/** Resource tags. */
+export type ConfigurationGroupSchemasCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationGroupSchemasCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConfigurationGroupSchemasCreateOrUpdateRequestTagsMap>;
+
+/** Configuration group schema properties. */
+export interface ConfigurationGroupSchemaPropertiesFormatInput {
+  /** Description of what schema can contain. */
+  description?: string;
+  /** Name and value pairs that define the configuration value. It can be a well formed escaped JSON string. */
+  schemaDefinition?: string;
+}
+export const ConfigurationGroupSchemaPropertiesFormatInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      description: S.optional(S.String),
+      schemaDefinition: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConfigurationGroupSchemaPropertiesFormatInput",
+  }) as any as S.Schema<ConfigurationGroupSchemaPropertiesFormatInput>;
+
 export interface ConfigurationGroupSchemasCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1771,7 +2032,12 @@ export interface ConfigurationGroupSchemasCreateOrUpdateRequest {
   publisherName: string;
   /** The name of the configuration group schema. */
   configurationGroupSchemaName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ConfigurationGroupSchemasCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Configuration group schema properties. */
+  properties?: ConfigurationGroupSchemaPropertiesFormatInput;
 }
 export const ConfigurationGroupSchemasCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1780,7 +2046,9 @@ export const ConfigurationGroupSchemasCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       publisherName: S.String.pipe(T.Label()),
       configurationGroupSchemaName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ConfigurationGroupSchemasCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(ConfigurationGroupSchemaPropertiesFormatInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1812,8 +2080,7 @@ export type ConfigurationGroupSchemaPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const ConfigurationGroupSchemaPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -1822,8 +2089,7 @@ export type ConfigurationGroupSchemaVersionState =
   | "Unknown"
   | "Preview"
   | "Active"
-  | "Deprecated"
-  | (string & {});
+  | "Deprecated";
 export const ConfigurationGroupSchemaVersionState = /*@__PURE__*/ S.String;
 
 /** Configuration group schema properties. */
@@ -2055,7 +2321,7 @@ export const ConfigurationGroupSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of configuration group schema. */
 export type ConfigurationGroupSchemaListResultValueList =
-  ConfigurationGroupSchema[];
+  ReadonlyArray<ConfigurationGroupSchema>;
 export const ConfigurationGroupSchemaListResultValueList =
   /*@__PURE__*/ S.Array(
     ConfigurationGroupSchema,
@@ -2077,6 +2343,16 @@ export const ConfigurationGroupSchemaListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationGroupSchemaListResult",
 }) as any as S.Schema<ConfigurationGroupSchemaListResult>;
 
+/** Resource tags. */
+export type ConfigurationGroupSchemasUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationGroupSchemasUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConfigurationGroupSchemasUpdateRequestTagsMap>;
+
 export interface ConfigurationGroupSchemasUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2086,7 +2362,8 @@ export interface ConfigurationGroupSchemasUpdateRequest {
   publisherName: string;
   /** The name of the configuration group schema. */
   configurationGroupSchemaName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ConfigurationGroupSchemasUpdateRequestTagsMap;
 }
 export const ConfigurationGroupSchemasUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2095,7 +2372,7 @@ export const ConfigurationGroupSchemasUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       publisherName: S.String.pipe(T.Label()),
       configurationGroupSchemaName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ConfigurationGroupSchemasUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -2158,7 +2435,8 @@ export interface ConfigurationGroupSchemasUpdateStateRequest {
   publisherName: string;
   /** The name of the configuration group schema. */
   configurationGroupSchemaName: string;
-  body: unknown;
+  /** The configuration group schema state. */
+  versionState?: ConfigurationGroupSchemaVersionState;
 }
 export const ConfigurationGroupSchemasUpdateStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2167,7 +2445,7 @@ export const ConfigurationGroupSchemasUpdateStateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       publisherName: S.String.pipe(T.Label()),
       configurationGroupSchemaName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      versionState: S.optional(ConfigurationGroupSchemaVersionState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2194,6 +2472,73 @@ export const ConfigurationGroupSchemaVersionUpdateState =
     identifier: "ConfigurationGroupSchemaVersionUpdateState",
   }) as any as S.Schema<ConfigurationGroupSchemaVersionUpdateState>;
 
+/** Resource tags. */
+export type ConfigurationGroupValuesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationGroupValuesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConfigurationGroupValuesCreateOrUpdateRequestTagsMap>;
+
+/** Publisher Scope. */
+export type ConfigurationGroupValuePropertiesFormatInputPublisherScope =
+  | "Unknown"
+  | "Private";
+export const ConfigurationGroupValuePropertiesFormatInputPublisherScope =
+  /*@__PURE__*/ S.String;
+
+/** The resource reference arm id type. */
+export type IdType = "Unknown" | "Open" | "Secret";
+export const IdType = /*@__PURE__*/ S.String;
+
+/** The azure resource reference which is used for deployment. */
+export interface ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference {
+  /** The resource reference arm id type. */
+  idType: IdType;
+}
+export const ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      idType: IdType,
+    }),
+  ).annotate({
+    identifier:
+      "ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference",
+  }) as any as S.Schema<ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference>;
+
+/** The secret type which indicates if secret or not. */
+export type ConfigurationGroupValueConfigurationType =
+  | "Unknown"
+  | "Secret"
+  | "Open";
+export const ConfigurationGroupValueConfigurationType = /*@__PURE__*/ S.String;
+
+/** Hybrid configuration group value properties. */
+export interface ConfigurationGroupValuePropertiesFormatInput {
+  /** Publisher Scope. */
+  publisherScope?: ConfigurationGroupValuePropertiesFormatInputPublisherScope;
+  /** The azure resource reference which is used for deployment. */
+  configurationGroupSchemaResourceReference?: ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference;
+  /** The value which indicates if configuration values are secrets */
+  configurationType: ConfigurationGroupValueConfigurationType;
+}
+export const ConfigurationGroupValuePropertiesFormatInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      publisherScope: S.optional(
+        ConfigurationGroupValuePropertiesFormatInputPublisherScope,
+      ),
+      configurationGroupSchemaResourceReference: S.optional(
+        ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference,
+      ),
+      configurationType: ConfigurationGroupValueConfigurationType,
+    }),
+  ).annotate({
+    identifier: "ConfigurationGroupValuePropertiesFormatInput",
+  }) as any as S.Schema<ConfigurationGroupValuePropertiesFormatInput>;
+
 export interface ConfigurationGroupValuesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2201,7 +2546,12 @@ export interface ConfigurationGroupValuesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the configuration group value. */
   configurationGroupValueName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ConfigurationGroupValuesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Hybrid configuration group value properties. */
+  properties?: ConfigurationGroupValuePropertiesFormatInput;
 }
 export const ConfigurationGroupValuesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2209,7 +2559,9 @@ export const ConfigurationGroupValuesCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       configurationGroupValueName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ConfigurationGroupValuesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(ConfigurationGroupValuePropertiesFormatInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2241,22 +2593,16 @@ export type ConfigurationGroupValuePropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const ConfigurationGroupValuePropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Publisher Scope. */
 export type ConfigurationGroupValuePropertiesFormatPublisherScope =
   | "Unknown"
-  | "Private"
-  | (string & {});
+  | "Private";
 export const ConfigurationGroupValuePropertiesFormatPublisherScope =
   /*@__PURE__*/ S.String;
-
-/** The resource reference arm id type. */
-export type IdType = "Unknown" | "Open" | "Secret" | (string & {});
-export const IdType = /*@__PURE__*/ S.String;
 
 /** The azure resource reference which is used for deployment. */
 export interface ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference {
@@ -2272,14 +2618,6 @@ export const ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaReso
     identifier:
       "ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference",
   }) as any as S.Schema<ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference>;
-
-/** The secret type which indicates if secret or not. */
-export type ConfigurationGroupValueConfigurationType =
-  | "Unknown"
-  | "Secret"
-  | "Open"
-  | (string & {});
-export const ConfigurationGroupValueConfigurationType = /*@__PURE__*/ S.String;
 
 /** Hybrid configuration group value properties. */
 export interface ConfigurationGroupValuePropertiesFormat {
@@ -2513,7 +2851,7 @@ export const ConfigurationGroupValue = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of hybrid configurationGroups. */
 export type ConfigurationGroupValueListResultValueList =
-  ConfigurationGroupValue[];
+  ReadonlyArray<ConfigurationGroupValue>;
 export const ConfigurationGroupValueListResultValueList = /*@__PURE__*/ S.Array(
   ConfigurationGroupValue,
 ) as any as S.Schema<ConfigurationGroupValueListResultValueList>;
@@ -2554,6 +2892,16 @@ export const ConfigurationGroupValuesListBySubscriptionRequest =
     identifier: "ConfigurationGroupValuesListBySubscriptionRequest",
   }) as any as S.Schema<ConfigurationGroupValuesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type ConfigurationGroupValuesUpdateTagsRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationGroupValuesUpdateTagsRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConfigurationGroupValuesUpdateTagsRequestTagsMap>;
+
 export interface ConfigurationGroupValuesUpdateTagsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2561,7 +2909,8 @@ export interface ConfigurationGroupValuesUpdateTagsRequest {
   resourceGroupName: string;
   /** The name of the configuration group value. */
   configurationGroupValueName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ConfigurationGroupValuesUpdateTagsRequestTagsMap;
 }
 export const ConfigurationGroupValuesUpdateTagsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2569,7 +2918,7 @@ export const ConfigurationGroupValuesUpdateTagsRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       configurationGroupValueName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ConfigurationGroupValuesUpdateTagsRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -2623,6 +2972,30 @@ export const ConfigurationGroupValuesUpdateTagsResponse =
     identifier: "ConfigurationGroupValuesUpdateTagsResponse",
   }) as any as S.Schema<ConfigurationGroupValuesUpdateTagsResponse>;
 
+/** Resource tags. */
+export type NetworkFunctionDefinitionGroupsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkFunctionDefinitionGroupsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkFunctionDefinitionGroupsCreateOrUpdateRequestTagsMap>;
+
+/** Network function definition group properties. */
+export interface NetworkFunctionDefinitionGroupPropertiesFormatInput {
+  /** The network function definition group description. */
+  description?: string;
+}
+export const NetworkFunctionDefinitionGroupPropertiesFormatInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "NetworkFunctionDefinitionGroupPropertiesFormatInput",
+  }) as any as S.Schema<NetworkFunctionDefinitionGroupPropertiesFormatInput>;
+
 export interface NetworkFunctionDefinitionGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2632,7 +3005,12 @@ export interface NetworkFunctionDefinitionGroupsCreateOrUpdateRequest {
   publisherName: string;
   /** The name of the network function definition group. */
   networkFunctionDefinitionGroupName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkFunctionDefinitionGroupsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Network function definition group properties. */
+  properties?: NetworkFunctionDefinitionGroupPropertiesFormatInput;
 }
 export const NetworkFunctionDefinitionGroupsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2641,7 +3019,13 @@ export const NetworkFunctionDefinitionGroupsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       publisherName: S.String.pipe(T.Label()),
       networkFunctionDefinitionGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(
+        NetworkFunctionDefinitionGroupsCreateOrUpdateRequestTagsMap,
+      ),
+      location: S.String,
+      properties: S.optional(
+        NetworkFunctionDefinitionGroupPropertiesFormatInput,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2673,8 +3057,7 @@ export type NetworkFunctionDefinitionGroupPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const NetworkFunctionDefinitionGroupPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2903,7 +3286,7 @@ export const NetworkFunctionDefinitionGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of network function definition group. */
 export type NetworkFunctionDefinitionGroupListResultValueList =
-  NetworkFunctionDefinitionGroup[];
+  ReadonlyArray<NetworkFunctionDefinitionGroup>;
 export const NetworkFunctionDefinitionGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkFunctionDefinitionGroup,
@@ -2926,6 +3309,16 @@ export const NetworkFunctionDefinitionGroupListResult = /*@__PURE__*/ S.suspend(
   identifier: "NetworkFunctionDefinitionGroupListResult",
 }) as any as S.Schema<NetworkFunctionDefinitionGroupListResult>;
 
+/** Resource tags. */
+export type NetworkFunctionDefinitionGroupsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkFunctionDefinitionGroupsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkFunctionDefinitionGroupsUpdateRequestTagsMap>;
+
 export interface NetworkFunctionDefinitionGroupsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2935,7 +3328,8 @@ export interface NetworkFunctionDefinitionGroupsUpdateRequest {
   publisherName: string;
   /** The name of the network function definition group. */
   networkFunctionDefinitionGroupName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkFunctionDefinitionGroupsUpdateRequestTagsMap;
 }
 export const NetworkFunctionDefinitionGroupsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2944,7 +3338,7 @@ export const NetworkFunctionDefinitionGroupsUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       publisherName: S.String.pipe(T.Label()),
       networkFunctionDefinitionGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NetworkFunctionDefinitionGroupsUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -2998,6 +3392,43 @@ export const NetworkFunctionDefinitionGroupsUpdateResponse =
     identifier: "NetworkFunctionDefinitionGroupsUpdateResponse",
   }) as any as S.Schema<NetworkFunctionDefinitionGroupsUpdateResponse>;
 
+/** Resource tags. */
+export type NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap>;
+
+/** The network function type. */
+export type NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType =
+  "Unknown" | "VirtualNetworkFunction" | "ContainerizedNetworkFunction";
+export const NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType =
+  /*@__PURE__*/ S.String;
+
+/** Network function definition version properties. */
+export interface NetworkFunctionDefinitionVersionPropertiesFormatInput {
+  /** The network function definition version description. */
+  description?: string;
+  /** The deployment parameters of the network function definition version. */
+  deployParameters?: string;
+  /** The network function type. */
+  networkFunctionType: NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType;
+}
+export const NetworkFunctionDefinitionVersionPropertiesFormatInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      description: S.optional(S.String),
+      deployParameters: S.optional(S.String),
+      networkFunctionType:
+        NetworkFunctionDefinitionVersionPropertiesFormatInputNetworkFunctionType,
+    }),
+  ).annotate({
+    identifier: "NetworkFunctionDefinitionVersionPropertiesFormatInput",
+  }) as any as S.Schema<NetworkFunctionDefinitionVersionPropertiesFormatInput>;
+
 export interface NetworkFunctionDefinitionVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3009,7 +3440,12 @@ export interface NetworkFunctionDefinitionVersionsCreateOrUpdateRequest {
   networkFunctionDefinitionGroupName: string;
   /** The name of the network function definition version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
   networkFunctionDefinitionVersionName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Network function definition version properties. */
+  properties?: NetworkFunctionDefinitionVersionPropertiesFormatInput;
 }
 export const NetworkFunctionDefinitionVersionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3019,7 +3455,13 @@ export const NetworkFunctionDefinitionVersionsCreateOrUpdateRequest =
       publisherName: S.String.pipe(T.Label()),
       networkFunctionDefinitionGroupName: S.String.pipe(T.Label()),
       networkFunctionDefinitionVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(
+        NetworkFunctionDefinitionVersionsCreateOrUpdateRequestTagsMap,
+      ),
+      location: S.String,
+      properties: S.optional(
+        NetworkFunctionDefinitionVersionPropertiesFormatInput,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3051,8 +3493,7 @@ export type NetworkFunctionDefinitionVersionPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const NetworkFunctionDefinitionVersionPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3063,16 +3504,12 @@ export type VersionState =
   | "Validating"
   | "ValidationFailed"
   | "Active"
-  | "Deprecated"
-  | (string & {});
+  | "Deprecated";
 export const VersionState = /*@__PURE__*/ S.String;
 
 /** The network function type. */
 export type NetworkFunctionDefinitionVersionPropertiesFormatNetworkFunctionType =
-    | "Unknown"
-    | "VirtualNetworkFunction"
-    | "ContainerizedNetworkFunction"
-    | (string & {});
+  "Unknown" | "VirtualNetworkFunction" | "ContainerizedNetworkFunction";
 export const NetworkFunctionDefinitionVersionPropertiesFormatNetworkFunctionType =
   /*@__PURE__*/ S.String;
 
@@ -3321,7 +3758,7 @@ export const NetworkFunctionDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of network function definition versions. */
 export type NetworkFunctionDefinitionVersionListResultValueList =
-  NetworkFunctionDefinitionVersion[];
+  ReadonlyArray<NetworkFunctionDefinitionVersion>;
 export const NetworkFunctionDefinitionVersionListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkFunctionDefinitionVersion,
@@ -3344,6 +3781,16 @@ export const NetworkFunctionDefinitionVersionListResult =
     identifier: "NetworkFunctionDefinitionVersionListResult",
   }) as any as S.Schema<NetworkFunctionDefinitionVersionListResult>;
 
+/** Resource tags. */
+export type NetworkFunctionDefinitionVersionsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkFunctionDefinitionVersionsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkFunctionDefinitionVersionsUpdateRequestTagsMap>;
+
 export interface NetworkFunctionDefinitionVersionsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3355,7 +3802,8 @@ export interface NetworkFunctionDefinitionVersionsUpdateRequest {
   networkFunctionDefinitionGroupName: string;
   /** The name of the network function definition version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
   networkFunctionDefinitionVersionName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkFunctionDefinitionVersionsUpdateRequestTagsMap;
 }
 export const NetworkFunctionDefinitionVersionsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3365,7 +3813,7 @@ export const NetworkFunctionDefinitionVersionsUpdateRequest =
       publisherName: S.String.pipe(T.Label()),
       networkFunctionDefinitionGroupName: S.String.pipe(T.Label()),
       networkFunctionDefinitionVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NetworkFunctionDefinitionVersionsUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -3430,7 +3878,8 @@ export interface NetworkFunctionDefinitionVersionsUpdateStateRequest {
   networkFunctionDefinitionGroupName: string;
   /** The name of the network function definition version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
   networkFunctionDefinitionVersionName: string;
-  body: unknown;
+  /** The network function definition version state. Only the 'Active' and 'Deprecated' states are allowed for updates. Other states are used for internal state transitioning. */
+  versionState?: VersionState;
 }
 export const NetworkFunctionDefinitionVersionsUpdateStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3440,7 +3889,7 @@ export const NetworkFunctionDefinitionVersionsUpdateStateRequest =
       publisherName: S.String.pipe(T.Label()),
       networkFunctionDefinitionGroupName: S.String.pipe(T.Label()),
       networkFunctionDefinitionVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      versionState: S.optional(VersionState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3467,6 +3916,149 @@ export const NetworkFunctionDefinitionVersionUpdateState =
     identifier: "NetworkFunctionDefinitionVersionUpdateState",
   }) as any as S.Schema<NetworkFunctionDefinitionVersionUpdateState>;
 
+/** Resource tags. */
+export type NetworkFunctionsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkFunctionsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkFunctionsCreateOrUpdateRequestTagsMap>;
+
+/** Publisher Scope. */
+export type NetworkFunctionPropertiesFormatInputPublisherScope =
+  | "Unknown"
+  | "Private";
+export const NetworkFunctionPropertiesFormatInputPublisherScope =
+  /*@__PURE__*/ S.String;
+
+/** The azure resource reference which is used for deployment. */
+export interface NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference {
+  /** The resource reference arm id type. */
+  idType: IdType;
+}
+export const NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      idType: IdType,
+    }),
+  ).annotate({
+    identifier:
+      "NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference",
+  }) as any as S.Schema<NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference>;
+
+/** The NFVI type. */
+export type NetworkFunctionPropertiesFormatInputNfviType =
+  | "Unknown"
+  | "AzureArcKubernetes"
+  | "AzureCore"
+  | "AzureOperatorNexus";
+export const NetworkFunctionPropertiesFormatInputNfviType =
+  /*@__PURE__*/ S.String;
+
+/** The secret type which indicates if secret or not. */
+export type NetworkFunctionConfigurationType = "Unknown" | "Secret" | "Open";
+export const NetworkFunctionConfigurationType = /*@__PURE__*/ S.String;
+
+/** The role configuration override values from the user. */
+export type NetworkFunctionPropertiesFormatInputRoleOverrideValuesList =
+  ReadonlyArray<string>;
+export const NetworkFunctionPropertiesFormatInputRoleOverrideValuesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NetworkFunctionPropertiesFormatInputRoleOverrideValuesList>;
+
+/** Network function properties. */
+export interface NetworkFunctionPropertiesFormatInput {
+  /** The publisher name for the network function. */
+  publisherName?: string;
+  /** Publisher Scope. */
+  publisherScope?: NetworkFunctionPropertiesFormatInputPublisherScope;
+  /** The network function definition group name for the network function. */
+  networkFunctionDefinitionGroupName?: string;
+  /** The network function definition version for the network function. */
+  networkFunctionDefinitionVersion?: string;
+  /** The location of the network function definition offering. */
+  networkFunctionDefinitionOfferingLocation?: string;
+  /** The azure resource reference which is used for deployment. */
+  networkFunctionDefinitionVersionResourceReference?: NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference;
+  /** The NFVI type. */
+  nfviType?: NetworkFunctionPropertiesFormatInputNfviType;
+  /** The nfviId for the network function. */
+  nfviId?: string;
+  /** Indicates if software updates are allowed during deployment. */
+  allowSoftwareUpdate?: boolean;
+  /** The value which indicates if NF values are secrets */
+  configurationType: NetworkFunctionConfigurationType;
+  /** The role configuration override values from the user. */
+  roleOverrideValues?: NetworkFunctionPropertiesFormatInputRoleOverrideValuesList;
+}
+export const NetworkFunctionPropertiesFormatInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      publisherName: S.optional(S.String),
+      publisherScope: S.optional(
+        NetworkFunctionPropertiesFormatInputPublisherScope,
+      ),
+      networkFunctionDefinitionGroupName: S.optional(S.String),
+      networkFunctionDefinitionVersion: S.optional(S.String),
+      networkFunctionDefinitionOfferingLocation: S.optional(S.String),
+      networkFunctionDefinitionVersionResourceReference: S.optional(
+        NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference,
+      ),
+      nfviType: S.optional(NetworkFunctionPropertiesFormatInputNfviType),
+      nfviId: S.optional(S.String),
+      allowSoftwareUpdate: S.optional(S.Boolean),
+      configurationType: NetworkFunctionConfigurationType,
+      roleOverrideValues: S.optional(
+        NetworkFunctionPropertiesFormatInputRoleOverrideValuesList,
+      ),
+    }),
+).annotate({
+  identifier: "NetworkFunctionPropertiesFormatInput",
+}) as any as S.Schema<NetworkFunctionPropertiesFormatInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface NetworkFunctionsCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
+}
+export const NetworkFunctionsCreateOrUpdateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
+    }),
+  ).annotate({
+    identifier: "NetworkFunctionsCreateOrUpdateRequestIdentity",
+  }) as any as S.Schema<NetworkFunctionsCreateOrUpdateRequestIdentity>;
+
 export interface NetworkFunctionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3474,7 +4066,16 @@ export interface NetworkFunctionsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Resource name for the network function resource. */
   networkFunctionName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkFunctionsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Network function properties. */
+  properties?: NetworkFunctionPropertiesFormatInput;
+  /** A unique read-only string that changes whenever the resource is updated. */
+  etag?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: NetworkFunctionsCreateOrUpdateRequestIdentity;
 }
 export const NetworkFunctionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3482,7 +4083,11 @@ export const NetworkFunctionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkFunctionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NetworkFunctionsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(NetworkFunctionPropertiesFormatInput),
+      etag: S.optional(S.String),
+      identity: S.optional(NetworkFunctionsCreateOrUpdateRequestIdentity),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3514,16 +4119,14 @@ export type NetworkFunctionPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const NetworkFunctionPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Publisher Scope. */
 export type NetworkFunctionPropertiesFormatPublisherScope =
   | "Unknown"
-  | "Private"
-  | (string & {});
+  | "Private";
 export const NetworkFunctionPropertiesFormatPublisherScope =
   /*@__PURE__*/ S.String;
 
@@ -3547,20 +4150,12 @@ export type NetworkFunctionPropertiesFormatNfviType =
   | "Unknown"
   | "AzureArcKubernetes"
   | "AzureCore"
-  | "AzureOperatorNexus"
-  | (string & {});
+  | "AzureOperatorNexus";
 export const NetworkFunctionPropertiesFormatNfviType = /*@__PURE__*/ S.String;
 
-/** The secret type which indicates if secret or not. */
-export type NetworkFunctionConfigurationType =
-  | "Unknown"
-  | "Secret"
-  | "Open"
-  | (string & {});
-export const NetworkFunctionConfigurationType = /*@__PURE__*/ S.String;
-
 /** The role configuration override values from the user. */
-export type NetworkFunctionPropertiesFormatRoleOverrideValuesList = string[];
+export type NetworkFunctionPropertiesFormatRoleOverrideValuesList =
+  ReadonlyArray<string>;
 export const NetworkFunctionPropertiesFormatRoleOverrideValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3617,15 +4212,6 @@ export const NetworkFunctionPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkFunctionPropertiesFormat",
 }) as any as S.Schema<NetworkFunctionPropertiesFormat>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -3742,6 +4328,38 @@ export const NetworkFunctionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkFunctionsDeleteResponse",
 }) as any as S.Schema<NetworkFunctionsDeleteResponse>;
 
+/** The http method of the request. */
+export type RequestMetadataHttpMethod =
+  | "Unknown"
+  | "Post"
+  | "Put"
+  | "Get"
+  | "Patch"
+  | "Delete";
+export const RequestMetadataHttpMethod = /*@__PURE__*/ S.String;
+
+/** Request metadata of execute request post call payload. */
+export interface RequestMetadata {
+  /** The relative path of the request. */
+  relativePath: string;
+  /** The http method of the request. */
+  httpMethod: RequestMetadataHttpMethod;
+  /** The serialized body of the request. */
+  serializedBody: string;
+  /** The api version of the request. */
+  apiVersion?: string;
+}
+export const RequestMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relativePath: S.String,
+    httpMethod: RequestMetadataHttpMethod,
+    serializedBody: S.String,
+    apiVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RequestMetadata",
+}) as any as S.Schema<RequestMetadata>;
+
 export interface NetworkFunctionsExecuteRequestRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3749,7 +4367,10 @@ export interface NetworkFunctionsExecuteRequestRequest {
   resourceGroupName: string;
   /** The name of the network function. */
   networkFunctionName: string;
-  body: unknown;
+  /** The endpoint of service to call. */
+  serviceEndpoint: string;
+  /** The request metadata. */
+  requestMetadata: RequestMetadata;
 }
 export const NetworkFunctionsExecuteRequestRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3757,7 +4378,8 @@ export const NetworkFunctionsExecuteRequestRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       networkFunctionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      serviceEndpoint: S.String,
+      requestMetadata: RequestMetadata,
     }).pipe(
       T.Http({
         method: "POST",
@@ -3955,7 +4577,7 @@ export const NetworkFunction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkFunction>;
 
 /** A list of network function resources in a subscription or resource group. */
-export type NetworkFunctionListResultValueList = NetworkFunction[];
+export type NetworkFunctionListResultValueList = ReadonlyArray<NetworkFunction>;
 export const NetworkFunctionListResultValueList = /*@__PURE__*/ S.Array(
   NetworkFunction,
 ) as any as S.Schema<NetworkFunctionListResultValueList>;
@@ -3996,6 +4618,15 @@ export const NetworkFunctionsListBySubscriptionRequest =
     identifier: "NetworkFunctionsListBySubscriptionRequest",
   }) as any as S.Schema<NetworkFunctionsListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type NetworkFunctionsUpdateTagsRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkFunctionsUpdateTagsRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NetworkFunctionsUpdateTagsRequestTagsMap>;
+
 export interface NetworkFunctionsUpdateTagsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4003,14 +4634,15 @@ export interface NetworkFunctionsUpdateTagsRequest {
   resourceGroupName: string;
   /** Resource name for the network function resource. */
   networkFunctionName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkFunctionsUpdateTagsRequestTagsMap;
 }
 export const NetworkFunctionsUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     networkFunctionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NetworkFunctionsUpdateTagsRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4089,6 +4721,30 @@ export const NetworkFunctionsUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkFunctionsUpdateTagsResponse",
 }) as any as S.Schema<NetworkFunctionsUpdateTagsResponse>;
 
+/** Resource tags. */
+export type NetworkServiceDesignGroupsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkServiceDesignGroupsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkServiceDesignGroupsCreateOrUpdateRequestTagsMap>;
+
+/** network service design group properties. */
+export interface NetworkServiceDesignGroupPropertiesFormatInput {
+  /** The network service design group description. */
+  description?: string;
+}
+export const NetworkServiceDesignGroupPropertiesFormatInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "NetworkServiceDesignGroupPropertiesFormatInput",
+  }) as any as S.Schema<NetworkServiceDesignGroupPropertiesFormatInput>;
+
 export interface NetworkServiceDesignGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4098,7 +4754,12 @@ export interface NetworkServiceDesignGroupsCreateOrUpdateRequest {
   publisherName: string;
   /** The name of the network service design group. */
   networkServiceDesignGroupName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkServiceDesignGroupsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** network service design group properties. */
+  properties?: NetworkServiceDesignGroupPropertiesFormatInput;
 }
 export const NetworkServiceDesignGroupsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4107,7 +4768,9 @@ export const NetworkServiceDesignGroupsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       publisherName: S.String.pipe(T.Label()),
       networkServiceDesignGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NetworkServiceDesignGroupsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(NetworkServiceDesignGroupPropertiesFormatInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4139,8 +4802,7 @@ export type NetworkServiceDesignGroupPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const NetworkServiceDesignGroupPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -4368,7 +5030,7 @@ export const NetworkServiceDesignGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of network service design group. */
 export type NetworkServiceDesignGroupListResultValueList =
-  NetworkServiceDesignGroup[];
+  ReadonlyArray<NetworkServiceDesignGroup>;
 export const NetworkServiceDesignGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkServiceDesignGroup,
@@ -4390,6 +5052,16 @@ export const NetworkServiceDesignGroupListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkServiceDesignGroupListResult",
 }) as any as S.Schema<NetworkServiceDesignGroupListResult>;
 
+/** Resource tags. */
+export type NetworkServiceDesignGroupsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkServiceDesignGroupsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkServiceDesignGroupsUpdateRequestTagsMap>;
+
 export interface NetworkServiceDesignGroupsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4399,7 +5071,8 @@ export interface NetworkServiceDesignGroupsUpdateRequest {
   publisherName: string;
   /** The name of the network service design group. */
   networkServiceDesignGroupName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkServiceDesignGroupsUpdateRequestTagsMap;
 }
 export const NetworkServiceDesignGroupsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4408,7 +5081,7 @@ export const NetworkServiceDesignGroupsUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       publisherName: S.String.pipe(T.Label()),
       networkServiceDesignGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NetworkServiceDesignGroupsUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -4462,100 +5135,43 @@ export const NetworkServiceDesignGroupsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "NetworkServiceDesignGroupsUpdateResponse",
 }) as any as S.Schema<NetworkServiceDesignGroupsUpdateResponse>;
 
-export interface NetworkServiceDesignVersionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the publisher. */
-  publisherName: string;
-  /** The name of the network service design group. */
-  networkServiceDesignGroupName: string;
-  /** The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
-  networkServiceDesignVersionName: string;
-  body: unknown;
-}
-export const NetworkServiceDesignVersionsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      publisherName: S.String.pipe(T.Label()),
-      networkServiceDesignGroupName: S.String.pipe(T.Label()),
-      networkServiceDesignVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
-        code: 200,
-        apiVersion: "2024-04-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "NetworkServiceDesignVersionsCreateOrUpdateRequest",
-  }) as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type NetworkServiceDesignVersionsCreateOrUpdateResponseTagsMap = {
+export type NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NetworkServiceDesignVersionsCreateOrUpdateResponseTagsMap =
+export const NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateResponseTagsMap>;
-
-/** The current provisioning state. */
-export type NetworkServiceDesignVersionPropertiesFormatProvisioningState =
-  | "Unknown"
-  | "Succeeded"
-  | "Accepted"
-  | "Deleting"
-  | "Failed"
-  | "Canceled"
-  | "Deleted"
-  | "Converging"
-  | (string & {});
-export const NetworkServiceDesignVersionPropertiesFormatProvisioningState =
-  /*@__PURE__*/ S.String;
-
-/** The network service design version state. */
-export type NSDVersionState =
-  | "Unknown"
-  | "Preview"
-  | "Active"
-  | "Deprecated"
-  | (string & {});
-export const NSDVersionState = /*@__PURE__*/ S.String;
+  ) as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap>;
 
 /** Reference to another resource. */
-export interface NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue {
+export interface NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue {
   /** Resource ID. */
   id?: string;
 }
-export const NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue =
+export const NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
     }),
   ).annotate({
     identifier:
-      "NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue",
-  }) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue>;
+      "NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue",
+  }) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue>;
 
 /** The configuration schemas to used to define the values. */
-export type NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap =
+export type NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap =
   {
     [key: string]:
-      | NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue
+      | NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue
       | undefined;
   };
-export const NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap =
+export const NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue,
-  ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap>;
+    NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue,
+  ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap>;
 
 /** The nfvi details. */
 export interface NfviDetails {
@@ -4572,26 +5188,25 @@ export const NfviDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NfviDetails" }) as any as S.Schema<NfviDetails>;
 
 /** The nfvis from the site. */
-export type NetworkServiceDesignVersionPropertiesFormatNfvisFromSiteMap = {
+export type NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap = {
   [key: string]: NfviDetails | undefined;
 };
-export const NetworkServiceDesignVersionPropertiesFormatNfvisFromSiteMap =
+export const NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap =
   /*@__PURE__*/ S.Record(
     S.String,
     NfviDetails,
-  ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatNfvisFromSiteMap>;
+  ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap>;
 
 /** The resource element template type. */
 export type Type =
   | "Unknown"
   | "ArmResourceDefinition"
-  | "NetworkFunctionDefinition"
-  | (string & {});
+  | "NetworkFunctionDefinition";
 export const Type = /*@__PURE__*/ S.String;
 
 /** Application installation operation dependency. */
 export type ResourceElementTemplateDependsOnProfileInstallDependsOnList =
-  string[];
+  ReadonlyArray<string>;
 export const ResourceElementTemplateDependsOnProfileInstallDependsOnList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4599,7 +5214,7 @@ export const ResourceElementTemplateDependsOnProfileInstallDependsOnList =
 
 /** Application deletion operation dependency. */
 export type ResourceElementTemplateDependsOnProfileUninstallDependsOnList =
-  string[];
+  ReadonlyArray<string>;
 export const ResourceElementTemplateDependsOnProfileUninstallDependsOnList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4607,7 +5222,7 @@ export const ResourceElementTemplateDependsOnProfileUninstallDependsOnList =
 
 /** Application update operation dependency. */
 export type ResourceElementTemplateDependsOnProfileUpdateDependsOnList =
-  string[];
+  ReadonlyArray<string>;
 export const ResourceElementTemplateDependsOnProfileUpdateDependsOnList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4659,8 +5274,153 @@ export const ResourceElementTemplate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceElementTemplate>;
 
 /** List of resource element template */
+export type NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList =
+  ReadonlyArray<ResourceElementTemplate>;
+export const NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList =
+  /*@__PURE__*/ S.Array(
+    ResourceElementTemplate,
+  ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList>;
+
+/** network service design version properties. */
+export interface NetworkServiceDesignVersionPropertiesFormatInput {
+  /** The network service design version description. */
+  description?: string;
+  /** The configuration schemas to used to define the values. */
+  configurationGroupSchemaReferences?: NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap;
+  /** The nfvis from the site. */
+  nfvisFromSite?: NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap;
+  /** List of resource element template */
+  resourceElementTemplates?: NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList;
+}
+export const NetworkServiceDesignVersionPropertiesFormatInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      description: S.optional(S.String),
+      configurationGroupSchemaReferences: S.optional(
+        NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap,
+      ),
+      nfvisFromSite: S.optional(
+        NetworkServiceDesignVersionPropertiesFormatInputNfvisFromSiteMap,
+      ),
+      resourceElementTemplates: S.optional(
+        NetworkServiceDesignVersionPropertiesFormatInputResourceElementTemplatesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "NetworkServiceDesignVersionPropertiesFormatInput",
+  }) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatInput>;
+
+export interface NetworkServiceDesignVersionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the publisher. */
+  publisherName: string;
+  /** The name of the network service design group. */
+  networkServiceDesignGroupName: string;
+  /** The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
+  networkServiceDesignVersionName: string;
+  /** Resource tags. */
+  tags?: NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** network service design version properties. */
+  properties?: NetworkServiceDesignVersionPropertiesFormatInput;
+}
+export const NetworkServiceDesignVersionsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      publisherName: S.String.pipe(T.Label()),
+      networkServiceDesignGroupName: S.String.pipe(T.Label()),
+      networkServiceDesignVersionName: S.String.pipe(T.Label()),
+      tags: S.optional(
+        NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap,
+      ),
+      location: S.String,
+      properties: S.optional(NetworkServiceDesignVersionPropertiesFormatInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions/{networkServiceDesignVersionName}",
+        code: 200,
+        apiVersion: "2024-04-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "NetworkServiceDesignVersionsCreateOrUpdateRequest",
+  }) as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type NetworkServiceDesignVersionsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkServiceDesignVersionsCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateResponseTagsMap>;
+
+/** The current provisioning state. */
+export type NetworkServiceDesignVersionPropertiesFormatProvisioningState =
+  | "Unknown"
+  | "Succeeded"
+  | "Accepted"
+  | "Deleting"
+  | "Failed"
+  | "Canceled"
+  | "Deleted"
+  | "Converging";
+export const NetworkServiceDesignVersionPropertiesFormatProvisioningState =
+  /*@__PURE__*/ S.String;
+
+/** The network service design version state. */
+export type NSDVersionState = "Unknown" | "Preview" | "Active" | "Deprecated";
+export const NSDVersionState = /*@__PURE__*/ S.String;
+
+/** Reference to another resource. */
+export interface NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue {
+  /** Resource ID. */
+  id?: string;
+}
+export const NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue",
+  }) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue>;
+
+/** The configuration schemas to used to define the values. */
+export type NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap =
+  {
+    [key: string]:
+      | NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue
+      | undefined;
+  };
+export const NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue,
+  ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap>;
+
+/** The nfvis from the site. */
+export type NetworkServiceDesignVersionPropertiesFormatNfvisFromSiteMap = {
+  [key: string]: NfviDetails | undefined;
+};
+export const NetworkServiceDesignVersionPropertiesFormatNfvisFromSiteMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    NfviDetails,
+  ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatNfvisFromSiteMap>;
+
+/** List of resource element template */
 export type NetworkServiceDesignVersionPropertiesFormatResourceElementTemplatesList =
-  ResourceElementTemplate[];
+  ReadonlyArray<ResourceElementTemplate>;
 export const NetworkServiceDesignVersionPropertiesFormatResourceElementTemplatesList =
   /*@__PURE__*/ S.Array(
     ResourceElementTemplate,
@@ -4919,7 +5679,7 @@ export const NetworkServiceDesignVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of network service design versions. */
 export type NetworkServiceDesignVersionListResultValueList =
-  NetworkServiceDesignVersion[];
+  ReadonlyArray<NetworkServiceDesignVersion>;
 export const NetworkServiceDesignVersionListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkServiceDesignVersion,
@@ -4942,6 +5702,16 @@ export const NetworkServiceDesignVersionListResult = /*@__PURE__*/ S.suspend(
   identifier: "NetworkServiceDesignVersionListResult",
 }) as any as S.Schema<NetworkServiceDesignVersionListResult>;
 
+/** Resource tags. */
+export type NetworkServiceDesignVersionsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NetworkServiceDesignVersionsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<NetworkServiceDesignVersionsUpdateRequestTagsMap>;
+
 export interface NetworkServiceDesignVersionsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4953,7 +5723,8 @@ export interface NetworkServiceDesignVersionsUpdateRequest {
   networkServiceDesignGroupName: string;
   /** The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
   networkServiceDesignVersionName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NetworkServiceDesignVersionsUpdateRequestTagsMap;
 }
 export const NetworkServiceDesignVersionsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4963,7 +5734,7 @@ export const NetworkServiceDesignVersionsUpdateRequest =
       publisherName: S.String.pipe(T.Label()),
       networkServiceDesignGroupName: S.String.pipe(T.Label()),
       networkServiceDesignVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(NetworkServiceDesignVersionsUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -5028,7 +5799,8 @@ export interface NetworkServiceDesignVersionsUpdateStateRequest {
   networkServiceDesignGroupName: string;
   /** The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
   networkServiceDesignVersionName: string;
-  body: unknown;
+  /** The network service design version state. */
+  versionState?: NSDVersionState;
 }
 export const NetworkServiceDesignVersionsUpdateStateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5038,7 +5810,7 @@ export const NetworkServiceDesignVersionsUpdateStateRequest =
       publisherName: S.String.pipe(T.Label()),
       networkServiceDesignGroupName: S.String.pipe(T.Label()),
       networkServiceDesignVersionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      versionState: S.optional(NSDVersionState),
     }).pipe(
       T.Http({
         method: "POST",
@@ -5102,11 +5874,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -5133,7 +5905,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -5190,18 +5962,12 @@ export type ProxyArtifactOverviewPropertiesValueArtifactType =
   | "OCIArtifact"
   | "VhdImageFile"
   | "ArmTemplate"
-  | "ImageFile"
-  | (string & {});
+  | "ImageFile";
 export const ProxyArtifactOverviewPropertiesValueArtifactType =
   /*@__PURE__*/ S.String;
 
 /** The artifact state. */
-export type ArtifactState =
-  | "Unknown"
-  | "Preview"
-  | "Active"
-  | "Deprecated"
-  | (string & {});
+export type ArtifactState = "Unknown" | "Preview" | "Active" | "Deprecated";
 export const ArtifactState = /*@__PURE__*/ S.String;
 
 export interface ProxyArtifactOverviewPropertiesValue {
@@ -5252,7 +6018,7 @@ export const ProxyArtifactVersionsListOverview = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of available proxy artifacts. */
 export type ProxyArtifactVersionsOverviewListResultValueList =
-  ProxyArtifactVersionsListOverview[];
+  ReadonlyArray<ProxyArtifactVersionsListOverview>;
 export const ProxyArtifactVersionsOverviewListResultValueList =
   /*@__PURE__*/ S.Array(
     ProxyArtifactVersionsListOverview,
@@ -5324,7 +6090,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 
 /** A list of available proxy artifacts. */
-export type ProxyArtifactOverviewListResultValueList = Resource[];
+export type ProxyArtifactOverviewListResultValueList = ReadonlyArray<Resource>;
 export const ProxyArtifactOverviewListResultValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<ProxyArtifactOverviewListResultValueList>;
@@ -5345,6 +6111,19 @@ export const ProxyArtifactOverviewListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProxyArtifactOverviewListResult",
 }) as any as S.Schema<ProxyArtifactOverviewListResult>;
 
+/** The artifact update state properties. */
+export interface ArtifactChangeStateProperties {
+  /** The artifact state */
+  artifactState?: ArtifactState;
+}
+export const ArtifactChangeStateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    artifactState: S.optional(ArtifactState),
+  }),
+).annotate({
+  identifier: "ArtifactChangeStateProperties",
+}) as any as S.Schema<ArtifactChangeStateProperties>;
+
 export interface ProxyArtifactUpdateStateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5358,7 +6137,8 @@ export interface ProxyArtifactUpdateStateRequest {
   artifactVersionName: string;
   /** The name of the artifact. */
   artifactName: string;
-  body: unknown;
+  /** Artifact update state properties. */
+  properties?: ArtifactChangeStateProperties;
 }
 export const ProxyArtifactUpdateStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5368,7 +6148,7 @@ export const ProxyArtifactUpdateStateRequest = /*@__PURE__*/ S.suspend(() =>
     artifactStoreName: S.String.pipe(T.Label()),
     artifactVersionName: S.String.pipe(T.Label()),
     artifactName: S.String.pipe(T.Query()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ArtifactChangeStateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5405,6 +6185,47 @@ export const ProxyArtifactUpdateStateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProxyArtifactUpdateStateResponse",
 }) as any as S.Schema<ProxyArtifactUpdateStateResponse>;
 
+/** Resource tags. */
+export type PublishersCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PublishersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PublishersCreateOrUpdateRequestTagsMap>;
+
+/** Publisher Scope. */
+export type PublisherPropertiesFormatInputScope = "Unknown" | "Private";
+export const PublisherPropertiesFormatInputScope = /*@__PURE__*/ S.String;
+
+/** publisher properties. */
+export interface PublisherPropertiesFormatInput {
+  /** Publisher Scope. */
+  scope?: PublisherPropertiesFormatInputScope;
+}
+export const PublisherPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.optional(PublisherPropertiesFormatInputScope),
+  }),
+).annotate({
+  identifier: "PublisherPropertiesFormatInput",
+}) as any as S.Schema<PublisherPropertiesFormatInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface PublishersCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
+}
+export const PublishersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
+    }),
+).annotate({
+  identifier: "PublishersCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<PublishersCreateOrUpdateRequestIdentity>;
+
 export interface PublishersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5412,14 +6233,24 @@ export interface PublishersCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the publisher. */
   publisherName: string;
-  body?: unknown;
+  /** Resource tags. */
+  tags?: PublishersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Publisher properties. */
+  properties?: PublisherPropertiesFormatInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: PublishersCreateOrUpdateRequestIdentity;
 }
 export const PublishersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     publisherName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(PublishersCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(PublisherPropertiesFormatInput),
+    identity: S.optional(PublishersCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5450,16 +6281,12 @@ export type PublisherPropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const PublisherPropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Publisher Scope. */
-export type PublisherPropertiesFormatScope =
-  | "Unknown"
-  | "Private"
-  | (string & {});
+export type PublisherPropertiesFormatScope = "Unknown" | "Private";
 export const PublisherPropertiesFormatScope = /*@__PURE__*/ S.String;
 
 /** publisher properties. */
@@ -5734,7 +6561,7 @@ export const Publisher = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Publisher" }) as any as S.Schema<Publisher>;
 
 /** A list of publishers. */
-export type PublisherListResultValueList = Publisher[];
+export type PublisherListResultValueList = ReadonlyArray<Publisher>;
 export const PublisherListResultValueList = /*@__PURE__*/ S.Array(
   Publisher,
 ) as any as S.Schema<PublisherListResultValueList>;
@@ -5774,6 +6601,15 @@ export const PublishersListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PublishersListBySubscriptionRequest",
 }) as any as S.Schema<PublishersListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type PublishersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PublishersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PublishersUpdateRequestTagsMap>;
+
 export interface PublishersUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5781,14 +6617,15 @@ export interface PublishersUpdateRequest {
   resourceGroupName: string;
   /** The name of the publisher. */
   publisherName: string;
-  body?: unknown;
+  /** Resource tags. */
+  tags?: PublishersUpdateRequestTagsMap;
 }
 export const PublishersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     publisherName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(PublishersUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5863,6 +6700,164 @@ export const PublishersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PublishersUpdateResponse",
 }) as any as S.Schema<PublishersUpdateResponse>;
 
+/** Resource tags. */
+export type SiteNetworkServicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SiteNetworkServicesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SiteNetworkServicesCreateOrUpdateRequestTagsMap>;
+
+/** Managed resource group configuration. */
+export interface SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration {
+  /** Managed resource group name. */
+  name?: string;
+  /** Managed resource group location. */
+  location?: string;
+}
+export const SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      location: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration",
+  }) as any as S.Schema<SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration>;
+
+/** Reference to another resource. */
+export interface SiteNetworkServicePropertiesFormatInputSiteReference {
+  /** Resource ID. */
+  id?: string;
+}
+export const SiteNetworkServicePropertiesFormatInputSiteReference =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SiteNetworkServicePropertiesFormatInputSiteReference",
+  }) as any as S.Schema<SiteNetworkServicePropertiesFormatInputSiteReference>;
+
+/** Publisher Scope. */
+export type SiteNetworkServicePropertiesFormatInputPublisherScope =
+  | "Unknown"
+  | "Private";
+export const SiteNetworkServicePropertiesFormatInputPublisherScope =
+  /*@__PURE__*/ S.String;
+
+/** The azure resource reference which is used for deployment. */
+export interface SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference {
+  /** The resource reference arm id type. */
+  idType: IdType;
+}
+export const SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      idType: IdType,
+    }),
+  ).annotate({
+    identifier:
+      "SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference",
+  }) as any as S.Schema<SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference>;
+
+/** Reference to another resource. */
+export interface SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue {
+  /** Resource ID. */
+  id?: string;
+}
+export const SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue",
+  }) as any as S.Schema<SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue>;
+
+/** The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service. */
+export type SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap =
+  {
+    [key: string]:
+      | SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue
+      | undefined;
+  };
+export const SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue,
+  ) as any as S.Schema<SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap>;
+
+/** Site network service properties. */
+export interface SiteNetworkServicePropertiesFormatInput {
+  /** Managed resource group configuration. */
+  managedResourceGroupConfiguration?: SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration;
+  /** Reference to another resource. */
+  siteReference?: SiteNetworkServicePropertiesFormatInputSiteReference;
+  /** Publisher Scope. */
+  publisherScope?: SiteNetworkServicePropertiesFormatInputPublisherScope;
+  /** The azure resource reference which is used for deployment. */
+  networkServiceDesignVersionResourceReference?: SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference;
+  /** The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service. */
+  desiredStateConfigurationGroupValueReferences?: SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap;
+}
+export const SiteNetworkServicePropertiesFormatInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      managedResourceGroupConfiguration: S.optional(
+        SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration,
+      ),
+      siteReference: S.optional(
+        SiteNetworkServicePropertiesFormatInputSiteReference,
+      ),
+      publisherScope: S.optional(
+        SiteNetworkServicePropertiesFormatInputPublisherScope,
+      ),
+      networkServiceDesignVersionResourceReference: S.optional(
+        SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference,
+      ),
+      desiredStateConfigurationGroupValueReferences: S.optional(
+        SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap,
+      ),
+    }),
+).annotate({
+  identifier: "SiteNetworkServicePropertiesFormatInput",
+}) as any as S.Schema<SiteNetworkServicePropertiesFormatInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface SiteNetworkServicesCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
+}
+export const SiteNetworkServicesCreateOrUpdateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
+    }),
+  ).annotate({
+    identifier: "SiteNetworkServicesCreateOrUpdateRequestIdentity",
+  }) as any as S.Schema<SiteNetworkServicesCreateOrUpdateRequestIdentity>;
+
+/** Name of this Sku */
+export type SkuInputName = "Basic" | "Standard";
+export const SkuInputName = /*@__PURE__*/ S.String;
+
+/** Sku, to be associated with a SiteNetworkService. */
+export interface SkuInput {
+  /** Name of this Sku */
+  name: SkuInputName;
+}
+export const SkuInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: SkuInputName,
+  }),
+).annotate({ identifier: "SkuInput" }) as any as S.Schema<SkuInput>;
+
 export interface SiteNetworkServicesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5870,7 +6865,16 @@ export interface SiteNetworkServicesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the site network service. */
   siteNetworkServiceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SiteNetworkServicesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Site network service properties. */
+  properties?: SiteNetworkServicePropertiesFormatInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: SiteNetworkServicesCreateOrUpdateRequestIdentity;
+  /** Sku of the site network service. */
+  sku?: SkuInput;
 }
 export const SiteNetworkServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5878,7 +6882,11 @@ export const SiteNetworkServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       siteNetworkServiceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(SiteNetworkServicesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(SiteNetworkServicePropertiesFormatInput),
+      identity: S.optional(SiteNetworkServicesCreateOrUpdateRequestIdentity),
+      sku: S.optional(SkuInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5910,8 +6918,7 @@ export type SiteNetworkServicePropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const SiteNetworkServicePropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -5950,8 +6957,7 @@ export const SiteNetworkServicePropertiesFormatSiteReference =
 /** Publisher Scope. */
 export type SiteNetworkServicePropertiesFormatPublisherScope =
   | "Unknown"
-  | "Private"
-  | (string & {});
+  | "Private";
 export const SiteNetworkServicePropertiesFormatPublisherScope =
   /*@__PURE__*/ S.String;
 
@@ -6106,11 +7112,11 @@ export const SiteNetworkServicesCreateOrUpdateResponseIdentity =
   }) as any as S.Schema<SiteNetworkServicesCreateOrUpdateResponseIdentity>;
 
 /** Name of this Sku */
-export type SkuName = "Basic" | "Standard" | (string & {});
+export type SkuName = "Basic" | "Standard";
 export const SkuName = /*@__PURE__*/ S.String;
 
 /** The SKU tier based on the SKU name. */
-export type SkuTier = "Basic" | "Standard" | (string & {});
+export type SkuTier = "Basic" | "Standard";
 export const SkuTier = /*@__PURE__*/ S.String;
 
 /** Sku, to be associated with a SiteNetworkService. */
@@ -6375,7 +7381,8 @@ export const SiteNetworkService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SiteNetworkService>;
 
 /** A list of site network services in a resource group. */
-export type SiteNetworkServiceListResultValueList = SiteNetworkService[];
+export type SiteNetworkServiceListResultValueList =
+  ReadonlyArray<SiteNetworkService>;
 export const SiteNetworkServiceListResultValueList = /*@__PURE__*/ S.Array(
   SiteNetworkService,
 ) as any as S.Schema<SiteNetworkServiceListResultValueList>;
@@ -6416,6 +7423,16 @@ export const SiteNetworkServicesListBySubscriptionRequest =
     identifier: "SiteNetworkServicesListBySubscriptionRequest",
   }) as any as S.Schema<SiteNetworkServicesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type SiteNetworkServicesUpdateTagsRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SiteNetworkServicesUpdateTagsRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SiteNetworkServicesUpdateTagsRequestTagsMap>;
+
 export interface SiteNetworkServicesUpdateTagsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6423,7 +7440,8 @@ export interface SiteNetworkServicesUpdateTagsRequest {
   resourceGroupName: string;
   /** The name of the site network service. */
   siteNetworkServiceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SiteNetworkServicesUpdateTagsRequestTagsMap;
 }
 export const SiteNetworkServicesUpdateTagsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6431,7 +7449,7 @@ export const SiteNetworkServicesUpdateTagsRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       siteNetworkServiceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(SiteNetworkServicesUpdateTagsRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -6512,6 +7530,56 @@ export const SiteNetworkServicesUpdateTagsResponse = /*@__PURE__*/ S.suspend(
   identifier: "SiteNetworkServicesUpdateTagsResponse",
 }) as any as S.Schema<SiteNetworkServicesUpdateTagsResponse>;
 
+/** Resource tags. */
+export type SitesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SitesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SitesCreateOrUpdateRequestTagsMap>;
+
+/** The NFVI type. */
+export type NFVIsNfviType =
+  | "Unknown"
+  | "AzureArcKubernetes"
+  | "AzureCore"
+  | "AzureOperatorNexus";
+export const NFVIsNfviType = /*@__PURE__*/ S.String;
+
+/** The NFVI object. */
+export interface NFVIs {
+  /** Name of the nfvi. */
+  name?: string;
+  /** The NFVI type. */
+  nfviType: NFVIsNfviType;
+}
+export const NFVIs = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    nfviType: NFVIsNfviType,
+  }),
+).annotate({ identifier: "NFVIs" }) as any as S.Schema<NFVIs>;
+
+/** List of NFVIs */
+export type SitePropertiesFormatInputNfvisList = ReadonlyArray<NFVIs>;
+export const SitePropertiesFormatInputNfvisList = /*@__PURE__*/ S.Array(
+  NFVIs,
+) as any as S.Schema<SitePropertiesFormatInputNfvisList>;
+
+/** Site properties. */
+export interface SitePropertiesFormatInput {
+  /** List of NFVIs */
+  nfvis?: SitePropertiesFormatInputNfvisList;
+}
+export const SitePropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nfvis: S.optional(SitePropertiesFormatInputNfvisList),
+  }),
+).annotate({
+  identifier: "SitePropertiesFormatInput",
+}) as any as S.Schema<SitePropertiesFormatInput>;
+
 export interface SitesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6519,14 +7587,21 @@ export interface SitesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the network service site. */
   siteName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SitesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Site properties. */
+  properties?: SitePropertiesFormatInput;
 }
 export const SitesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     siteName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SitesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(SitePropertiesFormatInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6557,35 +7632,11 @@ export type SitePropertiesFormatProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "Converging"
-  | (string & {});
+  | "Converging";
 export const SitePropertiesFormatProvisioningState = /*@__PURE__*/ S.String;
 
-/** The NFVI type. */
-export type NFVIsNfviType =
-  | "Unknown"
-  | "AzureArcKubernetes"
-  | "AzureCore"
-  | "AzureOperatorNexus"
-  | (string & {});
-export const NFVIsNfviType = /*@__PURE__*/ S.String;
-
-/** The NFVI object. */
-export interface NFVIs {
-  /** Name of the nfvi. */
-  name?: string;
-  /** The NFVI type. */
-  nfviType: NFVIsNfviType;
-}
-export const NFVIs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    nfviType: NFVIsNfviType,
-  }),
-).annotate({ identifier: "NFVIs" }) as any as S.Schema<NFVIs>;
-
 /** List of NFVIs */
-export type SitePropertiesFormatNfvisList = NFVIs[];
+export type SitePropertiesFormatNfvisList = ReadonlyArray<NFVIs>;
 export const SitePropertiesFormatNfvisList = /*@__PURE__*/ S.Array(
   NFVIs,
 ) as any as S.Schema<SitePropertiesFormatNfvisList>;
@@ -6606,7 +7657,7 @@ export const SitePropertiesFormatSiteNetworkServiceReferencesItem =
 
 /** The list of site network services on the site. */
 export type SitePropertiesFormatSiteNetworkServiceReferencesList =
-  SitePropertiesFormatSiteNetworkServiceReferencesItem[];
+  ReadonlyArray<SitePropertiesFormatSiteNetworkServiceReferencesItem>;
 export const SitePropertiesFormatSiteNetworkServiceReferencesList =
   /*@__PURE__*/ S.Array(
     SitePropertiesFormatSiteNetworkServiceReferencesItem,
@@ -6816,7 +7867,7 @@ export const Site = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
 /** A list of sites in a resource group. */
-export type SiteListResultValueList = Site[];
+export type SiteListResultValueList = ReadonlyArray<Site>;
 export const SiteListResultValueList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteListResultValueList>;
@@ -6854,6 +7905,15 @@ export const SitesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesListBySubscriptionRequest",
 }) as any as S.Schema<SitesListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type SitesUpdateTagsRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SitesUpdateTagsRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SitesUpdateTagsRequestTagsMap>;
+
 export interface SitesUpdateTagsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6861,14 +7921,15 @@ export interface SitesUpdateTagsRequest {
   resourceGroupName: string;
   /** The name of the network service site. */
   siteName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SitesUpdateTagsRequestTagsMap;
 }
 export const SitesUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     siteName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SitesUpdateTagsRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",

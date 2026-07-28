@@ -223,7 +223,7 @@ export const BatchCheckLayerAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCheckLayerAvailabilityRequest",
 }) as any as S.Schema<BatchCheckLayerAvailabilityRequest>;
 export type LayerDigest = string;
-export type LayerAvailability = "AVAILABLE" | "UNAVAILABLE" | (string & {});
+export type LayerAvailability = "AVAILABLE" | "UNAVAILABLE";
 export const LayerAvailability = /*@__PURE__*/ S.String;
 
 export type LayerSizeInBytes = number;
@@ -244,10 +244,7 @@ export const Layer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Layer" }) as any as S.Schema<Layer>;
 export type LayerList = Layer[];
 export const LayerList = /*@__PURE__*/ S.Array(Layer);
-export type LayerFailureCode =
-  | "InvalidLayerDigest"
-  | "MissingLayerDigest"
-  | (string & {});
+export type LayerFailureCode = "InvalidLayerDigest" | "MissingLayerDigest";
 export const LayerFailureCode = /*@__PURE__*/ S.String;
 
 export type LayerFailureReason = string;
@@ -324,8 +321,7 @@ export type ImageFailureCode =
   | "ImageNotFound"
   | "MissingDigestAndTag"
   | "ImageReferencedByManifestList"
-  | "KmsError"
-  | (string & {});
+  | "KmsError";
 export const ImageFailureCode = /*@__PURE__*/ S.String;
 
 export type ImageFailureReason = string;
@@ -752,11 +748,7 @@ export const DescribeRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRegistriesRequest>;
 export type RegistryVerified = boolean;
 export type RegistryAliasName = string;
-export type RegistryAliasStatus =
-  | "ACTIVE"
-  | "PENDING"
-  | "REJECTED"
-  | (string & {});
+export type RegistryAliasStatus = "ACTIVE" | "PENDING" | "REJECTED";
 export const RegistryAliasStatus = /*@__PURE__*/ S.String;
 
 export type PrimaryRegistryAliasFlag = boolean;

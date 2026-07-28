@@ -225,7 +225,10 @@
           "target": "smithy.api#String"
         },
         "user": {
-          "target": "com.posthog.advanced_activity_logs#UserBasic"
+          "target": "com.posthog.advanced_activity_logs#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "unread": {
           "target": "smithy.api#Boolean",
@@ -635,6 +638,51 @@
         }
       }
     },
+    "com.posthog.advanced_activity_logs#UserBasicInput": {
+      "type": "structure",
+      "members": {
+        "distinct_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "first_name": {
+          "target": "smithy.api#String"
+        },
+        "last_name": {
+          "target": "smithy.api#String"
+        },
+        "email": {
+          "target": "smithy.api#String"
+        },
+        "is_email_verified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "role_at_organization": {
+          "target": "com.posthog.advanced_activity_logs#UserBasicInputRoleAtOrganization",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.advanced_activity_logs#UserBasicInputRoleAtOrganization": {
+      "type": "union",
+      "members": {
+        "RoleAtOrganizationEnum": {
+          "target": "com.posthog.advanced_activity_logs#RoleAtOrganizationEnum"
+        },
+        "BlankEnum": {
+          "target": "com.posthog.advanced_activity_logs#BlankEnum"
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.advanced_activity_logs#AdvancedActivityLogsExportCreateRequest": {
       "type": "structure",
       "members": {
@@ -646,16 +694,10 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "user": {
-          "target": "com.posthog.advanced_activity_logs#UserBasic"
-        },
-        "unread": {
-          "target": "smithy.api#Boolean",
+          "target": "com.posthog.advanced_activity_logs#UserBasicInput",
           "traits": {
-            "smithy.api#documentation": "is the date of this log item newer than the user's bookmark"
+            "com.distilled.openapi#nullable": {}
           }
         },
         "team_id": {

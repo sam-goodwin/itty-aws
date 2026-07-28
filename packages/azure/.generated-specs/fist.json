@@ -473,11 +473,10 @@
             "smithy.api#documentation": "The name of the firmware analysis workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "firmwareId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A unique ID for the firmware to be uploaded."
           }
         }
       },
@@ -2687,16 +2686,80 @@
             "smithy.api#documentation": "The id of the firmware."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.fist#FirmwarePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The editable properties of a firmware"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fist#FirmwarePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "fileName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "File name for a firmware that user uploaded."
+          }
+        },
+        "vendor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Firmware vendor."
+          }
+        },
+        "model": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Firmware model."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Firmware version."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User-specified description of the firmware."
+          }
+        },
+        "fileSize": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "File size of the uploaded firmware image."
+          }
+        },
+        "status": {
+          "target": "com.azure.fist#Status",
+          "traits": {
+            "smithy.api#documentation": "The status of firmware scan."
+          }
+        },
+        "statusMessages": {
+          "target": "com.azure.fist#FirmwarePropertiesInputStatusMessagesList",
+          "traits": {
+            "smithy.api#documentation": "A list of errors or other messages generated during firmware analysis"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Firmware properties."
+      }
+    },
+    "com.azure.fist#FirmwarePropertiesInputStatusMessagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.fist#StatusMessage"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of errors or other messages generated during firmware analysis"
       }
     },
     "com.azure.fist#FirmwaresCreate": {
@@ -2791,11 +2854,10 @@
             "smithy.api#documentation": "The id of the firmware."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.fist#FirmwarePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -3267,16 +3329,103 @@
             "smithy.api#documentation": "The name of the firmware analysis workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.fist#AzureResourceManagerCommonTypesSkuUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The SKU (Stock Keeping Unit) assigned to this resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.fist#WorkspacesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fist#WorkspacesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.fist#AzureResourceManagerCommonTypesSkuUpdate": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. Ex - P3. It is typically a letter+number code"
+          }
+        },
+        "tier": {
+          "target": "com.azure.fist#AzureResourceManagerCommonTypesSkuUpdateTier",
+          "traits": {
+            "smithy.api#documentation": "This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT."
+          }
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code."
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.fist#AzureResourceManagerCommonTypesSkuUpdateTier": {
+      "type": "enum",
+      "members": {
+        "FREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Free"
+          }
+        },
+        "BASIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Basic"
+          }
+        },
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "PREMIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Premium"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT."
       }
     },
     "com.azure.fist#WorkspacesCreate": {
@@ -3430,16 +3579,89 @@
             "smithy.api#documentation": "The name of the firmware analysis workspace."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.fist#WorkspacesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.fist#WorkspacePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.fist#WorkspacesCreateRequestSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fist#WorkspacesCreateRequestSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.fist#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.fist#WorkspacePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Workspace properties."
+      }
+    },
+    "com.azure.fist#WorkspacesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.fist#WorkspacesGet": {

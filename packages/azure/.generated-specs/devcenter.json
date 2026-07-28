@@ -2539,11 +2539,22 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id to scope the name check."
           }
         }
       },
@@ -2627,11 +2638,16 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },
@@ -4052,16 +4068,121 @@
             "smithy.api#documentation": "The name of the Dev Box definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devcenter#Tags",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "properties": {
+          "target": "com.azure.devcenter#DevBoxDefinitionUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of a Dev Box definition to be updated."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#DevBoxDefinitionUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "imageReference": {
+          "target": "com.azure.devcenter#DevBoxDefinitionUpdatePropertiesInputImageReference",
+          "traits": {
+            "smithy.api#documentation": "Image reference information"
+          }
+        },
+        "sku": {
+          "target": "com.azure.devcenter#DevBoxDefinitionUpdatePropertiesInputSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "osStorageType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The storage type used for the Operating System disk of Dev Boxes created using this definition."
+          }
+        },
+        "hibernateSupport": {
+          "target": "com.azure.devcenter#HibernateSupport",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a Dev Box definition. These properties can be updated after the resource has been created."
+      }
+    },
+    "com.azure.devcenter#DevBoxDefinitionUpdatePropertiesInputSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.devcenter#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.devcenter#DevBoxDefinitionUpdatePropertiesInputImageReference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image ID, or Image version ID. When Image ID is provided, its latest version will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image reference information"
+      }
+    },
+    "com.azure.devcenter#Tags": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.devcenter#DevBoxDefinitionsCreateOrUpdate": {
@@ -4181,16 +4302,252 @@
             "smithy.api#documentation": "The name of the Dev Box definition."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devcenter#DevBoxDefinitionsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.devcenter#DevBoxDefinitionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Dev Box definition properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#DevBoxDefinitionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "imageReference": {
+          "target": "com.azure.devcenter#DevBoxDefinitionPropertiesInputImageReference",
+          "traits": {
+            "smithy.api#documentation": "Image reference information",
+            "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.devcenter#DevBoxDefinitionPropertiesInputSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU",
+            "smithy.api#required": {}
+          }
+        },
+        "osStorageType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The storage type used for the Operating System disk of Dev Boxes created using this definition."
+          }
+        },
+        "hibernateSupport": {
+          "target": "com.azure.devcenter#HibernateSupport",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate"
+          }
+        },
+        "imageValidationStatus": {
+          "target": "com.azure.devcenter#DevBoxDefinitionPropertiesInputImageValidationStatus",
+          "traits": {
+            "smithy.api#documentation": "Image validation status"
+          }
+        },
+        "imageValidationErrorDetails": {
+          "target": "com.azure.devcenter#DevBoxDefinitionPropertiesInputImageValidationErrorDetails",
+          "traits": {
+            "smithy.api#documentation": "Image validation error details"
+          }
+        },
+        "validationStatus": {
+          "target": "com.azure.devcenter#DevBoxDefinitionPropertiesInputValidationStatus",
+          "traits": {
+            "smithy.api#documentation": "Catalog resource validation status"
+          }
+        },
+        "activeImageReference": {
+          "target": "com.azure.devcenter#DevBoxDefinitionPropertiesInputActiveImageReference",
+          "traits": {
+            "smithy.api#documentation": "Image reference information"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a Dev Box definition."
+      }
+    },
+    "com.azure.devcenter#DevBoxDefinitionPropertiesInputActiveImageReference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image ID, or Image version ID. When Image ID is provided, its latest version will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image reference information"
+      }
+    },
+    "com.azure.devcenter#DevBoxDefinitionPropertiesInputValidationStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pending"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Catalog resource validation status"
+      }
+    },
+    "com.azure.devcenter#DevBoxDefinitionPropertiesInputImageValidationErrorDetails": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An identifier for the error."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A message describing the error."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image validation error details"
+      }
+    },
+    "com.azure.devcenter#DevBoxDefinitionPropertiesInputImageValidationStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pending"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "TIMEDOUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TimedOut"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image validation status"
+      }
+    },
+    "com.azure.devcenter#DevBoxDefinitionPropertiesInputSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.devcenter#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.devcenter#DevBoxDefinitionPropertiesInputImageReference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image ID, or Image version ID. When Image ID is provided, its latest version will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image reference information"
+      }
+    },
+    "com.azure.devcenter#DevBoxDefinitionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.devcenter#DevBoxDefinitionsGet": {
@@ -4905,16 +5262,184 @@
             "smithy.api#documentation": "The name of the environment type."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypeUpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties to configure an environment type."
+          }
+        },
+        "tags": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypesUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.devcenter#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.devcenter#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.devcenter#UserAssignedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.devcenter#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.devcenter#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypeUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "deploymentTargetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the project environment type."
+          }
+        },
+        "status": {
+          "target": "com.azure.devcenter#EnvironmentTypeEnableStatus",
+          "traits": {
+            "smithy.api#documentation": "Defines whether this Environment Type can be used in this Project."
+          }
+        },
+        "creatorRoleAssignment": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment",
+          "traits": {
+            "smithy.api#documentation": "The role definition assigned to the environment creator on backing resources."
+          }
+        },
+        "userRoleAssignments": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap",
+          "traits": {
+            "smithy.api#documentation": "Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a project environment type. These properties can be updated after the resource has been created."
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypeUpdatePropertiesInputUserRoleAssignmentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.devcenter#UserRoleAssignmentInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs."
+      }
+    },
+    "com.azure.devcenter#UserRoleAssignmentInput": {
+      "type": "structure",
+      "members": {
+        "roles": {
+          "target": "com.azure.devcenter#UserRoleAssignmentInputRolesMap",
+          "traits": {
+            "smithy.api#documentation": "A map of roles to assign to the parent user."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Mapping of user object ID to role assignments."
+      }
+    },
+    "com.azure.devcenter#UserRoleAssignmentInputRolesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.devcenter#EnvironmentRoleInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A map of roles to assign to the parent user."
+      }
+    },
+    "com.azure.devcenter#EnvironmentRoleInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "A role that can be assigned to a user."
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignment": {
+      "type": "structure",
+      "members": {
+        "roles": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap",
+          "traits": {
+            "smithy.api#documentation": "A map of roles to assign to the environment creator."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The role definition assigned to the environment creator on backing resources."
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.devcenter#EnvironmentRoleInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A map of roles to assign to the environment creator."
       }
     },
     "com.azure.devcenter#ProjectEnvironmentTypesCreateOrUpdate": {
@@ -5068,16 +5593,138 @@
             "smithy.api#documentation": "The name of the environment type."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of an environment type."
+          }
+        },
+        "tags": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypesCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location for the environment type"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypesCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.devcenter#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.devcenter#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "deploymentTargetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the project environment type."
+          }
+        },
+        "status": {
+          "target": "com.azure.devcenter#EnvironmentTypeEnableStatus",
+          "traits": {
+            "smithy.api#documentation": "Defines whether this Environment Type can be used in this Project."
+          }
+        },
+        "creatorRoleAssignment": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment",
+          "traits": {
+            "smithy.api#documentation": "The role definition assigned to the environment creator on backing resources."
+          }
+        },
+        "userRoleAssignments": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap",
+          "traits": {
+            "smithy.api#documentation": "Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a project environment type."
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypePropertiesInputUserRoleAssignmentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.devcenter#UserRoleAssignmentInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs."
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment": {
+      "type": "structure",
+      "members": {
+        "roles": {
+          "target": "com.azure.devcenter#ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap",
+          "traits": {
+            "smithy.api#documentation": "A map of roles to assign to the environment creator."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The role definition assigned to the environment creator on backing resources."
+      }
+    },
+    "com.azure.devcenter#ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.devcenter#EnvironmentRoleInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A map of roles to assign to the environment creator."
       }
     },
     "com.azure.devcenter#ProjectEnvironmentTypesGet": {
@@ -6059,16 +6706,47 @@
             "smithy.api#documentation": "The name of the environment type."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#EnvironmentTypeUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of an environment type to be updated."
+          }
+        },
+        "tags": {
+          "target": "com.azure.devcenter#EnvironmentTypesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#EnvironmentTypesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devcenter#EnvironmentTypeUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the environment type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an environment type. These properties can be updated after the resource has been created."
       }
     },
     "com.azure.devcenter#EnvironmentTypesCreateOrUpdate": {
@@ -6181,16 +6859,47 @@
             "smithy.api#documentation": "The name of the environment type."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#EnvironmentTypePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of an environment type."
+          }
+        },
+        "tags": {
+          "target": "com.azure.devcenter#EnvironmentTypesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#EnvironmentTypesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devcenter#EnvironmentTypePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the environment type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an environment type."
       }
     },
     "com.azure.devcenter#EnvironmentTypesGet": {
@@ -7279,16 +7988,79 @@
             "smithy.api#documentation": "The name of the Catalog."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#CatalogUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Catalog properties for update."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#CatalogUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "gitHub": {
+          "target": "com.azure.devcenter#GitCatalog",
+          "traits": {
+            "smithy.api#documentation": "Properties for a GitHub catalog type."
+          }
+        },
+        "adoGit": {
+          "target": "com.azure.devcenter#GitCatalog",
+          "traits": {
+            "smithy.api#documentation": "Properties for an Azure DevOps catalog type."
+          }
+        },
+        "syncType": {
+          "target": "com.azure.devcenter#CatalogUpdatePropertiesSyncType",
+          "traits": {
+            "smithy.api#documentation": "Indicates the type of sync that is configured for the catalog."
+          }
+        },
+        "tags": {
+          "target": "com.azure.devcenter#CatalogUpdatePropertiesTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a catalog. These properties can be updated after the resource has been created."
+      }
+    },
+    "com.azure.devcenter#CatalogUpdatePropertiesTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devcenter#CatalogUpdatePropertiesSyncType": {
+      "type": "enum",
+      "members": {
+        "MANUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Manual"
+          }
+        },
+        "SCHEDULED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Scheduled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates the type of sync that is configured for the catalog."
       }
     },
     "com.azure.devcenter#CatalogsCreateOrUpdate": {
@@ -7383,16 +8155,79 @@
             "smithy.api#documentation": "The name of the Catalog."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#CatalogPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Catalog properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#CatalogPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "gitHub": {
+          "target": "com.azure.devcenter#GitCatalog",
+          "traits": {
+            "smithy.api#documentation": "Properties for a GitHub catalog type."
+          }
+        },
+        "adoGit": {
+          "target": "com.azure.devcenter#GitCatalog",
+          "traits": {
+            "smithy.api#documentation": "Properties for an Azure DevOps catalog type."
+          }
+        },
+        "syncType": {
+          "target": "com.azure.devcenter#CatalogPropertiesInputSyncType",
+          "traits": {
+            "smithy.api#documentation": "Indicates the type of sync that is configured for the catalog."
+          }
+        },
+        "tags": {
+          "target": "com.azure.devcenter#CatalogPropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a catalog."
+      }
+    },
+    "com.azure.devcenter#CatalogPropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.devcenter#CatalogPropertiesInputSyncType": {
+      "type": "enum",
+      "members": {
+        "MANUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Manual"
+          }
+        },
+        "SCHEDULED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Scheduled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates the type of sync that is configured for the catalog."
       }
     },
     "com.azure.devcenter#CatalogsGet": {
@@ -7987,16 +8822,118 @@
             "smithy.api#documentation": "The name of the attached NetworkConnection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#AttachedNetworkConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Attached NetworkConnection properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#AttachedNetworkConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "networkConnectionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the NetworkConnection you want to attach.",
+            "smithy.api#required": {}
+          }
+        },
+        "healthCheckStatus": {
+          "target": "com.azure.devcenter#AttachedNetworkConnectionPropertiesInputHealthCheckStatus",
+          "traits": {
+            "smithy.api#documentation": "Health check status values"
+          }
+        },
+        "domainJoinType": {
+          "target": "com.azure.devcenter#AttachedNetworkConnectionPropertiesInputDomainJoinType",
+          "traits": {
+            "smithy.api#documentation": "Active Directory join type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an attached NetworkConnection."
+      }
+    },
+    "com.azure.devcenter#AttachedNetworkConnectionPropertiesInputDomainJoinType": {
+      "type": "enum",
+      "members": {
+        "HYBRIDAZUREADJOIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HybridAzureADJoin"
+          }
+        },
+        "AZUREADJOIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureADJoin"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Active Directory join type"
+      }
+    },
+    "com.azure.devcenter#AttachedNetworkConnectionPropertiesInputHealthCheckStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pending"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "PASSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Passed"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Warning"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "INFORMATIONAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Informational"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Health check status values"
       }
     },
     "com.azure.devcenter#AttachedNetworksGetByDevCenter": {
@@ -9860,16 +10797,30 @@
             "smithy.api#documentation": "The name of the gallery."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#GalleryPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gallery properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#GalleryPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "galleryResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the backing Azure Compute Gallery.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a gallery."
       }
     },
     "com.azure.devcenter#GalleriesGet": {
@@ -10676,11 +11627,10 @@
             "smithy.api#documentation": "The name of the Catalog."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#CatalogUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Catalog properties for update."
           }
         }
       },
@@ -10780,11 +11730,10 @@
             "smithy.api#documentation": "The name of the Catalog."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#CatalogPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Catalog properties."
           }
         }
       },
@@ -11610,16 +12559,88 @@
             "smithy.api#documentation": "The name of the project."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devcenter#Tags",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "properties": {
+          "target": "com.azure.devcenter#ProjectUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of a project to be updated."
+          }
+        },
+        "identity": {
+          "target": "com.azure.devcenter#ProjectsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#ProjectsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.devcenter#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.devcenter#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.devcenter#ProjectUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "devCenterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id of an associated DevCenter"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the project."
+          }
+        },
+        "maxDevBoxesPerUser": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the project."
+          }
+        },
+        "catalogSettings": {
+          "target": "com.azure.devcenter#ProjectCatalogSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings to be used when associating a project with a catalog."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a project. These properties can be updated after the resource has been created."
       }
     },
     "com.azure.devcenter#ProjectsCreateOrUpdate": {
@@ -11766,16 +12787,101 @@
             "smithy.api#documentation": "The name of the project."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devcenter#ProjectsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.devcenter#ProjectPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of a project."
+          }
+        },
+        "identity": {
+          "target": "com.azure.devcenter#ProjectsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#ProjectsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.devcenter#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.devcenter#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.devcenter#ProjectPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "devCenterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource Id of an associated DevCenter"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the project."
+          }
+        },
+        "maxDevBoxesPerUser": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the project."
+          }
+        },
+        "catalogSettings": {
+          "target": "com.azure.devcenter#ProjectCatalogSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings to be used when associating a project with a catalog."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a project."
+      }
+    },
+    "com.azure.devcenter#ProjectsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.devcenter#ProjectsGet": {
@@ -12523,16 +13629,53 @@
             "smithy.api#documentation": "The name of the project policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#ProjectPolicyUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of an project policy to be updated."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#ProjectPolicyUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "resourcePolicies": {
+          "target": "com.azure.devcenter#ProjectPolicyUpdatePropertiesResourcePoliciesList",
+          "traits": {
+            "smithy.api#documentation": "Resource policies that are a part of this project policy."
+          }
+        },
+        "scopes": {
+          "target": "com.azure.devcenter#ProjectPolicyUpdatePropertiesScopesList",
+          "traits": {
+            "smithy.api#documentation": "Resources that have access to the shared resources that are a part of this project policy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an project policy. These properties can be updated after the resource has been created."
+      }
+    },
+    "com.azure.devcenter#ProjectPolicyUpdatePropertiesScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resources that have access to the shared resources that are a part of this project policy."
+      }
+    },
+    "com.azure.devcenter#ProjectPolicyUpdatePropertiesResourcePoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devcenter#ResourcePolicy"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource policies that are a part of this project policy."
       }
     },
     "com.azure.devcenter#ProjectPoliciesCreateOrUpdate": {
@@ -12627,16 +13770,53 @@
             "smithy.api#documentation": "The name of the project policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#ProjectPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of an project policy."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#ProjectPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "resourcePolicies": {
+          "target": "com.azure.devcenter#ProjectPolicyPropertiesInputResourcePoliciesList",
+          "traits": {
+            "smithy.api#documentation": "Resource policies that are a part of this project policy."
+          }
+        },
+        "scopes": {
+          "target": "com.azure.devcenter#ProjectPolicyPropertiesInputScopesList",
+          "traits": {
+            "smithy.api#documentation": "Resources that have access to the shared resources that are a part of this project policy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an project policy."
+      }
+    },
+    "com.azure.devcenter#ProjectPolicyPropertiesInputScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resources that have access to the shared resources that are a part of this project policy."
+      }
+    },
+    "com.azure.devcenter#ProjectPolicyPropertiesInputResourcePoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.devcenter#ResourcePolicy"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource policies that are a part of this project policy."
       }
     },
     "com.azure.devcenter#ProjectPoliciesGet": {
@@ -13339,16 +14519,88 @@
             "smithy.api#documentation": "The name of the devcenter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devcenter#Tags",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "identity": {
+          "target": "com.azure.devcenter#DevCentersUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+          }
+        },
+        "properties": {
+          "target": "com.azure.devcenter#DevCenterUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of a Dev Center to be updated."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#DevCenterUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "encryption": {
+          "target": "com.azure.devcenter#Encryption",
+          "traits": {
+            "smithy.api#documentation": "Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations)."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the devcenter."
+          }
+        },
+        "projectCatalogSettings": {
+          "target": "com.azure.devcenter#DevCenterProjectCatalogSettings",
+          "traits": {
+            "smithy.api#documentation": "Dev Center settings to be used when associating a project with a catalog."
+          }
+        },
+        "networkSettings": {
+          "target": "com.azure.devcenter#DevCenterNetworkSettings",
+          "traits": {
+            "smithy.api#documentation": "Network settings that will be enforced on network resources associated with the Dev Center."
+          }
+        },
+        "devBoxProvisioningSettings": {
+          "target": "com.azure.devcenter#DevBoxProvisioningSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings to be used in the provisioning of all Dev Boxes that belong to this dev center."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the devcenter. These properties can be updated after the resource has been created."
+      }
+    },
+    "com.azure.devcenter#DevCentersUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.devcenter#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.devcenter#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
       }
     },
     "com.azure.devcenter#DevCentersCreateOrUpdate": {
@@ -13495,16 +14747,101 @@
             "smithy.api#documentation": "The name of the devcenter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devcenter#DevCentersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.devcenter#DevCenterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "DevCenter properties"
+          }
+        },
+        "identity": {
+          "target": "com.azure.devcenter#DevCentersCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#DevCentersCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.devcenter#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.devcenter#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.devcenter#DevCenterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "encryption": {
+          "target": "com.azure.devcenter#Encryption",
+          "traits": {
+            "smithy.api#documentation": "Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations)."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the devcenter."
+          }
+        },
+        "projectCatalogSettings": {
+          "target": "com.azure.devcenter#DevCenterProjectCatalogSettings",
+          "traits": {
+            "smithy.api#documentation": "Dev Center settings to be used when associating a project with a catalog."
+          }
+        },
+        "networkSettings": {
+          "target": "com.azure.devcenter#DevCenterNetworkSettings",
+          "traits": {
+            "smithy.api#documentation": "Network settings that will be enforced on network resources associated with the Dev Center."
+          }
+        },
+        "devBoxProvisioningSettings": {
+          "target": "com.azure.devcenter#DevBoxProvisioningSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings to be used in the provisioning of all Dev Boxes that belong to this dev center."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the devcenter."
+      }
+    },
+    "com.azure.devcenter#DevCentersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.devcenter#DevCentersGet": {
@@ -14845,16 +16182,66 @@
             "smithy.api#documentation": "Name of the Network Connection that can be applied to a Pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devcenter#Tags",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "properties": {
+          "target": "com.azure.devcenter#NetworkConnectionUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of a network connection resource to be updated."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#NetworkConnectionUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "subnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subnet to attach Virtual Machines to"
+          }
+        },
+        "domainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Active Directory domain name"
+          }
+        },
+        "organizationUnit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Active Directory domain Organization Unit (OU)"
+          }
+        },
+        "domainUsername": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com."
+          }
+        },
+        "domainPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password for the account used to join domain",
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of network connection. These properties can be updated after the resource has been created."
       }
     },
     "com.azure.devcenter#NetworkConnectionsCreateOrUpdate": {
@@ -14966,16 +16353,175 @@
             "smithy.api#documentation": "Name of the Network Connection that can be applied to a Pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devcenter#NetworkConnectionsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.devcenter#NetworkPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of a Network Connection"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#NetworkPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "subnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subnet to attach Virtual Machines to",
+            "smithy.api#required": {}
+          }
+        },
+        "domainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Active Directory domain name"
+          }
+        },
+        "organizationUnit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Active Directory domain Organization Unit (OU)"
+          }
+        },
+        "domainUsername": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com."
+          }
+        },
+        "domainPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password for the account used to join domain",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "healthCheckStatus": {
+          "target": "com.azure.devcenter#NetworkPropertiesInputHealthCheckStatus",
+          "traits": {
+            "smithy.api#documentation": "Health check status values"
+          }
+        },
+        "networkingResourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name for resource group where NICs will be placed."
+          }
+        },
+        "domainJoinType": {
+          "target": "com.azure.devcenter#NetworkPropertiesInputDomainJoinType",
+          "traits": {
+            "smithy.api#documentation": "Active Directory join type",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Network properties"
+      }
+    },
+    "com.azure.devcenter#NetworkPropertiesInputDomainJoinType": {
+      "type": "enum",
+      "members": {
+        "HYBRIDAZUREADJOIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HybridAzureADJoin"
+          }
+        },
+        "AZUREADJOIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureADJoin"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Active Directory join type"
+      }
+    },
+    "com.azure.devcenter#NetworkPropertiesInputHealthCheckStatus": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Pending"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Running"
+          }
+        },
+        "PASSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Passed"
+          }
+        },
+        "WARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Warning"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "INFORMATIONAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Informational"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Health check status values"
+      }
+    },
+    "com.azure.devcenter#NetworkConnectionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.devcenter#NetworkConnectionsGet": {
@@ -15619,18 +17165,6 @@
         "smithy.api#documentation": "The supported types for a scheduled task."
       }
     },
-    "com.azure.devcenter#Tags": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Resource tags."
-      }
-    },
     "com.azure.devcenter#SchedulesUpdateRequest": {
       "type": "structure",
       "members": {
@@ -15681,16 +17215,65 @@
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#ScheduleUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a schedule resource to be updated."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#ScheduleUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "tags": {
+          "target": "com.azure.devcenter#Tags",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "type": {
+          "target": "com.azure.devcenter#ScheduledType",
+          "traits": {
+            "smithy.api#documentation": "Supported type this scheduled task represents."
+          }
+        },
+        "frequency": {
+          "target": "com.azure.devcenter#ScheduledFrequency",
+          "traits": {
+            "smithy.api#documentation": "The frequency of this scheduled task."
+          }
+        },
+        "time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target time to trigger the action. The format is HH:MM."
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IANA timezone id at which the schedule should execute."
+          }
+        },
+        "state": {
+          "target": "com.azure.devcenter#ScheduleEnableStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether or not this scheduled task is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Updatable properties of a Schedule."
       }
     },
     "com.azure.devcenter#SchedulesCreateOrUpdate": {
@@ -15800,16 +17383,69 @@
             "smithy.api#documentation": "The maximum number of resources to return from the operation. Example: '$top=10'."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.devcenter#SchedulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a Schedule resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#SchedulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "tags": {
+          "target": "com.azure.devcenter#Tags",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "type": {
+          "target": "com.azure.devcenter#ScheduledType",
+          "traits": {
+            "smithy.api#documentation": "Supported type this scheduled task represents.",
+            "smithy.api#required": {}
+          }
+        },
+        "frequency": {
+          "target": "com.azure.devcenter#ScheduledFrequency",
+          "traits": {
+            "smithy.api#documentation": "The frequency of this scheduled task.",
+            "smithy.api#required": {}
+          }
+        },
+        "time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The target time to trigger the action. The format is HH:MM.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IANA timezone id at which the schedule should execute.",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.azure.devcenter#ScheduleEnableStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether or not this scheduled task is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Schedule properties defining when and what to execute."
       }
     },
     "com.azure.devcenter#SchedulesGet": {
@@ -16856,16 +18492,206 @@
             "smithy.api#documentation": "Name of the pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devcenter#Tags",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "properties": {
+          "target": "com.azure.devcenter#PoolUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of a pool to be updated."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#PoolUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "devBoxDefinitionType": {
+          "target": "com.azure.devcenter#PoolDevBoxDefinitionType",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly."
+          }
+        },
+        "devBoxDefinitionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a Dev Box definition in parent Project of this Pool. Will be ignored if devBoxDefinitionType is Value."
+          }
+        },
+        "devBoxDefinition": {
+          "target": "com.azure.devcenter#PoolDevBoxDefinitionInput",
+          "traits": {
+            "smithy.api#documentation": "A definition of the machines that are created from this Pool. Will be ignored if devBoxDefinitionType is Reference or not provided."
+          }
+        },
+        "networkConnectionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a Network Connection in parent Project of this Pool"
+          }
+        },
+        "licenseType": {
+          "target": "com.azure.devcenter#LicenseType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created."
+          }
+        },
+        "localAdministrator": {
+          "target": "com.azure.devcenter#LocalAdminStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box."
+          }
+        },
+        "stopOnDisconnect": {
+          "target": "com.azure.devcenter#StopOnDisconnectConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Stop on disconnect configuration settings for Dev Boxes created in this pool."
+          }
+        },
+        "stopOnNoConnect": {
+          "target": "com.azure.devcenter#StopOnNoConnectConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Stop on no connect configuration settings for Dev Boxes created in this pool."
+          }
+        },
+        "singleSignOnStatus": {
+          "target": "com.azure.devcenter#SingleSignOnStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the pool."
+          }
+        },
+        "virtualNetworkType": {
+          "target": "com.azure.devcenter#VirtualNetworkType",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network."
+          }
+        },
+        "managedVirtualNetworkRegions": {
+          "target": "com.azure.devcenter#PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList",
+          "traits": {
+            "smithy.api#documentation": "The regions of the managed virtual network (required when managedNetworkType is Managed)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a Pool. These properties can be updated after the resource has been created."
+      }
+    },
+    "com.azure.devcenter#PoolUpdatePropertiesInputManagedVirtualNetworkRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The regions of the managed virtual network (required when managedNetworkType is Managed)."
+      }
+    },
+    "com.azure.devcenter#PoolDevBoxDefinitionInput": {
+      "type": "structure",
+      "members": {
+        "imageReference": {
+          "target": "com.azure.devcenter#PoolDevBoxDefinitionInputImageReference",
+          "traits": {
+            "smithy.api#documentation": "Image reference information"
+          }
+        },
+        "sku": {
+          "target": "com.azure.devcenter#PoolDevBoxDefinitionInputSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "activeImageReference": {
+          "target": "com.azure.devcenter#PoolDevBoxDefinitionInputActiveImageReference",
+          "traits": {
+            "smithy.api#documentation": "Image reference information"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a definition for a Developer Machine."
+      }
+    },
+    "com.azure.devcenter#PoolDevBoxDefinitionInputActiveImageReference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image ID, or Image version ID. When Image ID is provided, its latest version will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image reference information"
+      }
+    },
+    "com.azure.devcenter#PoolDevBoxDefinitionInputSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. E.g. P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.devcenter#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.devcenter#PoolDevBoxDefinitionInputImageReference": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image ID, or Image version ID. When Image ID is provided, its latest version will be used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image reference information"
       }
     },
     "com.azure.devcenter#PoolsCreateOrUpdate": {
@@ -16985,16 +18811,133 @@
             "smithy.api#documentation": "Name of the pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.devcenter#PoolsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.devcenter#PoolPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Pool properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.devcenter#PoolPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "devBoxDefinitionType": {
+          "target": "com.azure.devcenter#PoolDevBoxDefinitionType",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the pool is created from an existing Dev Box Definition or if one is provided directly."
+          }
+        },
+        "devBoxDefinitionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a Dev Box definition in parent Project of this Pool. Will be ignored if devBoxDefinitionType is Value.",
+            "smithy.api#required": {}
+          }
+        },
+        "devBoxDefinition": {
+          "target": "com.azure.devcenter#PoolDevBoxDefinitionInput",
+          "traits": {
+            "smithy.api#documentation": "A definition of the machines that are created from this Pool. Will be ignored if devBoxDefinitionType is Reference or not provided."
+          }
+        },
+        "networkConnectionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of a Network Connection in parent Project of this Pool",
+            "smithy.api#required": {}
+          }
+        },
+        "licenseType": {
+          "target": "com.azure.devcenter#LicenseType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.",
+            "smithy.api#required": {}
+          }
+        },
+        "localAdministrator": {
+          "target": "com.azure.devcenter#LocalAdminStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.",
+            "smithy.api#required": {}
+          }
+        },
+        "stopOnDisconnect": {
+          "target": "com.azure.devcenter#StopOnDisconnectConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Stop on disconnect configuration settings for Dev Boxes created in this pool."
+          }
+        },
+        "stopOnNoConnect": {
+          "target": "com.azure.devcenter#StopOnNoConnectConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Stop on no connect configuration settings for Dev Boxes created in this pool."
+          }
+        },
+        "singleSignOnStatus": {
+          "target": "com.azure.devcenter#SingleSignOnStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether Dev Boxes in this pool are created with single sign on enabled. The also requires that single sign on be enabled on the tenant."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display name of the pool."
+          }
+        },
+        "virtualNetworkType": {
+          "target": "com.azure.devcenter#VirtualNetworkType",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the pool uses a Virtual Network managed by Microsoft or a customer provided network."
+          }
+        },
+        "managedVirtualNetworkRegions": {
+          "target": "com.azure.devcenter#PoolPropertiesInputManagedVirtualNetworkRegionsList",
+          "traits": {
+            "smithy.api#documentation": "The regions of the managed virtual network (required when managedNetworkType is Managed)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a Pool"
+      }
+    },
+    "com.azure.devcenter#PoolPropertiesInputManagedVirtualNetworkRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The regions of the managed virtual network (required when managedNetworkType is Managed)."
+      }
+    },
+    "com.azure.devcenter#PoolsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.devcenter#PoolsGet": {

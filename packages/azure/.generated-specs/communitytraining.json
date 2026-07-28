@@ -541,16 +541,153 @@
             "smithy.api#documentation": "The name of the Community Training Resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.communitytraining#CommunityTrainingsUpdateRequestSku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource model definition representing SKU"
+          }
+        },
+        "tags": {
+          "target": "com.azure.communitytraining#CommunityTrainingsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.communitytraining#CommunityTrainingUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.communitytraining#CommunityTrainingUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "identityConfiguration": {
+          "target": "com.azure.communitytraining#IdentityConfigurationPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The identity configuration of the Community Training resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the CommunityTraining."
+      }
+    },
+    "com.azure.communitytraining#IdentityConfigurationPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "identityType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identity type of the Community Training Resource"
+          }
+        },
+        "teamsEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "To indicate whether the Community Training Resource has Teams enabled"
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tenantId of the selected identity provider for the Community Training Resource"
+          }
+        },
+        "domainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name of the selected identity provider for the Community Training Resource"
+          }
+        },
+        "clientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The clientId of the application registered in the selected identity provider for the Community Training Resource"
+          }
+        },
+        "clientSecret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The client secret of the application registered in the selected identity provider for the Community Training Resource",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "b2cAuthenticationPolicy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the authentication policy registered in ADB2C for the Community Training Resource"
+          }
+        },
+        "b2cPasswordResetPolicy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the password reset policy registered in ADB2C for the Community Training Resource",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "customLoginParameters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The custom login parameters for the Community Training Resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details of the Community CommunityTraining Identity Configuration"
+      }
+    },
+    "com.azure.communitytraining#CommunityTrainingsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.communitytraining#CommunityTrainingsUpdateRequestSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. Ex - P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.communitytraining#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
       }
     },
     "com.azure.communitytraining#CommunityTrainingsCreate": {
@@ -704,16 +841,82 @@
             "smithy.api#documentation": "The name of the Community Training Resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.communitytraining#CommunityTrainingsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.communitytraining#CommunityTrainingProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "sku": {
+          "target": "com.azure.communitytraining#CommunityTrainingsCreateRequestSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.communitytraining#CommunityTrainingsCreateRequestSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. Ex - P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.communitytraining#SkuTier"
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.communitytraining#CommunityTrainingsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.communitytraining#CommunityTrainingsGet": {

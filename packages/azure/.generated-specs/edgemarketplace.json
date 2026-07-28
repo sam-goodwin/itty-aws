@@ -1203,10 +1203,10 @@
             "smithy.api#documentation": "Id of the offer"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "requestId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name of the publisher.",
             "smithy.api#required": {}
           }
         }
@@ -1253,11 +1253,53 @@
             "smithy.api#documentation": "Id of the offer"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "publisherName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name of the publisher."
+          }
+        },
+        "edgeMarketPlaceRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The region where the disk will be created.",
             "smithy.api#required": {}
+          }
+        },
+        "egeMarketPlaceResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The region where the disk will be created."
+          }
+        },
+        "hypervGeneration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hyperv version."
+          }
+        },
+        "marketPlaceSku": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The marketplace sku."
+          }
+        },
+        "marketPlaceSkuVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The marketplace sku version."
+          }
+        },
+        "deviceSku": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The device sku."
+          }
+        },
+        "deviceVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The device sku version."
           }
         }
       },

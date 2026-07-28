@@ -756,8 +756,7 @@ export type RangeMode =
   | "LAST"
   | "LAST_BEFORE_MISSING_VALUES"
   | "INCLUSIVE"
-  | "EXCLUSIVE"
-  | (string & {});
+  | "EXCLUSIVE";
 export const RangeMode = /*@__PURE__*/ S.String;
 
 export interface TypedAttributeValueRange {
@@ -907,7 +906,7 @@ export const BatchReadOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchReadOperation>;
 export type BatchReadOperationList = BatchReadOperation[];
 export const BatchReadOperationList = /*@__PURE__*/ S.Array(BatchReadOperation);
-export type ConsistencyLevel = "SERIALIZABLE" | "EVENTUAL" | (string & {});
+export type ConsistencyLevel = "SERIALIZABLE" | "EVENTUAL";
 export const ConsistencyLevel = /*@__PURE__*/ S.String;
 
 export interface BatchReadRequest {
@@ -1237,8 +1236,7 @@ export type BatchReadExceptionType =
   | "NotPolicyException"
   | "DirectoryNotEnabledException"
   | "LimitExceededException"
-  | "InternalServiceException"
-  | (string & {});
+  | "InternalServiceException";
 export const BatchReadExceptionType = /*@__PURE__*/ S.String;
 
 export type ExceptionMessage = string;
@@ -1325,7 +1323,7 @@ export const BatchDetachObject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDetachObject",
 }) as any as S.Schema<BatchDetachObject>;
-export type UpdateActionType = "CREATE_OR_UPDATE" | "DELETE" | (string & {});
+export type UpdateActionType = "CREATE_OR_UPDATE" | "DELETE";
 export const UpdateActionType = /*@__PURE__*/ S.String;
 
 export interface ObjectAttributeAction {
@@ -1799,8 +1797,7 @@ export type FacetAttributeType =
   | "BOOLEAN"
   | "NUMBER"
   | "DATETIME"
-  | "VARIANT"
-  | (string & {});
+  | "VARIANT";
 export const FacetAttributeType = /*@__PURE__*/ S.String;
 
 export type RuleKey = string;
@@ -1808,8 +1805,7 @@ export type RuleType =
   | "BINARY_LENGTH"
   | "NUMBER_COMPARISON"
   | "STRING_FROM_SET"
-  | "STRING_LENGTH"
-  | (string & {});
+  | "STRING_LENGTH";
 export const RuleType = /*@__PURE__*/ S.String;
 
 export type RuleParameterKey = string;
@@ -1856,10 +1852,7 @@ export const FacetAttributeReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FacetAttributeReference",
 }) as any as S.Schema<FacetAttributeReference>;
-export type RequiredAttributeBehavior =
-  | "REQUIRED_ALWAYS"
-  | "NOT_REQUIRED"
-  | (string & {});
+export type RequiredAttributeBehavior = "REQUIRED_ALWAYS" | "NOT_REQUIRED";
 export const RequiredAttributeBehavior = /*@__PURE__*/ S.String;
 
 export interface FacetAttribute {
@@ -1878,15 +1871,10 @@ export const FacetAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FacetAttribute" }) as any as S.Schema<FacetAttribute>;
 export type FacetAttributeList = FacetAttribute[];
 export const FacetAttributeList = /*@__PURE__*/ S.Array(FacetAttribute);
-export type ObjectType =
-  | "NODE"
-  | "LEAF_NODE"
-  | "POLICY"
-  | "INDEX"
-  | (string & {});
+export type ObjectType = "NODE" | "LEAF_NODE" | "POLICY" | "INDEX";
 export const ObjectType = /*@__PURE__*/ S.String;
 
-export type FacetStyle = "STATIC" | "DYNAMIC" | (string & {});
+export type FacetStyle = "STATIC" | "DYNAMIC";
 export const FacetStyle = /*@__PURE__*/ S.String;
 
 export interface CreateFacetRequest {
@@ -2477,7 +2465,7 @@ export const GetDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDirectoryRequest",
 }) as any as S.Schema<GetDirectoryRequest>;
-export type DirectoryState = "ENABLED" | "DISABLED" | "DELETED" | (string & {});
+export type DirectoryState = "ENABLED" | "DISABLED" | "DELETED";
 export const DirectoryState = /*@__PURE__*/ S.String;
 
 export interface Directory {
@@ -4048,8 +4036,7 @@ export type BatchWriteExceptionType =
   | "NotPolicyException"
   | "DirectoryNotEnabledException"
   | "LimitExceededException"
-  | "UnsupportedIndexTypeException"
-  | (string & {});
+  | "UnsupportedIndexTypeException";
 export const BatchWriteExceptionType = /*@__PURE__*/ S.String;
 
 export type AddFacetToObjectError =

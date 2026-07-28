@@ -44,9 +44,17 @@ export const EvaluationRunsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluationRunsCreateRequest",
 }) as any as S.Schema<EvaluationRunsCreateRequest>;
 
-export type EvaluationRunsCreateResponse = unknown;
+export type EvaluationRunsCreateResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const EvaluationRunsCreateResponseBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EvaluationRunsCreateResponseBodyMap>;
+
+export type EvaluationRunsCreateResponse = EvaluationRunsCreateResponseBodyMap;
 export const EvaluationRunsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  EvaluationRunsCreateResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EvaluationRunsCreateResponse",
 }) as any as S.Schema<EvaluationRunsCreateResponse>;

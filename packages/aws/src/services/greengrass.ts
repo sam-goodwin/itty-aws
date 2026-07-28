@@ -442,8 +442,7 @@ export type DeploymentType =
   | "NewDeployment"
   | "Redeployment"
   | "ResetDeployment"
-  | "ForceResetDeployment"
-  | (string & {});
+  | "ForceResetDeployment";
 export const DeploymentType = /*@__PURE__*/ S.String;
 
 export interface CreateDeploymentRequest {
@@ -609,10 +608,7 @@ export const CreateDeviceDefinitionVersionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDeviceDefinitionVersionResponse",
 }) as any as S.Schema<CreateDeviceDefinitionVersionResponse>;
-export type FunctionIsolationMode =
-  | "GreengrassContainer"
-  | "NoContainer"
-  | (string & {});
+export type FunctionIsolationMode = "GreengrassContainer" | "NoContainer";
 export const FunctionIsolationMode = /*@__PURE__*/ S.String;
 
 export interface FunctionRunAsConfig {
@@ -644,7 +640,7 @@ export const FunctionDefaultConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FunctionDefaultConfig",
 }) as any as S.Schema<FunctionDefaultConfig>;
-export type EncodingType = "binary" | "json" | (string & {});
+export type EncodingType = "binary" | "json";
 export const EncodingType = /*@__PURE__*/ S.String;
 
 export interface FunctionExecutionConfig {
@@ -659,7 +655,7 @@ export const FunctionExecutionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FunctionExecutionConfig",
 }) as any as S.Schema<FunctionExecutionConfig>;
-export type Permission = "ro" | "rw" | (string & {});
+export type Permission = "ro" | "rw";
 export const Permission = /*@__PURE__*/ S.String;
 
 export interface ResourceAccessPolicy {
@@ -997,19 +993,13 @@ export const CreateGroupVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupVersionResponse",
 }) as any as S.Schema<CreateGroupVersionResponse>;
-export type LoggerComponent = "GreengrassSystem" | "Lambda" | (string & {});
+export type LoggerComponent = "GreengrassSystem" | "Lambda";
 export const LoggerComponent = /*@__PURE__*/ S.String;
 
-export type LoggerLevel =
-  | "DEBUG"
-  | "INFO"
-  | "WARN"
-  | "ERROR"
-  | "FATAL"
-  | (string & {});
+export type LoggerLevel = "DEBUG" | "INFO" | "WARN" | "ERROR" | "FATAL";
 export const LoggerLevel = /*@__PURE__*/ S.String;
 
-export type LoggerType = "FileSystem" | "AWSCloudWatch" | (string & {});
+export type LoggerType = "FileSystem" | "AWSCloudWatch";
 export const LoggerType = /*@__PURE__*/ S.String;
 
 export interface Logger {
@@ -1368,7 +1358,7 @@ export const CreateResourceDefinitionVersionResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateResourceDefinitionVersionResponse",
 }) as any as S.Schema<CreateResourceDefinitionVersionResponse>;
 export type S3UrlSignerRole = string;
-export type SoftwareToUpdate = "core" | "ota_agent" | (string & {});
+export type SoftwareToUpdate = "core" | "ota_agent";
 export const SoftwareToUpdate = /*@__PURE__*/ S.String;
 
 export type UpdateAgentLogLevel =
@@ -1379,8 +1369,7 @@ export type UpdateAgentLogLevel =
   | "INFO"
   | "WARN"
   | "ERROR"
-  | "FATAL"
-  | (string & {});
+  | "FATAL";
 export const UpdateAgentLogLevel = /*@__PURE__*/ S.String;
 
 export type UpdateTargets = string[];
@@ -1389,16 +1378,14 @@ export type UpdateTargetsArchitecture =
   | "armv6l"
   | "armv7l"
   | "x86_64"
-  | "aarch64"
-  | (string & {});
+  | "aarch64";
 export const UpdateTargetsArchitecture = /*@__PURE__*/ S.String;
 
 export type UpdateTargetsOperatingSystem =
   | "ubuntu"
   | "raspbian"
   | "amazon_linux"
-  | "openwrt"
-  | (string & {});
+  | "openwrt";
 export const UpdateTargetsOperatingSystem = /*@__PURE__*/ S.String;
 
 export interface CreateSoftwareUpdateJobRequest {
@@ -1912,8 +1899,7 @@ export type BulkDeploymentStatus =
   | "Completed"
   | "Stopping"
   | "Stopped"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const BulkDeploymentStatus = /*@__PURE__*/ S.String;
 
 export interface ErrorDetail {
@@ -2963,10 +2949,10 @@ export const GetThingRuntimeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetThingRuntimeConfigurationRequest",
 }) as any as S.Schema<GetThingRuntimeConfigurationRequest>;
-export type ConfigurationSyncStatus = "InSync" | "OutOfSync" | (string & {});
+export type ConfigurationSyncStatus = "InSync" | "OutOfSync";
 export const ConfigurationSyncStatus = /*@__PURE__*/ S.String;
 
-export type Telemetry = "On" | "Off" | (string & {});
+export type Telemetry = "On" | "Off";
 export const Telemetry = /*@__PURE__*/ S.String;
 
 export interface TelemetryConfiguration {

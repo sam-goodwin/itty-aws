@@ -272,16 +272,110 @@
             "smithy.api#documentation": "The name of the hybrid machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "extensions": {
+          "target": "com.azure.hybridcompute#SetupExtensionsRequestExtensionsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The list of extensions"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#SetupExtensionsRequestExtensionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridcompute#MachineExtensionPropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of extensions"
+      }
+    },
+    "com.azure.hybridcompute#MachineExtensionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "forceUpdateTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "How the extension handler should be forced to update even if the extension configuration has not changed."
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extension handler publisher."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of the extension; an example is \"CustomScriptExtension\"."
+          }
+        },
+        "typeHandlerVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the version of the script handler."
+          }
+        },
+        "enableAutomaticUpgrade": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available."
+          }
+        },
+        "autoUpgradeMinorVersion": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true."
+          }
+        },
+        "settings": {
+          "target": "com.azure.hybridcompute#MachineExtensionPropertiesInputSettingsMap",
+          "traits": {
+            "smithy.api#documentation": "Json formatted public settings for the extension."
+          }
+        },
+        "protectedSettings": {
+          "target": "com.azure.hybridcompute#MachineExtensionPropertiesInputProtectedSettingsMap",
+          "traits": {
+            "smithy.api#documentation": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
+          }
+        },
+        "instanceView": {
+          "target": "com.azure.hybridcompute#MachineExtensionInstanceView",
+          "traits": {
+            "smithy.api#documentation": "The machine extension instance view."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Machine Extension."
+      }
+    },
+    "com.azure.hybridcompute#MachineExtensionPropertiesInputProtectedSettingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
+      }
+    },
+    "com.azure.hybridcompute#MachineExtensionPropertiesInputSettingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Json formatted public settings for the extension."
       }
     },
     "com.azure.hybridcompute#SettingsPatch": {
@@ -528,16 +622,23 @@
             "smithy.api#documentation": "The name of the settings resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.hybridcompute#SettingsPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#SettingsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "gatewayProperties": {
+          "target": "com.azure.hybridcompute#SettingsGatewayProperties"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Settings properties"
       }
     },
     "com.azure.hybridcompute#SettingsUpdate": {
@@ -645,12 +746,8 @@
             "smithy.api#documentation": "The name of the settings resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.hybridcompute#SettingsPropertiesInput"
         }
       },
       "traits": {
@@ -1215,16 +1312,56 @@
             "smithy.api#documentation": "The name of the Gateway."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#GatewaysUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#GatewayUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gateway Update properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#GatewayUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "allowedFeatures": {
+          "target": "com.azure.hybridcompute#GatewayUpdatePropertiesAllowedFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "Specifies the list of features that are enabled for this Gateway."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the Update properties of a Gateway Profile."
+      }
+    },
+    "com.azure.hybridcompute#GatewayUpdatePropertiesAllowedFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the list of features that are enabled for this Gateway."
+      }
+    },
+    "com.azure.hybridcompute#GatewaysUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.hybridcompute#GatewaysCreateOrUpdate": {
@@ -1336,16 +1473,69 @@
             "smithy.api#documentation": "The name of the Gateway."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#GatewaysCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#GatewayPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Hybrid Compute Gateway properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#GatewayPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "gatewayType": {
+          "target": "com.azure.hybridcompute#GatewayType",
+          "traits": {
+            "smithy.api#documentation": "The type of the Gateway resource."
+          }
+        },
+        "allowedFeatures": {
+          "target": "com.azure.hybridcompute#GatewayPropertiesInputAllowedFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "Specifies the list of features that are enabled for this Gateway."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Gateway Profile."
+      }
+    },
+    "com.azure.hybridcompute#GatewayPropertiesInputAllowedFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the list of features that are enabled for this Gateway."
+      }
+    },
+    "com.azure.hybridcompute#GatewaysCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridcompute#GatewaysGet": {
@@ -2146,16 +2336,27 @@
             "smithy.api#documentation": "The name of the run command."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#MachineRunCommandsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#MachineRunCommandsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.hybridcompute#MachineRunCommandsCreateOrUpdate": {
@@ -2275,16 +2476,133 @@
             "smithy.api#documentation": "The name of the run command."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#MachineRunCommandsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#MachineRunCommandPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Describes Run Command Properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#MachineRunCommandPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "com.azure.hybridcompute#MachineRunCommandScriptSource",
+          "traits": {
+            "smithy.api#documentation": "The source of the run command script."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.hybridcompute#MachineRunCommandPropertiesInputParametersList",
+          "traits": {
+            "smithy.api#documentation": "The parameters used by the script."
+          }
+        },
+        "protectedParameters": {
+          "target": "com.azure.hybridcompute#MachineRunCommandPropertiesInputProtectedParametersList",
+          "traits": {
+            "smithy.api#documentation": "The parameters used by the script."
+          }
+        },
+        "asyncExecution": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Optional. If set to true, provisioning will complete as soon as script starts and will not wait for script to complete."
+          }
+        },
+        "runAsUser": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the user account on the machine when executing the run command."
+          }
+        },
+        "runAsPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the user account password on the machine when executing the run command.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "timeoutInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The timeout in seconds to execute the run command."
+          }
+        },
+        "outputBlobUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. "
+          }
+        },
+        "errorBlobUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter."
+          }
+        },
+        "outputBlobManagedIdentity": {
+          "target": "com.azure.hybridcompute#RunCommandManagedIdentity",
+          "traits": {
+            "smithy.api#documentation": "User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged "
+          }
+        },
+        "errorBlobManagedIdentity": {
+          "target": "com.azure.hybridcompute#RunCommandManagedIdentity",
+          "traits": {
+            "smithy.api#documentation": "User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged "
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a run command."
+      }
+    },
+    "com.azure.hybridcompute#MachineRunCommandPropertiesInputProtectedParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridcompute#RunCommandInputParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters used by the script."
+      }
+    },
+    "com.azure.hybridcompute#MachineRunCommandPropertiesInputParametersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridcompute#RunCommandInputParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters used by the script."
+      }
+    },
+    "com.azure.hybridcompute#MachineRunCommandsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridcompute#MachineRunCommandsGet": {
@@ -3843,16 +4161,41 @@
             "smithy.api#documentation": "The name of the hybrid machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "extensionTargets": {
+          "target": "com.azure.hybridcompute#ExtensionTarget",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Describes the Extension Target Properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#ExtensionTarget": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.hybridcompute#ExtensionTargetProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the Machine Extension Target Properties"
+      }
+    },
+    "com.azure.hybridcompute#ExtensionTargetProperties": {
+      "type": "structure",
+      "members": {
+        "targetVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Properties for the specified Extension to Upgrade."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the Machine Extension Target Version Properties"
       }
     },
     "com.azure.hybridcompute#MachineExtensionsList": {
@@ -4181,16 +4524,113 @@
             "smithy.api#documentation": "The name of the machine extension."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#MachineExtensionsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#MachineExtensionUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Describes Machine Extension Update Properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#MachineExtensionUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "forceUpdateTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "How the extension handler should be forced to update even if the extension configuration has not changed."
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the extension handler publisher."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of the extension; an example is \"CustomScriptExtension\"."
+          }
+        },
+        "typeHandlerVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the version of the script handler."
+          }
+        },
+        "enableAutomaticUpgrade": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available."
+          }
+        },
+        "autoUpgradeMinorVersion": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true."
+          }
+        },
+        "settings": {
+          "target": "com.azure.hybridcompute#MachineExtensionUpdatePropertiesSettingsMap",
+          "traits": {
+            "smithy.api#documentation": "Json formatted public settings for the extension."
+          }
+        },
+        "protectedSettings": {
+          "target": "com.azure.hybridcompute#MachineExtensionUpdatePropertiesProtectedSettingsMap",
+          "traits": {
+            "smithy.api#documentation": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Machine Extension."
+      }
+    },
+    "com.azure.hybridcompute#MachineExtensionUpdatePropertiesProtectedSettingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all."
+      }
+    },
+    "com.azure.hybridcompute#MachineExtensionUpdatePropertiesSettingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Json formatted public settings for the extension."
+      }
+    },
+    "com.azure.hybridcompute#MachineExtensionsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.hybridcompute#MachineExtensionsCreateOrUpdate": {
@@ -4310,16 +4750,40 @@
             "smithy.api#documentation": "The name of the machine extension."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#MachineExtensionsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#MachineExtensionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Describes Machine Extension Properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#MachineExtensionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridcompute#MachineExtensionsGet": {
@@ -7053,16 +7517,257 @@
             "smithy.api#documentation": "The name of the hybrid machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "maximumDuration": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Specifies the maximum amount of time that the operation will run. It must be an ISO 8601-compliant duration string such as PT4H (4 hours)",
             "smithy.api#required": {}
+          }
+        },
+        "rebootSetting": {
+          "target": "com.azure.hybridcompute#MachinesInstallPatchesRequestRebootSetting",
+          "traits": {
+            "smithy.api#documentation": "Defines when it is acceptable to reboot a VM during a software update operation.",
+            "smithy.api#required": {}
+          }
+        },
+        "windowsParameters": {
+          "target": "com.azure.hybridcompute#WindowsParameters",
+          "traits": {
+            "smithy.api#documentation": "Input for InstallPatches on a Windows VM, as directly received by the API"
+          }
+        },
+        "linuxParameters": {
+          "target": "com.azure.hybridcompute#LinuxParameters",
+          "traits": {
+            "smithy.api#documentation": "Input for InstallPatches on a Linux VM, as directly received by the API"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#LinuxParameters": {
+      "type": "structure",
+      "members": {
+        "classificationsToInclude": {
+          "target": "com.azure.hybridcompute#LinuxParametersClassificationsToIncludeList",
+          "traits": {
+            "smithy.api#documentation": "The update classifications to select when installing patches for Linux."
+          }
+        },
+        "packageNameMasksToInclude": {
+          "target": "com.azure.hybridcompute#LinuxParametersPackageNameMasksToIncludeList",
+          "traits": {
+            "smithy.api#documentation": "packages to include in the patch operation. Format: packageName_packageVersion"
+          }
+        },
+        "packageNameMasksToExclude": {
+          "target": "com.azure.hybridcompute#LinuxParametersPackageNameMasksToExcludeList",
+          "traits": {
+            "smithy.api#documentation": "packages to exclude in the patch operation. Format: packageName_packageVersion"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input for InstallPatches on a Linux VM, as directly received by the API"
+      }
+    },
+    "com.azure.hybridcompute#LinuxParametersPackageNameMasksToExcludeList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "packages to exclude in the patch operation. Format: packageName_packageVersion"
+      }
+    },
+    "com.azure.hybridcompute#LinuxParametersPackageNameMasksToIncludeList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "packages to include in the patch operation. Format: packageName_packageVersion"
+      }
+    },
+    "com.azure.hybridcompute#LinuxParametersClassificationsToIncludeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridcompute#LinuxParametersClassificationsToIncludeItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The update classifications to select when installing patches for Linux."
+      }
+    },
+    "com.azure.hybridcompute#LinuxParametersClassificationsToIncludeItem": {
+      "type": "enum",
+      "members": {
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Critical"
+          }
+        },
+        "SECURITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Security"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Other"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.hybridcompute#WindowsParameters": {
+      "type": "structure",
+      "members": {
+        "classificationsToInclude": {
+          "target": "com.azure.hybridcompute#WindowsParametersClassificationsToIncludeList",
+          "traits": {
+            "smithy.api#documentation": "The update classifications to select when installing patches for Windows."
+          }
+        },
+        "kbNumbersToInclude": {
+          "target": "com.azure.hybridcompute#WindowsParametersKbNumbersToIncludeList",
+          "traits": {
+            "smithy.api#documentation": "Kbs to include in the patch operation"
+          }
+        },
+        "kbNumbersToExclude": {
+          "target": "com.azure.hybridcompute#WindowsParametersKbNumbersToExcludeList",
+          "traits": {
+            "smithy.api#documentation": "Kbs to exclude in the patch operation"
+          }
+        },
+        "excludeKbsRequiringReboot": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Filters out Kbs that don't have an InstallationRebootBehavior of 'NeverReboots' when this is set to true."
+          }
+        },
+        "maxPatchPublishDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is used to install patches that were published on or before this given max published date."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Input for InstallPatches on a Windows VM, as directly received by the API"
+      }
+    },
+    "com.azure.hybridcompute#WindowsParametersKbNumbersToExcludeList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Kbs to exclude in the patch operation"
+      }
+    },
+    "com.azure.hybridcompute#WindowsParametersKbNumbersToIncludeList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Kbs to include in the patch operation"
+      }
+    },
+    "com.azure.hybridcompute#WindowsParametersClassificationsToIncludeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridcompute#WindowsParametersClassificationsToIncludeItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The update classifications to select when installing patches for Windows."
+      }
+    },
+    "com.azure.hybridcompute#WindowsParametersClassificationsToIncludeItem": {
+      "type": "enum",
+      "members": {
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Critical"
+          }
+        },
+        "SECURITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Security"
+          }
+        },
+        "UPDATEROLLUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UpdateRollUp"
+          }
+        },
+        "FEATUREPACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FeaturePack"
+          }
+        },
+        "SERVICEPACK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServicePack"
+          }
+        },
+        "DEFINITION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Definition"
+          }
+        },
+        "TOOLS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Tools"
+          }
+        },
+        "UPDATES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Updates"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.hybridcompute#MachinesInstallPatchesRequestRebootSetting": {
+      "type": "enum",
+      "members": {
+        "IFREQUIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IfRequired"
+          }
+        },
+        "NEVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Never"
+          }
+        },
+        "ALWAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Always"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines when it is acceptable to reboot a VM during a software update operation."
       }
     },
     "com.azure.hybridcompute#MachinesAssessPatches": {
@@ -7891,16 +8596,157 @@
             "smithy.api#documentation": "The name of the license profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#LicenseProfilesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#LicenseProfilesUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Describe the Update properties of a license profile."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfilesUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "softwareAssurance": {
+          "target": "com.azure.hybridcompute#LicenseProfilesUpdateRequestPropertiesSoftwareAssurance"
+        },
+        "esuProfile": {
+          "target": "com.azure.hybridcompute#EsuProfileUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Hybrid Compute ESU Profile Update properties"
+          }
+        },
+        "productProfile": {
+          "target": "com.azure.hybridcompute#ProductProfileUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Hybrid Compute Product Profile Update properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describe the Update properties of a license profile."
+      }
+    },
+    "com.azure.hybridcompute#ProductProfileUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "subscriptionStatus": {
+          "target": "com.azure.hybridcompute#LicenseProfileSubscriptionStatusUpdate",
+          "traits": {
+            "smithy.api#documentation": "Indicates the subscription status of the product."
+          }
+        },
+        "productType": {
+          "target": "com.azure.hybridcompute#LicenseProfileProductType",
+          "traits": {
+            "smithy.api#documentation": "Indicates the product type of the license."
+          }
+        },
+        "productFeatures": {
+          "target": "com.azure.hybridcompute#ProductProfileUpdatePropertiesProductFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "The list of product feature updates."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the Update properties of a Product Profile."
+      }
+    },
+    "com.azure.hybridcompute#ProductProfileUpdatePropertiesProductFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridcompute#ProductFeatureUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of product feature updates."
+      }
+    },
+    "com.azure.hybridcompute#ProductFeatureUpdate": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Product feature name."
+          }
+        },
+        "subscriptionStatus": {
+          "target": "com.azure.hybridcompute#LicenseProfileSubscriptionStatusUpdate",
+          "traits": {
+            "smithy.api#documentation": "Indicates the new status of the product feature."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Product Feature"
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfileSubscriptionStatusUpdate": {
+      "type": "enum",
+      "members": {
+        "ENABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enable"
+          }
+        },
+        "DISABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disable"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates the new subscription status of the OS or Product Features."
+      }
+    },
+    "com.azure.hybridcompute#EsuProfileUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "assignedLicense": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the license."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the Update properties of a ESU License Profile."
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfilesUpdateRequestPropertiesSoftwareAssurance": {
+      "type": "structure",
+      "members": {
+        "softwareAssuranceCustomer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies if this machine is licensed as part of a Software Assurance agreement."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.hybridcompute#LicenseProfilesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.hybridcompute#LicenseProfilesUpdateRequestLicenseProfileName": {
@@ -8073,16 +8919,170 @@
             "smithy.api#documentation": "The name of the license profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#LicenseProfilesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#LicenseProfilesCreateOrUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Describe the properties of a license profile."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfilesCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "softwareAssurance": {
+          "target": "com.azure.hybridcompute#LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance"
+        },
+        "esuProfile": {
+          "target": "com.azure.hybridcompute#LicenseProfileArmEsuPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Hybrid Compute ESU Profile properties"
+          }
+        },
+        "productProfile": {
+          "target": "com.azure.hybridcompute#LicenseProfileArmProductProfilePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Hybrid Compute Product Profile properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describe the properties of a license profile."
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfileArmProductProfilePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "subscriptionStatus": {
+          "target": "com.azure.hybridcompute#LicenseProfileSubscriptionStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates the subscription status of the product."
+          }
+        },
+        "productType": {
+          "target": "com.azure.hybridcompute#LicenseProfileProductType",
+          "traits": {
+            "smithy.api#documentation": "Indicates the product type of the license."
+          }
+        },
+        "error": {
+          "target": "com.azure.hybridcompute#LicenseProfileArmProductProfilePropertiesInputError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        },
+        "productFeatures": {
+          "target": "com.azure.hybridcompute#LicenseProfileArmProductProfilePropertiesInputProductFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "The list of product features."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Product License Profile ARM model."
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfileArmProductProfilePropertiesInputProductFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridcompute#ProductFeatureInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of product features."
+      }
+    },
+    "com.azure.hybridcompute#ProductFeatureInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Product feature name."
+          }
+        },
+        "subscriptionStatus": {
+          "target": "com.azure.hybridcompute#LicenseProfileSubscriptionStatus",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current status of the product features."
+          }
+        },
+        "error": {
+          "target": "com.azure.hybridcompute#ProductFeatureInputError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Product Feature"
+      }
+    },
+    "com.azure.hybridcompute#ProductFeatureInputError": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfileArmProductProfilePropertiesInputError": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfileArmEsuPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "assignedLicense": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the license."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a License Profile ARM model."
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance": {
+      "type": "structure",
+      "members": {
+        "softwareAssuranceCustomer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies if this machine is licensed as part of a Software Assurance agreement."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.hybridcompute#LicenseProfilesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridcompute#LicenseProfilesCreateOrUpdateRequestLicenseProfileName": {
@@ -8496,16 +9496,309 @@
             "smithy.api#documentation": "The name of the hybrid machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#MachinesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "identity": {
+          "target": "com.azure.hybridcompute#MachinesUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.hybridcompute#ArcKindEnum"
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#MachineUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Hybrid Compute Machine properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#MachineUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "locationData": {
+          "target": "com.azure.hybridcompute#MachineUpdatePropertiesInputLocationData",
+          "traits": {
+            "smithy.api#documentation": "Metadata pertaining to the geographic location of the resource."
+          }
+        },
+        "osProfile": {
+          "target": "com.azure.hybridcompute#OSProfileInput"
+        },
+        "cloudMetadata": {
+          "target": "com.azure.hybridcompute#CloudMetadataInput",
+          "traits": {
+            "smithy.api#documentation": "The metadata of the cloud environment (Azure/GCP/AWS/OCI...)."
+          }
+        },
+        "agentUpgrade": {
+          "target": "com.azure.hybridcompute#AgentUpgradeInput",
+          "traits": {
+            "smithy.api#documentation": "The info of the machine w.r.t Agent Upgrade"
+          }
+        },
+        "parentClusterResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any."
+          }
+        },
+        "privateLinkScopeResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the private link scope this machine is assigned to, if any."
+          }
+        },
+        "identityKeyStore": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identity key store type of the machine"
+          }
+        },
+        "tpmEkCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource onboarding."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the ARM updatable properties of a hybrid machine."
+      }
+    },
+    "com.azure.hybridcompute#AgentUpgradeInput": {
+      "type": "structure",
+      "members": {
+        "desiredVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the version info w.r.t AgentUpgrade for the machine."
+          }
+        },
+        "correlationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The correlation ID associated with an agent upgrade operation."
+          }
+        },
+        "enableAutomaticUpgrade": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies if the machine's agent should be upgraded"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The info w.r.t Agent Upgrade."
+      }
+    },
+    "com.azure.hybridcompute#CloudMetadataInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The metadata of the cloud environment (Azure/GCP/AWS/OCI...)."
+      }
+    },
+    "com.azure.hybridcompute#OSProfileInput": {
+      "type": "structure",
+      "members": {
+        "windowsConfiguration": {
+          "target": "com.azure.hybridcompute#OSProfileInputWindowsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Specifies the windows configuration for update management."
+          }
+        },
+        "linuxConfiguration": {
+          "target": "com.azure.hybridcompute#OSProfileInputLinuxConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Specifies the linux configuration for update management."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the operating system settings for the hybrid machine."
+      }
+    },
+    "com.azure.hybridcompute#OSProfileInputLinuxConfiguration": {
+      "type": "structure",
+      "members": {
+        "patchSettings": {
+          "target": "com.azure.hybridcompute#PatchSettingsInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the linux configuration for update management."
+      }
+    },
+    "com.azure.hybridcompute#PatchSettingsInput": {
+      "type": "structure",
+      "members": {
+        "assessmentMode": {
+          "target": "com.azure.hybridcompute#PatchSettingsInputAssessmentMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the assessment mode."
+          }
+        },
+        "patchMode": {
+          "target": "com.azure.hybridcompute#PatchSettingsInputPatchMode",
+          "traits": {
+            "smithy.api#documentation": "Specifies the patch mode."
+          }
+        },
+        "enableHotpatching": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the patch settings."
+      }
+    },
+    "com.azure.hybridcompute#PatchSettingsInputPatchMode": {
+      "type": "enum",
+      "members": {
+        "IMAGEDEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ImageDefault"
+          }
+        },
+        "AUTOMATICBYPLATFORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AutomaticByPlatform"
+          }
+        },
+        "AUTOMATICBYOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AutomaticByOS"
+          }
+        },
+        "MANUAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Manual"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the patch mode."
+      }
+    },
+    "com.azure.hybridcompute#PatchSettingsInputAssessmentMode": {
+      "type": "enum",
+      "members": {
+        "IMAGEDEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ImageDefault"
+          }
+        },
+        "AUTOMATICBYPLATFORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AutomaticByPlatform"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the assessment mode."
+      }
+    },
+    "com.azure.hybridcompute#OSProfileInputWindowsConfiguration": {
+      "type": "structure",
+      "members": {
+        "patchSettings": {
+          "target": "com.azure.hybridcompute#PatchSettingsInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the windows configuration for update management."
+      }
+    },
+    "com.azure.hybridcompute#MachineUpdatePropertiesInputLocationData": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A canonical name for the geographic or physical location.",
+            "smithy.api#required": {}
+          }
+        },
+        "city": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The city or locality where the resource is located."
+          }
+        },
+        "district": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The district, state, or province where the resource is located."
+          }
+        },
+        "countryOrRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The country or region where the resource is located"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata pertaining to the geographic location of the resource."
+      }
+    },
+    "com.azure.hybridcompute#MachinesUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.hybridcompute#MachinesUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.hybridcompute#MachinesUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity type."
+      }
+    },
+    "com.azure.hybridcompute#MachinesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.hybridcompute#MachinesCreateOrUpdate": {
@@ -8688,16 +9981,394 @@
             "smithy.api#documentation": "Expands referenced resources."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#MachinesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
           }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#MachinePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Hybrid Compute Machine properties"
+          }
+        },
+        "identity": {
+          "target": "com.azure.hybridcompute#MachinesCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
+          }
+        },
+        "kind": {
+          "target": "com.azure.hybridcompute#ArcKindEnum"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#MachinesCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.hybridcompute#MachinesCreateOrUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.hybridcompute#MachinesCreateOrUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity type."
+      }
+    },
+    "com.azure.hybridcompute#MachinePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "locationData": {
+          "target": "com.azure.hybridcompute#MachinePropertiesInputLocationData",
+          "traits": {
+            "smithy.api#documentation": "Metadata pertaining to the geographic location of the resource."
+          }
+        },
+        "serviceStatuses": {
+          "target": "com.azure.hybridcompute#ServiceStatuses",
+          "traits": {
+            "smithy.api#documentation": "Statuses of dependent services that are reported back to ARM."
+          }
+        },
+        "cloudMetadata": {
+          "target": "com.azure.hybridcompute#CloudMetadataInput",
+          "traits": {
+            "smithy.api#documentation": "The metadata of the cloud environment (Azure/GCP/AWS/OCI...)."
+          }
+        },
+        "agentUpgrade": {
+          "target": "com.azure.hybridcompute#AgentUpgradeInput",
+          "traits": {
+            "smithy.api#documentation": "The info of the machine w.r.t Agent Upgrade"
+          }
+        },
+        "osProfile": {
+          "target": "com.azure.hybridcompute#OSProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Specifies the operating system settings for the hybrid machine."
+          }
+        },
+        "licenseProfile": {
+          "target": "com.azure.hybridcompute#LicenseProfileMachineInstanceViewInput",
+          "traits": {
+            "smithy.api#documentation": "Specifies the License related properties for a machine."
+          }
+        },
+        "vmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the hybrid machine unique ID."
+          }
+        },
+        "clientPublicKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Public Key that the client provides to be used during initial resource onboarding"
+          }
+        },
+        "identityKeyStore": {
+          "target": "com.azure.hybridcompute#MachinePropertiesInputIdentityKeyStore",
+          "traits": {
+            "smithy.api#documentation": "Specifies the identity key store a machine is using."
+          }
+        },
+        "tpmEkCertificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource onboarding."
+          }
+        },
+        "osType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of Operating System (windows/linux)."
+          }
+        },
+        "extensions": {
+          "target": "com.azure.hybridcompute#MachinePropertiesInputExtensionsList",
+          "traits": {
+            "smithy.api#documentation": "Machine Extensions information (deprecated field)"
+          }
+        },
+        "privateLinkScopeResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the private link scope this machine is assigned to, if any."
+          }
+        },
+        "parentClusterResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any."
+          }
+        },
+        "mssqlDiscovered": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether any MS SQL instance is discovered on the machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a hybrid machine."
+      }
+    },
+    "com.azure.hybridcompute#MachinePropertiesInputExtensionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridcompute#MachineExtensionInstanceView"
+      },
+      "traits": {
+        "smithy.api#documentation": "Machine Extensions information (deprecated field)"
+      }
+    },
+    "com.azure.hybridcompute#MachinePropertiesInputIdentityKeyStore": {
+      "type": "enum",
+      "members": {
+        "TPM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TPM"
+          }
+        },
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the identity key store a machine is using."
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfileMachineInstanceViewInput": {
+      "type": "structure",
+      "members": {
+        "esuProfile": {
+          "target": "com.azure.hybridcompute#LicenseProfileMachineInstanceViewEsuPropertiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "License Profile Instance View in Machine Properties."
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfileMachineInstanceViewEsuPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "assignedLicense": {
+          "target": "com.azure.hybridcompute#LicenseInput",
+          "traits": {
+            "smithy.api#documentation": "The assigned license resource."
+          }
+        },
+        "licenseAssignmentState": {
+          "target": "com.azure.hybridcompute#LicenseProfileMachineInstanceViewEsuPropertiesInputLicenseAssignmentState",
+          "traits": {
+            "smithy.api#documentation": "Describes the license assignment state (Assigned or NotAssigned)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for the Machine ESU profile."
+      }
+    },
+    "com.azure.hybridcompute#LicenseProfileMachineInstanceViewEsuPropertiesInputLicenseAssignmentState": {
+      "type": "enum",
+      "members": {
+        "ASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Assigned"
+          }
+        },
+        "NOTASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the license assignment state (Assigned or NotAssigned)."
+      }
+    },
+    "com.azure.hybridcompute#LicenseInput": {
+      "type": "structure",
+      "members": {
+        "tags": {
+          "target": "com.azure.hybridcompute#LicenseInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#LicensePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Hybrid Compute License properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a license in a hybrid machine."
+      }
+    },
+    "com.azure.hybridcompute#LicensePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Describes the tenant id."
+          }
+        },
+        "licenseType": {
+          "target": "com.azure.hybridcompute#LicenseType",
+          "traits": {
+            "smithy.api#documentation": "The type of the license resource."
+          }
+        },
+        "licenseDetails": {
+          "target": "com.azure.hybridcompute#LicenseDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "Describes the properties of a License."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a License Profile."
+      }
+    },
+    "com.azure.hybridcompute#LicenseDetailsInput": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.hybridcompute#LicenseState"
+        },
+        "target": {
+          "target": "com.azure.hybridcompute#LicenseTarget"
+        },
+        "edition": {
+          "target": "com.azure.hybridcompute#LicenseEdition"
+        },
+        "type": {
+          "target": "com.azure.hybridcompute#LicenseCoreType"
+        },
+        "processors": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Describes the number of processors."
+          }
+        },
+        "volumeLicenseDetails": {
+          "target": "com.azure.hybridcompute#LicenseDetailsInputVolumeLicenseDetailsList",
+          "traits": {
+            "smithy.api#documentation": "A list of volume license details."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a License."
+      }
+    },
+    "com.azure.hybridcompute#LicenseDetailsInputVolumeLicenseDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.hybridcompute#VolumeLicenseDetails"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of volume license details."
+      }
+    },
+    "com.azure.hybridcompute#LicenseInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.hybridcompute#MachinePropertiesInputLocationData": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A canonical name for the geographic or physical location.",
+            "smithy.api#required": {}
+          }
+        },
+        "city": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The city or locality where the resource is located."
+          }
+        },
+        "district": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The district, state, or province where the resource is located."
+          }
+        },
+        "countryOrRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The country or region where the resource is located"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata pertaining to the geographic location of the resource."
+      }
+    },
+    "com.azure.hybridcompute#MachinesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridcompute#MachinesGet": {
@@ -9165,16 +10836,74 @@
             "smithy.api#documentation": "The name of the license."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#LicensesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#LicenseUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "License Update properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#LicenseUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "licenseType": {
+          "target": "com.azure.hybridcompute#LicenseType",
+          "traits": {
+            "smithy.api#documentation": "The type of the license resource."
+          }
+        },
+        "licenseDetails": {
+          "target": "com.azure.hybridcompute#LicenseUpdatePropertiesLicenseDetails"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the Update properties of a License Profile."
+      }
+    },
+    "com.azure.hybridcompute#LicenseUpdatePropertiesLicenseDetails": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.hybridcompute#LicenseState"
+        },
+        "target": {
+          "target": "com.azure.hybridcompute#LicenseTarget"
+        },
+        "edition": {
+          "target": "com.azure.hybridcompute#LicenseEdition"
+        },
+        "type": {
+          "target": "com.azure.hybridcompute#LicenseCoreType"
+        },
+        "processors": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Describes the number of processors."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.hybridcompute#LicensesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.hybridcompute#LicensesCreateOrUpdate": {
@@ -9286,16 +11015,40 @@
             "smithy.api#documentation": "The name of the license."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#LicensesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#LicensePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Hybrid Compute License properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#LicensesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridcompute#LicensesGet": {
@@ -9505,16 +11258,40 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#LicensesValidateLicenseRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#LicensePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Hybrid Compute License properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#LicensesValidateLicenseRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.hybridcompute#NetworkSecurityPerimeterConfigurationsReconcileForPrivateLinkScope": {
@@ -10298,16 +12075,38 @@
             "smithy.api#documentation": "The name of the target machine to get the private link scope validation details for."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.hybridcompute#NetworkConfigurationPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#NetworkConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource location"
+          }
+        },
+        "networkConfigurationScopeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Associated Network Configuration Scope Id (GUID)"
+          }
+        },
+        "networkConfigurationScopeResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Associated Network Configuration Scope Resource Id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Network configuration properties"
       }
     },
     "com.azure.hybridcompute#NetworkConfigurationsCreateOrUpdate": {
@@ -10391,12 +12190,8 @@
             "smithy.api#documentation": "The name of the target machine to get the private link scope validation details for."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.hybridcompute#NetworkConfigurationPropertiesInput"
         }
       },
       "traits": {
@@ -11032,16 +12827,57 @@
             "smithy.api#documentation": "The name of the private endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.hybridcompute#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.hybridcompute#PrivateEndpointProperty",
+          "traits": {
+            "smithy.api#documentation": "Private endpoint which the connection belongs to."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.hybridcompute#PrivateLinkServiceConnectionStatePropertyInput",
+          "traits": {
+            "smithy.api#documentation": "Connection state of the private endpoint connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a private endpoint connection."
+      }
+    },
+    "com.azure.hybridcompute#PrivateLinkServiceConnectionStatePropertyInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection status.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection description.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "State of the private endpoint connection."
       }
     },
     "com.azure.hybridcompute#PrivateEndpointConnectionsGet": {
@@ -11741,16 +13577,27 @@
             "smithy.api#documentation": "The name of the Azure Arc PrivateLinkScope resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.hybridcompute#PrivateLinkScopesUpdateTagsRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#PrivateLinkScopesUpdateTagsRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.hybridcompute#PrivateLinkScopesCreateOrUpdate": {
@@ -11970,16 +13817,54 @@
             "smithy.api#documentation": "The name of the Azure Arc PrivateLinkScope resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource location",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.hybridcompute#PrivateLinkScopesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.hybridcompute#HybridComputePrivateLinkScopePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties that define a Azure Arc PrivateLinkScope resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.hybridcompute#HybridComputePrivateLinkScopePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.hybridcompute#PublicNetworkAccessType",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties that define a Azure Arc PrivateLinkScope resource."
+      }
+    },
+    "com.azure.hybridcompute#PrivateLinkScopesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.hybridcompute#PrivateLinkScopesGet": {

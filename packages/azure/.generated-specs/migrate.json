@@ -434,16 +434,35 @@
             "smithy.api#documentation": "Web app collector ARM name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#WebAppCollectorPropertiesBaseWithAgentInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#WebAppCollectorPropertiesBaseWithAgentInput": {
+      "type": "structure",
+      "members": {
+        "agentProperties": {
+          "target": "com.azure.migrate#CollectorAgentPropertiesBase",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the collector agent properties."
+          }
+        },
+        "discoverySiteId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the discovery site id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Collector properties class."
       }
     },
     "com.azure.migrate#WebAppCollectorOperationsGet": {
@@ -2091,16 +2110,41 @@
             "smithy.api#documentation": "VMware collector ARM name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#CollectorPropertiesBaseWithAgentInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#CollectorPropertiesBaseWithAgentInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        },
+        "agentProperties": {
+          "target": "com.azure.migrate#CollectorAgentPropertiesBase",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the collector agent properties."
+          }
+        },
+        "discoverySiteId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the discovery site id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Collector properties class."
       }
     },
     "com.azure.migrate#VmwareCollectorsOperationsGet": {
@@ -2470,11 +2514,10 @@
             "smithy.api#documentation": "Sql collector ARM name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#CollectorPropertiesBaseWithAgentInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -3842,11 +3885,10 @@
             "smithy.api#documentation": "Physical server collector ARM name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#CollectorPropertiesBaseWithAgentInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -4996,16 +5038,43 @@
             "smithy.api#documentation": "Private endpoint connection ARM name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#PrivateEndpointConnectionOperationsUpdateRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the private endpoint connection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#PrivateEndpointConnectionOperationsUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.migrate#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint resource."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.migrate#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the private endpoint connection."
+      }
+    },
+    "com.azure.migrate#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint resource."
       }
     },
     "com.azure.migrate#PrivateEndpointConnectionOperationsGet": {
@@ -6238,16 +6307,35 @@
             "smithy.api#documentation": "Import collector ARM name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#CollectorPropertiesBaseInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#CollectorPropertiesBaseInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        },
+        "discoverySiteId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets the discovery site id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Collector properties class."
       }
     },
     "com.azure.migrate#ImportCollectorsOperationsGet": {
@@ -6617,11 +6705,10 @@
             "smithy.api#documentation": "Hyper-V collector ARM name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#CollectorPropertiesBaseWithAgentInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -7884,13 +7971,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Web app Assessment arm name."
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -9105,16 +9185,149 @@
             "smithy.api#documentation": "Web app Assessment arm name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#WebAppAssessmentV2PropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#WebAppAssessmentV2PropertiesInput": {
+      "type": "structure",
+      "members": {
+        "environmentType": {
+          "target": "com.azure.migrate#EnvironmentType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user configurable setting to display the environment type."
+          }
+        },
+        "entityUptime": {
+          "target": "com.azure.migrate#EntityUptime",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the duration for which the entity (Web app, VMs) are up in the\non-premises environment."
+          }
+        },
+        "eaSubscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Enterprise agreement subscription id."
+          }
+        },
+        "appSvcNativeSettings": {
+          "target": "com.azure.migrate#AppSvcNativeSettings",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user configurable app service native settings."
+          }
+        },
+        "appSvcContainerSettings": {
+          "target": "com.azure.migrate#AppSvcContainerSettings",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user configurable app service container database settings."
+          }
+        },
+        "discoveredEntityLightSummary": {
+          "target": "com.azure.migrate#DiscoveredEntityLightSummary",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user configurable discovered entity settings."
+          }
+        },
+        "azureSecurityOfferingType": {
+          "target": "com.azure.migrate#AzureSecurityOfferingType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating azure security offering type."
+          }
+        },
+        "reservedInstance": {
+          "target": "com.azure.migrate#AzureReservedInstance",
+          "traits": {
+            "smithy.api#documentation": "Reserved instance."
+          }
+        },
+        "groupType": {
+          "target": "com.azure.migrate#GroupType",
+          "traits": {
+            "smithy.api#documentation": "Gets the group type for the assessment."
+          }
+        },
+        "assessmentType": {
+          "target": "com.azure.migrate#AssessmentType",
+          "traits": {
+            "smithy.api#documentation": "Assessment type of the assessment."
+          }
+        },
+        "azureLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Location or Azure region where to which the machines will be migrated."
+          }
+        },
+        "azureOfferCode": {
+          "target": "com.azure.migrate#AzureOfferCode",
+          "traits": {
+            "smithy.api#documentation": "Azure Offer Code."
+          }
+        },
+        "currency": {
+          "target": "com.azure.migrate#AzureCurrency",
+          "traits": {
+            "smithy.api#documentation": "Currency in which prices should be reported."
+          }
+        },
+        "scalingFactor": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of buffer that user wants on performance metrics when recommending\nAzure sizes."
+          }
+        },
+        "percentile": {
+          "target": "com.azure.migrate#Percentile",
+          "traits": {
+            "smithy.api#documentation": "Percentile of the utilization data values to be considered while assessing\nmachines."
+          }
+        },
+        "timeRange": {
+          "target": "com.azure.migrate#TimeRange",
+          "traits": {
+            "smithy.api#documentation": "Time Range for which the historic utilization data should be considered for\nassessment."
+          }
+        },
+        "perfDataStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the start time to consider performance data for assessment."
+          }
+        },
+        "perfDataEndTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the end time to consider performance data for assessment."
+          }
+        },
+        "discountPercentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Custom discount percentage."
+          }
+        },
+        "sizingCriterion": {
+          "target": "com.azure.migrate#AssessmentSizingCriterion",
+          "traits": {
+            "smithy.api#documentation": "Assessment sizing criterion."
+          }
+        },
+        "confidenceRatingInPercentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Confidence Rating in Percentage."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Web app assessment properties class."
       }
     },
     "com.azure.migrate#WebAppAssessmentV2OperationsGet": {
@@ -9557,17 +9770,69 @@
             "smithy.api#documentation": "Group ARM name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "eTag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "For optimistic concurrency control."
+          }
+        },
+        "properties": {
+          "target": "com.azure.migrate#GroupBodyProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the group."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.migrate#GroupBodyProperties": {
+      "type": "structure",
+      "members": {
+        "operationType": {
+          "target": "com.azure.migrate#GroupUpdateOperation",
+          "traits": {
+            "smithy.api#documentation": "Whether to add or remove the machines."
+          }
+        },
+        "machines": {
+          "target": "com.azure.migrate#GroupBodyPropertiesMachinesList",
+          "traits": {
+            "smithy.api#documentation": "List of machine names that are part of this group."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Body properties of group update."
+      }
+    },
+    "com.azure.migrate#GroupBodyPropertiesMachinesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of machine names that are part of this group."
+      }
+    },
+    "com.azure.migrate#GroupUpdateOperation": {
+      "type": "enum",
+      "members": {
+        "ADD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Add"
+          }
+        },
+        "REMOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Remove"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.migrate#SqlAssessmentV2SummaryOperationsGet": {
       "type": "operation",
@@ -14664,13 +14929,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL Assessment arm name."
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -18068,16 +18326,215 @@
             "smithy.api#documentation": "SQL Assessment arm name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#SqlAssessmentV2PropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#SqlAssessmentV2PropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        },
+        "osLicense": {
+          "target": "com.azure.migrate#OsLicense",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user configurable setting to display the azure hybrid use benefit."
+          }
+        },
+        "environmentType": {
+          "target": "com.azure.migrate#EnvironmentType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user configurable setting to display the environment type."
+          }
+        },
+        "entityUptime": {
+          "target": "com.azure.migrate#EntityUptime",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the duration for which the entity (SQL, VMs) are up in the\non-premises environment."
+          }
+        },
+        "optimizationLogic": {
+          "target": "com.azure.migrate#OptimizationLogic",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets SQL optimization logic."
+          }
+        },
+        "reservedInstanceForVm": {
+          "target": "com.azure.migrate#AzureReservedInstance",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets azure reserved instance for VM."
+          }
+        },
+        "azureOfferCodeForVm": {
+          "target": "com.azure.migrate#AzureOfferCode",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets Azure Offer Code for VM."
+          }
+        },
+        "eaSubscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Enterprise agreement subscription id."
+          }
+        },
+        "azureSqlManagedInstanceSettings": {
+          "target": "com.azure.migrate#SqlMiSettings",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user configurable SQL managed instance settings."
+          }
+        },
+        "azureSqlDatabaseSettings": {
+          "target": "com.azure.migrate#SqlDbSettings",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user configurable SQL database settings."
+          }
+        },
+        "azureSqlVmSettings": {
+          "target": "com.azure.migrate#SqlVmSettings",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user configurable SQL VM settings."
+          }
+        },
+        "multiSubnetIntent": {
+          "target": "com.azure.migrate#MultiSubnetIntent",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user preference indicating intent of multi-subnet configuration."
+          }
+        },
+        "asyncCommitModeIntent": {
+          "target": "com.azure.migrate#AsyncCommitModeIntent",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets user preference indicating intent of async commit mode."
+          }
+        },
+        "isInternetAccessAvailable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether internet access is available."
+          }
+        },
+        "disasterRecoveryLocation": {
+          "target": "com.azure.migrate#AzureLocation",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Azure Location or Azure region where to which the machines\nwill be migrated."
+          }
+        },
+        "enableHadrAssessment": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether HADR assessments needs to be created."
+          }
+        },
+        "azureSecurityOfferingType": {
+          "target": "com.azure.migrate#AzureSecurityOfferingType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating azure security offering type."
+          }
+        },
+        "reservedInstance": {
+          "target": "com.azure.migrate#AzureReservedInstance",
+          "traits": {
+            "smithy.api#documentation": "Reserved instance."
+          }
+        },
+        "sqlServerLicense": {
+          "target": "com.azure.migrate#SqlServerLicense",
+          "traits": {
+            "smithy.api#documentation": "SQL server license."
+          }
+        },
+        "groupType": {
+          "target": "com.azure.migrate#GroupType",
+          "traits": {
+            "smithy.api#documentation": "Gets the group type for the assessment."
+          }
+        },
+        "assessmentType": {
+          "target": "com.azure.migrate#AssessmentType",
+          "traits": {
+            "smithy.api#documentation": "Assessment type of the assessment."
+          }
+        },
+        "azureLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Location or Azure region where to which the machines will be migrated."
+          }
+        },
+        "azureOfferCode": {
+          "target": "com.azure.migrate#AzureOfferCode",
+          "traits": {
+            "smithy.api#documentation": "Azure Offer Code."
+          }
+        },
+        "currency": {
+          "target": "com.azure.migrate#AzureCurrency",
+          "traits": {
+            "smithy.api#documentation": "Currency in which prices should be reported."
+          }
+        },
+        "scalingFactor": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of buffer that user wants on performance metrics when recommending\nAzure sizes."
+          }
+        },
+        "percentile": {
+          "target": "com.azure.migrate#Percentile",
+          "traits": {
+            "smithy.api#documentation": "Percentile of the utilization data values to be considered while assessing\nmachines."
+          }
+        },
+        "timeRange": {
+          "target": "com.azure.migrate#TimeRange",
+          "traits": {
+            "smithy.api#documentation": "Time Range for which the historic utilization data should be considered for\nassessment."
+          }
+        },
+        "perfDataStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the start time to consider performance data for assessment."
+          }
+        },
+        "perfDataEndTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the end time to consider performance data for assessment."
+          }
+        },
+        "discountPercentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Custom discount percentage."
+          }
+        },
+        "sizingCriterion": {
+          "target": "com.azure.migrate#AssessmentSizingCriterion",
+          "traits": {
+            "smithy.api#documentation": "Assessment sizing criterion."
+          }
+        },
+        "confidenceRatingInPercentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Confidence Rating in Percentage."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL assessment properties class."
       }
     },
     "com.azure.migrate#SqlAssessmentV2OperationsGet": {
@@ -18372,13 +18829,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "AVS Assessment ARM name"
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
           }
         }
       },
@@ -19940,16 +20390,194 @@
             "smithy.api#documentation": "AVS Assessment ARM name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#AvsAssessmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#AvsAssessmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        },
+        "failuresToTolerateAndRaidLevel": {
+          "target": "com.azure.migrate#FttAndRaidLevel",
+          "traits": {
+            "smithy.api#documentation": "Failures to tolerate and RAID level in a common property."
+          }
+        },
+        "failuresToTolerateAndRaidLevelList": {
+          "target": "com.azure.migrate#AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList",
+          "traits": {
+            "smithy.api#documentation": "List of Failures to tolerate and RAID levels in a common property."
+          }
+        },
+        "vcpuOversubscription": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "VCPU over subscription."
+          }
+        },
+        "nodeType": {
+          "target": "com.azure.migrate#AzureAvsNodeType",
+          "traits": {
+            "smithy.api#documentation": "AVS node type."
+          }
+        },
+        "nodeTypes": {
+          "target": "com.azure.migrate#AvsAssessmentPropertiesInputNodeTypesList",
+          "traits": {
+            "smithy.api#documentation": "AVS node types."
+          }
+        },
+        "externalStorageTypes": {
+          "target": "com.azure.migrate#AvsAssessmentPropertiesInputExternalStorageTypesList",
+          "traits": {
+            "smithy.api#documentation": "List of AVS external storage types."
+          }
+        },
+        "avsAssessmentScenario": {
+          "target": "com.azure.migrate#AvsAssessmentScenario",
+          "traits": {
+            "smithy.api#documentation": "AVS Assessment Scenario."
+          }
+        },
+        "isVcfByolEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is VCF license applied"
+          }
+        },
+        "reservedInstance": {
+          "target": "com.azure.migrate#AzureReservedInstance",
+          "traits": {
+            "smithy.api#documentation": "Reserved instance."
+          }
+        },
+        "cpuHeadroom": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of CPU capacity reserved for processing additional workloads."
+          }
+        },
+        "memOvercommit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Memory overcommit."
+          }
+        },
+        "dedupeCompression": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "De-duplication compression."
+          }
+        },
+        "isStretchClusterEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Is Stretch Cluster Enabled."
+          }
+        },
+        "azureLocation": {
+          "target": "com.azure.migrate#AzureLocation",
+          "traits": {
+            "smithy.api#documentation": "Azure Location or Azure region where to which the machines will be migrated."
+          }
+        },
+        "azureOfferCode": {
+          "target": "com.azure.migrate#AzureOfferCode",
+          "traits": {
+            "smithy.api#documentation": "Azure Offer code according to which cost estimation is done."
+          }
+        },
+        "currency": {
+          "target": "com.azure.migrate#AzureCurrency",
+          "traits": {
+            "smithy.api#documentation": "Currency in which prices should be reported."
+          }
+        },
+        "scalingFactor": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of buffer that user wants on performance metrics when recommending\nAzure sizes."
+          }
+        },
+        "percentile": {
+          "target": "com.azure.migrate#Percentile",
+          "traits": {
+            "smithy.api#documentation": "Percentile of the utilization data values to be considered while assessing\nmachines."
+          }
+        },
+        "timeRange": {
+          "target": "com.azure.migrate#TimeRange",
+          "traits": {
+            "smithy.api#documentation": "Time Range for which the historic utilization data should be considered for\nassessment."
+          }
+        },
+        "perfDataStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the start time to consider performance data for assessment."
+          }
+        },
+        "perfDataEndTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the end time to consider performance data for assessment."
+          }
+        },
+        "discountPercentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Custom discount percentage."
+          }
+        },
+        "sizingCriterion": {
+          "target": "com.azure.migrate#AssessmentSizingCriterion",
+          "traits": {
+            "smithy.api#documentation": "Assessment sizing criterion."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the AVS assessment."
+      }
+    },
+    "com.azure.migrate#AvsAssessmentPropertiesInputExternalStorageTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#ExternalStorageType"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of AVS external storage types."
+      }
+    },
+    "com.azure.migrate#AvsAssessmentPropertiesInputNodeTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#AzureAvsNodeType"
+      },
+      "traits": {
+        "smithy.api#documentation": "AVS node types."
+      }
+    },
+    "com.azure.migrate#AvsAssessmentPropertiesInputFailuresToTolerateAndRaidLevelListList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#FttAndRaidLevel"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Failures to tolerate and RAID levels in a common property."
       }
     },
     "com.azure.migrate#AvsAssessmentsOperationsGet": {
@@ -20244,13 +20872,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Machine Assessment ARM name"
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
           }
         }
       },
@@ -21593,16 +22214,161 @@
             "smithy.api#documentation": "Machine Assessment ARM name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#MachineAssessmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#MachineAssessmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        },
+        "eaSubscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets enterprise agreement subscription id."
+          }
+        },
+        "azurePricingTier": {
+          "target": "com.azure.migrate#AzurePricingTier",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets Azure Pricing Tier - Free, Basic, etc."
+          }
+        },
+        "azureStorageRedundancy": {
+          "target": "com.azure.migrate#AzureStorageRedundancy",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage."
+          }
+        },
+        "reservedInstance": {
+          "target": "com.azure.migrate#AzureReservedInstance",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Azure Reserved Instance - 1-Year, 3-Year."
+          }
+        },
+        "azureHybridUseBenefit": {
+          "target": "com.azure.migrate#AzureHybridUseBenefit",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the user configurable setting to display the azure hybrid use\nbenefit."
+          }
+        },
+        "linuxAzureHybridUseBenefit": {
+          "target": "com.azure.migrate#AzureHybridUseBenefit",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the user configurable setting to display the linux azure hybrid use\nbenefit."
+          }
+        },
+        "azureDiskTypes": {
+          "target": "com.azure.migrate#MachineAssessmentPropertiesInputAzureDiskTypesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the azure storage type. Premium, Standard etc."
+          }
+        },
+        "azureVmFamilies": {
+          "target": "com.azure.migrate#MachineAssessmentPropertiesInputAzureVmFamiliesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Azure VM families."
+          }
+        },
+        "vmUptime": {
+          "target": "com.azure.migrate#VmUptime",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the duration for which the VMs are up in the on-premises\nenvironment."
+          }
+        },
+        "azureLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Location or Azure region where to which the machines will be migrated."
+          }
+        },
+        "azureOfferCode": {
+          "target": "com.azure.migrate#AzureOfferCode",
+          "traits": {
+            "smithy.api#documentation": "Azure Offer Code."
+          }
+        },
+        "currency": {
+          "target": "com.azure.migrate#AzureCurrency",
+          "traits": {
+            "smithy.api#documentation": "Currency in which prices should be reported."
+          }
+        },
+        "scalingFactor": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of buffer that user wants on performance metrics when recommending\nAzure sizes."
+          }
+        },
+        "percentile": {
+          "target": "com.azure.migrate#Percentile",
+          "traits": {
+            "smithy.api#documentation": "Percentile of the utilization data values to be considered while assessing\nmachines."
+          }
+        },
+        "timeRange": {
+          "target": "com.azure.migrate#TimeRange",
+          "traits": {
+            "smithy.api#documentation": "Time Range for which the historic utilization data should be considered for\nassessment."
+          }
+        },
+        "perfDataStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the start time to consider performance data for assessment."
+          }
+        },
+        "perfDataEndTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the end time to consider performance data for assessment."
+          }
+        },
+        "discountPercentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Custom discount percentage."
+          }
+        },
+        "sizingCriterion": {
+          "target": "com.azure.migrate#AssessmentSizingCriterion",
+          "traits": {
+            "smithy.api#documentation": "Assessment sizing criterion."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an assessment."
+      }
+    },
+    "com.azure.migrate#MachineAssessmentPropertiesInputAzureVmFamiliesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#AzureVmFamily"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Azure VM families."
+      }
+    },
+    "com.azure.migrate#MachineAssessmentPropertiesInputAzureDiskTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#AzureDiskType"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the azure storage type. Premium, Standard etc."
       }
     },
     "com.azure.migrate#AssessmentsOperationsGet": {
@@ -21988,16 +22754,50 @@
             "smithy.api#documentation": "Group ARM name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#GroupPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#GroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        },
+        "supportedAssessmentTypes": {
+          "target": "com.azure.migrate#GroupPropertiesInputSupportedAssessmentTypesList",
+          "traits": {
+            "smithy.api#documentation": "List of assessment types supported on this group."
+          }
+        },
+        "groupType": {
+          "target": "com.azure.migrate#GroupType",
+          "traits": {
+            "smithy.api#documentation": "The type of group."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of group resource."
+      }
+    },
+    "com.azure.migrate#GroupPropertiesInputSupportedAssessmentTypesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#AssessmentType"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of assessment types supported on this group."
       }
     },
     "com.azure.migrate#GroupsOperationsGet": {
@@ -23498,13 +24298,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "AKS Assessment Name."
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
           }
         }
       },
@@ -25369,16 +26162,36 @@
             "smithy.api#documentation": "AKS Assessment Name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#AKSAssessmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#AKSAssessmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "scope": {
+          "target": "com.azure.migrate#AssessmentScopeParameters",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets scope parameters to identify inventory items for assessment."
+          }
+        },
+        "settings": {
+          "target": "com.azure.migrate#AKSAssessmentSettings",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets AKS Assessment Settings.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ARM model of AKS Assessment Properties."
       }
     },
     "com.azure.migrate#AksAssessmentOperationsGet": {
@@ -26174,16 +26987,80 @@
             "smithy.api#documentation": "Assessment Project Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#AssessmentProjectsOperationsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "properties": {
+          "target": "com.azure.migrate#AssessmentProjectUpdateProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#AssessmentProjectUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "assessmentSolutionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects."
+          }
+        },
+        "projectStatus": {
+          "target": "com.azure.migrate#ProjectStatus",
+          "traits": {
+            "smithy.api#documentation": "Assessment project status."
+          }
+        },
+        "customerWorkspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM id of service map workspace created by customer."
+          }
+        },
+        "customerWorkspaceLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of service map workspace created by customer."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This value can be set to 'enabled' to avoid breaking changes on existing\ncustomer resources and templates. If set to 'disabled', traffic over public\ninterface is not allowed, and private endpoint connections would be the\nexclusive access method."
+          }
+        },
+        "customerStorageAccountArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM id of the storage account used for interactions when public access is\ndisabled."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the AssessmentProject."
+      }
+    },
+    "com.azure.migrate#AssessmentProjectsOperationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#AssessmentProjectsOperationsCreate": {
@@ -26295,16 +27172,90 @@
             "smithy.api#documentation": "Assessment Project Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#AssessmentProjectsOperationsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.migrate#ProjectPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#ProjectPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        },
+        "assessmentSolutionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects."
+          }
+        },
+        "projectStatus": {
+          "target": "com.azure.migrate#ProjectStatus",
+          "traits": {
+            "smithy.api#documentation": "Assessment project status."
+          }
+        },
+        "customerWorkspaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM id of service map workspace created by customer."
+          }
+        },
+        "customerWorkspaceLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Location of service map workspace created by customer."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This value can be set to 'enabled' to avoid breaking changes on existing\ncustomer resources and templates. If set to 'disabled', traffic over public\ninterface is not allowed, and private endpoint connections would be the\nexclusive access method."
+          }
+        },
+        "customerStorageAccountArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM id of the storage account used for interactions when public access is\ndisabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a project."
+      }
+    },
+    "com.azure.migrate#AssessmentProjectsOperationsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#AssessmentProjectsOperationsGet": {
@@ -27433,16 +28384,22 @@
             "smithy.api#documentation": "Private link proxy name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "eTag": {
+          "target": "smithy.api#String"
+        },
+        "properties": {
+          "target": "com.azure.migrate#PrivateEndpointConnectionProxyPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#PrivateEndpointConnectionProxyPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Properties of a private endpoint connection proxy."
       }
     },
     "com.azure.migrate#PrivateEndpointConnectionProxyControllerDelete": {
@@ -27573,12 +28530,11 @@
             "smithy.api#documentation": "Private endpoint proxy name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "eTag": {
+          "target": "smithy.api#String"
+        },
+        "properties": {
+          "target": "com.azure.migrate#PrivateEndpointConnectionProxyPropertiesInput"
         }
       },
       "traits": {
@@ -28353,16 +29309,29 @@
             "smithy.api#documentation": "Private endpoint connection name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets the properties of the object."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.migrate#PrivateLinkServiceConnectionState_2",
+          "traits": {
+            "smithy.api#documentation": "Gets the properties of the object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a private endpoint connection."
       }
     },
     "com.azure.migrate#PrivateEndpointConnectionControllerGetPrivateEndpointConnection": {
@@ -28561,17 +29530,184 @@
             "smithy.api#documentation": "Name of the Azure Migrate project."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "tool": {
+          "target": "com.azure.migrate#MigrateProjectsControllerGetToolRegistrationDetailsRequestTool"
+        },
+        "applicationDetails": {
+          "target": "com.azure.migrate#AadAppDetails"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.migrate#AadAppDetails": {
+      "type": "structure",
+      "members": {
+        "tenantId": {
+          "target": "smithy.api#String"
+        },
+        "applicationId": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.migrate#MigrateProjectsControllerGetToolRegistrationDetailsRequestTool": {
+      "type": "enum",
+      "members": {
+        "SERVERDISCOVERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerDiscovery"
+          }
+        },
+        "SERVERASSESSMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerAssessment"
+          }
+        },
+        "SERVERMIGRATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerMigration"
+          }
+        },
+        "CLOUDAMIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cloudamize"
+          }
+        },
+        "TURBONOMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Turbonomic"
+          }
+        },
+        "ZERTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Zerto"
+          }
+        },
+        "CORENTTECH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CorentTech"
+          }
+        },
+        "SERVERASSESSMENTV1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerAssessmentV1"
+          }
+        },
+        "SERVERMIGRATION_REPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerMigration_Replication"
+          }
+        },
+        "CARBONITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Carbonite"
+          }
+        },
+        "DATAMIGRATIONASSISTANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataMigrationAssistant"
+          }
+        },
+        "DATABASEMIGRATIONSERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DatabaseMigrationService"
+          }
+        },
+        "DEVICE42": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Device42"
+          }
+        },
+        "JETSTREAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JetStream"
+          }
+        },
+        "RACKWARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RackWare"
+          }
+        },
+        "UNIFYCLOUD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UnifyCloud"
+          }
+        },
+        "FLEXERA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Flexera"
+          }
+        },
+        "SERVERDISCOVERY_IMPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerDiscovery_Import"
+          }
+        },
+        "LAKESIDE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lakeside"
+          }
+        },
+        "APPSERVICEMIGRATIONASSISTANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AppServiceMigrationAssistant"
+          }
+        },
+        "MOVERE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Movere"
+          }
+        },
+        "CLOUDSPHERE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudSphere"
+          }
+        },
+        "MODERNIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Modernization"
+          }
+        },
+        "SERVERMIGRATION_DATAREPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerMigration_DataReplication"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.migrate#MigrateProjectsControllerDeleteMigrateProject": {
       "type": "operation",
@@ -29201,16 +30337,76 @@
             "smithy.api#documentation": "Name of the Azure Migrate project."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#MigrateProjectPropertiesInput"
+        },
+        "eTag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "For optimistic concurrency control."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure location in which project is created."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#MigrateProjectPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "serviceEndpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Service endpoint."
+          }
+        },
+        "utilityStorageAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Utility storage account id."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.migrate#MigrateProjectPropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the state of public network access."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a migrate project."
+      }
+    },
+    "com.azure.migrate#MigrateProjectPropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "NOTSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSpecified"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the state of public network access."
       }
     },
     "com.azure.migrate#MigrateProjectsControllerPutMigrateProject": {
@@ -29259,11 +30455,19 @@
             "smithy.api#documentation": "Name of the Azure Migrate project."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#MigrateProjectPropertiesInput"
+        },
+        "eTag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "For optimistic concurrency control."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure location in which project is created."
           }
         }
       },
@@ -31209,16 +32413,358 @@
             "smithy.api#documentation": "Unique name of a migration solution within a migrate project."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the ETAG for optimistic concurrency control."
+          }
+        },
+        "properties": {
+          "target": "com.azure.migrate#SolutionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the properties of the solution."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#SolutionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "tool": {
+          "target": "com.azure.migrate#SolutionPropertiesInputTool",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tool being used in the solution."
+          }
+        },
+        "purpose": {
+          "target": "com.azure.migrate#SolutionPropertiesInputPurpose",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the purpose of the solution."
+          }
+        },
+        "goal": {
+          "target": "com.azure.migrate#SolutionPropertiesInputGoal",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the goal of the solution."
+          }
+        },
+        "status": {
+          "target": "com.azure.migrate#SolutionPropertiesInputStatus",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the current status of the solution."
+          }
+        },
+        "cleanupState": {
+          "target": "com.azure.migrate#SolutionPropertiesInputCleanupState",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the cleanup state of the solution."
+          }
+        },
+        "summary": {
+          "target": "com.azure.migrate#SolutionSummaryInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the summary of the solution."
+          }
+        },
+        "details": {
+          "target": "com.azure.migrate#SolutionDetails",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the details of the solution."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class for solution properties."
+      }
+    },
+    "com.azure.migrate#SolutionSummaryInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The solution summary class."
+      }
+    },
+    "com.azure.migrate#SolutionPropertiesInputCleanupState": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "STARTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Started"
+          }
+        },
+        "INPROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "InProgress"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Completed"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the cleanup state of the solution."
+      }
+    },
+    "com.azure.migrate#SolutionPropertiesInputStatus": {
+      "type": "enum",
+      "members": {
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inactive"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the current status of the solution."
+      }
+    },
+    "com.azure.migrate#SolutionPropertiesInputGoal": {
+      "type": "enum",
+      "members": {
+        "SERVERS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Servers"
+          }
+        },
+        "DATABASES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Databases"
+          }
+        },
+        "DESKTOPVIRTUALIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DesktopVirtualization"
+          }
+        },
+        "WEBAPPLICATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WebApplications"
+          }
+        },
+        "DATACENTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataCenter"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the goal of the solution."
+      }
+    },
+    "com.azure.migrate#SolutionPropertiesInputPurpose": {
+      "type": "enum",
+      "members": {
+        "DISCOVERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Discovery"
+          }
+        },
+        "ASSESSMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Assessment"
+          }
+        },
+        "MIGRATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Migration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the purpose of the solution."
+      }
+    },
+    "com.azure.migrate#SolutionPropertiesInputTool": {
+      "type": "enum",
+      "members": {
+        "SERVERDISCOVERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerDiscovery"
+          }
+        },
+        "SERVERASSESSMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerAssessment"
+          }
+        },
+        "SERVERMIGRATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerMigration"
+          }
+        },
+        "CLOUDAMIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cloudamize"
+          }
+        },
+        "TURBONOMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Turbonomic"
+          }
+        },
+        "ZERTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Zerto"
+          }
+        },
+        "CORENTTECH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CorentTech"
+          }
+        },
+        "SERVERASSESSMENTV1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerAssessmentV1"
+          }
+        },
+        "SERVERMIGRATION_REPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerMigration_Replication"
+          }
+        },
+        "CARBONITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Carbonite"
+          }
+        },
+        "DATAMIGRATIONASSISTANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataMigrationAssistant"
+          }
+        },
+        "DATABASEMIGRATIONSERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DatabaseMigrationService"
+          }
+        },
+        "DEVICE42": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Device42"
+          }
+        },
+        "JETSTREAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JetStream"
+          }
+        },
+        "RACKWARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RackWare"
+          }
+        },
+        "UNIFYCLOUD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UnifyCloud"
+          }
+        },
+        "FLEXERA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Flexera"
+          }
+        },
+        "SERVERDISCOVERY_IMPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerDiscovery_Import"
+          }
+        },
+        "LAKESIDE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lakeside"
+          }
+        },
+        "APPSERVICEMIGRATIONASSISTANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AppServiceMigrationAssistant"
+          }
+        },
+        "MOVERE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Movere"
+          }
+        },
+        "CLOUDSPHERE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudSphere"
+          }
+        },
+        "MODERNIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Modernization"
+          }
+        },
+        "SERVERMIGRATION_DATAREPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerMigration_DataReplication"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tool being used in the solution."
       }
     },
     "com.azure.migrate#SolutionsControllerCreate": {
@@ -31275,11 +32821,16 @@
             "smithy.api#documentation": "Unique name of a migration solution within a migrate project."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "etag": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the ETAG for optimistic concurrency control."
+          }
+        },
+        "properties": {
+          "target": "com.azure.migrate#SolutionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the properties of the solution."
           }
         }
       },
@@ -31406,16 +32957,35 @@
             "smithy.api#documentation": "Name of the Azure Migrate project."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "goal": {
+          "target": "com.azure.migrate#MigrateProjectsControllerRefreshSummaryRequestGoal",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the goal for which summary needs to be refreshed."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#MigrateProjectsControllerRefreshSummaryRequestGoal": {
+      "type": "enum",
+      "members": {
+        "SERVERS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Servers"
+          }
+        },
+        "DATABASES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Databases"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the goal for which summary needs to be refreshed."
       }
     },
     "com.azure.migrate#MigrateProjectsControllerRegisterTool": {
@@ -31478,16 +33048,173 @@
             "smithy.api#documentation": "Name of the Azure Migrate project."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tool": {
+          "target": "com.azure.migrate#MigrateProjectsControllerRegisterToolRequestTool",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the tool to be registered."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#MigrateProjectsControllerRegisterToolRequestTool": {
+      "type": "enum",
+      "members": {
+        "SERVERDISCOVERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerDiscovery"
+          }
+        },
+        "SERVERASSESSMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerAssessment"
+          }
+        },
+        "SERVERMIGRATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerMigration"
+          }
+        },
+        "CLOUDAMIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cloudamize"
+          }
+        },
+        "TURBONOMIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Turbonomic"
+          }
+        },
+        "ZERTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Zerto"
+          }
+        },
+        "CORENTTECH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CorentTech"
+          }
+        },
+        "SERVERASSESSMENTV1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerAssessmentV1"
+          }
+        },
+        "SERVERMIGRATION_REPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerMigration_Replication"
+          }
+        },
+        "CARBONITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Carbonite"
+          }
+        },
+        "DATAMIGRATIONASSISTANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataMigrationAssistant"
+          }
+        },
+        "DATABASEMIGRATIONSERVICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DatabaseMigrationService"
+          }
+        },
+        "DEVICE42": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Device42"
+          }
+        },
+        "JETSTREAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JetStream"
+          }
+        },
+        "RACKWARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RackWare"
+          }
+        },
+        "UNIFYCLOUD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UnifyCloud"
+          }
+        },
+        "FLEXERA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Flexera"
+          }
+        },
+        "SERVERDISCOVERY_IMPORT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerDiscovery_Import"
+          }
+        },
+        "LAKESIDE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lakeside"
+          }
+        },
+        "APPSERVICEMIGRATIONASSISTANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AppServiceMigrationAssistant"
+          }
+        },
+        "MOVERE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Movere"
+          }
+        },
+        "CLOUDSPHERE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CloudSphere"
+          }
+        },
+        "MODERNIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Modernization"
+          }
+        },
+        "SERVERMIGRATION_DATAREPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServerMigration_DataReplication"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tool to be registered."
       }
     },
     "com.azure.migrate#MachinesControllerGetMachine": {
@@ -33576,16 +35303,53 @@
             "smithy.api#documentation": " VCenters name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#VcenterPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#VcenterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the run as account ID of the vCenter."
+          }
+        },
+        "fqdn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the FQDN/IPAddress of the vCenter."
+          }
+        },
+        "port": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the port of the vCenter."
+          }
+        },
+        "friendlyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the friendly name of the vCenter."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState_2",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of VMwareSiteResource"
       }
     },
     "com.azure.migrate#VcenterControllerGet": {
@@ -33872,16 +35636,56 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machines": {
+          "target": "com.azure.migrate#VmwarePropertiesControllerUpdateTagsRequestMachinesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the machine collection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#VmwarePropertiesControllerUpdateTagsRequestMachinesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#TagsMachineInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the machine collection."
+      }
+    },
+    "com.azure.migrate#TagsMachineInput": {
+      "type": "structure",
+      "members": {
+        "machineId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM id of the machine."
+          }
+        },
+        "tags": {
+          "target": "com.azure.migrate#TagsMachineInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "run as AccountId"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Machine class."
+      }
+    },
+    "com.azure.migrate#TagsMachineInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "run as AccountId"
       }
     },
     "com.azure.migrate#VmwarePropertiesControllerUpdateRunAsAccount": {
@@ -33945,16 +35749,44 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machines": {
+          "target": "com.azure.migrate#VmwarePropertiesControllerUpdateRunAsAccountRequestMachinesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the machine collection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#VmwarePropertiesControllerUpdateRunAsAccountRequestMachinesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#RunAsAccountMachineInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the machine collection."
+      }
+    },
+    "com.azure.migrate#RunAsAccountMachineInput": {
+      "type": "structure",
+      "members": {
+        "machineId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM id of the machine."
+          }
+        },
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "run as AccountId"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Machine class."
       }
     },
     "com.azure.migrate#VmwarePropertiesControllerUpdateProperties": {
@@ -34018,16 +35850,66 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.migrate#VmwarePropertiesControllerUpdatePropertiesRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The list of Machine MetaData.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#VmwarePropertiesControllerUpdatePropertiesRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#MachineMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Machine MetaData."
+      }
+    },
+    "com.azure.migrate#MachineMetadata": {
+      "type": "structure",
+      "members": {
+        "machineArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "arm id of the machine.",
+            "smithy.api#required": {}
+          }
+        },
+        "dependencyMapping": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "value representing state of dependency mapping (enabled/disabled).",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.migrate#MachineMetadataTagsMap",
+          "traits": {
+            "smithy.api#documentation": "machine tags",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of Machine MetaData"
+      }
+    },
+    "com.azure.migrate#MachineMetadataTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "machine tags"
       }
     },
     "com.azure.migrate#VmwarePropertiesControllerUpdateDependencyMapStatus": {
@@ -34091,16 +35973,44 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machines": {
+          "target": "com.azure.migrate#VmwarePropertiesControllerUpdateDependencyMapStatusRequestMachinesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the machine collection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#VmwarePropertiesControllerUpdateDependencyMapStatusRequestMachinesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#DependencyMapMachineInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the machine collection."
+      }
+    },
+    "com.azure.migrate#DependencyMapMachineInput": {
+      "type": "structure",
+      "members": {
+        "machineId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM id of the machine."
+          }
+        },
+        "isDependencyMapToBeEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether\n            dependency mapping is to\nbe enabled or not."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Machine class."
       }
     },
     "com.azure.migrate#SitesControllerSummary": {
@@ -34241,16 +36151,71 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "serverPort": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "port of server"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters": {
+      "type": "structure",
+      "members": {
+        "machineIds": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList",
+          "traits": {
+            "smithy.api#documentation": "array of machine ids"
+          }
+        },
+        "processIds": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFiltersProcessIdsList",
+          "traits": {
+            "smithy.api#documentation": "array of process Ids"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "DependencyMap Service Map extensions Dependency Map Request Filters"
+      }
+    },
+    "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFiltersProcessIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "array of process Ids"
+      }
+    },
+    "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFiltersMachineIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "array of machine ids"
       }
     },
     "com.azure.migrate#RunAsAccountsControllerGet": {
@@ -36957,16 +38922,86 @@
             "smithy.api#documentation": "Machine name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.migrate#MachineResourceUpdateProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#MachineResourceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "firmware": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the firmware."
+          }
+        },
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the run as account ID of the machine."
+          }
+        },
+        "productSupportStatus": {
+          "target": "com.azure.migrate#ProductSupportStatus_2",
+          "traits": {
+            "smithy.api#documentation": "product support status."
+          }
+        },
+        "numberOfProcessorCore": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Number of Processor Cores \n            allocated for the\nmachine."
+          }
+        },
+        "allocatedMemoryInMb": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the allocated Memory in MB."
+          }
+        },
+        "operatingSystemDetails": {
+          "target": "com.azure.migrate#OperatingSystem",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Operating System Details installed on the machine."
+          }
+        },
+        "biosSerialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Machine BIOS serial number."
+          }
+        },
+        "biosGuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the BIOS GUID."
+          }
+        },
+        "tags": {
+          "target": "com.azure.migrate#MachineResourceUpdatePropertiesTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets tags on the VMware machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the MachineResource."
+      }
+    },
+    "com.azure.migrate#MachineResourceUpdatePropertiesTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets tags on the VMware machine."
       }
     },
     "com.azure.migrate#MachinesControllerGet": {
@@ -38212,11 +40247,28 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machineId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "id of machine"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
@@ -38285,11 +40337,22 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
@@ -38358,11 +40421,10 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "filter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "filter options."
           }
         }
       },
@@ -38431,16 +40493,61 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#RequestExportMachineErrorsProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#RequestExportMachineErrorsProperties": {
+      "type": "structure",
+      "members": {
+        "discoveryScope": {
+          "target": "com.azure.migrate#ExportMachineErrorsProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the discovery scope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Properties class for export machine errors request body."
+      }
+    },
+    "com.azure.migrate#ExportMachineErrorsProperties": {
+      "type": "enum",
+      "members": {
+        "APPSANDROLES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AppsAndRoles"
+          }
+        },
+        "DEPENDENCYMAP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DependencyMap"
+          }
+        },
+        "STATICDATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StaticData"
+          }
+        },
+        "SQLSERVERCONNECTIONINFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SQLServerConnectionInfo"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Export Machine Errors Properties"
       }
     },
     "com.azure.migrate#DependencyMapControllerExportDependencies": {
@@ -38504,11 +40611,16 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
           }
         }
       },
@@ -38576,13 +40688,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Site name"
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -38633,13 +40738,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Site name"
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
           }
         }
       },
@@ -38781,13 +40879,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Site name"
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -38855,11 +40946,40 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machineId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "id of machine"
+          }
+        },
+        "processGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "process group name "
+          }
+        },
+        "processName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "name of process"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
@@ -39165,16 +41285,88 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#SitesControllerUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "properties": {
+          "target": "com.azure.migrate#VmwareSiteUpdatePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#VmwareSiteUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "servicePrincipalIdentityDetails": {
+          "target": "com.azure.migrate#SiteSpnProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the service principal identity details used by agent for\ncommunication\n            to the service."
+          }
+        },
+        "agentDetails": {
+          "target": "com.azure.migrate#SiteAgentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the on-premises agent details."
+          }
+        },
+        "applianceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Appliance Name."
+          }
+        },
+        "discoverySolutionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM ID of migration hub solution for SDS."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState_2",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the VmwareSite."
+      }
+    },
+    "com.azure.migrate#SiteAgentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "keyVaultUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the key vault URI."
+          }
+        },
+        "keyVaultId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the key vault ARM Id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class for site agent properties."
+      }
+    },
+    "com.azure.migrate#SitesControllerUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#SitesControllerCreate": {
@@ -39292,16 +41484,72 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#SitesControllerCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.migrate#SitesPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#SitesPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "servicePrincipalIdentityDetails": {
+          "target": "com.azure.migrate#SiteSpnProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the service principal identity details used by agent for\ncommunication\n            to the service."
+          }
+        },
+        "agentDetails": {
+          "target": "com.azure.migrate#SiteAgentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the on-premises agent details."
+          }
+        },
+        "applianceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Appliance Name."
+          }
+        },
+        "discoverySolutionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM ID of migration hub solution for SDS."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of SiteResource"
+      }
+    },
+    "com.azure.migrate#SitesControllerCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#SitesControllerGet": {
@@ -39627,16 +41875,25 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.migrate#ServerSitesControllerUpdatePropertiesRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The list of Machine MetaData.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#ServerSitesControllerUpdatePropertiesRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#MachineMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Machine MetaData."
       }
     },
     "com.azure.migrate#ServerSitesControllerUpdateDependencyMapStatus": {
@@ -39700,16 +41957,24 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machines": {
+          "target": "com.azure.migrate#ServerSitesControllerUpdateDependencyMapStatusRequestMachinesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the machine collection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#ServerSitesControllerUpdateDependencyMapStatusRequestMachinesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#DependencyMapMachineInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the machine collection."
       }
     },
     "com.azure.migrate#ServerSitesControllerSummary": {
@@ -39844,11 +42109,28 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "serverPort": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "port of server"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
@@ -41005,16 +43287,172 @@
             "smithy.api#documentation": " A server machine name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.migrate#ServerUpdatePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#ServerUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "fqdn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the FQDN/IPAddress of the server."
+          }
+        },
+        "networkAdapters": {
+          "target": "com.azure.migrate#ServerUpdatePropertiesInputNetworkAdaptersList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the network adapters of the server."
+          }
+        },
+        "hydratedFqdn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the FQDN of machine which can be changed."
+          }
+        },
+        "disks": {
+          "target": "com.azure.migrate#ServerUpdatePropertiesInputDisksList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk details of server."
+          }
+        },
+        "validationRequired": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the validation required for the machine."
+          }
+        },
+        "firmware": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the firmware."
+          }
+        },
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the run as account ID of the machine."
+          }
+        },
+        "productSupportStatus": {
+          "target": "com.azure.migrate#ProductSupportStatus_2",
+          "traits": {
+            "smithy.api#documentation": "product support status."
+          }
+        },
+        "numberOfProcessorCore": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Number of Processor Cores \n            allocated for the\nmachine."
+          }
+        },
+        "allocatedMemoryInMb": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the allocated Memory in MB."
+          }
+        },
+        "operatingSystemDetails": {
+          "target": "com.azure.migrate#OperatingSystem",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Operating System Details installed on the machine."
+          }
+        },
+        "biosSerialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Machine BIOS serial number."
+          }
+        },
+        "biosGuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the BIOS GUID."
+          }
+        },
+        "tags": {
+          "target": "com.azure.migrate#ServerUpdatePropertiesInputTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets tags on the Server machine."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState_2",
+          "traits": {
+            "smithy.api#documentation": "Provisioning state of the server resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Server."
+      }
+    },
+    "com.azure.migrate#ServerUpdatePropertiesInputTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets tags on the Server machine."
+      }
+    },
+    "com.azure.migrate#ServerUpdatePropertiesInputDisksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#ServerDisk"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the disk details of server."
+      }
+    },
+    "com.azure.migrate#ServerUpdatePropertiesInputNetworkAdaptersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#ServerNetworkAdapterInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the network adapters of the server."
+      }
+    },
+    "com.azure.migrate#ServerNetworkAdapterInput": {
+      "type": "structure",
+      "members": {
+        "nicId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the NIC Id."
+          }
+        },
+        "macAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets Mac address of the NIC."
+          }
+        },
+        "networkName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets Network Name."
+          }
+        },
+        "ipAddressType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets Type of the IP address."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Second level object represented in responses as part of Machine REST resource."
       }
     },
     "com.azure.migrate#ServersControllerGetMachine": {
@@ -41589,11 +44027,28 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machineId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "id of machine"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
@@ -41662,11 +44117,22 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
@@ -41735,11 +44201,10 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#RequestExportMachineErrorsProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the properties."
           }
         }
       },
@@ -41808,11 +44273,16 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
           }
         }
       },
@@ -41879,13 +44349,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Site name"
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
           }
         }
       },
@@ -41960,13 +44423,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Site name"
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -42017,13 +44473,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Site name"
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
           }
         }
       },
@@ -42092,11 +44541,40 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machineId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "id of machine"
+          }
+        },
+        "processGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "process group name "
+          }
+        },
+        "processName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "name of process"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
@@ -42264,16 +44742,62 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#ServerSitesControllerUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "properties": {
+          "target": "com.azure.migrate#ServerSiteResourceUpdatePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#ServerSiteResourceUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "servicePrincipalIdentityDetails": {
+          "target": "com.azure.migrate#SiteSpnProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the service principal identity details used by agent for\ncommunication\n            to the service."
+          }
+        },
+        "agentDetails": {
+          "target": "com.azure.migrate#SiteAgentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the on-premises agent details."
+          }
+        },
+        "applianceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Appliance Name."
+          }
+        },
+        "discoverySolutionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM ID of migration hub solution for SDS."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the ServerSiteResource."
+      }
+    },
+    "com.azure.migrate#ServerSitesControllerUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#ServerSitesControllerCreate": {
@@ -42385,16 +44909,40 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#ServerSitesControllerCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.migrate#SitesPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#ServerSitesControllerCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#ServerSitesControllerGet": {
@@ -43539,16 +46087,56 @@
             "smithy.api#documentation": "Web app site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "webApps": {
+          "target": "com.azure.migrate#WebAppPropertiesControllerUpdatePropertiesRequestWebAppsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the list of web app properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#WebAppPropertiesControllerUpdatePropertiesRequestWebAppsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#WebAppProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of web app properties."
+      }
+    },
+    "com.azure.migrate#WebAppProperties": {
+      "type": "structure",
+      "members": {
+        "webAppArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the arm id of the web app."
+          }
+        },
+        "tags": {
+          "target": "com.azure.migrate#WebAppPropertiesTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets Tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class representing web app properties web model."
+      }
+    },
+    "com.azure.migrate#WebAppPropertiesTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets Tags."
       }
     },
     "com.azure.migrate#TomcatWebServersControllerGet": {
@@ -44456,13 +47044,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Web application name."
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -45115,11 +47696,10 @@
             "smithy.api#documentation": "Web app site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "applianceName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the appliance name of the agent in the site."
           }
         }
       },
@@ -45977,16 +48557,38 @@
             "smithy.api#documentation": "Web application name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.migrate#IisWebApplicationsUpdateProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#IisWebApplicationsUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "tags": {
+          "target": "com.azure.migrate#IisWebApplicationsUpdatePropertiesTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets tags on the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the IisWebApplications."
+      }
+    },
+    "com.azure.migrate#IisWebApplicationsUpdatePropertiesTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets tags on the resource."
       }
     },
     "com.azure.migrate#IisWebApplicationsControllerGet": {
@@ -46655,11 +49257,10 @@
             "smithy.api#documentation": "Web app site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "filter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "filter options."
           }
         }
       },
@@ -46721,11 +49322,10 @@
             "smithy.api#documentation": "Web app site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "applianceName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the Appliance Name."
           }
         }
       },
@@ -46920,11 +49520,10 @@
             "smithy.api#documentation": "Data Source ARM name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#DiscoverySiteDataSourceProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -47402,16 +50001,67 @@
             "smithy.api#documentation": "Web app site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.migrate#WebAppSiteUpdatePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#WebAppSiteUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "siteAppliancePropertiesCollection": {
+          "target": "com.azure.migrate#WebAppSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the appliance details used by service to communicate\n           \nto the appliance."
+          }
+        },
+        "discoveryScenario": {
+          "target": "com.azure.migrate#WebAppSitePropertiesDiscoveryScenario",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the discovery scenario."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the WebAppSite."
+      }
+    },
+    "com.azure.migrate#WebAppSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#SiteAppliancePropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the appliance details used by service to communicate\n           \nto the appliance."
+      }
+    },
+    "com.azure.migrate#SiteAppliancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "servicePrincipalIdentityDetails": {
+          "target": "com.azure.migrate#SiteSpnProperties",
+          "traits": {
+            "smithy.api#documentation": " Gets or sets the service principal identity details used by agent for  communication              to the service.  "
+          }
+        },
+        "agentDetails": {
+          "target": "com.azure.migrate#SiteAgentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the on-premises agent details."
+          }
+        },
+        "applianceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Appliance Name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class for site appliance properties."
       }
     },
     "com.azure.migrate#WebAppSitesControllerCreate": {
@@ -47506,16 +50156,44 @@
             "smithy.api#documentation": "Web app site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#WebAppSitePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#WebAppSitePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "siteAppliancePropertiesCollection": {
+          "target": "com.azure.migrate#WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the appliance details used by service to communicate\n           \nto the appliance."
+          }
+        },
+        "discoveryScenario": {
+          "target": "com.azure.migrate#WebAppSitePropertiesDiscoveryScenario",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the discovery scenario."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class for Web app site properties."
+      }
+    },
+    "com.azure.migrate#WebAppSitePropertiesInputSiteAppliancePropertiesCollectionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#SiteAppliancePropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the appliance details used by service to communicate\n           \nto the appliance."
       }
     },
     "com.azure.migrate#WebAppSitesControllerGet": {
@@ -48490,16 +51168,206 @@
             "smithy.api#documentation": "SQL server name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.migrate#SqlServerV2UpdateProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#SqlServerV2UpdateProperties": {
+      "type": "structure",
+      "members": {
+        "numberOfAgDatabases": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the number of databases part of availability group on this SQL instance."
+          }
+        },
+        "sqlFciProperties": {
+          "target": "com.azure.migrate#SqlFciProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the FCI properties if the instance is an FCI instance. This would be populated if IsClustered is true."
+          }
+        },
+        "productSupportStatus": {
+          "target": "com.azure.migrate#ProductSupportStatus_2",
+          "traits": {
+            "smithy.api#documentation": "product support status."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SQL server version."
+          }
+        },
+        "numberOfUserDatabases": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets total number of users databases."
+          }
+        },
+        "sumOfUserDatabasesSizeInMb": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets total size of all user databases."
+          }
+        },
+        "tempDbSizeInMb": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets size of temp database."
+          }
+        },
+        "maxServerMemoryInUseInMb": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets maximum server memory in use."
+          }
+        },
+        "visibleOnlineCoreCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SQL server number of cores that have visible online status."
+          }
+        },
+        "numOfLogins": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets number of logins."
+          }
+        },
+        "physicalCpuCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets physical CPU count."
+          }
+        },
+        "logicalCpuCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets logical CPU count."
+          }
+        },
+        "engineEdition": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SQL server engine edition."
+          }
+        },
+        "edition": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SQL server edition."
+          }
+        },
+        "isHighAvailabilityEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether High Availability is enabled or not."
+          }
+        },
+        "isClustered": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether failover cluster is configured or not."
+          }
+        },
+        "hyperthreadRatio": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Hyper thread ratio."
+          }
+        },
+        "sqlStartTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SQL start time."
+          }
+        },
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the run as account ID of the SQL server."
+          }
+        },
+        "hydratedRunAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the hydrated run as account ID of the SQL server."
+          }
+        },
+        "hostName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets hostname."
+          }
+        },
+        "sqlServerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SQL server instance name."
+          }
+        },
+        "portNumber": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Preferred Port Number."
+          }
+        },
+        "tags": {
+          "target": "com.azure.migrate#SqlServerV2UpdatePropertiesTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets tags on the resource."
+          }
+        },
+        "isDeleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether the entity is deleted."
+          }
+        },
+        "createdTimestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the marking machine creation."
+          }
+        },
+        "updatedTimestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the timestamp marking last updated on the machine."
+          }
+        },
+        "status": {
+          "target": "com.azure.migrate#SqlServerStatus",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the powered on status."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState_2",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the SqlServerV2."
+      }
+    },
+    "com.azure.migrate#SqlServerV2UpdatePropertiesTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets tags on the resource."
       }
     },
     "com.azure.migrate#SqlServersControllerGet": {
@@ -50233,11 +53101,10 @@
             "smithy.api#documentation": "SQL site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "applianceName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the appliance name of the agent in the site."
           }
         }
       },
@@ -50613,11 +53480,16 @@
             "smithy.api#documentation": "SQL site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "applianceName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the Appliance Name."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "filter options."
           }
         }
       },
@@ -50693,13 +53565,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "SQL site name."
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -50760,11 +53625,10 @@
             "smithy.api#documentation": "SQL site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "applianceName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the Appliance Name."
           }
         }
       },
@@ -50959,11 +53823,10 @@
             "smithy.api#documentation": "SQL Discovery site data source name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#SqlDiscoverySiteDataSourceProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -51415,16 +54278,41 @@
             "smithy.api#documentation": "SQL site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.migrate#SqlSiteUpdatePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#SqlSiteUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "siteAppliancePropertiesCollection": {
+          "target": "com.azure.migrate#SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the appliance details used by service to communicate\n           \nto the appliance."
+          }
+        },
+        "discoveryScenario": {
+          "target": "com.azure.migrate#SqlSitePropertiesDiscoveryScenario",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the discovery scenario."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the SqlSite."
+      }
+    },
+    "com.azure.migrate#SqlSiteUpdatePropertiesInputSiteAppliancePropertiesCollectionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#SiteAppliancePropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the appliance details used by service to communicate\n           \nto the appliance."
       }
     },
     "com.azure.migrate#SqlSitesControllerCreate": {
@@ -51519,16 +54407,44 @@
             "smithy.api#documentation": "SQL site name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#SqlSitePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#SqlSitePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "siteAppliancePropertiesCollection": {
+          "target": "com.azure.migrate#SqlSitePropertiesInputSiteAppliancePropertiesCollectionList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the appliance details used by service to communicate\n           \nto the appliance."
+          }
+        },
+        "discoveryScenario": {
+          "target": "com.azure.migrate#SqlSitePropertiesDiscoveryScenario",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the discovery scenario."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class for SQL site properties."
+      }
+    },
+    "com.azure.migrate#SqlSitePropertiesInputSiteAppliancePropertiesCollectionList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#SiteAppliancePropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the appliance details used by service to communicate\n           \nto the appliance."
       }
     },
     "com.azure.migrate#SqlSitesControllerGet": {
@@ -52277,16 +55193,29 @@
             "smithy.api#documentation": " Private link resource name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#PrivateEndpointConnectionPropertiesV2Input",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#PrivateEndpointConnectionPropertiesV2Input": {
+      "type": "structure",
+      "members": {
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.migrate#PrivateLinkServiceConnectionState_3",
+          "traits": {
+            "smithy.api#documentation": "private endpoints connection state"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PrivateEndpointConnectionProperties V2"
       }
     },
     "com.azure.migrate#PrivateEndpointConnectionControllerGet": {
@@ -52610,11 +55539,10 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "applianceName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the Appliance Name."
           }
         }
       },
@@ -52885,16 +55813,71 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#MasterSitesControllerUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "properties": {
+          "target": "com.azure.migrate#MasterSiteUpdateProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#MasterSiteUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.migrate#MasterSitePropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the state of public network access."
+          }
+        },
+        "allowMultipleSites": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether multiple sites per site type are\nallowed."
+          }
+        },
+        "sites": {
+          "target": "com.azure.migrate#MasterSiteUpdatePropertiesSitesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the sites that are a part of Master Site.\n            The key\nshould contain the Site ARM name."
+          }
+        },
+        "customerStorageAccountArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value for customer storage account ARM id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the MasterSite."
+      }
+    },
+    "com.azure.migrate#MasterSiteUpdatePropertiesSitesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the sites that are a part of Master Site.\n            The key\nshould contain the Site ARM name."
+      }
+    },
+    "com.azure.migrate#MasterSitesControllerUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#MasterSitesControllerCreate": {
@@ -53006,16 +55989,81 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#MasterSitesControllerCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.migrate#MasterSitePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#MasterSitePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.migrate#MasterSitePropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the state of public network access."
+          }
+        },
+        "allowMultipleSites": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether multiple sites per site type are\nallowed."
+          }
+        },
+        "sites": {
+          "target": "com.azure.migrate#MasterSitePropertiesInputSitesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the sites that are a part of Master Site.\n            The key\nshould contain the Site ARM name."
+          }
+        },
+        "customerStorageAccountArmId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value for customer storage account ARM id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Class for site properties."
+      }
+    },
+    "com.azure.migrate#MasterSitePropertiesInputSitesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the sites that are a part of Master Site.\n            The key\nshould contain the Site ARM name."
+      }
+    },
+    "com.azure.migrate#MasterSitesControllerCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#MasterSitesControllerGet": {
@@ -54178,11 +57226,16 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "jobArmId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the job ARM ID."
+          }
+        },
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SAS URI."
           }
         }
       },
@@ -54560,11 +57613,16 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "jobArmId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the job ARM ID."
+          }
+        },
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SAS URI."
           }
         }
       },
@@ -55168,13 +58226,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Site name"
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -55373,16 +58424,50 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#ImportSitesControllerUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "properties": {
+          "target": "com.azure.migrate#ImportSiteUpdateProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#ImportSiteUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "discoverySolutionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM ID of migration hub solution for SDS."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState_2",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the ImportSite."
+      }
+    },
+    "com.azure.migrate#ImportSitesControllerUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#ImportSitesControllerCreate": {
@@ -55494,16 +58579,60 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#ImportSitesControllerCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.migrate#ImportSitePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#ImportSitePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "discoverySolutionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM ID of migration hub solution for SDS."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState_2",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of ImportSiteResource"
+      }
+    },
+    "com.azure.migrate#ImportSitesControllerCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#ImportSitesControllerGet": {
@@ -55817,16 +58946,25 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "value": {
+          "target": "com.azure.migrate#HypervMachinesControllerUpdatePropertiesRequestValueList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The list of Machine MetaData.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#HypervMachinesControllerUpdatePropertiesRequestValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#MachineMetadata"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of Machine MetaData."
       }
     },
     "com.azure.migrate#HypervDependencyMapControllerUpdateDependencyMapStatus": {
@@ -55890,16 +59028,24 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machines": {
+          "target": "com.azure.migrate#HypervDependencyMapControllerUpdateDependencyMapStatusRequestMachinesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the machine collection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#HypervDependencyMapControllerUpdateDependencyMapStatusRequestMachinesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.migrate#DependencyMapMachineInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the machine collection."
       }
     },
     "com.azure.migrate#HypervSitesControllerSummary": {
@@ -56046,11 +59192,28 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "serverPort": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "port of server"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
@@ -57220,16 +60383,86 @@
             "smithy.api#documentation": " HypervMachine name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.migrate#HypervMachineUpdateProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#HypervMachineUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "firmware": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the firmware."
+          }
+        },
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the run as account ID of the machine."
+          }
+        },
+        "productSupportStatus": {
+          "target": "com.azure.migrate#ProductSupportStatus_2",
+          "traits": {
+            "smithy.api#documentation": "product support status."
+          }
+        },
+        "numberOfProcessorCore": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Number of Processor Cores \n            allocated for the\nmachine."
+          }
+        },
+        "allocatedMemoryInMb": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the allocated Memory in MB."
+          }
+        },
+        "operatingSystemDetails": {
+          "target": "com.azure.migrate#OperatingSystem",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Operating System Details installed on the machine."
+          }
+        },
+        "biosSerialNumber": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Machine BIOS serial number."
+          }
+        },
+        "biosGuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the BIOS GUID."
+          }
+        },
+        "tags": {
+          "target": "com.azure.migrate#HypervMachineUpdatePropertiesTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets tags on the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the HypervMachine."
+      }
+    },
+    "com.azure.migrate#HypervMachineUpdatePropertiesTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets tags on the resource."
       }
     },
     "com.azure.migrate#HypervMachinesControllerGet": {
@@ -57953,16 +61186,41 @@
             "smithy.api#documentation": " Host name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#HypervHostPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#HypervHostPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "fqdn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the FQDN/IPAddress of the Hyper-V host."
+          }
+        },
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the run as account ID of the Hyper-V host."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState_2",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of Hyperv Host"
       }
     },
     "com.azure.migrate#HypervHostControllerGet": {
@@ -58249,11 +61507,28 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machineId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "id of machine"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
@@ -58322,11 +61597,22 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
@@ -58395,11 +61681,10 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#RequestExportMachineErrorsProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the properties."
           }
         }
       },
@@ -58468,11 +61753,16 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
           }
         }
       },
@@ -58540,13 +61830,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Site name"
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -58598,13 +61881,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Site name"
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -58655,13 +61931,6 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {},
             "smithy.api#documentation": "Site name"
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
           }
         }
       },
@@ -58900,16 +62169,56 @@
             "smithy.api#documentation": " Cluster ARM name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.migrate#HypervClusterPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#HypervClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "fqdn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the FQDN/IPAddress of the Hyper-V cluster."
+          }
+        },
+        "runAsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets Run as account ID of the Hyper-V cluster."
+          }
+        },
+        "hostFqdnList": {
+          "target": "com.azure.migrate#HypervClusterPropertiesInputHostFqdnListList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets list of hosts (FQDN) currently being tracked by the cluster."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState_2",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of Hyperv Cluster"
+      }
+    },
+    "com.azure.migrate#HypervClusterPropertiesInputHostFqdnListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets list of hosts (FQDN) currently being tracked by the cluster."
       }
     },
     "com.azure.migrate#HypervClusterControllerGetCluster": {
@@ -59196,11 +62505,40 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "machineId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "id of machine"
+          }
+        },
+        "processGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "process group name "
+          }
+        },
+        "processName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "name of process"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "start time"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "end time"
+          }
+        },
+        "filters": {
+          "target": "com.azure.migrate#DependencyMapServiceMapextensionsDependencyMapRequestFilters",
+          "traits": {
+            "smithy.api#documentation": "optional filters"
           }
         }
       },
@@ -59418,16 +62756,68 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#HypervSitesControllerUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
+        },
+        "properties": {
+          "target": "com.azure.migrate#HypervSiteUpdatePropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#HypervSiteUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "servicePrincipalIdentityDetails": {
+          "target": "com.azure.migrate#SiteSpnProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the service principal identity details used by agent for\ncommunication\n            to the service."
+          }
+        },
+        "agentDetails": {
+          "target": "com.azure.migrate#SiteAgentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the on-premises agent details."
+          }
+        },
+        "applianceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Appliance Name."
+          }
+        },
+        "discoverySolutionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM ID of migration hub solution for SDS."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState_2",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the HypervSite."
+      }
+    },
+    "com.azure.migrate#HypervSitesControllerUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#HypervSitesControllerCreate": {
@@ -59539,16 +62929,78 @@
             "smithy.api#documentation": "Site name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.migrate#HypervSitesControllerCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.migrate#SitePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.migrate#SitePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "servicePrincipalIdentityDetails": {
+          "target": "com.azure.migrate#SiteSpnProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the service principal identity details used by agent for\ncommunication\n            to the service."
+          }
+        },
+        "agentDetails": {
+          "target": "com.azure.migrate#SiteAgentPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the on-premises agent details."
+          }
+        },
+        "applianceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Appliance Name."
+          }
+        },
+        "discoverySolutionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM ID of migration hub solution for SDS."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.migrate#ProvisioningState_2",
+          "traits": {
+            "smithy.api#documentation": "The status of the last operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of VMwareSiteResource"
+      }
+    },
+    "com.azure.migrate#HypervSitesControllerCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.migrate#HypervSitesControllerGet": {

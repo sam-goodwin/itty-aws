@@ -83,8 +83,7 @@ export type GoogleCloudRecommenderV1InsightStateInfoStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ACCEPTED"
-  | "DISMISSED"
-  | (string & {});
+  | "DISMISSED";
 export const GoogleCloudRecommenderV1InsightStateInfoStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -126,7 +125,7 @@ export const GoogleCloudRecommenderV1InsightRecommendationReference =
   }) as any as S.Schema<GoogleCloudRecommenderV1InsightRecommendationReference>;
 
 export type GoogleCloudRecommenderV1InsightRecommendationReferenceList =
-  GoogleCloudRecommenderV1InsightRecommendationReference[];
+  ReadonlyArray<GoogleCloudRecommenderV1InsightRecommendationReference>;
 export const GoogleCloudRecommenderV1InsightRecommendationReferenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommenderV1InsightRecommendationReference,
@@ -137,12 +136,11 @@ export type GoogleCloudRecommenderV1InsightSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const GoogleCloudRecommenderV1InsightSeverityEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -154,8 +152,7 @@ export type GoogleCloudRecommenderV1InsightCategoryEnum =
   | "PERFORMANCE"
   | "MANAGEABILITY"
   | "SUSTAINABILITY"
-  | "RELIABILITY"
-  | (string & {});
+  | "RELIABILITY";
 export const GoogleCloudRecommenderV1InsightCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -238,8 +235,7 @@ export type GoogleCloudRecommenderV1RecommendationStateInfoStateEnum =
   | "CLAIMED"
   | "SUCCEEDED"
   | "FAILED"
-  | "DISMISSED"
-  | (string & {});
+  | "DISMISSED";
 export const GoogleCloudRecommenderV1RecommendationStateInfoStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -325,7 +321,7 @@ export const GoogleCloudRecommenderV1Operation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRecommenderV1Operation>;
 
 export type GoogleCloudRecommenderV1OperationList =
-  GoogleCloudRecommenderV1Operation[];
+  ReadonlyArray<GoogleCloudRecommenderV1Operation>;
 export const GoogleCloudRecommenderV1OperationList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1Operation,
 ) as any as S.Schema<GoogleCloudRecommenderV1OperationList>;
@@ -345,7 +341,7 @@ export const GoogleCloudRecommenderV1OperationGroup = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRecommenderV1OperationGroup>;
 
 export type GoogleCloudRecommenderV1OperationGroupList =
-  GoogleCloudRecommenderV1OperationGroup[];
+  ReadonlyArray<GoogleCloudRecommenderV1OperationGroup>;
 export const GoogleCloudRecommenderV1OperationGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1OperationGroup,
 ) as any as S.Schema<GoogleCloudRecommenderV1OperationGroupList>;
@@ -372,8 +368,7 @@ export type GoogleCloudRecommenderV1RecommendationPriorityEnum =
   | "P4"
   | "P3"
   | "P2"
-  | "P1"
-  | (string & {});
+  | "P1";
 export const GoogleCloudRecommenderV1RecommendationPriorityEnum =
   /*@__PURE__*/ S.String;
 
@@ -423,8 +418,7 @@ export type GoogleCloudRecommenderV1ImpactCategoryEnum =
   | "PERFORMANCE"
   | "MANAGEABILITY"
   | "SUSTAINABILITY"
-  | "RELIABILITY"
-  | (string & {});
+  | "RELIABILITY";
 export const GoogleCloudRecommenderV1ImpactCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -449,13 +443,12 @@ export type GoogleCloudRecommenderV1ReliabilityProjectionRisksItemEnum =
   | "RISK_TYPE_UNSPECIFIED"
   | "SERVICE_DISRUPTION"
   | "DATA_LOSS"
-  | "ACCESS_DENY"
-  | (string & {});
+  | "ACCESS_DENY";
 export const GoogleCloudRecommenderV1ReliabilityProjectionRisksItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRecommenderV1ReliabilityProjectionRisksItemEnumList =
-  GoogleCloudRecommenderV1ReliabilityProjectionRisksItemEnum[];
+  ReadonlyArray<GoogleCloudRecommenderV1ReliabilityProjectionRisksItemEnum>;
 export const GoogleCloudRecommenderV1ReliabilityProjectionRisksItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommenderV1ReliabilityProjectionRisksItemEnum,
@@ -527,7 +520,7 @@ export const GoogleCloudRecommenderV1Impact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRecommenderV1Impact>;
 
 export type GoogleCloudRecommenderV1ImpactList =
-  GoogleCloudRecommenderV1Impact[];
+  ReadonlyArray<GoogleCloudRecommenderV1Impact>;
 export const GoogleCloudRecommenderV1ImpactList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1Impact,
 ) as any as S.Schema<GoogleCloudRecommenderV1ImpactList>;
@@ -547,7 +540,7 @@ export const GoogleCloudRecommenderV1RecommendationInsightReference =
   }) as any as S.Schema<GoogleCloudRecommenderV1RecommendationInsightReference>;
 
 export type GoogleCloudRecommenderV1RecommendationInsightReferenceList =
-  GoogleCloudRecommenderV1RecommendationInsightReference[];
+  ReadonlyArray<GoogleCloudRecommenderV1RecommendationInsightReference>;
 export const GoogleCloudRecommenderV1RecommendationInsightReferenceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommenderV1RecommendationInsightReference,
@@ -958,7 +951,7 @@ export const ListBillingAccountsLocationsInsightTypesInsightsRequest =
   }) as any as S.Schema<ListBillingAccountsLocationsInsightTypesInsightsRequest>;
 
 export type GoogleCloudRecommenderV1InsightList =
-  GoogleCloudRecommenderV1Insight[];
+  ReadonlyArray<GoogleCloudRecommenderV1Insight>;
 export const GoogleCloudRecommenderV1InsightList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1Insight,
 ) as any as S.Schema<GoogleCloudRecommenderV1InsightList>;
@@ -1010,7 +1003,7 @@ export const ListBillingAccountsLocationsRecommendersRecommendationsRequest =
   }) as any as S.Schema<ListBillingAccountsLocationsRecommendersRecommendationsRequest>;
 
 export type GoogleCloudRecommenderV1RecommendationList =
-  GoogleCloudRecommenderV1Recommendation[];
+  ReadonlyArray<GoogleCloudRecommenderV1Recommendation>;
 export const GoogleCloudRecommenderV1RecommendationList = /*@__PURE__*/ S.Array(
   GoogleCloudRecommenderV1Recommendation,
 ) as any as S.Schema<GoogleCloudRecommenderV1RecommendationList>;

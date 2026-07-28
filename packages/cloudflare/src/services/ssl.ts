@@ -94,10 +94,7 @@ export const AutomaticUpgraderGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutomaticUpgraderGetRequest",
 }) as any as S.Schema<AutomaticUpgraderGetRequest>;
 
-export type AutomaticUpgraderGetResponseValue =
-  | "auto"
-  | "custom"
-  | (string & {});
+export type AutomaticUpgraderGetResponseValue = "auto" | "custom";
 export const AutomaticUpgraderGetResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -124,10 +121,7 @@ export const AutomaticUpgraderGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutomaticUpgraderGetResponse",
 }) as any as S.Schema<AutomaticUpgraderGetResponse>;
 
-export type AutomaticUpgraderPatchRequestValue =
-  | "auto"
-  | "custom"
-  | (string & {});
+export type AutomaticUpgraderPatchRequestValue = "auto" | "custom";
 export const AutomaticUpgraderPatchRequestValue = /*@__PURE__*/ S.String;
 
 export interface AutomaticUpgraderPatchRequest {
@@ -152,10 +146,7 @@ export const AutomaticUpgraderPatchRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutomaticUpgraderPatchRequest",
 }) as any as S.Schema<AutomaticUpgraderPatchRequest>;
 
-export type AutomaticUpgraderPatchResponseValue =
-  | "auto"
-  | "custom"
-  | (string & {});
+export type AutomaticUpgraderPatchResponseValue = "auto" | "custom";
 export const AutomaticUpgraderPatchResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -182,18 +173,26 @@ export const AutomaticUpgraderPatchResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutomaticUpgraderPatchResponse",
 }) as any as S.Schema<AutomaticUpgraderPatchResponse>;
 
+export type AnalyzeCreateRequestBundleMethod =
+  | "ubiquitous"
+  | "optimal"
+  | "force";
+export const AnalyzeCreateRequestBundleMethod = /*@__PURE__*/ S.String;
+
 export interface CreateAnalyzeRequest {
   /** Identifier. */
   zoneId: string;
   /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: unknown;
+  bundleMethod?: AnalyzeCreateRequestBundleMethod;
   /** The zone's SSL certificate or certificate and the intermediate(s). */
   certificate?: string;
 }
 export const CreateAnalyzeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    bundleMethod: S.optional(
+      AnalyzeCreateRequestBundleMethod.pipe(T.Body("bundle_method")),
+    ),
     certificate: S.optional(S.String),
   })
     .pipe(
@@ -218,44 +217,27 @@ export const CreateAnalyzeResponse = /*@__PURE__*/ S.suspend(() =>
 export type CertificatePacksCreateRequestCertificateAuthority =
   | "google"
   | "lets_encrypt"
-  | "ssl_com"
-  | (string & {});
+  | "ssl_com";
 export const CertificatePacksCreateRequestCertificateAuthority =
   /*@__PURE__*/ S.String;
 
-export type CertificatePacksCreateRequestHostsList = unknown[];
+export type CertificatePacksCreateRequestHostsList = ReadonlyArray<unknown>;
 export const CertificatePacksCreateRequestHostsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CertificatePacksCreateRequestHostsList>;
 
-export type CertificatePacksCreateRequestType = "advanced" | (string & {});
+export type CertificatePacksCreateRequestType = "advanced";
 export const CertificatePacksCreateRequestType = /*@__PURE__*/ S.String;
 
 export type CertificatePacksCreateRequestValidationMethod =
   | "txt"
   | "http"
-  | "email"
-  | (string & {});
+  | "email";
 export const CertificatePacksCreateRequestValidationMethod =
   /*@__PURE__*/ S.String;
 
-export interface CertificatePacksCreateRequestValidityDays {
-  "14": unknown;
-  "30": unknown;
-  "90": unknown;
-  "365": unknown;
-}
-export const CertificatePacksCreateRequestValidityDays =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "14": S.Unknown,
-      "30": S.Unknown,
-      "90": S.Unknown,
-      "365": S.Unknown,
-    }),
-  ).annotate({
-    identifier: "CertificatePacksCreateRequestValidityDays",
-  }) as any as S.Schema<CertificatePacksCreateRequestValidityDays>;
+export type CertificatePacksCreateRequestValidityDays = 14 | 30 | 90 | 365;
+export const CertificatePacksCreateRequestValidityDays = /*@__PURE__*/ S.Number;
 
 export interface CreateCertificatePackRequest {
   /** Identifier. */
@@ -304,14 +286,15 @@ export const CreateCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateCertificatePackRequest",
 }) as any as S.Schema<CreateCertificatePackRequest>;
 
-export type CertificatePacksCreateResponseCertificatesItemHostsList = string[];
+export type CertificatePacksCreateResponseCertificatesItemHostsList =
+  ReadonlyArray<string>;
 export const CertificatePacksCreateResponseCertificatesItemHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CertificatePacksCreateResponseCertificatesItemHostsList>;
 
 export type CertificatePacksCreateResponseCertificatesItemGeoRestrictionsLabel =
-  "us" | "eu" | "highest_security" | (string & {});
+  "us" | "eu" | "highest_security";
 export const CertificatePacksCreateResponseCertificatesItemGeoRestrictionsLabel =
   /*@__PURE__*/ S.String;
 
@@ -380,34 +363,61 @@ export const CertificatePacksCreateResponseCertificatesItem =
   }) as any as S.Schema<CertificatePacksCreateResponseCertificatesItem>;
 
 export type CertificatePacksCreateResponseCertificatesList =
-  CertificatePacksCreateResponseCertificatesItem[];
+  ReadonlyArray<CertificatePacksCreateResponseCertificatesItem>;
 export const CertificatePacksCreateResponseCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificatePacksCreateResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksCreateResponseCertificatesList>;
 
-export type CertificatePacksCreateResponseHostsList = unknown[];
+export type CertificatePacksCreateResponseHostsList = ReadonlyArray<unknown>;
 export const CertificatePacksCreateResponseHostsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CertificatePacksCreateResponseHostsList>;
+
+export type CertificatePacksCreateResponseStatus =
+  | "initializing"
+  | "pending_validation"
+  | "deleted"
+  | "pending_issuance"
+  | "pending_deployment"
+  | "pending_deletion"
+  | "pending_expiration"
+  | "expired"
+  | "active"
+  | "initializing_timed_out"
+  | "validation_timed_out"
+  | "issuance_timed_out"
+  | "deployment_timed_out"
+  | "deletion_timed_out"
+  | "pending_cleanup"
+  | "staging_deployment"
+  | "staging_active"
+  | "deactivating"
+  | "inactive"
+  | "backup_issued"
+  | "holding_deployment";
+export const CertificatePacksCreateResponseStatus = /*@__PURE__*/ S.String;
 
 export type CertificatePacksCreateResponseType =
   | "mh_custom"
   | "managed_hostname"
   | "sni_custom"
-  | (string & {});
+  | "universal"
+  | "advanced"
+  | "total_tls"
+  | "keyless"
+  | "legacy_custom";
 export const CertificatePacksCreateResponseType = /*@__PURE__*/ S.String;
 
 export type CertificatePacksCreateResponseCertificateAuthority =
   | "google"
   | "lets_encrypt"
-  | "ssl_com"
-  | (string & {});
+  | "ssl_com";
 export const CertificatePacksCreateResponseCertificateAuthority =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList =
-  string[];
+  ReadonlyArray<string>;
 export const CertificatePacksCreateResponseDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -450,7 +460,7 @@ export const CertificatePacksCreateResponseDcvDelegationRecordsItem =
   }) as any as S.Schema<CertificatePacksCreateResponseDcvDelegationRecordsItem>;
 
 export type CertificatePacksCreateResponseDcvDelegationRecordsList =
-  CertificatePacksCreateResponseDcvDelegationRecordsItem[];
+  ReadonlyArray<CertificatePacksCreateResponseDcvDelegationRecordsItem>;
 export const CertificatePacksCreateResponseDcvDelegationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksCreateResponseDcvDelegationRecordsItem,
@@ -470,7 +480,7 @@ export const CertificatePacksCreateResponseValidationErrorsItem =
   }) as any as S.Schema<CertificatePacksCreateResponseValidationErrorsItem>;
 
 export type CertificatePacksCreateResponseValidationErrorsList =
-  CertificatePacksCreateResponseValidationErrorsItem[];
+  ReadonlyArray<CertificatePacksCreateResponseValidationErrorsItem>;
 export const CertificatePacksCreateResponseValidationErrorsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksCreateResponseValidationErrorsItem,
@@ -479,13 +489,12 @@ export const CertificatePacksCreateResponseValidationErrorsList =
 export type CertificatePacksCreateResponseValidationMethod =
   | "txt"
   | "http"
-  | "email"
-  | (string & {});
+  | "email";
 export const CertificatePacksCreateResponseValidationMethod =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksCreateResponseValidationRecordsItemEmailsList =
-  string[];
+  ReadonlyArray<string>;
 export const CertificatePacksCreateResponseValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -528,29 +537,15 @@ export const CertificatePacksCreateResponseValidationRecordsItem =
   }) as any as S.Schema<CertificatePacksCreateResponseValidationRecordsItem>;
 
 export type CertificatePacksCreateResponseValidationRecordsList =
-  CertificatePacksCreateResponseValidationRecordsItem[];
+  ReadonlyArray<CertificatePacksCreateResponseValidationRecordsItem>;
 export const CertificatePacksCreateResponseValidationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksCreateResponseValidationRecordsItem,
   ) as any as S.Schema<CertificatePacksCreateResponseValidationRecordsList>;
 
-export interface CertificatePacksCreateResponseValidityDays {
-  "14": unknown;
-  "30": unknown;
-  "90": unknown;
-  "365": unknown;
-}
+export type CertificatePacksCreateResponseValidityDays = 14 | 30 | 90 | 365;
 export const CertificatePacksCreateResponseValidityDays =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "14": S.Unknown,
-      "30": S.Unknown,
-      "90": S.Unknown,
-      "365": S.Unknown,
-    }),
-  ).annotate({
-    identifier: "CertificatePacksCreateResponseValidityDays",
-  }) as any as S.Schema<CertificatePacksCreateResponseValidityDays>;
+  /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCertificatePackResponse {
@@ -561,7 +556,7 @@ export interface CreateCertificatePackResponse {
   /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: CertificatePacksCreateResponseHostsList;
   /** Status of certificate pack. */
-  status: unknown;
+  status: CertificatePacksCreateResponseStatus;
   /** Type of certificate pack. */
   type: CertificatePacksCreateResponseType;
   /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
@@ -586,7 +581,7 @@ export const CreateCertificatePackResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     certificates: CertificatePacksCreateResponseCertificatesList,
     hosts: CertificatePacksCreateResponseHostsList,
-    status: S.Unknown,
+    status: CertificatePacksCreateResponseStatus,
     type: CertificatePacksCreateResponseType,
     certificateAuthority: S.optional(
       CertificatePacksCreateResponseCertificateAuthority.pipe(
@@ -723,7 +718,8 @@ export const GetCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCertificatePackRequest",
 }) as any as S.Schema<GetCertificatePackRequest>;
 
-export type CertificatePacksGetResponseCertificatesItemHostsList = string[];
+export type CertificatePacksGetResponseCertificatesItemHostsList =
+  ReadonlyArray<string>;
 export const CertificatePacksGetResponseCertificatesItemHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -732,8 +728,7 @@ export const CertificatePacksGetResponseCertificatesItemHostsList =
 export type CertificatePacksGetResponseCertificatesItemGeoRestrictionsLabel =
   | "us"
   | "eu"
-  | "highest_security"
-  | (string & {});
+  | "highest_security";
 export const CertificatePacksGetResponseCertificatesItemGeoRestrictionsLabel =
   /*@__PURE__*/ S.String;
 
@@ -802,34 +797,61 @@ export const CertificatePacksGetResponseCertificatesItem =
   }) as any as S.Schema<CertificatePacksGetResponseCertificatesItem>;
 
 export type CertificatePacksGetResponseCertificatesList =
-  CertificatePacksGetResponseCertificatesItem[];
+  ReadonlyArray<CertificatePacksGetResponseCertificatesItem>;
 export const CertificatePacksGetResponseCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificatePacksGetResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksGetResponseCertificatesList>;
 
-export type CertificatePacksGetResponseHostsList = unknown[];
+export type CertificatePacksGetResponseHostsList = ReadonlyArray<unknown>;
 export const CertificatePacksGetResponseHostsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CertificatePacksGetResponseHostsList>;
+
+export type CertificatePacksGetResponseStatus =
+  | "initializing"
+  | "pending_validation"
+  | "deleted"
+  | "pending_issuance"
+  | "pending_deployment"
+  | "pending_deletion"
+  | "pending_expiration"
+  | "expired"
+  | "active"
+  | "initializing_timed_out"
+  | "validation_timed_out"
+  | "issuance_timed_out"
+  | "deployment_timed_out"
+  | "deletion_timed_out"
+  | "pending_cleanup"
+  | "staging_deployment"
+  | "staging_active"
+  | "deactivating"
+  | "inactive"
+  | "backup_issued"
+  | "holding_deployment";
+export const CertificatePacksGetResponseStatus = /*@__PURE__*/ S.String;
 
 export type CertificatePacksGetResponseType =
   | "mh_custom"
   | "managed_hostname"
   | "sni_custom"
-  | (string & {});
+  | "universal"
+  | "advanced"
+  | "total_tls"
+  | "keyless"
+  | "legacy_custom";
 export const CertificatePacksGetResponseType = /*@__PURE__*/ S.String;
 
 export type CertificatePacksGetResponseCertificateAuthority =
   | "google"
   | "lets_encrypt"
-  | "ssl_com"
-  | (string & {});
+  | "ssl_com";
 export const CertificatePacksGetResponseCertificateAuthority =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList =
-  string[];
+  ReadonlyArray<string>;
 export const CertificatePacksGetResponseDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -872,7 +894,7 @@ export const CertificatePacksGetResponseDcvDelegationRecordsItem =
   }) as any as S.Schema<CertificatePacksGetResponseDcvDelegationRecordsItem>;
 
 export type CertificatePacksGetResponseDcvDelegationRecordsList =
-  CertificatePacksGetResponseDcvDelegationRecordsItem[];
+  ReadonlyArray<CertificatePacksGetResponseDcvDelegationRecordsItem>;
 export const CertificatePacksGetResponseDcvDelegationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksGetResponseDcvDelegationRecordsItem,
@@ -892,7 +914,7 @@ export const CertificatePacksGetResponseValidationErrorsItem =
   }) as any as S.Schema<CertificatePacksGetResponseValidationErrorsItem>;
 
 export type CertificatePacksGetResponseValidationErrorsList =
-  CertificatePacksGetResponseValidationErrorsItem[];
+  ReadonlyArray<CertificatePacksGetResponseValidationErrorsItem>;
 export const CertificatePacksGetResponseValidationErrorsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksGetResponseValidationErrorsItem,
@@ -901,13 +923,12 @@ export const CertificatePacksGetResponseValidationErrorsList =
 export type CertificatePacksGetResponseValidationMethod =
   | "txt"
   | "http"
-  | "email"
-  | (string & {});
+  | "email";
 export const CertificatePacksGetResponseValidationMethod =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksGetResponseValidationRecordsItemEmailsList =
-  string[];
+  ReadonlyArray<string>;
 export const CertificatePacksGetResponseValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -950,29 +971,14 @@ export const CertificatePacksGetResponseValidationRecordsItem =
   }) as any as S.Schema<CertificatePacksGetResponseValidationRecordsItem>;
 
 export type CertificatePacksGetResponseValidationRecordsList =
-  CertificatePacksGetResponseValidationRecordsItem[];
+  ReadonlyArray<CertificatePacksGetResponseValidationRecordsItem>;
 export const CertificatePacksGetResponseValidationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksGetResponseValidationRecordsItem,
   ) as any as S.Schema<CertificatePacksGetResponseValidationRecordsList>;
 
-export interface CertificatePacksGetResponseValidityDays {
-  "14": unknown;
-  "30": unknown;
-  "90": unknown;
-  "365": unknown;
-}
-export const CertificatePacksGetResponseValidityDays = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "14": S.Unknown,
-      "30": S.Unknown,
-      "90": S.Unknown,
-      "365": S.Unknown,
-    }),
-).annotate({
-  identifier: "CertificatePacksGetResponseValidityDays",
-}) as any as S.Schema<CertificatePacksGetResponseValidityDays>;
+export type CertificatePacksGetResponseValidityDays = 14 | 30 | 90 | 365;
+export const CertificatePacksGetResponseValidityDays = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCertificatePackResponse {
@@ -983,7 +989,7 @@ export interface GetCertificatePackResponse {
   /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: CertificatePacksGetResponseHostsList;
   /** Status of certificate pack. */
-  status: unknown;
+  status: CertificatePacksGetResponseStatus;
   /** Type of certificate pack. */
   type: CertificatePacksGetResponseType;
   /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
@@ -1008,7 +1014,7 @@ export const GetCertificatePackResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     certificates: CertificatePacksGetResponseCertificatesList,
     hosts: CertificatePacksGetResponseHostsList,
-    status: S.Unknown,
+    status: CertificatePacksGetResponseStatus,
     type: CertificatePacksGetResponseType,
     certificateAuthority: S.optional(
       CertificatePacksGetResponseCertificateAuthority.pipe(
@@ -1157,23 +1163,30 @@ export type VerificationGetResultItemCertificateStatus =
   | "initializing"
   | "authorizing"
   | "active"
-  | (string & {});
+  | "expired"
+  | "issuing"
+  | "timing_out"
+  | "pending_deployment";
 export const VerificationGetResultItemCertificateStatus =
   /*@__PURE__*/ S.String;
 
 export type VerificationGetResultItemSignature =
   | "ECDSAWithSHA256"
   | "SHA1WithRSA"
-  | "SHA256WithRSA"
-  | (string & {});
+  | "SHA256WithRSA";
 export const VerificationGetResultItemSignature = /*@__PURE__*/ S.String;
+
+export type VerificationGetResultItemValidationMethod =
+  | "http"
+  | "cname"
+  | "txt";
+export const VerificationGetResultItemValidationMethod = /*@__PURE__*/ S.String;
 
 export type VerificationGetResultItemVerificationInfoRecordName =
   | "record_name"
   | "http_url"
   | "cname"
-  | "txt_name"
-  | (string & {});
+  | "txt_name";
 export const VerificationGetResultItemVerificationInfoRecordName =
   /*@__PURE__*/ S.String;
 
@@ -1181,8 +1194,7 @@ export type VerificationGetResultItemVerificationInfoRecordTarget =
   | "record_value"
   | "http_body"
   | "cname_target"
-  | "txt_value"
-  | (string & {});
+  | "txt_value";
 export const VerificationGetResultItemVerificationInfoRecordTarget =
   /*@__PURE__*/ S.String;
 
@@ -1210,10 +1222,7 @@ export const VerificationGetResultItemVerificationInfo =
     identifier: "VerificationGetResultItemVerificationInfo",
   }) as any as S.Schema<VerificationGetResultItemVerificationInfo>;
 
-export type VerificationGetResultItemVerificationType =
-  | "cname"
-  | "meta tag"
-  | (string & {});
+export type VerificationGetResultItemVerificationType = "cname" | "meta tag";
 export const VerificationGetResultItemVerificationType = /*@__PURE__*/ S.String;
 
 export interface VerificationGetResultItem {
@@ -1226,7 +1235,7 @@ export interface VerificationGetResultItem {
   /** Certificate's signature algorithm. */
   signature?: VerificationGetResultItemSignature;
   /** Validation method in use for a certificate pack order. */
-  validationMethod?: unknown;
+  validationMethod?: VerificationGetResultItemValidationMethod;
   /** Certificate's required verification information. */
   verificationInfo?: VerificationGetResultItemVerificationInfo;
   /** Status of the required verification information, omitted if verification status is unknown. */
@@ -1242,7 +1251,11 @@ export const VerificationGetResultItem = /*@__PURE__*/ S.suspend(() =>
     brandCheck: S.optional(S.Boolean.pipe(T.Body("brand_check"))),
     certPackUuid: S.optional(S.String.pipe(T.Body("cert_pack_uuid"))),
     signature: S.optional(VerificationGetResultItemSignature),
-    validationMethod: S.optional(S.Unknown.pipe(T.Body("validation_method"))),
+    validationMethod: S.optional(
+      VerificationGetResultItemValidationMethod.pipe(
+        T.Body("validation_method"),
+      ),
+    ),
     verificationInfo: S.optional(
       VerificationGetResultItemVerificationInfo.pipe(
         T.Body("verification_info"),
@@ -1261,7 +1274,8 @@ export const VerificationGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerificationGetResultItem",
 }) as any as S.Schema<VerificationGetResultItem>;
 
-export type VerificationGetResultList = VerificationGetResultItem[];
+export type VerificationGetResultList =
+  ReadonlyArray<VerificationGetResultItem>;
 export const VerificationGetResultList = /*@__PURE__*/ S.Array(
   VerificationGetResultItem,
 ) as any as S.Schema<VerificationGetResultList>;
@@ -1273,13 +1287,10 @@ export const GetVerificationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetVerificationResponse",
 }) as any as S.Schema<GetVerificationResponse>;
 
-export type CertificatePacksListRequestDeploy =
-  | "staging"
-  | "production"
-  | (string & {});
+export type CertificatePacksListRequestDeploy = "staging" | "production";
 export const CertificatePacksListRequestDeploy = /*@__PURE__*/ S.String;
 
-export type CertificatePacksListRequestStatus = "all" | (string & {});
+export type CertificatePacksListRequestStatus = "all";
 export const CertificatePacksListRequestStatus = /*@__PURE__*/ S.String;
 
 export interface ListCertificatePacksRequest {
@@ -1314,14 +1325,15 @@ export const ListCertificatePacksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCertificatePacksRequest",
 }) as any as S.Schema<ListCertificatePacksRequest>;
 
-export type CertificatePacksListResultItemCertificatesItemHostsList = string[];
+export type CertificatePacksListResultItemCertificatesItemHostsList =
+  ReadonlyArray<string>;
 export const CertificatePacksListResultItemCertificatesItemHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CertificatePacksListResultItemCertificatesItemHostsList>;
 
 export type CertificatePacksListResultItemCertificatesItemGeoRestrictionsLabel =
-  "us" | "eu" | "highest_security" | (string & {});
+  "us" | "eu" | "highest_security";
 export const CertificatePacksListResultItemCertificatesItemGeoRestrictionsLabel =
   /*@__PURE__*/ S.String;
 
@@ -1390,34 +1402,61 @@ export const CertificatePacksListResultItemCertificatesItem =
   }) as any as S.Schema<CertificatePacksListResultItemCertificatesItem>;
 
 export type CertificatePacksListResultItemCertificatesList =
-  CertificatePacksListResultItemCertificatesItem[];
+  ReadonlyArray<CertificatePacksListResultItemCertificatesItem>;
 export const CertificatePacksListResultItemCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificatePacksListResultItemCertificatesItem,
   ) as any as S.Schema<CertificatePacksListResultItemCertificatesList>;
 
-export type CertificatePacksListResultItemHostsList = unknown[];
+export type CertificatePacksListResultItemHostsList = ReadonlyArray<unknown>;
 export const CertificatePacksListResultItemHostsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CertificatePacksListResultItemHostsList>;
+
+export type CertificatePacksListResultItemStatus =
+  | "initializing"
+  | "pending_validation"
+  | "deleted"
+  | "pending_issuance"
+  | "pending_deployment"
+  | "pending_deletion"
+  | "pending_expiration"
+  | "expired"
+  | "active"
+  | "initializing_timed_out"
+  | "validation_timed_out"
+  | "issuance_timed_out"
+  | "deployment_timed_out"
+  | "deletion_timed_out"
+  | "pending_cleanup"
+  | "staging_deployment"
+  | "staging_active"
+  | "deactivating"
+  | "inactive"
+  | "backup_issued"
+  | "holding_deployment";
+export const CertificatePacksListResultItemStatus = /*@__PURE__*/ S.String;
 
 export type CertificatePacksListResultItemType =
   | "mh_custom"
   | "managed_hostname"
   | "sni_custom"
-  | (string & {});
+  | "universal"
+  | "advanced"
+  | "total_tls"
+  | "keyless"
+  | "legacy_custom";
 export const CertificatePacksListResultItemType = /*@__PURE__*/ S.String;
 
 export type CertificatePacksListResultItemCertificateAuthority =
   | "google"
   | "lets_encrypt"
-  | "ssl_com"
-  | (string & {});
+  | "ssl_com";
 export const CertificatePacksListResultItemCertificateAuthority =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList =
-  string[];
+  ReadonlyArray<string>;
 export const CertificatePacksListResultItemDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1460,7 +1499,7 @@ export const CertificatePacksListResultItemDcvDelegationRecordsItem =
   }) as any as S.Schema<CertificatePacksListResultItemDcvDelegationRecordsItem>;
 
 export type CertificatePacksListResultItemDcvDelegationRecordsList =
-  CertificatePacksListResultItemDcvDelegationRecordsItem[];
+  ReadonlyArray<CertificatePacksListResultItemDcvDelegationRecordsItem>;
 export const CertificatePacksListResultItemDcvDelegationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksListResultItemDcvDelegationRecordsItem,
@@ -1480,7 +1519,7 @@ export const CertificatePacksListResultItemValidationErrorsItem =
   }) as any as S.Schema<CertificatePacksListResultItemValidationErrorsItem>;
 
 export type CertificatePacksListResultItemValidationErrorsList =
-  CertificatePacksListResultItemValidationErrorsItem[];
+  ReadonlyArray<CertificatePacksListResultItemValidationErrorsItem>;
 export const CertificatePacksListResultItemValidationErrorsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksListResultItemValidationErrorsItem,
@@ -1489,13 +1528,12 @@ export const CertificatePacksListResultItemValidationErrorsList =
 export type CertificatePacksListResultItemValidationMethod =
   | "txt"
   | "http"
-  | "email"
-  | (string & {});
+  | "email";
 export const CertificatePacksListResultItemValidationMethod =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksListResultItemValidationRecordsItemEmailsList =
-  string[];
+  ReadonlyArray<string>;
 export const CertificatePacksListResultItemValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1538,29 +1576,15 @@ export const CertificatePacksListResultItemValidationRecordsItem =
   }) as any as S.Schema<CertificatePacksListResultItemValidationRecordsItem>;
 
 export type CertificatePacksListResultItemValidationRecordsList =
-  CertificatePacksListResultItemValidationRecordsItem[];
+  ReadonlyArray<CertificatePacksListResultItemValidationRecordsItem>;
 export const CertificatePacksListResultItemValidationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksListResultItemValidationRecordsItem,
   ) as any as S.Schema<CertificatePacksListResultItemValidationRecordsList>;
 
-export interface CertificatePacksListResultItemValidityDays {
-  "14": unknown;
-  "30": unknown;
-  "90": unknown;
-  "365": unknown;
-}
+export type CertificatePacksListResultItemValidityDays = 14 | 30 | 90 | 365;
 export const CertificatePacksListResultItemValidityDays =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "14": S.Unknown,
-      "30": S.Unknown,
-      "90": S.Unknown,
-      "365": S.Unknown,
-    }),
-  ).annotate({
-    identifier: "CertificatePacksListResultItemValidityDays",
-  }) as any as S.Schema<CertificatePacksListResultItemValidityDays>;
+  /*@__PURE__*/ S.Number;
 
 export interface CertificatePacksListResultItem {
   /** Identifier. */
@@ -1570,7 +1594,7 @@ export interface CertificatePacksListResultItem {
   /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: CertificatePacksListResultItemHostsList;
   /** Status of certificate pack. */
-  status: unknown;
+  status: CertificatePacksListResultItemStatus;
   /** Type of certificate pack. */
   type: CertificatePacksListResultItemType;
   /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
@@ -1595,7 +1619,7 @@ export const CertificatePacksListResultItem = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     certificates: CertificatePacksListResultItemCertificatesList,
     hosts: CertificatePacksListResultItemHostsList,
-    status: S.Unknown,
+    status: CertificatePacksListResultItemStatus,
     type: CertificatePacksListResultItemType,
     certificateAuthority: S.optional(
       CertificatePacksListResultItemCertificateAuthority.pipe(
@@ -1636,7 +1660,8 @@ export const CertificatePacksListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CertificatePacksListResultItem",
 }) as any as S.Schema<CertificatePacksListResultItem>;
 
-export type CertificatePacksListResultList = CertificatePacksListResultItem[];
+export type CertificatePacksListResultList =
+  ReadonlyArray<CertificatePacksListResultItem>;
 export const CertificatePacksListResultList = /*@__PURE__*/ S.Array(
   CertificatePacksListResultItem,
 ) as any as S.Schema<CertificatePacksListResultList>;
@@ -1724,7 +1749,8 @@ export const PatchCertificatePackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchCertificatePackRequest",
 }) as any as S.Schema<PatchCertificatePackRequest>;
 
-export type CertificatePacksEditResponseCertificatesItemHostsList = string[];
+export type CertificatePacksEditResponseCertificatesItemHostsList =
+  ReadonlyArray<string>;
 export const CertificatePacksEditResponseCertificatesItemHostsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1733,8 +1759,7 @@ export const CertificatePacksEditResponseCertificatesItemHostsList =
 export type CertificatePacksEditResponseCertificatesItemGeoRestrictionsLabel =
   | "us"
   | "eu"
-  | "highest_security"
-  | (string & {});
+  | "highest_security";
 export const CertificatePacksEditResponseCertificatesItemGeoRestrictionsLabel =
   /*@__PURE__*/ S.String;
 
@@ -1803,34 +1828,61 @@ export const CertificatePacksEditResponseCertificatesItem =
   }) as any as S.Schema<CertificatePacksEditResponseCertificatesItem>;
 
 export type CertificatePacksEditResponseCertificatesList =
-  CertificatePacksEditResponseCertificatesItem[];
+  ReadonlyArray<CertificatePacksEditResponseCertificatesItem>;
 export const CertificatePacksEditResponseCertificatesList =
   /*@__PURE__*/ S.Array(
     CertificatePacksEditResponseCertificatesItem,
   ) as any as S.Schema<CertificatePacksEditResponseCertificatesList>;
 
-export type CertificatePacksEditResponseHostsList = unknown[];
+export type CertificatePacksEditResponseHostsList = ReadonlyArray<unknown>;
 export const CertificatePacksEditResponseHostsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CertificatePacksEditResponseHostsList>;
+
+export type CertificatePacksEditResponseStatus =
+  | "initializing"
+  | "pending_validation"
+  | "deleted"
+  | "pending_issuance"
+  | "pending_deployment"
+  | "pending_deletion"
+  | "pending_expiration"
+  | "expired"
+  | "active"
+  | "initializing_timed_out"
+  | "validation_timed_out"
+  | "issuance_timed_out"
+  | "deployment_timed_out"
+  | "deletion_timed_out"
+  | "pending_cleanup"
+  | "staging_deployment"
+  | "staging_active"
+  | "deactivating"
+  | "inactive"
+  | "backup_issued"
+  | "holding_deployment";
+export const CertificatePacksEditResponseStatus = /*@__PURE__*/ S.String;
 
 export type CertificatePacksEditResponseType =
   | "mh_custom"
   | "managed_hostname"
   | "sni_custom"
-  | (string & {});
+  | "universal"
+  | "advanced"
+  | "total_tls"
+  | "keyless"
+  | "legacy_custom";
 export const CertificatePacksEditResponseType = /*@__PURE__*/ S.String;
 
 export type CertificatePacksEditResponseCertificateAuthority =
   | "google"
   | "lets_encrypt"
-  | "ssl_com"
-  | (string & {});
+  | "ssl_com";
 export const CertificatePacksEditResponseCertificateAuthority =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList =
-  string[];
+  ReadonlyArray<string>;
 export const CertificatePacksEditResponseDcvDelegationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1873,7 +1925,7 @@ export const CertificatePacksEditResponseDcvDelegationRecordsItem =
   }) as any as S.Schema<CertificatePacksEditResponseDcvDelegationRecordsItem>;
 
 export type CertificatePacksEditResponseDcvDelegationRecordsList =
-  CertificatePacksEditResponseDcvDelegationRecordsItem[];
+  ReadonlyArray<CertificatePacksEditResponseDcvDelegationRecordsItem>;
 export const CertificatePacksEditResponseDcvDelegationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksEditResponseDcvDelegationRecordsItem,
@@ -1893,7 +1945,7 @@ export const CertificatePacksEditResponseValidationErrorsItem =
   }) as any as S.Schema<CertificatePacksEditResponseValidationErrorsItem>;
 
 export type CertificatePacksEditResponseValidationErrorsList =
-  CertificatePacksEditResponseValidationErrorsItem[];
+  ReadonlyArray<CertificatePacksEditResponseValidationErrorsItem>;
 export const CertificatePacksEditResponseValidationErrorsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksEditResponseValidationErrorsItem,
@@ -1902,13 +1954,12 @@ export const CertificatePacksEditResponseValidationErrorsList =
 export type CertificatePacksEditResponseValidationMethod =
   | "txt"
   | "http"
-  | "email"
-  | (string & {});
+  | "email";
 export const CertificatePacksEditResponseValidationMethod =
   /*@__PURE__*/ S.String;
 
 export type CertificatePacksEditResponseValidationRecordsItemEmailsList =
-  string[];
+  ReadonlyArray<string>;
 export const CertificatePacksEditResponseValidationRecordsItemEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1951,29 +2002,14 @@ export const CertificatePacksEditResponseValidationRecordsItem =
   }) as any as S.Schema<CertificatePacksEditResponseValidationRecordsItem>;
 
 export type CertificatePacksEditResponseValidationRecordsList =
-  CertificatePacksEditResponseValidationRecordsItem[];
+  ReadonlyArray<CertificatePacksEditResponseValidationRecordsItem>;
 export const CertificatePacksEditResponseValidationRecordsList =
   /*@__PURE__*/ S.Array(
     CertificatePacksEditResponseValidationRecordsItem,
   ) as any as S.Schema<CertificatePacksEditResponseValidationRecordsList>;
 
-export interface CertificatePacksEditResponseValidityDays {
-  "14": unknown;
-  "30": unknown;
-  "90": unknown;
-  "365": unknown;
-}
-export const CertificatePacksEditResponseValidityDays = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      "14": S.Unknown,
-      "30": S.Unknown,
-      "90": S.Unknown,
-      "365": S.Unknown,
-    }),
-).annotate({
-  identifier: "CertificatePacksEditResponseValidityDays",
-}) as any as S.Schema<CertificatePacksEditResponseValidityDays>;
+export type CertificatePacksEditResponseValidityDays = 14 | 30 | 90 | 365;
+export const CertificatePacksEditResponseValidityDays = /*@__PURE__*/ S.Number;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchCertificatePackResponse {
@@ -1984,7 +2020,7 @@ export interface PatchCertificatePackResponse {
   /** Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty. */
   hosts: CertificatePacksEditResponseHostsList;
   /** Status of certificate pack. */
-  status: unknown;
+  status: CertificatePacksEditResponseStatus;
   /** Type of certificate pack. */
   type: CertificatePacksEditResponseType;
   /** Certificate Authority selected for the order. For information on any certificate authority specific details or restrictions [see this page for more details](https://developers.cloudflare.com/ssl/reference/certificate-authorities). */
@@ -2009,7 +2045,7 @@ export const PatchCertificatePackResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     certificates: CertificatePacksEditResponseCertificatesList,
     hosts: CertificatePacksEditResponseHostsList,
-    status: S.Unknown,
+    status: CertificatePacksEditResponseStatus,
     type: CertificatePacksEditResponseType,
     certificateAuthority: S.optional(
       CertificatePacksEditResponseCertificateAuthority.pipe(
@@ -2090,8 +2126,7 @@ export type VerificationEditRequestValidationMethod =
   | "http"
   | "cname"
   | "txt"
-  | "email"
-  | (string & {});
+  | "email";
 export const VerificationEditRequestValidationMethod = /*@__PURE__*/ S.String;
 
 export interface PatchVerificationRequest {
@@ -2126,8 +2161,7 @@ export type VerificationEditResponseValidationMethod =
   | "http"
   | "cname"
   | "txt"
-  | "email"
-  | (string & {});
+  | "email";
 export const VerificationEditResponseValidationMethod = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

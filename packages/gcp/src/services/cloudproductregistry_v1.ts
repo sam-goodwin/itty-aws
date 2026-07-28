@@ -59,11 +59,10 @@ export type LogicalProductLifecycleStateEnum =
   | "LIFECYCLE_STATE_PUBLIC_PREVIEW"
   | "LIFECYCLE_STATE_PRIVATE_GA"
   | "LIFECYCLE_STATE_GA"
-  | "LIFECYCLE_STATE_DEPRECATED"
-  | (string & {});
+  | "LIFECYCLE_STATE_DEPRECATED";
 export const LogicalProductLifecycleStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -120,8 +119,7 @@ export type LogicalProductVariantLifecycleStateEnum =
   | "LIFECYCLE_STATE_PUBLIC_PREVIEW"
   | "LIFECYCLE_STATE_PRIVATE_GA"
   | "LIFECYCLE_STATE_GA"
-  | "LIFECYCLE_STATE_DEPRECATED"
-  | (string & {});
+  | "LIFECYCLE_STATE_DEPRECATED";
 export const LogicalProductVariantLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a distinct offering derived from a primary product that retains core functionalities but offers specialized features for a specific market segment. */
@@ -214,7 +212,7 @@ export const ListLogicalProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLogicalProductsRequest",
 }) as any as S.Schema<ListLogicalProductsRequest>;
 
-export type LogicalProductList = LogicalProduct[];
+export type LogicalProductList = ReadonlyArray<LogicalProduct>;
 export const LogicalProductList = /*@__PURE__*/ S.Array(
   LogicalProduct,
 ) as any as S.Schema<LogicalProductList>;
@@ -259,7 +257,7 @@ export const ListLogicalProductsVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLogicalProductsVariantsRequest",
 }) as any as S.Schema<ListLogicalProductsVariantsRequest>;
 
-export type LogicalProductVariantList = LogicalProductVariant[];
+export type LogicalProductVariantList = ReadonlyArray<LogicalProductVariant>;
 export const LogicalProductVariantList = /*@__PURE__*/ S.Array(
   LogicalProductVariant,
 ) as any as S.Schema<LogicalProductVariantList>;
@@ -301,7 +299,7 @@ export const ListProductSuitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProductSuitesRequest",
 }) as any as S.Schema<ListProductSuitesRequest>;
 
-export type ProductSuiteList = ProductSuite[];
+export type ProductSuiteList = ReadonlyArray<ProductSuite>;
 export const ProductSuiteList = /*@__PURE__*/ S.Array(
   ProductSuite,
 ) as any as S.Schema<ProductSuiteList>;

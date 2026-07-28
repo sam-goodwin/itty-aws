@@ -1163,16 +1163,27 @@
             "smithy.api#documentation": "Appliances name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.resourceconnector#AppliancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resourceconnector#AppliancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags"
       }
     },
     "com.azure.resourceconnector#AppliancesCreateOrUpdate": {
@@ -1290,16 +1301,106 @@
             "smithy.api#documentation": "Appliances name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.resourceconnector#AppliancesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.resourceconnector#AppliancePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The set of properties specific to an Appliance"
+          }
+        },
+        "identity": {
+          "target": "com.azure.resourceconnector#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.resourceconnector#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.resourceconnector#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.resourceconnector#AppliancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "distro": {
+          "target": "com.azure.resourceconnector#AppliancePropertiesInputDistro",
+          "traits": {
+            "smithy.api#documentation": "Represents a supported Fabric/Infra. (AKSEdge etc...)."
+          }
+        },
+        "infrastructureConfig": {
+          "target": "com.azure.resourceconnector#AppliancePropertiesInfrastructureConfig",
+          "traits": {
+            "smithy.api#documentation": "Contains infrastructure information about the Appliance"
+          }
+        },
+        "publicKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Certificates pair used to download MSI certificate from HIS. Can only be set once."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Version of the Appliance"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for an appliance."
+      }
+    },
+    "com.azure.resourceconnector#AppliancePropertiesInputDistro": {
+      "type": "enum",
+      "members": {
+        "AKSEDGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AKSEdge"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents a supported Fabric/Infra. (AKSEdge etc...)."
+      }
+    },
+    "com.azure.resourceconnector#AppliancesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.resourceconnector#AppliancesGet": {

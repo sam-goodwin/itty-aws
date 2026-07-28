@@ -19,9 +19,18 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateAssetUploadBodyMap",
+      "value": {
+        "type": "map",
+        "key": { "target": "smithy.api#String" },
+        "value": { "target": "smithy.api#String" }
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.workers#CreateAssetUploadRequest/members/body",
       "value": {
-        "target": "smithy.api#Document",
+        "target": "com.cloudflare.workers#CreateAssetUploadBodyMap",
         "traits": {
           "smithy.api#httpPayload": {},
           "smithy.api#documentation": "Map of asset hash -> base64 file content; each entry is a multipart form part."

@@ -752,13 +752,6 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsUpdateRequestDistinctIdsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
     "com.posthog.persons#PersonsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -784,38 +777,10 @@
             "smithy.api#httpQuery": "format"
           }
         },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name derived from person properties (email, name, or username)."
-          }
-        },
-        "distinct_ids": {
-          "target": "com.posthog.persons#PersonsUpdateRequestDistinctIdsList"
-        },
         "properties": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Key-value map of person properties set via $set and $set_once operations."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this person was first seen (ISO 8601)."
-          }
-        },
-        "uuid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier (UUID) for this person."
-          }
-        },
-        "last_seen_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp of the last event from this person, or null.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -869,13 +834,6 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsPartialUpdateRequestDistinctIdsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
     "com.posthog.persons#PersonsPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -901,38 +859,10 @@
             "smithy.api#httpQuery": "format"
           }
         },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name derived from person properties (email, name, or username)."
-          }
-        },
-        "distinct_ids": {
-          "target": "com.posthog.persons#PersonsPartialUpdateRequestDistinctIdsList"
-        },
         "properties": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Key-value map of person properties set via $set and $set_once operations."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this person was first seen (ISO 8601)."
-          }
-        },
-        "uuid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier (UUID) for this person."
-          }
-        },
-        "last_seen_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp of the last event from this person, or null.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1694,13 +1624,6 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsBatchByDistinctIdsCreateRequestDistinctIdsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
     "com.posthog.persons#PersonsBatchByDistinctIdsCreateRequest": {
       "type": "structure",
       "members": {
@@ -1718,44 +1641,10 @@
             "smithy.api#httpQuery": "format"
           }
         },
-        "id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Numeric person ID."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name derived from person properties (email, name, or username)."
-          }
-        },
-        "distinct_ids": {
-          "target": "com.posthog.persons#PersonsBatchByDistinctIdsCreateRequestDistinctIdsList"
-        },
         "properties": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Key-value map of person properties set via $set and $set_once operations."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this person was first seen (ISO 8601)."
-          }
-        },
-        "uuid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier (UUID) for this person."
-          }
-        },
-        "last_seen_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp of the last event from this person, or null.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1809,13 +1698,6 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsBatchByUuidsCreateRequestDistinctIdsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
     "com.posthog.persons#PersonsBatchByUuidsCreateRequest": {
       "type": "structure",
       "members": {
@@ -1833,44 +1715,10 @@
             "smithy.api#httpQuery": "format"
           }
         },
-        "id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Numeric person ID."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name derived from person properties (email, name, or username)."
-          }
-        },
-        "distinct_ids": {
-          "target": "com.posthog.persons#PersonsBatchByUuidsCreateRequestDistinctIdsList"
-        },
         "properties": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Key-value map of person properties set via $set and $set_once operations."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this person was first seen (ISO 8601)."
-          }
-        },
-        "uuid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier (UUID) for this person."
-          }
-        },
-        "last_seen_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp of the last event from this person, or null.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -2534,13 +2382,6 @@
       },
       "traits": {}
     },
-    "com.posthog.persons#PersonsResetPersonDistinctIdCreateRequestDistinctIdsList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
     "com.posthog.persons#PersonsResetPersonDistinctIdCreateRequest": {
       "type": "structure",
       "members": {
@@ -2558,44 +2399,10 @@
             "smithy.api#httpQuery": "format"
           }
         },
-        "id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Numeric person ID."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Display name derived from person properties (email, name, or username)."
-          }
-        },
-        "distinct_ids": {
-          "target": "com.posthog.persons#PersonsResetPersonDistinctIdCreateRequestDistinctIdsList"
-        },
         "properties": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Key-value map of person properties set via $set and $set_once operations."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this person was first seen (ISO 8601)."
-          }
-        },
-        "uuid": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Unique identifier (UUID) for this person."
-          }
-        },
-        "last_seen_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp of the last event from this person, or null.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },

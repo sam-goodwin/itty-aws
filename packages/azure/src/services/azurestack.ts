@@ -150,36 +150,6 @@ export const CloudManifestFileListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CloudManifestFileListResponse",
 }) as any as S.Schema<CloudManifestFileListResponse>;
 
-export interface CustomerSubscriptionsCreateRequest {
-  /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** Name of the resource group. */
-  resourceGroup: string;
-  /** Name of the Azure Stack registration. */
-  registrationName: string;
-  /** Name of the product. */
-  customerSubscriptionName: string;
-  body: unknown;
-}
-export const CustomerSubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroup: S.String.pipe(T.Label()),
-    registrationName: S.String.pipe(T.Label()),
-    customerSubscriptionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionName}",
-      code: 200,
-      apiVersion: "2022-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "CustomerSubscriptionsCreateRequest",
-}) as any as S.Schema<CustomerSubscriptionsCreateRequest>;
-
 /** Customer subscription properties. */
 export interface CustomerSubscriptionProperties {
   /** Tenant Id. */
@@ -192,6 +162,40 @@ export const CustomerSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomerSubscriptionProperties",
 }) as any as S.Schema<CustomerSubscriptionProperties>;
+
+export interface CustomerSubscriptionsCreateRequest {
+  /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** Name of the resource group. */
+  resourceGroup: string;
+  /** Name of the Azure Stack registration. */
+  registrationName: string;
+  /** Name of the product. */
+  customerSubscriptionName: string;
+  /** The entity tag used for optimistic concurrency when modifying the resource. */
+  etag?: string;
+  /** Customer subscription properties. */
+  properties?: CustomerSubscriptionProperties;
+}
+export const CustomerSubscriptionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroup: S.String.pipe(T.Label()),
+    registrationName: S.String.pipe(T.Label()),
+    customerSubscriptionName: S.String.pipe(T.Label()),
+    etag: S.optional(S.String),
+    properties: S.optional(CustomerSubscriptionProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionName}",
+      code: 200,
+      apiVersion: "2022-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "CustomerSubscriptionsCreateRequest",
+}) as any as S.Schema<CustomerSubscriptionsCreateRequest>;
 
 export interface CustomerSubscriptionsCreateResponse {
   /** ID of the resource. */
@@ -355,7 +359,8 @@ export const CustomerSubscription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerSubscription>;
 
 /** List of customer subscriptions. */
-export type CustomerSubscriptionListValueList = CustomerSubscription[];
+export type CustomerSubscriptionListValueList =
+  ReadonlyArray<CustomerSubscription>;
 export const CustomerSubscriptionListValueList = /*@__PURE__*/ S.Array(
   CustomerSubscription,
 ) as any as S.Schema<CustomerSubscriptionListValueList>;
@@ -379,12 +384,13 @@ export const CustomerSubscriptionList = /*@__PURE__*/ S.suspend(() =>
 export interface DeploymentLicenseCreateRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
-  body: unknown;
+  /** Signing verification public key version. */
+  verificationVersion?: string;
 }
 export const DeploymentLicenseCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    verificationVersion: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -398,7 +404,8 @@ export const DeploymentLicenseCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentLicenseCreateRequest>;
 
 /** A license chain that can be used to temporarily activate an Azure Stack device. */
-export type DeploymentLicenseResponseTemporaryLicenseChainList = string[];
+export type DeploymentLicenseResponseTemporaryLicenseChainList =
+  ReadonlyArray<string>;
 export const DeploymentLicenseResponseTemporaryLicenseChainList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -474,7 +481,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Array of operations */
-export type OperationListValueList = Operation[];
+export type OperationListValueList = ReadonlyArray<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -559,7 +566,7 @@ export const ProductLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductLink" }) as any as S.Schema<ProductLink>;
 
 /** Additional links available for this product. */
-export type ProductNestedPropertiesLinksList = ProductLink[];
+export type ProductNestedPropertiesLinksList = ReadonlyArray<ProductLink>;
 export const ProductNestedPropertiesLinksList = /*@__PURE__*/ S.Array(
   ProductLink,
 ) as any as S.Schema<ProductNestedPropertiesLinksList>;
@@ -588,12 +595,11 @@ export type CompatibilityIssue =
   | "ADFSIdentitySystemRequired"
   | "ConnectionToInternetRequired"
   | "ConnectionToAzureRequired"
-  | "DisconnectedEnvironmentRequired"
-  | (string & {});
+  | "DisconnectedEnvironmentRequired";
 export const CompatibilityIssue = /*@__PURE__*/ S.String;
 
 /** List of all issues found */
-export type CompatibilityIssuesList = CompatibilityIssue[];
+export type CompatibilityIssuesList = ReadonlyArray<CompatibilityIssue>;
 export const CompatibilityIssuesList = /*@__PURE__*/ S.Array(
   CompatibilityIssue,
 ) as any as S.Schema<CompatibilityIssuesList>;
@@ -715,7 +721,6 @@ export interface ProductsGetProductRequest {
   registrationName: string;
   /** Name of the product. */
   productName: string;
-  body?: unknown;
 }
 export const ProductsGetProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -723,7 +728,6 @@ export const ProductsGetProductRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroup: S.String.pipe(T.Label()),
     registrationName: S.String.pipe(T.Label()),
     productName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -769,7 +773,6 @@ export interface ProductsGetProductsRequest {
   registrationName: string;
   /** Name of the product. */
   productName: string;
-  body?: unknown;
 }
 export const ProductsGetProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -777,7 +780,6 @@ export const ProductsGetProductsRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroup: S.String.pipe(T.Label()),
     registrationName: S.String.pipe(T.Label()),
     productName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -814,7 +816,7 @@ export const Product = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
 
 /** List of products. */
-export type ProductListValueList = Product[];
+export type ProductListValueList = ReadonlyArray<Product>;
 export const ProductListValueList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductListValueList>;
@@ -887,7 +889,7 @@ export const ProductsListDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductsListDetailsRequest>;
 
 /** Compute role type (IaaS or PaaS). */
-export type ComputeRole = "None" | "IaaS" | "PaaS" | (string & {});
+export type ComputeRole = "None" | "IaaS" | "PaaS";
 export const ComputeRole = /*@__PURE__*/ S.String;
 
 /** The URI. */
@@ -902,7 +904,7 @@ export const Uri = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Uri" }) as any as S.Schema<Uri>;
 
 /** Operating system type (Windows or Linux). */
-export type OperatingSystem = "None" | "Windows" | "Linux" | (string & {});
+export type OperatingSystem = "None" | "Windows" | "Linux";
 export const OperatingSystem = /*@__PURE__*/ S.String;
 
 /** OS disk image. */
@@ -934,7 +936,8 @@ export const DataDiskImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataDiskImage" }) as any as S.Schema<DataDiskImage>;
 
 /** List of attached data disks. */
-export type ExtendedProductPropertiesDataDiskImagesList = DataDiskImage[];
+export type ExtendedProductPropertiesDataDiskImagesList =
+  ReadonlyArray<DataDiskImage>;
 export const ExtendedProductPropertiesDataDiskImagesList =
   /*@__PURE__*/ S.Array(
     DataDiskImage,
@@ -1005,7 +1008,6 @@ export interface ProductsListProductsRequest {
   registrationName: string;
   /** Name of the product. */
   productName: string;
-  body?: unknown;
 }
 export const ProductsListProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1013,7 +1015,6 @@ export const ProductsListProductsRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroup: S.String.pipe(T.Label()),
     registrationName: S.String.pipe(T.Label()),
     productName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1035,7 +1036,6 @@ export interface ProductsUploadLogRequest {
   registrationName: string;
   /** Name of the product. */
   productName: string;
-  body?: unknown;
 }
 export const ProductsUploadLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1043,7 +1043,6 @@ export const ProductsUploadLogRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroup: S.String.pipe(T.Label()),
     registrationName: S.String.pipe(T.Label()),
     productName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1097,6 +1096,24 @@ export const ProductLog = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductLog" }) as any as S.Schema<ProductLog>;
 
+/** Properties of the Azure Stack registration resource */
+export interface RegistrationParameterProperties {
+  /** The token identifying registered Azure Stack */
+  registrationToken: string;
+}
+export const RegistrationParameterProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registrationToken: S.String,
+  }),
+).annotate({
+  identifier: "RegistrationParameterProperties",
+}) as any as S.Schema<RegistrationParameterProperties>;
+
+/** Location of the resource. */
+export type RegistrationsCreateOrUpdateRequestLocation = "global";
+export const RegistrationsCreateOrUpdateRequestLocation =
+  /*@__PURE__*/ S.String;
+
 export interface RegistrationsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1104,14 +1121,18 @@ export interface RegistrationsCreateOrUpdateRequest {
   resourceGroup: string;
   /** Name of the Azure Stack registration. */
   registrationName: string;
-  body: unknown;
+  /** Properties of the Azure Stack registration resource */
+  properties: RegistrationParameterProperties;
+  /** Location of the resource. */
+  location: RegistrationsCreateOrUpdateRequestLocation;
 }
 export const RegistrationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroup: S.String.pipe(T.Label()),
     registrationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: RegistrationParameterProperties,
+    location: RegistrationsCreateOrUpdateRequestLocation,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1125,9 +1146,7 @@ export const RegistrationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsCreateOrUpdateRequest>;
 
 /** Location of the resource. */
-export type RegistrationsCreateOrUpdateResponseLocation =
-  | "global"
-  | (string & {});
+export type RegistrationsCreateOrUpdateResponseLocation = "global";
 export const RegistrationsCreateOrUpdateResponseLocation =
   /*@__PURE__*/ S.String;
 
@@ -1280,7 +1299,7 @@ export const RegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsGetRequest>;
 
 /** Location of the resource. */
-export type RegistrationsGetResponseLocation = "global" | (string & {});
+export type RegistrationsGetResponseLocation = "global";
 export const RegistrationsGetResponseLocation = /*@__PURE__*/ S.String;
 
 /** Custom tags for the resource. */
@@ -1384,7 +1403,7 @@ export const RegistrationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsListRequest>;
 
 /** Location of the resource. */
-export type RegistrationLocation = "global" | (string & {});
+export type RegistrationLocation = "global";
 export const RegistrationLocation = /*@__PURE__*/ S.String;
 
 /** Custom tags for the resource. */
@@ -1424,7 +1443,7 @@ export const Registration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Registration" }) as any as S.Schema<Registration>;
 
 /** List of Registrations */
-export type RegistrationListValueList = Registration[];
+export type RegistrationListValueList = ReadonlyArray<Registration>;
 export const RegistrationListValueList = /*@__PURE__*/ S.Array(
   Registration,
 ) as any as S.Schema<RegistrationListValueList>;
@@ -1465,6 +1484,10 @@ export const RegistrationsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "RegistrationsListBySubscriptionRequest",
 }) as any as S.Schema<RegistrationsListBySubscriptionRequest>;
 
+/** Location of the resource. */
+export type RegistrationsUpdateRequestLocation = "global";
+export const RegistrationsUpdateRequestLocation = /*@__PURE__*/ S.String;
+
 export interface RegistrationsUpdateRequest {
   /** Subscription credentials that uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1472,14 +1495,18 @@ export interface RegistrationsUpdateRequest {
   resourceGroup: string;
   /** Name of the Azure Stack registration. */
   registrationName: string;
-  body: unknown;
+  /** Properties of the Azure Stack registration resource */
+  properties: RegistrationParameterProperties;
+  /** Location of the resource. */
+  location: RegistrationsUpdateRequestLocation;
 }
 export const RegistrationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroup: S.String.pipe(T.Label()),
     registrationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: RegistrationParameterProperties,
+    location: RegistrationsUpdateRequestLocation,
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1493,7 +1520,7 @@ export const RegistrationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationsUpdateRequest>;
 
 /** Location of the resource. */
-export type RegistrationsUpdateResponseLocation = "global" | (string & {});
+export type RegistrationsUpdateResponseLocation = "global";
 export const RegistrationsUpdateResponseLocation = /*@__PURE__*/ S.String;
 
 /** Custom tags for the resource. */

@@ -36,7 +36,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 export type GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -45,8 +45,6 @@ export const GroupsTypesCreateDetailDashboardUpdateRequestDefaultColumnsList =
 export interface GroupsTypesCreateDetailDashboardUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  group_type?: string;
-  group_type_index?: number;
   name_singular?: string | null;
   name_plural?: string | null;
   detail_dashboard?: number | null;
@@ -57,8 +55,6 @@ export const GroupsTypesCreateDetailDashboardUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      group_type: S.optional(S.String),
-      group_type_index: S.optional(S.Number),
       name_singular: S.optional(S.NullOr(S.String)),
       name_plural: S.optional(S.NullOr(S.String)),
       detail_dashboard: S.optional(S.NullOr(S.Number)),
@@ -130,7 +126,7 @@ export const GroupsTypesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupsTypesListRequest",
 }) as any as S.Schema<GroupsTypesListRequest>;
 
-export type GroupTypeDefaultColumnsList = string[];
+export type GroupTypeDefaultColumnsList = ReadonlyArray<string>;
 export const GroupTypeDefaultColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GroupTypeDefaultColumnsList>;
@@ -156,7 +152,7 @@ export const GroupType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupType" }) as any as S.Schema<GroupType>;
 
-export type GroupsTypesListResponseBodyList = GroupType[];
+export type GroupsTypesListResponseBodyList = ReadonlyArray<GroupType>;
 export const GroupsTypesListResponseBodyList = /*@__PURE__*/ S.Array(
   GroupType,
 ) as any as S.Schema<GroupsTypesListResponseBodyList>;
@@ -169,14 +165,11 @@ export const GroupsTypesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsTypesListResponse>;
 
 /** * `numeric` - numeric * `currency` - currency */
-export type GroupUsageMetricFormatEnum = "numeric" | "currency" | (string & {});
+export type GroupUsageMetricFormatEnum = "numeric" | "currency";
 export const GroupUsageMetricFormatEnum = /*@__PURE__*/ S.String;
 
 /** * `number` - number * `sparkline` - sparkline */
-export type GroupUsageMetricDisplayEnum =
-  | "number"
-  | "sparkline"
-  | (string & {});
+export type GroupUsageMetricDisplayEnum = "number" | "sparkline";
 export const GroupUsageMetricDisplayEnum = /*@__PURE__*/ S.String;
 
 /** Filter definition for the metric. Two shapes are accepted, discriminated by an optional `source` key. **Events** (default, when `source` is missing or `"events"`): HogFunction filter shape — `events: [...]`, optional `actions: [...]`, `properties: [...]`, `filter_test_accounts: bool`. **Data warehouse** (`source: "data_warehouse"`): `table_name` (synced DW table), `timestamp_field` (timestamp column or HogQL expression), `key_field` (column whose value matches the entity key). Currently DW metrics only render on group profiles — person profiles are not yet supported. */
@@ -189,14 +182,13 @@ export const GroupsTypesMetricsCreateRequestFiltersMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GroupsTypesMetricsCreateRequestFiltersMap>;
 
 /** * `count` - count * `sum` - sum */
-export type MathEnum = "count" | "sum" | (string & {});
+export type MathEnum = "count" | "sum";
 export const MathEnum = /*@__PURE__*/ S.String;
 
 export interface GroupsTypesMetricsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   group_type_index: number;
-  id?: string;
   /** Name of the usage metric. Must be unique per group type within the project. */
   name?: string;
   /** How the metric value is formatted in the UI. One of `numeric` or `currency`. * `numeric` - numeric * `currency` - currency */
@@ -216,7 +208,6 @@ export const GroupsTypesMetricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     group_type_index: S.Number.pipe(T.Label()),
-    id: S.optional(S.String),
     name: S.optional(S.String),
     format: S.optional(GroupUsageMetricFormatEnum),
     interval: S.optional(S.Number),
@@ -330,7 +321,8 @@ export const GroupsTypesMetricsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupsTypesMetricsListRequest",
 }) as any as S.Schema<GroupsTypesMetricsListRequest>;
 
-export type PaginatedGroupUsageMetricListResultsList = GroupUsageMetric[];
+export type PaginatedGroupUsageMetricListResultsList =
+  ReadonlyArray<GroupUsageMetric>;
 export const PaginatedGroupUsageMetricListResultsList = /*@__PURE__*/ S.Array(
   GroupUsageMetric,
 ) as any as S.Schema<PaginatedGroupUsageMetricListResultsList>;
@@ -484,7 +476,7 @@ export const GroupsTypesMetricsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsTypesMetricsUpdateRequest>;
 
 export type GroupsTypesSetDefaultColumnsUpdateRequestDefaultColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const GroupsTypesSetDefaultColumnsUpdateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -493,8 +485,6 @@ export const GroupsTypesSetDefaultColumnsUpdateRequestDefaultColumnsList =
 export interface GroupsTypesSetDefaultColumnsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  group_type?: string;
-  group_type_index?: number;
   name_singular?: string | null;
   name_plural?: string | null;
   detail_dashboard?: number | null;
@@ -505,8 +495,6 @@ export const GroupsTypesSetDefaultColumnsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      group_type: S.optional(S.String),
-      group_type_index: S.optional(S.Number),
       name_singular: S.optional(S.NullOr(S.String)),
       name_plural: S.optional(S.NullOr(S.String)),
       detail_dashboard: S.optional(S.NullOr(S.Number)),
@@ -532,7 +520,7 @@ export const GroupsTypesSetDefaultColumnsUpdateResponse =
   }) as any as S.Schema<GroupsTypesSetDefaultColumnsUpdateResponse>;
 
 export type GroupsTypesUpdateMetadataPartialUpdateRequestDefaultColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const GroupsTypesUpdateMetadataPartialUpdateRequestDefaultColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -541,8 +529,6 @@ export const GroupsTypesUpdateMetadataPartialUpdateRequestDefaultColumnsList =
 export interface GroupsTypesUpdateMetadataPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  group_type?: string;
-  group_type_index?: number;
   name_singular?: string | null;
   name_plural?: string | null;
   detail_dashboard?: number | null;
@@ -553,8 +539,6 @@ export const GroupsTypesUpdateMetadataPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      group_type: S.optional(S.String),
-      group_type_index: S.optional(S.Number),
       name_singular: S.optional(S.NullOr(S.String)),
       name_plural: S.optional(S.NullOr(S.String)),
       detail_dashboard: S.optional(S.NullOr(S.Number)),

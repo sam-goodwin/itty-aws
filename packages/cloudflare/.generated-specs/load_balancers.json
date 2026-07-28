@@ -34,13 +34,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#CreateRequestCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#CreateRequestCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateRequestCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#CreateRequestLocationStrategyMode": {
@@ -112,13 +118,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.load_balancers#CreateRequestPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#CreateRequestPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateRequestPopPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#CreateRequestRandomSteeringPoolWeightsMap": {
@@ -127,7 +139,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#Double"
       }
     },
     "com.cloudflare.load_balancers#CreateRequestRandomSteering": {
@@ -147,13 +159,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#CreateRequestRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#CreateRequestRegionPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateRequestRegionPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#CreateRequestRulesItemFixedResponse": {
@@ -185,13 +203,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesDefaultPoolsList": {
@@ -200,13 +224,25 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesPopPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesRegionPoolsMap": {
@@ -215,7 +251,36 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesRegionPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesSessionAffinity": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookie"
+          }
+        },
+        "IP_COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_cookie"
+          }
+        },
+        "HEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "header"
+          }
+        }
       }
     },
     "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList": {
@@ -340,11 +405,64 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesSteeringPolicy": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "GEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geo"
+          }
+        },
+        "RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "random"
+          }
+        },
+        "DYNAMIC_LATENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic_latency"
+          }
+        },
+        "PROXIMITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proximity"
+          }
+        },
+        "LEAST_OUTSTANDING_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_outstanding_requests"
+          }
+        },
+        "LEAST_CONNECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_connections"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#CreateRequestRulesItemOverrides": {
       "type": "structure",
       "members": {
         "adaptive_routing": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateRequestAdaptiveRouting",
           "traits": {
             "smithy.api#documentation": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin."
           }
@@ -368,7 +486,7 @@
           }
         },
         "location_strategy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateRequestLocationStrategy",
           "traits": {
             "smithy.api#documentation": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected."
           }
@@ -380,7 +498,7 @@
           }
         },
         "random_steering": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateRequestRandomSteering",
           "traits": {
             "smithy.api#documentation": "Configures pool weights."
           }
@@ -392,7 +510,7 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
@@ -410,7 +528,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -568,13 +686,13 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
         },
         "session_affinity_attributes": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesSessionAffinityAttributes",
           "traits": {
             "smithy.api#documentation": "Configures attributes for session affinity."
           }
@@ -586,7 +704,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateRequestRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -613,13 +731,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#CreateResponseCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#CreateResponseCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateResponseCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#CreateResponseDefaultPoolsList": {
@@ -697,13 +821,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.load_balancers#CreateResponsePopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#CreateResponsePopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateResponsePopPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#CreateResponseRandomSteeringPoolWeightsMap": {
@@ -712,7 +842,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#Double"
       }
     },
     "com.cloudflare.load_balancers#CreateResponseRandomSteering": {
@@ -732,13 +862,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#CreateResponseRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#CreateResponseRegionPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateResponseRegionPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#CreateResponseRulesItemFixedResponse": {
@@ -770,13 +906,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesDefaultPoolsList": {
@@ -785,13 +927,25 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesPopPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesRegionPoolsMap": {
@@ -800,7 +954,36 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesRegionPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesSessionAffinity": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookie"
+          }
+        },
+        "IP_COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_cookie"
+          }
+        },
+        "HEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "header"
+          }
+        }
       }
     },
     "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesSessionAffinityAttributesHeadersList": {
@@ -925,11 +1108,64 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesSteeringPolicy": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "GEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geo"
+          }
+        },
+        "RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "random"
+          }
+        },
+        "DYNAMIC_LATENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic_latency"
+          }
+        },
+        "PROXIMITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proximity"
+          }
+        },
+        "LEAST_OUTSTANDING_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_outstanding_requests"
+          }
+        },
+        "LEAST_CONNECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_connections"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#CreateResponseRulesItemOverrides": {
       "type": "structure",
       "members": {
         "adaptive_routing": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateResponseAdaptiveRouting",
           "traits": {
             "smithy.api#documentation": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin."
           }
@@ -953,7 +1189,7 @@
           }
         },
         "location_strategy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateResponseLocationStrategy",
           "traits": {
             "smithy.api#documentation": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected."
           }
@@ -965,7 +1201,7 @@
           }
         },
         "random_steering": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateResponseRandomSteering",
           "traits": {
             "smithy.api#documentation": "Configures pool weights."
           }
@@ -977,7 +1213,7 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
@@ -995,7 +1231,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -1158,13 +1394,13 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
         },
         "session_affinity_attributes": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesSessionAffinityAttributes",
           "traits": {
             "smithy.api#documentation": "Configures attributes for session affinity."
           }
@@ -1176,7 +1412,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#CreateResponseRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -1276,13 +1512,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#EditRequestCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#EditRequestCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditRequestCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#EditRequestDefaultPoolsList": {
@@ -1354,13 +1596,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#EditRequestPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#EditRequestPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditRequestPopPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#EditRequestRandomSteeringPoolWeightsMap": {
@@ -1369,7 +1617,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#Double"
       }
     },
     "com.cloudflare.load_balancers#EditRequestRandomSteering": {
@@ -1389,13 +1637,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#EditRequestRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#EditRequestRegionPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditRequestRegionPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#EditRequestRulesItemFixedResponse": {
@@ -1427,13 +1681,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#EditRequestRulesItemOverridesCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#EditRequestRulesItemOverridesCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditRequestRulesItemOverridesCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#EditRequestRulesItemOverridesDefaultPoolsList": {
@@ -1442,13 +1702,25 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.load_balancers#EditRequestRulesItemOverridesPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#EditRequestRulesItemOverridesPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditRequestRulesItemOverridesPopPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#EditRequestRulesItemOverridesRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.load_balancers#EditRequestRulesItemOverridesRegionPoolsMap": {
@@ -1457,7 +1729,36 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditRequestRulesItemOverridesRegionPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#EditRequestRulesItemOverridesSessionAffinity": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookie"
+          }
+        },
+        "IP_COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_cookie"
+          }
+        },
+        "HEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "header"
+          }
+        }
       }
     },
     "com.cloudflare.load_balancers#EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList": {
@@ -1582,11 +1883,64 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#EditRequestRulesItemOverridesSteeringPolicy": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "GEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geo"
+          }
+        },
+        "RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "random"
+          }
+        },
+        "DYNAMIC_LATENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic_latency"
+          }
+        },
+        "PROXIMITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proximity"
+          }
+        },
+        "LEAST_OUTSTANDING_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_outstanding_requests"
+          }
+        },
+        "LEAST_CONNECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_connections"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#EditRequestRulesItemOverrides": {
       "type": "structure",
       "members": {
         "adaptive_routing": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditRequestAdaptiveRouting",
           "traits": {
             "smithy.api#documentation": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin."
           }
@@ -1610,7 +1964,7 @@
           }
         },
         "location_strategy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditRequestLocationStrategy",
           "traits": {
             "smithy.api#documentation": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected."
           }
@@ -1622,7 +1976,7 @@
           }
         },
         "random_steering": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditRequestRandomSteering",
           "traits": {
             "smithy.api#documentation": "Configures pool weights."
           }
@@ -1634,7 +1988,7 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditRequestRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
@@ -1652,7 +2006,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditRequestRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -1814,13 +2168,13 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditRequestRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
         },
         "session_affinity_attributes": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditRequestRulesItemOverridesSessionAffinityAttributes",
           "traits": {
             "smithy.api#documentation": "Configures attributes for session affinity."
           }
@@ -1832,7 +2186,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditRequestRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -1859,13 +2213,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#EditResponseCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#EditResponseCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditResponseCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#EditResponseDefaultPoolsList": {
@@ -1943,13 +2303,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.load_balancers#EditResponsePopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#EditResponsePopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditResponsePopPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#EditResponseRandomSteeringPoolWeightsMap": {
@@ -1958,7 +2324,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#Double"
       }
     },
     "com.cloudflare.load_balancers#EditResponseRandomSteering": {
@@ -1978,13 +2344,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#EditResponseRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#EditResponseRegionPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditResponseRegionPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#EditResponseRulesItemFixedResponse": {
@@ -2016,13 +2388,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#EditResponseRulesItemOverridesCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#EditResponseRulesItemOverridesCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditResponseRulesItemOverridesCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#EditResponseRulesItemOverridesDefaultPoolsList": {
@@ -2031,13 +2409,25 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.load_balancers#EditResponseRulesItemOverridesPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#EditResponseRulesItemOverridesPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditResponseRulesItemOverridesPopPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#EditResponseRulesItemOverridesRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.load_balancers#EditResponseRulesItemOverridesRegionPoolsMap": {
@@ -2046,7 +2436,36 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#EditResponseRulesItemOverridesRegionPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#EditResponseRulesItemOverridesSessionAffinity": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookie"
+          }
+        },
+        "IP_COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_cookie"
+          }
+        },
+        "HEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "header"
+          }
+        }
       }
     },
     "com.cloudflare.load_balancers#EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList": {
@@ -2171,11 +2590,64 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#EditResponseRulesItemOverridesSteeringPolicy": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "GEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geo"
+          }
+        },
+        "RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "random"
+          }
+        },
+        "DYNAMIC_LATENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic_latency"
+          }
+        },
+        "PROXIMITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proximity"
+          }
+        },
+        "LEAST_OUTSTANDING_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_outstanding_requests"
+          }
+        },
+        "LEAST_CONNECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_connections"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#EditResponseRulesItemOverrides": {
       "type": "structure",
       "members": {
         "adaptive_routing": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditResponseAdaptiveRouting",
           "traits": {
             "smithy.api#documentation": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin."
           }
@@ -2199,7 +2671,7 @@
           }
         },
         "location_strategy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditResponseLocationStrategy",
           "traits": {
             "smithy.api#documentation": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected."
           }
@@ -2211,7 +2683,7 @@
           }
         },
         "random_steering": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditResponseRandomSteering",
           "traits": {
             "smithy.api#documentation": "Configures pool weights."
           }
@@ -2223,7 +2695,7 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditResponseRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
@@ -2241,7 +2713,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditResponseRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -2404,13 +2876,13 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditResponseRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
         },
         "session_affinity_attributes": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditResponseRulesItemOverridesSessionAffinityAttributes",
           "traits": {
             "smithy.api#documentation": "Configures attributes for session affinity."
           }
@@ -2422,7 +2894,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#EditResponseRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -2492,13 +2964,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#GetResponseCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#GetResponseCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#GetResponseCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#GetResponseDefaultPoolsList": {
@@ -2576,13 +3054,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.load_balancers#GetResponsePopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#GetResponsePopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#GetResponsePopPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#GetResponseRandomSteeringPoolWeightsMap": {
@@ -2591,7 +3075,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#Double"
       }
     },
     "com.cloudflare.load_balancers#GetResponseRandomSteering": {
@@ -2611,13 +3095,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#GetResponseRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#GetResponseRegionPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#GetResponseRegionPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#GetResponseRulesItemFixedResponse": {
@@ -2649,13 +3139,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#GetResponseRulesItemOverridesCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#GetResponseRulesItemOverridesCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#GetResponseRulesItemOverridesCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#GetResponseRulesItemOverridesDefaultPoolsList": {
@@ -2664,13 +3160,25 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.load_balancers#GetResponseRulesItemOverridesPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#GetResponseRulesItemOverridesPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#GetResponseRulesItemOverridesPopPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#GetResponseRulesItemOverridesRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.load_balancers#GetResponseRulesItemOverridesRegionPoolsMap": {
@@ -2679,7 +3187,36 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#GetResponseRulesItemOverridesRegionPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#GetResponseRulesItemOverridesSessionAffinity": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookie"
+          }
+        },
+        "IP_COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_cookie"
+          }
+        },
+        "HEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "header"
+          }
+        }
       }
     },
     "com.cloudflare.load_balancers#GetResponseRulesItemOverridesSessionAffinityAttributesHeadersList": {
@@ -2804,11 +3341,64 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#GetResponseRulesItemOverridesSteeringPolicy": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "GEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geo"
+          }
+        },
+        "RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "random"
+          }
+        },
+        "DYNAMIC_LATENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic_latency"
+          }
+        },
+        "PROXIMITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proximity"
+          }
+        },
+        "LEAST_OUTSTANDING_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_outstanding_requests"
+          }
+        },
+        "LEAST_CONNECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_connections"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#GetResponseRulesItemOverrides": {
       "type": "structure",
       "members": {
         "adaptive_routing": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#GetResponseAdaptiveRouting",
           "traits": {
             "smithy.api#documentation": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin."
           }
@@ -2832,7 +3422,7 @@
           }
         },
         "location_strategy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#GetResponseLocationStrategy",
           "traits": {
             "smithy.api#documentation": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected."
           }
@@ -2844,7 +3434,7 @@
           }
         },
         "random_steering": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#GetResponseRandomSteering",
           "traits": {
             "smithy.api#documentation": "Configures pool weights."
           }
@@ -2856,7 +3446,7 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#GetResponseRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
@@ -2874,7 +3464,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#GetResponseRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -3037,13 +3627,13 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#GetResponseRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
         },
         "session_affinity_attributes": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#GetResponseRulesItemOverridesSessionAffinityAttributes",
           "traits": {
             "smithy.api#documentation": "Configures attributes for session affinity."
           }
@@ -3055,7 +3645,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#GetResponseRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -3119,13 +3709,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#ListResultItemCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#ListResultItemCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#ListResultItemCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#ListResultItemDefaultPoolsList": {
@@ -3203,13 +3799,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.load_balancers#ListResultItemPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#ListResultItemPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#ListResultItemPopPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#ListResultItemRandomSteeringPoolWeightsMap": {
@@ -3218,7 +3820,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#Double"
       }
     },
     "com.cloudflare.load_balancers#ListResultItemRandomSteering": {
@@ -3238,13 +3840,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#ListResultItemRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#ListResultItemRegionPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#ListResultItemRegionPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#ListResultItemRulesItemFixedResponse": {
@@ -3276,13 +3884,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesDefaultPoolsList": {
@@ -3291,13 +3905,25 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesPopPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesRegionPoolsMap": {
@@ -3306,7 +3932,36 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesRegionPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesSessionAffinity": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookie"
+          }
+        },
+        "IP_COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_cookie"
+          }
+        },
+        "HEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "header"
+          }
+        }
       }
     },
     "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesSessionAffinityAttributesHeadersList": {
@@ -3431,11 +4086,64 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesSteeringPolicy": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "GEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geo"
+          }
+        },
+        "RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "random"
+          }
+        },
+        "DYNAMIC_LATENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic_latency"
+          }
+        },
+        "PROXIMITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proximity"
+          }
+        },
+        "LEAST_OUTSTANDING_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_outstanding_requests"
+          }
+        },
+        "LEAST_CONNECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_connections"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#ListResultItemRulesItemOverrides": {
       "type": "structure",
       "members": {
         "adaptive_routing": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#ListResultItemAdaptiveRouting",
           "traits": {
             "smithy.api#documentation": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin."
           }
@@ -3459,7 +4167,7 @@
           }
         },
         "location_strategy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#ListResultItemLocationStrategy",
           "traits": {
             "smithy.api#documentation": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected."
           }
@@ -3471,7 +4179,7 @@
           }
         },
         "random_steering": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#ListResultItemRandomSteering",
           "traits": {
             "smithy.api#documentation": "Configures pool weights."
           }
@@ -3483,7 +4191,7 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
@@ -3501,7 +4209,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -3664,13 +4372,13 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
         },
         "session_affinity_attributes": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesSessionAffinityAttributes",
           "traits": {
             "smithy.api#documentation": "Configures attributes for session affinity."
           }
@@ -3682,7 +4390,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#ListResultItemRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -3754,13 +4462,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#UpdateRequestCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#UpdateRequestCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateRequestCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#UpdateRequestLocationStrategyMode": {
@@ -3832,13 +4546,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.load_balancers#UpdateRequestPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#UpdateRequestPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateRequestPopPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#UpdateRequestRandomSteeringPoolWeightsMap": {
@@ -3847,7 +4567,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#Double"
       }
     },
     "com.cloudflare.load_balancers#UpdateRequestRandomSteering": {
@@ -3867,13 +4587,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#UpdateRequestRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#UpdateRequestRegionPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateRequestRegionPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#UpdateRequestRulesItemFixedResponse": {
@@ -3905,13 +4631,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesDefaultPoolsList": {
@@ -3920,13 +4652,25 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesPopPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesRegionPoolsMap": {
@@ -3935,7 +4679,36 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesRegionPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesSessionAffinity": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookie"
+          }
+        },
+        "IP_COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_cookie"
+          }
+        },
+        "HEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "header"
+          }
+        }
       }
     },
     "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList": {
@@ -4060,11 +4833,64 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesSteeringPolicy": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "GEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geo"
+          }
+        },
+        "RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "random"
+          }
+        },
+        "DYNAMIC_LATENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic_latency"
+          }
+        },
+        "PROXIMITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proximity"
+          }
+        },
+        "LEAST_OUTSTANDING_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_outstanding_requests"
+          }
+        },
+        "LEAST_CONNECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_connections"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#UpdateRequestRulesItemOverrides": {
       "type": "structure",
       "members": {
         "adaptive_routing": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateRequestAdaptiveRouting",
           "traits": {
             "smithy.api#documentation": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin."
           }
@@ -4088,7 +4914,7 @@
           }
         },
         "location_strategy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateRequestLocationStrategy",
           "traits": {
             "smithy.api#documentation": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected."
           }
@@ -4100,7 +4926,7 @@
           }
         },
         "random_steering": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateRequestRandomSteering",
           "traits": {
             "smithy.api#documentation": "Configures pool weights."
           }
@@ -4112,7 +4938,7 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
@@ -4130,7 +4956,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -4301,13 +5127,13 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
         },
         "session_affinity_attributes": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesSessionAffinityAttributes",
           "traits": {
             "smithy.api#documentation": "Configures attributes for session affinity."
           }
@@ -4319,7 +5145,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateRequestRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -4346,13 +5172,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#UpdateResponseCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#UpdateResponseCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateResponseCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#UpdateResponseDefaultPoolsList": {
@@ -4430,13 +5262,19 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.load_balancers#UpdateResponsePopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#UpdateResponsePopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateResponsePopPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#UpdateResponseRandomSteeringPoolWeightsMap": {
@@ -4445,7 +5283,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#Double"
       }
     },
     "com.cloudflare.load_balancers#UpdateResponseRandomSteering": {
@@ -4465,13 +5303,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#UpdateResponseRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#UpdateResponseRegionPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateResponseRegionPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#UpdateResponseRulesItemFixedResponse": {
@@ -4503,13 +5347,19 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesCountryPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesCountryPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesCountryPoolsValueList"
       }
     },
     "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesDefaultPoolsList": {
@@ -4518,13 +5368,25 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesPopPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesPopPoolsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesPopPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesRegionPoolsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesRegionPoolsMap": {
@@ -4533,7 +5395,36 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesRegionPoolsValueList"
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesSessionAffinity": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookie"
+          }
+        },
+        "IP_COOKIE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ip_cookie"
+          }
+        },
+        "HEADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "header"
+          }
+        }
       }
     },
     "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesSessionAffinityAttributesHeadersList": {
@@ -4658,11 +5549,64 @@
         }
       }
     },
+    "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesSteeringPolicy": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "GEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "geo"
+          }
+        },
+        "RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "random"
+          }
+        },
+        "DYNAMIC_LATENCY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dynamic_latency"
+          }
+        },
+        "PROXIMITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proximity"
+          }
+        },
+        "LEAST_OUTSTANDING_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_outstanding_requests"
+          }
+        },
+        "LEAST_CONNECTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "least_connections"
+          }
+        },
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#UpdateResponseRulesItemOverrides": {
       "type": "structure",
       "members": {
         "adaptive_routing": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateResponseAdaptiveRouting",
           "traits": {
             "smithy.api#documentation": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin."
           }
@@ -4686,7 +5630,7 @@
           }
         },
         "location_strategy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateResponseLocationStrategy",
           "traits": {
             "smithy.api#documentation": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected."
           }
@@ -4698,7 +5642,7 @@
           }
         },
         "random_steering": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateResponseRandomSteering",
           "traits": {
             "smithy.api#documentation": "Configures pool weights."
           }
@@ -4710,7 +5654,7 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
@@ -4728,7 +5672,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -4891,13 +5835,13 @@
           }
         },
         "session_affinity": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesSessionAffinity",
           "traits": {
             "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
           }
         },
         "session_affinity_attributes": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesSessionAffinityAttributes",
           "traits": {
             "smithy.api#documentation": "Configures attributes for session affinity."
           }
@@ -4909,7 +5853,7 @@
           }
         },
         "steering_policy": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#UpdateResponseRulesItemOverridesSteeringPolicy",
           "traits": {
             "smithy.api#documentation": "Steering Policy for this load balancer."
           }
@@ -6049,13 +6993,19 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.load_balancers#MonitorsCreateRequestHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#MonitorsCreateRequestHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#MonitorsCreateRequestHeaderValueList"
       }
     },
     "com.cloudflare.load_balancers#MonitorsCreateRequestType": {
@@ -6077,6 +7027,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP_ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp_icmp"
+          }
+        },
+        "ICMP_PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp_ping"
+          }
+        },
+        "SMTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smtp"
           }
         }
       }
@@ -6193,13 +7161,19 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#MonitorsCreateResponseHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#MonitorsCreateResponseHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#MonitorsCreateResponseHeaderValueList"
       }
     },
     "com.cloudflare.load_balancers#MonitorsCreateResponseType": {
@@ -6221,6 +7195,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP_ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp_icmp"
+          }
+        },
+        "ICMP_PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp_ping"
+          }
+        },
+        "SMTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smtp"
           }
         }
       }
@@ -6409,13 +7401,19 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.load_balancers#MonitorsEditRequestHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#MonitorsEditRequestHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#MonitorsEditRequestHeaderValueList"
       }
     },
     "com.cloudflare.load_balancers#MonitorsEditRequestType": {
@@ -6437,6 +7435,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP_ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp_icmp"
+          }
+        },
+        "ICMP_PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp_ping"
+          }
+        },
+        "SMTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smtp"
           }
         }
       }
@@ -6560,13 +7576,19 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#MonitorsEditResponseHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#MonitorsEditResponseHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#MonitorsEditResponseHeaderValueList"
       }
     },
     "com.cloudflare.load_balancers#MonitorsEditResponseType": {
@@ -6588,6 +7610,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP_ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp_icmp"
+          }
+        },
+        "ICMP_PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp_ping"
+          }
+        },
+        "SMTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smtp"
           }
         }
       }
@@ -6746,13 +7786,19 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#MonitorsGetResponseHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#MonitorsGetResponseHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#MonitorsGetResponseHeaderValueList"
       }
     },
     "com.cloudflare.load_balancers#MonitorsGetResponseType": {
@@ -6774,6 +7820,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP_ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp_icmp"
+          }
+        },
+        "ICMP_PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp_ping"
+          }
+        },
+        "SMTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smtp"
           }
         }
       }
@@ -6926,13 +7990,19 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#MonitorsListResultItemHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#MonitorsListResultItemHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#MonitorsListResultItemHeaderValueList"
       }
     },
     "com.cloudflare.load_balancers#MonitorsListResultItemType": {
@@ -6954,6 +8024,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP_ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp_icmp"
+          }
+        },
+        "ICMP_PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp_ping"
+          }
+        },
+        "SMTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smtp"
           }
         }
       }
@@ -7107,13 +8195,19 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.load_balancers#MonitorsUpdateRequestHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#MonitorsUpdateRequestHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#MonitorsUpdateRequestHeaderValueList"
       }
     },
     "com.cloudflare.load_balancers#MonitorsUpdateRequestType": {
@@ -7135,6 +8229,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP_ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp_icmp"
+          }
+        },
+        "ICMP_PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp_ping"
+          }
+        },
+        "SMTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smtp"
           }
         }
       }
@@ -7258,13 +8370,19 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#MonitorsUpdateResponseHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#MonitorsUpdateResponseHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#MonitorsUpdateResponseHeaderValueList"
       }
     },
     "com.cloudflare.load_balancers#MonitorsUpdateResponseType": {
@@ -7286,6 +8404,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP_ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp_icmp"
+          }
+        },
+        "ICMP_PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp_ping"
+          }
+        },
+        "SMTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smtp"
           }
         }
       }
@@ -7422,13 +8558,19 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.load_balancers#MonitorsPreviewsCreateRequestHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#MonitorsPreviewsCreateRequestHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#MonitorsPreviewsCreateRequestHeaderValueList"
       }
     },
     "com.cloudflare.load_balancers#MonitorsPreviewsCreateRequestType": {
@@ -7450,6 +8592,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP_ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp_icmp"
+          }
+        },
+        "ICMP_PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp_ping"
+          }
+        },
+        "SMTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smtp"
           }
         }
       }
@@ -7579,7 +8739,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.load_balancers#MonitorsPreviewsCreateResponse": {
@@ -7752,10 +8912,99 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#PoolsBulkEditResultItemCheckRegionsItem": {
+      "type": "enum",
+      "members": {
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WNAM"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENAM"
+          }
+        },
+        "WEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEU"
+          }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "SAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAS"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#PoolsBulkEditResultItemCheckRegionsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#PoolsBulkEditResultItemCheckRegionsItem"
       }
     },
     "com.cloudflare.load_balancers#PoolsBulkEditResultItemLoadSheddingDefaultPolicy": {
@@ -7848,7 +9097,7 @@
           }
         },
         "pool": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#PoolsBulkEditResultItemNotificationFilterOrigin",
           "traits": {
             "smithy.api#documentation": "Filter options for a particular resource type (pool or origin). Use null to reset."
           }
@@ -8291,7 +9540,7 @@
           }
         },
         "pool": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#PoolsCreateRequestNotificationFilterOrigin",
           "traits": {
             "smithy.api#documentation": "Filter options for a particular resource type (pool or origin). Use null to reset."
           }
@@ -8434,10 +9683,99 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#PoolsCreateResponseCheckRegionsItem": {
+      "type": "enum",
+      "members": {
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WNAM"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENAM"
+          }
+        },
+        "WEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEU"
+          }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "SAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAS"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#PoolsCreateResponseCheckRegionsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#PoolsCreateResponseCheckRegionsItem"
       }
     },
     "com.cloudflare.load_balancers#PoolsCreateResponseLoadSheddingDefaultPolicy": {
@@ -8530,7 +9868,7 @@
           }
         },
         "pool": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#PoolsCreateResponseNotificationFilterOrigin",
           "traits": {
             "smithy.api#documentation": "Filter options for a particular resource type (pool or origin). Use null to reset."
           }
@@ -8843,10 +10181,99 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.load_balancers#PoolsEditRequestCheckRegionsItem": {
+      "type": "enum",
+      "members": {
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WNAM"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENAM"
+          }
+        },
+        "WEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEU"
+          }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "SAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAS"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#PoolsEditRequestCheckRegionsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#PoolsEditRequestCheckRegionsItem"
       }
     },
     "com.cloudflare.load_balancers#PoolsEditRequestLoadSheddingDefaultPolicy": {
@@ -8933,7 +10360,7 @@
           }
         },
         "pool": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#PoolsEditRequestNotificationFilterOrigin",
           "traits": {
             "smithy.api#documentation": "Filter options for a particular resource type (pool or origin). Use null to reset."
           }
@@ -9169,10 +10596,99 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#PoolsEditResponseCheckRegionsItem": {
+      "type": "enum",
+      "members": {
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WNAM"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENAM"
+          }
+        },
+        "WEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEU"
+          }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "SAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAS"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#PoolsEditResponseCheckRegionsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#PoolsEditResponseCheckRegionsItem"
       }
     },
     "com.cloudflare.load_balancers#PoolsEditResponseLoadSheddingDefaultPolicy": {
@@ -9265,7 +10781,7 @@
           }
         },
         "pool": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#PoolsEditResponseNotificationFilterOrigin",
           "traits": {
             "smithy.api#documentation": "Filter options for a particular resource type (pool or origin). Use null to reset."
           }
@@ -9548,10 +11064,99 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#PoolsGetResponseCheckRegionsItem": {
+      "type": "enum",
+      "members": {
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WNAM"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENAM"
+          }
+        },
+        "WEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEU"
+          }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "SAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAS"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#PoolsGetResponseCheckRegionsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#PoolsGetResponseCheckRegionsItem"
       }
     },
     "com.cloudflare.load_balancers#PoolsGetResponseLoadSheddingDefaultPolicy": {
@@ -9644,7 +11249,7 @@
           }
         },
         "pool": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#PoolsGetResponseNotificationFilterOrigin",
           "traits": {
             "smithy.api#documentation": "Filter options for a particular resource type (pool or origin). Use null to reset."
           }
@@ -9928,10 +11533,99 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#PoolsListResultItemCheckRegionsItem": {
+      "type": "enum",
+      "members": {
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WNAM"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENAM"
+          }
+        },
+        "WEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEU"
+          }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "SAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAS"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#PoolsListResultItemCheckRegionsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#PoolsListResultItemCheckRegionsItem"
       }
     },
     "com.cloudflare.load_balancers#PoolsListResultItemLoadSheddingDefaultPolicy": {
@@ -10024,7 +11718,7 @@
           }
         },
         "pool": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#PoolsListResultItemNotificationFilterOrigin",
           "traits": {
             "smithy.api#documentation": "Filter options for a particular resource type (pool or origin). Use null to reset."
           }
@@ -10384,10 +12078,99 @@
         "target": "com.cloudflare.load_balancers#PoolsUpdateRequestOriginsItem"
       }
     },
+    "com.cloudflare.load_balancers#PoolsUpdateRequestCheckRegionsItem": {
+      "type": "enum",
+      "members": {
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WNAM"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENAM"
+          }
+        },
+        "WEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEU"
+          }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "SAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAS"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#PoolsUpdateRequestCheckRegionsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#PoolsUpdateRequestCheckRegionsItem"
       }
     },
     "com.cloudflare.load_balancers#PoolsUpdateRequestLoadSheddingDefaultPolicy": {
@@ -10474,7 +12257,7 @@
           }
         },
         "pool": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#PoolsUpdateRequestNotificationFilterOrigin",
           "traits": {
             "smithy.api#documentation": "Filter options for a particular resource type (pool or origin). Use null to reset."
           }
@@ -10630,10 +12413,99 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#PoolsUpdateResponseCheckRegionsItem": {
+      "type": "enum",
+      "members": {
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WNAM"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENAM"
+          }
+        },
+        "WEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEU"
+          }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "SAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAS"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
+        },
+        "ALL_REGIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALL_REGIONS"
+          }
+        }
+      }
+    },
     "com.cloudflare.load_balancers#PoolsUpdateResponseCheckRegionsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#PoolsUpdateResponseCheckRegionsItem"
       }
     },
     "com.cloudflare.load_balancers#PoolsUpdateResponseLoadSheddingDefaultPolicy": {
@@ -10726,7 +12598,7 @@
           }
         },
         "pool": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.load_balancers#PoolsUpdateResponseNotificationFilterOrigin",
           "traits": {
             "smithy.api#documentation": "Filter options for a particular resource type (pool or origin). Use null to reset."
           }
@@ -10987,13 +12859,19 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.load_balancers#PoolsHealthCreateRequestHeaderValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.load_balancers#PoolsHealthCreateRequestHeaderMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#PoolsHealthCreateRequestHeaderValueList"
       }
     },
     "com.cloudflare.load_balancers#PoolsHealthCreateRequestType": {
@@ -11015,6 +12893,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "tcp"
+          }
+        },
+        "UDP_ICMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "udp_icmp"
+          }
+        },
+        "ICMP_PING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "icmp_ping"
+          }
+        },
+        "SMTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "smtp"
           }
         }
       }
@@ -11144,7 +13040,7 @@
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.load_balancers#PoolsHealthCreateResponse": {
@@ -11426,13 +13322,56 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.load_balancers#PreviewsGetResultValueOriginsItemValue": {
+      "type": "structure",
+      "members": {
+        "failure_reason": {
+          "target": "smithy.api#String"
+        },
+        "healthy": {
+          "target": "smithy.api#Boolean"
+        },
+        "response_code": {
+          "target": "smithy.api#Double"
+        },
+        "rtt": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#PreviewsGetResultValueOriginsItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.cloudflare.load_balancers#PreviewsGetResultValueOriginsItemValue"
+      }
+    },
+    "com.cloudflare.load_balancers#PreviewsGetResultValueOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.load_balancers#PreviewsGetResultValueOriginsItemMap"
+      }
+    },
+    "com.cloudflare.load_balancers#PreviewsGetResultValue": {
+      "type": "structure",
+      "members": {
+        "healthy": {
+          "target": "smithy.api#Boolean"
+        },
+        "origins": {
+          "target": "com.cloudflare.load_balancers#PreviewsGetResultValueOriginsList"
+        }
+      }
+    },
     "com.cloudflare.load_balancers#PreviewsGetResultMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.load_balancers#PreviewsGetResultValue"
       }
     },
     "com.cloudflare.load_balancers#PreviewsGetResponse": {
@@ -11488,6 +13427,66 @@
           "traits": {
             "smithy.api#enumValue": "WEU"
           }
+        },
+        "EEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEU"
+          }
+        },
+        "NSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NSAM"
+          }
+        },
+        "SSAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSAM"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
+        },
+        "ME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ME"
+          }
+        },
+        "NAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAF"
+          }
+        },
+        "SAF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAF"
+          }
+        },
+        "SAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SAS"
+          }
+        },
+        "SEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SEAS"
+          }
+        },
+        "NEAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NEAS"
+          }
         }
       }
     },
@@ -11518,22 +13517,16 @@
     "com.cloudflare.load_balancers#RegionsGetResponse": {
       "type": "structure",
       "members": {
-        "unknown": {
+        "result": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "string": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.load_balancers#RegionsGet": {
@@ -11594,22 +13587,16 @@
     "com.cloudflare.load_balancers#RegionsListResponse": {
       "type": "structure",
       "members": {
-        "unknown": {
+        "result": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "string": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
           }
         }
       },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.load_balancers#RegionsList": {

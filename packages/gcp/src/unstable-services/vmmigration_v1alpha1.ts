@@ -101,7 +101,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -305,8 +305,7 @@ export const CancelProjectsLocationsSourcesMigratingVmsCutoverJobsRequest =
 export type GroupMigrationTargetTypeEnum =
   | "MIGRATION_TARGET_TYPE_UNSPECIFIED"
   | "MIGRATION_TARGET_TYPE_GCE"
-  | "MIGRATION_TARGET_TYPE_DISKS"
-  | (string & {});
+  | "MIGRATION_TARGET_TYPE_DISKS";
 export const GroupMigrationTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes message for 'Group' resource. The Group is a collections of several MigratingVms. */
@@ -374,7 +373,7 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -382,8 +381,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type NetworkInterfaceNetworkTierEnum =
   | "COMPUTE_ENGINE_NETWORK_TIER_UNSPECIFIED"
   | "NETWORK_TIER_STANDARD"
-  | "NETWORK_TIER_PREMIUM"
-  | (string & {});
+  | "NETWORK_TIER_PREMIUM";
 export const NetworkInterfaceNetworkTierEnum = /*@__PURE__*/ S.String;
 
 /** NetworkInterface represents a NIC of a VM. */
@@ -411,7 +409,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkInterface",
 }) as any as S.Schema<NetworkInterface>;
 
-export type NetworkInterfaceList = NetworkInterface[];
+export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
 export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfaceList>;
@@ -419,8 +417,7 @@ export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
 export type ShieldedInstanceConfigSecureBootEnum =
   | "SECURE_BOOT_UNSPECIFIED"
   | "TRUE"
-  | "FALSE"
-  | (string & {});
+  | "FALSE";
 export const ShieldedInstanceConfigSecureBootEnum = /*@__PURE__*/ S.String;
 
 /** Shielded instance configuration. */
@@ -465,16 +462,14 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type ImageImportOsAdaptationParametersBootConversionEnum =
   | "BOOT_CONVERSION_UNSPECIFIED"
   | "NONE"
-  | "BIOS_TO_EFI"
-  | (string & {});
+  | "BIOS_TO_EFI";
 export const ImageImportOsAdaptationParametersBootConversionEnum =
   /*@__PURE__*/ S.String;
 
 export type ImageImportOsAdaptationParametersLicenseTypeEnum =
   | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
   | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
-  | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL"
-  | (string & {});
+  | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
 export const ImageImportOsAdaptationParametersLicenseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -494,7 +489,7 @@ export const AdaptationModifier = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdaptationModifier",
 }) as any as S.Schema<AdaptationModifier>;
 
-export type AdaptationModifierList = AdaptationModifier[];
+export type AdaptationModifierList = ReadonlyArray<AdaptationModifier>;
 export const AdaptationModifierList = /*@__PURE__*/ S.Array(
   AdaptationModifier,
 ) as any as S.Schema<AdaptationModifierList>;
@@ -653,8 +648,7 @@ export const DiskImageTargetDetails = /*@__PURE__*/ S.suspend(() =>
 
 export type MigrationWarningCodeEnum =
   | "WARNING_CODE_UNSPECIFIED"
-  | "ADAPTATION_WARNING"
-  | (string & {});
+  | "ADAPTATION_WARNING";
 export const MigrationWarningCodeEnum = /*@__PURE__*/ S.String;
 
 /** Describes a URL link. */
@@ -671,7 +665,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
-export type LinkList = Link[];
+export type LinkList = ReadonlyArray<Link>;
 export const LinkList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<LinkList>;
@@ -717,7 +711,7 @@ export const MigrationWarning = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrationWarning",
 }) as any as S.Schema<MigrationWarning>;
 
-export type MigrationWarningList = MigrationWarning[];
+export type MigrationWarningList = ReadonlyArray<MigrationWarning>;
 export const MigrationWarningList = /*@__PURE__*/ S.Array(
   MigrationWarning,
 ) as any as S.Schema<MigrationWarningList>;
@@ -780,12 +774,12 @@ export const ImageImportStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageImportStep",
 }) as any as S.Schema<ImageImportStep>;
 
-export type ImageImportStepList = ImageImportStep[];
+export type ImageImportStepList = ReadonlyArray<ImageImportStep>;
 export const ImageImportStepList = /*@__PURE__*/ S.Array(
   ImageImportStep,
 ) as any as S.Schema<ImageImportStepList>;
 
-export type StatusList = Status[];
+export type StatusList = ReadonlyArray<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -797,8 +791,7 @@ export type ImageImportJobStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "CANCELLING"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const ImageImportJobStateEnum = /*@__PURE__*/ S.String;
 
 /** ImageImportJob describes the progress and result of an image import. */
@@ -842,7 +835,7 @@ export const ImageImportJob = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageImportJob" }) as any as S.Schema<ImageImportJob>;
 
-export type ImageImportJobList = ImageImportJob[];
+export type ImageImportJobList = ReadonlyArray<ImageImportJob>;
 export const ImageImportJobList = /*@__PURE__*/ S.Array(
   ImageImportJob,
 ) as any as S.Schema<ImageImportJobList>;
@@ -918,7 +911,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
-export type TagList = Tag[];
+export type TagList = ReadonlyArray<Tag>;
 export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** Message describing AWS Credentials using access key id and secret. */
@@ -944,8 +937,7 @@ export type AwsSourceDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "FAILED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const AwsSourceDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** AwsSourceDetails message describes a specific source details for the AWS source type. */
@@ -1030,8 +1022,7 @@ export type AzureSourceDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "FAILED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const AzureSourceDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** AzureSourceDetails message describes a specific source details for the Azure source type. */
@@ -1135,8 +1126,7 @@ export type UpgradeStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
   | "FAILED"
-  | "SUCCEEDED"
-  | (string & {});
+  | "SUCCEEDED";
 export const UpgradeStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** UpgradeStatus contains information about upgradeAppliance operation. */
@@ -1167,8 +1157,7 @@ export type DatacenterConnectorStateEnum =
   | "PENDING"
   | "OFFLINE"
   | "FAILED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const DatacenterConnectorStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes an appliance version. */
@@ -1295,8 +1284,7 @@ export type ComputeEngineDiskDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_SSD"
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
-  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY"
-  | (string & {});
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
 export const ComputeEngineDiskDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Compute Engine disk target details. */
@@ -1350,8 +1338,7 @@ export type DiskMigrationJobStateEnum =
   | "SUCCEEDED"
   | "CANCELLING"
   | "CANCELLED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const DiskMigrationJobStateEnum = /*@__PURE__*/ S.String;
 
 export type AwsSourceDiskDetailsDiskTypeEnum =
@@ -1362,8 +1349,7 @@ export type AwsSourceDiskDetailsDiskTypeEnum =
   | "IO2"
   | "ST1"
   | "SC1"
-  | "STANDARD"
-  | (string & {});
+  | "STANDARD";
 export const AwsSourceDiskDetailsDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the source AWS Disk details. */
@@ -1437,7 +1423,7 @@ export const DiskMigrationStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskMigrationStep",
 }) as any as S.Schema<DiskMigrationStep>;
 
-export type DiskMigrationStepList = DiskMigrationStep[];
+export type DiskMigrationStepList = ReadonlyArray<DiskMigrationStep>;
 export const DiskMigrationStepList = /*@__PURE__*/ S.Array(
   DiskMigrationStep,
 ) as any as S.Schema<DiskMigrationStepList>;
@@ -1539,7 +1525,7 @@ export const PersistentDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PersistentDisk" }) as any as S.Schema<PersistentDisk>;
 
-export type PersistentDiskList = PersistentDisk[];
+export type PersistentDiskList = ReadonlyArray<PersistentDisk>;
 export const PersistentDiskList = /*@__PURE__*/ S.Array(
   PersistentDisk,
 ) as any as S.Schema<PersistentDiskList>;
@@ -1569,29 +1555,25 @@ export type ComputeEngineTargetDetailsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_SSD"
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
-  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY"
-  | (string & {});
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
 export const ComputeEngineTargetDetailsDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type ComputeSchedulingOnHostMaintenanceEnum =
   | "ON_HOST_MAINTENANCE_UNSPECIFIED"
   | "TERMINATE"
-  | "MIGRATE"
-  | (string & {});
+  | "MIGRATE";
 export const ComputeSchedulingOnHostMaintenanceEnum = /*@__PURE__*/ S.String;
 
 export type ComputeSchedulingRestartTypeEnum =
   | "RESTART_TYPE_UNSPECIFIED"
   | "AUTOMATIC_RESTART"
-  | "NO_AUTOMATIC_RESTART"
-  | (string & {});
+  | "NO_AUTOMATIC_RESTART";
 export const ComputeSchedulingRestartTypeEnum = /*@__PURE__*/ S.String;
 
 export type SchedulingNodeAffinityOperatorEnum =
   | "OPERATOR_UNSPECIFIED"
   | "IN"
-  | "NOT_IN"
-  | (string & {});
+  | "NOT_IN";
 export const SchedulingNodeAffinityOperatorEnum = /*@__PURE__*/ S.String;
 
 /** Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling */
@@ -1613,7 +1595,7 @@ export const SchedulingNodeAffinity = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchedulingNodeAffinity",
 }) as any as S.Schema<SchedulingNodeAffinity>;
 
-export type SchedulingNodeAffinityList = SchedulingNodeAffinity[];
+export type SchedulingNodeAffinityList = ReadonlyArray<SchedulingNodeAffinity>;
 export const SchedulingNodeAffinityList = /*@__PURE__*/ S.Array(
   SchedulingNodeAffinity,
 ) as any as S.Schema<SchedulingNodeAffinityList>;
@@ -1645,24 +1627,21 @@ export const ComputeScheduling = /*@__PURE__*/ S.suspend(() =>
 export type ComputeEngineTargetDetailsBootConversionEnum =
   | "BOOT_CONVERSION_UNSPECIFIED"
   | "NONE"
-  | "BIOS_TO_EFI"
-  | (string & {});
+  | "BIOS_TO_EFI";
 export const ComputeEngineTargetDetailsBootConversionEnum =
   /*@__PURE__*/ S.String;
 
 export type ComputeEngineTargetDetailsBootOptionEnum =
   | "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED"
   | "COMPUTE_ENGINE_BOOT_OPTION_EFI"
-  | "COMPUTE_ENGINE_BOOT_OPTION_BIOS"
-  | (string & {});
+  | "COMPUTE_ENGINE_BOOT_OPTION_BIOS";
 export const ComputeEngineTargetDetailsBootOptionEnum = /*@__PURE__*/ S.String;
 
 export type AppliedLicenseTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NONE"
   | "PAYG"
-  | "BYOL"
-  | (string & {});
+  | "BYOL";
 export const AppliedLicenseTypeEnum = /*@__PURE__*/ S.String;
 
 /** AppliedLicense holds the license data returned by adaptation module report. */
@@ -1682,8 +1661,7 @@ export const AppliedLicense = /*@__PURE__*/ S.suspend(() =>
 export type ComputeEngineTargetDetailsLicenseTypeEnum =
   | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
   | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
-  | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL"
-  | (string & {});
+  | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
 export const ComputeEngineTargetDetailsLicenseTypeEnum = /*@__PURE__*/ S.String;
 
 /** ComputeEngineTargetDetails is a collection of details for creating a VM in a target Compute Engine project. */
@@ -1777,22 +1755,16 @@ export type TargetVMDetailsDiskTypeEnum =
   | "BALANCED"
   | "SSD"
   | "HYPERDISK_BALANCED"
-  | "HYPERDISK_BALANCED_HIGH_AVAILABILITY"
-  | (string & {});
+  | "HYPERDISK_BALANCED_HIGH_AVAILABILITY";
 export const TargetVMDetailsDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type TargetVMDetailsBootOptionEnum =
   | "BOOT_OPTION_UNSPECIFIED"
   | "EFI"
-  | "BIOS"
-  | (string & {});
+  | "BIOS";
 export const TargetVMDetailsBootOptionEnum = /*@__PURE__*/ S.String;
 
-export type TargetVMDetailsLicenseTypeEnum =
-  | "DEFAULT"
-  | "PAYG"
-  | "BYOL"
-  | (string & {});
+export type TargetVMDetailsLicenseTypeEnum = "DEFAULT" | "PAYG" | "BYOL";
 export const TargetVMDetailsLicenseTypeEnum = /*@__PURE__*/ S.String;
 
 /** TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project. */
@@ -1876,8 +1848,7 @@ export type CloneJobStateEnum =
   | "SUCCEEDED"
   | "CANCELLED"
   | "CANCELLING"
-  | "ADAPTING_OS"
-  | (string & {});
+  | "ADAPTING_OS";
 export const CloneJobStateEnum = /*@__PURE__*/ S.String;
 
 /** InstantiatingMigratedVMStep contains specific step details. */
@@ -1919,7 +1890,7 @@ export const CloneStep = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CloneStep" }) as any as S.Schema<CloneStep>;
 
-export type CloneStepList = CloneStep[];
+export type CloneStepList = ReadonlyArray<CloneStep>;
 export const CloneStepList = /*@__PURE__*/ S.Array(
   CloneStep,
 ) as any as S.Schema<CloneStepList>;
@@ -1967,7 +1938,7 @@ export const CloneJob = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CloneJob" }) as any as S.Schema<CloneJob>;
 
-export type CloneJobList = CloneJob[];
+export type CloneJobList = ReadonlyArray<CloneJob>;
 export const CloneJobList = /*@__PURE__*/ S.Array(
   CloneJob,
 ) as any as S.Schema<CloneJobList>;
@@ -1986,8 +1957,7 @@ export type MigratingVmStateEnum =
   | "FINALIZED"
   | "ERROR"
   | "EXPIRED"
-  | "FINALIZED_EXPIRED"
-  | (string & {});
+  | "FINALIZED_EXPIRED";
 export const MigratingVmStateEnum = /*@__PURE__*/ S.String;
 
 /** CutoverForecast holds information about future CutoverJobs of a MigratingVm. */
@@ -2006,15 +1976,13 @@ export const CutoverForecast = /*@__PURE__*/ S.suspend(() =>
 export type ComputeEngineTargetDefaultsBootOptionEnum =
   | "COMPUTE_ENGINE_BOOT_OPTION_UNSPECIFIED"
   | "COMPUTE_ENGINE_BOOT_OPTION_EFI"
-  | "COMPUTE_ENGINE_BOOT_OPTION_BIOS"
-  | (string & {});
+  | "COMPUTE_ENGINE_BOOT_OPTION_BIOS";
 export const ComputeEngineTargetDefaultsBootOptionEnum = /*@__PURE__*/ S.String;
 
 export type ComputeEngineTargetDefaultsBootConversionEnum =
   | "BOOT_CONVERSION_UNSPECIFIED"
   | "NONE"
-  | "BIOS_TO_EFI"
-  | (string & {});
+  | "BIOS_TO_EFI";
 export const ComputeEngineTargetDefaultsBootConversionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2037,8 +2005,7 @@ export type PersistentDiskDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_SSD"
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
-  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY"
-  | (string & {});
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
 export const PersistentDiskDefaultsDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details for creation of a Persistent Disk. */
@@ -2069,7 +2036,7 @@ export const PersistentDiskDefaults = /*@__PURE__*/ S.suspend(() =>
   identifier: "PersistentDiskDefaults",
 }) as any as S.Schema<PersistentDiskDefaults>;
 
-export type PersistentDiskDefaultsList = PersistentDiskDefaults[];
+export type PersistentDiskDefaultsList = ReadonlyArray<PersistentDiskDefaults>;
 export const PersistentDiskDefaultsList = /*@__PURE__*/ S.Array(
   PersistentDiskDefaults,
 ) as any as S.Schema<PersistentDiskDefaultsList>;
@@ -2080,15 +2047,13 @@ export type ComputeEngineTargetDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_SSD"
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
-  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY"
-  | (string & {});
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
 export const ComputeEngineTargetDefaultsDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type ComputeEngineTargetDefaultsLicenseTypeEnum =
   | "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"
   | "COMPUTE_ENGINE_LICENSE_TYPE_PAYG"
-  | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL"
-  | (string & {});
+  | "COMPUTE_ENGINE_LICENSE_TYPE_BYOL";
 export const ComputeEngineTargetDefaultsLicenseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2215,8 +2180,7 @@ export type ReplicationCycleStateEnum =
   | "RUNNING"
   | "PAUSED"
   | "FAILED"
-  | "SUCCEEDED"
-  | (string & {});
+  | "SUCCEEDED";
 export const ReplicationCycleStateEnum = /*@__PURE__*/ S.String;
 
 /** InitializingReplicationStep contains specific step details. */
@@ -2280,7 +2244,7 @@ export const CycleStep = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CycleStep" }) as any as S.Schema<CycleStep>;
 
-export type CycleStepList = CycleStep[];
+export type CycleStepList = ReadonlyArray<CycleStep>;
 export const CycleStepList = /*@__PURE__*/ S.Array(
   CycleStep,
 ) as any as S.Schema<CycleStepList>;
@@ -2355,8 +2319,7 @@ export type BootDiskDefaultsDiskTypeEnum =
   | "COMPUTE_ENGINE_DISK_TYPE_SSD"
   | "COMPUTE_ENGINE_DISK_TYPE_BALANCED"
   | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED"
-  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY"
-  | (string & {});
+  | "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED_HIGH_AVAILABILITY";
 export const BootDiskDefaultsDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** BootDiskDefaults hold information about the boot disk of a VM. */
@@ -2470,20 +2433,18 @@ export const ComputeEngineDisksTargetDefaults = /*@__PURE__*/ S.suspend(() =>
 export type VmwareSourceVmDetailsFirmwareEnum =
   | "FIRMWARE_UNSPECIFIED"
   | "EFI"
-  | "BIOS"
-  | (string & {});
+  | "BIOS";
 export const VmwareSourceVmDetailsFirmwareEnum = /*@__PURE__*/ S.String;
 
 export type VmCapabilitiesOsCapabilitiesItemEnum =
   | "OS_CAPABILITY_UNSPECIFIED"
   | "OS_CAPABILITY_NVME_STORAGE_ACCESS"
   | "OS_CAPABILITY_GVNIC_NETWORK_INTERFACE"
-  | "OS_CAPABILITY_IDPF_NETWORK_INTERFACE"
-  | (string & {});
+  | "OS_CAPABILITY_IDPF_NETWORK_INTERFACE";
 export const VmCapabilitiesOsCapabilitiesItemEnum = /*@__PURE__*/ S.String;
 
 export type VmCapabilitiesOsCapabilitiesItemEnumList =
-  VmCapabilitiesOsCapabilitiesItemEnum[];
+  ReadonlyArray<VmCapabilitiesOsCapabilitiesItemEnum>;
 export const VmCapabilitiesOsCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
   VmCapabilitiesOsCapabilitiesItemEnum,
 ) as any as S.Schema<VmCapabilitiesOsCapabilitiesItemEnumList>;
@@ -2505,8 +2466,7 @@ export const VmCapabilities = /*@__PURE__*/ S.suspend(() =>
 export type VmwareSourceVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
-  | "VM_ARCHITECTURE_ARM64"
-  | (string & {});
+  | "VM_ARCHITECTURE_ARM64";
 export const VmwareSourceVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** The details of a Vmware VM disk. */
@@ -2528,7 +2488,7 @@ export const VmwareDiskDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmwareDiskDetails",
 }) as any as S.Schema<VmwareDiskDetails>;
 
-export type VmwareDiskDetailsList = VmwareDiskDetails[];
+export type VmwareDiskDetailsList = ReadonlyArray<VmwareDiskDetails>;
 export const VmwareDiskDetailsList = /*@__PURE__*/ S.Array(
   VmwareDiskDetails,
 ) as any as S.Schema<VmwareDiskDetailsList>;
@@ -2577,7 +2537,7 @@ export const AzureDiskDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "AzureDiskDetails",
 }) as any as S.Schema<AzureDiskDetails>;
 
-export type AzureDiskDetailsList = AzureDiskDetails[];
+export type AzureDiskDetailsList = ReadonlyArray<AzureDiskDetails>;
 export const AzureDiskDetailsList = /*@__PURE__*/ S.Array(
   AzureDiskDetails,
 ) as any as S.Schema<AzureDiskDetailsList>;
@@ -2585,15 +2545,13 @@ export const AzureDiskDetailsList = /*@__PURE__*/ S.Array(
 export type AzureSourceVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
-  | "VM_ARCHITECTURE_ARM64"
-  | (string & {});
+  | "VM_ARCHITECTURE_ARM64";
 export const AzureSourceVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
 export type AzureSourceVmDetailsFirmwareEnum =
   | "FIRMWARE_UNSPECIFIED"
   | "EFI"
-  | "BIOS"
-  | (string & {});
+  | "BIOS";
 export const AzureSourceVmDetailsFirmwareEnum = /*@__PURE__*/ S.String;
 
 /** Represent the source Azure VM details. */
@@ -2658,7 +2616,7 @@ export const CutoverStep = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CutoverStep" }) as any as S.Schema<CutoverStep>;
 
-export type CutoverStepList = CutoverStep[];
+export type CutoverStepList = ReadonlyArray<CutoverStep>;
 export const CutoverStepList = /*@__PURE__*/ S.Array(
   CutoverStep,
 ) as any as S.Schema<CutoverStepList>;
@@ -2671,8 +2629,7 @@ export type CutoverJobStateEnum =
   | "CANCELLED"
   | "CANCELLING"
   | "ACTIVE"
-  | "ADAPTING_OS"
-  | (string & {});
+  | "ADAPTING_OS";
 export const CutoverJobStateEnum = /*@__PURE__*/ S.String;
 
 /** CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and cloning the VM using the replicated snapshot. */
@@ -2727,7 +2684,7 @@ export const CutoverJob = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CutoverJob" }) as any as S.Schema<CutoverJob>;
 
-export type CutoverJobList = CutoverJob[];
+export type CutoverJobList = ReadonlyArray<CutoverJob>;
 export const CutoverJobList = /*@__PURE__*/ S.Array(
   CutoverJob,
 ) as any as S.Schema<CutoverJobList>;
@@ -2749,15 +2706,13 @@ export const SchedulePolicy = /*@__PURE__*/ S.suspend(() =>
 export type AwsSourceVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
-  | "VM_ARCHITECTURE_ARM64"
-  | (string & {});
+  | "VM_ARCHITECTURE_ARM64";
 export const AwsSourceVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
 export type AwsSourceVmDetailsFirmwareEnum =
   | "FIRMWARE_UNSPECIFIED"
   | "EFI"
-  | "BIOS"
-  | (string & {});
+  | "BIOS";
 export const AwsSourceVmDetailsFirmwareEnum = /*@__PURE__*/ S.String;
 
 /** The details of an AWS instance disk. */
@@ -2777,7 +2732,7 @@ export const AwsDiskDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AwsDiskDetails" }) as any as S.Schema<AwsDiskDetails>;
 
-export type AwsDiskDetailsList = AwsDiskDetails[];
+export type AwsDiskDetailsList = ReadonlyArray<AwsDiskDetails>;
 export const AwsDiskDetailsList = /*@__PURE__*/ S.Array(
   AwsDiskDetails,
 ) as any as S.Schema<AwsDiskDetailsList>;
@@ -2983,22 +2938,19 @@ export type VmwareVmDetailsPowerStateEnum =
   | "POWER_STATE_UNSPECIFIED"
   | "ON"
   | "OFF"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const VmwareVmDetailsPowerStateEnum = /*@__PURE__*/ S.String;
 
 export type VmwareVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
-  | "VM_ARCHITECTURE_ARM64"
-  | (string & {});
+  | "VM_ARCHITECTURE_ARM64";
 export const VmwareVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
 export type VmwareVmDetailsBootOptionEnum =
   | "BOOT_OPTION_UNSPECIFIED"
   | "EFI"
-  | "BIOS"
-  | (string & {});
+  | "BIOS";
 export const VmwareVmDetailsBootOptionEnum = /*@__PURE__*/ S.String;
 
 /** VmwareVmDetails describes a VM in vCenter. */
@@ -3130,7 +3082,7 @@ export const VmUtilizationInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "VmUtilizationInfo",
 }) as any as S.Schema<VmUtilizationInfo>;
 
-export type VmUtilizationInfoList = VmUtilizationInfo[];
+export type VmUtilizationInfoList = ReadonlyArray<VmUtilizationInfo>;
 export const VmUtilizationInfoList = /*@__PURE__*/ S.Array(
   VmUtilizationInfo,
 ) as any as S.Schema<VmUtilizationInfoList>;
@@ -3139,16 +3091,14 @@ export type UtilizationReportTimeFrameEnum =
   | "TIME_FRAME_UNSPECIFIED"
   | "WEEK"
   | "MONTH"
-  | "YEAR"
-  | (string & {});
+  | "YEAR";
 export const UtilizationReportTimeFrameEnum = /*@__PURE__*/ S.String;
 
 export type UtilizationReportStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const UtilizationReportStateEnum = /*@__PURE__*/ S.String;
 
 /** Utilization report details the utilization (CPU, memory, etc.) of selected source VMs. */
@@ -3525,15 +3475,13 @@ export type AwsVmDetailsArchitectureEnum =
   | "I386"
   | "X86_64"
   | "ARM64"
-  | "X86_64_MAC"
-  | (string & {});
+  | "X86_64_MAC";
 export const AwsVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
 export type AwsVmDetailsVirtualizationTypeEnum =
   | "VM_VIRTUALIZATION_TYPE_UNSPECIFIED"
   | "HVM"
-  | "PARAVIRTUAL"
-  | (string & {});
+  | "PARAVIRTUAL";
 export const AwsVmDetailsVirtualizationTypeEnum = /*@__PURE__*/ S.String;
 
 export type AwsVmDetailsPowerStateEnum =
@@ -3541,15 +3489,13 @@ export type AwsVmDetailsPowerStateEnum =
   | "ON"
   | "OFF"
   | "SUSPENDED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const AwsVmDetailsPowerStateEnum = /*@__PURE__*/ S.String;
 
 export type AwsVmDetailsBootOptionEnum =
   | "BOOT_OPTION_UNSPECIFIED"
   | "EFI"
-  | "BIOS"
-  | (string & {});
+  | "BIOS";
 export const AwsVmDetailsBootOptionEnum = /*@__PURE__*/ S.String;
 
 /** AwsSecurityGroup describes a security group of an AWS VM. */
@@ -3568,7 +3514,7 @@ export const AwsSecurityGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "AwsSecurityGroup",
 }) as any as S.Schema<AwsSecurityGroup>;
 
-export type AwsSecurityGroupList = AwsSecurityGroup[];
+export type AwsSecurityGroupList = ReadonlyArray<AwsSecurityGroup>;
 export const AwsSecurityGroupList = /*@__PURE__*/ S.Array(
   AwsSecurityGroup,
 ) as any as S.Schema<AwsSecurityGroupList>;
@@ -3638,7 +3584,7 @@ export const AwsVmDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AwsVmDetails" }) as any as S.Schema<AwsVmDetails>;
 
-export type AwsVmDetailsList = AwsVmDetails[];
+export type AwsVmDetailsList = ReadonlyArray<AwsVmDetails>;
 export const AwsVmDetailsList = /*@__PURE__*/ S.Array(
   AwsVmDetails,
 ) as any as S.Schema<AwsVmDetailsList>;
@@ -3654,7 +3600,7 @@ export const AwsVmsDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AwsVmsDetails" }) as any as S.Schema<AwsVmsDetails>;
 
-export type VmwareVmDetailsList = VmwareVmDetails[];
+export type VmwareVmDetailsList = ReadonlyArray<VmwareVmDetails>;
 export const VmwareVmDetailsList = /*@__PURE__*/ S.Array(
   VmwareVmDetails,
 ) as any as S.Schema<VmwareVmDetailsList>;
@@ -3706,7 +3652,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
-export type DiskList = Disk[];
+export type DiskList = ReadonlyArray<Disk>;
 export const DiskList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskList>;
@@ -3714,8 +3660,7 @@ export const DiskList = /*@__PURE__*/ S.Array(
 export type AzureVmDetailsBootOptionEnum =
   | "BOOT_OPTION_UNSPECIFIED"
   | "EFI"
-  | "BIOS"
-  | (string & {});
+  | "BIOS";
 export const AzureVmDetailsBootOptionEnum = /*@__PURE__*/ S.String;
 
 export type AzureVmDetailsPowerStateEnum =
@@ -3726,8 +3671,7 @@ export type AzureVmDetailsPowerStateEnum =
   | "STOPPED"
   | "DEALLOCATING"
   | "DEALLOCATED"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const AzureVmDetailsPowerStateEnum = /*@__PURE__*/ S.String;
 
 /** A message describing the VM's OS. Including OS, Publisher, Offer and Plan if applicable. */
@@ -3753,8 +3697,7 @@ export const OSDescription = /*@__PURE__*/ S.suspend(() =>
 export type AzureVmDetailsArchitectureEnum =
   | "VM_ARCHITECTURE_UNSPECIFIED"
   | "VM_ARCHITECTURE_X86_FAMILY"
-  | "VM_ARCHITECTURE_ARM64"
-  | (string & {});
+  | "VM_ARCHITECTURE_ARM64";
 export const AzureVmDetailsArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** AzureVmDetails describes a VM in Azure. */
@@ -3807,7 +3750,7 @@ export const AzureVmDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AzureVmDetails" }) as any as S.Schema<AzureVmDetails>;
 
-export type AzureVmDetailsList = AzureVmDetails[];
+export type AzureVmDetailsList = ReadonlyArray<AzureVmDetails>;
 export const AzureVmDetailsList = /*@__PURE__*/ S.Array(
   AzureVmDetails,
 ) as any as S.Schema<AzureVmDetailsList>;
@@ -3853,8 +3796,7 @@ export const FetchInventoryResponse = /*@__PURE__*/ S.suspend(() =>
 export type FetchStorageInventoryProjectsLocationsSourcesTypeEnum =
   | "STORAGE_TYPE_UNSPECIFIED"
   | "DISKS"
-  | "SNAPSHOTS"
-  | (string & {});
+  | "SNAPSHOTS";
 export const FetchStorageInventoryProjectsLocationsSourcesTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3904,7 +3846,7 @@ export const SourceStorageResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceStorageResource",
 }) as any as S.Schema<SourceStorageResource>;
 
-export type SourceStorageResourceList = SourceStorageResource[];
+export type SourceStorageResourceList = ReadonlyArray<SourceStorageResource>;
 export const SourceStorageResourceList = /*@__PURE__*/ S.Array(
   SourceStorageResource,
 ) as any as S.Schema<SourceStorageResourceList>;
@@ -4133,8 +4075,7 @@ export const GetProjectsLocationsSourcesDiskMigrationJobsRequest =
 export type GetProjectsLocationsSourcesMigratingVmsViewEnum =
   | "MIGRATING_VM_VIEW_UNSPECIFIED"
   | "MIGRATING_VM_VIEW_BASIC"
-  | "MIGRATING_VM_VIEW_FULL"
-  | (string & {});
+  | "MIGRATING_VM_VIEW_FULL";
 export const GetProjectsLocationsSourcesMigratingVmsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4223,8 +4164,7 @@ export const GetProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
 export type GetProjectsLocationsSourcesUtilizationReportsViewEnum =
   | "UTILIZATION_REPORT_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsSourcesUtilizationReportsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4301,7 +4241,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -4352,7 +4292,7 @@ export const ListProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsGroupsRequest",
 }) as any as S.Schema<ListProjectsLocationsGroupsRequest>;
 
-export type GroupList = Group[];
+export type GroupList = ReadonlyArray<Group>;
 export const GroupList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupList>;
@@ -4407,7 +4347,7 @@ export const ListProjectsLocationsImageImportsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsImageImportsRequest",
 }) as any as S.Schema<ListProjectsLocationsImageImportsRequest>;
 
-export type ImageImportList = ImageImport[];
+export type ImageImportList = ReadonlyArray<ImageImport>;
 export const ImageImportList = /*@__PURE__*/ S.Array(
   ImageImport,
 ) as any as S.Schema<ImageImportList>;
@@ -4512,7 +4452,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4566,7 +4506,7 @@ export const ListProjectsLocationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsSourcesRequest",
 }) as any as S.Schema<ListProjectsLocationsSourcesRequest>;
 
-export type SourceList = Source[];
+export type SourceList = ReadonlyArray<Source>;
 export const SourceList = /*@__PURE__*/ S.Array(
   Source,
 ) as any as S.Schema<SourceList>;
@@ -4621,7 +4561,7 @@ export const ListProjectsLocationsSourcesDatacenterConnectorsRequest =
     identifier: "ListProjectsLocationsSourcesDatacenterConnectorsRequest",
   }) as any as S.Schema<ListProjectsLocationsSourcesDatacenterConnectorsRequest>;
 
-export type DatacenterConnectorList = DatacenterConnector[];
+export type DatacenterConnectorList = ReadonlyArray<DatacenterConnector>;
 export const DatacenterConnectorList = /*@__PURE__*/ S.Array(
   DatacenterConnector,
 ) as any as S.Schema<DatacenterConnectorList>;
@@ -4676,7 +4616,7 @@ export const ListProjectsLocationsSourcesDiskMigrationJobsRequest =
     identifier: "ListProjectsLocationsSourcesDiskMigrationJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsSourcesDiskMigrationJobsRequest>;
 
-export type DiskMigrationJobList = DiskMigrationJob[];
+export type DiskMigrationJobList = ReadonlyArray<DiskMigrationJob>;
 export const DiskMigrationJobList = /*@__PURE__*/ S.Array(
   DiskMigrationJob,
 ) as any as S.Schema<DiskMigrationJobList>;
@@ -4703,8 +4643,7 @@ export const ListDiskMigrationJobsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsSourcesMigratingVmsViewEnum =
   | "MIGRATING_VM_VIEW_UNSPECIFIED"
   | "MIGRATING_VM_VIEW_BASIC"
-  | "MIGRATING_VM_VIEW_FULL"
-  | (string & {});
+  | "MIGRATING_VM_VIEW_FULL";
 export const ListProjectsLocationsSourcesMigratingVmsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4744,7 +4683,7 @@ export const ListProjectsLocationsSourcesMigratingVmsRequest =
     identifier: "ListProjectsLocationsSourcesMigratingVmsRequest",
   }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsRequest>;
 
-export type MigratingVmList = MigratingVm[];
+export type MigratingVmList = ReadonlyArray<MigratingVm>;
 export const MigratingVmList = /*@__PURE__*/ S.Array(
   MigratingVm,
 ) as any as S.Schema<MigratingVmList>;
@@ -4900,7 +4839,7 @@ export const ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest =
       "ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest",
   }) as any as S.Schema<ListProjectsLocationsSourcesMigratingVmsReplicationCyclesRequest>;
 
-export type ReplicationCycleList = ReplicationCycle[];
+export type ReplicationCycleList = ReadonlyArray<ReplicationCycle>;
 export const ReplicationCycleList = /*@__PURE__*/ S.Array(
   ReplicationCycle,
 ) as any as S.Schema<ReplicationCycleList>;
@@ -4927,8 +4866,7 @@ export const ListReplicationCyclesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsSourcesUtilizationReportsViewEnum =
   | "UTILIZATION_REPORT_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsSourcesUtilizationReportsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -4968,7 +4906,7 @@ export const ListProjectsLocationsSourcesUtilizationReportsRequest =
     identifier: "ListProjectsLocationsSourcesUtilizationReportsRequest",
   }) as any as S.Schema<ListProjectsLocationsSourcesUtilizationReportsRequest>;
 
-export type UtilizationReportList = UtilizationReport[];
+export type UtilizationReportList = ReadonlyArray<UtilizationReport>;
 export const UtilizationReportList = /*@__PURE__*/ S.Array(
   UtilizationReport,
 ) as any as S.Schema<UtilizationReportList>;
@@ -5023,7 +4961,7 @@ export const ListProjectsLocationsTargetProjectsRequest =
     identifier: "ListProjectsLocationsTargetProjectsRequest",
   }) as any as S.Schema<ListProjectsLocationsTargetProjectsRequest>;
 
-export type TargetProjectList = TargetProject[];
+export type TargetProjectList = ReadonlyArray<TargetProject>;
 export const TargetProjectList = /*@__PURE__*/ S.Array(
   TargetProject,
 ) as any as S.Schema<TargetProjectList>;

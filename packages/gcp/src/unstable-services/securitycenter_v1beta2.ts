@@ -90,8 +90,7 @@ export type ConfigModuleEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const ConfigModuleEnablementStateEnum = /*@__PURE__*/ S.String;
 
 export interface Config {
@@ -115,8 +114,7 @@ export type ContainerThreatDetectionSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const ContainerThreatDetectionSettingsServiceEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -165,8 +163,7 @@ export type EventThreatDetectionSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const EventThreatDetectionSettingsServiceEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -211,8 +208,7 @@ export type RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -259,8 +255,7 @@ export type SecurityHealthAnalyticsSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const SecurityHealthAnalyticsSettingsServiceEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -309,8 +304,7 @@ export type VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -360,8 +354,7 @@ export type WebSecurityScannerSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const WebSecurityScannerSettingsServiceEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -973,8 +966,7 @@ export type SubscriptionTierEnum =
   | "STANDARD"
   | "PREMIUM"
   | "ENTERPRISE"
-  | "ENTERPRISE_MC"
-  | (string & {});
+  | "ENTERPRISE_MC";
 export const SubscriptionTierEnum = /*@__PURE__*/ S.String;
 
 export type DetailsTypeEnum =
@@ -986,8 +978,7 @@ export type DetailsTypeEnum =
   | "PAY_AS_YOU_GO"
   | "SUBSCRIPTION"
   | "SUB_FIXED"
-  | "SUB_BASE_OVERAGE"
-  | (string & {});
+  | "SUB_BASE_OVERAGE";
 export const DetailsTypeEnum = /*@__PURE__*/ S.String;
 
 export interface Details {

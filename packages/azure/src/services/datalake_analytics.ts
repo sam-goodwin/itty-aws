@@ -13,19 +13,28 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The resource type. Note: This should not be set by the user, as the constant value is Microsoft.DataLakeAnalytics/accounts */
+export type AccountsCheckNameAvailabilityRequestType =
+  "Microsoft.DataLakeAnalytics/accounts";
+export const AccountsCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
+
 export interface AccountsCheckNameAvailabilityRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The resource location without whitespace. */
   location: string;
-  body: unknown;
+  /** The Data Lake Analytics name to check availability for. */
+  name: string;
+  /** The resource type. Note: This should not be set by the user, as the constant value is Microsoft.DataLakeAnalytics/accounts */
+  type: AccountsCheckNameAvailabilityRequestType;
 }
 export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: AccountsCheckNameAvailabilityRequestType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -57,6 +66,280 @@ export const NameAvailabilityInformation = /*@__PURE__*/ S.suspend(() =>
   identifier: "NameAvailabilityInformation",
 }) as any as S.Schema<NameAvailabilityInformation>;
 
+/** The resource tags. */
+export type AccountsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsCreateRequestTagsMap>;
+
+/** The Data Lake Store account properties to use when adding a new Data Lake Store account. */
+export interface AddDataLakeStoreProperties {
+  /** The optional suffix for the Data Lake Store account. */
+  suffix?: string;
+}
+export const AddDataLakeStoreProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    suffix: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AddDataLakeStoreProperties",
+}) as any as S.Schema<AddDataLakeStoreProperties>;
+
+/** The parameters used to add a new Data Lake Store account while creating a new Data Lake Analytics account. */
+export interface AddDataLakeStoreWithAccountParameters {
+  /** The unique name of the Data Lake Store account to add. */
+  name: string;
+  /** The Data Lake Store account properties to use when adding a new Data Lake Store account. */
+  properties?: AddDataLakeStoreProperties;
+}
+export const AddDataLakeStoreWithAccountParameters = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      properties: S.optional(AddDataLakeStoreProperties),
+    }),
+).annotate({
+  identifier: "AddDataLakeStoreWithAccountParameters",
+}) as any as S.Schema<AddDataLakeStoreWithAccountParameters>;
+
+/** The list of Data Lake Store accounts associated with this account. */
+export type CreateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
+  ReadonlyArray<AddDataLakeStoreWithAccountParameters>;
+export const CreateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
+  /*@__PURE__*/ S.Array(
+    AddDataLakeStoreWithAccountParameters,
+  ) as any as S.Schema<CreateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList>;
+
+/** The Azure Storage account properties to use when adding a new Azure Storage account. */
+export interface AddStorageAccountProperties {
+  /** The access key associated with this Azure Storage account that will be used to connect to it. */
+  accessKey: string;
+  /** The optional suffix for the storage account. */
+  suffix?: string;
+}
+export const AddStorageAccountProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessKey: S.String,
+    suffix: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AddStorageAccountProperties",
+}) as any as S.Schema<AddStorageAccountProperties>;
+
+/** The parameters used to add a new Azure Storage account while creating a new Data Lake Analytics account. */
+export interface AddStorageAccountWithAccountParameters {
+  /** The unique name of the Azure Storage account to add. */
+  name: string;
+  /** The Azure Storage account properties to use when adding a new Azure Storage account. */
+  properties: AddStorageAccountProperties;
+}
+export const AddStorageAccountWithAccountParameters = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      properties: AddStorageAccountProperties,
+    }),
+).annotate({
+  identifier: "AddStorageAccountWithAccountParameters",
+}) as any as S.Schema<AddStorageAccountWithAccountParameters>;
+
+/** The list of Azure Blob Storage accounts associated with this account. */
+export type CreateDataLakeAnalyticsAccountPropertiesStorageAccountsList =
+  ReadonlyArray<AddStorageAccountWithAccountParameters>;
+export const CreateDataLakeAnalyticsAccountPropertiesStorageAccountsList =
+  /*@__PURE__*/ S.Array(
+    AddStorageAccountWithAccountParameters,
+  ) as any as S.Schema<CreateDataLakeAnalyticsAccountPropertiesStorageAccountsList>;
+
+/** The type of AAD object the object identifier refers to. */
+export type CreateOrUpdateComputePolicyPropertiesObjectType =
+  | "User"
+  | "Group"
+  | "ServicePrincipal";
+export const CreateOrUpdateComputePolicyPropertiesObjectType =
+  /*@__PURE__*/ S.String;
+
+/** The compute policy properties to use when creating a new compute policy. */
+export interface CreateOrUpdateComputePolicyProperties {
+  /** The AAD object identifier for the entity to create a policy for. */
+  objectId: string;
+  /** The type of AAD object the object identifier refers to. */
+  objectType: CreateOrUpdateComputePolicyPropertiesObjectType;
+  /** The maximum degree of parallelism per job this user can use to submit jobs. This property, the min priority per job property, or both must be passed. */
+  maxDegreeOfParallelismPerJob?: number;
+  /** The minimum priority per job this user can use to submit jobs. This property, the max degree of parallelism per job property, or both must be passed. */
+  minPriorityPerJob?: number;
+}
+export const CreateOrUpdateComputePolicyProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      objectId: S.String,
+      objectType: CreateOrUpdateComputePolicyPropertiesObjectType,
+      maxDegreeOfParallelismPerJob: S.optional(S.Number),
+      minPriorityPerJob: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "CreateOrUpdateComputePolicyProperties",
+}) as any as S.Schema<CreateOrUpdateComputePolicyProperties>;
+
+/** The parameters used to create a new compute policy while creating a new Data Lake Analytics account. */
+export interface CreateComputePolicyWithAccountParameters {
+  /** The unique name of the compute policy to create. */
+  name: string;
+  /** The compute policy properties to use when creating a new compute policy. */
+  properties: CreateOrUpdateComputePolicyProperties;
+}
+export const CreateComputePolicyWithAccountParameters = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      properties: CreateOrUpdateComputePolicyProperties,
+    }),
+).annotate({
+  identifier: "CreateComputePolicyWithAccountParameters",
+}) as any as S.Schema<CreateComputePolicyWithAccountParameters>;
+
+/** The list of compute policies associated with this account. */
+export type CreateDataLakeAnalyticsAccountPropertiesComputePoliciesList =
+  ReadonlyArray<CreateComputePolicyWithAccountParameters>;
+export const CreateDataLakeAnalyticsAccountPropertiesComputePoliciesList =
+  /*@__PURE__*/ S.Array(
+    CreateComputePolicyWithAccountParameters,
+  ) as any as S.Schema<CreateDataLakeAnalyticsAccountPropertiesComputePoliciesList>;
+
+/** The firewall rule properties to use when creating a new firewall rule. */
+export interface CreateOrUpdateFirewallRuleProperties {
+  /** The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol. */
+  startIpAddress: string;
+  /** The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol. */
+  endIpAddress: string;
+}
+export const CreateOrUpdateFirewallRuleProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      startIpAddress: S.String,
+      endIpAddress: S.String,
+    }),
+).annotate({
+  identifier: "CreateOrUpdateFirewallRuleProperties",
+}) as any as S.Schema<CreateOrUpdateFirewallRuleProperties>;
+
+/** The parameters used to create a new firewall rule while creating a new Data Lake Analytics account. */
+export interface CreateFirewallRuleWithAccountParameters {
+  /** The unique name of the firewall rule to create. */
+  name: string;
+  /** The firewall rule properties to use when creating a new firewall rule. */
+  properties: CreateOrUpdateFirewallRuleProperties;
+}
+export const CreateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      properties: CreateOrUpdateFirewallRuleProperties,
+    }),
+).annotate({
+  identifier: "CreateFirewallRuleWithAccountParameters",
+}) as any as S.Schema<CreateFirewallRuleWithAccountParameters>;
+
+/** The list of firewall rules associated with this account. */
+export type CreateDataLakeAnalyticsAccountPropertiesFirewallRulesList =
+  ReadonlyArray<CreateFirewallRuleWithAccountParameters>;
+export const CreateDataLakeAnalyticsAccountPropertiesFirewallRulesList =
+  /*@__PURE__*/ S.Array(
+    CreateFirewallRuleWithAccountParameters,
+  ) as any as S.Schema<CreateDataLakeAnalyticsAccountPropertiesFirewallRulesList>;
+
+/** The current state of the IP address firewall for this account. */
+export type CreateDataLakeAnalyticsAccountPropertiesFirewallState =
+  | "Enabled"
+  | "Disabled";
+export const CreateDataLakeAnalyticsAccountPropertiesFirewallState =
+  /*@__PURE__*/ S.String;
+
+/** The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced. */
+export type CreateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
+  | "Enabled"
+  | "Disabled";
+export const CreateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
+  /*@__PURE__*/ S.String;
+
+/** The commitment tier for the next month. */
+export type CreateDataLakeAnalyticsAccountPropertiesNewTier =
+  | "Consumption"
+  | "Commitment_100AUHours"
+  | "Commitment_500AUHours"
+  | "Commitment_1000AUHours"
+  | "Commitment_5000AUHours"
+  | "Commitment_10000AUHours"
+  | "Commitment_50000AUHours"
+  | "Commitment_100000AUHours"
+  | "Commitment_500000AUHours";
+export const CreateDataLakeAnalyticsAccountPropertiesNewTier =
+  /*@__PURE__*/ S.String;
+
+export interface CreateDataLakeAnalyticsAccountProperties {
+  /** The default Data Lake Store account associated with this account. */
+  defaultDataLakeStoreAccount: string;
+  /** The list of Data Lake Store accounts associated with this account. */
+  dataLakeStoreAccounts: CreateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList;
+  /** The list of Azure Blob Storage accounts associated with this account. */
+  storageAccounts?: CreateDataLakeAnalyticsAccountPropertiesStorageAccountsList;
+  /** The list of compute policies associated with this account. */
+  computePolicies?: CreateDataLakeAnalyticsAccountPropertiesComputePoliciesList;
+  /** The list of firewall rules associated with this account. */
+  firewallRules?: CreateDataLakeAnalyticsAccountPropertiesFirewallRulesList;
+  /** The current state of the IP address firewall for this account. */
+  firewallState?: CreateDataLakeAnalyticsAccountPropertiesFirewallState;
+  /** The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced. */
+  firewallAllowAzureIps?: CreateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps;
+  /** The commitment tier for the next month. */
+  newTier?: CreateDataLakeAnalyticsAccountPropertiesNewTier;
+  /** The maximum supported jobs running under the account at the same time. */
+  maxJobCount?: number;
+  /** The maximum supported degree of parallelism for this account. */
+  maxDegreeOfParallelism?: number;
+  /** The maximum supported degree of parallelism per job for this account. */
+  maxDegreeOfParallelismPerJob?: number;
+  /** The minimum supported priority per job for this account. */
+  minPriorityPerJob?: number;
+  /** The number of days that job metadata is retained. */
+  queryStoreRetention?: number;
+}
+export const CreateDataLakeAnalyticsAccountProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      defaultDataLakeStoreAccount: S.String,
+      dataLakeStoreAccounts:
+        CreateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList,
+      storageAccounts: S.optional(
+        CreateDataLakeAnalyticsAccountPropertiesStorageAccountsList,
+      ),
+      computePolicies: S.optional(
+        CreateDataLakeAnalyticsAccountPropertiesComputePoliciesList,
+      ),
+      firewallRules: S.optional(
+        CreateDataLakeAnalyticsAccountPropertiesFirewallRulesList,
+      ),
+      firewallState: S.optional(
+        CreateDataLakeAnalyticsAccountPropertiesFirewallState,
+      ),
+      firewallAllowAzureIps: S.optional(
+        CreateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps,
+      ),
+      newTier: S.optional(CreateDataLakeAnalyticsAccountPropertiesNewTier),
+      maxJobCount: S.optional(S.Number),
+      maxDegreeOfParallelism: S.optional(S.Number),
+      maxDegreeOfParallelismPerJob: S.optional(S.Number),
+      minPriorityPerJob: S.optional(S.Number),
+      queryStoreRetention: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "CreateDataLakeAnalyticsAccountProperties",
+}) as any as S.Schema<CreateDataLakeAnalyticsAccountProperties>;
+
 export interface AccountsCreateRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -64,14 +347,21 @@ export interface AccountsCreateRequest {
   resourceGroupName: string;
   /** The name of the Data Lake Analytics account. */
   accountName: string;
-  body: unknown;
+  /** The resource location. */
+  location: string;
+  /** The resource tags. */
+  tags?: AccountsCreateRequestTagsMap;
+  /** The Data Lake Analytics account properties to use for creating. */
+  properties: CreateDataLakeAnalyticsAccountProperties;
 }
 export const AccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.String,
+    tags: S.optional(AccountsCreateRequestTagsMap),
+    properties: CreateDataLakeAnalyticsAccountProperties,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -105,16 +395,12 @@ export type DataLakeAnalyticsAccountPropertiesProvisioningState =
   | "Deleting"
   | "Deleted"
   | "Undeleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const DataLakeAnalyticsAccountPropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The state of the Data Lake Analytics account. */
-export type DataLakeAnalyticsAccountPropertiesState =
-  | "Active"
-  | "Suspended"
-  | (string & {});
+export type DataLakeAnalyticsAccountPropertiesState = "Active" | "Suspended";
 export const DataLakeAnalyticsAccountPropertiesState = /*@__PURE__*/ S.String;
 
 /** The Data Lake Store account properties. */
@@ -155,7 +441,7 @@ export const DataLakeStoreAccountInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Data Lake Store accounts associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
-  DataLakeStoreAccountInformation[];
+  ReadonlyArray<DataLakeStoreAccountInformation>;
 export const DataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
   /*@__PURE__*/ S.Array(
     DataLakeStoreAccountInformation,
@@ -163,7 +449,7 @@ export const DataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
 
 /** The list of Data Lake Store accounts associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesPublicDataLakeStoreAccountsList =
-  DataLakeStoreAccountInformation[];
+  ReadonlyArray<DataLakeStoreAccountInformation>;
 export const DataLakeAnalyticsAccountPropertiesPublicDataLakeStoreAccountsList =
   /*@__PURE__*/ S.Array(
     DataLakeStoreAccountInformation,
@@ -206,7 +492,7 @@ export const StorageAccountInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Azure Blob Storage accounts associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesStorageAccountsList =
-  StorageAccountInformation[];
+  ReadonlyArray<StorageAccountInformation>;
 export const DataLakeAnalyticsAccountPropertiesStorageAccountsList =
   /*@__PURE__*/ S.Array(
     StorageAccountInformation,
@@ -216,8 +502,7 @@ export const DataLakeAnalyticsAccountPropertiesStorageAccountsList =
 export type ComputePolicyPropertiesObjectType =
   | "User"
   | "Group"
-  | "ServicePrincipal"
-  | (string & {});
+  | "ServicePrincipal";
 export const ComputePolicyPropertiesObjectType = /*@__PURE__*/ S.String;
 
 /** The compute policy properties. */
@@ -264,7 +549,7 @@ export const ComputePolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of compute policies associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesComputePoliciesList =
-  ComputePolicy[];
+  ReadonlyArray<ComputePolicy>;
 export const DataLakeAnalyticsAccountPropertiesComputePoliciesList =
   /*@__PURE__*/ S.Array(
     ComputePolicy,
@@ -274,8 +559,7 @@ export const DataLakeAnalyticsAccountPropertiesComputePoliciesList =
 export type NestedResourceProvisioningState =
   | "Succeeded"
   | "Canceled"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const NestedResourceProvisioningState = /*@__PURE__*/ S.String;
 
 /** The HiveMetastore properties. */
@@ -329,7 +613,7 @@ export const HiveMetastore = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of hiveMetastores associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesHiveMetastoresList =
-  HiveMetastore[];
+  ReadonlyArray<HiveMetastore>;
 export const DataLakeAnalyticsAccountPropertiesHiveMetastoresList =
   /*@__PURE__*/ S.Array(
     HiveMetastore,
@@ -339,8 +623,7 @@ export const DataLakeAnalyticsAccountPropertiesHiveMetastoresList =
 export type VirtualNetworkRuleState =
   | "Active"
   | "NetworkSourceDeleted"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const VirtualNetworkRuleState = /*@__PURE__*/ S.String;
 
 /** The VirtualNetwork Rule properties. */
@@ -383,7 +666,7 @@ export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of virtualNetwork rules associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesVirtualNetworkRulesList =
-  VirtualNetworkRule[];
+  ReadonlyArray<VirtualNetworkRule>;
 export const DataLakeAnalyticsAccountPropertiesVirtualNetworkRulesList =
   /*@__PURE__*/ S.Array(
     VirtualNetworkRule,
@@ -427,7 +710,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of firewall rules associated with this account. */
 export type DataLakeAnalyticsAccountPropertiesFirewallRulesList =
-  FirewallRule[];
+  ReadonlyArray<FirewallRule>;
 export const DataLakeAnalyticsAccountPropertiesFirewallRulesList =
   /*@__PURE__*/ S.Array(
     FirewallRule,
@@ -436,16 +719,14 @@ export const DataLakeAnalyticsAccountPropertiesFirewallRulesList =
 /** The current state of the IP address firewall for this account. */
 export type DataLakeAnalyticsAccountPropertiesFirewallState =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const DataLakeAnalyticsAccountPropertiesFirewallState =
   /*@__PURE__*/ S.String;
 
 /** The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced. */
 export type DataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const DataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
   /*@__PURE__*/ S.String;
 
@@ -459,8 +740,7 @@ export type DataLakeAnalyticsAccountPropertiesNewTier =
   | "Commitment_10000AUHours"
   | "Commitment_50000AUHours"
   | "Commitment_100000AUHours"
-  | "Commitment_500000AUHours"
-  | (string & {});
+  | "Commitment_500000AUHours";
 export const DataLakeAnalyticsAccountPropertiesNewTier = /*@__PURE__*/ S.String;
 
 /** The commitment tier in use for the current month. */
@@ -473,8 +753,7 @@ export type DataLakeAnalyticsAccountPropertiesCurrentTier =
   | "Commitment_10000AUHours"
   | "Commitment_50000AUHours"
   | "Commitment_100000AUHours"
-  | "Commitment_500000AUHours"
-  | (string & {});
+  | "Commitment_500000AUHours";
 export const DataLakeAnalyticsAccountPropertiesCurrentTier =
   /*@__PURE__*/ S.String;
 
@@ -482,8 +761,7 @@ export const DataLakeAnalyticsAccountPropertiesCurrentTier =
 export type DataLakeAnalyticsAccountPropertiesDebugDataAccessLevel =
   | "All"
   | "Customer"
-  | "None"
-  | (string & {});
+  | "None";
 export const DataLakeAnalyticsAccountPropertiesDebugDataAccessLevel =
   /*@__PURE__*/ S.String;
 
@@ -780,16 +1058,14 @@ export type DataLakeAnalyticsAccountPropertiesBasicProvisioningState =
   | "Deleting"
   | "Deleted"
   | "Undeleting"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const DataLakeAnalyticsAccountPropertiesBasicProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** The state of the Data Lake Analytics account. */
 export type DataLakeAnalyticsAccountPropertiesBasicState =
   | "Active"
-  | "Suspended"
-  | (string & {});
+  | "Suspended";
 export const DataLakeAnalyticsAccountPropertiesBasicState =
   /*@__PURE__*/ S.String;
 
@@ -854,7 +1130,7 @@ export const DataLakeAnalyticsAccountBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** The results of the list operation. */
 export type DataLakeAnalyticsAccountListResultValueList =
-  DataLakeAnalyticsAccountBasic[];
+  ReadonlyArray<DataLakeAnalyticsAccountBasic>;
 export const DataLakeAnalyticsAccountListResultValueList =
   /*@__PURE__*/ S.Array(
     DataLakeAnalyticsAccountBasic,
@@ -919,6 +1195,276 @@ export const AccountsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsListByResourceGroupRequest",
 }) as any as S.Schema<AccountsListByResourceGroupRequest>;
 
+/** The resource tags. */
+export type AccountsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsUpdateRequestTagsMap>;
+
+/** The Data Lake Store account properties to use when updating a Data Lake Store account. */
+export interface UpdateDataLakeStoreProperties {
+  /** The optional suffix for the Data Lake Store account. */
+  suffix?: string;
+}
+export const UpdateDataLakeStoreProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    suffix: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateDataLakeStoreProperties",
+}) as any as S.Schema<UpdateDataLakeStoreProperties>;
+
+/** The parameters used to update a Data Lake Store account while updating a Data Lake Analytics account. */
+export interface UpdateDataLakeStoreWithAccountParameters {
+  /** The unique name of the Data Lake Store account to update. */
+  name: string;
+  /** The Data Lake Store account properties to use when updating a Data Lake Store account. */
+  properties?: UpdateDataLakeStoreProperties;
+}
+export const UpdateDataLakeStoreWithAccountParameters = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      properties: S.optional(UpdateDataLakeStoreProperties),
+    }),
+).annotate({
+  identifier: "UpdateDataLakeStoreWithAccountParameters",
+}) as any as S.Schema<UpdateDataLakeStoreWithAccountParameters>;
+
+/** The list of Data Lake Store accounts associated with this account. */
+export type UpdateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
+  ReadonlyArray<UpdateDataLakeStoreWithAccountParameters>;
+export const UpdateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList =
+  /*@__PURE__*/ S.Array(
+    UpdateDataLakeStoreWithAccountParameters,
+  ) as any as S.Schema<UpdateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList>;
+
+/** The Azure Storage account properties to use when updating an Azure Storage account. */
+export interface UpdateStorageAccountProperties {
+  /** The updated access key associated with this Azure Storage account that will be used to connect to it. */
+  accessKey?: string;
+  /** The optional suffix for the storage account. */
+  suffix?: string;
+}
+export const UpdateStorageAccountProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessKey: S.optional(S.String),
+    suffix: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateStorageAccountProperties",
+}) as any as S.Schema<UpdateStorageAccountProperties>;
+
+/** The parameters used to update an Azure Storage account while updating a Data Lake Analytics account. */
+export interface UpdateStorageAccountWithAccountParameters {
+  /** The unique name of the Azure Storage account to update. */
+  name: string;
+  /** The Azure Storage account properties to use when updating an Azure Storage account. */
+  properties?: UpdateStorageAccountProperties;
+}
+export const UpdateStorageAccountWithAccountParameters =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      properties: S.optional(UpdateStorageAccountProperties),
+    }),
+  ).annotate({
+    identifier: "UpdateStorageAccountWithAccountParameters",
+  }) as any as S.Schema<UpdateStorageAccountWithAccountParameters>;
+
+/** The list of Azure Blob storage accounts associated with this account. */
+export type UpdateDataLakeAnalyticsAccountPropertiesStorageAccountsList =
+  ReadonlyArray<UpdateStorageAccountWithAccountParameters>;
+export const UpdateDataLakeAnalyticsAccountPropertiesStorageAccountsList =
+  /*@__PURE__*/ S.Array(
+    UpdateStorageAccountWithAccountParameters,
+  ) as any as S.Schema<UpdateDataLakeAnalyticsAccountPropertiesStorageAccountsList>;
+
+/** The type of AAD object the object identifier refers to. */
+export type UpdateComputePolicyPropertiesObjectType =
+  | "User"
+  | "Group"
+  | "ServicePrincipal";
+export const UpdateComputePolicyPropertiesObjectType = /*@__PURE__*/ S.String;
+
+/** The compute policy properties to use when updating a compute policy. */
+export interface UpdateComputePolicyProperties {
+  /** The AAD object identifier for the entity to create a policy for. */
+  objectId?: string;
+  /** The type of AAD object the object identifier refers to. */
+  objectType?: UpdateComputePolicyPropertiesObjectType;
+  /** The maximum degree of parallelism per job this user can use to submit jobs. This property, the min priority per job property, or both must be passed. */
+  maxDegreeOfParallelismPerJob?: number;
+  /** The minimum priority per job this user can use to submit jobs. This property, the max degree of parallelism per job property, or both must be passed. */
+  minPriorityPerJob?: number;
+}
+export const UpdateComputePolicyProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectId: S.optional(S.String),
+    objectType: S.optional(UpdateComputePolicyPropertiesObjectType),
+    maxDegreeOfParallelismPerJob: S.optional(S.Number),
+    minPriorityPerJob: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "UpdateComputePolicyProperties",
+}) as any as S.Schema<UpdateComputePolicyProperties>;
+
+/** The parameters used to update a compute policy while updating a Data Lake Analytics account. */
+export interface UpdateComputePolicyWithAccountParameters {
+  /** The unique name of the compute policy to update. */
+  name: string;
+  /** The compute policy properties to use when updating a compute policy. */
+  properties?: UpdateComputePolicyProperties;
+}
+export const UpdateComputePolicyWithAccountParameters = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      properties: S.optional(UpdateComputePolicyProperties),
+    }),
+).annotate({
+  identifier: "UpdateComputePolicyWithAccountParameters",
+}) as any as S.Schema<UpdateComputePolicyWithAccountParameters>;
+
+/** The list of compute policies associated with this account. */
+export type UpdateDataLakeAnalyticsAccountPropertiesComputePoliciesList =
+  ReadonlyArray<UpdateComputePolicyWithAccountParameters>;
+export const UpdateDataLakeAnalyticsAccountPropertiesComputePoliciesList =
+  /*@__PURE__*/ S.Array(
+    UpdateComputePolicyWithAccountParameters,
+  ) as any as S.Schema<UpdateDataLakeAnalyticsAccountPropertiesComputePoliciesList>;
+
+/** The firewall rule properties to use when updating a firewall rule. */
+export interface UpdateFirewallRuleProperties {
+  /** The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol. */
+  startIpAddress?: string;
+  /** The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol. */
+  endIpAddress?: string;
+}
+export const UpdateFirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startIpAddress: S.optional(S.String),
+    endIpAddress: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateFirewallRuleProperties",
+}) as any as S.Schema<UpdateFirewallRuleProperties>;
+
+/** The parameters used to update a firewall rule while updating a Data Lake Analytics account. */
+export interface UpdateFirewallRuleWithAccountParameters {
+  /** The unique name of the firewall rule to update. */
+  name: string;
+  /** The firewall rule properties to use when updating a firewall rule. */
+  properties?: UpdateFirewallRuleProperties;
+}
+export const UpdateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      properties: S.optional(UpdateFirewallRuleProperties),
+    }),
+).annotate({
+  identifier: "UpdateFirewallRuleWithAccountParameters",
+}) as any as S.Schema<UpdateFirewallRuleWithAccountParameters>;
+
+/** The list of firewall rules associated with this account. */
+export type UpdateDataLakeAnalyticsAccountPropertiesFirewallRulesList =
+  ReadonlyArray<UpdateFirewallRuleWithAccountParameters>;
+export const UpdateDataLakeAnalyticsAccountPropertiesFirewallRulesList =
+  /*@__PURE__*/ S.Array(
+    UpdateFirewallRuleWithAccountParameters,
+  ) as any as S.Schema<UpdateDataLakeAnalyticsAccountPropertiesFirewallRulesList>;
+
+/** The current state of the IP address firewall for this account. Disabling the firewall does not remove existing rules, they will just be ignored until the firewall is re-enabled. */
+export type UpdateDataLakeAnalyticsAccountPropertiesFirewallState =
+  | "Enabled"
+  | "Disabled";
+export const UpdateDataLakeAnalyticsAccountPropertiesFirewallState =
+  /*@__PURE__*/ S.String;
+
+/** The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced. */
+export type UpdateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
+  | "Enabled"
+  | "Disabled";
+export const UpdateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps =
+  /*@__PURE__*/ S.String;
+
+/** The commitment tier to use for next month. */
+export type UpdateDataLakeAnalyticsAccountPropertiesNewTier =
+  | "Consumption"
+  | "Commitment_100AUHours"
+  | "Commitment_500AUHours"
+  | "Commitment_1000AUHours"
+  | "Commitment_5000AUHours"
+  | "Commitment_10000AUHours"
+  | "Commitment_50000AUHours"
+  | "Commitment_100000AUHours"
+  | "Commitment_500000AUHours";
+export const UpdateDataLakeAnalyticsAccountPropertiesNewTier =
+  /*@__PURE__*/ S.String;
+
+/** The properties to update that are associated with an underlying Data Lake Analytics account. */
+export interface UpdateDataLakeAnalyticsAccountProperties {
+  /** The list of Data Lake Store accounts associated with this account. */
+  dataLakeStoreAccounts?: UpdateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList;
+  /** The list of Azure Blob storage accounts associated with this account. */
+  storageAccounts?: UpdateDataLakeAnalyticsAccountPropertiesStorageAccountsList;
+  /** The list of compute policies associated with this account. */
+  computePolicies?: UpdateDataLakeAnalyticsAccountPropertiesComputePoliciesList;
+  /** The list of firewall rules associated with this account. */
+  firewallRules?: UpdateDataLakeAnalyticsAccountPropertiesFirewallRulesList;
+  /** The current state of the IP address firewall for this account. Disabling the firewall does not remove existing rules, they will just be ignored until the firewall is re-enabled. */
+  firewallState?: UpdateDataLakeAnalyticsAccountPropertiesFirewallState;
+  /** The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced. */
+  firewallAllowAzureIps?: UpdateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps;
+  /** The commitment tier to use for next month. */
+  newTier?: UpdateDataLakeAnalyticsAccountPropertiesNewTier;
+  /** The maximum supported jobs running under the account at the same time. */
+  maxJobCount?: number;
+  /** The maximum supported degree of parallelism for this account. */
+  maxDegreeOfParallelism?: number;
+  /** The maximum supported degree of parallelism per job for this account. */
+  maxDegreeOfParallelismPerJob?: number;
+  /** The minimum supported priority per job for this account. */
+  minPriorityPerJob?: number;
+  /** The number of days that job metadata is retained. */
+  queryStoreRetention?: number;
+}
+export const UpdateDataLakeAnalyticsAccountProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      dataLakeStoreAccounts: S.optional(
+        UpdateDataLakeAnalyticsAccountPropertiesDataLakeStoreAccountsList,
+      ),
+      storageAccounts: S.optional(
+        UpdateDataLakeAnalyticsAccountPropertiesStorageAccountsList,
+      ),
+      computePolicies: S.optional(
+        UpdateDataLakeAnalyticsAccountPropertiesComputePoliciesList,
+      ),
+      firewallRules: S.optional(
+        UpdateDataLakeAnalyticsAccountPropertiesFirewallRulesList,
+      ),
+      firewallState: S.optional(
+        UpdateDataLakeAnalyticsAccountPropertiesFirewallState,
+      ),
+      firewallAllowAzureIps: S.optional(
+        UpdateDataLakeAnalyticsAccountPropertiesFirewallAllowAzureIps,
+      ),
+      newTier: S.optional(UpdateDataLakeAnalyticsAccountPropertiesNewTier),
+      maxJobCount: S.optional(S.Number),
+      maxDegreeOfParallelism: S.optional(S.Number),
+      maxDegreeOfParallelismPerJob: S.optional(S.Number),
+      minPriorityPerJob: S.optional(S.Number),
+      queryStoreRetention: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "UpdateDataLakeAnalyticsAccountProperties",
+}) as any as S.Schema<UpdateDataLakeAnalyticsAccountProperties>;
+
 export interface AccountsUpdateRequest {
   /** Get subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -926,14 +1472,18 @@ export interface AccountsUpdateRequest {
   resourceGroupName: string;
   /** The name of the Data Lake Analytics account. */
   accountName: string;
-  body?: unknown;
+  /** The resource tags. */
+  tags?: AccountsUpdateRequestTagsMap;
+  /** The properties that can be updated in an existing Data Lake Analytics account. */
+  properties?: UpdateDataLakeAnalyticsAccountProperties;
 }
 export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(AccountsUpdateRequestTagsMap),
+    properties: S.optional(UpdateDataLakeAnalyticsAccountProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -991,7 +1541,8 @@ export interface ComputePoliciesCreateOrUpdateRequest {
   accountName: string;
   /** The name of the compute policy to create or update. */
   computePolicyName: string;
-  body: unknown;
+  /** The compute policy properties to use when creating a new compute policy. */
+  properties: CreateOrUpdateComputePolicyProperties;
 }
 export const ComputePoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1000,7 +1551,7 @@ export const ComputePoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       computePolicyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: CreateOrUpdateComputePolicyProperties,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1145,7 +1696,7 @@ export const ComputePoliciesListByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComputePoliciesListByAccountRequest>;
 
 /** The results of the list operation. */
-export type ComputePolicyListResultValueList = ComputePolicy[];
+export type ComputePolicyListResultValueList = ReadonlyArray<ComputePolicy>;
 export const ComputePolicyListResultValueList = /*@__PURE__*/ S.Array(
   ComputePolicy,
 ) as any as S.Schema<ComputePolicyListResultValueList>;
@@ -1175,7 +1726,8 @@ export interface ComputePoliciesUpdateRequest {
   accountName: string;
   /** The name of the compute policy to update. */
   computePolicyName: string;
-  body?: unknown;
+  /** The compute policy properties to use when updating a compute policy. */
+  properties?: UpdateComputePolicyProperties;
 }
 export const ComputePoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1183,7 +1735,7 @@ export const ComputePoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     computePolicyName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(UpdateComputePolicyProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1226,7 +1778,8 @@ export interface DataLakeStoreAccountsAddRequest {
   accountName: string;
   /** The name of the Data Lake Store account to add. */
   dataLakeStoreAccountName: string;
-  body?: unknown;
+  /** The Data Lake Store account properties to use when adding a new Data Lake Store account. */
+  properties?: AddDataLakeStoreProperties;
 }
 export const DataLakeStoreAccountsAddRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1234,7 +1787,7 @@ export const DataLakeStoreAccountsAddRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     dataLakeStoreAccountName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(AddDataLakeStoreProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1384,7 +1937,7 @@ export const DataLakeStoreAccountsListByAccountRequest =
 
 /** The results of the list operation. */
 export type DataLakeStoreAccountInformationListResultValueList =
-  DataLakeStoreAccountInformation[];
+  ReadonlyArray<DataLakeStoreAccountInformation>;
 export const DataLakeStoreAccountInformationListResultValueList =
   /*@__PURE__*/ S.Array(
     DataLakeStoreAccountInformation,
@@ -1416,7 +1969,8 @@ export interface FirewallRulesCreateOrUpdateRequest {
   accountName: string;
   /** The name of the firewall rule to create or update. */
   firewallRuleName: string;
-  body: unknown;
+  /** The firewall rule properties to use when creating a new firewall rule. */
+  properties: CreateOrUpdateFirewallRuleProperties;
 }
 export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1424,7 +1978,7 @@ export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     firewallRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: CreateOrUpdateFirewallRuleProperties,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1568,7 +2122,7 @@ export const FirewallRulesListByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallRulesListByAccountRequest>;
 
 /** The results of the list operation. */
-export type FirewallRuleListResultValueList = FirewallRule[];
+export type FirewallRuleListResultValueList = ReadonlyArray<FirewallRule>;
 export const FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListResultValueList>;
@@ -1598,7 +2152,8 @@ export interface FirewallRulesUpdateRequest {
   accountName: string;
   /** The name of the firewall rule to update. */
   firewallRuleName: string;
-  body?: unknown;
+  /** The firewall rule properties to use when updating a firewall rule. */
+  properties?: UpdateFirewallRuleProperties;
 }
 export const FirewallRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1606,7 +2161,7 @@ export const FirewallRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     firewallRuleName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(UpdateFirewallRuleProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1668,8 +2223,7 @@ export type CapabilityInformationState =
   | "Suspended"
   | "Deleted"
   | "Unregistered"
-  | "Warned"
-  | (string & {});
+  | "Warned";
 export const CapabilityInformationState = /*@__PURE__*/ S.String;
 
 /** Subscription-level properties and limits for Data Lake Analytics. */
@@ -1751,7 +2305,7 @@ export const OperationMetaMetricAvailabilitiesSpecification =
 
 /** The availabilities for OperationMetaMetricSpecification. */
 export type OperationMetaMetricSpecificationAvailabilitiesList =
-  OperationMetaMetricAvailabilitiesSpecification[];
+  ReadonlyArray<OperationMetaMetricAvailabilitiesSpecification>;
 export const OperationMetaMetricSpecificationAvailabilitiesList =
   /*@__PURE__*/ S.Array(
     OperationMetaMetricAvailabilitiesSpecification,
@@ -1788,7 +2342,7 @@ export const OperationMetaMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** The metricSpecifications for OperationMetaServiceSpecification. */
 export type OperationMetaServiceSpecificationMetricSpecificationsList =
-  OperationMetaMetricSpecification[];
+  ReadonlyArray<OperationMetaMetricSpecification>;
 export const OperationMetaServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaMetricSpecification,
@@ -1814,7 +2368,7 @@ export const OperationMetaLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** The logSpecifications for OperationMetaServiceSpecification. */
 export type OperationMetaServiceSpecificationLogSpecificationsList =
-  OperationMetaLogSpecification[];
+  ReadonlyArray<OperationMetaLogSpecification>;
 export const OperationMetaServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaLogSpecification,
@@ -1852,7 +2406,7 @@ export const OperationMetaPropertyInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationMetaPropertyInfo>;
 
 /** The intended executor of the operation. */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** An available operation for Data Lake Analytics. */
@@ -1876,7 +2430,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The results of the list operation. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -1906,7 +2460,8 @@ export interface StorageAccountsAddRequest {
   accountName: string;
   /** The name of the Azure Storage account to add */
   storageAccountName: string;
-  body: unknown;
+  /** The Azure Storage account properties to use when adding a new Azure Storage account. */
+  properties: AddStorageAccountProperties;
 }
 export const StorageAccountsAddRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1914,7 +2469,7 @@ export const StorageAccountsAddRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     storageAccountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: AddStorageAccountProperties,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2130,7 +2685,7 @@ export const StorageAccountsListByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The results of the list operation. */
 export type StorageAccountInformationListResultValueList =
-  StorageAccountInformation[];
+  ReadonlyArray<StorageAccountInformation>;
 export const StorageAccountInformationListResultValueList =
   /*@__PURE__*/ S.Array(
     StorageAccountInformation,
@@ -2197,7 +2752,8 @@ export const SasTokenInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SasTokenInformation>;
 
 /** The results of the list operation. */
-export type SasTokenInformationListResultValueList = SasTokenInformation[];
+export type SasTokenInformationListResultValueList =
+  ReadonlyArray<SasTokenInformation>;
 export const SasTokenInformationListResultValueList = /*@__PURE__*/ S.Array(
   SasTokenInformation,
 ) as any as S.Schema<SasTokenInformationListResultValueList>;
@@ -2270,7 +2826,8 @@ export const StorageContainer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageContainer>;
 
 /** The results of the list operation. */
-export type StorageContainerListResultValueList = StorageContainer[];
+export type StorageContainerListResultValueList =
+  ReadonlyArray<StorageContainer>;
 export const StorageContainerListResultValueList = /*@__PURE__*/ S.Array(
   StorageContainer,
 ) as any as S.Schema<StorageContainerListResultValueList>;
@@ -2300,7 +2857,8 @@ export interface StorageAccountsUpdateRequest {
   accountName: string;
   /** The Azure Storage account to modify */
   storageAccountName: string;
-  body?: unknown;
+  /** The Azure Storage account properties to use when updating an Azure Storage account. */
+  properties?: UpdateStorageAccountProperties;
 }
 export const StorageAccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2308,7 +2866,7 @@ export const StorageAccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     storageAccountName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(UpdateStorageAccountProperties),
   }).pipe(
     T.Http({
       method: "PATCH",

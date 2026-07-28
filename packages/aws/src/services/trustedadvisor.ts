@@ -212,18 +212,17 @@ export const GetOrganizationRecommendationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetOrganizationRecommendationRequest",
 }) as any as S.Schema<GetOrganizationRecommendationRequest>;
-export type RecommendationType = "standard" | "priority" | (string & {});
+export type RecommendationType = "standard" | "priority";
 export const RecommendationType = /*@__PURE__*/ S.String;
 
-export type RecommendationStatus = "ok" | "warning" | "error" | (string & {});
+export type RecommendationStatus = "ok" | "warning" | "error";
 export const RecommendationStatus = /*@__PURE__*/ S.String;
 
 export type RecommendationLifecycleStage =
   | "in_progress"
   | "pending_response"
   | "dismissed"
-  | "resolved"
-  | (string & {});
+  | "resolved";
 export const RecommendationLifecycleStage = /*@__PURE__*/ S.String;
 
 export type RecommendationPillar =
@@ -232,8 +231,7 @@ export type RecommendationPillar =
   | "security"
   | "service_limits"
   | "fault_tolerance"
-  | "operational_excellence"
-  | (string & {});
+  | "operational_excellence";
 export const RecommendationPillar = /*@__PURE__*/ S.String;
 
 export type RecommendationPillarList = RecommendationPillar[];
@@ -253,8 +251,7 @@ export type RecommendationSource =
   | "stir"
   | "ta_check"
   | "well_architected"
-  | "cost_optimization_hub"
-  | (string & {});
+  | "cost_optimization_hub";
 export const RecommendationSource = /*@__PURE__*/ S.String;
 
 export type RecommendationAwsService = string;
@@ -309,8 +306,7 @@ export type UpdateRecommendationLifecycleStageReasonCode =
   | "other_methods_available"
   | "low_priority"
   | "not_applicable"
-  | "other"
-  | (string & {});
+  | "other";
 export const UpdateRecommendationLifecycleStageReasonCode =
   /*@__PURE__*/ S.String;
 
@@ -395,8 +391,7 @@ export type RecommendationLanguage =
   | "it"
   | "es"
   | "pt_BR"
-  | "id"
-  | (string & {});
+  | "id";
 export const RecommendationLanguage = /*@__PURE__*/ S.String;
 
 export interface GetRecommendationRequest {
@@ -426,7 +421,7 @@ export const GetRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRecommendationRequest",
 }) as any as S.Schema<GetRecommendationRequest>;
 export type AccountRecommendationArn = string;
-export type StatusReason = "no_data_ok" | (string & {});
+export type StatusReason = "no_data_ok";
 export const StatusReason = /*@__PURE__*/ S.String;
 
 export interface Recommendation {
@@ -648,10 +643,10 @@ export const ListOrganizationRecommendationAccountsResponse =
   ).annotate({
     identifier: "ListOrganizationRecommendationAccountsResponse",
   }) as any as S.Schema<ListOrganizationRecommendationAccountsResponse>;
-export type ResourceStatus = "ok" | "warning" | "error" | (string & {});
+export type ResourceStatus = "ok" | "warning" | "error";
 export const ResourceStatus = /*@__PURE__*/ S.String;
 
-export type ExclusionStatus = "excluded" | "included" | (string & {});
+export type ExclusionStatus = "excluded" | "included";
 export const ExclusionStatus = /*@__PURE__*/ S.String;
 
 export interface ListOrganizationRecommendationResourcesRequest {
@@ -1036,8 +1031,7 @@ export type UpdateRecommendationLifecycleStage =
   | "pending_response"
   | "in_progress"
   | "dismissed"
-  | "resolved"
-  | (string & {});
+  | "resolved";
 export const UpdateRecommendationLifecycleStage = /*@__PURE__*/ S.String;
 
 export interface UpdateOrganizationRecommendationLifecycleRequest {

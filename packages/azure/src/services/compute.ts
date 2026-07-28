@@ -13,51 +13,22 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface ContainerServicesCreateOrUpdateRequest {
-  /** Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
-  subscriptionId: string;
-  /** The name of the resource group. */
-  resourceGroupName: string;
-  /** The name of the container service in the specified subscription and resource group. */
-  containerServiceName: string;
-  body: unknown;
-}
-export const ContainerServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      containerServiceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
-        code: 200,
-        apiVersion: "2017-01-31",
-      }),
-    ),
-).annotate({
-  identifier: "ContainerServicesCreateOrUpdateRequest",
-}) as any as S.Schema<ContainerServicesCreateOrUpdateRequest>;
-
 /** Resource tags */
-export type ContainerServicesCreateOrUpdateResponseTagsMap = {
+export type ContainerServicesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ContainerServicesCreateOrUpdateResponseTagsMap =
+export const ContainerServicesCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<ContainerServicesCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<ContainerServicesCreateOrUpdateRequestTagsMap>;
 
 /** The orchestrator to use to manage container service cluster resources. Valid values are Swarm, DCOS, and Custom. */
 export type ContainerServiceOrchestratorProfileOrchestratorType =
   | "Swarm"
   | "DCOS"
   | "Custom"
-  | "Kubernetes"
-  | (string & {});
+  | "Kubernetes";
 export const ContainerServiceOrchestratorProfileOrchestratorType =
   /*@__PURE__*/ S.String;
 
@@ -104,10 +75,289 @@ export const ContainerServiceServicePrincipalProfile = /*@__PURE__*/ S.suspend(
   identifier: "ContainerServiceServicePrincipalProfile",
 }) as any as S.Schema<ContainerServiceServicePrincipalProfile>;
 
+/** Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1. */
+export type ContainerServiceMasterProfileInputCount = 1 | 3 | 5;
+export const ContainerServiceMasterProfileInputCount = /*@__PURE__*/ S.Number;
+
+/** Profile for the container service master. */
+export interface ContainerServiceMasterProfileInput {
+  /** Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1. */
+  count?: ContainerServiceMasterProfileInputCount;
+  /** DNS prefix to be used to create the FQDN for master. */
+  dnsPrefix: string;
+}
+export const ContainerServiceMasterProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(ContainerServiceMasterProfileInputCount),
+    dnsPrefix: S.String,
+  }),
+).annotate({
+  identifier: "ContainerServiceMasterProfileInput",
+}) as any as S.Schema<ContainerServiceMasterProfileInput>;
+
+/** Size of agent VMs. */
+export type ContainerServiceAgentPoolProfileInputVmSize =
+  | "Standard_A0"
+  | "Standard_A1"
+  | "Standard_A2"
+  | "Standard_A3"
+  | "Standard_A4"
+  | "Standard_A5"
+  | "Standard_A6"
+  | "Standard_A7"
+  | "Standard_A8"
+  | "Standard_A9"
+  | "Standard_A10"
+  | "Standard_A11"
+  | "Standard_D1"
+  | "Standard_D2"
+  | "Standard_D3"
+  | "Standard_D4"
+  | "Standard_D11"
+  | "Standard_D12"
+  | "Standard_D13"
+  | "Standard_D14"
+  | "Standard_D1_v2"
+  | "Standard_D2_v2"
+  | "Standard_D3_v2"
+  | "Standard_D4_v2"
+  | "Standard_D5_v2"
+  | "Standard_D11_v2"
+  | "Standard_D12_v2"
+  | "Standard_D13_v2"
+  | "Standard_D14_v2"
+  | "Standard_G1"
+  | "Standard_G2"
+  | "Standard_G3"
+  | "Standard_G4"
+  | "Standard_G5"
+  | "Standard_DS1"
+  | "Standard_DS2"
+  | "Standard_DS3"
+  | "Standard_DS4"
+  | "Standard_DS11"
+  | "Standard_DS12"
+  | "Standard_DS13"
+  | "Standard_DS14"
+  | "Standard_GS1"
+  | "Standard_GS2"
+  | "Standard_GS3"
+  | "Standard_GS4"
+  | "Standard_GS5";
+export const ContainerServiceAgentPoolProfileInputVmSize =
+  /*@__PURE__*/ S.String;
+
+/** Profile for the container service agent pool. */
+export interface ContainerServiceAgentPoolProfileInput {
+  /** Unique name of the agent pool profile in the context of the subscription and resource group. */
+  name: string;
+  /** Number of agents (VMs) to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. */
+  count: number;
+  /** Size of agent VMs. */
+  vmSize: ContainerServiceAgentPoolProfileInputVmSize;
+  /** DNS prefix to be used to create the FQDN for the agent pool. */
+  dnsPrefix: string;
+}
+export const ContainerServiceAgentPoolProfileInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      count: S.Number,
+      vmSize: ContainerServiceAgentPoolProfileInputVmSize,
+      dnsPrefix: S.String,
+    }),
+).annotate({
+  identifier: "ContainerServiceAgentPoolProfileInput",
+}) as any as S.Schema<ContainerServiceAgentPoolProfileInput>;
+
+/** Properties of the agent pool. */
+export type ContainerServicePropertiesInputAgentPoolProfilesList =
+  ReadonlyArray<ContainerServiceAgentPoolProfileInput>;
+export const ContainerServicePropertiesInputAgentPoolProfilesList =
+  /*@__PURE__*/ S.Array(
+    ContainerServiceAgentPoolProfileInput,
+  ) as any as S.Schema<ContainerServicePropertiesInputAgentPoolProfilesList>;
+
+/** Profile for Windows VMs in the container service cluster. */
+export interface ContainerServiceWindowsProfile {
+  /** The administrator username to use for Windows VMs. */
+  adminUsername: string;
+  /** The administrator password to use for Windows VMs. */
+  adminPassword: string | Redacted.Redacted<string>;
+}
+export const ContainerServiceWindowsProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adminUsername: S.String,
+    adminPassword: S.String.pipe(T.SensitiveValue({})),
+  }),
+).annotate({
+  identifier: "ContainerServiceWindowsProfile",
+}) as any as S.Schema<ContainerServiceWindowsProfile>;
+
+/** Contains information about SSH certificate public key data. */
+export interface ContainerServiceSshPublicKey {
+  /** Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers. */
+  keyData: string;
+}
+export const ContainerServiceSshPublicKey = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyData: S.String,
+  }),
+).annotate({
+  identifier: "ContainerServiceSshPublicKey",
+}) as any as S.Schema<ContainerServiceSshPublicKey>;
+
+/** the list of SSH public keys used to authenticate with Linux-based VMs. */
+export type ContainerServiceSshConfigurationPublicKeysList =
+  ReadonlyArray<ContainerServiceSshPublicKey>;
+export const ContainerServiceSshConfigurationPublicKeysList =
+  /*@__PURE__*/ S.Array(
+    ContainerServiceSshPublicKey,
+  ) as any as S.Schema<ContainerServiceSshConfigurationPublicKeysList>;
+
+/** SSH configuration for Linux-based VMs running on Azure. */
+export interface ContainerServiceSshConfiguration {
+  /** the list of SSH public keys used to authenticate with Linux-based VMs. */
+  publicKeys: ContainerServiceSshConfigurationPublicKeysList;
+}
+export const ContainerServiceSshConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publicKeys: ContainerServiceSshConfigurationPublicKeysList,
+  }),
+).annotate({
+  identifier: "ContainerServiceSshConfiguration",
+}) as any as S.Schema<ContainerServiceSshConfiguration>;
+
+/** Profile for Linux VMs in the container service cluster. */
+export interface ContainerServiceLinuxProfile {
+  /** The administrator username to use for Linux VMs. */
+  adminUsername: string;
+  /** The ssh key configuration for Linux VMs. */
+  ssh: ContainerServiceSshConfiguration;
+}
+export const ContainerServiceLinuxProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adminUsername: S.String,
+    ssh: ContainerServiceSshConfiguration,
+  }),
+).annotate({
+  identifier: "ContainerServiceLinuxProfile",
+}) as any as S.Schema<ContainerServiceLinuxProfile>;
+
+/** Profile for diagnostics on the container service VMs. */
+export interface ContainerServiceVMDiagnosticsInput {
+  /** Whether the VM diagnostic agent is provisioned on the VM. */
+  enabled: boolean;
+}
+export const ContainerServiceVMDiagnosticsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+  }),
+).annotate({
+  identifier: "ContainerServiceVMDiagnosticsInput",
+}) as any as S.Schema<ContainerServiceVMDiagnosticsInput>;
+
+export interface ContainerServiceDiagnosticsProfileInput {
+  /** Profile for the container service VM diagnostic agent. */
+  vmDiagnostics: ContainerServiceVMDiagnosticsInput;
+}
+export const ContainerServiceDiagnosticsProfileInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      vmDiagnostics: ContainerServiceVMDiagnosticsInput,
+    }),
+).annotate({
+  identifier: "ContainerServiceDiagnosticsProfileInput",
+}) as any as S.Schema<ContainerServiceDiagnosticsProfileInput>;
+
+/** Properties of the container service. */
+export interface ContainerServicePropertiesInput {
+  /** Properties of the orchestrator. */
+  orchestratorProfile?: ContainerServiceOrchestratorProfile;
+  /** Properties for custom clusters. */
+  customProfile?: ContainerServiceCustomProfile;
+  /** Properties for cluster service principals. */
+  servicePrincipalProfile?: ContainerServiceServicePrincipalProfile;
+  /** Properties of master agents. */
+  masterProfile: ContainerServiceMasterProfileInput;
+  /** Properties of the agent pool. */
+  agentPoolProfiles: ContainerServicePropertiesInputAgentPoolProfilesList;
+  /** Properties of Windows VMs. */
+  windowsProfile?: ContainerServiceWindowsProfile;
+  /** Properties of Linux VMs. */
+  linuxProfile: ContainerServiceLinuxProfile;
+  /** Properties of the diagnostic agent. */
+  diagnosticsProfile?: ContainerServiceDiagnosticsProfileInput;
+}
+export const ContainerServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orchestratorProfile: S.optional(ContainerServiceOrchestratorProfile),
+    customProfile: S.optional(ContainerServiceCustomProfile),
+    servicePrincipalProfile: S.optional(
+      ContainerServiceServicePrincipalProfile,
+    ),
+    masterProfile: ContainerServiceMasterProfileInput,
+    agentPoolProfiles: ContainerServicePropertiesInputAgentPoolProfilesList,
+    windowsProfile: S.optional(ContainerServiceWindowsProfile),
+    linuxProfile: ContainerServiceLinuxProfile,
+    diagnosticsProfile: S.optional(ContainerServiceDiagnosticsProfileInput),
+  }),
+).annotate({
+  identifier: "ContainerServicePropertiesInput",
+}) as any as S.Schema<ContainerServicePropertiesInput>;
+
+export interface ContainerServicesCreateOrUpdateRequest {
+  /** Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
+  subscriptionId: string;
+  /** The name of the resource group. */
+  resourceGroupName: string;
+  /** The name of the container service in the specified subscription and resource group. */
+  containerServiceName: string;
+  /** Resource location */
+  location: string;
+  /** Resource tags */
+  tags?: ContainerServicesCreateOrUpdateRequestTagsMap;
+  properties?: ContainerServicePropertiesInput;
+}
+export const ContainerServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      containerServiceName: S.String.pipe(T.Label()),
+      location: S.String,
+      tags: S.optional(ContainerServicesCreateOrUpdateRequestTagsMap),
+      properties: S.optional(ContainerServicePropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}",
+        code: 200,
+        apiVersion: "2017-01-31",
+      }),
+    ),
+).annotate({
+  identifier: "ContainerServicesCreateOrUpdateRequest",
+}) as any as S.Schema<ContainerServicesCreateOrUpdateRequest>;
+
+/** Resource tags */
+export type ContainerServicesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ContainerServicesCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ContainerServicesCreateOrUpdateResponseTagsMap>;
+
+/** Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1. */
+export type ContainerServiceMasterProfileCount = 1 | 3 | 5;
+export const ContainerServiceMasterProfileCount = /*@__PURE__*/ S.Number;
+
 /** Profile for the container service master. */
 export interface ContainerServiceMasterProfile {
   /** Number of masters (VMs) in the container service cluster. Allowed values are 1, 3, and 5. The default value is 1. */
-  count?: number;
+  count?: ContainerServiceMasterProfileCount;
   /** DNS prefix to be used to create the FQDN for master. */
   dnsPrefix: string;
   /** FQDN for the master. */
@@ -115,7 +365,7 @@ export interface ContainerServiceMasterProfile {
 }
 export const ContainerServiceMasterProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(S.Number),
+    count: S.optional(ContainerServiceMasterProfileCount),
     dnsPrefix: S.String,
     fqdn: S.optional(S.String),
   }),
@@ -171,8 +421,7 @@ export type ContainerServiceAgentPoolProfileVmSize =
   | "Standard_GS2"
   | "Standard_GS3"
   | "Standard_GS4"
-  | "Standard_GS5"
-  | (string & {});
+  | "Standard_GS5";
 export const ContainerServiceAgentPoolProfileVmSize = /*@__PURE__*/ S.String;
 
 /** Profile for the container service agent pool. */
@@ -202,77 +451,11 @@ export const ContainerServiceAgentPoolProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties of the agent pool. */
 export type ContainerServicePropertiesAgentPoolProfilesList =
-  ContainerServiceAgentPoolProfile[];
+  ReadonlyArray<ContainerServiceAgentPoolProfile>;
 export const ContainerServicePropertiesAgentPoolProfilesList =
   /*@__PURE__*/ S.Array(
     ContainerServiceAgentPoolProfile,
   ) as any as S.Schema<ContainerServicePropertiesAgentPoolProfilesList>;
-
-/** Profile for Windows VMs in the container service cluster. */
-export interface ContainerServiceWindowsProfile {
-  /** The administrator username to use for Windows VMs. */
-  adminUsername: string;
-  /** The administrator password to use for Windows VMs. */
-  adminPassword: string | Redacted.Redacted<string>;
-}
-export const ContainerServiceWindowsProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminUsername: S.String,
-    adminPassword: S.String.pipe(T.SensitiveValue({})),
-  }),
-).annotate({
-  identifier: "ContainerServiceWindowsProfile",
-}) as any as S.Schema<ContainerServiceWindowsProfile>;
-
-/** Contains information about SSH certificate public key data. */
-export interface ContainerServiceSshPublicKey {
-  /** Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers. */
-  keyData: string;
-}
-export const ContainerServiceSshPublicKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyData: S.String,
-  }),
-).annotate({
-  identifier: "ContainerServiceSshPublicKey",
-}) as any as S.Schema<ContainerServiceSshPublicKey>;
-
-/** the list of SSH public keys used to authenticate with Linux-based VMs. */
-export type ContainerServiceSshConfigurationPublicKeysList =
-  ContainerServiceSshPublicKey[];
-export const ContainerServiceSshConfigurationPublicKeysList =
-  /*@__PURE__*/ S.Array(
-    ContainerServiceSshPublicKey,
-  ) as any as S.Schema<ContainerServiceSshConfigurationPublicKeysList>;
-
-/** SSH configuration for Linux-based VMs running on Azure. */
-export interface ContainerServiceSshConfiguration {
-  /** the list of SSH public keys used to authenticate with Linux-based VMs. */
-  publicKeys: ContainerServiceSshConfigurationPublicKeysList;
-}
-export const ContainerServiceSshConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicKeys: ContainerServiceSshConfigurationPublicKeysList,
-  }),
-).annotate({
-  identifier: "ContainerServiceSshConfiguration",
-}) as any as S.Schema<ContainerServiceSshConfiguration>;
-
-/** Profile for Linux VMs in the container service cluster. */
-export interface ContainerServiceLinuxProfile {
-  /** The administrator username to use for Linux VMs. */
-  adminUsername: string;
-  /** The ssh key configuration for Linux VMs. */
-  ssh: ContainerServiceSshConfiguration;
-}
-export const ContainerServiceLinuxProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adminUsername: S.String,
-    ssh: ContainerServiceSshConfiguration,
-  }),
-).annotate({
-  identifier: "ContainerServiceLinuxProfile",
-}) as any as S.Schema<ContainerServiceLinuxProfile>;
 
 /** Profile for diagnostics on the container service VMs. */
 export interface ContainerServiceVMDiagnostics {
@@ -514,7 +697,8 @@ export const ContainerService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerService>;
 
 /** the list of container services. */
-export type ContainerServiceListResultValueList = ContainerService[];
+export type ContainerServiceListResultValueList =
+  ReadonlyArray<ContainerService>;
 export const ContainerServiceListResultValueList = /*@__PURE__*/ S.Array(
   ContainerService,
 ) as any as S.Schema<ContainerServiceListResultValueList>;
@@ -558,6 +742,43 @@ export const ContainerServicesListByResourceGroupRequest =
     identifier: "ContainerServicesListByResourceGroupRequest",
   }) as any as S.Schema<ContainerServicesListByResourceGroupRequest>;
 
+/** Resource tags. */
+export type DiskAccessesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DiskAccessesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DiskAccessesCreateOrUpdateRequestTagsMap>;
+
+export interface DiskAccessPropertiesInput {}
+export const DiskAccessPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DiskAccessPropertiesInput",
+}) as any as S.Schema<DiskAccessPropertiesInput>;
+
+/** The type of extendedLocation. */
+export type ExtendedLocationType = "EdgeZone";
+export const ExtendedLocationType = /*@__PURE__*/ S.String;
+
+/** The complex type of the extended location. */
+export interface DiskAccessesCreateOrUpdateRequestExtendedLocation {
+  /** The name of the extended location. */
+  name?: string;
+  /** The type of the extended location. */
+  type?: ExtendedLocationType;
+}
+export const DiskAccessesCreateOrUpdateRequestExtendedLocation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(ExtendedLocationType),
+    }),
+  ).annotate({
+    identifier: "DiskAccessesCreateOrUpdateRequestExtendedLocation",
+  }) as any as S.Schema<DiskAccessesCreateOrUpdateRequestExtendedLocation>;
+
 export interface DiskAccessesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -565,14 +786,25 @@ export interface DiskAccessesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. */
   diskAccessName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DiskAccessesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: DiskAccessPropertiesInput;
+  /** The complex type of the extended location. */
+  extendedLocation?: DiskAccessesCreateOrUpdateRequestExtendedLocation;
 }
 export const DiskAccessesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     diskAccessName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DiskAccessesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(DiskAccessPropertiesInput),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateRequestExtendedLocation,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -590,8 +822,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -599,8 +830,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -655,8 +885,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -683,8 +912,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -734,7 +962,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** A readonly collection of private endpoint connections created on the disk. Currently only one endpoint connection is supported. */
 export type DiskAccessPropertiesPrivateEndpointConnectionsList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const DiskAccessPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -759,10 +987,6 @@ export const DiskAccessProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DiskAccessProperties",
 }) as any as S.Schema<DiskAccessProperties>;
-
-/** The type of extendedLocation. */
-export type ExtendedLocationType = "EdgeZone" | (string & {});
-export const ExtendedLocationType = /*@__PURE__*/ S.String;
 
 /** The complex type of the extended location. */
 export interface DiskAccessesCreateOrUpdateResponseExtendedLocation {
@@ -1046,14 +1270,16 @@ export const DiskAccessesGetPrivateLinkResourcesRequest =
   }) as any as S.Schema<DiskAccessesGetPrivateLinkResourcesRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1105,7 +1331,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList = PrivateLinkResource[];
+export type PrivateLinkResourceListResultValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -1197,7 +1424,7 @@ export const DiskAccess = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskAccess" }) as any as S.Schema<DiskAccess>;
 
 /** The DiskAccess items on this page */
-export type DiskAccessListValueList = DiskAccess[];
+export type DiskAccessListValueList = ReadonlyArray<DiskAccess>;
 export const DiskAccessListValueList = /*@__PURE__*/ S.Array(
   DiskAccess,
 ) as any as S.Schema<DiskAccessListValueList>;
@@ -1267,7 +1494,7 @@ export const DiskAccessesListPrivateEndpointConnectionsRequest =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1289,6 +1516,15 @@ export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateEndpointConnectionListResult",
 }) as any as S.Schema<PrivateEndpointConnectionListResult>;
 
+/** Resource tags */
+export type DiskAccessesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DiskAccessesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DiskAccessesUpdateRequestTagsMap>;
+
 export interface DiskAccessesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1296,14 +1532,15 @@ export interface DiskAccessesUpdateRequest {
   resourceGroupName: string;
   /** The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. */
   diskAccessName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: DiskAccessesUpdateRequestTagsMap;
 }
 export const DiskAccessesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     diskAccessName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(DiskAccessesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1374,6 +1611,20 @@ export const DiskAccessesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskAccessesUpdateResponse",
 }) as any as S.Schema<DiskAccessesUpdateResponse>;
 
+/** Properties of the PrivateEndpointConnectProperties. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** A collection of information about the state of the connection between DiskAccess and Virtual Network. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface DiskAccessesUpdateAPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1383,7 +1634,8 @@ export interface DiskAccessesUpdateAPrivateEndpointConnectionRequest {
   diskAccessName: string;
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
 }
 export const DiskAccessesUpdateAPrivateEndpointConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1392,7 +1644,7 @@ export const DiskAccessesUpdateAPrivateEndpointConnectionRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       diskAccessName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1430,50 +1682,21 @@ export const DiskAccessesUpdateAPrivateEndpointConnectionResponse =
     identifier: "DiskAccessesUpdateAPrivateEndpointConnectionResponse",
   }) as any as S.Schema<DiskAccessesUpdateAPrivateEndpointConnectionResponse>;
 
-export interface DiskEncryptionSetsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. */
-  diskEncryptionSetName: string;
-  body: unknown;
-}
-export const DiskEncryptionSetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      diskEncryptionSetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}",
-        code: 200,
-        apiVersion: "2026-03-02",
-      }),
-    ),
-).annotate({
-  identifier: "DiskEncryptionSetsCreateOrUpdateRequest",
-}) as any as S.Schema<DiskEncryptionSetsCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type DiskEncryptionSetsCreateOrUpdateResponseTagsMap = {
+export type DiskEncryptionSetsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const DiskEncryptionSetsCreateOrUpdateResponseTagsMap =
+export const DiskEncryptionSetsCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<DiskEncryptionSetsCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<DiskEncryptionSetsCreateOrUpdateRequestTagsMap>;
 
 /** The type of key used to encrypt the data of the disk. */
 export type DiskEncryptionSetType =
   | "EncryptionAtRestWithCustomerKey"
   | "EncryptionAtRestWithPlatformAndCustomerKeys"
-  | "ConfidentialVmEncryptedWithCustomerKey"
-  | (string & {});
+  | "ConfidentialVmEncryptedWithCustomerKey";
 export const DiskEncryptionSetType = /*@__PURE__*/ S.String;
 
 /** The vault id is an Azure Resource Manager Resource id in the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName} */
@@ -1503,12 +1726,6 @@ export const KeyForDiskEncryptionSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeyForDiskEncryptionSet",
 }) as any as S.Schema<KeyForDiskEncryptionSet>;
 
-/** A readonly collection of key vault keys previously used by this disk encryption set while a key rotation is in progress. It will be empty if there is no ongoing key rotation. */
-export type EncryptionSetPropertiesPreviousKeysList = KeyForDiskEncryptionSet[];
-export const EncryptionSetPropertiesPreviousKeysList = /*@__PURE__*/ S.Array(
-  KeyForDiskEncryptionSet,
-) as any as S.Schema<EncryptionSetPropertiesPreviousKeysList>;
-
 /** Api error base. */
 export interface ApiErrorBase {
   /** The error code. */
@@ -1527,12 +1744,12 @@ export const ApiErrorBase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiErrorBase" }) as any as S.Schema<ApiErrorBase>;
 
 /** The Api error details */
-export type EncryptionSetPropertiesAutoKeyRotationErrorDetailsList =
-  ApiErrorBase[];
-export const EncryptionSetPropertiesAutoKeyRotationErrorDetailsList =
+export type EncryptionSetPropertiesInputAutoKeyRotationErrorDetailsList =
+  ReadonlyArray<ApiErrorBase>;
+export const EncryptionSetPropertiesInputAutoKeyRotationErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ApiErrorBase,
-  ) as any as S.Schema<EncryptionSetPropertiesAutoKeyRotationErrorDetailsList>;
+  ) as any as S.Schema<EncryptionSetPropertiesInputAutoKeyRotationErrorDetailsList>;
 
 /** Inner error details. */
 export interface InnerError {
@@ -1547,6 +1764,165 @@ export const InnerError = /*@__PURE__*/ S.suspend(() =>
     errordetail: S.optional(S.String),
   }),
 ).annotate({ identifier: "InnerError" }) as any as S.Schema<InnerError>;
+
+/** Api error. */
+export interface EncryptionSetPropertiesInputAutoKeyRotationError {
+  /** The Api error details */
+  details?: EncryptionSetPropertiesInputAutoKeyRotationErrorDetailsList;
+  /** The Api inner error */
+  innererror?: InnerError;
+  /** The error code. */
+  code?: string;
+  /** The target of the particular error. */
+  target?: string;
+  /** The error message. */
+  message?: string;
+}
+export const EncryptionSetPropertiesInputAutoKeyRotationError =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      details: S.optional(
+        EncryptionSetPropertiesInputAutoKeyRotationErrorDetailsList,
+      ),
+      innererror: S.optional(InnerError),
+      code: S.optional(S.String),
+      target: S.optional(S.String),
+      message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "EncryptionSetPropertiesInputAutoKeyRotationError",
+  }) as any as S.Schema<EncryptionSetPropertiesInputAutoKeyRotationError>;
+
+export interface EncryptionSetPropertiesInput {
+  /** The type of key used to encrypt the data of the disk. */
+  encryptionType?: DiskEncryptionSetType;
+  /** The key vault key which is currently used by this disk encryption set. */
+  activeKey?: KeyForDiskEncryptionSet;
+  /** Set this flag to true to enable auto-updating of this disk encryption set to the latest key version. */
+  rotationToLatestKeyVersionEnabled?: boolean;
+  /** Api error. */
+  autoKeyRotationError?: EncryptionSetPropertiesInputAutoKeyRotationError;
+  /** Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property. */
+  federatedClientId?: string;
+}
+export const EncryptionSetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encryptionType: S.optional(DiskEncryptionSetType),
+    activeKey: S.optional(KeyForDiskEncryptionSet),
+    rotationToLatestKeyVersionEnabled: S.optional(S.Boolean),
+    autoKeyRotationError: S.optional(
+      EncryptionSetPropertiesInputAutoKeyRotationError,
+    ),
+    federatedClientId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EncryptionSetPropertiesInput",
+}) as any as S.Schema<EncryptionSetPropertiesInput>;
+
+/** The type of Managed Identity used by the DiskEncryptionSet. Only SystemAssigned is supported for new creations. Disk Encryption Sets can be updated with Identity type None during migration of subscription to a new Azure Active Directory tenant; it will cause the encrypted resources to lose access to the keys. */
+export type DiskEncryptionSetIdentityType =
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned, UserAssigned"
+  | "None";
+export const DiskEncryptionSetIdentityType = /*@__PURE__*/ S.String;
+
+export interface CommonUserAssignedIdentitiesValueInput {}
+export const CommonUserAssignedIdentitiesValueInput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "CommonUserAssignedIdentitiesValueInput",
+}) as any as S.Schema<CommonUserAssignedIdentitiesValueInput>;
+
+/** The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type EncryptionSetIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: CommonUserAssignedIdentitiesValueInput | undefined;
+};
+export const EncryptionSetIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    CommonUserAssignedIdentitiesValueInput,
+  ) as any as S.Schema<EncryptionSetIdentityInputUserAssignedIdentitiesMap>;
+
+/** The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks. */
+export interface EncryptionSetIdentityInput {
+  /** The type of Managed Identity used by the DiskEncryptionSet. Only SystemAssigned is supported for new creations. Disk Encryption Sets can be updated with Identity type None during migration of subscription to a new Azure Active Directory tenant; it will cause the encrypted resources to lose access to the keys. */
+  type?: DiskEncryptionSetIdentityType;
+  /** The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: EncryptionSetIdentityInputUserAssignedIdentitiesMap;
+}
+export const EncryptionSetIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(DiskEncryptionSetIdentityType),
+    userAssignedIdentities: S.optional(
+      EncryptionSetIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "EncryptionSetIdentityInput",
+}) as any as S.Schema<EncryptionSetIdentityInput>;
+
+export interface DiskEncryptionSetsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. */
+  diskEncryptionSetName: string;
+  /** Resource tags. */
+  tags?: DiskEncryptionSetsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: EncryptionSetPropertiesInput;
+  /** The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks. */
+  identity?: EncryptionSetIdentityInput;
+}
+export const DiskEncryptionSetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      diskEncryptionSetName: S.String.pipe(T.Label()),
+      tags: S.optional(DiskEncryptionSetsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(EncryptionSetPropertiesInput),
+      identity: S.optional(EncryptionSetIdentityInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}",
+        code: 200,
+        apiVersion: "2026-03-02",
+      }),
+    ),
+).annotate({
+  identifier: "DiskEncryptionSetsCreateOrUpdateRequest",
+}) as any as S.Schema<DiskEncryptionSetsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type DiskEncryptionSetsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DiskEncryptionSetsCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DiskEncryptionSetsCreateOrUpdateResponseTagsMap>;
+
+/** A readonly collection of key vault keys previously used by this disk encryption set while a key rotation is in progress. It will be empty if there is no ongoing key rotation. */
+export type EncryptionSetPropertiesPreviousKeysList =
+  ReadonlyArray<KeyForDiskEncryptionSet>;
+export const EncryptionSetPropertiesPreviousKeysList = /*@__PURE__*/ S.Array(
+  KeyForDiskEncryptionSet,
+) as any as S.Schema<EncryptionSetPropertiesPreviousKeysList>;
+
+/** The Api error details */
+export type EncryptionSetPropertiesAutoKeyRotationErrorDetailsList =
+  ReadonlyArray<ApiErrorBase>;
+export const EncryptionSetPropertiesAutoKeyRotationErrorDetailsList =
+  /*@__PURE__*/ S.Array(
+    ApiErrorBase,
+  ) as any as S.Schema<EncryptionSetPropertiesAutoKeyRotationErrorDetailsList>;
 
 /** Api error. */
 export interface EncryptionSetPropertiesAutoKeyRotationError {
@@ -1610,15 +1986,6 @@ export const EncryptionSetProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionSetProperties",
 }) as any as S.Schema<EncryptionSetProperties>;
-
-/** The type of Managed Identity used by the DiskEncryptionSet. Only SystemAssigned is supported for new creations. Disk Encryption Sets can be updated with Identity type None during migration of subscription to a new Azure Active Directory tenant; it will cause the encrypted resources to lose access to the keys. */
-export type DiskEncryptionSetIdentityType =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
-export const DiskEncryptionSetIdentityType = /*@__PURE__*/ S.String;
 
 export interface CommonUserAssignedIdentitiesValue {
   /** The principal id of user assigned identity. */
@@ -1860,7 +2227,7 @@ export const DiskEncryptionSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskEncryptionSet>;
 
 /** The DiskEncryptionSet items on this page */
-export type DiskEncryptionSetListValueList = DiskEncryptionSet[];
+export type DiskEncryptionSetListValueList = ReadonlyArray<DiskEncryptionSet>;
 export const DiskEncryptionSetListValueList = /*@__PURE__*/ S.Array(
   DiskEncryptionSet,
 ) as any as S.Schema<DiskEncryptionSetListValueList>;
@@ -1908,7 +2275,7 @@ export const DiskEncryptionSetsListAssociatedResourcesRequest =
   }) as any as S.Schema<DiskEncryptionSetsListAssociatedResourcesRequest>;
 
 /** A list of IDs or Owner IDs of resources which are encrypted with the disk encryption set. */
-export type ResourceUriListValueList = string[];
+export type ResourceUriListValueList = ReadonlyArray<string>;
 export const ResourceUriListValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceUriListValueList>;
@@ -1952,6 +2319,37 @@ export const DiskEncryptionSetsListByResourceGroupRequest =
     identifier: "DiskEncryptionSetsListByResourceGroupRequest",
   }) as any as S.Schema<DiskEncryptionSetsListByResourceGroupRequest>;
 
+/** disk encryption set resource update properties. */
+export interface DiskEncryptionSetUpdateProperties {
+  /** The type of key used to encrypt the data of the disk. */
+  encryptionType?: DiskEncryptionSetType;
+  /** Key Vault Key Url to be used for server side encryption of Managed Disks and Snapshots */
+  activeKey?: KeyForDiskEncryptionSet;
+  /** Set this flag to true to enable auto-updating of this disk encryption set to the latest key version. */
+  rotationToLatestKeyVersionEnabled?: boolean;
+  /** Multi-tenant application client id to access key vault in a different tenant. Setting the value to 'None' will clear the property. */
+  federatedClientId?: string;
+}
+export const DiskEncryptionSetUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encryptionType: S.optional(DiskEncryptionSetType),
+    activeKey: S.optional(KeyForDiskEncryptionSet),
+    rotationToLatestKeyVersionEnabled: S.optional(S.Boolean),
+    federatedClientId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DiskEncryptionSetUpdateProperties",
+}) as any as S.Schema<DiskEncryptionSetUpdateProperties>;
+
+/** Resource tags */
+export type DiskEncryptionSetsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DiskEncryptionSetsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DiskEncryptionSetsUpdateRequestTagsMap>;
+
 export interface DiskEncryptionSetsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1959,14 +2357,21 @@ export interface DiskEncryptionSetsUpdateRequest {
   resourceGroupName: string;
   /** The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. */
   diskEncryptionSetName: string;
-  body: unknown;
+  /** disk encryption set resource update properties. */
+  properties?: DiskEncryptionSetUpdateProperties;
+  /** Resource tags */
+  tags?: DiskEncryptionSetsUpdateRequestTagsMap;
+  /** The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks. */
+  identity?: EncryptionSetIdentityInput;
 }
 export const DiskEncryptionSetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     diskEncryptionSetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DiskEncryptionSetUpdateProperties),
+    tags: S.optional(DiskEncryptionSetsUpdateRequestTagsMap),
+    identity: S.optional(EncryptionSetIdentityInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2052,11 +2457,11 @@ export const DiskRestorePointGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskRestorePointGetRequest>;
 
 /** This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.** */
-export type CommonOperatingSystemTypes = "Windows" | "Linux" | (string & {});
+export type CommonOperatingSystemTypes = "Windows" | "Linux";
 export const CommonOperatingSystemTypes = /*@__PURE__*/ S.String;
 
 /** The hypervisor generation of the Virtual Machine. */
-export type CommonHyperVGeneration = "V1" | "V2" | (string & {});
+export type CommonHyperVGeneration = "V1" | "V2";
 export const CommonHyperVGeneration = /*@__PURE__*/ S.String;
 
 /** Used for establishing the purchase context of any 3rd Party artifact through MarketPlace. */
@@ -2082,14 +2487,13 @@ export const DiskPurchasePlan = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskPurchasePlan>;
 
 /** CPU architecture supported by an OS disk. */
-export type CommonArchitecture = "x64" | "Arm64" | (string & {});
+export type CommonArchitecture = "x64" | "Arm64";
 export const CommonArchitecture = /*@__PURE__*/ S.String;
 
 /** Refers to the security capability of the disk supported to create a Trusted launch or Confidential VM */
 export type SupportedSecurityOption =
   | "TrustedLaunchSupported"
-  | "TrustedLaunchAndConfidentialVMSupported"
-  | (string & {});
+  | "TrustedLaunchAndConfidentialVMSupported";
 export const SupportedSecurityOption = /*@__PURE__*/ S.String;
 
 /** List of supported capabilities persisted on the disk resource for VM use. */
@@ -2118,8 +2522,7 @@ export const SupportedCapabilities = /*@__PURE__*/ S.suspend(() =>
 export type EncryptionType =
   | "EncryptionAtRestWithPlatformKey"
   | "EncryptionAtRestWithCustomerKey"
-  | "EncryptionAtRestWithPlatformAndCustomerKeys"
-  | (string & {});
+  | "EncryptionAtRestWithPlatformAndCustomerKeys";
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 /** Encryption at rest settings for disk or snapshot */
@@ -2137,15 +2540,11 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 
 /** Policy for accessing the disk via network. */
-export type NetworkAccessPolicy =
-  | "AllowAll"
-  | "AllowPrivate"
-  | "DenyAll"
-  | (string & {});
+export type NetworkAccessPolicy = "AllowAll" | "AllowPrivate" | "DenyAll";
 export const NetworkAccessPolicy = /*@__PURE__*/ S.String;
 
 /** Policy for controlling export on the disk. */
-export type PublicNetworkAccess = "Enabled" | "Disabled" | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Specifies the SecurityType of the VM. Applicable for OS disks only. */
@@ -2154,12 +2553,11 @@ export type DiskSecurityTypes =
   | "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey"
   | "ConfidentialVM_DiskEncryptedWithPlatformKey"
   | "ConfidentialVM_DiskEncryptedWithCustomerKey"
-  | "ConfidentialVM_NonPersistedTPM"
-  | (string & {});
+  | "ConfidentialVM_NonPersistedTPM";
 export const DiskSecurityTypes = /*@__PURE__*/ S.String;
 
 /** Indicates the version of Confidential VM for the resource. */
-export type ConfidentialVMVersion = "V1" | "V2" | (string & {});
+export type ConfidentialVMVersion = "V1" | "V2";
 export const ConfidentialVMVersion = /*@__PURE__*/ S.String;
 
 /** Contains the security related information for the resource. */
@@ -2187,8 +2585,7 @@ export type CommonSnapshotAccessState =
   | "Pending"
   | "Available"
   | "InstantAccess"
-  | "AvailableWithInstantAccess"
-  | (string & {});
+  | "AvailableWithInstantAccess";
 export const CommonSnapshotAccessState = /*@__PURE__*/ S.String;
 
 /** Properties of an incremental disk restore point */
@@ -2282,6 +2679,14 @@ export const DiskRestorePointGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiskRestorePointGetResponse",
 }) as any as S.Schema<DiskRestorePointGetResponse>;
 
+/** The Access Level, accepted values include None, Read, Write. */
+export type AccessLevel = "None" | "Read" | "Write";
+export const AccessLevel = /*@__PURE__*/ S.String;
+
+/** Used to specify the file format when making request for SAS on a VHDX file format snapshot */
+export type FileFormat = "VHD" | "VHDX";
+export const FileFormat = /*@__PURE__*/ S.String;
+
 export interface DiskRestorePointGrantAccessRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2293,7 +2698,14 @@ export interface DiskRestorePointGrantAccessRequest {
   vmRestorePointName: string;
   /** The name of the DiskRestorePoint */
   diskRestorePointName: string;
-  body: unknown;
+  /** The Access Level, accepted values include None, Read, Write. */
+  access: AccessLevel;
+  /** Time duration in seconds until the SAS access expires. */
+  durationInSeconds: number;
+  /** Set this flag to true to get additional SAS for VM guest state */
+  getSecureVMGuestStateSAS?: boolean;
+  /** Used to specify the file format when making request for SAS on a VHDX file format snapshot */
+  fileFormat?: FileFormat;
 }
 export const DiskRestorePointGrantAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2302,7 +2714,10 @@ export const DiskRestorePointGrantAccessRequest = /*@__PURE__*/ S.suspend(() =>
     restorePointCollectionName: S.String.pipe(T.Label()),
     vmRestorePointName: S.String.pipe(T.Label()),
     diskRestorePointName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    access: AccessLevel,
+    durationInSeconds: S.Number,
+    getSecureVMGuestStateSAS: S.optional(S.Boolean),
+    fileFormat: S.optional(FileFormat),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2387,7 +2802,7 @@ export const DiskRestorePoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskRestorePoint>;
 
 /** The DiskRestorePoint items on this page */
-export type DiskRestorePointListValueList = DiskRestorePoint[];
+export type DiskRestorePointListValueList = ReadonlyArray<DiskRestorePoint>;
 export const DiskRestorePointListValueList = /*@__PURE__*/ S.Array(
   DiskRestorePoint,
 ) as any as S.Schema<DiskRestorePointListValueList>;
@@ -2446,41 +2861,14 @@ export const DiskRestorePointRevokeAccessResponse = /*@__PURE__*/ S.suspend(
   identifier: "DiskRestorePointRevokeAccessResponse",
 }) as any as S.Schema<DiskRestorePointRevokeAccessResponse>;
 
-export interface DisksCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. */
-  diskName: string;
-  body: unknown;
-}
-export const DisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    diskName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}",
-      code: 200,
-      apiVersion: "2026-03-02",
-    }),
-  ),
-).annotate({
-  identifier: "DisksCreateOrUpdateRequest",
-}) as any as S.Schema<DisksCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type DisksCreateOrUpdateResponseTagsMap = {
+export type DisksCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const DisksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const DisksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<DisksCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<DisksCreateOrUpdateRequestTagsMap>;
 
 /** This enumerates the possible sources of a disk's creation. */
 export type DiskCreateOption =
@@ -2494,8 +2882,7 @@ export type DiskCreateOption =
   | "CopyStart"
   | "ImportSecure"
   | "UploadPreparedSecure"
-  | "CopyFromSanSnapshot"
-  | (string & {});
+  | "CopyFromSanSnapshot";
 export const DiskCreateOption = /*@__PURE__*/ S.String;
 
 /** The source image used for creating the disk. */
@@ -2521,11 +2908,337 @@ export const ImageDiskReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageDiskReference>;
 
 /** If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed. */
-export type ProvisionedBandwidthCopyOption =
-  | "None"
-  | "Enhanced"
-  | (string & {});
+export type ProvisionedBandwidthCopyOption = "None" | "Enhanced";
 export const ProvisionedBandwidthCopyOption = /*@__PURE__*/ S.String;
+
+/** Data used when creating a disk. */
+export interface CreationDataInput {
+  /** This enumerates the possible sources of a disk's creation. */
+  createOption: DiskCreateOption;
+  /** Required if createOption is Import. The Azure Resource Manager identifier of the storage account containing the blob to import as a disk. */
+  storageAccountId?: string;
+  /** Disk source information for PIR or user images. */
+  imageReference?: ImageDiskReference;
+  /** Required if creating from a Gallery Image. The id/sharedGalleryImageId/communityGalleryImageId of the ImageDiskReference will be the ARM id of the shared galley image version from which to create a disk. */
+  galleryImageReference?: ImageDiskReference;
+  /** If createOption is Import, this is the URI of a blob to be imported into a managed disk. */
+  sourceUri?: string;
+  /** If createOption is Copy, this is the ARM id of the source snapshot or disk. */
+  sourceResourceId?: string;
+  /** If createOption is Upload, this is the size of the contents of the upload including the VHD footer. This value should be between 20972032 (20 MiB + 512 bytes for the VHD footer) and 35183298347520 bytes (32 TiB + 512 bytes for the VHD footer). */
+  uploadSizeBytes?: number;
+  /** Logical sector size in bytes for Ultra disks. Supported values are 512 ad 4096. 4096 is the default. */
+  logicalSectorSize?: number;
+  /** If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state. */
+  securityDataUri?: string;
+  /** If createOption is ImportSecure, this is the URI of a blob to be imported into VM metadata for Confidential VM. */
+  securityMetadataUri?: string;
+  /** Set this flag to true to get a boost on the performance target of the disk deployed, see here on the respective performance target. This flag can only be set on disk creation time and cannot be disabled after enabled. */
+  performancePlus?: boolean;
+  /** Required if createOption is CopyFromSanSnapshot. This is the ARM id of the source elastic san volume snapshot. */
+  elasticSanResourceId?: string;
+  /** If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed. */
+  provisionedBandwidthCopySpeed?: ProvisionedBandwidthCopyOption;
+  /** For snapshots created from Premium SSD v2 or Ultra disk, this property determines the time in minutes the snapshot is retained for instant access to enable faster restore. */
+  instantAccessDurationMinutes?: number;
+}
+export const CreationDataInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createOption: DiskCreateOption,
+    storageAccountId: S.optional(S.String),
+    imageReference: S.optional(ImageDiskReference),
+    galleryImageReference: S.optional(ImageDiskReference),
+    sourceUri: S.optional(S.String),
+    sourceResourceId: S.optional(S.String),
+    uploadSizeBytes: S.optional(S.Number),
+    logicalSectorSize: S.optional(S.Number),
+    securityDataUri: S.optional(S.String),
+    securityMetadataUri: S.optional(S.String),
+    performancePlus: S.optional(S.Boolean),
+    elasticSanResourceId: S.optional(S.String),
+    provisionedBandwidthCopySpeed: S.optional(ProvisionedBandwidthCopyOption),
+    instantAccessDurationMinutes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CreationDataInput",
+}) as any as S.Schema<CreationDataInput>;
+
+/** Key Vault Secret Url and vault id of the encryption key */
+export interface KeyVaultAndSecretReference {
+  /** Resource id of the KeyVault containing the key or secret */
+  sourceVault: SourceVault;
+  /** Url pointing to a key or secret in KeyVault */
+  secretUrl: string;
+}
+export const KeyVaultAndSecretReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceVault: SourceVault,
+    secretUrl: S.String,
+  }),
+).annotate({
+  identifier: "KeyVaultAndSecretReference",
+}) as any as S.Schema<KeyVaultAndSecretReference>;
+
+/** Key Vault Key Url and vault id of KeK, KeK is optional and when provided is used to unwrap the encryptionKey */
+export interface KeyVaultAndKeyReference {
+  /** Resource id of the KeyVault containing the key or secret */
+  sourceVault: SourceVault;
+  /** Url pointing to a key or secret in KeyVault */
+  keyUrl: string;
+}
+export const KeyVaultAndKeyReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceVault: SourceVault,
+    keyUrl: S.String,
+  }),
+).annotate({
+  identifier: "KeyVaultAndKeyReference",
+}) as any as S.Schema<KeyVaultAndKeyReference>;
+
+/** Encryption settings for one disk volume. */
+export interface EncryptionSettingsElement {
+  /** Key Vault Secret Url and vault id of the disk encryption key */
+  diskEncryptionKey?: KeyVaultAndSecretReference;
+  /** Key Vault Key Url and vault id of the key encryption key. KeyEncryptionKey is optional and when provided is used to unwrap the disk encryption key. */
+  keyEncryptionKey?: KeyVaultAndKeyReference;
+}
+export const EncryptionSettingsElement = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    diskEncryptionKey: S.optional(KeyVaultAndSecretReference),
+    keyEncryptionKey: S.optional(KeyVaultAndKeyReference),
+  }),
+).annotate({
+  identifier: "EncryptionSettingsElement",
+}) as any as S.Schema<EncryptionSettingsElement>;
+
+/** A collection of encryption settings, one for each disk volume. */
+export type EncryptionSettingsCollectionEncryptionSettingsList =
+  ReadonlyArray<EncryptionSettingsElement>;
+export const EncryptionSettingsCollectionEncryptionSettingsList =
+  /*@__PURE__*/ S.Array(
+    EncryptionSettingsElement,
+  ) as any as S.Schema<EncryptionSettingsCollectionEncryptionSettingsList>;
+
+/** Encryption settings for disk or snapshot */
+export interface EncryptionSettingsCollection {
+  /** Set this flag to true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable encryption. Set this flag to false and remove DiskEncryptionKey and KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the request object, the existing settings remain unchanged. */
+  enabled: boolean;
+  /** A collection of encryption settings, one for each disk volume. */
+  encryptionSettings?: EncryptionSettingsCollectionEncryptionSettingsList;
+  /** Describes what type of encryption is used for the disks. Once this field is set, it cannot be overwritten. '1.0' corresponds to Azure Disk Encryption with AAD app.'1.1' corresponds to Azure Disk Encryption. */
+  encryptionSettingsVersion?: string;
+}
+export const EncryptionSettingsCollection = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    encryptionSettings: S.optional(
+      EncryptionSettingsCollectionEncryptionSettingsList,
+    ),
+    encryptionSettingsVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EncryptionSettingsCollection",
+}) as any as S.Schema<EncryptionSettingsCollection>;
+
+/** Additional authentication requirements when exporting or uploading to a disk or snapshot. */
+export type DataAccessAuthMode = "AzureActiveDirectory" | "None";
+export const DataAccessAuthMode = /*@__PURE__*/ S.String;
+
+/** Determines on how to handle disks with slow I/O. */
+export type AvailabilityPolicyDiskDelay = "None" | "AutomaticReattach";
+export const AvailabilityPolicyDiskDelay = /*@__PURE__*/ S.String;
+
+/** In the case of an availability or connectivity issue with the data disk, specify the behavior of your VM */
+export interface AvailabilityPolicy {
+  /** Determines on how to handle disks with slow I/O. */
+  actionOnDiskDelay?: AvailabilityPolicyDiskDelay;
+}
+export const AvailabilityPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionOnDiskDelay: S.optional(AvailabilityPolicyDiskDelay),
+  }),
+).annotate({
+  identifier: "AvailabilityPolicy",
+}) as any as S.Schema<AvailabilityPolicy>;
+
+/** Disk resource properties. */
+export interface DiskPropertiesInput {
+  /** The Operating System type. */
+  osType?: CommonOperatingSystemTypes;
+  /** The hypervisor generation of the Virtual Machine. Applicable to OS disks only. */
+  hyperVGeneration?: CommonHyperVGeneration;
+  /** Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer} */
+  purchasePlan?: DiskPurchasePlan;
+  /** List of supported capabilities for the image from which the OS disk was created. */
+  supportedCapabilities?: SupportedCapabilities;
+  /** Disk source information. CreationData information cannot be changed after the disk has been created. */
+  creationData: CreationDataInput;
+  /** If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size. */
+  diskSizeGB?: number;
+  /** Encryption settings collection used for Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot. */
+  encryptionSettingsCollection?: EncryptionSettingsCollection;
+  /** The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes. */
+  diskIOPSReadWrite?: number;
+  /** The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10. */
+  diskMBpsReadWrite?: number;
+  /** The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly. One operation can transfer between 4k and 256k bytes. */
+  diskIOPSReadOnly?: number;
+  /** The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10. */
+  diskMBpsReadOnly?: number;
+  /** Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys. */
+  encryption?: Encryption;
+  /** The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time. */
+  maxShares?: number;
+  /** Policy for accessing the disk via network. */
+  networkAccessPolicy?: NetworkAccessPolicy;
+  /** ARM id of the DiskAccess resource for using private endpoints on disks. */
+  diskAccessId?: string;
+  /** Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks. */
+  tier?: string;
+  /** Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks. */
+  burstingEnabled?: boolean;
+  /** Indicates the OS on a disk supports hibernation. */
+  supportsHibernation?: boolean;
+  /** Contains the security related information for the resource. */
+  securityProfile?: DiskSecurityProfile;
+  /** Percentage complete for the background copy when a resource is created via the CopyStart operation. */
+  completionPercent?: number;
+  /** Policy for controlling export on the disk. */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** Additional authentication requirements when exporting or uploading to a disk or snapshot. */
+  dataAccessAuthMode?: DataAccessAuthMode;
+  /** Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine. */
+  optimizedForFrequentAttach?: boolean;
+  /** Determines how platform treats disk failures */
+  availabilityPolicy?: AvailabilityPolicy;
+}
+export const DiskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    osType: S.optional(CommonOperatingSystemTypes),
+    hyperVGeneration: S.optional(CommonHyperVGeneration),
+    purchasePlan: S.optional(DiskPurchasePlan),
+    supportedCapabilities: S.optional(SupportedCapabilities),
+    creationData: CreationDataInput,
+    diskSizeGB: S.optional(S.Number),
+    encryptionSettingsCollection: S.optional(EncryptionSettingsCollection),
+    diskIOPSReadWrite: S.optional(S.Number),
+    diskMBpsReadWrite: S.optional(S.Number),
+    diskIOPSReadOnly: S.optional(S.Number),
+    diskMBpsReadOnly: S.optional(S.Number),
+    encryption: S.optional(Encryption),
+    maxShares: S.optional(S.Number),
+    networkAccessPolicy: S.optional(NetworkAccessPolicy),
+    diskAccessId: S.optional(S.String),
+    tier: S.optional(S.String),
+    burstingEnabled: S.optional(S.Boolean),
+    supportsHibernation: S.optional(S.Boolean),
+    securityProfile: S.optional(DiskSecurityProfile),
+    completionPercent: S.optional(S.Number),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    dataAccessAuthMode: S.optional(DataAccessAuthMode),
+    optimizedForFrequentAttach: S.optional(S.Boolean),
+    availabilityPolicy: S.optional(AvailabilityPolicy),
+  }),
+).annotate({
+  identifier: "DiskPropertiesInput",
+}) as any as S.Schema<DiskPropertiesInput>;
+
+/** The sku name. */
+export type DiskStorageAccountTypes =
+  | "Standard_LRS"
+  | "Premium_LRS"
+  | "StandardSSD_LRS"
+  | "UltraSSD_LRS"
+  | "Premium_ZRS"
+  | "StandardSSD_ZRS"
+  | "PremiumV2_LRS";
+export const DiskStorageAccountTypes = /*@__PURE__*/ S.String;
+
+/** The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS. */
+export interface DiskSkuInput {
+  /** The sku name. */
+  name?: DiskStorageAccountTypes;
+}
+export const DiskSkuInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(DiskStorageAccountTypes),
+  }),
+).annotate({ identifier: "DiskSkuInput" }) as any as S.Schema<DiskSkuInput>;
+
+/** The Logical zone list for Disk. */
+export type DisksCreateOrUpdateRequestZonesList = ReadonlyArray<string>;
+export const DisksCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DisksCreateOrUpdateRequestZonesList>;
+
+/** The complex type of the extended location. */
+export interface DisksCreateOrUpdateRequestExtendedLocation {
+  /** The name of the extended location. */
+  name?: string;
+  /** The type of the extended location. */
+  type?: ExtendedLocationType;
+}
+export const DisksCreateOrUpdateRequestExtendedLocation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(ExtendedLocationType),
+    }),
+  ).annotate({
+    identifier: "DisksCreateOrUpdateRequestExtendedLocation",
+  }) as any as S.Schema<DisksCreateOrUpdateRequestExtendedLocation>;
+
+export interface DisksCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. */
+  diskName: string;
+  /** Resource tags. */
+  tags?: DisksCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Disk resource properties. */
+  properties?: DiskPropertiesInput;
+  /** The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS. */
+  sku?: DiskSkuInput;
+  /** The Logical zone list for Disk. */
+  zones?: DisksCreateOrUpdateRequestZonesList;
+  /** The complex type of the extended location. */
+  extendedLocation?: DisksCreateOrUpdateRequestExtendedLocation;
+}
+export const DisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    diskName: S.String.pipe(T.Label()),
+    tags: S.optional(DisksCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(DiskPropertiesInput),
+    sku: S.optional(DiskSkuInput),
+    zones: S.optional(DisksCreateOrUpdateRequestZonesList),
+    extendedLocation: S.optional(DisksCreateOrUpdateRequestExtendedLocation),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}",
+      code: 200,
+      apiVersion: "2026-03-02",
+    }),
+  ),
+).annotate({
+  identifier: "DisksCreateOrUpdateRequest",
+}) as any as S.Schema<DisksCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type DisksCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DisksCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DisksCreateOrUpdateResponseTagsMap>;
 
 /** Data used when creating a disk. */
 export interface CreationData {
@@ -2580,83 +3293,6 @@ export const CreationData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreationData" }) as any as S.Schema<CreationData>;
 
-/** Key Vault Secret Url and vault id of the encryption key */
-export interface KeyVaultAndSecretReference {
-  /** Resource id of the KeyVault containing the key or secret */
-  sourceVault: SourceVault;
-  /** Url pointing to a key or secret in KeyVault */
-  secretUrl: string;
-}
-export const KeyVaultAndSecretReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceVault: SourceVault,
-    secretUrl: S.String,
-  }),
-).annotate({
-  identifier: "KeyVaultAndSecretReference",
-}) as any as S.Schema<KeyVaultAndSecretReference>;
-
-/** Key Vault Key Url and vault id of KeK, KeK is optional and when provided is used to unwrap the encryptionKey */
-export interface KeyVaultAndKeyReference {
-  /** Resource id of the KeyVault containing the key or secret */
-  sourceVault: SourceVault;
-  /** Url pointing to a key or secret in KeyVault */
-  keyUrl: string;
-}
-export const KeyVaultAndKeyReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceVault: SourceVault,
-    keyUrl: S.String,
-  }),
-).annotate({
-  identifier: "KeyVaultAndKeyReference",
-}) as any as S.Schema<KeyVaultAndKeyReference>;
-
-/** Encryption settings for one disk volume. */
-export interface EncryptionSettingsElement {
-  /** Key Vault Secret Url and vault id of the disk encryption key */
-  diskEncryptionKey?: KeyVaultAndSecretReference;
-  /** Key Vault Key Url and vault id of the key encryption key. KeyEncryptionKey is optional and when provided is used to unwrap the disk encryption key. */
-  keyEncryptionKey?: KeyVaultAndKeyReference;
-}
-export const EncryptionSettingsElement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diskEncryptionKey: S.optional(KeyVaultAndSecretReference),
-    keyEncryptionKey: S.optional(KeyVaultAndKeyReference),
-  }),
-).annotate({
-  identifier: "EncryptionSettingsElement",
-}) as any as S.Schema<EncryptionSettingsElement>;
-
-/** A collection of encryption settings, one for each disk volume. */
-export type EncryptionSettingsCollectionEncryptionSettingsList =
-  EncryptionSettingsElement[];
-export const EncryptionSettingsCollectionEncryptionSettingsList =
-  /*@__PURE__*/ S.Array(
-    EncryptionSettingsElement,
-  ) as any as S.Schema<EncryptionSettingsCollectionEncryptionSettingsList>;
-
-/** Encryption settings for disk or snapshot */
-export interface EncryptionSettingsCollection {
-  /** Set this flag to true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable encryption. Set this flag to false and remove DiskEncryptionKey and KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the request object, the existing settings remain unchanged. */
-  enabled: boolean;
-  /** A collection of encryption settings, one for each disk volume. */
-  encryptionSettings?: EncryptionSettingsCollectionEncryptionSettingsList;
-  /** Describes what type of encryption is used for the disks. Once this field is set, it cannot be overwritten. '1.0' corresponds to Azure Disk Encryption with AAD app.'1.1' corresponds to Azure Disk Encryption. */
-  encryptionSettingsVersion?: string;
-}
-export const EncryptionSettingsCollection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    encryptionSettings: S.optional(
-      EncryptionSettingsCollectionEncryptionSettingsList,
-    ),
-    encryptionSettingsVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EncryptionSettingsCollection",
-}) as any as S.Schema<EncryptionSettingsCollection>;
-
 /** This enumerates the possible state of the disk. */
 export type DiskState =
   | "Unattached"
@@ -2666,8 +3302,7 @@ export type DiskState =
   | "ActiveSAS"
   | "ActiveSASFrozen"
   | "ReadyToUpload"
-  | "ActiveUpload"
-  | (string & {});
+  | "ActiveUpload";
 export const DiskState = /*@__PURE__*/ S.String;
 
 export interface ShareInfoElement {
@@ -2683,7 +3318,7 @@ export const ShareInfoElement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ShareInfoElement>;
 
 /** Details of the list of all VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs. */
-export type DiskPropertiesShareInfoList = ShareInfoElement[];
+export type DiskPropertiesShareInfoList = ReadonlyArray<ShareInfoElement>;
 export const DiskPropertiesShareInfoList = /*@__PURE__*/ S.Array(
   ShareInfoElement,
 ) as any as S.Schema<DiskPropertiesShareInfoList>;
@@ -2700,33 +3335,6 @@ export const PropertyUpdatesInProgress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PropertyUpdatesInProgress",
 }) as any as S.Schema<PropertyUpdatesInProgress>;
-
-/** Additional authentication requirements when exporting or uploading to a disk or snapshot. */
-export type DataAccessAuthMode =
-  | "AzureActiveDirectory"
-  | "None"
-  | (string & {});
-export const DataAccessAuthMode = /*@__PURE__*/ S.String;
-
-/** Determines on how to handle disks with slow I/O. */
-export type AvailabilityPolicyDiskDelay =
-  | "None"
-  | "AutomaticReattach"
-  | (string & {});
-export const AvailabilityPolicyDiskDelay = /*@__PURE__*/ S.String;
-
-/** In the case of an availability or connectivity issue with the data disk, specify the behavior of your VM */
-export interface AvailabilityPolicy {
-  /** Determines on how to handle disks with slow I/O. */
-  actionOnDiskDelay?: AvailabilityPolicyDiskDelay;
-}
-export const AvailabilityPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionOnDiskDelay: S.optional(AvailabilityPolicyDiskDelay),
-  }),
-).annotate({
-  identifier: "AvailabilityPolicy",
-}) as any as S.Schema<AvailabilityPolicy>;
 
 /** Disk resource properties. */
 export interface DiskProperties {
@@ -2836,23 +3444,12 @@ export const DiskProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskProperties" }) as any as S.Schema<DiskProperties>;
 
 /** List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs. */
-export type DisksCreateOrUpdateResponseManagedByExtendedList = string[];
+export type DisksCreateOrUpdateResponseManagedByExtendedList =
+  ReadonlyArray<string>;
 export const DisksCreateOrUpdateResponseManagedByExtendedList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DisksCreateOrUpdateResponseManagedByExtendedList>;
-
-/** The sku name. */
-export type DiskStorageAccountTypes =
-  | "Standard_LRS"
-  | "Premium_LRS"
-  | "StandardSSD_LRS"
-  | "UltraSSD_LRS"
-  | "Premium_ZRS"
-  | "StandardSSD_ZRS"
-  | "PremiumV2_LRS"
-  | (string & {});
-export const DiskStorageAccountTypes = /*@__PURE__*/ S.String;
 
 /** The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS. */
 export interface DiskSku {
@@ -2869,7 +3466,7 @@ export const DiskSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiskSku" }) as any as S.Schema<DiskSku>;
 
 /** The Logical zone list for Disk. */
-export type DisksCreateOrUpdateResponseZonesList = string[];
+export type DisksCreateOrUpdateResponseZonesList = ReadonlyArray<string>;
 export const DisksCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DisksCreateOrUpdateResponseZonesList>;
@@ -3003,13 +3600,13 @@ export const DisksGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DisksGetResponseTagsMap>;
 
 /** List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs. */
-export type DisksGetResponseManagedByExtendedList = string[];
+export type DisksGetResponseManagedByExtendedList = ReadonlyArray<string>;
 export const DisksGetResponseManagedByExtendedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DisksGetResponseManagedByExtendedList>;
 
 /** The Logical zone list for Disk. */
-export type DisksGetResponseZonesList = string[];
+export type DisksGetResponseZonesList = ReadonlyArray<string>;
 export const DisksGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DisksGetResponseZonesList>;
@@ -3082,14 +3679,24 @@ export interface DisksGrantAccessRequest {
   resourceGroupName: string;
   /** The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. */
   diskName: string;
-  body: unknown;
+  /** The Access Level, accepted values include None, Read, Write. */
+  access: AccessLevel;
+  /** Time duration in seconds until the SAS access expires. */
+  durationInSeconds: number;
+  /** Set this flag to true to get additional SAS for VM guest state */
+  getSecureVMGuestStateSAS?: boolean;
+  /** Used to specify the file format when making request for SAS on a VHDX file format snapshot */
+  fileFormat?: FileFormat;
 }
 export const DisksGrantAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     diskName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    access: AccessLevel,
+    durationInSeconds: S.Number,
+    getSecureVMGuestStateSAS: S.optional(S.Boolean),
+    fileFormat: S.optional(FileFormat),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3129,13 +3736,13 @@ export const DiskTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DiskTagsMap>;
 
 /** List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs. */
-export type DiskManagedByExtendedList = string[];
+export type DiskManagedByExtendedList = ReadonlyArray<string>;
 export const DiskManagedByExtendedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiskManagedByExtendedList>;
 
 /** The Logical zone list for Disk. */
-export type DiskZonesList = string[];
+export type DiskZonesList = ReadonlyArray<string>;
 export const DiskZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiskZonesList>;
@@ -3201,7 +3808,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 /** The Disk items on this page */
-export type DiskListValueList = Disk[];
+export type DiskListValueList = ReadonlyArray<Disk>;
 export const DiskListValueList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskListValueList>;
@@ -3274,6 +3881,83 @@ export const DisksRevokeAccessResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DisksRevokeAccessResponse",
 }) as any as S.Schema<DisksRevokeAccessResponse>;
 
+/** Disk resource update properties. */
+export interface DiskUpdateProperties {
+  /** the Operating System type. */
+  osType?: CommonOperatingSystemTypes;
+  /** If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size. */
+  diskSizeGB?: number;
+  /** Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot. */
+  encryptionSettingsCollection?: EncryptionSettingsCollection;
+  /** The number of IOPS allowed for this disk; only settable for UltraSSD disks. One operation can transfer between 4k and 256k bytes. */
+  diskIOPSReadWrite?: number;
+  /** The bandwidth allowed for this disk; only settable for UltraSSD disks. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10. */
+  diskMBpsReadWrite?: number;
+  /** The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly. One operation can transfer between 4k and 256k bytes. */
+  diskIOPSReadOnly?: number;
+  /** The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10. */
+  diskMBpsReadOnly?: number;
+  /** The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time. */
+  maxShares?: number;
+  /** Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys. */
+  encryption?: Encryption;
+  /** Policy for accessing the disk via network. */
+  networkAccessPolicy?: NetworkAccessPolicy;
+  /** ARM id of the DiskAccess resource for using private endpoints on disks. */
+  diskAccessId?: string;
+  /** Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks. */
+  tier?: string;
+  /** Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks. */
+  burstingEnabled?: boolean;
+  /** Purchase plan information to be added on the OS disk */
+  purchasePlan?: DiskPurchasePlan;
+  /** List of supported capabilities to be added on the OS disk. */
+  supportedCapabilities?: SupportedCapabilities;
+  /** Indicates the OS on a disk supports hibernation. */
+  supportsHibernation?: boolean;
+  /** Policy for controlling export on the disk. */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** Additional authentication requirements when exporting or uploading to a disk or snapshot. */
+  dataAccessAuthMode?: DataAccessAuthMode;
+  /** Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine. */
+  optimizedForFrequentAttach?: boolean;
+  /** Determines how platform treats disk failures */
+  availabilityPolicy?: AvailabilityPolicy;
+}
+export const DiskUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    osType: S.optional(CommonOperatingSystemTypes),
+    diskSizeGB: S.optional(S.Number),
+    encryptionSettingsCollection: S.optional(EncryptionSettingsCollection),
+    diskIOPSReadWrite: S.optional(S.Number),
+    diskMBpsReadWrite: S.optional(S.Number),
+    diskIOPSReadOnly: S.optional(S.Number),
+    diskMBpsReadOnly: S.optional(S.Number),
+    maxShares: S.optional(S.Number),
+    encryption: S.optional(Encryption),
+    networkAccessPolicy: S.optional(NetworkAccessPolicy),
+    diskAccessId: S.optional(S.String),
+    tier: S.optional(S.String),
+    burstingEnabled: S.optional(S.Boolean),
+    purchasePlan: S.optional(DiskPurchasePlan),
+    supportedCapabilities: S.optional(SupportedCapabilities),
+    supportsHibernation: S.optional(S.Boolean),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    dataAccessAuthMode: S.optional(DataAccessAuthMode),
+    optimizedForFrequentAttach: S.optional(S.Boolean),
+    availabilityPolicy: S.optional(AvailabilityPolicy),
+  }),
+).annotate({
+  identifier: "DiskUpdateProperties",
+}) as any as S.Schema<DiskUpdateProperties>;
+
+/** Resource tags */
+export type DisksUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const DisksUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DisksUpdateRequestTagsMap>;
+
 export interface DisksUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3281,14 +3965,21 @@ export interface DisksUpdateRequest {
   resourceGroupName: string;
   /** The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. */
   diskName: string;
-  body: unknown;
+  /** Disk resource update properties. */
+  properties?: DiskUpdateProperties;
+  /** Resource tags */
+  tags?: DisksUpdateRequestTagsMap;
+  /** The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS. */
+  sku?: DiskSkuInput;
 }
 export const DisksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     diskName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DiskUpdateProperties),
+    tags: S.optional(DisksUpdateRequestTagsMap),
+    sku: S.optional(DiskSkuInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3309,13 +4000,13 @@ export const DisksUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DisksUpdateResponseTagsMap>;
 
 /** List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs. */
-export type DisksUpdateResponseManagedByExtendedList = string[];
+export type DisksUpdateResponseManagedByExtendedList = ReadonlyArray<string>;
 export const DisksUpdateResponseManagedByExtendedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DisksUpdateResponseManagedByExtendedList>;
 
 /** The Logical zone list for Disk. */
-export type DisksUpdateResponseZonesList = string[];
+export type DisksUpdateResponseZonesList = ReadonlyArray<string>;
 export const DisksUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DisksUpdateResponseZonesList>;
@@ -3418,11 +4109,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -3449,7 +4140,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -3469,6 +4160,133 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** Resource tags. */
+export type SnapshotsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SnapshotsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SnapshotsCreateOrUpdateRequestTagsMap>;
+
+/** Indicates the error code if the background copy of a resource created via the CopyStart operation fails. */
+export type CopyCompletionErrorReason = "CopySourceNotFound";
+export const CopyCompletionErrorReason = /*@__PURE__*/ S.String;
+
+/** Indicates the error details if the background copy of a resource created via the CopyStart operation fails. */
+export interface CopyCompletionError {
+  /** Indicates the error code if the background copy of a resource created via the CopyStart operation fails. */
+  errorCode: CopyCompletionErrorReason;
+  /** Indicates the error message if the background copy of a resource created via the CopyStart operation fails. */
+  errorMessage: string;
+}
+export const CopyCompletionError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    errorCode: CopyCompletionErrorReason,
+    errorMessage: S.String,
+  }),
+).annotate({
+  identifier: "CopyCompletionError",
+}) as any as S.Schema<CopyCompletionError>;
+
+/** Snapshot resource properties. */
+export interface SnapshotPropertiesInput {
+  /** The Operating System type. */
+  osType?: CommonOperatingSystemTypes;
+  /** The hypervisor generation of the Virtual Machine. Applicable to OS disks only. */
+  hyperVGeneration?: CommonHyperVGeneration;
+  /** Purchase plan information for the image from which the source disk for the snapshot was originally created. */
+  purchasePlan?: DiskPurchasePlan;
+  /** List of supported capabilities for the image from which the source disk from the snapshot was originally created. */
+  supportedCapabilities?: SupportedCapabilities;
+  /** Disk source information. CreationData information cannot be changed after the disk has been created. */
+  creationData: CreationDataInput;
+  /** If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size. */
+  diskSizeGB?: number;
+  /** Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot. */
+  encryptionSettingsCollection?: EncryptionSettingsCollection;
+  /** Whether a snapshot is incremental. Incremental snapshots on the same disk occupy less space than full snapshots and can be diffed. */
+  incremental?: boolean;
+  /** Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys. */
+  encryption?: Encryption;
+  /** Policy for accessing the disk via network. */
+  networkAccessPolicy?: NetworkAccessPolicy;
+  /** ARM id of the DiskAccess resource for using private endpoints on disks. */
+  diskAccessId?: string;
+  /** Contains the security related information for the resource. */
+  securityProfile?: DiskSecurityProfile;
+  /** Indicates the OS on a snapshot supports hibernation. */
+  supportsHibernation?: boolean;
+  /** Policy for controlling export on the disk. */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** Percentage complete for the background copy when a resource is created via the CopyStart operation. */
+  completionPercent?: number;
+  /** Indicates the error details if the background copy of a resource created via the CopyStart operation fails. */
+  copyCompletionError?: CopyCompletionError;
+  /** Additional authentication requirements when exporting or uploading to a disk or snapshot. */
+  dataAccessAuthMode?: DataAccessAuthMode;
+}
+export const SnapshotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    osType: S.optional(CommonOperatingSystemTypes),
+    hyperVGeneration: S.optional(CommonHyperVGeneration),
+    purchasePlan: S.optional(DiskPurchasePlan),
+    supportedCapabilities: S.optional(SupportedCapabilities),
+    creationData: CreationDataInput,
+    diskSizeGB: S.optional(S.Number),
+    encryptionSettingsCollection: S.optional(EncryptionSettingsCollection),
+    incremental: S.optional(S.Boolean),
+    encryption: S.optional(Encryption),
+    networkAccessPolicy: S.optional(NetworkAccessPolicy),
+    diskAccessId: S.optional(S.String),
+    securityProfile: S.optional(DiskSecurityProfile),
+    supportsHibernation: S.optional(S.Boolean),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    completionPercent: S.optional(S.Number),
+    copyCompletionError: S.optional(CopyCompletionError),
+    dataAccessAuthMode: S.optional(DataAccessAuthMode),
+  }),
+).annotate({
+  identifier: "SnapshotPropertiesInput",
+}) as any as S.Schema<SnapshotPropertiesInput>;
+
+/** The sku name. */
+export type SnapshotStorageAccountTypes =
+  | "Standard_LRS"
+  | "Premium_LRS"
+  | "Standard_ZRS";
+export const SnapshotStorageAccountTypes = /*@__PURE__*/ S.String;
+
+/** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
+export interface SnapshotSkuInput {
+  /** The sku name. */
+  name?: SnapshotStorageAccountTypes;
+}
+export const SnapshotSkuInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(SnapshotStorageAccountTypes),
+  }),
+).annotate({
+  identifier: "SnapshotSkuInput",
+}) as any as S.Schema<SnapshotSkuInput>;
+
+/** The complex type of the extended location. */
+export interface SnapshotsCreateOrUpdateRequestExtendedLocation {
+  /** The name of the extended location. */
+  name?: string;
+  /** The type of the extended location. */
+  type?: ExtendedLocationType;
+}
+export const SnapshotsCreateOrUpdateRequestExtendedLocation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(ExtendedLocationType),
+    }),
+  ).annotate({
+    identifier: "SnapshotsCreateOrUpdateRequestExtendedLocation",
+  }) as any as S.Schema<SnapshotsCreateOrUpdateRequestExtendedLocation>;
+
 export interface SnapshotsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3476,14 +4294,29 @@ export interface SnapshotsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters. */
   snapshotName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SnapshotsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Snapshot resource properties. */
+  properties?: SnapshotPropertiesInput;
+  /** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
+  sku?: SnapshotSkuInput;
+  /** The complex type of the extended location. */
+  extendedLocation?: SnapshotsCreateOrUpdateRequestExtendedLocation;
 }
 export const SnapshotsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     snapshotName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SnapshotsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(SnapshotPropertiesInput),
+    sku: S.optional(SnapshotSkuInput),
+    extendedLocation: S.optional(
+      SnapshotsCreateOrUpdateRequestExtendedLocation,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3505,28 +4338,8 @@ export const SnapshotsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<SnapshotsCreateOrUpdateResponseTagsMap>;
 
-/** Indicates the error code if the background copy of a resource created via the CopyStart operation fails. */
-export type CopyCompletionErrorReason = "CopySourceNotFound" | (string & {});
-export const CopyCompletionErrorReason = /*@__PURE__*/ S.String;
-
-/** Indicates the error details if the background copy of a resource created via the CopyStart operation fails. */
-export interface CopyCompletionError {
-  /** Indicates the error code if the background copy of a resource created via the CopyStart operation fails. */
-  errorCode: CopyCompletionErrorReason;
-  /** Indicates the error message if the background copy of a resource created via the CopyStart operation fails. */
-  errorMessage: string;
-}
-export const CopyCompletionError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: CopyCompletionErrorReason,
-    errorMessage: S.String,
-  }),
-).annotate({
-  identifier: "CopyCompletionError",
-}) as any as S.Schema<CopyCompletionError>;
-
 /** The type of the immutability policy. 'Unlocked' allows the policy to be modified by privileged users; 'Locked' prevents reduction of the immutability duration but allows extension of the lock period. */
-export type ImmutabilityPolicyType = "Unlocked" | "Locked" | (string & {});
+export type ImmutabilityPolicyType = "Unlocked" | "Locked";
 export const ImmutabilityPolicyType = /*@__PURE__*/ S.String;
 
 /** The immutability policy currently applied to a snapshot. */
@@ -3638,14 +4451,6 @@ export const SnapshotProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SnapshotProperties",
 }) as any as S.Schema<SnapshotProperties>;
-
-/** The sku name. */
-export type SnapshotStorageAccountTypes =
-  | "Standard_LRS"
-  | "Premium_LRS"
-  | "Standard_ZRS"
-  | (string & {});
-export const SnapshotStorageAccountTypes = /*@__PURE__*/ S.String;
 
 /** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
 export interface SnapshotSku {
@@ -3846,14 +4651,24 @@ export interface SnapshotsGrantAccessRequest {
   resourceGroupName: string;
   /** The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters. */
   snapshotName: string;
-  body: unknown;
+  /** The Access Level, accepted values include None, Read, Write. */
+  access: AccessLevel;
+  /** Time duration in seconds until the SAS access expires. */
+  durationInSeconds: number;
+  /** Set this flag to true to get additional SAS for VM guest state */
+  getSecureVMGuestStateSAS?: boolean;
+  /** Used to specify the file format when making request for SAS on a VHDX file format snapshot */
+  fileFormat?: FileFormat;
 }
 export const SnapshotsGrantAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     snapshotName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    access: AccessLevel,
+    durationInSeconds: S.Number,
+    getSecureVMGuestStateSAS: S.optional(S.Boolean),
+    fileFormat: S.optional(FileFormat),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3947,7 +4762,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
 /** A list of snapshots. */
-export type SnapshotListValueList = Snapshot[];
+export type SnapshotListValueList = ReadonlyArray<Snapshot>;
 export const SnapshotListValueList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotListValueList>;
@@ -4020,6 +4835,55 @@ export const SnapshotsRevokeAccessResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnapshotsRevokeAccessResponse",
 }) as any as S.Schema<SnapshotsRevokeAccessResponse>;
 
+/** Snapshot resource update properties. */
+export interface SnapshotUpdateProperties {
+  /** the Operating System type. */
+  osType?: CommonOperatingSystemTypes;
+  /** If creationData.createOption is Empty, this field is mandatory and it indicates the size of the disk to create. If this field is present for updates or creation with other options, it indicates a resize. Resizes are only allowed if the disk is not attached to a running VM, and can only increase the disk's size. */
+  diskSizeGB?: number;
+  /** Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot. */
+  encryptionSettingsCollection?: EncryptionSettingsCollection;
+  /** Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys. */
+  encryption?: Encryption;
+  /** Policy for accessing the disk via network. */
+  networkAccessPolicy?: NetworkAccessPolicy;
+  /** ARM id of the DiskAccess resource for using private endpoints on disks. */
+  diskAccessId?: string;
+  /** Indicates the OS on a snapshot supports hibernation. */
+  supportsHibernation?: boolean;
+  /** Policy for controlling export on the disk. */
+  publicNetworkAccess?: PublicNetworkAccess;
+  /** Additional authentication requirements when exporting or uploading to a disk or snapshot. */
+  dataAccessAuthMode?: DataAccessAuthMode;
+  /** List of supported capabilities for the image from which the OS disk was created. */
+  supportedCapabilities?: SupportedCapabilities;
+}
+export const SnapshotUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    osType: S.optional(CommonOperatingSystemTypes),
+    diskSizeGB: S.optional(S.Number),
+    encryptionSettingsCollection: S.optional(EncryptionSettingsCollection),
+    encryption: S.optional(Encryption),
+    networkAccessPolicy: S.optional(NetworkAccessPolicy),
+    diskAccessId: S.optional(S.String),
+    supportsHibernation: S.optional(S.Boolean),
+    publicNetworkAccess: S.optional(PublicNetworkAccess),
+    dataAccessAuthMode: S.optional(DataAccessAuthMode),
+    supportedCapabilities: S.optional(SupportedCapabilities),
+  }),
+).annotate({
+  identifier: "SnapshotUpdateProperties",
+}) as any as S.Schema<SnapshotUpdateProperties>;
+
+/** Resource tags */
+export type SnapshotsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SnapshotsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SnapshotsUpdateRequestTagsMap>;
+
 export interface SnapshotsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4027,14 +4891,21 @@ export interface SnapshotsUpdateRequest {
   resourceGroupName: string;
   /** The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters. */
   snapshotName: string;
-  body: unknown;
+  /** Snapshot resource update properties. */
+  properties?: SnapshotUpdateProperties;
+  /** Resource tags */
+  tags?: SnapshotsUpdateRequestTagsMap;
+  /** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
+  sku?: SnapshotSkuInput;
 }
 export const SnapshotsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     snapshotName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SnapshotUpdateProperties),
+    tags: S.optional(SnapshotsUpdateRequestTagsMap),
+    sku: S.optional(SnapshotSkuInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4119,7 +4990,10 @@ export interface SnapshotsUpdateImmutabilityPolicyRequest {
   resourceGroupName: string;
   /** The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters. */
   snapshotName: string;
-  body: unknown;
+  /** The immutability duration for the snapshot, in number of days. */
+  immutabilityDurationDays: number;
+  /** The type of the immutability policy. 'Unlocked' allows the policy to be modified by privileged users; 'Locked' prevents reduction of the immutability duration but allows extension of the lock period. */
+  type: ImmutabilityPolicyType;
 }
 export const SnapshotsUpdateImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4127,7 +5001,8 @@ export const SnapshotsUpdateImmutabilityPolicyRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       snapshotName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      immutabilityDurationDays: S.Number,
+      type: ImmutabilityPolicyType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -4216,7 +5091,10 @@ export interface SnapshotsUpdateImmutabilityPolicyLockRequest {
   resourceGroupName: string;
   /** The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters. */
   snapshotName: string;
-  body: unknown;
+  /** The immutability duration for the snapshot, in number of days. */
+  immutabilityDurationDays: number;
+  /** The type of the immutability policy. 'Unlocked' allows the policy to be modified by privileged users; 'Locked' prevents reduction of the immutability duration but allows extension of the lock period. */
+  type: ImmutabilityPolicyType;
 }
 export const SnapshotsUpdateImmutabilityPolicyLockRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4224,7 +5102,8 @@ export const SnapshotsUpdateImmutabilityPolicyLockRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       snapshotName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      immutabilityDurationDays: S.Number,
+      type: ImmutabilityPolicyType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -4329,7 +5208,8 @@ export const SpotPlacementScoresGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpotPlacementScoresGetRequest>;
 
 /** Describes what are the supported resource types for a diagnostic. */
-export type DiagnosticPropertiesSupportedResourceTypesList = string[];
+export type DiagnosticPropertiesSupportedResourceTypesList =
+  ReadonlyArray<string>;
 export const DiagnosticPropertiesSupportedResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4374,36 +5254,13 @@ export const SpotPlacementScoresGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpotPlacementScoresGetResponse",
 }) as any as S.Schema<SpotPlacementScoresGetResponse>;
 
-export interface SpotPlacementScoresPostRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the Azure region. */
-  location: string;
-  body: unknown;
-}
-export const SpotPlacementScoresPostRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate",
-      code: 200,
-      apiVersion: "2025-06-05",
-    }),
-  ),
-).annotate({
-  identifier: "SpotPlacementScoresPostRequest",
-}) as any as S.Schema<SpotPlacementScoresPostRequest>;
-
 /** The desired regions */
-export type SpotPlacementScoresResponseDesiredLocationsList = string[];
-export const SpotPlacementScoresResponseDesiredLocationsList =
+export type SpotPlacementScoresPostRequestDesiredLocationsList =
+  ReadonlyArray<string>;
+export const SpotPlacementScoresPostRequestDesiredLocationsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<SpotPlacementScoresResponseDesiredLocationsList>;
+  ) as any as S.Schema<SpotPlacementScoresPostRequestDesiredLocationsList>;
 
 /** SpotPlacementRecommender API response. */
 export interface ResourceSize {
@@ -4417,7 +5274,60 @@ export const ResourceSize = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSize" }) as any as S.Schema<ResourceSize>;
 
 /** The desired virtual machine SKU sizes. */
-export type SpotPlacementScoresResponseDesiredSizesList = ResourceSize[];
+export type SpotPlacementScoresPostRequestDesiredSizesList =
+  ReadonlyArray<ResourceSize>;
+export const SpotPlacementScoresPostRequestDesiredSizesList =
+  /*@__PURE__*/ S.Array(
+    ResourceSize,
+  ) as any as S.Schema<SpotPlacementScoresPostRequestDesiredSizesList>;
+
+export interface SpotPlacementScoresPostRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the Azure region. */
+  location: string;
+  /** The desired regions */
+  desiredLocations?: SpotPlacementScoresPostRequestDesiredLocationsList;
+  /** The desired virtual machine SKU sizes. */
+  desiredSizes?: SpotPlacementScoresPostRequestDesiredSizesList;
+  /** Desired instance count per region/zone based on the scope. */
+  desiredCount?: number;
+  /** Defines if the scope is zonal or regional. */
+  availabilityZones?: boolean;
+}
+export const SpotPlacementScoresPostRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    desiredLocations: S.optional(
+      SpotPlacementScoresPostRequestDesiredLocationsList,
+    ),
+    desiredSizes: S.optional(SpotPlacementScoresPostRequestDesiredSizesList),
+    desiredCount: S.optional(S.Number),
+    availabilityZones: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/placementScores/spot/generate",
+      code: 200,
+      apiVersion: "2025-06-05",
+    }),
+  ),
+).annotate({
+  identifier: "SpotPlacementScoresPostRequest",
+}) as any as S.Schema<SpotPlacementScoresPostRequest>;
+
+/** The desired regions */
+export type SpotPlacementScoresResponseDesiredLocationsList =
+  ReadonlyArray<string>;
+export const SpotPlacementScoresResponseDesiredLocationsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SpotPlacementScoresResponseDesiredLocationsList>;
+
+/** The desired virtual machine SKU sizes. */
+export type SpotPlacementScoresResponseDesiredSizesList =
+  ReadonlyArray<ResourceSize>;
 export const SpotPlacementScoresResponseDesiredSizesList =
   /*@__PURE__*/ S.Array(
     ResourceSize,
@@ -4447,7 +5357,8 @@ export const PlacementScore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlacementScore" }) as any as S.Schema<PlacementScore>;
 
 /** A placement score indicating the likelihood of successfully allocating the specified Spot VM(s), as well as the expected lifetimes of the Spot VM(s) after allocation. */
-export type SpotPlacementScoresResponsePlacementScoresList = PlacementScore[];
+export type SpotPlacementScoresResponsePlacementScoresList =
+  ReadonlyArray<PlacementScore>;
 export const SpotPlacementScoresResponsePlacementScoresList =
   /*@__PURE__*/ S.Array(
     PlacementScore,
@@ -4480,6 +5391,14 @@ export const SpotPlacementScoresResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpotPlacementScoresResponse",
 }) as any as S.Schema<SpotPlacementScoresResponse>;
 
+/** The list of operation ids to cancel operations on */
+export type VirtualMachineBulkOperationsBulkCancelRequestOperationIdsList =
+  ReadonlyArray<string>;
+export const VirtualMachineBulkOperationsBulkCancelRequestOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<VirtualMachineBulkOperationsBulkCancelRequestOperationIdsList>;
+
 export interface VirtualMachineBulkOperationsBulkCancelRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4487,7 +5406,8 @@ export interface VirtualMachineBulkOperationsBulkCancelRequest {
   resourceGroupName: string;
   /** The location name. */
   location: string;
-  body: unknown;
+  /** The list of operation ids to cancel operations on */
+  operationIds: VirtualMachineBulkOperationsBulkCancelRequestOperationIdsList;
 }
 export const VirtualMachineBulkOperationsBulkCancelRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4495,7 +5415,8 @@ export const VirtualMachineBulkOperationsBulkCancelRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      operationIds:
+        VirtualMachineBulkOperationsBulkCancelRequestOperationIdsList,
     }).pipe(
       T.Http({
         method: "POST",
@@ -4515,16 +5436,14 @@ export type ResourceOperationDetailsOpType =
   | "Deallocate"
   | "Hibernate"
   | "Create"
-  | "Delete"
-  | (string & {});
+  | "Delete";
 export const ResourceOperationDetailsOpType = /*@__PURE__*/ S.String;
 
 /** Type of deadline of the operation */
 export type ResourceOperationDetailsDeadlineType =
   | "Unknown"
   | "InitiateAt"
-  | "CompleteBy"
-  | (string & {});
+  | "CompleteBy";
 export const ResourceOperationDetailsDeadlineType = /*@__PURE__*/ S.String;
 
 /** Current state of the operation */
@@ -4537,8 +5456,7 @@ export type ResourceOperationDetailsState =
   | "Succeeded"
   | "Failed"
   | "Cancelled"
-  | "Blocked"
-  | (string & {});
+  | "Blocked";
 export const ResourceOperationDetailsState = /*@__PURE__*/ S.String;
 
 /** These describe errors that occur at the resource level */
@@ -4564,8 +5482,7 @@ export type ResourceOperationType =
   | "Deallocate"
   | "Hibernate"
   | "Create"
-  | "Delete"
-  | (string & {});
+  | "Delete";
 export const ResourceOperationType = /*@__PURE__*/ S.String;
 
 /** Describes the fallback operation that was performed */
@@ -4673,7 +5590,8 @@ export const ResourceOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceOperation>;
 
 /** An array of resource operations that were successfully cancelled */
-export type CancelOperationsResponseResultsList = ResourceOperation[];
+export type CancelOperationsResponseResultsList =
+  ReadonlyArray<ResourceOperation>;
 export const CancelOperationsResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<CancelOperationsResponseResultsList>;
@@ -4691,6 +5609,36 @@ export const CancelOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelOperationsResponse",
 }) as any as S.Schema<CancelOperationsResponse>;
 
+/** Extra details needed to run the user's request */
+export interface ExecutionParameters {
+  /** Retry policy the user can pass */
+  retryPolicy?: RetryPolicy;
+}
+export const ExecutionParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    retryPolicy: S.optional(RetryPolicy),
+  }),
+).annotate({
+  identifier: "ExecutionParameters",
+}) as any as S.Schema<ExecutionParameters>;
+
+/** The resource ids used for the request */
+export type ResourcesIdsList = ReadonlyArray<string>;
+export const ResourcesIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourcesIdsList>;
+
+/** The resources needed for the user request */
+export interface Resources {
+  /** The resource ids used for the request */
+  ids: ResourcesIdsList;
+}
+export const Resources = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ids: ResourcesIdsList,
+  }),
+).annotate({ identifier: "Resources" }) as any as S.Schema<Resources>;
+
 export interface VirtualMachineBulkOperationsBulkDeallocateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4698,7 +5646,10 @@ export interface VirtualMachineBulkOperationsBulkDeallocateRequest {
   resourceGroupName: string;
   /** The location name. */
   location: string;
-  body: unknown;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
 }
 export const VirtualMachineBulkOperationsBulkDeallocateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4706,7 +5657,8 @@ export const VirtualMachineBulkOperationsBulkDeallocateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      executionParameters: ExecutionParameters,
+      resources: Resources,
     }).pipe(
       T.Http({
         method: "POST",
@@ -4721,7 +5673,7 @@ export const VirtualMachineBulkOperationsBulkDeallocateRequest =
 
 /** The results from the deallocate request if no errors exist */
 export type DeallocateResourceOperationResponseResultsList =
-  ResourceOperation[];
+  ReadonlyArray<ResourceOperation>;
 export const DeallocateResourceOperationResponseResultsList =
   /*@__PURE__*/ S.Array(
     ResourceOperation,
@@ -4756,7 +5708,12 @@ export interface VirtualMachineBulkOperationsBulkDeleteRequest {
   resourceGroupName: string;
   /** The location name. */
   location: string;
-  body: unknown;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
+  /** Forced delete resource item */
+  forceDeletion?: boolean;
 }
 export const VirtualMachineBulkOperationsBulkDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4764,7 +5721,9 @@ export const VirtualMachineBulkOperationsBulkDeleteRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      executionParameters: ExecutionParameters,
+      resources: Resources,
+      forceDeletion: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -4778,7 +5737,8 @@ export const VirtualMachineBulkOperationsBulkDeleteRequest =
   }) as any as S.Schema<VirtualMachineBulkOperationsBulkDeleteRequest>;
 
 /** The results from the delete request if no errors exist */
-export type DeleteResourceOperationResponseResultsList = ResourceOperation[];
+export type DeleteResourceOperationResponseResultsList =
+  ReadonlyArray<ResourceOperation>;
 export const DeleteResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<DeleteResourceOperationResponseResultsList>;
@@ -4805,6 +5765,14 @@ export const DeleteResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceOperationResponse",
 }) as any as S.Schema<DeleteResourceOperationResponse>;
 
+/** The list of operation ids to get the status of */
+export type VirtualMachineBulkOperationsBulkGetOperationsStatusRequestOperationIdsList =
+  ReadonlyArray<string>;
+export const VirtualMachineBulkOperationsBulkGetOperationsStatusRequestOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<VirtualMachineBulkOperationsBulkGetOperationsStatusRequestOperationIdsList>;
+
 export interface VirtualMachineBulkOperationsBulkGetOperationsStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4812,7 +5780,8 @@ export interface VirtualMachineBulkOperationsBulkGetOperationsStatusRequest {
   resourceGroupName: string;
   /** The location name. */
   location: string;
-  body: unknown;
+  /** The list of operation ids to get the status of */
+  operationIds: VirtualMachineBulkOperationsBulkGetOperationsStatusRequestOperationIdsList;
 }
 export const VirtualMachineBulkOperationsBulkGetOperationsStatusRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4820,7 +5789,8 @@ export const VirtualMachineBulkOperationsBulkGetOperationsStatusRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      operationIds:
+        VirtualMachineBulkOperationsBulkGetOperationsStatusRequestOperationIdsList,
     }).pipe(
       T.Http({
         method: "POST",
@@ -4834,7 +5804,8 @@ export const VirtualMachineBulkOperationsBulkGetOperationsStatusRequest =
   }) as any as S.Schema<VirtualMachineBulkOperationsBulkGetOperationsStatusRequest>;
 
 /** An array of resource operations based on their operation ids */
-export type GetOperationStatusResponseResultsList = ResourceOperation[];
+export type GetOperationStatusResponseResultsList =
+  ReadonlyArray<ResourceOperation>;
 export const GetOperationStatusResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<GetOperationStatusResponseResultsList>;
@@ -4859,7 +5830,10 @@ export interface VirtualMachineBulkOperationsBulkHibernateRequest {
   resourceGroupName: string;
   /** The location name. */
   location: string;
-  body: unknown;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
 }
 export const VirtualMachineBulkOperationsBulkHibernateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4867,7 +5841,8 @@ export const VirtualMachineBulkOperationsBulkHibernateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      executionParameters: ExecutionParameters,
+      resources: Resources,
     }).pipe(
       T.Http({
         method: "POST",
@@ -4881,7 +5856,8 @@ export const VirtualMachineBulkOperationsBulkHibernateRequest =
   }) as any as S.Schema<VirtualMachineBulkOperationsBulkHibernateRequest>;
 
 /** The results from the Hibernate request if no errors exist */
-export type HibernateResourceOperationResponseResultsList = ResourceOperation[];
+export type HibernateResourceOperationResponseResultsList =
+  ReadonlyArray<ResourceOperation>;
 export const HibernateResourceOperationResponseResultsList =
   /*@__PURE__*/ S.Array(
     ResourceOperation,
@@ -4916,7 +5892,10 @@ export interface VirtualMachineBulkOperationsBulkStartRequest {
   resourceGroupName: string;
   /** The location name. */
   location: string;
-  body: unknown;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
 }
 export const VirtualMachineBulkOperationsBulkStartRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4924,7 +5903,8 @@ export const VirtualMachineBulkOperationsBulkStartRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      executionParameters: ExecutionParameters,
+      resources: Resources,
     }).pipe(
       T.Http({
         method: "POST",
@@ -4938,7 +5918,8 @@ export const VirtualMachineBulkOperationsBulkStartRequest =
   }) as any as S.Schema<VirtualMachineBulkOperationsBulkStartRequest>;
 
 /** The results from the start request if no errors exist */
-export type StartResourceOperationResponseResultsList = ResourceOperation[];
+export type StartResourceOperationResponseResultsList =
+  ReadonlyArray<ResourceOperation>;
 export const StartResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<StartResourceOperationResponseResultsList>;

@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -106,7 +106,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -202,7 +202,7 @@ export const ModelSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModelSettings" }) as any as S.Schema<ModelSettings>;
 
 export type EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum =
-  "SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED" | "TEXT" | "AUDIO" | (string & {});
+  "SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED" | "TEXT" | "AUDIO";
 export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum =
   /*@__PURE__*/ S.String;
 
@@ -245,7 +245,7 @@ export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpecta
   }) as any as S.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds>;
 
 export type EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum =
-  "EXTRA_TOOL_CALL_BEHAVIOR_UNSPECIFIED" | "FAIL" | "ALLOW" | (string & {});
+  "EXTRA_TOOL_CALL_BEHAVIOR_UNSPECIFIED" | "FAIL" | "ALLOW";
 export const EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -294,24 +294,19 @@ export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds =
 export type EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum =
   /*@__PURE__*/ S.String;
 
 export type EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum =
-    | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
-    | "DISABLED"
-    | "ENABLED"
-    | (string & {});
+  "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED" | "DISABLED" | "ENABLED";
 export const EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum =
   /*@__PURE__*/ S.String;
 
 export type EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum =
   /*@__PURE__*/ S.String;
 
@@ -369,15 +364,13 @@ export type ChannelProfileChannelTypeEnum =
   | "FIVE9"
   | "CONTACT_CENTER_INTEGRATION"
   | "WHATSAPP"
-  | "INSTAGRAM"
-  | (string & {});
+  | "INSTAGRAM";
 export const ChannelProfileChannelTypeEnum = /*@__PURE__*/ S.String;
 
 export type ChannelProfilePersonaPropertyPersonaEnum =
   | "UNKNOWN"
   | "CONCISE"
-  | "CHATTY"
-  | (string & {});
+  | "CHATTY";
 export const ChannelProfilePersonaPropertyPersonaEnum = /*@__PURE__*/ S.String;
 
 /** Represents the persona property of a channel. */
@@ -448,8 +441,7 @@ export type ChannelProfileWebWidgetConfigModalityEnum =
   | "CHAT_AND_VOICE"
   | "VOICE_ONLY"
   | "CHAT_ONLY"
-  | "CHAT_VOICE_AND_VIDEO"
-  | (string & {});
+  | "CHAT_VOICE_AND_VIDEO";
 export const ChannelProfileWebWidgetConfigModalityEnum = /*@__PURE__*/ S.String;
 
 /** Security settings for the web widget. */
@@ -478,8 +470,7 @@ export const ChannelProfileWebWidgetConfigSecuritySettings =
 export type ChannelProfileWebWidgetConfigThemeEnum =
   | "THEME_UNSPECIFIED"
   | "LIGHT"
-  | "DARK"
-  | (string & {});
+  | "DARK";
 export const ChannelProfileWebWidgetConfigThemeEnum = /*@__PURE__*/ S.String;
 
 /** Message for configuration for the web widget. */
@@ -557,8 +548,7 @@ export type AmbientSoundConfigPrebuiltAmbientNoiseEnum =
   | "PREBUILT_AMBIENT_NOISE_UNSPECIFIED"
   | "RETAIL_STORE"
   | "CONVENTION_HALL"
-  | "OUTDOOR"
-  | (string & {});
+  | "OUTDOOR";
 export const AmbientSoundConfigPrebuiltAmbientNoiseEnum =
   /*@__PURE__*/ S.String;
 
@@ -644,8 +634,7 @@ export const AudioProcessingConfig = /*@__PURE__*/ S.suspend(() =>
 export type DataStoreSettingsEngineTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ENGINE_TYPE_SEARCH"
-  | "ENGINE_TYPE_CHAT"
-  | (string & {});
+  | "ENGINE_TYPE_CHAT";
 export const DataStoreSettingsEngineTypeEnum = /*@__PURE__*/ S.String;
 
 /** An engine to which the data stores are connected. See Vertex AI Search: https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction. */
@@ -664,7 +653,8 @@ export const DataStoreSettingsEngine = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataStoreSettingsEngine",
 }) as any as S.Schema<DataStoreSettingsEngine>;
 
-export type DataStoreSettingsEngineList = DataStoreSettingsEngine[];
+export type DataStoreSettingsEngineList =
+  ReadonlyArray<DataStoreSettingsEngine>;
 export const DataStoreSettingsEngineList = /*@__PURE__*/ S.Array(
   DataStoreSettingsEngine,
 ) as any as S.Schema<DataStoreSettingsEngineList>;
@@ -697,8 +687,7 @@ export type ErrorHandlingSettingsErrorHandlingStrategyEnum =
   | "ERROR_HANDLING_STRATEGY_UNSPECIFIED"
   | "NONE"
   | "FALLBACK_RESPONSE"
-  | "END_SESSION"
-  | (string & {});
+  | "END_SESSION";
 export const ErrorHandlingSettingsErrorHandlingStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -920,7 +909,7 @@ export const Ces_SchemaMap = /*@__PURE__*/ S.Record(
   S.suspend(() => Ces_Schema),
 ) as any as S.Schema<Ces_SchemaMap>;
 
-export type Ces_SchemaList = Ces_Schema[];
+export type Ces_SchemaList = ReadonlyArray<Ces_Schema>;
 export const Ces_SchemaList = /*@__PURE__*/ S.Array(
   S.suspend(() => Ces_Schema),
 ) as any as S.Schema<Ces_SchemaList>;
@@ -932,8 +921,7 @@ export type Ces_SchemaTypeEnum =
   | "NUMBER"
   | "BOOLEAN"
   | "OBJECT"
-  | "ARRAY"
-  | (string & {});
+  | "ARRAY";
 export const Ces_SchemaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a select subset of an OpenAPI 3.0 schema object. */
@@ -1020,7 +1008,7 @@ export const AppVariableDeclaration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppVariableDeclaration",
 }) as any as S.Schema<AppVariableDeclaration>;
 
-export type AppVariableDeclarationList = AppVariableDeclaration[];
+export type AppVariableDeclarationList = ReadonlyArray<AppVariableDeclaration>;
 export const AppVariableDeclarationList = /*@__PURE__*/ S.Array(
   AppVariableDeclaration,
 ) as any as S.Schema<AppVariableDeclarationList>;
@@ -1028,8 +1016,7 @@ export const AppVariableDeclarationList = /*@__PURE__*/ S.Array(
 export type AppToolExecutionModeEnum =
   | "TOOL_EXECUTION_MODE_UNSPECIFIED"
   | "PARALLEL"
-  | "SEQUENTIAL"
-  | (string & {});
+  | "SEQUENTIAL";
 export const AppToolExecutionModeEnum = /*@__PURE__*/ S.String;
 
 /** Language settings of the app. */
@@ -1190,7 +1177,7 @@ export const Callback = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Callback" }) as any as S.Schema<Callback>;
 
-export type CallbackList = Callback[];
+export type CallbackList = ReadonlyArray<Callback>;
 export const CallbackList = /*@__PURE__*/ S.Array(
   Callback,
 ) as any as S.Schema<CallbackList>;
@@ -1211,7 +1198,7 @@ export const AgentAgentToolset = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentAgentToolset",
 }) as any as S.Schema<AgentAgentToolset>;
 
-export type AgentAgentToolsetList = AgentAgentToolset[];
+export type AgentAgentToolsetList = ReadonlyArray<AgentAgentToolset>;
 export const AgentAgentToolsetList = /*@__PURE__*/ S.Array(
   AgentAgentToolset,
 ) as any as S.Schema<AgentAgentToolsetList>;
@@ -1282,8 +1269,7 @@ export const TransferRuleDisablePlannerTransfer = /*@__PURE__*/ S.suspend(() =>
 export type TransferRuleDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "PARENT_TO_CHILD"
-  | "CHILD_TO_PARENT"
-  | (string & {});
+  | "CHILD_TO_PARENT";
 export const TransferRuleDirectionEnum = /*@__PURE__*/ S.String;
 
 /** Python code block to evaluate the condition. */
@@ -1335,7 +1321,7 @@ export const TransferRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TransferRule" }) as any as S.Schema<TransferRule>;
 
-export type TransferRuleList = TransferRule[];
+export type TransferRuleList = ReadonlyArray<TransferRule>;
 export const TransferRuleList = /*@__PURE__*/ S.Array(
   TransferRule,
 ) as any as S.Schema<TransferRuleList>;
@@ -1463,8 +1449,7 @@ export type ExperimentConfigVersionReleaseStateEnum =
   | "PENDING"
   | "RUNNING"
   | "DONE"
-  | "EXPIRED"
-  | (string & {});
+  | "EXPIRED";
 export const ExperimentConfigVersionReleaseStateEnum = /*@__PURE__*/ S.String;
 
 /** Traffic allocation for the version release. */
@@ -1488,7 +1473,7 @@ export const ExperimentConfigVersionReleaseTrafficAllocation =
   }) as any as S.Schema<ExperimentConfigVersionReleaseTrafficAllocation>;
 
 export type ExperimentConfigVersionReleaseTrafficAllocationList =
-  ExperimentConfigVersionReleaseTrafficAllocation[];
+  ReadonlyArray<ExperimentConfigVersionReleaseTrafficAllocation>;
 export const ExperimentConfigVersionReleaseTrafficAllocationList =
   /*@__PURE__*/ S.Array(
     ExperimentConfigVersionReleaseTrafficAllocation,
@@ -1756,7 +1741,7 @@ export const Chunk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Chunk" }) as any as S.Schema<Chunk>;
 
-export type ChunkList = Chunk[];
+export type ChunkList = ReadonlyArray<Chunk>;
 export const ChunkList = /*@__PURE__*/ S.Array(
   Chunk,
 ) as any as S.Schema<ChunkList>;
@@ -1778,7 +1763,7 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 
-export type MessageList = Message[];
+export type MessageList = ReadonlyArray<Message>;
 export const MessageList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<MessageList>;
@@ -1847,8 +1832,7 @@ export type GuardrailContentFilterMatchTypeEnum =
   | "MATCH_TYPE_UNSPECIFIED"
   | "SIMPLE_STRING_MATCH"
   | "WORD_BOUNDARY_STRING_MATCH"
-  | "REGEXP_MATCH"
-  | (string & {});
+  | "REGEXP_MATCH";
 export const GuardrailContentFilterMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** Guardrail that bans certain content from being used in the conversation. */
@@ -1892,7 +1876,7 @@ export const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggerActionResponse",
 }) as any as S.Schema<TriggerActionResponse>;
 
-export type TriggerActionResponseList = TriggerActionResponse[];
+export type TriggerActionResponseList = ReadonlyArray<TriggerActionResponse>;
 export const TriggerActionResponseList = /*@__PURE__*/ S.Array(
   TriggerActionResponse,
 ) as any as S.Schema<TriggerActionResponseList>;
@@ -1959,8 +1943,7 @@ export type GuardrailModelSafetySafetySettingThresholdEnum =
   | "BLOCK_MEDIUM_AND_ABOVE"
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
-  | "OFF"
-  | (string & {});
+  | "OFF";
 export const GuardrailModelSafetySafetySettingThresholdEnum =
   /*@__PURE__*/ S.String;
 
@@ -1969,8 +1952,7 @@ export type GuardrailModelSafetySafetySettingCategoryEnum =
   | "HARM_CATEGORY_HATE_SPEECH"
   | "HARM_CATEGORY_DANGEROUS_CONTENT"
   | "HARM_CATEGORY_HARASSMENT"
-  | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
-  | (string & {});
+  | "HARM_CATEGORY_SEXUALLY_EXPLICIT";
 export const GuardrailModelSafetySafetySettingCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -1991,7 +1973,7 @@ export const GuardrailModelSafetySafetySetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailModelSafetySafetySetting>;
 
 export type GuardrailModelSafetySafetySettingList =
-  GuardrailModelSafetySafetySetting[];
+  ReadonlyArray<GuardrailModelSafetySafetySetting>;
 export const GuardrailModelSafetySafetySettingList = /*@__PURE__*/ S.Array(
   GuardrailModelSafetySafetySetting,
 ) as any as S.Schema<GuardrailModelSafetySafetySettingList>;
@@ -2013,8 +1995,7 @@ export type GuardrailLlmPolicyPolicyScopeEnum =
   | "POLICY_SCOPE_UNSPECIFIED"
   | "USER_QUERY"
   | "AGENT_RESPONSE"
-  | "USER_QUERY_AND_AGENT_RESPONSE"
-  | (string & {});
+  | "USER_QUERY_AND_AGENT_RESPONSE";
 export const GuardrailLlmPolicyPolicyScopeEnum = /*@__PURE__*/ S.String;
 
 /** Guardrail that blocks the conversation if the LLM response is considered violating the policy based on the LLM classification. */
@@ -2210,8 +2191,7 @@ export const PythonFunction = /*@__PURE__*/ S.suspend(() =>
 export type WidgetToolDataMappingModeEnum =
   | "MODE_UNSPECIFIED"
   | "FIELD_MAPPING"
-  | "PYTHON_SCRIPT"
-  | (string & {});
+  | "PYTHON_SCRIPT";
 export const WidgetToolDataMappingModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for mapping data from a source tool to the widget's input parameters. */
@@ -2252,16 +2232,14 @@ export type WidgetToolWidgetTypeEnum =
   | "ORDER_SUMMARY"
   | "APPOINTMENT_DETAILS"
   | "APPOINTMENT_SCHEDULER"
-  | "CONTACT_FORM"
-  | (string & {});
+  | "CONTACT_FORM";
 export const WidgetToolWidgetTypeEnum = /*@__PURE__*/ S.String;
 
 export type WidgetToolTextResponseConfigTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NONE"
   | "LLM_GENERATED"
-  | "STATIC"
-  | (string & {});
+  | "STATIC";
 export const WidgetToolTextResponseConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for the text response returned with the widget. */
@@ -2315,8 +2293,7 @@ export const WidgetTool = /*@__PURE__*/ S.suspend(() =>
 export type ToolExecutionTypeEnum =
   | "EXECUTION_TYPE_UNSPECIFIED"
   | "SYNCHRONOUS"
-  | "ASYNCHRONOUS"
-  | (string & {});
+  | "ASYNCHRONOUS";
 export const ToolExecutionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a distinct capability or function that an agent can perform. */
@@ -2348,7 +2325,7 @@ export const AgentSkill = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentSkill" }) as any as S.Schema<AgentSkill>;
 
-export type AgentSkillList = AgentSkill[];
+export type AgentSkillList = ReadonlyArray<AgentSkill>;
 export const AgentSkillList = /*@__PURE__*/ S.Array(
   AgentSkill,
 ) as any as S.Schema<AgentSkillList>;
@@ -2373,7 +2350,7 @@ export const AgentInterface = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentInterface" }) as any as S.Schema<AgentInterface>;
 
-export type AgentInterfaceList = AgentInterface[];
+export type AgentInterfaceList = ReadonlyArray<AgentInterface>;
 export const AgentInterfaceList = /*@__PURE__*/ S.Array(
   AgentInterface,
 ) as any as S.Schema<AgentInterfaceList>;
@@ -2495,8 +2472,7 @@ export type ActionEntityOperationOperationEnum =
   | "GET"
   | "CREATE"
   | "UPDATE"
-  | "DELETE"
-  | (string & {});
+  | "DELETE";
 export const ActionEntityOperationOperationEnum = /*@__PURE__*/ S.String;
 
 /** Entity CRUD operation specification. */
@@ -2631,8 +2607,7 @@ export const ClientFunction = /*@__PURE__*/ S.suspend(() =>
 export type FileSearchToolCorpusTypeEnum =
   | "CORPUS_TYPE_UNSPECIFIED"
   | "USER_OWNED"
-  | "FULLY_MANAGED"
-  | (string & {});
+  | "FULLY_MANAGED";
 export const FileSearchToolCorpusTypeEnum = /*@__PURE__*/ S.String;
 
 /** The file search tool allows the agent to search across the files uploaded by the app/agent developer. It has presets to give relatively good quality search over the uploaded files and summarization of the retrieved results. */
@@ -2671,7 +2646,7 @@ export const TlsConfigCaCert = /*@__PURE__*/ S.suspend(() =>
   identifier: "TlsConfigCaCert",
 }) as any as S.Schema<TlsConfigCaCert>;
 
-export type TlsConfigCaCertList = TlsConfigCaCert[];
+export type TlsConfigCaCertList = ReadonlyArray<TlsConfigCaCert>;
 export const TlsConfigCaCertList = /*@__PURE__*/ S.Array(
   TlsConfigCaCert,
 ) as any as S.Schema<TlsConfigCaCertList>;
@@ -2691,14 +2666,12 @@ export type McpToolStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE"
-  | "STALE"
-  | (string & {});
+  | "STALE";
 export const McpToolStateEnum = /*@__PURE__*/ S.String;
 
 export type OAuthConfigOauthGrantTypeEnum =
   | "OAUTH_GRANT_TYPE_UNSPECIFIED"
-  | "CLIENT_CREDENTIAL"
-  | (string & {});
+  | "CLIENT_CREDENTIAL";
 export const OAuthConfigOauthGrantTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configurations for authentication with OAuth. */
@@ -2764,8 +2737,7 @@ export const ServiceAccountAuthConfig = /*@__PURE__*/ S.suspend(() =>
 export type ApiKeyConfigRequestLocationEnum =
   | "REQUEST_LOCATION_UNSPECIFIED"
   | "HEADER"
-  | "QUERY_STRING"
-  | (string & {});
+  | "QUERY_STRING";
 export const ApiKeyConfigRequestLocationEnum = /*@__PURE__*/ S.String;
 
 /** Configurations for authentication with API key. */
@@ -2871,8 +2843,7 @@ export const AgentTool = /*@__PURE__*/ S.suspend(() =>
 export type DataStoreToolFilterParameterBehaviorEnum =
   | "FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED"
   | "ALWAYS_INCLUDE"
-  | "NEVER_INCLUDE"
-  | (string & {});
+  | "NEVER_INCLUDE";
 export const DataStoreToolFilterParameterBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** The connector config for the data store connection. */
@@ -2899,15 +2870,13 @@ export type DataStoreTypeEnum =
   | "PUBLIC_WEB"
   | "UNSTRUCTURED"
   | "FAQ"
-  | "CONNECTOR"
-  | (string & {});
+  | "CONNECTOR";
 export const DataStoreTypeEnum = /*@__PURE__*/ S.String;
 
 export type DataStoreDocumentProcessingModeEnum =
   | "DOCUMENT_PROCESSING_MODE_UNSPECIFIED"
   | "DOCUMENTS"
-  | "CHUNKS"
-  | (string & {});
+  | "CHUNKS";
 export const DataStoreDocumentProcessingModeEnum = /*@__PURE__*/ S.String;
 
 /** A DataStore resource in Vertex AI Search. */
@@ -2952,7 +2921,8 @@ export const DataStoreToolDataStoreSource = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataStoreToolDataStoreSource",
 }) as any as S.Schema<DataStoreToolDataStoreSource>;
 
-export type DataStoreToolDataStoreSourceList = DataStoreToolDataStoreSource[];
+export type DataStoreToolDataStoreSourceList =
+  ReadonlyArray<DataStoreToolDataStoreSource>;
 export const DataStoreToolDataStoreSourceList = /*@__PURE__*/ S.Array(
   DataStoreToolDataStoreSource,
 ) as any as S.Schema<DataStoreToolDataStoreSourceList>;
@@ -2979,8 +2949,7 @@ export const DataStoreToolEngineSource = /*@__PURE__*/ S.suspend(() =>
 export type DataStoreToolModalityConfigModalityTypeEnum =
   | "MODALITY_TYPE_UNSPECIFIED"
   | "TEXT"
-  | "AUDIO"
-  | (string & {});
+  | "AUDIO";
 export const DataStoreToolModalityConfigModalityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3060,18 +3029,19 @@ export const DataStoreToolModalityConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataStoreToolModalityConfig",
 }) as any as S.Schema<DataStoreToolModalityConfig>;
 
-export type DataStoreToolModalityConfigList = DataStoreToolModalityConfig[];
+export type DataStoreToolModalityConfigList =
+  ReadonlyArray<DataStoreToolModalityConfig>;
 export const DataStoreToolModalityConfigList = /*@__PURE__*/ S.Array(
   DataStoreToolModalityConfig,
 ) as any as S.Schema<DataStoreToolModalityConfigList>;
 
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum =
-  "ATTRIBUTE_TYPE_UNSPECIFIED" | "NUMERICAL" | "FRESHNESS" | (string & {});
+  "ATTRIBUTE_TYPE_UNSPECIFIED" | "NUMERICAL" | "FRESHNESS";
 export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum =
-  "INTERPOLATION_TYPE_UNSPECIFIED" | "LINEAR" | (string & {});
+  "INTERPOLATION_TYPE_UNSPECIFIED" | "LINEAR";
 export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3094,7 +3064,7 @@ export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoin
   }) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
-  DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint[];
+  ReadonlyArray<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
   /*@__PURE__*/ S.Array(
     DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint,
@@ -3152,7 +3122,7 @@ export const DataStoreToolBoostSpecConditionBoostSpec = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpec>;
 
 export type DataStoreToolBoostSpecConditionBoostSpecList =
-  DataStoreToolBoostSpecConditionBoostSpec[];
+  ReadonlyArray<DataStoreToolBoostSpecConditionBoostSpec>;
 export const DataStoreToolBoostSpecConditionBoostSpecList =
   /*@__PURE__*/ S.Array(
     DataStoreToolBoostSpecConditionBoostSpec,
@@ -3173,7 +3143,7 @@ export const DataStoreToolBoostSpec = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataStoreToolBoostSpec",
 }) as any as S.Schema<DataStoreToolBoostSpec>;
 
-export type DataStoreToolBoostSpecList = DataStoreToolBoostSpec[];
+export type DataStoreToolBoostSpecList = ReadonlyArray<DataStoreToolBoostSpec>;
 export const DataStoreToolBoostSpecList = /*@__PURE__*/ S.Array(
   DataStoreToolBoostSpec,
 ) as any as S.Schema<DataStoreToolBoostSpecList>;
@@ -3194,7 +3164,8 @@ export const DataStoreToolBoostSpecs = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataStoreToolBoostSpecs",
 }) as any as S.Schema<DataStoreToolBoostSpecs>;
 
-export type DataStoreToolBoostSpecsList = DataStoreToolBoostSpecs[];
+export type DataStoreToolBoostSpecsList =
+  ReadonlyArray<DataStoreToolBoostSpecs>;
 export const DataStoreToolBoostSpecsList = /*@__PURE__*/ S.Array(
   DataStoreToolBoostSpecs,
 ) as any as S.Schema<DataStoreToolBoostSpecsList>;
@@ -3372,7 +3343,7 @@ export const CreateProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateProjectsLocationsAppsToolsRequest",
 }) as any as S.Schema<CreateProjectsLocationsAppsToolsRequest>;
 
-export type ActionList = Action[];
+export type ActionList = ReadonlyArray<Action>;
 export const ActionList = /*@__PURE__*/ S.Array(
   Action,
 ) as any as S.Schema<ActionList>;
@@ -3399,8 +3370,7 @@ export const ConnectorToolset = /*@__PURE__*/ S.suspend(() =>
 export type ToolsetExecutionTypeEnum =
   | "EXECUTION_TYPE_UNSPECIFIED"
   | "SYNCHRONOUS"
-  | "ASYNCHRONOUS"
-  | (string & {});
+  | "ASYNCHRONOUS";
 export const ToolsetExecutionTypeEnum = /*@__PURE__*/ S.String;
 
 /** A toolset that contains a list of tools that are defined by an OpenAPI schema. */
@@ -3470,7 +3440,7 @@ export const McpToolOverride = /*@__PURE__*/ S.suspend(() =>
   identifier: "McpToolOverride",
 }) as any as S.Schema<McpToolOverride>;
 
-export type McpToolOverrideList = McpToolOverride[];
+export type McpToolOverrideList = ReadonlyArray<McpToolOverride>;
 export const McpToolOverrideList = /*@__PURE__*/ S.Array(
   McpToolOverride,
 ) as any as S.Schema<McpToolOverrideList>;
@@ -3570,27 +3540,27 @@ export const CreateProjectsLocationsAppsToolsetsRequest =
     identifier: "CreateProjectsLocationsAppsToolsetsRequest",
   }) as any as S.Schema<CreateProjectsLocationsAppsToolsetsRequest>;
 
-export type GuardrailList = Guardrail[];
+export type GuardrailList = ReadonlyArray<Guardrail>;
 export const GuardrailList = /*@__PURE__*/ S.Array(
   Guardrail,
 ) as any as S.Schema<GuardrailList>;
 
-export type ToolsetList = Toolset[];
+export type ToolsetList = ReadonlyArray<Toolset>;
 export const ToolsetList = /*@__PURE__*/ S.Array(
   Toolset,
 ) as any as S.Schema<ToolsetList>;
 
-export type AgentList = Agent[];
+export type AgentList = ReadonlyArray<Agent>;
 export const AgentList = /*@__PURE__*/ S.Array(
   Agent,
 ) as any as S.Schema<AgentList>;
 
-export type ToolList = Tool[];
+export type ToolList = ReadonlyArray<Tool>;
 export const ToolList = /*@__PURE__*/ S.Array(
   Tool,
 ) as any as S.Schema<ToolList>;
 
-export type ExampleList = Example[];
+export type ExampleList = ReadonlyArray<Example>;
 export const ExampleList = /*@__PURE__*/ S.Array(
   Example,
 ) as any as S.Schema<ExampleList>;
@@ -3726,8 +3696,7 @@ export type DeleteProjectsLocationsAppsConversationsSourceEnum =
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
-  | "AGENT_TOOL"
-  | (string & {});
+  | "AGENT_TOOL";
 export const DeleteProjectsLocationsAppsConversationsSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3938,7 +3907,7 @@ export const MockedToolCall = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MockedToolCall" }) as any as S.Schema<MockedToolCall>;
 
-export type MockedToolCallList = MockedToolCall[];
+export type MockedToolCallList = ReadonlyArray<MockedToolCall>;
 export const MockedToolCallList = /*@__PURE__*/ S.Array(
   MockedToolCall,
 ) as any as S.Schema<MockedToolCallList>;
@@ -3946,8 +3915,7 @@ export const MockedToolCallList = /*@__PURE__*/ S.Array(
 export type MockConfigUnmatchedToolCallBehaviorEnum =
   | "UNMATCHED_TOOL_CALL_BEHAVIOR_UNSPECIFIED"
   | "FAIL"
-  | "PASS_THROUGH"
-  | (string & {});
+  | "PASS_THROUGH";
 export const MockConfigUnmatchedToolCallBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** Mock tool calls configuration for the session. */
@@ -4038,7 +4006,7 @@ export const CitationsCitedChunk = /*@__PURE__*/ S.suspend(() =>
   identifier: "CitationsCitedChunk",
 }) as any as S.Schema<CitationsCitedChunk>;
 
-export type CitationsCitedChunkList = CitationsCitedChunk[];
+export type CitationsCitedChunkList = ReadonlyArray<CitationsCitedChunk>;
 export const CitationsCitedChunkList = /*@__PURE__*/ S.Array(
   CitationsCitedChunk,
 ) as any as S.Schema<CitationsCitedChunkList>;
@@ -4068,7 +4036,7 @@ export const WebSearchQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WebSearchQuery" }) as any as S.Schema<WebSearchQuery>;
 
-export type WebSearchQueryList = WebSearchQuery[];
+export type WebSearchQueryList = ReadonlyArray<WebSearchQuery>;
 export const WebSearchQueryList = /*@__PURE__*/ S.Array(
   WebSearchQuery,
 ) as any as S.Schema<WebSearchQueryList>;
@@ -4120,8 +4088,7 @@ export const ExecuteToolResponse = /*@__PURE__*/ S.suspend(() =>
 export type ExportAppRequestExportFormatEnum =
   | "EXPORT_FORMAT_UNSPECIFIED"
   | "JSON"
-  | "YAML"
-  | (string & {});
+  | "YAML";
 export const ExportAppRequestExportFormatEnum = /*@__PURE__*/ S.String;
 
 /** Request message for AgentService.ExportApp. */
@@ -4263,7 +4230,7 @@ export const LfA2aV1AgentExtension = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentExtension",
 }) as any as S.Schema<LfA2aV1AgentExtension>;
 
-export type LfA2aV1AgentExtensionList = LfA2aV1AgentExtension[];
+export type LfA2aV1AgentExtensionList = ReadonlyArray<LfA2aV1AgentExtension>;
 export const LfA2aV1AgentExtensionList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentExtension,
 ) as any as S.Schema<LfA2aV1AgentExtensionList>;
@@ -4324,7 +4291,8 @@ export const LfA2aV1SecurityRequirement = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1SecurityRequirement",
 }) as any as S.Schema<LfA2aV1SecurityRequirement>;
 
-export type LfA2aV1SecurityRequirementList = LfA2aV1SecurityRequirement[];
+export type LfA2aV1SecurityRequirementList =
+  ReadonlyArray<LfA2aV1SecurityRequirement>;
 export const LfA2aV1SecurityRequirementList = /*@__PURE__*/ S.Array(
   LfA2aV1SecurityRequirement,
 ) as any as S.Schema<LfA2aV1SecurityRequirementList>;
@@ -4348,7 +4316,8 @@ export const LfA2aV1AgentCardSignature = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentCardSignature",
 }) as any as S.Schema<LfA2aV1AgentCardSignature>;
 
-export type LfA2aV1AgentCardSignatureList = LfA2aV1AgentCardSignature[];
+export type LfA2aV1AgentCardSignatureList =
+  ReadonlyArray<LfA2aV1AgentCardSignature>;
 export const LfA2aV1AgentCardSignatureList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentCardSignature,
 ) as any as S.Schema<LfA2aV1AgentCardSignatureList>;
@@ -4623,7 +4592,7 @@ export const LfA2aV1AgentInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentInterface",
 }) as any as S.Schema<LfA2aV1AgentInterface>;
 
-export type LfA2aV1AgentInterfaceList = LfA2aV1AgentInterface[];
+export type LfA2aV1AgentInterfaceList = ReadonlyArray<LfA2aV1AgentInterface>;
 export const LfA2aV1AgentInterfaceList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentInterface,
 ) as any as S.Schema<LfA2aV1AgentInterfaceList>;
@@ -4662,7 +4631,7 @@ export const LfA2aV1AgentSkill = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1AgentSkill",
 }) as any as S.Schema<LfA2aV1AgentSkill>;
 
-export type LfA2aV1AgentSkillList = LfA2aV1AgentSkill[];
+export type LfA2aV1AgentSkillList = ReadonlyArray<LfA2aV1AgentSkill>;
 export const LfA2aV1AgentSkillList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentSkill,
 ) as any as S.Schema<LfA2aV1AgentSkillList>;
@@ -4919,8 +4888,7 @@ export type GetProjectsLocationsAppsConversationsSourceEnum =
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
-  | "AGENT_TOOL"
-  | (string & {});
+  | "AGENT_TOOL";
 export const GetProjectsLocationsAppsConversationsSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -4953,11 +4921,10 @@ export type ConversationSourceEnum =
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
-  | "AGENT_TOOL"
-  | (string & {});
+  | "AGENT_TOOL";
 export const ConversationSourceEnum = /*@__PURE__*/ S.String;
 
-export type SpanList = Span[];
+export type SpanList = ReadonlyArray<Span>;
 export const SpanList = /*@__PURE__*/ S.Array(
   S.suspend(() => Span),
 ) as any as S.Schema<SpanList>;
@@ -5004,7 +4971,7 @@ export const ConversationTurn = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversationTurn",
 }) as any as S.Schema<ConversationTurn>;
 
-export type ConversationTurnList = ConversationTurn[];
+export type ConversationTurnList = ReadonlyArray<ConversationTurn>;
 export const ConversationTurnList = /*@__PURE__*/ S.Array(
   ConversationTurn,
 ) as any as S.Schema<ConversationTurnList>;
@@ -5013,8 +4980,7 @@ export type ConversationChannelTypeEnum =
   | "CHANNEL_TYPE_UNSPECIFIED"
   | "TEXT"
   | "AUDIO"
-  | "MULTIMODAL"
-  | (string & {});
+  | "MULTIMODAL";
 export const ConversationChannelTypeEnum = /*@__PURE__*/ S.String;
 
 export type ConversationInputTypesItemEnum =
@@ -5025,12 +4991,11 @@ export type ConversationInputTypesItemEnum =
   | "INPUT_TYPE_IMAGE"
   | "INPUT_TYPE_BLOB"
   | "INPUT_TYPE_TOOL_RESPONSE"
-  | "INPUT_TYPE_VARIABLES"
-  | (string & {});
+  | "INPUT_TYPE_VARIABLES";
 export const ConversationInputTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type ConversationInputTypesItemEnumList =
-  ConversationInputTypesItemEnum[];
+  ReadonlyArray<ConversationInputTypesItemEnum>;
 export const ConversationInputTypesItemEnumList = /*@__PURE__*/ S.Array(
   ConversationInputTypesItemEnum,
 ) as any as S.Schema<ConversationInputTypesItemEnumList>;
@@ -5218,8 +5183,7 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 export type ImportAppRequestImportOptionsConflictResolutionStrategyEnum =
   | "CONFLICT_RESOLUTION_STRATEGY_UNSPECIFIED"
   | "REPLACE"
-  | "OVERWRITE"
-  | (string & {});
+  | "OVERWRITE";
 export const ImportAppRequestImportOptionsConflictResolutionStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -5318,7 +5282,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -5369,7 +5333,7 @@ export const ListProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsAppsRequest",
 }) as any as S.Schema<ListProjectsLocationsAppsRequest>;
 
-export type AppList = App[];
+export type AppList = ReadonlyArray<App>;
 export const AppList = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList>;
 
 /** Response message for AgentService.ListApps. */
@@ -5469,7 +5433,7 @@ export const ListProjectsLocationsAppsChangelogsRequest =
     identifier: "ListProjectsLocationsAppsChangelogsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsChangelogsRequest>;
 
-export type ChangelogList = Changelog[];
+export type ChangelogList = ReadonlyArray<Changelog>;
 export const ChangelogList = /*@__PURE__*/ S.Array(
   Changelog,
 ) as any as S.Schema<ChangelogList>;
@@ -5495,8 +5459,7 @@ export type ListProjectsLocationsAppsConversationsSourceEnum =
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
-  | "AGENT_TOOL"
-  | (string & {});
+  | "AGENT_TOOL";
 export const ListProjectsLocationsAppsConversationsSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -5505,13 +5468,12 @@ export type ListProjectsLocationsAppsConversationsSourcesEnum =
   | "LIVE"
   | "SIMULATOR"
   | "EVAL"
-  | "AGENT_TOOL"
-  | (string & {});
+  | "AGENT_TOOL";
 export const ListProjectsLocationsAppsConversationsSourcesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsAppsConversationsSourcesEnumList =
-  ListProjectsLocationsAppsConversationsSourcesEnum[];
+  ReadonlyArray<ListProjectsLocationsAppsConversationsSourcesEnum>;
 export const ListProjectsLocationsAppsConversationsSourcesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsLocationsAppsConversationsSourcesEnum,
@@ -5555,7 +5517,7 @@ export const ListProjectsLocationsAppsConversationsRequest =
     identifier: "ListProjectsLocationsAppsConversationsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsConversationsRequest>;
 
-export type ConversationList = Conversation[];
+export type ConversationList = ReadonlyArray<Conversation>;
 export const ConversationList = /*@__PURE__*/ S.Array(
   Conversation,
 ) as any as S.Schema<ConversationList>;
@@ -5604,7 +5566,7 @@ export const ListProjectsLocationsAppsDeploymentsRequest =
     identifier: "ListProjectsLocationsAppsDeploymentsRequest",
   }) as any as S.Schema<ListProjectsLocationsAppsDeploymentsRequest>;
 
-export type DeploymentList = Deployment[];
+export type DeploymentList = ReadonlyArray<Deployment>;
 export const DeploymentList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentList>;
@@ -5844,7 +5806,7 @@ export const ListProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsAppsVersionsRequest",
 }) as any as S.Schema<ListProjectsLocationsAppsVersionsRequest>;
 
-export type AppVersionList = AppVersion[];
+export type AppVersionList = ReadonlyArray<AppVersion>;
 export const AppVersionList = /*@__PURE__*/ S.Array(
   AppVersion,
 ) as any as S.Schema<AppVersionList>;
@@ -5896,7 +5858,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -6239,8 +6201,7 @@ export type OutputAudioConfigAudioEncodingEnum =
   | "AUDIO_ENCODING_UNSPECIFIED"
   | "LINEAR16"
   | "MULAW"
-  | "ALAW"
-  | (string & {});
+  | "ALAW";
 export const OutputAudioConfigAudioEncodingEnum = /*@__PURE__*/ S.String;
 
 /** OutputAudioConfig configures how the CES agent should synthesize outgoing audio responses. */
@@ -6263,8 +6224,7 @@ export type InputAudioConfigAudioEncodingEnum =
   | "AUDIO_ENCODING_UNSPECIFIED"
   | "LINEAR16"
   | "MULAW"
-  | "ALAW"
-  | (string & {});
+  | "ALAW";
 export const InputAudioConfigAudioEncodingEnum = /*@__PURE__*/ S.String;
 
 /** InputAudioConfig configures how the CES agent should interpret the incoming audio data. */
@@ -6343,7 +6303,7 @@ export const SessionConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SessionConfig" }) as any as S.Schema<SessionConfig>;
 
-export type ToolResponseList = ToolResponse[];
+export type ToolResponseList = ReadonlyArray<ToolResponse>;
 export const ToolResponseList = /*@__PURE__*/ S.Array(
   ToolResponse,
 ) as any as S.Schema<ToolResponseList>;
@@ -6405,7 +6365,7 @@ export const SessionInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SessionInput" }) as any as S.Schema<SessionInput>;
 
-export type SessionInputList = SessionInput[];
+export type SessionInputList = ReadonlyArray<SessionInput>;
 export const SessionInputList = /*@__PURE__*/ S.Array(
   SessionInput,
 ) as any as S.Schema<SessionInputList>;
@@ -6464,7 +6424,7 @@ export const SessionOutputDiagnosticInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionOutputDiagnosticInfo",
 }) as any as S.Schema<SessionOutputDiagnosticInfo>;
 
-export type ToolCallList = ToolCall[];
+export type ToolCallList = ReadonlyArray<ToolCall>;
 export const ToolCallList = /*@__PURE__*/ S.Array(
   ToolCall,
 ) as any as S.Schema<ToolCallList>;
@@ -6532,7 +6492,7 @@ export const SessionOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SessionOutput" }) as any as S.Schema<SessionOutput>;
 
-export type SessionOutputList = SessionOutput[];
+export type SessionOutputList = ReadonlyArray<SessionOutput>;
 export const SessionOutputList = /*@__PURE__*/ S.Array(
   SessionOutput,
 ) as any as S.Schema<SessionOutputList>;
@@ -6619,8 +6579,7 @@ export const LfA2aV1SendMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type LfA2aV1MessageRoleEnum =
   | "ROLE_UNSPECIFIED"
   | "ROLE_USER"
-  | "ROLE_AGENT"
-  | (string & {});
+  | "ROLE_AGENT";
 export const LfA2aV1MessageRoleEnum = /*@__PURE__*/ S.String;
 
 /** `Part` represents a container for a section of communication content. Parts can be purely textual, some sort of file (image, video, etc) or a structured data blob (i.e. JSON). */
@@ -6652,7 +6611,7 @@ export const LfA2aV1Part = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LfA2aV1Part" }) as any as S.Schema<LfA2aV1Part>;
 
-export type LfA2aV1PartList = LfA2aV1Part[];
+export type LfA2aV1PartList = ReadonlyArray<LfA2aV1Part>;
 export const LfA2aV1PartList = /*@__PURE__*/ S.Array(
   LfA2aV1Part,
 ) as any as S.Schema<LfA2aV1PartList>;
@@ -6758,12 +6717,12 @@ export const LfA2aV1Artifact = /*@__PURE__*/ S.suspend(() =>
   identifier: "LfA2aV1Artifact",
 }) as any as S.Schema<LfA2aV1Artifact>;
 
-export type LfA2aV1ArtifactList = LfA2aV1Artifact[];
+export type LfA2aV1ArtifactList = ReadonlyArray<LfA2aV1Artifact>;
 export const LfA2aV1ArtifactList = /*@__PURE__*/ S.Array(
   LfA2aV1Artifact,
 ) as any as S.Schema<LfA2aV1ArtifactList>;
 
-export type LfA2aV1MessageList = LfA2aV1Message[];
+export type LfA2aV1MessageList = ReadonlyArray<LfA2aV1Message>;
 export const LfA2aV1MessageList = /*@__PURE__*/ S.Array(
   LfA2aV1Message,
 ) as any as S.Schema<LfA2aV1MessageList>;
@@ -6777,8 +6736,7 @@ export type LfA2aV1TaskStatusStateEnum =
   | "TASK_STATE_CANCELED"
   | "TASK_STATE_INPUT_REQUIRED"
   | "TASK_STATE_REJECTED"
-  | "TASK_STATE_AUTH_REQUIRED"
-  | (string & {});
+  | "TASK_STATE_AUTH_REQUIRED";
 export const LfA2aV1TaskStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** A container for the status of a task */

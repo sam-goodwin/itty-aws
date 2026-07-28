@@ -19,7 +19,8 @@ export interface AccountsAddRootCollectionAdminRequest {
   resourceGroupName: string;
   /** The name of the account. */
   accountName: string;
-  body: unknown;
+  /** Gets or sets the object identifier of the admin. */
+  objectId?: string;
 }
 export const AccountsAddRootCollectionAdminRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -27,7 +28,7 @@ export const AccountsAddRootCollectionAdminRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      objectId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -50,13 +51,17 @@ export const AccountsAddRootCollectionAdminResponse = /*@__PURE__*/ S.suspend(
 export interface AccountsCheckNameAvailabilityRequest {
   /** The subscription identifier */
   subscriptionId: string;
-  body: unknown;
+  /** Resource name to verify for availability */
+  name?: string;
+  /** Fully qualified resource type which includes provider namespace */
+  type?: string;
 }
 export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -70,10 +75,7 @@ export const AccountsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountsCheckNameAvailabilityRequest>;
 
 /** The reason the name is not available. */
-export type CheckNameAvailabilityResultReason =
-  | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+export type CheckNameAvailabilityResultReason = "Invalid" | "AlreadyExists";
 export const CheckNameAvailabilityResultReason = /*@__PURE__*/ S.String;
 
 /** The response payload for CheckNameAvailability API */
@@ -95,6 +97,110 @@ export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckNameAvailabilityResult",
 }) as any as S.Schema<CheckNameAvailabilityResult>;
 
+/** Identity Type */
+export type IdentityInputType = "None" | "SystemAssigned" | "UserAssigned";
+export const IdentityInputType = /*@__PURE__*/ S.String;
+
+/** Uses client ID and Principal ID */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** User Assigned Identities */
+export type IdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
+
+/** The Managed Identity of the resource */
+export interface IdentityInput {
+  /** Identity Type */
+  type?: IdentityInputType;
+  /** User Assigned Identities */
+  userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
+}
+export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(IdentityInputType),
+    userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
+  }),
+).annotate({ identifier: "IdentityInput" }) as any as S.Schema<IdentityInput>;
+
+/** Tags on the azure resource. */
+export type AccountsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsCreateOrUpdateRequestTagsMap>;
+
+/** External Cloud Service connectors */
+export interface CloudConnectorsInput {}
+export const CloudConnectorsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CloudConnectorsInput",
+}) as any as S.Schema<CloudConnectorsInput>;
+
+/** Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed. */
+export type AccountPropertiesInputManagedEventHubState =
+  | "NotSpecified"
+  | "Disabled"
+  | "Enabled";
+export const AccountPropertiesInputManagedEventHubState =
+  /*@__PURE__*/ S.String;
+
+/** Gets or sets the public network access for managed resources. */
+export type AccountPropertiesInputManagedResourcesPublicNetworkAccess =
+  | "NotSpecified"
+  | "Enabled"
+  | "Disabled";
+export const AccountPropertiesInputManagedResourcesPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** Gets or sets the public network access. */
+export type AccountPropertiesInputPublicNetworkAccess =
+  | "NotSpecified"
+  | "Enabled"
+  | "Disabled";
+export const AccountPropertiesInputPublicNetworkAccess = /*@__PURE__*/ S.String;
+
+/** The account properties */
+export interface AccountPropertiesInput {
+  /** Cloud connectors. External cloud identifier used as part of scanning configuration. */
+  cloudConnectors?: CloudConnectorsInput;
+  /** Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed. */
+  managedEventHubState?: AccountPropertiesInputManagedEventHubState;
+  /** Gets or sets the managed resource group name */
+  managedResourceGroupName?: string;
+  /** Gets or sets the public network access for managed resources. */
+  managedResourcesPublicNetworkAccess?: AccountPropertiesInputManagedResourcesPublicNetworkAccess;
+  /** Gets or sets the public network access. */
+  publicNetworkAccess?: AccountPropertiesInputPublicNetworkAccess;
+}
+export const AccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloudConnectors: S.optional(CloudConnectorsInput),
+    managedEventHubState: S.optional(
+      AccountPropertiesInputManagedEventHubState,
+    ),
+    managedResourceGroupName: S.optional(S.String),
+    managedResourcesPublicNetworkAccess: S.optional(
+      AccountPropertiesInputManagedResourcesPublicNetworkAccess,
+    ),
+    publicNetworkAccess: S.optional(AccountPropertiesInputPublicNetworkAccess),
+  }),
+).annotate({
+  identifier: "AccountPropertiesInput",
+}) as any as S.Schema<AccountPropertiesInput>;
+
 export interface AccountsCreateOrUpdateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -102,14 +208,24 @@ export interface AccountsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the account. */
   accountName: string;
-  body: unknown;
+  /** Identity Info on the tracked resource */
+  identity?: IdentityInput;
+  /** Gets or sets the location. */
+  location?: string;
+  /** Tags on the azure resource. */
+  tags?: AccountsCreateOrUpdateRequestTagsMap;
+  /** Gets or sets the properties. */
+  properties?: AccountPropertiesInput;
 }
 export const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(IdentityInput),
+    location: S.optional(S.String),
+    tags: S.optional(AccountsCreateOrUpdateRequestTagsMap),
+    properties: S.optional(AccountPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -123,11 +239,7 @@ export const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsCreateOrUpdateRequest>;
 
 /** Identity Type */
-export type IdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
+export type IdentityType = "None" | "SystemAssigned" | "UserAssigned";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Uses client ID and Principal ID */
@@ -180,8 +292,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -189,8 +300,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -239,12 +349,11 @@ export type AccountStatusAccountProvisioningState =
   | "SoftDeleted"
   | "Failed"
   | "Succeeded"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AccountStatusAccountProvisioningState = /*@__PURE__*/ S.String;
 
 /** Gets or sets the details. */
-export type ErrorModelDetailsList = ErrorModel[];
+export type ErrorModelDetailsList = ReadonlyArray<ErrorModel>;
 export const ErrorModelDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorModel),
 ) as any as S.Schema<ErrorModelDetailsList>;
@@ -319,8 +428,7 @@ export const AccountEndpoints = /*@__PURE__*/ S.suspend(() =>
 export type AccountPropertiesManagedEventHubState =
   | "NotSpecified"
   | "Disabled"
-  | "Enabled"
-  | (string & {});
+  | "Enabled";
 export const AccountPropertiesManagedEventHubState = /*@__PURE__*/ S.String;
 
 /** The managed resources in customer subscription. */
@@ -346,8 +454,7 @@ export const ManagedResources = /*@__PURE__*/ S.suspend(() =>
 export type AccountPropertiesManagedResourcesPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const AccountPropertiesManagedResourcesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -370,8 +477,7 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const PrivateLinkServiceConnectionStateStatus = /*@__PURE__*/ S.String;
 
 /** The private link service connection state. */
@@ -441,7 +547,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the private endpoint connections information. */
 export type AccountPropertiesPrivateEndpointConnectionsList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const AccountPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -457,16 +563,14 @@ export type AccountPropertiesProvisioningState =
   | "SoftDeleted"
   | "Failed"
   | "Succeeded"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const AccountPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Gets or sets the public network access. */
 export type AccountPropertiesPublicNetworkAccess =
   | "NotSpecified"
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const AccountPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The account properties */
@@ -526,7 +630,7 @@ export const AccountProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountProperties>;
 
 /** Gets or sets the sku name. */
-export type AccountSkuName = "Standard" | (string & {});
+export type AccountSkuName = "Standard";
 export const AccountSkuName = /*@__PURE__*/ S.String;
 
 /** The Sku */
@@ -747,7 +851,7 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Account" }) as any as S.Schema<Account>;
 
 /** Collection of items of type results. */
-export type AccountListValueList = Account[];
+export type AccountListValueList = ReadonlyArray<Account>;
 export const AccountListValueList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountListValueList>;
@@ -830,6 +934,15 @@ export const AccessKeys = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessKeys" }) as any as S.Schema<AccessKeys>;
 
+/** Tags on the azure resource. */
+export type AccountsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AccountsUpdateRequestTagsMap>;
+
 export interface AccountsUpdateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -837,14 +950,21 @@ export interface AccountsUpdateRequest {
   resourceGroupName: string;
   /** The name of the account. */
   accountName: string;
-  body: unknown;
+  /** Identity related info to add/remove userAssignedIdentities. */
+  identity?: IdentityInput;
+  /** The account properties. */
+  properties?: AccountPropertiesInput;
+  /** Tags on the azure resource. */
+  tags?: AccountsUpdateRequestTagsMap;
 }
 export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(IdentityInput),
+    properties: S.optional(AccountPropertiesInput),
+    tags: S.optional(AccountsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -902,10 +1022,7 @@ export const AccountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsUpdateResponse",
 }) as any as S.Schema<AccountsUpdateResponse>;
 
-export type DefaultAccountsGetRequestScopeType =
-  | "Tenant"
-  | "Subscription"
-  | (string & {});
+export type DefaultAccountsGetRequestScopeType = "Tenant" | "Subscription";
 export const DefaultAccountsGetRequestScopeType = /*@__PURE__*/ S.String;
 
 export interface DefaultAccountsGetRequest {
@@ -934,10 +1051,7 @@ export const DefaultAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultAccountsGetRequest>;
 
 /** The scope where the default account is set. */
-export type DefaultAccountPayloadScopeType =
-  | "Tenant"
-  | "Subscription"
-  | (string & {});
+export type DefaultAccountPayloadScopeType = "Tenant" | "Subscription";
 export const DefaultAccountPayloadScopeType = /*@__PURE__*/ S.String;
 
 /** Payload to get and set the default account in the given scope */
@@ -968,10 +1082,7 @@ export const DefaultAccountPayload = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultAccountPayload",
 }) as any as S.Schema<DefaultAccountPayload>;
 
-export type DefaultAccountsRemoveRequestScopeType =
-  | "Tenant"
-  | "Subscription"
-  | (string & {});
+export type DefaultAccountsRemoveRequestScopeType = "Tenant" | "Subscription";
 export const DefaultAccountsRemoveRequestScopeType = /*@__PURE__*/ S.String;
 
 export interface DefaultAccountsRemoveRequest {
@@ -1006,12 +1117,32 @@ export const DefaultAccountsRemoveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultAccountsRemoveResponse",
 }) as any as S.Schema<DefaultAccountsRemoveResponse>;
 
+/** The scope where the default account is set. */
+export type DefaultAccountsSetRequestScopeType = "Tenant" | "Subscription";
+export const DefaultAccountsSetRequestScopeType = /*@__PURE__*/ S.String;
+
 export interface DefaultAccountsSetRequest {
-  body: unknown;
+  /** The name of the account that is set as the default. */
+  accountName?: string;
+  /** The resource group name of the account that is set as the default. */
+  resourceGroupName?: string;
+  /** The scope object ID. For example, sub ID or tenant ID. */
+  scope?: string;
+  /** The scope tenant in which the default account is set. */
+  scopeTenantId?: string;
+  /** The scope where the default account is set. */
+  scopeType?: DefaultAccountsSetRequestScopeType;
+  /** The subscription ID of the account that is set as the default. */
+  subscriptionId?: string;
 }
 export const DefaultAccountsSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    accountName: S.optional(S.String),
+    resourceGroupName: S.optional(S.String),
+    scope: S.optional(S.String),
+    scopeTenantId: S.optional(S.String),
+    scopeType: S.optional(DefaultAccountsSetRequestScopeType),
+    subscriptionId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1024,6 +1155,12 @@ export const DefaultAccountsSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DefaultAccountsSetRequest",
 }) as any as S.Schema<DefaultAccountsSetRequest>;
 
+/** Set of features */
+export type FeaturesAccountGetRequestFeaturesList = ReadonlyArray<string>;
+export const FeaturesAccountGetRequestFeaturesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FeaturesAccountGetRequestFeaturesList>;
+
 export interface FeaturesAccountGetRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1031,14 +1168,15 @@ export interface FeaturesAccountGetRequest {
   resourceGroupName: string;
   /** The name of the account. */
   accountName: string;
-  body: unknown;
+  /** Set of features */
+  features?: FeaturesAccountGetRequestFeaturesList;
 }
 export const FeaturesAccountGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    features: S.optional(FeaturesAccountGetRequestFeaturesList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1073,18 +1211,25 @@ export const BatchFeatureStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchFeatureStatus",
 }) as any as S.Schema<BatchFeatureStatus>;
 
+/** Set of features */
+export type FeaturesSubscriptionGetRequestFeaturesList = ReadonlyArray<string>;
+export const FeaturesSubscriptionGetRequestFeaturesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FeaturesSubscriptionGetRequestFeaturesList>;
+
 export interface FeaturesSubscriptionGetRequest {
   /** The subscription identifier */
   subscriptionId: string;
   /** Location of feature. */
   locations: string;
-  body: unknown;
+  /** Set of features */
+  features?: FeaturesSubscriptionGetRequestFeaturesList;
 }
 export const FeaturesSubscriptionGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locations: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    features: S.optional(FeaturesSubscriptionGetRequestFeaturesList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1097,43 +1242,8 @@ export const FeaturesSubscriptionGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FeaturesSubscriptionGetRequest",
 }) as any as S.Schema<FeaturesSubscriptionGetRequest>;
 
-export interface KafkaConfigurationsCreateOrUpdateRequest {
-  /** The subscription identifier */
-  subscriptionId: string;
-  /** The resource group name. */
-  resourceGroupName: string;
-  /** The name of the account. */
-  accountName: string;
-  /** The kafka configuration name. */
-  kafkaConfigurationName: string;
-  body: unknown;
-}
-export const KafkaConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      accountName: S.String.pipe(T.Label()),
-      kafkaConfigurationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/kafkaConfigurations/{kafkaConfigurationName}",
-        code: 200,
-        apiVersion: "2021-12-01",
-      }),
-    ),
-).annotate({
-  identifier: "KafkaConfigurationsCreateOrUpdateRequest",
-}) as any as S.Schema<KafkaConfigurationsCreateOrUpdateRequest>;
-
 /** Identity Type. */
-export type CredentialsType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
+export type CredentialsType = "None" | "SystemAssigned" | "UserAssigned";
 export const CredentialsType = /*@__PURE__*/ S.String;
 
 /** Credentials to access the event streaming service attached to the purview account. */
@@ -1151,17 +1261,13 @@ export const Credentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Credentials" }) as any as S.Schema<Credentials>;
 
 /** The event hub type. */
-export type KafkaConfigurationPropertiesEventHubType =
-  | "Notification"
-  | "Hook"
-  | (string & {});
+export type KafkaConfigurationPropertiesEventHubType = "Notification" | "Hook";
 export const KafkaConfigurationPropertiesEventHubType = /*@__PURE__*/ S.String;
 
 /** The state of the event streaming service */
 export type KafkaConfigurationPropertiesEventStreamingState =
   | "Disabled"
-  | "Enabled"
-  | (string & {});
+  | "Enabled";
 export const KafkaConfigurationPropertiesEventStreamingState =
   /*@__PURE__*/ S.String;
 
@@ -1169,8 +1275,7 @@ export const KafkaConfigurationPropertiesEventStreamingState =
 export type KafkaConfigurationPropertiesEventStreamingType =
   | "None"
   | "Managed"
-  | "Azure"
-  | (string & {});
+  | "Azure";
 export const KafkaConfigurationPropertiesEventStreamingType =
   /*@__PURE__*/ S.String;
 
@@ -1207,6 +1312,38 @@ export const KafkaConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KafkaConfigurationProperties",
 }) as any as S.Schema<KafkaConfigurationProperties>;
+
+export interface KafkaConfigurationsCreateOrUpdateRequest {
+  /** The subscription identifier */
+  subscriptionId: string;
+  /** The resource group name. */
+  resourceGroupName: string;
+  /** The name of the account. */
+  accountName: string;
+  /** The kafka configuration name. */
+  kafkaConfigurationName: string;
+  /** Gets or sets the kafka configuration properties. */
+  properties?: KafkaConfigurationProperties;
+}
+export const KafkaConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      accountName: S.String.pipe(T.Label()),
+      kafkaConfigurationName: S.String.pipe(T.Label()),
+      properties: S.optional(KafkaConfigurationProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/kafkaConfigurations/{kafkaConfigurationName}",
+        code: 200,
+        apiVersion: "2021-12-01",
+      }),
+    ),
+).annotate({
+  identifier: "KafkaConfigurationsCreateOrUpdateRequest",
+}) as any as S.Schema<KafkaConfigurationsCreateOrUpdateRequest>;
 
 export interface KafkaConfigurationsCreateOrUpdateResponse {
   /** Gets or sets the identifier. */
@@ -1375,7 +1512,7 @@ export const KafkaConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KafkaConfiguration>;
 
 /** Collection of items of type results. */
-export type KafkaConfigurationListValueList = KafkaConfiguration[];
+export type KafkaConfigurationListValueList = ReadonlyArray<KafkaConfiguration>;
 export const KafkaConfigurationListValueList = /*@__PURE__*/ S.Array(
   KafkaConfiguration,
 ) as any as S.Schema<KafkaConfigurationListValueList>;
@@ -1453,7 +1590,7 @@ export const OperationMetaLogSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** log specifications for the operation */
 export type OperationMetaServiceSpecificationLogSpecificationsList =
-  OperationMetaLogSpecification[];
+  ReadonlyArray<OperationMetaLogSpecification>;
 export const OperationMetaServiceSpecificationLogSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaLogSpecification,
@@ -1480,7 +1617,7 @@ export const DimensionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** properties for dimension */
 export type OperationMetaMetricSpecificationDimensionsList =
-  DimensionProperties[];
+  ReadonlyArray<DimensionProperties>;
 export const OperationMetaMetricSpecificationDimensionsList =
   /*@__PURE__*/ S.Array(
     DimensionProperties,
@@ -1488,7 +1625,7 @@ export const OperationMetaMetricSpecificationDimensionsList =
 
 /** supported aggregation types */
 export type OperationMetaMetricSpecificationSupportedAggregationTypesList =
-  string[];
+  ReadonlyArray<string>;
 export const OperationMetaMetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1496,7 +1633,7 @@ export const OperationMetaMetricSpecificationSupportedAggregationTypesList =
 
 /** supported time grain types */
 export type OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
-  string[];
+  ReadonlyArray<string>;
 export const OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1554,7 +1691,7 @@ export const OperationMetaMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** metric specifications for the operation */
 export type OperationMetaServiceSpecificationMetricSpecificationsList =
-  OperationMetaMetricSpecification[];
+  ReadonlyArray<OperationMetaMetricSpecification>;
 export const OperationMetaServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     OperationMetaMetricSpecification,
@@ -1617,7 +1754,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Collection of items of type results. */
-export type OperationListValueList = Operation[];
+export type OperationListValueList = ReadonlyArray<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -1636,6 +1773,25 @@ export const OperationList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "OperationList" }) as any as S.Schema<OperationList>;
 
+/** A private endpoint connection properties class. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** The private endpoint information. */
+  privateEndpoint?: PrivateEndpoint;
+  /** The private link service connection state. */
+  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpoint),
+      privateLinkServiceConnectionState: S.optional(
+        PrivateLinkServiceConnectionState,
+      ),
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1645,7 +1801,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   accountName: string;
   /** Name of the private endpoint connection. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** The connection identifier. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
 }
 export const PrivateEndpointConnectionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1654,7 +1811,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       accountName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1813,7 +1970,7 @@ export const PrivateEndpointConnectionsListByAccountRequest =
 
 /** Collection of items of type results. */
 export type PrivateEndpointConnectionListValueList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<PrivateEndpointConnectionListValueList>;
@@ -1864,14 +2021,16 @@ export const PrivateLinkResourcesGetByGroupIdRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesGetByGroupIdRequest>;
 
 /** This translates to how many Private IPs should be created for each privately linkable resource. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The required zone names for private link resource. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1949,7 +2108,8 @@ export const PrivateLinkResourcesListByAccountRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateLinkResourcesListByAccountRequest>;
 
 /** Collection of items of type results. */
-export type PrivateLinkResourceListValueList = PrivateLinkResource[];
+export type PrivateLinkResourceListValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourceListValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListValueList>;
@@ -2032,7 +2192,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** Collection of usage values. */
-export type UsageListValueList = Usage[];
+export type UsageListValueList = ReadonlyArray<Usage>;
 export const UsageListValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListValueList>;

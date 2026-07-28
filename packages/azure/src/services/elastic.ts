@@ -39,7 +39,7 @@ export const AllTrafficFiltersListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AllTrafficFiltersListRequest>;
 
 /** Type of the elastic filter */
-export type Type = "ip" | "azure_private_endpoint" | (string & {});
+export type Type = "ip" | "azure_private_endpoint";
 export const Type = /*@__PURE__*/ S.String;
 
 /** Elastic traffic filter rule object */
@@ -68,7 +68,8 @@ export const ElasticTrafficFilterRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticTrafficFilterRule>;
 
 /** Rules in the elastic filter */
-export type ElasticTrafficFilterRulesList = ElasticTrafficFilterRule[];
+export type ElasticTrafficFilterRulesList =
+  ReadonlyArray<ElasticTrafficFilterRule>;
 export const ElasticTrafficFilterRulesList = /*@__PURE__*/ S.Array(
   ElasticTrafficFilterRule,
 ) as any as S.Schema<ElasticTrafficFilterRulesList>;
@@ -105,7 +106,8 @@ export const ElasticTrafficFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticTrafficFilter>;
 
 /** List of elastic traffic filters in the account */
-export type ElasticTrafficFilterResponseRulesetsList = ElasticTrafficFilter[];
+export type ElasticTrafficFilterResponseRulesetsList =
+  ReadonlyArray<ElasticTrafficFilter>;
 export const ElasticTrafficFilterResponseRulesetsList = /*@__PURE__*/ S.Array(
   ElasticTrafficFilter,
 ) as any as S.Schema<ElasticTrafficFilterResponseRulesetsList>;
@@ -335,7 +337,7 @@ export const ConnectedPartnerResourcesListFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConnectedPartnerResourcesListFormat items on this page */
 export type ConnectedPartnerResourcesListResponseValueList =
-  ConnectedPartnerResourcesListFormat[];
+  ReadonlyArray<ConnectedPartnerResourcesListFormat>;
 export const ConnectedPartnerResourcesListResponseValueList =
   /*@__PURE__*/ S.Array(
     ConnectedPartnerResourcesListFormat,
@@ -465,7 +467,7 @@ export const DeploymentInfoListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentInfoListRequest>;
 
 /** Flag specifying if the Elastic deployment status is healthy or not. */
-export type ElasticDeploymentStatus = "Healthy" | "Unhealthy" | (string & {});
+export type ElasticDeploymentStatus = "Healthy" | "Unhealthy";
 export const ElasticDeploymentStatus = /*@__PURE__*/ S.String;
 
 /** The properties of deployment in Elastic cloud corresponding to the Elastic monitor resource. */
@@ -624,7 +626,8 @@ export const ElasticVersionListFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticVersionListFormat>;
 
 /** The ElasticVersionListFormat items on this page */
-export type ElasticVersionsListResponseValueList = ElasticVersionListFormat[];
+export type ElasticVersionsListResponseValueList =
+  ReadonlyArray<ElasticVersionListFormat>;
 export const ElasticVersionsListResponseValueList = /*@__PURE__*/ S.Array(
   ElasticVersionListFormat,
 ) as any as S.Schema<ElasticVersionsListResponseValueList>;
@@ -645,6 +648,12 @@ export const ElasticVersionsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElasticVersionsListResponse",
 }) as any as S.Schema<ElasticVersionsListResponse>;
 
+/** Roles to be assigned for created or updated user */
+export type ExternalUserCreateOrUpdateRequestRolesList = ReadonlyArray<string>;
+export const ExternalUserCreateOrUpdateRequestRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ExternalUserCreateOrUpdateRequestRolesList>;
+
 export interface ExternalUserCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -652,14 +661,27 @@ export interface ExternalUserCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Monitor resource name */
   monitorName: string;
-  body?: unknown;
+  /** Username of the user to be created or updated */
+  userName?: string;
+  /** Full name of the user to be created or updated */
+  fullName?: string;
+  /** Password of the user to be created or updated */
+  password?: string | Redacted.Redacted<string>;
+  /** Email id of the user to be created or updated */
+  emailId?: string;
+  /** Roles to be assigned for created or updated user */
+  roles?: ExternalUserCreateOrUpdateRequestRolesList;
 }
 export const ExternalUserCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    userName: S.optional(S.String),
+    fullName: S.optional(S.String),
+    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    emailId: S.optional(S.String),
+    roles: S.optional(ExternalUserCreateOrUpdateRequestRolesList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -737,7 +759,7 @@ export const MonitoredResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoredResourcesListRequest>;
 
 /** Flag indicating the status of the resource for sending logs operation to Elastic. */
-export type SendingLogs = "True" | "False" | (string & {});
+export type SendingLogs = "True" | "False";
 export const SendingLogs = /*@__PURE__*/ S.String;
 
 /** The properties of a resource currently being monitored by the Elastic monitor resource. */
@@ -760,7 +782,8 @@ export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoredResource>;
 
 /** The MonitoredResource items on this page */
-export type MonitoredResourceListResponseValueList = MonitoredResource[];
+export type MonitoredResourceListResponseValueList =
+  ReadonlyArray<MonitoredResource>;
 export const MonitoredResourceListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoredResource,
 ) as any as S.Schema<MonitoredResourceListResponseValueList>;
@@ -781,96 +804,17 @@ export const MonitoredResourceListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitoredResourceListResponse",
 }) as any as S.Schema<MonitoredResourceListResponse>;
 
-export interface MonitoredSubscriptionsCreateorUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  monitorName: string;
-  configurationName: string;
-  body?: unknown;
-}
-export const MonitoredSubscriptionsCreateorUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      monitorName: S.String.pipe(T.Label()),
-      configurationName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
-        code: 200,
-        apiVersion: "2025-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "MonitoredSubscriptionsCreateorUpdateRequest",
-  }) as any as S.Schema<MonitoredSubscriptionsCreateorUpdateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** The operation for the patch on the resource. */
 export type Operation =
   | "AddBegin"
   | "AddComplete"
   | "DeleteBegin"
   | "DeleteComplete"
-  | "Active"
-  | (string & {});
+  | "Active";
 export const Operation = /*@__PURE__*/ S.String;
 
 /** The state of monitoring. */
-export type Status =
-  | "InProgress"
-  | "Active"
-  | "Failed"
-  | "Deleting"
-  | (string & {});
+export type Status = "InProgress" | "Active" | "Failed" | "Deleting";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Provisioning state of Elastic resource. */
@@ -883,12 +827,11 @@ export type ProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleted"
-  | "NotSpecified"
-  | (string & {});
+  | "NotSpecified";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
-export type TagAction = "Include" | "Exclude" | (string & {});
+export type TagAction = "Include" | "Exclude";
 export const TagAction = /*@__PURE__*/ S.String;
 
 /** The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored. */
@@ -909,7 +852,7 @@ export const FilteringTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilteringTag" }) as any as S.Schema<FilteringTag>;
 
 /** List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
-export type LogRulesFilteringTagsList = FilteringTag[];
+export type LogRulesFilteringTagsList = ReadonlyArray<FilteringTag>;
 export const LogRulesFilteringTagsList = /*@__PURE__*/ S.Array(
   FilteringTag,
 ) as any as S.Schema<LogRulesFilteringTagsList>;
@@ -974,7 +917,7 @@ export const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscriptions and the state of the monitoring. */
 export type SubscriptionListMonitoredSubscriptionListList =
-  MonitoredSubscription[];
+  ReadonlyArray<MonitoredSubscription>;
 export const SubscriptionListMonitoredSubscriptionListList =
   /*@__PURE__*/ S.Array(
     MonitoredSubscription,
@@ -1000,6 +943,78 @@ export const SubscriptionList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SubscriptionList",
 }) as any as S.Schema<SubscriptionList>;
+
+export interface MonitoredSubscriptionsCreateorUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  monitorName: string;
+  configurationName: string;
+  /** The request to update subscriptions needed to be monitored by the Elastic monitor resource. */
+  properties?: SubscriptionList;
+}
+export const MonitoredSubscriptionsCreateorUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      monitorName: S.String.pipe(T.Label()),
+      configurationName: S.String.pipe(T.Label()),
+      properties: S.optional(SubscriptionList),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/monitoredSubscriptions/{configurationName}",
+        code: 200,
+        apiVersion: "2025-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "MonitoredSubscriptionsCreateorUpdateRequest",
+  }) as any as S.Schema<MonitoredSubscriptionsCreateorUpdateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 export interface MonitoredSubscriptionsCreateorUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1165,7 +1180,7 @@ export const MonitoredSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The MonitoredSubscriptionProperties items on this page */
 export type MonitoredSubscriptionPropertiesListValueList =
-  MonitoredSubscriptionProperties[];
+  ReadonlyArray<MonitoredSubscriptionProperties>;
 export const MonitoredSubscriptionPropertiesListValueList =
   /*@__PURE__*/ S.Array(
     MonitoredSubscriptionProperties,
@@ -1194,7 +1209,8 @@ export interface MonitoredSubscriptionsUpdateRequest {
   resourceGroupName: string;
   monitorName: string;
   configurationName: string;
-  body?: unknown;
+  /** The request to update subscriptions needed to be monitored by the Elastic monitor resource. */
+  properties?: SubscriptionList;
 }
 export const MonitoredSubscriptionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1202,7 +1218,7 @@ export const MonitoredSubscriptionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
     configurationName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(SubscriptionList),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1240,110 +1256,50 @@ export const MonitoredSubscriptionsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "MonitoredSubscriptionsUpdateResponse",
 }) as any as S.Schema<MonitoredSubscriptionsUpdateResponse>;
 
-export interface MonitorsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  monitorName: string;
-  body?: unknown;
-}
-export const MonitorsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    monitorName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
-      code: 200,
-      apiVersion: "2025-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MonitorsCreateRequest",
-}) as any as S.Schema<MonitorsCreateRequest>;
-
 /** Resource tags. */
-export type MonitorsCreateResponseTagsMap = {
+export type MonitorsCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const MonitorsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const MonitorsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<MonitorsCreateResponseTagsMap>;
+) as any as S.Schema<MonitorsCreateRequestTagsMap>;
 
 /** Flag specifying if the resource monitoring is enabled or disabled. */
-export type MonitoringStatus = "Enabled" | "Disabled" | (string & {});
+export type MonitoringStatus = "Enabled" | "Disabled";
 export const MonitoringStatus = /*@__PURE__*/ S.String;
 
 /** Details of the user's elastic account. */
-export interface ElasticCloudUser {
-  /** Email of the Elastic User Account. */
-  emailAddress?: string;
-  /** User Id of the elastic account of the User. */
-  id?: string;
-  /** Elastic cloud default dashboard sso URL of the Elastic user account. */
-  elasticCloudSsoDefaultUrl?: string;
-}
-export const ElasticCloudUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    emailAddress: S.optional(S.String),
-    id: S.optional(S.String),
-    elasticCloudSsoDefaultUrl: S.optional(S.String),
-  }),
+export interface ElasticCloudUserInput {}
+export const ElasticCloudUserInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "ElasticCloudUser",
-}) as any as S.Schema<ElasticCloudUser>;
+  identifier: "ElasticCloudUserInput",
+}) as any as S.Schema<ElasticCloudUserInput>;
 
 /** Details of the user's elastic deployment associated with the monitor resource. */
-export interface ElasticCloudDeployment {
-  /** Elastic deployment name */
-  name?: string;
-  /** Elastic deployment Id */
-  deploymentId?: string;
-  /** Associated Azure subscription Id for the elastic deployment. */
-  azureSubscriptionId?: string;
-  /** Region where Deployment at Elastic side took place. */
-  elasticsearchRegion?: string;
-  /** Elasticsearch ingestion endpoint of the Elastic deployment. */
-  elasticsearchServiceUrl?: string;
-  /** Kibana endpoint of the Elastic deployment. */
-  kibanaServiceUrl?: string;
-  /** Kibana dashboard sso URL of the Elastic deployment. */
-  kibanaSsoUrl?: string;
-}
-export const ElasticCloudDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    deploymentId: S.optional(S.String),
-    azureSubscriptionId: S.optional(S.String),
-    elasticsearchRegion: S.optional(S.String),
-    elasticsearchServiceUrl: S.optional(S.String),
-    kibanaServiceUrl: S.optional(S.String),
-    kibanaSsoUrl: S.optional(S.String),
-  }),
+export interface ElasticCloudDeploymentInput {}
+export const ElasticCloudDeploymentInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "ElasticCloudDeployment",
-}) as any as S.Schema<ElasticCloudDeployment>;
+  identifier: "ElasticCloudDeploymentInput",
+}) as any as S.Schema<ElasticCloudDeploymentInput>;
 
 /** Elastic Resource Properties. */
-export interface ElasticProperties {
+export interface ElasticPropertiesInput {
   /** Details of the user's elastic account. */
-  elasticCloudUser?: ElasticCloudUser;
+  elasticCloudUser?: ElasticCloudUserInput;
   /** Details of the elastic cloud deployment. */
-  elasticCloudDeployment?: ElasticCloudDeployment;
+  elasticCloudDeployment?: ElasticCloudDeploymentInput;
 }
-export const ElasticProperties = /*@__PURE__*/ S.suspend(() =>
+export const ElasticPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    elasticCloudUser: S.optional(ElasticCloudUser),
-    elasticCloudDeployment: S.optional(ElasticCloudDeployment),
+    elasticCloudUser: S.optional(ElasticCloudUserInput),
+    elasticCloudDeployment: S.optional(ElasticCloudDeploymentInput),
   }),
 ).annotate({
-  identifier: "ElasticProperties",
-}) as any as S.Schema<ElasticProperties>;
+  identifier: "ElasticPropertiesInput",
+}) as any as S.Schema<ElasticPropertiesInput>;
 
 /** Company information of the user to be passed to partners. */
 export interface CompanyInfo {
@@ -1414,11 +1370,8 @@ export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PlanDetails" }) as any as S.Schema<PlanDetails>;
 
-export type LiftrResourceCategories = "Unknown" | "MonitorLogs" | (string & {});
-export const LiftrResourceCategories = /*@__PURE__*/ S.String;
-
 /** Hosting type of the monitor resource - either Hosted deployments or Serverless Projects. */
-export type HostingType = "Hosted" | "Serverless" | (string & {});
+export type HostingType = "Hosted" | "Serverless";
 export const HostingType = /*@__PURE__*/ S.String;
 
 /** Project type; ex: Elasticsearch / Observability / Security */
@@ -1426,8 +1379,7 @@ export type ProjectType =
   | "Elasticsearch"
   | "Observability"
   | "Security"
-  | "NotApplicable"
-  | (string & {});
+  | "NotApplicable";
 export const ProjectType = /*@__PURE__*/ S.String;
 
 /** Configuration type of the Elasticsearch project */
@@ -1435,8 +1387,7 @@ export type ConfigurationType =
   | "GeneralPurpose"
   | "Vector"
   | "TimeSeries"
-  | "NotApplicable"
-  | (string & {});
+  | "NotApplicable";
 export const ConfigurationType = /*@__PURE__*/ S.String;
 
 /** Project details of the monitor resource IF it belongs to Serverless offer kind. */
@@ -1452,6 +1403,200 @@ export const ProjectDetails = /*@__PURE__*/ S.suspend(() =>
     configurationType: S.optional(ConfigurationType),
   }),
 ).annotate({ identifier: "ProjectDetails" }) as any as S.Schema<ProjectDetails>;
+
+/** Properties specific to the monitor resource. */
+export interface MonitorPropertiesInput {
+  /** Flag specifying if the resource monitoring is enabled or disabled. */
+  monitoringStatus?: MonitoringStatus;
+  /** Elastic cloud properties. */
+  elasticProperties?: ElasticPropertiesInput;
+  /** User information. */
+  userInfo?: UserInfo;
+  /** Plan details of the monitor resource. */
+  planDetails?: PlanDetails;
+  /** Version of elastic of the monitor resource */
+  version?: string;
+  /** State of the Azure Subscription containing the monitor resource */
+  subscriptionState?: string;
+  /** Status of Azure Subscription where Marketplace SaaS is located. */
+  saaSAzureSubscriptionStatus?: string;
+  /** Name of the marketing campaign. */
+  sourceCampaignName?: string;
+  /** A unique identifier associated with the campaign. */
+  sourceCampaignId?: string;
+  /** Flag to determine if User API Key has to be generated and shared. */
+  generateApiKey?: boolean;
+  /** Hosting type of the monitor resource - either Hosted deployments OR Serverless Projects. */
+  hostingType?: HostingType;
+  /** Project details of the monitor resource IF it belongs to Serverless offer kind. */
+  projectDetails?: ProjectDetails;
+}
+export const MonitorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    monitoringStatus: S.optional(MonitoringStatus),
+    elasticProperties: S.optional(ElasticPropertiesInput),
+    userInfo: S.optional(UserInfo),
+    planDetails: S.optional(PlanDetails),
+    version: S.optional(S.String),
+    subscriptionState: S.optional(S.String),
+    saaSAzureSubscriptionStatus: S.optional(S.String),
+    sourceCampaignName: S.optional(S.String),
+    sourceCampaignId: S.optional(S.String),
+    generateApiKey: S.optional(S.Boolean),
+    hostingType: S.optional(HostingType),
+    projectDetails: S.optional(ProjectDetails),
+  }),
+).annotate({
+  identifier: "MonitorPropertiesInput",
+}) as any as S.Schema<MonitorPropertiesInput>;
+
+/** Represents the SKU of a resource. */
+export interface ResourceSku {
+  /** The name of the SKU. */
+  name: string;
+}
+export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+  }),
+).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
+
+/** Managed Identity types. */
+export type ManagedIdentityTypes = "SystemAssigned";
+export const ManagedIdentityTypes = /*@__PURE__*/ S.String;
+
+/** Identity properties. */
+export interface IdentityPropertiesInput {
+  /** Managed identity type. */
+  type?: ManagedIdentityTypes;
+}
+export const IdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ManagedIdentityTypes),
+  }),
+).annotate({
+  identifier: "IdentityPropertiesInput",
+}) as any as S.Schema<IdentityPropertiesInput>;
+
+export interface MonitorsCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  monitorName: string;
+  /** Resource tags. */
+  tags?: MonitorsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the monitor resource. */
+  properties?: MonitorPropertiesInput;
+  /** The kind of the Elastic resource - observability, security, search etc. */
+  kind?: string;
+  /** SKU of the monitor resource. */
+  sku?: ResourceSku;
+  /** Identity properties of the monitor resource. */
+  identity?: IdentityPropertiesInput;
+}
+export const MonitorsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    monitorName: S.String.pipe(T.Label()),
+    tags: S.optional(MonitorsCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(MonitorPropertiesInput),
+    kind: S.optional(S.String),
+    sku: S.optional(ResourceSku),
+    identity: S.optional(IdentityPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
+      code: 200,
+      apiVersion: "2025-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "MonitorsCreateRequest",
+}) as any as S.Schema<MonitorsCreateRequest>;
+
+/** Resource tags. */
+export type MonitorsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MonitorsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MonitorsCreateResponseTagsMap>;
+
+/** Details of the user's elastic account. */
+export interface ElasticCloudUser {
+  /** Email of the Elastic User Account. */
+  emailAddress?: string;
+  /** User Id of the elastic account of the User. */
+  id?: string;
+  /** Elastic cloud default dashboard sso URL of the Elastic user account. */
+  elasticCloudSsoDefaultUrl?: string;
+}
+export const ElasticCloudUser = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    emailAddress: S.optional(S.String),
+    id: S.optional(S.String),
+    elasticCloudSsoDefaultUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ElasticCloudUser",
+}) as any as S.Schema<ElasticCloudUser>;
+
+/** Details of the user's elastic deployment associated with the monitor resource. */
+export interface ElasticCloudDeployment {
+  /** Elastic deployment name */
+  name?: string;
+  /** Elastic deployment Id */
+  deploymentId?: string;
+  /** Associated Azure subscription Id for the elastic deployment. */
+  azureSubscriptionId?: string;
+  /** Region where Deployment at Elastic side took place. */
+  elasticsearchRegion?: string;
+  /** Elasticsearch ingestion endpoint of the Elastic deployment. */
+  elasticsearchServiceUrl?: string;
+  /** Kibana endpoint of the Elastic deployment. */
+  kibanaServiceUrl?: string;
+  /** Kibana dashboard sso URL of the Elastic deployment. */
+  kibanaSsoUrl?: string;
+}
+export const ElasticCloudDeployment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    deploymentId: S.optional(S.String),
+    azureSubscriptionId: S.optional(S.String),
+    elasticsearchRegion: S.optional(S.String),
+    elasticsearchServiceUrl: S.optional(S.String),
+    kibanaServiceUrl: S.optional(S.String),
+    kibanaSsoUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ElasticCloudDeployment",
+}) as any as S.Schema<ElasticCloudDeployment>;
+
+/** Elastic Resource Properties. */
+export interface ElasticProperties {
+  /** Details of the user's elastic account. */
+  elasticCloudUser?: ElasticCloudUser;
+  /** Details of the elastic cloud deployment. */
+  elasticCloudDeployment?: ElasticCloudDeployment;
+}
+export const ElasticProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    elasticCloudUser: S.optional(ElasticCloudUser),
+    elasticCloudDeployment: S.optional(ElasticCloudDeployment),
+  }),
+).annotate({
+  identifier: "ElasticProperties",
+}) as any as S.Schema<ElasticProperties>;
+
+export type LiftrResourceCategories = "Unknown" | "MonitorLogs";
+export const LiftrResourceCategories = /*@__PURE__*/ S.String;
 
 /** Properties specific to the monitor resource. */
 export interface MonitorProperties {
@@ -1506,21 +1651,6 @@ export const MonitorProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MonitorProperties",
 }) as any as S.Schema<MonitorProperties>;
-
-/** Represents the SKU of a resource. */
-export interface ResourceSku {
-  /** The name of the SKU. */
-  name: string;
-}
-export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
-
-/** Managed Identity types. */
-export type ManagedIdentityTypes = "SystemAssigned" | (string & {});
-export const ManagedIdentityTypes = /*@__PURE__*/ S.String;
 
 /** Identity properties. */
 export interface IdentityProperties {
@@ -1753,7 +1883,7 @@ export const ElasticMonitorResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The ElasticMonitorResource items on this page */
 export type ElasticMonitorResourceListResponseValueList =
-  ElasticMonitorResource[];
+  ReadonlyArray<ElasticMonitorResource>;
 export const ElasticMonitorResourceListResponseValueList =
   /*@__PURE__*/ S.Array(
     ElasticMonitorResource,
@@ -1797,20 +1927,30 @@ export const MonitorsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitorsListByResourceGroupRequest",
 }) as any as S.Schema<MonitorsListByResourceGroupRequest>;
 
+/** elastic monitor resource tags. */
+export type MonitorsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MonitorsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MonitorsUpdateRequestTagsMap>;
+
 export interface MonitorsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
   monitorName: string;
-  body?: unknown;
+  /** elastic monitor resource tags. */
+  tags?: MonitorsUpdateRequestTagsMap;
 }
 export const MonitorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(MonitorsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1878,14 +2018,15 @@ export interface MonitorUpgradeRequest {
   resourceGroupName: string;
   /** Monitor resource name */
   monitorName: string;
-  body?: unknown;
+  /** Version to which the elastic monitor should be upgraded to */
+  version?: string;
 }
 export const MonitorUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    version: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1905,6 +2046,28 @@ export const MonitorUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitorUpgradeResponse",
 }) as any as S.Schema<MonitorUpgradeResponse>;
 
+/** Open AI Integration details. */
+export interface OpenAIIntegrationPropertiesInput {
+  /** The resource name of Open AI resource */
+  openAIResourceId?: string;
+  /** The API endpoint for Open AI resource */
+  openAIResourceEndpoint?: string;
+  /** The connector id of Open AI resource */
+  openAIConnectorId?: string;
+  /** Value of API key for Open AI resource */
+  key?: string;
+}
+export const OpenAIIntegrationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    openAIResourceId: S.optional(S.String),
+    openAIResourceEndpoint: S.optional(S.String),
+    openAIConnectorId: S.optional(S.String),
+    key: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OpenAIIntegrationPropertiesInput",
+}) as any as S.Schema<OpenAIIntegrationPropertiesInput>;
+
 export interface OpenAICreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1912,7 +2075,8 @@ export interface OpenAICreateOrUpdateRequest {
   resourceGroupName: string;
   monitorName: string;
   integrationName: string;
-  body?: unknown;
+  /** Open AI Integration details. */
+  properties?: OpenAIIntegrationPropertiesInput;
 }
 export const OpenAICreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1920,7 +2084,7 @@ export const OpenAICreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
     integrationName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(OpenAIIntegrationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2176,7 +2340,7 @@ export const OpenAIIntegrationRPModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The OpenAIIntegrationRPModel items on this page */
 export type OpenAIIntegrationRPModelListResponseValueList =
-  OpenAIIntegrationRPModel[];
+  ReadonlyArray<OpenAIIntegrationRPModel>;
 export const OpenAIIntegrationRPModelListResponseValueList =
   /*@__PURE__*/ S.Array(
     OpenAIIntegrationRPModel,
@@ -2258,7 +2422,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResult>;
 
 /** The list of operations. */
-export type OperationListResultValueList = OperationResult[];
+export type OperationListResultValueList = ReadonlyArray<OperationResult>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -2282,12 +2446,13 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 export interface OrganizationsGetApiKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body?: unknown;
+  /** The User email Id */
+  emailId?: string;
 }
 export const OrganizationsGetApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    emailId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2391,14 +2556,24 @@ export interface OrganizationsResubscribeRequest {
   resourceGroupName: string;
   /** Monitor resource name */
   monitorName: string;
-  body?: unknown;
+  /** Newly selected plan Id to create the new Marketplace subscription for Resubscribe */
+  planId?: string;
+  /** Newly selected term to create the new Marketplace subscription for Resubscribe */
+  term?: string;
+  /** Newly selected Azure resource group in which the new Marketplace subscription will be created for Resubscribe */
+  resourceGroup?: string;
+  /** Organization Id of the Elastic Organization that needs to be resubscribed */
+  organizationId?: string;
 }
 export const OrganizationsResubscribeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    planId: S.optional(S.String),
+    term: S.optional(S.String),
+    resourceGroup: S.optional(S.String),
+    organizationId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2466,7 +2641,8 @@ export interface TagRulesCreateOrUpdateRequest {
   resourceGroupName: string;
   monitorName: string;
   ruleSetName: string;
-  body?: unknown;
+  /** Properties of the monitoring tag rules. */
+  properties?: MonitoringTagRulesProperties;
 }
 export const TagRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2474,7 +2650,7 @@ export const TagRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
     ruleSetName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(MonitoringTagRulesProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2649,7 +2825,8 @@ export const MonitoringTagRules = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoringTagRules>;
 
 /** The MonitoringTagRules items on this page */
-export type MonitoringTagRulesListResponseValueList = MonitoringTagRules[];
+export type MonitoringTagRulesListResponseValueList =
+  ReadonlyArray<MonitoringTagRules>;
 export const MonitoringTagRulesListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoringTagRules,
 ) as any as S.Schema<MonitoringTagRulesListResponseValueList>;
@@ -2731,7 +2908,8 @@ export const UpgradableVersionsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpgradableVersionsDetailsRequest>;
 
 /** Stack Versions that this version can upgrade to */
-export type UpgradableVersionsListUpgradableVersionsList = string[];
+export type UpgradableVersionsListUpgradableVersionsList =
+  ReadonlyArray<string>;
 export const UpgradableVersionsListUpgradableVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2755,6 +2933,10 @@ export const UpgradableVersionsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpgradableVersionsList",
 }) as any as S.Schema<UpgradableVersionsList>;
 
+/** Operation to be performed on the given vm resource id. */
+export type OperationName = "Add" | "Delete";
+export const OperationName = /*@__PURE__*/ S.String;
+
 export interface VMCollectionUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2762,14 +2944,18 @@ export interface VMCollectionUpdateRequest {
   resourceGroupName: string;
   /** Monitor resource name */
   monitorName: string;
-  body?: unknown;
+  /** ARM id of the VM resource. */
+  vmResourceId?: string;
+  /** Operation to be performed for given VM. */
+  operationName?: OperationName;
 }
 export const VMCollectionUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     monitorName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    vmResourceId: S.optional(S.String),
+    operationName: S.optional(OperationName),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2826,7 +3012,7 @@ export const VMResources = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VMResources" }) as any as S.Schema<VMResources>;
 
 /** The VMResources items on this page */
-export type VMHostListResponseValueList = VMResources[];
+export type VMHostListResponseValueList = ReadonlyArray<VMResources>;
 export const VMHostListResponseValueList = /*@__PURE__*/ S.Array(
   VMResources,
 ) as any as S.Schema<VMHostListResponseValueList>;

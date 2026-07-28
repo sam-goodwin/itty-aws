@@ -13,96 +13,15 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface AppAttachPackageCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the App Attach package */
-  appAttachPackageName: string;
-  body: unknown;
-}
-export const AppAttachPackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      appAttachPackageName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
-        code: 200,
-        apiVersion: "2025-10-10",
-      }),
-    ),
-).annotate({
-  identifier: "AppAttachPackageCreateOrUpdateRequest",
-}) as any as S.Schema<AppAttachPackageCreateOrUpdateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
-export type AppAttachPackageCreateOrUpdateResponseTagsMap = {
+export type AppAttachPackageCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const AppAttachPackageCreateOrUpdateResponseTagsMap =
+export const AppAttachPackageCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<AppAttachPackageCreateOrUpdateResponseTagsMap>;
-
-/** The current provisioning state. */
-export type ProvisioningState =
-  | "Succeeded"
-  | "Provisioning"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
-export const ProvisioningState = /*@__PURE__*/ S.String;
+  ) as any as S.Schema<AppAttachPackageCreateOrUpdateRequestTagsMap>;
 
 /** Schema for MSIX Package Dependencies properties. */
 export interface MsixPackageDependencies {
@@ -125,7 +44,7 @@ export const MsixPackageDependencies = /*@__PURE__*/ S.suspend(() =>
 
 /** List of package dependencies. */
 export type AppAttachPackageInfoPropertiesPackageDependenciesList =
-  MsixPackageDependencies[];
+  ReadonlyArray<MsixPackageDependencies>;
 export const AppAttachPackageInfoPropertiesPackageDependenciesList =
   /*@__PURE__*/ S.Array(
     MsixPackageDependencies,
@@ -164,7 +83,7 @@ export const MsixPackageApplications = /*@__PURE__*/ S.suspend(() =>
 
 /** List of package applications. */
 export type AppAttachPackageInfoPropertiesPackageApplicationsList =
-  MsixPackageApplications[];
+  ReadonlyArray<MsixPackageApplications>;
 export const AppAttachPackageInfoPropertiesPackageApplicationsList =
   /*@__PURE__*/ S.Array(
     MsixPackageApplications,
@@ -173,8 +92,7 @@ export const AppAttachPackageInfoPropertiesPackageApplicationsList =
 /** Is package timestamped so it can ignore the certificate expiry date */
 export type AppAttachPackageInfoPropertiesIsPackageTimestamped =
   | "Timestamped"
-  | "NotTimestamped"
-  | (string & {});
+  | "NotTimestamped";
 export const AppAttachPackageInfoPropertiesIsPackageTimestamped =
   /*@__PURE__*/ S.String;
 
@@ -243,19 +161,148 @@ export const AppAttachPackageInfoProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppAttachPackageInfoProperties>;
 
 /** List of Hostpool resource Ids. */
-export type AppAttachPackagePropertiesHostPoolReferencesList = string[];
-export const AppAttachPackagePropertiesHostPoolReferencesList =
+export type AppAttachPackagePropertiesInputHostPoolReferencesList =
+  ReadonlyArray<string>;
+export const AppAttachPackagePropertiesInputHostPoolReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<AppAttachPackagePropertiesHostPoolReferencesList>;
+  ) as any as S.Schema<AppAttachPackagePropertiesInputHostPoolReferencesList>;
 
 /** Parameter indicating how the health check should behave if this package fails staging */
 export type FailHealthCheckOnStagingFailureEnum =
   | "Unhealthy"
   | "NeedsAssistance"
-  | "DoNotFail"
-  | (string & {});
+  | "DoNotFail";
 export const FailHealthCheckOnStagingFailureEnum = /*@__PURE__*/ S.String;
+
+/** Schema for App Attach Package properties. */
+export interface AppAttachPackagePropertiesInput {
+  /** Detailed properties for App Attach Package */
+  image?: AppAttachPackageInfoProperties;
+  /** List of Hostpool resource Ids. */
+  hostPoolReferences?: AppAttachPackagePropertiesInputHostPoolReferencesList;
+  /** URL path to certificate name located in keyVault */
+  keyVaultURL?: string;
+  /** Parameter indicating how the health check should behave if this package fails staging */
+  failHealthCheckOnStagingFailure?: FailHealthCheckOnStagingFailureEnum;
+}
+export const AppAttachPackagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    image: S.optional(AppAttachPackageInfoProperties),
+    hostPoolReferences: S.optional(
+      AppAttachPackagePropertiesInputHostPoolReferencesList,
+    ),
+    keyVaultURL: S.optional(S.String),
+    failHealthCheckOnStagingFailure: S.optional(
+      FailHealthCheckOnStagingFailureEnum,
+    ),
+  }),
+).annotate({
+  identifier: "AppAttachPackagePropertiesInput",
+}) as any as S.Schema<AppAttachPackagePropertiesInput>;
+
+export interface AppAttachPackageCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the App Attach package */
+  appAttachPackageName: string;
+  /** Resource tags. */
+  tags?: AppAttachPackageCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Detailed properties for App Attach Package */
+  properties: AppAttachPackagePropertiesInput;
+}
+export const AppAttachPackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      appAttachPackageName: S.String.pipe(T.Label()),
+      tags: S.optional(AppAttachPackageCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: AppAttachPackagePropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/appAttachPackages/{appAttachPackageName}",
+        code: 200,
+        apiVersion: "2025-10-10",
+      }),
+    ),
+).annotate({
+  identifier: "AppAttachPackageCreateOrUpdateRequest",
+}) as any as S.Schema<AppAttachPackageCreateOrUpdateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** Resource tags. */
+export type AppAttachPackageCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AppAttachPackageCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AppAttachPackageCreateOrUpdateResponseTagsMap>;
+
+/** The current provisioning state. */
+export type ProvisioningState =
+  | "Succeeded"
+  | "Provisioning"
+  | "Failed"
+  | "Canceled";
+export const ProvisioningState = /*@__PURE__*/ S.String;
+
+/** List of Hostpool resource Ids. */
+export type AppAttachPackagePropertiesHostPoolReferencesList =
+  ReadonlyArray<string>;
+export const AppAttachPackagePropertiesHostPoolReferencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AppAttachPackagePropertiesHostPoolReferencesList>;
 
 /** Schema for App Attach Package properties. */
 export interface AppAttachPackageProperties {
@@ -413,6 +460,18 @@ export const AppAttachPackageGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppAttachPackageGetResponse",
 }) as any as S.Schema<AppAttachPackageGetResponse>;
 
+/** Possible device architectures that an app attach package can be configured for */
+export type AppAttachPackageInfoImportRequestPackageArchitecture =
+  | "ARM"
+  | "ARM64"
+  | "x86"
+  | "x64"
+  | "Neutral"
+  | "x86a64"
+  | "ALL";
+export const AppAttachPackageInfoImportRequestPackageArchitecture =
+  /*@__PURE__*/ S.String;
+
 export interface AppAttachPackageInfoImportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -420,14 +479,20 @@ export interface AppAttachPackageInfoImportRequest {
   resourceGroupName: string;
   /** The name of the host pool within the specified resource group */
   hostPoolName: string;
-  body: unknown;
+  /** URI to Image */
+  path?: string;
+  /** Possible device architectures that an app attach package can be configured for */
+  packageArchitecture?: AppAttachPackageInfoImportRequestPackageArchitecture | null;
 }
 export const AppAttachPackageInfoImportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hostPoolName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    path: S.optional(S.String),
+    packageArchitecture: S.optional(
+      S.NullOr(AppAttachPackageInfoImportRequestPackageArchitecture),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -479,7 +544,7 @@ export const AppAttachPackage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppAttachPackage>;
 
 /** List of App Attach Package definitions. */
-export type AppAttachPackageListValueList = AppAttachPackage[];
+export type AppAttachPackageListValueList = ReadonlyArray<AppAttachPackage>;
 export const AppAttachPackageListValueList = /*@__PURE__*/ S.Array(
   AppAttachPackage,
 ) as any as S.Schema<AppAttachPackageListValueList>;
@@ -549,6 +614,40 @@ export const AppAttachPackageListBySubscriptionRequest =
     identifier: "AppAttachPackageListBySubscriptionRequest",
   }) as any as S.Schema<AppAttachPackageListBySubscriptionRequest>;
 
+/** List of Hostpool resource Ids. */
+export type AppAttachPackagePatchPropertiesHostPoolReferencesList =
+  ReadonlyArray<string>;
+export const AppAttachPackagePatchPropertiesHostPoolReferencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AppAttachPackagePatchPropertiesHostPoolReferencesList>;
+
+/** Schema for patchable fields on an App Attach Package. */
+export interface AppAttachPackagePatchProperties {
+  /** Detailed properties for App Attach Package */
+  image?: AppAttachPackageInfoProperties;
+  /** List of Hostpool resource Ids. */
+  hostPoolReferences?: AppAttachPackagePatchPropertiesHostPoolReferencesList;
+  /** URL path to certificate name located in keyVault */
+  keyVaultURL?: string;
+  /** Parameter indicating how the health check should behave if this package fails staging */
+  failHealthCheckOnStagingFailure?: FailHealthCheckOnStagingFailureEnum;
+}
+export const AppAttachPackagePatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    image: S.optional(AppAttachPackageInfoProperties),
+    hostPoolReferences: S.optional(
+      AppAttachPackagePatchPropertiesHostPoolReferencesList,
+    ),
+    keyVaultURL: S.optional(S.String),
+    failHealthCheckOnStagingFailure: S.optional(
+      FailHealthCheckOnStagingFailureEnum,
+    ),
+  }),
+).annotate({
+  identifier: "AppAttachPackagePatchProperties",
+}) as any as S.Schema<AppAttachPackagePatchProperties>;
+
 export interface AppAttachPackageUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -556,14 +655,15 @@ export interface AppAttachPackageUpdateRequest {
   resourceGroupName: string;
   /** The name of the App Attach package */
   appAttachPackageName: string;
-  body?: unknown;
+  /** Detailed properties for App Attach Package */
+  properties?: AppAttachPackagePatchProperties;
 }
 export const AppAttachPackageUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     appAttachPackageName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(AppAttachPackagePatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -615,6 +715,120 @@ export const AppAttachPackageUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppAttachPackageUpdateResponse",
 }) as any as S.Schema<AppAttachPackageUpdateResponse>;
 
+/** Resource tags. */
+export type ApplicationGroupsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationGroupsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ApplicationGroupsCreateOrUpdateRequestTagsMap>;
+
+/** Type of managed service identity (either system assigned, or none). */
+export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
+export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** Managed service identity (either system assigned, or none) */
+export interface ApplicationGroupsCreateOrUpdateRequestIdentity {
+  type: SystemAssignedServiceIdentityType;
+}
+export const ApplicationGroupsCreateOrUpdateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: SystemAssignedServiceIdentityType,
+    }),
+  ).annotate({
+    identifier: "ApplicationGroupsCreateOrUpdateRequestIdentity",
+  }) as any as S.Schema<ApplicationGroupsCreateOrUpdateRequestIdentity>;
+
+/** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
+export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
+export const SkuTier = /*@__PURE__*/ S.String;
+
+/** The resource model definition representing SKU */
+export interface ApplicationGroupsCreateOrUpdateRequestSku {
+  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
+  name: string;
+  tier?: SkuTier;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+}
+export const ApplicationGroupsCreateOrUpdateRequestSku =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      tier: S.optional(SkuTier),
+      size: S.optional(S.String),
+      family: S.optional(S.String),
+      capacity: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "ApplicationGroupsCreateOrUpdateRequestSku",
+  }) as any as S.Schema<ApplicationGroupsCreateOrUpdateRequestSku>;
+
+/** Plan for the resource. */
+export interface ApplicationGroupsCreateOrUpdateRequestPlan {
+  /** A user defined name of the 3rd Party Artifact that is being procured. */
+  name: string;
+  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
+  publisher: string;
+  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
+  product: string;
+  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
+  promotionCode?: string;
+  /** The version of the desired product/artifact. */
+  version?: string;
+}
+export const ApplicationGroupsCreateOrUpdateRequestPlan =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      publisher: S.String,
+      product: S.String,
+      promotionCode: S.optional(S.String),
+      version: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ApplicationGroupsCreateOrUpdateRequestPlan",
+  }) as any as S.Schema<ApplicationGroupsCreateOrUpdateRequestPlan>;
+
+/** Resource Type of ApplicationGroup. */
+export type ApplicationGroupPropertiesInputApplicationGroupType =
+  | "RemoteApp"
+  | "Desktop";
+export const ApplicationGroupPropertiesInputApplicationGroupType =
+  /*@__PURE__*/ S.String;
+
+/** Schema for ApplicationGroup properties. */
+export interface ApplicationGroupPropertiesInput {
+  /** Description of ApplicationGroup. */
+  description?: string;
+  /** Friendly name of ApplicationGroup. */
+  friendlyName?: string;
+  /** HostPool arm path of ApplicationGroup. */
+  hostPoolArmPath: string;
+  /** Resource Type of ApplicationGroup. */
+  applicationGroupType: ApplicationGroupPropertiesInputApplicationGroupType;
+  /** Boolean representing whether the applicationGroup is show in the feed. */
+  showInFeed?: boolean;
+}
+export const ApplicationGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+    hostPoolArmPath: S.String,
+    applicationGroupType: ApplicationGroupPropertiesInputApplicationGroupType,
+    showInFeed: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ApplicationGroupPropertiesInput",
+}) as any as S.Schema<ApplicationGroupPropertiesInput>;
+
 export interface ApplicationGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -622,7 +836,22 @@ export interface ApplicationGroupsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the application group */
   applicationGroupName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ApplicationGroupsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: ApplicationGroupsCreateOrUpdateRequestIdentity;
+  /** The resource model definition representing SKU */
+  sku?: ApplicationGroupsCreateOrUpdateRequestSku;
+  /** Plan for the resource. */
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
+  /** Detailed properties for ApplicationGroup */
+  properties: ApplicationGroupPropertiesInput;
 }
 export const ApplicationGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -630,7 +859,14 @@ export const ApplicationGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       applicationGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ApplicationGroupsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      managedBy: S.optional(S.String),
+      kind: S.optional(S.String),
+      identity: S.optional(ApplicationGroupsCreateOrUpdateRequestIdentity),
+      sku: S.optional(ApplicationGroupsCreateOrUpdateRequestSku),
+      plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
+      properties: ApplicationGroupPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -653,13 +889,6 @@ export const ApplicationGroupsCreateOrUpdateResponseTagsMap =
     S.String,
   ) as any as S.Schema<ApplicationGroupsCreateOrUpdateResponseTagsMap>;
 
-/** Type of managed service identity (either system assigned, or none). */
-export type SystemAssignedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | (string & {});
-export const SystemAssignedServiceIdentityType = /*@__PURE__*/ S.String;
-
 /** Managed service identity (either system assigned, or none) */
 export interface ApplicationGroupsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -678,10 +907,6 @@ export const ApplicationGroupsCreateOrUpdateResponseIdentity =
   ).annotate({
     identifier: "ApplicationGroupsCreateOrUpdateResponseIdentity",
   }) as any as S.Schema<ApplicationGroupsCreateOrUpdateResponseIdentity>;
-
-/** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
-export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | (string & {});
-export const SkuTier = /*@__PURE__*/ S.String;
 
 /** The resource model definition representing SKU */
 export interface ApplicationGroupsCreateOrUpdateResponseSku {
@@ -737,8 +962,7 @@ export const ApplicationGroupsCreateOrUpdateResponsePlan =
 /** Resource Type of ApplicationGroup. */
 export type ApplicationGroupPropertiesApplicationGroupType =
   | "RemoteApp"
-  | "Desktop"
-  | (string & {});
+  | "Desktop";
 export const ApplicationGroupPropertiesApplicationGroupType =
   /*@__PURE__*/ S.String;
 
@@ -1166,7 +1390,7 @@ export const ApplicationGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationGroup>;
 
 /** List of ApplicationGroup definitions. */
-export type ApplicationGroupListValueList = ApplicationGroup[];
+export type ApplicationGroupListValueList = ReadonlyArray<ApplicationGroup>;
 export const ApplicationGroupListValueList = /*@__PURE__*/ S.Array(
   ApplicationGroup,
 ) as any as S.Schema<ApplicationGroupListValueList>;
@@ -1210,6 +1434,34 @@ export const ApplicationGroupsListBySubscriptionRequest =
     identifier: "ApplicationGroupsListBySubscriptionRequest",
   }) as any as S.Schema<ApplicationGroupsListBySubscriptionRequest>;
 
+/** tags to be updated */
+export type ApplicationGroupsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ApplicationGroupsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ApplicationGroupsUpdateRequestTagsMap>;
+
+/** ApplicationGroup properties that can be patched. */
+export interface ApplicationGroupPatchProperties {
+  /** Description of ApplicationGroup. */
+  description?: string;
+  /** Friendly name of ApplicationGroup. */
+  friendlyName?: string;
+  /** Boolean representing whether the applicationGroup is show in the feed. */
+  showInFeed?: boolean;
+}
+export const ApplicationGroupPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+    showInFeed: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ApplicationGroupPatchProperties",
+}) as any as S.Schema<ApplicationGroupPatchProperties>;
+
 export interface ApplicationGroupsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1217,14 +1469,18 @@ export interface ApplicationGroupsUpdateRequest {
   resourceGroupName: string;
   /** The name of the application group */
   applicationGroupName: string;
-  body?: unknown;
+  /** tags to be updated */
+  tags?: ApplicationGroupsUpdateRequestTagsMap | null;
+  /** ApplicationGroup properties that can be patched. */
+  properties?: ApplicationGroupPatchProperties;
 }
 export const ApplicationGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     applicationGroupName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(S.NullOr(ApplicationGroupsUpdateRequestTagsMap)),
+    properties: S.optional(ApplicationGroupPatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1362,6 +1618,63 @@ export const ApplicationGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationGroupsUpdateResponse",
 }) as any as S.Schema<ApplicationGroupsUpdateResponse>;
 
+/** Resource Type of Application. */
+export type ApplicationPropertiesInputApplicationType =
+  | "InBuilt"
+  | "MsixApplication";
+export const ApplicationPropertiesInputApplicationType = /*@__PURE__*/ S.String;
+
+/** Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all. */
+export type ApplicationPropertiesInputCommandLineSetting =
+  | "DoNotAllow"
+  | "Allow"
+  | "Require";
+export const ApplicationPropertiesInputCommandLineSetting =
+  /*@__PURE__*/ S.String;
+
+/** Schema for Application properties. */
+export interface ApplicationPropertiesInput {
+  /** Description of Application. */
+  description?: string;
+  /** Friendly name of Application. */
+  friendlyName?: string;
+  /** Specifies a path for the executable file for the application. */
+  filePath?: string;
+  /** Specifies the package family name for MSIX applications */
+  msixPackageFamilyName?: string | null;
+  /** Specifies the package application Id for MSIX applications */
+  msixPackageApplicationId?: string | null;
+  /** Resource Type of Application. */
+  applicationType?: ApplicationPropertiesInputApplicationType;
+  /** Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all. */
+  commandLineSetting: ApplicationPropertiesInputCommandLineSetting;
+  /** Command Line Arguments for Application. */
+  commandLineArguments?: string;
+  /** Specifies whether to show the RemoteApp program in the RD Web Access server. */
+  showInPortal?: boolean;
+  /** Path to icon. */
+  iconPath?: string;
+  /** Index of the icon. */
+  iconIndex?: number;
+}
+export const ApplicationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+    filePath: S.optional(S.String),
+    msixPackageFamilyName: S.optional(S.NullOr(S.String)),
+    msixPackageApplicationId: S.optional(S.NullOr(S.String)),
+    applicationType: S.optional(ApplicationPropertiesInputApplicationType),
+    commandLineSetting: ApplicationPropertiesInputCommandLineSetting,
+    commandLineArguments: S.optional(S.String),
+    showInPortal: S.optional(S.Boolean),
+    iconPath: S.optional(S.String),
+    iconIndex: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ApplicationPropertiesInput",
+}) as any as S.Schema<ApplicationPropertiesInput>;
+
 export interface ApplicationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1371,7 +1684,8 @@ export interface ApplicationsCreateOrUpdateRequest {
   applicationGroupName: string;
   /** The name of the application within the specified application group */
   applicationName: string;
-  body: unknown;
+  /** Detailed properties for Application */
+  properties: ApplicationPropertiesInput;
 }
 export const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1379,7 +1693,7 @@ export const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     applicationGroupName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: ApplicationPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1395,16 +1709,14 @@ export const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 /** Resource Type of Application. */
 export type ApplicationPropertiesApplicationType =
   | "InBuilt"
-  | "MsixApplication"
-  | (string & {});
+  | "MsixApplication";
 export const ApplicationPropertiesApplicationType = /*@__PURE__*/ S.String;
 
 /** Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all. */
 export type ApplicationPropertiesCommandLineSetting =
   | "DoNotAllow"
   | "Allow"
-  | "Require"
-  | (string & {});
+  | "Require";
 export const ApplicationPropertiesCommandLineSetting = /*@__PURE__*/ S.String;
 
 /** Schema for Application properties. */
@@ -1628,7 +1940,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
 
 /** List of Application definitions. */
-export type ApplicationListValueList = Application[];
+export type ApplicationListValueList = ReadonlyArray<Application>;
 export const ApplicationListValueList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationListValueList>;
@@ -1649,6 +1961,65 @@ export const ApplicationList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplicationList",
 }) as any as S.Schema<ApplicationList>;
 
+/** Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all. */
+export type ApplicationPatchPropertiesCommandLineSetting =
+  | "DoNotAllow"
+  | "Allow"
+  | "Require";
+export const ApplicationPatchPropertiesCommandLineSetting =
+  /*@__PURE__*/ S.String;
+
+/** Resource Type of Application. */
+export type ApplicationPatchPropertiesApplicationType =
+  | "InBuilt"
+  | "MsixApplication";
+export const ApplicationPatchPropertiesApplicationType = /*@__PURE__*/ S.String;
+
+/** Application properties that can be patched. */
+export interface ApplicationPatchProperties {
+  /** Description of Application. */
+  description?: string;
+  /** Friendly name of Application. */
+  friendlyName?: string;
+  /** Specifies a path for the executable file for the application. */
+  filePath?: string;
+  /** Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all. */
+  commandLineSetting?: ApplicationPatchPropertiesCommandLineSetting;
+  /** Command Line Arguments for Application. */
+  commandLineArguments?: string;
+  /** Specifies whether to show the RemoteApp program in the RD Web Access server. */
+  showInPortal?: boolean;
+  /** Path to icon. */
+  iconPath?: string;
+  /** Index of the icon. */
+  iconIndex?: number;
+  /** Specifies the package family name for MSIX applications */
+  msixPackageFamilyName?: string | null;
+  /** Specifies the package application Id for MSIX applications */
+  msixPackageApplicationId?: string | null;
+  /** Resource Type of Application. */
+  applicationType?: ApplicationPatchPropertiesApplicationType;
+}
+export const ApplicationPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+    filePath: S.optional(S.String),
+    commandLineSetting: S.optional(
+      ApplicationPatchPropertiesCommandLineSetting,
+    ),
+    commandLineArguments: S.optional(S.String),
+    showInPortal: S.optional(S.Boolean),
+    iconPath: S.optional(S.String),
+    iconIndex: S.optional(S.Number),
+    msixPackageFamilyName: S.optional(S.NullOr(S.String)),
+    msixPackageApplicationId: S.optional(S.NullOr(S.String)),
+    applicationType: S.optional(ApplicationPatchPropertiesApplicationType),
+  }),
+).annotate({
+  identifier: "ApplicationPatchProperties",
+}) as any as S.Schema<ApplicationPatchProperties>;
+
 export interface ApplicationsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1658,7 +2029,8 @@ export interface ApplicationsUpdateRequest {
   applicationGroupName: string;
   /** The name of the application within the specified application group */
   applicationName: string;
-  body?: unknown;
+  /** Detailed properties for Application */
+  properties?: ApplicationPatchProperties;
 }
 export const ApplicationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1666,7 +2038,7 @@ export const ApplicationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     applicationGroupName: S.String.pipe(T.Label()),
     applicationName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(ApplicationPatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1838,7 +2210,7 @@ export const Desktop = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Desktop" }) as any as S.Schema<Desktop>;
 
 /** List of Desktop definitions. */
-export type DesktopListValueList = Desktop[];
+export type DesktopListValueList = ReadonlyArray<Desktop>;
 export const DesktopListValueList = /*@__PURE__*/ S.Array(
   Desktop,
 ) as any as S.Schema<DesktopListValueList>;
@@ -1857,6 +2229,22 @@ export const DesktopList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DesktopList" }) as any as S.Schema<DesktopList>;
 
+/** Desktop properties that can be patched. */
+export interface DesktopPatchProperties {
+  /** Description of Desktop. */
+  description?: string;
+  /** Friendly name of Desktop. */
+  friendlyName?: string;
+}
+export const DesktopPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DesktopPatchProperties",
+}) as any as S.Schema<DesktopPatchProperties>;
+
 export interface DesktopsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1866,7 +2254,8 @@ export interface DesktopsUpdateRequest {
   applicationGroupName: string;
   /** The name of the desktop within the specified desktop group */
   desktopName: string;
-  body?: unknown;
+  /** Detailed properties for Desktop */
+  properties?: DesktopPatchProperties;
 }
 export const DesktopsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1874,7 +2263,7 @@ export const DesktopsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     applicationGroupName: S.String.pipe(T.Label()),
     desktopName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(DesktopPatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1911,6 +2300,289 @@ export const DesktopsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DesktopsUpdateResponse",
 }) as any as S.Schema<DesktopsUpdateResponse>;
 
+/** Resource tags. */
+export type HostPoolsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const HostPoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HostPoolsCreateOrUpdateRequestTagsMap>;
+
+/** Managed service identity (either system assigned, or none) */
+export interface HostPoolsCreateOrUpdateRequestIdentity {
+  type: SystemAssignedServiceIdentityType;
+}
+export const HostPoolsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: SystemAssignedServiceIdentityType,
+    }),
+).annotate({
+  identifier: "HostPoolsCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<HostPoolsCreateOrUpdateRequestIdentity>;
+
+/** The resource model definition representing SKU */
+export interface HostPoolsCreateOrUpdateRequestSku {
+  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
+  name: string;
+  tier?: SkuTier;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+}
+export const HostPoolsCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: S.optional(SkuTier),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "HostPoolsCreateOrUpdateRequestSku",
+}) as any as S.Schema<HostPoolsCreateOrUpdateRequestSku>;
+
+/** Plan for the resource. */
+export interface HostPoolsCreateOrUpdateRequestPlan {
+  /** A user defined name of the 3rd Party Artifact that is being procured. */
+  name: string;
+  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
+  publisher: string;
+  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
+  product: string;
+  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
+  promotionCode?: string;
+  /** The version of the desired product/artifact. */
+  version?: string;
+}
+export const HostPoolsCreateOrUpdateRequestPlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    publisher: S.String,
+    product: S.String,
+    promotionCode: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HostPoolsCreateOrUpdateRequestPlan",
+}) as any as S.Schema<HostPoolsCreateOrUpdateRequestPlan>;
+
+/** HostPool type for desktop. */
+export type HostPoolPropertiesInputHostPoolType =
+  | "Personal"
+  | "Pooled"
+  | "BYODesktop";
+export const HostPoolPropertiesInputHostPoolType = /*@__PURE__*/ S.String;
+
+/** PersonalDesktopAssignment type for HostPool. */
+export type HostPoolPropertiesInputPersonalDesktopAssignmentType =
+  | "Automatic"
+  | "Direct";
+export const HostPoolPropertiesInputPersonalDesktopAssignmentType =
+  /*@__PURE__*/ S.String;
+
+/** The type of the load balancer. */
+export type HostPoolPropertiesInputLoadBalancerType =
+  | "BreadthFirst"
+  | "DepthFirst"
+  | "Persistent"
+  | "MultiplePersistent";
+export const HostPoolPropertiesInputLoadBalancerType = /*@__PURE__*/ S.String;
+
+/** The type of resetting the token. */
+export type RegistrationInfoRegistrationTokenOperation =
+  | "Delete"
+  | "None"
+  | "Update";
+export const RegistrationInfoRegistrationTokenOperation =
+  /*@__PURE__*/ S.String;
+
+/** Represents a RegistrationInfo definition. */
+export interface RegistrationInfo {
+  /** Expiration time of registration token. */
+  expirationTime?: string | null;
+  /** The registration token base64 encoded string. */
+  token?: string;
+  /** The type of resetting the token. */
+  registrationTokenOperation?: RegistrationInfoRegistrationTokenOperation;
+}
+export const RegistrationInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expirationTime: S.optional(S.NullOr(S.String)),
+    token: S.optional(S.String),
+    registrationTokenOperation: S.optional(
+      RegistrationInfoRegistrationTokenOperation,
+    ),
+  }),
+).annotate({
+  identifier: "RegistrationInfo",
+}) as any as S.Schema<RegistrationInfo>;
+
+/** The type of single sign on Secret Type. */
+export type HostPoolPropertiesInputSsoSecretType =
+  | "SharedKey"
+  | "Certificate"
+  | "SharedKeyInKeyVault"
+  | "CertificateInKeyVault";
+export const HostPoolPropertiesInputSsoSecretType = /*@__PURE__*/ S.String;
+
+/** The type of preferred application group type, default to Desktop Application Group */
+export type HostPoolPropertiesInputPreferredAppGroupType =
+  | "None"
+  | "Desktop"
+  | "RailApplications";
+export const HostPoolPropertiesInputPreferredAppGroupType =
+  /*@__PURE__*/ S.String;
+
+/** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
+export type HostPoolPropertiesInputPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled"
+  | "EnabledForSessionHostsOnly"
+  | "EnabledForClientsOnly";
+export const HostPoolPropertiesInputPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** The type of maintenance for session host components. */
+export type AgentUpdatePropertiesType = "Default" | "Scheduled";
+export const AgentUpdatePropertiesType = /*@__PURE__*/ S.String;
+
+/** Day of the week. */
+export type MaintenanceWindowPropertiesDayOfWeek =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday"
+  | "Sunday";
+export const MaintenanceWindowPropertiesDayOfWeek = /*@__PURE__*/ S.String;
+
+/** Maintenance window starting hour and day of week. */
+export interface MaintenanceWindowProperties {
+  /** The update start hour of the day. (0 - 23) */
+  hour?: number;
+  /** Day of the week. */
+  dayOfWeek?: MaintenanceWindowPropertiesDayOfWeek;
+}
+export const MaintenanceWindowProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hour: S.optional(S.Number),
+    dayOfWeek: S.optional(MaintenanceWindowPropertiesDayOfWeek),
+  }),
+).annotate({
+  identifier: "MaintenanceWindowProperties",
+}) as any as S.Schema<MaintenanceWindowProperties>;
+
+/** List of maintenance windows. Maintenance windows are 2 hours long. */
+export type AgentUpdatePropertiesMaintenanceWindowsList =
+  ReadonlyArray<MaintenanceWindowProperties>;
+export const AgentUpdatePropertiesMaintenanceWindowsList =
+  /*@__PURE__*/ S.Array(
+    MaintenanceWindowProperties,
+  ) as any as S.Schema<AgentUpdatePropertiesMaintenanceWindowsList>;
+
+/** The session host configuration for updating agent, monitoring agent, and stack component. */
+export interface AgentUpdateProperties {
+  /** The type of maintenance for session host components. */
+  type?: AgentUpdatePropertiesType;
+  /** Whether to use localTime of the virtual machine. */
+  useSessionHostLocalTime?: boolean;
+  /** Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true. */
+  maintenanceWindowTimeZone?: string;
+  /** List of maintenance windows. Maintenance windows are 2 hours long. */
+  maintenanceWindows?: AgentUpdatePropertiesMaintenanceWindowsList | null;
+}
+export const AgentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(AgentUpdatePropertiesType),
+    useSessionHostLocalTime: S.optional(S.Boolean),
+    maintenanceWindowTimeZone: S.optional(S.String),
+    maintenanceWindows: S.optional(
+      S.NullOr(AgentUpdatePropertiesMaintenanceWindowsList),
+    ),
+  }),
+).annotate({
+  identifier: "AgentUpdateProperties",
+}) as any as S.Schema<AgentUpdateProperties>;
+
+/** Properties of HostPool. */
+export interface HostPoolPropertiesInput {
+  /** Friendly name of HostPool. */
+  friendlyName?: string;
+  /** Description of HostPool. */
+  description?: string;
+  /** HostPool type for desktop. */
+  hostPoolType: HostPoolPropertiesInputHostPoolType;
+  /** PersonalDesktopAssignment type for HostPool. */
+  personalDesktopAssignmentType?: HostPoolPropertiesInputPersonalDesktopAssignmentType | null;
+  /** Custom rdp property of HostPool. */
+  customRdpProperty?: string;
+  /** The max session limit of HostPool. */
+  maxSessionLimit?: number | null;
+  /** The type of the load balancer. */
+  loadBalancerType: HostPoolPropertiesInputLoadBalancerType;
+  /** The ring number of HostPool. */
+  ring?: number | null;
+  /** Is validation environment. */
+  validationEnvironment?: boolean | null;
+  /** The registration info of HostPool. */
+  registrationInfo?: RegistrationInfo | null;
+  /** VM template for sessionhosts configuration within hostpool. */
+  vmTemplate?: string;
+  /** URL to customer ADFS server for signing WVD SSO certificates. */
+  ssoadfsAuthority?: string;
+  /** ClientId for the registered Relying Party used to issue WVD SSO certificates. */
+  ssoClientId?: string;
+  /** Path to Azure KeyVault storing the secret used for communication to ADFS. */
+  ssoClientSecretKeyVaultPath?: string | Redacted.Redacted<string>;
+  /** The type of single sign on Secret Type. */
+  ssoSecretType?: HostPoolPropertiesInputSsoSecretType | null;
+  /** The type of preferred application group type, default to Desktop Application Group */
+  preferredAppGroupType: HostPoolPropertiesInputPreferredAppGroupType;
+  /** The flag to turn on/off StartVMOnConnect feature. */
+  startVMOnConnect?: boolean | null;
+  /** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
+  publicNetworkAccess?: HostPoolPropertiesInputPublicNetworkAccess | null;
+  /** The session host configuration for updating agent, monitoring agent, and stack component. */
+  agentUpdate?: AgentUpdateProperties | null;
+}
+export const HostPoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    friendlyName: S.optional(S.String),
+    description: S.optional(S.String),
+    hostPoolType: HostPoolPropertiesInputHostPoolType,
+    personalDesktopAssignmentType: S.optional(
+      S.NullOr(HostPoolPropertiesInputPersonalDesktopAssignmentType),
+    ),
+    customRdpProperty: S.optional(S.String),
+    maxSessionLimit: S.optional(S.NullOr(S.Number)),
+    loadBalancerType: HostPoolPropertiesInputLoadBalancerType,
+    ring: S.optional(S.NullOr(S.Number)),
+    validationEnvironment: S.optional(S.NullOr(S.Boolean)),
+    registrationInfo: S.optional(S.NullOr(RegistrationInfo)),
+    vmTemplate: S.optional(S.String),
+    ssoadfsAuthority: S.optional(S.String),
+    ssoClientId: S.optional(S.String),
+    ssoClientSecretKeyVaultPath: S.optional(
+      S.String.pipe(T.SensitiveValue({})),
+    ),
+    ssoSecretType: S.optional(S.NullOr(HostPoolPropertiesInputSsoSecretType)),
+    preferredAppGroupType: HostPoolPropertiesInputPreferredAppGroupType,
+    startVMOnConnect: S.optional(S.NullOr(S.Boolean)),
+    publicNetworkAccess: S.optional(
+      S.NullOr(HostPoolPropertiesInputPublicNetworkAccess),
+    ),
+    agentUpdate: S.optional(S.NullOr(AgentUpdateProperties)),
+  }),
+).annotate({
+  identifier: "HostPoolPropertiesInput",
+}) as any as S.Schema<HostPoolPropertiesInput>;
+
 export interface HostPoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1918,14 +2590,36 @@ export interface HostPoolsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the host pool within the specified resource group */
   hostPoolName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: HostPoolsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: HostPoolsCreateOrUpdateRequestIdentity;
+  /** The resource model definition representing SKU */
+  sku?: HostPoolsCreateOrUpdateRequestSku;
+  /** Plan for the resource. */
+  plan?: HostPoolsCreateOrUpdateRequestPlan;
+  /** Detailed properties for HostPool */
+  properties: HostPoolPropertiesInput;
 }
 export const HostPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hostPoolName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(HostPoolsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    identity: S.optional(HostPoolsCreateOrUpdateRequestIdentity),
+    sku: S.optional(HostPoolsCreateOrUpdateRequestSku),
+    plan: S.optional(HostPoolsCreateOrUpdateRequestPlan),
+    properties: HostPoolPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2019,15 +2713,13 @@ export const HostPoolsCreateOrUpdateResponsePlan = /*@__PURE__*/ S.suspend(() =>
 export type HostPoolPropertiesHostPoolType =
   | "Personal"
   | "Pooled"
-  | "BYODesktop"
-  | (string & {});
+  | "BYODesktop";
 export const HostPoolPropertiesHostPoolType = /*@__PURE__*/ S.String;
 
 /** PersonalDesktopAssignment type for HostPool. */
 export type HostPoolPropertiesPersonalDesktopAssignmentType =
   | "Automatic"
-  | "Direct"
-  | (string & {});
+  | "Direct";
 export const HostPoolPropertiesPersonalDesktopAssignmentType =
   /*@__PURE__*/ S.String;
 
@@ -2036,49 +2728,20 @@ export type HostPoolPropertiesLoadBalancerType =
   | "BreadthFirst"
   | "DepthFirst"
   | "Persistent"
-  | "MultiplePersistent"
-  | (string & {});
+  | "MultiplePersistent";
 export const HostPoolPropertiesLoadBalancerType = /*@__PURE__*/ S.String;
 
-/** The type of resetting the token. */
-export type RegistrationInfoRegistrationTokenOperation =
-  | "Delete"
-  | "None"
-  | "Update"
-  | (string & {});
-export const RegistrationInfoRegistrationTokenOperation =
-  /*@__PURE__*/ S.String;
-
-/** Represents a RegistrationInfo definition. */
-export interface RegistrationInfo {
-  /** Expiration time of registration token. */
-  expirationTime?: string | null;
-  /** The registration token base64 encoded string. */
-  token?: string;
-  /** The type of resetting the token. */
-  registrationTokenOperation?: RegistrationInfoRegistrationTokenOperation;
-}
-export const RegistrationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expirationTime: S.optional(S.NullOr(S.String)),
-    token: S.optional(S.String),
-    registrationTokenOperation: S.optional(
-      RegistrationInfoRegistrationTokenOperation,
-    ),
-  }),
-).annotate({
-  identifier: "RegistrationInfo",
-}) as any as S.Schema<RegistrationInfo>;
-
 /** List of applicationGroup links. */
-export type HostPoolPropertiesApplicationGroupReferencesList = string[];
+export type HostPoolPropertiesApplicationGroupReferencesList =
+  ReadonlyArray<string>;
 export const HostPoolPropertiesApplicationGroupReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HostPoolPropertiesApplicationGroupReferencesList>;
 
 /** List of App Attach Package links. */
-export type HostPoolPropertiesAppAttachPackageReferencesList = string[];
+export type HostPoolPropertiesAppAttachPackageReferencesList =
+  ReadonlyArray<string>;
 export const HostPoolPropertiesAppAttachPackageReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2089,16 +2752,14 @@ export type HostPoolPropertiesSsoSecretType =
   | "SharedKey"
   | "Certificate"
   | "SharedKeyInKeyVault"
-  | "CertificateInKeyVault"
-  | (string & {});
+  | "CertificateInKeyVault";
 export const HostPoolPropertiesSsoSecretType = /*@__PURE__*/ S.String;
 
 /** The type of preferred application group type, default to Desktop Application Group */
 export type HostPoolPropertiesPreferredAppGroupType =
   | "None"
   | "Desktop"
-  | "RailApplications"
-  | (string & {});
+  | "RailApplications";
 export const HostPoolPropertiesPreferredAppGroupType = /*@__PURE__*/ S.String;
 
 /** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
@@ -2106,76 +2767,12 @@ export type HostPoolPropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "EnabledForSessionHostsOnly"
-  | "EnabledForClientsOnly"
-  | (string & {});
+  | "EnabledForClientsOnly";
 export const HostPoolPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
-/** The type of maintenance for session host components. */
-export type AgentUpdatePropertiesType = "Default" | "Scheduled" | (string & {});
-export const AgentUpdatePropertiesType = /*@__PURE__*/ S.String;
-
-/** Day of the week. */
-export type MaintenanceWindowPropertiesDayOfWeek =
-  | "Monday"
-  | "Tuesday"
-  | "Wednesday"
-  | "Thursday"
-  | "Friday"
-  | "Saturday"
-  | "Sunday"
-  | (string & {});
-export const MaintenanceWindowPropertiesDayOfWeek = /*@__PURE__*/ S.String;
-
-/** Maintenance window starting hour and day of week. */
-export interface MaintenanceWindowProperties {
-  /** The update start hour of the day. (0 - 23) */
-  hour?: number;
-  /** Day of the week. */
-  dayOfWeek?: MaintenanceWindowPropertiesDayOfWeek;
-}
-export const MaintenanceWindowProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hour: S.optional(S.Number),
-    dayOfWeek: S.optional(MaintenanceWindowPropertiesDayOfWeek),
-  }),
-).annotate({
-  identifier: "MaintenanceWindowProperties",
-}) as any as S.Schema<MaintenanceWindowProperties>;
-
-/** List of maintenance windows. Maintenance windows are 2 hours long. */
-export type AgentUpdatePropertiesMaintenanceWindowsList =
-  MaintenanceWindowProperties[];
-export const AgentUpdatePropertiesMaintenanceWindowsList =
-  /*@__PURE__*/ S.Array(
-    MaintenanceWindowProperties,
-  ) as any as S.Schema<AgentUpdatePropertiesMaintenanceWindowsList>;
-
-/** The session host configuration for updating agent, monitoring agent, and stack component. */
-export interface AgentUpdateProperties {
-  /** The type of maintenance for session host components. */
-  type?: AgentUpdatePropertiesType;
-  /** Whether to use localTime of the virtual machine. */
-  useSessionHostLocalTime?: boolean;
-  /** Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true. */
-  maintenanceWindowTimeZone?: string;
-  /** List of maintenance windows. Maintenance windows are 2 hours long. */
-  maintenanceWindows?: AgentUpdatePropertiesMaintenanceWindowsList | null;
-}
-export const AgentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(AgentUpdatePropertiesType),
-    useSessionHostLocalTime: S.optional(S.Boolean),
-    maintenanceWindowTimeZone: S.optional(S.String),
-    maintenanceWindows: S.optional(
-      S.NullOr(AgentUpdatePropertiesMaintenanceWindowsList),
-    ),
-  }),
-).annotate({
-  identifier: "AgentUpdateProperties",
-}) as any as S.Schema<AgentUpdateProperties>;
-
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2198,8 +2795,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -2226,8 +2822,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -2281,7 +2876,7 @@ export const HostPoolPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connection associated with the specified resource */
 export type HostPoolPropertiesPrivateEndpointConnectionsList =
-  HostPoolPropertiesPrivateEndpointConnectionsItem[];
+  ReadonlyArray<HostPoolPropertiesPrivateEndpointConnectionsItem>;
 export const HostPoolPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     HostPoolPropertiesPrivateEndpointConnectionsItem,
@@ -2310,7 +2905,7 @@ export interface HostPoolProperties {
   /** Is validation environment. */
   validationEnvironment?: boolean | null;
   /** The registration info of HostPool. */
-  registrationInfo?: RegistrationInfo;
+  registrationInfo?: RegistrationInfo | null;
   /** VM template for sessionhosts configuration within hostpool. */
   vmTemplate?: string;
   /** List of applicationGroup links. */
@@ -2334,7 +2929,7 @@ export interface HostPoolProperties {
   /** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
   publicNetworkAccess?: HostPoolPropertiesPublicNetworkAccess | null;
   /** The session host configuration for updating agent, monitoring agent, and stack component. */
-  agentUpdate?: AgentUpdateProperties;
+  agentUpdate?: AgentUpdateProperties | null;
   /** List of private endpoint connection associated with the specified resource */
   privateEndpointConnections?: HostPoolPropertiesPrivateEndpointConnectionsList | null;
 }
@@ -2352,7 +2947,7 @@ export const HostPoolProperties = /*@__PURE__*/ S.suspend(() =>
     loadBalancerType: HostPoolPropertiesLoadBalancerType,
     ring: S.optional(S.NullOr(S.Number)),
     validationEnvironment: S.optional(S.NullOr(S.Boolean)),
-    registrationInfo: S.optional(RegistrationInfo),
+    registrationInfo: S.optional(S.NullOr(RegistrationInfo)),
     vmTemplate: S.optional(S.String),
     applicationGroupReferences: S.optional(
       S.NullOr(HostPoolPropertiesApplicationGroupReferencesList),
@@ -2372,7 +2967,7 @@ export const HostPoolProperties = /*@__PURE__*/ S.suspend(() =>
     publicNetworkAccess: S.optional(
       S.NullOr(HostPoolPropertiesPublicNetworkAccess),
     ),
-    agentUpdate: S.optional(AgentUpdateProperties),
+    agentUpdate: S.optional(S.NullOr(AgentUpdateProperties)),
     privateEndpointConnections: S.optional(
       S.NullOr(HostPoolPropertiesPrivateEndpointConnectionsList),
     ),
@@ -2757,7 +3352,7 @@ export const HostPool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HostPool" }) as any as S.Schema<HostPool>;
 
 /** List of HostPool definitions. */
-export type HostPoolListValueList = HostPool[];
+export type HostPoolListValueList = ReadonlyArray<HostPool>;
 export const HostPoolListValueList = /*@__PURE__*/ S.Array(
   HostPool,
 ) as any as S.Schema<HostPoolListValueList>;
@@ -2850,7 +3445,8 @@ export const RegistrationTokenMinimal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistrationTokenMinimal>;
 
 /** List of RegistrationToken definitions. */
-export type RegistrationTokenListValueList = RegistrationTokenMinimal[];
+export type RegistrationTokenListValueList =
+  ReadonlyArray<RegistrationTokenMinimal>;
 export const RegistrationTokenListValueList = /*@__PURE__*/ S.Array(
   RegistrationTokenMinimal,
 ) as any as S.Schema<RegistrationTokenListValueList>;
@@ -2897,6 +3493,228 @@ export const HostPoolsRetrieveRegistrationTokenRequest =
     identifier: "HostPoolsRetrieveRegistrationTokenRequest",
   }) as any as S.Schema<HostPoolsRetrieveRegistrationTokenRequest>;
 
+/** tags to be updated */
+export type HostPoolsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const HostPoolsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<HostPoolsUpdateRequestTagsMap>;
+
+/** PersonalDesktopAssignment type for HostPool. */
+export type HostPoolPatchPropertiesPersonalDesktopAssignmentType =
+  | "Automatic"
+  | "Direct";
+export const HostPoolPatchPropertiesPersonalDesktopAssignmentType =
+  /*@__PURE__*/ S.String;
+
+/** The type of the load balancer. */
+export type HostPoolPatchPropertiesLoadBalancerType =
+  | "BreadthFirst"
+  | "DepthFirst"
+  | "Persistent"
+  | "MultiplePersistent";
+export const HostPoolPatchPropertiesLoadBalancerType = /*@__PURE__*/ S.String;
+
+/** The type of resetting the token. */
+export type RegistrationInfoPatchRegistrationTokenOperation =
+  | "Delete"
+  | "None"
+  | "Update";
+export const RegistrationInfoPatchRegistrationTokenOperation =
+  /*@__PURE__*/ S.String;
+
+/** Represents a RegistrationInfo definition. */
+export interface RegistrationInfoPatch {
+  /** Expiration time of registration token. */
+  expirationTime?: string | null;
+  /** The type of resetting the token. */
+  registrationTokenOperation?: RegistrationInfoPatchRegistrationTokenOperation;
+}
+export const RegistrationInfoPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expirationTime: S.optional(S.NullOr(S.String)),
+    registrationTokenOperation: S.optional(
+      RegistrationInfoPatchRegistrationTokenOperation,
+    ),
+  }),
+).annotate({
+  identifier: "RegistrationInfoPatch",
+}) as any as S.Schema<RegistrationInfoPatch>;
+
+/** The type of single sign on Secret Type. */
+export type HostPoolPatchPropertiesSsoSecretType =
+  | "SharedKey"
+  | "Certificate"
+  | "SharedKeyInKeyVault"
+  | "CertificateInKeyVault";
+export const HostPoolPatchPropertiesSsoSecretType = /*@__PURE__*/ S.String;
+
+/** The type of preferred application group type, default to Desktop Application Group */
+export type HostPoolPatchPropertiesPreferredAppGroupType =
+  | "None"
+  | "Desktop"
+  | "RailApplications";
+export const HostPoolPatchPropertiesPreferredAppGroupType =
+  /*@__PURE__*/ S.String;
+
+/** Enabled to allow this resource to be access from the public network */
+export type HostPoolPatchPropertiesPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled"
+  | "EnabledForSessionHostsOnly"
+  | "EnabledForClientsOnly";
+export const HostPoolPatchPropertiesPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** The type of maintenance for session host components. */
+export type AgentUpdatePatchPropertiesType = "Default" | "Scheduled";
+export const AgentUpdatePatchPropertiesType = /*@__PURE__*/ S.String;
+
+/** Day of the week. */
+export type MaintenanceWindowPatchPropertiesDayOfWeek =
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday"
+  | "Sunday";
+export const MaintenanceWindowPatchPropertiesDayOfWeek = /*@__PURE__*/ S.String;
+
+/** Maintenance window starting hour and day of week. */
+export interface MaintenanceWindowPatchProperties {
+  /** The update start hour of the day. (0 - 23) */
+  hour?: number;
+  /** Day of the week. */
+  dayOfWeek?: MaintenanceWindowPatchPropertiesDayOfWeek;
+}
+export const MaintenanceWindowPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hour: S.optional(S.Number),
+    dayOfWeek: S.optional(MaintenanceWindowPatchPropertiesDayOfWeek),
+  }),
+).annotate({
+  identifier: "MaintenanceWindowPatchProperties",
+}) as any as S.Schema<MaintenanceWindowPatchProperties>;
+
+/** List of maintenance windows. Maintenance windows are 2 hours long. */
+export type AgentUpdatePatchPropertiesMaintenanceWindowsList =
+  ReadonlyArray<MaintenanceWindowPatchProperties>;
+export const AgentUpdatePatchPropertiesMaintenanceWindowsList =
+  /*@__PURE__*/ S.Array(
+    MaintenanceWindowPatchProperties,
+  ) as any as S.Schema<AgentUpdatePatchPropertiesMaintenanceWindowsList>;
+
+/** The session host configuration for updating agent, monitoring agent, and stack component. */
+export interface AgentUpdatePatchProperties {
+  /** The type of maintenance for session host components. */
+  type?: AgentUpdatePatchPropertiesType;
+  /** Whether to use localTime of the virtual machine. */
+  useSessionHostLocalTime?: boolean;
+  /** Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyid?view=net-5.0. Must be set if useLocalTime is true. */
+  maintenanceWindowTimeZone?: string;
+  /** List of maintenance windows. Maintenance windows are 2 hours long. */
+  maintenanceWindows?: AgentUpdatePatchPropertiesMaintenanceWindowsList | null;
+}
+export const AgentUpdatePatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(AgentUpdatePatchPropertiesType),
+    useSessionHostLocalTime: S.optional(S.Boolean),
+    maintenanceWindowTimeZone: S.optional(S.String),
+    maintenanceWindows: S.optional(
+      S.NullOr(AgentUpdatePatchPropertiesMaintenanceWindowsList),
+    ),
+  }),
+).annotate({
+  identifier: "AgentUpdatePatchProperties",
+}) as any as S.Schema<AgentUpdatePatchProperties>;
+
+/** Properties of HostPool. */
+export interface HostPoolPatchProperties {
+  /** Friendly name of HostPool. */
+  friendlyName?: string;
+  /** Description of HostPool. */
+  description?: string;
+  /** Custom rdp property of HostPool. */
+  customRdpProperty?: string;
+  /** The max session limit of HostPool. */
+  maxSessionLimit?: number | null;
+  /** PersonalDesktopAssignment type for HostPool. */
+  personalDesktopAssignmentType?: HostPoolPatchPropertiesPersonalDesktopAssignmentType | null;
+  /** The type of the load balancer. */
+  loadBalancerType?: HostPoolPatchPropertiesLoadBalancerType;
+  /** The ring number of HostPool. */
+  ring?: number | null;
+  /** Is validation environment. */
+  validationEnvironment?: boolean | null;
+  /** The registration info of HostPool. */
+  registrationInfo?: RegistrationInfoPatch | null;
+  /** VM template for sessionhosts configuration within hostpool. */
+  vmTemplate?: string;
+  /** URL to customer ADFS server for signing WVD SSO certificates. */
+  ssoadfsAuthority?: string;
+  /** ClientId for the registered Relying Party used to issue WVD SSO certificates. */
+  ssoClientId?: string;
+  /** Path to Azure KeyVault storing the secret used for communication to ADFS. */
+  ssoClientSecretKeyVaultPath?: string | Redacted.Redacted<string>;
+  /** The type of single sign on Secret Type. */
+  ssoSecretType?: HostPoolPatchPropertiesSsoSecretType | null;
+  /** The type of preferred application group type, default to Desktop Application Group */
+  preferredAppGroupType?: HostPoolPatchPropertiesPreferredAppGroupType;
+  /** The flag to turn on/off StartVMOnConnect feature. */
+  startVMOnConnect?: boolean | null;
+  /** Enabled to allow this resource to be access from the public network */
+  publicNetworkAccess?: HostPoolPatchPropertiesPublicNetworkAccess | null;
+  /** The session host configuration for updating agent, monitoring agent, and stack component. */
+  agentUpdate?: AgentUpdatePatchProperties | null;
+}
+export const HostPoolPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    friendlyName: S.optional(S.String),
+    description: S.optional(S.String),
+    customRdpProperty: S.optional(S.String),
+    maxSessionLimit: S.optional(S.NullOr(S.Number)),
+    personalDesktopAssignmentType: S.optional(
+      S.NullOr(HostPoolPatchPropertiesPersonalDesktopAssignmentType),
+    ),
+    loadBalancerType: S.optional(HostPoolPatchPropertiesLoadBalancerType),
+    ring: S.optional(S.NullOr(S.Number)),
+    validationEnvironment: S.optional(S.NullOr(S.Boolean)),
+    registrationInfo: S.optional(S.NullOr(RegistrationInfoPatch)),
+    vmTemplate: S.optional(S.String),
+    ssoadfsAuthority: S.optional(S.String),
+    ssoClientId: S.optional(S.String),
+    ssoClientSecretKeyVaultPath: S.optional(
+      S.String.pipe(T.SensitiveValue({})),
+    ),
+    ssoSecretType: S.optional(S.NullOr(HostPoolPatchPropertiesSsoSecretType)),
+    preferredAppGroupType: S.optional(
+      HostPoolPatchPropertiesPreferredAppGroupType,
+    ),
+    startVMOnConnect: S.optional(S.NullOr(S.Boolean)),
+    publicNetworkAccess: S.optional(
+      S.NullOr(HostPoolPatchPropertiesPublicNetworkAccess),
+    ),
+    agentUpdate: S.optional(S.NullOr(AgentUpdatePatchProperties)),
+  }),
+).annotate({
+  identifier: "HostPoolPatchProperties",
+}) as any as S.Schema<HostPoolPatchProperties>;
+
+/** Managed service identity (either system assigned, or none) */
+export interface HostPoolsUpdateRequestIdentity {
+  type: SystemAssignedServiceIdentityType;
+}
+export const HostPoolsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SystemAssignedServiceIdentityType,
+  }),
+).annotate({
+  identifier: "HostPoolsUpdateRequestIdentity",
+}) as any as S.Schema<HostPoolsUpdateRequestIdentity>;
+
 export interface HostPoolsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2904,14 +3722,21 @@ export interface HostPoolsUpdateRequest {
   resourceGroupName: string;
   /** The name of the host pool within the specified resource group */
   hostPoolName: string;
-  body?: unknown;
+  /** tags to be updated */
+  tags?: HostPoolsUpdateRequestTagsMap | null;
+  /** HostPool properties that can be patched. */
+  properties?: HostPoolPatchProperties;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: HostPoolsUpdateRequestIdentity;
 }
 export const HostPoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hostPoolName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(S.NullOr(HostPoolsUpdateRequestTagsMap)),
+    properties: S.optional(HostPoolPatchProperties),
+    identity: S.optional(HostPoolsUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3055,14 +3880,15 @@ export interface MsixImagesExpandRequest {
   resourceGroupName: string;
   /** The name of the host pool within the specified resource group */
   hostPoolName: string;
-  body: unknown;
+  /** URI to Image */
+  uri?: string;
 }
 export const MsixImagesExpandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     hostPoolName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    uri: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3077,7 +3903,7 @@ export const MsixImagesExpandRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of package dependencies. */
 export type ExpandMsixImagePropertiesPackageDependenciesList =
-  MsixPackageDependencies[];
+  ReadonlyArray<MsixPackageDependencies>;
 export const ExpandMsixImagePropertiesPackageDependenciesList =
   /*@__PURE__*/ S.Array(
     MsixPackageDependencies,
@@ -3085,7 +3911,7 @@ export const ExpandMsixImagePropertiesPackageDependenciesList =
 
 /** List of package applications. */
 export type ExpandMsixImagePropertiesPackageApplicationsList =
-  MsixPackageApplications[];
+  ReadonlyArray<MsixPackageApplications>;
 export const ExpandMsixImagePropertiesPackageApplicationsList =
   /*@__PURE__*/ S.Array(
     MsixPackageApplications,
@@ -3176,7 +4002,7 @@ export const ExpandMsixImage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpandMsixImage>;
 
 /** List of MSIX package properties from give MSIX Image. */
-export type ExpandMsixImageListValueList = ExpandMsixImage[];
+export type ExpandMsixImageListValueList = ReadonlyArray<ExpandMsixImage>;
 export const ExpandMsixImageListValueList = /*@__PURE__*/ S.Array(
   ExpandMsixImage,
 ) as any as S.Schema<ExpandMsixImageListValueList>;
@@ -3197,39 +4023,9 @@ export const ExpandMsixImageList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExpandMsixImageList",
 }) as any as S.Schema<ExpandMsixImageList>;
 
-export interface MSIXPackagesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the host pool within the specified resource group */
-  hostPoolName: string;
-  /** The version specific package full name of the MSIX package within specified hostpool */
-  msixPackageFullName: string;
-  body: unknown;
-}
-export const MSIXPackagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    hostPoolName: S.String.pipe(T.Label()),
-    msixPackageFullName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
-      code: 200,
-      apiVersion: "2025-10-10",
-    }),
-  ),
-).annotate({
-  identifier: "MSIXPackagesCreateOrUpdateRequest",
-}) as any as S.Schema<MSIXPackagesCreateOrUpdateRequest>;
-
 /** List of package dependencies. */
 export type MSIXPackagePropertiesPackageDependenciesList =
-  MsixPackageDependencies[];
+  ReadonlyArray<MsixPackageDependencies>;
 export const MSIXPackagePropertiesPackageDependenciesList =
   /*@__PURE__*/ S.Array(
     MsixPackageDependencies,
@@ -3237,7 +4033,7 @@ export const MSIXPackagePropertiesPackageDependenciesList =
 
 /** List of package applications. */
 export type MSIXPackagePropertiesPackageApplicationsList =
-  MsixPackageApplications[];
+  ReadonlyArray<MsixPackageApplications>;
 export const MSIXPackagePropertiesPackageApplicationsList =
   /*@__PURE__*/ S.Array(
     MsixPackageApplications,
@@ -3289,6 +4085,37 @@ export const MSIXPackageProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MSIXPackageProperties",
 }) as any as S.Schema<MSIXPackageProperties>;
+
+export interface MSIXPackagesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the host pool within the specified resource group */
+  hostPoolName: string;
+  /** The version specific package full name of the MSIX package within specified hostpool */
+  msixPackageFullName: string;
+  /** Detailed properties for MSIX Package */
+  properties: MSIXPackageProperties;
+}
+export const MSIXPackagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    hostPoolName: S.String.pipe(T.Label()),
+    msixPackageFullName: S.String.pipe(T.Label()),
+    properties: MSIXPackageProperties,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/hostPools/{hostPoolName}/msixPackages/{msixPackageFullName}",
+      code: 200,
+      apiVersion: "2025-10-10",
+    }),
+  ),
+).annotate({
+  identifier: "MSIXPackagesCreateOrUpdateRequest",
+}) as any as S.Schema<MSIXPackagesCreateOrUpdateRequest>;
 
 export interface MSIXPackagesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3459,7 +4286,7 @@ export const MSIXPackage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MSIXPackage" }) as any as S.Schema<MSIXPackage>;
 
 /** List of MSIX Package definitions. */
-export type MSIXPackageListValueList = MSIXPackage[];
+export type MSIXPackageListValueList = ReadonlyArray<MSIXPackage>;
 export const MSIXPackageListValueList = /*@__PURE__*/ S.Array(
   MSIXPackage,
 ) as any as S.Schema<MSIXPackageListValueList>;
@@ -3480,6 +4307,25 @@ export const MSIXPackageList = /*@__PURE__*/ S.suspend(() =>
   identifier: "MSIXPackageList",
 }) as any as S.Schema<MSIXPackageList>;
 
+/** MSIX Package properties that can be patched. */
+export interface MSIXPackagePatchProperties {
+  /** Set a version of the package to be active across hostpool. */
+  isActive?: boolean;
+  /** Set Registration mode. Regular or Delayed. */
+  isRegularRegistration?: boolean;
+  /** Display name for MSIX Package. */
+  displayName?: string;
+}
+export const MSIXPackagePatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isActive: S.optional(S.Boolean),
+    isRegularRegistration: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MSIXPackagePatchProperties",
+}) as any as S.Schema<MSIXPackagePatchProperties>;
+
 export interface MSIXPackagesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3489,7 +4335,8 @@ export interface MSIXPackagesUpdateRequest {
   hostPoolName: string;
   /** The version specific package full name of the MSIX package within specified hostpool */
   msixPackageFullName: string;
-  body?: unknown;
+  /** Detailed properties for MSIX Package */
+  properties?: MSIXPackagePatchProperties;
 }
 export const MSIXPackagesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3497,7 +4344,7 @@ export const MSIXPackagesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     hostPoolName: S.String.pipe(T.Label()),
     msixPackageFullName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(MSIXPackagePatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3590,7 +4437,8 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogSpecification>;
 
 /** Specifications of the Log for Azure Monitoring */
-export type ServiceSpecificationLogSpecificationsList = LogSpecification[];
+export type ServiceSpecificationLogSpecificationsList =
+  ReadonlyArray<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -3643,7 +4491,7 @@ export const ResourceProviderOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** The ResourceProviderOperation items on this page */
 export type ResourceProviderOperationListResultValueList =
-  ResourceProviderOperation[];
+  ReadonlyArray<ResourceProviderOperation>;
 export const ResourceProviderOperationListResultValueList =
   /*@__PURE__*/ S.Array(
     ResourceProviderOperation,
@@ -3766,7 +4614,7 @@ export const PrivateEndpointConnectionsGetByHostPoolRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsGetByHostPoolResponsePropertiesGroupIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionsGetByHostPoolResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3855,7 +4703,7 @@ export const PrivateEndpointConnectionsGetByWorkspaceRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsGetByWorkspaceResponsePropertiesGroupIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionsGetByWorkspaceResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3950,7 +4798,7 @@ export const PrivateEndpointConnectionsListByHostPoolRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionWithSystemDataPropertiesGroupIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionWithSystemDataPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4009,7 +4857,7 @@ export const PrivateEndpointConnectionWithSystemData = /*@__PURE__*/ S.suspend(
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultWithSystemDataValueList =
-  PrivateEndpointConnectionWithSystemData[];
+  ReadonlyArray<PrivateEndpointConnectionWithSystemData>;
 export const PrivateEndpointConnectionListResultWithSystemDataValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionWithSystemData,
@@ -4060,6 +4908,31 @@ export const PrivateEndpointConnectionsListByWorkspaceRequest =
     identifier: "PrivateEndpointConnectionsListByWorkspaceRequest",
   }) as any as S.Schema<PrivateEndpointConnectionsListByWorkspaceRequest>;
 
+/** The private endpoint resource. */
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
+
+/** Properties of the private endpoint connection. */
+export interface PrivateEndpointConnectionsUpdateByHostPoolRequestProperties {
+  /** The private endpoint resource. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionsUpdateByHostPoolRequestProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+  ).annotate({
+    identifier: "PrivateEndpointConnectionsUpdateByHostPoolRequestProperties",
+  }) as any as S.Schema<PrivateEndpointConnectionsUpdateByHostPoolRequestProperties>;
+
 export interface PrivateEndpointConnectionsUpdateByHostPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4069,7 +4942,8 @@ export interface PrivateEndpointConnectionsUpdateByHostPoolRequest {
   hostPoolName: string;
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Properties of the private endpoint connection. */
+  properties?: PrivateEndpointConnectionsUpdateByHostPoolRequestProperties;
 }
 export const PrivateEndpointConnectionsUpdateByHostPoolRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4078,7 +4952,9 @@ export const PrivateEndpointConnectionsUpdateByHostPoolRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       hostPoolName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(
+        PrivateEndpointConnectionsUpdateByHostPoolRequestProperties,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4093,7 +4969,7 @@ export const PrivateEndpointConnectionsUpdateByHostPoolRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsUpdateByHostPoolResponsePropertiesGroupIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionsUpdateByHostPoolResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4151,6 +5027,23 @@ export const PrivateEndpointConnectionsUpdateByHostPoolResponse =
     identifier: "PrivateEndpointConnectionsUpdateByHostPoolResponse",
   }) as any as S.Schema<PrivateEndpointConnectionsUpdateByHostPoolResponse>;
 
+/** Properties of the private endpoint connection. */
+export interface PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties {
+  /** The private endpoint resource. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+  ).annotate({
+    identifier: "PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties",
+  }) as any as S.Schema<PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties>;
+
 export interface PrivateEndpointConnectionsUpdateByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4160,7 +5053,8 @@ export interface PrivateEndpointConnectionsUpdateByWorkspaceRequest {
   workspaceName: string;
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Properties of the private endpoint connection. */
+  properties?: PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties;
 }
 export const PrivateEndpointConnectionsUpdateByWorkspaceRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4169,7 +5063,9 @@ export const PrivateEndpointConnectionsUpdateByWorkspaceRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       workspaceName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(
+        PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4184,7 +5080,7 @@ export const PrivateEndpointConnectionsUpdateByWorkspaceRequest =
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionsUpdateByWorkspaceResponsePropertiesGroupIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionsUpdateByWorkspaceResponsePropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4278,14 +5174,16 @@ export const PrivateLinkResourcesListByHostPoolRequest =
   }) as any as S.Schema<PrivateLinkResourcesListByHostPoolRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4340,7 +5238,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList = PrivateLinkResource[];
+export type PrivateLinkResourceListResultValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -4396,37 +5295,6 @@ export const PrivateLinkResourcesListByWorkspaceRequest =
     identifier: "PrivateLinkResourcesListByWorkspaceRequest",
   }) as any as S.Schema<PrivateLinkResourcesListByWorkspaceRequest>;
 
-export interface ScalingPlanPersonalSchedulesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the scaling plan. */
-  scalingPlanName: string;
-  /** The name of the ScalingPlanSchedule */
-  scalingPlanScheduleName: string;
-  body: unknown;
-}
-export const ScalingPlanPersonalSchedulesCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      scalingPlanName: S.String.pipe(T.Label()),
-      scalingPlanScheduleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
-        code: 200,
-        apiVersion: "2025-10-10",
-      }),
-    ),
-  ).annotate({
-    identifier: "ScalingPlanPersonalSchedulesCreateRequest",
-  }) as any as S.Schema<ScalingPlanPersonalSchedulesCreateRequest>;
-
 export type ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem =
   | "Monday"
   | "Tuesday"
@@ -4434,14 +5302,13 @@ export type ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday"
-  | (string & {});
+  | "Sunday";
 export const ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 /** Set of days of the week on which this schedule is active. */
 export type ScalingPlanPersonalSchedulePropertiesDaysOfWeekList =
-  ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem[];
+  ReadonlyArray<ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem>;
 export const ScalingPlanPersonalSchedulePropertiesDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ScalingPlanPersonalSchedulePropertiesDaysOfWeekItem,
@@ -4465,72 +5332,63 @@ export const Time = /*@__PURE__*/ S.suspend(() =>
 export type ScalingPlanPersonalSchedulePropertiesRampUpAutoStartHosts =
   | "None"
   | "WithAssignedUser"
-  | "All"
-  | (string & {});
+  | "All";
 export const ScalingPlanPersonalSchedulePropertiesRampUpAutoStartHosts =
   /*@__PURE__*/ S.String;
 
 /** The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually. */
 export type ScalingPlanPersonalSchedulePropertiesRampUpStartVMOnConnect =
   | "Enable"
-  | "Disable"
-  | (string & {});
+  | "Disable";
 export const ScalingPlanPersonalSchedulePropertiesRampUpStartVMOnConnect =
   /*@__PURE__*/ S.String;
 
 /** Action to be taken after a user disconnect during the ramp up period. */
 export type ScalingPlanPersonalSchedulePropertiesRampUpActionOnDisconnect =
   | "None"
-  | "Deallocate"
-  | (string & {});
+  | "Deallocate";
 export const ScalingPlanPersonalSchedulePropertiesRampUpActionOnDisconnect =
   /*@__PURE__*/ S.String;
 
 /** Action to be taken after a logoff during the ramp up period. */
 export type ScalingPlanPersonalSchedulePropertiesRampUpActionOnLogoff =
   | "None"
-  | "Deallocate"
-  | (string & {});
+  | "Deallocate";
 export const ScalingPlanPersonalSchedulePropertiesRampUpActionOnLogoff =
   /*@__PURE__*/ S.String;
 
 /** The desired configuration of Start VM On Connect for the hostpool during the peak phase. */
 export type ScalingPlanPersonalSchedulePropertiesPeakStartVMOnConnect =
   | "Enable"
-  | "Disable"
-  | (string & {});
+  | "Disable";
 export const ScalingPlanPersonalSchedulePropertiesPeakStartVMOnConnect =
   /*@__PURE__*/ S.String;
 
 /** Action to be taken after a user disconnect during the peak period. */
 export type ScalingPlanPersonalSchedulePropertiesPeakActionOnDisconnect =
   | "None"
-  | "Deallocate"
-  | (string & {});
+  | "Deallocate";
 export const ScalingPlanPersonalSchedulePropertiesPeakActionOnDisconnect =
   /*@__PURE__*/ S.String;
 
 /** Action to be taken after a logoff during the peak period. */
 export type ScalingPlanPersonalSchedulePropertiesPeakActionOnLogoff =
   | "None"
-  | "Deallocate"
-  | (string & {});
+  | "Deallocate";
 export const ScalingPlanPersonalSchedulePropertiesPeakActionOnLogoff =
   /*@__PURE__*/ S.String;
 
 /** The desired configuration of Start VM On Connect for the hostpool during the ramp down phase. */
 export type ScalingPlanPersonalSchedulePropertiesRampDownStartVMOnConnect =
   | "Enable"
-  | "Disable"
-  | (string & {});
+  | "Disable";
 export const ScalingPlanPersonalSchedulePropertiesRampDownStartVMOnConnect =
   /*@__PURE__*/ S.String;
 
 /** Action to be taken after a user disconnect during the ramp down period. */
 export type ScalingPlanPersonalSchedulePropertiesRampDownActionOnDisconnect =
   | "None"
-  | "Deallocate"
-  | (string & {});
+  | "Deallocate";
 export const ScalingPlanPersonalSchedulePropertiesRampDownActionOnDisconnect =
   /*@__PURE__*/ S.String;
 
@@ -4538,16 +5396,14 @@ export const ScalingPlanPersonalSchedulePropertiesRampDownActionOnDisconnect =
 export type ScalingPlanPersonalSchedulePropertiesRampDownActionOnLogoff =
   | "None"
   | "Deallocate"
-  | "Hibernate"
-  | (string & {});
+  | "Hibernate";
 export const ScalingPlanPersonalSchedulePropertiesRampDownActionOnLogoff =
   /*@__PURE__*/ S.String;
 
 /** The desired configuration of Start VM On Connect for the hostpool during the off-peak phase. */
 export type ScalingPlanPersonalSchedulePropertiesOffPeakStartVMOnConnect =
   | "Enable"
-  | "Disable"
-  | (string & {});
+  | "Disable";
 export const ScalingPlanPersonalSchedulePropertiesOffPeakStartVMOnConnect =
   /*@__PURE__*/ S.String;
 
@@ -4555,8 +5411,7 @@ export const ScalingPlanPersonalSchedulePropertiesOffPeakStartVMOnConnect =
 export type ScalingPlanPersonalSchedulePropertiesOffPeakActionOnDisconnect =
   | "None"
   | "Deallocate"
-  | "Hibernate"
-  | (string & {});
+  | "Hibernate";
 export const ScalingPlanPersonalSchedulePropertiesOffPeakActionOnDisconnect =
   /*@__PURE__*/ S.String;
 
@@ -4564,8 +5419,7 @@ export const ScalingPlanPersonalSchedulePropertiesOffPeakActionOnDisconnect =
 export type ScalingPlanPersonalSchedulePropertiesOffPeakActionOnLogoff =
   | "None"
   | "Deallocate"
-  | "Hibernate"
-  | (string & {});
+  | "Hibernate";
 export const ScalingPlanPersonalSchedulePropertiesOffPeakActionOnLogoff =
   /*@__PURE__*/ S.String;
 
@@ -4685,6 +5539,38 @@ export const ScalingPlanPersonalScheduleProperties = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ScalingPlanPersonalScheduleProperties",
 }) as any as S.Schema<ScalingPlanPersonalScheduleProperties>;
+
+export interface ScalingPlanPersonalSchedulesCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the scaling plan. */
+  scalingPlanName: string;
+  /** The name of the ScalingPlanSchedule */
+  scalingPlanScheduleName: string;
+  /** Detailed properties for ScalingPlanPersonalSchedule */
+  properties: ScalingPlanPersonalScheduleProperties;
+}
+export const ScalingPlanPersonalSchedulesCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      scalingPlanName: S.String.pipe(T.Label()),
+      scalingPlanScheduleName: S.String.pipe(T.Label()),
+      properties: ScalingPlanPersonalScheduleProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/personalSchedules/{scalingPlanScheduleName}",
+        code: 200,
+        apiVersion: "2025-10-10",
+      }),
+    ),
+  ).annotate({
+    identifier: "ScalingPlanPersonalSchedulesCreateRequest",
+  }) as any as S.Schema<ScalingPlanPersonalSchedulesCreateRequest>;
 
 export interface ScalingPlanPersonalSchedulesCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4862,7 +5748,7 @@ export const ScalingPlanPersonalSchedule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ScalingPlanPersonalSchedule definitions. */
 export type ScalingPlanPersonalScheduleListValueList =
-  ScalingPlanPersonalSchedule[];
+  ReadonlyArray<ScalingPlanPersonalSchedule>;
 export const ScalingPlanPersonalScheduleListValueList = /*@__PURE__*/ S.Array(
   ScalingPlanPersonalSchedule,
 ) as any as S.Schema<ScalingPlanPersonalScheduleListValueList>;
@@ -4892,7 +5778,8 @@ export interface ScalingPlanPersonalSchedulesUpdateRequest {
   scalingPlanName: string;
   /** The name of the ScalingPlanSchedule */
   scalingPlanScheduleName: string;
-  body?: unknown;
+  /** Detailed properties for ScalingPlanPersonalSchedule */
+  properties?: ScalingPlanPersonalScheduleProperties;
 }
 export const ScalingPlanPersonalSchedulesUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4901,7 +5788,7 @@ export const ScalingPlanPersonalSchedulesUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       scalingPlanName: S.String.pipe(T.Label()),
       scalingPlanScheduleName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(ScalingPlanPersonalScheduleProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -4939,37 +5826,6 @@ export const ScalingPlanPersonalSchedulesUpdateResponse =
     identifier: "ScalingPlanPersonalSchedulesUpdateResponse",
   }) as any as S.Schema<ScalingPlanPersonalSchedulesUpdateResponse>;
 
-export interface ScalingPlanPooledSchedulesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the scaling plan. */
-  scalingPlanName: string;
-  /** The name of the ScalingPlanSchedule */
-  scalingPlanScheduleName: string;
-  body: unknown;
-}
-export const ScalingPlanPooledSchedulesCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      scalingPlanName: S.String.pipe(T.Label()),
-      scalingPlanScheduleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
-        code: 200,
-        apiVersion: "2025-10-10",
-      }),
-    ),
-).annotate({
-  identifier: "ScalingPlanPooledSchedulesCreateRequest",
-}) as any as S.Schema<ScalingPlanPooledSchedulesCreateRequest>;
-
 export type ScalingPlanPooledSchedulePropertiesDaysOfWeekItem =
   | "Monday"
   | "Tuesday"
@@ -4977,14 +5833,13 @@ export type ScalingPlanPooledSchedulePropertiesDaysOfWeekItem =
   | "Thursday"
   | "Friday"
   | "Saturday"
-  | "Sunday"
-  | (string & {});
+  | "Sunday";
 export const ScalingPlanPooledSchedulePropertiesDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
 /** Set of days of the week on which this schedule is active. */
 export type ScalingPlanPooledSchedulePropertiesDaysOfWeekList =
-  ScalingPlanPooledSchedulePropertiesDaysOfWeekItem[];
+  ReadonlyArray<ScalingPlanPooledSchedulePropertiesDaysOfWeekItem>;
 export const ScalingPlanPooledSchedulePropertiesDaysOfWeekList =
   /*@__PURE__*/ S.Array(
     ScalingPlanPooledSchedulePropertiesDaysOfWeekItem,
@@ -4993,40 +5848,35 @@ export const ScalingPlanPooledSchedulePropertiesDaysOfWeekList =
 /** Load balancing algorithm for ramp up period. */
 export type ScalingPlanPooledSchedulePropertiesRampUpLoadBalancingAlgorithm =
   | "BreadthFirst"
-  | "DepthFirst"
-  | (string & {});
+  | "DepthFirst";
 export const ScalingPlanPooledSchedulePropertiesRampUpLoadBalancingAlgorithm =
   /*@__PURE__*/ S.String;
 
 /** Load balancing algorithm for peak period. */
 export type ScalingPlanPooledSchedulePropertiesPeakLoadBalancingAlgorithm =
   | "BreadthFirst"
-  | "DepthFirst"
-  | (string & {});
+  | "DepthFirst";
 export const ScalingPlanPooledSchedulePropertiesPeakLoadBalancingAlgorithm =
   /*@__PURE__*/ S.String;
 
 /** Load balancing algorithm for ramp down period. */
 export type ScalingPlanPooledSchedulePropertiesRampDownLoadBalancingAlgorithm =
   | "BreadthFirst"
-  | "DepthFirst"
-  | (string & {});
+  | "DepthFirst";
 export const ScalingPlanPooledSchedulePropertiesRampDownLoadBalancingAlgorithm =
   /*@__PURE__*/ S.String;
 
 /** Specifies when to stop hosts during ramp down period. */
 export type ScalingPlanPooledSchedulePropertiesRampDownStopHostsWhen =
   | "ZeroSessions"
-  | "ZeroActiveSessions"
-  | (string & {});
+  | "ZeroActiveSessions";
 export const ScalingPlanPooledSchedulePropertiesRampDownStopHostsWhen =
   /*@__PURE__*/ S.String;
 
 /** Load balancing algorithm for off-peak period. */
 export type ScalingPlanPooledSchedulePropertiesOffPeakLoadBalancingAlgorithm =
   | "BreadthFirst"
-  | "DepthFirst"
-  | (string & {});
+  | "DepthFirst";
 export const ScalingPlanPooledSchedulePropertiesOffPeakLoadBalancingAlgorithm =
   /*@__PURE__*/ S.String;
 
@@ -5100,6 +5950,38 @@ export const ScalingPlanPooledScheduleProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScalingPlanPooledScheduleProperties",
 }) as any as S.Schema<ScalingPlanPooledScheduleProperties>;
+
+export interface ScalingPlanPooledSchedulesCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the scaling plan. */
+  scalingPlanName: string;
+  /** The name of the ScalingPlanSchedule */
+  scalingPlanScheduleName: string;
+  /** Detailed properties for ScalingPlanPooledSchedule */
+  properties: ScalingPlanPooledScheduleProperties;
+}
+export const ScalingPlanPooledSchedulesCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      scalingPlanName: S.String.pipe(T.Label()),
+      scalingPlanScheduleName: S.String.pipe(T.Label()),
+      properties: ScalingPlanPooledScheduleProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DesktopVirtualization/scalingPlans/{scalingPlanName}/pooledSchedules/{scalingPlanScheduleName}",
+        code: 200,
+        apiVersion: "2025-10-10",
+      }),
+    ),
+).annotate({
+  identifier: "ScalingPlanPooledSchedulesCreateRequest",
+}) as any as S.Schema<ScalingPlanPooledSchedulesCreateRequest>;
 
 export interface ScalingPlanPooledSchedulesCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5278,7 +6160,7 @@ export const ScalingPlanPooledSchedule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ScalingPlanPooledSchedule definitions. */
 export type ScalingPlanPooledScheduleListValueList =
-  ScalingPlanPooledSchedule[];
+  ReadonlyArray<ScalingPlanPooledSchedule>;
 export const ScalingPlanPooledScheduleListValueList = /*@__PURE__*/ S.Array(
   ScalingPlanPooledSchedule,
 ) as any as S.Schema<ScalingPlanPooledScheduleListValueList>;
@@ -5308,7 +6190,8 @@ export interface ScalingPlanPooledSchedulesUpdateRequest {
   scalingPlanName: string;
   /** The name of the ScalingPlanSchedule */
   scalingPlanScheduleName: string;
-  body?: unknown;
+  /** Detailed properties for ScalingPlanPooledSchedule */
+  properties?: ScalingPlanPooledScheduleProperties;
 }
 export const ScalingPlanPooledSchedulesUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -5317,7 +6200,7 @@ export const ScalingPlanPooledSchedulesUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       scalingPlanName: S.String.pipe(T.Label()),
       scalingPlanScheduleName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(ScalingPlanPooledScheduleProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -5355,6 +6238,266 @@ export const ScalingPlanPooledSchedulesUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ScalingPlanPooledSchedulesUpdateResponse",
 }) as any as S.Schema<ScalingPlanPooledSchedulesUpdateResponse>;
 
+/** Resource tags. */
+export type ScalingPlansCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ScalingPlansCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ScalingPlansCreateRequestTagsMap>;
+
+/** Managed service identity (either system assigned, or none) */
+export interface ScalingPlansCreateRequestIdentity {
+  type: SystemAssignedServiceIdentityType;
+}
+export const ScalingPlansCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SystemAssignedServiceIdentityType,
+  }),
+).annotate({
+  identifier: "ScalingPlansCreateRequestIdentity",
+}) as any as S.Schema<ScalingPlansCreateRequestIdentity>;
+
+/** The resource model definition representing SKU */
+export interface ScalingPlansCreateRequestSku {
+  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
+  name: string;
+  tier?: SkuTier;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+}
+export const ScalingPlansCreateRequestSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: S.optional(SkuTier),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ScalingPlansCreateRequestSku",
+}) as any as S.Schema<ScalingPlansCreateRequestSku>;
+
+/** Plan for the resource. */
+export interface ScalingPlansCreateRequestPlan {
+  /** A user defined name of the 3rd Party Artifact that is being procured. */
+  name: string;
+  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
+  publisher: string;
+  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
+  product: string;
+  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
+  promotionCode?: string;
+  /** The version of the desired product/artifact. */
+  version?: string;
+}
+export const ScalingPlansCreateRequestPlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    publisher: S.String,
+    product: S.String,
+    promotionCode: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScalingPlansCreateRequestPlan",
+}) as any as S.Schema<ScalingPlansCreateRequestPlan>;
+
+/** HostPool type for desktop. */
+export type ScalingPlanPropertiesInputHostPoolType = "Pooled";
+export const ScalingPlanPropertiesInputHostPoolType = /*@__PURE__*/ S.String;
+
+export type ScalingScheduleDaysOfWeekItem =
+  | "Sunday"
+  | "Monday"
+  | "Tuesday"
+  | "Wednesday"
+  | "Thursday"
+  | "Friday"
+  | "Saturday";
+export const ScalingScheduleDaysOfWeekItem = /*@__PURE__*/ S.String;
+
+/** Set of days of the week on which this schedule is active. */
+export type ScalingScheduleDaysOfWeekList =
+  ReadonlyArray<ScalingScheduleDaysOfWeekItem>;
+export const ScalingScheduleDaysOfWeekList = /*@__PURE__*/ S.Array(
+  ScalingScheduleDaysOfWeekItem,
+) as any as S.Schema<ScalingScheduleDaysOfWeekList>;
+
+/** Load balancing algorithm for ramp up period. */
+export type ScalingScheduleRampUpLoadBalancingAlgorithm =
+  | "BreadthFirst"
+  | "DepthFirst";
+export const ScalingScheduleRampUpLoadBalancingAlgorithm =
+  /*@__PURE__*/ S.String;
+
+/** Load balancing algorithm for peak period. */
+export type ScalingSchedulePeakLoadBalancingAlgorithm =
+  | "BreadthFirst"
+  | "DepthFirst";
+export const ScalingSchedulePeakLoadBalancingAlgorithm = /*@__PURE__*/ S.String;
+
+/** Load balancing algorithm for ramp down period. */
+export type ScalingScheduleRampDownLoadBalancingAlgorithm =
+  | "BreadthFirst"
+  | "DepthFirst";
+export const ScalingScheduleRampDownLoadBalancingAlgorithm =
+  /*@__PURE__*/ S.String;
+
+/** Specifies when to stop hosts during ramp down period. */
+export type ScalingScheduleRampDownStopHostsWhen =
+  | "ZeroSessions"
+  | "ZeroActiveSessions";
+export const ScalingScheduleRampDownStopHostsWhen = /*@__PURE__*/ S.String;
+
+/** Load balancing algorithm for off-peak period. */
+export type ScalingScheduleOffPeakLoadBalancingAlgorithm =
+  | "BreadthFirst"
+  | "DepthFirst";
+export const ScalingScheduleOffPeakLoadBalancingAlgorithm =
+  /*@__PURE__*/ S.String;
+
+/** A ScalingPlanPooledSchedule. */
+export interface ScalingSchedule {
+  /** Name of the ScalingPlanPooledSchedule. */
+  name?: string;
+  /** Set of days of the week on which this schedule is active. */
+  daysOfWeek?: ScalingScheduleDaysOfWeekList;
+  /** Starting time for ramp up period. */
+  rampUpStartTime?: Time;
+  /** Load balancing algorithm for ramp up period. */
+  rampUpLoadBalancingAlgorithm?: ScalingScheduleRampUpLoadBalancingAlgorithm;
+  /** Minimum host percentage for ramp up period. */
+  rampUpMinimumHostsPct?: number;
+  /** Capacity threshold for ramp up period. */
+  rampUpCapacityThresholdPct?: number;
+  /** Starting time for peak period. */
+  peakStartTime?: Time;
+  /** Load balancing algorithm for peak period. */
+  peakLoadBalancingAlgorithm?: ScalingSchedulePeakLoadBalancingAlgorithm;
+  /** Starting time for ramp down period. */
+  rampDownStartTime?: Time;
+  /** Load balancing algorithm for ramp down period. */
+  rampDownLoadBalancingAlgorithm?: ScalingScheduleRampDownLoadBalancingAlgorithm;
+  /** Minimum host percentage for ramp down period. */
+  rampDownMinimumHostsPct?: number;
+  /** Capacity threshold for ramp down period. */
+  rampDownCapacityThresholdPct?: number;
+  /** Should users be logged off forcefully from hosts. */
+  rampDownForceLogoffUsers?: boolean;
+  /** Specifies when to stop hosts during ramp down period. */
+  rampDownStopHostsWhen?: ScalingScheduleRampDownStopHostsWhen;
+  /** Number of minutes to wait to stop hosts during ramp down period. */
+  rampDownWaitTimeMinutes?: number;
+  /** Notification message for users during ramp down period. */
+  rampDownNotificationMessage?: string;
+  /** Starting time for off-peak period. */
+  offPeakStartTime?: Time;
+  /** Load balancing algorithm for off-peak period. */
+  offPeakLoadBalancingAlgorithm?: ScalingScheduleOffPeakLoadBalancingAlgorithm;
+}
+export const ScalingSchedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    daysOfWeek: S.optional(ScalingScheduleDaysOfWeekList),
+    rampUpStartTime: S.optional(Time),
+    rampUpLoadBalancingAlgorithm: S.optional(
+      ScalingScheduleRampUpLoadBalancingAlgorithm,
+    ),
+    rampUpMinimumHostsPct: S.optional(S.Number),
+    rampUpCapacityThresholdPct: S.optional(S.Number),
+    peakStartTime: S.optional(Time),
+    peakLoadBalancingAlgorithm: S.optional(
+      ScalingSchedulePeakLoadBalancingAlgorithm,
+    ),
+    rampDownStartTime: S.optional(Time),
+    rampDownLoadBalancingAlgorithm: S.optional(
+      ScalingScheduleRampDownLoadBalancingAlgorithm,
+    ),
+    rampDownMinimumHostsPct: S.optional(S.Number),
+    rampDownCapacityThresholdPct: S.optional(S.Number),
+    rampDownForceLogoffUsers: S.optional(S.Boolean),
+    rampDownStopHostsWhen: S.optional(ScalingScheduleRampDownStopHostsWhen),
+    rampDownWaitTimeMinutes: S.optional(S.Number),
+    rampDownNotificationMessage: S.optional(S.String),
+    offPeakStartTime: S.optional(Time),
+    offPeakLoadBalancingAlgorithm: S.optional(
+      ScalingScheduleOffPeakLoadBalancingAlgorithm,
+    ),
+  }),
+).annotate({
+  identifier: "ScalingSchedule",
+}) as any as S.Schema<ScalingSchedule>;
+
+/** List of ScalingPlanPooledSchedule definitions. */
+export type ScalingPlanPropertiesInputSchedulesList =
+  ReadonlyArray<ScalingSchedule>;
+export const ScalingPlanPropertiesInputSchedulesList = /*@__PURE__*/ S.Array(
+  ScalingSchedule,
+) as any as S.Schema<ScalingPlanPropertiesInputSchedulesList>;
+
+/** Scaling plan reference to hostpool. */
+export interface ScalingHostPoolReference {
+  /** Arm path of referenced hostpool. */
+  hostPoolArmPath?: string;
+  /** Is the scaling plan enabled for this hostpool. */
+  scalingPlanEnabled?: boolean;
+}
+export const ScalingHostPoolReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hostPoolArmPath: S.optional(S.String),
+    scalingPlanEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ScalingHostPoolReference",
+}) as any as S.Schema<ScalingHostPoolReference>;
+
+/** List of ScalingHostPoolReference definitions. */
+export type ScalingPlanPropertiesInputHostPoolReferencesList =
+  ReadonlyArray<ScalingHostPoolReference>;
+export const ScalingPlanPropertiesInputHostPoolReferencesList =
+  /*@__PURE__*/ S.Array(
+    ScalingHostPoolReference,
+  ) as any as S.Schema<ScalingPlanPropertiesInputHostPoolReferencesList>;
+
+/** Scaling plan properties. */
+export interface ScalingPlanPropertiesInput {
+  /** Description of scaling plan. */
+  description?: string;
+  /** User friendly name of scaling plan. */
+  friendlyName?: string;
+  /** Timezone of the scaling plan. */
+  timeZone: string;
+  /** HostPool type for desktop. */
+  hostPoolType?: ScalingPlanPropertiesInputHostPoolType;
+  /** Exclusion tag for scaling plan. */
+  exclusionTag?: string;
+  /** List of ScalingPlanPooledSchedule definitions. */
+  schedules?: ScalingPlanPropertiesInputSchedulesList;
+  /** List of ScalingHostPoolReference definitions. */
+  hostPoolReferences?: ScalingPlanPropertiesInputHostPoolReferencesList;
+}
+export const ScalingPlanPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+    timeZone: S.String,
+    hostPoolType: S.optional(ScalingPlanPropertiesInputHostPoolType),
+    exclusionTag: S.optional(S.String),
+    schedules: S.optional(ScalingPlanPropertiesInputSchedulesList),
+    hostPoolReferences: S.optional(
+      ScalingPlanPropertiesInputHostPoolReferencesList,
+    ),
+  }),
+).annotate({
+  identifier: "ScalingPlanPropertiesInput",
+}) as any as S.Schema<ScalingPlanPropertiesInput>;
+
 export interface ScalingPlansCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5362,14 +6505,36 @@ export interface ScalingPlansCreateRequest {
   resourceGroupName: string;
   /** The name of the scaling plan. */
   scalingPlanName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ScalingPlansCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: ScalingPlansCreateRequestIdentity;
+  /** The resource model definition representing SKU */
+  sku?: ScalingPlansCreateRequestSku;
+  /** Plan for the resource. */
+  plan?: ScalingPlansCreateRequestPlan;
+  /** Detailed properties for scaling plan. */
+  properties: ScalingPlanPropertiesInput;
 }
 export const ScalingPlansCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     scalingPlanName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ScalingPlansCreateRequestTagsMap),
+    location: S.String,
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    identity: S.optional(ScalingPlansCreateRequestIdentity),
+    sku: S.optional(ScalingPlansCreateRequestSku),
+    plan: S.optional(ScalingPlansCreateRequestPlan),
+    properties: ScalingPlanPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5459,161 +6624,18 @@ export const ScalingPlansCreateResponsePlan = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScalingPlansCreateResponsePlan>;
 
 /** HostPool type for desktop. */
-export type ScalingPlanPropertiesHostPoolType = "Pooled" | (string & {});
+export type ScalingPlanPropertiesHostPoolType = "Pooled";
 export const ScalingPlanPropertiesHostPoolType = /*@__PURE__*/ S.String;
 
-export type ScalingScheduleDaysOfWeekItem =
-  | "Sunday"
-  | "Monday"
-  | "Tuesday"
-  | "Wednesday"
-  | "Thursday"
-  | "Friday"
-  | "Saturday"
-  | (string & {});
-export const ScalingScheduleDaysOfWeekItem = /*@__PURE__*/ S.String;
-
-/** Set of days of the week on which this schedule is active. */
-export type ScalingScheduleDaysOfWeekList = ScalingScheduleDaysOfWeekItem[];
-export const ScalingScheduleDaysOfWeekList = /*@__PURE__*/ S.Array(
-  ScalingScheduleDaysOfWeekItem,
-) as any as S.Schema<ScalingScheduleDaysOfWeekList>;
-
-/** Load balancing algorithm for ramp up period. */
-export type ScalingScheduleRampUpLoadBalancingAlgorithm =
-  | "BreadthFirst"
-  | "DepthFirst"
-  | (string & {});
-export const ScalingScheduleRampUpLoadBalancingAlgorithm =
-  /*@__PURE__*/ S.String;
-
-/** Load balancing algorithm for peak period. */
-export type ScalingSchedulePeakLoadBalancingAlgorithm =
-  | "BreadthFirst"
-  | "DepthFirst"
-  | (string & {});
-export const ScalingSchedulePeakLoadBalancingAlgorithm = /*@__PURE__*/ S.String;
-
-/** Load balancing algorithm for ramp down period. */
-export type ScalingScheduleRampDownLoadBalancingAlgorithm =
-  | "BreadthFirst"
-  | "DepthFirst"
-  | (string & {});
-export const ScalingScheduleRampDownLoadBalancingAlgorithm =
-  /*@__PURE__*/ S.String;
-
-/** Specifies when to stop hosts during ramp down period. */
-export type ScalingScheduleRampDownStopHostsWhen =
-  | "ZeroSessions"
-  | "ZeroActiveSessions"
-  | (string & {});
-export const ScalingScheduleRampDownStopHostsWhen = /*@__PURE__*/ S.String;
-
-/** Load balancing algorithm for off-peak period. */
-export type ScalingScheduleOffPeakLoadBalancingAlgorithm =
-  | "BreadthFirst"
-  | "DepthFirst"
-  | (string & {});
-export const ScalingScheduleOffPeakLoadBalancingAlgorithm =
-  /*@__PURE__*/ S.String;
-
-/** A ScalingPlanPooledSchedule. */
-export interface ScalingSchedule {
-  /** Name of the ScalingPlanPooledSchedule. */
-  name?: string;
-  /** Set of days of the week on which this schedule is active. */
-  daysOfWeek?: ScalingScheduleDaysOfWeekList;
-  /** Starting time for ramp up period. */
-  rampUpStartTime?: Time;
-  /** Load balancing algorithm for ramp up period. */
-  rampUpLoadBalancingAlgorithm?: ScalingScheduleRampUpLoadBalancingAlgorithm;
-  /** Minimum host percentage for ramp up period. */
-  rampUpMinimumHostsPct?: number;
-  /** Capacity threshold for ramp up period. */
-  rampUpCapacityThresholdPct?: number;
-  /** Starting time for peak period. */
-  peakStartTime?: Time;
-  /** Load balancing algorithm for peak period. */
-  peakLoadBalancingAlgorithm?: ScalingSchedulePeakLoadBalancingAlgorithm;
-  /** Starting time for ramp down period. */
-  rampDownStartTime?: Time;
-  /** Load balancing algorithm for ramp down period. */
-  rampDownLoadBalancingAlgorithm?: ScalingScheduleRampDownLoadBalancingAlgorithm;
-  /** Minimum host percentage for ramp down period. */
-  rampDownMinimumHostsPct?: number;
-  /** Capacity threshold for ramp down period. */
-  rampDownCapacityThresholdPct?: number;
-  /** Should users be logged off forcefully from hosts. */
-  rampDownForceLogoffUsers?: boolean;
-  /** Specifies when to stop hosts during ramp down period. */
-  rampDownStopHostsWhen?: ScalingScheduleRampDownStopHostsWhen;
-  /** Number of minutes to wait to stop hosts during ramp down period. */
-  rampDownWaitTimeMinutes?: number;
-  /** Notification message for users during ramp down period. */
-  rampDownNotificationMessage?: string;
-  /** Starting time for off-peak period. */
-  offPeakStartTime?: Time;
-  /** Load balancing algorithm for off-peak period. */
-  offPeakLoadBalancingAlgorithm?: ScalingScheduleOffPeakLoadBalancingAlgorithm;
-}
-export const ScalingSchedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    daysOfWeek: S.optional(ScalingScheduleDaysOfWeekList),
-    rampUpStartTime: S.optional(Time),
-    rampUpLoadBalancingAlgorithm: S.optional(
-      ScalingScheduleRampUpLoadBalancingAlgorithm,
-    ),
-    rampUpMinimumHostsPct: S.optional(S.Number),
-    rampUpCapacityThresholdPct: S.optional(S.Number),
-    peakStartTime: S.optional(Time),
-    peakLoadBalancingAlgorithm: S.optional(
-      ScalingSchedulePeakLoadBalancingAlgorithm,
-    ),
-    rampDownStartTime: S.optional(Time),
-    rampDownLoadBalancingAlgorithm: S.optional(
-      ScalingScheduleRampDownLoadBalancingAlgorithm,
-    ),
-    rampDownMinimumHostsPct: S.optional(S.Number),
-    rampDownCapacityThresholdPct: S.optional(S.Number),
-    rampDownForceLogoffUsers: S.optional(S.Boolean),
-    rampDownStopHostsWhen: S.optional(ScalingScheduleRampDownStopHostsWhen),
-    rampDownWaitTimeMinutes: S.optional(S.Number),
-    rampDownNotificationMessage: S.optional(S.String),
-    offPeakStartTime: S.optional(Time),
-    offPeakLoadBalancingAlgorithm: S.optional(
-      ScalingScheduleOffPeakLoadBalancingAlgorithm,
-    ),
-  }),
-).annotate({
-  identifier: "ScalingSchedule",
-}) as any as S.Schema<ScalingSchedule>;
-
 /** List of ScalingPlanPooledSchedule definitions. */
-export type ScalingPlanPropertiesSchedulesList = ScalingSchedule[];
+export type ScalingPlanPropertiesSchedulesList = ReadonlyArray<ScalingSchedule>;
 export const ScalingPlanPropertiesSchedulesList = /*@__PURE__*/ S.Array(
   ScalingSchedule,
 ) as any as S.Schema<ScalingPlanPropertiesSchedulesList>;
 
-/** Scaling plan reference to hostpool. */
-export interface ScalingHostPoolReference {
-  /** Arm path of referenced hostpool. */
-  hostPoolArmPath?: string;
-  /** Is the scaling plan enabled for this hostpool. */
-  scalingPlanEnabled?: boolean;
-}
-export const ScalingHostPoolReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostPoolArmPath: S.optional(S.String),
-    scalingPlanEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ScalingHostPoolReference",
-}) as any as S.Schema<ScalingHostPoolReference>;
-
 /** List of ScalingHostPoolReference definitions. */
 export type ScalingPlanPropertiesHostPoolReferencesList =
-  ScalingHostPoolReference[];
+  ReadonlyArray<ScalingHostPoolReference>;
 export const ScalingPlanPropertiesHostPoolReferencesList =
   /*@__PURE__*/ S.Array(
     ScalingHostPoolReference,
@@ -6036,7 +7058,7 @@ export const ScalingPlan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScalingPlan" }) as any as S.Schema<ScalingPlan>;
 
 /** List of scaling plan definitions. */
-export type ScalingPlanListValueList = ScalingPlan[];
+export type ScalingPlanListValueList = ReadonlyArray<ScalingPlan>;
 export const ScalingPlanListValueList = /*@__PURE__*/ S.Array(
   ScalingPlan,
 ) as any as S.Schema<ScalingPlanListValueList>;
@@ -6118,6 +7140,60 @@ export const ScalingPlansListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "ScalingPlansListBySubscriptionRequest",
 }) as any as S.Schema<ScalingPlansListBySubscriptionRequest>;
 
+/** tags to be updated */
+export type ScalingPlansUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ScalingPlansUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ScalingPlansUpdateRequestTagsMap>;
+
+/** List of ScalingSchedule definitions. */
+export type ScalingPlanPatchPropertiesSchedulesList =
+  ReadonlyArray<ScalingSchedule>;
+export const ScalingPlanPatchPropertiesSchedulesList = /*@__PURE__*/ S.Array(
+  ScalingSchedule,
+) as any as S.Schema<ScalingPlanPatchPropertiesSchedulesList>;
+
+/** List of ScalingHostPoolReference definitions. */
+export type ScalingPlanPatchPropertiesHostPoolReferencesList =
+  ReadonlyArray<ScalingHostPoolReference>;
+export const ScalingPlanPatchPropertiesHostPoolReferencesList =
+  /*@__PURE__*/ S.Array(
+    ScalingHostPoolReference,
+  ) as any as S.Schema<ScalingPlanPatchPropertiesHostPoolReferencesList>;
+
+/** Scaling plan properties. */
+export interface ScalingPlanPatchProperties {
+  /** Description of scaling plan. */
+  description?: string;
+  /** User friendly name of scaling plan. */
+  friendlyName?: string;
+  /** Timezone of the scaling plan. */
+  timeZone?: string;
+  /** Exclusion tag for scaling plan. */
+  exclusionTag?: string;
+  /** List of ScalingSchedule definitions. */
+  schedules?: ScalingPlanPatchPropertiesSchedulesList;
+  /** List of ScalingHostPoolReference definitions. */
+  hostPoolReferences?: ScalingPlanPatchPropertiesHostPoolReferencesList;
+}
+export const ScalingPlanPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+    timeZone: S.optional(S.String),
+    exclusionTag: S.optional(S.String),
+    schedules: S.optional(ScalingPlanPatchPropertiesSchedulesList),
+    hostPoolReferences: S.optional(
+      ScalingPlanPatchPropertiesHostPoolReferencesList,
+    ),
+  }),
+).annotate({
+  identifier: "ScalingPlanPatchProperties",
+}) as any as S.Schema<ScalingPlanPatchProperties>;
+
 export interface ScalingPlansUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6125,14 +7201,18 @@ export interface ScalingPlansUpdateRequest {
   resourceGroupName: string;
   /** The name of the scaling plan. */
   scalingPlanName: string;
-  body?: unknown;
+  /** tags to be updated */
+  tags?: ScalingPlansUpdateRequestTagsMap | null;
+  /** Detailed properties for scaling plan */
+  properties?: ScalingPlanPatchProperties;
 }
 export const ScalingPlansUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     scalingPlanName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(S.NullOr(ScalingPlansUpdateRequestTagsMap)),
+    properties: S.optional(ScalingPlanPatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -6348,8 +7428,7 @@ export type SessionHostPropertiesStatus =
   | "DomainTrustRelationshipLost"
   | "SxSStackListenerNotReady"
   | "FSLogixNotHealthy"
-  | "NeedsAssistance"
-  | (string & {});
+  | "NeedsAssistance";
 export const SessionHostPropertiesStatus = /*@__PURE__*/ S.String;
 
 /** Update state of a SessionHost. */
@@ -6358,8 +7437,7 @@ export type SessionHostPropertiesUpdateState =
   | "Pending"
   | "Started"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SessionHostPropertiesUpdateState = /*@__PURE__*/ S.String;
 
 /** Represents the name of the health check operation performed. */
@@ -6374,8 +7452,7 @@ export type SessionHostHealthCheckReportHealthCheckName =
   | "WebRTCRedirectorCheck"
   | "SupportedEncryptionCheck"
   | "MetaDataServiceCheck"
-  | "AppAttachHealthCheck"
-  | (string & {});
+  | "AppAttachHealthCheck";
 export const SessionHostHealthCheckReportHealthCheckName =
   /*@__PURE__*/ S.String;
 
@@ -6384,8 +7461,7 @@ export type SessionHostHealthCheckReportHealthCheckResult =
   | "Unknown"
   | "HealthCheckSucceeded"
   | "HealthCheckFailed"
-  | "SessionHostShutdown"
-  | (string & {});
+  | "SessionHostShutdown";
 export const SessionHostHealthCheckReportHealthCheckResult =
   /*@__PURE__*/ S.String;
 
@@ -6432,7 +7508,7 @@ export const SessionHostHealthCheckReport = /*@__PURE__*/ S.suspend(() =>
 
 /** List of SessionHostHealthCheckReports */
 export type SessionHostPropertiesSessionHostHealthCheckResultsList =
-  SessionHostHealthCheckReport[];
+  ReadonlyArray<SessionHostHealthCheckReport>;
 export const SessionHostPropertiesSessionHostHealthCheckResultsList =
   /*@__PURE__*/ S.Array(
     SessionHostHealthCheckReport,
@@ -6583,7 +7659,7 @@ export const SessionHost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionHost" }) as any as S.Schema<SessionHost>;
 
 /** List of SessionHost definitions. */
-export type SessionHostListValueList = SessionHost[];
+export type SessionHostListValueList = ReadonlyArray<SessionHost>;
 export const SessionHostListValueList = /*@__PURE__*/ S.Array(
   SessionHost,
 ) as any as S.Schema<SessionHostListValueList>;
@@ -6604,6 +7680,25 @@ export const SessionHostList = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionHostList",
 }) as any as S.Schema<SessionHostList>;
 
+/** SessionHost properties that can be patched. */
+export interface SessionHostPatchProperties {
+  /** Allow a new session. */
+  allowNewSession?: boolean;
+  /** User assigned to SessionHost. */
+  assignedUser?: string;
+  /** Friendly name of SessionHost */
+  friendlyName?: string;
+}
+export const SessionHostPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowNewSession: S.optional(S.Boolean),
+    assignedUser: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SessionHostPatchProperties",
+}) as any as S.Schema<SessionHostPatchProperties>;
+
 export interface SessionHostsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6615,7 +7710,8 @@ export interface SessionHostsUpdateRequest {
   sessionHostName: string;
   /** Force flag to update assign, unassign or reassign personal desktop. */
   force?: boolean;
-  body?: unknown;
+  /** Detailed properties for SessionHost */
+  properties?: SessionHostPatchProperties;
 }
 export const SessionHostsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6624,7 +7720,7 @@ export const SessionHostsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     hostPoolName: S.String.pipe(T.Label()),
     sessionHostName: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(SessionHostPatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -6744,7 +7840,7 @@ export const StartMenuItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartMenuItem" }) as any as S.Schema<StartMenuItem>;
 
 /** List of StartMenuItem definitions. */
-export type StartMenuItemListValueList = StartMenuItem[];
+export type StartMenuItemListValueList = ReadonlyArray<StartMenuItem>;
 export const StartMenuItemListValueList = /*@__PURE__*/ S.Array(
   StartMenuItem,
 ) as any as S.Schema<StartMenuItemListValueList>;
@@ -6876,10 +7972,7 @@ export const UserSessionsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserSessionsGetRequest>;
 
 /** Application type of application. */
-export type UserSessionPropertiesApplicationType =
-  | "RemoteApp"
-  | "Desktop"
-  | (string & {});
+export type UserSessionPropertiesApplicationType = "RemoteApp" | "Desktop";
 export const UserSessionPropertiesApplicationType = /*@__PURE__*/ S.String;
 
 /** State of user session. */
@@ -6889,8 +7982,7 @@ export type UserSessionPropertiesSessionState =
   | "Disconnected"
   | "Pending"
   | "LogOff"
-  | "UserProfileDiskMounted"
-  | (string & {});
+  | "UserProfileDiskMounted";
 export const UserSessionPropertiesSessionState = /*@__PURE__*/ S.String;
 
 /** Schema for UserSession properties. */
@@ -7006,7 +8098,7 @@ export const UserSession = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserSession" }) as any as S.Schema<UserSession>;
 
 /** List of UserSession definitions. */
-export type UserSessionListValueList = UserSession[];
+export type UserSessionListValueList = ReadonlyArray<UserSession>;
 export const UserSessionListValueList = /*@__PURE__*/ S.Array(
   UserSession,
 ) as any as S.Schema<UserSessionListValueList>;
@@ -7075,7 +8167,10 @@ export interface UserSessionsSendMessageRequest {
   sessionHostName: string;
   /** The name of the user session within the specified session host */
   userSessionId: string;
-  body?: unknown;
+  /** Title of message. */
+  messageTitle?: string;
+  /** Body of message. */
+  messageBody?: string;
 }
 export const UserSessionsSendMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7084,7 +8179,8 @@ export const UserSessionsSendMessageRequest = /*@__PURE__*/ S.suspend(() =>
     hostPoolName: S.String.pipe(T.Label()),
     sessionHostName: S.String.pipe(T.Label()),
     userSessionId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    messageTitle: S.optional(S.String),
+    messageBody: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -7104,6 +8200,118 @@ export const UserSessionsSendMessageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserSessionsSendMessageResponse",
 }) as any as S.Schema<UserSessionsSendMessageResponse>;
 
+/** Resource tags. */
+export type WorkspacesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
+
+/** Managed service identity (either system assigned, or none) */
+export interface WorkspacesCreateOrUpdateRequestIdentity {
+  type: SystemAssignedServiceIdentityType;
+}
+export const WorkspacesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: SystemAssignedServiceIdentityType,
+    }),
+).annotate({
+  identifier: "WorkspacesCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<WorkspacesCreateOrUpdateRequestIdentity>;
+
+/** The resource model definition representing SKU */
+export interface WorkspacesCreateOrUpdateRequestSku {
+  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
+  name: string;
+  tier?: SkuTier;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+}
+export const WorkspacesCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: S.optional(SkuTier),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "WorkspacesCreateOrUpdateRequestSku",
+}) as any as S.Schema<WorkspacesCreateOrUpdateRequestSku>;
+
+/** Plan for the resource. */
+export interface WorkspacesCreateOrUpdateRequestPlan {
+  /** A user defined name of the 3rd Party Artifact that is being procured. */
+  name: string;
+  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
+  publisher: string;
+  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
+  product: string;
+  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
+  promotionCode?: string;
+  /** The version of the desired product/artifact. */
+  version?: string;
+}
+export const WorkspacesCreateOrUpdateRequestPlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    publisher: S.String,
+    product: S.String,
+    promotionCode: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WorkspacesCreateOrUpdateRequestPlan",
+}) as any as S.Schema<WorkspacesCreateOrUpdateRequestPlan>;
+
+/** List of applicationGroup resource Ids. */
+export type WorkspacePropertiesInputApplicationGroupReferencesList =
+  ReadonlyArray<string>;
+export const WorkspacePropertiesInputApplicationGroupReferencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<WorkspacePropertiesInputApplicationGroupReferencesList>;
+
+/** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
+export type WorkspacePropertiesInputPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled";
+export const WorkspacePropertiesInputPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** Schema for Workspace properties. */
+export interface WorkspacePropertiesInput {
+  /** Description of Workspace. */
+  description?: string;
+  /** Friendly name of Workspace. */
+  friendlyName?: string;
+  /** List of applicationGroup resource Ids. */
+  applicationGroupReferences?: WorkspacePropertiesInputApplicationGroupReferencesList | null;
+  /** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
+  publicNetworkAccess?: WorkspacePropertiesInputPublicNetworkAccess | null;
+}
+export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+    applicationGroupReferences: S.optional(
+      S.NullOr(WorkspacePropertiesInputApplicationGroupReferencesList),
+    ),
+    publicNetworkAccess: S.optional(
+      S.NullOr(WorkspacePropertiesInputPublicNetworkAccess),
+    ),
+  }),
+).annotate({
+  identifier: "WorkspacePropertiesInput",
+}) as any as S.Schema<WorkspacePropertiesInput>;
+
 export interface WorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7111,14 +8319,36 @@ export interface WorkspacesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the workspace */
   workspaceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: WorkspacesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
+  managedBy?: string;
+  /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
+  kind?: string;
+  /** Managed service identity (either system assigned, or none) */
+  identity?: WorkspacesCreateOrUpdateRequestIdentity;
+  /** The resource model definition representing SKU */
+  sku?: WorkspacesCreateOrUpdateRequestSku;
+  /** Plan for the resource. */
+  plan?: WorkspacesCreateOrUpdateRequestPlan;
+  /** Detailed properties for Workspace */
+  properties?: WorkspacePropertiesInput;
 }
 export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(WorkspacesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    managedBy: S.optional(S.String),
+    kind: S.optional(S.String),
+    identity: S.optional(WorkspacesCreateOrUpdateRequestIdentity),
+    sku: S.optional(WorkspacesCreateOrUpdateRequestSku),
+    plan: S.optional(WorkspacesCreateOrUpdateRequestPlan),
+    properties: S.optional(WorkspacePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7210,17 +8440,15 @@ export const WorkspacesCreateOrUpdateResponsePlan = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkspacesCreateOrUpdateResponsePlan>;
 
 /** List of applicationGroup resource Ids. */
-export type WorkspacePropertiesApplicationGroupReferencesList = string[];
+export type WorkspacePropertiesApplicationGroupReferencesList =
+  ReadonlyArray<string>;
 export const WorkspacePropertiesApplicationGroupReferencesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<WorkspacePropertiesApplicationGroupReferencesList>;
 
 /** Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints */
-export type WorkspacePropertiesPublicNetworkAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type WorkspacePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
 export const WorkspacePropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The private endpoint connection resource. */
@@ -7251,7 +8479,7 @@ export const WorkspacePropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connection associated with the specified resource */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  WorkspacePropertiesPrivateEndpointConnectionsItem[];
+  ReadonlyArray<WorkspacePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     WorkspacePropertiesPrivateEndpointConnectionsItem,
@@ -7673,7 +8901,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** List of Workspace definitions. */
-export type WorkspaceListValueList = Workspace[];
+export type WorkspaceListValueList = ReadonlyArray<Workspace>;
 export const WorkspaceListValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListValueList>;
@@ -7711,6 +8939,56 @@ export const WorkspacesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspacesListBySubscriptionRequest",
 }) as any as S.Schema<WorkspacesListBySubscriptionRequest>;
 
+/** tags to be updated */
+export type WorkspacesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkspacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkspacesUpdateRequestTagsMap>;
+
+/** List of applicationGroup links. */
+export type WorkspacePatchPropertiesApplicationGroupReferencesList =
+  ReadonlyArray<string>;
+export const WorkspacePatchPropertiesApplicationGroupReferencesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<WorkspacePatchPropertiesApplicationGroupReferencesList>;
+
+/** Enabled to allow this resource to be access from the public network */
+export type WorkspacePatchPropertiesPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled";
+export const WorkspacePatchPropertiesPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** Workspace properties that can be patched. */
+export interface WorkspacePatchProperties {
+  /** Description of Workspace. */
+  description?: string;
+  /** Friendly name of Workspace. */
+  friendlyName?: string;
+  /** List of applicationGroup links. */
+  applicationGroupReferences?: WorkspacePatchPropertiesApplicationGroupReferencesList | null;
+  /** Enabled to allow this resource to be access from the public network */
+  publicNetworkAccess?: WorkspacePatchPropertiesPublicNetworkAccess | null;
+}
+export const WorkspacePatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String),
+    applicationGroupReferences: S.optional(
+      S.NullOr(WorkspacePatchPropertiesApplicationGroupReferencesList),
+    ),
+    publicNetworkAccess: S.optional(
+      S.NullOr(WorkspacePatchPropertiesPublicNetworkAccess),
+    ),
+  }),
+).annotate({
+  identifier: "WorkspacePatchProperties",
+}) as any as S.Schema<WorkspacePatchProperties>;
+
 export interface WorkspacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7718,14 +8996,18 @@ export interface WorkspacesUpdateRequest {
   resourceGroupName: string;
   /** The name of the workspace */
   workspaceName: string;
-  body?: unknown;
+  /** tags to be updated */
+  tags?: WorkspacesUpdateRequestTagsMap | null;
+  /** Detailed properties for Workspace */
+  properties?: WorkspacePatchProperties;
 }
 export const WorkspacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(S.NullOr(WorkspacesUpdateRequestTagsMap)),
+    properties: S.optional(WorkspacePatchProperties),
   }).pipe(
     T.Http({
       method: "PATCH",

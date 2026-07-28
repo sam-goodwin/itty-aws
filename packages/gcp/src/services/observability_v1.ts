@@ -191,7 +191,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -236,7 +236,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -859,7 +859,7 @@ export const ListFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFoldersLocationsRequest",
 }) as any as S.Schema<ListFoldersLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -911,7 +911,7 @@ export const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListFoldersLocationsOperationsRequest",
 }) as any as S.Schema<ListFoldersLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1053,7 +1053,7 @@ export const ListProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsBucketsRequest",
 }) as any as S.Schema<ListProjectsLocationsBucketsRequest>;
 
-export type BucketList = Bucket[];
+export type BucketList = ReadonlyArray<Bucket>;
 export const BucketList = /*@__PURE__*/ S.Array(
   Bucket,
 ) as any as S.Schema<BucketList>;
@@ -1102,7 +1102,7 @@ export const ListProjectsLocationsBucketsDatasetsRequest =
     identifier: "ListProjectsLocationsBucketsDatasetsRequest",
   }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsRequest>;
 
-export type DatasetList = Dataset[];
+export type DatasetList = ReadonlyArray<Dataset>;
 export const DatasetList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<DatasetList>;
@@ -1148,7 +1148,7 @@ export const ListProjectsLocationsBucketsDatasetsLinksRequest =
     identifier: "ListProjectsLocationsBucketsDatasetsLinksRequest",
   }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsLinksRequest>;
 
-export type LinkList = Link[];
+export type LinkList = ReadonlyArray<Link>;
 export const LinkList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<LinkList>;
@@ -1194,7 +1194,7 @@ export const ListProjectsLocationsBucketsDatasetsViewsRequest =
     identifier: "ListProjectsLocationsBucketsDatasetsViewsRequest",
   }) as any as S.Schema<ListProjectsLocationsBucketsDatasetsViewsRequest>;
 
-export type ViewList = View[];
+export type ViewList = ReadonlyArray<View>;
 export const ViewList = /*@__PURE__*/ S.Array(
   View,
 ) as any as S.Schema<ViewList>;
@@ -1271,7 +1271,7 @@ export const ListProjectsLocationsTraceScopesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsTraceScopesRequest",
 }) as any as S.Schema<ListProjectsLocationsTraceScopesRequest>;
 
-export type TraceScopeList = TraceScope[];
+export type TraceScopeList = ReadonlyArray<TraceScope>;
 export const TraceScopeList = /*@__PURE__*/ S.Array(
   TraceScope,
 ) as any as S.Schema<TraceScopeList>;

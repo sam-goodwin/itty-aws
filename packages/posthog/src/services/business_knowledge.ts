@@ -77,7 +77,7 @@ export const KnowledgeSearchResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KnowledgeSearchResult>;
 
 export type BusinessKnowledgeDocumentsSearchListResponseBodyList =
-  KnowledgeSearchResult[];
+  ReadonlyArray<KnowledgeSearchResult>;
 export const BusinessKnowledgeDocumentsSearchListResponseBodyList =
   /*@__PURE__*/ S.Array(
     KnowledgeSearchResult,
@@ -151,7 +151,7 @@ export const KnowledgeDocumentWindow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KnowledgeDocumentWindow>;
 
 export type BusinessKnowledgeDocumentsWindowListResponseBodyList =
-  KnowledgeDocumentWindow[];
+  ReadonlyArray<KnowledgeDocumentWindow>;
 export const BusinessKnowledgeDocumentsWindowListResponseBodyList =
   /*@__PURE__*/ S.Array(
     KnowledgeDocumentWindow,
@@ -345,7 +345,7 @@ export const BusinessKnowledgeGapSuggestionsListRequest =
   }) as any as S.Schema<BusinessKnowledgeGapSuggestionsListRequest>;
 
 export type PaginatedKnowledgeGapSuggestionListResultsList =
-  KnowledgeGapSuggestion[];
+  ReadonlyArray<KnowledgeGapSuggestion>;
 export const PaginatedKnowledgeGapSuggestionListResultsList =
   /*@__PURE__*/ S.Array(
     KnowledgeGapSuggestion,
@@ -397,11 +397,7 @@ export const BusinessKnowledgeSourcesCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BusinessKnowledgeSourcesCreateRequest>;
 
 /** * `text` - Text * `url` - URL * `file` - File */
-export type KnowledgeSourceSourceTypeEnum =
-  | "text"
-  | "url"
-  | "file"
-  | (string & {});
+export type KnowledgeSourceSourceTypeEnum = "text" | "url" | "file";
 export const KnowledgeSourceSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `pending` - Pending * `processing` - Processing * `ready` - Ready * `error` - Error */
@@ -409,33 +405,18 @@ export type KnowledgeSourceStatusEnum =
   | "pending"
   | "processing"
   | "ready"
-  | "error"
-  | (string & {});
+  | "error";
 export const KnowledgeSourceStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `success` - Success * `not_modified` - Not modified * `error` - Error */
-export type LastRefreshStatusEnum =
-  | "success"
-  | "not_modified"
-  | "error"
-  | (string & {});
+export type LastRefreshStatusEnum = "success" | "not_modified" | "error";
 export const LastRefreshStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `manual` - Manual only * `1h` - Every hour * `6h` - Every 6 hours * `24h` - Every day * `7d` - Every week */
-export type RefreshIntervalEnum =
-  | "manual"
-  | "1h"
-  | "6h"
-  | "24h"
-  | "7d"
-  | (string & {});
+export type RefreshIntervalEnum = "manual" | "1h" | "6h" | "24h" | "7d";
 export const RefreshIntervalEnum = /*@__PURE__*/ S.String;
 
-export type EmbeddingStatusEnum =
-  | "pending"
-  | "completed"
-  | "disabled"
-  | (string & {});
+export type EmbeddingStatusEnum = "pending" | "completed" | "disabled";
 export const EmbeddingStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `single` - Single page * `sitemap` - Sitemap * `same_origin` - Same origin crawl * `github_repo` - GitHub repository */
@@ -443,8 +424,7 @@ export type CrawlModeEnum =
   | "single"
   | "sitemap"
   | "same_origin"
-  | "github_repo"
-  | (string & {});
+  | "github_repo";
 export const CrawlModeEnum = /*@__PURE__*/ S.String;
 
 export interface KnowledgeSource {
@@ -562,7 +542,8 @@ export const BusinessKnowledgeSourcesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BusinessKnowledgeSourcesListRequest",
 }) as any as S.Schema<BusinessKnowledgeSourcesListRequest>;
 
-export type PaginatedKnowledgeSourceListResultsList = KnowledgeSource[];
+export type PaginatedKnowledgeSourceListResultsList =
+  ReadonlyArray<KnowledgeSource>;
 export const PaginatedKnowledgeSourceListResultsList = /*@__PURE__*/ S.Array(
   KnowledgeSource,
 ) as any as S.Schema<PaginatedKnowledgeSourceListResultsList>;
@@ -620,63 +601,12 @@ export interface BusinessKnowledgeSourcesRefreshCreateRequest {
   project_id: string;
   /** A UUID string identifying this knowledge source. */
   id: string;
-  team_id: number;
-  name: string;
-  source_type: KnowledgeSourceSourceTypeEnum;
-  status: KnowledgeSourceStatusEnum;
-  error_message: string;
-  /** Number of documents belonging to this source. */
-  document_count: number;
-  /** Number of chunks belonging to this source. */
-  chunk_count: number;
-  created_at: string;
-  updated_at: string | null;
-  source_url: string;
-  last_refresh_at: string | null;
-  last_refresh_status: LastRefreshStatusEnum;
-  last_refresh_error: string;
-  refresh_interval: RefreshIntervalEnum;
-  /** When the background coordinator will next auto-refresh this source. Null for manual sources or sources never refreshed. */
-  next_refresh_at: string | null;
-  /** True when at least one document in this source was flagged unsafe by the content classifier and is therefore excluded from agent search. */
-  has_unsafe_documents: boolean;
-  /** Semantic-index state of this source. A `ready` source serves keyword (full-text) search immediately, but semantic search needs a background job to classify and embed its documents, which can take up to an hour. `pending` — at least one document is still awaiting classification or embedding. `completed` — every eligible document has been submitted to the embedding pipeline. `disabled` — the organization has not approved AI data processing, so embeddings never run and search stays keyword-only. Only meaningful while `status` is `ready`. */
-  embedding_status: EmbeddingStatusEnum;
-  crawl_mode: CrawlModeEnum;
-  crawl_config: unknown;
-  original_filename: string;
-  file_content_type: string;
-  file_size_bytes: number | null;
-  always_include: boolean;
 }
 export const BusinessKnowledgeSourcesRefreshCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      team_id: S.Number,
-      name: S.String,
-      source_type: KnowledgeSourceSourceTypeEnum,
-      status: KnowledgeSourceStatusEnum,
-      error_message: S.String,
-      document_count: S.Number,
-      chunk_count: S.Number,
-      created_at: S.String,
-      updated_at: S.NullOr(S.String),
-      source_url: S.String,
-      last_refresh_at: S.NullOr(S.String),
-      last_refresh_status: LastRefreshStatusEnum,
-      last_refresh_error: S.String,
-      refresh_interval: RefreshIntervalEnum,
-      next_refresh_at: S.NullOr(S.String),
-      has_unsafe_documents: S.Boolean,
-      embedding_status: EmbeddingStatusEnum,
-      crawl_mode: CrawlModeEnum,
-      crawl_config: S.Unknown,
-      original_filename: S.String,
-      file_content_type: S.String,
-      file_size_bytes: S.NullOr(S.Number),
-      always_include: S.Boolean,
     }).pipe(
       T.Http({
         method: "POST",

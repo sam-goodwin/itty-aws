@@ -263,8 +263,7 @@ export type LanguageCode =
   | "ja"
   | "ko"
   | "zh"
-  | "zh-TW"
-  | (string & {});
+  | "zh-TW";
 export const LanguageCode = /*@__PURE__*/ S.String;
 
 export interface BatchDetectEntitiesRequest {
@@ -290,8 +289,7 @@ export type EntityType =
   | "DATE"
   | "QUANTITY"
   | "TITLE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const EntityType = /*@__PURE__*/ S.String;
 
 export interface ChildBlock {
@@ -444,12 +442,7 @@ export const BatchDetectSentimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDetectSentimentRequest",
 }) as any as S.Schema<BatchDetectSentimentRequest>;
-export type SentimentType =
-  | "POSITIVE"
-  | "NEGATIVE"
-  | "NEUTRAL"
-  | "MIXED"
-  | (string & {});
+export type SentimentType = "POSITIVE" | "NEGATIVE" | "NEUTRAL" | "MIXED";
 export const SentimentType = /*@__PURE__*/ S.String;
 
 export interface SentimentScore {
@@ -496,14 +489,7 @@ export const BatchDetectSentimentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDetectSentimentResponse",
 }) as any as S.Schema<BatchDetectSentimentResponse>;
-export type SyntaxLanguageCode =
-  | "en"
-  | "es"
-  | "fr"
-  | "de"
-  | "it"
-  | "pt"
-  | (string & {});
+export type SyntaxLanguageCode = "en" | "es" | "fr" | "de" | "it" | "pt";
 export const SyntaxLanguageCode = /*@__PURE__*/ S.String;
 
 export interface BatchDetectSyntaxRequest {
@@ -538,8 +524,7 @@ export type PartOfSpeechTagType =
   | "PUNCT"
   | "SCONJ"
   | "SYM"
-  | "VERB"
-  | (string & {});
+  | "VERB";
 export const PartOfSpeechTagType = /*@__PURE__*/ S.String;
 
 export interface PartOfSpeechTag {
@@ -633,8 +618,7 @@ export type TargetedSentimentEntityType =
   | "DATE"
   | "QUANTITY"
   | "ATTRIBUTE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const TargetedSentimentEntityType = /*@__PURE__*/ S.String;
 
 export interface MentionSentiment {
@@ -724,17 +708,13 @@ export type DocumentClassifierEndpointArn = string;
 export type SemiStructuredDocumentBlob = Uint8Array;
 export type DocumentReadAction =
   | "TEXTRACT_DETECT_DOCUMENT_TEXT"
-  | "TEXTRACT_ANALYZE_DOCUMENT"
-  | (string & {});
+  | "TEXTRACT_ANALYZE_DOCUMENT";
 export const DocumentReadAction = /*@__PURE__*/ S.String;
 
-export type DocumentReadMode =
-  | "SERVICE_DEFAULT"
-  | "FORCE_DOCUMENT_READ_ACTION"
-  | (string & {});
+export type DocumentReadMode = "SERVICE_DEFAULT" | "FORCE_DOCUMENT_READ_ACTION";
 export const DocumentReadMode = /*@__PURE__*/ S.String;
 
-export type DocumentReadFeatureTypes = "TABLES" | "FORMS" | (string & {});
+export type DocumentReadFeatureTypes = "TABLES" | "FORMS";
 export const DocumentReadFeatureTypes = /*@__PURE__*/ S.String;
 
 export type ListOfDocumentReadFeatureTypes = DocumentReadFeatureTypes[];
@@ -833,8 +813,7 @@ export type DocumentType =
   | "IMAGE"
   | "PLAIN_TEXT"
   | "TEXTRACT_DETECT_DOCUMENT_TEXT_JSON"
-  | "TEXTRACT_ANALYZE_DOCUMENT_JSON"
-  | (string & {});
+  | "TEXTRACT_ANALYZE_DOCUMENT_JSON";
 export const DocumentType = /*@__PURE__*/ S.String;
 
 export interface DocumentTypeListItem {
@@ -853,8 +832,7 @@ export type PageBasedErrorCode =
   | "TEXTRACT_PROVISIONED_THROUGHPUT_EXCEEDED"
   | "PAGE_CHARACTERS_EXCEEDED"
   | "PAGE_SIZE_EXCEEDED"
-  | "INTERNAL_SERVER_ERROR"
-  | (string & {});
+  | "INTERNAL_SERVER_ERROR";
 export const PageBasedErrorCode = /*@__PURE__*/ S.String;
 
 export interface ErrorsListItem {
@@ -873,8 +851,7 @@ export type ListOfErrors = ErrorsListItem[];
 export const ListOfErrors = /*@__PURE__*/ S.Array(ErrorsListItem);
 export type PageBasedWarningCode =
   | "INFERENCING_PLAINTEXT_WITH_NATIVE_TRAINED_MODEL"
-  | "INFERENCING_NATIVE_DOCUMENT_WITH_PLAINTEXT_TRAINED_MODEL"
-  | (string & {});
+  | "INFERENCING_NATIVE_DOCUMENT_WITH_PLAINTEXT_TRAINED_MODEL";
 export const PageBasedWarningCode = /*@__PURE__*/ S.String;
 
 export interface WarningsListItem {
@@ -961,8 +938,7 @@ export type PiiEntityType =
   | "UK_NATIONAL_HEALTH_SERVICE_NUMBER"
   | "CA_HEALTH_NUMBER"
   | "IN_AADHAAR"
-  | "IN_VOTER_NUMBER"
-  | (string & {});
+  | "IN_VOTER_NUMBER";
 export const PiiEntityType = /*@__PURE__*/ S.String;
 
 export interface EntityLabel {
@@ -984,7 +960,7 @@ export const ContainsPiiEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainsPiiEntitiesResponse>;
 export type ComprehendFlywheelArn = string;
 export type ComprehendArnName = string;
-export type DatasetType = "TRAIN" | "TEST" | (string & {});
+export type DatasetType = "TRAIN" | "TEST";
 export const DatasetType = /*@__PURE__*/ S.String;
 
 export type Description = string;
@@ -994,8 +970,7 @@ export const AttributeNamesList = /*@__PURE__*/ S.Array(S.String);
 export type S3Uri = string;
 export type AugmentedManifestsDocumentTypeFormat =
   | "PLAIN_TEXT_DOCUMENT"
-  | "SEMI_STRUCTURED_DOCUMENT"
-  | (string & {});
+  | "SEMI_STRUCTURED_DOCUMENT";
 export const AugmentedManifestsDocumentTypeFormat = /*@__PURE__*/ S.String;
 
 export interface DatasetAugmentedManifestsListItem {
@@ -1020,10 +995,7 @@ export type DatasetAugmentedManifestsList = DatasetAugmentedManifestsListItem[];
 export const DatasetAugmentedManifestsList = /*@__PURE__*/ S.Array(
   DatasetAugmentedManifestsListItem,
 );
-export type DatasetDataFormat =
-  | "COMPREHEND_CSV"
-  | "AUGMENTED_MANIFEST"
-  | (string & {});
+export type DatasetDataFormat = "COMPREHEND_CSV" | "AUGMENTED_MANIFEST";
 export const DatasetDataFormat = /*@__PURE__*/ S.String;
 
 export type LabelDelimiter = string;
@@ -1044,10 +1016,7 @@ export const DatasetEntityRecognizerAnnotations = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatasetEntityRecognizerAnnotations",
 }) as any as S.Schema<DatasetEntityRecognizerAnnotations>;
-export type InputFormat =
-  | "ONE_DOC_PER_FILE"
-  | "ONE_DOC_PER_LINE"
-  | (string & {});
+export type InputFormat = "ONE_DOC_PER_FILE" | "ONE_DOC_PER_LINE";
 export const InputFormat = /*@__PURE__*/ S.String;
 
 export interface DatasetEntityRecognizerDocuments {
@@ -1151,11 +1120,10 @@ export type VersionName = string;
 export type IamRoleArn = string;
 export type DocumentClassifierDataFormat =
   | "COMPREHEND_CSV"
-  | "AUGMENTED_MANIFEST"
-  | (string & {});
+  | "AUGMENTED_MANIFEST";
 export const DocumentClassifierDataFormat = /*@__PURE__*/ S.String;
 
-export type Split = "TRAIN" | "TEST" | (string & {});
+export type Split = "TRAIN" | "TEST";
 export const Split = /*@__PURE__*/ S.String;
 
 export interface AugmentedManifestsListItem {
@@ -1185,8 +1153,7 @@ export const DocumentClassifierAugmentedManifestsList = /*@__PURE__*/ S.Array(
 );
 export type DocumentClassifierDocumentTypeFormat =
   | "PLAIN_TEXT_DOCUMENT"
-  | "SEMI_STRUCTURED_DOCUMENT"
-  | (string & {});
+  | "SEMI_STRUCTURED_DOCUMENT";
 export const DocumentClassifierDocumentTypeFormat = /*@__PURE__*/ S.String;
 
 export interface DocumentClassifierDocuments {
@@ -1250,10 +1217,7 @@ export interface VpcConfig {
 export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SecurityGroupIds: SecurityGroupIds, Subnets: Subnets }),
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
-export type DocumentClassifierMode =
-  | "MULTI_CLASS"
-  | "MULTI_LABEL"
-  | (string & {});
+export type DocumentClassifierMode = "MULTI_CLASS" | "MULTI_LABEL";
 export const DocumentClassifierMode = /*@__PURE__*/ S.String;
 
 export type Policy = string;
@@ -1344,8 +1308,7 @@ export const CreateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEndpointResponse>;
 export type EntityRecognizerDataFormat =
   | "COMPREHEND_CSV"
-  | "AUGMENTED_MANIFEST"
-  | (string & {});
+  | "AUGMENTED_MANIFEST";
 export const EntityRecognizerDataFormat = /*@__PURE__*/ S.String;
 
 export type EntityTypeName = string;
@@ -1488,10 +1451,7 @@ export const TaskConfig = /*@__PURE__*/ S.suspend(() =>
     EntityRecognitionConfig: S.optional(EntityRecognitionConfig),
   }),
 ).annotate({ identifier: "TaskConfig" }) as any as S.Schema<TaskConfig>;
-export type ModelType =
-  | "DOCUMENT_CLASSIFIER"
-  | "ENTITY_RECOGNIZER"
-  | (string & {});
+export type ModelType = "DOCUMENT_CLASSIFIER" | "ENTITY_RECOGNIZER";
 export const ModelType = /*@__PURE__*/ S.String;
 
 export type FlywheelS3Uri = string;
@@ -1646,7 +1606,7 @@ export const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDatasetRequest",
 }) as any as S.Schema<DescribeDatasetRequest>;
-export type DatasetStatus = "CREATING" | "COMPLETED" | "FAILED" | (string & {});
+export type DatasetStatus = "CREATING" | "COMPLETED" | "FAILED";
 export const DatasetStatus = /*@__PURE__*/ S.String;
 
 export type AnyLengthString = string;
@@ -1707,8 +1667,7 @@ export type JobStatus =
   | "COMPLETED"
   | "FAILED"
   | "STOP_REQUESTED"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const JobStatus = /*@__PURE__*/ S.String;
 
 export interface InputDataConfig {
@@ -1801,8 +1760,7 @@ export type ModelStatus =
   | "STOPPED"
   | "IN_ERROR"
   | "TRAINED"
-  | "TRAINED_WITH_WARNING"
-  | (string & {});
+  | "TRAINED_WITH_WARNING";
 export const ModelStatus = /*@__PURE__*/ S.String;
 
 export interface ClassifierEvaluationMetrics {
@@ -1977,8 +1935,7 @@ export type EndpointStatus =
   | "DELETING"
   | "FAILED"
   | "IN_SERVICE"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const EndpointStatus = /*@__PURE__*/ S.String;
 
 export interface EndpointProperties {
@@ -2294,8 +2251,7 @@ export type FlywheelStatus =
   | "ACTIVE"
   | "UPDATING"
   | "DELETING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const FlywheelStatus = /*@__PURE__*/ S.String;
 
 export type FlywheelIterationId = string;
@@ -2358,8 +2314,7 @@ export type FlywheelIterationStatus =
   | "COMPLETED"
   | "FAILED"
   | "STOP_REQUESTED"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const FlywheelIterationStatus = /*@__PURE__*/ S.String;
 
 export interface FlywheelModelEvaluationMetrics {
@@ -2500,8 +2455,7 @@ export type ListOfPiiEntityTypes = PiiEntityType[];
 export const ListOfPiiEntityTypes = /*@__PURE__*/ S.Array(PiiEntityType);
 export type PiiEntitiesDetectionMaskMode =
   | "MASK"
-  | "REPLACE_WITH_PII_ENTITY_TYPE"
-  | (string & {});
+  | "REPLACE_WITH_PII_ENTITY_TYPE";
 export const PiiEntitiesDetectionMaskMode = /*@__PURE__*/ S.String;
 
 export type MaskCharacter = string;
@@ -2519,10 +2473,7 @@ export const RedactionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RedactionConfig",
 }) as any as S.Schema<RedactionConfig>;
-export type PiiEntitiesDetectionMode =
-  | "ONLY_REDACTION"
-  | "ONLY_OFFSETS"
-  | (string & {});
+export type PiiEntitiesDetectionMode = "ONLY_REDACTION" | "ONLY_OFFSETS";
 export const PiiEntitiesDetectionMode = /*@__PURE__*/ S.String;
 
 export interface PiiEntitiesDetectionJobProperties {
@@ -2810,7 +2761,7 @@ export const DetectEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DetectEntitiesRequest",
 }) as any as S.Schema<DetectEntitiesRequest>;
-export type BlockType = "LINE" | "WORD" | (string & {});
+export type BlockType = "LINE" | "WORD";
 export const BlockType = /*@__PURE__*/ S.String;
 
 export interface BoundingBox {
@@ -2848,7 +2799,7 @@ export const Geometry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Geometry" }) as any as S.Schema<Geometry>;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
-export type RelationshipType = "CHILD" | (string & {});
+export type RelationshipType = "CHILD";
 export const RelationshipType = /*@__PURE__*/ S.String;
 
 export interface RelationshipsListItem {
@@ -3044,8 +2995,7 @@ export type ToxicContentType =
   | "INSULT"
   | "PROFANITY"
   | "SEXUAL"
-  | "VIOLENCE_OR_THREAT"
-  | (string & {});
+  | "VIOLENCE_OR_THREAT";
 export const ToxicContentType = /*@__PURE__*/ S.String;
 
 export interface ToxicContent {
@@ -4779,15 +4729,14 @@ export const UpdateFlywheelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateFlywheelResponse",
 }) as any as S.Schema<UpdateFlywheelResponse>;
-export type InvalidRequestReason = "INVALID_DOCUMENT" | (string & {});
+export type InvalidRequestReason = "INVALID_DOCUMENT";
 export const InvalidRequestReason = /*@__PURE__*/ S.String;
 
 export type InvalidRequestDetailReason =
   | "DOCUMENT_SIZE_EXCEEDED"
   | "UNSUPPORTED_DOC_TYPE"
   | "PAGE_LIMIT_EXCEEDED"
-  | "TEXTRACT_ACCESS_DENIED"
-  | (string & {});
+  | "TEXTRACT_ACCESS_DENIED";
 export const InvalidRequestDetailReason = /*@__PURE__*/ S.String;
 
 export interface InvalidRequestDetail {

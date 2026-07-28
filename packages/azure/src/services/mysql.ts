@@ -14,7 +14,7 @@ import * as Retry from "../retry.ts";
 export type { AzureOpError, AzureOpContext };
 
 export type AdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
-  "Default" | (string & {});
+  "Default";
 export const AdvancedThreatProtectionSettingsGetRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
 
@@ -55,8 +55,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -64,8 +63,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -95,10 +93,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled on the server. */
-export type AdvancedThreatProtectionState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type AdvancedThreatProtectionState = "Enabled" | "Disabled";
 export const AdvancedThreatProtectionState = /*@__PURE__*/ S.String;
 
 /** The current provisioning state. */
@@ -106,8 +101,7 @@ export type AdvancedThreatProtectionProvisioningState =
   | "Succeeded"
   | "Updating"
   | "Canceled"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const AdvancedThreatProtectionProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of an Advanced Threat Protection setting. */
@@ -207,7 +201,7 @@ export const AdvancedThreatProtection = /*@__PURE__*/ S.suspend(() =>
 
 /** The AdvancedThreatProtection items on this page */
 export type AdvancedThreatProtectionListResultValueList =
-  AdvancedThreatProtection[];
+  ReadonlyArray<AdvancedThreatProtection>;
 export const AdvancedThreatProtectionListResultValueList =
   /*@__PURE__*/ S.Array(
     AdvancedThreatProtection,
@@ -230,9 +224,23 @@ export const AdvancedThreatProtectionListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdvancedThreatProtectionListResult>;
 
 export type AdvancedThreatProtectionSettingsUpdateRequestAdvancedThreatProtectionName =
-  "Default" | (string & {});
+  "Default";
 export const AdvancedThreatProtectionSettingsUpdateRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
+
+/** Properties of Advanced Threat Protection that can be updated. */
+export interface AdvancedThreatProtectionUpdateProperties {
+  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
+  state: AdvancedThreatProtectionState;
+}
+export const AdvancedThreatProtectionUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: AdvancedThreatProtectionState,
+    }),
+).annotate({
+  identifier: "AdvancedThreatProtectionUpdateProperties",
+}) as any as S.Schema<AdvancedThreatProtectionUpdateProperties>;
 
 export interface AdvancedThreatProtectionSettingsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -243,7 +251,8 @@ export interface AdvancedThreatProtectionSettingsUpdateRequest {
   serverName: string;
   /** The name of the Advanced Threat Protection state. */
   advancedThreatProtectionName: AdvancedThreatProtectionSettingsUpdateRequestAdvancedThreatProtectionName;
-  body: unknown;
+  /** Resource update properties. */
+  properties?: AdvancedThreatProtectionUpdateProperties;
 }
 export const AdvancedThreatProtectionSettingsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -255,7 +264,7 @@ export const AdvancedThreatProtectionSettingsUpdateRequest =
         AdvancedThreatProtectionSettingsUpdateRequestAdvancedThreatProtectionName.pipe(
           T.Label(),
         ),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AdvancedThreatProtectionUpdateProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -294,9 +303,23 @@ export const AdvancedThreatProtectionSettingsUpdateResponse =
   }) as any as S.Schema<AdvancedThreatProtectionSettingsUpdateResponse>;
 
 export type AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName =
-  "Default" | (string & {});
+  "Default";
 export const AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName =
   /*@__PURE__*/ S.String;
+
+/** Properties of an Advanced Threat Protection setting. */
+export interface AdvancedThreatProtectionPropertiesInput {
+  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
+  state?: AdvancedThreatProtectionState;
+}
+export const AdvancedThreatProtectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: S.optional(AdvancedThreatProtectionState),
+    }),
+).annotate({
+  identifier: "AdvancedThreatProtectionPropertiesInput",
+}) as any as S.Schema<AdvancedThreatProtectionPropertiesInput>;
 
 export interface AdvancedThreatProtectionSettingsUpdatePutRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -307,7 +330,8 @@ export interface AdvancedThreatProtectionSettingsUpdatePutRequest {
   serverName: string;
   /** The name of the Advanced Threat Protection state. */
   advancedThreatProtectionName: AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName;
-  body: unknown;
+  /** Resource properties. */
+  properties?: AdvancedThreatProtectionPropertiesInput;
 }
 export const AdvancedThreatProtectionSettingsUpdatePutRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -319,7 +343,7 @@ export const AdvancedThreatProtectionSettingsUpdatePutRequest =
         AdvancedThreatProtectionSettingsUpdatePutRequestAdvancedThreatProtectionName.pipe(
           T.Label(),
         ),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AdvancedThreatProtectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -358,47 +382,12 @@ export const AdvancedThreatProtectionSettingsUpdatePutResponse =
   }) as any as S.Schema<AdvancedThreatProtectionSettingsUpdatePutResponse>;
 
 export type AzureADAdministratorsCreateOrUpdateRequestAdministratorName =
-  | "ActiveDirectory"
-  | (string & {});
+  "ActiveDirectory";
 export const AzureADAdministratorsCreateOrUpdateRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
-export interface AzureADAdministratorsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the server. */
-  serverName: string;
-  /** The name of the Azure AD Administrator. */
-  administratorName: AzureADAdministratorsCreateOrUpdateRequestAdministratorName;
-  body: unknown;
-}
-export const AzureADAdministratorsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      serverName: S.String.pipe(T.Label()),
-      administratorName:
-        AzureADAdministratorsCreateOrUpdateRequestAdministratorName.pipe(
-          T.Label(),
-        ),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/administrators/{administratorName}",
-        code: 200,
-        apiVersion: "2024-12-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "AzureADAdministratorsCreateOrUpdateRequest",
-  }) as any as S.Schema<AzureADAdministratorsCreateOrUpdateRequest>;
-
 /** Type of the sever administrator. */
-export type AdministratorType = "ActiveDirectory" | (string & {});
+export type AdministratorType = "ActiveDirectory";
 export const AdministratorType = /*@__PURE__*/ S.String;
 
 /** The properties of an administrator. */
@@ -426,6 +415,41 @@ export const AdministratorProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdministratorProperties",
 }) as any as S.Schema<AdministratorProperties>;
 
+export interface AzureADAdministratorsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the server. */
+  serverName: string;
+  /** The name of the Azure AD Administrator. */
+  administratorName: AzureADAdministratorsCreateOrUpdateRequestAdministratorName;
+  /** The properties of an administrator. */
+  properties?: AdministratorProperties;
+}
+export const AzureADAdministratorsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      serverName: S.String.pipe(T.Label()),
+      administratorName:
+        AzureADAdministratorsCreateOrUpdateRequestAdministratorName.pipe(
+          T.Label(),
+        ),
+      properties: S.optional(AdministratorProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/administrators/{administratorName}",
+        code: 200,
+        apiVersion: "2024-12-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "AzureADAdministratorsCreateOrUpdateRequest",
+  }) as any as S.Schema<AzureADAdministratorsCreateOrUpdateRequest>;
+
 export interface AzureADAdministratorsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -452,8 +476,7 @@ export const AzureADAdministratorsCreateOrUpdateResponse =
   }) as any as S.Schema<AzureADAdministratorsCreateOrUpdateResponse>;
 
 export type AzureADAdministratorsDeleteRequestAdministratorName =
-  | "ActiveDirectory"
-  | (string & {});
+  "ActiveDirectory";
 export const AzureADAdministratorsDeleteRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
@@ -495,8 +518,7 @@ export const AzureADAdministratorsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureADAdministratorsDeleteResponse>;
 
 export type AzureADAdministratorsGetRequestAdministratorName =
-  | "ActiveDirectory"
-  | (string & {});
+  "ActiveDirectory";
 export const AzureADAdministratorsGetRequestAdministratorName =
   /*@__PURE__*/ S.String;
 
@@ -606,7 +628,8 @@ export const AzureADAdministrator = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureADAdministrator>;
 
 /** The list of azure ad administrator of a server. */
-export type AdministratorListResultValueList = AzureADAdministrator[];
+export type AdministratorListResultValueList =
+  ReadonlyArray<AzureADAdministrator>;
 export const AdministratorListResultValueList = /*@__PURE__*/ S.Array(
   AzureADAdministrator,
 ) as any as S.Schema<AdministratorListResultValueList>;
@@ -627,6 +650,37 @@ export const AdministratorListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdministratorListResult",
 }) as any as S.Schema<AdministratorListResult>;
 
+/** Backup Format for the current backup. (CollatedFormat is INTERNAL – DO NOT USE) */
+export type BackupFormat = "CollatedFormat" | "Raw";
+export const BackupFormat = /*@__PURE__*/ S.String;
+
+/** Backup Settings */
+export interface BackupSettings {
+  /** The name of the backup. */
+  backupName: string;
+  /** Backup Format for the current backup. (CollatedFormat is INTERNAL – DO NOT USE) */
+  backupFormat?: BackupFormat;
+}
+export const BackupSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    backupName: S.String,
+    backupFormat: S.optional(BackupFormat),
+  }),
+).annotate({ identifier: "BackupSettings" }) as any as S.Schema<BackupSettings>;
+
+/** Details about the target where the backup content will be stored. */
+export interface BackupStoreDetails {
+  /** Type of the specific object - used for deserializing */
+  objectType: string;
+}
+export const BackupStoreDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectType: S.String,
+  }),
+).annotate({
+  identifier: "BackupStoreDetails",
+}) as any as S.Schema<BackupStoreDetails>;
+
 export interface BackupAndExportCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -634,14 +688,18 @@ export interface BackupAndExportCreateRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
-  body: unknown;
+  /** Backup Settings */
+  backupSettings: BackupSettings;
+  /** Backup Target Store Details */
+  targetDetails: BackupStoreDetails;
 }
 export const BackupAndExportCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    backupSettings: BackupSettings,
+    targetDetails: BackupStoreDetails,
   }).pipe(
     T.Http({
       method: "POST",
@@ -674,7 +732,7 @@ export const BackupAndExportResponseProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupAndExportResponseProperties>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -696,7 +754,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -725,7 +783,8 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type BackupAndExportCreateResponseErrorDetailsList = ErrorDetail[];
+export type BackupAndExportCreateResponseErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const BackupAndExportCreateResponseErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -733,7 +792,7 @@ export const BackupAndExportCreateResponseErrorDetailsList =
 
 /** The error additional info. */
 export type BackupAndExportCreateResponseErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const BackupAndExportCreateResponseErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -773,8 +832,7 @@ export type OperationStatus =
   | "Succeeded"
   | "Failed"
   | "CancelInProgress"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 export interface BackupAndExportCreateResponse {
@@ -988,7 +1046,7 @@ export const ServerBackup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerBackup" }) as any as S.Schema<ServerBackup>;
 
 /** The ServerBackup items on this page */
-export type ServerBackupListResultValueList = ServerBackup[];
+export type ServerBackupListResultValueList = ReadonlyArray<ServerBackup>;
 export const ServerBackupListResultValueList = /*@__PURE__*/ S.Array(
   ServerBackup,
 ) as any as S.Schema<ServerBackupListResultValueList>;
@@ -1066,13 +1124,17 @@ export interface CheckNameAvailabilityExecuteRequest {
   subscriptionId: string;
   /** The name of the location. */
   locationName: string;
-  body: unknown;
+  /** Resource name to verify. */
+  name: string;
+  /** Resource type used for verification. */
+  type?: string;
 }
 export const CheckNameAvailabilityExecuteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.String,
+    type: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1107,13 +1169,17 @@ export const NameAvailability = /*@__PURE__*/ S.suspend(() =>
 export interface CheckNameAvailabilityWithoutLocationExecuteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** Resource name to verify. */
+  name: string;
+  /** Resource type used for verification. */
+  type?: string;
 }
 export const CheckNameAvailabilityWithoutLocationExecuteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1131,14 +1197,15 @@ export interface CheckVirtualNetworkSubnetUsageExecuteRequest {
   subscriptionId: string;
   /** The name of the location. */
   locationName: string;
-  body: unknown;
+  /** Virtual network resource id. */
+  virtualNetworkResourceId?: string;
 }
 export const CheckVirtualNetworkSubnetUsageExecuteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      virtualNetworkResourceId: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1169,7 +1236,7 @@ export const DelegatedSubnetUsage = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of delegated subnet usage */
 export type VirtualNetworkSubnetUsageResultDelegatedSubnetsUsageList =
-  DelegatedSubnetUsage[];
+  ReadonlyArray<DelegatedSubnetUsage>;
 export const VirtualNetworkSubnetUsageResultDelegatedSubnetsUsageList =
   /*@__PURE__*/ S.Array(
     DelegatedSubnetUsage,
@@ -1196,6 +1263,50 @@ export const VirtualNetworkSubnetUsageResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "VirtualNetworkSubnetUsageResult",
 }) as any as S.Schema<VirtualNetworkSubnetUsageResult>;
 
+/** The properties can be updated for a configuration. */
+export interface ConfigurationForBatchUpdateProperties {
+  /** Value of the configuration. */
+  value?: string;
+  /** Source of the configuration. */
+  source?: string;
+}
+export const ConfigurationForBatchUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      value: S.optional(S.String),
+      source: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ConfigurationForBatchUpdateProperties",
+}) as any as S.Schema<ConfigurationForBatchUpdateProperties>;
+
+/** Represents a Configuration. */
+export interface ConfigurationForBatchUpdate {
+  /** Name of the configuration. */
+  name?: string;
+  /** The properties can be updated for a configuration. */
+  properties?: ConfigurationForBatchUpdateProperties;
+}
+export const ConfigurationForBatchUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    properties: S.optional(ConfigurationForBatchUpdateProperties),
+  }),
+).annotate({
+  identifier: "ConfigurationForBatchUpdate",
+}) as any as S.Schema<ConfigurationForBatchUpdate>;
+
+/** The list of server configurations. */
+export type ConfigurationsBatchUpdateRequestValueList =
+  ReadonlyArray<ConfigurationForBatchUpdate>;
+export const ConfigurationsBatchUpdateRequestValueList = /*@__PURE__*/ S.Array(
+  ConfigurationForBatchUpdate,
+) as any as S.Schema<ConfigurationsBatchUpdateRequestValueList>;
+
+/** Whether to reset all server parameters to default. */
+export type ResetAllToDefault = "True" | "False";
+export const ResetAllToDefault = /*@__PURE__*/ S.String;
+
 export interface ConfigurationsBatchUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1203,14 +1314,18 @@ export interface ConfigurationsBatchUpdateRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
-  body: unknown;
+  /** The list of server configurations. */
+  value?: ConfigurationsBatchUpdateRequestValueList;
+  /** Whether to reset all server parameters to default. */
+  resetAllToDefault?: ResetAllToDefault;
 }
 export const ConfigurationsBatchUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    value: S.optional(ConfigurationsBatchUpdateRequestValueList),
+    resetAllToDefault: S.optional(ResetAllToDefault),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1224,22 +1339,19 @@ export const ConfigurationsBatchUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationsBatchUpdateRequest>;
 
 /** Source of the configuration. */
-export type ConfigurationSource =
-  | "system-default"
-  | "user-override"
-  | (string & {});
+export type ConfigurationSource = "system-default" | "user-override";
 export const ConfigurationSource = /*@__PURE__*/ S.String;
 
 /** If is the configuration read only. */
-export type IsReadOnly = "True" | "False" | (string & {});
+export type IsReadOnly = "True" | "False";
 export const IsReadOnly = /*@__PURE__*/ S.String;
 
 /** If is the configuration pending restart or not. */
-export type IsConfigPendingRestart = "True" | "False" | (string & {});
+export type IsConfigPendingRestart = "True" | "False";
 export const IsConfigPendingRestart = /*@__PURE__*/ S.String;
 
 /** If is the configuration dynamic. */
-export type IsDynamicConfig = "True" | "False" | (string & {});
+export type IsDynamicConfig = "True" | "False";
 export const IsDynamicConfig = /*@__PURE__*/ S.String;
 
 /** The properties of a configuration. */
@@ -1309,7 +1421,7 @@ export const Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Configuration" }) as any as S.Schema<Configuration>;
 
 /** The Configuration items on this page */
-export type ConfigurationListResultValueList = Configuration[];
+export type ConfigurationListResultValueList = ReadonlyArray<Configuration>;
 export const ConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationListResultValueList>;
@@ -1330,6 +1442,25 @@ export const ConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationListResult",
 }) as any as S.Schema<ConfigurationListResult>;
 
+/** The properties of a configuration. */
+export interface ConfigurationPropertiesInput {
+  /** Value of the configuration. */
+  value?: string;
+  /** Current value of the configuration. */
+  currentValue?: string;
+  /** Source of the configuration. */
+  source?: ConfigurationSource;
+}
+export const ConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    currentValue: S.optional(S.String),
+    source: S.optional(ConfigurationSource),
+  }),
+).annotate({
+  identifier: "ConfigurationPropertiesInput",
+}) as any as S.Schema<ConfigurationPropertiesInput>;
+
 export interface ConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1339,7 +1470,8 @@ export interface ConfigurationsCreateOrUpdateRequest {
   serverName: string;
   /** The name of the server configuration. */
   configurationName: string;
-  body: unknown;
+  /** The properties of a configuration. */
+  properties?: ConfigurationPropertiesInput;
 }
 export const ConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1347,7 +1479,7 @@ export const ConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
     configurationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1483,7 +1615,8 @@ export interface ConfigurationsUpdateRequest {
   serverName: string;
   /** The name of the server configuration. */
   configurationName: string;
-  body: unknown;
+  /** The properties of a configuration. */
+  properties?: ConfigurationPropertiesInput;
 }
 export const ConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1491,7 +1624,7 @@ export const ConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
     configurationName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1528,36 +1661,6 @@ export const ConfigurationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationsUpdateResponse",
 }) as any as S.Schema<ConfigurationsUpdateResponse>;
 
-export interface DatabasesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the server. */
-  serverName: string;
-  /** The name of the database. */
-  databaseName: string;
-  body: unknown;
-}
-export const DatabasesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    serverName: S.String.pipe(T.Label()),
-    databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}",
-      code: 200,
-      apiVersion: "2024-12-30",
-    }),
-  ),
-).annotate({
-  identifier: "DatabasesCreateOrUpdateRequest",
-}) as any as S.Schema<DatabasesCreateOrUpdateRequest>;
-
 /** The properties of a database. */
 export interface DatabaseProperties {
   /** The charset of the database. */
@@ -1573,6 +1676,37 @@ export const DatabaseProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatabaseProperties",
 }) as any as S.Schema<DatabaseProperties>;
+
+export interface DatabasesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the server. */
+  serverName: string;
+  /** The name of the database. */
+  databaseName: string;
+  /** The properties of a database. */
+  properties?: DatabaseProperties;
+}
+export const DatabasesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    serverName: S.String.pipe(T.Label()),
+    databaseName: S.String.pipe(T.Label()),
+    properties: S.optional(DatabaseProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}",
+      code: 200,
+      apiVersion: "2024-12-30",
+    }),
+  ),
+).annotate({
+  identifier: "DatabasesCreateOrUpdateRequest",
+}) as any as S.Schema<DatabasesCreateOrUpdateRequest>;
 
 export interface DatabasesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1734,7 +1868,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 /** The Database items on this page */
-export type DatabaseListResultValueList = Database[];
+export type DatabaseListResultValueList = ReadonlyArray<Database>;
 export const DatabaseListResultValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseListResultValueList>;
@@ -1755,36 +1889,6 @@ export const DatabaseListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseListResult",
 }) as any as S.Schema<DatabaseListResult>;
 
-export interface FirewallRulesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the server. */
-  serverName: string;
-  /** The name of the server firewall rule. */
-  firewallRuleName: string;
-  body: unknown;
-}
-export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    serverName: S.String.pipe(T.Label()),
-    firewallRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
-      code: 200,
-      apiVersion: "2024-12-30",
-    }),
-  ),
-).annotate({
-  identifier: "FirewallRulesCreateOrUpdateRequest",
-}) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>;
-
 /** The properties of a server firewall rule. */
 export interface FirewallRuleProperties {
   /** The start IP address of the server firewall rule. Must be IPv4 format. */
@@ -1800,6 +1904,37 @@ export const FirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FirewallRuleProperties",
 }) as any as S.Schema<FirewallRuleProperties>;
+
+export interface FirewallRulesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the server. */
+  serverName: string;
+  /** The name of the server firewall rule. */
+  firewallRuleName: string;
+  /** The properties of a firewall rule. */
+  properties: FirewallRuleProperties;
+}
+export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    serverName: S.String.pipe(T.Label()),
+    firewallRuleName: S.String.pipe(T.Label()),
+    properties: FirewallRuleProperties,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
+      code: 200,
+      apiVersion: "2024-12-30",
+    }),
+  ),
+).annotate({
+  identifier: "FirewallRulesCreateOrUpdateRequest",
+}) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>;
 
 export interface FirewallRulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1961,7 +2096,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallRule" }) as any as S.Schema<FirewallRule>;
 
 /** The FirewallRule items on this page */
-export type FirewallRuleListResultValueList = FirewallRule[];
+export type FirewallRuleListResultValueList = ReadonlyArray<FirewallRule>;
 export const FirewallRuleListResultValueList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<FirewallRuleListResultValueList>;
@@ -2034,13 +2169,14 @@ export const LocationBasedCapabilitiesListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LocationBasedCapabilitiesListRequest>;
 
 /** Supported high availability mode */
-export type CapabilityPropertiesSupportedHAModeList = string[];
+export type CapabilityPropertiesSupportedHAModeList = ReadonlyArray<string>;
 export const CapabilityPropertiesSupportedHAModeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CapabilityPropertiesSupportedHAModeList>;
 
 /** supported geo backup regions */
-export type CapabilityPropertiesSupportedGeoBackupRegionsList = string[];
+export type CapabilityPropertiesSupportedGeoBackupRegionsList =
+  ReadonlyArray<string>;
 export const CapabilityPropertiesSupportedGeoBackupRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2079,7 +2215,7 @@ export const StorageEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of supported storage editions */
 export type ServerEditionCapabilitySupportedStorageEditionsList =
-  StorageEditionCapability[];
+  ReadonlyArray<StorageEditionCapability>;
 export const ServerEditionCapabilitySupportedStorageEditionsList =
   /*@__PURE__*/ S.Array(
     StorageEditionCapability,
@@ -2106,7 +2242,8 @@ export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
 
 /** A list of supported Skus */
-export type ServerVersionCapabilitySupportedSkusList = SkuCapability[];
+export type ServerVersionCapabilitySupportedSkusList =
+  ReadonlyArray<SkuCapability>;
 export const ServerVersionCapabilitySupportedSkusList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<ServerVersionCapabilitySupportedSkusList>;
@@ -2129,7 +2266,7 @@ export const ServerVersionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of supported server versions. */
 export type ServerEditionCapabilitySupportedServerVersionsList =
-  ServerVersionCapability[];
+  ReadonlyArray<ServerVersionCapability>;
 export const ServerEditionCapabilitySupportedServerVersionsList =
   /*@__PURE__*/ S.Array(
     ServerVersionCapability,
@@ -2160,7 +2297,7 @@ export const ServerEditionCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of supported flexible server editions. */
 export type CapabilityPropertiesSupportedFlexibleServerEditionsList =
-  ServerEditionCapability[];
+  ReadonlyArray<ServerEditionCapability>;
 export const CapabilityPropertiesSupportedFlexibleServerEditionsList =
   /*@__PURE__*/ S.Array(
     ServerEditionCapability,
@@ -2193,7 +2330,8 @@ export const CapabilityProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapabilityProperties>;
 
 /** The CapabilityProperties items on this page */
-export type CapabilitiesListResultValueList = CapabilityProperties[];
+export type CapabilitiesListResultValueList =
+  ReadonlyArray<CapabilityProperties>;
 export const CapabilitiesListResultValueList = /*@__PURE__*/ S.Array(
   CapabilityProperties,
 ) as any as S.Schema<CapabilitiesListResultValueList>;
@@ -2241,7 +2379,8 @@ export const LocationBasedCapabilitySetGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LocationBasedCapabilitySetGetRequest>;
 
 /** supported geo backup regions */
-export type CapabilityPropertiesV2SupportedGeoBackupRegionsList = string[];
+export type CapabilityPropertiesV2SupportedGeoBackupRegionsList =
+  ReadonlyArray<string>;
 export const CapabilityPropertiesV2SupportedGeoBackupRegionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2249,20 +2388,20 @@ export const CapabilityPropertiesV2SupportedGeoBackupRegionsList =
 
 /** A list of supported storage editions */
 export type ServerEditionCapabilityV2SupportedStorageEditionsList =
-  StorageEditionCapability[];
+  ReadonlyArray<StorageEditionCapability>;
 export const ServerEditionCapabilityV2SupportedStorageEditionsList =
   /*@__PURE__*/ S.Array(
     StorageEditionCapability,
   ) as any as S.Schema<ServerEditionCapabilityV2SupportedStorageEditionsList>;
 
 /** Supported zones */
-export type SkuCapabilityV2SupportedZonesList = string[];
+export type SkuCapabilityV2SupportedZonesList = ReadonlyArray<string>;
 export const SkuCapabilityV2SupportedZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuCapabilityV2SupportedZonesList>;
 
 /** Supported high availability mode */
-export type SkuCapabilityV2SupportedHAModeList = string[];
+export type SkuCapabilityV2SupportedHAModeList = ReadonlyArray<string>;
 export const SkuCapabilityV2SupportedHAModeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuCapabilityV2SupportedHAModeList>;
@@ -2296,7 +2435,8 @@ export const SkuCapabilityV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuCapabilityV2>;
 
 /** A list of supported Skus */
-export type ServerEditionCapabilityV2SupportedSkusList = SkuCapabilityV2[];
+export type ServerEditionCapabilityV2SupportedSkusList =
+  ReadonlyArray<SkuCapabilityV2>;
 export const ServerEditionCapabilityV2SupportedSkusList = /*@__PURE__*/ S.Array(
   SkuCapabilityV2,
 ) as any as S.Schema<ServerEditionCapabilityV2SupportedSkusList>;
@@ -2330,7 +2470,7 @@ export const ServerEditionCapabilityV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of supported flexible server editions. */
 export type CapabilityPropertiesV2SupportedFlexibleServerEditionsList =
-  ServerEditionCapabilityV2[];
+  ReadonlyArray<ServerEditionCapabilityV2>;
 export const CapabilityPropertiesV2SupportedFlexibleServerEditionsList =
   /*@__PURE__*/ S.Array(
     ServerEditionCapabilityV2,
@@ -2351,7 +2491,7 @@ export const ServerVersionCapabilityV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of supported server versions. */
 export type CapabilityPropertiesV2SupportedServerVersionsList =
-  ServerVersionCapabilityV2[];
+  ReadonlyArray<ServerVersionCapabilityV2>;
 export const CapabilityPropertiesV2SupportedServerVersionsList =
   /*@__PURE__*/ S.Array(
     ServerVersionCapabilityV2,
@@ -2374,7 +2514,8 @@ export const FeatureProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureProperty>;
 
 /** A list of supported features. */
-export type CapabilityPropertiesV2SupportedFeaturesList = FeatureProperty[];
+export type CapabilityPropertiesV2SupportedFeaturesList =
+  ReadonlyArray<FeatureProperty>;
 export const CapabilityPropertiesV2SupportedFeaturesList =
   /*@__PURE__*/ S.Array(
     FeatureProperty,
@@ -2480,7 +2621,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
 
 /** The CapabilitySetsList items on this page */
-export type CapabilitySetsListValueList = Capability[];
+export type CapabilitySetsListValueList = ReadonlyArray<Capability>;
 export const CapabilitySetsListValueList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<CapabilitySetsListValueList>;
@@ -2575,7 +2716,7 @@ export const LogFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogFile" }) as any as S.Schema<LogFile>;
 
 /** The LogFile items on this page */
-export type LogFileListResultValueList = LogFile[];
+export type LogFileListResultValueList = ReadonlyArray<LogFile>;
 export const LogFileListResultValueList = /*@__PURE__*/ S.Array(
   LogFile,
 ) as any as S.Schema<LogFileListResultValueList>;
@@ -2596,37 +2737,7 @@ export const LogFileListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogFileListResult",
 }) as any as S.Schema<LogFileListResult>;
 
-export interface LongRunningBackupCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the server. */
-  serverName: string;
-  /** The name of the backup. */
-  backupName: string;
-  body?: unknown;
-}
-export const LongRunningBackupCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    serverName: S.String.pipe(T.Label()),
-    backupName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/backupsV2/{backupName}",
-      code: 200,
-      apiVersion: "2024-12-30",
-    }),
-  ),
-).annotate({
-  identifier: "LongRunningBackupCreateRequest",
-}) as any as S.Schema<LongRunningBackupCreateRequest>;
-
-export type BackupType = "FULL" | (string & {});
+export type BackupType = "FULL";
 export const BackupType = /*@__PURE__*/ S.String;
 
 /** The current provisioning state. */
@@ -2635,8 +2746,7 @@ export type ProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of a server backup. */
@@ -2662,6 +2772,37 @@ export const ServerBackupPropertiesV2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServerBackupPropertiesV2",
 }) as any as S.Schema<ServerBackupPropertiesV2>;
+
+export interface LongRunningBackupCreateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the server. */
+  serverName: string;
+  /** The name of the backup. */
+  backupName: string;
+  /** The properties of a server backup. */
+  properties?: ServerBackupPropertiesV2;
+}
+export const LongRunningBackupCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    serverName: S.String.pipe(T.Label()),
+    backupName: S.String.pipe(T.Label()),
+    properties: S.optional(ServerBackupPropertiesV2),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/backupsV2/{backupName}",
+      code: 200,
+      apiVersion: "2024-12-30",
+    }),
+  ),
+).annotate({
+  identifier: "LongRunningBackupCreateRequest",
+}) as any as S.Schema<LongRunningBackupCreateRequest>;
 
 export interface LongRunningBackupCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2788,7 +2929,7 @@ export const ServerBackupV2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerBackupV2" }) as any as S.Schema<ServerBackupV2>;
 
 /** The ServerBackupV2 items on this page */
-export type ServerBackupV2ListResultValueList = ServerBackupV2[];
+export type ServerBackupV2ListResultValueList = ReadonlyArray<ServerBackupV2>;
 export const ServerBackupV2ListResultValueList = /*@__PURE__*/ S.Array(
   ServerBackupV2,
 ) as any as S.Schema<ServerBackupV2ListResultValueList>;
@@ -2839,8 +2980,7 @@ export type MaintenanceType =
   | "RoutineMaintenance"
   | "MinorVersionUpgrade"
   | "SecurityPatches"
-  | "HotFixes"
-  | (string & {});
+  | "HotFixes";
 export const MaintenanceType = /*@__PURE__*/ S.String;
 
 /** The current status of this maintenance. */
@@ -2850,8 +2990,7 @@ export type MaintenanceState =
   | "InPreparation"
   | "Processing"
   | "Completed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const MaintenanceState = /*@__PURE__*/ S.String;
 
 /** The current provisioning state. */
@@ -2859,8 +2998,7 @@ export type MaintenanceProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const MaintenanceProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of a maintenance resource. */
@@ -2930,7 +3068,7 @@ export const Maintenance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Maintenance" }) as any as S.Schema<Maintenance>;
 
 /** The Maintenance items on this page */
-export type MaintenanceListResultValueList = Maintenance[];
+export type MaintenanceListResultValueList = ReadonlyArray<Maintenance>;
 export const MaintenanceListResultValueList = /*@__PURE__*/ S.Array(
   Maintenance,
 ) as any as S.Schema<MaintenanceListResultValueList>;
@@ -3003,6 +3141,19 @@ export const MaintenancesReadResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenancesReadResponse",
 }) as any as S.Schema<MaintenancesReadResponse>;
 
+/** The properties of a maintenance update parameter. */
+export interface MaintenancePropertiesForUpdate {
+  /** The start time for a maintenance. */
+  maintenanceStartTime?: string;
+}
+export const MaintenancePropertiesForUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maintenanceStartTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MaintenancePropertiesForUpdate",
+}) as any as S.Schema<MaintenancePropertiesForUpdate>;
+
 export interface MaintenancesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3012,7 +3163,8 @@ export interface MaintenancesUpdateRequest {
   serverName: string;
   /** The name of the maintenance. */
   maintenanceName: string;
-  body?: unknown;
+  /** The properties of a maintenance update parameter */
+  properties?: MaintenancePropertiesForUpdate;
 }
 export const MaintenancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3020,7 +3172,7 @@ export const MaintenancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
     maintenanceName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(MaintenancePropertiesForUpdate),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3083,7 +3235,8 @@ export const OperationProgressGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationProgressGetRequest>;
 
 /** The operations list. */
-export type OperationStatusResultOperationsList = OperationStatusResult[];
+export type OperationStatusResultOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
@@ -3127,7 +3280,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationProgressGetResponseOperationsList =
-  OperationStatusResult[];
+  ReadonlyArray<OperationStatusResult>;
 export const OperationProgressGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationProgressGetResponseOperationsList>;
@@ -3135,8 +3288,7 @@ export const OperationProgressGetResponseOperationsList = /*@__PURE__*/ S.Array(
 /** Identifies the type of source operation */
 export type ObjectType =
   | "BackupAndExportResponse"
-  | "ImportFromStorageResponse"
-  | (string & {});
+  | "ImportFromStorageResponse";
 export const ObjectType = /*@__PURE__*/ S.String;
 
 /** Represents the response properties specific to the operation */
@@ -3217,7 +3369,8 @@ export const OperationResultsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResultsGetRequest>;
 
 /** The operations list. */
-export type OperationResultsGetResponseOperationsList = OperationStatusResult[];
+export type OperationResultsGetResponseOperationsList =
+  ReadonlyArray<OperationStatusResult>;
 export const OperationResultsGetResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<OperationResultsGetResponseOperationsList>;
@@ -3307,7 +3460,7 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type Origin = "user" | "system" | "user,system" | (string & {});
+export type Origin = "user" | "system" | "user,system";
 export const Origin = /*@__PURE__*/ S.String;
 
 /** Additional descriptions for the operation. */
@@ -3338,7 +3491,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -3359,63 +3512,19 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
-export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the server. */
-  serverName: string;
-  /** The name of the private endpoint connection associated with the Azure resource. */
-  privateEndpointConnectionName: string;
-  body: unknown;
-}
-export const PrivateEndpointConnectionsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      serverName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2024-12-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
-  }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
-
-/** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
-export const PrivateEndpointConnectionPropertiesGroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** The private endpoint resource. */
-export interface PrivateEndpoint {
-  /** The ARM identifier for private endpoint. */
-  id?: string;
-}
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "PrivateEndpoint",
-}) as any as S.Schema<PrivateEndpoint>;
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
-  | "Rejected"
-  | (string & {});
+  | "Rejected";
 export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -3437,13 +3546,82 @@ export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkServiceConnectionState",
 }) as any as S.Schema<PrivateLinkServiceConnectionState>;
 
+/** Properties of the private endpoint connection. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** The private endpoint resource. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
+export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the server. */
+  serverName: string;
+  /** The name of the private endpoint connection associated with the Azure resource. */
+  privateEndpointConnectionName: string;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
+}
+export const PrivateEndpointConnectionsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      serverName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/privateEndpointConnections/{privateEndpointConnectionName}",
+        code: 200,
+        apiVersion: "2024-12-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
+  }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
+
+/** The group ids for the private endpoint resource. */
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
+export const PrivateEndpointConnectionPropertiesGroupIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
+
+/** The private endpoint resource. */
+export interface PrivateEndpoint {
+  /** The ARM identifier for private endpoint. */
+  id?: string;
+}
+export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateEndpoint",
+}) as any as S.Schema<PrivateEndpoint>;
+
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -3638,7 +3816,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnectionListResultValueItem[];
+  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -3689,14 +3867,16 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3802,7 +3982,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourcesListByServerResponseValueList =
-  PrivateLinkResource[];
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourcesListByServerResponseValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkResource,
@@ -3854,7 +4034,7 @@ export const ServerTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServerTagsMap>;
 
 /** The major version of a server. 8.0.21 stands for MySQL 8.0, 5.7.44 stands for MySQL 5.7 */
-export type ServerVersion = "5.7" | "8.0.21" | (string & {});
+export type ServerVersion = "5.7" | "8.0.21";
 export const ServerVersion = /*@__PURE__*/ S.String;
 
 /** The mode to create a new MySQL server. */
@@ -3862,19 +4042,15 @@ export type CreateMode =
   | "Default"
   | "PointInTimeRestore"
   | "Replica"
-  | "GeoRestore"
-  | (string & {});
+  | "GeoRestore";
 export const CreateMode = /*@__PURE__*/ S.String;
 
 /** The replication role. */
-export type ReplicationRole = "None" | "Source" | "Replica" | (string & {});
+export type ReplicationRole = "None" | "Source" | "Replica";
 export const ReplicationRole = /*@__PURE__*/ S.String;
 
 /** The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk. */
-export type DataEncryptionType =
-  | "AzureKeyVault"
-  | "SystemManaged"
-  | (string & {});
+export type DataEncryptionType = "AzureKeyVault" | "SystemManaged";
 export const DataEncryptionType = /*@__PURE__*/ S.String;
 
 /** The date encryption for cmk. */
@@ -3908,27 +4084,23 @@ export type ServerState =
   | "Starting"
   | "Stopping"
   | "Stopped"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ServerState = /*@__PURE__*/ S.String;
 
 /** Enable Storage Auto Grow or not. */
-export type StorageAutoGrow = "Enabled" | "Disabled" | (string & {});
+export type StorageAutoGrow = "Enabled" | "Disabled";
 export const StorageAutoGrow = /*@__PURE__*/ S.String;
 
 /** Enable Log On Disk or not. */
-export type StorageLogOnDisk = "Enabled" | "Disabled" | (string & {});
+export type StorageLogOnDisk = "Enabled" | "Disabled";
 export const StorageLogOnDisk = /*@__PURE__*/ S.String;
 
 /** Enable IO Auto Scaling or not. */
-export type StorageAutoIoScaling = "Enabled" | "Disabled" | (string & {});
+export type StorageAutoIoScaling = "Enabled" | "Disabled";
 export const StorageAutoIoScaling = /*@__PURE__*/ S.String;
 
 /** The redundant type of the server storage. The parameter is used for server creation. */
-export type StorageStorageRedundancy =
-  | "LocalRedundancy"
-  | "ZoneRedundancy"
-  | (string & {});
+export type StorageStorageRedundancy = "LocalRedundancy" | "ZoneRedundancy";
 export const StorageStorageRedundancy = /*@__PURE__*/ S.String;
 
 /** Storage Profile properties of a server */
@@ -3961,7 +4133,7 @@ export const Storage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Storage" }) as any as S.Schema<Storage>;
 
 /** Whether or not geo redundant backup is enabled. */
-export type BackupGeoRedundantBackup = "Enabled" | "Disabled" | (string & {});
+export type BackupGeoRedundantBackup = "Enabled" | "Disabled";
 export const BackupGeoRedundantBackup = /*@__PURE__*/ S.String;
 
 /** Storage Profile properties of a server */
@@ -3985,11 +4157,7 @@ export const Backup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
 /** High availability mode for a server. */
-export type HighAvailabilityMode =
-  | "Disabled"
-  | "ZoneRedundant"
-  | "SameZone"
-  | (string & {});
+export type HighAvailabilityMode = "Disabled" | "ZoneRedundant" | "SameZone";
 export const HighAvailabilityMode = /*@__PURE__*/ S.String;
 
 /** The state of server high availability. */
@@ -3998,8 +4166,7 @@ export type HighAvailabilityState =
   | "CreatingStandby"
   | "Healthy"
   | "FailingOver"
-  | "RemovingStandby"
-  | (string & {});
+  | "RemovingStandby";
 export const HighAvailabilityState = /*@__PURE__*/ S.String;
 
 /** High availability properties of a server */
@@ -4022,7 +4189,7 @@ export const HighAvailability = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HighAvailability>;
 
 /** Enum to indicate whether value is 'Enabled' or 'Disabled' */
-export type EnableStatusEnum = "Enabled" | "Disabled" | (string & {});
+export type EnableStatusEnum = "Enabled" | "Disabled";
 export const EnableStatusEnum = /*@__PURE__*/ S.String;
 
 /** Network related properties of a server */
@@ -4070,14 +4237,14 @@ export const ServerPropertiesPrivateEndpointConnectionsItem =
 
 /** PrivateEndpointConnections related properties of a server. */
 export type ServerPropertiesPrivateEndpointConnectionsList =
-  ServerPropertiesPrivateEndpointConnectionsItem[];
+  ReadonlyArray<ServerPropertiesPrivateEndpointConnectionsItem>;
 export const ServerPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     ServerPropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsList>;
 
 /** Enum to indicate the patch strategy of a server */
-export type PatchStrategy = "Regular" | "VirtualCanary" | (string & {});
+export type PatchStrategy = "Regular" | "VirtualCanary";
 export const PatchStrategy = /*@__PURE__*/ S.String;
 
 /** Maintenance policy of a server. */
@@ -4094,11 +4261,7 @@ export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaintenancePolicy>;
 
 /** The batch of maintenance when enabled the custom managed maintenance window of a server. */
-export type BatchOfMaintenance =
-  | "Default"
-  | "Batch1"
-  | "Batch2"
-  | (string & {});
+export type BatchOfMaintenance = "Default" | "Batch1" | "Batch2";
 export const BatchOfMaintenance = /*@__PURE__*/ S.String;
 
 /** Maintenance window of a server. */
@@ -4127,7 +4290,7 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaintenanceWindow>;
 
 /** Storage type of import source. */
-export type ImportSourceStorageType = "AzureBlob" | (string & {});
+export type ImportSourceStorageType = "AzureBlob";
 export const ImportSourceStorageType = /*@__PURE__*/ S.String;
 
 /** Import source related properties. */
@@ -4231,7 +4394,7 @@ export const ServerProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerProperties>;
 
 /** Type of managed service identity. */
-export type ManagedServiceIdentityType = "UserAssigned" | (string & {});
+export type ManagedServiceIdentityType = "UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** Metadata of user assigned identity. */
@@ -4285,11 +4448,7 @@ export const MySQLServerIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MySQLServerIdentity>;
 
 /** The tier of the particular SKU, e.g. GeneralPurpose. */
-export type ServerSkuTier =
-  | "Burstable"
-  | "GeneralPurpose"
-  | "MemoryOptimized"
-  | (string & {});
+export type ServerSkuTier = "Burstable" | "GeneralPurpose" | "MemoryOptimized";
 export const ServerSkuTier = /*@__PURE__*/ S.String;
 
 /** Billing information related properties of a server. */
@@ -4342,7 +4501,7 @@ export const Server = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Server" }) as any as S.Schema<Server>;
 
 /** The Server items on this page */
-export type ServerListResultValueList = Server[];
+export type ServerListResultValueList = ReadonlyArray<Server>;
 export const ServerListResultValueList = /*@__PURE__*/ S.Array(
   Server,
 ) as any as S.Schema<ServerListResultValueList>;
@@ -4363,6 +4522,26 @@ export const ServerListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServerListResult",
 }) as any as S.Schema<ServerListResult>;
 
+/** The key type like 'AzureKeyVault'. */
+export type ServerKeyPropertiesInputServerKeyType = "AzureKeyVault";
+export const ServerKeyPropertiesInputServerKeyType = /*@__PURE__*/ S.String;
+
+/** Properties for a key execution. */
+export interface ServerKeyPropertiesInput {
+  /** The key type like 'AzureKeyVault'. */
+  serverKeyType: ServerKeyPropertiesInputServerKeyType;
+  /** The URI of the key. */
+  uri?: string;
+}
+export const ServerKeyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serverKeyType: ServerKeyPropertiesInputServerKeyType,
+    uri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServerKeyPropertiesInput",
+}) as any as S.Schema<ServerKeyPropertiesInput>;
+
 export interface ServerKeysCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4372,7 +4551,8 @@ export interface ServerKeysCreateOrUpdateRequest {
   serverName: string;
   /** The name of the MySQL Server key to be operated on (updated or created). */
   keyName: string;
-  body: unknown;
+  /** Properties of the ServerKey Resource. */
+  properties?: ServerKeyPropertiesInput;
 }
 export const ServerKeysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4380,7 +4560,7 @@ export const ServerKeysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
     keyName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ServerKeyPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4394,7 +4574,7 @@ export const ServerKeysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerKeysCreateOrUpdateRequest>;
 
 /** The key type like 'AzureKeyVault'. */
-export type ServerKeyPropertiesServerKeyType = "AzureKeyVault" | (string & {});
+export type ServerKeyPropertiesServerKeyType = "AzureKeyVault";
 export const ServerKeyPropertiesServerKeyType = /*@__PURE__*/ S.String;
 
 /** Properties for a key execution. */
@@ -4576,7 +4756,7 @@ export const ServerKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerKey" }) as any as S.Schema<ServerKey>;
 
 /** A list of MySQL Server keys. */
-export type ServerKeyListResultValueList = ServerKey[];
+export type ServerKeyListResultValueList = ReadonlyArray<ServerKey>;
 export const ServerKeyListResultValueList = /*@__PURE__*/ S.Array(
   ServerKey,
 ) as any as S.Schema<ServerKeyListResultValueList>;
@@ -4597,6 +4777,175 @@ export const ServerKeyListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServerKeyListResult",
 }) as any as S.Schema<ServerKeyListResult>;
 
+/** Resource tags. */
+export type ServersCreateRequestTagsMap = { [key: string]: string | undefined };
+export const ServersCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServersCreateRequestTagsMap>;
+
+/** Enable Storage Auto Grow or not. */
+export type StorageInputAutoGrow = "Enabled" | "Disabled";
+export const StorageInputAutoGrow = /*@__PURE__*/ S.String;
+
+/** Enable Log On Disk or not. */
+export type StorageInputLogOnDisk = "Enabled" | "Disabled";
+export const StorageInputLogOnDisk = /*@__PURE__*/ S.String;
+
+/** Enable IO Auto Scaling or not. */
+export type StorageInputAutoIoScaling = "Enabled" | "Disabled";
+export const StorageInputAutoIoScaling = /*@__PURE__*/ S.String;
+
+/** The redundant type of the server storage. The parameter is used for server creation. */
+export type StorageInputStorageRedundancy =
+  | "LocalRedundancy"
+  | "ZoneRedundancy";
+export const StorageInputStorageRedundancy = /*@__PURE__*/ S.String;
+
+/** Storage Profile properties of a server */
+export interface StorageInput {
+  /** Max storage size allowed for a server. */
+  storageSizeGB?: number;
+  /** Storage IOPS for a server. */
+  iops?: number;
+  /** Enable Storage Auto Grow or not. */
+  autoGrow?: StorageInputAutoGrow;
+  /** Enable Log On Disk or not. */
+  logOnDisk?: StorageInputLogOnDisk;
+  /** Enable IO Auto Scaling or not. */
+  autoIoScaling?: StorageInputAutoIoScaling;
+  /** The redundant type of the server storage. The parameter is used for server creation. */
+  storageRedundancy?: StorageInputStorageRedundancy;
+}
+export const StorageInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageSizeGB: S.optional(S.Number),
+    iops: S.optional(S.Number),
+    autoGrow: S.optional(StorageInputAutoGrow),
+    logOnDisk: S.optional(StorageInputLogOnDisk),
+    autoIoScaling: S.optional(StorageInputAutoIoScaling),
+    storageRedundancy: S.optional(StorageInputStorageRedundancy),
+  }),
+).annotate({ identifier: "StorageInput" }) as any as S.Schema<StorageInput>;
+
+/** Whether or not geo redundant backup is enabled. */
+export type BackupInputGeoRedundantBackup = "Enabled" | "Disabled";
+export const BackupInputGeoRedundantBackup = /*@__PURE__*/ S.String;
+
+/** Storage Profile properties of a server */
+export interface BackupInput {
+  /** Backup retention days for the server. */
+  backupRetentionDays?: number;
+  /** Backup interval hours for the server. */
+  backupIntervalHours?: number;
+  /** Whether or not geo redundant backup is enabled. */
+  geoRedundantBackup?: BackupInputGeoRedundantBackup;
+}
+export const BackupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    backupRetentionDays: S.optional(S.Number),
+    backupIntervalHours: S.optional(S.Number),
+    geoRedundantBackup: S.optional(BackupInputGeoRedundantBackup),
+  }),
+).annotate({ identifier: "BackupInput" }) as any as S.Schema<BackupInput>;
+
+/** The properties of a server. */
+export interface ServerPropertiesInput {
+  /** The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation). */
+  administratorLogin?: string;
+  /** The password of the administrator login (required for server creation). */
+  administratorLoginPassword?: string | Redacted.Redacted<string>;
+  /** Major version of MySQL. 8.0.21 stands for MySQL 8.0, 5.7.44 stands for MySQL 5.7 */
+  version?: ServerVersion;
+  /** availability Zone information of the server. */
+  availabilityZone?: string;
+  /** The mode to create a new MySQL server. */
+  createMode?: CreateMode;
+  /** The source MySQL server id. */
+  sourceServerResourceId?: string;
+  /** Restore point creation time (ISO8601 format), specifying the time to restore from. */
+  restorePointInTime?: string;
+  /** The replication role. */
+  replicationRole?: ReplicationRole;
+  /** The Data Encryption for CMK. */
+  dataEncryption?: DataEncryption;
+  /** The server database port. Can only be specified when the server is being created. */
+  databasePort?: number;
+  /** Storage related properties of a server. */
+  storage?: StorageInput;
+  /** Backup related properties of a server. */
+  backup?: BackupInput;
+  /** High availability related properties of a server. */
+  highAvailability?: HighAvailability;
+  /** Network related properties of a server. */
+  network?: Network;
+  /** Maintenance policy of a server. */
+  maintenancePolicy?: MaintenancePolicy;
+  /** Maintenance window of a server. Known issue: cannot be set during server creation or updated with other properties during server update; must be updated separately. */
+  maintenanceWindow?: MaintenanceWindow;
+  /** Source properties for import from storage. */
+  importSourceProperties?: ImportSourceProperties;
+}
+export const ServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    administratorLogin: S.optional(S.String),
+    administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    version: S.optional(ServerVersion),
+    availabilityZone: S.optional(S.String),
+    createMode: S.optional(CreateMode),
+    sourceServerResourceId: S.optional(S.String),
+    restorePointInTime: S.optional(S.String),
+    replicationRole: S.optional(ReplicationRole),
+    dataEncryption: S.optional(DataEncryption),
+    databasePort: S.optional(S.Number),
+    storage: S.optional(StorageInput),
+    backup: S.optional(BackupInput),
+    highAvailability: S.optional(HighAvailability),
+    network: S.optional(Network),
+    maintenancePolicy: S.optional(MaintenancePolicy),
+    maintenanceWindow: S.optional(MaintenanceWindow),
+    importSourceProperties: S.optional(ImportSourceProperties),
+  }),
+).annotate({
+  identifier: "ServerPropertiesInput",
+}) as any as S.Schema<ServerPropertiesInput>;
+
+/** Metadata of user assigned identity. */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** Metadata of user assigned identity. */
+export type MySQLServerIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const MySQLServerIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<MySQLServerIdentityInputUserAssignedIdentitiesMap>;
+
+/** Properties to configure Identity for Bring your Own Keys */
+export interface MySQLServerIdentityInput {
+  /** Type of managed service identity. */
+  type?: ManagedServiceIdentityType;
+  /** Metadata of user assigned identity. */
+  userAssignedIdentities?: MySQLServerIdentityInputUserAssignedIdentitiesMap;
+}
+export const MySQLServerIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ManagedServiceIdentityType),
+    userAssignedIdentities: S.optional(
+      MySQLServerIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "MySQLServerIdentityInput",
+}) as any as S.Schema<MySQLServerIdentityInput>;
+
 export interface ServersCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4604,14 +4953,27 @@ export interface ServersCreateRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ServersCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the server. */
+  properties?: ServerPropertiesInput;
+  /** The cmk identity for the server. */
+  identity?: MySQLServerIdentityInput;
+  /** The SKU (pricing tier) of the server. */
+  sku?: MySQLServerSku;
 }
 export const ServersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ServersCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ServerPropertiesInput),
+    identity: S.optional(MySQLServerIdentityInput),
+    sku: S.optional(MySQLServerSku),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4708,14 +5070,15 @@ export interface ServersDetachVNetRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
-  body: unknown;
+  /** Whether or not public network access is allowed for this server. Value is 'Disabled' when server has VNet integration. */
+  publicNetworkAccess?: EnableStatusEnum;
 }
 export const ServersDetachVNetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    publicNetworkAccess: S.optional(EnableStatusEnum),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4994,14 +5357,15 @@ export interface ServersResetGtidRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
-  body: unknown;
+  /** The Gtid set of server. */
+  gtidSet?: string;
 }
 export const ServersResetGtidRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    gtidSet: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5028,14 +5392,18 @@ export interface ServersRestartRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
-  body: unknown;
+  /** Whether or not failover to standby server when restarting a server with high availability enabled. */
+  restartWithFailover?: EnableStatusEnum;
+  /** The maximum allowed failover time in seconds. */
+  maxFailoverSeconds?: number;
 }
 export const ServersRestartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    restartWithFailover: S.optional(EnableStatusEnum),
+    maxFailoverSeconds: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5119,6 +5487,53 @@ export const ServersStopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServersStopResponse",
 }) as any as S.Schema<ServersStopResponse>;
 
+/** The properties that can be updated for a server. */
+export interface ServerPropertiesForUpdateInput {
+  /** The password of the administrator login. */
+  administratorLoginPassword?: string | Redacted.Redacted<string>;
+  /** Server version. */
+  version?: ServerVersion;
+  /** Storage related properties of a server. */
+  storage?: StorageInput;
+  /** Backup related properties of a server. */
+  backup?: BackupInput;
+  /** High availability related properties of a server. */
+  highAvailability?: HighAvailability;
+  /** Maintenance policy of a server. */
+  maintenancePolicy?: MaintenancePolicy;
+  /** Maintenance window of a server. */
+  maintenanceWindow?: MaintenanceWindow;
+  /** The replication role of the server. */
+  replicationRole?: ReplicationRole;
+  /** The Data Encryption for CMK. */
+  dataEncryption?: DataEncryption;
+  /** Network related properties of a server */
+  network?: Network;
+}
+export const ServerPropertiesForUpdateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    version: S.optional(ServerVersion),
+    storage: S.optional(StorageInput),
+    backup: S.optional(BackupInput),
+    highAvailability: S.optional(HighAvailability),
+    maintenancePolicy: S.optional(MaintenancePolicy),
+    maintenanceWindow: S.optional(MaintenanceWindow),
+    replicationRole: S.optional(ReplicationRole),
+    dataEncryption: S.optional(DataEncryption),
+    network: S.optional(Network),
+  }),
+).annotate({
+  identifier: "ServerPropertiesForUpdateInput",
+}) as any as S.Schema<ServerPropertiesForUpdateInput>;
+
+/** Application-specific metadata in the form of key-value pairs. */
+export type ServersUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const ServersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServersUpdateRequestTagsMap>;
+
 export interface ServersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5126,14 +5541,24 @@ export interface ServersUpdateRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
-  body: unknown;
+  /** The cmk identity for the server. */
+  identity?: MySQLServerIdentityInput;
+  /** The SKU (pricing tier) of the server. */
+  sku?: MySQLServerSku;
+  /** The properties that can be updated for a server. */
+  properties?: ServerPropertiesForUpdateInput;
+  /** Application-specific metadata in the form of key-value pairs. */
+  tags?: ServersUpdateRequestTagsMap;
 }
 export const ServersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(MySQLServerIdentityInput),
+    sku: S.optional(MySQLServerSku),
+    properties: S.optional(ServerPropertiesForUpdateInput),
+    tags: S.optional(ServersUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5191,6 +5616,19 @@ export const ServersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServersUpdateResponse",
 }) as any as S.Schema<ServersUpdateResponse>;
 
+/** The properties that can be updated for a server. */
+export interface ServersUpgradeRequestProperties {
+  /** Represents an server storage profile. */
+  targetServerVersion?: string;
+}
+export const ServersUpgradeRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetServerVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServersUpgradeRequestProperties",
+}) as any as S.Schema<ServersUpgradeRequestProperties>;
+
 export interface ServersUpgradeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5198,14 +5636,15 @@ export interface ServersUpgradeRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
-  body: unknown;
+  /** The properties that can be updated for a server. */
+  properties?: ServersUpgradeRequestProperties;
 }
 export const ServersUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ServersUpgradeRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5232,7 +5671,8 @@ export interface ServersValidateEstimateHighAvailabilityRequest {
   resourceGroupName: string;
   /** The name of the server. */
   serverName: string;
-  body: unknown;
+  /** Expected Availability zone of the standby server. */
+  expectedStandbyAvailabilityZone?: string;
 }
 export const ServersValidateEstimateHighAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5240,7 +5680,7 @@ export const ServersValidateEstimateHighAvailabilityRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       serverName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      expectedStandbyAvailabilityZone: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",

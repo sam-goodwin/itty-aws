@@ -112,8 +112,7 @@ export type CloudLocationCloudLocationTypeEnum =
   | "CLOUD_LOCATION_TYPE_UNSPECIFIED"
   | "CLOUD_LOCATION_TYPE_REGION"
   | "CLOUD_LOCATION_TYPE_ZONE"
-  | "CLOUD_LOCATION_TYPE_GDCC_ZONE"
-  | (string & {});
+  | "CLOUD_LOCATION_TYPE_GDCC_ZONE";
 export const CloudLocationCloudLocationTypeEnum = /*@__PURE__*/ S.String;
 
 export type CloudLocationCloudProviderEnum =
@@ -121,8 +120,7 @@ export type CloudLocationCloudProviderEnum =
   | "CLOUD_PROVIDER_GCP"
   | "CLOUD_PROVIDER_AWS"
   | "CLOUD_PROVIDER_AZURE"
-  | "CLOUD_PROVIDER_OCI"
-  | (string & {});
+  | "CLOUD_PROVIDER_OCI";
 export const CloudLocationCloudProviderEnum = /*@__PURE__*/ S.String;
 
 /** Represents resource cloud locations. */
@@ -154,7 +152,7 @@ export const CloudLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CloudLocation" }) as any as S.Schema<CloudLocation>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -189,7 +187,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -238,7 +236,7 @@ export const ListProjectsLocationsCloudLocationsRequest =
     identifier: "ListProjectsLocationsCloudLocationsRequest",
   }) as any as S.Schema<ListProjectsLocationsCloudLocationsRequest>;
 
-export type CloudLocationList = CloudLocation[];
+export type CloudLocationList = ReadonlyArray<CloudLocation>;
 export const CloudLocationList = /*@__PURE__*/ S.Array(
   CloudLocation,
 ) as any as S.Schema<CloudLocationList>;

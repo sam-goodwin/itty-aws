@@ -93,16 +93,14 @@ export type SpaceSpaceThreadingStateEnum =
   | "SPACE_THREADING_STATE_UNSPECIFIED"
   | "THREADED_MESSAGES"
   | "GROUPED_MESSAGES"
-  | "UNTHREADED_MESSAGES"
-  | (string & {});
+  | "UNTHREADED_MESSAGES";
 export const SpaceSpaceThreadingStateEnum = /*@__PURE__*/ S.String;
 
 export type SpaceSpaceTypeEnum =
   | "SPACE_TYPE_UNSPECIFIED"
   | "SPACE"
   | "GROUP_CHAT"
-  | "DIRECT_MESSAGE"
-  | (string & {});
+  | "DIRECT_MESSAGE";
 export const SpaceSpaceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a space permission setting. */
@@ -158,14 +156,13 @@ export const PermissionSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "PermissionSettings",
 }) as any as S.Schema<PermissionSettings>;
 
-export type SpaceTypeEnum = "TYPE_UNSPECIFIED" | "ROOM" | "DM" | (string & {});
+export type SpaceTypeEnum = "TYPE_UNSPECIFIED" | "ROOM" | "DM";
 export const SpaceTypeEnum = /*@__PURE__*/ S.String;
 
 export type SpaceSpaceHistoryStateEnum =
   | "HISTORY_STATE_UNSPECIFIED"
   | "HISTORY_OFF"
-  | "HISTORY_ON"
-  | (string & {});
+  | "HISTORY_ON";
 export const SpaceSpaceHistoryStateEnum = /*@__PURE__*/ S.String;
 
 /** Details about the space including description and rules. */
@@ -201,15 +198,13 @@ export const MembershipCount = /*@__PURE__*/ S.suspend(() =>
 export type SpacePredefinedPermissionSettingsEnum =
   | "PREDEFINED_PERMISSION_SETTINGS_UNSPECIFIED"
   | "COLLABORATION_SPACE"
-  | "ANNOUNCEMENT_SPACE"
-  | (string & {});
+  | "ANNOUNCEMENT_SPACE";
 export const SpacePredefinedPermissionSettingsEnum = /*@__PURE__*/ S.String;
 
 export type AccessSettingsAccessStateEnum =
   | "ACCESS_STATE_UNSPECIFIED"
   | "PRIVATE"
-  | "DISCOVERABLE"
-  | (string & {});
+  | "DISCOVERABLE";
 export const AccessSettingsAccessStateEnum = /*@__PURE__*/ S.String;
 
 /** A target audience in Google Chat. A target audience represents a group of users within a Google Workspace organization, defined by an administrator. Target audiences are used to configure access and visibility settings for resources, such as making a space discoverable to a specific group of users. For more details, see [Target audiences](https://support.google.com/a/answer/9934697) and [Make a space discoverable to a target audience](https://developers.google.com/workspace/chat/space-target-audience). */
@@ -234,7 +229,7 @@ export const Principal = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
 
-export type PrincipalList = Principal[];
+export type PrincipalList = ReadonlyArray<Principal>;
 export const PrincipalList = /*@__PURE__*/ S.Array(
   Principal,
 ) as any as S.Schema<PrincipalList>;
@@ -453,19 +448,17 @@ export type MembershipRoleEnum =
   | "MEMBERSHIP_ROLE_UNSPECIFIED"
   | "ROLE_MEMBER"
   | "ROLE_MANAGER"
-  | "ROLE_ASSISTANT_MANAGER"
-  | (string & {});
+  | "ROLE_ASSISTANT_MANAGER";
 export const MembershipRoleEnum = /*@__PURE__*/ S.String;
 
 export type MembershipStateEnum =
   | "MEMBERSHIP_STATE_UNSPECIFIED"
   | "JOINED"
   | "INVITED"
-  | "NOT_A_MEMBER"
-  | (string & {});
+  | "NOT_A_MEMBER";
 export const MembershipStateEnum = /*@__PURE__*/ S.String;
 
-export type UserTypeEnum = "TYPE_UNSPECIFIED" | "HUMAN" | "BOT" | (string & {});
+export type UserTypeEnum = "TYPE_UNSPECIFIED" | "HUMAN" | "BOT";
 export const UserTypeEnum = /*@__PURE__*/ S.String;
 
 /** A user in Google Chat. When returned as an output from a request, if your Chat app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output for a `User` resource only populates the user's `name` and `type`. */
@@ -495,8 +488,7 @@ export type MembershipAffiliationEnum =
   | "AFFILIATION_UNSPECIFIED"
   | "INTERNAL"
   | "EXTERNAL"
-  | "MANAGED_EXTERNAL"
-  | (string & {});
+  | "MANAGED_EXTERNAL";
 export const MembershipAffiliationEnum = /*@__PURE__*/ S.String;
 
 /** A Google Group in Google Chat. */
@@ -569,16 +561,14 @@ export const CreateSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateSpacesMessagesCreateMessageNotificationOptions_notificationTypeEnum =
     | "NOTIFICATION_TYPE_NONE"
     | "NOTIFICATION_TYPE_FORCE_NOTIFY"
-    | "NOTIFICATION_TYPE_SILENT"
-    | (string & {});
+    | "NOTIFICATION_TYPE_SILENT";
 export const CreateSpacesMessagesCreateMessageNotificationOptions_notificationTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type CreateSpacesMessagesMessageReplyOptionEnum =
   | "MESSAGE_REPLY_OPTION_UNSPECIFIED"
   | "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD"
-  | "REPLY_MESSAGE_OR_FAIL"
-  | (string & {});
+  | "REPLY_MESSAGE_OR_FAIL";
 export const CreateSpacesMessagesMessageReplyOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -600,25 +590,22 @@ export type ActionResponseTypeEnum =
   | "UPDATE_USER_MESSAGE_CARDS"
   | "REQUEST_CONFIG"
   | "DIALOG"
-  | "UPDATE_WIDGET"
-  | (string & {});
+  | "UPDATE_WIDGET";
 export const ActionResponseTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleAppsCardV1CardSectionDividerStyleEnum =
   | "DIVIDER_STYLE_UNSPECIFIED"
   | "SOLID_DIVIDER"
-  | "NO_DIVIDER"
-  | (string & {});
+  | "NO_DIVIDER";
 export const GoogleAppsCardV1CardSectionDividerStyleEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCardV1ActionInteractionEnum =
   | "INTERACTION_UNSPECIFIED"
-  | "OPEN_DIALOG"
-  | (string & {});
+  | "OPEN_DIALOG";
 export const GoogleAppsCardV1ActionInteractionEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -640,15 +627,12 @@ export const GoogleAppsCardV1ActionParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsCardV1ActionParameter>;
 
 export type GoogleAppsCardV1ActionParameterList =
-  GoogleAppsCardV1ActionParameter[];
+  ReadonlyArray<GoogleAppsCardV1ActionParameter>;
 export const GoogleAppsCardV1ActionParameterList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1ActionParameter,
 ) as any as S.Schema<GoogleAppsCardV1ActionParameterList>;
 
-export type GoogleAppsCardV1ActionLoadIndicatorEnum =
-  | "SPINNER"
-  | "NONE"
-  | (string & {});
+export type GoogleAppsCardV1ActionLoadIndicatorEnum = "SPINNER" | "NONE";
 export const GoogleAppsCardV1ActionLoadIndicatorEnum = /*@__PURE__*/ S.String;
 
 /** An action that describes the behavior when the form is submitted. For example, you can invoke an Apps Script script to handle the form. If the action is triggered, the form values are sent to the server. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -682,16 +666,10 @@ export const GoogleAppsCardV1Action = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1Action",
 }) as any as S.Schema<GoogleAppsCardV1Action>;
 
-export type GoogleAppsCardV1OpenLinkOnCloseEnum =
-  | "NOTHING"
-  | "RELOAD"
-  | (string & {});
+export type GoogleAppsCardV1OpenLinkOnCloseEnum = "NOTHING" | "RELOAD";
 export const GoogleAppsCardV1OpenLinkOnCloseEnum = /*@__PURE__*/ S.String;
 
-export type GoogleAppsCardV1OpenLinkOpenAsEnum =
-  | "FULL_SIZE"
-  | "OVERLAY"
-  | (string & {});
+export type GoogleAppsCardV1OpenLinkOpenAsEnum = "FULL_SIZE" | "OVERLAY";
 export const GoogleAppsCardV1OpenLinkOpenAsEnum = /*@__PURE__*/ S.String;
 
 /** Represents an `onClick` event that opens a hyperlink. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -735,10 +713,7 @@ export const GoogleAppsCardV1MaterialIcon = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1MaterialIcon",
 }) as any as S.Schema<GoogleAppsCardV1MaterialIcon>;
 
-export type GoogleAppsCardV1IconImageTypeEnum =
-  | "SQUARE"
-  | "CIRCLE"
-  | (string & {});
+export type GoogleAppsCardV1IconImageTypeEnum = "SQUARE" | "CIRCLE";
 export const GoogleAppsCardV1IconImageTypeEnum = /*@__PURE__*/ S.String;
 
 /** An icon displayed in a widget on a card. For an example in Google Chat apps, see [Add an icon](https://developers.google.com/workspace/chat/add-text-image-card-dialog#add_an_icon). Supports [built-in](https://developers.google.com/workspace/chat/format-messages#builtinicons) and [custom](https://developers.google.com/workspace/chat/format-messages#customicons) icons. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -789,7 +764,7 @@ export const GoogleAppsCardV1OverflowMenuItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsCardV1OverflowMenuItem>;
 
 export type GoogleAppsCardV1OverflowMenuItemList =
-  GoogleAppsCardV1OverflowMenuItem[];
+  ReadonlyArray<GoogleAppsCardV1OverflowMenuItem>;
 export const GoogleAppsCardV1OverflowMenuItemList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1OverflowMenuItem,
 ) as any as S.Schema<GoogleAppsCardV1OverflowMenuItemList>;
@@ -837,8 +812,7 @@ export type GoogleAppsCardV1ButtonTypeEnum =
   | "OUTLINED"
   | "FILLED"
   | "FILLED_TONAL"
-  | "BORDERLESS"
-  | (string & {});
+  | "BORDERLESS";
 export const GoogleAppsCardV1ButtonTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
@@ -932,7 +906,8 @@ export const GoogleAppsCardV1SelectionItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1SelectionItem",
 }) as any as S.Schema<GoogleAppsCardV1SelectionItem>;
 
-export type GoogleAppsCardV1SelectionItemList = GoogleAppsCardV1SelectionItem[];
+export type GoogleAppsCardV1SelectionItemList =
+  ReadonlyArray<GoogleAppsCardV1SelectionItem>;
 export const GoogleAppsCardV1SelectionItemList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1SelectionItem,
 ) as any as S.Schema<GoogleAppsCardV1SelectionItemList>;
@@ -967,8 +942,7 @@ export type WorkflowDataSourceMarkupTypeEnum =
   | "UNKNOWN"
   | "USER"
   | "SPACE"
-  | "USER_WITH_FREE_FORM"
-  | (string & {});
+  | "USER_WITH_FREE_FORM";
 export const WorkflowDataSourceMarkupTypeEnum = /*@__PURE__*/ S.String;
 
 /** * Only supported by Google Workspace Workflow, but not Google Chat apps or Google Workspace add-ons. In a `TextInput` or `SelectionInput` widget with MULTI_SELECT type or a `DateTimePicker`, provide data source from Google. */
@@ -1005,8 +979,7 @@ export const HostAppDataSourceMarkup = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAppsCardV1PlatformDataSourceCommonDataSourceEnum =
   | "UNKNOWN"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const GoogleAppsCardV1PlatformDataSourceCommonDataSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1048,7 +1021,7 @@ export const GoogleAppsCardV1DataSourceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsCardV1DataSourceConfig>;
 
 export type GoogleAppsCardV1DataSourceConfigList =
-  GoogleAppsCardV1DataSourceConfig[];
+  ReadonlyArray<GoogleAppsCardV1DataSourceConfig>;
 export const GoogleAppsCardV1DataSourceConfigList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1DataSourceConfig,
 ) as any as S.Schema<GoogleAppsCardV1DataSourceConfigList>;
@@ -1058,8 +1031,7 @@ export type GoogleAppsCardV1SelectionInputTypeEnum =
   | "RADIO_BUTTON"
   | "SWITCH"
   | "DROPDOWN"
-  | "MULTI_SELECT"
-  | (string & {});
+  | "MULTI_SELECT";
 export const GoogleAppsCardV1SelectionInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** A widget that creates one or more UI items that users can select. Supports form submission validation for `dropdown` and `multiselect` menus only. When `Action.all_widgets_are_required` is set to `true` or this widget is specified in `Action.required_widgets`, the submission action is blocked unless a value is selected. For example, a dropdown menu or checkboxes. You can use this widget to collect data that can be predicted or enumerated. For an example in Google Chat apps, see [Add selectable UI elements](/workspace/chat/design-interactive-card-dialog#add_selectable_ui_elements). Chat apps can process the value of items that users select or input. For details about working with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data). To collect undefined or abstract data from users, use the TextInput widget. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -1108,8 +1080,7 @@ export const GoogleAppsCardV1SelectionInput = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsCardV1DateTimePickerTypeEnum =
   | "DATE_AND_TIME"
   | "DATE_ONLY"
-  | "TIME_ONLY"
-  | (string & {});
+  | "TIME_ONLY";
 export const GoogleAppsCardV1DateTimePickerTypeEnum = /*@__PURE__*/ S.String;
 
 /** Lets users input a date, a time, or both a date and a time. Supports form submission validation. When `Action.all_widgets_are_required` is set to `true` or this widget is specified in `Action.required_widgets`, the submission action is blocked unless a value is selected. For an example in Google Chat apps, see [Let a user pick a date and time](https://developers.google.com/workspace/chat/design-interactive-card-dialog#let_a_user_pick_a_date_and_time). Users can input text or use the picker to select dates and times. If users input an invalid date or time, the picker shows an error that prompts users to input the information correctly. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -1154,8 +1125,7 @@ export const GoogleAppsCardV1Divider = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsCardV1TextParagraphTextSyntaxEnum =
   | "TEXT_SYNTAX_UNSPECIFIED"
   | "HTML"
-  | "MARKDOWN"
-  | (string & {});
+  | "MARKDOWN";
 export const GoogleAppsCardV1TextParagraphTextSyntaxEnum =
   /*@__PURE__*/ S.String;
 
@@ -1197,7 +1167,7 @@ export const GoogleAppsCardV1Image = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1Image",
 }) as any as S.Schema<GoogleAppsCardV1Image>;
 
-export type GoogleAppsCardV1ButtonList_ = GoogleAppsCardV1Button[];
+export type GoogleAppsCardV1ButtonList_ = ReadonlyArray<GoogleAppsCardV1Button>;
 export const GoogleAppsCardV1ButtonList_ = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1Button,
 ) as any as S.Schema<GoogleAppsCardV1ButtonList_>;
@@ -1234,7 +1204,8 @@ export const GoogleAppsCardV1NestedWidget = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1NestedWidget",
 }) as any as S.Schema<GoogleAppsCardV1NestedWidget>;
 
-export type GoogleAppsCardV1NestedWidgetList = GoogleAppsCardV1NestedWidget[];
+export type GoogleAppsCardV1NestedWidgetList =
+  ReadonlyArray<GoogleAppsCardV1NestedWidget>;
 export const GoogleAppsCardV1NestedWidgetList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1NestedWidget,
 ) as any as S.Schema<GoogleAppsCardV1NestedWidgetList>;
@@ -1255,7 +1226,8 @@ export const GoogleAppsCardV1CarouselCard = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1CarouselCard",
 }) as any as S.Schema<GoogleAppsCardV1CarouselCard>;
 
-export type GoogleAppsCardV1CarouselCardList = GoogleAppsCardV1CarouselCard[];
+export type GoogleAppsCardV1CarouselCardList =
+  ReadonlyArray<GoogleAppsCardV1CarouselCard>;
 export const GoogleAppsCardV1CarouselCardList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1CarouselCard,
 ) as any as S.Schema<GoogleAppsCardV1CarouselCardList>;
@@ -1276,8 +1248,7 @@ export const GoogleAppsCardV1Carousel = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsCardV1BorderStyleTypeEnum =
   | "BORDER_TYPE_UNSPECIFIED"
   | "NO_BORDER"
-  | "STROKE"
-  | (string & {});
+  | "STROKE";
 export const GoogleAppsCardV1BorderStyleTypeEnum = /*@__PURE__*/ S.String;
 
 /** The style options for the border of a card or widget, including the border type and color. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -1304,8 +1275,7 @@ export type GoogleAppsCardV1ImageCropStyleTypeEnum =
   | "SQUARE"
   | "CIRCLE"
   | "RECTANGLE_CUSTOM"
-  | "RECTANGLE_4_3"
-  | (string & {});
+  | "RECTANGLE_4_3";
 export const GoogleAppsCardV1ImageCropStyleTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the crop style applied to an image. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): For example, here's how to apply a 16:9 aspect ratio: ``` cropStyle { "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 } ``` */
@@ -1349,8 +1319,7 @@ export const GoogleAppsCardV1ImageComponent = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsCardV1GridItemLayoutEnum =
   | "GRID_ITEM_LAYOUT_UNSPECIFIED"
   | "TEXT_BELOW"
-  | "TEXT_ABOVE"
-  | (string & {});
+  | "TEXT_ABOVE";
 export const GoogleAppsCardV1GridItemLayoutEnum = /*@__PURE__*/ S.String;
 
 /** Represents an item in a grid layout. Items can contain text, an image, or both text and an image. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -1378,7 +1347,8 @@ export const GoogleAppsCardV1GridItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1GridItem",
 }) as any as S.Schema<GoogleAppsCardV1GridItem>;
 
-export type GoogleAppsCardV1GridItemList = GoogleAppsCardV1GridItem[];
+export type GoogleAppsCardV1GridItemList =
+  ReadonlyArray<GoogleAppsCardV1GridItem>;
 export const GoogleAppsCardV1GridItemList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1GridItem,
 ) as any as S.Schema<GoogleAppsCardV1GridItemList>;
@@ -1411,8 +1381,7 @@ export const GoogleAppsCardV1Grid = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsCardV1ChipListLayoutEnum =
   | "LAYOUT_UNSPECIFIED"
   | "WRAPPED"
-  | "HORIZONTAL_SCROLLABLE"
-  | (string & {});
+  | "HORIZONTAL_SCROLLABLE";
 export const GoogleAppsCardV1ChipListLayoutEnum = /*@__PURE__*/ S.String;
 
 /** A text, icon, or text and icon chip that users can click. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -1443,7 +1412,7 @@ export const GoogleAppsCardV1Chip = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1Chip",
 }) as any as S.Schema<GoogleAppsCardV1Chip>;
 
-export type GoogleAppsCardV1ChipList_ = GoogleAppsCardV1Chip[];
+export type GoogleAppsCardV1ChipList_ = ReadonlyArray<GoogleAppsCardV1Chip>;
 export const GoogleAppsCardV1ChipList_ = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1Chip,
 ) as any as S.Schema<GoogleAppsCardV1ChipList_>;
@@ -1468,16 +1437,14 @@ export type GoogleAppsCardV1DecoratedTextStartIconVerticalAlignmentEnum =
   | "VERTICAL_ALIGNMENT_UNSPECIFIED"
   | "TOP"
   | "MIDDLE"
-  | "BOTTOM"
-  | (string & {});
+  | "BOTTOM";
 export const GoogleAppsCardV1DecoratedTextStartIconVerticalAlignmentEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCardV1SwitchControlControlTypeEnum =
   | "SWITCH"
   | "CHECKBOX"
-  | "CHECK_BOX"
-  | (string & {});
+  | "CHECK_BOX";
 export const GoogleAppsCardV1SwitchControlControlTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1574,7 +1541,7 @@ export const GoogleAppsCardV1SuggestionItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsCardV1SuggestionItem>;
 
 export type GoogleAppsCardV1SuggestionItemList =
-  GoogleAppsCardV1SuggestionItem[];
+  ReadonlyArray<GoogleAppsCardV1SuggestionItem>;
 export const GoogleAppsCardV1SuggestionItemList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1SuggestionItem,
 ) as any as S.Schema<GoogleAppsCardV1SuggestionItemList>;
@@ -1592,10 +1559,7 @@ export const GoogleAppsCardV1Suggestions = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1Suggestions",
 }) as any as S.Schema<GoogleAppsCardV1Suggestions>;
 
-export type GoogleAppsCardV1TextInputTypeEnum =
-  | "SINGLE_LINE"
-  | "MULTIPLE_LINE"
-  | (string & {});
+export type GoogleAppsCardV1TextInputTypeEnum = "SINGLE_LINE" | "MULTIPLE_LINE";
 export const GoogleAppsCardV1TextInputTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleAppsCardV1ValidationInputTypeEnum =
@@ -1604,8 +1568,7 @@ export type GoogleAppsCardV1ValidationInputTypeEnum =
   | "INTEGER"
   | "FLOAT"
   | "EMAIL"
-  | "EMOJI_PICKER"
-  | (string & {});
+  | "EMOJI_PICKER";
 export const GoogleAppsCardV1ValidationInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the necessary data for validating the widget it's attached to. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -1670,16 +1633,14 @@ export const GoogleAppsCardV1TextInput = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsCardV1WidgetVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "VISIBLE"
-  | "HIDDEN"
-  | (string & {});
+  | "HIDDEN";
 export const GoogleAppsCardV1WidgetVisibilityEnum = /*@__PURE__*/ S.String;
 
 export type GoogleAppsCardV1WidgetHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
   | "START"
   | "CENTER"
-  | "END"
-  | (string & {});
+  | "END";
 export const GoogleAppsCardV1WidgetHorizontalAlignmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -1687,8 +1648,7 @@ export type GoogleAppsCardV1ColumnHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
   | "START"
   | "CENTER"
-  | "END"
-  | (string & {});
+  | "END";
 export const GoogleAppsCardV1ColumnHorizontalAlignmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -1696,16 +1656,14 @@ export type GoogleAppsCardV1ColumnVerticalAlignmentEnum =
   | "VERTICAL_ALIGNMENT_UNSPECIFIED"
   | "CENTER"
   | "TOP"
-  | "BOTTOM"
-  | (string & {});
+  | "BOTTOM";
 export const GoogleAppsCardV1ColumnVerticalAlignmentEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAppsCardV1ColumnHorizontalSizeStyleEnum =
   | "HORIZONTAL_SIZE_STYLE_UNSPECIFIED"
   | "FILL_AVAILABLE_SPACE"
-  | "FILL_MINIMUM_SPACE"
-  | (string & {});
+  | "FILL_MINIMUM_SPACE";
 export const GoogleAppsCardV1ColumnHorizontalSizeStyleEnum =
   /*@__PURE__*/ S.String;
 
@@ -1743,7 +1701,8 @@ export const GoogleAppsCardV1Widgets = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1Widgets",
 }) as any as S.Schema<GoogleAppsCardV1Widgets>;
 
-export type GoogleAppsCardV1WidgetsList = GoogleAppsCardV1Widgets[];
+export type GoogleAppsCardV1WidgetsList =
+  ReadonlyArray<GoogleAppsCardV1Widgets>;
 export const GoogleAppsCardV1WidgetsList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1Widgets,
 ) as any as S.Schema<GoogleAppsCardV1WidgetsList>;
@@ -1774,7 +1733,7 @@ export const GoogleAppsCardV1Column = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1Column",
 }) as any as S.Schema<GoogleAppsCardV1Column>;
 
-export type GoogleAppsCardV1ColumnList = GoogleAppsCardV1Column[];
+export type GoogleAppsCardV1ColumnList = ReadonlyArray<GoogleAppsCardV1Column>;
 export const GoogleAppsCardV1ColumnList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1Column,
 ) as any as S.Schema<GoogleAppsCardV1ColumnList>;
@@ -1795,8 +1754,7 @@ export const GoogleAppsCardV1Columns = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsCardV1UpdateVisibilityActionVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "VISIBLE"
-  | "HIDDEN"
-  | (string & {});
+  | "HIDDEN";
 export const GoogleAppsCardV1UpdateVisibilityActionVisibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -1842,7 +1800,8 @@ export const GoogleAppsCardV1Trigger = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1Trigger",
 }) as any as S.Schema<GoogleAppsCardV1Trigger>;
 
-export type GoogleAppsCardV1TriggerList = GoogleAppsCardV1Trigger[];
+export type GoogleAppsCardV1TriggerList =
+  ReadonlyArray<GoogleAppsCardV1Trigger>;
 export const GoogleAppsCardV1TriggerList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1Trigger,
 ) as any as S.Schema<GoogleAppsCardV1TriggerList>;
@@ -1866,7 +1825,8 @@ export const GoogleAppsCardV1EventAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1EventAction",
 }) as any as S.Schema<GoogleAppsCardV1EventAction>;
 
-export type GoogleAppsCardV1EventActionList = GoogleAppsCardV1EventAction[];
+export type GoogleAppsCardV1EventActionList =
+  ReadonlyArray<GoogleAppsCardV1EventAction>;
 export const GoogleAppsCardV1EventActionList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1EventAction,
 ) as any as S.Schema<GoogleAppsCardV1EventActionList>;
@@ -1931,7 +1891,7 @@ export const GoogleAppsCardV1Widget = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1Widget",
 }) as any as S.Schema<GoogleAppsCardV1Widget>;
 
-export type GoogleAppsCardV1WidgetList = GoogleAppsCardV1Widget[];
+export type GoogleAppsCardV1WidgetList = ReadonlyArray<GoogleAppsCardV1Widget>;
 export const GoogleAppsCardV1WidgetList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1Widget,
 ) as any as S.Schema<GoogleAppsCardV1WidgetList>;
@@ -1940,8 +1900,7 @@ export type GoogleAppsCardV1CollapseControlHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
   | "START"
   | "CENTER"
-  | "END"
-  | (string & {});
+  | "END";
 export const GoogleAppsCardV1CollapseControlHorizontalAlignmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -1994,7 +1953,8 @@ export const GoogleAppsCardV1Section = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1Section",
 }) as any as S.Schema<GoogleAppsCardV1Section>;
 
-export type GoogleAppsCardV1SectionList = GoogleAppsCardV1Section[];
+export type GoogleAppsCardV1SectionList =
+  ReadonlyArray<GoogleAppsCardV1Section>;
 export const GoogleAppsCardV1SectionList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1Section,
 ) as any as S.Schema<GoogleAppsCardV1SectionList>;
@@ -2002,8 +1962,7 @@ export const GoogleAppsCardV1SectionList = /*@__PURE__*/ S.Array(
 export type GoogleAppsCardV1ExpressionDataConditionConditionTypeEnum =
   | "CONDITION_TYPE_UNSPECIFIED"
   | "EXPRESSION_EVALUATION_SUCCESS"
-  | "EXPRESSION_EVALUATION_FAILURE"
-  | (string & {});
+  | "EXPRESSION_EVALUATION_FAILURE";
 export const GoogleAppsCardV1ExpressionDataConditionConditionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2041,7 +2000,8 @@ export const GoogleAppsCardV1Condition = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1Condition",
 }) as any as S.Schema<GoogleAppsCardV1Condition>;
 
-export type GoogleAppsCardV1ConditionList = GoogleAppsCardV1Condition[];
+export type GoogleAppsCardV1ConditionList =
+  ReadonlyArray<GoogleAppsCardV1Condition>;
 export const GoogleAppsCardV1ConditionList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1Condition,
 ) as any as S.Schema<GoogleAppsCardV1ConditionList>;
@@ -2069,7 +2029,7 @@ export const GoogleAppsCardV1ExpressionData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsCardV1ExpressionData>;
 
 export type GoogleAppsCardV1ExpressionDataList =
-  GoogleAppsCardV1ExpressionData[];
+  ReadonlyArray<GoogleAppsCardV1ExpressionData>;
 export const GoogleAppsCardV1ExpressionDataList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1ExpressionData,
 ) as any as S.Schema<GoogleAppsCardV1ExpressionDataList>;
@@ -2090,15 +2050,13 @@ export const GoogleAppsCardV1CardAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsCardV1CardAction",
 }) as any as S.Schema<GoogleAppsCardV1CardAction>;
 
-export type GoogleAppsCardV1CardActionList = GoogleAppsCardV1CardAction[];
+export type GoogleAppsCardV1CardActionList =
+  ReadonlyArray<GoogleAppsCardV1CardAction>;
 export const GoogleAppsCardV1CardActionList = /*@__PURE__*/ S.Array(
   GoogleAppsCardV1CardAction,
 ) as any as S.Schema<GoogleAppsCardV1CardActionList>;
 
-export type GoogleAppsCardV1CardHeaderImageTypeEnum =
-  | "SQUARE"
-  | "CIRCLE"
-  | (string & {});
+export type GoogleAppsCardV1CardHeaderImageTypeEnum = "SQUARE" | "CIRCLE";
 export const GoogleAppsCardV1CardHeaderImageTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a card header. For an example in Google Chat apps, see [Add a header](https://developers.google.com/workspace/chat/design-components-card-dialog#add_a_header). [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -2129,8 +2087,7 @@ export const GoogleAppsCardV1CardHeader = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsCardV1CardDisplayStyleEnum =
   | "DISPLAY_STYLE_UNSPECIFIED"
   | "PEEK"
-  | "REPLACE"
-  | (string & {});
+  | "REPLACE";
 export const GoogleAppsCardV1CardDisplayStyleEnum = /*@__PURE__*/ S.String;
 
 /** A card interface displayed in a Google Chat message or Google Workspace add-on. Cards support a defined layout, interactive UI elements like buttons, and rich media like images. Use cards to present detailed information, gather information from users, and guide users to take a next step. [Card builder](https://addons.gsuite.google.com/uikit/builder) To learn how to build cards, see the following documentation: * For Google Chat apps, see [Design the components of a card or dialog](https://developers.google.com/workspace/chat/design-components-card-dialog). * For Google Workspace add-ons, see [Card-based interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards). Note: You can add up to 100 widgets per card. If a section's widgets push the total count above 100, that entire section and all following sections are ignored. This limit applies to both card messages and dialogs in Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card message for a Google Chat app** ![Example contact card](https://developers.google.com/workspace/chat/images/card_api_reference.png) To create the sample card message in Google Chat, use the following JSON: ``` { "cardsV2": [ { "cardId": "unique-card-id", "card": { "header": { "title": "Sasha", "subtitle": "Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for Sasha" }, "sections": [ { "header": "Contact Info", "collapsible": true, "uncollapsibleWidgetsCount": 1, "widgets": [ { "decoratedText": { "startIcon": { "knownIcon": "EMAIL" }, "text": "sasha@example.com" } }, { "decoratedText": { "startIcon": { "knownIcon": "PERSON" }, "text": "Online" } }, { "decoratedText": { "startIcon": { "knownIcon": "PHONE" }, "text": "+1 (555) 555-1234" } }, { "buttonList": { "buttons": [ { "text": "Share", "onClick": { "openLink": { "url": "https://example.com/share" } } }, { "text": "Edit", "onClick": { "action": { "function": "goToView", "parameters": [ { "key": "viewType", "value": "EDIT" } ] } } } ] } } ] } ] } } ] } ``` */
@@ -2200,8 +2157,7 @@ export type ActionStatusStatusCodeEnum =
   | "UNIMPLEMENTED"
   | "INTERNAL"
   | "UNAVAILABLE"
-  | "DATA_LOSS"
-  | (string & {});
+  | "DATA_LOSS";
 export const ActionStatusStatusCodeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the status for a request to either invoke or submit a [dialog](https://developers.google.com/workspace/chat/dialogs). */
@@ -2282,15 +2238,13 @@ export type AnnotationTypeEnum =
   | "USER_MENTION"
   | "SLASH_COMMAND"
   | "RICH_LINK"
-  | "CUSTOM_EMOJI"
-  | (string & {});
+  | "CUSTOM_EMOJI";
 export const AnnotationTypeEnum = /*@__PURE__*/ S.String;
 
 export type SlashCommandMetadataTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ADD"
-  | "INVOKE"
-  | (string & {});
+  | "INVOKE";
 export const SlashCommandMetadataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Annotation metadata for slash commands (/). */
@@ -2321,16 +2275,14 @@ export const SlashCommandMetadata = /*@__PURE__*/ S.suspend(() =>
 export type MeetSpaceLinkDataTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "MEETING"
-  | "HUDDLE"
-  | (string & {});
+  | "HUDDLE";
 export const MeetSpaceLinkDataTypeEnum = /*@__PURE__*/ S.String;
 
 export type MeetSpaceLinkDataHuddleStatusEnum =
   | "HUDDLE_STATUS_UNSPECIFIED"
   | "STARTED"
   | "ENDED"
-  | "MISSED"
-  | (string & {});
+  | "MISSED";
 export const MeetSpaceLinkDataHuddleStatusEnum = /*@__PURE__*/ S.String;
 
 /** Data for Meet space links. */
@@ -2358,8 +2310,7 @@ export type RichLinkMetadataRichLinkTypeEnum =
   | "CHAT_SPACE"
   | "GMAIL_MESSAGE"
   | "MEET_SPACE"
-  | "CALENDAR_EVENT"
-  | (string & {});
+  | "CALENDAR_EVENT";
 export const RichLinkMetadataRichLinkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Data for Calendar event links. */
@@ -2453,8 +2404,7 @@ export const RichLinkMetadata = /*@__PURE__*/ S.suspend(() =>
 export type UserMentionMetadataTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ADD"
-  | "MENTION"
-  | (string & {});
+  | "MENTION";
 export const UserMentionMetadataTypeEnum = /*@__PURE__*/ S.String;
 
 /** Annotation metadata for user mentions (@). */
@@ -2515,7 +2465,7 @@ export const Annotation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Annotation" }) as any as S.Schema<Annotation>;
 
-export type AnnotationList = Annotation[];
+export type AnnotationList = ReadonlyArray<Annotation>;
 export const AnnotationList = /*@__PURE__*/ S.Array(
   Annotation,
 ) as any as S.Schema<AnnotationList>;
@@ -2523,8 +2473,7 @@ export const AnnotationList = /*@__PURE__*/ S.Array(
 export type AttachmentSourceEnum =
   | "SOURCE_UNSPECIFIED"
   | "DRIVE_FILE"
-  | "UPLOADED_CONTENT"
-  | (string & {});
+  | "UPLOADED_CONTENT";
 export const AttachmentSourceEnum = /*@__PURE__*/ S.String;
 
 /** A reference to the attachment data. */
@@ -2575,7 +2524,7 @@ export const Attachment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
-export type AttachmentList = Attachment[];
+export type AttachmentList = ReadonlyArray<Attachment>;
 export const AttachmentList = /*@__PURE__*/ S.Array(
   Attachment,
 ) as any as S.Schema<AttachmentList>;
@@ -2608,8 +2557,7 @@ export const QuotedMessageSnapshot = /*@__PURE__*/ S.suspend(() =>
 export type QuotedMessageMetadataQuoteTypeEnum =
   | "QUOTE_TYPE_UNSPECIFIED"
   | "REPLY"
-  | "FORWARD"
-  | (string & {});
+  | "FORWARD";
 export const QuotedMessageMetadataQuoteTypeEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about the source space from which a message was forwarded. */
@@ -2666,7 +2614,7 @@ export const AccessoryWidget = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessoryWidget",
 }) as any as S.Schema<AccessoryWidget>;
 
-export type AccessoryWidgetList = AccessoryWidget[];
+export type AccessoryWidgetList = ReadonlyArray<AccessoryWidget>;
 export const AccessoryWidgetList = /*@__PURE__*/ S.Array(
   AccessoryWidget,
 ) as any as S.Schema<AccessoryWidgetList>;
@@ -2697,7 +2645,7 @@ export const ActionParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "ActionParameter",
 }) as any as S.Schema<ActionParameter>;
 
-export type ActionParameterList = ActionParameter[];
+export type ActionParameterList = ReadonlyArray<ActionParameter>;
 export const ActionParameterList = /*@__PURE__*/ S.Array(
   ActionParameter,
 ) as any as S.Schema<ActionParameterList>;
@@ -2789,8 +2737,7 @@ export type KeyValueIconEnum =
   | "TICKET"
   | "TRAIN"
   | "VIDEO_CAMERA"
-  | "VIDEO_PLAY"
-  | (string & {});
+  | "VIDEO_PLAY";
 export const KeyValueIconEnum = /*@__PURE__*/ S.String;
 
 export type ImageButtonIconEnum =
@@ -2824,8 +2771,7 @@ export type ImageButtonIconEnum =
   | "TICKET"
   | "TRAIN"
   | "VIDEO_CAMERA"
-  | "VIDEO_PLAY"
-  | (string & {});
+  | "VIDEO_PLAY";
 export const ImageButtonIconEnum = /*@__PURE__*/ S.String;
 
 /** An image button with an `onclick` action. */
@@ -2908,7 +2854,7 @@ export const KeyValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "KeyValue" }) as any as S.Schema<KeyValue>;
 
-export type ButtonList = Button[];
+export type ButtonList = ReadonlyArray<Button>;
 export const ButtonList = /*@__PURE__*/ S.Array(
   Button,
 ) as any as S.Schema<ButtonList>;
@@ -2933,7 +2879,7 @@ export const WidgetMarkup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WidgetMarkup" }) as any as S.Schema<WidgetMarkup>;
 
-export type WidgetMarkupList = WidgetMarkup[];
+export type WidgetMarkupList = ReadonlyArray<WidgetMarkup>;
 export const WidgetMarkupList = /*@__PURE__*/ S.Array(
   WidgetMarkup,
 ) as any as S.Schema<WidgetMarkupList>;
@@ -2952,7 +2898,7 @@ export const Section = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Section" }) as any as S.Schema<Section>;
 
-export type SectionList = Section[];
+export type SectionList = ReadonlyArray<Section>;
 export const SectionList = /*@__PURE__*/ S.Array(
   Section,
 ) as any as S.Schema<SectionList>;
@@ -2960,8 +2906,7 @@ export const SectionList = /*@__PURE__*/ S.Array(
 export type CardHeaderImageStyleEnum =
   | "IMAGE_STYLE_UNSPECIFIED"
   | "IMAGE"
-  | "AVATAR"
-  | (string & {});
+  | "AVATAR";
 export const CardHeaderImageStyleEnum = /*@__PURE__*/ S.String;
 
 export interface CardHeader {
@@ -2997,7 +2942,7 @@ export const CardAction = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CardAction" }) as any as S.Schema<CardAction>;
 
-export type CardActionList = CardAction[];
+export type CardActionList = ReadonlyArray<CardAction>;
 export const CardActionList = /*@__PURE__*/ S.Array(
   CardAction,
 ) as any as S.Schema<CardActionList>;
@@ -3022,7 +2967,7 @@ export const Card = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Card" }) as any as S.Schema<Card>;
 
-export type CardList = Card[];
+export type CardList = ReadonlyArray<Card>;
 export const CardList = /*@__PURE__*/ S.Array(
   Card,
 ) as any as S.Schema<CardList>;
@@ -3052,7 +2997,7 @@ export const CardWithId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CardWithId" }) as any as S.Schema<CardWithId>;
 
-export type CardWithIdList = CardWithId[];
+export type CardWithIdList = ReadonlyArray<CardWithId>;
 export const CardWithIdList = /*@__PURE__*/ S.Array(
   CardWithId,
 ) as any as S.Schema<CardWithIdList>;
@@ -3068,7 +3013,7 @@ export const AttachedGif = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AttachedGif" }) as any as S.Schema<AttachedGif>;
 
-export type AttachedGifList = AttachedGif[];
+export type AttachedGifList = ReadonlyArray<AttachedGif>;
 export const AttachedGifList = /*@__PURE__*/ S.Array(
   AttachedGif,
 ) as any as S.Schema<AttachedGifList>;
@@ -3095,8 +3040,7 @@ export type DeletionMetadataDeletionTypeEnum =
   | "APP_MESSAGE_EXPIRY"
   | "CREATOR_VIA_APP"
   | "SPACE_OWNER_VIA_APP"
-  | "SPACE_MEMBER"
-  | (string & {});
+  | "SPACE_MEMBER";
 export const DeletionMetadataDeletionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a deleted message. A message is deleted when `delete_time` is set. */
@@ -3142,7 +3086,7 @@ export const EmojiReactionSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmojiReactionSummary",
 }) as any as S.Schema<EmojiReactionSummary>;
 
-export type EmojiReactionSummaryList = EmojiReactionSummary[];
+export type EmojiReactionSummaryList = ReadonlyArray<EmojiReactionSummary>;
 export const EmojiReactionSummaryList = /*@__PURE__*/ S.Array(
   EmojiReactionSummary,
 ) as any as S.Schema<EmojiReactionSummaryList>;
@@ -3322,8 +3266,7 @@ export type GoogleChatV1SectionTypeEnum =
   | "CUSTOM_SECTION"
   | "DEFAULT_DIRECT_MESSAGES"
   | "DEFAULT_SPACES"
-  | "DEFAULT_APPS"
-  | (string & {});
+  | "DEFAULT_APPS";
 export const GoogleChatV1SectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a [section](https://support.google.com/chat/answer/16059854) in Google Chat. Sections help users organize their spaces. There are two types of sections: 1. **System Sections:** These are predefined sections managed by Google Chat. Their resource names are fixed, and they cannot be created, deleted, or have their `display_name` modified. Examples include: * `users/{user}/sections/default-direct-messages` * `users/{user}/sections/default-spaces` * `users/{user}/sections/default-apps` 2. **Custom Sections:** These are sections created and managed by the user. Creating a custom section using `CreateSection` **requires** a `display_name`. Custom sections can be updated using `UpdateSection` and deleted using `DeleteSection`. */
@@ -3543,8 +3486,7 @@ export const FindDirectMessageSpacesRequest = /*@__PURE__*/ S.suspend(() =>
 export type FindGroupChatsSpacesSpaceViewEnum =
   | "SPACE_VIEW_UNSPECIFIED"
   | "SPACE_VIEW_RESOURCE_NAME_ONLY"
-  | "SPACE_VIEW_EXPANDED"
-  | (string & {});
+  | "SPACE_VIEW_EXPANDED";
 export const FindGroupChatsSpacesSpaceViewEnum = /*@__PURE__*/ S.String;
 
 export interface FindGroupChatsSpacesRequest {
@@ -3574,7 +3516,7 @@ export const FindGroupChatsSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FindGroupChatsSpacesRequest",
 }) as any as S.Schema<FindGroupChatsSpacesRequest>;
 
-export type SpaceList = Space[];
+export type SpaceList = ReadonlyArray<Space>;
 export const SpaceList = /*@__PURE__*/ S.Array(
   Space,
 ) as any as S.Schema<SpaceList>;
@@ -3754,7 +3696,7 @@ export const SpaceUpdatedEventData = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpaceUpdatedEventData",
 }) as any as S.Schema<SpaceUpdatedEventData>;
 
-export type SpaceUpdatedEventDataList = SpaceUpdatedEventData[];
+export type SpaceUpdatedEventDataList = ReadonlyArray<SpaceUpdatedEventData>;
 export const SpaceUpdatedEventDataList = /*@__PURE__*/ S.Array(
   SpaceUpdatedEventData,
 ) as any as S.Schema<SpaceUpdatedEventDataList>;
@@ -3785,7 +3727,8 @@ export const ReactionDeletedEventData = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReactionDeletedEventData",
 }) as any as S.Schema<ReactionDeletedEventData>;
 
-export type ReactionDeletedEventDataList = ReactionDeletedEventData[];
+export type ReactionDeletedEventDataList =
+  ReadonlyArray<ReactionDeletedEventData>;
 export const ReactionDeletedEventDataList = /*@__PURE__*/ S.Array(
   ReactionDeletedEventData,
 ) as any as S.Schema<ReactionDeletedEventDataList>;
@@ -3842,7 +3785,8 @@ export const MessageUpdatedEventData = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessageUpdatedEventData",
 }) as any as S.Schema<MessageUpdatedEventData>;
 
-export type MessageUpdatedEventDataList = MessageUpdatedEventData[];
+export type MessageUpdatedEventDataList =
+  ReadonlyArray<MessageUpdatedEventData>;
 export const MessageUpdatedEventDataList = /*@__PURE__*/ S.Array(
   MessageUpdatedEventData,
 ) as any as S.Schema<MessageUpdatedEventDataList>;
@@ -3886,7 +3830,8 @@ export const MessageDeletedEventData = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessageDeletedEventData",
 }) as any as S.Schema<MessageDeletedEventData>;
 
-export type MessageCreatedEventDataList = MessageCreatedEventData[];
+export type MessageCreatedEventDataList =
+  ReadonlyArray<MessageCreatedEventData>;
 export const MessageCreatedEventDataList = /*@__PURE__*/ S.Array(
   MessageCreatedEventData,
 ) as any as S.Schema<MessageCreatedEventDataList>;
@@ -3917,7 +3862,8 @@ export const MembershipUpdatedEventData = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembershipUpdatedEventData",
 }) as any as S.Schema<MembershipUpdatedEventData>;
 
-export type MembershipCreatedEventDataList = MembershipCreatedEventData[];
+export type MembershipCreatedEventDataList =
+  ReadonlyArray<MembershipCreatedEventData>;
 export const MembershipCreatedEventDataList = /*@__PURE__*/ S.Array(
   MembershipCreatedEventData,
 ) as any as S.Schema<MembershipCreatedEventDataList>;
@@ -3948,7 +3894,8 @@ export const ReactionCreatedEventData = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReactionCreatedEventData",
 }) as any as S.Schema<ReactionCreatedEventData>;
 
-export type ReactionCreatedEventDataList = ReactionCreatedEventData[];
+export type ReactionCreatedEventDataList =
+  ReadonlyArray<ReactionCreatedEventData>;
 export const ReactionCreatedEventDataList = /*@__PURE__*/ S.Array(
   ReactionCreatedEventData,
 ) as any as S.Schema<ReactionCreatedEventDataList>;
@@ -3966,7 +3913,8 @@ export const ReactionBatchCreatedEventData = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReactionBatchCreatedEventData",
 }) as any as S.Schema<ReactionBatchCreatedEventData>;
 
-export type MembershipUpdatedEventDataList = MembershipUpdatedEventData[];
+export type MembershipUpdatedEventDataList =
+  ReadonlyArray<MembershipUpdatedEventData>;
 export const MembershipUpdatedEventDataList = /*@__PURE__*/ S.Array(
   MembershipUpdatedEventData,
 ) as any as S.Schema<MembershipUpdatedEventDataList>;
@@ -3984,7 +3932,8 @@ export const MembershipBatchUpdatedEventData = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembershipBatchUpdatedEventData",
 }) as any as S.Schema<MembershipBatchUpdatedEventData>;
 
-export type MessageDeletedEventDataList = MessageDeletedEventData[];
+export type MessageDeletedEventDataList =
+  ReadonlyArray<MessageDeletedEventData>;
 export const MessageDeletedEventDataList = /*@__PURE__*/ S.Array(
   MessageDeletedEventData,
 ) as any as S.Schema<MessageDeletedEventDataList>;
@@ -4002,7 +3951,8 @@ export const MessageBatchDeletedEventData = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessageBatchDeletedEventData",
 }) as any as S.Schema<MessageBatchDeletedEventData>;
 
-export type MembershipDeletedEventDataList = MembershipDeletedEventData[];
+export type MembershipDeletedEventDataList =
+  ReadonlyArray<MembershipDeletedEventData>;
 export const MembershipDeletedEventDataList = /*@__PURE__*/ S.Array(
   MembershipDeletedEventData,
 ) as any as S.Schema<MembershipDeletedEventDataList>;
@@ -4155,8 +4105,7 @@ export type AvailabilityStateEnum =
   | "ACTIVE"
   | "IDLE"
   | "AWAY"
-  | "DO_NOT_DISTURB"
-  | (string & {});
+  | "DO_NOT_DISTURB";
 export const AvailabilityStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a user's custom status in Google Chat. This includes a short text message with an optional emoji that a user sets to give more context about their availability. */
@@ -4234,8 +4183,7 @@ export const GetUsersSpacesSpaceNotificationSettingRequest =
 export type SpaceNotificationSettingMuteSettingEnum =
   | "MUTE_SETTING_UNSPECIFIED"
   | "UNMUTED"
-  | "MUTED"
-  | (string & {});
+  | "MUTED";
 export const SpaceNotificationSettingMuteSettingEnum = /*@__PURE__*/ S.String;
 
 export type SpaceNotificationSettingNotificationSettingEnum =
@@ -4243,8 +4191,7 @@ export type SpaceNotificationSettingNotificationSettingEnum =
   | "ALL"
   | "MAIN_CONVERSATIONS"
   | "FOR_YOU"
-  | "OFF"
-  | (string & {});
+  | "OFF";
 export const SpaceNotificationSettingNotificationSettingEnum =
   /*@__PURE__*/ S.String;
 
@@ -4293,7 +4240,7 @@ export const ListCustomEmojisRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomEmojisRequest",
 }) as any as S.Schema<ListCustomEmojisRequest>;
 
-export type CustomEmojiList = CustomEmoji[];
+export type CustomEmojiList = ReadonlyArray<CustomEmoji>;
 export const CustomEmojiList = /*@__PURE__*/ S.Array(
   CustomEmoji,
 ) as any as S.Schema<CustomEmojiList>;
@@ -4390,7 +4337,7 @@ export const ListSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSpacesMembersRequest",
 }) as any as S.Schema<ListSpacesMembersRequest>;
 
-export type MembershipList = Membership[];
+export type MembershipList = ReadonlyArray<Membership>;
 export const MembershipList = /*@__PURE__*/ S.Array(
   Membership,
 ) as any as S.Schema<MembershipList>;
@@ -4444,7 +4391,7 @@ export const ListSpacesMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSpacesMessagesRequest",
 }) as any as S.Schema<ListSpacesMessagesRequest>;
 
-export type MessageList = Message[];
+export type MessageList = ReadonlyArray<Message>;
 export const MessageList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<MessageList>;
@@ -4492,7 +4439,7 @@ export const ListSpacesMessagesReactionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSpacesMessagesReactionsRequest",
 }) as any as S.Schema<ListSpacesMessagesReactionsRequest>;
 
-export type ReactionList = Reaction[];
+export type ReactionList = ReadonlyArray<Reaction>;
 export const ReactionList = /*@__PURE__*/ S.Array(
   Reaction,
 ) as any as S.Schema<ReactionList>;
@@ -4540,7 +4487,7 @@ export const ListSpacesSpaceEventsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSpacesSpaceEventsRequest",
 }) as any as S.Schema<ListSpacesSpaceEventsRequest>;
 
-export type SpaceEventList = SpaceEvent[];
+export type SpaceEventList = ReadonlyArray<SpaceEvent>;
 export const SpaceEventList = /*@__PURE__*/ S.Array(
   SpaceEvent,
 ) as any as S.Schema<SpaceEventList>;
@@ -4585,7 +4532,7 @@ export const ListUsersSectionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersSectionsRequest",
 }) as any as S.Schema<ListUsersSectionsRequest>;
 
-export type GoogleChatV1SectionList = GoogleChatV1Section[];
+export type GoogleChatV1SectionList = ReadonlyArray<GoogleChatV1Section>;
 export const GoogleChatV1SectionList = /*@__PURE__*/ S.Array(
   GoogleChatV1Section,
 ) as any as S.Schema<GoogleChatV1SectionList>;
@@ -4647,7 +4594,7 @@ export const SectionItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SectionItem" }) as any as S.Schema<SectionItem>;
 
-export type SectionItemList = SectionItem[];
+export type SectionItemList = ReadonlyArray<SectionItem>;
 export const SectionItemList = /*@__PURE__*/ S.Array(
   SectionItem,
 ) as any as S.Schema<SectionItemList>;
@@ -4977,8 +4924,7 @@ export const PatchUsersSpacesSpaceNotificationSettingRequest =
 export type PositionSectionRequestRelativePositionEnum =
   | "POSITION_UNSPECIFIED"
   | "START"
-  | "END"
-  | (string & {});
+  | "END";
 export const PositionSectionRequestRelativePositionEnum =
   /*@__PURE__*/ S.String;
 

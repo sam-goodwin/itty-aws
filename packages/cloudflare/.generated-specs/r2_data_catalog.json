@@ -1246,10 +1246,16 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.r2_data_catalog#NamespacesListResponseNamespacesItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.r2_data_catalog#NamespacesListResponseNamespacesList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.r2_data_catalog#NamespacesListResponseNamespacesItemList"
       }
     },
     "com.cloudflare.r2_data_catalog#NamespacesListResponseDetailsItemNamespaceList": {

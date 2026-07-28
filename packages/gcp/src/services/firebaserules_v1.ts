@@ -118,7 +118,7 @@ export const File = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
-export type FileList = File[];
+export type FileList = ReadonlyArray<File>;
 export const FileList = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<FileList>;
@@ -134,7 +134,7 @@ export const Source = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -239,8 +239,7 @@ export const DeleteProjectsRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetExecutableProjectsReleasesExecutableVersionEnum =
   | "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED"
   | "FIREBASE_RULES_EXECUTABLE_V1"
-  | "FIREBASE_RULES_EXECUTABLE_V2"
-  | (string & {});
+  | "FIREBASE_RULES_EXECUTABLE_V2";
 export const GetExecutableProjectsReleasesExecutableVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -271,16 +270,14 @@ export const GetExecutableProjectsReleasesRequest = /*@__PURE__*/ S.suspend(
 export type GetReleaseExecutableResponseExecutableVersionEnum =
   | "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED"
   | "FIREBASE_RULES_EXECUTABLE_V1"
-  | "FIREBASE_RULES_EXECUTABLE_V2"
-  | (string & {});
+  | "FIREBASE_RULES_EXECUTABLE_V2";
 export const GetReleaseExecutableResponseExecutableVersionEnum =
   /*@__PURE__*/ S.String;
 
 export type GetReleaseExecutableResponseLanguageEnum =
   | "LANGUAGE_UNSPECIFIED"
   | "FIREBASE_RULES"
-  | "EVENT_FLOW_TRIGGERS"
-  | (string & {});
+  | "EVENT_FLOW_TRIGGERS";
 export const GetReleaseExecutableResponseLanguageEnum = /*@__PURE__*/ S.String;
 
 /** The response for FirebaseRulesService.GetReleaseExecutable */
@@ -376,7 +373,7 @@ export const ListProjectsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsReleasesRequest",
 }) as any as S.Schema<ListProjectsReleasesRequest>;
 
-export type ReleaseList = Release[];
+export type ReleaseList = ReadonlyArray<Release>;
 export const ReleaseList = /*@__PURE__*/ S.Array(
   Release,
 ) as any as S.Schema<ReleaseList>;
@@ -424,7 +421,7 @@ export const ListProjectsRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsRulesetsRequest",
 }) as any as S.Schema<ListProjectsRulesetsRequest>;
 
-export type RulesetList = Ruleset[];
+export type RulesetList = ReadonlyArray<Ruleset>;
 export const RulesetList = /*@__PURE__*/ S.Array(
   Ruleset,
 ) as any as S.Schema<RulesetList>;
@@ -485,16 +482,14 @@ export const PatchProjectsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 export type TestCaseExpectationEnum =
   | "EXPECTATION_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const TestCaseExpectationEnum = /*@__PURE__*/ S.String;
 
 export type TestCaseExpressionReportLevelEnum =
   | "LEVEL_UNSPECIFIED"
   | "NONE"
   | "FULL"
-  | "VISITED"
-  | (string & {});
+  | "VISITED";
 export const TestCaseExpressionReportLevelEnum = /*@__PURE__*/ S.String;
 
 /** Possible result values from the function mock invocation. */
@@ -525,7 +520,7 @@ export const Arg = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Arg" }) as any as S.Schema<Arg>;
 
-export type ArgList = Arg[];
+export type ArgList = ReadonlyArray<Arg>;
 export const ArgList = /*@__PURE__*/ S.Array(Arg) as any as S.Schema<ArgList>;
 
 /** Mock function definition. Mocks must refer to a function declared by the target service. The type of the function args and result will be inferred at test time. If either the arg or result values are not compatible with function type declaration, the request will be considered invalid. More than one `FunctionMock` may be provided for a given function name so long as the `Arg` matchers are distinct. There may be only one function for a given overload where all `Arg` values are `Arg.any_value`. */
@@ -545,7 +540,7 @@ export const FunctionMock = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FunctionMock" }) as any as S.Schema<FunctionMock>;
 
-export type FunctionMockList = FunctionMock[];
+export type FunctionMockList = ReadonlyArray<FunctionMock>;
 export const FunctionMockList = /*@__PURE__*/ S.Array(
   FunctionMock,
 ) as any as S.Schema<FunctionMockList>;
@@ -553,8 +548,7 @@ export const FunctionMockList = /*@__PURE__*/ S.Array(
 export type TestCasePathEncodingEnum =
   | "ENCODING_UNSPECIFIED"
   | "URL_ENCODED"
-  | "PLAIN"
-  | (string & {});
+  | "PLAIN";
 export const TestCasePathEncodingEnum = /*@__PURE__*/ S.String;
 
 /** `TestCase` messages provide the request context and an expectation as to whether the given context will be allowed or denied. Test cases may specify the `request`, `resource`, and `function_mocks` to mock a function call to a service-provided function. The `request` object represents context present at request-time. The `resource` is the value of the target resource as it appears in persistent storage before the request is executed. */
@@ -583,7 +577,7 @@ export const TestCase = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestCase" }) as any as S.Schema<TestCase>;
 
-export type TestCaseList = TestCase[];
+export type TestCaseList = ReadonlyArray<TestCase>;
 export const TestCaseList = /*@__PURE__*/ S.Array(
   TestCase,
 ) as any as S.Schema<TestCaseList>;
@@ -663,8 +657,7 @@ export type IssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "DEPRECATION"
   | "WARNING"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const IssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Issues include warnings, errors, and deprecation notices. */
@@ -684,7 +677,7 @@ export const Issue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
-export type IssueList = Issue[];
+export type IssueList = ReadonlyArray<Issue>;
 export const IssueList = /*@__PURE__*/ S.Array(
   Issue,
 ) as any as S.Schema<IssueList>;
@@ -703,7 +696,7 @@ export const ValueCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ValueCount" }) as any as S.Schema<ValueCount>;
 
-export type ValueCountList = ValueCount[];
+export type ValueCountList = ReadonlyArray<ValueCount>;
 export const ValueCountList = /*@__PURE__*/ S.Array(
   ValueCount,
 ) as any as S.Schema<ValueCountList>;
@@ -727,12 +720,12 @@ export const ExpressionReport = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExpressionReport",
 }) as any as S.Schema<ExpressionReport>;
 
-export type ExpressionReportList = ExpressionReport[];
+export type ExpressionReportList = ReadonlyArray<ExpressionReport>;
 export const ExpressionReportList = /*@__PURE__*/ S.Array(
   ExpressionReport,
 ) as any as S.Schema<ExpressionReportList>;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -751,16 +744,12 @@ export const FunctionCall = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FunctionCall" }) as any as S.Schema<FunctionCall>;
 
-export type FunctionCallList = FunctionCall[];
+export type FunctionCallList = ReadonlyArray<FunctionCall>;
 export const FunctionCallList = /*@__PURE__*/ S.Array(
   FunctionCall,
 ) as any as S.Schema<FunctionCallList>;
 
-export type TestResultStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "SUCCESS"
-  | "FAILURE"
-  | (string & {});
+export type TestResultStateEnum = "STATE_UNSPECIFIED" | "SUCCESS" | "FAILURE";
 export const TestResultStateEnum = /*@__PURE__*/ S.String;
 
 /** Store the position and access outcome for an expression visited in rules. */
@@ -779,7 +768,7 @@ export const VisitedExpression = /*@__PURE__*/ S.suspend(() =>
   identifier: "VisitedExpression",
 }) as any as S.Schema<VisitedExpression>;
 
-export type VisitedExpressionList = VisitedExpression[];
+export type VisitedExpressionList = ReadonlyArray<VisitedExpression>;
 export const VisitedExpressionList = /*@__PURE__*/ S.Array(
   VisitedExpression,
 ) as any as S.Schema<VisitedExpressionList>;
@@ -810,7 +799,7 @@ export const TestResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestResult" }) as any as S.Schema<TestResult>;
 
-export type TestResultList = TestResult[];
+export type TestResultList = ReadonlyArray<TestResult>;
 export const TestResultList = /*@__PURE__*/ S.Array(
   TestResult,
 ) as any as S.Schema<TestResultList>;

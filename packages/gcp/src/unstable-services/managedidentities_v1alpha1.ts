@@ -64,11 +64,10 @@ export type TrustTrustDirectionEnum =
   | "TRUST_DIRECTION_UNSPECIFIED"
   | "INBOUND"
   | "OUTBOUND"
-  | "BIDIRECTIONAL"
-  | (string & {});
+  | "BIDIRECTIONAL";
 export const TrustTrustDirectionEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -79,15 +78,13 @@ export type TrustStateEnum =
   | "UPDATING"
   | "DELETING"
   | "CONNECTED"
-  | "DISCONNECTED"
-  | (string & {});
+  | "DISCONNECTED";
 export const TrustStateEnum = /*@__PURE__*/ S.String;
 
 export type TrustTrustTypeEnum =
   | "TRUST_TYPE_UNSPECIFIED"
   | "FOREST"
-  | "EXTERNAL"
-  | (string & {});
+  | "EXTERNAL";
 export const TrustTrustTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a relationship between two domains which makes it possible for users in one domain to be authenticated by a dc in another domain. Refer https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731335(v%3dws.10) If the trust is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state. */
@@ -171,7 +168,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -285,8 +282,7 @@ export const CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest =
 export type OnPremDomainSIDDetailsSidFilteringStateEnum =
   | "SID_FILTERING_STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const OnPremDomainSIDDetailsSidFilteringStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -306,7 +302,7 @@ export const OnPremDomainSIDDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnPremDomainSIDDetails",
 }) as any as S.Schema<OnPremDomainSIDDetails>;
 
-export type OnPremDomainSIDDetailsList = OnPremDomainSIDDetails[];
+export type OnPremDomainSIDDetailsList = ReadonlyArray<OnPremDomainSIDDetails>;
 export const OnPremDomainSIDDetailsList = /*@__PURE__*/ S.Array(
   OnPremDomainSIDDetails,
 ) as any as S.Schema<OnPremDomainSIDDetailsList>;
@@ -315,8 +311,7 @@ export type CheckMigrationPermissionResponseStateEnum =
   | "STATE_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED"
-  | "NEEDS_MAINTENANCE"
-  | (string & {});
+  | "NEEDS_MAINTENANCE";
 export const CheckMigrationPermissionResponseStateEnum = /*@__PURE__*/ S.String;
 
 /** CheckMigrationPermissionResponse is the response message for CheckMigrationPermission method. */
@@ -343,11 +338,10 @@ export type DomainStateEnum =
   | "DELETING"
   | "REPAIRING"
   | "PERFORMING_MAINTENANCE"
-  | "DOWN"
-  | (string & {});
+  | "DOWN";
 export const DomainStateEnum = /*@__PURE__*/ S.String;
 
-export type TrustList = Trust[];
+export type TrustList = ReadonlyArray<Trust>;
 export const TrustList = /*@__PURE__*/ S.Array(
   Trust,
 ) as any as S.Schema<TrustList>;
@@ -434,8 +428,7 @@ export type BackupTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ON_DEMAND"
   | "SCHEDULED"
-  | "SCHEMA_EXTENSION"
-  | (string & {});
+  | "SCHEMA_EXTENSION";
 export const BackupTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackupStateEnum =
@@ -443,8 +436,7 @@ export type BackupStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "FAILED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Managed Microsoft Identities backup. */
@@ -509,8 +501,7 @@ export type PeeringStateEnum =
   | "CREATING"
   | "CONNECTED"
   | "DISCONNECTED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const PeeringStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Managed Microsoft Identities Peering. */
@@ -780,7 +771,7 @@ export const OnPremDomainDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "OnPremDomainDetails",
 }) as any as S.Schema<OnPremDomainDetails>;
 
-export type OnPremDomainDetailsList = OnPremDomainDetails[];
+export type OnPremDomainDetailsList = ReadonlyArray<OnPremDomainDetails>;
 export const OnPremDomainDetailsList = /*@__PURE__*/ S.Array(
   OnPremDomainDetails,
 ) as any as S.Schema<OnPremDomainDetailsList>;
@@ -923,7 +914,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1035,8 +1026,7 @@ export type LDAPSSettingsStateEnum =
   | "STATE_UNSPECIFIED"
   | "UPDATING"
   | "ACTIVE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const LDAPSSettingsStateEnum = /*@__PURE__*/ S.String;
 
 /** LDAPSSettings represents the ldaps settings for domain resource. LDAP is the Lightweight Directory Access Protocol, defined in https://tools.ietf.org/html/rfc4511. The settings object configures LDAP over SSL/TLS, whether it is over port 636 or the StartTLS operation. If LDAPSSettings is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state. */
@@ -1167,8 +1157,7 @@ export type SQLIntegrationStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "DELETING"
-  | "READY"
-  | (string & {});
+  | "READY";
 export const SQLIntegrationStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the SQL instance integrated with AD. */
@@ -1262,7 +1251,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1314,7 +1303,7 @@ export const ListProjectsLocationsGlobalDomainsRequest =
     identifier: "ListProjectsLocationsGlobalDomainsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalDomainsRequest>;
 
-export type DomainList = Domain[];
+export type DomainList = ReadonlyArray<Domain>;
 export const DomainList = /*@__PURE__*/ S.Array(
   Domain,
 ) as any as S.Schema<DomainList>;
@@ -1368,7 +1357,7 @@ export const ListProjectsLocationsGlobalDomainsBackupsRequest =
     identifier: "ListProjectsLocationsGlobalDomainsBackupsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalDomainsBackupsRequest>;
 
-export type BackupList = Backup[];
+export type BackupList = ReadonlyArray<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -1423,7 +1412,7 @@ export const ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest =
     identifier: "ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest>;
 
-export type SQLIntegrationList = SQLIntegration[];
+export type SQLIntegrationList = ReadonlyArray<SQLIntegration>;
 export const SQLIntegrationList = /*@__PURE__*/ S.Array(
   SQLIntegration,
 ) as any as S.Schema<SQLIntegrationList>;
@@ -1478,7 +1467,7 @@ export const ListProjectsLocationsGlobalOperationsRequest =
     identifier: "ListProjectsLocationsGlobalOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1533,7 +1522,7 @@ export const ListProjectsLocationsGlobalPeeringsRequest =
     identifier: "ListProjectsLocationsGlobalPeeringsRequest",
   }) as any as S.Schema<ListProjectsLocationsGlobalPeeringsRequest>;
 
-export type PeeringList = Peering[];
+export type PeeringList = ReadonlyArray<Peering>;
 export const PeeringList = /*@__PURE__*/ S.Array(
   Peering,
 ) as any as S.Schema<PeeringList>;

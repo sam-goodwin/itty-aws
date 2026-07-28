@@ -431,16 +431,27 @@
             "smithy.api#documentation": "Name of the AzureBareMetalStorage on Azure instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.baremetalinfrastructure#AzureBareMetalStorageInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags field of the AzureBareMetal/AzureBareMetaStorage instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.baremetalinfrastructure#AzureBareMetalStorageInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags field of the AzureBareMetal/AzureBareMetaStorage instance."
       }
     },
     "com.azure.baremetalinfrastructure#AzureBareMetalStorageInstancesCreate": {
@@ -660,16 +671,40 @@
             "smithy.api#documentation": "Name of the AzureBareMetalStorage on Azure instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.baremetalinfrastructure#AzureBareMetalStorageInstancesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.baremetalinfrastructure#AzureBareMetalStorageInstanceProperties",
+          "traits": {
+            "smithy.api#documentation": "AzureBareMetalStorageInstance properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.baremetalinfrastructure#AzureBareMetalStorageInstancesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.baremetalinfrastructure#AzureBareMetalStorageInstancesGet": {
@@ -1987,16 +2022,27 @@
             "smithy.api#documentation": "Name of the Azure BareMetal on Azure instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.baremetalinfrastructure#AzureBareMetalInstancesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Tags field of the AzureBareMetal/AzureBareMetaStorage instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.baremetalinfrastructure#AzureBareMetalInstancesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags field of the AzureBareMetal/AzureBareMetaStorage instance."
       }
     },
     "com.azure.baremetalinfrastructure#AzureBareMetalInstancesGet": {

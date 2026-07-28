@@ -13,89 +13,14 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface ActiveDirectoryConnectorsCreateRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** The name of the data controller */
-  dataControllerName: string;
-  /** The name of the Active Directory connector instance */
-  activeDirectoryConnectorName: string;
-  body: unknown;
-}
-export const ActiveDirectoryConnectorsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dataControllerName: S.String.pipe(T.Label()),
-      activeDirectoryConnectorName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "ActiveDirectoryConnectorsCreateRequest",
-}) as any as S.Schema<ActiveDirectoryConnectorsCreateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** Username and password for basic login authentication. */
-export interface ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation {
+export interface ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation {
   /** Login username. */
   username?: string;
   /** Login password. */
   password?: string | Redacted.Redacted<string>;
 }
-export const ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation =
+export const ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       username: S.optional(S.String),
@@ -103,14 +28,13 @@ export const ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformat
     }),
   ).annotate({
     identifier:
-      "ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation",
-  }) as any as S.Schema<ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation>;
+      "ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation",
+  }) as any as S.Schema<ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation>;
 
 /** The service account provisioning mode for this Active Directory connector. */
 export type ActiveDirectoryConnectorDomainDetailsServiceAccountProvisioning =
   | "automatic"
-  | "manual"
-  | (string & {});
+  | "manual";
 export const ActiveDirectoryConnectorDomainDetailsServiceAccountProvisioning =
   /*@__PURE__*/ S.String;
 
@@ -129,7 +53,7 @@ export const ActiveDirectoryDomainController = /*@__PURE__*/ S.suspend(() =>
 
 /** Information about the secondary domain controllers in the AD domain. */
 export type ActiveDirectorySecondaryDomainControllers =
-  ActiveDirectoryDomainController[];
+  ReadonlyArray<ActiveDirectoryDomainController>;
 export const ActiveDirectorySecondaryDomainControllers = /*@__PURE__*/ S.Array(
   ActiveDirectoryDomainController,
 ) as any as S.Schema<ActiveDirectorySecondaryDomainControllers>;
@@ -182,7 +106,7 @@ export const ActiveDirectoryConnectorDomainDetails = /*@__PURE__*/ S.suspend(
 
 /** List of Active Directory DNS server IP addresses. */
 export type ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -245,6 +169,120 @@ export const ActiveDirectoryConnectorStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActiveDirectoryConnectorStatus",
 }) as any as S.Schema<ActiveDirectoryConnectorStatus>;
+
+/** The properties of an Active Directory connector resource */
+export interface ActiveDirectoryConnectorPropertiesInput {
+  /** Username and password for basic login authentication. */
+  domainServiceAccountLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
+  /** null */
+  spec: ActiveDirectoryConnectorSpec;
+  /** null */
+  status?: ActiveDirectoryConnectorStatus;
+}
+export const ActiveDirectoryConnectorPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      domainServiceAccountLoginInformation: S.optional(
+        ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
+      ),
+      spec: ActiveDirectoryConnectorSpec,
+      status: S.optional(ActiveDirectoryConnectorStatus),
+    }),
+).annotate({
+  identifier: "ActiveDirectoryConnectorPropertiesInput",
+}) as any as S.Schema<ActiveDirectoryConnectorPropertiesInput>;
+
+export interface ActiveDirectoryConnectorsCreateRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** The name of the data controller */
+  dataControllerName: string;
+  /** The name of the Active Directory connector instance */
+  activeDirectoryConnectorName: string;
+  /** null */
+  properties: ActiveDirectoryConnectorPropertiesInput;
+}
+export const ActiveDirectoryConnectorsCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      dataControllerName: S.String.pipe(T.Label()),
+      activeDirectoryConnectorName: S.String.pipe(T.Label()),
+      properties: ActiveDirectoryConnectorPropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/dataControllers/{dataControllerName}/activeDirectoryConnectors/{activeDirectoryConnectorName}",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "ActiveDirectoryConnectorsCreateRequest",
+}) as any as S.Schema<ActiveDirectoryConnectorsCreateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** Username and password for basic login authentication. */
+export interface ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation {
+  /** Login username. */
+  username?: string;
+  /** Login password. */
+  password?: string | Redacted.Redacted<string>;
+}
+export const ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      username: S.optional(S.String),
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    }),
+  ).annotate({
+    identifier:
+      "ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation",
+  }) as any as S.Schema<ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation>;
 
 /** The properties of an Active Directory connector resource */
 export interface ActiveDirectoryConnectorProperties {
@@ -437,7 +475,7 @@ export const ActiveDirectoryConnectorResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type ActiveDirectoryConnectorsListResponseValueList =
-  ActiveDirectoryConnectorResource[];
+  ReadonlyArray<ActiveDirectoryConnectorResource>;
 export const ActiveDirectoryConnectorsListResponseValueList =
   /*@__PURE__*/ S.Array(
     ActiveDirectoryConnectorResource,
@@ -528,7 +566,7 @@ export const DataControllersGetDataControllerResponseTagsMap =
   ) as any as S.Schema<DataControllersGetDataControllerResponseTagsMap>;
 
 /** The type of extendedLocation. */
-export type ExtendedLocationType = "CustomLocation" | (string & {});
+export type ExtendedLocationType = "CustomLocation";
 export const ExtendedLocationType = /*@__PURE__*/ S.String;
 
 /** The complex type of the extended location. */
@@ -555,8 +593,7 @@ export type DataControllerPropertiesInfrastructure =
   | "aws"
   | "alibaba"
   | "onpremises"
-  | "other"
-  | (string & {});
+  | "other";
 export const DataControllerPropertiesInfrastructure = /*@__PURE__*/ S.String;
 
 /** Properties from the Kubernetes data controller */
@@ -858,7 +895,7 @@ export const DataControllerResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type DataControllersListInGroupResponseValueList =
-  DataControllerResource[];
+  ReadonlyArray<DataControllerResource>;
 export const DataControllersListInGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     DataControllerResource,
@@ -901,7 +938,7 @@ export const DataControllersListInSubscriptionRequest = /*@__PURE__*/ S.suspend(
 
 /** Array of results. */
 export type DataControllersListInSubscriptionResponseValueList =
-  DataControllerResource[];
+  ReadonlyArray<DataControllerResource>;
 export const DataControllersListInSubscriptionResponseValueList =
   /*@__PURE__*/ S.Array(
     DataControllerResource,
@@ -923,6 +960,127 @@ export const DataControllersListInSubscriptionResponse =
     identifier: "DataControllersListInSubscriptionResponse",
   }) as any as S.Schema<DataControllersListInSubscriptionResponse>;
 
+/** Resource tags */
+export type DataControllersPatchDataControllerRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DataControllersPatchDataControllerRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DataControllersPatchDataControllerRequestTagsMap>;
+
+/** The infrastructure the data controller is running on. */
+export type DataControllerPropertiesInputInfrastructure =
+  | "azure"
+  | "gcp"
+  | "aws"
+  | "alibaba"
+  | "onpremises"
+  | "other";
+export const DataControllerPropertiesInputInfrastructure =
+  /*@__PURE__*/ S.String;
+
+/** Username and password for basic login authentication. */
+export interface DataControllerPropertiesInputBasicLoginInformation {
+  /** Login username. */
+  username?: string;
+  /** Login password. */
+  password?: string | Redacted.Redacted<string>;
+}
+export const DataControllerPropertiesInputBasicLoginInformation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      username: S.optional(S.String),
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    }),
+  ).annotate({
+    identifier: "DataControllerPropertiesInputBasicLoginInformation",
+  }) as any as S.Schema<DataControllerPropertiesInputBasicLoginInformation>;
+
+/** Username and password for basic login authentication. */
+export interface DataControllerPropertiesInputMetricsDashboardCredential {
+  /** Login username. */
+  username?: string;
+  /** Login password. */
+  password?: string | Redacted.Redacted<string>;
+}
+export const DataControllerPropertiesInputMetricsDashboardCredential =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      username: S.optional(S.String),
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    }),
+  ).annotate({
+    identifier: "DataControllerPropertiesInputMetricsDashboardCredential",
+  }) as any as S.Schema<DataControllerPropertiesInputMetricsDashboardCredential>;
+
+/** Username and password for basic login authentication. */
+export interface DataControllerPropertiesInputLogsDashboardCredential {
+  /** Login username. */
+  username?: string;
+  /** Login password. */
+  password?: string | Redacted.Redacted<string>;
+}
+export const DataControllerPropertiesInputLogsDashboardCredential =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      username: S.optional(S.String),
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    }),
+  ).annotate({
+    identifier: "DataControllerPropertiesInputLogsDashboardCredential",
+  }) as any as S.Schema<DataControllerPropertiesInputLogsDashboardCredential>;
+
+/** The data controller properties. */
+export interface DataControllerPropertiesInput {
+  /** The infrastructure the data controller is running on. */
+  infrastructure?: DataControllerPropertiesInputInfrastructure;
+  onPremiseProperty?: OnPremiseProperty;
+  /** The raw kubernetes information */
+  k8sRaw?: unknown;
+  uploadWatermark?: UploadWatermark;
+  /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
+  lastUploadedDate?: string;
+  /** Username and password for basic login authentication. */
+  basicLoginInformation?: DataControllerPropertiesInputBasicLoginInformation;
+  /** Username and password for basic login authentication. */
+  metricsDashboardCredential?: DataControllerPropertiesInputMetricsDashboardCredential;
+  /** Username and password for basic login authentication. */
+  logsDashboardCredential?: DataControllerPropertiesInputLogsDashboardCredential;
+  logAnalyticsWorkspaceConfig?: LogAnalyticsWorkspaceConfig;
+  /** Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity. */
+  uploadServicePrincipal?: UploadServicePrincipal;
+  /** If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to. */
+  clusterId?: string;
+  /** If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to. */
+  extensionId?: string;
+}
+export const DataControllerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    infrastructure: S.optional(DataControllerPropertiesInputInfrastructure),
+    onPremiseProperty: S.optional(OnPremiseProperty),
+    k8sRaw: S.optional(S.Unknown),
+    uploadWatermark: S.optional(UploadWatermark),
+    lastUploadedDate: S.optional(S.String),
+    basicLoginInformation: S.optional(
+      DataControllerPropertiesInputBasicLoginInformation,
+    ),
+    metricsDashboardCredential: S.optional(
+      DataControllerPropertiesInputMetricsDashboardCredential,
+    ),
+    logsDashboardCredential: S.optional(
+      DataControllerPropertiesInputLogsDashboardCredential,
+    ),
+    logAnalyticsWorkspaceConfig: S.optional(LogAnalyticsWorkspaceConfig),
+    uploadServicePrincipal: S.optional(UploadServicePrincipal),
+    clusterId: S.optional(S.String),
+    extensionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DataControllerPropertiesInput",
+}) as any as S.Schema<DataControllerPropertiesInput>;
+
 export interface DataControllersPatchDataControllerRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -930,7 +1088,10 @@ export interface DataControllersPatchDataControllerRequest {
   resourceGroupName: string;
   /** The name of the data controller */
   dataControllerName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: DataControllersPatchDataControllerRequestTagsMap;
+  /** The data controller's properties */
+  properties?: DataControllerPropertiesInput;
 }
 export const DataControllersPatchDataControllerRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -938,7 +1099,8 @@ export const DataControllersPatchDataControllerRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       dataControllerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(DataControllersPatchDataControllerRequestTagsMap),
+      properties: S.optional(DataControllerPropertiesInput),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1014,6 +1176,33 @@ export const DataControllersPatchDataControllerResponse =
     identifier: "DataControllersPatchDataControllerResponse",
   }) as any as S.Schema<DataControllersPatchDataControllerResponse>;
 
+/** Resource tags. */
+export type DataControllersPutDataControllerRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DataControllersPutDataControllerRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DataControllersPutDataControllerRequestTagsMap>;
+
+/** The complex type of the extended location. */
+export interface DataControllersPutDataControllerRequestExtendedLocation {
+  /** The name of the extended location. */
+  name?: string;
+  /** The type of the extended location. */
+  type?: ExtendedLocationType;
+}
+export const DataControllersPutDataControllerRequestExtendedLocation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(ExtendedLocationType),
+    }),
+  ).annotate({
+    identifier: "DataControllersPutDataControllerRequestExtendedLocation",
+  }) as any as S.Schema<DataControllersPutDataControllerRequestExtendedLocation>;
+
 export interface DataControllersPutDataControllerRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -1021,7 +1210,14 @@ export interface DataControllersPutDataControllerRequest {
   resourceGroupName: string;
   /** The name of the data controller */
   dataControllerName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: DataControllersPutDataControllerRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The complex type of the extended location. */
+  extendedLocation?: DataControllersPutDataControllerRequestExtendedLocation;
+  /** The data controller's properties */
+  properties: DataControllerPropertiesInput;
 }
 export const DataControllersPutDataControllerRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1029,7 +1225,12 @@ export const DataControllersPutDataControllerRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       dataControllerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(DataControllersPutDataControllerRequestTagsMap),
+      location: S.String,
+      extendedLocation: S.optional(
+        DataControllersPutDataControllerRequestExtendedLocation,
+      ),
+      properties: DataControllerPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1105,47 +1306,8 @@ export const DataControllersPutDataControllerResponse = /*@__PURE__*/ S.suspend(
   identifier: "DataControllersPutDataControllerResponse",
 }) as any as S.Schema<DataControllersPutDataControllerResponse>;
 
-export interface FailoverGroupsCreateRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Managed Instance */
-  sqlManagedInstanceName: string;
-  /** The name of the Failover Group */
-  failoverGroupName: string;
-  body: unknown;
-}
-export const FailoverGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlManagedInstanceName: S.String.pipe(T.Label()),
-    failoverGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "FailoverGroupsCreateRequest",
-}) as any as S.Schema<FailoverGroupsCreateRequest>;
-
-/** The provisioning state of the failover group resource. */
-export type FailoverGroupPropertiesProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Accepted"
-  | (string & {});
-export const FailoverGroupPropertiesProvisioningState = /*@__PURE__*/ S.String;
-
 /** The partner sync mode of the SQL managed instance. */
-export type FailoverGroupSpecPartnerSyncMode = "async" | "sync" | (string & {});
+export type FailoverGroupSpecPartnerSyncMode = "async" | "sync";
 export const FailoverGroupSpecPartnerSyncMode = /*@__PURE__*/ S.String;
 
 /** The role of the SQL managed instance in this failover group. */
@@ -1153,8 +1315,7 @@ export type FailoverGroupSpecRole =
   | "primary"
   | "secondary"
   | "force-primary-allow-data-loss"
-  | "force-secondary"
-  | (string & {});
+  | "force-secondary";
 export const FailoverGroupSpecRole = /*@__PURE__*/ S.String;
 
 /** The specifications of the failover group resource. */
@@ -1187,6 +1348,64 @@ export const FailoverGroupSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FailoverGroupSpec",
 }) as any as S.Schema<FailoverGroupSpec>;
+
+/** The properties of a failover group resource. */
+export interface FailoverGroupPropertiesInput {
+  /** The resource ID of the partner SQL managed instance. */
+  partnerManagedInstanceId: string;
+  /** The specifications of the failover group resource. */
+  spec: FailoverGroupSpec;
+  /** The status of the failover group custom resource. */
+  status?: unknown;
+}
+export const FailoverGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    partnerManagedInstanceId: S.String,
+    spec: FailoverGroupSpec,
+    status: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "FailoverGroupPropertiesInput",
+}) as any as S.Schema<FailoverGroupPropertiesInput>;
+
+export interface FailoverGroupsCreateRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Managed Instance */
+  sqlManagedInstanceName: string;
+  /** The name of the Failover Group */
+  failoverGroupName: string;
+  /** null */
+  properties: FailoverGroupPropertiesInput;
+}
+export const FailoverGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlManagedInstanceName: S.String.pipe(T.Label()),
+    failoverGroupName: S.String.pipe(T.Label()),
+    properties: FailoverGroupPropertiesInput,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}/failoverGroups/{failoverGroupName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "FailoverGroupsCreateRequest",
+}) as any as S.Schema<FailoverGroupsCreateRequest>;
+
+/** The provisioning state of the failover group resource. */
+export type FailoverGroupPropertiesProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Accepted";
+export const FailoverGroupPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** The properties of a failover group resource. */
 export interface FailoverGroupProperties {
@@ -1372,7 +1591,8 @@ export const FailoverGroupResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FailoverGroupResource>;
 
 /** Array of failover group results. */
-export type FailoverGroupsListResponseValueList = FailoverGroupResource[];
+export type FailoverGroupsListResponseValueList =
+  ReadonlyArray<FailoverGroupResource>;
 export const FailoverGroupsListResponseValueList = /*@__PURE__*/ S.Array(
   FailoverGroupResource,
 ) as any as S.Schema<FailoverGroupsListResponseValueList>;
@@ -1429,7 +1649,7 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation. */
-export type OperationOrigin = "user" | "system" | (string & {});
+export type OperationOrigin = "user" | "system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Additional descriptions for the operation. */
@@ -1463,7 +1683,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** Array of results. */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1483,6 +1703,108 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** Resource tags. */
+export type PostgresInstancesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PostgresInstancesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PostgresInstancesCreateRequestTagsMap>;
+
+/** The complex type of the extended location. */
+export interface PostgresInstancesCreateRequestExtendedLocation {
+  /** The name of the extended location. */
+  name?: string;
+  /** The type of the extended location. */
+  type?: ExtendedLocationType;
+}
+export const PostgresInstancesCreateRequestExtendedLocation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(ExtendedLocationType),
+    }),
+  ).annotate({
+    identifier: "PostgresInstancesCreateRequestExtendedLocation",
+  }) as any as S.Schema<PostgresInstancesCreateRequestExtendedLocation>;
+
+/** Username and password for basic login authentication. */
+export interface PostgresInstancePropertiesInputBasicLoginInformation {
+  /** Login username. */
+  username?: string;
+  /** Login password. */
+  password?: string | Redacted.Redacted<string>;
+}
+export const PostgresInstancePropertiesInputBasicLoginInformation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      username: S.optional(S.String),
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    }),
+  ).annotate({
+    identifier: "PostgresInstancePropertiesInputBasicLoginInformation",
+  }) as any as S.Schema<PostgresInstancePropertiesInputBasicLoginInformation>;
+
+/** Postgres Instance properties. */
+export interface PostgresInstancePropertiesInput {
+  /** The data controller id */
+  dataControllerId?: string;
+  /** The instance admin */
+  admin?: string;
+  /** Username and password for basic login authentication. */
+  basicLoginInformation?: PostgresInstancePropertiesInputBasicLoginInformation;
+  /** The raw kubernetes information */
+  k8sRaw?: unknown;
+  /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
+  lastUploadedDate?: string;
+}
+export const PostgresInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataControllerId: S.optional(S.String),
+    admin: S.optional(S.String),
+    basicLoginInformation: S.optional(
+      PostgresInstancePropertiesInputBasicLoginInformation,
+    ),
+    k8sRaw: S.optional(S.Unknown),
+    lastUploadedDate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PostgresInstancePropertiesInput",
+}) as any as S.Schema<PostgresInstancePropertiesInput>;
+
+/** This field is required to be implemented by the Resource Provider if the service has more than one tier. */
+export type PostgresInstanceSkuTier = "Hyperscale";
+export const PostgresInstanceSkuTier = /*@__PURE__*/ S.String;
+
+/** The resource model definition representing SKU for Azure Database for PostgresSQL - Azure Arc */
+export interface PostgresInstanceSku {
+  /** The name of the SKU. It is typically a letter+number code */
+  name: string;
+  /** Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose. */
+  dev?: boolean;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
+  family?: string;
+  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
+  capacity?: number;
+  /** This field is required to be implemented by the Resource Provider if the service has more than one tier. */
+  tier?: PostgresInstanceSkuTier;
+}
+export const PostgresInstanceSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    dev: S.optional(S.Boolean),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    capacity: S.optional(S.Number),
+    tier: S.optional(PostgresInstanceSkuTier),
+  }),
+).annotate({
+  identifier: "PostgresInstanceSku",
+}) as any as S.Schema<PostgresInstanceSku>;
+
 export interface PostgresInstancesCreateRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -1490,14 +1812,29 @@ export interface PostgresInstancesCreateRequest {
   resourceGroupName: string;
   /** Name of Postgres Instance */
   postgresInstanceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: PostgresInstancesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The complex type of the extended location. */
+  extendedLocation?: PostgresInstancesCreateRequestExtendedLocation;
+  /** null */
+  properties: PostgresInstancePropertiesInput;
+  /** Resource sku. */
+  sku?: PostgresInstanceSku;
 }
 export const PostgresInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     postgresInstanceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(PostgresInstancesCreateRequestTagsMap),
+    location: S.String,
+    extendedLocation: S.optional(
+      PostgresInstancesCreateRequestExtendedLocation,
+    ),
+    properties: PostgresInstancePropertiesInput,
+    sku: S.optional(PostgresInstanceSku),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1582,38 +1919,6 @@ export const PostgresInstanceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PostgresInstanceProperties",
 }) as any as S.Schema<PostgresInstanceProperties>;
-
-/** This field is required to be implemented by the Resource Provider if the service has more than one tier. */
-export type PostgresInstanceSkuTier = "Hyperscale" | (string & {});
-export const PostgresInstanceSkuTier = /*@__PURE__*/ S.String;
-
-/** The resource model definition representing SKU for Azure Database for PostgresSQL - Azure Arc */
-export interface PostgresInstanceSku {
-  /** The name of the SKU. It is typically a letter+number code */
-  name: string;
-  /** Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose. */
-  dev?: boolean;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-  /** This field is required to be implemented by the Resource Provider if the service has more than one tier. */
-  tier?: PostgresInstanceSkuTier;
-}
-export const PostgresInstanceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    dev: S.optional(S.Boolean),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-    tier: S.optional(PostgresInstanceSkuTier),
-  }),
-).annotate({
-  identifier: "PostgresInstanceSku",
-}) as any as S.Schema<PostgresInstanceSku>;
 
 export interface PostgresInstancesCreateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1852,7 +2157,8 @@ export const PostgresInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostgresInstance>;
 
 /** Array of results. */
-export type PostgresInstancesListResponseValueList = PostgresInstance[];
+export type PostgresInstancesListResponseValueList =
+  ReadonlyArray<PostgresInstance>;
 export const PostgresInstancesListResponseValueList = /*@__PURE__*/ S.Array(
   PostgresInstance,
 ) as any as S.Schema<PostgresInstancesListResponseValueList>;
@@ -1897,7 +2203,7 @@ export const PostgresInstancesListByResourceGroupRequest =
 
 /** Array of results. */
 export type PostgresInstancesListByResourceGroupResponseValueList =
-  PostgresInstance[];
+  ReadonlyArray<PostgresInstance>;
 export const PostgresInstancesListByResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     PostgresInstance,
@@ -1919,6 +2225,15 @@ export const PostgresInstancesListByResourceGroupResponse =
     identifier: "PostgresInstancesListByResourceGroupResponse",
   }) as any as S.Schema<PostgresInstancesListByResourceGroupResponse>;
 
+/** Resource tags. */
+export type PostgresInstancesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PostgresInstancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PostgresInstancesUpdateRequestTagsMap>;
+
 export interface PostgresInstancesUpdateRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -1926,14 +2241,17 @@ export interface PostgresInstancesUpdateRequest {
   resourceGroupName: string;
   /** Name of Postgres Instance */
   postgresInstanceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: PostgresInstancesUpdateRequestTagsMap;
+  properties?: PostgresInstancePropertiesInput;
 }
 export const PostgresInstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     postgresInstanceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(PostgresInstancesUpdateRequestTagsMap),
+    properties: S.optional(PostgresInstancePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2010,41 +2328,14 @@ export const PostgresInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostgresInstancesUpdateResponse",
 }) as any as S.Schema<PostgresInstancesUpdateResponse>;
 
-export interface SqlManagedInstancesCreateRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Managed Instance */
-  sqlManagedInstanceName: string;
-  body: unknown;
-}
-export const SqlManagedInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlManagedInstanceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlManagedInstancesCreateRequest",
-}) as any as S.Schema<SqlManagedInstancesCreateRequest>;
-
 /** Resource tags. */
-export type SqlManagedInstancesCreateResponseTagsMap = {
+export type SqlManagedInstancesCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const SqlManagedInstancesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const SqlManagedInstancesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<SqlManagedInstancesCreateResponseTagsMap>;
+) as any as S.Schema<SqlManagedInstancesCreateRequestTagsMap>;
 
 /** Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'. */
 export type K8sResourceRequirementsRequestsMap = {
@@ -2118,7 +2409,7 @@ export const K8sActiveDirectoryConnector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<K8sActiveDirectoryConnector>;
 
 /** An array of encryption types */
-export type K8sActiveDirectoryEncryptionTypesList = string[];
+export type K8sActiveDirectoryEncryptionTypesList = ReadonlyArray<string>;
 export const K8sActiveDirectoryEncryptionTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<K8sActiveDirectoryEncryptionTypesList>;
@@ -2239,21 +2530,21 @@ export const SqlManagedInstanceK8sRaw = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlManagedInstanceK8sRaw>;
 
 /** Username and password for basic login authentication. */
-export interface SqlManagedInstancePropertiesBasicLoginInformation {
+export interface SqlManagedInstancePropertiesInputBasicLoginInformation {
   /** Login username. */
   username?: string;
   /** Login password. */
   password?: string | Redacted.Redacted<string>;
 }
-export const SqlManagedInstancePropertiesBasicLoginInformation =
+export const SqlManagedInstancePropertiesInputBasicLoginInformation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       username: S.optional(S.String),
       password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     }),
   ).annotate({
-    identifier: "SqlManagedInstancePropertiesBasicLoginInformation",
-  }) as any as S.Schema<SqlManagedInstancePropertiesBasicLoginInformation>;
+    identifier: "SqlManagedInstancePropertiesInputBasicLoginInformation",
+  }) as any as S.Schema<SqlManagedInstancePropertiesInputBasicLoginInformation>;
 
 /** Keytab used for authenticate with Active Directory. */
 export interface KeytabInformation {
@@ -2282,11 +2573,184 @@ export const ActiveDirectoryInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActiveDirectoryInformation>;
 
 /** The license type to apply for this managed instance. */
+export type SqlManagedInstancePropertiesInputLicenseType =
+  | "BasePrice"
+  | "LicenseIncluded"
+  | "DisasterRecovery";
+export const SqlManagedInstancePropertiesInputLicenseType =
+  /*@__PURE__*/ S.String;
+
+/** Properties of sqlManagedInstance. */
+export interface SqlManagedInstancePropertiesInput {
+  /** null */
+  dataControllerId?: string;
+  /** The instance admin user */
+  admin?: string;
+  /** The instance start time */
+  startTime?: string;
+  /** The instance end time */
+  endTime?: string;
+  /** The raw kubernetes information */
+  k8sRaw?: SqlManagedInstanceK8sRaw;
+  /** Username and password for basic login authentication. */
+  basicLoginInformation?: SqlManagedInstancePropertiesInputBasicLoginInformation;
+  /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
+  lastUploadedDate?: string;
+  /** Active Directory information related to this SQL Managed Instance. */
+  activeDirectoryInformation?: ActiveDirectoryInformation;
+  /** The license type to apply for this managed instance. */
+  licenseType?: SqlManagedInstancePropertiesInputLicenseType;
+  /** If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to. */
+  clusterId?: string;
+  /** If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to. */
+  extensionId?: string;
+}
+export const SqlManagedInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataControllerId: S.optional(S.String),
+    admin: S.optional(S.String),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    k8sRaw: S.optional(SqlManagedInstanceK8sRaw),
+    basicLoginInformation: S.optional(
+      SqlManagedInstancePropertiesInputBasicLoginInformation,
+    ),
+    lastUploadedDate: S.optional(S.String),
+    activeDirectoryInformation: S.optional(ActiveDirectoryInformation),
+    licenseType: S.optional(SqlManagedInstancePropertiesInputLicenseType),
+    clusterId: S.optional(S.String),
+    extensionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlManagedInstancePropertiesInput",
+}) as any as S.Schema<SqlManagedInstancePropertiesInput>;
+
+/** The complex type of the extended location. */
+export interface SqlManagedInstancesCreateRequestExtendedLocation {
+  /** The name of the extended location. */
+  name?: string;
+  /** The type of the extended location. */
+  type?: ExtendedLocationType;
+}
+export const SqlManagedInstancesCreateRequestExtendedLocation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(ExtendedLocationType),
+    }),
+  ).annotate({
+    identifier: "SqlManagedInstancesCreateRequestExtendedLocation",
+  }) as any as S.Schema<SqlManagedInstancesCreateRequestExtendedLocation>;
+
+/** The name of the SKU. */
+export type SqlManagedInstanceSkuName = "vCore";
+export const SqlManagedInstanceSkuName = /*@__PURE__*/ S.String;
+
+/** The pricing tier for the instance. */
+export type SqlManagedInstanceSkuTier = "GeneralPurpose" | "BusinessCritical";
+export const SqlManagedInstanceSkuTier = /*@__PURE__*/ S.String;
+
+/** The resource model definition representing SKU for Azure Managed Instance - Azure Arc */
+export interface SqlManagedInstanceSku {
+  /** The name of the SKU. */
+  name: SqlManagedInstanceSkuName;
+  /** The pricing tier for the instance. */
+  tier?: SqlManagedInstanceSkuTier;
+  /** Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose. */
+  dev?: boolean;
+  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
+  size?: string;
+  /** The SKU family */
+  family?: string;
+  /** The SKU capacity */
+  capacity?: number;
+}
+export const SqlManagedInstanceSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: SqlManagedInstanceSkuName,
+    tier: S.optional(SqlManagedInstanceSkuTier),
+    dev: S.optional(S.Boolean),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    capacity: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SqlManagedInstanceSku",
+}) as any as S.Schema<SqlManagedInstanceSku>;
+
+export interface SqlManagedInstancesCreateRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Managed Instance */
+  sqlManagedInstanceName: string;
+  /** Resource tags. */
+  tags?: SqlManagedInstancesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** null */
+  properties: SqlManagedInstancePropertiesInput;
+  /** The complex type of the extended location. */
+  extendedLocation?: SqlManagedInstancesCreateRequestExtendedLocation;
+  /** Resource sku. */
+  sku?: SqlManagedInstanceSku;
+}
+export const SqlManagedInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlManagedInstanceName: S.String.pipe(T.Label()),
+    tags: S.optional(SqlManagedInstancesCreateRequestTagsMap),
+    location: S.String,
+    properties: SqlManagedInstancePropertiesInput,
+    extendedLocation: S.optional(
+      SqlManagedInstancesCreateRequestExtendedLocation,
+    ),
+    sku: S.optional(SqlManagedInstanceSku),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlManagedInstances/{sqlManagedInstanceName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "SqlManagedInstancesCreateRequest",
+}) as any as S.Schema<SqlManagedInstancesCreateRequest>;
+
+/** Resource tags. */
+export type SqlManagedInstancesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlManagedInstancesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlManagedInstancesCreateResponseTagsMap>;
+
+/** Username and password for basic login authentication. */
+export interface SqlManagedInstancePropertiesBasicLoginInformation {
+  /** Login username. */
+  username?: string;
+  /** Login password. */
+  password?: string | Redacted.Redacted<string>;
+}
+export const SqlManagedInstancePropertiesBasicLoginInformation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      username: S.optional(S.String),
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    }),
+  ).annotate({
+    identifier: "SqlManagedInstancePropertiesBasicLoginInformation",
+  }) as any as S.Schema<SqlManagedInstancePropertiesBasicLoginInformation>;
+
+/** The license type to apply for this managed instance. */
 export type SqlManagedInstancePropertiesLicenseType =
   | "BasePrice"
   | "LicenseIncluded"
-  | "DisasterRecovery"
-  | (string & {});
+  | "DisasterRecovery";
 export const SqlManagedInstancePropertiesLicenseType = /*@__PURE__*/ S.String;
 
 /** Properties of sqlManagedInstance. */
@@ -2353,45 +2817,6 @@ export const SqlManagedInstancesCreateResponseExtendedLocation =
   ).annotate({
     identifier: "SqlManagedInstancesCreateResponseExtendedLocation",
   }) as any as S.Schema<SqlManagedInstancesCreateResponseExtendedLocation>;
-
-/** The name of the SKU. */
-export type SqlManagedInstanceSkuName = "vCore" | (string & {});
-export const SqlManagedInstanceSkuName = /*@__PURE__*/ S.String;
-
-/** The pricing tier for the instance. */
-export type SqlManagedInstanceSkuTier =
-  | "GeneralPurpose"
-  | "BusinessCritical"
-  | (string & {});
-export const SqlManagedInstanceSkuTier = /*@__PURE__*/ S.String;
-
-/** The resource model definition representing SKU for Azure Managed Instance - Azure Arc */
-export interface SqlManagedInstanceSku {
-  /** The name of the SKU. */
-  name: SqlManagedInstanceSkuName;
-  /** The pricing tier for the instance. */
-  tier?: SqlManagedInstanceSkuTier;
-  /** Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose. */
-  dev?: boolean;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** The SKU family */
-  family?: string;
-  /** The SKU capacity */
-  capacity?: number;
-}
-export const SqlManagedInstanceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SqlManagedInstanceSkuName,
-    tier: S.optional(SqlManagedInstanceSkuTier),
-    dev: S.optional(S.Boolean),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SqlManagedInstanceSku",
-}) as any as S.Schema<SqlManagedInstanceSku>;
 
 export interface SqlManagedInstancesCreateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2632,7 +3057,8 @@ export const SqlManagedInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlManagedInstance>;
 
 /** Array of results. */
-export type SqlManagedInstancesListResponseValueList = SqlManagedInstance[];
+export type SqlManagedInstancesListResponseValueList =
+  ReadonlyArray<SqlManagedInstance>;
 export const SqlManagedInstancesListResponseValueList = /*@__PURE__*/ S.Array(
   SqlManagedInstance,
 ) as any as S.Schema<SqlManagedInstancesListResponseValueList>;
@@ -2677,7 +3103,7 @@ export const SqlManagedInstancesListByResourceGroupRequest =
 
 /** Array of results. */
 export type SqlManagedInstancesListByResourceGroupResponseValueList =
-  SqlManagedInstance[];
+  ReadonlyArray<SqlManagedInstance>;
 export const SqlManagedInstancesListByResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlManagedInstance,
@@ -2701,6 +3127,15 @@ export const SqlManagedInstancesListByResourceGroupResponse =
     identifier: "SqlManagedInstancesListByResourceGroupResponse",
   }) as any as S.Schema<SqlManagedInstancesListByResourceGroupResponse>;
 
+/** Resource tags. */
+export type SqlManagedInstancesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlManagedInstancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlManagedInstancesUpdateRequestTagsMap>;
+
 export interface SqlManagedInstancesUpdateRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -2708,14 +3143,15 @@ export interface SqlManagedInstancesUpdateRequest {
   resourceGroupName: string;
   /** Name of SQL Managed Instance */
   sqlManagedInstanceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SqlManagedInstancesUpdateRequestTagsMap;
 }
 export const SqlManagedInstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     sqlManagedInstanceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SqlManagedInstancesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2792,6 +3228,14 @@ export const SqlManagedInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlManagedInstancesUpdateResponse",
 }) as any as S.Schema<SqlManagedInstancesUpdateResponse>;
 
+/** List of database names. */
+export type SqlServerAvailabilityGroupsAddDatabasesRequestValuesList =
+  ReadonlyArray<string>;
+export const SqlServerAvailabilityGroupsAddDatabasesRequestValuesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsAddDatabasesRequestValuesList>;
+
 export interface SqlServerAvailabilityGroupsAddDatabasesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2801,7 +3245,8 @@ export interface SqlServerAvailabilityGroupsAddDatabasesRequest {
   sqlServerInstanceName: string;
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
-  body: unknown;
+  /** List of database names. */
+  values?: SqlServerAvailabilityGroupsAddDatabasesRequestValuesList;
 }
 export const SqlServerAvailabilityGroupsAddDatabasesRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2810,7 +3255,9 @@ export const SqlServerAvailabilityGroupsAddDatabasesRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
       availabilityGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      values: S.optional(
+        SqlServerAvailabilityGroupsAddDatabasesRequestValuesList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2837,8 +3284,7 @@ export type AvailabilityGroupInfoReplicationPartnerType =
   | "SQLServer"
   | "AzureSQLVM"
   | "AzureSQLManagedInstance"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const AvailabilityGroupInfoReplicationPartnerType =
   /*@__PURE__*/ S.String;
 
@@ -2860,7 +3306,7 @@ export const SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem =
 
 /** Address and netmask information for an IPv4 AG listener. */
 export type SqlAvailabilityGroupIpV4AddressesAndMasksProperties =
-  SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem[];
+  ReadonlyArray<SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem>;
 export const SqlAvailabilityGroupIpV4AddressesAndMasksProperties =
   /*@__PURE__*/ S.Array(
     SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem,
@@ -2868,7 +3314,7 @@ export const SqlAvailabilityGroupIpV4AddressesAndMasksProperties =
 
 /** IP V6 Addresses for the listener */
 export type SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2974,16 +3420,14 @@ export type AvailabilityGroupConfigureEndpointAuthenticationMode =
   | "Windows_Negotiate_Certificate"
   | "Certificate_Windows_NTLM"
   | "Certificate_Windows_Kerberos"
-  | "Certificate_Windows_Negotiate"
-  | (string & {});
+  | "Certificate_Windows_Negotiate";
 export const AvailabilityGroupConfigureEndpointAuthenticationMode =
   /*@__PURE__*/ S.String;
 
 /** Property that determines whether a given availability replica can run in synchronous-commit mode */
 export type AvailabilityGroupConfigureAvailabilityMode =
   | "SYNCHRONOUS_COMMIT"
-  | "ASYNCHRONOUS_COMMIT"
-  | (string & {});
+  | "ASYNCHRONOUS_COMMIT";
 export const AvailabilityGroupConfigureAvailabilityMode =
   /*@__PURE__*/ S.String;
 
@@ -2992,15 +3436,13 @@ export type AvailabilityGroupConfigureFailoverMode =
   | "AUTOMATIC"
   | "MANUAL"
   | "EXTERNAL"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const AvailabilityGroupConfigureFailoverMode = /*@__PURE__*/ S.String;
 
 /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
 export type AvailabilityGroupConfigurePrimaryAllowConnections =
   | "ALL"
-  | "READ_WRITE"
-  | (string & {});
+  | "READ_WRITE";
 export const AvailabilityGroupConfigurePrimaryAllowConnections =
   /*@__PURE__*/ S.String;
 
@@ -3008,16 +3450,12 @@ export const AvailabilityGroupConfigurePrimaryAllowConnections =
 export type AvailabilityGroupConfigureSecondaryAllowConnections =
   | "NO"
   | "ALL"
-  | "READ_ONLY"
-  | (string & {});
+  | "READ_ONLY";
 export const AvailabilityGroupConfigureSecondaryAllowConnections =
   /*@__PURE__*/ S.String;
 
 /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
-export type AvailabilityGroupConfigureSeedingMode =
-  | "AUTOMATIC"
-  | "MANUAL"
-  | (string & {});
+export type AvailabilityGroupConfigureSeedingMode = "AUTOMATIC" | "MANUAL";
 export const AvailabilityGroupConfigureSeedingMode = /*@__PURE__*/ S.String;
 
 /** The specifications of the availability group replica configuration */
@@ -3158,7 +3596,7 @@ export const SqlAvailabilityGroupReplicaResourceProperties =
 
 /** Array of Availability Group Replicas. */
 export type SqlServerAvailabilityGroupResourcePropertiesReplicasValueList =
-  SqlAvailabilityGroupReplicaResourceProperties[];
+  ReadonlyArray<SqlAvailabilityGroupReplicaResourceProperties>;
 export const SqlServerAvailabilityGroupResourcePropertiesReplicasValueList =
   /*@__PURE__*/ S.Array(
     SqlAvailabilityGroupReplicaResourceProperties,
@@ -3226,7 +3664,7 @@ export const SqlAvailabilityGroupDatabaseReplicaResourceProperties =
 
 /** Array of Availability Group Database Replicas. */
 export type SqlServerAvailabilityGroupResourcePropertiesDatabasesValueList =
-  SqlAvailabilityGroupDatabaseReplicaResourceProperties[];
+  ReadonlyArray<SqlAvailabilityGroupDatabaseReplicaResourceProperties>;
 export const SqlServerAvailabilityGroupResourcePropertiesDatabasesValueList =
   /*@__PURE__*/ S.Array(
     SqlAvailabilityGroupDatabaseReplicaResourceProperties,
@@ -3324,6 +3762,281 @@ export const SqlServerAvailabilityGroupsAddDatabasesResponse =
     identifier: "SqlServerAvailabilityGroupsAddDatabasesResponse",
   }) as any as S.Schema<SqlServerAvailabilityGroupsAddDatabasesResponse>;
 
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupsCreateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsCreateRequestTagsMap>;
+
+/** The specifications of the availability group state */
+export interface AvailabilityGroupInfoInput {
+  /** User-defined failure condition level under which an automatic failover must be triggered. */
+  failureConditionLevel?: number;
+  /** Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding. */
+  healthCheckTimeout?: number;
+  /** Specifies whether this is a basic availability group. */
+  basicFeatures?: boolean;
+  /** Specifies whether DTC support has been enabled for this availability group. */
+  dtcSupport?: boolean;
+  /** Specifies whether the availability group supports failover for database health conditions. */
+  dbFailover?: boolean;
+  /** Specifies whether this is a distributed availability group. */
+  isDistributed?: boolean;
+  /** The number of secondary replicas that must be in a synchronized state for a commit to complete. */
+  requiredSynchronizedSecondariesToCommit?: number;
+  /** SQL Server availability group contained system databases. */
+  isContained?: boolean;
+  /** The listener for the sql server availability group */
+  listener?: SqlAvailabilityGroupStaticIPListenerProperties;
+}
+export const AvailabilityGroupInfoInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    failureConditionLevel: S.optional(S.Number),
+    healthCheckTimeout: S.optional(S.Number),
+    basicFeatures: S.optional(S.Boolean),
+    dtcSupport: S.optional(S.Boolean),
+    dbFailover: S.optional(S.Boolean),
+    isDistributed: S.optional(S.Boolean),
+    requiredSynchronizedSecondariesToCommit: S.optional(S.Number),
+    isContained: S.optional(S.Boolean),
+    listener: S.optional(SqlAvailabilityGroupStaticIPListenerProperties),
+  }),
+).annotate({
+  identifier: "AvailabilityGroupInfoInput",
+}) as any as S.Schema<AvailabilityGroupInfoInput>;
+
+/** The endpoint connection authentication type(s). */
+export type AvailabilityGroupConfigureInputEndpointAuthenticationMode =
+  | "Windows_NTLM"
+  | "Windows_Kerberos"
+  | "Windows_Negotiate"
+  | "Certificate"
+  | "Windows_NTLM_Certificate"
+  | "Windows_Kerberos_Certificate"
+  | "Windows_Negotiate_Certificate"
+  | "Certificate_Windows_NTLM"
+  | "Certificate_Windows_Kerberos"
+  | "Certificate_Windows_Negotiate";
+export const AvailabilityGroupConfigureInputEndpointAuthenticationMode =
+  /*@__PURE__*/ S.String;
+
+/** Property that determines whether a given availability replica can run in synchronous-commit mode */
+export type AvailabilityGroupConfigureInputAvailabilityMode =
+  | "SYNCHRONOUS_COMMIT"
+  | "ASYNCHRONOUS_COMMIT";
+export const AvailabilityGroupConfigureInputAvailabilityMode =
+  /*@__PURE__*/ S.String;
+
+/** Property to set the failover mode of the availability group replica */
+export type AvailabilityGroupConfigureInputFailoverMode =
+  | "AUTOMATIC"
+  | "MANUAL"
+  | "EXTERNAL"
+  | "NONE";
+export const AvailabilityGroupConfigureInputFailoverMode =
+  /*@__PURE__*/ S.String;
+
+/** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
+export type AvailabilityGroupConfigureInputPrimaryAllowConnections =
+  | "ALL"
+  | "READ_WRITE";
+export const AvailabilityGroupConfigureInputPrimaryAllowConnections =
+  /*@__PURE__*/ S.String;
+
+/** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
+export type AvailabilityGroupConfigureInputSecondaryAllowConnections =
+  | "NO"
+  | "ALL"
+  | "READ_ONLY";
+export const AvailabilityGroupConfigureInputSecondaryAllowConnections =
+  /*@__PURE__*/ S.String;
+
+/** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
+export type AvailabilityGroupConfigureInputSeedingMode = "AUTOMATIC" | "MANUAL";
+export const AvailabilityGroupConfigureInputSeedingMode =
+  /*@__PURE__*/ S.String;
+
+/** The specifications of the availability group replica configuration */
+export interface AvailabilityGroupConfigureInput {
+  /** Name of the mirroring endpoint URL */
+  endpointName?: string;
+  /** Mirroring endpoint URL of availability group replica */
+  endpointUrl?: string;
+  /** The endpoint connection authentication type(s). */
+  endpointAuthenticationMode?: AvailabilityGroupConfigureInputEndpointAuthenticationMode;
+  /** Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified. */
+  certificateName?: string;
+  /** The login which will connect to the mirroring endpoint. */
+  endpointConnectLogin?: string;
+  /** Property that determines whether a given availability replica can run in synchronous-commit mode */
+  availabilityMode?: AvailabilityGroupConfigureInputAvailabilityMode;
+  /** Property to set the failover mode of the availability group replica */
+  failoverMode?: AvailabilityGroupConfigureInputFailoverMode;
+  /** The time-out period of availability group session replica, in seconds. */
+  sessionTimeout?: number;
+  /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
+  primaryAllowConnections?: AvailabilityGroupConfigureInputPrimaryAllowConnections;
+  /** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
+  secondaryAllowConnections?: AvailabilityGroupConfigureInputSecondaryAllowConnections;
+  /** Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group. */
+  backupPriority?: number;
+  /** Connectivity endpoint (URL) of the read only availability replica. */
+  readOnlyRoutingUrl?: string;
+  /** Connectivity endpoint (URL) of the read write availability replica. */
+  readWriteRoutingUrl?: string;
+  /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
+  seedingMode?: AvailabilityGroupConfigureInputSeedingMode;
+}
+export const AvailabilityGroupConfigureInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpointName: S.optional(S.String),
+    endpointUrl: S.optional(S.String),
+    endpointAuthenticationMode: S.optional(
+      AvailabilityGroupConfigureInputEndpointAuthenticationMode,
+    ),
+    certificateName: S.optional(S.String),
+    endpointConnectLogin: S.optional(S.String),
+    availabilityMode: S.optional(
+      AvailabilityGroupConfigureInputAvailabilityMode,
+    ),
+    failoverMode: S.optional(AvailabilityGroupConfigureInputFailoverMode),
+    sessionTimeout: S.optional(S.Number),
+    primaryAllowConnections: S.optional(
+      AvailabilityGroupConfigureInputPrimaryAllowConnections,
+    ),
+    secondaryAllowConnections: S.optional(
+      AvailabilityGroupConfigureInputSecondaryAllowConnections,
+    ),
+    backupPriority: S.optional(S.Number),
+    readOnlyRoutingUrl: S.optional(S.String),
+    readWriteRoutingUrl: S.optional(S.String),
+    seedingMode: S.optional(AvailabilityGroupConfigureInputSeedingMode),
+  }),
+).annotate({
+  identifier: "AvailabilityGroupConfigureInput",
+}) as any as S.Schema<AvailabilityGroupConfigureInput>;
+
+/** The specifications of the availability group state */
+export interface AvailabilityGroupStateInput {}
+export const AvailabilityGroupStateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AvailabilityGroupStateInput",
+}) as any as S.Schema<AvailabilityGroupStateInput>;
+
+/** The properties of Arc Sql availability group replica resource */
+export interface SqlAvailabilityGroupReplicaResourcePropertiesInput {
+  /** The replica name. */
+  replicaName?: string;
+  /** Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG. */
+  replicaResourceId?: string;
+  /** null */
+  configure?: AvailabilityGroupConfigureInput;
+  /** null */
+  state?: AvailabilityGroupStateInput;
+}
+export const SqlAvailabilityGroupReplicaResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      replicaName: S.optional(S.String),
+      replicaResourceId: S.optional(S.String),
+      configure: S.optional(AvailabilityGroupConfigureInput),
+      state: S.optional(AvailabilityGroupStateInput),
+    }),
+  ).annotate({
+    identifier: "SqlAvailabilityGroupReplicaResourcePropertiesInput",
+  }) as any as S.Schema<SqlAvailabilityGroupReplicaResourcePropertiesInput>;
+
+/** Array of Availability Group Replicas. */
+export type SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList =
+  ReadonlyArray<SqlAvailabilityGroupReplicaResourcePropertiesInput>;
+export const SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList =
+  /*@__PURE__*/ S.Array(
+    SqlAvailabilityGroupReplicaResourcePropertiesInput,
+  ) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList>;
+
+/** A list of Availability Group Replicas. */
+export interface SqlServerAvailabilityGroupResourcePropertiesInputReplicas {
+  /** Array of Availability Group Replicas. */
+  value?: SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList;
+}
+export const SqlServerAvailabilityGroupResourcePropertiesInputReplicas =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.optional(
+        SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList,
+      ),
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupResourcePropertiesInputReplicas",
+  }) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputReplicas>;
+
+/** The properties of Arc Sql availability group database replica resource */
+export interface SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput {
+  /** the database name. */
+  databaseName?: string;
+}
+export const SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      databaseName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput",
+  }) as any as S.Schema<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput>;
+
+/** Array of Availability Group Database Replicas. */
+export type SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList =
+  ReadonlyArray<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput>;
+export const SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList =
+  /*@__PURE__*/ S.Array(
+    SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput,
+  ) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList>;
+
+/** A list of Availability Group Database Replicas. */
+export interface SqlServerAvailabilityGroupResourcePropertiesInputDatabases {
+  /** Array of Availability Group Database Replicas. */
+  value?: SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList;
+}
+export const SqlServerAvailabilityGroupResourcePropertiesInputDatabases =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.optional(
+        SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList,
+      ),
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupResourcePropertiesInputDatabases",
+  }) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputDatabases>;
+
+/** The properties of Arc Sql Server availability group resource */
+export interface SqlServerAvailabilityGroupResourcePropertiesInput {
+  /** Availability Group Info */
+  info?: AvailabilityGroupInfoInput;
+  /** A list of Availability Group Replicas. */
+  replicas?: SqlServerAvailabilityGroupResourcePropertiesInputReplicas;
+  /** A list of Availability Group Database Replicas. */
+  databases?: SqlServerAvailabilityGroupResourcePropertiesInputDatabases;
+}
+export const SqlServerAvailabilityGroupResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      info: S.optional(AvailabilityGroupInfoInput),
+      replicas: S.optional(
+        SqlServerAvailabilityGroupResourcePropertiesInputReplicas,
+      ),
+      databases: S.optional(
+        SqlServerAvailabilityGroupResourcePropertiesInputDatabases,
+      ),
+    }),
+  ).annotate({
+    identifier: "SqlServerAvailabilityGroupResourcePropertiesInput",
+  }) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInput>;
+
 export interface SqlServerAvailabilityGroupsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3333,7 +4046,12 @@ export interface SqlServerAvailabilityGroupsCreateRequest {
   sqlServerInstanceName: string;
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server availability group */
+  properties: SqlServerAvailabilityGroupResourcePropertiesInput;
 }
 export const SqlServerAvailabilityGroupsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3342,7 +4060,9 @@ export const SqlServerAvailabilityGroupsCreateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
       availabilityGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(SqlServerAvailabilityGroupsCreateRequestTagsMap),
+      location: S.String,
+      properties: SqlServerAvailabilityGroupResourcePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3396,6 +4116,180 @@ export const SqlServerAvailabilityGroupsCreateResponse =
     identifier: "SqlServerAvailabilityGroupsCreateResponse",
   }) as any as S.Schema<SqlServerAvailabilityGroupsCreateResponse>;
 
+/** The endpoint connection authentication type(s). */
+export type AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode =
+    | "Windows_NTLM"
+    | "Windows_Kerberos"
+    | "Windows_Negotiate"
+    | "Certificate"
+    | "Windows_NTLM_Certificate"
+    | "Windows_Kerberos_Certificate"
+    | "Windows_Negotiate_Certificate"
+    | "Certificate_Windows_NTLM"
+    | "Certificate_Windows_Kerberos"
+    | "Certificate_Windows_Negotiate";
+export const AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode =
+  /*@__PURE__*/ S.String;
+
+/** Property that determines whether a given availability replica can run in synchronous-commit mode */
+export type AvailabilityGroupCreateUpdateReplicaConfigurationAvailabilityMode =
+  | "SYNCHRONOUS_COMMIT"
+  | "ASYNCHRONOUS_COMMIT";
+export const AvailabilityGroupCreateUpdateReplicaConfigurationAvailabilityMode =
+  /*@__PURE__*/ S.String;
+
+/** Property to set the failover mode of the availability group replica */
+export type AvailabilityGroupCreateUpdateReplicaConfigurationFailoverMode =
+  | "AUTOMATIC"
+  | "MANUAL"
+  | "EXTERNAL"
+  | "NONE";
+export const AvailabilityGroupCreateUpdateReplicaConfigurationFailoverMode =
+  /*@__PURE__*/ S.String;
+
+/** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
+export type AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode =
+  | "AUTOMATIC"
+  | "MANUAL";
+export const AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode =
+  /*@__PURE__*/ S.String;
+
+/** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
+export type AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections =
+  "NO" | "ALL" | "READ_ONLY";
+export const AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections =
+  /*@__PURE__*/ S.String;
+
+/** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
+export type AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections =
+  "ALL" | "READ_WRITE";
+export const AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections =
+  /*@__PURE__*/ S.String;
+
+/** List of read only routing URLs. */
+export type AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList =
+  ReadonlyArray<string>;
+export const AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList>;
+
+/** The specifications of the availability group replica configuration */
+export interface AvailabilityGroupCreateUpdateReplicaConfiguration {
+  /** the server instance hosting the replica. */
+  serverInstance?: string;
+  /** Name of the database mirroring endpoint URL for the availability group replica */
+  endpointName?: string;
+  /** Database mirroring endpoint URL of availability group replica */
+  endpointUrl?: string;
+  /** The endpoint connection authentication type(s). */
+  endpointAuthenticationMode?: AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode;
+  /** Name of certificate to use for authentication. Required if any CERTIFICATE authentication modes are specified. */
+  certificateName?: string;
+  /** The login which will connect to the mirroring endpoint */
+  endpointConnectLogin?: string;
+  /** Property that determines whether a given availability replica can run in synchronous-commit mode */
+  availabilityMode?: AvailabilityGroupCreateUpdateReplicaConfigurationAvailabilityMode;
+  /** Property to set the failover mode of the availability group replica */
+  failoverMode?: AvailabilityGroupCreateUpdateReplicaConfigurationFailoverMode;
+  /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
+  seedingMode?: AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode;
+  /** Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group. */
+  backupPriority?: number;
+  /** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
+  secondaryRoleAllowConnections?: AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections;
+  /** Connectivity endpoint (URL) of the read only availability replica. */
+  secondaryRoleReadOnlyRoutingUrl?: string;
+  /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
+  primaryRoleAllowConnections?: AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections;
+  /** List of read only routing URLs. */
+  primaryRoleReadOnlyRoutingList?: AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList;
+  /** The time-out period of availability group session replica, in seconds. */
+  sessionTimeout?: number;
+}
+export const AvailabilityGroupCreateUpdateReplicaConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serverInstance: S.optional(S.String),
+      endpointName: S.optional(S.String),
+      endpointUrl: S.optional(S.String),
+      endpointAuthenticationMode: S.optional(
+        AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode,
+      ),
+      certificateName: S.optional(S.String),
+      endpointConnectLogin: S.optional(S.String),
+      availabilityMode: S.optional(
+        AvailabilityGroupCreateUpdateReplicaConfigurationAvailabilityMode,
+      ),
+      failoverMode: S.optional(
+        AvailabilityGroupCreateUpdateReplicaConfigurationFailoverMode,
+      ),
+      seedingMode: S.optional(
+        AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode,
+      ),
+      backupPriority: S.optional(S.Number),
+      secondaryRoleAllowConnections: S.optional(
+        AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections,
+      ),
+      secondaryRoleReadOnlyRoutingUrl: S.optional(S.String),
+      primaryRoleAllowConnections: S.optional(
+        AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections,
+      ),
+      primaryRoleReadOnlyRoutingList: S.optional(
+        AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList,
+      ),
+      sessionTimeout: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "AvailabilityGroupCreateUpdateReplicaConfiguration",
+  }) as any as S.Schema<AvailabilityGroupCreateUpdateReplicaConfiguration>;
+
+/** List of availability group replicas. */
+export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestReplicasList =
+  ReadonlyArray<AvailabilityGroupCreateUpdateReplicaConfiguration>;
+export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestReplicasList =
+  /*@__PURE__*/ S.Array(
+    AvailabilityGroupCreateUpdateReplicaConfiguration,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestReplicasList>;
+
+/** List of databases to include in the availability group. */
+export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDatabasesList =
+  ReadonlyArray<string>;
+export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDatabasesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDatabasesList>;
+
+/** Preferred replica for running automated backups. */
+export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestAutomatedBackupPreference =
+  "PRIMARY" | "SECONDARY_ONLY" | "SECONDARY" | "NONE";
+export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestAutomatedBackupPreference =
+  /*@__PURE__*/ S.String;
+
+/** User-defined failure condition level under which an automatic failover must be triggered. */
+export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestFailureConditionLevel =
+  1 | 2 | 3 | 4 | 5;
+export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestFailureConditionLevel =
+  /*@__PURE__*/ S.Number;
+
+/** Specifies whether the availability group supports failover for database health conditions. */
+export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDbFailover =
+  "ON" | "OFF";
+export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDbFailover =
+  /*@__PURE__*/ S.String;
+
+/** Specifies whether DTC support has been enabled for this availability group. */
+export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDtcSupport =
+  "PER_DB" | "NONE";
+export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDtcSupport =
+  /*@__PURE__*/ S.String;
+
+/** Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination. */
+export type SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType =
+  "WSFC" | "NONE";
+export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType =
+  /*@__PURE__*/ S.String;
+
 export interface SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3403,7 +4297,28 @@ export interface SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest {
   resourceGroupName: string;
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
-  body: unknown;
+  /** Name of the availability group. */
+  availabilityGroupName?: string;
+  /** List of availability group replicas. */
+  replicas?: SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestReplicasList;
+  /** List of databases to include in the availability group. */
+  databases?: SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDatabasesList;
+  /** Preferred replica for running automated backups. */
+  automatedBackupPreference?: SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestAutomatedBackupPreference;
+  /** User-defined failure condition level under which an automatic failover must be triggered. */
+  failureConditionLevel?: SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestFailureConditionLevel;
+  /** Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding. */
+  healthCheckTimeout?: number;
+  /** Specifies whether the availability group supports failover for database health conditions. */
+  dbFailover?: SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDbFailover;
+  /** Specifies whether DTC support has been enabled for this availability group. */
+  dtcSupport?: SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDtcSupport;
+  /** The number of secondary replicas that must be in a synchronized state for a commit to complete. */
+  requiredSynchronizedSecondariesToCommit?: number;
+  /** Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination. */
+  clusterType?: SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType;
+  /** The listener for the sql server availability group */
+  listener?: SqlAvailabilityGroupStaticIPListenerProperties;
 }
 export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3411,7 +4326,31 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      availabilityGroupName: S.optional(S.String),
+      replicas: S.optional(
+        SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestReplicasList,
+      ),
+      databases: S.optional(
+        SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDatabasesList,
+      ),
+      automatedBackupPreference: S.optional(
+        SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestAutomatedBackupPreference,
+      ),
+      failureConditionLevel: S.optional(
+        SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestFailureConditionLevel,
+      ),
+      healthCheckTimeout: S.optional(S.Number),
+      dbFailover: S.optional(
+        SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDbFailover,
+      ),
+      dtcSupport: S.optional(
+        SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestDtcSupport,
+      ),
+      requiredSynchronizedSecondariesToCommit: S.optional(S.Number),
+      clusterType: S.optional(
+        SqlServerAvailabilityGroupsCreateAvailabilityGroupRequestClusterType,
+      ),
+      listener: S.optional(SqlAvailabilityGroupStaticIPListenerProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3466,6 +4405,77 @@ export const SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse =
     identifier: "SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse",
   }) as any as S.Schema<SqlServerAvailabilityGroupsCreateAvailabilityGroupResponse>;
 
+/** The availability mode of the availability group. */
+export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode =
+  "SYNCHRONOUS_COMMIT" | "ASYNCHRONOUS_COMMIT";
+export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode =
+  /*@__PURE__*/ S.String;
+
+/** The failover mode of the availability group. */
+export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode =
+  "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
+export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode =
+  /*@__PURE__*/ S.String;
+
+/** The seeding mode of the availability group. */
+export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode =
+  "AUTOMATIC" | "MANUAL";
+export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode =
+  /*@__PURE__*/ S.String;
+
+/** The availability group certificate configuration. */
+export interface DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration {
+  /** Name of the certificate. */
+  certificateName?: string;
+}
+export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certificateName: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration",
+  }) as any as S.Schema<DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration>;
+
+/** The availability group configuration specification for a distributed availability group. */
+export interface DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration {
+  /** The azure resource identifier for the availability group. */
+  availabilityGroup?: string;
+  /** The listener URL of the availability group. */
+  listenerUrl?: string;
+  /** The availability mode of the availability group. */
+  availabilityMode?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode;
+  /** The failover mode of the availability group. */
+  failoverMode?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode;
+  /** The seeding mode of the availability group. */
+  seedingMode?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode;
+  /** The certificate configuration for the availability group. */
+  certificateConfiguration?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration;
+}
+export const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      availabilityGroup: S.optional(S.String),
+      listenerUrl: S.optional(S.String),
+      availabilityMode: S.optional(
+        DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode,
+      ),
+      failoverMode: S.optional(
+        DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode,
+      ),
+      seedingMode: S.optional(
+        DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode,
+      ),
+      certificateConfiguration: S.optional(
+        DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration",
+  }) as any as S.Schema<DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration>;
+
 export interface SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3473,7 +4483,12 @@ export interface SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRe
   resourceGroupName: string;
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
-  body: unknown;
+  /** Name of the availability group. */
+  availabilityGroupName?: string;
+  /** The initial primary availability group for the distributed availability group. */
+  primaryAvailabilityGroup?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration;
+  /** The initial secondary availability group for the distributed availability group. */
+  secondaryAvailabilityGroup?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration;
 }
 export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3481,7 +4496,13 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupReques
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      availabilityGroupName: S.optional(S.String),
+      primaryAvailabilityGroup: S.optional(
+        DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration,
+      ),
+      secondaryAvailabilityGroup: S.optional(
+        DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3538,6 +4559,152 @@ export const SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupRespon
       "SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupResponse",
   }) as any as S.Schema<SqlServerAvailabilityGroupsCreateDistributedAvailabilityGroupResponse>;
 
+/** List of availability group replicas. */
+export type AvailabilityGroupCreateUpdateConfigurationReplicasList =
+  ReadonlyArray<AvailabilityGroupCreateUpdateReplicaConfiguration>;
+export const AvailabilityGroupCreateUpdateConfigurationReplicasList =
+  /*@__PURE__*/ S.Array(
+    AvailabilityGroupCreateUpdateReplicaConfiguration,
+  ) as any as S.Schema<AvailabilityGroupCreateUpdateConfigurationReplicasList>;
+
+/** List of databases to include in the availability group. */
+export type AvailabilityGroupCreateUpdateConfigurationDatabasesList =
+  ReadonlyArray<string>;
+export const AvailabilityGroupCreateUpdateConfigurationDatabasesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AvailabilityGroupCreateUpdateConfigurationDatabasesList>;
+
+/** Preferred replica for running automated backups. */
+export type AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference =
+  "PRIMARY" | "SECONDARY_ONLY" | "SECONDARY" | "NONE";
+export const AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference =
+  /*@__PURE__*/ S.String;
+
+/** User-defined failure condition level under which an automatic failover must be triggered. */
+export type AvailabilityGroupCreateUpdateConfigurationFailureConditionLevel =
+  | 1
+  | 2
+  | 3
+  | 4
+  | 5;
+export const AvailabilityGroupCreateUpdateConfigurationFailureConditionLevel =
+  /*@__PURE__*/ S.Number;
+
+/** Specifies whether the availability group supports failover for database health conditions. */
+export type AvailabilityGroupCreateUpdateConfigurationDbFailover = "ON" | "OFF";
+export const AvailabilityGroupCreateUpdateConfigurationDbFailover =
+  /*@__PURE__*/ S.String;
+
+/** Specifies whether DTC support has been enabled for this availability group. */
+export type AvailabilityGroupCreateUpdateConfigurationDtcSupport =
+  | "PER_DB"
+  | "NONE";
+export const AvailabilityGroupCreateUpdateConfigurationDtcSupport =
+  /*@__PURE__*/ S.String;
+
+/** Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination. */
+export type AvailabilityGroupCreateUpdateConfigurationClusterType =
+  | "WSFC"
+  | "NONE";
+export const AvailabilityGroupCreateUpdateConfigurationClusterType =
+  /*@__PURE__*/ S.String;
+
+/** Options used in creating an availability group */
+export interface AvailabilityGroupCreateUpdateConfiguration {
+  /** Name of the availability group. */
+  availabilityGroupName?: string;
+  /** List of availability group replicas. */
+  replicas?: AvailabilityGroupCreateUpdateConfigurationReplicasList;
+  /** List of databases to include in the availability group. */
+  databases?: AvailabilityGroupCreateUpdateConfigurationDatabasesList;
+  /** Preferred replica for running automated backups. */
+  automatedBackupPreference?: AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference;
+  /** User-defined failure condition level under which an automatic failover must be triggered. */
+  failureConditionLevel?: AvailabilityGroupCreateUpdateConfigurationFailureConditionLevel;
+  /** Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding. */
+  healthCheckTimeout?: number;
+  /** Specifies whether the availability group supports failover for database health conditions. */
+  dbFailover?: AvailabilityGroupCreateUpdateConfigurationDbFailover;
+  /** Specifies whether DTC support has been enabled for this availability group. */
+  dtcSupport?: AvailabilityGroupCreateUpdateConfigurationDtcSupport;
+  /** The number of secondary replicas that must be in a synchronized state for a commit to complete. */
+  requiredSynchronizedSecondariesToCommit?: number;
+  /** Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination. */
+  clusterType?: AvailabilityGroupCreateUpdateConfigurationClusterType;
+  /** The listener for the sql server availability group */
+  listener?: SqlAvailabilityGroupStaticIPListenerProperties;
+}
+export const AvailabilityGroupCreateUpdateConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      availabilityGroupName: S.optional(S.String),
+      replicas: S.optional(
+        AvailabilityGroupCreateUpdateConfigurationReplicasList,
+      ),
+      databases: S.optional(
+        AvailabilityGroupCreateUpdateConfigurationDatabasesList,
+      ),
+      automatedBackupPreference: S.optional(
+        AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference,
+      ),
+      failureConditionLevel: S.optional(
+        AvailabilityGroupCreateUpdateConfigurationFailureConditionLevel,
+      ),
+      healthCheckTimeout: S.optional(S.Number),
+      dbFailover: S.optional(
+        AvailabilityGroupCreateUpdateConfigurationDbFailover,
+      ),
+      dtcSupport: S.optional(
+        AvailabilityGroupCreateUpdateConfigurationDtcSupport,
+      ),
+      requiredSynchronizedSecondariesToCommit: S.optional(S.Number),
+      clusterType: S.optional(
+        AvailabilityGroupCreateUpdateConfigurationClusterType,
+      ),
+      listener: S.optional(SqlAvailabilityGroupStaticIPListenerProperties),
+    }),
+  ).annotate({
+    identifier: "AvailabilityGroupCreateUpdateConfiguration",
+  }) as any as S.Schema<AvailabilityGroupCreateUpdateConfiguration>;
+
+/** Options used in creating a distributed availability group. */
+export interface DistributedAvailabilityGroupCreateUpdateConfiguration {
+  /** Name of the availability group. */
+  availabilityGroupName?: string;
+  /** The initial primary availability group for the distributed availability group. */
+  primaryAvailabilityGroup?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration;
+  /** The initial secondary availability group for the distributed availability group. */
+  secondaryAvailabilityGroup?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration;
+}
+export const DistributedAvailabilityGroupCreateUpdateConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      availabilityGroupName: S.optional(S.String),
+      primaryAvailabilityGroup: S.optional(
+        DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration,
+      ),
+      secondaryAvailabilityGroup: S.optional(
+        DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration,
+      ),
+    }),
+  ).annotate({
+    identifier: "DistributedAvailabilityGroupCreateUpdateConfiguration",
+  }) as any as S.Schema<DistributedAvailabilityGroupCreateUpdateConfiguration>;
+
+/** The MI Link specific configuration. */
+export interface MiLinkCreateUpdateConfiguration {
+  /** The name of the availability group to be created on the Managed Instance. */
+  instanceAvailabilityGroupName?: string;
+}
+export const MiLinkCreateUpdateConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instanceAvailabilityGroupName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MiLinkCreateUpdateConfiguration",
+}) as any as S.Schema<MiLinkCreateUpdateConfiguration>;
+
 export interface SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3545,7 +4712,12 @@ export interface SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest {
   resourceGroupName: string;
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
-  body: unknown;
+  /** The configuration for the SQL Server availability group resource. */
+  availabilityGroup?: AvailabilityGroupCreateUpdateConfiguration;
+  /** The distributed availability group configuration for the MI link. */
+  distributedAvailabilityGroup?: DistributedAvailabilityGroupCreateUpdateConfiguration;
+  /** The MI Link specific distributed availability group configuration. */
+  miLinkConfiguration?: MiLinkCreateUpdateConfiguration;
 }
 export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3553,7 +4725,11 @@ export const SqlServerAvailabilityGroupsCreateManagedInstanceLinkRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      availabilityGroup: S.optional(AvailabilityGroupCreateUpdateConfiguration),
+      distributedAvailabilityGroup: S.optional(
+        DistributedAvailabilityGroupCreateUpdateConfiguration,
+      ),
+      miLinkConfiguration: S.optional(MiLinkCreateUpdateConfiguration),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3827,7 +5003,10 @@ export interface SqlServerAvailabilityGroupsFailoverMiLinkRequest {
   sqlServerInstanceName: string;
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
-  body: unknown;
+  /** Azure resource id for the sql managed instance. */
+  managedInstanceId?: string;
+  /** Whether to perform a Force Failover as opposed to just a regular Failover. */
+  force?: boolean;
 }
 export const SqlServerAvailabilityGroupsFailoverMiLinkRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3836,7 +5015,8 @@ export const SqlServerAvailabilityGroupsFailoverMiLinkRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
       availabilityGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      managedInstanceId: S.optional(S.String),
+      force: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -4101,7 +5281,7 @@ export const SqlServerAvailabilityGroupResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Arc Sql Server Availability Groups. */
 export type ArcSqlServerAvailabilityGroupListResultValueList =
-  SqlServerAvailabilityGroupResource[];
+  ReadonlyArray<SqlServerAvailabilityGroupResource>;
 export const ArcSqlServerAvailabilityGroupListResultValueList =
   /*@__PURE__*/ S.Array(
     SqlServerAvailabilityGroupResource,
@@ -4124,6 +5304,14 @@ export const ArcSqlServerAvailabilityGroupListResult = /*@__PURE__*/ S.suspend(
   identifier: "ArcSqlServerAvailabilityGroupListResult",
 }) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>;
 
+/** List of database names. */
+export type SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList =
+  ReadonlyArray<string>;
+export const SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList>;
+
 export interface SqlServerAvailabilityGroupsRemoveDatabasesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4133,7 +5321,8 @@ export interface SqlServerAvailabilityGroupsRemoveDatabasesRequest {
   sqlServerInstanceName: string;
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
-  body: unknown;
+  /** List of database names. */
+  values?: SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList;
 }
 export const SqlServerAvailabilityGroupsRemoveDatabasesRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4142,7 +5331,9 @@ export const SqlServerAvailabilityGroupsRemoveDatabasesRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
       availabilityGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      values: S.optional(
+        SqlServerAvailabilityGroupsRemoveDatabasesRequestValuesList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -4198,6 +5389,16 @@ export const SqlServerAvailabilityGroupsRemoveDatabasesResponse =
     identifier: "SqlServerAvailabilityGroupsRemoveDatabasesResponse",
   }) as any as S.Schema<SqlServerAvailabilityGroupsRemoveDatabasesResponse>;
 
+/** Resource tags. */
+export type SqlServerAvailabilityGroupsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerAvailabilityGroupsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SqlServerAvailabilityGroupsUpdateRequestTagsMap>;
+
 export interface SqlServerAvailabilityGroupsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4207,7 +5408,10 @@ export interface SqlServerAvailabilityGroupsUpdateRequest {
   sqlServerInstanceName: string;
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SqlServerAvailabilityGroupsUpdateRequestTagsMap;
+  /** The Server Availability Group's properties */
+  properties?: SqlServerAvailabilityGroupResourcePropertiesInput;
 }
 export const SqlServerAvailabilityGroupsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4216,7 +5420,8 @@ export const SqlServerAvailabilityGroupsUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
       availabilityGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(SqlServerAvailabilityGroupsUpdateRequestTagsMap),
+      properties: S.optional(SqlServerAvailabilityGroupResourcePropertiesInput),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -4270,6 +5475,206 @@ export const SqlServerAvailabilityGroupsUpdateResponse =
     identifier: "SqlServerAvailabilityGroupsUpdateResponse",
   }) as any as S.Schema<SqlServerAvailabilityGroupsUpdateResponse>;
 
+/** Resource tags. */
+export type SqlServerDatabasesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerDatabasesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerDatabasesCreateRequestTagsMap>;
+
+/** State of the database. */
+export type SqlServerDatabaseResourcePropertiesInputState =
+  | "Online"
+  | "Restoring"
+  | "Recovering"
+  | "RecoveryPending"
+  | "Suspect"
+  | "Emergency"
+  | "Offline"
+  | "Copying"
+  | "OfflineSecondary";
+export const SqlServerDatabaseResourcePropertiesInputState =
+  /*@__PURE__*/ S.String;
+
+/** Status of the database. */
+export type SqlServerDatabaseResourcePropertiesInputRecoveryMode =
+  | "Full"
+  | "Bulk-logged"
+  | "Simple";
+export const SqlServerDatabaseResourcePropertiesInputRecoveryMode =
+  /*@__PURE__*/ S.String;
+
+/** List of features that are enabled for the database */
+export interface SqlServerDatabaseResourcePropertiesInputDatabaseOptions {
+  isAutoCloseOn?: boolean;
+  isAutoShrinkOn?: boolean;
+  isAutoCreateStatsOn?: boolean;
+  isAutoUpdateStatsOn?: boolean;
+  isRemoteDataArchiveEnabled?: boolean;
+  isMemoryOptimizationEnabled?: boolean;
+  isEncrypted?: boolean;
+  isTrustworthyOn?: boolean;
+  /** Whether the database uses the In-Memory OLTP feature for storing in-memory objects. */
+  isHekatonFilesOn?: boolean;
+  /** How many Hekaton files the DB has on disk, if it uses in-memory OLTP objects. */
+  numberOfHekatonFiles?: number;
+}
+export const SqlServerDatabaseResourcePropertiesInputDatabaseOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      isAutoCloseOn: S.optional(S.Boolean),
+      isAutoShrinkOn: S.optional(S.Boolean),
+      isAutoCreateStatsOn: S.optional(S.Boolean),
+      isAutoUpdateStatsOn: S.optional(S.Boolean),
+      isRemoteDataArchiveEnabled: S.optional(S.Boolean),
+      isMemoryOptimizationEnabled: S.optional(S.Boolean),
+      isEncrypted: S.optional(S.Boolean),
+      isTrustworthyOn: S.optional(S.Boolean),
+      isHekatonFilesOn: S.optional(S.Boolean),
+      numberOfHekatonFiles: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "SqlServerDatabaseResourcePropertiesInputDatabaseOptions",
+  }) as any as S.Schema<SqlServerDatabaseResourcePropertiesInputDatabaseOptions>;
+
+export interface SqlServerDatabaseResourcePropertiesInputBackupInformation {
+  /** Date time of last full backup. */
+  lastFullBackup?: string;
+  /** Date time of last log backup. */
+  lastLogBackup?: string;
+}
+export const SqlServerDatabaseResourcePropertiesInputBackupInformation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lastFullBackup: S.optional(S.String),
+      lastLogBackup: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SqlServerDatabaseResourcePropertiesInputBackupInformation",
+  }) as any as S.Schema<SqlServerDatabaseResourcePropertiesInputBackupInformation>;
+
+/** The differential backup interval in hours. */
+export type BackupPolicyDifferentialBackupHours = 12 | 24;
+export const BackupPolicyDifferentialBackupHours = /*@__PURE__*/ S.Number;
+
+/** The backup profile for the SQL server. */
+export interface BackupPolicy {
+  /** The retention period for all the databases in this managed instance. */
+  retentionPeriodDays?: number;
+  /** The value indicating days between full backups. */
+  fullBackupDays?: number;
+  /** The differential backup interval in hours. */
+  differentialBackupHours?: BackupPolicyDifferentialBackupHours;
+  /** The value indicating minutes between transaction log backups. */
+  transactionLogBackupMinutes?: number;
+}
+export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    retentionPeriodDays: S.optional(S.Number),
+    fullBackupDays: S.optional(S.Number),
+    differentialBackupHours: S.optional(BackupPolicyDifferentialBackupHours),
+    transactionLogBackupMinutes: S.optional(S.Number),
+  }),
+).annotate({ identifier: "BackupPolicy" }) as any as S.Schema<BackupPolicy>;
+
+/** Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified. */
+export type SqlServerDatabaseResourcePropertiesInputCreateMode =
+  | "Default"
+  | "PointInTimeRestore";
+export const SqlServerDatabaseResourcePropertiesInputCreateMode =
+  /*@__PURE__*/ S.String;
+
+/** The migration assessment related configuration. */
+export interface DataBaseMigrationAssessmentInput {}
+export const DataBaseMigrationAssessmentInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DataBaseMigrationAssessmentInput",
+}) as any as S.Schema<DataBaseMigrationAssessmentInput>;
+
+/** Migration related configuration. */
+export interface DataBaseMigrationInput {
+  /** Migration assessments related configuration. */
+  assessment?: DataBaseMigrationAssessmentInput;
+}
+export const DataBaseMigrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessment: S.optional(DataBaseMigrationAssessmentInput),
+  }),
+).annotate({
+  identifier: "DataBaseMigrationInput",
+}) as any as S.Schema<DataBaseMigrationInput>;
+
+/** The properties of Arc Sql Server database resource */
+export interface SqlServerDatabaseResourcePropertiesInput {
+  /** Collation of the database. */
+  collationName?: string;
+  /** Creation date of the database. */
+  databaseCreationDate?: string;
+  /** Compatibility level of the database */
+  compatibilityLevel?: number;
+  /** Size of the database. */
+  sizeMB?: number;
+  /** Total size in MB for the log (ldf) files for this database. */
+  logFileSizeMB?: number;
+  /** Total size in MB for the data (mdf and ndf) files for this database. */
+  dataFileSizeMB?: number;
+  /** Space left of the database. */
+  spaceAvailableMB?: number;
+  /** State of the database. */
+  state?: SqlServerDatabaseResourcePropertiesInputState;
+  /** Whether the database is read only or not. */
+  isReadOnly?: boolean;
+  /** Status of the database. */
+  recoveryMode?: SqlServerDatabaseResourcePropertiesInputRecoveryMode;
+  /** List of features that are enabled for the database */
+  databaseOptions?: SqlServerDatabaseResourcePropertiesInputDatabaseOptions;
+  backupInformation?: SqlServerDatabaseResourcePropertiesInputBackupInformation;
+  /** The backup profile for the SQL server. */
+  backupPolicy?: BackupPolicy;
+  /** Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified. */
+  createMode?: SqlServerDatabaseResourcePropertiesInputCreateMode;
+  /** The name of the source database associated with create operation of this database. */
+  sourceDatabaseId?: string;
+  /** Conditional. If createMode is PointInTimeRestore, this value is required. Specifies the point in time (ISO8601 format) of the source database that will be restored to create the new database. */
+  restorePointInTime?: string;
+  migration?: DataBaseMigrationInput;
+}
+export const SqlServerDatabaseResourcePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      collationName: S.optional(S.String),
+      databaseCreationDate: S.optional(S.String),
+      compatibilityLevel: S.optional(S.Number),
+      sizeMB: S.optional(S.Number),
+      logFileSizeMB: S.optional(S.Number),
+      dataFileSizeMB: S.optional(S.Number),
+      spaceAvailableMB: S.optional(S.Number),
+      state: S.optional(SqlServerDatabaseResourcePropertiesInputState),
+      isReadOnly: S.optional(S.Boolean),
+      recoveryMode: S.optional(
+        SqlServerDatabaseResourcePropertiesInputRecoveryMode,
+      ),
+      databaseOptions: S.optional(
+        SqlServerDatabaseResourcePropertiesInputDatabaseOptions,
+      ),
+      backupInformation: S.optional(
+        SqlServerDatabaseResourcePropertiesInputBackupInformation,
+      ),
+      backupPolicy: S.optional(BackupPolicy),
+      createMode: S.optional(
+        SqlServerDatabaseResourcePropertiesInputCreateMode,
+      ),
+      sourceDatabaseId: S.optional(S.String),
+      restorePointInTime: S.optional(S.String),
+      migration: S.optional(DataBaseMigrationInput),
+    }),
+).annotate({
+  identifier: "SqlServerDatabaseResourcePropertiesInput",
+}) as any as S.Schema<SqlServerDatabaseResourcePropertiesInput>;
+
 export interface SqlServerDatabasesCreateRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -4279,7 +5684,12 @@ export interface SqlServerDatabasesCreateRequest {
   sqlServerInstanceName: string;
   /** Name of the database */
   databaseName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SqlServerDatabasesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of Arc Sql Server database */
+  properties: SqlServerDatabaseResourcePropertiesInput;
 }
 export const SqlServerDatabasesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4287,7 +5697,9 @@ export const SqlServerDatabasesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     sqlServerInstanceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SqlServerDatabasesCreateRequestTagsMap),
+    location: S.String,
+    properties: SqlServerDatabaseResourcePropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4319,16 +5731,14 @@ export type SqlServerDatabaseResourcePropertiesState =
   | "Emergency"
   | "Offline"
   | "Copying"
-  | "OfflineSecondary"
-  | (string & {});
+  | "OfflineSecondary";
 export const SqlServerDatabaseResourcePropertiesState = /*@__PURE__*/ S.String;
 
 /** Status of the database. */
 export type SqlServerDatabaseResourcePropertiesRecoveryMode =
   | "Full"
   | "Bulk-logged"
-  | "Simple"
-  | (string & {});
+  | "Simple";
 export const SqlServerDatabaseResourcePropertiesRecoveryMode =
   /*@__PURE__*/ S.String;
 
@@ -4381,31 +5791,10 @@ export const SqlServerDatabaseResourcePropertiesBackupInformation =
     identifier: "SqlServerDatabaseResourcePropertiesBackupInformation",
   }) as any as S.Schema<SqlServerDatabaseResourcePropertiesBackupInformation>;
 
-/** The backup profile for the SQL server. */
-export interface BackupPolicy {
-  /** The retention period for all the databases in this managed instance. */
-  retentionPeriodDays?: number;
-  /** The value indicating days between full backups. */
-  fullBackupDays?: number;
-  /** The differential backup interval in hours. */
-  differentialBackupHours?: number;
-  /** The value indicating minutes between transaction log backups. */
-  transactionLogBackupMinutes?: number;
-}
-export const BackupPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retentionPeriodDays: S.optional(S.Number),
-    fullBackupDays: S.optional(S.Number),
-    differentialBackupHours: S.optional(S.Number),
-    transactionLogBackupMinutes: S.optional(S.Number),
-  }),
-).annotate({ identifier: "BackupPolicy" }) as any as S.Schema<BackupPolicy>;
-
 /** Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified. */
 export type SqlServerDatabaseResourcePropertiesCreateMode =
   | "Default"
-  | "PointInTimeRestore"
-  | (string & {});
+  | "PointInTimeRestore";
 export const SqlServerDatabaseResourcePropertiesCreateMode =
   /*@__PURE__*/ S.String;
 
@@ -4427,7 +5816,7 @@ export const DatabaseAssessmentsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseAssessmentsItem>;
 
 /** Issues and warnings impacting the migration of Database to particular Azure Migration Target. */
-export type DatabaseAssessments = DatabaseAssessmentsItem[];
+export type DatabaseAssessments = ReadonlyArray<DatabaseAssessmentsItem>;
 export const DatabaseAssessments = /*@__PURE__*/ S.Array(
   DatabaseAssessmentsItem,
 ) as any as S.Schema<DatabaseAssessments>;
@@ -4437,8 +5826,7 @@ export type SkuRecommendationSummaryRecommendationStatus =
   | "NotReady"
   | "Ready"
   | "ReadyWithConditions"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const SkuRecommendationSummaryRecommendationStatus =
   /*@__PURE__*/ S.String;
 
@@ -4463,7 +5851,7 @@ export const SkuRecommendationSummaryImpactedObjectsSummaryItem =
   }) as any as S.Schema<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
 
 export type SkuRecommendationSummaryImpactedObjectsSummaryList =
-  SkuRecommendationSummaryImpactedObjectsSummaryItem[];
+  ReadonlyArray<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
 export const SkuRecommendationSummaryImpactedObjectsSummaryList =
   /*@__PURE__*/ S.Array(
     SkuRecommendationSummaryImpactedObjectsSummaryItem,
@@ -4532,7 +5920,7 @@ export const SkuRecommendationResultsMonthlyCostOptionItem =
 
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationSummaryMonthlyCostOptionsList =
-  SkuRecommendationResultsMonthlyCostOptionItem[];
+  ReadonlyArray<SkuRecommendationResultsMonthlyCostOptionItem>;
 export const SkuRecommendationSummaryMonthlyCostOptionsList =
   /*@__PURE__*/ S.Array(
     SkuRecommendationResultsMonthlyCostOptionItem,
@@ -4943,7 +6331,7 @@ export const SqlServerDatabaseResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of Arc Sql Server database. */
 export type ArcSqlServerDatabaseListResultValueList =
-  SqlServerDatabaseResource[];
+  ReadonlyArray<SqlServerDatabaseResource>;
 export const ArcSqlServerDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   SqlServerDatabaseResource,
 ) as any as S.Schema<ArcSqlServerDatabaseListResultValueList>;
@@ -4964,6 +6352,15 @@ export const ArcSqlServerDatabaseListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ArcSqlServerDatabaseListResult",
 }) as any as S.Schema<ArcSqlServerDatabaseListResult>;
 
+/** Resource tags. */
+export type SqlServerDatabasesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerDatabasesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerDatabasesUpdateRequestTagsMap>;
+
 export interface SqlServerDatabasesUpdateRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -4973,7 +6370,10 @@ export interface SqlServerDatabasesUpdateRequest {
   sqlServerInstanceName: string;
   /** Name of the database */
   databaseName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SqlServerDatabasesUpdateRequestTagsMap;
+  /** The data controller's properties */
+  properties?: SqlServerDatabaseResourcePropertiesInput;
 }
 export const SqlServerDatabasesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4981,7 +6381,8 @@ export const SqlServerDatabasesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     sqlServerInstanceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SqlServerDatabasesUpdateRequestTagsMap),
+    properties: S.optional(SqlServerDatabaseResourcePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5033,6 +6434,67 @@ export const SqlServerDatabasesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerDatabasesUpdateResponse",
 }) as any as S.Schema<SqlServerDatabasesUpdateResponse>;
 
+/** Resource tags. */
+export type SqlServerEsuLicensesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerEsuLicensesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerEsuLicensesCreateRequestTagsMap>;
+
+/** SQL Server ESU license type. */
+export type SqlServerEsuLicensePropertiesInputBillingPlan = "PAYG";
+export const SqlServerEsuLicensePropertiesInputBillingPlan =
+  /*@__PURE__*/ S.String;
+
+/** The SQL Server version the license covers. */
+export type SqlServerEsuLicensePropertiesInputVersion =
+  | "SQL Server 2012"
+  | "SQL Server 2014";
+export const SqlServerEsuLicensePropertiesInputVersion = /*@__PURE__*/ S.String;
+
+/** The activation state of the license. */
+export type SqlServerEsuLicensePropertiesInputActivationState =
+  | "Inactive"
+  | "Active"
+  | "Terminated";
+export const SqlServerEsuLicensePropertiesInputActivationState =
+  /*@__PURE__*/ S.String;
+
+/** The Azure scope to which the license will apply. */
+export type SqlServerEsuLicensePropertiesInputScopeType =
+  | "Tenant"
+  | "Subscription"
+  | "ResourceGroup";
+export const SqlServerEsuLicensePropertiesInputScopeType =
+  /*@__PURE__*/ S.String;
+
+/** Properties of SQL Server ESU license. */
+export interface SqlServerEsuLicensePropertiesInput {
+  /** SQL Server ESU license type. */
+  billingPlan: SqlServerEsuLicensePropertiesInputBillingPlan;
+  /** The SQL Server version the license covers. */
+  version: SqlServerEsuLicensePropertiesInputVersion;
+  /** The number of total cores of the license covers. */
+  physicalCores: number;
+  /** The activation state of the license. */
+  activationState: SqlServerEsuLicensePropertiesInputActivationState;
+  /** The Azure scope to which the license will apply. */
+  scopeType: SqlServerEsuLicensePropertiesInputScopeType;
+}
+export const SqlServerEsuLicensePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingPlan: SqlServerEsuLicensePropertiesInputBillingPlan,
+    version: SqlServerEsuLicensePropertiesInputVersion,
+    physicalCores: S.Number,
+    activationState: SqlServerEsuLicensePropertiesInputActivationState,
+    scopeType: SqlServerEsuLicensePropertiesInputScopeType,
+  }),
+).annotate({
+  identifier: "SqlServerEsuLicensePropertiesInput",
+}) as any as S.Schema<SqlServerEsuLicensePropertiesInput>;
+
 export interface SqlServerEsuLicensesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5040,14 +6502,21 @@ export interface SqlServerEsuLicensesCreateRequest {
   resourceGroupName: string;
   /** Name of SQL Server ESU License */
   sqlServerEsuLicenseName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SqlServerEsuLicensesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** SQL Server ESU license properties */
+  properties: SqlServerEsuLicensePropertiesInput;
 }
 export const SqlServerEsuLicensesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     sqlServerEsuLicenseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SqlServerEsuLicensesCreateRequestTagsMap),
+    location: S.String,
+    properties: SqlServerEsuLicensePropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5070,22 +6539,20 @@ export const SqlServerEsuLicensesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlServerEsuLicensesCreateResponseTagsMap>;
 
 /** SQL Server ESU license type. */
-export type SqlServerEsuLicensePropertiesBillingPlan = "PAYG" | (string & {});
+export type SqlServerEsuLicensePropertiesBillingPlan = "PAYG";
 export const SqlServerEsuLicensePropertiesBillingPlan = /*@__PURE__*/ S.String;
 
 /** The SQL Server version the license covers. */
 export type SqlServerEsuLicensePropertiesVersion =
   | "SQL Server 2012"
-  | "SQL Server 2014"
-  | (string & {});
+  | "SQL Server 2014";
 export const SqlServerEsuLicensePropertiesVersion = /*@__PURE__*/ S.String;
 
 /** The activation state of the license. */
 export type SqlServerEsuLicensePropertiesActivationState =
   | "Inactive"
   | "Active"
-  | "Terminated"
-  | (string & {});
+  | "Terminated";
 export const SqlServerEsuLicensePropertiesActivationState =
   /*@__PURE__*/ S.String;
 
@@ -5093,8 +6560,7 @@ export const SqlServerEsuLicensePropertiesActivationState =
 export type SqlServerEsuLicensePropertiesScopeType =
   | "Tenant"
   | "Subscription"
-  | "ResourceGroup"
-  | (string & {});
+  | "ResourceGroup";
 export const SqlServerEsuLicensePropertiesScopeType = /*@__PURE__*/ S.String;
 
 /** Properties of SQL Server ESU license. */
@@ -5318,7 +6784,8 @@ export const SqlServerEsuLicense = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlServerEsuLicense>;
 
 /** Array of results. */
-export type SqlServerEsuLicenseListResultValueList = SqlServerEsuLicense[];
+export type SqlServerEsuLicenseListResultValueList =
+  ReadonlyArray<SqlServerEsuLicense>;
 export const SqlServerEsuLicenseListResultValueList = /*@__PURE__*/ S.Array(
   SqlServerEsuLicense,
 ) as any as S.Schema<SqlServerEsuLicenseListResultValueList>;
@@ -5362,6 +6829,73 @@ export const SqlServerEsuLicensesListByResourceGroupRequest =
     identifier: "SqlServerEsuLicensesListByResourceGroupRequest",
   }) as any as S.Schema<SqlServerEsuLicensesListByResourceGroupRequest>;
 
+/** Resource tags. */
+export type SqlServerEsuLicensesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerEsuLicensesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerEsuLicensesUpdateRequestTagsMap>;
+
+/** SQL Server ESU license type. */
+export type SqlServerEsuLicenseUpdatePropertiesInputBillingPlan = "PAYG";
+export const SqlServerEsuLicenseUpdatePropertiesInputBillingPlan =
+  /*@__PURE__*/ S.String;
+
+/** The SQL Server version the license covers. */
+export type SqlServerEsuLicenseUpdatePropertiesInputVersion =
+  | "SQL Server 2012"
+  | "SQL Server 2014";
+export const SqlServerEsuLicenseUpdatePropertiesInputVersion =
+  /*@__PURE__*/ S.String;
+
+/** The activation state of the license. */
+export type SqlServerEsuLicenseUpdatePropertiesInputActivationState =
+  | "Inactive"
+  | "Active"
+  | "Terminated";
+export const SqlServerEsuLicenseUpdatePropertiesInputActivationState =
+  /*@__PURE__*/ S.String;
+
+/** The Azure scope to which the license will apply. */
+export type SqlServerEsuLicenseUpdatePropertiesInputScopeType =
+  | "Tenant"
+  | "Subscription"
+  | "ResourceGroup";
+export const SqlServerEsuLicenseUpdatePropertiesInputScopeType =
+  /*@__PURE__*/ S.String;
+
+/** Properties of update SqlServerEsuLicense. */
+export interface SqlServerEsuLicenseUpdatePropertiesInput {
+  /** SQL Server ESU license type. */
+  billingPlan?: SqlServerEsuLicenseUpdatePropertiesInputBillingPlan;
+  /** The SQL Server version the license covers. */
+  version?: SqlServerEsuLicenseUpdatePropertiesInputVersion;
+  /** The number of total cores of the license covers. */
+  physicalCores?: number;
+  /** The activation state of the license. */
+  activationState?: SqlServerEsuLicenseUpdatePropertiesInputActivationState;
+  /** The Azure scope to which the license will apply. */
+  scopeType?: SqlServerEsuLicenseUpdatePropertiesInputScopeType;
+}
+export const SqlServerEsuLicenseUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      billingPlan: S.optional(
+        SqlServerEsuLicenseUpdatePropertiesInputBillingPlan,
+      ),
+      version: S.optional(SqlServerEsuLicenseUpdatePropertiesInputVersion),
+      physicalCores: S.optional(S.Number),
+      activationState: S.optional(
+        SqlServerEsuLicenseUpdatePropertiesInputActivationState,
+      ),
+      scopeType: S.optional(SqlServerEsuLicenseUpdatePropertiesInputScopeType),
+    }),
+).annotate({
+  identifier: "SqlServerEsuLicenseUpdatePropertiesInput",
+}) as any as S.Schema<SqlServerEsuLicenseUpdatePropertiesInput>;
+
 export interface SqlServerEsuLicensesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5369,14 +6903,18 @@ export interface SqlServerEsuLicensesUpdateRequest {
   resourceGroupName: string;
   /** Name of SQL Server ESU License */
   sqlServerEsuLicenseName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SqlServerEsuLicensesUpdateRequestTagsMap;
+  /** null */
+  properties?: SqlServerEsuLicenseUpdatePropertiesInput;
 }
 export const SqlServerEsuLicensesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     sqlServerEsuLicenseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SqlServerEsuLicensesUpdateRequestTagsMap),
+    properties: S.optional(SqlServerEsuLicenseUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5428,44 +6966,17 @@ export const SqlServerEsuLicensesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerEsuLicensesUpdateResponse",
 }) as any as S.Schema<SqlServerEsuLicensesUpdateResponse>;
 
-export interface SqlServerInstancesCreateRequest {
-  /** The ID of the Azure subscription */
-  subscriptionId: string;
-  /** The name of the Azure resource group */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  body: unknown;
-}
-export const SqlServerInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlServerInstanceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}",
-      code: 200,
-      apiVersion: "2026-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "SqlServerInstancesCreateRequest",
-}) as any as S.Schema<SqlServerInstancesCreateRequest>;
-
 /** Resource tags. */
-export type SqlServerInstancesCreateResponseTagsMap = {
+export type SqlServerInstancesCreateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const SqlServerInstancesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const SqlServerInstancesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<SqlServerInstancesCreateResponseTagsMap>;
+) as any as S.Schema<SqlServerInstancesCreateRequestTagsMap>;
 
 /** SQL Server version. */
-export type SqlServerInstancePropertiesVersion =
+export type SqlServerInstancePropertiesInputVersion =
   | "Unknown"
   | "SQL Server 2012"
   | "SQL Server 2014"
@@ -5473,12 +6984,11 @@ export type SqlServerInstancePropertiesVersion =
   | "SQL Server 2017"
   | "SQL Server 2019"
   | "SQL Server 2022"
-  | "SQL Server 2025"
-  | (string & {});
-export const SqlServerInstancePropertiesVersion = /*@__PURE__*/ S.String;
+  | "SQL Server 2025";
+export const SqlServerInstancePropertiesInputVersion = /*@__PURE__*/ S.String;
 
 /** SQL Server edition. */
-export type SqlServerInstancePropertiesEdition =
+export type SqlServerInstancePropertiesInputEdition =
   | "Evaluation"
   | "Enterprise"
   | "Standard"
@@ -5486,49 +6996,11 @@ export type SqlServerInstancePropertiesEdition =
   | "Developer"
   | "Express"
   | "Business Intelligence"
-  | "Standard Developer"
-  | (string & {});
-export const SqlServerInstancePropertiesEdition = /*@__PURE__*/ S.String;
-
-/** The cloud connectivity status. */
-export type SqlServerInstancePropertiesStatus =
-  | "Connected"
-  | "Disconnected"
-  | "Registered"
-  | "Unknown"
-  | (string & {});
-export const SqlServerInstancePropertiesStatus = /*@__PURE__*/ S.String;
-
-/** An array of integers, where each value represents the enabled trace flags in SQL Server. */
-export type SqlServerInstancePropertiesTraceFlagsList = number[];
-export const SqlServerInstancePropertiesTraceFlagsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SqlServerInstancePropertiesTraceFlagsList>;
-
-/** SQL Server license type. */
-export type SqlServerInstancePropertiesLicenseType =
-  | "Undefined"
-  | "Free"
-  | "HADR"
-  | "ServerCAL"
-  | "LicenseOnly"
-  | "PAYG"
-  | "Paid"
-  | "FabricCapacity"
-  | (string & {});
-export const SqlServerInstancePropertiesLicenseType = /*@__PURE__*/ S.String;
-
-/** Status of Azure Defender. */
-export type SqlServerInstancePropertiesAzureDefenderStatus =
-  | "Protected"
-  | "Unprotected"
-  | "Unknown"
-  | (string & {});
-export const SqlServerInstancePropertiesAzureDefenderStatus =
-  /*@__PURE__*/ S.String;
+  | "Standard Developer";
+export const SqlServerInstancePropertiesInputEdition = /*@__PURE__*/ S.String;
 
 /** Type of host for Azure Arc SQL Server */
-export type SqlServerInstancePropertiesHostType =
+export type SqlServerInstancePropertiesInputHostType =
   | "Azure Virtual Machine"
   | "Azure VMWare Virtual Machine"
   | "Azure Kubernetes Service"
@@ -5541,30 +7013,11 @@ export type SqlServerInstancePropertiesHostType =
   | "Physical Server"
   | "AWS Virtual Machine"
   | "GCP Virtual Machine"
-  | "Other"
-  | (string & {});
-export const SqlServerInstancePropertiesHostType = /*@__PURE__*/ S.String;
-
-/** The role of the SQL Server, based on availability. */
-export type SqlServerInstancePropertiesAlwaysOnRole =
-  | "None"
-  | "FailoverClusterInstance"
-  | "FailoverClusterNode"
-  | "AvailabilityGroupReplica"
-  | (string & {});
-export const SqlServerInstancePropertiesAlwaysOnRole = /*@__PURE__*/ S.String;
-
-/** Mirroring Role */
-export type DBMEndpointRole =
-  | "NONE"
-  | "PARTNER"
-  | "WITNESS"
-  | "ALL"
-  | (string & {});
-export const DBMEndpointRole = /*@__PURE__*/ S.String;
+  | "Other";
+export const SqlServerInstancePropertiesInputHostType = /*@__PURE__*/ S.String;
 
 /** The encryption algorithm(s) used by the endpoint. */
-export type DBMEndpointEncryptionAlgorithm =
+export type DBMEndpointInputEncryptionAlgorithm =
   | "NONE"
   | "RC4"
   | "AES"
@@ -5573,12 +7026,11 @@ export type DBMEndpointEncryptionAlgorithm =
   | "RC4, AES"
   | "AES, RC4"
   | "NONE, RC4, AES"
-  | "NONE, AES, RC4"
-  | (string & {});
-export const DBMEndpointEncryptionAlgorithm = /*@__PURE__*/ S.String;
+  | "NONE, AES, RC4";
+export const DBMEndpointInputEncryptionAlgorithm = /*@__PURE__*/ S.String;
 
 /** The endpoint connection authentication type(s). */
-export type DBMEndpointConnectionAuth =
+export type DBMEndpointInputConnectionAuth =
   | "Windows_NTLM"
   | "Windows_Kerberos"
   | "Windows_Negotiate"
@@ -5588,106 +7040,32 @@ export type DBMEndpointConnectionAuth =
   | "Windows_Negotiate_Certificate"
   | "Certificate_Windows_NTLM"
   | "Certificate_Windows_Kerberos"
-  | "Certificate_Windows_Negotiate"
-  | (string & {});
-export const DBMEndpointConnectionAuth = /*@__PURE__*/ S.String;
+  | "Certificate_Windows_Negotiate";
+export const DBMEndpointInputConnectionAuth = /*@__PURE__*/ S.String;
 
 /** Database mirroring endpoint related properties. */
-export interface DBMEndpoint {
-  /** Name of the database mirroring endpoint. */
-  endpointName?: string;
-  /** Mirroring Role */
-  role?: DBMEndpointRole;
-  /** Is Encryption enabled */
-  isEncryptionEnabled?: boolean;
+export interface DBMEndpointInput {
   /** The encryption algorithm(s) used by the endpoint. */
-  encryptionAlgorithm?: DBMEndpointEncryptionAlgorithm;
+  encryptionAlgorithm?: DBMEndpointInputEncryptionAlgorithm;
   /** The endpoint connection authentication type(s). */
-  connectionAuth?: DBMEndpointConnectionAuth;
-  /** The port number that the endpoint is listening on. */
-  port?: number;
-  /** Is the port number dynamically assigned. */
-  isDynamicPort?: boolean;
-  /** Listener IP address. */
-  ipAddress?: string;
-  /** Name of the certificate. */
-  certificateName?: string;
-  /** The certificate expiry date */
-  certificateExpiryDate?: string;
+  connectionAuth?: DBMEndpointInputConnectionAuth;
 }
-export const DBMEndpoint = /*@__PURE__*/ S.suspend(() =>
+export const DBMEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    endpointName: S.optional(S.String),
-    role: S.optional(DBMEndpointRole),
-    isEncryptionEnabled: S.optional(S.Boolean),
-    encryptionAlgorithm: S.optional(DBMEndpointEncryptionAlgorithm),
-    connectionAuth: S.optional(DBMEndpointConnectionAuth),
-    port: S.optional(S.Number),
-    isDynamicPort: S.optional(S.Boolean),
-    ipAddress: S.optional(S.String),
-    certificateName: S.optional(S.String),
-    certificateExpiryDate: S.optional(S.String),
-  }),
-).annotate({ identifier: "DBMEndpoint" }) as any as S.Schema<DBMEndpoint>;
-
-/** The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster. */
-export type FailoverClusterSqlInstanceIdsList = string[];
-export const FailoverClusterSqlInstanceIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FailoverClusterSqlInstanceIdsList>;
-
-/** The host names which are part of the SQL FCI resource group. */
-export type FailoverClusterHostNamesList = string[];
-export const FailoverClusterHostNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FailoverClusterHostNamesList>;
-
-/** IP address and subnet mask. */
-export interface HostIPAddressInformation {
-  /** IP address */
-  ipAddress?: string;
-  /** Subnet mask */
-  subnetMask?: string;
-}
-export const HostIPAddressInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipAddress: S.optional(S.String),
-    subnetMask: S.optional(S.String),
+    encryptionAlgorithm: S.optional(DBMEndpointInputEncryptionAlgorithm),
+    connectionAuth: S.optional(DBMEndpointInputConnectionAuth),
   }),
 ).annotate({
-  identifier: "HostIPAddressInformation",
-}) as any as S.Schema<HostIPAddressInformation>;
-
-/** The IP addresses and subnet masks associated with the SQL Failover Cluster Instance on this host. */
-export type FailoverClusterHostIPAddressesList = HostIPAddressInformation[];
-export const FailoverClusterHostIPAddressesList = /*@__PURE__*/ S.Array(
-  HostIPAddressInformation,
-) as any as S.Schema<FailoverClusterHostIPAddressesList>;
+  identifier: "DBMEndpointInput",
+}) as any as S.Schema<DBMEndpointInput>;
 
 /** Failover Cluster Instance properties. */
-export interface FailoverCluster {
-  /** The GUID of the SQL Server's underlying Failover Cluster. */
-  id?: string;
-  /** The network name to connect to the SQL FCI. */
-  networkName?: string;
-  /** The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster. */
-  sqlInstanceIds?: FailoverClusterSqlInstanceIdsList;
-  /** The host names which are part of the SQL FCI resource group. */
-  hostNames?: FailoverClusterHostNamesList;
-  /** The IP addresses and subnet masks associated with the SQL Failover Cluster Instance on this host. */
-  hostIPAddresses?: FailoverClusterHostIPAddressesList;
-}
-export const FailoverCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    networkName: S.optional(S.String),
-    sqlInstanceIds: S.optional(FailoverClusterSqlInstanceIdsList),
-    hostNames: S.optional(FailoverClusterHostNamesList),
-    hostIPAddresses: S.optional(FailoverClusterHostIPAddressesList),
-  }),
+export interface FailoverClusterInput {}
+export const FailoverClusterInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "FailoverCluster",
-}) as any as S.Schema<FailoverCluster>;
+  identifier: "FailoverClusterInput",
+}) as any as S.Schema<FailoverClusterInput>;
 
 /** The monitoring configuration. */
 export interface Monitoring {
@@ -5750,6 +7128,469 @@ export const MigrationAssessmentSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrationAssessmentSettings",
 }) as any as S.Schema<MigrationAssessmentSettings>;
 
+/** Represents a summary of migration readiness issues/warnings per feature type for Azure SQL DB and SQL MI targets */
+export interface MigrationAssessmentInputImpactedObjectsSummary {}
+export const MigrationAssessmentInputImpactedObjectsSummary =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "MigrationAssessmentInputImpactedObjectsSummary",
+  }) as any as S.Schema<MigrationAssessmentInputImpactedObjectsSummary>;
+
+/** The migration assessment related configuration. */
+export interface MigrationAssessmentInput {
+  /** Indicates if migration assessment is enabled for this SQL Server instance. */
+  enabled?: boolean;
+  settings?: MigrationAssessmentSettings;
+  /** Represents a summary of migration readiness issues/warnings per feature type for Azure SQL DB and SQL MI targets */
+  impactedObjectsSummary?: MigrationAssessmentInputImpactedObjectsSummary;
+}
+export const MigrationAssessmentInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    settings: S.optional(MigrationAssessmentSettings),
+    impactedObjectsSummary: S.optional(
+      MigrationAssessmentInputImpactedObjectsSummary,
+    ),
+  }),
+).annotate({
+  identifier: "MigrationAssessmentInput",
+}) as any as S.Schema<MigrationAssessmentInput>;
+
+/** Migration related configuration. */
+export interface MigrationInput {
+  /** Migration assessments related configuration. */
+  assessment?: MigrationAssessmentInput;
+}
+export const MigrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessment: S.optional(MigrationAssessmentInput),
+  }),
+).annotate({ identifier: "MigrationInput" }) as any as S.Schema<MigrationInput>;
+
+/** The cron trigger configuration. */
+export interface CronTrigger {
+  /** Indicates the start time for the trigger. The default value is the time at which the trigger was created. */
+  startTime?: string;
+  /** The time zone in which the trigger is scheduled. */
+  timeZone?: string;
+  /** A cron string representing a CronTab expression. A crontab expression is a very compact way to express a recurring schedule with the following format: '{minutes} {hours} {days} {months} {days-of-week}'. */
+  expression?: string;
+}
+export const CronTrigger = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startTime: S.optional(S.String),
+    timeZone: S.optional(S.String),
+    expression: S.optional(S.String),
+  }),
+).annotate({ identifier: "CronTrigger" }) as any as S.Schema<CronTrigger>;
+
+/** The scheduling configuration. */
+export interface Schedule {
+  /** Indicates whether scheduling is enabled. */
+  enabled?: boolean;
+  cronTrigger?: CronTrigger;
+}
+export const Schedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    cronTrigger: S.optional(CronTrigger),
+  }),
+).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
+
+/** The configuration related to SQL best practices assessment. */
+export interface BestPracticesAssessment {
+  /** Indicates if SQL best practices assessment is enabled for the SQL Server instance. */
+  enabled?: boolean;
+  schedule?: Schedule;
+}
+export const BestPracticesAssessment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    schedule: S.optional(Schedule),
+  }),
+).annotate({
+  identifier: "BestPracticesAssessment",
+}) as any as S.Schema<BestPracticesAssessment>;
+
+/** Client connection related configuration. */
+export interface ClientConnection {
+  /** Indicates if client connection is enabled for this SQL Server instance. */
+  enabled?: boolean;
+}
+export const ClientConnection = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ClientConnection",
+}) as any as S.Schema<ClientConnection>;
+
+/** Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host. */
+export type ServiceType = "Engine" | "SSRS" | "SSAS" | "SSIS" | "PBIRS";
+export const ServiceType = /*@__PURE__*/ S.String;
+
+/** Mode of authentication in SqlServer. */
+export type AuthenticationMode = "Mixed" | "Windows" | "Undefined";
+export const AuthenticationMode = /*@__PURE__*/ S.String;
+
+/** The method used for Entra authentication */
+export type AuthenticationSqlServerEntraIdentityItemIdentityType =
+  | "SystemAssignedManagedIdentity"
+  | "UserAssignedManagedIdentity";
+export const AuthenticationSqlServerEntraIdentityItemIdentityType =
+  /*@__PURE__*/ S.String;
+
+/** Entra Authentication configuration. */
+export interface AuthenticationSqlServerEntraIdentityItem {
+  /** The method used for Entra authentication */
+  identityType?: AuthenticationSqlServerEntraIdentityItemIdentityType;
+  /** The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity. */
+  clientId?: string;
+}
+export const AuthenticationSqlServerEntraIdentityItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      identityType: S.optional(
+        AuthenticationSqlServerEntraIdentityItemIdentityType,
+      ),
+      clientId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AuthenticationSqlServerEntraIdentityItem",
+}) as any as S.Schema<AuthenticationSqlServerEntraIdentityItem>;
+
+/** Entra Authentication configuration for the SQL Server Instance. */
+export type AuthenticationSqlServerEntraIdentityList =
+  ReadonlyArray<AuthenticationSqlServerEntraIdentityItem>;
+export const AuthenticationSqlServerEntraIdentityList = /*@__PURE__*/ S.Array(
+  AuthenticationSqlServerEntraIdentityItem,
+) as any as S.Schema<AuthenticationSqlServerEntraIdentityList>;
+
+/** Authentication related configuration for the SQL Server Instance. */
+export interface Authentication {
+  /** Mode of authentication in SqlServer. */
+  mode?: AuthenticationMode;
+  /** Entra Authentication configuration for the SQL Server Instance. */
+  sqlServerEntraIdentity?: AuthenticationSqlServerEntraIdentityList;
+}
+export const Authentication = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.optional(AuthenticationMode),
+    sqlServerEntraIdentity: S.optional(
+      AuthenticationSqlServerEntraIdentityList,
+    ),
+  }),
+).annotate({ identifier: "Authentication" }) as any as S.Schema<Authentication>;
+
+/** Properties of SqlServerInstance. */
+export interface SqlServerInstancePropertiesInput {
+  /** SQL Server version. */
+  version?: SqlServerInstancePropertiesInputVersion;
+  /** SQL Server edition. */
+  edition?: SqlServerInstancePropertiesInputEdition;
+  /** The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance. */
+  cores?: string;
+  /** SQL Server instance name. */
+  instanceName?: string;
+  /** Type of host for Azure Arc SQL Server */
+  hostType?: SqlServerInstancePropertiesInputHostType;
+  /** Database mirroring endpoint related properties. */
+  databaseMirroringEndpoint?: DBMEndpointInput;
+  /** Failover Cluster Instance properties. */
+  failoverCluster?: FailoverClusterInput;
+  /** The backup profile for the SQL server. */
+  backupPolicy?: BackupPolicy;
+  /** Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty. */
+  upgradeLockedUntil?: string;
+  /** The monitoring configuration. */
+  monitoring?: Monitoring;
+  /** Migration related configuration. */
+  migration?: MigrationInput;
+  /** The configuration related to SQL best practices assessment. */
+  bestPracticesAssessment?: BestPracticesAssessment;
+  /** Client connection related configuration. */
+  clientConnection?: ClientConnection;
+  /** Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host. */
+  serviceType?: ServiceType;
+  /** Authentication related configuration for the SQL Server Instance. */
+  authentication?: Authentication;
+}
+export const SqlServerInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.optional(SqlServerInstancePropertiesInputVersion),
+    edition: S.optional(SqlServerInstancePropertiesInputEdition),
+    cores: S.optional(S.String),
+    instanceName: S.optional(S.String),
+    hostType: S.optional(SqlServerInstancePropertiesInputHostType),
+    databaseMirroringEndpoint: S.optional(DBMEndpointInput),
+    failoverCluster: S.optional(FailoverClusterInput),
+    backupPolicy: S.optional(BackupPolicy),
+    upgradeLockedUntil: S.optional(S.String),
+    monitoring: S.optional(Monitoring),
+    migration: S.optional(MigrationInput),
+    bestPracticesAssessment: S.optional(BestPracticesAssessment),
+    clientConnection: S.optional(ClientConnection),
+    serviceType: S.optional(ServiceType),
+    authentication: S.optional(Authentication),
+  }),
+).annotate({
+  identifier: "SqlServerInstancePropertiesInput",
+}) as any as S.Schema<SqlServerInstancePropertiesInput>;
+
+export interface SqlServerInstancesCreateRequest {
+  /** The ID of the Azure subscription */
+  subscriptionId: string;
+  /** The name of the Azure resource group */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** Resource tags. */
+  tags?: SqlServerInstancesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** null */
+  properties?: SqlServerInstancePropertiesInput;
+}
+export const SqlServerInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlServerInstanceName: S.String.pipe(T.Label()),
+    tags: S.optional(SqlServerInstancesCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(SqlServerInstancePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}",
+      code: 200,
+      apiVersion: "2026-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "SqlServerInstancesCreateRequest",
+}) as any as S.Schema<SqlServerInstancesCreateRequest>;
+
+/** Resource tags. */
+export type SqlServerInstancesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerInstancesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerInstancesCreateResponseTagsMap>;
+
+/** SQL Server version. */
+export type SqlServerInstancePropertiesVersion =
+  | "Unknown"
+  | "SQL Server 2012"
+  | "SQL Server 2014"
+  | "SQL Server 2016"
+  | "SQL Server 2017"
+  | "SQL Server 2019"
+  | "SQL Server 2022"
+  | "SQL Server 2025";
+export const SqlServerInstancePropertiesVersion = /*@__PURE__*/ S.String;
+
+/** SQL Server edition. */
+export type SqlServerInstancePropertiesEdition =
+  | "Evaluation"
+  | "Enterprise"
+  | "Standard"
+  | "Web"
+  | "Developer"
+  | "Express"
+  | "Business Intelligence"
+  | "Standard Developer";
+export const SqlServerInstancePropertiesEdition = /*@__PURE__*/ S.String;
+
+/** The cloud connectivity status. */
+export type SqlServerInstancePropertiesStatus =
+  | "Connected"
+  | "Disconnected"
+  | "Registered"
+  | "Unknown";
+export const SqlServerInstancePropertiesStatus = /*@__PURE__*/ S.String;
+
+/** An array of integers, where each value represents the enabled trace flags in SQL Server. */
+export type SqlServerInstancePropertiesTraceFlagsList = ReadonlyArray<number>;
+export const SqlServerInstancePropertiesTraceFlagsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SqlServerInstancePropertiesTraceFlagsList>;
+
+/** SQL Server license type. */
+export type SqlServerInstancePropertiesLicenseType =
+  | "Undefined"
+  | "Free"
+  | "HADR"
+  | "ServerCAL"
+  | "LicenseOnly"
+  | "PAYG"
+  | "Paid"
+  | "FabricCapacity";
+export const SqlServerInstancePropertiesLicenseType = /*@__PURE__*/ S.String;
+
+/** Status of Azure Defender. */
+export type SqlServerInstancePropertiesAzureDefenderStatus =
+  | "Protected"
+  | "Unprotected"
+  | "Unknown";
+export const SqlServerInstancePropertiesAzureDefenderStatus =
+  /*@__PURE__*/ S.String;
+
+/** Type of host for Azure Arc SQL Server */
+export type SqlServerInstancePropertiesHostType =
+  | "Azure Virtual Machine"
+  | "Azure VMWare Virtual Machine"
+  | "Azure Kubernetes Service"
+  | "AWS VMWare Virtual Machine"
+  | "AWS Kubernetes Service"
+  | "GCP VMWare Virtual Machine"
+  | "GCP Kubernetes Service"
+  | "Container"
+  | "Virtual Machine"
+  | "Physical Server"
+  | "AWS Virtual Machine"
+  | "GCP Virtual Machine"
+  | "Other";
+export const SqlServerInstancePropertiesHostType = /*@__PURE__*/ S.String;
+
+/** The role of the SQL Server, based on availability. */
+export type SqlServerInstancePropertiesAlwaysOnRole =
+  | "None"
+  | "FailoverClusterInstance"
+  | "FailoverClusterNode"
+  | "AvailabilityGroupReplica";
+export const SqlServerInstancePropertiesAlwaysOnRole = /*@__PURE__*/ S.String;
+
+/** Mirroring Role */
+export type DBMEndpointRole = "NONE" | "PARTNER" | "WITNESS" | "ALL";
+export const DBMEndpointRole = /*@__PURE__*/ S.String;
+
+/** The encryption algorithm(s) used by the endpoint. */
+export type DBMEndpointEncryptionAlgorithm =
+  | "NONE"
+  | "RC4"
+  | "AES"
+  | "NONE, RC4"
+  | "NONE, AES"
+  | "RC4, AES"
+  | "AES, RC4"
+  | "NONE, RC4, AES"
+  | "NONE, AES, RC4";
+export const DBMEndpointEncryptionAlgorithm = /*@__PURE__*/ S.String;
+
+/** The endpoint connection authentication type(s). */
+export type DBMEndpointConnectionAuth =
+  | "Windows_NTLM"
+  | "Windows_Kerberos"
+  | "Windows_Negotiate"
+  | "Certificate"
+  | "Windows_NTLM_Certificate"
+  | "Windows_Kerberos_Certificate"
+  | "Windows_Negotiate_Certificate"
+  | "Certificate_Windows_NTLM"
+  | "Certificate_Windows_Kerberos"
+  | "Certificate_Windows_Negotiate";
+export const DBMEndpointConnectionAuth = /*@__PURE__*/ S.String;
+
+/** Database mirroring endpoint related properties. */
+export interface DBMEndpoint {
+  /** Name of the database mirroring endpoint. */
+  endpointName?: string;
+  /** Mirroring Role */
+  role?: DBMEndpointRole;
+  /** Is Encryption enabled */
+  isEncryptionEnabled?: boolean;
+  /** The encryption algorithm(s) used by the endpoint. */
+  encryptionAlgorithm?: DBMEndpointEncryptionAlgorithm;
+  /** The endpoint connection authentication type(s). */
+  connectionAuth?: DBMEndpointConnectionAuth;
+  /** The port number that the endpoint is listening on. */
+  port?: number;
+  /** Is the port number dynamically assigned. */
+  isDynamicPort?: boolean;
+  /** Listener IP address. */
+  ipAddress?: string;
+  /** Name of the certificate. */
+  certificateName?: string;
+  /** The certificate expiry date */
+  certificateExpiryDate?: string;
+}
+export const DBMEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpointName: S.optional(S.String),
+    role: S.optional(DBMEndpointRole),
+    isEncryptionEnabled: S.optional(S.Boolean),
+    encryptionAlgorithm: S.optional(DBMEndpointEncryptionAlgorithm),
+    connectionAuth: S.optional(DBMEndpointConnectionAuth),
+    port: S.optional(S.Number),
+    isDynamicPort: S.optional(S.Boolean),
+    ipAddress: S.optional(S.String),
+    certificateName: S.optional(S.String),
+    certificateExpiryDate: S.optional(S.String),
+  }),
+).annotate({ identifier: "DBMEndpoint" }) as any as S.Schema<DBMEndpoint>;
+
+/** The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster. */
+export type FailoverClusterSqlInstanceIdsList = ReadonlyArray<string>;
+export const FailoverClusterSqlInstanceIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FailoverClusterSqlInstanceIdsList>;
+
+/** The host names which are part of the SQL FCI resource group. */
+export type FailoverClusterHostNamesList = ReadonlyArray<string>;
+export const FailoverClusterHostNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FailoverClusterHostNamesList>;
+
+/** IP address and subnet mask. */
+export interface HostIPAddressInformation {
+  /** IP address */
+  ipAddress?: string;
+  /** Subnet mask */
+  subnetMask?: string;
+}
+export const HostIPAddressInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipAddress: S.optional(S.String),
+    subnetMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HostIPAddressInformation",
+}) as any as S.Schema<HostIPAddressInformation>;
+
+/** The IP addresses and subnet masks associated with the SQL Failover Cluster Instance on this host. */
+export type FailoverClusterHostIPAddressesList =
+  ReadonlyArray<HostIPAddressInformation>;
+export const FailoverClusterHostIPAddressesList = /*@__PURE__*/ S.Array(
+  HostIPAddressInformation,
+) as any as S.Schema<FailoverClusterHostIPAddressesList>;
+
+/** Failover Cluster Instance properties. */
+export interface FailoverCluster {
+  /** The GUID of the SQL Server's underlying Failover Cluster. */
+  id?: string;
+  /** The network name to connect to the SQL FCI. */
+  networkName?: string;
+  /** The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster. */
+  sqlInstanceIds?: FailoverClusterSqlInstanceIdsList;
+  /** The host names which are part of the SQL FCI resource group. */
+  hostNames?: FailoverClusterHostNamesList;
+  /** The IP addresses and subnet masks associated with the SQL Failover Cluster Instance on this host. */
+  hostIPAddresses?: FailoverClusterHostIPAddressesList;
+}
+export const FailoverCluster = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    networkName: S.optional(S.String),
+    sqlInstanceIds: S.optional(FailoverClusterSqlInstanceIdsList),
+    hostNames: S.optional(FailoverClusterHostNamesList),
+    hostIPAddresses: S.optional(FailoverClusterHostIPAddressesList),
+  }),
+).annotate({
+  identifier: "FailoverCluster",
+}) as any as S.Schema<FailoverCluster>;
+
 export interface ServerAssessmentsItemImpactedObjectsItem {
   impactDetail?: string;
   name?: string;
@@ -5767,7 +7608,7 @@ export const ServerAssessmentsItemImpactedObjectsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServerAssessmentsItemImpactedObjectsItem>;
 
 export type ServerAssessmentsItemImpactedObjectsList =
-  ServerAssessmentsItemImpactedObjectsItem[];
+  ReadonlyArray<ServerAssessmentsItemImpactedObjectsItem>;
 export const ServerAssessmentsItemImpactedObjectsList = /*@__PURE__*/ S.Array(
   ServerAssessmentsItemImpactedObjectsItem,
 ) as any as S.Schema<ServerAssessmentsItemImpactedObjectsList>;
@@ -5792,7 +7633,7 @@ export const ServerAssessmentsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerAssessmentsItem>;
 
 /** Issues and warnings impacting the migration of SQL Server instance to particular Azure Migration Target. */
-export type ServerAssessments = ServerAssessmentsItem[];
+export type ServerAssessments = ReadonlyArray<ServerAssessmentsItem>;
 export const ServerAssessments = /*@__PURE__*/ S.Array(
   ServerAssessmentsItem,
 ) as any as S.Schema<ServerAssessments>;
@@ -5802,8 +7643,7 @@ export type SkuRecommendationResultsAzureSqlDatabaseRecommendationStatus =
   | "NotReady"
   | "Ready"
   | "ReadyWithConditions"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const SkuRecommendationResultsAzureSqlDatabaseRecommendationStatus =
   /*@__PURE__*/ S.String;
 
@@ -5838,7 +7678,7 @@ export const SkuRecommendationResultsAzureSqlDatabaseMonthlyCost =
 
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList =
-  SkuRecommendationResultsMonthlyCostOptionItem[];
+  ReadonlyArray<SkuRecommendationResultsMonthlyCostOptionItem>;
 export const SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList =
   /*@__PURE__*/ S.Array(
     SkuRecommendationResultsMonthlyCostOptionItem,
@@ -5933,7 +7773,7 @@ export const SkuRecommendationResultsAzureSqlDatabase = /*@__PURE__*/ S.suspend(
 
 /** The target recommendation Status for this database. */
 export type SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus =
-  "NotReady" | "Ready" | "ReadyWithConditions" | "Unknown" | (string & {});
+  "NotReady" | "Ready" | "ReadyWithConditions" | "Unknown";
 export const SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus =
   /*@__PURE__*/ S.String;
 
@@ -5968,7 +7808,7 @@ export const SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCost =
 
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList =
-  SkuRecommendationResultsMonthlyCostOptionItem[];
+  ReadonlyArray<SkuRecommendationResultsMonthlyCostOptionItem>;
 export const SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList =
   /*@__PURE__*/ S.Array(
     SkuRecommendationResultsMonthlyCostOptionItem,
@@ -6066,7 +7906,7 @@ export const SkuRecommendationResultsAzureSqlManagedInstance =
 
 /** The target recommendation Status for this database. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus =
-  "NotReady" | "Ready" | "ReadyWithConditions" | "Unknown" | (string & {});
+  "NotReady" | "Ready" | "ReadyWithConditions" | "Unknown";
 export const SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus =
   /*@__PURE__*/ S.String;
 
@@ -6101,7 +7941,7 @@ export const SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCost =
 
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList =
-  SkuRecommendationResultsMonthlyCostOptionItem[];
+  ReadonlyArray<SkuRecommendationResultsMonthlyCostOptionItem>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList =
   /*@__PURE__*/ S.Array(
     SkuRecommendationResultsMonthlyCostOptionItem,
@@ -6109,7 +7949,7 @@ export const SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsLis
 
 /** Available VM SKUs for the Azure SQL Virtual Machine. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList =
-  string[];
+  ReadonlyArray<string>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6195,7 +8035,7 @@ export const DiskSizes = /*@__PURE__*/ S.suspend(() =>
 
 /** Data disk sizes. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList =
-  DiskSizes[];
+  ReadonlyArray<DiskSizes>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList =
   /*@__PURE__*/ S.Array(
     DiskSizes,
@@ -6203,7 +8043,7 @@ export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSize
 
 /** Log disk sizes. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList =
-  DiskSizes[];
+  ReadonlyArray<DiskSizes>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList =
   /*@__PURE__*/ S.Array(
     DiskSizes,
@@ -6211,7 +8051,7 @@ export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizes
 
 /** temp db disk sizes. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList =
-  DiskSizes[];
+  ReadonlyArray<DiskSizes>;
 export const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList =
   /*@__PURE__*/ S.Array(
     DiskSizes,
@@ -6332,14 +8172,14 @@ export const ImpactedObjectsInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImpactedObjectsInfo>;
 
 export type MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList =
-  ImpactedObjectsInfo[];
+  ReadonlyArray<ImpactedObjectsInfo>;
 export const MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList =
   /*@__PURE__*/ S.Array(
     ImpactedObjectsInfo,
   ) as any as S.Schema<MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList>;
 
 export type MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList =
-  ImpactedObjectsInfo[];
+  ReadonlyArray<ImpactedObjectsInfo>;
 export const MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList =
   /*@__PURE__*/ S.Array(
     ImpactedObjectsInfo,
@@ -6404,132 +8244,6 @@ export const Migration = /*@__PURE__*/ S.suspend(() =>
     assessment: S.optional(MigrationAssessment),
   }),
 ).annotate({ identifier: "Migration" }) as any as S.Schema<Migration>;
-
-/** The cron trigger configuration. */
-export interface CronTrigger {
-  /** Indicates the start time for the trigger. The default value is the time at which the trigger was created. */
-  startTime?: string;
-  /** The time zone in which the trigger is scheduled. */
-  timeZone?: string;
-  /** A cron string representing a CronTab expression. A crontab expression is a very compact way to express a recurring schedule with the following format: '{minutes} {hours} {days} {months} {days-of-week}'. */
-  expression?: string;
-}
-export const CronTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startTime: S.optional(S.String),
-    timeZone: S.optional(S.String),
-    expression: S.optional(S.String),
-  }),
-).annotate({ identifier: "CronTrigger" }) as any as S.Schema<CronTrigger>;
-
-/** The scheduling configuration. */
-export interface Schedule {
-  /** Indicates whether scheduling is enabled. */
-  enabled?: boolean;
-  cronTrigger?: CronTrigger;
-}
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    cronTrigger: S.optional(CronTrigger),
-  }),
-).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
-
-/** The configuration related to SQL best practices assessment. */
-export interface BestPracticesAssessment {
-  /** Indicates if SQL best practices assessment is enabled for the SQL Server instance. */
-  enabled?: boolean;
-  schedule?: Schedule;
-}
-export const BestPracticesAssessment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    schedule: S.optional(Schedule),
-  }),
-).annotate({
-  identifier: "BestPracticesAssessment",
-}) as any as S.Schema<BestPracticesAssessment>;
-
-/** Client connection related configuration. */
-export interface ClientConnection {
-  /** Indicates if client connection is enabled for this SQL Server instance. */
-  enabled?: boolean;
-}
-export const ClientConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ClientConnection",
-}) as any as S.Schema<ClientConnection>;
-
-/** Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host. */
-export type ServiceType =
-  | "Engine"
-  | "SSRS"
-  | "SSAS"
-  | "SSIS"
-  | "PBIRS"
-  | (string & {});
-export const ServiceType = /*@__PURE__*/ S.String;
-
-/** Mode of authentication in SqlServer. */
-export type AuthenticationMode =
-  | "Mixed"
-  | "Windows"
-  | "Undefined"
-  | (string & {});
-export const AuthenticationMode = /*@__PURE__*/ S.String;
-
-/** The method used for Entra authentication */
-export type AuthenticationSqlServerEntraIdentityItemIdentityType =
-  | "SystemAssignedManagedIdentity"
-  | "UserAssignedManagedIdentity"
-  | (string & {});
-export const AuthenticationSqlServerEntraIdentityItemIdentityType =
-  /*@__PURE__*/ S.String;
-
-/** Entra Authentication configuration. */
-export interface AuthenticationSqlServerEntraIdentityItem {
-  /** The method used for Entra authentication */
-  identityType?: AuthenticationSqlServerEntraIdentityItemIdentityType;
-  /** The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity. */
-  clientId?: string;
-}
-export const AuthenticationSqlServerEntraIdentityItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      identityType: S.optional(
-        AuthenticationSqlServerEntraIdentityItemIdentityType,
-      ),
-      clientId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AuthenticationSqlServerEntraIdentityItem",
-}) as any as S.Schema<AuthenticationSqlServerEntraIdentityItem>;
-
-/** Entra Authentication configuration for the SQL Server Instance. */
-export type AuthenticationSqlServerEntraIdentityList =
-  AuthenticationSqlServerEntraIdentityItem[];
-export const AuthenticationSqlServerEntraIdentityList = /*@__PURE__*/ S.Array(
-  AuthenticationSqlServerEntraIdentityItem,
-) as any as S.Schema<AuthenticationSqlServerEntraIdentityList>;
-
-/** Authentication related configuration for the SQL Server Instance. */
-export interface Authentication {
-  /** Mode of authentication in SqlServer. */
-  mode?: AuthenticationMode;
-  /** Entra Authentication configuration for the SQL Server Instance. */
-  sqlServerEntraIdentity?: AuthenticationSqlServerEntraIdentityList;
-}
-export const Authentication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(AuthenticationMode),
-    sqlServerEntraIdentity: S.optional(
-      AuthenticationSqlServerEntraIdentityList,
-    ),
-  }),
-).annotate({ identifier: "Authentication" }) as any as S.Schema<Authentication>;
 
 /** Properties of SqlServerInstance. */
 export interface SqlServerInstanceProperties {
@@ -6786,6 +8500,20 @@ export const SqlServerInstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerInstancesGetResponse",
 }) as any as S.Schema<SqlServerInstancesGetResponse>;
 
+/** Filter retrieval based on availability group type. */
+export type AvailabilityGroupTypeFilter =
+  | "CONTAINED"
+  | "DISTRIBUTED"
+  | "DEFAULT";
+export const AvailabilityGroupTypeFilter = /*@__PURE__*/ S.String;
+
+export type ReplicationPartnerType =
+  | "SQLServer"
+  | "AzureSQLVM"
+  | "AzureSQLManagedInstance"
+  | "Unknown";
+export const ReplicationPartnerType = /*@__PURE__*/ S.String;
+
 export interface SqlServerInstancesGetAllAvailabilityGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6793,7 +8521,8 @@ export interface SqlServerInstancesGetAllAvailabilityGroupsRequest {
   resourceGroupName: string;
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
-  body?: unknown;
+  availabilityGroupTypeFilter?: AvailabilityGroupTypeFilter;
+  replicationPartnerTypeFilter?: ReplicationPartnerType;
 }
 export const SqlServerInstancesGetAllAvailabilityGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6801,7 +8530,8 @@ export const SqlServerInstancesGetAllAvailabilityGroupsRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      availabilityGroupTypeFilter: S.optional(AvailabilityGroupTypeFilter),
+      replicationPartnerTypeFilter: S.optional(ReplicationPartnerType),
     }).pipe(
       T.Http({
         method: "POST",
@@ -6814,6 +8544,13 @@ export const SqlServerInstancesGetAllAvailabilityGroupsRequest =
     identifier: "SqlServerInstancesGetAllAvailabilityGroupsRequest",
   }) as any as S.Schema<SqlServerInstancesGetAllAvailabilityGroupsRequest>;
 
+/** The report type that needs to be fetched. If not specified, the default is AssessmentSummary. */
+export type SqlServerInstancesGetBestPracticesAssessmentRequestReportType =
+  | "AssessmentDataPoint"
+  | "AssessmentSummary";
+export const SqlServerInstancesGetBestPracticesAssessmentRequestReportType =
+  /*@__PURE__*/ S.String;
+
 export interface SqlServerInstancesGetBestPracticesAssessmentRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -6821,7 +8558,12 @@ export interface SqlServerInstancesGetBestPracticesAssessmentRequest {
   resourceGroupName: string;
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
-  body: unknown;
+  /** The report type that needs to be fetched. If not specified, the default is AssessmentSummary. */
+  reportType?: SqlServerInstancesGetBestPracticesAssessmentRequestReportType;
+  /** The GUID of the report to return best practices assessment results for. If not specified, summaries for all reports will be returned. */
+  reportId?: string;
+  /** The opaque token to use to skip to a specific page of the report. If not specified, the first page will be returned. */
+  skipToken?: string;
 }
 export const SqlServerInstancesGetBestPracticesAssessmentRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -6829,7 +8571,11 @@ export const SqlServerInstancesGetBestPracticesAssessmentRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      reportType: S.optional(
+        SqlServerInstancesGetBestPracticesAssessmentRequestReportType,
+      ),
+      reportId: S.optional(S.String),
+      skipToken: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -6851,8 +8597,7 @@ export type SqlServerInstanceBpaColumnType =
   | "double"
   | "string"
   | "guid"
-  | "timespan"
-  | (string & {});
+  | "timespan";
 export const SqlServerInstanceBpaColumnType = /*@__PURE__*/ S.String;
 
 /** The SQL best practices assessment result column. */
@@ -6873,21 +8618,21 @@ export const SqlServerInstanceBpaColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** The SQL best practices assessment response columns. */
 export type SqlServerInstancesGetBestPracticesAssessmentResponseColumnsList =
-  SqlServerInstanceBpaColumn[];
+  ReadonlyArray<SqlServerInstanceBpaColumn>;
 export const SqlServerInstancesGetBestPracticesAssessmentResponseColumnsList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceBpaColumn,
   ) as any as S.Schema<SqlServerInstancesGetBestPracticesAssessmentResponseColumnsList>;
 
 /** An array of values representing a row in the SQL best practices assessment results. */
-export type SqlServerInstanceBpaRow = string[];
+export type SqlServerInstanceBpaRow = ReadonlyArray<string>;
 export const SqlServerInstanceBpaRow = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SqlServerInstanceBpaRow>;
 
 /** An array of results of the SQL best practices assessment response. */
 export type SqlServerInstancesGetBestPracticesAssessmentResponseRowsList =
-  SqlServerInstanceBpaRow[];
+  ReadonlyArray<SqlServerInstanceBpaRow>;
 export const SqlServerInstancesGetBestPracticesAssessmentResponseRowsList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceBpaRow,
@@ -6919,7 +8664,10 @@ export interface SqlServerInstancesGetJobsStatusRequest {
   resourceGroupName: string;
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
-  body?: unknown;
+  /** The name of the feature to retrieve the job status for. */
+  featureName?: string;
+  /** The type of the job to retrieve the status for. */
+  jobType?: string;
 }
 export const SqlServerInstancesGetJobsStatusRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6927,7 +8675,8 @@ export const SqlServerInstancesGetJobsStatusRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      featureName: S.optional(S.String),
+      jobType: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -6945,8 +8694,7 @@ export type SqlServerInstanceJobStatusJobStatus =
   | "NotStarted"
   | "InProgress"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SqlServerInstanceJobStatusJobStatus = /*@__PURE__*/ S.String;
 
 /** The state of the background job. */
@@ -6956,12 +8704,11 @@ export type BackgroundJobState =
   | "Deleted"
   | "Completed"
   | "Faulted"
-  | "Suspended"
-  | (string & {});
+  | "Suspended";
 export const BackgroundJobState = /*@__PURE__*/ S.String;
 
 /** The execution state of the background job. */
-export type BackgroundJobExecutionState = "Waiting" | "Running" | (string & {});
+export type BackgroundJobExecutionState = "Waiting" | "Running";
 export const BackgroundJobExecutionState = /*@__PURE__*/ S.String;
 
 /** The last execution status of the background job. */
@@ -6971,8 +8718,7 @@ export type BackgroundJobLastExecutionStatus =
   | "Failed"
   | "Faulted"
   | "Postponed"
-  | "Rescheduled"
-  | (string & {});
+  | "Rescheduled";
 export const BackgroundJobLastExecutionStatus = /*@__PURE__*/ S.String;
 
 /** The background job details. */
@@ -7007,8 +8753,7 @@ export type SequencerActionState =
   | "WaitingPredecessors"
   | "ExecutingAction"
   | "CreatingSuccessors"
-  | "Completed"
-  | (string & {});
+  | "Completed";
 export const SequencerActionState = /*@__PURE__*/ S.String;
 
 /** The result of the sequencer action. */
@@ -7017,8 +8762,7 @@ export type SequencerActionResult =
   | "Succeeded"
   | "Failed"
   | "TimedOut"
-  | "Skipped"
-  | (string & {});
+  | "Skipped";
 export const SequencerActionResult = /*@__PURE__*/ S.String;
 
 /** The sequencer action details. */
@@ -7041,7 +8785,8 @@ export const SequencerAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SequencerAction>;
 
 /** The list of sequencer actions. */
-export type SqlServerInstanceJobStatusSequencerActionsList = SequencerAction[];
+export type SqlServerInstanceJobStatusSequencerActionsList =
+  ReadonlyArray<SequencerAction>;
 export const SqlServerInstanceJobStatusSequencerActionsList =
   /*@__PURE__*/ S.Array(
     SequencerAction,
@@ -7079,7 +8824,7 @@ export const SqlServerInstanceJobStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of jobs status running on the SQL Server instance. */
 export type SqlServerInstancesGetJobsStatusResponseJobsStatusList =
-  SqlServerInstanceJobStatus[];
+  ReadonlyArray<SqlServerInstanceJobStatus>;
 export const SqlServerInstancesGetJobsStatusResponseJobsStatusList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceJobStatus,
@@ -7100,6 +8845,24 @@ export const SqlServerInstancesGetJobsStatusResponse = /*@__PURE__*/ S.suspend(
   identifier: "SqlServerInstancesGetJobsStatusResponse",
 }) as any as S.Schema<SqlServerInstancesGetJobsStatusResponse>;
 
+/** The aggregation type to use for the numerical columns in the dataset. */
+export type SqlServerInstancesGetTelemetryRequestAggregationType =
+  | "Average"
+  | "Minimum"
+  | "Maximum"
+  | "Sum"
+  | "Count";
+export const SqlServerInstancesGetTelemetryRequestAggregationType =
+  /*@__PURE__*/ S.String;
+
+/** The list of database names to return telemetry for. If not specified, telemetry for all databases will be aggregated and returned. */
+export type SqlServerInstancesGetTelemetryRequestDatabaseNamesList =
+  ReadonlyArray<string>;
+export const SqlServerInstancesGetTelemetryRequestDatabaseNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SqlServerInstancesGetTelemetryRequestDatabaseNamesList>;
+
 export interface SqlServerInstancesGetTelemetryRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -7107,7 +8870,18 @@ export interface SqlServerInstancesGetTelemetryRequest {
   resourceGroupName: string;
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
-  body: unknown;
+  /** The name of the telemetry dataset to retrieve. */
+  datasetName: string;
+  /** The start time for the time range to fetch telemetry for. If not specified, the current time minus 1 hour is used. */
+  startTime?: string;
+  /** The end time for the time range to fetch telemetry for. If not specified, the current time is used. */
+  endTime?: string;
+  /** The time granularity to fetch telemetry for. This is an ISO8601 duration. Examples: PT15M, PT1H, P1D */
+  interval?: string;
+  /** The aggregation type to use for the numerical columns in the dataset. */
+  aggregationType?: SqlServerInstancesGetTelemetryRequestAggregationType;
+  /** The list of database names to return telemetry for. If not specified, telemetry for all databases will be aggregated and returned. */
+  databaseNames?: SqlServerInstancesGetTelemetryRequestDatabaseNamesList;
 }
 export const SqlServerInstancesGetTelemetryRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7115,7 +8889,16 @@ export const SqlServerInstancesGetTelemetryRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       sqlServerInstanceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      datasetName: S.String,
+      startTime: S.optional(S.String),
+      endTime: S.optional(S.String),
+      interval: S.optional(S.String),
+      aggregationType: S.optional(
+        SqlServerInstancesGetTelemetryRequestAggregationType,
+      ),
+      databaseNames: S.optional(
+        SqlServerInstancesGetTelemetryRequestDatabaseNamesList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -7137,8 +8920,7 @@ export type SqlServerInstanceTelemetryColumnType =
   | "double"
   | "string"
   | "guid"
-  | "timespan"
-  | (string & {});
+  | "timespan";
 export const SqlServerInstanceTelemetryColumnType = /*@__PURE__*/ S.String;
 
 /** The telemetry column for the SQL Server instance. */
@@ -7159,21 +8941,21 @@ export const SqlServerInstanceTelemetryColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** The columns of the result telemetry table for the SQL Server instance. */
 export type SqlServerInstancesGetTelemetryResponseColumnsList =
-  SqlServerInstanceTelemetryColumn[];
+  ReadonlyArray<SqlServerInstanceTelemetryColumn>;
 export const SqlServerInstancesGetTelemetryResponseColumnsList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceTelemetryColumn,
   ) as any as S.Schema<SqlServerInstancesGetTelemetryResponseColumnsList>;
 
 /** An array of values representing a telemetry row for the SQL Server instance. */
-export type SqlServerInstanceTelemetryRow = string[];
+export type SqlServerInstanceTelemetryRow = ReadonlyArray<string>;
 export const SqlServerInstanceTelemetryRow = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SqlServerInstanceTelemetryRow>;
 
 /** A list of rows from the result telemetry table for the SQL Server instance. */
 export type SqlServerInstancesGetTelemetryResponseRowsList =
-  SqlServerInstanceTelemetryRow[];
+  ReadonlyArray<SqlServerInstanceTelemetryRow>;
 export const SqlServerInstancesGetTelemetryResponseRowsList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceTelemetryRow,
@@ -7256,7 +9038,8 @@ export const SqlServerInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlServerInstance>;
 
 /** Array of results. */
-export type SqlServerInstancesListResponseValueList = SqlServerInstance[];
+export type SqlServerInstancesListResponseValueList =
+  ReadonlyArray<SqlServerInstance>;
 export const SqlServerInstancesListResponseValueList = /*@__PURE__*/ S.Array(
   SqlServerInstance,
 ) as any as S.Schema<SqlServerInstancesListResponseValueList>;
@@ -7301,7 +9084,7 @@ export const SqlServerInstancesListByResourceGroupRequest =
 
 /** Array of results. */
 export type SqlServerInstancesListByResourceGroupResponseValueList =
-  SqlServerInstance[];
+  ReadonlyArray<SqlServerInstance>;
 export const SqlServerInstancesListByResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlServerInstance,
@@ -7487,14 +9270,13 @@ export type SqlServerInstancesRunBestPracticesAssessmentResponseJobStatus =
   | "NotStarted"
   | "InProgress"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SqlServerInstancesRunBestPracticesAssessmentResponseJobStatus =
   /*@__PURE__*/ S.String;
 
 /** The list of sequencer actions. */
 export type SqlServerInstancesRunBestPracticesAssessmentResponseSequencerActionsList =
-  SequencerAction[];
+  ReadonlyArray<SequencerAction>;
 export const SqlServerInstancesRunBestPracticesAssessmentResponseSequencerActionsList =
   /*@__PURE__*/ S.Array(
     SequencerAction,
@@ -7532,33 +9314,19 @@ export const SqlServerInstancesRunBestPracticesAssessmentResponse =
     identifier: "SqlServerInstancesRunBestPracticesAssessmentResponse",
   }) as any as S.Schema<SqlServerInstancesRunBestPracticesAssessmentResponse>;
 
-export interface SqlServerInstancesRunManagedInstanceLinkAssessmentRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of SQL Server Instance */
-  sqlServerInstanceName: string;
-  body: unknown;
-}
-export const SqlServerInstancesRunManagedInstanceLinkAssessmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlServerInstanceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/runManagedInstanceLinkAssessment",
-        code: 200,
-        apiVersion: "2026-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlServerInstancesRunManagedInstanceLinkAssessmentRequest",
-  }) as any as S.Schema<SqlServerInstancesRunManagedInstanceLinkAssessmentRequest>;
+/** The role of managed instance in a distributed availability group, can be Primary or Secondary. */
+export type SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole =
+  "Primary" | "Secondary";
+export const SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole =
+  /*@__PURE__*/ S.String;
+
+/** An array of strings, where each value represents the name of a database to be replicated to the Azure SQL Managed Instance. */
+export type SqlServerInstancesRunManagedInstanceLinkAssessmentRequestDatabaseNamesList =
+  ReadonlyArray<string>;
+export const SqlServerInstancesRunManagedInstanceLinkAssessmentRequestDatabaseNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SqlServerInstancesRunManagedInstanceLinkAssessmentRequestDatabaseNamesList>;
 
 /** Validation category for the MI Link prerequisites assessment. */
 export type MiLinkAssessmentCategory =
@@ -7571,22 +9339,80 @@ export type MiLinkAssessmentCategory =
   | "BoxToMiNetworkConnectivity"
   | "MiToBoxNetworkConnectivity"
   | "SqlInstanceAg"
-  | "DagCrossValidation"
-  | (string & {});
+  | "DagCrossValidation";
 export const MiLinkAssessmentCategory = /*@__PURE__*/ S.String;
+
+/** An array of strings, where each value represents the category of the assessment to be run. If this field is not provided, all assessment categories will be run. */
+export type SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAssessmentCategoriesList =
+  ReadonlyArray<MiLinkAssessmentCategory>;
+export const SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAssessmentCategoriesList =
+  /*@__PURE__*/ S.Array(
+    MiLinkAssessmentCategory,
+  ) as any as S.Schema<SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAssessmentCategoriesList>;
+
+export interface SqlServerInstancesRunManagedInstanceLinkAssessmentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of SQL Server Instance */
+  sqlServerInstanceName: string;
+  /** The Azure SQL Managed Instance resource ID to link with the SQL Server instance. */
+  azureManagedInstanceResourceId: string;
+  /** The role of managed instance in a distributed availability group, can be Primary or Secondary. */
+  azureManagedInstanceRole?: SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole;
+  /** An array of strings, where each value represents the name of a database to be replicated to the Azure SQL Managed Instance. */
+  databaseNames: SqlServerInstancesRunManagedInstanceLinkAssessmentRequestDatabaseNamesList;
+  /** The name of the availability group to be used for the database replication. */
+  availabilityGroupName: string;
+  /** The name of the DAG to be used for the database replication. Also referred to as Link Name. */
+  distributedAvailabilityGroupName: string;
+  /** An array of strings, where each value represents the category of the assessment to be run. If this field is not provided, all assessment categories will be run. */
+  assessmentCategories?: SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAssessmentCategoriesList;
+  /** The IP address of the SQL Server instance. */
+  sqlServerIpAddress?: string;
+}
+export const SqlServerInstancesRunManagedInstanceLinkAssessmentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlServerInstanceName: S.String.pipe(T.Label()),
+      azureManagedInstanceResourceId: S.String,
+      azureManagedInstanceRole: S.optional(
+        SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole,
+      ),
+      databaseNames:
+        SqlServerInstancesRunManagedInstanceLinkAssessmentRequestDatabaseNamesList,
+      availabilityGroupName: S.String,
+      distributedAvailabilityGroupName: S.String,
+      assessmentCategories: S.optional(
+        SqlServerInstancesRunManagedInstanceLinkAssessmentRequestAssessmentCategoriesList,
+      ),
+      sqlServerIpAddress: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureArcData/sqlServerInstances/{sqlServerInstanceName}/runManagedInstanceLinkAssessment",
+        code: 200,
+        apiVersion: "2026-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "SqlServerInstancesRunManagedInstanceLinkAssessmentRequest",
+  }) as any as S.Schema<SqlServerInstancesRunManagedInstanceLinkAssessmentRequest>;
 
 /** The status of the requirement. */
 export type SqlServerInstanceManagedInstanceLinkAssessmentStatus =
   | "Success"
   | "Warning"
-  | "Failure"
-  | (string & {});
+  | "Failure";
 export const SqlServerInstanceManagedInstanceLinkAssessmentStatus =
   /*@__PURE__*/ S.String;
 
 /** List of names of databases that are failing the given assessment. */
 export type SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList =
-  string[];
+  ReadonlyArray<string>;
 export const SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7624,7 +9450,7 @@ export const SqlServerInstanceManagedInstanceLinkAssessment =
 
 /** The list of the results for MI Link assessment. */
 export type SqlServerInstancesRunManagedInstanceLinkAssessmentResponseAssessmentsList =
-  SqlServerInstanceManagedInstanceLinkAssessment[];
+  ReadonlyArray<SqlServerInstanceManagedInstanceLinkAssessment>;
 export const SqlServerInstancesRunManagedInstanceLinkAssessmentResponseAssessmentsList =
   /*@__PURE__*/ S.Array(
     SqlServerInstanceManagedInstanceLinkAssessment,
@@ -7676,14 +9502,13 @@ export type SqlServerInstancesRunMigrationAssessmentResponseJobStatus =
   | "NotStarted"
   | "InProgress"
   | "Succeeded"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const SqlServerInstancesRunMigrationAssessmentResponseJobStatus =
   /*@__PURE__*/ S.String;
 
 /** The list of sequencer actions. */
 export type SqlServerInstancesRunMigrationAssessmentResponseSequencerActionsList =
-  SequencerAction[];
+  ReadonlyArray<SequencerAction>;
 export const SqlServerInstancesRunMigrationAssessmentResponseSequencerActionsList =
   /*@__PURE__*/ S.Array(
     SequencerAction,
@@ -7721,6 +9546,124 @@ export const SqlServerInstancesRunMigrationAssessmentResponse =
     identifier: "SqlServerInstancesRunMigrationAssessmentResponse",
   }) as any as S.Schema<SqlServerInstancesRunMigrationAssessmentResponse>;
 
+/** Resource tags. */
+export type SqlServerInstancesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerInstancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerInstancesUpdateRequestTagsMap>;
+
+/** SQL Server version. */
+export type SqlServerInstanceUpdatePropertiesInputVersion =
+  | "Unknown"
+  | "SQL Server 2012"
+  | "SQL Server 2014"
+  | "SQL Server 2016"
+  | "SQL Server 2017"
+  | "SQL Server 2019"
+  | "SQL Server 2022"
+  | "SQL Server 2025";
+export const SqlServerInstanceUpdatePropertiesInputVersion =
+  /*@__PURE__*/ S.String;
+
+/** SQL Server edition. */
+export type SqlServerInstanceUpdatePropertiesInputEdition =
+  | "Evaluation"
+  | "Enterprise"
+  | "Standard"
+  | "Web"
+  | "Developer"
+  | "Express"
+  | "Business Intelligence"
+  | "Standard Developer";
+export const SqlServerInstanceUpdatePropertiesInputEdition =
+  /*@__PURE__*/ S.String;
+
+/** Type of host for Azure Arc SQL Server */
+export type SqlServerInstanceUpdatePropertiesInputHostType =
+  | "Azure Virtual Machine"
+  | "Azure VMWare Virtual Machine"
+  | "Azure Kubernetes Service"
+  | "AWS VMWare Virtual Machine"
+  | "AWS Kubernetes Service"
+  | "GCP VMWare Virtual Machine"
+  | "GCP Kubernetes Service"
+  | "Container"
+  | "Virtual Machine"
+  | "Physical Server"
+  | "AWS Virtual Machine"
+  | "GCP Virtual Machine"
+  | "Other";
+export const SqlServerInstanceUpdatePropertiesInputHostType =
+  /*@__PURE__*/ S.String;
+
+/** Properties of update SqlServerInstance. */
+export interface SqlServerInstanceUpdatePropertiesInput {
+  /** SQL Server version. */
+  version?: SqlServerInstanceUpdatePropertiesInputVersion;
+  /** SQL Server edition. */
+  edition?: SqlServerInstanceUpdatePropertiesInputEdition;
+  /** The number of total cores of the Operating System Environment (OSE) hosting the SQL Server instance. */
+  cores?: string;
+  /** SQL Server instance name. */
+  instanceName?: string;
+  /** Type of host for Azure Arc SQL Server */
+  hostType?: SqlServerInstanceUpdatePropertiesInputHostType;
+  /** Failover Cluster Instance properties. */
+  failoverCluster?: FailoverClusterInput;
+  /** The backup profile for the SQL server. */
+  backupPolicy?: BackupPolicy;
+  /** Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty. */
+  upgradeLockedUntil?: string;
+  /** The monitoring configuration. */
+  monitoring?: Monitoring;
+  /** Migration related configuration. */
+  migration?: MigrationInput;
+  /** The configuration related to SQL best practices assessment. */
+  bestPracticesAssessment?: BestPracticesAssessment;
+  /** Client connection related configuration. */
+  clientConnection?: ClientConnection;
+  /** Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host. */
+  serviceType?: ServiceType;
+  /** Authentication related configuration for the SQL Server Instance. */
+  authentication?: Authentication;
+  /** Database mirroring endpoint related properties. */
+  databaseMirroringEndpoint?: DBMEndpointInput;
+  /** Indicates whether Microsoft PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains. */
+  isMicrosoftPkiCertTrustConfigured?: boolean;
+  /** Indicates whether DigiCert PKI root-authority certificate (trusted by Azure) exists in SQL Server and trusted for Azure database.windows.net domains. */
+  isDigiCertPkiCertTrustConfigured?: boolean;
+  /** maximum server memory (MB) value configured for this instance. */
+  maxServerMemoryMB?: number;
+}
+export const SqlServerInstanceUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      version: S.optional(SqlServerInstanceUpdatePropertiesInputVersion),
+      edition: S.optional(SqlServerInstanceUpdatePropertiesInputEdition),
+      cores: S.optional(S.String),
+      instanceName: S.optional(S.String),
+      hostType: S.optional(SqlServerInstanceUpdatePropertiesInputHostType),
+      failoverCluster: S.optional(FailoverClusterInput),
+      backupPolicy: S.optional(BackupPolicy),
+      upgradeLockedUntil: S.optional(S.String),
+      monitoring: S.optional(Monitoring),
+      migration: S.optional(MigrationInput),
+      bestPracticesAssessment: S.optional(BestPracticesAssessment),
+      clientConnection: S.optional(ClientConnection),
+      serviceType: S.optional(ServiceType),
+      authentication: S.optional(Authentication),
+      databaseMirroringEndpoint: S.optional(DBMEndpointInput),
+      isMicrosoftPkiCertTrustConfigured: S.optional(S.Boolean),
+      isDigiCertPkiCertTrustConfigured: S.optional(S.Boolean),
+      maxServerMemoryMB: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "SqlServerInstanceUpdatePropertiesInput",
+}) as any as S.Schema<SqlServerInstanceUpdatePropertiesInput>;
+
 export interface SqlServerInstancesUpdateRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -7728,14 +9671,18 @@ export interface SqlServerInstancesUpdateRequest {
   resourceGroupName: string;
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SqlServerInstancesUpdateRequestTagsMap;
+  /** null */
+  properties?: SqlServerInstanceUpdatePropertiesInput;
 }
 export const SqlServerInstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     sqlServerInstanceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SqlServerInstancesUpdateRequestTagsMap),
+    properties: S.optional(SqlServerInstanceUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7787,6 +9734,64 @@ export const SqlServerInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerInstancesUpdateResponse",
 }) as any as S.Schema<SqlServerInstancesUpdateResponse>;
 
+/** Resource tags. */
+export type SqlServerLicensesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerLicensesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerLicensesCreateRequestTagsMap>;
+
+/** SQL Server license type. */
+export type SqlServerLicensePropertiesInputBillingPlan = "PAYG" | "Paid";
+export const SqlServerLicensePropertiesInputBillingPlan =
+  /*@__PURE__*/ S.String;
+
+/** This property represents the choice between SQL Server Core and ESU licenses. */
+export type SqlServerLicensePropertiesInputLicenseCategory = "Core";
+export const SqlServerLicensePropertiesInputLicenseCategory =
+  /*@__PURE__*/ S.String;
+
+/** The activation state of the license. */
+export type SqlServerLicensePropertiesInputActivationState =
+  | "Activated"
+  | "Deactivated";
+export const SqlServerLicensePropertiesInputActivationState =
+  /*@__PURE__*/ S.String;
+
+/** The Azure scope to which the license will apply. */
+export type SqlServerLicensePropertiesInputScopeType =
+  | "Tenant"
+  | "Subscription"
+  | "ResourceGroup";
+export const SqlServerLicensePropertiesInputScopeType = /*@__PURE__*/ S.String;
+
+/** Properties of SQL Server License. */
+export interface SqlServerLicensePropertiesInput {
+  /** SQL Server license type. */
+  billingPlan: SqlServerLicensePropertiesInputBillingPlan;
+  /** The number of total cores of the license covers. */
+  physicalCores: number;
+  /** This property represents the choice between SQL Server Core and ESU licenses. */
+  licenseCategory: SqlServerLicensePropertiesInputLicenseCategory;
+  /** The activation state of the license. */
+  activationState: SqlServerLicensePropertiesInputActivationState;
+  /** The Azure scope to which the license will apply. */
+  scopeType: SqlServerLicensePropertiesInputScopeType;
+}
+export const SqlServerLicensePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingPlan: SqlServerLicensePropertiesInputBillingPlan,
+    physicalCores: S.Number,
+    licenseCategory: SqlServerLicensePropertiesInputLicenseCategory,
+    activationState: SqlServerLicensePropertiesInputActivationState,
+    scopeType: SqlServerLicensePropertiesInputScopeType,
+  }),
+).annotate({
+  identifier: "SqlServerLicensePropertiesInput",
+}) as any as S.Schema<SqlServerLicensePropertiesInput>;
+
 export interface SqlServerLicensesCreateRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -7794,14 +9799,21 @@ export interface SqlServerLicensesCreateRequest {
   resourceGroupName: string;
   /** Name of SQL Server License */
   sqlServerLicenseName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SqlServerLicensesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** SQL Server license properties */
+  properties: SqlServerLicensePropertiesInput;
 }
 export const SqlServerLicensesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     sqlServerLicenseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SqlServerLicensesCreateRequestTagsMap),
+    location: S.String,
+    properties: SqlServerLicensePropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7824,29 +9836,24 @@ export const SqlServerLicensesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlServerLicensesCreateResponseTagsMap>;
 
 /** SQL Server license type. */
-export type SqlServerLicensePropertiesBillingPlan =
-  | "PAYG"
-  | "Paid"
-  | (string & {});
+export type SqlServerLicensePropertiesBillingPlan = "PAYG" | "Paid";
 export const SqlServerLicensePropertiesBillingPlan = /*@__PURE__*/ S.String;
 
 /** This property represents the choice between SQL Server Core and ESU licenses. */
-export type SqlServerLicensePropertiesLicenseCategory = "Core" | (string & {});
+export type SqlServerLicensePropertiesLicenseCategory = "Core";
 export const SqlServerLicensePropertiesLicenseCategory = /*@__PURE__*/ S.String;
 
 /** The activation state of the license. */
 export type SqlServerLicensePropertiesActivationState =
   | "Activated"
-  | "Deactivated"
-  | (string & {});
+  | "Deactivated";
 export const SqlServerLicensePropertiesActivationState = /*@__PURE__*/ S.String;
 
 /** The Azure scope to which the license will apply. */
 export type SqlServerLicensePropertiesScopeType =
   | "Tenant"
   | "Subscription"
-  | "ResourceGroup"
-  | (string & {});
+  | "ResourceGroup";
 export const SqlServerLicensePropertiesScopeType = /*@__PURE__*/ S.String;
 
 /** Properties of SQL Server License. */
@@ -8067,7 +10074,8 @@ export const SqlServerLicense = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlServerLicense>;
 
 /** Array of results. */
-export type SqlServerLicensesListResponseValueList = SqlServerLicense[];
+export type SqlServerLicensesListResponseValueList =
+  ReadonlyArray<SqlServerLicense>;
 export const SqlServerLicensesListResponseValueList = /*@__PURE__*/ S.Array(
   SqlServerLicense,
 ) as any as S.Schema<SqlServerLicensesListResponseValueList>;
@@ -8112,7 +10120,7 @@ export const SqlServerLicensesListByResourceGroupRequest =
 
 /** Array of results. */
 export type SqlServerLicensesListByResourceGroupResponseValueList =
-  SqlServerLicense[];
+  ReadonlyArray<SqlServerLicense>;
 export const SqlServerLicensesListByResourceGroupResponseValueList =
   /*@__PURE__*/ S.Array(
     SqlServerLicense,
@@ -8134,6 +10142,70 @@ export const SqlServerLicensesListByResourceGroupResponse =
     identifier: "SqlServerLicensesListByResourceGroupResponse",
   }) as any as S.Schema<SqlServerLicensesListByResourceGroupResponse>;
 
+/** Resource tags. */
+export type SqlServerLicensesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlServerLicensesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlServerLicensesUpdateRequestTagsMap>;
+
+/** SQL Server license type. */
+export type SqlServerLicenseUpdatePropertiesInputBillingPlan = "PAYG" | "Paid";
+export const SqlServerLicenseUpdatePropertiesInputBillingPlan =
+  /*@__PURE__*/ S.String;
+
+/** This property represents the choice between SQL Server Core and ESU licenses. */
+export type SqlServerLicenseUpdatePropertiesInputLicenseCategory = "Core";
+export const SqlServerLicenseUpdatePropertiesInputLicenseCategory =
+  /*@__PURE__*/ S.String;
+
+/** The activation state of the license. */
+export type SqlServerLicenseUpdatePropertiesInputActivationState =
+  | "Activated"
+  | "Deactivated";
+export const SqlServerLicenseUpdatePropertiesInputActivationState =
+  /*@__PURE__*/ S.String;
+
+/** The Azure scope to which the license will apply. */
+export type SqlServerLicenseUpdatePropertiesInputScopeType =
+  | "Tenant"
+  | "Subscription"
+  | "ResourceGroup";
+export const SqlServerLicenseUpdatePropertiesInputScopeType =
+  /*@__PURE__*/ S.String;
+
+/** Properties of update SqlServerLicense. */
+export interface SqlServerLicenseUpdatePropertiesInput {
+  /** SQL Server license type. */
+  billingPlan?: SqlServerLicenseUpdatePropertiesInputBillingPlan;
+  /** The number of total cores of the license covers. */
+  physicalCores?: number;
+  /** This property represents the choice between SQL Server Core and ESU licenses. */
+  licenseCategory?: SqlServerLicenseUpdatePropertiesInputLicenseCategory;
+  /** The activation state of the license. */
+  activationState?: SqlServerLicenseUpdatePropertiesInputActivationState;
+  /** The Azure scope to which the license will apply. */
+  scopeType?: SqlServerLicenseUpdatePropertiesInputScopeType;
+}
+export const SqlServerLicenseUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      billingPlan: S.optional(SqlServerLicenseUpdatePropertiesInputBillingPlan),
+      physicalCores: S.optional(S.Number),
+      licenseCategory: S.optional(
+        SqlServerLicenseUpdatePropertiesInputLicenseCategory,
+      ),
+      activationState: S.optional(
+        SqlServerLicenseUpdatePropertiesInputActivationState,
+      ),
+      scopeType: S.optional(SqlServerLicenseUpdatePropertiesInputScopeType),
+    }),
+).annotate({
+  identifier: "SqlServerLicenseUpdatePropertiesInput",
+}) as any as S.Schema<SqlServerLicenseUpdatePropertiesInput>;
+
 export interface SqlServerLicensesUpdateRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -8141,14 +10213,18 @@ export interface SqlServerLicensesUpdateRequest {
   resourceGroupName: string;
   /** Name of SQL Server License */
   sqlServerLicenseName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SqlServerLicensesUpdateRequestTagsMap;
+  /** null */
+  properties?: SqlServerLicenseUpdatePropertiesInput;
 }
 export const SqlServerLicensesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     sqlServerLicenseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(SqlServerLicensesUpdateRequestTagsMap),
+    properties: S.optional(SqlServerLicenseUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

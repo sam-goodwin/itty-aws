@@ -17,6 +17,29 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.ssl#AnalyzeCreateRequestBundleMethod": {
+      "type": "enum",
+      "members": {
+        "UBIQUITOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ubiquitous"
+          }
+        },
+        "OPTIMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "optimal"
+          }
+        },
+        "FORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "force"
+          }
+        }
+      }
+    },
     "com.cloudflare.ssl#AnalyzeCreateRequest": {
       "type": "structure",
       "members": {
@@ -29,7 +52,7 @@
           }
         },
         "bundle_method": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ssl#AnalyzeCreateRequestBundleMethod",
           "traits": {
             "smithy.api#documentation": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it."
           }
@@ -478,34 +501,30 @@
       }
     },
     "com.cloudflare.ssl#CertificatePacksCreateRequestValidityDays": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_14": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "14"
+            "smithy.api#enumValue": 14
           }
         },
         "_30": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "30"
+            "smithy.api#enumValue": 30
           }
         },
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         },
         "_365": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "365"
+            "smithy.api#enumValue": 365
           }
         }
       }
@@ -696,6 +715,137 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.ssl#CertificatePacksCreateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING_VALIDATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_validation"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "PENDING_ISSUANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_issuance"
+          }
+        },
+        "PENDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deployment"
+          }
+        },
+        "PENDING_DELETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deletion"
+          }
+        },
+        "PENDING_EXPIRATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_expiration"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "INITIALIZING_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing_timed_out"
+          }
+        },
+        "VALIDATION_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "validation_timed_out"
+          }
+        },
+        "ISSUANCE_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "issuance_timed_out"
+          }
+        },
+        "DEPLOYMENT_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deployment_timed_out"
+          }
+        },
+        "DELETION_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deletion_timed_out"
+          }
+        },
+        "PENDING_CLEANUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_cleanup"
+          }
+        },
+        "STAGING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "staging_deployment"
+          }
+        },
+        "STAGING_ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "staging_active"
+          }
+        },
+        "DEACTIVATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deactivating"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactive"
+          }
+        },
+        "BACKUP_ISSUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backup_issued"
+          }
+        },
+        "HOLDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "holding_deployment"
+          }
+        }
+      }
+    },
     "com.cloudflare.ssl#CertificatePacksCreateResponseType": {
       "type": "enum",
       "members": {
@@ -715,6 +865,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sni_custom"
+          }
+        },
+        "UNIVERSAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "universal"
+          }
+        },
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "TOTAL_TLS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "total_tls"
+          }
+        },
+        "KEYLESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keyless"
+          }
+        },
+        "LEGACY_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legacy_custom"
           }
         }
       }
@@ -913,34 +1093,30 @@
       }
     },
     "com.cloudflare.ssl#CertificatePacksCreateResponseValidityDays": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_14": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "14"
+            "smithy.api#enumValue": 14
           }
         },
         "_30": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "30"
+            "smithy.api#enumValue": 30
           }
         },
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         },
         "_365": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "365"
+            "smithy.api#enumValue": 365
           }
         }
       }
@@ -970,7 +1146,7 @@
           }
         },
         "status": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ssl#CertificatePacksCreateResponseStatus",
           "traits": {
             "smithy.api#documentation": "Status of certificate pack.",
             "smithy.api#required": {}
@@ -1270,6 +1446,137 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.ssl#CertificatePacksEditResponseStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING_VALIDATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_validation"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "PENDING_ISSUANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_issuance"
+          }
+        },
+        "PENDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deployment"
+          }
+        },
+        "PENDING_DELETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deletion"
+          }
+        },
+        "PENDING_EXPIRATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_expiration"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "INITIALIZING_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing_timed_out"
+          }
+        },
+        "VALIDATION_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "validation_timed_out"
+          }
+        },
+        "ISSUANCE_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "issuance_timed_out"
+          }
+        },
+        "DEPLOYMENT_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deployment_timed_out"
+          }
+        },
+        "DELETION_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deletion_timed_out"
+          }
+        },
+        "PENDING_CLEANUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_cleanup"
+          }
+        },
+        "STAGING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "staging_deployment"
+          }
+        },
+        "STAGING_ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "staging_active"
+          }
+        },
+        "DEACTIVATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deactivating"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactive"
+          }
+        },
+        "BACKUP_ISSUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backup_issued"
+          }
+        },
+        "HOLDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "holding_deployment"
+          }
+        }
+      }
+    },
     "com.cloudflare.ssl#CertificatePacksEditResponseType": {
       "type": "enum",
       "members": {
@@ -1289,6 +1596,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sni_custom"
+          }
+        },
+        "UNIVERSAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "universal"
+          }
+        },
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "TOTAL_TLS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "total_tls"
+          }
+        },
+        "KEYLESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keyless"
+          }
+        },
+        "LEGACY_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legacy_custom"
           }
         }
       }
@@ -1487,34 +1824,30 @@
       }
     },
     "com.cloudflare.ssl#CertificatePacksEditResponseValidityDays": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_14": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "14"
+            "smithy.api#enumValue": 14
           }
         },
         "_30": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "30"
+            "smithy.api#enumValue": 30
           }
         },
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         },
         "_365": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "365"
+            "smithy.api#enumValue": 365
           }
         }
       }
@@ -1544,7 +1877,7 @@
           }
         },
         "status": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ssl#CertificatePacksEditResponseStatus",
           "traits": {
             "smithy.api#documentation": "Status of certificate pack.",
             "smithy.api#required": {}
@@ -1781,6 +2114,137 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.ssl#CertificatePacksGetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING_VALIDATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_validation"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "PENDING_ISSUANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_issuance"
+          }
+        },
+        "PENDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deployment"
+          }
+        },
+        "PENDING_DELETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deletion"
+          }
+        },
+        "PENDING_EXPIRATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_expiration"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "INITIALIZING_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing_timed_out"
+          }
+        },
+        "VALIDATION_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "validation_timed_out"
+          }
+        },
+        "ISSUANCE_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "issuance_timed_out"
+          }
+        },
+        "DEPLOYMENT_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deployment_timed_out"
+          }
+        },
+        "DELETION_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deletion_timed_out"
+          }
+        },
+        "PENDING_CLEANUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_cleanup"
+          }
+        },
+        "STAGING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "staging_deployment"
+          }
+        },
+        "STAGING_ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "staging_active"
+          }
+        },
+        "DEACTIVATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deactivating"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactive"
+          }
+        },
+        "BACKUP_ISSUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backup_issued"
+          }
+        },
+        "HOLDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "holding_deployment"
+          }
+        }
+      }
+    },
     "com.cloudflare.ssl#CertificatePacksGetResponseType": {
       "type": "enum",
       "members": {
@@ -1800,6 +2264,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sni_custom"
+          }
+        },
+        "UNIVERSAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "universal"
+          }
+        },
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "TOTAL_TLS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "total_tls"
+          }
+        },
+        "KEYLESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keyless"
+          }
+        },
+        "LEGACY_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legacy_custom"
           }
         }
       }
@@ -1998,34 +2492,30 @@
       }
     },
     "com.cloudflare.ssl#CertificatePacksGetResponseValidityDays": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_14": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "14"
+            "smithy.api#enumValue": 14
           }
         },
         "_30": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "30"
+            "smithy.api#enumValue": 30
           }
         },
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         },
         "_365": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "365"
+            "smithy.api#enumValue": 365
           }
         }
       }
@@ -2055,7 +2545,7 @@
           }
         },
         "status": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ssl#CertificatePacksGetResponseStatus",
           "traits": {
             "smithy.api#documentation": "Status of certificate pack.",
             "smithy.api#required": {}
@@ -2341,6 +2831,137 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.ssl#CertificatePacksListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "PENDING_VALIDATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_validation"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deleted"
+          }
+        },
+        "PENDING_ISSUANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_issuance"
+          }
+        },
+        "PENDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deployment"
+          }
+        },
+        "PENDING_DELETION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deletion"
+          }
+        },
+        "PENDING_EXPIRATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_expiration"
+          }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "INITIALIZING_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing_timed_out"
+          }
+        },
+        "VALIDATION_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "validation_timed_out"
+          }
+        },
+        "ISSUANCE_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "issuance_timed_out"
+          }
+        },
+        "DEPLOYMENT_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deployment_timed_out"
+          }
+        },
+        "DELETION_TIMED_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deletion_timed_out"
+          }
+        },
+        "PENDING_CLEANUP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_cleanup"
+          }
+        },
+        "STAGING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "staging_deployment"
+          }
+        },
+        "STAGING_ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "staging_active"
+          }
+        },
+        "DEACTIVATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deactivating"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inactive"
+          }
+        },
+        "BACKUP_ISSUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backup_issued"
+          }
+        },
+        "HOLDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "holding_deployment"
+          }
+        }
+      }
+    },
     "com.cloudflare.ssl#CertificatePacksListResultItemType": {
       "type": "enum",
       "members": {
@@ -2360,6 +2981,36 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "sni_custom"
+          }
+        },
+        "UNIVERSAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "universal"
+          }
+        },
+        "ADVANCED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "advanced"
+          }
+        },
+        "TOTAL_TLS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "total_tls"
+          }
+        },
+        "KEYLESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "keyless"
+          }
+        },
+        "LEGACY_CUSTOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legacy_custom"
           }
         }
       }
@@ -2558,34 +3209,30 @@
       }
     },
     "com.cloudflare.ssl#CertificatePacksListResultItemValidityDays": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_14": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "14"
+            "smithy.api#enumValue": 14
           }
         },
         "_30": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "30"
+            "smithy.api#enumValue": 30
           }
         },
         "_90": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "90"
+            "smithy.api#enumValue": 90
           }
         },
         "_365": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "365"
+            "smithy.api#enumValue": 365
           }
         }
       }
@@ -2615,7 +3262,7 @@
           }
         },
         "status": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ssl#CertificatePacksListResultItemStatus",
           "traits": {
             "smithy.api#documentation": "Status of certificate pack.",
             "smithy.api#required": {}
@@ -3053,6 +3700,30 @@
           "traits": {
             "smithy.api#enumValue": "active"
           }
+        },
+        "EXPIRED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "expired"
+          }
+        },
+        "ISSUING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "issuing"
+          }
+        },
+        "TIMING_OUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timing_out"
+          }
+        },
+        "PENDING_DEPLOYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending_deployment"
+          }
         }
       }
     },
@@ -3075,6 +3746,29 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "SHA256WithRSA"
+          }
+        }
+      }
+    },
+    "com.cloudflare.ssl#VerificationGetResultItemValidationMethod": {
+      "type": "enum",
+      "members": {
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cname"
+          }
+        },
+        "TXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "txt"
           }
         }
       }
@@ -3200,7 +3894,7 @@
           }
         },
         "validation_method": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.ssl#VerificationGetResultItemValidationMethod",
           "traits": {
             "smithy.api#documentation": "Validation method in use for a certificate pack order."
           }

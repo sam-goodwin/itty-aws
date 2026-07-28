@@ -175,8 +175,7 @@ export type GoogleCloudDatacatalogV1EntryTypeEnum =
   | "FEATURE_ONLINE_STORE"
   | "FEATURE_VIEW"
   | "FEATURE_GROUP"
-  | "GRAPH"
-  | (string & {});
+  | "GRAPH";
 export const GoogleCloudDatacatalogV1EntryTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1EntryIntegratedSystemEnum =
@@ -189,8 +188,7 @@ export type GoogleCloudDatacatalogV1EntryIntegratedSystemEnum =
   | "CLOUD_BIGTABLE"
   | "CLOUD_SQL"
   | "LOOKER"
-  | "VERTEX_AI"
-  | (string & {});
+  | "VERTEX_AI";
 export const GoogleCloudDatacatalogV1EntryIntegratedSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -257,7 +255,7 @@ export const GoogleCloudDatacatalogV1CloudBigtableSystemSpec =
     identifier: "GoogleCloudDatacatalogV1CloudBigtableSystemSpec",
   }) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableSystemSpec>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -282,7 +280,7 @@ export const GoogleCloudDatacatalogV1GcsFileSpec = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudDatacatalogV1GcsFileSpec>;
 
 export type GoogleCloudDatacatalogV1GcsFileSpecList =
-  GoogleCloudDatacatalogV1GcsFileSpec[];
+  ReadonlyArray<GoogleCloudDatacatalogV1GcsFileSpec>;
 export const GoogleCloudDatacatalogV1GcsFileSpecList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1GcsFileSpec,
 ) as any as S.Schema<GoogleCloudDatacatalogV1GcsFileSpecList>;
@@ -308,8 +306,7 @@ export type GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum =
   | "TABLE_SOURCE_TYPE_UNSPECIFIED"
   | "BIGQUERY_VIEW"
   | "BIGQUERY_TABLE"
-  | "BIGQUERY_MATERIALIZED_VIEW"
-  | (string & {});
+  | "BIGQUERY_MATERIALIZED_VIEW";
 export const GoogleCloudDatacatalogV1BigQueryTableSpecTableSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -387,8 +384,7 @@ export const GoogleCloudDatacatalogV1BigQueryDateShardedSpec =
 export type GoogleCloudDatacatalogV1DatabaseTableSpecTypeEnum =
   | "TABLE_TYPE_UNSPECIFIED"
   | "NATIVE"
-  | "EXTERNAL"
-  | (string & {});
+  | "EXTERNAL";
 export const GoogleCloudDatacatalogV1DatabaseTableSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -402,8 +398,7 @@ export type GoogleCloudDatacatalogV1DataplexExternalTableSystemEnum =
   | "CLOUD_BIGTABLE"
   | "CLOUD_SQL"
   | "LOOKER"
-  | "VERTEX_AI"
-  | (string & {});
+  | "VERTEX_AI";
 export const GoogleCloudDatacatalogV1DataplexExternalTableSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -433,7 +428,7 @@ export const GoogleCloudDatacatalogV1DataplexExternalTable =
   }) as any as S.Schema<GoogleCloudDatacatalogV1DataplexExternalTable>;
 
 export type GoogleCloudDatacatalogV1DataplexExternalTableList =
-  GoogleCloudDatacatalogV1DataplexExternalTable[];
+  ReadonlyArray<GoogleCloudDatacatalogV1DataplexExternalTable>;
 export const GoogleCloudDatacatalogV1DataplexExternalTableList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1DataplexExternalTable,
@@ -579,10 +574,7 @@ export const GoogleCloudDatacatalogV1DataplexTableSpec =
   }) as any as S.Schema<GoogleCloudDatacatalogV1DataplexTableSpec>;
 
 export type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeEnum =
-    | "VIEW_TYPE_UNSPECIFIED"
-    | "STANDARD_VIEW"
-    | "MATERIALIZED_VIEW"
-    | (string & {});
+  "VIEW_TYPE_UNSPECIFIED" | "STANDARD_VIEW" | "MATERIALIZED_VIEW";
 export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -632,16 +624,14 @@ export const GoogleCloudDatacatalogV1DatabaseTableSpec =
 
 export type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
-  | "CLOUD_SQL"
-  | (string & {});
+  | "CLOUD_SQL";
 export const GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
   | "POSTGRES"
-  | "MYSQL"
-  | (string & {});
+  | "MYSQL";
 export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -710,8 +700,7 @@ export const GoogleCloudDatacatalogV1DataSourceConnectionSpec =
 export type GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum =
   | "ROUTINE_TYPE_UNSPECIFIED"
   | "SCALAR_FUNCTION"
-  | "PROCEDURE"
-  | (string & {});
+  | "PROCEDURE";
 export const GoogleCloudDatacatalogV1RoutineSpecRoutineTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -719,8 +708,7 @@ export type GoogleCloudDatacatalogV1RoutineSpecArgumentModeEnum =
   | "MODE_UNSPECIFIED"
   | "IN"
   | "OUT"
-  | "INOUT"
-  | (string & {});
+  | "INOUT";
 export const GoogleCloudDatacatalogV1RoutineSpecArgumentModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -745,7 +733,7 @@ export const GoogleCloudDatacatalogV1RoutineSpecArgument =
   }) as any as S.Schema<GoogleCloudDatacatalogV1RoutineSpecArgument>;
 
 export type GoogleCloudDatacatalogV1RoutineSpecArgumentList =
-  GoogleCloudDatacatalogV1RoutineSpecArgument[];
+  ReadonlyArray<GoogleCloudDatacatalogV1RoutineSpecArgument>;
 export const GoogleCloudDatacatalogV1RoutineSpecArgumentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1RoutineSpecArgument,
@@ -810,8 +798,7 @@ export type GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum =
   | "TRANSLATION"
   | "STORE_VISION"
   | "ENTERPRISE_KNOWLEDGE_GRAPH"
-  | "TEXT_PROMPT"
-  | (string & {});
+  | "TEXT_PROMPT";
 export const GoogleCloudDatacatalogV1VertexDatasetSpecDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -899,7 +886,7 @@ export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClust
   }) as any as S.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
 
 export type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList =
-  GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec[];
+  ReadonlyArray<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
 export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec,
@@ -944,8 +931,7 @@ export type GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum =
   | "MODEL_GARDEN"
   | "GENIE"
   | "CUSTOM_TEXT_EMBEDDING"
-  | "MARKETPLACE"
-  | (string & {});
+  | "MARKETPLACE";
 export const GoogleCloudDatacatalogV1VertexModelSourceInfoSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1012,8 +998,7 @@ export const GoogleCloudDatacatalogV1ModelSpec = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum =
   | "STORAGE_TYPE_UNSPECIFIED"
   | "BIGTABLE"
-  | "OPTIMIZED"
-  | (string & {});
+  | "OPTIMIZED";
 export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpecStorageTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1036,16 +1021,14 @@ export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpec =
 export type GoogleCloudDatacatalogV1GraphSpecGraphElementTableKindEnum =
   | "KIND_UNSPECIFIED"
   | "NODE"
-  | "EDGE"
-  | (string & {});
+  | "EDGE";
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableKindEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1GraphSpecGraphElementTableInputSourceEnum =
   | "INPUT_SOURCE_UNSPECIFIED"
   | "TABLE"
-  | "VIEW"
-  | (string & {});
+  | "VIEW";
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableInputSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1067,7 +1050,7 @@ export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty =
   }) as any as S.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>;
 
 export type GoogleCloudDatacatalogV1GraphSpecGraphElementTablePropertyList =
-  GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty[];
+  ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>;
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTablePropertyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty,
@@ -1094,7 +1077,7 @@ export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPropertie
   }) as any as S.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties>;
 
 export type GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPropertiesList =
-  GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties[];
+  ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties>;
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPropertiesList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties,
@@ -1173,7 +1156,7 @@ export const GoogleCloudDatacatalogV1GraphSpecGraphElementTable =
   }) as any as S.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
 
 export type GoogleCloudDatacatalogV1GraphSpecGraphElementTableList =
-  GoogleCloudDatacatalogV1GraphSpecGraphElementTable[];
+  ReadonlyArray<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
 export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1GraphSpecGraphElementTable,
@@ -1235,7 +1218,7 @@ export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKey
   }) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
 
 export type GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList =
-  GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping[];
+  ReadonlyArray<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
 export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMappingList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping,
@@ -1264,7 +1247,7 @@ export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey =
   }) as any as S.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
 
 export type GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList =
-  GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey[];
+  ReadonlyArray<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
 export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey,
@@ -1323,7 +1306,7 @@ export const GoogleCloudDatacatalogV1ContactsPerson = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDatacatalogV1ContactsPerson>;
 
 export type GoogleCloudDatacatalogV1ContactsPersonList =
-  GoogleCloudDatacatalogV1ContactsPerson[];
+  ReadonlyArray<GoogleCloudDatacatalogV1ContactsPerson>;
 export const GoogleCloudDatacatalogV1ContactsPersonList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1ContactsPerson,
 ) as any as S.Schema<GoogleCloudDatacatalogV1ContactsPersonList>;
@@ -1363,8 +1346,7 @@ export type GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeEnum =
   | "INDEXING_TYPE_NONE"
   | "INDEXING_TYPE_NON_UNIQUE"
   | "INDEXING_TYPE_UNIQUE"
-  | "INDEXING_TYPE_PRIMARY_KEY"
-  | (string & {});
+  | "INDEXING_TYPE_PRIMARY_KEY";
 export const GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1374,8 +1356,7 @@ export type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeEnum =
   | "DIMENSION_GROUP"
   | "FILTER"
   | "MEASURE"
-  | "PARAMETER"
-  | (string & {});
+  | "PARAMETER";
 export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1462,7 +1443,7 @@ export const GoogleCloudDatacatalogV1ColumnSchema = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudDatacatalogV1ColumnSchema>;
 
 export type GoogleCloudDatacatalogV1ColumnSchemaList =
-  GoogleCloudDatacatalogV1ColumnSchema[];
+  ReadonlyArray<GoogleCloudDatacatalogV1ColumnSchema>;
 export const GoogleCloudDatacatalogV1ColumnSchemaList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1ColumnSchema,
 ) as any as S.Schema<GoogleCloudDatacatalogV1ColumnSchemaList>;
@@ -1566,8 +1547,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type GoogleCloudDatacatalogV1DataSourceServiceEnum =
   | "SERVICE_UNSPECIFIED"
   | "CLOUD_STORAGE"
-  | "BIGQUERY"
-  | (string & {});
+  | "BIGQUERY";
 export const GoogleCloudDatacatalogV1DataSourceServiceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1831,8 +1811,7 @@ export const GoogleCloudDatacatalogV1TagFieldMap = /*@__PURE__*/ S.Record(
 export type GoogleCloudDatacatalogV1TagDataplexTransferStatusEnum =
   | "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED"
   | "MIGRATED"
-  | "TRANSFERRED"
-  | (string & {});
+  | "TRANSFERRED";
 export const GoogleCloudDatacatalogV1TagDataplexTransferStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1916,8 +1895,7 @@ export type GoogleCloudDatacatalogV1FieldTypePrimitiveTypeEnum =
   | "STRING"
   | "BOOL"
   | "TIMESTAMP"
-  | "RICHTEXT"
-  | (string & {});
+  | "RICHTEXT";
 export const GoogleCloudDatacatalogV1FieldTypePrimitiveTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1935,7 +1913,7 @@ export const GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue =
   }) as any as S.Schema<GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue>;
 
 export type GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueList =
-  GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue[];
+  ReadonlyArray<GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue>;
 export const GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1FieldTypeEnumTypeEnumValue,
@@ -2014,8 +1992,7 @@ export const GoogleCloudDatacatalogV1TagTemplateFieldMap =
 export type GoogleCloudDatacatalogV1TagTemplateDataplexTransferStatusEnum =
   | "DATAPLEX_TRANSFER_STATUS_UNSPECIFIED"
   | "MIGRATED"
-  | "TRANSFERRED"
-  | (string & {});
+  | "TRANSFERRED";
 export const GoogleCloudDatacatalogV1TagTemplateDataplexTransferStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2100,13 +2077,12 @@ export const CreateProjectsLocationsTagTemplatesFieldsRequest =
 
 export type GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum =
   | "POLICY_TYPE_UNSPECIFIED"
-  | "FINE_GRAINED_ACCESS_CONTROL"
-  | (string & {});
+  | "FINE_GRAINED_ACCESS_CONTROL";
 export const GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList =
-  GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum[];
+  ReadonlyArray<GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum>;
 export const GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnum,
@@ -2115,8 +2091,7 @@ export const GoogleCloudDatacatalogV1TaxonomyActivatedPolicyTypesItemEnumList =
 export type GoogleCloudDatacatalogV1TaxonomyServiceNameEnum =
   | "MANAGING_SYSTEM_UNSPECIFIED"
   | "MANAGING_SYSTEM_DATAPLEX"
-  | "MANAGING_SYSTEM_OTHER"
-  | (string & {});
+  | "MANAGING_SYSTEM_OTHER";
 export const GoogleCloudDatacatalogV1TaxonomyServiceNameEnum =
   /*@__PURE__*/ S.String;
 
@@ -2470,19 +2445,19 @@ export const GoogleCloudDatacatalogV1SerializedPolicyTag =
   }) as any as S.Schema<GoogleCloudDatacatalogV1SerializedPolicyTag>;
 
 export type GoogleCloudDatacatalogV1SerializedPolicyTagList =
-  GoogleCloudDatacatalogV1SerializedPolicyTag[];
+  ReadonlyArray<GoogleCloudDatacatalogV1SerializedPolicyTag>;
 export const GoogleCloudDatacatalogV1SerializedPolicyTagList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SerializedPolicyTag,
   ) as any as S.Schema<GoogleCloudDatacatalogV1SerializedPolicyTagList>;
 
 export type GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum =
-  "POLICY_TYPE_UNSPECIFIED" | "FINE_GRAINED_ACCESS_CONTROL" | (string & {});
+  "POLICY_TYPE_UNSPECIFIED" | "FINE_GRAINED_ACCESS_CONTROL";
 export const GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnumList =
-  GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum[];
+  ReadonlyArray<GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum>;
 export const GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SerializedTaxonomyActivatedPolicyTypesItemEnum,
@@ -2514,7 +2489,7 @@ export const GoogleCloudDatacatalogV1SerializedTaxonomy =
   }) as any as S.Schema<GoogleCloudDatacatalogV1SerializedTaxonomy>;
 
 export type GoogleCloudDatacatalogV1SerializedTaxonomyList =
-  GoogleCloudDatacatalogV1SerializedTaxonomy[];
+  ReadonlyArray<GoogleCloudDatacatalogV1SerializedTaxonomy>;
 export const GoogleCloudDatacatalogV1SerializedTaxonomyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SerializedTaxonomy,
@@ -2619,7 +2594,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -2795,7 +2770,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -3010,7 +2985,7 @@ export const ImportProjectsLocationsTaxonomiesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ImportProjectsLocationsTaxonomiesRequest>;
 
 export type GoogleCloudDatacatalogV1TaxonomyList =
-  GoogleCloudDatacatalogV1Taxonomy[];
+  ReadonlyArray<GoogleCloudDatacatalogV1Taxonomy>;
 export const GoogleCloudDatacatalogV1TaxonomyList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1Taxonomy,
 ) as any as S.Schema<GoogleCloudDatacatalogV1TaxonomyList>;
@@ -3055,7 +3030,7 @@ export const ListProjectsLocationsEntryGroupsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsEntryGroupsRequest>;
 
 export type GoogleCloudDatacatalogV1EntryGroupList =
-  GoogleCloudDatacatalogV1EntryGroup[];
+  ReadonlyArray<GoogleCloudDatacatalogV1EntryGroup>;
 export const GoogleCloudDatacatalogV1EntryGroupList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1EntryGroup,
 ) as any as S.Schema<GoogleCloudDatacatalogV1EntryGroupList>;
@@ -3105,7 +3080,8 @@ export const ListProjectsLocationsEntryGroupsEntriesRequest =
     identifier: "ListProjectsLocationsEntryGroupsEntriesRequest",
   }) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesRequest>;
 
-export type GoogleCloudDatacatalogV1EntryList = GoogleCloudDatacatalogV1Entry[];
+export type GoogleCloudDatacatalogV1EntryList =
+  ReadonlyArray<GoogleCloudDatacatalogV1Entry>;
 export const GoogleCloudDatacatalogV1EntryList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1Entry,
 ) as any as S.Schema<GoogleCloudDatacatalogV1EntryList>;
@@ -3152,7 +3128,8 @@ export const ListProjectsLocationsEntryGroupsEntriesTagsRequest =
     identifier: "ListProjectsLocationsEntryGroupsEntriesTagsRequest",
   }) as any as S.Schema<ListProjectsLocationsEntryGroupsEntriesTagsRequest>;
 
-export type GoogleCloudDatacatalogV1TagList = GoogleCloudDatacatalogV1Tag[];
+export type GoogleCloudDatacatalogV1TagList =
+  ReadonlyArray<GoogleCloudDatacatalogV1Tag>;
 export const GoogleCloudDatacatalogV1TagList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1Tag,
 ) as any as S.Schema<GoogleCloudDatacatalogV1TagList>;
@@ -3230,7 +3207,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -3325,7 +3302,7 @@ export const ListProjectsLocationsTaxonomiesPolicyTagsRequest =
   }) as any as S.Schema<ListProjectsLocationsTaxonomiesPolicyTagsRequest>;
 
 export type GoogleCloudDatacatalogV1PolicyTagList =
-  GoogleCloudDatacatalogV1PolicyTag[];
+  ReadonlyArray<GoogleCloudDatacatalogV1PolicyTag>;
 export const GoogleCloudDatacatalogV1PolicyTagList = /*@__PURE__*/ S.Array(
   GoogleCloudDatacatalogV1PolicyTag,
 ) as any as S.Schema<GoogleCloudDatacatalogV1PolicyTagList>;
@@ -3841,16 +3818,14 @@ export const RetrieveConfigOrganizationsLocationsRequest =
 export type GoogleCloudDatacatalogV1MigrationConfigTagTemplateMigrationEnum =
   | "TAG_TEMPLATE_MIGRATION_UNSPECIFIED"
   | "TAG_TEMPLATE_MIGRATION_ENABLED"
-  | "TAG_TEMPLATE_MIGRATION_DISABLED"
-  | (string & {});
+  | "TAG_TEMPLATE_MIGRATION_DISABLED";
 export const GoogleCloudDatacatalogV1MigrationConfigTagTemplateMigrationEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1MigrationConfigCatalogUiExperienceEnum =
   | "CATALOG_UI_EXPERIENCE_UNSPECIFIED"
   | "CATALOG_UI_EXPERIENCE_ENABLED"
-  | "CATALOG_UI_EXPERIENCE_DISABLED"
-  | (string & {});
+  | "CATALOG_UI_EXPERIENCE_DISABLED";
 export const GoogleCloudDatacatalogV1MigrationConfigCatalogUiExperienceEnum =
   /*@__PURE__*/ S.String;
 
@@ -4021,8 +3996,7 @@ export type GoogleCloudDatacatalogV1SearchCatalogResultSearchResultTypeEnum =
   | "SEARCH_RESULT_TYPE_UNSPECIFIED"
   | "ENTRY"
   | "TAG_TEMPLATE"
-  | "ENTRY_GROUP"
-  | (string & {});
+  | "ENTRY_GROUP";
 export const GoogleCloudDatacatalogV1SearchCatalogResultSearchResultTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4036,8 +4010,7 @@ export type GoogleCloudDatacatalogV1SearchCatalogResultIntegratedSystemEnum =
   | "CLOUD_BIGTABLE"
   | "CLOUD_SQL"
   | "LOOKER"
-  | "VERTEX_AI"
-  | (string & {});
+  | "VERTEX_AI";
 export const GoogleCloudDatacatalogV1SearchCatalogResultIntegratedSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -4087,7 +4060,7 @@ export const GoogleCloudDatacatalogV1SearchCatalogResult =
   }) as any as S.Schema<GoogleCloudDatacatalogV1SearchCatalogResult>;
 
 export type GoogleCloudDatacatalogV1SearchCatalogResultList =
-  GoogleCloudDatacatalogV1SearchCatalogResult[];
+  ReadonlyArray<GoogleCloudDatacatalogV1SearchCatalogResult>;
 export const GoogleCloudDatacatalogV1SearchCatalogResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudDatacatalogV1SearchCatalogResult,
@@ -4119,16 +4092,14 @@ export const GoogleCloudDatacatalogV1SearchCatalogResponse =
 export type GoogleCloudDatacatalogV1SetConfigRequestTagTemplateMigrationEnum =
   | "TAG_TEMPLATE_MIGRATION_UNSPECIFIED"
   | "TAG_TEMPLATE_MIGRATION_ENABLED"
-  | "TAG_TEMPLATE_MIGRATION_DISABLED"
-  | (string & {});
+  | "TAG_TEMPLATE_MIGRATION_DISABLED";
 export const GoogleCloudDatacatalogV1SetConfigRequestTagTemplateMigrationEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudDatacatalogV1SetConfigRequestCatalogUiExperienceEnum =
   | "CATALOG_UI_EXPERIENCE_UNSPECIFIED"
   | "CATALOG_UI_EXPERIENCE_ENABLED"
-  | "CATALOG_UI_EXPERIENCE_DISABLED"
-  | (string & {});
+  | "CATALOG_UI_EXPERIENCE_DISABLED";
 export const GoogleCloudDatacatalogV1SetConfigRequestCatalogUiExperienceEnum =
   /*@__PURE__*/ S.String;
 

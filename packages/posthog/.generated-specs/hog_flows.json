@@ -151,7 +151,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.hog_flows#UserBasic"
+          "target": "com.posthog.hog_flows#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "updated_at": {
           "target": "smithy.api#String"
@@ -938,105 +941,6 @@
         "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
       }
     },
-    "com.posthog.hog_flows#HogFlowSchedule": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "rrule": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "iCalendar RRULE string (e.g. 'FREQ=DAILY;INTERVAL=1'). Must produce occurrences at most once per hour."
-          }
-        },
-        "starts_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ISO 8601 datetime the schedule starts from."
-          }
-        },
-        "timezone": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "IANA timezone for interpreting the RRULE (default 'UTC')."
-          }
-        },
-        "variables": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Variable value overrides merged with the workflow defaults on each run."
-          }
-        },
-        "status": {
-          "target": "com.posthog.hog_flows#HogFlowScheduleStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "active, paused, or completed (set once the RRULE's COUNT/UNTIL is exhausted).\n\n* `active` - Active\n* `paused` - Paused\n* `completed` - Completed"
-          }
-        },
-        "next_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Next scheduled fire time, computed by the scheduler.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {}
-    },
-    "com.posthog.hog_flows#HogFlowScheduleStatusEnum": {
-      "type": "enum",
-      "members": {
-        "ACTIVE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "active"
-          }
-        },
-        "PAUSED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "paused"
-          }
-        },
-        "COMPLETED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "completed"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `active` - Active\n* `paused` - Paused\n* `completed` - Completed"
-      }
-    },
-    "com.posthog.hog_flows#HogFlowsCreateRequestSchedulesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.hog_flows#HogFlowSchedule"
-      },
-      "traits": {
-        "smithy.api#documentation": "Recurring schedules attached to this workflow (read-only here; manage via the schedules sub-resource). A batch/schedule workflow only fires when it's active AND has an active schedule. Empty for non-scheduled workflows."
-      }
-    },
-    "com.posthog.hog_flows#HogFlowsCreateRequestActionRedirectsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred."
-      }
-    },
     "com.posthog.hog_flows#HogFlowsCreateRequest": {
       "type": "structure",
       "members": {
@@ -1047,9 +951,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "id": {
-          "target": "smithy.api#String"
         },
         "name": {
           "target": "smithy.api#String",
@@ -1064,26 +965,11 @@
             "smithy.api#documentation": "Optional description."
           }
         },
-        "version": {
-          "target": "smithy.api#Integer"
-        },
         "status": {
           "target": "com.posthog.hog_flows#HogFlowStatusEnum",
           "traits": {
             "smithy.api#documentation": "draft (no execution), active (live), archived (disabled).\n\n* `draft` - Draft\n* `active` - Active\n* `archived` - Archived"
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.hog_flows#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "trigger": {
-          "target": "smithy.api#Document"
         },
         "trigger_masking": {
           "target": "com.posthog.hog_flows#HogFlowMasking",
@@ -1117,52 +1003,10 @@
             "smithy.api#documentation": "Ordered action nodes. Exactly one type='trigger' required. Typically one type='exit' too."
           }
         },
-        "abort_action": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "variables": {
           "target": "com.posthog.hog_flows#HogFlowsCreateRequestVariablesList",
           "traits": {
             "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
-          }
-        },
-        "billable_action_types": {
-          "target": "smithy.api#Document"
-        },
-        "schedules": {
-          "target": "com.posthog.hog_flows#HogFlowsCreateRequestSchedulesList",
-          "traits": {
-            "smithy.api#documentation": "Recurring schedules attached to this workflow (read-only here; manage via the schedules sub-resource). A batch/schedule workflow only fires when it's active AND has an active schedule. Empty for non-scheduled workflows."
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "draft": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Staged content changes awaiting publish — a full snapshot of the workflow's actions, edges and settings. Null when there's nothing staged. Test it with a use_draft test run, then promote it with the publish endpoint or throw it away with discard_draft."
-          }
-        },
-        "draft_updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the draft was last written; null when there's no staged draft. Pass this to publish (and as base_updated_at on further draft edits) so a concurrent editor's changes aren't clobbered — a mismatch returns 409.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "action_redirects": {
-          "target": "com.posthog.hog_flows#HogFlowsCreateRequestActionRedirectsMap",
-          "traits": {
-            "smithy.api#documentation": "Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1202,7 +1046,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.hog_flows#UserBasic"
+          "target": "com.posthog.hog_flows#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "updated_at": {
           "target": "smithy.api#String"
@@ -1332,6 +1179,84 @@
       },
       "traits": {
         "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowSchedule": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "rrule": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "iCalendar RRULE string (e.g. 'FREQ=DAILY;INTERVAL=1'). Must produce occurrences at most once per hour."
+          }
+        },
+        "starts_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ISO 8601 datetime the schedule starts from."
+          }
+        },
+        "timezone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IANA timezone for interpreting the RRULE (default 'UTC')."
+          }
+        },
+        "variables": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Variable value overrides merged with the workflow defaults on each run."
+          }
+        },
+        "status": {
+          "target": "com.posthog.hog_flows#HogFlowScheduleStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "active, paused, or completed (set once the RRULE's COUNT/UNTIL is exhausted).\n\n* `active` - Active\n* `paused` - Paused\n* `completed` - Completed"
+          }
+        },
+        "next_run_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Next scheduled fire time, computed by the scheduler.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String"
+        },
+        "updated_at": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.hog_flows#HogFlowScheduleStatusEnum": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        },
+        "COMPLETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "completed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `active` - Active\n* `paused` - Paused\n* `completed` - Completed"
       }
     },
     "com.posthog.hog_flows#HogFlowSchedulesList": {
@@ -1469,27 +1394,6 @@
         "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
       }
     },
-    "com.posthog.hog_flows#HogFlowsUpdateRequestSchedulesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.hog_flows#HogFlowSchedule"
-      },
-      "traits": {
-        "smithy.api#documentation": "Recurring schedules attached to this workflow (read-only here; manage via the schedules sub-resource). A batch/schedule workflow only fires when it's active AND has an active schedule. Empty for non-scheduled workflows."
-      }
-    },
-    "com.posthog.hog_flows#HogFlowsUpdateRequestActionRedirectsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred."
-      }
-    },
     "com.posthog.hog_flows#HogFlowsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1522,26 +1426,11 @@
             "smithy.api#documentation": "Optional description."
           }
         },
-        "version": {
-          "target": "smithy.api#Integer"
-        },
         "status": {
           "target": "com.posthog.hog_flows#HogFlowStatusEnum",
           "traits": {
             "smithy.api#documentation": "draft (no execution), active (live), archived (disabled).\n\n* `draft` - Draft\n* `active` - Active\n* `archived` - Archived"
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.hog_flows#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "trigger": {
-          "target": "smithy.api#Document"
         },
         "trigger_masking": {
           "target": "com.posthog.hog_flows#HogFlowMasking",
@@ -1575,52 +1464,10 @@
             "smithy.api#documentation": "Ordered action nodes. Exactly one type='trigger' required. Typically one type='exit' too."
           }
         },
-        "abort_action": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "variables": {
           "target": "com.posthog.hog_flows#HogFlowsUpdateRequestVariablesList",
           "traits": {
             "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
-          }
-        },
-        "billable_action_types": {
-          "target": "smithy.api#Document"
-        },
-        "schedules": {
-          "target": "com.posthog.hog_flows#HogFlowsUpdateRequestSchedulesList",
-          "traits": {
-            "smithy.api#documentation": "Recurring schedules attached to this workflow (read-only here; manage via the schedules sub-resource). A batch/schedule workflow only fires when it's active AND has an active schedule. Empty for non-scheduled workflows."
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "draft": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Staged content changes awaiting publish — a full snapshot of the workflow's actions, edges and settings. Null when there's nothing staged. Test it with a use_draft test run, then promote it with the publish endpoint or throw it away with discard_draft."
-          }
-        },
-        "draft_updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the draft was last written; null when there's no staged draft. Pass this to publish (and as base_updated_at on further draft edits) so a concurrent editor's changes aren't clobbered — a mismatch returns 409.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "action_redirects": {
-          "target": "com.posthog.hog_flows#HogFlowsUpdateRequestActionRedirectsMap",
-          "traits": {
-            "smithy.api#documentation": "Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1694,27 +1541,6 @@
         "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
       }
     },
-    "com.posthog.hog_flows#HogFlowsPartialUpdateRequestSchedulesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.hog_flows#HogFlowSchedule"
-      },
-      "traits": {
-        "smithy.api#documentation": "Recurring schedules attached to this workflow (read-only here; manage via the schedules sub-resource). A batch/schedule workflow only fires when it's active AND has an active schedule. Empty for non-scheduled workflows."
-      }
-    },
-    "com.posthog.hog_flows#HogFlowsPartialUpdateRequestActionRedirectsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred."
-      }
-    },
     "com.posthog.hog_flows#HogFlowsPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1747,26 +1573,11 @@
             "smithy.api#documentation": "Optional description."
           }
         },
-        "version": {
-          "target": "smithy.api#Integer"
-        },
         "status": {
           "target": "com.posthog.hog_flows#HogFlowStatusEnum",
           "traits": {
             "smithy.api#documentation": "draft (no execution), active (live), archived (disabled).\n\n* `draft` - Draft\n* `active` - Active\n* `archived` - Archived"
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.hog_flows#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "trigger": {
-          "target": "smithy.api#Document"
         },
         "trigger_masking": {
           "target": "com.posthog.hog_flows#HogFlowMasking",
@@ -1800,52 +1611,10 @@
             "smithy.api#documentation": "Ordered action nodes. Exactly one type='trigger' required. Typically one type='exit' too."
           }
         },
-        "abort_action": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "variables": {
           "target": "com.posthog.hog_flows#HogFlowsPartialUpdateRequestVariablesList",
           "traits": {
             "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
-          }
-        },
-        "billable_action_types": {
-          "target": "smithy.api#Document"
-        },
-        "schedules": {
-          "target": "com.posthog.hog_flows#HogFlowsPartialUpdateRequestSchedulesList",
-          "traits": {
-            "smithy.api#documentation": "Recurring schedules attached to this workflow (read-only here; manage via the schedules sub-resource). A batch/schedule workflow only fires when it's active AND has an active schedule. Empty for non-scheduled workflows."
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "draft": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Staged content changes awaiting publish — a full snapshot of the workflow's actions, edges and settings. Null when there's nothing staged. Test it with a use_draft test run, then promote it with the publish endpoint or throw it away with discard_draft."
-          }
-        },
-        "draft_updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the draft was last written; null when there's no staged draft. Pass this to publish (and as base_updated_at on further draft edits) so a concurrent editor's changes aren't clobbered — a mismatch returns 409.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "action_redirects": {
-          "target": "com.posthog.hog_flows#HogFlowsPartialUpdateRequestActionRedirectsMap",
-          "traits": {
-            "smithy.api#documentation": "Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -2410,24 +2179,6 @@
           "traits": {
             "smithy.api#documentation": "Variable value overrides applied to this run."
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.hog_flows#UserBasic",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -2977,6 +2728,110 @@
         }
       }
     },
+    "com.posthog.hog_flows#HogFlowInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Workflow name.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional description."
+          }
+        },
+        "status": {
+          "target": "com.posthog.hog_flows#HogFlowStatusEnum",
+          "traits": {
+            "smithy.api#documentation": "draft (no execution), active (live), archived (disabled).\n\n* `draft` - Draft\n* `active` - Active\n* `archived` - Archived"
+          }
+        },
+        "trigger_masking": {
+          "target": "com.posthog.hog_flows#HogFlowMasking",
+          "traits": {
+            "smithy.api#documentation": "Optional dedup/throttle on an already-matched trigger: {hash: <HogQL template>, ttl: <seconds, 60-94608000>, threshold?: <int>}. Without threshold: fire once per hash, then suppress repeats within ttl (hash '{person.id}' = once per person per ttl). With threshold N: fire once per N matches of the same hash — a sampler, the 1st then every Nth. Throttles an already-qualifying trigger; it doesn't decide who enters. Server compiles bytecode from hash; omit to disable.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "conversion": {
+          "target": "com.posthog.hog_flows#HogFlowConversion",
+          "traits": {
+            "smithy.api#documentation": "Conversion goal. filters: ARRAY of property conditions [{key, value, operator, type: event|person|group}]; events: event-based goals [{filters: {events: [...]}}]; window_minutes: minutes after entry. Required for exit_on_conversion / exit_on_trigger_not_matched_or_conversion. bytecode compiled server-side.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "exit_condition": {
+          "target": "com.posthog.hog_flows#ExitConditionEnum",
+          "traits": {
+            "smithy.api#documentation": "exit_only_at_end: only at exit node (default). exit_on_conversion: also on conversion (needs 'conversion'; silent no-op otherwise). exit_on_trigger_not_matched: also when trigger filter stops matching. exit_on_trigger_not_matched_or_conversion: both (needs 'conversion').\n\n* `exit_on_conversion` - Conversion\n* `exit_on_trigger_not_matched` - Trigger Not Matched\n* `exit_on_trigger_not_matched_or_conversion` - Trigger Not Matched Or Conversion\n* `exit_only_at_end` - Only At End"
+          }
+        },
+        "edges": {
+          "target": "com.posthog.hog_flows#HogFlowInputEdgesList",
+          "traits": {
+            "smithy.api#documentation": "Graph edges: [{from, to, type: 'continue'|'branch', index?}]. 'continue' = fall-through (sequential, or no-match path of conditional_branch). 'branch' requires 'index': matches config.conditions[index] on conditional_branch / wait_until_condition. Every non-exit action needs a reachable next action ('No next action found' otherwise)."
+          }
+        },
+        "actions": {
+          "target": "com.posthog.hog_flows#HogFlowInputActionsList",
+          "traits": {
+            "smithy.api#documentation": "Ordered action nodes. Exactly one type='trigger' required. Typically one type='exit' too."
+          }
+        },
+        "variables": {
+          "target": "com.posthog.hog_flows#HogFlowInputVariablesList",
+          "traits": {
+            "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Mixin for serializers to add user access control fields"
+      }
+    },
+    "com.posthog.hog_flows#HogFlowInputEdgesList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#HogFlowEdge"
+      },
+      "traits": {
+        "smithy.api#documentation": "Graph edges: [{from, to, type: 'continue'|'branch', index?}]. 'continue' = fall-through (sequential, or no-match path of conditional_branch). 'branch' requires 'index': matches config.conditions[index] on conditional_branch / wait_until_condition. Every non-exit action needs a reachable next action ('No next action found' otherwise)."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowInputActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#HogFlowAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "Ordered action nodes. Exactly one type='trigger' required. Typically one type='exit' too."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowInputVariablesItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Variable: {key, type: string|number|boolean, default}."
+      }
+    },
+    "com.posthog.hog_flows#HogFlowInputVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.hog_flows#HogFlowInputVariablesItemMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
+      }
+    },
     "com.posthog.hog_flows#HogFlowsInvocationsCreateRequestGlobalsMap": {
       "type": "map",
       "key": {
@@ -3009,7 +2864,7 @@
           }
         },
         "configuration": {
-          "target": "com.posthog.hog_flows#HogFlow",
+          "target": "com.posthog.hog_flows#HogFlowInput",
           "traits": {
             "smithy.api#documentation": "Optional override; omit to use saved definition."
           }
@@ -4360,25 +4215,6 @@
           "traits": {
             "smithy.api#documentation": "Variable value overrides merged with the workflow defaults on each run."
           }
-        },
-        "status": {
-          "target": "com.posthog.hog_flows#HogFlowScheduleStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "active, paused, or completed (set once the RRULE's COUNT/UNTIL is exhausted).\n\n* `active` - Active\n* `paused` - Paused\n* `completed` - Completed"
-          }
-        },
-        "next_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Next scheduled fire time, computed by the scheduler.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -4461,25 +4297,6 @@
           "traits": {
             "smithy.api#documentation": "Variable value overrides merged with the workflow defaults on each run."
           }
-        },
-        "status": {
-          "target": "com.posthog.hog_flows#HogFlowScheduleStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "active, paused, or completed (set once the RRULE's COUNT/UNTIL is exhausted).\n\n* `active` - Active\n* `paused` - Paused\n* `completed` - Completed"
-          }
-        },
-        "next_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Next scheduled fire time, computed by the scheduler.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -4607,27 +4424,6 @@
         "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
       }
     },
-    "com.posthog.hog_flows#HogFlowsBulkDeleteCreateRequestSchedulesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.hog_flows#HogFlowSchedule"
-      },
-      "traits": {
-        "smithy.api#documentation": "Recurring schedules attached to this workflow (read-only here; manage via the schedules sub-resource). A batch/schedule workflow only fires when it's active AND has an active schedule. Empty for non-scheduled workflows."
-      }
-    },
-    "com.posthog.hog_flows#HogFlowsBulkDeleteCreateRequestActionRedirectsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#String"
-      },
-      "traits": {
-        "smithy.api#documentation": "Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred."
-      }
-    },
     "com.posthog.hog_flows#HogFlowsBulkDeleteCreateRequest": {
       "type": "structure",
       "members": {
@@ -4638,9 +4434,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "id": {
-          "target": "smithy.api#String"
         },
         "name": {
           "target": "smithy.api#String",
@@ -4655,26 +4448,11 @@
             "smithy.api#documentation": "Optional description."
           }
         },
-        "version": {
-          "target": "smithy.api#Integer"
-        },
         "status": {
           "target": "com.posthog.hog_flows#HogFlowStatusEnum",
           "traits": {
             "smithy.api#documentation": "draft (no execution), active (live), archived (disabled).\n\n* `draft` - Draft\n* `active` - Active\n* `archived` - Archived"
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.hog_flows#UserBasic"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "trigger": {
-          "target": "smithy.api#Document"
         },
         "trigger_masking": {
           "target": "com.posthog.hog_flows#HogFlowMasking",
@@ -4708,52 +4486,10 @@
             "smithy.api#documentation": "Ordered action nodes. Exactly one type='trigger' required. Typically one type='exit' too."
           }
         },
-        "abort_action": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "variables": {
           "target": "com.posthog.hog_flows#HogFlowsBulkDeleteCreateRequestVariablesList",
           "traits": {
             "smithy.api#documentation": "Workflow vars (key, type, default). Total <5KB."
-          }
-        },
-        "billable_action_types": {
-          "target": "smithy.api#Document"
-        },
-        "schedules": {
-          "target": "com.posthog.hog_flows#HogFlowsBulkDeleteCreateRequestSchedulesList",
-          "traits": {
-            "smithy.api#documentation": "Recurring schedules attached to this workflow (read-only here; manage via the schedules sub-resource). A batch/schedule workflow only fires when it's active AND has an active schedule. Empty for non-scheduled workflows."
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "draft": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Staged content changes awaiting publish — a full snapshot of the workflow's actions, edges and settings. Null when there's nothing staged. Test it with a use_draft test run, then promote it with the publish endpoint or throw it away with discard_draft."
-          }
-        },
-        "draft_updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When the draft was last written; null when there's no staged draft. Pass this to publish (and as base_updated_at on further draft edits) so a concurrent editor's changes aren't clobbered — a mismatch returns 409.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "action_redirects": {
-          "target": "com.posthog.hog_flows#HogFlowsBulkDeleteCreateRequestActionRedirectsMap",
-          "traits": {
-            "smithy.api#documentation": "Skip-forward map for deleted steps: {deleted_action_id: next surviving action_id}. Maintained automatically when a live graph edit deletes actions, so in-flight runs parked on a deleted step continue at its surviving successor instead of exiting. Null when no live deletions have occurred.",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },

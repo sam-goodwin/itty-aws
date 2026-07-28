@@ -603,6 +603,47 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.intel#AttackSurfaceReportIssuesListResponseIssuesItemIssueType": {
+      "type": "enum",
+      "members": {
+        "COMPLIANCE_VIOLATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "compliance_violation"
+          }
+        },
+        "EMAIL_SECURITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security"
+          }
+        },
+        "EXPOSED_INFRASTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exposed_infrastructure"
+          }
+        },
+        "INSECURE_CONFIGURATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "insecure_configuration"
+          }
+        },
+        "WEAK_AUTHENTICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weak_authentication"
+          }
+        },
+        "CONFIGURATION_SUGGESTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "configuration_suggestion"
+          }
+        }
+      }
+    },
     "com.cloudflare.intel#AttackSurfaceReportIssuesListResponseIssuesItemPayload": {
       "type": "structure",
       "members": {
@@ -699,7 +740,7 @@
           "target": "smithy.api#String"
         },
         "issue_type": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.intel#AttackSurfaceReportIssuesListResponseIssuesItemIssueType"
         },
         "payload": {
           "target": "com.cloudflare.intel#AttackSurfaceReportIssuesListResponseIssuesItemPayload"
@@ -1205,10 +1246,18 @@
             "smithy.api#httpQuery": "per_page"
           }
         },
-        "start_end_params": {
+        "start_end_params_end": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "start_end_params"
+            "smithy.api#documentation": "Defaults to the current date.",
+            "smithy.api#httpQuery": "start_end_params.end"
+          }
+        },
+        "start_end_params_start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defaults to 30 days before the end parameter value.",
+            "smithy.api#httpQuery": "start_end_params.start"
           }
         }
       },
@@ -2157,6 +2206,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "Loading"
+          }
+        },
+        "PROVISIONING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Provisioning"
+          }
+        },
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Complete"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Error"
           }
         }
       }

@@ -12,6 +12,57 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The private endpoint resource. */
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
+
+/** The private endpoint connection status. */
+export type PrivateEndpointServiceConnectionStatus =
+  | "Pending"
+  | "Approved"
+  | "Rejected";
+export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
+
+/** A collection of information about the state of the connection between service consumer and provider. */
+export interface PrivateLinkServiceConnectionState {
+  /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
+  status?: PrivateEndpointServiceConnectionStatus;
+  /** The reason for approval/rejection of the connection. */
+  description?: string;
+  /** A message indicating if changes on the service provider require any updates on the consumer. */
+  actionsRequired?: string;
+}
+export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(PrivateEndpointServiceConnectionStatus),
+    description: S.optional(S.String),
+    actionsRequired: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateLinkServiceConnectionState",
+}) as any as S.Schema<PrivateLinkServiceConnectionState>;
+
+/** Properties of the private endpoint connection. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** The private endpoint resource. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -21,7 +72,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   privateLinkName: string;
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
 }
 export const PrivateEndpointConnectionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -30,7 +82,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       privateLinkName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -48,8 +100,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -57,8 +108,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -88,7 +138,8 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** The group ids for the private endpoint resource. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -107,40 +158,12 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateEndpoint",
 }) as any as S.Schema<PrivateEndpoint>;
 
-/** The private endpoint connection status. */
-export type PrivateEndpointServiceConnectionStatus =
-  | "Pending"
-  | "Approved"
-  | "Rejected"
-  | (string & {});
-export const PrivateEndpointServiceConnectionStatus = /*@__PURE__*/ S.String;
-
-/** A collection of information about the state of the connection between service consumer and provider. */
-export interface PrivateLinkServiceConnectionState {
-  /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
-  /** The reason for approval/rejection of the connection. */
-  description?: string;
-  /** A message indicating if changes on the service provider require any updates on the consumer. */
-  actionsRequired?: string;
-}
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(PrivateEndpointServiceConnectionStatus),
-    description: S.optional(S.String),
-    actionsRequired: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkServiceConnectionState",
-}) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const PrivateEndpointConnectionProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -335,7 +358,7 @@ export const PrivateEndpointConnectionListResultValueItem =
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnectionListResultValueItem[];
+  ReadonlyArray<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionListResultValueItem,
@@ -387,7 +410,7 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
-  string[];
+  ReadonlyArray<string>;
 export const PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -395,7 +418,7 @@ export const PrivateLinkResourcesGetResponsePropertiesRequiredMembersList =
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const PrivateLinkResourcesGetResponsePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -475,14 +498,16 @@ export const PrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesListRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkGroupResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkGroupResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkGroupResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkGroupResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
-export type PrivateLinkGroupResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkGroupResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkGroupResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -538,7 +563,7 @@ export const PrivateLinkGroupResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateLinkGroupResource items on this page */
 export type PrivateLinkGroupResourceListResultValueList =
-  PrivateLinkGroupResource[];
+  ReadonlyArray<PrivateLinkGroupResource>;
 export const PrivateLinkGroupResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateLinkGroupResource,
@@ -560,6 +585,37 @@ export const PrivateLinkGroupResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkGroupResourceListResult",
 }) as any as S.Schema<PrivateLinkGroupResourceListResult>;
 
+/** Resource tags. */
+export type PrivateLinksCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PrivateLinksCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PrivateLinksCreateRequestTagsMap>;
+
+/** This determines if traffic is allowed over public network. By default it is disabled. */
+export type PrivateLinkPropertiesInputPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled";
+export const PrivateLinkPropertiesInputPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** Properties of a private link resource. These properties control the behavior and configuration of private endpoint connectivity to Defender services. */
+export interface PrivateLinkPropertiesInput {
+  /** This determines if traffic is allowed over public network. By default it is disabled. */
+  publicNetworkAccess?: PrivateLinkPropertiesInputPublicNetworkAccess;
+}
+export const PrivateLinkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publicNetworkAccess: S.optional(
+      PrivateLinkPropertiesInputPublicNetworkAccess,
+    ),
+  }),
+).annotate({
+  identifier: "PrivateLinkPropertiesInput",
+}) as any as S.Schema<PrivateLinkPropertiesInput>;
+
 export interface PrivateLinksCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -567,14 +623,21 @@ export interface PrivateLinksCreateRequest {
   resourceGroupName: string;
   /** The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions. */
   privateLinkName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: PrivateLinksCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties specific to the private link resource */
+  properties: PrivateLinkPropertiesInput;
 }
 export const PrivateLinksCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     privateLinkName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(PrivateLinksCreateRequestTagsMap),
+    location: S.String,
+    properties: PrivateLinkPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -604,8 +667,7 @@ export type CommonProvisioningState =
   | "Deleting"
   | "Failed"
   | "Canceled"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const CommonProvisioningState = /*@__PURE__*/ S.String;
 
 /** The private endpoint connection resource. */
@@ -636,7 +698,7 @@ export const PrivateLinkPropertiesPrivateEndpointConnectionsItem =
 
 /** List of private endpoint connections associated with this private link. Each connection represents a private endpoint from a customer's virtual network. */
 export type PrivateLinkPropertiesPrivateEndpointConnectionsList =
-  PrivateLinkPropertiesPrivateEndpointConnectionsItem[];
+  ReadonlyArray<PrivateLinkPropertiesPrivateEndpointConnectionsItem>;
 export const PrivateLinkPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateLinkPropertiesPrivateEndpointConnectionsItem,
@@ -644,17 +706,14 @@ export const PrivateLinkPropertiesPrivateEndpointConnectionsList =
 
 /** List of private link resources available for connection. For Defender services, this typically includes the 'containers' group with 'api' and regional data endpoints. */
 export type PrivateLinkPropertiesPrivateLinkResourcesList =
-  PrivateLinkGroupResource[];
+  ReadonlyArray<PrivateLinkGroupResource>;
 export const PrivateLinkPropertiesPrivateLinkResourcesList =
   /*@__PURE__*/ S.Array(
     PrivateLinkGroupResource,
   ) as any as S.Schema<PrivateLinkPropertiesPrivateLinkResourcesList>;
 
 /** This determines if traffic is allowed over public network. By default it is disabled. */
-export type PrivateLinkPropertiesPublicNetworkAccess =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type PrivateLinkPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
 export const PrivateLinkPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** Properties of a private link resource. These properties control the behavior and configuration of private endpoint connectivity to Defender services. */
@@ -870,7 +929,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** The PrivateLinkResource items on this page */
-export type PrivateLinksListValueList = PrivateLinkResource[];
+export type PrivateLinksListValueList = ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinksListValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinksListValueList>;
@@ -911,6 +970,15 @@ export const PrivateLinksListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "PrivateLinksListBySubscriptionRequest",
 }) as any as S.Schema<PrivateLinksListBySubscriptionRequest>;
 
+/** Resource tags */
+export type PrivateLinksUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PrivateLinksUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PrivateLinksUpdateRequestTagsMap>;
+
 export interface PrivateLinksUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -918,14 +986,15 @@ export interface PrivateLinksUpdateRequest {
   resourceGroupName: string;
   /** The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions. */
   privateLinkName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: PrivateLinksUpdateRequestTagsMap;
 }
 export const PrivateLinksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     privateLinkName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(PrivateLinksUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",

@@ -68,8 +68,7 @@ export type ManagedCertificateStatusEnum =
   | "FAILED_RETRYING_NOT_VISIBLE"
   | "FAILED_PERMANENTLY_NOT_VISIBLE"
   | "FAILED_RETRYING_CAA_FORBIDDEN"
-  | "FAILED_RETRYING_CAA_CHECKING"
-  | (string & {});
+  | "FAILED_RETRYING_CAA_CHECKING";
 export const ManagedCertificateStatusEnum = /*@__PURE__*/ S.String;
 
 /** A certificate managed by App Engine. */
@@ -88,7 +87,7 @@ export const ManagedCertificate = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedCertificate",
 }) as any as S.Schema<ManagedCertificate>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -171,8 +170,7 @@ export const CreateAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
 export type CreateAppsDomainMappingsOverrideStrategyEnum =
   | "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY"
   | "STRICT"
-  | "OVERRIDE"
-  | (string & {});
+  | "OVERRIDE";
 export const CreateAppsDomainMappingsOverrideStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -190,7 +188,7 @@ export const SslSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SslSettings" }) as any as S.Schema<SslSettings>;
 
-export type ResourceRecordTypeEnum = "A" | "AAAA" | "CNAME" | (string & {});
+export type ResourceRecordTypeEnum = "A" | "AAAA" | "CNAME";
 export const ResourceRecordTypeEnum = /*@__PURE__*/ S.String;
 
 /** A DNS resource record. */
@@ -210,7 +208,7 @@ export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
 
-export type ResourceRecordList = ResourceRecord[];
+export type ResourceRecordList = ReadonlyArray<ResourceRecord>;
 export const ResourceRecordList = /*@__PURE__*/ S.Array(
   ResourceRecord,
 ) as any as S.Schema<ResourceRecordList>;
@@ -270,7 +268,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -345,10 +343,7 @@ export const CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest =
   }) as any as S.Schema<CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest>;
 
 export type CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum =
-    | "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY"
-    | "STRICT"
-    | "OVERRIDE"
-    | (string & {});
+  "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" | "STRICT" | "OVERRIDE";
 export const CreateProjectsLocationsApplicationsDomainMappingsOverrideStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -498,8 +493,7 @@ export const DeleteProjectsLocationsApplicationsDomainMappingsRequest =
 
 export type GetAppsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE"
-  | (string & {});
+  | "FULL_CERTIFICATE";
 export const GetAppsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAppsAuthorizedCertificatesRequest {
@@ -642,8 +636,7 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE"
-  | (string & {});
+  | "FULL_CERTIFICATE";
 export const GetProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -737,8 +730,7 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 export type ListAppsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE"
-  | (string & {});
+  | "FULL_CERTIFICATE";
 export const ListAppsAuthorizedCertificatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListAppsAuthorizedCertificatesRequest {
@@ -769,7 +761,7 @@ export const ListAppsAuthorizedCertificatesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAppsAuthorizedCertificatesRequest",
 }) as any as S.Schema<ListAppsAuthorizedCertificatesRequest>;
 
-export type AuthorizedCertificateList = AuthorizedCertificate[];
+export type AuthorizedCertificateList = ReadonlyArray<AuthorizedCertificate>;
 export const AuthorizedCertificateList = /*@__PURE__*/ S.Array(
   AuthorizedCertificate,
 ) as any as S.Schema<AuthorizedCertificateList>;
@@ -830,7 +822,7 @@ export const AuthorizedDomain = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizedDomain",
 }) as any as S.Schema<AuthorizedDomain>;
 
-export type AuthorizedDomainList = AuthorizedDomain[];
+export type AuthorizedDomainList = ReadonlyArray<AuthorizedDomain>;
 export const AuthorizedDomainList = /*@__PURE__*/ S.Array(
   AuthorizedDomain,
 ) as any as S.Schema<AuthorizedDomainList>;
@@ -875,7 +867,7 @@ export const ListAppsDomainMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsDomainMappingsRequest",
 }) as any as S.Schema<ListAppsDomainMappingsRequest>;
 
-export type DomainMappingList = DomainMapping[];
+export type DomainMappingList = ReadonlyArray<DomainMapping>;
 export const DomainMappingList = /*@__PURE__*/ S.Array(
   DomainMapping,
 ) as any as S.Schema<DomainMappingList>;
@@ -926,7 +918,7 @@ export const ListAppsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsLocationsRequest",
 }) as any as S.Schema<ListAppsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -977,7 +969,7 @@ export const ListAppsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAppsOperationsRequest",
 }) as any as S.Schema<ListAppsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1033,8 +1025,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   | "BASIC_CERTIFICATE"
-  | "FULL_CERTIFICATE"
-  | (string & {});
+  | "FULL_CERTIFICATE";
 export const ListProjectsLocationsApplicationsAuthorizedCertificatesViewEnum =
   /*@__PURE__*/ S.String;
 

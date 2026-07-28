@@ -95,16 +95,14 @@ export type AgentRegistrationStatus =
   | "unverified"
   | "verified"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const AgentRegistrationStatus = /*@__PURE__*/ S.String;
 
 /** The kind of agent registration. */
 export type AgentRegistrationKind =
   | "anonymous"
   | "service_auth"
-  | "identity_assertion"
-  | (string & {});
+  | "identity_assertion";
 export const AgentRegistrationKind = /*@__PURE__*/ S.String;
 
 export interface AgentRegistrationClaimClaimCompletion {
@@ -235,8 +233,7 @@ export type ClaimViewResponseStatus =
   | "unverified"
   | "verified"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const ClaimViewResponseStatus = /*@__PURE__*/ S.String;
 
 export interface ClaimViewResponseOrganizationsItem {
@@ -256,7 +253,7 @@ export const ClaimViewResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizations the user belongs to, offered as placement choices. */
 export type ClaimViewResponseOrganizationsList =
-  ClaimViewResponseOrganizationsItem[];
+  ReadonlyArray<ClaimViewResponseOrganizationsItem>;
 export const ClaimViewResponseOrganizationsList = /*@__PURE__*/ S.Array(
   ClaimViewResponseOrganizationsItem,
 ) as any as S.Schema<ClaimViewResponseOrganizationsList>;
@@ -435,7 +432,7 @@ export const ApiKeyOwner =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ApiKeyOwner>;
 
 /** The permission slugs assigned to the API Key. */
-export type ApiKeyPermissionsList = string[];
+export type ApiKeyPermissionsList = ReadonlyArray<string>;
 export const ApiKeyPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApiKeyPermissionsList>;
@@ -628,7 +625,7 @@ export const ApplicationCredentialsControllerListResponseBodyItem =
   }) as any as S.Schema<ApplicationCredentialsControllerListResponseBodyItem>;
 
 export type ApplicationCredentialsControllerListResponseBodyList =
-  ApplicationCredentialsControllerListResponseBodyItem[];
+  ReadonlyArray<ApplicationCredentialsControllerListResponseBodyItem>;
 export const ApplicationCredentialsControllerListResponseBodyList =
   /*@__PURE__*/ S.Array(
     ApplicationCredentialsControllerListResponseBodyItem,
@@ -646,7 +643,7 @@ export const ApplicationCredentialsControllerListResponse =
   }) as any as S.Schema<ApplicationCredentialsControllerListResponse>;
 
 /** The OAuth scopes granted to the application. */
-export type CreateOAuthApplicationDtoScopesList = string[];
+export type CreateOAuthApplicationDtoScopesList = ReadonlyArray<string>;
 export const CreateOAuthApplicationDtoScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateOAuthApplicationDtoScopesList>;
@@ -665,7 +662,8 @@ export const RedirectUriDto = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RedirectUriDto" }) as any as S.Schema<RedirectUriDto>;
 
 /** Redirect URIs for the application. */
-export type CreateOAuthApplicationDtoRedirectUrisList = RedirectUriDto[];
+export type CreateOAuthApplicationDtoRedirectUrisList =
+  ReadonlyArray<RedirectUriDto>;
 export const CreateOAuthApplicationDtoRedirectUrisList = /*@__PURE__*/ S.Array(
   RedirectUriDto,
 ) as any as S.Schema<CreateOAuthApplicationDtoRedirectUrisList>;
@@ -706,7 +704,7 @@ export const CreateOAuthApplicationDto = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOAuthApplicationDto>;
 
 /** The OAuth scopes granted to the application. */
-export type CreateM2MApplicationDtoScopesList = string[];
+export type CreateM2MApplicationDtoScopesList = ReadonlyArray<string>;
 export const CreateM2MApplicationDtoScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateM2MApplicationDtoScopesList>;
@@ -753,11 +751,36 @@ export const ApplicationsControllerCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationsControllerCreateRequest>;
 
 /** The scopes available for this application. */
-export type ApplicationsControllerCreateResponseScopesList = string[];
+export type ApplicationsControllerCreateResponseScopesList =
+  ReadonlyArray<string>;
 export const ApplicationsControllerCreateResponseScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ApplicationsControllerCreateResponseScopesList>;
+
+export interface ApplicationsControllerCreateResponseRedirectUrisItem {
+  /** The redirect URI for the application. */
+  uri: string;
+  /** Whether this is the default redirect URI. */
+  default: boolean;
+}
+export const ApplicationsControllerCreateResponseRedirectUrisItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uri: S.String,
+      default: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "ApplicationsControllerCreateResponseRedirectUrisItem",
+  }) as any as S.Schema<ApplicationsControllerCreateResponseRedirectUrisItem>;
+
+/** The redirect URIs configured for this application. */
+export type ApplicationsControllerCreateResponseRedirectUrisList =
+  ReadonlyArray<ApplicationsControllerCreateResponseRedirectUrisItem>;
+export const ApplicationsControllerCreateResponseRedirectUrisList =
+  /*@__PURE__*/ S.Array(
+    ApplicationsControllerCreateResponseRedirectUrisItem,
+  ) as any as S.Schema<ApplicationsControllerCreateResponseRedirectUrisList>;
 
 export interface ApplicationsControllerCreateResponse {
   /** Distinguishes the connect application object. */
@@ -776,6 +799,18 @@ export interface ApplicationsControllerCreateResponse {
   created_at: string;
   /** An ISO 8601 timestamp. */
   updated_at: string;
+  /** The type of the application. */
+  application_type?: string;
+  /** The redirect URIs configured for this application. */
+  redirect_uris?: ApplicationsControllerCreateResponseRedirectUrisList;
+  /** Whether the application uses PKCE for authorization. */
+  uses_pkce?: boolean;
+  /** Whether the application is a first-party application. */
+  is_first_party?: boolean;
+  /** Whether the application was dynamically registered. */
+  was_dynamically_registered?: boolean;
+  /** The ID of the organization the application belongs to. */
+  organization_id?: string;
 }
 export const ApplicationsControllerCreateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -788,6 +823,14 @@ export const ApplicationsControllerCreateResponse = /*@__PURE__*/ S.suspend(
       scopes: ApplicationsControllerCreateResponseScopesList,
       created_at: S.String,
       updated_at: S.String,
+      application_type: S.optional(S.String),
+      redirect_uris: S.optional(
+        ApplicationsControllerCreateResponseRedirectUrisList,
+      ),
+      uses_pkce: S.optional(S.Boolean),
+      is_first_party: S.optional(S.Boolean),
+      was_dynamically_registered: S.optional(S.Boolean),
+      organization_id: S.optional(S.String),
     }),
 ).annotate({
   identifier: "ApplicationsControllerCreateResponse",
@@ -829,11 +872,36 @@ export const ApplicationsControllerFindRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationsControllerFindRequest>;
 
 /** The scopes available for this application. */
-export type ApplicationsControllerFindResponseScopesList = string[];
+export type ApplicationsControllerFindResponseScopesList =
+  ReadonlyArray<string>;
 export const ApplicationsControllerFindResponseScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ApplicationsControllerFindResponseScopesList>;
+
+export interface ApplicationsControllerFindResponseRedirectUrisItem {
+  /** The redirect URI for the application. */
+  uri: string;
+  /** Whether this is the default redirect URI. */
+  default: boolean;
+}
+export const ApplicationsControllerFindResponseRedirectUrisItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uri: S.String,
+      default: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "ApplicationsControllerFindResponseRedirectUrisItem",
+  }) as any as S.Schema<ApplicationsControllerFindResponseRedirectUrisItem>;
+
+/** The redirect URIs configured for this application. */
+export type ApplicationsControllerFindResponseRedirectUrisList =
+  ReadonlyArray<ApplicationsControllerFindResponseRedirectUrisItem>;
+export const ApplicationsControllerFindResponseRedirectUrisList =
+  /*@__PURE__*/ S.Array(
+    ApplicationsControllerFindResponseRedirectUrisItem,
+  ) as any as S.Schema<ApplicationsControllerFindResponseRedirectUrisList>;
 
 export interface ApplicationsControllerFindResponse {
   /** Distinguishes the connect application object. */
@@ -852,6 +920,18 @@ export interface ApplicationsControllerFindResponse {
   created_at: string;
   /** An ISO 8601 timestamp. */
   updated_at: string;
+  /** The type of the application. */
+  application_type?: string;
+  /** The redirect URIs configured for this application. */
+  redirect_uris?: ApplicationsControllerFindResponseRedirectUrisList;
+  /** Whether the application uses PKCE for authorization. */
+  uses_pkce?: boolean;
+  /** Whether the application is a first-party application. */
+  is_first_party?: boolean;
+  /** Whether the application was dynamically registered. */
+  was_dynamically_registered?: boolean;
+  /** The ID of the organization the application belongs to. */
+  organization_id?: string;
 }
 export const ApplicationsControllerFindResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -863,23 +943,30 @@ export const ApplicationsControllerFindResponse = /*@__PURE__*/ S.suspend(() =>
     scopes: ApplicationsControllerFindResponseScopesList,
     created_at: S.String,
     updated_at: S.String,
+    application_type: S.optional(S.String),
+    redirect_uris: S.optional(
+      ApplicationsControllerFindResponseRedirectUrisList,
+    ),
+    uses_pkce: S.optional(S.Boolean),
+    is_first_party: S.optional(S.Boolean),
+    was_dynamically_registered: S.optional(S.Boolean),
+    organization_id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ApplicationsControllerFindResponse",
 }) as any as S.Schema<ApplicationsControllerFindResponse>;
 
-export type PaginationOrder = "normal" | "desc" | "asc" | (string & {});
+export type PaginationOrder = "normal" | "desc" | "asc";
 export const PaginationOrder = /*@__PURE__*/ S.String;
 
 export type ApplicationsControllerListRequestRegistrationTypesItem =
   | "dynamic"
-  | "authenticated"
-  | (string & {});
+  | "authenticated";
 export const ApplicationsControllerListRequestRegistrationTypesItem =
   /*@__PURE__*/ S.String;
 
 export type ApplicationsControllerListRequestRegistrationTypesList =
-  ApplicationsControllerListRequestRegistrationTypesItem[];
+  ReadonlyArray<ApplicationsControllerListRequestRegistrationTypesItem>;
 export const ApplicationsControllerListRequestRegistrationTypesList =
   /*@__PURE__*/ S.Array(
     ApplicationsControllerListRequestRegistrationTypesItem,
@@ -915,10 +1002,32 @@ export const ApplicationsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationsControllerListRequest>;
 
 /** The scopes available for this application. */
-export type ConnectApplicationScopesList = string[];
+export type ConnectApplicationScopesList = ReadonlyArray<string>;
 export const ConnectApplicationScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectApplicationScopesList>;
+
+export interface ConnectApplicationRedirectUrisItem {
+  /** The redirect URI for the application. */
+  uri: string;
+  /** Whether this is the default redirect URI. */
+  default: boolean;
+}
+export const ConnectApplicationRedirectUrisItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uri: S.String,
+    default: S.Boolean,
+  }),
+).annotate({
+  identifier: "ConnectApplicationRedirectUrisItem",
+}) as any as S.Schema<ConnectApplicationRedirectUrisItem>;
+
+/** The redirect URIs configured for this application. */
+export type ConnectApplicationRedirectUrisList =
+  ReadonlyArray<ConnectApplicationRedirectUrisItem>;
+export const ConnectApplicationRedirectUrisList = /*@__PURE__*/ S.Array(
+  ConnectApplicationRedirectUrisItem,
+) as any as S.Schema<ConnectApplicationRedirectUrisList>;
 
 export interface ConnectApplication {
   /** Distinguishes the connect application object. */
@@ -937,6 +1046,18 @@ export interface ConnectApplication {
   created_at: string;
   /** An ISO 8601 timestamp. */
   updated_at: string;
+  /** The type of the application. */
+  application_type?: string;
+  /** The redirect URIs configured for this application. */
+  redirect_uris?: ConnectApplicationRedirectUrisList;
+  /** Whether the application uses PKCE for authorization. */
+  uses_pkce?: boolean;
+  /** Whether the application is a first-party application. */
+  is_first_party?: boolean;
+  /** Whether the application was dynamically registered. */
+  was_dynamically_registered?: boolean;
+  /** The ID of the organization the application belongs to. */
+  organization_id?: string;
 }
 export const ConnectApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -948,13 +1069,19 @@ export const ConnectApplication = /*@__PURE__*/ S.suspend(() =>
     scopes: ConnectApplicationScopesList,
     created_at: S.String,
     updated_at: S.String,
+    application_type: S.optional(S.String),
+    redirect_uris: S.optional(ConnectApplicationRedirectUrisList),
+    uses_pkce: S.optional(S.Boolean),
+    is_first_party: S.optional(S.Boolean),
+    was_dynamically_registered: S.optional(S.Boolean),
+    organization_id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConnectApplication",
 }) as any as S.Schema<ConnectApplication>;
 
 /** The list of records for the current page. */
-export type ConnectApplicationListDataList = ConnectApplication[];
+export type ConnectApplicationListDataList = ReadonlyArray<ConnectApplication>;
 export const ConnectApplicationListDataList = /*@__PURE__*/ S.Array(
   ConnectApplication,
 ) as any as S.Schema<ConnectApplicationListDataList>;
@@ -994,7 +1121,8 @@ export const ConnectApplicationList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectApplicationList>;
 
 /** The OAuth scopes granted to the application. */
-export type ApplicationsControllerUpdateRequestScopesList = string[];
+export type ApplicationsControllerUpdateRequestScopesList =
+  ReadonlyArray<string>;
 export const ApplicationsControllerUpdateRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1002,7 +1130,7 @@ export const ApplicationsControllerUpdateRequestScopesList =
 
 /** Updated redirect URIs for the application. OAuth applications only. */
 export type ApplicationsControllerUpdateRequestRedirectUrisList =
-  RedirectUriDto[];
+  ReadonlyArray<RedirectUriDto>;
 export const ApplicationsControllerUpdateRequestRedirectUrisList =
   /*@__PURE__*/ S.Array(
     RedirectUriDto,
@@ -1037,11 +1165,36 @@ export const ApplicationsControllerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationsControllerUpdateRequest>;
 
 /** The scopes available for this application. */
-export type ApplicationsControllerUpdateResponseScopesList = string[];
+export type ApplicationsControllerUpdateResponseScopesList =
+  ReadonlyArray<string>;
 export const ApplicationsControllerUpdateResponseScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ApplicationsControllerUpdateResponseScopesList>;
+
+export interface ApplicationsControllerUpdateResponseRedirectUrisItem {
+  /** The redirect URI for the application. */
+  uri: string;
+  /** Whether this is the default redirect URI. */
+  default: boolean;
+}
+export const ApplicationsControllerUpdateResponseRedirectUrisItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uri: S.String,
+      default: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "ApplicationsControllerUpdateResponseRedirectUrisItem",
+  }) as any as S.Schema<ApplicationsControllerUpdateResponseRedirectUrisItem>;
+
+/** The redirect URIs configured for this application. */
+export type ApplicationsControllerUpdateResponseRedirectUrisList =
+  ReadonlyArray<ApplicationsControllerUpdateResponseRedirectUrisItem>;
+export const ApplicationsControllerUpdateResponseRedirectUrisList =
+  /*@__PURE__*/ S.Array(
+    ApplicationsControllerUpdateResponseRedirectUrisItem,
+  ) as any as S.Schema<ApplicationsControllerUpdateResponseRedirectUrisList>;
 
 export interface ApplicationsControllerUpdateResponse {
   /** Distinguishes the connect application object. */
@@ -1060,6 +1213,18 @@ export interface ApplicationsControllerUpdateResponse {
   created_at: string;
   /** An ISO 8601 timestamp. */
   updated_at: string;
+  /** The type of the application. */
+  application_type?: string;
+  /** The redirect URIs configured for this application. */
+  redirect_uris?: ApplicationsControllerUpdateResponseRedirectUrisList;
+  /** Whether the application uses PKCE for authorization. */
+  uses_pkce?: boolean;
+  /** Whether the application is a first-party application. */
+  is_first_party?: boolean;
+  /** Whether the application was dynamically registered. */
+  was_dynamically_registered?: boolean;
+  /** The ID of the organization the application belongs to. */
+  organization_id?: string;
 }
 export const ApplicationsControllerUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -1072,6 +1237,14 @@ export const ApplicationsControllerUpdateResponse = /*@__PURE__*/ S.suspend(
       scopes: ApplicationsControllerUpdateResponseScopesList,
       created_at: S.String,
       updated_at: S.String,
+      application_type: S.optional(S.String),
+      redirect_uris: S.optional(
+        ApplicationsControllerUpdateResponseRedirectUrisList,
+      ),
+      uses_pkce: S.optional(S.Boolean),
+      is_first_party: S.optional(S.Boolean),
+      was_dynamically_registered: S.optional(S.Boolean),
+      organization_id: S.optional(S.String),
     }),
 ).annotate({
   identifier: "ApplicationsControllerUpdateResponse",
@@ -1120,7 +1293,7 @@ export const AuditLogEventTargetDto = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuditLogEventTargetDto>;
 
 /** The resources affected by the action. */
-export type AuditLogEventDtoTargetsList = AuditLogEventTargetDto[];
+export type AuditLogEventDtoTargetsList = ReadonlyArray<AuditLogEventTargetDto>;
 export const AuditLogEventDtoTargetsList = /*@__PURE__*/ S.Array(
   AuditLogEventTargetDto,
 ) as any as S.Schema<AuditLogEventDtoTargetsList>;
@@ -1218,12 +1391,7 @@ export const AuditLogExportsControllerExportRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuditLogExportsControllerExportRequest>;
 
 /** The state of the export. Possible values: pending, ready, error, expired. */
-export type AuditLogExportJsonState =
-  | "pending"
-  | "ready"
-  | "error"
-  | "expired"
-  | (string & {});
+export type AuditLogExportJsonState = "pending" | "ready" | "error" | "expired";
 export const AuditLogExportJsonState = /*@__PURE__*/ S.String;
 
 export interface AuditLogExportJson {
@@ -1254,35 +1422,40 @@ export const AuditLogExportJson = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuditLogExportJson>;
 
 /** List of actions to filter against. */
-export type AuditLogExportsControllerExportsRequestActionsList = string[];
+export type AuditLogExportsControllerExportsRequestActionsList =
+  ReadonlyArray<string>;
 export const AuditLogExportsControllerExportsRequestActionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AuditLogExportsControllerExportsRequestActionsList>;
 
 /** Deprecated. Use `actor_names` instead. */
-export type AuditLogExportsControllerExportsRequestActorsList = string[];
+export type AuditLogExportsControllerExportsRequestActorsList =
+  ReadonlyArray<string>;
 export const AuditLogExportsControllerExportsRequestActorsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AuditLogExportsControllerExportsRequestActorsList>;
 
 /** List of actor names to filter against. */
-export type AuditLogExportsControllerExportsRequestActorNamesList = string[];
+export type AuditLogExportsControllerExportsRequestActorNamesList =
+  ReadonlyArray<string>;
 export const AuditLogExportsControllerExportsRequestActorNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AuditLogExportsControllerExportsRequestActorNamesList>;
 
 /** List of actor IDs to filter against. */
-export type AuditLogExportsControllerExportsRequestActorIdsList = string[];
+export type AuditLogExportsControllerExportsRequestActorIdsList =
+  ReadonlyArray<string>;
 export const AuditLogExportsControllerExportsRequestActorIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AuditLogExportsControllerExportsRequestActorIdsList>;
 
 /** List of target types to filter against. */
-export type AuditLogExportsControllerExportsRequestTargetsList = string[];
+export type AuditLogExportsControllerExportsRequestTargetsList =
+  ReadonlyArray<string>;
 export const AuditLogExportsControllerExportsRequestTargetsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1465,7 +1638,8 @@ export const AuditLogSchemaJsonTargetsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuditLogSchemaJsonTargetsItem>;
 
 /** The list of targets for the schema. */
-export type AuditLogSchemaJsonTargetsList = AuditLogSchemaJsonTargetsItem[];
+export type AuditLogSchemaJsonTargetsList =
+  ReadonlyArray<AuditLogSchemaJsonTargetsItem>;
 export const AuditLogSchemaJsonTargetsList = /*@__PURE__*/ S.Array(
   AuditLogSchemaJsonTargetsItem,
 ) as any as S.Schema<AuditLogSchemaJsonTargetsList>;
@@ -1532,7 +1706,7 @@ export const AuditLogActionJson = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of records for the current page. */
 export type AuditLogValidatorsControllerListResponseDataList =
-  AuditLogActionJson[];
+  ReadonlyArray<AuditLogActionJson>;
 export const AuditLogValidatorsControllerListResponseDataList =
   /*@__PURE__*/ S.Array(
     AuditLogActionJson,
@@ -1588,7 +1762,7 @@ export const AuditLogSchemaTargetDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of targets for the schema. */
 export type AuditLogValidatorVersionsControllerCreateRequestTargetsList =
-  AuditLogSchemaTargetDto[];
+  ReadonlyArray<AuditLogSchemaTargetDto>;
 export const AuditLogValidatorVersionsControllerCreateRequestTargetsList =
   /*@__PURE__*/ S.Array(
     AuditLogSchemaTargetDto,
@@ -1675,7 +1849,7 @@ export const AuditLogValidatorVersionsControllerSchemasResponseListMetadata =
 
 /** The list of records for the current page. */
 export type AuditLogValidatorVersionsControllerSchemasResponseDataList =
-  AuditLogSchemaJson[];
+  ReadonlyArray<AuditLogSchemaJson>;
 export const AuditLogValidatorVersionsControllerSchemasResponseDataList =
   /*@__PURE__*/ S.Array(
     AuditLogSchemaJson,
@@ -1798,8 +1972,7 @@ export const AuthenticationFactorsControllerChallengeRequest =
 export type AuthenticationFactorsControllerCreateRequestType =
   | "generic_otp"
   | "sms"
-  | "totp"
-  | (string & {});
+  | "totp";
 export const AuthenticationFactorsControllerCreateRequestType =
   /*@__PURE__*/ S.String;
 
@@ -1833,8 +2006,7 @@ export type AuthenticationFactorEnrolledType =
   | "generic_otp"
   | "sms"
   | "totp"
-  | "webauthn"
-  | (string & {});
+  | "webauthn";
 export const AuthenticationFactorEnrolledType = /*@__PURE__*/ S.String;
 
 /** SMS-based authentication factor details. */
@@ -1945,8 +2117,7 @@ export type AuthenticationFactorType =
   | "generic_otp"
   | "sms"
   | "totp"
-  | "webauthn"
-  | (string & {});
+  | "webauthn";
 export const AuthenticationFactorType = /*@__PURE__*/ S.String;
 
 /** SMS-based authentication factor details. */
@@ -2016,11 +2187,20 @@ export interface AuthorizationControllerCheckRequest {
   organization_membership_id: string;
   /** The slug of the permission to check. */
   permission_slug: string;
+  /** The ID of the resource. Mutually exclusive with `resource_external_id` and `resource_type_slug`. */
+  resource_id?: string;
+  /** The external ID of the resource. Required with `resource_type_slug`. Mutually exclusive with `resource_id`. */
+  resource_external_id?: string;
+  /** The slug of the resource type. Required with `resource_external_id`. Mutually exclusive with `resource_id`. */
+  resource_type_slug?: string;
 }
 export const AuthorizationControllerCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_membership_id: S.String.pipe(T.Label()),
     permission_slug: S.String,
+    resource_id: S.optional(S.String),
+    resource_external_id: S.optional(S.String),
+    resource_type_slug: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2115,7 +2295,8 @@ export const AuthorizationPermission = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizationPermission>;
 
 /** The list of records for the current page. */
-export type AuthorizationPermissionListDataList = AuthorizationPermission[];
+export type AuthorizationPermissionListDataList =
+  ReadonlyArray<AuthorizationPermission>;
 export const AuthorizationPermissionListDataList = /*@__PURE__*/ S.Array(
   AuthorizationPermission,
 ) as any as S.Schema<AuthorizationPermissionListDataList>;
@@ -2276,7 +2457,8 @@ export const AuthorizationResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizationResource>;
 
 /** The list of records for the current page. */
-export type AuthorizationResourceListDataList = AuthorizationResource[];
+export type AuthorizationResourceListDataList =
+  ReadonlyArray<AuthorizationResource>;
 export const AuthorizationResourceListDataList = /*@__PURE__*/ S.Array(
   AuthorizationResource,
 ) as any as S.Schema<AuthorizationResourceListDataList>;
@@ -2461,7 +2643,8 @@ export const AuthorizationGroupRoleAssignmentsControllerListRequest =
   }) as any as S.Schema<AuthorizationGroupRoleAssignmentsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type GroupRoleAssignmentListDataList = GroupRoleAssignment[];
+export type GroupRoleAssignmentListDataList =
+  ReadonlyArray<GroupRoleAssignment>;
 export const GroupRoleAssignmentListDataList = /*@__PURE__*/ S.Array(
   GroupRoleAssignment,
 ) as any as S.Schema<GroupRoleAssignmentListDataList>;
@@ -2592,7 +2775,7 @@ export const ReplaceGroupRoleAssignmentEntryDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of role assignments that should exist for the group. All existing assignments will be replaced. */
 export type AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsRequestRoleAssignmentsList =
-  ReplaceGroupRoleAssignmentEntryDto[];
+  ReadonlyArray<ReplaceGroupRoleAssignmentEntryDto>;
 export const AuthorizationGroupRoleAssignmentsControllerReplaceGroupRoleAssignmentsRequestRoleAssignmentsList =
   /*@__PURE__*/ S.Array(
     ReplaceGroupRoleAssignmentEntryDto,
@@ -2647,13 +2830,13 @@ export const AuthorizationOrganizationRolePermissionsControllerAddPermissionRequ
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolePermissionsControllerAddPermissionResponseType =
-  "EnvironmentRole" | "OrganizationRole" | (string & {});
+  "EnvironmentRole" | "OrganizationRole";
 export const AuthorizationOrganizationRolePermissionsControllerAddPermissionResponseType =
   /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationOrganizationRolePermissionsControllerAddPermissionResponsePermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizationOrganizationRolePermissionsControllerAddPermissionResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2728,11 +2911,11 @@ export const AuthorizationOrganizationRolePermissionsControllerRemovePermissionR
   }) as any as S.Schema<AuthorizationOrganizationRolePermissionsControllerRemovePermissionRequest>;
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
-export type RoleType = "EnvironmentRole" | "OrganizationRole" | (string & {});
+export type RoleType = "EnvironmentRole" | "OrganizationRole";
 export const RoleType = /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
-export type RolePermissionsList = string[];
+export type RolePermissionsList = ReadonlyArray<string>;
 export const RolePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RolePermissionsList>;
@@ -2776,7 +2959,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 
 /** The permission slugs to assign to the role. */
 export type AuthorizationOrganizationRolePermissionsControllerSetPermissionsRequestPermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsRequestPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2812,13 +2995,13 @@ export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsReq
 
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponseType =
-  "EnvironmentRole" | "OrganizationRole" | (string & {});
+  "EnvironmentRole" | "OrganizationRole";
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponseType =
   /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponsePermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizationOrganizationRolePermissionsControllerSetPermissionsResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2900,14 +3083,13 @@ export const AuthorizationOrganizationRolesControllerCreateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolesControllerCreateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationOrganizationRolesControllerCreateResponseType =
   /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationOrganizationRolesControllerCreateResponsePermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizationOrganizationRolesControllerCreateResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3007,14 +3189,13 @@ export const AuthorizationOrganizationRolesControllerGetRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolesControllerGetResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationOrganizationRolesControllerGetResponseType =
   /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationOrganizationRolesControllerGetResponsePermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizationOrganizationRolesControllerGetResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3081,7 +3262,7 @@ export const AuthorizationOrganizationRolesControllerListRequest =
   }) as any as S.Schema<AuthorizationOrganizationRolesControllerListRequest>;
 
 /** The list of records for the current page. */
-export type RoleListDataList = Role[];
+export type RoleListDataList = ReadonlyArray<Role>;
 export const RoleListDataList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<RoleListDataList>;
@@ -3129,14 +3310,13 @@ export const AuthorizationOrganizationRolesControllerUpdateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationOrganizationRolesControllerUpdateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationOrganizationRolesControllerUpdateResponseType =
   /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationOrganizationRolesControllerUpdateResponsePermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizationOrganizationRolesControllerUpdateResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3400,7 +3580,7 @@ export const AuthorizationResourcesByExternalIdControllerGetByExternalIdRequest 
   }) as any as S.Schema<AuthorizationResourcesByExternalIdControllerGetByExternalIdRequest>;
 
 export type AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdRequestAssignment =
-  "direct" | "indirect" | (string & {});
+  "direct" | "indirect";
 export const AuthorizationResourcesByExternalIdControllerListOrganizationMembershipsForResourceByExternalIdRequestAssignment =
   /*@__PURE__*/ S.String;
 
@@ -3456,8 +3636,7 @@ export const AuthorizationResourcesByExternalIdControllerListOrganizationMembers
 export type UserlandUserOrganizationMembershipBaseWithUserStatus =
   | "active"
   | "inactive"
-  | "pending"
-  | (string & {});
+  | "pending";
 export const UserlandUserOrganizationMembershipBaseWithUserStatus =
   /*@__PURE__*/ S.String;
 
@@ -3574,7 +3753,7 @@ export const UserlandUserOrganizationMembershipBaseWithUser =
 
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipBaseWithUserListDataList =
-  UserlandUserOrganizationMembershipBaseWithUser[];
+  ReadonlyArray<UserlandUserOrganizationMembershipBaseWithUser>;
 export const UserlandUserOrganizationMembershipBaseWithUserListDataList =
   /*@__PURE__*/ S.Array(
     UserlandUserOrganizationMembershipBaseWithUser,
@@ -3629,6 +3808,12 @@ export interface AuthorizationResourcesByExternalIdControllerUpdateByExternalIdR
   name?: string;
   /** An optional description of the resource. */
   description?: string | null;
+  /** The ID of the parent resource. Mutually exclusive with `parent_resource_external_id` and `parent_resource_type_slug`. */
+  parent_resource_id?: string;
+  /** The external ID of the parent resource. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`. */
+  parent_resource_external_id?: string;
+  /** The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`. */
+  parent_resource_type_slug?: string;
 }
 export const AuthorizationResourcesByExternalIdControllerUpdateByExternalIdRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3638,6 +3823,9 @@ export const AuthorizationResourcesByExternalIdControllerUpdateByExternalIdReque
       external_id: S.String.pipe(T.Label()),
       name: S.optional(S.String),
       description: S.optional(S.NullOr(S.String)),
+      parent_resource_id: S.optional(S.String),
+      parent_resource_external_id: S.optional(S.String),
+      parent_resource_type_slug: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -3702,6 +3890,12 @@ export interface AuthorizationResourcesControllerCreateRequest {
   resource_type_slug: string;
   /** The ID of the organization this resource belongs to. */
   organization_id: string;
+  /** The ID of the parent resource. Mutually exclusive with `parent_resource_external_id` and `parent_resource_type_slug`. */
+  parent_resource_id?: string | null;
+  /** The external ID of the parent resource. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`. */
+  parent_resource_external_id?: string;
+  /** The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`. */
+  parent_resource_type_slug?: string;
 }
 export const AuthorizationResourcesControllerCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3711,6 +3905,9 @@ export const AuthorizationResourcesControllerCreateRequest =
       description: S.optional(S.NullOr(S.String)),
       resource_type_slug: S.String,
       organization_id: S.String,
+      parent_resource_id: S.optional(S.NullOr(S.String)),
+      parent_resource_external_id: S.optional(S.String),
+      parent_resource_type_slug: S.optional(S.String),
     }).pipe(
       T.Http({ method: "POST", uri: "/authorization/resources", code: 200 }),
     ),
@@ -3848,7 +4045,7 @@ export const AuthorizationResourcesControllerListRequest =
   }) as any as S.Schema<AuthorizationResourcesControllerListRequest>;
 
 export type AuthorizationResourcesControllerListOrganizationMembershipsForResourceRequestAssignment =
-  "direct" | "indirect" | (string & {});
+  "direct" | "indirect";
 export const AuthorizationResourcesControllerListOrganizationMembershipsForResourceRequestAssignment =
   /*@__PURE__*/ S.String;
 
@@ -3901,6 +4098,12 @@ export interface AuthorizationResourcesControllerUpdateRequest {
   name?: string;
   /** An optional description of the resource. */
   description?: string | null;
+  /** The ID of the parent resource. Mutually exclusive with `parent_resource_external_id` and `parent_resource_type_slug`. */
+  parent_resource_id?: string;
+  /** The external ID of the parent resource. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`. */
+  parent_resource_external_id?: string;
+  /** The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`. */
+  parent_resource_type_slug?: string;
 }
 export const AuthorizationResourcesControllerUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3908,6 +4111,9 @@ export const AuthorizationResourcesControllerUpdateRequest =
       resource_id: S.String.pipe(T.Label()),
       name: S.optional(S.String),
       description: S.optional(S.NullOr(S.String)),
+      parent_resource_id: S.optional(S.String),
+      parent_resource_external_id: S.optional(S.String),
+      parent_resource_type_slug: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -3964,12 +4170,21 @@ export interface AuthorizationRoleAssignmentsControllerAssignRoleRequest {
   organization_membership_id: string;
   /** The slug of the role to assign. */
   role_slug: string;
+  /** The ID of the resource. Mutually exclusive with `resource_external_id` and `resource_type_slug`. */
+  resource_id?: string;
+  /** The external ID of the resource. Required with `resource_type_slug`. Mutually exclusive with `resource_id`. */
+  resource_external_id?: string;
+  /** The resource type slug. Required with `resource_external_id`. Mutually exclusive with `resource_id`. */
+  resource_type_slug?: string;
 }
 export const AuthorizationRoleAssignmentsControllerAssignRoleRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_membership_id: S.String.pipe(T.Label()),
       role_slug: S.String,
+      resource_id: S.optional(S.String),
+      resource_external_id: S.optional(S.String),
+      resource_type_slug: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -4001,7 +4216,7 @@ export const UserRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserRoleAssignmentResource>;
 
 /** Whether the role was assigned directly or derived from a group. */
-export type UserRoleAssignmentSourceType = "direct" | "group" | (string & {});
+export type UserRoleAssignmentSourceType = "direct" | "group";
 export const UserRoleAssignmentSourceType = /*@__PURE__*/ S.String;
 
 /** The origin of the role assignment. */
@@ -4095,7 +4310,7 @@ export const AuthorizationRoleAssignmentsControllerListRoleAssignmentsRequest =
   }) as any as S.Schema<AuthorizationRoleAssignmentsControllerListRoleAssignmentsRequest>;
 
 /** The list of records for the current page. */
-export type UserRoleAssignmentListDataList = UserRoleAssignment[];
+export type UserRoleAssignmentListDataList = ReadonlyArray<UserRoleAssignment>;
 export const UserRoleAssignmentListDataList = /*@__PURE__*/ S.Array(
   UserRoleAssignment,
 ) as any as S.Schema<UserRoleAssignmentListDataList>;
@@ -4215,12 +4430,21 @@ export interface AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaReque
   organization_membership_id: string;
   /** The slug of the role to remove. */
   role_slug: string;
+  /** The ID of the resource. Mutually exclusive with `resource_external_id` and `resource_type_slug`. */
+  resource_id?: string;
+  /** The external ID of the resource. Required with `resource_type_slug`. Mutually exclusive with `resource_id`. */
+  resource_external_id?: string;
+  /** The resource type slug. Required with `resource_external_id`. Mutually exclusive with `resource_id`. */
+  resource_type_slug?: string;
 }
 export const AuthorizationRoleAssignmentsControllerRemoveRoleByCriteriaRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_membership_id: S.String.pipe(T.Label()),
       role_slug: S.String,
+      resource_id: S.optional(S.String),
+      resource_external_id: S.optional(S.String),
+      resource_type_slug: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "DELETE",
@@ -4290,14 +4514,13 @@ export const AuthorizationRolePermissionsControllerAddPermissionRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolePermissionsControllerAddPermissionResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationRolePermissionsControllerAddPermissionResponseType =
   /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationRolePermissionsControllerAddPermissionResponsePermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizationRolePermissionsControllerAddPermissionResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4346,7 +4569,7 @@ export const AuthorizationRolePermissionsControllerAddPermissionResponse =
 
 /** The permission slugs to assign to the role. */
 export type AuthorizationRolePermissionsControllerSetPermissionsRequestPermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizationRolePermissionsControllerSetPermissionsRequestPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4379,14 +4602,13 @@ export const AuthorizationRolePermissionsControllerSetPermissionsRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolePermissionsControllerSetPermissionsResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationRolePermissionsControllerSetPermissionsResponseType =
   /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationRolePermissionsControllerSetPermissionsResponsePermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizationRolePermissionsControllerSetPermissionsResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4458,14 +4680,13 @@ export const AuthorizationRolesControllerCreateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolesControllerCreateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationRolesControllerCreateResponseType =
   /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationRolesControllerCreateResponsePermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizationRolesControllerCreateResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4564,14 +4785,13 @@ export const AuthorizationRolesControllerUpdateRequest =
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AuthorizationRolesControllerUpdateResponseType =
   | "EnvironmentRole"
-  | "OrganizationRole"
-  | (string & {});
+  | "OrganizationRole";
 export const AuthorizationRolesControllerUpdateResponseType =
   /*@__PURE__*/ S.String;
 
 /** The permission slugs assigned to the role. */
 export type AuthorizationRolesControllerUpdateResponsePermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizationRolesControllerUpdateResponsePermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4678,7 +4898,7 @@ export const AuthorizedApplicationsControllerListRequest =
 
 /** The scopes granted by the user to the application. */
 export type AuthorizedConnectApplicationListDataItemGrantedScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const AuthorizedConnectApplicationListDataItemGrantedScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4710,7 +4930,7 @@ export const AuthorizedConnectApplicationListDataItem = /*@__PURE__*/ S.suspend(
 
 /** The list of records for the current page. */
 export type AuthorizedConnectApplicationListDataList =
-  AuthorizedConnectApplicationListDataItem[];
+  ReadonlyArray<AuthorizedConnectApplicationListDataItem>;
 export const AuthorizedConnectApplicationListDataList = /*@__PURE__*/ S.Array(
   AuthorizedConnectApplicationListDataItem,
 ) as any as S.Schema<AuthorizedConnectApplicationListDataList>;
@@ -4861,8 +5081,7 @@ export type ConnectionConnectionType =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "VMwareSAML"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const ConnectionConnectionType = /*@__PURE__*/ S.String;
 
 /** Indicates whether a Connection is able to authenticate users. */
@@ -4872,12 +5091,11 @@ export type ConnectionState =
   | "active"
   | "validating"
   | "inactive"
-  | "deleting"
-  | (string & {});
+  | "deleting";
 export const ConnectionState = /*@__PURE__*/ S.String;
 
 /** Deprecated. Use `state` instead. */
-export type ConnectionStatus = "linked" | "unlinked" | (string & {});
+export type ConnectionStatus = "linked" | "unlinked";
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface ConnectionDomainsItem {
@@ -4899,7 +5117,7 @@ export const ConnectionDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionDomainsItem>;
 
 /** List of Organization Domains. */
-export type ConnectionDomainsList = ConnectionDomainsItem[];
+export type ConnectionDomainsList = ReadonlyArray<ConnectionDomainsItem>;
 export const ConnectionDomainsList = /*@__PURE__*/ S.Array(
   ConnectionDomainsItem,
 ) as any as S.Schema<ConnectionDomainsList>;
@@ -4992,8 +5210,7 @@ export type ConnectionsControllerListRequestConnectionType =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "VMwareSAML"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const ConnectionsControllerListRequestConnectionType =
   /*@__PURE__*/ S.String;
 
@@ -5033,7 +5250,7 @@ export const ConnectionsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type ConnectionListDataList = Connection[];
+export type ConnectionListDataList = ReadonlyArray<Connection>;
 export const ConnectionListDataList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionListDataList>;
@@ -5154,7 +5371,8 @@ export const CorsOriginsControllerListResponseListMetadata =
   }) as any as S.Schema<CorsOriginsControllerListResponseListMetadata>;
 
 /** The list of records for the current page. */
-export type CorsOriginsControllerListResponseDataList = CorsOriginResponse[];
+export type CorsOriginsControllerListResponseDataList =
+  ReadonlyArray<CorsOriginResponse>;
 export const CorsOriginsControllerListResponseDataList = /*@__PURE__*/ S.Array(
   CorsOriginResponse,
 ) as any as S.Schema<CorsOriginsControllerListResponseDataList>;
@@ -5245,7 +5463,7 @@ export const DataIntegrationsControllerGetUserlandUserTokenRequest =
 
 /** The scopes granted to the access token. */
 export type DataIntegrationAccessTokenResponseCase0AccessTokenScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const DataIntegrationAccessTokenResponseCase0AccessTokenScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5253,7 +5471,7 @@ export const DataIntegrationAccessTokenResponseCase0AccessTokenScopesList =
 
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. */
 export type DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const DataIntegrationAccessTokenResponseCase0AccessTokenMissingScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5305,8 +5523,7 @@ export const DataIntegrationAccessTokenResponseCase0 = /*@__PURE__*/ S.suspend(
 /** - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
 export type DataIntegrationAccessTokenResponseCase1Error =
   | "needs_reauthorization"
-  | "not_installed"
-  | (string & {});
+  | "not_installed";
 export const DataIntegrationAccessTokenResponseCase1Error =
   /*@__PURE__*/ S.String;
 
@@ -5370,21 +5587,20 @@ export const DataIntegrationsControllerUpsertApiKeyRequest =
   }) as any as S.Schema<DataIntegrationsControllerUpsertApiKeyRequest>;
 
 /** The OAuth scopes granted for this connection. */
-export type ConnectedAccountScopesList = string[];
+export type ConnectedAccountScopesList = ReadonlyArray<string>;
 export const ConnectedAccountScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectedAccountScopesList>;
 
 /** The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent. */
-export type ConnectedAccountAuthMethod = "oauth" | "api_key" | (string & {});
+export type ConnectedAccountAuthMethod = "oauth" | "api_key";
 export const ConnectedAccountAuthMethod = /*@__PURE__*/ S.String;
 
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type ConnectedAccountState =
   | "connected"
   | "needs_reauthorization"
-  | "disconnected"
-  | (string & {});
+  | "disconnected";
 export const ConnectedAccountState = /*@__PURE__*/ S.String;
 
 export interface ConnectedAccount {
@@ -5453,7 +5669,7 @@ export const DataIntegrationsControllerVendCredentialsRequest =
 
 /** The scopes granted to the access token. */
 export type DataIntegrationCredentialsResponseCase0CredentialScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const DataIntegrationCredentialsResponseCase0CredentialScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5461,7 +5677,7 @@ export const DataIntegrationCredentialsResponseCase0CredentialScopesList =
 
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. */
 export type DataIntegrationCredentialsResponseCase0CredentialMissingScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const DataIntegrationCredentialsResponseCase0CredentialMissingScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5552,8 +5768,7 @@ export const DataIntegrationCredentialsResponseCase1 = /*@__PURE__*/ S.suspend(
 /** The reason credentials are unavailable. Additional values may be added in the future; handle unknown values gracefully. - `"not_installed"`: The user does not have the integration installed. - `"needs_reauthorization"`: The user needs to reauthorize the integration. */
 export type DataIntegrationCredentialsResponseCase2Error =
   | "not_installed"
-  | "needs_reauthorization"
-  | (string & {});
+  | "needs_reauthorization";
 export const DataIntegrationCredentialsResponseCase2Error =
   /*@__PURE__*/ S.String;
 
@@ -5591,20 +5806,20 @@ export const DataIntegrationsControllerVendCredentialsResponse =
 
 /** The OAuth scopes to request for the Data Integration. Defaults to the provider's configured scopes when omitted. */
 export type DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequestScopesList>;
 
 export type DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem =
-  "oauth" | "api_key" | (string & {});
+  "oauth" | "api_key";
 export const DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem =
   /*@__PURE__*/ S.String;
 
 /** How accounts authenticate with the provider. Defaults to `["oauth"]`. Use `["api_key"]` to declare an API key integration; `credentials` is then not required and keys are supplied per-tenant (optionally via `api_key` on this request). */
 export type DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsList =
-  DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem[];
+  ReadonlyArray<DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem>;
 export const DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsList =
   /*@__PURE__*/ S.Array(
     DataIntegrationsManagementControllerCreateDataIntegrationRequestAuthMethodsItem,
@@ -5620,10 +5835,7 @@ export const DataIntegrationsManagementControllerCreateDataIntegrationRequestCon
   ) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequestConfigMap>;
 
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (configured per-organization). */
-export type DataIntegrationCredentialsDtoType =
-  | "custom"
-  | "organization"
-  | (string & {});
+export type DataIntegrationCredentialsDtoType = "custom" | "organization";
 export const DataIntegrationCredentialsDtoType = /*@__PURE__*/ S.String;
 
 export interface DataIntegrationCredentialsDto {
@@ -5675,8 +5887,7 @@ export const CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type CustomProviderDefinitionDtoAuthenticateVia =
   | "request_body"
-  | "basic_auth_header"
-  | (string & {});
+  | "basic_auth_header";
 export const CustomProviderDefinitionDtoAuthenticateVia =
   /*@__PURE__*/ S.String;
 
@@ -5771,35 +5982,26 @@ export const DataIntegrationsManagementControllerCreateDataIntegrationRequest =
   }) as any as S.Schema<DataIntegrationsManagementControllerCreateDataIntegrationRequest>;
 
 /** The state of the Data Integration. */
-export type DataIntegrationState =
-  | "valid"
-  | "invalid"
-  | "requested"
-  | (string & {});
+export type DataIntegrationState = "valid" | "invalid" | "requested";
 export const DataIntegrationState = /*@__PURE__*/ S.String;
 
-export type DataIntegrationScopesList = string[];
+export type DataIntegrationScopesList = ReadonlyArray<string>;
 export const DataIntegrationScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataIntegrationScopesList>;
 
-export type DataIntegrationAuthMethodsItem =
-  | "oauth"
-  | "api_key"
-  | (string & {});
+export type DataIntegrationAuthMethodsItem = "oauth" | "api_key";
 export const DataIntegrationAuthMethodsItem = /*@__PURE__*/ S.String;
 
 /** How accounts authenticate with the provider for this Data Integration. */
-export type DataIntegrationAuthMethodsList = DataIntegrationAuthMethodsItem[];
+export type DataIntegrationAuthMethodsList =
+  ReadonlyArray<DataIntegrationAuthMethodsItem>;
 export const DataIntegrationAuthMethodsList = /*@__PURE__*/ S.Array(
   DataIntegrationAuthMethodsItem,
 ) as any as S.Schema<DataIntegrationAuthMethodsList>;
 
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (so `client_id`/`redacted_client_secret` are null on the integration itself). */
-export type DataIntegrationCredentialsType =
-  | "custom"
-  | "organization"
-  | (string & {});
+export type DataIntegrationCredentialsType = "custom" | "organization";
 export const DataIntegrationCredentialsType = /*@__PURE__*/ S.String;
 
 /** The credentials configured for the Data Integration. */
@@ -5861,8 +6063,7 @@ export const DataIntegrationCustomProviderAdditionalAuthorizationParametersMap =
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type DataIntegrationCustomProviderAuthenticateVia =
   | "request_body"
-  | "basic_auth_header"
-  | (string & {});
+  | "basic_auth_header";
 export const DataIntegrationCustomProviderAuthenticateVia =
   /*@__PURE__*/ S.String;
 
@@ -6028,7 +6229,7 @@ export const DataIntegrationsManagementControllerListDataIntegrationsRequest =
   }) as any as S.Schema<DataIntegrationsManagementControllerListDataIntegrationsRequest>;
 
 /** The list of records for the current page. */
-export type DataIntegrationListDataList = DataIntegration[];
+export type DataIntegrationListDataList = ReadonlyArray<DataIntegration>;
 export const DataIntegrationListDataList = /*@__PURE__*/ S.Array(
   DataIntegration,
 ) as any as S.Schema<DataIntegrationListDataList>;
@@ -6069,7 +6270,7 @@ export const DataIntegrationList = /*@__PURE__*/ S.suspend(() =>
 
 /** The OAuth scopes to request for the Data Integration. Pass `null` to reset to the provider's configured scopes. */
 export type DataIntegrationsManagementControllerUpdateDataIntegrationRequestScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const DataIntegrationsManagementControllerUpdateDataIntegrationRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6087,8 +6288,7 @@ export const UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersM
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type UpdateCustomProviderDefinitionDtoAuthenticateVia =
   | "request_body"
-  | "basic_auth_header"
-  | (string & {});
+  | "basic_auth_header";
 export const UpdateCustomProviderDefinitionDtoAuthenticateVia =
   /*@__PURE__*/ S.String;
 
@@ -6178,7 +6378,7 @@ export const DataIntegrationsManagementControllerUpdateDataIntegrationRequest =
 
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6186,7 +6386,7 @@ export const DataIntegrationsUserManagementControllerCreateUserDataInstallationR
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState =
-  "connected" | "needs_reauthorization" | (string & {});
+  "connected" | "needs_reauthorization";
 export const DataIntegrationsUserManagementControllerCreateUserDataInstallationRequestState =
   /*@__PURE__*/ S.String;
 
@@ -6317,7 +6517,8 @@ export const DataIntegrationsUserManagementControllerGetUserDataIntegrationsRequ
       "DataIntegrationsUserManagementControllerGetUserDataIntegrationsRequest",
   }) as any as S.Schema<DataIntegrationsUserManagementControllerGetUserDataIntegrationsRequest>;
 
-export type DataIntegrationsListResponseDataItemScopesList = string[];
+export type DataIntegrationsListResponseDataItemScopesList =
+  ReadonlyArray<string>;
 export const DataIntegrationsListResponseDataItemScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6325,14 +6526,13 @@ export const DataIntegrationsListResponseDataItemScopesList =
 
 export type DataIntegrationsListResponseDataItemAuthMethodsItem =
   | "oauth"
-  | "api_key"
-  | (string & {});
+  | "api_key";
 export const DataIntegrationsListResponseDataItemAuthMethodsItem =
   /*@__PURE__*/ S.String;
 
 /** The authentication methods supported by this provider (`oauth`, `api_key`, or both). Defaults to `["oauth"]` if absent. */
 export type DataIntegrationsListResponseDataItemAuthMethodsList =
-  DataIntegrationsListResponseDataItemAuthMethodsItem[];
+  ReadonlyArray<DataIntegrationsListResponseDataItemAuthMethodsItem>;
 export const DataIntegrationsListResponseDataItemAuthMethodsList =
   /*@__PURE__*/ S.Array(
     DataIntegrationsListResponseDataItemAuthMethodsItem,
@@ -6341,14 +6541,13 @@ export const DataIntegrationsListResponseDataItemAuthMethodsList =
 /** Whether the provider is owned by a user or organization. */
 export type DataIntegrationsListResponseDataItemOwnership =
   | "userland_user"
-  | "organization"
-  | (string & {});
+  | "organization";
 export const DataIntegrationsListResponseDataItemOwnership =
   /*@__PURE__*/ S.String;
 
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsListResponseDataItemConnectedAccountScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const DataIntegrationsListResponseDataItemConnectedAccountScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6357,8 +6556,7 @@ export const DataIntegrationsListResponseDataItemConnectedAccountScopesList =
 /** The authentication method used for this connection (`oauth` or `api_key`). Defaults to `oauth` if absent. */
 export type DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
   | "oauth"
-  | "api_key"
-  | (string & {});
+  | "api_key";
 export const DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -6366,8 +6564,7 @@ export const DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
 export type DataIntegrationsListResponseDataItemConnectedAccountState =
   | "connected"
   | "needs_reauthorization"
-  | "disconnected"
-  | (string & {});
+  | "disconnected";
 export const DataIntegrationsListResponseDataItemConnectedAccountState =
   /*@__PURE__*/ S.String;
 
@@ -6492,7 +6689,7 @@ export const DataIntegrationsListResponseDataItem = /*@__PURE__*/ S.suspend(
 
 /** A list of [providers](/reference/pipes/provider), each including a [`connected_account`](/reference/pipes/connected-account) field with the user's connection status. */
 export type DataIntegrationsListResponseDataList =
-  DataIntegrationsListResponseDataItem[];
+  ReadonlyArray<DataIntegrationsListResponseDataItem>;
 export const DataIntegrationsListResponseDataList = /*@__PURE__*/ S.Array(
   DataIntegrationsListResponseDataItem,
 ) as any as S.Schema<DataIntegrationsListResponseDataList>;
@@ -6514,7 +6711,7 @@ export const DataIntegrationsListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6522,7 +6719,7 @@ export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationR
 
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState =
-  "connected" | "needs_reauthorization" | (string & {});
+  "connected" | "needs_reauthorization";
 export const DataIntegrationsUserManagementControllerUpdateUserDataInstallationRequestState =
   /*@__PURE__*/ S.String;
 
@@ -6624,8 +6821,7 @@ export type DirectoryType =
   | "s3"
   | "sftp"
   | "sftp workday"
-  | "workday"
-  | (string & {});
+  | "workday";
 export const DirectoryType = /*@__PURE__*/ S.String;
 
 /** Describes whether the Directory has been successfully connected to an external provider. */
@@ -6634,8 +6830,7 @@ export type DirectoryState =
   | "validating"
   | "invalid_credentials"
   | "unlinked"
-  | "deleting"
-  | (string & {});
+  | "deleting";
 export const DirectoryState = /*@__PURE__*/ S.String;
 
 /** Counts of active and inactive directory users. */
@@ -6741,7 +6936,7 @@ export const DirectoriesControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoriesControllerListRequest>;
 
 /** The list of records for the current page. */
-export type DirectoryListDataList = Directory[];
+export type DirectoryListDataList = ReadonlyArray<Directory>;
 export const DirectoryListDataList = /*@__PURE__*/ S.Array(
   Directory,
 ) as any as S.Schema<DirectoryListDataList>;
@@ -6865,7 +7060,7 @@ export const DirectoryGroupsControllerListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DirectoryGroupsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type DirectoryGroupListDataList = DirectoryGroup[];
+export type DirectoryGroupListDataList = ReadonlyArray<DirectoryGroup>;
 export const DirectoryGroupListDataList = /*@__PURE__*/ S.Array(
   DirectoryGroup,
 ) as any as S.Schema<DirectoryGroupListDataList>;
@@ -6936,17 +7131,13 @@ export const DirectoryUserWithGroupsEmailsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of email addresses for the user. */
 export type DirectoryUserWithGroupsEmailsList =
-  DirectoryUserWithGroupsEmailsItem[];
+  ReadonlyArray<DirectoryUserWithGroupsEmailsItem>;
 export const DirectoryUserWithGroupsEmailsList = /*@__PURE__*/ S.Array(
   DirectoryUserWithGroupsEmailsItem,
 ) as any as S.Schema<DirectoryUserWithGroupsEmailsList>;
 
 /** The state of the user. */
-export type DirectoryUserWithGroupsState =
-  | "active"
-  | "suspended"
-  | "inactive"
-  | (string & {});
+export type DirectoryUserWithGroupsState = "active" | "suspended" | "inactive";
 export const DirectoryUserWithGroupsState = /*@__PURE__*/ S.String;
 
 /** The raw attributes received from the directory provider. */
@@ -6969,13 +7160,13 @@ export const DirectoryUserWithGroupsCustomAttributesMap =
   ) as any as S.Schema<DirectoryUserWithGroupsCustomAttributesMap>;
 
 /** All roles assigned to the user. */
-export type DirectoryUserWithGroupsRolesList = SlimRole[];
+export type DirectoryUserWithGroupsRolesList = ReadonlyArray<SlimRole>;
 export const DirectoryUserWithGroupsRolesList = /*@__PURE__*/ S.Array(
   SlimRole,
 ) as any as S.Schema<DirectoryUserWithGroupsRolesList>;
 
 /** The directory groups the user belongs to. Deprecated: starting May 1, 2026, this field returns an empty array by default for newly created teams. Existing teams currently depending on this field should migrate to the new access pattern for better throughput performance — the field is unbounded by user, so users with many group memberships produce large, slow response payloads. Use the List Directory Groups endpoint with a `user` filter to fetch a user's group memberships. */
-export type DirectoryUserWithGroupsGroupsList = DirectoryGroup[];
+export type DirectoryUserWithGroupsGroupsList = ReadonlyArray<DirectoryGroup>;
 export const DirectoryUserWithGroupsGroupsList = /*@__PURE__*/ S.Array(
   DirectoryGroup,
 ) as any as S.Schema<DirectoryUserWithGroupsGroupsList>;
@@ -7082,7 +7273,7 @@ export const DirectoryUsersControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectoryUsersControllerListRequest>;
 
 /** The list of records for the current page. */
-export type DirectoryUserListDataList = DirectoryUserWithGroups[];
+export type DirectoryUserListDataList = ReadonlyArray<DirectoryUserWithGroups>;
 export const DirectoryUserListDataList = /*@__PURE__*/ S.Array(
   DirectoryUserWithGroups,
 ) as any as S.Schema<DirectoryUserListDataList>;
@@ -7121,7 +7312,7 @@ export const DirectoryUserList = /*@__PURE__*/ S.suspend(() =>
   identifier: "DirectoryUserList",
 }) as any as S.Schema<DirectoryUserList>;
 
-export type EventsControllerListRequestEventsList = string[];
+export type EventsControllerListRequestEventsList = ReadonlyArray<string>;
 export const EventsControllerListRequestEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EventsControllerListRequestEventsList>;
@@ -7200,7 +7391,7 @@ export const EventSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventSchema" }) as any as S.Schema<EventSchema>;
 
 /** The list of records for the current page. */
-export type EventListDataList = EventSchema[];
+export type EventListDataList = ReadonlyArray<EventSchema>;
 export const EventListDataList = /*@__PURE__*/ S.Array(
   EventSchema,
 ) as any as S.Schema<EventListDataList>;
@@ -7282,7 +7473,8 @@ export const UserConsentOptionChoicesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserConsentOptionChoicesItem>;
 
 /** The available choices for this consent option. */
-export type UserConsentOptionChoicesList = UserConsentOptionChoicesItem[];
+export type UserConsentOptionChoicesList =
+  ReadonlyArray<UserConsentOptionChoicesItem>;
 export const UserConsentOptionChoicesList = /*@__PURE__*/ S.Array(
   UserConsentOptionChoicesItem,
 ) as any as S.Schema<UserConsentOptionChoicesList>;
@@ -7310,7 +7502,7 @@ export const UserConsentOption = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [User Consent Options](/reference/workos-connect/standalone/user-consent-options) to store with the session. */
 export type ExternalAuthControllerCompleteLoginRequestUserConsentOptionsList =
-  UserConsentOption[];
+  ReadonlyArray<UserConsentOption>;
 export const ExternalAuthControllerCompleteLoginRequestUserConsentOptionsList =
   /*@__PURE__*/ S.Array(
     UserConsentOption,
@@ -7390,7 +7582,8 @@ export const FeatureFlagsControllerDisableFlagResponseOwner =
   }) as any as S.Schema<FeatureFlagsControllerDisableFlagResponseOwner>;
 
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
-export type FeatureFlagsControllerDisableFlagResponseTagsList = string[];
+export type FeatureFlagsControllerDisableFlagResponseTagsList =
+  ReadonlyArray<string>;
 export const FeatureFlagsControllerDisableFlagResponseTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7474,7 +7667,8 @@ export const FeatureFlagsControllerEnableFlagResponseOwner =
   }) as any as S.Schema<FeatureFlagsControllerEnableFlagResponseOwner>;
 
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
-export type FeatureFlagsControllerEnableFlagResponseTagsList = string[];
+export type FeatureFlagsControllerEnableFlagResponseTagsList =
+  ReadonlyArray<string>;
 export const FeatureFlagsControllerEnableFlagResponseTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7553,7 +7747,7 @@ export const FlagOwner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlagOwner" }) as any as S.Schema<FlagOwner>;
 
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
-export type FlagTagsList = string[];
+export type FlagTagsList = ReadonlyArray<string>;
 export const FlagTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlagTagsList>;
@@ -7620,7 +7814,7 @@ export const FeatureFlagsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureFlagsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type FlagListDataList = Flag[];
+export type FlagListDataList = ReadonlyArray<Flag>;
 export const FlagListDataList = /*@__PURE__*/ S.Array(
   Flag,
 ) as any as S.Schema<FlagListDataList>;
@@ -7804,8 +7998,7 @@ export const GroupMembershipsControllerListMembersRequest =
 export type UserlandUserOrganizationMembershipBaseListDataItemStatus =
   | "active"
   | "inactive"
-  | "pending"
-  | (string & {});
+  | "pending";
 export const UserlandUserOrganizationMembershipBaseListDataItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -7862,7 +8055,7 @@ export const UserlandUserOrganizationMembershipBaseListDataItem =
 
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipBaseListDataList =
-  UserlandUserOrganizationMembershipBaseListDataItem[];
+  ReadonlyArray<UserlandUserOrganizationMembershipBaseListDataItem>;
 export const UserlandUserOrganizationMembershipBaseListDataList =
   /*@__PURE__*/ S.Array(
     UserlandUserOrganizationMembershipBaseListDataItem,
@@ -8041,7 +8234,7 @@ export const GroupsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type GroupListDataList = Group[];
+export type GroupListDataList = ReadonlyArray<Group>;
 export const GroupListDataList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupListDataList>;
@@ -8247,10 +8440,7 @@ export const ObjectWithoutValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectWithoutValue",
 }) as any as S.Schema<ObjectWithoutValue>;
 
-export type JumpWireWebDataVaultControllerIndexRequestOrder =
-  | "asc"
-  | "desc"
-  | (string & {});
+export type JumpWireWebDataVaultControllerIndexRequestOrder = "asc" | "desc";
 export const JumpWireWebDataVaultControllerIndexRequestOrder =
   /*@__PURE__*/ S.String;
 
@@ -8302,7 +8492,7 @@ export const ObjectSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ObjectSummary" }) as any as S.Schema<ObjectSummary>;
 
 /** List of object summaries. */
-export type ObjectListResponseDataList = ObjectSummary[];
+export type ObjectListResponseDataList = ReadonlyArray<ObjectSummary>;
 export const ObjectListResponseDataList = /*@__PURE__*/ S.Array(
   ObjectSummary,
 ) as any as S.Schema<ObjectListResponseDataList>;
@@ -8440,7 +8630,7 @@ export const ObjectVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ObjectVersion" }) as any as S.Schema<ObjectVersion>;
 
 /** List of object versions. */
-export type VersionListResponseDataList = ObjectVersion[];
+export type VersionListResponseDataList = ReadonlyArray<ObjectVersion>;
 export const VersionListResponseDataList = /*@__PURE__*/ S.Array(
   ObjectVersion,
 ) as any as S.Schema<VersionListResponseDataList>;
@@ -8624,7 +8814,7 @@ export const JwtTemplatesControllerUpdateJwtTemplateRequest =
 
 /** The permission slugs to assign to the API key. */
 export type OrganizationApiKeysControllerCreateRequestPermissionsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationApiKeysControllerCreateRequestPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8677,7 +8867,7 @@ export const OrganizationApiKeyWithValueOwner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationApiKeyWithValueOwner>;
 
 /** The permission slugs assigned to the API Key. */
-export type OrganizationApiKeyWithValuePermissionsList = string[];
+export type OrganizationApiKeyWithValuePermissionsList = ReadonlyArray<string>;
 export const OrganizationApiKeyWithValuePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OrganizationApiKeyWithValuePermissionsList>;
@@ -8772,7 +8962,7 @@ export const OrganizationApiKeyOwner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationApiKeyOwner>;
 
 /** The permission slugs assigned to the API Key. */
-export type OrganizationApiKeyPermissionsList = string[];
+export type OrganizationApiKeyPermissionsList = ReadonlyArray<string>;
 export const OrganizationApiKeyPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OrganizationApiKeyPermissionsList>;
@@ -8817,7 +9007,7 @@ export const OrganizationApiKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationApiKey>;
 
 /** The list of records for the current page. */
-export type OrganizationApiKeyListDataList = OrganizationApiKey[];
+export type OrganizationApiKeyListDataList = ReadonlyArray<OrganizationApiKey>;
 export const OrganizationApiKeyListDataList = /*@__PURE__*/ S.Array(
   OrganizationApiKey,
 ) as any as S.Schema<OrganizationApiKeyListDataList>;
@@ -8889,7 +9079,7 @@ export const OrganizationAuthorizedApplicationsControllerListRequest =
 
 /** The scopes granted by the user to the application. */
 export type OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8925,7 +9115,7 @@ export const OrganizationAuthorizedConnectApplicationListDataItem =
 
 /** The list of records for the current page. */
 export type OrganizationAuthorizedConnectApplicationListDataList =
-  OrganizationAuthorizedConnectApplicationListDataItem[];
+  ReadonlyArray<OrganizationAuthorizedConnectApplicationListDataItem>;
 export const OrganizationAuthorizedConnectApplicationListDataList =
   /*@__PURE__*/ S.Array(
     OrganizationAuthorizedConnectApplicationListDataItem,
@@ -8991,16 +9181,14 @@ export type OrganizationDomainsControllerCreateResponseState =
   | "legacy_verified"
   | "pending"
   | "unverified"
-  | "verified"
-  | (string & {});
+  | "verified";
 export const OrganizationDomainsControllerCreateResponseState =
   /*@__PURE__*/ S.String;
 
 /** Strategy used to verify the domain. */
 export type OrganizationDomainsControllerCreateResponseVerificationStrategy =
   | "dns"
-  | "manual"
-  | (string & {});
+  | "manual";
 export const OrganizationDomainsControllerCreateResponseVerificationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -9092,15 +9280,11 @@ export type OrganizationDomainStandAloneState =
   | "legacy_verified"
   | "pending"
   | "unverified"
-  | "verified"
-  | (string & {});
+  | "verified";
 export const OrganizationDomainStandAloneState = /*@__PURE__*/ S.String;
 
 /** Strategy used to verify the domain. */
-export type OrganizationDomainStandAloneVerificationStrategy =
-  | "dns"
-  | "manual"
-  | (string & {});
+export type OrganizationDomainStandAloneVerificationStrategy = "dns" | "manual";
 export const OrganizationDomainStandAloneVerificationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -9227,17 +9411,15 @@ export const OrganizationMembershipGroupsControllerListGroupsRequest =
   }) as any as S.Schema<OrganizationMembershipGroupsControllerListGroupsRequest>;
 
 /** The domains associated with the organization. Deprecated in favor of `domain_data`. */
-export type OrganizationsControllerCreateRequestDomainsList = string[];
+export type OrganizationsControllerCreateRequestDomainsList =
+  ReadonlyArray<string>;
 export const OrganizationsControllerCreateRequestDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsControllerCreateRequestDomainsList>;
 
 /** The verification state of the domain. */
-export type OrganizationDomainDataDtoState =
-  | "pending"
-  | "verified"
-  | (string & {});
+export type OrganizationDomainDataDtoState = "pending" | "verified";
 export const OrganizationDomainDataDtoState = /*@__PURE__*/ S.String;
 
 export interface OrganizationDomainDataDto {
@@ -9257,7 +9439,7 @@ export const OrganizationDomainDataDto = /*@__PURE__*/ S.suspend(() =>
 
 /** The domains associated with the organization, including verification state. */
 export type OrganizationsControllerCreateRequestDomainDataList =
-  OrganizationDomainDataDto[];
+  ReadonlyArray<OrganizationDomainDataDto>;
 export const OrganizationsControllerCreateRequestDomainDataList =
   /*@__PURE__*/ S.Array(
     OrganizationDomainDataDto,
@@ -9311,15 +9493,11 @@ export type OrganizationDomainsItemState =
   | "legacy_verified"
   | "pending"
   | "unverified"
-  | "verified"
-  | (string & {});
+  | "verified";
 export const OrganizationDomainsItemState = /*@__PURE__*/ S.String;
 
 /** Strategy used to verify the domain. */
-export type OrganizationDomainsItemVerificationStrategy =
-  | "dns"
-  | "manual"
-  | (string & {});
+export type OrganizationDomainsItemVerificationStrategy = "dns" | "manual";
 export const OrganizationDomainsItemVerificationStrategy =
   /*@__PURE__*/ S.String;
 
@@ -9365,7 +9543,7 @@ export const OrganizationDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationDomainsItem>;
 
 /** List of Organization Domains. */
-export type OrganizationDomainsList = OrganizationDomainsItem[];
+export type OrganizationDomainsList = ReadonlyArray<OrganizationDomainsItem>;
 export const OrganizationDomainsList = /*@__PURE__*/ S.Array(
   OrganizationDomainsItem,
 ) as any as S.Schema<OrganizationDomainsList>;
@@ -9467,11 +9645,7 @@ export const OrganizationsControllerGetAuditLogConfigurationRequest =
   }) as any as S.Schema<OrganizationsControllerGetAuditLogConfigurationRequest>;
 
 /** The current state of the audit log configuration for the organization. */
-export type AuditLogConfigurationState =
-  | "active"
-  | "inactive"
-  | "disabled"
-  | (string & {});
+export type AuditLogConfigurationState = "active" | "inactive" | "disabled";
 export const AuditLogConfigurationState = /*@__PURE__*/ S.String;
 
 /** The type of the Audit Log Stream destination. */
@@ -9482,8 +9656,7 @@ export type AuditLogConfigurationLogStreamType =
   | "GoogleCloudStorage"
   | "S3"
   | "Snowflake"
-  | "Splunk"
-  | (string & {});
+  | "Splunk";
 export const AuditLogConfigurationLogStreamType = /*@__PURE__*/ S.String;
 
 /** The current state of the Audit Log Stream. */
@@ -9491,8 +9664,7 @@ export type AuditLogConfigurationLogStreamState =
   | "active"
   | "inactive"
   | "error"
-  | "invalid"
-  | (string & {});
+  | "invalid";
 export const AuditLogConfigurationLogStreamState = /*@__PURE__*/ S.String;
 
 /** The Audit Log Stream currently configured for the organization, if any. */
@@ -9560,7 +9732,8 @@ export const OrganizationsControllerGetByExternalIdRequest =
     identifier: "OrganizationsControllerGetByExternalIdRequest",
   }) as any as S.Schema<OrganizationsControllerGetByExternalIdRequest>;
 
-export type OrganizationsControllerListRequestDomainsList = string[];
+export type OrganizationsControllerListRequestDomainsList =
+  ReadonlyArray<string>;
 export const OrganizationsControllerListRequestDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9596,7 +9769,7 @@ export const OrganizationsControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type OrganizationListDataList = Organization[];
+export type OrganizationListDataList = ReadonlyArray<Organization>;
 export const OrganizationListDataList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationListDataList>;
@@ -9637,7 +9810,7 @@ export const OrganizationList = /*@__PURE__*/ S.suspend(() =>
 
 /** The domains associated with the organization. Deprecated in favor of `domain_data`. */
 export type OrganizationsControllerUpdateOrganizationRequestDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsControllerUpdateOrganizationRequestDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9645,7 +9818,7 @@ export const OrganizationsControllerUpdateOrganizationRequestDomainsList =
 
 /** The domains associated with the organization, including verification state. */
 export type OrganizationsControllerUpdateOrganizationRequestDomainDataList =
-  OrganizationDomainDataDto[];
+  ReadonlyArray<OrganizationDomainDataDto>;
 export const OrganizationsControllerUpdateOrganizationRequestDomainDataList =
   /*@__PURE__*/ S.Array(
     OrganizationDomainDataDto,
@@ -9709,13 +9882,13 @@ export type PortalSessionsControllerCreateRequestIntent =
   | "log_streams"
   | "domain_verification"
   | "certificate_renewal"
-  | "bring_your_own_key"
-  | (string & {});
+  | "bring_your_own_key";
 export const PortalSessionsControllerCreateRequestIntent =
   /*@__PURE__*/ S.String;
 
 /** The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails. */
-export type PortalSessionsControllerCreateRequestItContactEmailsList = string[];
+export type PortalSessionsControllerCreateRequestItContactEmailsList =
+  ReadonlyArray<string>;
 export const PortalSessionsControllerCreateRequestItContactEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9762,7 +9935,8 @@ export const PortalLinkResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PortalLinkResponse",
 }) as any as S.Schema<PortalLinkResponse>;
 
-export type ProviderControllerConfigureRequestScopesList = string[];
+export type ProviderControllerConfigureRequestScopesList =
+  ReadonlyArray<string>;
 export const ProviderControllerConfigureRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9801,7 +9975,8 @@ export const ProviderControllerConfigureRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProviderControllerConfigureRequest",
 }) as any as S.Schema<ProviderControllerConfigureRequest>;
 
-export type DataIntegrationConfigurationResponseScopesList = string[];
+export type DataIntegrationConfigurationResponseScopesList =
+  ReadonlyArray<string>;
 export const DataIntegrationConfigurationResponseScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9811,8 +9986,7 @@ export const DataIntegrationConfigurationResponseScopesList =
 export type DataIntegrationCredentialsCredentialsType =
   | "shared"
   | "custom"
-  | "organization"
-  | (string & {});
+  | "organization";
 export const DataIntegrationCredentialsCredentialsType = /*@__PURE__*/ S.String;
 
 /** Organization-managed OAuth credential configuration. Present only for integrations whose credentials are supplied by the organization; absent otherwise. */
@@ -9900,7 +10074,7 @@ export const ProviderControllerListForOrganizationRequest =
 
 /** A list of data integration configurations for the organization. */
 export type DataIntegrationConfigurationListResponseDataList =
-  DataIntegrationConfigurationResponse[];
+  ReadonlyArray<DataIntegrationConfigurationResponse>;
 export const DataIntegrationConfigurationListResponseDataList =
   /*@__PURE__*/ S.Array(
     DataIntegrationConfigurationResponse,
@@ -10030,16 +10204,14 @@ export type RadarStandaloneControllerAssessRequestAuthMethod =
   | "Email_OTP"
   | "Social"
   | "SSO"
-  | "Other"
-  | (string & {});
+  | "Other";
 export const RadarStandaloneControllerAssessRequestAuthMethod =
   /*@__PURE__*/ S.String;
 
 /** The action being performed. */
 export type RadarStandaloneControllerAssessRequestAction =
   | "sign-up"
-  | "sign-in"
-  | (string & {});
+  | "sign-in";
 export const RadarStandaloneControllerAssessRequestAction =
   /*@__PURE__*/ S.String;
 
@@ -10072,11 +10244,7 @@ export const RadarStandaloneControllerAssessRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RadarStandaloneControllerAssessRequest>;
 
 /** The verdict of the risk assessment. */
-export type RadarStandaloneResponseVerdict =
-  | "allow"
-  | "block"
-  | "challenge"
-  | (string & {});
+export type RadarStandaloneResponseVerdict = "allow" | "block" | "challenge";
 export const RadarStandaloneResponseVerdict = /*@__PURE__*/ S.String;
 
 /** The Radar control that triggered the verdict. Only present if the verdict is `block` or `challenge`. */
@@ -10087,8 +10255,7 @@ export type RadarStandaloneResponseControl =
   | "repeat_sign_up"
   | "stale_account"
   | "unrecognized_device"
-  | "restriction"
-  | (string & {});
+  | "restriction";
 export const RadarStandaloneResponseControl = /*@__PURE__*/ S.String;
 
 /** The type of blocklist entry that triggered the verdict. Only present if the control is `restriction`. */
@@ -10099,8 +10266,7 @@ export type RadarStandaloneResponseBlocklistType =
   | "device"
   | "user_agent"
   | "device_fingerprint"
-  | "country"
-  | (string & {});
+  | "country";
 export const RadarStandaloneResponseBlocklistType = /*@__PURE__*/ S.String;
 
 export interface RadarStandaloneResponse {
@@ -10134,15 +10300,13 @@ export type RadarStandaloneControllerDeleteRadarListEntryRequestType =
   | "device"
   | "user_agent"
   | "device_fingerprint"
-  | "country"
-  | (string & {});
+  | "country";
 export const RadarStandaloneControllerDeleteRadarListEntryRequestType =
   /*@__PURE__*/ S.String;
 
 export type RadarStandaloneControllerDeleteRadarListEntryRequestAction =
   | "block"
-  | "allow"
-  | (string & {});
+  | "allow";
 export const RadarStandaloneControllerDeleteRadarListEntryRequestAction =
   /*@__PURE__*/ S.String;
 
@@ -10213,15 +10377,13 @@ export type RadarStandaloneControllerUpdateRadarListRequestType =
   | "device"
   | "user_agent"
   | "device_fingerprint"
-  | "country"
-  | (string & {});
+  | "country";
 export const RadarStandaloneControllerUpdateRadarListRequestType =
   /*@__PURE__*/ S.String;
 
 export type RadarStandaloneControllerUpdateRadarListRequestAction =
   | "block"
-  | "allow"
-  | (string & {});
+  | "allow";
 export const RadarStandaloneControllerUpdateRadarListRequestAction =
   /*@__PURE__*/ S.String;
 
@@ -10374,7 +10536,8 @@ export const RedirectUrisControllerListResponseListMetadata =
   }) as any as S.Schema<RedirectUrisControllerListResponseListMetadata>;
 
 /** The list of records for the current page. */
-export type RedirectUrisControllerListResponseDataList = RedirectUri[];
+export type RedirectUrisControllerListResponseDataList =
+  ReadonlyArray<RedirectUri>;
 export const RedirectUrisControllerListResponseDataList = /*@__PURE__*/ S.Array(
   RedirectUri,
 ) as any as S.Schema<RedirectUrisControllerListResponseDataList>;
@@ -10397,7 +10560,8 @@ export const RedirectUrisControllerListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RedirectUrisControllerListResponse",
 }) as any as S.Schema<RedirectUrisControllerListResponse>;
 
-export type SsoControllerAuthorizeRequestProviderScopesList = string[];
+export type SsoControllerAuthorizeRequestProviderScopesList =
+  ReadonlyArray<string>;
 export const SsoControllerAuthorizeRequestProviderScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10425,8 +10589,7 @@ export type SsoControllerAuthorizeRequestProvider =
   | "SlackOAuth"
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const SsoControllerAuthorizeRequestProvider = /*@__PURE__*/ S.String;
 
 export interface SsoControllerAuthorizeRequest {
@@ -10555,17 +10718,16 @@ export type ProfileConnectionType =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "VMwareSAML"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const ProfileConnectionType = /*@__PURE__*/ S.String;
 
-export type ProfileRolesList = SlimRole[];
+export type ProfileRolesList = ReadonlyArray<SlimRole>;
 export const ProfileRolesList = /*@__PURE__*/ S.Array(
   SlimRole,
 ) as any as S.Schema<ProfileRolesList>;
 
 /** The groups the user belongs to, as returned by the identity provider. */
-export type ProfileGroupsList = string[];
+export type ProfileGroupsList = ReadonlyArray<string>;
 export const ProfileGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProfileGroupsList>;
@@ -10649,7 +10811,7 @@ export const SsoControllerJsonWebKeySetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsoControllerJsonWebKeySetRequest>;
 
 /** X.509 certificate chain. */
-export type JwksResponseKeysItemX5cList = string[];
+export type JwksResponseKeysItemX5cList = ReadonlyArray<string>;
 export const JwksResponseKeysItemX5cList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JwksResponseKeysItemX5cList>;
@@ -10688,7 +10850,7 @@ export const JwksResponseKeysItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JwksResponseKeysItem>;
 
 /** The public keys used for verifying access tokens. */
-export type JwksResponseKeysList = JwksResponseKeysItem[];
+export type JwksResponseKeysList = ReadonlyArray<JwksResponseKeysItem>;
 export const JwksResponseKeysList = /*@__PURE__*/ S.Array(
   JwksResponseKeysItem,
 ) as any as S.Schema<JwksResponseKeysList>;
@@ -10771,7 +10933,7 @@ export const SsoControllerTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsoControllerTokenRequest>;
 
 /** A list of OAuth scopes for which the access token is authorized. */
-export type SsoTokenResponseOauthTokensScopesList = string[];
+export type SsoTokenResponseOauthTokensScopesList = ReadonlyArray<string>;
 export const SsoTokenResponseOauthTokensScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SsoTokenResponseOauthTokensScopesList>;
@@ -10826,7 +10988,8 @@ export const SsoTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SsoTokenResponse>;
 
 /** The permission slugs to assign to the API key. Each permission must be enabled for user API keys. */
-export type UserApiKeysControllerCreateRequestPermissionsList = string[];
+export type UserApiKeysControllerCreateRequestPermissionsList =
+  ReadonlyArray<string>;
 export const UserApiKeysControllerCreateRequestPermissionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -10882,7 +11045,7 @@ export const UserApiKeyWithValueOwner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserApiKeyWithValueOwner>;
 
 /** The permission slugs assigned to the API Key. */
-export type UserApiKeyWithValuePermissionsList = string[];
+export type UserApiKeyWithValuePermissionsList = ReadonlyArray<string>;
 export const UserApiKeyWithValuePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserApiKeyWithValuePermissionsList>;
@@ -10982,7 +11145,7 @@ export const UserApiKeyOwner = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserApiKeyOwner>;
 
 /** The permission slugs assigned to the API Key. */
-export type UserApiKeyPermissionsList = string[];
+export type UserApiKeyPermissionsList = ReadonlyArray<string>;
 export const UserApiKeyPermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserApiKeyPermissionsList>;
@@ -11025,7 +11188,7 @@ export const UserApiKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserApiKey" }) as any as S.Schema<UserApiKey>;
 
 /** The list of records for the current page. */
-export type UserApiKeyListDataList = UserApiKey[];
+export type UserApiKeyListDataList = ReadonlyArray<UserApiKey>;
 export const UserApiKeyListDataList = /*@__PURE__*/ S.Array(
   UserApiKey,
 ) as any as S.Schema<UserApiKeyListDataList>;
@@ -11593,8 +11756,7 @@ export type UserlandAuthenticateResponseAuthenticationMethod =
   | "XeroOAuth"
   | "MagicAuth"
   | "Impersonation"
-  | "MigratedSession"
-  | (string & {});
+  | "MigratedSession";
 export const UserlandAuthenticateResponseAuthenticationMethod =
   /*@__PURE__*/ S.String;
 
@@ -11616,7 +11778,8 @@ export const UserlandAuthenticateResponseImpersonator = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UserlandAuthenticateResponseImpersonator>;
 
 /** A list of OAuth scopes for which the access token is authorized. */
-export type UserlandAuthenticateResponseOauthTokensScopesList = string[];
+export type UserlandAuthenticateResponseOauthTokensScopesList =
+  ReadonlyArray<string>;
 export const UserlandAuthenticateResponseOauthTokensScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11746,7 +11909,8 @@ export const UserlandSsoControllerAuthorizeRequestProviderQueryParamsMap =
     S.String,
   ) as any as S.Schema<UserlandSsoControllerAuthorizeRequestProviderQueryParamsMap>;
 
-export type UserlandSsoControllerAuthorizeRequestProviderScopesList = string[];
+export type UserlandSsoControllerAuthorizeRequestProviderScopesList =
+  ReadonlyArray<string>;
 export const UserlandSsoControllerAuthorizeRequestProviderScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -11754,8 +11918,7 @@ export const UserlandSsoControllerAuthorizeRequestProviderScopesList =
 
 export type UserlandSsoControllerAuthorizeRequestScreenHint =
   | "sign-up"
-  | "sign-in"
-  | (string & {});
+  | "sign-in";
 export const UserlandSsoControllerAuthorizeRequestScreenHint =
   /*@__PURE__*/ S.String;
 
@@ -11773,8 +11936,7 @@ export type UserlandSsoControllerAuthorizeRequestProvider =
   | "SlackOAuth"
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const UserlandSsoControllerAuthorizeRequestProvider =
   /*@__PURE__*/ S.String;
 
@@ -11984,7 +12146,7 @@ export const UserlandUserAuthenticationFactorsControllerList0Request =
 
 /** The list of records for the current page. */
 export type UserlandUserAuthenticationFactorListDataList =
-  AuthenticationFactor[];
+  ReadonlyArray<AuthenticationFactor>;
 export const UserlandUserAuthenticationFactorListDataList =
   /*@__PURE__*/ S.Array(
     AuthenticationFactor,
@@ -12093,8 +12255,7 @@ export type UserlandUserIdentitiesControllerGetResponseBodyItemProvider =
   | "SlackOAuth"
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
-  | "XeroOAuth"
-  | (string & {});
+  | "XeroOAuth";
 export const UserlandUserIdentitiesControllerGetResponseBodyItemProvider =
   /*@__PURE__*/ S.String;
 
@@ -12118,7 +12279,7 @@ export const UserlandUserIdentitiesControllerGetResponseBodyItem =
   }) as any as S.Schema<UserlandUserIdentitiesControllerGetResponseBodyItem>;
 
 export type UserlandUserIdentitiesControllerGetResponseBodyList =
-  UserlandUserIdentitiesControllerGetResponseBodyItem[];
+  ReadonlyArray<UserlandUserIdentitiesControllerGetResponseBodyItem>;
 export const UserlandUserIdentitiesControllerGetResponseBodyList =
   /*@__PURE__*/ S.Array(
     UserlandUserIdentitiesControllerGetResponseBodyItem,
@@ -12159,8 +12320,7 @@ export type UserlandUserInvitesControllerAcceptResponseState =
   | "pending"
   | "accepted"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const UserlandUserInvitesControllerAcceptResponseState =
   /*@__PURE__*/ S.String;
 
@@ -12310,8 +12470,7 @@ export type UserlandUserInvitesControllerCreateRequestLocale =
   | "zh-CN"
   | "zh-HK"
   | "zh-TW"
-  | "zu"
-  | (string & {});
+  | "zu";
 export const UserlandUserInvitesControllerCreateRequestLocale =
   /*@__PURE__*/ S.String;
 
@@ -12354,8 +12513,7 @@ export type UserlandUserInviteState =
   | "pending"
   | "accepted"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const UserlandUserInviteState = /*@__PURE__*/ S.String;
 
 export interface UserlandUserInvite {
@@ -12481,7 +12639,7 @@ export const UserlandUserInvitesControllerListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UserlandUserInvitesControllerListRequest>;
 
 /** The list of records for the current page. */
-export type UserlandUserInviteListDataList = UserlandUserInvite[];
+export type UserlandUserInviteListDataList = ReadonlyArray<UserlandUserInvite>;
 export const UserlandUserInviteListDataList = /*@__PURE__*/ S.Array(
   UserlandUserInvite,
 ) as any as S.Schema<UserlandUserInviteListDataList>;
@@ -12611,8 +12769,7 @@ export type UserlandUserInvitesControllerResendRequestLocale =
   | "zh-CN"
   | "zh-HK"
   | "zh-TW"
-  | "zu"
-  | (string & {});
+  | "zu";
 export const UserlandUserInvitesControllerResendRequestLocale =
   /*@__PURE__*/ S.String;
 
@@ -12662,8 +12819,7 @@ export type UserlandUserInvitesControllerRevokeResponseState =
   | "pending"
   | "accepted"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const UserlandUserInvitesControllerRevokeResponseState =
   /*@__PURE__*/ S.String;
 
@@ -12722,17 +12878,33 @@ export const UserlandUserInvitesControllerRevokeResponse =
     identifier: "UserlandUserInvitesControllerRevokeResponse",
   }) as any as S.Schema<UserlandUserInvitesControllerRevokeResponse>;
 
+/** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
+export type UserlandUserOrganizationMembershipsControllerCreateRequestRoleSlugsList =
+  ReadonlyArray<string>;
+export const UserlandUserOrganizationMembershipsControllerCreateRequestRoleSlugsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UserlandUserOrganizationMembershipsControllerCreateRequestRoleSlugsList>;
+
 export interface UserlandUserOrganizationMembershipsControllerCreateRequest {
   /** The ID of the [user](/reference/authkit/user). */
   user_id: string;
   /** The ID of the [organization](/reference/organization) which the user belongs to. */
   organization_id: string;
+  /** A single role identifier. Defaults to `member` or the explicit default role. Mutually exclusive with `role_slugs`. */
+  role_slug?: string;
+  /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
+  role_slugs?: UserlandUserOrganizationMembershipsControllerCreateRequestRoleSlugsList;
 }
 export const UserlandUserOrganizationMembershipsControllerCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       user_id: S.String,
       organization_id: S.String,
+      role_slug: S.optional(S.String),
+      role_slugs: S.optional(
+        UserlandUserOrganizationMembershipsControllerCreateRequestRoleSlugsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -12748,8 +12920,7 @@ export const UserlandUserOrganizationMembershipsControllerCreateRequest =
 export type UserlandUserOrganizationMembershipsControllerCreateResponseStatus =
   | "active"
   | "inactive"
-  | "pending"
-  | (string & {});
+  | "pending";
 export const UserlandUserOrganizationMembershipsControllerCreateResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -12764,7 +12935,7 @@ export const UserlandUserOrganizationMembershipsControllerCreateResponseCustomAt
 
 /** The list of roles assigned to the user within the organization. */
 export type UserlandUserOrganizationMembershipsControllerCreateResponseRolesList =
-  SlimRole[];
+  ReadonlyArray<SlimRole>;
 export const UserlandUserOrganizationMembershipsControllerCreateResponseRolesList =
   /*@__PURE__*/ S.Array(
     SlimRole,
@@ -12844,7 +13015,7 @@ export const UserlandUserOrganizationMembershipsControllerDeactivateRequest =
 
 /** The status of the organization membership. One of `active`, `inactive`, or `pending`. */
 export type UserlandUserOrganizationMembershipsControllerDeactivateResponseStatus =
-  "active" | "inactive" | "pending" | (string & {});
+  "active" | "inactive" | "pending";
 export const UserlandUserOrganizationMembershipsControllerDeactivateResponseStatus =
   /*@__PURE__*/ S.String;
 
@@ -12859,7 +13030,7 @@ export const UserlandUserOrganizationMembershipsControllerDeactivateResponseCust
 
 /** The list of roles assigned to the user within the organization. */
 export type UserlandUserOrganizationMembershipsControllerDeactivateResponseRolesList =
-  SlimRole[];
+  ReadonlyArray<SlimRole>;
 export const UserlandUserOrganizationMembershipsControllerDeactivateResponseRolesList =
   /*@__PURE__*/ S.Array(
     SlimRole,
@@ -12967,8 +13138,7 @@ export const UserlandUserOrganizationMembershipsControllerGetRequest =
 export type UserlandUserOrganizationMembershipStatus =
   | "active"
   | "inactive"
-  | "pending"
-  | (string & {});
+  | "pending";
 export const UserlandUserOrganizationMembershipStatus = /*@__PURE__*/ S.String;
 
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
@@ -12982,7 +13152,8 @@ export const UserlandUserOrganizationMembershipCustomAttributesMap =
   ) as any as S.Schema<UserlandUserOrganizationMembershipCustomAttributesMap>;
 
 /** The list of roles assigned to the user within the organization. */
-export type UserlandUserOrganizationMembershipRolesList = SlimRole[];
+export type UserlandUserOrganizationMembershipRolesList =
+  ReadonlyArray<SlimRole>;
 export const UserlandUserOrganizationMembershipRolesList =
   /*@__PURE__*/ S.Array(
     SlimRole,
@@ -13039,12 +13210,12 @@ export const UserlandUserOrganizationMembership = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserlandUserOrganizationMembership>;
 
 export type UserlandUserOrganizationMembershipsControllerListRequestStatusesItem =
-  "active" | "inactive" | "pending" | (string & {});
+  "active" | "inactive" | "pending";
 export const UserlandUserOrganizationMembershipsControllerListRequestStatusesItem =
   /*@__PURE__*/ S.String;
 
 export type UserlandUserOrganizationMembershipsControllerListRequestStatusesList =
-  UserlandUserOrganizationMembershipsControllerListRequestStatusesItem[];
+  ReadonlyArray<UserlandUserOrganizationMembershipsControllerListRequestStatusesItem>;
 export const UserlandUserOrganizationMembershipsControllerListRequestStatusesList =
   /*@__PURE__*/ S.Array(
     UserlandUserOrganizationMembershipsControllerListRequestStatusesItem,
@@ -13093,7 +13264,7 @@ export const UserlandUserOrganizationMembershipsControllerListRequest =
 
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipListDataList =
-  UserlandUserOrganizationMembership[];
+  ReadonlyArray<UserlandUserOrganizationMembership>;
 export const UserlandUserOrganizationMembershipListDataList =
   /*@__PURE__*/ S.Array(
     UserlandUserOrganizationMembership,
@@ -13170,7 +13341,7 @@ export const UpdateUserlandUserOrganizationMembershipDtoCase1 =
 
 /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
 export type UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList =
-  string[];
+  ReadonlyArray<string>;
 export const UpdateUserlandUserOrganizationMembershipDtoCase2RoleSlugsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13330,6 +13501,18 @@ export const UserlandUsersControllerCreate0RequestMetadataMap =
     S.String,
   ) as any as S.Schema<UserlandUsersControllerCreate0RequestMetadataMap>;
 
+/** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
+export type UserlandUsersControllerCreate0RequestPasswordHashType =
+  | "bcrypt"
+  | "firebase-scrypt"
+  | "ssha"
+  | "ssha256"
+  | "scrypt"
+  | "pbkdf2"
+  | "argon2";
+export const UserlandUsersControllerCreate0RequestPasswordHashType =
+  /*@__PURE__*/ S.String;
+
 export interface UserlandUsersControllerCreate0Request {
   /** The email address of the user. */
   email: string;
@@ -13351,6 +13534,12 @@ export interface UserlandUsersControllerCreate0Request {
   user_agent?: string | null;
   /** An optional Radar signals ID to correlate client-side signals with this request. */
   signals_id?: string;
+  /** The password to set for the user. Mutually exclusive with `password_hash` and `password_hash_type`. */
+  password?: string | Redacted.Redacted<string> | null;
+  /** The hashed password to set for the user. Required with `password_hash_type`. Mutually exclusive with `password`. */
+  password_hash?: string | Redacted.Redacted<string>;
+  /** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
+  password_hash_type?: UserlandUsersControllerCreate0RequestPasswordHashType;
 }
 export const UserlandUsersControllerCreate0Request = /*@__PURE__*/ S.suspend(
   () =>
@@ -13367,6 +13556,11 @@ export const UserlandUsersControllerCreate0Request = /*@__PURE__*/ S.suspend(
       ip_address: S.optional(S.NullOr(S.String)),
       user_agent: S.optional(S.NullOr(S.String)),
       signals_id: S.optional(S.String),
+      password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+      password_hash: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      password_hash_type: S.optional(
+        UserlandUsersControllerCreate0RequestPasswordHashType,
+      ),
     }).pipe(
       T.Http({ method: "POST", uri: "/user_management/users", code: 200 }),
     ),
@@ -13684,7 +13878,7 @@ export const UserlandUsersControllerList0Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserlandUsersControllerList0Request>;
 
 /** The list of records for the current page. */
-export type UserlandUserListDataList = UserlandUser[];
+export type UserlandUserListDataList = ReadonlyArray<UserlandUser>;
 export const UserlandUserListDataList = /*@__PURE__*/ S.Array(
   UserlandUser,
 ) as any as S.Schema<UserlandUserListDataList>;
@@ -13841,6 +14035,18 @@ export const UserlandUsersControllerUpdate0RequestMetadataMap =
     S.String,
   ) as any as S.Schema<UserlandUsersControllerUpdate0RequestMetadataMap>;
 
+/** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
+export type UserlandUsersControllerUpdate0RequestPasswordHashType =
+  | "bcrypt"
+  | "firebase-scrypt"
+  | "ssha"
+  | "ssha256"
+  | "scrypt"
+  | "pbkdf2"
+  | "argon2";
+export const UserlandUsersControllerUpdate0RequestPasswordHashType =
+  /*@__PURE__*/ S.String;
+
 export interface UserlandUsersControllerUpdate0Request {
   /** The unique ID of the user. */
   id: string;
@@ -13860,6 +14066,12 @@ export interface UserlandUsersControllerUpdate0Request {
   external_id?: string | null;
   /** The user's preferred locale. */
   locale?: string | null;
+  /** The password to set for the user. Mutually exclusive with `password_hash` and `password_hash_type`. */
+  password?: string | Redacted.Redacted<string>;
+  /** The hashed password to set for the user. Required with `password_hash_type`. Mutually exclusive with `password`. */
+  password_hash?: string | Redacted.Redacted<string>;
+  /** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
+  password_hash_type?: UserlandUsersControllerUpdate0RequestPasswordHashType;
 }
 export const UserlandUsersControllerUpdate0Request = /*@__PURE__*/ S.suspend(
   () =>
@@ -13875,6 +14087,11 @@ export const UserlandUsersControllerUpdate0Request = /*@__PURE__*/ S.suspend(
       ),
       external_id: S.optional(S.NullOr(S.String)),
       locale: S.optional(S.NullOr(S.String)),
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      password_hash: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      password_hash_type: S.optional(
+        UserlandUsersControllerUpdate0RequestPasswordHashType,
+      ),
     }).pipe(
       T.Http({ method: "PUT", uri: "/user_management/users/{id}", code: 200 }),
     ),
@@ -13959,8 +14176,7 @@ export type UserlandUserSessionsControllerListResponseDataItemAuthMethod =
   | "passkey"
   | "password"
   | "sso"
-  | "unknown"
-  | (string & {});
+  | "unknown";
 export const UserlandUserSessionsControllerListResponseDataItemAuthMethod =
   /*@__PURE__*/ S.String;
 
@@ -13968,8 +14184,7 @@ export const UserlandUserSessionsControllerListResponseDataItemAuthMethod =
 export type UserlandUserSessionsControllerListResponseDataItemStatus =
   | "active"
   | "expired"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const UserlandUserSessionsControllerListResponseDataItemStatus =
   /*@__PURE__*/ S.String;
 
@@ -14026,7 +14241,7 @@ export const UserlandUserSessionsControllerListResponseDataItem =
 
 /** The list of records for the current page. */
 export type UserlandUserSessionsControllerListResponseDataList =
-  UserlandUserSessionsControllerListResponseDataItem[];
+  ReadonlyArray<UserlandUserSessionsControllerListResponseDataItem>;
 export const UserlandUserSessionsControllerListResponseDataList =
   /*@__PURE__*/ S.Array(
     UserlandUserSessionsControllerListResponseDataItem,
@@ -14145,14 +14360,13 @@ export type WebhookEndpointsControllerCreateRequestEventsItem =
   | "session.revoked"
   | "waitlist_user.approved"
   | "waitlist_user.created"
-  | "waitlist_user.denied"
-  | (string & {});
+  | "waitlist_user.denied";
 export const WebhookEndpointsControllerCreateRequestEventsItem =
   /*@__PURE__*/ S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
 export type WebhookEndpointsControllerCreateRequestEventsList =
-  WebhookEndpointsControllerCreateRequestEventsItem[];
+  ReadonlyArray<WebhookEndpointsControllerCreateRequestEventsItem>;
 export const WebhookEndpointsControllerCreateRequestEventsList =
   /*@__PURE__*/ S.Array(
     WebhookEndpointsControllerCreateRequestEventsItem,
@@ -14175,11 +14389,11 @@ export const WebhookEndpointsControllerCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebhookEndpointsControllerCreateRequest>;
 
 /** Whether the Webhook Endpoint is enabled or disabled. */
-export type WebhookEndpointJsonStatus = "enabled" | "disabled" | (string & {});
+export type WebhookEndpointJsonStatus = "enabled" | "disabled";
 export const WebhookEndpointJsonStatus = /*@__PURE__*/ S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
-export type WebhookEndpointJsonEventsList = string[];
+export type WebhookEndpointJsonEventsList = ReadonlyArray<string>;
 export const WebhookEndpointJsonEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WebhookEndpointJsonEventsList>;
@@ -14262,7 +14476,7 @@ export const WebhookEndpointsControllerListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebhookEndpointsControllerListRequest>;
 
 /** The list of records for the current page. */
-export type WebhookEndpointListDataList = WebhookEndpointJson[];
+export type WebhookEndpointListDataList = ReadonlyArray<WebhookEndpointJson>;
 export const WebhookEndpointListDataList = /*@__PURE__*/ S.Array(
   WebhookEndpointJson,
 ) as any as S.Schema<WebhookEndpointListDataList>;
@@ -14304,8 +14518,7 @@ export const WebhookEndpointList = /*@__PURE__*/ S.suspend(() =>
 /** Whether the Webhook Endpoint is enabled or disabled. */
 export type WebhookEndpointsControllerUpdateRequestStatus =
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const WebhookEndpointsControllerUpdateRequestStatus =
   /*@__PURE__*/ S.String;
 
@@ -14401,14 +14614,13 @@ export type WebhookEndpointsControllerUpdateRequestEventsItem =
   | "session.revoked"
   | "waitlist_user.approved"
   | "waitlist_user.created"
-  | "waitlist_user.denied"
-  | (string & {});
+  | "waitlist_user.denied";
 export const WebhookEndpointsControllerUpdateRequestEventsItem =
   /*@__PURE__*/ S.String;
 
 /** The events that the Webhook Endpoint is subscribed to. */
 export type WebhookEndpointsControllerUpdateRequestEventsList =
-  WebhookEndpointsControllerUpdateRequestEventsItem[];
+  ReadonlyArray<WebhookEndpointsControllerUpdateRequestEventsItem>;
 export const WebhookEndpointsControllerUpdateRequestEventsList =
   /*@__PURE__*/ S.Array(
     WebhookEndpointsControllerUpdateRequestEventsItem,
@@ -14445,14 +14657,13 @@ export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem =
   | "widgets:api-keys:manage"
   | "widgets:dsync:manage"
   | "widgets:audit-log-streaming:manage"
-  | "widgets:pipes:manage"
-  | (string & {});
+  | "widgets:pipes:manage";
 export const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem =
   /*@__PURE__*/ S.String;
 
 /** The scopes to grant the widget session. */
 export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList =
-  WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem[];
+  ReadonlyArray<WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem>;
 export const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList =
   /*@__PURE__*/ S.Array(
     WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem,

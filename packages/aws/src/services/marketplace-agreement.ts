@@ -186,8 +186,7 @@ export type AgreementCancellationRequestStatus =
   | "APPROVED"
   | "REJECTED"
   | "CANCELLED"
-  | "VALIDATION_FAILED"
-  | (string & {});
+  | "VALIDATION_FAILED";
 export const AgreementCancellationRequestStatus = /*@__PURE__*/ S.String;
 
 export type AgreementCancellationRequestReasonCode =
@@ -198,8 +197,7 @@ export type AgreementCancellationRequestReasonCode =
   | "PRODUCT_DISCONTINUED"
   | "UNINTENDED_RENEWAL"
   | "BUYER_DISSATISFACTION"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const AgreementCancellationRequestReasonCode = /*@__PURE__*/ S.String;
 
 export type AgreementCancellationRequestDescription =
@@ -252,8 +250,7 @@ export type PaymentRequestStatus =
   | "PENDING_APPROVAL"
   | "APPROVED"
   | "REJECTED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const PaymentRequestStatus = /*@__PURE__*/ S.String;
 
 export type PaymentRequestName = string;
@@ -335,8 +332,7 @@ export type BillingAdjustmentReasonCode =
   | "ALTERNATIVE_PROCUREMENT_CHANNEL"
   | "UNINTENDED_RENEWAL"
   | "BUYER_DISSATISFACTION"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const BillingAdjustmentReasonCode = /*@__PURE__*/ S.String;
 
 export type BillingAdjustmentDescription = string | redacted.Redacted<string>;
@@ -401,8 +397,7 @@ export type BillingAdjustmentErrorCode =
   | "CONFLICT_EXCEPTION"
   | "VALIDATION_EXCEPTION"
   | "RESOURCE_NOT_FOUND_EXCEPTION"
-  | "INTERNAL_FAILURE"
-  | (string & {});
+  | "INTERNAL_FAILURE";
 export const BillingAdjustmentErrorCode = /*@__PURE__*/ S.String;
 
 export interface BatchCreateBillingAdjustmentError {
@@ -536,7 +531,7 @@ export const CancelAgreementPaymentRequestOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelAgreementPaymentRequestOutput",
 }) as any as S.Schema<CancelAgreementPaymentRequestOutput>;
-export type Intent = "NEW" | "AMEND" | "REPLACE" | (string & {});
+export type Intent = "NEW" | "AMEND" | "REPLACE";
 export const Intent = /*@__PURE__*/ S.String;
 
 export type TermId = string;
@@ -571,8 +566,7 @@ export const RenewalTermConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RenewalTermConfiguration>;
 export type PaymentRequestApprovalStrategy =
   | "AUTO_APPROVE_ON_EXPIRATION"
-  | "WAIT_FOR_APPROVAL"
-  | (string & {});
+  | "WAIT_FOR_APPROVAL";
 export const PaymentRequestApprovalStrategy = /*@__PURE__*/ S.String;
 
 export type ISO8601Duration = string;
@@ -627,7 +621,7 @@ export const RequestedTerm = /*@__PURE__*/ S.suspend(() =>
 export type RequestedTermList = RequestedTerm[];
 export const RequestedTermList = /*@__PURE__*/ S.Array(RequestedTerm);
 export type AgreementProposalId = string;
-export type TaxEstimation = "DISABLED" | "ENABLED" | (string & {});
+export type TaxEstimation = "DISABLED" | "ENABLED";
 export const TaxEstimation = /*@__PURE__*/ S.String;
 
 export interface TaxConfiguration {
@@ -660,11 +654,7 @@ export const CreateAgreementRequestInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAgreementRequestInput",
 }) as any as S.Schema<CreateAgreementRequestInput>;
-export type Timing =
-  | "ON_ACCEPTANCE"
-  | "SCHEDULED"
-  | "BILLING_PERIOD"
-  | (string & {});
+export type Timing = "ON_ACCEPTANCE" | "SCHEDULED" | "BILLING_PERIOD";
 export const Timing = /*@__PURE__*/ S.String;
 
 export interface TaxBreakdownItem {
@@ -846,8 +836,7 @@ export type AgreementStatus =
   | "REPLACED"
   | "ROLLED_BACK"
   | "SUPERSEDED"
-  | "TERMINATED"
-  | (string & {});
+  | "TERMINATED";
 export const AgreementStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeAgreementOutput {
@@ -943,8 +932,7 @@ export type AgreementEntitlementStatus =
   | "SCHEDULED"
   | "PENDING"
   | "FAILED"
-  | "DEPROVISIONED"
-  | (string & {});
+  | "DEPROVISIONED";
 export const AgreementEntitlementStatus = /*@__PURE__*/ S.String;
 
 export type AgreementEntitlementStatusReasonCode =
@@ -956,8 +944,7 @@ export type AgreementEntitlementStatusReasonCode =
   | "UNSUPPORTED_OPERATION"
   | "AGREEMENT_INACTIVE"
   | "AGREEMENT_ACTIVE"
-  | "PRODUCT_RESTRICTED"
-  | (string & {});
+  | "PRODUCT_RESTRICTED";
 export const AgreementEntitlementStatusReasonCode = /*@__PURE__*/ S.String;
 
 export type AwsArn = string;
@@ -1552,8 +1539,7 @@ export const GetBillingAdjustmentRequestInput = /*@__PURE__*/ S.suspend(() =>
 export type BillingAdjustmentStatus =
   | "PENDING"
   | "VALIDATION_FAILED"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const BillingAdjustmentStatus = /*@__PURE__*/ S.String;
 
 export type BillingAdjustmentStatusMessage = string;
@@ -1709,10 +1695,10 @@ export const ListAgreementChargesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAgreementChargesOutput",
 }) as any as S.Schema<ListAgreementChargesOutput>;
-export type LineItemGroupBy = "INVOICE_ID" | (string & {});
+export type LineItemGroupBy = "INVOICE_ID";
 export const LineItemGroupBy = /*@__PURE__*/ S.String;
 
-export type InvoiceType = "INVOICE" | "CREDIT_MEMO" | (string & {});
+export type InvoiceType = "INVOICE" | "CREDIT_MEMO";
 export const InvoiceType = /*@__PURE__*/ S.String;
 
 export interface InvoiceBillingPeriod {
@@ -2052,7 +2038,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(Filter);
 export type SortBy = string;
-export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
+export type SortOrder = "ASCENDING" | "DESCENDING";
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface Sort {
@@ -2244,8 +2230,7 @@ export type AccessDeniedExceptionReason =
   | "DENIED_BY_PRIVATE_MARKETPLACE_POLICY"
   | "FAILED_KYC_COMPLIANCE"
   | "MISSING_MFA"
-  | "INVALID_ACCESS"
-  | (string & {});
+  | "INVALID_ACCESS";
 export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
 
 export type ResourceType =
@@ -2256,8 +2241,7 @@ export type ResourceType =
   | "PaymentRequest"
   | "Invoice"
   | "AgreementCancellationRequest"
-  | "BillingAdjustmentRequest"
-  | (string & {});
+  | "BillingAdjustmentRequest";
 export const ResourceType = /*@__PURE__*/ S.String;
 
 export type ValidationExceptionReason =
@@ -2342,8 +2326,7 @@ export type ValidationExceptionReason =
   | "DUPLICATE_CHARGES"
   | "UNSUPPORTED_ACCOUNT_PLAN"
   | "DUPLICATE_AGREEMENT_IN_ORGANIZATION"
-  | "MISSING_PURCHASE_ORDER_REFERENCE"
-  | (string & {});
+  | "MISSING_PURCHASE_ORDER_REFERENCE";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

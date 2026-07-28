@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type WorkflowStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | (string & {});
+export type WorkflowStateEnum = "STATE_UNSPECIFIED" | "ACTIVE";
 export const WorkflowStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -138,7 +138,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -306,7 +306,7 @@ export const GetProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetProjectsLocationsWorkflowsRequest",
 }) as any as S.Schema<GetProjectsLocationsWorkflowsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -341,7 +341,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -393,7 +393,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -448,7 +448,7 @@ export const ListProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsWorkflowsRequest",
 }) as any as S.Schema<ListProjectsLocationsWorkflowsRequest>;
 
-export type WorkflowList = Workflow[];
+export type WorkflowList = ReadonlyArray<Workflow>;
 export const WorkflowList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowList>;

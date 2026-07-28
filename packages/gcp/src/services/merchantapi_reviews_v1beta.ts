@@ -125,8 +125,7 @@ export type MerchantReviewAttributesCollectionMethodEnum =
   | "COLLECTION_METHOD_UNSPECIFIED"
   | "MERCHANT_UNSOLICITED"
   | "POINT_OF_SALE"
-  | "AFTER_FULFILLMENT"
-  | (string & {});
+  | "AFTER_FULFILLMENT";
 export const MerchantReviewAttributesCollectionMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -208,8 +207,7 @@ export type MerchantReviewDestinationStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const MerchantReviewDestinationStatusReportingContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -229,7 +227,7 @@ export const MerchantReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MerchantReviewDestinationStatus>;
 
 export type MerchantReviewDestinationStatusList =
-  MerchantReviewDestinationStatus[];
+  ReadonlyArray<MerchantReviewDestinationStatus>;
 export const MerchantReviewDestinationStatusList = /*@__PURE__*/ S.Array(
   MerchantReviewDestinationStatus,
 ) as any as S.Schema<MerchantReviewDestinationStatusList>;
@@ -254,16 +252,14 @@ export type MerchantReviewItemLevelIssueReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const MerchantReviewItemLevelIssueReportingContextEnum =
   /*@__PURE__*/ S.String;
 
 export type MerchantReviewItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const MerchantReviewItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the merchant review status. */
@@ -302,7 +298,8 @@ export const MerchantReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "MerchantReviewItemLevelIssue",
 }) as any as S.Schema<MerchantReviewItemLevelIssue>;
 
-export type MerchantReviewItemLevelIssueList = MerchantReviewItemLevelIssue[];
+export type MerchantReviewItemLevelIssueList =
+  ReadonlyArray<MerchantReviewItemLevelIssue>;
 export const MerchantReviewItemLevelIssueList = /*@__PURE__*/ S.Array(
   MerchantReviewItemLevelIssue,
 ) as any as S.Schema<MerchantReviewItemLevelIssueList>;
@@ -348,7 +345,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = CustomAttribute[];
+export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -397,11 +394,7 @@ export const GetAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsProductReviewsRequest",
 }) as any as S.Schema<GetAccountsProductReviewsRequest>;
 
-export type ReviewLinkTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "SINGLETON"
-  | "GROUP"
-  | (string & {});
+export type ReviewLinkTypeEnum = "TYPE_UNSPECIFIED" | "SINGLETON" | "GROUP";
 export const ReviewLinkTypeEnum = /*@__PURE__*/ S.String;
 
 /** The URI of the review landing page. */
@@ -418,7 +411,7 @@ export const ReviewLink = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReviewLink" }) as any as S.Schema<ReviewLink>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -426,8 +419,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type ProductReviewAttributesCollectionMethodEnum =
   | "COLLECTION_METHOD_UNSPECIFIED"
   | "UNSOLICITED"
-  | "POST_FULFILLMENT"
-  | (string & {});
+  | "POST_FULFILLMENT";
 export const ProductReviewAttributesCollectionMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -554,8 +546,7 @@ export type ProductReviewDestinationStatusReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const ProductReviewDestinationStatusReportingContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -575,7 +566,7 @@ export const ProductReviewDestinationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductReviewDestinationStatus>;
 
 export type ProductReviewDestinationStatusList =
-  ProductReviewDestinationStatus[];
+  ReadonlyArray<ProductReviewDestinationStatus>;
 export const ProductReviewDestinationStatusList = /*@__PURE__*/ S.Array(
   ProductReviewDestinationStatus,
 ) as any as S.Schema<ProductReviewDestinationStatusList>;
@@ -600,16 +591,14 @@ export type ProductReviewItemLevelIssueReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const ProductReviewItemLevelIssueReportingContextEnum =
   /*@__PURE__*/ S.String;
 
 export type ProductReviewItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const ProductReviewItemLevelIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The ItemLevelIssue of the product review status. */
@@ -648,7 +637,8 @@ export const ProductReviewItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductReviewItemLevelIssue",
 }) as any as S.Schema<ProductReviewItemLevelIssue>;
 
-export type ProductReviewItemLevelIssueList = ProductReviewItemLevelIssue[];
+export type ProductReviewItemLevelIssueList =
+  ReadonlyArray<ProductReviewItemLevelIssue>;
 export const ProductReviewItemLevelIssueList = /*@__PURE__*/ S.Array(
   ProductReviewItemLevelIssue,
 ) as any as S.Schema<ProductReviewItemLevelIssueList>;
@@ -774,7 +764,7 @@ export const ListAccountsMerchantReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsMerchantReviewsRequest",
 }) as any as S.Schema<ListAccountsMerchantReviewsRequest>;
 
-export type MerchantReviewList = MerchantReview[];
+export type MerchantReviewList = ReadonlyArray<MerchantReview>;
 export const MerchantReviewList = /*@__PURE__*/ S.Array(
   MerchantReview,
 ) as any as S.Schema<MerchantReviewList>;
@@ -819,7 +809,7 @@ export const ListAccountsProductReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsProductReviewsRequest",
 }) as any as S.Schema<ListAccountsProductReviewsRequest>;
 
-export type ProductReviewList = ProductReview[];
+export type ProductReviewList = ReadonlyArray<ProductReview>;
 export const ProductReviewList = /*@__PURE__*/ S.Array(
   ProductReview,
 ) as any as S.Schema<ProductReviewList>;

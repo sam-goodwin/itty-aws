@@ -37,7 +37,7 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 export type GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysFallbackScopeEnum =
-  "FALLBACK_SCOPE_UNSPECIFIED" | "FALLBACK_SCOPE_PROJECT" | (string & {});
+  "FALLBACK_SCOPE_UNSPECIFIED" | "FALLBACK_SCOPE_PROJECT";
 export const GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysFallbackScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -78,8 +78,7 @@ export type GoogleCloudKmsInventoryV1WarningWarningCodeEnum =
   | "WARNING_CODE_UNSPECIFIED"
   | "INSUFFICIENT_PERMISSIONS_PARTIAL_DATA"
   | "RESOURCE_LIMIT_EXCEEDED_PARTIAL_DATA"
-  | "ORG_LESS_PROJECT_PARTIAL_DATA"
-  | (string & {});
+  | "ORG_LESS_PROJECT_PARTIAL_DATA";
 export const GoogleCloudKmsInventoryV1WarningWarningCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -100,7 +99,7 @@ export const GoogleCloudKmsInventoryV1Warning = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudKmsInventoryV1Warning>;
 
 export type GoogleCloudKmsInventoryV1WarningList =
-  GoogleCloudKmsInventoryV1Warning[];
+  ReadonlyArray<GoogleCloudKmsInventoryV1Warning>;
 export const GoogleCloudKmsInventoryV1WarningList = /*@__PURE__*/ S.Array(
   GoogleCloudKmsInventoryV1Warning,
 ) as any as S.Schema<GoogleCloudKmsInventoryV1WarningList>;
@@ -173,13 +172,12 @@ export type GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsIte
     | "MODIFIED_CUSTOMER_INITIATED_ACCESS"
     | "MODIFIED_GOOGLE_INITIATED_SYSTEM_OPERATION"
     | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT"
-    | "CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING"
-    | (string & {});
+    | "CUSTOMER_AUTHORIZED_WORKFLOW_SERVICING";
 export const GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList =
-  GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum[];
+  ReadonlyArray<GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum>;
 export const GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudKmsV1KeyAccessJustificationsPolicyAllowedAccessReasonsItemEnum,
@@ -201,7 +199,7 @@ export const GoogleCloudKmsV1KeyAccessJustificationsPolicy =
     identifier: "GoogleCloudKmsV1KeyAccessJustificationsPolicy",
   }) as any as S.Schema<GoogleCloudKmsV1KeyAccessJustificationsPolicy>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -229,8 +227,7 @@ export const GoogleCloudKmsV1KeyOperationAttestationCertificateChains =
 export type GoogleCloudKmsV1KeyOperationAttestationFormatEnum =
   | "ATTESTATION_FORMAT_UNSPECIFIED"
   | "CAVIUM_V1_COMPRESSED"
-  | "CAVIUM_V2_COMPRESSED"
-  | (string & {});
+  | "CAVIUM_V2_COMPRESSED";
 export const GoogleCloudKmsV1KeyOperationAttestationFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -262,8 +259,7 @@ export type GoogleCloudKmsV1CryptoKeyVersionProtectionLevelEnum =
   | "HSM"
   | "EXTERNAL"
   | "EXTERNAL_VPC"
-  | "HSM_SINGLE_TENANT"
-  | (string & {});
+  | "HSM_SINGLE_TENANT";
 export const GoogleCloudKmsV1CryptoKeyVersionProtectionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -298,8 +294,7 @@ export type GoogleCloudKmsV1CryptoKeyVersionStateEnum =
   | "IMPORT_FAILED"
   | "GENERATION_FAILED"
   | "PENDING_EXTERNAL_DESTRUCTION"
-  | "EXTERNAL_DESTRUCTION_FAILED"
-  | (string & {});
+  | "EXTERNAL_DESTRUCTION_FAILED";
 export const GoogleCloudKmsV1CryptoKeyVersionStateEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudKmsV1CryptoKeyVersionAlgorithmEnum =
@@ -350,8 +345,7 @@ export type GoogleCloudKmsV1CryptoKeyVersionAlgorithmEnum =
   | "PQ_SIGN_ML_DSA_44_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_65_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_87_EXTERNAL_MU"
-  | "AES_256_KWP"
-  | (string & {});
+  | "AES_256_KWP";
 export const GoogleCloudKmsV1CryptoKeyVersionAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -429,8 +423,7 @@ export type GoogleCloudKmsV1CryptoKeyVersionTemplateProtectionLevelEnum =
   | "HSM"
   | "EXTERNAL"
   | "EXTERNAL_VPC"
-  | "HSM_SINGLE_TENANT"
-  | (string & {});
+  | "HSM_SINGLE_TENANT";
 export const GoogleCloudKmsV1CryptoKeyVersionTemplateProtectionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -482,8 +475,7 @@ export type GoogleCloudKmsV1CryptoKeyVersionTemplateAlgorithmEnum =
   | "PQ_SIGN_ML_DSA_44_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_65_EXTERNAL_MU"
   | "PQ_SIGN_ML_DSA_87_EXTERNAL_MU"
-  | "AES_256_KWP"
-  | (string & {});
+  | "AES_256_KWP";
 export const GoogleCloudKmsV1CryptoKeyVersionTemplateAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -516,8 +508,7 @@ export type GoogleCloudKmsV1CryptoKeyPurposeEnum =
   | "RAW_ENCRYPT_DECRYPT"
   | "MAC"
   | "KEY_ENCAPSULATION"
-  | "AES_WRAPPING"
-  | (string & {});
+  | "AES_WRAPPING";
 export const GoogleCloudKmsV1CryptoKeyPurposeEnum = /*@__PURE__*/ S.String;
 
 /** A CryptoKey represents a logical key that can be used for cryptographic operations. A CryptoKey is made up of zero or more versions, which represent the actual key material used in cryptographic operations. */
@@ -568,7 +559,8 @@ export const GoogleCloudKmsV1CryptoKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudKmsV1CryptoKey",
 }) as any as S.Schema<GoogleCloudKmsV1CryptoKey>;
 
-export type GoogleCloudKmsV1CryptoKeyList = GoogleCloudKmsV1CryptoKey[];
+export type GoogleCloudKmsV1CryptoKeyList =
+  ReadonlyArray<GoogleCloudKmsV1CryptoKey>;
 export const GoogleCloudKmsV1CryptoKeyList = /*@__PURE__*/ S.Array(
   GoogleCloudKmsV1CryptoKey,
 ) as any as S.Schema<GoogleCloudKmsV1CryptoKeyList>;
@@ -663,7 +655,7 @@ export const GoogleCloudKmsInventoryV1ProtectedResource =
   }) as any as S.Schema<GoogleCloudKmsInventoryV1ProtectedResource>;
 
 export type GoogleCloudKmsInventoryV1ProtectedResourceList =
-  GoogleCloudKmsInventoryV1ProtectedResource[];
+  ReadonlyArray<GoogleCloudKmsInventoryV1ProtectedResource>;
 export const GoogleCloudKmsInventoryV1ProtectedResourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudKmsInventoryV1ProtectedResource,

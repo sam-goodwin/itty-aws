@@ -53,8 +53,7 @@ export class HostnameTlsSettingNotFound extends T.applyErrorMatchers(
 export type SettingsTlsDeleteRequestSettingId =
   | "ciphers"
   | "min_tls_version"
-  | "http2"
-  | (string & {});
+  | "http2";
 export const SettingsTlsDeleteRequestSettingId = /*@__PURE__*/ S.String;
 
 export interface DeleteSettingTlsRequest {
@@ -83,21 +82,26 @@ export const DeleteSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteSettingTlsRequest",
 }) as any as S.Schema<DeleteSettingTlsRequest>;
 
-export interface SettingsTlsDeleteResponseValue {
-  "10Or11Or12Or3More": unknown;
-  /** Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings. */
-  arrayOfString: unknown;
-}
-export const SettingsTlsDeleteResponseValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "10Or11Or12Or3More": S.Unknown.pipe(
-      T.Body('"1.0" or "1.1" or "1.2" or 3 more'),
-    ),
-    arrayOfString: S.Unknown.pipe(T.Body("array of string")),
-  }),
-).annotate({
-  identifier: "SettingsTlsDeleteResponseValue",
-}) as any as S.Schema<SettingsTlsDeleteResponseValue>;
+export type SettingsTlsDeleteResponseValueCase0 =
+  | "1.0"
+  | "1.1"
+  | "1.2"
+  | "1.3"
+  | "on"
+  | "off";
+export const SettingsTlsDeleteResponseValueCase0 = /*@__PURE__*/ S.String;
+
+export type SettingsTlsDeleteResponseValueCase1List = ReadonlyArray<string>;
+export const SettingsTlsDeleteResponseValueCase1List = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SettingsTlsDeleteResponseValueCase1List>;
+
+export type SettingsTlsDeleteResponseValue =
+  | SettingsTlsDeleteResponseValueCase0
+  | SettingsTlsDeleteResponseValueCase1List;
+export const SettingsTlsDeleteResponseValue = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], []]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSettingTlsResponse {
@@ -127,8 +131,7 @@ export const DeleteSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsTlsGetRequestSettingId =
   | "ciphers"
   | "min_tls_version"
-  | "http2"
-  | (string & {});
+  | "http2";
 export const SettingsTlsGetRequestSettingId = /*@__PURE__*/ S.String;
 
 export interface GetSettingTlsRequest {
@@ -154,21 +157,26 @@ export const GetSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSettingTlsRequest",
 }) as any as S.Schema<GetSettingTlsRequest>;
 
-export interface SettingsTlsGetResultItemValue {
-  "10Or11Or12Or3More": unknown;
-  /** Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings. */
-  arrayOfString: unknown;
-}
-export const SettingsTlsGetResultItemValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "10Or11Or12Or3More": S.Unknown.pipe(
-      T.Body('"1.0" or "1.1" or "1.2" or 3 more'),
-    ),
-    arrayOfString: S.Unknown.pipe(T.Body("array of string")),
-  }),
-).annotate({
-  identifier: "SettingsTlsGetResultItemValue",
-}) as any as S.Schema<SettingsTlsGetResultItemValue>;
+export type SettingsTlsGetResultItemValueCase0 =
+  | "1.0"
+  | "1.1"
+  | "1.2"
+  | "1.3"
+  | "on"
+  | "off";
+export const SettingsTlsGetResultItemValueCase0 = /*@__PURE__*/ S.String;
+
+export type SettingsTlsGetResultItemValueCase1List = ReadonlyArray<string>;
+export const SettingsTlsGetResultItemValueCase1List = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SettingsTlsGetResultItemValueCase1List>;
+
+export type SettingsTlsGetResultItemValue =
+  | SettingsTlsGetResultItemValueCase0
+  | SettingsTlsGetResultItemValueCase1List;
+export const SettingsTlsGetResultItemValue = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], []]),
+);
 
 export interface SettingsTlsGetResultItem {
   /** This is the time the tls setting was originally created for this hostname. */
@@ -194,7 +202,7 @@ export const SettingsTlsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsTlsGetResultItem",
 }) as any as S.Schema<SettingsTlsGetResultItem>;
 
-export type SettingsTlsGetResultList = SettingsTlsGetResultItem[];
+export type SettingsTlsGetResultList = ReadonlyArray<SettingsTlsGetResultItem>;
 export const SettingsTlsGetResultList = /*@__PURE__*/ S.Array(
   SettingsTlsGetResultItem,
 ) as any as S.Schema<SettingsTlsGetResultList>;
@@ -217,25 +225,29 @@ export const GetSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsTlsUpdateRequestSettingId =
   | "ciphers"
   | "min_tls_version"
-  | "http2"
-  | (string & {});
+  | "http2";
 export const SettingsTlsUpdateRequestSettingId = /*@__PURE__*/ S.String;
 
-export interface SettingsTlsUpdateRequestValue {
-  "10Or11Or12Or3More": unknown;
-  /** Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings. */
-  arrayOfString: unknown;
-}
-export const SettingsTlsUpdateRequestValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "10Or11Or12Or3More": S.Unknown.pipe(
-      T.Body('"1.0" or "1.1" or "1.2" or 3 more'),
-    ),
-    arrayOfString: S.Unknown.pipe(T.Body("array of string")),
-  }),
-).annotate({
-  identifier: "SettingsTlsUpdateRequestValue",
-}) as any as S.Schema<SettingsTlsUpdateRequestValue>;
+export type SettingsTlsUpdateRequestValueCase0 =
+  | "1.0"
+  | "1.1"
+  | "1.2"
+  | "1.3"
+  | "on"
+  | "off";
+export const SettingsTlsUpdateRequestValueCase0 = /*@__PURE__*/ S.String;
+
+export type SettingsTlsUpdateRequestValueCase1List = ReadonlyArray<string>;
+export const SettingsTlsUpdateRequestValueCase1List = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SettingsTlsUpdateRequestValueCase1List>;
+
+export type SettingsTlsUpdateRequestValue =
+  | SettingsTlsUpdateRequestValueCase0
+  | SettingsTlsUpdateRequestValueCase1List;
+export const SettingsTlsUpdateRequestValue = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], []]),
+);
 
 export interface PutSettingTlsRequest {
   /** Identifier. */
@@ -266,21 +278,26 @@ export const PutSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutSettingTlsRequest",
 }) as any as S.Schema<PutSettingTlsRequest>;
 
-export interface SettingsTlsUpdateResponseValue {
-  "10Or11Or12Or3More": unknown;
-  /** Used when `setting_id` is `ciphers`. An array of allowed cipher suite strings. */
-  arrayOfString: unknown;
-}
-export const SettingsTlsUpdateResponseValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "10Or11Or12Or3More": S.Unknown.pipe(
-      T.Body('"1.0" or "1.1" or "1.2" or 3 more'),
-    ),
-    arrayOfString: S.Unknown.pipe(T.Body("array of string")),
-  }),
-).annotate({
-  identifier: "SettingsTlsUpdateResponseValue",
-}) as any as S.Schema<SettingsTlsUpdateResponseValue>;
+export type SettingsTlsUpdateResponseValueCase0 =
+  | "1.0"
+  | "1.1"
+  | "1.2"
+  | "1.3"
+  | "on"
+  | "off";
+export const SettingsTlsUpdateResponseValueCase0 = /*@__PURE__*/ S.String;
+
+export type SettingsTlsUpdateResponseValueCase1List = ReadonlyArray<string>;
+export const SettingsTlsUpdateResponseValueCase1List = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SettingsTlsUpdateResponseValueCase1List>;
+
+export type SettingsTlsUpdateResponseValue =
+  | SettingsTlsUpdateResponseValueCase0
+  | SettingsTlsUpdateResponseValueCase1List;
+export const SettingsTlsUpdateResponseValue = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([[], []]),
+);
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutSettingTlsResponse {

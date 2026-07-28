@@ -12,6 +12,12 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The type of resource, for instance Microsoft.Kusto/clusters/attachedDatabaseConfigurations. */
+export type AttachedDatabaseConfigurationsCheckNameAvailabilityRequestType =
+  "Microsoft.Kusto/clusters/attachedDatabaseConfigurations";
+export const AttachedDatabaseConfigurationsCheckNameAvailabilityRequestType =
+  /*@__PURE__*/ S.String;
+
 export interface AttachedDatabaseConfigurationsCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -19,7 +25,10 @@ export interface AttachedDatabaseConfigurationsCheckNameAvailabilityRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** Attached database resource name. */
+  name: string;
+  /** The type of resource, for instance Microsoft.Kusto/clusters/attachedDatabaseConfigurations. */
+  type: AttachedDatabaseConfigurationsCheckNameAvailabilityRequestType;
 }
 export const AttachedDatabaseConfigurationsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -27,7 +36,8 @@ export const AttachedDatabaseConfigurationsCheckNameAvailabilityRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: AttachedDatabaseConfigurationsCheckNameAvailabilityRequestType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -41,7 +51,7 @@ export const AttachedDatabaseConfigurationsCheckNameAvailabilityRequest =
   }) as any as S.Schema<AttachedDatabaseConfigurationsCheckNameAvailabilityRequest>;
 
 /** Message providing the reason why the given name is invalid. */
-export type Reason = "Invalid" | "AlreadyExists" | (string & {});
+export type Reason = "Invalid" | "AlreadyExists";
 export const Reason = /*@__PURE__*/ S.String;
 
 /** The result returned from a check name availability request. */
@@ -66,132 +76,37 @@ export const CheckNameResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckNameResult",
 }) as any as S.Schema<CheckNameResult>;
 
-export interface AttachedDatabaseConfigurationsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Kusto cluster. */
-  clusterName: string;
-  /** The name of the attached database configuration. */
-  attachedDatabaseConfigurationName: string;
-  body: unknown;
-}
-export const AttachedDatabaseConfigurationsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      attachedDatabaseConfigurationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
-        code: 200,
-        apiVersion: "2025-02-14",
-      }),
-    ),
-  ).annotate({
-    identifier: "AttachedDatabaseConfigurationsCreateOrUpdateRequest",
-  }) as any as S.Schema<AttachedDatabaseConfigurationsCreateOrUpdateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-/** The provisioned state of the resource. */
-export type ProvisioningState =
-  | "Running"
-  | "Creating"
-  | "Deleting"
-  | "Succeeded"
-  | "Failed"
-  | "Moving"
-  | "Canceled"
-  | (string & {});
-export const ProvisioningState = /*@__PURE__*/ S.String;
-
-/** The list of databases from the clusterResourceId which are currently attached to the cluster. */
-export type AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList =
-  string[];
-export const AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList>;
-
 /** The default principals modification kind */
-export type DefaultPrincipalsModificationKind =
-  | "Union"
-  | "Replace"
-  | "None"
-  | (string & {});
+export type DefaultPrincipalsModificationKind = "Union" | "Replace" | "None";
 export const DefaultPrincipalsModificationKind = /*@__PURE__*/ S.String;
 
 /** List of tables to include in the follower database */
-export type TableLevelSharingPropertiesTablesToIncludeList = string[];
+export type TableLevelSharingPropertiesTablesToIncludeList =
+  ReadonlyArray<string>;
 export const TableLevelSharingPropertiesTablesToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TableLevelSharingPropertiesTablesToIncludeList>;
 
 /** List of tables to exclude from the follower database */
-export type TableLevelSharingPropertiesTablesToExcludeList = string[];
+export type TableLevelSharingPropertiesTablesToExcludeList =
+  ReadonlyArray<string>;
 export const TableLevelSharingPropertiesTablesToExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TableLevelSharingPropertiesTablesToExcludeList>;
 
 /** List of external tables to include in the follower database */
-export type TableLevelSharingPropertiesExternalTablesToIncludeList = string[];
+export type TableLevelSharingPropertiesExternalTablesToIncludeList =
+  ReadonlyArray<string>;
 export const TableLevelSharingPropertiesExternalTablesToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TableLevelSharingPropertiesExternalTablesToIncludeList>;
 
 /** List of external tables to exclude from the follower database */
-export type TableLevelSharingPropertiesExternalTablesToExcludeList = string[];
+export type TableLevelSharingPropertiesExternalTablesToExcludeList =
+  ReadonlyArray<string>;
 export const TableLevelSharingPropertiesExternalTablesToExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -199,7 +114,7 @@ export const TableLevelSharingPropertiesExternalTablesToExcludeList =
 
 /** List of materialized views to include in the follower database */
 export type TableLevelSharingPropertiesMaterializedViewsToIncludeList =
-  string[];
+  ReadonlyArray<string>;
 export const TableLevelSharingPropertiesMaterializedViewsToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -207,21 +122,23 @@ export const TableLevelSharingPropertiesMaterializedViewsToIncludeList =
 
 /** List of materialized views to exclude from the follower database */
 export type TableLevelSharingPropertiesMaterializedViewsToExcludeList =
-  string[];
+  ReadonlyArray<string>;
 export const TableLevelSharingPropertiesMaterializedViewsToExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TableLevelSharingPropertiesMaterializedViewsToExcludeList>;
 
 /** List of functions to include in the follower database */
-export type TableLevelSharingPropertiesFunctionsToIncludeList = string[];
+export type TableLevelSharingPropertiesFunctionsToIncludeList =
+  ReadonlyArray<string>;
 export const TableLevelSharingPropertiesFunctionsToIncludeList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<TableLevelSharingPropertiesFunctionsToIncludeList>;
 
 /** List of functions to exclude from the follower database */
-export type TableLevelSharingPropertiesFunctionsToExcludeList = string[];
+export type TableLevelSharingPropertiesFunctionsToExcludeList =
+  ReadonlyArray<string>;
 export const TableLevelSharingPropertiesFunctionsToExcludeList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -272,6 +189,131 @@ export const TableLevelSharingProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableLevelSharingProperties",
 }) as any as S.Schema<TableLevelSharingProperties>;
+
+/** Class representing the an attached database configuration properties of kind specific. */
+export interface AttachedDatabaseConfigurationPropertiesInput {
+  /** The name of the database which you would like to attach, use * if you want to follow all current and future databases. */
+  databaseName: string;
+  /** The resource id of the cluster where the databases you would like to attach reside. */
+  clusterResourceId: string;
+  /** The default principals modification kind */
+  defaultPrincipalsModificationKind: DefaultPrincipalsModificationKind;
+  /** Table level sharing specifications */
+  tableLevelSharingProperties?: TableLevelSharingProperties;
+  /** Overrides the original database name. Relevant only when attaching to a specific database. */
+  databaseNameOverride?: string;
+  /** Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster. */
+  databaseNamePrefix?: string;
+}
+export const AttachedDatabaseConfigurationPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      databaseName: S.String,
+      clusterResourceId: S.String,
+      defaultPrincipalsModificationKind: DefaultPrincipalsModificationKind,
+      tableLevelSharingProperties: S.optional(TableLevelSharingProperties),
+      databaseNameOverride: S.optional(S.String),
+      databaseNamePrefix: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AttachedDatabaseConfigurationPropertiesInput",
+  }) as any as S.Schema<AttachedDatabaseConfigurationPropertiesInput>;
+
+export interface AttachedDatabaseConfigurationsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Kusto cluster. */
+  clusterName: string;
+  /** The name of the attached database configuration. */
+  attachedDatabaseConfigurationName: string;
+  /** The properties of the attached database configuration. */
+  properties?: AttachedDatabaseConfigurationPropertiesInput;
+  /** Resource location. */
+  location?: string;
+}
+export const AttachedDatabaseConfigurationsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      attachedDatabaseConfigurationName: S.String.pipe(T.Label()),
+      properties: S.optional(AttachedDatabaseConfigurationPropertiesInput),
+      location: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}",
+        code: 200,
+        apiVersion: "2025-02-14",
+      }),
+    ),
+  ).annotate({
+    identifier: "AttachedDatabaseConfigurationsCreateOrUpdateRequest",
+  }) as any as S.Schema<AttachedDatabaseConfigurationsCreateOrUpdateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** The provisioned state of the resource. */
+export type ProvisioningState =
+  | "Running"
+  | "Creating"
+  | "Deleting"
+  | "Succeeded"
+  | "Failed"
+  | "Moving"
+  | "Canceled";
+export const ProvisioningState = /*@__PURE__*/ S.String;
+
+/** The list of databases from the clusterResourceId which are currently attached to the cluster. */
+export type AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList =
+  ReadonlyArray<string>;
+export const AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList>;
 
 /** Class representing the an attached database configuration properties of kind specific. */
 export interface AttachedDatabaseConfigurationProperties {
@@ -486,7 +528,7 @@ export const AttachedDatabaseConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of attached database configurations. */
 export type AttachedDatabaseConfigurationListResultValueList =
-  AttachedDatabaseConfiguration[];
+  ReadonlyArray<AttachedDatabaseConfiguration>;
 export const AttachedDatabaseConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     AttachedDatabaseConfiguration,
@@ -509,6 +551,12 @@ export const AttachedDatabaseConfigurationListResult = /*@__PURE__*/ S.suspend(
   identifier: "AttachedDatabaseConfigurationListResult",
 }) as any as S.Schema<AttachedDatabaseConfigurationListResult>;
 
+/** The type of resource, Microsoft.Kusto/clusters/principalAssignments. */
+export type ClusterPrincipalAssignmentsCheckNameAvailabilityRequestType =
+  "Microsoft.Kusto/clusters/principalAssignments";
+export const ClusterPrincipalAssignmentsCheckNameAvailabilityRequestType =
+  /*@__PURE__*/ S.String;
+
 export interface ClusterPrincipalAssignmentsCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -516,7 +564,10 @@ export interface ClusterPrincipalAssignmentsCheckNameAvailabilityRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** Principal Assignment resource name. */
+  name: string;
+  /** The type of resource, Microsoft.Kusto/clusters/principalAssignments. */
+  type: ClusterPrincipalAssignmentsCheckNameAvailabilityRequestType;
 }
 export const ClusterPrincipalAssignmentsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -524,7 +575,8 @@ export const ClusterPrincipalAssignmentsCheckNameAvailabilityRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: ClusterPrincipalAssignmentsCheckNameAvailabilityRequestType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -537,6 +589,39 @@ export const ClusterPrincipalAssignmentsCheckNameAvailabilityRequest =
     identifier: "ClusterPrincipalAssignmentsCheckNameAvailabilityRequest",
   }) as any as S.Schema<ClusterPrincipalAssignmentsCheckNameAvailabilityRequest>;
 
+/** Cluster principal role. */
+export type ClusterPrincipalRole =
+  | "AllDatabasesAdmin"
+  | "AllDatabasesViewer"
+  | "AllDatabasesMonitor";
+export const ClusterPrincipalRole = /*@__PURE__*/ S.String;
+
+/** Principal type. */
+export type PrincipalType = "App" | "Group" | "User";
+export const PrincipalType = /*@__PURE__*/ S.String;
+
+/** A class representing cluster principal property. */
+export interface ClusterPrincipalPropertiesInput {
+  /** The principal ID assigned to the cluster principal. It can be a user email, application ID, or security group name. */
+  principalId: string;
+  /** Cluster principal role. */
+  role: ClusterPrincipalRole;
+  /** The tenant id of the principal */
+  tenantId?: string;
+  /** Principal type. */
+  principalType: PrincipalType;
+}
+export const ClusterPrincipalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.String,
+    role: ClusterPrincipalRole,
+    tenantId: S.optional(S.String),
+    principalType: PrincipalType,
+  }),
+).annotate({
+  identifier: "ClusterPrincipalPropertiesInput",
+}) as any as S.Schema<ClusterPrincipalPropertiesInput>;
+
 export interface ClusterPrincipalAssignmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -546,7 +631,8 @@ export interface ClusterPrincipalAssignmentsCreateOrUpdateRequest {
   clusterName: string;
   /** The name of the Kusto principalAssignment. */
   principalAssignmentName: string;
-  body: unknown;
+  /** The cluster principal. */
+  properties?: ClusterPrincipalPropertiesInput;
 }
 export const ClusterPrincipalAssignmentsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -555,7 +641,7 @@ export const ClusterPrincipalAssignmentsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       principalAssignmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ClusterPrincipalPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -567,18 +653,6 @@ export const ClusterPrincipalAssignmentsCreateOrUpdateRequest =
   ).annotate({
     identifier: "ClusterPrincipalAssignmentsCreateOrUpdateRequest",
   }) as any as S.Schema<ClusterPrincipalAssignmentsCreateOrUpdateRequest>;
-
-/** Cluster principal role. */
-export type ClusterPrincipalRole =
-  | "AllDatabasesAdmin"
-  | "AllDatabasesViewer"
-  | "AllDatabasesMonitor"
-  | (string & {});
-export const ClusterPrincipalRole = /*@__PURE__*/ S.String;
-
-/** Principal type. */
-export type PrincipalType = "App" | "Group" | "User" | (string & {});
-export const PrincipalType = /*@__PURE__*/ S.String;
 
 /** A class representing cluster principal property. */
 export interface ClusterPrincipalProperties {
@@ -781,7 +855,7 @@ export const ClusterPrincipalAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Kusto cluster principal assignments. */
 export type ClusterPrincipalAssignmentListResultValueList =
-  ClusterPrincipalAssignment[];
+  ReadonlyArray<ClusterPrincipalAssignment>;
 export const ClusterPrincipalAssignmentListResultValueList =
   /*@__PURE__*/ S.Array(
     ClusterPrincipalAssignment,
@@ -804,6 +878,51 @@ export const ClusterPrincipalAssignmentListResult = /*@__PURE__*/ S.suspend(
   identifier: "ClusterPrincipalAssignmentListResult",
 }) as any as S.Schema<ClusterPrincipalAssignmentListResult>;
 
+/** Type of the callout service, specifying the kind of external resource or service being accessed. */
+export type CalloutType =
+  | "kusto"
+  | "sql"
+  | "cosmosdb"
+  | "external_data"
+  | "azure_digital_twins"
+  | "sandbox_artifacts"
+  | "webapi"
+  | "mysql"
+  | "postgresql"
+  | "genevametrics"
+  | "azure_openai";
+export const CalloutType = /*@__PURE__*/ S.String;
+
+/** Indicates whether outbound access is permitted for the specified URI pattern. */
+export type OutboundAccess = "Allow" | "Deny";
+export const OutboundAccess = /*@__PURE__*/ S.String;
+
+/** Configuration for external callout policies, including URI patterns, access types, and service types. */
+export interface CalloutPolicyInput {
+  /** Regular expression or FQDN pattern for the callout URI. */
+  calloutUriRegex?: string;
+  /** Type of the callout service, specifying the kind of external resource or service being accessed. */
+  calloutType?: CalloutType;
+  /** Indicates whether outbound access is permitted for the specified URI pattern. */
+  outboundAccess?: OutboundAccess;
+}
+export const CalloutPolicyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    calloutUriRegex: S.optional(S.String),
+    calloutType: S.optional(CalloutType),
+    outboundAccess: S.optional(OutboundAccess),
+  }),
+).annotate({
+  identifier: "CalloutPolicyInput",
+}) as any as S.Schema<CalloutPolicyInput>;
+
+/** The CalloutPolicy items on this page */
+export type ClustersAddCalloutPoliciesRequestValueList =
+  ReadonlyArray<CalloutPolicyInput>;
+export const ClustersAddCalloutPoliciesRequestValueList = /*@__PURE__*/ S.Array(
+  CalloutPolicyInput,
+) as any as S.Schema<ClustersAddCalloutPoliciesRequestValueList>;
+
 export interface ClustersAddCalloutPoliciesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -811,14 +930,18 @@ export interface ClustersAddCalloutPoliciesRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** The CalloutPolicy items on this page */
+  value: ClustersAddCalloutPoliciesRequestValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
 }
 export const ClustersAddCalloutPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    value: ClustersAddCalloutPoliciesRequestValueList,
+    nextLink: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -838,6 +961,48 @@ export const ClustersAddCalloutPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClustersAddCalloutPoliciesResponse",
 }) as any as S.Schema<ClustersAddCalloutPoliciesResponse>;
 
+/** Language extension that can run within KQL query. */
+export type LanguageExtensionName = "PYTHON" | "R";
+export const LanguageExtensionName = /*@__PURE__*/ S.String;
+
+/** Language extension image name. */
+export type LanguageExtensionImageName =
+  | "R"
+  | "Python3_6_5"
+  | "Python3_10_8"
+  | "Python3_10_8_DL"
+  | "PythonCustomImage"
+  | "Python3_11_7"
+  | "Python3_11_7_DL";
+export const LanguageExtensionImageName = /*@__PURE__*/ S.String;
+
+/** The language extension object. */
+export interface LanguageExtension {
+  /** The language extension name. */
+  languageExtensionName?: LanguageExtensionName;
+  /** The language extension image name. */
+  languageExtensionImageName?: LanguageExtensionImageName;
+  /** The sandbox custom image name that should be enabled as the active language extension. Sandbox custom image is a cluster sub resource. When this property is set, LanguageExtensionImageName should be set to 'PythonCustomImage'. */
+  languageExtensionCustomImageName?: string;
+}
+export const LanguageExtension = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    languageExtensionName: S.optional(LanguageExtensionName),
+    languageExtensionImageName: S.optional(LanguageExtensionImageName),
+    languageExtensionCustomImageName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LanguageExtension",
+}) as any as S.Schema<LanguageExtension>;
+
+/** The list of language extensions. */
+export type ClustersAddLanguageExtensionsRequestValueList =
+  ReadonlyArray<LanguageExtension>;
+export const ClustersAddLanguageExtensionsRequestValueList =
+  /*@__PURE__*/ S.Array(
+    LanguageExtension,
+  ) as any as S.Schema<ClustersAddLanguageExtensionsRequestValueList>;
+
 export interface ClustersAddLanguageExtensionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -845,7 +1010,10 @@ export interface ClustersAddLanguageExtensionsRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** The list of language extensions. */
+  value?: ClustersAddLanguageExtensionsRequestValueList;
+  /** The link to the next page of resources. */
+  nextLink?: string;
 }
 export const ClustersAddLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -853,7 +1021,8 @@ export const ClustersAddLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      value: S.optional(ClustersAddLanguageExtensionsRequestValueList),
+      nextLink: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -873,19 +1042,28 @@ export const ClustersAddLanguageExtensionsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ClustersAddLanguageExtensionsResponse",
 }) as any as S.Schema<ClustersAddLanguageExtensionsResponse>;
 
+/** The type of resource, Microsoft.Kusto/clusters. */
+export type ClustersCheckNameAvailabilityRequestType =
+  "Microsoft.Kusto/clusters";
+export const ClustersCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
+
 export interface ClustersCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
-  body: unknown;
+  /** Cluster name. */
+  name: string;
+  /** The type of resource, Microsoft.Kusto/clusters. */
+  type: ClustersCheckNameAvailabilityRequestType;
 }
 export const ClustersCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: ClustersCheckNameAvailabilityRequestType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -898,56 +1076,14 @@ export const ClustersCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   identifier: "ClustersCheckNameAvailabilityRequest",
 }) as any as S.Schema<ClustersCheckNameAvailabilityRequest>;
 
-export interface ClustersCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Kusto cluster. */
-  clusterName: string;
-  body: unknown;
-}
-export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
-      code: 200,
-      apiVersion: "2025-02-14",
-    }),
-  ),
-).annotate({
-  identifier: "ClustersCreateOrUpdateRequest",
-}) as any as S.Schema<ClustersCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type ClustersCreateOrUpdateResponseTagsMap = {
+export type ClustersCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const ClustersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const ClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
-
-/** The state of the resource. */
-export type State =
-  | "Creating"
-  | "Unavailable"
-  | "Running"
-  | "Deleting"
-  | "Deleted"
-  | "Stopping"
-  | "Stopped"
-  | "Starting"
-  | "Updating"
-  | "Migrated"
-  | (string & {});
-export const State = /*@__PURE__*/ S.String;
+) as any as S.Schema<ClustersCreateOrUpdateRequestTagsMap>;
 
 /** Represents a tenant ID that is trusted by the cluster. */
 export interface TrustedExternalTenant {
@@ -963,12 +1099,12 @@ export const TrustedExternalTenant = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrustedExternalTenant>;
 
 /** The cluster's external tenants. */
-export type ClusterPropertiesTrustedExternalTenantsList =
-  TrustedExternalTenant[];
-export const ClusterPropertiesTrustedExternalTenantsList =
+export type ClusterPropertiesInputTrustedExternalTenantsList =
+  ReadonlyArray<TrustedExternalTenant>;
+export const ClusterPropertiesInputTrustedExternalTenantsList =
   /*@__PURE__*/ S.Array(
     TrustedExternalTenant,
-  ) as any as S.Schema<ClusterPropertiesTrustedExternalTenantsList>;
+  ) as any as S.Schema<ClusterPropertiesInputTrustedExternalTenantsList>;
 
 /** A class that contains the optimized auto scale definition. */
 export interface OptimizedAutoscale {
@@ -993,10 +1129,7 @@ export const OptimizedAutoscale = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OptimizedAutoscale>;
 
 /** When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet. */
-export type VirtualNetworkConfigurationState =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type VirtualNetworkConfigurationState = "Enabled" | "Disabled";
 export const VirtualNetworkConfigurationState = /*@__PURE__*/ S.String;
 
 /** A class that contains virtual network definition. */
@@ -1046,43 +1179,8 @@ export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeyVaultProperties",
 }) as any as S.Schema<KeyVaultProperties>;
 
-/** Language extension that can run within KQL query. */
-export type LanguageExtensionName = "PYTHON" | "R" | (string & {});
-export const LanguageExtensionName = /*@__PURE__*/ S.String;
-
-/** Language extension image name. */
-export type LanguageExtensionImageName =
-  | "R"
-  | "Python3_6_5"
-  | "Python3_10_8"
-  | "Python3_10_8_DL"
-  | "PythonCustomImage"
-  | "Python3_11_7"
-  | "Python3_11_7_DL"
-  | (string & {});
-export const LanguageExtensionImageName = /*@__PURE__*/ S.String;
-
-/** The language extension object. */
-export interface LanguageExtension {
-  /** The language extension name. */
-  languageExtensionName?: LanguageExtensionName;
-  /** The language extension image name. */
-  languageExtensionImageName?: LanguageExtensionImageName;
-  /** The sandbox custom image name that should be enabled as the active language extension. Sandbox custom image is a cluster sub resource. When this property is set, LanguageExtensionImageName should be set to 'PythonCustomImage'. */
-  languageExtensionCustomImageName?: string;
-}
-export const LanguageExtension = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageExtensionName: S.optional(LanguageExtensionName),
-    languageExtensionImageName: S.optional(LanguageExtensionImageName),
-    languageExtensionCustomImageName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LanguageExtension",
-}) as any as S.Schema<LanguageExtension>;
-
 /** The list of language extensions. */
-export type LanguageExtensionsListValueList = LanguageExtension[];
+export type LanguageExtensionsListValueList = ReadonlyArray<LanguageExtension>;
 export const LanguageExtensionsListValueList = /*@__PURE__*/ S.Array(
   LanguageExtension,
 ) as any as S.Schema<LanguageExtensionsListValueList>;
@@ -1104,22 +1202,23 @@ export const LanguageExtensionsList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LanguageExtensionsList>;
 
 /** Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed */
-export type ClusterPropertiesPublicNetworkAccess =
+export type ClusterPropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
-export const ClusterPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
+  | "SecuredByPerimeter";
+export const ClusterPropertiesInputPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The list of ips in the format of CIDR allowed to connect to the cluster. */
-export type ClusterPropertiesAllowedIpRangeListList = string[];
-export const ClusterPropertiesAllowedIpRangeListList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ClusterPropertiesAllowedIpRangeListList>;
+export type ClusterPropertiesInputAllowedIpRangeListList =
+  ReadonlyArray<string>;
+export const ClusterPropertiesInputAllowedIpRangeListList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ClusterPropertiesInputAllowedIpRangeListList>;
 
 /** The engine type */
-export type ClusterPropertiesEngineType = "V2" | "V3" | (string & {});
-export const ClusterPropertiesEngineType = /*@__PURE__*/ S.String;
+export type ClusterPropertiesInputEngineType = "V2" | "V3";
+export const ClusterPropertiesInputEngineType = /*@__PURE__*/ S.String;
 
 /** Represents an accepted audience trusted by the cluster. */
 export interface AcceptedAudiences {
@@ -1135,7 +1234,339 @@ export const AcceptedAudiences = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceptedAudiences>;
 
 /** The cluster's accepted audiences. */
-export type ClusterPropertiesAcceptedAudiencesList = AcceptedAudiences[];
+export type ClusterPropertiesInputAcceptedAudiencesList =
+  ReadonlyArray<AcceptedAudiences>;
+export const ClusterPropertiesInputAcceptedAudiencesList =
+  /*@__PURE__*/ S.Array(
+    AcceptedAudiences,
+  ) as any as S.Schema<ClusterPropertiesInputAcceptedAudiencesList>;
+
+/** Whether or not to restrict outbound network access. Value is optional but if passed in, must be 'Enabled' or 'Disabled' */
+export type ClusterPropertiesInputRestrictOutboundNetworkAccess =
+  | "Enabled"
+  | "Disabled";
+export const ClusterPropertiesInputRestrictOutboundNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster. */
+export type ClusterPropertiesInputAllowedFqdnListList = ReadonlyArray<string>;
+export const ClusterPropertiesInputAllowedFqdnListList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ClusterPropertiesInputAllowedFqdnListList>;
+
+/** List of callout policies for egress from Cluster. */
+export type ClusterPropertiesInputCalloutPoliciesList =
+  ReadonlyArray<CalloutPolicyInput>;
+export const ClusterPropertiesInputCalloutPoliciesList = /*@__PURE__*/ S.Array(
+  CalloutPolicyInput,
+) as any as S.Schema<ClusterPropertiesInputCalloutPoliciesList>;
+
+/** Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6) */
+export type ClusterPropertiesInputPublicIPType = "IPv4" | "DualStack";
+export const ClusterPropertiesInputPublicIPType = /*@__PURE__*/ S.String;
+
+/** Class representing the Kusto cluster properties. */
+export interface ClusterPropertiesInput {
+  /** The cluster's external tenants. */
+  trustedExternalTenants?: ClusterPropertiesInputTrustedExternalTenantsList;
+  /** Optimized auto scale definition. */
+  optimizedAutoscale?: OptimizedAutoscale;
+  /** A boolean value that indicates if the cluster's disks are encrypted. */
+  enableDiskEncryption?: boolean;
+  /** A boolean value that indicates if the streaming ingest is enabled. */
+  enableStreamingIngest?: boolean;
+  /** Virtual network definition. */
+  virtualNetworkConfiguration?: VirtualNetworkConfiguration;
+  /** KeyVault properties for the cluster encryption. */
+  keyVaultProperties?: KeyVaultProperties;
+  /** A boolean value that indicates if the purge operations are enabled. */
+  enablePurge?: boolean;
+  /** List of the cluster's language extensions. */
+  languageExtensions?: LanguageExtensionsList;
+  /** A boolean value that indicates if double encryption is enabled. */
+  enableDoubleEncryption?: boolean;
+  /** Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed */
+  publicNetworkAccess?: ClusterPropertiesInputPublicNetworkAccess;
+  /** The list of ips in the format of CIDR allowed to connect to the cluster. */
+  allowedIpRangeList?: ClusterPropertiesInputAllowedIpRangeListList;
+  /** The engine type */
+  engineType?: ClusterPropertiesInputEngineType;
+  /** The cluster's accepted audiences. */
+  acceptedAudiences?: ClusterPropertiesInputAcceptedAudiencesList;
+  /** A boolean value that indicates if the cluster could be automatically stopped (due to lack of data or no activity for many days). */
+  enableAutoStop?: boolean;
+  /** Whether or not to restrict outbound network access. Value is optional but if passed in, must be 'Enabled' or 'Disabled' */
+  restrictOutboundNetworkAccess?: ClusterPropertiesInputRestrictOutboundNetworkAccess;
+  /** List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster. */
+  allowedFqdnList?: ClusterPropertiesInputAllowedFqdnListList;
+  /** List of callout policies for egress from Cluster. */
+  calloutPolicies?: ClusterPropertiesInputCalloutPoliciesList;
+  /** Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6) */
+  publicIPType?: ClusterPropertiesInputPublicIPType;
+  /** Virtual Cluster graduation properties */
+  virtualClusterGraduationProperties?: string;
+}
+export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trustedExternalTenants: S.optional(
+      ClusterPropertiesInputTrustedExternalTenantsList,
+    ),
+    optimizedAutoscale: S.optional(OptimizedAutoscale),
+    enableDiskEncryption: S.optional(S.Boolean),
+    enableStreamingIngest: S.optional(S.Boolean),
+    virtualNetworkConfiguration: S.optional(VirtualNetworkConfiguration),
+    keyVaultProperties: S.optional(KeyVaultProperties),
+    enablePurge: S.optional(S.Boolean),
+    languageExtensions: S.optional(LanguageExtensionsList),
+    enableDoubleEncryption: S.optional(S.Boolean),
+    publicNetworkAccess: S.optional(ClusterPropertiesInputPublicNetworkAccess),
+    allowedIpRangeList: S.optional(
+      ClusterPropertiesInputAllowedIpRangeListList,
+    ),
+    engineType: S.optional(ClusterPropertiesInputEngineType),
+    acceptedAudiences: S.optional(ClusterPropertiesInputAcceptedAudiencesList),
+    enableAutoStop: S.optional(S.Boolean),
+    restrictOutboundNetworkAccess: S.optional(
+      ClusterPropertiesInputRestrictOutboundNetworkAccess,
+    ),
+    allowedFqdnList: S.optional(ClusterPropertiesInputAllowedFqdnListList),
+    calloutPolicies: S.optional(ClusterPropertiesInputCalloutPoliciesList),
+    publicIPType: S.optional(ClusterPropertiesInputPublicIPType),
+    virtualClusterGraduationProperties: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ClusterPropertiesInput",
+}) as any as S.Schema<ClusterPropertiesInput>;
+
+/** SKU name. */
+export type AzureSkuName =
+  | "Dev(No SLA)_Standard_D11_v2"
+  | "Dev(No SLA)_Standard_E2a_v4"
+  | "Standard_D11_v2"
+  | "Standard_D12_v2"
+  | "Standard_D13_v2"
+  | "Standard_D14_v2"
+  | "Standard_D32d_v4"
+  | "Standard_D16d_v5"
+  | "Standard_D32d_v5"
+  | "Standard_DS13_v2+1TB_PS"
+  | "Standard_DS13_v2+2TB_PS"
+  | "Standard_DS14_v2+3TB_PS"
+  | "Standard_DS14_v2+4TB_PS"
+  | "Standard_L4s"
+  | "Standard_L8s"
+  | "Standard_L16s"
+  | "Standard_L8s_v2"
+  | "Standard_L16s_v2"
+  | "Standard_L8s_v3"
+  | "Standard_L16s_v3"
+  | "Standard_L32s_v3"
+  | "Standard_L8as_v3"
+  | "Standard_L16as_v3"
+  | "Standard_L32as_v3"
+  | "Standard_E64i_v3"
+  | "Standard_E80ids_v4"
+  | "Standard_E2a_v4"
+  | "Standard_E4a_v4"
+  | "Standard_E8a_v4"
+  | "Standard_E16a_v4"
+  | "Standard_E8as_v4+1TB_PS"
+  | "Standard_E8as_v4+2TB_PS"
+  | "Standard_E16as_v4+3TB_PS"
+  | "Standard_E16as_v4+4TB_PS"
+  | "Standard_E8as_v5+1TB_PS"
+  | "Standard_E8as_v5+2TB_PS"
+  | "Standard_E16as_v5+3TB_PS"
+  | "Standard_E16as_v5+4TB_PS"
+  | "Standard_E2ads_v5"
+  | "Standard_E4ads_v5"
+  | "Standard_E8ads_v5"
+  | "Standard_E16ads_v5"
+  | "Standard_EC8as_v5+1TB_PS"
+  | "Standard_EC8as_v5+2TB_PS"
+  | "Standard_EC16as_v5+3TB_PS"
+  | "Standard_EC16as_v5+4TB_PS"
+  | "Standard_EC8ads_v5"
+  | "Standard_EC16ads_v5"
+  | "Standard_E8s_v4+1TB_PS"
+  | "Standard_E8s_v4+2TB_PS"
+  | "Standard_E16s_v4+3TB_PS"
+  | "Standard_E16s_v4+4TB_PS"
+  | "Standard_E8s_v5+1TB_PS"
+  | "Standard_E8s_v5+2TB_PS"
+  | "Standard_E16s_v5+3TB_PS"
+  | "Standard_E16s_v5+4TB_PS"
+  | "Standard_E2d_v4"
+  | "Standard_E4d_v4"
+  | "Standard_E8d_v4"
+  | "Standard_E16d_v4"
+  | "Standard_E2d_v5"
+  | "Standard_E4d_v5"
+  | "Standard_E8d_v5"
+  | "Standard_E16d_v5";
+export const AzureSkuName = /*@__PURE__*/ S.String;
+
+/** SKU tier. */
+export type AzureSkuTier = "Basic" | "Standard";
+export const AzureSkuTier = /*@__PURE__*/ S.String;
+
+/** Azure SKU definition. */
+export interface AzureSku {
+  /** SKU name. */
+  name: AzureSkuName;
+  /** The number of instances of the cluster. */
+  capacity?: number;
+  /** SKU tier. */
+  tier: AzureSkuTier;
+}
+export const AzureSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: AzureSkuName,
+    capacity: S.optional(S.Number),
+    tier: AzureSkuTier,
+  }),
+).annotate({ identifier: "AzureSku" }) as any as S.Schema<AzureSku>;
+
+/** The availability zones. */
+export type ClustersCreateOrUpdateRequestZonesList = ReadonlyArray<string>;
+export const ClustersCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ClustersCreateOrUpdateRequestZonesList>;
+
+/** The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities. */
+export type IdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned, UserAssigned";
+export const IdentityType = /*@__PURE__*/ S.String;
+
+export interface ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput {}
+export const ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier:
+      "ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput",
+  }) as any as S.Schema<ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput>;
+
+/** The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type IdentityInputUserAssignedIdentitiesMap = {
+  [key: string]:
+    | ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput
+    | undefined;
+};
+export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput,
+) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
+
+/** Identity for the resource. */
+export interface IdentityInput {
+  /** The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities. */
+  type: IdentityType;
+  /** The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
+}
+export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: IdentityType,
+    userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
+  }),
+).annotate({ identifier: "IdentityInput" }) as any as S.Schema<IdentityInput>;
+
+export interface ClustersCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Kusto cluster. */
+  clusterName: string;
+  /** Resource tags. */
+  tags?: ClustersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The cluster properties. */
+  properties?: ClusterPropertiesInput;
+  /** The SKU of the cluster. */
+  sku: AzureSku;
+  /** The availability zones. */
+  zones?: ClustersCreateOrUpdateRequestZonesList;
+  /** The identity of the cluster, if configured. */
+  identity?: IdentityInput;
+}
+export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    tags: S.optional(ClustersCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ClusterPropertiesInput),
+    sku: AzureSku,
+    zones: S.optional(ClustersCreateOrUpdateRequestZonesList),
+    identity: S.optional(IdentityInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}",
+      code: 200,
+      apiVersion: "2025-02-14",
+    }),
+  ),
+).annotate({
+  identifier: "ClustersCreateOrUpdateRequest",
+}) as any as S.Schema<ClustersCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type ClustersCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ClustersCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
+
+/** The state of the resource. */
+export type State =
+  | "Creating"
+  | "Unavailable"
+  | "Running"
+  | "Deleting"
+  | "Deleted"
+  | "Stopping"
+  | "Stopped"
+  | "Starting"
+  | "Updating"
+  | "Migrated";
+export const State = /*@__PURE__*/ S.String;
+
+/** The cluster's external tenants. */
+export type ClusterPropertiesTrustedExternalTenantsList =
+  ReadonlyArray<TrustedExternalTenant>;
+export const ClusterPropertiesTrustedExternalTenantsList =
+  /*@__PURE__*/ S.Array(
+    TrustedExternalTenant,
+  ) as any as S.Schema<ClusterPropertiesTrustedExternalTenantsList>;
+
+/** Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed */
+export type ClusterPropertiesPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled"
+  | "SecuredByPerimeter";
+export const ClusterPropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
+
+/** The list of ips in the format of CIDR allowed to connect to the cluster. */
+export type ClusterPropertiesAllowedIpRangeListList = ReadonlyArray<string>;
+export const ClusterPropertiesAllowedIpRangeListList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ClusterPropertiesAllowedIpRangeListList>;
+
+/** The engine type */
+export type ClusterPropertiesEngineType = "V2" | "V3";
+export const ClusterPropertiesEngineType = /*@__PURE__*/ S.String;
+
+/** The cluster's accepted audiences. */
+export type ClusterPropertiesAcceptedAudiencesList =
+  ReadonlyArray<AcceptedAudiences>;
 export const ClusterPropertiesAcceptedAudiencesList = /*@__PURE__*/ S.Array(
   AcceptedAudiences,
 ) as any as S.Schema<ClusterPropertiesAcceptedAudiencesList>;
@@ -1143,36 +1574,15 @@ export const ClusterPropertiesAcceptedAudiencesList = /*@__PURE__*/ S.Array(
 /** Whether or not to restrict outbound network access. Value is optional but if passed in, must be 'Enabled' or 'Disabled' */
 export type ClusterPropertiesRestrictOutboundNetworkAccess =
   | "Enabled"
-  | "Disabled"
-  | (string & {});
+  | "Disabled";
 export const ClusterPropertiesRestrictOutboundNetworkAccess =
   /*@__PURE__*/ S.String;
 
 /** List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster. */
-export type ClusterPropertiesAllowedFqdnListList = string[];
+export type ClusterPropertiesAllowedFqdnListList = ReadonlyArray<string>;
 export const ClusterPropertiesAllowedFqdnListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterPropertiesAllowedFqdnListList>;
-
-/** Type of the callout service, specifying the kind of external resource or service being accessed. */
-export type CalloutType =
-  | "kusto"
-  | "sql"
-  | "cosmosdb"
-  | "external_data"
-  | "azure_digital_twins"
-  | "sandbox_artifacts"
-  | "webapi"
-  | "mysql"
-  | "postgresql"
-  | "genevametrics"
-  | "azure_openai"
-  | (string & {});
-export const CalloutType = /*@__PURE__*/ S.String;
-
-/** Indicates whether outbound access is permitted for the specified URI pattern. */
-export type OutboundAccess = "Allow" | "Deny" | (string & {});
-export const OutboundAccess = /*@__PURE__*/ S.String;
 
 /** Configuration for external callout policies, including URI patterns, access types, and service types. */
 export interface CalloutPolicy {
@@ -1195,16 +1605,13 @@ export const CalloutPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CalloutPolicy" }) as any as S.Schema<CalloutPolicy>;
 
 /** List of callout policies for egress from Cluster. */
-export type ClusterPropertiesCalloutPoliciesList = CalloutPolicy[];
+export type ClusterPropertiesCalloutPoliciesList = ReadonlyArray<CalloutPolicy>;
 export const ClusterPropertiesCalloutPoliciesList = /*@__PURE__*/ S.Array(
   CalloutPolicy,
 ) as any as S.Schema<ClusterPropertiesCalloutPoliciesList>;
 
 /** Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6) */
-export type ClusterPropertiesPublicIPType =
-  | "IPv4"
-  | "DualStack"
-  | (string & {});
+export type ClusterPropertiesPublicIPType = "IPv4" | "DualStack";
 export const ClusterPropertiesPublicIPType = /*@__PURE__*/ S.String;
 
 /** Private endpoint which the connection belongs to. */
@@ -1290,14 +1697,14 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of private endpoint connections. */
 export type ClusterPropertiesPrivateEndpointConnectionsList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const ClusterPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
   ) as any as S.Schema<ClusterPropertiesPrivateEndpointConnectionsList>;
 
 /** The role of the cluster in the migration process. */
-export type MigrationClusterRole = "Source" | "Destination" | (string & {});
+export type MigrationClusterRole = "Source" | "Destination";
 export const MigrationClusterRole = /*@__PURE__*/ S.String;
 
 /** Represents a properties of a cluster that is part of a migration. */
@@ -1323,11 +1730,7 @@ export const MigrationClusterProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrationClusterProperties>;
 
 /** Indicates whether the cluster is zonal or non-zonal. */
-export type ZoneStatus =
-  | "NonZonal"
-  | "ZonalInconsistency"
-  | "Zonal"
-  | (string & {});
+export type ZoneStatus = "NonZonal" | "ZonalInconsistency" | "Zonal";
 export const ZoneStatus = /*@__PURE__*/ S.String;
 
 /** Class representing the Kusto cluster properties. */
@@ -1427,110 +1830,11 @@ export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClusterProperties",
 }) as any as S.Schema<ClusterProperties>;
 
-/** SKU name. */
-export type AzureSkuName =
-  | "Dev(No SLA)_Standard_D11_v2"
-  | "Dev(No SLA)_Standard_E2a_v4"
-  | "Standard_D11_v2"
-  | "Standard_D12_v2"
-  | "Standard_D13_v2"
-  | "Standard_D14_v2"
-  | "Standard_D32d_v4"
-  | "Standard_D16d_v5"
-  | "Standard_D32d_v5"
-  | "Standard_DS13_v2+1TB_PS"
-  | "Standard_DS13_v2+2TB_PS"
-  | "Standard_DS14_v2+3TB_PS"
-  | "Standard_DS14_v2+4TB_PS"
-  | "Standard_L4s"
-  | "Standard_L8s"
-  | "Standard_L16s"
-  | "Standard_L8s_v2"
-  | "Standard_L16s_v2"
-  | "Standard_L8s_v3"
-  | "Standard_L16s_v3"
-  | "Standard_L32s_v3"
-  | "Standard_L8as_v3"
-  | "Standard_L16as_v3"
-  | "Standard_L32as_v3"
-  | "Standard_E64i_v3"
-  | "Standard_E80ids_v4"
-  | "Standard_E2a_v4"
-  | "Standard_E4a_v4"
-  | "Standard_E8a_v4"
-  | "Standard_E16a_v4"
-  | "Standard_E8as_v4+1TB_PS"
-  | "Standard_E8as_v4+2TB_PS"
-  | "Standard_E16as_v4+3TB_PS"
-  | "Standard_E16as_v4+4TB_PS"
-  | "Standard_E8as_v5+1TB_PS"
-  | "Standard_E8as_v5+2TB_PS"
-  | "Standard_E16as_v5+3TB_PS"
-  | "Standard_E16as_v5+4TB_PS"
-  | "Standard_E2ads_v5"
-  | "Standard_E4ads_v5"
-  | "Standard_E8ads_v5"
-  | "Standard_E16ads_v5"
-  | "Standard_EC8as_v5+1TB_PS"
-  | "Standard_EC8as_v5+2TB_PS"
-  | "Standard_EC16as_v5+3TB_PS"
-  | "Standard_EC16as_v5+4TB_PS"
-  | "Standard_EC8ads_v5"
-  | "Standard_EC16ads_v5"
-  | "Standard_E8s_v4+1TB_PS"
-  | "Standard_E8s_v4+2TB_PS"
-  | "Standard_E16s_v4+3TB_PS"
-  | "Standard_E16s_v4+4TB_PS"
-  | "Standard_E8s_v5+1TB_PS"
-  | "Standard_E8s_v5+2TB_PS"
-  | "Standard_E16s_v5+3TB_PS"
-  | "Standard_E16s_v5+4TB_PS"
-  | "Standard_E2d_v4"
-  | "Standard_E4d_v4"
-  | "Standard_E8d_v4"
-  | "Standard_E16d_v4"
-  | "Standard_E2d_v5"
-  | "Standard_E4d_v5"
-  | "Standard_E8d_v5"
-  | "Standard_E16d_v5"
-  | (string & {});
-export const AzureSkuName = /*@__PURE__*/ S.String;
-
-/** SKU tier. */
-export type AzureSkuTier = "Basic" | "Standard" | (string & {});
-export const AzureSkuTier = /*@__PURE__*/ S.String;
-
-/** Azure SKU definition. */
-export interface AzureSku {
-  /** SKU name. */
-  name: AzureSkuName;
-  /** The number of instances of the cluster. */
-  capacity?: number;
-  /** SKU tier. */
-  tier: AzureSkuTier;
-}
-export const AzureSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: AzureSkuName,
-    capacity: S.optional(S.Number),
-    tier: AzureSkuTier,
-  }),
-).annotate({ identifier: "AzureSku" }) as any as S.Schema<AzureSku>;
-
 /** The availability zones. */
-export type ClustersCreateOrUpdateResponseZonesList = string[];
+export type ClustersCreateOrUpdateResponseZonesList = ReadonlyArray<string>;
 export const ClustersCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersCreateOrUpdateResponseZonesList>;
-
-/** The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities. */
-export type IdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned, UserAssigned"
-  | (string & {});
-export const IdentityType = /*@__PURE__*/ S.String;
 
 export interface ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties {
   /** The principal id of user assigned identity. */
@@ -1661,7 +1965,10 @@ export interface ClustersDetachFollowerDatabasesRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** Resource id of the cluster that follows a database owned by this cluster. */
+  clusterResourceId: string;
+  /** Resource name of the attached database configuration in the follower cluster. */
+  attachedDatabaseConfigurationName: string;
 }
 export const ClustersDetachFollowerDatabasesRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1669,7 +1976,8 @@ export const ClustersDetachFollowerDatabasesRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      clusterResourceId: S.String,
+      attachedDatabaseConfigurationName: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -1716,7 +2024,7 @@ export const ClustersDiagnoseVirtualNetworkRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ClustersDiagnoseVirtualNetworkRequest>;
 
 /** The list of network connectivity diagnostic finding */
-export type DiagnoseVirtualNetworkResultFindingsList = string[];
+export type DiagnoseVirtualNetworkResultFindingsList = ReadonlyArray<string>;
 export const DiagnoseVirtualNetworkResultFindingsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DiagnoseVirtualNetworkResultFindingsList>;
@@ -1766,7 +2074,7 @@ export const ClustersGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersGetResponseTagsMap>;
 
 /** The availability zones. */
-export type ClustersGetResponseZonesList = string[];
+export type ClustersGetResponseZonesList = ReadonlyArray<string>;
 export const ClustersGetResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersGetResponseZonesList>;
@@ -1840,7 +2148,7 @@ export const ClusterTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClusterTagsMap>;
 
 /** The availability zones. */
-export type ClusterZonesList = string[];
+export type ClusterZonesList = ReadonlyArray<string>;
 export const ClusterZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterZonesList>;
@@ -1887,7 +2195,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** The list of Kusto clusters. */
-export type ClusterListResultValueList = Cluster[];
+export type ClusterListResultValueList = ReadonlyArray<Cluster>;
 export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
@@ -1956,7 +2264,7 @@ export const ClustersListCalloutPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersListCalloutPoliciesRequest>;
 
 /** The CalloutPolicy items on this page */
-export type CalloutPoliciesListValueList = CalloutPolicy[];
+export type CalloutPoliciesListValueList = ReadonlyArray<CalloutPolicy>;
 export const CalloutPoliciesListValueList = /*@__PURE__*/ S.Array(
   CalloutPolicy,
 ) as any as S.Schema<CalloutPoliciesListValueList>;
@@ -2004,11 +2312,7 @@ export const ClustersListFollowerDatabasesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ClustersListFollowerDatabasesRequest>;
 
 /** The origin of the following setup. */
-export type DatabaseShareOrigin =
-  | "Direct"
-  | "DataShare"
-  | "Other"
-  | (string & {});
+export type DatabaseShareOrigin = "Direct" | "DataShare" | "Other";
 export const DatabaseShareOrigin = /*@__PURE__*/ S.String;
 
 /** A class representing follower database request. */
@@ -2037,7 +2341,8 @@ export const FollowerDatabaseDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FollowerDatabaseDefinition>;
 
 /** The list of follower database result. */
-export type FollowerDatabaseListResultValueList = FollowerDatabaseDefinition[];
+export type FollowerDatabaseListResultValueList =
+  ReadonlyArray<FollowerDatabaseDefinition>;
 export const FollowerDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   FollowerDatabaseDefinition,
 ) as any as S.Schema<FollowerDatabaseListResultValueList>;
@@ -2124,7 +2429,7 @@ export const FollowerDatabaseDefinitionGet = /*@__PURE__*/ S.suspend(() =>
 
 /** The FollowerDatabaseDefinitionGet items on this page */
 export type FollowerDatabaseListResultGetValueList =
-  FollowerDatabaseDefinitionGet[];
+  ReadonlyArray<FollowerDatabaseDefinitionGet>;
 export const FollowerDatabaseListResultGetValueList = /*@__PURE__*/ S.Array(
   FollowerDatabaseDefinitionGet,
 ) as any as S.Schema<FollowerDatabaseListResultGetValueList>;
@@ -2212,7 +2517,8 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The ports used when connecting to DomainName. */
-export type EndpointDependencyEndpointDetailsList = EndpointDetail[];
+export type EndpointDependencyEndpointDetailsList =
+  ReadonlyArray<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -2235,7 +2541,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints that the Kusto Service Environment reaches the service at. */
 export type OutboundNetworkDependenciesEndpointPropertiesEndpointsList =
-  EndpointDependency[];
+  ReadonlyArray<EndpointDependency>;
 export const OutboundNetworkDependenciesEndpointPropertiesEndpointsList =
   /*@__PURE__*/ S.Array(
     EndpointDependency,
@@ -2293,7 +2599,7 @@ export const OutboundNetworkDependenciesEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The OutboundNetworkDependenciesEndpoint items on this page */
 export type OutboundNetworkDependenciesEndpointListResultValueList =
-  OutboundNetworkDependenciesEndpoint[];
+  ReadonlyArray<OutboundNetworkDependenciesEndpoint>;
 export const OutboundNetworkDependenciesEndpointListResultValueList =
   /*@__PURE__*/ S.Array(
     OutboundNetworkDependenciesEndpoint,
@@ -2336,19 +2642,19 @@ export const ClustersListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersListSkusRequest>;
 
 /** The set of locations that the SKU is available */
-export type SkuDescriptionLocationsList = string[];
+export type SkuDescriptionLocationsList = ReadonlyArray<string>;
 export const SkuDescriptionLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuDescriptionLocationsList>;
 
 /** The available zone of the SKU. */
-export type SkuLocationInfoItemZonesList = string[];
+export type SkuLocationInfoItemZonesList = ReadonlyArray<string>;
 export const SkuLocationInfoItemZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuLocationInfoItemZonesList>;
 
 /** The set of zones that the SKU is available in with the specified capabilities. */
-export type ResourceSkuZoneDetailsNameList = string[];
+export type ResourceSkuZoneDetailsNameList = ReadonlyArray<string>;
 export const ResourceSkuZoneDetailsNameList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceSkuZoneDetailsNameList>;
@@ -2370,7 +2676,8 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuCapabilities>;
 
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
-export type ResourceSkuZoneDetailsCapabilitiesList = ResourceSkuCapabilities[];
+export type ResourceSkuZoneDetailsCapabilitiesList =
+  ReadonlyArray<ResourceSkuCapabilities>;
 export const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
@@ -2392,7 +2699,8 @@ export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceSkuZoneDetails>;
 
 /** Gets details of capabilities available to a SKU in specific zones. */
-export type SkuLocationInfoItemZoneDetailsList = ResourceSkuZoneDetails[];
+export type SkuLocationInfoItemZoneDetailsList =
+  ReadonlyArray<ResourceSkuZoneDetails>;
 export const SkuLocationInfoItemZoneDetailsList = /*@__PURE__*/ S.Array(
   ResourceSkuZoneDetails,
 ) as any as S.Schema<SkuLocationInfoItemZoneDetailsList>;
@@ -2417,13 +2725,13 @@ export const SkuLocationInfoItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuLocationInfoItem>;
 
 /** Locations and zones */
-export type SkuDescriptionLocationInfoList = SkuLocationInfoItem[];
+export type SkuDescriptionLocationInfoList = ReadonlyArray<SkuLocationInfoItem>;
 export const SkuDescriptionLocationInfoList = /*@__PURE__*/ S.Array(
   SkuLocationInfoItem,
 ) as any as S.Schema<SkuDescriptionLocationInfoList>;
 
 /** The restrictions because of which SKU cannot be used */
-export type SkuDescriptionRestrictionsList = unknown[];
+export type SkuDescriptionRestrictionsList = ReadonlyArray<unknown>;
 export const SkuDescriptionRestrictionsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SkuDescriptionRestrictionsList>;
@@ -2455,7 +2763,7 @@ export const SkuDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuDescription" }) as any as S.Schema<SkuDescription>;
 
 /** SKU descriptions */
-export type SkuDescriptionListValueList = SkuDescription[];
+export type SkuDescriptionListValueList = ReadonlyArray<SkuDescription>;
 export const SkuDescriptionListValueList = /*@__PURE__*/ S.Array(
   SkuDescription,
 ) as any as S.Schema<SkuDescriptionListValueList>;
@@ -2502,7 +2810,7 @@ export const ClustersListSkusByResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersListSkusByResourceRequest>;
 
 /** Scale type. */
-export type AzureScaleType = "automatic" | "manual" | "none" | (string & {});
+export type AzureScaleType = "automatic" | "manual" | "none";
 export const AzureScaleType = /*@__PURE__*/ S.String;
 
 /** Azure capacity definition. */
@@ -2545,7 +2853,7 @@ export const AzureResourceSku = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureResourceSku>;
 
 /** The collection of available SKUs for an existing resource. */
-export type ListResourceSkusResultValueList = AzureResourceSku[];
+export type ListResourceSkusResultValueList = ReadonlyArray<AzureResourceSku>;
 export const ListResourceSkusResultValueList = /*@__PURE__*/ S.Array(
   AzureResourceSku,
 ) as any as S.Schema<ListResourceSkusResultValueList>;
@@ -2573,14 +2881,15 @@ export interface ClustersMigrateRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** Resource ID of the destination cluster or kusto pool. */
+  clusterResourceId: string;
 }
 export const ClustersMigrateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    clusterResourceId: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -2607,14 +2916,15 @@ export interface ClustersRemoveCalloutPolicyRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** Unique identifier for the callout configuration. */
+  calloutId?: string;
 }
 export const ClustersRemoveCalloutPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    calloutId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2634,6 +2944,14 @@ export const ClustersRemoveCalloutPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClustersRemoveCalloutPolicyResponse",
 }) as any as S.Schema<ClustersRemoveCalloutPolicyResponse>;
 
+/** The list of language extensions. */
+export type ClustersRemoveLanguageExtensionsRequestValueList =
+  ReadonlyArray<LanguageExtension>;
+export const ClustersRemoveLanguageExtensionsRequestValueList =
+  /*@__PURE__*/ S.Array(
+    LanguageExtension,
+  ) as any as S.Schema<ClustersRemoveLanguageExtensionsRequestValueList>;
+
 export interface ClustersRemoveLanguageExtensionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2641,7 +2959,10 @@ export interface ClustersRemoveLanguageExtensionsRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** The list of language extensions. */
+  value?: ClustersRemoveLanguageExtensionsRequestValueList;
+  /** The link to the next page of resources. */
+  nextLink?: string;
 }
 export const ClustersRemoveLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2649,7 +2970,8 @@ export const ClustersRemoveLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      value: S.optional(ClustersRemoveLanguageExtensionsRequestValueList),
+      nextLink: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2733,6 +3055,21 @@ export const ClustersStopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClustersStopResponse",
 }) as any as S.Schema<ClustersStopResponse>;
 
+/** Resource tags. */
+export type ClustersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ClustersUpdateRequestTagsMap>;
+
+/** The availability zones of the cluster. */
+export type ClustersUpdateRequestZonesList = ReadonlyArray<string>;
+export const ClustersUpdateRequestZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ClustersUpdateRequestZonesList>;
+
 export interface ClustersUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2740,14 +3077,30 @@ export interface ClustersUpdateRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ClustersUpdateRequestTagsMap;
+  /** Resource location. */
+  location?: string;
+  /** The SKU of the cluster. */
+  sku?: AzureSku;
+  /** The availability zones of the cluster. */
+  zones?: ClustersUpdateRequestZonesList;
+  /** The identity of the cluster, if configured. */
+  identity?: IdentityInput;
+  /** The cluster properties. */
+  properties?: ClusterPropertiesInput;
 }
 export const ClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ClustersUpdateRequestTagsMap),
+    location: S.optional(S.String),
+    sku: S.optional(AzureSku),
+    zones: S.optional(ClustersUpdateRequestZonesList),
+    identity: S.optional(IdentityInput),
+    properties: S.optional(ClusterPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2770,7 +3123,7 @@ export const ClustersUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersUpdateResponseTagsMap>;
 
 /** The availability zones. */
-export type ClustersUpdateResponseZonesList = string[];
+export type ClustersUpdateResponseZonesList = ReadonlyArray<string>;
 export const ClustersUpdateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClustersUpdateResponseZonesList>;
@@ -2826,7 +3179,10 @@ export interface DatabaseInviteFollowerRequest {
   clusterName: string;
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
-  body: unknown;
+  /** The email of the invited user for which the follower invitation is generated. */
+  inviteeEmail: string;
+  /** Table level sharing specifications */
+  tableLevelSharingProperties?: TableLevelSharingProperties;
 }
 export const DatabaseInviteFollowerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2834,7 +3190,8 @@ export const DatabaseInviteFollowerRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    inviteeEmail: S.String,
+    tableLevelSharingProperties: S.optional(TableLevelSharingProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2860,6 +3217,12 @@ export const DatabaseInviteFollowerResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseInviteFollowerResult",
 }) as any as S.Schema<DatabaseInviteFollowerResult>;
 
+/** The type of resource, Microsoft.Kusto/clusters/databases/principalAssignments. */
+export type DatabasePrincipalAssignmentsCheckNameAvailabilityRequestType =
+  "Microsoft.Kusto/clusters/databases/principalAssignments";
+export const DatabasePrincipalAssignmentsCheckNameAvailabilityRequestType =
+  /*@__PURE__*/ S.String;
+
 export interface DatabasePrincipalAssignmentsCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2869,7 +3232,10 @@ export interface DatabasePrincipalAssignmentsCheckNameAvailabilityRequest {
   clusterName: string;
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
-  body: unknown;
+  /** Principal Assignment resource name. */
+  name: string;
+  /** The type of resource, Microsoft.Kusto/clusters/databases/principalAssignments. */
+  type: DatabasePrincipalAssignmentsCheckNameAvailabilityRequestType;
 }
 export const DatabasePrincipalAssignmentsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2878,7 +3244,8 @@ export const DatabasePrincipalAssignmentsCheckNameAvailabilityRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: DatabasePrincipalAssignmentsCheckNameAvailabilityRequestType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -2891,6 +3258,38 @@ export const DatabasePrincipalAssignmentsCheckNameAvailabilityRequest =
     identifier: "DatabasePrincipalAssignmentsCheckNameAvailabilityRequest",
   }) as any as S.Schema<DatabasePrincipalAssignmentsCheckNameAvailabilityRequest>;
 
+/** Database principal role. */
+export type DatabasePrincipalRole =
+  | "Admin"
+  | "Ingestor"
+  | "Monitor"
+  | "User"
+  | "UnrestrictedViewer"
+  | "Viewer";
+export const DatabasePrincipalRole = /*@__PURE__*/ S.String;
+
+/** A class representing database principal property. */
+export interface DatabasePrincipalPropertiesInput {
+  /** The principal ID assigned to the database principal. It can be a user email, application ID, or security group name. */
+  principalId: string;
+  /** Database principal role. */
+  role: DatabasePrincipalRole;
+  /** The tenant id of the principal */
+  tenantId?: string;
+  /** Principal type. */
+  principalType: PrincipalType;
+}
+export const DatabasePrincipalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.String,
+    role: DatabasePrincipalRole,
+    tenantId: S.optional(S.String),
+    principalType: PrincipalType,
+  }),
+).annotate({
+  identifier: "DatabasePrincipalPropertiesInput",
+}) as any as S.Schema<DatabasePrincipalPropertiesInput>;
+
 export interface DatabasePrincipalAssignmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2902,7 +3301,8 @@ export interface DatabasePrincipalAssignmentsCreateOrUpdateRequest {
   databaseName: string;
   /** The name of the Kusto principalAssignment. */
   principalAssignmentName: string;
-  body: unknown;
+  /** The database principal. */
+  properties?: DatabasePrincipalPropertiesInput;
 }
 export const DatabasePrincipalAssignmentsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2912,7 +3312,7 @@ export const DatabasePrincipalAssignmentsCreateOrUpdateRequest =
       clusterName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
       principalAssignmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DatabasePrincipalPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2924,17 +3324,6 @@ export const DatabasePrincipalAssignmentsCreateOrUpdateRequest =
   ).annotate({
     identifier: "DatabasePrincipalAssignmentsCreateOrUpdateRequest",
   }) as any as S.Schema<DatabasePrincipalAssignmentsCreateOrUpdateRequest>;
-
-/** Database principal role. */
-export type DatabasePrincipalRole =
-  | "Admin"
-  | "Ingestor"
-  | "Monitor"
-  | "User"
-  | "UnrestrictedViewer"
-  | "Viewer"
-  | (string & {});
-export const DatabasePrincipalRole = /*@__PURE__*/ S.String;
 
 /** A class representing database principal property. */
 export interface DatabasePrincipalProperties {
@@ -3146,7 +3535,7 @@ export const DatabasePrincipalAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Kusto database principal assignments. */
 export type DatabasePrincipalAssignmentListResultValueList =
-  DatabasePrincipalAssignment[];
+  ReadonlyArray<DatabasePrincipalAssignment>;
 export const DatabasePrincipalAssignmentListResultValueList =
   /*@__PURE__*/ S.Array(
     DatabasePrincipalAssignment,
@@ -3169,6 +3558,45 @@ export const DatabasePrincipalAssignmentListResult = /*@__PURE__*/ S.suspend(
   identifier: "DatabasePrincipalAssignmentListResult",
 }) as any as S.Schema<DatabasePrincipalAssignmentListResult>;
 
+/** Database principal type. */
+export type DatabasePrincipalType = "App" | "Group" | "User";
+export const DatabasePrincipalType = /*@__PURE__*/ S.String;
+
+/** A class representing database principal entity. */
+export interface DatabasePrincipalInput {
+  /** Database principal role. */
+  role: DatabasePrincipalRole;
+  /** Database principal name. */
+  name: string;
+  /** Database principal type. */
+  type: DatabasePrincipalType;
+  /** Database principal fully qualified name. */
+  fqn?: string;
+  /** Database principal email if exists. */
+  email?: string;
+  /** Application id - relevant only for application principal type. */
+  appId?: string;
+}
+export const DatabasePrincipalInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    role: DatabasePrincipalRole,
+    name: S.String,
+    type: DatabasePrincipalType,
+    fqn: S.optional(S.String),
+    email: S.optional(S.String),
+    appId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatabasePrincipalInput",
+}) as any as S.Schema<DatabasePrincipalInput>;
+
+/** The list of Kusto database principals. */
+export type DatabasesAddPrincipalsRequestValueList =
+  ReadonlyArray<DatabasePrincipalInput>;
+export const DatabasesAddPrincipalsRequestValueList = /*@__PURE__*/ S.Array(
+  DatabasePrincipalInput,
+) as any as S.Schema<DatabasesAddPrincipalsRequestValueList>;
+
 export interface DatabasesAddPrincipalsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3178,7 +3606,8 @@ export interface DatabasesAddPrincipalsRequest {
   clusterName: string;
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
-  body: unknown;
+  /** The list of Kusto database principals. */
+  value?: DatabasesAddPrincipalsRequestValueList;
 }
 export const DatabasesAddPrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3186,7 +3615,7 @@ export const DatabasesAddPrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    value: S.optional(DatabasesAddPrincipalsRequestValueList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3198,10 +3627,6 @@ export const DatabasesAddPrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatabasesAddPrincipalsRequest",
 }) as any as S.Schema<DatabasesAddPrincipalsRequest>;
-
-/** Database principal type. */
-export type DatabasePrincipalType = "App" | "Group" | "User" | (string & {});
-export const DatabasePrincipalType = /*@__PURE__*/ S.String;
 
 /** A class representing database principal entity. */
 export interface DatabasePrincipal {
@@ -3235,7 +3660,8 @@ export const DatabasePrincipal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasePrincipal>;
 
 /** The list of Kusto database principals. */
-export type DatabasePrincipalListResultValueList = DatabasePrincipal[];
+export type DatabasePrincipalListResultValueList =
+  ReadonlyArray<DatabasePrincipal>;
 export const DatabasePrincipalListResultValueList = /*@__PURE__*/ S.Array(
   DatabasePrincipal,
 ) as any as S.Schema<DatabasePrincipalListResultValueList>;
@@ -3256,6 +3682,12 @@ export const DatabasePrincipalListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabasePrincipalListResult",
 }) as any as S.Schema<DatabasePrincipalListResult>;
 
+/** The type of resource, for instance Microsoft.Kusto/clusters/databases. */
+export type Type =
+  | "Microsoft.Kusto/clusters/databases"
+  | "Microsoft.Kusto/clusters/attachedDatabaseConfigurations";
+export const Type = /*@__PURE__*/ S.String;
+
 export interface DatabasesCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3263,7 +3695,10 @@ export interface DatabasesCheckNameAvailabilityRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** Resource name. */
+  name: string;
+  /** The type of resource, for instance Microsoft.Kusto/clusters/databases. */
+  type: Type;
 }
 export const DatabasesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3271,7 +3706,8 @@ export const DatabasesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: Type,
     }).pipe(
       T.Http({
         method: "POST",
@@ -3284,11 +3720,12 @@ export const DatabasesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   identifier: "DatabasesCheckNameAvailabilityRequest",
 }) as any as S.Schema<DatabasesCheckNameAvailabilityRequest>;
 
-export type DatabasesCreateOrUpdateRequestCallerRole =
-  | "Admin"
-  | "None"
-  | (string & {});
+export type DatabasesCreateOrUpdateRequestCallerRole = "Admin" | "None";
 export const DatabasesCreateOrUpdateRequestCallerRole = /*@__PURE__*/ S.String;
+
+/** Kind of the database */
+export type Kind = "ReadWrite" | "ReadOnlyFollowing";
+export const Kind = /*@__PURE__*/ S.String;
 
 export interface DatabasesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -3301,7 +3738,10 @@ export interface DatabasesCreateOrUpdateRequest {
   databaseName: string;
   /** By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list. */
   callerRole?: DatabasesCreateOrUpdateRequestCallerRole;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Kind of the database */
+  kind: Kind;
 }
 export const DatabasesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3312,7 +3752,8 @@ export const DatabasesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     callerRole: S.optional(
       DatabasesCreateOrUpdateRequestCallerRole.pipe(T.Query()),
     ),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    kind: Kind,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3324,10 +3765,6 @@ export const DatabasesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatabasesCreateOrUpdateRequest",
 }) as any as S.Schema<DatabasesCreateOrUpdateRequest>;
-
-/** Kind of the database */
-export type Kind = "ReadWrite" | "ReadOnlyFollowing" | (string & {});
-export const Kind = /*@__PURE__*/ S.String;
 
 export interface DatabasesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3504,7 +3941,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Database" }) as any as S.Schema<Database>;
 
 /** The Database items on this page */
-export type DatabaseListResultValueList = Database[];
+export type DatabaseListResultValueList = ReadonlyArray<Database>;
 export const DatabaseListResultValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseListResultValueList>;
@@ -3553,6 +3990,13 @@ export const DatabasesListPrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabasesListPrincipalsRequest",
 }) as any as S.Schema<DatabasesListPrincipalsRequest>;
 
+/** The list of Kusto database principals. */
+export type DatabasesRemovePrincipalsRequestValueList =
+  ReadonlyArray<DatabasePrincipalInput>;
+export const DatabasesRemovePrincipalsRequestValueList = /*@__PURE__*/ S.Array(
+  DatabasePrincipalInput,
+) as any as S.Schema<DatabasesRemovePrincipalsRequestValueList>;
+
 export interface DatabasesRemovePrincipalsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3562,7 +4006,8 @@ export interface DatabasesRemovePrincipalsRequest {
   clusterName: string;
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
-  body: unknown;
+  /** The list of Kusto database principals. */
+  value?: DatabasesRemovePrincipalsRequestValueList;
 }
 export const DatabasesRemovePrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3570,7 +4015,7 @@ export const DatabasesRemovePrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    value: S.optional(DatabasesRemovePrincipalsRequestValueList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3583,7 +4028,7 @@ export const DatabasesRemovePrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabasesRemovePrincipalsRequest",
 }) as any as S.Schema<DatabasesRemovePrincipalsRequest>;
 
-export type DatabasesUpdateRequestCallerRole = "Admin" | "None" | (string & {});
+export type DatabasesUpdateRequestCallerRole = "Admin" | "None";
 export const DatabasesUpdateRequestCallerRole = /*@__PURE__*/ S.String;
 
 export interface DatabasesUpdateRequest {
@@ -3597,7 +4042,10 @@ export interface DatabasesUpdateRequest {
   databaseName: string;
   /** By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list. */
   callerRole?: DatabasesUpdateRequestCallerRole;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Kind of the database */
+  kind: Kind;
 }
 export const DatabasesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3606,7 +4054,8 @@ export const DatabasesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
     callerRole: S.optional(DatabasesUpdateRequestCallerRole.pipe(T.Query())),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    kind: Kind,
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3646,6 +4095,12 @@ export const DatabasesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabasesUpdateResponse",
 }) as any as S.Schema<DatabasesUpdateResponse>;
 
+/** The type of resource, Microsoft.Kusto/clusters/databases/dataConnections. */
+export type DataConnectionsCheckNameAvailabilityRequestType =
+  "Microsoft.Kusto/clusters/databases/dataConnections";
+export const DataConnectionsCheckNameAvailabilityRequestType =
+  /*@__PURE__*/ S.String;
+
 export interface DataConnectionsCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3655,7 +4110,10 @@ export interface DataConnectionsCheckNameAvailabilityRequest {
   clusterName: string;
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
-  body: unknown;
+  /** Data Connection name. */
+  name: string;
+  /** The type of resource, Microsoft.Kusto/clusters/databases/dataConnections. */
+  type: DataConnectionsCheckNameAvailabilityRequestType;
 }
 export const DataConnectionsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3664,7 +4122,8 @@ export const DataConnectionsCheckNameAvailabilityRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: DataConnectionsCheckNameAvailabilityRequestType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -3677,6 +4136,16 @@ export const DataConnectionsCheckNameAvailabilityRequest =
     identifier: "DataConnectionsCheckNameAvailabilityRequest",
   }) as any as S.Schema<DataConnectionsCheckNameAvailabilityRequest>;
 
+/** Kind of the endpoint for the data connection */
+export type DataConnectionKind =
+  | "EventHub"
+  | "EventGrid"
+  | "IotHub"
+  | "CosmosDb"
+  | "EventHubWithManagedIdentity"
+  | "EventGridWithManagedIdentity";
+export const DataConnectionKind = /*@__PURE__*/ S.String;
+
 export interface DataConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3688,7 +4157,10 @@ export interface DataConnectionsCreateOrUpdateRequest {
   databaseName: string;
   /** The name of the data connection. */
   dataConnectionName: string;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Kind of the endpoint for the data connection */
+  kind: DataConnectionKind;
 }
 export const DataConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3698,7 +4170,8 @@ export const DataConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       clusterName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
       dataConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.optional(S.String),
+      kind: DataConnectionKind,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3710,17 +4183,6 @@ export const DataConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DataConnectionsCreateOrUpdateRequest",
 }) as any as S.Schema<DataConnectionsCreateOrUpdateRequest>;
-
-/** Kind of the endpoint for the data connection */
-export type DataConnectionKind =
-  | "EventHub"
-  | "EventGrid"
-  | "IotHub"
-  | "CosmosDb"
-  | "EventHubWithManagedIdentity"
-  | "EventGridWithManagedIdentity"
-  | (string & {});
-export const DataConnectionKind = /*@__PURE__*/ S.String;
 
 export interface DataConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3750,6 +4212,22 @@ export const DataConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "DataConnectionsCreateOrUpdateResponse",
 }) as any as S.Schema<DataConnectionsCreateOrUpdateResponse>;
 
+/** Class representing an data connection. */
+export interface DataConnectionInput {
+  /** Resource location. */
+  location?: string;
+  /** Kind of the endpoint for the data connection */
+  kind: DataConnectionKind;
+}
+export const DataConnectionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String),
+    kind: DataConnectionKind,
+  }),
+).annotate({
+  identifier: "DataConnectionInput",
+}) as any as S.Schema<DataConnectionInput>;
+
 export interface DataConnectionsDataConnectionValidationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3759,7 +4237,10 @@ export interface DataConnectionsDataConnectionValidationRequest {
   clusterName: string;
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
-  body: unknown;
+  /** The name of the data connection. */
+  dataConnectionName?: string;
+  /** The data connection properties to validate. */
+  properties?: DataConnectionInput;
 }
 export const DataConnectionsDataConnectionValidationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3768,7 +4249,8 @@ export const DataConnectionsDataConnectionValidationRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       databaseName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      dataConnectionName: S.optional(S.String),
+      properties: S.optional(DataConnectionInput),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3796,7 +4278,7 @@ export const DataConnectionValidationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Kusto data connection validation errors. */
 export type DataConnectionValidationListResultValueList =
-  DataConnectionValidationResult[];
+  ReadonlyArray<DataConnectionValidationResult>;
 export const DataConnectionValidationListResultValueList =
   /*@__PURE__*/ S.Array(
     DataConnectionValidationResult,
@@ -3967,7 +4449,7 @@ export const DataConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataConnection" }) as any as S.Schema<DataConnection>;
 
 /** The list of Kusto data connections. */
-export type DataConnectionListResultValueList = DataConnection[];
+export type DataConnectionListResultValueList = ReadonlyArray<DataConnection>;
 export const DataConnectionListResultValueList = /*@__PURE__*/ S.Array(
   DataConnection,
 ) as any as S.Schema<DataConnectionListResultValueList>;
@@ -3999,7 +4481,10 @@ export interface DataConnectionsUpdateRequest {
   databaseName: string;
   /** The name of the data connection. */
   dataConnectionName: string;
-  body: unknown;
+  /** Resource location. */
+  location?: string;
+  /** Kind of the endpoint for the data connection */
+  kind: DataConnectionKind;
 }
 export const DataConnectionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4008,7 +4493,8 @@ export const DataConnectionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
     dataConnectionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    kind: DataConnectionKind,
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4048,6 +4534,12 @@ export const DataConnectionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataConnectionsUpdateResponse",
 }) as any as S.Schema<DataConnectionsUpdateResponse>;
 
+/** The type of resource, for instance Microsoft.Kusto/clusters/managedPrivateEndpoints. */
+export type ManagedPrivateEndpointsCheckNameAvailabilityRequestType =
+  "Microsoft.Kusto/clusters/managedPrivateEndpoints";
+export const ManagedPrivateEndpointsCheckNameAvailabilityRequestType =
+  /*@__PURE__*/ S.String;
+
 export interface ManagedPrivateEndpointsCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4055,7 +4547,10 @@ export interface ManagedPrivateEndpointsCheckNameAvailabilityRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** Managed private endpoint resource name. */
+  name: string;
+  /** The type of resource, for instance Microsoft.Kusto/clusters/managedPrivateEndpoints. */
+  type: ManagedPrivateEndpointsCheckNameAvailabilityRequestType;
 }
 export const ManagedPrivateEndpointsCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4063,7 +4558,8 @@ export const ManagedPrivateEndpointsCheckNameAvailabilityRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: ManagedPrivateEndpointsCheckNameAvailabilityRequestType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -4075,37 +4571,6 @@ export const ManagedPrivateEndpointsCheckNameAvailabilityRequest =
   ).annotate({
     identifier: "ManagedPrivateEndpointsCheckNameAvailabilityRequest",
   }) as any as S.Schema<ManagedPrivateEndpointsCheckNameAvailabilityRequest>;
-
-export interface ManagedPrivateEndpointsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Kusto cluster. */
-  clusterName: string;
-  /** The name of the managed private endpoint. */
-  managedPrivateEndpointName: string;
-  body: unknown;
-}
-export const ManagedPrivateEndpointsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      managedPrivateEndpointName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
-        code: 200,
-        apiVersion: "2025-02-14",
-      }),
-    ),
-  ).annotate({
-    identifier: "ManagedPrivateEndpointsCreateOrUpdateRequest",
-  }) as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateRequest>;
 
 /** A class representing the properties of a managed private endpoint object. */
 export interface ManagedPrivateEndpointProperties {
@@ -4131,6 +4596,38 @@ export const ManagedPrivateEndpointProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ManagedPrivateEndpointProperties",
 }) as any as S.Schema<ManagedPrivateEndpointProperties>;
+
+export interface ManagedPrivateEndpointsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Kusto cluster. */
+  clusterName: string;
+  /** The name of the managed private endpoint. */
+  managedPrivateEndpointName: string;
+  /** A managed private endpoint. */
+  properties?: ManagedPrivateEndpointProperties;
+}
+export const ManagedPrivateEndpointsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      managedPrivateEndpointName: S.String.pipe(T.Label()),
+      properties: S.optional(ManagedPrivateEndpointProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}",
+        code: 200,
+        apiVersion: "2025-02-14",
+      }),
+    ),
+  ).annotate({
+    identifier: "ManagedPrivateEndpointsCreateOrUpdateRequest",
+  }) as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateRequest>;
 
 export interface ManagedPrivateEndpointsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4297,7 +4794,7 @@ export const ManagedPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of managed private endpoints. */
 export type ManagedPrivateEndpointListResultValueList =
-  ManagedPrivateEndpoint[];
+  ReadonlyArray<ManagedPrivateEndpoint>;
 export const ManagedPrivateEndpointListResultValueList = /*@__PURE__*/ S.Array(
   ManagedPrivateEndpoint,
 ) as any as S.Schema<ManagedPrivateEndpointListResultValueList>;
@@ -4327,7 +4824,8 @@ export interface ManagedPrivateEndpointsUpdateRequest {
   clusterName: string;
   /** The name of the managed private endpoint. */
   managedPrivateEndpointName: string;
-  body: unknown;
+  /** A managed private endpoint. */
+  properties?: ManagedPrivateEndpointProperties;
 }
 export const ManagedPrivateEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -4336,7 +4834,7 @@ export const ManagedPrivateEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       managedPrivateEndpointName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ManagedPrivateEndpointProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -4431,7 +4929,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The list of operations supported by the resource provider. */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -4478,12 +4976,7 @@ export const OperationsResultsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsResultsGetRequest>;
 
 /** The status of operation. */
-export type Status =
-  | "Succeeded"
-  | "Canceled"
-  | "Failed"
-  | "Running"
-  | (string & {});
+export type Status = "Succeeded" | "Canceled" | "Failed" | "Running";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Operation result properties */
@@ -4555,6 +5048,38 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationResult",
 }) as any as S.Schema<OperationResult>;
 
+/** Connection State of the Private Endpoint Connection. */
+export interface PrivateLinkServiceConnectionStatePropertyInput {
+  /** The private link service connection status. */
+  status?: string;
+  /** The private link service connection description. */
+  description?: string;
+}
+export const PrivateLinkServiceConnectionStatePropertyInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: S.optional(S.String),
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PrivateLinkServiceConnectionStatePropertyInput",
+  }) as any as S.Schema<PrivateLinkServiceConnectionStatePropertyInput>;
+
+/** Properties of a private endpoint connection. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** Connection State of the Private Endpoint Connection. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionStatePropertyInput;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateLinkServiceConnectionState:
+        PrivateLinkServiceConnectionStatePropertyInput,
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4564,7 +5089,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   clusterName: string;
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
 }
 export const PrivateEndpointConnectionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4573,7 +5099,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -4729,7 +5255,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -4780,14 +5306,16 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource required zone names. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4891,7 +5419,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of private link resources */
-export type PrivateLinkResourceListResultValueList = PrivateLinkResource[];
+export type PrivateLinkResourceListResultValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -4912,6 +5441,12 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResourceListResult",
 }) as any as S.Schema<PrivateLinkResourceListResult>;
 
+/** The type of resource, for instance Microsoft.Kusto/clusters/sandboxCustomImages. */
+export type SandboxCustomImagesCheckNameAvailabilityRequestType =
+  "Microsoft.Kusto/clusters/sandboxCustomImages";
+export const SandboxCustomImagesCheckNameAvailabilityRequestType =
+  /*@__PURE__*/ S.String;
+
 export interface SandboxCustomImagesCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4919,7 +5454,10 @@ export interface SandboxCustomImagesCheckNameAvailabilityRequest {
   resourceGroupName: string;
   /** The name of the Kusto cluster. */
   clusterName: string;
-  body: unknown;
+  /** Sandbox custom image resource name. */
+  name: string;
+  /** The type of resource, for instance Microsoft.Kusto/clusters/sandboxCustomImages. */
+  type: SandboxCustomImagesCheckNameAvailabilityRequestType;
 }
 export const SandboxCustomImagesCheckNameAvailabilityRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4927,7 +5465,8 @@ export const SandboxCustomImagesCheckNameAvailabilityRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
+      type: SandboxCustomImagesCheckNameAvailabilityRequestType,
     }).pipe(
       T.Http({
         method: "POST",
@@ -4940,39 +5479,8 @@ export const SandboxCustomImagesCheckNameAvailabilityRequest =
     identifier: "SandboxCustomImagesCheckNameAvailabilityRequest",
   }) as any as S.Schema<SandboxCustomImagesCheckNameAvailabilityRequest>;
 
-export interface SandboxCustomImagesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Kusto cluster. */
-  clusterName: string;
-  /** The name of the sandbox custom image. */
-  sandboxCustomImageName: string;
-  body: unknown;
-}
-export const SandboxCustomImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      sandboxCustomImageName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
-        code: 200,
-        apiVersion: "2025-02-14",
-      }),
-    ),
-).annotate({
-  identifier: "SandboxCustomImagesCreateOrUpdateRequest",
-}) as any as S.Schema<SandboxCustomImagesCreateOrUpdateRequest>;
-
 /** The language name, for example Python. */
-export type Language = "Python" | (string & {});
+export type Language = "Python";
 export const Language = /*@__PURE__*/ S.String;
 
 /** A class representing the properties of a sandbox custom image object. */
@@ -4999,6 +5507,38 @@ export const SandboxCustomImageProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SandboxCustomImageProperties",
 }) as any as S.Schema<SandboxCustomImageProperties>;
+
+export interface SandboxCustomImagesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Kusto cluster. */
+  clusterName: string;
+  /** The name of the sandbox custom image. */
+  sandboxCustomImageName: string;
+  /** A sandbox custom image. */
+  properties?: SandboxCustomImageProperties;
+}
+export const SandboxCustomImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      clusterName: S.String.pipe(T.Label()),
+      sandboxCustomImageName: S.String.pipe(T.Label()),
+      properties: S.optional(SandboxCustomImageProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/sandboxCustomImages/{sandboxCustomImageName}",
+        code: 200,
+        apiVersion: "2025-02-14",
+      }),
+    ),
+).annotate({
+  identifier: "SandboxCustomImagesCreateOrUpdateRequest",
+}) as any as S.Schema<SandboxCustomImagesCreateOrUpdateRequest>;
 
 export interface SandboxCustomImagesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5164,7 +5704,8 @@ export const SandboxCustomImage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SandboxCustomImage>;
 
 /** The SandboxCustomImage items on this page */
-export type SandboxCustomImagesListResultValueList = SandboxCustomImage[];
+export type SandboxCustomImagesListResultValueList =
+  ReadonlyArray<SandboxCustomImage>;
 export const SandboxCustomImagesListResultValueList = /*@__PURE__*/ S.Array(
   SandboxCustomImage,
 ) as any as S.Schema<SandboxCustomImagesListResultValueList>;
@@ -5194,7 +5735,8 @@ export interface SandboxCustomImagesUpdateRequest {
   clusterName: string;
   /** The name of the sandbox custom image. */
   sandboxCustomImageName: string;
-  body: unknown;
+  /** A sandbox custom image. */
+  properties?: SandboxCustomImageProperties;
 }
 export const SandboxCustomImagesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5202,7 +5744,7 @@ export const SandboxCustomImagesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     sandboxCustomImageName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SandboxCustomImageProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5239,6 +5781,11 @@ export const SandboxCustomImagesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SandboxCustomImagesUpdateResponse",
 }) as any as S.Schema<SandboxCustomImagesUpdateResponse>;
 
+/** The type of resource, Microsoft.Kusto/clusters/databases/scripts. */
+export type ScriptsCheckNameAvailabilityRequestType =
+  "Microsoft.Kusto/clusters/databases/scripts";
+export const ScriptsCheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
+
 export interface ScriptsCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5248,7 +5795,10 @@ export interface ScriptsCheckNameAvailabilityRequest {
   clusterName: string;
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
-  body: unknown;
+  /** Script name. */
+  name: string;
+  /** The type of resource, Microsoft.Kusto/clusters/databases/scripts. */
+  type: ScriptsCheckNameAvailabilityRequestType;
 }
 export const ScriptsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5256,7 +5806,8 @@ export const ScriptsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.String,
+    type: ScriptsCheckNameAvailabilityRequestType,
   }).pipe(
     T.Http({
       method: "POST",
@@ -5269,48 +5820,14 @@ export const ScriptsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsCheckNameAvailabilityRequest",
 }) as any as S.Schema<ScriptsCheckNameAvailabilityRequest>;
 
-export interface ScriptsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Kusto cluster. */
-  clusterName: string;
-  /** The name of the database in the Kusto cluster. */
-  databaseName: string;
-  /** The name of the Kusto database script. */
-  scriptName: string;
-  body: unknown;
-}
-export const ScriptsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    clusterName: S.String.pipe(T.Label()),
-    databaseName: S.String.pipe(T.Label()),
-    scriptName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
-      code: 200,
-      apiVersion: "2025-02-14",
-    }),
-  ),
-).annotate({
-  identifier: "ScriptsCreateOrUpdateRequest",
-}) as any as S.Schema<ScriptsCreateOrUpdateRequest>;
-
 /** Differentiates between the type of script commands included - Database or Cluster. The default is Database. */
-export type ScriptLevel = "Database" | "Cluster" | (string & {});
+export type ScriptLevel = "Database" | "Cluster";
 export const ScriptLevel = /*@__PURE__*/ S.String;
 
 /** Indicates if the permissions for the script caller are kept following completion of the script. */
 export type PrincipalPermissionsAction =
   | "RetainPermissionOnScriptCompletion"
-  | "RemovePermissionOnScriptCompletion"
-  | (string & {});
+  | "RemovePermissionOnScriptCompletion";
 export const PrincipalPermissionsAction = /*@__PURE__*/ S.String;
 
 /** A class representing database script property. */
@@ -5349,6 +5866,40 @@ export const ScriptProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScriptProperties",
 }) as any as S.Schema<ScriptProperties>;
+
+export interface ScriptsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Kusto cluster. */
+  clusterName: string;
+  /** The name of the database in the Kusto cluster. */
+  databaseName: string;
+  /** The name of the Kusto database script. */
+  scriptName: string;
+  /** The database script. */
+  properties?: ScriptProperties;
+}
+export const ScriptsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    databaseName: S.String.pipe(T.Label()),
+    scriptName: S.String.pipe(T.Label()),
+    properties: S.optional(ScriptProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/databases/{databaseName}/scripts/{scriptName}",
+      code: 200,
+      apiVersion: "2025-02-14",
+    }),
+  ),
+).annotate({
+  identifier: "ScriptsCreateOrUpdateRequest",
+}) as any as S.Schema<ScriptsCreateOrUpdateRequest>;
 
 export interface ScriptsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5519,7 +6070,7 @@ export const Script = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Script" }) as any as S.Schema<Script>;
 
 /** The list of Kusto scripts. */
-export type ScriptListResultValueList = Script[];
+export type ScriptListResultValueList = ReadonlyArray<Script>;
 export const ScriptListResultValueList = /*@__PURE__*/ S.Array(
   Script,
 ) as any as S.Schema<ScriptListResultValueList>;
@@ -5551,7 +6102,8 @@ export interface ScriptsUpdateRequest {
   databaseName: string;
   /** The name of the Kusto database script. */
   scriptName: string;
-  body: unknown;
+  /** The database script. */
+  properties?: ScriptProperties;
 }
 export const ScriptsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5560,7 +6112,7 @@ export const ScriptsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     clusterName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
     scriptName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ScriptProperties),
   }).pipe(
     T.Http({
       method: "PATCH",

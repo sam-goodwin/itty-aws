@@ -157,7 +157,7 @@ export const AcceptMarketplaceRegistrationOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceptMarketplaceRegistrationOutput",
 }) as any as S.Schema<AcceptMarketplaceRegistrationOutput>;
 export type RoleArn = string;
-export type SupportedAwsIntegration = "KmsTde" | (string & {});
+export type SupportedAwsIntegration = "KmsTde";
 export const SupportedAwsIntegration = /*@__PURE__*/ S.String;
 
 export type Arn = string;
@@ -186,32 +186,22 @@ export const AssociateIamRoleToResourceOutput = /*@__PURE__*/ S.suspend(() =>
 export type ResourceIdOrArn = string;
 export type ResourceDisplayName = string;
 export type SensitiveString = string | redacted.Redacted<string>;
-export type DbWorkload = "OLTP" | "AJD" | "APEX" | "LH" | (string & {});
+export type DbWorkload = "OLTP" | "AJD" | "APEX" | "LH";
 export const DbWorkload = /*@__PURE__*/ S.String;
 
-export type LicenseModel =
-  | "BRING_YOUR_OWN_LICENSE"
-  | "LICENSE_INCLUDED"
-  | (string & {});
+export type LicenseModel = "BRING_YOUR_OWN_LICENSE" | "LICENSE_INCLUDED";
 export const LicenseModel = /*@__PURE__*/ S.String;
 
-export type DatabaseEdition =
-  | "STANDARD_EDITION"
-  | "ENTERPRISE_EDITION"
-  | (string & {});
+export type DatabaseEdition = "STANDARD_EDITION" | "ENTERPRISE_EDITION";
 export const DatabaseEdition = /*@__PURE__*/ S.String;
 
 export type StandbyAllowlistedIpsSource =
   | "PRIMARY"
   | "SEPARATE"
-  | "NOT_APPLICABLE"
-  | (string & {});
+  | "NOT_APPLICABLE";
 export const StandbyAllowlistedIpsSource = /*@__PURE__*/ S.String;
 
-export type AutonomousMaintenanceScheduleType =
-  | "EARLY"
-  | "REGULAR"
-  | (string & {});
+export type AutonomousMaintenanceScheduleType = "EARLY" | "REGULAR";
 export const AutonomousMaintenanceScheduleType = /*@__PURE__*/ S.String;
 
 export interface CustomerContact {
@@ -251,8 +241,7 @@ export type DayOfWeekName =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const DayOfWeekName = /*@__PURE__*/ S.String;
 
 export interface DayOfWeek {
@@ -312,11 +301,10 @@ export type SourceType =
   | "BACKUP_FROM_TIMESTAMP"
   | "CROSS_REGION_DATAGUARD"
   | "CROSS_REGION_DISASTER_RECOVERY"
-  | "CLONE_TO_REFRESHABLE"
-  | (string & {});
+  | "CLONE_TO_REFRESHABLE";
 export const SourceType = /*@__PURE__*/ S.String;
 
-export type CloneType = "FULL" | "METADATA" | "PARTIAL" | (string & {});
+export type CloneType = "FULL" | "METADATA" | "PARTIAL";
 export const CloneType = /*@__PURE__*/ S.String;
 
 export interface DatabaseCloneConfiguration {
@@ -372,7 +360,7 @@ export const CrossRegionDataGuardConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CrossRegionDataGuardConfiguration",
 }) as any as S.Schema<CrossRegionDataGuardConfiguration>;
-export type DisasterRecoveryType = "ADG" | "BACKUP_BASED" | (string & {});
+export type DisasterRecoveryType = "ADG" | "BACKUP_BASED";
 export const DisasterRecoveryType = /*@__PURE__*/ S.String;
 
 export interface CrossRegionDisasterRecoveryConfiguration {
@@ -390,10 +378,10 @@ export const CrossRegionDisasterRecoveryConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CrossRegionDisasterRecoveryConfiguration",
 }) as any as S.Schema<CrossRegionDisasterRecoveryConfiguration>;
-export type RefreshableMode = "AUTOMATIC" | "MANUAL" | (string & {});
+export type RefreshableMode = "AUTOMATIC" | "MANUAL";
 export const RefreshableMode = /*@__PURE__*/ S.String;
 
-export type OpenMode = "READ_ONLY" | "READ_WRITE" | (string & {});
+export type OpenMode = "READ_ONLY" | "READ_WRITE";
 export const OpenMode = /*@__PURE__*/ S.String;
 
 export interface CloneToRefreshableConfiguration {
@@ -479,17 +467,13 @@ export const SourceConfiguration = /*@__PURE__*/ S.Union([
   }),
   S.Struct({ cloneToRefreshable: CloneToRefreshableConfiguration }),
 ]);
-export type EncryptionKeyProviderInput =
-  | "ORACLE_MANAGED"
-  | "AWS_KMS"
-  | (string & {});
+export type EncryptionKeyProviderInput = "ORACLE_MANAGED" | "AWS_KMS";
 export const EncryptionKeyProviderInput = /*@__PURE__*/ S.String;
 
 export type ExternalIdType =
   | "database_ocid"
   | "compartment_ocid"
-  | "tenant_ocid"
-  | (string & {});
+  | "tenant_ocid";
 export const ExternalIdType = /*@__PURE__*/ S.String;
 
 export type KmsKeyIdOrArn = string;
@@ -633,8 +617,7 @@ export type AutonomousDatabaseResourceStatus =
   | "ROLE_CHANGE_IN_PROGRESS"
   | "UPGRADING"
   | "INACCESSIBLE"
-  | "STANDBY"
-  | (string & {});
+  | "STANDBY";
 export const AutonomousDatabaseResourceStatus = /*@__PURE__*/ S.String;
 
 export interface CreateAutonomousDatabaseOutput {
@@ -680,8 +663,7 @@ export type ResourceStatus =
   | "TERMINATED"
   | "TERMINATING"
   | "UPDATING"
-  | "MAINTENANCE_IN_PROGRESS"
-  | (string & {});
+  | "MAINTENANCE_IN_PROGRESS";
 export const ResourceStatus = /*@__PURE__*/ S.String;
 
 export interface CreateAutonomousDatabaseBackupOutput {
@@ -701,7 +683,7 @@ export const CreateAutonomousDatabaseBackupOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateAutonomousDatabaseBackupOutput",
 }) as any as S.Schema<CreateAutonomousDatabaseBackupOutput>;
-export type WalletType = "REGIONAL" | "INSTANCE" | (string & {});
+export type WalletType = "REGIONAL" | "INSTANCE";
 export const WalletType = /*@__PURE__*/ S.String;
 
 export interface CreateAutonomousDatabaseWalletInput {
@@ -749,8 +731,7 @@ export type MonthName =
   | "SEPTEMBER"
   | "OCTOBER"
   | "NOVEMBER"
-  | "DECEMBER"
-  | (string & {});
+  | "DECEMBER";
 export const MonthName = /*@__PURE__*/ S.String;
 
 export interface Month {
@@ -761,13 +742,10 @@ export const Month = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Month" }) as any as S.Schema<Month>;
 export type Months = Month[];
 export const Months = /*@__PURE__*/ S.Array(Month);
-export type PatchingModeType = "ROLLING" | "NONROLLING" | (string & {});
+export type PatchingModeType = "ROLLING" | "NONROLLING";
 export const PatchingModeType = /*@__PURE__*/ S.String;
 
-export type PreferenceType =
-  | "NO_PREFERENCE"
-  | "CUSTOM_PREFERENCE"
-  | (string & {});
+export type PreferenceType = "NO_PREFERENCE" | "CUSTOM_PREFERENCE";
 export const PreferenceType = /*@__PURE__*/ S.String;
 
 export type WeeksOfMonth = number[];
@@ -997,7 +975,7 @@ export const CreateCloudVmClusterOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCloudVmClusterOutput",
 }) as any as S.Schema<CreateCloudVmClusterOutput>;
-export type Access = "ENABLED" | "DISABLED" | (string & {});
+export type Access = "ENABLED" | "DISABLED";
 export const Access = /*@__PURE__*/ S.String;
 
 export type PolicyDocument = string;
@@ -1311,13 +1289,13 @@ export const GetAutonomousDatabaseInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAutonomousDatabaseInput",
 }) as any as S.Schema<GetAutonomousDatabaseInput>;
-export type DatabaseType = "REGULAR" | "CLONE" | (string & {});
+export type DatabaseType = "REGULAR" | "CLONE";
 export const DatabaseType = /*@__PURE__*/ S.String;
 
-export type PermissionLevel = "RESTRICTED" | "UNRESTRICTED" | (string & {});
+export type PermissionLevel = "RESTRICTED" | "UNRESTRICTED";
 export const PermissionLevel = /*@__PURE__*/ S.String;
 
-export type NetServicesArchitecture = "DEDICATED" | "SHARED" | (string & {});
+export type NetServicesArchitecture = "DEDICATED" | "SHARED";
 export const NetServicesArchitecture = /*@__PURE__*/ S.String;
 
 export type DatabaseConnectionStringMap = { [key: string]: string | undefined };
@@ -1427,8 +1405,7 @@ export type DataSafeStatus =
   | "REGISTERED"
   | "DEREGISTERING"
   | "NOT_REGISTERED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const DataSafeStatus = /*@__PURE__*/ S.String;
 
 export type DatabaseManagementStatus =
@@ -1437,8 +1414,7 @@ export type DatabaseManagementStatus =
   | "DISABLING"
   | "NOT_ENABLED"
   | "FAILED_ENABLING"
-  | "FAILED_DISABLING"
-  | (string & {});
+  | "FAILED_DISABLING";
 export const DatabaseManagementStatus = /*@__PURE__*/ S.String;
 
 export type OperationsInsightsStatus =
@@ -1447,8 +1423,7 @@ export type OperationsInsightsStatus =
   | "DISABLING"
   | "NOT_ENABLED"
   | "FAILED_ENABLING"
-  | "FAILED_DISABLING"
-  | (string & {});
+  | "FAILED_DISABLING";
 export const OperationsInsightsStatus = /*@__PURE__*/ S.String;
 
 export interface AutonomousDatabaseConnectionUrls {
@@ -1477,7 +1452,7 @@ export const AutonomousDatabaseConnectionUrls = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutonomousDatabaseConnectionUrls",
 }) as any as S.Schema<AutonomousDatabaseConnectionUrls>;
-export type ComputeModel = "ECPU" | "OCPU" | (string & {});
+export type ComputeModel = "ECPU" | "OCPU";
 export const ComputeModel = /*@__PURE__*/ S.String;
 
 export type DataGuardRole =
@@ -1485,8 +1460,7 @@ export type DataGuardRole =
   | "STANDBY"
   | "DISABLED_STANDBY"
   | "BACKUP_COPY"
-  | "SNAPSHOT_STANDBY"
-  | (string & {});
+  | "SNAPSHOT_STANDBY";
 export const DataGuardRole = /*@__PURE__*/ S.String;
 
 export interface DisasterRecoveryConfiguration {
@@ -1507,15 +1481,10 @@ export const DisasterRecoveryConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisasterRecoveryConfiguration",
 }) as any as S.Schema<DisasterRecoveryConfiguration>;
-export type RefreshableStatus = "REFRESHING" | "NOT_REFRESHING" | (string & {});
+export type RefreshableStatus = "REFRESHING" | "NOT_REFRESHING";
 export const RefreshableStatus = /*@__PURE__*/ S.String;
 
-export type RepeatCadence =
-  | "ONE_TIME"
-  | "WEEKLY"
-  | "MONTHLY"
-  | "YEARLY"
-  | (string & {});
+export type RepeatCadence = "ONE_TIME" | "WEEKLY" | "MONTHLY" | "YEARLY";
 export const RepeatCadence = /*@__PURE__*/ S.String;
 
 export interface LongTermBackupSchedule {
@@ -1540,8 +1509,7 @@ export type EncryptionKeyProvider =
   | "ORACLE_MANAGED"
   | "AWS_KMS"
   | "OKV"
-  | "OCI"
-  | (string & {});
+  | "OCI";
 export const EncryptionKeyProvider = /*@__PURE__*/ S.String;
 
 export interface AwsEncryptionKeyConfiguration {
@@ -1899,8 +1867,7 @@ export type AutonomousDatabaseBackupStatus =
   | "CREATING"
   | "UPDATING"
   | "DELETING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const AutonomousDatabaseBackupStatus = /*@__PURE__*/ S.String;
 
 export type AutonomousDatabaseBackupType =
@@ -1909,8 +1876,7 @@ export type AutonomousDatabaseBackupType =
   | "LONGTERM"
   | "VIRTUAL_FULL"
   | "CUMULATIVE_INCREMENTAL"
-  | "ROLL_FORWARD_IMAGE_COPY"
-  | (string & {});
+  | "ROLL_FORWARD_IMAGE_COPY";
 export const AutonomousDatabaseBackupType = /*@__PURE__*/ S.String;
 
 export interface AutonomousDatabaseBackup {
@@ -1976,10 +1942,7 @@ export const GetAutonomousDatabaseWalletDetailsInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetAutonomousDatabaseWalletDetailsInput",
 }) as any as S.Schema<GetAutonomousDatabaseWalletDetailsInput>;
-export type AutonomousDatabaseWalletStatus =
-  | "ACTIVE"
-  | "UPDATING"
-  | (string & {});
+export type AutonomousDatabaseWalletStatus = "ACTIVE" | "UPDATING";
 export const AutonomousDatabaseWalletStatus = /*@__PURE__*/ S.String;
 
 export interface AutonomousDatabaseWalletDetails {
@@ -2028,8 +1991,7 @@ export type IamRoleStatus =
   | "CONNECTED"
   | "DISCONNECTED"
   | "PARTIALLY_CONNECTED"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const IamRoleStatus = /*@__PURE__*/ S.String;
 
 export interface IamRole {
@@ -2368,7 +2330,7 @@ export const GetCloudVmClusterInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCloudVmClusterInput",
 }) as any as S.Schema<GetCloudVmClusterInput>;
-export type DiskRedundancy = "HIGH" | "NORMAL" | (string & {});
+export type DiskRedundancy = "HIGH" | "NORMAL";
 export const DiskRedundancy = /*@__PURE__*/ S.String;
 
 export interface DbIormConfig {
@@ -2390,8 +2352,7 @@ export type IormLifecycleState =
   | "DISABLED"
   | "ENABLED"
   | "FAILED"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const IormLifecycleState = /*@__PURE__*/ S.String;
 
 export type Objective =
@@ -2399,8 +2360,7 @@ export type Objective =
   | "BALANCED"
   | "BASIC"
   | "HIGH_THROUGHPUT"
-  | "LOW_LATENCY"
-  | (string & {});
+  | "LOW_LATENCY";
 export const Objective = /*@__PURE__*/ S.String;
 
 export interface ExadataIormConfig {
@@ -2544,11 +2504,10 @@ export type DbNodeResourceStatus =
   | "UPDATING"
   | "STOPPING"
   | "STOPPED"
-  | "STARTING"
-  | (string & {});
+  | "STARTING";
 export const DbNodeResourceStatus = /*@__PURE__*/ S.String;
 
-export type DbNodeMaintenanceType = "VMDB_REBOOT_MIGRATION" | (string & {});
+export type DbNodeMaintenanceType = "VMDB_REBOOT_MIGRATION";
 export const DbNodeMaintenanceType = /*@__PURE__*/ S.String;
 
 export interface DbNode {
@@ -2643,8 +2602,7 @@ export type DbServerPatchingStatus =
   | "COMPLETE"
   | "FAILED"
   | "MAINTENANCE_IN_PROGRESS"
-  | "SCHEDULED"
-  | (string & {});
+  | "SCHEDULED";
 export const DbServerPatchingStatus = /*@__PURE__*/ S.String;
 
 export interface DbServerPatchingDetails {
@@ -2739,8 +2697,7 @@ export type OciOnboardingStatus =
   | "FAILED"
   | "PUBLIC_OFFER_UNSUPPORTED"
   | "SUSPENDED"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const OciOnboardingStatus = /*@__PURE__*/ S.String;
 
 export interface OciIdentityDomain {
@@ -2763,7 +2720,7 @@ export const OciIdentityDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OciIdentityDomain",
 }) as any as S.Schema<OciIdentityDomain>;
-export type OciAwsIntegration = "KmsTde" | (string & {});
+export type OciAwsIntegration = "KmsTde";
 export const OciAwsIntegration = /*@__PURE__*/ S.String;
 
 export interface OciIamRole {
@@ -2838,7 +2795,7 @@ export type OciDnsForwardingConfigList = OciDnsForwardingConfig[];
 export const OciDnsForwardingConfigList = /*@__PURE__*/ S.Array(
   OciDnsForwardingConfig,
 );
-export type VpcEndpointType = "SERVICENETWORK" | (string & {});
+export type VpcEndpointType = "SERVICENETWORK";
 export const VpcEndpointType = /*@__PURE__*/ S.String;
 
 export interface ServiceNetworkEndpoint {
@@ -2857,8 +2814,7 @@ export type ManagedResourceStatus =
   | "ENABLED"
   | "ENABLING"
   | "DISABLED"
-  | "DISABLING"
-  | (string & {});
+  | "DISABLING";
 export const ManagedResourceStatus = /*@__PURE__*/ S.String;
 
 export interface ManagedS3BackupAccess {
@@ -3186,7 +3142,7 @@ export const ListAutonomousDatabaseBackupsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAutonomousDatabaseBackupsOutput",
 }) as any as S.Schema<ListAutonomousDatabaseBackupsOutput>;
-export type CharacterSetType = "DATABASE" | "NATIONAL" | (string & {});
+export type CharacterSetType = "DATABASE" | "NATIONAL";
 export const CharacterSetType = /*@__PURE__*/ S.String;
 
 export interface ListAutonomousDatabaseCharacterSetsInput {
@@ -4286,12 +4242,7 @@ export const ListDbSystemShapesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDbSystemShapesInput",
 }) as any as S.Schema<ListDbSystemShapesInput>;
-export type ShapeType =
-  | "AMD"
-  | "INTEL"
-  | "INTEL_FLEX_X9"
-  | "AMPERE_FLEX_A1"
-  | (string & {});
+export type ShapeType = "AMD" | "INTEL" | "INTEL_FLEX_X9" | "AMPERE_FLEX_A1";
 export const ShapeType = /*@__PURE__*/ S.String;
 
 export interface DbSystemShapeSummary {
@@ -5177,8 +5128,7 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other"
-  | (string & {});
+  | "other";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

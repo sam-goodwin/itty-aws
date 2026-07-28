@@ -12,13 +12,11 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export type AdDomainServiceMembersListRequestNextPartitionKey =
-  | " "
-  | (string & {});
+export type AdDomainServiceMembersListRequestNextPartitionKey = " ";
 export const AdDomainServiceMembersListRequestNextPartitionKey =
   /*@__PURE__*/ S.String;
 
-export type AdDomainServiceMembersListRequestNextRowKey = " " | (string & {});
+export type AdDomainServiceMembersListRequestNextRowKey = " ";
 export const AdDomainServiceMembersListRequestNextRowKey =
   /*@__PURE__*/ S.String;
 
@@ -62,13 +60,13 @@ export const AdDomainServiceMembersListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdDomainServiceMembersListRequest>;
 
 /** The list of ADDS roles. */
-export type AddsServiceMemberAddsRolesList = string[];
+export type AddsServiceMemberAddsRolesList = ReadonlyArray<string>;
 export const AddsServiceMemberAddsRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddsServiceMemberAddsRolesList>;
 
 /** The list of domain controller types. */
-export type AddsServiceMemberDcTypesList = string[];
+export type AddsServiceMemberDcTypesList = ReadonlyArray<string>;
 export const AddsServiceMemberDcTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddsServiceMemberDcTypesList>;
@@ -88,7 +86,7 @@ export const Item = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
 /** The server specific configuration related dimensions. */
-export type AddsServiceMemberDimensionsList = Item[];
+export type AddsServiceMemberDimensionsList = ReadonlyArray<Item>;
 export const AddsServiceMemberDimensionsList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<AddsServiceMemberDimensionsList>;
@@ -111,33 +109,35 @@ export const Hotfix = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hotfix" }) as any as S.Schema<Hotfix>;
 
 /** The list of installed QFEs for the server. */
-export type AddsServiceMemberInstalledQfesList = Hotfix[];
+export type AddsServiceMemberInstalledQfesList = ReadonlyArray<Hotfix>;
 export const AddsServiceMemberInstalledQfesList = /*@__PURE__*/ S.Array(
   Hotfix,
 ) as any as S.Schema<AddsServiceMemberInstalledQfesList>;
 
 /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
-export type AddsServiceMemberMonitoringConfigurationsComputedList = Item[];
+export type AddsServiceMemberMonitoringConfigurationsComputedList =
+  ReadonlyArray<Item>;
 export const AddsServiceMemberMonitoringConfigurationsComputedList =
   /*@__PURE__*/ S.Array(
     Item,
   ) as any as S.Schema<AddsServiceMemberMonitoringConfigurationsComputedList>;
 
 /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
-export type AddsServiceMemberMonitoringConfigurationsCustomizedList = Item[];
+export type AddsServiceMemberMonitoringConfigurationsCustomizedList =
+  ReadonlyArray<Item>;
 export const AddsServiceMemberMonitoringConfigurationsCustomizedList =
   /*@__PURE__*/ S.Array(
     Item,
   ) as any as S.Schema<AddsServiceMemberMonitoringConfigurationsCustomizedList>;
 
 /** Server specific properties. */
-export type AddsServiceMemberPropertiesList = Item[];
+export type AddsServiceMemberPropertiesList = ReadonlyArray<Item>;
 export const AddsServiceMemberPropertiesList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<AddsServiceMemberPropertiesList>;
 
 /** The list of recommended hotfixes for the server. */
-export type AddsServiceMemberRecommendedQfesList = Hotfix[];
+export type AddsServiceMemberRecommendedQfesList = ReadonlyArray<Hotfix>;
 export const AddsServiceMemberRecommendedQfesList = /*@__PURE__*/ S.Array(
   Hotfix,
 ) as any as S.Schema<AddsServiceMemberRecommendedQfesList>;
@@ -146,8 +146,7 @@ export const AddsServiceMemberRecommendedQfesList = /*@__PURE__*/ S.Array(
 export type AddsServiceMemberServerReportedMonitoringLevel =
   | "Partial"
   | "Full"
-  | "Off"
-  | (string & {});
+  | "Off";
 export const AddsServiceMemberServerReportedMonitoringLevel =
   /*@__PURE__*/ S.String;
 
@@ -270,7 +269,7 @@ export const AddsServiceMember = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServiceMember>;
 
 /** The value returned by the operation. */
-export type AddsServiceMembersValueList = AddsServiceMember[];
+export type AddsServiceMembersValueList = ReadonlyArray<AddsServiceMember>;
 export const AddsServiceMembersValueList = /*@__PURE__*/ S.Array(
   AddsServiceMember,
 ) as any as S.Schema<AddsServiceMembersValueList>;
@@ -332,7 +331,7 @@ export const AddsServiceGetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServiceGetMetricsRequest>;
 
 /** The list of the metric values. */
-export type MetricSetValuesList = number[];
+export type MetricSetValuesList = ReadonlyArray<number>;
 export const MetricSetValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<MetricSetValuesList>;
@@ -352,13 +351,13 @@ export const MetricSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricSet" }) as any as S.Schema<MetricSet>;
 
 /** The list of metric set. */
-export type MetricSetsSetsList = MetricSet[];
+export type MetricSetsSetsList = ReadonlyArray<MetricSet>;
 export const MetricSetsSetsList = /*@__PURE__*/ S.Array(
   MetricSet,
 ) as any as S.Schema<MetricSetsSetsList>;
 
 /** The list of timestamps for each metric in the metric set. */
-export type MetricSetsTimeStampsList = string[];
+export type MetricSetsTimeStampsList = ReadonlyArray<string>;
 export const MetricSetsTimeStampsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetricSetsTimeStampsList>;
@@ -435,8 +434,7 @@ export const AddsServiceMembersGetRequest = /*@__PURE__*/ S.suspend(() =>
 export type ServiceMemberServerReportedMonitoringLevel =
   | "Partial"
   | "Full"
-  | "Off"
-  | (string & {});
+  | "Off";
 export const ServiceMemberServerReportedMonitoringLevel =
   /*@__PURE__*/ S.String;
 
@@ -577,7 +575,7 @@ export const AddsServiceMembersListCredentialsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddsServiceMembersListCredentialsRequest>;
 
 /** The credential data. */
-export type CredentialCredentialDataList = string[];
+export type CredentialCredentialDataList = ReadonlyArray<string>;
 export const CredentialCredentialDataList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CredentialCredentialDataList>;
@@ -600,7 +598,7 @@ export const Credential = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Credential" }) as any as S.Schema<Credential>;
 
 /** The value returned by the operation. */
-export type CredentialsValueList = Credential[];
+export type CredentialsValueList = ReadonlyArray<Credential>;
 export const CredentialsValueList = /*@__PURE__*/ S.Array(
   Credential,
 ) as any as S.Schema<CredentialsValueList>;
@@ -616,12 +614,102 @@ export const Credentials = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Credentials" }) as any as S.Schema<Credentials>;
 
+/** The list of additional emails that are configured to receive notifications about the service. */
+export type AddsServicesAddRequestCustomNotificationEmailsList =
+  ReadonlyArray<string>;
+export const AddsServicesAddRequestCustomNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AddsServicesAddRequestCustomNotificationEmailsList>;
+
+/** The list of emails to whom service notifications will be sent. */
+export type AddsServicesAddRequestNotificationEmailsList =
+  ReadonlyArray<string>;
+export const AddsServicesAddRequestNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AddsServicesAddRequestNotificationEmailsList>;
+
 export interface AddsServicesAddRequest {
-  body: unknown;
+  /** The id of the service. */
+  id?: string;
+  /** The count of alerts that are currently active for the service. */
+  activeAlerts?: number;
+  /** The additional information related to the service. */
+  additionalInformation?: string;
+  /** The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The list of additional emails that are configured to receive notifications about the service. */
+  customNotificationEmails?: AddsServicesAddRequestCustomNotificationEmailsList;
+  /** Indicates if the service is disabled or not. */
+  disabled?: boolean;
+  /** The display name of the service. */
+  displayName?: string;
+  /** The health of the service. */
+  health?: string;
+  /** The date and time, in UTC, when the service was last disabled. */
+  lastDisabled?: string;
+  /** The date or time , in UTC, when the service properties were last updated. */
+  lastUpdated?: string;
+  /** The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** Indicates if email notification is enabled or not. */
+  notificationEmailEnabled?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  /** The list of emails to whom service notifications will be sent. */
+  notificationEmails?: AddsServicesAddRequestNotificationEmailsList;
+  /** Gets the original disable state. */
+  originalDisabledState?: boolean;
+  /** The total count of alerts that has been resolved for the service. */
+  resolvedAlerts?: number;
+  /** The id of the service. */
+  serviceId?: string;
+  /** The name of the service. */
+  serviceName?: string;
+  /** The signature of the service. */
+  signature?: string;
+  /** List of service specific configuration properties. */
+  simpleProperties?: unknown;
+  /** The id of the tenant to which the service is registered to. */
+  tenantId?: string;
+  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
+  type?: string;
 }
 export const AddsServicesAddRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.optional(S.String),
+    activeAlerts: S.optional(S.Number),
+    additionalInformation: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    customNotificationEmails: S.optional(
+      AddsServicesAddRequestCustomNotificationEmailsList,
+    ),
+    disabled: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    health: S.optional(S.String),
+    lastDisabled: S.optional(S.String),
+    lastUpdated: S.optional(S.String),
+    monitoringConfigurationsComputed: S.optional(S.Unknown),
+    monitoringConfigurationsCustomized: S.optional(S.Unknown),
+    notificationEmailEnabled: S.optional(S.Boolean),
+    notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmails: S.optional(
+      AddsServicesAddRequestNotificationEmailsList,
+    ),
+    originalDisabledState: S.optional(S.Boolean),
+    resolvedAlerts: S.optional(S.Number),
+    serviceId: S.optional(S.String),
+    serviceName: S.optional(S.String),
+    signature: S.optional(S.String),
+    simpleProperties: S.optional(S.Unknown),
+    tenantId: S.optional(S.String),
+    type: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -635,14 +723,15 @@ export const AddsServicesAddRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServicesAddRequest>;
 
 /** The list of additional emails that are configured to receive notifications about the service. */
-export type ServicePropertiesCustomNotificationEmailsList = string[];
+export type ServicePropertiesCustomNotificationEmailsList =
+  ReadonlyArray<string>;
 export const ServicePropertiesCustomNotificationEmailsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ServicePropertiesCustomNotificationEmailsList>;
 
 /** The list of emails to whom service notifications will be sent. */
-export type ServicePropertiesNotificationEmailsList = string[];
+export type ServicePropertiesNotificationEmailsList = ReadonlyArray<string>;
 export const ServicePropertiesNotificationEmailsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ServicePropertiesNotificationEmailsList>;
@@ -799,13 +888,13 @@ export const AddsServicesGetForestSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServicesGetForestSummaryRequest>;
 
 /** The list of domain controller names. */
-export type ForestSummaryDomainsList = string[];
+export type ForestSummaryDomainsList = ReadonlyArray<string>;
 export const ForestSummaryDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ForestSummaryDomainsList>;
 
 /** The list of site names. */
-export type ForestSummarySitesList = string[];
+export type ForestSummarySitesList = ReadonlyArray<string>;
 export const ForestSummarySitesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ForestSummarySitesList>;
@@ -880,7 +969,7 @@ export const MetricGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricGroup" }) as any as S.Schema<MetricGroup>;
 
 /** The groupings for the metrics. */
-export type MetricMetadataGroupingsList = MetricGroup[];
+export type MetricMetadataGroupingsList = ReadonlyArray<MetricGroup>;
 export const MetricMetadataGroupingsList = /*@__PURE__*/ S.Array(
   MetricGroup,
 ) as any as S.Schema<MetricMetadataGroupingsList>;
@@ -990,7 +1079,7 @@ export const AddsServicesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServicesListRequest>;
 
 /** The value returned by the operation. */
-export type ServicesValueList = ServiceProperties[];
+export type ServicesValueList = ReadonlyArray<ServiceProperties>;
 export const ServicesValueList = /*@__PURE__*/ S.Array(
   ServiceProperties,
 ) as any as S.Schema<ServicesValueList>;
@@ -1042,7 +1131,7 @@ export const AddsServicesListMetricMetadataRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddsServicesListMetricMetadataRequest>;
 
 /** The value returned by the operation. */
-export type MetricMetadataListValueList = MetricMetadata[];
+export type MetricMetadataListValueList = ReadonlyArray<MetricMetadata>;
 export const MetricMetadataListValueList = /*@__PURE__*/ S.Array(
   MetricMetadata,
 ) as any as S.Schema<MetricMetadataListValueList>;
@@ -1096,7 +1185,7 @@ export const AddsServicesListMetricsAverageRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddsServicesListMetricsAverageRequest>;
 
 /** The value returned by the operation. */
-export type MetricsValueList = Item[];
+export type MetricsValueList = ReadonlyArray<Item>;
 export const MetricsValueList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<MetricsValueList>;
@@ -1252,7 +1341,7 @@ export const InboundReplicationNeighbor = /*@__PURE__*/ S.suspend(() =>
 
 /** List of individual domain controller neighbor's inbound replication status. */
 export type ReplicationSummaryInboundNeighborCollectionList =
-  InboundReplicationNeighbor[];
+  ReadonlyArray<InboundReplicationNeighbor>;
 export const ReplicationSummaryInboundNeighborCollectionList =
   /*@__PURE__*/ S.Array(
     InboundReplicationNeighbor,
@@ -1292,7 +1381,7 @@ export const ReplicationSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationSummary>;
 
 /** The value returned by the operation. */
-export type ReplicationDetailsListValueList = ReplicationSummary[];
+export type ReplicationDetailsListValueList = ReadonlyArray<ReplicationSummary>;
 export const ReplicationDetailsListValueList = /*@__PURE__*/ S.Array(
   ReplicationSummary,
 ) as any as S.Schema<ReplicationDetailsListValueList>;
@@ -1319,15 +1408,11 @@ export const ReplicationDetailsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicationDetailsList",
 }) as any as S.Schema<ReplicationDetailsList>;
 
-export type AddsServicesListReplicationSummaryRequestNextPartitionKey =
-  | " "
-  | (string & {});
+export type AddsServicesListReplicationSummaryRequestNextPartitionKey = " ";
 export const AddsServicesListReplicationSummaryRequestNextPartitionKey =
   /*@__PURE__*/ S.String;
 
-export type AddsServicesListReplicationSummaryRequestNextRowKey =
-  | " "
-  | (string & {});
+export type AddsServicesListReplicationSummaryRequestNextRowKey = " ";
 export const AddsServicesListReplicationSummaryRequestNextRowKey =
   /*@__PURE__*/ S.String;
 
@@ -1375,7 +1460,7 @@ export const AddsServicesListReplicationSummaryRequest =
   }) as any as S.Schema<AddsServicesListReplicationSummaryRequest>;
 
 /** The value returned by the operation. */
-export type ReplicationSummaryListValueList = ReplicationSummary[];
+export type ReplicationSummaryListValueList = ReadonlyArray<ReplicationSummary>;
 export const ReplicationSummaryListValueList = /*@__PURE__*/ S.Array(
   ReplicationSummary,
 ) as any as S.Schema<ReplicationSummaryListValueList>;
@@ -1428,7 +1513,7 @@ export const AddsServicesListServerAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddsServicesListServerAlertsRequest>;
 
 /** The alert level which indicates the severity of the alert. */
-export type AlertLevel = "Warning" | "Error" | "PreWarning" | (string & {});
+export type AlertLevel = "Warning" | "Error" | "PreWarning";
 export const AlertLevel = /*@__PURE__*/ S.String;
 
 /** The alert state which can be either active or resolved with multiple resolution types. */
@@ -1437,8 +1522,7 @@ export type AlertState =
   | "ResolvedByPositiveResult"
   | "ResolvedManually"
   | "ResolvedByTimer"
-  | "ResolvedByStateChange"
-  | (string & {});
+  | "ResolvedByStateChange";
 export const AlertState = /*@__PURE__*/ S.String;
 
 /** The help link which contains more information related to an alert. */
@@ -1456,7 +1540,7 @@ export const HelpLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HelpLink" }) as any as S.Schema<HelpLink>;
 
 /** The help links to get more information related to the alert. */
-export type AlertRelatedLinksList = HelpLink[];
+export type AlertRelatedLinksList = ReadonlyArray<HelpLink>;
 export const AlertRelatedLinksList = /*@__PURE__*/ S.Array(
   HelpLink,
 ) as any as S.Schema<AlertRelatedLinksList>;
@@ -1484,19 +1568,20 @@ export const AdditionalInformation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalInformation>;
 
 /** Additional information related to the alert. */
-export type AlertAdditionalInformationList = AdditionalInformation[];
+export type AlertAdditionalInformationList =
+  ReadonlyArray<AdditionalInformation>;
 export const AlertAdditionalInformationList = /*@__PURE__*/ S.Array(
   AdditionalInformation,
 ) as any as S.Schema<AlertAdditionalInformationList>;
 
 /** The active alert properties. */
-export type AlertActiveAlertPropertiesList = Item[];
+export type AlertActiveAlertPropertiesList = ReadonlyArray<Item>;
 export const AlertActiveAlertPropertiesList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<AlertActiveAlertPropertiesList>;
 
 /** The resolved alert properties. */
-export type AlertResolvedAlertPropertiesList = Item[];
+export type AlertResolvedAlertPropertiesList = ReadonlyArray<Item>;
 export const AlertResolvedAlertPropertiesList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<AlertResolvedAlertPropertiesList>;
@@ -1567,7 +1652,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 /** The value returned by the operation. */
-export type AlertsValueList = Alert[];
+export type AlertsValueList = ReadonlyArray<Alert>;
 export const AlertsValueList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<AlertsValueList>;
@@ -1631,16 +1716,102 @@ export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicationStatus",
 }) as any as S.Schema<ReplicationStatus>;
 
+/** The monitoring level reported by the server. */
+export type AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel =
+  | "Partial"
+  | "Full"
+  | "Off";
+export const AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel =
+  /*@__PURE__*/ S.String;
+
 export interface AddsServicesServiceMembersAddRequest {
   /** The name of the service under which the server is to be onboarded. */
   serviceName: string;
-  body: unknown;
+  /** The id of the server. */
+  serviceMemberId?: string;
+  /** The service id to whom this server belongs. */
+  serviceId?: string;
+  /** The tenant id to whom this server belongs. */
+  tenantId?: string;
+  /** The total number of alerts that are currently active for the server. */
+  activeAlerts?: number;
+  /** The additional information, if any, for the server. */
+  additionalInformation?: string;
+  /** The date time , in UTC, when the server was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The server specific configuration related dimensions. */
+  dimensions?: unknown;
+  /** Indicates if the server is disabled or not. */
+  disabled?: boolean;
+  /** The reason for disabling the server. */
+  disabledReason?: number;
+  /** The list of installed QFEs for the server. */
+  installedQfes?: unknown;
+  /** The date and time , in UTC, when the server was last disabled. */
+  lastDisabled?: string;
+  /** The date and time, in UTC, when the server was last rebooted. */
+  lastReboot?: string;
+  /** The date and time, in UTC, when the server's data monitoring configuration was last changed. */
+  lastServerReportedMonitoringLevelChange?: string;
+  /** The date and time, in UTC, when the server properties were last updated. */
+  lastUpdated?: string;
+  /** The id of the machine. */
+  machineId?: string;
+  /** The name of the server. */
+  machineName?: string;
+  /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** The name of the operating system installed in the machine. */
+  osName?: string;
+  /** The version of the operating system installed in the machine. */
+  osVersion?: string;
+  /** Server specific properties. */
+  properties?: unknown;
+  /** The list of recommended hotfixes for the server. */
+  recommendedQfes?: unknown;
+  /** The total count of alerts that are resolved for this server. */
+  resolvedAlerts?: number;
+  /** The service role that is being monitored in the server. */
+  role?: string;
+  /** The monitoring level reported by the server. */
+  serverReportedMonitoringLevel?: AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel;
+  /** The health status of the server. */
+  status?: string;
 }
 export const AddsServicesServiceMembersAddRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      serviceMemberId: S.optional(S.String),
+      serviceId: S.optional(S.String),
+      tenantId: S.optional(S.String),
+      activeAlerts: S.optional(S.Number),
+      additionalInformation: S.optional(S.String),
+      createdDate: S.optional(S.String),
+      dimensions: S.optional(S.Unknown),
+      disabled: S.optional(S.Boolean),
+      disabledReason: S.optional(S.Number),
+      installedQfes: S.optional(S.Unknown),
+      lastDisabled: S.optional(S.String),
+      lastReboot: S.optional(S.String),
+      lastServerReportedMonitoringLevelChange: S.optional(S.String),
+      lastUpdated: S.optional(S.String),
+      machineId: S.optional(S.String),
+      machineName: S.optional(S.String),
+      monitoringConfigurationsComputed: S.optional(S.Unknown),
+      monitoringConfigurationsCustomized: S.optional(S.Unknown),
+      osName: S.optional(S.String),
+      osVersion: S.optional(S.String),
+      properties: S.optional(S.Unknown),
+      recommendedQfes: S.optional(S.Unknown),
+      resolvedAlerts: S.optional(S.Number),
+      role: S.optional(S.String),
+      serverReportedMonitoringLevel: S.optional(
+        AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel,
+      ),
+      status: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1683,7 +1854,7 @@ export const AddsServicesServiceMembersListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddsServicesServiceMembersListRequest>;
 
 /** The value returned by the operation. */
-export type ServiceMembersValueList = ServiceMember[];
+export type ServiceMembersValueList = ReadonlyArray<ServiceMember>;
 export const ServiceMembersValueList = /*@__PURE__*/ S.Array(
   ServiceMember,
 ) as any as S.Schema<ServiceMembersValueList>;
@@ -1708,15 +1879,102 @@ export const ServiceMembers = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceMembers" }) as any as S.Schema<ServiceMembers>;
 
+/** The list of additional emails that are configured to receive notifications about the service. */
+export type AddsServicesUpdateRequestCustomNotificationEmailsList =
+  ReadonlyArray<string>;
+export const AddsServicesUpdateRequestCustomNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AddsServicesUpdateRequestCustomNotificationEmailsList>;
+
+/** The list of emails to whom service notifications will be sent. */
+export type AddsServicesUpdateRequestNotificationEmailsList =
+  ReadonlyArray<string>;
+export const AddsServicesUpdateRequestNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AddsServicesUpdateRequestNotificationEmailsList>;
+
 export interface AddsServicesUpdateRequest {
   /** The name of the service which needs to be deleted. */
   serviceName: string;
-  body: unknown;
+  /** The id of the service. */
+  id?: string;
+  /** The count of alerts that are currently active for the service. */
+  activeAlerts?: number;
+  /** The additional information related to the service. */
+  additionalInformation?: string;
+  /** The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The list of additional emails that are configured to receive notifications about the service. */
+  customNotificationEmails?: AddsServicesUpdateRequestCustomNotificationEmailsList;
+  /** Indicates if the service is disabled or not. */
+  disabled?: boolean;
+  /** The display name of the service. */
+  displayName?: string;
+  /** The health of the service. */
+  health?: string;
+  /** The date and time, in UTC, when the service was last disabled. */
+  lastDisabled?: string;
+  /** The date or time , in UTC, when the service properties were last updated. */
+  lastUpdated?: string;
+  /** The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** Indicates if email notification is enabled or not. */
+  notificationEmailEnabled?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  /** The list of emails to whom service notifications will be sent. */
+  notificationEmails?: AddsServicesUpdateRequestNotificationEmailsList;
+  /** Gets the original disable state. */
+  originalDisabledState?: boolean;
+  /** The total count of alerts that has been resolved for the service. */
+  resolvedAlerts?: number;
+  /** The id of the service. */
+  serviceId?: string;
+  /** The signature of the service. */
+  signature?: string;
+  /** List of service specific configuration properties. */
+  simpleProperties?: unknown;
+  /** The id of the tenant to which the service is registered to. */
+  tenantId?: string;
+  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
+  type?: string;
 }
 export const AddsServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.optional(S.String),
+    activeAlerts: S.optional(S.Number),
+    additionalInformation: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    customNotificationEmails: S.optional(
+      AddsServicesUpdateRequestCustomNotificationEmailsList,
+    ),
+    disabled: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    health: S.optional(S.String),
+    lastDisabled: S.optional(S.String),
+    lastUpdated: S.optional(S.String),
+    monitoringConfigurationsComputed: S.optional(S.Unknown),
+    monitoringConfigurationsCustomized: S.optional(S.Unknown),
+    notificationEmailEnabled: S.optional(S.Boolean),
+    notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmails: S.optional(
+      AddsServicesUpdateRequestNotificationEmailsList,
+    ),
+    originalDisabledState: S.optional(S.Boolean),
+    resolvedAlerts: S.optional(S.Number),
+    serviceId: S.optional(S.String),
+    signature: S.optional(S.String),
+    simpleProperties: S.optional(S.Unknown),
+    tenantId: S.optional(S.String),
+    type: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1729,19 +1987,30 @@ export const AddsServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddsServicesUpdateRequest",
 }) as any as S.Schema<AddsServicesUpdateRequest>;
 
+/** The name of the metric. */
+export type AddsServicesUserPreferenceAddRequestMetricNamesList =
+  ReadonlyArray<string>;
+export const AddsServicesUserPreferenceAddRequestMetricNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AddsServicesUserPreferenceAddRequestMetricNamesList>;
+
 export interface AddsServicesUserPreferenceAddRequest {
   /** The name of the service. */
   serviceName: string;
   /** The name of the feature. */
   featureName: string;
-  body: unknown;
+  /** The name of the metric. */
+  metricNames?: AddsServicesUserPreferenceAddRequestMetricNamesList;
 }
 export const AddsServicesUserPreferenceAddRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
       featureName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      metricNames: S.optional(
+        AddsServicesUserPreferenceAddRequestMetricNamesList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1815,7 +2084,7 @@ export const AddsServicesUserPreferenceGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AddsServicesUserPreferenceGetRequest>;
 
 /** The name of the metric. */
-export type UserPreferenceMetricNamesList = string[];
+export type UserPreferenceMetricNamesList = ReadonlyArray<string>;
 export const UserPreferenceMetricNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UserPreferenceMetricNamesList>;
@@ -1877,7 +2146,7 @@ export const ConfigurationAddRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationAddRequest>;
 
 /** The list of global administrators for the tenant. */
-export type TenantGlobalAdminsEmailList = string[];
+export type TenantGlobalAdminsEmailList = ReadonlyArray<string>;
 export const TenantGlobalAdminsEmailList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TenantGlobalAdminsEmailList>;
@@ -1991,7 +2260,7 @@ export const ConfigurationListAddsConfigurationsRequest =
   }) as any as S.Schema<ConfigurationListAddsConfigurationsRequest>;
 
 /** The value returned by the operation. */
-export type AddsConfigurationValueList = Item[];
+export type AddsConfigurationValueList = ReadonlyArray<Item>;
 export const AddsConfigurationValueList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<AddsConfigurationValueList>;
@@ -2018,12 +2287,83 @@ export const AddsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddsConfiguration",
 }) as any as S.Schema<AddsConfiguration>;
 
+/** The list of global administrators for the tenant. */
+export type ConfigurationUpdateRequestGlobalAdminsEmailList =
+  ReadonlyArray<string>;
+export const ConfigurationUpdateRequestGlobalAdminsEmailList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConfigurationUpdateRequestGlobalAdminsEmailList>;
+
 export interface ConfigurationUpdateRequest {
-  body: unknown;
+  /** The Id of the tenant. */
+  tenantId?: string;
+  /** The Azure Active Directory license of the tenant. */
+  aadLicense?: string;
+  /** Indicate if the tenant has Azure Active Directory Premium license or not. */
+  aadPremium?: boolean;
+  /** Indicates if the tenant is configured to automatically receive updates for Azure Active Directory Connect Health client side features. */
+  agentAutoUpdate?: boolean;
+  /** The time in minutes after which an alert will be auto-suppressed. */
+  alertSuppressionTimeInMins?: number;
+  /** Indicates if the tenant data can be seen by Microsoft through Azure portal. */
+  consentedToMicrosoftDevOps?: boolean;
+  /** The country letter code of the tenant. */
+  countryLetterCode?: string;
+  /** The date, in UTC, when the tenant was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The date and time, in UTC, till when the tenant data can be seen by Microsoft through Azure portal. */
+  devOpsTtl?: string;
+  /** Indicates if the tenant is disabled in Azure Active Directory Connect Health. */
+  disabled?: boolean;
+  /** The reason due to which the tenant was disabled in Azure Active Directory Connect Health. */
+  disabledReason?: number;
+  /** The list of global administrators for the tenant. */
+  globalAdminsEmail?: ConfigurationUpdateRequestGlobalAdminsEmailList;
+  /** The initial domain of the tenant. */
+  initialDomain?: string;
+  /** The date and time, in UTC, when the tenant was last disabled in Azure Active Directory Connect Health. */
+  lastDisabled?: string;
+  /** The date and time, in UTC, when the tenant onboarding status in Azure Active Directory Connect Health was last verified. */
+  lastVerified?: string;
+  /** Indicates if the tenant is allowed to onboard to Azure Active Directory Connect Health. */
+  onboardingAllowed?: boolean;
+  /** Indicates if the tenant is already onboarded to Azure Active Directory Connect Health. */
+  onboarded?: boolean;
+  /** The certificate associated with the tenant to onboard data to Azure Active Directory Connect Health. */
+  pksCertificate?: unknown;
+  /** Indicates if the tenant has signed up for private preview of Azure Active Directory Connect Health features. */
+  privatePreviewTenant?: boolean;
+  /** Indicates if data collection for this tenant is disabled or not. */
+  tenantInQuarantine?: boolean;
+  /** The name of the tenant. */
+  tenantName?: string;
 }
 export const ConfigurationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    tenantId: S.optional(S.String),
+    aadLicense: S.optional(S.String),
+    aadPremium: S.optional(S.Boolean),
+    agentAutoUpdate: S.optional(S.Boolean),
+    alertSuppressionTimeInMins: S.optional(S.Number),
+    consentedToMicrosoftDevOps: S.optional(S.Boolean),
+    countryLetterCode: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    devOpsTtl: S.optional(S.String),
+    disabled: S.optional(S.Boolean),
+    disabledReason: S.optional(S.Number),
+    globalAdminsEmail: S.optional(
+      ConfigurationUpdateRequestGlobalAdminsEmailList,
+    ),
+    initialDomain: S.optional(S.String),
+    lastDisabled: S.optional(S.String),
+    lastVerified: S.optional(S.String),
+    onboardingAllowed: S.optional(S.Boolean),
+    onboarded: S.optional(S.Boolean),
+    pksCertificate: S.optional(S.Unknown),
+    privatePreviewTenant: S.optional(S.Boolean),
+    tenantInQuarantine: S.optional(S.Boolean),
+    tenantName: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2064,8 +2404,7 @@ export type DimensionHealth =
   | "Warning"
   | "Error"
   | "NotMonitored"
-  | "Missing"
-  | (string & {});
+  | "Missing";
 export const DimensionHealth = /*@__PURE__*/ S.String;
 
 /** The connector object error. */
@@ -2104,7 +2443,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
 /** The value returned by the operation. */
-export type DimensionsValueList = Dimension[];
+export type DimensionsValueList = ReadonlyArray<Dimension>;
 export const DimensionsValueList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<DimensionsValueList>;
@@ -2214,7 +2553,7 @@ export const IPAddressAggregate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IPAddressAggregate>;
 
 /** The value returned by the operation. */
-export type IPAddressAggregatesValueList = IPAddressAggregate[];
+export type IPAddressAggregatesValueList = ReadonlyArray<IPAddressAggregate>;
 export const IPAddressAggregatesValueList = /*@__PURE__*/ S.Array(
   IPAddressAggregate,
 ) as any as S.Schema<IPAddressAggregatesValueList>;
@@ -2318,7 +2657,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the Microsoft.ADHybridHealthService resource provider. */
-export type OperationListResponseValueList = Operation[];
+export type OperationListResponseValueList = ReadonlyArray<Operation>;
 export const OperationListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResponseValueList>;
@@ -2404,15 +2743,101 @@ export const ServiceGetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceGetMetricsRequest",
 }) as any as S.Schema<ServiceGetMetricsRequest>;
 
+/** The monitoring level reported by the server. */
+export type ServiceMembersAddRequestServerReportedMonitoringLevel =
+  | "Partial"
+  | "Full"
+  | "Off";
+export const ServiceMembersAddRequestServerReportedMonitoringLevel =
+  /*@__PURE__*/ S.String;
+
 export interface ServiceMembersAddRequest {
   /** The name of the service under which the server is to be onboarded. */
   serviceName: string;
-  body: unknown;
+  /** The id of the server. */
+  serviceMemberId?: string;
+  /** The service id to whom this server belongs. */
+  serviceId?: string;
+  /** The tenant id to whom this server belongs. */
+  tenantId?: string;
+  /** The total number of alerts that are currently active for the server. */
+  activeAlerts?: number;
+  /** The additional information, if any, for the server. */
+  additionalInformation?: string;
+  /** The date time , in UTC, when the server was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The server specific configuration related dimensions. */
+  dimensions?: unknown;
+  /** Indicates if the server is disabled or not. */
+  disabled?: boolean;
+  /** The reason for disabling the server. */
+  disabledReason?: number;
+  /** The list of installed QFEs for the server. */
+  installedQfes?: unknown;
+  /** The date and time , in UTC, when the server was last disabled. */
+  lastDisabled?: string;
+  /** The date and time, in UTC, when the server was last rebooted. */
+  lastReboot?: string;
+  /** The date and time, in UTC, when the server's data monitoring configuration was last changed. */
+  lastServerReportedMonitoringLevelChange?: string;
+  /** The date and time, in UTC, when the server properties were last updated. */
+  lastUpdated?: string;
+  /** The id of the machine. */
+  machineId?: string;
+  /** The name of the server. */
+  machineName?: string;
+  /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** The name of the operating system installed in the machine. */
+  osName?: string;
+  /** The version of the operating system installed in the machine. */
+  osVersion?: string;
+  /** Server specific properties. */
+  properties?: unknown;
+  /** The list of recommended hotfixes for the server. */
+  recommendedQfes?: unknown;
+  /** The total count of alerts that are resolved for this server. */
+  resolvedAlerts?: number;
+  /** The service role that is being monitored in the server. */
+  role?: string;
+  /** The monitoring level reported by the server. */
+  serverReportedMonitoringLevel?: ServiceMembersAddRequestServerReportedMonitoringLevel;
+  /** The health status of the server. */
+  status?: string;
 }
 export const ServiceMembersAddRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    serviceMemberId: S.optional(S.String),
+    serviceId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    activeAlerts: S.optional(S.Number),
+    additionalInformation: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    dimensions: S.optional(S.Unknown),
+    disabled: S.optional(S.Boolean),
+    disabledReason: S.optional(S.Number),
+    installedQfes: S.optional(S.Unknown),
+    lastDisabled: S.optional(S.String),
+    lastReboot: S.optional(S.String),
+    lastServerReportedMonitoringLevelChange: S.optional(S.String),
+    lastUpdated: S.optional(S.String),
+    machineId: S.optional(S.String),
+    machineName: S.optional(S.String),
+    monitoringConfigurationsComputed: S.optional(S.Unknown),
+    monitoringConfigurationsCustomized: S.optional(S.Unknown),
+    osName: S.optional(S.String),
+    osVersion: S.optional(S.String),
+    properties: S.optional(S.Unknown),
+    recommendedQfes: S.optional(S.Unknown),
+    resolvedAlerts: S.optional(S.Number),
+    role: S.optional(S.String),
+    serverReportedMonitoringLevel: S.optional(
+      ServiceMembersAddRequestServerReportedMonitoringLevel,
+    ),
+    status: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2551,13 +2976,14 @@ export const ConnectorMetadataDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorMetadataDetails>;
 
 /** The list of connectors. */
-export type ConnectorMetadataConnectorsList = ConnectorMetadataDetails[];
+export type ConnectorMetadataConnectorsList =
+  ReadonlyArray<ConnectorMetadataDetails>;
 export const ConnectorMetadataConnectorsList = /*@__PURE__*/ S.Array(
   ConnectorMetadataDetails,
 ) as any as S.Schema<ConnectorMetadataConnectorsList>;
 
 /** The list of run profile names. */
-export type ConnectorMetadataRunProfileNamesList = string[];
+export type ConnectorMetadataRunProfileNamesList = ReadonlyArray<string>;
 export const ConnectorMetadataRunProfileNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectorMetadataRunProfileNamesList>;
@@ -2760,19 +3186,19 @@ export const ServiceMembersListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceMembersListConnectorsRequest>;
 
 /** The in-scope object classes. */
-export type PartitionScopeObjectClassesList = string[];
+export type PartitionScopeObjectClassesList = ReadonlyArray<string>;
 export const PartitionScopeObjectClassesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PartitionScopeObjectClassesList>;
 
 /** The list of containers included. */
-export type PartitionScopeContainersIncludedList = string[];
+export type PartitionScopeContainersIncludedList = ReadonlyArray<string>;
 export const PartitionScopeContainersIncludedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PartitionScopeContainersIncludedList>;
 
 /** The list of containers excluded. */
-export type PartitionScopeContainersExcludedList = string[];
+export type PartitionScopeContainersExcludedList = ReadonlyArray<string>;
 export const PartitionScopeContainersExcludedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PartitionScopeContainersExcludedList>;
@@ -2833,7 +3259,7 @@ export const Partition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Partition" }) as any as S.Schema<Partition>;
 
 /** The partitions of the connector. */
-export type ConnectorPartitionsList = Partition[];
+export type ConnectorPartitionsList = ReadonlyArray<Partition>;
 export const ConnectorPartitionsList = /*@__PURE__*/ S.Array(
   Partition,
 ) as any as S.Schema<ConnectorPartitionsList>;
@@ -2868,7 +3294,7 @@ export const RunStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunStep" }) as any as S.Schema<RunStep>;
 
 /** The run steps of the run profile. */
-export type RunProfileRunStepsList = RunStep[];
+export type RunProfileRunStepsList = ReadonlyArray<RunStep>;
 export const RunProfileRunStepsList = /*@__PURE__*/ S.Array(
   RunStep,
 ) as any as S.Schema<RunProfileRunStepsList>;
@@ -2891,19 +3317,19 @@ export const RunProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunProfile" }) as any as S.Schema<RunProfile>;
 
 /** The run profiles of the connector. */
-export type ConnectorRunProfilesList = RunProfile[];
+export type ConnectorRunProfilesList = ReadonlyArray<RunProfile>;
 export const ConnectorRunProfilesList = /*@__PURE__*/ S.Array(
   RunProfile,
 ) as any as S.Schema<ConnectorRunProfilesList>;
 
 /** The class inclusion list of the connector. */
-export type ConnectorClassesIncludedList = string[];
+export type ConnectorClassesIncludedList = ReadonlyArray<string>;
 export const ConnectorClassesIncludedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectorClassesIncludedList>;
 
 /** The attribute inclusion list of the connector. */
-export type ConnectorAttributesIncludedList = string[];
+export type ConnectorAttributesIncludedList = ReadonlyArray<string>;
 export const ConnectorAttributesIncludedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectorAttributesIncludedList>;
@@ -2962,7 +3388,7 @@ export const Connector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Connector" }) as any as S.Schema<Connector>;
 
 /** The value returned by the operation. */
-export type ConnectorsValueList = Connector[];
+export type ConnectorsValueList = ReadonlyArray<Connector>;
 export const ConnectorsValueList = /*@__PURE__*/ S.Array(
   Connector,
 ) as any as S.Schema<ConnectorsValueList>;
@@ -3028,7 +3454,7 @@ export const ServiceMembersListDataFreshnessRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServiceMembersListDataFreshnessRequest>;
 
 /** The value returned by the operation. */
-export type DataFreshnessDetailsValueList = Item[];
+export type DataFreshnessDetailsValueList = ReadonlyArray<Item>;
 export const DataFreshnessDetailsValueList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<DataFreshnessDetailsValueList>;
@@ -3090,7 +3516,7 @@ export const ExportStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportStatus" }) as any as S.Schema<ExportStatus>;
 
 /** The value returned by the operation. */
-export type ExportStatusesValueList = ExportStatus[];
+export type ExportStatusesValueList = ReadonlyArray<ExportStatus>;
 export const ExportStatusesValueList = /*@__PURE__*/ S.Array(
   ExportStatus,
 ) as any as S.Schema<ExportStatusesValueList>;
@@ -3139,7 +3565,7 @@ export const ServiceMembersListGlobalConfigurationRequest =
   }) as any as S.Schema<ServiceMembersListGlobalConfigurationRequest>;
 
 /** The list of additional feature sets. */
-export type GlobalConfigurationFeatureSetList = Item[];
+export type GlobalConfigurationFeatureSetList = ReadonlyArray<Item>;
 export const GlobalConfigurationFeatureSetList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<GlobalConfigurationFeatureSetList>;
@@ -3170,7 +3596,7 @@ export const GlobalConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GlobalConfiguration>;
 
 /** The value returned by the operation. */
-export type GlobalConfigurationsValueList = GlobalConfiguration[];
+export type GlobalConfigurationsValueList = ReadonlyArray<GlobalConfiguration>;
 export const GlobalConfigurationsValueList = /*@__PURE__*/ S.Array(
   GlobalConfiguration,
 ) as any as S.Schema<GlobalConfigurationsValueList>;
@@ -3188,12 +3614,98 @@ export const GlobalConfigurations = /*@__PURE__*/ S.suspend(() =>
   identifier: "GlobalConfigurations",
 }) as any as S.Schema<GlobalConfigurations>;
 
+/** The list of additional emails that are configured to receive notifications about the service. */
+export type ServicesAddRequestCustomNotificationEmailsList =
+  ReadonlyArray<string>;
+export const ServicesAddRequestCustomNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ServicesAddRequestCustomNotificationEmailsList>;
+
+/** The list of emails to whom service notifications will be sent. */
+export type ServicesAddRequestNotificationEmailsList = ReadonlyArray<string>;
+export const ServicesAddRequestNotificationEmailsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ServicesAddRequestNotificationEmailsList>;
+
 export interface ServicesAddRequest {
-  body: unknown;
+  /** The id of the service. */
+  id?: string;
+  /** The count of alerts that are currently active for the service. */
+  activeAlerts?: number;
+  /** The additional information related to the service. */
+  additionalInformation?: string;
+  /** The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The list of additional emails that are configured to receive notifications about the service. */
+  customNotificationEmails?: ServicesAddRequestCustomNotificationEmailsList;
+  /** Indicates if the service is disabled or not. */
+  disabled?: boolean;
+  /** The display name of the service. */
+  displayName?: string;
+  /** The health of the service. */
+  health?: string;
+  /** The date and time, in UTC, when the service was last disabled. */
+  lastDisabled?: string;
+  /** The date or time , in UTC, when the service properties were last updated. */
+  lastUpdated?: string;
+  /** The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** Indicates if email notification is enabled or not. */
+  notificationEmailEnabled?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  /** The list of emails to whom service notifications will be sent. */
+  notificationEmails?: ServicesAddRequestNotificationEmailsList;
+  /** Gets the original disable state. */
+  originalDisabledState?: boolean;
+  /** The total count of alerts that has been resolved for the service. */
+  resolvedAlerts?: number;
+  /** The id of the service. */
+  serviceId?: string;
+  /** The name of the service. */
+  serviceName?: string;
+  /** The signature of the service. */
+  signature?: string;
+  /** List of service specific configuration properties. */
+  simpleProperties?: unknown;
+  /** The id of the tenant to which the service is registered to. */
+  tenantId?: string;
+  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
+  type?: string;
 }
 export const ServicesAddRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.optional(S.String),
+    activeAlerts: S.optional(S.Number),
+    additionalInformation: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    customNotificationEmails: S.optional(
+      ServicesAddRequestCustomNotificationEmailsList,
+    ),
+    disabled: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    health: S.optional(S.String),
+    lastDisabled: S.optional(S.String),
+    lastUpdated: S.optional(S.String),
+    monitoringConfigurationsComputed: S.optional(S.Unknown),
+    monitoringConfigurationsCustomized: S.optional(S.Unknown),
+    notificationEmailEnabled: S.optional(S.Boolean),
+    notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmails: S.optional(ServicesAddRequestNotificationEmailsList),
+    originalDisabledState: S.optional(S.Boolean),
+    resolvedAlerts: S.optional(S.Number),
+    serviceId: S.optional(S.String),
+    serviceName: S.optional(S.String),
+    signature: S.optional(S.String),
+    simpleProperties: S.optional(S.Unknown),
+    tenantId: S.optional(S.String),
+    type: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3209,12 +3721,34 @@ export const ServicesAddRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ServicesAddAlertFeedbackRequest {
   /** The name of the service. */
   serviceName: string;
-  body: unknown;
+  /** The alert level which indicates the severity of the alert. */
+  level?: string;
+  /** The alert state which can be either active or resolved with multiple resolution types. */
+  state?: string;
+  /** The alert short name. */
+  shortName?: string;
+  /** The feedback for the alert which indicates if the customer likes or dislikes the alert. */
+  feedback?: string;
+  /** Additional comments related to the alert. */
+  comment?: string;
+  /** Indicates if the alert feedback can be shared from product team. */
+  consentedToShare?: boolean;
+  /** The server Id of the alert. */
+  serviceMemberId?: string;
+  /** The date and time,in UTC,when the alert was created. */
+  createdDate?: string;
 }
 export const ServicesAddAlertFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    level: S.optional(S.String),
+    state: S.optional(S.String),
+    shortName: S.optional(S.String),
+    feedback: S.optional(S.String),
+    comment: S.optional(S.String),
+    consentedToShare: S.optional(S.Boolean),
+    serviceMemberId: S.optional(S.String),
+    createdDate: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3461,7 +3995,7 @@ export const ServicesListAlertFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesListAlertFeedbackRequest>;
 
 /** The value returned by the operation. */
-export type AlertFeedbacksValueList = AlertFeedback[];
+export type AlertFeedbacksValueList = ReadonlyArray<AlertFeedback>;
 export const AlertFeedbacksValueList = /*@__PURE__*/ S.Array(
   AlertFeedback,
 ) as any as S.Schema<AlertFeedbacksValueList>;
@@ -3555,7 +4089,7 @@ export const RiskyIPBlobUri = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RiskyIPBlobUri" }) as any as S.Schema<RiskyIPBlobUri>;
 
 /** The list of blob uris. */
-export type RiskyIPBlobUrisValueList = RiskyIPBlobUri[];
+export type RiskyIPBlobUrisValueList = ReadonlyArray<RiskyIPBlobUri>;
 export const RiskyIPBlobUrisValueList = /*@__PURE__*/ S.Array(
   RiskyIPBlobUri,
 ) as any as S.Schema<RiskyIPBlobUrisValueList>;
@@ -3630,7 +4164,7 @@ export const ErrorCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorCount" }) as any as S.Schema<ErrorCount>;
 
 /** The value returned by the operation. */
-export type ErrorCountsValueList = ErrorCount[];
+export type ErrorCountsValueList = ReadonlyArray<ErrorCount>;
 export const ErrorCountsValueList = /*@__PURE__*/ S.Array(
   ErrorCount,
 ) as any as S.Schema<ErrorCountsValueList>;
@@ -3791,7 +4325,7 @@ export const MergedExportError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MergedExportError>;
 
 /** The value returned by the operation. */
-export type MergedExportErrorsValueList = MergedExportError[];
+export type MergedExportErrorsValueList = ReadonlyArray<MergedExportError>;
 export const MergedExportErrorsValueList = /*@__PURE__*/ S.Array(
   MergedExportError,
 ) as any as S.Schema<MergedExportErrorsValueList>;
@@ -3924,7 +4458,7 @@ export const ServicesListMonitoringConfigurationsRequest =
   }) as any as S.Schema<ServicesListMonitoringConfigurationsRequest>;
 
 /** The value returned by the operation. */
-export type ItemsValueList = Item[];
+export type ItemsValueList = ReadonlyArray<Item>;
 export const ItemsValueList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<ItemsValueList>;
@@ -4017,7 +4551,8 @@ export const ErrorReportUsersEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorReportUsersEntry>;
 
 /** The value returned by the operation. */
-export type ErrorReportUsersEntriesValueList = ErrorReportUsersEntry[];
+export type ErrorReportUsersEntriesValueList =
+  ReadonlyArray<ErrorReportUsersEntry>;
 export const ErrorReportUsersEntriesValueList = /*@__PURE__*/ S.Array(
   ErrorReportUsersEntry,
 ) as any as S.Schema<ErrorReportUsersEntriesValueList>;
@@ -4035,15 +4570,99 @@ export const ErrorReportUsersEntries = /*@__PURE__*/ S.suspend(() =>
   identifier: "ErrorReportUsersEntries",
 }) as any as S.Schema<ErrorReportUsersEntries>;
 
+/** The list of additional emails that are configured to receive notifications about the service. */
+export type ServicesUpdateRequestCustomNotificationEmailsList =
+  ReadonlyArray<string>;
+export const ServicesUpdateRequestCustomNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ServicesUpdateRequestCustomNotificationEmailsList>;
+
+/** The list of emails to whom service notifications will be sent. */
+export type ServicesUpdateRequestNotificationEmailsList = ReadonlyArray<string>;
+export const ServicesUpdateRequestNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ServicesUpdateRequestNotificationEmailsList>;
+
 export interface ServicesUpdateRequest {
   /** The name of the service which needs to be deleted. */
   serviceName: string;
-  body: unknown;
+  /** The id of the service. */
+  id?: string;
+  /** The count of alerts that are currently active for the service. */
+  activeAlerts?: number;
+  /** The additional information related to the service. */
+  additionalInformation?: string;
+  /** The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The list of additional emails that are configured to receive notifications about the service. */
+  customNotificationEmails?: ServicesUpdateRequestCustomNotificationEmailsList;
+  /** Indicates if the service is disabled or not. */
+  disabled?: boolean;
+  /** The display name of the service. */
+  displayName?: string;
+  /** The health of the service. */
+  health?: string;
+  /** The date and time, in UTC, when the service was last disabled. */
+  lastDisabled?: string;
+  /** The date or time , in UTC, when the service properties were last updated. */
+  lastUpdated?: string;
+  /** The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** Indicates if email notification is enabled or not. */
+  notificationEmailEnabled?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  /** The list of emails to whom service notifications will be sent. */
+  notificationEmails?: ServicesUpdateRequestNotificationEmailsList;
+  /** Gets the original disable state. */
+  originalDisabledState?: boolean;
+  /** The total count of alerts that has been resolved for the service. */
+  resolvedAlerts?: number;
+  /** The id of the service. */
+  serviceId?: string;
+  /** The signature of the service. */
+  signature?: string;
+  /** List of service specific configuration properties. */
+  simpleProperties?: unknown;
+  /** The id of the tenant to which the service is registered to. */
+  tenantId?: string;
+  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
+  type?: string;
 }
 export const ServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.optional(S.String),
+    activeAlerts: S.optional(S.Number),
+    additionalInformation: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    customNotificationEmails: S.optional(
+      ServicesUpdateRequestCustomNotificationEmailsList,
+    ),
+    disabled: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    health: S.optional(S.String),
+    lastDisabled: S.optional(S.String),
+    lastUpdated: S.optional(S.String),
+    monitoringConfigurationsComputed: S.optional(S.Unknown),
+    monitoringConfigurationsCustomized: S.optional(S.Unknown),
+    notificationEmailEnabled: S.optional(S.Boolean),
+    notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmails: S.optional(ServicesUpdateRequestNotificationEmailsList),
+    originalDisabledState: S.optional(S.Boolean),
+    resolvedAlerts: S.optional(S.Number),
+    serviceId: S.optional(S.String),
+    signature: S.optional(S.String),
+    simpleProperties: S.optional(S.Unknown),
+    tenantId: S.optional(S.String),
+    type: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4059,13 +4678,17 @@ export const ServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ServicesUpdateMonitoringConfigurationRequest {
   /** The name of the service. */
   serviceName: string;
-  body: unknown;
+  /** The key for the property. */
+  key?: string;
+  /** The value for the key. */
+  value?: string;
 }
 export const ServicesUpdateMonitoringConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      key: S.optional(S.String),
+      value: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -4087,13 +4710,31 @@ export const ServicesUpdateMonitoringConfigurationResponse =
 export interface UpdateIPAddressAggregateSettingsRequest {
   /** The name of the service. */
   serviceName: string;
-  body: unknown;
+  /** Unique ID for the entree */
+  id?: string;
+  /** This threshold setting defines the per day trigger for a new event to be generated in the report. */
+  badPasswordAndExtranetLockoutCombinedDailyThreshold?: number;
+  /** This threshold setting defines the per hour trigger for a new event to be generated in the report. */
+  badPasswordAndExtranetLockoutCombinedHourlyThreshold?: number;
+  /** This threshold setting defines the per hour trigger for a new event to be generated in the report. */
+  extranetLockoutDailyThreshold?: number;
+  /** This threshold setting defines the per hour trigger for a new event to be generated in the report. */
+  extranetLockoutHourlyThreshold?: number;
+  /** A value indicating whether email notification has been enabled. */
+  emailNotificationEnabled?: boolean;
 }
 export const UpdateIPAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      id: S.optional(S.String),
+      badPasswordAndExtranetLockoutCombinedDailyThreshold: S.optional(S.Number),
+      badPasswordAndExtranetLockoutCombinedHourlyThreshold: S.optional(
+        S.Number,
+      ),
+      extranetLockoutDailyThreshold: S.optional(S.Number),
+      extranetLockoutHourlyThreshold: S.optional(S.Number),
+      emailNotificationEnabled: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "PATCH",

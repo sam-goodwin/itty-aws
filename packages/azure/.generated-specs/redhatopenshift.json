@@ -1141,16 +1141,341 @@
             "smithy.api#documentation": "The name of the OpenShift cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.redhatopenshift#OpenShiftClustersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.redhatopenshift#OpenShiftClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The cluster properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.redhatopenshift#OpenShiftClustersUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redhatopenshift#OpenShiftClustersUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.redhatopenshift#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.redhatopenshift#OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.redhatopenshift#OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.redhatopenshift#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.redhatopenshift#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.redhatopenshift#OpenShiftClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.redhatopenshift#ProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "The cluster provisioning state."
+          }
+        },
+        "clusterProfile": {
+          "target": "com.azure.redhatopenshift#ClusterProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The cluster profile."
+          }
+        },
+        "consoleProfile": {
+          "target": "com.azure.redhatopenshift#ConsoleProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The console profile."
+          }
+        },
+        "servicePrincipalProfile": {
+          "target": "com.azure.redhatopenshift#ServicePrincipalProfile",
+          "traits": {
+            "smithy.api#documentation": "The cluster service principal profile."
+          }
+        },
+        "platformWorkloadIdentityProfile": {
+          "target": "com.azure.redhatopenshift#PlatformWorkloadIdentityProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The workload identity profile."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.redhatopenshift#NetworkProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The cluster network profile."
+          }
+        },
+        "masterProfile": {
+          "target": "com.azure.redhatopenshift#MasterProfile",
+          "traits": {
+            "smithy.api#documentation": "The cluster master profile."
+          }
+        },
+        "workerProfiles": {
+          "target": "com.azure.redhatopenshift#OpenShiftClusterPropertiesInputWorkerProfilesList",
+          "traits": {
+            "smithy.api#documentation": "The cluster worker profiles."
+          }
+        },
+        "apiserverProfile": {
+          "target": "com.azure.redhatopenshift#APIServerProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The cluster API server profile."
+          }
+        },
+        "ingressProfiles": {
+          "target": "com.azure.redhatopenshift#OpenShiftClusterPropertiesInputIngressProfilesList",
+          "traits": {
+            "smithy.api#documentation": "The cluster ingress profiles."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "OpenShiftClusterProperties represents an OpenShift cluster's properties."
+      }
+    },
+    "com.azure.redhatopenshift#OpenShiftClusterPropertiesInputIngressProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.redhatopenshift#IngressProfileInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The cluster ingress profiles."
+      }
+    },
+    "com.azure.redhatopenshift#IngressProfileInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ingress profile name."
+          }
+        },
+        "visibility": {
+          "target": "com.azure.redhatopenshift#Visibility",
+          "traits": {
+            "smithy.api#documentation": "Ingress visibility."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "IngressProfile represents an ingress profile."
+      }
+    },
+    "com.azure.redhatopenshift#APIServerProfileInput": {
+      "type": "structure",
+      "members": {
+        "visibility": {
+          "target": "com.azure.redhatopenshift#Visibility",
+          "traits": {
+            "smithy.api#documentation": "API server visibility."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "APIServerProfile represents an API server profile."
+      }
+    },
+    "com.azure.redhatopenshift#OpenShiftClusterPropertiesInputWorkerProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.redhatopenshift#WorkerProfile"
+      },
+      "traits": {
+        "smithy.api#documentation": "The cluster worker profiles."
+      }
+    },
+    "com.azure.redhatopenshift#NetworkProfileInput": {
+      "type": "structure",
+      "members": {
+        "podCidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CIDR used for OpenShift/Kubernetes Pods."
+          }
+        },
+        "serviceCidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CIDR used for OpenShift/Kubernetes Services."
+          }
+        },
+        "outboundType": {
+          "target": "com.azure.redhatopenshift#OutboundType",
+          "traits": {
+            "smithy.api#documentation": "The OutboundType used for egress traffic."
+          }
+        },
+        "loadBalancerProfile": {
+          "target": "com.azure.redhatopenshift#LoadBalancerProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The cluster load balancer profile."
+          }
+        },
+        "preconfiguredNSG": {
+          "target": "com.azure.redhatopenshift#PreconfiguredNSG",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether subnets are pre-attached with an NSG"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "NetworkProfile represents a network profile."
+      }
+    },
+    "com.azure.redhatopenshift#LoadBalancerProfileInput": {
+      "type": "structure",
+      "members": {
+        "managedOutboundIps": {
+          "target": "com.azure.redhatopenshift#ManagedOutboundIPs",
+          "traits": {
+            "smithy.api#documentation": "The desired managed outbound IPs for the cluster public load balancer."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "LoadBalancerProfile represents the profile of the cluster public load balancer."
+      }
+    },
+    "com.azure.redhatopenshift#PlatformWorkloadIdentityProfileInput": {
+      "type": "structure",
+      "members": {
+        "upgradeableTo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UpgradeableTo stores a single OpenShift version a workload identity cluster can be upgraded to"
+          }
+        },
+        "platformWorkloadIdentities": {
+          "target": "com.azure.redhatopenshift#PlatformWorkloadIdentityProfileInputPlatformWorkloadIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary of <PlatformWorkloadIdentity>"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PlatformWorkloadIdentityProfile encapsulates all information that is specific to workload identity clusters."
+      }
+    },
+    "com.azure.redhatopenshift#PlatformWorkloadIdentityProfileInputPlatformWorkloadIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.redhatopenshift#PlatformWorkloadIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary of <PlatformWorkloadIdentity>"
+      }
+    },
+    "com.azure.redhatopenshift#PlatformWorkloadIdentityInput": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the PlatformWorkloadIdentity resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PlatformWorkloadIdentity stores information representing a single workload identity."
+      }
+    },
+    "com.azure.redhatopenshift#ConsoleProfileInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "ConsoleProfile represents a console profile."
+      }
+    },
+    "com.azure.redhatopenshift#ClusterProfileInput": {
+      "type": "structure",
+      "members": {
+        "pullSecret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The pull secret for the cluster."
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain for the cluster."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the cluster."
+          }
+        },
+        "resourceGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the cluster resource group."
+          }
+        },
+        "fipsValidatedModules": {
+          "target": "com.azure.redhatopenshift#FipsValidatedModules",
+          "traits": {
+            "smithy.api#documentation": "If FIPS validated crypto modules are used"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ClusterProfile represents a cluster profile."
+      }
+    },
+    "com.azure.redhatopenshift#OpenShiftClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.redhatopenshift#OpenShiftClustersCreateOrUpdate": {
@@ -1312,16 +1637,78 @@
             "smithy.api#documentation": "The name of the OpenShift cluster resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.redhatopenshift#OpenShiftClustersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.redhatopenshift#OpenShiftClusterPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The cluster properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.redhatopenshift#OpenShiftClustersCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.redhatopenshift#OpenShiftClustersCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.redhatopenshift#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.redhatopenshift#OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.redhatopenshift#OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.redhatopenshift#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.redhatopenshift#OpenShiftClustersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.redhatopenshift#OpenShiftClustersGet": {

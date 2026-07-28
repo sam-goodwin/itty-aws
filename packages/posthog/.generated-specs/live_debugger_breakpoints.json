@@ -165,9 +165,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "repository": {
           "target": "smithy.api#String",
           "traits": {
@@ -188,12 +185,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -316,12 +307,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -395,12 +380,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {

@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -105,7 +105,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -174,8 +174,7 @@ export const BatchGetServicesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleApiServiceusageV1ServiceStateEnum =
   | "STATE_UNSPECIFIED"
   | "DISABLED"
-  | "ENABLED"
-  | (string & {});
+  | "ENABLED";
 export const GoogleApiServiceusageV1ServiceStateEnum = /*@__PURE__*/ S.String;
 
 /** Usage configuration rules for the service. */
@@ -195,7 +194,7 @@ export const UsageRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UsageRule" }) as any as S.Schema<UsageRule>;
 
-export type UsageRuleList = UsageRule[];
+export type UsageRuleList = ReadonlyArray<UsageRule>;
 export const UsageRuleList = /*@__PURE__*/ S.Array(
   UsageRule,
 ) as any as S.Schema<UsageRuleList>;
@@ -237,7 +236,7 @@ export const MetricRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricRule" }) as any as S.Schema<MetricRule>;
 
-export type MetricRuleList = MetricRule[];
+export type MetricRuleList = ReadonlyArray<MetricRule>;
 export const MetricRuleList = /*@__PURE__*/ S.Array(
   MetricRule,
 ) as any as S.Schema<MetricRuleList>;
@@ -280,7 +279,7 @@ export const QuotaLimit = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaLimit" }) as any as S.Schema<QuotaLimit>;
 
-export type QuotaLimitList = QuotaLimit[];
+export type QuotaLimitList = ReadonlyArray<QuotaLimit>;
 export const QuotaLimitList = /*@__PURE__*/ S.Array(
   QuotaLimit,
 ) as any as S.Schema<QuotaLimitList>;
@@ -315,7 +314,7 @@ export const MonitoringDestination = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitoringDestination",
 }) as any as S.Schema<MonitoringDestination>;
 
-export type MonitoringDestinationList = MonitoringDestination[];
+export type MonitoringDestinationList = ReadonlyArray<MonitoringDestination>;
 export const MonitoringDestinationList = /*@__PURE__*/ S.Array(
   MonitoringDestination,
 ) as any as S.Schema<MonitoringDestinationList>;
@@ -337,8 +336,7 @@ export const Monitoring = /*@__PURE__*/ S.suspend(() =>
 export type MethodSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS"
-  | (string & {});
+  | "SYNTAX_EDITIONS";
 export const MethodSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** A protocol buffer option, which can be attached to a message, field, enumeration, etc. New usages of this message as an alternative to FileOptions, MessageOptions, FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions, or MethodOptions are strongly discouraged. */
@@ -355,7 +353,7 @@ export const Option = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Option" }) as any as S.Schema<Option>;
 
-export type OptionList = Option[];
+export type OptionList = ReadonlyArray<Option>;
 export const OptionList = /*@__PURE__*/ S.Array(
   Option,
 ) as any as S.Schema<OptionList>;
@@ -392,7 +390,7 @@ export const Method = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Method" }) as any as S.Schema<Method>;
 
-export type MethodList = Method[];
+export type MethodList = ReadonlyArray<Method>;
 export const MethodList = /*@__PURE__*/ S.Array(
   Method,
 ) as any as S.Schema<MethodList>;
@@ -400,8 +398,7 @@ export const MethodList = /*@__PURE__*/ S.Array(
 export type ApiSyntaxEnum =
   | "SYNTAX_PROTO2"
   | "SYNTAX_PROTO3"
-  | "SYNTAX_EDITIONS"
-  | (string & {});
+  | "SYNTAX_EDITIONS";
 export const ApiSyntaxEnum = /*@__PURE__*/ S.String;
 
 /** Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... } */
@@ -418,7 +415,7 @@ export const Mixin = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Mixin" }) as any as S.Schema<Mixin>;
 
-export type MixinList = Mixin[];
+export type MixinList = ReadonlyArray<Mixin>;
 export const MixinList = /*@__PURE__*/ S.Array(
   Mixin,
 ) as any as S.Schema<MixinList>;
@@ -466,7 +463,7 @@ export const Api = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Api" }) as any as S.Schema<Api>;
 
-export type ApiList = Api[];
+export type ApiList = ReadonlyArray<Api>;
 export const ApiList = /*@__PURE__*/ S.Array(Api) as any as S.Schema<ApiList>;
 
 /** OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions. */
@@ -498,7 +495,7 @@ export const AuthRequirement = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthRequirement",
 }) as any as S.Schema<AuthRequirement>;
 
-export type AuthRequirementList = AuthRequirement[];
+export type AuthRequirementList = ReadonlyArray<AuthRequirement>;
 export const AuthRequirementList = /*@__PURE__*/ S.Array(
   AuthRequirement,
 ) as any as S.Schema<AuthRequirementList>;
@@ -525,7 +522,7 @@ export const AuthenticationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthenticationRule",
 }) as any as S.Schema<AuthenticationRule>;
 
-export type AuthenticationRuleList = AuthenticationRule[];
+export type AuthenticationRuleList = ReadonlyArray<AuthenticationRule>;
 export const AuthenticationRuleList = /*@__PURE__*/ S.Array(
   AuthenticationRule,
 ) as any as S.Schema<AuthenticationRuleList>;
@@ -550,7 +547,7 @@ export const JwtLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JwtLocation" }) as any as S.Schema<JwtLocation>;
 
-export type JwtLocationList = JwtLocation[];
+export type JwtLocationList = ReadonlyArray<JwtLocation>;
 export const JwtLocationList = /*@__PURE__*/ S.Array(
   JwtLocation,
 ) as any as S.Schema<JwtLocationList>;
@@ -581,7 +578,7 @@ export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuthProvider" }) as any as S.Schema<AuthProvider>;
 
-export type AuthProviderList = AuthProvider[];
+export type AuthProviderList = ReadonlyArray<AuthProvider>;
 export const AuthProviderList = /*@__PURE__*/ S.Array(
   AuthProvider,
 ) as any as S.Schema<AuthProviderList>;
@@ -620,7 +617,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
-export type EndpointList = Endpoint[];
+export type EndpointList = ReadonlyArray<Endpoint>;
 export const EndpointList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointList>;
@@ -633,16 +630,11 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const MonitoredResourceDescriptorLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
-export type LabelDescriptorValueTypeEnum =
-  | "STRING"
-  | "BOOL"
-  | "INT64"
-  | (string & {});
+export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
 export const LabelDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** A description of a label. */
@@ -664,7 +656,7 @@ export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelDescriptor",
 }) as any as S.Schema<LabelDescriptor>;
 
-export type LabelDescriptorList = LabelDescriptor[];
+export type LabelDescriptorList = ReadonlyArray<LabelDescriptor>;
 export const LabelDescriptorList = /*@__PURE__*/ S.Array(
   LabelDescriptor,
 ) as any as S.Schema<LabelDescriptorList>;
@@ -697,7 +689,8 @@ export const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitoredResourceDescriptor",
 }) as any as S.Schema<MonitoredResourceDescriptor>;
 
-export type MonitoredResourceDescriptorList = MonitoredResourceDescriptor[];
+export type MonitoredResourceDescriptorList =
+  ReadonlyArray<MonitoredResourceDescriptor>;
 export const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
   MonitoredResourceDescriptor,
 ) as any as S.Schema<MonitoredResourceDescriptorList>;
@@ -724,7 +717,7 @@ export const DocumentationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "DocumentationRule",
 }) as any as S.Schema<DocumentationRule>;
 
-export type DocumentationRuleList = DocumentationRule[];
+export type DocumentationRuleList = ReadonlyArray<DocumentationRule>;
 export const DocumentationRuleList = /*@__PURE__*/ S.Array(
   DocumentationRule,
 ) as any as S.Schema<DocumentationRuleList>;
@@ -746,7 +739,7 @@ export const Page = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
-export type PageList = Page[];
+export type PageList = ReadonlyArray<Page>;
 export const PageList = /*@__PURE__*/ S.Array(
   Page,
 ) as any as S.Schema<PageList>;
@@ -847,7 +840,7 @@ export const GoogleApiServiceusageV1Service = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleApiServiceusageV1Service>;
 
 export type GoogleApiServiceusageV1ServiceList =
-  GoogleApiServiceusageV1Service[];
+  ReadonlyArray<GoogleApiServiceusageV1Service>;
 export const GoogleApiServiceusageV1ServiceList = /*@__PURE__*/ S.Array(
   GoogleApiServiceusageV1Service,
 ) as any as S.Schema<GoogleApiServiceusageV1ServiceList>;
@@ -921,8 +914,7 @@ export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DisableServiceRequestCheckIfServiceHasUsageEnum =
   | "CHECK_IF_SERVICE_HAS_USAGE_UNSPECIFIED"
   | "SKIP"
-  | "CHECK"
-  | (string & {});
+  | "CHECK";
 export const DisableServiceRequestCheckIfServiceHasUsageEnum =
   /*@__PURE__*/ S.String;
 
@@ -1060,7 +1052,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

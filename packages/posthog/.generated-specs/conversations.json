@@ -949,21 +949,6 @@
             "smithy.api#documentation": "The ticket's UUID or its numeric ticket number."
           }
         },
-        "ticket_number": {
-          "target": "smithy.api#Integer"
-        },
-        "channel_source": {
-          "target": "com.posthog.conversations#ChannelSourceEnum"
-        },
-        "channel_detail": {
-          "target": "com.posthog.conversations#ChannelDetailEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "distinct_id": {
-          "target": "smithy.api#String"
-        },
         "status": {
           "target": "com.posthog.conversations#TicketStatusEnum",
           "traits": {
@@ -977,20 +962,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "assignee": {
-          "target": "com.posthog.conversations#TicketAssignment"
-        },
         "anonymous_traits": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Customer-provided traits such as name and email"
-          }
-        },
-        "identity_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Trust signal indicating whether the ticket's claimed identity was attested by the server (widget HMAC, SPF-authenticated email, or a signature-validated platform webhook). True when verified, false when assessed but not attested, null when unknown (e.g. created before this signal existed).",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "ai_resolved": {
@@ -1002,48 +977,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "ai_triage": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "AI support pipeline triage and outcome (status, result, ticket_type, confidence, attempts, etc.)."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "message_count": {
-          "target": "smithy.api#Integer"
-        },
-        "last_message_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_message_text": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "unread_team_count": {
-          "target": "smithy.api#Integer"
-        },
-        "unread_customer_count": {
-          "target": "smithy.api#Integer"
-        },
-        "session_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "session_context": {
-          "target": "smithy.api#Document"
-        },
         "sla_due_at": {
           "target": "smithy.api#String",
           "traits": {
@@ -1053,83 +986,6 @@
         },
         "snoozed_until": {
           "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_channel_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_thread_ts": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_team_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "email_subject": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "email_from": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "email_to": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "cc_participants": {
-          "target": "smithy.api#Document"
-        },
-        "github_repo": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "github_issue_number": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "zendesk_ticket_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Customer's PostHog organization group key, resolved at ticket creation. Null when unknown.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "organization_id_source": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "How organization_id was resolved: 'person' (from the requester's identity) or 'slack_channel_account' (inferred from the customer analytics account linked to the ticket's Slack channel). Null when organization_id is unset.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "person": {
-          "target": "com.posthog.conversations#TicketPerson",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -1210,21 +1066,6 @@
             "smithy.api#documentation": "The ticket's UUID or its numeric ticket number."
           }
         },
-        "ticket_number": {
-          "target": "smithy.api#Integer"
-        },
-        "channel_source": {
-          "target": "com.posthog.conversations#ChannelSourceEnum"
-        },
-        "channel_detail": {
-          "target": "com.posthog.conversations#ChannelDetailEnum",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "distinct_id": {
-          "target": "smithy.api#String"
-        },
         "status": {
           "target": "com.posthog.conversations#TicketStatusEnum",
           "traits": {
@@ -1238,20 +1079,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "assignee": {
-          "target": "com.posthog.conversations#TicketAssignment"
-        },
         "anonymous_traits": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Customer-provided traits such as name and email"
-          }
-        },
-        "identity_verified": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Trust signal indicating whether the ticket's claimed identity was attested by the server (widget HMAC, SPF-authenticated email, or a signature-validated platform webhook). True when verified, false when assessed but not attested, null when unknown (e.g. created before this signal existed).",
-            "com.distilled.openapi#nullable": {}
           }
         },
         "ai_resolved": {
@@ -1263,48 +1094,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "ai_triage": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "AI support pipeline triage and outcome (status, result, ticket_type, confidence, attempts, etc.)."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "message_count": {
-          "target": "smithy.api#Integer"
-        },
-        "last_message_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_message_text": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "unread_team_count": {
-          "target": "smithy.api#Integer"
-        },
-        "unread_customer_count": {
-          "target": "smithy.api#Integer"
-        },
-        "session_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "session_context": {
-          "target": "smithy.api#Document"
-        },
         "sla_due_at": {
           "target": "smithy.api#String",
           "traits": {
@@ -1314,83 +1103,6 @@
         },
         "snoozed_until": {
           "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_channel_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_thread_ts": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "slack_team_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "email_subject": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "email_from": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "email_to": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "cc_participants": {
-          "target": "smithy.api#Document"
-        },
-        "github_repo": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "github_issue_number": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "zendesk_ticket_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "organization_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Customer's PostHog organization group key, resolved at ticket creation. Null when unknown.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "organization_id_source": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "How organization_id was resolved: 'person' (from the requester's identity) or 'slack_channel_account' (inferred from the customer analytics account linked to the ticket's Slack channel). Null when organization_id is unset.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "person": {
-          "target": "com.posthog.conversations#TicketPerson",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -2199,7 +1911,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.conversations#UserBasic"
+          "target": "com.posthog.conversations#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "is_favorited": {
           "target": "smithy.api#Boolean",
@@ -2402,12 +2117,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
-        "short_id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
@@ -2416,12 +2125,6 @@
           "traits": {
             "smithy.api#documentation": "Saved ticket filter criteria. May contain status, priority, channel, sla, assignee, tags, dateFrom, dateTo, and sorting keys."
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.conversations#UserBasic"
         },
         "is_favorited": {
           "target": "smithy.api#Boolean",
@@ -2538,9 +2241,6 @@
             "smithy.api#required": {}
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
@@ -2549,12 +2249,6 @@
           "traits": {
             "smithy.api#documentation": "Saved ticket filter criteria. May contain status, priority, channel, sla, assignee, tags, dateFrom, dateTo, and sorting keys."
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.conversations#UserBasic"
         },
         "is_favorited": {
           "target": "smithy.api#Boolean",

@@ -197,7 +197,7 @@ export const CheckInstanceUpgradabilityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckInstanceUpgradabilityResponse",
 }) as any as S.Schema<CheckInstanceUpgradabilityResponse>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -207,16 +207,14 @@ export type InstanceHealthStateEnum =
   | "HEALTHY"
   | "UNHEALTHY"
   | "AGENT_NOT_INSTALLED"
-  | "AGENT_NOT_RUNNING"
-  | (string & {});
+  | "AGENT_NOT_RUNNING";
 export const InstanceHealthStateEnum = /*@__PURE__*/ S.String;
 
 export type ReservationAffinityConsumeReservationTypeEnum =
   | "RESERVATION_UNSPECIFIED"
   | "RESERVATION_NONE"
   | "RESERVATION_ANY"
-  | "RESERVATION_SPECIFIC"
-  | (string & {});
+  | "RESERVATION_SPECIFIC";
 export const ReservationAffinityConsumeReservationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -290,7 +288,7 @@ export const ServiceAccount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceAccount" }) as any as S.Schema<ServiceAccount>;
 
-export type ServiceAccountList = ServiceAccount[];
+export type ServiceAccountList = ReadonlyArray<ServiceAccount>;
 export const ServiceAccountList = /*@__PURE__*/ S.Array(
   ServiceAccount,
 ) as any as S.Schema<ServiceAccountList>;
@@ -336,15 +334,13 @@ export type DataDiskDiskTypeEnum =
   | "HYPERDISK_EXTREME"
   | "HYPERDISK_THROUGHPUT"
   | "HYPERDISK_BALANCED_HIGH_AVAILABILITY"
-  | "HYPERDISK_ML"
-  | (string & {});
+  | "HYPERDISK_ML";
 export const DataDiskDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type DataDiskDiskEncryptionEnum =
   | "DISK_ENCRYPTION_UNSPECIFIED"
   | "GMEK"
-  | "CMEK"
-  | (string & {});
+  | "CMEK";
 export const DataDiskDiskEncryptionEnum = /*@__PURE__*/ S.String;
 
 /** An instance-attached disk resource. */
@@ -370,7 +366,7 @@ export const DataDisk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataDisk" }) as any as S.Schema<DataDisk>;
 
-export type DataDiskList = DataDisk[];
+export type DataDiskList = ReadonlyArray<DataDisk>;
 export const DataDiskList = /*@__PURE__*/ S.Array(
   DataDisk,
 ) as any as S.Schema<DataDiskList>;
@@ -386,7 +382,7 @@ export const AccessConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessConfig" }) as any as S.Schema<AccessConfig>;
 
-export type AccessConfigList = AccessConfig[];
+export type AccessConfigList = ReadonlyArray<AccessConfig>;
 export const AccessConfigList = /*@__PURE__*/ S.Array(
   AccessConfig,
 ) as any as S.Schema<AccessConfigList>;
@@ -394,8 +390,7 @@ export const AccessConfigList = /*@__PURE__*/ S.Array(
 export type NetworkInterfaceNicTypeEnum =
   | "NIC_TYPE_UNSPECIFIED"
   | "VIRTIO_NET"
-  | "GVNIC"
-  | (string & {});
+  | "GVNIC";
 export const NetworkInterfaceNicTypeEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a network interface resource attached to a VM. */
@@ -420,7 +415,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkInterface",
 }) as any as S.Schema<NetworkInterface>;
 
-export type NetworkInterfaceList = NetworkInterface[];
+export type NetworkInterfaceList = ReadonlyArray<NetworkInterface>;
 export const NetworkInterfaceList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkInterfaceList>;
@@ -441,8 +436,7 @@ export type AcceleratorConfigTypeEnum =
   | "NVIDIA_TESLA_P100_VWS"
   | "NVIDIA_TESLA_P4_VWS"
   | "NVIDIA_B200"
-  | "NVIDIA_RTX6000"
-  | (string & {});
+  | "NVIDIA_RTX6000";
 export const AcceleratorConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** An accelerator configuration for a VM instance Definition of a hardware accelerator. Note that there is no check on `type` and `core_count` combinations. TPUs are not supported. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. */
@@ -461,15 +455,14 @@ export const AcceleratorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcceleratorConfig",
 }) as any as S.Schema<AcceleratorConfig>;
 
-export type AcceleratorConfigList = AcceleratorConfig[];
+export type AcceleratorConfigList = ReadonlyArray<AcceleratorConfig>;
 export const AcceleratorConfigList = /*@__PURE__*/ S.Array(
   AcceleratorConfig,
 ) as any as S.Schema<AcceleratorConfigList>;
 
 export type ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
   | "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"
-  | "SEV"
-  | (string & {});
+  | "SEV";
 export const ConfidentialInstanceConfigConfidentialInstanceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -498,15 +491,13 @@ export type BootDiskDiskTypeEnum =
   | "HYPERDISK_EXTREME"
   | "HYPERDISK_THROUGHPUT"
   | "HYPERDISK_BALANCED_HIGH_AVAILABILITY"
-  | "HYPERDISK_ML"
-  | (string & {});
+  | "HYPERDISK_ML";
 export const BootDiskDiskTypeEnum = /*@__PURE__*/ S.String;
 
 export type BootDiskDiskEncryptionEnum =
   | "DISK_ENCRYPTION_UNSPECIFIED"
   | "GMEK"
-  | "CMEK"
-  | (string & {});
+  | "CMEK";
 export const BootDiskDiskEncryptionEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a boot disk. */
@@ -595,15 +586,13 @@ export type UpgradeHistoryEntryStateEnum =
   | "STATE_UNSPECIFIED"
   | "STARTED"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const UpgradeHistoryEntryStateEnum = /*@__PURE__*/ S.String;
 
 export type UpgradeHistoryEntryActionEnum =
   | "ACTION_UNSPECIFIED"
   | "UPGRADE"
-  | "ROLLBACK"
-  | (string & {});
+  | "ROLLBACK";
 export const UpgradeHistoryEntryActionEnum = /*@__PURE__*/ S.String;
 
 /** The entry of VM image upgrade history. */
@@ -643,7 +632,7 @@ export const UpgradeHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpgradeHistoryEntry",
 }) as any as S.Schema<UpgradeHistoryEntry>;
 
-export type UpgradeHistoryEntryList = UpgradeHistoryEntry[];
+export type UpgradeHistoryEntryList = ReadonlyArray<UpgradeHistoryEntry>;
 export const UpgradeHistoryEntryList = /*@__PURE__*/ S.Array(
   UpgradeHistoryEntry,
 ) as any as S.Schema<UpgradeHistoryEntryList>;
@@ -659,8 +648,7 @@ export type InstanceStateEnum =
   | "UPGRADING"
   | "INITIALIZING"
   | "SUSPENDING"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** The definition of a notebook instance. */
@@ -765,7 +753,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1037,7 +1025,7 @@ export const ImageRelease = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ImageRelease" }) as any as S.Schema<ImageRelease>;
 
-export type ImageReleaseList = ImageRelease[];
+export type ImageReleaseList = ReadonlyArray<ImageRelease>;
 export const ImageReleaseList = /*@__PURE__*/ S.Array(
   ImageRelease,
 ) as any as S.Schema<ImageReleaseList>;
@@ -1121,7 +1109,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1252,7 +1240,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1304,7 +1292,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -1359,7 +1347,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1417,8 +1405,7 @@ export type EventTypeEnum =
   | "HEARTBEAT"
   | "HEALTH"
   | "MAINTENANCE"
-  | "METADATA_CHANGE"
-  | (string & {});
+  | "METADATA_CHANGE";
 export const EventTypeEnum = /*@__PURE__*/ S.String;
 
 /** The definition of an Event for a managed / semi-managed notebook instance. */

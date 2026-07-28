@@ -192,15 +192,13 @@ export type EntryPointEntryPointTypeEnum =
   | "ENTRY_POINT_TYPE_UNSPECIFIED"
   | "WEB_APP"
   | "EXECUTION_API"
-  | "ADD_ON"
-  | (string & {});
+  | "ADD_ON";
 export const EntryPointEntryPointTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleAppsScriptTypeWebAppConfigExecuteAsEnum =
   | "UNKNOWN_EXECUTE_AS"
   | "USER_ACCESSING"
-  | "USER_DEPLOYING"
-  | (string & {});
+  | "USER_DEPLOYING";
 export const GoogleAppsScriptTypeWebAppConfigExecuteAsEnum =
   /*@__PURE__*/ S.String;
 
@@ -209,8 +207,7 @@ export type GoogleAppsScriptTypeWebAppConfigAccessEnum =
   | "MYSELF"
   | "DOMAIN"
   | "ANYONE"
-  | "ANYONE_ANONYMOUS"
-  | (string & {});
+  | "ANYONE_ANONYMOUS";
 export const GoogleAppsScriptTypeWebAppConfigAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -252,8 +249,7 @@ export type GoogleAppsScriptTypeExecutionApiConfigAccessEnum =
   | "MYSELF"
   | "DOMAIN"
   | "ANYONE"
-  | "ANYONE_ANONYMOUS"
-  | (string & {});
+  | "ANYONE_ANONYMOUS";
 export const GoogleAppsScriptTypeExecutionApiConfigAccessEnum =
   /*@__PURE__*/ S.String;
 
@@ -288,8 +284,7 @@ export const GoogleAppsScriptTypeExecutionApiEntryPoint =
 export type GoogleAppsScriptTypeAddOnEntryPointAddOnTypeEnum =
   | "UNKNOWN_ADDON_TYPE"
   | "GMAIL"
-  | "DATA_STUDIO"
-  | (string & {});
+  | "DATA_STUDIO";
 export const GoogleAppsScriptTypeAddOnEntryPointAddOnTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -341,7 +336,7 @@ export const EntryPoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntryPoint" }) as any as S.Schema<EntryPoint>;
 
-export type EntryPointList = EntryPoint[];
+export type EntryPointList = ReadonlyArray<EntryPoint>;
 export const EntryPointList = /*@__PURE__*/ S.Array(
   EntryPoint,
 ) as any as S.Schema<EntryPointList>;
@@ -455,7 +450,7 @@ export const GetContentProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetContentProjectsRequest",
 }) as any as S.Schema<GetContentProjectsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -476,7 +471,8 @@ export const GoogleAppsScriptTypeFunction = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsScriptTypeFunction",
 }) as any as S.Schema<GoogleAppsScriptTypeFunction>;
 
-export type GoogleAppsScriptTypeFunctionList = GoogleAppsScriptTypeFunction[];
+export type GoogleAppsScriptTypeFunctionList =
+  ReadonlyArray<GoogleAppsScriptTypeFunction>;
 export const GoogleAppsScriptTypeFunctionList = /*@__PURE__*/ S.Array(
   GoogleAppsScriptTypeFunction,
 ) as any as S.Schema<GoogleAppsScriptTypeFunctionList>;
@@ -498,8 +494,7 @@ export type FileTypeEnum =
   | "ENUM_TYPE_UNSPECIFIED"
   | "SERVER_JS"
   | "HTML"
-  | "JSON"
-  | (string & {});
+  | "JSON";
 export const FileTypeEnum = /*@__PURE__*/ S.String;
 
 /** An individual file within a script project. A file is a third-party source code created by one or more developers. It can be a server-side JS code, HTML, or a configuration file. Each script project can contain multiple files. */
@@ -531,7 +526,7 @@ export const File = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
-export type FileList = File[];
+export type FileList = ReadonlyArray<File>;
 export const FileList = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<FileList>;
@@ -553,8 +548,7 @@ export const Content = /*@__PURE__*/ S.suspend(() =>
 export type GetMetricsProjectsMetricsGranularityEnum =
   | "UNSPECIFIED_GRANULARITY"
   | "WEEKLY"
-  | "DAILY"
-  | (string & {});
+  | "DAILY";
 export const GetMetricsProjectsMetricsGranularityEnum = /*@__PURE__*/ S.String;
 
 export interface GetMetricsProjectsRequest {
@@ -600,7 +594,7 @@ export const MetricsValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricsValue" }) as any as S.Schema<MetricsValue>;
 
-export type MetricsValueList = MetricsValue[];
+export type MetricsValueList = ReadonlyArray<MetricsValue>;
 export const MetricsValueList = /*@__PURE__*/ S.Array(
   MetricsValue,
 ) as any as S.Schema<MetricsValueList>;
@@ -687,13 +681,12 @@ export type ListProcessesUserProcessFilter_userAccessLevelsEnum =
   | "NONE"
   | "READ"
   | "WRITE"
-  | "OWNER"
-  | (string & {});
+  | "OWNER";
 export const ListProcessesUserProcessFilter_userAccessLevelsEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProcessesUserProcessFilter_userAccessLevelsEnumList =
-  ListProcessesUserProcessFilter_userAccessLevelsEnum[];
+  ReadonlyArray<ListProcessesUserProcessFilter_userAccessLevelsEnum>;
 export const ListProcessesUserProcessFilter_userAccessLevelsEnumList =
   /*@__PURE__*/ S.Array(
     ListProcessesUserProcessFilter_userAccessLevelsEnum,
@@ -709,12 +702,11 @@ export type ListProcessesUserProcessFilter_typesEnum =
   | "EDITOR"
   | "SIMPLE_TRIGGER"
   | "MENU"
-  | "BATCH_TASK"
-  | (string & {});
+  | "BATCH_TASK";
 export const ListProcessesUserProcessFilter_typesEnum = /*@__PURE__*/ S.String;
 
 export type ListProcessesUserProcessFilter_typesEnumList =
-  ListProcessesUserProcessFilter_typesEnum[];
+  ReadonlyArray<ListProcessesUserProcessFilter_typesEnum>;
 export const ListProcessesUserProcessFilter_typesEnumList =
   /*@__PURE__*/ S.Array(
     ListProcessesUserProcessFilter_typesEnum,
@@ -730,13 +722,12 @@ export type ListProcessesUserProcessFilter_statusesEnum =
   | "TIMED_OUT"
   | "UNKNOWN"
   | "DELAYED"
-  | "EXECUTION_DISABLED"
-  | (string & {});
+  | "EXECUTION_DISABLED";
 export const ListProcessesUserProcessFilter_statusesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProcessesUserProcessFilter_statusesEnumList =
-  ListProcessesUserProcessFilter_statusesEnum[];
+  ReadonlyArray<ListProcessesUserProcessFilter_statusesEnum>;
 export const ListProcessesUserProcessFilter_statusesEnumList =
   /*@__PURE__*/ S.Array(
     ListProcessesUserProcessFilter_statusesEnum,
@@ -799,8 +790,7 @@ export const ListProcessesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsScriptTypeProcessRuntimeVersionEnum =
   | "RUNTIME_VERSION_UNSPECIFIED"
   | "DEPRECATED_ES5"
-  | "V8"
-  | (string & {});
+  | "V8";
 export const GoogleAppsScriptTypeProcessRuntimeVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -814,8 +804,7 @@ export type GoogleAppsScriptTypeProcessProcessTypeEnum =
   | "EDITOR"
   | "SIMPLE_TRIGGER"
   | "MENU"
-  | "BATCH_TASK"
-  | (string & {});
+  | "BATCH_TASK";
 export const GoogleAppsScriptTypeProcessProcessTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -824,8 +813,7 @@ export type GoogleAppsScriptTypeProcessUserAccessLevelEnum =
   | "NONE"
   | "READ"
   | "WRITE"
-  | "OWNER"
-  | (string & {});
+  | "OWNER";
 export const GoogleAppsScriptTypeProcessUserAccessLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -839,8 +827,7 @@ export type GoogleAppsScriptTypeProcessProcessStatusEnum =
   | "TIMED_OUT"
   | "UNKNOWN"
   | "DELAYED"
-  | "EXECUTION_DISABLED"
-  | (string & {});
+  | "EXECUTION_DISABLED";
 export const GoogleAppsScriptTypeProcessProcessStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -878,7 +865,8 @@ export const GoogleAppsScriptTypeProcess = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleAppsScriptTypeProcess",
 }) as any as S.Schema<GoogleAppsScriptTypeProcess>;
 
-export type GoogleAppsScriptTypeProcessList = GoogleAppsScriptTypeProcess[];
+export type GoogleAppsScriptTypeProcessList =
+  ReadonlyArray<GoogleAppsScriptTypeProcess>;
 export const GoogleAppsScriptTypeProcessList = /*@__PURE__*/ S.Array(
   GoogleAppsScriptTypeProcess,
 ) as any as S.Schema<GoogleAppsScriptTypeProcessList>;
@@ -923,7 +911,7 @@ export const ListProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsDeploymentsRequest",
 }) as any as S.Schema<ListProjectsDeploymentsRequest>;
 
-export type DeploymentList = Deployment[];
+export type DeploymentList = ReadonlyArray<Deployment>;
 export const DeploymentList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentList>;
@@ -968,7 +956,7 @@ export const ListProjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsVersionsRequest",
 }) as any as S.Schema<ListProjectsVersionsRequest>;
 
-export type VersionList = Version[];
+export type VersionList = ReadonlyArray<Version>;
 export const VersionList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<VersionList>;
@@ -999,30 +987,24 @@ export type ListScriptProcessesProcessesScriptProcessFilter_statusesEnum =
   | "TIMED_OUT"
   | "UNKNOWN"
   | "DELAYED"
-  | "EXECUTION_DISABLED"
-  | (string & {});
+  | "EXECUTION_DISABLED";
 export const ListScriptProcessesProcessesScriptProcessFilter_statusesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList =
-  ListScriptProcessesProcessesScriptProcessFilter_statusesEnum[];
+  ReadonlyArray<ListScriptProcessesProcessesScriptProcessFilter_statusesEnum>;
 export const ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList =
   /*@__PURE__*/ S.Array(
     ListScriptProcessesProcessesScriptProcessFilter_statusesEnum,
   ) as any as S.Schema<ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList>;
 
 export type ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum =
-    | "USER_ACCESS_LEVEL_UNSPECIFIED"
-    | "NONE"
-    | "READ"
-    | "WRITE"
-    | "OWNER"
-    | (string & {});
+  "USER_ACCESS_LEVEL_UNSPECIFIED" | "NONE" | "READ" | "WRITE" | "OWNER";
 export const ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum =
   /*@__PURE__*/ S.String;
 
 export type ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList =
-  ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum[];
+  ReadonlyArray<ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum>;
 export const ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList =
   /*@__PURE__*/ S.Array(
     ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum,
@@ -1038,13 +1020,12 @@ export type ListScriptProcessesProcessesScriptProcessFilter_typesEnum =
   | "EDITOR"
   | "SIMPLE_TRIGGER"
   | "MENU"
-  | "BATCH_TASK"
-  | (string & {});
+  | "BATCH_TASK";
 export const ListScriptProcessesProcessesScriptProcessFilter_typesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListScriptProcessesProcessesScriptProcessFilter_typesEnumList =
-  ListScriptProcessesProcessesScriptProcessFilter_typesEnum[];
+  ReadonlyArray<ListScriptProcessesProcessesScriptProcessFilter_typesEnum>;
 export const ListScriptProcessesProcessesScriptProcessFilter_typesEnumList =
   /*@__PURE__*/ S.Array(
     ListScriptProcessesProcessesScriptProcessFilter_typesEnum,
@@ -1123,7 +1104,7 @@ export const ListScriptProcessesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScriptProcessesResponse",
 }) as any as S.Schema<ListScriptProcessesResponse>;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -1177,7 +1158,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;

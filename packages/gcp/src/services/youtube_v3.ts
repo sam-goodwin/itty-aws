@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -160,7 +160,7 @@ export const VideoStat = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VideoStat" }) as any as S.Schema<VideoStat>;
 
-export type VideoStatList = VideoStat[];
+export type VideoStatList = ReadonlyArray<VideoStat>;
 export const VideoStatList = /*@__PURE__*/ S.Array(
   VideoStat,
 ) as any as S.Schema<VideoStatList>;
@@ -250,8 +250,7 @@ export type LiveBroadcastContentDetailsLatencyPreferenceEnum =
   | "latencyPreferenceUnspecified"
   | "normal"
   | "low"
-  | "ultraLow"
-  | (string & {});
+  | "ultraLow";
 export const LiveBroadcastContentDetailsLatencyPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -259,8 +258,7 @@ export type LiveBroadcastContentDetailsStereoLayoutEnum =
   | "stereoLayoutUnspecified"
   | "mono"
   | "leftRight"
-  | "topBottom"
-  | (string & {});
+  | "topBottom";
 export const LiveBroadcastContentDetailsStereoLayoutEnum =
   /*@__PURE__*/ S.String;
 
@@ -268,8 +266,7 @@ export type LiveBroadcastContentDetailsClosedCaptionsTypeEnum =
   | "closedCaptionsTypeUnspecified"
   | "closedCaptionsDisabled"
   | "closedCaptionsHttpPost"
-  | "closedCaptionsEmbedded"
-  | (string & {});
+  | "closedCaptionsEmbedded";
 export const LiveBroadcastContentDetailsClosedCaptionsTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -277,8 +274,7 @@ export type LiveBroadcastContentDetailsProjectionEnum =
   | "projectionUnspecified"
   | "rectangular"
   | "360"
-  | "mesh"
-  | (string & {});
+  | "mesh";
 export const LiveBroadcastContentDetailsProjectionEnum = /*@__PURE__*/ S.String;
 
 /** Detailed settings of a broadcast. */
@@ -348,8 +344,7 @@ export const LiveBroadcastContentDetails = /*@__PURE__*/ S.suspend(() =>
 export type CuepointScheduleScheduleStrategyEnum =
   | "scheduleStrategyUnspecified"
   | "concurrent"
-  | "nonConcurrent"
-  | (string & {});
+  | "nonConcurrent";
 export const CuepointScheduleScheduleStrategyEnum = /*@__PURE__*/ S.String;
 
 /** Schedule to insert cuepoints into a broadcast by ads automator. */
@@ -480,31 +475,27 @@ export type LiveBroadcastStatusLifeCycleStatusEnum =
   | "complete"
   | "revoked"
   | "testStarting"
-  | "liveStarting"
-  | (string & {});
+  | "liveStarting";
 export const LiveBroadcastStatusLifeCycleStatusEnum = /*@__PURE__*/ S.String;
 
 export type LiveBroadcastStatusPrivacyStatusEnum =
   | "public"
   | "unlisted"
-  | "private"
-  | (string & {});
+  | "private";
 export const LiveBroadcastStatusPrivacyStatusEnum = /*@__PURE__*/ S.String;
 
 export type LiveBroadcastStatusRecordingStatusEnum =
   | "liveBroadcastRecordingStatusUnspecified"
   | "notRecording"
   | "recording"
-  | "recorded"
-  | (string & {});
+  | "recorded";
 export const LiveBroadcastStatusRecordingStatusEnum = /*@__PURE__*/ S.String;
 
 export type LiveBroadcastStatusLiveBroadcastPriorityEnum =
   | "liveBroadcastPriorityUnspecified"
   | "low"
   | "normal"
-  | "high"
-  | (string & {});
+  | "high";
 export const LiveBroadcastStatusLiveBroadcastPriorityEnum =
   /*@__PURE__*/ S.String;
 
@@ -893,8 +884,7 @@ export const DeleteSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type DeleteThirdPartyLinksTypeEnum =
   | "linkUnspecified"
   | "channelToStoreLink"
-  | "channelToAffiliateProgramLink"
-  | (string & {});
+  | "channelToAffiliateProgramLink";
 export const DeleteThirdPartyLinksTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DeleteThirdPartyLinksRequest {
@@ -1015,7 +1005,7 @@ export const GetRatingVideosRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRatingVideosRequest",
 }) as any as S.Schema<GetRatingVideosRequest>;
 
-export type VideoRatingRatingEnum = "none" | "like" | "dislike" | (string & {});
+export type VideoRatingRatingEnum = "none" | "like" | "dislike";
 export const VideoRatingRatingEnum = /*@__PURE__*/ S.String;
 
 /** Basic details about rating of a video. */
@@ -1032,7 +1022,7 @@ export const VideoRating = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VideoRating" }) as any as S.Schema<VideoRating>;
 
-export type VideoRatingList = VideoRating[];
+export type VideoRatingList = ReadonlyArray<VideoRating>;
 export const VideoRatingList = /*@__PURE__*/ S.Array(
   VideoRating,
 ) as any as S.Schema<VideoRatingList>;
@@ -1123,7 +1113,7 @@ export const RelatedEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RelatedEntity" }) as any as S.Schema<RelatedEntity>;
 
-export type RelatedEntityList = RelatedEntity[];
+export type RelatedEntityList = ReadonlyArray<RelatedEntity>;
 export const RelatedEntityList = /*@__PURE__*/ S.Array(
   RelatedEntity,
 ) as any as S.Schema<RelatedEntityList>;
@@ -1137,7 +1127,7 @@ export const AbuseType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AbuseType" }) as any as S.Schema<AbuseType>;
 
-export type AbuseTypeList = AbuseType[];
+export type AbuseTypeList = ReadonlyArray<AbuseType>;
 export const AbuseTypeList = /*@__PURE__*/ S.Array(
   AbuseType,
 ) as any as S.Schema<AbuseTypeList>;
@@ -1182,29 +1172,19 @@ export type CaptionSnippetAudioTrackTypeEnum =
   | "unknown"
   | "primary"
   | "commentary"
-  | "descriptive"
-  | (string & {});
+  | "descriptive";
 export const CaptionSnippetAudioTrackTypeEnum = /*@__PURE__*/ S.String;
 
 export type CaptionSnippetFailureReasonEnum =
   | "unknownFormat"
   | "unsupportedFormat"
-  | "processingFailed"
-  | (string & {});
+  | "processingFailed";
 export const CaptionSnippetFailureReasonEnum = /*@__PURE__*/ S.String;
 
-export type CaptionSnippetTrackKindEnum =
-  | "standard"
-  | "ASR"
-  | "forced"
-  | (string & {});
+export type CaptionSnippetTrackKindEnum = "standard" | "ASR" | "forced";
 export const CaptionSnippetTrackKindEnum = /*@__PURE__*/ S.String;
 
-export type CaptionSnippetStatusEnum =
-  | "serving"
-  | "syncing"
-  | "failed"
-  | (string & {});
+export type CaptionSnippetStatusEnum = "serving" | "syncing" | "failed";
 export const CaptionSnippetStatusEnum = /*@__PURE__*/ S.String;
 
 /** Basic details about a caption track, such as its language and name. */
@@ -1366,15 +1346,13 @@ export type ChannelSectionSnippetTypeEnum =
   | "multipleChannels"
   | "postedVideos"
   | "postedPlaylists"
-  | "subscriptions"
-  | (string & {});
+  | "subscriptions";
 export const ChannelSectionSnippetTypeEnum = /*@__PURE__*/ S.String;
 
 export type ChannelSectionSnippetStyleEnum =
   | "channelsectionStyleUnspecified"
   | "horizontalRow"
-  | "verticalList"
-  | (string & {});
+  | "verticalList";
 export const ChannelSectionSnippetStyleEnum = /*@__PURE__*/ S.String;
 
 /** ChannelSection localization setting */
@@ -1532,19 +1510,14 @@ export const CommentSnippetAuthorChannelId = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentSnippetAuthorChannelId",
 }) as any as S.Schema<CommentSnippetAuthorChannelId>;
 
-export type CommentSnippetViewerRatingEnum =
-  | "none"
-  | "like"
-  | "dislike"
-  | (string & {});
+export type CommentSnippetViewerRatingEnum = "none" | "like" | "dislike";
 export const CommentSnippetViewerRatingEnum = /*@__PURE__*/ S.String;
 
 export type CommentSnippetModerationStatusEnum =
   | "published"
   | "heldForReview"
   | "likelySpam"
-  | "rejected"
-  | (string & {});
+  | "rejected";
 export const CommentSnippetModerationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Basic details about a comment, such as its author and text. */
@@ -1674,7 +1647,7 @@ export const CommentThreadSnippet = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommentThreadSnippet",
 }) as any as S.Schema<CommentThreadSnippet>;
 
-export type CommentList = Comment[];
+export type CommentList = ReadonlyArray<Comment>;
 export const CommentList = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<CommentList>;
@@ -1736,10 +1709,7 @@ export const InsertCommentThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsertCommentThreadsRequest",
 }) as any as S.Schema<InsertCommentThreadsRequest>;
 
-export type CuepointCueTypeEnum =
-  | "cueTypeUnspecified"
-  | "cueTypeAd"
-  | (string & {});
+export type CuepointCueTypeEnum = "cueTypeUnspecified" | "cueTypeAd";
 export const CuepointCueTypeEnum = /*@__PURE__*/ S.String;
 
 /** Note that there may be a 5-second end-point resolution issue. For instance, if a cuepoint comes in for 22:03:27, we may stuff the cuepoint into 22:03:25 or 22:03:30, depending. This is an artifact of HLS. */
@@ -1847,8 +1817,7 @@ export const ChannelProfileDetails = /*@__PURE__*/ S.suspend(() =>
 export type LiveChatBanSnippetTypeEnum =
   | "liveChatBanTypeUnspecified"
   | "permanent"
-  | "temporary"
-  | (string & {});
+  | "temporary";
 export const LiveChatBanSnippetTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LiveChatBanSnippet {
@@ -1944,8 +1913,7 @@ export const LiveChatTextMessageDetails = /*@__PURE__*/ S.suspend(() =>
 
 export type LiveChatUserBannedMessageDetailsBanTypeEnum =
   | "permanent"
-  | "temporary"
-  | (string & {});
+  | "temporary";
 export const LiveChatUserBannedMessageDetailsBanTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1982,7 +1950,7 @@ export const LiveChatPollDetailsPollMetadataPollOption =
   }) as any as S.Schema<LiveChatPollDetailsPollMetadataPollOption>;
 
 export type LiveChatPollDetailsPollMetadataPollOptionList =
-  LiveChatPollDetailsPollMetadataPollOption[];
+  ReadonlyArray<LiveChatPollDetailsPollMetadataPollOption>;
 export const LiveChatPollDetailsPollMetadataPollOptionList =
   /*@__PURE__*/ S.Array(
     LiveChatPollDetailsPollMetadataPollOption,
@@ -2002,11 +1970,7 @@ export const LiveChatPollDetailsPollMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "LiveChatPollDetailsPollMetadata",
 }) as any as S.Schema<LiveChatPollDetailsPollMetadata>;
 
-export type LiveChatPollDetailsStatusEnum =
-  | "unknown"
-  | "active"
-  | "closed"
-  | (string & {});
+export type LiveChatPollDetailsStatusEnum = "unknown" | "active" | "closed";
 export const LiveChatPollDetailsStatusEnum = /*@__PURE__*/ S.String;
 
 export interface LiveChatPollDetails {
@@ -2114,8 +2078,7 @@ export type LiveChatMessageSnippetTypeEnum =
   | "superChatEvent"
   | "superStickerEvent"
   | "pollEvent"
-  | "giftEvent"
-  | (string & {});
+  | "giftEvent";
 export const LiveChatMessageSnippetTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LiveChatSuperChatDetails {
@@ -2469,23 +2432,13 @@ export type CdnSettingsResolutionEnum =
   | "1080p"
   | "1440p"
   | "2160p"
-  | "variable"
-  | (string & {});
+  | "variable";
 export const CdnSettingsResolutionEnum = /*@__PURE__*/ S.String;
 
-export type CdnSettingsIngestionTypeEnum =
-  | "rtmp"
-  | "dash"
-  | "webrtc"
-  | "hls"
-  | (string & {});
+export type CdnSettingsIngestionTypeEnum = "rtmp" | "dash" | "webrtc" | "hls";
 export const CdnSettingsIngestionTypeEnum = /*@__PURE__*/ S.String;
 
-export type CdnSettingsFrameRateEnum =
-  | "30fps"
-  | "60fps"
-  | "variable"
-  | (string & {});
+export type CdnSettingsFrameRateEnum = "30fps" | "60fps" | "variable";
 export const CdnSettingsFrameRateEnum = /*@__PURE__*/ S.String;
 
 /** Brief description of the live stream cdn settings. */
@@ -2555,8 +2508,7 @@ export type LiveStreamStatusStreamStatusEnum =
   | "ready"
   | "active"
   | "inactive"
-  | "error"
-  | (string & {});
+  | "error";
 export const LiveStreamStatusStreamStatusEnum = /*@__PURE__*/ S.String;
 
 export type LiveStreamHealthStatusStatusEnum =
@@ -2564,15 +2516,13 @@ export type LiveStreamHealthStatusStatusEnum =
   | "ok"
   | "bad"
   | "noData"
-  | "revoked"
-  | (string & {});
+  | "revoked";
 export const LiveStreamHealthStatusStatusEnum = /*@__PURE__*/ S.String;
 
 export type LiveStreamConfigurationIssueSeverityEnum =
   | "info"
   | "warning"
-  | "error"
-  | (string & {});
+  | "error";
 export const LiveStreamConfigurationIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 export type LiveStreamConfigurationIssueTypeEnum =
@@ -2609,8 +2559,7 @@ export type LiveStreamConfigurationIssueTypeEnum =
   | "videoResolutionSuboptimal"
   | "videoResolutionUnsupported"
   | "videoIngestionStarved"
-  | "videoIngestionFasterThanRealtime"
-  | (string & {});
+  | "videoIngestionFasterThanRealtime";
 export const LiveStreamConfigurationIssueTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LiveStreamConfigurationIssue {
@@ -2634,7 +2583,8 @@ export const LiveStreamConfigurationIssue = /*@__PURE__*/ S.suspend(() =>
   identifier: "LiveStreamConfigurationIssue",
 }) as any as S.Schema<LiveStreamConfigurationIssue>;
 
-export type LiveStreamConfigurationIssueList = LiveStreamConfigurationIssue[];
+export type LiveStreamConfigurationIssueList =
+  ReadonlyArray<LiveStreamConfigurationIssue>;
 export const LiveStreamConfigurationIssueList = /*@__PURE__*/ S.Array(
   LiveStreamConfigurationIssue,
 ) as any as S.Schema<LiveStreamConfigurationIssueList>;
@@ -2728,7 +2678,7 @@ export const InsertLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsertLiveStreamsRequest",
 }) as any as S.Schema<InsertLiveStreamsRequest>;
 
-export type PlaylistImageSnippetTypeEnum = "hero" | (string & {});
+export type PlaylistImageSnippetTypeEnum = "hero";
 export const PlaylistImageSnippetTypeEnum = /*@__PURE__*/ S.String;
 
 /** A *playlistImage* resource identifies another resource, such as a image, that is associated with a playlist. In addition, the playlistImage resource contains details about the included resource that pertain specifically to how that resource is used in that playlist. YouTube uses playlists to identify special collections of videos for a channel, such as: - uploaded videos - favorite videos - positively rated (liked) videos - watch history To be more specific, these lists are associated with a channel, which is a collection of a person, group, or company's videos, playlists, and other YouTube information. You can retrieve the playlist IDs for each of these lists from the channel resource for a given channel. You can then use the playlistImages.list method to retrieve image data for any of those playlists. You can also add or remove images from those lists by calling the playlistImages.insert and playlistImages.delete methods. */
@@ -2885,8 +2835,7 @@ export const PlaylistItemSnippet = /*@__PURE__*/ S.suspend(() =>
 export type PlaylistItemStatusPrivacyStatusEnum =
   | "public"
   | "unlisted"
-  | "private"
-  | (string & {});
+  | "private";
 export const PlaylistItemStatusPrivacyStatusEnum = /*@__PURE__*/ S.String;
 
 /** Information about the playlist item's privacy status. */
@@ -3016,17 +2965,10 @@ export const PlaylistSnippet = /*@__PURE__*/ S.suspend(() =>
   identifier: "PlaylistSnippet",
 }) as any as S.Schema<PlaylistSnippet>;
 
-export type PlaylistStatusPrivacyStatusEnum =
-  | "public"
-  | "unlisted"
-  | "private"
-  | (string & {});
+export type PlaylistStatusPrivacyStatusEnum = "public" | "unlisted" | "private";
 export const PlaylistStatusPrivacyStatusEnum = /*@__PURE__*/ S.String;
 
-export type PlaylistStatusPodcastStatusEnum =
-  | "enabled"
-  | "disabled"
-  | (string & {});
+export type PlaylistStatusPodcastStatusEnum = "enabled" | "disabled";
 export const PlaylistStatusPodcastStatusEnum = /*@__PURE__*/ S.String;
 
 export interface PlaylistStatus {
@@ -3126,8 +3068,7 @@ export const InsertPlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
 export type SubscriptionContentDetailsActivityTypeEnum =
   | "subscriptionActivityTypeUnspecified"
   | "all"
-  | "uploads"
-  | (string & {});
+  | "uploads";
 export const SubscriptionContentDetailsActivityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3300,8 +3241,7 @@ export type ThirdPartyLinkStatusLinkStatusEnum =
   | "unknown"
   | "failed"
   | "pending"
-  | "linked"
-  | (string & {});
+  | "linked";
 export const ThirdPartyLinkStatusLinkStatusEnum = /*@__PURE__*/ S.String;
 
 /** The third-party link status object contains information about the status of the link. */
@@ -3319,8 +3259,7 @@ export const ThirdPartyLinkStatus = /*@__PURE__*/ S.suspend(() =>
 export type ChannelToAffiliateProgramLinkDetailsProgramStatusEnum =
   | "affiliateProgramStatusUnspecified"
   | "active"
-  | "inactive"
-  | (string & {});
+  | "inactive";
 export const ChannelToAffiliateProgramLinkDetailsProgramStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3352,16 +3291,14 @@ export const ChannelToAffiliateProgramLinkDetails = /*@__PURE__*/ S.suspend(
 export type ThirdPartyLinkSnippetTypeEnum =
   | "linkUnspecified"
   | "channelToStoreLink"
-  | "channelToAffiliateProgramLink"
-  | (string & {});
+  | "channelToAffiliateProgramLink";
 export const ThirdPartyLinkSnippetTypeEnum = /*@__PURE__*/ S.String;
 
 export type ChannelToStoreLinkDetailsMerchantAffiliateProgramDetailsStatusEnum =
     | "merchantAffiliateProgramStatusUnspecified"
     | "merchantAffiliateProgramStatusEligible"
     | "merchantAffiliateProgramStatusActive"
-    | "merchantAffiliateProgramStatusPaused"
-    | (string & {});
+    | "merchantAffiliateProgramStatusPaused";
 export const ChannelToStoreLinkDetailsMerchantAffiliateProgramDetailsStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3385,8 +3322,7 @@ export type ChannelToStoreLinkDetailsBillingDetailsBillingStatusEnum =
   | "billingStatusUnspecified"
   | "billingStatusPending"
   | "billingStatusActive"
-  | "billingStatusInactive"
-  | (string & {});
+  | "billingStatusInactive";
 export const ChannelToStoreLinkDetailsBillingDetailsBillingStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3578,17 +3514,10 @@ export const VideoLiveStreamingDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoLiveStreamingDetails",
 }) as any as S.Schema<VideoLiveStreamingDetails>;
 
-export type VideoStatusLicenseEnum =
-  | "youtube"
-  | "creativeCommon"
-  | (string & {});
+export type VideoStatusLicenseEnum = "youtube" | "creativeCommon";
 export const VideoStatusLicenseEnum = /*@__PURE__*/ S.String;
 
-export type VideoStatusPrivacyStatusEnum =
-  | "public"
-  | "unlisted"
-  | "private"
-  | (string & {});
+export type VideoStatusPrivacyStatusEnum = "public" | "unlisted" | "private";
 export const VideoStatusPrivacyStatusEnum = /*@__PURE__*/ S.String;
 
 export type VideoStatusUploadStatusEnum =
@@ -3596,8 +3525,7 @@ export type VideoStatusUploadStatusEnum =
   | "processed"
   | "failed"
   | "rejected"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const VideoStatusUploadStatusEnum = /*@__PURE__*/ S.String;
 
 export type VideoStatusRejectionReasonEnum =
@@ -3610,8 +3538,7 @@ export type VideoStatusRejectionReasonEnum =
   | "claim"
   | "uploaderAccountClosed"
   | "trademark"
-  | "legal"
-  | (string & {});
+  | "legal";
 export const VideoStatusRejectionReasonEnum = /*@__PURE__*/ S.String;
 
 export type VideoStatusFailureReasonEnum =
@@ -3620,8 +3547,7 @@ export type VideoStatusFailureReasonEnum =
   | "emptyFile"
   | "tooSmall"
   | "codec"
-  | "uploadAborted"
-  | (string & {});
+  | "uploadAborted";
 export const VideoStatusFailureReasonEnum = /*@__PURE__*/ S.String;
 
 /** Basic details about a video category, such as its localized title. Next Id: 19 */
@@ -3707,8 +3633,7 @@ export type VideoFileDetailsFileTypeEnum =
   | "archive"
   | "document"
   | "project"
-  | "other"
-  | (string & {});
+  | "other";
 export const VideoFileDetailsFileTypeEnum = /*@__PURE__*/ S.String;
 
 export type VideoFileDetailsVideoStreamRotationEnum =
@@ -3716,8 +3641,7 @@ export type VideoFileDetailsVideoStreamRotationEnum =
   | "clockwise"
   | "upsideDown"
   | "counterClockwise"
-  | "other"
-  | (string & {});
+  | "other";
 export const VideoFileDetailsVideoStreamRotationEnum = /*@__PURE__*/ S.String;
 
 /** Information about a video stream. */
@@ -3754,7 +3678,8 @@ export const VideoFileDetailsVideoStream = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoFileDetailsVideoStream",
 }) as any as S.Schema<VideoFileDetailsVideoStream>;
 
-export type VideoFileDetailsVideoStreamList = VideoFileDetailsVideoStream[];
+export type VideoFileDetailsVideoStreamList =
+  ReadonlyArray<VideoFileDetailsVideoStream>;
 export const VideoFileDetailsVideoStreamList = /*@__PURE__*/ S.Array(
   VideoFileDetailsVideoStream,
 ) as any as S.Schema<VideoFileDetailsVideoStreamList>;
@@ -3781,7 +3706,8 @@ export const VideoFileDetailsAudioStream = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoFileDetailsAudioStream",
 }) as any as S.Schema<VideoFileDetailsAudioStream>;
 
-export type VideoFileDetailsAudioStreamList = VideoFileDetailsAudioStream[];
+export type VideoFileDetailsAudioStreamList =
+  ReadonlyArray<VideoFileDetailsAudioStream>;
 export const VideoFileDetailsAudioStreamList = /*@__PURE__*/ S.Array(
   VideoFileDetailsAudioStream,
 ) as any as S.Schema<VideoFileDetailsAudioStreamList>;
@@ -3900,10 +3826,7 @@ export const VideoPlayer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VideoPlayer" }) as any as S.Schema<VideoPlayer>;
 
-export type VideoContentDetailsProjectionEnum =
-  | "rectangular"
-  | "360"
-  | (string & {});
+export type VideoContentDetailsProjectionEnum = "rectangular" | "360";
 export const VideoContentDetailsProjectionEnum = /*@__PURE__*/ S.String;
 
 /** DEPRECATED Region restriction of the video. */
@@ -3947,8 +3870,7 @@ export type ContentRatingDjctqRatingEnum =
   | "djctq1416"
   | "djctq1418"
   | "djctq1618"
-  | "djctqUnrated"
-  | (string & {});
+  | "djctqUnrated";
 export const ContentRatingDjctqRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingMibacRatingEnum =
@@ -3960,8 +3882,7 @@ export type ContentRatingMibacRatingEnum =
   | "mibacVm14"
   | "mibacVm16"
   | "mibacVm18"
-  | "mibacUnrated"
-  | (string & {});
+  | "mibacUnrated";
 export const ContentRatingMibacRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingSmsaRatingEnum =
@@ -3970,15 +3891,13 @@ export type ContentRatingSmsaRatingEnum =
   | "smsa7"
   | "smsa11"
   | "smsa15"
-  | "smsaUnrated"
-  | (string & {});
+  | "smsaUnrated";
 export const ContentRatingSmsaRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingMpaatRatingEnum =
   | "mpaatUnspecified"
   | "mpaatGb"
-  | "mpaatRb"
-  | (string & {});
+  | "mpaatRb";
 export const ContentRatingMpaatRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingFcbmRatingEnum =
@@ -3991,8 +3910,7 @@ export type ContentRatingFcbmRatingEnum =
   | "fcbm18pa"
   | "fcbm18sg"
   | "fcbm18pl"
-  | "fcbmUnrated"
-  | (string & {});
+  | "fcbmUnrated";
 export const ContentRatingFcbmRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingNbcRatingEnum =
@@ -4004,8 +3922,7 @@ export type ContentRatingNbcRatingEnum =
   | "nbc18plus"
   | "nbc18plusr"
   | "nbcPu"
-  | "nbcUnrated"
-  | (string & {});
+  | "nbcUnrated";
 export const ContentRatingNbcRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingOflcRatingEnum =
@@ -4020,8 +3937,7 @@ export type ContentRatingOflcRatingEnum =
   | "oflcUnrated"
   | "oflcRp13"
   | "oflcRp16"
-  | "oflcRp18"
-  | (string & {});
+  | "oflcRp18";
 export const ContentRatingOflcRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingNmcRatingEnum =
@@ -4033,8 +3949,7 @@ export type ContentRatingNmcRatingEnum =
   | "nmc15plus"
   | "nmc18plus"
   | "nmc18tc"
-  | "nmcUnrated"
-  | (string & {});
+  | "nmcUnrated";
 export const ContentRatingNmcRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingMccaaRatingEnum =
@@ -4047,8 +3962,7 @@ export type ContentRatingMccaaRatingEnum =
   | "mccaa15"
   | "mccaa16"
   | "mccaa18"
-  | "mccaaUnrated"
-  | (string & {});
+  | "mccaaUnrated";
 export const ContentRatingMccaaRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingMedietilsynetRatingEnum =
@@ -4061,8 +3975,7 @@ export type ContentRatingMedietilsynetRatingEnum =
   | "medietilsynet12"
   | "medietilsynet15"
   | "medietilsynet18"
-  | "medietilsynetUnrated"
-  | (string & {});
+  | "medietilsynetUnrated";
 export const ContentRatingMedietilsynetRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingChvrsRatingEnum =
@@ -4073,8 +3986,7 @@ export type ContentRatingChvrsRatingEnum =
   | "chvrs18a"
   | "chvrsR"
   | "chvrsE"
-  | "chvrsUnrated"
-  | (string & {});
+  | "chvrsUnrated";
 export const ContentRatingChvrsRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingBmukkRatingEnum =
@@ -4086,8 +3998,7 @@ export type ContentRatingBmukkRatingEnum =
   | "bmukk12"
   | "bmukk14"
   | "bmukk16"
-  | "bmukkUnrated"
-  | (string & {});
+  | "bmukkUnrated";
 export const ContentRatingBmukkRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingCzfilmRatingEnum =
@@ -4096,8 +4007,7 @@ export type ContentRatingCzfilmRatingEnum =
   | "czfilm12"
   | "czfilm14"
   | "czfilm18"
-  | "czfilmUnrated"
-  | (string & {});
+  | "czfilmUnrated";
 export const ContentRatingCzfilmRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingRcnofRatingEnum =
@@ -4108,8 +4018,7 @@ export type ContentRatingRcnofRatingEnum =
   | "rcnofIv"
   | "rcnofV"
   | "rcnofVi"
-  | "rcnofUnrated"
-  | (string & {});
+  | "rcnofUnrated";
 export const ContentRatingRcnofRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingIfcoRatingEnum =
@@ -4122,8 +4031,7 @@ export type ContentRatingIfcoRatingEnum =
   | "ifco15a"
   | "ifco16"
   | "ifco18"
-  | "ifcoUnrated"
-  | (string & {});
+  | "ifcoUnrated";
 export const ContentRatingIfcoRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingCatvRatingEnum =
@@ -4135,8 +4043,7 @@ export type ContentRatingCatvRatingEnum =
   | "catv14plus"
   | "catv18plus"
   | "catvUnrated"
-  | "catvE"
-  | (string & {});
+  | "catvE";
 export const ContentRatingCatvRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingKfcbRatingEnum =
@@ -4145,8 +4052,7 @@ export type ContentRatingKfcbRatingEnum =
   | "kfcbPg"
   | "kfcb16plus"
   | "kfcbR"
-  | "kfcbUnrated"
-  | (string & {});
+  | "kfcbUnrated";
 export const ContentRatingKfcbRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingEefilmRatingEnum =
@@ -4159,8 +4065,7 @@ export type ContentRatingEefilmRatingEnum =
   | "eefilmK12"
   | "eefilmK14"
   | "eefilmK16"
-  | "eefilmUnrated"
-  | (string & {});
+  | "eefilmUnrated";
 export const ContentRatingEefilmRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingFmocRatingEnum =
@@ -4171,8 +4076,7 @@ export type ContentRatingFmocRatingEnum =
   | "fmoc16"
   | "fmoc18"
   | "fmocE"
-  | "fmocUnrated"
-  | (string & {});
+  | "fmocUnrated";
 export const ContentRatingFmocRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingNfrcRatingEnum =
@@ -4182,8 +4086,7 @@ export type ContentRatingNfrcRatingEnum =
   | "nfrcC"
   | "nfrcD"
   | "nfrcX"
-  | "nfrcUnrated"
-  | (string & {});
+  | "nfrcUnrated";
 export const ContentRatingNfrcRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingBfvcRatingEnum =
@@ -4195,8 +4098,7 @@ export type ContentRatingBfvcRatingEnum =
   | "bfvc18"
   | "bfvc20"
   | "bfvcB"
-  | "bfvcUnrated"
-  | (string & {});
+  | "bfvcUnrated";
 export const ContentRatingBfvcRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingMocRatingEnum =
@@ -4209,8 +4111,7 @@ export type ContentRatingMocRatingEnum =
   | "moc18"
   | "mocX"
   | "mocBanned"
-  | "mocUnrated"
-  | (string & {});
+  | "mocUnrated";
 export const ContentRatingMocRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingNfvcbRatingEnum =
@@ -4222,8 +4123,7 @@ export type ContentRatingNfvcbRatingEnum =
   | "nfvcb15"
   | "nfvcb18"
   | "nfvcbRe"
-  | "nfvcbUnrated"
-  | (string & {});
+  | "nfvcbUnrated";
 export const ContentRatingNfvcbRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingTvpgRatingEnum =
@@ -4235,8 +4135,7 @@ export type ContentRatingTvpgRatingEnum =
   | "tvpgPg"
   | "pg14"
   | "tvpgMa"
-  | "tvpgUnrated"
-  | (string & {});
+  | "tvpgUnrated";
 export const ContentRatingTvpgRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingSmaisRatingEnum =
@@ -4247,8 +4146,7 @@ export type ContentRatingSmaisRatingEnum =
   | "smais14"
   | "smais16"
   | "smais18"
-  | "smaisUnrated"
-  | (string & {});
+  | "smaisUnrated";
 export const ContentRatingSmaisRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingRussiaRatingEnum =
@@ -4258,8 +4156,7 @@ export type ContentRatingRussiaRatingEnum =
   | "russia12"
   | "russia16"
   | "russia18"
-  | "russiaUnrated"
-  | (string & {});
+  | "russiaUnrated";
 export const ContentRatingRussiaRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingFpbRatingEnum =
@@ -4274,8 +4171,7 @@ export type ContentRatingFpbRatingEnum =
   | "fpbX18"
   | "fpbXx"
   | "fpbUnrated"
-  | "fpb10"
-  | (string & {});
+  | "fpb10";
 export const ContentRatingFpbRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingMoctwRatingEnum =
@@ -4286,8 +4182,7 @@ export type ContentRatingMoctwRatingEnum =
   | "moctwR"
   | "moctwUnrated"
   | "moctwR12"
-  | "moctwR15"
-  | (string & {});
+  | "moctwR15";
 export const ContentRatingMoctwRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingResorteviolenciaRatingEnum =
@@ -4297,14 +4192,10 @@ export type ContentRatingResorteviolenciaRatingEnum =
   | "resorteviolenciaC"
   | "resorteviolenciaD"
   | "resorteviolenciaE"
-  | "resorteviolenciaUnrated"
-  | (string & {});
+  | "resorteviolenciaUnrated";
 export const ContentRatingResorteviolenciaRatingEnum = /*@__PURE__*/ S.String;
 
-export type ContentRatingYtRatingEnum =
-  | "ytUnspecified"
-  | "ytAgeRestricted"
-  | (string & {});
+export type ContentRatingYtRatingEnum = "ytUnspecified" | "ytAgeRestricted";
 export const ContentRatingYtRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingKmrbRatingEnum =
@@ -4314,8 +4205,7 @@ export type ContentRatingKmrbRatingEnum =
   | "kmrb15plus"
   | "kmrbTeenr"
   | "kmrbR"
-  | "kmrbUnrated"
-  | (string & {});
+  | "kmrbUnrated";
 export const ContentRatingKmrbRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingFcoRatingEnum =
@@ -4325,8 +4215,7 @@ export type ContentRatingFcoRatingEnum =
   | "fcoIib"
   | "fcoIi"
   | "fcoIii"
-  | "fcoUnrated"
-  | (string & {});
+  | "fcoUnrated";
 export const ContentRatingFcoRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingAcbRatingEnum =
@@ -4339,8 +4228,7 @@ export type ContentRatingAcbRatingEnum =
   | "acbM"
   | "acbMa15plus"
   | "acbR18plus"
-  | "acbUnrated"
-  | (string & {});
+  | "acbUnrated";
 export const ContentRatingAcbRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingCnaRatingEnum =
@@ -4350,8 +4238,7 @@ export type ContentRatingCnaRatingEnum =
   | "cna15"
   | "cna18"
   | "cna18plus"
-  | "cnaUnrated"
-  | (string & {});
+  | "cnaUnrated";
 export const ContentRatingCnaRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingFskRatingEnum =
@@ -4361,8 +4248,7 @@ export type ContentRatingFskRatingEnum =
   | "fsk12"
   | "fsk16"
   | "fsk18"
-  | "fskUnrated"
-  | (string & {});
+  | "fskUnrated";
 export const ContentRatingFskRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingCccRatingEnum =
@@ -4373,8 +4259,7 @@ export type ContentRatingCccRatingEnum =
   | "ccc18"
   | "ccc18v"
   | "ccc18s"
-  | "cccUnrated"
-  | (string & {});
+  | "cccUnrated";
 export const ContentRatingCccRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingCscfRatingEnum =
@@ -4386,8 +4271,7 @@ export type ContentRatingCscfRatingEnum =
   | "cscf12"
   | "cscf16"
   | "cscf18"
-  | "cscfUnrated"
-  | (string & {});
+  | "cscfUnrated";
 export const ContentRatingCscfRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingIncaaRatingEnum =
@@ -4397,8 +4281,7 @@ export type ContentRatingIncaaRatingEnum =
   | "incaaSam16"
   | "incaaSam18"
   | "incaaC"
-  | "incaaUnrated"
-  | (string & {});
+  | "incaaUnrated";
 export const ContentRatingIncaaRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingSkfilmRatingEnum =
@@ -4407,8 +4290,7 @@ export type ContentRatingSkfilmRatingEnum =
   | "skfilmP2"
   | "skfilmP5"
   | "skfilmP8"
-  | "skfilmUnrated"
-  | (string & {});
+  | "skfilmUnrated";
 export const ContentRatingSkfilmRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingChfilmRatingEnum =
@@ -4418,8 +4300,7 @@ export type ContentRatingChfilmRatingEnum =
   | "chfilm12"
   | "chfilm16"
   | "chfilm18"
-  | "chfilmUnrated"
-  | (string & {});
+  | "chfilmUnrated";
 export const ContentRatingChfilmRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingMpaaRatingEnum =
@@ -4430,8 +4311,7 @@ export type ContentRatingMpaaRatingEnum =
   | "mpaaR"
   | "mpaaNc17"
   | "mpaaX"
-  | "mpaaUnrated"
-  | (string & {});
+  | "mpaaUnrated";
 export const ContentRatingMpaaRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingRteRatingEnum =
@@ -4440,8 +4320,7 @@ export type ContentRatingRteRatingEnum =
   | "rteCh"
   | "rtePs"
   | "rteMa"
-  | "rteUnrated"
-  | (string & {});
+  | "rteUnrated";
 export const ContentRatingRteRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingNkclvRatingEnum =
@@ -4451,8 +4330,7 @@ export type ContentRatingNkclvRatingEnum =
   | "nkclv12plus"
   | "nkclv16plus"
   | "nkclv18plus"
-  | "nkclvUnrated"
-  | (string & {});
+  | "nkclvUnrated";
 export const ContentRatingNkclvRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingMdaRatingEnum =
@@ -4463,8 +4341,7 @@ export type ContentRatingMdaRatingEnum =
   | "mdaNc16"
   | "mdaM18"
   | "mdaR21"
-  | "mdaUnrated"
-  | (string & {});
+  | "mdaUnrated";
 export const ContentRatingMdaRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingRtcRatingEnum =
@@ -4475,8 +4352,7 @@ export type ContentRatingRtcRatingEnum =
   | "rtcB15"
   | "rtcC"
   | "rtcD"
-  | "rtcUnrated"
-  | (string & {});
+  | "rtcUnrated";
 export const ContentRatingRtcRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingMtrcbRatingEnum =
@@ -4487,8 +4363,7 @@ export type ContentRatingMtrcbRatingEnum =
   | "mtrcbR16"
   | "mtrcbR18"
   | "mtrcbX"
-  | "mtrcbUnrated"
-  | (string & {});
+  | "mtrcbUnrated";
 export const ContentRatingMtrcbRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingEgfilmRatingEnum =
@@ -4496,8 +4371,7 @@ export type ContentRatingEgfilmRatingEnum =
   | "egfilmGn"
   | "egfilm18"
   | "egfilmBn"
-  | "egfilmUnrated"
-  | (string & {});
+  | "egfilmUnrated";
 export const ContentRatingEgfilmRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingDjctqRatingReasonsItemEnum =
@@ -4517,12 +4391,11 @@ export type ContentRatingDjctqRatingReasonsItemEnum =
   | "djctqFear"
   | "djctqMedicalProcedures"
   | "djctqSensitiveTopics"
-  | "djctqFantasyViolence"
-  | (string & {});
+  | "djctqFantasyViolence";
 export const ContentRatingDjctqRatingReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingDjctqRatingReasonsItemEnumList =
-  ContentRatingDjctqRatingReasonsItemEnum[];
+  ReadonlyArray<ContentRatingDjctqRatingReasonsItemEnum>;
 export const ContentRatingDjctqRatingReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     ContentRatingDjctqRatingReasonsItemEnum,
@@ -4535,8 +4408,7 @@ export type ContentRatingMekuRatingEnum =
   | "meku12"
   | "meku16"
   | "meku18"
-  | "mekuUnrated"
-  | (string & {});
+  | "mekuUnrated";
 export const ContentRatingMekuRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingKijkwijzerRatingEnum =
@@ -4547,8 +4419,7 @@ export type ContentRatingKijkwijzerRatingEnum =
   | "kijkwijzer12"
   | "kijkwijzer16"
   | "kijkwijzer18"
-  | "kijkwijzerUnrated"
-  | (string & {});
+  | "kijkwijzerUnrated";
 export const ContentRatingKijkwijzerRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingEirinRatingEnum =
@@ -4557,8 +4428,7 @@ export type ContentRatingEirinRatingEnum =
   | "eirinPg12"
   | "eirinR15plus"
   | "eirinR18plus"
-  | "eirinUnrated"
-  | (string & {});
+  | "eirinUnrated";
 export const ContentRatingEirinRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingBbfcRatingEnum =
@@ -4570,8 +4440,7 @@ export type ContentRatingBbfcRatingEnum =
   | "bbfc15"
   | "bbfc18"
   | "bbfcR18"
-  | "bbfcUnrated"
-  | (string & {});
+  | "bbfcUnrated";
 export const ContentRatingBbfcRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingPefilmRatingEnum =
@@ -4580,8 +4449,7 @@ export type ContentRatingPefilmRatingEnum =
   | "pefilmPg"
   | "pefilm14"
   | "pefilm18"
-  | "pefilmUnrated"
-  | (string & {});
+  | "pefilmUnrated";
 export const ContentRatingPefilmRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingMcstRatingEnum =
@@ -4593,8 +4461,7 @@ export type ContentRatingMcstRatingEnum =
   | "mcst16plus"
   | "mcstC18"
   | "mcstGPg"
-  | "mcstUnrated"
-  | (string & {});
+  | "mcstUnrated";
 export const ContentRatingMcstRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingCncRatingEnum =
@@ -4606,8 +4473,7 @@ export type ContentRatingCncRatingEnum =
   | "cnc18"
   | "cncE"
   | "cncInterdiction"
-  | "cncUnrated"
-  | (string & {});
+  | "cncUnrated";
 export const ContentRatingCncRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingCsaRatingEnum =
@@ -4618,8 +4484,7 @@ export type ContentRatingCsaRatingEnum =
   | "csa16"
   | "csa18"
   | "csaInterdiction"
-  | "csaUnrated"
-  | (string & {});
+  | "csaUnrated";
 export const ContentRatingCsaRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingMccypRatingEnum =
@@ -4628,8 +4493,7 @@ export type ContentRatingMccypRatingEnum =
   | "mccyp7"
   | "mccyp11"
   | "mccyp15"
-  | "mccypUnrated"
-  | (string & {});
+  | "mccypUnrated";
 export const ContentRatingMccypRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingCatvfrRatingEnum =
@@ -4640,8 +4504,7 @@ export type ContentRatingCatvfrRatingEnum =
   | "catvfr16plus"
   | "catvfr18plus"
   | "catvfrUnrated"
-  | "catvfrE"
-  | (string & {});
+  | "catvfrE";
 export const ContentRatingCatvfrRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingCceRatingEnum =
@@ -4652,8 +4515,7 @@ export type ContentRatingCceRatingEnum =
   | "cceM16"
   | "cceM18"
   | "cceUnrated"
-  | "cceM14"
-  | (string & {});
+  | "cceM14";
 export const ContentRatingCceRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingNbcplRatingEnum =
@@ -4663,8 +4525,7 @@ export type ContentRatingNbcplRatingEnum =
   | "nbcplIii"
   | "nbcplIv"
   | "nbcpl18plus"
-  | "nbcplUnrated"
-  | (string & {});
+  | "nbcplUnrated";
 export const ContentRatingNbcplRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingEcbmctRatingEnum =
@@ -4677,8 +4538,7 @@ export type ContentRatingEcbmctRatingEnum =
   | "ecbmct15a"
   | "ecbmct15plus"
   | "ecbmct18plus"
-  | "ecbmctUnrated"
-  | (string & {});
+  | "ecbmctUnrated";
 export const ContentRatingEcbmctRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingIlfilmRatingEnum =
@@ -4688,8 +4548,7 @@ export type ContentRatingIlfilmRatingEnum =
   | "ilfilm14"
   | "ilfilm16"
   | "ilfilm18"
-  | "ilfilmUnrated"
-  | (string & {});
+  | "ilfilmUnrated";
 export const ContentRatingIlfilmRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingCbfcRatingEnum =
@@ -4701,8 +4560,7 @@ export type ContentRatingCbfcRatingEnum =
   | "cbfcUA16plus"
   | "cbfcA"
   | "cbfcS"
-  | "cbfcUnrated"
-  | (string & {});
+  | "cbfcUnrated";
 export const ContentRatingCbfcRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingCicfRatingEnum =
@@ -4710,8 +4568,7 @@ export type ContentRatingCicfRatingEnum =
   | "cicfE"
   | "cicfKtEa"
   | "cicfKntEna"
-  | "cicfUnrated"
-  | (string & {});
+  | "cicfUnrated";
 export const ContentRatingCicfRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingLsfRatingEnum =
@@ -4724,8 +4581,7 @@ export type ContentRatingLsfRatingEnum =
   | "lsf17"
   | "lsfD"
   | "lsf21"
-  | "lsfUnrated"
-  | (string & {});
+  | "lsfUnrated";
 export const ContentRatingLsfRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingAgcomRatingEnum =
@@ -4733,8 +4589,7 @@ export type ContentRatingAgcomRatingEnum =
   | "agcomT"
   | "agcomVm14"
   | "agcomVm18"
-  | "agcomUnrated"
-  | (string & {});
+  | "agcomUnrated";
 export const ContentRatingAgcomRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingFpbRatingReasonsItemEnum =
@@ -4749,12 +4604,11 @@ export type ContentRatingFpbRatingReasonsItemEnum =
   | "fpbSexualViolence"
   | "fpbHorror"
   | "fpbCriminalTechniques"
-  | "fpbImitativeActsTechniques"
-  | (string & {});
+  | "fpbImitativeActsTechniques";
 export const ContentRatingFpbRatingReasonsItemEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingFpbRatingReasonsItemEnumList =
-  ContentRatingFpbRatingReasonsItemEnum[];
+  ReadonlyArray<ContentRatingFpbRatingReasonsItemEnum>;
 export const ContentRatingFpbRatingReasonsItemEnumList = /*@__PURE__*/ S.Array(
   ContentRatingFpbRatingReasonsItemEnum,
 ) as any as S.Schema<ContentRatingFpbRatingReasonsItemEnumList>;
@@ -4765,8 +4619,7 @@ export type ContentRatingMenaMpaaRatingEnum =
   | "menaMpaaPg"
   | "menaMpaaPg13"
   | "menaMpaaR"
-  | "menaMpaaUnrated"
-  | (string & {});
+  | "menaMpaaUnrated";
 export const ContentRatingMenaMpaaRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingGrfilmRatingEnum =
@@ -4778,8 +4631,7 @@ export type ContentRatingGrfilmRatingEnum =
   | "grfilmK15"
   | "grfilmK17"
   | "grfilmK18"
-  | "grfilmUnrated"
-  | (string & {});
+  | "grfilmUnrated";
 export const ContentRatingGrfilmRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingIcaaRatingEnum =
@@ -4791,8 +4643,7 @@ export type ContentRatingIcaaRatingEnum =
   | "icaa16"
   | "icaa18"
   | "icaaX"
-  | "icaaUnrated"
-  | (string & {});
+  | "icaaUnrated";
 export const ContentRatingIcaaRatingEnum = /*@__PURE__*/ S.String;
 
 export type ContentRatingAnatelRatingEnum =
@@ -4804,8 +4655,7 @@ export type ContentRatingAnatelRatingEnum =
   | "anatelI12"
   | "anatelR"
   | "anatelA"
-  | "anatelUnrated"
-  | (string & {});
+  | "anatelUnrated";
 export const ContentRatingAnatelRatingEnum = /*@__PURE__*/ S.String;
 
 /** Ratings schemes. The country-specific ratings are mostly for movies and shows. LINT.IfChange */
@@ -5029,10 +4879,10 @@ export const ContentRating = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContentRating" }) as any as S.Schema<ContentRating>;
 
-export type VideoContentDetailsDefinitionEnum = "sd" | "hd" | (string & {});
+export type VideoContentDetailsDefinitionEnum = "sd" | "hd";
 export const VideoContentDetailsDefinitionEnum = /*@__PURE__*/ S.String;
 
-export type VideoContentDetailsCaptionEnum = "true" | "false" | (string & {});
+export type VideoContentDetailsCaptionEnum = "true" | "false";
 export const VideoContentDetailsCaptionEnum = /*@__PURE__*/ S.String;
 
 /** Details about the content of a YouTube Video. */
@@ -5079,8 +4929,7 @@ export type VideoProcessingDetailsProcessingStatusEnum =
   | "processing"
   | "succeeded"
   | "failed"
-  | "terminated"
-  | (string & {});
+  | "terminated";
 export const VideoProcessingDetailsProcessingStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -5108,8 +4957,7 @@ export type VideoProcessingDetailsProcessingFailureReasonEnum =
   | "uploadFailed"
   | "transcodeFailed"
   | "streamingFailed"
-  | "other"
-  | (string & {});
+  | "other";
 export const VideoProcessingDetailsProcessingFailureReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -5161,13 +5009,12 @@ export type VideoSuggestionsProcessingWarningsItemEnum =
   | "unsupportedSphericalProjectionType"
   | "unsupportedHdrPixelFormat"
   | "unsupportedHdrColorMetadata"
-  | "problematicHdrLookupTable"
-  | (string & {});
+  | "problematicHdrLookupTable";
 export const VideoSuggestionsProcessingWarningsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type VideoSuggestionsProcessingWarningsItemEnumList =
-  VideoSuggestionsProcessingWarningsItemEnum[];
+  ReadonlyArray<VideoSuggestionsProcessingWarningsItemEnum>;
 export const VideoSuggestionsProcessingWarningsItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoSuggestionsProcessingWarningsItemEnum,
@@ -5179,12 +5026,11 @@ export type VideoSuggestionsProcessingHintsItemEnum =
   | "sphericalVideo"
   | "spatialAudio"
   | "vrVideo"
-  | "hdrVideo"
-  | (string & {});
+  | "hdrVideo";
 export const VideoSuggestionsProcessingHintsItemEnum = /*@__PURE__*/ S.String;
 
 export type VideoSuggestionsProcessingHintsItemEnumList =
-  VideoSuggestionsProcessingHintsItemEnum[];
+  ReadonlyArray<VideoSuggestionsProcessingHintsItemEnum>;
 export const VideoSuggestionsProcessingHintsItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoSuggestionsProcessingHintsItemEnum,
@@ -5194,12 +5040,11 @@ export type VideoSuggestionsEditorSuggestionsItemEnum =
   | "videoAutoLevels"
   | "videoStabilize"
   | "videoCrop"
-  | "audioQuietAudioSwap"
-  | (string & {});
+  | "audioQuietAudioSwap";
 export const VideoSuggestionsEditorSuggestionsItemEnum = /*@__PURE__*/ S.String;
 
 export type VideoSuggestionsEditorSuggestionsItemEnumList =
-  VideoSuggestionsEditorSuggestionsItemEnum[];
+  ReadonlyArray<VideoSuggestionsEditorSuggestionsItemEnum>;
 export const VideoSuggestionsEditorSuggestionsItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoSuggestionsEditorSuggestionsItemEnum,
@@ -5212,12 +5057,11 @@ export type VideoSuggestionsProcessingErrorsItemEnum =
   | "notAVideoFile"
   | "docFile"
   | "archiveFile"
-  | "unsupportedSpatialAudioLayout"
-  | (string & {});
+  | "unsupportedSpatialAudioLayout";
 export const VideoSuggestionsProcessingErrorsItemEnum = /*@__PURE__*/ S.String;
 
 export type VideoSuggestionsProcessingErrorsItemEnumList =
-  VideoSuggestionsProcessingErrorsItemEnum[];
+  ReadonlyArray<VideoSuggestionsProcessingErrorsItemEnum>;
 export const VideoSuggestionsProcessingErrorsItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoSuggestionsProcessingErrorsItemEnum,
@@ -5239,7 +5083,8 @@ export const VideoSuggestionsTagSuggestion = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoSuggestionsTagSuggestion",
 }) as any as S.Schema<VideoSuggestionsTagSuggestion>;
 
-export type VideoSuggestionsTagSuggestionList = VideoSuggestionsTagSuggestion[];
+export type VideoSuggestionsTagSuggestionList =
+  ReadonlyArray<VideoSuggestionsTagSuggestion>;
 export const VideoSuggestionsTagSuggestionList = /*@__PURE__*/ S.Array(
   VideoSuggestionsTagSuggestion,
 ) as any as S.Schema<VideoSuggestionsTagSuggestionList>;
@@ -5296,8 +5141,7 @@ export type VideoAgeGatingVideoGameRatingEnum =
   | "anyone"
   | "m15Plus"
   | "m16Plus"
-  | "m17Plus"
-  | (string & {});
+  | "m17Plus";
 export const VideoAgeGatingVideoGameRatingEnum = /*@__PURE__*/ S.String;
 
 export interface VideoAgeGating {
@@ -5320,8 +5164,7 @@ export type VideoSnippetLiveBroadcastContentEnum =
   | "none"
   | "upcoming"
   | "live"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const VideoSnippetLiveBroadcastContentEnum = /*@__PURE__*/ S.String;
 
 /** Basic details about a video, including title, description, uploader, thumbnails and category. */
@@ -5531,8 +5374,7 @@ export type ActivityContentDetailsSocialTypeEnum =
   | "unspecified"
   | "googlePlus"
   | "facebook"
-  | "twitter"
-  | (string & {});
+  | "twitter";
 export const ActivityContentDetailsSocialTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details about a social network post. */
@@ -5575,8 +5417,7 @@ export const ActivityContentDetailsChannelItem = /*@__PURE__*/ S.suspend(() =>
 
 export type ActivityContentDetailsPromotedItemCtaTypeEnum =
   | "ctaTypeUnspecified"
-  | "visitAdvertiserSite"
-  | (string & {});
+  | "visitAdvertiserSite";
 export const ActivityContentDetailsPromotedItemCtaTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5656,8 +5497,7 @@ export type ActivityContentDetailsRecommendationReasonEnum =
   | "reasonUnspecified"
   | "videoFavorited"
   | "videoLiked"
-  | "videoWatched"
-  | (string & {});
+  | "videoWatched";
 export const ActivityContentDetailsRecommendationReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -5788,8 +5628,7 @@ export type ActivitySnippetTypeEnum =
   | "bulletin"
   | "social"
   | "channelItem"
-  | "promotedItem"
-  | (string & {});
+  | "promotedItem";
 export const ActivitySnippetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Basic details about an activity, including title, description, thumbnails, activity type and group. Next ID: 12 */
@@ -5849,7 +5688,7 @@ export const Activity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Activity" }) as any as S.Schema<Activity>;
 
-export type ActivityList = Activity[];
+export type ActivityList = ReadonlyArray<Activity>;
 export const ActivityList = /*@__PURE__*/ S.Array(
   Activity,
 ) as any as S.Schema<ActivityList>;
@@ -5932,7 +5771,7 @@ export const ListCaptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCaptionsRequest",
 }) as any as S.Schema<ListCaptionsRequest>;
 
-export type CaptionList = Caption[];
+export type CaptionList = ReadonlyArray<Caption>;
 export const CaptionList = /*@__PURE__*/ S.Array(
   Caption,
 ) as any as S.Schema<CaptionList>;
@@ -6040,8 +5879,7 @@ export const ChannelStatistics = /*@__PURE__*/ S.suspend(() =>
 export type ChannelConversionPingContextEnum =
   | "subscribe"
   | "unsubscribe"
-  | "cview"
-  | (string & {});
+  | "cview";
 export const ChannelConversionPingContextEnum = /*@__PURE__*/ S.String;
 
 /** Pings that the app shall fire (authenticated by biscotti cookie). Each ping has a context, in which the app must fire the ping, and a url identifying the ping. */
@@ -6060,7 +5898,7 @@ export const ChannelConversionPing = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChannelConversionPing",
 }) as any as S.Schema<ChannelConversionPing>;
 
-export type ChannelConversionPingList = ChannelConversionPing[];
+export type ChannelConversionPingList = ReadonlyArray<ChannelConversionPing>;
 export const ChannelConversionPingList = /*@__PURE__*/ S.Array(
   ChannelConversionPing,
 ) as any as S.Schema<ChannelConversionPingList>;
@@ -6287,7 +6125,7 @@ export const LocalizedString = /*@__PURE__*/ S.suspend(() =>
   identifier: "LocalizedString",
 }) as any as S.Schema<LocalizedString>;
 
-export type LocalizedStringList = LocalizedString[];
+export type LocalizedStringList = ReadonlyArray<LocalizedString>;
 export const LocalizedStringList = /*@__PURE__*/ S.Array(
   LocalizedString,
 ) as any as S.Schema<LocalizedStringList>;
@@ -6412,7 +6250,7 @@ export const PropertyValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PropertyValue" }) as any as S.Schema<PropertyValue>;
 
-export type PropertyValueList = PropertyValue[];
+export type PropertyValueList = ReadonlyArray<PropertyValue>;
 export const PropertyValueList = /*@__PURE__*/ S.Array(
   PropertyValue,
 ) as any as S.Schema<PropertyValueList>;
@@ -6447,19 +6285,14 @@ export const ChannelLocalizationMap = /*@__PURE__*/ S.Record(
   ChannelLocalization,
 ) as any as S.Schema<ChannelLocalizationMap>;
 
-export type ChannelStatusPrivacyStatusEnum =
-  | "public"
-  | "unlisted"
-  | "private"
-  | (string & {});
+export type ChannelStatusPrivacyStatusEnum = "public" | "unlisted" | "private";
 export const ChannelStatusPrivacyStatusEnum = /*@__PURE__*/ S.String;
 
 export type ChannelStatusLongUploadsStatusEnum =
   | "longUploadsUnspecified"
   | "allowed"
   | "eligible"
-  | "disallowed"
-  | (string & {});
+  | "disallowed";
 export const ChannelStatusLongUploadsStatusEnum = /*@__PURE__*/ S.String;
 
 /** JSON template for the status part of a channel. */
@@ -6533,7 +6366,7 @@ export const Channel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
-export type ChannelList = Channel[];
+export type ChannelList = ReadonlyArray<Channel>;
 export const ChannelList = /*@__PURE__*/ S.Array(
   Channel,
 ) as any as S.Schema<ChannelList>;
@@ -6605,7 +6438,7 @@ export const ListChannelSectionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListChannelSectionsRequest",
 }) as any as S.Schema<ListChannelSectionsRequest>;
 
-export type ChannelSectionList = ChannelSection[];
+export type ChannelSectionList = ReadonlyArray<ChannelSection>;
 export const ChannelSectionList = /*@__PURE__*/ S.Array(
   ChannelSection,
 ) as any as S.Schema<ChannelSectionList>;
@@ -6637,8 +6470,7 @@ export const ChannelSectionListResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListCommentsTextFormatEnum =
   | "textFormatUnspecified"
   | "html"
-  | "plainText"
-  | (string & {});
+  | "plainText";
 export const ListCommentsTextFormatEnum = /*@__PURE__*/ S.String;
 
 export interface ListCommentsRequest {
@@ -6710,22 +6542,19 @@ export type ListCommentThreadsModerationStatusEnum =
   | "published"
   | "heldForReview"
   | "likelySpam"
-  | "rejected"
-  | (string & {});
+  | "rejected";
 export const ListCommentThreadsModerationStatusEnum = /*@__PURE__*/ S.String;
 
 export type ListCommentThreadsTextFormatEnum =
   | "textFormatUnspecified"
   | "html"
-  | "plainText"
-  | (string & {});
+  | "plainText";
 export const ListCommentThreadsTextFormatEnum = /*@__PURE__*/ S.String;
 
 export type ListCommentThreadsOrderEnum =
   | "orderUnspecified"
   | "time"
-  | "relevance"
-  | (string & {});
+  | "relevance";
 export const ListCommentThreadsOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListCommentThreadsRequest {
@@ -6780,7 +6609,7 @@ export const ListCommentThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCommentThreadsRequest",
 }) as any as S.Schema<ListCommentThreadsRequest>;
 
-export type CommentThreadList = CommentThread[];
+export type CommentThreadList = ReadonlyArray<CommentThread>;
 export const CommentThreadList = /*@__PURE__*/ S.Array(
   CommentThread,
 ) as any as S.Schema<CommentThreadList>;
@@ -6873,7 +6702,7 @@ export const I18nLanguage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "I18nLanguage" }) as any as S.Schema<I18nLanguage>;
 
-export type I18nLanguageList = I18nLanguage[];
+export type I18nLanguageList = ReadonlyArray<I18nLanguage>;
 export const I18nLanguageList = /*@__PURE__*/ S.Array(
   I18nLanguage,
 ) as any as S.Schema<I18nLanguageList>;
@@ -6958,7 +6787,7 @@ export const I18nRegion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "I18nRegion" }) as any as S.Schema<I18nRegion>;
 
-export type I18nRegionList = I18nRegion[];
+export type I18nRegionList = ReadonlyArray<I18nRegion>;
 export const I18nRegionList = /*@__PURE__*/ S.Array(
   I18nRegion,
 ) as any as S.Schema<I18nRegionList>;
@@ -6991,8 +6820,7 @@ export type ListLiveBroadcastsBroadcastTypeEnum =
   | "broadcastTypeFilterUnspecified"
   | "all"
   | "event"
-  | "persistent"
-  | (string & {});
+  | "persistent";
 export const ListLiveBroadcastsBroadcastTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListLiveBroadcastsBroadcastStatusEnum =
@@ -7000,8 +6828,7 @@ export type ListLiveBroadcastsBroadcastStatusEnum =
   | "all"
   | "active"
   | "upcoming"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const ListLiveBroadcastsBroadcastStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ListLiveBroadcastsRequest {
@@ -7049,7 +6876,7 @@ export const ListLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiveBroadcastsRequest",
 }) as any as S.Schema<ListLiveBroadcastsRequest>;
 
-export type LiveBroadcastList = LiveBroadcast[];
+export type LiveBroadcastList = ReadonlyArray<LiveBroadcast>;
 export const LiveBroadcastList = /*@__PURE__*/ S.Array(
   LiveBroadcast,
 ) as any as S.Schema<LiveBroadcastList>;
@@ -7122,7 +6949,7 @@ export const ListLiveChatMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiveChatMessagesRequest",
 }) as any as S.Schema<ListLiveChatMessagesRequest>;
 
-export type LiveChatMessageList = LiveChatMessage[];
+export type LiveChatMessageList = ReadonlyArray<LiveChatMessage>;
 export const LiveChatMessageList = /*@__PURE__*/ S.Array(
   LiveChatMessage,
 ) as any as S.Schema<LiveChatMessageList>;
@@ -7193,7 +7020,7 @@ export const ListLiveChatModeratorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiveChatModeratorsRequest",
 }) as any as S.Schema<ListLiveChatModeratorsRequest>;
 
-export type LiveChatModeratorList = LiveChatModerator[];
+export type LiveChatModeratorList = ReadonlyArray<LiveChatModerator>;
 export const LiveChatModeratorList = /*@__PURE__*/ S.Array(
   LiveChatModerator,
 ) as any as S.Schema<LiveChatModeratorList>;
@@ -7268,7 +7095,7 @@ export const ListLiveStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLiveStreamsRequest",
 }) as any as S.Schema<ListLiveStreamsRequest>;
 
-export type LiveStreamList = LiveStream[];
+export type LiveStreamList = ReadonlyArray<LiveStream>;
 export const LiveStreamList = /*@__PURE__*/ S.Array(
   LiveStream,
 ) as any as S.Schema<LiveStreamList>;
@@ -7310,8 +7137,7 @@ export const LiveStreamListResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListMembersModeEnum =
   | "listMembersModeUnknown"
   | "updates"
-  | "all_current"
-  | (string & {});
+  | "all_current";
 export const ListMembersModeEnum = /*@__PURE__*/ S.String;
 
 export interface ListMembersRequest {
@@ -7380,7 +7206,8 @@ export const MembershipsDurationAtLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembershipsDurationAtLevel",
 }) as any as S.Schema<MembershipsDurationAtLevel>;
 
-export type MembershipsDurationAtLevelList = MembershipsDurationAtLevel[];
+export type MembershipsDurationAtLevelList =
+  ReadonlyArray<MembershipsDurationAtLevel>;
 export const MembershipsDurationAtLevelList = /*@__PURE__*/ S.Array(
   MembershipsDurationAtLevel,
 ) as any as S.Schema<MembershipsDurationAtLevelList>;
@@ -7442,7 +7269,7 @@ export const Member = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Member" }) as any as S.Schema<Member>;
 
-export type MemberList = Member[];
+export type MemberList = ReadonlyArray<Member>;
 export const MemberList = /*@__PURE__*/ S.Array(
   Member,
 ) as any as S.Schema<MemberList>;
@@ -7543,7 +7370,7 @@ export const MembershipsLevel = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembershipsLevel",
 }) as any as S.Schema<MembershipsLevel>;
 
-export type MembershipsLevelList = MembershipsLevel[];
+export type MembershipsLevelList = ReadonlyArray<MembershipsLevel>;
 export const MembershipsLevelList = /*@__PURE__*/ S.Array(
   MembershipsLevel,
 ) as any as S.Schema<MembershipsLevelList>;
@@ -7605,7 +7432,7 @@ export const ListPlaylistImagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlaylistImagesRequest",
 }) as any as S.Schema<ListPlaylistImagesRequest>;
 
-export type PlaylistImageList = PlaylistImage[];
+export type PlaylistImageList = ReadonlyArray<PlaylistImage>;
 export const PlaylistImageList = /*@__PURE__*/ S.Array(
   PlaylistImage,
 ) as any as S.Schema<PlaylistImageList>;
@@ -7668,7 +7495,7 @@ export const ListPlaylistItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlaylistItemsRequest",
 }) as any as S.Schema<ListPlaylistItemsRequest>;
 
-export type PlaylistItemList = PlaylistItem[];
+export type PlaylistItemList = ReadonlyArray<PlaylistItem>;
 export const PlaylistItemList = /*@__PURE__*/ S.Array(
   PlaylistItem,
 ) as any as S.Schema<PlaylistItemList>;
@@ -7749,7 +7576,7 @@ export const ListPlaylistsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlaylistsRequest",
 }) as any as S.Schema<ListPlaylistsRequest>;
 
-export type PlaylistList = Playlist[];
+export type PlaylistList = ReadonlyArray<Playlist>;
 export const PlaylistList = /*@__PURE__*/ S.Array(
   Playlist,
 ) as any as S.Schema<PlaylistList>;
@@ -7793,45 +7620,36 @@ export type ListSearchSafeSearchEnum =
   | "safeSearchSettingUnspecified"
   | "none"
   | "moderate"
-  | "strict"
-  | (string & {});
+  | "strict";
 export const ListSearchSafeSearchEnum = /*@__PURE__*/ S.String;
 
 export type ListSearchChannelTypeEnum =
   | "channelTypeUnspecified"
   | "any"
-  | "show"
-  | (string & {});
+  | "show";
 export const ListSearchChannelTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListSearchVideoDefinitionEnum =
-  | "any"
-  | "standard"
-  | "high"
-  | (string & {});
+export type ListSearchVideoDefinitionEnum = "any" | "standard" | "high";
 export const ListSearchVideoDefinitionEnum = /*@__PURE__*/ S.String;
 
 export type ListSearchVideoCaptionEnum =
   | "videoCaptionUnspecified"
   | "any"
   | "closedCaption"
-  | "none"
-  | (string & {});
+  | "none";
 export const ListSearchVideoCaptionEnum = /*@__PURE__*/ S.String;
 
 export type ListSearchEventTypeEnum =
   | "none"
   | "upcoming"
   | "live"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const ListSearchEventTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListSearchVideoPaidProductPlacementEnum =
   | "videoPaidProductPlacementUnspecified"
   | "any"
-  | "true"
-  | (string & {});
+  | "true";
 export const ListSearchVideoPaidProductPlacementEnum = /*@__PURE__*/ S.String;
 
 export type ListSearchOrderEnum =
@@ -7841,8 +7659,7 @@ export type ListSearchOrderEnum =
   | "viewCount"
   | "relevance"
   | "title"
-  | "videoCount"
-  | (string & {});
+  | "videoCount";
 export const ListSearchOrderEnum = /*@__PURE__*/ S.String;
 
 export type ListSearchVideoDurationEnum =
@@ -7850,40 +7667,32 @@ export type ListSearchVideoDurationEnum =
   | "any"
   | "short"
   | "medium"
-  | "long"
-  | (string & {});
+  | "long";
 export const ListSearchVideoDurationEnum = /*@__PURE__*/ S.String;
 
-export type ListSearchVideoDimensionEnum = "any" | "2d" | "3d" | (string & {});
+export type ListSearchVideoDimensionEnum = "any" | "2d" | "3d";
 export const ListSearchVideoDimensionEnum = /*@__PURE__*/ S.String;
 
 export type ListSearchVideoEmbeddableEnum =
   | "videoEmbeddableUnspecified"
   | "any"
-  | "true"
-  | (string & {});
+  | "true";
 export const ListSearchVideoEmbeddableEnum = /*@__PURE__*/ S.String;
 
 export type ListSearchVideoTypeEnum =
   | "videoTypeUnspecified"
   | "any"
   | "movie"
-  | "episode"
-  | (string & {});
+  | "episode";
 export const ListSearchVideoTypeEnum = /*@__PURE__*/ S.String;
 
-export type ListSearchVideoLicenseEnum =
-  | "any"
-  | "youtube"
-  | "creativeCommon"
-  | (string & {});
+export type ListSearchVideoLicenseEnum = "any" | "youtube" | "creativeCommon";
 export const ListSearchVideoLicenseEnum = /*@__PURE__*/ S.String;
 
 export type ListSearchVideoSyndicatedEnum =
   | "videoSyndicatedUnspecified"
   | "any"
-  | "true"
-  | (string & {});
+  | "true";
 export const ListSearchVideoSyndicatedEnum = /*@__PURE__*/ S.String;
 
 export interface ListSearchRequest {
@@ -7999,8 +7808,7 @@ export type SearchResultSnippetLiveBroadcastContentEnum =
   | "none"
   | "upcoming"
   | "live"
-  | "completed"
-  | (string & {});
+  | "completed";
 export const SearchResultSnippetLiveBroadcastContentEnum =
   /*@__PURE__*/ S.String;
 
@@ -8057,7 +7865,7 @@ export const SearchResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
-export type SearchResultList = SearchResult[];
+export type SearchResultList = ReadonlyArray<SearchResult>;
 export const SearchResultList = /*@__PURE__*/ S.Array(
   SearchResult,
 ) as any as S.Schema<SearchResultList>;
@@ -8103,8 +7911,7 @@ export type ListSubscriptionsOrderEnum =
   | "subscriptionOrderUnspecified"
   | "relevance"
   | "unread"
-  | "alphabetical"
-  | (string & {});
+  | "alphabetical";
 export const ListSubscriptionsOrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListSubscriptionsRequest {
@@ -8157,7 +7964,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSubscriptionsRequest",
 }) as any as S.Schema<ListSubscriptionsRequest>;
 
-export type SubscriptionList = Subscription[];
+export type SubscriptionList = ReadonlyArray<Subscription>;
 export const SubscriptionList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionList>;
@@ -8282,7 +8089,7 @@ export const SuperChatEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SuperChatEvent" }) as any as S.Schema<SuperChatEvent>;
 
-export type SuperChatEventList = SuperChatEvent[];
+export type SuperChatEventList = ReadonlyArray<SuperChatEvent>;
 export const SuperChatEventList = /*@__PURE__*/ S.Array(
   SuperChatEvent,
 ) as any as S.Schema<SuperChatEventList>;
@@ -8321,8 +8128,7 @@ export const SuperChatEventListResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListThirdPartyLinksTypeEnum =
   | "linkUnspecified"
   | "channelToStoreLink"
-  | "channelToAffiliateProgramLink"
-  | (string & {});
+  | "channelToAffiliateProgramLink";
 export const ListThirdPartyLinksTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ListThirdPartyLinksRequest {
@@ -8352,7 +8158,7 @@ export const ListThirdPartyLinksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListThirdPartyLinksRequest",
 }) as any as S.Schema<ListThirdPartyLinksRequest>;
 
-export type ThirdPartyLinkList = ThirdPartyLink[];
+export type ThirdPartyLinkList = ReadonlyArray<ThirdPartyLink>;
 export const ThirdPartyLinkList = /*@__PURE__*/ S.Array(
   ThirdPartyLink,
 ) as any as S.Schema<ThirdPartyLinkList>;
@@ -8410,7 +8216,7 @@ export const VideoAbuseReportSecondaryReason = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VideoAbuseReportSecondaryReason>;
 
 export type VideoAbuseReportSecondaryReasonList =
-  VideoAbuseReportSecondaryReason[];
+  ReadonlyArray<VideoAbuseReportSecondaryReason>;
 export const VideoAbuseReportSecondaryReasonList = /*@__PURE__*/ S.Array(
   VideoAbuseReportSecondaryReason,
 ) as any as S.Schema<VideoAbuseReportSecondaryReasonList>;
@@ -8453,7 +8259,7 @@ export const VideoAbuseReportReason = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoAbuseReportReason",
 }) as any as S.Schema<VideoAbuseReportReason>;
 
-export type VideoAbuseReportReasonList = VideoAbuseReportReason[];
+export type VideoAbuseReportReasonList = ReadonlyArray<VideoAbuseReportReason>;
 export const VideoAbuseReportReasonList = /*@__PURE__*/ S.Array(
   VideoAbuseReportReason,
 ) as any as S.Schema<VideoAbuseReportReasonList>;
@@ -8545,7 +8351,7 @@ export const VideoCategory = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VideoCategory" }) as any as S.Schema<VideoCategory>;
 
-export type VideoCategoryList = VideoCategory[];
+export type VideoCategoryList = ReadonlyArray<VideoCategory>;
 export const VideoCategoryList = /*@__PURE__*/ S.Array(
   VideoCategory,
 ) as any as S.Schema<VideoCategoryList>;
@@ -8585,17 +8391,10 @@ export const VideoCategoryListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoCategoryListResponse",
 }) as any as S.Schema<VideoCategoryListResponse>;
 
-export type ListVideosMyRatingEnum =
-  | "none"
-  | "like"
-  | "dislike"
-  | (string & {});
+export type ListVideosMyRatingEnum = "none" | "like" | "dislike";
 export const ListVideosMyRatingEnum = /*@__PURE__*/ S.String;
 
-export type ListVideosChartEnum =
-  | "chartUnspecified"
-  | "mostPopular"
-  | (string & {});
+export type ListVideosChartEnum = "chartUnspecified" | "mostPopular";
 export const ListVideosChartEnum = /*@__PURE__*/ S.String;
 
 export interface ListVideosRequest {
@@ -8650,7 +8449,7 @@ export const ListVideosRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListVideosRequest",
 }) as any as S.Schema<ListVideosRequest>;
 
-export type VideoList = Video[];
+export type VideoList = ReadonlyArray<Video>;
 export const VideoList = /*@__PURE__*/ S.Array(
   Video,
 ) as any as S.Schema<VideoList>;
@@ -8714,7 +8513,7 @@ export const MarkAsSpamCommentsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MarkAsSpamCommentsResponse",
 }) as any as S.Schema<MarkAsSpamCommentsResponse>;
 
-export type RateVideosRatingEnum = "none" | "like" | "dislike" | (string & {});
+export type RateVideosRatingEnum = "none" | "like" | "dislike";
 export const RateVideosRatingEnum = /*@__PURE__*/ S.String;
 
 export interface RateVideosRequest {
@@ -8799,8 +8598,7 @@ export type SetModerationStatusCommentsModerationStatusEnum =
   | "published"
   | "heldForReview"
   | "likelySpam"
-  | "rejected"
-  | (string & {});
+  | "rejected";
 export const SetModerationStatusCommentsModerationStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -8858,7 +8656,7 @@ export const SetThumbnailsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetThumbnailsRequest",
 }) as any as S.Schema<SetThumbnailsRequest>;
 
-export type ThumbnailDetailsList = ThumbnailDetails[];
+export type ThumbnailDetailsList = ReadonlyArray<ThumbnailDetails>;
 export const ThumbnailDetailsList = /*@__PURE__*/ S.Array(
   ThumbnailDetails,
 ) as any as S.Schema<ThumbnailDetailsList>;
@@ -8887,15 +8685,14 @@ export const ThumbnailSetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ThumbnailSetResponse",
 }) as any as S.Schema<ThumbnailSetResponse>;
 
-export type InvideoPositionTypeEnum = "corner" | (string & {});
+export type InvideoPositionTypeEnum = "corner";
 export const InvideoPositionTypeEnum = /*@__PURE__*/ S.String;
 
 export type InvideoPositionCornerPositionEnum =
   | "topLeft"
   | "topRight"
   | "bottomLeft"
-  | "bottomRight"
-  | (string & {});
+  | "bottomRight";
 export const InvideoPositionCornerPositionEnum = /*@__PURE__*/ S.String;
 
 /** Describes the spatial position of a visual widget inside a video. It is a union of various position types, out of which only will be set one. */
@@ -8914,10 +8711,7 @@ export const InvideoPosition = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvideoPosition",
 }) as any as S.Schema<InvideoPosition>;
 
-export type InvideoTimingTypeEnum =
-  | "offsetFromStart"
-  | "offsetFromEnd"
-  | (string & {});
+export type InvideoTimingTypeEnum = "offsetFromStart" | "offsetFromEnd";
 export const InvideoTimingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes a temporal position of a visual widget inside a video. */
@@ -9030,8 +8824,7 @@ export type TransitionLiveBroadcastsBroadcastStatusEnum =
   | "statusUnspecified"
   | "testing"
   | "live"
-  | "complete"
-  | (string & {});
+  | "complete";
 export const TransitionLiveBroadcastsBroadcastStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -9069,8 +8862,7 @@ export const TransitionLiveBroadcastsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type TransitionLiveChatMessagesStatusEnum =
   | "statusUnspecified"
-  | "closed"
-  | (string & {});
+  | "closed";
 export const TransitionLiveChatMessagesStatusEnum = /*@__PURE__*/ S.String;
 
 export interface TransitionLiveChatMessagesRequest {

@@ -295,9 +295,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
@@ -309,12 +306,6 @@
         },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -409,12 +400,6 @@
         },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -468,12 +453,6 @@
         },
         "enabled": {
           "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -895,11 +874,11 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#EvaluationConfig": {
+    "com.posthog.llm_analytics#EvaluationConfigOutput": {
       "type": "structure",
       "members": {
         "active_provider_key": {
-          "target": "com.posthog.llm_analytics#LLMProviderKey",
+          "target": "com.posthog.llm_analytics#LLMProviderKeyOutput",
           "traits": {
             "smithy.api#documentation": "Provider key used to run llm_judge evals; null if none configured yet.",
             "smithy.api#required": {},
@@ -923,7 +902,7 @@
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#LLMProviderKey": {
+    "com.posthog.llm_analytics#LLMProviderKeyOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -944,26 +923,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "api_key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
         "api_key_masked": {
           "target": "smithy.api#String"
-        },
-        "azure_endpoint": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure OpenAI endpoint URL"
-          }
-        },
-        "api_version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure OpenAI API version"
-          }
         },
         "azure_endpoint_display": {
           "target": "smithy.api#String",
@@ -979,14 +940,14 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "set_as_active": {
-          "target": "smithy.api#Boolean"
-        },
         "created_at": {
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.llm_analytics#UserBasic"
+          "target": "com.posthog.llm_analytics#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "last_used_at": {
           "target": "smithy.api#String",
@@ -1232,7 +1193,7 @@
         "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationConfigRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#EvaluationConfig"
+        "target": "com.posthog.llm_analytics#EvaluationConfigOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -1272,7 +1233,7 @@
         "target": "com.posthog.llm_analytics#LlmAnalyticsEvaluationConfigSetActiveKeyCreateRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#EvaluationConfig"
+        "target": "com.posthog.llm_analytics#EvaluationConfigOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -1509,9 +1470,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "evaluation": {
           "target": "smithy.api#String",
           "traits": {
@@ -1530,25 +1488,6 @@
             "smithy.api#documentation": "RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise."
           }
         },
-        "starts_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "timezone_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Read-only timezone used for scheduled reports. Evaluation reports use UTC."
-          }
-        },
-        "next_delivery_date": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "delivery_targets": {
           "target": "smithy.api#Document",
           "traits": {
@@ -1565,18 +1504,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether report delivery is active. Disabled configs do not fire."
-          }
-        },
-        "deleted": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries."
-          }
-        },
-        "last_delivered_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
           }
         },
         "report_prompt_guidance": {
@@ -1603,15 +1530,6 @@
           "traits": {
             "smithy.api#documentation": "Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10."
           }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -1695,13 +1613,6 @@
             "smithy.api#documentation": "A UUID string identifying this evaluation report."
           }
         },
-        "evaluation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the evaluation this report config belongs to.",
-            "smithy.api#required": {}
-          }
-        },
         "frequency": {
           "target": "com.posthog.llm_analytics#EvaluationReportFrequencyEnum",
           "traits": {
@@ -1712,28 +1623,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise."
-          }
-        },
-        "starts_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "timezone_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Read-only timezone used for scheduled reports. Evaluation reports use UTC.",
-            "smithy.api#required": {}
-          }
-        },
-        "next_delivery_date": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
           }
         },
         "delivery_targets": {
@@ -1752,20 +1641,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether report delivery is active. Disabled configs do not fire."
-          }
-        },
-        "deleted": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries.",
-            "smithy.api#required": {}
-          }
-        },
-        "last_delivered_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
           }
         },
         "report_prompt_guidance": {
@@ -1791,19 +1666,6 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10."
-          }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       },
@@ -1970,12 +1832,6 @@
             "smithy.api#documentation": "A UUID string identifying this evaluation report."
           }
         },
-        "evaluation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "UUID of the evaluation this report config belongs to."
-          }
-        },
         "frequency": {
           "target": "com.posthog.llm_analytics#EvaluationReportFrequencyEnum",
           "traits": {
@@ -1986,25 +1842,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise."
-          }
-        },
-        "starts_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "timezone_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Read-only timezone used for scheduled reports. Evaluation reports use UTC."
-          }
-        },
-        "next_delivery_date": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
           }
         },
         "delivery_targets": {
@@ -2023,18 +1860,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether report delivery is active. Disabled configs do not fire."
-          }
-        },
-        "deleted": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries."
-          }
-        },
-        "last_delivered_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
           }
         },
         "report_prompt_guidance": {
@@ -2061,15 +1886,6 @@
           "traits": {
             "smithy.api#documentation": "Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10."
           }
-        },
-        "created_by": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -2914,12 +2730,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -2932,27 +2742,6 @@
           "traits": {
             "smithy.api#documentation": "Raw YAML recipe source. Must parse as YAML; recipe semantics are compiled and validated client-side.",
             "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.llm_analytics#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "User who created the recipe.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -3046,22 +2835,6 @@
           "traits": {
             "smithy.api#documentation": "Raw YAML recipe source. Must parse as YAML; recipe semantics are compiled and validated client-side."
           }
-        },
-        "created_by": {
-          "target": "com.posthog.llm_analytics#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "User who created the recipe.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -3140,11 +2913,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.llm_analytics#LlmAnalyticsProviderKeyValidationsCreateResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.llm_analytics#LlmAnalyticsProviderKeyValidationsCreateResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeyValidationsCreateResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -3202,7 +2985,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.llm_analytics#PaginatedLLMProviderKeyList": {
+    "com.posthog.llm_analytics#PaginatedLLMProviderKeyListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -3221,15 +3004,15 @@
           }
         },
         "results": {
-          "target": "com.posthog.llm_analytics#PaginatedLLMProviderKeyListResultsList"
+          "target": "com.posthog.llm_analytics#PaginatedLLMProviderKeyListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.llm_analytics#PaginatedLLMProviderKeyListResultsList": {
+    "com.posthog.llm_analytics#PaginatedLLMProviderKeyListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.llm_analytics#LLMProviderKey"
+        "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
       },
       "traits": {}
     },
@@ -3239,7 +3022,7 @@
         "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysListRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#PaginatedLLMProviderKeyList"
+        "target": "com.posthog.llm_analytics#PaginatedLLMProviderKeyListOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -3260,32 +3043,17 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "provider": {
           "target": "com.posthog.llm_analytics#LLMProviderEnum"
         },
         "name": {
           "target": "smithy.api#String"
         },
-        "state": {
-          "target": "com.posthog.llm_analytics#LLMProviderKeyStateEnum"
-        },
-        "error_message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "api_key": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#sensitive": {}
           }
-        },
-        "api_key_masked": {
-          "target": "smithy.api#String"
         },
         "azure_endpoint": {
           "target": "smithy.api#String",
@@ -3299,34 +3067,8 @@
             "smithy.api#documentation": "Azure OpenAI API version"
           }
         },
-        "azure_endpoint_display": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure endpoint (read-only, for display)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_display": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure API version (read-only, for display)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "set_as_active": {
           "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.llm_analytics#UserBasic"
-        },
-        "last_used_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -3339,7 +3081,7 @@
         "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysCreateRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#LLMProviderKey"
+        "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -3379,7 +3121,7 @@
         "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#LLMProviderKey"
+        "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -3414,23 +3156,11 @@
         "name": {
           "target": "smithy.api#String"
         },
-        "state": {
-          "target": "com.posthog.llm_analytics#LLMProviderKeyStateEnum"
-        },
-        "error_message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "api_key": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#sensitive": {}
           }
-        },
-        "api_key_masked": {
-          "target": "smithy.api#String"
         },
         "azure_endpoint": {
           "target": "smithy.api#String",
@@ -3444,34 +3174,8 @@
             "smithy.api#documentation": "Azure OpenAI API version"
           }
         },
-        "azure_endpoint_display": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure endpoint (read-only, for display)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_display": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure API version (read-only, for display)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "set_as_active": {
           "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.llm_analytics#UserBasic"
-        },
-        "last_used_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -3484,7 +3188,7 @@
         "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#LLMProviderKey"
+        "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -3519,23 +3223,11 @@
         "name": {
           "target": "smithy.api#String"
         },
-        "state": {
-          "target": "com.posthog.llm_analytics#LLMProviderKeyStateEnum"
-        },
-        "error_message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "api_key": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#sensitive": {}
           }
-        },
-        "api_key_masked": {
-          "target": "smithy.api#String"
         },
         "azure_endpoint": {
           "target": "smithy.api#String",
@@ -3549,34 +3241,8 @@
             "smithy.api#documentation": "Azure OpenAI API version"
           }
         },
-        "azure_endpoint_display": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure endpoint (read-only, for display)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_display": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure API version (read-only, for display)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "set_as_active": {
           "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.llm_analytics#UserBasic"
-        },
-        "last_used_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -3589,7 +3255,7 @@
         "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#LLMProviderKey"
+        "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -3669,7 +3335,7 @@
         "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysDependentConfigsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#LLMProviderKey"
+        "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -3705,23 +3371,11 @@
         "name": {
           "target": "smithy.api#String"
         },
-        "state": {
-          "target": "com.posthog.llm_analytics#LLMProviderKeyStateEnum"
-        },
-        "error_message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "api_key": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#sensitive": {}
           }
-        },
-        "api_key_masked": {
-          "target": "smithy.api#String"
         },
         "azure_endpoint": {
           "target": "smithy.api#String",
@@ -3735,34 +3389,8 @@
             "smithy.api#documentation": "Azure OpenAI API version"
           }
         },
-        "azure_endpoint_display": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure endpoint (read-only, for display)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "api_version_display": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Azure API version (read-only, for display)",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "set_as_active": {
           "target": "smithy.api#Boolean"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.llm_analytics#UserBasic"
-        },
-        "last_used_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -3775,7 +3403,7 @@
         "target": "com.posthog.llm_analytics#LlmAnalyticsProviderKeysValidateCreateRequest"
       },
       "output": {
-        "target": "com.posthog.llm_analytics#LLMProviderKey"
+        "target": "com.posthog.llm_analytics#LLMProviderKeyOutput"
       },
       "traits": {
         "smithy.api#http": {
@@ -3910,7 +3538,8 @@
         "created_by": {
           "target": "com.posthog.llm_analytics#UserBasic",
           "traits": {
-            "smithy.api#documentation": "User who queued this trace."
+            "smithy.api#documentation": "User who queued this trace.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "team": {
@@ -4216,7 +3845,8 @@
         "created_by": {
           "target": "com.posthog.llm_analytics#UserBasic",
           "traits": {
-            "smithy.api#documentation": "User who created this review queue."
+            "smithy.api#documentation": "User who created this review queue.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "team": {
@@ -5086,12 +4716,16 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.llm_analytics#UserBasic"
+          "target": "com.posthog.llm_analytics#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "reviewed_by": {
           "target": "com.posthog.llm_analytics#UserBasic",
           "traits": {
-            "smithy.api#documentation": "User who last saved this review."
+            "smithy.api#documentation": "User who last saved this review.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "scores": {
@@ -5525,11 +5159,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.llm_analytics#LlmAnalyticsTranslateCreateResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.llm_analytics#LlmAnalyticsTranslateCreateResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.llm_analytics#LlmAnalyticsTranslateCreateResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}

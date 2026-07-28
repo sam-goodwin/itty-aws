@@ -1040,11 +1040,16 @@
             "smithy.api#documentation": "Configuration assignment name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Location of the resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maintenance#ConfigurationAssignmentProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the configuration assignment"
           }
         }
       },
@@ -1250,11 +1255,16 @@
             "smithy.api#documentation": "Configuration assignment name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Location of the resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maintenance#ConfigurationAssignmentProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the configuration assignment"
           }
         }
       },
@@ -1850,11 +1860,16 @@
             "smithy.api#documentation": "Configuration assignment name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Location of the resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maintenance#ConfigurationAssignmentProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the configuration assignment"
           }
         }
       },
@@ -2052,11 +2067,16 @@
             "smithy.api#documentation": "Configuration assignment name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Location of the resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maintenance#ConfigurationAssignmentProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the configuration assignment"
           }
         }
       },
@@ -3505,16 +3525,39 @@
             "smithy.api#documentation": "Maintenance Configuration Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets location of the resource"
+          }
+        },
+        "tags": {
+          "target": "com.azure.maintenance#MaintenanceConfigurationsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets tags of the resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maintenance#MaintenanceConfigurationProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets properties of the resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.maintenance#MaintenanceConfigurationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets tags of the resource"
       }
     },
     "com.azure.maintenance#MaintenanceConfigurationsCreateOrUpdate": {
@@ -3733,16 +3776,39 @@
             "smithy.api#documentation": "Maintenance Configuration Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets location of the resource"
+          }
+        },
+        "tags": {
+          "target": "com.azure.maintenance#MaintenanceConfigurationsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets tags of the resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maintenance#MaintenanceConfigurationProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets properties of the resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.maintenance#MaintenanceConfigurationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets tags of the resource"
       }
     },
     "com.azure.maintenance#MaintenanceConfigurationsGet": {
@@ -4565,11 +4631,16 @@
             "smithy.api#documentation": "Configuration assignment name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Location of the resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maintenance#ConfigurationAssignmentProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the configuration assignment"
           }
         }
       },
@@ -5285,11 +5356,16 @@
             "smithy.api#documentation": "Configuration assignment name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Location of the resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.maintenance#ConfigurationAssignmentProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the configuration assignment"
           }
         }
       },

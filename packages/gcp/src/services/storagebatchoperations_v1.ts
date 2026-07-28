@@ -154,12 +154,12 @@ export const ObjectAccessControl = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectAccessControl",
 }) as any as S.Schema<ObjectAccessControl>;
 
-export type ObjectAccessControlList = ObjectAccessControl[];
+export type ObjectAccessControlList = ReadonlyArray<ObjectAccessControl>;
 export const ObjectAccessControlList = /*@__PURE__*/ S.Array(
   ObjectAccessControl,
 ) as any as S.Schema<ObjectAccessControlList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -261,8 +261,7 @@ export type RewriteObjectStorageClassEnum =
   | "STANDARD"
   | "NEARLINE"
   | "COLDLINE"
-  | "ARCHIVE"
-  | (string & {});
+  | "ARCHIVE";
 export const RewriteObjectStorageClassEnum = /*@__PURE__*/ S.String;
 
 /** Describes options for object rewrite. */
@@ -281,12 +280,11 @@ export const RewriteObject = /*@__PURE__*/ S.suspend(() =>
 
 export type LoggingConfigLogActionsItemEnum =
   | "LOGGABLE_ACTION_UNSPECIFIED"
-  | "TRANSFORM"
-  | (string & {});
+  | "TRANSFORM";
 export const LoggingConfigLogActionsItemEnum = /*@__PURE__*/ S.String;
 
 export type LoggingConfigLogActionsItemEnumList =
-  LoggingConfigLogActionsItemEnum[];
+  ReadonlyArray<LoggingConfigLogActionsItemEnum>;
 export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(
   LoggingConfigLogActionsItemEnum,
 ) as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
@@ -294,12 +292,11 @@ export const LoggingConfigLogActionsItemEnumList = /*@__PURE__*/ S.Array(
 export type LoggingConfigLogActionStatesItemEnum =
   | "LOGGABLE_ACTION_STATE_UNSPECIFIED"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const LoggingConfigLogActionStatesItemEnum = /*@__PURE__*/ S.String;
 
 export type LoggingConfigLogActionStatesItemEnumList =
-  LoggingConfigLogActionStatesItemEnum[];
+  ReadonlyArray<LoggingConfigLogActionStatesItemEnum>;
 export const LoggingConfigLogActionStatesItemEnumList = /*@__PURE__*/ S.Array(
   LoggingConfigLogActionStatesItemEnum,
 ) as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
@@ -353,15 +350,13 @@ export const Counters = /*@__PURE__*/ S.suspend(() =>
 export type PutObjectHoldEventBasedHoldEnum =
   | "HOLD_STATUS_UNSPECIFIED"
   | "SET"
-  | "UNSET"
-  | (string & {});
+  | "UNSET";
 export const PutObjectHoldEventBasedHoldEnum = /*@__PURE__*/ S.String;
 
 export type PutObjectHoldTemporaryHoldEnum =
   | "HOLD_STATUS_UNSPECIFIED"
   | "SET"
-  | "UNSET"
-  | (string & {});
+  | "UNSET";
 export const PutObjectHoldTemporaryHoldEnum = /*@__PURE__*/ S.String;
 
 /** Describes options to update object hold. */
@@ -398,8 +393,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type ObjectRetentionRetentionModeEnum =
   | "RETENTION_MODE_UNSPECIFIED"
   | "LOCKED"
-  | "UNLOCKED"
-  | (string & {});
+  | "UNLOCKED";
 export const ObjectRetentionRetentionModeEnum = /*@__PURE__*/ S.String;
 
 /** Describes options for object retention update. */
@@ -509,8 +503,7 @@ export type JobStateEnum =
   | "SUCCEEDED"
   | "CANCELED"
   | "FAILED"
-  | "QUEUED"
-  | (string & {});
+  | "QUEUED";
 export const JobStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes list of objects to be transformed. */
@@ -552,7 +545,7 @@ export const Bucket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 
-export type BucketList_ = Bucket[];
+export type BucketList_ = ReadonlyArray<Bucket>;
 export const BucketList_ = /*@__PURE__*/ S.Array(
   Bucket,
 ) as any as S.Schema<BucketList_>;
@@ -585,8 +578,7 @@ export type ErrorSummaryErrorCodeEnum =
   | "UNIMPLEMENTED"
   | "INTERNAL"
   | "UNAVAILABLE"
-  | "DATA_LOSS"
-  | (string & {});
+  | "DATA_LOSS";
 export const ErrorSummaryErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** An entry describing an error that has occurred. */
@@ -603,7 +595,7 @@ export const ErrorLogEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorLogEntry" }) as any as S.Schema<ErrorLogEntry>;
 
-export type ErrorLogEntryList = ErrorLogEntry[];
+export type ErrorLogEntryList = ReadonlyArray<ErrorLogEntry>;
 export const ErrorLogEntryList = /*@__PURE__*/ S.Array(
   ErrorLogEntry,
 ) as any as S.Schema<ErrorLogEntryList>;
@@ -625,7 +617,7 @@ export const ErrorSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorSummary" }) as any as S.Schema<ErrorSummary>;
 
-export type ErrorSummaryList = ErrorSummary[];
+export type ErrorSummaryList = ReadonlyArray<ErrorSummary>;
 export const ErrorSummaryList = /*@__PURE__*/ S.Array(
   ErrorSummary,
 ) as any as S.Schema<ErrorSummaryList>;
@@ -728,7 +720,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -900,8 +892,7 @@ export type BucketOperationStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "CANCELED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const BucketOperationStateEnum = /*@__PURE__*/ S.String;
 
 /** BucketOperation represents a bucket-level breakdown of a Job. */
@@ -1014,7 +1005,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1065,7 +1056,7 @@ export const ListProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsJobsRequest",
 }) as any as S.Schema<ListProjectsLocationsJobsRequest>;
 
-export type JobList = Job[];
+export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Message for response to listing Jobs */
@@ -1118,7 +1109,7 @@ export const ListProjectsLocationsJobsBucketOperationsRequest =
     identifier: "ListProjectsLocationsJobsBucketOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsJobsBucketOperationsRequest>;
 
-export type BucketOperationList = BucketOperation[];
+export type BucketOperationList = ReadonlyArray<BucketOperation>;
 export const BucketOperationList = /*@__PURE__*/ S.Array(
   BucketOperation,
 ) as any as S.Schema<BucketOperationList>;
@@ -1173,7 +1164,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

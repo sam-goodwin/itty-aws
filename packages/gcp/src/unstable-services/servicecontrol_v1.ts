@@ -77,7 +77,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Money" }) as any as S.Schema<Money>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -99,7 +99,7 @@ export const LinearBuckets = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LinearBuckets" }) as any as S.Schema<LinearBuckets>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -123,7 +123,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -145,7 +145,7 @@ export const Exemplar = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Exemplar" }) as any as S.Schema<Exemplar>;
 
-export type ExemplarList = Exemplar[];
+export type ExemplarList = ReadonlyArray<Exemplar>;
 export const ExemplarList = /*@__PURE__*/ S.Array(
   Exemplar,
 ) as any as S.Schema<ExemplarList>;
@@ -248,7 +248,7 @@ export const MetricValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 
-export type MetricValueList = MetricValue[];
+export type MetricValueList = ReadonlyArray<MetricValue>;
 export const MetricValueList = /*@__PURE__*/ S.Array(
   MetricValue,
 ) as any as S.Schema<MetricValueList>;
@@ -267,7 +267,7 @@ export const MetricValueSet = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricValueSet" }) as any as S.Schema<MetricValueSet>;
 
-export type MetricValueSetList = MetricValueSet[];
+export type MetricValueSetList = ReadonlyArray<MetricValueSet>;
 export const MetricValueSetList = /*@__PURE__*/ S.Array(
   MetricValueSet,
 ) as any as S.Schema<MetricValueSetList>;
@@ -277,8 +277,7 @@ export type QuotaOperationQuotaModeEnum =
   | "NORMAL"
   | "BEST_EFFORT"
   | "CHECK_ONLY"
-  | "ADJUST_ONLY"
-  | (string & {});
+  | "ADJUST_ONLY";
 export const QuotaOperationQuotaModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents information regarding a quota operation. */
@@ -358,8 +357,7 @@ export type QuotaErrorCodeEnum =
   | "PROJECT_STATUS_UNAVAILABLE"
   | "SERVICE_STATUS_UNAVAILABLE"
   | "BILLING_STATUS_UNAVAILABLE"
-  | "QUOTA_SYSTEM_UNAVAILABLE"
-  | (string & {});
+  | "QUOTA_SYSTEM_UNAVAILABLE";
 export const QuotaErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
@@ -399,7 +397,7 @@ export const QuotaError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaError" }) as any as S.Schema<QuotaError>;
 
-export type QuotaErrorList = QuotaError[];
+export type QuotaErrorList = ReadonlyArray<QuotaError>;
 export const QuotaErrorList = /*@__PURE__*/ S.Array(
   QuotaError,
 ) as any as S.Schema<QuotaErrorList>;
@@ -442,8 +440,7 @@ export const AllocateQuotaResponse = /*@__PURE__*/ S.suspend(() =>
 export type QuotaPropertiesQuotaModeEnum =
   | "ACQUIRE"
   | "ACQUIRE_BEST_EFFORT"
-  | "CHECK"
-  | (string & {});
+  | "CHECK";
 export const QuotaPropertiesQuotaModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the properties needed for quota operations. */
@@ -459,12 +456,7 @@ export const QuotaProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "QuotaProperties",
 }) as any as S.Schema<QuotaProperties>;
 
-export type OperationImportanceEnum =
-  | "LOW"
-  | "HIGH"
-  | "DEBUG"
-  | "PROMOTED"
-  | (string & {});
+export type OperationImportanceEnum = "LOW" | "HIGH" | "DEBUG" | "PROMOTED";
 export const OperationImportanceEnum = /*@__PURE__*/ S.String;
 
 export type LogEntrySeverityEnum =
@@ -476,8 +468,7 @@ export type LogEntrySeverityEnum =
   | "ERROR"
   | "CRITICAL"
   | "ALERT"
-  | "EMERGENCY"
-  | (string & {});
+  | "EMERGENCY";
 export const LogEntrySeverityEnum = /*@__PURE__*/ S.String;
 
 /** A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification. Product-specific logging information MUST be defined in a separate message. */
@@ -618,7 +609,7 @@ export const LogEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogEntry" }) as any as S.Schema<LogEntry>;
 
-export type LogEntryList = LogEntry[];
+export type LogEntryList = ReadonlyArray<LogEntry>;
 export const LogEntryList = /*@__PURE__*/ S.Array(
   LogEntry,
 ) as any as S.Schema<LogEntryList>;
@@ -643,7 +634,7 @@ export const ResourceInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ResourceInfo" }) as any as S.Schema<ResourceInfo>;
 
-export type ResourceInfoList = ResourceInfo[];
+export type ResourceInfoList = ReadonlyArray<ResourceInfo>;
 export const ResourceInfoList = /*@__PURE__*/ S.Array(
   ResourceInfo,
 ) as any as S.Schema<ResourceInfoList>;
@@ -707,8 +698,7 @@ export type TraceSpanSpanKindEnum =
   | "SERVER"
   | "CLIENT"
   | "PRODUCER"
-  | "CONSUMER"
-  | (string & {});
+  | "CONSUMER";
 export const TraceSpanSpanKindEnum = /*@__PURE__*/ S.String;
 
 /** A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous—there may be gaps or overlaps between spans in a trace. */
@@ -752,7 +742,7 @@ export const TraceSpan = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TraceSpan" }) as any as S.Schema<TraceSpan>;
 
-export type TraceSpanList = TraceSpan[];
+export type TraceSpanList = ReadonlyArray<TraceSpan>;
 export const TraceSpanList = /*@__PURE__*/ S.Array(
   TraceSpan,
 ) as any as S.Schema<TraceSpanList>;
@@ -854,8 +844,7 @@ export const IntegerMap = /*@__PURE__*/ S.Record(
 export type QuotaInfoQuotaExtractionStateEnum =
   | "QUOTA_EXTRACTION_STATE_UNSPECIFIED"
   | "QUOTA_EXTRACTION_STATE_DARK_LAUNCH"
-  | "QUOTA_EXTRACTION_STATE_TRAFFIC_MIGRATION"
-  | (string & {});
+  | "QUOTA_EXTRACTION_STATE_TRAFFIC_MIGRATION";
 export const QuotaInfoQuotaExtractionStateEnum = /*@__PURE__*/ S.String;
 
 /** Contains the quota information for a quota check response. */
@@ -915,8 +904,7 @@ export type CheckErrorCodeEnum =
   | "CLOUD_RESOURCE_MANAGER_BACKEND_UNAVAILABLE"
   | "SECURITY_POLICY_BACKEND_UNAVAILABLE"
   | "LOCATION_POLICY_BACKEND_UNAVAILABLE"
-  | "INJECTED_ERROR"
-  | (string & {});
+  | "INJECTED_ERROR";
 export const CheckErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Defines the errors to be returned in google.api.servicecontrol.v1.CheckResponse.check_errors. */
@@ -939,7 +927,7 @@ export const CheckError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckError" }) as any as S.Schema<CheckError>;
 
-export type CheckErrorList = CheckError[];
+export type CheckErrorList = ReadonlyArray<CheckError>;
 export const CheckErrorList = /*@__PURE__*/ S.Array(
   CheckError,
 ) as any as S.Schema<CheckErrorList>;
@@ -949,8 +937,7 @@ export type ConsumerInfoTypeEnum =
   | "PROJECT"
   | "FOLDER"
   | "ORGANIZATION"
-  | "SERVICE_SPECIFIC"
-  | (string & {});
+  | "SERVICE_SPECIFIC";
 export const ConsumerInfoTypeEnum = /*@__PURE__*/ S.String;
 
 /** `ConsumerInfo` provides information about the consumer. */
@@ -1016,7 +1003,7 @@ export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1070,7 +1057,7 @@ export const ReportError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportError" }) as any as S.Schema<ReportError>;
 
-export type ReportErrorList = ReportError[];
+export type ReportErrorList = ReadonlyArray<ReportError>;
 export const ReportErrorList = /*@__PURE__*/ S.Array(
   ReportError,
 ) as any as S.Schema<ReportErrorList>;

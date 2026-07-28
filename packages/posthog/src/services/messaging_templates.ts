@@ -12,21 +12,21 @@ import * as Retry from "../retry.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `liquid` - liquid */
-export type MessageTemplateContentTemplatingEnum = "liquid" | (string & {});
+export type MessageTemplateContentTemplatingEnum = "liquid";
 export const MessageTemplateContentTemplatingEnum = /*@__PURE__*/ S.String;
 
 /** Rows of {id, cells, columns[{id, contents[{id, type, values}], values}], values}. */
-export type EmailTemplateDesignBodyRowsList = unknown[];
+export type EmailTemplateDesignBodyRowsList = ReadonlyArray<unknown>;
 export const EmailTemplateDesignBodyRowsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EmailTemplateDesignBodyRowsList>;
 
-export type EmailTemplateDesignBodyHeadersList = unknown[];
+export type EmailTemplateDesignBodyHeadersList = ReadonlyArray<unknown>;
 export const EmailTemplateDesignBodyHeadersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EmailTemplateDesignBodyHeadersList>;
 
-export type EmailTemplateDesignBodyFootersList = unknown[];
+export type EmailTemplateDesignBodyFootersList = ReadonlyArray<unknown>;
 export const EmailTemplateDesignBodyFootersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<EmailTemplateDesignBodyFootersList>;
@@ -105,6 +105,42 @@ export const MessageTemplateContent = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessageTemplateContent",
 }) as any as S.Schema<MessageTemplateContent>;
 
+export interface MessagingTemplatesCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Human-readable template name shown in the library. */
+  name: string;
+  /** What the template is for and when to use it. */
+  description?: string;
+  /** Template content keyed by channel. Replaced as a whole on update, not merged. */
+  content?: MessageTemplateContent;
+  /** Message channel of the template. Currently 'email'. */
+  type?: string;
+  /** Message category ID to file the template under. Must belong to the same project. */
+  message_category?: string | null;
+  /** Soft-delete flag. Set true to remove the template from the library. */
+  deleted?: boolean;
+}
+export const MessagingTemplatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.String,
+    description: S.optional(S.String),
+    content: S.optional(MessageTemplateContent),
+    type: S.optional(S.String),
+    message_category: S.optional(S.NullOr(S.String)),
+    deleted: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/messaging_templates/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "MessagingTemplatesCreateRequest",
+}) as any as S.Schema<MessagingTemplatesCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -120,11 +156,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -155,50 +190,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-export interface MessagingTemplatesCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-  /** Human-readable template name shown in the library. */
-  name: string;
-  /** What the template is for and when to use it. */
-  description?: string;
-  created_at: string;
-  updated_at: string;
-  /** Template content keyed by channel. Replaced as a whole on update, not merged. */
-  content?: MessageTemplateContent;
-  created_by: UserBasic;
-  /** Message channel of the template. Currently 'email'. */
-  type?: string;
-  /** Message category ID to file the template under. Must belong to the same project. */
-  message_category?: string | null;
-  /** Soft-delete flag. Set true to remove the template from the library. */
-  deleted?: boolean;
-}
-export const MessagingTemplatesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-    content: S.optional(MessageTemplateContent),
-    created_by: UserBasic,
-    type: S.optional(S.String),
-    message_category: S.optional(S.NullOr(S.String)),
-    deleted: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/messaging_templates/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MessagingTemplatesCreateRequest",
-}) as any as S.Schema<MessagingTemplatesCreateRequest>;
 
 export interface MessageTemplate {
   id: string;
@@ -245,8 +236,7 @@ export type EmailTemplateDesignOperationEnum =
   | "remove_content"
   | "move_content"
   | "add_row"
-  | "remove_row"
-  | (string & {});
+  | "remove_row";
 export const EmailTemplateDesignOperationEnum = /*@__PURE__*/ S.String;
 
 export interface DesignOperation {
@@ -281,7 +271,7 @@ export const DesignOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered edits applied atomically to a template's Unlayer design: the stored design is read, the ops are applied in order, the result is validated and re-rendered to HTML, and it's saved only if valid — otherwise the template is unchanged. Reference blocks by id so you never resend the whole design. */
 export type MessagingTemplatesDesignPartialUpdateRequestOperationsList =
-  DesignOperation[];
+  ReadonlyArray<DesignOperation>;
 export const MessagingTemplatesDesignPartialUpdateRequestOperationsList =
   /*@__PURE__*/ S.Array(
     DesignOperation,
@@ -366,7 +356,8 @@ export const MessagingTemplatesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessagingTemplatesListRequest",
 }) as any as S.Schema<MessagingTemplatesListRequest>;
 
-export type PaginatedMessageTemplateListResultsList = MessageTemplate[];
+export type PaginatedMessageTemplateListResultsList =
+  ReadonlyArray<MessageTemplate>;
 export const PaginatedMessageTemplateListResultsList = /*@__PURE__*/ S.Array(
   MessageTemplate,
 ) as any as S.Schema<PaginatedMessageTemplateListResultsList>;
@@ -397,11 +388,8 @@ export interface MessagingTemplatesPartialUpdateRequest {
   name?: string;
   /** What the template is for and when to use it. */
   description?: string;
-  created_at?: string;
-  updated_at?: string;
   /** Template content keyed by channel. Replaced as a whole on update, not merged. */
   content?: MessageTemplateContent;
-  created_by?: UserBasic;
   /** Message channel of the template. Currently 'email'. */
   type?: string;
   /** Message category ID to file the template under. Must belong to the same project. */
@@ -416,10 +404,7 @@ export const MessagingTemplatesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       id: S.String.pipe(T.Label()),
       name: S.optional(S.String),
       description: S.optional(S.String),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
       content: S.optional(MessageTemplateContent),
-      created_by: S.optional(UserBasic),
       type: S.optional(S.String),
       message_category: S.optional(S.NullOr(S.String)),
       deleted: S.optional(S.Boolean),
@@ -464,11 +449,8 @@ export interface MessagingTemplatesUpdateRequest {
   name: string;
   /** What the template is for and when to use it. */
   description?: string;
-  created_at: string;
-  updated_at: string;
   /** Template content keyed by channel. Replaced as a whole on update, not merged. */
   content?: MessageTemplateContent;
-  created_by: UserBasic;
   /** Message channel of the template. Currently 'email'. */
   type?: string;
   /** Message category ID to file the template under. Must belong to the same project. */
@@ -482,10 +464,7 @@ export const MessagingTemplatesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     name: S.String,
     description: S.optional(S.String),
-    created_at: S.String,
-    updated_at: S.String,
     content: S.optional(MessageTemplateContent),
-    created_by: UserBasic,
     type: S.optional(S.String),
     message_category: S.optional(S.NullOr(S.String)),
     deleted: S.optional(S.Boolean),

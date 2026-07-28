@@ -29,13 +29,12 @@
       }
     },
     "com.cloudflare.abuse_reports#CreateRequestBodyAbuseDmcaAgree": {
-      "type": "structure",
+      "type": "intEnum",
       "members": {
         "_1": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#required": {},
-            "smithy.api#jsonName": "1"
+            "smithy.api#enumValue": 1
           }
         }
       }
@@ -1058,6 +1057,90 @@
           "traits": {
             "smithy.api#enumValue": "registrant_email"
           }
+        },
+        "REGISTRANT_PHONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registrant_phone"
+          }
+        },
+        "REGISTRANT_ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registrant_address"
+          }
+        },
+        "REGISTRANT_ADDRESS_COUNTRY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registrant_address_country"
+          }
+        },
+        "REGISTRANT_ADDRESS_POSTAL_CODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registrant_address_postal_code"
+          }
+        },
+        "ADMIN_NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "admin_name"
+          }
+        },
+        "ADMIN_ORGANIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "admin_organization"
+          }
+        },
+        "ADMIN_EMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "admin_email"
+          }
+        },
+        "ADMIN_PHONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "admin_phone"
+          }
+        },
+        "ADMIN_ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "admin_address"
+          }
+        },
+        "TECH_NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tech_name"
+          }
+        },
+        "TECH_ORGANIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tech_organization"
+          }
+        },
+        "TECH_EMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tech_email"
+          }
+        },
+        "TECH_PHONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tech_phone"
+          }
+        },
+        "TECH_ADDRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tech_address"
+          }
         }
       }
     },
@@ -1575,6 +1658,42 @@
           "traits": {
             "smithy.api#enumValue": "THREAT"
           }
+        },
+        "DMCA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DMCA"
+          }
+        },
+        "EMER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EMER"
+          }
+        },
+        "TM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TM"
+          }
+        },
+        "REG_WHO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "REG_WHO"
+          }
+        },
+        "NCSEI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NCSEI"
+          }
+        },
+        "NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NETWORK"
+          }
         }
       }
     },
@@ -1711,6 +1830,18 @@
           "traits": {
             "smithy.api#enumValue": "in_review"
           }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        },
+        "REMOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "removed"
+          }
         }
       }
     },
@@ -1750,6 +1881,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "THREAT"
+          }
+        },
+        "DMCA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DMCA"
+          }
+        },
+        "EMER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EMER"
+          }
+        },
+        "TM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TM"
+          }
+        },
+        "REG_WHO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "REG_WHO"
+          }
+        },
+        "NCSEI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NCSEI"
+          }
+        },
+        "NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NETWORK"
           }
         }
       }
@@ -1908,6 +2075,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "THREAT"
+          }
+        },
+        "DMCA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DMCA"
+          }
+        },
+        "EMER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EMER"
+          }
+        },
+        "TM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TM"
+          }
+        },
+        "REG_WHO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "REG_WHO"
+          }
+        },
+        "NCSEI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NCSEI"
+          }
+        },
+        "NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NETWORK"
           }
         }
       }
@@ -2085,6 +2288,36 @@
           "traits": {
             "smithy.api#enumValue": "effective_date,asc"
           }
+        },
+        "EFFECTIVE_DATE_DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "effective_date,desc"
+          }
+        },
+        "STATUS_ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status,asc"
+          }
+        },
+        "STATUS_DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status,desc"
+          }
+        },
+        "ENTITY_TYPE_ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "entity_type,asc"
+          }
+        },
+        "ENTITY_TYPE_DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "entity_type,desc"
+          }
         }
       }
     },
@@ -2108,6 +2341,18 @@
           "traits": {
             "smithy.api#enumValue": "in_review"
           }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        },
+        "REMOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "removed"
+          }
         }
       }
     },
@@ -2130,6 +2375,102 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "geo_block"
+          }
+        },
+        "LEGAL_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legal_block"
+          }
+        },
+        "MALWARE_INTERSTITIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "malware_interstitial"
+          }
+        },
+        "MISLEADING_INTERSTITIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "misleading_interstitial"
+          }
+        },
+        "NETWORK_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_block"
+          }
+        },
+        "PHISHING_INTERSTITIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "phishing_interstitial"
+          }
+        },
+        "PLAYFAIRITE_ENFORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "playfairite_enforce"
+          }
+        },
+        "R2_TAKEDOWN_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_takedown_account"
+          }
+        },
+        "R2_TAKEDOWN_BUCKET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_takedown_bucket"
+          }
+        },
+        "R2_TAKEDOWN_OBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_takedown_object"
+          }
+        },
+        "RATE_LIMIT_CACHE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rate_limit_cache"
+          }
+        },
+        "REDIRECT_VIDEO_STREAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redirect_video_stream"
+          }
+        },
+        "REGISTRAR_FREEZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registrar_freeze"
+          }
+        },
+        "REGISTRAR_PARKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registrar_parking"
+          }
+        },
+        "STREAM_BLOCK_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stream_block_account"
+          }
+        },
+        "USER_SUSPEND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user_suspend"
+          }
+        },
+        "WORKERS_TAKEDOWN_BY_ZONE_ID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_takedown_by_zone_id"
           }
         }
       }
@@ -2255,6 +2596,18 @@
           "traits": {
             "smithy.api#enumValue": "in_review"
           }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        },
+        "REMOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "removed"
+          }
         }
       }
     },
@@ -2277,6 +2630,102 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "geo_block"
+          }
+        },
+        "LEGAL_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legal_block"
+          }
+        },
+        "MALWARE_INTERSTITIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "malware_interstitial"
+          }
+        },
+        "MISLEADING_INTERSTITIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "misleading_interstitial"
+          }
+        },
+        "NETWORK_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_block"
+          }
+        },
+        "PHISHING_INTERSTITIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "phishing_interstitial"
+          }
+        },
+        "PLAYFAIRITE_ENFORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "playfairite_enforce"
+          }
+        },
+        "R2_TAKEDOWN_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_takedown_account"
+          }
+        },
+        "R2_TAKEDOWN_BUCKET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_takedown_bucket"
+          }
+        },
+        "R2_TAKEDOWN_OBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_takedown_object"
+          }
+        },
+        "RATE_LIMIT_CACHE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rate_limit_cache"
+          }
+        },
+        "REDIRECT_VIDEO_STREAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redirect_video_stream"
+          }
+        },
+        "REGISTRAR_FREEZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registrar_freeze"
+          }
+        },
+        "REGISTRAR_PARKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registrar_parking"
+          }
+        },
+        "STREAM_BLOCK_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stream_block_account"
+          }
+        },
+        "USER_SUSPEND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user_suspend"
+          }
+        },
+        "WORKERS_TAKEDOWN_BY_ZONE_ID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_takedown_by_zone_id"
           }
         }
       }
@@ -2480,6 +2929,18 @@
           "traits": {
             "smithy.api#enumValue": "in_review"
           }
+        },
+        "CANCELLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cancelled"
+          }
+        },
+        "REMOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "removed"
+          }
         }
       }
     },
@@ -2502,6 +2963,102 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "geo_block"
+          }
+        },
+        "LEGAL_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "legal_block"
+          }
+        },
+        "MALWARE_INTERSTITIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "malware_interstitial"
+          }
+        },
+        "MISLEADING_INTERSTITIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "misleading_interstitial"
+          }
+        },
+        "NETWORK_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_block"
+          }
+        },
+        "PHISHING_INTERSTITIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "phishing_interstitial"
+          }
+        },
+        "PLAYFAIRITE_ENFORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "playfairite_enforce"
+          }
+        },
+        "R2_TAKEDOWN_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_takedown_account"
+          }
+        },
+        "R2_TAKEDOWN_BUCKET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_takedown_bucket"
+          }
+        },
+        "R2_TAKEDOWN_OBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_takedown_object"
+          }
+        },
+        "RATE_LIMIT_CACHE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rate_limit_cache"
+          }
+        },
+        "REDIRECT_VIDEO_STREAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redirect_video_stream"
+          }
+        },
+        "REGISTRAR_FREEZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registrar_freeze"
+          }
+        },
+        "REGISTRAR_PARKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "registrar_parking"
+          }
+        },
+        "STREAM_BLOCK_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stream_block_account"
+          }
+        },
+        "USER_SUSPEND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user_suspend"
+          }
+        },
+        "WORKERS_TAKEDOWN_BY_ZONE_ID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workers_takedown_by_zone_id"
           }
         }
       }

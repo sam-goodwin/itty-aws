@@ -12,6 +12,22 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Properties of the HybridConnection. */
+export interface HybridConnectionPropertiesInput {
+  /** Returns true if client authorization is needed for this hybrid connection; otherwise, false. */
+  requiresClientAuthorization?: boolean;
+  /** The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored. */
+  userMetadata?: string;
+}
+export const HybridConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requiresClientAuthorization: S.optional(S.Boolean),
+    userMetadata: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HybridConnectionPropertiesInput",
+}) as any as S.Schema<HybridConnectionPropertiesInput>;
+
 export interface HybridConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -21,7 +37,8 @@ export interface HybridConnectionsCreateOrUpdateRequest {
   namespaceName: string;
   /** The hybrid connection name. */
   hybridConnectionName: string;
-  body: unknown;
+  /** Properties of the HybridConnection. */
+  properties?: HybridConnectionPropertiesInput;
 }
 export const HybridConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -30,7 +47,7 @@ export const HybridConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       hybridConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(HybridConnectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -48,8 +65,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -57,8 +73,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -140,45 +155,11 @@ export const HybridConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "HybridConnectionsCreateOrUpdateResponse",
 }) as any as S.Schema<HybridConnectionsCreateOrUpdateResponse>;
 
-export interface HybridConnectionsCreateOrUpdateAuthorizationRuleRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The namespace name */
-  namespaceName: string;
-  /** The hybrid connection name. */
-  hybridConnectionName: string;
-  /** The authorization rule name. */
-  authorizationRuleName: string;
-  body: unknown;
-}
-export const HybridConnectionsCreateOrUpdateAuthorizationRuleRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      namespaceName: S.String.pipe(T.Label()),
-      hybridConnectionName: S.String.pipe(T.Label()),
-      authorizationRuleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}",
-        code: 200,
-        apiVersion: "2024-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "HybridConnectionsCreateOrUpdateAuthorizationRuleRequest",
-  }) as any as S.Schema<HybridConnectionsCreateOrUpdateAuthorizationRuleRequest>;
-
-export type AccessRights = "Manage" | "Send" | "Listen" | (string & {});
+export type AccessRights = "Manage" | "Send" | "Listen";
 export const AccessRights = /*@__PURE__*/ S.String;
 
 /** The rights associated with the rule. */
-export type AuthorizationRulePropertiesRightsList = AccessRights[];
+export type AuthorizationRulePropertiesRightsList = ReadonlyArray<AccessRights>;
 export const AuthorizationRulePropertiesRightsList = /*@__PURE__*/ S.Array(
   AccessRights,
 ) as any as S.Schema<AuthorizationRulePropertiesRightsList>;
@@ -195,6 +176,41 @@ export const AuthorizationRuleProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizationRuleProperties",
 }) as any as S.Schema<AuthorizationRuleProperties>;
+
+export interface HybridConnectionsCreateOrUpdateAuthorizationRuleRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The namespace name */
+  namespaceName: string;
+  /** The hybrid connection name. */
+  hybridConnectionName: string;
+  /** The authorization rule name. */
+  authorizationRuleName: string;
+  /** Properties supplied to create or update AuthorizationRule */
+  properties?: AuthorizationRuleProperties;
+}
+export const HybridConnectionsCreateOrUpdateAuthorizationRuleRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      namespaceName: S.String.pipe(T.Label()),
+      hybridConnectionName: S.String.pipe(T.Label()),
+      authorizationRuleName: S.String.pipe(T.Label()),
+      properties: S.optional(AuthorizationRuleProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/hybridConnections/{hybridConnectionName}/authorizationRules/{authorizationRuleName}",
+        code: 200,
+        apiVersion: "2024-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "HybridConnectionsCreateOrUpdateAuthorizationRuleRequest",
+  }) as any as S.Schema<HybridConnectionsCreateOrUpdateAuthorizationRuleRequest>;
 
 export interface HybridConnectionsCreateOrUpdateAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -470,7 +486,8 @@ export const AuthorizationRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizationRule>;
 
 /** The AuthorizationRule items on this page */
-export type AuthorizationRuleListResultValueList = AuthorizationRule[];
+export type AuthorizationRuleListResultValueList =
+  ReadonlyArray<AuthorizationRule>;
 export const AuthorizationRuleListResultValueList = /*@__PURE__*/ S.Array(
   AuthorizationRule,
 ) as any as S.Schema<AuthorizationRuleListResultValueList>;
@@ -546,7 +563,8 @@ export const HybridConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridConnection>;
 
 /** The HybridConnection items on this page */
-export type HybridConnectionListResultValueList = HybridConnection[];
+export type HybridConnectionListResultValueList =
+  ReadonlyArray<HybridConnection>;
 export const HybridConnectionListResultValueList = /*@__PURE__*/ S.Array(
   HybridConnection,
 ) as any as S.Schema<HybridConnectionListResultValueList>;
@@ -621,6 +639,10 @@ export const AccessKeys = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessKeys" }) as any as S.Schema<AccessKeys>;
 
+/** The access key to regenerate. */
+export type KeyType = "PrimaryKey" | "SecondaryKey";
+export const KeyType = /*@__PURE__*/ S.String;
+
 export interface HybridConnectionsRegenerateKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -632,7 +654,10 @@ export interface HybridConnectionsRegenerateKeysRequest {
   hybridConnectionName: string;
   /** The authorization rule name. */
   authorizationRuleName: string;
-  body: unknown;
+  /** The access key to regenerate. */
+  keyType: KeyType;
+  /** Optional. If the key value is provided, this is set to key type, or autogenerated key value set for key type. */
+  key?: string;
 }
 export const HybridConnectionsRegenerateKeysRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -642,7 +667,8 @@ export const HybridConnectionsRegenerateKeysRequest = /*@__PURE__*/ S.suspend(
       namespaceName: S.String.pipe(T.Label()),
       hybridConnectionName: S.String.pipe(T.Label()),
       authorizationRuleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      keyType: KeyType,
+      key: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -658,13 +684,14 @@ export const HybridConnectionsRegenerateKeysRequest = /*@__PURE__*/ S.suspend(
 export interface NamespacesCheckNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body: unknown;
+  /** The namespace name to check for availability. The namespace name can contain only letters, numbers, and hyphens. The namespace must start with a letter, and it must end with a letter or number. */
+  name: string;
 }
 export const NamespacesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -684,8 +711,7 @@ export type UnavailableReason =
   | "SubscriptionIsDisabled"
   | "NameInUse"
   | "NameInLockdown"
-  | "TooManyNamespaceInCurrentSubscription"
-  | (string & {});
+  | "TooManyNamespaceInCurrentSubscription";
 export const UnavailableReason = /*@__PURE__*/ S.String;
 
 /** Description of the check name availability request properties. */
@@ -707,41 +733,14 @@ export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckNameAvailabilityResult",
 }) as any as S.Schema<CheckNameAvailabilityResult>;
 
-export interface NamespacesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The namespace name */
-  namespaceName: string;
-  body: unknown;
-}
-export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    namespaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
-      code: 200,
-      apiVersion: "2024-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "NamespacesCreateOrUpdateRequest",
-}) as any as S.Schema<NamespacesCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type NamespacesCreateOrUpdateResponseTagsMap = {
+export type NamespacesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const NamespacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const NamespacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
 
 /** PrivateEndpoint information. */
 export interface PrivateEndpoint {
@@ -761,8 +760,7 @@ export type PrivateLinkConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
-  | "Disconnected"
-  | (string & {});
+  | "Disconnected";
 export const PrivateLinkConnectionStatus = /*@__PURE__*/ S.String;
 
 /** ConnectionState information. */
@@ -788,8 +786,7 @@ export type EndPointProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Canceled"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const EndPointProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the private endpoint connection resource. */
@@ -810,6 +807,123 @@ export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PrivateEndpointConnectionProperties",
 }) as any as S.Schema<PrivateEndpointConnectionProperties>;
+
+/** Properties of the PrivateEndpointConnection. */
+export interface PrivateEndpointConnectionInput {
+  /** Properties of the PrivateEndpointConnection. */
+  properties?: PrivateEndpointConnectionProperties;
+}
+export const PrivateEndpointConnectionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(PrivateEndpointConnectionProperties),
+  }),
+).annotate({
+  identifier: "PrivateEndpointConnectionInput",
+}) as any as S.Schema<PrivateEndpointConnectionInput>;
+
+/** List of private endpoint connections. */
+export type RelayNamespacePropertiesInputPrivateEndpointConnectionsList =
+  ReadonlyArray<PrivateEndpointConnectionInput>;
+export const RelayNamespacePropertiesInputPrivateEndpointConnectionsList =
+  /*@__PURE__*/ S.Array(
+    PrivateEndpointConnectionInput,
+  ) as any as S.Schema<RelayNamespacePropertiesInputPrivateEndpointConnectionsList>;
+
+/** This determines if traffic is allowed over public network. By default it is enabled. */
+export type RelayNamespacePropertiesInputPublicNetworkAccess =
+  | "Enabled"
+  | "Disabled"
+  | "SecuredByPerimeter";
+export const RelayNamespacePropertiesInputPublicNetworkAccess =
+  /*@__PURE__*/ S.String;
+
+/** Properties of the namespace. */
+export interface RelayNamespacePropertiesInput {
+  /** List of private endpoint connections. */
+  privateEndpointConnections?: RelayNamespacePropertiesInputPrivateEndpointConnectionsList;
+  /** This determines if traffic is allowed over public network. By default it is enabled. */
+  publicNetworkAccess?: RelayNamespacePropertiesInputPublicNetworkAccess;
+}
+export const RelayNamespacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateEndpointConnections: S.optional(
+      RelayNamespacePropertiesInputPrivateEndpointConnectionsList,
+    ),
+    publicNetworkAccess: S.optional(
+      RelayNamespacePropertiesInputPublicNetworkAccess,
+    ),
+  }),
+).annotate({
+  identifier: "RelayNamespacePropertiesInput",
+}) as any as S.Schema<RelayNamespacePropertiesInput>;
+
+/** Name of this SKU. */
+export type SkuName = "Standard";
+export const SkuName = /*@__PURE__*/ S.String;
+
+/** The tier of this SKU. */
+export type SkuTier = "Standard";
+export const SkuTier = /*@__PURE__*/ S.String;
+
+/** SKU of the namespace. */
+export interface Sku {
+  /** Name of this SKU. */
+  name: SkuName;
+  /** The tier of this SKU. */
+  tier?: SkuTier;
+}
+export const Sku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: SkuName,
+    tier: S.optional(SkuTier),
+  }),
+).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+
+export interface NamespacesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The namespace name */
+  namespaceName: string;
+  /** Resource tags. */
+  tags?: NamespacesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Description of Relay namespace */
+  properties?: RelayNamespacePropertiesInput;
+  /** SKU of the namespace. */
+  sku?: Sku;
+}
+export const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    namespaceName: S.String.pipe(T.Label()),
+    tags: S.optional(NamespacesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(RelayNamespacePropertiesInput),
+    sku: S.optional(Sku),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}",
+      code: 200,
+      apiVersion: "2024-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "NamespacesCreateOrUpdateRequest",
+}) as any as S.Schema<NamespacesCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type NamespacesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
 
 /** Properties of the PrivateEndpointConnection. */
 export interface PrivateEndpointConnection {
@@ -841,7 +955,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List of private endpoint connections. */
 export type RelayNamespacePropertiesPrivateEndpointConnectionsList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const RelayNamespacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -851,8 +965,7 @@ export const RelayNamespacePropertiesPrivateEndpointConnectionsList =
 export type RelayNamespacePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const RelayNamespacePropertiesPublicNetworkAccess =
   /*@__PURE__*/ S.String;
 
@@ -893,28 +1006,6 @@ export const RelayNamespaceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RelayNamespaceProperties",
 }) as any as S.Schema<RelayNamespaceProperties>;
-
-/** Name of this SKU. */
-export type SkuName = "Standard" | (string & {});
-export const SkuName = /*@__PURE__*/ S.String;
-
-/** The tier of this SKU. */
-export type SkuTier = "Standard" | (string & {});
-export const SkuTier = /*@__PURE__*/ S.String;
-
-/** SKU of the namespace. */
-export interface Sku {
-  /** Name of this SKU. */
-  name: SkuName;
-  /** The tier of this SKU. */
-  tier?: SkuTier;
-}
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SkuName,
-    tier: S.optional(SkuTier),
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 export interface NamespacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -958,7 +1049,8 @@ export interface NamespacesCreateOrUpdateAuthorizationRuleRequest {
   namespaceName: string;
   /** The authorization rule name. */
   authorizationRuleName: string;
-  body: unknown;
+  /** Properties supplied to create or update AuthorizationRule */
+  properties?: AuthorizationRuleProperties;
 }
 export const NamespacesCreateOrUpdateAuthorizationRuleRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -967,7 +1059,7 @@ export const NamespacesCreateOrUpdateAuthorizationRuleRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       authorizationRuleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AuthorizationRuleProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1008,48 +1100,16 @@ export const NamespacesCreateOrUpdateAuthorizationRuleResponse =
     identifier: "NamespacesCreateOrUpdateAuthorizationRuleResponse",
   }) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
 
-export interface NamespacesCreateOrUpdateNetworkRuleSetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The namespace name */
-  namespaceName: string;
-  body: unknown;
-}
-export const NamespacesCreateOrUpdateNetworkRuleSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      namespaceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default",
-        code: 200,
-        apiVersion: "2024-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "NamespacesCreateOrUpdateNetworkRuleSetRequest",
-  }) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetRequest>;
-
 /** Default Action for Network Rule Set */
-export type DefaultAction = "Allow" | "Deny" | (string & {});
+export type DefaultAction = "Allow" | "Deny";
 export const DefaultAction = /*@__PURE__*/ S.String;
 
 /** This determines if traffic is allowed over public network. By default it is enabled. */
-export type PublicNetworkAccess =
-  | "Enabled"
-  | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+export type PublicNetworkAccess = "Enabled" | "Disabled" | "SecuredByPerimeter";
 export const PublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The IP Filter Action */
-export type NetworkRuleIPAction = "Allow" | (string & {});
+export type NetworkRuleIPAction = "Allow";
 export const NetworkRuleIPAction = /*@__PURE__*/ S.String;
 
 /** The response from the List namespace operation. */
@@ -1069,7 +1129,8 @@ export const NWRuleSetIpRules = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NWRuleSetIpRules>;
 
 /** List of IpRules */
-export type NetworkRuleSetPropertiesIpRulesList = NWRuleSetIpRules[];
+export type NetworkRuleSetPropertiesIpRulesList =
+  ReadonlyArray<NWRuleSetIpRules>;
 export const NetworkRuleSetPropertiesIpRulesList = /*@__PURE__*/ S.Array(
   NWRuleSetIpRules,
 ) as any as S.Schema<NetworkRuleSetPropertiesIpRulesList>;
@@ -1095,6 +1156,35 @@ export const NetworkRuleSetProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkRuleSetProperties",
 }) as any as S.Schema<NetworkRuleSetProperties>;
+
+export interface NamespacesCreateOrUpdateNetworkRuleSetRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The namespace name */
+  namespaceName: string;
+  /** NetworkRuleSet properties */
+  properties?: NetworkRuleSetProperties;
+}
+export const NamespacesCreateOrUpdateNetworkRuleSetRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      namespaceName: S.String.pipe(T.Label()),
+      properties: S.optional(NetworkRuleSetProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Relay/namespaces/{namespaceName}/networkRuleSets/default",
+        code: 200,
+        apiVersion: "2024-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "NamespacesCreateOrUpdateNetworkRuleSetRequest",
+  }) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetRequest>;
 
 export interface NamespacesCreateOrUpdateNetworkRuleSetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1420,7 +1510,7 @@ export const RelayNamespace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelayNamespace" }) as any as S.Schema<RelayNamespace>;
 
 /** The RelayNamespace items on this page */
-export type RelayNamespaceListResultValueList = RelayNamespace[];
+export type RelayNamespaceListResultValueList = ReadonlyArray<RelayNamespace>;
 export const RelayNamespaceListResultValueList = /*@__PURE__*/ S.Array(
   RelayNamespace,
 ) as any as S.Schema<RelayNamespaceListResultValueList>;
@@ -1527,7 +1617,10 @@ export interface NamespacesRegenerateKeysRequest {
   namespaceName: string;
   /** The authorization rule name. */
   authorizationRuleName: string;
-  body: unknown;
+  /** The access key to regenerate. */
+  keyType: KeyType;
+  /** Optional. If the key value is provided, this is set to key type, or autogenerated key value set for key type. */
+  key?: string;
 }
 export const NamespacesRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1535,7 +1628,8 @@ export const NamespacesRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
     authorizationRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    keyType: KeyType,
+    key: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1548,6 +1642,15 @@ export const NamespacesRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesRegenerateKeysRequest",
 }) as any as S.Schema<NamespacesRegenerateKeysRequest>;
 
+/** Resource tags. */
+export type NamespacesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const NamespacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<NamespacesUpdateRequestTagsMap>;
+
 export interface NamespacesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1555,14 +1658,21 @@ export interface NamespacesUpdateRequest {
   resourceGroupName: string;
   /** The namespace name */
   namespaceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: NamespacesUpdateRequestTagsMap;
+  /** SKU of the namespace. */
+  sku?: Sku;
+  /** Description of Relay namespace. */
+  properties?: RelayNamespacePropertiesInput;
 }
 export const NamespacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(NamespacesUpdateRequestTagsMap),
+    sku: S.optional(Sku),
+    properties: S.optional(RelayNamespacePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1654,11 +1764,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1685,7 +1795,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1714,7 +1824,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   namespaceName: string;
   /** The PrivateEndpointConnection name */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** Properties of the PrivateEndpointConnection. */
+  properties?: PrivateEndpointConnectionProperties;
 }
 export const PrivateEndpointConnectionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1723,7 +1834,7 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateEndpointConnectionProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1885,7 +1996,7 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -1936,14 +2047,16 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2047,7 +2160,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** A collection of private link resources */
-export type PrivateLinkResourcesListResultValueList = PrivateLinkResource[];
+export type PrivateLinkResourcesListResultValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
@@ -2068,6 +2182,32 @@ export const PrivateLinkResourcesListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResourcesListResult",
 }) as any as S.Schema<PrivateLinkResourcesListResult>;
 
+/** WCF relay type. */
+export type Relaytype = "NetTcp" | "Http";
+export const Relaytype = /*@__PURE__*/ S.String;
+
+/** Properties of the WCF relay. */
+export interface WcfRelayPropertiesInput {
+  /** WCF relay type. */
+  relayType?: Relaytype;
+  /** Returns true if client authorization is needed for this relay; otherwise, false. */
+  requiresClientAuthorization?: boolean;
+  /** Returns true if transport security is needed for this relay; otherwise, false. */
+  requiresTransportSecurity?: boolean;
+  /** The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored. */
+  userMetadata?: string;
+}
+export const WcfRelayPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    relayType: S.optional(Relaytype),
+    requiresClientAuthorization: S.optional(S.Boolean),
+    requiresTransportSecurity: S.optional(S.Boolean),
+    userMetadata: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WcfRelayPropertiesInput",
+}) as any as S.Schema<WcfRelayPropertiesInput>;
+
 export interface WCFRelaysCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2077,7 +2217,8 @@ export interface WCFRelaysCreateOrUpdateRequest {
   namespaceName: string;
   /** The relay name. */
   relayName: string;
-  body: unknown;
+  /** Properties of the WCF relay. */
+  properties?: WcfRelayPropertiesInput;
 }
 export const WCFRelaysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2085,7 +2226,7 @@ export const WCFRelaysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
     relayName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(WcfRelayPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2097,10 +2238,6 @@ export const WCFRelaysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WCFRelaysCreateOrUpdateRequest",
 }) as any as S.Schema<WCFRelaysCreateOrUpdateRequest>;
-
-/** WCF relay type. */
-export type Relaytype = "NetTcp" | "Http" | (string & {});
-export const Relaytype = /*@__PURE__*/ S.String;
 
 /** Properties of the WCF relay. */
 export interface WcfRelayProperties {
@@ -2174,7 +2311,8 @@ export interface WCFRelaysCreateOrUpdateAuthorizationRuleRequest {
   relayName: string;
   /** The authorization rule name. */
   authorizationRuleName: string;
-  body: unknown;
+  /** Properties supplied to create or update AuthorizationRule */
+  properties?: AuthorizationRuleProperties;
 }
 export const WCFRelaysCreateOrUpdateAuthorizationRuleRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2184,7 +2322,7 @@ export const WCFRelaysCreateOrUpdateAuthorizationRuleRequest =
       namespaceName: S.String.pipe(T.Label()),
       relayName: S.String.pipe(T.Label()),
       authorizationRuleName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AuthorizationRuleProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2495,7 +2633,7 @@ export const WcfRelay = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WcfRelay" }) as any as S.Schema<WcfRelay>;
 
 /** The WcfRelay items on this page */
-export type WcfRelaysListResultValueList = WcfRelay[];
+export type WcfRelaysListResultValueList = ReadonlyArray<WcfRelay>;
 export const WcfRelaysListResultValueList = /*@__PURE__*/ S.Array(
   WcfRelay,
 ) as any as S.Schema<WcfRelaysListResultValueList>;
@@ -2558,7 +2696,10 @@ export interface WCFRelaysRegenerateKeysRequest {
   relayName: string;
   /** The authorization rule name. */
   authorizationRuleName: string;
-  body: unknown;
+  /** The access key to regenerate. */
+  keyType: KeyType;
+  /** Optional. If the key value is provided, this is set to key type, or autogenerated key value set for key type. */
+  key?: string;
 }
 export const WCFRelaysRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2567,7 +2708,8 @@ export const WCFRelaysRegenerateKeysRequest = /*@__PURE__*/ S.suspend(() =>
     namespaceName: S.String.pipe(T.Label()),
     relayName: S.String.pipe(T.Label()),
     authorizationRuleName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    keyType: KeyType,
+    key: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",

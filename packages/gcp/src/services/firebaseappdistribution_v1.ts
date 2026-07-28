@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -125,7 +125,7 @@ export const GoogleFirebaseAppdistroV1Tester = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleFirebaseAppdistroV1Tester>;
 
 export type GoogleFirebaseAppdistroV1TesterList =
-  GoogleFirebaseAppdistroV1Tester[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1Tester>;
 export const GoogleFirebaseAppdistroV1TesterList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1Tester,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1TesterList>;
@@ -531,8 +531,7 @@ export type GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum =
   | "PLAY_IAS_TERMS_NOT_ACCEPTED"
   | "ADHOC_SHARING_KEY_NOT_GENERATED"
   | "ADHOC_SHARING_KEY_NOT_REGISTERED"
-  | "PLAY_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND"
-  | (string & {});
+  | "PLAY_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND";
 export const GoogleFirebaseAppdistroV1AabInfoIntegrationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -613,8 +612,7 @@ export type GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum 
     | "ANDROID_PACKAGE_REGISTRATION_STATE_UNSPECIFIED"
     | "REGISTERED"
     | "NOT_REGISTERED"
-    | "REGISTERED_WITH_ANOTHER_CERTIFICATE_FINGERPRINT"
-    | (string & {});
+    | "REGISTERED_WITH_ANOTHER_CERTIFICATE_FINGERPRINT";
 export const GoogleFirebaseAppdistroV1ReleaseAndroidPackageRegistrationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -622,8 +620,7 @@ export type GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum =
   | "BINARY_TYPE_UNSPECIFIED"
   | "IPA"
   | "APK"
-  | "AAB"
-  | (string & {});
+  | "AAB";
 export const GoogleFirebaseAppdistroV1ReleaseBinaryTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -633,8 +630,7 @@ export type GoogleFirebaseAppdistroV1ReleaseTestStateEnum =
   | "IN_PROGRESS"
   | "PASSED"
   | "FAILED"
-  | "INCONCLUSIVE"
-  | (string & {});
+  | "INCONCLUSIVE";
 export const GoogleFirebaseAppdistroV1ReleaseTestStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -774,7 +770,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -872,7 +868,7 @@ export const ListProjectsAppsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsAppsReleasesRequest>;
 
 export type GoogleFirebaseAppdistroV1ReleaseList =
-  GoogleFirebaseAppdistroV1Release[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1Release>;
 export const GoogleFirebaseAppdistroV1ReleaseList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1Release,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1ReleaseList>;
@@ -923,7 +919,7 @@ export const ListProjectsAppsReleasesFeedbackReportsRequest =
   }) as any as S.Schema<ListProjectsAppsReleasesFeedbackReportsRequest>;
 
 export type GoogleFirebaseAppdistroV1FeedbackReportList =
-  GoogleFirebaseAppdistroV1FeedbackReport[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1FeedbackReport>;
 export const GoogleFirebaseAppdistroV1FeedbackReportList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1FeedbackReport,
@@ -977,7 +973,8 @@ export const ListProjectsAppsReleasesOperationsRequest =
     identifier: "ListProjectsAppsReleasesOperationsRequest",
   }) as any as S.Schema<ListProjectsAppsReleasesOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -1027,7 +1024,7 @@ export const ListProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsGroupsRequest>;
 
 export type GoogleFirebaseAppdistroV1GroupList =
-  GoogleFirebaseAppdistroV1Group[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1Group>;
 export const GoogleFirebaseAppdistroV1GroupList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1Group,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1GroupList>;
@@ -1186,8 +1183,7 @@ export type GdataCompositeMediaReferenceTypeEnum =
   | "BLOB_REF"
   | "INLINE"
   | "BIGSTORE_REF"
-  | "COSMO_BINARY_REFERENCE"
-  | (string & {});
+  | "COSMO_BINARY_REFERENCE";
 export const GdataCompositeMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** This is a copy of the tech.blob.ObjectId proto, which could not be used directly here due to transitive closure issues with JavaScript support; see http://b/8801763. */
@@ -1370,7 +1366,7 @@ export const GdataDiffUploadRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GdataDiffUploadRequest",
 }) as any as S.Schema<GdataDiffUploadRequest>;
 
-export type GdataCompositeMediaList = GdataCompositeMedia[];
+export type GdataCompositeMediaList = ReadonlyArray<GdataCompositeMedia>;
 export const GdataCompositeMediaList = /*@__PURE__*/ S.Array(
   GdataCompositeMedia,
 ) as any as S.Schema<GdataCompositeMediaList>;
@@ -1388,8 +1384,7 @@ export type GdataMediaReferenceTypeEnum =
   | "DIFF_UPLOAD_REQUEST"
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
-  | "ARBITRARY_BYTES"
-  | (string & {});
+  | "ARBITRARY_BYTES";
 export const GdataMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Detailed Content-Type information from Scotty. The Content-Type of the media will typically be filled in by the header or Scotty's best_guess, but this extended information provides the backend with more information so that it can make a better decision if needed. This is only used on media upload requests from Scotty. */

@@ -709,16 +709,53 @@
             "smithy.api#documentation": "The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.fabric#RpSku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The SKU details"
+          }
+        },
+        "tags": {
+          "target": "com.azure.fabric#FabricCapacitiesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.fabric#FabricCapacityUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fabric#FabricCapacityUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "administration": {
+          "target": "com.azure.fabric#CapacityAdministration",
+          "traits": {
+            "smithy.api#documentation": "The capacity administration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the FabricCapacity."
+      }
+    },
+    "com.azure.fabric#FabricCapacitiesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.fabric#FabricCapacitiesCreateOrUpdate": {
@@ -838,16 +875,63 @@
             "smithy.api#documentation": "The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.fabric#FabricCapacitiesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.fabric#FabricCapacityPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.fabric#RpSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU details",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fabric#FabricCapacityPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "administration": {
+          "target": "com.azure.fabric#CapacityAdministration",
+          "traits": {
+            "smithy.api#documentation": "The capacity administration",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Microsoft Fabric capacity properties."
+      }
+    },
+    "com.azure.fabric#FabricCapacitiesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.fabric#FabricCapacitiesGet": {
@@ -1303,11 +1387,16 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },

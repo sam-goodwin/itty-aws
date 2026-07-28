@@ -37,8 +37,7 @@ export class NotFound extends T.applyErrorMatchers(
 
 export type HeatmapsEventsRetrieveRequestAggregation =
   | "unique_visitors"
-  | "total_count"
-  | (string & {});
+  | "total_count";
 export const HeatmapsEventsRetrieveRequestAggregation = /*@__PURE__*/ S.String;
 
 export interface HeatmapsEventsRetrieveRequest {
@@ -126,7 +125,7 @@ export const HeatmapEventItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapEventItem",
 }) as any as S.Schema<HeatmapEventItem>;
 
-export type HeatmapEventsResponseResultsList = HeatmapEventItem[];
+export type HeatmapEventsResponseResultsList = ReadonlyArray<HeatmapEventItem>;
 export const HeatmapEventsResponseResultsList = /*@__PURE__*/ S.Array(
   HeatmapEventItem,
 ) as any as S.Schema<HeatmapEventsResponseResultsList>;
@@ -146,10 +145,7 @@ export const HeatmapEventsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapEventsResponse",
 }) as any as S.Schema<HeatmapEventsResponse>;
 
-export type HeatmapsListRequestAggregation =
-  | "unique_visitors"
-  | "total_count"
-  | (string & {});
+export type HeatmapsListRequestAggregation = "unique_visitors" | "total_count";
 export const HeatmapsListRequestAggregation = /*@__PURE__*/ S.String;
 
 export interface HeatmapsListRequest {
@@ -226,7 +222,7 @@ export const HeatmapResponseItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapResponseItem",
 }) as any as S.Schema<HeatmapResponseItem>;
 
-export type HeatmapsResponseResultsList = HeatmapResponseItem[];
+export type HeatmapsResponseResultsList = ReadonlyArray<HeatmapResponseItem>;
 export const HeatmapsResponseResultsList = /*@__PURE__*/ S.Array(
   HeatmapResponseItem,
 ) as any as S.Schema<HeatmapsResponseResultsList>;
@@ -269,7 +265,7 @@ export const HeatmapsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HeatmapsResponse",
 }) as any as S.Schema<HeatmapsResponse>;
 
-export type HeatmapsListResponseBodyList = HeatmapsResponse[];
+export type HeatmapsListResponseBodyList = ReadonlyArray<HeatmapsResponse>;
 export const HeatmapsListResponseBodyList = /*@__PURE__*/ S.Array(
   HeatmapsResponse,
 ) as any as S.Schema<HeatmapsListResponseBodyList>;

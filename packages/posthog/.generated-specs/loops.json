@@ -1781,6 +1781,16 @@
         "smithy.api#documentation": "List loop runs\n\nRun history for a loop, newest first, cursor-paginated."
       }
     },
+    "com.posthog.loops#LoopsTriggerCreateRequestBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.loops#LoopsTriggerCreateRequest": {
       "type": "structure",
       "members": {
@@ -1797,6 +1807,12 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.posthog.loops#LoopsTriggerCreateRequestBodyMap",
+          "traits": {
+            "smithy.api#httpPayload": {}
           }
         }
       },

@@ -271,12 +271,11 @@ export type ManagedWarehouseReadinessStateEnum =
   | "backfilling"
   | "up_to_date"
   | "needs_attention"
-  | "sync_paused"
-  | (string & {});
+  | "sync_paused";
 export const ManagedWarehouseReadinessStateEnum = /*@__PURE__*/ S.String;
 
 /** * `events` - events * `persons` - persons */
-export type DatasetEnum = "events" | "persons" | (string & {});
+export type DatasetEnum = "events" | "persons";
 export const DatasetEnum = /*@__PURE__*/ S.String;
 
 export interface ManagedWarehouseDatasetStatus {
@@ -347,7 +346,7 @@ export const ManagedWarehouseSourceSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-source rollup of schema backfill and live import application statuses. Reflects only warehouse source imports with sync enabled — manage sources at /data-management/sources. */
 export type ManagedWarehouseSourcesStatusSourcesList =
-  ManagedWarehouseSourceSummary[];
+  ReadonlyArray<ManagedWarehouseSourceSummary>;
 export const ManagedWarehouseSourcesStatusSourcesList = /*@__PURE__*/ S.Array(
   ManagedWarehouseSourceSummary,
 ) as any as S.Schema<ManagedWarehouseSourcesStatusSourcesList>;
@@ -463,7 +462,7 @@ export const ManagedWarehouseSourceTableStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-schema backfill and live import application status for the requested source. */
 export type ManagedWarehouseSourceSchemasResponseSchemasList =
-  ManagedWarehouseSourceTableStatus[];
+  ReadonlyArray<ManagedWarehouseSourceTableStatus>;
 export const ManagedWarehouseSourceSchemasResponseSchemasList =
   /*@__PURE__*/ S.Array(
     ManagedWarehouseSourceTableStatus,
@@ -683,8 +682,7 @@ export type WarehouseStatusResponseStateEnum =
   | "ready"
   | "failed"
   | "deleting"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const WarehouseStatusResponseStateEnum = /*@__PURE__*/ S.String;
 
 export interface WarehouseConnection {

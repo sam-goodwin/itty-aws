@@ -87,7 +87,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
+          "target": "com.posthog.warehouse_saved_queries#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -524,23 +527,6 @@
         "smithy.api#documentation": "* `never` - never\n* `15min` - 15min\n* `30min` - 30min\n* `1hour` - 1hour\n* `6hour` - 6hour\n* `12hour` - 12hour\n* `24hour` - 24hour\n* `7day` - 7day\n* `30day` - 30day"
       }
     },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCreateRequestColumnsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCreateRequestColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCreateRequestColumnsItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCreateRequest": {
       "type": "structure",
       "members": {
@@ -551,9 +537,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "id": {
-          "target": "smithy.api#String"
         },
         "deleted": {
           "target": "smithy.api#Boolean",
@@ -573,12 +556,6 @@
             "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
           }
         },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -593,28 +570,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "columns": {
-          "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCreateRequestColumnsList"
-        },
-        "status": {
-          "target": "com.posthog.warehouse_saved_queries#SavedQueryStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of when this SavedQuery last ran.\n\n* `Cancelled` - Cancelled\n* `Modified` - Modified\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "managed_viewset_kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "folder_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -622,29 +577,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "folder_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Folder name used to organize this view in the SQL editor sidebar.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "edited_history_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Activity log ID from the last known edit. Used for conflict detection.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_history_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -662,37 +598,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_materialized": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "origin": {
-          "target": "com.posthog.warehouse_saved_queries#OriginEnum",
-          "traits": {
-            "smithy.api#documentation": "Where this SavedQuery is created.\n\n* `data_warehouse` - Data Warehouse\n* `endpoint` - Endpoint\n* `managed_viewset` - Managed Viewset",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_test": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this view is for testing only and will auto-expire."
-          }
-        },
-        "expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this test view should be automatically deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -700,7 +609,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery": {
+    "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -719,13 +628,16 @@
           }
         },
         "query": {
-          "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryQuery",
+          "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutputQuery",
           "traits": {
             "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
           }
         },
         "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
+          "target": "com.posthog.warehouse_saved_queries#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -745,7 +657,7 @@
           }
         },
         "columns": {
-          "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryColumnsList"
+          "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutputColumnsList"
         },
         "status": {
           "target": "com.posthog.warehouse_saved_queries#SavedQueryStatusEnum",
@@ -786,30 +698,9 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "edited_history_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Activity log ID from the last known edit. Used for conflict detection.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "latest_history_id": {
           "target": "smithy.api#Integer",
           "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "soft_update": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "If true, skip column inference and validation. For saving drafts.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "dag_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional DAG to place this view into",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -851,7 +742,7 @@
         "smithy.api#documentation": "Shared methods for DataWarehouseSavedQuery serializers.\n\nThis mixin is intended to be used with serializers.ModelSerializer subclasses."
       }
     },
-    "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryQueryKind": {
+    "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutputQueryKind": {
       "type": "enum",
       "members": {
         "HOGQLQUERY": {
@@ -863,11 +754,11 @@
       },
       "traits": {}
     },
-    "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryQuery": {
+    "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutputQuery": {
       "type": "structure",
       "members": {
         "kind": {
-          "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryQueryKind"
+          "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutputQueryKind"
         },
         "query": {
           "target": "smithy.api#String",
@@ -880,7 +771,7 @@
         "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
       }
     },
-    "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryColumnsItemMap": {
+    "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutputColumnsItemMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -890,10 +781,10 @@
       },
       "traits": {}
     },
-    "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryColumnsList": {
+    "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutputColumnsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryColumnsItemMap"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutputColumnsItemMap"
       },
       "traits": {}
     },
@@ -903,7 +794,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCreateRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -955,7 +846,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -1003,23 +894,6 @@
         "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
       }
     },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesUpdateRequestColumnsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesUpdateRequestColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesUpdateRequestColumnsItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1057,12 +931,6 @@
             "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
           }
         },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -1077,28 +945,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "columns": {
-          "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesUpdateRequestColumnsList"
-        },
-        "status": {
-          "target": "com.posthog.warehouse_saved_queries#SavedQueryStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of when this SavedQuery last ran.\n\n* `Cancelled` - Cancelled\n* `Modified` - Modified\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "managed_viewset_kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "folder_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -1106,29 +952,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "folder_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Folder name used to organize this view in the SQL editor sidebar.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "edited_history_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Activity log ID from the last known edit. Used for conflict detection.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_history_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1146,37 +973,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_materialized": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "origin": {
-          "target": "com.posthog.warehouse_saved_queries#OriginEnum",
-          "traits": {
-            "smithy.api#documentation": "Where this SavedQuery is created.\n\n* `data_warehouse` - Data Warehouse\n* `endpoint` - Endpoint\n* `managed_viewset` - Managed Viewset",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_test": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this view is for testing only and will auto-expire."
-          }
-        },
-        "expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this test view should be automatically deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1190,7 +990,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -1241,23 +1041,6 @@
         "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
       }
     },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesPartialUpdateRequestColumnsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesPartialUpdateRequestColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesPartialUpdateRequestColumnsItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -1295,12 +1078,6 @@
             "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
           }
         },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -1315,28 +1092,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "columns": {
-          "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesPartialUpdateRequestColumnsList"
-        },
-        "status": {
-          "target": "com.posthog.warehouse_saved_queries#SavedQueryStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of when this SavedQuery last ran.\n\n* `Cancelled` - Cancelled\n* `Modified` - Modified\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "managed_viewset_kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "folder_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -1344,29 +1099,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "folder_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Folder name used to organize this view in the SQL editor sidebar.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "edited_history_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Activity log ID from the last known edit. Used for conflict detection.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_history_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1384,37 +1120,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_materialized": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "origin": {
-          "target": "com.posthog.warehouse_saved_queries#OriginEnum",
-          "traits": {
-            "smithy.api#documentation": "Where this SavedQuery is created.\n\n* `data_warehouse` - Data Warehouse\n* `endpoint` - Endpoint\n* `managed_viewset` - Managed Viewset",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_test": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this view is for testing only and will auto-expire."
-          }
-        },
-        "expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this test view should be automatically deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1428,7 +1137,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -1529,7 +1238,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesActivityRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -1577,23 +1286,6 @@
         "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
       }
     },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesAncestorsCreateRequestColumnsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesAncestorsCreateRequestColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesAncestorsCreateRequestColumnsItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesAncestorsCreateRequest": {
       "type": "structure",
       "members": {
@@ -1631,12 +1323,6 @@
             "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
           }
         },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -1651,28 +1337,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "columns": {
-          "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesAncestorsCreateRequestColumnsList"
-        },
-        "status": {
-          "target": "com.posthog.warehouse_saved_queries#SavedQueryStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of when this SavedQuery last ran.\n\n* `Cancelled` - Cancelled\n* `Modified` - Modified\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "managed_viewset_kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "folder_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -1680,29 +1344,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "folder_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Folder name used to organize this view in the SQL editor sidebar.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "edited_history_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Activity log ID from the last known edit. Used for conflict detection.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_history_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1720,37 +1365,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_materialized": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "origin": {
-          "target": "com.posthog.warehouse_saved_queries#OriginEnum",
-          "traits": {
-            "smithy.api#documentation": "Where this SavedQuery is created.\n\n* `data_warehouse` - Data Warehouse\n* `endpoint` - Endpoint\n* `managed_viewset` - Managed Viewset",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_test": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this view is for testing only and will auto-expire."
-          }
-        },
-        "expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this test view should be automatically deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1764,7 +1382,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesAncestorsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -1815,23 +1433,6 @@
         "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
       }
     },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCancelCreateRequestColumnsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCancelCreateRequestColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCancelCreateRequestColumnsItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCancelCreateRequest": {
       "type": "structure",
       "members": {
@@ -1869,12 +1470,6 @@
             "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
           }
         },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -1889,28 +1484,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "columns": {
-          "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCancelCreateRequestColumnsList"
-        },
-        "status": {
-          "target": "com.posthog.warehouse_saved_queries#SavedQueryStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of when this SavedQuery last ran.\n\n* `Cancelled` - Cancelled\n* `Modified` - Modified\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "managed_viewset_kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "folder_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -1918,29 +1491,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "folder_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Folder name used to organize this view in the SQL editor sidebar.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "edited_history_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Activity log ID from the last known edit. Used for conflict detection.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_history_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1958,37 +1512,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_materialized": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "origin": {
-          "target": "com.posthog.warehouse_saved_queries#OriginEnum",
-          "traits": {
-            "smithy.api#documentation": "Where this SavedQuery is created.\n\n* `data_warehouse` - Data Warehouse\n* `endpoint` - Endpoint\n* `managed_viewset` - Managed Viewset",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_test": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this view is for testing only and will auto-expire."
-          }
-        },
-        "expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this test view should be automatically deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -2002,7 +1529,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesCancelCreateRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -2054,7 +1581,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesDependenciesRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -2102,23 +1629,6 @@
         "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
       }
     },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesDescendantsCreateRequestColumnsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesDescendantsCreateRequestColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesDescendantsCreateRequestColumnsItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesDescendantsCreateRequest": {
       "type": "structure",
       "members": {
@@ -2156,12 +1666,6 @@
             "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
           }
         },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -2176,28 +1680,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "columns": {
-          "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesDescendantsCreateRequestColumnsList"
-        },
-        "status": {
-          "target": "com.posthog.warehouse_saved_queries#SavedQueryStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of when this SavedQuery last ran.\n\n* `Cancelled` - Cancelled\n* `Modified` - Modified\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "managed_viewset_kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "folder_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -2205,29 +1687,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "folder_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Folder name used to organize this view in the SQL editor sidebar.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "edited_history_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Activity log ID from the last known edit. Used for conflict detection.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_history_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -2245,37 +1708,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_materialized": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "origin": {
-          "target": "com.posthog.warehouse_saved_queries#OriginEnum",
-          "traits": {
-            "smithy.api#documentation": "Where this SavedQuery is created.\n\n* `data_warehouse` - Data Warehouse\n* `endpoint` - Endpoint\n* `managed_viewset` - Managed Viewset",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_test": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this view is for testing only and will auto-expire."
-          }
-        },
-        "expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this test view should be automatically deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -2289,7 +1725,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesDescendantsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -2340,23 +1776,6 @@
         "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
       }
     },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesMaterializeCreateRequestColumnsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesMaterializeCreateRequestColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesMaterializeCreateRequestColumnsItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesMaterializeCreateRequest": {
       "type": "structure",
       "members": {
@@ -2394,12 +1813,6 @@
             "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
           }
         },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -2414,28 +1827,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "columns": {
-          "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesMaterializeCreateRequestColumnsList"
-        },
-        "status": {
-          "target": "com.posthog.warehouse_saved_queries#SavedQueryStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of when this SavedQuery last ran.\n\n* `Cancelled` - Cancelled\n* `Modified` - Modified\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "managed_viewset_kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "folder_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -2443,29 +1834,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "folder_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Folder name used to organize this view in the SQL editor sidebar.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "edited_history_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Activity log ID from the last known edit. Used for conflict detection.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_history_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -2483,37 +1855,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_materialized": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "origin": {
-          "target": "com.posthog.warehouse_saved_queries#OriginEnum",
-          "traits": {
-            "smithy.api#documentation": "Where this SavedQuery is created.\n\n* `data_warehouse` - Data Warehouse\n* `endpoint` - Endpoint\n* `managed_viewset` - Managed Viewset",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_test": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this view is for testing only and will auto-expire."
-          }
-        },
-        "expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this test view should be automatically deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -2527,7 +1872,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesMaterializeCreateRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -2578,23 +1923,6 @@
         "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
       }
     },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRevertMaterializationCreateRequestColumnsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRevertMaterializationCreateRequestColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRevertMaterializationCreateRequestColumnsItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRevertMaterializationCreateRequest": {
       "type": "structure",
       "members": {
@@ -2632,12 +1960,6 @@
             "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
           }
         },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -2652,28 +1974,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "columns": {
-          "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRevertMaterializationCreateRequestColumnsList"
-        },
-        "status": {
-          "target": "com.posthog.warehouse_saved_queries#SavedQueryStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of when this SavedQuery last ran.\n\n* `Cancelled` - Cancelled\n* `Modified` - Modified\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "managed_viewset_kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "folder_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -2681,29 +1981,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "folder_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Folder name used to organize this view in the SQL editor sidebar.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "edited_history_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Activity log ID from the last known edit. Used for conflict detection.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_history_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -2721,37 +2002,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_materialized": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "origin": {
-          "target": "com.posthog.warehouse_saved_queries#OriginEnum",
-          "traits": {
-            "smithy.api#documentation": "Where this SavedQuery is created.\n\n* `data_warehouse` - Data Warehouse\n* `endpoint` - Endpoint\n* `managed_viewset` - Managed Viewset",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_test": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this view is for testing only and will auto-expire."
-          }
-        },
-        "expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this test view should be automatically deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -2765,7 +2019,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRevertMaterializationCreateRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -2816,23 +2070,6 @@
         "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
       }
     },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRunCreateRequestColumnsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRunCreateRequestColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRunCreateRequestColumnsItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRunCreateRequest": {
       "type": "structure",
       "members": {
@@ -2870,12 +2107,6 @@
             "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
           }
         },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -2890,28 +2121,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "columns": {
-          "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRunCreateRequestColumnsList"
-        },
-        "status": {
-          "target": "com.posthog.warehouse_saved_queries#SavedQueryStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of when this SavedQuery last ran.\n\n* `Cancelled` - Cancelled\n* `Modified` - Modified\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "managed_viewset_kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "folder_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -2919,29 +2128,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "folder_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Folder name used to organize this view in the SQL editor sidebar.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "edited_history_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Activity log ID from the last known edit. Used for conflict detection.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_history_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -2959,37 +2149,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_materialized": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "origin": {
-          "target": "com.posthog.warehouse_saved_queries#OriginEnum",
-          "traits": {
-            "smithy.api#documentation": "Where this SavedQuery is created.\n\n* `data_warehouse` - Data Warehouse\n* `endpoint` - Endpoint\n* `managed_viewset` - Managed Viewset",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_test": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this view is for testing only and will auto-expire."
-          }
-        },
-        "expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this test view should be automatically deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -3003,7 +2166,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRunCreateRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -3055,7 +2218,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesRunHistoryRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {
@@ -3103,23 +2266,6 @@
         "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
       }
     },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesResumeSchedulesCreateRequestColumnsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesResumeSchedulesCreateRequestColumnsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesResumeSchedulesCreateRequestColumnsItemMap"
-      },
-      "traits": {}
-    },
     "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesResumeSchedulesCreateRequest": {
       "type": "structure",
       "members": {
@@ -3130,9 +2276,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "id": {
-          "target": "smithy.api#String"
         },
         "deleted": {
           "target": "smithy.api#Boolean",
@@ -3152,12 +2295,6 @@
             "smithy.api#documentation": "HogQL query definition as a JSON object with a \"query\" key containing the SQL string and a \"kind\" key (always \"HogQLQuery\"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic — the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {\"kind\": \"HogQLQuery\", \"query\": \"SELECT\\n    event,\\n    count() AS cnt\\nFROM events\\nGROUP BY event\\nLIMIT 100\"}"
           }
         },
-        "created_by": {
-          "target": "com.posthog.warehouse_saved_queries#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -3172,28 +2309,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "columns": {
-          "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesResumeSchedulesCreateRequestColumnsList"
-        },
-        "status": {
-          "target": "com.posthog.warehouse_saved_queries#SavedQueryStatusEnum",
-          "traits": {
-            "smithy.api#documentation": "The status of when this SavedQuery last ran.\n\n* `Cancelled` - Cancelled\n* `Modified` - Modified\n* `Completed` - Completed\n* `Failed` - Failed\n* `Running` - Running",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "managed_viewset_kind": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "folder_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -3201,29 +2316,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "folder_name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Folder name used to organize this view in the SQL editor sidebar.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "edited_history_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Activity log ID from the last known edit. Used for conflict detection.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "latest_history_id": {
-          "target": "smithy.api#Integer",
-          "traits": {
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -3241,37 +2337,10 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "is_materialized": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "origin": {
-          "target": "com.posthog.warehouse_saved_queries#OriginEnum",
-          "traits": {
-            "smithy.api#documentation": "Where this SavedQuery is created.\n\n* `data_warehouse` - Data Warehouse\n* `endpoint` - Endpoint\n* `managed_viewset` - Managed Viewset",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_test": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this view is for testing only and will auto-expire."
-          }
-        },
-        "expires_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "When this test view should be automatically deleted.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -3285,7 +2354,7 @@
         "target": "com.posthog.warehouse_saved_queries#WarehouseSavedQueriesResumeSchedulesCreateRequest"
       },
       "output": {
-        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQuery"
+        "target": "com.posthog.warehouse_saved_queries#DataWarehouseSavedQueryOutput"
       },
       "errors": [
         {

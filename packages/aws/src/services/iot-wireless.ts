@@ -388,7 +388,7 @@ export const CancelMulticastGroupSessionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelMulticastGroupSessionResponse",
 }) as any as S.Schema<CancelMulticastGroupSessionResponse>;
 export type DestinationName = string;
-export type ExpressionType = "RuleName" | "MqttTopic" | (string & {});
+export type ExpressionType = "RuleName" | "MqttTopic";
 export const ExpressionType = /*@__PURE__*/ S.String;
 
 export type Expression = string;
@@ -561,8 +561,7 @@ export type SupportedRfRegion =
   | "CN779"
   | "RU864"
   | "KR920"
-  | "IN865"
-  | (string & {});
+  | "IN865";
 export const SupportedRfRegion = /*@__PURE__*/ S.String;
 
 export interface LoRaWANFuotaTask {
@@ -629,7 +628,7 @@ export const CreateFuotaTaskResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateFuotaTaskResponse",
 }) as any as S.Schema<CreateFuotaTaskResponse>;
 export type MulticastGroupName = string;
-export type DlClass = "ClassB" | "ClassC" | (string & {});
+export type DlClass = "ClassB" | "ClassC";
 export const DlClass = /*@__PURE__*/ S.String;
 
 export type GatewayListMulticast = string[];
@@ -699,13 +698,13 @@ export const CreateMulticastGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMulticastGroupResponse",
 }) as any as S.Schema<CreateMulticastGroupResponse>;
 export type NetworkAnalyzerConfigurationName = string;
-export type WirelessDeviceFrameInfo = "ENABLED" | "DISABLED" | (string & {});
+export type WirelessDeviceFrameInfo = "ENABLED" | "DISABLED";
 export const WirelessDeviceFrameInfo = /*@__PURE__*/ S.String;
 
-export type LogLevel = "INFO" | "ERROR" | "DISABLED" | (string & {});
+export type LogLevel = "INFO" | "ERROR" | "DISABLED";
 export const LogLevel = /*@__PURE__*/ S.String;
 
-export type MulticastFrameInfo = "ENABLED" | "DISABLED" | (string & {});
+export type MulticastFrameInfo = "ENABLED" | "DISABLED";
 export const MulticastFrameInfo = /*@__PURE__*/ S.String;
 
 export interface TraceContent {
@@ -845,7 +844,7 @@ export const CreateServiceProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceProfileResponse",
 }) as any as S.Schema<CreateServiceProfileResponse>;
-export type WirelessDeviceType = "Sidewalk" | "LoRaWAN" | (string & {});
+export type WirelessDeviceType = "Sidewalk" | "LoRaWAN";
 export const WirelessDeviceType = /*@__PURE__*/ S.String;
 
 export type WirelessDeviceName = string;
@@ -953,7 +952,7 @@ export const Positioning = /*@__PURE__*/ S.suspend(() =>
     Gnss: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Positioning" }) as any as S.Schema<Positioning>;
-export type ApplicationConfigType = "SemtechGeolocation" | (string & {});
+export type ApplicationConfigType = "SemtechGeolocation";
 export const ApplicationConfigType = /*@__PURE__*/ S.String;
 
 export interface ApplicationConfig {
@@ -1010,7 +1009,7 @@ export const LoRaWANDevice = /*@__PURE__*/ S.suspend(() =>
     FPorts: S.optional(FPorts),
   }),
 ).annotate({ identifier: "LoRaWANDevice" }) as any as S.Schema<LoRaWANDevice>;
-export type PositioningConfigStatus = "Enabled" | "Disabled" | (string & {});
+export type PositioningConfigStatus = "Enabled" | "Disabled";
 export const PositioningConfigStatus = /*@__PURE__*/ S.String;
 
 export interface SidewalkPositioning {
@@ -1193,8 +1192,7 @@ export type WirelessGatewayTaskStatus =
   | "FIRST_RETRY"
   | "SECOND_RETRY"
   | "COMPLETED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const WirelessGatewayTaskStatus = /*@__PURE__*/ S.String;
 
 export interface CreateWirelessGatewayTaskResponse {
@@ -1629,7 +1627,7 @@ export const DeregisterWirelessDeviceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterWirelessDeviceResponse",
 }) as any as S.Schema<DeregisterWirelessDeviceResponse>;
 export type PartnerAccountId = string;
-export type PartnerType = "Sidewalk" | (string & {});
+export type PartnerType = "Sidewalk";
 export const PartnerType = /*@__PURE__*/ S.String;
 
 export interface DisassociateAwsAccountFromPartnerAccountRequest {
@@ -1955,10 +1953,7 @@ export const GetEventConfigurationByResourceTypesRequest =
   ).annotate({
     identifier: "GetEventConfigurationByResourceTypesRequest",
   }) as any as S.Schema<GetEventConfigurationByResourceTypesRequest>;
-export type EventNotificationTopicStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type EventNotificationTopicStatus = "Enabled" | "Disabled";
 export const EventNotificationTopicStatus = /*@__PURE__*/ S.String;
 
 export interface SidewalkResourceTypeEventConfiguration {
@@ -2089,8 +2084,7 @@ export type FuotaTaskStatus =
   | "FuotaSession_Waiting"
   | "In_FuotaSession"
   | "FuotaDone"
-  | "Delete_Waiting"
-  | (string & {});
+  | "Delete_Waiting";
 export const FuotaTaskStatus = /*@__PURE__*/ S.String;
 
 export type StartTime = Date;
@@ -2158,13 +2152,10 @@ export const GetLogLevelsByResourceTypesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLogLevelsByResourceTypesRequest",
 }) as any as S.Schema<GetLogLevelsByResourceTypesRequest>;
-export type WirelessGatewayType = "LoRaWAN" | (string & {});
+export type WirelessGatewayType = "LoRaWAN";
 export const WirelessGatewayType = /*@__PURE__*/ S.String;
 
-export type WirelessGatewayEvent =
-  | "CUPS_Request"
-  | "Certificate"
-  | (string & {});
+export type WirelessGatewayEvent = "CUPS_Request" | "Certificate";
 export const WirelessGatewayEvent = /*@__PURE__*/ S.String;
 
 export interface WirelessGatewayEventLogOption {
@@ -2203,8 +2194,7 @@ export type WirelessDeviceEvent =
   | "Rejoin"
   | "Uplink_Data"
   | "Downlink_Data"
-  | "Registration"
-  | (string & {});
+  | "Registration";
 export const WirelessDeviceEvent = /*@__PURE__*/ S.String;
 
 export interface WirelessDeviceEventLogOption {
@@ -2238,10 +2228,10 @@ export type WirelessDeviceLogOptionList = WirelessDeviceLogOption[];
 export const WirelessDeviceLogOptionList = /*@__PURE__*/ S.Array(
   WirelessDeviceLogOption,
 );
-export type FuotaTaskType = "LoRaWAN" | (string & {});
+export type FuotaTaskType = "LoRaWAN";
 export const FuotaTaskType = /*@__PURE__*/ S.String;
 
-export type FuotaTaskEvent = "Fuota" | (string & {});
+export type FuotaTaskEvent = "Fuota";
 export const FuotaTaskEvent = /*@__PURE__*/ S.String;
 
 export interface FuotaTaskEventLogOption {
@@ -2304,10 +2294,7 @@ export const GetMetricConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMetricConfigurationRequest",
 }) as any as S.Schema<GetMetricConfigurationRequest>;
-export type SummaryMetricConfigurationStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type SummaryMetricConfigurationStatus = "Enabled" | "Disabled";
 export const SummaryMetricConfigurationStatus = /*@__PURE__*/ S.String;
 
 export interface SummaryMetricConfiguration {
@@ -2359,11 +2346,10 @@ export type MetricName =
   | "AwsAccountDeviceCount"
   | "AwsAccountGatewayCount"
   | "AwsAccountActiveDeviceCount"
-  | "AwsAccountActiveGatewayCount"
-  | (string & {});
+  | "AwsAccountActiveGatewayCount";
 export const MetricName = /*@__PURE__*/ S.String;
 
-export type DimensionName = "DeviceId" | "GatewayId" | (string & {});
+export type DimensionName = "DeviceId" | "GatewayId";
 export const DimensionName = /*@__PURE__*/ S.String;
 
 export type DimensionValue = string;
@@ -2376,11 +2362,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 export type Dimensions = Dimension[];
 export const Dimensions = /*@__PURE__*/ S.Array(Dimension);
-export type AggregationPeriod =
-  | "OneHour"
-  | "OneDay"
-  | "OneWeek"
-  | (string & {});
+export type AggregationPeriod = "OneHour" | "OneDay" | "OneWeek";
 export const AggregationPeriod = /*@__PURE__*/ S.String;
 
 export type MetricQueryStartTimestamp = Date;
@@ -2424,7 +2406,7 @@ export const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMetricsRequest",
 }) as any as S.Schema<GetMetricsRequest>;
-export type MetricQueryStatus = "Succeeded" | "Failed" | (string & {});
+export type MetricQueryStatus = "Succeeded" | "Failed";
 export const MetricQueryStatus = /*@__PURE__*/ S.String;
 
 export type MetricQueryError = string;
@@ -2711,10 +2693,7 @@ export const GetPartnerAccountResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPartnerAccountResponse",
 }) as any as S.Schema<GetPartnerAccountResponse>;
 export type PositionResourceIdentifier = string;
-export type PositionResourceType =
-  | "WirelessDevice"
-  | "WirelessGateway"
-  | (string & {});
+export type PositionResourceType = "WirelessDevice" | "WirelessGateway";
 export const PositionResourceType = /*@__PURE__*/ S.String;
 
 export interface GetPositionRequest {
@@ -2753,10 +2732,10 @@ export const Accuracy = /*@__PURE__*/ S.suspend(() =>
     VerticalAccuracy: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Accuracy" }) as any as S.Schema<Accuracy>;
-export type PositionSolverType = "GNSS" | (string & {});
+export type PositionSolverType = "GNSS";
 export const PositionSolverType = /*@__PURE__*/ S.String;
 
-export type PositionSolverProvider = "Semtech" | (string & {});
+export type PositionSolverProvider = "Semtech";
 export const PositionSolverProvider = /*@__PURE__*/ S.String;
 
 export type PositionSolverVersion = string;
@@ -2805,13 +2784,10 @@ export const GetPositionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPositionConfigurationRequest",
 }) as any as S.Schema<GetPositionConfigurationRequest>;
-export type PositionConfigurationStatus =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type PositionConfigurationStatus = "Enabled" | "Disabled";
 export const PositionConfigurationStatus = /*@__PURE__*/ S.String;
 
-export type PositionConfigurationFec = "ROSE" | "NONE" | (string & {});
+export type PositionConfigurationFec = "ROSE" | "NONE";
 export const PositionConfigurationFec = /*@__PURE__*/ S.String;
 
 export interface SemtechGnssDetail {
@@ -3260,11 +3236,10 @@ export type IdentifierType =
   | "DevEui"
   | "GatewayEui"
   | "WirelessDeviceId"
-  | "WirelessGatewayId"
-  | (string & {});
+  | "WirelessGatewayId";
 export const IdentifierType = /*@__PURE__*/ S.String;
 
-export type EventNotificationPartnerType = "Sidewalk" | (string & {});
+export type EventNotificationPartnerType = "Sidewalk";
 export const EventNotificationPartnerType = /*@__PURE__*/ S.String;
 
 export interface GetResourceEventConfigurationRequest {
@@ -3472,7 +3447,7 @@ export const GetResourcePositionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePositionResponse",
 }) as any as S.Schema<GetResourcePositionResponse>;
-export type WirelessGatewayServiceType = "CUPS" | "LNS" | (string & {});
+export type WirelessGatewayServiceType = "CUPS" | "LNS";
 export const WirelessGatewayServiceType = /*@__PURE__*/ S.String;
 
 export interface GetServiceEndpointRequest {
@@ -3619,8 +3594,7 @@ export type WirelessDeviceIdType =
   | "WirelessDeviceId"
   | "DevEui"
   | "ThingName"
-  | "SidewalkManufacturingSn"
-  | (string & {});
+  | "SidewalkManufacturingSn";
 export const WirelessDeviceIdType = /*@__PURE__*/ S.String;
 
 export interface GetWirelessDeviceRequest {
@@ -3646,7 +3620,7 @@ export const GetWirelessDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWirelessDeviceRequest>;
 export type ThingName = string;
 export type SidewalkId = string;
-export type SigningAlg = "Ed25519" | "P256r1" | (string & {});
+export type SigningAlg = "Ed25519" | "P256r1";
 export const SigningAlg = /*@__PURE__*/ S.String;
 
 export type CertificateValue = string;
@@ -3667,8 +3641,7 @@ export type WirelessDeviceSidewalkStatus =
   | "PROVISIONED"
   | "REGISTERED"
   | "ACTIVATED"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const WirelessDeviceSidewalkStatus = /*@__PURE__*/ S.String;
 
 export interface SidewalkDevice {
@@ -3768,8 +3741,7 @@ export type ImportTaskStatus =
   | "PENDING"
   | "COMPLETE"
   | "FAILED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const ImportTaskStatus = /*@__PURE__*/ S.String;
 
 export type StatusReason = string;
@@ -3897,24 +3869,17 @@ export const LoRaWANDeviceMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoRaWANDeviceMetadata",
 }) as any as S.Schema<LoRaWANDeviceMetadata>;
-export type BatteryLevel = "normal" | "low" | "critical" | (string & {});
+export type BatteryLevel = "normal" | "low" | "critical";
 export const BatteryLevel = /*@__PURE__*/ S.String;
 
-export type Event =
-  | "discovered"
-  | "lost"
-  | "ack"
-  | "nack"
-  | "passthrough"
-  | (string & {});
+export type Event = "discovered" | "lost" | "ack" | "nack" | "passthrough";
 export const Event = /*@__PURE__*/ S.String;
 
 export type DeviceState =
   | "Provisioned"
   | "RegisteredNotSeen"
   | "RegisteredReachable"
-  | "RegisteredUnreachable"
-  | (string & {});
+  | "RegisteredUnreachable";
 export const DeviceState = /*@__PURE__*/ S.String;
 
 export interface SidewalkDeviceMetadata {
@@ -3952,8 +3917,7 @@ export const GetWirelessDeviceStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
 export type WirelessGatewayIdType =
   | "GatewayEui"
   | "WirelessGatewayId"
-  | "ThingName"
-  | (string & {});
+  | "ThingName";
 export const WirelessGatewayIdType = /*@__PURE__*/ S.String;
 
 export interface GetWirelessGatewayRequest {
@@ -4090,7 +4054,7 @@ export const GetWirelessGatewayStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWirelessGatewayStatisticsRequest",
 }) as any as S.Schema<GetWirelessGatewayStatisticsRequest>;
-export type ConnectionStatus = "Connected" | "Disconnected" | (string & {});
+export type ConnectionStatus = "Connected" | "Disconnected";
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 export interface GetWirelessGatewayStatisticsResponse {
@@ -4236,7 +4200,7 @@ export const ListDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDestinationsResponse",
 }) as any as S.Schema<ListDestinationsResponse>;
-export type DeviceProfileType = "Sidewalk" | "LoRaWAN" | (string & {});
+export type DeviceProfileType = "Sidewalk" | "LoRaWAN";
 export const DeviceProfileType = /*@__PURE__*/ S.String;
 
 export interface ListDeviceProfilesRequest {
@@ -4290,12 +4254,7 @@ export const ListDeviceProfilesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDeviceProfilesResponse",
 }) as any as S.Schema<ListDeviceProfilesResponse>;
-export type OnboardStatus =
-  | "INITIALIZED"
-  | "PENDING"
-  | "ONBOARDED"
-  | "FAILED"
-  | (string & {});
+export type OnboardStatus = "INITIALIZED" | "PENDING" | "ONBOARDED" | "FAILED";
 export const OnboardStatus = /*@__PURE__*/ S.String;
 
 export interface ListDevicesForWirelessDeviceImportTaskRequest {
@@ -4386,8 +4345,7 @@ export const ListDevicesForWirelessDeviceImportTaskResponse =
 export type EventNotificationResourceType =
   | "SidewalkAccount"
   | "WirelessDevice"
-  | "WirelessGateway"
-  | (string & {});
+  | "WirelessGateway";
 export const EventNotificationResourceType = /*@__PURE__*/ S.String;
 
 export interface ListEventConfigurationsRequest {
@@ -4782,11 +4740,7 @@ export const ListQueuedMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListQueuedMessagesRequest",
 }) as any as S.Schema<ListQueuedMessagesRequest>;
 export type TransmitMode = number;
-export type DownlinkMode =
-  | "SEQUENTIAL"
-  | "CONCURRENT"
-  | "USING_UPLINK_GATEWAY"
-  | (string & {});
+export type DownlinkMode = "SEQUENTIAL" | "CONCURRENT" | "USING_UPLINK_GATEWAY";
 export const DownlinkMode = /*@__PURE__*/ S.String;
 
 export type DownlinkFrequency = number;
@@ -5086,8 +5040,7 @@ export type FuotaDeviceStatus =
   | "MemoryError"
   | "MICError"
   | "Successful"
-  | "Device_exist_in_conflict_fuota_task"
-  | (string & {});
+  | "Device_exist_in_conflict_fuota_task";
 export const FuotaDeviceStatus = /*@__PURE__*/ S.String;
 
 export type MulticastDeviceStatus = string;
@@ -5197,7 +5150,7 @@ export const ListWirelessGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListWirelessGatewaysResponse",
 }) as any as S.Schema<ListWirelessGatewaysResponse>;
-export type WirelessGatewayTaskDefinitionType = "UPDATE" | (string & {});
+export type WirelessGatewayTaskDefinitionType = "UPDATE";
 export const WirelessGatewayTaskDefinitionType = /*@__PURE__*/ S.String;
 
 export interface ListWirelessGatewayTaskDefinitionsRequest {
@@ -5455,8 +5408,7 @@ export type MessageType =
   | "CUSTOM_COMMAND_ID_NOTIFY"
   | "CUSTOM_COMMAND_ID_GET"
   | "CUSTOM_COMMAND_ID_SET"
-  | "CUSTOM_COMMAND_ID_RESP"
-  | (string & {});
+  | "CUSTOM_COMMAND_ID_RESP";
 export const MessageType = /*@__PURE__*/ S.String;
 
 export type AckModeRetryDurationSecs = number;

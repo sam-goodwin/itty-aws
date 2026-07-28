@@ -174,7 +174,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -247,7 +247,7 @@ export const File = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
-export type FileList = File[];
+export type FileList = ReadonlyArray<File>;
 export const FileList = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<FileList>;
@@ -351,16 +351,14 @@ export const HttpGraphql = /*@__PURE__*/ S.suspend(() =>
 
 export type PostgreSqlSchemaMigrationEnum =
   | "SQL_SCHEMA_MIGRATION_UNSPECIFIED"
-  | "MIGRATE_COMPATIBLE"
-  | (string & {});
+  | "MIGRATE_COMPATIBLE";
 export const PostgreSqlSchemaMigrationEnum = /*@__PURE__*/ S.String;
 
 export type PostgreSqlSchemaValidationEnum =
   | "SQL_SCHEMA_VALIDATION_UNSPECIFIED"
   | "NONE"
   | "STRICT"
-  | "COMPATIBLE"
-  | (string & {});
+  | "COMPATIBLE";
 export const PostgreSqlSchemaValidationEnum = /*@__PURE__*/ S.String;
 
 /** Settings for CloudSQL instance configuration. */
@@ -419,7 +417,7 @@ export const Datasource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Datasource" }) as any as S.Schema<Datasource>;
 
-export type DatasourceList = Datasource[];
+export type DatasourceList = ReadonlyArray<Datasource>;
 export const DatasourceList = /*@__PURE__*/ S.Array(
   Datasource,
 ) as any as S.Schema<DatasourceList>;
@@ -708,7 +706,7 @@ export const Workaround = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Workaround" }) as any as S.Schema<Workaround>;
 
-export type WorkaroundList = Workaround[];
+export type WorkaroundList = ReadonlyArray<Workaround>;
 export const WorkaroundList = /*@__PURE__*/ S.Array(
   Workaround,
 ) as any as S.Schema<WorkaroundList>;
@@ -730,8 +728,7 @@ export type GraphqlErrorExtensionsCodeEnum =
   | "UNIMPLEMENTED"
   | "INTERNAL"
   | "UNAVAILABLE"
-  | "DATA_LOSS"
-  | (string & {});
+  | "DATA_LOSS";
 export const GraphqlErrorExtensionsCodeEnum = /*@__PURE__*/ S.String;
 
 export type GraphqlErrorExtensionsWarningLevelEnum =
@@ -739,8 +736,7 @@ export type GraphqlErrorExtensionsWarningLevelEnum =
   | "LOG_ONLY"
   | "INTERACTIVE_ACK"
   | "REQUIRE_ACK"
-  | "REQUIRE_FORCE"
-  | (string & {});
+  | "REQUIRE_FORCE";
 export const GraphqlErrorExtensionsWarningLevelEnum = /*@__PURE__*/ S.String;
 
 /** GraphqlErrorExtensions contains additional information of `GraphqlError`. */
@@ -768,7 +764,7 @@ export const GraphqlErrorExtensions = /*@__PURE__*/ S.suspend(() =>
   identifier: "GraphqlErrorExtensions",
 }) as any as S.Schema<GraphqlErrorExtensions>;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -787,7 +783,7 @@ export const SourceLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceLocation" }) as any as S.Schema<SourceLocation>;
 
-export type SourceLocationList = SourceLocation[];
+export type SourceLocationList = ReadonlyArray<SourceLocation>;
 export const SourceLocationList = /*@__PURE__*/ S.Array(
   SourceLocation,
 ) as any as S.Schema<SourceLocationList>;
@@ -812,12 +808,12 @@ export const GraphqlError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GraphqlError" }) as any as S.Schema<GraphqlError>;
 
-export type GraphqlErrorList = GraphqlError[];
+export type GraphqlErrorList = ReadonlyArray<GraphqlError>;
 export const GraphqlErrorList = /*@__PURE__*/ S.Array(
   GraphqlError,
 ) as any as S.Schema<GraphqlErrorList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -844,7 +840,7 @@ export const DataConnectProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataConnectProperties",
 }) as any as S.Schema<DataConnectProperties>;
 
-export type DataConnectPropertiesList = DataConnectProperties[];
+export type DataConnectPropertiesList = ReadonlyArray<DataConnectProperties>;
 export const DataConnectPropertiesList = /*@__PURE__*/ S.Array(
   DataConnectProperties,
 ) as any as S.Schema<DataConnectPropertiesList>;
@@ -1017,7 +1013,8 @@ export const ExecuteQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecuteQueryResponse",
 }) as any as S.Schema<ExecuteQueryResponse>;
 
-export type Firebasedataconnect_SchemaList = Firebasedataconnect_Schema[];
+export type Firebasedataconnect_SchemaList =
+  ReadonlyArray<Firebasedataconnect_Schema>;
 export const Firebasedataconnect_SchemaList = /*@__PURE__*/ S.Array(
   Firebasedataconnect_Schema,
 ) as any as S.Schema<Firebasedataconnect_SchemaList>;
@@ -1064,8 +1061,7 @@ export type GenerationStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "ANALYZING_CODE"
   | "GENERATING_CODE"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const GenerationStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the progress of the server side generation request. */
@@ -1421,7 +1417,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1473,7 +1469,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1528,7 +1524,7 @@ export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsServicesRequest",
 }) as any as S.Schema<ListProjectsLocationsServicesRequest>;
 
-export type ServiceList = Service[];
+export type ServiceList = ReadonlyArray<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -1583,7 +1579,7 @@ export const ListProjectsLocationsServicesConnectorsRequest =
     identifier: "ListProjectsLocationsServicesConnectorsRequest",
   }) as any as S.Schema<ListProjectsLocationsServicesConnectorsRequest>;
 
-export type ConnectorList = Connector[];
+export type ConnectorList = ReadonlyArray<Connector>;
 export const ConnectorList = /*@__PURE__*/ S.Array(
   Connector,
 ) as any as S.Schema<ConnectorList>;

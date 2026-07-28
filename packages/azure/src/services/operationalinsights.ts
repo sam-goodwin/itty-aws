@@ -46,8 +46,7 @@ export type SkuNameEnum =
   | "PerNode"
   | "PerGB2018"
   | "Standalone"
-  | "CapacityReservation"
-  | (string & {});
+  | "CapacityReservation";
 export const SkuNameEnum = /*@__PURE__*/ S.String;
 
 /** Service Tier details. */
@@ -82,7 +81,7 @@ export const AvailableServiceTier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailableServiceTier>;
 
 export type AvailableServiceTiersListByWorkspaceResponseBodyList =
-  AvailableServiceTier[];
+  ReadonlyArray<AvailableServiceTier>;
 export const AvailableServiceTiersListByWorkspaceResponseBodyList =
   /*@__PURE__*/ S.Array(
     AvailableServiceTier,
@@ -99,6 +98,177 @@ export const AvailableServiceTiersListByWorkspaceResponse =
     identifier: "AvailableServiceTiersListByWorkspaceResponse",
   }) as any as S.Schema<AvailableServiceTiersListByWorkspaceResponse>;
 
+/** Resource tags. */
+export type ClustersCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ClustersCreateOrUpdateRequestTagsMap>;
+
+/** Configures whether billing will be only on the cluster or each workspace will be billed by its proportional use. This does not change the overall billing, only how it will be distributed. Default value is 'Cluster' */
+export type BillingType = "Cluster" | "Workspaces";
+export const BillingType = /*@__PURE__*/ S.String;
+
+/** The key vault properties. */
+export interface KeyVaultProperties {
+  /** The Key Vault uri which holds they key associated with the Log Analytics cluster. */
+  keyVaultUri?: string;
+  /** The name of the key associated with the Log Analytics cluster. */
+  keyName?: string;
+  /** The version of the key associated with the Log Analytics cluster. */
+  keyVersion?: string;
+  /** Selected key minimum required size. */
+  keyRsaSize?: number;
+}
+export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyVaultUri: S.optional(S.String),
+    keyName: S.optional(S.String),
+    keyVersion: S.optional(S.String),
+    keyRsaSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "KeyVaultProperties",
+}) as any as S.Schema<KeyVaultProperties>;
+
+/** The list of Log Analytics workspaces associated with the cluster. */
+export interface AssociatedWorkspaceInput {}
+export const AssociatedWorkspaceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AssociatedWorkspaceInput",
+}) as any as S.Schema<AssociatedWorkspaceInput>;
+
+/** The list of Log Analytics workspaces associated with the cluster */
+export type ClusterPropertiesInputAssociatedWorkspacesList =
+  ReadonlyArray<AssociatedWorkspaceInput>;
+export const ClusterPropertiesInputAssociatedWorkspacesList =
+  /*@__PURE__*/ S.Array(
+    AssociatedWorkspaceInput,
+  ) as any as S.Schema<ClusterPropertiesInputAssociatedWorkspacesList>;
+
+/** The Capacity Reservation properties. */
+export interface CapacityReservationPropertiesInput {}
+export const CapacityReservationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CapacityReservationPropertiesInput",
+}) as any as S.Schema<CapacityReservationPropertiesInput>;
+
+/** Cluster replication properties. */
+export interface ClusterReplicationPropertiesInput {
+  /** The secondary location of the replication. If replication is being enabled, enabled must be provided. */
+  location?: string;
+  /** Specifies whether the replication is enabled or not. When true the cluster is replicate to the specified location. */
+  enabled?: boolean;
+  /** Should enable AvailabilityZones for the given replicated cluster */
+  isAvailabilityZonesEnabled?: boolean;
+}
+export const ClusterReplicationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    isAvailabilityZonesEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ClusterReplicationPropertiesInput",
+}) as any as S.Schema<ClusterReplicationPropertiesInput>;
+
+/** Cluster properties. */
+export interface ClusterPropertiesInput {
+  /** Configures whether cluster will use double encryption. This Property can not be modified after cluster creation. Default value is 'true' */
+  isDoubleEncryptionEnabled?: boolean;
+  /** Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones. */
+  isAvailabilityZonesEnabled?: boolean;
+  /** The cluster's billing type. */
+  billingType?: BillingType;
+  /** The associated key properties. */
+  keyVaultProperties?: KeyVaultProperties;
+  /** The list of Log Analytics workspaces associated with the cluster */
+  associatedWorkspaces?: ClusterPropertiesInputAssociatedWorkspacesList;
+  /** Additional properties for capacity reservation */
+  capacityReservationProperties?: CapacityReservationPropertiesInput;
+  /** Cluster's replication properties. */
+  replication?: ClusterReplicationPropertiesInput;
+}
+export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isDoubleEncryptionEnabled: S.optional(S.Boolean),
+    isAvailabilityZonesEnabled: S.optional(S.Boolean),
+    billingType: S.optional(BillingType),
+    keyVaultProperties: S.optional(KeyVaultProperties),
+    associatedWorkspaces: S.optional(
+      ClusterPropertiesInputAssociatedWorkspacesList,
+    ),
+    capacityReservationProperties: S.optional(
+      CapacityReservationPropertiesInput,
+    ),
+    replication: S.optional(ClusterReplicationPropertiesInput),
+  }),
+).annotate({
+  identifier: "ClusterPropertiesInput",
+}) as any as S.Schema<ClusterPropertiesInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ClustersCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ClustersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "ClustersCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<ClustersCreateOrUpdateRequestIdentity>;
+
+/** The SKU (tier) of a cluster. */
+export type ClusterSkuNameEnum = "CapacityReservation";
+export const ClusterSkuNameEnum = /*@__PURE__*/ S.String;
+
+/** The cluster sku definition. */
+export interface ClusterSku {
+  /** The capacity reservation level in Gigabytes for this cluster. */
+  capacity?: number | null;
+  /** The SKU (tier) of a cluster. */
+  name?: ClusterSkuNameEnum;
+}
+export const ClusterSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacity: S.optional(S.NullOr(S.Number)),
+    name: S.optional(ClusterSkuNameEnum),
+  }),
+).annotate({ identifier: "ClusterSku" }) as any as S.Schema<ClusterSku>;
+
 export interface ClustersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -106,14 +276,27 @@ export interface ClustersCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the Log Analytics Cluster. */
   clusterName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ClustersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Log Analytics cluster properties. */
+  properties?: ClusterPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ClustersCreateOrUpdateRequestIdentity;
+  /** The sku properties. */
+  sku?: ClusterSku;
 }
 export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ClustersCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ClusterPropertiesInput),
+    identity: S.optional(ClustersCreateOrUpdateRequestIdentity),
+    sku: S.optional(ClusterSku),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -131,8 +314,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -140,8 +322,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -187,35 +368,8 @@ export type ClusterEntityStatus =
   | "Canceled"
   | "Deleting"
   | "ProvisioningAccount"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ClusterEntityStatus = /*@__PURE__*/ S.String;
-
-/** Configures whether billing will be only on the cluster or each workspace will be billed by its proportional use. This does not change the overall billing, only how it will be distributed. Default value is 'Cluster' */
-export type BillingType = "Cluster" | "Workspaces" | (string & {});
-export const BillingType = /*@__PURE__*/ S.String;
-
-/** The key vault properties. */
-export interface KeyVaultProperties {
-  /** The Key Vault uri which holds they key associated with the Log Analytics cluster. */
-  keyVaultUri?: string;
-  /** The name of the key associated with the Log Analytics cluster. */
-  keyName?: string;
-  /** The version of the key associated with the Log Analytics cluster. */
-  keyVersion?: string;
-  /** Selected key minimum required size. */
-  keyRsaSize?: number;
-}
-export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyVaultUri: S.optional(S.String),
-    keyName: S.optional(S.String),
-    keyVersion: S.optional(S.String),
-    keyRsaSize: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "KeyVaultProperties",
-}) as any as S.Schema<KeyVaultProperties>;
 
 /** The list of Log Analytics workspaces associated with the cluster. */
 export interface AssociatedWorkspace {
@@ -240,7 +394,8 @@ export const AssociatedWorkspace = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociatedWorkspace>;
 
 /** The list of Log Analytics workspaces associated with the cluster */
-export type ClusterPropertiesAssociatedWorkspacesList = AssociatedWorkspace[];
+export type ClusterPropertiesAssociatedWorkspacesList =
+  ReadonlyArray<AssociatedWorkspace>;
 export const ClusterPropertiesAssociatedWorkspacesList = /*@__PURE__*/ S.Array(
   AssociatedWorkspace,
 ) as any as S.Schema<ClusterPropertiesAssociatedWorkspacesList>;
@@ -271,8 +426,7 @@ export type ClusterReplicationState =
   | "RollbackRequested"
   | "RollingBack"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const ClusterReplicationState = /*@__PURE__*/ S.String;
 
 /** Cluster replication properties. */
@@ -346,15 +500,6 @@ export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClusterProperties",
 }) as any as S.Schema<ClusterProperties>;
 
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -400,24 +545,6 @@ export const ClustersCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ClustersCreateOrUpdateResponseIdentity",
 }) as any as S.Schema<ClustersCreateOrUpdateResponseIdentity>;
-
-/** The SKU (tier) of a cluster. */
-export type ClusterSkuNameEnum = "CapacityReservation" | (string & {});
-export const ClusterSkuNameEnum = /*@__PURE__*/ S.String;
-
-/** The cluster sku definition. */
-export interface ClusterSku {
-  /** The capacity reservation level in Gigabytes for this cluster. */
-  capacity?: number | null;
-  /** The SKU (tier) of a cluster. */
-  name?: ClusterSkuNameEnum;
-}
-export const ClusterSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacity: S.optional(S.NullOr(S.Number)),
-    name: S.optional(ClusterSkuNameEnum),
-  }),
-).annotate({ identifier: "ClusterSku" }) as any as S.Schema<ClusterSku>;
 
 export interface ClustersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -657,7 +784,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 /** The Cluster items on this page */
-export type ClusterListResultValueList = Cluster[];
+export type ClusterListResultValueList = ReadonlyArray<Cluster>;
 export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
@@ -700,6 +827,45 @@ export const ClustersListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClustersListByResourceGroupRequest",
 }) as any as S.Schema<ClustersListByResourceGroupRequest>;
 
+/** Log Analytics cluster patch properties. */
+export interface ClusterPatchProperties {
+  /** The associated key properties. */
+  keyVaultProperties?: KeyVaultProperties;
+  /** The cluster's billing type. */
+  billingType?: BillingType;
+}
+export const ClusterPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyVaultProperties: S.optional(KeyVaultProperties),
+    billingType: S.optional(BillingType),
+  }),
+).annotate({
+  identifier: "ClusterPatchProperties",
+}) as any as S.Schema<ClusterPatchProperties>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ClustersUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ClustersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "ClustersUpdateRequestIdentity",
+}) as any as S.Schema<ClustersUpdateRequestIdentity>;
+
+/** Resource tags. */
+export type ClustersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ClustersUpdateRequestTagsMap>;
+
 export interface ClustersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -707,14 +873,24 @@ export interface ClustersUpdateRequest {
   resourceGroupName: string;
   /** Name of the Log Analytics Cluster. */
   clusterName: string;
-  body: unknown;
+  /** Log Analytics cluster properties. */
+  properties?: ClusterPatchProperties;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ClustersUpdateRequestIdentity;
+  /** The sku properties. */
+  sku?: ClusterSku;
+  /** Resource tags. */
+  tags?: ClustersUpdateRequestTagsMap;
 }
 export const ClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(ClusterPatchProperties),
+    identity: S.optional(ClustersUpdateRequestIdentity),
+    sku: S.optional(ClusterSku),
+    tags: S.optional(ClustersUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -792,44 +968,14 @@ export const ClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClustersUpdateResponse",
 }) as any as S.Schema<ClustersUpdateResponse>;
 
-export interface DataExportsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** The data export rule name. */
-  dataExportName: string;
-  body: unknown;
-}
-export const DataExportsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    dataExportName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
-      code: 200,
-      apiVersion: "2025-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "DataExportsCreateOrUpdateRequest",
-}) as any as S.Schema<DataExportsCreateOrUpdateRequest>;
-
 /** An array of tables to export, for example: [“Heartbeat, SecurityEvent”]. */
-export type DataExportPropertiesTableNamesList = string[];
+export type DataExportPropertiesTableNamesList = ReadonlyArray<string>;
 export const DataExportPropertiesTableNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataExportPropertiesTableNamesList>;
 
 /** The type of the destination resource */
-export type Type = "StorageAccount" | "EventHub" | (string & {});
+export type Type = "StorageAccount" | "EventHub";
 export const Type = /*@__PURE__*/ S.String;
 
 /** Destination meta data. */
@@ -889,6 +1035,37 @@ export const DataExportProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataExportProperties",
 }) as any as S.Schema<DataExportProperties>;
+
+export interface DataExportsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The data export rule name. */
+  dataExportName: string;
+  /** data export properties. */
+  properties?: DataExportProperties;
+}
+export const DataExportsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    dataExportName: S.String.pipe(T.Label()),
+    properties: S.optional(DataExportProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataExports/{dataExportName}",
+      code: 200,
+      apiVersion: "2025-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DataExportsCreateOrUpdateRequest",
+}) as any as S.Schema<DataExportsCreateOrUpdateRequest>;
 
 export interface DataExportsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1050,7 +1227,7 @@ export const DataExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataExport" }) as any as S.Schema<DataExport>;
 
 /** List of data export instances within a workspace.. */
-export type DataExportListResultValueList = DataExport[];
+export type DataExportListResultValueList = ReadonlyArray<DataExport>;
 export const DataExportListResultValueList = /*@__PURE__*/ S.Array(
   DataExport,
 ) as any as S.Schema<DataExportListResultValueList>;
@@ -1070,36 +1247,6 @@ export const DataExportListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataExportListResult",
 }) as any as S.Schema<DataExportListResult>;
-
-export interface DataSourcesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** Name of the datasource */
-  dataSourceName: string;
-  body: unknown;
-}
-export const DataSourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    dataSourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
-      code: 200,
-      apiVersion: "2025-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "DataSourcesCreateOrUpdateRequest",
-}) as any as S.Schema<DataSourcesCreateOrUpdateRequest>;
 
 /** The kind of the DataSource. */
 export type DataSourceKind =
@@ -1135,9 +1282,57 @@ export type DataSourceKind =
   | "Itsm"
   | "DnsAnalytics"
   | "ApplicationInsights"
-  | "SqlDataClassification"
-  | (string & {});
+  | "SqlDataClassification";
 export const DataSourceKind = /*@__PURE__*/ S.String;
+
+/** Resource tags. */
+export type DataSourcesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const DataSourcesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DataSourcesCreateOrUpdateRequestTagsMap>;
+
+export interface DataSourcesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** Name of the datasource */
+  dataSourceName: string;
+  /** The data source properties in raw json format, each kind of data source have it's own schema. */
+  properties: unknown;
+  /** The ETag of the data source. */
+  etag?: string;
+  /** The kind of the DataSource. */
+  kind: DataSourceKind;
+  /** Resource tags. */
+  tags?: DataSourcesCreateOrUpdateRequestTagsMap;
+}
+export const DataSourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    dataSourceName: S.String.pipe(T.Label()),
+    properties: S.Unknown,
+    etag: S.optional(S.String),
+    kind: DataSourceKind,
+    tags: S.optional(DataSourcesCreateOrUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/dataSources/{dataSourceName}",
+      code: 200,
+      apiVersion: "2025-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DataSourcesCreateOrUpdateRequest",
+}) as any as S.Schema<DataSourcesCreateOrUpdateRequest>;
 
 /** Resource tags. */
 export type DataSourcesCreateOrUpdateResponseTagsMap = {
@@ -1357,7 +1552,7 @@ export const DataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
 
 /** The DataSource items on this page */
-export type DataSourceListResultValueList = DataSource[];
+export type DataSourceListResultValueList = ReadonlyArray<DataSource>;
 export const DataSourceListResultValueList = /*@__PURE__*/ S.Array(
   DataSource,
 ) as any as S.Schema<DataSourceListResultValueList>;
@@ -1412,8 +1607,7 @@ export type WorkspaceEntityStatus =
   | "Canceled"
   | "Deleting"
   | "ProvisioningAccount"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const WorkspaceEntityStatus = /*@__PURE__*/ S.String;
 
 /** The name of the SKU. */
@@ -1425,8 +1619,7 @@ export type WorkspaceSkuNameEnum =
   | "PerGB2018"
   | "Standalone"
   | "CapacityReservation"
-  | "LACluster"
-  | (string & {});
+  | "LACluster";
 export const WorkspaceSkuNameEnum = /*@__PURE__*/ S.String;
 
 /** The SKU (tier) of a workspace. */
@@ -1453,8 +1646,7 @@ export type DataIngestionStatus =
   | "ForceOff"
   | "OverQuota"
   | "SubscriptionSuspended"
-  | "ApproachingQuota"
-  | (string & {});
+  | "ApproachingQuota";
 export const DataIngestionStatus = /*@__PURE__*/ S.String;
 
 /** The daily volume cap for ingestion. */
@@ -1480,8 +1672,7 @@ export const WorkspaceCapping = /*@__PURE__*/ S.suspend(() =>
 export type WorkspacePropertiesPublicNetworkAccessForIngestion =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const WorkspacePropertiesPublicNetworkAccessForIngestion =
   /*@__PURE__*/ S.String;
 
@@ -1489,8 +1680,7 @@ export const WorkspacePropertiesPublicNetworkAccessForIngestion =
 export type WorkspacePropertiesPublicNetworkAccessForQuery =
   | "Enabled"
   | "Disabled"
-  | "SecuredByPerimeter"
-  | (string & {});
+  | "SecuredByPerimeter";
 export const WorkspacePropertiesPublicNetworkAccessForQuery =
   /*@__PURE__*/ S.String;
 
@@ -1512,14 +1702,14 @@ export const PrivateLinkScopedResource = /*@__PURE__*/ S.suspend(() =>
 
 /** List of linked private link scope resources. */
 export type WorkspacePropertiesPrivateLinkScopedResourcesList =
-  PrivateLinkScopedResource[];
+  ReadonlyArray<PrivateLinkScopedResource>;
 export const WorkspacePropertiesPrivateLinkScopedResourcesList =
   /*@__PURE__*/ S.Array(
     PrivateLinkScopedResource,
   ) as any as S.Schema<WorkspacePropertiesPrivateLinkScopedResourcesList>;
 
 /** List of associations for the workspace. Indicates if the workspace is associated with any of the following experiences: MDC, Sentinel, SentinelGraph, etc. */
-export type WorkspaceFeaturesAssociationsList = string[];
+export type WorkspaceFeaturesAssociationsList = ReadonlyArray<string>;
 export const WorkspaceFeaturesAssociationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WorkspaceFeaturesAssociationsList>;
@@ -1567,8 +1757,7 @@ export type WorkspaceReplicationState =
   | "RollbackRequested"
   | "RollingBack"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const WorkspaceReplicationState = /*@__PURE__*/ S.String;
 
 /** Workspace replication properties. */
@@ -1602,8 +1791,7 @@ export type WorkspaceFailoverState =
   | "Activating"
   | "Active"
   | "Deactivating"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const WorkspaceFailoverState = /*@__PURE__*/ S.String;
 
 /** The failover state of the replication. */
@@ -1684,11 +1872,7 @@ export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceProperties>;
 
 /** Type of managed service identity. */
-export type IdentityType =
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "None"
-  | (string & {});
+export type IdentityType = "SystemAssigned" | "UserAssigned" | "None";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties. */
@@ -1772,7 +1956,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
 /** A list of workspaces. */
-export type WorkspaceListResultValueList = Workspace[];
+export type WorkspaceListResultValueList = ReadonlyArray<Workspace>;
 export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;
@@ -1965,7 +2149,8 @@ export const IntelligencePack = /*@__PURE__*/ S.suspend(() =>
   identifier: "IntelligencePack",
 }) as any as S.Schema<IntelligencePack>;
 
-export type IntelligencePacksListResponseBodyList = IntelligencePack[];
+export type IntelligencePacksListResponseBodyList =
+  ReadonlyArray<IntelligencePack>;
 export const IntelligencePacksListResponseBodyList = /*@__PURE__*/ S.Array(
   IntelligencePack,
 ) as any as S.Schema<IntelligencePacksListResponseBodyList>;
@@ -1978,43 +2163,12 @@ export const IntelligencePacksListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "IntelligencePacksListResponse",
 }) as any as S.Schema<IntelligencePacksListResponse>;
 
-export interface LinkedServicesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** Name of the linked service. */
-  linkedServiceName: string;
-  body: unknown;
-}
-export const LinkedServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    linkedServiceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
-      code: 200,
-      apiVersion: "2025-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "LinkedServicesCreateOrUpdateRequest",
-}) as any as S.Schema<LinkedServicesCreateOrUpdateRequest>;
-
 /** The provisioning state of the linked service. */
 export type LinkedServiceEntityStatus =
   | "Succeeded"
   | "Deleting"
   | "ProvisioningAccount"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const LinkedServiceEntityStatus = /*@__PURE__*/ S.String;
 
 /** Linked service properties. */
@@ -2035,6 +2189,50 @@ export const LinkedServiceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LinkedServiceProperties",
 }) as any as S.Schema<LinkedServiceProperties>;
+
+/** Resource tags. */
+export type LinkedServicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const LinkedServicesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<LinkedServicesCreateOrUpdateRequestTagsMap>;
+
+export interface LinkedServicesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** Name of the linked service. */
+  linkedServiceName: string;
+  /** The properties of the linked service. */
+  properties: LinkedServiceProperties;
+  /** Resource tags. */
+  tags?: LinkedServicesCreateOrUpdateRequestTagsMap;
+}
+export const LinkedServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    linkedServiceName: S.String.pipe(T.Label()),
+    properties: LinkedServiceProperties,
+    tags: S.optional(LinkedServicesCreateOrUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices/{linkedServiceName}",
+      code: 200,
+      apiVersion: "2025-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "LinkedServicesCreateOrUpdateRequest",
+}) as any as S.Schema<LinkedServicesCreateOrUpdateRequest>;
 
 /** Resource tags. */
 export type LinkedServicesCreateOrUpdateResponseTagsMap = {
@@ -2262,7 +2460,7 @@ export const LinkedService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkedService" }) as any as S.Schema<LinkedService>;
 
 /** The list of linked service instances */
-export type LinkedServiceListResultValueList = LinkedService[];
+export type LinkedServiceListResultValueList = ReadonlyArray<LinkedService>;
 export const LinkedServiceListResultValueList = /*@__PURE__*/ S.Array(
   LinkedService,
 ) as any as S.Schema<LinkedServiceListResultValueList>;
@@ -2288,44 +2486,9 @@ export type LinkedStorageAccountsCreateOrUpdateRequestDataSourceType =
   | "AzureWatson"
   | "Query"
   | "Ingestion"
-  | "Alerts"
-  | (string & {});
+  | "Alerts";
 export const LinkedStorageAccountsCreateOrUpdateRequestDataSourceType =
   /*@__PURE__*/ S.String;
-
-export interface LinkedStorageAccountsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** Linked storage accounts type. */
-  dataSourceType: LinkedStorageAccountsCreateOrUpdateRequestDataSourceType;
-  body: unknown;
-}
-export const LinkedStorageAccountsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      dataSourceType:
-        LinkedStorageAccountsCreateOrUpdateRequestDataSourceType.pipe(
-          T.Label(),
-        ),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
-        code: 200,
-        apiVersion: "2025-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "LinkedStorageAccountsCreateOrUpdateRequest",
-  }) as any as S.Schema<LinkedStorageAccountsCreateOrUpdateRequest>;
 
 /** Linked storage accounts type. */
 export type DataSourceType =
@@ -2333,12 +2496,12 @@ export type DataSourceType =
   | "AzureWatson"
   | "Query"
   | "Ingestion"
-  | "Alerts"
-  | (string & {});
+  | "Alerts";
 export const DataSourceType = /*@__PURE__*/ S.String;
 
 /** Linked storage accounts resources ids. */
-export type LinkedStorageAccountsPropertiesStorageAccountIdsList = string[];
+export type LinkedStorageAccountsPropertiesStorageAccountIdsList =
+  ReadonlyArray<string>;
 export const LinkedStorageAccountsPropertiesStorageAccountIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2361,6 +2524,41 @@ export const LinkedStorageAccountsProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LinkedStorageAccountsProperties",
 }) as any as S.Schema<LinkedStorageAccountsProperties>;
+
+export interface LinkedStorageAccountsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** Linked storage accounts type. */
+  dataSourceType: LinkedStorageAccountsCreateOrUpdateRequestDataSourceType;
+  /** Linked storage accounts properties. */
+  properties: LinkedStorageAccountsProperties;
+}
+export const LinkedStorageAccountsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      workspaceName: S.String.pipe(T.Label()),
+      dataSourceType:
+        LinkedStorageAccountsCreateOrUpdateRequestDataSourceType.pipe(
+          T.Label(),
+        ),
+      properties: LinkedStorageAccountsProperties,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}",
+        code: 200,
+        apiVersion: "2025-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "LinkedStorageAccountsCreateOrUpdateRequest",
+  }) as any as S.Schema<LinkedStorageAccountsCreateOrUpdateRequest>;
 
 export interface LinkedStorageAccountsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2392,8 +2590,7 @@ export type LinkedStorageAccountsDeleteRequestDataSourceType =
   | "AzureWatson"
   | "Query"
   | "Ingestion"
-  | "Alerts"
-  | (string & {});
+  | "Alerts";
 export const LinkedStorageAccountsDeleteRequestDataSourceType =
   /*@__PURE__*/ S.String;
 
@@ -2439,8 +2636,7 @@ export type LinkedStorageAccountsGetRequestDataSourceType =
   | "AzureWatson"
   | "Query"
   | "Ingestion"
-  | "Alerts"
-  | (string & {});
+  | "Alerts";
 export const LinkedStorageAccountsGetRequestDataSourceType =
   /*@__PURE__*/ S.String;
 
@@ -2551,7 +2747,7 @@ export const LinkedStorageAccountsResource = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of linked storage accounts instances. */
 export type LinkedStorageAccountsListResultValueList =
-  LinkedStorageAccountsResource[];
+  ReadonlyArray<LinkedStorageAccountsResource>;
 export const LinkedStorageAccountsListResultValueList = /*@__PURE__*/ S.Array(
   LinkedStorageAccountsResource,
 ) as any as S.Schema<LinkedStorageAccountsListResultValueList>;
@@ -2645,7 +2841,8 @@ export const ManagementGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementGroup>;
 
 /** Gets or sets a list of management groups attached to the workspace. */
-export type WorkspaceListManagementGroupsResultValueList = ManagementGroup[];
+export type WorkspaceListManagementGroupsResultValueList =
+  ReadonlyArray<ManagementGroup>;
 export const WorkspaceListManagementGroupsResultValueList =
   /*@__PURE__*/ S.Array(
     ManagementGroup,
@@ -2718,7 +2915,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -2765,7 +2962,7 @@ export const OperationStatusesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationStatusesGetRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -2787,7 +2984,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -2921,7 +3118,7 @@ export const QueriesGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The related categories for the function. */
 export type LogAnalyticsQueryPackQueryPropertiesRelatedCategoriesList =
-  string[];
+  ReadonlyArray<string>;
 export const LogAnalyticsQueryPackQueryPropertiesRelatedCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2929,14 +3126,15 @@ export const LogAnalyticsQueryPackQueryPropertiesRelatedCategoriesList =
 
 /** The related resource types for the function. */
 export type LogAnalyticsQueryPackQueryPropertiesRelatedResourceTypesList =
-  string[];
+  ReadonlyArray<string>;
 export const LogAnalyticsQueryPackQueryPropertiesRelatedResourceTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<LogAnalyticsQueryPackQueryPropertiesRelatedResourceTypesList>;
 
 /** The related Log Analytics solutions for the function. */
-export type LogAnalyticsQueryPackQueryPropertiesRelatedSolutionsList = string[];
+export type LogAnalyticsQueryPackQueryPropertiesRelatedSolutionsList =
+  ReadonlyArray<string>;
 export const LogAnalyticsQueryPackQueryPropertiesRelatedSolutionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2968,7 +3166,8 @@ export const LogAnalyticsQueryPackQueryPropertiesRelated =
     identifier: "LogAnalyticsQueryPackQueryPropertiesRelated",
   }) as any as S.Schema<LogAnalyticsQueryPackQueryPropertiesRelated>;
 
-export type LogAnalyticsQueryPackQueryPropertiesTagsValueList = string[];
+export type LogAnalyticsQueryPackQueryPropertiesTagsValueList =
+  ReadonlyArray<string>;
 export const LogAnalyticsQueryPackQueryPropertiesTagsValueList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3110,7 +3309,7 @@ export const LogAnalyticsQueryPackQuery = /*@__PURE__*/ S.suspend(() =>
 
 /** The LogAnalyticsQueryPackQuery items on this page */
 export type LogAnalyticsQueryPackQueryListResultValueList =
-  LogAnalyticsQueryPackQuery[];
+  ReadonlyArray<LogAnalyticsQueryPackQuery>;
 export const LogAnalyticsQueryPackQueryListResultValueList =
   /*@__PURE__*/ S.Array(
     LogAnalyticsQueryPackQuery,
@@ -3133,6 +3332,54 @@ export const LogAnalyticsQueryPackQueryListResult = /*@__PURE__*/ S.suspend(
   identifier: "LogAnalyticsQueryPackQueryListResult",
 }) as any as S.Schema<LogAnalyticsQueryPackQueryListResult>;
 
+export type LogAnalyticsQueryPackQueryPropertiesInputTagsValueList =
+  ReadonlyArray<string>;
+export const LogAnalyticsQueryPackQueryPropertiesInputTagsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<LogAnalyticsQueryPackQueryPropertiesInputTagsValueList>;
+
+/** Tags associated with the query. */
+export type LogAnalyticsQueryPackQueryPropertiesInputTagsMap = {
+  [key: string]:
+    | LogAnalyticsQueryPackQueryPropertiesInputTagsValueList
+    | undefined;
+};
+export const LogAnalyticsQueryPackQueryPropertiesInputTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    LogAnalyticsQueryPackQueryPropertiesInputTagsValueList,
+  ) as any as S.Schema<LogAnalyticsQueryPackQueryPropertiesInputTagsMap>;
+
+/** Properties that define an Log Analytics QueryPack-Query resource. */
+export interface LogAnalyticsQueryPackQueryPropertiesInput {
+  /** Unique display name for your query within the Query Pack. */
+  displayName: string;
+  /** Description of the query. */
+  description?: string;
+  /** Body of the query. */
+  body: string;
+  /** The related metadata items for the function. */
+  related?: LogAnalyticsQueryPackQueryPropertiesRelated;
+  /** Tags associated with the query. */
+  tags?: LogAnalyticsQueryPackQueryPropertiesInputTagsMap;
+  /** Additional properties that can be set for the query. */
+  properties?: unknown;
+}
+export const LogAnalyticsQueryPackQueryPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      displayName: S.String,
+      description: S.optional(S.String),
+      body: S.String,
+      related: S.optional(LogAnalyticsQueryPackQueryPropertiesRelated),
+      tags: S.optional(LogAnalyticsQueryPackQueryPropertiesInputTagsMap),
+      properties: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "LogAnalyticsQueryPackQueryPropertiesInput",
+  }) as any as S.Schema<LogAnalyticsQueryPackQueryPropertiesInput>;
+
 export interface QueriesPutRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3142,7 +3389,8 @@ export interface QueriesPutRequest {
   queryPackName: string;
   /** The id of a specific query defined in the Log Analytics QueryPack */
   id: string;
-  body: unknown;
+  /** Properties that define an Log Analytics QueryPack-Query resource. */
+  properties?: LogAnalyticsQueryPackQueryPropertiesInput;
 }
 export const QueriesPutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3150,7 +3398,7 @@ export const QueriesPutRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     queryPackName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(LogAnalyticsQueryPackQueryPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3187,6 +3435,70 @@ export const QueriesPutResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueriesPutResponse",
 }) as any as S.Schema<QueriesPutResponse>;
 
+/** The related categories for the function. */
+export type LogAnalyticsQueryPackQuerySearchPropertiesRelatedCategoriesList =
+  ReadonlyArray<string>;
+export const LogAnalyticsQueryPackQuerySearchPropertiesRelatedCategoriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<LogAnalyticsQueryPackQuerySearchPropertiesRelatedCategoriesList>;
+
+/** The related resource types for the function. */
+export type LogAnalyticsQueryPackQuerySearchPropertiesRelatedResourceTypesList =
+  ReadonlyArray<string>;
+export const LogAnalyticsQueryPackQuerySearchPropertiesRelatedResourceTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<LogAnalyticsQueryPackQuerySearchPropertiesRelatedResourceTypesList>;
+
+/** The related Log Analytics solutions for the function. */
+export type LogAnalyticsQueryPackQuerySearchPropertiesRelatedSolutionsList =
+  ReadonlyArray<string>;
+export const LogAnalyticsQueryPackQuerySearchPropertiesRelatedSolutionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<LogAnalyticsQueryPackQuerySearchPropertiesRelatedSolutionsList>;
+
+/** The related metadata items for the function. */
+export interface LogAnalyticsQueryPackQuerySearchPropertiesRelated {
+  /** The related categories for the function. */
+  categories?: LogAnalyticsQueryPackQuerySearchPropertiesRelatedCategoriesList;
+  /** The related resource types for the function. */
+  resourceTypes?: LogAnalyticsQueryPackQuerySearchPropertiesRelatedResourceTypesList;
+  /** The related Log Analytics solutions for the function. */
+  solutions?: LogAnalyticsQueryPackQuerySearchPropertiesRelatedSolutionsList;
+}
+export const LogAnalyticsQueryPackQuerySearchPropertiesRelated =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      categories: S.optional(
+        LogAnalyticsQueryPackQuerySearchPropertiesRelatedCategoriesList,
+      ),
+      resourceTypes: S.optional(
+        LogAnalyticsQueryPackQuerySearchPropertiesRelatedResourceTypesList,
+      ),
+      solutions: S.optional(
+        LogAnalyticsQueryPackQuerySearchPropertiesRelatedSolutionsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "LogAnalyticsQueryPackQuerySearchPropertiesRelated",
+  }) as any as S.Schema<LogAnalyticsQueryPackQuerySearchPropertiesRelated>;
+
+export type QueriesSearchRequestTagsValueList = ReadonlyArray<string>;
+export const QueriesSearchRequestTagsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<QueriesSearchRequestTagsValueList>;
+
+/** Tags associated with the query. */
+export type QueriesSearchRequestTagsMap = {
+  [key: string]: QueriesSearchRequestTagsValueList | undefined;
+};
+export const QueriesSearchRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  QueriesSearchRequestTagsValueList,
+) as any as S.Schema<QueriesSearchRequestTagsMap>;
+
 export interface QueriesSearchRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3200,7 +3512,10 @@ export interface QueriesSearchRequest {
   includeBody?: boolean;
   /** Base64 encoded token used to fetch the next page of items. Default is null. */
   _skipToken?: string;
-  body: unknown;
+  /** The related metadata items for the function. */
+  related?: LogAnalyticsQueryPackQuerySearchPropertiesRelated;
+  /** Tags associated with the query. */
+  tags?: QueriesSearchRequestTagsMap;
 }
 export const QueriesSearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3210,7 +3525,8 @@ export const QueriesSearchRequest = /*@__PURE__*/ S.suspend(() =>
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
     includeBody: S.optional(S.Boolean.pipe(T.Query())),
     _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-    body: S.Unknown.pipe(T.HttpBody()),
+    related: S.optional(LogAnalyticsQueryPackQuerySearchPropertiesRelated),
+    tags: S.optional(QueriesSearchRequestTagsMap),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3232,7 +3548,8 @@ export interface QueriesUpdateRequest {
   queryPackName: string;
   /** The id of a specific query defined in the Log Analytics QueryPack */
   id: string;
-  body: unknown;
+  /** Properties that define an Log Analytics QueryPack-Query resource. */
+  properties?: LogAnalyticsQueryPackQueryPropertiesInput;
 }
 export const QueriesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3240,7 +3557,7 @@ export const QueriesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     queryPackName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(LogAnalyticsQueryPackQueryPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3277,6 +3594,23 @@ export const QueriesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueriesUpdateResponse",
 }) as any as S.Schema<QueriesUpdateResponse>;
 
+/** Resource tags. */
+export type QueryPacksCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const QueryPacksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<QueryPacksCreateOrUpdateRequestTagsMap>;
+
+/** Properties that define a Log Analytics QueryPack resource. */
+export interface LogAnalyticsQueryPackPropertiesInput {}
+export const LogAnalyticsQueryPackPropertiesInput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "LogAnalyticsQueryPackPropertiesInput",
+}) as any as S.Schema<LogAnalyticsQueryPackPropertiesInput>;
+
 export interface QueryPacksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3284,14 +3618,21 @@ export interface QueryPacksCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Log Analytics QueryPack resource. */
   queryPackName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: QueryPacksCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties that define a Log Analytics QueryPack resource. */
+  properties: LogAnalyticsQueryPackPropertiesInput;
 }
 export const QueryPacksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     queryPackName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(QueryPacksCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: LogAnalyticsQueryPackPropertiesInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3365,19 +3706,36 @@ export const QueryPacksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryPacksCreateOrUpdateResponse",
 }) as any as S.Schema<QueryPacksCreateOrUpdateResponse>;
 
+/** Resource tags. */
+export type QueryPacksCreateOrUpdateWithoutNameRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const QueryPacksCreateOrUpdateWithoutNameRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<QueryPacksCreateOrUpdateWithoutNameRequestTagsMap>;
+
 export interface QueryPacksCreateOrUpdateWithoutNameRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: QueryPacksCreateOrUpdateWithoutNameRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties that define a Log Analytics QueryPack resource. */
+  properties: LogAnalyticsQueryPackPropertiesInput;
 }
 export const QueryPacksCreateOrUpdateWithoutNameRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(QueryPacksCreateOrUpdateWithoutNameRequestTagsMap),
+      location: S.String,
+      properties: LogAnalyticsQueryPackPropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3587,7 +3945,8 @@ export const LogAnalyticsQueryPack = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogAnalyticsQueryPack>;
 
 /** The LogAnalyticsQueryPack items on this page */
-export type LogAnalyticsQueryPackListResultValueList = LogAnalyticsQueryPack[];
+export type LogAnalyticsQueryPackListResultValueList =
+  ReadonlyArray<LogAnalyticsQueryPack>;
 export const LogAnalyticsQueryPackListResultValueList = /*@__PURE__*/ S.Array(
   LogAnalyticsQueryPack,
 ) as any as S.Schema<LogAnalyticsQueryPackListResultValueList>;
@@ -3631,6 +3990,15 @@ export const QueryPacksListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
   identifier: "QueryPacksListByResourceGroupRequest",
 }) as any as S.Schema<QueryPacksListByResourceGroupRequest>;
 
+/** Resource tags */
+export type QueryPacksUpdateTagsRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const QueryPacksUpdateTagsRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<QueryPacksUpdateTagsRequestTagsMap>;
+
 export interface QueryPacksUpdateTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3638,14 +4006,15 @@ export interface QueryPacksUpdateTagsRequest {
   resourceGroupName: string;
   /** The name of the Log Analytics QueryPack resource. */
   queryPackName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: QueryPacksUpdateTagsRequestTagsMap;
 }
 export const QueryPacksUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     queryPackName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(QueryPacksUpdateTagsRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3697,36 +4066,6 @@ export const QueryPacksUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryPacksUpdateTagsResponse",
 }) as any as S.Schema<QueryPacksUpdateTagsResponse>;
 
-export interface SavedSearchesCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** The id of the saved search. */
-  savedSearchId: string;
-  body: unknown;
-}
-export const SavedSearchesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    savedSearchId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
-      code: 200,
-      apiVersion: "2025-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SavedSearchesCreateOrUpdateRequest",
-}) as any as S.Schema<SavedSearchesCreateOrUpdateRequest>;
-
 /** A tag of a saved search. */
 export interface Tag {
   /** The tag name. */
@@ -3742,7 +4081,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 
 /** The tags attached to the saved search. */
-export type SavedSearchPropertiesTagsList = Tag[];
+export type SavedSearchPropertiesTagsList = ReadonlyArray<Tag>;
 export const SavedSearchPropertiesTagsList = /*@__PURE__*/ S.Array(
   Tag,
 ) as any as S.Schema<SavedSearchPropertiesTagsList>;
@@ -3777,6 +4116,40 @@ export const SavedSearchProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SavedSearchProperties",
 }) as any as S.Schema<SavedSearchProperties>;
+
+export interface SavedSearchesCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The id of the saved search. */
+  savedSearchId: string;
+  /** The properties of the saved search. */
+  properties: SavedSearchProperties;
+  /** The ETag of the saved search. To override an existing saved search, use "*" or specify the current Etag */
+  etag?: string;
+}
+export const SavedSearchesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    savedSearchId: S.String.pipe(T.Label()),
+    properties: SavedSearchProperties,
+    etag: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/savedSearches/{savedSearchId}",
+      code: 200,
+      apiVersion: "2025-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "SavedSearchesCreateOrUpdateRequest",
+}) as any as S.Schema<SavedSearchesCreateOrUpdateRequest>;
 
 export interface SavedSearchesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3947,7 +4320,7 @@ export const SavedSearch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SavedSearch" }) as any as S.Schema<SavedSearch>;
 
 /** The array of result values. */
-export type SavedSearchesListResultValueList = SavedSearch[];
+export type SavedSearchesListResultValueList = ReadonlyArray<SavedSearch>;
 export const SavedSearchesListResultValueList = /*@__PURE__*/ S.Array(
   SavedSearch,
 ) as any as S.Schema<SavedSearchesListResultValueList>;
@@ -4005,13 +4378,13 @@ export const CoreSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CoreSummary" }) as any as S.Schema<CoreSummary>;
 
 /** The core summaries. */
-export type SearchMetadataCoreSummariesList = CoreSummary[];
+export type SearchMetadataCoreSummariesList = ReadonlyArray<CoreSummary>;
 export const SearchMetadataCoreSummariesList = /*@__PURE__*/ S.Array(
   CoreSummary,
 ) as any as S.Schema<SearchMetadataCoreSummariesList>;
 
 /** The sort order of the search. */
-export type SearchSortEnum = "asc" | "desc" | (string & {});
+export type SearchSortEnum = "asc" | "desc";
 export const SearchSortEnum = /*@__PURE__*/ S.String;
 
 /** The sort parameters for search. */
@@ -4029,7 +4402,7 @@ export const SearchSort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchSort" }) as any as S.Schema<SearchSort>;
 
 /** How the results are sorted. */
-export type SearchMetadataSortList = SearchSort[];
+export type SearchMetadataSortList = ReadonlyArray<SearchSort>;
 export const SearchMetadataSortList = /*@__PURE__*/ S.Array(
   SearchSort,
 ) as any as S.Schema<SearchMetadataSortList>;
@@ -4110,7 +4483,7 @@ export const SearchMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchMetadata" }) as any as S.Schema<SearchMetadata>;
 
 /** The array of workflows containing the field. */
-export type SearchSchemaValueOwnerTypeList = string[];
+export type SearchSchemaValueOwnerTypeList = ReadonlyArray<string>;
 export const SearchSchemaValueOwnerTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchSchemaValueOwnerTypeList>;
@@ -4147,7 +4520,7 @@ export const SearchSchemaValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchSchemaValue>;
 
 /** The array of result values. */
-export type SearchGetSchemaResponseValueList = SearchSchemaValue[];
+export type SearchGetSchemaResponseValueList = ReadonlyArray<SearchSchemaValue>;
 export const SearchGetSchemaResponseValueList = /*@__PURE__*/ S.Array(
   SearchSchemaValue,
 ) as any as S.Schema<SearchGetSchemaResponseValueList>;
@@ -4232,45 +4605,14 @@ export const SharedKeysRegenerateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SharedKeysRegenerateRequest",
 }) as any as S.Schema<SharedKeysRegenerateRequest>;
 
-export interface StorageInsightConfigsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** Name of the storageInsightsConfigs resource */
-  storageInsightName: string;
-  body: unknown;
-}
-export const StorageInsightConfigsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      workspaceName: S.String.pipe(T.Label()),
-      storageInsightName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
-        code: 200,
-        apiVersion: "2025-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "StorageInsightConfigsCreateOrUpdateRequest",
-  }) as any as S.Schema<StorageInsightConfigsCreateOrUpdateRequest>;
-
 /** The names of the blob containers that the workspace should read */
-export type StorageInsightPropertiesContainersList = string[];
+export type StorageInsightPropertiesContainersList = ReadonlyArray<string>;
 export const StorageInsightPropertiesContainersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageInsightPropertiesContainersList>;
 
 /** The names of the Azure tables that the workspace should read */
-export type StorageInsightPropertiesTablesList = string[];
+export type StorageInsightPropertiesTablesList = ReadonlyArray<string>;
 export const StorageInsightPropertiesTablesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StorageInsightPropertiesTablesList>;
@@ -4290,7 +4632,7 @@ export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageAccount" }) as any as S.Schema<StorageAccount>;
 
 /** The state of the storage insight connection to the workspace */
-export type StorageInsightState = "OK" | "ERROR" | (string & {});
+export type StorageInsightState = "OK" | "ERROR";
 export const StorageInsightState = /*@__PURE__*/ S.String;
 
 /** The status of the storage insight. */
@@ -4330,6 +4672,54 @@ export const StorageInsightProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StorageInsightProperties",
 }) as any as S.Schema<StorageInsightProperties>;
+
+/** Resource tags. */
+export type StorageInsightConfigsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const StorageInsightConfigsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<StorageInsightConfigsCreateOrUpdateRequestTagsMap>;
+
+export interface StorageInsightConfigsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** Name of the storageInsightsConfigs resource */
+  storageInsightName: string;
+  /** Storage insight properties. */
+  properties?: StorageInsightProperties;
+  /** The ETag of the storage insight. */
+  eTag?: string;
+  /** Resource tags. */
+  tags?: StorageInsightConfigsCreateOrUpdateRequestTagsMap;
+}
+export const StorageInsightConfigsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      workspaceName: S.String.pipe(T.Label()),
+      storageInsightName: S.String.pipe(T.Label()),
+      properties: S.optional(StorageInsightProperties),
+      eTag: S.optional(S.String),
+      tags: S.optional(StorageInsightConfigsCreateOrUpdateRequestTagsMap),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/storageInsightConfigs/{storageInsightName}",
+        code: 200,
+        apiVersion: "2025-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "StorageInsightConfigsCreateOrUpdateRequest",
+  }) as any as S.Schema<StorageInsightConfigsCreateOrUpdateRequest>;
 
 /** Resource tags. */
 export type StorageInsightConfigsCreateOrUpdateResponseTagsMap = {
@@ -4537,7 +4927,7 @@ export const StorageInsight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageInsight" }) as any as S.Schema<StorageInsight>;
 
 /** A list of storage insight items. */
-export type StorageInsightListResultValueList = StorageInsight[];
+export type StorageInsightListResultValueList = ReadonlyArray<StorageInsight>;
 export const StorageInsightListResultValueList = /*@__PURE__*/ S.Array(
   StorageInsight,
 ) as any as S.Schema<StorageInsightListResultValueList>;
@@ -4558,56 +4948,12 @@ export const StorageInsightListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageInsightListResult",
 }) as any as S.Schema<StorageInsightListResult>;
 
-export interface SummaryLogsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the workspace. */
-  workspaceName: string;
-  /** The name of the summary logs. Must not contain '/'. */
-  summaryLogsName: string;
-  body: unknown;
-}
-export const SummaryLogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    workspaceName: S.String.pipe(T.Label()),
-    summaryLogsName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
-      code: 200,
-      apiVersion: "2025-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SummaryLogsCreateOrUpdateRequest",
-}) as any as S.Schema<SummaryLogsCreateOrUpdateRequest>;
-
 /** SummaryRules rule type: User. */
-export type RuleTypeEnum = "User" | (string & {});
+export type RuleTypeEnum = "User";
 export const RuleTypeEnum = /*@__PURE__*/ S.String;
 
-/** Indicates the reason for rule deactivation. */
-export type StatusCodeEnum = "UserAction" | "DataPlaneError" | (string & {});
-export const StatusCodeEnum = /*@__PURE__*/ S.String;
-
-/** Table's current provisioning state. If set to 'updating', indicates a resource lock due to ongoing operation, forbidding any update to the table until the ongoing operation is concluded. */
-export type ProvisioningStateEnum =
-  | "Updating"
-  | "Succeeded"
-  | "Deleting"
-  | "Failed"
-  | "Canceled"
-  | (string & {});
-export const ProvisioningStateEnum = /*@__PURE__*/ S.String;
-
 /** The time cursor used in Summary rules bins processing, e.g. TimeGenerated. */
-export type TimeSelectorEnum = "TimeGenerated" | (string & {});
+export type TimeSelectorEnum = "TimeGenerated";
 export const TimeSelectorEnum = /*@__PURE__*/ S.String;
 
 /** Rule definition parameters. */
@@ -4635,6 +4981,72 @@ export const RuleDefinition = /*@__PURE__*/ S.suspend(() =>
     destinationTable: S.optional(S.String),
   }),
 ).annotate({ identifier: "RuleDefinition" }) as any as S.Schema<RuleDefinition>;
+
+/** Summary rule properties. */
+export interface SummaryLogsPropertiesInput {
+  /** SummaryRules rule type: User. */
+  ruleType?: RuleTypeEnum;
+  /** The display name of the Summary rule. */
+  displayName?: string;
+  /** The description of the Summary rule. */
+  description?: string;
+  /** Rule definition parameters. */
+  ruleDefinition?: RuleDefinition;
+}
+export const SummaryLogsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ruleType: S.optional(RuleTypeEnum),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    ruleDefinition: S.optional(RuleDefinition),
+  }),
+).annotate({
+  identifier: "SummaryLogsPropertiesInput",
+}) as any as S.Schema<SummaryLogsPropertiesInput>;
+
+export interface SummaryLogsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the workspace. */
+  workspaceName: string;
+  /** The name of the summary logs. Must not contain '/'. */
+  summaryLogsName: string;
+  /** Summary rule properties. */
+  properties?: SummaryLogsPropertiesInput;
+}
+export const SummaryLogsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    workspaceName: S.String.pipe(T.Label()),
+    summaryLogsName: S.String.pipe(T.Label()),
+    properties: S.optional(SummaryLogsPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/summaryLogs/{summaryLogsName}",
+      code: 200,
+      apiVersion: "2025-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "SummaryLogsCreateOrUpdateRequest",
+}) as any as S.Schema<SummaryLogsCreateOrUpdateRequest>;
+
+/** Indicates the reason for rule deactivation. */
+export type StatusCodeEnum = "UserAction" | "DataPlaneError";
+export const StatusCodeEnum = /*@__PURE__*/ S.String;
+
+/** Table's current provisioning state. If set to 'updating', indicates a resource lock due to ongoing operation, forbidding any update to the table until the ongoing operation is concluded. */
+export type ProvisioningStateEnum =
+  | "Updating"
+  | "Succeeded"
+  | "Deleting"
+  | "Failed"
+  | "Canceled";
+export const ProvisioningStateEnum = /*@__PURE__*/ S.String;
 
 /** Summary rule properties. */
 export interface SummaryLogsProperties {
@@ -4827,7 +5239,7 @@ export const SummaryLogs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SummaryLogs" }) as any as S.Schema<SummaryLogs>;
 
 /** The SummaryLogs items on this page */
-export type SummaryLogsListResultValueList = SummaryLogs[];
+export type SummaryLogsListResultValueList = ReadonlyArray<SummaryLogs>;
 export const SummaryLogsListResultValueList = /*@__PURE__*/ S.Array(
   SummaryLogs,
 ) as any as S.Schema<SummaryLogsListResultValueList>;
@@ -4848,6 +5260,19 @@ export const SummaryLogsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SummaryLogsListResult",
 }) as any as S.Schema<SummaryLogsListResult>;
 
+/** Properties for retrying a Summary rule bin. */
+export interface SummaryLogsRetryBinProperties {
+  /** The time (UTC) of the bin to retry. */
+  retryBinStartTime: string;
+}
+export const SummaryLogsRetryBinProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    retryBinStartTime: S.String,
+  }),
+).annotate({
+  identifier: "SummaryLogsRetryBinProperties",
+}) as any as S.Schema<SummaryLogsRetryBinProperties>;
+
 export interface SummaryLogsRetryBinRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4857,7 +5282,8 @@ export interface SummaryLogsRetryBinRequest {
   workspaceName: string;
   /** The name of the summary logs. Must not contain '/'. */
   summaryLogsName: string;
-  body: unknown;
+  /** Retry bin properties. */
+  properties?: SummaryLogsRetryBinProperties;
 }
 export const SummaryLogsRetryBinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4865,7 +5291,7 @@ export const SummaryLogsRetryBinRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     summaryLogsName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SummaryLogsRetryBinProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4990,6 +5416,147 @@ export const TablesCancelSearchResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TablesCancelSearchResponse",
 }) as any as S.Schema<TablesCancelSearchResponse>;
 
+/** Parameters of the search job that initiated this table. */
+export interface SearchResultsInput {
+  /** Search job query. */
+  query?: string;
+  /** Search job Description. */
+  description?: string;
+  /** Limit the search job to return up to specified number of rows. */
+  limit?: number;
+  /** The timestamp to start the search from (UTC) */
+  startSearchTime?: string;
+  /** The timestamp to end the search by (UTC) */
+  endSearchTime?: string;
+}
+export const SearchResultsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    query: S.optional(S.String),
+    description: S.optional(S.String),
+    limit: S.optional(S.Number),
+    startSearchTime: S.optional(S.String),
+    endSearchTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchResultsInput",
+}) as any as S.Schema<SearchResultsInput>;
+
+/** Restore parameters. */
+export interface RestoredLogsInput {
+  /** The timestamp to start the restore from (UTC). */
+  startRestoreTime?: string;
+  /** The timestamp to end the restore by (UTC). */
+  endRestoreTime?: string;
+  /** The table to restore data from. */
+  sourceTable?: string;
+}
+export const RestoredLogsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startRestoreTime: S.optional(S.String),
+    endRestoreTime: S.optional(S.String),
+    sourceTable: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RestoredLogsInput",
+}) as any as S.Schema<RestoredLogsInput>;
+
+/** Instruct the system how to handle and charge the logs ingested to this table. */
+export type TablePlanEnum = "Basic" | "Analytics" | "Auxiliary";
+export const TablePlanEnum = /*@__PURE__*/ S.String;
+
+/** Column data type. */
+export type ColumnTypeEnum =
+  | "string"
+  | "int"
+  | "long"
+  | "real"
+  | "boolean"
+  | "dateTime"
+  | "guid"
+  | "dynamic";
+export const ColumnTypeEnum = /*@__PURE__*/ S.String;
+
+/** Column data type logical hint. */
+export type ColumnDataTypeHintEnum = "uri" | "guid" | "armPath" | "ip";
+export const ColumnDataTypeHintEnum = /*@__PURE__*/ S.String;
+
+/** Table column. */
+export interface ColumnInput {
+  /** Column name. */
+  name?: string;
+  /** Column data type. */
+  type?: ColumnTypeEnum;
+  /** Column data type logical hint. */
+  dataTypeHint?: ColumnDataTypeHintEnum;
+  /** Column display name. */
+  displayName?: string;
+  /** Column description. */
+  description?: string;
+}
+export const ColumnInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(ColumnTypeEnum),
+    dataTypeHint: S.optional(ColumnDataTypeHintEnum),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({ identifier: "ColumnInput" }) as any as S.Schema<ColumnInput>;
+
+/** A list of table custom columns. */
+export type SchemaInputColumnsList = ReadonlyArray<ColumnInput>;
+export const SchemaInputColumnsList = /*@__PURE__*/ S.Array(
+  ColumnInput,
+) as any as S.Schema<SchemaInputColumnsList>;
+
+/** Table's schema. */
+export interface SchemaInput {
+  /** Table name. */
+  name?: string;
+  /** Table display name. */
+  displayName?: string;
+  /** Table description. */
+  description?: string;
+  /** A list of table custom columns. */
+  columns?: SchemaInputColumnsList;
+}
+export const SchemaInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    columns: S.optional(SchemaInputColumnsList),
+  }),
+).annotate({ identifier: "SchemaInput" }) as any as S.Schema<SchemaInput>;
+
+/** Table properties. */
+export interface TablePropertiesInput {
+  /** In Analytics table: the tables analytics retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention. In Basic and Auxiliary table: read only property. */
+  retentionInDays?: number;
+  /** The table total retention in days, between 4 and 4383. Setting this property to -1 will default to retentionInDays. */
+  totalRetentionInDays?: number;
+  /** Parameters of the search job that initiated this table. */
+  searchResults?: SearchResultsInput;
+  /** Parameters of the restore operation that initiated this table. */
+  restoredLogs?: RestoredLogsInput;
+  /** Instruct the system how to handle and charge the logs ingested to this table. */
+  plan?: TablePlanEnum;
+  /** Table schema. */
+  schema?: SchemaInput;
+}
+export const TablePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    retentionInDays: S.optional(S.Number),
+    totalRetentionInDays: S.optional(S.Number),
+    searchResults: S.optional(SearchResultsInput),
+    restoredLogs: S.optional(RestoredLogsInput),
+    plan: S.optional(TablePlanEnum),
+    schema: S.optional(SchemaInput),
+  }),
+).annotate({
+  identifier: "TablePropertiesInput",
+}) as any as S.Schema<TablePropertiesInput>;
+
 export interface TablesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4999,7 +5566,8 @@ export interface TablesCreateOrUpdateRequest {
   workspaceName: string;
   /** The name of the table. */
   tableName: string;
-  body: unknown;
+  /** Table's properties. */
+  properties?: TablePropertiesInput;
 }
 export const TablesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5007,7 +5575,7 @@ export const TablesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     tableName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(TablePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5088,32 +5656,6 @@ export const ResultStatistics = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResultStatistics",
 }) as any as S.Schema<ResultStatistics>;
 
-/** Instruct the system how to handle and charge the logs ingested to this table. */
-export type TablePlanEnum = "Basic" | "Analytics" | "Auxiliary" | (string & {});
-export const TablePlanEnum = /*@__PURE__*/ S.String;
-
-/** Column data type. */
-export type ColumnTypeEnum =
-  | "string"
-  | "int"
-  | "long"
-  | "real"
-  | "boolean"
-  | "dateTime"
-  | "guid"
-  | "dynamic"
-  | (string & {});
-export const ColumnTypeEnum = /*@__PURE__*/ S.String;
-
-/** Column data type logical hint. */
-export type ColumnDataTypeHintEnum =
-  | "uri"
-  | "guid"
-  | "armPath"
-  | "ip"
-  | (string & {});
-export const ColumnDataTypeHintEnum = /*@__PURE__*/ S.String;
-
 /** Table column. */
 export interface Column {
   /** Column name. */
@@ -5144,31 +5686,31 @@ export const Column = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Column" }) as any as S.Schema<Column>;
 
 /** A list of table custom columns. */
-export type SchemaColumnsList = Column[];
+export type SchemaColumnsList = ReadonlyArray<Column>;
 export const SchemaColumnsList = /*@__PURE__*/ S.Array(
   Column,
 ) as any as S.Schema<SchemaColumnsList>;
 
 /** A list of table standard columns. */
-export type SchemaStandardColumnsList = Column[];
+export type SchemaStandardColumnsList = ReadonlyArray<Column>;
 export const SchemaStandardColumnsList = /*@__PURE__*/ S.Array(
   Column,
 ) as any as S.Schema<SchemaStandardColumnsList>;
 
 /** Table category. */
-export type SchemaCategoriesList = string[];
+export type SchemaCategoriesList = ReadonlyArray<string>;
 export const SchemaCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SchemaCategoriesList>;
 
 /** Table labels. */
-export type SchemaLabelsList = string[];
+export type SchemaLabelsList = ReadonlyArray<string>;
 export const SchemaLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SchemaLabelsList>;
 
 /** Table's creator. */
-export type SourceEnum = "microsoft" | "customer" | (string & {});
+export type SourceEnum = "microsoft" | "customer";
 export const SourceEnum = /*@__PURE__*/ S.String;
 
 /** Table's creator. */
@@ -5176,20 +5718,15 @@ export type TableTypeEnum =
   | "Microsoft"
   | "CustomLog"
   | "RestoredLogs"
-  | "SearchResults"
-  | (string & {});
+  | "SearchResults";
 export const TableTypeEnum = /*@__PURE__*/ S.String;
 
 /** The subtype describes what APIs can be used to interact with the table, and what features are available against it. */
-export type TableSubTypeEnum =
-  | "Any"
-  | "Classic"
-  | "DataCollectionRuleBased"
-  | (string & {});
+export type TableSubTypeEnum = "Any" | "Classic" | "DataCollectionRuleBased";
 export const TableSubTypeEnum = /*@__PURE__*/ S.String;
 
 /** List of solutions the table is affiliated with */
-export type SchemaSolutionsList = string[];
+export type SchemaSolutionsList = ReadonlyArray<string>;
 export const SchemaSolutionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SchemaSolutionsList>;
@@ -5240,8 +5777,7 @@ export type OperationalInsightsTableProvisioningState =
   | "Updating"
   | "InProgress"
   | "Succeeded"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const OperationalInsightsTableProvisioningState = /*@__PURE__*/ S.String;
 
 /** Table properties. */
@@ -5450,7 +5986,7 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 /** A list of data tables. */
-export type TablesListResultValueList = Table[];
+export type TablesListResultValueList = ReadonlyArray<Table>;
 export const TablesListResultValueList = /*@__PURE__*/ S.Array(
   Table,
 ) as any as S.Schema<TablesListResultValueList>;
@@ -5515,7 +6051,8 @@ export interface TablesUpdateRequest {
   workspaceName: string;
   /** The name of the table. */
   tableName: string;
-  body: unknown;
+  /** Table's properties. */
+  properties?: TablePropertiesInput;
 }
 export const TablesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5523,7 +6060,7 @@ export const TablesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     tableName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(TablePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5626,7 +6163,7 @@ export const UsageMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageMetric" }) as any as S.Schema<UsageMetric>;
 
 /** Gets or sets a list of usage metrics for a workspace. */
-export type WorkspaceListUsagesResultValueList = UsageMetric[];
+export type WorkspaceListUsagesResultValueList = ReadonlyArray<UsageMetric>;
 export const WorkspaceListUsagesResultValueList = /*@__PURE__*/ S.Array(
   UsageMetric,
 ) as any as S.Schema<WorkspaceListUsagesResultValueList>;
@@ -5676,7 +6213,7 @@ export const WorkspacePurgeGetPurgeStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacePurgeGetPurgeStatusRequest>;
 
 /** Status of the operation represented by the requested Id. */
-export type PurgeState = "pending" | "completed" | (string & {});
+export type PurgeState = "pending" | "completed";
 export const PurgeState = /*@__PURE__*/ S.String;
 
 /** Response containing status for a specific purge operation. */
@@ -5692,6 +6229,35 @@ export const WorkspacePurgeStatusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspacePurgeStatusResponse",
 }) as any as S.Schema<WorkspacePurgeStatusResponse>;
 
+/** User-defined filters to return data which will be purged from the table. */
+export interface WorkspacePurgeBodyFilters {
+  /** The column of the table over which the given query should run */
+  column?: string;
+  /** A query operator to evaluate over the provided column and value(s). Supported operators are ==, =~, in, in~, >, >=, <, <=, between, and have the same behavior as they would in a KQL query. */
+  operator?: string;
+  /** the value for the operator to function over. This can be a number (e.g., > 100), a string (timestamp >= '2017-09-01') or array of values. */
+  value?: unknown;
+  /** When filtering over custom dimensions, this key will be used as the name of the custom dimension. */
+  key?: string;
+}
+export const WorkspacePurgeBodyFilters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    column: S.optional(S.String),
+    operator: S.optional(S.String),
+    value: S.optional(S.Unknown),
+    key: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WorkspacePurgeBodyFilters",
+}) as any as S.Schema<WorkspacePurgeBodyFilters>;
+
+/** The set of columns and filters (queries) to run over them to purge the resulting data. */
+export type WorkspacePurgePurgeRequestFiltersList =
+  ReadonlyArray<WorkspacePurgeBodyFilters>;
+export const WorkspacePurgePurgeRequestFiltersList = /*@__PURE__*/ S.Array(
+  WorkspacePurgeBodyFilters,
+) as any as S.Schema<WorkspacePurgePurgeRequestFiltersList>;
+
 export interface WorkspacePurgePurgeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5699,14 +6265,18 @@ export interface WorkspacePurgePurgeRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
-  body: unknown;
+  /** Table from which to purge data. */
+  table: string;
+  /** The set of columns and filters (queries) to run over them to purge the resulting data. */
+  filters: WorkspacePurgePurgeRequestFiltersList;
 }
 export const WorkspacePurgePurgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    table: S.String,
+    filters: WorkspacePurgePurgeRequestFiltersList,
   }).pipe(
     T.Http({
       method: "POST",
@@ -5726,6 +6296,186 @@ export const WorkspacePurgePurgeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspacePurgePurgeResponse",
 }) as any as S.Schema<WorkspacePurgePurgeResponse>;
 
+/** Resource tags. */
+export type WorkspacesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
+
+/** The SKU (tier) of a workspace. */
+export interface WorkspaceSkuInput {
+  /** The name of the SKU. */
+  name: WorkspaceSkuNameEnum;
+  /** The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected. */
+  capacityReservationLevel?: number | null;
+}
+export const WorkspaceSkuInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: WorkspaceSkuNameEnum,
+    capacityReservationLevel: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "WorkspaceSkuInput",
+}) as any as S.Schema<WorkspaceSkuInput>;
+
+/** The daily volume cap for ingestion. */
+export interface WorkspaceCappingInput {
+  /** The workspace daily quota for ingestion. */
+  dailyQuotaGb?: number;
+}
+export const WorkspaceCappingInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dailyQuotaGb: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "WorkspaceCappingInput",
+}) as any as S.Schema<WorkspaceCappingInput>;
+
+/** The network access type for accessing Log Analytics ingestion. */
+export type WorkspacePropertiesInputPublicNetworkAccessForIngestion =
+  | "Enabled"
+  | "Disabled"
+  | "SecuredByPerimeter";
+export const WorkspacePropertiesInputPublicNetworkAccessForIngestion =
+  /*@__PURE__*/ S.String;
+
+/** The network access type for accessing Log Analytics query. */
+export type WorkspacePropertiesInputPublicNetworkAccessForQuery =
+  | "Enabled"
+  | "Disabled"
+  | "SecuredByPerimeter";
+export const WorkspacePropertiesInputPublicNetworkAccessForQuery =
+  /*@__PURE__*/ S.String;
+
+/** Workspace features. */
+export interface WorkspaceFeaturesInput {
+  /** Flag that indicate if data should be exported. */
+  enableDataExport?: boolean | null;
+  /** Flag that describes if we want to remove the data after 30 days. */
+  immediatePurgeDataOn30Days?: boolean | null;
+  /** Flag that indicate which permission to use - resource or workspace or both. */
+  enableLogAccessUsingOnlyResourcePermissions?: boolean | null;
+  /** Dedicated LA cluster resourceId that is linked to the workspaces. */
+  clusterResourceId?: string | null;
+  /** Disable Non-AAD based Auth. */
+  disableLocalAuth?: boolean | null;
+}
+export const WorkspaceFeaturesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enableDataExport: S.optional(S.NullOr(S.Boolean)),
+    immediatePurgeDataOn30Days: S.optional(S.NullOr(S.Boolean)),
+    enableLogAccessUsingOnlyResourcePermissions: S.optional(
+      S.NullOr(S.Boolean),
+    ),
+    clusterResourceId: S.optional(S.NullOr(S.String)),
+    disableLocalAuth: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "WorkspaceFeaturesInput",
+}) as any as S.Schema<WorkspaceFeaturesInput>;
+
+/** Workspace replication properties. */
+export interface WorkspaceReplicationPropertiesInput {
+  /** The location of the replication. */
+  location?: string;
+  /** Specifies whether the replication is enabled or not. When true, workspace configuration and data is replicated to the specified location. If replication is been enabled, location must be provided. */
+  enabled?: boolean;
+}
+export const WorkspaceReplicationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "WorkspaceReplicationPropertiesInput",
+}) as any as S.Schema<WorkspaceReplicationPropertiesInput>;
+
+/** The failover state of the replication. */
+export interface WorkspaceFailoverPropertiesInput {}
+export const WorkspaceFailoverPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "WorkspaceFailoverPropertiesInput",
+}) as any as S.Schema<WorkspaceFailoverPropertiesInput>;
+
+/** Workspace properties. */
+export interface WorkspacePropertiesInput {
+  /** The SKU of the workspace. */
+  sku?: WorkspaceSkuInput;
+  /** The workspace data retention in days. Allowed values are per pricing plan. See pricing tiers documentation for details. */
+  retentionInDays?: number | null;
+  /** The daily volume cap for ingestion. */
+  workspaceCapping?: WorkspaceCappingInput;
+  /** The network access type for accessing Log Analytics ingestion. */
+  publicNetworkAccessForIngestion?: WorkspacePropertiesInputPublicNetworkAccessForIngestion;
+  /** The network access type for accessing Log Analytics query. */
+  publicNetworkAccessForQuery?: WorkspacePropertiesInputPublicNetworkAccessForQuery;
+  /** Indicates whether customer managed storage is mandatory for query management. */
+  forceCmkForQuery?: boolean;
+  /** Workspace features. */
+  features?: WorkspaceFeaturesInput;
+  /** The resource ID of the default Data Collection Rule to use for this workspace. Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}. */
+  defaultDataCollectionRuleResourceId?: string;
+  /** workspace replication properties. */
+  replication?: WorkspaceReplicationPropertiesInput;
+  /** workspace failover properties. */
+  failover?: WorkspaceFailoverPropertiesInput;
+}
+export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sku: S.optional(WorkspaceSkuInput),
+    retentionInDays: S.optional(S.NullOr(S.Number)),
+    workspaceCapping: S.optional(WorkspaceCappingInput),
+    publicNetworkAccessForIngestion: S.optional(
+      WorkspacePropertiesInputPublicNetworkAccessForIngestion,
+    ),
+    publicNetworkAccessForQuery: S.optional(
+      WorkspacePropertiesInputPublicNetworkAccessForQuery,
+    ),
+    forceCmkForQuery: S.optional(S.Boolean),
+    features: S.optional(WorkspaceFeaturesInput),
+    defaultDataCollectionRuleResourceId: S.optional(S.String),
+    replication: S.optional(WorkspaceReplicationPropertiesInput),
+    failover: S.optional(WorkspaceFailoverPropertiesInput),
+  }),
+).annotate({
+  identifier: "WorkspacePropertiesInput",
+}) as any as S.Schema<WorkspacePropertiesInput>;
+
+/** User assigned identity properties. */
+export interface UserIdentityPropertiesInput {}
+export const UserIdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserIdentityPropertiesInput",
+}) as any as S.Schema<UserIdentityPropertiesInput>;
+
+/** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+export type IdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserIdentityPropertiesInput | undefined;
+};
+export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  UserIdentityPropertiesInput,
+) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
+
+/** Identity for the resource. */
+export interface IdentityInput {
+  /** Type of managed service identity. */
+  type: IdentityType;
+  /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
+  userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
+}
+export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: IdentityType,
+    userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
+  }),
+).annotate({ identifier: "IdentityInput" }) as any as S.Schema<IdentityInput>;
+
 export interface WorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5733,14 +6483,27 @@ export interface WorkspacesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: WorkspacesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Workspace properties. */
+  properties?: WorkspacePropertiesInput;
+  /** The identity of the resource. */
+  identity?: IdentityInput;
+  /** The etag of the workspace. */
+  etag?: string;
 }
 export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(WorkspacesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(WorkspacePropertiesInput),
+    identity: S.optional(IdentityInput),
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6006,8 +6769,7 @@ export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Deleting"
   | "Accepted"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const NetworkSecurityPerimeterConfigurationProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -6016,30 +6778,27 @@ export type ProvisioningIssuePropertiesIssueType =
   | "Unknown"
   | "ConfigurationPropagationFailure"
   | "MissingPerimeterConfiguration"
-  | "MissingIdentityConfiguration"
-  | (string & {});
+  | "MissingIdentityConfiguration";
 export const ProvisioningIssuePropertiesIssueType = /*@__PURE__*/ S.String;
 
 /** Severity of the issue. */
-export type ProvisioningIssuePropertiesSeverity =
-  | "Warning"
-  | "Error"
-  | (string & {});
+export type ProvisioningIssuePropertiesSeverity = "Warning" | "Error";
 export const ProvisioningIssuePropertiesSeverity = /*@__PURE__*/ S.String;
 
 /** Fully qualified resource IDs of suggested resources that can be associated to the network security perimeter (NSP) to remediate the issue. */
-export type ProvisioningIssuePropertiesSuggestedResourceIdsList = string[];
+export type ProvisioningIssuePropertiesSuggestedResourceIdsList =
+  ReadonlyArray<string>;
 export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 /** Direction of Access Rule */
-export type AccessRuleDirection = "Inbound" | "Outbound" | (string & {});
+export type AccessRuleDirection = "Inbound" | "Outbound";
 export const AccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes in the CIDR format for inbound rules */
-export type AccessRulePropertiesAddressPrefixesList = string[];
+export type AccessRulePropertiesAddressPrefixesList = ReadonlyArray<string>;
 export const AccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesAddressPrefixesList>;
@@ -6060,7 +6819,7 @@ export const AccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ S.suspend(
 
 /** Subscriptions for inbound rules */
 export type AccessRulePropertiesSubscriptionsList =
-  AccessRulePropertiesSubscriptionsItem[];
+  ReadonlyArray<AccessRulePropertiesSubscriptionsItem>;
 export const AccessRulePropertiesSubscriptionsList = /*@__PURE__*/ S.Array(
   AccessRulePropertiesSubscriptionsItem,
 ) as any as S.Schema<AccessRulePropertiesSubscriptionsList>;
@@ -6086,27 +6845,28 @@ export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
 
 /** Network security perimeters for inbound rules */
 export type AccessRulePropertiesNetworkSecurityPerimetersList =
-  NetworkSecurityPerimeter[];
+  ReadonlyArray<NetworkSecurityPerimeter>;
 export const AccessRulePropertiesNetworkSecurityPerimetersList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeter,
   ) as any as S.Schema<AccessRulePropertiesNetworkSecurityPerimetersList>;
 
 /** Fully qualified domain names (FQDN) for outbound rules */
-export type AccessRulePropertiesFullyQualifiedDomainNamesList = string[];
+export type AccessRulePropertiesFullyQualifiedDomainNamesList =
+  ReadonlyArray<string>;
 export const AccessRulePropertiesFullyQualifiedDomainNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** Email addresses for outbound rules */
-export type AccessRulePropertiesEmailAddressesList = string[];
+export type AccessRulePropertiesEmailAddressesList = ReadonlyArray<string>;
 export const AccessRulePropertiesEmailAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesEmailAddressesList>;
 
 /** Phone numbers for outbound rules */
-export type AccessRulePropertiesPhoneNumbersList = string[];
+export type AccessRulePropertiesPhoneNumbersList = ReadonlyArray<string>;
 export const AccessRulePropertiesPhoneNumbersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesPhoneNumbersList>;
@@ -6159,7 +6919,8 @@ export const AccessRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessRule" }) as any as S.Schema<AccessRule>;
 
 /** Access rules that can be added to the network security profile (NSP) to remediate the issue. */
-export type ProvisioningIssuePropertiesSuggestedAccessRulesList = AccessRule[];
+export type ProvisioningIssuePropertiesSuggestedAccessRulesList =
+  ReadonlyArray<AccessRule>;
 export const ProvisioningIssuePropertiesSuggestedAccessRulesList =
   /*@__PURE__*/ S.Array(
     AccessRule,
@@ -6211,18 +6972,14 @@ export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** List of provisioning issues, if any */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  ProvisioningIssue[];
+  ReadonlyArray<ProvisioningIssue>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     ProvisioningIssue,
   ) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList>;
 
 /** Access mode of the resource association */
-export type ResourceAssociationAccessMode =
-  | "Enforced"
-  | "Learning"
-  | "Audit"
-  | (string & {});
+export type ResourceAssociationAccessMode = "Enforced" | "Learning" | "Audit";
 export const ResourceAssociationAccessMode = /*@__PURE__*/ S.String;
 
 /** Information about resource association */
@@ -6241,13 +6998,14 @@ export const ResourceAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceAssociation>;
 
 /** List of Access Rules */
-export type NetworkSecurityProfileAccessRulesList = AccessRule[];
+export type NetworkSecurityProfileAccessRulesList = ReadonlyArray<AccessRule>;
 export const NetworkSecurityProfileAccessRulesList = /*@__PURE__*/ S.Array(
   AccessRule,
 ) as any as S.Schema<NetworkSecurityProfileAccessRulesList>;
 
 /** List of log categories that are enabled */
-export type NetworkSecurityProfileEnabledLogCategoriesList = string[];
+export type NetworkSecurityProfileEnabledLogCategoriesList =
+  ReadonlyArray<string>;
 export const NetworkSecurityProfileEnabledLogCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6423,7 +7181,7 @@ export const NetworkSecurityPerimeterConfiguration = /*@__PURE__*/ S.suspend(
 
 /** Array of network security perimeter results. */
 export type WorkspacesListNSPResponseValueList =
-  NetworkSecurityPerimeterConfiguration[];
+  ReadonlyArray<NetworkSecurityPerimeterConfiguration>;
 export const WorkspacesListNSPResponseValueList = /*@__PURE__*/ S.Array(
   NetworkSecurityPerimeterConfiguration,
 ) as any as S.Schema<WorkspacesListNSPResponseValueList>;
@@ -6478,6 +7236,15 @@ export const WorkspacesReconcileNSPResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspacesReconcileNSPResponse",
 }) as any as S.Schema<WorkspacesReconcileNSPResponse>;
 
+/** Resource tags. Optional. */
+export type WorkspacesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkspacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkspacesUpdateRequestTagsMap>;
+
 export interface WorkspacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6485,14 +7252,21 @@ export interface WorkspacesUpdateRequest {
   resourceGroupName: string;
   /** The name of the workspace. */
   workspaceName: string;
-  body: unknown;
+  /** Workspace properties. */
+  properties?: WorkspacePropertiesInput;
+  /** The identity of the resource. */
+  identity?: IdentityInput;
+  /** Resource tags. Optional. */
+  tags?: WorkspacesUpdateRequestTagsMap;
 }
 export const WorkspacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(WorkspacePropertiesInput),
+    identity: S.optional(IdentityInput),
+    tags: S.optional(WorkspacesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",

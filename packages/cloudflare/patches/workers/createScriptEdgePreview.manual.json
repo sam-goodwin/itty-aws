@@ -74,6 +74,74 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptEdgePreviewWranglerSessionConfigWorkersDev",
+      "value": {
+        "type": "structure",
+        "members": {
+          "workers_dev": {
+            "target": "smithy.api#Boolean",
+            "traits": {
+              "smithy.api#required": {},
+              "smithy.api#documentation": "Route the preview through workers.dev."
+            }
+          },
+          "minimal_mode": { "target": "smithy.api#Boolean" }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptEdgePreviewWranglerSessionConfigRoutesList",
+      "value": {
+        "type": "list",
+        "member": { "target": "smithy.api#String" }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptEdgePreviewWranglerSessionConfigRoutes",
+      "value": {
+        "type": "structure",
+        "members": {
+          "routes": {
+            "target": "com.cloudflare.workers#CreateScriptEdgePreviewWranglerSessionConfigRoutesList",
+            "traits": {
+              "smithy.api#required": {},
+              "smithy.api#documentation": "Routes to serve the preview on."
+            }
+          },
+          "minimal_mode": { "target": "smithy.api#Boolean" }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptEdgePreviewWranglerSessionConfig",
+      "value": {
+        "type": "union",
+        "members": {
+          "WorkersDev": {
+            "target": "com.cloudflare.workers#CreateScriptEdgePreviewWranglerSessionConfigWorkersDev"
+          },
+          "Routes": {
+            "target": "com.cloudflare.workers#CreateScriptEdgePreviewWranglerSessionConfigRoutes"
+          }
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#CreateScriptEdgePreviewRequest/members/wrangler_session_config",
+      "value": {
+        "target": "com.cloudflare.workers#CreateScriptEdgePreviewWranglerSessionConfig",
+        "traits": {
+          "smithy.api#jsonName": "wrangler-session-config",
+          "smithy.api#documentation": "JSON-encoded multipart part selecting how the preview is routed (workers.dev or explicit routes); without it edge previews cannot opt into workers.dev routing."
+        }
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.workers#CreateScriptEdgePreviewResponse",
       "value": {
         "type": "structure",

@@ -66,7 +66,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -74,8 +74,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type AuthProviderStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const AuthProviderStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing ThreeLeggedOAuth object. */
@@ -418,7 +417,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -427,8 +426,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -445,7 +443,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -464,7 +462,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -560,8 +558,7 @@ export type AccessSummaryAuthProviderTypeEnum =
   | "AUTH_PROVIDER_TYPE_THREE_LEGGED_OAUTH"
   | "AUTH_PROVIDER_TYPE_TWO_LEGGED_OAUTH"
   | "AUTH_PROVIDER_TYPE_API_KEY"
-  | "AUTH_PROVIDER_TYPE_GEMINI_ENTERPRISE"
-  | (string & {});
+  | "AUTH_PROVIDER_TYPE_GEMINI_ENTERPRISE";
 export const AccessSummaryAuthProviderTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message describing AccessSummary object */
@@ -646,8 +643,7 @@ export const GetProjectsLocationsAuthProvidersAuthorizationsRequest =
 export type AuthorizationStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const AuthorizationStateEnum = /*@__PURE__*/ S.String;
 
 /** Message describing Authorization object */
@@ -706,7 +702,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -758,7 +754,7 @@ export const ListProjectsLocationsAccessSummariesRequest =
     identifier: "ListProjectsLocationsAccessSummariesRequest",
   }) as any as S.Schema<ListProjectsLocationsAccessSummariesRequest>;
 
-export type AccessSummaryList = AccessSummary[];
+export type AccessSummaryList = ReadonlyArray<AccessSummary>;
 export const AccessSummaryList = /*@__PURE__*/ S.Array(
   AccessSummary,
 ) as any as S.Schema<AccessSummaryList>;
@@ -816,7 +812,7 @@ export const ListProjectsLocationsAuthProvidersRequest =
     identifier: "ListProjectsLocationsAuthProvidersRequest",
   }) as any as S.Schema<ListProjectsLocationsAuthProvidersRequest>;
 
-export type AuthProviderList = AuthProvider[];
+export type AuthProviderList = ReadonlyArray<AuthProvider>;
 export const AuthProviderList = /*@__PURE__*/ S.Array(
   AuthProvider,
 ) as any as S.Schema<AuthProviderList>;
@@ -871,7 +867,7 @@ export const ListProjectsLocationsAuthProvidersAuthorizationsRequest =
     identifier: "ListProjectsLocationsAuthProvidersAuthorizationsRequest",
   }) as any as S.Schema<ListProjectsLocationsAuthProvidersAuthorizationsRequest>;
 
-export type AuthorizationList = Authorization[];
+export type AuthorizationList = ReadonlyArray<Authorization>;
 export const AuthorizationList = /*@__PURE__*/ S.Array(
   Authorization,
 ) as any as S.Schema<AuthorizationList>;

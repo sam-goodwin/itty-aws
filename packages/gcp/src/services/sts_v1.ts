@@ -108,7 +108,7 @@ export const GoogleIdentityStsV1Jwk = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIdentityStsV1Jwk",
 }) as any as S.Schema<GoogleIdentityStsV1Jwk>;
 
-export type GoogleIdentityStsV1JwkList = GoogleIdentityStsV1Jwk[];
+export type GoogleIdentityStsV1JwkList = ReadonlyArray<GoogleIdentityStsV1Jwk>;
 export const GoogleIdentityStsV1JwkList = /*@__PURE__*/ S.Array(
   GoogleIdentityStsV1Jwk,
 ) as any as S.Schema<GoogleIdentityStsV1JwkList>;
@@ -165,7 +165,7 @@ export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsW
       "GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest",
   }) as any as S.Schema<GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;

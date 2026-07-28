@@ -132,7 +132,7 @@ export const DistributionChannel = /*@__PURE__*/ S.suspend(() =>
   identifier: "DistributionChannel",
 }) as any as S.Schema<DistributionChannel>;
 
-export type DistributionChannelList = DistributionChannel[];
+export type DistributionChannelList = ReadonlyArray<DistributionChannel>;
 export const DistributionChannelList = /*@__PURE__*/ S.Array(
   DistributionChannel,
 ) as any as S.Schema<DistributionChannelList>;
@@ -144,8 +144,7 @@ export type ItemRevisionStatusStateEnum =
   | "PUBLISHED"
   | "PUBLISHED_TO_TESTERS"
   | "REJECTED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const ItemRevisionStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** Details on the status of an item revision. */
@@ -169,8 +168,7 @@ export type FetchItemStatusResponseLastAsyncUploadStateEnum =
   | "SUCCEEDED"
   | "IN_PROGRESS"
   | "FAILED"
-  | "NOT_FOUND"
-  | (string & {});
+  | "NOT_FOUND";
 export const FetchItemStatusResponseLastAsyncUploadStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -213,8 +211,7 @@ export const FetchItemStatusResponse = /*@__PURE__*/ S.suspend(() =>
 export type PublishItemRequestPublishTypeEnum =
   | "PUBLISH_TYPE_UNSPECIFIED"
   | "DEFAULT_PUBLISH"
-  | "STAGED_PUBLISH"
-  | (string & {});
+  | "STAGED_PUBLISH";
 export const PublishItemRequestPublishTypeEnum = /*@__PURE__*/ S.String;
 
 /** Deployment information for a specific release channel. Used in requests to update deployment parameters. */
@@ -228,7 +225,7 @@ export const DeployInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeployInfo" }) as any as S.Schema<DeployInfo>;
 
-export type DeployInfoList = DeployInfo[];
+export type DeployInfoList = ReadonlyArray<DeployInfo>;
 export const DeployInfoList = /*@__PURE__*/ S.Array(
   DeployInfo,
 ) as any as S.Schema<DeployInfoList>;
@@ -290,7 +287,7 @@ export const Warning = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Warning" }) as any as S.Schema<Warning>;
 
-export type WarningList = Warning[];
+export type WarningList = ReadonlyArray<Warning>;
 export const WarningList = /*@__PURE__*/ S.Array(
   Warning,
 ) as any as S.Schema<WarningList>;
@@ -313,8 +310,7 @@ export type PublishItemResponseStateEnum =
   | "PUBLISHED"
   | "PUBLISHED_TO_TESTERS"
   | "REJECTED"
-  | "CANCELLED"
-  | (string & {});
+  | "CANCELLED";
 export const PublishItemResponseStateEnum = /*@__PURE__*/ S.String;
 
 /** Response message for `PublishItem`. */
@@ -416,8 +412,7 @@ export type UploadItemPackageResponseUploadStateEnum =
   | "SUCCEEDED"
   | "IN_PROGRESS"
   | "FAILED"
-  | "NOT_FOUND"
-  | (string & {});
+  | "NOT_FOUND";
 export const UploadItemPackageResponseUploadStateEnum = /*@__PURE__*/ S.String;
 
 /** Response message for `UploadItemPackage`. */

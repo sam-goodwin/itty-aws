@@ -937,26 +937,21 @@ export type CommitName = string;
 export type MergeOptionTypeEnum =
   | "FAST_FORWARD_MERGE"
   | "SQUASH_MERGE"
-  | "THREE_WAY_MERGE"
-  | (string & {});
+  | "THREE_WAY_MERGE";
 export const MergeOptionTypeEnum = /*@__PURE__*/ S.String;
 
 export type MaxResults = number;
 export type Path = string;
 export type FilePaths = string[];
 export const FilePaths = /*@__PURE__*/ S.Array(S.String);
-export type ConflictDetailLevelTypeEnum =
-  | "FILE_LEVEL"
-  | "LINE_LEVEL"
-  | (string & {});
+export type ConflictDetailLevelTypeEnum = "FILE_LEVEL" | "LINE_LEVEL";
 export const ConflictDetailLevelTypeEnum = /*@__PURE__*/ S.String;
 
 export type ConflictResolutionStrategyTypeEnum =
   | "NONE"
   | "ACCEPT_SOURCE"
   | "ACCEPT_DESTINATION"
-  | "AUTOMERGE"
-  | (string & {});
+  | "AUTOMERGE";
 export const ConflictResolutionStrategyTypeEnum = /*@__PURE__*/ S.String;
 
 export type NextToken = string;
@@ -1011,11 +1006,7 @@ export const FileSizes = /*@__PURE__*/ S.suspend(() =>
     base: S.optional(S.Number),
   }),
 ).annotate({ identifier: "FileSizes" }) as any as S.Schema<FileSizes>;
-export type FileModeTypeEnum =
-  | "EXECUTABLE"
-  | "NORMAL"
-  | "SYMLINK"
-  | (string & {});
+export type FileModeTypeEnum = "EXECUTABLE" | "NORMAL" | "SYMLINK";
 export const FileModeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface FileModes {
@@ -1034,8 +1025,7 @@ export type ObjectTypeEnum =
   | "FILE"
   | "DIRECTORY"
   | "GIT_LINK"
-  | "SYMBOLIC_LINK"
-  | (string & {});
+  | "SYMBOLIC_LINK";
 export const ObjectTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ObjectTypes {
@@ -1067,7 +1057,7 @@ export const IsBinaryFile = /*@__PURE__*/ S.suspend(() =>
 export type IsContentConflict = boolean;
 export type IsFileModeConflict = boolean;
 export type IsObjectTypeConflict = boolean;
-export type ChangeTypeEnum = "A" | "M" | "D" | (string & {});
+export type ChangeTypeEnum = "A" | "M" | "D";
 export const ChangeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface MergeOperations {
@@ -1410,8 +1400,7 @@ export type BatchGetRepositoriesErrorCodeEnum =
   | "EncryptionKeyDisabledException"
   | "EncryptionKeyNotFoundException"
   | "EncryptionKeyUnavailableException"
-  | "RepositoryDoesNotExistException"
-  | (string & {});
+  | "RepositoryDoesNotExistException";
 export const BatchGetRepositoriesErrorCodeEnum = /*@__PURE__*/ S.String;
 
 export interface BatchGetRepositoriesError_ {
@@ -1705,7 +1694,7 @@ export const CreatePullRequestInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePullRequestInput",
 }) as any as S.Schema<CreatePullRequestInput>;
 export type PullRequestId = string;
-export type PullRequestStatusEnum = "OPEN" | "CLOSED" | (string & {});
+export type PullRequestStatusEnum = "OPEN" | "CLOSED";
 export const PullRequestStatusEnum = /*@__PURE__*/ S.String;
 
 export type IsMerged = boolean;
@@ -1904,8 +1893,7 @@ export type ReplacementTypeEnum =
   | "KEEP_BASE"
   | "KEEP_SOURCE"
   | "KEEP_DESTINATION"
-  | "USE_NEW_CONTENT"
-  | (string & {});
+  | "USE_NEW_CONTENT";
 export const ReplacementTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ReplaceContentEntry {
@@ -2289,8 +2277,7 @@ export type PullRequestEventType =
   | "PULL_REQUEST_APPROVAL_RULE_UPDATED"
   | "PULL_REQUEST_APPROVAL_RULE_DELETED"
   | "PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN"
-  | "PULL_REQUEST_APPROVAL_STATE_CHANGED"
-  | (string & {});
+  | "PULL_REQUEST_APPROVAL_STATE_CHANGED";
 export const PullRequestEventType = /*@__PURE__*/ S.String;
 
 export interface DescribePullRequestEventsInput {
@@ -2392,7 +2379,7 @@ export const ApprovalRuleEventMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApprovalRuleEventMetadata",
 }) as any as S.Schema<ApprovalRuleEventMetadata>;
-export type ApprovalState = "APPROVE" | "REVOKE" | (string & {});
+export type ApprovalState = "APPROVE" | "REVOKE";
 export const ApprovalState = /*@__PURE__*/ S.String;
 
 export interface ApprovalStateChangedEventMetadata {
@@ -2407,7 +2394,7 @@ export const ApprovalStateChangedEventMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApprovalStateChangedEventMetadata",
 }) as any as S.Schema<ApprovalStateChangedEventMetadata>;
-export type OverrideStatus = "OVERRIDE" | "REVOKE" | (string & {});
+export type OverrideStatus = "OVERRIDE" | "REVOKE";
 export const OverrideStatus = /*@__PURE__*/ S.String;
 
 export interface ApprovalRuleOverriddenEventMetadata {
@@ -2760,7 +2747,7 @@ export const GetCommentsForComparedCommitInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCommentsForComparedCommitInput",
 }) as any as S.Schema<GetCommentsForComparedCommitInput>;
 export type Position = number;
-export type RelativeFileVersionEnum = "BEFORE" | "AFTER" | (string & {});
+export type RelativeFileVersionEnum = "BEFORE" | "AFTER";
 export const RelativeFileVersionEnum = /*@__PURE__*/ S.String;
 
 export interface Location {
@@ -3423,8 +3410,7 @@ export type RepositoryTriggerEventEnum =
   | "all"
   | "updateReference"
   | "createReference"
-  | "deleteReference"
-  | (string & {});
+  | "deleteReference";
 export const RepositoryTriggerEventEnum = /*@__PURE__*/ S.String;
 
 export type RepositoryTriggerEventList = RepositoryTriggerEventEnum[];
@@ -3667,10 +3653,10 @@ export const ListPullRequestsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPullRequestsOutput",
 }) as any as S.Schema<ListPullRequestsOutput>;
-export type SortByEnum = "repositoryName" | "lastModifiedDate" | (string & {});
+export type SortByEnum = "repositoryName" | "lastModifiedDate";
 export const SortByEnum = /*@__PURE__*/ S.String;
 
-export type OrderEnum = "ascending" | "descending" | (string & {});
+export type OrderEnum = "ascending" | "descending";
 export const OrderEnum = /*@__PURE__*/ S.String;
 
 export interface ListRepositoriesInput {

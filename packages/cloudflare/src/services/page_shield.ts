@@ -88,8 +88,7 @@ export class PolicyQuotaExceeded extends T.applyErrorMatchers(
 export type PoliciesCreateRequestAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesCreateRequestAction = /*@__PURE__*/ S.String;
 
 export interface CreatePolicyRequest {
@@ -130,8 +129,7 @@ export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesCreateResponseAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesCreateResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -215,19 +213,21 @@ export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConnectionRequest",
 }) as any as S.Schema<GetConnectionRequest>;
 
-export type ConnectionsGetResponseMaliciousDomainCategoriesList = string[];
+export type ConnectionsGetResponseMaliciousDomainCategoriesList =
+  ReadonlyArray<string>;
 export const ConnectionsGetResponseMaliciousDomainCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectionsGetResponseMaliciousDomainCategoriesList>;
 
-export type ConnectionsGetResponseMaliciousUrlCategoriesList = string[];
+export type ConnectionsGetResponseMaliciousUrlCategoriesList =
+  ReadonlyArray<string>;
 export const ConnectionsGetResponseMaliciousUrlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectionsGetResponseMaliciousUrlCategoriesList>;
 
-export type ConnectionsGetResponsePageUrlsList = string[];
+export type ConnectionsGetResponsePageUrlsList = ReadonlyArray<string>;
 export const ConnectionsGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionsGetResponsePageUrlsList>;
@@ -306,19 +306,15 @@ export const GetCookyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCookyRequest",
 }) as any as S.Schema<GetCookyRequest>;
 
-export type CookiesGetResponseType = "first_party" | "unknown" | (string & {});
+export type CookiesGetResponseType = "first_party" | "unknown";
 export const CookiesGetResponseType = /*@__PURE__*/ S.String;
 
-export type CookiesGetResponsePageUrlsList = string[];
+export type CookiesGetResponsePageUrlsList = ReadonlyArray<string>;
 export const CookiesGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CookiesGetResponsePageUrlsList>;
 
-export type CookiesGetResponseSameSiteAttribute =
-  | "lax"
-  | "strict"
-  | "none"
-  | (string & {});
+export type CookiesGetResponseSameSiteAttribute = "lax" | "strict" | "none";
 export const CookiesGetResponseSameSiteAttribute = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -432,8 +428,7 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesGetResponseAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesGetResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -487,19 +482,21 @@ export const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetScriptRequest",
 }) as any as S.Schema<GetScriptRequest>;
 
-export type ScriptsGetResponseMaliciousDomainCategoriesList = string[];
+export type ScriptsGetResponseMaliciousDomainCategoriesList =
+  ReadonlyArray<string>;
 export const ScriptsGetResponseMaliciousDomainCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsGetResponseMaliciousDomainCategoriesList>;
 
-export type ScriptsGetResponseMaliciousUrlCategoriesList = string[];
+export type ScriptsGetResponseMaliciousUrlCategoriesList =
+  ReadonlyArray<string>;
 export const ScriptsGetResponseMaliciousUrlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsGetResponseMaliciousUrlCategoriesList>;
 
-export type ScriptsGetResponsePageUrlsList = string[];
+export type ScriptsGetResponsePageUrlsList = ReadonlyArray<string>;
 export const ScriptsGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsGetResponsePageUrlsList>;
@@ -537,7 +534,8 @@ export const ScriptsGetResponseVersionsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsGetResponseVersionsItem",
 }) as any as S.Schema<ScriptsGetResponseVersionsItem>;
 
-export type ScriptsGetResponseVersionsList = ScriptsGetResponseVersionsItem[];
+export type ScriptsGetResponseVersionsList =
+  ReadonlyArray<ScriptsGetResponseVersionsItem>;
 export const ScriptsGetResponseVersionsList = /*@__PURE__*/ S.Array(
   ScriptsGetResponseVersionsItem,
 ) as any as S.Schema<ScriptsGetResponseVersionsList>;
@@ -619,16 +617,13 @@ export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetScriptResponse",
 }) as any as S.Schema<GetScriptResponse>;
 
-export type ConnectionsListRequestDirection = "asc" | "desc" | (string & {});
+export type ConnectionsListRequestDirection = "asc" | "desc";
 export const ConnectionsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type ConnectionsListRequestExport = "csv" | (string & {});
+export type ConnectionsListRequestExport = "csv";
 export const ConnectionsListRequestExport = /*@__PURE__*/ S.String;
 
-export type ConnectionsListRequestOrderBy =
-  | "first_seen_at"
-  | "last_seen_at"
-  | (string & {});
+export type ConnectionsListRequestOrderBy = "first_seen_at" | "last_seen_at";
 export const ConnectionsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ListConnectionsRequest {
@@ -691,19 +686,21 @@ export const ListConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectionsRequest",
 }) as any as S.Schema<ListConnectionsRequest>;
 
-export type ConnectionsListResultItemMaliciousDomainCategoriesList = string[];
+export type ConnectionsListResultItemMaliciousDomainCategoriesList =
+  ReadonlyArray<string>;
 export const ConnectionsListResultItemMaliciousDomainCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectionsListResultItemMaliciousDomainCategoriesList>;
 
-export type ConnectionsListResultItemMaliciousUrlCategoriesList = string[];
+export type ConnectionsListResultItemMaliciousUrlCategoriesList =
+  ReadonlyArray<string>;
 export const ConnectionsListResultItemMaliciousUrlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ConnectionsListResultItemMaliciousUrlCategoriesList>;
 
-export type ConnectionsListResultItemPageUrlsList = string[];
+export type ConnectionsListResultItemPageUrlsList = ReadonlyArray<string>;
 export const ConnectionsListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionsListResultItemPageUrlsList>;
@@ -758,7 +755,8 @@ export const ConnectionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionsListResultItem",
 }) as any as S.Schema<ConnectionsListResultItem>;
 
-export type ConnectionsListResultList = ConnectionsListResultItem[];
+export type ConnectionsListResultList =
+  ReadonlyArray<ConnectionsListResultItem>;
 export const ConnectionsListResultList = /*@__PURE__*/ S.Array(
   ConnectionsListResultItem,
 ) as any as S.Schema<ConnectionsListResultList>;
@@ -778,26 +776,19 @@ export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListConnectionsResponse",
 }) as any as S.Schema<ListConnectionsResponse>;
 
-export type CookiesListRequestDirection = "asc" | "desc" | (string & {});
+export type CookiesListRequestDirection = "asc" | "desc";
 export const CookiesListRequestDirection = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestExport = "csv" | (string & {});
+export type CookiesListRequestExport = "csv";
 export const CookiesListRequestExport = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestOrderBy =
-  | "first_seen_at"
-  | "last_seen_at"
-  | (string & {});
+export type CookiesListRequestOrderBy = "first_seen_at" | "last_seen_at";
 export const CookiesListRequestOrderBy = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestSameSite =
-  | "lax"
-  | "strict"
-  | "none"
-  | (string & {});
+export type CookiesListRequestSameSite = "lax" | "strict" | "none";
 export const CookiesListRequestSameSite = /*@__PURE__*/ S.String;
 
-export type CookiesListRequestType = "first_party" | "unknown" | (string & {});
+export type CookiesListRequestType = "first_party" | "unknown";
 export const CookiesListRequestType = /*@__PURE__*/ S.String;
 
 export interface ListCookiesRequest {
@@ -862,22 +853,15 @@ export const ListCookiesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCookiesRequest",
 }) as any as S.Schema<ListCookiesRequest>;
 
-export type CookiesListResultItemType =
-  | "first_party"
-  | "unknown"
-  | (string & {});
+export type CookiesListResultItemType = "first_party" | "unknown";
 export const CookiesListResultItemType = /*@__PURE__*/ S.String;
 
-export type CookiesListResultItemPageUrlsList = string[];
+export type CookiesListResultItemPageUrlsList = ReadonlyArray<string>;
 export const CookiesListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CookiesListResultItemPageUrlsList>;
 
-export type CookiesListResultItemSameSiteAttribute =
-  | "lax"
-  | "strict"
-  | "none"
-  | (string & {});
+export type CookiesListResultItemSameSiteAttribute = "lax" | "strict" | "none";
 export const CookiesListResultItemSameSiteAttribute = /*@__PURE__*/ S.String;
 
 export interface CookiesListResultItem {
@@ -926,7 +910,7 @@ export const CookiesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CookiesListResultItem",
 }) as any as S.Schema<CookiesListResultItem>;
 
-export type CookiesListResultList = CookiesListResultItem[];
+export type CookiesListResultList = ReadonlyArray<CookiesListResultItem>;
 export const CookiesListResultList = /*@__PURE__*/ S.Array(
   CookiesListResultItem,
 ) as any as S.Schema<CookiesListResultList>;
@@ -969,8 +953,7 @@ export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesListResultItemAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesListResultItemAction = /*@__PURE__*/ S.String;
 
 export interface PoliciesListResultItem {
@@ -1000,7 +983,7 @@ export const PoliciesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesListResultItem",
 }) as any as S.Schema<PoliciesListResultItem>;
 
-export type PoliciesListResultList = PoliciesListResultItem[];
+export type PoliciesListResultList = ReadonlyArray<PoliciesListResultItem>;
 export const PoliciesListResultList = /*@__PURE__*/ S.Array(
   PoliciesListResultItem,
 ) as any as S.Schema<PoliciesListResultList>;
@@ -1020,16 +1003,13 @@ export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPoliciesResponse",
 }) as any as S.Schema<ListPoliciesResponse>;
 
-export type ScriptsListRequestDirection = "asc" | "desc" | (string & {});
+export type ScriptsListRequestDirection = "asc" | "desc";
 export const ScriptsListRequestDirection = /*@__PURE__*/ S.String;
 
-export type ScriptsListRequestExport = "csv" | (string & {});
+export type ScriptsListRequestExport = "csv";
 export const ScriptsListRequestExport = /*@__PURE__*/ S.String;
 
-export type ScriptsListRequestOrderBy =
-  | "first_seen_at"
-  | "last_seen_at"
-  | (string & {});
+export type ScriptsListRequestOrderBy = "first_seen_at" | "last_seen_at";
 export const ScriptsListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export interface ListScriptsRequest {
@@ -1095,19 +1075,21 @@ export const ListScriptsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListScriptsRequest",
 }) as any as S.Schema<ListScriptsRequest>;
 
-export type ScriptsListResultItemMaliciousDomainCategoriesList = string[];
+export type ScriptsListResultItemMaliciousDomainCategoriesList =
+  ReadonlyArray<string>;
 export const ScriptsListResultItemMaliciousDomainCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsListResultItemMaliciousDomainCategoriesList>;
 
-export type ScriptsListResultItemMaliciousUrlCategoriesList = string[];
+export type ScriptsListResultItemMaliciousUrlCategoriesList =
+  ReadonlyArray<string>;
 export const ScriptsListResultItemMaliciousUrlCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsListResultItemMaliciousUrlCategoriesList>;
 
-export type ScriptsListResultItemPageUrlsList = string[];
+export type ScriptsListResultItemPageUrlsList = ReadonlyArray<string>;
 export const ScriptsListResultItemPageUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScriptsListResultItemPageUrlsList>;
@@ -1186,7 +1168,7 @@ export const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsListResultItem",
 }) as any as S.Schema<ScriptsListResultItem>;
 
-export type ScriptsListResultList = ScriptsListResultItem[];
+export type ScriptsListResultList = ReadonlyArray<ScriptsListResultItem>;
 export const ScriptsListResultList = /*@__PURE__*/ S.Array(
   ScriptsListResultItem,
 ) as any as S.Schema<ScriptsListResultList>;
@@ -1262,8 +1244,7 @@ export const PutPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesUpdateRequestAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesUpdateRequestAction = /*@__PURE__*/ S.String;
 
 export interface UpdatePolicyRequest {
@@ -1307,8 +1288,7 @@ export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoliciesUpdateResponseAction =
   | "allow"
   | "log"
-  | "add_reporting_directives"
-  | (string & {});
+  | "add_reporting_directives";
 export const PoliciesUpdateResponseAction = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */

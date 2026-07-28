@@ -12,6 +12,31 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Properties that contain a graph query. */
+export interface GraphQueryPropertiesInput {
+  /** The description of a graph query. */
+  description?: string;
+  /** KQL query that will be graph. */
+  query: string;
+}
+export const GraphQueryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    query: S.String,
+  }),
+).annotate({
+  identifier: "GraphQueryPropertiesInput",
+}) as any as S.Schema<GraphQueryPropertiesInput>;
+
+/** Resource tags. */
+export type GraphQueryCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const GraphQueryCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<GraphQueryCreateOrUpdateRequestTagsMap>;
+
 export interface GraphQueryCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19,14 +44,24 @@ export interface GraphQueryCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Graph Query resource. */
   resourceName: string;
-  body: unknown;
+  /** Metadata describing a graph query for an Azure resource. */
+  properties?: GraphQueryPropertiesInput;
+  /** Resource tags. */
+  tags?: GraphQueryCreateOrUpdateRequestTagsMap;
+  /** The location of the resource */
+  location?: string;
+  /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
+  etag?: string;
 }
 export const GraphQueryCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(GraphQueryPropertiesInput),
+    tags: S.optional(GraphQueryCreateOrUpdateRequestTagsMap),
+    location: S.optional(S.String),
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -44,8 +79,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -53,8 +87,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -84,7 +117,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Enum indicating a type of graph query. */
-export type ResultKind = "basic" | (string & {});
+export type ResultKind = "basic";
 export const ResultKind = /*@__PURE__*/ S.String;
 
 /** Properties that contain a graph query. */
@@ -314,7 +347,7 @@ export const GraphQueryResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GraphQueryResource>;
 
 /** The GraphQueryResource items on this page */
-export type GraphQueryListResultValueList = GraphQueryResource[];
+export type GraphQueryListResultValueList = ReadonlyArray<GraphQueryResource>;
 export const GraphQueryListResultValueList = /*@__PURE__*/ S.Array(
   GraphQueryResource,
 ) as any as S.Schema<GraphQueryListResultValueList>;
@@ -354,6 +387,32 @@ export const GraphQueryListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GraphQueryListBySubscriptionRequest",
 }) as any as S.Schema<GraphQueryListBySubscriptionRequest>;
 
+/** Resource tags */
+export type GraphQueryUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const GraphQueryUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<GraphQueryUpdateRequestTagsMap>;
+
+/** Properties that contain a workbook for PATCH operation. */
+export interface GraphQueryPropertiesUpdateParameters {
+  /** The description of a graph query. */
+  description?: string;
+  /** KQL query that will be graph. */
+  query?: string;
+}
+export const GraphQueryPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      description: S.optional(S.String),
+      query: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GraphQueryPropertiesUpdateParameters",
+}) as any as S.Schema<GraphQueryPropertiesUpdateParameters>;
+
 export interface GraphQueryUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -361,14 +420,21 @@ export interface GraphQueryUpdateRequest {
   resourceGroupName: string;
   /** The name of the Graph Query resource. */
   resourceName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: GraphQueryUpdateRequestTagsMap;
+  /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
+  etag?: string;
+  /** Metadata describing a graph query for an Azure resource. */
+  properties?: GraphQueryPropertiesUpdateParameters;
 }
 export const GraphQueryUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(GraphQueryUpdateRequestTagsMap),
+    etag: S.optional(S.String),
+    properties: S.optional(GraphQueryPropertiesUpdateParameters),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -477,7 +543,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -498,12 +564,126 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
+/** Azure subscriptions against which to execute the query. */
+export type ResourcesRequestSubscriptionsList = ReadonlyArray<string>;
+export const ResourcesRequestSubscriptionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourcesRequestSubscriptionsList>;
+
+/** Azure management groups against which to execute the query. Example: [ 'mg1', 'mg2' ] */
+export type ResourcesRequestManagementGroupsList = ReadonlyArray<string>;
+export const ResourcesRequestManagementGroupsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourcesRequestManagementGroupsList>;
+
+/** Defines in which format query result returned. */
+export type QueryRequestOptionsResultFormat = "table" | "objectArray";
+export const QueryRequestOptionsResultFormat = /*@__PURE__*/ S.String;
+
+/** Defines what level of authorization resources should be returned based on the which subscriptions and management groups are passed as scopes. */
+export type QueryRequestOptionsAuthorizationScopeFilter =
+  | "AtScopeAndBelow"
+  | "AtScopeAndAbove"
+  | "AtScopeExact"
+  | "AtScopeAboveAndBelow";
+export const QueryRequestOptionsAuthorizationScopeFilter =
+  /*@__PURE__*/ S.String;
+
+/** The options for query evaluation */
+export interface QueryRequestOptions {
+  /** Continuation token for pagination, capturing the next page size and offset, as well as the context of the query. */
+  _skipToken?: string;
+  /** The maximum number of rows that the query should return. Overrides the page size when ```$skipToken``` property is present. */
+  _top?: number;
+  /** The number of rows to skip from the beginning of the results. Overrides the next page offset when ```$skipToken``` property is present. */
+  _skip?: number;
+  /** Defines in which format query result returned. */
+  resultFormat?: QueryRequestOptionsResultFormat;
+  /** Only applicable for tenant and management group level queries to decide whether to allow partial scopes for result in case the number of subscriptions exceed allowed limits. */
+  allowPartialScopes?: boolean;
+  /** Defines what level of authorization resources should be returned based on the which subscriptions and management groups are passed as scopes. */
+  authorizationScopeFilter?: QueryRequestOptionsAuthorizationScopeFilter;
+}
+export const QueryRequestOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    _skipToken: S.optional(S.String.pipe(T.Body("$skipToken"))),
+    _top: S.optional(S.Number.pipe(T.Body("$top"))),
+    _skip: S.optional(S.Number.pipe(T.Body("$skip"))),
+    resultFormat: S.optional(QueryRequestOptionsResultFormat),
+    allowPartialScopes: S.optional(S.Boolean),
+    authorizationScopeFilter: S.optional(
+      QueryRequestOptionsAuthorizationScopeFilter,
+    ),
+  }),
+).annotate({
+  identifier: "QueryRequestOptions",
+}) as any as S.Schema<QueryRequestOptions>;
+
+/** The sorting order by the selected column (count by default). */
+export type FacetRequestOptionsSortOrder = "asc" | "desc";
+export const FacetRequestOptionsSortOrder = /*@__PURE__*/ S.String;
+
+/** The options for facet evaluation */
+export interface FacetRequestOptions {
+  /** The column name or query expression to sort on. Defaults to count if not present. */
+  sortBy?: string;
+  /** The sorting order by the selected column (count by default). */
+  sortOrder?: FacetRequestOptionsSortOrder;
+  /** Specifies the filter condition for the 'where' clause which will be run on main query's result, just before the actual faceting. */
+  filter?: string;
+  /** The maximum number of facet rows that should be returned. */
+  _top?: number;
+}
+export const FacetRequestOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sortBy: S.optional(S.String),
+    sortOrder: S.optional(FacetRequestOptionsSortOrder),
+    filter: S.optional(S.String),
+    _top: S.optional(S.Number.pipe(T.Body("$top"))),
+  }),
+).annotate({
+  identifier: "FacetRequestOptions",
+}) as any as S.Schema<FacetRequestOptions>;
+
+/** A request to compute additional statistics (facets) over the query results. */
+export interface FacetRequest {
+  /** The column or list of columns to summarize by */
+  expression: string;
+  /** The options for facet evaluation */
+  options?: FacetRequestOptions;
+}
+export const FacetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expression: S.String,
+    options: S.optional(FacetRequestOptions),
+  }),
+).annotate({ identifier: "FacetRequest" }) as any as S.Schema<FacetRequest>;
+
+/** An array of facet requests to be computed against the query result. */
+export type ResourcesRequestFacetsList = ReadonlyArray<FacetRequest>;
+export const ResourcesRequestFacetsList = /*@__PURE__*/ S.Array(
+  FacetRequest,
+) as any as S.Schema<ResourcesRequestFacetsList>;
+
 export interface ResourcesRequest {
-  body: unknown;
+  /** Azure subscriptions against which to execute the query. */
+  subscriptions?: ResourcesRequestSubscriptionsList;
+  /** Azure management groups against which to execute the query. Example: [ 'mg1', 'mg2' ] */
+  managementGroups?: ResourcesRequestManagementGroupsList;
+  /** The resources query. */
+  query: string;
+  /** The query evaluation options */
+  options?: QueryRequestOptions;
+  /** An array of facet requests to be computed against the query result. */
+  facets?: ResourcesRequestFacetsList;
 }
 export const ResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    subscriptions: S.optional(ResourcesRequestSubscriptionsList),
+    managementGroups: S.optional(ResourcesRequestManagementGroupsList),
+    query: S.String,
+    options: S.optional(QueryRequestOptions),
+    facets: S.optional(ResourcesRequestFacetsList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -517,7 +697,7 @@ export const ResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourcesRequest>;
 
 /** Indicates whether the query results are truncated. */
-export type ResultTruncated = "true" | "false" | (string & {});
+export type ResultTruncated = "true" | "false";
 export const ResultTruncated = /*@__PURE__*/ S.String;
 
 /** A facet containing additional statistics on the response of a query. Can be either FacetResult or FacetError. */
@@ -535,7 +715,7 @@ export const Facet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Facet" }) as any as S.Schema<Facet>;
 
 /** Query facets. */
-export type QueryResponseFacetsList = Facet[];
+export type QueryResponseFacetsList = ReadonlyArray<Facet>;
 export const QueryResponseFacetsList = /*@__PURE__*/ S.Array(
   Facet,
 ) as any as S.Schema<QueryResponseFacetsList>;

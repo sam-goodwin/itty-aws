@@ -142,7 +142,7 @@ export const CreateProjectsBrandsIdentityAwareProxyClientsRequest =
     identifier: "CreateProjectsBrandsIdentityAwareProxyClientsRequest",
   }) as any as S.Schema<CreateProjectsBrandsIdentityAwareProxyClientsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -319,7 +319,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -541,12 +541,11 @@ export const OAuthSettings = /*@__PURE__*/ S.suspend(() =>
 
 export type AccessSettingsIdentitySourcesItemEnum =
   | "IDENTITY_SOURCE_UNSPECIFIED"
-  | "WORKFORCE_IDENTITY_FEDERATION"
-  | (string & {});
+  | "WORKFORCE_IDENTITY_FEDERATION";
 export const AccessSettingsIdentitySourcesItemEnum = /*@__PURE__*/ S.String;
 
 export type AccessSettingsIdentitySourcesItemEnumList =
-  AccessSettingsIdentitySourcesItemEnum[];
+  ReadonlyArray<AccessSettingsIdentitySourcesItemEnum>;
 export const AccessSettingsIdentitySourcesItemEnumList = /*@__PURE__*/ S.Array(
   AccessSettingsIdentitySourcesItemEnum,
 ) as any as S.Schema<AccessSettingsIdentitySourcesItemEnumList>;
@@ -605,15 +604,13 @@ export type ReauthSettingsMethodEnum =
   | "LOGIN"
   | "PASSWORD"
   | "SECURE_KEY"
-  | "ENROLLED_SECOND_FACTORS"
-  | (string & {});
+  | "ENROLLED_SECOND_FACTORS";
 export const ReauthSettingsMethodEnum = /*@__PURE__*/ S.String;
 
 export type ReauthSettingsPolicyTypeEnum =
   | "POLICY_TYPE_UNSPECIFIED"
   | "MINIMUM"
-  | "DEFAULT"
-  | (string & {});
+  | "DEFAULT";
 export const ReauthSettingsPolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for IAP reauthentication policies. */
@@ -669,13 +666,12 @@ export type AttributePropagationSettingsOutputCredentialsItemEnum =
   | "OUTPUT_CREDENTIALS_UNSPECIFIED"
   | "HEADER"
   | "JWT"
-  | "RCTOKEN"
-  | (string & {});
+  | "RCTOKEN";
 export const AttributePropagationSettingsOutputCredentialsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type AttributePropagationSettingsOutputCredentialsItemEnumList =
-  AttributePropagationSettingsOutputCredentialsItemEnum[];
+  ReadonlyArray<AttributePropagationSettingsOutputCredentialsItemEnum>;
 export const AttributePropagationSettingsOutputCredentialsItemEnumList =
   /*@__PURE__*/ S.Array(
     AttributePropagationSettingsOutputCredentialsItemEnum,
@@ -845,7 +841,7 @@ export const ListProjectsBrandsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsBrandsRequest",
 }) as any as S.Schema<ListProjectsBrandsRequest>;
 
-export type BrandList = Brand[];
+export type BrandList = ReadonlyArray<Brand>;
 export const BrandList = /*@__PURE__*/ S.Array(
   Brand,
 ) as any as S.Schema<BrandList>;
@@ -888,7 +884,8 @@ export const ListProjectsBrandsIdentityAwareProxyClientsRequest =
     identifier: "ListProjectsBrandsIdentityAwareProxyClientsRequest",
   }) as any as S.Schema<ListProjectsBrandsIdentityAwareProxyClientsRequest>;
 
-export type IdentityAwareProxyClientList = IdentityAwareProxyClient[];
+export type IdentityAwareProxyClientList =
+  ReadonlyArray<IdentityAwareProxyClient>;
 export const IdentityAwareProxyClientList = /*@__PURE__*/ S.Array(
   IdentityAwareProxyClient,
 ) as any as S.Schema<IdentityAwareProxyClientList>;
@@ -935,7 +932,7 @@ export const ListProjectsIap_tunnelLocationsDestGroupsRequest =
     identifier: "ListProjectsIap_tunnelLocationsDestGroupsRequest",
   }) as any as S.Schema<ListProjectsIap_tunnelLocationsDestGroupsRequest>;
 
-export type TunnelDestGroupList = TunnelDestGroup[];
+export type TunnelDestGroupList = ReadonlyArray<TunnelDestGroup>;
 export const TunnelDestGroupList = /*@__PURE__*/ S.Array(
   TunnelDestGroup,
 ) as any as S.Schema<TunnelDestGroupList>;

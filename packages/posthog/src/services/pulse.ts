@@ -20,13 +20,13 @@ export class Conflict extends T.applyErrorMatchers(
 ) {}
 
 /** IDs of the dashboards this brief is anchored on. */
-export type BriefAnchorsDashboardsList = number[];
+export type BriefAnchorsDashboardsList = ReadonlyArray<number>;
 export const BriefAnchorsDashboardsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<BriefAnchorsDashboardsList>;
 
 /** Short IDs of the insights this brief is anchored on. */
-export type BriefAnchorsInsightsList = string[];
+export type BriefAnchorsInsightsList = ReadonlyArray<string>;
 export const BriefAnchorsInsightsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BriefAnchorsInsightsList>;
@@ -72,6 +72,42 @@ export const BriefSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BriefSettings" }) as any as S.Schema<BriefSettings>;
 
+export interface PulseBriefConfigsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Human-readable name for this brief focus. */
+  name: string;
+  /** Free-text focus steering gathering and tone, e.g. "we're the feature flags team". Max 2000 characters. */
+  focus_prompt?: string;
+  /** Anchor resources the brief gathers movements from. Empty anchors fall back to the team's most recently accessed dashboards. */
+  anchors?: BriefAnchors;
+  /** Per-config tunables overriding the system defaults. Omitted knobs keep their default. */
+  settings?: BriefSettings;
+  /** Whether this config generates briefs. */
+  enabled?: boolean;
+  /** Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false. */
+  deleted?: boolean;
+}
+export const PulseBriefConfigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.String,
+    focus_prompt: S.optional(S.String),
+    anchors: S.optional(BriefAnchors),
+    settings: S.optional(BriefSettings),
+    enabled: S.optional(S.Boolean),
+    deleted: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/pulse/brief_configs/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PulseBriefConfigsCreateRequest",
+}) as any as S.Schema<PulseBriefConfigsCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -87,11 +123,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -122,51 +157,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-export interface PulseBriefConfigsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-  /** Human-readable name for this brief focus. */
-  name: string;
-  /** Free-text focus steering gathering and tone, e.g. "we're the feature flags team". Max 2000 characters. */
-  focus_prompt?: string;
-  /** Anchor resources the brief gathers movements from. Empty anchors fall back to the team's most recently accessed dashboards. */
-  anchors?: BriefAnchors;
-  /** Per-config tunables overriding the system defaults. Omitted knobs keep their default. */
-  settings?: BriefSettings;
-  /** Whether this config generates briefs. */
-  enabled?: boolean;
-  /** Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false. */
-  deleted?: boolean;
-  created_at: string;
-  /** User who created the config. */
-  created_by: UserBasic | null;
-  updated_at: string | null;
-}
-export const PulseBriefConfigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String,
-    name: S.String,
-    focus_prompt: S.optional(S.String),
-    anchors: S.optional(BriefAnchors),
-    settings: S.optional(BriefSettings),
-    enabled: S.optional(S.Boolean),
-    deleted: S.optional(S.Boolean),
-    created_at: S.String,
-    created_by: S.NullOr(UserBasic),
-    updated_at: S.NullOr(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/pulse/brief_configs/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PulseBriefConfigsCreateRequest",
-}) as any as S.Schema<PulseBriefConfigsCreateRequest>;
 
 export interface BriefConfig {
   id: string;
@@ -254,7 +244,7 @@ export const PulseBriefConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PulseBriefConfigsListRequest",
 }) as any as S.Schema<PulseBriefConfigsListRequest>;
 
-export type PaginatedBriefConfigListResultsList = BriefConfig[];
+export type PaginatedBriefConfigListResultsList = ReadonlyArray<BriefConfig>;
 export const PaginatedBriefConfigListResultsList = /*@__PURE__*/ S.Array(
   BriefConfig,
 ) as any as S.Schema<PaginatedBriefConfigListResultsList>;
@@ -293,10 +283,6 @@ export interface PulseBriefConfigsPartialUpdateRequest {
   enabled?: boolean;
   /** Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false. */
   deleted?: boolean;
-  created_at?: string;
-  /** User who created the config. */
-  created_by?: UserBasic | null;
-  updated_at?: string | null;
 }
 export const PulseBriefConfigsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -309,9 +295,6 @@ export const PulseBriefConfigsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       settings: S.optional(BriefSettings),
       enabled: S.optional(S.Boolean),
       deleted: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
-      created_by: S.optional(S.NullOr(UserBasic)),
-      updated_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -361,10 +344,6 @@ export interface PulseBriefConfigsUpdateRequest {
   enabled?: boolean;
   /** Soft-delete flag. Deleted configs are hidden from lists but recoverable by patching this back to false. */
   deleted?: boolean;
-  created_at: string;
-  /** User who created the config. */
-  created_by: UserBasic | null;
-  updated_at: string | null;
 }
 export const PulseBriefConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -376,9 +355,6 @@ export const PulseBriefConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     settings: S.optional(BriefSettings),
     enabled: S.optional(S.Boolean),
     deleted: S.optional(S.Boolean),
-    created_at: S.String,
-    created_by: S.NullOr(UserBasic),
-    updated_at: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -391,7 +367,7 @@ export const PulseBriefConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PulseBriefConfigsUpdateRequest>;
 
 /** * `last_n_days` - last_n_days * `since_last_run` - since_last_run */
-export type PeriodTypeEnum = "last_n_days" | "since_last_run" | (string & {});
+export type PeriodTypeEnum = "last_n_days" | "since_last_run";
 export const PeriodTypeEnum = /*@__PURE__*/ S.String;
 
 export interface Period {
@@ -436,12 +412,11 @@ export type ProductBriefStatusEnum =
   | "generating"
   | "ready"
   | "quiet"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const ProductBriefStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `on_demand` - On Demand * `scheduled` - Scheduled */
-export type ProductBriefTriggerEnum = "on_demand" | "scheduled" | (string & {});
+export type ProductBriefTriggerEnum = "on_demand" | "scheduled";
 export const ProductBriefTriggerEnum = /*@__PURE__*/ S.String;
 
 export interface BriefSectionCitation {
@@ -466,7 +441,7 @@ export const BriefSectionCitation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BriefSectionCitation>;
 
 /** PostHog resources this section cites as evidence. */
-export type BriefSectionCitationsList = BriefSectionCitation[];
+export type BriefSectionCitationsList = ReadonlyArray<BriefSectionCitation>;
 export const BriefSectionCitationsList = /*@__PURE__*/ S.Array(
   BriefSectionCitation,
 ) as any as S.Schema<BriefSectionCitationsList>;
@@ -494,13 +469,13 @@ export const BriefSection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BriefSection" }) as any as S.Schema<BriefSection>;
 
 /** Generated brief sections, most important first. */
-export type ProductBriefSectionsList = BriefSection[];
+export type ProductBriefSectionsList = ReadonlyArray<BriefSection>;
 export const ProductBriefSectionsList = /*@__PURE__*/ S.Array(
   BriefSection,
 ) as any as S.Schema<ProductBriefSectionsList>;
 
 /** Names of the brief sources that contributed items. */
-export type ProductBriefSourcesUsedList = string[];
+export type ProductBriefSourcesUsedList = ReadonlyArray<string>;
 export const ProductBriefSourcesUsedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductBriefSourcesUsedList>;
@@ -567,7 +542,7 @@ export const PulseBriefsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PulseBriefsListRequest>;
 
 /** Names of the brief sources that contributed items. */
-export type ProductBriefListSourcesUsedList = string[];
+export type ProductBriefListSourcesUsedList = ReadonlyArray<string>;
 export const ProductBriefListSourcesUsedList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProductBriefListSourcesUsedList>;
@@ -608,7 +583,8 @@ export const ProductBriefList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductBriefList",
 }) as any as S.Schema<ProductBriefList>;
 
-export type PaginatedProductBriefListListResultsList = ProductBriefList[];
+export type PaginatedProductBriefListListResultsList =
+  ReadonlyArray<ProductBriefList>;
 export const PaginatedProductBriefListListResultsList = /*@__PURE__*/ S.Array(
   ProductBriefList,
 ) as any as S.Schema<PaginatedProductBriefListListResultsList>;

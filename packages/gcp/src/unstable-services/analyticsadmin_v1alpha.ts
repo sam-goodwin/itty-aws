@@ -294,7 +294,7 @@ export const ArchivePropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ArchivePropertiesCustomMetricsRequest",
 }) as any as S.Schema<ArchivePropertiesCustomMetricsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -337,7 +337,7 @@ export const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest>;
 
 export type GoogleAnalyticsAdminV1alphaCreateAccessBindingRequestList =
-  GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest>;
 export const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest,
@@ -386,7 +386,7 @@ export const BatchCreateAccountsAccessBindingsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BatchCreateAccountsAccessBindingsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaAccessBindingList =
-  GoogleAnalyticsAdminV1alphaAccessBinding[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessBinding>;
 export const GoogleAnalyticsAdminV1alphaAccessBindingList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessBinding,
@@ -447,7 +447,7 @@ export const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest>;
 
 export type GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequestList =
-  GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest>;
 export const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest,
@@ -594,7 +594,7 @@ export const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest>;
 
 export type GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequestList =
-  GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest>;
 export const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest,
@@ -719,8 +719,7 @@ export const CancelPropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
 export type GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalInitiatingProductEnum =
     | "LINK_PROPOSAL_INITIATING_PRODUCT_UNSPECIFIED"
     | "GOOGLE_ANALYTICS"
-    | "LINKED_PRODUCT"
-    | (string & {});
+    | "LINKED_PRODUCT";
 export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalInitiatingProductEnum =
   /*@__PURE__*/ S.String;
 
@@ -731,8 +730,7 @@ export type GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalStat
     | "WITHDRAWN"
     | "DECLINED"
     | "EXPIRED"
-    | "OBSOLETE"
-    | (string & {});
+    | "OBSOLETE";
 export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetailsLinkProposalStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -825,8 +823,7 @@ export type GoogleAnalyticsAdminV1alphaPropertyPropertyTypeEnum =
   | "PROPERTY_TYPE_UNSPECIFIED"
   | "PROPERTY_TYPE_ORDINARY"
   | "PROPERTY_TYPE_SUBPROPERTY"
-  | "PROPERTY_TYPE_ROLLUP"
-  | (string & {});
+  | "PROPERTY_TYPE_ROLLUP";
 export const GoogleAnalyticsAdminV1alphaPropertyPropertyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -857,16 +854,14 @@ export type GoogleAnalyticsAdminV1alphaPropertyIndustryCategoryEnum =
   | "SCIENCE"
   | "SPORTS"
   | "JOBS_AND_EDUCATION"
-  | "SHOPPING"
-  | (string & {});
+  | "SHOPPING";
 export const GoogleAnalyticsAdminV1alphaPropertyIndustryCategoryEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaPropertyServiceLevelEnum =
   | "SERVICE_LEVEL_UNSPECIFIED"
   | "GOOGLE_ANALYTICS_STANDARD"
-  | "GOOGLE_ANALYTICS_360"
-  | (string & {});
+  | "GOOGLE_ANALYTICS_360";
 export const GoogleAnalyticsAdminV1alphaPropertyServiceLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1008,8 +1003,7 @@ export const CreatePropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAnalyticsAdminV1alphaAudienceEventTriggerLogConditionEnum =
   | "LOG_CONDITION_UNSPECIFIED"
   | "AUDIENCE_JOINED"
-  | "AUDIENCE_MEMBERSHIP_RENEWED"
-  | (string & {});
+  | "AUDIENCE_MEMBERSHIP_RENEWED";
 export const GoogleAnalyticsAdminV1alphaAudienceEventTriggerLogConditionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1035,8 +1029,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceEventTrigger =
 export type GoogleAnalyticsAdminV1alphaAudienceExclusionDurationModeEnum =
   | "AUDIENCE_EXCLUSION_DURATION_MODE_UNSPECIFIED"
   | "EXCLUDE_TEMPORARILY"
-  | "EXCLUDE_PERMANENTLY"
-  | (string & {});
+  | "EXCLUDE_PERMANENTLY";
 export const GoogleAnalyticsAdminV1alphaAudienceExclusionDurationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1044,8 +1037,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceSequenceFilterScopeEnum =
   | "AUDIENCE_FILTER_SCOPE_UNSPECIFIED"
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_EVENT"
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_SESSION"
-  | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS"
-  | (string & {});
+  | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS";
 export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1069,11 +1061,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceEventFilter =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceEventFilter>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilterOperationEnum =
-    | "OPERATION_UNSPECIFIED"
-    | "EQUAL"
-    | "LESS_THAN"
-    | "GREATER_THAN"
-    | (string & {});
+  "OPERATION_UNSPECIFIED" | "EQUAL" | "LESS_THAN" | "GREATER_THAN";
 export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilterOperationEnum =
   /*@__PURE__*/ S.String;
 
@@ -1123,8 +1111,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilt
     | "BEGINS_WITH"
     | "ENDS_WITH"
     | "CONTAINS"
-    | "FULL_REGEXP"
-    | (string & {});
+    | "FULL_REGEXP";
 export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilterMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1232,7 +1219,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList_ =
-  GoogleAnalyticsAdminV1alphaAudienceFilterExpression[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAudienceFilterExpression>;
 export const GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList_ =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GoogleAnalyticsAdminV1alphaAudienceFilterExpression),
@@ -1292,8 +1279,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceSte
     | "AUDIENCE_FILTER_SCOPE_UNSPECIFIED"
     | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_EVENT"
     | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_SESSION"
-    | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS"
-    | (string & {});
+    | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS";
 export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1326,7 +1312,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceSt
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepList =
-  GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep>;
 export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStepList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep,
@@ -1359,8 +1345,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilter =
 export type GoogleAnalyticsAdminV1alphaAudienceFilterClauseClauseTypeEnum =
   | "AUDIENCE_CLAUSE_TYPE_UNSPECIFIED"
   | "INCLUDE"
-  | "EXCLUDE"
-  | (string & {});
+  | "EXCLUDE";
 export const GoogleAnalyticsAdminV1alphaAudienceFilterClauseClauseTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1368,8 +1353,7 @@ export type GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum =
   | "AUDIENCE_FILTER_SCOPE_UNSPECIFIED"
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_EVENT"
   | "AUDIENCE_FILTER_SCOPE_WITHIN_SAME_SESSION"
-  | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS"
-  | (string & {});
+  | "AUDIENCE_FILTER_SCOPE_ACROSS_ALL_SESSIONS";
 export const GoogleAnalyticsAdminV1alphaAudienceSimpleFilterScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1419,7 +1403,7 @@ export const GoogleAnalyticsAdminV1alphaAudienceFilterClause =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceFilterClause>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceFilterClauseList =
-  GoogleAnalyticsAdminV1alphaAudienceFilterClause[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAudienceFilterClause>;
 export const GoogleAnalyticsAdminV1alphaAudienceFilterClauseList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAudienceFilterClause,
@@ -1563,21 +1547,17 @@ export type GoogleAnalyticsAdminV1alphaCalculatedMetricMetricUnitEnum =
   | "MILLISECONDS"
   | "SECONDS"
   | "MINUTES"
-  | "HOURS"
-  | (string & {});
+  | "HOURS";
 export const GoogleAnalyticsAdminV1alphaCalculatedMetricMetricUnitEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum =
-    | "RESTRICTED_METRIC_TYPE_UNSPECIFIED"
-    | "COST_DATA"
-    | "REVENUE_DATA"
-    | (string & {});
+  "RESTRICTED_METRIC_TYPE_UNSPECIFIED" | "COST_DATA" | "REVENUE_DATA";
 export const GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList =
-  GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum>;
 export const GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCalculatedMetricRestrictedMetricTypeItemEnum,
@@ -1650,7 +1630,7 @@ export const CreatePropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreatePropertiesCalculatedMetricsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList_ =
-  GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression>;
 export const GoogleAnalyticsAdminV1alphaChannelGroupFilterExpressionList_ =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression),
@@ -1693,8 +1673,7 @@ export type GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeEn
     | "ENDS_WITH"
     | "CONTAINS"
     | "FULL_REGEXP"
-    | "PARTIAL_REGEXP"
-    | (string & {});
+    | "PARTIAL_REGEXP";
 export const GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilterMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1790,7 +1769,7 @@ export const GoogleAnalyticsAdminV1alphaGroupingRule = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaGroupingRule>;
 
 export type GoogleAnalyticsAdminV1alphaGroupingRuleList =
-  GoogleAnalyticsAdminV1alphaGroupingRule[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaGroupingRule>;
 export const GoogleAnalyticsAdminV1alphaGroupingRuleList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaGroupingRule,
@@ -1852,8 +1831,7 @@ export const CreatePropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(
 export type GoogleAnalyticsAdminV1alphaConversionEventCountingMethodEnum =
   | "CONVERSION_COUNTING_METHOD_UNSPECIFIED"
   | "ONCE_PER_EVENT"
-  | "ONCE_PER_SESSION"
-  | (string & {});
+  | "ONCE_PER_SESSION";
 export const GoogleAnalyticsAdminV1alphaConversionEventCountingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -1939,8 +1917,7 @@ export type GoogleAnalyticsAdminV1alphaCustomDimensionScopeEnum =
   | "DIMENSION_SCOPE_UNSPECIFIED"
   | "EVENT"
   | "USER"
-  | "ITEM"
-  | (string & {});
+  | "ITEM";
 export const GoogleAnalyticsAdminV1alphaCustomDimensionScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1999,8 +1976,7 @@ export const CreatePropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricScopeEnum =
   | "METRIC_SCOPE_UNSPECIFIED"
-  | "EVENT"
-  | (string & {});
+  | "EVENT";
 export const GoogleAnalyticsAdminV1alphaCustomMetricScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2015,21 +1991,17 @@ export type GoogleAnalyticsAdminV1alphaCustomMetricMeasurementUnitEnum =
   | "MILLISECONDS"
   | "SECONDS"
   | "MINUTES"
-  | "HOURS"
-  | (string & {});
+  | "HOURS";
 export const GoogleAnalyticsAdminV1alphaCustomMetricMeasurementUnitEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum =
-    | "RESTRICTED_METRIC_TYPE_UNSPECIFIED"
-    | "COST_DATA"
-    | "REVENUE_DATA"
-    | (string & {});
+  "RESTRICTED_METRIC_TYPE_UNSPECIFIED" | "COST_DATA" | "REVENUE_DATA";
 export const GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList =
-  GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum>;
 export const GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCustomMetricRestrictedMetricTypeItemEnum,
@@ -2116,8 +2088,7 @@ export type GoogleAnalyticsAdminV1alphaDataStreamTypeEnum =
   | "DATA_STREAM_TYPE_UNSPECIFIED"
   | "WEB_DATA_STREAM"
   | "ANDROID_APP_DATA_STREAM"
-  | "IOS_APP_DATA_STREAM"
-  | (string & {});
+  | "IOS_APP_DATA_STREAM";
 export const GoogleAnalyticsAdminV1alphaDataStreamTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2235,8 +2206,7 @@ export type GoogleAnalyticsAdminV1alphaMatchingConditionComparisonTypeEnum =
   | "LESS_THAN"
   | "LESS_THAN_OR_EQUAL"
   | "REGULAR_EXPRESSION"
-  | "REGULAR_EXPRESSION_CASE_INSENSITIVE"
-  | (string & {});
+  | "REGULAR_EXPRESSION_CASE_INSENSITIVE";
 export const GoogleAnalyticsAdminV1alphaMatchingConditionComparisonTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2266,7 +2236,7 @@ export const GoogleAnalyticsAdminV1alphaMatchingCondition =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaMatchingCondition>;
 
 export type GoogleAnalyticsAdminV1alphaMatchingConditionList =
-  GoogleAnalyticsAdminV1alphaMatchingCondition[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaMatchingCondition>;
 export const GoogleAnalyticsAdminV1alphaMatchingConditionList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaMatchingCondition,
@@ -2290,7 +2260,7 @@ export const GoogleAnalyticsAdminV1alphaParameterMutation =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaParameterMutation>;
 
 export type GoogleAnalyticsAdminV1alphaParameterMutationList =
-  GoogleAnalyticsAdminV1alphaParameterMutation[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaParameterMutation>;
 export const GoogleAnalyticsAdminV1alphaParameterMutationList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaParameterMutation,
@@ -2452,8 +2422,7 @@ export type GoogleAnalyticsAdminV1alphaConversionValuesCoarseValueEnum =
   | "COARSE_VALUE_UNSPECIFIED"
   | "COARSE_VALUE_LOW"
   | "COARSE_VALUE_MEDIUM"
-  | "COARSE_VALUE_HIGH"
-  | (string & {});
+  | "COARSE_VALUE_HIGH";
 export const GoogleAnalyticsAdminV1alphaConversionValuesCoarseValueEnum =
   /*@__PURE__*/ S.String;
 
@@ -2484,7 +2453,7 @@ export const GoogleAnalyticsAdminV1alphaEventMapping = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaEventMapping>;
 
 export type GoogleAnalyticsAdminV1alphaEventMappingList =
-  GoogleAnalyticsAdminV1alphaEventMapping[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaEventMapping>;
 export const GoogleAnalyticsAdminV1alphaEventMappingList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaEventMapping,
@@ -2519,7 +2488,7 @@ export const GoogleAnalyticsAdminV1alphaConversionValues =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaConversionValues>;
 
 export type GoogleAnalyticsAdminV1alphaConversionValuesList =
-  GoogleAnalyticsAdminV1alphaConversionValues[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaConversionValues>;
 export const GoogleAnalyticsAdminV1alphaConversionValuesList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaConversionValues,
@@ -2652,7 +2621,7 @@ export const CreatePropertiesDisplayVideo360AdvertiserLinksRequest =
   }) as any as S.Schema<CreatePropertiesDisplayVideo360AdvertiserLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTypeEnum =
-  "MATCH_TYPE_UNSPECIFIED" | "EXACT" | "CONTAINS" | (string & {});
+  "MATCH_TYPE_UNSPECIFIED" | "EXACT" | "CONTAINS";
 export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilterMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2720,7 +2689,7 @@ export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilter =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilter>;
 
 export type GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_ =
-  GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression>;
 export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList_ =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression),
@@ -2945,8 +2914,7 @@ export const GoogleAnalyticsAdminV1alphaKeyEventDefaultValue =
 export type GoogleAnalyticsAdminV1alphaKeyEventCountingMethodEnum =
   | "COUNTING_METHOD_UNSPECIFIED"
   | "ONCE_PER_EVENT"
-  | "ONCE_PER_SESSION"
-  | (string & {});
+  | "ONCE_PER_SESSION";
 export const GoogleAnalyticsAdminV1alphaKeyEventCountingMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -3012,8 +2980,7 @@ export type GoogleAnalyticsAdminV1alphaReportingDataAnnotationColorEnum =
   | "GREEN"
   | "RED"
   | "CYAN"
-  | "ORANGE"
-  | (string & {});
+  | "ORANGE";
 export const GoogleAnalyticsAdminV1alphaReportingDataAnnotationColorEnum =
   /*@__PURE__*/ S.String;
 
@@ -3209,12 +3176,12 @@ export const CreatePropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreatePropertiesSearchAds360LinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseFilterClauseTypeEnum =
-  "FILTER_CLAUSE_TYPE_UNSPECIFIED" | "INCLUDE" | "EXCLUDE" | (string & {});
+  "FILTER_CLAUSE_TYPE_UNSPECIFIED" | "INCLUDE" | "EXCLUDE";
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseFilterClauseTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList_ =
-  GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression>;
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList_ =
   /*@__PURE__*/ S.Array(
     S.suspend(
@@ -3246,8 +3213,7 @@ export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilt
     | "ENDS_WITH"
     | "CONTAINS"
     | "FULL_REGEXP"
-    | "PARTIAL_REGEXP"
-    | (string & {});
+    | "PARTIAL_REGEXP";
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilterMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3344,7 +3310,7 @@ export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause>;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseList =
-  GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause>;
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClauseList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause,
@@ -3437,7 +3403,7 @@ export const CreateRollupPropertyPropertiesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateRollupPropertyPropertiesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaRollupPropertySourceLinkList =
-  GoogleAnalyticsAdminV1alphaRollupPropertySourceLink[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink>;
 export const GoogleAnalyticsAdminV1alphaRollupPropertySourceLinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaRollupPropertySourceLink,
@@ -4002,8 +3968,7 @@ export const GetAttributionSettingsPropertiesRequest = /*@__PURE__*/ S.suspend(
 export type GoogleAnalyticsAdminV1alphaAttributionSettingsAcquisitionConversionEventLookbackWindowEnum =
     | "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_UNSPECIFIED"
     | "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_7_DAYS"
-    | "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS"
-    | (string & {});
+    | "ACQUISITION_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS";
 export const GoogleAnalyticsAdminV1alphaAttributionSettingsAcquisitionConversionEventLookbackWindowEnum =
   /*@__PURE__*/ S.String;
 
@@ -4011,8 +3976,7 @@ export type GoogleAnalyticsAdminV1alphaAttributionSettingsReportingAttributionMo
     | "REPORTING_ATTRIBUTION_MODEL_UNSPECIFIED"
     | "PAID_AND_ORGANIC_CHANNELS_DATA_DRIVEN"
     | "PAID_AND_ORGANIC_CHANNELS_LAST_CLICK"
-    | "GOOGLE_PAID_CHANNELS_LAST_CLICK"
-    | (string & {});
+    | "GOOGLE_PAID_CHANNELS_LAST_CLICK";
 export const GoogleAnalyticsAdminV1alphaAttributionSettingsReportingAttributionModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -4020,8 +3984,7 @@ export type GoogleAnalyticsAdminV1alphaAttributionSettingsAdsWebConversionDataEx
     | "ADS_WEB_CONVERSION_DATA_EXPORT_SCOPE_UNSPECIFIED"
     | "NOT_SELECTED_YET"
     | "PAID_AND_ORGANIC_CHANNELS"
-    | "GOOGLE_PAID_CHANNELS"
-    | (string & {});
+    | "GOOGLE_PAID_CHANNELS";
 export const GoogleAnalyticsAdminV1alphaAttributionSettingsAdsWebConversionDataExportScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4029,8 +3992,7 @@ export type GoogleAnalyticsAdminV1alphaAttributionSettingsOtherConversionEventLo
     | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_UNSPECIFIED"
     | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_30_DAYS"
     | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_60_DAYS"
-    | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_90_DAYS"
-    | (string & {});
+    | "OTHER_CONVERSION_EVENT_LOOKBACK_WINDOW_90_DAYS";
 export const GoogleAnalyticsAdminV1alphaAttributionSettingsOtherConversionEventLookbackWindowEnum =
   /*@__PURE__*/ S.String;
 
@@ -4135,8 +4097,7 @@ export type GoogleAnalyticsAdminV1alphaDataRetentionSettingsEventDataRetentionEn
     | "FOURTEEN_MONTHS"
     | "TWENTY_SIX_MONTHS"
     | "THIRTY_EIGHT_MONTHS"
-    | "FIFTY_MONTHS"
-    | (string & {});
+    | "FIFTY_MONTHS";
 export const GoogleAnalyticsAdminV1alphaDataRetentionSettingsEventDataRetentionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4146,8 +4107,7 @@ export type GoogleAnalyticsAdminV1alphaDataRetentionSettingsUserDataRetentionEnu
     | "FOURTEEN_MONTHS"
     | "TWENTY_SIX_MONTHS"
     | "THIRTY_EIGHT_MONTHS"
-    | "FIFTY_MONTHS"
-    | (string & {});
+    | "FIFTY_MONTHS";
 export const GoogleAnalyticsAdminV1alphaDataRetentionSettingsUserDataRetentionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4347,16 +4307,14 @@ export const GetGoogleSignalsSettingsPropertiesRequest =
 export type GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsStateEnum =
   | "GOOGLE_SIGNALS_STATE_UNSPECIFIED"
   | "GOOGLE_SIGNALS_ENABLED"
-  | "GOOGLE_SIGNALS_DISABLED"
-  | (string & {});
+  | "GOOGLE_SIGNALS_DISABLED";
 export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsConsentEnum =
   | "GOOGLE_SIGNALS_CONSENT_UNSPECIFIED"
   | "GOOGLE_SIGNALS_CONSENT_CONSENTED"
-  | "GOOGLE_SIGNALS_CONSENT_NOT_CONSENTED"
-  | (string & {});
+  | "GOOGLE_SIGNALS_CONSENT_NOT_CONSENTED";
 export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettingsConsentEnum =
   /*@__PURE__*/ S.String;
 
@@ -4833,7 +4791,7 @@ export const GetPropertiesSubpropertySyncConfigsRequest =
   }) as any as S.Schema<GetPropertiesSubpropertySyncConfigsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertySyncConfigCustomDimensionAndMetricSyncModeEnum =
-  "SYNCHRONIZATION_MODE_UNSPECIFIED" | "NONE" | "ALL" | (string & {});
+  "SYNCHRONIZATION_MODE_UNSPECIFIED" | "NONE" | "ALL";
 export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfigCustomDimensionAndMetricSyncModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4882,8 +4840,7 @@ export type GoogleAnalyticsAdminV1alphaReportingIdentitySettingsReportingIdentit
     | "IDENTITY_BLENDING_STRATEGY_UNSPECIFIED"
     | "BLENDED"
     | "OBSERVED"
-    | "DEVICE_BASED"
-    | (string & {});
+    | "DEVICE_BASED";
 export const GoogleAnalyticsAdminV1alphaReportingIdentitySettingsReportingIdentityEnum =
   /*@__PURE__*/ S.String;
 
@@ -4970,7 +4927,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaAccountList =
-  GoogleAnalyticsAdminV1alphaAccount[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccount>;
 export const GoogleAnalyticsAdminV1alphaAccountList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccount,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccountList>;
@@ -5058,8 +5015,7 @@ export type GoogleAnalyticsAdminV1alphaPropertySummaryPropertyTypeEnum =
   | "PROPERTY_TYPE_UNSPECIFIED"
   | "PROPERTY_TYPE_ORDINARY"
   | "PROPERTY_TYPE_SUBPROPERTY"
-  | "PROPERTY_TYPE_ROLLUP"
-  | (string & {});
+  | "PROPERTY_TYPE_ROLLUP";
 export const GoogleAnalyticsAdminV1alphaPropertySummaryPropertyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5092,7 +5048,7 @@ export const GoogleAnalyticsAdminV1alphaPropertySummary =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaPropertySummary>;
 
 export type GoogleAnalyticsAdminV1alphaPropertySummaryList =
-  GoogleAnalyticsAdminV1alphaPropertySummary[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaPropertySummary>;
 export const GoogleAnalyticsAdminV1alphaPropertySummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaPropertySummary,
@@ -5124,7 +5080,7 @@ export const GoogleAnalyticsAdminV1alphaAccountSummary =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccountSummary>;
 
 export type GoogleAnalyticsAdminV1alphaAccountSummaryList =
-  GoogleAnalyticsAdminV1alphaAccountSummary[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccountSummary>;
 export const GoogleAnalyticsAdminV1alphaAccountSummaryList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccountSummary,
@@ -5177,7 +5133,7 @@ export const ListPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaPropertyList =
-  GoogleAnalyticsAdminV1alphaProperty[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaProperty>;
 export const GoogleAnalyticsAdminV1alphaPropertyList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaProperty,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaPropertyList>;
@@ -5248,7 +5204,7 @@ export const ListPropertiesAdSenseLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesAdSenseLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaAdSenseLinkList =
-  GoogleAnalyticsAdminV1alphaAdSenseLink[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAdSenseLink>;
 export const GoogleAnalyticsAdminV1alphaAdSenseLinkList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAdSenseLink,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAdSenseLinkList>;
@@ -5295,7 +5251,7 @@ export const ListPropertiesAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesAudiencesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaAudienceList =
-  GoogleAnalyticsAdminV1alphaAudience[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAudience>;
 export const GoogleAnalyticsAdminV1alphaAudienceList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAudience,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAudienceList>;
@@ -5342,7 +5298,7 @@ export const ListPropertiesBigQueryLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesBigQueryLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaBigQueryLinkList =
-  GoogleAnalyticsAdminV1alphaBigQueryLink[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaBigQueryLink>;
 export const GoogleAnalyticsAdminV1alphaBigQueryLinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaBigQueryLink,
@@ -5391,7 +5347,7 @@ export const ListPropertiesCalculatedMetricsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPropertiesCalculatedMetricsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaCalculatedMetricList =
-  GoogleAnalyticsAdminV1alphaCalculatedMetric[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaCalculatedMetric>;
 export const GoogleAnalyticsAdminV1alphaCalculatedMetricList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCalculatedMetric,
@@ -5441,7 +5397,7 @@ export const ListPropertiesChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesChannelGroupsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaChannelGroupList =
-  GoogleAnalyticsAdminV1alphaChannelGroup[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaChannelGroup>;
 export const GoogleAnalyticsAdminV1alphaChannelGroupList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaChannelGroup,
@@ -5490,7 +5446,7 @@ export const ListPropertiesConversionEventsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPropertiesConversionEventsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaConversionEventList =
-  GoogleAnalyticsAdminV1alphaConversionEvent[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaConversionEvent>;
 export const GoogleAnalyticsAdminV1alphaConversionEventList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaConversionEvent,
@@ -5541,7 +5497,7 @@ export const ListPropertiesCustomDimensionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPropertiesCustomDimensionsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaCustomDimensionList =
-  GoogleAnalyticsAdminV1alphaCustomDimension[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaCustomDimension>;
 export const GoogleAnalyticsAdminV1alphaCustomDimensionList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCustomDimension,
@@ -5591,7 +5547,7 @@ export const ListPropertiesCustomMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesCustomMetricsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaCustomMetricList =
-  GoogleAnalyticsAdminV1alphaCustomMetric[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaCustomMetric>;
 export const GoogleAnalyticsAdminV1alphaCustomMetricList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaCustomMetric,
@@ -5639,7 +5595,7 @@ export const ListPropertiesDataStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesDataStreamsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaDataStreamList =
-  GoogleAnalyticsAdminV1alphaDataStream[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaDataStream>;
 export const GoogleAnalyticsAdminV1alphaDataStreamList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaDataStream,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaDataStreamList>;
@@ -5687,7 +5643,7 @@ export const ListPropertiesDataStreamsEventCreateRulesRequest =
   }) as any as S.Schema<ListPropertiesDataStreamsEventCreateRulesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaEventCreateRuleList =
-  GoogleAnalyticsAdminV1alphaEventCreateRule[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaEventCreateRule>;
 export const GoogleAnalyticsAdminV1alphaEventCreateRuleList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaEventCreateRule,
@@ -5738,7 +5694,7 @@ export const ListPropertiesDataStreamsEventEditRulesRequest =
   }) as any as S.Schema<ListPropertiesDataStreamsEventEditRulesRequest>;
 
 export type GoogleAnalyticsAdminV1alphaEventEditRuleList =
-  GoogleAnalyticsAdminV1alphaEventEditRule[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaEventEditRule>;
 export const GoogleAnalyticsAdminV1alphaEventEditRuleList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaEventEditRule,
@@ -5787,7 +5743,7 @@ export const ListPropertiesDataStreamsMeasurementProtocolSecretsRequest =
   }) as any as S.Schema<ListPropertiesDataStreamsMeasurementProtocolSecretsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaMeasurementProtocolSecretList =
-  GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>;
 export const GoogleAnalyticsAdminV1alphaMeasurementProtocolSecretList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret,
@@ -5840,7 +5796,7 @@ export const ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest =
   }) as any as S.Schema<ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchemaList =
-  GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema>;
 export const GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchemaList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema,
@@ -5892,7 +5848,7 @@ export const ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest =
   }) as any as S.Schema<ListPropertiesDisplayVideo360AdvertiserLinkProposalsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposalList =
-  GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>;
 export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposalList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal,
@@ -5944,7 +5900,7 @@ export const ListPropertiesDisplayVideo360AdvertiserLinksRequest =
   }) as any as S.Schema<ListPropertiesDisplayVideo360AdvertiserLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkList =
-  GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>;
 export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink,
@@ -5996,7 +5952,7 @@ export const ListPropertiesExpandedDataSetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPropertiesExpandedDataSetsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaExpandedDataSetList =
-  GoogleAnalyticsAdminV1alphaExpandedDataSet[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaExpandedDataSet>;
 export const GoogleAnalyticsAdminV1alphaExpandedDataSetList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaExpandedDataSet,
@@ -6046,7 +6002,7 @@ export const ListPropertiesFirebaseLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesFirebaseLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaFirebaseLinkList =
-  GoogleAnalyticsAdminV1alphaFirebaseLink[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaFirebaseLink>;
 export const GoogleAnalyticsAdminV1alphaFirebaseLinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaFirebaseLink,
@@ -6094,7 +6050,7 @@ export const ListPropertiesGoogleAdsLinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesGoogleAdsLinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaGoogleAdsLinkList =
-  GoogleAnalyticsAdminV1alphaGoogleAdsLink[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaGoogleAdsLink>;
 export const GoogleAnalyticsAdminV1alphaGoogleAdsLinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaGoogleAdsLink,
@@ -6142,7 +6098,7 @@ export const ListPropertiesKeyEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPropertiesKeyEventsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaKeyEventList =
-  GoogleAnalyticsAdminV1alphaKeyEvent[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaKeyEvent>;
 export const GoogleAnalyticsAdminV1alphaKeyEventList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaKeyEvent,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaKeyEventList>;
@@ -6193,7 +6149,7 @@ export const ListPropertiesReportingDataAnnotationsRequest =
   }) as any as S.Schema<ListPropertiesReportingDataAnnotationsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaReportingDataAnnotationList =
-  GoogleAnalyticsAdminV1alphaReportingDataAnnotation[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaReportingDataAnnotation>;
 export const GoogleAnalyticsAdminV1alphaReportingDataAnnotationList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaReportingDataAnnotation,
@@ -6290,7 +6246,7 @@ export const ListPropertiesSearchAds360LinksRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPropertiesSearchAds360LinksRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSearchAds360LinkList =
-  GoogleAnalyticsAdminV1alphaSearchAds360Link[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaSearchAds360Link>;
 export const GoogleAnalyticsAdminV1alphaSearchAds360LinkList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSearchAds360Link,
@@ -6341,7 +6297,7 @@ export const ListPropertiesSubpropertyEventFiltersRequest =
   }) as any as S.Schema<ListPropertiesSubpropertyEventFiltersRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertyEventFilterList =
-  GoogleAnalyticsAdminV1alphaSubpropertyEventFilter[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaSubpropertyEventFilter>;
 export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSubpropertyEventFilter,
@@ -6393,7 +6349,7 @@ export const ListPropertiesSubpropertySyncConfigsRequest =
   }) as any as S.Schema<ListPropertiesSubpropertySyncConfigsRequest>;
 
 export type GoogleAnalyticsAdminV1alphaSubpropertySyncConfigList =
-  GoogleAnalyticsAdminV1alphaSubpropertySyncConfig[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>;
 export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfigList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSubpropertySyncConfig,
@@ -7101,7 +7057,7 @@ export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse>;
 
 export type GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequestCustomDimensionAndMetricSynchronizationModeEnum =
-  "SYNCHRONIZATION_MODE_UNSPECIFIED" | "NONE" | "ALL" | (string & {});
+  "SYNCHRONIZATION_MODE_UNSPECIFIED" | "NONE" | "ALL";
 export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequestCustomDimensionAndMetricSynchronizationModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7226,14 +7182,14 @@ export const GoogleAnalyticsAdminV1alphaAccessDimension =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimension>;
 
 export type GoogleAnalyticsAdminV1alphaAccessDimensionList =
-  GoogleAnalyticsAdminV1alphaAccessDimension[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessDimension>;
 export const GoogleAnalyticsAdminV1alphaAccessDimensionList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessDimension,
   ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionList>;
 
 export type GoogleAnalyticsAdminV1alphaAccessFilterExpressionList_ =
-  GoogleAnalyticsAdminV1alphaAccessFilterExpression[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessFilterExpression>;
 export const GoogleAnalyticsAdminV1alphaAccessFilterExpressionList_ =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GoogleAnalyticsAdminV1alphaAccessFilterExpression),
@@ -7279,8 +7235,7 @@ export type GoogleAnalyticsAdminV1alphaAccessStringFilterMatchTypeEnum =
   | "ENDS_WITH"
   | "CONTAINS"
   | "FULL_REGEXP"
-  | "PARTIAL_REGEXP"
-  | (string & {});
+  | "PARTIAL_REGEXP";
 export const GoogleAnalyticsAdminV1alphaAccessStringFilterMatchTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7346,8 +7301,7 @@ export type GoogleAnalyticsAdminV1alphaAccessNumericFilterOperationEnum =
   | "LESS_THAN"
   | "LESS_THAN_OR_EQUAL"
   | "GREATER_THAN"
-  | "GREATER_THAN_OR_EQUAL"
-  | (string & {});
+  | "GREATER_THAN_OR_EQUAL";
 export const GoogleAnalyticsAdminV1alphaAccessNumericFilterOperationEnum =
   /*@__PURE__*/ S.String;
 
@@ -7443,8 +7397,7 @@ export type GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderByOrderTypeEnu
     | "ORDER_TYPE_UNSPECIFIED"
     | "ALPHANUMERIC"
     | "CASE_INSENSITIVE_ALPHANUMERIC"
-    | "NUMERIC"
-    | (string & {});
+    | "NUMERIC";
 export const GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderByOrderTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7490,7 +7443,7 @@ export const GoogleAnalyticsAdminV1alphaAccessOrderBy = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessOrderBy>;
 
 export type GoogleAnalyticsAdminV1alphaAccessOrderByList =
-  GoogleAnalyticsAdminV1alphaAccessOrderBy[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessOrderBy>;
 export const GoogleAnalyticsAdminV1alphaAccessOrderByList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessOrderBy,
@@ -7511,7 +7464,7 @@ export const GoogleAnalyticsAdminV1alphaAccessMetric = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetric>;
 
 export type GoogleAnalyticsAdminV1alphaAccessMetricList =
-  GoogleAnalyticsAdminV1alphaAccessMetric[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessMetric>;
 export const GoogleAnalyticsAdminV1alphaAccessMetricList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessMetric,
@@ -7535,7 +7488,7 @@ export const GoogleAnalyticsAdminV1alphaAccessDateRange =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDateRange>;
 
 export type GoogleAnalyticsAdminV1alphaAccessDateRangeList =
-  GoogleAnalyticsAdminV1alphaAccessDateRange[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessDateRange>;
 export const GoogleAnalyticsAdminV1alphaAccessDateRangeList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessDateRange,
@@ -7630,7 +7583,7 @@ export const GoogleAnalyticsAdminV1alphaAccessMetricHeader =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
 
 export type GoogleAnalyticsAdminV1alphaAccessMetricHeaderList =
-  GoogleAnalyticsAdminV1alphaAccessMetricHeader[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
 export const GoogleAnalyticsAdminV1alphaAccessMetricHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessMetricHeader,
@@ -7700,7 +7653,7 @@ export const GoogleAnalyticsAdminV1alphaAccessDimensionHeader =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
 
 export type GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList =
-  GoogleAnalyticsAdminV1alphaAccessDimensionHeader[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
 export const GoogleAnalyticsAdminV1alphaAccessDimensionHeaderList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessDimensionHeader,
@@ -7721,7 +7674,7 @@ export const GoogleAnalyticsAdminV1alphaAccessDimensionValue =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionValue>;
 
 export type GoogleAnalyticsAdminV1alphaAccessDimensionValueList =
-  GoogleAnalyticsAdminV1alphaAccessDimensionValue[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessDimensionValue>;
 export const GoogleAnalyticsAdminV1alphaAccessDimensionValueList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessDimensionValue,
@@ -7742,7 +7695,7 @@ export const GoogleAnalyticsAdminV1alphaAccessMetricValue =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessMetricValue>;
 
 export type GoogleAnalyticsAdminV1alphaAccessMetricValueList =
-  GoogleAnalyticsAdminV1alphaAccessMetricValue[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessMetricValue>;
 export const GoogleAnalyticsAdminV1alphaAccessMetricValueList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaAccessMetricValue,
@@ -7770,7 +7723,7 @@ export const GoogleAnalyticsAdminV1alphaAccessRow = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessRow>;
 
 export type GoogleAnalyticsAdminV1alphaAccessRowList =
-  GoogleAnalyticsAdminV1alphaAccessRow[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaAccessRow>;
 export const GoogleAnalyticsAdminV1alphaAccessRowList = /*@__PURE__*/ S.Array(
   GoogleAnalyticsAdminV1alphaAccessRow,
 ) as any as S.Schema<GoogleAnalyticsAdminV1alphaAccessRowList>;
@@ -7859,25 +7812,24 @@ export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceT
     | "REPORTING_DATA_ANNOTATION"
     | "SUBPROPERTY_SYNC_CONFIG"
     | "REPORTING_IDENTITY_SETTINGS"
-    | "USER_PROVIDED_DATA_SETTINGS"
-    | (string & {});
+    | "USER_PROVIDED_DATA_SETTINGS";
 export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList =
-  GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnum[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnum>;
 export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnum,
   ) as any as S.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestResourceTypeItemEnumList>;
 
 export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum =
-  "ACTION_TYPE_UNSPECIFIED" | "CREATED" | "UPDATED" | "DELETED" | (string & {});
+  "ACTION_TYPE_UNSPECIFIED" | "CREATED" | "UPDATED" | "DELETED";
 export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList =
-  GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum>;
 export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequestActionItemEnum,
@@ -7952,8 +7904,7 @@ export type GoogleAnalyticsAdminV1alphaChangeHistoryChangeActionEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "CREATED"
   | "UPDATED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -8115,7 +8066,7 @@ export const GoogleAnalyticsAdminV1alphaChangeHistoryChange =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryChange>;
 
 export type GoogleAnalyticsAdminV1alphaChangeHistoryChangeList =
-  GoogleAnalyticsAdminV1alphaChangeHistoryChange[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaChangeHistoryChange>;
 export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaChangeHistoryChange,
@@ -8125,8 +8076,7 @@ export type GoogleAnalyticsAdminV1alphaChangeHistoryEventActorTypeEnum =
   | "ACTOR_TYPE_UNSPECIFIED"
   | "USER"
   | "SYSTEM"
-  | "SUPPORT"
-  | (string & {});
+  | "SUPPORT";
 export const GoogleAnalyticsAdminV1alphaChangeHistoryEventActorTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8162,7 +8112,7 @@ export const GoogleAnalyticsAdminV1alphaChangeHistoryEvent =
   }) as any as S.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>;
 
 export type GoogleAnalyticsAdminV1alphaChangeHistoryEventList =
-  GoogleAnalyticsAdminV1alphaChangeHistoryEvent[];
+  ReadonlyArray<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>;
 export const GoogleAnalyticsAdminV1alphaChangeHistoryEventList =
   /*@__PURE__*/ S.Array(
     GoogleAnalyticsAdminV1alphaChangeHistoryEvent,

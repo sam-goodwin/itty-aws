@@ -113,7 +113,6 @@ export interface GroupsDeletePropertyCreateRequest {
   /** Specify the group type to find */
   group_type_index: number;
   group_properties?: unknown;
-  created_at?: string;
 }
 export const GroupsDeletePropertyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -121,7 +120,6 @@ export const GroupsDeletePropertyCreateRequest = /*@__PURE__*/ S.suspend(() =>
     group_key: S.String.pipe(T.Query()),
     group_type_index: S.Number.pipe(T.Query()),
     group_properties: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -204,7 +202,7 @@ export const GroupsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupsListRequest",
 }) as any as S.Schema<GroupsListRequest>;
 
-export type GroupsListResponseBodyList = Group[];
+export type GroupsListResponseBodyList = ReadonlyArray<Group>;
 export const GroupsListResponseBodyList = /*@__PURE__*/ S.Array(
   Group,
 ) as any as S.Schema<GroupsListResponseBodyList>;
@@ -280,7 +278,6 @@ export interface GroupsUpdatePropertyCreateRequest {
   /** Specify the group type to find */
   group_type_index: number;
   group_properties?: unknown;
-  created_at?: string;
 }
 export const GroupsUpdatePropertyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -288,7 +285,6 @@ export const GroupsUpdatePropertyCreateRequest = /*@__PURE__*/ S.suspend(() =>
     group_key: S.String.pipe(T.Query()),
     group_type_index: S.Number.pipe(T.Query()),
     group_properties: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",

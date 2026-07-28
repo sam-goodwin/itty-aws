@@ -834,10 +834,10 @@
             "smithy.api#documentation": "The trigger name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#Trigger",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the trigger.",
             "smithy.api#required": {}
           }
         }
@@ -1152,11 +1152,16 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "continuationToken": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The continuation token for getting the next page of results. Null for first page."
+          }
+        },
+        "parentTriggerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the parent TumblingWindowTrigger to get the child rerun triggers"
           }
         }
       },
@@ -1382,16 +1387,313 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "continuationToken": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The continuation token for getting the next page of results. Null for first page."
+          }
+        },
+        "lastUpdatedAfter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at or after which the run event was updated in 'ISO 8601' format.",
             "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedBefore": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at or before which the run event was updated in 'ISO 8601' format.",
+            "smithy.api#required": {}
+          }
+        },
+        "filters": {
+          "target": "com.azure.datafactory#TriggerRunsQueryByFactoryRequestFiltersList",
+          "traits": {
+            "smithy.api#documentation": "List of filters."
+          }
+        },
+        "orderBy": {
+          "target": "com.azure.datafactory#TriggerRunsQueryByFactoryRequestOrderByList",
+          "traits": {
+            "smithy.api#documentation": "List of OrderBy option."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#TriggerRunsQueryByFactoryRequestOrderByList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datafactory#RunQueryOrderBy"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of OrderBy option."
+      }
+    },
+    "com.azure.datafactory#RunQueryOrderBy": {
+      "type": "structure",
+      "members": {
+        "orderBy": {
+          "target": "com.azure.datafactory#RunQueryOrderByField",
+          "traits": {
+            "smithy.api#documentation": "Parameter name to be used for order by. The allowed parameters to order by for pipeline runs are PipelineName, RunStart, RunEnd and Status; for activity runs are ActivityName, ActivityRunStart, ActivityRunEnd and Status; for trigger runs are TriggerName, TriggerRunTimestamp and Status.",
+            "smithy.api#required": {}
+          }
+        },
+        "order": {
+          "target": "com.azure.datafactory#RunQueryOrder",
+          "traits": {
+            "smithy.api#documentation": "Sorting order of the parameter.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object to provide order by options for listing runs."
+      }
+    },
+    "com.azure.datafactory#RunQueryOrder": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ASC"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DESC"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Sorting order of the parameter."
+      }
+    },
+    "com.azure.datafactory#RunQueryOrderByField": {
+      "type": "enum",
+      "members": {
+        "RUNSTART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RunStart"
+          }
+        },
+        "RUNEND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RunEnd"
+          }
+        },
+        "PIPELINENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PipelineName"
+          }
+        },
+        "STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Status"
+          }
+        },
+        "ACTIVITYNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActivityName"
+          }
+        },
+        "ACTIVITYRUNSTART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActivityRunStart"
+          }
+        },
+        "ACTIVITYRUNEND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActivityRunEnd"
+          }
+        },
+        "TRIGGERNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TriggerName"
+          }
+        },
+        "TRIGGERRUNTIMESTAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TriggerRunTimestamp"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameter name to be used for order by. The allowed parameters to order by for pipeline runs are PipelineName, RunStart, RunEnd and Status; for activity runs are ActivityName, ActivityRunStart, ActivityRunEnd and Status; for trigger runs are TriggerName, TriggerRunTimestamp and Status."
+      }
+    },
+    "com.azure.datafactory#TriggerRunsQueryByFactoryRequestFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datafactory#RunQueryFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of filters."
+      }
+    },
+    "com.azure.datafactory#RunQueryFilter": {
+      "type": "structure",
+      "members": {
+        "operand": {
+          "target": "com.azure.datafactory#RunQueryFilterOperand",
+          "traits": {
+            "smithy.api#documentation": "Parameter name to be used for filter. The allowed operands to query pipeline runs are PipelineName, RunStart, RunEnd and Status; to query activity runs are ActivityName, ActivityRunStart, ActivityRunEnd, ActivityType and Status, and to query trigger runs are TriggerName, TriggerRunTimestamp and Status.",
+            "smithy.api#required": {}
+          }
+        },
+        "operator": {
+          "target": "com.azure.datafactory#RunQueryFilterOperator",
+          "traits": {
+            "smithy.api#documentation": "Operator to be used for filter.",
+            "smithy.api#required": {}
+          }
+        },
+        "values": {
+          "target": "com.azure.datafactory#RunQueryFilterValuesList",
+          "traits": {
+            "smithy.api#documentation": "List of filter values.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Query filter option for listing runs."
+      }
+    },
+    "com.azure.datafactory#RunQueryFilterValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of filter values."
+      }
+    },
+    "com.azure.datafactory#RunQueryFilterOperator": {
+      "type": "enum",
+      "members": {
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Equals"
+          }
+        },
+        "NOTEQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotEquals"
+          }
+        },
+        "IN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "In"
+          }
+        },
+        "NOTIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotIn"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Operator to be used for filter."
+      }
+    },
+    "com.azure.datafactory#RunQueryFilterOperand": {
+      "type": "enum",
+      "members": {
+        "PIPELINENAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PipelineName"
+          }
+        },
+        "STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Status"
+          }
+        },
+        "RUNSTART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RunStart"
+          }
+        },
+        "RUNEND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RunEnd"
+          }
+        },
+        "ACTIVITYNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActivityName"
+          }
+        },
+        "ACTIVITYRUNSTART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActivityRunStart"
+          }
+        },
+        "ACTIVITYRUNEND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActivityRunEnd"
+          }
+        },
+        "ACTIVITYTYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ActivityType"
+          }
+        },
+        "TRIGGERNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TriggerName"
+          }
+        },
+        "TRIGGERRUNTIMESTAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TriggerRunTimestamp"
+          }
+        },
+        "RUNGROUPID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RunGroupId"
+          }
+        },
+        "LATESTONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LatestOnly"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameter name to be used for filter. The allowed operands to query pipeline runs are PipelineName, RunStart, RunEnd and Status; to query activity runs are ActivityName, ActivityRunStart, ActivityRunEnd, ActivityType and Status, and to query trigger runs are TriggerName, TriggerRunTimestamp and Status."
       }
     },
     "com.azure.datafactory#PipelineRunsQueryByFactory": {
@@ -1618,16 +1920,59 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "continuationToken": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The continuation token for getting the next page of results. Null for first page."
+          }
+        },
+        "lastUpdatedAfter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at or after which the run event was updated in 'ISO 8601' format.",
             "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedBefore": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at or before which the run event was updated in 'ISO 8601' format.",
+            "smithy.api#required": {}
+          }
+        },
+        "filters": {
+          "target": "com.azure.datafactory#PipelineRunsQueryByFactoryRequestFiltersList",
+          "traits": {
+            "smithy.api#documentation": "List of filters."
+          }
+        },
+        "orderBy": {
+          "target": "com.azure.datafactory#PipelineRunsQueryByFactoryRequestOrderByList",
+          "traits": {
+            "smithy.api#documentation": "List of OrderBy option."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#PipelineRunsQueryByFactoryRequestOrderByList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datafactory#RunQueryOrderBy"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of OrderBy option."
+      }
+    },
+    "com.azure.datafactory#PipelineRunsQueryByFactoryRequestFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datafactory#RunQueryFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of filters."
       }
     },
     "com.azure.datafactory#ExposureControlQueryFeatureValuesByFactory": {
@@ -1720,16 +2065,45 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "exposureControlRequests": {
+          "target": "com.azure.datafactory#ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "List of exposure control features.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#ExposureControlQueryFeatureValuesByFactoryRequestExposureControlRequestsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datafactory#ExposureControlRequest"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of exposure control features."
+      }
+    },
+    "com.azure.datafactory#ExposureControlRequest": {
+      "type": "structure",
+      "members": {
+        "featureName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The feature name."
+          }
+        },
+        "featureType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The feature type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The exposure control request."
       }
     },
     "com.azure.datafactory#DataFlowDebugSessionQueryByFactory": {
@@ -2246,16 +2620,49 @@
             "smithy.api#documentation": "The private endpoint connection name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#PrivateLinkConnectionApprovalRequest",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Core resource properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#PrivateLinkConnectionApprovalRequest": {
+      "type": "structure",
+      "members": {
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.datafactory#PrivateLinkConnectionState",
+          "traits": {
+            "smithy.api#documentation": "The state of a private link connection"
+          }
+        },
+        "privateEndpoint": {
+          "target": "com.azure.datafactory#PrivateEndpoint",
+          "traits": {
+            "smithy.api#documentation": "The resource of private endpoint."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A request to approve or reject a private endpoint connection"
+      }
+    },
+    "com.azure.datafactory#PrivateEndpoint": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource Id for private endpoint"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Private endpoint which a connection belongs to."
       }
     },
     "com.azure.datafactory#PrivateEndpointConnectionGet": {
@@ -2584,7 +2991,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.datafactory#PipelinesCreateRunRequestBodyMap",
           "traits": {
             "smithy.api#httpPayload": {}
           }
@@ -2593,6 +3000,16 @@
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.datafactory#PipelinesCreateRunRequestBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
     },
     "com.azure.datafactory#PipelinesDelete": {
       "type": "operation",
@@ -3227,10 +3644,10 @@
             "smithy.api#documentation": "The pipeline name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#Pipeline",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the pipeline.",
             "smithy.api#required": {}
           }
         }
@@ -3638,16 +4055,59 @@
             "smithy.api#documentation": "The pipeline run identifier."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "continuationToken": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The continuation token for getting the next page of results. Null for first page."
+          }
+        },
+        "lastUpdatedAfter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at or after which the run event was updated in 'ISO 8601' format.",
             "smithy.api#required": {}
+          }
+        },
+        "lastUpdatedBefore": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at or before which the run event was updated in 'ISO 8601' format.",
+            "smithy.api#required": {}
+          }
+        },
+        "filters": {
+          "target": "com.azure.datafactory#ActivityRunsQueryByPipelineRunRequestFiltersList",
+          "traits": {
+            "smithy.api#documentation": "List of filters."
+          }
+        },
+        "orderBy": {
+          "target": "com.azure.datafactory#ActivityRunsQueryByPipelineRunRequestOrderByList",
+          "traits": {
+            "smithy.api#documentation": "List of OrderBy option."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#ActivityRunsQueryByPipelineRunRequestOrderByList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datafactory#RunQueryOrderBy"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of OrderBy option."
+      }
+    },
+    "com.azure.datafactory#ActivityRunsQueryByPipelineRunRequestFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datafactory#RunQueryFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of filters."
       }
     },
     "com.azure.datafactory#PipelineRunsCancel": {
@@ -4026,16 +4486,64 @@
             "smithy.api#documentation": "Managed private endpoint name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#ManagedPrivateEndpointInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Managed private endpoint properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#ManagedPrivateEndpointInput": {
+      "type": "structure",
+      "members": {
+        "connectionState": {
+          "target": "com.azure.datafactory#ConnectionStatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The managed private endpoint connection state"
+          }
+        },
+        "fqdns": {
+          "target": "com.azure.datafactory#ManagedPrivateEndpointInputFqdnsList",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified domain names"
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The groupId to which the managed private endpoint is created"
+          }
+        },
+        "privateLinkResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ARM resource ID of the resource to which the managed private endpoint is created"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a managed private endpoint"
+      }
+    },
+    "com.azure.datafactory#ManagedPrivateEndpointInputFqdnsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Fully qualified domain names"
+      }
+    },
+    "com.azure.datafactory#ConnectionStatePropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The connection state of a managed private endpoint"
       }
     },
     "com.azure.datafactory#ManagedPrivateEndpointsGet": {
@@ -4403,16 +4911,23 @@
             "smithy.api#documentation": "Managed virtual network name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#ManagedVirtualNetworkInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Managed Virtual Network properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#ManagedVirtualNetworkInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "A managed Virtual Network associated with the Azure Data Factory"
       }
     },
     "com.azure.datafactory#ManagedVirtualNetworksGet": {
@@ -4923,10 +5438,10 @@
             "smithy.api#documentation": "The linked service name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#LinkedService",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of linked service.",
             "smithy.api#required": {}
           }
         }
@@ -5590,13 +6105,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The integration runtime name."
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -5677,16 +6185,35 @@
             "smithy.api#documentation": "The integration runtime name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "com.azure.datafactory#IntegrationRuntimeAuthKeyName",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the authentication key to regenerate."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#IntegrationRuntimeAuthKeyName": {
+      "type": "enum",
+      "members": {
+        "AUTHKEY1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "authKey1"
+          }
+        },
+        "AUTHKEY2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "authKey2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The name of the authentication key to regenerate."
       }
     },
     "com.azure.datafactory#IntegrationRuntimeObjectMetadataRefresh": {
@@ -6342,11 +6869,10 @@
             "smithy.api#documentation": "The integration runtime node name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "concurrentJobsLimit": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs(inclusive) are allowed."
           }
         }
       },
@@ -6676,11 +7202,22 @@
             "smithy.api#documentation": "The integration runtime name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the linked integration runtime."
+          }
+        },
+        "dataFactoryName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the data factory that the linked integration runtime belongs to."
+          }
+        },
+        "dataFactoryLocation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The location of the data factory that the linked integration runtime belongs to."
           }
         }
       },
@@ -6896,10 +7433,10 @@
             "smithy.api#documentation": "The integration runtime name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "metadataPath": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Metadata path."
           }
         }
       },
@@ -7130,11 +7667,10 @@
             "smithy.api#documentation": "The integration runtime name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "autoTerminationMinutes": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The allowed idle time for interactive authoring."
           }
         }
       },
@@ -7404,16 +7940,41 @@
             "smithy.api#documentation": "The integration runtime name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "autoUpdate": {
+          "target": "com.azure.datafactory#IntegrationRuntimeAutoUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Enables or disables the auto-update feature of the self-hosted integration runtime. See https://go.microsoft.com/fwlink/?linkid=854189."
+          }
+        },
+        "updateDelayOffset": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time offset (in hours) in the day, e.g., PT03H is 3 hours. The integration runtime auto update will happen on that time."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#IntegrationRuntimeAutoUpdate": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "On"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Off"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The state of integration runtime auto update."
       }
     },
     "com.azure.datafactory#IntegrationRuntimesCreateOrUpdate": {
@@ -7515,10 +8076,10 @@
             "smithy.api#documentation": "The integration runtime name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#IntegrationRuntime",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Integration runtime properties.",
             "smithy.api#required": {}
           }
         }
@@ -7993,16 +8554,28 @@
             "smithy.api#documentation": "The global parameter name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#GlobalParametersCreateOrUpdateRequestPropertiesMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the global parameter.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#GlobalParametersCreateOrUpdateRequestPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.datafactory#GlobalParameterSpecification"
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the global parameter."
       }
     },
     "com.azure.datafactory#GlobalParametersGet": {
@@ -8319,16 +8892,55 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "gitHubAccessCode": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "GitHub access code.",
+            "smithy.api#required": {}
+          }
+        },
+        "gitHubClientId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GitHub application client ID."
+          }
+        },
+        "gitHubClientSecret": {
+          "target": "com.azure.datafactory#GitHubClientSecret",
+          "traits": {
+            "smithy.api#documentation": "GitHub bring your own app client secret information."
+          }
+        },
+        "gitHubAccessTokenBaseUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GitHub access token base URL.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#GitHubClientSecret": {
+      "type": "structure",
+      "members": {
+        "byoaSecretAkvUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Bring your own app client secret AKV URL."
+          }
+        },
+        "byoaSecretName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Bring your own app client secret name in AKV."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Client secret information for factory's bring your own app repository configuration."
       }
     },
     "com.azure.datafactory#ExposureControlGetFeatureValueByFactory": {
@@ -8377,11 +8989,16 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "featureName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The feature name."
+          }
+        },
+        "featureType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The feature type."
           }
         }
       },
@@ -8500,11 +9117,34 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "permissions": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The string with permissions for Data Plane access. Currently only 'r' is supported which grants read only access."
+          }
+        },
+        "accessResourcePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource path to get access relative to factory. Currently only empty string is supported which corresponds to the factory resource."
+          }
+        },
+        "profileName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the profile. Currently only the default is supported. The default value is DefaultProfile."
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start time for the token. If not specified the current time will be used."
+          }
+        },
+        "expireTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Expiration time for the token. Maximum duration for the token is eight hours and by default the token will expire in eight hours."
           }
         }
       },
@@ -8578,16 +9218,95 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sessionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The ID of data flow debug session."
+          }
+        },
+        "command": {
+          "target": "com.azure.datafactory#DataFlowDebugCommandType",
+          "traits": {
+            "smithy.api#documentation": "The command type."
+          }
+        },
+        "commandPayload": {
+          "target": "com.azure.datafactory#DataFlowDebugCommandPayload",
+          "traits": {
+            "smithy.api#documentation": "The command payload object."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#DataFlowDebugCommandPayload": {
+      "type": "structure",
+      "members": {
+        "streamName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The stream name which is used for preview.",
+            "smithy.api#required": {}
+          }
+        },
+        "rowLimits": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Row limits for preview response."
+          }
+        },
+        "columns": {
+          "target": "com.azure.datafactory#DataFlowDebugCommandPayloadColumnsList",
+          "traits": {
+            "smithy.api#documentation": "Array of column names."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expression which is used for preview."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Structure of command payload."
+      }
+    },
+    "com.azure.datafactory#DataFlowDebugCommandPayloadColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of column names."
+      }
+    },
+    "com.azure.datafactory#DataFlowDebugCommandType": {
+      "type": "enum",
+      "members": {
+        "EXECUTEPREVIEWQUERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "executePreviewQuery"
+          }
+        },
+        "EXECUTESTATISTICSQUERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "executeStatisticsQuery"
+          }
+        },
+        "EXECUTEEXPRESSIONQUERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "executeExpressionQuery"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The command type."
       }
     },
     "com.azure.datafactory#DataFlowDebugSessionDelete": {
@@ -8636,11 +9355,10 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sessionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The ID of data flow debug session."
           }
         }
       },
@@ -8953,10 +9671,10 @@
             "smithy.api#documentation": "The dataset name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#Dataset",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Dataset properties.",
             "smithy.api#required": {}
           }
         }
@@ -9409,10 +10127,10 @@
             "smithy.api#documentation": "The data flow name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#DataFlow",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Data flow properties.",
             "smithy.api#required": {}
           }
         }
@@ -9845,10 +10563,10 @@
             "smithy.api#documentation": "Credential name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#Credential",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of credentials.",
             "smithy.api#required": {}
           }
         }
@@ -10153,16 +10871,54 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "computeType": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Compute type of the cluster. The value will be overwritten by the same setting in integration runtime if provided."
+          }
+        },
+        "coreCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Core count of the cluster. The value will be overwritten by the same setting in integration runtime if provided."
+          }
+        },
+        "timeToLive": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time to live setting of the cluster in minutes."
+          }
+        },
+        "integrationRuntime": {
+          "target": "com.azure.datafactory#IntegrationRuntimeDebugResource",
+          "traits": {
+            "smithy.api#documentation": "Set to use integration runtime setting for data flow debug session."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#IntegrationRuntimeDebugResource": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource name."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datafactory#IntegrationRuntime",
+          "traits": {
+            "smithy.api#documentation": "Integration runtime properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Integration runtime debug resource."
       }
     },
     "com.azure.datafactory#ChangeDataCaptureStop": {
@@ -11100,10 +11856,10 @@
             "smithy.api#documentation": "The change data capture name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#ChangeDataCapture",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the change data capture.",
             "smithy.api#required": {}
           }
         }
@@ -11402,16 +12158,228 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sessionId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The ID of data flow debug session."
+          }
+        },
+        "dataFlow": {
+          "target": "com.azure.datafactory#DataFlowDebugResource",
+          "traits": {
+            "smithy.api#documentation": "Data flow instance."
+          }
+        },
+        "dataFlows": {
+          "target": "com.azure.datafactory#DataFlowDebugSessionAddDataFlowRequestDataFlowsList",
+          "traits": {
+            "smithy.api#documentation": "List of Data flows"
+          }
+        },
+        "datasets": {
+          "target": "com.azure.datafactory#DataFlowDebugSessionAddDataFlowRequestDatasetsList",
+          "traits": {
+            "smithy.api#documentation": "List of datasets."
+          }
+        },
+        "linkedServices": {
+          "target": "com.azure.datafactory#DataFlowDebugSessionAddDataFlowRequestLinkedServicesList",
+          "traits": {
+            "smithy.api#documentation": "List of linked services."
+          }
+        },
+        "staging": {
+          "target": "com.azure.datafactory#DataFlowStagingInfo",
+          "traits": {
+            "smithy.api#documentation": "Staging info for debug session."
+          }
+        },
+        "debugSettings": {
+          "target": "com.azure.datafactory#DataFlowDebugPackageDebugSettings",
+          "traits": {
+            "smithy.api#documentation": "Data flow debug settings."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#DataFlowDebugPackageDebugSettings": {
+      "type": "structure",
+      "members": {
+        "sourceSettings": {
+          "target": "com.azure.datafactory#DataFlowDebugPackageDebugSettingsSourceSettingsList",
+          "traits": {
+            "smithy.api#documentation": "Source setting for data flow debug."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.datafactory#DataFlowDebugPackageDebugSettingsParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Data flow parameters."
+          }
+        },
+        "datasetParameters": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Parameters for dataset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data flow debug settings."
+      }
+    },
+    "com.azure.datafactory#DataFlowDebugPackageDebugSettingsParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Data flow parameters."
+      }
+    },
+    "com.azure.datafactory#DataFlowDebugPackageDebugSettingsSourceSettingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datafactory#DataFlowSourceSetting"
+      },
+      "traits": {
+        "smithy.api#documentation": "Source setting for data flow debug."
+      }
+    },
+    "com.azure.datafactory#DataFlowSourceSetting": {
+      "type": "structure",
+      "members": {
+        "sourceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The data flow source name."
+          }
+        },
+        "rowLimit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Defines the row limit of data flow source in debug."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of data flow source setting for debug."
+      }
+    },
+    "com.azure.datafactory#DataFlowStagingInfo": {
+      "type": "structure",
+      "members": {
+        "linkedService": {
+          "target": "com.azure.datafactory#LinkedServiceReference",
+          "traits": {
+            "smithy.api#documentation": "Staging linked service reference."
+          }
+        },
+        "folderPath": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Folder path for staging blob. Type: string (or Expression with resultType string)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Staging info for execute data flow activity."
+      }
+    },
+    "com.azure.datafactory#DataFlowDebugSessionAddDataFlowRequestLinkedServicesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datafactory#LinkedServiceDebugResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of linked services."
+      }
+    },
+    "com.azure.datafactory#LinkedServiceDebugResource": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource name."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datafactory#LinkedService",
+          "traits": {
+            "smithy.api#documentation": "Properties of linked service.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Linked service debug resource."
+      }
+    },
+    "com.azure.datafactory#DataFlowDebugSessionAddDataFlowRequestDatasetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datafactory#DatasetDebugResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of datasets."
+      }
+    },
+    "com.azure.datafactory#DatasetDebugResource": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource name."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datafactory#Dataset",
+          "traits": {
+            "smithy.api#documentation": "Dataset properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dataset debug resource."
+      }
+    },
+    "com.azure.datafactory#DataFlowDebugSessionAddDataFlowRequestDataFlowsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.datafactory#DataFlowDebugResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Data flows"
+      }
+    },
+    "com.azure.datafactory#DataFlowDebugResource": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource name."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datafactory#DataFlow",
+          "traits": {
+            "smithy.api#documentation": "Data flow properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data flow debug resource."
       }
     },
     "com.azure.datafactory#FactoriesDelete": {
@@ -11861,16 +12829,53 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.datafactory#FactoriesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.datafactory#FactoryIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity of the factory."
+          }
+        },
+        "properties": {
+          "target": "com.azure.datafactory#FactoryUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of update the factory."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#FactoryUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.datafactory#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network access is allowed for the data factory."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Factory update resource properties."
+      }
+    },
+    "com.azure.datafactory#FactoriesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.datafactory#FactoriesCreateOrUpdate": {
@@ -11993,16 +12998,95 @@
             "smithy.api#documentation": "The factory name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.datafactory#FactoryPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the factory."
+          }
+        },
+        "identity": {
+          "target": "com.azure.datafactory#FactoryIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity of the factory."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.datafactory#FactoriesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.datafactory#FactoriesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
+      }
+    },
+    "com.azure.datafactory#FactoryPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "purviewConfiguration": {
+          "target": "com.azure.datafactory#PurviewConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Purview information of the factory."
+          }
+        },
+        "repoConfiguration": {
+          "target": "com.azure.datafactory#FactoryRepoConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Git repo information of the factory."
+          }
+        },
+        "globalParameters": {
+          "target": "com.azure.datafactory#FactoryPropertiesInputGlobalParametersMap",
+          "traits": {
+            "smithy.api#documentation": "List of parameters for factory."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.datafactory#EncryptionConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Properties to enable Customer Managed Key for the factory."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.datafactory#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Whether or not public network access is allowed for the data factory."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Factory resource properties."
+      }
+    },
+    "com.azure.datafactory#FactoryPropertiesInputGlobalParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.datafactory#GlobalParameterSpecification"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of parameters for factory."
       }
     },
     "com.azure.datafactory#FactoriesGet": {
@@ -12315,11 +13399,16 @@
             "smithy.api#documentation": "The location identifier."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "featureName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The feature name."
+          }
+        },
+        "featureType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The feature type."
           }
         }
       },
@@ -12439,11 +13528,16 @@
             "smithy.api#documentation": "The location identifier."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "factoryResourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The factory resource id."
+          }
+        },
+        "repoConfiguration": {
+          "target": "com.azure.datafactory#FactoryRepoConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Git repo information of the factory."
           }
         }
       },

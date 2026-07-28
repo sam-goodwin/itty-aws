@@ -64,16 +64,14 @@ export type AggregatedProjectsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
-  | "JOB_VIEW_DESCRIPTION"
-  | (string & {});
+  | "JOB_VIEW_DESCRIPTION";
 export const AggregatedProjectsJobsViewEnum = /*@__PURE__*/ S.String;
 
 export type AggregatedProjectsJobsFilterEnum =
   | "UNKNOWN"
   | "ALL"
   | "TERMINATED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const AggregatedProjectsJobsFilterEnum = /*@__PURE__*/ S.String;
 
 export interface AggregatedProjectsJobsRequest {
@@ -123,7 +121,7 @@ export const FailedLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FailedLocation" }) as any as S.Schema<FailedLocation>;
 
-export type FailedLocationList = FailedLocation[];
+export type FailedLocationList = ReadonlyArray<FailedLocation>;
 export const FailedLocationList = /*@__PURE__*/ S.Array(
   FailedLocation,
 ) as any as S.Schema<FailedLocationList>;
@@ -185,12 +183,12 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
-export type StepList = Step[];
+export type StepList = ReadonlyArray<Step>;
 export const StepList = /*@__PURE__*/ S.Array(
   Step,
 ) as any as S.Schema<StepList>;
 
-export type StringList_ = string[];
+export type StringList_ = ReadonlyArray<string>;
 export const StringList_ = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList_>;
@@ -257,8 +255,7 @@ export type JobRequestedStateEnum =
   | "JOB_STATE_QUEUED"
   | "JOB_STATE_RESOURCE_CLEANING_UP"
   | "JOB_STATE_PAUSING"
-  | "JOB_STATE_PAUSED"
-  | (string & {});
+  | "JOB_STATE_PAUSED";
 export const JobRequestedStateEnum = /*@__PURE__*/ S.String;
 
 export type JobCurrentStateEnum =
@@ -276,8 +273,7 @@ export type JobCurrentStateEnum =
   | "JOB_STATE_QUEUED"
   | "JOB_STATE_RESOURCE_CLEANING_UP"
   | "JOB_STATE_PAUSING"
-  | "JOB_STATE_PAUSED"
-  | (string & {});
+  | "JOB_STATE_PAUSED";
 export const JobCurrentStateEnum = /*@__PURE__*/ S.String;
 
 export type ExecutionStageStateExecutionStageStateEnum =
@@ -295,8 +291,7 @@ export type ExecutionStageStateExecutionStageStateEnum =
   | "JOB_STATE_QUEUED"
   | "JOB_STATE_RESOURCE_CLEANING_UP"
   | "JOB_STATE_PAUSING"
-  | "JOB_STATE_PAUSED"
-  | (string & {});
+  | "JOB_STATE_PAUSED";
 export const ExecutionStageStateExecutionStageStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -319,7 +314,7 @@ export const ExecutionStageState = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutionStageState",
 }) as any as S.Schema<ExecutionStageState>;
 
-export type ExecutionStageStateList = ExecutionStageState[];
+export type ExecutionStageStateList = ReadonlyArray<ExecutionStageState>;
 export const ExecutionStageStateList = /*@__PURE__*/ S.Array(
   ExecutionStageState,
 ) as any as S.Schema<ExecutionStageStateList>;
@@ -343,7 +338,7 @@ export const ComponentTransform = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComponentTransform",
 }) as any as S.Schema<ComponentTransform>;
 
-export type ComponentTransformList = ComponentTransform[];
+export type ComponentTransformList = ReadonlyArray<ComponentTransform>;
 export const ComponentTransformList = /*@__PURE__*/ S.Array(
   ComponentTransform,
 ) as any as S.Schema<ComponentTransformList>;
@@ -357,8 +352,7 @@ export type ExecutionStageSummaryKindEnum =
   | "WRITE_KIND"
   | "CONSTANT_KIND"
   | "SINGLETON_KIND"
-  | "SHUFFLE_KIND"
-  | (string & {});
+  | "SHUFFLE_KIND";
 export const ExecutionStageSummaryKindEnum = /*@__PURE__*/ S.String;
 
 /** Description of an input or output of an execution stage. */
@@ -381,7 +375,7 @@ export const StageSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StageSource" }) as any as S.Schema<StageSource>;
 
-export type StageSourceList = StageSource[];
+export type StageSourceList = ReadonlyArray<StageSource>;
 export const StageSourceList = /*@__PURE__*/ S.Array(
   StageSource,
 ) as any as S.Schema<StageSourceList>;
@@ -405,7 +399,7 @@ export const ComponentSource = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComponentSource",
 }) as any as S.Schema<ComponentSource>;
 
-export type ComponentSourceList = ComponentSource[];
+export type ComponentSourceList = ReadonlyArray<ComponentSource>;
 export const ComponentSourceList = /*@__PURE__*/ S.Array(
   ComponentSource,
 ) as any as S.Schema<ComponentSourceList>;
@@ -444,7 +438,7 @@ export const ExecutionStageSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExecutionStageSummary",
 }) as any as S.Schema<ExecutionStageSummary>;
 
-export type ExecutionStageSummaryList = ExecutionStageSummary[];
+export type ExecutionStageSummaryList = ReadonlyArray<ExecutionStageSummary>;
 export const ExecutionStageSummaryList = /*@__PURE__*/ S.Array(
   ExecutionStageSummary,
 ) as any as S.Schema<ExecutionStageSummaryList>;
@@ -493,7 +487,7 @@ export const DisplayData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DisplayData" }) as any as S.Schema<DisplayData>;
 
-export type DisplayDataList = DisplayData[];
+export type DisplayDataList = ReadonlyArray<DisplayData>;
 export const DisplayDataList = /*@__PURE__*/ S.Array(
   DisplayData,
 ) as any as S.Schema<DisplayDataList>;
@@ -507,8 +501,7 @@ export type TransformSummaryKindEnum =
   | "WRITE_KIND"
   | "CONSTANT_KIND"
   | "SINGLETON_KIND"
-  | "SHUFFLE_KIND"
-  | (string & {});
+  | "SHUFFLE_KIND";
 export const TransformSummaryKindEnum = /*@__PURE__*/ S.String;
 
 /** Description of the type, names/ids, and input/outputs for a transform. */
@@ -539,7 +532,7 @@ export const TransformSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransformSummary",
 }) as any as S.Schema<TransformSummary>;
 
-export type TransformSummaryList = TransformSummary[];
+export type TransformSummaryList = ReadonlyArray<TransformSummary>;
 export const TransformSummaryList = /*@__PURE__*/ S.Array(
   TransformSummary,
 ) as any as S.Schema<TransformSummaryList>;
@@ -585,7 +578,7 @@ export const BigTableIODetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "BigTableIODetails",
 }) as any as S.Schema<BigTableIODetails>;
 
-export type BigTableIODetailsList = BigTableIODetails[];
+export type BigTableIODetailsList = ReadonlyArray<BigTableIODetails>;
 export const BigTableIODetailsList = /*@__PURE__*/ S.Array(
   BigTableIODetails,
 ) as any as S.Schema<BigTableIODetailsList>;
@@ -601,7 +594,7 @@ export const FileIODetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FileIODetails" }) as any as S.Schema<FileIODetails>;
 
-export type FileIODetailsList = FileIODetails[];
+export type FileIODetailsList = ReadonlyArray<FileIODetails>;
 export const FileIODetailsList = /*@__PURE__*/ S.Array(
   FileIODetails,
 ) as any as S.Schema<FileIODetailsList>;
@@ -611,24 +604,21 @@ export type SdkVersionSdkSupportStatusEnum =
   | "SUPPORTED"
   | "STALE"
   | "DEPRECATED"
-  | "UNSUPPORTED"
-  | (string & {});
+  | "UNSUPPORTED";
 export const SdkVersionSdkSupportStatusEnum = /*@__PURE__*/ S.String;
 
 export type SdkBugTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GENERAL"
   | "PERFORMANCE"
-  | "DATALOSS"
-  | (string & {});
+  | "DATALOSS";
 export const SdkBugTypeEnum = /*@__PURE__*/ S.String;
 
 export type SdkBugSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOTICE"
   | "WARNING"
-  | "SEVERE"
-  | (string & {});
+  | "SEVERE";
 export const SdkBugSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A bug found in the Dataflow SDK. */
@@ -648,7 +638,7 @@ export const SdkBug = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SdkBug" }) as any as S.Schema<SdkBug>;
 
-export type SdkBugList = SdkBug[];
+export type SdkBugList = ReadonlyArray<SdkBug>;
 export const SdkBugList = /*@__PURE__*/ S.Array(
   SdkBug,
 ) as any as S.Schema<SdkBugList>;
@@ -692,7 +682,7 @@ export const SpannerIODetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpannerIODetails",
 }) as any as S.Schema<SpannerIODetails>;
 
-export type SpannerIODetailsList = SpannerIODetails[];
+export type SpannerIODetailsList = ReadonlyArray<SpannerIODetails>;
 export const SpannerIODetailsList = /*@__PURE__*/ S.Array(
   SpannerIODetails,
 ) as any as S.Schema<SpannerIODetailsList>;
@@ -713,7 +703,7 @@ export const PubSubIODetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "PubSubIODetails",
 }) as any as S.Schema<PubSubIODetails>;
 
-export type PubSubIODetailsList = PubSubIODetails[];
+export type PubSubIODetailsList = ReadonlyArray<PubSubIODetails>;
 export const PubSubIODetailsList = /*@__PURE__*/ S.Array(
   PubSubIODetails,
 ) as any as S.Schema<PubSubIODetailsList>;
@@ -734,7 +724,7 @@ export const DatastoreIODetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatastoreIODetails",
 }) as any as S.Schema<DatastoreIODetails>;
 
-export type DatastoreIODetailsList = DatastoreIODetails[];
+export type DatastoreIODetailsList = ReadonlyArray<DatastoreIODetails>;
 export const DatastoreIODetailsList = /*@__PURE__*/ S.Array(
   DatastoreIODetails,
 ) as any as S.Schema<DatastoreIODetailsList>;
@@ -761,7 +751,7 @@ export const BigQueryIODetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "BigQueryIODetails",
 }) as any as S.Schema<BigQueryIODetails>;
 
-export type BigQueryIODetailsList = BigQueryIODetails[];
+export type BigQueryIODetailsList = ReadonlyArray<BigQueryIODetails>;
 export const BigQueryIODetailsList = /*@__PURE__*/ S.Array(
   BigQueryIODetails,
 ) as any as S.Schema<BigQueryIODetailsList>;
@@ -801,15 +791,13 @@ export const JobMetadata = /*@__PURE__*/ S.suspend(() =>
 export type JobTypeEnum =
   | "JOB_TYPE_UNKNOWN"
   | "JOB_TYPE_BATCH"
-  | "JOB_TYPE_STREAMING"
-  | (string & {});
+  | "JOB_TYPE_STREAMING";
 export const JobTypeEnum = /*@__PURE__*/ S.String;
 
 export type EnvironmentStreamingModeEnum =
   | "STREAMING_MODE_UNSPECIFIED"
   | "STREAMING_MODE_EXACTLY_ONCE"
-  | "STREAMING_MODE_AT_LEAST_ONCE"
-  | (string & {});
+  | "STREAMING_MODE_AT_LEAST_ONCE";
 export const EnvironmentStreamingModeEnum = /*@__PURE__*/ S.String;
 
 /** The packages that must be installed in order for a worker to run the steps of the Cloud Dataflow job that will be assigned to its worker pool. This is the mechanism by which the Cloud Dataflow SDK causes code to be loaded onto the workers. For example, the Cloud Dataflow Java SDK might use this to install jars containing the user's code and all of the various dependencies (libraries, data files, etc.) required in order for that code to run. */
@@ -829,7 +817,7 @@ export const Package = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Package" }) as any as S.Schema<Package>;
 
-export type PackageList = Package[];
+export type PackageList = ReadonlyArray<Package>;
 export const PackageList = /*@__PURE__*/ S.Array(
   Package,
 ) as any as S.Schema<PackageList>;
@@ -837,8 +825,7 @@ export const PackageList = /*@__PURE__*/ S.Array(
 export type AutoscalingSettingsAlgorithmEnum =
   | "AUTOSCALING_ALGORITHM_UNKNOWN"
   | "AUTOSCALING_ALGORITHM_NONE"
-  | "AUTOSCALING_ALGORITHM_BASIC"
-  | (string & {});
+  | "AUTOSCALING_ALGORITHM_BASIC";
 export const AutoscalingSettingsAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** Settings for WorkerPool autoscaling. */
@@ -874,7 +861,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
-export type DiskList = Disk[];
+export type DiskList = ReadonlyArray<Disk>;
 export const DiskList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<DiskList>;
@@ -883,16 +870,14 @@ export type WorkerPoolTeardownPolicyEnum =
   | "TEARDOWN_POLICY_UNKNOWN"
   | "TEARDOWN_ALWAYS"
   | "TEARDOWN_ON_SUCCESS"
-  | "TEARDOWN_NEVER"
-  | (string & {});
+  | "TEARDOWN_NEVER";
 export const WorkerPoolTeardownPolicyEnum = /*@__PURE__*/ S.String;
 
 export type WorkerPoolDefaultPackageSetEnum =
   | "DEFAULT_PACKAGE_SET_UNKNOWN"
   | "DEFAULT_PACKAGE_SET_NONE"
   | "DEFAULT_PACKAGE_SET_JAVA"
-  | "DEFAULT_PACKAGE_SET_PYTHON"
-  | (string & {});
+  | "DEFAULT_PACKAGE_SET_PYTHON";
 export const WorkerPoolDefaultPackageSetEnum = /*@__PURE__*/ S.String;
 
 /** Provides data to pass through to the worker harness. */
@@ -991,8 +976,7 @@ export const TaskRunnerSettings = /*@__PURE__*/ S.suspend(() =>
 export type WorkerPoolIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
-  | "WORKER_IP_PRIVATE"
-  | (string & {});
+  | "WORKER_IP_PRIVATE";
 export const WorkerPoolIpConfigurationEnum = /*@__PURE__*/ S.String;
 
 /** Defines an SDK harness container for executing Dataflow pipelines. */
@@ -1017,7 +1001,8 @@ export const SdkHarnessContainerImage = /*@__PURE__*/ S.suspend(() =>
   identifier: "SdkHarnessContainerImage",
 }) as any as S.Schema<SdkHarnessContainerImage>;
 
-export type SdkHarnessContainerImageList = SdkHarnessContainerImage[];
+export type SdkHarnessContainerImageList =
+  ReadonlyArray<SdkHarnessContainerImage>;
 export const SdkHarnessContainerImageList = /*@__PURE__*/ S.Array(
   SdkHarnessContainerImage,
 ) as any as S.Schema<SdkHarnessContainerImageList>;
@@ -1102,7 +1087,7 @@ export const WorkerPool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WorkerPool" }) as any as S.Schema<WorkerPool>;
 
-export type WorkerPoolList = WorkerPool[];
+export type WorkerPoolList = ReadonlyArray<WorkerPool>;
 export const WorkerPoolList = /*@__PURE__*/ S.Array(
   WorkerPool,
 ) as any as S.Schema<WorkerPoolList>;
@@ -1110,20 +1095,18 @@ export const WorkerPoolList = /*@__PURE__*/ S.Array(
 export type EnvironmentFlexResourceSchedulingGoalEnum =
   | "FLEXRS_UNSPECIFIED"
   | "FLEXRS_SPEED_OPTIMIZED"
-  | "FLEXRS_COST_OPTIMIZED"
-  | (string & {});
+  | "FLEXRS_COST_OPTIMIZED";
 export const EnvironmentFlexResourceSchedulingGoalEnum = /*@__PURE__*/ S.String;
 
 export type DataSamplingConfigBehaviorsItemEnum =
   | "DATA_SAMPLING_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "ALWAYS_ON"
-  | "EXCEPTIONS"
-  | (string & {});
+  | "EXCEPTIONS";
 export const DataSamplingConfigBehaviorsItemEnum = /*@__PURE__*/ S.String;
 
 export type DataSamplingConfigBehaviorsItemEnumList =
-  DataSamplingConfigBehaviorsItemEnum[];
+  ReadonlyArray<DataSamplingConfigBehaviorsItemEnum>;
 export const DataSamplingConfigBehaviorsItemEnumList = /*@__PURE__*/ S.Array(
   DataSamplingConfigBehaviorsItemEnum,
 ) as any as S.Schema<DataSamplingConfigBehaviorsItemEnumList>;
@@ -1158,8 +1141,7 @@ export const DebugOptions = /*@__PURE__*/ S.suspend(() =>
 export type EnvironmentShuffleModeEnum =
   | "SHUFFLE_MODE_UNSPECIFIED"
   | "VM_BASED"
-  | "SERVICE_BASED"
-  | (string & {});
+  | "SERVICE_BASED";
 export const EnvironmentShuffleModeEnum = /*@__PURE__*/ S.String;
 
 /** Describes the environment in which a Dataflow Job runs. */
@@ -1327,7 +1309,7 @@ export const Job = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
-export type JobList = Job[];
+export type JobList = ReadonlyArray<Job>;
 export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Response to a request to list Cloud Dataflow jobs in a project. This might be a partial response, depending on the page size in the ListJobsRequest. However, if the project does not have any jobs, an instance of ListJobsResponse is not returned and the requests's response body is empty {}. */
@@ -1353,8 +1335,7 @@ export type CreateProjectsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
-  | "JOB_VIEW_DESCRIPTION"
-  | (string & {});
+  | "JOB_VIEW_DESCRIPTION";
 export const CreateProjectsJobsViewEnum = /*@__PURE__*/ S.String;
 
 export interface CreateProjectsJobsRequest {
@@ -1391,8 +1372,7 @@ export type CreateProjectsLocationsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
-  | "JOB_VIEW_DESCRIPTION"
-  | (string & {});
+  | "JOB_VIEW_DESCRIPTION";
 export const CreateProjectsLocationsJobsViewEnum = /*@__PURE__*/ S.String;
 
 export interface CreateProjectsLocationsJobsRequest {
@@ -1428,15 +1408,13 @@ export const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ S.suspend(() =>
 export type RuntimeEnvironmentStreamingModeEnum =
   | "STREAMING_MODE_UNSPECIFIED"
   | "STREAMING_MODE_EXACTLY_ONCE"
-  | "STREAMING_MODE_AT_LEAST_ONCE"
-  | (string & {});
+  | "STREAMING_MODE_AT_LEAST_ONCE";
 export const RuntimeEnvironmentStreamingModeEnum = /*@__PURE__*/ S.String;
 
 export type RuntimeEnvironmentIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
-  | "WORKER_IP_PRIVATE"
-  | (string & {});
+  | "WORKER_IP_PRIVATE";
 export const RuntimeEnvironmentIpConfigurationEnum = /*@__PURE__*/ S.String;
 
 /** The environment values to set at runtime. */
@@ -1815,7 +1793,7 @@ export const MetricUpdate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricUpdate" }) as any as S.Schema<MetricUpdate>;
 
-export type MetricUpdateList = MetricUpdate[];
+export type MetricUpdateList = ReadonlyArray<MetricUpdate>;
 export const MetricUpdateList = /*@__PURE__*/ S.Array(
   MetricUpdate,
 ) as any as S.Schema<MetricUpdateList>;
@@ -1930,7 +1908,7 @@ export const Straggler = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Straggler" }) as any as S.Schema<Straggler>;
 
-export type StragglerList = Straggler[];
+export type StragglerList = ReadonlyArray<Straggler>;
 export const StragglerList = /*@__PURE__*/ S.Array(
   Straggler,
 ) as any as S.Schema<StragglerList>;
@@ -1960,8 +1938,7 @@ export type StageSummaryStateEnum =
   | "EXECUTION_STATE_RUNNING"
   | "EXECUTION_STATE_SUCCEEDED"
   | "EXECUTION_STATE_FAILED"
-  | "EXECUTION_STATE_CANCELLED"
-  | (string & {});
+  | "EXECUTION_STATE_CANCELLED";
 export const StageSummaryStateEnum = /*@__PURE__*/ S.String;
 
 /** A point in the timeseries. */
@@ -1978,7 +1955,7 @@ export const Point = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Point" }) as any as S.Schema<Point>;
 
-export type PointList = Point[];
+export type PointList = ReadonlyArray<Point>;
 export const PointList = /*@__PURE__*/ S.Array(
   Point,
 ) as any as S.Schema<PointList>;
@@ -2028,7 +2005,7 @@ export const StageSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StageSummary" }) as any as S.Schema<StageSummary>;
 
-export type StageSummaryList = StageSummary[];
+export type StageSummaryList = ReadonlyArray<StageSummary>;
 export const StageSummaryList = /*@__PURE__*/ S.Array(
   StageSummary,
 ) as any as S.Schema<StageSummaryList>;
@@ -2095,8 +2072,7 @@ export type WorkItemDetailsStateEnum =
   | "EXECUTION_STATE_RUNNING"
   | "EXECUTION_STATE_SUCCEEDED"
   | "EXECUTION_STATE_FAILED"
-  | "EXECUTION_STATE_CANCELLED"
-  | (string & {});
+  | "EXECUTION_STATE_CANCELLED";
 export const WorkItemDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about an individual work item execution. */
@@ -2133,7 +2109,7 @@ export const WorkItemDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkItemDetails",
 }) as any as S.Schema<WorkItemDetails>;
 
-export type WorkItemDetailsList = WorkItemDetails[];
+export type WorkItemDetailsList = ReadonlyArray<WorkItemDetails>;
 export const WorkItemDetailsList = /*@__PURE__*/ S.Array(
   WorkItemDetails,
 ) as any as S.Schema<WorkItemDetailsList>;
@@ -2152,7 +2128,7 @@ export const WorkerDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WorkerDetails" }) as any as S.Schema<WorkerDetails>;
 
-export type WorkerDetailsList = WorkerDetails[];
+export type WorkerDetailsList = ReadonlyArray<WorkerDetails>;
 export const WorkerDetailsList = /*@__PURE__*/ S.Array(
   WorkerDetails,
 ) as any as S.Schema<WorkerDetailsList>;
@@ -2246,8 +2222,7 @@ export type GetProjectsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
-  | "JOB_VIEW_DESCRIPTION"
-  | (string & {});
+  | "JOB_VIEW_DESCRIPTION";
 export const GetProjectsJobsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsJobsRequest {
@@ -2281,8 +2256,7 @@ export type GetProjectsLocationsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
-  | "JOB_VIEW_DESCRIPTION"
-  | (string & {});
+  | "JOB_VIEW_DESCRIPTION";
 export const GetProjectsLocationsJobsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsJobsRequest {
@@ -2343,8 +2317,7 @@ export type SnapshotStateEnum =
   | "RUNNING"
   | "READY"
   | "FAILED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const SnapshotStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Pubsub snapshot. */
@@ -2366,7 +2339,7 @@ export const PubsubSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "PubsubSnapshotMetadata",
 }) as any as S.Schema<PubsubSnapshotMetadata>;
 
-export type PubsubSnapshotMetadataList = PubsubSnapshotMetadata[];
+export type PubsubSnapshotMetadataList = ReadonlyArray<PubsubSnapshotMetadata>;
 export const PubsubSnapshotMetadataList = /*@__PURE__*/ S.Array(
   PubsubSnapshotMetadata,
 ) as any as S.Schema<PubsubSnapshotMetadataList>;
@@ -2409,9 +2382,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
-export type GetProjectsLocationsTemplatesViewEnum =
-  | "METADATA_ONLY"
-  | (string & {});
+export type GetProjectsLocationsTemplatesViewEnum = "METADATA_ONLY";
 export const GetProjectsLocationsTemplatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsTemplatesRequest {
@@ -2442,7 +2413,7 @@ export const GetProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetProjectsLocationsTemplatesRequest",
 }) as any as S.Schema<GetProjectsLocationsTemplatesRequest>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2464,20 +2435,10 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type GetTemplateResponseTemplateTypeEnum =
-  | "UNKNOWN"
-  | "LEGACY"
-  | "FLEX"
-  | (string & {});
+export type GetTemplateResponseTemplateTypeEnum = "UNKNOWN" | "LEGACY" | "FLEX";
 export const GetTemplateResponseTemplateTypeEnum = /*@__PURE__*/ S.String;
 
-export type SDKInfoLanguageEnum =
-  | "UNKNOWN"
-  | "JAVA"
-  | "PYTHON"
-  | "GO"
-  | "YAML"
-  | (string & {});
+export type SDKInfoLanguageEnum = "UNKNOWN" | "JAVA" | "PYTHON" | "GO" | "YAML";
 export const SDKInfoLanguageEnum = /*@__PURE__*/ S.String;
 
 /** SDK Information. */
@@ -2517,8 +2478,7 @@ export type ParameterMetadataParamTypeEnum =
   | "NUMBER"
   | "KAFKA_TOPIC"
   | "KAFKA_READ_TOPIC"
-  | "KAFKA_WRITE_TOPIC"
-  | (string & {});
+  | "KAFKA_WRITE_TOPIC";
 export const ParameterMetadataParamTypeEnum = /*@__PURE__*/ S.String;
 
 /** ParameterMetadataEnumOption specifies the option shown in the enum form. */
@@ -2540,7 +2500,8 @@ export const ParameterMetadataEnumOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "ParameterMetadataEnumOption",
 }) as any as S.Schema<ParameterMetadataEnumOption>;
 
-export type ParameterMetadataEnumOptionList = ParameterMetadataEnumOption[];
+export type ParameterMetadataEnumOptionList =
+  ReadonlyArray<ParameterMetadataEnumOption>;
 export const ParameterMetadataEnumOptionList = /*@__PURE__*/ S.Array(
   ParameterMetadataEnumOption,
 ) as any as S.Schema<ParameterMetadataEnumOptionList>;
@@ -2594,7 +2555,7 @@ export const ParameterMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "ParameterMetadata",
 }) as any as S.Schema<ParameterMetadata>;
 
-export type ParameterMetadataList = ParameterMetadata[];
+export type ParameterMetadataList = ReadonlyArray<ParameterMetadata>;
 export const ParameterMetadataList = /*@__PURE__*/ S.Array(
   ParameterMetadata,
 ) as any as S.Schema<ParameterMetadataList>;
@@ -2695,7 +2656,7 @@ export const GetProjectsSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetProjectsSnapshotsRequest",
 }) as any as S.Schema<GetProjectsSnapshotsRequest>;
 
-export type GetProjectsTemplatesViewEnum = "METADATA_ONLY" | (string & {});
+export type GetProjectsTemplatesViewEnum = "METADATA_ONLY";
 export const GetProjectsTemplatesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsTemplatesRequest {
@@ -2792,7 +2753,7 @@ export const Stack = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Stack" }) as any as S.Schema<Stack>;
 
-export type StackList = Stack[];
+export type StackList = ReadonlyArray<Stack>;
 export const StackList = /*@__PURE__*/ S.Array(
   Stack,
 ) as any as S.Schema<StackList>;
@@ -2811,7 +2772,7 @@ export const Sdk = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Sdk" }) as any as S.Schema<Sdk>;
 
-export type SdkList = Sdk[];
+export type SdkList = ReadonlyArray<Sdk>;
 export const SdkList = /*@__PURE__*/ S.Array(Sdk) as any as S.Schema<SdkList>;
 
 /** Response to get worker stacktraces from debug capture. */
@@ -2830,32 +2791,28 @@ export const GetWorkerStacktracesResponse = /*@__PURE__*/ S.suspend(() =>
 export type FlexTemplateRuntimeEnvironmentFlexrsGoalEnum =
   | "FLEXRS_UNSPECIFIED"
   | "FLEXRS_SPEED_OPTIMIZED"
-  | "FLEXRS_COST_OPTIMIZED"
-  | (string & {});
+  | "FLEXRS_COST_OPTIMIZED";
 export const FlexTemplateRuntimeEnvironmentFlexrsGoalEnum =
   /*@__PURE__*/ S.String;
 
 export type FlexTemplateRuntimeEnvironmentStreamingModeEnum =
   | "STREAMING_MODE_UNSPECIFIED"
   | "STREAMING_MODE_EXACTLY_ONCE"
-  | "STREAMING_MODE_AT_LEAST_ONCE"
-  | (string & {});
+  | "STREAMING_MODE_AT_LEAST_ONCE";
 export const FlexTemplateRuntimeEnvironmentStreamingModeEnum =
   /*@__PURE__*/ S.String;
 
 export type FlexTemplateRuntimeEnvironmentIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
-  | "WORKER_IP_PRIVATE"
-  | (string & {});
+  | "WORKER_IP_PRIVATE";
 export const FlexTemplateRuntimeEnvironmentIpConfigurationEnum =
   /*@__PURE__*/ S.String;
 
 export type FlexTemplateRuntimeEnvironmentAutoscalingAlgorithmEnum =
   | "AUTOSCALING_ALGORITHM_UNKNOWN"
   | "AUTOSCALING_ALGORITHM_NONE"
-  | "AUTOSCALING_ALGORITHM_BASIC"
-  | (string & {});
+  | "AUTOSCALING_ALGORITHM_BASIC";
 export const FlexTemplateRuntimeEnvironmentAutoscalingAlgorithmEnum =
   /*@__PURE__*/ S.String;
 
@@ -3256,7 +3213,8 @@ export const KeyRangeDataDiskAssignment = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeyRangeDataDiskAssignment",
 }) as any as S.Schema<KeyRangeDataDiskAssignment>;
 
-export type KeyRangeDataDiskAssignmentList = KeyRangeDataDiskAssignment[];
+export type KeyRangeDataDiskAssignmentList =
+  ReadonlyArray<KeyRangeDataDiskAssignment>;
 export const KeyRangeDataDiskAssignmentList = /*@__PURE__*/ S.Array(
   KeyRangeDataDiskAssignment,
 ) as any as S.Schema<KeyRangeDataDiskAssignmentList>;
@@ -3277,7 +3235,8 @@ export const StreamingComputationRanges = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamingComputationRanges",
 }) as any as S.Schema<StreamingComputationRanges>;
 
-export type StreamingComputationRangesList = StreamingComputationRanges[];
+export type StreamingComputationRangesList =
+  ReadonlyArray<StreamingComputationRanges>;
 export const StreamingComputationRangesList = /*@__PURE__*/ S.Array(
   StreamingComputationRanges,
 ) as any as S.Schema<StreamingComputationRangesList>;
@@ -3285,8 +3244,7 @@ export const StreamingComputationRangesList = /*@__PURE__*/ S.Array(
 export type StreamingComputationTaskTaskTypeEnum =
   | "STREAMING_COMPUTATION_TASK_UNKNOWN"
   | "STREAMING_COMPUTATION_TASK_STOP"
-  | "STREAMING_COMPUTATION_TASK_START"
-  | (string & {});
+  | "STREAMING_COMPUTATION_TASK_START";
 export const StreamingComputationTaskTaskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes mounted data disk. */
@@ -3302,7 +3260,7 @@ export const MountedDataDisk = /*@__PURE__*/ S.suspend(() =>
   identifier: "MountedDataDisk",
 }) as any as S.Schema<MountedDataDisk>;
 
-export type MountedDataDiskList = MountedDataDisk[];
+export type MountedDataDiskList = ReadonlyArray<MountedDataDisk>;
 export const MountedDataDiskList = /*@__PURE__*/ S.Array(
   MountedDataDisk,
 ) as any as S.Schema<MountedDataDiskList>;
@@ -3354,7 +3312,7 @@ export const InstructionOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstructionOutput",
 }) as any as S.Schema<InstructionOutput>;
 
-export type InstructionOutputList = InstructionOutput[];
+export type InstructionOutputList = ReadonlyArray<InstructionOutput>;
 export const InstructionOutputList = /*@__PURE__*/ S.Array(
   InstructionOutput,
 ) as any as S.Schema<InstructionOutputList>;
@@ -3399,7 +3357,7 @@ export const Source = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
 
-export type SourceList = Source[];
+export type SourceList = ReadonlyArray<Source>;
 export const SourceList = /*@__PURE__*/ S.Array(
   Source,
 ) as any as S.Schema<SourceList>;
@@ -3421,7 +3379,7 @@ export const SideInputInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SideInputInfo" }) as any as S.Schema<SideInputInfo>;
 
-export type SideInputInfoList = SideInputInfo[];
+export type SideInputInfoList = ReadonlyArray<SideInputInfo>;
 export const SideInputInfoList = /*@__PURE__*/ S.Array(
   SideInputInfo,
 ) as any as S.Schema<SideInputInfoList>;
@@ -3439,7 +3397,7 @@ export const MultiOutputInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiOutputInfo",
 }) as any as S.Schema<MultiOutputInfo>;
 
-export type MultiOutputInfoList = MultiOutputInfo[];
+export type MultiOutputInfoList = ReadonlyArray<MultiOutputInfo>;
 export const MultiOutputInfoList = /*@__PURE__*/ S.Array(
   MultiOutputInfo,
 ) as any as S.Schema<MultiOutputInfoList>;
@@ -3556,7 +3514,7 @@ export const PartialGroupByKeyInstruction = /*@__PURE__*/ S.suspend(() =>
   identifier: "PartialGroupByKeyInstruction",
 }) as any as S.Schema<PartialGroupByKeyInstruction>;
 
-export type InstructionInputList = InstructionInput[];
+export type InstructionInputList = ReadonlyArray<InstructionInput>;
 export const InstructionInputList = /*@__PURE__*/ S.Array(
   InstructionInput,
 ) as any as S.Schema<InstructionInputList>;
@@ -3611,7 +3569,7 @@ export const ParallelInstruction = /*@__PURE__*/ S.suspend(() =>
   identifier: "ParallelInstruction",
 }) as any as S.Schema<ParallelInstruction>;
 
-export type ParallelInstructionList = ParallelInstruction[];
+export type ParallelInstructionList = ReadonlyArray<ParallelInstruction>;
 export const ParallelInstructionList = /*@__PURE__*/ S.Array(
   ParallelInstruction,
 ) as any as S.Schema<ParallelInstructionList>;
@@ -3661,7 +3619,8 @@ export const StreamingComputationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamingComputationConfig",
 }) as any as S.Schema<StreamingComputationConfig>;
 
-export type StreamingComputationConfigList = StreamingComputationConfig[];
+export type StreamingComputationConfigList =
+  ReadonlyArray<StreamingComputationConfig>;
 export const StreamingComputationConfigList = /*@__PURE__*/ S.Array(
   StreamingComputationConfig,
 ) as any as S.Schema<StreamingComputationConfigList>;
@@ -3853,7 +3812,7 @@ export const StreamLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StreamLocation" }) as any as S.Schema<StreamLocation>;
 
-export type StreamLocationList = StreamLocation[];
+export type StreamLocationList = ReadonlyArray<StreamLocation>;
 export const StreamLocationList = /*@__PURE__*/ S.Array(
   StreamLocation,
 ) as any as S.Schema<StreamLocationList>;
@@ -3883,7 +3842,7 @@ export const KeyRangeLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "KeyRangeLocation",
 }) as any as S.Schema<KeyRangeLocation>;
 
-export type KeyRangeLocationList = KeyRangeLocation[];
+export type KeyRangeLocationList = ReadonlyArray<KeyRangeLocation>;
 export const KeyRangeLocationList = /*@__PURE__*/ S.Array(
   KeyRangeLocation,
 ) as any as S.Schema<KeyRangeLocationList>;
@@ -3904,7 +3863,7 @@ export const StateFamilyConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "StateFamilyConfig",
 }) as any as S.Schema<StateFamilyConfig>;
 
-export type StateFamilyConfigList = StateFamilyConfig[];
+export type StateFamilyConfigList = ReadonlyArray<StateFamilyConfig>;
 export const StateFamilyConfigList = /*@__PURE__*/ S.Array(
   StateFamilyConfig,
 ) as any as S.Schema<StateFamilyConfigList>;
@@ -3937,7 +3896,7 @@ export const ComputationTopology = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComputationTopology",
 }) as any as S.Schema<ComputationTopology>;
 
-export type ComputationTopologyList = ComputationTopology[];
+export type ComputationTopologyList = ReadonlyArray<ComputationTopology>;
 export const ComputationTopologyList = /*@__PURE__*/ S.Array(
   ComputationTopology,
 ) as any as S.Schema<ComputationTopologyList>;
@@ -3958,7 +3917,7 @@ export const DataDiskAssignment = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataDiskAssignment",
 }) as any as S.Schema<DataDiskAssignment>;
 
-export type DataDiskAssignmentList = DataDiskAssignment[];
+export type DataDiskAssignmentList = ReadonlyArray<DataDiskAssignment>;
 export const DataDiskAssignmentList = /*@__PURE__*/ S.Array(
   DataDiskAssignment,
 ) as any as S.Schema<DataDiskAssignmentList>;
@@ -4041,7 +4000,7 @@ export const SeqMapTaskOutputInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "SeqMapTaskOutputInfo",
 }) as any as S.Schema<SeqMapTaskOutputInfo>;
 
-export type SeqMapTaskOutputInfoList = SeqMapTaskOutputInfo[];
+export type SeqMapTaskOutputInfoList = ReadonlyArray<SeqMapTaskOutputInfo>;
 export const SeqMapTaskOutputInfoList = /*@__PURE__*/ S.Array(
   SeqMapTaskOutputInfo,
 ) as any as S.Schema<SeqMapTaskOutputInfoList>;
@@ -4198,7 +4157,7 @@ export const WorkItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WorkItem" }) as any as S.Schema<WorkItem>;
 
-export type WorkItemList = WorkItem[];
+export type WorkItemList = ReadonlyArray<WorkItem>;
 export const WorkItemList = /*@__PURE__*/ S.Array(
   WorkItem,
 ) as any as S.Schema<WorkItemList>;
@@ -4251,16 +4210,14 @@ export type ListProjectsJobsFilterEnum =
   | "UNKNOWN"
   | "ALL"
   | "TERMINATED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const ListProjectsJobsFilterEnum = /*@__PURE__*/ S.String;
 
 export type ListProjectsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
-  | "JOB_VIEW_DESCRIPTION"
-  | (string & {});
+  | "JOB_VIEW_DESCRIPTION";
 export const ListProjectsJobsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsJobsRequest {
@@ -4305,8 +4262,7 @@ export type ListProjectsJobsMessagesMinimumImportanceEnum =
   | "JOB_MESSAGE_DETAILED"
   | "JOB_MESSAGE_BASIC"
   | "JOB_MESSAGE_WARNING"
-  | "JOB_MESSAGE_ERROR"
-  | (string & {});
+  | "JOB_MESSAGE_ERROR";
 export const ListProjectsJobsMessagesMinimumImportanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -4356,8 +4312,7 @@ export type AutoscalingEventEventTypeEnum =
   | "TARGET_NUM_WORKERS_CHANGED"
   | "CURRENT_NUM_WORKERS_CHANGED"
   | "ACTUATION_FAILURE"
-  | "NO_CHANGE"
-  | (string & {});
+  | "NO_CHANGE";
 export const AutoscalingEventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** Structured data associated with this message. */
@@ -4374,7 +4329,7 @@ export const Parameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Parameter" }) as any as S.Schema<Parameter>;
 
-export type ParameterList = Parameter[];
+export type ParameterList = ReadonlyArray<Parameter>;
 export const ParameterList = /*@__PURE__*/ S.Array(
   Parameter,
 ) as any as S.Schema<ParameterList>;
@@ -4426,7 +4381,7 @@ export const AutoscalingEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoscalingEvent",
 }) as any as S.Schema<AutoscalingEvent>;
 
-export type AutoscalingEventList = AutoscalingEvent[];
+export type AutoscalingEventList = ReadonlyArray<AutoscalingEvent>;
 export const AutoscalingEventList = /*@__PURE__*/ S.Array(
   AutoscalingEvent,
 ) as any as S.Schema<AutoscalingEventList>;
@@ -4437,8 +4392,7 @@ export type JobMessageMessageImportanceEnum =
   | "JOB_MESSAGE_DETAILED"
   | "JOB_MESSAGE_BASIC"
   | "JOB_MESSAGE_WARNING"
-  | "JOB_MESSAGE_ERROR"
-  | (string & {});
+  | "JOB_MESSAGE_ERROR";
 export const JobMessageMessageImportanceEnum = /*@__PURE__*/ S.String;
 
 /** A particular message pertaining to a Dataflow job. */
@@ -4461,7 +4415,7 @@ export const JobMessage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobMessage" }) as any as S.Schema<JobMessage>;
 
-export type JobMessageList = JobMessage[];
+export type JobMessageList = ReadonlyArray<JobMessage>;
 export const JobMessageList = /*@__PURE__*/ S.Array(
   JobMessage,
 ) as any as S.Schema<JobMessageList>;
@@ -4489,16 +4443,14 @@ export type ListProjectsLocationsJobsViewEnum =
   | "JOB_VIEW_UNKNOWN"
   | "JOB_VIEW_SUMMARY"
   | "JOB_VIEW_ALL"
-  | "JOB_VIEW_DESCRIPTION"
-  | (string & {});
+  | "JOB_VIEW_DESCRIPTION";
 export const ListProjectsLocationsJobsViewEnum = /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsJobsFilterEnum =
   | "UNKNOWN"
   | "ALL"
   | "TERMINATED"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const ListProjectsLocationsJobsFilterEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsJobsRequest {
@@ -4543,8 +4495,7 @@ export type ListProjectsLocationsJobsMessagesMinimumImportanceEnum =
   | "JOB_MESSAGE_DETAILED"
   | "JOB_MESSAGE_BASIC"
   | "JOB_MESSAGE_WARNING"
-  | "JOB_MESSAGE_ERROR"
-  | (string & {});
+  | "JOB_MESSAGE_ERROR";
 export const ListProjectsLocationsJobsMessagesMinimumImportanceEnum =
   /*@__PURE__*/ S.String;
 
@@ -4615,7 +4566,7 @@ export const ListProjectsLocationsJobsSnapshotsRequest =
     identifier: "ListProjectsLocationsJobsSnapshotsRequest",
   }) as any as S.Schema<ListProjectsLocationsJobsSnapshotsRequest>;
 
-export type SnapshotList = Snapshot[];
+export type SnapshotList = ReadonlyArray<Snapshot>;
 export const SnapshotList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotList>;
@@ -4710,7 +4661,7 @@ export const IntegerMean = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IntegerMean" }) as any as S.Schema<IntegerMean>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -4736,8 +4687,7 @@ export type CounterMetadataStandardUnitsEnum =
   | "NANOSECONDS"
   | "TIMESTAMP_MSEC"
   | "TIMESTAMP_USEC"
-  | "TIMESTAMP_NSEC"
-  | (string & {});
+  | "TIMESTAMP_NSEC";
 export const CounterMetadataStandardUnitsEnum = /*@__PURE__*/ S.String;
 
 export type CounterMetadataKindEnum =
@@ -4750,8 +4700,7 @@ export type CounterMetadataKindEnum =
   | "AND"
   | "SET"
   | "DISTRIBUTION"
-  | "LATEST_VALUE"
-  | (string & {});
+  | "LATEST_VALUE";
 export const CounterMetadataKindEnum = /*@__PURE__*/ S.String;
 
 /** CounterMetadata includes all static non-name non-value counter attributes. */
@@ -4776,14 +4725,10 @@ export const CounterMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "CounterMetadata",
 }) as any as S.Schema<CounterMetadata>;
 
-export type CounterStructuredNamePortionEnum =
-  | "ALL"
-  | "KEY"
-  | "VALUE"
-  | (string & {});
+export type CounterStructuredNamePortionEnum = "ALL" | "KEY" | "VALUE";
 export const CounterStructuredNamePortionEnum = /*@__PURE__*/ S.String;
 
-export type CounterStructuredNameOriginEnum = "SYSTEM" | "USER" | (string & {});
+export type CounterStructuredNameOriginEnum = "SYSTEM" | "USER";
 export const CounterStructuredNameOriginEnum = /*@__PURE__*/ S.String;
 
 /** Identifies a counter within a per-job namespace. Counters whose structured names are the same get merged into a single value for the job. */
@@ -4892,7 +4837,7 @@ export const BoundedTrie = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BoundedTrie" }) as any as S.Schema<BoundedTrie>;
 
-export type SplitInt64List = SplitInt64[];
+export type SplitInt64List = ReadonlyArray<SplitInt64>;
 export const SplitInt64List = /*@__PURE__*/ S.Array(
   SplitInt64,
 ) as any as S.Schema<SplitInt64List>;
@@ -4974,8 +4919,7 @@ export type NameAndKindKindEnum =
   | "AND"
   | "SET"
   | "DISTRIBUTION"
-  | "LATEST_VALUE"
-  | (string & {});
+  | "LATEST_VALUE";
 export const NameAndKindKindEnum = /*@__PURE__*/ S.String;
 
 /** Basic metadata about a counter. */
@@ -5064,7 +5008,7 @@ export const CounterUpdate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CounterUpdate" }) as any as S.Schema<CounterUpdate>;
 
-export type CounterUpdateList = CounterUpdate[];
+export type CounterUpdateList = ReadonlyArray<CounterUpdate>;
 export const CounterUpdateList = /*@__PURE__*/ S.Array(
   CounterUpdate,
 ) as any as S.Schema<CounterUpdateList>;
@@ -5170,8 +5114,7 @@ export type DerivedSourceDerivationModeEnum =
   | "SOURCE_DERIVATION_MODE_UNKNOWN"
   | "SOURCE_DERIVATION_MODE_INDEPENDENT"
   | "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
-  | "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT"
-  | (string & {});
+  | "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT";
 export const DerivedSourceDerivationModeEnum = /*@__PURE__*/ S.String;
 
 /** Specification of one of the bundles produced as a result of splitting a Source (e.g. when executing a SourceSplitRequest, or when splitting an active task using WorkItemStatus.dynamic_source_split), relative to the source being split. */
@@ -5204,7 +5147,7 @@ export const DynamicSourceSplit = /*@__PURE__*/ S.suspend(() =>
   identifier: "DynamicSourceSplit",
 }) as any as S.Schema<DynamicSourceSplit>;
 
-export type StatusList = Status[];
+export type StatusList = ReadonlyArray<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -5213,8 +5156,7 @@ export type SourceSplitShardDerivationModeEnum =
   | "SOURCE_DERIVATION_MODE_UNKNOWN"
   | "SOURCE_DERIVATION_MODE_INDEPENDENT"
   | "SOURCE_DERIVATION_MODE_CHILD_OF_CURRENT"
-  | "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT"
-  | (string & {});
+  | "SOURCE_DERIVATION_MODE_SIBLING_OF_CURRENT";
 export const SourceSplitShardDerivationModeEnum = /*@__PURE__*/ S.String;
 
 /** DEPRECATED in favor of DerivedSource. */
@@ -5233,7 +5175,7 @@ export const SourceSplitShard = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceSplitShard",
 }) as any as S.Schema<SourceSplitShard>;
 
-export type SourceSplitShardList = SourceSplitShard[];
+export type SourceSplitShardList = ReadonlyArray<SourceSplitShard>;
 export const SourceSplitShardList = /*@__PURE__*/ S.Array(
   SourceSplitShard,
 ) as any as S.Schema<SourceSplitShardList>;
@@ -5241,11 +5183,10 @@ export const SourceSplitShardList = /*@__PURE__*/ S.Array(
 export type SourceSplitResponseOutcomeEnum =
   | "SOURCE_SPLIT_OUTCOME_UNKNOWN"
   | "SOURCE_SPLIT_OUTCOME_USE_CURRENT"
-  | "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED"
-  | (string & {});
+  | "SOURCE_SPLIT_OUTCOME_SPLITTING_HAPPENED";
 export const SourceSplitResponseOutcomeEnum = /*@__PURE__*/ S.String;
 
-export type DerivedSourceList = DerivedSource[];
+export type DerivedSourceList = ReadonlyArray<DerivedSource>;
 export const DerivedSourceList = /*@__PURE__*/ S.Array(
   DerivedSource,
 ) as any as S.Schema<DerivedSourceList>;
@@ -5368,7 +5309,7 @@ export const WorkItemStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WorkItemStatus" }) as any as S.Schema<WorkItemStatus>;
 
-export type WorkItemStatusList = WorkItemStatus[];
+export type WorkItemStatusList = ReadonlyArray<WorkItemStatus>;
 export const WorkItemStatusList = /*@__PURE__*/ S.Array(
   WorkItemStatus,
 ) as any as S.Schema<WorkItemStatusList>;
@@ -5459,7 +5400,7 @@ export const MetricShortId = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricShortId" }) as any as S.Schema<MetricShortId>;
 
-export type MetricShortIdList = MetricShortId[];
+export type MetricShortIdList = ReadonlyArray<MetricShortId>;
 export const MetricShortIdList = /*@__PURE__*/ S.Array(
   MetricShortId,
 ) as any as S.Schema<MetricShortIdList>;
@@ -5523,7 +5464,7 @@ export const WorkItemServiceState = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkItemServiceState",
 }) as any as S.Schema<WorkItemServiceState>;
 
-export type WorkItemServiceStateList = WorkItemServiceState[];
+export type WorkItemServiceStateList = ReadonlyArray<WorkItemServiceState>;
 export const WorkItemServiceStateList = /*@__PURE__*/ S.Array(
   WorkItemServiceState,
 ) as any as S.Schema<WorkItemServiceStateList>;
@@ -5577,8 +5518,7 @@ export type SendDebugCaptureRequestDataFormatEnum =
   | "RAW"
   | "JSON"
   | "ZLIB"
-  | "BROTLI"
-  | (string & {});
+  | "BROTLI";
 export const SendDebugCaptureRequestDataFormatEnum = /*@__PURE__*/ S.String;
 
 /** Request to send encoded debug information. Next ID: 8 */
@@ -5881,8 +5821,7 @@ export type WorkerLifecycleEventEventEnum =
   | "STAGING_FILES_DOWNLOAD_START"
   | "STAGING_FILES_DOWNLOAD_FINISH"
   | "SDK_INSTALL_START"
-  | "SDK_INSTALL_FINISH"
-  | (string & {});
+  | "SDK_INSTALL_FINISH";
 export const WorkerLifecycleEventEventEnum = /*@__PURE__*/ S.String;
 
 /** A report of an event in a worker's lifecycle. The proto contains one event, because the worker is expected to asynchronously send each message immediately after the event. Due to this asynchrony, messages may arrive out of order (or missing), and it is up to the consumer to interpret. The timestamp of the event is in the enclosing WorkerMessage proto. */
@@ -6061,7 +6000,7 @@ export const MetricValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricValue" }) as any as S.Schema<MetricValue>;
 
-export type MetricValueList = MetricValue[];
+export type MetricValueList = ReadonlyArray<MetricValue>;
 export const MetricValueList = /*@__PURE__*/ S.Array(
   MetricValue,
 ) as any as S.Schema<MetricValueList>;
@@ -6085,7 +6024,8 @@ export const PerStepNamespaceMetrics = /*@__PURE__*/ S.suspend(() =>
   identifier: "PerStepNamespaceMetrics",
 }) as any as S.Schema<PerStepNamespaceMetrics>;
 
-export type PerStepNamespaceMetricsList = PerStepNamespaceMetrics[];
+export type PerStepNamespaceMetricsList =
+  ReadonlyArray<PerStepNamespaceMetrics>;
 export const PerStepNamespaceMetricsList = /*@__PURE__*/ S.Array(
   PerStepNamespaceMetrics,
 ) as any as S.Schema<PerStepNamespaceMetricsList>;
@@ -6128,7 +6068,7 @@ export const GPUUsage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GPUUsage" }) as any as S.Schema<GPUUsage>;
 
-export type GPUUsageList = GPUUsage[];
+export type GPUUsageList = ReadonlyArray<GPUUsage>;
 export const GPUUsageList = /*@__PURE__*/ S.Array(
   GPUUsage,
 ) as any as S.Schema<GPUUsageList>;
@@ -6158,7 +6098,7 @@ export const CPUTime = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CPUTime" }) as any as S.Schema<CPUTime>;
 
-export type CPUTimeList = CPUTime[];
+export type CPUTimeList = ReadonlyArray<CPUTime>;
 export const CPUTimeList = /*@__PURE__*/ S.Array(
   CPUTime,
 ) as any as S.Schema<CPUTimeList>;
@@ -6186,7 +6126,7 @@ export const MemInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemInfo" }) as any as S.Schema<MemInfo>;
 
-export type MemInfoList = MemInfo[];
+export type MemInfoList = ReadonlyArray<MemInfo>;
 export const MemInfoList = /*@__PURE__*/ S.Array(
   MemInfo,
 ) as any as S.Schema<MemInfoList>;
@@ -6288,7 +6228,7 @@ export const WorkerMessage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WorkerMessage" }) as any as S.Schema<WorkerMessage>;
 
-export type WorkerMessageList = WorkerMessage[];
+export type WorkerMessageList = ReadonlyArray<WorkerMessage>;
 export const WorkerMessageList = /*@__PURE__*/ S.Array(
   WorkerMessage,
 ) as any as S.Schema<WorkerMessageList>;
@@ -6412,7 +6352,7 @@ export const WorkerMessageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkerMessageResponse",
 }) as any as S.Schema<WorkerMessageResponse>;
 
-export type WorkerMessageResponseList = WorkerMessageResponse[];
+export type WorkerMessageResponseList = ReadonlyArray<WorkerMessageResponse>;
 export const WorkerMessageResponseList = /*@__PURE__*/ S.Array(
   WorkerMessageResponse,
 ) as any as S.Schema<WorkerMessageResponseList>;

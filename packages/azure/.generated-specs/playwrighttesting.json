@@ -750,16 +750,85 @@
             "smithy.api#documentation": "Name of account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.playwrighttesting#AccountsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.playwrighttesting#AccountUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.playwrighttesting#AccountUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "regionalAffinity": {
+          "target": "com.azure.playwrighttesting#EnablementStatus",
+          "traits": {
+            "smithy.api#documentation": "This property sets the connection region for Playwright client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created."
+          }
+        },
+        "scalableExecution": {
+          "target": "com.azure.playwrighttesting#EnablementStatus",
+          "traits": {
+            "smithy.api#documentation": "When enabled, Playwright client workers can connect to cloud-hosted browsers. This can increase the number of parallel workers for a test run, significantly minimizing test completion durations."
+          }
+        },
+        "reporting": {
+          "target": "com.azure.playwrighttesting#EnablementStatus",
+          "traits": {
+            "smithy.api#documentation": "When enabled, this feature allows the workspace to upload and display test results, including artifacts like traces and screenshots, in the Playwright portal. This enables faster and more efficient troubleshooting."
+          }
+        },
+        "localAuth": {
+          "target": "com.azure.playwrighttesting#EnablementStatus",
+          "traits": {
+            "smithy.api#documentation": "When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Account."
+      }
+    },
+    "com.azure.playwrighttesting#EnablementStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The enablement status of a feature."
+      }
+    },
+    "com.azure.playwrighttesting#AccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.playwrighttesting#AccountsCreateOrUpdate": {
@@ -871,16 +940,152 @@
             "smithy.api#documentation": "Name of account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.playwrighttesting#AccountsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.playwrighttesting#AccountPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.playwrighttesting#AccountPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "regionalAffinity": {
+          "target": "com.azure.playwrighttesting#AccountPropertiesInputRegionalAffinity",
+          "traits": {
+            "smithy.api#documentation": "This property sets the connection region for Playwright client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created."
+          }
+        },
+        "scalableExecution": {
+          "target": "com.azure.playwrighttesting#AccountPropertiesInputScalableExecution",
+          "traits": {
+            "smithy.api#documentation": "When enabled, Playwright client workers can connect to cloud-hosted browsers. This can increase the number of parallel workers for a test run, significantly minimizing test completion durations."
+          }
+        },
+        "reporting": {
+          "target": "com.azure.playwrighttesting#AccountPropertiesInputReporting",
+          "traits": {
+            "smithy.api#documentation": "When enabled, this feature allows the workspace to upload and display test results, including artifacts like traces and screenshots, in the Playwright portal. This enables faster and more efficient troubleshooting."
+          }
+        },
+        "localAuth": {
+          "target": "com.azure.playwrighttesting#AccountPropertiesInputLocalAuth",
+          "traits": {
+            "smithy.api#documentation": "When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Account resource properties."
+      }
+    },
+    "com.azure.playwrighttesting#AccountPropertiesInputLocalAuth": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "When enabled, this feature allows the workspace to use local auth (through service access token) for executing operations."
+      }
+    },
+    "com.azure.playwrighttesting#AccountPropertiesInputReporting": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "When enabled, this feature allows the workspace to upload and display test results, including artifacts like traces and screenshots, in the Playwright portal. This enables faster and more efficient troubleshooting."
+      }
+    },
+    "com.azure.playwrighttesting#AccountPropertiesInputScalableExecution": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "When enabled, Playwright client workers can connect to cloud-hosted browsers. This can increase the number of parallel workers for a test run, significantly minimizing test completion durations."
+      }
+    },
+    "com.azure.playwrighttesting#AccountPropertiesInputRegionalAffinity": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This property sets the connection region for Playwright client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created."
+      }
+    },
+    "com.azure.playwrighttesting#AccountsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.playwrighttesting#AccountsGet": {
@@ -1539,11 +1744,16 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name of the resource for which availability needs to be checked."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type."
           }
         }
       },

@@ -13,87 +13,15 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface OpenShiftClustersCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the OpenShift cluster resource. */
-  resourceName: string;
-  body: unknown;
-}
-export const OpenShiftClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
-        code: 200,
-        apiVersion: "2025-07-25",
-      }),
-    ),
-).annotate({
-  identifier: "OpenShiftClustersCreateOrUpdateRequest",
-}) as any as S.Schema<OpenShiftClustersCreateOrUpdateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
-export type OpenShiftClustersCreateOrUpdateResponseTagsMap = {
+export type OpenShiftClustersCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const OpenShiftClustersCreateOrUpdateResponseTagsMap =
+export const OpenShiftClustersCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<OpenShiftClustersCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<OpenShiftClustersCreateOrUpdateRequestTagsMap>;
 
 /** ProvisioningState represents a provisioning state. */
 export type ProvisioningState =
@@ -103,16 +31,15 @@ export type ProvisioningState =
   | "Deleting"
   | "Failed"
   | "Succeeded"
-  | "Updating"
-  | (string & {});
+  | "Updating";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** FipsValidatedModules determines if FIPS is used. */
-export type FipsValidatedModules = "Disabled" | "Enabled" | (string & {});
+export type FipsValidatedModules = "Disabled" | "Enabled";
 export const FipsValidatedModules = /*@__PURE__*/ S.String;
 
 /** ClusterProfile represents a cluster profile. */
-export interface ClusterProfile {
+export interface ClusterProfileInput {
   /** The pull secret for the cluster. */
   pullSecret?: string;
   /** The domain for the cluster. */
@@ -123,30 +50,26 @@ export interface ClusterProfile {
   resourceGroupId?: string;
   /** If FIPS validated crypto modules are used */
   fipsValidatedModules?: FipsValidatedModules;
-  /** The URL of the managed OIDC issuer in a workload identity cluster. */
-  oidcIssuer?: string;
 }
-export const ClusterProfile = /*@__PURE__*/ S.suspend(() =>
+export const ClusterProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pullSecret: S.optional(S.String),
     domain: S.optional(S.String),
     version: S.optional(S.String),
     resourceGroupId: S.optional(S.String),
     fipsValidatedModules: S.optional(FipsValidatedModules),
-    oidcIssuer: S.optional(S.String),
   }),
-).annotate({ identifier: "ClusterProfile" }) as any as S.Schema<ClusterProfile>;
+).annotate({
+  identifier: "ClusterProfileInput",
+}) as any as S.Schema<ClusterProfileInput>;
 
 /** ConsoleProfile represents a console profile. */
-export interface ConsoleProfile {
-  /** The URL to access the cluster console. */
-  url?: string;
-}
-export const ConsoleProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({ identifier: "ConsoleProfile" }) as any as S.Schema<ConsoleProfile>;
+export interface ConsoleProfileInput {}
+export const ConsoleProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ConsoleProfileInput",
+}) as any as S.Schema<ConsoleProfileInput>;
 
 /** ServicePrincipalProfile represents a service principal profile. */
 export interface ServicePrincipalProfile {
@@ -165,57 +88,48 @@ export const ServicePrincipalProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicePrincipalProfile>;
 
 /** PlatformWorkloadIdentity stores information representing a single workload identity. */
-export interface PlatformWorkloadIdentity {
+export interface PlatformWorkloadIdentityInput {
   /** The resource ID of the PlatformWorkloadIdentity resource */
   resourceId?: string;
-  /** The ClientID of the PlatformWorkloadIdentity resource */
-  clientId?: string;
-  /** The ObjectID of the PlatformWorkloadIdentity resource */
-  objectId?: string;
 }
-export const PlatformWorkloadIdentity = /*@__PURE__*/ S.suspend(() =>
+export const PlatformWorkloadIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
-    clientId: S.optional(S.String),
-    objectId: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "PlatformWorkloadIdentity",
-}) as any as S.Schema<PlatformWorkloadIdentity>;
+  identifier: "PlatformWorkloadIdentityInput",
+}) as any as S.Schema<PlatformWorkloadIdentityInput>;
 
 /** Dictionary of <PlatformWorkloadIdentity> */
-export type PlatformWorkloadIdentityProfilePlatformWorkloadIdentitiesMap = {
-  [key: string]: PlatformWorkloadIdentity | undefined;
-};
-export const PlatformWorkloadIdentityProfilePlatformWorkloadIdentitiesMap =
+export type PlatformWorkloadIdentityProfileInputPlatformWorkloadIdentitiesMap =
+  { [key: string]: PlatformWorkloadIdentityInput | undefined };
+export const PlatformWorkloadIdentityProfileInputPlatformWorkloadIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    PlatformWorkloadIdentity,
-  ) as any as S.Schema<PlatformWorkloadIdentityProfilePlatformWorkloadIdentitiesMap>;
+    PlatformWorkloadIdentityInput,
+  ) as any as S.Schema<PlatformWorkloadIdentityProfileInputPlatformWorkloadIdentitiesMap>;
 
 /** PlatformWorkloadIdentityProfile encapsulates all information that is specific to workload identity clusters. */
-export interface PlatformWorkloadIdentityProfile {
+export interface PlatformWorkloadIdentityProfileInput {
   /** UpgradeableTo stores a single OpenShift version a workload identity cluster can be upgraded to */
   upgradeableTo?: string;
   /** Dictionary of <PlatformWorkloadIdentity> */
-  platformWorkloadIdentities?: PlatformWorkloadIdentityProfilePlatformWorkloadIdentitiesMap;
+  platformWorkloadIdentities?: PlatformWorkloadIdentityProfileInputPlatformWorkloadIdentitiesMap;
 }
-export const PlatformWorkloadIdentityProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    upgradeableTo: S.optional(S.String),
-    platformWorkloadIdentities: S.optional(
-      PlatformWorkloadIdentityProfilePlatformWorkloadIdentitiesMap,
-    ),
-  }),
+export const PlatformWorkloadIdentityProfileInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      upgradeableTo: S.optional(S.String),
+      platformWorkloadIdentities: S.optional(
+        PlatformWorkloadIdentityProfileInputPlatformWorkloadIdentitiesMap,
+      ),
+    }),
 ).annotate({
-  identifier: "PlatformWorkloadIdentityProfile",
-}) as any as S.Schema<PlatformWorkloadIdentityProfile>;
+  identifier: "PlatformWorkloadIdentityProfileInput",
+}) as any as S.Schema<PlatformWorkloadIdentityProfileInput>;
 
 /** The outbound routing strategy used to provide your cluster egress to the internet. */
-export type OutboundType =
-  | "Loadbalancer"
-  | "UserDefinedRouting"
-  | (string & {});
+export type OutboundType = "Loadbalancer" | "UserDefinedRouting";
 export const OutboundType = /*@__PURE__*/ S.String;
 
 /** ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer. */
@@ -231,50 +145,25 @@ export const ManagedOutboundIPs = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedOutboundIPs",
 }) as any as S.Schema<ManagedOutboundIPs>;
 
-/** EffectiveOutboundIP represents an effective outbound IP resource of the cluster public load balancer. */
-export interface EffectiveOutboundIP {
-  /** The fully qualified Azure resource id of an IP address resource. */
-  id?: string;
-}
-export const EffectiveOutboundIP = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EffectiveOutboundIP",
-}) as any as S.Schema<EffectiveOutboundIP>;
-
-/** The list of effective outbound IP addresses of the public load balancer. */
-export type LoadBalancerProfileEffectiveOutboundIpsList = EffectiveOutboundIP[];
-export const LoadBalancerProfileEffectiveOutboundIpsList =
-  /*@__PURE__*/ S.Array(
-    EffectiveOutboundIP,
-  ) as any as S.Schema<LoadBalancerProfileEffectiveOutboundIpsList>;
-
 /** LoadBalancerProfile represents the profile of the cluster public load balancer. */
-export interface LoadBalancerProfile {
+export interface LoadBalancerProfileInput {
   /** The desired managed outbound IPs for the cluster public load balancer. */
   managedOutboundIps?: ManagedOutboundIPs;
-  /** The list of effective outbound IP addresses of the public load balancer. */
-  effectiveOutboundIps?: LoadBalancerProfileEffectiveOutboundIpsList;
 }
-export const LoadBalancerProfile = /*@__PURE__*/ S.suspend(() =>
+export const LoadBalancerProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managedOutboundIps: S.optional(ManagedOutboundIPs),
-    effectiveOutboundIps: S.optional(
-      LoadBalancerProfileEffectiveOutboundIpsList,
-    ),
   }),
 ).annotate({
-  identifier: "LoadBalancerProfile",
-}) as any as S.Schema<LoadBalancerProfile>;
+  identifier: "LoadBalancerProfileInput",
+}) as any as S.Schema<LoadBalancerProfileInput>;
 
 /** PreconfiguredNSG represents whether customers want to use their own NSG attached to the subnets */
-export type PreconfiguredNSG = "Disabled" | "Enabled" | (string & {});
+export type PreconfiguredNSG = "Disabled" | "Enabled";
 export const PreconfiguredNSG = /*@__PURE__*/ S.String;
 
 /** NetworkProfile represents a network profile. */
-export interface NetworkProfile {
+export interface NetworkProfileInput {
   /** The CIDR used for OpenShift/Kubernetes Pods. */
   podCidr?: string;
   /** The CIDR used for OpenShift/Kubernetes Services. */
@@ -282,22 +171,24 @@ export interface NetworkProfile {
   /** The OutboundType used for egress traffic. */
   outboundType?: OutboundType;
   /** The cluster load balancer profile. */
-  loadBalancerProfile?: LoadBalancerProfile;
+  loadBalancerProfile?: LoadBalancerProfileInput;
   /** Specifies whether subnets are pre-attached with an NSG */
   preconfiguredNSG?: PreconfiguredNSG;
 }
-export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
+export const NetworkProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     podCidr: S.optional(S.String),
     serviceCidr: S.optional(S.String),
     outboundType: S.optional(OutboundType),
-    loadBalancerProfile: S.optional(LoadBalancerProfile),
+    loadBalancerProfile: S.optional(LoadBalancerProfileInput),
     preconfiguredNSG: S.optional(PreconfiguredNSG),
   }),
-).annotate({ identifier: "NetworkProfile" }) as any as S.Schema<NetworkProfile>;
+).annotate({
+  identifier: "NetworkProfileInput",
+}) as any as S.Schema<NetworkProfileInput>;
 
 /** EncryptionAtHost represents encryption at host state */
-export type EncryptionAtHost = "Disabled" | "Enabled" | (string & {});
+export type EncryptionAtHost = "Disabled" | "Enabled";
 export const EncryptionAtHost = /*@__PURE__*/ S.String;
 
 /** MasterProfile represents a master profile. */
@@ -350,7 +241,382 @@ export const WorkerProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkerProfile" }) as any as S.Schema<WorkerProfile>;
 
 /** The cluster worker profiles. */
-export type OpenShiftClusterPropertiesWorkerProfilesList = WorkerProfile[];
+export type OpenShiftClusterPropertiesInputWorkerProfilesList =
+  ReadonlyArray<WorkerProfile>;
+export const OpenShiftClusterPropertiesInputWorkerProfilesList =
+  /*@__PURE__*/ S.Array(
+    WorkerProfile,
+  ) as any as S.Schema<OpenShiftClusterPropertiesInputWorkerProfilesList>;
+
+/** Visibility represents visibility. */
+export type Visibility = "Private" | "Public";
+export const Visibility = /*@__PURE__*/ S.String;
+
+/** APIServerProfile represents an API server profile. */
+export interface APIServerProfileInput {
+  /** API server visibility. */
+  visibility?: Visibility;
+}
+export const APIServerProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    visibility: S.optional(Visibility),
+  }),
+).annotate({
+  identifier: "APIServerProfileInput",
+}) as any as S.Schema<APIServerProfileInput>;
+
+/** IngressProfile represents an ingress profile. */
+export interface IngressProfileInput {
+  /** The ingress profile name. */
+  name?: string;
+  /** Ingress visibility. */
+  visibility?: Visibility;
+}
+export const IngressProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    visibility: S.optional(Visibility),
+  }),
+).annotate({
+  identifier: "IngressProfileInput",
+}) as any as S.Schema<IngressProfileInput>;
+
+/** The cluster ingress profiles. */
+export type OpenShiftClusterPropertiesInputIngressProfilesList =
+  ReadonlyArray<IngressProfileInput>;
+export const OpenShiftClusterPropertiesInputIngressProfilesList =
+  /*@__PURE__*/ S.Array(
+    IngressProfileInput,
+  ) as any as S.Schema<OpenShiftClusterPropertiesInputIngressProfilesList>;
+
+/** OpenShiftClusterProperties represents an OpenShift cluster's properties. */
+export interface OpenShiftClusterPropertiesInput {
+  /** The cluster provisioning state. */
+  provisioningState?: ProvisioningState;
+  /** The cluster profile. */
+  clusterProfile?: ClusterProfileInput;
+  /** The console profile. */
+  consoleProfile?: ConsoleProfileInput;
+  /** The cluster service principal profile. */
+  servicePrincipalProfile?: ServicePrincipalProfile;
+  /** The workload identity profile. */
+  platformWorkloadIdentityProfile?: PlatformWorkloadIdentityProfileInput;
+  /** The cluster network profile. */
+  networkProfile?: NetworkProfileInput;
+  /** The cluster master profile. */
+  masterProfile?: MasterProfile;
+  /** The cluster worker profiles. */
+  workerProfiles?: OpenShiftClusterPropertiesInputWorkerProfilesList;
+  /** The cluster API server profile. */
+  apiserverProfile?: APIServerProfileInput;
+  /** The cluster ingress profiles. */
+  ingressProfiles?: OpenShiftClusterPropertiesInputIngressProfilesList;
+}
+export const OpenShiftClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(ProvisioningState),
+    clusterProfile: S.optional(ClusterProfileInput),
+    consoleProfile: S.optional(ConsoleProfileInput),
+    servicePrincipalProfile: S.optional(ServicePrincipalProfile),
+    platformWorkloadIdentityProfile: S.optional(
+      PlatformWorkloadIdentityProfileInput,
+    ),
+    networkProfile: S.optional(NetworkProfileInput),
+    masterProfile: S.optional(MasterProfile),
+    workerProfiles: S.optional(
+      OpenShiftClusterPropertiesInputWorkerProfilesList,
+    ),
+    apiserverProfile: S.optional(APIServerProfileInput),
+    ingressProfiles: S.optional(
+      OpenShiftClusterPropertiesInputIngressProfilesList,
+    ),
+  }),
+).annotate({
+  identifier: "OpenShiftClusterPropertiesInput",
+}) as any as S.Schema<OpenShiftClusterPropertiesInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
+  { [key: string]: UserAssignedIdentityInput | undefined };
+export const OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface OpenShiftClustersCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap;
+}
+export const OpenShiftClustersCreateOrUpdateRequestIdentity =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(
+        OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "OpenShiftClustersCreateOrUpdateRequestIdentity",
+  }) as any as S.Schema<OpenShiftClustersCreateOrUpdateRequestIdentity>;
+
+export interface OpenShiftClustersCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the OpenShift cluster resource. */
+  resourceName: string;
+  /** Resource tags. */
+  tags?: OpenShiftClustersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The cluster properties. */
+  properties?: OpenShiftClusterPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: OpenShiftClustersCreateOrUpdateRequestIdentity;
+}
+export const OpenShiftClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      resourceName: S.String.pipe(T.Label()),
+      tags: S.optional(OpenShiftClustersCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(OpenShiftClusterPropertiesInput),
+      identity: S.optional(OpenShiftClustersCreateOrUpdateRequestIdentity),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RedHatOpenShift/openShiftClusters/{resourceName}",
+        code: 200,
+        apiVersion: "2025-07-25",
+      }),
+    ),
+).annotate({
+  identifier: "OpenShiftClustersCreateOrUpdateRequest",
+}) as any as S.Schema<OpenShiftClustersCreateOrUpdateRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** Resource tags. */
+export type OpenShiftClustersCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const OpenShiftClustersCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<OpenShiftClustersCreateOrUpdateResponseTagsMap>;
+
+/** ClusterProfile represents a cluster profile. */
+export interface ClusterProfile {
+  /** The pull secret for the cluster. */
+  pullSecret?: string;
+  /** The domain for the cluster. */
+  domain?: string;
+  /** The version of the cluster. */
+  version?: string;
+  /** The ID of the cluster resource group. */
+  resourceGroupId?: string;
+  /** If FIPS validated crypto modules are used */
+  fipsValidatedModules?: FipsValidatedModules;
+  /** The URL of the managed OIDC issuer in a workload identity cluster. */
+  oidcIssuer?: string;
+}
+export const ClusterProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pullSecret: S.optional(S.String),
+    domain: S.optional(S.String),
+    version: S.optional(S.String),
+    resourceGroupId: S.optional(S.String),
+    fipsValidatedModules: S.optional(FipsValidatedModules),
+    oidcIssuer: S.optional(S.String),
+  }),
+).annotate({ identifier: "ClusterProfile" }) as any as S.Schema<ClusterProfile>;
+
+/** ConsoleProfile represents a console profile. */
+export interface ConsoleProfile {
+  /** The URL to access the cluster console. */
+  url?: string;
+}
+export const ConsoleProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    url: S.optional(S.String),
+  }),
+).annotate({ identifier: "ConsoleProfile" }) as any as S.Schema<ConsoleProfile>;
+
+/** PlatformWorkloadIdentity stores information representing a single workload identity. */
+export interface PlatformWorkloadIdentity {
+  /** The resource ID of the PlatformWorkloadIdentity resource */
+  resourceId?: string;
+  /** The ClientID of the PlatformWorkloadIdentity resource */
+  clientId?: string;
+  /** The ObjectID of the PlatformWorkloadIdentity resource */
+  objectId?: string;
+}
+export const PlatformWorkloadIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceId: S.optional(S.String),
+    clientId: S.optional(S.String),
+    objectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlatformWorkloadIdentity",
+}) as any as S.Schema<PlatformWorkloadIdentity>;
+
+/** Dictionary of <PlatformWorkloadIdentity> */
+export type PlatformWorkloadIdentityProfilePlatformWorkloadIdentitiesMap = {
+  [key: string]: PlatformWorkloadIdentity | undefined;
+};
+export const PlatformWorkloadIdentityProfilePlatformWorkloadIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    PlatformWorkloadIdentity,
+  ) as any as S.Schema<PlatformWorkloadIdentityProfilePlatformWorkloadIdentitiesMap>;
+
+/** PlatformWorkloadIdentityProfile encapsulates all information that is specific to workload identity clusters. */
+export interface PlatformWorkloadIdentityProfile {
+  /** UpgradeableTo stores a single OpenShift version a workload identity cluster can be upgraded to */
+  upgradeableTo?: string;
+  /** Dictionary of <PlatformWorkloadIdentity> */
+  platformWorkloadIdentities?: PlatformWorkloadIdentityProfilePlatformWorkloadIdentitiesMap;
+}
+export const PlatformWorkloadIdentityProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    upgradeableTo: S.optional(S.String),
+    platformWorkloadIdentities: S.optional(
+      PlatformWorkloadIdentityProfilePlatformWorkloadIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "PlatformWorkloadIdentityProfile",
+}) as any as S.Schema<PlatformWorkloadIdentityProfile>;
+
+/** EffectiveOutboundIP represents an effective outbound IP resource of the cluster public load balancer. */
+export interface EffectiveOutboundIP {
+  /** The fully qualified Azure resource id of an IP address resource. */
+  id?: string;
+}
+export const EffectiveOutboundIP = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EffectiveOutboundIP",
+}) as any as S.Schema<EffectiveOutboundIP>;
+
+/** The list of effective outbound IP addresses of the public load balancer. */
+export type LoadBalancerProfileEffectiveOutboundIpsList =
+  ReadonlyArray<EffectiveOutboundIP>;
+export const LoadBalancerProfileEffectiveOutboundIpsList =
+  /*@__PURE__*/ S.Array(
+    EffectiveOutboundIP,
+  ) as any as S.Schema<LoadBalancerProfileEffectiveOutboundIpsList>;
+
+/** LoadBalancerProfile represents the profile of the cluster public load balancer. */
+export interface LoadBalancerProfile {
+  /** The desired managed outbound IPs for the cluster public load balancer. */
+  managedOutboundIps?: ManagedOutboundIPs;
+  /** The list of effective outbound IP addresses of the public load balancer. */
+  effectiveOutboundIps?: LoadBalancerProfileEffectiveOutboundIpsList;
+}
+export const LoadBalancerProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedOutboundIps: S.optional(ManagedOutboundIPs),
+    effectiveOutboundIps: S.optional(
+      LoadBalancerProfileEffectiveOutboundIpsList,
+    ),
+  }),
+).annotate({
+  identifier: "LoadBalancerProfile",
+}) as any as S.Schema<LoadBalancerProfile>;
+
+/** NetworkProfile represents a network profile. */
+export interface NetworkProfile {
+  /** The CIDR used for OpenShift/Kubernetes Pods. */
+  podCidr?: string;
+  /** The CIDR used for OpenShift/Kubernetes Services. */
+  serviceCidr?: string;
+  /** The OutboundType used for egress traffic. */
+  outboundType?: OutboundType;
+  /** The cluster load balancer profile. */
+  loadBalancerProfile?: LoadBalancerProfile;
+  /** Specifies whether subnets are pre-attached with an NSG */
+  preconfiguredNSG?: PreconfiguredNSG;
+}
+export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    podCidr: S.optional(S.String),
+    serviceCidr: S.optional(S.String),
+    outboundType: S.optional(OutboundType),
+    loadBalancerProfile: S.optional(LoadBalancerProfile),
+    preconfiguredNSG: S.optional(PreconfiguredNSG),
+  }),
+).annotate({ identifier: "NetworkProfile" }) as any as S.Schema<NetworkProfile>;
+
+/** The cluster worker profiles. */
+export type OpenShiftClusterPropertiesWorkerProfilesList =
+  ReadonlyArray<WorkerProfile>;
 export const OpenShiftClusterPropertiesWorkerProfilesList =
   /*@__PURE__*/ S.Array(
     WorkerProfile,
@@ -358,15 +624,11 @@ export const OpenShiftClusterPropertiesWorkerProfilesList =
 
 /** The cluster worker profiles status. */
 export type OpenShiftClusterPropertiesWorkerProfilesStatusList =
-  WorkerProfile[];
+  ReadonlyArray<WorkerProfile>;
 export const OpenShiftClusterPropertiesWorkerProfilesStatusList =
   /*@__PURE__*/ S.Array(
     WorkerProfile,
   ) as any as S.Schema<OpenShiftClusterPropertiesWorkerProfilesStatusList>;
-
-/** Visibility represents visibility. */
-export type Visibility = "Private" | "Public" | (string & {});
-export const Visibility = /*@__PURE__*/ S.String;
 
 /** APIServerProfile represents an API server profile. */
 export interface APIServerProfile {
@@ -405,7 +667,8 @@ export const IngressProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IngressProfile" }) as any as S.Schema<IngressProfile>;
 
 /** The cluster ingress profiles. */
-export type OpenShiftClusterPropertiesIngressProfilesList = IngressProfile[];
+export type OpenShiftClusterPropertiesIngressProfilesList =
+  ReadonlyArray<IngressProfile>;
 export const OpenShiftClusterPropertiesIngressProfilesList =
   /*@__PURE__*/ S.Array(
     IngressProfile,
@@ -457,15 +720,6 @@ export const OpenShiftClusterProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OpenShiftClusterProperties",
 }) as any as S.Schema<OpenShiftClusterProperties>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -777,7 +1031,7 @@ export const OpenShiftCluster = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenShiftCluster>;
 
 /** The OpenShiftCluster items on this page */
-export type OpenShiftClusterListValueList = OpenShiftCluster[];
+export type OpenShiftClusterListValueList = ReadonlyArray<OpenShiftCluster>;
 export const OpenShiftClusterListValueList = /*@__PURE__*/ S.Array(
   OpenShiftCluster,
 ) as any as S.Schema<OpenShiftClusterListValueList>;
@@ -902,6 +1156,43 @@ export const OpenShiftClusterCredentials = /*@__PURE__*/ S.suspend(() =>
   identifier: "OpenShiftClusterCredentials",
 }) as any as S.Schema<OpenShiftClusterCredentials>;
 
+/** The resource tags. */
+export type OpenShiftClustersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const OpenShiftClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<OpenShiftClustersUpdateRequestTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface OpenShiftClustersUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap;
+}
+export const OpenShiftClustersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(
+        OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap,
+      ),
+    }),
+).annotate({
+  identifier: "OpenShiftClustersUpdateRequestIdentity",
+}) as any as S.Schema<OpenShiftClustersUpdateRequestIdentity>;
+
 export interface OpenShiftClustersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -909,14 +1200,21 @@ export interface OpenShiftClustersUpdateRequest {
   resourceGroupName: string;
   /** The name of the OpenShift cluster resource. */
   resourceName: string;
-  body: unknown;
+  /** The resource tags. */
+  tags?: OpenShiftClustersUpdateRequestTagsMap;
+  /** The cluster properties. */
+  properties?: OpenShiftClusterPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: OpenShiftClustersUpdateRequestIdentity;
 }
 export const OpenShiftClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(OpenShiftClustersUpdateRequestTagsMap),
+    properties: S.optional(OpenShiftClusterPropertiesInput),
+    identity: S.optional(OpenShiftClustersUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1115,7 +1413,7 @@ export const OpenShiftVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenShiftVersion>;
 
 /** The OpenShiftVersion items on this page */
-export type OpenShiftVersionListValueList = OpenShiftVersion[];
+export type OpenShiftVersionListValueList = ReadonlyArray<OpenShiftVersion>;
 export const OpenShiftVersionListValueList = /*@__PURE__*/ S.Array(
   OpenShiftVersion,
 ) as any as S.Schema<OpenShiftVersionListValueList>;
@@ -1188,7 +1486,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListValueList = Operation[];
+export type OperationListValueList = ReadonlyArray<Operation>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListValueList>;
@@ -1254,7 +1552,7 @@ export const PlatformWorkloadIdentityRole = /*@__PURE__*/ S.suspend(() =>
 
 /** PlatformWorkloadIdentityRoles represents the set of roles associated with this version. */
 export type PlatformWorkloadIdentityRoleSetPropertiesPlatformWorkloadIdentityRolesList =
-  PlatformWorkloadIdentityRole[];
+  ReadonlyArray<PlatformWorkloadIdentityRole>;
 export const PlatformWorkloadIdentityRoleSetPropertiesPlatformWorkloadIdentityRolesList =
   /*@__PURE__*/ S.Array(
     PlatformWorkloadIdentityRole,
@@ -1354,7 +1652,7 @@ export const PlatformWorkloadIdentityRoleSet = /*@__PURE__*/ S.suspend(() =>
 
 /** The PlatformWorkloadIdentityRoleSet items on this page */
 export type PlatformWorkloadIdentityRoleSetListValueList =
-  PlatformWorkloadIdentityRoleSet[];
+  ReadonlyArray<PlatformWorkloadIdentityRoleSet>;
 export const PlatformWorkloadIdentityRoleSetListValueList =
   /*@__PURE__*/ S.Array(
     PlatformWorkloadIdentityRoleSet,

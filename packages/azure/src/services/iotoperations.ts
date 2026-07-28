@@ -12,6 +12,34 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** AkriConnector properties. */
+export interface AkriConnectorPropertiesInput {}
+export const AkriConnectorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AkriConnectorPropertiesInput",
+}) as any as S.Schema<AkriConnectorPropertiesInput>;
+
+/** The enum defining type of ExtendedLocation accepted. */
+export type ExtendedLocationType = "CustomLocation";
+export const ExtendedLocationType = /*@__PURE__*/ S.String;
+
+/** Extended location is an extension of Azure locations. They provide a way to use their Azure ARC enabled Kubernetes clusters as target locations for deploying Azure services instances. */
+export interface ExtendedLocation {
+  /** The name of the extended location. */
+  name: string;
+  /** Type of ExtendedLocation. */
+  type: ExtendedLocationType;
+}
+export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    type: ExtendedLocationType,
+  }),
+).annotate({
+  identifier: "ExtendedLocation",
+}) as any as S.Schema<ExtendedLocation>;
+
 export interface AkriConnectorCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -23,7 +51,10 @@ export interface AkriConnectorCreateOrUpdateRequest {
   akriConnectorTemplateName: string;
   /** Name of AkriConnector resource. */
   connectorName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: AkriConnectorPropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
 }
 export const AkriConnectorCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -32,7 +63,8 @@ export const AkriConnectorCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     instanceName: S.String.pipe(T.Label()),
     akriConnectorTemplateName: S.String.pipe(T.Label()),
     connectorName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(AkriConnectorPropertiesInput),
+    extendedLocation: S.optional(ExtendedLocation),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -50,8 +82,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -59,8 +90,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -97,8 +127,7 @@ export type ProvisioningState =
   | "Provisioning"
   | "Updating"
   | "Deleting"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** AkriConnector allocated device. */
@@ -119,7 +148,7 @@ export const AkriConnectorAllocatedDevice = /*@__PURE__*/ S.suspend(() =>
 
 /** The allocated devices for the connector. */
 export type AkriConnectorPropertiesAllocatedDevicesList =
-  AkriConnectorAllocatedDevice[];
+  ReadonlyArray<AkriConnectorAllocatedDevice>;
 export const AkriConnectorPropertiesAllocatedDevicesList =
   /*@__PURE__*/ S.Array(
     AkriConnectorAllocatedDevice,
@@ -130,8 +159,7 @@ export type ResourceHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const ResourceHealthState = /*@__PURE__*/ S.String;
 
 /** Represents the health state of a resource. */
@@ -177,8 +205,7 @@ export type AkriConnectorPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const AkriConnectorPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** AkriConnector properties. */
@@ -202,26 +229,6 @@ export const AkriConnectorProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AkriConnectorProperties",
 }) as any as S.Schema<AkriConnectorProperties>;
-
-/** The enum defining type of ExtendedLocation accepted. */
-export type ExtendedLocationType = "CustomLocation" | (string & {});
-export const ExtendedLocationType = /*@__PURE__*/ S.String;
-
-/** Extended location is an extension of Azure locations. They provide a way to use their Azure ARC enabled Kubernetes clusters as target locations for deploying Azure services instances. */
-export interface ExtendedLocation {
-  /** The name of the extended location. */
-  name: string;
-  /** Type of ExtendedLocation. */
-  type: ExtendedLocationType;
-}
-export const ExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: ExtendedLocationType,
-  }),
-).annotate({
-  identifier: "ExtendedLocation",
-}) as any as S.Schema<ExtendedLocation>;
 
 export interface AkriConnectorCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -403,7 +410,8 @@ export const AkriConnectorResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AkriConnectorResource>;
 
 /** The AkriConnectorResource items on this page */
-export type AkriConnectorResourceListResultValueList = AkriConnectorResource[];
+export type AkriConnectorResourceListResultValueList =
+  ReadonlyArray<AkriConnectorResource>;
 export const AkriConnectorResourceListResultValueList = /*@__PURE__*/ S.Array(
   AkriConnectorResource,
 ) as any as S.Schema<AkriConnectorResourceListResultValueList>;
@@ -424,37 +432,6 @@ export const AkriConnectorResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AkriConnectorResourceListResult",
 }) as any as S.Schema<AkriConnectorResourceListResult>;
 
-export interface AkriConnectorTemplateCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of instance. */
-  instanceName: string;
-  /** Name of AkriConnectorTemplate resource. */
-  akriConnectorTemplateName: string;
-  body: unknown;
-}
-export const AkriConnectorTemplateCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      instanceName: S.String.pipe(T.Label()),
-      akriConnectorTemplateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "AkriConnectorTemplateCreateOrUpdateRequest",
-  }) as any as S.Schema<AkriConnectorTemplateCreateOrUpdateRequest>;
-
 /** AkriConnectorTemplateAioMetadata properties. */
 export interface AkriConnectorTemplateAioMetadata {
   /** The minimum version of AIO required for the connector. */
@@ -473,8 +450,7 @@ export const AkriConnectorTemplateAioMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Runtime configuration types. */
 export type AkriConnectorTemplateRuntimeConfigurationType =
-  | "ManagedConfiguration"
-  | (string & {});
+  "ManagedConfiguration";
 export const AkriConnectorTemplateRuntimeConfigurationType =
   /*@__PURE__*/ S.String;
 
@@ -539,17 +515,15 @@ export const AkriConnectorTemplateDeviceInboundEndpointType =
   }) as any as S.Schema<AkriConnectorTemplateDeviceInboundEndpointType>;
 
 /** Device inbound endpoint types. */
-export type AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList =
-  AkriConnectorTemplateDeviceInboundEndpointType[];
-export const AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList =
+export type AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList =
+  ReadonlyArray<AkriConnectorTemplateDeviceInboundEndpointType>;
+export const AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList =
   /*@__PURE__*/ S.Array(
     AkriConnectorTemplateDeviceInboundEndpointType,
-  ) as any as S.Schema<AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList>;
+  ) as any as S.Schema<AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList>;
 
 /** AkriConnectorsMqttAuthenticationMethod properties. */
-export type AkriConnectorsMqttAuthenticationMethod =
-  | "ServiceAccountToken"
-  | (string & {});
+export type AkriConnectorsMqttAuthenticationMethod = "ServiceAccountToken";
 export const AkriConnectorsMqttAuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** AkriConnectorsMqttAuthentication properties. */
@@ -566,11 +540,11 @@ export const AkriConnectorsMqttAuthentication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AkriConnectorsMqttAuthentication>;
 
 /** Mqtt protocol types. */
-export type AkriConnectorsMqttProtocolType = "Mqtt" | (string & {});
+export type AkriConnectorsMqttProtocolType = "Mqtt";
 export const AkriConnectorsMqttProtocolType = /*@__PURE__*/ S.String;
 
 /** Mode for TLS. */
-export type TlsPropertiesMode = "Enabled" | "Disabled" | (string & {});
+export type TlsPropertiesMode = "Enabled" | "Disabled";
 export const TlsPropertiesMode = /*@__PURE__*/ S.String;
 
 /** Tls properties */
@@ -619,13 +593,87 @@ export const AkriConnectorsMqttConnectionConfiguration =
     identifier: "AkriConnectorsMqttConnectionConfiguration",
   }) as any as S.Schema<AkriConnectorsMqttConnectionConfiguration>;
 
+/** AkriConnectorTemplate properties. */
+export interface AkriConnectorTemplatePropertiesInput {
+  /** Metadata about AIO. */
+  aioMetadata?: AkriConnectorTemplateAioMetadata;
+  /** The runtime configuration for the Connector template. */
+  runtimeConfiguration: AkriConnectorTemplateRuntimeConfiguration;
+  /** Diagnostics settings for the Connector template. */
+  diagnostics?: AkriConnectorTemplateDiagnostics;
+  /** Device inbound endpoint types. */
+  deviceInboundEndpointTypes: AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList;
+  /** Mqtt connection configuration settings. */
+  mqttConnectionConfiguration?: AkriConnectorsMqttConnectionConfiguration;
+  /** A reference to a connector metadata document reference in a container registry. */
+  connectorMetadataRef?: string;
+}
+export const AkriConnectorTemplatePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      aioMetadata: S.optional(AkriConnectorTemplateAioMetadata),
+      runtimeConfiguration: AkriConnectorTemplateRuntimeConfiguration,
+      diagnostics: S.optional(AkriConnectorTemplateDiagnostics),
+      deviceInboundEndpointTypes:
+        AkriConnectorTemplatePropertiesInputDeviceInboundEndpointTypesList,
+      mqttConnectionConfiguration: S.optional(
+        AkriConnectorsMqttConnectionConfiguration,
+      ),
+      connectorMetadataRef: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AkriConnectorTemplatePropertiesInput",
+}) as any as S.Schema<AkriConnectorTemplatePropertiesInput>;
+
+export interface AkriConnectorTemplateCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of instance. */
+  instanceName: string;
+  /** Name of AkriConnectorTemplate resource. */
+  akriConnectorTemplateName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: AkriConnectorTemplatePropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
+}
+export const AkriConnectorTemplateCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      instanceName: S.String.pipe(T.Label()),
+      akriConnectorTemplateName: S.String.pipe(T.Label()),
+      properties: S.optional(AkriConnectorTemplatePropertiesInput),
+      extendedLocation: S.optional(ExtendedLocation),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/akriConnectorTemplates/{akriConnectorTemplateName}",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "AkriConnectorTemplateCreateOrUpdateRequest",
+  }) as any as S.Schema<AkriConnectorTemplateCreateOrUpdateRequest>;
+
+/** Device inbound endpoint types. */
+export type AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList =
+  ReadonlyArray<AkriConnectorTemplateDeviceInboundEndpointType>;
+export const AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList =
+  /*@__PURE__*/ S.Array(
+    AkriConnectorTemplateDeviceInboundEndpointType,
+  ) as any as S.Schema<AkriConnectorTemplatePropertiesDeviceInboundEndpointTypesList>;
+
 /** The health state of the resource. */
 export type AkriConnectorTemplatePropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const AkriConnectorTemplatePropertiesHealthState =
   /*@__PURE__*/ S.String;
 
@@ -840,7 +888,7 @@ export const AkriConnectorTemplateResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The AkriConnectorTemplateResource items on this page */
 export type AkriConnectorTemplateResourceListResultValueList =
-  AkriConnectorTemplateResource[];
+  ReadonlyArray<AkriConnectorTemplateResource>;
 export const AkriConnectorTemplateResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     AkriConnectorTemplateResource,
@@ -863,6 +911,14 @@ export const AkriConnectorTemplateResourceListResult = /*@__PURE__*/ S.suspend(
   identifier: "AkriConnectorTemplateResourceListResult",
 }) as any as S.Schema<AkriConnectorTemplateResourceListResult>;
 
+/** AkriService properties. */
+export interface AkriServicePropertiesInput {}
+export const AkriServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AkriServicePropertiesInput",
+}) as any as S.Schema<AkriServicePropertiesInput>;
+
 export interface AkriServiceCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -872,7 +928,10 @@ export interface AkriServiceCreateOrUpdateRequest {
   instanceName: string;
   /** Name of AkriService resource. */
   akriServiceName: string;
-  body: unknown;
+  /** The resource-specific properties for this resource. */
+  properties?: AkriServicePropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
 }
 export const AkriServiceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -880,7 +939,8 @@ export const AkriServiceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     instanceName: S.String.pipe(T.Label()),
     akriServiceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(AkriServicePropertiesInput),
+    extendedLocation: S.optional(ExtendedLocation),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1094,7 +1154,8 @@ export const AkriServiceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AkriServiceResource>;
 
 /** The AkriServiceResource items on this page */
-export type AkriServiceResourceListResultValueList = AkriServiceResource[];
+export type AkriServiceResourceListResultValueList =
+  ReadonlyArray<AkriServiceResource>;
 export const AkriServiceResourceListResultValueList = /*@__PURE__*/ S.Array(
   AkriServiceResource,
 ) as any as S.Schema<AkriServiceResourceListResultValueList>;
@@ -1115,46 +1176,11 @@ export const AkriServiceResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "AkriServiceResourceListResult",
 }) as any as S.Schema<AkriServiceResourceListResult>;
 
-export interface BrokerAuthenticationCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of instance. */
-  instanceName: string;
-  /** Name of broker. */
-  brokerName: string;
-  /** Name of Instance broker authentication resource */
-  authenticationName: string;
-  body: unknown;
-}
-export const BrokerAuthenticationCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      instanceName: S.String.pipe(T.Label()),
-      brokerName: S.String.pipe(T.Label()),
-      authenticationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "BrokerAuthenticationCreateOrUpdateRequest",
-  }) as any as S.Schema<BrokerAuthenticationCreateOrUpdateRequest>;
-
 /** Broker Authentication Mode */
 export type BrokerAuthenticationMethod =
   | "Custom"
   | "ServiceAccountToken"
-  | "X509"
-  | (string & {});
+  | "X509";
 export const BrokerAuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** X509 Certificate Authentication properties. */
@@ -1215,7 +1241,7 @@ export const BrokerAuthenticatorMethodCustom = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerAuthenticatorMethodCustom>;
 
 /** List of allowed audience. */
-export type BrokerAuthenticatorMethodSatAudiencesList = string[];
+export type BrokerAuthenticatorMethodSatAudiencesList = ReadonlyArray<string>;
 export const BrokerAuthenticatorMethodSatAudiencesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BrokerAuthenticatorMethodSatAudiencesList>;
@@ -1273,8 +1299,7 @@ export const BrokerAuthenticatorMethodX509AuthorizationAttributesMap =
 /** X509 authentication validation methods. */
 export type BrokerAuthenticatorValidationMethods =
   | "None"
-  | "AzureDeviceRegistry"
-  | (string & {});
+  | "AzureDeviceRegistry";
 export const BrokerAuthenticatorValidationMethods = /*@__PURE__*/ S.String;
 
 /** X509 for BrokerAuthentication. */
@@ -1321,8 +1346,68 @@ export const BrokerAuthenticatorMethods = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerAuthenticatorMethods>;
 
 /** Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported. */
+export type BrokerAuthenticationPropertiesInputAuthenticationMethodsList =
+  ReadonlyArray<BrokerAuthenticatorMethods>;
+export const BrokerAuthenticationPropertiesInputAuthenticationMethodsList =
+  /*@__PURE__*/ S.Array(
+    BrokerAuthenticatorMethods,
+  ) as any as S.Schema<BrokerAuthenticationPropertiesInputAuthenticationMethodsList>;
+
+/** BrokerAuthentication Resource properties */
+export interface BrokerAuthenticationPropertiesInput {
+  /** Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported. */
+  authenticationMethods: BrokerAuthenticationPropertiesInputAuthenticationMethodsList;
+}
+export const BrokerAuthenticationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authenticationMethods:
+      BrokerAuthenticationPropertiesInputAuthenticationMethodsList,
+  }),
+).annotate({
+  identifier: "BrokerAuthenticationPropertiesInput",
+}) as any as S.Schema<BrokerAuthenticationPropertiesInput>;
+
+export interface BrokerAuthenticationCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of instance. */
+  instanceName: string;
+  /** Name of broker. */
+  brokerName: string;
+  /** Name of Instance broker authentication resource */
+  authenticationName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: BrokerAuthenticationPropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
+}
+export const BrokerAuthenticationCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      instanceName: S.String.pipe(T.Label()),
+      brokerName: S.String.pipe(T.Label()),
+      authenticationName: S.String.pipe(T.Label()),
+      properties: S.optional(BrokerAuthenticationPropertiesInput),
+      extendedLocation: S.optional(ExtendedLocation),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authentications/{authenticationName}",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "BrokerAuthenticationCreateOrUpdateRequest",
+  }) as any as S.Schema<BrokerAuthenticationCreateOrUpdateRequest>;
+
+/** Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported. */
 export type BrokerAuthenticationPropertiesAuthenticationMethodsList =
-  BrokerAuthenticatorMethods[];
+  ReadonlyArray<BrokerAuthenticatorMethods>;
 export const BrokerAuthenticationPropertiesAuthenticationMethodsList =
   /*@__PURE__*/ S.Array(
     BrokerAuthenticatorMethods,
@@ -1333,8 +1418,7 @@ export type BrokerAuthenticationPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const BrokerAuthenticationPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** BrokerAuthentication Resource properties */
@@ -1540,7 +1624,7 @@ export const BrokerAuthenticationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The BrokerAuthenticationResource items on this page */
 export type BrokerAuthenticationResourceListResultValueList =
-  BrokerAuthenticationResource[];
+  ReadonlyArray<BrokerAuthenticationResource>;
 export const BrokerAuthenticationResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     BrokerAuthenticationResource,
@@ -1563,60 +1647,25 @@ export const BrokerAuthenticationResourceListResult = /*@__PURE__*/ S.suspend(
   identifier: "BrokerAuthenticationResourceListResult",
 }) as any as S.Schema<BrokerAuthenticationResourceListResult>;
 
-export interface BrokerAuthorizationCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of instance. */
-  instanceName: string;
-  /** Name of broker. */
-  brokerName: string;
-  /** Name of Instance broker authorization resource */
-  authorizationName: string;
-  body: unknown;
-}
-export const BrokerAuthorizationCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      instanceName: S.String.pipe(T.Label()),
-      brokerName: S.String.pipe(T.Label()),
-      authorizationName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "BrokerAuthorizationCreateOrUpdateRequest",
-}) as any as S.Schema<BrokerAuthorizationCreateOrUpdateRequest>;
-
 /** Enable caching of the authorization rules. */
-export type AuthorizationConfigCache = "Enabled" | "Disabled" | (string & {});
+export type AuthorizationConfigCache = "Enabled" | "Disabled";
 export const AuthorizationConfigCache = /*@__PURE__*/ S.String;
 
 /** BrokerResourceDefinitionMethods methods allowed */
 export type BrokerResourceDefinitionMethods =
   | "Connect"
   | "Publish"
-  | "Subscribe"
-  | (string & {});
+  | "Subscribe";
 export const BrokerResourceDefinitionMethods = /*@__PURE__*/ S.String;
 
 /** A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. This subfield may be set if the method is Connect. */
-export type BrokerResourceRuleClientIdsList = string[];
+export type BrokerResourceRuleClientIdsList = ReadonlyArray<string>;
 export const BrokerResourceRuleClientIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BrokerResourceRuleClientIdsList>;
 
 /** A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe. */
-export type BrokerResourceRuleTopicsList = string[];
+export type BrokerResourceRuleTopicsList = ReadonlyArray<string>;
 export const BrokerResourceRuleTopicsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BrokerResourceRuleTopicsList>;
@@ -1641,7 +1690,8 @@ export const BrokerResourceRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerResourceRule>;
 
 /** Give access to Broker methods and topics. */
-export type AuthorizationRuleBrokerResourcesList = BrokerResourceRule[];
+export type AuthorizationRuleBrokerResourcesList =
+  ReadonlyArray<BrokerResourceRule>;
 export const AuthorizationRuleBrokerResourcesList = /*@__PURE__*/ S.Array(
   BrokerResourceRule,
 ) as any as S.Schema<AuthorizationRuleBrokerResourcesList>;
@@ -1656,19 +1706,19 @@ export const PrincipalDefinitionAttributesItemMap = /*@__PURE__*/ S.Record(
 
 /** A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication. */
 export type PrincipalDefinitionAttributesList =
-  PrincipalDefinitionAttributesItemMap[];
+  ReadonlyArray<PrincipalDefinitionAttributesItemMap>;
 export const PrincipalDefinitionAttributesList = /*@__PURE__*/ S.Array(
   PrincipalDefinitionAttributesItemMap,
 ) as any as S.Schema<PrincipalDefinitionAttributesList>;
 
 /** A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection. */
-export type PrincipalDefinitionClientIdsList = string[];
+export type PrincipalDefinitionClientIdsList = ReadonlyArray<string>;
 export const PrincipalDefinitionClientIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrincipalDefinitionClientIdsList>;
 
 /** A list of usernames that match the clients. The usernames are case-sensitive and must match the usernames provided by the clients during authentication. */
-export type PrincipalDefinitionUsernamesList = string[];
+export type PrincipalDefinitionUsernamesList = ReadonlyArray<string>;
 export const PrincipalDefinitionUsernamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrincipalDefinitionUsernamesList>;
@@ -1693,15 +1743,11 @@ export const PrincipalDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrincipalDefinition>;
 
 /** StateStoreResourceKeyTypes properties */
-export type StateStoreResourceKeyTypes =
-  | "Pattern"
-  | "String"
-  | "Binary"
-  | (string & {});
+export type StateStoreResourceKeyTypes = "Pattern" | "String" | "Binary";
 export const StateStoreResourceKeyTypes = /*@__PURE__*/ S.String;
 
 /** Give access to state store keys for the corresponding principals defined. When key type is pattern set glob-style pattern (e.g., '*', 'clients/*'). */
-export type StateStoreResourceRuleKeysList = string[];
+export type StateStoreResourceRuleKeysList = ReadonlyArray<string>;
 export const StateStoreResourceRuleKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StateStoreResourceRuleKeysList>;
@@ -1710,8 +1756,7 @@ export const StateStoreResourceRuleKeysList = /*@__PURE__*/ S.Array(
 export type StateStoreResourceDefinitionMethods =
   | "Read"
   | "Write"
-  | "ReadWrite"
-  | (string & {});
+  | "ReadWrite";
 export const StateStoreResourceDefinitionMethods = /*@__PURE__*/ S.String;
 
 /** State Store Resource Rule properties. */
@@ -1734,7 +1779,8 @@ export const StateStoreResourceRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StateStoreResourceRule>;
 
 /** Give access to state store resources. */
-export type AuthorizationRuleStateStoreResourcesList = StateStoreResourceRule[];
+export type AuthorizationRuleStateStoreResourcesList =
+  ReadonlyArray<StateStoreResourceRule>;
 export const AuthorizationRuleStateStoreResourcesList = /*@__PURE__*/ S.Array(
   StateStoreResourceRule,
 ) as any as S.Schema<AuthorizationRuleStateStoreResourcesList>;
@@ -1759,7 +1805,7 @@ export const AuthorizationRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizationRule>;
 
 /** The authorization rules to follow. If no rule is set, but Authorization Resource is used that would mean DenyAll. */
-export type AuthorizationConfigRulesList = AuthorizationRule[];
+export type AuthorizationConfigRulesList = ReadonlyArray<AuthorizationRule>;
 export const AuthorizationConfigRulesList = /*@__PURE__*/ S.Array(
   AuthorizationRule,
 ) as any as S.Schema<AuthorizationConfigRulesList>;
@@ -1780,13 +1826,63 @@ export const AuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizationConfig",
 }) as any as S.Schema<AuthorizationConfig>;
 
+/** BrokerAuthorization Resource properties */
+export interface BrokerAuthorizationPropertiesInput {
+  /** The list of authorization policies supported by the Authorization Resource. */
+  authorizationPolicies: AuthorizationConfig;
+}
+export const BrokerAuthorizationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authorizationPolicies: AuthorizationConfig,
+  }),
+).annotate({
+  identifier: "BrokerAuthorizationPropertiesInput",
+}) as any as S.Schema<BrokerAuthorizationPropertiesInput>;
+
+export interface BrokerAuthorizationCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of instance. */
+  instanceName: string;
+  /** Name of broker. */
+  brokerName: string;
+  /** Name of Instance broker authorization resource */
+  authorizationName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: BrokerAuthorizationPropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
+}
+export const BrokerAuthorizationCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      instanceName: S.String.pipe(T.Label()),
+      brokerName: S.String.pipe(T.Label()),
+      authorizationName: S.String.pipe(T.Label()),
+      properties: S.optional(BrokerAuthorizationPropertiesInput),
+      extendedLocation: S.optional(ExtendedLocation),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/authorizations/{authorizationName}",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+).annotate({
+  identifier: "BrokerAuthorizationCreateOrUpdateRequest",
+}) as any as S.Schema<BrokerAuthorizationCreateOrUpdateRequest>;
+
 /** The health state of the resource. */
 export type BrokerAuthorizationPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const BrokerAuthorizationPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** BrokerAuthorization Resource properties */
@@ -1991,7 +2087,7 @@ export const BrokerAuthorizationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The BrokerAuthorizationResource items on this page */
 export type BrokerAuthorizationResourceListResultValueList =
-  BrokerAuthorizationResource[];
+  ReadonlyArray<BrokerAuthorizationResource>;
 export const BrokerAuthorizationResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     BrokerAuthorizationResource,
@@ -2014,41 +2110,8 @@ export const BrokerAuthorizationResourceListResult = /*@__PURE__*/ S.suspend(
   identifier: "BrokerAuthorizationResourceListResult",
 }) as any as S.Schema<BrokerAuthorizationResourceListResult>;
 
-export interface BrokerCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of instance. */
-  instanceName: string;
-  /** Name of broker. */
-  brokerName: string;
-  body: unknown;
-}
-export const BrokerCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    instanceName: S.String.pipe(T.Label()),
-    brokerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "BrokerCreateOrUpdateRequest",
-}) as any as S.Schema<BrokerCreateOrUpdateRequest>;
-
 /** The strategy to use for dropping messages from the queue. */
-export type SubscriberQueueLimitStrategy =
-  | "None"
-  | "DropOldest"
-  | (string & {});
+export type SubscriberQueueLimitStrategy = "None" | "DropOldest";
 export const SubscriberQueueLimitStrategy = /*@__PURE__*/ S.String;
 
 /** The settings of Subscriber Queue Limit. */
@@ -2094,10 +2157,7 @@ export const ClientConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientConfig" }) as any as S.Schema<ClientConfig>;
 
 /** The setting to enable or disable encryption of internal Traffic. */
-export type AdvancedSettingsEncryptInternalTraffic =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type AdvancedSettingsEncryptInternalTraffic = "Enabled" | "Disabled";
 export const AdvancedSettingsEncryptInternalTraffic = /*@__PURE__*/ S.String;
 
 /** Private key algorithm types. */
@@ -2108,12 +2168,11 @@ export type PrivateKeyAlgorithm =
   | "Ed25519"
   | "Rsa2048"
   | "Rsa4096"
-  | "Rsa8192"
-  | (string & {});
+  | "Rsa8192";
 export const PrivateKeyAlgorithm = /*@__PURE__*/ S.String;
 
 /** Private key rotation policy. */
-export type PrivateKeyRotationPolicy = "Always" | "Never" | (string & {});
+export type PrivateKeyRotationPolicy = "Always" | "Never";
 export const PrivateKeyRotationPolicy = /*@__PURE__*/ S.String;
 
 /** Cert Manager private key properties */
@@ -2240,7 +2299,7 @@ export const Metrics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Metrics" }) as any as S.Schema<Metrics>;
 
 /** The toggle to enable/disable self check. */
-export type SelfCheckMode = "Enabled" | "Disabled" | (string & {});
+export type SelfCheckMode = "Enabled" | "Disabled";
 export const SelfCheckMode = /*@__PURE__*/ S.String;
 
 /** Broker Diagnostic Self check properties */
@@ -2261,11 +2320,11 @@ export const SelfCheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SelfCheck" }) as any as S.Schema<SelfCheck>;
 
 /** The toggle to enable/disable traces. */
-export type TracesMode = "Enabled" | "Disabled" | (string & {});
+export type TracesMode = "Enabled" | "Disabled";
 export const TracesMode = /*@__PURE__*/ S.String;
 
 /** The toggle to enable/disable self tracing. */
-export type SelfTracingMode = "Enabled" | "Disabled" | (string & {});
+export type SelfTracingMode = "Enabled" | "Disabled";
 export const SelfTracingMode = /*@__PURE__*/ S.String;
 
 /** Diagnostic Self tracing properties */
@@ -2325,7 +2384,7 @@ export const BrokerDiagnostics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerDiagnostics>;
 
 /** AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1 */
-export type VolumeClaimSpecAccessModesList = string[];
+export type VolumeClaimSpecAccessModesList = ReadonlyArray<string>;
 export const VolumeClaimSpecAccessModesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VolumeClaimSpecAccessModesList>;
@@ -2406,7 +2465,7 @@ export const VolumeClaimResourceRequirementsClaims = /*@__PURE__*/ S.suspend(
 
 /** Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. This field is immutable. It can only be set for containers. */
 export type VolumeClaimResourceRequirementsClaimsList =
-  VolumeClaimResourceRequirementsClaims[];
+  ReadonlyArray<VolumeClaimResourceRequirementsClaims>;
 export const VolumeClaimResourceRequirementsClaimsList = /*@__PURE__*/ S.Array(
   VolumeClaimResourceRequirementsClaims,
 ) as any as S.Schema<VolumeClaimResourceRequirementsClaimsList>;
@@ -2431,16 +2490,12 @@ export const VolumeClaimResourceRequirements = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeClaimResourceRequirements>;
 
 /** Valid operators are In, NotIn, Exists and DoesNotExist. */
-export type OperatorValues =
-  | "In"
-  | "NotIn"
-  | "Exists"
-  | "DoesNotExist"
-  | (string & {});
+export type OperatorValues = "In" | "NotIn" | "Exists" | "DoesNotExist";
 export const OperatorValues = /*@__PURE__*/ S.String;
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
-export type VolumeClaimSpecSelectorMatchExpressionsValuesList = string[];
+export type VolumeClaimSpecSelectorMatchExpressionsValuesList =
+  ReadonlyArray<string>;
 export const VolumeClaimSpecSelectorMatchExpressionsValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2468,7 +2523,7 @@ export const VolumeClaimSpecSelectorMatchExpressions = /*@__PURE__*/ S.suspend(
 
 /** MatchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type VolumeClaimSpecSelectorMatchExpressionsList =
-  VolumeClaimSpecSelectorMatchExpressions[];
+  ReadonlyArray<VolumeClaimSpecSelectorMatchExpressions>;
 export const VolumeClaimSpecSelectorMatchExpressionsList =
   /*@__PURE__*/ S.Array(
     VolumeClaimSpecSelectorMatchExpressions,
@@ -2553,7 +2608,7 @@ export const DiskBackedMessageBuffer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiskBackedMessageBuffer>;
 
 /** The toggle to enable/disable cpu resource limits. */
-export type GenerateResourceLimitsCpu = "Enabled" | "Disabled" | (string & {});
+export type GenerateResourceLimitsCpu = "Enabled" | "Disabled";
 export const GenerateResourceLimitsCpu = /*@__PURE__*/ S.String;
 
 /** GenerateResourceLimits properties */
@@ -2570,27 +2625,19 @@ export const GenerateResourceLimits = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateResourceLimits>;
 
 /** Handling of high-priority messages during backpressure state. */
-export type HighPriorityMessagesBackpressureHandling =
-  | "Accept"
-  | "Reject"
-  | (string & {});
+export type HighPriorityMessagesBackpressureHandling = "Accept" | "Reject";
 export const HighPriorityMessagesBackpressureHandling = /*@__PURE__*/ S.String;
 
 /** Memory profile of Broker. */
-export type BrokerPropertiesMemoryProfile =
+export type BrokerPropertiesInputMemoryProfile =
   | "Tiny"
   | "Low"
   | "Medium"
-  | "High"
-  | (string & {});
-export const BrokerPropertiesMemoryProfile = /*@__PURE__*/ S.String;
+  | "High";
+export const BrokerPropertiesInputMemoryProfile = /*@__PURE__*/ S.String;
 
 /** Broker Persistence Policy Mode values. */
-export type BrokerPersistencePolicyMode =
-  | "All"
-  | "None"
-  | "Custom"
-  | (string & {});
+export type BrokerPersistencePolicyMode = "All" | "None" | "Custom";
 export const BrokerPersistencePolicyMode = /*@__PURE__*/ S.String;
 
 /** Broker Retain policy properties. */
@@ -2633,7 +2680,7 @@ export const BrokerSubscriberQueuePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerSubscriberQueuePolicy>;
 
 /** Mode properties */
-export type OperationalMode = "Enabled" | "Disabled" | (string & {});
+export type OperationalMode = "Enabled" | "Disabled";
 export const OperationalMode = /*@__PURE__*/ S.String;
 
 /** Broker Persistence Encryption properties. */
@@ -2677,6 +2724,80 @@ export const BrokerPersistence = /*@__PURE__*/ S.suspend(() =>
   identifier: "BrokerPersistence",
 }) as any as S.Schema<BrokerPersistence>;
 
+/** Broker Resource properties */
+export interface BrokerPropertiesInput {
+  /** Advanced settings of Broker. */
+  advanced?: AdvancedSettings;
+  /** The cardinality details of the broker. */
+  cardinality?: Cardinality;
+  /** Spec defines the desired identities of Broker diagnostics settings. */
+  diagnostics?: BrokerDiagnostics;
+  /** Settings of Disk Backed Message Buffer. */
+  diskBackedMessageBuffer?: DiskBackedMessageBuffer;
+  /** This setting controls whether Kubernetes CPU resource limits are requested. Increasing the number of replicas or workers proportionally increases the amount of CPU resources requested. If this setting is enabled and there are insufficient CPU resources, an error will be emitted. */
+  generateResourceLimits?: GenerateResourceLimits;
+  /** Handling of high-priority messages in the event that regular-priority messages are being backpressured. When set to "Accept", the broker continues to accept high-priority messages even while regular-priority messages are rejected due to backpressure. When set to "Reject", backpressure also affects high-priority messages. Defaults to "Accept". */
+  highPriorityMessagesBackpressureHandling?: HighPriorityMessagesBackpressureHandling;
+  /** Memory profile of Broker. */
+  memoryProfile?: BrokerPropertiesInputMemoryProfile;
+  /** The persistence settings of the Broker. */
+  persistence?: BrokerPersistence;
+}
+export const BrokerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    advanced: S.optional(AdvancedSettings),
+    cardinality: S.optional(Cardinality),
+    diagnostics: S.optional(BrokerDiagnostics),
+    diskBackedMessageBuffer: S.optional(DiskBackedMessageBuffer),
+    generateResourceLimits: S.optional(GenerateResourceLimits),
+    highPriorityMessagesBackpressureHandling: S.optional(
+      HighPriorityMessagesBackpressureHandling,
+    ),
+    memoryProfile: S.optional(BrokerPropertiesInputMemoryProfile),
+    persistence: S.optional(BrokerPersistence),
+  }),
+).annotate({
+  identifier: "BrokerPropertiesInput",
+}) as any as S.Schema<BrokerPropertiesInput>;
+
+export interface BrokerCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of instance. */
+  instanceName: string;
+  /** Name of broker. */
+  brokerName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: BrokerPropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
+}
+export const BrokerCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    instanceName: S.String.pipe(T.Label()),
+    brokerName: S.String.pipe(T.Label()),
+    properties: S.optional(BrokerPropertiesInput),
+    extendedLocation: S.optional(ExtendedLocation),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "BrokerCreateOrUpdateRequest",
+}) as any as S.Schema<BrokerCreateOrUpdateRequest>;
+
+/** Memory profile of Broker. */
+export type BrokerPropertiesMemoryProfile = "Tiny" | "Low" | "Medium" | "High";
+export const BrokerPropertiesMemoryProfile = /*@__PURE__*/ S.String;
+
 /** BrokerStatus status. */
 export interface BrokerStatus {
   /** The health state of the Broker. */
@@ -2693,8 +2814,7 @@ export type BrokerPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const BrokerPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** Broker Resource properties */
@@ -2911,7 +3031,7 @@ export const BrokerResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BrokerResource" }) as any as S.Schema<BrokerResource>;
 
 /** The BrokerResource items on this page */
-export type BrokerResourceListResultValueList = BrokerResource[];
+export type BrokerResourceListResultValueList = ReadonlyArray<BrokerResource>;
 export const BrokerResourceListResultValueList = /*@__PURE__*/ S.Array(
   BrokerResource,
 ) as any as S.Schema<BrokerResourceListResultValueList>;
@@ -2932,49 +3052,16 @@ export const BrokerResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "BrokerResourceListResult",
 }) as any as S.Schema<BrokerResourceListResult>;
 
-export interface BrokerListenerCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of instance. */
-  instanceName: string;
-  /** Name of broker. */
-  brokerName: string;
-  /** Name of Instance broker listener resource */
-  listenerName: string;
-  body: unknown;
-}
-export const BrokerListenerCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    instanceName: S.String.pipe(T.Label()),
-    brokerName: S.String.pipe(T.Label()),
-    listenerName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "BrokerListenerCreateOrUpdateRequest",
-}) as any as S.Schema<BrokerListenerCreateOrUpdateRequest>;
-
 /** Protocol to use for client connections. */
-export type ListenerPortProtocol = "Mqtt" | "WebSockets" | (string & {});
+export type ListenerPortProtocol = "Mqtt" | "WebSockets";
 export const ListenerPortProtocol = /*@__PURE__*/ S.String;
 
 /** Broker Authentication Mode */
-export type TlsCertMethodMode = "Automatic" | "Manual" | (string & {});
+export type TlsCertMethodMode = "Automatic" | "Manual";
 export const TlsCertMethodMode = /*@__PURE__*/ S.String;
 
 /** CertManagerIssuerKind properties */
-export type CertManagerIssuerKind = "Issuer" | "ClusterIssuer" | (string & {});
+export type CertManagerIssuerKind = "Issuer" | "ClusterIssuer";
 export const CertManagerIssuerKind = /*@__PURE__*/ S.String;
 
 /** Cert-Manager issuerRef properties */
@@ -2997,13 +3084,13 @@ export const CertManagerIssuerRef = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertManagerIssuerRef>;
 
 /** DNS SANs. */
-export type SanForCertDnsList = string[];
+export type SanForCertDnsList = ReadonlyArray<string>;
 export const SanForCertDnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SanForCertDnsList>;
 
 /** IP address SANs. */
-export type SanForCertIpList = string[];
+export type SanForCertIpList = ReadonlyArray<string>;
 export const SanForCertIpList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SanForCertIpList>;
@@ -3094,7 +3181,77 @@ export const ListenerPort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListenerPort" }) as any as S.Schema<ListenerPort>;
 
 /** Ports on which this listener accepts client connections. */
-export type BrokerListenerPropertiesPortsList = ListenerPort[];
+export type BrokerListenerPropertiesInputPortsList =
+  ReadonlyArray<ListenerPort>;
+export const BrokerListenerPropertiesInputPortsList = /*@__PURE__*/ S.Array(
+  ListenerPort,
+) as any as S.Schema<BrokerListenerPropertiesInputPortsList>;
+
+/** Kubernetes Service type of this listener. */
+export type BrokerListenerPropertiesInputServiceType =
+  | "ClusterIp"
+  | "LoadBalancer"
+  | "NodePort";
+export const BrokerListenerPropertiesInputServiceType = /*@__PURE__*/ S.String;
+
+/** Defines a Broker listener. A listener is a collection of ports on which the broker accepts connections from clients. */
+export interface BrokerListenerPropertiesInput {
+  /** Kubernetes Service name of this listener. */
+  serviceName?: string;
+  /** Ports on which this listener accepts client connections. */
+  ports: BrokerListenerPropertiesInputPortsList;
+  /** Kubernetes Service type of this listener. */
+  serviceType?: BrokerListenerPropertiesInputServiceType;
+}
+export const BrokerListenerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.optional(S.String),
+    ports: BrokerListenerPropertiesInputPortsList,
+    serviceType: S.optional(BrokerListenerPropertiesInputServiceType),
+  }),
+).annotate({
+  identifier: "BrokerListenerPropertiesInput",
+}) as any as S.Schema<BrokerListenerPropertiesInput>;
+
+export interface BrokerListenerCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of instance. */
+  instanceName: string;
+  /** Name of broker. */
+  brokerName: string;
+  /** Name of Instance broker listener resource */
+  listenerName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: BrokerListenerPropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
+}
+export const BrokerListenerCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    instanceName: S.String.pipe(T.Label()),
+    brokerName: S.String.pipe(T.Label()),
+    listenerName: S.String.pipe(T.Label()),
+    properties: S.optional(BrokerListenerPropertiesInput),
+    extendedLocation: S.optional(ExtendedLocation),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/brokers/{brokerName}/listeners/{listenerName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "BrokerListenerCreateOrUpdateRequest",
+}) as any as S.Schema<BrokerListenerCreateOrUpdateRequest>;
+
+/** Ports on which this listener accepts client connections. */
+export type BrokerListenerPropertiesPortsList = ReadonlyArray<ListenerPort>;
 export const BrokerListenerPropertiesPortsList = /*@__PURE__*/ S.Array(
   ListenerPort,
 ) as any as S.Schema<BrokerListenerPropertiesPortsList>;
@@ -3103,8 +3260,7 @@ export const BrokerListenerPropertiesPortsList = /*@__PURE__*/ S.Array(
 export type BrokerListenerPropertiesServiceType =
   | "ClusterIp"
   | "LoadBalancer"
-  | "NodePort"
-  | (string & {});
+  | "NodePort";
 export const BrokerListenerPropertiesServiceType = /*@__PURE__*/ S.String;
 
 /** The health state of the resource. */
@@ -3112,8 +3268,7 @@ export type BrokerListenerPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const BrokerListenerPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** Defines a Broker listener. A listener is a collection of ports on which the broker accepts connections from clients. */
@@ -3324,7 +3479,7 @@ export const BrokerListenerResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The BrokerListenerResource items on this page */
 export type BrokerListenerResourceListResultValueList =
-  BrokerListenerResource[];
+  ReadonlyArray<BrokerListenerResource>;
 export const BrokerListenerResourceListResultValueList = /*@__PURE__*/ S.Array(
   BrokerListenerResource,
 ) as any as S.Schema<BrokerListenerResourceListResultValueList>;
@@ -3345,60 +3500,22 @@ export const BrokerListenerResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "BrokerListenerResourceListResult",
 }) as any as S.Schema<BrokerListenerResourceListResult>;
 
-export interface DataflowCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of instance. */
-  instanceName: string;
-  /** Name of Instance dataflowProfile resource */
-  dataflowProfileName: string;
-  /** Name of Instance dataflowProfile dataflow resource */
-  dataflowName: string;
-  body: unknown;
-}
-export const DataflowCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    instanceName: S.String.pipe(T.Label()),
-    dataflowProfileName: S.String.pipe(T.Label()),
-    dataflowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "DataflowCreateOrUpdateRequest",
-}) as any as S.Schema<DataflowCreateOrUpdateRequest>;
-
 /** Mode for Dataflow. Optional; defaults to Enabled. */
-export type DataflowPropertiesMode = "Enabled" | "Disabled" | (string & {});
-export const DataflowPropertiesMode = /*@__PURE__*/ S.String;
+export type DataflowPropertiesInputMode = "Enabled" | "Disabled";
+export const DataflowPropertiesInputMode = /*@__PURE__*/ S.String;
 
 /** Dataflow Operation Type properties */
-export type OperationType =
-  | "Source"
-  | "Destination"
-  | "BuiltInTransformation"
-  | (string & {});
+export type OperationType = "Source" | "Destination" | "BuiltInTransformation";
 export const OperationType = /*@__PURE__*/ S.String;
 
 /** Content is a JSON Schema. Allowed: JSON Schema/draft-7. */
-export type DataflowSourceOperationSettingsSerializationFormat =
-  | "Json"
-  | (string & {});
+export type DataflowSourceOperationSettingsSerializationFormat = "Json";
 export const DataflowSourceOperationSettingsSerializationFormat =
   /*@__PURE__*/ S.String;
 
 /** List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +. */
-export type DataflowSourceOperationSettingsDataSourcesList = string[];
+export type DataflowSourceOperationSettingsDataSourcesList =
+  ReadonlyArray<string>;
 export const DataflowSourceOperationSettingsDataSourcesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3435,13 +3552,13 @@ export const DataflowSourceOperationSettings = /*@__PURE__*/ S.suspend(() =>
 export type DataflowBuiltInTransformationSettingsSerializationFormat =
   | "Delta"
   | "Json"
-  | "Parquet"
-  | (string & {});
+  | "Parquet";
 export const DataflowBuiltInTransformationSettingsSerializationFormat =
   /*@__PURE__*/ S.String;
 
 /** List of fields for enriching from the Broker State Store. */
-export type DataflowBuiltInTransformationDatasetInputsList = string[];
+export type DataflowBuiltInTransformationDatasetInputsList =
+  ReadonlyArray<string>;
 export const DataflowBuiltInTransformationDatasetInputsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3475,18 +3592,19 @@ export const DataflowBuiltInTransformationDataset = /*@__PURE__*/ S.suspend(
 
 /** Enrich data from Broker State Store. Dataset references a key in Broker State Store. */
 export type DataflowBuiltInTransformationSettingsDatasetsList =
-  DataflowBuiltInTransformationDataset[];
+  ReadonlyArray<DataflowBuiltInTransformationDataset>;
 export const DataflowBuiltInTransformationSettingsDatasetsList =
   /*@__PURE__*/ S.Array(
     DataflowBuiltInTransformationDataset,
   ) as any as S.Schema<DataflowBuiltInTransformationSettingsDatasetsList>;
 
 /** The type of dataflow operation. */
-export type DataflowBuiltInTransformationFilterType = "Filter" | (string & {});
+export type DataflowBuiltInTransformationFilterType = "Filter";
 export const DataflowBuiltInTransformationFilterType = /*@__PURE__*/ S.String;
 
 /** List of fields for filtering in JSON path expression. */
-export type DataflowBuiltInTransformationFilterInputsList = string[];
+export type DataflowBuiltInTransformationFilterInputsList =
+  ReadonlyArray<string>;
 export const DataflowBuiltInTransformationFilterInputsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3516,7 +3634,7 @@ export const DataflowBuiltInTransformationFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** Filters input record or datapoints based on condition. */
 export type DataflowBuiltInTransformationSettingsFilterList =
-  DataflowBuiltInTransformationFilter[];
+  ReadonlyArray<DataflowBuiltInTransformationFilter>;
 export const DataflowBuiltInTransformationSettingsFilterList =
   /*@__PURE__*/ S.Array(
     DataflowBuiltInTransformationFilter,
@@ -3528,12 +3646,11 @@ export type DataflowMappingType =
   | "Rename"
   | "Compute"
   | "PassThrough"
-  | "BuiltInFunction"
-  | (string & {});
+  | "BuiltInFunction";
 export const DataflowMappingType = /*@__PURE__*/ S.String;
 
 /** List of fields for mapping in JSON path expression. */
-export type DataflowBuiltInTransformationMapInputsList = string[];
+export type DataflowBuiltInTransformationMapInputsList = ReadonlyArray<string>;
 export const DataflowBuiltInTransformationMapInputsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataflowBuiltInTransformationMapInputsList>;
@@ -3565,7 +3682,7 @@ export const DataflowBuiltInTransformationMap = /*@__PURE__*/ S.suspend(() =>
 
 /** Maps input to output message. */
 export type DataflowBuiltInTransformationSettingsMapList =
-  DataflowBuiltInTransformationMap[];
+  ReadonlyArray<DataflowBuiltInTransformationMap>;
 export const DataflowBuiltInTransformationSettingsMapList =
   /*@__PURE__*/ S.Array(
     DataflowBuiltInTransformationMap,
@@ -3603,8 +3720,7 @@ export const DataflowBuiltInTransformationSettings = /*@__PURE__*/ S.suspend(
 export type DataflowHeaderActionType =
   | "AddIfNotPresent"
   | "Remove"
-  | "AddOrReplace"
-  | (string & {});
+  | "AddOrReplace";
 export const DataflowHeaderActionType = /*@__PURE__*/ S.String;
 
 /** Dataflow Destination Header Action properties */
@@ -3622,7 +3738,7 @@ export const DataflowDestinationHeaderAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Headers for the output data. */
 export type DataflowDestinationOperationSettingsHeadersList =
-  DataflowDestinationHeaderAction[];
+  ReadonlyArray<DataflowDestinationHeaderAction>;
 export const DataflowDestinationOperationSettingsHeadersList =
   /*@__PURE__*/ S.Array(
     DataflowDestinationHeaderAction,
@@ -3676,7 +3792,74 @@ export const DataflowOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowOperation>;
 
 /** List of operations including source and destination references as well as transformation. */
-export type DataflowPropertiesOperationsList = DataflowOperation[];
+export type DataflowPropertiesInputOperationsList =
+  ReadonlyArray<DataflowOperation>;
+export const DataflowPropertiesInputOperationsList = /*@__PURE__*/ S.Array(
+  DataflowOperation,
+) as any as S.Schema<DataflowPropertiesInputOperationsList>;
+
+/** Dataflow Resource properties */
+export interface DataflowPropertiesInput {
+  /** Mode for Dataflow. Optional; defaults to Enabled. */
+  mode?: DataflowPropertiesInputMode;
+  /** Disk persistence mode. */
+  requestDiskPersistence?: OperationalMode;
+  /** List of operations including source and destination references as well as transformation. */
+  operations: DataflowPropertiesInputOperationsList;
+}
+export const DataflowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.optional(DataflowPropertiesInputMode),
+    requestDiskPersistence: S.optional(OperationalMode),
+    operations: DataflowPropertiesInputOperationsList,
+  }),
+).annotate({
+  identifier: "DataflowPropertiesInput",
+}) as any as S.Schema<DataflowPropertiesInput>;
+
+export interface DataflowCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of instance. */
+  instanceName: string;
+  /** Name of Instance dataflowProfile resource */
+  dataflowProfileName: string;
+  /** Name of Instance dataflowProfile dataflow resource */
+  dataflowName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: DataflowPropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
+}
+export const DataflowCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    instanceName: S.String.pipe(T.Label()),
+    dataflowProfileName: S.String.pipe(T.Label()),
+    dataflowName: S.String.pipe(T.Label()),
+    properties: S.optional(DataflowPropertiesInput),
+    extendedLocation: S.optional(ExtendedLocation),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflows/{dataflowName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DataflowCreateOrUpdateRequest",
+}) as any as S.Schema<DataflowCreateOrUpdateRequest>;
+
+/** Mode for Dataflow. Optional; defaults to Enabled. */
+export type DataflowPropertiesMode = "Enabled" | "Disabled";
+export const DataflowPropertiesMode = /*@__PURE__*/ S.String;
+
+/** List of operations including source and destination references as well as transformation. */
+export type DataflowPropertiesOperationsList = ReadonlyArray<DataflowOperation>;
 export const DataflowPropertiesOperationsList = /*@__PURE__*/ S.Array(
   DataflowOperation,
 ) as any as S.Schema<DataflowPropertiesOperationsList>;
@@ -3697,8 +3880,7 @@ export type DataflowPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const DataflowPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** Dataflow Resource properties */
@@ -3794,37 +3976,6 @@ export const DataflowDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataflowDeleteResponse",
 }) as any as S.Schema<DataflowDeleteResponse>;
 
-export interface DataflowEndpointCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of instance. */
-  instanceName: string;
-  /** Name of Instance dataflowEndpoint resource */
-  dataflowEndpointName: string;
-  body: unknown;
-}
-export const DataflowEndpointCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      instanceName: S.String.pipe(T.Label()),
-      dataflowEndpointName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "DataflowEndpointCreateOrUpdateRequest",
-}) as any as S.Schema<DataflowEndpointCreateOrUpdateRequest>;
-
 /** DataflowEndpoint Type properties */
 export type EndpointType =
   | "DataExplorer"
@@ -3833,8 +3984,7 @@ export type EndpointType =
   | "Kafka"
   | "LocalStorage"
   | "Mqtt"
-  | "OpenTelemetry"
-  | (string & {});
+  | "OpenTelemetry";
 export const EndpointType = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Host Type properties */
@@ -3844,15 +3994,13 @@ export type DataflowEndpointHostType =
   | "LocalBroker"
   | "Eventhub"
   | "CustomMqtt"
-  | "CustomKafka"
-  | (string & {});
+  | "CustomKafka";
 export const DataflowEndpointHostType = /*@__PURE__*/ S.String;
 
 /** Managed Identity Method */
 export type ManagedIdentityMethod =
   | "SystemAssignedManagedIdentity"
-  | "UserAssignedManagedIdentity"
-  | (string & {});
+  | "UserAssignedManagedIdentity";
 export const ManagedIdentityMethod = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Authentication SystemAssignedManagedIdentity properties */
@@ -3955,8 +4103,7 @@ export const DataflowEndpointDataExplorer = /*@__PURE__*/ S.suspend(() =>
 export type DataLakeStorageAuthMethod =
   | "SystemAssignedManagedIdentity"
   | "UserAssignedManagedIdentity"
-  | "AccessToken"
-  | (string & {});
+  | "AccessToken";
 export const DataLakeStorageAuthMethod = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Authentication Access Token properties */
@@ -4062,7 +4209,7 @@ export const DataflowEndpointFabricOneLakeNames = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowEndpointFabricOneLakeNames>;
 
 /** DataflowEndpoint Fabric Path Type properties */
-export type DataflowEndpointFabricPathType = "Files" | "Tables" | (string & {});
+export type DataflowEndpointFabricPathType = "Files" | "Tables";
 export const DataflowEndpointFabricPathType = /*@__PURE__*/ S.String;
 
 /** Microsoft Fabric endpoint properties */
@@ -4096,16 +4243,14 @@ export type KafkaAuthMethod =
   | "UserAssignedManagedIdentity"
   | "Sasl"
   | "X509Certificate"
-  | "Anonymous"
-  | (string & {});
+  | "Anonymous";
 export const KafkaAuthMethod = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Authentication Sasl Type properties */
 export type DataflowEndpointAuthenticationSaslType =
   | "Plain"
   | "ScramSha256"
-  | "ScramSha512"
-  | (string & {});
+  | "ScramSha512";
 export const DataflowEndpointAuthenticationSaslType = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Authentication Sasl properties */
@@ -4167,10 +4312,7 @@ export const DataflowEndpointKafkaAuthentication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowEndpointKafkaAuthentication>;
 
 /** Mode for batching. */
-export type DataflowEndpointKafkaBatchingMode =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DataflowEndpointKafkaBatchingMode = "Enabled" | "Disabled";
 export const DataflowEndpointKafkaBatchingMode = /*@__PURE__*/ S.String;
 
 /** Kafka endpoint Batching properties */
@@ -4196,10 +4338,7 @@ export const DataflowEndpointKafkaBatching = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowEndpointKafkaBatching>;
 
 /** Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source. */
-export type DataflowEndpointKafkaCopyMqttProperties =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
+export type DataflowEndpointKafkaCopyMqttProperties = "Enabled" | "Disabled";
 export const DataflowEndpointKafkaCopyMqttProperties = /*@__PURE__*/ S.String;
 
 /** Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source. */
@@ -4207,16 +4346,11 @@ export type DataflowEndpointKafkaCompression =
   | "None"
   | "Gzip"
   | "Snappy"
-  | "Lz4"
-  | (string & {});
+  | "Lz4";
 export const DataflowEndpointKafkaCompression = /*@__PURE__*/ S.String;
 
 /** Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source. */
-export type DataflowEndpointKafkaKafkaAcks =
-  | "Zero"
-  | "One"
-  | "All"
-  | (string & {});
+export type DataflowEndpointKafkaKafkaAcks = "Zero" | "One" | "All";
 export const DataflowEndpointKafkaKafkaAcks = /*@__PURE__*/ S.String;
 
 /** Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source. */
@@ -4224,15 +4358,11 @@ export type DataflowEndpointKafkaPartitionStrategy =
   | "Default"
   | "Static"
   | "Topic"
-  | "Property"
-  | (string & {});
+  | "Property";
 export const DataflowEndpointKafkaPartitionStrategy = /*@__PURE__*/ S.String;
 
 /** How to map events to the cloud. */
-export type CloudEventAttributeType =
-  | "Propagate"
-  | "CreateOrRemap"
-  | (string & {});
+export type CloudEventAttributeType = "Propagate" | "CreateOrRemap";
 export const CloudEventAttributeType = /*@__PURE__*/ S.String;
 
 /** Kafka endpoint properties */
@@ -4294,8 +4424,7 @@ export type MqttAuthMethod =
   | "UserAssignedManagedIdentity"
   | "ServiceAccountToken"
   | "X509Certificate"
-  | "Anonymous"
-  | (string & {});
+  | "Anonymous";
 export const MqttAuthMethod = /*@__PURE__*/ S.String;
 
 /** Service Account Token for BrokerAuthentication */
@@ -4344,14 +4473,11 @@ export const DataflowEndpointMqttAuthentication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowEndpointMqttAuthentication>;
 
 /** Enable or disable websockets. */
-export type DataflowEndpointMqttProtocol =
-  | "Mqtt"
-  | "WebSockets"
-  | (string & {});
+export type DataflowEndpointMqttProtocol = "Mqtt" | "WebSockets";
 export const DataflowEndpointMqttProtocol = /*@__PURE__*/ S.String;
 
 /** Whether or not to keep the retain setting. */
-export type DataflowEndpointMqttRetain = "Keep" | "Never" | (string & {});
+export type DataflowEndpointMqttRetain = "Keep" | "Never";
 export const DataflowEndpointMqttRetain = /*@__PURE__*/ S.String;
 
 /** Broker endpoint properties */
@@ -4401,8 +4527,7 @@ export const DataflowEndpointMqtt = /*@__PURE__*/ S.suspend(() =>
 export type DataflowOpenTelemetryAuthenticationMethod =
   | "ServiceAccountToken"
   | "X509Certificate"
-  | "Anonymous"
-  | (string & {});
+  | "Anonymous";
 export const DataflowOpenTelemetryAuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** Dataflow OpenTelemetry authentication properties. */
@@ -4440,13 +4565,84 @@ export const DataflowEndpointOpenTelemetry = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataflowEndpointOpenTelemetry",
 }) as any as S.Schema<DataflowEndpointOpenTelemetry>;
 
+/** DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource */
+export interface DataflowEndpointPropertiesInput {
+  /** Endpoint Type. */
+  endpointType: EndpointType;
+  /** The type of the Kafka host. E.g FabricRT, EventGrid. */
+  hostType?: DataflowEndpointHostType;
+  /** Azure Data Explorer endpoint. */
+  dataExplorerSettings?: DataflowEndpointDataExplorer;
+  /** Azure Data Lake endpoint. */
+  dataLakeStorageSettings?: DataflowEndpointDataLakeStorage;
+  /** Microsoft Fabric endpoint. */
+  fabricOneLakeSettings?: DataflowEndpointFabricOneLake;
+  /** Kafka endpoint. */
+  kafkaSettings?: DataflowEndpointKafka;
+  /** Local persistent volume endpoint. */
+  localStorageSettings?: DataflowEndpointLocalStorage;
+  /** Broker endpoint. */
+  mqttSettings?: DataflowEndpointMqtt;
+  /** OpenTelemetry endpoint. */
+  openTelemetrySettings?: DataflowEndpointOpenTelemetry;
+}
+export const DataflowEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpointType: EndpointType,
+    hostType: S.optional(DataflowEndpointHostType),
+    dataExplorerSettings: S.optional(DataflowEndpointDataExplorer),
+    dataLakeStorageSettings: S.optional(DataflowEndpointDataLakeStorage),
+    fabricOneLakeSettings: S.optional(DataflowEndpointFabricOneLake),
+    kafkaSettings: S.optional(DataflowEndpointKafka),
+    localStorageSettings: S.optional(DataflowEndpointLocalStorage),
+    mqttSettings: S.optional(DataflowEndpointMqtt),
+    openTelemetrySettings: S.optional(DataflowEndpointOpenTelemetry),
+  }),
+).annotate({
+  identifier: "DataflowEndpointPropertiesInput",
+}) as any as S.Schema<DataflowEndpointPropertiesInput>;
+
+export interface DataflowEndpointCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of instance. */
+  instanceName: string;
+  /** Name of Instance dataflowEndpoint resource */
+  dataflowEndpointName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: DataflowEndpointPropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
+}
+export const DataflowEndpointCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      instanceName: S.String.pipe(T.Label()),
+      dataflowEndpointName: S.String.pipe(T.Label()),
+      properties: S.optional(DataflowEndpointPropertiesInput),
+      extendedLocation: S.optional(ExtendedLocation),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowEndpoints/{dataflowEndpointName}",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+).annotate({
+  identifier: "DataflowEndpointCreateOrUpdateRequest",
+}) as any as S.Schema<DataflowEndpointCreateOrUpdateRequest>;
+
 /** The health state of the resource. */
 export type DataflowEndpointPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const DataflowEndpointPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource */
@@ -4666,7 +4862,7 @@ export const DataflowEndpointResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataflowEndpointResource items on this page */
 export type DataflowEndpointResourceListResultValueList =
-  DataflowEndpointResource[];
+  ReadonlyArray<DataflowEndpointResource>;
 export const DataflowEndpointResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     DataflowEndpointResource,
@@ -4746,52 +4942,12 @@ export const DataflowGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataflowGetResponse",
 }) as any as S.Schema<DataflowGetResponse>;
 
-export interface DataflowGraphCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of instance. */
-  instanceName: string;
-  /** Name of Instance dataflowProfile resource */
-  dataflowProfileName: string;
-  /** Name of Instance dataflowEndpoint resource. */
-  dataflowGraphName: string;
-  body: unknown;
-}
-export const DataflowGraphCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    instanceName: S.String.pipe(T.Label()),
-    dataflowProfileName: S.String.pipe(T.Label()),
-    dataflowGraphName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "DataflowGraphCreateOrUpdateRequest",
-}) as any as S.Schema<DataflowGraphCreateOrUpdateRequest>;
-
 /** The mode of the dataflow graph. */
-export type DataflowGraphPropertiesMode =
-  | "Enabled"
-  | "Disabled"
-  | (string & {});
-export const DataflowGraphPropertiesMode = /*@__PURE__*/ S.String;
+export type DataflowGraphPropertiesInputMode = "Enabled" | "Disabled";
+export const DataflowGraphPropertiesInputMode = /*@__PURE__*/ S.String;
 
 /** DataflowGraph node types. */
-export type DataflowGraphNodeType =
-  | "Source"
-  | "Graph"
-  | "Destination"
-  | (string & {});
+export type DataflowGraphNodeType = "Source" | "Graph" | "Destination";
 export const DataflowGraphNodeType = /*@__PURE__*/ S.String;
 
 /** DataflowGraph node properties. */
@@ -4811,18 +4967,18 @@ export const DataflowGraphNode = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowGraphNode>;
 
 /** List of nodes in the dataflow graph. */
-export type DataflowGraphPropertiesNodesList = DataflowGraphNode[];
-export const DataflowGraphPropertiesNodesList = /*@__PURE__*/ S.Array(
+export type DataflowGraphPropertiesInputNodesList =
+  ReadonlyArray<DataflowGraphNode>;
+export const DataflowGraphPropertiesInputNodesList = /*@__PURE__*/ S.Array(
   DataflowGraphNode,
-) as any as S.Schema<DataflowGraphPropertiesNodesList>;
+) as any as S.Schema<DataflowGraphPropertiesInputNodesList>;
 
 /** Serialization format for dataflow graph connection. */
 export type DataflowGraphConnectionSchemaSerializationFormat =
   | "Delta"
   | "Json"
   | "Parquet"
-  | "Avro"
-  | (string & {});
+  | "Avro";
 export const DataflowGraphConnectionSchemaSerializationFormat =
   /*@__PURE__*/ S.String;
 
@@ -4891,8 +5047,85 @@ export const DataflowGraphNodeConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowGraphNodeConnection>;
 
 /** List of connections between nodes in the dataflow graph. */
+export type DataflowGraphPropertiesInputNodeConnectionsList =
+  ReadonlyArray<DataflowGraphNodeConnection>;
+export const DataflowGraphPropertiesInputNodeConnectionsList =
+  /*@__PURE__*/ S.Array(
+    DataflowGraphNodeConnection,
+  ) as any as S.Schema<DataflowGraphPropertiesInputNodeConnectionsList>;
+
+/** DataflowGraph properties. */
+export interface DataflowGraphPropertiesInput {
+  /** The mode of the dataflow graph. */
+  mode?: DataflowGraphPropertiesInputMode;
+  /** Disk persistence mode. */
+  requestDiskPersistence?: OperationalMode;
+  /** List of nodes in the dataflow graph. */
+  nodes: DataflowGraphPropertiesInputNodesList;
+  /** List of connections between nodes in the dataflow graph. */
+  nodeConnections: DataflowGraphPropertiesInputNodeConnectionsList;
+}
+export const DataflowGraphPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.optional(DataflowGraphPropertiesInputMode),
+    requestDiskPersistence: S.optional(OperationalMode),
+    nodes: DataflowGraphPropertiesInputNodesList,
+    nodeConnections: DataflowGraphPropertiesInputNodeConnectionsList,
+  }),
+).annotate({
+  identifier: "DataflowGraphPropertiesInput",
+}) as any as S.Schema<DataflowGraphPropertiesInput>;
+
+export interface DataflowGraphCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of instance. */
+  instanceName: string;
+  /** Name of Instance dataflowProfile resource */
+  dataflowProfileName: string;
+  /** Name of Instance dataflowEndpoint resource. */
+  dataflowGraphName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: DataflowGraphPropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
+}
+export const DataflowGraphCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    instanceName: S.String.pipe(T.Label()),
+    dataflowProfileName: S.String.pipe(T.Label()),
+    dataflowGraphName: S.String.pipe(T.Label()),
+    properties: S.optional(DataflowGraphPropertiesInput),
+    extendedLocation: S.optional(ExtendedLocation),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}/dataflowGraphs/{dataflowGraphName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DataflowGraphCreateOrUpdateRequest",
+}) as any as S.Schema<DataflowGraphCreateOrUpdateRequest>;
+
+/** The mode of the dataflow graph. */
+export type DataflowGraphPropertiesMode = "Enabled" | "Disabled";
+export const DataflowGraphPropertiesMode = /*@__PURE__*/ S.String;
+
+/** List of nodes in the dataflow graph. */
+export type DataflowGraphPropertiesNodesList = ReadonlyArray<DataflowGraphNode>;
+export const DataflowGraphPropertiesNodesList = /*@__PURE__*/ S.Array(
+  DataflowGraphNode,
+) as any as S.Schema<DataflowGraphPropertiesNodesList>;
+
+/** List of connections between nodes in the dataflow graph. */
 export type DataflowGraphPropertiesNodeConnectionsList =
-  DataflowGraphNodeConnection[];
+  ReadonlyArray<DataflowGraphNodeConnection>;
 export const DataflowGraphPropertiesNodeConnectionsList = /*@__PURE__*/ S.Array(
   DataflowGraphNodeConnection,
 ) as any as S.Schema<DataflowGraphPropertiesNodeConnectionsList>;
@@ -4915,8 +5148,7 @@ export type DataflowGraphPropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const DataflowGraphPropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** DataflowGraph properties. */
@@ -5131,7 +5363,8 @@ export const DataflowGraphResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowGraphResource>;
 
 /** The DataflowGraphResource items on this page */
-export type DataflowGraphResourceListResultValueList = DataflowGraphResource[];
+export type DataflowGraphResourceListResultValueList =
+  ReadonlyArray<DataflowGraphResource>;
 export const DataflowGraphResourceListResultValueList = /*@__PURE__*/ S.Array(
   DataflowGraphResource,
 ) as any as S.Schema<DataflowGraphResourceListResultValueList>;
@@ -5210,7 +5443,8 @@ export const DataflowResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowResource>;
 
 /** The DataflowResource items on this page */
-export type DataflowResourceListResultValueList = DataflowResource[];
+export type DataflowResourceListResultValueList =
+  ReadonlyArray<DataflowResource>;
 export const DataflowResourceListResultValueList = /*@__PURE__*/ S.Array(
   DataflowResource,
 ) as any as S.Schema<DataflowResourceListResultValueList>;
@@ -5231,37 +5465,6 @@ export const DataflowResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataflowResourceListResult",
 }) as any as S.Schema<DataflowResourceListResult>;
 
-export interface DataflowProfileCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of instance. */
-  instanceName: string;
-  /** Name of Instance dataflowProfile resource */
-  dataflowProfileName: string;
-  body: unknown;
-}
-export const DataflowProfileCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      instanceName: S.String.pipe(T.Label()),
-      dataflowProfileName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "DataflowProfileCreateOrUpdateRequest",
-}) as any as S.Schema<DataflowProfileCreateOrUpdateRequest>;
-
 /** DataflowProfile Diagnostics properties */
 export interface ProfileDiagnostics {
   /** Diagnostic log settings for the resource. */
@@ -5277,6 +5480,57 @@ export const ProfileDiagnostics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProfileDiagnostics",
 }) as any as S.Schema<ProfileDiagnostics>;
+
+/** DataflowProfile Resource properties */
+export interface DataflowProfilePropertiesInput {
+  /** Spec defines the desired identities of NBC diagnostics settings. */
+  diagnostics?: ProfileDiagnostics;
+  /** To manually scale the dataflow profile, specify the maximum number of instances you want to run. */
+  instanceCount?: number;
+}
+export const DataflowProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    diagnostics: S.optional(ProfileDiagnostics),
+    instanceCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DataflowProfilePropertiesInput",
+}) as any as S.Schema<DataflowProfilePropertiesInput>;
+
+export interface DataflowProfileCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of instance. */
+  instanceName: string;
+  /** Name of Instance dataflowProfile resource */
+  dataflowProfileName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: DataflowProfilePropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
+}
+export const DataflowProfileCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      instanceName: S.String.pipe(T.Label()),
+      dataflowProfileName: S.String.pipe(T.Label()),
+      properties: S.optional(DataflowProfilePropertiesInput),
+      extendedLocation: S.optional(ExtendedLocation),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/dataflowProfiles/{dataflowProfileName}",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+).annotate({
+  identifier: "DataflowProfileCreateOrUpdateRequest",
+}) as any as S.Schema<DataflowProfileCreateOrUpdateRequest>;
 
 /** DataflowProfile status. */
 export interface DataflowProfileStatus {
@@ -5296,8 +5550,7 @@ export type DataflowProfilePropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const DataflowProfilePropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** DataflowProfile Resource properties */
@@ -5499,7 +5752,7 @@ export const DataflowProfileResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataflowProfileResource items on this page */
 export type DataflowProfileResourceListResultValueList =
-  DataflowProfileResource[];
+  ReadonlyArray<DataflowProfileResource>;
 export const DataflowProfileResourceListResultValueList = /*@__PURE__*/ S.Array(
   DataflowProfileResource,
 ) as any as S.Schema<DataflowProfileResourceListResultValueList>;
@@ -5520,41 +5773,14 @@ export const DataflowProfileResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataflowProfileResourceListResult",
 }) as any as S.Schema<DataflowProfileResourceListResult>;
 
-export interface InstanceCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of instance. */
-  instanceName: string;
-  body: unknown;
-}
-export const InstanceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    instanceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "InstanceCreateOrUpdateRequest",
-}) as any as S.Schema<InstanceCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type InstanceCreateOrUpdateResponseTagsMap = {
+export type InstanceCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const InstanceCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const InstanceCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<InstanceCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<InstanceCreateOrUpdateRequestTagsMap>;
 
 /** The reference to the Schema Registry for this AIO Instance. */
 export interface SchemaRegistryRef {
@@ -5583,11 +5809,7 @@ export const SecretProviderClassRef = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecretProviderClassRef>;
 
 /** The enum defining mode of a feature. */
-export type InstanceFeatureMode =
-  | "Stable"
-  | "Preview"
-  | "Disabled"
-  | (string & {});
+export type InstanceFeatureMode = "Stable" | "Preview" | "Disabled";
 export const InstanceFeatureMode = /*@__PURE__*/ S.String;
 
 /** The settings of the feature. */
@@ -5616,13 +5838,13 @@ export const InstanceFeature = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceFeature>;
 
 /** The features of the AIO Instance. */
-export type InstancePropertiesFeaturesMap = {
+export type InstancePropertiesInputFeaturesMap = {
   [key: string]: InstanceFeature | undefined;
 };
-export const InstancePropertiesFeaturesMap = /*@__PURE__*/ S.Record(
+export const InstancePropertiesInputFeaturesMap = /*@__PURE__*/ S.Record(
   S.String,
   InstanceFeature,
-) as any as S.Schema<InstancePropertiesFeaturesMap>;
+) as any as S.Schema<InstancePropertiesInputFeaturesMap>;
 
 /** Azure Device Registry Namespace reference. */
 export interface AzureDeviceRegistryNamespaceRef {
@@ -5637,13 +5859,135 @@ export const AzureDeviceRegistryNamespaceRef = /*@__PURE__*/ S.suspend(() =>
   identifier: "AzureDeviceRegistryNamespaceRef",
 }) as any as S.Schema<AzureDeviceRegistryNamespaceRef>;
 
+/** The properties of the Instance resource. */
+export interface InstancePropertiesInput {
+  /** Detailed description of the Instance. */
+  description?: string;
+  /** The reference to the Schema Registry for this AIO Instance. */
+  schemaRegistryRef: SchemaRegistryRef;
+  /** The reference to the AIO Secret provider class. */
+  defaultSecretProviderClassRef?: SecretProviderClassRef;
+  /** The features of the AIO Instance. */
+  features?: InstancePropertiesInputFeaturesMap;
+  /** The Azure Device Registry Namespace used by Assets, Discovered Assets and devices */
+  adrNamespaceRef?: AzureDeviceRegistryNamespaceRef;
+}
+export const InstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    schemaRegistryRef: SchemaRegistryRef,
+    defaultSecretProviderClassRef: S.optional(SecretProviderClassRef),
+    features: S.optional(InstancePropertiesInputFeaturesMap),
+    adrNamespaceRef: S.optional(AzureDeviceRegistryNamespaceRef),
+  }),
+).annotate({
+  identifier: "InstancePropertiesInput",
+}) as any as S.Schema<InstancePropertiesInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface InstanceCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const InstanceCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "InstanceCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<InstanceCreateOrUpdateRequestIdentity>;
+
+export interface InstanceCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of instance. */
+  instanceName: string;
+  /** Resource tags. */
+  tags?: InstanceCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: InstancePropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation: ExtendedLocation;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: InstanceCreateOrUpdateRequestIdentity;
+}
+export const InstanceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    instanceName: S.String.pipe(T.Label()),
+    tags: S.optional(InstanceCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(InstancePropertiesInput),
+    extendedLocation: ExtendedLocation,
+    identity: S.optional(InstanceCreateOrUpdateRequestIdentity),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "InstanceCreateOrUpdateRequest",
+}) as any as S.Schema<InstanceCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type InstanceCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const InstanceCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<InstanceCreateOrUpdateResponseTagsMap>;
+
+/** The features of the AIO Instance. */
+export type InstancePropertiesFeaturesMap = {
+  [key: string]: InstanceFeature | undefined;
+};
+export const InstancePropertiesFeaturesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  InstanceFeature,
+) as any as S.Schema<InstancePropertiesFeaturesMap>;
+
 /** The health state of the resource. */
 export type InstancePropertiesHealthState =
   | "Available"
   | "Degraded"
   | "Unavailable"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const InstancePropertiesHealthState = /*@__PURE__*/ S.String;
 
 /** The properties of the Instance resource. */
@@ -5679,15 +6023,6 @@ export const InstanceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceProperties",
 }) as any as S.Schema<InstanceProperties>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -5978,7 +6313,8 @@ export const InstanceResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceResource>;
 
 /** The InstanceResource items on this page */
-export type InstanceResourceListResultValueList = InstanceResource[];
+export type InstanceResourceListResultValueList =
+  ReadonlyArray<InstanceResource>;
 export const InstanceResourceListResultValueList = /*@__PURE__*/ S.Array(
   InstanceResource,
 ) as any as S.Schema<InstanceResourceListResultValueList>;
@@ -6018,6 +6354,29 @@ export const InstanceListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceListBySubscriptionRequest",
 }) as any as S.Schema<InstanceListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type InstanceUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const InstanceUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<InstanceUpdateRequestTagsMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface InstanceUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const InstanceUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "InstanceUpdateRequestIdentity",
+}) as any as S.Schema<InstanceUpdateRequestIdentity>;
+
 export interface InstanceUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6025,14 +6384,18 @@ export interface InstanceUpdateRequest {
   resourceGroupName: string;
   /** Name of instance. */
   instanceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: InstanceUpdateRequestTagsMap;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: InstanceUpdateRequestIdentity;
 }
 export const InstanceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     instanceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(InstanceUpdateRequestTagsMap),
+    identity: S.optional(InstanceUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -6147,11 +6510,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -6178,7 +6541,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -6198,44 +6561,12 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
-export interface RegistryEndpointCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of instance. */
-  instanceName: string;
-  /** Name of RegistryEndpoint resource */
-  registryEndpointName: string;
-  body: unknown;
-}
-export const RegistryEndpointCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      instanceName: S.String.pipe(T.Label()),
-      registryEndpointName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "RegistryEndpointCreateOrUpdateRequest",
-}) as any as S.Schema<RegistryEndpointCreateOrUpdateRequest>;
-
 /** The authentication method. */
 export type RegistryEndpointAuthenticationMethod =
   | "SystemAssignedManagedIdentity"
   | "UserAssignedManagedIdentity"
   | "Anonymous"
-  | "ArtifactPullSecret"
-  | (string & {});
+  | "ArtifactPullSecret";
 export const RegistryEndpointAuthenticationMethod = /*@__PURE__*/ S.String;
 
 /** Model for RegistryEndpointAuthentication */
@@ -6251,20 +6582,8 @@ export const RegistryEndpointAuthentication = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistryEndpointAuthentication",
 }) as any as S.Schema<RegistryEndpointAuthentication>;
 
-/** The health state of the resource. */
-export type RegistryEndpointPropertiesHealthState =
-  | "Available"
-  | "Degraded"
-  | "Unavailable"
-  | "Unknown"
-  | (string & {});
-export const RegistryEndpointPropertiesHealthState = /*@__PURE__*/ S.String;
-
 /** RegistryEndpointTrustedSigningKeyType values */
-export type RegistryEndpointTrustedSigningKeyType =
-  | "Secret"
-  | "ConfigMap"
-  | (string & {});
+export type RegistryEndpointTrustedSigningKeyType = "Secret" | "ConfigMap";
 export const RegistryEndpointTrustedSigningKeyType = /*@__PURE__*/ S.String;
 
 /** RegistryEndpoint Trust properties */
@@ -6281,8 +6600,80 @@ export const RegistryEndpointTrustedSigningKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistryEndpointTrustedSigningKey>;
 
 /** The signing certificate authorities used by artifacts in the registry endpoint */
+export type RegistryEndpointPropertiesInputCodeSigningCasList =
+  ReadonlyArray<RegistryEndpointTrustedSigningKey>;
+export const RegistryEndpointPropertiesInputCodeSigningCasList =
+  /*@__PURE__*/ S.Array(
+    RegistryEndpointTrustedSigningKey,
+  ) as any as S.Schema<RegistryEndpointPropertiesInputCodeSigningCasList>;
+
+/** RegistryEndpoint properties */
+export interface RegistryEndpointPropertiesInput {
+  /** The Container Registry endpoint hostname. */
+  host: string;
+  /** The authentication settings for the Azure Container Registry. */
+  authentication: RegistryEndpointAuthentication;
+  /** The signing certificate authorities used by artifacts in the registry endpoint */
+  codeSigningCas?: RegistryEndpointPropertiesInputCodeSigningCasList;
+}
+export const RegistryEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    host: S.String,
+    authentication: RegistryEndpointAuthentication,
+    codeSigningCas: S.optional(
+      RegistryEndpointPropertiesInputCodeSigningCasList,
+    ),
+  }),
+).annotate({
+  identifier: "RegistryEndpointPropertiesInput",
+}) as any as S.Schema<RegistryEndpointPropertiesInput>;
+
+export interface RegistryEndpointCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of instance. */
+  instanceName: string;
+  /** Name of RegistryEndpoint resource */
+  registryEndpointName: string;
+  /** The resource-specific properties for this resource. */
+  properties?: RegistryEndpointPropertiesInput;
+  /** Edge location of the resource. */
+  extendedLocation?: ExtendedLocation;
+}
+export const RegistryEndpointCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      instanceName: S.String.pipe(T.Label()),
+      registryEndpointName: S.String.pipe(T.Label()),
+      properties: S.optional(RegistryEndpointPropertiesInput),
+      extendedLocation: S.optional(ExtendedLocation),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTOperations/instances/{instanceName}/registryEndpoints/{registryEndpointName}",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+).annotate({
+  identifier: "RegistryEndpointCreateOrUpdateRequest",
+}) as any as S.Schema<RegistryEndpointCreateOrUpdateRequest>;
+
+/** The health state of the resource. */
+export type RegistryEndpointPropertiesHealthState =
+  | "Available"
+  | "Degraded"
+  | "Unavailable"
+  | "Unknown";
+export const RegistryEndpointPropertiesHealthState = /*@__PURE__*/ S.String;
+
+/** The signing certificate authorities used by artifacts in the registry endpoint */
 export type RegistryEndpointPropertiesCodeSigningCasList =
-  RegistryEndpointTrustedSigningKey[];
+  ReadonlyArray<RegistryEndpointTrustedSigningKey>;
 export const RegistryEndpointPropertiesCodeSigningCasList =
   /*@__PURE__*/ S.Array(
     RegistryEndpointTrustedSigningKey,
@@ -6487,7 +6878,7 @@ export const RegistryEndpointResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The RegistryEndpointResource items on this page */
 export type RegistryEndpointResourceListResultValueList =
-  RegistryEndpointResource[];
+  ReadonlyArray<RegistryEndpointResource>;
 export const RegistryEndpointResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     RegistryEndpointResource,

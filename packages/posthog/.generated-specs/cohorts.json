@@ -68,7 +68,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.cohorts#PaginatedCohortList": {
+    "com.posthog.cohorts#PaginatedCohortListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -87,12 +87,12 @@
           }
         },
         "results": {
-          "target": "com.posthog.cohorts#PaginatedCohortListResultsList"
+          "target": "com.posthog.cohorts#PaginatedCohortListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.cohorts#Cohort": {
+    "com.posthog.cohorts#CohortOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -138,7 +138,10 @@
           "target": "smithy.api#Boolean"
         },
         "created_by": {
-          "target": "com.posthog.cohorts#UserBasic"
+          "target": "com.posthog.cohorts#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "created_at": {
           "target": "smithy.api#String",
@@ -177,7 +180,7 @@
           "target": "smithy.api#Boolean"
         },
         "cohort_type": {
-          "target": "com.posthog.cohorts#CohortCohortType",
+          "target": "com.posthog.cohorts#CohortOutputCohortType",
           "traits": {
             "smithy.api#documentation": "Type of cohort based on filter complexity\n\n* `static` - static\n* `person_property` - person_property\n* `behavioral` - behavioral\n* `realtime` - realtime\n* `analytical` - analytical",
             "com.distilled.openapi#nullable": {}
@@ -191,7 +194,7 @@
           }
         },
         "experiment_set": {
-          "target": "com.posthog.cohorts#CohortExperimentSetList"
+          "target": "com.posthog.cohorts#CohortOutputExperimentSetList"
         },
         "search_match_type": {
           "target": "com.posthog.cohorts#SearchMatchTypeEnum",
@@ -199,12 +202,6 @@
             "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
-        },
-        "_create_static_person_ids": {
-          "target": "com.posthog.cohorts#CohortCreateStaticPersonIdsList"
         }
       },
       "traits": {}
@@ -821,7 +818,7 @@
         "smithy.api#documentation": "* `static` - static\n* `person_property` - person_property\n* `behavioral` - behavioral\n* `realtime` - realtime\n* `analytical` - analytical"
       }
     },
-    "com.posthog.cohorts#CohortCohortType": {
+    "com.posthog.cohorts#CohortOutputCohortType": {
       "type": "union",
       "members": {
         "CohortTypeEnum": {
@@ -869,7 +866,7 @@
       },
       "traits": {}
     },
-    "com.posthog.cohorts#CohortExperimentSetList": {
+    "com.posthog.cohorts#CohortOutputExperimentSetList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
@@ -894,17 +891,10 @@
       },
       "traits": {}
     },
-    "com.posthog.cohorts#CohortCreateStaticPersonIdsList": {
+    "com.posthog.cohorts#PaginatedCohortListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#String"
-      },
-      "traits": {}
-    },
-    "com.posthog.cohorts#PaginatedCohortListResultsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.cohorts#Cohort"
+        "target": "com.posthog.cohorts#CohortOutput"
       },
       "traits": {}
     },
@@ -914,7 +904,7 @@
         "target": "com.posthog.cohorts#CohortsListRequest"
       },
       "output": {
-        "target": "com.posthog.cohorts#PaginatedCohortList"
+        "target": "com.posthog.cohorts#PaginatedCohortListOutput"
       },
       "errors": [
         {
@@ -949,13 +939,6 @@
         "smithy.api#documentation": "Type of cohort based on filter complexity\n\n* `static` - static\n* `person_property` - person_property\n* `behavioral` - behavioral\n* `realtime` - realtime\n* `analytical` - analytical"
       }
     },
-    "com.posthog.cohorts#CohortsCreateRequestExperimentSetList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
     "com.posthog.cohorts#CohortsCreateRequestCreateStaticPersonIdsList": {
       "type": "list",
       "member": {
@@ -973,9 +956,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
-        },
-        "id": {
-          "target": "smithy.api#Integer"
         },
         "name": {
           "target": "smithy.api#String",
@@ -1001,57 +981,6 @@
         "query": {
           "target": "smithy.api#Document"
         },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "pending_version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_calculating": {
-          "target": "smithy.api#Boolean"
-        },
-        "created_by": {
-          "target": "com.posthog.cohorts#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_calculation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_backfill_person_properties_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "errors_calculating": {
-          "target": "smithy.api#Integer"
-        },
-        "last_error_message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_static": {
           "target": "smithy.api#Boolean"
         },
@@ -1059,23 +988,6 @@
           "target": "com.posthog.cohorts#CohortsCreateRequestCohortType",
           "traits": {
             "smithy.api#documentation": "Type of cohort based on filter complexity\n\n* `static` - static\n* `person_property` - person_property\n* `behavioral` - behavioral\n* `realtime` - realtime\n* `analytical` - analytical",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "condition_type": {
-          "target": "com.posthog.cohorts#CohortConditionTypeFlags",
-          "traits": {
-            "smithy.api#documentation": "Flags describing which kinds of conditions the cohort's filters contain. Null when the cohort has no filters to classify.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "experiment_set": {
-          "target": "com.posthog.cohorts#CohortsCreateRequestExperimentSetList"
-        },
-        "search_match_type": {
-          "target": "com.posthog.cohorts#SearchMatchTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1096,7 +1008,7 @@
         "target": "com.posthog.cohorts#CohortsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.cohorts#Cohort"
+        "target": "com.posthog.cohorts#CohortOutput"
       },
       "errors": [
         {
@@ -1147,7 +1059,7 @@
         "target": "com.posthog.cohorts#CohortsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.cohorts#Cohort"
+        "target": "com.posthog.cohorts#CohortOutput"
       },
       "errors": [
         {
@@ -1178,13 +1090,6 @@
       "traits": {
         "smithy.api#documentation": "Type of cohort based on filter complexity\n\n* `static` - static\n* `person_property` - person_property\n* `behavioral` - behavioral\n* `realtime` - realtime\n* `analytical` - analytical"
       }
-    },
-    "com.posthog.cohorts#CohortsUpdateRequestExperimentSetList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
     },
     "com.posthog.cohorts#CohortsUpdateRequestCreateStaticPersonIdsList": {
       "type": "list",
@@ -1236,57 +1141,6 @@
         "query": {
           "target": "smithy.api#Document"
         },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "pending_version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_calculating": {
-          "target": "smithy.api#Boolean"
-        },
-        "created_by": {
-          "target": "com.posthog.cohorts#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_calculation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_backfill_person_properties_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "errors_calculating": {
-          "target": "smithy.api#Integer"
-        },
-        "last_error_message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_static": {
           "target": "smithy.api#Boolean"
         },
@@ -1294,23 +1148,6 @@
           "target": "com.posthog.cohorts#CohortsUpdateRequestCohortType",
           "traits": {
             "smithy.api#documentation": "Type of cohort based on filter complexity\n\n* `static` - static\n* `person_property` - person_property\n* `behavioral` - behavioral\n* `realtime` - realtime\n* `analytical` - analytical",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "condition_type": {
-          "target": "com.posthog.cohorts#CohortConditionTypeFlags",
-          "traits": {
-            "smithy.api#documentation": "Flags describing which kinds of conditions the cohort's filters contain. Null when the cohort has no filters to classify.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "experiment_set": {
-          "target": "com.posthog.cohorts#CohortsUpdateRequestExperimentSetList"
-        },
-        "search_match_type": {
-          "target": "com.posthog.cohorts#SearchMatchTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1331,7 +1168,7 @@
         "target": "com.posthog.cohorts#CohortsUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.cohorts#Cohort"
+        "target": "com.posthog.cohorts#CohortOutput"
       },
       "errors": [
         {
@@ -1365,13 +1202,6 @@
       "traits": {
         "smithy.api#documentation": "Type of cohort based on filter complexity\n\n* `static` - static\n* `person_property` - person_property\n* `behavioral` - behavioral\n* `realtime` - realtime\n* `analytical` - analytical"
       }
-    },
-    "com.posthog.cohorts#CohortsPartialUpdateRequestExperimentSetList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
     },
     "com.posthog.cohorts#CohortsPartialUpdateRequestCreateStaticPersonIdsList": {
       "type": "list",
@@ -1423,57 +1253,6 @@
         "query": {
           "target": "smithy.api#Document"
         },
-        "version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "pending_version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "is_calculating": {
-          "target": "smithy.api#Boolean"
-        },
-        "created_by": {
-          "target": "com.posthog.cohorts#UserBasic"
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_calculation": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_backfill_person_properties_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "errors_calculating": {
-          "target": "smithy.api#Integer"
-        },
-        "last_error_message": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "is_static": {
           "target": "smithy.api#Boolean"
         },
@@ -1481,23 +1260,6 @@
           "target": "com.posthog.cohorts#CohortsPartialUpdateRequestCohortType",
           "traits": {
             "smithy.api#documentation": "Type of cohort based on filter complexity\n\n* `static` - static\n* `person_property` - person_property\n* `behavioral` - behavioral\n* `realtime` - realtime\n* `analytical` - analytical",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "condition_type": {
-          "target": "com.posthog.cohorts#CohortConditionTypeFlags",
-          "traits": {
-            "smithy.api#documentation": "Flags describing which kinds of conditions the cohort's filters contain. Null when the cohort has no filters to classify.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "experiment_set": {
-          "target": "com.posthog.cohorts#CohortsPartialUpdateRequestExperimentSetList"
-        },
-        "search_match_type": {
-          "target": "com.posthog.cohorts#SearchMatchTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.",
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -1518,7 +1280,7 @@
         "target": "com.posthog.cohorts#CohortsPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.cohorts#Cohort"
+        "target": "com.posthog.cohorts#CohortOutput"
       },
       "errors": [
         {

@@ -299,7 +299,7 @@ export const DescribeChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeChangeSetRequest",
 }) as any as S.Schema<DescribeChangeSetRequest>;
 export type ChangeSetName = string;
-export type Intent = "VALIDATE" | "APPLY" | (string & {});
+export type Intent = "VALIDATE" | "APPLY";
 export const Intent = /*@__PURE__*/ S.String;
 
 export type ChangeStatus =
@@ -307,11 +307,10 @@ export type ChangeStatus =
   | "APPLYING"
   | "SUCCEEDED"
   | "CANCELLED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ChangeStatus = /*@__PURE__*/ S.String;
 
-export type FailureCode = "CLIENT_ERROR" | "SERVER_FAULT" | (string & {});
+export type FailureCode = "CLIENT_ERROR" | "SERVER_FAULT";
 export const FailureCode = /*@__PURE__*/ S.String;
 
 export type ExceptionMessageContent = string;
@@ -467,7 +466,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(Filter);
 export type SortBy = string;
-export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
+export type SortOrder = "ASCENDING" | "DESCENDING";
 export const SortOrder = /*@__PURE__*/ S.String;
 
 export interface Sort {
@@ -549,7 +548,7 @@ export const ListChangeSetsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListChangeSetsResponse",
 }) as any as S.Schema<ListChangeSetsResponse>;
 export type ListEntitiesMaxResultInteger = number;
-export type OwnershipType = "SELF" | "SHARED" | (string & {});
+export type OwnershipType = "SELF" | "SHARED";
 export const OwnershipType = /*@__PURE__*/ S.String;
 
 export type DataProductEntityIdString = string;
@@ -585,8 +584,7 @@ export type DataProductVisibilityString =
   | "Public"
   | "Restricted"
   | "Unavailable"
-  | "Draft"
-  | (string & {});
+  | "Draft";
 export const DataProductVisibilityString = /*@__PURE__*/ S.String;
 
 export type DataProductVisibilityFilterValueList =
@@ -673,8 +671,7 @@ export type SaaSProductVisibilityString =
   | "Limited"
   | "Public"
   | "Restricted"
-  | "Draft"
-  | (string & {});
+  | "Draft";
 export const SaaSProductVisibilityString = /*@__PURE__*/ S.String;
 
 export type SaaSProductVisibilityFilterValueList =
@@ -784,8 +781,7 @@ export type AmiProductVisibilityString =
   | "Limited"
   | "Public"
   | "Restricted"
-  | "Draft"
-  | (string & {});
+  | "Draft";
 export const AmiProductVisibilityString = /*@__PURE__*/ S.String;
 
 export type AmiProductVisibilityFilterValueList = AmiProductVisibilityString[];
@@ -918,7 +914,7 @@ export const OfferBuyerAccountsFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferBuyerAccountsFilter",
 }) as any as S.Schema<OfferBuyerAccountsFilter>;
-export type OfferStateString = "Draft" | "Released" | (string & {});
+export type OfferStateString = "Draft" | "Released";
 export const OfferStateString = /*@__PURE__*/ S.String;
 
 export type OfferStateFilterValueList = OfferStateString[];
@@ -936,8 +932,7 @@ export type OfferTargetingString =
   | "BuyerAccounts"
   | "ParticipatingPrograms"
   | "CountryCodes"
-  | "None"
-  | (string & {});
+  | "None";
 export const OfferTargetingString = /*@__PURE__*/ S.String;
 
 export type OfferTargetingFilterValueList = OfferTargetingString[];
@@ -1069,8 +1064,7 @@ export type ContainerProductVisibilityString =
   | "Limited"
   | "Public"
   | "Restricted"
-  | "Draft"
-  | (string & {});
+  | "Draft";
 export const ContainerProductVisibilityString = /*@__PURE__*/ S.String;
 
 export type ContainerProductVisibilityFilterValueList =
@@ -1314,11 +1308,7 @@ export const ResaleAuthorizationResellerLegalNameFilter =
   ).annotate({
     identifier: "ResaleAuthorizationResellerLegalNameFilter",
   }) as any as S.Schema<ResaleAuthorizationResellerLegalNameFilter>;
-export type ResaleAuthorizationStatusString =
-  | "Draft"
-  | "Active"
-  | "Restricted"
-  | (string & {});
+export type ResaleAuthorizationStatusString = "Draft" | "Active" | "Restricted";
 export const ResaleAuthorizationStatusString = /*@__PURE__*/ S.String;
 
 export type ResaleAuthorizationStatusFilterValueList =
@@ -1479,8 +1469,7 @@ export type MachineLearningProductVisibilityString =
   | "Limited"
   | "Public"
   | "Restricted"
-  | "Draft"
-  | (string & {});
+  | "Draft";
 export const MachineLearningProductVisibilityString = /*@__PURE__*/ S.String;
 
 export type MachineLearningProductVisibilityFilterValueList =
@@ -1536,7 +1525,7 @@ export const OfferSetNameFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferSetNameFilter",
 }) as any as S.Schema<OfferSetNameFilter>;
-export type OfferSetStateString = "Draft" | "Released" | (string & {});
+export type OfferSetStateString = "Draft" | "Released";
 export const OfferSetStateString = /*@__PURE__*/ S.String;
 
 export type OfferSetStateFilterValueList = OfferSetStateString[];
@@ -1736,8 +1725,7 @@ export type DataProductSortBy =
   | "EntityId"
   | "ProductTitle"
   | "Visibility"
-  | "LastModifiedDate"
-  | (string & {});
+  | "LastModifiedDate";
 export const DataProductSortBy = /*@__PURE__*/ S.String;
 
 export interface DataProductSort {
@@ -1757,8 +1745,7 @@ export type SaaSProductSortBy =
   | "ProductTitle"
   | "Visibility"
   | "LastModifiedDate"
-  | "DeliveryOptionTypes"
-  | (string & {});
+  | "DeliveryOptionTypes";
 export const SaaSProductSortBy = /*@__PURE__*/ S.String;
 
 export interface SaaSProductSort {
@@ -1777,8 +1764,7 @@ export type AmiProductSortBy =
   | "EntityId"
   | "LastModifiedDate"
   | "ProductTitle"
-  | "Visibility"
-  | (string & {});
+  | "Visibility";
 export const AmiProductSortBy = /*@__PURE__*/ S.String;
 
 export interface AmiProductSort {
@@ -1802,8 +1788,7 @@ export type OfferSortBy =
   | "State"
   | "Targeting"
   | "LastModifiedDate"
-  | "OfferSetId"
-  | (string & {});
+  | "OfferSetId";
 export const OfferSortBy = /*@__PURE__*/ S.String;
 
 export interface OfferSort {
@@ -1821,8 +1806,7 @@ export type ContainerProductSortBy =
   | "LastModifiedDate"
   | "ProductTitle"
   | "Visibility"
-  | "CompatibleAWSServices"
-  | (string & {});
+  | "CompatibleAWSServices";
 export const ContainerProductSortBy = /*@__PURE__*/ S.String;
 
 export interface ContainerProductSort {
@@ -1850,8 +1834,7 @@ export type ResaleAuthorizationSortBy =
   | "OfferExtendedStatus"
   | "CreatedDate"
   | "AvailabilityEndDate"
-  | "LastModifiedDate"
-  | (string & {});
+  | "LastModifiedDate";
 export const ResaleAuthorizationSortBy = /*@__PURE__*/ S.String;
 
 export interface ResaleAuthorizationSort {
@@ -1870,8 +1853,7 @@ export type MachineLearningProductSortBy =
   | "EntityId"
   | "LastModifiedDate"
   | "ProductTitle"
-  | "Visibility"
-  | (string & {});
+  | "Visibility";
 export const MachineLearningProductSortBy = /*@__PURE__*/ S.String;
 
 export interface MachineLearningProductSort {
@@ -1892,8 +1874,7 @@ export type OfferSetSortBy =
   | "ReleaseDate"
   | "SolutionId"
   | "EntityId"
-  | "LastModifiedDate"
-  | (string & {});
+  | "LastModifiedDate";
 export const OfferSetSortBy = /*@__PURE__*/ S.String;
 
 export interface OfferSetSort {

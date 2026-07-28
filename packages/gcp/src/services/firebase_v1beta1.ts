@@ -100,7 +100,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -181,16 +181,12 @@ export const AddGoogleAnalyticsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddGoogleAnalyticsProjectsRequest",
 }) as any as S.Schema<AddGoogleAnalyticsProjectsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type AndroidAppStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "DELETED"
-  | (string & {});
+export type AndroidAppStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
 export const AndroidAppStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of a Firebase App for Android. */
@@ -258,8 +254,7 @@ export const CreateProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ShaCertificateCertTypeEnum =
   | "SHA_CERTIFICATE_TYPE_UNSPECIFIED"
   | "SHA_1"
-  | "SHA_256"
-  | (string & {});
+  | "SHA_256";
 export const ShaCertificateCertTypeEnum = /*@__PURE__*/ S.String;
 
 /** A SHA-1 or SHA-256 certificate associated with the AndroidApp. */
@@ -300,11 +295,7 @@ export const CreateProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectsAndroidAppsShaRequest",
 }) as any as S.Schema<CreateProjectsAndroidAppsShaRequest>;
 
-export type IosAppStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "DELETED"
-  | (string & {});
+export type IosAppStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
 export const IosAppStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of a Firebase App for iOS. */
@@ -369,11 +360,7 @@ export const CreateProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectsIosAppsRequest",
 }) as any as S.Schema<CreateProjectsIosAppsRequest>;
 
-export type WebAppStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "DELETED"
-  | (string & {});
+export type WebAppStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
 export const WebAppStateEnum = /*@__PURE__*/ S.String;
 
 /** Details of a Firebase App for the web. */
@@ -584,7 +571,7 @@ export const StreamMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StreamMapping" }) as any as S.Schema<StreamMapping>;
 
-export type StreamMappingList = StreamMapping[];
+export type StreamMappingList = ReadonlyArray<StreamMapping>;
 export const StreamMappingList = /*@__PURE__*/ S.Array(
   StreamMapping,
 ) as any as S.Schema<StreamMappingList>;
@@ -802,8 +789,7 @@ export const DefaultResources = /*@__PURE__*/ S.suspend(() =>
 export type FirebaseProjectStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const FirebaseProjectStateEnum = /*@__PURE__*/ S.String;
 
 /** A `FirebaseProject` is the top-level Firebase entity. It is the container for Firebase Apps, Firebase Hosting sites, storage systems (Firebase Realtime Database, Cloud Firestore, Cloud Storage buckets), and other Firebase and Google Cloud resources. You create a `FirebaseProject` by calling AddFirebase and specifying an *existing* [Google Cloud `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects). This adds Firebase resources to the existing Google Cloud `Project`. Since a FirebaseProject is actually also a Google Cloud `Project`, a `FirebaseProject` has the same underlying Google Cloud identifiers (`projectNumber` and `projectId`). This allows for easy interop with Google APIs. */
@@ -932,7 +918,7 @@ export const ProjectInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProjectInfo" }) as any as S.Schema<ProjectInfo>;
 
-export type ProjectInfoList = ProjectInfo[];
+export type ProjectInfoList = ReadonlyArray<ProjectInfo>;
 export const ProjectInfoList = /*@__PURE__*/ S.Array(
   ProjectInfo,
 ) as any as S.Schema<ProjectInfoList>;
@@ -976,7 +962,7 @@ export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsRequest",
 }) as any as S.Schema<ListProjectsRequest>;
 
-export type FirebaseProjectList = FirebaseProject[];
+export type FirebaseProjectList = ReadonlyArray<FirebaseProject>;
 export const FirebaseProjectList = /*@__PURE__*/ S.Array(
   FirebaseProject,
 ) as any as S.Schema<FirebaseProjectList>;
@@ -1023,7 +1009,7 @@ export const ListProjectsAndroidAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAndroidAppsRequest",
 }) as any as S.Schema<ListProjectsAndroidAppsRequest>;
 
-export type AndroidAppList = AndroidApp[];
+export type AndroidAppList = ReadonlyArray<AndroidApp>;
 export const AndroidAppList = /*@__PURE__*/ S.Array(
   AndroidApp,
 ) as any as S.Schema<AndroidAppList>;
@@ -1061,7 +1047,7 @@ export const ListProjectsAndroidAppsShaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsAndroidAppsShaRequest",
 }) as any as S.Schema<ListProjectsAndroidAppsShaRequest>;
 
-export type ShaCertificateList = ShaCertificate[];
+export type ShaCertificateList = ReadonlyArray<ShaCertificate>;
 export const ShaCertificateList = /*@__PURE__*/ S.Array(
   ShaCertificate,
 ) as any as S.Schema<ShaCertificateList>;
@@ -1106,19 +1092,18 @@ export const ListProjectsAvailableLocationsRequest = /*@__PURE__*/ S.suspend(
 export type LocationTypeEnum =
   | "LOCATION_TYPE_UNSPECIFIED"
   | "REGIONAL"
-  | "MULTI_REGIONAL"
-  | (string & {});
+  | "MULTI_REGIONAL";
 export const LocationTypeEnum = /*@__PURE__*/ S.String;
 
 export type LocationFeaturesItemEnum =
   | "LOCATION_FEATURE_UNSPECIFIED"
   | "FIRESTORE"
   | "DEFAULT_STORAGE"
-  | "FUNCTIONS"
-  | (string & {});
+  | "FUNCTIONS";
 export const LocationFeaturesItemEnum = /*@__PURE__*/ S.String;
 
-export type LocationFeaturesItemEnumList = LocationFeaturesItemEnum[];
+export type LocationFeaturesItemEnumList =
+  ReadonlyArray<LocationFeaturesItemEnum>;
 export const LocationFeaturesItemEnumList = /*@__PURE__*/ S.Array(
   LocationFeaturesItemEnum,
 ) as any as S.Schema<LocationFeaturesItemEnumList>;
@@ -1140,7 +1125,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1187,7 +1172,7 @@ export const ListProjectsIosAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsIosAppsRequest",
 }) as any as S.Schema<ListProjectsIosAppsRequest>;
 
-export type IosAppList = IosApp[];
+export type IosAppList = ReadonlyArray<IosApp>;
 export const IosAppList = /*@__PURE__*/ S.Array(
   IosApp,
 ) as any as S.Schema<IosAppList>;
@@ -1234,7 +1219,7 @@ export const ListProjectsWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsWebAppsRequest",
 }) as any as S.Schema<ListProjectsWebAppsRequest>;
 
-export type WebAppList = WebApp[];
+export type WebAppList = ReadonlyArray<WebApp>;
 export const WebAppList = /*@__PURE__*/ S.Array(
   WebApp,
 ) as any as S.Schema<WebAppList>;
@@ -1543,15 +1528,13 @@ export type FirebaseAppInfoPlatformEnum =
   | "PLATFORM_UNSPECIFIED"
   | "IOS"
   | "ANDROID"
-  | "WEB"
-  | (string & {});
+  | "WEB";
 export const FirebaseAppInfoPlatformEnum = /*@__PURE__*/ S.String;
 
 export type FirebaseAppInfoStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const FirebaseAppInfoStateEnum = /*@__PURE__*/ S.String;
 
 /** A high-level summary of an App. */
@@ -1588,7 +1571,7 @@ export const FirebaseAppInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirebaseAppInfo",
 }) as any as S.Schema<FirebaseAppInfo>;
 
-export type FirebaseAppInfoList = FirebaseAppInfo[];
+export type FirebaseAppInfoList = ReadonlyArray<FirebaseAppInfo>;
 export const FirebaseAppInfoList = /*@__PURE__*/ S.Array(
   FirebaseAppInfo,
 ) as any as S.Schema<FirebaseAppInfoList>;

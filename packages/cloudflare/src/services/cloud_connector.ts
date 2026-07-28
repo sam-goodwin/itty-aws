@@ -67,8 +67,7 @@ export type RulesListResultItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
-  | "azure_storage"
-  | (string & {});
+  | "azure_storage";
 export const RulesListResultItemProvider = /*@__PURE__*/ S.String;
 
 export interface RulesListResultItem {
@@ -94,7 +93,7 @@ export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesListResultItem",
 }) as any as S.Schema<RulesListResultItem>;
 
-export type RulesListResultList = RulesListResultItem[];
+export type RulesListResultList = ReadonlyArray<RulesListResultItem>;
 export const RulesListResultList = /*@__PURE__*/ S.Array(
   RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
@@ -131,8 +130,7 @@ export type RulesUpdateRequestRulesItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
-  | "azure_storage"
-  | (string & {});
+  | "azure_storage";
 export const RulesUpdateRequestRulesItemProvider = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateRequestRulesItem {
@@ -158,7 +156,8 @@ export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateRequestRulesItem",
 }) as any as S.Schema<RulesUpdateRequestRulesItem>;
 
-export type RulesUpdateRequestRulesList = RulesUpdateRequestRulesItem[];
+export type RulesUpdateRequestRulesList =
+  ReadonlyArray<RulesUpdateRequestRulesItem>;
 export const RulesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestRulesItem,
 ) as any as S.Schema<RulesUpdateRequestRulesList>;
@@ -197,8 +196,7 @@ export type RulesUpdateResultItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
-  | "azure_storage"
-  | (string & {});
+  | "azure_storage";
 export const RulesUpdateResultItemProvider = /*@__PURE__*/ S.String;
 
 export interface RulesUpdateResultItem {
@@ -224,7 +222,7 @@ export const RulesUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateResultItem",
 }) as any as S.Schema<RulesUpdateResultItem>;
 
-export type RulesUpdateResultList = RulesUpdateResultItem[];
+export type RulesUpdateResultList = ReadonlyArray<RulesUpdateResultItem>;
 export const RulesUpdateResultList = /*@__PURE__*/ S.Array(
   RulesUpdateResultItem,
 ) as any as S.Schema<RulesUpdateResultList>;

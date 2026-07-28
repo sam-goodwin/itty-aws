@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -145,8 +145,7 @@ export type JobCreationReasonCodeEnum =
   | "REQUESTED"
   | "LONG_RUNNING"
   | "LARGE_RESULTS"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const JobCreationReasonCodeEnum = /*@__PURE__*/ S.String;
 
 /** Reason about why a Job was created from a [`jobs.query`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will always be `REQUESTED`. */
@@ -217,7 +216,7 @@ export const ConnectionProperty = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionProperty",
 }) as any as S.Schema<ConnectionProperty>;
 
-export type ConnectionPropertyList = ConnectionProperty[];
+export type ConnectionPropertyList = ReadonlyArray<ConnectionProperty>;
 export const ConnectionPropertyList = /*@__PURE__*/ S.Array(
   ConnectionProperty,
 ) as any as S.Schema<ConnectionPropertyList>;
@@ -246,8 +245,7 @@ export const TimePartitioning = /*@__PURE__*/ S.suspend(() =>
 export type ScriptOptionsKeyResultStatementEnum =
   | "KEY_RESULT_STATEMENT_KIND_UNSPECIFIED"
   | "LAST"
-  | "FIRST_SELECT"
-  | (string & {});
+  | "FIRST_SELECT";
 export const ScriptOptionsKeyResultStatementEnum = /*@__PURE__*/ S.String;
 
 /** Options related to script execution. */
@@ -316,7 +314,7 @@ export const StandardSqlField = /*@__PURE__*/ S.suspend(() =>
   identifier: "StandardSqlField",
 }) as any as S.Schema<StandardSqlField>;
 
-export type StandardSqlFieldList = StandardSqlField[];
+export type StandardSqlFieldList = ReadonlyArray<StandardSqlField>;
 export const StandardSqlFieldList = /*@__PURE__*/ S.Array(
   StandardSqlField,
 ) as any as S.Schema<StandardSqlFieldList>;
@@ -352,8 +350,7 @@ export type StandardSqlDataTypeTypeKindEnum =
   | "JSON"
   | "ARRAY"
   | "STRUCT"
-  | "RANGE"
-  | (string & {});
+  | "RANGE";
 export const StandardSqlDataTypeTypeKindEnum = /*@__PURE__*/ S.String;
 
 /** The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "DATE"} } } ] } } * RANGE: { "typeKind": "RANGE", "rangeElementType": {"typeKind": "DATE"} } */
@@ -453,7 +450,8 @@ export const UserDefinedFunctionResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserDefinedFunctionResource",
 }) as any as S.Schema<UserDefinedFunctionResource>;
 
-export type UserDefinedFunctionResourceList = UserDefinedFunctionResource[];
+export type UserDefinedFunctionResourceList =
+  ReadonlyArray<UserDefinedFunctionResource>;
 export const UserDefinedFunctionResourceList = /*@__PURE__*/ S.Array(
   UserDefinedFunctionResource,
 ) as any as S.Schema<UserDefinedFunctionResourceList>;
@@ -472,8 +470,7 @@ export const Clustering = /*@__PURE__*/ S.suspend(() =>
 export type ExternalDataConfigurationObjectMetadataEnum =
   | "OBJECT_METADATA_UNSPECIFIED"
   | "DIRECTORY"
-  | "SIMPLE"
-  | (string & {});
+  | "SIMPLE";
 export const ExternalDataConfigurationObjectMetadataEnum =
   /*@__PURE__*/ S.String;
 
@@ -522,7 +519,7 @@ export const BigtableColumn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BigtableColumn" }) as any as S.Schema<BigtableColumn>;
 
-export type BigtableColumnList = BigtableColumn[];
+export type BigtableColumnList = ReadonlyArray<BigtableColumn>;
 export const BigtableColumnList = /*@__PURE__*/ S.Array(
   BigtableColumn,
 ) as any as S.Schema<BigtableColumnList>;
@@ -555,7 +552,7 @@ export const BigtableColumnFamily = /*@__PURE__*/ S.suspend(() =>
   identifier: "BigtableColumnFamily",
 }) as any as S.Schema<BigtableColumnFamily>;
 
-export type BigtableColumnFamilyList = BigtableColumnFamily[];
+export type BigtableColumnFamilyList = ReadonlyArray<BigtableColumnFamily>;
 export const BigtableColumnFamilyList = /*@__PURE__*/ S.Array(
   BigtableColumnFamily,
 ) as any as S.Schema<BigtableColumnFamilyList>;
@@ -584,8 +581,7 @@ export const BigtableOptions = /*@__PURE__*/ S.suspend(() =>
 
 export type ParquetOptionsMapTargetTypeEnum =
   | "MAP_TARGET_TYPE_UNSPECIFIED"
-  | "ARRAY_OF_STRUCT"
-  | (string & {});
+  | "ARRAY_OF_STRUCT";
 export const ParquetOptionsMapTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Parquet Options for load and make external tables. */
@@ -607,23 +603,20 @@ export const ParquetOptions = /*@__PURE__*/ S.suspend(() =>
 
 export type ExternalDataConfigurationFileSetSpecTypeEnum =
   | "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"
-  | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST"
-  | (string & {});
+  | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST";
 export const ExternalDataConfigurationFileSetSpecTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type ExternalDataConfigurationJsonExtensionEnum =
   | "JSON_EXTENSION_UNSPECIFIED"
-  | "GEOJSON"
-  | (string & {});
+  | "GEOJSON";
 export const ExternalDataConfigurationJsonExtensionEnum =
   /*@__PURE__*/ S.String;
 
 export type ExternalDataConfigurationMetadataCacheModeEnum =
   | "METADATA_CACHE_MODE_UNSPECIFIED"
   | "AUTOMATIC"
-  | "MANUAL"
-  | (string & {});
+  | "MANUAL";
 export const ExternalDataConfigurationMetadataCacheModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -656,7 +649,7 @@ export const DataPolicyOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataPolicyOption",
 }) as any as S.Schema<DataPolicyOption>;
 
-export type DataPolicyOptionList = DataPolicyOption[];
+export type DataPolicyOptionList = ReadonlyArray<DataPolicyOption>;
 export const DataPolicyOptionList = /*@__PURE__*/ S.Array(
   DataPolicyOption,
 ) as any as S.Schema<DataPolicyOptionList>;
@@ -695,8 +688,7 @@ export const GeneratedExpressionInfo = /*@__PURE__*/ S.suspend(() =>
 export type GeneratedColumnGeneratedModeEnum =
   | "GENERATED_MODE_UNSPECIFIED"
   | "GENERATED_ALWAYS"
-  | "GENERATED_BY_DEFAULT"
-  | (string & {});
+  | "GENERATED_BY_DEFAULT";
 export const GeneratedColumnGeneratedModeEnum = /*@__PURE__*/ S.String;
 
 /** Optional. Definition of how values are generated for the field. Only valid for top-level schema fields (not nested fields). */
@@ -730,8 +722,7 @@ export const TableFieldSchemaCategories = /*@__PURE__*/ S.suspend(() =>
 export type TableFieldSchemaRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
-  | "ROUND_HALF_EVEN"
-  | (string & {});
+  | "ROUND_HALF_EVEN";
 export const TableFieldSchemaRoundingModeEnum = /*@__PURE__*/ S.String;
 
 /** A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). */
@@ -840,15 +831,12 @@ export const TableFieldSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableFieldSchema",
 }) as any as S.Schema<TableFieldSchema>;
 
-export type TableFieldSchemaList = TableFieldSchema[];
+export type TableFieldSchemaList = ReadonlyArray<TableFieldSchema>;
 export const TableFieldSchemaList = /*@__PURE__*/ S.Array(
   TableFieldSchema,
 ) as any as S.Schema<TableFieldSchemaList>;
 
-export type ForeignTypeInfoTypeSystemEnum =
-  | "TYPE_SYSTEM_UNSPECIFIED"
-  | "HIVE"
-  | (string & {});
+export type ForeignTypeInfoTypeSystemEnum = "TYPE_SYSTEM_UNSPECIFIED" | "HIVE";
 export const ForeignTypeInfoTypeSystemEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about the foreign data type definition such as the system in which the type is defined. */
@@ -938,7 +926,7 @@ export const HivePartitioningOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "HivePartitioningOptions",
 }) as any as S.Schema<HivePartitioningOptions>;
 
-export type IntegerList = number[];
+export type IntegerList = ReadonlyArray<number>;
 export const IntegerList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<IntegerList>;
@@ -958,13 +946,12 @@ export type ExternalDataConfigurationDecimalTargetTypesItemEnum =
   | "DECIMAL_TARGET_TYPE_UNSPECIFIED"
   | "NUMERIC"
   | "BIGNUMERIC"
-  | "STRING"
-  | (string & {});
+  | "STRING";
 export const ExternalDataConfigurationDecimalTargetTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ExternalDataConfigurationDecimalTargetTypesItemEnumList =
-  ExternalDataConfigurationDecimalTargetTypesItemEnum[];
+  ReadonlyArray<ExternalDataConfigurationDecimalTargetTypesItemEnum>;
 export const ExternalDataConfigurationDecimalTargetTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     ExternalDataConfigurationDecimalTargetTypesItemEnum,
@@ -1102,7 +1089,7 @@ export const QueryParameterTypeStructTypesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryParameterTypeStructTypesItem>;
 
 export type QueryParameterTypeStructTypesItemList =
-  QueryParameterTypeStructTypesItem[];
+  ReadonlyArray<QueryParameterTypeStructTypesItem>;
 export const QueryParameterTypeStructTypesItemList = /*@__PURE__*/ S.Array(
   QueryParameterTypeStructTypesItem,
 ) as any as S.Schema<QueryParameterTypeStructTypesItemList>;
@@ -1140,7 +1127,7 @@ export const QueryParameterValueMap = /*@__PURE__*/ S.Record(
   S.suspend(() => QueryParameterValue),
 ) as any as S.Schema<QueryParameterValueMap>;
 
-export type QueryParameterValueList = QueryParameterValue[];
+export type QueryParameterValueList = ReadonlyArray<QueryParameterValue>;
 export const QueryParameterValueList = /*@__PURE__*/ S.Array(
   S.suspend(() => QueryParameterValue),
 ) as any as S.Schema<QueryParameterValueList>;
@@ -1198,7 +1185,7 @@ export const QueryParameter = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryParameter" }) as any as S.Schema<QueryParameter>;
 
-export type QueryParameterList = QueryParameter[];
+export type QueryParameterList = ReadonlyArray<QueryParameter>;
 export const QueryParameterList = /*@__PURE__*/ S.Array(
   QueryParameter,
 ) as any as S.Schema<QueryParameterList>;
@@ -1302,12 +1289,11 @@ export type JobConfigurationTableCopyOperationTypeEnum =
   | "COPY"
   | "SNAPSHOT"
   | "RESTORE"
-  | "CLONE"
-  | (string & {});
+  | "CLONE";
 export const JobConfigurationTableCopyOperationTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type TableReferenceList = TableReference[];
+export type TableReferenceList = ReadonlyArray<TableReference>;
 export const TableReferenceList = /*@__PURE__*/ S.Array(
   TableReference,
 ) as any as S.Schema<TableReferenceList>;
@@ -1350,13 +1336,12 @@ export type JobConfigurationLoadDecimalTargetTypesItemEnum =
   | "DECIMAL_TARGET_TYPE_UNSPECIFIED"
   | "NUMERIC"
   | "BIGNUMERIC"
-  | "STRING"
-  | (string & {});
+  | "STRING";
 export const JobConfigurationLoadDecimalTargetTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type JobConfigurationLoadDecimalTargetTypesItemEnumList =
-  JobConfigurationLoadDecimalTargetTypesItemEnum[];
+  ReadonlyArray<JobConfigurationLoadDecimalTargetTypesItemEnum>;
 export const JobConfigurationLoadDecimalTargetTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     JobConfigurationLoadDecimalTargetTypesItemEnum,
@@ -1388,28 +1373,24 @@ export type JobConfigurationLoadColumnNameCharacterMapEnum =
   | "COLUMN_NAME_CHARACTER_MAP_UNSPECIFIED"
   | "STRICT"
   | "V1"
-  | "V2"
-  | (string & {});
+  | "V2";
 export const JobConfigurationLoadColumnNameCharacterMapEnum =
   /*@__PURE__*/ S.String;
 
 export type JobConfigurationLoadFileSetSpecTypeEnum =
   | "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"
-  | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST"
-  | (string & {});
+  | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST";
 export const JobConfigurationLoadFileSetSpecTypeEnum = /*@__PURE__*/ S.String;
 
 export type JobConfigurationLoadJsonExtensionEnum =
   | "JSON_EXTENSION_UNSPECIFIED"
-  | "GEOJSON"
-  | (string & {});
+  | "GEOJSON";
 export const JobConfigurationLoadJsonExtensionEnum = /*@__PURE__*/ S.String;
 
 export type JobConfigurationLoadSourceColumnMatchEnum =
   | "SOURCE_COLUMN_MATCH_UNSPECIFIED"
   | "POSITION"
-  | "NAME"
-  | (string & {});
+  | "NAME";
 export const JobConfigurationLoadSourceColumnMatchEnum = /*@__PURE__*/ S.String;
 
 /** JobConfigurationLoad contains the configuration properties for loading data into a destination table. */
@@ -1685,8 +1666,7 @@ export type JobStatisticsEditionEnum =
   | "RESERVATION_EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS"
-  | (string & {});
+  | "ENTERPRISE_PLUS";
 export const JobStatisticsEditionEnum = /*@__PURE__*/ S.String;
 
 /** Summary of the state of query execution at a given time. */
@@ -1720,7 +1700,7 @@ export const QueryTimelineSample = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryTimelineSample",
 }) as any as S.Schema<QueryTimelineSample>;
 
-export type QueryTimelineSampleList = QueryTimelineSample[];
+export type QueryTimelineSampleList = ReadonlyArray<QueryTimelineSample>;
 export const QueryTimelineSampleList = /*@__PURE__*/ S.Array(
   QueryTimelineSample,
 ) as any as S.Schema<QueryTimelineSampleList>;
@@ -1802,7 +1782,7 @@ export const JobStatistics2ReservationUsageItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobStatistics2ReservationUsageItem>;
 
 export type JobStatistics2ReservationUsageItemList =
-  JobStatistics2ReservationUsageItem[];
+  ReadonlyArray<JobStatistics2ReservationUsageItem>;
 export const JobStatistics2ReservationUsageItemList = /*@__PURE__*/ S.Array(
   JobStatistics2ReservationUsageItem,
 ) as any as S.Schema<JobStatistics2ReservationUsageItemList>;
@@ -1846,7 +1826,7 @@ export const ExternalServiceCost = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalServiceCost",
 }) as any as S.Schema<ExternalServiceCost>;
 
-export type ExternalServiceCostList = ExternalServiceCost[];
+export type ExternalServiceCostList = ReadonlyArray<ExternalServiceCost>;
 export const ExternalServiceCostList = /*@__PURE__*/ S.Array(
   ExternalServiceCost,
 ) as any as S.Schema<ExternalServiceCostList>;
@@ -1858,8 +1838,7 @@ export type BiEngineReasonCodeEnum =
   | "UNSUPPORTED_SQL_TEXT"
   | "INPUT_TOO_LARGE"
   | "OTHER_REASON"
-  | "TABLE_EXCLUDED"
-  | (string & {});
+  | "TABLE_EXCLUDED";
 export const BiEngineReasonCodeEnum = /*@__PURE__*/ S.String;
 
 /** Reason why BI Engine didn't accelerate the query (or sub-query). */
@@ -1876,7 +1855,7 @@ export const BiEngineReason = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BiEngineReason" }) as any as S.Schema<BiEngineReason>;
 
-export type BiEngineReasonList = BiEngineReason[];
+export type BiEngineReasonList = ReadonlyArray<BiEngineReason>;
 export const BiEngineReasonList = /*@__PURE__*/ S.Array(
   BiEngineReason,
 ) as any as S.Schema<BiEngineReasonList>;
@@ -1885,8 +1864,7 @@ export type BiEngineStatisticsBiEngineModeEnum =
   | "ACCELERATION_MODE_UNSPECIFIED"
   | "DISABLED"
   | "PARTIAL"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const BiEngineStatisticsBiEngineModeEnum = /*@__PURE__*/ S.String;
 
 export type BiEngineStatisticsAccelerationModeEnum =
@@ -1894,8 +1872,7 @@ export type BiEngineStatisticsAccelerationModeEnum =
   | "BI_ENGINE_DISABLED"
   | "PARTIAL_INPUT"
   | "FULL_INPUT"
-  | "FULL_QUERY"
-  | (string & {});
+  | "FULL_QUERY";
 export const BiEngineStatisticsAccelerationModeEnum = /*@__PURE__*/ S.String;
 
 /** Statistics for a BI Engine specific query. Populated as part of JobStatistics2 */
@@ -1980,7 +1957,7 @@ export const LoadQueryStatistics = /*@__PURE__*/ S.suspend(() =>
   identifier: "LoadQueryStatistics",
 }) as any as S.Schema<LoadQueryStatistics>;
 
-export type RoutineReferenceList = RoutineReference[];
+export type RoutineReferenceList = ReadonlyArray<RoutineReference>;
 export const RoutineReferenceList = /*@__PURE__*/ S.Array(
   RoutineReference,
 ) as any as S.Schema<RoutineReferenceList>;
@@ -2004,7 +1981,7 @@ export const PropertyGraphReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyGraphReference",
 }) as any as S.Schema<PropertyGraphReference>;
 
-export type PropertyGraphReferenceList = PropertyGraphReference[];
+export type PropertyGraphReferenceList = ReadonlyArray<PropertyGraphReference>;
 export const PropertyGraphReferenceList = /*@__PURE__*/ S.Array(
   PropertyGraphReference,
 ) as any as S.Schema<PropertyGraphReferenceList>;
@@ -2095,7 +2072,7 @@ export const GenAiFunctionStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenAiFunctionStats",
 }) as any as S.Schema<GenAiFunctionStats>;
 
-export type GenAiFunctionStatsList = GenAiFunctionStats[];
+export type GenAiFunctionStatsList = ReadonlyArray<GenAiFunctionStats>;
 export const GenAiFunctionStatsList = /*@__PURE__*/ S.Array(
   GenAiFunctionStats,
 ) as any as S.Schema<GenAiFunctionStatsList>;
@@ -2117,8 +2094,7 @@ export const GenAiStats = /*@__PURE__*/ S.suspend(() =>
 export type MlStatisticsTrainingTypeEnum =
   | "TRAINING_TYPE_UNSPECIFIED"
   | "SINGLE_TRAINING"
-  | "HPARAM_TUNING"
-  | (string & {});
+  | "HPARAM_TUNING";
 export const MlStatisticsTrainingTypeEnum = /*@__PURE__*/ S.String;
 
 export type MlStatisticsModelTypeEnum =
@@ -2147,8 +2123,7 @@ export type MlStatisticsModelTypeEnum =
   | "TENSORFLOW_LITE"
   | "ONNX"
   | "TRANSFORM_ONLY"
-  | "CONTRIBUTION_ANALYSIS"
-  | (string & {});
+  | "CONTRIBUTION_ANALYSIS";
 export const MlStatisticsModelTypeEnum = /*@__PURE__*/ S.String;
 
 export type DoubleMap = { [key: string]: number | undefined };
@@ -2163,15 +2138,13 @@ export type TrainingOptionsColorSpaceEnum =
   | "HSV"
   | "YIQ"
   | "YUV"
-  | "GRAYSCALE"
-  | (string & {});
+  | "GRAYSCALE";
 export const TrainingOptionsColorSpaceEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsDartNormalizeTypeEnum =
   | "DART_NORMALIZE_TYPE_UNSPECIFIED"
   | "TREE"
-  | "FOREST"
-  | (string & {});
+  | "FOREST";
 export const TrainingOptionsDartNormalizeTypeEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsHolidayRegionEnum =
@@ -2243,8 +2216,7 @@ export type TrainingOptionsHolidayRegionEnum =
   | "US"
   | "VE"
   | "VN"
-  | "ZA"
-  | (string & {});
+  | "ZA";
 export const TrainingOptionsHolidayRegionEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsDataFrequencyEnum =
@@ -2256,15 +2228,13 @@ export type TrainingOptionsDataFrequencyEnum =
   | "WEEKLY"
   | "DAILY"
   | "HOURLY"
-  | "PER_MINUTE"
-  | (string & {});
+  | "PER_MINUTE";
 export const TrainingOptionsDataFrequencyEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsOptimizationStrategyEnum =
   | "OPTIMIZATION_STRATEGY_UNSPECIFIED"
   | "BATCH_GRADIENT_DESCENT"
-  | "NORMAL_EQUATION"
-  | (string & {});
+  | "NORMAL_EQUATION";
 export const TrainingOptionsOptimizationStrategyEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsDataSplitMethodEnum =
@@ -2273,16 +2243,14 @@ export type TrainingOptionsDataSplitMethodEnum =
   | "CUSTOM"
   | "SEQUENTIAL"
   | "NO_SPLIT"
-  | "AUTO_SPLIT"
-  | (string & {});
+  | "AUTO_SPLIT";
 export const TrainingOptionsDataSplitMethodEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsPcaSolverEnum =
   | "UNSPECIFIED"
   | "FULL"
   | "RANDOMIZED"
-  | "AUTO"
-  | (string & {});
+  | "AUTO";
 export const TrainingOptionsPcaSolverEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsTreeMethodEnum =
@@ -2290,8 +2258,7 @@ export type TrainingOptionsTreeMethodEnum =
   | "AUTO"
   | "EXACT"
   | "APPROX"
-  | "HIST"
-  | (string & {});
+  | "HIST";
 export const TrainingOptionsTreeMethodEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsHparamTuningObjectivesItemEnum =
@@ -2311,13 +2278,12 @@ export type TrainingOptionsHparamTuningObjectivesItemEnum =
   | "DAVIES_BOULDIN_INDEX"
   | "MEAN_AVERAGE_PRECISION"
   | "NORMALIZED_DISCOUNTED_CUMULATIVE_GAIN"
-  | "AVERAGE_RANK"
-  | (string & {});
+  | "AVERAGE_RANK";
 export const TrainingOptionsHparamTuningObjectivesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type TrainingOptionsHparamTuningObjectivesItemEnumList =
-  TrainingOptionsHparamTuningObjectivesItemEnum[];
+  ReadonlyArray<TrainingOptionsHparamTuningObjectivesItemEnum>;
 export const TrainingOptionsHparamTuningObjectivesItemEnumList =
   /*@__PURE__*/ S.Array(
     TrainingOptionsHparamTuningObjectivesItemEnum,
@@ -2326,22 +2292,19 @@ export const TrainingOptionsHparamTuningObjectivesItemEnumList =
 export type TrainingOptionsBoosterTypeEnum =
   | "BOOSTER_TYPE_UNSPECIFIED"
   | "GBTREE"
-  | "DART"
-  | (string & {});
+  | "DART";
 export const TrainingOptionsBoosterTypeEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsLearnRateStrategyEnum =
   | "LEARN_RATE_STRATEGY_UNSPECIFIED"
   | "LINE_SEARCH"
-  | "CONSTANT"
-  | (string & {});
+  | "CONSTANT";
 export const TrainingOptionsLearnRateStrategyEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsLossTypeEnum =
   | "LOSS_TYPE_UNSPECIFIED"
   | "MEAN_SQUARED_LOSS"
-  | "MEAN_LOG_LOSS"
-  | (string & {});
+  | "MEAN_LOG_LOSS";
 export const TrainingOptionsLossTypeEnum = /*@__PURE__*/ S.String;
 
 /** Arima order, can be used for both non-seasonal and seasonal parts. */
@@ -2364,16 +2327,14 @@ export const ArimaOrder = /*@__PURE__*/ S.suspend(() =>
 export type TrainingOptionsFeedbackTypeEnum =
   | "FEEDBACK_TYPE_UNSPECIFIED"
   | "IMPLICIT"
-  | "EXPLICIT"
-  | (string & {});
+  | "EXPLICIT";
 export const TrainingOptionsFeedbackTypeEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsKmeansInitializationMethodEnum =
   | "KMEANS_INITIALIZATION_METHOD_UNSPECIFIED"
   | "RANDOM"
   | "CUSTOM"
-  | "KMEANS_PLUS_PLUS"
-  | (string & {});
+  | "KMEANS_PLUS_PLUS";
 export const TrainingOptionsKmeansInitializationMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -2381,15 +2342,13 @@ export type TrainingOptionsCategoryEncodingMethodEnum =
   | "ENCODING_METHOD_UNSPECIFIED"
   | "ONE_HOT_ENCODING"
   | "LABEL_ENCODING"
-  | "DUMMY_ENCODING"
-  | (string & {});
+  | "DUMMY_ENCODING";
 export const TrainingOptionsCategoryEncodingMethodEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsDistanceTypeEnum =
   | "DISTANCE_TYPE_UNSPECIFIED"
   | "EUCLIDEAN"
-  | "COSINE"
-  | (string & {});
+  | "COSINE";
 export const TrainingOptionsDistanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsHolidayRegionsItemEnum =
@@ -2461,12 +2420,11 @@ export type TrainingOptionsHolidayRegionsItemEnum =
   | "US"
   | "VE"
   | "VN"
-  | "ZA"
-  | (string & {});
+  | "ZA";
 export const TrainingOptionsHolidayRegionsItemEnum = /*@__PURE__*/ S.String;
 
 export type TrainingOptionsHolidayRegionsItemEnumList =
-  TrainingOptionsHolidayRegionsItemEnum[];
+  ReadonlyArray<TrainingOptionsHolidayRegionsItemEnum>;
 export const TrainingOptionsHolidayRegionsItemEnumList = /*@__PURE__*/ S.Array(
   TrainingOptionsHolidayRegionsItemEnum,
 ) as any as S.Schema<TrainingOptionsHolidayRegionsItemEnumList>;
@@ -2475,15 +2433,13 @@ export type TrainingOptionsReservationAffinityTypeEnum =
   | "RESERVATION_AFFINITY_TYPE_UNSPECIFIED"
   | "NO_RESERVATION"
   | "ANY_RESERVATION"
-  | "SPECIFIC_RESERVATION"
-  | (string & {});
+  | "SPECIFIC_RESERVATION";
 export const TrainingOptionsReservationAffinityTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type TrainingOptionsModelRegistryEnum =
   | "MODEL_REGISTRY_UNSPECIFIED"
-  | "VERTEX_AI"
-  | (string & {});
+  | "VERTEX_AI";
 export const TrainingOptionsModelRegistryEnum = /*@__PURE__*/ S.String;
 
 /** Options used in model training. */
@@ -2814,8 +2770,7 @@ export type HparamTuningTrialStatusEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "INFEASIBLE"
-  | "STOPPED_EARLY"
-  | (string & {});
+  | "STOPPED_EARLY";
 export const HparamTuningTrialStatusEnum = /*@__PURE__*/ S.String;
 
 /** ARIMA model fitting metrics. */
@@ -2845,13 +2800,12 @@ export type ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum =
   | "MONTHLY"
   | "QUARTERLY"
   | "YEARLY"
-  | "HOURLY"
-  | (string & {});
+  | "HOURLY";
 export const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList =
-  ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum[];
+  ReadonlyArray<ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum>;
 export const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList =
   /*@__PURE__*/ S.Array(
     ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum,
@@ -2897,22 +2851,22 @@ export const ArimaSingleModelForecastingMetrics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArimaSingleModelForecastingMetrics>;
 
 export type ArimaSingleModelForecastingMetricsList =
-  ArimaSingleModelForecastingMetrics[];
+  ReadonlyArray<ArimaSingleModelForecastingMetrics>;
 export const ArimaSingleModelForecastingMetricsList = /*@__PURE__*/ S.Array(
   ArimaSingleModelForecastingMetrics,
 ) as any as S.Schema<ArimaSingleModelForecastingMetricsList>;
 
-export type BooleanList = boolean[];
+export type BooleanList = ReadonlyArray<boolean>;
 export const BooleanList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<BooleanList>;
 
-export type ArimaOrderList = ArimaOrder[];
+export type ArimaOrderList = ReadonlyArray<ArimaOrder>;
 export const ArimaOrderList = /*@__PURE__*/ S.Array(
   ArimaOrder,
 ) as any as S.Schema<ArimaOrderList>;
 
-export type ArimaFittingMetricsList = ArimaFittingMetrics[];
+export type ArimaFittingMetricsList = ReadonlyArray<ArimaFittingMetrics>;
 export const ArimaFittingMetricsList = /*@__PURE__*/ S.Array(
   ArimaFittingMetrics,
 ) as any as S.Schema<ArimaFittingMetricsList>;
@@ -2925,13 +2879,12 @@ export type ArimaForecastingMetricsSeasonalPeriodsItemEnum =
   | "MONTHLY"
   | "QUARTERLY"
   | "YEARLY"
-  | "HOURLY"
-  | (string & {});
+  | "HOURLY";
 export const ArimaForecastingMetricsSeasonalPeriodsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type ArimaForecastingMetricsSeasonalPeriodsItemEnumList =
-  ArimaForecastingMetricsSeasonalPeriodsItemEnum[];
+  ReadonlyArray<ArimaForecastingMetricsSeasonalPeriodsItemEnum>;
 export const ArimaForecastingMetricsSeasonalPeriodsItemEnumList =
   /*@__PURE__*/ S.Array(
     ArimaForecastingMetricsSeasonalPeriodsItemEnum,
@@ -3057,7 +3010,7 @@ export const BinaryConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
   identifier: "BinaryConfusionMatrix",
 }) as any as S.Schema<BinaryConfusionMatrix>;
 
-export type BinaryConfusionMatrixList = BinaryConfusionMatrix[];
+export type BinaryConfusionMatrixList = ReadonlyArray<BinaryConfusionMatrix>;
 export const BinaryConfusionMatrixList = /*@__PURE__*/ S.Array(
   BinaryConfusionMatrix,
 ) as any as S.Schema<BinaryConfusionMatrixList>;
@@ -3098,7 +3051,7 @@ export const Entry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Entry" }) as any as S.Schema<Entry>;
 
-export type EntryList = Entry[];
+export type EntryList = ReadonlyArray<Entry>;
 export const EntryList = /*@__PURE__*/ S.Array(
   Entry,
 ) as any as S.Schema<EntryList>;
@@ -3117,7 +3070,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
-export type RowList = Row[];
+export type RowList = ReadonlyArray<Row>;
 export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** Confusion matrix for multi-class classification models. */
@@ -3136,7 +3089,7 @@ export const ConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfusionMatrix",
 }) as any as S.Schema<ConfusionMatrix>;
 
-export type ConfusionMatrixList = ConfusionMatrix[];
+export type ConfusionMatrixList = ReadonlyArray<ConfusionMatrix>;
 export const ConfusionMatrixList = /*@__PURE__*/ S.Array(
   ConfusionMatrix,
 ) as any as S.Schema<ConfusionMatrixList>;
@@ -3184,7 +3137,7 @@ export const CategoryCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CategoryCount" }) as any as S.Schema<CategoryCount>;
 
-export type CategoryCountList = CategoryCount[];
+export type CategoryCountList = ReadonlyArray<CategoryCount>;
 export const CategoryCountList = /*@__PURE__*/ S.Array(
   CategoryCount,
 ) as any as S.Schema<CategoryCountList>;
@@ -3219,7 +3172,7 @@ export const FeatureValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeatureValue" }) as any as S.Schema<FeatureValue>;
 
-export type FeatureValueList = FeatureValue[];
+export type FeatureValueList = ReadonlyArray<FeatureValue>;
 export const FeatureValueList = /*@__PURE__*/ S.Array(
   FeatureValue,
 ) as any as S.Schema<FeatureValueList>;
@@ -3241,7 +3194,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
-export type ClusterList = Cluster[];
+export type ClusterList = ReadonlyArray<Cluster>;
 export const ClusterList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterList>;
@@ -3363,12 +3316,12 @@ export const HparamTuningTrial = /*@__PURE__*/ S.suspend(() =>
   identifier: "HparamTuningTrial",
 }) as any as S.Schema<HparamTuningTrial>;
 
-export type HparamTuningTrialList = HparamTuningTrial[];
+export type HparamTuningTrialList = ReadonlyArray<HparamTuningTrial>;
 export const HparamTuningTrialList = /*@__PURE__*/ S.Array(
   HparamTuningTrial,
 ) as any as S.Schema<HparamTuningTrialList>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -3400,12 +3353,11 @@ export type ArimaModelInfoSeasonalPeriodsItemEnum =
   | "MONTHLY"
   | "QUARTERLY"
   | "YEARLY"
-  | "HOURLY"
-  | (string & {});
+  | "HOURLY";
 export const ArimaModelInfoSeasonalPeriodsItemEnum = /*@__PURE__*/ S.String;
 
 export type ArimaModelInfoSeasonalPeriodsItemEnumList =
-  ArimaModelInfoSeasonalPeriodsItemEnum[];
+  ReadonlyArray<ArimaModelInfoSeasonalPeriodsItemEnum>;
 export const ArimaModelInfoSeasonalPeriodsItemEnumList = /*@__PURE__*/ S.Array(
   ArimaModelInfoSeasonalPeriodsItemEnum,
 ) as any as S.Schema<ArimaModelInfoSeasonalPeriodsItemEnumList>;
@@ -3448,7 +3400,7 @@ export const ArimaModelInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ArimaModelInfo" }) as any as S.Schema<ArimaModelInfo>;
 
-export type ArimaModelInfoList = ArimaModelInfo[];
+export type ArimaModelInfoList = ReadonlyArray<ArimaModelInfo>;
 export const ArimaModelInfoList = /*@__PURE__*/ S.Array(
   ArimaModelInfo,
 ) as any as S.Schema<ArimaModelInfoList>;
@@ -3461,12 +3413,11 @@ export type ArimaResultSeasonalPeriodsItemEnum =
   | "MONTHLY"
   | "QUARTERLY"
   | "YEARLY"
-  | "HOURLY"
-  | (string & {});
+  | "HOURLY";
 export const ArimaResultSeasonalPeriodsItemEnum = /*@__PURE__*/ S.String;
 
 export type ArimaResultSeasonalPeriodsItemEnumList =
-  ArimaResultSeasonalPeriodsItemEnum[];
+  ReadonlyArray<ArimaResultSeasonalPeriodsItemEnum>;
 export const ArimaResultSeasonalPeriodsItemEnumList = /*@__PURE__*/ S.Array(
   ArimaResultSeasonalPeriodsItemEnum,
 ) as any as S.Schema<ArimaResultSeasonalPeriodsItemEnumList>;
@@ -3507,7 +3458,7 @@ export const PrincipalComponentInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrincipalComponentInfo",
 }) as any as S.Schema<PrincipalComponentInfo>;
 
-export type PrincipalComponentInfoList = PrincipalComponentInfo[];
+export type PrincipalComponentInfoList = ReadonlyArray<PrincipalComponentInfo>;
 export const PrincipalComponentInfoList = /*@__PURE__*/ S.Array(
   PrincipalComponentInfo,
 ) as any as S.Schema<PrincipalComponentInfoList>;
@@ -3529,7 +3480,7 @@ export const ClusterInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClusterInfo" }) as any as S.Schema<ClusterInfo>;
 
-export type ClusterInfoList = ClusterInfo[];
+export type ClusterInfoList = ReadonlyArray<ClusterInfo>;
 export const ClusterInfoList = /*@__PURE__*/ S.Array(
   ClusterInfo,
 ) as any as S.Schema<ClusterInfoList>;
@@ -3568,7 +3519,7 @@ export const IterationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "IterationResult",
 }) as any as S.Schema<IterationResult>;
 
-export type IterationResultList = IterationResult[];
+export type IterationResultList = ReadonlyArray<IterationResult>;
 export const IterationResultList = /*@__PURE__*/ S.Array(
   IterationResult,
 ) as any as S.Schema<IterationResultList>;
@@ -3600,8 +3551,7 @@ export type SearchStatisticsIndexUsageModeEnum =
   | "INDEX_USAGE_MODE_UNSPECIFIED"
   | "UNUSED"
   | "PARTIALLY_USED"
-  | "FULLY_USED"
-  | (string & {});
+  | "FULLY_USED";
 export const SearchStatisticsIndexUsageModeEnum = /*@__PURE__*/ S.String;
 
 /** Statistics for index pruning. */
@@ -3626,7 +3576,7 @@ export const IndexPruningStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexPruningStats",
 }) as any as S.Schema<IndexPruningStats>;
 
-export type IndexPruningStatsList = IndexPruningStats[];
+export type IndexPruningStatsList = ReadonlyArray<IndexPruningStats>;
 export const IndexPruningStatsList = /*@__PURE__*/ S.Array(
   IndexPruningStats,
 ) as any as S.Schema<IndexPruningStatsList>;
@@ -3653,8 +3603,7 @@ export type IndexUnusedReasonCodeEnum =
   | "QUERY_CACHE_HIT"
   | "STALE_INDEX"
   | "INTERNAL_ERROR"
-  | "OTHER_REASON"
-  | (string & {});
+  | "OTHER_REASON";
 export const IndexUnusedReasonCodeEnum = /*@__PURE__*/ S.String;
 
 /** Reason about why no search index was used in the search query (or sub-query). */
@@ -3679,7 +3628,7 @@ export const IndexUnusedReason = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndexUnusedReason",
 }) as any as S.Schema<IndexUnusedReason>;
 
-export type IndexUnusedReasonList = IndexUnusedReason[];
+export type IndexUnusedReasonList = ReadonlyArray<IndexUnusedReason>;
 export const IndexUnusedReasonList = /*@__PURE__*/ S.Array(
   IndexUnusedReason,
 ) as any as S.Schema<IndexUnusedReasonList>;
@@ -3732,7 +3681,8 @@ export const StagePerformanceChangeInsight = /*@__PURE__*/ S.suspend(() =>
   identifier: "StagePerformanceChangeInsight",
 }) as any as S.Schema<StagePerformanceChangeInsight>;
 
-export type StagePerformanceChangeInsightList = StagePerformanceChangeInsight[];
+export type StagePerformanceChangeInsightList =
+  ReadonlyArray<StagePerformanceChangeInsight>;
 export const StagePerformanceChangeInsightList = /*@__PURE__*/ S.Array(
   StagePerformanceChangeInsight,
 ) as any as S.Schema<StagePerformanceChangeInsightList>;
@@ -3772,7 +3722,7 @@ export const TableChangeInsight = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableChangeInsight",
 }) as any as S.Schema<TableChangeInsight>;
 
-export type TableChangeInsightList = TableChangeInsight[];
+export type TableChangeInsightList = ReadonlyArray<TableChangeInsight>;
 export const TableChangeInsightList = /*@__PURE__*/ S.Array(
   TableChangeInsight,
 ) as any as S.Schema<TableChangeInsightList>;
@@ -3799,7 +3749,7 @@ export const HighCardinalityJoin = /*@__PURE__*/ S.suspend(() =>
   identifier: "HighCardinalityJoin",
 }) as any as S.Schema<HighCardinalityJoin>;
 
-export type HighCardinalityJoinList = HighCardinalityJoin[];
+export type HighCardinalityJoinList = ReadonlyArray<HighCardinalityJoin>;
 export const HighCardinalityJoinList = /*@__PURE__*/ S.Array(
   HighCardinalityJoin,
 ) as any as S.Schema<HighCardinalityJoinList>;
@@ -3815,7 +3765,7 @@ export const SkewSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SkewSource" }) as any as S.Schema<SkewSource>;
 
-export type SkewSourceList = SkewSource[];
+export type SkewSourceList = ReadonlyArray<SkewSource>;
 export const SkewSourceList = /*@__PURE__*/ S.Array(
   SkewSource,
 ) as any as S.Schema<SkewSourceList>;
@@ -3860,7 +3810,7 @@ export const StagePerformanceStandaloneInsight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StagePerformanceStandaloneInsight>;
 
 export type StagePerformanceStandaloneInsightList =
-  StagePerformanceStandaloneInsight[];
+  ReadonlyArray<StagePerformanceStandaloneInsight>;
 export const StagePerformanceStandaloneInsightList = /*@__PURE__*/ S.Array(
   StagePerformanceStandaloneInsight,
 ) as any as S.Schema<StagePerformanceStandaloneInsightList>;
@@ -3912,8 +3862,7 @@ export type TableMetadataCacheUsageUnusedReasonEnum =
   | "UNUSED_REASON_UNSPECIFIED"
   | "EXCEEDED_MAX_STALENESS"
   | "METADATA_CACHING_NOT_ENABLED"
-  | "OTHER_REASON"
-  | (string & {});
+  | "OTHER_REASON";
 export const TableMetadataCacheUsageUnusedReasonEnum = /*@__PURE__*/ S.String;
 
 /** Table level detail on the usage of metadata caching. Only set for Metadata caching eligible tables referenced in the query. */
@@ -3944,7 +3893,8 @@ export const TableMetadataCacheUsage = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableMetadataCacheUsage",
 }) as any as S.Schema<TableMetadataCacheUsage>;
 
-export type TableMetadataCacheUsageList = TableMetadataCacheUsage[];
+export type TableMetadataCacheUsageList =
+  ReadonlyArray<TableMetadataCacheUsage>;
 export const TableMetadataCacheUsageList = /*@__PURE__*/ S.Array(
   TableMetadataCacheUsage,
 ) as any as S.Schema<TableMetadataCacheUsageList>;
@@ -3978,7 +3928,7 @@ export const ExplainQueryStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExplainQueryStep",
 }) as any as S.Schema<ExplainQueryStep>;
 
-export type ExplainQueryStepList = ExplainQueryStep[];
+export type ExplainQueryStepList = ReadonlyArray<ExplainQueryStep>;
 export const ExplainQueryStepList = /*@__PURE__*/ S.Array(
   ExplainQueryStep,
 ) as any as S.Schema<ExplainQueryStepList>;
@@ -3986,8 +3936,7 @@ export const ExplainQueryStepList = /*@__PURE__*/ S.Array(
 export type ExplainQueryStageComputeModeEnum =
   | "COMPUTE_MODE_UNSPECIFIED"
   | "BIGQUERY"
-  | "BI_ENGINE"
-  | (string & {});
+  | "BI_ENGINE";
 export const ExplainQueryStageComputeModeEnum = /*@__PURE__*/ S.String;
 
 /** A single stage of query execution. */
@@ -4093,7 +4042,7 @@ export const ExplainQueryStage = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExplainQueryStage",
 }) as any as S.Schema<ExplainQueryStage>;
 
-export type ExplainQueryStageList = ExplainQueryStage[];
+export type ExplainQueryStageList = ReadonlyArray<ExplainQueryStage>;
 export const ExplainQueryStageList = /*@__PURE__*/ S.Array(
   ExplainQueryStage,
 ) as any as S.Schema<ExplainQueryStageList>;
@@ -4101,16 +4050,14 @@ export const ExplainQueryStageList = /*@__PURE__*/ S.Array(
 export type DmlStatisticsDmlModeEnum =
   | "DML_MODE_UNSPECIFIED"
   | "COARSE_GRAINED_DML"
-  | "FINE_GRAINED_DML"
-  | (string & {});
+  | "FINE_GRAINED_DML";
 export const DmlStatisticsDmlModeEnum = /*@__PURE__*/ S.String;
 
 export type DmlStatisticsFineGrainedDmlUnusedReasonEnum =
   | "FINE_GRAINED_DML_UNUSED_REASON_UNSPECIFIED"
   | "MAX_PARTITION_SIZE_EXCEEDED"
   | "TABLE_NOT_ENROLLED"
-  | "DML_IN_MULTI_STATEMENT_TRANSACTION"
-  | (string & {});
+  | "DML_IN_MULTI_STATEMENT_TRANSACTION";
 export const DmlStatisticsFineGrainedDmlUnusedReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -4143,8 +4090,7 @@ export type ObjectStorageStatsCloudProviderEnum =
   | "CLOUD_PROVIDER_UNSPECIFIED"
   | "GCP"
   | "AWS"
-  | "AZURE"
-  | (string & {});
+  | "AZURE";
 export const ObjectStorageStatsCloudProviderEnum = /*@__PURE__*/ S.String;
 
 /** Storage and caching statistics for object storage. */
@@ -4166,7 +4112,7 @@ export const ObjectStorageStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObjectStorageStats",
 }) as any as S.Schema<ObjectStorageStats>;
 
-export type ObjectStorageStatsList = ObjectStorageStats[];
+export type ObjectStorageStatsList = ReadonlyArray<ObjectStorageStats>;
 export const ObjectStorageStatsList = /*@__PURE__*/ S.Array(
   ObjectStorageStats,
 ) as any as S.Schema<ObjectStorageStatsList>;
@@ -4175,8 +4121,7 @@ export type VectorSearchStatisticsIndexUsageModeEnum =
   | "INDEX_USAGE_MODE_UNSPECIFIED"
   | "UNUSED"
   | "PARTIALLY_USED"
-  | "FULLY_USED"
-  | (string & {});
+  | "FULLY_USED";
 export const VectorSearchStatisticsIndexUsageModeEnum = /*@__PURE__*/ S.String;
 
 export type StoredColumnsUnusedReasonCodeEnum =
@@ -4186,8 +4131,7 @@ export type StoredColumnsUnusedReasonCodeEnum =
   | "BASE_TABLE_HAS_CLS"
   | "UNSUPPORTED_PREFILTER"
   | "INTERNAL_ERROR"
-  | "OTHER_REASON"
-  | (string & {});
+  | "OTHER_REASON";
 export const StoredColumnsUnusedReasonCodeEnum = /*@__PURE__*/ S.String;
 
 /** If the stored column was not used, explain why. */
@@ -4209,7 +4153,8 @@ export const StoredColumnsUnusedReason = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoredColumnsUnusedReason",
 }) as any as S.Schema<StoredColumnsUnusedReason>;
 
-export type StoredColumnsUnusedReasonList = StoredColumnsUnusedReason[];
+export type StoredColumnsUnusedReasonList =
+  ReadonlyArray<StoredColumnsUnusedReason>;
 export const StoredColumnsUnusedReasonList = /*@__PURE__*/ S.Array(
   StoredColumnsUnusedReason,
 ) as any as S.Schema<StoredColumnsUnusedReasonList>;
@@ -4233,7 +4178,7 @@ export const StoredColumnsUsage = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoredColumnsUsage",
 }) as any as S.Schema<StoredColumnsUsage>;
 
-export type StoredColumnsUsageList = StoredColumnsUsage[];
+export type StoredColumnsUsageList = ReadonlyArray<StoredColumnsUsage>;
 export const StoredColumnsUsageList = /*@__PURE__*/ S.Array(
   StoredColumnsUsage,
 ) as any as S.Schema<StoredColumnsUsageList>;
@@ -4269,8 +4214,7 @@ export type MaterializedViewRejectedReasonEnum =
   | "TIME_ZONE"
   | "OUT_OF_TIME_TRAVEL_WINDOW"
   | "BASE_TABLE_FINE_GRAINED_SECURITY_POLICY"
-  | "BASE_TABLE_TOO_STALE"
-  | (string & {});
+  | "BASE_TABLE_TOO_STALE";
 export const MaterializedViewRejectedReasonEnum = /*@__PURE__*/ S.String;
 
 /** A materialized view considered for a query job. */
@@ -4295,7 +4239,7 @@ export const MaterializedView = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaterializedView",
 }) as any as S.Schema<MaterializedView>;
 
-export type MaterializedViewList = MaterializedView[];
+export type MaterializedViewList = ReadonlyArray<MaterializedView>;
 export const MaterializedViewList = /*@__PURE__*/ S.Array(
   MaterializedView,
 ) as any as S.Schema<MaterializedViewList>;
@@ -4375,8 +4319,7 @@ export const SparkStatistics = /*@__PURE__*/ S.suspend(() =>
 export type IncrementalResultStatsDisabledReasonEnum =
   | "DISABLED_REASON_UNSPECIFIED"
   | "OTHER"
-  | "UNSUPPORTED_OPERATOR"
-  | (string & {});
+  | "UNSUPPORTED_OPERATOR";
 export const IncrementalResultStatsDisabledReasonEnum = /*@__PURE__*/ S.String;
 
 /** Statistics related to Incremental Query Results. Populated as part of JobStatistics2. This feature is not yet available. */
@@ -4585,8 +4528,7 @@ export const JobStatistics4 = /*@__PURE__*/ S.suspend(() =>
 export type ScriptStatisticsEvaluationKindEnum =
   | "EVALUATION_KIND_UNSPECIFIED"
   | "STATEMENT"
-  | "EXPRESSION"
-  | (string & {});
+  | "EXPRESSION";
 export const ScriptStatisticsEvaluationKindEnum = /*@__PURE__*/ S.String;
 
 /** Represents the location of the statement/expression being evaluated. Line and column numbers are defined as follows: - Line and column numbers start with one. That is, line 1 column 1 denotes the start of the script. - When inside a stored procedure, all line/column numbers are relative to the procedure body, not the script in which the procedure was defined. - Start/end positions exclude leading/trailing comments and whitespace. The end position always ends with a ";", when present. - Multi-byte Unicode characters are treated as just one column. - If the original script (or procedure definition) contains TAB characters, a tab "snaps" the indentation forward to the nearest multiple of 8 characters, plus 1. For example, a TAB on column 1, 2, 3, 4, 5, 6 , or 8 will advance the next character to column 9. A TAB on column 9, 10, 11, 12, 13, 14, 15, or 16 will advance the next character to column 17. */
@@ -4617,7 +4559,7 @@ export const ScriptStackFrame = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptStackFrame",
 }) as any as S.Schema<ScriptStackFrame>;
 
-export type ScriptStackFrameList = ScriptStackFrame[];
+export type ScriptStackFrameList = ReadonlyArray<ScriptStackFrame>;
 export const ScriptStackFrameList = /*@__PURE__*/ S.Array(
   ScriptStackFrame,
 ) as any as S.Schema<ScriptStackFrameList>;
@@ -4671,7 +4613,7 @@ export const JobStatisticsReservationUsageItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobStatisticsReservationUsageItem>;
 
 export type JobStatisticsReservationUsageItemList =
-  JobStatisticsReservationUsageItem[];
+  ReadonlyArray<JobStatisticsReservationUsageItem>;
 export const JobStatisticsReservationUsageItemList = /*@__PURE__*/ S.Array(
   JobStatisticsReservationUsageItem,
 ) as any as S.Schema<JobStatisticsReservationUsageItemList>;
@@ -4805,7 +4747,7 @@ export const ErrorProto = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorProto" }) as any as S.Schema<ErrorProto>;
 
-export type ErrorProtoList = ErrorProto[];
+export type ErrorProtoList = ReadonlyArray<ErrorProto>;
 export const ErrorProtoList = /*@__PURE__*/ S.Array(
   ErrorProto,
 ) as any as S.Schema<ErrorProtoList>;
@@ -5078,8 +5020,7 @@ export type GetDatasetsDatasetViewEnum =
   | "DATASET_VIEW_UNSPECIFIED"
   | "METADATA"
   | "ACL"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetDatasetsDatasetViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetDatasetsRequest {
@@ -5132,12 +5073,11 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
 export type DatasetAccessEntryTargetTypesItemEnum =
   | "TARGET_TYPE_UNSPECIFIED"
   | "VIEWS"
-  | "ROUTINES"
-  | (string & {});
+  | "ROUTINES";
 export const DatasetAccessEntryTargetTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type DatasetAccessEntryTargetTypesItemEnumList =
-  DatasetAccessEntryTargetTypesItemEnum[];
+  ReadonlyArray<DatasetAccessEntryTargetTypesItemEnum>;
 export const DatasetAccessEntryTargetTypesItemEnumList = /*@__PURE__*/ S.Array(
   DatasetAccessEntryTargetTypesItemEnum,
 ) as any as S.Schema<DatasetAccessEntryTargetTypesItemEnumList>;
@@ -5197,7 +5137,7 @@ export const DatasetAccessItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetAccessItem",
 }) as any as S.Schema<DatasetAccessItem>;
 
-export type DatasetAccessItemList = DatasetAccessItem[];
+export type DatasetAccessItemList = ReadonlyArray<DatasetAccessItem>;
 export const DatasetAccessItemList = /*@__PURE__*/ S.Array(
   DatasetAccessItem,
 ) as any as S.Schema<DatasetAccessItemList>;
@@ -5217,7 +5157,7 @@ export const DatasetTagsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetTagsItem",
 }) as any as S.Schema<DatasetTagsItem>;
 
-export type DatasetTagsItemList = DatasetTagsItem[];
+export type DatasetTagsItemList = ReadonlyArray<DatasetTagsItem>;
 export const DatasetTagsItemList = /*@__PURE__*/ S.Array(
   DatasetTagsItem,
 ) as any as S.Schema<DatasetTagsItemList>;
@@ -5225,8 +5165,7 @@ export const DatasetTagsItemList = /*@__PURE__*/ S.Array(
 export type LinkedDatasetMetadataLinkStateEnum =
   | "LINK_STATE_UNSPECIFIED"
   | "LINKED"
-  | "UNLINKED"
-  | (string & {});
+  | "UNLINKED";
 export const LinkedDatasetMetadataLinkStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about the Linked Dataset. */
@@ -5244,8 +5183,7 @@ export const LinkedDatasetMetadata = /*@__PURE__*/ S.suspend(() =>
 
 export type RestrictionConfigTypeEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
-  | "RESTRICTED_DATA_EGRESS"
-  | (string & {});
+  | "RESTRICTED_DATA_EGRESS";
 export const RestrictionConfigTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RestrictionConfig {
@@ -5276,8 +5214,7 @@ export const LinkedDatasetSource = /*@__PURE__*/ S.suspend(() =>
 export type DatasetStorageBillingModelEnum =
   | "STORAGE_BILLING_MODEL_UNSPECIFIED"
   | "LOGICAL"
-  | "PHYSICAL"
-  | (string & {});
+  | "PHYSICAL";
 export const DatasetStorageBillingModelEnum = /*@__PURE__*/ S.String;
 
 /** Configures the access a dataset defined in an external metadata storage. */
@@ -5315,8 +5252,7 @@ export const ExternalCatalogDatasetOptions = /*@__PURE__*/ S.suspend(() =>
 export type DatasetDefaultRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
-  | "ROUND_HALF_EVEN"
-  | (string & {});
+  | "ROUND_HALF_EVEN";
 export const DatasetDefaultRoundingModeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a BigQuery dataset. */
@@ -5471,8 +5407,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -5489,7 +5424,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -5508,7 +5443,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -5530,7 +5465,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -5752,7 +5687,7 @@ export const IntArray = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IntArray" }) as any as S.Schema<IntArray>;
 
-export type IntArrayList = IntArray[];
+export type IntArrayList = ReadonlyArray<IntArray>;
 export const IntArrayList = /*@__PURE__*/ S.Array(
   IntArray,
 ) as any as S.Schema<IntArrayList>;
@@ -5865,7 +5800,7 @@ export const TransformColumn = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransformColumn",
 }) as any as S.Schema<TransformColumn>;
 
-export type TransformColumnList = TransformColumn[];
+export type TransformColumnList = ReadonlyArray<TransformColumn>;
 export const TransformColumnList = /*@__PURE__*/ S.Array(
   TransformColumn,
 ) as any as S.Schema<TransformColumnList>;
@@ -5884,7 +5819,7 @@ export const Explanation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Explanation" }) as any as S.Schema<Explanation>;
 
-export type ExplanationList = Explanation[];
+export type ExplanationList = ReadonlyArray<Explanation>;
 export const ExplanationList = /*@__PURE__*/ S.Array(
   Explanation,
 ) as any as S.Schema<ExplanationList>;
@@ -5905,7 +5840,7 @@ export const GlobalExplanation = /*@__PURE__*/ S.suspend(() =>
   identifier: "GlobalExplanation",
 }) as any as S.Schema<GlobalExplanation>;
 
-export type GlobalExplanationList = GlobalExplanation[];
+export type GlobalExplanationList = ReadonlyArray<GlobalExplanation>;
 export const GlobalExplanationList = /*@__PURE__*/ S.Array(
   GlobalExplanation,
 ) as any as S.Schema<GlobalExplanationList>;
@@ -5967,7 +5902,7 @@ export const TrainingRun = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrainingRun" }) as any as S.Schema<TrainingRun>;
 
-export type TrainingRunList = TrainingRun[];
+export type TrainingRunList = ReadonlyArray<TrainingRun>;
 export const TrainingRunList = /*@__PURE__*/ S.Array(
   TrainingRun,
 ) as any as S.Schema<TrainingRunList>;
@@ -5998,8 +5933,7 @@ export type ModelModelTypeEnum =
   | "TENSORFLOW_LITE"
   | "ONNX"
   | "TRANSFORM_ONLY"
-  | "CONTRIBUTION_ANALYSIS"
-  | (string & {});
+  | "CONTRIBUTION_ANALYSIS";
 export const ModelModelTypeEnum = /*@__PURE__*/ S.String;
 
 export type RemoteModelInfoRemoteServiceTypeEnum =
@@ -6007,8 +5941,7 @@ export type RemoteModelInfoRemoteServiceTypeEnum =
   | "CLOUD_AI_TRANSLATE_V3"
   | "CLOUD_AI_VISION_V1"
   | "CLOUD_AI_NATURAL_LANGUAGE_V1"
-  | "CLOUD_AI_SPEECH_TO_TEXT_V2"
-  | (string & {});
+  | "CLOUD_AI_SPEECH_TO_TEXT_V2";
 export const RemoteModelInfoRemoteServiceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Remote Model Info */
@@ -6113,8 +6046,7 @@ export type GetQueryResultsJobsFormatOptions_timestampOutputFormatEnum =
   | "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED"
   | "FLOAT64"
   | "INT64"
-  | "ISO8601_STRING"
-  | (string & {});
+  | "ISO8601_STRING";
 export const GetQueryResultsJobsFormatOptions_timestampOutputFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -6173,7 +6105,7 @@ export const TableCell = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableCell" }) as any as S.Schema<TableCell>;
 
-export type TableCellList = TableCell[];
+export type TableCellList = ReadonlyArray<TableCell>;
 export const TableCellList = /*@__PURE__*/ S.Array(
   TableCell,
 ) as any as S.Schema<TableCellList>;
@@ -6188,7 +6120,7 @@ export const TableRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableRow" }) as any as S.Schema<TableRow>;
 
-export type TableRowList = TableRow[];
+export type TableRowList = ReadonlyArray<TableRow>;
 export const TableRowList = /*@__PURE__*/ S.Array(
   TableRow,
 ) as any as S.Schema<TableRowList>;
@@ -6270,8 +6202,7 @@ export type RoutineBuildStatusBuildStateEnum =
   | "BUILD_STATE_UNSPECIFIED"
   | "IN_PROGRESS"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const RoutineBuildStatusBuildStateEnum = /*@__PURE__*/ S.String;
 
 /** The status of a routine build. */
@@ -6305,8 +6236,7 @@ export type RoutineLanguageEnum =
   | "JAVASCRIPT"
   | "PYTHON"
   | "JAVA"
-  | "SCALA"
-  | (string & {});
+  | "SCALA";
 export const RoutineLanguageEnum = /*@__PURE__*/ S.String;
 
 export type ArgumentArgumentKindEnum =
@@ -6314,8 +6244,7 @@ export type ArgumentArgumentKindEnum =
   | "FIXED_TYPE"
   | "ANY_TYPE"
   | "FIXED_TABLE"
-  | "ANY_TABLE"
-  | (string & {});
+  | "ANY_TABLE";
 export const ArgumentArgumentKindEnum = /*@__PURE__*/ S.String;
 
 /** A table type */
@@ -6331,12 +6260,7 @@ export const StandardSqlTableType = /*@__PURE__*/ S.suspend(() =>
   identifier: "StandardSqlTableType",
 }) as any as S.Schema<StandardSqlTableType>;
 
-export type ArgumentModeEnum =
-  | "MODE_UNSPECIFIED"
-  | "IN"
-  | "OUT"
-  | "INOUT"
-  | (string & {});
+export type ArgumentModeEnum = "MODE_UNSPECIFIED" | "IN" | "OUT" | "INOUT";
 export const ArgumentModeEnum = /*@__PURE__*/ S.String;
 
 /** Input/output argument of a function or a stored procedure. */
@@ -6365,7 +6289,7 @@ export const Argument = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Argument" }) as any as S.Schema<Argument>;
 
-export type ArgumentList = Argument[];
+export type ArgumentList = ReadonlyArray<Argument>;
 export const ArgumentList = /*@__PURE__*/ S.Array(
   Argument,
 ) as any as S.Schema<ArgumentList>;
@@ -6375,15 +6299,13 @@ export type RoutineRoutineTypeEnum =
   | "SCALAR_FUNCTION"
   | "PROCEDURE"
   | "TABLE_VALUED_FUNCTION"
-  | "AGGREGATE_FUNCTION"
-  | (string & {});
+  | "AGGREGATE_FUNCTION";
 export const RoutineRoutineTypeEnum = /*@__PURE__*/ S.String;
 
 export type RoutineDeterminismLevelEnum =
   | "DETERMINISM_LEVEL_UNSPECIFIED"
   | "DETERMINISTIC"
-  | "NOT_DETERMINISTIC"
-  | (string & {});
+  | "NOT_DETERMINISTIC";
 export const RoutineDeterminismLevelEnum = /*@__PURE__*/ S.String;
 
 /** Options for a user-defined Spark routine. */
@@ -6426,15 +6348,13 @@ export const SparkOptions = /*@__PURE__*/ S.suspend(() =>
 
 export type RoutineDataGovernanceTypeEnum =
   | "DATA_GOVERNANCE_TYPE_UNSPECIFIED"
-  | "DATA_MASKING"
-  | (string & {});
+  | "DATA_MASKING";
 export const RoutineDataGovernanceTypeEnum = /*@__PURE__*/ S.String;
 
 export type RoutineSecurityModeEnum =
   | "SECURITY_MODE_UNSPECIFIED"
   | "DEFINER"
-  | "INVOKER"
-  | (string & {});
+  | "INVOKER";
 export const RoutineSecurityModeEnum = /*@__PURE__*/ S.String;
 
 /** Options for a remote user-defined function. */
@@ -6665,8 +6585,7 @@ export type GetTablesViewEnum =
   | "TABLE_METADATA_VIEW_UNSPECIFIED"
   | "BASIC"
   | "STORAGE_STATS"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetTablesViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetTablesRequest {
@@ -6720,8 +6639,7 @@ export type JoinRestrictionPolicyJoinConditionEnum =
   | "JOIN_ANY"
   | "JOIN_ALL"
   | "JOIN_NOT_REQUIRED"
-  | "JOIN_BLOCKED"
-  | (string & {});
+  | "JOIN_BLOCKED";
 export const JoinRestrictionPolicyJoinConditionEnum = /*@__PURE__*/ S.String;
 
 /** Represents privacy policy associated with "join restrictions". Join restriction gives data providers the ability to enforce joins on the 'join_allowed_columns' when data is queried from a privacy protected view. */
@@ -6807,7 +6725,7 @@ export const ForeignViewDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "ForeignViewDefinition",
 }) as any as S.Schema<ForeignViewDefinition>;
 
-export type ForeignViewDefinitionList = ForeignViewDefinition[];
+export type ForeignViewDefinitionList = ReadonlyArray<ForeignViewDefinition>;
 export const ForeignViewDefinitionList = /*@__PURE__*/ S.Array(
   ForeignViewDefinition,
 ) as any as S.Schema<ForeignViewDefinitionList>;
@@ -6855,7 +6773,7 @@ export const TableConstraintsForeignKeysItemColumnReferencesItem =
   }) as any as S.Schema<TableConstraintsForeignKeysItemColumnReferencesItem>;
 
 export type TableConstraintsForeignKeysItemColumnReferencesItemList =
-  TableConstraintsForeignKeysItemColumnReferencesItem[];
+  ReadonlyArray<TableConstraintsForeignKeysItemColumnReferencesItem>;
 export const TableConstraintsForeignKeysItemColumnReferencesItemList =
   /*@__PURE__*/ S.Array(
     TableConstraintsForeignKeysItemColumnReferencesItem,
@@ -6897,7 +6815,7 @@ export const TableConstraintsForeignKeysItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableConstraintsForeignKeysItem>;
 
 export type TableConstraintsForeignKeysItemList =
-  TableConstraintsForeignKeysItem[];
+  ReadonlyArray<TableConstraintsForeignKeysItem>;
 export const TableConstraintsForeignKeysItemList = /*@__PURE__*/ S.Array(
   TableConstraintsForeignKeysItem,
 ) as any as S.Schema<TableConstraintsForeignKeysItemList>;
@@ -6979,8 +6897,7 @@ export type TableReplicationInfoReplicationStatusEnum =
   | "ACTIVE"
   | "SOURCE_DELETED"
   | "PERMISSION_DENIED"
-  | "UNSUPPORTED_CONFIGURATION"
-  | (string & {});
+  | "UNSUPPORTED_CONFIGURATION";
 export const TableReplicationInfoReplicationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Replication info of a table created using `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv` */
@@ -7037,7 +6954,7 @@ export const PartitionedColumn = /*@__PURE__*/ S.suspend(() =>
   identifier: "PartitionedColumn",
 }) as any as S.Schema<PartitionedColumn>;
 
-export type PartitionedColumnList = PartitionedColumn[];
+export type PartitionedColumnList = ReadonlyArray<PartitionedColumn>;
 export const PartitionedColumnList = /*@__PURE__*/ S.Array(
   PartitionedColumn,
 ) as any as S.Schema<PartitionedColumnList>;
@@ -7057,14 +6974,12 @@ export const PartitioningDefinition = /*@__PURE__*/ S.suspend(() =>
 
 export type BigLakeConfigurationTableFormatEnum =
   | "TABLE_FORMAT_UNSPECIFIED"
-  | "ICEBERG"
-  | (string & {});
+  | "ICEBERG";
 export const BigLakeConfigurationTableFormatEnum = /*@__PURE__*/ S.String;
 
 export type BigLakeConfigurationFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
-  | "PARQUET"
-  | (string & {});
+  | "PARQUET";
 export const BigLakeConfigurationFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for BigQuery tables for Apache Iceberg (formerly BigLake managed tables.) */
@@ -7092,15 +7007,13 @@ export const BigLakeConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type TableDefaultRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
-  | "ROUND_HALF_EVEN"
-  | (string & {});
+  | "ROUND_HALF_EVEN";
 export const TableDefaultRoundingModeEnum = /*@__PURE__*/ S.String;
 
 export type TableManagedTableTypeEnum =
   | "MANAGED_TABLE_TYPE_UNSPECIFIED"
   | "NATIVE"
-  | "BIGLAKE"
-  | (string & {});
+  | "BIGLAKE";
 export const TableManagedTableTypeEnum = /*@__PURE__*/ S.String;
 
 export interface ModelDefinitionModelOptions {
@@ -7169,7 +7082,7 @@ export const BqmlIterationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "BqmlIterationResult",
 }) as any as S.Schema<BqmlIterationResult>;
 
-export type BqmlIterationResultList = BqmlIterationResult[];
+export type BqmlIterationResultList = ReadonlyArray<BqmlIterationResult>;
 export const BqmlIterationResultList = /*@__PURE__*/ S.Array(
   BqmlIterationResult,
 ) as any as S.Schema<BqmlIterationResultList>;
@@ -7195,7 +7108,7 @@ export const BqmlTrainingRun = /*@__PURE__*/ S.suspend(() =>
   identifier: "BqmlTrainingRun",
 }) as any as S.Schema<BqmlTrainingRun>;
 
-export type BqmlTrainingRunList = BqmlTrainingRun[];
+export type BqmlTrainingRunList = ReadonlyArray<BqmlTrainingRun>;
 export const BqmlTrainingRunList = /*@__PURE__*/ S.Array(
   BqmlTrainingRun,
 ) as any as S.Schema<BqmlTrainingRunList>;
@@ -7496,7 +7409,7 @@ export const TableDataInsertAllRequestRowsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableDataInsertAllRequestRowsItem>;
 
 export type TableDataInsertAllRequestRowsItemList =
-  TableDataInsertAllRequestRowsItem[];
+  ReadonlyArray<TableDataInsertAllRequestRowsItem>;
 export const TableDataInsertAllRequestRowsItemList = /*@__PURE__*/ S.Array(
   TableDataInsertAllRequestRowsItem,
 ) as any as S.Schema<TableDataInsertAllRequestRowsItemList>;
@@ -7572,7 +7485,7 @@ export const TableDataInsertAllResponseInsertErrorsItem =
   }) as any as S.Schema<TableDataInsertAllResponseInsertErrorsItem>;
 
 export type TableDataInsertAllResponseInsertErrorsItemList =
-  TableDataInsertAllResponseInsertErrorsItem[];
+  ReadonlyArray<TableDataInsertAllResponseInsertErrorsItem>;
 export const TableDataInsertAllResponseInsertErrorsItemList =
   /*@__PURE__*/ S.Array(
     TableDataInsertAllResponseInsertErrorsItem,
@@ -7780,7 +7693,8 @@ export const DatasetListDatasetsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetListDatasetsItem",
 }) as any as S.Schema<DatasetListDatasetsItem>;
 
-export type DatasetListDatasetsItemList = DatasetListDatasetsItem[];
+export type DatasetListDatasetsItemList =
+  ReadonlyArray<DatasetListDatasetsItem>;
 export const DatasetListDatasetsItemList = /*@__PURE__*/ S.Array(
   DatasetListDatasetsItem,
 ) as any as S.Schema<DatasetListDatasetsItemList>;
@@ -7808,17 +7722,14 @@ export const DatasetList = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatasetList" }) as any as S.Schema<DatasetList>;
 
-export type ListJobsProjectionEnum = "full" | "minimal" | (string & {});
+export type ListJobsProjectionEnum = "full" | "minimal";
 export const ListJobsProjectionEnum = /*@__PURE__*/ S.String;
 
-export type ListJobsStateFilterEnum =
-  | "done"
-  | "pending"
-  | "running"
-  | (string & {});
+export type ListJobsStateFilterEnum = "done" | "pending" | "running";
 export const ListJobsStateFilterEnum = /*@__PURE__*/ S.String;
 
-export type ListJobsStateFilterEnumList = ListJobsStateFilterEnum[];
+export type ListJobsStateFilterEnumList =
+  ReadonlyArray<ListJobsStateFilterEnum>;
 export const ListJobsStateFilterEnumList = /*@__PURE__*/ S.Array(
   ListJobsStateFilterEnum,
 ) as any as S.Schema<ListJobsStateFilterEnumList>;
@@ -7904,7 +7815,7 @@ export const JobListJobsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobListJobsItem",
 }) as any as S.Schema<JobListJobsItem>;
 
-export type JobListJobsItemList = JobListJobsItem[];
+export type JobListJobsItemList = ReadonlyArray<JobListJobsItem>;
 export const JobListJobsItemList = /*@__PURE__*/ S.Array(
   JobListJobsItem,
 ) as any as S.Schema<JobListJobsItemList>;
@@ -7959,7 +7870,7 @@ export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListModelsRequest",
 }) as any as S.Schema<ListModelsRequest>;
 
-export type ModelList = Model[];
+export type ModelList = ReadonlyArray<Model>;
 export const ModelList = /*@__PURE__*/ S.Array(
   Model,
 ) as any as S.Schema<ModelList>;
@@ -8038,7 +7949,8 @@ export const ProjectListProjectsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectListProjectsItem",
 }) as any as S.Schema<ProjectListProjectsItem>;
 
-export type ProjectListProjectsItemList = ProjectListProjectsItem[];
+export type ProjectListProjectsItemList =
+  ReadonlyArray<ProjectListProjectsItem>;
 export const ProjectListProjectsItemList = /*@__PURE__*/ S.Array(
   ProjectListProjectsItem,
 ) as any as S.Schema<ProjectListProjectsItemList>;
@@ -8099,7 +8011,7 @@ export const ListRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRoutinesRequest",
 }) as any as S.Schema<ListRoutinesRequest>;
 
-export type RoutineList = Routine[];
+export type RoutineList = ReadonlyArray<Routine>;
 export const RoutineList = /*@__PURE__*/ S.Array(
   Routine,
 ) as any as S.Schema<RoutineList>;
@@ -8150,7 +8062,7 @@ export const ListRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRowAccessPoliciesRequest",
 }) as any as S.Schema<ListRowAccessPoliciesRequest>;
 
-export type RowAccessPolicyList = RowAccessPolicy[];
+export type RowAccessPolicyList = ReadonlyArray<RowAccessPolicy>;
 export const RowAccessPolicyList = /*@__PURE__*/ S.Array(
   RowAccessPolicy,
 ) as any as S.Schema<RowAccessPolicyList>;
@@ -8175,8 +8087,7 @@ export type ListTabledataFormatOptions_timestampOutputFormatEnum =
   | "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED"
   | "FLOAT64"
   | "INT64"
-  | "ISO8601_STRING"
-  | (string & {});
+  | "ISO8601_STRING";
 export const ListTabledataFormatOptions_timestampOutputFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -8336,7 +8247,7 @@ export const TableListTablesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "TableListTablesItem",
 }) as any as S.Schema<TableListTablesItem>;
 
-export type TableListTablesItemList = TableListTablesItem[];
+export type TableListTablesItemList = ReadonlyArray<TableListTablesItem>;
 export const TableListTablesItemList = /*@__PURE__*/ S.Array(
   TableListTablesItem,
 ) as any as S.Schema<TableListTablesItemList>;
@@ -8368,8 +8279,7 @@ export type PatchDatasetsUpdateModeEnum =
   | "UPDATE_MODE_UNSPECIFIED"
   | "UPDATE_METADATA"
   | "UPDATE_ACL"
-  | "UPDATE_FULL"
-  | (string & {});
+  | "UPDATE_FULL";
 export const PatchDatasetsUpdateModeEnum = /*@__PURE__*/ S.String;
 
 export interface PatchDatasetsRequest {
@@ -8462,16 +8372,14 @@ export const PatchTablesRequest = /*@__PURE__*/ S.suspend(() =>
 export type QueryRequestJobCreationModeEnum =
   | "JOB_CREATION_MODE_UNSPECIFIED"
   | "JOB_CREATION_REQUIRED"
-  | "JOB_CREATION_OPTIONAL"
-  | (string & {});
+  | "JOB_CREATION_OPTIONAL";
 export const QueryRequestJobCreationModeEnum = /*@__PURE__*/ S.String;
 
 export type DataFormatOptionsTimestampOutputFormatEnum =
   | "TIMESTAMP_OUTPUT_FORMAT_UNSPECIFIED"
   | "FLOAT64"
   | "INT64"
-  | "ISO8601_STRING"
-  | (string & {});
+  | "ISO8601_STRING";
 export const DataFormatOptionsTimestampOutputFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -8496,8 +8404,7 @@ export const DataFormatOptions = /*@__PURE__*/ S.suspend(() =>
 export type ArrowSerializationOptionsBufferCompressionEnum =
   | "COMPRESSION_UNSPECIFIED"
   | "LZ4_FRAME"
-  | "ZSTD"
-  | (string & {});
+  | "ZSTD";
 export const ArrowSerializationOptionsBufferCompressionEnum =
   /*@__PURE__*/ S.String;
 
@@ -8505,8 +8412,7 @@ export type ArrowSerializationOptionsPicosTimestampPrecisionEnum =
   | "PICOS_TIMESTAMP_PRECISION_UNSPECIFIED"
   | "TIMESTAMP_PRECISION_MICROS"
   | "TIMESTAMP_PRECISION_NANOS"
-  | "TIMESTAMP_PRECISION_PICOS"
-  | (string & {});
+  | "TIMESTAMP_PRECISION_PICOS";
 export const ArrowSerializationOptionsPicosTimestampPrecisionEnum =
   /*@__PURE__*/ S.String;
 
@@ -8533,8 +8439,7 @@ export const ArrowSerializationOptions = /*@__PURE__*/ S.suspend(() =>
 export type QueryRequestQueryResultsFormatEnum =
   | "QUERY_RESULTS_FORMAT_UNSPECIFIED"
   | "STRUCT_ENCODING"
-  | "ARROW"
-  | (string & {});
+  | "ARROW";
 export const QueryRequestQueryResultsFormatEnum = /*@__PURE__*/ S.String;
 
 /** Describes the format of the jobs.query request. */
@@ -8939,8 +8844,7 @@ export type UpdateDatasetsUpdateModeEnum =
   | "UPDATE_MODE_UNSPECIFIED"
   | "UPDATE_METADATA"
   | "UPDATE_ACL"
-  | "UPDATE_FULL"
-  | (string & {});
+  | "UPDATE_FULL";
 export const UpdateDatasetsUpdateModeEnum = /*@__PURE__*/ S.String;
 
 export interface UpdateDatasetsRequest {

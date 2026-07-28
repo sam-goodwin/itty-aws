@@ -110,7 +110,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -276,8 +276,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type PostgreSqlConnectionProfileNetworkArchitectureEnum =
   | "NETWORK_ARCHITECTURE_UNSPECIFIED"
   | "NETWORK_ARCHITECTURE_OLD_CSQL_PRODUCER"
-  | "NETWORK_ARCHITECTURE_NEW_CSQL_PRODUCER"
-  | (string & {});
+  | "NETWORK_ARCHITECTURE_NEW_CSQL_PRODUCER";
 export const PostgreSqlConnectionProfileNetworkArchitectureEnum =
   /*@__PURE__*/ S.String;
 
@@ -337,8 +336,7 @@ export type SslConfigTypeEnum =
   | "SERVER_ONLY"
   | "SERVER_CLIENT"
   | "REQUIRED"
-  | "NONE"
-  | (string & {});
+  | "NONE";
 export const SslConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** SSL configuration information. */
@@ -439,8 +437,7 @@ export type ConnectionProfileStateEnum =
   | "UPDATING"
   | "DELETING"
   | "DELETED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ConnectionProfileStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for Oracle Automatic Storage Management (ASM) connection. */
@@ -531,15 +528,13 @@ export type ConnectionProfileProviderEnum =
   | "RDS"
   | "AURORA"
   | "ALLOYDB"
-  | "AZURE_DATABASE"
-  | (string & {});
+  | "AZURE_DATABASE";
 export const ConnectionProfileProviderEnum = /*@__PURE__*/ S.String;
 
 export type ConnectionProfileRoleEnum =
   | "ROLE_UNSPECIFIED"
   | "SOURCE"
-  | "DESTINATION"
-  | (string & {});
+  | "DESTINATION";
 export const ConnectionProfileRoleEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server. */
@@ -621,8 +616,7 @@ export type AlloyDbSettingsDatabaseVersionEnum =
   | "POSTGRES_15"
   | "POSTGRES_16"
   | "POSTGRES_17"
-  | "POSTGRES_18"
-  | (string & {});
+  | "POSTGRES_18";
 export const AlloyDbSettingsDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 /** The username/password for a database user. Used for specifying initial users at cluster creation time. */
@@ -669,7 +663,7 @@ export const AuthorizedNetwork = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizedNetwork",
 }) as any as S.Schema<AuthorizedNetwork>;
 
-export type AuthorizedNetworkList = AuthorizedNetwork[];
+export type AuthorizedNetworkList = ReadonlyArray<AuthorizedNetwork>;
 export const AuthorizedNetworkList = /*@__PURE__*/ S.Array(
   AuthorizedNetwork,
 ) as any as S.Schema<AuthorizedNetworkList>;
@@ -693,7 +687,7 @@ export const InstanceNetworkConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceNetworkConfig",
 }) as any as S.Schema<InstanceNetworkConfig>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -820,8 +814,7 @@ export const MySqlConnectionProfile = /*@__PURE__*/ S.suspend(() =>
 export type CloudSqlSettingsEditionEnum =
   | "EDITION_UNSPECIFIED"
   | "ENTERPRISE"
-  | "ENTERPRISE_PLUS"
-  | (string & {});
+  | "ENTERPRISE_PLUS";
 export const CloudSqlSettingsEditionEnum = /*@__PURE__*/ S.String;
 
 export type CloudSqlSettingsDatabaseVersionEnum =
@@ -849,8 +842,7 @@ export type CloudSqlSettingsDatabaseVersionEnum =
   | "POSTGRES_13"
   | "POSTGRES_14"
   | "POSTGRES_15"
-  | "POSTGRES_16"
-  | (string & {});
+  | "POSTGRES_16";
 export const CloudSqlSettingsDatabaseVersionEnum = /*@__PURE__*/ S.String;
 
 /** An entry for an Access Control list. */
@@ -873,7 +865,7 @@ export const SqlAclEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SqlAclEntry" }) as any as S.Schema<SqlAclEntry>;
 
-export type SqlAclEntryList = SqlAclEntry[];
+export type SqlAclEntryList = ReadonlyArray<SqlAclEntry>;
 export const SqlAclEntryList = /*@__PURE__*/ S.Array(
   SqlAclEntry,
 ) as any as S.Schema<SqlAclEntryList>;
@@ -904,15 +896,13 @@ export const SqlIpConfig = /*@__PURE__*/ S.suspend(() =>
 export type CloudSqlSettingsAvailabilityTypeEnum =
   | "SQL_AVAILABILITY_TYPE_UNSPECIFIED"
   | "ZONAL"
-  | "REGIONAL"
-  | (string & {});
+  | "REGIONAL";
 export const CloudSqlSettingsAvailabilityTypeEnum = /*@__PURE__*/ S.String;
 
 export type CloudSqlSettingsActivationPolicyEnum =
   | "SQL_ACTIVATION_POLICY_UNSPECIFIED"
   | "ALWAYS"
-  | "NEVER"
-  | (string & {});
+  | "NEVER";
 export const CloudSqlSettingsActivationPolicyEnum = /*@__PURE__*/ S.String;
 
 /** Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation. */
@@ -932,8 +922,7 @@ export type CloudSqlSettingsDataDiskTypeEnum =
   | "SQL_DATA_DISK_TYPE_UNSPECIFIED"
   | "PD_SSD"
   | "PD_HDD"
-  | "HYPERDISK_BALANCED"
-  | (string & {});
+  | "HYPERDISK_BALANCED";
 export const CloudSqlSettingsDataDiskTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings for creating a Cloud SQL database instance. */
@@ -1140,8 +1129,7 @@ export type DatabaseEngineInfoEngineEnum =
   | "MYSQL"
   | "POSTGRESQL"
   | "SQLSERVER"
-  | "ORACLE"
-  | (string & {});
+  | "ORACLE";
 export const DatabaseEngineInfoEngineEnum = /*@__PURE__*/ S.String;
 
 /** The type and version of a source or destination database. */
@@ -1166,8 +1154,7 @@ export type ConversionWorkspaceDestinationProviderEnum =
   | "RDS"
   | "AURORA"
   | "ALLOYDB"
-  | "AZURE_DATABASE"
-  | (string & {});
+  | "AZURE_DATABASE";
 export const ConversionWorkspaceDestinationProviderEnum =
   /*@__PURE__*/ S.String;
 
@@ -1177,8 +1164,7 @@ export type ConversionWorkspaceSourceProviderEnum =
   | "RDS"
   | "AURORA"
   | "ALLOYDB"
-  | "AZURE_DATABASE"
-  | (string & {});
+  | "AZURE_DATABASE";
 export const ConversionWorkspaceSourceProviderEnum = /*@__PURE__*/ S.String;
 
 /** The main conversion workspace resource entity. */
@@ -1272,8 +1258,7 @@ export type SourceNumericFilterNumericFilterOptionEnum =
   | "NUMERIC_FILTER_OPTION_UNSPECIFIED"
   | "NUMERIC_FILTER_OPTION_ALL"
   | "NUMERIC_FILTER_OPTION_LIMIT"
-  | "NUMERIC_FILTER_OPTION_LIMITLESS"
-  | (string & {});
+  | "NUMERIC_FILTER_OPTION_LIMITLESS";
 export const SourceNumericFilterNumericFilterOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1373,8 +1358,7 @@ export type MultiEntityRenameSourceNameTransformationEnum =
   | "ENTITY_NAME_TRANSFORMATION_NO_TRANSFORMATION"
   | "ENTITY_NAME_TRANSFORMATION_LOWER_CASE"
   | "ENTITY_NAME_TRANSFORMATION_UPPER_CASE"
-  | "ENTITY_NAME_TRANSFORMATION_CAPITALIZED_CASE"
-  | (string & {});
+  | "ENTITY_NAME_TRANSFORMATION_CAPITALIZED_CASE";
 export const MultiEntityRenameSourceNameTransformationEnum =
   /*@__PURE__*/ S.String;
 
@@ -1540,8 +1524,7 @@ export type DoubleComparisonFilterValueComparisonEnum =
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_THAN"
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN"
   | "VALUE_COMPARISON_IF_VALUE_LARGER_THAN"
-  | "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN"
-  | (string & {});
+  | "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN";
 export const DoubleComparisonFilterValueComparisonEnum = /*@__PURE__*/ S.String;
 
 /** Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue */
@@ -1565,8 +1548,7 @@ export type IntComparisonFilterValueComparisonEnum =
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_THAN"
   | "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN"
   | "VALUE_COMPARISON_IF_VALUE_LARGER_THAN"
-  | "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN"
-  | (string & {});
+  | "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN";
 export const IntComparisonFilterValueComparisonEnum = /*@__PURE__*/ S.String;
 
 /** Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue */
@@ -1623,8 +1605,7 @@ export const RoundToScale = /*@__PURE__*/ S.suspend(() =>
 export type ValueListFilterValuePresentListEnum =
   | "VALUE_PRESENT_IN_LIST_UNSPECIFIED"
   | "VALUE_PRESENT_IN_LIST_IF_VALUE_LIST"
-  | "VALUE_PRESENT_IN_LIST_IF_VALUE_NOT_LIST"
-  | (string & {});
+  | "VALUE_PRESENT_IN_LIST_IF_VALUE_NOT_LIST";
 export const ValueListFilterValuePresentListEnum = /*@__PURE__*/ S.String;
 
 /** A list of values to filter by in ConditionalColumnSetValue */
@@ -1712,8 +1693,7 @@ export type MappingRuleStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const MappingRuleStateEnum = /*@__PURE__*/ S.String;
 
 /** Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities. The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View */
@@ -1745,8 +1725,7 @@ export type MappingRuleRuleScopeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE"
-  | (string & {});
+  | "DATABASE_ENTITY_TYPE_DATABASE";
 export const MappingRuleRuleScopeEnum = /*@__PURE__*/ S.String;
 
 /** Definition of a transformation that is to be applied to a group of entities in the source schema. Several such transformations can be applied to an entity sequentially to define the corresponding entity in the target schema. */
@@ -1879,7 +1858,7 @@ export const DumpFlag = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DumpFlag" }) as any as S.Schema<DumpFlag>;
 
-export type DumpFlagList = DumpFlag[];
+export type DumpFlagList = ReadonlyArray<DumpFlag>;
 export const DumpFlagList = /*@__PURE__*/ S.Array(
   DumpFlag,
 ) as any as S.Schema<DumpFlagList>;
@@ -1911,8 +1890,7 @@ export const VpcPeeringConnectivity = /*@__PURE__*/ S.suspend(() =>
 export type SourceObjectsConfigObjectsSelectionTypeEnum =
   | "OBJECTS_SELECTION_TYPE_UNSPECIFIED"
   | "ALL_OBJECTS"
-  | "SPECIFIED_OBJECTS"
-  | (string & {});
+  | "SPECIFIED_OBJECTS";
 export const SourceObjectsConfigObjectsSelectionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1920,8 +1898,7 @@ export type SourceObjectIdentifierTypeEnum =
   | "MIGRATION_JOB_OBJECT_TYPE_UNSPECIFIED"
   | "DATABASE"
   | "SCHEMA"
-  | "TABLE"
-  | (string & {});
+  | "TABLE";
 export const SourceObjectIdentifierTypeEnum = /*@__PURE__*/ S.String;
 
 /** An identifier for the Migration Job Object. */
@@ -1959,7 +1936,7 @@ export const SourceObjectConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceObjectConfig",
 }) as any as S.Schema<SourceObjectConfig>;
 
-export type SourceObjectConfigList = SourceObjectConfig[];
+export type SourceObjectConfigList = ReadonlyArray<SourceObjectConfig>;
 export const SourceObjectConfigList = /*@__PURE__*/ S.Array(
   SourceObjectConfig,
 ) as any as S.Schema<SourceObjectConfigList>;
@@ -1998,8 +1975,7 @@ export const MigrationJobObjectsConfig = /*@__PURE__*/ S.suspend(() =>
 export type MigrationJobPurposeEnum =
   | "PURPOSE_UNSPECIFIED"
   | "MIGRATE"
-  | "FAILBACK"
-  | (string & {});
+  | "FAILBACK";
 export const MigrationJobPurposeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for SQL Server as a source in a migration. */
@@ -2063,8 +2039,7 @@ export type MigrationJobPhaseEnum =
   | "PROMOTE_IN_PROGRESS"
   | "WAITING_FOR_SOURCE_WRITES_TO_STOP"
   | "PREPARING_THE_DUMP"
-  | "READY_FOR_PROMOTE"
-  | (string & {});
+  | "READY_FOR_PROMOTE";
 export const MigrationJobPhaseEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for PostgreSQL to PostgreSQL migrations. */
@@ -2088,8 +2063,7 @@ export type DatabaseTypeEngineEnum =
   | "MYSQL"
   | "POSTGRESQL"
   | "SQLSERVER"
-  | "ORACLE"
-  | (string & {});
+  | "ORACLE";
 export const DatabaseTypeEngineEnum = /*@__PURE__*/ S.String;
 
 export type DatabaseTypeProviderEnum =
@@ -2098,8 +2072,7 @@ export type DatabaseTypeProviderEnum =
   | "RDS"
   | "AURORA"
   | "ALLOYDB"
-  | "AZURE_DATABASE"
-  | (string & {});
+  | "AZURE_DATABASE";
 export const DatabaseTypeProviderEnum = /*@__PURE__*/ S.String;
 
 /** A message defining the database engine and provider. */
@@ -2132,8 +2105,7 @@ export type MigrationJobStateEnum =
   | "UPDATING"
   | "STARTING"
   | "RESTARTING"
-  | "RESUMING"
-  | (string & {});
+  | "RESUMING";
 export const MigrationJobStateEnum = /*@__PURE__*/ S.String;
 
 /** A conversion workspace's version. */
@@ -2156,8 +2128,7 @@ export type PerformanceConfigDumpParallelLevelEnum =
   | "DUMP_PARALLEL_LEVEL_UNSPECIFIED"
   | "MIN"
   | "OPTIMAL"
-  | "MAX"
-  | (string & {});
+  | "MAX";
 export const PerformanceConfigDumpParallelLevelEnum = /*@__PURE__*/ S.String;
 
 /** Performance configuration definition. */
@@ -2224,7 +2195,8 @@ export const SqlServerDatabaseBackup = /*@__PURE__*/ S.suspend(() =>
   identifier: "SqlServerDatabaseBackup",
 }) as any as S.Schema<SqlServerDatabaseBackup>;
 
-export type SqlServerDatabaseBackupList = SqlServerDatabaseBackup[];
+export type SqlServerDatabaseBackupList =
+  ReadonlyArray<SqlServerDatabaseBackup>;
 export const SqlServerDatabaseBackupList = /*@__PURE__*/ S.Array(
   SqlServerDatabaseBackup,
 ) as any as S.Schema<SqlServerDatabaseBackupList>;
@@ -2303,8 +2275,7 @@ export const PostgresToSqlServerConfig = /*@__PURE__*/ S.suspend(() =>
 export type MigrationJobDumpTypeEnum =
   | "DUMP_TYPE_UNSPECIFIED"
   | "LOGICAL"
-  | "PHYSICAL"
-  | (string & {});
+  | "PHYSICAL";
 export const MigrationJobDumpTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration to use LogMiner CDC method. */
@@ -2413,8 +2384,7 @@ export const MySqlHomogeneousConfig = /*@__PURE__*/ S.suspend(() =>
 export type MigrationJobTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ONE_TIME"
-  | "CONTINUOUS"
-  | (string & {});
+  | "CONTINUOUS";
 export const MigrationJobTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a Database Migration Service migration job object. */
@@ -2599,8 +2569,7 @@ export type PrivateConnectionStateEnum =
   | "FAILED"
   | "DELETING"
   | "FAILED_TO_DELETE"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const PrivateConnectionStateEnum = /*@__PURE__*/ S.String;
 
 /** The PrivateConnection resource is used to establish private connectivity with the customer's network. */
@@ -2872,7 +2841,7 @@ export const DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWork
       "DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspacesRequest",
   }) as any as S.Schema<DescribeConversionWorkspaceRevisionsProjectsLocationsConversionWorkspacesRequest>;
 
-export type ConversionWorkspaceList = ConversionWorkspace[];
+export type ConversionWorkspaceList = ReadonlyArray<ConversionWorkspace>;
 export const ConversionWorkspaceList = /*@__PURE__*/ S.Array(
   ConversionWorkspace,
 ) as any as S.Schema<ConversionWorkspaceList>;
@@ -2896,8 +2865,7 @@ export type DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesViewEnu
     | "DATABASE_ENTITY_VIEW_BASIC"
     | "DATABASE_ENTITY_VIEW_FULL"
     | "DATABASE_ENTITY_VIEW_ROOT_SUMMARY"
-    | "DATABASE_ENTITY_VIEW_FULL_COMPACT"
-    | (string & {});
+    | "DATABASE_ENTITY_VIEW_FULL_COMPACT";
 export const DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2905,8 +2873,7 @@ export type DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesTreeEnu
     | "DB_TREE_TYPE_UNSPECIFIED"
     | "SOURCE_TREE"
     | "DRAFT_TREE"
-    | "DESTINATION_TREE"
-    | (string & {});
+    | "DESTINATION_TREE";
 export const DescribeDatabaseEntitiesProjectsLocationsConversionWorkspacesTreeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2990,12 +2957,12 @@ export const ConstraintEntity = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConstraintEntity",
 }) as any as S.Schema<ConstraintEntity>;
 
-export type ConstraintEntityList = ConstraintEntity[];
+export type ConstraintEntityList = ReadonlyArray<ConstraintEntity>;
 export const ConstraintEntityList = /*@__PURE__*/ S.Array(
   ConstraintEntity,
 ) as any as S.Schema<ConstraintEntityList>;
 
-export type BooleanList = boolean[];
+export type BooleanList = ReadonlyArray<boolean>;
 export const BooleanList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<BooleanList>;
@@ -3026,7 +2993,7 @@ export const IndexEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IndexEntity" }) as any as S.Schema<IndexEntity>;
 
-export type IndexEntityList = IndexEntity[];
+export type IndexEntityList = ReadonlyArray<IndexEntity>;
 export const IndexEntityList = /*@__PURE__*/ S.Array(
   IndexEntity,
 ) as any as S.Schema<IndexEntityList>;
@@ -3054,7 +3021,7 @@ export const TriggerEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TriggerEntity" }) as any as S.Schema<TriggerEntity>;
 
-export type TriggerEntityList = TriggerEntity[];
+export type TriggerEntityList = ReadonlyArray<TriggerEntity>;
 export const TriggerEntityList = /*@__PURE__*/ S.Array(
   TriggerEntity,
 ) as any as S.Schema<TriggerEntityList>;
@@ -3124,7 +3091,7 @@ export const ColumnEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ColumnEntity" }) as any as S.Schema<ColumnEntity>;
 
-export type ColumnEntityList = ColumnEntity[];
+export type ColumnEntityList = ReadonlyArray<ColumnEntity>;
 export const ColumnEntityList = /*@__PURE__*/ S.Array(
   ColumnEntity,
 ) as any as S.Schema<ColumnEntityList>;
@@ -3171,8 +3138,7 @@ export type EntityMappingDraftTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE"
-  | (string & {});
+  | "DATABASE_ENTITY_TYPE_DATABASE";
 export const EntityMappingDraftTypeEnum = /*@__PURE__*/ S.String;
 
 export type EntityMappingSourceTypeEnum =
@@ -3191,8 +3157,7 @@ export type EntityMappingSourceTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE"
-  | (string & {});
+  | "DATABASE_ENTITY_TYPE_DATABASE";
 export const EntityMappingSourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single record of a rule which was used for a mapping. */
@@ -3214,7 +3179,7 @@ export const EntityMappingLogEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "EntityMappingLogEntry",
 }) as any as S.Schema<EntityMappingLogEntry>;
 
-export type EntityMappingLogEntryList = EntityMappingLogEntry[];
+export type EntityMappingLogEntryList = ReadonlyArray<EntityMappingLogEntry>;
 export const EntityMappingLogEntryList = /*@__PURE__*/ S.Array(
   EntityMappingLogEntry,
 ) as any as S.Schema<EntityMappingLogEntryList>;
@@ -3242,7 +3207,7 @@ export const EntityMapping = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityMapping" }) as any as S.Schema<EntityMapping>;
 
-export type EntityMappingList = EntityMapping[];
+export type EntityMappingList = ReadonlyArray<EntityMapping>;
 export const EntityMappingList = /*@__PURE__*/ S.Array(
   EntityMapping,
 ) as any as S.Schema<EntityMappingList>;
@@ -3262,8 +3227,7 @@ export type DatabaseEntityTreeEnum =
   | "TREE_TYPE_UNSPECIFIED"
   | "SOURCE"
   | "DRAFT"
-  | "DESTINATION"
-  | (string & {});
+  | "DESTINATION";
 export const DatabaseEntityTreeEnum = /*@__PURE__*/ S.String;
 
 /** Package's parent is a schema. */
@@ -3299,8 +3263,7 @@ export type EntityDdlEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE"
-  | (string & {});
+  | "DATABASE_ENTITY_TYPE_DATABASE";
 export const EntityDdlEntityTypeEnum = /*@__PURE__*/ S.String;
 
 export type EntityDdlEditedDdlKindEnum =
@@ -3308,8 +3271,7 @@ export type EntityDdlEditedDdlKindEnum =
   | "SOURCE"
   | "DETERMINISTIC"
   | "AI"
-  | "USER_EDIT"
-  | (string & {});
+  | "USER_EDIT";
 export const EntityDdlEditedDdlKindEnum = /*@__PURE__*/ S.String;
 
 export type EntityDdlDdlKindEnum =
@@ -3317,8 +3279,7 @@ export type EntityDdlDdlKindEnum =
   | "SOURCE"
   | "DETERMINISTIC"
   | "AI"
-  | "USER_EDIT"
-  | (string & {});
+  | "USER_EDIT";
 export const EntityDdlDdlKindEnum = /*@__PURE__*/ S.String;
 
 /** A single DDL statement for a specific entity */
@@ -3350,7 +3311,7 @@ export const EntityDdl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityDdl" }) as any as S.Schema<EntityDdl>;
 
-export type EntityDdlList = EntityDdl[];
+export type EntityDdlList = ReadonlyArray<EntityDdl>;
 export const EntityDdlList = /*@__PURE__*/ S.Array(
   EntityDdl,
 ) as any as S.Schema<EntityDdlList>;
@@ -3415,8 +3376,7 @@ export type DatabaseEntityEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE"
-  | (string & {});
+  | "DATABASE_ENTITY_TYPE_DATABASE";
 export const DatabaseEntityEntityTypeEnum = /*@__PURE__*/ S.String;
 
 /** Issue position. */
@@ -3444,8 +3404,7 @@ export type EntityIssueTypeEnum =
   | "ISSUE_TYPE_DDL"
   | "ISSUE_TYPE_APPLY"
   | "ISSUE_TYPE_CONVERT"
-  | "ISSUE_TYPE_PULL_SCHEMA"
-  | (string & {});
+  | "ISSUE_TYPE_PULL_SCHEMA";
 export const EntityIssueTypeEnum = /*@__PURE__*/ S.String;
 
 export type EntityIssueEntityTypeEnum =
@@ -3464,16 +3423,14 @@ export type EntityIssueEntityTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE"
-  | (string & {});
+  | "DATABASE_ENTITY_TYPE_DATABASE";
 export const EntityIssueEntityTypeEnum = /*@__PURE__*/ S.String;
 
 export type EntityIssueSeverityEnum =
   | "ISSUE_SEVERITY_UNSPECIFIED"
   | "ISSUE_SEVERITY_INFO"
   | "ISSUE_SEVERITY_WARNING"
-  | "ISSUE_SEVERITY_ERROR"
-  | (string & {});
+  | "ISSUE_SEVERITY_ERROR";
 export const EntityIssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Issue related to the entity. */
@@ -3508,7 +3465,7 @@ export const EntityIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EntityIssue" }) as any as S.Schema<EntityIssue>;
 
-export type EntityIssueList = EntityIssue[];
+export type EntityIssueList = ReadonlyArray<EntityIssue>;
 export const EntityIssueList = /*@__PURE__*/ S.Array(
   EntityIssue,
 ) as any as S.Schema<EntityIssueList>;
@@ -3575,8 +3532,7 @@ export type SynonymEntitySourceTypeEnum =
   | "DATABASE_ENTITY_TYPE_DATABASE_PACKAGE"
   | "DATABASE_ENTITY_TYPE_UDT"
   | "DATABASE_ENTITY_TYPE_MATERIALIZED_VIEW"
-  | "DATABASE_ENTITY_TYPE_DATABASE"
-  | (string & {});
+  | "DATABASE_ENTITY_TYPE_DATABASE";
 export const SynonymEntitySourceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Synonym's parent is a schema. */
@@ -3693,7 +3649,7 @@ export const DatabaseEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DatabaseEntity" }) as any as S.Schema<DatabaseEntity>;
 
-export type DatabaseEntityList = DatabaseEntity[];
+export type DatabaseEntityList = ReadonlyArray<DatabaseEntity>;
 export const DatabaseEntityList = /*@__PURE__*/ S.Array(
   DatabaseEntity,
 ) as any as S.Schema<DatabaseEntityList>;
@@ -3975,7 +3931,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -3984,8 +3940,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -4002,7 +3957,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -4021,7 +3976,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -4279,8 +4234,7 @@ export type MigrationJobObjectPhaseEnum =
   | "PROMOTED"
   | "DIFF_BACKUP"
   | "CREATING_BACKUP"
-  | "RESTORING_BACKUP"
-  | (string & {});
+  | "RESTORING_BACKUP";
 export const MigrationJobObjectPhaseEnum = /*@__PURE__*/ S.String;
 
 export type MigrationJobObjectStateEnum =
@@ -4293,8 +4247,7 @@ export type MigrationJobObjectStateEnum =
   | "FAILED"
   | "REMOVING"
   | "NOT_SELECTED"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const MigrationJobObjectStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata for heterogeneous migration jobs objects. */
@@ -4385,8 +4338,7 @@ export const GetProjectsLocationsPrivateConnectionsRequest =
 export type ImportMappingRulesRequestRulesFormatEnum =
   | "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED"
   | "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE"
-  | "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE"
-  | (string & {});
+  | "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE";
 export const ImportMappingRulesRequestRulesFormatEnum = /*@__PURE__*/ S.String;
 
 /** Details of a single rules file. */
@@ -4403,7 +4355,7 @@ export const RulesFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RulesFile" }) as any as S.Schema<RulesFile>;
 
-export type RulesFileList = RulesFile[];
+export type RulesFileList = ReadonlyArray<RulesFile>;
 export const RulesFileList = /*@__PURE__*/ S.Array(
   RulesFile,
 ) as any as S.Schema<RulesFileList>;
@@ -4480,7 +4432,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -4532,7 +4484,7 @@ export const ListProjectsLocationsConnectionProfilesRequest =
     identifier: "ListProjectsLocationsConnectionProfilesRequest",
   }) as any as S.Schema<ListProjectsLocationsConnectionProfilesRequest>;
 
-export type ConnectionProfileList = ConnectionProfile[];
+export type ConnectionProfileList = ReadonlyArray<ConnectionProfile>;
 export const ConnectionProfileList = /*@__PURE__*/ S.Array(
   ConnectionProfile,
 ) as any as S.Schema<ConnectionProfileList>;
@@ -4628,7 +4580,7 @@ export const ListProjectsLocationsConversionWorkspacesMappingRulesRequest =
     identifier: "ListProjectsLocationsConversionWorkspacesMappingRulesRequest",
   }) as any as S.Schema<ListProjectsLocationsConversionWorkspacesMappingRulesRequest>;
 
-export type MappingRuleList = MappingRule[];
+export type MappingRuleList = ReadonlyArray<MappingRule>;
 export const MappingRuleList = /*@__PURE__*/ S.Array(
   MappingRule,
 ) as any as S.Schema<MappingRuleList>;
@@ -4680,7 +4632,7 @@ export const ListProjectsLocationsMigrationJobsRequest =
     identifier: "ListProjectsLocationsMigrationJobsRequest",
   }) as any as S.Schema<ListProjectsLocationsMigrationJobsRequest>;
 
-export type MigrationJobList = MigrationJob[];
+export type MigrationJobList = ReadonlyArray<MigrationJob>;
 export const MigrationJobList = /*@__PURE__*/ S.Array(
   MigrationJob,
 ) as any as S.Schema<MigrationJobList>;
@@ -4729,7 +4681,7 @@ export const ListProjectsLocationsMigrationJobsObjectsRequest =
     identifier: "ListProjectsLocationsMigrationJobsObjectsRequest",
   }) as any as S.Schema<ListProjectsLocationsMigrationJobsObjectsRequest>;
 
-export type MigrationJobObjectList = MigrationJobObject[];
+export type MigrationJobObjectList = ReadonlyArray<MigrationJobObject>;
 export const MigrationJobObjectList = /*@__PURE__*/ S.Array(
   MigrationJobObject,
 ) as any as S.Schema<MigrationJobObjectList>;
@@ -4781,7 +4733,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4836,7 +4788,7 @@ export const ListProjectsLocationsPrivateConnectionsRequest =
     identifier: "ListProjectsLocationsPrivateConnectionsRequest",
   }) as any as S.Schema<ListProjectsLocationsPrivateConnectionsRequest>;
 
-export type PrivateConnectionList = PrivateConnection[];
+export type PrivateConnectionList = ReadonlyArray<PrivateConnection>;
 export const PrivateConnectionList = /*@__PURE__*/ S.Array(
   PrivateConnection,
 ) as any as S.Schema<PrivateConnectionList>;
@@ -5158,8 +5110,7 @@ export const SearchBackgroundJobsProjectsLocationsConversionWorkspacesRequest =
 export type ImportRulesJobDetailsFileFormatEnum =
   | "IMPORT_RULES_FILE_FORMAT_UNSPECIFIED"
   | "IMPORT_RULES_FILE_FORMAT_HARBOUR_BRIDGE_SESSION_FILE"
-  | "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE"
-  | (string & {});
+  | "IMPORT_RULES_FILE_FORMAT_ORATOPG_CONFIG_FILE";
 export const ImportRulesJobDetailsFileFormatEnum = /*@__PURE__*/ S.String;
 
 /** Details regarding an Import Rules background job. */
@@ -5194,15 +5145,13 @@ export type BackgroundJobLogEntryJobTypeEnum =
   | "BACKGROUND_JOB_TYPE_SOURCE_SEED"
   | "BACKGROUND_JOB_TYPE_CONVERT"
   | "BACKGROUND_JOB_TYPE_APPLY_DESTINATION"
-  | "BACKGROUND_JOB_TYPE_IMPORT_RULES_FILE"
-  | (string & {});
+  | "BACKGROUND_JOB_TYPE_IMPORT_RULES_FILE";
 export const BackgroundJobLogEntryJobTypeEnum = /*@__PURE__*/ S.String;
 
 export type BackgroundJobLogEntryCompletionStateEnum =
   | "JOB_COMPLETION_STATE_UNSPECIFIED"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const BackgroundJobLogEntryCompletionStateEnum = /*@__PURE__*/ S.String;
 
 /** Details regarding a Convert background job. */
@@ -5277,7 +5226,7 @@ export const BackgroundJobLogEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackgroundJobLogEntry",
 }) as any as S.Schema<BackgroundJobLogEntry>;
 
-export type BackgroundJobLogEntryList = BackgroundJobLogEntry[];
+export type BackgroundJobLogEntryList = ReadonlyArray<BackgroundJobLogEntry>;
 export const BackgroundJobLogEntryList = /*@__PURE__*/ S.Array(
   BackgroundJobLogEntry,
 ) as any as S.Schema<BackgroundJobLogEntryList>;

@@ -205,7 +205,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.dashboard_templates#UserBasic"
+          "target": "com.posthog.dashboard_templates#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "image_url": {
           "target": "smithy.api#String",
@@ -546,9 +549,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "template_name": {
           "target": "smithy.api#String",
           "traits": {
@@ -582,23 +582,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.dashboard_templates#UserBasic"
-        },
         "image_url": {
           "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team_id": {
-          "target": "smithy.api#Integer",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -619,12 +604,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Manually curated; used to highlight templates in the UI."
-          }
-        },
-        "non_portable_references": {
-          "target": "com.posthog.dashboard_templates#NonPortableReferences",
-          "traits": {
-            "smithy.api#documentation": "Read-only. Project-specific references (actions, cohorts, data warehouse tables) embedded in this template's tiles that may not resolve when it is used in another project. Events and properties are matched by name and are portable, so they are not reported here."
           }
         }
       },
@@ -785,23 +764,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.dashboard_templates#UserBasic"
-        },
         "image_url": {
           "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team_id": {
-          "target": "smithy.api#Integer",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -822,12 +786,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Manually curated; used to highlight templates in the UI."
-          }
-        },
-        "non_portable_references": {
-          "target": "com.posthog.dashboard_templates#NonPortableReferences",
-          "traits": {
-            "smithy.api#documentation": "Read-only. Project-specific references (actions, cohorts, data warehouse tables) embedded in this template's tiles that may not resolve when it is used in another project. Events and properties are matched by name and are portable, so they are not reported here."
           }
         }
       },
@@ -940,23 +898,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.dashboard_templates#UserBasic"
-        },
         "image_url": {
           "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "team_id": {
-          "target": "smithy.api#Integer",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -977,12 +920,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Manually curated; used to highlight templates in the UI."
-          }
-        },
-        "non_portable_references": {
-          "target": "com.posthog.dashboard_templates#NonPortableReferences",
-          "traits": {
-            "smithy.api#documentation": "Read-only. Project-specific references (actions, cohorts, data warehouse tables) embedded in this template's tiles that may not resolve when it is used in another project. Events and properties are matched by name and are portable, so they are not reported here."
           }
         }
       },

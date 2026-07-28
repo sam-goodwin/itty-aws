@@ -63,8 +63,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type AccountLabelLabelTypeEnum =
   | "LABEL_TYPE_UNSPECIFIED"
   | "MANUAL"
-  | "AUTOMATIC"
-  | (string & {});
+  | "AUTOMATIC";
 export const AccountLabelLabelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Label assigned by CSS domain or CSS group to one of its sub-accounts. */
@@ -181,7 +180,7 @@ export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountsRequest",
 }) as any as S.Schema<GetAccountsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -195,8 +194,7 @@ export type AccountAccountTypeEnum =
   | "MC_MARKETPLACE_MCA"
   | "MC_OTHER_MCA"
   | "MC_STANDALONE"
-  | "MC_MCA_SUBACCOUNT"
-  | (string & {});
+  | "MC_MCA_SUBACCOUNT";
 export const AccountAccountTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about CSS/MC account. */
@@ -271,7 +269,7 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationStatus",
 }) as any as S.Schema<DestinationStatus>;
 
-export type DestinationStatusList = DestinationStatus[];
+export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
 export const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
@@ -311,7 +309,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
-export type ItemLevelIssueList = ItemLevelIssue[];
+export type ItemLevelIssueList = ReadonlyArray<ItemLevelIssue>;
 export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
@@ -374,8 +372,7 @@ export const Price = /*@__PURE__*/ S.suspend(() =>
 export type HeadlineOfferSubscriptionCostPeriodEnum =
   | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
   | "MONTH"
-  | "YEAR"
-  | (string & {});
+  | "YEAR";
 export const HeadlineOfferSubscriptionCostPeriodEnum = /*@__PURE__*/ S.String;
 
 /** The SubscriptionCost of the product. */
@@ -433,7 +430,7 @@ export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
 
-export type ProductDetailList = ProductDetail[];
+export type ProductDetailList = ReadonlyArray<ProductDetail>;
 export const ProductDetailList = /*@__PURE__*/ S.Array(
   ProductDetail,
 ) as any as S.Schema<ProductDetailList>;
@@ -469,7 +466,7 @@ export const Certification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Certification" }) as any as S.Schema<Certification>;
 
-export type CertificationList = Certification[];
+export type CertificationList = ReadonlyArray<Certification>;
 export const CertificationList = /*@__PURE__*/ S.Array(
   Certification,
 ) as any as S.Schema<CertificationList>;
@@ -663,7 +660,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = CustomAttribute[];
+export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -780,7 +777,7 @@ export const ListAccountsCssProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsCssProductsRequest",
 }) as any as S.Schema<ListAccountsCssProductsRequest>;
 
-export type CssProductList = CssProduct[];
+export type CssProductList = ReadonlyArray<CssProduct>;
 export const CssProductList = /*@__PURE__*/ S.Array(
   CssProduct,
 ) as any as S.Schema<CssProductList>;
@@ -825,7 +822,7 @@ export const ListAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsLabelsRequest",
 }) as any as S.Schema<ListAccountsLabelsRequest>;
 
-export type AccountLabelList = AccountLabel[];
+export type AccountLabelList = ReadonlyArray<AccountLabel>;
 export const AccountLabelList = /*@__PURE__*/ S.Array(
   AccountLabel,
 ) as any as S.Schema<AccountLabelList>;
@@ -890,7 +887,7 @@ export const MethodDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MethodDetails" }) as any as S.Schema<MethodDetails>;
 
-export type MethodDetailsList = MethodDetails[];
+export type MethodDetailsList = ReadonlyArray<MethodDetails>;
 export const MethodDetailsList = /*@__PURE__*/ S.Array(
   MethodDetails,
 ) as any as S.Schema<MethodDetailsList>;
@@ -918,7 +915,7 @@ export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuotaGroup" }) as any as S.Schema<QuotaGroup>;
 
-export type QuotaGroupList = QuotaGroup[];
+export type QuotaGroupList = ReadonlyArray<QuotaGroup>;
 export const QuotaGroupList = /*@__PURE__*/ S.Array(
   QuotaGroup,
 ) as any as S.Schema<QuotaGroupList>;
@@ -969,7 +966,7 @@ export const ListChildAccountsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListChildAccountsAccountsRequest",
 }) as any as S.Schema<ListChildAccountsAccountsRequest>;
 
-export type AccountList = Account[];
+export type AccountList = ReadonlyArray<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;

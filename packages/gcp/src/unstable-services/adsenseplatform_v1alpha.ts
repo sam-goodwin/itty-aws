@@ -115,8 +115,7 @@ export type AccountStateEnum =
   | "STATE_UNSPECIFIED"
   | "UNCHECKED"
   | "APPROVED"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const AccountStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of an Account. */
@@ -172,8 +171,7 @@ export const CreatePlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 export type EventEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "LOG_IN_VIA_PLATFORM"
-  | "SIGN_UP_VIA_PLATFORM"
-  | (string & {});
+  | "SIGN_UP_VIA_PLATFORM";
 export const EventEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** Address data. */
@@ -272,8 +270,7 @@ export type SiteStateEnum =
   | "REQUIRES_REVIEW"
   | "GETTING_READY"
   | "READY"
-  | "NEEDS_ATTENTION"
-  | (string & {});
+  | "NEEDS_ATTENTION";
 export const SiteStateEnum = /*@__PURE__*/ S.String;
 
 /** Representation of a Site. */
@@ -517,7 +514,7 @@ export const ListAccountsPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsPlatformsRequest",
 }) as any as S.Schema<ListAccountsPlatformsRequest>;
 
-export type PlatformList = Platform[];
+export type PlatformList = ReadonlyArray<Platform>;
 export const PlatformList = /*@__PURE__*/ S.Array(
   Platform,
 ) as any as S.Schema<PlatformList>;
@@ -563,7 +560,7 @@ export const ListAccountsPlatformsChildAccountsSitesRequest =
     identifier: "ListAccountsPlatformsChildAccountsSitesRequest",
   }) as any as S.Schema<ListAccountsPlatformsChildAccountsSitesRequest>;
 
-export type PlatformChildSiteList = PlatformChildSite[];
+export type PlatformChildSiteList = ReadonlyArray<PlatformChildSite>;
 export const PlatformChildSiteList = /*@__PURE__*/ S.Array(
   PlatformChildSite,
 ) as any as S.Schema<PlatformChildSiteList>;
@@ -608,7 +605,7 @@ export const ListAccountsPlatformsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsPlatformsGroupsRequest",
 }) as any as S.Schema<ListAccountsPlatformsGroupsRequest>;
 
-export type PlatformGroupList = PlatformGroup[];
+export type PlatformGroupList = ReadonlyArray<PlatformGroup>;
 export const PlatformGroupList = /*@__PURE__*/ S.Array(
   PlatformGroup,
 ) as any as S.Schema<PlatformGroupList>;
@@ -653,7 +650,7 @@ export const ListPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlatformsAccountsRequest",
 }) as any as S.Schema<ListPlatformsAccountsRequest>;
 
-export type AccountList = Account[];
+export type AccountList = ReadonlyArray<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -698,7 +695,7 @@ export const ListPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPlatformsAccountsSitesRequest",
 }) as any as S.Schema<ListPlatformsAccountsSitesRequest>;
 
-export type SiteList = Site[];
+export type SiteList = ReadonlyArray<Site>;
 export const SiteList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteList>;

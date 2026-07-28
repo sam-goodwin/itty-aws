@@ -35,6 +35,42 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export type ExperimentSavedMetricsCreateRequestTagsList =
+  ReadonlyArray<unknown>;
+export const ExperimentSavedMetricsCreateRequestTagsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<ExperimentSavedMetricsCreateRequestTagsList>;
+
+export interface ExperimentSavedMetricsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Name of the shared metric. Must be unique within the project (case-insensitive). */
+  name?: string;
+  /** Short description of what the metric measures. */
+  description?: string | null;
+  /** ExperimentMetric JSON. Must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics. */
+  query?: unknown;
+  tags?: ExperimentSavedMetricsCreateRequestTagsList;
+}
+export const ExperimentSavedMetricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    query: S.optional(S.Unknown),
+    tags: S.optional(ExperimentSavedMetricsCreateRequestTagsList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/experiment_saved_metrics/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ExperimentSavedMetricsCreateRequest",
+}) as any as S.Schema<ExperimentSavedMetricsCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -50,11 +86,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -86,53 +121,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export type ExperimentSavedMetricsCreateRequestTagsList = unknown[];
-export const ExperimentSavedMetricsCreateRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ExperimentSavedMetricsCreateRequestTagsList>;
-
-export interface ExperimentSavedMetricsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: number;
-  /** Name of the shared metric. Must be unique within the project (case-insensitive). */
-  name?: string;
-  /** Short description of what the metric measures. */
-  description?: string | null;
-  /** ExperimentMetric JSON. Must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics. */
-  query?: unknown;
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string;
-  tags?: ExperimentSavedMetricsCreateRequestTagsList;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-}
-export const ExperimentSavedMetricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    query: S.optional(S.Unknown),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    tags: S.optional(ExperimentSavedMetricsCreateRequestTagsList),
-    user_access_level: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/experiment_saved_metrics/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentSavedMetricsCreateRequest",
-}) as any as S.Schema<ExperimentSavedMetricsCreateRequest>;
-
-export type ExperimentSavedMetricTagsList = unknown[];
+export type ExperimentSavedMetricTagsList = ReadonlyArray<unknown>;
 export const ExperimentSavedMetricTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ExperimentSavedMetricTagsList>;
@@ -146,7 +135,7 @@ export interface ExperimentSavedMetric {
   description?: string | null;
   /** ExperimentMetric JSON. Must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics. */
   query?: unknown;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   created_at?: string;
   updated_at?: string;
   tags?: ExperimentSavedMetricTagsList;
@@ -159,7 +148,7 @@ export const ExperimentSavedMetric = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
     query: S.optional(S.Unknown),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
     tags: S.optional(ExperimentSavedMetricTagsList),
@@ -229,7 +218,7 @@ export const ExperimentSavedMetricsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentSavedMetricsListRequest>;
 
 export type PaginatedExperimentSavedMetricListResultsList =
-  ExperimentSavedMetric[];
+  ReadonlyArray<ExperimentSavedMetric>;
 export const PaginatedExperimentSavedMetricListResultsList =
   /*@__PURE__*/ S.Array(
     ExperimentSavedMetric,
@@ -252,7 +241,8 @@ export const PaginatedExperimentSavedMetricList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedExperimentSavedMetricList",
 }) as any as S.Schema<PaginatedExperimentSavedMetricList>;
 
-export type ExperimentSavedMetricsPartialUpdateRequestTagsList = unknown[];
+export type ExperimentSavedMetricsPartialUpdateRequestTagsList =
+  ReadonlyArray<unknown>;
 export const ExperimentSavedMetricsPartialUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -269,12 +259,7 @@ export interface ExperimentSavedMetricsPartialUpdateRequest {
   description?: string | null;
   /** ExperimentMetric JSON. Must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics. */
   query?: unknown;
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string;
   tags?: ExperimentSavedMetricsPartialUpdateRequestTagsList;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const ExperimentSavedMetricsPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -284,11 +269,7 @@ export const ExperimentSavedMetricsPartialUpdateRequest =
       name: S.optional(S.String),
       description: S.optional(S.NullOr(S.String)),
       query: S.optional(S.Unknown),
-      created_by: S.optional(UserBasic),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
       tags: S.optional(ExperimentSavedMetricsPartialUpdateRequestTagsList),
-      user_access_level: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -322,7 +303,8 @@ export const ExperimentSavedMetricsRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "ExperimentSavedMetricsRetrieveRequest",
 }) as any as S.Schema<ExperimentSavedMetricsRetrieveRequest>;
 
-export type ExperimentSavedMetricsUpdateRequestTagsList = unknown[];
+export type ExperimentSavedMetricsUpdateRequestTagsList =
+  ReadonlyArray<unknown>;
 export const ExperimentSavedMetricsUpdateRequestTagsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -339,12 +321,7 @@ export interface ExperimentSavedMetricsUpdateRequest {
   description?: string | null;
   /** ExperimentMetric JSON. Must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Legacy kinds (ExperimentTrendsQuery, ExperimentFunnelsQuery) are rejected for new shared metrics. */
   query?: unknown;
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string;
   tags?: ExperimentSavedMetricsUpdateRequestTagsList;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
 }
 export const ExperimentSavedMetricsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -353,11 +330,7 @@ export const ExperimentSavedMetricsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
     query: S.optional(S.Unknown),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
     tags: S.optional(ExperimentSavedMetricsUpdateRequestTagsList),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",

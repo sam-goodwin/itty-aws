@@ -63,16 +63,61 @@
             "smithy.api#documentation": "Name of catalog"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.sphere#ImagePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sphere#ImagePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "image": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads."
+          }
+        },
+        "imageId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Image ID"
+          }
+        },
+        "regionalDataBoundary": {
+          "target": "com.azure.sphere#RegionalDataBoundary",
+          "traits": {
+            "smithy.api#documentation": "Regional data boundary for an image"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of image"
+      }
+    },
+    "com.azure.sphere#RegionalDataBoundary": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "EU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EU"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Regional data boundary values."
       }
     },
     "com.azure.sphere#ProductsGenerateDefaultDeviceGroups": {
@@ -260,26 +305,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Provisioning state of resource."
-      }
-    },
-    "com.azure.sphere#RegionalDataBoundary": {
-      "type": "enum",
-      "members": {
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "None"
-          }
-        },
-        "EU": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "EU"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Regional data boundary values."
       }
     },
     "com.azure.sphere#AllowCrashDumpCollection": {
@@ -574,16 +599,45 @@
             "smithy.api#documentation": "Device name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "capabilities": {
+          "target": "com.azure.sphere#DevicesGenerateCapabilityImageRequestCapabilitiesList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "List of capabilities to create",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sphere#DevicesGenerateCapabilityImageRequestCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.sphere#CapabilityType"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of capabilities to create"
+      }
+    },
+    "com.azure.sphere#CapabilityType": {
+      "type": "enum",
+      "members": {
+        "APPLICATIONDEVELOPMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ApplicationDevelopment"
+          }
+        },
+        "FIELDSERVICING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FieldServicing"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Capability image type"
       }
     },
     "com.azure.sphere#DevicesDelete": {
@@ -819,16 +873,29 @@
             "smithy.api#documentation": "Device name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.sphere#DeviceUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The updatable properties of the Device."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sphere#DeviceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "deviceGroupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device group id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Device."
       }
     },
     "com.azure.sphere#DevicesCreateOrUpdate": {
@@ -939,16 +1006,29 @@
             "smithy.api#documentation": "Device name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.sphere#DevicePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sphere#DevicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "deviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Device ID"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of device"
       }
     },
     "com.azure.sphere#DevicesGet": {
@@ -1675,16 +1755,58 @@
             "smithy.api#documentation": "Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.sphere#DeploymentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sphere#DeploymentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "deploymentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment ID"
+          }
+        },
+        "deployedImages": {
+          "target": "com.azure.sphere#DeploymentPropertiesInputDeployedImagesList",
+          "traits": {
+            "smithy.api#documentation": "Images deployed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of deployment"
+      }
+    },
+    "com.azure.sphere#DeploymentPropertiesInputDeployedImagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.sphere#ImageInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Images deployed"
+      }
+    },
+    "com.azure.sphere#ImageInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.sphere#ImagePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An image resource belonging to a catalog resource."
       }
     },
     "com.azure.sphere#DeploymentsGet": {
@@ -2107,16 +2229,25 @@
             "smithy.api#documentation": "Name of device group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "deviceIdentifiers": {
+          "target": "com.azure.sphere#DeviceGroupsClaimDevicesRequestDeviceIdentifiersList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Device identifiers of the devices to be claimed.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sphere#DeviceGroupsClaimDevicesRequestDeviceIdentifiersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Device identifiers of the devices to be claimed."
       }
     },
     "com.azure.sphere#DeviceGroupsDelete": {
@@ -2286,16 +2417,53 @@
             "smithy.api#documentation": "Name of device group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.sphere#DeviceGroupUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The updatable properties of the DeviceGroup."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sphere#DeviceGroupUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the device group."
+          }
+        },
+        "osFeedType": {
+          "target": "com.azure.sphere#OSFeedType",
+          "traits": {
+            "smithy.api#documentation": "Operating system feed type of the device group."
+          }
+        },
+        "updatePolicy": {
+          "target": "com.azure.sphere#UpdatePolicy",
+          "traits": {
+            "smithy.api#documentation": "Update policy of the device group."
+          }
+        },
+        "allowCrashDumpsCollection": {
+          "target": "com.azure.sphere#AllowCrashDumpCollection",
+          "traits": {
+            "smithy.api#documentation": "Flag to define if the user allows for crash dump collection."
+          }
+        },
+        "regionalDataBoundary": {
+          "target": "com.azure.sphere#RegionalDataBoundary",
+          "traits": {
+            "smithy.api#documentation": "Regional data boundary for the device group."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the DeviceGroup."
       }
     },
     "com.azure.sphere#DeviceGroupsCreateOrUpdate": {
@@ -2398,16 +2566,53 @@
             "smithy.api#documentation": "Name of device group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.sphere#DeviceGroupPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sphere#DeviceGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the device group."
+          }
+        },
+        "osFeedType": {
+          "target": "com.azure.sphere#OSFeedType",
+          "traits": {
+            "smithy.api#documentation": "Operating system feed type of the device group."
+          }
+        },
+        "updatePolicy": {
+          "target": "com.azure.sphere#UpdatePolicy",
+          "traits": {
+            "smithy.api#documentation": "Update policy of the device group."
+          }
+        },
+        "allowCrashDumpsCollection": {
+          "target": "com.azure.sphere#AllowCrashDumpCollection",
+          "traits": {
+            "smithy.api#documentation": "Flag to define if the user allows for crash dump collection."
+          }
+        },
+        "regionalDataBoundary": {
+          "target": "com.azure.sphere#RegionalDataBoundary",
+          "traits": {
+            "smithy.api#documentation": "Regional data boundary for the device group."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of deviceGroup"
       }
     },
     "com.azure.sphere#DeviceGroupsGet": {
@@ -2847,16 +3052,29 @@
             "smithy.api#documentation": "Name of product."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.sphere#ProductUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The updatable properties of the Product."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sphere#ProductUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the product"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Product."
       }
     },
     "com.azure.sphere#ProductsCreateOrUpdate": {
@@ -2951,11 +3169,10 @@
             "smithy.api#documentation": "Name of product."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.sphere#ProductProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -3505,11 +3722,10 @@
             "smithy.api#documentation": "The maximum number of result items per page."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "deviceGroupName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Device Group name."
           }
         }
       },
@@ -3747,11 +3963,10 @@
             "smithy.api#documentation": "Image name. Use an image GUID for GA versions of the API."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.sphere#ImagePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
@@ -4167,10 +4382,10 @@
             "smithy.api#documentation": "Serial number of the certificate. Use '.default' to get current active certificate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "proofOfPossessionNonce": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The proof of possession nonce",
             "smithy.api#required": {}
           }
         }
@@ -4726,16 +4941,27 @@
             "smithy.api#documentation": "Name of catalog"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.sphere#CatalogsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sphere#CatalogsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.sphere#CatalogsCreateOrUpdate": {
@@ -4847,16 +5073,47 @@
             "smithy.api#documentation": "Name of catalog"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.sphere#CatalogsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.sphere#CatalogPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sphere#CatalogPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Catalog properties"
+      }
+    },
+    "com.azure.sphere#CatalogsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.sphere#CatalogsGet": {

@@ -85,8 +85,7 @@ export const CreateMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreateResponseType =
   | "custom"
   | "gateway_managed"
-  | "access_managed"
-  | (string & {});
+  | "access_managed";
 export const CreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -158,8 +157,7 @@ export const DeleteMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeleteResponseType =
   | "custom"
   | "gateway_managed"
-  | "access_managed"
-  | (string & {});
+  | "access_managed";
 export const DeleteResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -240,7 +238,8 @@ export const AssociationsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssociationsGetResultItem",
 }) as any as S.Schema<AssociationsGetResultItem>;
 
-export type AssociationsGetResultList = AssociationsGetResultItem[];
+export type AssociationsGetResultList =
+  ReadonlyArray<AssociationsGetResultItem>;
 export const AssociationsGetResultList = /*@__PURE__*/ S.Array(
   AssociationsGetResultItem,
 ) as any as S.Schema<AssociationsGetResultList>;
@@ -283,11 +282,7 @@ export const GetMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMtlsCertificateRequest",
 }) as any as S.Schema<GetMtlsCertificateRequest>;
 
-export type GetResponseType =
-  | "custom"
-  | "gateway_managed"
-  | "access_managed"
-  | (string & {});
+export type GetResponseType = "custom" | "gateway_managed" | "access_managed";
 export const GetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -330,14 +325,10 @@ export const GetMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMtlsCertificateResponse",
 }) as any as S.Schema<GetMtlsCertificateResponse>;
 
-export type ListRequestType =
-  | "custom"
-  | "gateway_managed"
-  | "access_managed"
-  | (string & {});
+export type ListRequestType = "custom" | "gateway_managed" | "access_managed";
 export const ListRequestType = /*@__PURE__*/ S.String;
 
-export type ListRequestTypeList = ListRequestType[];
+export type ListRequestTypeList = ReadonlyArray<ListRequestType>;
 export const ListRequestTypeList = /*@__PURE__*/ S.Array(
   ListRequestType,
 ) as any as S.Schema<ListRequestTypeList>;
@@ -368,8 +359,7 @@ export const ListMtlsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListResultItemType =
   | "custom"
   | "gateway_managed"
-  | "access_managed"
-  | (string & {});
+  | "access_managed";
 export const ListResultItemType = /*@__PURE__*/ S.String;
 
 export interface ListResultItem {
@@ -409,7 +399,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ListResultItem[];
+export type ListResultList = ReadonlyArray<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;

@@ -112,8 +112,7 @@ export const DateTime = /*@__PURE__*/ S.suspend(() =>
 export type ShippingInfoShippingStatusEnum =
   | "SHIPPING_STATE_UNSPECIFIED"
   | "SHIPPED"
-  | "DELIVERED"
-  | (string & {});
+  | "DELIVERED";
 export const ShippingInfoShippingStatusEnum = /*@__PURE__*/ S.String;
 
 /** The shipping information for the order. */
@@ -157,7 +156,7 @@ export const ShippingInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ShippingInfo" }) as any as S.Schema<ShippingInfo>;
 
-export type ShippingInfoList = ShippingInfo[];
+export type ShippingInfoList = ReadonlyArray<ShippingInfo>;
 export const ShippingInfoList = /*@__PURE__*/ S.Array(
   ShippingInfo,
 ) as any as S.Schema<ShippingInfoList>;
@@ -176,7 +175,7 @@ export const Price = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -215,7 +214,7 @@ export const LineItemDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "LineItemDetails",
 }) as any as S.Schema<LineItemDetails>;
 
-export type LineItemDetailsList = LineItemDetails[];
+export type LineItemDetailsList = ReadonlyArray<LineItemDetails>;
 export const LineItemDetailsList = /*@__PURE__*/ S.Array(
   LineItemDetails,
 ) as any as S.Schema<LineItemDetailsList>;
@@ -239,7 +238,8 @@ export const ShipmentLineItemMapping = /*@__PURE__*/ S.suspend(() =>
   identifier: "ShipmentLineItemMapping",
 }) as any as S.Schema<ShipmentLineItemMapping>;
 
-export type ShipmentLineItemMappingList = ShipmentLineItemMapping[];
+export type ShipmentLineItemMappingList =
+  ReadonlyArray<ShipmentLineItemMapping>;
 export const ShipmentLineItemMappingList = /*@__PURE__*/ S.Array(
   ShipmentLineItemMapping,
 ) as any as S.Schema<ShipmentLineItemMappingList>;

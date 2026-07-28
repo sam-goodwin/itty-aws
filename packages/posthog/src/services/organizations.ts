@@ -36,6 +36,26 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export interface CimdVerificationTokensCreateRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  label: string;
+}
+export const CimdVerificationTokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_id: S.String.pipe(T.Label()),
+    label: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/organizations/{organization_id}/cimd_verification_tokens/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CimdVerificationTokensCreateRequest",
+}) as any as S.Schema<CimdVerificationTokensCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -51,11 +71,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -86,36 +105,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-export interface CimdVerificationTokensCreateRequest {
-  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
-  organization_id: string;
-  id: string;
-  label: string;
-  mask_value: string | null;
-  created_by: UserBasic;
-  created_at: string;
-  last_used_at: string | null;
-}
-export const CimdVerificationTokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization_id: S.String.pipe(T.Label()),
-    id: S.String,
-    label: S.String,
-    mask_value: S.NullOr(S.String),
-    created_by: UserBasic,
-    created_at: S.String,
-    last_used_at: S.NullOr(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/organizations/{organization_id}/cimd_verification_tokens/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CimdVerificationTokensCreateRequest",
-}) as any as S.Schema<CimdVerificationTokensCreateRequest>;
 
 /** Create-response variant that includes the plaintext token. Only emitted from the create endpoint - storage-side we only persist the hash, so subsequent reads use the base serializer. */
 export interface CIMDVerificationTokenWithValue {
@@ -217,7 +206,7 @@ export const CIMDVerificationToken = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CIMDVerificationToken>;
 
 export type PaginatedCIMDVerificationTokenListResultsList =
-  CIMDVerificationToken[];
+  ReadonlyArray<CIMDVerificationToken>;
 export const PaginatedCIMDVerificationTokenListResultsList =
   /*@__PURE__*/ S.Array(
     CIMDVerificationToken,
@@ -262,46 +251,8 @@ export const CimdVerificationTokensRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "CimdVerificationTokensRetrieveRequest",
 }) as any as S.Schema<CimdVerificationTokensRetrieveRequest>;
 
-export type CreateRequestTeamsItemMap = { [key: string]: unknown | undefined };
-export const CreateRequestTeamsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateRequestTeamsItemMap>;
-
-export type CreateRequestTeamsList = CreateRequestTeamsItemMap[];
-export const CreateRequestTeamsList = /*@__PURE__*/ S.Array(
-  CreateRequestTeamsItemMap,
-) as any as S.Schema<CreateRequestTeamsList>;
-
-export type CreateRequestProjectsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const CreateRequestProjectsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CreateRequestProjectsItemMap>;
-
-export type CreateRequestProjectsList = CreateRequestProjectsItemMap[];
-export const CreateRequestProjectsList = /*@__PURE__*/ S.Array(
-  CreateRequestProjectsItemMap,
-) as any as S.Schema<CreateRequestProjectsList>;
-
-export type CreateRequestAvailableProductFeaturesList = unknown[];
-export const CreateRequestAvailableProductFeaturesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateRequestAvailableProductFeaturesList>;
-
-export type CreateRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CreateRequestMetadataMap>;
-
 /** * `bayesian` - Bayesian * `frequentist` - Frequentist */
-export type DefaultExperimentStatsMethodEnum =
-  | "bayesian"
-  | "frequentist"
-  | (string & {});
+export type DefaultExperimentStatsMethodEnum = "bayesian" | "frequentist";
 export const DefaultExperimentStatsMethodEnum = /*@__PURE__*/ S.String;
 
 /** Default statistical method for new experiments in this organization. * `bayesian` - Bayesian * `frequentist` - Frequentist */
@@ -312,21 +263,8 @@ export const CreateRequestDefaultExperimentStatsMethod =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CreateRequestDefaultExperimentStatsMethod>;
 
 export interface CreateRequest {
-  id?: string;
   name?: string;
-  slug?: string;
   logo_media_id?: string | null;
-  created_at?: string;
-  updated_at?: string;
-  membership_level?: number;
-  plugins_access_level?: number;
-  teams?: CreateRequestTeamsList;
-  projects?: CreateRequestProjectsList;
-  available_product_features?: CreateRequestAvailableProductFeaturesList | null;
-  /** Legacy field; member-join emails are controlled per user in account notification settings. */
-  is_member_join_email_enabled?: boolean;
-  metadata?: CreateRequestMetadataMap;
-  customer_id?: string | null;
   enforce_2fa?: boolean | null;
   members_can_invite?: boolean | null;
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
@@ -335,68 +273,42 @@ export interface CreateRequest {
   /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
   members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
-  member_count?: number;
   is_ai_data_processing_approved?: boolean | null;
   /** When True, this organization allows its data to be used to train PostHog AI models. */
   is_ai_training_opted_in?: boolean | null;
-  /** When True, the AI training opt-out setting cannot be modified through the UI or API. */
-  is_ai_training_locked?: boolean | null;
-  /** When True, in-app callouts inviting members to enable AI training are shown. */
-  is_ai_training_cta_shown?: boolean | null;
-  is_hipaa?: boolean | null;
   /** Default statistical method for new experiments in this organization. * `bayesian` - Bayesian * `frequentist` - Frequentist */
   default_experiment_stats_method?: CreateRequestDefaultExperimentStatsMethod | null;
   /** Default setting for 'Discard client IP data' for new projects in this organization. */
   default_anonymize_ips?: boolean;
   /** ID of the role to automatically assign to new members joining the organization */
   default_role_id?: string | null;
-  /** Set this to 'No' to temporarily disable an organization. */
-  is_active?: boolean | null;
-  /** (optional) reason for why the organization has been de-activated. This will be displayed to users on the web app. */
-  is_not_active_reason?: string | null;
-  /** Set to True when org deletion has been initiated. Blocks all UI access until the async task completes. */
-  is_pending_deletion?: boolean | null;
 }
 export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
     name: S.optional(S.String),
-    slug: S.optional(S.String),
     logo_media_id: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    membership_level: S.optional(S.Number),
-    plugins_access_level: S.optional(S.Number),
-    teams: S.optional(CreateRequestTeamsList),
-    projects: S.optional(CreateRequestProjectsList),
-    available_product_features: S.optional(
-      S.NullOr(CreateRequestAvailableProductFeaturesList),
-    ),
-    is_member_join_email_enabled: S.optional(S.Boolean),
-    metadata: S.optional(CreateRequestMetadataMap),
-    customer_id: S.optional(S.NullOr(S.String)),
     enforce_2fa: S.optional(S.NullOr(S.Boolean)),
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
     members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
-    member_count: S.optional(S.Number),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
     is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
-    is_ai_training_locked: S.optional(S.NullOr(S.Boolean)),
-    is_ai_training_cta_shown: S.optional(S.NullOr(S.Boolean)),
-    is_hipaa: S.optional(S.NullOr(S.Boolean)),
     default_experiment_stats_method: S.optional(
       S.NullOr(CreateRequestDefaultExperimentStatsMethod),
     ),
     default_anonymize_ips: S.optional(S.Boolean),
     default_role_id: S.optional(S.NullOr(S.String)),
-    is_active: S.optional(S.NullOr(S.Boolean)),
-    is_not_active_reason: S.optional(S.NullOr(S.String)),
-    is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.Http({ method: "POST", uri: "/api/organizations/", code: 200 })),
 ).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+
+export type EffectiveMembershipLevelEnum = 1 | 8 | 15;
+export const EffectiveMembershipLevelEnum = /*@__PURE__*/ S.Number;
+
+/** * `0` - none * `3` - config * `6` - install * `9` - root */
+export type PluginsAccessLevelEnum = 0 | 3 | 6 | 9;
+export const PluginsAccessLevelEnum = /*@__PURE__*/ S.Number;
 
 export type OrganizationTeamsItemMap = { [key: string]: unknown | undefined };
 export const OrganizationTeamsItemMap = /*@__PURE__*/ S.Record(
@@ -404,7 +316,7 @@ export const OrganizationTeamsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<OrganizationTeamsItemMap>;
 
-export type OrganizationTeamsList = OrganizationTeamsItemMap[];
+export type OrganizationTeamsList = ReadonlyArray<OrganizationTeamsItemMap>;
 export const OrganizationTeamsList = /*@__PURE__*/ S.Array(
   OrganizationTeamsItemMap,
 ) as any as S.Schema<OrganizationTeamsList>;
@@ -417,12 +329,13 @@ export const OrganizationProjectsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<OrganizationProjectsItemMap>;
 
-export type OrganizationProjectsList = OrganizationProjectsItemMap[];
+export type OrganizationProjectsList =
+  ReadonlyArray<OrganizationProjectsItemMap>;
 export const OrganizationProjectsList = /*@__PURE__*/ S.Array(
   OrganizationProjectsItemMap,
 ) as any as S.Schema<OrganizationProjectsList>;
 
-export type OrganizationAvailableProductFeaturesList = unknown[];
+export type OrganizationAvailableProductFeaturesList = ReadonlyArray<unknown>;
 export const OrganizationAvailableProductFeaturesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<OrganizationAvailableProductFeaturesList>;
@@ -447,8 +360,8 @@ export interface Organization {
   logo_media_id?: string | null;
   created_at?: string;
   updated_at?: string;
-  membership_level?: number;
-  plugins_access_level?: number;
+  membership_level?: EffectiveMembershipLevelEnum;
+  plugins_access_level?: PluginsAccessLevelEnum;
   teams?: OrganizationTeamsList;
   projects?: OrganizationProjectsList;
   available_product_features?: OrganizationAvailableProductFeaturesList | null;
@@ -494,8 +407,8 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
     logo_media_id: S.optional(S.NullOr(S.String)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
-    membership_level: S.optional(S.Number),
-    plugins_access_level: S.optional(S.Number),
+    membership_level: S.optional(EffectiveMembershipLevelEnum),
+    plugins_access_level: S.optional(PluginsAccessLevelEnum),
     teams: S.optional(OrganizationTeamsList),
     projects: S.optional(OrganizationProjectsList),
     available_product_features: S.optional(
@@ -549,38 +462,18 @@ export const DestroyResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DomainsCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
-  id?: string;
   domain?: string;
-  /** Determines whether a domain is verified or not. */
-  is_verified?: boolean;
-  verified_at?: string | null;
-  verification_challenge?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  /** Returns whether SAML is configured for the instance. Does not validate the user has the required license (that check is performed in other places). */
-  has_saml?: boolean;
-  /** Returns whether SCIM is configured and enabled for this domain. */
-  has_scim?: boolean;
-  scim_base_url?: string | null;
-  /** Returns whether ID-JAG (XAA) is configured for this domain. */
-  has_id_jag?: boolean;
   /** Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization. */
   identity_provider_config?: string | null;
 }
 export const DomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     domain: S.optional(S.String),
-    is_verified: S.optional(S.Boolean),
-    verified_at: S.optional(S.NullOr(S.String)),
-    verification_challenge: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    has_saml: S.optional(S.Boolean),
-    has_scim: S.optional(S.Boolean),
-    scim_base_url: S.optional(S.NullOr(S.String)),
-    has_id_jag: S.optional(S.Boolean),
     identity_provider_config: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
@@ -683,7 +576,8 @@ export const DomainsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DomainsListRequest",
 }) as any as S.Schema<DomainsListRequest>;
 
-export type PaginatedOrganizationDomainListResultsList = OrganizationDomain[];
+export type PaginatedOrganizationDomainListResultsList =
+  ReadonlyArray<OrganizationDomain>;
 export const PaginatedOrganizationDomainListResultsList = /*@__PURE__*/ S.Array(
   OrganizationDomain,
 ) as any as S.Schema<PaginatedOrganizationDomainListResultsList>;
@@ -711,19 +605,8 @@ export interface DomainsPartialUpdateRequest {
   /** A UUID string identifying this domain. */
   id: string;
   domain?: string;
-  /** Determines whether a domain is verified or not. */
-  is_verified?: boolean;
-  verified_at?: string | null;
-  verification_challenge?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  /** Returns whether SAML is configured for the instance. Does not validate the user has the required license (that check is performed in other places). */
-  has_saml?: boolean;
-  /** Returns whether SCIM is configured and enabled for this domain. */
-  has_scim?: boolean;
-  scim_base_url?: string | null;
-  /** Returns whether ID-JAG (XAA) is configured for this domain. */
-  has_id_jag?: boolean;
   /** Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization. */
   identity_provider_config?: string | null;
 }
@@ -732,15 +615,8 @@ export const DomainsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     domain: S.optional(S.String),
-    is_verified: S.optional(S.Boolean),
-    verified_at: S.optional(S.NullOr(S.String)),
-    verification_challenge: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    has_saml: S.optional(S.Boolean),
-    has_scim: S.optional(S.Boolean),
-    scim_base_url: S.optional(S.NullOr(S.String)),
-    has_id_jag: S.optional(S.Boolean),
     identity_provider_config: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
@@ -808,19 +684,8 @@ export interface DomainsUpdateRequest {
   /** A UUID string identifying this domain. */
   id: string;
   domain?: string;
-  /** Determines whether a domain is verified or not. */
-  is_verified?: boolean;
-  verified_at?: string | null;
-  verification_challenge?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  /** Returns whether SAML is configured for the instance. Does not validate the user has the required license (that check is performed in other places). */
-  has_saml?: boolean;
-  /** Returns whether SCIM is configured and enabled for this domain. */
-  has_scim?: boolean;
-  scim_base_url?: string | null;
-  /** Returns whether ID-JAG (XAA) is configured for this domain. */
-  has_id_jag?: boolean;
   /** Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization. */
   identity_provider_config?: string | null;
 }
@@ -829,15 +694,8 @@ export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     domain: S.optional(S.String),
-    is_verified: S.optional(S.Boolean),
-    verified_at: S.optional(S.NullOr(S.String)),
-    verification_challenge: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    has_saml: S.optional(S.Boolean),
-    has_scim: S.optional(S.Boolean),
-    scim_base_url: S.optional(S.NullOr(S.String)),
-    has_id_jag: S.optional(S.Boolean),
     identity_provider_config: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
@@ -856,19 +714,8 @@ export interface DomainsVerifyCreateRequest {
   /** A UUID string identifying this domain. */
   id: string;
   domain?: string;
-  /** Determines whether a domain is verified or not. */
-  is_verified?: boolean;
-  verified_at?: string | null;
-  verification_challenge?: string;
   jit_provisioning_enabled?: boolean;
   sso_enforcement?: string;
-  /** Returns whether SAML is configured for the instance. Does not validate the user has the required license (that check is performed in other places). */
-  has_saml?: boolean;
-  /** Returns whether SCIM is configured and enabled for this domain. */
-  has_scim?: boolean;
-  scim_base_url?: string | null;
-  /** Returns whether ID-JAG (XAA) is configured for this domain. */
-  has_id_jag?: boolean;
   /** Linked IdP configuration (SAML/SCIM/XAA) that backs this domain. Must belong to the same organization. */
   identity_provider_config?: string | null;
 }
@@ -877,15 +724,8 @@ export const DomainsVerifyCreateRequest = /*@__PURE__*/ S.suspend(() =>
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     domain: S.optional(S.String),
-    is_verified: S.optional(S.Boolean),
-    verified_at: S.optional(S.NullOr(S.String)),
-    verification_challenge: S.optional(S.String),
     jit_provisioning_enabled: S.optional(S.Boolean),
     sso_enforcement: S.optional(S.String),
-    has_saml: S.optional(S.Boolean),
-    has_scim: S.optional(S.Boolean),
-    scim_base_url: S.optional(S.NullOr(S.String)),
-    has_id_jag: S.optional(S.Boolean),
     identity_provider_config: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
@@ -907,7 +747,7 @@ export const DomainsVerifyCreateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type IdentityProviderConfigsCreateRequestIdJagAllowedClientsList =
-  string[];
+  ReadonlyArray<string>;
 export const IdentityProviderConfigsCreateRequestIdJagAllowedClientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -916,27 +756,16 @@ export const IdentityProviderConfigsCreateRequestIdJagAllowedClientsList =
 export interface IdentityProviderConfigsCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
-  id: string;
   /** Display name for this IdP configuration (e.g. 'Okta production'). */
   name?: string;
-  created_at: string;
-  updated_at: string;
-  /** Whether SAML is fully configured on this config. */
-  has_saml: boolean;
   /** SAML IdP entity ID (issuer). */
   saml_entity_id?: string | null;
   /** SAML single sign-on (ACS) URL the IdP redirects to. */
   saml_acs_url?: string | null;
   /** SAML IdP X.509 signing certificate (PEM). */
   saml_x509_cert?: string | null;
-  /** Whether SCIM is enabled and a bearer token is set on this config. */
-  has_scim: boolean;
   /** Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token. */
   scim_enabled?: boolean;
-  /** Plaintext SCIM bearer token. Only returned once, immediately after SCIM is enabled or the token is regenerated; null otherwise. */
-  scim_bearer_token: string | null;
-  /** Whether ID-JAG (XAA) is configured on this config. */
-  has_id_jag: boolean;
   /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG. */
   id_jag_issuer_url?: string | null;
   /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
@@ -948,18 +777,11 @@ export const IdentityProviderConfigsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
-      id: S.String,
       name: S.optional(S.String),
-      created_at: S.String,
-      updated_at: S.String,
-      has_saml: S.Boolean,
       saml_entity_id: S.optional(S.NullOr(S.String)),
       saml_acs_url: S.optional(S.NullOr(S.String)),
       saml_x509_cert: S.optional(S.NullOr(S.String)),
-      has_scim: S.Boolean,
       scim_enabled: S.optional(S.Boolean),
-      scim_bearer_token: S.NullOr(S.String),
-      has_id_jag: S.Boolean,
       id_jag_issuer_url: S.optional(S.NullOr(S.String)),
       id_jag_jwks_url: S.optional(S.NullOr(S.String)),
       id_jag_allowed_clients: S.optional(
@@ -977,7 +799,8 @@ export const IdentityProviderConfigsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IdentityProviderConfigsCreateRequest>;
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
-export type IdentityProviderConfigIdJagAllowedClientsList = string[];
+export type IdentityProviderConfigIdJagAllowedClientsList =
+  ReadonlyArray<string>;
 export const IdentityProviderConfigIdJagAllowedClientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1090,7 +913,7 @@ export const IdentityProviderConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityProviderConfigsListRequest>;
 
 export type PaginatedIdentityProviderConfigListResultsList =
-  IdentityProviderConfig[];
+  ReadonlyArray<IdentityProviderConfig>;
 export const PaginatedIdentityProviderConfigListResultsList =
   /*@__PURE__*/ S.Array(
     IdentityProviderConfig,
@@ -1115,7 +938,7 @@ export const PaginatedIdentityProviderConfigList = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList =
-  string[];
+  ReadonlyArray<string>;
 export const IdentityProviderConfigsPartialUpdateRequestIdJagAllowedClientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1128,24 +951,14 @@ export interface IdentityProviderConfigsPartialUpdateRequest {
   id: string;
   /** Display name for this IdP configuration (e.g. 'Okta production'). */
   name?: string;
-  created_at?: string;
-  updated_at?: string;
-  /** Whether SAML is fully configured on this config. */
-  has_saml?: boolean;
   /** SAML IdP entity ID (issuer). */
   saml_entity_id?: string | null;
   /** SAML single sign-on (ACS) URL the IdP redirects to. */
   saml_acs_url?: string | null;
   /** SAML IdP X.509 signing certificate (PEM). */
   saml_x509_cert?: string | null;
-  /** Whether SCIM is enabled and a bearer token is set on this config. */
-  has_scim?: boolean;
   /** Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token. */
   scim_enabled?: boolean;
-  /** Plaintext SCIM bearer token. Only returned once, immediately after SCIM is enabled or the token is regenerated; null otherwise. */
-  scim_bearer_token?: string | null;
-  /** Whether ID-JAG (XAA) is configured on this config. */
-  has_id_jag?: boolean;
   /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG. */
   id_jag_issuer_url?: string | null;
   /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
@@ -1159,16 +972,10 @@ export const IdentityProviderConfigsPartialUpdateRequest =
       organization_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
       name: S.optional(S.String),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
-      has_saml: S.optional(S.Boolean),
       saml_entity_id: S.optional(S.NullOr(S.String)),
       saml_acs_url: S.optional(S.NullOr(S.String)),
       saml_x509_cert: S.optional(S.NullOr(S.String)),
-      has_scim: S.optional(S.Boolean),
       scim_enabled: S.optional(S.Boolean),
-      scim_bearer_token: S.optional(S.NullOr(S.String)),
-      has_id_jag: S.optional(S.Boolean),
       id_jag_issuer_url: S.optional(S.NullOr(S.String)),
       id_jag_jwks_url: S.optional(S.NullOr(S.String)),
       id_jag_allowed_clients: S.optional(
@@ -1246,7 +1053,7 @@ export const SCIMTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed ID-JAG client IDs. Empty list allows any client_id. */
 export type IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList =
-  string[];
+  ReadonlyArray<string>;
 export const IdentityProviderConfigsUpdateRequestIdJagAllowedClientsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1259,24 +1066,14 @@ export interface IdentityProviderConfigsUpdateRequest {
   id: string;
   /** Display name for this IdP configuration (e.g. 'Okta production'). */
   name?: string;
-  created_at: string;
-  updated_at: string;
-  /** Whether SAML is fully configured on this config. */
-  has_saml: boolean;
   /** SAML IdP entity ID (issuer). */
   saml_entity_id?: string | null;
   /** SAML single sign-on (ACS) URL the IdP redirects to. */
   saml_acs_url?: string | null;
   /** SAML IdP X.509 signing certificate (PEM). */
   saml_x509_cert?: string | null;
-  /** Whether SCIM is enabled and a bearer token is set on this config. */
-  has_scim: boolean;
   /** Whether SCIM provisioning is enabled. Setting this true generates a bearer token (returned once); setting it false clears the token. */
   scim_enabled?: boolean;
-  /** Plaintext SCIM bearer token. Only returned once, immediately after SCIM is enabled or the token is regenerated; null otherwise. */
-  scim_bearer_token: string | null;
-  /** Whether ID-JAG (XAA) is configured on this config. */
-  has_id_jag: boolean;
   /** Trusted IdP issuer URL for ID-JAG (XAA). Required to enable ID-JAG. */
   id_jag_issuer_url?: string | null;
   /** Override JWKS URL. Defaults to OIDC discovery on the issuer URL. */
@@ -1290,16 +1087,10 @@ export const IdentityProviderConfigsUpdateRequest = /*@__PURE__*/ S.suspend(
       organization_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
       name: S.optional(S.String),
-      created_at: S.String,
-      updated_at: S.String,
-      has_saml: S.Boolean,
       saml_entity_id: S.optional(S.NullOr(S.String)),
       saml_acs_url: S.optional(S.NullOr(S.String)),
       saml_x509_cert: S.optional(S.NullOr(S.String)),
-      has_scim: S.Boolean,
       scim_enabled: S.optional(S.Boolean),
-      scim_bearer_token: S.NullOr(S.String),
-      has_id_jag: S.Boolean,
       id_jag_issuer_url: S.optional(S.NullOr(S.String)),
       id_jag_jwks_url: S.optional(S.NullOr(S.String)),
       id_jag_allowed_clients: S.optional(
@@ -1316,33 +1107,17 @@ export const IdentityProviderConfigsUpdateRequest = /*@__PURE__*/ S.suspend(
   identifier: "IdentityProviderConfigsUpdateRequest",
 }) as any as S.Schema<IdentityProviderConfigsUpdateRequest>;
 
-/** * `vercel` - Vercel */
-export type OrganizationIntegrationKindEnum = "vercel" | (string & {});
-export const OrganizationIntegrationKindEnum = /*@__PURE__*/ S.String;
-
 export interface IntegrationsEnvironmentMappingPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this organization integration. */
   id: string;
-  kind?: OrganizationIntegrationKindEnum;
-  integration_id?: string | null;
-  config?: unknown;
-  created_at?: string;
-  updated_at?: string;
-  created_by?: UserBasic;
 }
 export const IntegrationsEnvironmentMappingPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      kind: S.optional(OrganizationIntegrationKindEnum),
-      integration_id: S.optional(S.NullOr(S.String)),
-      config: S.optional(S.Unknown),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1354,6 +1129,10 @@ export const IntegrationsEnvironmentMappingPartialUpdateRequest =
     identifier: "IntegrationsEnvironmentMappingPartialUpdateRequest",
   }) as any as S.Schema<IntegrationsEnvironmentMappingPartialUpdateRequest>;
 
+/** * `vercel` - Vercel */
+export type OrganizationIntegrationKindEnum = "vercel";
+export const OrganizationIntegrationKindEnum = /*@__PURE__*/ S.String;
+
 /** Serializer for organization-level integrations. */
 export interface OrganizationIntegration {
   id?: string;
@@ -1362,7 +1141,7 @@ export interface OrganizationIntegration {
   config?: unknown;
   created_at?: string;
   updated_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
 }
 export const OrganizationIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1372,25 +1151,22 @@ export const OrganizationIntegration = /*@__PURE__*/ S.suspend(() =>
     config: S.optional(S.Unknown),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
   }),
 ).annotate({
   identifier: "OrganizationIntegration",
 }) as any as S.Schema<OrganizationIntegration>;
 
+/** * `1` - member * `8` - administrator * `15` - owner */
+export type OrganizationMembershipLevelEnum = 1 | 8 | 15;
+export const OrganizationMembershipLevelEnum = /*@__PURE__*/ S.Number;
+
 export interface InvitesBulkCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
-  id?: string;
   target_email?: string;
   first_name?: string;
-  emailing_attempt_made?: boolean;
-  level?: number;
-  /** Check if invite is older than INVITE_DAYS_VALIDITY days. */
-  is_expired?: boolean;
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string;
+  level?: OrganizationMembershipLevelEnum;
   message?: string | null;
   /** List of team IDs and corresponding access levels to private projects. */
   private_project_access?: unknown;
@@ -1400,15 +1176,9 @@ export interface InvitesBulkCreateRequest {
 export const InvitesBulkCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     target_email: S.optional(S.String),
     first_name: S.optional(S.String),
-    emailing_attempt_made: S.optional(S.Boolean),
-    level: S.optional(S.Number),
-    is_expired: S.optional(S.Boolean),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
+    level: S.optional(OrganizationMembershipLevelEnum),
     message: S.optional(S.NullOr(S.String)),
     private_project_access: S.optional(S.Unknown),
     send_email: S.optional(S.Boolean),
@@ -1434,16 +1204,9 @@ export const InvitesBulkCreateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface InvitesCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
-  id?: string;
   target_email?: string;
   first_name?: string;
-  emailing_attempt_made?: boolean;
-  level?: number;
-  /** Check if invite is older than INVITE_DAYS_VALIDITY days. */
-  is_expired?: boolean;
-  created_by?: UserBasic;
-  created_at?: string;
-  updated_at?: string;
+  level?: OrganizationMembershipLevelEnum;
   message?: string | null;
   /** List of team IDs and corresponding access levels to private projects. */
   private_project_access?: unknown;
@@ -1453,15 +1216,9 @@ export interface InvitesCreateRequest {
 export const InvitesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     target_email: S.optional(S.String),
     first_name: S.optional(S.String),
-    emailing_attempt_made: S.optional(S.Boolean),
-    level: S.optional(S.Number),
-    is_expired: S.optional(S.Boolean),
-    created_by: S.optional(UserBasic),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
+    level: S.optional(OrganizationMembershipLevelEnum),
     message: S.optional(S.NullOr(S.String)),
     private_project_access: S.optional(S.Unknown),
     send_email: S.optional(S.Boolean),
@@ -1477,42 +1234,38 @@ export const InvitesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvitesCreateRequest",
 }) as any as S.Schema<InvitesCreateRequest>;
 
-export interface OrganizationInvite {
+export interface OrganizationInviteOutput {
   id?: string;
   target_email?: string;
   first_name?: string;
   emailing_attempt_made?: boolean;
-  level?: number;
+  level?: OrganizationMembershipLevelEnum;
   /** Check if invite is older than INVITE_DAYS_VALIDITY days. */
   is_expired?: boolean;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   created_at?: string;
   updated_at?: string;
   message?: string | null;
   /** List of team IDs and corresponding access levels to private projects. */
   private_project_access?: unknown;
-  send_email?: boolean;
-  combine_pending_invites?: boolean;
 }
-export const OrganizationInvite = /*@__PURE__*/ S.suspend(() =>
+export const OrganizationInviteOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     target_email: S.optional(S.String),
     first_name: S.optional(S.String),
     emailing_attempt_made: S.optional(S.Boolean),
-    level: S.optional(S.Number),
+    level: S.optional(OrganizationMembershipLevelEnum),
     is_expired: S.optional(S.Boolean),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
     message: S.optional(S.NullOr(S.String)),
     private_project_access: S.optional(S.Unknown),
-    send_email: S.optional(S.Boolean),
-    combine_pending_invites: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "OrganizationInvite",
-}) as any as S.Schema<OrganizationInvite>;
+  identifier: "OrganizationInviteOutput",
+}) as any as S.Schema<OrganizationInviteOutput>;
 
 export interface InvitesDelegateCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -1593,30 +1346,33 @@ export const InvitesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InvitesListRequest",
 }) as any as S.Schema<InvitesListRequest>;
 
-export type PaginatedOrganizationInviteListResultsList = OrganizationInvite[];
-export const PaginatedOrganizationInviteListResultsList = /*@__PURE__*/ S.Array(
-  OrganizationInvite,
-) as any as S.Schema<PaginatedOrganizationInviteListResultsList>;
+export type PaginatedOrganizationInviteListOutputResultsList =
+  ReadonlyArray<OrganizationInviteOutput>;
+export const PaginatedOrganizationInviteListOutputResultsList =
+  /*@__PURE__*/ S.Array(
+    OrganizationInviteOutput,
+  ) as any as S.Schema<PaginatedOrganizationInviteListOutputResultsList>;
 
-export interface PaginatedOrganizationInviteList {
+export interface PaginatedOrganizationInviteListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
-  results?: PaginatedOrganizationInviteListResultsList;
+  results?: PaginatedOrganizationInviteListOutputResultsList;
 }
-export const PaginatedOrganizationInviteList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedOrganizationInviteListResultsList),
-  }),
+export const PaginatedOrganizationInviteListOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      count: S.optional(S.Number),
+      next: S.optional(S.NullOr(S.String)),
+      previous: S.optional(S.NullOr(S.String)),
+      results: S.optional(PaginatedOrganizationInviteListOutputResultsList),
+    }),
 ).annotate({
-  identifier: "PaginatedOrganizationInviteList",
-}) as any as S.Schema<PaginatedOrganizationInviteList>;
+  identifier: "PaginatedOrganizationInviteListOutput",
+}) as any as S.Schema<PaginatedOrganizationInviteListOutput>;
 
 /** * `BAA` - BAA * `DPA` - DPA */
-export type CreateLegalDocumentDocumentTypeEnum = "BAA" | "DPA" | (string & {});
+export type CreateLegalDocumentDocumentTypeEnum = "BAA" | "DPA";
 export const CreateLegalDocumentDocumentTypeEnum = /*@__PURE__*/ S.String;
 
 export interface LegalDocumentsCreateRequest {
@@ -1765,7 +1521,8 @@ export const LegalDocumentsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LegalDocumentsListRequest",
 }) as any as S.Schema<LegalDocumentsListRequest>;
 
-export type PaginatedLegalDocumentDTOListResultsList = LegalDocumentDTO[];
+export type PaginatedLegalDocumentDTOListResultsList =
+  ReadonlyArray<LegalDocumentDTO>;
 export const PaginatedLegalDocumentDTOListResultsList = /*@__PURE__*/ S.Array(
   LegalDocumentDTO,
 ) as any as S.Schema<PaginatedLegalDocumentDTOListResultsList>;
@@ -1820,7 +1577,7 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.Http({ method: "GET", uri: "/api/organizations/", code: 200 })),
 ).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
 
-export type PaginatedOrganizationListResultsList = Organization[];
+export type PaginatedOrganizationListResultsList = ReadonlyArray<Organization>;
 export const PaginatedOrganizationListResultsList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<PaginatedOrganizationListResultsList>;
@@ -1901,10 +1658,7 @@ export const OrganizationMemberGithubLogin = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationMemberGithubLogin",
 }) as any as S.Schema<OrganizationMemberGithubLogin>;
 
-export type MembersListRequestOrder =
-  | "-joined_at"
-  | "joined_at"
-  | (string & {});
+export type MembersListRequestOrder = "-joined_at" | "joined_at";
 export const MembersListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface MembersListRequest {
@@ -1937,13 +1691,13 @@ export const MembersListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MembersListRequest",
 }) as any as S.Schema<MembersListRequest>;
 
-export type SearchMatchTypeEnum = "exact" | "similar" | (string & {});
+export type SearchMatchTypeEnum = "exact" | "similar";
 export const SearchMatchTypeEnum = /*@__PURE__*/ S.String;
 
 export interface OrganizationMember {
   id?: string;
-  user?: UserBasic;
-  level?: number;
+  user?: UserBasic | null;
+  level?: OrganizationMembershipLevelEnum;
   joined_at?: string;
   updated_at?: string;
   is_2fa_enabled?: boolean;
@@ -1955,8 +1709,8 @@ export interface OrganizationMember {
 export const OrganizationMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    user: S.optional(UserBasic),
-    level: S.optional(S.Number),
+    user: S.optional(S.NullOr(UserBasic)),
+    level: S.optional(OrganizationMembershipLevelEnum),
     joined_at: S.optional(S.String),
     updated_at: S.optional(S.String),
     is_2fa_enabled: S.optional(S.Boolean),
@@ -1968,7 +1722,8 @@ export const OrganizationMember = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationMember",
 }) as any as S.Schema<OrganizationMember>;
 
-export type PaginatedOrganizationMemberListResultsList = OrganizationMember[];
+export type PaginatedOrganizationMemberListResultsList =
+  ReadonlyArray<OrganizationMember>;
 export const PaginatedOrganizationMemberListResultsList = /*@__PURE__*/ S.Array(
   OrganizationMember,
 ) as any as S.Schema<PaginatedOrganizationMemberListResultsList>;
@@ -1994,30 +1749,13 @@ export interface MembersPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   user__uuid: string;
-  id?: string;
-  user?: UserBasic;
-  level?: number;
-  joined_at?: string;
-  updated_at?: string;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  last_login?: string;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
+  level?: OrganizationMembershipLevelEnum;
 }
 export const MembersPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     user__uuid: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    user: S.optional(UserBasic),
-    level: S.optional(S.Number),
-    joined_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    is_2fa_enabled: S.optional(S.Boolean),
-    has_social_auth: S.optional(S.Boolean),
-    last_login: S.optional(S.String),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
+    level: S.optional(OrganizationMembershipLevelEnum),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2053,30 +1791,13 @@ export interface MembersUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   user__uuid: string;
-  id?: string;
-  user?: UserBasic;
-  level?: number;
-  joined_at?: string;
-  updated_at?: string;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  last_login?: string;
-  /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`. */
-  search_match_type?: SearchMatchTypeEnum | null;
+  level?: OrganizationMembershipLevelEnum;
 }
 export const MembersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     user__uuid: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    user: S.optional(UserBasic),
-    level: S.optional(S.Number),
-    joined_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    is_2fa_enabled: S.optional(S.Boolean),
-    has_social_auth: S.optional(S.Boolean),
-    last_login: S.optional(S.String),
-    search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
+    level: S.optional(OrganizationMembershipLevelEnum),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2112,7 +1833,8 @@ export const OauthApplicationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "OauthApplicationsListRequest",
 }) as any as S.Schema<OauthApplicationsListRequest>;
 
-export type OrganizationOAuthApplicationRedirectUrisListList = string[];
+export type OrganizationOAuthApplicationRedirectUrisListList =
+  ReadonlyArray<string>;
 export const OrganizationOAuthApplicationRedirectUrisListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2146,7 +1868,7 @@ export const OrganizationOAuthApplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationOAuthApplication>;
 
 export type PaginatedOrganizationOAuthApplicationListResultsList =
-  OrganizationOAuthApplication[];
+  ReadonlyArray<OrganizationOAuthApplication>;
 export const PaginatedOrganizationOAuthApplicationListResultsList =
   /*@__PURE__*/ S.Array(
     OrganizationOAuthApplication,
@@ -2201,12 +1923,12 @@ export const ProjectBackwardCompatGroupTypesItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectBackwardCompatGroupTypesItemMap>;
 
 export type ProjectBackwardCompatGroupTypesList =
-  ProjectBackwardCompatGroupTypesItemMap[];
+  ReadonlyArray<ProjectBackwardCompatGroupTypesItemMap>;
 export const ProjectBackwardCompatGroupTypesList = /*@__PURE__*/ S.Array(
   ProjectBackwardCompatGroupTypesItemMap,
 ) as any as S.Schema<ProjectBackwardCompatGroupTypesList>;
 
-export type ProjectBackwardCompatAppUrlsList = string[];
+export type ProjectBackwardCompatAppUrlsList = ReadonlyArray<string>;
 export const ProjectBackwardCompatAppUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectBackwardCompatAppUrlsList>;
@@ -2808,54 +2530,53 @@ export type TimezoneEnum =
   | "Universal"
   | "W-SU"
   | "WET"
-  | "Zulu"
-  | (string & {});
+  | "Zulu";
 export const TimezoneEnum = /*@__PURE__*/ S.String;
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
-export type ProjectBackwardCompatPersonDisplayNamePropertiesList = string[];
+export type ProjectBackwardCompatPersonDisplayNamePropertiesList =
+  ReadonlyArray<string>;
 export const ProjectBackwardCompatPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectBackwardCompatPersonDisplayNamePropertiesList>;
 
 export type ProjectBackwardCompatSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const ProjectBackwardCompatSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<ProjectBackwardCompatSessionRecordingUrlTriggerConfigList>;
 
 export type ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<ProjectBackwardCompatSessionRecordingUrlBlocklistConfigList>;
 
 export type ProjectBackwardCompatSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const ProjectBackwardCompatSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProjectBackwardCompatSessionRecordingEventTriggerConfigList>;
 
 /** * `30d` - 30 Days * `90d` - 90 Days * `1y` - 1 Year * `5y` - 5 Years */
-export type SessionRecordingRetentionPeriodEnum =
-  | "30d"
-  | "90d"
-  | "1y"
-  | "5y"
-  | (string & {});
+export type SessionRecordingRetentionPeriodEnum = "30d" | "90d" | "1y" | "5y";
 export const SessionRecordingRetentionPeriodEnum = /*@__PURE__*/ S.String;
 
-export type ProjectBackwardCompatLiveEventsColumnsList = string[];
+/** * `0` - Sunday * `1` - Monday */
+export type WeekStartDayEnum = 0 | 1;
+export const WeekStartDayEnum = /*@__PURE__*/ S.Number;
+
+export type ProjectBackwardCompatLiveEventsColumnsList = ReadonlyArray<string>;
 export const ProjectBackwardCompatLiveEventsColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectBackwardCompatLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
-export type ProjectBackwardCompatRecordingDomainsList = string[];
+export type ProjectBackwardCompatRecordingDomainsList = ReadonlyArray<string>;
 export const ProjectBackwardCompatRecordingDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectBackwardCompatRecordingDomainsList>;
@@ -2887,13 +2608,13 @@ export const ProjectBackwardCompatProductIntentsItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProjectBackwardCompatProductIntentsItem>;
 
 export type ProjectBackwardCompatProductIntentsList =
-  ProjectBackwardCompatProductIntentsItem[];
+  ReadonlyArray<ProjectBackwardCompatProductIntentsItem>;
 export const ProjectBackwardCompatProductIntentsList = /*@__PURE__*/ S.Array(
   ProjectBackwardCompatProductIntentsItem,
 ) as any as S.Schema<ProjectBackwardCompatProductIntentsList>;
 
 /** * `b2b` - B2B * `b2c` - B2C * `other` - Other */
-export type BusinessModelEnum = "b2b" | "b2c" | "other" | (string & {});
+export type BusinessModelEnum = "b2b" | "b2c" | "other";
 export const BusinessModelEnum = /*@__PURE__*/ S.String;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
@@ -2971,12 +2692,11 @@ export type AvailableSetupTaskIdsEnum =
   | "use_posthog_ai"
   | "use_posthog_code"
   | "use_posthog_mcp"
-  | "use_posthog_in_slack"
-  | (string & {});
+  | "use_posthog_in_slack";
 export const AvailableSetupTaskIdsEnum = /*@__PURE__*/ S.String;
 
 export type ProjectBackwardCompatAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
+  ReadonlyArray<AvailableSetupTaskIdsEnum>;
 export const ProjectBackwardCompatAvailableSetupTaskIdsList =
   /*@__PURE__*/ S.Array(
     AvailableSetupTaskIdsEnum,
@@ -3143,8 +2863,7 @@ export type BaseCurrencyEnum =
   | "XPF"
   | "YER"
   | "ZAR"
-  | "ZMW"
-  | (string & {});
+  | "ZMW";
 export const BaseCurrencyEnum = /*@__PURE__*/ S.String;
 
 export interface TeamRevenueAnalyticsConfig {
@@ -3170,8 +2889,7 @@ export type AttributionModeEnum =
   | "last_touch"
   | "linear"
   | "time_decay"
-  | "position_based"
-  | (string & {});
+  | "position_based";
 export const AttributionModeEnum = /*@__PURE__*/ S.String;
 
 export interface TeamMarketingAnalyticsConfig {
@@ -3236,6 +2954,10 @@ export const TeamWorkflowsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "TeamWorkflowsConfig",
 }) as any as S.Schema<TeamWorkflowsConfig>;
 
+/** * `0` - Disabled * `1` - Stateless * `2` - Stateful */
+export type CookielessServerHashModeEnum = 0 | 1 | 2;
+export const CookielessServerHashModeEnum = /*@__PURE__*/ S.Number;
+
 /** Mixin for serializers to add user access control fields */
 export interface ProjectBackwardCompat {
   id?: number;
@@ -3245,7 +2967,7 @@ export interface ProjectBackwardCompat {
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
   created_at?: string;
-  effective_membership_level?: number;
+  effective_membership_level?: EffectiveMembershipLevelEnum;
   has_group_types?: boolean;
   group_types?: ProjectBackwardCompatGroupTypesList;
   live_events_token?: string | null;
@@ -3304,7 +3026,7 @@ export interface ProjectBackwardCompat {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: ProjectBackwardCompatLiveEventsColumnsList | null;
@@ -3348,7 +3070,7 @@ export interface ProjectBackwardCompat {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -3371,7 +3093,7 @@ export const ProjectBackwardCompat = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     product_description: S.optional(S.NullOr(S.String)),
     created_at: S.optional(S.String),
-    effective_membership_level: S.optional(S.Number),
+    effective_membership_level: S.optional(EffectiveMembershipLevelEnum),
     has_group_types: S.optional(S.Boolean),
     group_types: S.optional(ProjectBackwardCompatGroupTypesList),
     live_events_token: S.optional(S.NullOr(S.String)),
@@ -3424,7 +3146,7 @@ export const ProjectBackwardCompat = /*@__PURE__*/ S.suspend(() =>
     session_replay_config: S.optional(S.Unknown),
     survey_config: S.optional(S.Unknown),
     access_control: S.optional(S.Boolean),
-    week_start_day: S.optional(S.NullOr(S.Number)),
+    week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
     primary_dashboard: S.optional(S.NullOr(S.Number)),
     live_events_columns: S.optional(
       S.NullOr(ProjectBackwardCompatLiveEventsColumnsList),
@@ -3463,7 +3185,9 @@ export const ProjectBackwardCompat = /*@__PURE__*/ S.suspend(() =>
     workflows_config: S.optional(TeamWorkflowsConfig),
     base_currency: S.optional(BaseCurrencyEnum),
     capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-    cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+    cookieless_server_hash_mode: S.optional(
+      S.NullOr(CookielessServerHashModeEnum),
+    ),
     human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
     feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
     feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -3481,23 +3205,8 @@ export const ProjectBackwardCompat = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectBackwardCompat",
 }) as any as S.Schema<ProjectBackwardCompat>;
 
-export type OrganizationsProjectsAddProductIntentPartialUpdateRequestGroupTypesItemMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsAddProductIntentPartialUpdateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsAddProductIntentPartialUpdateRequestGroupTypesList =
-  OrganizationsProjectsAddProductIntentPartialUpdateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsAddProductIntentPartialUpdateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsAddProductIntentPartialUpdateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestGroupTypesList>;
-
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3505,35 +3214,35 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsLis
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3541,45 +3250,11 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEvents
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsAddProductIntentPartialUpdateRequestDefaultModifiersMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsAddProductIntentPartialUpdateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsAddProductIntentPartialUpdateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsAddProductIntentPartialUpdateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OrganizationsProjectsAddProductIntentPartialUpdateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsAddProductIntentPartialUpdateRequestProductIntentsList =
-  OrganizationsProjectsAddProductIntentPartialUpdateRequestProductIntentsItem[];
-export const OrganizationsProjectsAddProductIntentPartialUpdateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsAddProductIntentPartialUpdateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel =
@@ -3587,44 +3262,19 @@ export type OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessMod
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel>;
 
-export type OrganizationsProjectsAddProductIntentPartialUpdateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsAddProductIntentPartialUpdateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsAddProductIntentPartialUpdateRequestManagedViewsetsMap =
-  { [key: string]: boolean | undefined };
-export const OrganizationsProjectsAddProductIntentPartialUpdateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsAddProductIntentPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsAddProductIntentPartialUpdateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -3672,27 +3322,22 @@ export interface OrganizationsProjectsAddProductIntentPartialUpdateRequest {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsAddProductIntentPartialUpdateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsAddProductIntentPartialUpdateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsAddProductIntentPartialUpdateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsAddProductIntentPartialUpdateRequestBusinessModel | null;
@@ -3701,14 +3346,6 @@ export interface OrganizationsProjectsAddProductIntentPartialUpdateRequest {
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsAddProductIntentPartialUpdateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsAddProductIntentPartialUpdateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -3716,7 +3353,7 @@ export interface OrganizationsProjectsAddProductIntentPartialUpdateRequest {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -3727,35 +3364,19 @@ export interface OrganizationsProjectsAddProductIntentPartialUpdateRequest {
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsAddProductIntentPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsAddProductIntentPartialUpdateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsAddProductIntentPartialUpdateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -3808,7 +3429,7 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateRequest =
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -3820,22 +3441,13 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateRequest =
           OrganizationsProjectsAddProductIntentPartialUpdateRequestRecordingDomainsList,
         ),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsAddProductIntentPartialUpdateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsAddProductIntentPartialUpdateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(
@@ -3846,22 +3458,15 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateRequest =
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsAddProductIntentPartialUpdateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsAddProductIntentPartialUpdateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -3872,8 +3477,6 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateRequest =
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -3885,23 +3488,8 @@ export const OrganizationsProjectsAddProductIntentPartialUpdateRequest =
     identifier: "OrganizationsProjectsAddProductIntentPartialUpdateRequest",
   }) as any as S.Schema<OrganizationsProjectsAddProductIntentPartialUpdateRequest>;
 
-export type OrganizationsProjectsChangeOrganizationCreateRequestGroupTypesItemMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsChangeOrganizationCreateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsChangeOrganizationCreateRequestGroupTypesList =
-  OrganizationsProjectsChangeOrganizationCreateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsChangeOrganizationCreateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsChangeOrganizationCreateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestGroupTypesList>;
-
 export type OrganizationsProjectsChangeOrganizationCreateRequestAppUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3909,35 +3497,35 @@ export const OrganizationsProjectsChangeOrganizationCreateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsChangeOrganizationCreateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsChangeOrganizationCreateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3945,45 +3533,11 @@ export const OrganizationsProjectsChangeOrganizationCreateRequestLiveEventsColum
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsChangeOrganizationCreateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsChangeOrganizationCreateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsChangeOrganizationCreateRequestDefaultModifiersMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsChangeOrganizationCreateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsChangeOrganizationCreateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsChangeOrganizationCreateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OrganizationsProjectsChangeOrganizationCreateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsChangeOrganizationCreateRequestProductIntentsList =
-  OrganizationsProjectsChangeOrganizationCreateRequestProductIntentsItem[];
-export const OrganizationsProjectsChangeOrganizationCreateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsChangeOrganizationCreateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsChangeOrganizationCreateRequestBusinessModel =
@@ -3992,44 +3546,19 @@ export type OrganizationsProjectsChangeOrganizationCreateRequestBusinessModel =
 export const OrganizationsProjectsChangeOrganizationCreateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestBusinessModel>;
 
-export type OrganizationsProjectsChangeOrganizationCreateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsChangeOrganizationCreateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsChangeOrganizationCreateRequestManagedViewsetsMap =
-  { [key: string]: boolean | undefined };
-export const OrganizationsProjectsChangeOrganizationCreateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsChangeOrganizationCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsChangeOrganizationCreateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsChangeOrganizationCreateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -4077,27 +3606,22 @@ export interface OrganizationsProjectsChangeOrganizationCreateRequest {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsChangeOrganizationCreateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsChangeOrganizationCreateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsChangeOrganizationCreateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsChangeOrganizationCreateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsChangeOrganizationCreateRequestBusinessModel | null;
@@ -4106,14 +3630,6 @@ export interface OrganizationsProjectsChangeOrganizationCreateRequest {
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsChangeOrganizationCreateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsChangeOrganizationCreateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -4121,7 +3637,7 @@ export interface OrganizationsProjectsChangeOrganizationCreateRequest {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -4132,35 +3648,19 @@ export interface OrganizationsProjectsChangeOrganizationCreateRequest {
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsChangeOrganizationCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsChangeOrganizationCreateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsChangeOrganizationCreateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -4213,7 +3713,7 @@ export const OrganizationsProjectsChangeOrganizationCreateRequest =
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -4225,22 +3725,13 @@ export const OrganizationsProjectsChangeOrganizationCreateRequest =
           OrganizationsProjectsChangeOrganizationCreateRequestRecordingDomainsList,
         ),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsChangeOrganizationCreateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsChangeOrganizationCreateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(
@@ -4251,22 +3742,15 @@ export const OrganizationsProjectsChangeOrganizationCreateRequest =
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsChangeOrganizationCreateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsChangeOrganizationCreateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -4277,8 +3761,6 @@ export const OrganizationsProjectsChangeOrganizationCreateRequest =
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -4290,23 +3772,8 @@ export const OrganizationsProjectsChangeOrganizationCreateRequest =
     identifier: "OrganizationsProjectsChangeOrganizationCreateRequest",
   }) as any as S.Schema<OrganizationsProjectsChangeOrganizationCreateRequest>;
 
-export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestGroupTypesItemMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestGroupTypesList =
-  OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestGroupTypesList>;
-
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestAppUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4314,35 +3781,35 @@ export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestA
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4350,45 +3817,11 @@ export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestL
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestDefaultModifiersMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestProductIntentsList =
-  OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestProductIntentsItem[];
-export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestBusinessModel =
@@ -4396,44 +3829,19 @@ export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestBu
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestBusinessModel>;
 
-export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestManagedViewsetsMap =
-  { [key: string]: boolean | undefined };
-export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -4481,27 +3889,22 @@ export interface OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequ
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestBusinessModel | null;
@@ -4510,14 +3913,6 @@ export interface OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequ
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -4525,7 +3920,7 @@ export interface OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequ
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -4536,35 +3931,19 @@ export interface OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequ
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -4617,7 +3996,7 @@ export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest 
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -4629,22 +4008,13 @@ export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest 
           OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestRecordingDomainsList,
         ),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(
@@ -4655,22 +4025,15 @@ export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest 
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -4681,8 +4044,6 @@ export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest 
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -4695,23 +4056,8 @@ export const OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest 
       "OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest",
   }) as any as S.Schema<OrganizationsProjectsCompleteProductOnboardingPartialUpdateRequest>;
 
-export type OrganizationsProjectsCreateRequestGroupTypesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const OrganizationsProjectsCreateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsCreateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsCreateRequestGroupTypesList =
-  OrganizationsProjectsCreateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsCreateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsCreateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsCreateRequestGroupTypesList>;
-
-export type OrganizationsProjectsCreateRequestAppUrlsList = string[];
+export type OrganizationsProjectsCreateRequestAppUrlsList =
+  ReadonlyArray<string>;
 export const OrganizationsProjectsCreateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4719,79 +4065,47 @@ export const OrganizationsProjectsCreateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsCreateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsCreateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsCreateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsCreateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsCreateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsCreateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsCreateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsCreateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsCreateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsCreateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsCreateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsCreateRequestSessionRecordingEventTriggerConfigList>;
 
-export type OrganizationsProjectsCreateRequestLiveEventsColumnsList = string[];
+export type OrganizationsProjectsCreateRequestLiveEventsColumnsList =
+  ReadonlyArray<string>;
 export const OrganizationsProjectsCreateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsCreateRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
-export type OrganizationsProjectsCreateRequestRecordingDomainsList = string[];
+export type OrganizationsProjectsCreateRequestRecordingDomainsList =
+  ReadonlyArray<string>;
 export const OrganizationsProjectsCreateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsCreateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsCreateRequestDefaultModifiersMap = {
-  [key: string]: unknown | undefined;
-};
-export const OrganizationsProjectsCreateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsCreateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsCreateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsCreateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OrganizationsProjectsCreateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsCreateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsCreateRequestProductIntentsList =
-  OrganizationsProjectsCreateRequestProductIntentsItem[];
-export const OrganizationsProjectsCreateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsCreateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsCreateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsCreateRequestBusinessModel =
@@ -4800,44 +4114,17 @@ export type OrganizationsProjectsCreateRequestBusinessModel =
 export const OrganizationsProjectsCreateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsCreateRequestBusinessModel>;
 
-export type OrganizationsProjectsCreateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsCreateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsCreateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsCreateRequestManagedViewsetsMap = {
-  [key: string]: boolean | undefined;
-};
-export const OrganizationsProjectsCreateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsCreateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
-  id?: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsCreateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsCreateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -4885,27 +4172,22 @@ export interface OrganizationsProjectsCreateRequest {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsCreateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsCreateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsCreateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsCreateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsCreateRequestBusinessModel | null;
@@ -4914,14 +4196,6 @@ export interface OrganizationsProjectsCreateRequest {
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsCreateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsCreateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -4929,7 +4203,7 @@ export interface OrganizationsProjectsCreateRequest {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -4940,30 +4214,15 @@ export interface OrganizationsProjectsCreateRequest {
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
-    id: S.optional(S.Number),
-    organization: S.optional(S.String),
     name: S.optional(S.String),
     product_description: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    effective_membership_level: S.optional(S.Number),
-    has_group_types: S.optional(S.Boolean),
-    group_types: S.optional(OrganizationsProjectsCreateRequestGroupTypesList),
-    live_events_token: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.NullOr(S.String)),
-    uuid: S.optional(S.String),
-    api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
     app_urls: S.optional(OrganizationsProjectsCreateRequestAppUrlsList),
     anonymize_ips: S.optional(S.Boolean),
     completed_snippet_onboarding: S.optional(S.Boolean),
-    ingested_event: S.optional(S.Boolean),
     test_account_filters: S.optional(S.Unknown),
     test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
     path_cleaning_filters: S.optional(S.Unknown),
@@ -5014,7 +4273,7 @@ export const OrganizationsProjectsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     session_replay_config: S.optional(S.Unknown),
     survey_config: S.optional(S.Unknown),
     access_control: S.optional(S.Boolean),
-    week_start_day: S.optional(S.NullOr(S.Number)),
+    week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
     primary_dashboard: S.optional(S.NullOr(S.Number)),
     live_events_columns: S.optional(
       S.NullOr(OrganizationsProjectsCreateRequestLiveEventsColumnsList),
@@ -5022,22 +4281,13 @@ export const OrganizationsProjectsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     recording_domains: S.optional(
       S.NullOr(OrganizationsProjectsCreateRequestRecordingDomainsList),
     ),
-    person_on_events_querying_enabled: S.optional(S.Boolean),
     inject_web_apps: S.optional(S.NullOr(S.Boolean)),
     extra_settings: S.optional(S.Unknown),
     modifiers: S.optional(S.Unknown),
-    default_modifiers: S.optional(
-      OrganizationsProjectsCreateRequestDefaultModifiersMap,
-    ),
     has_completed_onboarding_for: S.optional(S.Unknown),
     surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
     heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-    product_intents: S.optional(
-      OrganizationsProjectsCreateRequestProductIntentsList,
-    ),
     flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-    secret_api_token: S.optional(S.NullOr(S.String)),
-    secret_api_token_backup: S.optional(S.NullOr(S.String)),
     receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
     business_model: S.optional(
       S.NullOr(OrganizationsProjectsCreateRequestBusinessModel),
@@ -5046,22 +4296,15 @@ export const OrganizationsProjectsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     conversations_settings: S.optional(S.Unknown),
     logs_settings: S.optional(S.Unknown),
     proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-    available_setup_task_ids: S.optional(
-      OrganizationsProjectsCreateRequestAvailableSetupTaskIdsList,
-    ),
-    is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-    project_id: S.optional(S.Number),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    managed_viewsets: S.optional(
-      OrganizationsProjectsCreateRequestManagedViewsetsMap,
-    ),
     revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
     marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
     customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
     workflows_config: S.optional(TeamWorkflowsConfig),
     base_currency: S.optional(BaseCurrencyEnum),
     capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-    cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+    cookieless_server_hash_mode: S.optional(
+      S.NullOr(CookielessServerHashModeEnum),
+    ),
     human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
     feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
     feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -5072,8 +4315,6 @@ export const OrganizationsProjectsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     web_analytics_pre_aggregated_tables_enabled: S.optional(
       S.NullOr(S.Boolean),
     ),
-    event_retention_months: S.optional(S.Number),
-    events_retention_enforced: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -5085,23 +4326,8 @@ export const OrganizationsProjectsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationsProjectsCreateRequest",
 }) as any as S.Schema<OrganizationsProjectsCreateRequest>;
 
-export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestGroupTypesItemMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestGroupTypesList =
-  OrganizationsProjectsDefaultEvaluationContextsCreateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsDefaultEvaluationContextsCreateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestGroupTypesList>;
-
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestAppUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5109,35 +4335,35 @@ export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestAppUrlsL
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5145,45 +4371,11 @@ export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestLiveEven
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestDefaultModifiersMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsDefaultEvaluationContextsCreateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OrganizationsProjectsDefaultEvaluationContextsCreateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestProductIntentsList =
-  OrganizationsProjectsDefaultEvaluationContextsCreateRequestProductIntentsItem[];
-export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsDefaultEvaluationContextsCreateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestBusinessModel =
@@ -5191,44 +4383,19 @@ export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestBusinessM
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestBusinessModel>;
 
-export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsDefaultEvaluationContextsCreateRequestManagedViewsetsMap =
-  { [key: string]: boolean | undefined };
-export const OrganizationsProjectsDefaultEvaluationContextsCreateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsDefaultEvaluationContextsCreateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsDefaultEvaluationContextsCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsDefaultEvaluationContextsCreateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsDefaultEvaluationContextsCreateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -5276,27 +4443,22 @@ export interface OrganizationsProjectsDefaultEvaluationContextsCreateRequest {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsDefaultEvaluationContextsCreateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsDefaultEvaluationContextsCreateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsDefaultEvaluationContextsCreateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsDefaultEvaluationContextsCreateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsDefaultEvaluationContextsCreateRequestBusinessModel | null;
@@ -5305,14 +4467,6 @@ export interface OrganizationsProjectsDefaultEvaluationContextsCreateRequest {
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsDefaultEvaluationContextsCreateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsDefaultEvaluationContextsCreateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -5320,7 +4474,7 @@ export interface OrganizationsProjectsDefaultEvaluationContextsCreateRequest {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -5331,35 +4485,19 @@ export interface OrganizationsProjectsDefaultEvaluationContextsCreateRequest {
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsDefaultEvaluationContextsCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsDefaultEvaluationContextsCreateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsDefaultEvaluationContextsCreateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -5412,7 +4550,7 @@ export const OrganizationsProjectsDefaultEvaluationContextsCreateRequest =
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -5424,22 +4562,13 @@ export const OrganizationsProjectsDefaultEvaluationContextsCreateRequest =
           OrganizationsProjectsDefaultEvaluationContextsCreateRequestRecordingDomainsList,
         ),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsDefaultEvaluationContextsCreateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsDefaultEvaluationContextsCreateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(
@@ -5450,22 +4579,15 @@ export const OrganizationsProjectsDefaultEvaluationContextsCreateRequest =
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsDefaultEvaluationContextsCreateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsDefaultEvaluationContextsCreateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -5476,8 +4598,6 @@ export const OrganizationsProjectsDefaultEvaluationContextsCreateRequest =
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -5561,23 +4681,8 @@ export const OrganizationsProjectsDefaultReleaseConditionsRetrieveRequest =
     identifier: "OrganizationsProjectsDefaultReleaseConditionsRetrieveRequest",
   }) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsRetrieveRequest>;
 
-export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestGroupTypesItemMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestGroupTypesList =
-  OrganizationsProjectsDefaultReleaseConditionsUpdateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsDefaultReleaseConditionsUpdateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestGroupTypesList>;
-
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAppUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5585,35 +4690,35 @@ export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAppUrlsLi
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5621,45 +4726,11 @@ export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestLiveEvent
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestDefaultModifiersMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsDefaultReleaseConditionsUpdateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OrganizationsProjectsDefaultReleaseConditionsUpdateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestProductIntentsList =
-  OrganizationsProjectsDefaultReleaseConditionsUpdateRequestProductIntentsItem[];
-export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsDefaultReleaseConditionsUpdateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestBusinessModel =
@@ -5667,44 +4738,19 @@ export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestBusinessMo
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestBusinessModel>;
 
-export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsDefaultReleaseConditionsUpdateRequestManagedViewsetsMap =
-  { [key: string]: boolean | undefined };
-export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsDefaultReleaseConditionsUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsDefaultReleaseConditionsUpdateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -5752,27 +4798,22 @@ export interface OrganizationsProjectsDefaultReleaseConditionsUpdateRequest {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsDefaultReleaseConditionsUpdateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsDefaultReleaseConditionsUpdateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsDefaultReleaseConditionsUpdateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsDefaultReleaseConditionsUpdateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsDefaultReleaseConditionsUpdateRequestBusinessModel | null;
@@ -5781,14 +4822,6 @@ export interface OrganizationsProjectsDefaultReleaseConditionsUpdateRequest {
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsDefaultReleaseConditionsUpdateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -5796,7 +4829,7 @@ export interface OrganizationsProjectsDefaultReleaseConditionsUpdateRequest {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -5807,35 +4840,19 @@ export interface OrganizationsProjectsDefaultReleaseConditionsUpdateRequest {
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsDefaultReleaseConditionsUpdateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -5888,7 +4905,7 @@ export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequest =
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -5900,22 +4917,13 @@ export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequest =
           OrganizationsProjectsDefaultReleaseConditionsUpdateRequestRecordingDomainsList,
         ),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsDefaultReleaseConditionsUpdateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsDefaultReleaseConditionsUpdateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(
@@ -5926,22 +4934,15 @@ export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequest =
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsDefaultReleaseConditionsUpdateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsDefaultReleaseConditionsUpdateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -5952,8 +4953,6 @@ export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequest =
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5965,23 +4964,8 @@ export const OrganizationsProjectsDefaultReleaseConditionsUpdateRequest =
     identifier: "OrganizationsProjectsDefaultReleaseConditionsUpdateRequest",
   }) as any as S.Schema<OrganizationsProjectsDefaultReleaseConditionsUpdateRequest>;
 
-export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesItemMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesList =
-  OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesList>;
-
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5989,35 +4973,35 @@ export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestApp
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6025,45 +5009,11 @@ export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiv
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestDefaultModifiersMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsList =
-  OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsItem[];
-export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel =
@@ -6071,44 +5021,19 @@ export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusi
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel>;
 
-export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestManagedViewsetsMap =
-  { [key: string]: boolean | undefined };
-export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -6156,27 +5081,22 @@ export interface OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateReques
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestBusinessModel | null;
@@ -6185,14 +5105,6 @@ export interface OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateReques
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -6200,7 +5112,7 @@ export interface OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateReques
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -6211,35 +5123,19 @@ export interface OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateReques
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -6292,7 +5188,7 @@ export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest =
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -6304,22 +5200,13 @@ export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest =
           OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestRecordingDomainsList,
         ),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(
@@ -6330,22 +5217,15 @@ export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest =
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -6356,8 +5236,6 @@ export const OrganizationsProjectsDeleteSecretTokenBackupPartialUpdateRequest =
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -6491,23 +5369,8 @@ export const OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest =
       "OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest",
   }) as any as S.Schema<OrganizationsProjectsEventIngestionRestrictionsRetrieveRequest>;
 
-export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestGroupTypesItemMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestGroupTypesList =
-  OrganizationsProjectsExperimentsConfigPartialUpdateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsExperimentsConfigPartialUpdateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestGroupTypesList>;
-
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestAppUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6515,35 +5378,35 @@ export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestAppUrlsLi
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6551,45 +5414,11 @@ export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestLiveEvent
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestDefaultModifiersMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsExperimentsConfigPartialUpdateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OrganizationsProjectsExperimentsConfigPartialUpdateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestProductIntentsList =
-  OrganizationsProjectsExperimentsConfigPartialUpdateRequestProductIntentsItem[];
-export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsExperimentsConfigPartialUpdateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestBusinessModel =
@@ -6597,44 +5426,19 @@ export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestBusinessMo
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestBusinessModel>;
 
-export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsExperimentsConfigPartialUpdateRequestManagedViewsetsMap =
-  { [key: string]: boolean | undefined };
-export const OrganizationsProjectsExperimentsConfigPartialUpdateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsExperimentsConfigPartialUpdateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsExperimentsConfigPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsExperimentsConfigPartialUpdateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsExperimentsConfigPartialUpdateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -6682,27 +5486,22 @@ export interface OrganizationsProjectsExperimentsConfigPartialUpdateRequest {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsExperimentsConfigPartialUpdateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsExperimentsConfigPartialUpdateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsExperimentsConfigPartialUpdateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsExperimentsConfigPartialUpdateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsExperimentsConfigPartialUpdateRequestBusinessModel | null;
@@ -6711,14 +5510,6 @@ export interface OrganizationsProjectsExperimentsConfigPartialUpdateRequest {
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsExperimentsConfigPartialUpdateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsExperimentsConfigPartialUpdateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -6726,7 +5517,7 @@ export interface OrganizationsProjectsExperimentsConfigPartialUpdateRequest {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -6737,35 +5528,19 @@ export interface OrganizationsProjectsExperimentsConfigPartialUpdateRequest {
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsExperimentsConfigPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsExperimentsConfigPartialUpdateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsExperimentsConfigPartialUpdateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -6818,7 +5593,7 @@ export const OrganizationsProjectsExperimentsConfigPartialUpdateRequest =
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -6830,22 +5605,13 @@ export const OrganizationsProjectsExperimentsConfigPartialUpdateRequest =
           OrganizationsProjectsExperimentsConfigPartialUpdateRequestRecordingDomainsList,
         ),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsExperimentsConfigPartialUpdateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsExperimentsConfigPartialUpdateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(
@@ -6856,22 +5622,15 @@ export const OrganizationsProjectsExperimentsConfigPartialUpdateRequest =
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsExperimentsConfigPartialUpdateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsExperimentsConfigPartialUpdateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -6882,8 +5641,6 @@ export const OrganizationsProjectsExperimentsConfigPartialUpdateRequest =
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -6917,23 +5674,8 @@ export const OrganizationsProjectsExperimentsConfigRetrieveRequest =
     identifier: "OrganizationsProjectsExperimentsConfigRetrieveRequest",
   }) as any as S.Schema<OrganizationsProjectsExperimentsConfigRetrieveRequest>;
 
-export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestGroupTypesItemMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestGroupTypesList =
-  OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestGroupTypesList>;
-
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6941,35 +5683,35 @@ export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestA
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6977,45 +5719,11 @@ export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestL
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestDefaultModifiersMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestProductIntentsList =
-  OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestProductIntentsItem[];
-export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel =
@@ -7023,44 +5731,19 @@ export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBu
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel>;
 
-export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestManagedViewsetsMap =
-  { [key: string]: boolean | undefined };
-export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -7108,27 +5791,22 @@ export interface OrganizationsProjectsGenerateConversationsPublicTokenCreateRequ
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestBusinessModel | null;
@@ -7137,14 +5815,6 @@ export interface OrganizationsProjectsGenerateConversationsPublicTokenCreateRequ
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -7152,7 +5822,7 @@ export interface OrganizationsProjectsGenerateConversationsPublicTokenCreateRequ
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -7163,35 +5833,19 @@ export interface OrganizationsProjectsGenerateConversationsPublicTokenCreateRequ
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -7244,7 +5898,7 @@ export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest 
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -7256,22 +5910,13 @@ export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest 
           OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestRecordingDomainsList,
         ),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(
@@ -7282,22 +5927,15 @@ export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest 
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsGenerateConversationsPublicTokenCreateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -7308,8 +5946,6 @@ export const OrganizationsProjectsGenerateConversationsPublicTokenCreateRequest 
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -7407,7 +6043,7 @@ export const ProjectBackwardCompatBasic = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectBackwardCompatBasic>;
 
 export type PaginatedProjectBackwardCompatBasicListResultsList =
-  ProjectBackwardCompatBasic[];
+  ReadonlyArray<ProjectBackwardCompatBasic>;
 export const PaginatedProjectBackwardCompatBasicListResultsList =
   /*@__PURE__*/ S.Array(
     ProjectBackwardCompatBasic,
@@ -7431,23 +6067,8 @@ export const PaginatedProjectBackwardCompatBasicList = /*@__PURE__*/ S.suspend(
   identifier: "PaginatedProjectBackwardCompatBasicList",
 }) as any as S.Schema<PaginatedProjectBackwardCompatBasicList>;
 
-export type OrganizationsProjectsLogsConfigPartialUpdateRequestGroupTypesItemMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsLogsConfigPartialUpdateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsLogsConfigPartialUpdateRequestGroupTypesList =
-  OrganizationsProjectsLogsConfigPartialUpdateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsLogsConfigPartialUpdateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsLogsConfigPartialUpdateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestGroupTypesList>;
-
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestAppUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7455,35 +6076,35 @@ export const OrganizationsProjectsLogsConfigPartialUpdateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7491,45 +6112,11 @@ export const OrganizationsProjectsLogsConfigPartialUpdateRequestLiveEventsColumn
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsLogsConfigPartialUpdateRequestDefaultModifiersMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsLogsConfigPartialUpdateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsLogsConfigPartialUpdateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsLogsConfigPartialUpdateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OrganizationsProjectsLogsConfigPartialUpdateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsLogsConfigPartialUpdateRequestProductIntentsList =
-  OrganizationsProjectsLogsConfigPartialUpdateRequestProductIntentsItem[];
-export const OrganizationsProjectsLogsConfigPartialUpdateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsLogsConfigPartialUpdateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsLogsConfigPartialUpdateRequestBusinessModel =
@@ -7538,44 +6125,19 @@ export type OrganizationsProjectsLogsConfigPartialUpdateRequestBusinessModel =
 export const OrganizationsProjectsLogsConfigPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestBusinessModel>;
 
-export type OrganizationsProjectsLogsConfigPartialUpdateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsLogsConfigPartialUpdateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsLogsConfigPartialUpdateRequestManagedViewsetsMap =
-  { [key: string]: boolean | undefined };
-export const OrganizationsProjectsLogsConfigPartialUpdateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsLogsConfigPartialUpdateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsLogsConfigPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsLogsConfigPartialUpdateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsLogsConfigPartialUpdateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -7623,27 +6185,22 @@ export interface OrganizationsProjectsLogsConfigPartialUpdateRequest {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsLogsConfigPartialUpdateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsLogsConfigPartialUpdateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsLogsConfigPartialUpdateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsLogsConfigPartialUpdateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsLogsConfigPartialUpdateRequestBusinessModel | null;
@@ -7652,14 +6209,6 @@ export interface OrganizationsProjectsLogsConfigPartialUpdateRequest {
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsLogsConfigPartialUpdateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsLogsConfigPartialUpdateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -7667,7 +6216,7 @@ export interface OrganizationsProjectsLogsConfigPartialUpdateRequest {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -7678,35 +6227,19 @@ export interface OrganizationsProjectsLogsConfigPartialUpdateRequest {
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsLogsConfigPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsLogsConfigPartialUpdateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsLogsConfigPartialUpdateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -7759,7 +6292,7 @@ export const OrganizationsProjectsLogsConfigPartialUpdateRequest =
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -7771,22 +6304,13 @@ export const OrganizationsProjectsLogsConfigPartialUpdateRequest =
           OrganizationsProjectsLogsConfigPartialUpdateRequestRecordingDomainsList,
         ),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsLogsConfigPartialUpdateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsLogsConfigPartialUpdateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(
@@ -7797,22 +6321,15 @@ export const OrganizationsProjectsLogsConfigPartialUpdateRequest =
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsLogsConfigPartialUpdateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsLogsConfigPartialUpdateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -7823,8 +6340,6 @@ export const OrganizationsProjectsLogsConfigPartialUpdateRequest =
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -7858,23 +6373,8 @@ export const OrganizationsProjectsLogsConfigRetrieveRequest =
     identifier: "OrganizationsProjectsLogsConfigRetrieveRequest",
   }) as any as S.Schema<OrganizationsProjectsLogsConfigRetrieveRequest>;
 
-export type OrganizationsProjectsPartialUpdateRequestGroupTypesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const OrganizationsProjectsPartialUpdateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsPartialUpdateRequestGroupTypesList =
-  OrganizationsProjectsPartialUpdateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsPartialUpdateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsPartialUpdateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestGroupTypesList>;
-
-export type OrganizationsProjectsPartialUpdateRequestAppUrlsList = string[];
+export type OrganizationsProjectsPartialUpdateRequestAppUrlsList =
+  ReadonlyArray<string>;
 export const OrganizationsProjectsPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7882,35 +6382,35 @@ export const OrganizationsProjectsPartialUpdateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsPartialUpdateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsPartialUpdateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -7918,45 +6418,11 @@ export const OrganizationsProjectsPartialUpdateRequestLiveEventsColumnsList =
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsPartialUpdateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsPartialUpdateRequestDefaultModifiersMap = {
-  [key: string]: unknown | undefined;
-};
-export const OrganizationsProjectsPartialUpdateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsPartialUpdateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsPartialUpdateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OrganizationsProjectsPartialUpdateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsPartialUpdateRequestProductIntentsList =
-  OrganizationsProjectsPartialUpdateRequestProductIntentsItem[];
-export const OrganizationsProjectsPartialUpdateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsPartialUpdateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsPartialUpdateRequestBusinessModel =
@@ -7965,45 +6431,19 @@ export type OrganizationsProjectsPartialUpdateRequestBusinessModel =
 export const OrganizationsProjectsPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsPartialUpdateRequestBusinessModel>;
 
-export type OrganizationsProjectsPartialUpdateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsPartialUpdateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsPartialUpdateRequestManagedViewsetsMap = {
-  [key: string]: boolean | undefined;
-};
-export const OrganizationsProjectsPartialUpdateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsPartialUpdateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsPartialUpdateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsPartialUpdateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -8051,27 +6491,22 @@ export interface OrganizationsProjectsPartialUpdateRequest {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsPartialUpdateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsPartialUpdateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsPartialUpdateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsPartialUpdateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsPartialUpdateRequestBusinessModel | null;
@@ -8080,14 +6515,6 @@ export interface OrganizationsProjectsPartialUpdateRequest {
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsPartialUpdateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsPartialUpdateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -8095,7 +6522,7 @@ export interface OrganizationsProjectsPartialUpdateRequest {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -8106,35 +6533,19 @@ export interface OrganizationsProjectsPartialUpdateRequest {
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsPartialUpdateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsPartialUpdateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -8187,7 +6598,7 @@ export const OrganizationsProjectsPartialUpdateRequest =
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -8197,22 +6608,13 @@ export const OrganizationsProjectsPartialUpdateRequest =
       recording_domains: S.optional(
         S.NullOr(OrganizationsProjectsPartialUpdateRequestRecordingDomainsList),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsPartialUpdateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsPartialUpdateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(OrganizationsProjectsPartialUpdateRequestBusinessModel),
@@ -8221,22 +6623,15 @@ export const OrganizationsProjectsPartialUpdateRequest =
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsPartialUpdateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsPartialUpdateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -8247,8 +6642,6 @@ export const OrganizationsProjectsPartialUpdateRequest =
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -8260,23 +6653,8 @@ export const OrganizationsProjectsPartialUpdateRequest =
     identifier: "OrganizationsProjectsPartialUpdateRequest",
   }) as any as S.Schema<OrganizationsProjectsPartialUpdateRequest>;
 
-export type OrganizationsProjectsResetTokenPartialUpdateRequestGroupTypesItemMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsResetTokenPartialUpdateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsResetTokenPartialUpdateRequestGroupTypesList =
-  OrganizationsProjectsResetTokenPartialUpdateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsResetTokenPartialUpdateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsResetTokenPartialUpdateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestGroupTypesList>;
-
 export type OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8284,35 +6662,35 @@ export const OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8320,45 +6698,11 @@ export const OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumn
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsResetTokenPartialUpdateRequestDefaultModifiersMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsResetTokenPartialUpdateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsResetTokenPartialUpdateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsResetTokenPartialUpdateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OrganizationsProjectsResetTokenPartialUpdateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsResetTokenPartialUpdateRequestProductIntentsList =
-  OrganizationsProjectsResetTokenPartialUpdateRequestProductIntentsItem[];
-export const OrganizationsProjectsResetTokenPartialUpdateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsResetTokenPartialUpdateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsResetTokenPartialUpdateRequestBusinessModel =
@@ -8367,44 +6711,19 @@ export type OrganizationsProjectsResetTokenPartialUpdateRequestBusinessModel =
 export const OrganizationsProjectsResetTokenPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestBusinessModel>;
 
-export type OrganizationsProjectsResetTokenPartialUpdateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsResetTokenPartialUpdateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsResetTokenPartialUpdateRequestManagedViewsetsMap =
-  { [key: string]: boolean | undefined };
-export const OrganizationsProjectsResetTokenPartialUpdateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsResetTokenPartialUpdateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsResetTokenPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsResetTokenPartialUpdateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -8452,27 +6771,22 @@ export interface OrganizationsProjectsResetTokenPartialUpdateRequest {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsResetTokenPartialUpdateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsResetTokenPartialUpdateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsResetTokenPartialUpdateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsResetTokenPartialUpdateRequestBusinessModel | null;
@@ -8481,14 +6795,6 @@ export interface OrganizationsProjectsResetTokenPartialUpdateRequest {
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsResetTokenPartialUpdateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsResetTokenPartialUpdateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -8496,7 +6802,7 @@ export interface OrganizationsProjectsResetTokenPartialUpdateRequest {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -8507,35 +6813,19 @@ export interface OrganizationsProjectsResetTokenPartialUpdateRequest {
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsResetTokenPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsResetTokenPartialUpdateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsResetTokenPartialUpdateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -8588,7 +6878,7 @@ export const OrganizationsProjectsResetTokenPartialUpdateRequest =
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -8600,22 +6890,13 @@ export const OrganizationsProjectsResetTokenPartialUpdateRequest =
           OrganizationsProjectsResetTokenPartialUpdateRequestRecordingDomainsList,
         ),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsResetTokenPartialUpdateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsResetTokenPartialUpdateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(
@@ -8626,22 +6907,15 @@ export const OrganizationsProjectsResetTokenPartialUpdateRequest =
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsResetTokenPartialUpdateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsResetTokenPartialUpdateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -8652,8 +6926,6 @@ export const OrganizationsProjectsResetTokenPartialUpdateRequest =
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -8687,23 +6959,8 @@ export const OrganizationsProjectsRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "OrganizationsProjectsRetrieveRequest",
 }) as any as S.Schema<OrganizationsProjectsRetrieveRequest>;
 
-export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestGroupTypesItemMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestGroupTypesList =
-  OrganizationsProjectsRotateSecretTokenPartialUpdateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsRotateSecretTokenPartialUpdateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestGroupTypesList>;
-
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8711,35 +6968,35 @@ export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsLi
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestSessionRecordingEventTriggerConfigList>;
 
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -8747,45 +7004,11 @@ export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEvent
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestDefaultModifiersMap =
-  { [key: string]: unknown | undefined };
-export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsRotateSecretTokenPartialUpdateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "OrganizationsProjectsRotateSecretTokenPartialUpdateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestProductIntentsList =
-  OrganizationsProjectsRotateSecretTokenPartialUpdateRequestProductIntentsItem[];
-export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsRotateSecretTokenPartialUpdateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel =
@@ -8793,44 +7016,19 @@ export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessMo
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel>;
 
-export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsRotateSecretTokenPartialUpdateRequestManagedViewsetsMap =
-  { [key: string]: boolean | undefined };
-export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsRotateSecretTokenPartialUpdateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsRotateSecretTokenPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsRotateSecretTokenPartialUpdateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -8878,27 +7076,22 @@ export interface OrganizationsProjectsRotateSecretTokenPartialUpdateRequest {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsRotateSecretTokenPartialUpdateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsRotateSecretTokenPartialUpdateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsRotateSecretTokenPartialUpdateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsRotateSecretTokenPartialUpdateRequestBusinessModel | null;
@@ -8907,14 +7100,6 @@ export interface OrganizationsProjectsRotateSecretTokenPartialUpdateRequest {
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsRotateSecretTokenPartialUpdateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -8922,7 +7107,7 @@ export interface OrganizationsProjectsRotateSecretTokenPartialUpdateRequest {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -8933,35 +7118,19 @@ export interface OrganizationsProjectsRotateSecretTokenPartialUpdateRequest {
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       organization_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
-      organization: S.optional(S.String),
       name: S.optional(S.String),
       product_description: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      effective_membership_level: S.optional(S.Number),
-      has_group_types: S.optional(S.Boolean),
-      group_types: S.optional(
-        OrganizationsProjectsRotateSecretTokenPartialUpdateRequestGroupTypesList,
-      ),
-      live_events_token: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.NullOr(S.String)),
-      uuid: S.optional(S.String),
-      api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
       app_urls: S.optional(
         OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAppUrlsList,
       ),
       anonymize_ips: S.optional(S.Boolean),
       completed_snippet_onboarding: S.optional(S.Boolean),
-      ingested_event: S.optional(S.Boolean),
       test_account_filters: S.optional(S.Unknown),
       test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
       path_cleaning_filters: S.optional(S.Unknown),
@@ -9014,7 +7183,7 @@ export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequest =
       session_replay_config: S.optional(S.Unknown),
       survey_config: S.optional(S.Unknown),
       access_control: S.optional(S.Boolean),
-      week_start_day: S.optional(S.NullOr(S.Number)),
+      week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
       primary_dashboard: S.optional(S.NullOr(S.Number)),
       live_events_columns: S.optional(
         S.NullOr(
@@ -9026,22 +7195,13 @@ export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequest =
           OrganizationsProjectsRotateSecretTokenPartialUpdateRequestRecordingDomainsList,
         ),
       ),
-      person_on_events_querying_enabled: S.optional(S.Boolean),
       inject_web_apps: S.optional(S.NullOr(S.Boolean)),
       extra_settings: S.optional(S.Unknown),
       modifiers: S.optional(S.Unknown),
-      default_modifiers: S.optional(
-        OrganizationsProjectsRotateSecretTokenPartialUpdateRequestDefaultModifiersMap,
-      ),
       has_completed_onboarding_for: S.optional(S.Unknown),
       surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
       heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-      product_intents: S.optional(
-        OrganizationsProjectsRotateSecretTokenPartialUpdateRequestProductIntentsList,
-      ),
       flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-      secret_api_token: S.optional(S.NullOr(S.String)),
-      secret_api_token_backup: S.optional(S.NullOr(S.String)),
       receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
       business_model: S.optional(
         S.NullOr(
@@ -9052,22 +7212,15 @@ export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequest =
       conversations_settings: S.optional(S.Unknown),
       logs_settings: S.optional(S.Unknown),
       proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-      available_setup_task_ids: S.optional(
-        OrganizationsProjectsRotateSecretTokenPartialUpdateRequestAvailableSetupTaskIdsList,
-      ),
-      is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-      project_id: S.optional(S.Number),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      managed_viewsets: S.optional(
-        OrganizationsProjectsRotateSecretTokenPartialUpdateRequestManagedViewsetsMap,
-      ),
       revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
       marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
       customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
       workflows_config: S.optional(TeamWorkflowsConfig),
       base_currency: S.optional(BaseCurrencyEnum),
       capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-      cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+      cookieless_server_hash_mode: S.optional(
+        S.NullOr(CookielessServerHashModeEnum),
+      ),
       human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
       feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -9078,8 +7231,6 @@ export const OrganizationsProjectsRotateSecretTokenPartialUpdateRequest =
       web_analytics_pre_aggregated_tables_enabled: S.optional(
         S.NullOr(S.Boolean),
       ),
-      event_retention_months: S.optional(S.Number),
-      events_retention_enforced: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -9113,23 +7264,8 @@ export const OrganizationsProjectsSettingsAsOfRetrieveRequest =
     identifier: "OrganizationsProjectsSettingsAsOfRetrieveRequest",
   }) as any as S.Schema<OrganizationsProjectsSettingsAsOfRetrieveRequest>;
 
-export type OrganizationsProjectsUpdateRequestGroupTypesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const OrganizationsProjectsUpdateRequestGroupTypesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsUpdateRequestGroupTypesItemMap>;
-
-export type OrganizationsProjectsUpdateRequestGroupTypesList =
-  OrganizationsProjectsUpdateRequestGroupTypesItemMap[];
-export const OrganizationsProjectsUpdateRequestGroupTypesList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsUpdateRequestGroupTypesItemMap,
-  ) as any as S.Schema<OrganizationsProjectsUpdateRequestGroupTypesList>;
-
-export type OrganizationsProjectsUpdateRequestAppUrlsList = string[];
+export type OrganizationsProjectsUpdateRequestAppUrlsList =
+  ReadonlyArray<string>;
 export const OrganizationsProjectsUpdateRequestAppUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -9137,79 +7273,47 @@ export const OrganizationsProjectsUpdateRequestAppUrlsList =
 
 /** Ordered list of person properties used to render a human-friendly display name in the UI. */
 export type OrganizationsProjectsUpdateRequestPersonDisplayNamePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsUpdateRequestPersonDisplayNamePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsUpdateRequestPersonDisplayNamePropertiesList>;
 
 export type OrganizationsProjectsUpdateRequestSessionRecordingUrlTriggerConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsUpdateRequestSessionRecordingUrlTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsUpdateRequestSessionRecordingUrlTriggerConfigList>;
 
 export type OrganizationsProjectsUpdateRequestSessionRecordingUrlBlocklistConfigList =
-  unknown[];
+  ReadonlyArray<unknown>;
 export const OrganizationsProjectsUpdateRequestSessionRecordingUrlBlocklistConfigList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<OrganizationsProjectsUpdateRequestSessionRecordingUrlBlocklistConfigList>;
 
 export type OrganizationsProjectsUpdateRequestSessionRecordingEventTriggerConfigList =
-  string[];
+  ReadonlyArray<string>;
 export const OrganizationsProjectsUpdateRequestSessionRecordingEventTriggerConfigList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsUpdateRequestSessionRecordingEventTriggerConfigList>;
 
-export type OrganizationsProjectsUpdateRequestLiveEventsColumnsList = string[];
+export type OrganizationsProjectsUpdateRequestLiveEventsColumnsList =
+  ReadonlyArray<string>;
 export const OrganizationsProjectsUpdateRequestLiveEventsColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsUpdateRequestLiveEventsColumnsList>;
 
 /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
-export type OrganizationsProjectsUpdateRequestRecordingDomainsList = string[];
+export type OrganizationsProjectsUpdateRequestRecordingDomainsList =
+  ReadonlyArray<string>;
 export const OrganizationsProjectsUpdateRequestRecordingDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<OrganizationsProjectsUpdateRequestRecordingDomainsList>;
-
-export type OrganizationsProjectsUpdateRequestDefaultModifiersMap = {
-  [key: string]: unknown | undefined;
-};
-export const OrganizationsProjectsUpdateRequestDefaultModifiersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OrganizationsProjectsUpdateRequestDefaultModifiersMap>;
-
-export interface OrganizationsProjectsUpdateRequestProductIntentsItem {
-  product_type?: string;
-  created_at?: string;
-  onboarding_completed_at?: string | null;
-  updated_at?: string;
-}
-export const OrganizationsProjectsUpdateRequestProductIntentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      product_type: S.optional(S.String),
-      created_at: S.optional(S.String),
-      onboarding_completed_at: S.optional(S.NullOr(S.String)),
-      updated_at: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OrganizationsProjectsUpdateRequestProductIntentsItem",
-  }) as any as S.Schema<OrganizationsProjectsUpdateRequestProductIntentsItem>;
-
-export type OrganizationsProjectsUpdateRequestProductIntentsList =
-  OrganizationsProjectsUpdateRequestProductIntentsItem[];
-export const OrganizationsProjectsUpdateRequestProductIntentsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationsProjectsUpdateRequestProductIntentsItem,
-  ) as any as S.Schema<OrganizationsProjectsUpdateRequestProductIntentsList>;
 
 /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
 export type OrganizationsProjectsUpdateRequestBusinessModel =
@@ -9218,45 +7322,19 @@ export type OrganizationsProjectsUpdateRequestBusinessModel =
 export const OrganizationsProjectsUpdateRequestBusinessModel =
   /*@__PURE__*/ S.Unknown as any as S.Schema<OrganizationsProjectsUpdateRequestBusinessModel>;
 
-export type OrganizationsProjectsUpdateRequestAvailableSetupTaskIdsList =
-  AvailableSetupTaskIdsEnum[];
-export const OrganizationsProjectsUpdateRequestAvailableSetupTaskIdsList =
-  /*@__PURE__*/ S.Array(
-    AvailableSetupTaskIdsEnum,
-  ) as any as S.Schema<OrganizationsProjectsUpdateRequestAvailableSetupTaskIdsList>;
-
-export type OrganizationsProjectsUpdateRequestManagedViewsetsMap = {
-  [key: string]: boolean | undefined;
-};
-export const OrganizationsProjectsUpdateRequestManagedViewsetsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Boolean,
-  ) as any as S.Schema<OrganizationsProjectsUpdateRequestManagedViewsetsMap>;
-
 export interface OrganizationsProjectsUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A unique value identifying this project. */
   id: number;
-  organization?: string;
   /** Human-readable project name. */
   name?: string;
   /** Short description of what the project is about. This is helpful to give our AI agents context about your project. */
   product_description?: string | null;
-  created_at?: string;
-  effective_membership_level?: number;
-  has_group_types?: boolean;
-  group_types?: OrganizationsProjectsUpdateRequestGroupTypesList;
-  live_events_token?: string | null;
-  updated_at?: string | null;
-  uuid?: string;
-  api_token?: string | Redacted.Redacted<string>;
   app_urls?: OrganizationsProjectsUpdateRequestAppUrlsList;
   /** When true, PostHog drops the IP address from every ingested event. */
   anonymize_ips?: boolean;
   completed_snippet_onboarding?: boolean;
-  ingested_event?: boolean;
   /** Filter groups that identify internal/test traffic to be excluded from insights. */
   test_account_filters?: unknown;
   /** When true, new insights default to excluding internal/test users. */
@@ -9304,27 +7382,22 @@ export interface OrganizationsProjectsUpdateRequest {
   survey_config?: unknown;
   access_control?: boolean;
   /** First day of the week for date range filters. 0 = Sunday, 1 = Monday. * `0` - Sunday * `1` - Monday */
-  week_start_day?: number | null;
+  week_start_day?: WeekStartDayEnum | null;
   /** ID of the dashboard shown as the project's default landing dashboard. */
   primary_dashboard?: number | null;
   live_events_columns?: OrganizationsProjectsUpdateRequestLiveEventsColumnsList | null;
   /** Origins permitted to record session replays and heatmaps. Empty list allows all origins. */
   recording_domains?: OrganizationsProjectsUpdateRequestRecordingDomainsList | null;
-  person_on_events_querying_enabled?: boolean;
   inject_web_apps?: boolean | null;
   extra_settings?: unknown;
   modifiers?: unknown;
-  default_modifiers?: OrganizationsProjectsUpdateRequestDefaultModifiersMap;
   has_completed_onboarding_for?: unknown;
   /** Enables displaying surveys via posthog-js on allowed origins. */
   surveys_opt_in?: boolean | null;
   /** Enables heatmap recording on pages that host posthog-js. */
   heatmaps_opt_in?: boolean | null;
-  product_intents?: OrganizationsProjectsUpdateRequestProductIntentsList;
   /** Default value for the `persist` option on newly created feature flags. */
   flags_persistence_default?: boolean | null;
-  secret_api_token?: string | null;
-  secret_api_token_backup?: string | null;
   receive_org_level_activity_logs?: boolean | null;
   /** Whether this project serves B2B or B2C customers. Used to optimize default UI layouts. * `b2b` - B2B * `b2c` - B2C * `other` - Other */
   business_model?: OrganizationsProjectsUpdateRequestBusinessModel | null;
@@ -9333,14 +7406,6 @@ export interface OrganizationsProjectsUpdateRequest {
   conversations_settings?: unknown;
   logs_settings?: unknown;
   proactive_tasks_enabled?: boolean | null;
-  available_setup_task_ids?: OrganizationsProjectsUpdateRequestAvailableSetupTaskIdsList;
-  /** Set to True when project deletion has been initiated. Blocks UI access to this project until the async task completes. */
-  is_pending_deletion?: boolean | null;
-  /** ID of the project this environment belongs to. */
-  project_id?: number;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-  managed_viewsets?: OrganizationsProjectsUpdateRequestManagedViewsetsMap;
   revenue_analytics_config?: TeamRevenueAnalyticsConfig;
   marketing_analytics_config?: TeamMarketingAnalyticsConfig;
   customer_analytics_config?: TeamCustomerAnalyticsConfig;
@@ -9348,7 +7413,7 @@ export interface OrganizationsProjectsUpdateRequest {
   base_currency?: BaseCurrencyEnum;
   /** Enables capturing clicks that had no effect (rage-click detection). */
   capture_dead_clicks?: boolean | null;
-  cookieless_server_hash_mode?: number | null;
+  cookieless_server_hash_mode?: CookielessServerHashModeEnum | null;
   human_friendly_comparison_periods?: boolean | null;
   feature_flag_confirmation_enabled?: boolean | null;
   feature_flag_confirmation_message?: string | null;
@@ -9359,30 +7424,16 @@ export interface OrganizationsProjectsUpdateRequest {
   default_data_theme?: number | null;
   onboarding_tasks?: unknown;
   web_analytics_pre_aggregated_tables_enabled?: boolean | null;
-  /** The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months. */
-  event_retention_months?: number;
-  /** Whether events data retention is currently enforced for this team (cohort/flag gated). */
-  events_retention_enforced?: boolean;
 }
 export const OrganizationsProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
-    organization: S.optional(S.String),
     name: S.optional(S.String),
     product_description: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    effective_membership_level: S.optional(S.Number),
-    has_group_types: S.optional(S.Boolean),
-    group_types: S.optional(OrganizationsProjectsUpdateRequestGroupTypesList),
-    live_events_token: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.NullOr(S.String)),
-    uuid: S.optional(S.String),
-    api_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
     app_urls: S.optional(OrganizationsProjectsUpdateRequestAppUrlsList),
     anonymize_ips: S.optional(S.Boolean),
     completed_snippet_onboarding: S.optional(S.Boolean),
-    ingested_event: S.optional(S.Boolean),
     test_account_filters: S.optional(S.Unknown),
     test_account_filters_default_checked: S.optional(S.NullOr(S.Boolean)),
     path_cleaning_filters: S.optional(S.Unknown),
@@ -9433,7 +7484,7 @@ export const OrganizationsProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     session_replay_config: S.optional(S.Unknown),
     survey_config: S.optional(S.Unknown),
     access_control: S.optional(S.Boolean),
-    week_start_day: S.optional(S.NullOr(S.Number)),
+    week_start_day: S.optional(S.NullOr(WeekStartDayEnum)),
     primary_dashboard: S.optional(S.NullOr(S.Number)),
     live_events_columns: S.optional(
       S.NullOr(OrganizationsProjectsUpdateRequestLiveEventsColumnsList),
@@ -9441,22 +7492,13 @@ export const OrganizationsProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     recording_domains: S.optional(
       S.NullOr(OrganizationsProjectsUpdateRequestRecordingDomainsList),
     ),
-    person_on_events_querying_enabled: S.optional(S.Boolean),
     inject_web_apps: S.optional(S.NullOr(S.Boolean)),
     extra_settings: S.optional(S.Unknown),
     modifiers: S.optional(S.Unknown),
-    default_modifiers: S.optional(
-      OrganizationsProjectsUpdateRequestDefaultModifiersMap,
-    ),
     has_completed_onboarding_for: S.optional(S.Unknown),
     surveys_opt_in: S.optional(S.NullOr(S.Boolean)),
     heatmaps_opt_in: S.optional(S.NullOr(S.Boolean)),
-    product_intents: S.optional(
-      OrganizationsProjectsUpdateRequestProductIntentsList,
-    ),
     flags_persistence_default: S.optional(S.NullOr(S.Boolean)),
-    secret_api_token: S.optional(S.NullOr(S.String)),
-    secret_api_token_backup: S.optional(S.NullOr(S.String)),
     receive_org_level_activity_logs: S.optional(S.NullOr(S.Boolean)),
     business_model: S.optional(
       S.NullOr(OrganizationsProjectsUpdateRequestBusinessModel),
@@ -9465,22 +7507,15 @@ export const OrganizationsProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     conversations_settings: S.optional(S.Unknown),
     logs_settings: S.optional(S.Unknown),
     proactive_tasks_enabled: S.optional(S.NullOr(S.Boolean)),
-    available_setup_task_ids: S.optional(
-      OrganizationsProjectsUpdateRequestAvailableSetupTaskIdsList,
-    ),
-    is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
-    project_id: S.optional(S.Number),
-    user_access_level: S.optional(S.NullOr(S.String)),
-    managed_viewsets: S.optional(
-      OrganizationsProjectsUpdateRequestManagedViewsetsMap,
-    ),
     revenue_analytics_config: S.optional(TeamRevenueAnalyticsConfig),
     marketing_analytics_config: S.optional(TeamMarketingAnalyticsConfig),
     customer_analytics_config: S.optional(TeamCustomerAnalyticsConfig),
     workflows_config: S.optional(TeamWorkflowsConfig),
     base_currency: S.optional(BaseCurrencyEnum),
     capture_dead_clicks: S.optional(S.NullOr(S.Boolean)),
-    cookieless_server_hash_mode: S.optional(S.NullOr(S.Number)),
+    cookieless_server_hash_mode: S.optional(
+      S.NullOr(CookielessServerHashModeEnum),
+    ),
     human_friendly_comparison_periods: S.optional(S.NullOr(S.Boolean)),
     feature_flag_confirmation_enabled: S.optional(S.NullOr(S.Boolean)),
     feature_flag_confirmation_message: S.optional(S.NullOr(S.String)),
@@ -9491,8 +7526,6 @@ export const OrganizationsProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     web_analytics_pre_aggregated_tables_enabled: S.optional(
       S.NullOr(S.Boolean),
     ),
-    event_retention_months: S.optional(S.Number),
-    events_retention_enforced: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9503,47 +7536,6 @@ export const OrganizationsProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OrganizationsProjectsUpdateRequest",
 }) as any as S.Schema<OrganizationsProjectsUpdateRequest>;
-
-export type PartialUpdateRequestTeamsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const PartialUpdateRequestTeamsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PartialUpdateRequestTeamsItemMap>;
-
-export type PartialUpdateRequestTeamsList = PartialUpdateRequestTeamsItemMap[];
-export const PartialUpdateRequestTeamsList = /*@__PURE__*/ S.Array(
-  PartialUpdateRequestTeamsItemMap,
-) as any as S.Schema<PartialUpdateRequestTeamsList>;
-
-export type PartialUpdateRequestProjectsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const PartialUpdateRequestProjectsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PartialUpdateRequestProjectsItemMap>;
-
-export type PartialUpdateRequestProjectsList =
-  PartialUpdateRequestProjectsItemMap[];
-export const PartialUpdateRequestProjectsList = /*@__PURE__*/ S.Array(
-  PartialUpdateRequestProjectsItemMap,
-) as any as S.Schema<PartialUpdateRequestProjectsList>;
-
-export type PartialUpdateRequestAvailableProductFeaturesList = unknown[];
-export const PartialUpdateRequestAvailableProductFeaturesList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<PartialUpdateRequestAvailableProductFeaturesList>;
-
-export type PartialUpdateRequestMetadataMap = {
-  [key: string]: string | undefined;
-};
-export const PartialUpdateRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PartialUpdateRequestMetadataMap>;
 
 /** Default statistical method for new experiments in this organization. * `bayesian` - Bayesian * `frequentist` - Frequentist */
 export type PartialUpdateRequestDefaultExperimentStatsMethod =
@@ -9556,19 +7548,7 @@ export interface PartialUpdateRequest {
   /** A UUID string identifying this organization. */
   id: string;
   name?: string;
-  slug?: string;
   logo_media_id?: string | null;
-  created_at?: string;
-  updated_at?: string;
-  membership_level?: number;
-  plugins_access_level?: number;
-  teams?: PartialUpdateRequestTeamsList;
-  projects?: PartialUpdateRequestProjectsList;
-  available_product_features?: PartialUpdateRequestAvailableProductFeaturesList | null;
-  /** Legacy field; member-join emails are controlled per user in account notification settings. */
-  is_member_join_email_enabled?: boolean;
-  metadata?: PartialUpdateRequestMetadataMap;
-  customer_id?: string | null;
   enforce_2fa?: boolean | null;
   members_can_invite?: boolean | null;
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
@@ -9577,66 +7557,34 @@ export interface PartialUpdateRequest {
   /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
   members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
-  member_count?: number;
   is_ai_data_processing_approved?: boolean | null;
   /** When True, this organization allows its data to be used to train PostHog AI models. */
   is_ai_training_opted_in?: boolean | null;
-  /** When True, the AI training opt-out setting cannot be modified through the UI or API. */
-  is_ai_training_locked?: boolean | null;
-  /** When True, in-app callouts inviting members to enable AI training are shown. */
-  is_ai_training_cta_shown?: boolean | null;
-  is_hipaa?: boolean | null;
   /** Default statistical method for new experiments in this organization. * `bayesian` - Bayesian * `frequentist` - Frequentist */
   default_experiment_stats_method?: PartialUpdateRequestDefaultExperimentStatsMethod | null;
   /** Default setting for 'Discard client IP data' for new projects in this organization. */
   default_anonymize_ips?: boolean;
   /** ID of the role to automatically assign to new members joining the organization */
   default_role_id?: string | null;
-  /** Set this to 'No' to temporarily disable an organization. */
-  is_active?: boolean | null;
-  /** (optional) reason for why the organization has been de-activated. This will be displayed to users on the web app. */
-  is_not_active_reason?: string | null;
-  /** Set to True when org deletion has been initiated. Blocks all UI access until the async task completes. */
-  is_pending_deletion?: boolean | null;
 }
 export const PartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
-    slug: S.optional(S.String),
     logo_media_id: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    membership_level: S.optional(S.Number),
-    plugins_access_level: S.optional(S.Number),
-    teams: S.optional(PartialUpdateRequestTeamsList),
-    projects: S.optional(PartialUpdateRequestProjectsList),
-    available_product_features: S.optional(
-      S.NullOr(PartialUpdateRequestAvailableProductFeaturesList),
-    ),
-    is_member_join_email_enabled: S.optional(S.Boolean),
-    metadata: S.optional(PartialUpdateRequestMetadataMap),
-    customer_id: S.optional(S.NullOr(S.String)),
     enforce_2fa: S.optional(S.NullOr(S.Boolean)),
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
     members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
-    member_count: S.optional(S.Number),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
     is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
-    is_ai_training_locked: S.optional(S.NullOr(S.Boolean)),
-    is_ai_training_cta_shown: S.optional(S.NullOr(S.Boolean)),
-    is_hipaa: S.optional(S.NullOr(S.Boolean)),
     default_experiment_stats_method: S.optional(
       S.NullOr(PartialUpdateRequestDefaultExperimentStatsMethod),
     ),
     default_anonymize_ips: S.optional(S.Boolean),
     default_role_id: S.optional(S.NullOr(S.String)),
-    is_active: S.optional(S.NullOr(S.Boolean)),
-    is_not_active_reason: S.optional(S.NullOr(S.String)),
-    is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
   }).pipe(
     T.Http({ method: "PATCH", uri: "/api/organizations/{id}/", code: 200 }),
   ),
@@ -9691,7 +7639,6 @@ export const RetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RoleExternalReferencesCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
-  id?: string;
   /** Integration kind (e.g., github, linear, jira, slack). */
   provider?: string;
   /** Provider organization/workspace/site identifier. */
@@ -9704,21 +7651,16 @@ export interface RoleExternalReferencesCreateRequest {
   provider_role_name?: string;
   /** PostHog role UUID this external role maps to. */
   role?: string;
-  created_at?: string;
-  created_by?: UserBasic;
 }
 export const RoleExternalReferencesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     provider: S.optional(S.String),
     provider_organization_id: S.optional(S.String),
     provider_role_id: S.optional(S.String),
     provider_role_slug: S.optional(S.NullOr(S.String)),
     provider_role_name: S.optional(S.String),
     role: S.optional(S.String),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
   }).pipe(
     T.Http({
       method: "POST",
@@ -9745,7 +7687,7 @@ export interface RoleExternalReference {
   /** PostHog role UUID this external role maps to. */
   role?: string;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
 }
 export const RoleExternalReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9757,7 +7699,7 @@ export const RoleExternalReference = /*@__PURE__*/ S.suspend(() =>
     provider_role_name: S.optional(S.String),
     role: S.optional(S.String),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
   }),
 ).annotate({
   identifier: "RoleExternalReference",
@@ -9817,7 +7759,7 @@ export const RoleExternalReferencesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RoleExternalReferencesListRequest>;
 
 export type PaginatedRoleExternalReferenceListResultsList =
-  RoleExternalReference[];
+  ReadonlyArray<RoleExternalReference>;
 export const PaginatedRoleExternalReferenceListResultsList =
   /*@__PURE__*/ S.Array(
     RoleExternalReference,
@@ -9883,40 +7825,15 @@ export const RoleLookupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RoleLookupResponse",
 }) as any as S.Schema<RoleLookupResponse>;
 
-export type RolesCreateRequestMembersItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const RolesCreateRequestMembersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RolesCreateRequestMembersItemMap>;
-
-/** Members assigned to this role */
-export type RolesCreateRequestMembersList = RolesCreateRequestMembersItemMap[];
-export const RolesCreateRequestMembersList = /*@__PURE__*/ S.Array(
-  RolesCreateRequestMembersItemMap,
-) as any as S.Schema<RolesCreateRequestMembersList>;
-
 export interface RolesCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
-  id?: string;
   name?: string;
-  created_at?: string;
-  created_by?: UserBasic;
-  /** Members assigned to this role */
-  members?: RolesCreateRequestMembersList;
-  is_default?: boolean;
 }
 export const RolesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     name: S.optional(S.String),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    members: S.optional(RolesCreateRequestMembersList),
-    is_default: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -9935,7 +7852,7 @@ export const RoleMembersItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RoleMembersItemMap>;
 
 /** Members assigned to this role */
-export type RoleMembersList = RoleMembersItemMap[];
+export type RoleMembersList = ReadonlyArray<RoleMembersItemMap>;
 export const RoleMembersList = /*@__PURE__*/ S.Array(
   RoleMembersItemMap,
 ) as any as S.Schema<RoleMembersList>;
@@ -9944,7 +7861,7 @@ export interface Role {
   id?: string;
   name?: string;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   /** Members assigned to this role */
   members?: RoleMembersList;
   is_default?: boolean;
@@ -9954,7 +7871,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     name: S.optional(S.String),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     members: S.optional(RoleMembersList),
     is_default: S.optional(S.Boolean),
   }),
@@ -10012,7 +7929,7 @@ export const RolesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolesListRequest",
 }) as any as S.Schema<RolesListRequest>;
 
-export type PaginatedRoleListResultsList = Role[];
+export type PaginatedRoleListResultsList = ReadonlyArray<Role>;
 export const PaginatedRoleListResultsList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<PaginatedRoleListResultsList>;
@@ -10034,42 +7951,18 @@ export const PaginatedRoleList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedRoleList",
 }) as any as S.Schema<PaginatedRoleList>;
 
-export type RolesPartialUpdateRequestMembersItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const RolesPartialUpdateRequestMembersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RolesPartialUpdateRequestMembersItemMap>;
-
-/** Members assigned to this role */
-export type RolesPartialUpdateRequestMembersList =
-  RolesPartialUpdateRequestMembersItemMap[];
-export const RolesPartialUpdateRequestMembersList = /*@__PURE__*/ S.Array(
-  RolesPartialUpdateRequestMembersItemMap,
-) as any as S.Schema<RolesPartialUpdateRequestMembersList>;
-
 export interface RolesPartialUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this role. */
   id: string;
   name?: string;
-  created_at?: string;
-  created_by?: UserBasic;
-  /** Members assigned to this role */
-  members?: RolesPartialUpdateRequestMembersList;
-  is_default?: boolean;
 }
 export const RolesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    members: S.optional(RolesPartialUpdateRequestMembersList),
-    is_default: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -10106,22 +7999,12 @@ export interface RolesRoleMembershipsCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   role_id: string;
-  id?: string;
-  organization_member?: OrganizationMember;
-  user?: UserBasic;
-  joined_at?: string;
-  updated_at?: string;
   user_uuid?: string;
 }
 export const RolesRoleMembershipsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     role_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    organization_member: S.optional(OrganizationMember),
-    user: S.optional(UserBasic),
-    joined_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
     user_uuid: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -10134,26 +8017,26 @@ export const RolesRoleMembershipsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolesRoleMembershipsCreateRequest",
 }) as any as S.Schema<RolesRoleMembershipsCreateRequest>;
 
-export interface RoleMembership {
+export interface RoleMembershipOutput {
   id?: string;
   role_id?: string;
   organization_member?: OrganizationMember;
-  user?: UserBasic;
+  user?: UserBasic | null;
   joined_at?: string;
   updated_at?: string;
-  user_uuid?: string;
 }
-export const RoleMembership = /*@__PURE__*/ S.suspend(() =>
+export const RoleMembershipOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     role_id: S.optional(S.String),
     organization_member: S.optional(OrganizationMember),
-    user: S.optional(UserBasic),
+    user: S.optional(S.NullOr(UserBasic)),
     joined_at: S.optional(S.String),
     updated_at: S.optional(S.String),
-    user_uuid: S.optional(S.String),
   }),
-).annotate({ identifier: "RoleMembership" }) as any as S.Schema<RoleMembership>;
+).annotate({
+  identifier: "RoleMembershipOutput",
+}) as any as S.Schema<RoleMembershipOutput>;
 
 export interface RolesRoleMembershipsDestroyRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -10211,27 +8094,29 @@ export const RolesRoleMembershipsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolesRoleMembershipsListRequest",
 }) as any as S.Schema<RolesRoleMembershipsListRequest>;
 
-export type PaginatedRoleMembershipListResultsList = RoleMembership[];
-export const PaginatedRoleMembershipListResultsList = /*@__PURE__*/ S.Array(
-  RoleMembership,
-) as any as S.Schema<PaginatedRoleMembershipListResultsList>;
+export type PaginatedRoleMembershipListOutputResultsList =
+  ReadonlyArray<RoleMembershipOutput>;
+export const PaginatedRoleMembershipListOutputResultsList =
+  /*@__PURE__*/ S.Array(
+    RoleMembershipOutput,
+  ) as any as S.Schema<PaginatedRoleMembershipListOutputResultsList>;
 
-export interface PaginatedRoleMembershipList {
+export interface PaginatedRoleMembershipListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
-  results?: PaginatedRoleMembershipListResultsList;
+  results?: PaginatedRoleMembershipListOutputResultsList;
 }
-export const PaginatedRoleMembershipList = /*@__PURE__*/ S.suspend(() =>
+export const PaginatedRoleMembershipListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedRoleMembershipListResultsList),
+    results: S.optional(PaginatedRoleMembershipListOutputResultsList),
   }),
 ).annotate({
-  identifier: "PaginatedRoleMembershipList",
-}) as any as S.Schema<PaginatedRoleMembershipList>;
+  identifier: "PaginatedRoleMembershipListOutput",
+}) as any as S.Schema<PaginatedRoleMembershipListOutput>;
 
 export interface RolesRoleMembershipsRetrieveRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -10256,41 +8141,18 @@ export const RolesRoleMembershipsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RolesRoleMembershipsRetrieveRequest",
 }) as any as S.Schema<RolesRoleMembershipsRetrieveRequest>;
 
-export type RolesUpdateRequestMembersItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const RolesUpdateRequestMembersItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RolesUpdateRequestMembersItemMap>;
-
-/** Members assigned to this role */
-export type RolesUpdateRequestMembersList = RolesUpdateRequestMembersItemMap[];
-export const RolesUpdateRequestMembersList = /*@__PURE__*/ S.Array(
-  RolesUpdateRequestMembersItemMap,
-) as any as S.Schema<RolesUpdateRequestMembersList>;
-
 export interface RolesUpdateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
   /** A UUID string identifying this role. */
   id: string;
   name?: string;
-  created_at?: string;
-  created_by?: UserBasic;
-  /** Members assigned to this role */
-  members?: RolesUpdateRequestMembersList;
-  is_default?: boolean;
 }
 export const RolesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    members: S.optional(RolesUpdateRequestMembersList),
-    is_default: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -10301,41 +8163,6 @@ export const RolesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RolesUpdateRequest",
 }) as any as S.Schema<RolesUpdateRequest>;
-
-export type UpdateRequestTeamsItemMap = { [key: string]: unknown | undefined };
-export const UpdateRequestTeamsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateRequestTeamsItemMap>;
-
-export type UpdateRequestTeamsList = UpdateRequestTeamsItemMap[];
-export const UpdateRequestTeamsList = /*@__PURE__*/ S.Array(
-  UpdateRequestTeamsItemMap,
-) as any as S.Schema<UpdateRequestTeamsList>;
-
-export type UpdateRequestProjectsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateRequestProjectsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateRequestProjectsItemMap>;
-
-export type UpdateRequestProjectsList = UpdateRequestProjectsItemMap[];
-export const UpdateRequestProjectsList = /*@__PURE__*/ S.Array(
-  UpdateRequestProjectsItemMap,
-) as any as S.Schema<UpdateRequestProjectsList>;
-
-export type UpdateRequestAvailableProductFeaturesList = unknown[];
-export const UpdateRequestAvailableProductFeaturesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<UpdateRequestAvailableProductFeaturesList>;
-
-export type UpdateRequestMetadataMap = { [key: string]: string | undefined };
-export const UpdateRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<UpdateRequestMetadataMap>;
 
 /** Default statistical method for new experiments in this organization. * `bayesian` - Bayesian * `frequentist` - Frequentist */
 export type UpdateRequestDefaultExperimentStatsMethod =
@@ -10348,19 +8175,7 @@ export interface UpdateRequest {
   /** A UUID string identifying this organization. */
   id: string;
   name?: string;
-  slug?: string;
   logo_media_id?: string | null;
-  created_at?: string;
-  updated_at?: string;
-  membership_level?: number;
-  plugins_access_level?: number;
-  teams?: UpdateRequestTeamsList;
-  projects?: UpdateRequestProjectsList;
-  available_product_features?: UpdateRequestAvailableProductFeaturesList | null;
-  /** Legacy field; member-join emails are controlled per user in account notification settings. */
-  is_member_join_email_enabled?: boolean;
-  metadata?: UpdateRequestMetadataMap;
-  customer_id?: string | null;
   enforce_2fa?: boolean | null;
   members_can_invite?: boolean | null;
   /** When True, organization members (below admin) are allowed to create new projects. Admins and owners can always create projects. */
@@ -10369,66 +8184,34 @@ export interface UpdateRequest {
   /** When False, members (below admin) only see themselves in the members list and only project members in access control. */
   members_can_see_org_members?: boolean;
   allow_publicly_shared_resources?: boolean;
-  member_count?: number;
   is_ai_data_processing_approved?: boolean | null;
   /** When True, this organization allows its data to be used to train PostHog AI models. */
   is_ai_training_opted_in?: boolean | null;
-  /** When True, the AI training opt-out setting cannot be modified through the UI or API. */
-  is_ai_training_locked?: boolean | null;
-  /** When True, in-app callouts inviting members to enable AI training are shown. */
-  is_ai_training_cta_shown?: boolean | null;
-  is_hipaa?: boolean | null;
   /** Default statistical method for new experiments in this organization. * `bayesian` - Bayesian * `frequentist` - Frequentist */
   default_experiment_stats_method?: UpdateRequestDefaultExperimentStatsMethod | null;
   /** Default setting for 'Discard client IP data' for new projects in this organization. */
   default_anonymize_ips?: boolean;
   /** ID of the role to automatically assign to new members joining the organization */
   default_role_id?: string | null;
-  /** Set this to 'No' to temporarily disable an organization. */
-  is_active?: boolean | null;
-  /** (optional) reason for why the organization has been de-activated. This will be displayed to users on the web app. */
-  is_not_active_reason?: string | null;
-  /** Set to True when org deletion has been initiated. Blocks all UI access until the async task completes. */
-  is_pending_deletion?: boolean | null;
 }
 export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
-    slug: S.optional(S.String),
     logo_media_id: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    membership_level: S.optional(S.Number),
-    plugins_access_level: S.optional(S.Number),
-    teams: S.optional(UpdateRequestTeamsList),
-    projects: S.optional(UpdateRequestProjectsList),
-    available_product_features: S.optional(
-      S.NullOr(UpdateRequestAvailableProductFeaturesList),
-    ),
-    is_member_join_email_enabled: S.optional(S.Boolean),
-    metadata: S.optional(UpdateRequestMetadataMap),
-    customer_id: S.optional(S.NullOr(S.String)),
     enforce_2fa: S.optional(S.NullOr(S.Boolean)),
     members_can_invite: S.optional(S.NullOr(S.Boolean)),
     members_can_create_projects: S.optional(S.NullOr(S.Boolean)),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
     members_can_see_org_members: S.optional(S.Boolean),
     allow_publicly_shared_resources: S.optional(S.Boolean),
-    member_count: S.optional(S.Number),
     is_ai_data_processing_approved: S.optional(S.NullOr(S.Boolean)),
     is_ai_training_opted_in: S.optional(S.NullOr(S.Boolean)),
-    is_ai_training_locked: S.optional(S.NullOr(S.Boolean)),
-    is_ai_training_cta_shown: S.optional(S.NullOr(S.Boolean)),
-    is_hipaa: S.optional(S.NullOr(S.Boolean)),
     default_experiment_stats_method: S.optional(
       S.NullOr(UpdateRequestDefaultExperimentStatsMethod),
     ),
     default_anonymize_ips: S.optional(S.Boolean),
     default_role_id: S.optional(S.NullOr(S.String)),
-    is_active: S.optional(S.NullOr(S.Boolean)),
-    is_not_active_reason: S.optional(S.NullOr(S.String)),
-    is_pending_deletion: S.optional(S.NullOr(S.Boolean)),
   }).pipe(
     T.Http({ method: "PUT", uri: "/api/organizations/{id}/", code: 200 }),
   ),
@@ -10464,12 +8247,7 @@ export const WelcomeInviter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WelcomeInviter" }) as any as S.Schema<WelcomeInviter>;
 
 /** * `today` - today * `this_week` - this_week * `inactive` - inactive * `never` - never */
-export type LastActiveEnum =
-  | "today"
-  | "this_week"
-  | "inactive"
-  | "never"
-  | (string & {});
+export type LastActiveEnum = "today" | "this_week" | "inactive" | "never";
 export const LastActiveEnum = /*@__PURE__*/ S.String;
 
 export interface WelcomeTeamMember {
@@ -10491,7 +8269,7 @@ export const WelcomeTeamMember = /*@__PURE__*/ S.suspend(() =>
   identifier: "WelcomeTeamMember",
 }) as any as S.Schema<WelcomeTeamMember>;
 
-export type WelcomeResponseTeamMembersList = WelcomeTeamMember[];
+export type WelcomeResponseTeamMembersList = ReadonlyArray<WelcomeTeamMember>;
 export const WelcomeResponseTeamMembersList = /*@__PURE__*/ S.Array(
   WelcomeTeamMember,
 ) as any as S.Schema<WelcomeResponseTeamMembersList>;
@@ -10516,7 +8294,8 @@ export const WelcomeRecentActivity = /*@__PURE__*/ S.suspend(() =>
   identifier: "WelcomeRecentActivity",
 }) as any as S.Schema<WelcomeRecentActivity>;
 
-export type WelcomeResponseRecentActivityList = WelcomeRecentActivity[];
+export type WelcomeResponseRecentActivityList =
+  ReadonlyArray<WelcomeRecentActivity>;
 export const WelcomeResponseRecentActivityList = /*@__PURE__*/ S.Array(
   WelcomeRecentActivity,
 ) as any as S.Schema<WelcomeResponseRecentActivityList>;
@@ -10540,12 +8319,13 @@ export const WelcomePopularDashboard = /*@__PURE__*/ S.suspend(() =>
   identifier: "WelcomePopularDashboard",
 }) as any as S.Schema<WelcomePopularDashboard>;
 
-export type WelcomeResponsePopularDashboardsList = WelcomePopularDashboard[];
+export type WelcomeResponsePopularDashboardsList =
+  ReadonlyArray<WelcomePopularDashboard>;
 export const WelcomeResponsePopularDashboardsList = /*@__PURE__*/ S.Array(
   WelcomePopularDashboard,
 ) as any as S.Schema<WelcomeResponsePopularDashboardsList>;
 
-export type WelcomeResponseProductsInUseList = string[];
+export type WelcomeResponseProductsInUseList = ReadonlyArray<string>;
 export const WelcomeResponseProductsInUseList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WelcomeResponseProductsInUseList>;
@@ -10569,7 +8349,8 @@ export const WelcomeSuggestedStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "WelcomeSuggestedStep",
 }) as any as S.Schema<WelcomeSuggestedStep>;
 
-export type WelcomeResponseSuggestedNextStepsList = WelcomeSuggestedStep[];
+export type WelcomeResponseSuggestedNextStepsList =
+  ReadonlyArray<WelcomeSuggestedStep>;
 export const WelcomeResponseSuggestedNextStepsList = /*@__PURE__*/ S.Array(
   WelcomeSuggestedStep,
 ) as any as S.Schema<WelcomeResponseSuggestedNextStepsList>;
@@ -10965,12 +8746,12 @@ export type InvitesCreateError =
   | PosthogOpError;
 export const invitesCreate: API.OperationMethod<
   InvitesCreateRequest,
-  OrganizationInvite,
+  OrganizationInviteOutput,
   InvitesCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InvitesCreateRequest,
-  output: OrganizationInvite,
+  output: OrganizationInviteOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -10980,12 +8761,12 @@ export type InvitesDelegateCreateError = PosthogOpError;
 /** Create an onboarding delegation invite: an admin-level invite flagged as a setup delegation. Sends a single dedicated delegation email and records the inviting user as having delegated. */
 export const invitesDelegateCreate: API.OperationMethod<
   InvitesDelegateCreateRequest,
-  OrganizationInvite,
+  OrganizationInviteOutput,
   InvitesDelegateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InvitesDelegateCreateRequest,
-  output: OrganizationInvite,
+  output: OrganizationInviteOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -11012,12 +8793,12 @@ export type InvitesListError =
   | PosthogOpError;
 export const invitesList: API.OperationMethod<
   InvitesListRequest,
-  PaginatedOrganizationInviteList,
+  PaginatedOrganizationInviteListOutput,
   InvitesListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: InvitesListRequest,
-  output: PaginatedOrganizationInviteList,
+  output: PaginatedOrganizationInviteListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -11933,12 +9714,12 @@ export type RolesRoleMembershipsCreateError =
 /** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRoleMembershipsCreate: API.OperationMethod<
   RolesRoleMembershipsCreateRequest,
-  RoleMembership,
+  RoleMembershipOutput,
   RolesRoleMembershipsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RolesRoleMembershipsCreateRequest,
-  output: RoleMembership,
+  output: RoleMembershipOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -11970,12 +9751,12 @@ export type RolesRoleMembershipsListError =
 /** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRoleMembershipsList: API.OperationMethod<
   RolesRoleMembershipsListRequest,
-  PaginatedRoleMembershipList,
+  PaginatedRoleMembershipListOutput,
   RolesRoleMembershipsListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RolesRoleMembershipsListRequest,
-  output: PaginatedRoleMembershipList,
+  output: PaginatedRoleMembershipListOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -11988,12 +9769,12 @@ export type RolesRoleMembershipsRetrieveError =
 /** Role endpoints disclose member records, so they scope them the same way the members list does when the org restricts member list visibility. */
 export const rolesRoleMembershipsRetrieve: API.OperationMethod<
   RolesRoleMembershipsRetrieveRequest,
-  RoleMembership,
+  RoleMembershipOutput,
   RolesRoleMembershipsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: RolesRoleMembershipsRetrieveRequest,
-  output: RoleMembership,
+  output: RoleMembershipOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

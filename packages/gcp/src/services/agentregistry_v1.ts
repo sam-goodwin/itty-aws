@@ -96,7 +96,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -208,7 +208,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -256,8 +256,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type McpServerSpecTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NO_SPEC"
-  | "TOOL_SPEC"
-  | (string & {});
+  | "TOOL_SPEC";
 export const McpServerSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the MCP Server. */
@@ -277,8 +276,7 @@ export const McpServerSpec = /*@__PURE__*/ S.suspend(() =>
 export type AgentSpecTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NO_SPEC"
-  | "A2A_AGENT_CARD"
-  | (string & {});
+  | "A2A_AGENT_CARD";
 export const AgentSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the agent. */
@@ -295,10 +293,7 @@ export const AgentSpec = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AgentSpec" }) as any as S.Schema<AgentSpec>;
 
-export type EndpointSpecTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "NO_SPEC"
-  | (string & {});
+export type EndpointSpecTypeEnum = "TYPE_UNSPECIFIED" | "NO_SPEC";
 export const EndpointSpecTypeEnum = /*@__PURE__*/ S.String;
 
 /** The spec of the endpoint. */
@@ -319,8 +314,7 @@ export type InterfaceProtocolBindingEnum =
   | "PROTOCOL_BINDING_UNSPECIFIED"
   | "JSONRPC"
   | "GRPC"
-  | "HTTP_JSON"
-  | (string & {});
+  | "HTTP_JSON";
 export const InterfaceProtocolBindingEnum = /*@__PURE__*/ S.String;
 
 /** Represents the connection details for an Agent or MCP Server. */
@@ -337,7 +331,7 @@ export const Interface = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Interface" }) as any as S.Schema<Interface>;
 
-export type InterfaceList = Interface[];
+export type InterfaceList = ReadonlyArray<Interface>;
 export const InterfaceList = /*@__PURE__*/ S.Array(
   Interface,
 ) as any as S.Schema<InterfaceList>;
@@ -502,7 +496,7 @@ export const FetchAvailableProjectsLocationsBindingsRequest =
     identifier: "FetchAvailableProjectsLocationsBindingsRequest",
   }) as any as S.Schema<FetchAvailableProjectsLocationsBindingsRequest>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -611,15 +605,12 @@ export const A2ASkill = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "A2ASkill" }) as any as S.Schema<A2ASkill>;
 
-export type A2ASkillList = A2ASkill[];
+export type A2ASkillList = ReadonlyArray<A2ASkill>;
 export const A2ASkillList = /*@__PURE__*/ S.Array(
   A2ASkill,
 ) as any as S.Schema<A2ASkillList>;
 
-export type CardTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "A2A_AGENT_CARD"
-  | (string & {});
+export type CardTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT_CARD";
 export const CardTypeEnum = /*@__PURE__*/ S.String;
 
 /** Full Agent Card payload, often obtained from the A2A Agent Card. */
@@ -642,11 +633,7 @@ export const DocumentMapMap = /*@__PURE__*/ S.Record(
   DocumentMap,
 ) as any as S.Schema<DocumentMapMap>;
 
-export type ProtocolTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "A2A_AGENT"
-  | "CUSTOM"
-  | (string & {});
+export type ProtocolTypeEnum = "TYPE_UNSPECIFIED" | "A2A_AGENT" | "CUSTOM";
 export const ProtocolTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents the protocol of an Agent. */
@@ -666,7 +653,7 @@ export const Protocol = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Protocol" }) as any as S.Schema<Protocol>;
 
-export type ProtocolList = Protocol[];
+export type ProtocolList = ReadonlyArray<Protocol>;
 export const ProtocolList = /*@__PURE__*/ S.Array(
   Protocol,
 ) as any as S.Schema<ProtocolList>;
@@ -846,7 +833,7 @@ export const Tool = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Tool" }) as any as S.Schema<Tool>;
 
-export type ToolList = Tool[];
+export type ToolList = ReadonlyArray<Tool>;
 export const ToolList = /*@__PURE__*/ S.Array(
   Tool,
 ) as any as S.Schema<ToolList>;
@@ -953,7 +940,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1004,7 +991,7 @@ export const ListProjectsLocationsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsAgentsRequest",
 }) as any as S.Schema<ListProjectsLocationsAgentsRequest>;
 
-export type AgentList = Agent[];
+export type AgentList = ReadonlyArray<Agent>;
 export const AgentList = /*@__PURE__*/ S.Array(
   Agent,
 ) as any as S.Schema<AgentList>;
@@ -1100,7 +1087,7 @@ export const ListProjectsLocationsEndpointsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsEndpointsRequest",
 }) as any as S.Schema<ListProjectsLocationsEndpointsRequest>;
 
-export type EndpointList = Endpoint[];
+export type EndpointList = ReadonlyArray<Endpoint>;
 export const EndpointList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointList>;
@@ -1152,7 +1139,7 @@ export const ListProjectsLocationsMcpServersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsMcpServersRequest",
 }) as any as S.Schema<ListProjectsLocationsMcpServersRequest>;
 
-export type McpServerList = McpServer[];
+export type McpServerList = ReadonlyArray<McpServer>;
 export const McpServerList = /*@__PURE__*/ S.Array(
   McpServer,
 ) as any as S.Schema<McpServerList>;
@@ -1204,7 +1191,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1256,7 +1243,7 @@ export const ListProjectsLocationsServicesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsServicesRequest",
 }) as any as S.Schema<ListProjectsLocationsServicesRequest>;
 
-export type ServiceList = Service[];
+export type ServiceList = ReadonlyArray<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;

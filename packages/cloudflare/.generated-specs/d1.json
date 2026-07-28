@@ -54,6 +54,24 @@
           "traits": {
             "smithy.api#enumValue": "weur"
           }
+        },
+        "EEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eeur"
+          }
+        },
+        "APAC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "apac"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oc"
+          }
         }
       }
     },
@@ -681,6 +699,42 @@
           "traits": {
             "smithy.api#enumValue": "created_at"
           }
+        },
+        "VERSION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "version"
+          }
+        },
+        "JURISDICTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jurisdiction"
+          }
+        },
+        "NUM_TABLES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "num_tables"
+          }
+        },
+        "FILE_SIZE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "file_size"
+          }
+        },
+        "RUNNING_IN_REGION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running_in_region"
+          }
+        },
+        "READ_REPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "read_replication"
+          }
         }
       }
     },
@@ -1003,6 +1057,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "WEUR"
+          }
+        },
+        "EEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEUR"
+          }
+        },
+        "APAC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "APAC"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
           }
         }
       }
@@ -1455,6 +1527,24 @@
           "traits": {
             "smithy.api#enumValue": "WEUR"
           }
+        },
+        "EEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEUR"
+          }
+        },
+        "APAC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "APAC"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
         }
       }
     },
@@ -1720,6 +1810,24 @@
           "traits": {
             "smithy.api#enumValue": "WEUR"
           }
+        },
+        "EEUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EEUR"
+          }
+        },
+        "APAC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "APAC"
+          }
+        },
+        "OC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OC"
+          }
         }
       }
     },
@@ -1811,33 +1919,10 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.d1#DatabaseRawResultItemResultsRowsItem": {
-      "type": "structure",
-      "members": {
-        "number": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "string": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "unknown": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
     "com.cloudflare.d1#DatabaseRawResultItemResultsRowsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.d1#DatabaseRawResultItemResultsRowsItem"
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.d1#DatabaseRawResultItemResults": {

@@ -182,7 +182,7 @@ export class PoolNotFound extends T.applyErrorMatchers(
   [{ code: 1001 }],
 ) {}
 
-export type PoolsBulkEditRequestNotificationEmail = "" | (string & {});
+export type PoolsBulkEditRequestNotificationEmail = "";
 export const PoolsBulkEditRequestNotificationEmail = /*@__PURE__*/ S.String;
 
 export interface BulkPatchPoolsRequest {
@@ -210,21 +210,36 @@ export const BulkPatchPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPatchPoolsRequest",
 }) as any as S.Schema<BulkPatchPoolsRequest>;
 
-export type PoolsBulkEditResultItemCheckRegionsList = unknown[];
+export type PoolsBulkEditResultItemCheckRegionsItem =
+  | "WNAM"
+  | "ENAM"
+  | "WEU"
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "SAS"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
+export const PoolsBulkEditResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
+
+export type PoolsBulkEditResultItemCheckRegionsList =
+  ReadonlyArray<PoolsBulkEditResultItemCheckRegionsItem>;
 export const PoolsBulkEditResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PoolsBulkEditResultItemCheckRegionsItem,
 ) as any as S.Schema<PoolsBulkEditResultItemCheckRegionsList>;
 
 export type PoolsBulkEditResultItemLoadSheddingDefaultPolicy =
   | "random"
-  | "hash"
-  | (string & {});
+  | "hash";
 export const PoolsBulkEditResultItemLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsBulkEditResultItemLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsBulkEditResultItemLoadSheddingSessionPolicy = "hash";
 export const PoolsBulkEditResultItemLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -257,7 +272,7 @@ export const PoolsBulkEditResultItemLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsBulkEditResultItemLoadShedding",
 }) as any as S.Schema<PoolsBulkEditResultItemLoadShedding>;
 
-export type PoolsBulkEditResultItemNetworksList = string[];
+export type PoolsBulkEditResultItemNetworksList = ReadonlyArray<string>;
 export const PoolsBulkEditResultItemNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsBulkEditResultItemNetworksList>;
@@ -282,13 +297,13 @@ export interface PoolsBulkEditResultItemNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
   origin?: PoolsBulkEditResultItemNotificationFilterOrigin;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
+  pool?: PoolsBulkEditResultItemNotificationFilterOrigin;
 }
 export const PoolsBulkEditResultItemNotificationFilter =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       origin: S.optional(PoolsBulkEditResultItemNotificationFilterOrigin),
-      pool: S.optional(S.Unknown),
+      pool: S.optional(PoolsBulkEditResultItemNotificationFilterOrigin),
     }),
   ).annotate({
     identifier: "PoolsBulkEditResultItemNotificationFilter",
@@ -298,8 +313,7 @@ export type PoolsBulkEditResultItemOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsBulkEditResultItemOriginSteeringPolicy =
   /*@__PURE__*/ S.String;
 
@@ -316,10 +330,11 @@ export const PoolsBulkEditResultItemOriginSteering = /*@__PURE__*/ S.suspend(
   identifier: "PoolsBulkEditResultItemOriginSteering",
 }) as any as S.Schema<PoolsBulkEditResultItemOriginSteering>;
 
-export type PoolsBulkEditResultItemOriginsItemHeaderHostList = unknown[];
+export type PoolsBulkEditResultItemOriginsItemHeaderHostList =
+  ReadonlyArray<string>;
 export const PoolsBulkEditResultItemOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<PoolsBulkEditResultItemOriginsItemHeaderHostList>;
 
 export interface PoolsBulkEditResultItemOriginsItemHeader {
@@ -372,7 +387,7 @@ export const PoolsBulkEditResultItemOriginsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoolsBulkEditResultItemOriginsItem>;
 
 export type PoolsBulkEditResultItemOriginsList =
-  PoolsBulkEditResultItemOriginsItem[];
+  ReadonlyArray<PoolsBulkEditResultItemOriginsItem>;
 export const PoolsBulkEditResultItemOriginsList = /*@__PURE__*/ S.Array(
   PoolsBulkEditResultItemOriginsItem,
 ) as any as S.Schema<PoolsBulkEditResultItemOriginsList>;
@@ -450,7 +465,7 @@ export const PoolsBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsBulkEditResultItem",
 }) as any as S.Schema<PoolsBulkEditResultItem>;
 
-export type PoolsBulkEditResultList = PoolsBulkEditResultItem[];
+export type PoolsBulkEditResultList = ReadonlyArray<PoolsBulkEditResultItem>;
 export const PoolsBulkEditResultList = /*@__PURE__*/ S.Array(
   PoolsBulkEditResultItem,
 ) as any as S.Schema<PoolsBulkEditResultList>;
@@ -470,9 +485,9 @@ export const BulkPatchPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPatchPoolsResponse",
 }) as any as S.Schema<BulkPatchPoolsResponse>;
 
-export type CreateRequestDefaultPoolsList = unknown[];
+export type CreateRequestDefaultPoolsList = ReadonlyArray<string>;
 export const CreateRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<CreateRequestDefaultPoolsList>;
 
 export interface CreateRequestAdaptiveRouting {
@@ -489,26 +504,27 @@ export const CreateRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestAdaptiveRouting",
 }) as any as S.Schema<CreateRequestAdaptiveRouting>;
 
+export type CreateRequestCountryPoolsValueList = ReadonlyArray<string>;
+export const CreateRequestCountryPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateRequestCountryPoolsValueList>;
+
 export type CreateRequestCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: CreateRequestCountryPoolsValueList | undefined;
 };
 export const CreateRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  CreateRequestCountryPoolsValueList,
 ) as any as S.Schema<CreateRequestCountryPoolsMap>;
 
-export type CreateRequestLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type CreateRequestLocationStrategyMode = "pop" | "resolver_ip";
 export const CreateRequestLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type CreateRequestLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const CreateRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface CreateRequestLocationStrategy {
@@ -528,23 +544,30 @@ export const CreateRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestLocationStrategy",
 }) as any as S.Schema<CreateRequestLocationStrategy>;
 
-export type CreateRequestNetworksList = string[];
+export type CreateRequestNetworksList = ReadonlyArray<string>;
 export const CreateRequestNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRequestNetworksList>;
 
-export type CreateRequestPopPoolsMap = { [key: string]: unknown | undefined };
+export type CreateRequestPopPoolsValueList = ReadonlyArray<string>;
+export const CreateRequestPopPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateRequestPopPoolsValueList>;
+
+export type CreateRequestPopPoolsMap = {
+  [key: string]: CreateRequestPopPoolsValueList | undefined;
+};
 export const CreateRequestPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  CreateRequestPopPoolsValueList,
 ) as any as S.Schema<CreateRequestPopPoolsMap>;
 
 export type CreateRequestRandomSteeringPoolWeightsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: number | undefined;
 };
 export const CreateRequestRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  S.Number,
 ) as any as S.Schema<CreateRequestRandomSteeringPoolWeightsMap>;
 
 export interface CreateRequestRandomSteering {
@@ -564,12 +587,17 @@ export const CreateRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestRandomSteering",
 }) as any as S.Schema<CreateRequestRandomSteering>;
 
+export type CreateRequestRegionPoolsValueList = ReadonlyArray<string>;
+export const CreateRequestRegionPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateRequestRegionPoolsValueList>;
+
 export type CreateRequestRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: CreateRequestRegionPoolsValueList | undefined;
 };
 export const CreateRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  CreateRequestRegionPoolsValueList,
 ) as any as S.Schema<CreateRequestRegionPoolsMap>;
 
 export interface CreateRequestRulesItemFixedResponse {
@@ -593,41 +621,75 @@ export const CreateRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestRulesItemFixedResponse",
 }) as any as S.Schema<CreateRequestRulesItemFixedResponse>;
 
+export type CreateRequestRulesItemOverridesCountryPoolsValueList =
+  ReadonlyArray<string>;
+export const CreateRequestRulesItemOverridesCountryPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateRequestRulesItemOverridesCountryPoolsValueList>;
+
 export type CreateRequestRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | CreateRequestRulesItemOverridesCountryPoolsValueList
+    | undefined;
 };
 export const CreateRequestRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    CreateRequestRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<CreateRequestRulesItemOverridesCountryPoolsMap>;
 
-export type CreateRequestRulesItemOverridesDefaultPoolsList = unknown[];
+export type CreateRequestRulesItemOverridesDefaultPoolsList =
+  ReadonlyArray<string>;
 export const CreateRequestRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<CreateRequestRulesItemOverridesDefaultPoolsList>;
 
+export type CreateRequestRulesItemOverridesPopPoolsValueList =
+  ReadonlyArray<string>;
+export const CreateRequestRulesItemOverridesPopPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateRequestRulesItemOverridesPopPoolsValueList>;
+
 export type CreateRequestRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: CreateRequestRulesItemOverridesPopPoolsValueList | undefined;
 };
 export const CreateRequestRulesItemOverridesPopPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    CreateRequestRulesItemOverridesPopPoolsValueList,
   ) as any as S.Schema<CreateRequestRulesItemOverridesPopPoolsMap>;
 
+export type CreateRequestRulesItemOverridesRegionPoolsValueList =
+  ReadonlyArray<string>;
+export const CreateRequestRulesItemOverridesRegionPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateRequestRulesItemOverridesRegionPoolsValueList>;
+
 export type CreateRequestRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | CreateRequestRulesItemOverridesRegionPoolsValueList
+    | undefined;
 };
 export const CreateRequestRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    CreateRequestRulesItemOverridesRegionPoolsValueList,
   ) as any as S.Schema<CreateRequestRulesItemOverridesRegionPoolsMap>;
 
+export type CreateRequestRulesItemOverridesSessionAffinity =
+  | "none"
+  | "cookie"
+  | "ip_cookie"
+  | "header";
+export const CreateRequestRulesItemOverridesSessionAffinity =
+  /*@__PURE__*/ S.String;
+
 export type CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  string[];
+  ReadonlyArray<string>;
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -637,21 +699,19 @@ export type CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const CreateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -695,9 +755,21 @@ export const CreateRequestRulesItemOverridesSessionAffinityAttributes =
     identifier: "CreateRequestRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<CreateRequestRulesItemOverridesSessionAffinityAttributes>;
 
+export type CreateRequestRulesItemOverridesSteeringPolicy =
+  | "off"
+  | "geo"
+  | "random"
+  | "dynamic_latency"
+  | "proximity"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | "";
+export const CreateRequestRulesItemOverridesSteeringPolicy =
+  /*@__PURE__*/ S.String;
+
 export interface CreateRequestRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: unknown;
+  adaptiveRouting?: CreateRequestAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: CreateRequestRulesItemOverridesCountryPoolsMap;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -705,27 +777,29 @@ export interface CreateRequestRulesItemOverrides {
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: unknown;
+  locationStrategy?: CreateRequestLocationStrategy;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
   popPools?: CreateRequestRulesItemOverridesPopPoolsMap;
   /** Configures pool weights. */
-  randomSteering?: unknown;
+  randomSteering?: CreateRequestRandomSteering;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
   regionPools?: CreateRequestRulesItemOverridesRegionPoolsMap;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: CreateRequestRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: CreateRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: CreateRequestRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
 export const CreateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
+    adaptiveRouting: S.optional(
+      CreateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+    ),
     countryPools: S.optional(
       CreateRequestRulesItemOverridesCountryPoolsMap.pipe(
         T.Body("country_pools"),
@@ -737,17 +811,25 @@ export const CreateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
+    locationStrategy: S.optional(
+      CreateRequestLocationStrategy.pipe(T.Body("location_strategy")),
+    ),
     popPools: S.optional(
       CreateRequestRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
     ),
-    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
+    randomSteering: S.optional(
+      CreateRequestRandomSteering.pipe(T.Body("random_steering")),
+    ),
     regionPools: S.optional(
       CreateRequestRulesItemOverridesRegionPoolsMap.pipe(
         T.Body("region_pools"),
       ),
     ),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      CreateRequestRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
       CreateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
         T.Body("session_affinity_attributes"),
@@ -756,7 +838,11 @@ export const CreateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      CreateRequestRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
   }),
 ).annotate({
@@ -795,7 +881,7 @@ export const CreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestRulesItem",
 }) as any as S.Schema<CreateRequestRulesItem>;
 
-export type CreateRequestRulesList = CreateRequestRulesItem[];
+export type CreateRequestRulesList = ReadonlyArray<CreateRequestRulesItem>;
 export const CreateRequestRulesList = /*@__PURE__*/ S.Array(
   CreateRequestRulesItem,
 ) as any as S.Schema<CreateRequestRulesList>;
@@ -829,13 +915,13 @@ export interface CreateLoadBalancerRequest {
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: CreateRequestRulesList;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: CreateRequestRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: unknown;
+  sessionAffinityAttributes?: CreateRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: CreateRequestRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -865,14 +951,24 @@ export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
       CreateRequestRegionPoolsMap.pipe(T.Body("region_pools")),
     ),
     rules: S.optional(CreateRequestRulesList),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      CreateRequestRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
-      S.Unknown.pipe(T.Body("session_affinity_attributes")),
+      CreateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
+        T.Body("session_affinity_attributes"),
+      ),
     ),
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      CreateRequestRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
   })
     .pipe(
@@ -901,31 +997,32 @@ export const CreateResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseAdaptiveRouting",
 }) as any as S.Schema<CreateResponseAdaptiveRouting>;
 
+export type CreateResponseCountryPoolsValueList = ReadonlyArray<string>;
+export const CreateResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponseCountryPoolsValueList>;
+
 export type CreateResponseCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: CreateResponseCountryPoolsValueList | undefined;
 };
 export const CreateResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  CreateResponseCountryPoolsValueList,
 ) as any as S.Schema<CreateResponseCountryPoolsMap>;
 
-export type CreateResponseDefaultPoolsList = unknown[];
+export type CreateResponseDefaultPoolsList = ReadonlyArray<string>;
 export const CreateResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<CreateResponseDefaultPoolsList>;
 
-export type CreateResponseLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type CreateResponseLocationStrategyMode = "pop" | "resolver_ip";
 export const CreateResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type CreateResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const CreateResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface CreateResponseLocationStrategy {
@@ -945,24 +1042,31 @@ export const CreateResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseLocationStrategy",
 }) as any as S.Schema<CreateResponseLocationStrategy>;
 
-export type CreateResponseNetworksList = string[];
+export type CreateResponseNetworksList = ReadonlyArray<string>;
 export const CreateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResponseNetworksList>;
 
-export type CreateResponsePopPoolsMap = { [key: string]: unknown | undefined };
+export type CreateResponsePopPoolsValueList = ReadonlyArray<string>;
+export const CreateResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponsePopPoolsValueList>;
+
+export type CreateResponsePopPoolsMap = {
+  [key: string]: CreateResponsePopPoolsValueList | undefined;
+};
 export const CreateResponsePopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  CreateResponsePopPoolsValueList,
 ) as any as S.Schema<CreateResponsePopPoolsMap>;
 
 export type CreateResponseRandomSteeringPoolWeightsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: number | undefined;
 };
 export const CreateResponseRandomSteeringPoolWeightsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.Number,
   ) as any as S.Schema<CreateResponseRandomSteeringPoolWeightsMap>;
 
 export interface CreateResponseRandomSteering {
@@ -982,12 +1086,17 @@ export const CreateResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseRandomSteering",
 }) as any as S.Schema<CreateResponseRandomSteering>;
 
+export type CreateResponseRegionPoolsValueList = ReadonlyArray<string>;
+export const CreateResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponseRegionPoolsValueList>;
+
 export type CreateResponseRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: CreateResponseRegionPoolsValueList | undefined;
 };
 export const CreateResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  CreateResponseRegionPoolsValueList,
 ) as any as S.Schema<CreateResponseRegionPoolsMap>;
 
 export interface CreateResponseRulesItemFixedResponse {
@@ -1012,41 +1121,75 @@ export const CreateResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateResponseRulesItemFixedResponse",
 }) as any as S.Schema<CreateResponseRulesItemFixedResponse>;
 
+export type CreateResponseRulesItemOverridesCountryPoolsValueList =
+  ReadonlyArray<string>;
+export const CreateResponseRulesItemOverridesCountryPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateResponseRulesItemOverridesCountryPoolsValueList>;
+
 export type CreateResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | CreateResponseRulesItemOverridesCountryPoolsValueList
+    | undefined;
 };
 export const CreateResponseRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    CreateResponseRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<CreateResponseRulesItemOverridesCountryPoolsMap>;
 
-export type CreateResponseRulesItemOverridesDefaultPoolsList = unknown[];
+export type CreateResponseRulesItemOverridesDefaultPoolsList =
+  ReadonlyArray<string>;
 export const CreateResponseRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<CreateResponseRulesItemOverridesDefaultPoolsList>;
 
+export type CreateResponseRulesItemOverridesPopPoolsValueList =
+  ReadonlyArray<string>;
+export const CreateResponseRulesItemOverridesPopPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateResponseRulesItemOverridesPopPoolsValueList>;
+
 export type CreateResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: CreateResponseRulesItemOverridesPopPoolsValueList | undefined;
 };
 export const CreateResponseRulesItemOverridesPopPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    CreateResponseRulesItemOverridesPopPoolsValueList,
   ) as any as S.Schema<CreateResponseRulesItemOverridesPopPoolsMap>;
 
+export type CreateResponseRulesItemOverridesRegionPoolsValueList =
+  ReadonlyArray<string>;
+export const CreateResponseRulesItemOverridesRegionPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateResponseRulesItemOverridesRegionPoolsValueList>;
+
 export type CreateResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | CreateResponseRulesItemOverridesRegionPoolsValueList
+    | undefined;
 };
 export const CreateResponseRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    CreateResponseRulesItemOverridesRegionPoolsValueList,
   ) as any as S.Schema<CreateResponseRulesItemOverridesRegionPoolsMap>;
 
+export type CreateResponseRulesItemOverridesSessionAffinity =
+  | "none"
+  | "cookie"
+  | "ip_cookie"
+  | "header";
+export const CreateResponseRulesItemOverridesSessionAffinity =
+  /*@__PURE__*/ S.String;
+
 export type CreateResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  string[];
+  ReadonlyArray<string>;
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1056,21 +1199,19 @@ export type CreateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const CreateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -1114,9 +1255,21 @@ export const CreateResponseRulesItemOverridesSessionAffinityAttributes =
     identifier: "CreateResponseRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<CreateResponseRulesItemOverridesSessionAffinityAttributes>;
 
+export type CreateResponseRulesItemOverridesSteeringPolicy =
+  | "off"
+  | "geo"
+  | "random"
+  | "dynamic_latency"
+  | "proximity"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | "";
+export const CreateResponseRulesItemOverridesSteeringPolicy =
+  /*@__PURE__*/ S.String;
+
 export interface CreateResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: unknown;
+  adaptiveRouting?: CreateResponseAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: CreateResponseRulesItemOverridesCountryPoolsMap;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -1124,27 +1277,29 @@ export interface CreateResponseRulesItemOverrides {
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: unknown;
+  locationStrategy?: CreateResponseLocationStrategy;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
   popPools?: CreateResponseRulesItemOverridesPopPoolsMap;
   /** Configures pool weights. */
-  randomSteering?: unknown;
+  randomSteering?: CreateResponseRandomSteering;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
   regionPools?: CreateResponseRulesItemOverridesRegionPoolsMap;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: CreateResponseRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: CreateResponseRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: CreateResponseRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
 export const CreateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
+    adaptiveRouting: S.optional(
+      CreateResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+    ),
     countryPools: S.optional(
       CreateResponseRulesItemOverridesCountryPoolsMap.pipe(
         T.Body("country_pools"),
@@ -1156,17 +1311,25 @@ export const CreateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
+    locationStrategy: S.optional(
+      CreateResponseLocationStrategy.pipe(T.Body("location_strategy")),
+    ),
     popPools: S.optional(
       CreateResponseRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
     ),
-    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
+    randomSteering: S.optional(
+      CreateResponseRandomSteering.pipe(T.Body("random_steering")),
+    ),
     regionPools: S.optional(
       CreateResponseRulesItemOverridesRegionPoolsMap.pipe(
         T.Body("region_pools"),
       ),
     ),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      CreateResponseRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
       CreateResponseRulesItemOverridesSessionAffinityAttributes.pipe(
         T.Body("session_affinity_attributes"),
@@ -1175,7 +1338,11 @@ export const CreateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      CreateResponseRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
   }),
 ).annotate({
@@ -1214,7 +1381,7 @@ export const CreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResponseRulesItem",
 }) as any as S.Schema<CreateResponseRulesItem>;
 
-export type CreateResponseRulesList = CreateResponseRulesItem[];
+export type CreateResponseRulesList = ReadonlyArray<CreateResponseRulesItem>;
 export const CreateResponseRulesList = /*@__PURE__*/ S.Array(
   CreateResponseRulesItem,
 ) as any as S.Schema<CreateResponseRulesList>;
@@ -1253,13 +1420,13 @@ export interface CreateLoadBalancerResponse {
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: CreateResponseRulesList;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: CreateResponseRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: unknown;
+  sessionAffinityAttributes?: CreateResponseRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: CreateResponseRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
   zoneName?: string;
@@ -1295,14 +1462,24 @@ export const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
       CreateResponseRegionPoolsMap.pipe(T.Body("region_pools")),
     ),
     rules: S.optional(CreateResponseRulesList),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      CreateResponseRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
-      S.Unknown.pipe(T.Body("session_affinity_attributes")),
+      CreateResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+        T.Body("session_affinity_attributes"),
+      ),
     ),
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      CreateResponseRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1310,19 +1487,26 @@ export const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateLoadBalancerResponse",
 }) as any as S.Schema<CreateLoadBalancerResponse>;
 
+export type MonitorsCreateRequestHeaderValueList = ReadonlyArray<string>;
+export const MonitorsCreateRequestHeaderValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MonitorsCreateRequestHeaderValueList>;
+
 export type MonitorsCreateRequestHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: MonitorsCreateRequestHeaderValueList | undefined;
 };
 export const MonitorsCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  MonitorsCreateRequestHeaderValueList,
 ) as any as S.Schema<MonitorsCreateRequestHeaderMap>;
 
 export type MonitorsCreateRequestType =
   | "http"
   | "https"
   | "tcp"
-  | (string & {});
+  | "udp_icmp"
+  | "icmp_ping"
+  | "smtp";
 export const MonitorsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateMonitorRequest {
@@ -1393,19 +1577,26 @@ export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMonitorRequest",
 }) as any as S.Schema<CreateMonitorRequest>;
 
+export type MonitorsCreateResponseHeaderValueList = ReadonlyArray<string>;
+export const MonitorsCreateResponseHeaderValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MonitorsCreateResponseHeaderValueList>;
+
 export type MonitorsCreateResponseHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: MonitorsCreateResponseHeaderValueList | undefined;
 };
 export const MonitorsCreateResponseHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  MonitorsCreateResponseHeaderValueList,
 ) as any as S.Schema<MonitorsCreateResponseHeaderMap>;
 
 export type MonitorsCreateResponseType =
   | "http"
   | "https"
   | "tcp"
-  | (string & {});
+  | "udp_icmp"
+  | "icmp_ping"
+  | "smtp";
 export const MonitorsCreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1501,7 +1692,7 @@ export const MonitorGroupsCreateRequestMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsCreateRequestMembersItem>;
 
 export type MonitorGroupsCreateRequestMembersList =
-  MonitorGroupsCreateRequestMembersItem[];
+  ReadonlyArray<MonitorGroupsCreateRequestMembersItem>;
 export const MonitorGroupsCreateRequestMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsCreateRequestMembersItem,
 ) as any as S.Schema<MonitorGroupsCreateRequestMembersList>;
@@ -1561,7 +1752,7 @@ export const MonitorGroupsCreateResponseMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsCreateResponseMembersItem>;
 
 export type MonitorGroupsCreateResponseMembersList =
-  MonitorGroupsCreateResponseMembersItem[];
+  ReadonlyArray<MonitorGroupsCreateResponseMembersItem>;
 export const MonitorGroupsCreateResponseMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsCreateResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsCreateResponseMembersList>;
@@ -1591,19 +1782,28 @@ export const CreateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMonitorGroupResponse",
 }) as any as S.Schema<CreateMonitorGroupResponse>;
 
+export type MonitorsPreviewsCreateRequestHeaderValueList =
+  ReadonlyArray<string>;
+export const MonitorsPreviewsCreateRequestHeaderValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MonitorsPreviewsCreateRequestHeaderValueList>;
+
 export type MonitorsPreviewsCreateRequestHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: MonitorsPreviewsCreateRequestHeaderValueList | undefined;
 };
 export const MonitorsPreviewsCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  MonitorsPreviewsCreateRequestHeaderValueList,
 ) as any as S.Schema<MonitorsPreviewsCreateRequestHeaderMap>;
 
 export type MonitorsPreviewsCreateRequestType =
   | "http"
   | "https"
   | "tcp"
-  | (string & {});
+  | "udp_icmp"
+  | "icmp_ping"
+  | "smtp";
 export const MonitorsPreviewsCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreateMonitorPreviewRequest {
@@ -1677,11 +1877,11 @@ export const CreateMonitorPreviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMonitorPreviewRequest>;
 
 export type MonitorsPreviewsCreateResponsePoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const MonitorsPreviewsCreateResponsePoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<MonitorsPreviewsCreateResponsePoolsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1699,10 +1899,10 @@ export const CreateMonitorPreviewResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMonitorPreviewResponse",
 }) as any as S.Schema<CreateMonitorPreviewResponse>;
 
-export type PoolsCreateRequestOriginsItemHeaderHostList = unknown[];
+export type PoolsCreateRequestOriginsItemHeaderHostList = ReadonlyArray<string>;
 export const PoolsCreateRequestOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<PoolsCreateRequestOriginsItemHeaderHostList>;
 
 export interface PoolsCreateRequestOriginsItemHeader {
@@ -1753,21 +1953,17 @@ export const PoolsCreateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsCreateRequestOriginsItem",
 }) as any as S.Schema<PoolsCreateRequestOriginsItem>;
 
-export type PoolsCreateRequestOriginsList = PoolsCreateRequestOriginsItem[];
+export type PoolsCreateRequestOriginsList =
+  ReadonlyArray<PoolsCreateRequestOriginsItem>;
 export const PoolsCreateRequestOriginsList = /*@__PURE__*/ S.Array(
   PoolsCreateRequestOriginsItem,
 ) as any as S.Schema<PoolsCreateRequestOriginsList>;
 
-export type PoolsCreateRequestLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsCreateRequestLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsCreateRequestLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsCreateRequestLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsCreateRequestLoadSheddingSessionPolicy = "hash";
 export const PoolsCreateRequestLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1820,13 +2016,13 @@ export interface PoolsCreateRequestNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
   origin?: PoolsCreateRequestNotificationFilterOrigin;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
+  pool?: PoolsCreateRequestNotificationFilterOrigin;
 }
 export const PoolsCreateRequestNotificationFilter = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       origin: S.optional(PoolsCreateRequestNotificationFilterOrigin),
-      pool: S.optional(S.Unknown),
+      pool: S.optional(PoolsCreateRequestNotificationFilterOrigin),
     }),
 ).annotate({
   identifier: "PoolsCreateRequestNotificationFilter",
@@ -1836,8 +2032,7 @@ export type PoolsCreateRequestOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsCreateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsCreateRequestOriginSteering {
@@ -1917,21 +2112,34 @@ export const CreatePoolRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePoolRequest",
 }) as any as S.Schema<CreatePoolRequest>;
 
-export type PoolsCreateResponseCheckRegionsList = unknown[];
+export type PoolsCreateResponseCheckRegionsItem =
+  | "WNAM"
+  | "ENAM"
+  | "WEU"
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "SAS"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
+export const PoolsCreateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
+
+export type PoolsCreateResponseCheckRegionsList =
+  ReadonlyArray<PoolsCreateResponseCheckRegionsItem>;
 export const PoolsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PoolsCreateResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsCreateResponseCheckRegionsList>;
 
-export type PoolsCreateResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsCreateResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsCreateResponseLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsCreateResponseLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsCreateResponseLoadSheddingSessionPolicy = "hash";
 export const PoolsCreateResponseLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -1964,7 +2172,7 @@ export const PoolsCreateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsCreateResponseLoadShedding",
 }) as any as S.Schema<PoolsCreateResponseLoadShedding>;
 
-export type PoolsCreateResponseNetworksList = string[];
+export type PoolsCreateResponseNetworksList = ReadonlyArray<string>;
 export const PoolsCreateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsCreateResponseNetworksList>;
@@ -1989,13 +2197,13 @@ export interface PoolsCreateResponseNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
   origin?: PoolsCreateResponseNotificationFilterOrigin;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
+  pool?: PoolsCreateResponseNotificationFilterOrigin;
 }
 export const PoolsCreateResponseNotificationFilter = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       origin: S.optional(PoolsCreateResponseNotificationFilterOrigin),
-      pool: S.optional(S.Unknown),
+      pool: S.optional(PoolsCreateResponseNotificationFilterOrigin),
     }),
 ).annotate({
   identifier: "PoolsCreateResponseNotificationFilter",
@@ -2005,8 +2213,7 @@ export type PoolsCreateResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsCreateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsCreateResponseOriginSteering {
@@ -2021,10 +2228,11 @@ export const PoolsCreateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsCreateResponseOriginSteering",
 }) as any as S.Schema<PoolsCreateResponseOriginSteering>;
 
-export type PoolsCreateResponseOriginsItemHeaderHostList = unknown[];
+export type PoolsCreateResponseOriginsItemHeaderHostList =
+  ReadonlyArray<string>;
 export const PoolsCreateResponseOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<PoolsCreateResponseOriginsItemHeaderHostList>;
 
 export interface PoolsCreateResponseOriginsItemHeader {
@@ -2076,7 +2284,8 @@ export const PoolsCreateResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsCreateResponseOriginsItem",
 }) as any as S.Schema<PoolsCreateResponseOriginsItem>;
 
-export type PoolsCreateResponseOriginsList = PoolsCreateResponseOriginsItem[];
+export type PoolsCreateResponseOriginsList =
+  ReadonlyArray<PoolsCreateResponseOriginsItem>;
 export const PoolsCreateResponseOriginsList = /*@__PURE__*/ S.Array(
   PoolsCreateResponseOriginsItem,
 ) as any as S.Schema<PoolsCreateResponseOriginsList>;
@@ -2153,19 +2362,26 @@ export const CreatePoolResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePoolResponse",
 }) as any as S.Schema<CreatePoolResponse>;
 
+export type PoolsHealthCreateRequestHeaderValueList = ReadonlyArray<string>;
+export const PoolsHealthCreateRequestHeaderValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoolsHealthCreateRequestHeaderValueList>;
+
 export type PoolsHealthCreateRequestHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: PoolsHealthCreateRequestHeaderValueList | undefined;
 };
 export const PoolsHealthCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  PoolsHealthCreateRequestHeaderValueList,
 ) as any as S.Schema<PoolsHealthCreateRequestHeaderMap>;
 
 export type PoolsHealthCreateRequestType =
   | "http"
   | "https"
   | "tcp"
-  | (string & {});
+  | "udp_icmp"
+  | "icmp_ping"
+  | "smtp";
 export const PoolsHealthCreateRequestType = /*@__PURE__*/ S.String;
 
 export interface CreatePoolHealthRequest {
@@ -2239,11 +2455,11 @@ export const CreatePoolHealthRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePoolHealthRequest>;
 
 export type PoolsHealthCreateResponsePoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: string | undefined;
 };
 export const PoolsHealthCreateResponsePoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<PoolsHealthCreateResponsePoolsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2379,7 +2595,7 @@ export const MonitorGroupsDeleteResponseMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsDeleteResponseMembersItem>;
 
 export type MonitorGroupsDeleteResponseMembersList =
-  MonitorGroupsDeleteResponseMembersItem[];
+  ReadonlyArray<MonitorGroupsDeleteResponseMembersItem>;
 export const MonitorGroupsDeleteResponseMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsDeleteResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsDeleteResponseMembersList>;
@@ -2478,29 +2694,32 @@ export const GetResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseAdaptiveRouting",
 }) as any as S.Schema<GetResponseAdaptiveRouting>;
 
-export type GetResponseCountryPoolsMap = { [key: string]: unknown | undefined };
+export type GetResponseCountryPoolsValueList = ReadonlyArray<string>;
+export const GetResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseCountryPoolsValueList>;
+
+export type GetResponseCountryPoolsMap = {
+  [key: string]: GetResponseCountryPoolsValueList | undefined;
+};
 export const GetResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  GetResponseCountryPoolsValueList,
 ) as any as S.Schema<GetResponseCountryPoolsMap>;
 
-export type GetResponseDefaultPoolsList = unknown[];
+export type GetResponseDefaultPoolsList = ReadonlyArray<string>;
 export const GetResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<GetResponseDefaultPoolsList>;
 
-export type GetResponseLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type GetResponseLocationStrategyMode = "pop" | "resolver_ip";
 export const GetResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type GetResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const GetResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface GetResponseLocationStrategy {
@@ -2520,23 +2739,30 @@ export const GetResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseLocationStrategy",
 }) as any as S.Schema<GetResponseLocationStrategy>;
 
-export type GetResponseNetworksList = string[];
+export type GetResponseNetworksList = ReadonlyArray<string>;
 export const GetResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseNetworksList>;
 
-export type GetResponsePopPoolsMap = { [key: string]: unknown | undefined };
+export type GetResponsePopPoolsValueList = ReadonlyArray<string>;
+export const GetResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponsePopPoolsValueList>;
+
+export type GetResponsePopPoolsMap = {
+  [key: string]: GetResponsePopPoolsValueList | undefined;
+};
 export const GetResponsePopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  GetResponsePopPoolsValueList,
 ) as any as S.Schema<GetResponsePopPoolsMap>;
 
 export type GetResponseRandomSteeringPoolWeightsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: number | undefined;
 };
 export const GetResponseRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  S.Number,
 ) as any as S.Schema<GetResponseRandomSteeringPoolWeightsMap>;
 
 export interface GetResponseRandomSteering {
@@ -2556,10 +2782,17 @@ export const GetResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseRandomSteering",
 }) as any as S.Schema<GetResponseRandomSteering>;
 
-export type GetResponseRegionPoolsMap = { [key: string]: unknown | undefined };
+export type GetResponseRegionPoolsValueList = ReadonlyArray<string>;
+export const GetResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseRegionPoolsValueList>;
+
+export type GetResponseRegionPoolsMap = {
+  [key: string]: GetResponseRegionPoolsValueList | undefined;
+};
 export const GetResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  GetResponseRegionPoolsValueList,
 ) as any as S.Schema<GetResponseRegionPoolsMap>;
 
 export interface GetResponseRulesItemFixedResponse {
@@ -2583,40 +2816,70 @@ export const GetResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseRulesItemFixedResponse",
 }) as any as S.Schema<GetResponseRulesItemFixedResponse>;
 
+export type GetResponseRulesItemOverridesCountryPoolsValueList =
+  ReadonlyArray<string>;
+export const GetResponseRulesItemOverridesCountryPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetResponseRulesItemOverridesCountryPoolsValueList>;
+
 export type GetResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: GetResponseRulesItemOverridesCountryPoolsValueList | undefined;
 };
 export const GetResponseRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    GetResponseRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<GetResponseRulesItemOverridesCountryPoolsMap>;
 
-export type GetResponseRulesItemOverridesDefaultPoolsList = unknown[];
+export type GetResponseRulesItemOverridesDefaultPoolsList =
+  ReadonlyArray<string>;
 export const GetResponseRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<GetResponseRulesItemOverridesDefaultPoolsList>;
 
+export type GetResponseRulesItemOverridesPopPoolsValueList =
+  ReadonlyArray<string>;
+export const GetResponseRulesItemOverridesPopPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetResponseRulesItemOverridesPopPoolsValueList>;
+
 export type GetResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: GetResponseRulesItemOverridesPopPoolsValueList | undefined;
 };
 export const GetResponseRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  GetResponseRulesItemOverridesPopPoolsValueList,
 ) as any as S.Schema<GetResponseRulesItemOverridesPopPoolsMap>;
 
+export type GetResponseRulesItemOverridesRegionPoolsValueList =
+  ReadonlyArray<string>;
+export const GetResponseRulesItemOverridesRegionPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetResponseRulesItemOverridesRegionPoolsValueList>;
+
 export type GetResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: GetResponseRulesItemOverridesRegionPoolsValueList | undefined;
 };
 export const GetResponseRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    GetResponseRulesItemOverridesRegionPoolsValueList,
   ) as any as S.Schema<GetResponseRulesItemOverridesRegionPoolsMap>;
 
+export type GetResponseRulesItemOverridesSessionAffinity =
+  | "none"
+  | "cookie"
+  | "ip_cookie"
+  | "header";
+export const GetResponseRulesItemOverridesSessionAffinity =
+  /*@__PURE__*/ S.String;
+
 export type GetResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  string[];
+  ReadonlyArray<string>;
 export const GetResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2626,21 +2889,19 @@ export type GetResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const GetResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const GetResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const GetResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -2684,9 +2945,21 @@ export const GetResponseRulesItemOverridesSessionAffinityAttributes =
     identifier: "GetResponseRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<GetResponseRulesItemOverridesSessionAffinityAttributes>;
 
+export type GetResponseRulesItemOverridesSteeringPolicy =
+  | "off"
+  | "geo"
+  | "random"
+  | "dynamic_latency"
+  | "proximity"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | "";
+export const GetResponseRulesItemOverridesSteeringPolicy =
+  /*@__PURE__*/ S.String;
+
 export interface GetResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: unknown;
+  adaptiveRouting?: GetResponseAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: GetResponseRulesItemOverridesCountryPoolsMap;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -2694,27 +2967,29 @@ export interface GetResponseRulesItemOverrides {
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: unknown;
+  locationStrategy?: GetResponseLocationStrategy;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
   popPools?: GetResponseRulesItemOverridesPopPoolsMap;
   /** Configures pool weights. */
-  randomSteering?: unknown;
+  randomSteering?: GetResponseRandomSteering;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
   regionPools?: GetResponseRulesItemOverridesRegionPoolsMap;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: GetResponseRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: GetResponseRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: GetResponseRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
 export const GetResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
+    adaptiveRouting: S.optional(
+      GetResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+    ),
     countryPools: S.optional(
       GetResponseRulesItemOverridesCountryPoolsMap.pipe(
         T.Body("country_pools"),
@@ -2726,15 +3001,23 @@ export const GetResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
+    locationStrategy: S.optional(
+      GetResponseLocationStrategy.pipe(T.Body("location_strategy")),
+    ),
     popPools: S.optional(
       GetResponseRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
     ),
-    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
+    randomSteering: S.optional(
+      GetResponseRandomSteering.pipe(T.Body("random_steering")),
+    ),
     regionPools: S.optional(
       GetResponseRulesItemOverridesRegionPoolsMap.pipe(T.Body("region_pools")),
     ),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      GetResponseRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
       GetResponseRulesItemOverridesSessionAffinityAttributes.pipe(
         T.Body("session_affinity_attributes"),
@@ -2743,7 +3026,11 @@ export const GetResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      GetResponseRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
   }),
 ).annotate({
@@ -2782,7 +3069,7 @@ export const GetResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseRulesItem",
 }) as any as S.Schema<GetResponseRulesItem>;
 
-export type GetResponseRulesList = GetResponseRulesItem[];
+export type GetResponseRulesList = ReadonlyArray<GetResponseRulesItem>;
 export const GetResponseRulesList = /*@__PURE__*/ S.Array(
   GetResponseRulesItem,
 ) as any as S.Schema<GetResponseRulesList>;
@@ -2821,13 +3108,13 @@ export interface GetLoadBalancerResponse {
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: GetResponseRulesList;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: GetResponseRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: unknown;
+  sessionAffinityAttributes?: GetResponseRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: GetResponseRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
   zoneName?: string;
@@ -2863,14 +3150,24 @@ export const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
       GetResponseRegionPoolsMap.pipe(T.Body("region_pools")),
     ),
     rules: S.optional(GetResponseRulesList),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      GetResponseRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
-      S.Unknown.pipe(T.Body("session_affinity_attributes")),
+      GetResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+        T.Body("session_affinity_attributes"),
+      ),
     ),
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      GetResponseRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2900,15 +3197,26 @@ export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMonitorRequest",
 }) as any as S.Schema<GetMonitorRequest>;
 
+export type MonitorsGetResponseHeaderValueList = ReadonlyArray<string>;
+export const MonitorsGetResponseHeaderValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MonitorsGetResponseHeaderValueList>;
+
 export type MonitorsGetResponseHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: MonitorsGetResponseHeaderValueList | undefined;
 };
 export const MonitorsGetResponseHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  MonitorsGetResponseHeaderValueList,
 ) as any as S.Schema<MonitorsGetResponseHeaderMap>;
 
-export type MonitorsGetResponseType = "http" | "https" | "tcp" | (string & {});
+export type MonitorsGetResponseType =
+  | "http"
+  | "https"
+  | "tcp"
+  | "udp_icmp"
+  | "icmp_ping"
+  | "smtp";
 export const MonitorsGetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -3025,7 +3333,7 @@ export const MonitorGroupsGetResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorGroupsGetResponseMembersItem>;
 
 export type MonitorGroupsGetResponseMembersList =
-  MonitorGroupsGetResponseMembersItem[];
+  ReadonlyArray<MonitorGroupsGetResponseMembersItem>;
 export const MonitorGroupsGetResponseMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsGetResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsGetResponseMembersList>;
@@ -3080,8 +3388,7 @@ export const GetMonitorGroupReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 export type MonitorGroupsReferencesGetResultItemReferenceType =
   | "*"
   | "referral"
-  | "referrer"
-  | (string & {});
+  | "referrer";
 export const MonitorGroupsReferencesGetResultItemReferenceType =
   /*@__PURE__*/ S.String;
 
@@ -3108,7 +3415,7 @@ export const MonitorGroupsReferencesGetResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsReferencesGetResultItem>;
 
 export type MonitorGroupsReferencesGetResultList =
-  MonitorGroupsReferencesGetResultItem[];
+  ReadonlyArray<MonitorGroupsReferencesGetResultItem>;
 export const MonitorGroupsReferencesGetResultList = /*@__PURE__*/ S.Array(
   MonitorGroupsReferencesGetResultItem,
 ) as any as S.Schema<MonitorGroupsReferencesGetResultList>;
@@ -3153,8 +3460,7 @@ export const GetMonitorReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 export type MonitorsReferencesGetResultItemReferenceType =
   | "*"
   | "referral"
-  | "referrer"
-  | (string & {});
+  | "referrer";
 export const MonitorsReferencesGetResultItemReferenceType =
   /*@__PURE__*/ S.String;
 
@@ -3179,7 +3485,8 @@ export const MonitorsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitorsReferencesGetResultItem",
 }) as any as S.Schema<MonitorsReferencesGetResultItem>;
 
-export type MonitorsReferencesGetResultList = MonitorsReferencesGetResultItem[];
+export type MonitorsReferencesGetResultList =
+  ReadonlyArray<MonitorsReferencesGetResultItem>;
 export const MonitorsReferencesGetResultList = /*@__PURE__*/ S.Array(
   MonitorsReferencesGetResultItem,
 ) as any as S.Schema<MonitorsReferencesGetResultList>;
@@ -3219,18 +3526,33 @@ export const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetPoolRequest" }) as any as S.Schema<GetPoolRequest>;
 
-export type PoolsGetResponseCheckRegionsList = unknown[];
+export type PoolsGetResponseCheckRegionsItem =
+  | "WNAM"
+  | "ENAM"
+  | "WEU"
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "SAS"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
+export const PoolsGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
+
+export type PoolsGetResponseCheckRegionsList =
+  ReadonlyArray<PoolsGetResponseCheckRegionsItem>;
 export const PoolsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PoolsGetResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsGetResponseCheckRegionsList>;
 
-export type PoolsGetResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsGetResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsGetResponseLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
 
-export type PoolsGetResponseLoadSheddingSessionPolicy = "hash" | (string & {});
+export type PoolsGetResponseLoadSheddingSessionPolicy = "hash";
 export const PoolsGetResponseLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsGetResponseLoadShedding {
@@ -3258,7 +3580,7 @@ export const PoolsGetResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsGetResponseLoadShedding",
 }) as any as S.Schema<PoolsGetResponseLoadShedding>;
 
-export type PoolsGetResponseNetworksList = string[];
+export type PoolsGetResponseNetworksList = ReadonlyArray<string>;
 export const PoolsGetResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsGetResponseNetworksList>;
@@ -3283,12 +3605,12 @@ export interface PoolsGetResponseNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
   origin?: PoolsGetResponseNotificationFilterOrigin;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
+  pool?: PoolsGetResponseNotificationFilterOrigin;
 }
 export const PoolsGetResponseNotificationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     origin: S.optional(PoolsGetResponseNotificationFilterOrigin),
-    pool: S.optional(S.Unknown),
+    pool: S.optional(PoolsGetResponseNotificationFilterOrigin),
   }),
 ).annotate({
   identifier: "PoolsGetResponseNotificationFilter",
@@ -3298,8 +3620,7 @@ export type PoolsGetResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsGetResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsGetResponseOriginSteering {
@@ -3314,9 +3635,9 @@ export const PoolsGetResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsGetResponseOriginSteering",
 }) as any as S.Schema<PoolsGetResponseOriginSteering>;
 
-export type PoolsGetResponseOriginsItemHeaderHostList = unknown[];
+export type PoolsGetResponseOriginsItemHeaderHostList = ReadonlyArray<string>;
 export const PoolsGetResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<PoolsGetResponseOriginsItemHeaderHostList>;
 
 export interface PoolsGetResponseOriginsItemHeader {
@@ -3367,7 +3688,8 @@ export const PoolsGetResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsGetResponseOriginsItem",
 }) as any as S.Schema<PoolsGetResponseOriginsItem>;
 
-export type PoolsGetResponseOriginsList = PoolsGetResponseOriginsItem[];
+export type PoolsGetResponseOriginsList =
+  ReadonlyArray<PoolsGetResponseOriginsItem>;
 export const PoolsGetResponseOriginsList = /*@__PURE__*/ S.Array(
   PoolsGetResponseOriginsItem,
 ) as any as S.Schema<PoolsGetResponseOriginsList>;
@@ -3501,7 +3823,7 @@ export const PoolsHealthGetResponsePopHealthOriginsItem =
   }) as any as S.Schema<PoolsHealthGetResponsePopHealthOriginsItem>;
 
 export type PoolsHealthGetResponsePopHealthOriginsList =
-  PoolsHealthGetResponsePopHealthOriginsItem[];
+  ReadonlyArray<PoolsHealthGetResponsePopHealthOriginsItem>;
 export const PoolsHealthGetResponsePopHealthOriginsList = /*@__PURE__*/ S.Array(
   PoolsHealthGetResponsePopHealthOriginsItem,
 ) as any as S.Schema<PoolsHealthGetResponsePopHealthOriginsList>;
@@ -3563,8 +3885,7 @@ export const GetPoolReferenceRequest = /*@__PURE__*/ S.suspend(() =>
 export type PoolsReferencesGetResultItemReferenceType =
   | "*"
   | "referral"
-  | "referrer"
-  | (string & {});
+  | "referrer";
 export const PoolsReferencesGetResultItemReferenceType = /*@__PURE__*/ S.String;
 
 export interface PoolsReferencesGetResultItem {
@@ -3586,7 +3907,8 @@ export const PoolsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsReferencesGetResultItem",
 }) as any as S.Schema<PoolsReferencesGetResultItem>;
 
-export type PoolsReferencesGetResultList = PoolsReferencesGetResultItem[];
+export type PoolsReferencesGetResultList =
+  ReadonlyArray<PoolsReferencesGetResultItem>;
 export const PoolsReferencesGetResultList = /*@__PURE__*/ S.Array(
   PoolsReferencesGetResultItem,
 ) as any as S.Schema<PoolsReferencesGetResultList>;
@@ -3628,10 +3950,57 @@ export const GetPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPreviewRequest",
 }) as any as S.Schema<GetPreviewRequest>;
 
-export type PreviewsGetResultMap = { [key: string]: unknown | undefined };
+export interface PreviewsGetResultValueOriginsItemValue {
+  failureReason?: string;
+  healthy?: boolean;
+  responseCode?: number;
+  rtt?: string;
+}
+export const PreviewsGetResultValueOriginsItemValue = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
+      healthy: S.optional(S.Boolean),
+      responseCode: S.optional(S.Number.pipe(T.Body("response_code"))),
+      rtt: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "PreviewsGetResultValueOriginsItemValue",
+}) as any as S.Schema<PreviewsGetResultValueOriginsItemValue>;
+
+export type PreviewsGetResultValueOriginsItemMap = {
+  [key: string]: PreviewsGetResultValueOriginsItemValue | undefined;
+};
+export const PreviewsGetResultValueOriginsItemMap = /*@__PURE__*/ S.Record(
+  S.String,
+  PreviewsGetResultValueOriginsItemValue,
+) as any as S.Schema<PreviewsGetResultValueOriginsItemMap>;
+
+export type PreviewsGetResultValueOriginsList =
+  ReadonlyArray<PreviewsGetResultValueOriginsItemMap>;
+export const PreviewsGetResultValueOriginsList = /*@__PURE__*/ S.Array(
+  PreviewsGetResultValueOriginsItemMap,
+) as any as S.Schema<PreviewsGetResultValueOriginsList>;
+
+export interface PreviewsGetResultValue {
+  healthy?: boolean;
+  origins?: PreviewsGetResultValueOriginsList;
+}
+export const PreviewsGetResultValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    healthy: S.optional(S.Boolean),
+    origins: S.optional(PreviewsGetResultValueOriginsList),
+  }),
+).annotate({
+  identifier: "PreviewsGetResultValue",
+}) as any as S.Schema<PreviewsGetResultValue>;
+
+export type PreviewsGetResultMap = {
+  [key: string]: PreviewsGetResultValue | undefined;
+};
 export const PreviewsGetResultMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  PreviewsGetResultValue,
 ) as any as S.Schema<PreviewsGetResultMap>;
 
 export type GetPreviewResponse = PreviewsGetResultMap;
@@ -3641,7 +4010,20 @@ export const GetPreviewResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetPreviewResponse",
 }) as any as S.Schema<GetPreviewResponse>;
 
-export type RegionsGetRequestRegionId = "WNAM" | "ENAM" | "WEU" | (string & {});
+export type RegionsGetRequestRegionId =
+  | "WNAM"
+  | "ENAM"
+  | "WEU"
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "SAS"
+  | "SEAS"
+  | "NEAS";
 export const RegionsGetRequestRegionId = /*@__PURE__*/ S.String;
 
 export interface GetRegionRequest {
@@ -3667,16 +4049,9 @@ export const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRegionRequest",
 }) as any as S.Schema<GetRegionRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetRegionResponse {
-  unknown: unknown;
-  string: unknown;
-}
+export type GetRegionResponse = unknown;
 export const GetRegionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unknown: S.Unknown,
-    string: S.Unknown,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "GetRegionResponse",
 }) as any as S.Schema<GetRegionResponse>;
@@ -3714,31 +4089,32 @@ export const ListResultItemAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemAdaptiveRouting",
 }) as any as S.Schema<ListResultItemAdaptiveRouting>;
 
+export type ListResultItemCountryPoolsValueList = ReadonlyArray<string>;
+export const ListResultItemCountryPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemCountryPoolsValueList>;
+
 export type ListResultItemCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: ListResultItemCountryPoolsValueList | undefined;
 };
 export const ListResultItemCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  ListResultItemCountryPoolsValueList,
 ) as any as S.Schema<ListResultItemCountryPoolsMap>;
 
-export type ListResultItemDefaultPoolsList = unknown[];
+export type ListResultItemDefaultPoolsList = ReadonlyArray<string>;
 export const ListResultItemDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<ListResultItemDefaultPoolsList>;
 
-export type ListResultItemLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type ListResultItemLocationStrategyMode = "pop" | "resolver_ip";
 export const ListResultItemLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type ListResultItemLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const ListResultItemLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface ListResultItemLocationStrategy {
@@ -3758,24 +4134,31 @@ export const ListResultItemLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemLocationStrategy",
 }) as any as S.Schema<ListResultItemLocationStrategy>;
 
-export type ListResultItemNetworksList = string[];
+export type ListResultItemNetworksList = ReadonlyArray<string>;
 export const ListResultItemNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListResultItemNetworksList>;
 
-export type ListResultItemPopPoolsMap = { [key: string]: unknown | undefined };
+export type ListResultItemPopPoolsValueList = ReadonlyArray<string>;
+export const ListResultItemPopPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemPopPoolsValueList>;
+
+export type ListResultItemPopPoolsMap = {
+  [key: string]: ListResultItemPopPoolsValueList | undefined;
+};
 export const ListResultItemPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  ListResultItemPopPoolsValueList,
 ) as any as S.Schema<ListResultItemPopPoolsMap>;
 
 export type ListResultItemRandomSteeringPoolWeightsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: number | undefined;
 };
 export const ListResultItemRandomSteeringPoolWeightsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.Number,
   ) as any as S.Schema<ListResultItemRandomSteeringPoolWeightsMap>;
 
 export interface ListResultItemRandomSteering {
@@ -3795,12 +4178,17 @@ export const ListResultItemRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemRandomSteering",
 }) as any as S.Schema<ListResultItemRandomSteering>;
 
+export type ListResultItemRegionPoolsValueList = ReadonlyArray<string>;
+export const ListResultItemRegionPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemRegionPoolsValueList>;
+
 export type ListResultItemRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: ListResultItemRegionPoolsValueList | undefined;
 };
 export const ListResultItemRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  ListResultItemRegionPoolsValueList,
 ) as any as S.Schema<ListResultItemRegionPoolsMap>;
 
 export interface ListResultItemRulesItemFixedResponse {
@@ -3825,41 +4213,75 @@ export const ListResultItemRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListResultItemRulesItemFixedResponse",
 }) as any as S.Schema<ListResultItemRulesItemFixedResponse>;
 
+export type ListResultItemRulesItemOverridesCountryPoolsValueList =
+  ReadonlyArray<string>;
+export const ListResultItemRulesItemOverridesCountryPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ListResultItemRulesItemOverridesCountryPoolsValueList>;
+
 export type ListResultItemRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | ListResultItemRulesItemOverridesCountryPoolsValueList
+    | undefined;
 };
 export const ListResultItemRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    ListResultItemRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<ListResultItemRulesItemOverridesCountryPoolsMap>;
 
-export type ListResultItemRulesItemOverridesDefaultPoolsList = unknown[];
+export type ListResultItemRulesItemOverridesDefaultPoolsList =
+  ReadonlyArray<string>;
 export const ListResultItemRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<ListResultItemRulesItemOverridesDefaultPoolsList>;
 
+export type ListResultItemRulesItemOverridesPopPoolsValueList =
+  ReadonlyArray<string>;
+export const ListResultItemRulesItemOverridesPopPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ListResultItemRulesItemOverridesPopPoolsValueList>;
+
 export type ListResultItemRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: ListResultItemRulesItemOverridesPopPoolsValueList | undefined;
 };
 export const ListResultItemRulesItemOverridesPopPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    ListResultItemRulesItemOverridesPopPoolsValueList,
   ) as any as S.Schema<ListResultItemRulesItemOverridesPopPoolsMap>;
 
+export type ListResultItemRulesItemOverridesRegionPoolsValueList =
+  ReadonlyArray<string>;
+export const ListResultItemRulesItemOverridesRegionPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ListResultItemRulesItemOverridesRegionPoolsValueList>;
+
 export type ListResultItemRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | ListResultItemRulesItemOverridesRegionPoolsValueList
+    | undefined;
 };
 export const ListResultItemRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    ListResultItemRulesItemOverridesRegionPoolsValueList,
   ) as any as S.Schema<ListResultItemRulesItemOverridesRegionPoolsMap>;
 
+export type ListResultItemRulesItemOverridesSessionAffinity =
+  | "none"
+  | "cookie"
+  | "ip_cookie"
+  | "header";
+export const ListResultItemRulesItemOverridesSessionAffinity =
+  /*@__PURE__*/ S.String;
+
 export type ListResultItemRulesItemOverridesSessionAffinityAttributesHeadersList =
-  string[];
+  ReadonlyArray<string>;
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3869,21 +4291,19 @@ export type ListResultItemRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const ListResultItemRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -3927,9 +4347,21 @@ export const ListResultItemRulesItemOverridesSessionAffinityAttributes =
     identifier: "ListResultItemRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<ListResultItemRulesItemOverridesSessionAffinityAttributes>;
 
+export type ListResultItemRulesItemOverridesSteeringPolicy =
+  | "off"
+  | "geo"
+  | "random"
+  | "dynamic_latency"
+  | "proximity"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | "";
+export const ListResultItemRulesItemOverridesSteeringPolicy =
+  /*@__PURE__*/ S.String;
+
 export interface ListResultItemRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: unknown;
+  adaptiveRouting?: ListResultItemAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: ListResultItemRulesItemOverridesCountryPoolsMap;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -3937,27 +4369,29 @@ export interface ListResultItemRulesItemOverrides {
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: unknown;
+  locationStrategy?: ListResultItemLocationStrategy;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
   popPools?: ListResultItemRulesItemOverridesPopPoolsMap;
   /** Configures pool weights. */
-  randomSteering?: unknown;
+  randomSteering?: ListResultItemRandomSteering;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
   regionPools?: ListResultItemRulesItemOverridesRegionPoolsMap;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: ListResultItemRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: ListResultItemRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: ListResultItemRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
 export const ListResultItemRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
+    adaptiveRouting: S.optional(
+      ListResultItemAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+    ),
     countryPools: S.optional(
       ListResultItemRulesItemOverridesCountryPoolsMap.pipe(
         T.Body("country_pools"),
@@ -3969,17 +4403,25 @@ export const ListResultItemRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
+    locationStrategy: S.optional(
+      ListResultItemLocationStrategy.pipe(T.Body("location_strategy")),
+    ),
     popPools: S.optional(
       ListResultItemRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
     ),
-    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
+    randomSteering: S.optional(
+      ListResultItemRandomSteering.pipe(T.Body("random_steering")),
+    ),
     regionPools: S.optional(
       ListResultItemRulesItemOverridesRegionPoolsMap.pipe(
         T.Body("region_pools"),
       ),
     ),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      ListResultItemRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
       ListResultItemRulesItemOverridesSessionAffinityAttributes.pipe(
         T.Body("session_affinity_attributes"),
@@ -3988,7 +4430,11 @@ export const ListResultItemRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      ListResultItemRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
   }),
 ).annotate({
@@ -4027,7 +4473,7 @@ export const ListResultItemRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListResultItemRulesItem",
 }) as any as S.Schema<ListResultItemRulesItem>;
 
-export type ListResultItemRulesList = ListResultItemRulesItem[];
+export type ListResultItemRulesList = ReadonlyArray<ListResultItemRulesItem>;
 export const ListResultItemRulesList = /*@__PURE__*/ S.Array(
   ListResultItemRulesItem,
 ) as any as S.Schema<ListResultItemRulesList>;
@@ -4065,13 +4511,13 @@ export interface ListResultItem {
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: ListResultItemRulesList;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: ListResultItemRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: unknown;
+  sessionAffinityAttributes?: ListResultItemRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: ListResultItemRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
   zoneName?: string;
@@ -4107,20 +4553,30 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
       ListResultItemRegionPoolsMap.pipe(T.Body("region_pools")),
     ),
     rules: S.optional(ListResultItemRulesList),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      ListResultItemRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
-      S.Unknown.pipe(T.Body("session_affinity_attributes")),
+      ListResultItemRulesItemOverridesSessionAffinityAttributes.pipe(
+        T.Body("session_affinity_attributes"),
+      ),
     ),
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      ListResultItemRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
   }),
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
-export type ListResultList = ListResultItem[];
+export type ListResultList = ReadonlyArray<ListResultItem>;
 export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
@@ -4189,7 +4645,7 @@ export const MonitorGroupsListResultItemMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsListResultItemMembersItem>;
 
 export type MonitorGroupsListResultItemMembersList =
-  MonitorGroupsListResultItemMembersItem[];
+  ReadonlyArray<MonitorGroupsListResultItemMembersItem>;
 export const MonitorGroupsListResultItemMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsListResultItemMembersItem,
 ) as any as S.Schema<MonitorGroupsListResultItemMembersList>;
@@ -4218,7 +4674,8 @@ export const MonitorGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitorGroupsListResultItem",
 }) as any as S.Schema<MonitorGroupsListResultItem>;
 
-export type MonitorGroupsListResultList = MonitorGroupsListResultItem[];
+export type MonitorGroupsListResultList =
+  ReadonlyArray<MonitorGroupsListResultItem>;
 export const MonitorGroupsListResultList = /*@__PURE__*/ S.Array(
   MonitorGroupsListResultItem,
 ) as any as S.Schema<MonitorGroupsListResultList>;
@@ -4258,19 +4715,26 @@ export const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMonitorsRequest",
 }) as any as S.Schema<ListMonitorsRequest>;
 
+export type MonitorsListResultItemHeaderValueList = ReadonlyArray<string>;
+export const MonitorsListResultItemHeaderValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MonitorsListResultItemHeaderValueList>;
+
 export type MonitorsListResultItemHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: MonitorsListResultItemHeaderValueList | undefined;
 };
 export const MonitorsListResultItemHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  MonitorsListResultItemHeaderValueList,
 ) as any as S.Schema<MonitorsListResultItemHeaderMap>;
 
 export type MonitorsListResultItemType =
   | "http"
   | "https"
   | "tcp"
-  | (string & {});
+  | "udp_icmp"
+  | "icmp_ping"
+  | "smtp";
 export const MonitorsListResultItemType = /*@__PURE__*/ S.String;
 
 export interface MonitorsListResultItem {
@@ -4336,7 +4800,7 @@ export const MonitorsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitorsListResultItem",
 }) as any as S.Schema<MonitorsListResultItem>;
 
-export type MonitorsListResultList = MonitorsListResultItem[];
+export type MonitorsListResultList = ReadonlyArray<MonitorsListResultItem>;
 export const MonitorsListResultList = /*@__PURE__*/ S.Array(
   MonitorsListResultItem,
 ) as any as S.Schema<MonitorsListResultList>;
@@ -4379,21 +4843,34 @@ export const ListPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPoolsRequest",
 }) as any as S.Schema<ListPoolsRequest>;
 
-export type PoolsListResultItemCheckRegionsList = unknown[];
+export type PoolsListResultItemCheckRegionsItem =
+  | "WNAM"
+  | "ENAM"
+  | "WEU"
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "SAS"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
+export const PoolsListResultItemCheckRegionsItem = /*@__PURE__*/ S.String;
+
+export type PoolsListResultItemCheckRegionsList =
+  ReadonlyArray<PoolsListResultItemCheckRegionsItem>;
 export const PoolsListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PoolsListResultItemCheckRegionsItem,
 ) as any as S.Schema<PoolsListResultItemCheckRegionsList>;
 
-export type PoolsListResultItemLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsListResultItemLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsListResultItemLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsListResultItemLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsListResultItemLoadSheddingSessionPolicy = "hash";
 export const PoolsListResultItemLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -4426,7 +4903,7 @@ export const PoolsListResultItemLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsListResultItemLoadShedding",
 }) as any as S.Schema<PoolsListResultItemLoadShedding>;
 
-export type PoolsListResultItemNetworksList = string[];
+export type PoolsListResultItemNetworksList = ReadonlyArray<string>;
 export const PoolsListResultItemNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsListResultItemNetworksList>;
@@ -4451,13 +4928,13 @@ export interface PoolsListResultItemNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
   origin?: PoolsListResultItemNotificationFilterOrigin;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
+  pool?: PoolsListResultItemNotificationFilterOrigin;
 }
 export const PoolsListResultItemNotificationFilter = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       origin: S.optional(PoolsListResultItemNotificationFilterOrigin),
-      pool: S.optional(S.Unknown),
+      pool: S.optional(PoolsListResultItemNotificationFilterOrigin),
     }),
 ).annotate({
   identifier: "PoolsListResultItemNotificationFilter",
@@ -4467,8 +4944,7 @@ export type PoolsListResultItemOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsListResultItemOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsListResultItemOriginSteering {
@@ -4483,10 +4959,11 @@ export const PoolsListResultItemOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsListResultItemOriginSteering",
 }) as any as S.Schema<PoolsListResultItemOriginSteering>;
 
-export type PoolsListResultItemOriginsItemHeaderHostList = unknown[];
+export type PoolsListResultItemOriginsItemHeaderHostList =
+  ReadonlyArray<string>;
 export const PoolsListResultItemOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<PoolsListResultItemOriginsItemHeaderHostList>;
 
 export interface PoolsListResultItemOriginsItemHeader {
@@ -4538,7 +5015,8 @@ export const PoolsListResultItemOriginsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsListResultItemOriginsItem",
 }) as any as S.Schema<PoolsListResultItemOriginsItem>;
 
-export type PoolsListResultItemOriginsList = PoolsListResultItemOriginsItem[];
+export type PoolsListResultItemOriginsList =
+  ReadonlyArray<PoolsListResultItemOriginsItem>;
 export const PoolsListResultItemOriginsList = /*@__PURE__*/ S.Array(
   PoolsListResultItemOriginsItem,
 ) as any as S.Schema<PoolsListResultItemOriginsList>;
@@ -4614,7 +5092,7 @@ export const PoolsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsListResultItem",
 }) as any as S.Schema<PoolsListResultItem>;
 
-export type PoolsListResultList = PoolsListResultItem[];
+export type PoolsListResultList = ReadonlyArray<PoolsListResultItem>;
 export const PoolsListResultList = /*@__PURE__*/ S.Array(
   PoolsListResultItem,
 ) as any as S.Schema<PoolsListResultList>;
@@ -4665,26 +5143,14 @@ export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRegionsRequest",
 }) as any as S.Schema<ListRegionsRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ListRegionsResponse {
-  unknown: unknown;
-  string: unknown;
-}
+export type ListRegionsResponse = unknown;
 export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unknown: S.Unknown,
-    string: S.Unknown,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "ListRegionsResponse",
 }) as any as S.Schema<ListRegionsResponse>;
 
-export type SearchesListRequestReferences =
-  | ""
-  | "*"
-  | "referral"
-  | "referrer"
-  | (string & {});
+export type SearchesListRequestReferences = "" | "*" | "referral" | "referrer";
 export const SearchesListRequestReferences = /*@__PURE__*/ S.String;
 
 export interface ListSearchesRequest {
@@ -4719,12 +5185,12 @@ export const ListSearchesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type SearchesListResponseResourcesItemReferenceType =
   | "referral"
-  | "referrer"
-  | (string & {});
+  | "referrer";
 export const SearchesListResponseResourcesItemReferenceType =
   /*@__PURE__*/ S.String;
 
-export type SearchesListResponseResourcesItemReferencesList = unknown[];
+export type SearchesListResponseResourcesItemReferencesList =
+  ReadonlyArray<unknown>;
 export const SearchesListResponseResourcesItemReferencesList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
@@ -4733,8 +5199,7 @@ export const SearchesListResponseResourcesItemReferencesList =
 export type SearchesListResponseResourcesItemResourceType =
   | "load_balancer"
   | "monitor"
-  | "pool"
-  | (string & {});
+  | "pool";
 export const SearchesListResponseResourcesItemResourceType =
   /*@__PURE__*/ S.String;
 
@@ -4770,7 +5235,7 @@ export const SearchesListResponseResourcesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchesListResponseResourcesItem>;
 
 export type SearchesListResponseResourcesList =
-  SearchesListResponseResourcesItem[];
+  ReadonlyArray<SearchesListResponseResourcesItem>;
 export const SearchesListResponseResourcesList = /*@__PURE__*/ S.Array(
   SearchesListResponseResourcesItem,
 ) as any as S.Schema<SearchesListResponseResourcesList>;
@@ -4802,29 +5267,32 @@ export const EditRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestAdaptiveRouting",
 }) as any as S.Schema<EditRequestAdaptiveRouting>;
 
-export type EditRequestCountryPoolsMap = { [key: string]: unknown | undefined };
+export type EditRequestCountryPoolsValueList = ReadonlyArray<string>;
+export const EditRequestCountryPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditRequestCountryPoolsValueList>;
+
+export type EditRequestCountryPoolsMap = {
+  [key: string]: EditRequestCountryPoolsValueList | undefined;
+};
 export const EditRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  EditRequestCountryPoolsValueList,
 ) as any as S.Schema<EditRequestCountryPoolsMap>;
 
-export type EditRequestDefaultPoolsList = unknown[];
+export type EditRequestDefaultPoolsList = ReadonlyArray<string>;
 export const EditRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<EditRequestDefaultPoolsList>;
 
-export type EditRequestLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type EditRequestLocationStrategyMode = "pop" | "resolver_ip";
 export const EditRequestLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type EditRequestLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const EditRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface EditRequestLocationStrategy {
@@ -4844,18 +5312,25 @@ export const EditRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestLocationStrategy",
 }) as any as S.Schema<EditRequestLocationStrategy>;
 
-export type EditRequestPopPoolsMap = { [key: string]: unknown | undefined };
+export type EditRequestPopPoolsValueList = ReadonlyArray<string>;
+export const EditRequestPopPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditRequestPopPoolsValueList>;
+
+export type EditRequestPopPoolsMap = {
+  [key: string]: EditRequestPopPoolsValueList | undefined;
+};
 export const EditRequestPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  EditRequestPopPoolsValueList,
 ) as any as S.Schema<EditRequestPopPoolsMap>;
 
 export type EditRequestRandomSteeringPoolWeightsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: number | undefined;
 };
 export const EditRequestRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  S.Number,
 ) as any as S.Schema<EditRequestRandomSteeringPoolWeightsMap>;
 
 export interface EditRequestRandomSteering {
@@ -4875,10 +5350,17 @@ export const EditRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestRandomSteering",
 }) as any as S.Schema<EditRequestRandomSteering>;
 
-export type EditRequestRegionPoolsMap = { [key: string]: unknown | undefined };
+export type EditRequestRegionPoolsValueList = ReadonlyArray<string>;
+export const EditRequestRegionPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditRequestRegionPoolsValueList>;
+
+export type EditRequestRegionPoolsMap = {
+  [key: string]: EditRequestRegionPoolsValueList | undefined;
+};
 export const EditRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  EditRequestRegionPoolsValueList,
 ) as any as S.Schema<EditRequestRegionPoolsMap>;
 
 export interface EditRequestRulesItemFixedResponse {
@@ -4902,40 +5384,70 @@ export const EditRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestRulesItemFixedResponse",
 }) as any as S.Schema<EditRequestRulesItemFixedResponse>;
 
+export type EditRequestRulesItemOverridesCountryPoolsValueList =
+  ReadonlyArray<string>;
+export const EditRequestRulesItemOverridesCountryPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditRequestRulesItemOverridesCountryPoolsValueList>;
+
 export type EditRequestRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: EditRequestRulesItemOverridesCountryPoolsValueList | undefined;
 };
 export const EditRequestRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    EditRequestRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<EditRequestRulesItemOverridesCountryPoolsMap>;
 
-export type EditRequestRulesItemOverridesDefaultPoolsList = unknown[];
+export type EditRequestRulesItemOverridesDefaultPoolsList =
+  ReadonlyArray<string>;
 export const EditRequestRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<EditRequestRulesItemOverridesDefaultPoolsList>;
 
+export type EditRequestRulesItemOverridesPopPoolsValueList =
+  ReadonlyArray<string>;
+export const EditRequestRulesItemOverridesPopPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditRequestRulesItemOverridesPopPoolsValueList>;
+
 export type EditRequestRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: EditRequestRulesItemOverridesPopPoolsValueList | undefined;
 };
 export const EditRequestRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  EditRequestRulesItemOverridesPopPoolsValueList,
 ) as any as S.Schema<EditRequestRulesItemOverridesPopPoolsMap>;
 
+export type EditRequestRulesItemOverridesRegionPoolsValueList =
+  ReadonlyArray<string>;
+export const EditRequestRulesItemOverridesRegionPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditRequestRulesItemOverridesRegionPoolsValueList>;
+
 export type EditRequestRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: EditRequestRulesItemOverridesRegionPoolsValueList | undefined;
 };
 export const EditRequestRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    EditRequestRulesItemOverridesRegionPoolsValueList,
   ) as any as S.Schema<EditRequestRulesItemOverridesRegionPoolsMap>;
 
+export type EditRequestRulesItemOverridesSessionAffinity =
+  | "none"
+  | "cookie"
+  | "ip_cookie"
+  | "header";
+export const EditRequestRulesItemOverridesSessionAffinity =
+  /*@__PURE__*/ S.String;
+
 export type EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  string[];
+  ReadonlyArray<string>;
 export const EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -4945,21 +5457,19 @@ export type EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -5003,9 +5513,21 @@ export const EditRequestRulesItemOverridesSessionAffinityAttributes =
     identifier: "EditRequestRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<EditRequestRulesItemOverridesSessionAffinityAttributes>;
 
+export type EditRequestRulesItemOverridesSteeringPolicy =
+  | "off"
+  | "geo"
+  | "random"
+  | "dynamic_latency"
+  | "proximity"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | "";
+export const EditRequestRulesItemOverridesSteeringPolicy =
+  /*@__PURE__*/ S.String;
+
 export interface EditRequestRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: unknown;
+  adaptiveRouting?: EditRequestAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: EditRequestRulesItemOverridesCountryPoolsMap;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -5013,27 +5535,29 @@ export interface EditRequestRulesItemOverrides {
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: unknown;
+  locationStrategy?: EditRequestLocationStrategy;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
   popPools?: EditRequestRulesItemOverridesPopPoolsMap;
   /** Configures pool weights. */
-  randomSteering?: unknown;
+  randomSteering?: EditRequestRandomSteering;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
   regionPools?: EditRequestRulesItemOverridesRegionPoolsMap;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: EditRequestRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: EditRequestRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
 export const EditRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
+    adaptiveRouting: S.optional(
+      EditRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+    ),
     countryPools: S.optional(
       EditRequestRulesItemOverridesCountryPoolsMap.pipe(
         T.Body("country_pools"),
@@ -5045,15 +5569,23 @@ export const EditRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
+    locationStrategy: S.optional(
+      EditRequestLocationStrategy.pipe(T.Body("location_strategy")),
+    ),
     popPools: S.optional(
       EditRequestRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
     ),
-    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
+    randomSteering: S.optional(
+      EditRequestRandomSteering.pipe(T.Body("random_steering")),
+    ),
     regionPools: S.optional(
       EditRequestRulesItemOverridesRegionPoolsMap.pipe(T.Body("region_pools")),
     ),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      EditRequestRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
       EditRequestRulesItemOverridesSessionAffinityAttributes.pipe(
         T.Body("session_affinity_attributes"),
@@ -5062,7 +5594,11 @@ export const EditRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      EditRequestRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
   }),
 ).annotate({
@@ -5101,7 +5637,7 @@ export const EditRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestRulesItem",
 }) as any as S.Schema<EditRequestRulesItem>;
 
-export type EditRequestRulesList = EditRequestRulesItem[];
+export type EditRequestRulesList = ReadonlyArray<EditRequestRulesItem>;
 export const EditRequestRulesList = /*@__PURE__*/ S.Array(
   EditRequestRulesItem,
 ) as any as S.Schema<EditRequestRulesList>;
@@ -5136,13 +5672,13 @@ export interface PatchLoadBalancerRequest {
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: EditRequestRulesList;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: EditRequestRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: unknown;
+  sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: EditRequestRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -5175,14 +5711,24 @@ export const PatchLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
       EditRequestRegionPoolsMap.pipe(T.Body("region_pools")),
     ),
     rules: S.optional(EditRequestRulesList),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      EditRequestRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
-      S.Unknown.pipe(T.Body("session_affinity_attributes")),
+      EditRequestRulesItemOverridesSessionAffinityAttributes.pipe(
+        T.Body("session_affinity_attributes"),
+      ),
     ),
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      EditRequestRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
   })
     .pipe(
@@ -5211,31 +5757,32 @@ export const EditResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseAdaptiveRouting",
 }) as any as S.Schema<EditResponseAdaptiveRouting>;
 
+export type EditResponseCountryPoolsValueList = ReadonlyArray<string>;
+export const EditResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseCountryPoolsValueList>;
+
 export type EditResponseCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: EditResponseCountryPoolsValueList | undefined;
 };
 export const EditResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  EditResponseCountryPoolsValueList,
 ) as any as S.Schema<EditResponseCountryPoolsMap>;
 
-export type EditResponseDefaultPoolsList = unknown[];
+export type EditResponseDefaultPoolsList = ReadonlyArray<string>;
 export const EditResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<EditResponseDefaultPoolsList>;
 
-export type EditResponseLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type EditResponseLocationStrategyMode = "pop" | "resolver_ip";
 export const EditResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type EditResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const EditResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface EditResponseLocationStrategy {
@@ -5255,23 +5802,30 @@ export const EditResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseLocationStrategy",
 }) as any as S.Schema<EditResponseLocationStrategy>;
 
-export type EditResponseNetworksList = string[];
+export type EditResponseNetworksList = ReadonlyArray<string>;
 export const EditResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EditResponseNetworksList>;
 
-export type EditResponsePopPoolsMap = { [key: string]: unknown | undefined };
+export type EditResponsePopPoolsValueList = ReadonlyArray<string>;
+export const EditResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponsePopPoolsValueList>;
+
+export type EditResponsePopPoolsMap = {
+  [key: string]: EditResponsePopPoolsValueList | undefined;
+};
 export const EditResponsePopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  EditResponsePopPoolsValueList,
 ) as any as S.Schema<EditResponsePopPoolsMap>;
 
 export type EditResponseRandomSteeringPoolWeightsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: number | undefined;
 };
 export const EditResponseRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  S.Number,
 ) as any as S.Schema<EditResponseRandomSteeringPoolWeightsMap>;
 
 export interface EditResponseRandomSteering {
@@ -5291,10 +5845,17 @@ export const EditResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseRandomSteering",
 }) as any as S.Schema<EditResponseRandomSteering>;
 
-export type EditResponseRegionPoolsMap = { [key: string]: unknown | undefined };
+export type EditResponseRegionPoolsValueList = ReadonlyArray<string>;
+export const EditResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseRegionPoolsValueList>;
+
+export type EditResponseRegionPoolsMap = {
+  [key: string]: EditResponseRegionPoolsValueList | undefined;
+};
 export const EditResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  EditResponseRegionPoolsValueList,
 ) as any as S.Schema<EditResponseRegionPoolsMap>;
 
 export interface EditResponseRulesItemFixedResponse {
@@ -5318,40 +5879,72 @@ export const EditResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseRulesItemFixedResponse",
 }) as any as S.Schema<EditResponseRulesItemFixedResponse>;
 
+export type EditResponseRulesItemOverridesCountryPoolsValueList =
+  ReadonlyArray<string>;
+export const EditResponseRulesItemOverridesCountryPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditResponseRulesItemOverridesCountryPoolsValueList>;
+
 export type EditResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | EditResponseRulesItemOverridesCountryPoolsValueList
+    | undefined;
 };
 export const EditResponseRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    EditResponseRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<EditResponseRulesItemOverridesCountryPoolsMap>;
 
-export type EditResponseRulesItemOverridesDefaultPoolsList = unknown[];
+export type EditResponseRulesItemOverridesDefaultPoolsList =
+  ReadonlyArray<string>;
 export const EditResponseRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<EditResponseRulesItemOverridesDefaultPoolsList>;
 
+export type EditResponseRulesItemOverridesPopPoolsValueList =
+  ReadonlyArray<string>;
+export const EditResponseRulesItemOverridesPopPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditResponseRulesItemOverridesPopPoolsValueList>;
+
 export type EditResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: EditResponseRulesItemOverridesPopPoolsValueList | undefined;
 };
 export const EditResponseRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  EditResponseRulesItemOverridesPopPoolsValueList,
 ) as any as S.Schema<EditResponseRulesItemOverridesPopPoolsMap>;
 
+export type EditResponseRulesItemOverridesRegionPoolsValueList =
+  ReadonlyArray<string>;
+export const EditResponseRulesItemOverridesRegionPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditResponseRulesItemOverridesRegionPoolsValueList>;
+
 export type EditResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: EditResponseRulesItemOverridesRegionPoolsValueList | undefined;
 };
 export const EditResponseRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    EditResponseRulesItemOverridesRegionPoolsValueList,
   ) as any as S.Schema<EditResponseRulesItemOverridesRegionPoolsMap>;
 
+export type EditResponseRulesItemOverridesSessionAffinity =
+  | "none"
+  | "cookie"
+  | "ip_cookie"
+  | "header";
+export const EditResponseRulesItemOverridesSessionAffinity =
+  /*@__PURE__*/ S.String;
+
 export type EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  string[];
+  ReadonlyArray<string>;
 export const EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5361,21 +5954,19 @@ export type EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -5419,9 +6010,21 @@ export const EditResponseRulesItemOverridesSessionAffinityAttributes =
     identifier: "EditResponseRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<EditResponseRulesItemOverridesSessionAffinityAttributes>;
 
+export type EditResponseRulesItemOverridesSteeringPolicy =
+  | "off"
+  | "geo"
+  | "random"
+  | "dynamic_latency"
+  | "proximity"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | "";
+export const EditResponseRulesItemOverridesSteeringPolicy =
+  /*@__PURE__*/ S.String;
+
 export interface EditResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: unknown;
+  adaptiveRouting?: EditResponseAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: EditResponseRulesItemOverridesCountryPoolsMap;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -5429,27 +6032,29 @@ export interface EditResponseRulesItemOverrides {
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: unknown;
+  locationStrategy?: EditResponseLocationStrategy;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
   popPools?: EditResponseRulesItemOverridesPopPoolsMap;
   /** Configures pool weights. */
-  randomSteering?: unknown;
+  randomSteering?: EditResponseRandomSteering;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
   regionPools?: EditResponseRulesItemOverridesRegionPoolsMap;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: EditResponseRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: EditResponseRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: EditResponseRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
 export const EditResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
+    adaptiveRouting: S.optional(
+      EditResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+    ),
     countryPools: S.optional(
       EditResponseRulesItemOverridesCountryPoolsMap.pipe(
         T.Body("country_pools"),
@@ -5461,15 +6066,23 @@ export const EditResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
+    locationStrategy: S.optional(
+      EditResponseLocationStrategy.pipe(T.Body("location_strategy")),
+    ),
     popPools: S.optional(
       EditResponseRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
     ),
-    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
+    randomSteering: S.optional(
+      EditResponseRandomSteering.pipe(T.Body("random_steering")),
+    ),
     regionPools: S.optional(
       EditResponseRulesItemOverridesRegionPoolsMap.pipe(T.Body("region_pools")),
     ),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      EditResponseRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
       EditResponseRulesItemOverridesSessionAffinityAttributes.pipe(
         T.Body("session_affinity_attributes"),
@@ -5478,7 +6091,11 @@ export const EditResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      EditResponseRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
   }),
 ).annotate({
@@ -5517,7 +6134,7 @@ export const EditResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditResponseRulesItem",
 }) as any as S.Schema<EditResponseRulesItem>;
 
-export type EditResponseRulesList = EditResponseRulesItem[];
+export type EditResponseRulesList = ReadonlyArray<EditResponseRulesItem>;
 export const EditResponseRulesList = /*@__PURE__*/ S.Array(
   EditResponseRulesItem,
 ) as any as S.Schema<EditResponseRulesList>;
@@ -5556,13 +6173,13 @@ export interface PatchLoadBalancerResponse {
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: EditResponseRulesList;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: EditResponseRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: unknown;
+  sessionAffinityAttributes?: EditResponseRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: EditResponseRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
   zoneName?: string;
@@ -5598,14 +6215,24 @@ export const PatchLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
       EditResponseRegionPoolsMap.pipe(T.Body("region_pools")),
     ),
     rules: S.optional(EditResponseRulesList),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      EditResponseRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
-      S.Unknown.pipe(T.Body("session_affinity_attributes")),
+      EditResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+        T.Body("session_affinity_attributes"),
+      ),
     ),
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      EditResponseRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -5613,15 +6240,26 @@ export const PatchLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchLoadBalancerResponse",
 }) as any as S.Schema<PatchLoadBalancerResponse>;
 
+export type MonitorsEditRequestHeaderValueList = ReadonlyArray<string>;
+export const MonitorsEditRequestHeaderValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MonitorsEditRequestHeaderValueList>;
+
 export type MonitorsEditRequestHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: MonitorsEditRequestHeaderValueList | undefined;
 };
 export const MonitorsEditRequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  MonitorsEditRequestHeaderValueList,
 ) as any as S.Schema<MonitorsEditRequestHeaderMap>;
 
-export type MonitorsEditRequestType = "http" | "https" | "tcp" | (string & {});
+export type MonitorsEditRequestType =
+  | "http"
+  | "https"
+  | "tcp"
+  | "udp_icmp"
+  | "icmp_ping"
+  | "smtp";
 export const MonitorsEditRequestType = /*@__PURE__*/ S.String;
 
 export interface PatchMonitorRequest {
@@ -5694,15 +6332,26 @@ export const PatchMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchMonitorRequest",
 }) as any as S.Schema<PatchMonitorRequest>;
 
+export type MonitorsEditResponseHeaderValueList = ReadonlyArray<string>;
+export const MonitorsEditResponseHeaderValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MonitorsEditResponseHeaderValueList>;
+
 export type MonitorsEditResponseHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: MonitorsEditResponseHeaderValueList | undefined;
 };
 export const MonitorsEditResponseHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  MonitorsEditResponseHeaderValueList,
 ) as any as S.Schema<MonitorsEditResponseHeaderMap>;
 
-export type MonitorsEditResponseType = "http" | "https" | "tcp" | (string & {});
+export type MonitorsEditResponseType =
+  | "http"
+  | "https"
+  | "tcp"
+  | "udp_icmp"
+  | "icmp_ping"
+  | "smtp";
 export const MonitorsEditResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5797,7 +6446,7 @@ export const MonitorGroupsEditRequestMembersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitorGroupsEditRequestMembersItem>;
 
 export type MonitorGroupsEditRequestMembersList =
-  MonitorGroupsEditRequestMembersItem[];
+  ReadonlyArray<MonitorGroupsEditRequestMembersItem>;
 export const MonitorGroupsEditRequestMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsEditRequestMembersItem,
 ) as any as S.Schema<MonitorGroupsEditRequestMembersList>;
@@ -5859,7 +6508,7 @@ export const MonitorGroupsEditResponseMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsEditResponseMembersItem>;
 
 export type MonitorGroupsEditResponseMembersList =
-  MonitorGroupsEditResponseMembersItem[];
+  ReadonlyArray<MonitorGroupsEditResponseMembersItem>;
 export const MonitorGroupsEditResponseMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsEditResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsEditResponseMembersList>;
@@ -5889,18 +6538,33 @@ export const PatchMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchMonitorGroupResponse",
 }) as any as S.Schema<PatchMonitorGroupResponse>;
 
-export type PoolsEditRequestCheckRegionsList = unknown[];
+export type PoolsEditRequestCheckRegionsItem =
+  | "WNAM"
+  | "ENAM"
+  | "WEU"
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "SAS"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
+export const PoolsEditRequestCheckRegionsItem = /*@__PURE__*/ S.String;
+
+export type PoolsEditRequestCheckRegionsList =
+  ReadonlyArray<PoolsEditRequestCheckRegionsItem>;
 export const PoolsEditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PoolsEditRequestCheckRegionsItem,
 ) as any as S.Schema<PoolsEditRequestCheckRegionsList>;
 
-export type PoolsEditRequestLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsEditRequestLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsEditRequestLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
 
-export type PoolsEditRequestLoadSheddingSessionPolicy = "hash" | (string & {});
+export type PoolsEditRequestLoadSheddingSessionPolicy = "hash";
 export const PoolsEditRequestLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditRequestLoadShedding {
@@ -5948,12 +6612,12 @@ export interface PoolsEditRequestNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
   origin?: PoolsEditRequestNotificationFilterOrigin;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
+  pool?: PoolsEditRequestNotificationFilterOrigin;
 }
 export const PoolsEditRequestNotificationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     origin: S.optional(PoolsEditRequestNotificationFilterOrigin),
-    pool: S.optional(S.Unknown),
+    pool: S.optional(PoolsEditRequestNotificationFilterOrigin),
   }),
 ).annotate({
   identifier: "PoolsEditRequestNotificationFilter",
@@ -5963,8 +6627,7 @@ export type PoolsEditRequestOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsEditRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditRequestOriginSteering {
@@ -5979,9 +6642,9 @@ export const PoolsEditRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsEditRequestOriginSteering",
 }) as any as S.Schema<PoolsEditRequestOriginSteering>;
 
-export type PoolsEditRequestOriginsItemHeaderHostList = unknown[];
+export type PoolsEditRequestOriginsItemHeaderHostList = ReadonlyArray<string>;
 export const PoolsEditRequestOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<PoolsEditRequestOriginsItemHeaderHostList>;
 
 export interface PoolsEditRequestOriginsItemHeader {
@@ -6032,7 +6695,8 @@ export const PoolsEditRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsEditRequestOriginsItem",
 }) as any as S.Schema<PoolsEditRequestOriginsItem>;
 
-export type PoolsEditRequestOriginsList = PoolsEditRequestOriginsItem[];
+export type PoolsEditRequestOriginsList =
+  ReadonlyArray<PoolsEditRequestOriginsItem>;
 export const PoolsEditRequestOriginsList = /*@__PURE__*/ S.Array(
   PoolsEditRequestOriginsItem,
 ) as any as S.Schema<PoolsEditRequestOriginsList>;
@@ -6109,19 +6773,34 @@ export const PatchPoolRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchPoolRequest",
 }) as any as S.Schema<PatchPoolRequest>;
 
-export type PoolsEditResponseCheckRegionsList = unknown[];
+export type PoolsEditResponseCheckRegionsItem =
+  | "WNAM"
+  | "ENAM"
+  | "WEU"
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "SAS"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
+export const PoolsEditResponseCheckRegionsItem = /*@__PURE__*/ S.String;
+
+export type PoolsEditResponseCheckRegionsList =
+  ReadonlyArray<PoolsEditResponseCheckRegionsItem>;
 export const PoolsEditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PoolsEditResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsEditResponseCheckRegionsList>;
 
-export type PoolsEditResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsEditResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsEditResponseLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsEditResponseLoadSheddingSessionPolicy = "hash" | (string & {});
+export type PoolsEditResponseLoadSheddingSessionPolicy = "hash";
 export const PoolsEditResponseLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -6150,7 +6829,7 @@ export const PoolsEditResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsEditResponseLoadShedding",
 }) as any as S.Schema<PoolsEditResponseLoadShedding>;
 
-export type PoolsEditResponseNetworksList = string[];
+export type PoolsEditResponseNetworksList = ReadonlyArray<string>;
 export const PoolsEditResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsEditResponseNetworksList>;
@@ -6175,12 +6854,12 @@ export interface PoolsEditResponseNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
   origin?: PoolsEditResponseNotificationFilterOrigin;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
+  pool?: PoolsEditResponseNotificationFilterOrigin;
 }
 export const PoolsEditResponseNotificationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     origin: S.optional(PoolsEditResponseNotificationFilterOrigin),
-    pool: S.optional(S.Unknown),
+    pool: S.optional(PoolsEditResponseNotificationFilterOrigin),
   }),
 ).annotate({
   identifier: "PoolsEditResponseNotificationFilter",
@@ -6190,8 +6869,7 @@ export type PoolsEditResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsEditResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsEditResponseOriginSteering {
@@ -6206,9 +6884,9 @@ export const PoolsEditResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsEditResponseOriginSteering",
 }) as any as S.Schema<PoolsEditResponseOriginSteering>;
 
-export type PoolsEditResponseOriginsItemHeaderHostList = unknown[];
+export type PoolsEditResponseOriginsItemHeaderHostList = ReadonlyArray<string>;
 export const PoolsEditResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<PoolsEditResponseOriginsItemHeaderHostList>;
 
 export interface PoolsEditResponseOriginsItemHeader {
@@ -6259,7 +6937,8 @@ export const PoolsEditResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsEditResponseOriginsItem",
 }) as any as S.Schema<PoolsEditResponseOriginsItem>;
 
-export type PoolsEditResponseOriginsList = PoolsEditResponseOriginsItem[];
+export type PoolsEditResponseOriginsList =
+  ReadonlyArray<PoolsEditResponseOriginsItem>;
 export const PoolsEditResponseOriginsList = /*@__PURE__*/ S.Array(
   PoolsEditResponseOriginsItem,
 ) as any as S.Schema<PoolsEditResponseOriginsList>;
@@ -6336,9 +7015,9 @@ export const PatchPoolResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchPoolResponse",
 }) as any as S.Schema<PatchPoolResponse>;
 
-export type UpdateRequestDefaultPoolsList = unknown[];
+export type UpdateRequestDefaultPoolsList = ReadonlyArray<string>;
 export const UpdateRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<UpdateRequestDefaultPoolsList>;
 
 export interface UpdateRequestAdaptiveRouting {
@@ -6355,26 +7034,27 @@ export const UpdateRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestAdaptiveRouting",
 }) as any as S.Schema<UpdateRequestAdaptiveRouting>;
 
+export type UpdateRequestCountryPoolsValueList = ReadonlyArray<string>;
+export const UpdateRequestCountryPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateRequestCountryPoolsValueList>;
+
 export type UpdateRequestCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: UpdateRequestCountryPoolsValueList | undefined;
 };
 export const UpdateRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  UpdateRequestCountryPoolsValueList,
 ) as any as S.Schema<UpdateRequestCountryPoolsMap>;
 
-export type UpdateRequestLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type UpdateRequestLocationStrategyMode = "pop" | "resolver_ip";
 export const UpdateRequestLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type UpdateRequestLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const UpdateRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestLocationStrategy {
@@ -6394,23 +7074,30 @@ export const UpdateRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestLocationStrategy",
 }) as any as S.Schema<UpdateRequestLocationStrategy>;
 
-export type UpdateRequestNetworksList = string[];
+export type UpdateRequestNetworksList = ReadonlyArray<string>;
 export const UpdateRequestNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestNetworksList>;
 
-export type UpdateRequestPopPoolsMap = { [key: string]: unknown | undefined };
+export type UpdateRequestPopPoolsValueList = ReadonlyArray<string>;
+export const UpdateRequestPopPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateRequestPopPoolsValueList>;
+
+export type UpdateRequestPopPoolsMap = {
+  [key: string]: UpdateRequestPopPoolsValueList | undefined;
+};
 export const UpdateRequestPopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  UpdateRequestPopPoolsValueList,
 ) as any as S.Schema<UpdateRequestPopPoolsMap>;
 
 export type UpdateRequestRandomSteeringPoolWeightsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: number | undefined;
 };
 export const UpdateRequestRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  S.Number,
 ) as any as S.Schema<UpdateRequestRandomSteeringPoolWeightsMap>;
 
 export interface UpdateRequestRandomSteering {
@@ -6430,12 +7117,17 @@ export const UpdateRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestRandomSteering",
 }) as any as S.Schema<UpdateRequestRandomSteering>;
 
+export type UpdateRequestRegionPoolsValueList = ReadonlyArray<string>;
+export const UpdateRequestRegionPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateRequestRegionPoolsValueList>;
+
 export type UpdateRequestRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: UpdateRequestRegionPoolsValueList | undefined;
 };
 export const UpdateRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  UpdateRequestRegionPoolsValueList,
 ) as any as S.Schema<UpdateRequestRegionPoolsMap>;
 
 export interface UpdateRequestRulesItemFixedResponse {
@@ -6459,41 +7151,75 @@ export const UpdateRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestRulesItemFixedResponse",
 }) as any as S.Schema<UpdateRequestRulesItemFixedResponse>;
 
+export type UpdateRequestRulesItemOverridesCountryPoolsValueList =
+  ReadonlyArray<string>;
+export const UpdateRequestRulesItemOverridesCountryPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateRequestRulesItemOverridesCountryPoolsValueList>;
+
 export type UpdateRequestRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | UpdateRequestRulesItemOverridesCountryPoolsValueList
+    | undefined;
 };
 export const UpdateRequestRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    UpdateRequestRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<UpdateRequestRulesItemOverridesCountryPoolsMap>;
 
-export type UpdateRequestRulesItemOverridesDefaultPoolsList = unknown[];
+export type UpdateRequestRulesItemOverridesDefaultPoolsList =
+  ReadonlyArray<string>;
 export const UpdateRequestRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<UpdateRequestRulesItemOverridesDefaultPoolsList>;
 
+export type UpdateRequestRulesItemOverridesPopPoolsValueList =
+  ReadonlyArray<string>;
+export const UpdateRequestRulesItemOverridesPopPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateRequestRulesItemOverridesPopPoolsValueList>;
+
 export type UpdateRequestRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: UpdateRequestRulesItemOverridesPopPoolsValueList | undefined;
 };
 export const UpdateRequestRulesItemOverridesPopPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    UpdateRequestRulesItemOverridesPopPoolsValueList,
   ) as any as S.Schema<UpdateRequestRulesItemOverridesPopPoolsMap>;
 
+export type UpdateRequestRulesItemOverridesRegionPoolsValueList =
+  ReadonlyArray<string>;
+export const UpdateRequestRulesItemOverridesRegionPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateRequestRulesItemOverridesRegionPoolsValueList>;
+
 export type UpdateRequestRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | UpdateRequestRulesItemOverridesRegionPoolsValueList
+    | undefined;
 };
 export const UpdateRequestRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    UpdateRequestRulesItemOverridesRegionPoolsValueList,
   ) as any as S.Schema<UpdateRequestRulesItemOverridesRegionPoolsMap>;
 
+export type UpdateRequestRulesItemOverridesSessionAffinity =
+  | "none"
+  | "cookie"
+  | "ip_cookie"
+  | "header";
+export const UpdateRequestRulesItemOverridesSessionAffinity =
+  /*@__PURE__*/ S.String;
+
 export type UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  string[];
+  ReadonlyArray<string>;
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6503,21 +7229,19 @@ export type UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const UpdateRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -6561,9 +7285,21 @@ export const UpdateRequestRulesItemOverridesSessionAffinityAttributes =
     identifier: "UpdateRequestRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<UpdateRequestRulesItemOverridesSessionAffinityAttributes>;
 
+export type UpdateRequestRulesItemOverridesSteeringPolicy =
+  | "off"
+  | "geo"
+  | "random"
+  | "dynamic_latency"
+  | "proximity"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | "";
+export const UpdateRequestRulesItemOverridesSteeringPolicy =
+  /*@__PURE__*/ S.String;
+
 export interface UpdateRequestRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: unknown;
+  adaptiveRouting?: UpdateRequestAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: UpdateRequestRulesItemOverridesCountryPoolsMap;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -6571,27 +7307,29 @@ export interface UpdateRequestRulesItemOverrides {
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: unknown;
+  locationStrategy?: UpdateRequestLocationStrategy;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
   popPools?: UpdateRequestRulesItemOverridesPopPoolsMap;
   /** Configures pool weights. */
-  randomSteering?: unknown;
+  randomSteering?: UpdateRequestRandomSteering;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
   regionPools?: UpdateRequestRulesItemOverridesRegionPoolsMap;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: UpdateRequestRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: UpdateRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: UpdateRequestRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
 export const UpdateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
+    adaptiveRouting: S.optional(
+      UpdateRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+    ),
     countryPools: S.optional(
       UpdateRequestRulesItemOverridesCountryPoolsMap.pipe(
         T.Body("country_pools"),
@@ -6603,17 +7341,25 @@ export const UpdateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
+    locationStrategy: S.optional(
+      UpdateRequestLocationStrategy.pipe(T.Body("location_strategy")),
+    ),
     popPools: S.optional(
       UpdateRequestRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
     ),
-    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
+    randomSteering: S.optional(
+      UpdateRequestRandomSteering.pipe(T.Body("random_steering")),
+    ),
     regionPools: S.optional(
       UpdateRequestRulesItemOverridesRegionPoolsMap.pipe(
         T.Body("region_pools"),
       ),
     ),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      UpdateRequestRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
       UpdateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
         T.Body("session_affinity_attributes"),
@@ -6622,7 +7368,11 @@ export const UpdateRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      UpdateRequestRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
   }),
 ).annotate({
@@ -6661,7 +7411,7 @@ export const UpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestRulesItem",
 }) as any as S.Schema<UpdateRequestRulesItem>;
 
-export type UpdateRequestRulesList = UpdateRequestRulesItem[];
+export type UpdateRequestRulesList = ReadonlyArray<UpdateRequestRulesItem>;
 export const UpdateRequestRulesList = /*@__PURE__*/ S.Array(
   UpdateRequestRulesItem,
 ) as any as S.Schema<UpdateRequestRulesList>;
@@ -6698,13 +7448,13 @@ export interface UpdateLoadBalancerRequest {
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: UpdateRequestRulesList;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: UpdateRequestRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: unknown;
+  sessionAffinityAttributes?: UpdateRequestRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: UpdateRequestRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
@@ -6736,14 +7486,24 @@ export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
       UpdateRequestRegionPoolsMap.pipe(T.Body("region_pools")),
     ),
     rules: S.optional(UpdateRequestRulesList),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      UpdateRequestRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
-      S.Unknown.pipe(T.Body("session_affinity_attributes")),
+      UpdateRequestRulesItemOverridesSessionAffinityAttributes.pipe(
+        T.Body("session_affinity_attributes"),
+      ),
     ),
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      UpdateRequestRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
   })
     .pipe(
@@ -6772,31 +7532,32 @@ export const UpdateResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseAdaptiveRouting",
 }) as any as S.Schema<UpdateResponseAdaptiveRouting>;
 
+export type UpdateResponseCountryPoolsValueList = ReadonlyArray<string>;
+export const UpdateResponseCountryPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateResponseCountryPoolsValueList>;
+
 export type UpdateResponseCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: UpdateResponseCountryPoolsValueList | undefined;
 };
 export const UpdateResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  UpdateResponseCountryPoolsValueList,
 ) as any as S.Schema<UpdateResponseCountryPoolsMap>;
 
-export type UpdateResponseDefaultPoolsList = unknown[];
+export type UpdateResponseDefaultPoolsList = ReadonlyArray<string>;
 export const UpdateResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  S.String,
 ) as any as S.Schema<UpdateResponseDefaultPoolsList>;
 
-export type UpdateResponseLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
+export type UpdateResponseLocationStrategyMode = "pop" | "resolver_ip";
 export const UpdateResponseLocationStrategyMode = /*@__PURE__*/ S.String;
 
 export type UpdateResponseLocationStrategyPreferEcs =
   | "always"
   | "never"
   | "proximity"
-  | "geo"
-  | (string & {});
+  | "geo";
 export const UpdateResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseLocationStrategy {
@@ -6816,24 +7577,31 @@ export const UpdateResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseLocationStrategy",
 }) as any as S.Schema<UpdateResponseLocationStrategy>;
 
-export type UpdateResponseNetworksList = string[];
+export type UpdateResponseNetworksList = ReadonlyArray<string>;
 export const UpdateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateResponseNetworksList>;
 
-export type UpdateResponsePopPoolsMap = { [key: string]: unknown | undefined };
+export type UpdateResponsePopPoolsValueList = ReadonlyArray<string>;
+export const UpdateResponsePopPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateResponsePopPoolsValueList>;
+
+export type UpdateResponsePopPoolsMap = {
+  [key: string]: UpdateResponsePopPoolsValueList | undefined;
+};
 export const UpdateResponsePopPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  UpdateResponsePopPoolsValueList,
 ) as any as S.Schema<UpdateResponsePopPoolsMap>;
 
 export type UpdateResponseRandomSteeringPoolWeightsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: number | undefined;
 };
 export const UpdateResponseRandomSteeringPoolWeightsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    S.Number,
   ) as any as S.Schema<UpdateResponseRandomSteeringPoolWeightsMap>;
 
 export interface UpdateResponseRandomSteering {
@@ -6853,12 +7621,17 @@ export const UpdateResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseRandomSteering",
 }) as any as S.Schema<UpdateResponseRandomSteering>;
 
+export type UpdateResponseRegionPoolsValueList = ReadonlyArray<string>;
+export const UpdateResponseRegionPoolsValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateResponseRegionPoolsValueList>;
+
 export type UpdateResponseRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: UpdateResponseRegionPoolsValueList | undefined;
 };
 export const UpdateResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  UpdateResponseRegionPoolsValueList,
 ) as any as S.Schema<UpdateResponseRegionPoolsMap>;
 
 export interface UpdateResponseRulesItemFixedResponse {
@@ -6883,41 +7656,75 @@ export const UpdateResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(
   identifier: "UpdateResponseRulesItemFixedResponse",
 }) as any as S.Schema<UpdateResponseRulesItemFixedResponse>;
 
+export type UpdateResponseRulesItemOverridesCountryPoolsValueList =
+  ReadonlyArray<string>;
+export const UpdateResponseRulesItemOverridesCountryPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateResponseRulesItemOverridesCountryPoolsValueList>;
+
 export type UpdateResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | UpdateResponseRulesItemOverridesCountryPoolsValueList
+    | undefined;
 };
 export const UpdateResponseRulesItemOverridesCountryPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    UpdateResponseRulesItemOverridesCountryPoolsValueList,
   ) as any as S.Schema<UpdateResponseRulesItemOverridesCountryPoolsMap>;
 
-export type UpdateResponseRulesItemOverridesDefaultPoolsList = unknown[];
+export type UpdateResponseRulesItemOverridesDefaultPoolsList =
+  ReadonlyArray<string>;
 export const UpdateResponseRulesItemOverridesDefaultPoolsList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<UpdateResponseRulesItemOverridesDefaultPoolsList>;
 
+export type UpdateResponseRulesItemOverridesPopPoolsValueList =
+  ReadonlyArray<string>;
+export const UpdateResponseRulesItemOverridesPopPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateResponseRulesItemOverridesPopPoolsValueList>;
+
 export type UpdateResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: UpdateResponseRulesItemOverridesPopPoolsValueList | undefined;
 };
 export const UpdateResponseRulesItemOverridesPopPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    UpdateResponseRulesItemOverridesPopPoolsValueList,
   ) as any as S.Schema<UpdateResponseRulesItemOverridesPopPoolsMap>;
 
+export type UpdateResponseRulesItemOverridesRegionPoolsValueList =
+  ReadonlyArray<string>;
+export const UpdateResponseRulesItemOverridesRegionPoolsValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<UpdateResponseRulesItemOverridesRegionPoolsValueList>;
+
 export type UpdateResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | UpdateResponseRulesItemOverridesRegionPoolsValueList
+    | undefined;
 };
 export const UpdateResponseRulesItemOverridesRegionPoolsMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    UpdateResponseRulesItemOverridesRegionPoolsValueList,
   ) as any as S.Schema<UpdateResponseRulesItemOverridesRegionPoolsMap>;
 
+export type UpdateResponseRulesItemOverridesSessionAffinity =
+  | "none"
+  | "cookie"
+  | "ip_cookie"
+  | "header";
+export const UpdateResponseRulesItemOverridesSessionAffinity =
+  /*@__PURE__*/ S.String;
+
 export type UpdateResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  string[];
+  ReadonlyArray<string>;
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6927,21 +7734,19 @@ export type UpdateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   | "Auto"
   | "Lax"
   | "None"
-  | "Strict"
-  | (string & {});
+  | "Strict";
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesSamesite =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   | "Auto"
   | "Always"
-  | "Never"
-  | (string & {});
+  | "Never";
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesSecure =
   /*@__PURE__*/ S.String;
 
 export type UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
+  "none" | "temporary" | "sticky";
 export const UpdateResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
   /*@__PURE__*/ S.String;
 
@@ -6985,9 +7790,21 @@ export const UpdateResponseRulesItemOverridesSessionAffinityAttributes =
     identifier: "UpdateResponseRulesItemOverridesSessionAffinityAttributes",
   }) as any as S.Schema<UpdateResponseRulesItemOverridesSessionAffinityAttributes>;
 
+export type UpdateResponseRulesItemOverridesSteeringPolicy =
+  | "off"
+  | "geo"
+  | "random"
+  | "dynamic_latency"
+  | "proximity"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | "";
+export const UpdateResponseRulesItemOverridesSteeringPolicy =
+  /*@__PURE__*/ S.String;
+
 export interface UpdateResponseRulesItemOverrides {
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: unknown;
+  adaptiveRouting?: UpdateResponseAdaptiveRouting;
   /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
   countryPools?: UpdateResponseRulesItemOverridesCountryPoolsMap;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -6995,27 +7812,29 @@ export interface UpdateResponseRulesItemOverrides {
   /** The pool ID to use when all other pools are detected as unhealthy. */
   fallbackPool?: string;
   /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: unknown;
+  locationStrategy?: UpdateResponseLocationStrategy;
   /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
   popPools?: UpdateResponseRulesItemOverridesPopPoolsMap;
   /** Configures pool weights. */
-  randomSteering?: unknown;
+  randomSteering?: UpdateResponseRandomSteering;
   /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
   regionPools?: UpdateResponseRulesItemOverridesRegionPoolsMap;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: UpdateResponseRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
   sessionAffinityAttributes?: UpdateResponseRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: UpdateResponseRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
 export const UpdateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
+    adaptiveRouting: S.optional(
+      UpdateResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+    ),
     countryPools: S.optional(
       UpdateResponseRulesItemOverridesCountryPoolsMap.pipe(
         T.Body("country_pools"),
@@ -7027,17 +7846,25 @@ export const UpdateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
+    locationStrategy: S.optional(
+      UpdateResponseLocationStrategy.pipe(T.Body("location_strategy")),
+    ),
     popPools: S.optional(
       UpdateResponseRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
     ),
-    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
+    randomSteering: S.optional(
+      UpdateResponseRandomSteering.pipe(T.Body("random_steering")),
+    ),
     regionPools: S.optional(
       UpdateResponseRulesItemOverridesRegionPoolsMap.pipe(
         T.Body("region_pools"),
       ),
     ),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      UpdateResponseRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
       UpdateResponseRulesItemOverridesSessionAffinityAttributes.pipe(
         T.Body("session_affinity_attributes"),
@@ -7046,7 +7873,11 @@ export const UpdateResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      UpdateResponseRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
   }),
 ).annotate({
@@ -7085,7 +7916,7 @@ export const UpdateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateResponseRulesItem",
 }) as any as S.Schema<UpdateResponseRulesItem>;
 
-export type UpdateResponseRulesList = UpdateResponseRulesItem[];
+export type UpdateResponseRulesList = ReadonlyArray<UpdateResponseRulesItem>;
 export const UpdateResponseRulesList = /*@__PURE__*/ S.Array(
   UpdateResponseRulesItem,
 ) as any as S.Schema<UpdateResponseRulesList>;
@@ -7124,13 +7955,13 @@ export interface UpdateLoadBalancerResponse {
   /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
   rules?: UpdateResponseRulesList;
   /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
+  sessionAffinity?: UpdateResponseRulesItemOverridesSessionAffinity;
   /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: unknown;
+  sessionAffinityAttributes?: UpdateResponseRulesItemOverridesSessionAffinityAttributes;
   /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
   sessionAffinityTtl?: number;
   /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
+  steeringPolicy?: UpdateResponseRulesItemOverridesSteeringPolicy;
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
   zoneName?: string;
@@ -7166,14 +7997,24 @@ export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
       UpdateResponseRegionPoolsMap.pipe(T.Body("region_pools")),
     ),
     rules: S.optional(UpdateResponseRulesList),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinity: S.optional(
+      UpdateResponseRulesItemOverridesSessionAffinity.pipe(
+        T.Body("session_affinity"),
+      ),
+    ),
     sessionAffinityAttributes: S.optional(
-      S.Unknown.pipe(T.Body("session_affinity_attributes")),
+      UpdateResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+        T.Body("session_affinity_attributes"),
+      ),
     ),
     sessionAffinityTtl: S.optional(
       S.Number.pipe(T.Body("session_affinity_ttl")),
     ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    steeringPolicy: S.optional(
+      UpdateResponseRulesItemOverridesSteeringPolicy.pipe(
+        T.Body("steering_policy"),
+      ),
+    ),
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -7181,19 +8022,26 @@ export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateLoadBalancerResponse",
 }) as any as S.Schema<UpdateLoadBalancerResponse>;
 
+export type MonitorsUpdateRequestHeaderValueList = ReadonlyArray<string>;
+export const MonitorsUpdateRequestHeaderValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MonitorsUpdateRequestHeaderValueList>;
+
 export type MonitorsUpdateRequestHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: MonitorsUpdateRequestHeaderValueList | undefined;
 };
 export const MonitorsUpdateRequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  MonitorsUpdateRequestHeaderValueList,
 ) as any as S.Schema<MonitorsUpdateRequestHeaderMap>;
 
 export type MonitorsUpdateRequestType =
   | "http"
   | "https"
   | "tcp"
-  | (string & {});
+  | "udp_icmp"
+  | "icmp_ping"
+  | "smtp";
 export const MonitorsUpdateRequestType = /*@__PURE__*/ S.String;
 
 export interface UpdateMonitorRequest {
@@ -7266,19 +8114,26 @@ export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMonitorRequest",
 }) as any as S.Schema<UpdateMonitorRequest>;
 
+export type MonitorsUpdateResponseHeaderValueList = ReadonlyArray<string>;
+export const MonitorsUpdateResponseHeaderValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MonitorsUpdateResponseHeaderValueList>;
+
 export type MonitorsUpdateResponseHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: MonitorsUpdateResponseHeaderValueList | undefined;
 };
 export const MonitorsUpdateResponseHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  MonitorsUpdateResponseHeaderValueList,
 ) as any as S.Schema<MonitorsUpdateResponseHeaderMap>;
 
 export type MonitorsUpdateResponseType =
   | "http"
   | "https"
   | "tcp"
-  | (string & {});
+  | "udp_icmp"
+  | "icmp_ping"
+  | "smtp";
 export const MonitorsUpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -7374,7 +8229,7 @@ export const MonitorGroupsUpdateRequestMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsUpdateRequestMembersItem>;
 
 export type MonitorGroupsUpdateRequestMembersList =
-  MonitorGroupsUpdateRequestMembersItem[];
+  ReadonlyArray<MonitorGroupsUpdateRequestMembersItem>;
 export const MonitorGroupsUpdateRequestMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsUpdateRequestMembersItem,
 ) as any as S.Schema<MonitorGroupsUpdateRequestMembersList>;
@@ -7436,7 +8291,7 @@ export const MonitorGroupsUpdateResponseMembersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MonitorGroupsUpdateResponseMembersItem>;
 
 export type MonitorGroupsUpdateResponseMembersList =
-  MonitorGroupsUpdateResponseMembersItem[];
+  ReadonlyArray<MonitorGroupsUpdateResponseMembersItem>;
 export const MonitorGroupsUpdateResponseMembersList = /*@__PURE__*/ S.Array(
   MonitorGroupsUpdateResponseMembersItem,
 ) as any as S.Schema<MonitorGroupsUpdateResponseMembersList>;
@@ -7466,10 +8321,10 @@ export const UpdateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateMonitorGroupResponse",
 }) as any as S.Schema<UpdateMonitorGroupResponse>;
 
-export type PoolsUpdateRequestOriginsItemHeaderHostList = unknown[];
+export type PoolsUpdateRequestOriginsItemHeaderHostList = ReadonlyArray<string>;
 export const PoolsUpdateRequestOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<PoolsUpdateRequestOriginsItemHeaderHostList>;
 
 export interface PoolsUpdateRequestOriginsItemHeader {
@@ -7520,26 +8375,40 @@ export const PoolsUpdateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsUpdateRequestOriginsItem",
 }) as any as S.Schema<PoolsUpdateRequestOriginsItem>;
 
-export type PoolsUpdateRequestOriginsList = PoolsUpdateRequestOriginsItem[];
+export type PoolsUpdateRequestOriginsList =
+  ReadonlyArray<PoolsUpdateRequestOriginsItem>;
 export const PoolsUpdateRequestOriginsList = /*@__PURE__*/ S.Array(
   PoolsUpdateRequestOriginsItem,
 ) as any as S.Schema<PoolsUpdateRequestOriginsList>;
 
-export type PoolsUpdateRequestCheckRegionsList = unknown[];
+export type PoolsUpdateRequestCheckRegionsItem =
+  | "WNAM"
+  | "ENAM"
+  | "WEU"
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "SAS"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
+export const PoolsUpdateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
+
+export type PoolsUpdateRequestCheckRegionsList =
+  ReadonlyArray<PoolsUpdateRequestCheckRegionsItem>;
 export const PoolsUpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PoolsUpdateRequestCheckRegionsItem,
 ) as any as S.Schema<PoolsUpdateRequestCheckRegionsList>;
 
-export type PoolsUpdateRequestLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsUpdateRequestLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsUpdateRequestLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsUpdateRequestLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsUpdateRequestLoadSheddingSessionPolicy = "hash";
 export const PoolsUpdateRequestLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -7592,13 +8461,13 @@ export interface PoolsUpdateRequestNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
   origin?: PoolsUpdateRequestNotificationFilterOrigin;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
+  pool?: PoolsUpdateRequestNotificationFilterOrigin;
 }
 export const PoolsUpdateRequestNotificationFilter = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       origin: S.optional(PoolsUpdateRequestNotificationFilterOrigin),
-      pool: S.optional(S.Unknown),
+      pool: S.optional(PoolsUpdateRequestNotificationFilterOrigin),
     }),
 ).annotate({
   identifier: "PoolsUpdateRequestNotificationFilter",
@@ -7608,8 +8477,7 @@ export type PoolsUpdateRequestOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsUpdateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsUpdateRequestOriginSteering {
@@ -7696,21 +8564,34 @@ export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePoolRequest",
 }) as any as S.Schema<UpdatePoolRequest>;
 
-export type PoolsUpdateResponseCheckRegionsList = unknown[];
+export type PoolsUpdateResponseCheckRegionsItem =
+  | "WNAM"
+  | "ENAM"
+  | "WEU"
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "SAS"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
+export const PoolsUpdateResponseCheckRegionsItem = /*@__PURE__*/ S.String;
+
+export type PoolsUpdateResponseCheckRegionsList =
+  ReadonlyArray<PoolsUpdateResponseCheckRegionsItem>;
 export const PoolsUpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  PoolsUpdateResponseCheckRegionsItem,
 ) as any as S.Schema<PoolsUpdateResponseCheckRegionsList>;
 
-export type PoolsUpdateResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
+export type PoolsUpdateResponseLoadSheddingDefaultPolicy = "random" | "hash";
 export const PoolsUpdateResponseLoadSheddingDefaultPolicy =
   /*@__PURE__*/ S.String;
 
-export type PoolsUpdateResponseLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
+export type PoolsUpdateResponseLoadSheddingSessionPolicy = "hash";
 export const PoolsUpdateResponseLoadSheddingSessionPolicy =
   /*@__PURE__*/ S.String;
 
@@ -7743,7 +8624,7 @@ export const PoolsUpdateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsUpdateResponseLoadShedding",
 }) as any as S.Schema<PoolsUpdateResponseLoadShedding>;
 
-export type PoolsUpdateResponseNetworksList = string[];
+export type PoolsUpdateResponseNetworksList = ReadonlyArray<string>;
 export const PoolsUpdateResponseNetworksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PoolsUpdateResponseNetworksList>;
@@ -7768,13 +8649,13 @@ export interface PoolsUpdateResponseNotificationFilter {
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
   origin?: PoolsUpdateResponseNotificationFilterOrigin;
   /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
+  pool?: PoolsUpdateResponseNotificationFilterOrigin;
 }
 export const PoolsUpdateResponseNotificationFilter = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       origin: S.optional(PoolsUpdateResponseNotificationFilterOrigin),
-      pool: S.optional(S.Unknown),
+      pool: S.optional(PoolsUpdateResponseNotificationFilterOrigin),
     }),
 ).annotate({
   identifier: "PoolsUpdateResponseNotificationFilter",
@@ -7784,8 +8665,7 @@ export type PoolsUpdateResponseOriginSteeringPolicy =
   | "random"
   | "hash"
   | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
+  | "least_connections";
 export const PoolsUpdateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
 
 export interface PoolsUpdateResponseOriginSteering {
@@ -7800,10 +8680,11 @@ export const PoolsUpdateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsUpdateResponseOriginSteering",
 }) as any as S.Schema<PoolsUpdateResponseOriginSteering>;
 
-export type PoolsUpdateResponseOriginsItemHeaderHostList = unknown[];
+export type PoolsUpdateResponseOriginsItemHeaderHostList =
+  ReadonlyArray<string>;
 export const PoolsUpdateResponseOriginsItemHeaderHostList =
   /*@__PURE__*/ S.Array(
-    S.Unknown,
+    S.String,
   ) as any as S.Schema<PoolsUpdateResponseOriginsItemHeaderHostList>;
 
 export interface PoolsUpdateResponseOriginsItemHeader {
@@ -7855,7 +8736,8 @@ export const PoolsUpdateResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoolsUpdateResponseOriginsItem",
 }) as any as S.Schema<PoolsUpdateResponseOriginsItem>;
 
-export type PoolsUpdateResponseOriginsList = PoolsUpdateResponseOriginsItem[];
+export type PoolsUpdateResponseOriginsList =
+  ReadonlyArray<PoolsUpdateResponseOriginsItem>;
 export const PoolsUpdateResponseOriginsList = /*@__PURE__*/ S.Array(
   PoolsUpdateResponseOriginsItem,
 ) as any as S.Schema<PoolsUpdateResponseOriginsList>;

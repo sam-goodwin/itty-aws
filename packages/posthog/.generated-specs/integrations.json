@@ -346,7 +346,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.integrations#UserBasic"
+          "target": "com.posthog.integrations#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "errors": {
           "target": "smithy.api#String"
@@ -793,26 +796,11 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "kind": {
           "target": "com.posthog.integrations#IntegrationKindEnum"
         },
         "config": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.integrations#UserBasic"
-        },
-        "errors": {
-          "target": "smithy.api#String"
-        },
-        "display_name": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -1382,18 +1370,6 @@
         },
         "config": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.integrations#UserBasic"
-        },
-        "errors": {
-          "target": "smithy.api#String"
-        },
-        "display_name": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -1451,18 +1427,6 @@
         },
         "config": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.integrations#UserBasic"
-        },
-        "errors": {
-          "target": "smithy.api#String"
-        },
-        "display_name": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -2428,26 +2392,11 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "kind": {
           "target": "com.posthog.integrations#IntegrationKindEnum"
         },
         "config": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.integrations#UserBasic"
-        },
-        "errors": {
-          "target": "smithy.api#String"
-        },
-        "display_name": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {

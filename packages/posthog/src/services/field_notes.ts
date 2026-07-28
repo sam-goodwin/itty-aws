@@ -16,8 +16,7 @@ export type FieldNoteStatusEnum =
   | "pending"
   | "acknowledged"
   | "resolved"
-  | "dismissed"
-  | (string & {});
+  | "dismissed";
 export const FieldNoteStatusEnum = /*@__PURE__*/ S.String;
 
 /** Structured element metadata (inferred selectors, attributes, component hints). */
@@ -45,61 +44,9 @@ export const FieldNotesCreateRequestViewport = /*@__PURE__*/ S.suspend(() =>
   identifier: "FieldNotesCreateRequestViewport",
 }) as any as S.Schema<FieldNotesCreateRequestViewport>;
 
-export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
-export type RoleAtOrganizationEnum =
-  | "engineering"
-  | "data"
-  | "product"
-  | "founder"
-  | "leadership"
-  | "marketing"
-  | "sales"
-  | "other"
-  | (string & {});
-export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
-
-export type BlankEnum = "" | (string & {});
-export const BlankEnum = /*@__PURE__*/ S.String;
-
-export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
-export interface UserBasic {
-  id?: number;
-  uuid?: string;
-  distinct_id?: string | null;
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-  is_email_verified?: boolean | null;
-  hedgehog_config?: UserBasicHedgehogConfigMap | null;
-  role_at_organization?: UserBasicRoleAtOrganization | null;
-}
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    uuid: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
-    first_name: S.optional(S.String),
-    last_name: S.optional(S.String),
-    email: S.optional(S.String),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
-    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
-  }),
-).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
 export interface FieldNotesCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id: string;
   /** The note the user wrote about the element. */
   comment: string;
   /** Lifecycle of the field note: pending, acknowledged, resolved, or dismissed. Ignored on create. * `pending` - Pending * `acknowledged` - Acknowledged * `resolved` - Resolved * `dismissed` - Dismissed */
@@ -124,14 +71,10 @@ export interface FieldNotesCreateRequest {
   viewport?: FieldNotesCreateRequestViewport | null;
   /** URL of an uploaded screenshot captured with the field_note. */
   screenshot_url?: string | null;
-  created_at: string;
-  updated_at: string | null;
-  created_by: UserBasic;
 }
 export const FieldNotesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.String,
     comment: S.String,
     field_note_status: S.optional(FieldNoteStatusEnum),
     resolution: S.optional(S.NullOr(S.String)),
@@ -144,9 +87,6 @@ export const FieldNotesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     element_context: S.optional(FieldNotesCreateRequestElementContextMap),
     viewport: S.optional(S.NullOr(FieldNotesCreateRequestViewport)),
     screenshot_url: S.optional(S.NullOr(S.String)),
-    created_at: S.String,
-    updated_at: S.NullOr(S.String),
-    created_by: UserBasic,
   }).pipe(
     T.Http({
       method: "POST",
@@ -180,6 +120,56 @@ export const FieldNoteViewport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FieldNoteViewport",
 }) as any as S.Schema<FieldNoteViewport>;
+
+export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+export type RoleAtOrganizationEnum =
+  | "engineering"
+  | "data"
+  | "product"
+  | "founder"
+  | "leadership"
+  | "marketing"
+  | "sales"
+  | "other";
+export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
+
+export type BlankEnum = "";
+export const BlankEnum = /*@__PURE__*/ S.String;
+
+export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+export const UserBasicRoleAtOrganization =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
+export interface UserBasic {
+  id?: number;
+  uuid?: string;
+  distinct_id?: string | null;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  is_email_verified?: boolean | null;
+  hedgehog_config?: UserBasicHedgehogConfigMap | null;
+  role_at_organization?: UserBasicRoleAtOrganization | null;
+}
+export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    uuid: S.optional(S.String),
+    distinct_id: S.optional(S.NullOr(S.String)),
+    first_name: S.optional(S.String),
+    last_name: S.optional(S.String),
+    email: S.optional(S.String),
+    is_email_verified: S.optional(S.NullOr(S.Boolean)),
+    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+  }),
+).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export interface FieldNote {
   id: string;
@@ -264,8 +254,7 @@ export type FieldNotesListRequestFieldNoteStatus =
   | "acknowledged"
   | "dismissed"
   | "pending"
-  | "resolved"
-  | (string & {});
+  | "resolved";
 export const FieldNotesListRequestFieldNoteStatus = /*@__PURE__*/ S.String;
 
 export interface FieldNotesListRequest {
@@ -300,7 +289,7 @@ export const FieldNotesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FieldNotesListRequest",
 }) as any as S.Schema<FieldNotesListRequest>;
 
-export type PaginatedFieldNoteListResultsList = FieldNote[];
+export type PaginatedFieldNoteListResultsList = ReadonlyArray<FieldNote>;
 export const PaginatedFieldNoteListResultsList = /*@__PURE__*/ S.Array(
   FieldNote,
 ) as any as S.Schema<PaginatedFieldNoteListResultsList>;
@@ -378,9 +367,6 @@ export interface FieldNotesPartialUpdateRequest {
   viewport?: FieldNotesPartialUpdateRequestViewport | null;
   /** URL of an uploaded screenshot captured with the field_note. */
   screenshot_url?: string | null;
-  created_at?: string;
-  updated_at?: string | null;
-  created_by?: UserBasic;
 }
 export const FieldNotesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -400,9 +386,6 @@ export const FieldNotesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     viewport: S.optional(S.NullOr(FieldNotesPartialUpdateRequestViewport)),
     screenshot_url: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -489,9 +472,6 @@ export interface FieldNotesUpdateRequest {
   viewport?: FieldNotesUpdateRequestViewport | null;
   /** URL of an uploaded screenshot captured with the field_note. */
   screenshot_url?: string | null;
-  created_at: string;
-  updated_at: string | null;
-  created_by: UserBasic;
 }
 export const FieldNotesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -509,9 +489,6 @@ export const FieldNotesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     element_context: S.optional(FieldNotesUpdateRequestElementContextMap),
     viewport: S.optional(S.NullOr(FieldNotesUpdateRequestViewport)),
     screenshot_url: S.optional(S.NullOr(S.String)),
-    created_at: S.String,
-    updated_at: S.NullOr(S.String),
-    created_by: UserBasic,
   }).pipe(
     T.Http({
       method: "PUT",

@@ -148,20 +148,19 @@ export const DescribeReportDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeReportDefinitionsRequest",
 }) as any as S.Schema<DescribeReportDefinitionsRequest>;
-export type TimeUnit = "HOURLY" | "DAILY" | "MONTHLY" | (string & {});
+export type TimeUnit = "HOURLY" | "DAILY" | "MONTHLY";
 export const TimeUnit = /*@__PURE__*/ S.String;
 
-export type ReportFormat = "textORcsv" | "Parquet" | (string & {});
+export type ReportFormat = "textORcsv" | "Parquet";
 export const ReportFormat = /*@__PURE__*/ S.String;
 
-export type CompressionFormat = "ZIP" | "GZIP" | "Parquet" | (string & {});
+export type CompressionFormat = "ZIP" | "GZIP" | "Parquet";
 export const CompressionFormat = /*@__PURE__*/ S.String;
 
 export type SchemaElement =
   | "RESOURCES"
   | "SPLIT_COST_ALLOCATION_DATA"
-  | "MANUAL_DISCOUNT_COMPATIBILITY"
-  | (string & {});
+  | "MANUAL_DISCOUNT_COMPATIBILITY";
 export const SchemaElement = /*@__PURE__*/ S.String;
 
 export type SchemaElementList = SchemaElement[];
@@ -196,33 +195,21 @@ export type AWSRegion =
   | "us-west-1"
   | "us-west-2"
   | "cn-north-1"
-  | "cn-northwest-1"
-  | (string & {});
+  | "cn-northwest-1";
 export const AWSRegion = /*@__PURE__*/ S.String;
 
-export type AdditionalArtifact =
-  | "REDSHIFT"
-  | "QUICKSIGHT"
-  | "ATHENA"
-  | (string & {});
+export type AdditionalArtifact = "REDSHIFT" | "QUICKSIGHT" | "ATHENA";
 export const AdditionalArtifact = /*@__PURE__*/ S.String;
 
 export type AdditionalArtifactList = AdditionalArtifact[];
 export const AdditionalArtifactList = /*@__PURE__*/ S.Array(AdditionalArtifact);
 export type RefreshClosedReports = boolean;
-export type ReportVersioning =
-  | "CREATE_NEW_REPORT"
-  | "OVERWRITE_REPORT"
-  | (string & {});
+export type ReportVersioning = "CREATE_NEW_REPORT" | "OVERWRITE_REPORT";
 export const ReportVersioning = /*@__PURE__*/ S.String;
 
 export type BillingViewArn = string;
 export type LastDelivery = string;
-export type LastStatus =
-  | "SUCCESS"
-  | "ERROR_PERMISSIONS"
-  | "ERROR_NO_BUCKET"
-  | (string & {});
+export type LastStatus = "SUCCESS" | "ERROR_PERMISSIONS" | "ERROR_NO_BUCKET";
 export const LastStatus = /*@__PURE__*/ S.String;
 
 export interface ReportStatus {

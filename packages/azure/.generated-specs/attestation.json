@@ -564,16 +564,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.attestation#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.attestation#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The resource of private end point."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.attestation#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the PrivateEndpointConnectProperties."
+      }
+    },
+    "com.azure.attestation#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
     "com.azure.attestation#PrivateEndpointConnectionsGet": {
@@ -1109,16 +1136,93 @@
             "smithy.api#documentation": "Name of the attestation provider."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.attestation#AttestationProvidersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags that will be assigned to the attestation provider."
+          }
+        },
+        "properties": {
+          "target": "com.azure.attestation#AttestationServicePatchSpecificParams",
+          "traits": {
+            "smithy.api#documentation": "Properties of the attestation provider"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation#AttestationServicePatchSpecificParams": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.attestation#AttestationServicePatchSpecificParamsPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Controls whether traffic from the public network is allowed to access the Attestation Provider APIs."
+          }
+        },
+        "tpmAttestationAuthentication": {
+          "target": "com.azure.attestation#AttestationServicePatchSpecificParamsTpmAttestationAuthentication",
+          "traits": {
+            "smithy.api#documentation": "The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Client supplied parameters used to patch an existing attestation provider."
+      }
+    },
+    "com.azure.attestation#AttestationServicePatchSpecificParamsTpmAttestationAuthentication": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs."
+      }
+    },
+    "com.azure.attestation#AttestationServicePatchSpecificParamsPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Controls whether traffic from the public network is allowed to access the Attestation Provider APIs."
+      }
+    },
+    "com.azure.attestation#AttestationProvidersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags that will be assigned to the attestation provider."
       }
     },
     "com.azure.attestation#AttestationProvidersCreate": {
@@ -1230,16 +1334,246 @@
             "smithy.api#documentation": "Name of the attestation provider."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The supported Azure location where the attestation provider should be created.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.attestation#AttestationProvidersCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The tags that will be assigned to the attestation provider."
+          }
+        },
+        "properties": {
+          "target": "com.azure.attestation#AttestationServiceCreationSpecificParams",
+          "traits": {
+            "smithy.api#documentation": "Properties of the attestation provider",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.attestation#AttestationServiceCreationSpecificParams": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.attestation#AttestationServiceCreationSpecificParamsPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Controls whether traffic from the public network is allowed to access the Attestation Provider APIs."
+          }
+        },
+        "policySigningCertificates": {
+          "target": "com.azure.attestation#JsonWebKeySet",
+          "traits": {
+            "smithy.api#documentation": "JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations"
+          }
+        },
+        "tpmAttestationAuthentication": {
+          "target": "com.azure.attestation#AttestationServiceCreationSpecificParamsTpmAttestationAuthentication",
+          "traits": {
+            "smithy.api#documentation": "The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Client supplied parameters used to create a new attestation provider."
+      }
+    },
+    "com.azure.attestation#AttestationServiceCreationSpecificParamsTpmAttestationAuthentication": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs."
+      }
+    },
+    "com.azure.attestation#JsonWebKeySet": {
+      "type": "structure",
+      "members": {
+        "keys": {
+          "target": "com.azure.attestation#JsonWebKeySetKeysList",
+          "traits": {
+            "smithy.api#documentation": "The value of the \"keys\" parameter is an array of JWK values.  By\ndefault, the order of the JWK values within the array does not imply\nan order of preference among them, although applications of JWK Sets\ncan choose to assign a meaning to the order for their purposes, if\ndesired."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.attestation#JsonWebKeySetKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.attestation#JsonWebKey"
+      },
+      "traits": {
+        "smithy.api#documentation": "The value of the \"keys\" parameter is an array of JWK values.  By\ndefault, the order of the JWK values within the array does not imply\nan order of preference among them, although applications of JWK Sets\ncan choose to assign a meaning to the order for their purposes, if\ndesired."
+      }
+    },
+    "com.azure.attestation#JsonWebKey": {
+      "type": "structure",
+      "members": {
+        "alg": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The \"alg\" (algorithm) parameter identifies the algorithm intended for\nuse with the key.  The values used should either be registered in the\nIANA \"JSON Web Signature and Encryption Algorithms\" registry\nestablished by [JWA] or be a value that contains a Collision-\nResistant Name."
+          }
+        },
+        "crv": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The \"crv\" (curve) parameter identifies the curve type"
+          }
+        },
+        "d": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA private exponent or ECC private key"
+          }
+        },
+        "dp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA Private Key Parameter"
+          }
+        },
+        "dq": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA Private Key Parameter"
+          }
+        },
+        "e": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA public exponent, in Base64"
+          }
+        },
+        "k": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Symmetric key"
+          }
+        },
+        "kid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The \"kid\" (key ID) parameter is used to match a specific key.  This\nis used, for instance, to choose among a set of keys within a JWK Set\nduring key rollover.  The structure of the \"kid\" value is\nunspecified.  When \"kid\" values are used within a JWK Set, different\nkeys within the JWK Set SHOULD use distinct \"kid\" values.  (One\nexample in which different keys might use the same \"kid\" value is if\nthey have different \"kty\" (key type) values but are considered to be\nequivalent alternatives by the application using them.)  The \"kid\"\nvalue is a case-sensitive string."
+          }
+        },
+        "kty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The \"kty\" (key type) parameter identifies the cryptographic algorithm\nfamily used with the key, such as \"RSA\" or \"EC\". \"kty\" values should\neither be registered in the IANA \"JSON Web Key Types\" registry\nestablished by [JWA] or be a value that contains a Collision-\nResistant Name.  The \"kty\" value is a case-sensitive string.",
+            "smithy.api#required": {}
+          }
+        },
+        "n": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA modulus, in Base64"
+          }
+        },
+        "p": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA secret prime"
+          }
+        },
+        "q": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA secret prime, with p < q"
+          }
+        },
+        "qi": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RSA Private Key Parameter"
+          }
+        },
+        "use": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Use (\"public key use\") identifies the intended use of\nthe public key. The \"use\" parameter is employed to indicate whether\na public key is used for encrypting data or verifying the signature\non data. Values are commonly \"sig\" (signature) or \"enc\" (encryption)."
+          }
+        },
+        "x": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "X coordinate for the Elliptic Curve point"
+          }
+        },
+        "x5c": {
+          "target": "com.azure.attestation#JsonWebKeyX5cList",
+          "traits": {
+            "smithy.api#documentation": "The \"x5c\" (X.509 certificate chain) parameter contains a chain of one\nor more PKIX certificates [RFC5280].  The certificate chain is\nrepresented as a JSON array of certificate value strings.  Each\nstring in the array is a base64-encoded (Section 4 of [RFC4648] --\nnot base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.\nThe PKIX certificate containing the key value MUST be the first\ncertificate."
+          }
+        },
+        "y": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Y coordinate for the Elliptic Curve point"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.attestation#JsonWebKeyX5cList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The \"x5c\" (X.509 certificate chain) parameter contains a chain of one\nor more PKIX certificates [RFC5280].  The certificate chain is\nrepresented as a JSON array of certificate value strings.  Each\nstring in the array is a base64-encoded (Section 4 of [RFC4648] --\nnot base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.\nThe PKIX certificate containing the key value MUST be the first\ncertificate."
+      }
+    },
+    "com.azure.attestation#AttestationServiceCreationSpecificParamsPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Controls whether traffic from the public network is allowed to access the Attestation Provider APIs."
+      }
+    },
+    "com.azure.attestation#AttestationProvidersCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags that will be assigned to the attestation provider."
       }
     },
     "com.azure.attestation#AttestationProvidersGet": {

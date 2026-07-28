@@ -96,11 +96,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type ScopeTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "REGIONAL"
-  | "GLOBAL"
-  | (string & {});
+export type ScopeTypeEnum = "TYPE_UNSPECIFIED" | "REGIONAL" | "GLOBAL";
 export const ScopeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Scope of an application. */
@@ -119,8 +115,7 @@ export type EnvironmentTypeEnum =
   | "PRODUCTION"
   | "STAGING"
   | "TEST"
-  | "DEVELOPMENT"
-  | (string & {});
+  | "DEVELOPMENT";
 export const EnvironmentTypeEnum = /*@__PURE__*/ S.String;
 
 /** Environment of the Application, Service, or Workload */
@@ -148,7 +143,7 @@ export const ContactInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContactInfo" }) as any as S.Schema<ContactInfo>;
 
-export type ContactInfoList = ContactInfo[];
+export type ContactInfoList = ReadonlyArray<ContactInfo>;
 export const ContactInfoList = /*@__PURE__*/ S.Array(
   ContactInfo,
 ) as any as S.Schema<ContactInfoList>;
@@ -158,8 +153,7 @@ export type CriticalityTypeEnum =
   | "MISSION_CRITICAL"
   | "HIGH"
   | "MEDIUM"
-  | "LOW"
-  | (string & {});
+  | "LOW";
 export const CriticalityTypeEnum = /*@__PURE__*/ S.String;
 
 /** Criticality of the Application, Service, or Workload */
@@ -200,8 +194,7 @@ export type ApplicationStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "ACTIVE"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const ApplicationStateEnum = /*@__PURE__*/ S.String;
 
 /** Application defines the governance boundary for App Hub entities that perform a logical end-to-end business function. App Hub supports application level IAM permission to align with governance requirements. */
@@ -273,7 +266,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -353,8 +346,7 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 export type RegistrationTypeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EXCLUSIVE"
-  | "SHARED"
-  | (string & {});
+  | "SHARED";
 export const RegistrationTypeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The registration type of a service. */
@@ -374,8 +366,7 @@ export type FunctionalTypeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "AGENT"
   | "MCP_SERVER"
-  | "ENDPOINT"
-  | (string & {});
+  | "ENDPOINT";
 export const FunctionalTypeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The functional type of a service or workload. */
@@ -438,8 +429,7 @@ export type ServiceStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "DETACHED"
-  | (string & {});
+  | "DETACHED";
 export const ServiceStateEnum = /*@__PURE__*/ S.String;
 
 /** Service is an App Hub data model that contains a discovered service, which represents a network or API interface that exposes some functionality to clients for consumption over the network. */
@@ -544,8 +534,7 @@ export type WorkloadStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "DETACHED"
-  | (string & {});
+  | "DETACHED";
 export const WorkloadStateEnum = /*@__PURE__*/ S.String;
 
 /** Reference of an underlying compute resource represented by the Workload. */
@@ -634,8 +623,7 @@ export type ServiceProjectAttachmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "ACTIVE"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const ServiceProjectAttachmentStateEnum = /*@__PURE__*/ S.String;
 
 /** ServiceProjectAttachment represents an attachment from a service project to a host project. Service projects contain the underlying cloud infrastructure resources, and expose these resources to the host project through a ServiceProjectAttachment. With the attachments, the host project can provide an aggregated view of resources across all service projects. */
@@ -860,8 +848,7 @@ export type BoundaryTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "AUTOMATIC"
   | "MANUAL"
-  | "MANAGED_AUTOMATIC"
-  | (string & {});
+  | "MANAGED_AUTOMATIC";
 export const BoundaryTypeEnum = /*@__PURE__*/ S.String;
 
 /** Application management boundary. */
@@ -929,7 +916,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -951,7 +938,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -960,8 +947,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -978,7 +964,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -997,7 +983,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1308,7 +1294,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1360,7 +1346,7 @@ export const ListProjectsLocationsApplicationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsApplicationsRequest",
 }) as any as S.Schema<ListProjectsLocationsApplicationsRequest>;
 
-export type ApplicationList = Application[];
+export type ApplicationList = ReadonlyArray<Application>;
 export const ApplicationList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationList>;
@@ -1415,7 +1401,7 @@ export const ListProjectsLocationsApplicationsServicesRequest =
     identifier: "ListProjectsLocationsApplicationsServicesRequest",
   }) as any as S.Schema<ListProjectsLocationsApplicationsServicesRequest>;
 
-export type ServiceList = Service[];
+export type ServiceList = ReadonlyArray<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;
@@ -1470,7 +1456,7 @@ export const ListProjectsLocationsApplicationsWorkloadsRequest =
     identifier: "ListProjectsLocationsApplicationsWorkloadsRequest",
   }) as any as S.Schema<ListProjectsLocationsApplicationsWorkloadsRequest>;
 
-export type WorkloadList = Workload[];
+export type WorkloadList = ReadonlyArray<Workload>;
 export const WorkloadList = /*@__PURE__*/ S.Array(
   Workload,
 ) as any as S.Schema<WorkloadList>;
@@ -1525,7 +1511,7 @@ export const ListProjectsLocationsDiscoveredServicesRequest =
     identifier: "ListProjectsLocationsDiscoveredServicesRequest",
   }) as any as S.Schema<ListProjectsLocationsDiscoveredServicesRequest>;
 
-export type DiscoveredServiceList = DiscoveredService[];
+export type DiscoveredServiceList = ReadonlyArray<DiscoveredService>;
 export const DiscoveredServiceList = /*@__PURE__*/ S.Array(
   DiscoveredService,
 ) as any as S.Schema<DiscoveredServiceList>;
@@ -1580,7 +1566,7 @@ export const ListProjectsLocationsDiscoveredWorkloadsRequest =
     identifier: "ListProjectsLocationsDiscoveredWorkloadsRequest",
   }) as any as S.Schema<ListProjectsLocationsDiscoveredWorkloadsRequest>;
 
-export type DiscoveredWorkloadList = DiscoveredWorkload[];
+export type DiscoveredWorkloadList = ReadonlyArray<DiscoveredWorkload>;
 export const DiscoveredWorkloadList = /*@__PURE__*/ S.Array(
   DiscoveredWorkload,
 ) as any as S.Schema<DiscoveredWorkloadList>;
@@ -1629,7 +1615,7 @@ export const ListProjectsLocationsExtendedMetadataSchemasRequest =
     identifier: "ListProjectsLocationsExtendedMetadataSchemasRequest",
   }) as any as S.Schema<ListProjectsLocationsExtendedMetadataSchemasRequest>;
 
-export type ExtendedMetadataSchemaList = ExtendedMetadataSchema[];
+export type ExtendedMetadataSchemaList = ReadonlyArray<ExtendedMetadataSchema>;
 export const ExtendedMetadataSchemaList = /*@__PURE__*/ S.Array(
   ExtendedMetadataSchema,
 ) as any as S.Schema<ExtendedMetadataSchemaList>;
@@ -1681,7 +1667,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1736,7 +1722,8 @@ export const ListProjectsLocationsServiceProjectAttachmentsRequest =
     identifier: "ListProjectsLocationsServiceProjectAttachmentsRequest",
   }) as any as S.Schema<ListProjectsLocationsServiceProjectAttachmentsRequest>;
 
-export type ServiceProjectAttachmentList = ServiceProjectAttachment[];
+export type ServiceProjectAttachmentList =
+  ReadonlyArray<ServiceProjectAttachment>;
 export const ServiceProjectAttachmentList = /*@__PURE__*/ S.Array(
   ServiceProjectAttachment,
 ) as any as S.Schema<ServiceProjectAttachmentList>;

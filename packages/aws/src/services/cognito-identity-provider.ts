@@ -393,12 +393,7 @@ export class WebAuthnRelyingPartyMismatchException extends S.TaggedErrorClass<We
 ).pipe(C.withBadRequestError) {}
 export type UserPoolIdType = string;
 export type CustomAttributeNameType = string;
-export type AttributeDataType =
-  | "String"
-  | "Number"
-  | "DateTime"
-  | "Boolean"
-  | (string & {});
+export type AttributeDataType = "String" | "Number" | "DateTime" | "Boolean";
 export const AttributeDataType = /*@__PURE__*/ S.String;
 
 export type StringType = string;
@@ -609,10 +604,10 @@ export type AttributeListType = AttributeType[];
 export const AttributeListType = /*@__PURE__*/ S.Array(AttributeType);
 export type PasswordType = string | redacted.Redacted<string>;
 export type ForceAliasCreation = boolean;
-export type MessageActionType = "RESEND" | "SUPPRESS" | (string & {});
+export type MessageActionType = "RESEND" | "SUPPRESS";
 export const MessageActionType = /*@__PURE__*/ S.String;
 
-export type DeliveryMediumType = "SMS" | "EMAIL" | (string & {});
+export type DeliveryMediumType = "SMS" | "EMAIL";
 export const DeliveryMediumType = /*@__PURE__*/ S.String;
 
 export type DeliveryMediumListType = DeliveryMediumType[];
@@ -661,8 +656,7 @@ export type UserStatusType =
   | "UNKNOWN"
   | "RESET_REQUIRED"
   | "FORCE_CHANGE_PASSWORD"
-  | "EXTERNAL_PROVIDER"
-  | (string & {});
+  | "EXTERNAL_PROVIDER";
 export const UserStatusType = /*@__PURE__*/ S.String;
 
 export interface MFAOptionType {
@@ -996,8 +990,7 @@ export type AuthFlowType =
   | "ADMIN_NO_SRP_AUTH"
   | "USER_PASSWORD_AUTH"
   | "ADMIN_USER_PASSWORD_AUTH"
-  | "USER_AUTH"
-  | (string & {});
+  | "USER_AUTH";
 export const AuthFlowType = /*@__PURE__*/ S.String;
 
 export type AuthParametersType = { [key: string]: string | undefined };
@@ -1094,8 +1087,7 @@ export type ChallengeNameType =
   | "SMS_OTP"
   | "PASSWORD"
   | "WEB_AUTHN"
-  | "PASSWORD_SRP"
-  | (string & {});
+  | "PASSWORD_SRP";
 export const ChallengeNameType = /*@__PURE__*/ S.String;
 
 export type ChallengeParametersType = { [key: string]: string | undefined };
@@ -1327,21 +1319,16 @@ export type EventType =
   | "SignUp"
   | "ForgotPassword"
   | "PasswordChange"
-  | "ResendCode"
-  | (string & {});
+  | "ResendCode";
 export const EventType = /*@__PURE__*/ S.String;
 
-export type EventResponseType = "Pass" | "Fail" | "InProgress" | (string & {});
+export type EventResponseType = "Pass" | "Fail" | "InProgress";
 export const EventResponseType = /*@__PURE__*/ S.String;
 
-export type RiskDecisionType =
-  | "NoRisk"
-  | "AccountTakeover"
-  | "Block"
-  | (string & {});
+export type RiskDecisionType = "NoRisk" | "AccountTakeover" | "Block";
 export const RiskDecisionType = /*@__PURE__*/ S.String;
 
-export type RiskLevelType = "Low" | "Medium" | "High" | (string & {});
+export type RiskLevelType = "Low" | "Medium" | "High";
 export const RiskLevelType = /*@__PURE__*/ S.String;
 
 export type WrappedBooleanType = boolean;
@@ -1357,10 +1344,10 @@ export const EventRiskType = /*@__PURE__*/ S.suspend(() =>
     CompromisedCredentialsDetected: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "EventRiskType" }) as any as S.Schema<EventRiskType>;
-export type ChallengeName = "Password" | "Mfa" | (string & {});
+export type ChallengeName = "Password" | "Mfa";
 export const ChallengeName = /*@__PURE__*/ S.String;
 
-export type ChallengeResponse = "Success" | "Failure" | (string & {});
+export type ChallengeResponse = "Success" | "Failure";
 export const ChallengeResponse = /*@__PURE__*/ S.String;
 
 export interface ChallengeResponseType {
@@ -1397,7 +1384,7 @@ export const EventContextDataType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EventContextDataType",
 }) as any as S.Schema<EventContextDataType>;
-export type FeedbackValueType = "Valid" | "Invalid" | (string & {});
+export type FeedbackValueType = "Valid" | "Invalid";
 export const FeedbackValueType = /*@__PURE__*/ S.String;
 
 export interface EventFeedbackType {
@@ -1740,10 +1727,7 @@ export const AdminUpdateAuthEventFeedbackResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AdminUpdateAuthEventFeedbackResponse",
 }) as any as S.Schema<AdminUpdateAuthEventFeedbackResponse>;
-export type DeviceRememberedStatusType =
-  | "remembered"
-  | "not_remembered"
-  | (string & {});
+export type DeviceRememberedStatusType = "remembered" | "not_remembered";
 export const DeviceRememberedStatusType = /*@__PURE__*/ S.String;
 
 export interface AdminUpdateDeviceStatusRequest {
@@ -2114,8 +2098,7 @@ export type IdentityProviderTypeType =
   | "Google"
   | "LoginWithAmazon"
   | "SignInWithApple"
-  | "OIDC"
-  | (string & {});
+  | "OIDC";
 export const IdentityProviderTypeType = /*@__PURE__*/ S.String;
 
 export type ProviderDetailsType = { [key: string]: string | undefined };
@@ -2211,20 +2194,13 @@ export type AssetCategoryType =
   | "PAGE_BACKGROUND"
   | "FORM_BACKGROUND"
   | "FORM_LOGO"
-  | "IDP_BUTTON_ICON"
-  | (string & {});
+  | "IDP_BUTTON_ICON";
 export const AssetCategoryType = /*@__PURE__*/ S.String;
 
-export type ColorSchemeModeType = "LIGHT" | "DARK" | "DYNAMIC" | (string & {});
+export type ColorSchemeModeType = "LIGHT" | "DARK" | "DYNAMIC";
 export const ColorSchemeModeType = /*@__PURE__*/ S.String;
 
-export type AssetExtensionType =
-  | "ICO"
-  | "JPEG"
-  | "PNG"
-  | "SVG"
-  | "WEBP"
-  | (string & {});
+export type AssetExtensionType = "ICO" | "JPEG" | "PNG" | "SVG" | "WEBP";
 export const AssetExtensionType = /*@__PURE__*/ S.String;
 
 export type AssetBytesType = Uint8Array;
@@ -2378,10 +2354,10 @@ export const CreateResourceServerResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResourceServerResponse",
 }) as any as S.Schema<CreateResourceServerResponse>;
 export type TermsNameType = string;
-export type TermsSourceType = "LINK" | (string & {});
+export type TermsSourceType = "LINK";
 export const TermsSourceType = /*@__PURE__*/ S.String;
 
-export type TermsEnforcementType = "NONE" | (string & {});
+export type TermsEnforcementType = "NONE";
 export const TermsEnforcementType = /*@__PURE__*/ S.String;
 
 export type LanguageIdType = string;
@@ -2489,8 +2465,7 @@ export type UserImportJobStatusType =
   | "Expired"
   | "Stopped"
   | "Failed"
-  | "Succeeded"
-  | (string & {});
+  | "Succeeded";
 export const UserImportJobStatusType = /*@__PURE__*/ S.String;
 
 export type LongType = number;
@@ -2563,12 +2538,7 @@ export const PasswordPolicyType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PasswordPolicyType",
 }) as any as S.Schema<PasswordPolicyType>;
-export type AuthFactorType =
-  | "PASSWORD"
-  | "EMAIL_OTP"
-  | "SMS_OTP"
-  | "WEB_AUTHN"
-  | (string & {});
+export type AuthFactorType = "PASSWORD" | "EMAIL_OTP" | "SMS_OTP" | "WEB_AUTHN";
 export const AuthFactorType = /*@__PURE__*/ S.String;
 
 export type AllowedFirstAuthFactorsListType = AuthFactorType[];
@@ -2596,14 +2566,10 @@ export const UserPoolPolicyType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UserPoolPolicyType",
 }) as any as S.Schema<UserPoolPolicyType>;
-export type DeletionProtectionType = "ACTIVE" | "INACTIVE" | (string & {});
+export type DeletionProtectionType = "ACTIVE" | "INACTIVE";
 export const DeletionProtectionType = /*@__PURE__*/ S.String;
 
-export type PreTokenGenerationLambdaVersionType =
-  | "V1_0"
-  | "V2_0"
-  | "V3_0"
-  | (string & {});
+export type PreTokenGenerationLambdaVersionType = "V1_0" | "V2_0" | "V3_0";
 export const PreTokenGenerationLambdaVersionType = /*@__PURE__*/ S.String;
 
 export interface PreTokenGenerationVersionConfigType {
@@ -2618,7 +2584,7 @@ export const PreTokenGenerationVersionConfigType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PreTokenGenerationVersionConfigType",
 }) as any as S.Schema<PreTokenGenerationVersionConfigType>;
-export type CustomSMSSenderLambdaVersionType = "V1_0" | (string & {});
+export type CustomSMSSenderLambdaVersionType = "V1_0";
 export const CustomSMSSenderLambdaVersionType = /*@__PURE__*/ S.String;
 
 export interface CustomSMSLambdaVersionConfigType {
@@ -2633,7 +2599,7 @@ export const CustomSMSLambdaVersionConfigType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomSMSLambdaVersionConfigType",
 }) as any as S.Schema<CustomSMSLambdaVersionConfigType>;
-export type CustomEmailSenderLambdaVersionType = "V1_0" | (string & {});
+export type CustomEmailSenderLambdaVersionType = "V1_0";
 export const CustomEmailSenderLambdaVersionType = /*@__PURE__*/ S.String;
 
 export interface CustomEmailLambdaVersionConfigType {
@@ -2648,7 +2614,7 @@ export const CustomEmailLambdaVersionConfigType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomEmailLambdaVersionConfigType",
 }) as any as S.Schema<CustomEmailLambdaVersionConfigType>;
-export type InboundFederationLambdaVersionType = "V1_0" | (string & {});
+export type InboundFederationLambdaVersionType = "V1_0";
 export const InboundFederationLambdaVersionType = /*@__PURE__*/ S.String;
 
 export interface InboundFederationLambdaType {
@@ -2701,7 +2667,7 @@ export const LambdaConfigType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LambdaConfigType",
 }) as any as S.Schema<LambdaConfigType>;
-export type VerifiedAttributeType = "phone_number" | "email" | (string & {});
+export type VerifiedAttributeType = "phone_number" | "email";
 export const VerifiedAttributeType = /*@__PURE__*/ S.String;
 
 export type VerifiedAttributesListType = VerifiedAttributeType[];
@@ -2711,14 +2677,13 @@ export const VerifiedAttributesListType = /*@__PURE__*/ S.Array(
 export type AliasAttributeType =
   | "phone_number"
   | "email"
-  | "preferred_username"
-  | (string & {});
+  | "preferred_username";
 export const AliasAttributeType = /*@__PURE__*/ S.String;
 
 export type AliasAttributesListType = AliasAttributeType[];
 export const AliasAttributesListType =
   /*@__PURE__*/ S.Array(AliasAttributeType);
-export type UsernameAttributeType = "phone_number" | "email" | (string & {});
+export type UsernameAttributeType = "phone_number" | "email";
 export const UsernameAttributeType = /*@__PURE__*/ S.String;
 
 export type UsernameAttributesListType = UsernameAttributeType[];
@@ -2730,10 +2695,7 @@ export type EmailVerificationMessageType = string;
 export type EmailVerificationSubjectType = string;
 export type EmailVerificationMessageByLinkType = string;
 export type EmailVerificationSubjectByLinkType = string;
-export type DefaultEmailOptionType =
-  | "CONFIRM_WITH_LINK"
-  | "CONFIRM_WITH_CODE"
-  | (string & {});
+export type DefaultEmailOptionType = "CONFIRM_WITH_LINK" | "CONFIRM_WITH_CODE";
 export const DefaultEmailOptionType = /*@__PURE__*/ S.String;
 
 export interface VerificationMessageTemplateType {
@@ -2756,7 +2718,7 @@ export const VerificationMessageTemplateType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VerificationMessageTemplateType",
 }) as any as S.Schema<VerificationMessageTemplateType>;
-export type UserPoolMfaType = "OFF" | "ON" | "OPTIONAL" | (string & {});
+export type UserPoolMfaType = "OFF" | "ON" | "OPTIONAL";
 export const UserPoolMfaType = /*@__PURE__*/ S.String;
 
 export type AttributesRequireVerificationBeforeUpdateType =
@@ -2788,10 +2750,7 @@ export const DeviceConfigurationType = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeviceConfigurationType",
 }) as any as S.Schema<DeviceConfigurationType>;
 export type EmailAddressType = string;
-export type EmailSendingAccountType =
-  | "COGNITO_DEFAULT"
-  | "DEVELOPER"
-  | (string & {});
+export type EmailSendingAccountType = "COGNITO_DEFAULT" | "DEVELOPER";
 export const EmailSendingAccountType = /*@__PURE__*/ S.String;
 
 export type SESConfigurationSet = string;
@@ -2869,17 +2828,10 @@ export const AdminCreateUserConfigType = /*@__PURE__*/ S.suspend(() =>
 export type SchemaAttributesListType = SchemaAttributeType[];
 export const SchemaAttributesListType =
   /*@__PURE__*/ S.Array(SchemaAttributeType);
-export type AdvancedSecurityModeType =
-  | "OFF"
-  | "AUDIT"
-  | "ENFORCED"
-  | (string & {});
+export type AdvancedSecurityModeType = "OFF" | "AUDIT" | "ENFORCED";
 export const AdvancedSecurityModeType = /*@__PURE__*/ S.String;
 
-export type AdvancedSecurityEnabledModeType =
-  | "AUDIT"
-  | "ENFORCED"
-  | (string & {});
+export type AdvancedSecurityEnabledModeType = "AUDIT" | "ENFORCED";
 export const AdvancedSecurityEnabledModeType = /*@__PURE__*/ S.String;
 
 export interface AdvancedSecurityAdditionalFlowsType {
@@ -2916,8 +2868,7 @@ export type PriorityType = number;
 export type RecoveryOptionNameType =
   | "verified_email"
   | "verified_phone_number"
-  | "admin_only"
-  | (string & {});
+  | "admin_only";
 export const RecoveryOptionNameType = /*@__PURE__*/ S.String;
 
 export interface RecoveryOptionType {
@@ -2939,13 +2890,10 @@ export const AccountRecoverySettingType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccountRecoverySettingType",
 }) as any as S.Schema<AccountRecoverySettingType>;
-export type UserPoolTierType = "LITE" | "ESSENTIALS" | "PLUS" | (string & {});
+export type UserPoolTierType = "LITE" | "ESSENTIALS" | "PLUS";
 export const UserPoolTierType = /*@__PURE__*/ S.String;
 
-export type EncryptionKeyType =
-  | "AWS_OWNED_KEY"
-  | "CUSTOMER_MANAGED_KEY"
-  | (string & {});
+export type EncryptionKeyType = "AWS_OWNED_KEY" | "CUSTOMER_MANAGED_KEY";
 export const EncryptionKeyType = /*@__PURE__*/ S.String;
 
 export type EncryptionKeyArnType = string;
@@ -2961,7 +2909,7 @@ export const KeyConfigurationType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KeyConfigurationType",
 }) as any as S.Schema<KeyConfigurationType>;
-export type IssuerType = "ORIGINAL" | "UPDATED" | (string & {});
+export type IssuerType = "ORIGINAL" | "UPDATED";
 export const IssuerType = /*@__PURE__*/ S.String;
 
 export interface IssuerConfigurationType {
@@ -3042,7 +2990,7 @@ export const CreateUserPoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserPoolRequest",
 }) as any as S.Schema<CreateUserPoolRequest>;
-export type StatusType = "Enabled" | "Disabled" | (string & {});
+export type StatusType = "Enabled" | "Disabled";
 export const StatusType = /*@__PURE__*/ S.String;
 
 export type DomainType = string;
@@ -3139,12 +3087,7 @@ export type GenerateSecret = boolean;
 export type RefreshTokenValidityType = number;
 export type AccessTokenValidityType = number;
 export type IdTokenValidityType = number;
-export type TimeUnitsType =
-  | "seconds"
-  | "minutes"
-  | "hours"
-  | "days"
-  | (string & {});
+export type TimeUnitsType = "seconds" | "minutes" | "hours" | "days";
 export const TimeUnitsType = /*@__PURE__*/ S.String;
 
 export interface TokenValidityUnitsType {
@@ -3173,8 +3116,7 @@ export type ExplicitAuthFlowsType =
   | "ALLOW_USER_PASSWORD_AUTH"
   | "ALLOW_USER_SRP_AUTH"
   | "ALLOW_REFRESH_TOKEN_AUTH"
-  | "ALLOW_USER_AUTH"
-  | (string & {});
+  | "ALLOW_USER_AUTH";
 export const ExplicitAuthFlowsType = /*@__PURE__*/ S.String;
 
 export type ExplicitAuthFlowsListType = ExplicitAuthFlowsType[];
@@ -3190,11 +3132,7 @@ export type CallbackURLsListType = string[];
 export const CallbackURLsListType = /*@__PURE__*/ S.Array(S.String);
 export type LogoutURLsListType = string[];
 export const LogoutURLsListType = /*@__PURE__*/ S.Array(S.String);
-export type OAuthFlowType =
-  | "code"
-  | "implicit"
-  | "client_credentials"
-  | (string & {});
+export type OAuthFlowType = "code" | "implicit" | "client_credentials";
 export const OAuthFlowType = /*@__PURE__*/ S.String;
 
 export type OAuthFlowsType = OAuthFlowType[];
@@ -3221,14 +3159,11 @@ export const AnalyticsConfigurationType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AnalyticsConfigurationType",
 }) as any as S.Schema<AnalyticsConfigurationType>;
-export type PreventUserExistenceErrorTypes =
-  | "LEGACY"
-  | "ENABLED"
-  | (string & {});
+export type PreventUserExistenceErrorTypes = "LEGACY" | "ENABLED";
 export const PreventUserExistenceErrorTypes = /*@__PURE__*/ S.String;
 
 export type AuthSessionValidityType = number;
-export type FeatureType = "ENABLED" | "DISABLED" | (string & {});
+export type FeatureType = "ENABLED" | "DISABLED";
 export const FeatureType = /*@__PURE__*/ S.String;
 
 export type RetryGracePeriodSecondsType = number;
@@ -3381,11 +3316,7 @@ export const CreateUserPoolClientResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateUserPoolClientResponse",
 }) as any as S.Schema<CreateUserPoolClientResponse>;
 export type WrappedIntegerType = number;
-export type SecurityPolicyType =
-  | "TLS_V1"
-  | "TLS_V1_2_2021"
-  | "TLS_V1_3_2025"
-  | (string & {});
+export type SecurityPolicyType = "TLS_V1" | "TLS_V1_2_2021" | "TLS_V1_3_2025";
 export const SecurityPolicyType = /*@__PURE__*/ S.String;
 
 export interface CustomDomainConfigType {
@@ -3484,15 +3415,10 @@ export const CreateUserPoolReplicaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserPoolReplicaRequest",
 }) as any as S.Schema<CreateUserPoolReplicaRequest>;
-export type ReplicaStatusType =
-  | "CREATING"
-  | "ACTIVE"
-  | "INACTIVE"
-  | "DELETING"
-  | (string & {});
+export type ReplicaStatusType = "CREATING" | "ACTIVE" | "INACTIVE" | "DELETING";
 export const ReplicaStatusType = /*@__PURE__*/ S.String;
 
-export type ReplicaRoleType = "PRIMARY" | "SECONDARY" | (string & {});
+export type ReplicaRoleType = "PRIMARY" | "SECONDARY";
 export const ReplicaRoleType = /*@__PURE__*/ S.String;
 
 export interface UserPoolReplicaType {
@@ -3999,19 +3925,12 @@ export const DescribeRiskConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRiskConfigurationRequest",
 }) as any as S.Schema<DescribeRiskConfigurationRequest>;
-export type EventFilterType =
-  | "SIGN_IN"
-  | "PASSWORD_CHANGE"
-  | "SIGN_UP"
-  | (string & {});
+export type EventFilterType = "SIGN_IN" | "PASSWORD_CHANGE" | "SIGN_UP";
 export const EventFilterType = /*@__PURE__*/ S.String;
 
 export type EventFiltersType = EventFilterType[];
 export const EventFiltersType = /*@__PURE__*/ S.Array(EventFilterType);
-export type CompromisedCredentialsEventActionType =
-  | "BLOCK"
-  | "NO_ACTION"
-  | (string & {});
+export type CompromisedCredentialsEventActionType = "BLOCK" | "NO_ACTION";
 export const CompromisedCredentialsEventActionType = /*@__PURE__*/ S.String;
 
 export interface CompromisedCredentialsActionsType {
@@ -4076,8 +3995,7 @@ export type AccountTakeoverEventActionType =
   | "BLOCK"
   | "MFA_IF_CONFIGURED"
   | "MFA_REQUIRED"
-  | "NO_ACTION"
-  | (string & {});
+  | "NO_ACTION";
 export const AccountTakeoverEventActionType = /*@__PURE__*/ S.String;
 
 export interface AccountTakeoverActionType {
@@ -4299,8 +4217,7 @@ export type DomainStatusType =
   | "DELETING"
   | "UPDATING"
   | "ACTIVE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const DomainStatusType = /*@__PURE__*/ S.String;
 
 export interface DomainDescriptionType {
@@ -4556,13 +4473,10 @@ export const GetLogDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLogDeliveryConfigurationRequest",
 }) as any as S.Schema<GetLogDeliveryConfigurationRequest>;
-export type LogLevel = "ERROR" | "INFO" | (string & {});
+export type LogLevel = "ERROR" | "INFO";
 export const LogLevel = /*@__PURE__*/ S.String;
 
-export type EventSourceName =
-  | "userNotification"
-  | "userAuthEvents"
-  | (string & {});
+export type EventSourceName = "userNotification" | "userAuthEvents";
 export const EventSourceName = /*@__PURE__*/ S.String;
 
 export interface CloudWatchLogsConfigurationType {
@@ -4911,13 +4825,12 @@ export const EmailMfaConfigType = /*@__PURE__*/ S.suspend(() =>
   identifier: "EmailMfaConfigType",
 }) as any as S.Schema<EmailMfaConfigType>;
 export type RelyingPartyIdType = string;
-export type UserVerificationType = "required" | "preferred" | (string & {});
+export type UserVerificationType = "required" | "preferred";
 export const UserVerificationType = /*@__PURE__*/ S.String;
 
 export type WebAuthnFactorConfigurationType =
   | "SINGLE_FACTOR"
-  | "MULTI_FACTOR_WITH_USER_VERIFICATION"
-  | (string & {});
+  | "MULTI_FACTOR_WITH_USER_VERIFICATION";
 export const WebAuthnFactorConfigurationType = /*@__PURE__*/ S.String;
 
 export interface WebAuthnConfigurationType {
@@ -6641,7 +6554,7 @@ export const UpdateUserPoolDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserPoolDomainResponse",
 }) as any as S.Schema<UpdateUserPoolDomainResponse>;
-export type UpdateReplicaStatusType = "ACTIVE" | "INACTIVE" | (string & {});
+export type UpdateReplicaStatusType = "ACTIVE" | "INACTIVE";
 export const UpdateReplicaStatusType = /*@__PURE__*/ S.String;
 
 export interface UpdateUserPoolReplicaRequest {
@@ -6703,10 +6616,7 @@ export const VerifySoftwareTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VerifySoftwareTokenRequest",
 }) as any as S.Schema<VerifySoftwareTokenRequest>;
-export type VerifySoftwareTokenResponseType =
-  | "SUCCESS"
-  | "ERROR"
-  | (string & {});
+export type VerifySoftwareTokenResponseType = "SUCCESS" | "ERROR";
 export const VerifySoftwareTokenResponseType = /*@__PURE__*/ S.String;
 
 export interface VerifySoftwareTokenResponse {

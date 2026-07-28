@@ -62,8 +62,7 @@ export class NotFound extends T.applyErrorMatchers(
 
 export type GoogleCloudIdentitytoolkitV1SignUpRequestRecaptchaVersionEnum =
   | "RECAPTCHA_VERSION_UNSPECIFIED"
-  | "RECAPTCHA_ENTERPRISE"
-  | (string & {});
+  | "RECAPTCHA_ENTERPRISE";
 export const GoogleCloudIdentitytoolkitV1SignUpRequestRecaptchaVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -84,7 +83,7 @@ export const GoogleCloudIdentitytoolkitV1MfaFactor = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIdentitytoolkitV1MfaFactor>;
 
 export type GoogleCloudIdentitytoolkitV1MfaFactorList =
-  GoogleCloudIdentitytoolkitV1MfaFactor[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1MfaFactor>;
 export const GoogleCloudIdentitytoolkitV1MfaFactorList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitV1MfaFactor,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitV1MfaFactorList>;
@@ -93,8 +92,7 @@ export type GoogleCloudIdentitytoolkitV1SignUpRequestClientTypeEnum =
   | "CLIENT_TYPE_UNSPECIFIED"
   | "CLIENT_TYPE_WEB"
   | "CLIENT_TYPE_ANDROID"
-  | "CLIENT_TYPE_IOS"
-  | (string & {});
+  | "CLIENT_TYPE_IOS";
 export const GoogleCloudIdentitytoolkitV1SignUpRequestClientTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -278,7 +276,7 @@ export const GoogleCloudIdentitytoolkitV1ProviderUserInfo =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1ProviderUserInfo>;
 
 export type GoogleCloudIdentitytoolkitV1ProviderUserInfoList =
-  GoogleCloudIdentitytoolkitV1ProviderUserInfo[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1ProviderUserInfo>;
 export const GoogleCloudIdentitytoolkitV1ProviderUserInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1ProviderUserInfo,
@@ -339,7 +337,7 @@ export const GoogleCloudIdentitytoolkitV1MfaEnrollment =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
 
 export type GoogleCloudIdentitytoolkitV1MfaEnrollmentList =
-  GoogleCloudIdentitytoolkitV1MfaEnrollment[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
 export const GoogleCloudIdentitytoolkitV1MfaEnrollmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1MfaEnrollment,
@@ -440,7 +438,7 @@ export const GoogleCloudIdentitytoolkitV1UserInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIdentitytoolkitV1UserInfo>;
 
 export type GoogleCloudIdentitytoolkitV1UserInfoList =
-  GoogleCloudIdentitytoolkitV1UserInfo[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1UserInfo>;
 export const GoogleCloudIdentitytoolkitV1UserInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitV1UserInfo,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitV1UserInfoList>;
@@ -449,16 +447,14 @@ export type GoogleCloudIdentitytoolkitV1Argon2ParametersHashTypeEnum =
   | "HASH_TYPE_UNSPECIFIED"
   | "ARGON2_D"
   | "ARGON2_ID"
-  | "ARGON2_I"
-  | (string & {});
+  | "ARGON2_I";
 export const GoogleCloudIdentitytoolkitV1Argon2ParametersHashTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIdentitytoolkitV1Argon2ParametersVersionEnum =
   | "VERSION_UNSPECIFIED"
   | "VERSION_10"
-  | "VERSION_13"
-  | (string & {});
+  | "VERSION_13";
 export const GoogleCloudIdentitytoolkitV1Argon2ParametersVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -499,10 +495,7 @@ export const GoogleCloudIdentitytoolkitV1Argon2Parameters =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1Argon2Parameters>;
 
 export type GoogleCloudIdentitytoolkitV1UploadAccountRequestPasswordHashOrderEnum =
-    | "UNSPECIFIED_ORDER"
-    | "SALT_AND_PASSWORD"
-    | "PASSWORD_AND_SALT"
-    | (string & {});
+  "UNSPECIFIED_ORDER" | "SALT_AND_PASSWORD" | "PASSWORD_AND_SALT";
 export const GoogleCloudIdentitytoolkitV1UploadAccountRequestPasswordHashOrderEnum =
   /*@__PURE__*/ S.String;
 
@@ -608,7 +601,7 @@ export const GoogleCloudIdentitytoolkitV1ErrorInfo = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIdentitytoolkitV1ErrorInfo>;
 
 export type GoogleCloudIdentitytoolkitV1ErrorInfoList =
-  GoogleCloudIdentitytoolkitV1ErrorInfo[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1ErrorInfo>;
 export const GoogleCloudIdentitytoolkitV1ErrorInfoList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitV1ErrorInfo,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitV1ErrorInfoList>;
@@ -656,7 +649,7 @@ export const BatchCreateProjectsTenantsAccountsRequest =
     identifier: "BatchCreateProjectsTenantsAccountsRequest",
   }) as any as S.Schema<BatchCreateProjectsTenantsAccountsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -725,7 +718,7 @@ export const GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo>;
 
 export type GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfoList =
-  GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo>;
 export const GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo,
@@ -1199,8 +1192,7 @@ export const GetProjectsV1Request = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudIdentitytoolkitV1EmailTemplateFormatEnum =
   | "EMAIL_BODY_FORMAT_UNSPECIFIED"
   | "PLAINTEXT"
-  | "HTML"
-  | (string & {});
+  | "HTML";
 export const GoogleCloudIdentitytoolkitV1EmailTemplateFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -1257,8 +1249,7 @@ export type GoogleCloudIdentitytoolkitV1IdpConfigProviderEnum =
   | "GITHUB"
   | "GOOGLE_PLAY_GAMES"
   | "LINKEDIN"
-  | "IOS_GAME_CENTER"
-  | (string & {});
+  | "IOS_GAME_CENTER";
 export const GoogleCloudIdentitytoolkitV1IdpConfigProviderEnum =
   /*@__PURE__*/ S.String;
 
@@ -1291,7 +1282,7 @@ export const GoogleCloudIdentitytoolkitV1IdpConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIdentitytoolkitV1IdpConfig>;
 
 export type GoogleCloudIdentitytoolkitV1IdpConfigList =
-  GoogleCloudIdentitytoolkitV1IdpConfig[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1IdpConfig>;
 export const GoogleCloudIdentitytoolkitV1IdpConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudIdentitytoolkitV1IdpConfig,
 ) as any as S.Schema<GoogleCloudIdentitytoolkitV1IdpConfigList>;
@@ -1453,7 +1444,7 @@ export const GoogleCloudIdentitytoolkitV1OpenIdConnectKey =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1OpenIdConnectKey>;
 
 export type GoogleCloudIdentitytoolkitV1OpenIdConnectKeyList =
-  GoogleCloudIdentitytoolkitV1OpenIdConnectKey[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1OpenIdConnectKey>;
 export const GoogleCloudIdentitytoolkitV1OpenIdConnectKeyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1OpenIdConnectKey,
@@ -1564,7 +1555,7 @@ export const GoogleCloudIdentitytoolkitV1FederatedUserIdentifier =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier>;
 
 export type GoogleCloudIdentitytoolkitV1FederatedUserIdentifierList =
-  GoogleCloudIdentitytoolkitV1FederatedUserIdentifier[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier>;
 export const GoogleCloudIdentitytoolkitV1FederatedUserIdentifierList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1FederatedUserIdentifier,
@@ -1700,8 +1691,7 @@ export type GoogleCloudIdentitytoolkitV1QueryUserInfoRequestSortByEnum =
   | "NAME"
   | "CREATED_AT"
   | "LAST_LOGIN_AT"
-  | "USER_EMAIL"
-  | (string & {});
+  | "USER_EMAIL";
 export const GoogleCloudIdentitytoolkitV1QueryUserInfoRequestSortByEnum =
   /*@__PURE__*/ S.String;
 
@@ -1726,7 +1716,7 @@ export const GoogleCloudIdentitytoolkitV1SqlExpression =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1SqlExpression>;
 
 export type GoogleCloudIdentitytoolkitV1SqlExpressionList =
-  GoogleCloudIdentitytoolkitV1SqlExpression[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1SqlExpression>;
 export const GoogleCloudIdentitytoolkitV1SqlExpressionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1SqlExpression,
@@ -1735,8 +1725,7 @@ export const GoogleCloudIdentitytoolkitV1SqlExpressionList =
 export type GoogleCloudIdentitytoolkitV1QueryUserInfoRequestOrderEnum =
   | "ORDER_UNSPECIFIED"
   | "ASC"
-  | "DESC"
-  | (string & {});
+  | "DESC";
 export const GoogleCloudIdentitytoolkitV1QueryUserInfoRequestOrderEnum =
   /*@__PURE__*/ S.String;
 
@@ -1917,8 +1906,7 @@ export type GoogleCloudIdentitytoolkitV1ResetPasswordResponseRequestTypeEnum =
   | "RECOVER_EMAIL"
   | "EMAIL_SIGNIN"
   | "VERIFY_AND_CHANGE_EMAIL"
-  | "REVERT_SECOND_FACTOR_ADDITION"
-  | (string & {});
+  | "REVERT_SECOND_FACTOR_ADDITION";
 export const GoogleCloudIdentitytoolkitV1ResetPasswordResponseRequestTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1948,8 +1936,7 @@ export const GoogleCloudIdentitytoolkitV1ResetPasswordResponse =
 
 export type GoogleCloudIdentitytoolkitV1GetOobCodeRequestRecaptchaVersionEnum =
   | "RECAPTCHA_VERSION_UNSPECIFIED"
-  | "RECAPTCHA_ENTERPRISE"
-  | (string & {});
+  | "RECAPTCHA_ENTERPRISE";
 export const GoogleCloudIdentitytoolkitV1GetOobCodeRequestRecaptchaVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1957,8 +1944,7 @@ export type GoogleCloudIdentitytoolkitV1GetOobCodeRequestClientTypeEnum =
   | "CLIENT_TYPE_UNSPECIFIED"
   | "CLIENT_TYPE_WEB"
   | "CLIENT_TYPE_ANDROID"
-  | "CLIENT_TYPE_IOS"
-  | (string & {});
+  | "CLIENT_TYPE_IOS";
 export const GoogleCloudIdentitytoolkitV1GetOobCodeRequestClientTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1971,8 +1957,7 @@ export type GoogleCloudIdentitytoolkitV1GetOobCodeRequestRequestTypeEnum =
   | "RECOVER_EMAIL"
   | "EMAIL_SIGNIN"
   | "VERIFY_AND_CHANGE_EMAIL"
-  | "REVERT_SECOND_FACTOR_ADDITION"
-  | (string & {});
+  | "REVERT_SECOND_FACTOR_ADDITION";
 export const GoogleCloudIdentitytoolkitV1GetOobCodeRequestRequestTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2148,7 +2133,7 @@ export const SendOobCodeProjectsTenantsAccountsRequest =
   }) as any as S.Schema<SendOobCodeProjectsTenantsAccountsRequest>;
 
 export type GoogleCloudIdentitytoolkitV1SendVerificationCodeRequestRecaptchaVersionEnum =
-  "RECAPTCHA_VERSION_UNSPECIFIED" | "RECAPTCHA_ENTERPRISE" | (string & {});
+  "RECAPTCHA_VERSION_UNSPECIFIED" | "RECAPTCHA_ENTERPRISE";
 export const GoogleCloudIdentitytoolkitV1SendVerificationCodeRequestRecaptchaVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2156,8 +2141,7 @@ export type GoogleCloudIdentitytoolkitV1SendVerificationCodeRequestClientTypeEnu
     | "CLIENT_TYPE_UNSPECIFIED"
     | "CLIENT_TYPE_WEB"
     | "CLIENT_TYPE_ANDROID"
-    | "CLIENT_TYPE_IOS"
-    | (string & {});
+    | "CLIENT_TYPE_IOS";
 export const GoogleCloudIdentitytoolkitV1SendVerificationCodeRequestClientTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2704,7 +2688,7 @@ export const GoogleCloudIdentitytoolkitV1SignInWithIdpResponse =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignInWithIdpResponse>;
 
 export type GoogleCloudIdentitytoolkitV1SignInWithPasswordRequestRecaptchaVersionEnum =
-  "RECAPTCHA_VERSION_UNSPECIFIED" | "RECAPTCHA_ENTERPRISE" | (string & {});
+  "RECAPTCHA_VERSION_UNSPECIFIED" | "RECAPTCHA_ENTERPRISE";
 export const GoogleCloudIdentitytoolkitV1SignInWithPasswordRequestRecaptchaVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2712,8 +2696,7 @@ export type GoogleCloudIdentitytoolkitV1SignInWithPasswordRequestClientTypeEnum 
     | "CLIENT_TYPE_UNSPECIFIED"
     | "CLIENT_TYPE_WEB"
     | "CLIENT_TYPE_ANDROID"
-    | "CLIENT_TYPE_IOS"
-    | (string & {});
+    | "CLIENT_TYPE_IOS";
 export const GoogleCloudIdentitytoolkitV1SignInWithPasswordRequestClientTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2790,8 +2773,7 @@ export type GoogleCloudIdentitytoolkitV1UserNotificationNotificationCodeEnum =
   | "MISSING_NUMERIC_CHARACTER"
   | "MISSING_NON_ALPHANUMERIC_CHARACTER"
   | "MINIMUM_PASSWORD_LENGTH"
-  | "MAXIMUM_PASSWORD_LENGTH"
-  | (string & {});
+  | "MAXIMUM_PASSWORD_LENGTH";
 export const GoogleCloudIdentitytoolkitV1UserNotificationNotificationCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2815,7 +2797,7 @@ export const GoogleCloudIdentitytoolkitV1UserNotification =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1UserNotification>;
 
 export type GoogleCloudIdentitytoolkitV1UserNotificationList =
-  GoogleCloudIdentitytoolkitV1UserNotification[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1UserNotification>;
 export const GoogleCloudIdentitytoolkitV1UserNotificationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1UserNotification,
@@ -2878,12 +2860,7 @@ export const GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse =
   }) as any as S.Schema<GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse>;
 
 export type GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequestOperationEnum =
-    | "VERIFY_OP_UNSPECIFIED"
-    | "SIGN_UP_OR_IN"
-    | "REAUTH"
-    | "UPDATE"
-    | "LINK"
-    | (string & {});
+  "VERIFY_OP_UNSPECIFIED" | "SIGN_UP_OR_IN" | "REAUTH" | "UPDATE" | "LINK";
 export const GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequestOperationEnum =
   /*@__PURE__*/ S.String;
 
@@ -3014,13 +2991,12 @@ export type GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeItem
     | "PROVIDER"
     | "PHOTO_URL"
     | "PASSWORD"
-    | "RAW_USER_INFO"
-    | (string & {});
+    | "RAW_USER_INFO";
 export const GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeItemEnumList =
-  GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeItemEnum[];
+  ReadonlyArray<GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeItemEnum>;
 export const GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIdentitytoolkitV1SetAccountInfoRequestDeleteAttributeItemEnum,

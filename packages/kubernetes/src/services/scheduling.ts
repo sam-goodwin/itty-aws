@@ -47,7 +47,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
-export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = string[];
+export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -97,7 +98,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry =
 
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
-  IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
@@ -134,7 +135,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference =
 
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
-  IoK8sApimachineryPkgApisMetaV1OwnerReference[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1OwnerReference,
@@ -237,7 +238,7 @@ export const IoK8sApiSchedulingV1alpha3TopologyConstraint =
 
 /** topology defines the topology constraints for the composite pod group. Currently only a single topology constraint can be specified. This may change in the future. */
 export type IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList =
-  IoK8sApiSchedulingV1alpha3TopologyConstraint[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
 export const IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3TopologyConstraint,
@@ -379,7 +380,7 @@ export const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend(
 
 /** conditions represent the latest observations of the CompositePodGroup's state. Known condition types: - "CompositePodGroupInitiallyScheduled": Indicates whether the overall scheduling requirement for the subtree under this CompositePodGroup has been satisfied. Once this condition transitions to True, it serves as a terminal state and will never revert to False, even if pods are subsequently deleted and group constraints are no longer met. - "DisruptionTarget": Indicates whether the CompositePodGroup is about to be terminated due to disruption such as preemption. Known reasons for the CompositePodGroupInitiallyScheduled condition: - "Unschedulable": The CompositePodGroup's subtree could not be placed due to resource constraints, affinity/anti-affinity, or topological constraints. - "SchedulerError": The CompositePodGroup cannot be scheduled due to some internal error that occurred during scheduling. - "Invalid": Set to True when kube-scheduler detects an invalid group layout during runtime validation. The `message` field details the specific layout violation (such as a detected cycle, exceeding the maximum depth of 4, or referencing multiple distinct Workloads). Known reasons for the DisruptionTarget condition: - "PreemptionByScheduler": The CompositePodGroup was targeted by the scheduler's preemption loop to free up capacity for higher-priority preemptors. */
 export type IoK8sApiSchedulingV1alpha3CompositePodGroupStatusConditionsList =
-  IoK8sApimachineryPkgApisMetaV1Condition[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1Condition>;
 export const IoK8sApiSchedulingV1alpha3CompositePodGroupStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1Condition,
@@ -512,7 +513,7 @@ export const IoK8sApiSchedulingV1alpha3PodGroupResourceClaim =
 
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is an alpha-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
 export type IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList =
-  IoK8sApiSchedulingV1alpha3PodGroupResourceClaim[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3PodGroupResourceClaim>;
 export const IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3PodGroupResourceClaim,
@@ -520,7 +521,7 @@ export const IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList =
 
 /** topology defines the topology constraints for the pod group. Currently only a single topology constraint can be specified. This may change in the future. */
 export type IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList =
-  IoK8sApiSchedulingV1alpha3TopologyConstraint[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
 export const IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3TopologyConstraint,
@@ -617,7 +618,7 @@ export const IoK8sApiSchedulingV1alpha3PodGroupSpec = /*@__PURE__*/ S.suspend(
 
 /** conditions represent the latest observations of the PodGroup's state. Known condition types: - "PodGroupInitiallyScheduled": Indicates whether the scheduling requirement has been satisfied. Once this condition transitions to True, it serves as a terminal state and will never revert to False, even if pods are subsequently evicted and group constraints are no longer met. - "DisruptionTarget": Indicates whether the PodGroup is about to be terminated due to disruption such as preemption. Known reasons for the PodGroupInitiallyScheduled condition: - "Unschedulable": The PodGroup cannot be scheduled due to resource constraints, affinity/anti-affinity rules, or insufficient capacity for the gang. - "SchedulerError": The PodGroup cannot be scheduled due to some internal error that happened during scheduling, for example due to nodeAffinity parsing errors. Known reasons for the DisruptionTarget condition: - "PreemptionByScheduler": The PodGroup was preempted by the scheduler to make room for higher-priority PodGroups or Pods. */
 export type IoK8sApiSchedulingV1alpha3PodGroupStatusConditionsList =
-  IoK8sApimachineryPkgApisMetaV1Condition[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1Condition>;
 export const IoK8sApiSchedulingV1alpha3PodGroupStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1Condition,
@@ -642,7 +643,7 @@ export const IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus =
 
 /** resourceClaimStatuses is status of resource claims. */
 export type IoK8sApiSchedulingV1alpha3PodGroupStatusResourceClaimStatusesList =
-  IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus>;
 export const IoK8sApiSchedulingV1alpha3PodGroupStatusResourceClaimStatusesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus,
@@ -742,7 +743,7 @@ export const IoK8sApiSchedulingV1alpha3PodGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** compositePodGroupTemplates is the list of templates for children CompositePodGroups. The maximum number of templates is 8. At least one entry in CompositePodGroupTemplates or PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGroupTemplatesList =
-  IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate>;
 export const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate),
@@ -750,7 +751,7 @@ export const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGrou
 
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is an alpha-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
 export type IoK8sApiSchedulingV1alpha3PodGroupTemplateResourceClaimsList =
-  IoK8sApiSchedulingV1alpha3PodGroupResourceClaim[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3PodGroupResourceClaim>;
 export const IoK8sApiSchedulingV1alpha3PodGroupTemplateResourceClaimsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3PodGroupResourceClaim,
@@ -797,7 +798,7 @@ export const IoK8sApiSchedulingV1alpha3PodGroupTemplate =
 
 /** podGroupTemplates is the list of templates for children PodGroups. The maximum number of templates is 8. At least one entry in CompositePodGroupTemplates or PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1alpha3CompositePodGroupTemplatePodGroupTemplatesList =
-  IoK8sApiSchedulingV1alpha3PodGroupTemplate[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3PodGroupTemplate>;
 export const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplatePodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3PodGroupTemplate,
@@ -852,7 +853,7 @@ export const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate =
 
 /** compositePodGroupTemplates is the list of CompositePodGroup templates that make up the Workload. The maximum number of templates is 8. This field is immutable. Exactly one of CompositePodGroupTemplates and PodGroupTemplates must be set. This field is used only when the CompositePodGroup feature gate is enabled. */
 export type IoK8sApiSchedulingV1alpha3WorkloadSpecCompositePodGroupTemplatesList =
-  IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate>;
 export const IoK8sApiSchedulingV1alpha3WorkloadSpecCompositePodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate,
@@ -880,7 +881,7 @@ export const IoK8sApiSchedulingV1alpha3TypedLocalObjectReference =
 
 /** podGroupTemplates is the list of templates that make up the Workload. The maximum number of templates is 8. Templates cannot be added or removed after the workload is created. Existing templates may still be updated where their individual fields allow it. Exactly one of CompositePodGroupTemplates and PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1alpha3WorkloadSpecPodGroupTemplatesList =
-  IoK8sApiSchedulingV1alpha3PodGroupTemplate[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3PodGroupTemplate>;
 export const IoK8sApiSchedulingV1alpha3WorkloadSpecPodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3PodGroupTemplate,
@@ -1016,7 +1017,7 @@ export const IoK8sApiSchedulingV1beta1PodGroupResourceClaim =
 
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is an alpha-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
 export type IoK8sApiSchedulingV1beta1PodGroupSpecResourceClaimsList =
-  IoK8sApiSchedulingV1beta1PodGroupResourceClaim[];
+  ReadonlyArray<IoK8sApiSchedulingV1beta1PodGroupResourceClaim>;
 export const IoK8sApiSchedulingV1beta1PodGroupSpecResourceClaimsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1beta1PodGroupResourceClaim,
@@ -1038,7 +1039,7 @@ export const IoK8sApiSchedulingV1beta1TopologyConstraint =
 
 /** topology defines the topology constraints for the pod group. Currently only a single topology constraint can be specified. This may change in the future. */
 export type IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList =
-  IoK8sApiSchedulingV1beta1TopologyConstraint[];
+  ReadonlyArray<IoK8sApiSchedulingV1beta1TopologyConstraint>;
 export const IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1beta1TopologyConstraint,
@@ -1152,7 +1153,7 @@ export const IoK8sApiSchedulingV1beta1PodGroupSpec = /*@__PURE__*/ S.suspend(
 
 /** conditions represent the latest observations of the PodGroup's state. Known condition types: - "PodGroupInitiallyScheduled": Indicates whether the scheduling requirement has been satisfied. Once this condition transitions to True, it serves as a terminal state and will never revert to False, even if pods are subsequently evicted and group constraints are no longer met. - "DisruptionTarget": Indicates whether the PodGroup is about to be terminated due to disruption such as preemption. Known reasons for the PodGroupInitiallyScheduled condition: - "Unschedulable": The PodGroup cannot be scheduled due to resource constraints, affinity/anti-affinity rules, or insufficient capacity for the gang. - "SchedulerError": The PodGroup cannot be scheduled due to some internal error that happened during scheduling, for example due to nodeAffinity parsing errors. Known reasons for the DisruptionTarget condition: - "PreemptionByScheduler": The PodGroup was preempted by the scheduler to make room for higher-priority PodGroups or Pods. */
 export type IoK8sApiSchedulingV1beta1PodGroupStatusConditionsList =
-  IoK8sApimachineryPkgApisMetaV1Condition[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1Condition>;
 export const IoK8sApiSchedulingV1beta1PodGroupStatusConditionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1Condition,
@@ -1177,7 +1178,7 @@ export const IoK8sApiSchedulingV1beta1PodGroupResourceClaimStatus =
 
 /** resourceClaimStatuses is status of resource claims. */
 export type IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList =
-  IoK8sApiSchedulingV1beta1PodGroupResourceClaimStatus[];
+  ReadonlyArray<IoK8sApiSchedulingV1beta1PodGroupResourceClaimStatus>;
 export const IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1beta1PodGroupResourceClaimStatus,
@@ -1277,7 +1278,7 @@ export const IoK8sApiSchedulingV1beta1PodGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** compositePodGroupTemplates is the list of templates for children CompositePodGroups. The maximum number of templates is 8. At least one entry in CompositePodGroupTemplates or PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroupTemplatesList =
-  IoK8sApiSchedulingV1beta1CompositePodGroupTemplate[];
+  ReadonlyArray<IoK8sApiSchedulingV1beta1CompositePodGroupTemplate>;
 export const IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => IoK8sApiSchedulingV1beta1CompositePodGroupTemplate),
@@ -1302,7 +1303,7 @@ export const IoK8sApiSchedulingV1beta1CompositeDisruptionMode =
 
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is an alpha-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
 export type IoK8sApiSchedulingV1beta1PodGroupTemplateResourceClaimsList =
-  IoK8sApiSchedulingV1beta1PodGroupResourceClaim[];
+  ReadonlyArray<IoK8sApiSchedulingV1beta1PodGroupResourceClaim>;
 export const IoK8sApiSchedulingV1beta1PodGroupTemplateResourceClaimsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1beta1PodGroupResourceClaim,
@@ -1349,7 +1350,7 @@ export const IoK8sApiSchedulingV1beta1PodGroupTemplate =
 
 /** podGroupTemplates is the list of templates for children PodGroups. The maximum number of templates is 8. At least one entry in CompositePodGroupTemplates or PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1beta1CompositePodGroupTemplatePodGroupTemplatesList =
-  IoK8sApiSchedulingV1beta1PodGroupTemplate[];
+  ReadonlyArray<IoK8sApiSchedulingV1beta1PodGroupTemplate>;
 export const IoK8sApiSchedulingV1beta1CompositePodGroupTemplatePodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1beta1PodGroupTemplate,
@@ -1357,7 +1358,7 @@ export const IoK8sApiSchedulingV1beta1CompositePodGroupTemplatePodGroupTemplates
 
 /** topology defines the topology constraints for the composite pod group. Currently only a single topology constraint can be specified. This may change in the future. */
 export type IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList =
-  IoK8sApiSchedulingV1beta1TopologyConstraint[];
+  ReadonlyArray<IoK8sApiSchedulingV1beta1TopologyConstraint>;
 export const IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1beta1TopologyConstraint,
@@ -1460,7 +1461,7 @@ export const IoK8sApiSchedulingV1beta1CompositePodGroupTemplate =
 
 /** compositePodGroupTemplates is the list of CompositePodGroup templates that make up the Workload. The maximum number of templates is 8. This field is immutable. Exactly one of CompositePodGroupTemplates and PodGroupTemplates must be set. This field is used only when the CompositePodGroup feature gate is enabled. */
 export type IoK8sApiSchedulingV1beta1WorkloadSpecCompositePodGroupTemplatesList =
-  IoK8sApiSchedulingV1beta1CompositePodGroupTemplate[];
+  ReadonlyArray<IoK8sApiSchedulingV1beta1CompositePodGroupTemplate>;
 export const IoK8sApiSchedulingV1beta1WorkloadSpecCompositePodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1beta1CompositePodGroupTemplate,
@@ -1488,7 +1489,7 @@ export const IoK8sApiSchedulingV1beta1TypedLocalObjectReference =
 
 /** podGroupTemplates is the list of templates that make up the Workload. The maximum number of templates is 8. Templates cannot be added or removed after the workload is created. Existing templates may still be updated where their individual fields allow it. Exactly one of CompositePodGroupTemplates and PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList =
-  IoK8sApiSchedulingV1beta1PodGroupTemplate[];
+  ReadonlyArray<IoK8sApiSchedulingV1beta1PodGroupTemplate>;
 export const IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1beta1PodGroupTemplate,
@@ -1780,7 +1781,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause =
 
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
-  IoK8sApimachineryPkgApisMetaV1StatusCause[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1StatusCause>;
 export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1StatusCause,
@@ -2610,7 +2611,7 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR =
 
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
@@ -2618,7 +2619,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsLis
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
-  IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
@@ -2672,21 +2673,24 @@ export const GetSchedulingV1alpha3APIResourcesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetSchedulingV1alpha3APIResourcesRequest>;
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2739,7 +2743,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource =
 
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
-  IoK8sApimachineryPkgApisMetaV1APIResource[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1APIResource>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1APIResource,
@@ -2846,7 +2850,7 @@ export const ListSchedulingV1alpha3CompositePodGroupForAllNamespacesRequest =
 
 /** Items is the list of CompositePodGroups. */
 export type IoK8sApiSchedulingV1alpha3CompositePodGroupListItemsList =
-  IoK8sApiSchedulingV1alpha3CompositePodGroup[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3CompositePodGroup>;
 export const IoK8sApiSchedulingV1alpha3CompositePodGroupListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3CompositePodGroup,
@@ -2987,7 +2991,7 @@ export const ListSchedulingV1alpha3NamespacedPodGroupRequest =
 
 /** Items is the list of PodGroups. */
 export type IoK8sApiSchedulingV1alpha3PodGroupListItemsList =
-  IoK8sApiSchedulingV1alpha3PodGroup[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3PodGroup>;
 export const IoK8sApiSchedulingV1alpha3PodGroupListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3PodGroup,
@@ -3073,7 +3077,7 @@ export const ListSchedulingV1alpha3NamespacedWorkloadRequest =
 
 /** Items is the list of Workloads. */
 export type IoK8sApiSchedulingV1alpha3WorkloadListItemsList =
-  IoK8sApiSchedulingV1alpha3Workload[];
+  ReadonlyArray<IoK8sApiSchedulingV1alpha3Workload>;
 export const IoK8sApiSchedulingV1alpha3WorkloadListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3Workload,
@@ -3263,7 +3267,7 @@ export const ListSchedulingV1beta1NamespacedPodGroupRequest =
 
 /** Items is the list of PodGroups. */
 export type IoK8sApiSchedulingV1beta1PodGroupListItemsList =
-  IoK8sApiSchedulingV1beta1PodGroup[];
+  ReadonlyArray<IoK8sApiSchedulingV1beta1PodGroup>;
 export const IoK8sApiSchedulingV1beta1PodGroupListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1beta1PodGroup,
@@ -3349,7 +3353,7 @@ export const ListSchedulingV1beta1NamespacedWorkloadRequest =
 
 /** items is the list of Workloads. */
 export type IoK8sApiSchedulingV1beta1WorkloadListItemsList =
-  IoK8sApiSchedulingV1beta1Workload[];
+  ReadonlyArray<IoK8sApiSchedulingV1beta1Workload>;
 export const IoK8sApiSchedulingV1beta1WorkloadListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1beta1Workload,
@@ -3536,7 +3540,7 @@ export const ListSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(
 
 /** items is the list of PriorityClasses */
 export type IoK8sApiSchedulingV1PriorityClassListItemsList =
-  IoK8sApiSchedulingV1PriorityClass[];
+  ReadonlyArray<IoK8sApiSchedulingV1PriorityClass>;
 export const IoK8sApiSchedulingV1PriorityClassListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1PriorityClass,

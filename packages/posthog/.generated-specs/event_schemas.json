@@ -47,7 +47,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.event_schemas#PaginatedEventSchemaList": {
+    "com.posthog.event_schemas#PaginatedEventSchemaListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -66,12 +66,12 @@
           }
         },
         "results": {
-          "target": "com.posthog.event_schemas#PaginatedEventSchemaListResultsList"
+          "target": "com.posthog.event_schemas#PaginatedEventSchemaListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.event_schemas#EventSchema": {
+    "com.posthog.event_schemas#EventSchemaOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -82,9 +82,6 @@
         },
         "property_group": {
           "target": "com.posthog.event_schemas#SchemaPropertyGroup"
-        },
-        "property_group_id": {
-          "target": "smithy.api#String"
         },
         "created_at": {
           "target": "smithy.api#String"
@@ -120,7 +117,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.event_schemas#UserBasic"
+          "target": "com.posthog.event_schemas#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {}
@@ -354,10 +354,10 @@
       },
       "traits": {}
     },
-    "com.posthog.event_schemas#PaginatedEventSchemaListResultsList": {
+    "com.posthog.event_schemas#PaginatedEventSchemaListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.event_schemas#EventSchema"
+        "target": "com.posthog.event_schemas#EventSchemaOutput"
       },
       "traits": {}
     },
@@ -367,7 +367,7 @@
         "target": "com.posthog.event_schemas#EventSchemasListRequest"
       },
       "output": {
-        "target": "com.posthog.event_schemas#PaginatedEventSchemaList"
+        "target": "com.posthog.event_schemas#PaginatedEventSchemaListOutput"
       },
       "errors": [
         {
@@ -399,22 +399,10 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "event_definition": {
           "target": "smithy.api#String"
         },
-        "property_group": {
-          "target": "com.posthog.event_schemas#SchemaPropertyGroup"
-        },
         "property_group_id": {
-          "target": "smithy.api#String"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
           "target": "smithy.api#String"
         }
       },
@@ -428,7 +416,7 @@
         "target": "com.posthog.event_schemas#EventSchemasCreateRequest"
       },
       "output": {
-        "target": "com.posthog.event_schemas#EventSchema"
+        "target": "com.posthog.event_schemas#EventSchemaOutput"
       },
       "errors": [
         {
@@ -471,16 +459,7 @@
         "event_definition": {
           "target": "smithy.api#String"
         },
-        "property_group": {
-          "target": "com.posthog.event_schemas#SchemaPropertyGroup"
-        },
         "property_group_id": {
-          "target": "smithy.api#String"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
           "target": "smithy.api#String"
         }
       },
@@ -494,7 +473,7 @@
         "target": "com.posthog.event_schemas#EventSchemasUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.event_schemas#EventSchema"
+        "target": "com.posthog.event_schemas#EventSchemaOutput"
       },
       "errors": [
         {
@@ -537,16 +516,7 @@
         "event_definition": {
           "target": "smithy.api#String"
         },
-        "property_group": {
-          "target": "com.posthog.event_schemas#SchemaPropertyGroup"
-        },
         "property_group_id": {
-          "target": "smithy.api#String"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
           "target": "smithy.api#String"
         }
       },
@@ -560,7 +530,7 @@
         "target": "com.posthog.event_schemas#EventSchemasPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.event_schemas#EventSchema"
+        "target": "com.posthog.event_schemas#EventSchemaOutput"
       },
       "errors": [
         {

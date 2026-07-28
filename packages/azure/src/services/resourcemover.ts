@@ -12,19 +12,39 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+export type MoveCollectionsBulkRemoveRequestMoveResourcesList =
+  ReadonlyArray<string>;
+export const MoveCollectionsBulkRemoveRequestMoveResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MoveCollectionsBulkRemoveRequestMoveResourcesList>;
+
+/** Defines the move resource input type. */
+export type MoveResourceInputType = "MoveResourceId" | "MoveResourceSourceId";
+export const MoveResourceInputType = /*@__PURE__*/ S.String;
+
 export interface MoveCollectionsBulkRemoveRequest {
   /** The Subscription ID. */
   subscriptionId: string;
   resourceGroupName: string;
   moveCollectionName: string;
-  body?: unknown;
+  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
+  validateOnly?: boolean;
+  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+  moveResources?: MoveCollectionsBulkRemoveRequestMoveResourcesList;
+  moveResourceInputType?: MoveResourceInputType;
 }
 export const MoveCollectionsBulkRemoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     moveCollectionName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    validateOnly: S.optional(S.Boolean),
+    moveResources: S.optional(
+      MoveCollectionsBulkRemoveRequestMoveResourcesList,
+    ),
+    moveResourceInputType: S.optional(MoveResourceInputType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -38,13 +58,15 @@ export const MoveCollectionsBulkRemoveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveCollectionsBulkRemoveRequest>;
 
 /** The error details. */
-export type OperationStatusErrorDetailsList = OperationStatusError[];
+export type OperationStatusErrorDetailsList =
+  ReadonlyArray<OperationStatusError>;
 export const OperationStatusErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => OperationStatusError),
 ) as any as S.Schema<OperationStatusErrorDetailsList>;
 
 /** The affected move resources. */
-export type AffectedMoveResourceMoveResourcesList = AffectedMoveResource[];
+export type AffectedMoveResourceMoveResourcesList =
+  ReadonlyArray<AffectedMoveResource>;
 export const AffectedMoveResourceMoveResourcesList = /*@__PURE__*/ S.Array(
   S.suspend(() => AffectedMoveResource),
 ) as any as S.Schema<AffectedMoveResourceMoveResourcesList>;
@@ -69,7 +91,8 @@ export const AffectedMoveResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AffectedMoveResource>;
 
 /** The affected move resources. */
-export type MoveErrorInfoMoveResourcesList = AffectedMoveResource[];
+export type MoveErrorInfoMoveResourcesList =
+  ReadonlyArray<AffectedMoveResource>;
 export const MoveErrorInfoMoveResourcesList = /*@__PURE__*/ S.Array(
   AffectedMoveResource,
 ) as any as S.Schema<MoveErrorInfoMoveResourcesList>;
@@ -103,7 +126,7 @@ export const OperationErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The additional info. */
 export type OperationStatusErrorAdditionalInfoList =
-  OperationErrorAdditionalInfo[];
+  ReadonlyArray<OperationErrorAdditionalInfo>;
 export const OperationStatusErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   OperationErrorAdditionalInfo,
 ) as any as S.Schema<OperationStatusErrorAdditionalInfoList>;
@@ -161,6 +184,14 @@ export const OperationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationStatus",
 }) as any as S.Schema<OperationStatus>;
 
+/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+export type MoveCollectionsCommitRequestMoveResourcesList =
+  ReadonlyArray<string>;
+export const MoveCollectionsCommitRequestMoveResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MoveCollectionsCommitRequestMoveResourcesList>;
+
 export interface MoveCollectionsCommitRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -168,14 +199,20 @@ export interface MoveCollectionsCommitRequest {
   resourceGroupName: string;
   /** The Move Collection Name. */
   moveCollectionName: string;
-  body?: unknown;
+  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
+  validateOnly?: boolean;
+  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+  moveResources: MoveCollectionsCommitRequestMoveResourcesList;
+  moveResourceInputType?: MoveResourceInputType;
 }
 export const MoveCollectionsCommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     moveCollectionName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    validateOnly: S.optional(S.Boolean),
+    moveResources: MoveCollectionsCommitRequestMoveResourcesList,
+    moveResourceInputType: S.optional(MoveResourceInputType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -188,6 +225,63 @@ export const MoveCollectionsCommitRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MoveCollectionsCommitRequest",
 }) as any as S.Schema<MoveCollectionsCommitRequest>;
 
+/** Resource tags. */
+export type MoveCollectionsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MoveCollectionsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MoveCollectionsCreateRequestTagsMap>;
+
+/** The type of identity used for the resource mover service. */
+export type ResourceIdentityType = "None" | "SystemAssigned" | "UserAssigned";
+export const ResourceIdentityType = /*@__PURE__*/ S.String;
+
+/** Defines the MSI properties of the Move Collection. */
+export interface Identity {
+  type?: ResourceIdentityType;
+  /** Gets or sets the principal id. */
+  principalId?: string;
+  /** Gets or sets the tenant id. */
+  tenantId?: string;
+}
+export const Identity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ResourceIdentityType),
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+  }),
+).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
+
+/** Defines the MoveType. */
+export type MoveType = "RegionToRegion" | "RegionToZone";
+export const MoveType = /*@__PURE__*/ S.String;
+
+/** Defines the move collection properties. */
+export interface MoveCollectionPropertiesInput {
+  /** Gets or sets the source region. */
+  sourceRegion?: string;
+  /** Gets or sets the target region. */
+  targetRegion?: string;
+  /** Gets or sets the move region which indicates the region where the VM Regional to Zonal move will be conducted. */
+  moveRegion?: string;
+  /** Gets or sets the version of move collection. */
+  version?: string;
+  moveType?: MoveType;
+}
+export const MoveCollectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceRegion: S.optional(S.String),
+    targetRegion: S.optional(S.String),
+    moveRegion: S.optional(S.String),
+    version: S.optional(S.String),
+    moveType: S.optional(MoveType),
+  }),
+).annotate({
+  identifier: "MoveCollectionPropertiesInput",
+}) as any as S.Schema<MoveCollectionPropertiesInput>;
+
 export interface MoveCollectionsCreateRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -195,14 +289,22 @@ export interface MoveCollectionsCreateRequest {
   resourceGroupName: string;
   /** The Move Collection Name. */
   moveCollectionName: string;
-  body?: unknown;
+  /** Resource tags. */
+  tags?: MoveCollectionsCreateRequestTagsMap;
+  /** The geo-location where the resource lives. */
+  location?: string;
+  identity?: Identity;
+  properties?: MoveCollectionPropertiesInput;
 }
 export const MoveCollectionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     moveCollectionName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(MoveCollectionsCreateRequestTagsMap),
+    location: S.optional(S.String),
+    identity: S.optional(Identity),
+    properties: S.optional(MoveCollectionPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -222,45 +324,17 @@ export const MoveCollectionTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<MoveCollectionTagsMap>;
 
-/** The type of identity used for the resource mover service. */
-export type ResourceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | (string & {});
-export const ResourceIdentityType = /*@__PURE__*/ S.String;
-
-/** Defines the MSI properties of the Move Collection. */
-export interface Identity {
-  type?: ResourceIdentityType;
-  /** Gets or sets the principal id. */
-  principalId?: string;
-  /** Gets or sets the tenant id. */
-  tenantId?: string;
-}
-export const Identity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ResourceIdentityType),
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-  }),
-).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
-
 /** Defines the provisioning states. */
 export type ProvisioningState =
   | "Succeeded"
   | "Updating"
   | "Creating"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
-/** Defines the MoveType. */
-export type MoveType = "RegionToRegion" | "RegionToZone" | (string & {});
-export const MoveType = /*@__PURE__*/ S.String;
-
 /** A list of additional details about the error. */
-export type MoveResourceErrorBodyDetailsList = MoveResourceErrorBody[];
+export type MoveResourceErrorBodyDetailsList =
+  ReadonlyArray<MoveResourceErrorBody>;
 export const MoveResourceErrorBodyDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => MoveResourceErrorBody),
 ) as any as S.Schema<MoveResourceErrorBodyDetailsList>;
@@ -334,8 +408,7 @@ export type MoveCollectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MoveCollectionSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -343,8 +416,7 @@ export type MoveCollectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MoveCollectionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -434,6 +506,14 @@ export const MoveCollectionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MoveCollectionsDeleteRequest",
 }) as any as S.Schema<MoveCollectionsDeleteRequest>;
 
+/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+export type MoveCollectionsDiscardRequestMoveResourcesList =
+  ReadonlyArray<string>;
+export const MoveCollectionsDiscardRequestMoveResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MoveCollectionsDiscardRequestMoveResourcesList>;
+
 export interface MoveCollectionsDiscardRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -441,14 +521,20 @@ export interface MoveCollectionsDiscardRequest {
   resourceGroupName: string;
   /** The Move Collection Name. */
   moveCollectionName: string;
-  body?: unknown;
+  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
+  validateOnly?: boolean;
+  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+  moveResources: MoveCollectionsDiscardRequestMoveResourcesList;
+  moveResourceInputType?: MoveResourceInputType;
 }
 export const MoveCollectionsDiscardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     moveCollectionName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    validateOnly: S.optional(S.Boolean),
+    moveResources: MoveCollectionsDiscardRequestMoveResourcesList,
+    moveResourceInputType: S.optional(MoveResourceInputType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -486,6 +572,14 @@ export const MoveCollectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MoveCollectionsGetRequest",
 }) as any as S.Schema<MoveCollectionsGetRequest>;
 
+/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+export type MoveCollectionsInitiateMoveRequestMoveResourcesList =
+  ReadonlyArray<string>;
+export const MoveCollectionsInitiateMoveRequestMoveResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MoveCollectionsInitiateMoveRequestMoveResourcesList>;
+
 export interface MoveCollectionsInitiateMoveRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -493,14 +587,20 @@ export interface MoveCollectionsInitiateMoveRequest {
   resourceGroupName: string;
   /** The Move Collection Name. */
   moveCollectionName: string;
-  body?: unknown;
+  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
+  validateOnly?: boolean;
+  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+  moveResources: MoveCollectionsInitiateMoveRequestMoveResourcesList;
+  moveResourceInputType?: MoveResourceInputType;
 }
 export const MoveCollectionsInitiateMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     moveCollectionName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    validateOnly: S.optional(S.Boolean),
+    moveResources: MoveCollectionsInitiateMoveRequestMoveResourcesList,
+    moveResourceInputType: S.optional(MoveResourceInputType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -537,7 +637,7 @@ export const MoveCollectionsListMoveCollectionsByResourceGroupRequest =
   }) as any as S.Schema<MoveCollectionsListMoveCollectionsByResourceGroupRequest>;
 
 /** Gets the list of move collections. */
-export type MoveCollectionResultListValueList = MoveCollection[];
+export type MoveCollectionResultListValueList = ReadonlyArray<MoveCollection>;
 export const MoveCollectionResultListValueList = /*@__PURE__*/ S.Array(
   MoveCollection,
 ) as any as S.Schema<MoveCollectionResultListValueList>;
@@ -608,7 +708,7 @@ export const MoveCollectionsListRequiredForRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MoveCollectionsListRequiredForRequest>;
 
 /** Gets or sets the list of source Ids for which the input resource is required. */
-export type RequiredForResourcesCollectionSourceIdsList = string[];
+export type RequiredForResourcesCollectionSourceIdsList = ReadonlyArray<string>;
 export const RequiredForResourcesCollectionSourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -627,6 +727,14 @@ export const RequiredForResourcesCollection = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequiredForResourcesCollection",
 }) as any as S.Schema<RequiredForResourcesCollection>;
 
+/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+export type MoveCollectionsPrepareRequestMoveResourcesList =
+  ReadonlyArray<string>;
+export const MoveCollectionsPrepareRequestMoveResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MoveCollectionsPrepareRequestMoveResourcesList>;
+
 export interface MoveCollectionsPrepareRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -634,14 +742,20 @@ export interface MoveCollectionsPrepareRequest {
   resourceGroupName: string;
   /** The Move Collection Name. */
   moveCollectionName: string;
-  body?: unknown;
+  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
+  validateOnly?: boolean;
+  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+  moveResources: MoveCollectionsPrepareRequestMoveResourcesList;
+  moveResourceInputType?: MoveResourceInputType;
 }
 export const MoveCollectionsPrepareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     moveCollectionName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    validateOnly: S.optional(S.Boolean),
+    moveResources: MoveCollectionsPrepareRequestMoveResourcesList,
+    moveResourceInputType: S.optional(MoveResourceInputType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -680,6 +794,15 @@ export const MoveCollectionsResolveDependenciesRequest =
     identifier: "MoveCollectionsResolveDependenciesRequest",
   }) as any as S.Schema<MoveCollectionsResolveDependenciesRequest>;
 
+/** Gets or sets the Resource tags. */
+export type MoveCollectionsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MoveCollectionsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MoveCollectionsUpdateRequestTagsMap>;
+
 export interface MoveCollectionsUpdateRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -687,14 +810,17 @@ export interface MoveCollectionsUpdateRequest {
   resourceGroupName: string;
   /** The Move Collection Name. */
   moveCollectionName: string;
-  body?: unknown;
+  /** Gets or sets the Resource tags. */
+  tags?: MoveCollectionsUpdateRequestTagsMap;
+  identity?: Identity;
 }
 export const MoveCollectionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     moveCollectionName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    tags: S.optional(MoveCollectionsUpdateRequestTagsMap),
+    identity: S.optional(Identity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -706,36 +832,6 @@ export const MoveCollectionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MoveCollectionsUpdateRequest",
 }) as any as S.Schema<MoveCollectionsUpdateRequest>;
-
-export interface MoveResourcesCreateRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-  /** The Move Collection Name. */
-  moveCollectionName: string;
-  /** The Move Resource Name. */
-  moveResourceName: string;
-  body?: unknown;
-}
-export const MoveResourcesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    moveCollectionName: S.String.pipe(T.Label()),
-    moveResourceName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
-      code: 200,
-      apiVersion: "2023-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "MoveResourcesCreateRequest",
-}) as any as S.Schema<MoveResourcesCreateRequest>;
 
 /** Gets or sets the resource settings. */
 export interface ResourceSettings {
@@ -756,6 +852,84 @@ export const ResourceSettings = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceSettings",
 }) as any as S.Schema<ResourceSettings>;
 
+/** Defines the dependency override of the move resource. */
+export interface MoveResourceDependencyOverride {
+  /** Gets or sets the ARM ID of the dependent resource. */
+  id?: string;
+  /** Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of the dependent resource. */
+  targetId?: string;
+}
+export const MoveResourceDependencyOverride = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    targetId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MoveResourceDependencyOverride",
+}) as any as S.Schema<MoveResourceDependencyOverride>;
+
+/** Gets or sets the move resource dependencies overrides. */
+export type MoveResourcePropertiesInputDependsOnOverridesList =
+  ReadonlyArray<MoveResourceDependencyOverride>;
+export const MoveResourcePropertiesInputDependsOnOverridesList =
+  /*@__PURE__*/ S.Array(
+    MoveResourceDependencyOverride,
+  ) as any as S.Schema<MoveResourcePropertiesInputDependsOnOverridesList>;
+
+/** Defines the move resource properties. */
+export interface MoveResourcePropertiesInput {
+  /** Gets or sets the Source ARM Id of the resource. */
+  sourceId: string;
+  /** Gets or sets the existing target ARM Id of the resource. */
+  existingTargetId?: string;
+  /** Gets or sets the resource settings. */
+  resourceSettings?: ResourceSettings;
+  /** Gets or sets the move resource dependencies overrides. */
+  dependsOnOverrides?: MoveResourcePropertiesInputDependsOnOverridesList;
+}
+export const MoveResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceId: S.String,
+    existingTargetId: S.optional(S.String),
+    resourceSettings: S.optional(ResourceSettings),
+    dependsOnOverrides: S.optional(
+      MoveResourcePropertiesInputDependsOnOverridesList,
+    ),
+  }),
+).annotate({
+  identifier: "MoveResourcePropertiesInput",
+}) as any as S.Schema<MoveResourcePropertiesInput>;
+
+export interface MoveResourcesCreateRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+  /** The Move Collection Name. */
+  moveCollectionName: string;
+  /** The Move Resource Name. */
+  moveResourceName: string;
+  properties?: MoveResourcePropertiesInput;
+}
+export const MoveResourcesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    moveCollectionName: S.String.pipe(T.Label()),
+    moveResourceName: S.String.pipe(T.Label()),
+    properties: S.optional(MoveResourcePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources/{moveResourceName}",
+      code: 200,
+      apiVersion: "2023-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "MoveResourcesCreateRequest",
+}) as any as S.Schema<MoveResourcesCreateRequest>;
+
 /** Defines the MoveResource states. */
 export type MoveState =
   | "AssignmentPending"
@@ -772,12 +946,11 @@ export type MoveState =
   | "CommitFailed"
   | "Committed"
   | "DeleteSourcePending"
-  | "ResourceMoveCompleted"
-  | (string & {});
+  | "ResourceMoveCompleted";
 export const MoveState = /*@__PURE__*/ S.String;
 
 /** Defines the job name. */
-export type JobName = "InitialSync" | (string & {});
+export type JobName = "InitialSync";
 export const JobName = /*@__PURE__*/ S.String;
 
 /** Defines the job status. */
@@ -810,14 +983,11 @@ export const MoveResourceStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveResourceStatus>;
 
 /** Defines the resolution type. */
-export type ResolutionType = "Manual" | "Automatic" | (string & {});
+export type ResolutionType = "Manual" | "Automatic";
 export const ResolutionType = /*@__PURE__*/ S.String;
 
 /** Defines the dependency type. */
-export type DependencyType =
-  | "RequiredForPrepare"
-  | "RequiredForMove"
-  | (string & {});
+export type DependencyType = "RequiredForPrepare" | "RequiredForMove";
 export const DependencyType = /*@__PURE__*/ S.String;
 
 /** Defines the properties for manual resolution. */
@@ -874,30 +1044,15 @@ export const MoveResourceDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveResourceDependency>;
 
 /** Gets or sets the move resource dependencies. */
-export type MoveResourcePropertiesDependsOnList = MoveResourceDependency[];
+export type MoveResourcePropertiesDependsOnList =
+  ReadonlyArray<MoveResourceDependency>;
 export const MoveResourcePropertiesDependsOnList = /*@__PURE__*/ S.Array(
   MoveResourceDependency,
 ) as any as S.Schema<MoveResourcePropertiesDependsOnList>;
 
-/** Defines the dependency override of the move resource. */
-export interface MoveResourceDependencyOverride {
-  /** Gets or sets the ARM ID of the dependent resource. */
-  id?: string;
-  /** Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of the dependent resource. */
-  targetId?: string;
-}
-export const MoveResourceDependencyOverride = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    targetId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MoveResourceDependencyOverride",
-}) as any as S.Schema<MoveResourceDependencyOverride>;
-
 /** Gets or sets the move resource dependencies overrides. */
 export type MoveResourcePropertiesDependsOnOverridesList =
-  MoveResourceDependencyOverride[];
+  ReadonlyArray<MoveResourceDependencyOverride>;
 export const MoveResourcePropertiesDependsOnOverridesList =
   /*@__PURE__*/ S.Array(
     MoveResourceDependencyOverride,
@@ -952,8 +1107,7 @@ export type MoveResourceSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MoveResourceSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -961,8 +1115,7 @@ export type MoveResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const MoveResourceSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -1100,7 +1253,7 @@ export const MoveResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveResourcesListRequest>;
 
 /** Gets the list of move resources. */
-export type MoveResourceCollectionValueList = MoveResource[];
+export type MoveResourceCollectionValueList = ReadonlyArray<MoveResource>;
 export const MoveResourceCollectionValueList = /*@__PURE__*/ S.Array(
   MoveResource,
 ) as any as S.Schema<MoveResourceCollectionValueList>;
@@ -1120,7 +1273,7 @@ export const Summary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Summary" }) as any as S.Schema<Summary>;
 
 /** Gets or sets the list of summary items. */
-export type SummaryCollectionSummaryList = Summary[];
+export type SummaryCollectionSummaryList = ReadonlyArray<Summary>;
 export const SummaryCollectionSummaryList = /*@__PURE__*/ S.Array(
   Summary,
 ) as any as S.Schema<SummaryCollectionSummaryList>;
@@ -1221,7 +1374,8 @@ export const OperationsDiscovery = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsDiscovery>;
 
 /** Gets or sets the ClientDiscovery details. */
-export type OperationsDiscoveryCollectionValueList = OperationsDiscovery[];
+export type OperationsDiscoveryCollectionValueList =
+  ReadonlyArray<OperationsDiscovery>;
 export const OperationsDiscoveryCollectionValueList = /*@__PURE__*/ S.Array(
   OperationsDiscovery,
 ) as any as S.Schema<OperationsDiscoveryCollectionValueList>;
@@ -1244,8 +1398,7 @@ export const OperationsDiscoveryCollection = /*@__PURE__*/ S.suspend(() =>
 
 export type UnresolvedDependenciesGetRequestDependencyLevel =
   | "Direct"
-  | "Descendant"
-  | (string & {});
+  | "Descendant";
 export const UnresolvedDependenciesGetRequestDependencyLevel =
   /*@__PURE__*/ S.String;
 
@@ -1302,7 +1455,8 @@ export const UnresolvedDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnresolvedDependency>;
 
 /** Gets or sets the list of unresolved dependencies. */
-export type UnresolvedDependencyCollectionValueList = UnresolvedDependency[];
+export type UnresolvedDependencyCollectionValueList =
+  ReadonlyArray<UnresolvedDependency>;
 export const UnresolvedDependencyCollectionValueList = /*@__PURE__*/ S.Array(
   UnresolvedDependency,
 ) as any as S.Schema<UnresolvedDependencyCollectionValueList>;

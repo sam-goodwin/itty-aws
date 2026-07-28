@@ -100,12 +100,7 @@ export type Highlight = string;
 export type Partial = boolean;
 export type Query = string;
 export type QueryOptions = string;
-export type QueryParser =
-  | "simple"
-  | "structured"
-  | "lucene"
-  | "dismax"
-  | (string & {});
+export type QueryParser = "simple" | "structured" | "lucene" | "dismax";
 export const QueryParser = /*@__PURE__*/ S.String;
 
 export type Return = string;
@@ -349,10 +344,7 @@ export const SuggestResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SuggestResponse",
 }) as any as S.Schema<SuggestResponse>;
-export type ContentType =
-  | "application/json"
-  | "application/xml"
-  | (string & {});
+export type ContentType = "application/json" | "application/xml";
 export const ContentType = /*@__PURE__*/ S.String;
 
 export interface UploadDocumentsRequest {

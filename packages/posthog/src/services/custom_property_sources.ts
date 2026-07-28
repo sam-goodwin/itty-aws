@@ -39,6 +39,45 @@ export const CustomPropertySourcesBackfillResponse = /*@__PURE__*/ S.suspend(
   identifier: "CustomPropertySourcesBackfillResponse",
 }) as any as S.Schema<CustomPropertySourcesBackfillResponse>;
 
+export interface CustomPropertySourcesCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** UUID of the custom property definition this source feeds. One source per definition. */
+  definition: string;
+  /** Account sources only: UUID of the data-warehouse saved query (materialized view) to read values from. Mutually exclusive with external_data_schema. */
+  saved_query?: string | null;
+  /** Person and group sources only: UUID of the warehouse schema (raw incremental table) to read from. Mutually exclusive with saved_query. */
+  external_data_schema?: string | null;
+  /** Account sources only: column in the view whose value is written to the property. */
+  source_column?: string | null;
+  /** Person and group sources only: {warehouse_column: property_name} mapping the columns this source writes onto the person or group. */
+  column_property_map?: unknown;
+  /** Column whose value identifies the target: an account's external_id for account sources, the person's distinct_id for person sources, or the group key for group sources. */
+  key_column: string;
+  /** Whether the source syncs. Auto-disabled after repeated failures or a missing view; re-enabling resets the failure count. */
+  is_enabled?: boolean;
+}
+export const CustomPropertySourcesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    definition: S.String,
+    saved_query: S.optional(S.NullOr(S.String)),
+    external_data_schema: S.optional(S.NullOr(S.String)),
+    source_column: S.optional(S.NullOr(S.String)),
+    column_property_map: S.optional(S.Unknown),
+    key_column: S.String,
+    is_enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/custom_property_sources/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CustomPropertySourcesCreateRequest",
+}) as any as S.Schema<CustomPropertySourcesCreateRequest>;
+
 /** One person- or group-property sync or backfill run. Read-only: runs are created by the sync/backfill pipeline, never through the API. */
 export interface CustomPropertySyncRun {
   id: string;
@@ -83,71 +122,6 @@ export const CustomPropertySyncRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomPropertySyncRun",
 }) as any as S.Schema<CustomPropertySyncRun>;
-
-export interface CustomPropertySourcesCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-  /** UUID of the custom property definition this source feeds. One source per definition. */
-  definition: string;
-  /** Account sources only: UUID of the data-warehouse saved query (materialized view) to read values from. Mutually exclusive with external_data_schema. */
-  saved_query?: string | null;
-  /** Person and group sources only: UUID of the warehouse schema (raw incremental table) to read from. Mutually exclusive with saved_query. */
-  external_data_schema?: string | null;
-  /** Account sources only: column in the view whose value is written to the property. */
-  source_column?: string | null;
-  /** Person and group sources only: {warehouse_column: property_name} mapping the columns this source writes onto the person or group. */
-  column_property_map?: unknown;
-  /** Column whose value identifies the target: an account's external_id for account sources, the person's distinct_id for person sources, or the group key for group sources. */
-  key_column: string;
-  /** Whether the source syncs. Auto-disabled after repeated failures or a missing view; re-enabling resets the failure count. */
-  is_enabled?: boolean;
-  /** Consecutive failed sync runs; the source auto-disables at the cap. */
-  consecutive_failures: number;
-  /** When the most recent sync run finished. */
-  last_synced_at: string | null;
-  /** Error summary from the last run, or null if it succeeded. */
-  last_sync_error: string | null;
-  created_at: string;
-  created_by: number | null;
-  updated_at: string | null;
-  /** Person and group sources only: how often the underlying warehouse schema syncs, in seconds. Null for account sources or when unavailable. */
-  sync_frequency_interval_seconds: number | null;
-  /** Person and group sources only: approximate time of the next scheduled sync (last synced + interval). Approximate — drifts if the schedule was paused. Null for account sources or if never synced. */
-  next_sync_at: string | null;
-  /** Person and group sources only: the most recent sync/backfill run, or null if none yet. */
-  latest_run: CustomPropertySyncRun | null;
-}
-export const CustomPropertySourcesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String,
-    definition: S.String,
-    saved_query: S.optional(S.NullOr(S.String)),
-    external_data_schema: S.optional(S.NullOr(S.String)),
-    source_column: S.optional(S.NullOr(S.String)),
-    column_property_map: S.optional(S.Unknown),
-    key_column: S.String,
-    is_enabled: S.optional(S.Boolean),
-    consecutive_failures: S.Number,
-    last_synced_at: S.NullOr(S.String),
-    last_sync_error: S.NullOr(S.String),
-    created_at: S.String,
-    created_by: S.NullOr(S.Number),
-    updated_at: S.NullOr(S.String),
-    sync_frequency_interval_seconds: S.NullOr(S.Number),
-    next_sync_at: S.NullOr(S.String),
-    latest_run: S.NullOr(CustomPropertySyncRun),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/custom_property_sources/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CustomPropertySourcesCreateRequest",
-}) as any as S.Schema<CustomPropertySourcesCreateRequest>;
 
 /** Binds a data-warehouse source to a custom property definition. Account sources read a materialized view column and sync onto matching accounts; person and group sources read a warehouse schema and sync onto matching persons or groups on each warehouse sync. */
 export interface CustomPropertySource {
@@ -258,7 +232,7 @@ export const CustomPropertySourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomPropertySourcesListRequest>;
 
 export type PaginatedCustomPropertySourceListResultsList =
-  CustomPropertySource[];
+  ReadonlyArray<CustomPropertySource>;
 export const PaginatedCustomPropertySourceListResultsList =
   /*@__PURE__*/ S.Array(
     CustomPropertySource,
@@ -360,7 +334,7 @@ export const CustomPropertySourcesRunsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CustomPropertySourcesRunsListRequest>;
 
 export type PaginatedCustomPropertySyncRunListResultsList =
-  CustomPropertySyncRun[];
+  ReadonlyArray<CustomPropertySyncRun>;
 export const PaginatedCustomPropertySyncRunListResultsList =
   /*@__PURE__*/ S.Array(
     CustomPropertySyncRun,

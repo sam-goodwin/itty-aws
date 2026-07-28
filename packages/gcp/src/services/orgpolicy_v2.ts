@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -140,7 +140,7 @@ export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule =
   }) as any as S.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
 
 export type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList =
-  GoogleCloudOrgpolicyV2PolicySpecPolicyRule[];
+  ReadonlyArray<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
 export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOrgpolicyV2PolicySpecPolicyRule,
@@ -240,13 +240,12 @@ export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   | "UPDATE"
   | "DELETE"
   | "REMOVE_GRANT"
-  | "GOVERN_TAGS"
-  | (string & {});
+  | "GOVERN_TAGS";
 export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
-  GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum[];
+  ReadonlyArray<GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum>;
 export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnum,
@@ -255,8 +254,7 @@ export const GoogleCloudOrgpolicyV2CustomConstraintMethodTypesItemEnumList =
 export type GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum =
   | "ACTION_TYPE_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const GoogleCloudOrgpolicyV2CustomConstraintActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -615,20 +613,19 @@ export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodType
     | "UPDATE"
     | "DELETE"
     | "REMOVE_GRANT"
-    | "GOVERN_TAGS"
-    | (string & {});
+    | "GOVERN_TAGS";
 export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList =
-  GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum[];
+  ReadonlyArray<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum>;
 export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnum,
   ) as any as S.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionMethodTypesItemEnumList>;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionActionTypeEnum =
-  "ACTION_TYPE_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
+  "ACTION_TYPE_UNSPECIFIED" | "ALLOW" | "DENY";
 export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionActionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -648,12 +645,12 @@ export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter
   }) as any as S.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata>;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterItemEnum =
-  "TYPE_UNSPECIFIED" | "LIST" | "STRING" | "BOOLEAN" | (string & {});
+  "TYPE_UNSPECIFIED" | "LIST" | "STRING" | "BOOLEAN";
 export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterTypeEnum =
-  "TYPE_UNSPECIFIED" | "LIST" | "STRING" | "BOOLEAN" | (string & {});
+  "TYPE_UNSPECIFIED" | "LIST" | "STRING" | "BOOLEAN";
 export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -770,8 +767,7 @@ export const GoogleCloudOrgpolicyV2ConstraintListConstraint =
 export type GoogleCloudOrgpolicyV2ConstraintConstraintDefaultEnum =
   | "CONSTRAINT_DEFAULT_UNSPECIFIED"
   | "ALLOW"
-  | "DENY"
-  | (string & {});
+  | "DENY";
 export const GoogleCloudOrgpolicyV2ConstraintConstraintDefaultEnum =
   /*@__PURE__*/ S.String;
 
@@ -817,7 +813,7 @@ export const GoogleCloudOrgpolicyV2Constraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudOrgpolicyV2Constraint>;
 
 export type GoogleCloudOrgpolicyV2ConstraintList =
-  GoogleCloudOrgpolicyV2Constraint[];
+  ReadonlyArray<GoogleCloudOrgpolicyV2Constraint>;
 export const GoogleCloudOrgpolicyV2ConstraintList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV2Constraint,
 ) as any as S.Schema<GoogleCloudOrgpolicyV2ConstraintList>;
@@ -863,7 +859,8 @@ export const ListFoldersPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFoldersPoliciesRequest",
 }) as any as S.Schema<ListFoldersPoliciesRequest>;
 
-export type GoogleCloudOrgpolicyV2PolicyList = GoogleCloudOrgpolicyV2Policy[];
+export type GoogleCloudOrgpolicyV2PolicyList =
+  ReadonlyArray<GoogleCloudOrgpolicyV2Policy>;
 export const GoogleCloudOrgpolicyV2PolicyList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV2Policy,
 ) as any as S.Schema<GoogleCloudOrgpolicyV2PolicyList>;
@@ -935,7 +932,7 @@ export const ListOrganizationsCustomConstraintsRequest =
   }) as any as S.Schema<ListOrganizationsCustomConstraintsRequest>;
 
 export type GoogleCloudOrgpolicyV2CustomConstraintList =
-  GoogleCloudOrgpolicyV2CustomConstraint[];
+  ReadonlyArray<GoogleCloudOrgpolicyV2CustomConstraint>;
 export const GoogleCloudOrgpolicyV2CustomConstraintList = /*@__PURE__*/ S.Array(
   GoogleCloudOrgpolicyV2CustomConstraint,
 ) as any as S.Schema<GoogleCloudOrgpolicyV2CustomConstraintList>;

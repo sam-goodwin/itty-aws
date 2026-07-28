@@ -373,16 +373,30 @@
             "smithy.api#documentation": "The name of the trigger"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.imagebuilder#TriggerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a trigger"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.imagebuilder#TriggerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind of trigger.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a trigger"
       }
     },
     "com.azure.imagebuilder#TriggersGet": {
@@ -1980,16 +1994,107 @@
             "smithy.api#documentation": "The name of the image Template"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "identity": {
+          "target": "com.azure.imagebuilder#ImageTemplateIdentityInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The identity of the image template, if configured."
+          }
+        },
+        "tags": {
+          "target": "com.azure.imagebuilder#VirtualMachineImageTemplatesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The user-specified tags associated with the image template."
+          }
+        },
+        "properties": {
+          "target": "com.azure.imagebuilder#ImageTemplateUpdateParametersProperties",
+          "traits": {
+            "smithy.api#documentation": "Parameters for updating an image template."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.imagebuilder#ImageTemplateUpdateParametersProperties": {
+      "type": "structure",
+      "members": {
+        "distribute": {
+          "target": "com.azure.imagebuilder#ImageTemplateUpdateParametersPropertiesDistributeList",
+          "traits": {
+            "smithy.api#documentation": "The distribution targets where the image output needs to go to."
+          }
+        },
+        "vmProfile": {
+          "target": "com.azure.imagebuilder#ImageTemplateVmProfile",
+          "traits": {
+            "smithy.api#documentation": "Describes how virtual machine is set up to build images"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Parameters for updating an image template."
+      }
+    },
+    "com.azure.imagebuilder#ImageTemplateUpdateParametersPropertiesDistributeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.imagebuilder#ImageTemplateDistributor"
+      },
+      "traits": {
+        "smithy.api#documentation": "The distribution targets where the image output needs to go to."
+      }
+    },
+    "com.azure.imagebuilder#VirtualMachineImageTemplatesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user-specified tags associated with the image template."
+      }
+    },
+    "com.azure.imagebuilder#ImageTemplateIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.imagebuilder#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the image template. The type 'None' will remove any identities from the image template."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.imagebuilder#ImageTemplateIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the image template."
+      }
+    },
+    "com.azure.imagebuilder#ImageTemplateIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.imagebuilder#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.imagebuilder#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
       }
     },
     "com.azure.imagebuilder#VirtualMachineImageTemplatesCreateOrUpdate": {
@@ -2108,16 +2213,168 @@
             "smithy.api#documentation": "The name of the image Template"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.imagebuilder#VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.imagebuilder#ImageTemplatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the image template"
+          }
+        },
+        "identity": {
+          "target": "com.azure.imagebuilder#ImageTemplateIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the image template, if configured.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.imagebuilder#ImageTemplatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "com.azure.imagebuilder#ImageTemplateSource",
+          "traits": {
+            "smithy.api#documentation": "Specifies the properties used to describe the source image.",
+            "smithy.api#required": {}
+          }
+        },
+        "customize": {
+          "target": "com.azure.imagebuilder#ImageTemplatePropertiesInputCustomizeList",
+          "traits": {
+            "smithy.api#documentation": "Specifies the properties used to describe the customization steps of the image, like Image source etc"
+          }
+        },
+        "optimize": {
+          "target": "com.azure.imagebuilder#ImageTemplatePropertiesOptimize",
+          "traits": {
+            "smithy.api#documentation": "Specifies optimization to be performed on image."
+          }
+        },
+        "validate": {
+          "target": "com.azure.imagebuilder#ImageTemplatePropertiesValidate",
+          "traits": {
+            "smithy.api#documentation": "Configuration options and list of validations to be performed on the resulting image."
+          }
+        },
+        "distribute": {
+          "target": "com.azure.imagebuilder#ImageTemplatePropertiesInputDistributeList",
+          "traits": {
+            "smithy.api#documentation": "The distribution targets where the image output needs to go to.",
+            "smithy.api#required": {}
+          }
+        },
+        "errorHandling": {
+          "target": "com.azure.imagebuilder#ImageTemplatePropertiesErrorHandling",
+          "traits": {
+            "smithy.api#documentation": "Error handling options upon a build failure"
+          }
+        },
+        "buildTimeoutInMinutes": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours)."
+          }
+        },
+        "vmProfile": {
+          "target": "com.azure.imagebuilder#ImageTemplateVmProfile",
+          "traits": {
+            "smithy.api#documentation": "Describes how virtual machine is set up to build images"
+          }
+        },
+        "additionalDataDisks": {
+          "target": "com.azure.imagebuilder#ImageTemplatePropertiesInputAdditionalDataDisksList",
+          "traits": {
+            "smithy.api#documentation": "Optional array of additional data disks to be added to the image."
+          }
+        },
+        "stagingResourceGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain."
+          }
+        },
+        "autoRun": {
+          "target": "com.azure.imagebuilder#ImageTemplateAutoRun",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether or not to automatically run the image template build on template creation or update."
+          }
+        },
+        "managedResourceTags": {
+          "target": "com.azure.imagebuilder#ImageTemplatePropertiesInputManagedResourceTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags that will be applied to the resource group and/or resources created by the service."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of an image template"
+      }
+    },
+    "com.azure.imagebuilder#ImageTemplatePropertiesInputManagedResourceTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags that will be applied to the resource group and/or resources created by the service."
+      }
+    },
+    "com.azure.imagebuilder#ImageTemplatePropertiesInputAdditionalDataDisksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.imagebuilder#DataDisk"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional array of additional data disks to be added to the image."
+      }
+    },
+    "com.azure.imagebuilder#ImageTemplatePropertiesInputDistributeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.imagebuilder#ImageTemplateDistributor"
+      },
+      "traits": {
+        "smithy.api#documentation": "The distribution targets where the image output needs to go to."
+      }
+    },
+    "com.azure.imagebuilder#ImageTemplatePropertiesInputCustomizeList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.imagebuilder#ImageTemplateCustomizer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the properties used to describe the customization steps of the image, like Image source etc"
+      }
+    },
+    "com.azure.imagebuilder#VirtualMachineImageTemplatesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.imagebuilder#VirtualMachineImageTemplatesGet": {

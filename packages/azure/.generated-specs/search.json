@@ -351,7 +351,8 @@
         "semanticSearch": {
           "target": "com.azure.search#SearchSemanticSearch",
           "traits": {
-            "smithy.api#documentation": "Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions."
+            "smithy.api#documentation": "Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "privateEndpointConnections": {
@@ -1442,11 +1443,10 @@
             "smithy.api#documentation": "The name of the shared private link resource managed by the Azure AI Search service within the specified resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.search#SharedPrivateLinkResourceProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Describes the properties of a shared private link resource managed by the Azure AI Search service."
           }
         }
       },
@@ -2140,11 +2140,10 @@
             "smithy.api#documentation": "The name of the private endpoint connection to the Azure AI Search service with the specified resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.search#PrivateEndpointConnectionProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Describes the properties of an existing private endpoint connection to the Azure AI Search service."
           }
         }
       },
@@ -3526,16 +3525,234 @@
             "smithy.api#documentation": "The name of the Azure AI Search service associated with the specified resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.search#SearchServicePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the search service."
+          }
+        },
+        "sku": {
+          "target": "com.azure.search#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the search service, which determines price tier and capacity limits. This property is required when creating a new search service."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geographic location of the resource. This must be one of the supported and registered Azure geo regions (for example, West US, East US, Southeast Asia, and so forth). This property is required when creating a new resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.search#ServicesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags to help categorize the resource in the Azure portal."
+          }
+        },
+        "identity": {
+          "target": "com.azure.search#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Details about the search service identity. A null value indicates that the search service has no identity assigned."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.search#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.search#IdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an identity created by the system and a set of user assigned identities. The type 'None' will remove all identities from the service.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.search#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details about the search service identity. A null value indicates that the search service has no identity assigned."
+      }
+    },
+    "com.azure.search#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.search#IdentityInputUserAssignedIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.search#IdentityInputUserAssignedIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.search#ServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags to help categorize the resource in the Azure portal."
+      }
+    },
+    "com.azure.search#SearchServicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "replicaCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of replicas in the dedicated search service. If specified, it must be a value between 1 and 12 inclusive for standard SKUs or between 1 and 3 inclusive for basic SKU."
+          }
+        },
+        "partitionCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of partitions in the dedicated search service; if specified, it can be 1, 2, 3, 4, 6, or 12. Values greater than 1 are only valid for standard SKUs. For 'standard3' services with hostingMode set to 'highDensity', the allowed values are between 1 and 3."
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint of the Azure AI Search service."
+          }
+        },
+        "hostingMode": {
+          "target": "com.azure.search#SearchServicePropertiesInputHostingMode",
+          "traits": {
+            "smithy.api#documentation": "Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'."
+          }
+        },
+        "computeType": {
+          "target": "com.azure.search#ComputeType",
+          "traits": {
+            "smithy.api#documentation": "Configure this property to support the search service using either the Default Compute or Azure Confidential Compute."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.search#SearchServicePropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method."
+          }
+        },
+        "networkRuleSet": {
+          "target": "com.azure.search#NetworkRuleSet",
+          "traits": {
+            "smithy.api#documentation": "Network specific rules that determine how the Azure AI Search service may be reached."
+          }
+        },
+        "dataExfiltrationProtections": {
+          "target": "com.azure.search#SearchServicePropertiesInputDataExfiltrationProtectionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of data exfiltration scenarios that are explicitly disallowed for the search service. Currently, the only supported value is 'All' to disable all possible data export scenarios with more fine grained controls planned for the future."
+          }
+        },
+        "encryptionWithCmk": {
+          "target": "com.azure.search#EncryptionWithCmk",
+          "traits": {
+            "smithy.api#documentation": "Specifies any policy regarding encryption of resources (such as indexes) using customer manager keys within a search service."
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When set to true, calls to the search service will not be permitted to utilize API keys for authentication. This cannot be set to true if 'dataPlaneAuthOptions' are defined.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "authOptions": {
+          "target": "com.azure.search#DataPlaneAuthOptions",
+          "traits": {
+            "smithy.api#documentation": "Defines the options for how the data plane API of a search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true."
+          }
+        },
+        "semanticSearch": {
+          "target": "com.azure.search#SearchSemanticSearch",
+          "traits": {
+            "smithy.api#documentation": "Specifies the availability and billing plan for semantic search on the Azure AI Search service. This configuration is only available for certain pricing tiers in certain regions.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "upgradeAvailable": {
+          "target": "com.azure.search#UpgradeAvailable",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the search service has an upgrade available."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the search service."
+      }
+    },
+    "com.azure.search#SearchServicePropertiesInputDataExfiltrationProtectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.search#SearchDataExfiltrationProtection"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of data exfiltration scenarios that are explicitly disallowed for the search service. Currently, the only supported value is 'All' to disable all possible data export scenarios with more fine grained controls planned for the future."
+      }
+    },
+    "com.azure.search#SearchServicePropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        },
+        "SECUREDBYPERIMETER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SecuredByPerimeter"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This value can be set to 'Enabled' to avoid breaking changes on existing customer resources and templates. If set to 'Disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method."
+      }
+    },
+    "com.azure.search#SearchServicePropertiesInputHostingMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Default"
+          }
+        },
+        "HIGHDENSITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HighDensity"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Applicable only for the standard3 SKU. You can set this property to enable up to 3 high density partitions that allow up to 1000 indexes, which is much higher than the maximum indexes allowed for any other SKU. For the standard3 SKU, the value is either 'Default' or 'HighDensity'. For all other SKUs, this value must be 'Default'."
       }
     },
     "com.azure.search#ServicesCreateOrUpdate": {
@@ -3659,16 +3876,52 @@
             "smithy.api#documentation": "The name of the Azure AI Search service associated with the specified resource group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.search#ServicesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.search#SearchServicePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the search service."
+          }
+        },
+        "sku": {
+          "target": "com.azure.search#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU of the search service, which determines price tier and capacity limits. This property is required when creating a new search service."
+          }
+        },
+        "identity": {
+          "target": "com.azure.search#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.search#ServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.search#ServicesGet": {
@@ -4236,16 +4489,37 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The search service name to validate. Search service names must only contain lowercase letters, digits or dashes, cannot use dash as the first two or last one characters, cannot contain consecutive dashes, and must be between 2 and 60 characters in length.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.search#ServicesCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource whose name is to be validated. This value must always be 'searchServices'.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.search#ServicesCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "SEARCHSERVICES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "searchServices"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the resource whose name is to be validated. This value must always be 'searchServices'."
       }
     },
     "com.azure.search#OperationsList": {

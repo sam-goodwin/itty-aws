@@ -12,12 +12,21 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** fully qualified resource type which includes provider namespace */
+export type CheckNameAvailabilityRequestType =
+  "Microsoft.Management/managementGroups";
+export const CheckNameAvailabilityRequestType = /*@__PURE__*/ S.String;
+
 export interface CheckNameAvailabilityRequest {
-  body: unknown;
+  /** the name to check for availability */
+  name?: string;
+  /** fully qualified resource type which includes provider namespace */
+  type?: CheckNameAvailabilityRequestType;
 }
 export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.optional(S.String),
+    type: S.optional(CheckNameAvailabilityRequestType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -31,7 +40,7 @@ export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckNameAvailabilityRequest>;
 
 /** Required if nameAvailable == false. Invalid indicates the name provided does not match the resource provider's naming requirements (incorrect length, unsupported characters, etc.) AlreadyExists indicates that the name is already in use and is therefore unavailable. */
-export type Reason = "Invalid" | "AlreadyExists" | (string & {});
+export type Reason = "Invalid" | "AlreadyExists";
 export const Reason = /*@__PURE__*/ S.String;
 
 /** Describes the result of the request to check management group name availability. */
@@ -58,16 +67,14 @@ export type EntitiesListRequestSearch =
   | "AllowedChildren"
   | "ParentAndFirstLevelChildren"
   | "ParentOnly"
-  | "ChildrenOnly"
-  | (string & {});
+  | "ChildrenOnly";
 export const EntitiesListRequestSearch = /*@__PURE__*/ S.String;
 
 export type EntitiesListRequestView =
   | "FullHierarchy"
   | "GroupsOnly"
   | "SubscriptionsOnly"
-  | "Audit"
-  | (string & {});
+  | "Audit";
 export const EntitiesListRequestView = /*@__PURE__*/ S.String;
 
 export interface EntitiesListRequest {
@@ -124,23 +131,19 @@ export const EntityParentGroupInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EntityParentGroupInfo>;
 
 /** The users specific permissions to this item. */
-export type Permissions =
-  | "noaccess"
-  | "view"
-  | "edit"
-  | "delete"
-  | (string & {});
+export type Permissions = "noaccess" | "view" | "edit" | "delete";
 export const Permissions = /*@__PURE__*/ S.String;
 
 /** The parent display name chain from the root group to the immediate parent */
-export type EntityInfoPropertiesParentDisplayNameChainList = string[];
+export type EntityInfoPropertiesParentDisplayNameChainList =
+  ReadonlyArray<string>;
 export const EntityInfoPropertiesParentDisplayNameChainList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<EntityInfoPropertiesParentDisplayNameChainList>;
 
 /** The parent name chain from the root group to the immediate parent */
-export type EntityInfoPropertiesParentNameChainList = string[];
+export type EntityInfoPropertiesParentNameChainList = ReadonlyArray<string>;
 export const EntityInfoPropertiesParentNameChainList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EntityInfoPropertiesParentNameChainList>;
@@ -152,11 +155,11 @@ export interface EntityInfoProperties {
   /** The friendly name of the management group. */
   displayName?: string | null;
   /** (Optional) The ID of the parent management group. */
-  parent?: EntityParentGroupInfo;
+  parent?: EntityParentGroupInfo | null;
   /** The users specific permissions to this item. */
-  permissions?: Permissions;
+  permissions?: Permissions | null;
   /** The users specific permissions to this item. */
-  inheritedPermissions?: Permissions;
+  inheritedPermissions?: Permissions | null;
   /** Number of Descendants */
   numberOfDescendants?: number | null;
   /** Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group. */
@@ -172,9 +175,9 @@ export const EntityInfoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.NullOr(S.String)),
     displayName: S.optional(S.NullOr(S.String)),
-    parent: S.optional(EntityParentGroupInfo),
-    permissions: S.optional(Permissions),
-    inheritedPermissions: S.optional(Permissions),
+    parent: S.optional(S.NullOr(EntityParentGroupInfo)),
+    permissions: S.optional(S.NullOr(Permissions)),
+    inheritedPermissions: S.optional(S.NullOr(Permissions)),
     numberOfDescendants: S.optional(S.NullOr(S.Number)),
     numberOfChildren: S.optional(S.NullOr(S.Number)),
     numberOfChildGroups: S.optional(S.NullOr(S.Number)),
@@ -198,19 +201,19 @@ export interface EntityInfo {
   /** The name of the entity. For example, 00000000-0000-0000-0000-000000000000 */
   name?: string;
   /** The generic properties of an entity. */
-  properties?: EntityInfoProperties;
+  properties?: EntityInfoProperties | null;
 }
 export const EntityInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     type: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
-    properties: S.optional(EntityInfoProperties),
+    properties: S.optional(S.NullOr(EntityInfoProperties)),
   }),
 ).annotate({ identifier: "EntityInfo" }) as any as S.Schema<EntityInfo>;
 
 /** The EntityInfo items on this page */
-export type EntityListResultValueList = EntityInfo[];
+export type EntityListResultValueList = ReadonlyArray<EntityInfo>;
 export const EntityListResultValueList = /*@__PURE__*/ S.Array(
   EntityInfo,
 ) as any as S.Schema<EntityListResultValueList>;
@@ -234,16 +237,33 @@ export const EntityListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "EntityListResult",
 }) as any as S.Schema<EntityListResult>;
 
+/** The properties of the request to create or update Management Group settings */
+export interface CreateOrUpdateSettingsProperties {
+  /** Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access. */
+  requireAuthorizationForGroupCreation?: boolean;
+  /** Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup */
+  defaultManagementGroup?: string;
+}
+export const CreateOrUpdateSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requireAuthorizationForGroupCreation: S.optional(S.Boolean),
+    defaultManagementGroup: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateOrUpdateSettingsProperties",
+}) as any as S.Schema<CreateOrUpdateSettingsProperties>;
+
 export interface HierarchySettingsCreateOrUpdateRequest {
   /** Management Group ID. */
   groupId: string;
-  body: unknown;
+  /** The properties of the request to create or update Management Group settings */
+  properties?: CreateOrUpdateSettingsProperties;
 }
 export const HierarchySettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       groupId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(CreateOrUpdateSettingsProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -261,8 +281,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -270,8 +289,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -455,7 +473,8 @@ export const HierarchySettingsInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HierarchySettingsInfo>;
 
 /** The list of hierarchy settings. */
-export type HierarchySettingsListValueList = HierarchySettingsInfo[];
+export type HierarchySettingsListValueList =
+  ReadonlyArray<HierarchySettingsInfo>;
 export const HierarchySettingsListValueList = /*@__PURE__*/ S.Array(
   HierarchySettingsInfo,
 ) as any as S.Schema<HierarchySettingsListValueList>;
@@ -479,12 +498,13 @@ export const HierarchySettingsList = /*@__PURE__*/ S.suspend(() =>
 export interface HierarchySettingsUpdateRequest {
   /** Management Group ID. */
   groupId: string;
-  body: unknown;
+  /** The properties of the request to create or update Management Group settings */
+  properties?: CreateOrUpdateSettingsProperties;
 }
 export const HierarchySettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(CreateOrUpdateSettingsProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -521,16 +541,63 @@ export const HierarchySettingsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HierarchySettingsUpdateResponse",
 }) as any as S.Schema<HierarchySettingsUpdateResponse>;
 
+/** (Optional) The ID of the parent management group used during creation. */
+export interface CreateParentGroupInfoInput {
+  /** The fully qualified ID for the parent management group. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
+  id?: string;
+}
+export const CreateParentGroupInfoInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateParentGroupInfoInput",
+}) as any as S.Schema<CreateParentGroupInfoInput>;
+
+/** The details of a management group used during creation. */
+export interface CreateManagementGroupDetailsInput {
+  /** (Optional) The ID of the parent management group used during creation. */
+  parent?: CreateParentGroupInfoInput;
+}
+export const CreateManagementGroupDetailsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.optional(CreateParentGroupInfoInput),
+  }),
+).annotate({
+  identifier: "CreateManagementGroupDetailsInput",
+}) as any as S.Schema<CreateManagementGroupDetailsInput>;
+
+/** The generic properties of a management group used during creation. */
+export interface CreateManagementGroupPropertiesInput {
+  /** The friendly name of the management group. If no value is passed then this field will be set to the groupId. */
+  displayName?: string | null;
+  /** The details of a management group used during creation. */
+  details?: CreateManagementGroupDetailsInput;
+}
+export const CreateManagementGroupPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      displayName: S.optional(S.NullOr(S.String)),
+      details: S.optional(CreateManagementGroupDetailsInput),
+    }),
+).annotate({
+  identifier: "CreateManagementGroupPropertiesInput",
+}) as any as S.Schema<CreateManagementGroupPropertiesInput>;
+
 export interface ManagementGroupsCreateOrUpdateRequest {
   /** Management Group ID. */
   groupId: string;
-  body: unknown;
+  /** The name of the management group. For example, 00000000-0000-0000-0000-000000000000 */
+  name?: string;
+  /** The generic properties of a management group used during creation. */
+  properties?: CreateManagementGroupPropertiesInput;
 }
 export const ManagementGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       groupId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
+      properties: S.optional(CreateManagementGroupPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -579,13 +646,15 @@ export const ManagementGroupPathElement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementGroupPathElement>;
 
 /** The path from the root to the current group. */
-export type ManagementGroupDetailsPathList = ManagementGroupPathElement[];
+export type ManagementGroupDetailsPathList =
+  ReadonlyArray<ManagementGroupPathElement>;
 export const ManagementGroupDetailsPathList = /*@__PURE__*/ S.Array(
   ManagementGroupPathElement,
 ) as any as S.Schema<ManagementGroupDetailsPathList>;
 
 /** The ancestors of the management group. */
-export type ManagementGroupDetailsManagementGroupAncestorsList = string[];
+export type ManagementGroupDetailsManagementGroupAncestorsList =
+  ReadonlyArray<string>;
 export const ManagementGroupDetailsManagementGroupAncestorsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -593,7 +662,7 @@ export const ManagementGroupDetailsManagementGroupAncestorsList =
 
 /** The ancestors of the management group displayed in reversed order, from immediate parent to the root. */
 export type ManagementGroupDetailsManagementGroupAncestorsChainList =
-  ManagementGroupPathElement[];
+  ReadonlyArray<ManagementGroupPathElement>;
 export const ManagementGroupDetailsManagementGroupAncestorsChainList =
   /*@__PURE__*/ S.Array(
     ManagementGroupPathElement,
@@ -637,12 +706,12 @@ export const ManagementGroupDetails = /*@__PURE__*/ S.suspend(() =>
 /** The type of child resource. */
 export type ManagementGroupChildType =
   | "Microsoft.Management/managementGroups"
-  | "/subscriptions"
-  | (string & {});
+  | "/subscriptions";
 export const ManagementGroupChildType = /*@__PURE__*/ S.String;
 
 /** The list of children. */
-export type ManagementGroupChildInfoChildrenList = ManagementGroupChildInfo[];
+export type ManagementGroupChildInfoChildrenList =
+  ReadonlyArray<ManagementGroupChildInfo>;
 export const ManagementGroupChildInfoChildrenList = /*@__PURE__*/ S.Array(
   S.suspend(() => ManagementGroupChildInfo),
 ) as any as S.Schema<ManagementGroupChildInfoChildrenList>;
@@ -673,7 +742,8 @@ export const ManagementGroupChildInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementGroupChildInfo>;
 
 /** The list of children. */
-export type ManagementGroupPropertiesChildrenList = ManagementGroupChildInfo[];
+export type ManagementGroupPropertiesChildrenList =
+  ReadonlyArray<ManagementGroupChildInfo>;
 export const ManagementGroupPropertiesChildrenList = /*@__PURE__*/ S.Array(
   ManagementGroupChildInfo,
 ) as any as S.Schema<ManagementGroupPropertiesChildrenList>;
@@ -754,8 +824,7 @@ export const ManagementGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 export type ManagementGroupsGetRequestExpand =
   | "children"
   | "path"
-  | "ancestors"
-  | (string & {});
+  | "ancestors";
 export const ManagementGroupsGetRequestExpand = /*@__PURE__*/ S.String;
 
 export interface ManagementGroupsGetRequest {
@@ -856,12 +925,12 @@ export interface DescendantInfoProperties {
   /** The friendly name of the management group. */
   displayName?: string | null;
   /** The ID of the parent management group. */
-  parent?: DescendantParentGroupInfo;
+  parent?: DescendantParentGroupInfo | null;
 }
 export const DescendantInfoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
-    parent: S.optional(DescendantParentGroupInfo),
+    parent: S.optional(S.NullOr(DescendantParentGroupInfo)),
   }),
 ).annotate({
   identifier: "DescendantInfoProperties",
@@ -876,19 +945,19 @@ export interface DescendantInfo {
   /** The name of the descendant. For example, 00000000-0000-0000-0000-000000000000 */
   name?: string;
   /** The generic properties of an descendant. */
-  properties?: DescendantInfoProperties;
+  properties?: DescendantInfoProperties | null;
 }
 export const DescendantInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     type: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
-    properties: S.optional(DescendantInfoProperties),
+    properties: S.optional(S.NullOr(DescendantInfoProperties)),
   }),
 ).annotate({ identifier: "DescendantInfo" }) as any as S.Schema<DescendantInfo>;
 
 /** The DescendantInfo items on this page */
-export type DescendantListResultValueList = DescendantInfo[];
+export type DescendantListResultValueList = ReadonlyArray<DescendantInfo>;
 export const DescendantListResultValueList = /*@__PURE__*/ S.Array(
   DescendantInfo,
 ) as any as S.Schema<DescendantListResultValueList>;
@@ -967,7 +1036,8 @@ export const ManagementGroupInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagementGroupInfo>;
 
 /** The list of management groups. */
-export type ManagementGroupListResultValueList = ManagementGroupInfo[];
+export type ManagementGroupListResultValueList =
+  ReadonlyArray<ManagementGroupInfo>;
 export const ManagementGroupListResultValueList = /*@__PURE__*/ S.Array(
   ManagementGroupInfo,
 ) as any as S.Schema<ManagementGroupListResultValueList>;
@@ -1018,7 +1088,7 @@ export interface SubscriptionUnderManagementGroupProperties {
   /** The friendly name of the subscription. */
   displayName?: string;
   /** The ID of the parent management group. */
-  parent?: DescendantParentGroupInfo;
+  parent?: DescendantParentGroupInfo | null;
   /** The state of the subscription. */
   state?: string;
 }
@@ -1027,7 +1097,7 @@ export const SubscriptionUnderManagementGroupProperties =
     S.Struct({
       tenant: S.optional(S.String),
       displayName: S.optional(S.String),
-      parent: S.optional(DescendantParentGroupInfo),
+      parent: S.optional(S.NullOr(DescendantParentGroupInfo)),
       state: S.optional(S.String),
     }),
   ).annotate({
@@ -1187,7 +1257,7 @@ export const SubscriptionUnderManagementGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The SubscriptionUnderManagementGroup items on this page */
 export type ListSubscriptionUnderManagementGroupValueList =
-  SubscriptionUnderManagementGroup[];
+  ReadonlyArray<SubscriptionUnderManagementGroup>;
 export const ListSubscriptionUnderManagementGroupValueList =
   /*@__PURE__*/ S.Array(
     SubscriptionUnderManagementGroup,
@@ -1213,12 +1283,16 @@ export const ListSubscriptionUnderManagementGroup = /*@__PURE__*/ S.suspend(
 export interface ManagementGroupsUpdateRequest {
   /** Management Group ID. */
   groupId: string;
-  body: unknown;
+  /** The friendly name of the management group. */
+  displayName?: string;
+  /** (Optional) The fully qualified ID for the parent management group. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
+  parentGroupId?: string;
 }
 export const ManagementGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    displayName: S.optional(S.String),
+    parentGroupId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1292,11 +1366,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -1323,7 +1397,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -1364,8 +1438,7 @@ export type Status =
   | "Started"
   | "Failed"
   | "Cancelled"
-  | "Completed"
-  | (string & {});
+  | "Completed";
 export const Status = /*@__PURE__*/ S.String;
 
 /** The tenant backfill status */

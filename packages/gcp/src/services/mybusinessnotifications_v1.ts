@@ -91,13 +91,12 @@ export type NotificationSettingNotificationTypesItemEnum =
   | "UPDATED_ANSWER"
   | "DUPLICATE_LOCATION"
   | "LOSS_OF_VOICE_OF_MERCHANT"
-  | "VOICE_OF_MERCHANT_UPDATED"
-  | (string & {});
+  | "VOICE_OF_MERCHANT_UPDATED";
 export const NotificationSettingNotificationTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type NotificationSettingNotificationTypesItemEnumList =
-  NotificationSettingNotificationTypesItemEnum[];
+  ReadonlyArray<NotificationSettingNotificationTypesItemEnum>;
 export const NotificationSettingNotificationTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     NotificationSettingNotificationTypesItemEnum,

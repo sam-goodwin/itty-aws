@@ -40,7 +40,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemType": {
+    "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType": {
       "type": "enum",
       "members": {
         "HEADER": {
@@ -57,20 +57,63 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItem": {
+    "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic": {
       "type": "structure",
       "members": {
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the characteristic field, i.e., the header or cookie name."
+            "smithy.api#documentation": "The name of the characteristic field, i.e., the header or cookie name.",
+            "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemType",
+          "target": "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType",
           "traits": {
-            "smithy.api#documentation": "The type of characteristic."
+            "smithy.api#documentation": "The type of characteristic.",
+            "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType": {
+      "type": "enum",
+      "members": {
+        "JWT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jwt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id`",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType",
+          "traits": {
+            "smithy.api#documentation": "The type of characteristic.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItem": {
+      "type": "union",
+      "members": {
+        "APIShieldAuthIDCharacteristic": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic"
+        },
+        "APIShieldAuthIDCharacteristicJWTClaim": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsGetResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim"
         }
       }
     },
@@ -113,7 +156,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemType": {
+    "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType": {
       "type": "enum",
       "members": {
         "HEADER": {
@@ -130,20 +173,63 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItem": {
+    "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic": {
       "type": "structure",
       "members": {
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the characteristic field, i.e., the header or cookie name."
+            "smithy.api#documentation": "The name of the characteristic field, i.e., the header or cookie name.",
+            "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemType",
+          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType",
           "traits": {
-            "smithy.api#documentation": "The type of characteristic."
+            "smithy.api#documentation": "The type of characteristic.",
+            "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType": {
+      "type": "enum",
+      "members": {
+        "JWT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jwt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id`",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType",
+          "traits": {
+            "smithy.api#documentation": "The type of characteristic.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItem": {
+      "type": "union",
+      "members": {
+        "APIShieldAuthIDCharacteristic": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic"
+        },
+        "APIShieldAuthIDCharacteristicJWTClaim": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateRequestAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim"
         }
       }
     },
@@ -182,7 +268,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemType": {
+    "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType": {
       "type": "enum",
       "members": {
         "HEADER": {
@@ -199,20 +285,63 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItem": {
+    "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic": {
       "type": "structure",
       "members": {
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The name of the characteristic field, i.e., the header or cookie name."
+            "smithy.api#documentation": "The name of the characteristic field, i.e., the header or cookie name.",
+            "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemType",
+          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicType",
           "traits": {
-            "smithy.api#documentation": "The type of characteristic."
+            "smithy.api#documentation": "The type of characteristic.",
+            "smithy.api#required": {}
           }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType": {
+      "type": "enum",
+      "members": {
+        "JWT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jwt"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Claim location expressed as `$(token_config_id):$(json_path)`, where `token_config_id`",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaimType",
+          "traits": {
+            "smithy.api#documentation": "The type of characteristic.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItem": {
+      "type": "union",
+      "members": {
+        "APIShieldAuthIDCharacteristic": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristic"
+        },
+        "APIShieldAuthIDCharacteristicJWTClaim": {
+          "target": "com.cloudflare.api_gateway#ConfigurationsUpdateResponseAuthIdCharacteristicsItemAPIShieldAuthIDCharacteristicJWTClaim"
         }
       }
     },
@@ -316,13 +445,41 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditRequestBodyValueState": {
+      "type": "enum",
+      "members": {
+        "REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "review"
+          }
+        },
+        "IGNORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ignored"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditRequestBodyValue": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditRequestBodyValueState",
+          "traits": {
+            "smithy.api#documentation": "Mark state of operation in API Discovery"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditRequestBodyMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditRequestBodyValue"
       }
     },
     "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditRequest": {
@@ -348,13 +505,41 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditResultValueState": {
+      "type": "enum",
+      "members": {
+        "REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "review"
+          }
+        },
+        "IGNORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ignored"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditResultValue": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditResultValueState",
+          "traits": {
+            "smithy.api#documentation": "Mark state of operation in API Discovery"
+          }
+        }
+      }
+    },
     "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditResultMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditResultValue"
       }
     },
     "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditResponse": {
@@ -437,6 +622,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "endpoint"
+          }
+        },
+        "TRAFFIC_STATS_REQUESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "traffic_stats.requests"
+          }
+        },
+        "TRAFFIC_STATS_LAST_UPDATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "traffic_stats.last_updated"
           }
         }
       }
@@ -592,6 +789,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "HEAD"
+          }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
           }
         }
       }
@@ -881,6 +1114,18 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "created_at"
+          }
+        },
+        "LAST_UPDATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last_updated"
+          }
+        },
+        "MAPPED_RESOURCES_OPERATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mapped_resources.operations"
           }
         }
       }
@@ -2251,6 +2496,42 @@
           "traits": {
             "smithy.api#enumValue": "HEAD"
           }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
+          }
         }
       }
     },
@@ -2328,6 +2609,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "HEAD"
+          }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
           }
         }
       }
@@ -2810,6 +3127,42 @@
           "traits": {
             "smithy.api#enumValue": "HEAD"
           }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
+          }
         }
       }
     },
@@ -2869,6 +3222,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "HEAD"
+          }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
           }
         }
       }
@@ -3513,6 +3902,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "HEAD"
+          }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
           }
         }
       }
@@ -4209,6 +4634,42 @@
           "traits": {
             "smithy.api#enumValue": "HEAD"
           }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
+          }
         }
       }
     },
@@ -4748,6 +5209,42 @@
           "traits": {
             "smithy.api#enumValue": "HEAD"
           }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
+          }
         }
       }
     },
@@ -4934,6 +5431,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "HEAD"
+          }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
           }
         }
       }
@@ -5208,6 +5741,42 @@
           "traits": {
             "smithy.api#enumValue": "HEAD"
           }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
+          }
         }
       }
     },
@@ -5428,6 +5997,42 @@
           "traits": {
             "smithy.api#enumValue": "HEAD"
           }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
+          }
         }
       }
     },
@@ -5605,6 +6210,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "HEAD"
+          }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
           }
         }
       }
@@ -5808,6 +6449,42 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "HEAD"
+          }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
           }
         }
       }
@@ -6428,56 +7105,9 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.api_gateway#SettingsSchemaValidationEditResponseValidationDefaultMitigationAction": {
-      "type": "enum",
-      "members": {
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "none"
-          }
-        },
-        "LOG": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "log"
-          }
-        },
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        }
-      }
-    },
-    "com.cloudflare.api_gateway#SettingsSchemaValidationEditResponseValidationOverrideMitigationAction": {
-      "type": "enum",
-      "members": {
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "none"
-          }
-        }
-      }
-    },
     "com.cloudflare.api_gateway#SettingsSchemaValidationEditResponse": {
       "type": "structure",
-      "members": {
-        "validation_default_mitigation_action": {
-          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationEditResponseValidationDefaultMitigationAction",
-          "traits": {
-            "smithy.api#documentation": "The default mitigation action used when there is no mitigation action defined on the operation"
-          }
-        },
-        "validation_override_mitigation_action": {
-          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationEditResponseValidationOverrideMitigationAction",
-          "traits": {
-            "smithy.api#documentation": "When set, this overrides both zone level and operation level mitigation actions."
-          }
-        }
-      },
+      "members": {},
       "traits": {
         "smithy.api#output": {},
         "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
@@ -6516,56 +7146,9 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.api_gateway#SettingsSchemaValidationGetResponseValidationDefaultMitigationAction": {
-      "type": "enum",
-      "members": {
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "none"
-          }
-        },
-        "LOG": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "log"
-          }
-        },
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        }
-      }
-    },
-    "com.cloudflare.api_gateway#SettingsSchemaValidationGetResponseValidationOverrideMitigationAction": {
-      "type": "enum",
-      "members": {
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "none"
-          }
-        }
-      }
-    },
     "com.cloudflare.api_gateway#SettingsSchemaValidationGetResponse": {
       "type": "structure",
-      "members": {
-        "validation_default_mitigation_action": {
-          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationGetResponseValidationDefaultMitigationAction",
-          "traits": {
-            "smithy.api#documentation": "The default mitigation action used when there is no mitigation action defined on the operation"
-          }
-        },
-        "validation_override_mitigation_action": {
-          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationGetResponseValidationOverrideMitigationAction",
-          "traits": {
-            "smithy.api#documentation": "When set, this overrides both zone level and operation level mitigation actions."
-          }
-        }
-      },
+      "members": {},
       "traits": {
         "smithy.api#output": {},
         "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
@@ -6658,56 +7241,9 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.api_gateway#SettingsSchemaValidationUpdateResponseValidationDefaultMitigationAction": {
-      "type": "enum",
-      "members": {
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "none"
-          }
-        },
-        "LOG": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "log"
-          }
-        },
-        "BLOCK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "block"
-          }
-        }
-      }
-    },
-    "com.cloudflare.api_gateway#SettingsSchemaValidationUpdateResponseValidationOverrideMitigationAction": {
-      "type": "enum",
-      "members": {
-        "NONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "none"
-          }
-        }
-      }
-    },
     "com.cloudflare.api_gateway#SettingsSchemaValidationUpdateResponse": {
       "type": "structure",
-      "members": {
-        "validation_default_mitigation_action": {
-          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationUpdateResponseValidationDefaultMitigationAction",
-          "traits": {
-            "smithy.api#documentation": "The default mitigation action used when there is no mitigation action defined on the operation"
-          }
-        },
-        "validation_override_mitigation_action": {
-          "target": "com.cloudflare.api_gateway#SettingsSchemaValidationUpdateResponseValidationOverrideMitigationAction",
-          "traits": {
-            "smithy.api#documentation": "When set, this overrides both zone level and operation level mitigation actions."
-          }
-        }
-      },
+      "members": {},
       "traits": {
         "smithy.api#output": {},
         "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
@@ -7512,7 +8048,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemMethod": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationMethod": {
       "type": "enum",
       "members": {
         "GET": {
@@ -7532,10 +8068,46 @@
           "traits": {
             "smithy.api#enumValue": "HEAD"
           }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
+          }
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds": {
       "type": "structure",
       "members": {
         "auth_id_tokens": {
@@ -7591,25 +8163,25 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholds": {
       "type": "structure",
       "members": {
         "thresholds": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholdsThresholds"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholdsThresholds"
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "parameters": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemasParametersList",
           "traits": {
             "smithy.api#documentation": "An array containing the learned parameter schemas."
           }
@@ -7622,32 +8194,32 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemasParameterSchemas",
           "traits": {
             "smithy.api#documentation": "An operation schema object containing a response."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemas": {
       "type": "structure",
       "members": {
         "parameter_schemas": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemasParameterSchemas",
           "traits": {
             "smithy.api#required": {}
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting": {
       "type": "structure",
       "members": {
         "last_updated": {
@@ -7661,18 +8233,18 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRouting": {
       "type": "structure",
       "members": {
         "api_routing": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRoutingApiRouting",
           "traits": {
             "smithy.api#documentation": "API Routing settings on endpoint."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90": {
       "type": "structure",
       "members": {
         "lower": {
@@ -7689,7 +8261,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95": {
       "type": "structure",
       "members": {
         "lower": {
@@ -7706,7 +8278,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99": {
       "type": "structure",
       "members": {
         "lower": {
@@ -7723,34 +8295,34 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals": {
       "type": "structure",
       "members": {
         "p90": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP90",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p95": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP95",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         },
         "p99": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervalsP99",
           "traits": {
             "smithy.api#documentation": "Upper and lower bound for percentile estimate"
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold": {
       "type": "structure",
       "members": {
         "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThresholdConfidenceIntervals"
         },
         "mean": {
           "target": "smithy.api#Double",
@@ -7760,26 +8332,26 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals": {
       "type": "structure",
       "members": {
         "last_updated": {
           "target": "smithy.api#String"
         },
         "suggested_threshold": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervalsSuggestedThreshold"
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervals": {
       "type": "structure",
       "members": {
         "confidence_intervals": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervalsConfidenceIntervals"
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema": {
       "type": "structure",
       "members": {
         "id": {
@@ -7805,7 +8377,7 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction": {
       "type": "enum",
       "members": {
         "NONE": {
@@ -7828,11 +8400,11 @@
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo": {
       "type": "structure",
       "members": {
         "active_schema": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoActiveSchema",
           "traits": {
             "smithy.api#documentation": "Schema active on endpoint."
           }
@@ -7844,73 +8416,176 @@
           }
         },
         "mitigation_action": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfoMitigationAction",
           "traits": {
             "smithy.api#documentation": "Action taken on requests failing validation."
           }
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo": {
       "type": "structure",
       "members": {
         "schema_info": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfoSchemaInfo"
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeatures": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeatures": {
       "type": "union",
       "members": {
         "APIShieldOperationFeatureThresholds": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureThresholds"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureThresholds"
         },
         "APIShieldOperationFeatureParameterSchemas": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureParameterSchemas"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureParameterSchemas"
         },
         "APIShieldOperationFeatureAPIRouting": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureAPIRouting"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureAPIRouting"
         },
         "APIShieldOperationFeatureConfidenceIntervals": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureConfidenceIntervals"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureConfidenceIntervals"
         },
         "APIShieldOperationFeatureSchemaInfo": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeaturesAPIShieldOperationFeatureSchemaInfo"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeaturesAPIShieldOperationFeatureSchemaInfo"
         }
       }
     },
-    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItem": {
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperation": {
       "type": "structure",
       "members": {
         "endpoint": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/."
+            "smithy.api#documentation": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+            "smithy.api#required": {}
           }
         },
         "host": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "RFC3986-compliant host."
+            "smithy.api#documentation": "RFC3986-compliant host.",
+            "smithy.api#required": {}
           }
         },
         "last_updated": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         },
         "method": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemMethod",
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationMethod",
           "traits": {
-            "smithy.api#documentation": "The HTTP method used to access the endpoint."
+            "smithy.api#documentation": "The HTTP method used to access the endpoint.",
+            "smithy.api#required": {}
           }
         },
         "operation_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "UUID."
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
           }
         },
         "features": {
-          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemFeatures"
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperationFeatures"
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldBasicOperationMethod": {
+      "type": "enum",
+      "members": {
+        "GET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GET"
+          }
+        },
+        "POST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "POST"
+          }
+        },
+        "HEAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HEAD"
+          }
+        },
+        "OPTIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OPTIONS"
+          }
+        },
+        "PUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PUT"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETE"
+          }
+        },
+        "CONNECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CONNECT"
+          }
+        },
+        "PATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PATCH"
+          }
+        },
+        "TRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TRACE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldBasicOperation": {
+      "type": "structure",
+      "members": {
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.",
+            "smithy.api#required": {}
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "RFC3986-compliant host.",
+            "smithy.api#required": {}
+          }
+        },
+        "method": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldBasicOperationMethod",
+          "traits": {
+            "smithy.api#documentation": "The HTTP method used to access the endpoint.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#UserSchemasOperationsListResultItem": {
+      "type": "union",
+      "members": {
+        "APIShieldOperation": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldOperation"
+        },
+        "APIShieldBasicOperation": {
+          "target": "com.cloudflare.api_gateway#UserSchemasOperationsListResultItemAPIShieldBasicOperation"
         }
       }
     },

@@ -512,16 +512,132 @@
             "smithy.api#documentation": "The name of the Prediction."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "status": {
+          "target": "com.azure.customer_insights#PredictionsModelStatusRequestStatus",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Prediction model life cycle.  When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#PredictionsModelStatusRequestStatus": {
+      "type": "enum",
+      "members": {
+        "NEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "New"
+          }
+        },
+        "PROVISIONING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Provisioning"
+          }
+        },
+        "PROVISIONINGFAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ProvisioningFailed"
+          }
+        },
+        "PENDINGDISCOVERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PendingDiscovering"
+          }
+        },
+        "DISCOVERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Discovering"
+          }
+        },
+        "PENDINGFEATURING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PendingFeaturing"
+          }
+        },
+        "FEATURING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Featuring"
+          }
+        },
+        "FEATURINGFAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "FeaturingFailed"
+          }
+        },
+        "PENDINGTRAINING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PendingTraining"
+          }
+        },
+        "TRAINING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Training"
+          }
+        },
+        "TRAININGFAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TrainingFailed"
+          }
+        },
+        "EVALUATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Evaluating"
+          }
+        },
+        "EVALUATINGFAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EvaluatingFailed"
+          }
+        },
+        "PENDINGMODELCONFIRMATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PendingModelConfirmation"
+          }
+        },
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleted"
+          }
+        },
+        "HUMANINTERVENTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HumanIntervention"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Prediction model life cycle.  When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API."
       }
     },
     "com.azure.customer_insights#PredictionsGetModelStatus": {
@@ -1194,16 +1310,226 @@
             "smithy.api#documentation": "The name of the Prediction."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.customer_insights#PredictionInput"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#PredictionInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "com.azure.customer_insights#PredictionInputDescriptionMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Description of the prediction."
+          }
+        },
+        "displayName": {
+          "target": "com.azure.customer_insights#PredictionInputDisplayNameMap",
+          "traits": {
+            "smithy.api#documentation": "Display name of the prediction."
+          }
+        },
+        "involvedInteractionTypes": {
+          "target": "com.azure.customer_insights#PredictionInputInvolvedInteractionTypesList",
+          "traits": {
+            "smithy.api#documentation": "Interaction types involved in the prediction."
+          }
+        },
+        "involvedKpiTypes": {
+          "target": "com.azure.customer_insights#PredictionInputInvolvedKpiTypesList",
+          "traits": {
+            "smithy.api#documentation": "KPI types involved in the prediction."
+          }
+        },
+        "involvedRelationships": {
+          "target": "com.azure.customer_insights#PredictionInputInvolvedRelationshipsList",
+          "traits": {
+            "smithy.api#documentation": "Relationships involved in the prediction."
+          }
+        },
+        "negativeOutcomeExpression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Negative outcome expression.",
+            "smithy.api#required": {}
+          }
+        },
+        "positiveOutcomeExpression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Positive outcome expression.",
+            "smithy.api#required": {}
+          }
+        },
+        "primaryProfileType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Primary profile type.",
+            "smithy.api#required": {}
+          }
+        },
+        "predictionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the prediction."
+          }
+        },
+        "scopeExpression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Scope expression.",
+            "smithy.api#required": {}
+          }
+        },
+        "autoAnalyze": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether do auto analyze.",
+            "smithy.api#required": {}
+          }
+        },
+        "mappings": {
+          "target": "com.azure.customer_insights#PredictionInputMappings",
+          "traits": {
+            "smithy.api#documentation": "Definition of the link mapping of prediction.",
+            "smithy.api#required": {}
+          }
+        },
+        "scoreLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Score label.",
+            "smithy.api#required": {}
+          }
+        },
+        "grades": {
+          "target": "com.azure.customer_insights#PredictionInputGradesList",
+          "traits": {
+            "smithy.api#documentation": "The prediction grades."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The prediction definition."
+      }
+    },
+    "com.azure.customer_insights#PredictionInputGradesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#PredictionInputGradesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The prediction grades."
+      }
+    },
+    "com.azure.customer_insights#PredictionInputGradesItem": {
+      "type": "structure",
+      "members": {
+        "gradeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the grade."
+          }
+        },
+        "minScoreThreshold": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Minimum score threshold."
+          }
+        },
+        "maxScoreThreshold": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Maximum score threshold."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The definition of a prediction grade."
+      }
+    },
+    "com.azure.customer_insights#PredictionInputMappings": {
+      "type": "structure",
+      "members": {
+        "score": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The score of the link mapping.",
+            "smithy.api#required": {}
+          }
+        },
+        "grade": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The grade of the link mapping.",
+            "smithy.api#required": {}
+          }
+        },
+        "reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The reason of the link mapping.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#input": {}
+        "smithy.api#documentation": "Definition of the link mapping of prediction."
+      }
+    },
+    "com.azure.customer_insights#PredictionInputInvolvedRelationshipsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Relationships involved in the prediction."
+      }
+    },
+    "com.azure.customer_insights#PredictionInputInvolvedKpiTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "KPI types involved in the prediction."
+      }
+    },
+    "com.azure.customer_insights#PredictionInputInvolvedInteractionTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Interaction types involved in the prediction."
+      }
+    },
+    "com.azure.customer_insights#PredictionInputDisplayNameMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Display name of the prediction."
+      }
+    },
+    "com.azure.customer_insights#PredictionInputDescriptionMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Description of the prediction."
       }
     },
     "com.azure.customer_insights#PredictionsGet": {
@@ -1366,11 +1692,22 @@
             "smithy.api#documentation": "The name of the hub."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "entityType": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Type of entity. Can be Profile or Interaction."
+          }
+        },
+        "entityTypeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the entity type."
+          }
+        },
+        "relativePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Relative path of the image."
           }
         }
       },
@@ -1424,11 +1761,22 @@
             "smithy.api#documentation": "The name of the hub."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "entityType": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Type of entity. Can be Profile or Interaction."
+          }
+        },
+        "entityTypeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the entity type."
+          }
+        },
+        "relativePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Relative path of the image."
           }
         }
       },
@@ -1863,16 +2211,201 @@
             "smithy.api#documentation": "The assignment name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.customer_insights#RoleAssignmentInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#RoleAssignmentInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "com.azure.customer_insights#RoleAssignmentInputDisplayNameMap",
+          "traits": {
+            "smithy.api#documentation": "Localized display names for the metadata."
+          }
+        },
+        "description": {
+          "target": "com.azure.customer_insights#RoleAssignmentInputDescriptionMap",
+          "traits": {
+            "smithy.api#documentation": "Localized description for the metadata."
+          }
+        },
+        "role": {
+          "target": "com.azure.customer_insights#RoleAssignmentInputRole",
+          "traits": {
+            "smithy.api#documentation": "Type of roles.",
+            "smithy.api#required": {}
+          }
+        },
+        "principals": {
+          "target": "com.azure.customer_insights#RoleAssignmentInputPrincipalsList",
+          "traits": {
+            "smithy.api#documentation": "The principals being assigned to.",
+            "smithy.api#required": {}
+          }
+        },
+        "profiles": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "Profiles set for the assignment."
+          }
+        },
+        "interactions": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "Interactions set for the assignment."
+          }
+        },
+        "links": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "Links set for the assignment."
+          }
+        },
+        "kpis": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "Kpis set for the assignment."
+          }
+        },
+        "sasPolicies": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "Sas Policies set for the assignment."
+          }
+        },
+        "connectors": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "Connectors set for the assignment."
+          }
+        },
+        "views": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "Views set for the assignment."
+          }
+        },
+        "relationshipLinks": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "The Role assignments set for the relationship links."
+          }
+        },
+        "relationships": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "The Role assignments set for the relationships."
+          }
+        },
+        "widgetTypes": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "Widget types set for the assignment."
+          }
+        },
+        "roleAssignments": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "The Role assignments set for the assignment."
+          }
+        },
+        "conflationPolicies": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "Widget types set for the assignment."
+          }
+        },
+        "segments": {
+          "target": "com.azure.customer_insights#ResourceSetDescription",
+          "traits": {
+            "smithy.api#documentation": "The Role assignments set for the assignment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Role Assignment definition."
+      }
+    },
+    "com.azure.customer_insights#RoleAssignmentInputPrincipalsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#AssignmentPrincipal"
+      },
+      "traits": {
+        "smithy.api#documentation": "The principals being assigned to."
+      }
+    },
+    "com.azure.customer_insights#RoleAssignmentInputRole": {
+      "type": "enum",
+      "members": {
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Admin"
+          }
+        },
+        "READER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Reader"
+          }
+        },
+        "MANAGEADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ManageAdmin"
+          }
+        },
+        "MANAGEREADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ManageReader"
+          }
+        },
+        "DATAADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataAdmin"
+          }
+        },
+        "DATAREADER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DataReader"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of roles."
+      }
+    },
+    "com.azure.customer_insights#RoleAssignmentInputDescriptionMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized description for the metadata."
+      }
+    },
+    "com.azure.customer_insights#RoleAssignmentInputDisplayNameMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized display names for the metadata."
       }
     },
     "com.azure.customer_insights#RoleAssignmentsGet": {
@@ -2739,16 +3272,211 @@
             "smithy.api#documentation": "The name of the link."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.customer_insights#LinkDefinitionInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#LinkDefinitionInput": {
+      "type": "structure",
+      "members": {
+        "sourceEntityType": {
+          "target": "com.azure.customer_insights#LinkDefinitionInputSourceEntityType",
+          "traits": {
+            "smithy.api#documentation": "Type of source entity.",
+            "smithy.api#required": {}
+          }
+        },
+        "targetEntityType": {
+          "target": "com.azure.customer_insights#LinkDefinitionInputTargetEntityType",
+          "traits": {
+            "smithy.api#documentation": "Type of target entity.",
+            "smithy.api#required": {}
+          }
+        },
+        "sourceEntityTypeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the source Entity Type.",
+            "smithy.api#required": {}
+          }
+        },
+        "targetEntityTypeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the target Entity Type.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "com.azure.customer_insights#LinkDefinitionInputDisplayNameMap",
+          "traits": {
+            "smithy.api#documentation": "Localized display name for the Link."
+          }
+        },
+        "description": {
+          "target": "com.azure.customer_insights#LinkDefinitionInputDescriptionMap",
+          "traits": {
+            "smithy.api#documentation": "Localized descriptions for the Link."
+          }
+        },
+        "mappings": {
+          "target": "com.azure.customer_insights#LinkDefinitionInputMappingsList",
+          "traits": {
+            "smithy.api#documentation": "The set of properties mappings between the source and target Types."
+          }
+        },
+        "participantPropertyReferences": {
+          "target": "com.azure.customer_insights#LinkDefinitionInputParticipantPropertyReferencesList",
+          "traits": {
+            "smithy.api#documentation": "The properties that represent the participating profile.",
+            "smithy.api#required": {}
+          }
+        },
+        "referenceOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles."
+          }
+        },
+        "operationType": {
+          "target": "com.azure.customer_insights#LinkDefinitionInputOperationType",
+          "traits": {
+            "smithy.api#documentation": "Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The definition of Link."
+      }
+    },
+    "com.azure.customer_insights#LinkDefinitionInputOperationType": {
+      "type": "enum",
+      "members": {
+        "UPSERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Upsert"
+          }
+        },
+        "DELETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Delete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only."
+      }
+    },
+    "com.azure.customer_insights#LinkDefinitionInputParticipantPropertyReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#ParticipantPropertyReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that represent the participating profile."
+      }
+    },
+    "com.azure.customer_insights#LinkDefinitionInputMappingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#TypePropertiesMapping"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of properties mappings between the source and target Types."
+      }
+    },
+    "com.azure.customer_insights#LinkDefinitionInputDescriptionMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized descriptions for the Link."
+      }
+    },
+    "com.azure.customer_insights#LinkDefinitionInputDisplayNameMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized display name for the Link."
+      }
+    },
+    "com.azure.customer_insights#LinkDefinitionInputTargetEntityType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "PROFILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Profile"
+          }
+        },
+        "INTERACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Interaction"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Relationship"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of target entity."
+      }
+    },
+    "com.azure.customer_insights#LinkDefinitionInputSourceEntityType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "PROFILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Profile"
+          }
+        },
+        "INTERACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Interaction"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Relationship"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of source entity."
       }
     },
     "com.azure.customer_insights#LinksGet": {
@@ -3052,16 +3780,51 @@
             "smithy.api#documentation": "The name of the view."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.customer_insights#ViewInput"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#ViewInput": {
+      "type": "structure",
+      "members": {
+        "userId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "the user ID."
+          }
+        },
+        "displayName": {
+          "target": "com.azure.customer_insights#ViewInputDisplayNameMap",
+          "traits": {
+            "smithy.api#documentation": "Localized display name for the view."
+          }
+        },
+        "definition": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "View definition.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#input": {}
+        "smithy.api#documentation": "The view in Customer 360 web application."
+      }
+    },
+    "com.azure.customer_insights#ViewInputDisplayNameMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized display name for the view."
       }
     },
     "com.azure.customer_insights#ViewsGet": {
@@ -4307,16 +5070,286 @@
             "smithy.api#documentation": "The name of the KPI."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.customer_insights#KpiDefinitionInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#KpiDefinitionInput": {
+      "type": "structure",
+      "members": {
+        "entityType": {
+          "target": "com.azure.customer_insights#KpiDefinitionInputEntityType",
+          "traits": {
+            "smithy.api#documentation": "The mapping entity type.",
+            "smithy.api#required": {}
+          }
+        },
+        "entityTypeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The mapping entity name.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "com.azure.customer_insights#KpiDefinitionInputDisplayNameMap",
+          "traits": {
+            "smithy.api#documentation": "Localized display name for the KPI."
+          }
+        },
+        "description": {
+          "target": "com.azure.customer_insights#KpiDefinitionInputDescriptionMap",
+          "traits": {
+            "smithy.api#documentation": "Localized description for the KPI."
+          }
+        },
+        "calculationWindow": {
+          "target": "com.azure.customer_insights#KpiDefinitionInputCalculationWindow",
+          "traits": {
+            "smithy.api#documentation": "The calculation window.",
+            "smithy.api#required": {}
+          }
+        },
+        "calculationWindowFieldName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of calculation window field."
+          }
+        },
+        "function": {
+          "target": "com.azure.customer_insights#KpiDefinitionInputFunction",
+          "traits": {
+            "smithy.api#documentation": "The computation function for the KPI.",
+            "smithy.api#required": {}
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The computation expression for the KPI.",
+            "smithy.api#required": {}
+          }
+        },
+        "unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unit of measurement for the KPI."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The filter expression for the KPI."
+          }
+        },
+        "groupBy": {
+          "target": "com.azure.customer_insights#KpiDefinitionInputGroupByList",
+          "traits": {
+            "smithy.api#documentation": "the group by properties for the KPI."
+          }
+        },
+        "thresHolds": {
+          "target": "com.azure.customer_insights#KpiThresholds",
+          "traits": {
+            "smithy.api#documentation": "The KPI thresholds."
+          }
+        },
+        "aliases": {
+          "target": "com.azure.customer_insights#KpiDefinitionInputAliasesList",
+          "traits": {
+            "smithy.api#documentation": "The aliases."
+          }
+        },
+        "extracts": {
+          "target": "com.azure.customer_insights#KpiDefinitionInputExtractsList",
+          "traits": {
+            "smithy.api#documentation": "The KPI extracts."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the KPI Threshold limits."
+      }
+    },
+    "com.azure.customer_insights#KpiDefinitionInputExtractsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#KpiExtract"
+      },
+      "traits": {
+        "smithy.api#documentation": "The KPI extracts."
+      }
+    },
+    "com.azure.customer_insights#KpiDefinitionInputAliasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#KpiAlias"
+      },
+      "traits": {
+        "smithy.api#documentation": "The aliases."
+      }
+    },
+    "com.azure.customer_insights#KpiDefinitionInputGroupByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "the group by properties for the KPI."
+      }
+    },
+    "com.azure.customer_insights#KpiDefinitionInputFunction": {
+      "type": "enum",
+      "members": {
+        "SUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Sum"
+          }
+        },
+        "AVG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Avg"
+          }
+        },
+        "MIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Min"
+          }
+        },
+        "MAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Max"
+          }
+        },
+        "LAST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Last"
+          }
+        },
+        "COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Count"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "COUNTDISTINCT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CountDistinct"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The computation function for the KPI."
+      }
+    },
+    "com.azure.customer_insights#KpiDefinitionInputCalculationWindow": {
+      "type": "enum",
+      "members": {
+        "LIFETIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Lifetime"
+          }
+        },
+        "HOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Hour"
+          }
+        },
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Day"
+          }
+        },
+        "WEEK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Week"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Month"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The calculation window."
+      }
+    },
+    "com.azure.customer_insights#KpiDefinitionInputDescriptionMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized description for the KPI."
+      }
+    },
+    "com.azure.customer_insights#KpiDefinitionInputDisplayNameMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized display name for the KPI."
+      }
+    },
+    "com.azure.customer_insights#KpiDefinitionInputEntityType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "PROFILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Profile"
+          }
+        },
+        "INTERACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Interaction"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Relationship"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The mapping entity type."
       }
     },
     "com.azure.customer_insights#KpiGet": {
@@ -5224,16 +6257,91 @@
             "smithy.api#documentation": "The name of the connector mapping."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.customer_insights#ConnectorMappingInput"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#ConnectorMappingInput": {
+      "type": "structure",
+      "members": {
+        "connectorType": {
+          "target": "com.azure.customer_insights#ConnectorType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Type of connector."
+          }
+        },
+        "entityType": {
+          "target": "com.azure.customer_insights#ConnectorMappingInputEntityType",
+          "traits": {
+            "smithy.api#documentation": "Defines which entity type the file should map to.",
+            "smithy.api#required": {}
+          }
+        },
+        "entityTypeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The mapping entity name.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name for the connector mapping."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the connector mapping."
+          }
+        },
+        "mappingProperties": {
+          "target": "com.azure.customer_insights#ConnectorMappingProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of the mapping.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#input": {}
+        "smithy.api#documentation": "The connector mapping definition."
+      }
+    },
+    "com.azure.customer_insights#ConnectorMappingInputEntityType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "PROFILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Profile"
+          }
+        },
+        "INTERACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Interaction"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Relationship"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines which entity type the file should map to."
       }
     },
     "com.azure.customer_insights#ConnectorMappingsGet": {
@@ -5715,16 +6823,70 @@
             "smithy.api#documentation": "The name of the connector."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.customer_insights#ConnectorInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#ConnectorInput": {
+      "type": "structure",
+      "members": {
+        "connectorName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the connector."
+          }
+        },
+        "connectorType": {
+          "target": "com.azure.customer_insights#ConnectorType",
+          "traits": {
+            "smithy.api#documentation": "Type of connector.",
+            "smithy.api#required": {}
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display name of the connector."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the connector."
+          }
+        },
+        "connectorProperties": {
+          "target": "com.azure.customer_insights#ConnectorInputConnectorPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "The connector properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "isInternal": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If this is an internal connector."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of connector."
+      }
+    },
+    "com.azure.customer_insights#ConnectorInputConnectorPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The connector properties."
       }
     },
     "com.azure.customer_insights#ConnectorsGet": {
@@ -6193,16 +7355,48 @@
             "smithy.api#documentation": "The name of the policy."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.customer_insights#AuthorizationPolicyInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#AuthorizationPolicyInput": {
+      "type": "structure",
+      "members": {
+        "permissions": {
+          "target": "com.azure.customer_insights#AuthorizationPolicyInputPermissionsList",
+          "traits": {
+            "smithy.api#documentation": "The permissions associated with the policy.",
+            "smithy.api#required": {}
+          }
+        },
+        "primaryKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Primary key associated with the policy."
+          }
+        },
+        "secondaryKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Secondary key associated with the policy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The authorization policy."
+      }
+    },
+    "com.azure.customer_insights#AuthorizationPolicyInputPermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#PermissionTypes"
+      },
+      "traits": {
+        "smithy.api#documentation": "The permissions associated with the policy."
       }
     },
     "com.azure.customer_insights#AuthorizationPoliciesGet": {
@@ -6743,16 +7937,117 @@
             "smithy.api#documentation": "The name of the relationship link."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.customer_insights#RelationshipLinkDefinitionInput"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#RelationshipLinkDefinitionInput": {
+      "type": "structure",
+      "members": {
+        "displayName": {
+          "target": "com.azure.customer_insights#RelationshipLinkDefinitionInputDisplayNameMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Localized display name for the Relationship Link."
+          }
+        },
+        "description": {
+          "target": "com.azure.customer_insights#RelationshipLinkDefinitionInputDescriptionMap",
+          "traits": {
+            "smithy.api#documentation": "Localized descriptions for the Relationship Link."
+          }
+        },
+        "interactionType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The InteractionType associated with the Relationship Link.",
+            "smithy.api#required": {}
+          }
+        },
+        "mappings": {
+          "target": "com.azure.customer_insights#RelationshipLinkDefinitionInputMappingsList",
+          "traits": {
+            "smithy.api#documentation": "The mappings between Interaction and Relationship fields."
+          }
+        },
+        "profilePropertyReferences": {
+          "target": "com.azure.customer_insights#RelationshipLinkDefinitionInputProfilePropertyReferencesList",
+          "traits": {
+            "smithy.api#documentation": "The property references for the Profile of the Relationship.",
+            "smithy.api#required": {}
+          }
+        },
+        "relatedProfilePropertyReferences": {
+          "target": "com.azure.customer_insights#RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList",
+          "traits": {
+            "smithy.api#documentation": "The property references for the Related Profile of the Relationship.",
+            "smithy.api#required": {}
+          }
+        },
+        "relationshipName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Relationship associated with the Link.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#input": {}
+        "smithy.api#documentation": "The definition of relationship link."
+      }
+    },
+    "com.azure.customer_insights#RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#ParticipantProfilePropertyReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "The property references for the Related Profile of the Relationship."
+      }
+    },
+    "com.azure.customer_insights#RelationshipLinkDefinitionInputProfilePropertyReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#ParticipantProfilePropertyReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "The property references for the Profile of the Relationship."
+      }
+    },
+    "com.azure.customer_insights#RelationshipLinkDefinitionInputMappingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#RelationshipLinkFieldMapping"
+      },
+      "traits": {
+        "smithy.api#documentation": "The mappings between Interaction and Relationship fields."
+      }
+    },
+    "com.azure.customer_insights#RelationshipLinkDefinitionInputDescriptionMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized descriptions for the Relationship Link."
+      }
+    },
+    "com.azure.customer_insights#RelationshipLinkDefinitionInputDisplayNameMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized display name for the Relationship Link."
       }
     },
     "com.azure.customer_insights#RelationshipLinksGet": {
@@ -7553,16 +8848,247 @@
             "smithy.api#documentation": "The name of the Relationship."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.customer_insights#RelationshipDefinitionInput"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#RelationshipDefinitionInput": {
+      "type": "structure",
+      "members": {
+        "cardinality": {
+          "target": "com.azure.customer_insights#RelationshipDefinitionInputCardinality",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The Relationship Cardinality."
+          }
+        },
+        "displayName": {
+          "target": "com.azure.customer_insights#RelationshipDefinitionInputDisplayNameMap",
+          "traits": {
+            "smithy.api#documentation": "Localized display name for the Relationship."
+          }
+        },
+        "description": {
+          "target": "com.azure.customer_insights#RelationshipDefinitionInputDescriptionMap",
+          "traits": {
+            "smithy.api#documentation": "Localized descriptions for the Relationship."
+          }
+        },
+        "expiryDateTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expiry date time in UTC."
+          }
+        },
+        "fields": {
+          "target": "com.azure.customer_insights#RelationshipDefinitionInputFieldsList",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Relationship."
+          }
+        },
+        "lookupMappings": {
+          "target": "com.azure.customer_insights#RelationshipDefinitionInputLookupMappingsList",
+          "traits": {
+            "smithy.api#documentation": "Optional property to be used to map fields in profile to their strong ids in related profile."
+          }
+        },
+        "profileType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Profile type.",
+            "smithy.api#required": {}
+          }
+        },
+        "relatedProfileType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Related profile being referenced.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
-        "smithy.api#input": {}
+        "smithy.api#documentation": "The definition of Relationship."
+      }
+    },
+    "com.azure.customer_insights#RelationshipDefinitionInputLookupMappingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#RelationshipTypeMapping"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional property to be used to map fields in profile to their strong ids in related profile."
+      }
+    },
+    "com.azure.customer_insights#RelationshipDefinitionInputFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#PropertyDefinitionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the Relationship."
+      }
+    },
+    "com.azure.customer_insights#PropertyDefinitionInput": {
+      "type": "structure",
+      "members": {
+        "arrayValueSeparator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Array value separator for properties with isArray set."
+          }
+        },
+        "enumValidValues": {
+          "target": "com.azure.customer_insights#PropertyDefinitionInputEnumValidValuesList",
+          "traits": {
+            "smithy.api#documentation": "Describes valid values for an enum property."
+          }
+        },
+        "fieldName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the property.",
+            "smithy.api#required": {}
+          }
+        },
+        "fieldType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of the property.",
+            "smithy.api#required": {}
+          }
+        },
+        "isArray": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the property is actually an array of the fieldType above on the data api."
+          }
+        },
+        "isEnum": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the property is an enum."
+          }
+        },
+        "isFlagEnum": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the property is an flag enum."
+          }
+        },
+        "isImage": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the property is an Image."
+          }
+        },
+        "isLocalizedString": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the property is a localized string."
+          }
+        },
+        "isName": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the property is a name or a part of name."
+          }
+        },
+        "isRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether property value is required on instances, IsRequired field only for Interaction. Profile Instance will not check for required field."
+          }
+        },
+        "propertyId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID associated with the property."
+          }
+        },
+        "schemaItemPropLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL encoded schema.org item prop link for the property."
+          }
+        },
+        "maxLength": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Max length of string. Used only if type is string."
+          }
+        },
+        "isAvailableInGraph": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether property is available in graph or not."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property definition."
+      }
+    },
+    "com.azure.customer_insights#PropertyDefinitionInputEnumValidValuesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#ProfileEnumValidValuesFormat"
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes valid values for an enum property."
+      }
+    },
+    "com.azure.customer_insights#RelationshipDefinitionInputDescriptionMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized descriptions for the Relationship."
+      }
+    },
+    "com.azure.customer_insights#RelationshipDefinitionInputDisplayNameMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized display name for the Relationship."
+      }
+    },
+    "com.azure.customer_insights#RelationshipDefinitionInputCardinality": {
+      "type": "enum",
+      "members": {
+        "ONETOONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OneToOne"
+          }
+        },
+        "ONETOMANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OneToMany"
+          }
+        },
+        "MANYTOMANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ManyToMany"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Relationship Cardinality."
       }
     },
     "com.azure.customer_insights#RelationshipsGet": {
@@ -8355,17 +9881,266 @@
             "smithy.api#documentation": "The name of the interaction."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.customer_insights#InteractionTypeDefinitionInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.customer_insights#InteractionTypeDefinitionInput": {
+      "type": "structure",
+      "members": {
+        "attributes": {
+          "target": "com.azure.customer_insights#InteractionTypeDefinitionInputAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "The attributes for the Type."
+          }
+        },
+        "description": {
+          "target": "com.azure.customer_insights#InteractionTypeDefinitionInputDescriptionMap",
+          "traits": {
+            "smithy.api#documentation": "Localized descriptions for the property."
+          }
+        },
+        "displayName": {
+          "target": "com.azure.customer_insights#InteractionTypeDefinitionInputDisplayNameMap",
+          "traits": {
+            "smithy.api#documentation": "Localized display names for the property."
+          }
+        },
+        "localizedAttributes": {
+          "target": "com.azure.customer_insights#InteractionTypeDefinitionInputLocalizedAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "Any custom localized attributes for the Type."
+          }
+        },
+        "smallImage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Small Image associated with the Property or EntityType."
+          }
+        },
+        "mediumImage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Medium Image associated with the Property or EntityType."
+          }
+        },
+        "largeImage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Large Image associated with the Property or EntityType."
+          }
+        },
+        "apiEntitySetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object."
+          }
+        },
+        "entityType": {
+          "target": "com.azure.customer_insights#InteractionTypeDefinitionInputEntityType",
+          "traits": {
+            "smithy.api#documentation": "Type of entity."
+          }
+        },
+        "fields": {
+          "target": "com.azure.customer_insights#InteractionTypeDefinitionInputFieldsList",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Profile."
+          }
+        },
+        "instancesCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The instance count."
+          }
+        },
+        "schemaItemTypeLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The schema org link. This helps ACI identify and suggest semantic models."
+          }
+        },
+        "timestampFieldName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp property name. Represents the time when the interaction or profile update happened."
+          }
+        },
+        "typeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the entity."
+          }
+        },
+        "idPropertyNames": {
+          "target": "com.azure.customer_insights#InteractionTypeDefinitionInputIdPropertyNamesList",
+          "traits": {
+            "smithy.api#documentation": "The id property names. Properties which uniquely identify an interaction instance."
+          }
+        },
+        "participantProfiles": {
+          "target": "com.azure.customer_insights#InteractionTypeDefinitionInputParticipantProfilesList",
+          "traits": {
+            "smithy.api#documentation": "Profiles that participated in the interaction."
+          }
+        },
+        "primaryParticipantProfilePropertyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary participant property name for an interaction ,This is used to logically represent the agent of the interaction, Specify the participant name here from ParticipantName."
+          }
+        },
+        "defaultDataSource": {
+          "target": "com.azure.customer_insights#DataSourceInput",
+          "traits": {
+            "smithy.api#documentation": "Default data source is specifically used in cases where data source is not specified in an instance."
+          }
+        },
+        "isActivity": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "An interaction can be tagged as an activity only during create. This enables the interaction to be editable and can enable merging of properties from multiple data sources based on precedence, which is defined at a link level."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Interaction Type Definition"
+      }
+    },
+    "com.azure.customer_insights#DataSourceInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Data Source is a way for us to know the source of instances. A single type can have data coming in from multiple places. In activities we use this to determine precedence rules."
+      }
+    },
+    "com.azure.customer_insights#InteractionTypeDefinitionInputParticipantProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#Participant"
+      },
+      "traits": {
+        "smithy.api#documentation": "Profiles that participated in the interaction."
+      }
+    },
+    "com.azure.customer_insights#InteractionTypeDefinitionInputIdPropertyNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The id property names. Properties which uniquely identify an interaction instance."
+      }
+    },
+    "com.azure.customer_insights#InteractionTypeDefinitionInputFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#PropertyDefinitionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the Profile."
+      }
+    },
+    "com.azure.customer_insights#InteractionTypeDefinitionInputEntityType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "PROFILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Profile"
+          }
+        },
+        "INTERACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Interaction"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Relationship"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of entity."
+      }
+    },
+    "com.azure.customer_insights#InteractionTypeDefinitionInputLocalizedAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.customer_insights#InteractionTypeDefinitionInputLocalizedAttributesValueMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "Any custom localized attributes for the Type."
+      }
+    },
+    "com.azure.customer_insights#InteractionTypeDefinitionInputLocalizedAttributesValueMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.customer_insights#InteractionTypeDefinitionInputDisplayNameMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized display names for the property."
+      }
+    },
+    "com.azure.customer_insights#InteractionTypeDefinitionInputDescriptionMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized descriptions for the property."
+      }
+    },
+    "com.azure.customer_insights#InteractionTypeDefinitionInputAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.customer_insights#InteractionTypeDefinitionInputAttributesValueList"
+      },
+      "traits": {
+        "smithy.api#documentation": "The attributes for the Type."
+      }
+    },
+    "com.azure.customer_insights#InteractionTypeDefinitionInputAttributesValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.customer_insights#InteractionsGet": {
       "type": "operation",
@@ -9106,17 +10881,226 @@
             "smithy.api#documentation": "The name of the profile."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.customer_insights#ProfileTypeDefinitionInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.customer_insights#ProfileTypeDefinitionInput": {
+      "type": "structure",
+      "members": {
+        "attributes": {
+          "target": "com.azure.customer_insights#ProfileTypeDefinitionInputAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "The attributes for the Type."
+          }
+        },
+        "description": {
+          "target": "com.azure.customer_insights#ProfileTypeDefinitionInputDescriptionMap",
+          "traits": {
+            "smithy.api#documentation": "Localized descriptions for the property."
+          }
+        },
+        "displayName": {
+          "target": "com.azure.customer_insights#ProfileTypeDefinitionInputDisplayNameMap",
+          "traits": {
+            "smithy.api#documentation": "Localized display names for the property."
+          }
+        },
+        "localizedAttributes": {
+          "target": "com.azure.customer_insights#ProfileTypeDefinitionInputLocalizedAttributesMap",
+          "traits": {
+            "smithy.api#documentation": "Any custom localized attributes for the Type."
+          }
+        },
+        "smallImage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Small Image associated with the Property or EntityType."
+          }
+        },
+        "mediumImage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Medium Image associated with the Property or EntityType."
+          }
+        },
+        "largeImage": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Large Image associated with the Property or EntityType."
+          }
+        },
+        "apiEntitySetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object."
+          }
+        },
+        "entityType": {
+          "target": "com.azure.customer_insights#ProfileTypeDefinitionInputEntityType",
+          "traits": {
+            "smithy.api#documentation": "Type of entity."
+          }
+        },
+        "fields": {
+          "target": "com.azure.customer_insights#ProfileTypeDefinitionInputFieldsList",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Profile."
+          }
+        },
+        "instancesCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The instance count."
+          }
+        },
+        "schemaItemTypeLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The schema org link. This helps ACI identify and suggest semantic models."
+          }
+        },
+        "timestampFieldName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp property name. Represents the time when the interaction or profile update happened."
+          }
+        },
+        "typeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the entity."
+          }
+        },
+        "strongIds": {
+          "target": "com.azure.customer_insights#ProfileTypeDefinitionInputStrongIdsList",
+          "traits": {
+            "smithy.api#documentation": "The strong IDs."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The profile type definition."
+      }
+    },
+    "com.azure.customer_insights#ProfileTypeDefinitionInputStrongIdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#StrongId"
+      },
+      "traits": {
+        "smithy.api#documentation": "The strong IDs."
+      }
+    },
+    "com.azure.customer_insights#ProfileTypeDefinitionInputFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.customer_insights#PropertyDefinitionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the Profile."
+      }
+    },
+    "com.azure.customer_insights#ProfileTypeDefinitionInputEntityType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "PROFILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Profile"
+          }
+        },
+        "INTERACTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Interaction"
+          }
+        },
+        "RELATIONSHIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Relationship"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of entity."
+      }
+    },
+    "com.azure.customer_insights#ProfileTypeDefinitionInputLocalizedAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.customer_insights#ProfileTypeDefinitionInputLocalizedAttributesValueMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "Any custom localized attributes for the Type."
+      }
+    },
+    "com.azure.customer_insights#ProfileTypeDefinitionInputLocalizedAttributesValueMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.customer_insights#ProfileTypeDefinitionInputDisplayNameMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized display names for the property."
+      }
+    },
+    "com.azure.customer_insights#ProfileTypeDefinitionInputDescriptionMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Localized descriptions for the property."
+      }
+    },
+    "com.azure.customer_insights#ProfileTypeDefinitionInputAttributesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.customer_insights#ProfileTypeDefinitionInputAttributesValueList"
+      },
+      "traits": {
+        "smithy.api#documentation": "The attributes for the Type."
+      }
+    },
+    "com.azure.customer_insights#ProfileTypeDefinitionInputAttributesValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.customer_insights#ProfilesGet": {
       "type": "operation",
@@ -9587,16 +11571,56 @@
             "smithy.api#documentation": "The name of the Hub."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource location."
           }
+        },
+        "tags": {
+          "target": "com.azure.customer_insights#HubsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.customer_insights#HubPropertiesFormatInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#HubPropertiesFormatInput": {
+      "type": "structure",
+      "members": {
+        "tenantFeatures": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0."
+          }
+        },
+        "hubBillingInfo": {
+          "target": "com.azure.customer_insights#HubBillingInfoFormat",
+          "traits": {
+            "smithy.api#documentation": "Billing settings of the hub."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of hub."
+      }
+    },
+    "com.azure.customer_insights#HubsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.customer_insights#HubsCreateOrUpdate": {
@@ -9698,16 +11722,36 @@
             "smithy.api#documentation": "The name of the Hub."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource location."
           }
+        },
+        "tags": {
+          "target": "com.azure.customer_insights#HubsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.customer_insights#HubPropertiesFormatInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.customer_insights#HubsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.customer_insights#HubsGet": {

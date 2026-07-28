@@ -79,7 +79,7 @@ export const FetchReleaseFilterOptionsAppsRequest = /*@__PURE__*/ S.suspend(
   identifier: "FetchReleaseFilterOptionsAppsRequest",
 }) as any as S.Schema<FetchReleaseFilterOptionsAppsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -102,7 +102,7 @@ export const GooglePlayDeveloperReportingV1beta1Release =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1Release>;
 
 export type GooglePlayDeveloperReportingV1beta1ReleaseList =
-  GooglePlayDeveloperReportingV1beta1Release[];
+  ReadonlyArray<GooglePlayDeveloperReportingV1beta1Release>;
 export const GooglePlayDeveloperReportingV1beta1ReleaseList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1beta1Release,
@@ -131,7 +131,7 @@ export const GooglePlayDeveloperReportingV1beta1Track = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1Track>;
 
 export type GooglePlayDeveloperReportingV1beta1TrackList =
-  GooglePlayDeveloperReportingV1beta1Track[];
+  ReadonlyArray<GooglePlayDeveloperReportingV1beta1Track>;
 export const GooglePlayDeveloperReportingV1beta1TrackList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1beta1Track,
@@ -223,11 +223,7 @@ export const GoogleTypeDateTime = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleTypeDateTime>;
 
 export type GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessAggregationPeriodEnum =
-    | "AGGREGATION_PERIOD_UNSPECIFIED"
-    | "HOURLY"
-    | "DAILY"
-    | "FULL_RANGE"
-    | (string & {});
+  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
 export const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessAggregationPeriodEnum =
   /*@__PURE__*/ S.String;
 
@@ -251,7 +247,7 @@ export const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness>;
 
 export type GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList =
-  GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness[];
+  ReadonlyArray<GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness>;
 export const GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshnessList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1beta1FreshnessInfoFreshness,
@@ -605,7 +601,7 @@ export const GooglePlayDeveloperReportingV1beta1DimensionValue =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1DimensionValue>;
 
 export type GooglePlayDeveloperReportingV1beta1DimensionValueList =
-  GooglePlayDeveloperReportingV1beta1DimensionValue[];
+  ReadonlyArray<GooglePlayDeveloperReportingV1beta1DimensionValue>;
 export const GooglePlayDeveloperReportingV1beta1DimensionValueList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1beta1DimensionValue,
@@ -664,11 +660,7 @@ export const GooglePlayDeveloperReportingV1beta1MetricValue =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1MetricValue>;
 
 export type GooglePlayDeveloperReportingV1beta1TimelineSpecAggregationPeriodEnum =
-    | "AGGREGATION_PERIOD_UNSPECIFIED"
-    | "HOURLY"
-    | "DAILY"
-    | "FULL_RANGE"
-    | (string & {});
+  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
 export const GooglePlayDeveloperReportingV1beta1TimelineSpecAggregationPeriodEnum =
   /*@__PURE__*/ S.String;
 
@@ -723,7 +715,7 @@ export const GooglePlayDeveloperReportingV1beta1Anomaly =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1Anomaly>;
 
 export type GooglePlayDeveloperReportingV1beta1AnomalyList =
-  GooglePlayDeveloperReportingV1beta1Anomaly[];
+  ReadonlyArray<GooglePlayDeveloperReportingV1beta1Anomaly>;
 export const GooglePlayDeveloperReportingV1beta1AnomalyList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1beta1Anomaly,
@@ -747,11 +739,7 @@ export const GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ListAnomaliesResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequestUserCohortEnum =
-    | "USER_COHORT_UNSPECIFIED"
-    | "OS_PUBLIC"
-    | "OS_BETA"
-    | "APP_TESTERS"
-    | (string & {});
+  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
 export const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -816,18 +804,14 @@ export const QueryVitalsAnrrateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryVitalsAnrrateRequest>;
 
 export type GooglePlayDeveloperReportingV1beta1MetricValueList =
-  GooglePlayDeveloperReportingV1beta1MetricValue[];
+  ReadonlyArray<GooglePlayDeveloperReportingV1beta1MetricValue>;
 export const GooglePlayDeveloperReportingV1beta1MetricValueList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1beta1MetricValue,
   ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1MetricValueList>;
 
 export type GooglePlayDeveloperReportingV1beta1MetricsRowAggregationPeriodEnum =
-    | "AGGREGATION_PERIOD_UNSPECIFIED"
-    | "HOURLY"
-    | "DAILY"
-    | "FULL_RANGE"
-    | (string & {});
+  "AGGREGATION_PERIOD_UNSPECIFIED" | "HOURLY" | "DAILY" | "FULL_RANGE";
 export const GooglePlayDeveloperReportingV1beta1MetricsRowAggregationPeriodEnum =
   /*@__PURE__*/ S.String;
 
@@ -859,7 +843,7 @@ export const GooglePlayDeveloperReportingV1beta1MetricsRow =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1MetricsRow>;
 
 export type GooglePlayDeveloperReportingV1beta1MetricsRowList =
-  GooglePlayDeveloperReportingV1beta1MetricsRow[];
+  ReadonlyArray<GooglePlayDeveloperReportingV1beta1MetricsRow>;
 export const GooglePlayDeveloperReportingV1beta1MetricsRowList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1beta1MetricsRow,
@@ -884,11 +868,7 @@ export const GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryAnrRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUserCohortEnum =
-    | "USER_COHORT_UNSPECIFIED"
-    | "OS_PUBLIC"
-    | "OS_BETA"
-    | "APP_TESTERS"
-    | (string & {});
+  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
 export const GooglePlayDeveloperReportingV1beta1QueryCrashRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1044,11 +1024,7 @@ export const GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryErrorCountMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum =
-    | "USER_COHORT_UNSPECIFIED"
-    | "OS_PUBLIC"
-    | "OS_BETA"
-    | "APP_TESTERS"
-    | (string & {});
+  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
 export const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1132,11 +1108,7 @@ export const GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSe
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryExcessiveWakeupRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequestUserCohortEnum =
-    | "USER_COHORT_UNSPECIFIED"
-    | "OS_PUBLIC"
-    | "OS_BETA"
-    | "APP_TESTERS"
-    | (string & {});
+  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
 export const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1219,11 +1191,7 @@ export const GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QueryLmkRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequestUserCohortEnum =
-    | "USER_COHORT_UNSPECIFIED"
-    | "OS_PUBLIC"
-    | "OS_BETA"
-    | "APP_TESTERS"
-    | (string & {});
+  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
 export const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1306,11 +1274,7 @@ export const GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetR
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowRenderingRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequestUserCohortEnum =
-    | "USER_COHORT_UNSPECIFIED"
-    | "OS_PUBLIC"
-    | "OS_BETA"
-    | "APP_TESTERS"
-    | (string & {});
+  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
 export const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1393,11 +1357,7 @@ export const GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetRespo
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1QuerySlowStartRateMetricSetResponse>;
 
 export type GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum =
-    | "USER_COHORT_UNSPECIFIED"
-    | "OS_PUBLIC"
-    | "OS_BETA"
-    | "APP_TESTERS"
-    | (string & {});
+  "USER_COHORT_UNSPECIFIED" | "OS_PUBLIC" | "OS_BETA" | "APP_TESTERS";
 export const GooglePlayDeveloperReportingV1beta1QueryStuckBackgroundWakelockRateMetricSetRequestUserCohortEnum =
   /*@__PURE__*/ S.String;
 
@@ -1522,7 +1482,7 @@ export const GooglePlayDeveloperReportingV1beta1App = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1App>;
 
 export type GooglePlayDeveloperReportingV1beta1AppList =
-  GooglePlayDeveloperReportingV1beta1App[];
+  ReadonlyArray<GooglePlayDeveloperReportingV1beta1App>;
 export const GooglePlayDeveloperReportingV1beta1AppList = /*@__PURE__*/ S.Array(
   GooglePlayDeveloperReportingV1beta1App,
 ) as any as S.Schema<GooglePlayDeveloperReportingV1beta1AppList>;
@@ -1673,7 +1633,7 @@ export const GooglePlayDeveloperReportingV1beta1IssueAnnotation =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1IssueAnnotation>;
 
 export type GooglePlayDeveloperReportingV1beta1IssueAnnotationList =
-  GooglePlayDeveloperReportingV1beta1IssueAnnotation[];
+  ReadonlyArray<GooglePlayDeveloperReportingV1beta1IssueAnnotation>;
 export const GooglePlayDeveloperReportingV1beta1IssueAnnotationList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1beta1IssueAnnotation,
@@ -1697,8 +1657,7 @@ export type GooglePlayDeveloperReportingV1beta1ErrorIssueTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "APPLICATION_NOT_RESPONDING"
   | "CRASH"
-  | "NON_FATAL"
-  | (string & {});
+  | "NON_FATAL";
 export const GooglePlayDeveloperReportingV1beta1ErrorIssueTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1763,7 +1722,7 @@ export const GooglePlayDeveloperReportingV1beta1ErrorIssue =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ErrorIssue>;
 
 export type GooglePlayDeveloperReportingV1beta1ErrorIssueList =
-  GooglePlayDeveloperReportingV1beta1ErrorIssue[];
+  ReadonlyArray<GooglePlayDeveloperReportingV1beta1ErrorIssue>;
 export const GooglePlayDeveloperReportingV1beta1ErrorIssueList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1beta1ErrorIssue,
@@ -1879,8 +1838,7 @@ export type GooglePlayDeveloperReportingV1beta1ErrorReportTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "APPLICATION_NOT_RESPONDING"
   | "CRASH"
-  | "NON_FATAL"
-  | (string & {});
+  | "NON_FATAL";
 export const GooglePlayDeveloperReportingV1beta1ErrorReportTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1962,7 +1920,7 @@ export const GooglePlayDeveloperReportingV1beta1ErrorReport =
   }) as any as S.Schema<GooglePlayDeveloperReportingV1beta1ErrorReport>;
 
 export type GooglePlayDeveloperReportingV1beta1ErrorReportList =
-  GooglePlayDeveloperReportingV1beta1ErrorReport[];
+  ReadonlyArray<GooglePlayDeveloperReportingV1beta1ErrorReport>;
 export const GooglePlayDeveloperReportingV1beta1ErrorReportList =
   /*@__PURE__*/ S.Array(
     GooglePlayDeveloperReportingV1beta1ErrorReport,

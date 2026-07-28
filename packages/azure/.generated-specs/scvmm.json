@@ -409,16 +409,36 @@
             "smithy.api#documentation": "Name of the inventoryItem."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.scvmm#InventoryItemPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#InventoryItemPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "inventoryType": {
+          "target": "com.azure.scvmm#InventoryType",
+          "traits": {
+            "smithy.api#documentation": "They inventory type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
       }
     },
     "com.azure.scvmm#InventoryItemsGet": {
@@ -939,16 +959,27 @@
             "smithy.api#documentation": "Name of the VmmServer."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.scvmm#VmmServersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#VmmServersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.scvmm#VmmServersCreateOrUpdate": {
@@ -1067,16 +1098,74 @@
             "smithy.api#documentation": "Name of the VmmServer."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.scvmm#VmmServersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.scvmm#VmmServerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.scvmm#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#VmmServerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "credentials": {
+          "target": "com.azure.scvmm#VmmCredential",
+          "traits": {
+            "smithy.api#documentation": "Credentials to connect to VmmServer."
+          }
+        },
+        "fqdn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fqdn is the hostname/ip of the vmmServer.",
+            "smithy.api#required": {}
+          }
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Port is the port on which the vmmServer is listening."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
+      }
+    },
+    "com.azure.scvmm#VmmServersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.scvmm#VmmServersGet": {
@@ -1573,16 +1662,27 @@
             "smithy.api#documentation": "Name of the VirtualNetwork."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.scvmm#VirtualNetworksUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#VirtualNetworksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.scvmm#VirtualNetworksCreateOrUpdate": {
@@ -1701,16 +1801,73 @@
             "smithy.api#documentation": "Name of the VirtualNetwork."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.scvmm#VirtualNetworksCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.scvmm#VirtualNetworkPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.scvmm#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#VirtualNetworkPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "inventoryItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the inventory Item ID for the resource."
+          }
+        },
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique ID of the virtual network."
+          }
+        },
+        "vmmServerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM Id of the vmmServer resource in which this resource resides."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
+      }
+    },
+    "com.azure.scvmm#VirtualNetworksCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.scvmm#VirtualNetworksGet": {
@@ -2653,16 +2810,27 @@
             "smithy.api#documentation": "Name of the VirtualMachineTemplate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.scvmm#VirtualMachineTemplatesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#VirtualMachineTemplatesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.scvmm#VirtualMachineTemplatesCreateOrUpdate": {
@@ -2781,16 +2949,73 @@
             "smithy.api#documentation": "Name of the VirtualMachineTemplate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.scvmm#VirtualMachineTemplatesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.scvmm#VirtualMachineTemplatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.scvmm#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#VirtualMachineTemplatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "inventoryItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the inventory Item ID for the resource."
+          }
+        },
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique ID of the virtual machine template."
+          }
+        },
+        "vmmServerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM Id of the vmmServer resource in which this resource resides."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
+      }
+    },
+    "com.azure.scvmm#VirtualMachineTemplatesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.scvmm#VirtualMachineTemplatesGet": {
@@ -3384,16 +3609,27 @@
             "smithy.api#documentation": "Name of the Cloud."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.scvmm#CloudsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#CloudsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.scvmm#CloudsCreateOrUpdate": {
@@ -3512,16 +3748,73 @@
             "smithy.api#documentation": "Name of the Cloud."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.scvmm#CloudsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.scvmm#CloudPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.scvmm#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#CloudPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "inventoryItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the inventory Item ID for the resource."
+          }
+        },
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique ID of the cloud."
+          }
+        },
+        "vmmServerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM Id of the vmmServer resource in which this resource resides."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
+      }
+    },
+    "com.azure.scvmm#CloudsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.scvmm#CloudsGet": {
@@ -4006,16 +4299,27 @@
             "smithy.api#documentation": "Name of the AvailabilitySet."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.scvmm#AvailabilitySetsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#AvailabilitySetsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.scvmm#AvailabilitySetsCreateOrUpdate": {
@@ -4134,16 +4438,67 @@
             "smithy.api#documentation": "Name of the AvailabilitySet."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.scvmm#AvailabilitySetsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.scvmm#AvailabilitySetPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.scvmm#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "The extended location.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#AvailabilitySetPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "availabilitySetName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the availability set."
+          }
+        },
+        "vmmServerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM Id of the vmmServer resource in which this resource resides."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
+      }
+    },
+    "com.azure.scvmm#AvailabilitySetsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.scvmm#AvailabilitySetsGet": {
@@ -4773,15 +5128,35 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "skipShutdown": {
+          "target": "com.azure.scvmm#VirtualMachineInstancesStopRequestSkipShutdown",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets a value indicating whether to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#VirtualMachineInstancesStopRequestSkipShutdown": {
+      "type": "enum",
+      "members": {
+        "TRUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "true"
+          }
+        },
+        "FALSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "false"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets a value indicating whether to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false."
       }
     },
     "com.azure.scvmm#VirtualMachineInstancesStart": {
@@ -4849,11 +5224,10 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ID of the checkpoint to be restored to."
           }
         }
       },
@@ -5320,16 +5694,47 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.scvmm#GuestAgentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#GuestAgentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "credentials": {
+          "target": "com.azure.scvmm#GuestCredential",
+          "traits": {
+            "smithy.api#documentation": "Username / Password Credentials to provision guest agent."
+          }
+        },
+        "httpProxyConfig": {
+          "target": "com.azure.scvmm#HttpProxyConfiguration",
+          "traits": {
+            "smithy.api#documentation": "HTTP Proxy configuration for the VM."
+          }
+        },
+        "provisioningAction": {
+          "target": "com.azure.scvmm#ProvisioningAction",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the guest agent provisioning action."
+          }
+        },
+        "privateLinkScopeResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the private link scope this machine is assigned to, if any."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
       }
     },
     "com.azure.scvmm#GuestAgentsGet": {
@@ -5538,11 +5943,10 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "id": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "ID of the checkpoint to be deleted."
           }
         }
       },
@@ -5580,11 +5984,16 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Name of the checkpoint."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of the checkpoint."
           }
         }
       },
@@ -6136,16 +6545,272 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.scvmm#VirtualMachineInstanceUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The update properties of the VirtualMachineInstance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#VirtualMachineInstanceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "availabilitySets": {
+          "target": "com.azure.scvmm#VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList",
+          "traits": {
+            "smithy.api#documentation": "Availability Sets in vm."
+          }
+        },
+        "hardwareProfile": {
+          "target": "com.azure.scvmm#HardwareProfileUpdate",
+          "traits": {
+            "smithy.api#documentation": "Hardware properties."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.scvmm#NetworkProfileUpdate",
+          "traits": {
+            "smithy.api#documentation": "Network properties."
+          }
+        },
+        "storageProfile": {
+          "target": "com.azure.scvmm#StorageProfileUpdate",
+          "traits": {
+            "smithy.api#documentation": "Storage properties."
+          }
+        },
+        "infrastructureProfile": {
+          "target": "com.azure.scvmm#InfrastructureProfileUpdate",
+          "traits": {
+            "smithy.api#documentation": "Gets the infrastructure profile."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual Machine Instance Properties Update model"
+      }
+    },
+    "com.azure.scvmm#InfrastructureProfileUpdate": {
+      "type": "structure",
+      "members": {
+        "checkpointType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of checkpoint supported for the vm."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the vmmServer infrastructure specific update settings for the virtual machine instance."
+      }
+    },
+    "com.azure.scvmm#StorageProfileUpdate": {
+      "type": "structure",
+      "members": {
+        "disks": {
+          "target": "com.azure.scvmm#StorageProfileUpdateDisksList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of virtual disks associated with the virtual machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource update properties."
+      }
+    },
+    "com.azure.scvmm#StorageProfileUpdateDisksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.scvmm#VirtualDiskUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of virtual disks associated with the virtual machine."
+      }
+    },
+    "com.azure.scvmm#VirtualDiskUpdate": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the disk."
+          }
+        },
+        "diskId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk id."
+          }
+        },
+        "diskSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk total size."
+          }
+        },
+        "bus": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk bus."
+          }
+        },
+        "lun": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk lun."
+          }
+        },
+        "busType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk bus type."
+          }
+        },
+        "vhdType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk vhd type."
+          }
+        },
+        "storageQoSPolicy": {
+          "target": "com.azure.scvmm#StorageQosPolicyDetails",
+          "traits": {
+            "smithy.api#documentation": "The QoS policy for the disk."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual Disk Update model"
+      }
+    },
+    "com.azure.scvmm#NetworkProfileUpdate": {
+      "type": "structure",
+      "members": {
+        "networkInterfaces": {
+          "target": "com.azure.scvmm#NetworkProfileUpdateNetworkInterfacesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of network interfaces associated with the virtual machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource update properties."
+      }
+    },
+    "com.azure.scvmm#NetworkProfileUpdateNetworkInterfacesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.scvmm#NetworkInterfaceUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of network interfaces associated with the virtual machine."
+      }
+    },
+    "com.azure.scvmm#NetworkInterfaceUpdate": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the network interface."
+          }
+        },
+        "macAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the nic MAC address."
+          }
+        },
+        "virtualNetworkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the Microsoft.ScVmm/virtualNetwork resource to connect the nic."
+          }
+        },
+        "ipv4AddressType": {
+          "target": "com.azure.scvmm#AllocationMethod",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ipv4 address type."
+          }
+        },
+        "ipv6AddressType": {
+          "target": "com.azure.scvmm#AllocationMethod",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ipv6 address type."
+          }
+        },
+        "macAddressType": {
+          "target": "com.azure.scvmm#AllocationMethod",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the mac address type."
+          }
+        },
+        "nicId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the nic id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Network Interface Update model"
+      }
+    },
+    "com.azure.scvmm#HardwareProfileUpdate": {
+      "type": "structure",
+      "members": {
+        "memoryMB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "MemoryMB is the size of a virtual machine's memory, in MB."
+          }
+        },
+        "cpuCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the number of vCPUs for the vm."
+          }
+        },
+        "limitCpuForMigration": {
+          "target": "com.azure.scvmm#LimitCpuForMigration",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs."
+          }
+        },
+        "dynamicMemoryEnabled": {
+          "target": "com.azure.scvmm#DynamicMemoryEnabled",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether to enable dynamic memory or not."
+          }
+        },
+        "dynamicMemoryMaxMB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the max dynamic memory for the vm."
+          }
+        },
+        "dynamicMemoryMinMB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the min dynamic memory for the vm."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource update properties."
+      }
+    },
+    "com.azure.scvmm#VirtualMachineInstanceUpdatePropertiesAvailabilitySetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.scvmm#AvailabilitySetListItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Availability Sets in vm."
       }
     },
     "com.azure.scvmm#VirtualMachineInstancesCreateOrUpdate": {
@@ -6223,16 +6888,371 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.scvmm#VirtualMachineInstancePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.scvmm#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the extended location.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scvmm#VirtualMachineInstancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "availabilitySets": {
+          "target": "com.azure.scvmm#VirtualMachineInstancePropertiesInputAvailabilitySetsList",
+          "traits": {
+            "smithy.api#documentation": "Availability Sets in vm."
+          }
+        },
+        "osProfile": {
+          "target": "com.azure.scvmm#OsProfileForVmInstanceInput",
+          "traits": {
+            "smithy.api#documentation": "OS properties."
+          }
+        },
+        "hardwareProfile": {
+          "target": "com.azure.scvmm#HardwareProfile",
+          "traits": {
+            "smithy.api#documentation": "Hardware properties."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.scvmm#NetworkProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Network properties."
+          }
+        },
+        "storageProfile": {
+          "target": "com.azure.scvmm#StorageProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Storage properties."
+          }
+        },
+        "infrastructureProfile": {
+          "target": "com.azure.scvmm#InfrastructureProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Gets the infrastructure profile."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
+      }
+    },
+    "com.azure.scvmm#InfrastructureProfileInput": {
+      "type": "structure",
+      "members": {
+        "inventoryItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the inventory Item ID for the resource."
+          }
+        },
+        "vmmServerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM Id of the vmmServer resource in which this resource resides."
+          }
+        },
+        "cloudId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM Id of the cloud resource to use for deploying the vm."
+          }
+        },
+        "templateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM Id of the template resource to use for deploying the vm."
+          }
+        },
+        "vmName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "VMName is the name of VM on the SCVmm server."
+          }
+        },
+        "uuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique ID of the virtual machine."
+          }
+        },
+        "checkpointType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of checkpoint supported for the vm."
+          }
+        },
+        "generation": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the generation for the vm."
+          }
+        },
+        "biosGuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the bios guid for the vm."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the vmmServer infrastructure specific settings for the virtual machine instance."
+      }
+    },
+    "com.azure.scvmm#StorageProfileInput": {
+      "type": "structure",
+      "members": {
+        "disks": {
+          "target": "com.azure.scvmm#StorageProfileInputDisksList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of virtual disks associated with the virtual machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
+      }
+    },
+    "com.azure.scvmm#StorageProfileInputDisksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.scvmm#VirtualDiskInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of virtual disks associated with the virtual machine."
+      }
+    },
+    "com.azure.scvmm#VirtualDiskInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the disk."
+          }
+        },
+        "diskId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk id."
+          }
+        },
+        "diskSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk total size."
+          }
+        },
+        "bus": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk bus."
+          }
+        },
+        "lun": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk lun."
+          }
+        },
+        "busType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk bus type."
+          }
+        },
+        "vhdType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk vhd type."
+          }
+        },
+        "templateDiskId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk id in the template."
+          }
+        },
+        "storageQoSPolicy": {
+          "target": "com.azure.scvmm#StorageQosPolicyDetails",
+          "traits": {
+            "smithy.api#documentation": "The QoS policy for the disk."
+          }
+        },
+        "createDiffDisk": {
+          "target": "com.azure.scvmm#CreateDiffDisk",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating diff disk."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual disk model"
+      }
+    },
+    "com.azure.scvmm#NetworkProfileInput": {
+      "type": "structure",
+      "members": {
+        "networkInterfaces": {
+          "target": "com.azure.scvmm#NetworkProfileInputNetworkInterfacesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of network interfaces associated with the virtual machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
+      }
+    },
+    "com.azure.scvmm#NetworkProfileInputNetworkInterfacesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.scvmm#NetworkInterfaceInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of network interfaces associated with the virtual machine."
+      }
+    },
+    "com.azure.scvmm#NetworkInterfaceInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the network interface."
+          }
+        },
+        "macAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the nic MAC address."
+          }
+        },
+        "virtualNetworkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the Microsoft.ScVmm/virtualNetwork resource to connect the nic."
+          }
+        },
+        "ipv4AddressType": {
+          "target": "com.azure.scvmm#AllocationMethod",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ipv4 address type."
+          }
+        },
+        "ipv6AddressType": {
+          "target": "com.azure.scvmm#AllocationMethod",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ipv6 address type."
+          }
+        },
+        "macAddressType": {
+          "target": "com.azure.scvmm#AllocationMethod",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the mac address type."
+          }
+        },
+        "nicId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the nic id."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Network Interface model"
+      }
+    },
+    "com.azure.scvmm#OsProfileForVmInstanceInput": {
+      "type": "structure",
+      "members": {
+        "adminUsername": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the admin username."
+          }
+        },
+        "adminPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Admin password of the virtual machine.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "computerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets computer name."
+          }
+        },
+        "domainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the domain name."
+          }
+        },
+        "domainUsername": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the domain username."
+          }
+        },
+        "domainPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Password of the domain the VM has to join.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "workgroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the workgroup."
+          }
+        },
+        "productKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the product key.Input format xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"
+          }
+        },
+        "timezone": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the index value of the timezone."
+          }
+        },
+        "runOnceCommands": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Get or sets the commands to be run once at the time of creation separated by semicolons."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the resource properties."
+      }
+    },
+    "com.azure.scvmm#VirtualMachineInstancePropertiesInputAvailabilitySetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.scvmm#AvailabilitySetListItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Availability Sets in vm."
       }
     },
     "com.azure.scvmm#VirtualMachineInstancesGet": {

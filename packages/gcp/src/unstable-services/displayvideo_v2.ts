@@ -96,8 +96,7 @@ export const ActivateAdvertisersManualTriggersRequest = /*@__PURE__*/ S.suspend(
 export type ManualTriggerStateEnum =
   | "STATE_UNSPECIFIED"
   | "INACTIVE"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const ManualTriggerStateEnum = /*@__PURE__*/ S.String;
 
 /** A single manual trigger in Display & Video 360. **Warning:** Line Items using manual triggers no longer serve in Display & Video 360. This resource will sunset on August 1, 2023. Read our [feature deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more information. */
@@ -198,12 +197,12 @@ export const Site = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
-export type SiteList = Site[];
+export type SiteList = ReadonlyArray<Site>;
 export const SiteList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<SiteList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -287,7 +286,7 @@ export const AssignedLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssignedLocation",
 }) as any as S.Schema<AssignedLocation>;
 
-export type AssignedLocationList = AssignedLocation[];
+export type AssignedLocationList = ReadonlyArray<AssignedLocation>;
 export const AssignedLocationList = /*@__PURE__*/ S.Array(
   AssignedLocation,
 ) as any as S.Schema<AssignedLocationList>;
@@ -361,7 +360,7 @@ export const NegativeKeyword = /*@__PURE__*/ S.suspend(() =>
   identifier: "NegativeKeyword",
 }) as any as S.Schema<NegativeKeyword>;
 
-export type NegativeKeywordList_ = NegativeKeyword[];
+export type NegativeKeywordList_ = ReadonlyArray<NegativeKeyword>;
 export const NegativeKeywordList_ = /*@__PURE__*/ S.Array(
   NegativeKeyword,
 ) as any as S.Schema<NegativeKeywordList_>;
@@ -471,8 +470,7 @@ export type DeleteAssignedTargetingOptionsRequestTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_VIDEO"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
-  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-  | (string & {});
+  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const DeleteAssignedTargetingOptionsRequestTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -496,7 +494,7 @@ export const DeleteAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteAssignedTargetingOptionsRequest>;
 
 export type DeleteAssignedTargetingOptionsRequestList =
-  DeleteAssignedTargetingOptionsRequest[];
+  ReadonlyArray<DeleteAssignedTargetingOptionsRequest>;
 export const DeleteAssignedTargetingOptionsRequestList = /*@__PURE__*/ S.Array(
   DeleteAssignedTargetingOptionsRequest,
 ) as any as S.Schema<DeleteAssignedTargetingOptionsRequestList>;
@@ -551,8 +549,7 @@ export type CreateAssignedTargetingOptionsRequestTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_VIDEO"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
-  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-  | (string & {});
+  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const CreateAssignedTargetingOptionsRequestTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -574,8 +571,7 @@ export type AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum =
   | "AGE_RANGE_45_49"
   | "AGE_RANGE_50_54"
   | "AGE_RANGE_55_59"
-  | "AGE_RANGE_60_64"
-  | (string & {});
+  | "AGE_RANGE_60_64";
 export const AgeRangeAssignedTargetingOptionDetailsAgeRangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -633,8 +629,7 @@ export type GeoRegionAssignedTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_COMMUNE"
   | "GEO_REGION_TYPE_COLLOQUIAL_AREA"
   | "GEO_REGION_TYPE_POST_TOWN"
-  | "GEO_REGION_TYPE_WARD"
-  | (string & {});
+  | "GEO_REGION_TYPE_WARD";
 export const GeoRegionAssignedTargetingOptionDetailsGeoRegionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -665,8 +660,7 @@ export const GeoRegionAssignedTargetingOptionDetails = /*@__PURE__*/ S.suspend(
 
 export type SessionPositionAssignedTargetingOptionDetailsSessionPositionEnum =
   | "SESSION_POSITION_UNSPECIFIED"
-  | "SESSION_POSITION_FIRST_IMPRESSION"
-  | (string & {});
+  | "SESSION_POSITION_FIRST_IMPRESSION";
 export const SessionPositionAssignedTargetingOptionDetailsSessionPositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -776,8 +770,7 @@ export type ExchangeAssignedTargetingOptionDetailsExchangeEnum =
   | "EXCHANGE_TUBI"
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
-  | "EXCHANGE_EXTE"
-  | (string & {});
+  | "EXCHANGE_EXTE";
 export const ExchangeAssignedTargetingOptionDetailsExchangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -809,8 +802,7 @@ export type AppAssignedTargetingOptionDetailsAppPlatformEnum =
   | "APP_PLATFORM_GENERIC_CTV"
   | "APP_PLATFORM_LG_TV"
   | "APP_PLATFORM_VIZIO_TV"
-  | "APP_PLATFORM_VIDAA"
-  | (string & {});
+  | "APP_PLATFORM_VIDAA";
 export const AppAssignedTargetingOptionDetailsAppPlatformEnum =
   /*@__PURE__*/ S.String;
 
@@ -841,8 +833,7 @@ export type ContentInstreamPositionAssignedTargetingOptionDetailsContentInstream
     | "CONTENT_INSTREAM_POSITION_PRE_ROLL"
     | "CONTENT_INSTREAM_POSITION_MID_ROLL"
     | "CONTENT_INSTREAM_POSITION_POST_ROLL"
-    | "CONTENT_INSTREAM_POSITION_UNKNOWN"
-    | (string & {});
+    | "CONTENT_INSTREAM_POSITION_UNKNOWN";
 export const ContentInstreamPositionAssignedTargetingOptionDetailsContentInstreamPositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -850,8 +841,7 @@ export type ContentInstreamPositionAssignedTargetingOptionDetailsAdTypeEnum =
   | "AD_TYPE_UNSPECIFIED"
   | "AD_TYPE_DISPLAY"
   | "AD_TYPE_VIDEO"
-  | "AD_TYPE_AUDIO"
-  | (string & {});
+  | "AD_TYPE_AUDIO";
 export const ContentInstreamPositionAssignedTargetingOptionDetailsAdTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -900,8 +890,7 @@ export type GenderAssignedTargetingOptionDetailsGenderEnum =
   | "GENDER_UNSPECIFIED"
   | "GENDER_MALE"
   | "GENDER_FEMALE"
-  | "GENDER_UNKNOWN"
-  | (string & {});
+  | "GENDER_UNKNOWN";
 export const GenderAssignedTargetingOptionDetailsGenderEnum =
   /*@__PURE__*/ S.String;
 
@@ -943,8 +932,7 @@ export type AssignedTargetingOptionInheritanceEnum =
   | "INHERITANCE_UNSPECIFIED"
   | "NOT_INHERITED"
   | "INHERITED_FROM_PARTNER"
-  | "INHERITED_FROM_ADVERTISER"
-  | (string & {});
+  | "INHERITED_FROM_ADVERTISER";
 export const AssignedTargetingOptionInheritanceEnum = /*@__PURE__*/ S.String;
 
 /** Details for assigned sub-exchange targeting option. This will be populated in the details field of an AssignedTargetingOption when targeting_type is `TARGETING_TYPE_SUB_EXCHANGE`. */
@@ -969,16 +957,14 @@ export type DayAndTimeAssignedTargetingOptionDetailsDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const DayAndTimeAssignedTargetingOptionDetailsDayOfWeekEnum =
   /*@__PURE__*/ S.String;
 
 export type DayAndTimeAssignedTargetingOptionDetailsTimeZoneResolutionEnum =
   | "TIME_ZONE_RESOLUTION_UNSPECIFIED"
   | "TIME_ZONE_RESOLUTION_END_USER"
-  | "TIME_ZONE_RESOLUTION_ADVERTISER"
-  | (string & {});
+  | "TIME_ZONE_RESOLUTION_ADVERTISER";
 export const DayAndTimeAssignedTargetingOptionDetailsTimeZoneResolutionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1033,8 +1019,7 @@ export type DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRati
     | "CONTENT_RATING_TIER_PARENTAL_GUIDANCE"
     | "CONTENT_RATING_TIER_TEENS"
     | "CONTENT_RATING_TIER_MATURE"
-    | "CONTENT_RATING_TIER_FAMILIES"
-    | (string & {});
+    | "CONTENT_RATING_TIER_FAMILIES";
 export const DigitalContentLabelAssignedTargetingOptionDetailsExcludedContentRatingTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -1060,8 +1045,7 @@ export type ContentOutstreamPositionAssignedTargetingOptionDetailsContentOutstre
     | "CONTENT_OUTSTREAM_POSITION_IN_ARTICLE"
     | "CONTENT_OUTSTREAM_POSITION_IN_BANNER"
     | "CONTENT_OUTSTREAM_POSITION_IN_FEED"
-    | "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL"
-    | (string & {});
+    | "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL";
 export const ContentOutstreamPositionAssignedTargetingOptionDetailsContentOutstreamPositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1069,8 +1053,7 @@ export type ContentOutstreamPositionAssignedTargetingOptionDetailsAdTypeEnum =
   | "AD_TYPE_UNSPECIFIED"
   | "AD_TYPE_DISPLAY"
   | "AD_TYPE_VIDEO"
-  | "AD_TYPE_AUDIO"
-  | (string & {});
+  | "AD_TYPE_AUDIO";
 export const ContentOutstreamPositionAssignedTargetingOptionDetailsAdTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1098,8 +1081,7 @@ export const ContentOutstreamPositionAssignedTargetingOptionDetails =
 export type ContentStreamTypeAssignedTargetingOptionDetailsContentStreamTypeEnum =
     | "CONTENT_STREAM_TYPE_UNSPECIFIED"
     | "CONTENT_LIVE_STREAM"
-    | "CONTENT_ON_DEMAND"
-    | (string & {});
+    | "CONTENT_ON_DEMAND";
 export const ContentStreamTypeAssignedTargetingOptionDetailsContentStreamTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1151,8 +1133,7 @@ export type AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum =
     | "AUDIO_CONTENT_TYPE_CATCH_UP_RADIO"
     | "AUDIO_CONTENT_TYPE_WEB_RADIO"
     | "AUDIO_CONTENT_TYPE_VIDEO_GAME"
-    | "AUDIO_CONTENT_TYPE_TEXT_TO_SPEECH"
-    | (string & {});
+    | "AUDIO_CONTENT_TYPE_TEXT_TO_SPEECH";
 export const AudioContentTypeAssignedTargetingOptionDetailsAudioContentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1177,8 +1158,7 @@ export type VideoPlayerSizeAssignedTargetingOptionDetailsVideoPlayerSizeEnum =
   | "VIDEO_PLAYER_SIZE_SMALL"
   | "VIDEO_PLAYER_SIZE_LARGE"
   | "VIDEO_PLAYER_SIZE_HD"
-  | "VIDEO_PLAYER_SIZE_UNKNOWN"
-  | (string & {});
+  | "VIDEO_PLAYER_SIZE_UNKNOWN";
 export const VideoPlayerSizeAssignedTargetingOptionDetailsVideoPlayerSizeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1246,8 +1226,7 @@ export type DoubleVerifyAppStarRatingAvoidedStarRatingEnum =
   | "APP_STAR_RATE_3_LESS"
   | "APP_STAR_RATE_3_POINT_5_LESS"
   | "APP_STAR_RATE_4_LESS"
-  | "APP_STAR_RATE_4_POINT_5_LESS"
-  | (string & {});
+  | "APP_STAR_RATE_4_POINT_5_LESS";
 export const DoubleVerifyAppStarRatingAvoidedStarRatingEnum =
   /*@__PURE__*/ S.String;
 
@@ -1278,8 +1257,7 @@ export type DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum =
   | "AD_IMPRESSION_FRAUD_8"
   | "AD_IMPRESSION_FRAUD_6"
   | "AD_IMPRESSION_FRAUD_4"
-  | "AD_IMPRESSION_FRAUD_2"
-  | (string & {});
+  | "AD_IMPRESSION_FRAUD_2";
 export const DoubleVerifyFraudInvalidTrafficAvoidedFraudOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1308,12 +1286,11 @@ export type DoubleVerifyAvoidedAgeRatingsItemEnum =
   | "APP_AGE_RATE_9_PLUS"
   | "APP_AGE_RATE_12_PLUS"
   | "APP_AGE_RATE_17_PLUS"
-  | "APP_AGE_RATE_18_PLUS"
-  | (string & {});
+  | "APP_AGE_RATE_18_PLUS";
 export const DoubleVerifyAvoidedAgeRatingsItemEnum = /*@__PURE__*/ S.String;
 
 export type DoubleVerifyAvoidedAgeRatingsItemEnumList =
-  DoubleVerifyAvoidedAgeRatingsItemEnum[];
+  ReadonlyArray<DoubleVerifyAvoidedAgeRatingsItemEnum>;
 export const DoubleVerifyAvoidedAgeRatingsItemEnumList = /*@__PURE__*/ S.Array(
   DoubleVerifyAvoidedAgeRatingsItemEnum,
 ) as any as S.Schema<DoubleVerifyAvoidedAgeRatingsItemEnumList>;
@@ -1325,8 +1302,7 @@ export type DoubleVerifyVideoViewabilityVideoViewableRateEnum =
   | "VIEWED_PERFORMANCE_30_PERCENT_HIGHER"
   | "VIEWED_PERFORMANCE_25_PERCENT_HIGHER"
   | "VIEWED_PERFORMANCE_20_PERCENT_HIGHER"
-  | "VIEWED_PERFORMANCE_10_PERCENT_HIGHER"
-  | (string & {});
+  | "VIEWED_PERFORMANCE_10_PERCENT_HIGHER";
 export const DoubleVerifyVideoViewabilityVideoViewableRateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1340,8 +1316,7 @@ export type DoubleVerifyVideoViewabilityVideoIabEnum =
   | "IAB_VIEWABILITY_55_PERCENT_HIHGER"
   | "IAB_VIEWABILITY_50_PERCENT_HIGHER"
   | "IAB_VIEWABILITY_40_PERCENT_HIHGER"
-  | "IAB_VIEWABILITY_30_PERCENT_HIHGER"
-  | (string & {});
+  | "IAB_VIEWABILITY_30_PERCENT_HIHGER";
 export const DoubleVerifyVideoViewabilityVideoIabEnum = /*@__PURE__*/ S.String;
 
 export type DoubleVerifyVideoViewabilityPlayerImpressionRateEnum =
@@ -1349,8 +1324,7 @@ export type DoubleVerifyVideoViewabilityPlayerImpressionRateEnum =
   | "PLAYER_SIZE_400X300_95"
   | "PLAYER_SIZE_400X300_70"
   | "PLAYER_SIZE_400X300_25"
-  | "PLAYER_SIZE_400X300_5"
-  | (string & {});
+  | "PLAYER_SIZE_400X300_5";
 export const DoubleVerifyVideoViewabilityPlayerImpressionRateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1398,13 +1372,12 @@ export type DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItem
     | "PARKING_PAGE"
     | "UNMODERATED_UGC"
     | "INFLAMMATORY_POLITICS_AND_NEWS"
-    | "NEGATIVE_NEWS_PHARMACEUTICAL"
-    | (string & {});
+    | "NEGATIVE_NEWS_PHARMACEUTICAL";
 export const DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList =
-  DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum[];
+  ReadonlyArray<DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum>;
 export const DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     DoubleVerifyBrandSafetyCategoriesAvoidedMediumSeverityCategoriesItemEnum,
@@ -1418,13 +1391,12 @@ export type DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEn
     | "GRAPHIC_VIOLENCE_WEAPONS"
     | "HATE_PROFANITY"
     | "CRIMINAL_SKILLS"
-    | "NUISANCE_INCENTIVIZED_MALWARE_CLUTTER"
-    | (string & {});
+    | "NUISANCE_INCENTIVIZED_MALWARE_CLUTTER";
 export const DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList =
-  DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnum[];
+  ReadonlyArray<DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnum>;
 export const DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     DoubleVerifyBrandSafetyCategoriesAvoidedHighSeverityCategoriesItemEnum,
@@ -1463,16 +1435,14 @@ export type DoubleVerifyDisplayViewabilityIabEnum =
   | "IAB_VIEWED_RATE_55_PERCENT_HIGHER"
   | "IAB_VIEWED_RATE_50_PERCENT_HIGHER"
   | "IAB_VIEWED_RATE_40_PERCENT_HIGHER"
-  | "IAB_VIEWED_RATE_30_PERCENT_HIGHER"
-  | (string & {});
+  | "IAB_VIEWED_RATE_30_PERCENT_HIGHER";
 export const DoubleVerifyDisplayViewabilityIabEnum = /*@__PURE__*/ S.String;
 
 export type DoubleVerifyDisplayViewabilityViewableDuringEnum =
   | "AVERAGE_VIEW_DURATION_UNSPECIFIED"
   | "AVERAGE_VIEW_DURATION_5_SEC"
   | "AVERAGE_VIEW_DURATION_10_SEC"
-  | "AVERAGE_VIEW_DURATION_15_SEC"
-  | (string & {});
+  | "AVERAGE_VIEW_DURATION_15_SEC";
 export const DoubleVerifyDisplayViewabilityViewableDuringEnum =
   /*@__PURE__*/ S.String;
 
@@ -1526,16 +1496,14 @@ export const DoubleVerify = /*@__PURE__*/ S.suspend(() =>
 export type IntegralAdScienceExcludedHateSpeechRiskEnum =
   | "HATE_SPEECH_UNSPECIFIED"
   | "HATE_SPEECH_HR"
-  | "HATE_SPEECH_HMR"
-  | (string & {});
+  | "HATE_SPEECH_HMR";
 export const IntegralAdScienceExcludedHateSpeechRiskEnum =
   /*@__PURE__*/ S.String;
 
 export type IntegralAdScienceExcludedIllegalDownloadsRiskEnum =
   | "ILLEGAL_DOWNLOADS_UNSPECIFIED"
   | "ILLEGAL_DOWNLOADS_HR"
-  | "ILLEGAL_DOWNLOADS_HMR"
-  | (string & {});
+  | "ILLEGAL_DOWNLOADS_HMR";
 export const IntegralAdScienceExcludedIllegalDownloadsRiskEnum =
   /*@__PURE__*/ S.String;
 
@@ -1544,15 +1512,13 @@ export type IntegralAdScienceDisplayViewabilityEnum =
   | "PERFORMANCE_VIEWABILITY_40"
   | "PERFORMANCE_VIEWABILITY_50"
   | "PERFORMANCE_VIEWABILITY_60"
-  | "PERFORMANCE_VIEWABILITY_70"
-  | (string & {});
+  | "PERFORMANCE_VIEWABILITY_70";
 export const IntegralAdScienceDisplayViewabilityEnum = /*@__PURE__*/ S.String;
 
 export type IntegralAdScienceExcludedAdultRiskEnum =
   | "ADULT_UNSPECIFIED"
   | "ADULT_HR"
-  | "ADULT_HMR"
-  | (string & {});
+  | "ADULT_HMR";
 export const IntegralAdScienceExcludedAdultRiskEnum = /*@__PURE__*/ S.String;
 
 export type IntegralAdScienceTraqScoreOptionEnum =
@@ -1563,38 +1529,33 @@ export type IntegralAdScienceTraqScoreOptionEnum =
   | "TRAQ_700"
   | "TRAQ_750"
   | "TRAQ_875"
-  | "TRAQ_1000"
-  | (string & {});
+  | "TRAQ_1000";
 export const IntegralAdScienceTraqScoreOptionEnum = /*@__PURE__*/ S.String;
 
 export type IntegralAdScienceExcludedAlcoholRiskEnum =
   | "ALCOHOL_UNSPECIFIED"
   | "ALCOHOL_HR"
-  | "ALCOHOL_HMR"
-  | (string & {});
+  | "ALCOHOL_HMR";
 export const IntegralAdScienceExcludedAlcoholRiskEnum = /*@__PURE__*/ S.String;
 
 export type IntegralAdScienceExcludedOffensiveLanguageRiskEnum =
   | "OFFENSIVE_LANGUAGE_UNSPECIFIED"
   | "OFFENSIVE_LANGUAGE_HR"
-  | "OFFENSIVE_LANGUAGE_HMR"
-  | (string & {});
+  | "OFFENSIVE_LANGUAGE_HMR";
 export const IntegralAdScienceExcludedOffensiveLanguageRiskEnum =
   /*@__PURE__*/ S.String;
 
 export type IntegralAdScienceExcludedViolenceRiskEnum =
   | "VIOLENCE_UNSPECIFIED"
   | "VIOLENCE_HR"
-  | "VIOLENCE_HMR"
-  | (string & {});
+  | "VIOLENCE_HMR";
 export const IntegralAdScienceExcludedViolenceRiskEnum = /*@__PURE__*/ S.String;
 
 export type IntegralAdScienceExcludedAdFraudRiskEnum =
   | "SUSPICIOUS_ACTIVITY_UNSPECIFIED"
   | "SUSPICIOUS_ACTIVITY_HR"
   | "SUSPICIOUS_ACTIVITY_HMR"
-  | "SUSPICIOUS_ACTIVITY_FD"
-  | (string & {});
+  | "SUSPICIOUS_ACTIVITY_FD";
 export const IntegralAdScienceExcludedAdFraudRiskEnum = /*@__PURE__*/ S.String;
 
 export type IntegralAdScienceVideoViewabilityEnum =
@@ -1602,22 +1563,19 @@ export type IntegralAdScienceVideoViewabilityEnum =
   | "VIDEO_VIEWABILITY_40"
   | "VIDEO_VIEWABILITY_50"
   | "VIDEO_VIEWABILITY_60"
-  | "VIDEO_VIEWABILITY_70"
-  | (string & {});
+  | "VIDEO_VIEWABILITY_70";
 export const IntegralAdScienceVideoViewabilityEnum = /*@__PURE__*/ S.String;
 
 export type IntegralAdScienceExcludedDrugsRiskEnum =
   | "DRUGS_UNSPECIFIED"
   | "DRUGS_HR"
-  | "DRUGS_HMR"
-  | (string & {});
+  | "DRUGS_HMR";
 export const IntegralAdScienceExcludedDrugsRiskEnum = /*@__PURE__*/ S.String;
 
 export type IntegralAdScienceExcludedGamblingRiskEnum =
   | "GAMBLING_UNSPECIFIED"
   | "GAMBLING_HR"
-  | "GAMBLING_HMR"
-  | (string & {});
+  | "GAMBLING_HMR";
 export const IntegralAdScienceExcludedGamblingRiskEnum = /*@__PURE__*/ S.String;
 
 /** Details of Integral Ad Science settings. */
@@ -1687,12 +1645,11 @@ export type AdlooxExcludedAdlooxCategoriesItemEnum =
   | "DISCRIMINATORY_CONTENT"
   | "VIOLENT_CONTENT_WEAPONS"
   | "LOW_VIEWABILITY_DOMAINS"
-  | "FRAUD"
-  | (string & {});
+  | "FRAUD";
 export const AdlooxExcludedAdlooxCategoriesItemEnum = /*@__PURE__*/ S.String;
 
 export type AdlooxExcludedAdlooxCategoriesItemEnumList =
-  AdlooxExcludedAdlooxCategoriesItemEnum[];
+  ReadonlyArray<AdlooxExcludedAdlooxCategoriesItemEnum>;
 export const AdlooxExcludedAdlooxCategoriesItemEnumList = /*@__PURE__*/ S.Array(
   AdlooxExcludedAdlooxCategoriesItemEnum,
 ) as any as S.Schema<AdlooxExcludedAdlooxCategoriesItemEnumList>;
@@ -1792,8 +1749,7 @@ export type ContentDurationAssignedTargetingOptionDetailsContentDurationEnum =
   | "CONTENT_DURATION_5_TO_15_MIN"
   | "CONTENT_DURATION_15_TO_30_MIN"
   | "CONTENT_DURATION_30_TO_60_MIN"
-  | "CONTENT_DURATION_OVER_60_MIN"
-  | (string & {});
+  | "CONTENT_DURATION_OVER_60_MIN";
 export const ContentDurationAssignedTargetingOptionDetailsContentDurationEnum =
   /*@__PURE__*/ S.String;
 
@@ -1866,16 +1822,14 @@ export type AssignedTargetingOptionTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_VIDEO"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
-  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-  | (string & {});
+  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const AssignedTargetingOptionTargetingTypeEnum = /*@__PURE__*/ S.String;
 
 export type EnvironmentAssignedTargetingOptionDetailsEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_WEB_OPTIMIZED"
   | "ENVIRONMENT_WEB_NOT_OPTIMIZED"
-  | "ENVIRONMENT_APP"
-  | (string & {});
+  | "ENVIRONMENT_APP";
 export const EnvironmentAssignedTargetingOptionDetailsEnvironmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -1899,8 +1853,7 @@ export type ParentalStatusAssignedTargetingOptionDetailsParentalStatusEnum =
   | "PARENTAL_STATUS_UNSPECIFIED"
   | "PARENTAL_STATUS_PARENT"
   | "PARENTAL_STATUS_NOT_A_PARENT"
-  | "PARENTAL_STATUS_UNKNOWN"
-  | (string & {});
+  | "PARENTAL_STATUS_UNKNOWN";
 export const ParentalStatusAssignedTargetingOptionDetailsParentalStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1954,8 +1907,7 @@ export const YoutubeVideoAssignedTargetingOptionDetails =
 export type PoiAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
   | "DISTANCE_UNIT_UNSPECIFIED"
   | "DISTANCE_UNIT_MILES"
-  | "DISTANCE_UNIT_KILOMETERS"
-  | (string & {});
+  | "DISTANCE_UNIT_KILOMETERS";
 export const PoiAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
   /*@__PURE__*/ S.String;
 
@@ -2029,8 +1981,7 @@ export const YoutubeChannelAssignedTargetingOptionDetails =
 export type AuthorizedSellerStatusAssignedTargetingOptionDetailsAuthorizedSellerStatusEnum =
     | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
     | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY"
-    | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS"
-    | (string & {});
+    | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS";
 export const AuthorizedSellerStatusAssignedTargetingOptionDetailsAuthorizedSellerStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2073,8 +2024,7 @@ export type SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCate
     | "SENSITIVE_CATEGORY_SENSITIVE_SOCIAL_ISSUES"
     | "SENSITIVE_CATEGORY_SHOCKING"
     | "SENSITIVE_CATEGORY_EMBEDDED_VIDEO"
-    | "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO"
-    | (string & {});
+    | "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO";
 export const SensitiveCategoryAssignedTargetingOptionDetailsExcludedSensitiveCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -2096,8 +2046,7 @@ export const SensitiveCategoryAssignedTargetingOptionDetails =
 
 export type OmidAssignedTargetingOptionDetailsOmidEnum =
   | "OMID_UNSPECIFIED"
-  | "OMID_FOR_MOBILE_DISPLAY_ADS"
-  | (string & {});
+  | "OMID_FOR_MOBILE_DISPLAY_ADS";
 export const OmidAssignedTargetingOptionDetailsOmidEnum =
   /*@__PURE__*/ S.String;
 
@@ -2124,8 +2073,7 @@ export type ViewabilityAssignedTargetingOptionDetailsViewabilityEnum =
   | "VIEWABILITY_60_PERCENT_OR_MORE"
   | "VIEWABILITY_70_PERCENT_OR_MORE"
   | "VIEWABILITY_80_PERCENT_OR_MORE"
-  | "VIEWABILITY_90_PERCENT_OR_MORE"
-  | (string & {});
+  | "VIEWABILITY_90_PERCENT_OR_MORE";
 export const ViewabilityAssignedTargetingOptionDetailsViewabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -2171,8 +2119,7 @@ export type NativeContentPositionAssignedTargetingOptionDetailsContentPositionEn
     | "NATIVE_CONTENT_POSITION_IN_ARTICLE"
     | "NATIVE_CONTENT_POSITION_IN_FEED"
     | "NATIVE_CONTENT_POSITION_PERIPHERAL"
-    | "NATIVE_CONTENT_POSITION_RECOMMENDATION"
-    | (string & {});
+    | "NATIVE_CONTENT_POSITION_RECOMMENDATION";
 export const NativeContentPositionAssignedTargetingOptionDetailsContentPositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2200,8 +2147,7 @@ export type HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum =
   | "HOUSEHOLD_INCOME_TOP_31_TO_40_PERCENT"
   | "HOUSEHOLD_INCOME_TOP_21_TO_30_PERCENT"
   | "HOUSEHOLD_INCOME_TOP_11_TO_20_PERCENT"
-  | "HOUSEHOLD_INCOME_TOP_10_PERCENT"
-  | (string & {});
+  | "HOUSEHOLD_INCOME_TOP_10_PERCENT";
 export const HouseholdIncomeAssignedTargetingOptionDetailsHouseholdIncomeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2241,8 +2187,7 @@ export const YoutubeChannelPackAssignedTargetingOptionDetails =
 export type ProximityLocationListAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
     | "PROXIMITY_RADIUS_UNIT_UNSPECIFIED"
     | "PROXIMITY_RADIUS_UNIT_MILES"
-    | "PROXIMITY_RADIUS_UNIT_KILOMETERS"
-    | (string & {});
+    | "PROXIMITY_RADIUS_UNIT_KILOMETERS";
 export const ProximityLocationListAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
   /*@__PURE__*/ S.String;
 
@@ -2282,7 +2227,7 @@ export const GoogleAudienceTargetingSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAudienceTargetingSetting>;
 
 export type GoogleAudienceTargetingSettingList =
-  GoogleAudienceTargetingSetting[];
+  ReadonlyArray<GoogleAudienceTargetingSetting>;
 export const GoogleAudienceTargetingSettingList = /*@__PURE__*/ S.Array(
   GoogleAudienceTargetingSetting,
 ) as any as S.Schema<GoogleAudienceTargetingSettingList>;
@@ -2313,7 +2258,8 @@ export const CustomListTargetingSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomListTargetingSetting",
 }) as any as S.Schema<CustomListTargetingSetting>;
 
-export type CustomListTargetingSettingList = CustomListTargetingSetting[];
+export type CustomListTargetingSettingList =
+  ReadonlyArray<CustomListTargetingSetting>;
 export const CustomListTargetingSettingList = /*@__PURE__*/ S.Array(
   CustomListTargetingSetting,
 ) as any as S.Schema<CustomListTargetingSettingList>;
@@ -2345,7 +2291,7 @@ export const CombinedAudienceTargetingSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CombinedAudienceTargetingSetting>;
 
 export type CombinedAudienceTargetingSettingList =
-  CombinedAudienceTargetingSetting[];
+  ReadonlyArray<CombinedAudienceTargetingSetting>;
 export const CombinedAudienceTargetingSettingList = /*@__PURE__*/ S.Array(
   CombinedAudienceTargetingSetting,
 ) as any as S.Schema<CombinedAudienceTargetingSettingList>;
@@ -2390,8 +2336,7 @@ export type OnScreenPositionAssignedTargetingOptionDetailsOnScreenPositionEnum =
     | "ON_SCREEN_POSITION_UNSPECIFIED"
     | "ON_SCREEN_POSITION_UNKNOWN"
     | "ON_SCREEN_POSITION_ABOVE_THE_FOLD"
-    | "ON_SCREEN_POSITION_BELOW_THE_FOLD"
-    | (string & {});
+    | "ON_SCREEN_POSITION_BELOW_THE_FOLD";
 export const OnScreenPositionAssignedTargetingOptionDetailsOnScreenPositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2399,8 +2344,7 @@ export type OnScreenPositionAssignedTargetingOptionDetailsAdTypeEnum =
   | "AD_TYPE_UNSPECIFIED"
   | "AD_TYPE_DISPLAY"
   | "AD_TYPE_VIDEO"
-  | "AD_TYPE_AUDIO"
-  | (string & {});
+  | "AD_TYPE_AUDIO";
 export const OnScreenPositionAssignedTargetingOptionDetailsAdTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2434,8 +2378,7 @@ export type DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum =
   | "DEVICE_TYPE_CONNECTED_TV"
   | "DEVICE_TYPE_SMART_PHONE"
   | "DEVICE_TYPE_TABLET"
-  | "DEVICE_TYPE_CONNECTED_DEVICE"
-  | (string & {});
+  | "DEVICE_TYPE_CONNECTED_DEVICE";
 export const DeviceTypeAssignedTargetingOptionDetailsDeviceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2491,8 +2434,7 @@ export const InventorySourceGroupAssignedTargetingOptionDetails =
 export type BusinessChainAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
     | "DISTANCE_UNIT_UNSPECIFIED"
     | "DISTANCE_UNIT_MILES"
-    | "DISTANCE_UNIT_KILOMETERS"
-    | (string & {});
+    | "DISTANCE_UNIT_KILOMETERS";
 export const BusinessChainAssignedTargetingOptionDetailsProximityRadiusUnitEnum =
   /*@__PURE__*/ S.String;
 
@@ -2541,8 +2483,7 @@ export const RegionalLocationListAssignedTargetingOptionDetails =
 export type UserRewardedContentAssignedTargetingOptionDetailsUserRewardedContentEnum =
     | "USER_REWARDED_CONTENT_UNSPECIFIED"
     | "USER_REWARDED_CONTENT_USER_REWARDED"
-    | "USER_REWARDED_CONTENT_NOT_USER_REWARDED"
-    | (string & {});
+    | "USER_REWARDED_CONTENT_NOT_USER_REWARDED";
 export const UserRewardedContentAssignedTargetingOptionDetailsUserRewardedContentEnum =
   /*@__PURE__*/ S.String;
 
@@ -2793,7 +2734,8 @@ export const AssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssignedTargetingOption",
 }) as any as S.Schema<AssignedTargetingOption>;
 
-export type AssignedTargetingOptionList = AssignedTargetingOption[];
+export type AssignedTargetingOptionList =
+  ReadonlyArray<AssignedTargetingOption>;
 export const AssignedTargetingOptionList = /*@__PURE__*/ S.Array(
   AssignedTargetingOption,
 ) as any as S.Schema<AssignedTargetingOptionList>;
@@ -2818,7 +2760,7 @@ export const CreateAssignedTargetingOptionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateAssignedTargetingOptionsRequest>;
 
 export type CreateAssignedTargetingOptionsRequestList =
-  CreateAssignedTargetingOptionsRequest[];
+  ReadonlyArray<CreateAssignedTargetingOptionsRequest>;
 export const CreateAssignedTargetingOptionsRequestList = /*@__PURE__*/ S.Array(
   CreateAssignedTargetingOptionsRequest,
 ) as any as S.Schema<CreateAssignedTargetingOptionsRequestList>;
@@ -2873,7 +2815,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2895,7 +2837,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
-export type StatusList = Status[];
+export type StatusList = ReadonlyArray<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -2931,8 +2873,7 @@ export type AssignedUserRoleUserRoleEnum =
   | "REPORTING_ONLY"
   | "LIMITED_REPORTING_ONLY"
   | "CREATIVE"
-  | "CREATIVE_ADMIN"
-  | (string & {});
+  | "CREATIVE_ADMIN";
 export const AssignedUserRoleUserRoleEnum = /*@__PURE__*/ S.String;
 
 /** A single assigned user role, which defines a user's authorized interaction with a specified partner or advertiser. */
@@ -2957,7 +2898,7 @@ export const AssignedUserRole = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssignedUserRole",
 }) as any as S.Schema<AssignedUserRole>;
 
-export type AssignedUserRoleList = AssignedUserRole[];
+export type AssignedUserRoleList = ReadonlyArray<AssignedUserRole>;
 export const AssignedUserRoleList = /*@__PURE__*/ S.Array(
   AssignedUserRole,
 ) as any as S.Schema<AssignedUserRoleList>;
@@ -3031,7 +2972,8 @@ export const AssignedInventorySource = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssignedInventorySource",
 }) as any as S.Schema<AssignedInventorySource>;
 
-export type AssignedInventorySourceList = AssignedInventorySource[];
+export type AssignedInventorySourceList =
+  ReadonlyArray<AssignedInventorySource>;
 export const AssignedInventorySourceList = /*@__PURE__*/ S.Array(
   AssignedInventorySource,
 ) as any as S.Schema<AssignedInventorySourceList>;
@@ -3175,7 +3117,7 @@ export const YoutubeAdGroupAssignedTargetingOption = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<YoutubeAdGroupAssignedTargetingOption>;
 
 export type YoutubeAdGroupAssignedTargetingOptionList =
-  YoutubeAdGroupAssignedTargetingOption[];
+  ReadonlyArray<YoutubeAdGroupAssignedTargetingOption>;
 export const YoutubeAdGroupAssignedTargetingOptionList = /*@__PURE__*/ S.Array(
   YoutubeAdGroupAssignedTargetingOption,
 ) as any as S.Schema<YoutubeAdGroupAssignedTargetingOptionList>;
@@ -3249,7 +3191,7 @@ export const LineItemAssignedTargetingOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LineItemAssignedTargetingOption>;
 
 export type LineItemAssignedTargetingOptionList =
-  LineItemAssignedTargetingOption[];
+  ReadonlyArray<LineItemAssignedTargetingOption>;
 export const LineItemAssignedTargetingOptionList = /*@__PURE__*/ S.Array(
   LineItemAssignedTargetingOption,
 ) as any as S.Schema<LineItemAssignedTargetingOptionList>;
@@ -3279,8 +3221,7 @@ export type FrequencyCapTimeUnitEnum =
   | "TIME_UNIT_WEEKS"
   | "TIME_UNIT_DAYS"
   | "TIME_UNIT_HOURS"
-  | "TIME_UNIT_MINUTES"
-  | (string & {});
+  | "TIME_UNIT_MINUTES";
 export const FrequencyCapTimeUnitEnum = /*@__PURE__*/ S.String;
 
 /** Settings that control the number of times a user may be shown with the same ad during a given time period. */
@@ -3336,22 +3277,19 @@ export type PartnerCostCostTypeEnum =
   | "PARTNER_COST_TYPE_CUSTOM_FEE_3"
   | "PARTNER_COST_TYPE_CUSTOM_FEE_4"
   | "PARTNER_COST_TYPE_CUSTOM_FEE_5"
-  | "PARTNER_COST_TYPE_SCIBIDS_FEE"
-  | (string & {});
+  | "PARTNER_COST_TYPE_SCIBIDS_FEE";
 export const PartnerCostCostTypeEnum = /*@__PURE__*/ S.String;
 
 export type PartnerCostFeeTypeEnum =
   | "PARTNER_COST_FEE_TYPE_UNSPECIFIED"
   | "PARTNER_COST_FEE_TYPE_CPM_FEE"
-  | "PARTNER_COST_FEE_TYPE_MEDIA_FEE"
-  | (string & {});
+  | "PARTNER_COST_FEE_TYPE_MEDIA_FEE";
 export const PartnerCostFeeTypeEnum = /*@__PURE__*/ S.String;
 
 export type PartnerCostInvoiceTypeEnum =
   | "PARTNER_COST_INVOICE_TYPE_UNSPECIFIED"
   | "PARTNER_COST_INVOICE_TYPE_DV360"
-  | "PARTNER_COST_INVOICE_TYPE_PARTNER"
-  | (string & {});
+  | "PARTNER_COST_INVOICE_TYPE_PARTNER";
 export const PartnerCostInvoiceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings that control a partner cost. A partner cost is any type of expense involved in running a campaign, other than the costs of purchasing impressions (which is called the media cost) and using third-party audience segment data (data fee). Some examples of partner costs include the fees for using DV360, a third-party ad server, or a third-party ad serving verification service. */
@@ -3377,16 +3315,12 @@ export const PartnerCost = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PartnerCost" }) as any as S.Schema<PartnerCost>;
 
-export type PartnerCostList = PartnerCost[];
+export type PartnerCostList = ReadonlyArray<PartnerCost>;
 export const PartnerCostList = /*@__PURE__*/ S.Array(
   PartnerCost,
 ) as any as S.Schema<PartnerCostList>;
 
-export type MobileAppPlatformEnum =
-  | "PLATFORM_UNSPECIFIED"
-  | "IOS"
-  | "ANDROID"
-  | (string & {});
+export type MobileAppPlatformEnum = "PLATFORM_UNSPECIFIED" | "IOS" | "ANDROID";
 export const MobileAppPlatformEnum = /*@__PURE__*/ S.String;
 
 /** A mobile app promoted by a mobile app install line item. */
@@ -3415,16 +3349,14 @@ export type LineItemEntityStatusEnum =
   | "ENTITY_STATUS_ARCHIVED"
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
-  | (string & {});
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
 export const LineItemEntityStatusEnum = /*@__PURE__*/ S.String;
 
 export type PartnerRevenueModelMarkupTypeEnum =
   | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_UNSPECIFIED"
   | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_CPM"
   | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_MEDIA_COST_MARKUP"
-  | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP"
-  | (string & {});
+  | "PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP";
 export const PartnerRevenueModelMarkupTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings that control how partner revenue is calculated. */
@@ -3450,8 +3382,7 @@ export type TargetingExpansionConfigTargetingExpansionLevelEnum =
   | "SOME_EXPANSION"
   | "BALANCED_EXPANSION"
   | "MORE_EXPANSION"
-  | "MOST_EXPANSION"
-  | (string & {});
+  | "MOST_EXPANSION";
 export const TargetingExpansionConfigTargetingExpansionLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -3499,8 +3430,7 @@ export type LineItemLineItemTypeEnum =
   | "LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIEW"
   | "LINE_ITEM_TYPE_DISPLAY_OUT_OF_HOME"
   | "LINE_ITEM_TYPE_VIDEO_OUT_OF_HOME"
-  | "LINE_ITEM_TYPE_DEMAND_GEN"
-  | (string & {});
+  | "LINE_ITEM_TYPE_DEMAND_GEN";
 export const LineItemLineItemTypeEnum = /*@__PURE__*/ S.String;
 
 /** Integration details of an entry. */
@@ -3526,8 +3456,7 @@ export type TargetFrequencyTimeUnitEnum =
   | "TIME_UNIT_WEEKS"
   | "TIME_UNIT_DAYS"
   | "TIME_UNIT_HOURS"
-  | "TIME_UNIT_MINUTES"
-  | (string & {});
+  | "TIME_UNIT_MINUTES";
 export const TargetFrequencyTimeUnitEnum = /*@__PURE__*/ S.String;
 
 /** Setting that controls the average number of times the ads will show to the same person over a certain period of time. */
@@ -3552,8 +3481,7 @@ export const TargetFrequency = /*@__PURE__*/ S.suspend(() =>
 export type VideoAdSequenceSettingsMinimumDurationEnum =
   | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_UNSPECIFIED"
   | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_WEEK"
-  | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_MONTH"
-  | (string & {});
+  | "VIDEO_AD_SEQUENCE_MINIMUM_DURATION_MONTH";
 export const VideoAdSequenceSettingsMinimumDurationEnum =
   /*@__PURE__*/ S.String;
 
@@ -3562,8 +3490,7 @@ export type VideoAdSequenceStepInteractionTypeEnum =
   | "INTERACTION_TYPE_PAID_VIEW"
   | "INTERACTION_TYPE_SKIP"
   | "INTERACTION_TYPE_IMPRESSION"
-  | "INTERACTION_TYPE_ENGAGED_IMPRESSION"
-  | (string & {});
+  | "INTERACTION_TYPE_ENGAGED_IMPRESSION";
 export const VideoAdSequenceStepInteractionTypeEnum = /*@__PURE__*/ S.String;
 
 /** The detail of a single step in a VideoAdSequence. */
@@ -3588,7 +3515,7 @@ export const VideoAdSequenceStep = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoAdSequenceStep",
 }) as any as S.Schema<VideoAdSequenceStep>;
 
-export type VideoAdSequenceStepList = VideoAdSequenceStep[];
+export type VideoAdSequenceStepList = ReadonlyArray<VideoAdSequenceStep>;
 export const VideoAdSequenceStepList = /*@__PURE__*/ S.Array(
   VideoAdSequenceStep,
 ) as any as S.Schema<VideoAdSequenceStepList>;
@@ -3620,15 +3547,13 @@ export type YoutubeAndPartnersBiddingStrategyTypeEnum =
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSIONS"
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPV"
   | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS"
-  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE"
-  | (string & {});
+  | "YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE";
 export const YoutubeAndPartnersBiddingStrategyTypeEnum = /*@__PURE__*/ S.String;
 
 export type YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum =
     | "BIDDING_SOURCE_UNSPECIFIED"
     | "BIDDING_SOURCE_LINE_ITEM"
-    | "BIDDING_SOURCE_AD_GROUP"
-    | (string & {});
+    | "BIDDING_SOURCE_AD_GROUP";
 export const YoutubeAndPartnersBiddingStrategyAdGroupEffectiveTargetCpaSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3660,8 +3585,7 @@ export type YoutubeAndPartnersSettingsContentCategoryEnum =
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED"
-  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED"
-  | (string & {});
+  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED";
 export const YoutubeAndPartnersSettingsContentCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -3669,8 +3593,7 @@ export type YoutubeAndPartnersSettingsEffectiveContentCategoryEnum =
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_UNSPECIFIED"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_STANDARD"
   | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_EXPANDED"
-  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED"
-  | (string & {});
+  | "YOUTUBE_AND_PARTNERS_CONTENT_CATEGORY_LIMITED";
 export const YoutubeAndPartnersSettingsEffectiveContentCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -3695,8 +3618,7 @@ export type ThirdPartyVendorConfigVendorEnum =
   | "THIRD_PARTY_VENDOR_ISPOT_TV"
   | "THIRD_PARTY_VENDOR_INTAGE"
   | "THIRD_PARTY_VENDOR_MACROMILL"
-  | "THIRD_PARTY_VENDOR_VIDEO_RESEARCH"
-  | (string & {});
+  | "THIRD_PARTY_VENDOR_VIDEO_RESEARCH";
 export const ThirdPartyVendorConfigVendorEnum = /*@__PURE__*/ S.String;
 
 /** Settings that control how third-party measurement vendors are configured. */
@@ -3715,7 +3637,7 @@ export const ThirdPartyVendorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ThirdPartyVendorConfig",
 }) as any as S.Schema<ThirdPartyVendorConfig>;
 
-export type ThirdPartyVendorConfigList = ThirdPartyVendorConfig[];
+export type ThirdPartyVendorConfigList = ReadonlyArray<ThirdPartyVendorConfig>;
 export const ThirdPartyVendorConfigList = /*@__PURE__*/ S.Array(
   ThirdPartyVendorConfig,
 ) as any as S.Schema<ThirdPartyVendorConfigList>;
@@ -3843,8 +3765,7 @@ export const YoutubeAndPartnersSettings = /*@__PURE__*/ S.suspend(() =>
 export type LineItemFlightFlightDateTypeEnum =
   | "LINE_ITEM_FLIGHT_DATE_TYPE_UNSPECIFIED"
   | "LINE_ITEM_FLIGHT_DATE_TYPE_INHERITED"
-  | "LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM"
-  | (string & {});
+  | "LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM";
 export const LineItemFlightFlightDateTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -3901,15 +3822,13 @@ export type DemandGenBiddingStrategyTypeEnum =
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSIONS"
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CONVERSION_VALUE"
   | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_MAXIMIZE_CLICKS"
-  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC"
-  | (string & {});
+  | "DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC";
 export const DemandGenBiddingStrategyTypeEnum = /*@__PURE__*/ S.String;
 
 export type DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum =
   | "BIDDING_SOURCE_UNSPECIFIED"
   | "BIDDING_SOURCE_LINE_ITEM"
-  | "BIDDING_SOURCE_AD_GROUP"
-  | (string & {});
+  | "BIDDING_SOURCE_AD_GROUP";
 export const DemandGenBiddingStrategyEffectiveBiddingValueSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -3958,8 +3877,7 @@ export type MaximizeSpendBidStrategyPerformanceGoalTypeEnum =
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED"
-  | (string & {});
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED";
 export const MaximizeSpendBidStrategyPerformanceGoalTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3995,8 +3913,7 @@ export type PerformanceGoalBidStrategyPerformanceGoalTypeEnum =
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CIVA"
   | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_IVO_TEN"
-  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED"
-  | (string & {});
+  | "BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_AV_VIEWED";
 export const PerformanceGoalBidStrategyPerformanceGoalTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4049,16 +3966,14 @@ export const BiddingStrategy = /*@__PURE__*/ S.suspend(() =>
 export type PacingPacingPeriodEnum =
   | "PACING_PERIOD_UNSPECIFIED"
   | "PACING_PERIOD_DAILY"
-  | "PACING_PERIOD_FLIGHT"
-  | (string & {});
+  | "PACING_PERIOD_FLIGHT";
 export const PacingPacingPeriodEnum = /*@__PURE__*/ S.String;
 
 export type PacingPacingTypeEnum =
   | "PACING_TYPE_UNSPECIFIED"
   | "PACING_TYPE_AHEAD"
   | "PACING_TYPE_ASAP"
-  | "PACING_TYPE_EVEN"
-  | (string & {});
+  | "PACING_TYPE_EVEN";
 export const PacingPacingTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings that control the rate at which a budget is spent. */
@@ -4093,12 +4008,11 @@ export type LineItemWarningMessagesItemEnum =
   | "NO_VALID_CREATIVE"
   | "PARENT_INSERTION_ORDER_PAUSED"
   | "PARENT_INSERTION_ORDER_EXPIRED"
-  | "DEPRECATED_FIRST_PARTY_AUDIENCE_EXCLUSION"
-  | (string & {});
+  | "DEPRECATED_FIRST_PARTY_AUDIENCE_EXCLUSION";
 export const LineItemWarningMessagesItemEnum = /*@__PURE__*/ S.String;
 
 export type LineItemWarningMessagesItemEnumList =
-  LineItemWarningMessagesItemEnum[];
+  ReadonlyArray<LineItemWarningMessagesItemEnum>;
 export const LineItemWarningMessagesItemEnumList = /*@__PURE__*/ S.Array(
   LineItemWarningMessagesItemEnum,
 ) as any as S.Schema<LineItemWarningMessagesItemEnumList>;
@@ -4123,7 +4037,7 @@ export const TrackingFloodlightActivityConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrackingFloodlightActivityConfig>;
 
 export type TrackingFloodlightActivityConfigList =
-  TrackingFloodlightActivityConfig[];
+  ReadonlyArray<TrackingFloodlightActivityConfig>;
 export const TrackingFloodlightActivityConfigList = /*@__PURE__*/ S.Array(
   TrackingFloodlightActivityConfig,
 ) as any as S.Schema<TrackingFloodlightActivityConfigList>;
@@ -4191,23 +4105,20 @@ export const DemandGenSettings = /*@__PURE__*/ S.suspend(() =>
 export type LineItemContainsEuPoliticalAdsEnum =
   | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
   | "CONTAINS_EU_POLITICAL_ADVERTISING"
-  | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING"
-  | (string & {});
+  | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING";
 export const LineItemContainsEuPoliticalAdsEnum = /*@__PURE__*/ S.String;
 
 export type LineItemBudgetBudgetAllocationTypeEnum =
   | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNSPECIFIED"
   | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_AUTOMATIC"
   | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_FIXED"
-  | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED"
-  | (string & {});
+  | "LINE_ITEM_BUDGET_ALLOCATION_TYPE_UNLIMITED";
 export const LineItemBudgetBudgetAllocationTypeEnum = /*@__PURE__*/ S.String;
 
 export type LineItemBudgetBudgetUnitEnum =
   | "BUDGET_UNIT_UNSPECIFIED"
   | "BUDGET_UNIT_CURRENCY"
-  | "BUDGET_UNIT_IMPRESSIONS"
-  | (string & {});
+  | "BUDGET_UNIT_IMPRESSIONS";
 export const LineItemBudgetBudgetUnitEnum = /*@__PURE__*/ S.String;
 
 /** Settings that control how budget is allocated. */
@@ -4233,8 +4144,7 @@ export type LineItemReservationTypeEnum =
   | "RESERVATION_TYPE_PROGRAMMATIC_GUARANTEED"
   | "RESERVATION_TYPE_TAG_GUARANTEED"
   | "RESERVATION_TYPE_PETRA_VIRAL"
-  | "RESERVATION_TYPE_INSTANT_RESERVE"
-  | (string & {});
+  | "RESERVATION_TYPE_INSTANT_RESERVE";
 export const LineItemReservationTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single line item. */
@@ -4414,8 +4324,7 @@ export const AdvertiserGeneralConfig = /*@__PURE__*/ S.suspend(() =>
 export type AdvertiserContainsEuPoliticalAdsEnum =
   | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
   | "CONTAINS_EU_POLITICAL_ADVERTISING"
-  | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING"
-  | (string & {});
+  | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING";
 export const AdvertiserContainsEuPoliticalAdsEnum = /*@__PURE__*/ S.String;
 
 export type AdvertiserEntityStatusEnum =
@@ -4424,8 +4333,7 @@ export type AdvertiserEntityStatusEnum =
   | "ENTITY_STATUS_ARCHIVED"
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
-  | (string & {});
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
 export const AdvertiserEntityStatusEnum = /*@__PURE__*/ S.String;
 
 export type SdfConfigVersionEnum =
@@ -4448,8 +4356,7 @@ export type SdfConfigVersionEnum =
   | "SDF_VERSION_9"
   | "SDF_VERSION_9_1"
   | "SDF_VERSION_9_2"
-  | "SDF_VERSION_10"
-  | (string & {});
+  | "SDF_VERSION_10";
 export const SdfConfigVersionEnum = /*@__PURE__*/ S.String;
 
 /** Structured Data File (SDF) related settings. */
@@ -4678,8 +4585,7 @@ export type PerformanceGoalPerformanceGoalTypeEnum =
   | "PERFORMANCE_GOAL_TYPE_VTR"
   | "PERFORMANCE_GOAL_TYPE_AUDIO_COMPLETION_RATE"
   | "PERFORMANCE_GOAL_TYPE_VIDEO_COMPLETION_RATE"
-  | "PERFORMANCE_GOAL_TYPE_OTHER"
-  | (string & {});
+  | "PERFORMANCE_GOAL_TYPE_OTHER";
 export const PerformanceGoalPerformanceGoalTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings that control the performance goal of a campaign. */
@@ -4709,8 +4615,7 @@ export type CampaignGoalCampaignGoalTypeEnum =
   | "CAMPAIGN_GOAL_TYPE_APP_INSTALL"
   | "CAMPAIGN_GOAL_TYPE_BRAND_AWARENESS"
   | "CAMPAIGN_GOAL_TYPE_OFFLINE_ACTION"
-  | "CAMPAIGN_GOAL_TYPE_ONLINE_ACTION"
-  | (string & {});
+  | "CAMPAIGN_GOAL_TYPE_ONLINE_ACTION";
 export const CampaignGoalCampaignGoalTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings that control the goal of a campaign. */
@@ -4733,8 +4638,7 @@ export type CampaignEntityStatusEnum =
   | "ENTITY_STATUS_ARCHIVED"
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
-  | (string & {});
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
 export const CampaignEntityStatusEnum = /*@__PURE__*/ S.String;
 
 /** Google Payments Center supports searching and filtering on the component fields of this code. */
@@ -4761,8 +4665,7 @@ export type PrismaConfigPrismaTypeEnum =
   | "PRISMA_TYPE_VIDEO"
   | "PRISMA_TYPE_AUDIO"
   | "PRISMA_TYPE_SOCIAL"
-  | "PRISMA_TYPE_FEE"
-  | (string & {});
+  | "PRISMA_TYPE_FEE";
 export const PrismaConfigPrismaTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings specific to the Mediaocean Prisma tool. */
@@ -4785,15 +4688,13 @@ export const PrismaConfig = /*@__PURE__*/ S.suspend(() =>
 export type CampaignBudgetBudgetUnitEnum =
   | "BUDGET_UNIT_UNSPECIFIED"
   | "BUDGET_UNIT_CURRENCY"
-  | "BUDGET_UNIT_IMPRESSIONS"
-  | (string & {});
+  | "BUDGET_UNIT_IMPRESSIONS";
 export const CampaignBudgetBudgetUnitEnum = /*@__PURE__*/ S.String;
 
 export type CampaignBudgetExternalBudgetSourceEnum =
   | "EXTERNAL_BUDGET_SOURCE_UNSPECIFIED"
   | "EXTERNAL_BUDGET_SOURCE_NONE"
-  | "EXTERNAL_BUDGET_SOURCE_MEDIA_OCEAN"
-  | (string & {});
+  | "EXTERNAL_BUDGET_SOURCE_MEDIA_OCEAN";
 export const CampaignBudgetExternalBudgetSourceEnum = /*@__PURE__*/ S.String;
 
 /** Settings that control how the campaign budget is allocated. */
@@ -4831,7 +4732,7 @@ export const CampaignBudget = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CampaignBudget" }) as any as S.Schema<CampaignBudget>;
 
-export type CampaignBudgetList = CampaignBudget[];
+export type CampaignBudgetList = ReadonlyArray<CampaignBudget>;
 export const CampaignBudgetList = /*@__PURE__*/ S.Array(
   CampaignBudget,
 ) as any as S.Schema<CampaignBudgetList>;
@@ -5020,7 +4921,7 @@ export const Dimensions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dimensions" }) as any as S.Schema<Dimensions>;
 
-export type DimensionsList = Dimensions[];
+export type DimensionsList = ReadonlyArray<Dimensions>;
 export const DimensionsList = /*@__PURE__*/ S.Array(
   Dimensions,
 ) as any as S.Schema<DimensionsList>;
@@ -5039,7 +4940,7 @@ export const TimerEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimerEvent" }) as any as S.Schema<TimerEvent>;
 
-export type TimerEventList = TimerEvent[];
+export type TimerEventList = ReadonlyArray<TimerEvent>;
 export const TimerEventList = /*@__PURE__*/ S.Array(
   TimerEvent,
 ) as any as S.Schema<TimerEventList>;
@@ -5048,12 +4949,11 @@ export type CreativeCreativeAttributesItemEnum =
   | "CREATIVE_ATTRIBUTE_UNSPECIFIED"
   | "CREATIVE_ATTRIBUTE_VAST"
   | "CREATIVE_ATTRIBUTE_VPAID_LINEAR"
-  | "CREATIVE_ATTRIBUTE_VPAID_NON_LINEAR"
-  | (string & {});
+  | "CREATIVE_ATTRIBUTE_VPAID_NON_LINEAR";
 export const CreativeCreativeAttributesItemEnum = /*@__PURE__*/ S.String;
 
 export type CreativeCreativeAttributesItemEnumList =
-  CreativeCreativeAttributesItemEnum[];
+  ReadonlyArray<CreativeCreativeAttributesItemEnum>;
 export const CreativeCreativeAttributesItemEnumList = /*@__PURE__*/ S.Array(
   CreativeCreativeAttributesItemEnum,
 ) as any as S.Schema<CreativeCreativeAttributesItemEnumList>;
@@ -5061,8 +4961,7 @@ export const CreativeCreativeAttributesItemEnumList = /*@__PURE__*/ S.Array(
 export type CreativeSyntheticContentAttestationStatusEnum =
   | "SYNTHETIC_CONTENT_ATTESTATION_STATUS_UNSPECIFIED"
   | "NOT_SYNTHETIC"
-  | "IS_SYNTHETIC"
-  | (string & {});
+  | "IS_SYNTHETIC";
 export const CreativeSyntheticContentAttestationStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -5156,16 +5055,14 @@ export type ExchangeReviewStatusExchangeEnum =
   | "EXCHANGE_TUBI"
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
-  | "EXCHANGE_EXTE"
-  | (string & {});
+  | "EXCHANGE_EXTE";
 export const ExchangeReviewStatusExchangeEnum = /*@__PURE__*/ S.String;
 
 export type ExchangeReviewStatusStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
-  | "REVIEW_STATUS_PENDING"
-  | (string & {});
+  | "REVIEW_STATUS_PENDING";
 export const ExchangeReviewStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** Exchange review status for the creative. */
@@ -5184,7 +5081,7 @@ export const ExchangeReviewStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExchangeReviewStatus",
 }) as any as S.Schema<ExchangeReviewStatus>;
 
-export type ExchangeReviewStatusList = ExchangeReviewStatus[];
+export type ExchangeReviewStatusList = ReadonlyArray<ExchangeReviewStatus>;
 export const ExchangeReviewStatusList = /*@__PURE__*/ S.Array(
   ExchangeReviewStatus,
 ) as any as S.Schema<ExchangeReviewStatusList>;
@@ -5193,8 +5090,7 @@ export type PublisherReviewStatusStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
-  | "REVIEW_STATUS_PENDING"
-  | (string & {});
+  | "REVIEW_STATUS_PENDING";
 export const PublisherReviewStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** Publisher review status for the creative. */
@@ -5213,7 +5109,7 @@ export const PublisherReviewStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "PublisherReviewStatus",
 }) as any as S.Schema<PublisherReviewStatus>;
 
-export type PublisherReviewStatusList = PublisherReviewStatus[];
+export type PublisherReviewStatusList = ReadonlyArray<PublisherReviewStatus>;
 export const PublisherReviewStatusList = /*@__PURE__*/ S.Array(
   PublisherReviewStatus,
 ) as any as S.Schema<PublisherReviewStatusList>;
@@ -5222,8 +5118,7 @@ export type ReviewStatusInfoContentAndPolicyReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
-  | "REVIEW_STATUS_PENDING"
-  | (string & {});
+  | "REVIEW_STATUS_PENDING";
 export const ReviewStatusInfoContentAndPolicyReviewStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -5232,16 +5127,14 @@ export type ReviewStatusInfoApprovalStatusEnum =
   | "APPROVAL_STATUS_PENDING_NOT_SERVABLE"
   | "APPROVAL_STATUS_PENDING_SERVABLE"
   | "APPROVAL_STATUS_APPROVED_SERVABLE"
-  | "APPROVAL_STATUS_REJECTED_NOT_SERVABLE"
-  | (string & {});
+  | "APPROVAL_STATUS_REJECTED_NOT_SERVABLE";
 export const ReviewStatusInfoApprovalStatusEnum = /*@__PURE__*/ S.String;
 
 export type ReviewStatusInfoCreativeAndLandingPageReviewStatusEnum =
   | "REVIEW_STATUS_UNSPECIFIED"
   | "REVIEW_STATUS_APPROVED"
   | "REVIEW_STATUS_REJECTED"
-  | "REVIEW_STATUS_PENDING"
-  | (string & {});
+  | "REVIEW_STATUS_PENDING";
 export const ReviewStatusInfoCreativeAndLandingPageReviewStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -5279,8 +5172,7 @@ export type CreativeHostingSourceEnum =
   | "HOSTING_SOURCE_CM"
   | "HOSTING_SOURCE_THIRD_PARTY"
   | "HOSTING_SOURCE_HOSTED"
-  | "HOSTING_SOURCE_RICH_MEDIA"
-  | (string & {});
+  | "HOSTING_SOURCE_RICH_MEDIA";
 export const CreativeHostingSourceEnum = /*@__PURE__*/ S.String;
 
 export type UniversalAdIdRegistryEnum =
@@ -5289,8 +5181,7 @@ export type UniversalAdIdRegistryEnum =
   | "UNIVERSAL_AD_REGISTRY_AD_ID"
   | "UNIVERSAL_AD_REGISTRY_CLEARCAST"
   | "UNIVERSAL_AD_REGISTRY_DV360"
-  | "UNIVERSAL_AD_REGISTRY_CM"
-  | (string & {});
+  | "UNIVERSAL_AD_REGISTRY_CM";
 export const UniversalAdIdRegistryEnum = /*@__PURE__*/ S.String;
 
 /** A creative identifier provided by a registry that is unique across all platforms. This is part of the VAST 4.0 standard. */
@@ -5321,7 +5212,7 @@ export const CounterEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CounterEvent" }) as any as S.Schema<CounterEvent>;
 
-export type CounterEventList = CounterEvent[];
+export type CounterEventList = ReadonlyArray<CounterEvent>;
 export const CounterEventList = /*@__PURE__*/ S.Array(
   CounterEvent,
 ) as any as S.Schema<CounterEventList>;
@@ -5339,8 +5230,7 @@ export type CreativeExpandingDirectionEnum =
   | "EXPANDING_DIRECTION_DOWN_AND_RIGHT"
   | "EXPANDING_DIRECTION_UP_OR_DOWN"
   | "EXPANDING_DIRECTION_LEFT_OR_RIGHT"
-  | "EXPANDING_DIRECTION_ANY_DIAGONAL"
-  | (string & {});
+  | "EXPANDING_DIRECTION_ANY_DIAGONAL";
 export const CreativeExpandingDirectionEnum = /*@__PURE__*/ S.String;
 
 /** A Campaign Manager 360 tracking ad. */
@@ -5395,7 +5285,7 @@ export const Transcode = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Transcode" }) as any as S.Schema<Transcode>;
 
-export type TranscodeList = Transcode[];
+export type TranscodeList = ReadonlyArray<Transcode>;
 export const TranscodeList = /*@__PURE__*/ S.Array(
   Transcode,
 ) as any as S.Schema<TranscodeList>;
@@ -5403,8 +5293,7 @@ export const TranscodeList = /*@__PURE__*/ S.Array(
 export type ExitEventTypeEnum =
   | "EXIT_EVENT_TYPE_UNSPECIFIED"
   | "EXIT_EVENT_TYPE_DEFAULT"
-  | "EXIT_EVENT_TYPE_BACKUP"
-  | (string & {});
+  | "EXIT_EVENT_TYPE_BACKUP";
 export const ExitEventTypeEnum = /*@__PURE__*/ S.String;
 
 /** Exit event of the creative. */
@@ -5427,7 +5316,7 @@ export const ExitEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExitEvent" }) as any as S.Schema<ExitEvent>;
 
-export type ExitEventList = ExitEvent[];
+export type ExitEventList = ReadonlyArray<ExitEvent>;
 export const ExitEventList = /*@__PURE__*/ S.Array(
   ExitEvent,
 ) as any as S.Schema<ExitEventList>;
@@ -5468,8 +5357,7 @@ export type AssetAssociationRoleEnum =
   | "ASSET_ROLE_ACCENT_COLOR"
   | "ASSET_ROLE_REQUIRE_LOGO"
   | "ASSET_ROLE_REQUIRE_IMAGE"
-  | "ASSET_ROLE_ENABLE_ASSET_ENHANCEMENTS"
-  | (string & {});
+  | "ASSET_ROLE_ENABLE_ASSET_ENHANCEMENTS";
 export const AssetAssociationRoleEnum = /*@__PURE__*/ S.String;
 
 /** Asset association for the creative. */
@@ -5488,7 +5376,7 @@ export const AssetAssociation = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssetAssociation",
 }) as any as S.Schema<AssetAssociation>;
 
-export type AssetAssociationList = AssetAssociation[];
+export type AssetAssociationList = ReadonlyArray<AssetAssociation>;
 export const AssetAssociationList = /*@__PURE__*/ S.Array(
   AssetAssociation,
 ) as any as S.Schema<AssetAssociationList>;
@@ -5499,8 +5387,7 @@ export type CreativeEntityStatusEnum =
   | "ENTITY_STATUS_ARCHIVED"
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
-  | (string & {});
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
 export const CreativeEntityStatusEnum = /*@__PURE__*/ S.String;
 
 export type ThirdPartyUrlTypeEnum =
@@ -5519,8 +5406,7 @@ export type ThirdPartyUrlTypeEnum =
   | "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_STOP"
   | "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_CUSTOM"
   | "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_SKIP"
-  | "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_PROGRESS"
-  | (string & {});
+  | "THIRD_PARTY_URL_TYPE_AUDIO_VIDEO_PROGRESS";
 export const ThirdPartyUrlTypeEnum = /*@__PURE__*/ S.String;
 
 /** Tracking URLs from third parties to track interactions with an audio or a video creative. */
@@ -5537,7 +5423,7 @@ export const ThirdPartyUrl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ThirdPartyUrl" }) as any as S.Schema<ThirdPartyUrl>;
 
-export type ThirdPartyUrlList = ThirdPartyUrl[];
+export type ThirdPartyUrlList = ReadonlyArray<ThirdPartyUrl>;
 export const ThirdPartyUrlList = /*@__PURE__*/ S.Array(
   ThirdPartyUrl,
 ) as any as S.Schema<ThirdPartyUrlList>;
@@ -5558,8 +5444,7 @@ export type CreativeCreativeTypeEnum =
   | "CREATIVE_TYPE_PUBLISHER_HOSTED"
   | "CREATIVE_TYPE_NATIVE_VIDEO"
   | "CREATIVE_TYPE_TEMPLATED_APP_INSTALL_VIDEO"
-  | "CREATIVE_TYPE_ASSET_BASED_CREATIVE"
-  | (string & {});
+  | "CREATIVE_TYPE_ASSET_BASED_CREATIVE";
 export const CreativeCreativeTypeEnum = /*@__PURE__*/ S.String;
 
 export type ObaIconPositionEnum =
@@ -5567,8 +5452,7 @@ export type ObaIconPositionEnum =
   | "OBA_ICON_POSITION_UPPER_RIGHT"
   | "OBA_ICON_POSITION_UPPER_LEFT"
   | "OBA_ICON_POSITION_LOWER_RIGHT"
-  | "OBA_ICON_POSITION_LOWER_LEFT"
-  | (string & {});
+  | "OBA_ICON_POSITION_LOWER_LEFT";
 export const ObaIconPositionEnum = /*@__PURE__*/ S.String;
 
 /** OBA Icon for a Creative */
@@ -5784,8 +5668,7 @@ export type InsertionOrderReservationTypeEnum =
   | "RESERVATION_TYPE_PROGRAMMATIC_GUARANTEED"
   | "RESERVATION_TYPE_TAG_GUARANTEED"
   | "RESERVATION_TYPE_PETRA_VIRAL"
-  | "RESERVATION_TYPE_INSTANT_RESERVE"
-  | (string & {});
+  | "RESERVATION_TYPE_INSTANT_RESERVE";
 export const InsertionOrderReservationTypeEnum = /*@__PURE__*/ S.String;
 
 export type InsertionOrderEntityStatusEnum =
@@ -5794,23 +5677,20 @@ export type InsertionOrderEntityStatusEnum =
   | "ENTITY_STATUS_ARCHIVED"
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
-  | (string & {});
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
 export const InsertionOrderEntityStatusEnum = /*@__PURE__*/ S.String;
 
 export type InsertionOrderBudgetBudgetUnitEnum =
   | "BUDGET_UNIT_UNSPECIFIED"
   | "BUDGET_UNIT_CURRENCY"
-  | "BUDGET_UNIT_IMPRESSIONS"
-  | (string & {});
+  | "BUDGET_UNIT_IMPRESSIONS";
 export const InsertionOrderBudgetBudgetUnitEnum = /*@__PURE__*/ S.String;
 
 export type InsertionOrderBudgetAutomationTypeEnum =
   | "INSERTION_ORDER_AUTOMATION_TYPE_UNSPECIFIED"
   | "INSERTION_ORDER_AUTOMATION_TYPE_BUDGET"
   | "INSERTION_ORDER_AUTOMATION_TYPE_NONE"
-  | "INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET"
-  | (string & {});
+  | "INSERTION_ORDER_AUTOMATION_TYPE_BID_BUDGET";
 export const InsertionOrderBudgetAutomationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Settings that control the budget of a single budget segment. */
@@ -5835,7 +5715,8 @@ export const InsertionOrderBudgetSegment = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsertionOrderBudgetSegment",
 }) as any as S.Schema<InsertionOrderBudgetSegment>;
 
-export type InsertionOrderBudgetSegmentList = InsertionOrderBudgetSegment[];
+export type InsertionOrderBudgetSegmentList =
+  ReadonlyArray<InsertionOrderBudgetSegment>;
 export const InsertionOrderBudgetSegmentList = /*@__PURE__*/ S.Array(
   InsertionOrderBudgetSegment,
 ) as any as S.Schema<InsertionOrderBudgetSegmentList>;
@@ -5863,15 +5744,13 @@ export type InsertionOrderBillableOutcomeEnum =
   | "BILLABLE_OUTCOME_UNSPECIFIED"
   | "BILLABLE_OUTCOME_PAY_PER_IMPRESSION"
   | "BILLABLE_OUTCOME_PAY_PER_CLICK"
-  | "BILLABLE_OUTCOME_PAY_PER_VIEWABLE_IMPRESSION"
-  | (string & {});
+  | "BILLABLE_OUTCOME_PAY_PER_VIEWABLE_IMPRESSION";
 export const InsertionOrderBillableOutcomeEnum = /*@__PURE__*/ S.String;
 
 export type InsertionOrderInsertionOrderTypeEnum =
   | "INSERTION_ORDER_TYPE_UNSPECIFIED"
   | "RTB"
-  | "OVER_THE_TOP"
-  | (string & {});
+  | "OVER_THE_TOP";
 export const InsertionOrderInsertionOrderTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single insertion order. */
@@ -6026,8 +5905,7 @@ export type CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTarg
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6066,8 +5944,7 @@ export const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsReq
 export type LocationListLocationTypeEnum =
   | "TARGETING_LOCATION_TYPE_UNSPECIFIED"
   | "TARGETING_LOCATION_TYPE_PROXIMITY"
-  | "TARGETING_LOCATION_TYPE_REGIONAL"
-  | (string & {});
+  | "TARGETING_LOCATION_TYPE_REGIONAL";
 export const LocationListLocationTypeEnum = /*@__PURE__*/ S.String;
 
 /** A list of locations used for targeting. */
@@ -6284,8 +6161,7 @@ export type CreateAdvertisersTargetingTypesAssignedTargetingOptionsTargetingType
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const CreateAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6324,14 +6200,12 @@ export type CustomBiddingAlgorithmEntityStatusEnum =
   | "ENTITY_STATUS_ARCHIVED"
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
-  | (string & {});
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
 export const CustomBiddingAlgorithmEntityStatusEnum = /*@__PURE__*/ S.String;
 
 export type CustomBiddingAlgorithmCustomBiddingAlgorithmTypeEnum =
   | "CUSTOM_BIDDING_ALGORITHM_TYPE_UNSPECIFIED"
-  | "SCRIPT_BASED"
-  | (string & {});
+  | "SCRIPT_BASED";
 export const CustomBiddingAlgorithmCustomBiddingAlgorithmTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6340,8 +6214,7 @@ export type CustomBiddingModelDetailsReadinessStateEnum =
   | "READINESS_STATE_ACTIVE"
   | "READINESS_STATE_INSUFFICIENT_DATA"
   | "READINESS_STATE_TRAINING"
-  | "READINESS_STATE_NO_VALID_SCRIPT"
-  | (string & {});
+  | "READINESS_STATE_NO_VALID_SCRIPT";
 export const CustomBiddingModelDetailsReadinessStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6349,8 +6222,7 @@ export type CustomBiddingModelDetailsSuspensionStateEnum =
   | "SUSPENSION_STATE_UNSPECIFIED"
   | "SUSPENSION_STATE_ENABLED"
   | "SUSPENSION_STATE_DORMANT"
-  | "SUSPENSION_STATE_SUSPENDED"
-  | (string & {});
+  | "SUSPENSION_STATE_SUSPENDED";
 export const CustomBiddingModelDetailsSuspensionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6373,7 +6245,8 @@ export const CustomBiddingModelDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomBiddingModelDetails",
 }) as any as S.Schema<CustomBiddingModelDetails>;
 
-export type CustomBiddingModelDetailsList = CustomBiddingModelDetails[];
+export type CustomBiddingModelDetailsList =
+  ReadonlyArray<CustomBiddingModelDetails>;
 export const CustomBiddingModelDetailsList = /*@__PURE__*/ S.Array(
   CustomBiddingModelDetails,
 ) as any as S.Schema<CustomBiddingModelDetailsList>;
@@ -6440,8 +6313,7 @@ export type CustomBiddingScriptStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACCEPTED"
   | "REJECTED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const CustomBiddingScriptStateEnum = /*@__PURE__*/ S.String;
 
 /** The reference to the uploaded custom bidding script file. */
@@ -6461,8 +6333,7 @@ export type ScriptErrorErrorCodeEnum =
   | "ERROR_CODE_UNSPECIFIED"
   | "SYNTAX_ERROR"
   | "DEPRECATED_SYNTAX"
-  | "INTERNAL_ERROR"
-  | (string & {});
+  | "INTERNAL_ERROR";
 export const ScriptErrorErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** An error message for a custom bidding script. */
@@ -6485,7 +6356,7 @@ export const ScriptError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScriptError" }) as any as S.Schema<ScriptError>;
 
-export type ScriptErrorList = ScriptError[];
+export type ScriptErrorList = ReadonlyArray<ScriptError>;
 export const ScriptErrorList = /*@__PURE__*/ S.Array(
   ScriptError,
 ) as any as S.Schema<ScriptErrorList>;
@@ -6642,8 +6513,7 @@ export type GuaranteedOrderExchangeEnum =
   | "EXCHANGE_TUBI"
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
-  | "EXCHANGE_EXTE"
-  | (string & {});
+  | "EXCHANGE_EXTE";
 export const GuaranteedOrderExchangeEnum = /*@__PURE__*/ S.String;
 
 export type GuaranteedOrderStatusEntityStatusEnum =
@@ -6652,15 +6522,13 @@ export type GuaranteedOrderStatusEntityStatusEnum =
   | "ENTITY_STATUS_ARCHIVED"
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
-  | (string & {});
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
 export const GuaranteedOrderStatusEntityStatusEnum = /*@__PURE__*/ S.String;
 
 export type GuaranteedOrderStatusConfigStatusEnum =
   | "GUARANTEED_ORDER_CONFIG_STATUS_UNSPECIFIED"
   | "PENDING"
-  | "COMPLETED"
-  | (string & {});
+  | "COMPLETED";
 export const GuaranteedOrderStatusConfigStatusEnum = /*@__PURE__*/ S.String;
 
 /** The status settings of the guaranteed order. */
@@ -6930,8 +6798,7 @@ export type CreatePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnu
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const CreatePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6983,8 +6850,7 @@ export type CreateSdfDownloadTaskRequestVersionEnum =
   | "SDF_VERSION_9"
   | "SDF_VERSION_9_1"
   | "SDF_VERSION_9_2"
-  | "SDF_VERSION_10"
-  | (string & {});
+  | "SDF_VERSION_10";
 export const CreateSdfDownloadTaskRequestVersionEnum = /*@__PURE__*/ S.String;
 
 export type ParentEntityFilterFileTypeItemEnum =
@@ -6994,12 +6860,11 @@ export type ParentEntityFilterFileTypeItemEnum =
   | "FILE_TYPE_INSERTION_ORDER"
   | "FILE_TYPE_LINE_ITEM"
   | "FILE_TYPE_AD_GROUP"
-  | "FILE_TYPE_AD"
-  | (string & {});
+  | "FILE_TYPE_AD";
 export const ParentEntityFilterFileTypeItemEnum = /*@__PURE__*/ S.String;
 
 export type ParentEntityFilterFileTypeItemEnumList =
-  ParentEntityFilterFileTypeItemEnum[];
+  ReadonlyArray<ParentEntityFilterFileTypeItemEnum>;
 export const ParentEntityFilterFileTypeItemEnumList = /*@__PURE__*/ S.Array(
   ParentEntityFilterFileTypeItemEnum,
 ) as any as S.Schema<ParentEntityFilterFileTypeItemEnumList>;
@@ -7011,8 +6876,7 @@ export type ParentEntityFilterFilterTypeEnum =
   | "FILTER_TYPE_CAMPAIGN_ID"
   | "FILTER_TYPE_MEDIA_PRODUCT_ID"
   | "FILTER_TYPE_INSERTION_ORDER_ID"
-  | "FILTER_TYPE_LINE_ITEM_ID"
-  | (string & {});
+  | "FILTER_TYPE_LINE_ITEM_ID";
 export const ParentEntityFilterFilterTypeEnum = /*@__PURE__*/ S.String;
 
 /** A filtering option that filters on selected file types belonging to a chosen set of filter entities. */
@@ -7406,8 +7270,7 @@ export type DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTarg
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7565,8 +7428,7 @@ export type DeleteAdvertisersTargetingTypesAssignedTargetingOptionsTargetingType
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const DeleteAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7728,8 +7590,7 @@ export type DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnu
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const DeletePartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7813,8 +7674,7 @@ export const GoogleBytestreamMedia = /*@__PURE__*/ S.suspend(() =>
 export type DuplicateLineItemRequestContainsEuPoliticalAdsEnum =
   | "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN"
   | "CONTAINS_EU_POLITICAL_ADVERTISING"
-  | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING"
-  | (string & {});
+  | "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING";
 export const DuplicateLineItemRequestContainsEuPoliticalAdsEnum =
   /*@__PURE__*/ S.String;
 
@@ -8221,8 +8081,7 @@ export type GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargeti
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8372,8 +8231,7 @@ export type GetAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnu
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const GetAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8436,8 +8294,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
 export type YoutubeVideoDetailsUnavailableReasonEnum =
   | "VIDEO_UNAVAILABLE_REASON_UNSPECIFIED"
   | "VIDEO_UNAVAILABLE_REASON_PRIVATE"
-  | "VIDEO_UNAVAILABLE_REASON_DELETED"
-  | (string & {});
+  | "VIDEO_UNAVAILABLE_REASON_DELETED";
 export const YoutubeVideoDetailsUnavailableReasonEnum = /*@__PURE__*/ S.String;
 
 /** Details of a YouTube video. */
@@ -8563,8 +8420,7 @@ export type VideoDiscoveryAdThumbnailEnum =
   | "THUMBNAIL_DEFAULT"
   | "THUMBNAIL_1"
   | "THUMBNAIL_2"
-  | "THUMBNAIL_3"
-  | (string & {});
+  | "THUMBNAIL_3";
 export const VideoDiscoveryAdThumbnailEnum = /*@__PURE__*/ S.String;
 
 /** Details for a video discovery ad. */
@@ -8592,12 +8448,12 @@ export const VideoDiscoveryAd = /*@__PURE__*/ S.suspend(() =>
   identifier: "VideoDiscoveryAd",
 }) as any as S.Schema<VideoDiscoveryAd>;
 
-export type YoutubeVideoDetailsList = YoutubeVideoDetails[];
+export type YoutubeVideoDetailsList = ReadonlyArray<YoutubeVideoDetails>;
 export const YoutubeVideoDetailsList = /*@__PURE__*/ S.Array(
   YoutubeVideoDetails,
 ) as any as S.Schema<YoutubeVideoDetailsList>;
 
-export type ImageAssetList = ImageAsset[];
+export type ImageAssetList = ReadonlyArray<ImageAsset>;
 export const ImageAssetList = /*@__PURE__*/ S.Array(
   ImageAsset,
 ) as any as S.Schema<ImageAssetList>;
@@ -8653,8 +8509,7 @@ export type AdUrlTypeEnum =
   | "AD_URL_TYPE_BEACON_IMPRESSION"
   | "AD_URL_TYPE_BEACON_EXPANDABLE_DCM_IMPRESSION"
   | "AD_URL_TYPE_BEACON_CLICK"
-  | "AD_URL_TYPE_BEACON_SKIP"
-  | (string & {});
+  | "AD_URL_TYPE_BEACON_SKIP";
 export const AdUrlTypeEnum = /*@__PURE__*/ S.String;
 
 /** Additional URLs related to the ad, including beacons. */
@@ -8671,7 +8526,7 @@ export const AdUrl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdUrl" }) as any as S.Schema<AdUrl>;
 
-export type AdUrlList = AdUrl[];
+export type AdUrlList = ReadonlyArray<AdUrl>;
 export const AdUrlList = /*@__PURE__*/ S.Array(
   AdUrl,
 ) as any as S.Schema<AdUrlList>;
@@ -8692,8 +8547,7 @@ export const DisplayVideoSourceAd = /*@__PURE__*/ S.suspend(() =>
 export type MastheadAdVideoAspectRatioEnum =
   | "VIDEO_ASPECT_RATIO_UNSPECIFIED"
   | "VIDEO_ASPECT_RATIO_WIDESCREEN"
-  | "VIDEO_ASPECT_RATIO_FIXED_16_9"
-  | (string & {});
+  | "VIDEO_ASPECT_RATIO_FIXED_16_9";
 export const MastheadAdVideoAspectRatioEnum = /*@__PURE__*/ S.String;
 
 /** Details for a Masthead Ad. */
@@ -8743,8 +8597,7 @@ export type YoutubeAdGroupAdEntityStatusEnum =
   | "ENTITY_STATUS_ARCHIVED"
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
-  | (string & {});
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
 export const YoutubeAdGroupAdEntityStatusEnum = /*@__PURE__*/ S.String;
 
 /** Details for a bumper ad. */
@@ -8841,8 +8694,7 @@ export type YoutubeAdGroupEntityStatusEnum =
   | "ENTITY_STATUS_ARCHIVED"
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
-  | (string & {});
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
 export const YoutubeAdGroupEntityStatusEnum = /*@__PURE__*/ S.String;
 
 export type CustomLabelKeyEnum =
@@ -8851,8 +8703,7 @@ export type CustomLabelKeyEnum =
   | "CUSTOM_LABEL_KEY_1"
   | "CUSTOM_LABEL_KEY_2"
   | "CUSTOM_LABEL_KEY_3"
-  | "CUSTOM_LABEL_KEY_4"
-  | (string & {});
+  | "CUSTOM_LABEL_KEY_4";
 export const CustomLabelKeyEnum = /*@__PURE__*/ S.String;
 
 /** The key and value of a custom label. */
@@ -8885,7 +8736,7 @@ export const ProductMatchDimension = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductMatchDimension",
 }) as any as S.Schema<ProductMatchDimension>;
 
-export type ProductMatchDimensionList = ProductMatchDimension[];
+export type ProductMatchDimensionList = ReadonlyArray<ProductMatchDimension>;
 export const ProductMatchDimensionList = /*@__PURE__*/ S.Array(
   ProductMatchDimension,
 ) as any as S.Schema<ProductMatchDimensionList>;
@@ -8894,8 +8745,7 @@ export type ProductFeedDataProductMatchTypeEnum =
   | "PRODUCT_MATCH_TYPE_UNSPECIFIED"
   | "PRODUCT_MATCH_TYPE_ALL_PRODUCTS"
   | "PRODUCT_MATCH_TYPE_SPECIFIC_PRODUCTS"
-  | "PRODUCT_MATCH_TYPE_CUSTOM_LABEL"
-  | (string & {});
+  | "PRODUCT_MATCH_TYPE_CUSTOM_LABEL";
 export const ProductFeedDataProductMatchTypeEnum = /*@__PURE__*/ S.String;
 
 /** The details of product feed. */
@@ -8926,8 +8776,7 @@ export type YoutubeAdGroupAdGroupFormatEnum =
   | "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_AUDIO"
   | "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_ACTION"
   | "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_REACH"
-  | "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_MASTHEAD"
-  | (string & {});
+  | "YOUTUBE_AND_PARTNERS_AD_GROUP_FORMAT_MASTHEAD";
 export const YoutubeAdGroupAdGroupFormatEnum = /*@__PURE__*/ S.String;
 
 /** A single YouTube ad group associated with a YouTube and Partners line item. */
@@ -9021,8 +8870,7 @@ export type GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsT
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const GetAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9218,8 +9066,7 @@ export type ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum =
   | "VIEWABILITY_PERCENT_25"
   | "VIEWABILITY_PERCENT_50"
   | "VIEWABILITY_PERCENT_75"
-  | "VIEWABILITY_PERCENT_100"
-  | (string & {});
+  | "VIEWABILITY_PERCENT_100";
 export const ActiveViewVideoViewabilityMetricConfigMinimumViewabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -9244,16 +9091,14 @@ export type ActiveViewVideoViewabilityMetricConfigMinimumDurationEnum =
   | "VIDEO_DURATION_SECONDS_15"
   | "VIDEO_DURATION_SECONDS_30"
   | "VIDEO_DURATION_SECONDS_45"
-  | "VIDEO_DURATION_SECONDS_60"
-  | (string & {});
+  | "VIDEO_DURATION_SECONDS_60";
 export const ActiveViewVideoViewabilityMetricConfigMinimumDurationEnum =
   /*@__PURE__*/ S.String;
 
 export type ActiveViewVideoViewabilityMetricConfigMinimumVolumeEnum =
   | "VIDEO_VOLUME_PERCENT_UNSPECIFIED"
   | "VIDEO_VOLUME_PERCENT_0"
-  | "VIDEO_VOLUME_PERCENT_10"
-  | (string & {});
+  | "VIDEO_VOLUME_PERCENT_10";
 export const ActiveViewVideoViewabilityMetricConfigMinimumVolumeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9263,8 +9108,7 @@ export type ActiveViewVideoViewabilityMetricConfigMinimumQuartileEnum =
   | "VIDEO_DURATION_QUARTILE_FIRST"
   | "VIDEO_DURATION_QUARTILE_SECOND"
   | "VIDEO_DURATION_QUARTILE_THIRD"
-  | "VIDEO_DURATION_QUARTILE_FOURTH"
-  | (string & {});
+  | "VIDEO_DURATION_QUARTILE_FOURTH";
 export const ActiveViewVideoViewabilityMetricConfigMinimumQuartileEnum =
   /*@__PURE__*/ S.String;
 
@@ -9306,8 +9150,7 @@ export type FloodlightGroupWebTagTypeEnum =
   | "WEB_TAG_TYPE_UNSPECIFIED"
   | "WEB_TAG_TYPE_NONE"
   | "WEB_TAG_TYPE_IMAGE"
-  | "WEB_TAG_TYPE_DYNAMIC"
-  | (string & {});
+  | "WEB_TAG_TYPE_DYNAMIC";
 export const FloodlightGroupWebTagTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies how many days into the past to look when determining whether to record a conversion. */
@@ -9396,7 +9239,7 @@ export const RemarketingConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemarketingConfig",
 }) as any as S.Schema<RemarketingConfig>;
 
-export type RemarketingConfigList = RemarketingConfig[];
+export type RemarketingConfigList = ReadonlyArray<RemarketingConfig>;
 export const RemarketingConfigList = /*@__PURE__*/ S.Array(
   RemarketingConfig,
 ) as any as S.Schema<RemarketingConfigList>;
@@ -9404,8 +9247,7 @@ export const RemarketingConfigList = /*@__PURE__*/ S.Array(
 export type FloodlightActivityServingStatusEnum =
   | "FLOODLIGHT_ACTIVITY_SERVING_STATUS_UNSPECIFIED"
   | "FLOODLIGHT_ACTIVITY_SERVING_STATUS_ENABLED"
-  | "FLOODLIGHT_ACTIVITY_SERVING_STATUS_DISABLED"
-  | (string & {});
+  | "FLOODLIGHT_ACTIVITY_SERVING_STATUS_DISABLED";
 export const FloodlightActivityServingStatusEnum = /*@__PURE__*/ S.String;
 
 /** A single Floodlight activity. */
@@ -9473,8 +9315,7 @@ export type GoogleAudienceGoogleAudienceTypeEnum =
   | "GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS"
   | "GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES"
   | "GOOGLE_AUDIENCE_TYPE_LIFE_EVENT"
-  | "GOOGLE_AUDIENCE_TYPE_EXTENDED_DEMOGRAPHIC"
-  | (string & {});
+  | "GOOGLE_AUDIENCE_TYPE_EXTENDED_DEMOGRAPHIC";
 export const GoogleAudienceGoogleAudienceTypeEnum = /*@__PURE__*/ S.String;
 
 /** Describes a Google audience resource. Includes Google audience lists. */
@@ -9682,8 +9523,7 @@ export type ExchangeConfigEnabledExchangeExchangeEnum =
   | "EXCHANGE_TUBI"
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
-  | "EXCHANGE_EXTE"
-  | (string & {});
+  | "EXCHANGE_EXTE";
 export const ExchangeConfigEnabledExchangeExchangeEnum = /*@__PURE__*/ S.String;
 
 /** An enabled exchange in the partner. */
@@ -9708,7 +9548,8 @@ export const ExchangeConfigEnabledExchange = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExchangeConfigEnabledExchange",
 }) as any as S.Schema<ExchangeConfigEnabledExchange>;
 
-export type ExchangeConfigEnabledExchangeList = ExchangeConfigEnabledExchange[];
+export type ExchangeConfigEnabledExchangeList =
+  ReadonlyArray<ExchangeConfigEnabledExchange>;
 export const ExchangeConfigEnabledExchangeList = /*@__PURE__*/ S.Array(
   ExchangeConfigEnabledExchange,
 ) as any as S.Schema<ExchangeConfigEnabledExchangeList>;
@@ -9759,8 +9600,7 @@ export type PartnerEntityStatusEnum =
   | "ENTITY_STATUS_ARCHIVED"
   | "ENTITY_STATUS_DRAFT"
   | "ENTITY_STATUS_PAUSED"
-  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION"
-  | (string & {});
+  | "ENTITY_STATUS_SCHEDULED_FOR_DELETION";
 export const PartnerEntityStatusEnum = /*@__PURE__*/ S.String;
 
 /** A single partner in Display & Video 360 (DV360). */
@@ -9872,8 +9712,7 @@ export type GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const GetPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9974,8 +9813,7 @@ export type GetTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_VIDEO"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
-  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-  | (string & {});
+  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const GetTargetingTypesTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10009,8 +9847,7 @@ export const GetTargetingTypesTargetingOptionsRequest = /*@__PURE__*/ S.suspend(
 export type ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum =
   | "CONTENT_STREAM_TYPE_UNSPECIFIED"
   | "CONTENT_LIVE_STREAM"
-  | "CONTENT_ON_DEMAND"
-  | (string & {});
+  | "CONTENT_ON_DEMAND";
 export const ContentStreamTypeTargetingOptionDetailsContentStreamTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10032,8 +9869,7 @@ export const ContentStreamTypeTargetingOptionDetails = /*@__PURE__*/ S.suspend(
 
 export type OmidTargetingOptionDetailsOmidEnum =
   | "OMID_UNSPECIFIED"
-  | "OMID_FOR_MOBILE_DISPLAY_ADS"
-  | (string & {});
+  | "OMID_FOR_MOBILE_DISPLAY_ADS";
 export const OmidTargetingOptionDetailsOmidEnum = /*@__PURE__*/ S.String;
 
 /** Represents a targetable Open Measurement enabled inventory type. This will be populated in the omid_details field when targeting_type is `TARGETING_TYPE_OMID`. */
@@ -10055,8 +9891,7 @@ export type ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositi
     | "CONTENT_OUTSTREAM_POSITION_IN_ARTICLE"
     | "CONTENT_OUTSTREAM_POSITION_IN_BANNER"
     | "CONTENT_OUTSTREAM_POSITION_IN_FEED"
-    | "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL"
-    | (string & {});
+    | "CONTENT_OUTSTREAM_POSITION_INTERSTITIAL";
 export const ContentOutstreamPositionTargetingOptionDetailsContentOutstreamPositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -10086,8 +9921,7 @@ export type ViewabilityTargetingOptionDetailsViewabilityEnum =
   | "VIEWABILITY_60_PERCENT_OR_MORE"
   | "VIEWABILITY_70_PERCENT_OR_MORE"
   | "VIEWABILITY_80_PERCENT_OR_MORE"
-  | "VIEWABILITY_90_PERCENT_OR_MORE"
-  | (string & {});
+  | "VIEWABILITY_90_PERCENT_OR_MORE";
 export const ViewabilityTargetingOptionDetailsViewabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -10122,8 +9956,7 @@ export type VideoPlayerSizeTargetingOptionDetailsVideoPlayerSizeEnum =
   | "VIDEO_PLAYER_SIZE_SMALL"
   | "VIDEO_PLAYER_SIZE_LARGE"
   | "VIDEO_PLAYER_SIZE_HD"
-  | "VIDEO_PLAYER_SIZE_UNKNOWN"
-  | (string & {});
+  | "VIDEO_PLAYER_SIZE_UNKNOWN";
 export const VideoPlayerSizeTargetingOptionDetailsVideoPlayerSizeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10149,8 +9982,7 @@ export type NativeContentPositionTargetingOptionDetailsContentPositionEnum =
   | "NATIVE_CONTENT_POSITION_IN_ARTICLE"
   | "NATIVE_CONTENT_POSITION_IN_FEED"
   | "NATIVE_CONTENT_POSITION_PERIPHERAL"
-  | "NATIVE_CONTENT_POSITION_RECOMMENDATION"
-  | (string & {});
+  | "NATIVE_CONTENT_POSITION_RECOMMENDATION";
 export const NativeContentPositionTargetingOptionDetailsContentPositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -10193,8 +10025,7 @@ export type AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum =
   | "AUDIO_CONTENT_TYPE_CATCH_UP_RADIO"
   | "AUDIO_CONTENT_TYPE_WEB_RADIO"
   | "AUDIO_CONTENT_TYPE_VIDEO_GAME"
-  | "AUDIO_CONTENT_TYPE_TEXT_TO_SPEECH"
-  | (string & {});
+  | "AUDIO_CONTENT_TYPE_TEXT_TO_SPEECH";
 export const AudioContentTypeTargetingOptionDetailsAudioContentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10222,8 +10053,7 @@ export type HouseholdIncomeTargetingOptionDetailsHouseholdIncomeEnum =
   | "HOUSEHOLD_INCOME_TOP_31_TO_40_PERCENT"
   | "HOUSEHOLD_INCOME_TOP_21_TO_30_PERCENT"
   | "HOUSEHOLD_INCOME_TOP_11_TO_20_PERCENT"
-  | "HOUSEHOLD_INCOME_TOP_10_PERCENT"
-  | (string & {});
+  | "HOUSEHOLD_INCOME_TOP_10_PERCENT";
 export const HouseholdIncomeTargetingOptionDetailsHouseholdIncomeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10246,8 +10076,7 @@ export const HouseholdIncomeTargetingOptionDetails = /*@__PURE__*/ S.suspend(
 export type CarrierAndIspTargetingOptionDetailsTypeEnum =
   | "CARRIER_AND_ISP_TYPE_UNSPECIFIED"
   | "CARRIER_AND_ISP_TYPE_ISP"
-  | "CARRIER_AND_ISP_TYPE_CARRIER"
-  | (string & {});
+  | "CARRIER_AND_ISP_TYPE_CARRIER";
 export const CarrierAndIspTargetingOptionDetailsTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10287,8 +10116,7 @@ export type SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum =
   | "SENSITIVE_CATEGORY_SENSITIVE_SOCIAL_ISSUES"
   | "SENSITIVE_CATEGORY_SHOCKING"
   | "SENSITIVE_CATEGORY_EMBEDDED_VIDEO"
-  | "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO"
-  | (string & {});
+  | "SENSITIVE_CATEGORY_LIVE_STREAMING_VIDEO";
 export const SensitiveCategoryTargetingOptionDetailsSensitiveCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -10375,8 +10203,7 @@ export type BusinessChainTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_COMMUNE"
   | "GEO_REGION_TYPE_COLLOQUIAL_AREA"
   | "GEO_REGION_TYPE_POST_TOWN"
-  | "GEO_REGION_TYPE_WARD"
-  | (string & {});
+  | "GEO_REGION_TYPE_WARD";
 export const BusinessChainTargetingOptionDetailsGeoRegionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10404,8 +10231,7 @@ export const BusinessChainTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
 export type UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum =
   | "USER_REWARDED_CONTENT_UNSPECIFIED"
   | "USER_REWARDED_CONTENT_USER_REWARDED"
-  | "USER_REWARDED_CONTENT_NOT_USER_REWARDED"
-  | (string & {});
+  | "USER_REWARDED_CONTENT_NOT_USER_REWARDED";
 export const UserRewardedContentTargetingOptionDetailsUserRewardedContentEnum =
   /*@__PURE__*/ S.String;
 
@@ -10429,8 +10255,7 @@ export type OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum =
   | "ON_SCREEN_POSITION_UNSPECIFIED"
   | "ON_SCREEN_POSITION_UNKNOWN"
   | "ON_SCREEN_POSITION_ABOVE_THE_FOLD"
-  | "ON_SCREEN_POSITION_BELOW_THE_FOLD"
-  | (string & {});
+  | "ON_SCREEN_POSITION_BELOW_THE_FOLD";
 export const OnScreenPositionTargetingOptionDetailsOnScreenPositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -10456,8 +10281,7 @@ export type DeviceTypeTargetingOptionDetailsDeviceTypeEnum =
   | "DEVICE_TYPE_CONNECTED_TV"
   | "DEVICE_TYPE_SMART_PHONE"
   | "DEVICE_TYPE_TABLET"
-  | "DEVICE_TYPE_CONNECTED_DEVICE"
-  | (string & {});
+  | "DEVICE_TYPE_CONNECTED_DEVICE";
 export const DeviceTypeTargetingOptionDetailsDeviceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10491,8 +10315,7 @@ export type ParentalStatusTargetingOptionDetailsParentalStatusEnum =
   | "PARENTAL_STATUS_UNSPECIFIED"
   | "PARENTAL_STATUS_PARENT"
   | "PARENTAL_STATUS_NOT_A_PARENT"
-  | "PARENTAL_STATUS_UNKNOWN"
-  | (string & {});
+  | "PARENTAL_STATUS_UNKNOWN";
 export const ParentalStatusTargetingOptionDetailsParentalStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -10552,8 +10375,7 @@ export type GeoRegionTargetingOptionDetailsGeoRegionTypeEnum =
   | "GEO_REGION_TYPE_COMMUNE"
   | "GEO_REGION_TYPE_COLLOQUIAL_AREA"
   | "GEO_REGION_TYPE_POST_TOWN"
-  | "GEO_REGION_TYPE_WARD"
-  | (string & {});
+  | "GEO_REGION_TYPE_WARD";
 export const GeoRegionTargetingOptionDetailsGeoRegionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10591,8 +10413,7 @@ export type AgeRangeTargetingOptionDetailsAgeRangeEnum =
   | "AGE_RANGE_45_49"
   | "AGE_RANGE_50_54"
   | "AGE_RANGE_55_59"
-  | "AGE_RANGE_60_64"
-  | (string & {});
+  | "AGE_RANGE_60_64";
 export const AgeRangeTargetingOptionDetailsAgeRangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10617,8 +10438,7 @@ export type ContentDurationTargetingOptionDetailsContentDurationEnum =
   | "CONTENT_DURATION_5_TO_15_MIN"
   | "CONTENT_DURATION_15_TO_30_MIN"
   | "CONTENT_DURATION_30_TO_60_MIN"
-  | "CONTENT_DURATION_OVER_60_MIN"
-  | (string & {});
+  | "CONTENT_DURATION_OVER_60_MIN";
 export const ContentDurationTargetingOptionDetailsContentDurationEnum =
   /*@__PURE__*/ S.String;
 
@@ -10688,16 +10508,14 @@ export type TargetingOptionTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_VIDEO"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
-  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-  | (string & {});
+  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const TargetingOptionTargetingTypeEnum = /*@__PURE__*/ S.String;
 
 export type EnvironmentTargetingOptionDetailsEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_WEB_OPTIMIZED"
   | "ENVIRONMENT_WEB_NOT_OPTIMIZED"
-  | "ENVIRONMENT_APP"
-  | (string & {});
+  | "ENVIRONMENT_APP";
 export const EnvironmentTargetingOptionDetailsEnvironmentEnum =
   /*@__PURE__*/ S.String;
 
@@ -10721,8 +10539,7 @@ export type DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum =
   | "CONTENT_RATING_TIER_PARENTAL_GUIDANCE"
   | "CONTENT_RATING_TIER_TEENS"
   | "CONTENT_RATING_TIER_MATURE"
-  | "CONTENT_RATING_TIER_FAMILIES"
-  | (string & {});
+  | "CONTENT_RATING_TIER_FAMILIES";
 export const DigitalContentLabelTargetingOptionDetailsContentRatingTierEnum =
   /*@__PURE__*/ S.String;
 
@@ -10832,8 +10649,7 @@ export type ExchangeTargetingOptionDetailsExchangeEnum =
   | "EXCHANGE_TUBI"
   | "EXCHANGE_SNAP"
   | "EXCHANGE_CADENT"
-  | "EXCHANGE_EXTE"
-  | (string & {});
+  | "EXCHANGE_EXTE";
 export const ExchangeTargetingOptionDetailsExchangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -10887,8 +10703,7 @@ export type ContentInstreamPositionTargetingOptionDetailsContentInstreamPosition
     | "CONTENT_INSTREAM_POSITION_PRE_ROLL"
     | "CONTENT_INSTREAM_POSITION_MID_ROLL"
     | "CONTENT_INSTREAM_POSITION_POST_ROLL"
-    | "CONTENT_INSTREAM_POSITION_UNKNOWN"
-    | (string & {});
+    | "CONTENT_INSTREAM_POSITION_UNKNOWN";
 export const ContentInstreamPositionTargetingOptionDetailsContentInstreamPositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -10925,8 +10740,7 @@ export type GenderTargetingOptionDetailsGenderEnum =
   | "GENDER_UNSPECIFIED"
   | "GENDER_MALE"
   | "GENDER_FEMALE"
-  | "GENDER_UNKNOWN"
-  | (string & {});
+  | "GENDER_UNKNOWN";
 export const GenderTargetingOptionDetailsGenderEnum = /*@__PURE__*/ S.String;
 
 /** Represents a targetable gender. This will be populated in the gender_details field of a TargetingOption when targeting_type is `TARGETING_TYPE_GENDER`. */
@@ -10945,8 +10759,7 @@ export const GenderTargetingOptionDetails = /*@__PURE__*/ S.suspend(() =>
 export type AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEnum =
     | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
     | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_DIRECT_SELLERS_ONLY"
-    | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS"
-    | (string & {});
+    | "AUTHORIZED_SELLER_STATUS_AUTHORIZED_AND_NON_PARTICIPATING_PUBLISHERS";
 export const AuthorizedSellerStatusTargetingOptionDetailsAuthorizedSellerStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -11161,7 +10974,7 @@ export const ListAdvertisersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAdvertisersRequest",
 }) as any as S.Schema<ListAdvertisersRequest>;
 
-export type AdvertiserList = Advertiser[];
+export type AdvertiserList = ReadonlyArray<Advertiser>;
 export const AdvertiserList = /*@__PURE__*/ S.Array(
   Advertiser,
 ) as any as S.Schema<AdvertiserList>;
@@ -11211,7 +11024,7 @@ export const ListAdvertisersCampaignsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAdvertisersCampaignsRequest",
 }) as any as S.Schema<ListAdvertisersCampaignsRequest>;
 
-export type CampaignList = Campaign[];
+export type CampaignList = ReadonlyArray<Campaign>;
 export const CampaignList = /*@__PURE__*/ S.Array(
   Campaign,
 ) as any as S.Schema<CampaignList>;
@@ -11264,7 +11077,7 @@ export const ListAdvertisersChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAdvertisersChannelsRequest",
 }) as any as S.Schema<ListAdvertisersChannelsRequest>;
 
-export type ChannelList = Channel[];
+export type ChannelList = ReadonlyArray<Channel>;
 export const ChannelList = /*@__PURE__*/ S.Array(
   Channel,
 ) as any as S.Schema<ChannelList>;
@@ -11366,7 +11179,7 @@ export const ListAdvertisersCreativesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAdvertisersCreativesRequest",
 }) as any as S.Schema<ListAdvertisersCreativesRequest>;
 
-export type CreativeList = Creative[];
+export type CreativeList = ReadonlyArray<Creative>;
 export const CreativeList = /*@__PURE__*/ S.Array(
   Creative,
 ) as any as S.Schema<CreativeList>;
@@ -11417,7 +11230,7 @@ export const ListAdvertisersInsertionOrdersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAdvertisersInsertionOrdersRequest",
 }) as any as S.Schema<ListAdvertisersInsertionOrdersRequest>;
 
-export type InsertionOrderList = InsertionOrder[];
+export type InsertionOrderList = ReadonlyArray<InsertionOrder>;
 export const InsertionOrderList = /*@__PURE__*/ S.Array(
   InsertionOrder,
 ) as any as S.Schema<InsertionOrderList>;
@@ -11440,8 +11253,7 @@ export const ListInsertionOrdersResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListAdvertisersInvoicesLoiSapinInvoiceTypeEnum =
   | "LOI_SAPIN_INVOICE_TYPE_UNSPECIFIED"
   | "LOI_SAPIN_INVOICE_TYPE_MEDIA"
-  | "LOI_SAPIN_INVOICE_TYPE_PLATFORM"
-  | (string & {});
+  | "LOI_SAPIN_INVOICE_TYPE_PLATFORM";
 export const ListAdvertisersInvoicesLoiSapinInvoiceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -11500,7 +11312,7 @@ export const BudgetSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BudgetSummary" }) as any as S.Schema<BudgetSummary>;
 
-export type BudgetSummaryList = BudgetSummary[];
+export type BudgetSummaryList = ReadonlyArray<BudgetSummary>;
 export const BudgetSummaryList = /*@__PURE__*/ S.Array(
   BudgetSummary,
 ) as any as S.Schema<BudgetSummaryList>;
@@ -11508,8 +11320,7 @@ export const BudgetSummaryList = /*@__PURE__*/ S.Array(
 export type InvoiceInvoiceTypeEnum =
   | "INVOICE_TYPE_UNSPECIFIED"
   | "INVOICE_TYPE_CREDIT"
-  | "INVOICE_TYPE_INVOICE"
-  | (string & {});
+  | "INVOICE_TYPE_INVOICE";
 export const InvoiceInvoiceTypeEnum = /*@__PURE__*/ S.String;
 
 /** A single invoice. */
@@ -11580,7 +11391,7 @@ export const Invoice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Invoice" }) as any as S.Schema<Invoice>;
 
-export type InvoiceList = Invoice[];
+export type InvoiceList = ReadonlyArray<Invoice>;
 export const InvoiceList = /*@__PURE__*/ S.Array(
   Invoice,
 ) as any as S.Schema<InvoiceList>;
@@ -11630,7 +11441,7 @@ export const ListAdvertisersLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAdvertisersLineItemsRequest",
 }) as any as S.Schema<ListAdvertisersLineItemsRequest>;
 
-export type LineItemList = LineItem[];
+export type LineItemList = ReadonlyArray<LineItem>;
 export const LineItemList = /*@__PURE__*/ S.Array(
   LineItem,
 ) as any as S.Schema<LineItemList>;
@@ -11700,8 +11511,7 @@ export type ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTarget
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -11793,7 +11603,7 @@ export const ListAdvertisersLocationListsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAdvertisersLocationListsRequest",
 }) as any as S.Schema<ListAdvertisersLocationListsRequest>;
 
-export type LocationListList = LocationList[];
+export type LocationListList = ReadonlyArray<LocationList>;
 export const LocationListList = /*@__PURE__*/ S.Array(
   LocationList,
 ) as any as S.Schema<LocationListList>;
@@ -11894,7 +11704,7 @@ export const ListAdvertisersManualTriggersRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAdvertisersManualTriggersRequest",
 }) as any as S.Schema<ListAdvertisersManualTriggersRequest>;
 
-export type ManualTriggerList = ManualTrigger[];
+export type ManualTriggerList = ReadonlyArray<ManualTrigger>;
 export const ManualTriggerList = /*@__PURE__*/ S.Array(
   ManualTrigger,
 ) as any as S.Schema<ManualTriggerList>;
@@ -11939,7 +11749,7 @@ export const ListAdvertisersNegativeKeywordListsRequest =
     identifier: "ListAdvertisersNegativeKeywordListsRequest",
   }) as any as S.Schema<ListAdvertisersNegativeKeywordListsRequest>;
 
-export type NegativeKeywordListList = NegativeKeywordList[];
+export type NegativeKeywordListList = ReadonlyArray<NegativeKeywordList>;
 export const NegativeKeywordListList = /*@__PURE__*/ S.Array(
   NegativeKeywordList,
 ) as any as S.Schema<NegativeKeywordListList>;
@@ -12060,8 +11870,7 @@ export type ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEn
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const ListAdvertisersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -12150,7 +11959,7 @@ export const ListAdvertisersYoutubeAdGroupAdsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAdvertisersYoutubeAdGroupAdsRequest",
 }) as any as S.Schema<ListAdvertisersYoutubeAdGroupAdsRequest>;
 
-export type YoutubeAdGroupAdList = YoutubeAdGroupAd[];
+export type YoutubeAdGroupAdList = ReadonlyArray<YoutubeAdGroupAd>;
 export const YoutubeAdGroupAdList = /*@__PURE__*/ S.Array(
   YoutubeAdGroupAd,
 ) as any as S.Schema<YoutubeAdGroupAdList>;
@@ -12201,7 +12010,7 @@ export const ListAdvertisersYoutubeAdGroupsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListAdvertisersYoutubeAdGroupsRequest",
 }) as any as S.Schema<ListAdvertisersYoutubeAdGroupsRequest>;
 
-export type YoutubeAdGroupList = YoutubeAdGroup[];
+export type YoutubeAdGroupList = ReadonlyArray<YoutubeAdGroup>;
 export const YoutubeAdGroupList = /*@__PURE__*/ S.Array(
   YoutubeAdGroup,
 ) as any as S.Schema<YoutubeAdGroupList>;
@@ -12271,8 +12080,7 @@ export type ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptions
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const ListAdvertisersYoutubeAdGroupsTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -12414,7 +12222,7 @@ export const ListCombinedAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCombinedAudiencesRequest",
 }) as any as S.Schema<ListCombinedAudiencesRequest>;
 
-export type CombinedAudienceList = CombinedAudience[];
+export type CombinedAudienceList = ReadonlyArray<CombinedAudience>;
 export const CombinedAudienceList = /*@__PURE__*/ S.Array(
   CombinedAudience,
 ) as any as S.Schema<CombinedAudienceList>;
@@ -12467,7 +12275,7 @@ export const ListCustomBiddingAlgorithmsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomBiddingAlgorithmsRequest",
 }) as any as S.Schema<ListCustomBiddingAlgorithmsRequest>;
 
-export type CustomBiddingAlgorithmList = CustomBiddingAlgorithm[];
+export type CustomBiddingAlgorithmList = ReadonlyArray<CustomBiddingAlgorithm>;
 export const CustomBiddingAlgorithmList = /*@__PURE__*/ S.Array(
   CustomBiddingAlgorithm,
 ) as any as S.Schema<CustomBiddingAlgorithmList>;
@@ -12521,7 +12329,7 @@ export const ListCustomBiddingAlgorithmsScriptsRequest =
     identifier: "ListCustomBiddingAlgorithmsScriptsRequest",
   }) as any as S.Schema<ListCustomBiddingAlgorithmsScriptsRequest>;
 
-export type CustomBiddingScriptList = CustomBiddingScript[];
+export type CustomBiddingScriptList = ReadonlyArray<CustomBiddingScript>;
 export const CustomBiddingScriptList = /*@__PURE__*/ S.Array(
   CustomBiddingScript,
 ) as any as S.Schema<CustomBiddingScriptList>;
@@ -12571,7 +12379,7 @@ export const ListCustomListsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCustomListsRequest",
 }) as any as S.Schema<ListCustomListsRequest>;
 
-export type CustomListList = CustomList[];
+export type CustomListList = ReadonlyArray<CustomList>;
 export const CustomListList = /*@__PURE__*/ S.Array(
   CustomList,
 ) as any as S.Schema<CustomListList>;
@@ -12622,7 +12430,7 @@ export const ListFloodlightGroupsFloodlightActivitiesRequest =
     identifier: "ListFloodlightGroupsFloodlightActivitiesRequest",
   }) as any as S.Schema<ListFloodlightGroupsFloodlightActivitiesRequest>;
 
-export type FloodlightActivityList = FloodlightActivity[];
+export type FloodlightActivityList = ReadonlyArray<FloodlightActivity>;
 export const FloodlightActivityList = /*@__PURE__*/ S.Array(
   FloodlightActivity,
 ) as any as S.Schema<FloodlightActivityList>;
@@ -12675,7 +12483,7 @@ export const ListGoogleAudiencesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGoogleAudiencesRequest",
 }) as any as S.Schema<ListGoogleAudiencesRequest>;
 
-export type GoogleAudienceList = GoogleAudience[];
+export type GoogleAudienceList = ReadonlyArray<GoogleAudience>;
 export const GoogleAudienceList = /*@__PURE__*/ S.Array(
   GoogleAudience,
 ) as any as S.Schema<GoogleAudienceList>;
@@ -12728,7 +12536,7 @@ export const ListGuaranteedOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGuaranteedOrdersRequest",
 }) as any as S.Schema<ListGuaranteedOrdersRequest>;
 
-export type GuaranteedOrderList = GuaranteedOrder[];
+export type GuaranteedOrderList = ReadonlyArray<GuaranteedOrder>;
 export const GuaranteedOrderList = /*@__PURE__*/ S.Array(
   GuaranteedOrder,
 ) as any as S.Schema<GuaranteedOrderList>;
@@ -12781,7 +12589,7 @@ export const ListInventorySourceGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInventorySourceGroupsRequest",
 }) as any as S.Schema<ListInventorySourceGroupsRequest>;
 
-export type InventorySourceGroupList = InventorySourceGroup[];
+export type InventorySourceGroupList = ReadonlyArray<InventorySourceGroup>;
 export const InventorySourceGroupList = /*@__PURE__*/ S.Array(
   InventorySourceGroup,
 ) as any as S.Schema<InventorySourceGroupList>;
@@ -12883,7 +12691,7 @@ export const ListPartnersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListPartnersRequest",
 }) as any as S.Schema<ListPartnersRequest>;
 
-export type PartnerList = Partner[];
+export type PartnerList = ReadonlyArray<Partner>;
 export const PartnerList = /*@__PURE__*/ S.Array(
   Partner,
 ) as any as S.Schema<PartnerList>;
@@ -13022,8 +12830,7 @@ export type ListPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum 
     | "TARGETING_TYPE_YOUTUBE_VIDEO"
     | "TARGETING_TYPE_YOUTUBE_CHANNEL"
     | "TARGETING_TYPE_SESSION_POSITION"
-    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-    | (string & {});
+    | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const ListPartnersTargetingTypesAssignedTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -13130,8 +12937,7 @@ export type ListTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_VIDEO"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
-  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-  | (string & {});
+  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const ListTargetingTypesTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -13171,7 +12977,7 @@ export const ListTargetingTypesTargetingOptionsRequest =
     identifier: "ListTargetingTypesTargetingOptionsRequest",
   }) as any as S.Schema<ListTargetingTypesTargetingOptionsRequest>;
 
-export type TargetingOptionList = TargetingOption[];
+export type TargetingOptionList = ReadonlyArray<TargetingOption>;
 export const TargetingOptionList = /*@__PURE__*/ S.Array(
   TargetingOption,
 ) as any as S.Schema<TargetingOptionList>;
@@ -13219,7 +13025,7 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersRequest",
 }) as any as S.Schema<ListUsersRequest>;
 
-export type UserList = User[];
+export type UserList = ReadonlyArray<User>;
 export const UserList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<UserList>;
@@ -13867,8 +13673,7 @@ export type SearchTargetingTypesTargetingOptionsTargetingTypeEnum =
   | "TARGETING_TYPE_YOUTUBE_VIDEO"
   | "TARGETING_TYPE_YOUTUBE_CHANNEL"
   | "TARGETING_TYPE_SESSION_POSITION"
-  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK"
-  | (string & {});
+  | "TARGETING_TYPE_YOUTUBE_CHANNEL_PACK";
 export const SearchTargetingTypesTargetingOptionsTargetingTypeEnum =
   /*@__PURE__*/ S.String;
 

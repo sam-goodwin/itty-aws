@@ -11,17 +11,13 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export type IngestionWarningsV2ListRequestOrderBy =
-  | "count"
-  | "last_seen"
-  | (string & {});
+export type IngestionWarningsV2ListRequestOrderBy = "count" | "last_seen";
 export const IngestionWarningsV2ListRequestOrderBy = /*@__PURE__*/ S.String;
 
 export type IngestionWarningsV2ListRequestSeverity =
   | "info"
   | "warning"
-  | "error"
-  | (string & {});
+  | "error";
 export const IngestionWarningsV2ListRequestSeverity = /*@__PURE__*/ S.String;
 
 export interface IngestionWarningsV2ListRequest {
@@ -88,7 +84,7 @@ export const IngestionWarningV2SparklinePoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Warning counts over time, oldest bucket first. Buckets are hourly for time ranges up to 2 days and daily for wider ranges. */
 export type IngestionWarningsV2SummarySparklineList =
-  IngestionWarningV2SparklinePoint[];
+  ReadonlyArray<IngestionWarningV2SparklinePoint>;
 export const IngestionWarningsV2SummarySparklineList = /*@__PURE__*/ S.Array(
   IngestionWarningV2SparklinePoint,
 ) as any as S.Schema<IngestionWarningsV2SummarySparklineList>;
@@ -136,7 +132,8 @@ export const IngestionWarningV2Sample = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IngestionWarningV2Sample>;
 
 /** The most recent warnings of this type (up to the `samples` query parameter, 5 by default), newest first. */
-export type IngestionWarningsV2SummarySamplesList = IngestionWarningV2Sample[];
+export type IngestionWarningsV2SummarySamplesList =
+  ReadonlyArray<IngestionWarningV2Sample>;
 export const IngestionWarningsV2SummarySamplesList = /*@__PURE__*/ S.Array(
   IngestionWarningV2Sample,
 ) as any as S.Schema<IngestionWarningsV2SummarySamplesList>;
@@ -172,7 +169,7 @@ export const IngestionWarningsV2Summary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IngestionWarningsV2Summary>;
 
 export type IngestionWarningsV2ListResponseBodyList =
-  IngestionWarningsV2Summary[];
+  ReadonlyArray<IngestionWarningsV2Summary>;
 export const IngestionWarningsV2ListResponseBodyList = /*@__PURE__*/ S.Array(
   IngestionWarningsV2Summary,
 ) as any as S.Schema<IngestionWarningsV2ListResponseBodyList>;

@@ -102,8 +102,7 @@ export type ApigatewayApiStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const ApigatewayApiStateEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -171,7 +170,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -236,7 +235,8 @@ export const ApigatewayApiConfigFile = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApigatewayApiConfigFile",
 }) as any as S.Schema<ApigatewayApiConfigFile>;
 
-export type ApigatewayApiConfigFileList = ApigatewayApiConfigFile[];
+export type ApigatewayApiConfigFileList =
+  ReadonlyArray<ApigatewayApiConfigFile>;
 export const ApigatewayApiConfigFileList = /*@__PURE__*/ S.Array(
   ApigatewayApiConfigFile,
 ) as any as S.Schema<ApigatewayApiConfigFileList>;
@@ -255,7 +255,7 @@ export const ApigatewayApiConfigOpenApiDocument = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApigatewayApiConfigOpenApiDocument>;
 
 export type ApigatewayApiConfigOpenApiDocumentList =
-  ApigatewayApiConfigOpenApiDocument[];
+  ReadonlyArray<ApigatewayApiConfigOpenApiDocument>;
 export const ApigatewayApiConfigOpenApiDocumentList = /*@__PURE__*/ S.Array(
   ApigatewayApiConfigOpenApiDocument,
 ) as any as S.Schema<ApigatewayApiConfigOpenApiDocumentList>;
@@ -278,7 +278,7 @@ export const ApigatewayApiConfigGrpcServiceDefinition = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ApigatewayApiConfigGrpcServiceDefinition>;
 
 export type ApigatewayApiConfigGrpcServiceDefinitionList =
-  ApigatewayApiConfigGrpcServiceDefinition[];
+  ReadonlyArray<ApigatewayApiConfigGrpcServiceDefinition>;
 export const ApigatewayApiConfigGrpcServiceDefinitionList =
   /*@__PURE__*/ S.Array(
     ApigatewayApiConfigGrpcServiceDefinition,
@@ -291,8 +291,7 @@ export type ApigatewayApiConfigStateEnum =
   | "FAILED"
   | "DELETING"
   | "UPDATING"
-  | "ACTIVATING"
-  | (string & {});
+  | "ACTIVATING";
 export const ApigatewayApiConfigStateEnum = /*@__PURE__*/ S.String;
 
 /** An API Configuration is a combination of settings for both the Managed Service and Gateways serving this API Config. */
@@ -369,8 +368,7 @@ export type ApigatewayGatewayStateEnum =
   | "ACTIVE"
   | "FAILED"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const ApigatewayGatewayStateEnum = /*@__PURE__*/ S.String;
 
 /** A Gateway is an API-aware HTTP proxy. It performs API-Method and/or API-Consumer specific actions based on an API Config such as authentication, policy enforcement, and backend selection. */
@@ -529,7 +527,7 @@ export const GetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetIamPolicyProjectsLocationsApisRequest",
 }) as any as S.Schema<GetIamPolicyProjectsLocationsApisRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -538,8 +536,7 @@ export type ApigatewayAuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const ApigatewayAuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -558,7 +555,8 @@ export const ApigatewayAuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApigatewayAuditLogConfig",
 }) as any as S.Schema<ApigatewayAuditLogConfig>;
 
-export type ApigatewayAuditLogConfigList = ApigatewayAuditLogConfig[];
+export type ApigatewayAuditLogConfigList =
+  ReadonlyArray<ApigatewayAuditLogConfig>;
 export const ApigatewayAuditLogConfigList = /*@__PURE__*/ S.Array(
   ApigatewayAuditLogConfig,
 ) as any as S.Schema<ApigatewayAuditLogConfigList>;
@@ -579,7 +577,7 @@ export const ApigatewayAuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApigatewayAuditConfig",
 }) as any as S.Schema<ApigatewayAuditConfig>;
 
-export type ApigatewayAuditConfigList = ApigatewayAuditConfig[];
+export type ApigatewayAuditConfigList = ReadonlyArray<ApigatewayAuditConfig>;
 export const ApigatewayAuditConfigList = /*@__PURE__*/ S.Array(
   ApigatewayAuditConfig,
 ) as any as S.Schema<ApigatewayAuditConfigList>;
@@ -623,7 +621,7 @@ export const ApigatewayBinding = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApigatewayBinding",
 }) as any as S.Schema<ApigatewayBinding>;
 
-export type ApigatewayBindingList = ApigatewayBinding[];
+export type ApigatewayBindingList = ReadonlyArray<ApigatewayBinding>;
 export const ApigatewayBindingList = /*@__PURE__*/ S.Array(
   ApigatewayBinding,
 ) as any as S.Schema<ApigatewayBindingList>;
@@ -758,8 +756,7 @@ export const GetProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsApisConfigsViewEnum =
   | "CONFIG_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsApisConfigsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsApisConfigsRequest {
@@ -851,7 +848,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type ApigatewayLocationList = ApigatewayLocation[];
+export type ApigatewayLocationList = ReadonlyArray<ApigatewayLocation>;
 export const ApigatewayLocationList = /*@__PURE__*/ S.Array(
   ApigatewayLocation,
 ) as any as S.Schema<ApigatewayLocationList>;
@@ -902,7 +899,7 @@ export const ListProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsApisRequest",
 }) as any as S.Schema<ListProjectsLocationsApisRequest>;
 
-export type ApigatewayApiList = ApigatewayApi[];
+export type ApigatewayApiList = ReadonlyArray<ApigatewayApi>;
 export const ApigatewayApiList = /*@__PURE__*/ S.Array(
   ApigatewayApi,
 ) as any as S.Schema<ApigatewayApiList>;
@@ -957,7 +954,7 @@ export const ListProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsApisConfigsRequest",
 }) as any as S.Schema<ListProjectsLocationsApisConfigsRequest>;
 
-export type ApigatewayApiConfigList = ApigatewayApiConfig[];
+export type ApigatewayApiConfigList = ReadonlyArray<ApigatewayApiConfig>;
 export const ApigatewayApiConfigList = /*@__PURE__*/ S.Array(
   ApigatewayApiConfig,
 ) as any as S.Schema<ApigatewayApiConfigList>;
@@ -1012,7 +1009,7 @@ export const ListProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsGatewaysRequest",
 }) as any as S.Schema<ListProjectsLocationsGatewaysRequest>;
 
-export type ApigatewayGatewayList = ApigatewayGateway[];
+export type ApigatewayGatewayList = ReadonlyArray<ApigatewayGateway>;
 export const ApigatewayGatewayList = /*@__PURE__*/ S.Array(
   ApigatewayGateway,
 ) as any as S.Schema<ApigatewayGatewayList>;
@@ -1067,7 +1064,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type ApigatewayOperationList = ApigatewayOperation[];
+export type ApigatewayOperationList = ReadonlyArray<ApigatewayOperation>;
 export const ApigatewayOperationList = /*@__PURE__*/ S.Array(
   ApigatewayOperation,
 ) as any as S.Schema<ApigatewayOperationList>;

@@ -456,16 +456,49 @@
             "smithy.api#documentation": "The image name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.labservices#ImageUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Image resource properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.labservices#ImageUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "enabledState": {
+          "target": "com.azure.labservices#ImageUpdatePropertiesEnabledState",
+          "traits": {
+            "smithy.api#documentation": "Property enabled state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an image resource update"
+      }
+    },
+    "com.azure.labservices#ImageUpdatePropertiesEnabledState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property enabled state."
       }
     },
     "com.azure.labservices#ImagesCreateOrUpdate": {
@@ -669,16 +702,200 @@
             "smithy.api#documentation": "The image name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.labservices#ImagePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Image resource properties",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.labservices#ImagePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "enabledState": {
+          "target": "com.azure.labservices#ImagePropertiesInputEnabledState",
+          "traits": {
+            "smithy.api#documentation": "Property enabled state.",
+            "smithy.api#required": {}
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.labservices#ImagePropertiesInputProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "Resource provisioning state."
+          }
+        },
+        "osType": {
+          "target": "com.azure.labservices#ImagePropertiesInputOsType",
+          "traits": {
+            "smithy.api#documentation": "The operating system type."
+          }
+        },
+        "termsStatus": {
+          "target": "com.azure.labservices#ImagePropertiesInputTermsStatus",
+          "traits": {
+            "smithy.api#documentation": "Property enabled state."
+          }
+        },
+        "sharedGalleryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URL."
+          }
+        },
+        "availableRegions": {
+          "target": "com.azure.labservices#ImagePropertiesInputAvailableRegionsList",
+          "traits": {
+            "smithy.api#documentation": "The available regions of the image in the shared gallery."
+          }
+        },
+        "osState": {
+          "target": "com.azure.labservices#ImagePropertiesInputOsState",
+          "traits": {
+            "smithy.api#documentation": "The operating system state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an image resource."
+      }
+    },
+    "com.azure.labservices#ImagePropertiesInputOsState": {
+      "type": "enum",
+      "members": {
+        "GENERALIZED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Generalized"
+          }
+        },
+        "SPECIALIZED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Specialized"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The operating system state."
+      }
+    },
+    "com.azure.labservices#ImagePropertiesInputAvailableRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The available regions of the image in the shared gallery."
+      }
+    },
+    "com.azure.labservices#ImagePropertiesInputTermsStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property enabled state."
+      }
+    },
+    "com.azure.labservices#ImagePropertiesInputOsType": {
+      "type": "enum",
+      "members": {
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        },
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The operating system type."
+      }
+    },
+    "com.azure.labservices#ImagePropertiesInputProvisioningState": {
+      "type": "enum",
+      "members": {
+        "CREATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Creating"
+          }
+        },
+        "UPDATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Updating"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleting"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "LOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Locked"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource provisioning state."
+      }
+    },
+    "com.azure.labservices#ImagePropertiesInputEnabledState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property enabled state."
       }
     },
     "com.azure.labservices#ImagesGet": {
@@ -1167,11 +1384,16 @@
             "smithy.api#documentation": "The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The name for the image we create."
+          }
+        },
+        "labVirtualMachineId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URL."
           }
         }
       },
@@ -1835,16 +2057,199 @@
             "smithy.api#documentation": "The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.labservices#LabPlansUpdateRequestTagsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.labservices#LabPlanUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Lab plan resource update properties"
+          }
+        },
+        "identity": {
+          "target": "com.azure.labservices#LabPlansUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.labservices#LabPlansUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.labservices#LabPlansUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.labservices#LabPlansUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity type."
+      }
+    },
+    "com.azure.labservices#LabPlanUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "defaultConnectionProfile": {
+          "target": "com.azure.labservices#LabPlanUpdatePropertiesDefaultConnectionProfile",
+          "traits": {
+            "smithy.api#documentation": "Connection profile for how users connect to lab virtual machines."
+          }
+        },
+        "defaultAutoShutdownProfile": {
+          "target": "com.azure.labservices#LabPlanUpdatePropertiesDefaultAutoShutdownProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile for how to handle shutting down virtual machines."
+          }
+        },
+        "defaultNetworkProfile": {
+          "target": "com.azure.labservices#LabPlanNetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan."
+          }
+        },
+        "allowedRegions": {
+          "target": "com.azure.labservices#LabPlanUpdatePropertiesAllowedRegionsList",
+          "traits": {
+            "smithy.api#documentation": "The allowed regions for the lab creator to use when creating labs using this lab plan."
+          }
+        },
+        "sharedGalleryId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URL."
+          }
+        },
+        "supportInfo": {
+          "target": "com.azure.labservices#SupportInfo",
+          "traits": {
+            "smithy.api#documentation": "Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan."
+          }
+        },
+        "linkedLmsInstance": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URL."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Lab plan resource properties for updates"
+      }
+    },
+    "com.azure.labservices#LabPlanUpdatePropertiesAllowedRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The allowed regions for the lab creator to use when creating labs using this lab plan."
+      }
+    },
+    "com.azure.labservices#LabPlanUpdatePropertiesDefaultAutoShutdownProfile": {
+      "type": "structure",
+      "members": {
+        "shutdownOnDisconnect": {
+          "target": "com.azure.labservices#EnableState",
+          "traits": {
+            "smithy.api#documentation": "Whether shutdown on disconnect is enabled"
+          }
+        },
+        "shutdownWhenNotConnected": {
+          "target": "com.azure.labservices#EnableState",
+          "traits": {
+            "smithy.api#documentation": "Whether a VM will get shutdown when it hasn't been connected to after a period of time."
+          }
+        },
+        "shutdownOnIdle": {
+          "target": "com.azure.labservices#ShutdownOnIdleMode",
+          "traits": {
+            "smithy.api#documentation": "Whether a VM will get shutdown when it has idled for a period of time."
+          }
+        },
+        "disconnectDelay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of time a VM will stay running after a user disconnects if this behavior is enabled."
+          }
+        },
+        "noConnectDelay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled."
+          }
+        },
+        "idleDelay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of time a VM will idle before it is shutdown if this behavior is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile for how to handle shutting down virtual machines."
+      }
+    },
+    "com.azure.labservices#LabPlanUpdatePropertiesDefaultConnectionProfile": {
+      "type": "structure",
+      "members": {
+        "webSshAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Web Access over SSH."
+          }
+        },
+        "webRdpAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Web Access over RDP."
+          }
+        },
+        "clientSshAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Client Access over SSH."
+          }
+        },
+        "clientRdpAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Client Access over RDP."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Connection profile for how users connect to lab virtual machines."
+      }
+    },
+    "com.azure.labservices#LabPlansUpdateRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.labservices#LabPlansCreateOrUpdate": {
@@ -2111,16 +2516,75 @@
             "smithy.api#documentation": "The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.labservices#LabPlansCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.labservices#LabPlanProperties",
+          "traits": {
+            "smithy.api#documentation": "Lab plan resource properties",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.labservices#LabPlansCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Identity for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.labservices#LabPlansCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.labservices#LabPlansCreateOrUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.labservices#LabPlansCreateOrUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity type."
+      }
+    },
+    "com.azure.labservices#LabPlansCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.labservices#LabPlansGet": {
@@ -3929,16 +4393,432 @@
             "smithy.api#documentation": "The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.labservices#LabsUpdateRequestTagsList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.labservices#LabUpdatePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Lab resource properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.labservices#LabUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "autoShutdownProfile": {
+          "target": "com.azure.labservices#LabUpdatePropertiesInputAutoShutdownProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile for how to handle shutting down virtual machines."
+          }
+        },
+        "connectionProfile": {
+          "target": "com.azure.labservices#LabUpdatePropertiesInputConnectionProfile",
+          "traits": {
+            "smithy.api#documentation": "Connection profile for how users connect to lab virtual machines."
+          }
+        },
+        "virtualMachineProfile": {
+          "target": "com.azure.labservices#VirtualMachineProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The profile used for creating lab virtual machines."
+          }
+        },
+        "securityProfile": {
+          "target": "com.azure.labservices#SecurityProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The lab security profile."
+          }
+        },
+        "rosterProfile": {
+          "target": "com.azure.labservices#RosterProfile",
+          "traits": {
+            "smithy.api#documentation": "The lab user list management profile."
+          }
+        },
+        "labPlanId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URL."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title of the lab."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the lab."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a lab resource used for updates."
+      }
+    },
+    "com.azure.labservices#SecurityProfileInput": {
+      "type": "structure",
+      "members": {
+        "openAccess": {
+          "target": "com.azure.labservices#SecurityProfileInputOpenAccess",
+          "traits": {
+            "smithy.api#documentation": "Property enabled state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The lab security profile."
+      }
+    },
+    "com.azure.labservices#SecurityProfileInputOpenAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property enabled state."
+      }
+    },
+    "com.azure.labservices#VirtualMachineProfileInput": {
+      "type": "structure",
+      "members": {
+        "createOption": {
+          "target": "com.azure.labservices#VirtualMachineProfileInputCreateOption",
+          "traits": {
+            "smithy.api#documentation": "Indicates what lab virtual machines are created from.",
+            "smithy.api#required": {}
+          }
+        },
+        "imageReference": {
+          "target": "com.azure.labservices#ImageReferenceInput",
+          "traits": {
+            "smithy.api#documentation": "The image configuration for lab virtual machines.",
+            "smithy.api#required": {}
+          }
+        },
+        "osType": {
+          "target": "com.azure.labservices#VirtualMachineProfileInputOsType",
+          "traits": {
+            "smithy.api#documentation": "The operating system type."
+          }
+        },
+        "sku": {
+          "target": "com.azure.labservices#VirtualMachineProfileInputSku",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition representing SKU",
+            "smithy.api#required": {}
+          }
+        },
+        "additionalCapabilities": {
+          "target": "com.azure.labservices#VirtualMachineAdditionalCapabilities",
+          "traits": {
+            "smithy.api#documentation": "Additional VM capabilities."
+          }
+        },
+        "usageQuota": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.",
+            "smithy.api#required": {}
+          }
+        },
+        "useSharedPassword": {
+          "target": "com.azure.labservices#VirtualMachineProfileInputUseSharedPassword",
+          "traits": {
+            "smithy.api#documentation": "Property enabled state."
+          }
+        },
+        "adminUser": {
+          "target": "com.azure.labservices#Credentials",
+          "traits": {
+            "smithy.api#documentation": "Credentials for the admin user on the VM.",
+            "smithy.api#required": {}
+          }
+        },
+        "nonAdminUser": {
+          "target": "com.azure.labservices#Credentials",
+          "traits": {
+            "smithy.api#documentation": "Credentials for the non-admin user on the VM, if one exists."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The base virtual machine configuration for a lab."
+      }
+    },
+    "com.azure.labservices#VirtualMachineProfileInputUseSharedPassword": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Property enabled state."
+      }
+    },
+    "com.azure.labservices#VirtualMachineProfileInputSku": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the SKU. Ex - P3. It is typically a letter+number code",
+            "smithy.api#required": {}
+          }
+        },
+        "tier": {
+          "target": "com.azure.labservices#VirtualMachineProfileInputSkuTier",
+          "traits": {
+            "smithy.api#documentation": "This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT."
+          }
+        },
+        "size": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. "
+          }
+        },
+        "family": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If the service has different generations of hardware, for the same SKU, then that can be captured here."
+          }
+        },
+        "capacity": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition representing SKU"
+      }
+    },
+    "com.azure.labservices#VirtualMachineProfileInputSkuTier": {
+      "type": "enum",
+      "members": {
+        "FREE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Free"
+          }
+        },
+        "BASIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Basic"
+          }
+        },
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard"
+          }
+        },
+        "PREMIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Premium"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT."
+      }
+    },
+    "com.azure.labservices#VirtualMachineProfileInputOsType": {
+      "type": "enum",
+      "members": {
+        "WINDOWS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Windows"
+          }
+        },
+        "LINUX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Linux"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The operating system type."
+      }
+    },
+    "com.azure.labservices#ImageReferenceInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URL."
+          }
+        },
+        "offer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The image offer if applicable."
+          }
+        },
+        "publisher": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The image publisher"
+          }
+        },
+        "sku": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The image SKU"
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The image version specified on creation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Image reference information. Used in the virtual machine profile."
+      }
+    },
+    "com.azure.labservices#VirtualMachineProfileInputCreateOption": {
+      "type": "enum",
+      "members": {
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Image"
+          }
+        },
+        "TEMPLATEVM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TemplateVM"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates what lab virtual machines are created from."
+      }
+    },
+    "com.azure.labservices#LabUpdatePropertiesInputConnectionProfile": {
+      "type": "structure",
+      "members": {
+        "webSshAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Web Access over SSH."
+          }
+        },
+        "webRdpAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Web Access over RDP."
+          }
+        },
+        "clientSshAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Client Access over SSH."
+          }
+        },
+        "clientRdpAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Client Access over RDP."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Connection profile for how users connect to lab virtual machines."
+      }
+    },
+    "com.azure.labservices#LabUpdatePropertiesInputAutoShutdownProfile": {
+      "type": "structure",
+      "members": {
+        "shutdownOnDisconnect": {
+          "target": "com.azure.labservices#EnableState",
+          "traits": {
+            "smithy.api#documentation": "Whether shutdown on disconnect is enabled"
+          }
+        },
+        "shutdownWhenNotConnected": {
+          "target": "com.azure.labservices#EnableState",
+          "traits": {
+            "smithy.api#documentation": "Whether a VM will get shutdown when it hasn't been connected to after a period of time."
+          }
+        },
+        "shutdownOnIdle": {
+          "target": "com.azure.labservices#ShutdownOnIdleMode",
+          "traits": {
+            "smithy.api#documentation": "Whether a VM will get shutdown when it has idled for a period of time."
+          }
+        },
+        "disconnectDelay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of time a VM will stay running after a user disconnects if this behavior is enabled."
+          }
+        },
+        "noConnectDelay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled."
+          }
+        },
+        "idleDelay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of time a VM will idle before it is shutdown if this behavior is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile for how to handle shutting down virtual machines."
+      }
+    },
+    "com.azure.labservices#LabsUpdateRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.labservices#LabsCreateOrUpdate": {
@@ -4159,16 +5039,271 @@
             "smithy.api#documentation": "The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.labservices#LabsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.labservices#LabPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Lab resource properties",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.labservices#LabPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "autoShutdownProfile": {
+          "target": "com.azure.labservices#LabPropertiesInputAutoShutdownProfile",
+          "traits": {
+            "smithy.api#documentation": "Profile for how to handle shutting down virtual machines.",
+            "smithy.api#required": {}
+          }
+        },
+        "connectionProfile": {
+          "target": "com.azure.labservices#LabPropertiesInputConnectionProfile",
+          "traits": {
+            "smithy.api#documentation": "Connection profile for how users connect to lab virtual machines.",
+            "smithy.api#required": {}
+          }
+        },
+        "virtualMachineProfile": {
+          "target": "com.azure.labservices#VirtualMachineProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The profile used for creating lab virtual machines.",
+            "smithy.api#required": {}
+          }
+        },
+        "securityProfile": {
+          "target": "com.azure.labservices#SecurityProfileInput",
+          "traits": {
+            "smithy.api#documentation": "The lab security profile.",
+            "smithy.api#required": {}
+          }
+        },
+        "rosterProfile": {
+          "target": "com.azure.labservices#RosterProfile",
+          "traits": {
+            "smithy.api#documentation": "The lab user list management profile."
+          }
+        },
+        "labPlanId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URL."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The title of the lab."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The description of the lab."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.labservices#LabPropertiesInputProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "Resource provisioning state."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.labservices#LabNetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "The network profile for the lab, typically applied via a lab plan. This profile cannot be modified once a lab has been created."
+          }
+        },
+        "resourceOperationError": {
+          "target": "com.azure.labservices#LabPropertiesInputResourceOperationError",
+          "traits": {
+            "smithy.api#documentation": "Error details of the latest operation failure on this resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a lab resource."
+      }
+    },
+    "com.azure.labservices#LabPropertiesInputResourceOperationError": {
+      "type": "structure",
+      "members": {
+        "timestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The datetime of when the error occured"
+          }
+        },
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The code that corresponds to the type of operation failure"
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operation failure message"
+          }
+        },
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operation action that failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Error details of the latest operation failure on this resource"
+      }
+    },
+    "com.azure.labservices#LabPropertiesInputProvisioningState": {
+      "type": "enum",
+      "members": {
+        "CREATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Creating"
+          }
+        },
+        "UPDATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Updating"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleting"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "LOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Locked"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource provisioning state."
+      }
+    },
+    "com.azure.labservices#LabPropertiesInputConnectionProfile": {
+      "type": "structure",
+      "members": {
+        "webSshAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Web Access over SSH."
+          }
+        },
+        "webRdpAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Web Access over RDP."
+          }
+        },
+        "clientSshAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Client Access over SSH."
+          }
+        },
+        "clientRdpAccess": {
+          "target": "com.azure.labservices#ConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The enabled access level for Client Access over RDP."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Connection profile for how users connect to lab virtual machines."
+      }
+    },
+    "com.azure.labservices#LabPropertiesInputAutoShutdownProfile": {
+      "type": "structure",
+      "members": {
+        "shutdownOnDisconnect": {
+          "target": "com.azure.labservices#EnableState",
+          "traits": {
+            "smithy.api#documentation": "Whether shutdown on disconnect is enabled"
+          }
+        },
+        "shutdownWhenNotConnected": {
+          "target": "com.azure.labservices#EnableState",
+          "traits": {
+            "smithy.api#documentation": "Whether a VM will get shutdown when it hasn't been connected to after a period of time."
+          }
+        },
+        "shutdownOnIdle": {
+          "target": "com.azure.labservices#ShutdownOnIdleMode",
+          "traits": {
+            "smithy.api#documentation": "Whether a VM will get shutdown when it has idled for a period of time."
+          }
+        },
+        "disconnectDelay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of time a VM will stay running after a user disconnects if this behavior is enabled."
+          }
+        },
+        "noConnectDelay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled."
+          }
+        },
+        "idleDelay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of time a VM will idle before it is shutdown if this behavior is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Profile for how to handle shutting down virtual machines."
+      }
+    },
+    "com.azure.labservices#LabsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.labservices#LabsGet": {
@@ -5445,16 +6580,53 @@
             "smithy.api#documentation": "The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.labservices#ScheduleUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Schedule resource properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.labservices#ScheduleUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "startAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead."
+          }
+        },
+        "stopAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead."
+          }
+        },
+        "recurrencePattern": {
+          "target": "com.azure.labservices#RecurrencePattern",
+          "traits": {
+            "smithy.api#documentation": "The recurrence pattern of the scheduled actions."
+          }
+        },
+        "timeZoneId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IANA timezone id for the schedule."
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Notes for this schedule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Schedule resource properties used for updates."
       }
     },
     "com.azure.labservices#SchedulesCreateOrUpdate": {
@@ -5658,10 +6830,10 @@
             "smithy.api#documentation": "The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.labservices#ScheduleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Schedule resource properties",
             "smithy.api#required": {}
           }
         }
@@ -6695,11 +7867,10 @@
             "smithy.api#documentation": "The name of the user that uniquely identifies it within containing lab. Used in resource URIs."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "text": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Custom text for the invite email."
           }
         }
       },
@@ -7158,16 +8329,29 @@
             "smithy.api#documentation": "The name of the user that uniquely identifies it within containing lab. Used in resource URIs."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.labservices#UserUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "User resource properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.labservices#UserUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "additionalUsageQuota": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of usage quota time the user gets in addition to the lab usage quota."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "User resource properties used for updates."
       }
     },
     "com.azure.labservices#UsersCreateOrUpdate": {
@@ -7371,16 +8555,125 @@
             "smithy.api#documentation": "The name of the user that uniquely identifies it within containing lab. Used in resource URIs."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.labservices#UserPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "User resource properties",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.labservices#UserPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "additionalUsageQuota": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of usage quota time the user gets in addition to the lab usage quota."
+          }
+        },
+        "provisioningState": {
+          "target": "com.azure.labservices#UserPropertiesInputProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "Resource provisioning state."
+          }
+        },
+        "resourceOperationError": {
+          "target": "com.azure.labservices#UserPropertiesInputResourceOperationError",
+          "traits": {
+            "smithy.api#documentation": "Error details of the latest operation failure on this resource"
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An email address.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "User resource properties"
+      }
+    },
+    "com.azure.labservices#UserPropertiesInputResourceOperationError": {
+      "type": "structure",
+      "members": {
+        "timestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The datetime of when the error occured"
+          }
+        },
+        "code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The code that corresponds to the type of operation failure"
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operation failure message"
+          }
+        },
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The operation action that failed"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Error details of the latest operation failure on this resource"
+      }
+    },
+    "com.azure.labservices#UserPropertiesInputProvisioningState": {
+      "type": "enum",
+      "members": {
+        "CREATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Creating"
+          }
+        },
+        "UPDATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Updating"
+          }
+        },
+        "DELETING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deleting"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "LOCKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Locked"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource provisioning state."
       }
     },
     "com.azure.labservices#UsersGet": {
@@ -7877,11 +9170,19 @@
             "smithy.api#documentation": "The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "username": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The user whose password is being reset",
             "smithy.api#required": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
           }
         }
       },

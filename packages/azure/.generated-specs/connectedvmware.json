@@ -572,15 +572,48 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.connectedvmware#GuestAgentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties.",
+            "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#GuestAgentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "credentials": {
+          "target": "com.azure.connectedvmware#GuestCredential",
+          "traits": {
+            "smithy.api#documentation": "Username / Password Credentials to provision guest agent."
+          }
+        },
+        "privateLinkScopeResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the private link scope this machine is assigned to, if any."
+          }
+        },
+        "httpProxyConfig": {
+          "target": "com.azure.connectedvmware#HttpProxyConfiguration",
+          "traits": {
+            "smithy.api#documentation": "HTTP Proxy configuration for the VM."
+          }
+        },
+        "provisioningAction": {
+          "target": "com.azure.connectedvmware#ProvisioningAction",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the guest agent provisioning action."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Virtual Machine Guest Agent."
       }
     },
     "com.azure.connectedvmware#VMInstanceGuestAgentsGet": {
@@ -961,10 +994,10 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "skipShutdown": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets a value indicating whether to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false."
           }
         }
       },
@@ -2281,15 +2314,198 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.connectedvmware#VirtualMachineInstanceUpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#VirtualMachineInstanceUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "hardwareProfile": {
+          "target": "com.azure.connectedvmware#HardwareProfileInput"
+        },
+        "storageProfile": {
+          "target": "com.azure.connectedvmware#StorageProfileUpdate"
+        },
+        "networkProfile": {
+          "target": "com.azure.connectedvmware#NetworkProfileUpdate"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Virtual Machine."
+      }
+    },
+    "com.azure.connectedvmware#NetworkProfileUpdate": {
+      "type": "structure",
+      "members": {
+        "networkInterfaces": {
+          "target": "com.azure.connectedvmware#NetworkProfileUpdateNetworkInterfacesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of network interfaces associated with the virtual machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the network interfaces of the virtual machine."
+      }
+    },
+    "com.azure.connectedvmware#NetworkProfileUpdateNetworkInterfacesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.connectedvmware#NetworkInterfaceUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of network interfaces associated with the virtual machine."
+      }
+    },
+    "com.azure.connectedvmware#NetworkInterfaceUpdate": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the network interface."
+          }
+        },
+        "networkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the network resource to connect the virtual machine."
+          }
+        },
+        "nicType": {
+          "target": "com.azure.connectedvmware#NICType",
+          "traits": {
+            "smithy.api#documentation": "NIC type"
+          }
+        },
+        "powerOnBoot": {
+          "target": "com.azure.connectedvmware#PowerOnBootOption",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the power on boot."
+          }
+        },
+        "deviceKey": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the device key value."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the network interface update."
+      }
+    },
+    "com.azure.connectedvmware#StorageProfileUpdate": {
+      "type": "structure",
+      "members": {
+        "disks": {
+          "target": "com.azure.connectedvmware#StorageProfileUpdateDisksList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of virtual disks associated with the virtual machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the storage settings for the virtual machine disks."
+      }
+    },
+    "com.azure.connectedvmware#StorageProfileUpdateDisksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.connectedvmware#VirtualDiskUpdate"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of virtual disks associated with the virtual machine."
+      }
+    },
+    "com.azure.connectedvmware#VirtualDiskUpdate": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the virtual disk."
+          }
+        },
+        "diskSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk total size."
+          }
+        },
+        "deviceKey": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the device key value."
+          }
+        },
+        "diskMode": {
+          "target": "com.azure.connectedvmware#DiskMode",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk mode."
+          }
+        },
+        "controllerKey": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the controller id."
+          }
+        },
+        "unitNumber": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the unit number of the disk on the controller."
+          }
+        },
+        "deviceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the device name."
+          }
+        },
+        "diskType": {
+          "target": "com.azure.connectedvmware#DiskType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk backing type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the virtual disk update."
+      }
+    },
+    "com.azure.connectedvmware#HardwareProfileInput": {
+      "type": "structure",
+      "members": {
+        "memorySizeMB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets memory size in MBs for the vm."
+          }
+        },
+        "numCPUs": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the number of vCPUs for the vm."
+          }
+        },
+        "numCoresPerSocket": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the number of cores per socket for the vm. Defaults to 1 if unspecified."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the hardware settings for the virtual machine."
       }
     },
     "com.azure.connectedvmware#VirtualMachineInstancesCreateOrUpdate": {
@@ -2367,15 +2583,357 @@
             "smithy.api#documentation": "The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.connectedvmware#VirtualMachineInstancePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.connectedvmware#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the extended location."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#VirtualMachineInstancePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "placementProfile": {
+          "target": "com.azure.connectedvmware#PlacementProfile",
+          "traits": {
+            "smithy.api#documentation": "Placement properties."
+          }
+        },
+        "osProfile": {
+          "target": "com.azure.connectedvmware#OsProfileForVMInstanceInput",
+          "traits": {
+            "smithy.api#documentation": "OS properties."
+          }
+        },
+        "hardwareProfile": {
+          "target": "com.azure.connectedvmware#HardwareProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Hardware properties."
+          }
+        },
+        "networkProfile": {
+          "target": "com.azure.connectedvmware#NetworkProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Network properties."
+          }
+        },
+        "storageProfile": {
+          "target": "com.azure.connectedvmware#StorageProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Storage properties."
+          }
+        },
+        "securityProfile": {
+          "target": "com.azure.connectedvmware#SecurityProfile",
+          "traits": {
+            "smithy.api#documentation": "Gets the security profile."
+          }
+        },
+        "infrastructureProfile": {
+          "target": "com.azure.connectedvmware#InfrastructureProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Gets the infrastructure profile."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Virtual Machine Instance."
+      }
+    },
+    "com.azure.connectedvmware#InfrastructureProfileInput": {
+      "type": "structure",
+      "members": {
+        "templateId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the template resource to deploy the virtual machine."
+          }
+        },
+        "vCenterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the vCenter resource in which this resource pool resides."
+          }
+        },
+        "inventoryItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the inventory Item ID for the virtual machine."
+          }
+        },
+        "smbiosUuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the SMBIOS UUID of the vm."
+          }
+        },
+        "firmwareType": {
+          "target": "com.azure.connectedvmware#FirmwareType",
+          "traits": {
+            "smithy.api#documentation": "Firmware type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the vCenter infrastructure specific settings for the virtual machine."
+      }
+    },
+    "com.azure.connectedvmware#StorageProfileInput": {
+      "type": "structure",
+      "members": {
+        "disks": {
+          "target": "com.azure.connectedvmware#StorageProfileInputDisksList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of virtual disks associated with the virtual machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the storage settings for the virtual machine disks."
+      }
+    },
+    "com.azure.connectedvmware#StorageProfileInputDisksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.connectedvmware#VirtualDiskInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of virtual disks associated with the virtual machine."
+      }
+    },
+    "com.azure.connectedvmware#VirtualDiskInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the virtual disk."
+          }
+        },
+        "diskSizeGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk total size."
+          }
+        },
+        "deviceKey": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the device key value."
+          }
+        },
+        "diskMode": {
+          "target": "com.azure.connectedvmware#DiskMode",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk mode."
+          }
+        },
+        "controllerKey": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the controller id."
+          }
+        },
+        "unitNumber": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the unit number of the disk on the controller."
+          }
+        },
+        "deviceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the device name."
+          }
+        },
+        "diskType": {
+          "target": "com.azure.connectedvmware#DiskType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the disk backing type."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual disk model"
+      }
+    },
+    "com.azure.connectedvmware#NetworkProfileInput": {
+      "type": "structure",
+      "members": {
+        "networkInterfaces": {
+          "target": "com.azure.connectedvmware#NetworkProfileInputNetworkInterfacesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of network interfaces associated with the virtual machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the network interfaces of the virtual machine."
+      }
+    },
+    "com.azure.connectedvmware#NetworkProfileInputNetworkInterfacesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.connectedvmware#NetworkInterfaceInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of network interfaces associated with the virtual machine."
+      }
+    },
+    "com.azure.connectedvmware#NetworkInterfaceInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the network interface."
+          }
+        },
+        "networkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the network resource to connect the virtual machine."
+          }
+        },
+        "nicType": {
+          "target": "com.azure.connectedvmware#NICType",
+          "traits": {
+            "smithy.api#documentation": "NIC type"
+          }
+        },
+        "powerOnBoot": {
+          "target": "com.azure.connectedvmware#PowerOnBootOption",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the power on boot."
+          }
+        },
+        "deviceKey": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the device key value."
+          }
+        },
+        "ipSettings": {
+          "target": "com.azure.connectedvmware#NicIPSettingsInput",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ipsettings."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Network Interface model"
+      }
+    },
+    "com.azure.connectedvmware#NicIPSettingsInput": {
+      "type": "structure",
+      "members": {
+        "allocationMethod": {
+          "target": "com.azure.connectedvmware#IPAddressAllocationMethod",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the nic allocation method."
+          }
+        },
+        "dnsServers": {
+          "target": "com.azure.connectedvmware#NicIPSettingsInputDnsServersList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the dns servers."
+          }
+        },
+        "gateway": {
+          "target": "com.azure.connectedvmware#NicIPSettingsInputGatewayList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the gateway."
+          }
+        },
+        "ipAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ip address for the nic."
+          }
+        },
+        "subnetMask": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the mask."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the network interface ip settings."
+      }
+    },
+    "com.azure.connectedvmware#NicIPSettingsInputGatewayList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the gateway."
+      }
+    },
+    "com.azure.connectedvmware#NicIPSettingsInputDnsServersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the dns servers."
+      }
+    },
+    "com.azure.connectedvmware#OsProfileForVMInstanceInput": {
+      "type": "structure",
+      "members": {
+        "computerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets computer name."
+          }
+        },
+        "adminUsername": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets administrator username."
+          }
+        },
+        "adminPassword": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sets administrator password.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "guestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the guestId."
+          }
+        },
+        "osType": {
+          "target": "com.azure.connectedvmware#OsType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the type of the os."
+          }
+        },
+        "windowsConfiguration": {
+          "target": "com.azure.connectedvmware#WindowsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Windows Configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the operating system settings for the virtual machine."
       }
     },
     "com.azure.connectedvmware#VirtualMachineInstancesGet": {
@@ -2831,10 +3389,17 @@
             "smithy.api#documentation": "Name of the inventoryItem."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.connectedvmware#InventoryItemProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
           }
         }
       },
@@ -3407,15 +3972,27 @@
             "smithy.api#documentation": "Name of the virtual network resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedvmware#VirtualNetworksUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#VirtualNetworksUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedvmware#VirtualNetworksCreate": {
@@ -3464,15 +4041,79 @@
             "smithy.api#documentation": "Name of the virtual network resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.connectedvmware#VirtualNetworkPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location.",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.connectedvmware#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the extended location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.connectedvmware#VirtualNetworksCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Resource tags."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#VirtualNetworksCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
+      }
+    },
+    "com.azure.connectedvmware#VirtualNetworkPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "vCenterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the vCenter resource in which this template resides."
+          }
+        },
+        "moRefId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual network."
+          }
+        },
+        "inventoryItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the inventory Item ID for the virtual network."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Virtual Network."
       }
     },
     "com.azure.connectedvmware#VirtualNetworksGet": {
@@ -4071,15 +4712,27 @@
             "smithy.api#documentation": "Name of the virtual machine template resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedvmware#VirtualMachineTemplatesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#VirtualMachineTemplatesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedvmware#VirtualMachineTemplatesCreate": {
@@ -4128,15 +4781,79 @@
             "smithy.api#documentation": "Name of the virtual machine template resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.connectedvmware#VirtualMachineTemplatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location.",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.connectedvmware#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the extended location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.connectedvmware#VirtualMachineTemplatesCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Resource tags."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#VirtualMachineTemplatesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
+      }
+    },
+    "com.azure.connectedvmware#VirtualMachineTemplatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "vCenterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the vCenter resource in which this template resides."
+          }
+        },
+        "moRefId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine\r\ntemplate."
+          }
+        },
+        "inventoryItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the inventory Item ID for the virtual machine template."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Virtual Machine Template."
       }
     },
     "com.azure.connectedvmware#VirtualMachineTemplatesGet": {
@@ -4685,15 +5402,27 @@
             "smithy.api#documentation": "Name of the vCenter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedvmware#VCentersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#VCentersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedvmware#VCentersCreate": {
@@ -4742,15 +5471,80 @@
             "smithy.api#documentation": "Name of the vCenter."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.connectedvmware#VCenterPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location.",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.connectedvmware#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the extended location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.connectedvmware#VCentersCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Resource tags."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#VCentersCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
+      }
+    },
+    "com.azure.connectedvmware#VCenterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "fqdn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the FQDN/IPAddress of the vCenter.",
+            "smithy.api#required": {}
+          }
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the port of the vCenter."
+          }
+        },
+        "credentials": {
+          "target": "com.azure.connectedvmware#VICredential",
+          "traits": {
+            "smithy.api#documentation": "Username / Password Credentials to connect to vcenter."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a VCenter."
       }
     },
     "com.azure.connectedvmware#VCentersGet": {
@@ -5277,15 +6071,27 @@
             "smithy.api#documentation": "Name of the datastore."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedvmware#DatastoresUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#DatastoresUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedvmware#DatastoresCreate": {
@@ -5334,15 +6140,79 @@
             "smithy.api#documentation": "Name of the datastore."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.connectedvmware#DatastorePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location.",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.connectedvmware#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the extended location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.connectedvmware#DatastoresCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Resource tags."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#DatastoresCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
+      }
+    },
+    "com.azure.connectedvmware#DatastorePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "vCenterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the vCenter resource in which this datastore resides."
+          }
+        },
+        "moRefId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the vCenter MoRef (Managed Object Reference) ID for the datastore."
+          }
+        },
+        "inventoryItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the inventory Item ID for the datastore."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Datastore."
       }
     },
     "com.azure.connectedvmware#DatastoresGet": {
@@ -5911,15 +6781,27 @@
             "smithy.api#documentation": "Name of the host."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedvmware#HostsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#HostsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedvmware#HostsCreate": {
@@ -5968,15 +6850,79 @@
             "smithy.api#documentation": "Name of the host."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.connectedvmware#HostPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location.",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.connectedvmware#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the extended location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.connectedvmware#HostsCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Resource tags."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#HostsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
+      }
+    },
+    "com.azure.connectedvmware#HostPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "vCenterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the vCenter resource in which this host resides."
+          }
+        },
+        "moRefId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the vCenter MoRef (Managed Object Reference) ID for the host."
+          }
+        },
+        "inventoryItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the inventory Item ID for the host."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Host."
       }
     },
     "com.azure.connectedvmware#HostsGet": {
@@ -6545,15 +7491,27 @@
             "smithy.api#documentation": "Name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedvmware#ClustersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#ClustersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedvmware#ClustersCreate": {
@@ -6602,15 +7560,79 @@
             "smithy.api#documentation": "Name of the cluster."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.connectedvmware#ClusterPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location.",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.connectedvmware#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the extended location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.connectedvmware#ClustersCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Resource tags."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#ClustersCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
+      }
+    },
+    "com.azure.connectedvmware#ClusterPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "vCenterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the vCenter resource in which this cluster resides."
+          }
+        },
+        "moRefId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the vCenter MoRef (Managed Object Reference) ID for the cluster."
+          }
+        },
+        "inventoryItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the inventory Item ID for the cluster."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Cluster."
       }
     },
     "com.azure.connectedvmware#ClustersGet": {
@@ -7215,15 +8237,27 @@
             "smithy.api#documentation": "Name of the resourcePool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedvmware#ResourcePoolsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#ResourcePoolsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedvmware#ResourcePoolsCreate": {
@@ -7272,15 +8306,79 @@
             "smithy.api#documentation": "Name of the resourcePool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.connectedvmware#ResourcePoolPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Resource properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location.",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.connectedvmware#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the extended location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.connectedvmware#ResourcePoolsCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Resource tags."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedvmware#ResourcePoolsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the Resource tags."
+      }
+    },
+    "com.azure.connectedvmware#ResourcePoolPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "vCenterId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the ARM Id of the vCenter resource in which this resource pool resides."
+          }
+        },
+        "moRefId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the vCenter MoRef (Managed Object Reference) ID for the resource pool."
+          }
+        },
+        "inventoryItemId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the inventory Item ID for the resource pool."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the properties of a Resource Pool."
       }
     },
     "com.azure.connectedvmware#ResourcePoolsGet": {

@@ -96,7 +96,7 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -126,8 +126,7 @@ export const CheckAvailabilityProjectsLocationsIpamAdminScopesRequest =
 export type IpamAdminScopeAvailabilityAvailabilityEnum =
   | "AVAILABILITY_UNSPECIFIED"
   | "AVAILABLE"
-  | "UNAVAILABLE"
-  | (string & {});
+  | "UNAVAILABLE";
 export const IpamAdminScopeAvailabilityAvailabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -150,7 +149,8 @@ export const IpamAdminScopeAvailability = /*@__PURE__*/ S.suspend(() =>
   identifier: "IpamAdminScopeAvailability",
 }) as any as S.Schema<IpamAdminScopeAvailability>;
 
-export type IpamAdminScopeAvailabilityList = IpamAdminScopeAvailability[];
+export type IpamAdminScopeAvailabilityList =
+  ReadonlyArray<IpamAdminScopeAvailability>;
 export const IpamAdminScopeAvailabilityList = /*@__PURE__*/ S.Array(
   IpamAdminScopeAvailability,
 ) as any as S.Schema<IpamAdminScopeAvailabilityList>;
@@ -210,7 +210,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -269,7 +269,7 @@ export const Attribute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 
-export type AttributeList = Attribute[];
+export type AttributeList = ReadonlyArray<Attribute>;
 export const AttributeList = /*@__PURE__*/ S.Array(
   Attribute,
 ) as any as S.Schema<AttributeList>;
@@ -346,13 +346,12 @@ export const CreateProjectsLocationsCustomRangesRequest =
 export type IpamAdminScopeEnabledAddonPlatformsItemEnum =
   | "ADD_ON_PLATFORM_UNSPECIFIED"
   | "COMPUTE_ENGINE"
-  | "GCE"
-  | (string & {});
+  | "GCE";
 export const IpamAdminScopeEnabledAddonPlatformsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type IpamAdminScopeEnabledAddonPlatformsItemEnumList =
-  IpamAdminScopeEnabledAddonPlatformsItemEnum[];
+  ReadonlyArray<IpamAdminScopeEnabledAddonPlatformsItemEnum>;
 export const IpamAdminScopeEnabledAddonPlatformsItemEnumList =
   /*@__PURE__*/ S.Array(
     IpamAdminScopeEnabledAddonPlatformsItemEnum,
@@ -370,8 +369,7 @@ export type IpamAdminScopeStateEnum =
   | "DISABLED"
   | "DELETION_COMPLETED"
   | "CLEANUP_IN_PROGRESS"
-  | "READY_FOR_DELETION"
-  | (string & {});
+  | "READY_FOR_DELETION";
 export const IpamAdminScopeStateEnum = /*@__PURE__*/ S.String;
 
 /** An IpamAdminScope defines the administrative boundary for IP address discovery and management. It configures which platforms and organizational scopes are enabled for IP tracking. */
@@ -436,8 +434,7 @@ export const CreateProjectsLocationsIpamAdminScopesRequest =
 export type RealmManagementTypeEnum =
   | "MANAGEMENT_TYPE_UNSPECIFIED"
   | "CNR"
-  | "USER"
-  | (string & {});
+  | "USER";
 export const RealmManagementTypeEnum = /*@__PURE__*/ S.String;
 
 /** Aggregated data for the Realm. */
@@ -461,8 +458,7 @@ export type RealmTrafficTypeEnum =
   | "UNSET"
   | "INTERNET"
   | "PRIVATE"
-  | "LINKLOCAL"
-  | (string & {});
+  | "LINKLOCAL";
 export const RealmTrafficTypeEnum = /*@__PURE__*/ S.String;
 
 export type DiscoveryMetadataStateEnum =
@@ -470,8 +466,7 @@ export type DiscoveryMetadataStateEnum =
   | "INVALID"
   | "EXISTS"
   | "DOES_NOT_EXIST"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const DiscoveryMetadataStateEnum = /*@__PURE__*/ S.String;
 
 /** Metadata about a discovered resource, tracking event times, state, and source information. */
@@ -508,11 +503,7 @@ export const DiscoveryMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiscoveryMetadata",
 }) as any as S.Schema<DiscoveryMetadata>;
 
-export type RealmIpVersionEnum =
-  | "IP_VERSION_UNSPECIFIED"
-  | "IPV4"
-  | "IPV6"
-  | (string & {});
+export type RealmIpVersionEnum = "IP_VERSION_UNSPECIFIED" | "IPV4" | "IPV6";
 export const RealmIpVersionEnum = /*@__PURE__*/ S.String;
 
 /** A Realm represents a distinct network domain or security zone. It groups Ranges that share the same traffic and management characteristics. All the ranges in a Realm are routable to each other, meaning that they cannot overlap. */
@@ -1068,8 +1059,7 @@ export type GetProjectsLocationsRealmsViewEnum =
   | "REALM_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL"
-  | "AGGREGATE"
-  | (string & {});
+  | "AGGREGATE";
 export const GetProjectsLocationsRealmsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsRealmsRequest {
@@ -1097,8 +1087,7 @@ export type GetProjectsLocationsRegistryBooksViewEnum =
   | "REGISTRY_BOOK_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL"
-  | "AGGREGATE"
-  | (string & {});
+  | "AGGREGATE";
 export const GetProjectsLocationsRegistryBooksViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsRegistryBooksRequest {
@@ -1155,7 +1144,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1207,7 +1196,7 @@ export const ListProjectsLocationsCustomRangesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsCustomRangesRequest",
 }) as any as S.Schema<ListProjectsLocationsCustomRangesRequest>;
 
-export type CustomRangeList = CustomRange[];
+export type CustomRangeList = ReadonlyArray<CustomRange>;
 export const CustomRangeList = /*@__PURE__*/ S.Array(
   CustomRange,
 ) as any as S.Schema<CustomRangeList>;
@@ -1262,7 +1251,7 @@ export const ListProjectsLocationsDiscoveredRangesRequest =
     identifier: "ListProjectsLocationsDiscoveredRangesRequest",
   }) as any as S.Schema<ListProjectsLocationsDiscoveredRangesRequest>;
 
-export type DiscoveredRangeList = DiscoveredRange[];
+export type DiscoveredRangeList = ReadonlyArray<DiscoveredRange>;
 export const DiscoveredRangeList = /*@__PURE__*/ S.Array(
   DiscoveredRange,
 ) as any as S.Schema<DiscoveredRangeList>;
@@ -1317,7 +1306,7 @@ export const ListProjectsLocationsIpamAdminScopesRequest =
     identifier: "ListProjectsLocationsIpamAdminScopesRequest",
   }) as any as S.Schema<ListProjectsLocationsIpamAdminScopesRequest>;
 
-export type IpamAdminScopeList = IpamAdminScope[];
+export type IpamAdminScopeList = ReadonlyArray<IpamAdminScope>;
 export const IpamAdminScopeList = /*@__PURE__*/ S.Array(
   IpamAdminScope,
 ) as any as S.Schema<IpamAdminScopeList>;
@@ -1372,7 +1361,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -1400,8 +1389,7 @@ export type ListProjectsLocationsRealmsViewEnum =
   | "REALM_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL"
-  | "AGGREGATE"
-  | (string & {});
+  | "AGGREGATE";
 export const ListProjectsLocationsRealmsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsLocationsRealmsRequest {
@@ -1437,7 +1425,7 @@ export const ListProjectsLocationsRealmsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRealmsRequest",
 }) as any as S.Schema<ListProjectsLocationsRealmsRequest>;
 
-export type RealmList = Realm[];
+export type RealmList = ReadonlyArray<Realm>;
 export const RealmList = /*@__PURE__*/ S.Array(
   Realm,
 ) as any as S.Schema<RealmList>;
@@ -1465,8 +1453,7 @@ export type ListProjectsLocationsRegistryBooksViewEnum =
   | "REGISTRY_BOOK_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL"
-  | "AGGREGATE"
-  | (string & {});
+  | "AGGREGATE";
 export const ListProjectsLocationsRegistryBooksViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1506,7 +1493,7 @@ export const ListProjectsLocationsRegistryBooksRequest =
     identifier: "ListProjectsLocationsRegistryBooksRequest",
   }) as any as S.Schema<ListProjectsLocationsRegistryBooksRequest>;
 
-export type RegistryBookList = RegistryBook[];
+export type RegistryBookList = ReadonlyArray<RegistryBook>;
 export const RegistryBookList = /*@__PURE__*/ S.Array(
   RegistryBook,
 ) as any as S.Schema<RegistryBookList>;
@@ -1644,13 +1631,12 @@ export const PatchProjectsLocationsRegistryBooksRequest =
 export type SearchIpResourcesRequestSearchResourceTypesItemEnum =
   | "SEARCH_RESOURCE_TYPE_UNSPECIFIED"
   | "RANGES"
-  | "REALMS"
-  | (string & {});
+  | "REALMS";
 export const SearchIpResourcesRequestSearchResourceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type SearchIpResourcesRequestSearchResourceTypesItemEnumList =
-  SearchIpResourcesRequestSearchResourceTypesItemEnum[];
+  ReadonlyArray<SearchIpResourcesRequestSearchResourceTypesItemEnum>;
 export const SearchIpResourcesRequestSearchResourceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     SearchIpResourcesRequestSearchResourceTypesItemEnum,
@@ -1744,7 +1730,7 @@ export const Range = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
 
-export type RangeList = Range[];
+export type RangeList = ReadonlyArray<Range>;
 export const RangeList = /*@__PURE__*/ S.Array(
   Range,
 ) as any as S.Schema<RangeList>;
@@ -1765,7 +1751,8 @@ export const SearchIpResourcesResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchIpResourcesResult",
 }) as any as S.Schema<SearchIpResourcesResult>;
 
-export type SearchIpResourcesResultList = SearchIpResourcesResult[];
+export type SearchIpResourcesResultList =
+  ReadonlyArray<SearchIpResourcesResult>;
 export const SearchIpResourcesResultList = /*@__PURE__*/ S.Array(
   SearchIpResourcesResult,
 ) as any as S.Schema<SearchIpResourcesResultList>;

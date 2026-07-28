@@ -1560,17 +1560,46 @@
             "smithy.api#documentation": "The job name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.scheduler#JobPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the job properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.scheduler#JobPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the job start time."
+          }
+        },
+        "action": {
+          "target": "com.azure.scheduler#JobAction",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the job action."
+          }
+        },
+        "recurrence": {
+          "target": "com.azure.scheduler#JobRecurrence",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the job recurrence."
+          }
+        },
+        "state": {
+          "target": "com.azure.scheduler#JobState",
+          "traits": {
+            "smithy.api#documentation": "Gets or set the job state."
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.scheduler#JobsCreateOrUpdate": {
       "type": "operation",
@@ -1626,11 +1655,10 @@
             "smithy.api#documentation": "The job name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.scheduler#JobPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the job properties."
           }
         }
       },
@@ -2130,16 +2158,45 @@
             "smithy.api#documentation": "The job collection name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the job collection resource name."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the storage account location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.scheduler#JobCollectionsPatchRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.scheduler#JobCollectionProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the job collection properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scheduler#JobCollectionsPatchRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags."
       }
     },
     "com.azure.scheduler#JobCollectionsCreateOrUpdate": {
@@ -2188,16 +2245,45 @@
             "smithy.api#documentation": "The job collection name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the job collection resource name."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the storage account location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.scheduler#JobCollectionsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.scheduler#JobCollectionProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the job collection properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.scheduler#JobCollectionsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags."
       }
     },
     "com.azure.scheduler#JobCollectionsGet": {

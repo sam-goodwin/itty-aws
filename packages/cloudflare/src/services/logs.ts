@@ -148,7 +148,7 @@ export const LogExplorerDatasetsCreateForAccountRequestFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsCreateForAccountRequestFieldsItem>;
 
 export type LogExplorerDatasetsCreateForAccountRequestFieldsList =
-  LogExplorerDatasetsCreateForAccountRequestFieldsItem[];
+  ReadonlyArray<LogExplorerDatasetsCreateForAccountRequestFieldsItem>;
 export const LogExplorerDatasetsCreateForAccountRequestFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsCreateForAccountRequestFieldsItem,
@@ -183,8 +183,7 @@ export const CreateLogExplorerDatasetForAccountRequest =
 
 export type LogExplorerDatasetsCreateForAccountResponseObjectType =
   | "account"
-  | "zone"
-  | (string & {});
+  | "zone";
 export const LogExplorerDatasetsCreateForAccountResponseObjectType =
   /*@__PURE__*/ S.String;
 
@@ -205,7 +204,7 @@ export const LogExplorerDatasetsCreateForAccountResponseFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsCreateForAccountResponseFieldsItem>;
 
 export type LogExplorerDatasetsCreateForAccountResponseFieldsList =
-  LogExplorerDatasetsCreateForAccountResponseFieldsItem[];
+  ReadonlyArray<LogExplorerDatasetsCreateForAccountResponseFieldsItem>;
 export const LogExplorerDatasetsCreateForAccountResponseFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsCreateForAccountResponseFieldsItem,
@@ -265,7 +264,7 @@ export const LogExplorerDatasetsCreateForZoneRequestFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsCreateForZoneRequestFieldsItem>;
 
 export type LogExplorerDatasetsCreateForZoneRequestFieldsList =
-  LogExplorerDatasetsCreateForZoneRequestFieldsItem[];
+  ReadonlyArray<LogExplorerDatasetsCreateForZoneRequestFieldsItem>;
 export const LogExplorerDatasetsCreateForZoneRequestFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsCreateForZoneRequestFieldsItem,
@@ -300,8 +299,7 @@ export const CreateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
 
 export type LogExplorerDatasetsCreateForZoneResponseObjectType =
   | "account"
-  | "zone"
-  | (string & {});
+  | "zone";
 export const LogExplorerDatasetsCreateForZoneResponseObjectType =
   /*@__PURE__*/ S.String;
 
@@ -322,7 +320,7 @@ export const LogExplorerDatasetsCreateForZoneResponseFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsCreateForZoneResponseFieldsItem>;
 
 export type LogExplorerDatasetsCreateForZoneResponseFieldsList =
-  LogExplorerDatasetsCreateForZoneResponseFieldsItem[];
+  ReadonlyArray<LogExplorerDatasetsCreateForZoneResponseFieldsItem>;
 export const LogExplorerDatasetsCreateForZoneResponseFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsCreateForZoneResponseFieldsItem,
@@ -488,8 +486,7 @@ export const GetLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(
 
 export type LogExplorerDatasetsGetForAccountResponseObjectType =
   | "account"
-  | "zone"
-  | (string & {});
+  | "zone";
 export const LogExplorerDatasetsGetForAccountResponseObjectType =
   /*@__PURE__*/ S.String;
 
@@ -510,7 +507,7 @@ export const LogExplorerDatasetsGetForAccountResponseFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsGetForAccountResponseFieldsItem>;
 
 export type LogExplorerDatasetsGetForAccountResponseFieldsList =
-  LogExplorerDatasetsGetForAccountResponseFieldsItem[];
+  ReadonlyArray<LogExplorerDatasetsGetForAccountResponseFieldsItem>;
 export const LogExplorerDatasetsGetForAccountResponseFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsGetForAccountResponseFieldsItem,
@@ -577,8 +574,7 @@ export const GetLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type LogExplorerDatasetsGetForZoneResponseObjectType =
   | "account"
-  | "zone"
-  | (string & {});
+  | "zone";
 export const LogExplorerDatasetsGetForZoneResponseObjectType =
   /*@__PURE__*/ S.String;
 
@@ -599,7 +595,7 @@ export const LogExplorerDatasetsGetForZoneResponseFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsGetForZoneResponseFieldsItem>;
 
 export type LogExplorerDatasetsGetForZoneResponseFieldsList =
-  LogExplorerDatasetsGetForZoneResponseFieldsItem[];
+  ReadonlyArray<LogExplorerDatasetsGetForZoneResponseFieldsItem>;
 export const LogExplorerDatasetsGetForZoneResponseFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsGetForZoneResponseFieldsItem,
@@ -642,11 +638,7 @@ export const GetLogExplorerDatasetForZoneResponse = /*@__PURE__*/ S.suspend(
   identifier: "GetLogExplorerDatasetForZoneResponse",
 }) as any as S.Schema<GetLogExplorerDatasetForZoneResponse>;
 
-export type RayidGetRequestTimestamps =
-  | "unix"
-  | "unixnano"
-  | "rfc3339"
-  | (string & {});
+export type RayidGetRequestTimestamps = "unix" | "unixnano" | "rfc3339";
 export const RayidGetRequestTimestamps = /*@__PURE__*/ S.String;
 
 export interface GetRayidRequest {
@@ -679,24 +671,14 @@ export const GetRayidRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRayidRequest>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface GetRayidResponse {
-  string: unknown;
-  unknown: unknown;
-}
+export interface GetRayidResponse {}
 export const GetRayidResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    string: S.Unknown,
-    unknown: S.Unknown,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetRayidResponse",
 }) as any as S.Schema<GetRayidResponse>;
 
-export type ReceivedGetRequestTimestamps =
-  | "unix"
-  | "unixnano"
-  | "rfc3339"
-  | (string & {});
+export type ReceivedGetRequestTimestamps = "unix" | "unixnano" | "rfc3339";
 export const ReceivedGetRequestTimestamps = /*@__PURE__*/ S.String;
 
 export interface GetReceivedRequest {
@@ -738,15 +720,9 @@ export const GetReceivedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetReceivedRequest>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface GetReceivedResponse {
-  string: unknown;
-  unknown: unknown;
-}
+export interface GetReceivedResponse {}
 export const GetReceivedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    string: S.Unknown,
-    unknown: S.Unknown,
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetReceivedResponse",
 }) as any as S.Schema<GetReceivedResponse>;
@@ -804,156 +780,11 @@ export const ListLogExplorerDatasetAvailablesForAccountRequest =
     identifier: "ListLogExplorerDatasetAvailablesForAccountRequest",
   }) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountRequest>;
 
-export interface LogExplorerDatasetsAvailableListForAccountResponseErrorsItemSource {
-  pointer?: string;
-}
-export const LogExplorerDatasetsAvailableListForAccountResponseErrorsItemSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pointer: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "LogExplorerDatasetsAvailableListForAccountResponseErrorsItemSource",
-  }) as any as S.Schema<LogExplorerDatasetsAvailableListForAccountResponseErrorsItemSource>;
-
-export interface LogExplorerDatasetsAvailableListForAccountResponseErrorsItem {
-  code: number;
-  message: string;
-  documentationUrl?: string;
-  source?: LogExplorerDatasetsAvailableListForAccountResponseErrorsItemSource;
-}
-export const LogExplorerDatasetsAvailableListForAccountResponseErrorsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      message: S.String,
-      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-      source: S.optional(
-        LogExplorerDatasetsAvailableListForAccountResponseErrorsItemSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "LogExplorerDatasetsAvailableListForAccountResponseErrorsItem",
-  }) as any as S.Schema<LogExplorerDatasetsAvailableListForAccountResponseErrorsItem>;
-
-export type LogExplorerDatasetsAvailableListForAccountResponseErrorsList =
-  LogExplorerDatasetsAvailableListForAccountResponseErrorsItem[];
-export const LogExplorerDatasetsAvailableListForAccountResponseErrorsList =
-  /*@__PURE__*/ S.Array(
-    LogExplorerDatasetsAvailableListForAccountResponseErrorsItem,
-  ) as any as S.Schema<LogExplorerDatasetsAvailableListForAccountResponseErrorsList>;
-
-export type LogExplorerDatasetsAvailableListForAccountResponseMessagesList =
-  string[];
-export const LogExplorerDatasetsAvailableListForAccountResponseMessagesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<LogExplorerDatasetsAvailableListForAccountResponseMessagesList>;
-
-export type LogExplorerDatasetsAvailableListForAccountResponseResultItemObjectType =
-  "account" | "zone" | (string & {});
-export const LogExplorerDatasetsAvailableListForAccountResponseResultItemObjectType =
-  /*@__PURE__*/ S.String;
-
-export type LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaPropertiesMap =
-  { [key: string]: unknown | undefined };
-export const LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaPropertiesMap>;
-
-export type LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaRequiredList =
-  string[];
-export const LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaRequiredList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaRequiredList>;
-
-export type LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaType =
-  "object" | (string & {});
-export const LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaType =
-  /*@__PURE__*/ S.String;
-
-export interface LogExplorerDatasetsAvailableListForAccountResponseResultItemSchema {
-  properties?: LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaPropertiesMap;
-  required?: LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaRequiredList;
-  type?: LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaType;
-}
-export const LogExplorerDatasetsAvailableListForAccountResponseResultItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      properties: S.optional(
-        LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaPropertiesMap,
-      ),
-      required: S.optional(
-        LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaRequiredList,
-      ),
-      type: S.optional(
-        LogExplorerDatasetsAvailableListForAccountResponseResultItemSchemaType,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "LogExplorerDatasetsAvailableListForAccountResponseResultItemSchema",
-  }) as any as S.Schema<LogExplorerDatasetsAvailableListForAccountResponseResultItemSchema>;
-
-export interface LogExplorerDatasetsAvailableListForAccountResponseResultItem {
-  /** Dataset type name (e.g. `http_requests`). */
-  dataset: string;
-  /** Whether this dataset type is account-scoped or zone-scoped. */
-  objectType: LogExplorerDatasetsAvailableListForAccountResponseResultItemObjectType;
-  /** JSON Schema that describes the fields this dataset exposes. */
-  schema: LogExplorerDatasetsAvailableListForAccountResponseResultItemSchema;
-  /** The primary timestamp field name for this dataset. */
-  timestampField: string;
-}
-export const LogExplorerDatasetsAvailableListForAccountResponseResultItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataset: S.String,
-      objectType:
-        LogExplorerDatasetsAvailableListForAccountResponseResultItemObjectType.pipe(
-          T.Body("object_type"),
-        ),
-      schema:
-        LogExplorerDatasetsAvailableListForAccountResponseResultItemSchema,
-      timestampField: S.String.pipe(T.Body("timestamp_field")),
-    }),
-  ).annotate({
-    identifier: "LogExplorerDatasetsAvailableListForAccountResponseResultItem",
-  }) as any as S.Schema<LogExplorerDatasetsAvailableListForAccountResponseResultItem>;
-
-export type LogExplorerDatasetsAvailableListForAccountResponseResultList =
-  LogExplorerDatasetsAvailableListForAccountResponseResultItem[];
-export const LogExplorerDatasetsAvailableListForAccountResponseResultList =
-  /*@__PURE__*/ S.Array(
-    LogExplorerDatasetsAvailableListForAccountResponseResultItem,
-  ) as any as S.Schema<LogExplorerDatasetsAvailableListForAccountResponseResultList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ListLogExplorerDatasetAvailablesForAccountResponse {
-  errors?: LogExplorerDatasetsAvailableListForAccountResponseErrorsList;
-  messages?: LogExplorerDatasetsAvailableListForAccountResponseMessagesList;
-  success?: boolean;
-  result: LogExplorerDatasetsAvailableListForAccountResponseResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
+export interface ListLogExplorerDatasetAvailablesForAccountResponse {}
 export const ListLogExplorerDatasetAvailablesForAccountResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      errors: S.optional(
-        LogExplorerDatasetsAvailableListForAccountResponseErrorsList,
-      ),
-      messages: S.optional(
-        LogExplorerDatasetsAvailableListForAccountResponseMessagesList,
-      ),
-      success: S.optional(S.Boolean),
-      result: LogExplorerDatasetsAvailableListForAccountResponseResultList,
-      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListLogExplorerDatasetAvailablesForAccountResponse",
   }) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountResponse>;
@@ -979,155 +810,11 @@ export const ListLogExplorerDatasetAvailablesForZoneRequest =
     identifier: "ListLogExplorerDatasetAvailablesForZoneRequest",
   }) as any as S.Schema<ListLogExplorerDatasetAvailablesForZoneRequest>;
 
-export interface LogExplorerDatasetsAvailableListForZoneResponseErrorsItemSource {
-  pointer?: string;
-}
-export const LogExplorerDatasetsAvailableListForZoneResponseErrorsItemSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pointer: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "LogExplorerDatasetsAvailableListForZoneResponseErrorsItemSource",
-  }) as any as S.Schema<LogExplorerDatasetsAvailableListForZoneResponseErrorsItemSource>;
-
-export interface LogExplorerDatasetsAvailableListForZoneResponseErrorsItem {
-  code: number;
-  message: string;
-  documentationUrl?: string;
-  source?: LogExplorerDatasetsAvailableListForZoneResponseErrorsItemSource;
-}
-export const LogExplorerDatasetsAvailableListForZoneResponseErrorsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      message: S.String,
-      documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-      source: S.optional(
-        LogExplorerDatasetsAvailableListForZoneResponseErrorsItemSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "LogExplorerDatasetsAvailableListForZoneResponseErrorsItem",
-  }) as any as S.Schema<LogExplorerDatasetsAvailableListForZoneResponseErrorsItem>;
-
-export type LogExplorerDatasetsAvailableListForZoneResponseErrorsList =
-  LogExplorerDatasetsAvailableListForZoneResponseErrorsItem[];
-export const LogExplorerDatasetsAvailableListForZoneResponseErrorsList =
-  /*@__PURE__*/ S.Array(
-    LogExplorerDatasetsAvailableListForZoneResponseErrorsItem,
-  ) as any as S.Schema<LogExplorerDatasetsAvailableListForZoneResponseErrorsList>;
-
-export type LogExplorerDatasetsAvailableListForZoneResponseMessagesList =
-  string[];
-export const LogExplorerDatasetsAvailableListForZoneResponseMessagesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<LogExplorerDatasetsAvailableListForZoneResponseMessagesList>;
-
-export type LogExplorerDatasetsAvailableListForZoneResponseResultItemObjectType =
-  "account" | "zone" | (string & {});
-export const LogExplorerDatasetsAvailableListForZoneResponseResultItemObjectType =
-  /*@__PURE__*/ S.String;
-
-export type LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaPropertiesMap =
-  { [key: string]: unknown | undefined };
-export const LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaPropertiesMap>;
-
-export type LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaRequiredList =
-  string[];
-export const LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaRequiredList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaRequiredList>;
-
-export type LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaType =
-  "object" | (string & {});
-export const LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaType =
-  /*@__PURE__*/ S.String;
-
-export interface LogExplorerDatasetsAvailableListForZoneResponseResultItemSchema {
-  properties?: LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaPropertiesMap;
-  required?: LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaRequiredList;
-  type?: LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaType;
-}
-export const LogExplorerDatasetsAvailableListForZoneResponseResultItemSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      properties: S.optional(
-        LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaPropertiesMap,
-      ),
-      required: S.optional(
-        LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaRequiredList,
-      ),
-      type: S.optional(
-        LogExplorerDatasetsAvailableListForZoneResponseResultItemSchemaType,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "LogExplorerDatasetsAvailableListForZoneResponseResultItemSchema",
-  }) as any as S.Schema<LogExplorerDatasetsAvailableListForZoneResponseResultItemSchema>;
-
-export interface LogExplorerDatasetsAvailableListForZoneResponseResultItem {
-  /** Dataset type name (e.g. `http_requests`). */
-  dataset: string;
-  /** Whether this dataset type is account-scoped or zone-scoped. */
-  objectType: LogExplorerDatasetsAvailableListForZoneResponseResultItemObjectType;
-  /** JSON Schema that describes the fields this dataset exposes. */
-  schema: LogExplorerDatasetsAvailableListForZoneResponseResultItemSchema;
-  /** The primary timestamp field name for this dataset. */
-  timestampField: string;
-}
-export const LogExplorerDatasetsAvailableListForZoneResponseResultItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataset: S.String,
-      objectType:
-        LogExplorerDatasetsAvailableListForZoneResponseResultItemObjectType.pipe(
-          T.Body("object_type"),
-        ),
-      schema: LogExplorerDatasetsAvailableListForZoneResponseResultItemSchema,
-      timestampField: S.String.pipe(T.Body("timestamp_field")),
-    }),
-  ).annotate({
-    identifier: "LogExplorerDatasetsAvailableListForZoneResponseResultItem",
-  }) as any as S.Schema<LogExplorerDatasetsAvailableListForZoneResponseResultItem>;
-
-export type LogExplorerDatasetsAvailableListForZoneResponseResultList =
-  LogExplorerDatasetsAvailableListForZoneResponseResultItem[];
-export const LogExplorerDatasetsAvailableListForZoneResponseResultList =
-  /*@__PURE__*/ S.Array(
-    LogExplorerDatasetsAvailableListForZoneResponseResultItem,
-  ) as any as S.Schema<LogExplorerDatasetsAvailableListForZoneResponseResultList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ListLogExplorerDatasetAvailablesForZoneResponse {
-  errors?: LogExplorerDatasetsAvailableListForZoneResponseErrorsList;
-  messages?: LogExplorerDatasetsAvailableListForZoneResponseMessagesList;
-  success?: boolean;
-  result: LogExplorerDatasetsAvailableListForZoneResponseResultList;
-  /** Pagination info from the envelope's `result_info`. */
-  resultInfo?: ResultInfo | null;
-}
+export interface ListLogExplorerDatasetAvailablesForZoneResponse {}
 export const ListLogExplorerDatasetAvailablesForZoneResponse =
   /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      errors: S.optional(
-        LogExplorerDatasetsAvailableListForZoneResponseErrorsList,
-      ),
-      messages: S.optional(
-        LogExplorerDatasetsAvailableListForZoneResponseMessagesList,
-      ),
-      success: S.optional(S.Boolean),
-      result: LogExplorerDatasetsAvailableListForZoneResponseResultList,
-      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
-    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+    S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
   ).annotate({
     identifier: "ListLogExplorerDatasetAvailablesForZoneResponse",
   }) as any as S.Schema<ListLogExplorerDatasetAvailablesForZoneResponse>;
@@ -1158,8 +845,7 @@ export const ListLogExplorerDatasetsForAccountRequest = /*@__PURE__*/ S.suspend(
 
 export type LogExplorerDatasetsListForAccountResultItemObjectType =
   | "account"
-  | "zone"
-  | (string & {});
+  | "zone";
 export const LogExplorerDatasetsListForAccountResultItemObjectType =
   /*@__PURE__*/ S.String;
 
@@ -1197,7 +883,7 @@ export const LogExplorerDatasetsListForAccountResultItem =
   }) as any as S.Schema<LogExplorerDatasetsListForAccountResultItem>;
 
 export type LogExplorerDatasetsListForAccountResultList =
-  LogExplorerDatasetsListForAccountResultItem[];
+  ReadonlyArray<LogExplorerDatasetsListForAccountResultItem>;
 export const LogExplorerDatasetsListForAccountResultList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsListForAccountResultItem,
@@ -1247,8 +933,7 @@ export const ListLogExplorerDatasetsForZoneRequest = /*@__PURE__*/ S.suspend(
 
 export type LogExplorerDatasetsListForZoneResultItemObjectType =
   | "account"
-  | "zone"
-  | (string & {});
+  | "zone";
 export const LogExplorerDatasetsListForZoneResultItemObjectType =
   /*@__PURE__*/ S.String;
 
@@ -1286,7 +971,7 @@ export const LogExplorerDatasetsListForZoneResultItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LogExplorerDatasetsListForZoneResultItem>;
 
 export type LogExplorerDatasetsListForZoneResultList =
-  LogExplorerDatasetsListForZoneResultItem[];
+  ReadonlyArray<LogExplorerDatasetsListForZoneResultItem>;
 export const LogExplorerDatasetsListForZoneResultList = /*@__PURE__*/ S.Array(
   LogExplorerDatasetsListForZoneResultItem,
 ) as any as S.Schema<LogExplorerDatasetsListForZoneResultList>;
@@ -1340,7 +1025,7 @@ export const LogExplorerQuerySqlForAccountResultItemMap =
   ) as any as S.Schema<LogExplorerQuerySqlForAccountResultItemMap>;
 
 export type LogExplorerQuerySqlForAccountResultList =
-  LogExplorerQuerySqlForAccountResultItemMap[];
+  ReadonlyArray<LogExplorerQuerySqlForAccountResultItemMap>;
 export const LogExplorerQuerySqlForAccountResultList = /*@__PURE__*/ S.Array(
   LogExplorerQuerySqlForAccountResultItemMap,
 ) as any as S.Schema<LogExplorerQuerySqlForAccountResultList>;
@@ -1390,7 +1075,7 @@ export const LogExplorerQuerySqlForZoneResultItemMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LogExplorerQuerySqlForZoneResultItemMap>;
 
 export type LogExplorerQuerySqlForZoneResultList =
-  LogExplorerQuerySqlForZoneResultItemMap[];
+  ReadonlyArray<LogExplorerQuerySqlForZoneResultItemMap>;
 export const LogExplorerQuerySqlForZoneResultList = /*@__PURE__*/ S.Array(
   LogExplorerQuerySqlForZoneResultItemMap,
 ) as any as S.Schema<LogExplorerQuerySqlForZoneResultList>;
@@ -1427,7 +1112,7 @@ export const LogExplorerDatasetsUpdateForAccountRequestFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsUpdateForAccountRequestFieldsItem>;
 
 export type LogExplorerDatasetsUpdateForAccountRequestFieldsList =
-  LogExplorerDatasetsUpdateForAccountRequestFieldsItem[];
+  ReadonlyArray<LogExplorerDatasetsUpdateForAccountRequestFieldsItem>;
 export const LogExplorerDatasetsUpdateForAccountRequestFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsUpdateForAccountRequestFieldsItem,
@@ -1464,8 +1149,7 @@ export const UpdateLogExplorerDatasetForAccountRequest =
 
 export type LogExplorerDatasetsUpdateForAccountResponseObjectType =
   | "account"
-  | "zone"
-  | (string & {});
+  | "zone";
 export const LogExplorerDatasetsUpdateForAccountResponseObjectType =
   /*@__PURE__*/ S.String;
 
@@ -1486,7 +1170,7 @@ export const LogExplorerDatasetsUpdateForAccountResponseFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsUpdateForAccountResponseFieldsItem>;
 
 export type LogExplorerDatasetsUpdateForAccountResponseFieldsList =
-  LogExplorerDatasetsUpdateForAccountResponseFieldsItem[];
+  ReadonlyArray<LogExplorerDatasetsUpdateForAccountResponseFieldsItem>;
 export const LogExplorerDatasetsUpdateForAccountResponseFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsUpdateForAccountResponseFieldsItem,
@@ -1546,7 +1230,7 @@ export const LogExplorerDatasetsUpdateForZoneRequestFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsUpdateForZoneRequestFieldsItem>;
 
 export type LogExplorerDatasetsUpdateForZoneRequestFieldsList =
-  LogExplorerDatasetsUpdateForZoneRequestFieldsItem[];
+  ReadonlyArray<LogExplorerDatasetsUpdateForZoneRequestFieldsItem>;
 export const LogExplorerDatasetsUpdateForZoneRequestFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsUpdateForZoneRequestFieldsItem,
@@ -1583,8 +1267,7 @@ export const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
 
 export type LogExplorerDatasetsUpdateForZoneResponseObjectType =
   | "account"
-  | "zone"
-  | (string & {});
+  | "zone";
 export const LogExplorerDatasetsUpdateForZoneResponseObjectType =
   /*@__PURE__*/ S.String;
 
@@ -1605,7 +1288,7 @@ export const LogExplorerDatasetsUpdateForZoneResponseFieldsItem =
   }) as any as S.Schema<LogExplorerDatasetsUpdateForZoneResponseFieldsItem>;
 
 export type LogExplorerDatasetsUpdateForZoneResponseFieldsList =
-  LogExplorerDatasetsUpdateForZoneResponseFieldsItem[];
+  ReadonlyArray<LogExplorerDatasetsUpdateForZoneResponseFieldsItem>;
 export const LogExplorerDatasetsUpdateForZoneResponseFieldsList =
   /*@__PURE__*/ S.Array(
     LogExplorerDatasetsUpdateForZoneResponseFieldsItem,
@@ -1874,41 +1557,33 @@ export const getReceivedField: API.OperationMethod<
 
 export type ListLogExplorerDatasetAvailablesForAccountError = CloudflareOpError;
 /** Returns all dataset types that this account or zone can create. Each entry includes the dataset schema and timestamp field. The schema shows all possible fields for a dataset. However, not all fields may be available for your account or zone. When creating or updating a dataset, only fields available to your account or zone can be enabled. If you request a field that is not available, you will receive an error. */
-export const listLogExplorerDatasetAvailablesForAccount: API.PaginatedOperationMethod<
+export const listLogExplorerDatasetAvailablesForAccount: API.OperationMethod<
   ListLogExplorerDatasetAvailablesForAccountRequest,
   ListLogExplorerDatasetAvailablesForAccountResponse,
   ListLogExplorerDatasetAvailablesForAccountError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListLogExplorerDatasetAvailablesForAccountRequest,
-    output: ListLogExplorerDatasetAvailablesForAccountResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
-    protocol: CloudflarePaginatedProtocol,
-    retry: Retry.Retry,
-    pagination: { mode: "single", items: "result" } as const,
-  }),
-  cloudflarePaginate,
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListLogExplorerDatasetAvailablesForAccountRequest,
+  output: ListLogExplorerDatasetAvailablesForAccountResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ListLogExplorerDatasetAvailablesForZoneError = CloudflareOpError;
 /** Returns all dataset types that this account or zone can create. Each entry includes the dataset schema and timestamp field. The schema shows all possible fields for a dataset. However, not all fields may be available for your account or zone. When creating or updating a dataset, only fields available to your account or zone can be enabled. If you request a field that is not available, you will receive an error. */
-export const listLogExplorerDatasetAvailablesForZone: API.PaginatedOperationMethod<
+export const listLogExplorerDatasetAvailablesForZone: API.OperationMethod<
   ListLogExplorerDatasetAvailablesForZoneRequest,
   ListLogExplorerDatasetAvailablesForZoneResponse,
   ListLogExplorerDatasetAvailablesForZoneError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.makePaginated(
-  () => ({
-    input: ListLogExplorerDatasetAvailablesForZoneRequest,
-    output: ListLogExplorerDatasetAvailablesForZoneResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
-    protocol: CloudflarePaginatedProtocol,
-    retry: Retry.Retry,
-    pagination: { mode: "single", items: "result" } as const,
-  }),
-  cloudflarePaginate,
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListLogExplorerDatasetAvailablesForZoneRequest,
+  output: ListLogExplorerDatasetAvailablesForZoneResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ListLogExplorerDatasetsForAccountError = CloudflareOpError;
 /** Returns all Log Explorer datasets configured for the account or zone. Pass `include_zones=true` to also include zone-level datasets that belong to this account or zone. List responses omit the `fields` property; use the single-dataset endpoint to retrieve field configuration. */

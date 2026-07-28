@@ -215,12 +215,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "audience_key": {
           "target": "smithy.api#String",
           "traits": {
@@ -248,36 +242,10 @@
             "smithy.api#documentation": "Human-readable Slack channel name, for display only."
           }
         },
-        "resolution_source": {
-          "target": "com.posthog.stamphog#ResolutionSourceEnum",
-          "traits": {
-            "smithy.api#documentation": "How this row was created: 'manual' (via this API), 'slack_name_match' (auto-provisioned because the workspace has a channel named exactly like the audience_key), 'stamphog_config' (auto-provisioned from the channel the repo declared under 'digest:' in .stamphog/policy.yml), or 'owners_contact' (reserved for the future owners.yaml contact.slack step, not implemented yet).\n\n* `manual` - MANUAL\n* `slack_name_match` - SLACK_NAME_MATCH\n* `stamphog_config` - STAMPHOG_CONFIG\n* `owners_contact` - OWNERS_CONTACT",
-            "smithy.api#required": {}
-          }
-        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this channel is included in the daily digest fan-out."
-          }
-        },
-        "last_digest_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       },
@@ -389,36 +357,10 @@
             "smithy.api#documentation": "Human-readable Slack channel name, for display only."
           }
         },
-        "resolution_source": {
-          "target": "com.posthog.stamphog#ResolutionSourceEnum",
-          "traits": {
-            "smithy.api#documentation": "How this row was created: 'manual' (via this API), 'slack_name_match' (auto-provisioned because the workspace has a channel named exactly like the audience_key), 'stamphog_config' (auto-provisioned from the channel the repo declared under 'digest:' in .stamphog/policy.yml), or 'owners_contact' (reserved for the future owners.yaml contact.slack step, not implemented yet).\n\n* `manual` - MANUAL\n* `slack_name_match` - SLACK_NAME_MATCH\n* `stamphog_config` - STAMPHOG_CONFIG\n* `owners_contact` - OWNERS_CONTACT",
-            "smithy.api#required": {}
-          }
-        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this channel is included in the daily digest fan-out."
-          }
-        },
-        "last_digest_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       },
@@ -486,29 +428,11 @@
             "smithy.api#documentation": "Human-readable Slack channel name, for display only."
           }
         },
-        "resolution_source": {
-          "target": "com.posthog.stamphog#ResolutionSourceEnum",
-          "traits": {
-            "smithy.api#documentation": "How this row was created: 'manual' (via this API), 'slack_name_match' (auto-provisioned because the workspace has a channel named exactly like the audience_key), 'stamphog_config' (auto-provisioned from the channel the repo declared under 'digest:' in .stamphog/policy.yml), or 'owners_contact' (reserved for the future owners.yaml contact.slack step, not implemented yet).\n\n* `manual` - MANUAL\n* `slack_name_match` - SLACK_NAME_MATCH\n* `stamphog_config` - STAMPHOG_CONFIG\n* `owners_contact` - OWNERS_CONTACT"
-          }
-        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether this channel is included in the daily digest fan-out."
           }
-        },
-        "last_digest_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -1241,12 +1165,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "provider": {
           "target": "smithy.api#String",
           "traits": {
@@ -1266,13 +1184,6 @@
             "smithy.api#documentation": "Whether stamphog actively reviews pull requests for this repo."
           }
         },
-        "installation_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Provider app installation ID that authorizes API calls for this repo. Set only by the verified sync_installation flow; ignored on direct writes.",
-            "smithy.api#required": {}
-          }
-        },
         "digest_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -1289,18 +1200,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       },
@@ -1404,13 +1303,6 @@
             "smithy.api#documentation": "Whether stamphog actively reviews pull requests for this repo."
           }
         },
-        "installation_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Provider app installation ID that authorizes API calls for this repo. Set only by the verified sync_installation flow; ignored on direct writes.",
-            "smithy.api#required": {}
-          }
-        },
         "digest_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -1427,18 +1319,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       },
@@ -1500,12 +1380,6 @@
             "smithy.api#documentation": "Whether stamphog actively reviews pull requests for this repo."
           }
         },
-        "installation_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Provider app installation ID that authorizes API calls for this repo. Set only by the verified sync_installation flow; ignored on direct writes."
-          }
-        },
         "digest_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -1523,12 +1397,6 @@
           "traits": {
             "smithy.api#documentation": "Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'."
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {

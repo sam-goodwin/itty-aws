@@ -109,8 +109,7 @@ export type LocalInventoryAttributesAvailabilityEnum =
   | "IN_STOCK"
   | "LIMITED_AVAILABILITY"
   | "ON_DISPLAY_TO_ORDER"
-  | "OUT_OF_STOCK"
-  | (string & {});
+  | "OUT_OF_STOCK";
 export const LocalInventoryAttributesAvailabilityEnum = /*@__PURE__*/ S.String;
 
 /** The price represented as a number and currency. */
@@ -172,7 +171,8 @@ export const InventoryLoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   identifier: "InventoryLoyaltyProgram",
 }) as any as S.Schema<InventoryLoyaltyProgram>;
 
-export type InventoryLoyaltyProgramList = InventoryLoyaltyProgram[];
+export type InventoryLoyaltyProgramList =
+  ReadonlyArray<InventoryLoyaltyProgram>;
 export const InventoryLoyaltyProgramList = /*@__PURE__*/ S.Array(
   InventoryLoyaltyProgram,
 ) as any as S.Schema<InventoryLoyaltyProgramList>;
@@ -196,7 +196,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomAttribute",
 }) as any as S.Schema<CustomAttribute>;
 
-export type CustomAttributeList = CustomAttribute[];
+export type CustomAttributeList = ReadonlyArray<CustomAttribute>;
 export const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
@@ -211,8 +211,7 @@ export type LocalInventoryAttributesPickupSlaEnum =
   | "FIVE_DAY"
   | "SIX_DAY"
   | "SEVEN_DAY"
-  | "MULTI_WEEK"
-  | (string & {});
+  | "MULTI_WEEK";
 export const LocalInventoryAttributesPickupSlaEnum = /*@__PURE__*/ S.String;
 
 export type LocalInventoryAttributesPickupMethodEnum =
@@ -220,8 +219,7 @@ export type LocalInventoryAttributesPickupMethodEnum =
   | "BUY"
   | "RESERVE"
   | "SHIP_TO_STORE"
-  | "NOT_SUPPORTED"
-  | (string & {});
+  | "NOT_SUPPORTED";
 export const LocalInventoryAttributesPickupMethodEnum = /*@__PURE__*/ S.String;
 
 /** Local inventory attributes. */
@@ -315,8 +313,7 @@ export const InsertAccountsProductsLocalInventoriesRequest =
 export type RegionalInventoryAttributesAvailabilityEnum =
   | "REGIONAL_INVENTORY_AVAILABILITY_UNSPECIFIED"
   | "IN_STOCK"
-  | "OUT_OF_STOCK"
-  | (string & {});
+  | "OUT_OF_STOCK";
 export const RegionalInventoryAttributesAvailabilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -417,7 +414,7 @@ export const ListAccountsProductsLocalInventoriesRequest =
     identifier: "ListAccountsProductsLocalInventoriesRequest",
   }) as any as S.Schema<ListAccountsProductsLocalInventoriesRequest>;
 
-export type LocalInventoryList = LocalInventory[];
+export type LocalInventoryList = ReadonlyArray<LocalInventory>;
 export const LocalInventoryList = /*@__PURE__*/ S.Array(
   LocalInventory,
 ) as any as S.Schema<LocalInventoryList>;
@@ -463,7 +460,7 @@ export const ListAccountsProductsRegionalInventoriesRequest =
     identifier: "ListAccountsProductsRegionalInventoriesRequest",
   }) as any as S.Schema<ListAccountsProductsRegionalInventoriesRequest>;
 
-export type RegionalInventoryList = RegionalInventory[];
+export type RegionalInventoryList = ReadonlyArray<RegionalInventory>;
 export const RegionalInventoryList = /*@__PURE__*/ S.Array(
   RegionalInventory,
 ) as any as S.Schema<RegionalInventoryList>;

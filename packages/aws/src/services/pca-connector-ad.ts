@@ -139,7 +139,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
 ).pipe(C.withBadRequestError) {}
 export type DirectoryId = string;
 export type CertificateAuthorityArn = string;
-export type IpAddressType = "IPV4" | "DUALSTACK" | (string & {});
+export type IpAddressType = "IPV4" | "DUALSTACK";
 export const IpAddressType = /*@__PURE__*/ S.String;
 
 export type SecurityGroupId = string;
@@ -266,8 +266,7 @@ export type ValidityPeriodType =
   | "DAYS"
   | "WEEKS"
   | "MONTHS"
-  | "YEARS"
-  | (string & {});
+  | "YEARS";
 export const ValidityPeriodType = /*@__PURE__*/ S.String;
 
 export interface ValidityPeriod {
@@ -288,7 +287,7 @@ export const CertificateValidity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateValidity>;
 export type TemplateNameList = string[];
 export const TemplateNameList = /*@__PURE__*/ S.Array(S.String);
-export type KeySpec = "KEY_EXCHANGE" | "SIGNATURE" | (string & {});
+export type KeySpec = "KEY_EXCHANGE" | "SIGNATURE";
 export const KeySpec = /*@__PURE__*/ S.String;
 
 export type CryptoProvidersList = string[];
@@ -313,8 +312,7 @@ export type ClientCompatibilityV2 =
   | "WINDOWS_SERVER_2008_R2"
   | "WINDOWS_SERVER_2012"
   | "WINDOWS_SERVER_2012_R2"
-  | "WINDOWS_SERVER_2016"
-  | (string & {});
+  | "WINDOWS_SERVER_2016";
 export const ClientCompatibilityV2 = /*@__PURE__*/ S.String;
 
 export interface PrivateKeyFlagsV2 {
@@ -477,8 +475,7 @@ export type ApplicationPolicyType =
   | "WINDOWS_SYSTEM_COMPONENT_VERIFICATION"
   | "WINDOWS_TCB_COMPONENT"
   | "WINDOWS_THIRD_PARTY_APPLICATION_COMPONENT"
-  | "WINDOWS_UPDATE"
-  | (string & {});
+  | "WINDOWS_UPDATE";
 export const ApplicationPolicyType = /*@__PURE__*/ S.String;
 
 export type CustomObjectIdentifier = string;
@@ -535,7 +532,7 @@ export const TemplateV2 = /*@__PURE__*/ S.suspend(() =>
     Extensions: ExtensionsV2,
   }),
 ).annotate({ identifier: "TemplateV2" }) as any as S.Schema<TemplateV2>;
-export type KeyUsagePropertyType = "ALL" | (string & {});
+export type KeyUsagePropertyType = "ALL";
 export const KeyUsagePropertyType = /*@__PURE__*/ S.String;
 
 export interface KeyUsagePropertyFlags {
@@ -563,8 +560,7 @@ export type PrivateKeyAlgorithm =
   | "RSA"
   | "ECDH_P256"
   | "ECDH_P384"
-  | "ECDH_P521"
-  | (string & {});
+  | "ECDH_P521";
 export const PrivateKeyAlgorithm = /*@__PURE__*/ S.String;
 
 export interface PrivateKeyAttributesV3 {
@@ -590,8 +586,7 @@ export type ClientCompatibilityV3 =
   | "WINDOWS_SERVER_2008_R2"
   | "WINDOWS_SERVER_2012"
   | "WINDOWS_SERVER_2012_R2"
-  | "WINDOWS_SERVER_2016"
-  | (string & {});
+  | "WINDOWS_SERVER_2016";
 export const ClientCompatibilityV3 = /*@__PURE__*/ S.String;
 
 export interface PrivateKeyFlagsV3 {
@@ -666,7 +661,7 @@ export const GeneralFlagsV3 = /*@__PURE__*/ S.suspend(() =>
     MachineType: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "GeneralFlagsV3" }) as any as S.Schema<GeneralFlagsV3>;
-export type HashAlgorithm = "SHA256" | "SHA384" | "SHA512" | (string & {});
+export type HashAlgorithm = "SHA256" | "SHA384" | "SHA512";
 export const HashAlgorithm = /*@__PURE__*/ S.String;
 
 export interface ExtensionsV3 {
@@ -724,8 +719,7 @@ export const PrivateKeyAttributesV4 = /*@__PURE__*/ S.suspend(() =>
 export type ClientCompatibilityV4 =
   | "WINDOWS_SERVER_2012"
   | "WINDOWS_SERVER_2012_R2"
-  | "WINDOWS_SERVER_2016"
-  | (string & {});
+  | "WINDOWS_SERVER_2016";
 export const ClientCompatibilityV4 = /*@__PURE__*/ S.String;
 
 export interface PrivateKeyFlagsV4 {
@@ -885,7 +879,7 @@ export const CreateTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTemplateResponse>;
 export type GroupSecurityIdentifier = string;
 export type DisplayName = string;
-export type AccessRight = "ALLOW" | "DENY" | (string & {});
+export type AccessRight = "ALLOW" | "DENY";
 export const AccessRight = /*@__PURE__*/ S.String;
 
 export interface AccessRights {
@@ -1091,12 +1085,7 @@ export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectorRequest",
 }) as any as S.Schema<GetConnectorRequest>;
-export type ConnectorStatus =
-  | "CREATING"
-  | "ACTIVE"
-  | "DELETING"
-  | "FAILED"
-  | (string & {});
+export type ConnectorStatus = "CREATING" | "ACTIVE" | "DELETING" | "FAILED";
 export const ConnectorStatus = /*@__PURE__*/ S.String;
 
 export type ConnectorStatusReason =
@@ -1110,8 +1099,7 @@ export type ConnectorStatusReason =
   | "SECURITY_GROUP_NOT_IN_VPC"
   | "VPC_ACCESS_DENIED"
   | "VPC_ENDPOINT_LIMIT_EXCEEDED"
-  | "VPC_RESOURCE_NOT_FOUND"
-  | (string & {});
+  | "VPC_RESOURCE_NOT_FOUND";
 export const ConnectorStatusReason = /*@__PURE__*/ S.String;
 
 export interface Connector {
@@ -1174,8 +1162,7 @@ export type DirectoryRegistrationStatus =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const DirectoryRegistrationStatus = /*@__PURE__*/ S.String;
 
 export type DirectoryRegistrationStatusReason =
@@ -1184,8 +1171,7 @@ export type DirectoryRegistrationStatusReason =
   | "DIRECTORY_NOT_ACTIVE"
   | "DIRECTORY_NOT_REACHABLE"
   | "DIRECTORY_TYPE_NOT_SUPPORTED"
-  | "INTERNAL_FAILURE"
-  | (string & {});
+  | "INTERNAL_FAILURE";
 export const DirectoryRegistrationStatusReason = /*@__PURE__*/ S.String;
 
 export interface DirectoryRegistration {
@@ -1246,8 +1232,7 @@ export type ServicePrincipalNameStatus =
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ServicePrincipalNameStatus = /*@__PURE__*/ S.String;
 
 export type ServicePrincipalNameStatusReason =
@@ -1256,8 +1241,7 @@ export type ServicePrincipalNameStatusReason =
   | "DIRECTORY_RESOURCE_NOT_FOUND"
   | "SPN_EXISTS_ON_DIFFERENT_AD_OBJECT"
   | "SPN_LIMIT_EXCEEDED"
-  | "INTERNAL_FAILURE"
-  | (string & {});
+  | "INTERNAL_FAILURE";
 export const ServicePrincipalNameStatusReason = /*@__PURE__*/ S.String;
 
 export interface ServicePrincipalName {
@@ -1305,7 +1289,7 @@ export const GetTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTemplateRequest",
 }) as any as S.Schema<GetTemplateRequest>;
-export type TemplateStatus = "ACTIVE" | "DELETING" | (string & {});
+export type TemplateStatus = "ACTIVE" | "DELETING";
 export const TemplateStatus = /*@__PURE__*/ S.String;
 
 export interface TemplateRevision {
@@ -1875,8 +1859,7 @@ export type ValidationExceptionReason =
   | "MISMATCHED_VPC"
   | "NO_CLIENT_TOKEN"
   | "UNKNOWN_OPERATION"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export type CreateConnectorError =

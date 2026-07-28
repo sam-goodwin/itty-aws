@@ -58,19 +58,18 @@ export type PlatformSummaryBetterAdsStatusEnum =
   | "UNKNOWN"
   | "PASSING"
   | "WARNING"
-  | "FAILING"
-  | (string & {});
+  | "FAILING";
 export const PlatformSummaryBetterAdsStatusEnum = /*@__PURE__*/ S.String;
 
 export type PlatformSummaryRegionItemEnum =
   | "REGION_UNKNOWN"
   | "REGION_A"
   | "REGION_B"
-  | "REGION_C"
-  | (string & {});
+  | "REGION_C";
 export const PlatformSummaryRegionItemEnum = /*@__PURE__*/ S.String;
 
-export type PlatformSummaryRegionItemEnumList = PlatformSummaryRegionItemEnum[];
+export type PlatformSummaryRegionItemEnumList =
+  ReadonlyArray<PlatformSummaryRegionItemEnum>;
 export const PlatformSummaryRegionItemEnumList = /*@__PURE__*/ S.Array(
   PlatformSummaryRegionItemEnum,
 ) as any as S.Schema<PlatformSummaryRegionItemEnumList>;
@@ -80,8 +79,7 @@ export type PlatformSummaryFilterStatusEnum =
   | "ON"
   | "OFF"
   | "PAUSED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const PlatformSummaryFilterStatusEnum = /*@__PURE__*/ S.String;
 
 /** A site's Ad Experience Report summary on a single platform. */
@@ -147,7 +145,7 @@ export const ListViolatingSitesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListViolatingSitesRequest",
 }) as any as S.Schema<ListViolatingSitesRequest>;
 
-export type SiteSummaryResponseList = SiteSummaryResponse[];
+export type SiteSummaryResponseList = ReadonlyArray<SiteSummaryResponse>;
 export const SiteSummaryResponseList = /*@__PURE__*/ S.Array(
   SiteSummaryResponse,
 ) as any as S.Schema<SiteSummaryResponseList>;

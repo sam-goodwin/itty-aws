@@ -54,7 +54,8 @@ export const MetricAttributeKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricAttributeKey>;
 
 /** Distinct attribute keys (datapoint and resource attributes merged), most frequent first. */
-export type MetricAttributeKeysResponseResultsList = MetricAttributeKey[];
+export type MetricAttributeKeysResponseResultsList =
+  ReadonlyArray<MetricAttributeKey>;
 export const MetricAttributeKeysResponseResultsList = /*@__PURE__*/ S.Array(
   MetricAttributeKey,
 ) as any as S.Schema<MetricAttributeKeysResponseResultsList>;
@@ -127,7 +128,8 @@ export const MetricAttributeValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricAttributeValue>;
 
 /** Observed values for the requested key, most frequent first. */
-export type MetricAttributeValuesResponseResultsList = MetricAttributeValue[];
+export type MetricAttributeValuesResponseResultsList =
+  ReadonlyArray<MetricAttributeValue>;
 export const MetricAttributeValuesResponseResultsList = /*@__PURE__*/ S.Array(
   MetricAttributeValue,
 ) as any as S.Schema<MetricAttributeValuesResponseResultsList>;
@@ -152,20 +154,15 @@ export type AggregationEnum =
   | "p95"
   | "rate"
   | "increase"
-  | "histogram_quantile"
-  | (string & {});
+  | "histogram_quantile";
 export const AggregationEnum = /*@__PURE__*/ S.String;
 
 /** * `eq` - eq * `neq` - neq * `regex` - regex * `not_regex` - not_regex */
-export type OpEnum = "eq" | "neq" | "regex" | "not_regex" | (string & {});
+export type OpEnum = "eq" | "neq" | "regex" | "not_regex";
 export const OpEnum = /*@__PURE__*/ S.String;
 
 /** * `resource` - resource * `attribute` - attribute * `auto` - auto */
-export type MetricAttributeScopeEnum =
-  | "resource"
-  | "attribute"
-  | "auto"
-  | (string & {});
+export type MetricAttributeScopeEnum = "resource" | "attribute" | "auto";
 export const MetricAttributeScopeEnum = /*@__PURE__*/ S.String;
 
 export interface MetricFilter {
@@ -188,13 +185,13 @@ export const MetricFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricFilter" }) as any as S.Schema<MetricFilter>;
 
 /** Label predicates narrowing which series are characterized. */
-export type MetricAnomalyBodyFiltersList = MetricFilter[];
+export type MetricAnomalyBodyFiltersList = ReadonlyArray<MetricFilter>;
 export const MetricAnomalyBodyFiltersList = /*@__PURE__*/ S.Array(
   MetricFilter,
 ) as any as S.Schema<MetricAnomalyBodyFiltersList>;
 
 /** Label keys to drill into when finding which label values moved. Omit to auto-discover the most common keys on this metric (plus service_name). Max 4 are used. */
-export type MetricAnomalyBodyCandidateKeysList = string[];
+export type MetricAnomalyBodyCandidateKeysList = ReadonlyArray<string>;
 export const MetricAnomalyBodyCandidateKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MetricAnomalyBodyCandidateKeysList>;
@@ -257,7 +254,7 @@ export const MetricsCharacterizeCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricsCharacterizeCreateRequest>;
 
 /** * `up` - up * `down` - down * `flat` - flat */
-export type MetricAnomalyDirectionEnum = "up" | "down" | "flat" | (string & {});
+export type MetricAnomalyDirectionEnum = "up" | "down" | "flat";
 export const MetricAnomalyDirectionEnum = /*@__PURE__*/ S.String;
 
 export interface MetricAnomalyDimension {
@@ -285,7 +282,8 @@ export const MetricAnomalyDimension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricAnomalyDimension>;
 
 /** Label values whose behavior changed the most between windows, largest change first. Empty when nothing moved or the metric has no labels. */
-export type MetricAnomalyReportTopMoversList = MetricAnomalyDimension[];
+export type MetricAnomalyReportTopMoversList =
+  ReadonlyArray<MetricAnomalyDimension>;
 export const MetricAnomalyReportTopMoversList = /*@__PURE__*/ S.Array(
   MetricAnomalyDimension,
 ) as any as S.Schema<MetricAnomalyReportTopMoversList>;
@@ -313,7 +311,7 @@ export const MetricQueryPoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricQueryPoint>;
 
 /** Time-bucketed points, ordered by time ascending. */
-export type MetricSeriesPointsList = MetricQueryPoint[];
+export type MetricSeriesPointsList = ReadonlyArray<MetricQueryPoint>;
 export const MetricSeriesPointsList = /*@__PURE__*/ S.Array(
   MetricQueryPoint,
 ) as any as S.Schema<MetricSeriesPointsList>;
@@ -430,12 +428,11 @@ export type OtelMetricTypeEnum =
   | "sum"
   | "histogram"
   | "exponential_histogram"
-  | "summary"
-  | (string & {});
+  | "summary";
 export const OtelMetricTypeEnum = /*@__PURE__*/ S.String;
 
 /** Label predicates ANDed together. Rows must satisfy every filter. */
-export type MetricQueryBodyFiltersList = MetricFilter[];
+export type MetricQueryBodyFiltersList = ReadonlyArray<MetricFilter>;
 export const MetricQueryBodyFiltersList = /*@__PURE__*/ S.Array(
   MetricFilter,
 ) as any as S.Schema<MetricQueryBodyFiltersList>;
@@ -454,7 +451,7 @@ export const MetricGroupBy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricGroupBy" }) as any as S.Schema<MetricGroupBy>;
 
 /** Labels to split the result into separate series by. Series share one time grid and are capped at the 100 largest. */
-export type MetricQueryBodyGroupByList = MetricGroupBy[];
+export type MetricQueryBodyGroupByList = ReadonlyArray<MetricGroupBy>;
 export const MetricQueryBodyGroupByList = /*@__PURE__*/ S.Array(
   MetricGroupBy,
 ) as any as S.Schema<MetricQueryBodyGroupByList>;
@@ -468,18 +465,17 @@ export type MetricQueryIntervalEnum =
   | "hour"
   | "hour_6"
   | "day"
-  | "week"
-  | (string & {});
+  | "week";
 export const MetricQueryIntervalEnum = /*@__PURE__*/ S.String;
 
 /** Label predicates ANDed together for this clause. */
-export type MetricClauseFiltersList = MetricFilter[];
+export type MetricClauseFiltersList = ReadonlyArray<MetricFilter>;
 export const MetricClauseFiltersList = /*@__PURE__*/ S.Array(
   MetricFilter,
 ) as any as S.Schema<MetricClauseFiltersList>;
 
 /** Labels to split this clause into separate series by. */
-export type MetricClauseGroupByList = MetricGroupBy[];
+export type MetricClauseGroupByList = ReadonlyArray<MetricGroupBy>;
 export const MetricClauseGroupByList = /*@__PURE__*/ S.Array(
   MetricGroupBy,
 ) as any as S.Schema<MetricClauseGroupByList>;
@@ -513,7 +509,7 @@ export const MetricClause = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricClause" }) as any as S.Schema<MetricClause>;
 
 /** Full multi-clause form: each clause is an independent metric selection sharing the request's time grid (maximum 10). Mutually exclusive with 'metricName'. */
-export type MetricQueryBodyClausesList = MetricClause[];
+export type MetricQueryBodyClausesList = ReadonlyArray<MetricClause>;
 export const MetricQueryBodyClausesList = /*@__PURE__*/ S.Array(
   MetricClause,
 ) as any as S.Schema<MetricQueryBodyClausesList>;
@@ -582,7 +578,7 @@ export const MetricsQueryCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricsQueryCreateRequest>;
 
 /** One series per (clause, label-set). A single ungrouped query returns exactly one series with empty labels. */
-export type MetricQueryResponseResultsList = MetricSeries[];
+export type MetricQueryResponseResultsList = ReadonlyArray<MetricSeries>;
 export const MetricQueryResponseResultsList = /*@__PURE__*/ S.Array(
   MetricSeries,
 ) as any as S.Schema<MetricQueryResponseResultsList>;
@@ -711,7 +707,7 @@ export const MetricEventSample = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricEventSample>;
 
 /** Raw emissions ordered by timestamp descending. */
-export type MetricSamplesResponseResultsList = MetricEventSample[];
+export type MetricSamplesResponseResultsList = ReadonlyArray<MetricEventSample>;
 export const MetricSamplesResponseResultsList = /*@__PURE__*/ S.Array(
   MetricEventSample,
 ) as any as S.Schema<MetricSamplesResponseResultsList>;
@@ -766,7 +762,7 @@ export const MetricName = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricName" }) as any as S.Schema<MetricName>;
 
 /** Distinct metric names ordered by recent activity. */
-export type MetricNamesResponseResultsList = MetricName[];
+export type MetricNamesResponseResultsList = ReadonlyArray<MetricName>;
 export const MetricNamesResponseResultsList = /*@__PURE__*/ S.Array(
   MetricName,
 ) as any as S.Schema<MetricNamesResponseResultsList>;

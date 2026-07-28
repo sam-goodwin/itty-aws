@@ -192,8 +192,7 @@ export type ServiceNamespace =
   | "kafka"
   | "elasticache"
   | "neptune"
-  | "workspaces"
-  | (string & {});
+  | "workspaces";
 export const ServiceNamespace = /*@__PURE__*/ S.String;
 
 export type ScalableDimension =
@@ -220,8 +219,7 @@ export type ScalableDimension =
   | "neptune:cluster:ReadReplicaCount"
   | "sagemaker:variant:DesiredProvisionedConcurrency"
   | "sagemaker:inference-component:DesiredCopyCount"
-  | "workspaces:workspacespool:DesiredUserSessions"
-  | (string & {});
+  | "workspaces:workspacespool:DesiredUserSessions";
 export const ScalableDimension = /*@__PURE__*/ S.String;
 
 export interface DeleteScalingPolicyRequest {
@@ -402,8 +400,7 @@ export type ScalingActivityStatusCode =
   | "Successful"
   | "Overridden"
   | "Unfulfilled"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ScalingActivityStatusCode = /*@__PURE__*/ S.String;
 
 export interface NotScaledReason {
@@ -496,15 +493,13 @@ export type PolicyName = string;
 export type PolicyType =
   | "StepScaling"
   | "TargetTrackingScaling"
-  | "PredictiveScaling"
-  | (string & {});
+  | "PredictiveScaling";
 export const PolicyType = /*@__PURE__*/ S.String;
 
 export type AdjustmentType =
   | "ChangeInCapacity"
   | "PercentChangeInCapacity"
-  | "ExactCapacity"
-  | (string & {});
+  | "ExactCapacity";
 export const AdjustmentType = /*@__PURE__*/ S.String;
 
 export type MetricScale = number;
@@ -525,11 +520,7 @@ export type StepAdjustments = StepAdjustment[];
 export const StepAdjustments = /*@__PURE__*/ S.Array(StepAdjustment);
 export type MinAdjustmentMagnitude = number;
 export type Cooldown = number;
-export type MetricAggregationType =
-  | "Average"
-  | "Minimum"
-  | "Maximum"
-  | (string & {});
+export type MetricAggregationType = "Average" | "Minimum" | "Maximum";
 export const MetricAggregationType = /*@__PURE__*/ S.String;
 
 export interface StepScalingPolicyConfiguration {
@@ -581,8 +572,7 @@ export type MetricType =
   | "SageMakerInferenceComponentConcurrentRequestsPerCopyHighResolution"
   | "SageMakerVariantConcurrentRequestsPerModelHighResolution"
   | "ECSServiceAverageCPUUtilizationHighResolution"
-  | "ECSServiceAverageMemoryUtilizationHighResolution"
-  | (string & {});
+  | "ECSServiceAverageMemoryUtilizationHighResolution";
 export const MetricType = /*@__PURE__*/ S.String;
 
 export type ResourceLabel = string;
@@ -618,8 +608,7 @@ export type MetricStatistic =
   | "Minimum"
   | "Maximum"
   | "SampleCount"
-  | "Sum"
-  | (string & {});
+  | "Sum";
 export const MetricStatistic = /*@__PURE__*/ S.String;
 
 export type MetricUnit = string;
@@ -895,17 +884,13 @@ export type PredictiveScalingMetricSpecifications =
 export const PredictiveScalingMetricSpecifications = /*@__PURE__*/ S.Array(
   PredictiveScalingMetricSpecification,
 );
-export type PredictiveScalingMode =
-  | "ForecastOnly"
-  | "ForecastAndScale"
-  | (string & {});
+export type PredictiveScalingMode = "ForecastOnly" | "ForecastAndScale";
 export const PredictiveScalingMode = /*@__PURE__*/ S.String;
 
 export type PredictiveScalingSchedulingBufferTime = number;
 export type PredictiveScalingMaxCapacityBreachBehavior =
   | "HonorMaxCapacity"
-  | "IncreaseMaxCapacity"
-  | (string & {});
+  | "IncreaseMaxCapacity";
 export const PredictiveScalingMaxCapacityBreachBehavior =
   /*@__PURE__*/ S.String;
 

@@ -13,13 +13,21 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Direction of data movement */
+export type Direction = "Send" | "Receive";
+export const Direction = /*@__PURE__*/ S.String;
+
 export interface AzureDataTransferListApprovedSchemasRequest {
-  body: unknown;
+  /** The name of the pipeline to filter approved schemas. */
+  pipeline?: string;
+  /** The direction pipeline to filter approved schemas. */
+  direction?: Direction;
 }
 export const AzureDataTransferListApprovedSchemasRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      pipeline: S.optional(S.String),
+      direction: S.optional(Direction),
     }).pipe(
       T.Http({
         method: "POST",
@@ -33,15 +41,11 @@ export const AzureDataTransferListApprovedSchemasRequest =
   }) as any as S.Schema<AzureDataTransferListApprovedSchemasRequest>;
 
 /** Status of the schema. */
-export type SchemaStatus = "New" | "Approved" | (string & {});
+export type SchemaStatus = "New" | "Approved";
 export const SchemaStatus = /*@__PURE__*/ S.String;
 
-/** Direction of data movement */
-export type Direction = "Send" | "Receive" | (string & {});
-export const Direction = /*@__PURE__*/ S.String;
-
 /** The Schema Type. */
-export type SchemaType = "Xsd" | "Zip" | (string & {});
+export type SchemaType = "Xsd" | "Zip";
 export const SchemaType = /*@__PURE__*/ S.String;
 
 /** The schema object. Schemas has reached end of life support starting version 2025-05-30-preview. Please manage schemas with a FlowProfile resource instead. */
@@ -77,7 +81,7 @@ export const Schema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schema" }) as any as S.Schema<Schema>;
 
 /** Schemas array. */
-export type SchemasListResultValueList = Schema[];
+export type SchemasListResultValueList = ReadonlyArray<Schema>;
 export const SchemasListResultValueList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<SchemasListResultValueList>;
@@ -96,12 +100,34 @@ export const SchemasListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemasListResult>;
 
 export interface AzureDataTransferValidateSchemaRequest {
-  body: unknown;
+  /** ID associated with this schema */
+  id?: string;
+  /** Connection ID associated with this schema */
+  connectionId?: string;
+  /** Status of the schema */
+  status?: SchemaStatus;
+  /** Name of the schema */
+  name?: string;
+  /** Content of the schema */
+  content?: string;
+  /** The direction of the schema. */
+  direction?: Direction;
+  /** Uri containing SAS token for the zipped schema */
+  schemaUri?: string;
+  /** The Schema Type */
+  schemaType?: SchemaType;
 }
 export const AzureDataTransferValidateSchemaRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      body: S.Unknown.pipe(T.HttpBody()),
+      id: S.optional(S.String),
+      connectionId: S.optional(S.String),
+      status: S.optional(SchemaStatus),
+      name: S.optional(S.String),
+      content: S.optional(S.String),
+      direction: S.optional(Direction),
+      schemaUri: S.optional(S.String),
+      schemaType: S.optional(SchemaType),
     }).pipe(
       T.Http({
         method: "POST",
@@ -115,7 +141,7 @@ export const AzureDataTransferValidateSchemaRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AzureDataTransferValidateSchemaRequest>;
 
 /** Validation status of the schema */
-export type ValidateSchemaStatus = "Succeeded" | "Failed" | (string & {});
+export type ValidateSchemaStatus = "Succeeded" | "Failed";
 export const ValidateSchemaStatus = /*@__PURE__*/ S.String;
 
 /** Result of the schema validation. ValidateSchemaResult has reached end of life support starting version 2025-05-30-preview. Please manage schemas with a FlowProfile resource instead. */
@@ -134,6 +160,153 @@ export const ValidateSchemaResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateSchemaResult",
 }) as any as S.Schema<ValidateSchemaResult>;
 
+/** Resource tags. */
+export type ConnectionsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConnectionsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConnectionsCreateOrUpdateRequestTagsMap>;
+
+/** Flow type for the specified resource. FlowType will be deprecated starting from version 2025_05_30_preview - please create a FlowProfile resource instead. */
+export type FlowType =
+  | "Unknown"
+  | "Complex"
+  | "DevSecOps"
+  | "Messaging"
+  | "Mission"
+  | "MicrosoftInternal"
+  | "BasicFiles"
+  | "Data"
+  | "Standard"
+  | "StreamingVideo"
+  | "Opaque"
+  | "MissionOpaqueXML"
+  | "DiskImages"
+  | "API";
+export const FlowType = /*@__PURE__*/ S.String;
+
+/** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
+export type ConnectionPropertiesInputFlowTypesList = ReadonlyArray<FlowType>;
+export const ConnectionPropertiesInputFlowTypesList = /*@__PURE__*/ S.Array(
+  FlowType,
+) as any as S.Schema<ConnectionPropertiesInputFlowTypesList>;
+
+/** The secondary contacts for this connection request */
+export type ConnectionPropertiesInputSecondaryContactsList =
+  ReadonlyArray<string>;
+export const ConnectionPropertiesInputSecondaryContactsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectionPropertiesInputSecondaryContactsList>;
+
+/** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+export type ConnectionPropertiesInputPoliciesList = ReadonlyArray<string>;
+export const ConnectionPropertiesInputPoliciesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConnectionPropertiesInputPoliciesList>;
+
+/** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+export type ConnectionPropertiesInputSchemasList = ReadonlyArray<Schema>;
+export const ConnectionPropertiesInputSchemasList = /*@__PURE__*/ S.Array(
+  Schema,
+) as any as S.Schema<ConnectionPropertiesInputSchemasList>;
+
+/** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+export type ConnectionPropertiesInputSchemaUrisList = ReadonlyArray<string>;
+export const ConnectionPropertiesInputSchemaUrisList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConnectionPropertiesInputSchemaUrisList>;
+
+/** Properties of connection */
+export interface ConnectionPropertiesInput {
+  /** Pipeline to use to transfer data */
+  pipeline: string;
+  /** Direction of data movement */
+  direction?: Direction;
+  /** Justification for the connection request */
+  justification?: string;
+  /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
+  flowTypes?: ConnectionPropertiesInputFlowTypesList;
+  /** Requirement ID of the connection */
+  requirementId?: string;
+  /** Subscription ID to link cloud subscriptions together */
+  remoteSubscriptionId?: string;
+  /** PIN to link requests together */
+  pin?: string;
+  /** The primary contact for this connection request */
+  primaryContact?: string;
+  /** The secondary contacts for this connection request */
+  secondaryContacts?: ConnectionPropertiesInputSecondaryContactsList;
+  /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+  policies?: ConnectionPropertiesInputPoliciesList;
+  /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+  schemas?: ConnectionPropertiesInputSchemasList;
+  /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+  schemaUris?: ConnectionPropertiesInputSchemaUrisList;
+}
+export const ConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipeline: S.String,
+    direction: S.optional(Direction),
+    justification: S.optional(S.String),
+    flowTypes: S.optional(ConnectionPropertiesInputFlowTypesList),
+    requirementId: S.optional(S.String),
+    remoteSubscriptionId: S.optional(S.String),
+    pin: S.optional(S.String),
+    primaryContact: S.optional(S.String),
+    secondaryContacts: S.optional(
+      ConnectionPropertiesInputSecondaryContactsList,
+    ),
+    policies: S.optional(ConnectionPropertiesInputPoliciesList),
+    schemas: S.optional(ConnectionPropertiesInputSchemasList),
+    schemaUris: S.optional(ConnectionPropertiesInputSchemaUrisList),
+  }),
+).annotate({
+  identifier: "ConnectionPropertiesInput",
+}) as any as S.Schema<ConnectionPropertiesInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ConnectionsCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ConnectionsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "ConnectionsCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<ConnectionsCreateOrUpdateRequestIdentity>;
+
 export interface ConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -141,14 +314,24 @@ export interface ConnectionsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name for the connection to perform the operation on. */
   connectionName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ConnectionsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of connection */
+  properties?: ConnectionPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
 export const ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     connectionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ConnectionsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ConnectionPropertiesInput),
+    identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -166,8 +349,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -175,8 +357,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -219,55 +400,35 @@ export type ConnectionStatus =
   | "InReview"
   | "Approved"
   | "Rejected"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ConnectionStatus = /*@__PURE__*/ S.String;
 
 /** Defines different disablement statuses and the circumstances in why they were disabled. */
 export type ForceDisabledStatus =
   | "ConnectionForceDisabled"
-  | "FlowTypeForceDisabled"
-  | (string & {});
+  | "FlowTypeForceDisabled";
 export const ForceDisabledStatus = /*@__PURE__*/ S.String;
 
 /** Force disablement status of the current connection */
-export type ConnectionPropertiesForceDisabledStatusList = ForceDisabledStatus[];
+export type ConnectionPropertiesForceDisabledStatusList =
+  ReadonlyArray<ForceDisabledStatus>;
 export const ConnectionPropertiesForceDisabledStatusList =
   /*@__PURE__*/ S.Array(
     ForceDisabledStatus,
   ) as any as S.Schema<ConnectionPropertiesForceDisabledStatusList>;
 
 /** Link status of the current pipeline, connection, flow. */
-export type LinkStatus = "Linked" | "Unlinked" | (string & {});
+export type LinkStatus = "Linked" | "Unlinked";
 export const LinkStatus = /*@__PURE__*/ S.String;
 
-/** Flow type for the specified resource. FlowType will be deprecated starting from version 2025_05_30_preview - please create a FlowProfile resource instead. */
-export type FlowType =
-  | "Unknown"
-  | "Complex"
-  | "DevSecOps"
-  | "Messaging"
-  | "Mission"
-  | "MicrosoftInternal"
-  | "BasicFiles"
-  | "Data"
-  | "Standard"
-  | "StreamingVideo"
-  | "Opaque"
-  | "MissionOpaqueXML"
-  | "DiskImages"
-  | "API"
-  | (string & {});
-export const FlowType = /*@__PURE__*/ S.String;
-
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
-export type ConnectionPropertiesFlowTypesList = FlowType[];
+export type ConnectionPropertiesFlowTypesList = ReadonlyArray<FlowType>;
 export const ConnectionPropertiesFlowTypesList = /*@__PURE__*/ S.Array(
   FlowType,
 ) as any as S.Schema<ConnectionPropertiesFlowTypesList>;
 
 /** The secondary contacts for this connection request */
-export type ConnectionPropertiesSecondaryContactsList = string[];
+export type ConnectionPropertiesSecondaryContactsList = ReadonlyArray<string>;
 export const ConnectionPropertiesSecondaryContactsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesSecondaryContactsList>;
@@ -277,24 +438,23 @@ export type ProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
-  | "Accepted"
-  | (string & {});
+  | "Accepted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type ConnectionPropertiesPoliciesList = string[];
+export type ConnectionPropertiesPoliciesList = ReadonlyArray<string>;
 export const ConnectionPropertiesPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesPoliciesList>;
 
 /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type ConnectionPropertiesSchemasList = Schema[];
+export type ConnectionPropertiesSchemasList = ReadonlyArray<Schema>;
 export const ConnectionPropertiesSchemasList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<ConnectionPropertiesSchemasList>;
 
 /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type ConnectionPropertiesSchemaUrisList = string[];
+export type ConnectionPropertiesSchemaUrisList = ReadonlyArray<string>;
 export const ConnectionPropertiesSchemaUrisList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesSchemaUrisList>;
@@ -370,15 +530,6 @@ export const ConnectionProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectionProperties",
 }) as any as S.Schema<ConnectionProperties>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -585,14 +736,18 @@ export interface ConnectionsLinkRequest {
   resourceGroupName: string;
   /** The name for the connection to perform the operation on. */
   connectionName: string;
-  body: unknown;
+  /** ID of the resource. */
+  id: string;
+  /** Reason for resource operation. */
+  statusReason?: string;
 }
 export const ConnectionsLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     connectionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.String,
+    statusReason: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -750,7 +905,7 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 
 /** The Connection items on this page */
-export type ConnectionListResultValueList = Connection[];
+export type ConnectionListResultValueList = ReadonlyArray<Connection>;
 export const ConnectionListResultValueList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionListResultValueList>;
@@ -791,6 +946,29 @@ export const ConnectionsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "ConnectionsListBySubscriptionRequest",
 }) as any as S.Schema<ConnectionsListBySubscriptionRequest>;
 
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ConnectionsUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const ConnectionsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "ConnectionsUpdateRequestIdentity",
+}) as any as S.Schema<ConnectionsUpdateRequestIdentity>;
+
+/** Resource tags. */
+export type ConnectionsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConnectionsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConnectionsUpdateRequestTagsMap>;
+
 export interface ConnectionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -798,14 +976,18 @@ export interface ConnectionsUpdateRequest {
   resourceGroupName: string;
   /** The name for the connection to perform the operation on. */
   connectionName: string;
-  body: unknown;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ConnectionsUpdateRequestIdentity;
+  /** Resource tags. */
+  tags?: ConnectionsUpdateRequestTagsMap;
 }
 export const ConnectionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     connectionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(ConnectionsUpdateRequestIdentity),
+    tags: S.optional(ConnectionsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -880,44 +1062,14 @@ export const ConnectionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectionsUpdateResponse",
 }) as any as S.Schema<ConnectionsUpdateResponse>;
 
-export interface FlowsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name for the connection to perform the operation on. */
-  connectionName: string;
-  /** The name for the flow to perform the operation on. */
-  flowName: string;
-  body: unknown;
-}
-export const FlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    connectionName: S.String.pipe(T.Label()),
-    flowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
-      code: 200,
-      apiVersion: "2025-05-21",
-    }),
-  ),
-).annotate({
-  identifier: "FlowsCreateOrUpdateRequest",
-}) as any as S.Schema<FlowsCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type FlowsCreateOrUpdateResponseTagsMap = {
+export type FlowsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const FlowsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export const FlowsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<FlowsCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<FlowsCreateOrUpdateRequestTagsMap>;
 
 /** A resource selected from ARM */
 export interface SelectedResource {
@@ -942,31 +1094,21 @@ export const SelectedResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SelectedResource>;
 
 /** Status of the current flow. */
-export type FlowStatus = "Enabled" | "Disabled" | (string & {});
+export type FlowStatus = "Enabled" | "Disabled";
 export const FlowStatus = /*@__PURE__*/ S.String;
 
-/** Force disablement status of the current flow */
-export type FlowPropertiesForceDisabledStatusList = ForceDisabledStatus[];
-export const FlowPropertiesForceDisabledStatusList = /*@__PURE__*/ S.Array(
-  ForceDisabledStatus,
-) as any as S.Schema<FlowPropertiesForceDisabledStatusList>;
-
 /** Transfer Storage Blobs or Tables */
-export type DataType = "Blob" | "Table" | (string & {});
+export type DataType = "Blob" | "Table";
 export const DataType = /*@__PURE__*/ S.String;
 
 /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type FlowPropertiesPoliciesList = string[];
-export const FlowPropertiesPoliciesList = /*@__PURE__*/ S.Array(
+export type FlowPropertiesInputPoliciesList = ReadonlyArray<string>;
+export const FlowPropertiesInputPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<FlowPropertiesPoliciesList>;
+) as any as S.Schema<FlowPropertiesInputPoliciesList>;
 
 /** Billing tier for this messaging flow. */
-export type FlowBillingTier =
-  | "BlobTransport"
-  | "Standard"
-  | "Premium"
-  | (string & {});
+export type FlowBillingTier = "BlobTransport" | "Standard" | "Premium";
 export const FlowBillingTier = /*@__PURE__*/ S.String;
 
 /** The option associated with messaging flows. */
@@ -983,14 +1125,11 @@ export const MessagingOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MessagingOptions>;
 
 /** Remote Calling Mode in the Azure Data Transfer API Flow, which describes how the API Flow will be invoked */
-export type ApiMode = "SDK" | "Endpoint" | (string & {});
+export type ApiMode = "SDK" | "Endpoint";
 export const ApiMode = /*@__PURE__*/ S.String;
 
 /** Flag for if Azure Data Transfer API Flow should extract the user token */
-export type IdentityTranslation =
-  | "UserIdentity"
-  | "ServiceIdentity"
-  | (string & {});
+export type IdentityTranslation = "UserIdentity" | "ServiceIdentity";
 export const IdentityTranslation = /*@__PURE__*/ S.String;
 
 /** Properties specific to API Flow Type */
@@ -1023,11 +1162,11 @@ export const ApiFlowOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiFlowOptions" }) as any as S.Schema<ApiFlowOptions>;
 
 /** The protocol of the stream */
-export type StreamProtocol = "UDP" | "SRT" | "RTP" | (string & {});
+export type StreamProtocol = "UDP" | "SRT" | "RTP";
 export const StreamProtocol = /*@__PURE__*/ S.String;
 
 /** A source IP address or CIDR range */
-export type StreamSourceAddressesSourceAddressesList = string[];
+export type StreamSourceAddressesSourceAddressesList = ReadonlyArray<string>;
 export const StreamSourceAddressesSourceAddressesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StreamSourceAddressesSourceAddressesList>;
@@ -1046,13 +1185,218 @@ export const StreamSourceAddresses = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamSourceAddresses>;
 
 /** The destination endpoints of the stream */
-export type FlowPropertiesDestinationEndpointsList = string[];
+export type FlowPropertiesInputDestinationEndpointsList = ReadonlyArray<string>;
+export const FlowPropertiesInputDestinationEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FlowPropertiesInputDestinationEndpointsList>;
+
+/** The destination endpoint ports of the stream */
+export type FlowPropertiesInputDestinationEndpointPortsList =
+  ReadonlyArray<number>;
+export const FlowPropertiesInputDestinationEndpointPortsList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<FlowPropertiesInputDestinationEndpointPortsList>;
+
+/** Properties of flow */
+export interface FlowPropertiesInput {
+  /** The connection associated with this flow */
+  connection?: SelectedResource;
+  /** URI to a Key Vault Secret containing a SAS token. */
+  keyVaultUri?: string;
+  /** Status of the current flow */
+  status?: FlowStatus;
+  /** Storage Account */
+  storageAccountName?: string;
+  /** Storage Account ID */
+  storageAccountId?: string;
+  /** Storage Container Name */
+  storageContainerName?: string;
+  /** Storage Table Name */
+  storageTableName?: string;
+  /** Service Bus Queue ID */
+  serviceBusQueueId?: string;
+  /** The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+  flowType?: FlowType;
+  /** Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+  dataType?: DataType;
+  /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+  policies?: FlowPropertiesInputPoliciesList;
+  /** The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+  schema?: Schema;
+  /** The messaging options for this flow */
+  messagingOptions?: MessagingOptions;
+  /** The API Flow configuration options for Azure Data Transfer API Flow type. */
+  apiFlowOptions?: ApiFlowOptions;
+  /** The URI to the customer managed key for this flow */
+  customerManagedKeyVaultUri?: string;
+  /** The flow stream identifier */
+  streamId?: string;
+  /** The protocol of the stream */
+  streamProtocol?: StreamProtocol;
+  /** The latency of the stream in milliseconds */
+  streamLatency?: number;
+  /** The passphrase used for SRT streams (non-secret) */
+  passphrase?: string;
+  /** The source IP address and CIDR ranges of the stream */
+  sourceAddresses?: StreamSourceAddresses;
+  /** The destination endpoints of the stream */
+  destinationEndpoints?: FlowPropertiesInputDestinationEndpointsList;
+  /** The destination endpoint ports of the stream */
+  destinationEndpointPorts?: FlowPropertiesInputDestinationEndpointPortsList;
+  /** Event Hub ID */
+  eventHubId?: string;
+  /** Event Hub Consumer Group */
+  consumerGroup?: string;
+}
+export const FlowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connection: S.optional(SelectedResource),
+    keyVaultUri: S.optional(S.String),
+    status: S.optional(FlowStatus),
+    storageAccountName: S.optional(S.String),
+    storageAccountId: S.optional(S.String),
+    storageContainerName: S.optional(S.String),
+    storageTableName: S.optional(S.String),
+    serviceBusQueueId: S.optional(S.String),
+    flowType: S.optional(FlowType),
+    dataType: S.optional(DataType),
+    policies: S.optional(FlowPropertiesInputPoliciesList),
+    schema: S.optional(Schema),
+    messagingOptions: S.optional(MessagingOptions),
+    apiFlowOptions: S.optional(ApiFlowOptions),
+    customerManagedKeyVaultUri: S.optional(S.String),
+    streamId: S.optional(S.String),
+    streamProtocol: S.optional(StreamProtocol),
+    streamLatency: S.optional(S.Number),
+    passphrase: S.optional(S.String),
+    sourceAddresses: S.optional(StreamSourceAddresses),
+    destinationEndpoints: S.optional(
+      FlowPropertiesInputDestinationEndpointsList,
+    ),
+    destinationEndpointPorts: S.optional(
+      FlowPropertiesInputDestinationEndpointPortsList,
+    ),
+    eventHubId: S.optional(S.String),
+    consumerGroup: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FlowPropertiesInput",
+}) as any as S.Schema<FlowPropertiesInput>;
+
+/** Plan for the resource. */
+export interface FlowsCreateOrUpdateRequestPlan {
+  /** A user defined name of the 3rd Party Artifact that is being procured. */
+  name: string;
+  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
+  publisher: string;
+  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
+  product: string;
+  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
+  promotionCode?: string;
+  /** The version of the desired product/artifact. */
+  version?: string;
+}
+export const FlowsCreateOrUpdateRequestPlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    publisher: S.String,
+    product: S.String,
+    promotionCode: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FlowsCreateOrUpdateRequestPlan",
+}) as any as S.Schema<FlowsCreateOrUpdateRequestPlan>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface FlowsCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const FlowsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "FlowsCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<FlowsCreateOrUpdateRequestIdentity>;
+
+export interface FlowsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name for the connection to perform the operation on. */
+  connectionName: string;
+  /** The name for the flow to perform the operation on. */
+  flowName: string;
+  /** Resource tags. */
+  tags?: FlowsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of flow */
+  properties?: FlowPropertiesInput;
+  /** Plan for the resource. */
+  plan?: FlowsCreateOrUpdateRequestPlan;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: FlowsCreateOrUpdateRequestIdentity;
+}
+export const FlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    connectionName: S.String.pipe(T.Label()),
+    flowName: S.String.pipe(T.Label()),
+    tags: S.optional(FlowsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(FlowPropertiesInput),
+    plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+    identity: S.optional(FlowsCreateOrUpdateRequestIdentity),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureDataTransfer/connections/{connectionName}/flows/{flowName}",
+      code: 200,
+      apiVersion: "2025-05-21",
+    }),
+  ),
+).annotate({
+  identifier: "FlowsCreateOrUpdateRequest",
+}) as any as S.Schema<FlowsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type FlowsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const FlowsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FlowsCreateOrUpdateResponseTagsMap>;
+
+/** Force disablement status of the current flow */
+export type FlowPropertiesForceDisabledStatusList =
+  ReadonlyArray<ForceDisabledStatus>;
+export const FlowPropertiesForceDisabledStatusList = /*@__PURE__*/ S.Array(
+  ForceDisabledStatus,
+) as any as S.Schema<FlowPropertiesForceDisabledStatusList>;
+
+/** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+export type FlowPropertiesPoliciesList = ReadonlyArray<string>;
+export const FlowPropertiesPoliciesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FlowPropertiesPoliciesList>;
+
+/** The destination endpoints of the stream */
+export type FlowPropertiesDestinationEndpointsList = ReadonlyArray<string>;
 export const FlowPropertiesDestinationEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FlowPropertiesDestinationEndpointsList>;
 
 /** The destination endpoint ports of the stream */
-export type FlowPropertiesDestinationEndpointPortsList = number[];
+export type FlowPropertiesDestinationEndpointPortsList = ReadonlyArray<number>;
 export const FlowPropertiesDestinationEndpointPortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<FlowPropertiesDestinationEndpointPortsList>;
@@ -1767,7 +2111,7 @@ export const FlowsGetDestinationEndpointPortsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FlowsGetDestinationEndpointPortsRequest>;
 
 /** The destination endpoint port for the flow stream */
-export type GetDestinationEndpointPortsResultPortsList = number[];
+export type GetDestinationEndpointPortsResultPortsList = ReadonlyArray<number>;
 export const GetDestinationEndpointPortsResultPortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<GetDestinationEndpointPortsResultPortsList>;
@@ -1814,7 +2158,7 @@ export const FlowsGetDestinationEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlowsGetDestinationEndpointsRequest>;
 
 /** The destination endpoints for the flow stream */
-export type GetDestinationEndpointsResultEndpointsList = string[];
+export type GetDestinationEndpointsResultEndpointsList = ReadonlyArray<string>;
 export const GetDestinationEndpointsResultEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetDestinationEndpointsResultEndpointsList>;
@@ -1911,7 +2255,10 @@ export interface FlowsLinkRequest {
   connectionName: string;
   /** The name for the flow to perform the operation on. */
   flowName: string;
-  body: unknown;
+  /** ID of the resource. */
+  id: string;
+  /** Reason for resource operation. */
+  statusReason?: string;
 }
 export const FlowsLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1919,7 +2266,8 @@ export const FlowsLinkRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     connectionName: S.String.pipe(T.Label()),
     flowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.String,
+    statusReason: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2129,7 +2477,7 @@ export const Flow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Flow" }) as any as S.Schema<Flow>;
 
 /** The Flow items on this page */
-export type FlowListResultValueList = Flow[];
+export type FlowListResultValueList = ReadonlyArray<Flow>;
 export const FlowListResultValueList = /*@__PURE__*/ S.Array(
   Flow,
 ) as any as S.Schema<FlowListResultValueList>;
@@ -2148,6 +2496,14 @@ export const FlowListResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FlowListResult" }) as any as S.Schema<FlowListResult>;
 
+/** The specified flow destination endpoint ports */
+export type FlowsSetDestinationEndpointPortsRequestPortsList =
+  ReadonlyArray<number>;
+export const FlowsSetDestinationEndpointPortsRequestPortsList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<FlowsSetDestinationEndpointPortsRequestPortsList>;
+
 export interface FlowsSetDestinationEndpointPortsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2157,7 +2513,8 @@ export interface FlowsSetDestinationEndpointPortsRequest {
   connectionName: string;
   /** The name for the flow to perform the operation on. */
   flowName: string;
-  body: unknown;
+  /** The specified flow destination endpoint ports */
+  ports?: FlowsSetDestinationEndpointPortsRequestPortsList;
 }
 export const FlowsSetDestinationEndpointPortsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2166,7 +2523,7 @@ export const FlowsSetDestinationEndpointPortsRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       connectionName: S.String.pipe(T.Label()),
       flowName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      ports: S.optional(FlowsSetDestinationEndpointPortsRequestPortsList),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2273,6 +2630,14 @@ export const FlowsSetDestinationEndpointPortsResponse = /*@__PURE__*/ S.suspend(
   identifier: "FlowsSetDestinationEndpointPortsResponse",
 }) as any as S.Schema<FlowsSetDestinationEndpointPortsResponse>;
 
+/** The specified flow destination endpoints. */
+export type FlowsSetDestinationEndpointsRequestEndpointsList =
+  ReadonlyArray<string>;
+export const FlowsSetDestinationEndpointsRequestEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FlowsSetDestinationEndpointsRequestEndpointsList>;
+
 export interface FlowsSetDestinationEndpointsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2282,7 +2647,8 @@ export interface FlowsSetDestinationEndpointsRequest {
   connectionName: string;
   /** The name for the flow to perform the operation on. */
   flowName: string;
-  body: unknown;
+  /** The specified flow destination endpoints. */
+  endpoints?: FlowsSetDestinationEndpointsRequestEndpointsList;
 }
 export const FlowsSetDestinationEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2290,7 +2656,7 @@ export const FlowsSetDestinationEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     connectionName: S.String.pipe(T.Label()),
     flowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    endpoints: S.optional(FlowsSetDestinationEndpointsRequestEndpointsList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2406,7 +2772,8 @@ export interface FlowsSetPassphraseRequest {
   connectionName: string;
   /** The name for the flow to perform the operation on. */
   flowName: string;
-  body: unknown;
+  /** The passphrase used for SRT streams (non-secret) */
+  value?: string;
 }
 export const FlowsSetPassphraseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2414,7 +2781,7 @@ export const FlowsSetPassphraseRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     connectionName: S.String.pipe(T.Label()),
     flowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    value: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2517,6 +2884,12 @@ export const FlowsSetPassphraseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlowsSetPassphraseResponse",
 }) as any as S.Schema<FlowsSetPassphraseResponse>;
 
+/** Source addresses */
+export type FlowsSetSourceAddressesRequestValuesList = ReadonlyArray<string>;
+export const FlowsSetSourceAddressesRequestValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FlowsSetSourceAddressesRequestValuesList>;
+
 export interface FlowsSetSourceAddressesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2526,7 +2899,8 @@ export interface FlowsSetSourceAddressesRequest {
   connectionName: string;
   /** The name for the flow to perform the operation on. */
   flowName: string;
-  body: unknown;
+  /** Source addresses */
+  values?: FlowsSetSourceAddressesRequestValuesList;
 }
 export const FlowsSetSourceAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2534,7 +2908,7 @@ export const FlowsSetSourceAddressesRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     connectionName: S.String.pipe(T.Label()),
     flowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    values: S.optional(FlowsSetSourceAddressesRequestValuesList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2638,6 +3012,27 @@ export const FlowsSetSourceAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlowsSetSourceAddressesResponse",
 }) as any as S.Schema<FlowsSetSourceAddressesResponse>;
 
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface FlowsUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const FlowsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "FlowsUpdateRequestIdentity",
+}) as any as S.Schema<FlowsUpdateRequestIdentity>;
+
+/** Resource tags. */
+export type FlowsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const FlowsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<FlowsUpdateRequestTagsMap>;
+
 export interface FlowsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2647,7 +3042,10 @@ export interface FlowsUpdateRequest {
   connectionName: string;
   /** The name for the flow to perform the operation on. */
   flowName: string;
-  body: unknown;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: FlowsUpdateRequestIdentity;
+  /** Resource tags. */
+  tags?: FlowsUpdateRequestTagsMap;
 }
 export const FlowsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2655,7 +3053,8 @@ export const FlowsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     connectionName: S.String.pipe(T.Label()),
     flowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(FlowsUpdateRequestIdentity),
+    tags: S.optional(FlowsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2756,6 +3155,12 @@ export const FlowsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FlowsUpdateResponse",
 }) as any as S.Schema<FlowsUpdateResponse>;
 
+/** Connection ID to target */
+export type ListFlowsByPipelineListRequestValueList = ReadonlyArray<string>;
+export const ListFlowsByPipelineListRequestValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListFlowsByPipelineListRequestValueList>;
+
 export interface ListFlowsByPipelineListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2763,14 +3168,15 @@ export interface ListFlowsByPipelineListRequest {
   resourceGroupName: string;
   /** The name of the pipeline on which to operate. */
   pipelineName: string;
-  body?: unknown;
+  /** Connection ID to target */
+  value?: ListFlowsByPipelineListRequestValueList;
 }
 export const ListFlowsByPipelineListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     pipelineName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    value: S.optional(ListFlowsByPipelineListRequestValueList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2784,7 +3190,7 @@ export const ListFlowsByPipelineListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFlowsByPipelineListRequest>;
 
 /** List of flows associated with the connection. */
-export type ListFlowsByPipelineConnectionFlowsList = Flow[];
+export type ListFlowsByPipelineConnectionFlowsList = ReadonlyArray<Flow>;
 export const ListFlowsByPipelineConnectionFlowsList = /*@__PURE__*/ S.Array(
   Flow,
 ) as any as S.Schema<ListFlowsByPipelineConnectionFlowsList>;
@@ -2807,7 +3213,7 @@ export const ListFlowsByPipelineConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** List flows by pipeline result by connection */
 export type ListFlowsByPipelineResultValueList =
-  ListFlowsByPipelineConnection[];
+  ReadonlyArray<ListFlowsByPipelineConnection>;
 export const ListFlowsByPipelineResultValueList = /*@__PURE__*/ S.Array(
   ListFlowsByPipelineConnection,
 ) as any as S.Schema<ListFlowsByPipelineResultValueList>;
@@ -2851,37 +3257,38 @@ export const ListPendingConnectionsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPendingConnectionsListRequest>;
 
 /** Force disablement status of the current connection */
-export type PendingConnectionForceDisabledStatusList = ForceDisabledStatus[];
+export type PendingConnectionForceDisabledStatusList =
+  ReadonlyArray<ForceDisabledStatus>;
 export const PendingConnectionForceDisabledStatusList = /*@__PURE__*/ S.Array(
   ForceDisabledStatus,
 ) as any as S.Schema<PendingConnectionForceDisabledStatusList>;
 
 /** The flow types being requested for this connection. This FlowType property has reached end of life support starting version 2025-05-30-preview. Please create a FlowProfile resource instead. */
-export type PendingConnectionFlowTypesList = FlowType[];
+export type PendingConnectionFlowTypesList = ReadonlyArray<FlowType>;
 export const PendingConnectionFlowTypesList = /*@__PURE__*/ S.Array(
   FlowType,
 ) as any as S.Schema<PendingConnectionFlowTypesList>;
 
 /** The secondary contacts for this connection request */
-export type PendingConnectionSecondaryContactsList = string[];
+export type PendingConnectionSecondaryContactsList = ReadonlyArray<string>;
 export const PendingConnectionSecondaryContactsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PendingConnectionSecondaryContactsList>;
 
 /** The policies for this connection. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PendingConnectionPoliciesList = string[];
+export type PendingConnectionPoliciesList = ReadonlyArray<string>;
 export const PendingConnectionPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PendingConnectionPoliciesList>;
 
 /** The schemas for this connection. The schemas property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PendingConnectionSchemasList = Schema[];
+export type PendingConnectionSchemasList = ReadonlyArray<Schema>;
 export const PendingConnectionSchemasList = /*@__PURE__*/ S.Array(
   Schema,
 ) as any as S.Schema<PendingConnectionSchemasList>;
 
 /** The schema URIs for this connection. The schemaUris property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PendingConnectionSchemaUrisList = string[];
+export type PendingConnectionSchemaUrisList = ReadonlyArray<string>;
 export const PendingConnectionSchemaUrisList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PendingConnectionSchemaUrisList>;
@@ -2898,8 +3305,7 @@ export type PendingConnectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PendingConnectionSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2907,8 +3313,7 @@ export type PendingConnectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PendingConnectionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3034,7 +3439,8 @@ export const PendingConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PendingConnection>;
 
 /** The items on this page */
-export type PendingConnectionListResultValueList = PendingConnection[];
+export type PendingConnectionListResultValueList =
+  ReadonlyArray<PendingConnection>;
 export const PendingConnectionListResultValueList = /*@__PURE__*/ S.Array(
   PendingConnection,
 ) as any as S.Schema<PendingConnectionListResultValueList>;
@@ -3081,25 +3487,26 @@ export const ListPendingFlowsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPendingFlowsListRequest>;
 
 /** Force disablement status of the current flow */
-export type PendingFlowForceDisabledStatusList = ForceDisabledStatus[];
+export type PendingFlowForceDisabledStatusList =
+  ReadonlyArray<ForceDisabledStatus>;
 export const PendingFlowForceDisabledStatusList = /*@__PURE__*/ S.Array(
   ForceDisabledStatus,
 ) as any as S.Schema<PendingFlowForceDisabledStatusList>;
 
 /** The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PendingFlowPoliciesList = string[];
+export type PendingFlowPoliciesList = ReadonlyArray<string>;
 export const PendingFlowPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PendingFlowPoliciesList>;
 
 /** The destination endpoints of the stream */
-export type PendingFlowDestinationEndpointsList = string[];
+export type PendingFlowDestinationEndpointsList = ReadonlyArray<string>;
 export const PendingFlowDestinationEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PendingFlowDestinationEndpointsList>;
 
 /** The destination endpoint ports of the stream */
-export type PendingFlowDestinationEndpointPortsList = number[];
+export type PendingFlowDestinationEndpointPortsList = ReadonlyArray<number>;
 export const PendingFlowDestinationEndpointPortsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<PendingFlowDestinationEndpointPortsList>;
@@ -3116,8 +3523,7 @@ export type PendingFlowSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PendingFlowSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -3125,8 +3531,7 @@ export type PendingFlowSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PendingFlowSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -3279,7 +3684,7 @@ export const PendingFlow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PendingFlow" }) as any as S.Schema<PendingFlow>;
 
 /** The items on this page */
-export type PendingFlowListResultValueList = PendingFlow[];
+export type PendingFlowListResultValueList = ReadonlyArray<PendingFlow>;
 export const PendingFlowListResultValueList = /*@__PURE__*/ S.Array(
   PendingFlow,
 ) as any as S.Schema<PendingFlowListResultValueList>;
@@ -3307,14 +3712,36 @@ export interface ListSchemasListRequest {
   resourceGroupName: string;
   /** The name of the pipeline on which to operate. */
   pipelineName: string;
-  body: unknown;
+  /** ID associated with this schema */
+  id?: string;
+  /** Connection ID associated with this schema */
+  connectionId?: string;
+  /** Status of the schema */
+  status?: SchemaStatus;
+  /** Name of the schema */
+  name?: string;
+  /** Content of the schema */
+  content?: string;
+  /** The direction of the schema. */
+  direction?: Direction;
+  /** Uri containing SAS token for the zipped schema */
+  schemaUri?: string;
+  /** The Schema Type */
+  schemaType?: SchemaType;
 }
 export const ListSchemasListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     pipelineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.optional(S.String),
+    connectionId: S.optional(S.String),
+    status: S.optional(SchemaStatus),
+    name: S.optional(S.String),
+    content: S.optional(S.String),
+    direction: S.optional(Direction),
+    schemaUri: S.optional(S.String),
+    schemaType: S.optional(SchemaType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3364,11 +3791,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -3395,7 +3822,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -3422,14 +3849,18 @@ export interface PipelinesApproveConnectionRequest {
   resourceGroupName: string;
   /** The name of the pipeline on which to operate. */
   pipelineName: string;
-  body: unknown;
+  /** ID of the resource. */
+  id: string;
+  /** Reason for resource operation. */
+  statusReason?: string;
 }
 export const PipelinesApproveConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     pipelineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.String,
+    statusReason: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3505,6 +3936,111 @@ export const PipelinesApproveConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PipelinesApproveConnectionResponse",
 }) as any as S.Schema<PipelinesApproveConnectionResponse>;
 
+/** Resource tags. */
+export type PipelinesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PipelinesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PipelinesCreateOrUpdateRequestTagsMap>;
+
+/** An individual that would like to subscribe to events that occur on a pipeline. */
+export interface Subscriber {
+  /** Email of the subscriber */
+  email?: string;
+  /** Number specifying what notifications to receive */
+  notifications?: number;
+}
+export const Subscriber = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String),
+    notifications: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Subscriber" }) as any as S.Schema<Subscriber>;
+
+/** Subscribers of this resource */
+export type PipelinePropertiesInputSubscribersList = ReadonlyArray<Subscriber>;
+export const PipelinePropertiesInputSubscribersList = /*@__PURE__*/ S.Array(
+  Subscriber,
+) as any as S.Schema<PipelinePropertiesInputSubscribersList>;
+
+/** The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+export type PipelinePropertiesInputPoliciesList = ReadonlyArray<string>;
+export const PipelinePropertiesInputPoliciesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PipelinePropertiesInputPoliciesList>;
+
+/** The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+export type PipelinePropertiesInputFlowTypesList = ReadonlyArray<FlowType>;
+export const PipelinePropertiesInputFlowTypesList = /*@__PURE__*/ S.Array(
+  FlowType,
+) as any as S.Schema<PipelinePropertiesInputFlowTypesList>;
+
+/** The flow types that are disabled for this pipeline */
+export type PipelinePropertiesInputDisabledFlowTypesList =
+  ReadonlyArray<FlowType>;
+export const PipelinePropertiesInputDisabledFlowTypesList =
+  /*@__PURE__*/ S.Array(
+    FlowType,
+  ) as any as S.Schema<PipelinePropertiesInputDisabledFlowTypesList>;
+
+/** Status of the current pipeline */
+export type PipelineStatus = "Enabled" | "Disabled";
+export const PipelineStatus = /*@__PURE__*/ S.String;
+
+/** Properties of pipeline */
+export interface PipelinePropertiesInput {
+  /** Remote cloud of the data to be transferred or received */
+  remoteCloud: string;
+  /** Display name of this pipeline */
+  displayName?: string;
+  /** Subscribers of this resource */
+  subscribers?: PipelinePropertiesInputSubscribersList;
+  /** The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+  policies?: PipelinePropertiesInputPoliciesList;
+  /** The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
+  flowTypes?: PipelinePropertiesInputFlowTypesList;
+  /** The flow types that are disabled for this pipeline */
+  disabledFlowTypes?: PipelinePropertiesInputDisabledFlowTypesList;
+  /** Quarantine Download Storage Account */
+  quarantineDownloadStorageAccount?: string;
+  /** Quarantine Download Storage Container */
+  quarantineDownloadStorageContainer?: string;
+  /** Status of the current pipeline */
+  status?: PipelineStatus;
+}
+export const PipelinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    remoteCloud: S.String,
+    displayName: S.optional(S.String),
+    subscribers: S.optional(PipelinePropertiesInputSubscribersList),
+    policies: S.optional(PipelinePropertiesInputPoliciesList),
+    flowTypes: S.optional(PipelinePropertiesInputFlowTypesList),
+    disabledFlowTypes: S.optional(PipelinePropertiesInputDisabledFlowTypesList),
+    quarantineDownloadStorageAccount: S.optional(S.String),
+    quarantineDownloadStorageContainer: S.optional(S.String),
+    status: S.optional(PipelineStatus),
+  }),
+).annotate({
+  identifier: "PipelinePropertiesInput",
+}) as any as S.Schema<PipelinePropertiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface PipelinesCreateOrUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const PipelinesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: ManagedServiceIdentityType,
+      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+    }),
+).annotate({
+  identifier: "PipelinesCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<PipelinesCreateOrUpdateRequestIdentity>;
+
 export interface PipelinesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3512,14 +4048,24 @@ export interface PipelinesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the pipeline on which to operate. */
   pipelineName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: PipelinesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The set of configurable properties for the Pipeline resource. */
+  properties?: PipelinePropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: PipelinesCreateOrUpdateRequestIdentity;
 }
 export const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     pipelineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(PipelinesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(PipelinePropertiesInput),
+    identity: S.optional(PipelinesCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3546,8 +4092,7 @@ export type ReadPipelineConnectionSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ReadPipelineConnectionSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -3556,8 +4101,7 @@ export type ReadPipelineConnectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ReadPipelineConnectionSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -3592,7 +4136,7 @@ export const ReadPipelineConnectionSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReadPipelineConnectionSystemData>;
 
 /** Operation status for the last patch request for this connection. */
-export type OperationStatusEnum = "Failed" | "Succeeded" | (string & {});
+export type OperationStatusEnum = "Failed" | "Succeeded";
 export const OperationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Operation status associated with the last patch request */
@@ -3675,52 +4219,35 @@ export const ReadPipelineConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReadPipelineConnection>;
 
 /** Connections associated with pipeline */
-export type PipelinePropertiesConnectionsList = ReadPipelineConnection[];
+export type PipelinePropertiesConnectionsList =
+  ReadonlyArray<ReadPipelineConnection>;
 export const PipelinePropertiesConnectionsList = /*@__PURE__*/ S.Array(
   ReadPipelineConnection,
 ) as any as S.Schema<PipelinePropertiesConnectionsList>;
 
-/** An individual that would like to subscribe to events that occur on a pipeline. */
-export interface Subscriber {
-  /** Email of the subscriber */
-  email?: string;
-  /** Number specifying what notifications to receive */
-  notifications?: number;
-}
-export const Subscriber = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    notifications: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Subscriber" }) as any as S.Schema<Subscriber>;
-
 /** Subscribers of this resource */
-export type PipelinePropertiesSubscribersList = Subscriber[];
+export type PipelinePropertiesSubscribersList = ReadonlyArray<Subscriber>;
 export const PipelinePropertiesSubscribersList = /*@__PURE__*/ S.Array(
   Subscriber,
 ) as any as S.Schema<PipelinePropertiesSubscribersList>;
 
 /** The policies for this pipeline. The policies property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PipelinePropertiesPoliciesList = string[];
+export type PipelinePropertiesPoliciesList = ReadonlyArray<string>;
 export const PipelinePropertiesPoliciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PipelinePropertiesPoliciesList>;
 
 /** The flow type for this flow. The flowTypes property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead. */
-export type PipelinePropertiesFlowTypesList = FlowType[];
+export type PipelinePropertiesFlowTypesList = ReadonlyArray<FlowType>;
 export const PipelinePropertiesFlowTypesList = /*@__PURE__*/ S.Array(
   FlowType,
 ) as any as S.Schema<PipelinePropertiesFlowTypesList>;
 
 /** The flow types that are disabled for this pipeline */
-export type PipelinePropertiesDisabledFlowTypesList = FlowType[];
+export type PipelinePropertiesDisabledFlowTypesList = ReadonlyArray<FlowType>;
 export const PipelinePropertiesDisabledFlowTypesList = /*@__PURE__*/ S.Array(
   FlowType,
 ) as any as S.Schema<PipelinePropertiesDisabledFlowTypesList>;
-
-/** Status of the current pipeline */
-export type PipelineStatus = "Enabled" | "Disabled" | (string & {});
-export const PipelineStatus = /*@__PURE__*/ S.String;
 
 /** Properties of pipeline */
 export interface PipelineProperties {
@@ -3851,6 +4378,20 @@ export const PipelinesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PipelinesDeleteResponse",
 }) as any as S.Schema<PipelinesDeleteResponse>;
 
+/** The type of action to be executed. */
+export type ActionType = "AllowUpdates" | "ForceDisable";
+export const ActionType = /*@__PURE__*/ S.String;
+
+/** Type of target to execute the action on */
+export type TargetType = "Pipeline" | "Connection" | "FlowType";
+export const TargetType = /*@__PURE__*/ S.String;
+
+/** Targets for the action */
+export type PipelinesExecuteActionRequestTargetsList = ReadonlyArray<string>;
+export const PipelinesExecuteActionRequestTargetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PipelinesExecuteActionRequestTargetsList>;
+
 export interface PipelinesExecuteActionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3858,14 +4399,24 @@ export interface PipelinesExecuteActionRequest {
   resourceGroupName: string;
   /** The name of the pipeline on which to operate. */
   pipelineName: string;
-  body: unknown;
+  /** Type of action to be executed */
+  actionType: ActionType;
+  /** Type of target to execute the action on */
+  targetType: TargetType;
+  /** Targets for the action */
+  targets: PipelinesExecuteActionRequestTargetsList;
+  /** Business justification for the action */
+  justification?: string;
 }
 export const PipelinesExecuteActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     pipelineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    actionType: ActionType,
+    targetType: TargetType,
+    targets: PipelinesExecuteActionRequestTargetsList,
+    justification: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4108,7 +4659,7 @@ export const Pipeline = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Pipeline" }) as any as S.Schema<Pipeline>;
 
 /** The Pipeline items on this page */
-export type PipelineListResultValueList = Pipeline[];
+export type PipelineListResultValueList = ReadonlyArray<Pipeline>;
 export const PipelineListResultValueList = /*@__PURE__*/ S.Array(
   Pipeline,
 ) as any as S.Schema<PipelineListResultValueList>;
@@ -4155,14 +4706,18 @@ export interface PipelinesRejectConnectionRequest {
   resourceGroupName: string;
   /** The name of the pipeline on which to operate. */
   pipelineName: string;
-  body: unknown;
+  /** ID of the resource. */
+  id: string;
+  /** Reason for resource operation. */
+  statusReason?: string;
 }
 export const PipelinesRejectConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     pipelineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    id: S.String,
+    statusReason: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4238,6 +4793,48 @@ export const PipelinesRejectConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PipelinesRejectConnectionResponse",
 }) as any as S.Schema<PipelinesRejectConnectionResponse>;
 
+/** The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile property instead. */
+export type PipelinesPatchPropertiesFlowTypesList = ReadonlyArray<FlowType>;
+export const PipelinesPatchPropertiesFlowTypesList = /*@__PURE__*/ S.Array(
+  FlowType,
+) as any as S.Schema<PipelinesPatchPropertiesFlowTypesList>;
+
+/** Properties of pipelines patch body. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile resource instead. */
+export interface PipelinesPatchProperties {
+  /** The flow types allowed for this pipeline. FlowTypes has reached end of life support starting version 2025-05-30-preview. Please create and use the FlowProfile property instead. */
+  flowTypes?: PipelinesPatchPropertiesFlowTypesList;
+}
+export const PipelinesPatchProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flowTypes: S.optional(PipelinesPatchPropertiesFlowTypesList),
+  }),
+).annotate({
+  identifier: "PipelinesPatchProperties",
+}) as any as S.Schema<PipelinesPatchProperties>;
+
+/** Resource tags. */
+export type PipelinesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PipelinesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PipelinesUpdateRequestTagsMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface PipelinesUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const PipelinesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "PipelinesUpdateRequestIdentity",
+}) as any as S.Schema<PipelinesUpdateRequestIdentity>;
+
 export interface PipelinesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4245,14 +4842,21 @@ export interface PipelinesUpdateRequest {
   resourceGroupName: string;
   /** The name of the pipeline on which to operate. */
   pipelineName: string;
-  body: unknown;
+  /** Properties of pipelines patch body. */
+  properties?: PipelinesPatchProperties;
+  /** Resource tags. */
+  tags?: PipelinesUpdateRequestTagsMap;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: PipelinesUpdateRequestIdentity;
 }
 export const PipelinesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     pipelineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(PipelinesPatchProperties),
+    tags: S.optional(PipelinesUpdateRequestTagsMap),
+    identity: S.optional(PipelinesUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",

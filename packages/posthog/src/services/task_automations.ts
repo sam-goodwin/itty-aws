@@ -170,7 +170,8 @@ export const TaskAutomationsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaskAutomationsListRequest",
 }) as any as S.Schema<TaskAutomationsListRequest>;
 
-export type PaginatedTaskAutomationDTOListResultsList = TaskAutomationDTO[];
+export type PaginatedTaskAutomationDTOListResultsList =
+  ReadonlyArray<TaskAutomationDTO>;
 export const PaginatedTaskAutomationDTOListResultsList = /*@__PURE__*/ S.Array(
   TaskAutomationDTO,
 ) as any as S.Schema<PaginatedTaskAutomationDTOListResultsList>;

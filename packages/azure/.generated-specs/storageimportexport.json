@@ -1102,16 +1102,86 @@
             "smithy.api#documentation": "The name of the import/export job."
           }
         },
-        "body": {
+        "tags": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the tags that will be assigned to the job"
+          }
+        },
+        "properties": {
+          "target": "com.azure.storageimportexport#JobsUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "Specifies the properties of a UpdateJob."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storageimportexport#JobsUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "cancelRequested": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If specified, the value must be true. The service will attempt to cancel the job. "
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If specified, the value must be Shipping, which tells the Import/Export service that the package for the job has been shipped. The ReturnAddress and DeliveryPackage properties must have been set either in this request or in a previous request, otherwise the request will fail. "
+          }
+        },
+        "returnAddress": {
+          "target": "com.azure.storageimportexport#ReturnAddress",
+          "traits": {
+            "smithy.api#documentation": "Specifies the return address information for the job."
+          }
+        },
+        "returnShipping": {
+          "target": "com.azure.storageimportexport#ReturnShipping",
+          "traits": {
+            "smithy.api#documentation": "Specifies the return carrier and customer's account with the carrier."
+          }
+        },
+        "deliveryPackage": {
+          "target": "com.azure.storageimportexport#DeliveryPackageInformation",
+          "traits": {
+            "smithy.api#documentation": "Contains information about the package being shipped by the customer to the Microsoft data center."
+          }
+        },
+        "logLevel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether error logging or verbose logging is enabled."
+          }
+        },
+        "backupDriveManifest": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the manifest files on the drives should be copied to block blobs."
+          }
+        },
+        "driveList": {
+          "target": "com.azure.storageimportexport#JobsUpdateRequestPropertiesDriveListList",
+          "traits": {
+            "smithy.api#documentation": "List of drives that comprise the job."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the properties of a UpdateJob."
+      }
+    },
+    "com.azure.storageimportexport#JobsUpdateRequestPropertiesDriveListList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storageimportexport#DriveStatus"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of drives that comprise the job."
       }
     },
     "com.azure.storageimportexport#JobsCreate": {
@@ -1160,16 +1230,208 @@
             "smithy.api#documentation": "The name of the import/export job."
           }
         },
-        "body": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the supported Azure location where the job should be created"
+          }
+        },
+        "tags": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Specifies the tags that will be assigned to the job."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storageimportexport#JobDetailsInput",
+          "traits": {
+            "smithy.api#documentation": "Specifies the job properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storageimportexport#JobDetailsInput": {
+      "type": "structure",
+      "members": {
+        "storageAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource identifier of the storage account where data will be imported to or exported from."
+          }
+        },
+        "jobType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of job"
+          }
+        },
+        "returnAddress": {
+          "target": "com.azure.storageimportexport#ReturnAddress",
+          "traits": {
+            "smithy.api#documentation": "Specifies the return address information for the job. "
+          }
+        },
+        "returnShipping": {
+          "target": "com.azure.storageimportexport#ReturnShipping",
+          "traits": {
+            "smithy.api#documentation": "Specifies the return carrier and customer's account with the carrier. "
+          }
+        },
+        "shippingInformation": {
+          "target": "com.azure.storageimportexport#ShippingInformationInput",
+          "traits": {
+            "smithy.api#documentation": "Contains information about the Microsoft datacenter to which the drives should be shipped. "
+          }
+        },
+        "deliveryPackage": {
+          "target": "com.azure.storageimportexport#DeliveryPackageInformation",
+          "traits": {
+            "smithy.api#documentation": "Contains information about the package being shipped by the customer to the Microsoft data center. "
+          }
+        },
+        "returnPackage": {
+          "target": "com.azure.storageimportexport#PackageInformation",
+          "traits": {
+            "smithy.api#documentation": "Contains information about the package being shipped from the Microsoft data center to the customer to return the drives. The format is the same as the deliveryPackage property above. This property is not included if the drives have not yet been returned. "
+          }
+        },
+        "diagnosticsPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored."
+          }
+        },
+        "logLevel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Default value is Error. Indicates whether error logging or verbose logging will be enabled."
+          }
+        },
+        "backupDriveManifest": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Default value is false. Indicates whether the manifest files on the drives should be copied to block blobs."
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current state of the job."
+          }
+        },
+        "cancelRequested": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether a request has been submitted to cancel the job."
+          }
+        },
+        "percentComplete": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Overall percentage completed for the job."
+          }
+        },
+        "incompleteBlobListUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A blob path that points to a block blob containing a list of blob names that were not exported due to insufficient drive space. If all blobs were exported successfully, then this element is not included in the response."
+          }
+        },
+        "driveList": {
+          "target": "com.azure.storageimportexport#JobDetailsInputDriveListList",
+          "traits": {
+            "smithy.api#documentation": "List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs."
+          }
+        },
+        "export": {
+          "target": "com.azure.storageimportexport#Export",
+          "traits": {
+            "smithy.api#documentation": "A property containing information about the blobs to be exported for an export job. This property is included for export jobs only."
+          }
+        },
+        "provisioningState": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the provisioning state of the job."
+          }
+        },
+        "encryptionKey": {
+          "target": "com.azure.storageimportexport#EncryptionKeyDetails",
+          "traits": {
+            "smithy.api#documentation": "Contains information about the encryption key."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the job properties"
+      }
+    },
+    "com.azure.storageimportexport#JobDetailsInputDriveListList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storageimportexport#DriveStatus"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs."
+      }
+    },
+    "com.azure.storageimportexport#ShippingInformationInput": {
+      "type": "structure",
+      "members": {
+        "recipientName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the recipient who will receive the hard drives when they are returned. "
+          }
+        },
+        "streetAddress1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The first line of the street address to use when returning the drives. "
+          }
+        },
+        "streetAddress2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The second line of the street address to use when returning the drives. "
+          }
+        },
+        "city": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The city name to use when returning the drives."
+          }
+        },
+        "stateOrProvince": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The state or province to use when returning the drives."
+          }
+        },
+        "postalCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The postal code to use when returning the drives."
+          }
+        },
+        "countryOrRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The country or region to use when returning the drives. "
+          }
+        },
+        "phone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Phone number of the recipient of the returned drives."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Contains information about the Microsoft datacenter to which the drives should be shipped."
       }
     },
     "com.azure.storageimportexport#JobsGet": {

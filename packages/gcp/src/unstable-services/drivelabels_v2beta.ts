@@ -78,7 +78,7 @@ export const GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest>;
 
 export type GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequestList =
-  GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest[];
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest>;
 export const GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2betaDeleteLabelPermissionRequest,
@@ -167,8 +167,7 @@ export type GoogleAppsDriveLabelsV2betaLabelPermissionRoleEnum =
   | "READER"
   | "APPLIER"
   | "ORGANIZER"
-  | "EDITOR"
-  | (string & {});
+  | "EDITOR";
 export const GoogleAppsDriveLabelsV2betaLabelPermissionRoleEnum =
   /*@__PURE__*/ S.String;
 
@@ -222,7 +221,7 @@ export const GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest>;
 
 export type GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequestList =
-  GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest[];
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest>;
 export const GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2betaUpdateLabelPermissionRequest,
@@ -273,7 +272,7 @@ export const BatchUpdateLabelsPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchUpdateLabelsPermissionsRequest>;
 
 export type GoogleAppsDriveLabelsV2betaLabelPermissionList =
-  GoogleAppsDriveLabelsV2betaLabelPermission[];
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelPermission>;
 export const GoogleAppsDriveLabelsV2betaLabelPermissionList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2betaLabelPermission,
@@ -443,8 +442,7 @@ export type GoogleAppsDriveLabelsV2betaLifecycleStateEnum =
   | "UNPUBLISHED_DRAFT"
   | "PUBLISHED"
   | "DISABLED"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const GoogleAppsDriveLabelsV2betaLifecycleStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -473,8 +471,7 @@ export const GoogleAppsDriveLabelsV2betaLifecycle = /*@__PURE__*/ S.suspend(
 export type GoogleAppsDriveLabelsV2betaFieldDateOptionsDateFormatTypeEnum =
   | "DATE_FORMAT_UNSPECIFIED"
   | "LONG_DATE"
-  | "SHORT_DATE"
-  | (string & {});
+  | "SHORT_DATE";
 export const GoogleAppsDriveLabelsV2betaFieldDateOptionsDateFormatTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -857,7 +854,7 @@ export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice>;
 
 export type GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceList =
-  GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice[];
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice>;
 export const GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoiceList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2betaFieldSelectionOptionsChoice,
@@ -959,7 +956,7 @@ export const GoogleAppsDriveLabelsV2betaField = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsDriveLabelsV2betaField>;
 
 export type GoogleAppsDriveLabelsV2betaFieldList =
-  GoogleAppsDriveLabelsV2betaField[];
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaField>;
 export const GoogleAppsDriveLabelsV2betaFieldList = /*@__PURE__*/ S.Array(
   GoogleAppsDriveLabelsV2betaField,
 ) as any as S.Schema<GoogleAppsDriveLabelsV2betaFieldList>;
@@ -988,8 +985,7 @@ export type GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicyCopyModeEnum =
   | "COPY_MODE_UNSPECIFIED"
   | "DO_NOT_COPY"
   | "ALWAYS_COPY"
-  | "COPY_APPLIABLE"
-  | (string & {});
+  | "COPY_APPLIABLE";
 export const GoogleAppsDriveLabelsV2betaLabelAppliedLabelPolicyCopyModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1013,8 +1009,7 @@ export type GoogleAppsDriveLabelsV2betaLabelLabelTypeEnum =
   | "LABEL_TYPE_UNSPECIFIED"
   | "SHARED"
   | "ADMIN"
-  | "GOOGLE_APP"
-  | (string & {});
+  | "GOOGLE_APP";
 export const GoogleAppsDriveLabelsV2betaLabelLabelTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1042,7 +1037,7 @@ export const GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelSchemaCapabilities>;
 
 export type GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppAppEnum =
-  "APP_UNSPECIFIED" | "DRIVE" | "GMAIL" | (string & {});
+  "APP_UNSPECIFIED" | "DRIVE" | "GMAIL";
 export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppAppEnum =
   /*@__PURE__*/ S.String;
 
@@ -1063,7 +1058,7 @@ export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp>;
 
 export type GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppList =
-  GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp[];
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp>;
 export const GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledAppList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2betaLabelEnabledAppSettingsEnabledApp,
@@ -1654,7 +1649,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest>;
 
 export type GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList =
-  GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest[];
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest>;
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequest,
@@ -1662,8 +1657,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestRequestList =
 
 export type GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestViewEnum =
   | "LABEL_VIEW_BASIC"
-  | "LABEL_VIEW_FULL"
-  | (string & {});
+  | "LABEL_VIEW_FULL";
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelRequestViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1922,7 +1916,7 @@ export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse =
   }) as any as S.Schema<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse>;
 
 export type GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponseList =
-  GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse[];
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse>;
 export const GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponseList =
   /*@__PURE__*/ S.Array(
     GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponseResponse,
@@ -2298,10 +2292,7 @@ export const GoogleAppsDriveLabelsV2betaLabelLimits = /*@__PURE__*/ S.suspend(
   identifier: "GoogleAppsDriveLabelsV2betaLabelLimits",
 }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelLimits>;
 
-export type GetLabelsViewEnum =
-  | "LABEL_VIEW_BASIC"
-  | "LABEL_VIEW_FULL"
-  | (string & {});
+export type GetLabelsViewEnum = "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
 export const GetLabelsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetLabelsRequest {
@@ -2336,14 +2327,10 @@ export type ListLabelsMinimumRoleEnum =
   | "READER"
   | "APPLIER"
   | "ORGANIZER"
-  | "EDITOR"
-  | (string & {});
+  | "EDITOR";
 export const ListLabelsMinimumRoleEnum = /*@__PURE__*/ S.String;
 
-export type ListLabelsViewEnum =
-  | "LABEL_VIEW_BASIC"
-  | "LABEL_VIEW_FULL"
-  | (string & {});
+export type ListLabelsViewEnum = "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
 export const ListLabelsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListLabelsRequest {
@@ -2386,7 +2373,7 @@ export const ListLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLabelsRequest>;
 
 export type GoogleAppsDriveLabelsV2betaLabelList =
-  GoogleAppsDriveLabelsV2betaLabel[];
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaLabel>;
 export const GoogleAppsDriveLabelsV2betaLabelList = /*@__PURE__*/ S.Array(
   GoogleAppsDriveLabelsV2betaLabel,
 ) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelList>;
@@ -2435,8 +2422,7 @@ export const ListLabelsLocksRequest = /*@__PURE__*/ S.suspend(() =>
 export type GoogleAppsDriveLabelsV2betaLabelLockStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const GoogleAppsDriveLabelsV2betaLabelLockStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2492,7 +2478,7 @@ export const GoogleAppsDriveLabelsV2betaLabelLock = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelLock>;
 
 export type GoogleAppsDriveLabelsV2betaLabelLockList =
-  GoogleAppsDriveLabelsV2betaLabelLock[];
+  ReadonlyArray<GoogleAppsDriveLabelsV2betaLabelLock>;
 export const GoogleAppsDriveLabelsV2betaLabelLockList = /*@__PURE__*/ S.Array(
   GoogleAppsDriveLabelsV2betaLabelLock,
 ) as any as S.Schema<GoogleAppsDriveLabelsV2betaLabelLockList>;
@@ -2657,8 +2643,7 @@ export const PublishLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestViewEnum =
   | "LABEL_VIEW_BASIC"
-  | "LABEL_VIEW_FULL"
-  | (string & {});
+  | "LABEL_VIEW_FULL";
 export const GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -2666,8 +2651,7 @@ export type GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestCopyModeEnum =
   | "COPY_MODE_UNSPECIFIED"
   | "DO_NOT_COPY"
   | "ALWAYS_COPY"
-  | "COPY_APPLIABLE"
-  | (string & {});
+  | "COPY_APPLIABLE";
 export const GoogleAppsDriveLabelsV2betaUpdateLabelCopyModeRequestCopyModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2722,7 +2706,7 @@ export const UpdateLabelCopyModeLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateLabelCopyModeLabelsRequest>;
 
 export type GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequestViewEnum =
-  "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL" | (string & {});
+  "LABEL_VIEW_BASIC" | "LABEL_VIEW_FULL";
 export const GoogleAppsDriveLabelsV2betaUpdateLabelEnabledAppSettingsRequestViewEnum =
   /*@__PURE__*/ S.String;
 

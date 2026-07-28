@@ -270,9 +270,6 @@
         },
         "group_properties": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -500,9 +497,6 @@
         },
         "group_properties": {
           "target": "smithy.api#Document"
-        },
-        "created_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {

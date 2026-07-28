@@ -15,13 +15,17 @@ export type { AzureOpError, AzureOpContext };
 export interface DiagnosticsCheckNameAvailabilityRequest {
   /** This is an extension resource provider and only resource level extension is supported at the moment. */
   scope: string;
-  body?: unknown;
+  /** The name of the resource for which availability needs to be checked. */
+  name?: string;
+  /** The resource type. */
+  type?: string;
 }
 export const DiagnosticsCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       scope: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -53,18 +57,83 @@ export const CheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckNameAvailabilityResponse",
 }) as any as S.Schema<CheckNameAvailabilityResponse>;
 
+/** Global parameters that can be passed to all solutionIds. */
+export type DiagnosticResourcePropertiesInputGlobalParametersMap = {
+  [key: string]: string | undefined;
+};
+export const DiagnosticResourcePropertiesInputGlobalParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DiagnosticResourcePropertiesInputGlobalParametersMap>;
+
+/** Additional parameters required to invoke the solutionId. */
+export type DiagnosticInvocationAdditionalParametersMap = {
+  [key: string]: string | undefined;
+};
+export const DiagnosticInvocationAdditionalParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<DiagnosticInvocationAdditionalParametersMap>;
+
+/** Solution Invocation with additional params needed for invocation. */
+export interface DiagnosticInvocation {
+  /** Solution Id to invoke. */
+  solutionId?: string;
+  /** Additional parameters required to invoke the solutionId. */
+  additionalParameters?: DiagnosticInvocationAdditionalParametersMap;
+}
+export const DiagnosticInvocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    solutionId: S.optional(S.String),
+    additionalParameters: S.optional(
+      DiagnosticInvocationAdditionalParametersMap,
+    ),
+  }),
+).annotate({
+  identifier: "DiagnosticInvocation",
+}) as any as S.Schema<DiagnosticInvocation>;
+
+/** SolutionIds that are needed to be invoked. */
+export type DiagnosticResourcePropertiesInputInsightsList =
+  ReadonlyArray<DiagnosticInvocation>;
+export const DiagnosticResourcePropertiesInputInsightsList =
+  /*@__PURE__*/ S.Array(
+    DiagnosticInvocation,
+  ) as any as S.Schema<DiagnosticResourcePropertiesInputInsightsList>;
+
+/** Diagnostic resource properties. */
+export interface DiagnosticResourcePropertiesInput {
+  /** Global parameters that can be passed to all solutionIds. */
+  globalParameters?: DiagnosticResourcePropertiesInputGlobalParametersMap;
+  /** SolutionIds that are needed to be invoked. */
+  insights?: DiagnosticResourcePropertiesInputInsightsList;
+}
+export const DiagnosticResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    globalParameters: S.optional(
+      DiagnosticResourcePropertiesInputGlobalParametersMap,
+    ),
+    insights: S.optional(DiagnosticResourcePropertiesInputInsightsList),
+  }),
+).annotate({
+  identifier: "DiagnosticResourcePropertiesInput",
+}) as any as S.Schema<DiagnosticResourcePropertiesInput>;
+
 export interface DiagnosticsCreateRequest {
   /** This is an extension resource provider and only resource level extension is supported at the moment. */
   scope: string;
   /** Unique resource name for insight resources */
   diagnosticsResourceName: string;
-  body?: unknown;
+  /** Diagnostic Resource properties. */
+  properties?: DiagnosticResourcePropertiesInput;
 }
 export const DiagnosticsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     diagnosticsResourceName: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(DiagnosticResourcePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -82,8 +151,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -91,8 +159,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -131,36 +198,9 @@ export const DiagnosticResourcePropertiesGlobalParametersMap =
     S.String,
   ) as any as S.Schema<DiagnosticResourcePropertiesGlobalParametersMap>;
 
-/** Additional parameters required to invoke the solutionId. */
-export type DiagnosticInvocationAdditionalParametersMap = {
-  [key: string]: string | undefined;
-};
-export const DiagnosticInvocationAdditionalParametersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<DiagnosticInvocationAdditionalParametersMap>;
-
-/** Solution Invocation with additional params needed for invocation. */
-export interface DiagnosticInvocation {
-  /** Solution Id to invoke. */
-  solutionId?: string;
-  /** Additional parameters required to invoke the solutionId. */
-  additionalParameters?: DiagnosticInvocationAdditionalParametersMap;
-}
-export const DiagnosticInvocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    solutionId: S.optional(S.String),
-    additionalParameters: S.optional(
-      DiagnosticInvocationAdditionalParametersMap,
-    ),
-  }),
-).annotate({
-  identifier: "DiagnosticInvocation",
-}) as any as S.Schema<DiagnosticInvocation>;
-
 /** SolutionIds that are needed to be invoked. */
-export type DiagnosticResourcePropertiesInsightsList = DiagnosticInvocation[];
+export type DiagnosticResourcePropertiesInsightsList =
+  ReadonlyArray<DiagnosticInvocation>;
 export const DiagnosticResourcePropertiesInsightsList = /*@__PURE__*/ S.Array(
   DiagnosticInvocation,
 ) as any as S.Schema<DiagnosticResourcePropertiesInsightsList>;
@@ -170,8 +210,7 @@ export type DiagnosticResourcePropertiesProvisioningState =
   | "Succeeded"
   | "PartialComplete"
   | "Failed"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const DiagnosticResourcePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
@@ -181,16 +220,11 @@ export type DiagnosticStatus =
   | "MissingInputs"
   | "Running"
   | "Succeeded"
-  | "Timeout"
-  | (string & {});
+  | "Timeout";
 export const DiagnosticStatus = /*@__PURE__*/ S.String;
 
 /** Importance level of the insight. */
-export type InsightImportanceLevel =
-  | "Critical"
-  | "Warning"
-  | "Information"
-  | (string & {});
+export type InsightImportanceLevel = "Critical" | "Warning" | "Information";
 export const InsightImportanceLevel = /*@__PURE__*/ S.String;
 
 /** Detailed insights(s) obtained via the invocation of an insight diagnostic troubleshooter. */
@@ -214,13 +248,13 @@ export const Insight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
 
 /** The problems (if any) detected by this insight. */
-export type DiagnosticInsightsList = Insight[];
+export type DiagnosticInsightsList = ReadonlyArray<Insight>;
 export const DiagnosticInsightsList = /*@__PURE__*/ S.Array(
   Insight,
 ) as any as S.Schema<DiagnosticInsightsList>;
 
 /** An array of additional nested error response info objects, as described by this contract. */
-export type ErrorDetailsList = Error[];
+export type ErrorDetailsList = ReadonlyArray<Error>;
 export const ErrorDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Error),
 ) as any as S.Schema<ErrorDetailsList>;
@@ -264,7 +298,8 @@ export const Diagnostic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Diagnostic" }) as any as S.Schema<Diagnostic>;
 
 /** Array of Diagnostics. */
-export type DiagnosticResourcePropertiesDiagnosticsList = Diagnostic[];
+export type DiagnosticResourcePropertiesDiagnosticsList =
+  ReadonlyArray<Diagnostic>;
 export const DiagnosticResourcePropertiesDiagnosticsList =
   /*@__PURE__*/ S.Array(
     Diagnostic,
@@ -394,7 +429,8 @@ export const DiscoverySolutionListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiscoverySolutionListRequest",
 }) as any as S.Schema<DiscoverySolutionListRequest>;
 
-export type SolutionMetadataPropertiesRequiredParameterSetsItemList = string[];
+export type SolutionMetadataPropertiesRequiredParameterSetsItemList =
+  ReadonlyArray<string>;
 export const SolutionMetadataPropertiesRequiredParameterSetsItemList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -402,7 +438,7 @@ export const SolutionMetadataPropertiesRequiredParameterSetsItemList =
 
 /** Required parameters for invoking this particular solution. */
 export type SolutionMetadataPropertiesRequiredParameterSetsList =
-  SolutionMetadataPropertiesRequiredParameterSetsItemList[];
+  ReadonlyArray<SolutionMetadataPropertiesRequiredParameterSetsItemList>;
 export const SolutionMetadataPropertiesRequiredParameterSetsList =
   /*@__PURE__*/ S.Array(
     SolutionMetadataPropertiesRequiredParameterSetsItemList,
@@ -458,7 +494,8 @@ export const SolutionMetadataResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionMetadataResource>;
 
 /** The list of solution metadata. */
-export type DiscoveryResponseValueList = SolutionMetadataResource[];
+export type DiscoveryResponseValueList =
+  ReadonlyArray<SolutionMetadataResource>;
 export const DiscoveryResponseValueList = /*@__PURE__*/ S.Array(
   SolutionMetadataResource,
 ) as any as S.Schema<DiscoveryResponseValueList>;
@@ -516,11 +553,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -547,7 +584,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

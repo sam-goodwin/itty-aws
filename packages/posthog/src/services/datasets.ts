@@ -35,6 +35,32 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+export interface DatasetsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  name?: string;
+  description?: string | null;
+  metadata?: unknown;
+  deleted?: boolean | null;
+}
+export const DatasetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    metadata: S.optional(S.Unknown),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/datasets/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DatasetsCreateRequest",
+}) as any as S.Schema<DatasetsCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -50,11 +76,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -86,42 +111,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export interface DatasetsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: string;
-  name?: string;
-  description?: string | null;
-  metadata?: unknown;
-  created_at?: string;
-  updated_at?: string | null;
-  deleted?: boolean | null;
-  created_by?: UserBasic;
-  team?: number;
-}
-export const DatasetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    metadata: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    created_by: S.optional(UserBasic),
-    team: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/datasets/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DatasetsCreateRequest",
-}) as any as S.Schema<DatasetsCreateRequest>;
-
 export interface Dataset {
   id?: string;
   name?: string;
@@ -130,7 +119,7 @@ export interface Dataset {
   created_at?: string;
   updated_at?: string | null;
   deleted?: boolean | null;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   team?: number;
 }
 export const Dataset = /*@__PURE__*/ S.suspend(() =>
@@ -142,7 +131,7 @@ export const Dataset = /*@__PURE__*/ S.suspend(() =>
     created_at: S.optional(S.String),
     updated_at: S.optional(S.NullOr(S.String)),
     deleted: S.optional(S.NullOr(S.Boolean)),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     team: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Dataset" }) as any as S.Schema<Dataset>;
@@ -175,7 +164,7 @@ export const DatasetsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetsDestroyResponse",
 }) as any as S.Schema<DatasetsDestroyResponse>;
 
-export type DatasetsListRequestIdInList = string[];
+export type DatasetsListRequestIdInList = ReadonlyArray<string>;
 export const DatasetsListRequestIdInList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatasetsListRequestIdInList>;
@@ -184,11 +173,11 @@ export type DatasetsListRequestOrderByItem =
   | "-created_at"
   | "-updated_at"
   | "created_at"
-  | "updated_at"
-  | (string & {});
+  | "updated_at";
 export const DatasetsListRequestOrderByItem = /*@__PURE__*/ S.String;
 
-export type DatasetsListRequestOrderByList = DatasetsListRequestOrderByItem[];
+export type DatasetsListRequestOrderByList =
+  ReadonlyArray<DatasetsListRequestOrderByItem>;
 export const DatasetsListRequestOrderByList = /*@__PURE__*/ S.Array(
   DatasetsListRequestOrderByItem,
 ) as any as S.Schema<DatasetsListRequestOrderByList>;
@@ -226,7 +215,7 @@ export const DatasetsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetsListRequest",
 }) as any as S.Schema<DatasetsListRequest>;
 
-export type PaginatedDatasetListResultsList = Dataset[];
+export type PaginatedDatasetListResultsList = ReadonlyArray<Dataset>;
 export const PaginatedDatasetListResultsList = /*@__PURE__*/ S.Array(
   Dataset,
 ) as any as S.Schema<PaginatedDatasetListResultsList>;
@@ -256,11 +245,7 @@ export interface DatasetsPartialUpdateRequest {
   name?: string;
   description?: string | null;
   metadata?: unknown;
-  created_at?: string;
-  updated_at?: string | null;
   deleted?: boolean | null;
-  created_by?: UserBasic;
-  team?: number;
 }
 export const DatasetsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -269,11 +254,7 @@ export const DatasetsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
     metadata: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
     deleted: S.optional(S.NullOr(S.Boolean)),
-    created_by: S.optional(UserBasic),
-    team: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -314,11 +295,7 @@ export interface DatasetsUpdateRequest {
   name?: string;
   description?: string | null;
   metadata?: unknown;
-  created_at?: string;
-  updated_at?: string | null;
   deleted?: boolean | null;
-  created_by?: UserBasic;
-  team?: number;
 }
 export const DatasetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -327,11 +304,7 @@ export const DatasetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
     metadata: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
     deleted: S.optional(S.NullOr(S.Boolean)),
-    created_by: S.optional(UserBasic),
-    team: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "PUT",

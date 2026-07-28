@@ -146,7 +146,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
-export type EndpointList = Endpoint[];
+export type EndpointList = ReadonlyArray<Endpoint>;
 export const EndpointList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointList>;
@@ -338,7 +338,7 @@ export const GetIamPolicyProjectsLocationsNamespacesRequest =
     identifier: "GetIamPolicyProjectsLocationsNamespacesRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsNamespacesRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -380,7 +380,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -580,7 +580,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -632,7 +632,7 @@ export const ListProjectsLocationsNamespacesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsNamespacesRequest",
 }) as any as S.Schema<ListProjectsLocationsNamespacesRequest>;
 
-export type NamespaceList = Namespace[];
+export type NamespaceList = ReadonlyArray<Namespace>;
 export const NamespaceList = /*@__PURE__*/ S.Array(
   Namespace,
 ) as any as S.Schema<NamespaceList>;
@@ -684,7 +684,7 @@ export const ListProjectsLocationsNamespacesServicesRequest =
     identifier: "ListProjectsLocationsNamespacesServicesRequest",
   }) as any as S.Schema<ListProjectsLocationsNamespacesServicesRequest>;
 
-export type ServiceList = Service[];
+export type ServiceList = ReadonlyArray<Service>;
 export const ServiceList = /*@__PURE__*/ S.Array(
   Service,
 ) as any as S.Schema<ServiceList>;

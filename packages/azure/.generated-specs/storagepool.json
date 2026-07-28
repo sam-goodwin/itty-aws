@@ -591,16 +591,88 @@
             "smithy.api#documentation": "The name of the iSCSI Target."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagepool#IscsiTargetUpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties for iSCSI Target update request.",
             "smithy.api#required": {}
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure resource id. Indicates if this resource is managed by another Azure resource."
+          }
+        },
+        "managedByExtended": {
+          "target": "com.azure.storagepool#ManagedByExtended",
+          "traits": {
+            "smithy.api#documentation": "List of Azure resource ids that manage this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagepool#IscsiTargetUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "staticAcls": {
+          "target": "com.azure.storagepool#IscsiTargetUpdatePropertiesInputStaticAclsList",
+          "traits": {
+            "smithy.api#documentation": "Access Control List (ACL) for an iSCSI Target; defines LUN masking policy"
+          }
+        },
+        "luns": {
+          "target": "com.azure.storagepool#IscsiTargetUpdatePropertiesInputLunsList",
+          "traits": {
+            "smithy.api#documentation": "List of LUNs to be exposed through iSCSI Target."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for iSCSI Target update request."
+      }
+    },
+    "com.azure.storagepool#IscsiTargetUpdatePropertiesInputLunsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storagepool#IscsiLunInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of LUNs to be exposed through iSCSI Target."
+      }
+    },
+    "com.azure.storagepool#IscsiLunInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User defined name for iSCSI LUN; example: \"lun0\"",
+            "smithy.api#required": {}
+          }
+        },
+        "managedDiskAzureResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource ID of the Managed Disk.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "LUN to expose the Azure Managed Disk."
+      }
+    },
+    "com.azure.storagepool#IscsiTargetUpdatePropertiesInputStaticAclsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storagepool#Acl"
+      },
+      "traits": {
+        "smithy.api#documentation": "Access Control List (ACL) for an iSCSI Target; defines LUN masking policy"
       }
     },
     "com.azure.storagepool#IscsiTargetsCreateOrUpdate": {
@@ -708,16 +780,79 @@
             "smithy.api#documentation": "The name of the iSCSI Target."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storagepool#IscsiTargetCreatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties for iSCSI Target create request.",
             "smithy.api#required": {}
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure resource id. Indicates if this resource is managed by another Azure resource."
+          }
+        },
+        "managedByExtended": {
+          "target": "com.azure.storagepool#ManagedByExtended",
+          "traits": {
+            "smithy.api#documentation": "List of Azure resource ids that manage this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagepool#IscsiTargetCreatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "aclMode": {
+          "target": "com.azure.storagepool#AclMode",
+          "traits": {
+            "smithy.api#documentation": "Mode for Target connectivity.",
+            "smithy.api#required": {}
+          }
+        },
+        "targetIqn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "iSCSI Target IQN (iSCSI Qualified Name); example: \"iqn.2005-03.org.iscsi:server\"."
+          }
+        },
+        "staticAcls": {
+          "target": "com.azure.storagepool#IscsiTargetCreatePropertiesInputStaticAclsList",
+          "traits": {
+            "smithy.api#documentation": "Access Control List (ACL) for an iSCSI Target; defines LUN masking policy"
+          }
+        },
+        "luns": {
+          "target": "com.azure.storagepool#IscsiTargetCreatePropertiesInputLunsList",
+          "traits": {
+            "smithy.api#documentation": "List of LUNs to be exposed through iSCSI Target."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for iSCSI Target create or update request."
+      }
+    },
+    "com.azure.storagepool#IscsiTargetCreatePropertiesInputLunsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storagepool#IscsiLunInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of LUNs to be exposed through iSCSI Target."
+      }
+    },
+    "com.azure.storagepool#IscsiTargetCreatePropertiesInputStaticAclsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storagepool#Acl"
+      },
+      "traits": {
+        "smithy.api#documentation": "Access Control List (ACL) for an iSCSI Target; defines LUN masking policy"
       }
     },
     "com.azure.storagepool#IscsiTargetsGet": {
@@ -2053,16 +2188,75 @@
             "smithy.api#documentation": "The name of the Disk Pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "managedBy": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Azure resource id. Indicates if this resource is managed by another Azure resource."
+          }
+        },
+        "managedByExtended": {
+          "target": "com.azure.storagepool#ManagedByExtended",
+          "traits": {
+            "smithy.api#documentation": "List of Azure resource ids that manage this resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagepool#DiskPoolUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties for Disk Pool update request.",
             "smithy.api#required": {}
+          }
+        },
+        "sku": {
+          "target": "com.azure.storagepool#Sku",
+          "traits": {
+            "smithy.api#documentation": "Determines the SKU of the Disk Pool"
+          }
+        },
+        "tags": {
+          "target": "com.azure.storagepool#DiskPoolsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagepool#DiskPoolsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.storagepool#DiskPoolUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "disks": {
+          "target": "com.azure.storagepool#DiskPoolUpdatePropertiesDisksList",
+          "traits": {
+            "smithy.api#documentation": "List of Azure Managed Disks to attach to a Disk Pool."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for Disk Pool update request."
+      }
+    },
+    "com.azure.storagepool#DiskPoolUpdatePropertiesDisksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storagepool#Disk"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Azure Managed Disks to attach to a Disk Pool."
       }
     },
     "com.azure.storagepool#DiskPoolsCreateOrUpdate": {
@@ -2193,16 +2387,120 @@
             "smithy.api#documentation": "The name of the Disk Pool."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.storagepool#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Determines the SKU of the Disk Pool",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.storagepool#DiskPoolCreateProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties for Disk Pool create request.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.storagepool#DiskPoolsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives.",
+            "smithy.api#required": {}
+          }
+        },
+        "managedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure resource id. Indicates if this resource is managed by another Azure resource."
+          }
+        },
+        "managedByExtended": {
+          "target": "com.azure.storagepool#ManagedByExtended",
+          "traits": {
+            "smithy.api#documentation": "List of Azure resource ids that manage this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storagepool#DiskPoolsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.storagepool#DiskPoolCreateProperties": {
+      "type": "structure",
+      "members": {
+        "availabilityZones": {
+          "target": "com.azure.storagepool#DiskPoolCreatePropertiesAvailabilityZonesList",
+          "traits": {
+            "smithy.api#documentation": "Logical zone for Disk Pool resource; example: [\"1\"]."
+          }
+        },
+        "disks": {
+          "target": "com.azure.storagepool#DiskPoolCreatePropertiesDisksList",
+          "traits": {
+            "smithy.api#documentation": "List of Azure Managed Disks to attach to a Disk Pool."
+          }
+        },
+        "subnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource ID of a Subnet for the Disk Pool.",
+            "smithy.api#required": {}
+          }
+        },
+        "additionalCapabilities": {
+          "target": "com.azure.storagepool#DiskPoolCreatePropertiesAdditionalCapabilitiesList",
+          "traits": {
+            "smithy.api#documentation": "List of additional capabilities for a Disk Pool."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties for Disk Pool create or update request."
+      }
+    },
+    "com.azure.storagepool#DiskPoolCreatePropertiesAdditionalCapabilitiesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of additional capabilities for a Disk Pool."
+      }
+    },
+    "com.azure.storagepool#DiskPoolCreatePropertiesDisksList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storagepool#Disk"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Azure Managed Disks to attach to a Disk Pool."
+      }
+    },
+    "com.azure.storagepool#DiskPoolCreatePropertiesAvailabilityZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Logical zone for Disk Pool resource; example: [\"1\"]."
       }
     },
     "com.azure.storagepool#DiskPoolsGet": {

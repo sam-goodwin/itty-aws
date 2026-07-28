@@ -41,40 +41,27 @@ export type InsightVariableTypeEnum =
   | "Number"
   | "Boolean"
   | "List"
-  | "Date"
-  | (string & {});
+  | "Date";
 export const InsightVariableTypeEnum = /*@__PURE__*/ S.String;
 
 export interface InsightVariablesCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** UUID of the SQL variable. */
-  id?: string;
   /** Human-readable name for the SQL variable. */
   name?: string;
   /** Variable type. Controls how the value is rendered and substituted in HogQL. * `String` - String * `Number` - Number * `Boolean` - Boolean * `List` - List * `Date` - Date */
   type?: InsightVariableTypeEnum;
   /** Default value used when a query references this variable. */
   default_value?: unknown;
-  /** ID of the user who created the SQL variable. */
-  created_by?: number | null;
-  /** Timestamp when the SQL variable was created. */
-  created_at?: string;
-  /** Generated code-safe name used in HogQL as {variables.code_name}. Derived from name. */
-  code_name?: string | null;
   /** Allowed values for List variables. Null for other variable types. */
   values?: unknown;
 }
 export const InsightVariablesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(InsightVariableTypeEnum),
     default_value: S.optional(S.Unknown),
-    created_by: S.optional(S.NullOr(S.Number)),
-    created_at: S.optional(S.String),
-    code_name: S.optional(S.NullOr(S.String)),
     values: S.optional(S.Unknown),
   }).pipe(
     T.Http({
@@ -169,7 +156,8 @@ export const InsightVariablesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightVariablesListRequest",
 }) as any as S.Schema<InsightVariablesListRequest>;
 
-export type PaginatedInsightVariableListResultsList = InsightVariable[];
+export type PaginatedInsightVariableListResultsList =
+  ReadonlyArray<InsightVariable>;
 export const PaginatedInsightVariableListResultsList = /*@__PURE__*/ S.Array(
   InsightVariable,
 ) as any as S.Schema<PaginatedInsightVariableListResultsList>;
@@ -202,12 +190,6 @@ export interface InsightVariablesPartialUpdateRequest {
   type?: InsightVariableTypeEnum;
   /** Default value used when a query references this variable. */
   default_value?: unknown;
-  /** ID of the user who created the SQL variable. */
-  created_by?: number | null;
-  /** Timestamp when the SQL variable was created. */
-  created_at?: string;
-  /** Generated code-safe name used in HogQL as {variables.code_name}. Derived from name. */
-  code_name?: string | null;
   /** Allowed values for List variables. Null for other variable types. */
   values?: unknown;
 }
@@ -219,9 +201,6 @@ export const InsightVariablesPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(InsightVariableTypeEnum),
       default_value: S.optional(S.Unknown),
-      created_by: S.optional(S.NullOr(S.Number)),
-      created_at: S.optional(S.String),
-      code_name: S.optional(S.NullOr(S.String)),
       values: S.optional(S.Unknown),
     }).pipe(
       T.Http({
@@ -266,12 +245,6 @@ export interface InsightVariablesUpdateRequest {
   type?: InsightVariableTypeEnum;
   /** Default value used when a query references this variable. */
   default_value?: unknown;
-  /** ID of the user who created the SQL variable. */
-  created_by?: number | null;
-  /** Timestamp when the SQL variable was created. */
-  created_at?: string;
-  /** Generated code-safe name used in HogQL as {variables.code_name}. Derived from name. */
-  code_name?: string | null;
   /** Allowed values for List variables. Null for other variable types. */
   values?: unknown;
 }
@@ -282,9 +255,6 @@ export const InsightVariablesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(InsightVariableTypeEnum),
     default_value: S.optional(S.Unknown),
-    created_by: S.optional(S.NullOr(S.Number)),
-    created_at: S.optional(S.String),
-    code_name: S.optional(S.NullOr(S.String)),
     values: S.optional(S.Unknown),
   }).pipe(
     T.Http({

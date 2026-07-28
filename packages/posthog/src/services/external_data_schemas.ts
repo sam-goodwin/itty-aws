@@ -120,15 +120,6 @@ export const ExternalDataSchemasDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalDataSchemasDestroyResponse",
 }) as any as S.Schema<ExternalDataSchemasDestroyResponse>;
 
-export type ExternalDataSchemasIncrementalFieldsCreateRequestTableMap = {
-  [key: string]: unknown | undefined;
-};
-export const ExternalDataSchemasIncrementalFieldsCreateRequestTableMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ExternalDataSchemasIncrementalFieldsCreateRequestTableMap>;
-
 /** * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
 export type SyncTypeEnum =
   | "full_refresh"
@@ -136,8 +127,7 @@ export type SyncTypeEnum =
   | "append"
   | "webhook"
   | "cdc"
-  | "xmin"
-  | (string & {});
+  | "xmin";
 export const SyncTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `integer` - integer * `numeric` - numeric * `datetime` - datetime * `date` - date * `timestamp` - timestamp * `objectid` - objectid * `xid` - xid */
@@ -148,8 +138,7 @@ export type IncrementalFieldTypeEnum =
   | "date"
   | "timestamp"
   | "objectid"
-  | "xid"
-  | (string & {});
+  | "xid";
 export const IncrementalFieldTypeEnum = /*@__PURE__*/ S.String;
 
 /** * `never` - never * `1min` - 1min * `5min` - 5min * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
@@ -164,29 +153,24 @@ export type SyncFrequencyEnum =
   | "12hour"
   | "24hour"
   | "7day"
-  | "30day"
-  | (string & {});
+  | "30day";
 export const SyncFrequencyEnum = /*@__PURE__*/ S.String;
 
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList>;
 
 /** * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
-export type CdcTableModeEnum =
-  | "consolidated"
-  | "cdc_only"
-  | "both"
-  | (string & {});
+export type CdcTableModeEnum = "consolidated" | "cdc_only" | "both";
 export const CdcTableModeEnum = /*@__PURE__*/ S.String;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type ExternalDataSchemasIncrementalFieldsCreateRequestEnabledColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const ExternalDataSchemasIncrementalFieldsCreateRequestEnabledColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -213,104 +197,18 @@ export const ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersItem =
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersList =
-  ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersItem[];
+  ReadonlyArray<ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersItem>;
 export const ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersList =
   /*@__PURE__*/ S.Array(
     ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersItem,
   ) as any as S.Schema<ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersList>;
-
-export interface ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsItem {
-  name: string;
-  data_type?: string;
-  is_nullable?: boolean;
-}
-export const ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      data_type: S.optional(S.String),
-      is_nullable: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier:
-      "ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsItem",
-  }) as any as S.Schema<ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsItem>;
-
-/** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
-export type ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsList =
-  ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsItem[];
-export const ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsList =
-  /*@__PURE__*/ S.Array(
-    ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsItem,
-  ) as any as S.Schema<ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsList>;
-
-export type ExternalDataSchemasIncrementalFieldsCreateRequestSourceSupportedApiVersionsList =
-  string[];
-export const ExternalDataSchemasIncrementalFieldsCreateRequestSourceSupportedApiVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSchemasIncrementalFieldsCreateRequestSourceSupportedApiVersionsList>;
-
-/** Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
-export interface ExternalDataSchemasIncrementalFieldsCreateRequestSource {
-  id?: string;
-  source_type?: string;
-  supports_column_selection?: boolean;
-  supports_row_filters?: boolean;
-  user_access_level?: string | null;
-  api_version?: string | null;
-  supported_api_versions?: ExternalDataSchemasIncrementalFieldsCreateRequestSourceSupportedApiVersionsList;
-}
-export const ExternalDataSchemasIncrementalFieldsCreateRequestSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      source_type: S.optional(S.String),
-      supports_column_selection: S.optional(S.Boolean),
-      supports_row_filters: S.optional(S.Boolean),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      api_version: S.optional(S.NullOr(S.String)),
-      supported_api_versions: S.optional(
-        ExternalDataSchemasIncrementalFieldsCreateRequestSourceSupportedApiVersionsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ExternalDataSchemasIncrementalFieldsCreateRequestSource",
-  }) as any as S.Schema<ExternalDataSchemasIncrementalFieldsCreateRequestSource>;
-
-export interface ExternalDataSourceApiVersionDeprecation {
-  /** The deprecated vendor API version this source is pinned to. */
-  version: string;
-  /** Date the vendor stops serving this version; null if not announced. */
-  sunset_at: string | null;
-  /** The source's current default vendor API version — the migration target. */
-  default_version: string;
-}
-export const ExternalDataSourceApiVersionDeprecation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      version: S.String,
-      sunset_at: S.NullOr(S.String),
-      default_version: S.String,
-    }),
-).annotate({
-  identifier: "ExternalDataSourceApiVersionDeprecation",
-}) as any as S.Schema<ExternalDataSourceApiVersionDeprecation>;
 
 export interface ExternalDataSchemasIncrementalFieldsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data schema. */
   id: string;
-  name?: string;
-  label?: string | null;
-  table?: ExternalDataSchemasIncrementalFieldsCreateRequestTableMap | null;
   should_sync?: boolean;
-  last_synced_at?: string | null;
-  /** The latest error that occurred when syncing this schema. */
-  latest_error?: string | null;
-  incremental?: boolean;
-  status?: string | null;
   /** Sync strategy: incremental, full_refresh, append, cdc, or xmin. * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
   sync_type?: SyncTypeEnum | null;
   /** Column name used to track sync progress. */
@@ -323,7 +221,6 @@ export interface ExternalDataSchemasIncrementalFieldsCreateRequest {
   sync_frequency?: SyncFrequencyEnum | null;
   /** UTC time of day to run the sync (HH:MM:SS). */
   sync_time_of_day?: string | null;
-  description?: string | null;
   /** Column names for primary key deduplication. */
   primary_key_columns?: ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList | null;
   /** For CDC syncs: consolidated, cdc_only, or both. * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
@@ -332,37 +229,21 @@ export interface ExternalDataSchemasIncrementalFieldsCreateRequest {
   enabled_columns?: ExternalDataSchemasIncrementalFieldsCreateRequestEnabledColumnsList | null;
   /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
   row_filters?: ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersList | null;
-  /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
-  available_columns?: ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsList;
-  /** Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
-  source?: ExternalDataSchemasIncrementalFieldsCreateRequestSource | null;
   /** Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas. */
   api_version?: string | null;
-  /** Set when this schema's version override is deprecated by the vendor; null when there is no override or it is not deprecated. The source-level field covers the source pin. */
-  api_version_deprecation?: ExternalDataSourceApiVersionDeprecation | null;
 }
 export const ExternalDataSchemasIncrementalFieldsCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      label: S.optional(S.NullOr(S.String)),
-      table: S.optional(
-        S.NullOr(ExternalDataSchemasIncrementalFieldsCreateRequestTableMap),
-      ),
       should_sync: S.optional(S.Boolean),
-      last_synced_at: S.optional(S.NullOr(S.String)),
-      latest_error: S.optional(S.NullOr(S.String)),
-      incremental: S.optional(S.Boolean),
-      status: S.optional(S.NullOr(S.String)),
       sync_type: S.optional(S.NullOr(SyncTypeEnum)),
       incremental_field: S.optional(S.NullOr(S.String)),
       incremental_field_type: S.optional(S.NullOr(IncrementalFieldTypeEnum)),
       incremental_field_lookback_seconds: S.optional(S.NullOr(S.Number)),
       sync_frequency: S.optional(S.NullOr(SyncFrequencyEnum)),
       sync_time_of_day: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
       primary_key_columns: S.optional(
         S.NullOr(
           ExternalDataSchemasIncrementalFieldsCreateRequestPrimaryKeyColumnsList,
@@ -379,16 +260,7 @@ export const ExternalDataSchemasIncrementalFieldsCreateRequest =
           ExternalDataSchemasIncrementalFieldsCreateRequestRowFiltersList,
         ),
       ),
-      available_columns: S.optional(
-        ExternalDataSchemasIncrementalFieldsCreateRequestAvailableColumnsList,
-      ),
-      source: S.optional(
-        S.NullOr(ExternalDataSchemasIncrementalFieldsCreateRequestSource),
-      ),
       api_version: S.optional(S.NullOr(S.String)),
-      api_version_deprecation: S.optional(
-        S.NullOr(ExternalDataSourceApiVersionDeprecation),
-      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -440,13 +312,13 @@ export const ExternalDataSchemaTableMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExternalDataSchemaTableMap>;
 
 /** Column names for primary key deduplication. */
-export type ExternalDataSchemaPrimaryKeyColumnsList = string[];
+export type ExternalDataSchemaPrimaryKeyColumnsList = ReadonlyArray<string>;
 export const ExternalDataSchemaPrimaryKeyColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalDataSchemaPrimaryKeyColumnsList>;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
-export type ExternalDataSchemaEnabledColumnsList = string[];
+export type ExternalDataSchemaEnabledColumnsList = ReadonlyArray<string>;
 export const ExternalDataSchemaEnabledColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalDataSchemaEnabledColumnsList>;
@@ -470,7 +342,7 @@ export const ExternalDataSchemaRowFiltersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemaRowFiltersList =
-  ExternalDataSchemaRowFiltersItem[];
+  ReadonlyArray<ExternalDataSchemaRowFiltersItem>;
 export const ExternalDataSchemaRowFiltersList = /*@__PURE__*/ S.Array(
   ExternalDataSchemaRowFiltersItem,
 ) as any as S.Schema<ExternalDataSchemaRowFiltersList>;
@@ -493,12 +365,13 @@ export const ExternalDataSchemaAvailableColumnsItem = /*@__PURE__*/ S.suspend(
 
 /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
 export type ExternalDataSchemaAvailableColumnsList =
-  ExternalDataSchemaAvailableColumnsItem[];
+  ReadonlyArray<ExternalDataSchemaAvailableColumnsItem>;
 export const ExternalDataSchemaAvailableColumnsList = /*@__PURE__*/ S.Array(
   ExternalDataSchemaAvailableColumnsItem,
 ) as any as S.Schema<ExternalDataSchemaAvailableColumnsList>;
 
-export type ExternalDataSchemaSourceSupportedApiVersionsList = string[];
+export type ExternalDataSchemaSourceSupportedApiVersionsList =
+  ReadonlyArray<string>;
 export const ExternalDataSchemaSourceSupportedApiVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -529,6 +402,25 @@ export const ExternalDataSchemaSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExternalDataSchemaSource",
 }) as any as S.Schema<ExternalDataSchemaSource>;
+
+export interface ExternalDataSourceApiVersionDeprecation {
+  /** The deprecated vendor API version this source is pinned to. */
+  version: string;
+  /** Date the vendor stops serving this version; null if not announced. */
+  sunset_at: string | null;
+  /** The source's current default vendor API version — the migration target. */
+  default_version: string;
+}
+export const ExternalDataSourceApiVersionDeprecation = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      version: S.String,
+      sunset_at: S.NullOr(S.String),
+      default_version: S.String,
+    }),
+).annotate({
+  identifier: "ExternalDataSourceApiVersionDeprecation",
+}) as any as S.Schema<ExternalDataSourceApiVersionDeprecation>;
 
 export interface ExternalDataSchema {
   id?: string;
@@ -606,7 +498,8 @@ export const ExternalDataSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalDataSchema",
 }) as any as S.Schema<ExternalDataSchema>;
 
-export type PaginatedExternalDataSchemaListResultsList = ExternalDataSchema[];
+export type PaginatedExternalDataSchemaListResultsList =
+  ReadonlyArray<ExternalDataSchema>;
 export const PaginatedExternalDataSchemaListResultsList = /*@__PURE__*/ S.Array(
   ExternalDataSchema,
 ) as any as S.Schema<PaginatedExternalDataSchemaListResultsList>;
@@ -675,18 +568,9 @@ export const ExternalDataSchemasLogsRetrieveResponse = /*@__PURE__*/ S.suspend(
   identifier: "ExternalDataSchemasLogsRetrieveResponse",
 }) as any as S.Schema<ExternalDataSchemasLogsRetrieveResponse>;
 
-export type ExternalDataSchemasPartialUpdateRequestTableMap = {
-  [key: string]: unknown | undefined;
-};
-export const ExternalDataSchemasPartialUpdateRequestTableMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ExternalDataSchemasPartialUpdateRequestTableMap>;
-
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemasPartialUpdateRequestPrimaryKeyColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const ExternalDataSchemasPartialUpdateRequestPrimaryKeyColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -694,7 +578,7 @@ export const ExternalDataSchemasPartialUpdateRequestPrimaryKeyColumnsList =
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
 export type ExternalDataSchemasPartialUpdateRequestEnabledColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const ExternalDataSchemasPartialUpdateRequestEnabledColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -720,84 +604,18 @@ export const ExternalDataSchemasPartialUpdateRequestRowFiltersItem =
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemasPartialUpdateRequestRowFiltersList =
-  ExternalDataSchemasPartialUpdateRequestRowFiltersItem[];
+  ReadonlyArray<ExternalDataSchemasPartialUpdateRequestRowFiltersItem>;
 export const ExternalDataSchemasPartialUpdateRequestRowFiltersList =
   /*@__PURE__*/ S.Array(
     ExternalDataSchemasPartialUpdateRequestRowFiltersItem,
   ) as any as S.Schema<ExternalDataSchemasPartialUpdateRequestRowFiltersList>;
-
-export interface ExternalDataSchemasPartialUpdateRequestAvailableColumnsItem {
-  name: string;
-  data_type?: string;
-  is_nullable?: boolean;
-}
-export const ExternalDataSchemasPartialUpdateRequestAvailableColumnsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      data_type: S.optional(S.String),
-      is_nullable: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ExternalDataSchemasPartialUpdateRequestAvailableColumnsItem",
-  }) as any as S.Schema<ExternalDataSchemasPartialUpdateRequestAvailableColumnsItem>;
-
-/** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
-export type ExternalDataSchemasPartialUpdateRequestAvailableColumnsList =
-  ExternalDataSchemasPartialUpdateRequestAvailableColumnsItem[];
-export const ExternalDataSchemasPartialUpdateRequestAvailableColumnsList =
-  /*@__PURE__*/ S.Array(
-    ExternalDataSchemasPartialUpdateRequestAvailableColumnsItem,
-  ) as any as S.Schema<ExternalDataSchemasPartialUpdateRequestAvailableColumnsList>;
-
-export type ExternalDataSchemasPartialUpdateRequestSourceSupportedApiVersionsList =
-  string[];
-export const ExternalDataSchemasPartialUpdateRequestSourceSupportedApiVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSchemasPartialUpdateRequestSourceSupportedApiVersionsList>;
-
-/** Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
-export interface ExternalDataSchemasPartialUpdateRequestSource {
-  id?: string;
-  source_type?: string;
-  supports_column_selection?: boolean;
-  supports_row_filters?: boolean;
-  user_access_level?: string | null;
-  api_version?: string | null;
-  supported_api_versions?: ExternalDataSchemasPartialUpdateRequestSourceSupportedApiVersionsList;
-}
-export const ExternalDataSchemasPartialUpdateRequestSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      source_type: S.optional(S.String),
-      supports_column_selection: S.optional(S.Boolean),
-      supports_row_filters: S.optional(S.Boolean),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      api_version: S.optional(S.NullOr(S.String)),
-      supported_api_versions: S.optional(
-        ExternalDataSchemasPartialUpdateRequestSourceSupportedApiVersionsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ExternalDataSchemasPartialUpdateRequestSource",
-  }) as any as S.Schema<ExternalDataSchemasPartialUpdateRequestSource>;
 
 export interface ExternalDataSchemasPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data schema. */
   id: string;
-  name?: string;
-  label?: string | null;
-  table?: ExternalDataSchemasPartialUpdateRequestTableMap | null;
   should_sync?: boolean;
-  last_synced_at?: string | null;
-  /** The latest error that occurred when syncing this schema. */
-  latest_error?: string | null;
-  incremental?: boolean;
-  status?: string | null;
   /** Sync strategy: incremental, full_refresh, append, cdc, or xmin. * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
   sync_type?: SyncTypeEnum | null;
   /** Column name used to track sync progress. */
@@ -810,7 +628,6 @@ export interface ExternalDataSchemasPartialUpdateRequest {
   sync_frequency?: SyncFrequencyEnum | null;
   /** UTC time of day to run the sync (HH:MM:SS). */
   sync_time_of_day?: string | null;
-  description?: string | null;
   /** Column names for primary key deduplication. */
   primary_key_columns?: ExternalDataSchemasPartialUpdateRequestPrimaryKeyColumnsList | null;
   /** For CDC syncs: consolidated, cdc_only, or both. * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
@@ -819,37 +636,21 @@ export interface ExternalDataSchemasPartialUpdateRequest {
   enabled_columns?: ExternalDataSchemasPartialUpdateRequestEnabledColumnsList | null;
   /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
   row_filters?: ExternalDataSchemasPartialUpdateRequestRowFiltersList | null;
-  /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
-  available_columns?: ExternalDataSchemasPartialUpdateRequestAvailableColumnsList;
-  /** Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
-  source?: ExternalDataSchemasPartialUpdateRequestSource | null;
   /** Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas. */
   api_version?: string | null;
-  /** Set when this schema's version override is deprecated by the vendor; null when there is no override or it is not deprecated. The source-level field covers the source pin. */
-  api_version_deprecation?: ExternalDataSourceApiVersionDeprecation | null;
 }
 export const ExternalDataSchemasPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      label: S.optional(S.NullOr(S.String)),
-      table: S.optional(
-        S.NullOr(ExternalDataSchemasPartialUpdateRequestTableMap),
-      ),
       should_sync: S.optional(S.Boolean),
-      last_synced_at: S.optional(S.NullOr(S.String)),
-      latest_error: S.optional(S.NullOr(S.String)),
-      incremental: S.optional(S.Boolean),
-      status: S.optional(S.NullOr(S.String)),
       sync_type: S.optional(S.NullOr(SyncTypeEnum)),
       incremental_field: S.optional(S.NullOr(S.String)),
       incremental_field_type: S.optional(S.NullOr(IncrementalFieldTypeEnum)),
       incremental_field_lookback_seconds: S.optional(S.NullOr(S.Number)),
       sync_frequency: S.optional(S.NullOr(SyncFrequencyEnum)),
       sync_time_of_day: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
       primary_key_columns: S.optional(
         S.NullOr(ExternalDataSchemasPartialUpdateRequestPrimaryKeyColumnsList),
       ),
@@ -860,16 +661,7 @@ export const ExternalDataSchemasPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       row_filters: S.optional(
         S.NullOr(ExternalDataSchemasPartialUpdateRequestRowFiltersList),
       ),
-      available_columns: S.optional(
-        ExternalDataSchemasPartialUpdateRequestAvailableColumnsList,
-      ),
-      source: S.optional(
-        S.NullOr(ExternalDataSchemasPartialUpdateRequestSource),
-      ),
       api_version: S.optional(S.NullOr(S.String)),
-      api_version_deprecation: S.optional(
-        S.NullOr(ExternalDataSourceApiVersionDeprecation),
-      ),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -881,25 +673,17 @@ export const ExternalDataSchemasPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   identifier: "ExternalDataSchemasPartialUpdateRequest",
 }) as any as S.Schema<ExternalDataSchemasPartialUpdateRequest>;
 
-export type ExternalDataSchemasReloadCreateRequestTableMap = {
-  [key: string]: unknown | undefined;
-};
-export const ExternalDataSchemasReloadCreateRequestTableMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ExternalDataSchemasReloadCreateRequestTableMap>;
-
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemasReloadCreateRequestPrimaryKeyColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const ExternalDataSchemasReloadCreateRequestPrimaryKeyColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExternalDataSchemasReloadCreateRequestPrimaryKeyColumnsList>;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
-export type ExternalDataSchemasReloadCreateRequestEnabledColumnsList = string[];
+export type ExternalDataSchemasReloadCreateRequestEnabledColumnsList =
+  ReadonlyArray<string>;
 export const ExternalDataSchemasReloadCreateRequestEnabledColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -925,84 +709,18 @@ export const ExternalDataSchemasReloadCreateRequestRowFiltersItem =
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemasReloadCreateRequestRowFiltersList =
-  ExternalDataSchemasReloadCreateRequestRowFiltersItem[];
+  ReadonlyArray<ExternalDataSchemasReloadCreateRequestRowFiltersItem>;
 export const ExternalDataSchemasReloadCreateRequestRowFiltersList =
   /*@__PURE__*/ S.Array(
     ExternalDataSchemasReloadCreateRequestRowFiltersItem,
   ) as any as S.Schema<ExternalDataSchemasReloadCreateRequestRowFiltersList>;
-
-export interface ExternalDataSchemasReloadCreateRequestAvailableColumnsItem {
-  name: string;
-  data_type?: string;
-  is_nullable?: boolean;
-}
-export const ExternalDataSchemasReloadCreateRequestAvailableColumnsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      data_type: S.optional(S.String),
-      is_nullable: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ExternalDataSchemasReloadCreateRequestAvailableColumnsItem",
-  }) as any as S.Schema<ExternalDataSchemasReloadCreateRequestAvailableColumnsItem>;
-
-/** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
-export type ExternalDataSchemasReloadCreateRequestAvailableColumnsList =
-  ExternalDataSchemasReloadCreateRequestAvailableColumnsItem[];
-export const ExternalDataSchemasReloadCreateRequestAvailableColumnsList =
-  /*@__PURE__*/ S.Array(
-    ExternalDataSchemasReloadCreateRequestAvailableColumnsItem,
-  ) as any as S.Schema<ExternalDataSchemasReloadCreateRequestAvailableColumnsList>;
-
-export type ExternalDataSchemasReloadCreateRequestSourceSupportedApiVersionsList =
-  string[];
-export const ExternalDataSchemasReloadCreateRequestSourceSupportedApiVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSchemasReloadCreateRequestSourceSupportedApiVersionsList>;
-
-/** Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
-export interface ExternalDataSchemasReloadCreateRequestSource {
-  id?: string;
-  source_type?: string;
-  supports_column_selection?: boolean;
-  supports_row_filters?: boolean;
-  user_access_level?: string | null;
-  api_version?: string | null;
-  supported_api_versions?: ExternalDataSchemasReloadCreateRequestSourceSupportedApiVersionsList;
-}
-export const ExternalDataSchemasReloadCreateRequestSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      source_type: S.optional(S.String),
-      supports_column_selection: S.optional(S.Boolean),
-      supports_row_filters: S.optional(S.Boolean),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      api_version: S.optional(S.NullOr(S.String)),
-      supported_api_versions: S.optional(
-        ExternalDataSchemasReloadCreateRequestSourceSupportedApiVersionsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ExternalDataSchemasReloadCreateRequestSource",
-  }) as any as S.Schema<ExternalDataSchemasReloadCreateRequestSource>;
 
 export interface ExternalDataSchemasReloadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data schema. */
   id: string;
-  name?: string;
-  label?: string | null;
-  table?: ExternalDataSchemasReloadCreateRequestTableMap | null;
   should_sync?: boolean;
-  last_synced_at?: string | null;
-  /** The latest error that occurred when syncing this schema. */
-  latest_error?: string | null;
-  incremental?: boolean;
-  status?: string | null;
   /** Sync strategy: incremental, full_refresh, append, cdc, or xmin. * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
   sync_type?: SyncTypeEnum | null;
   /** Column name used to track sync progress. */
@@ -1015,7 +733,6 @@ export interface ExternalDataSchemasReloadCreateRequest {
   sync_frequency?: SyncFrequencyEnum | null;
   /** UTC time of day to run the sync (HH:MM:SS). */
   sync_time_of_day?: string | null;
-  description?: string | null;
   /** Column names for primary key deduplication. */
   primary_key_columns?: ExternalDataSchemasReloadCreateRequestPrimaryKeyColumnsList | null;
   /** For CDC syncs: consolidated, cdc_only, or both. * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
@@ -1024,37 +741,21 @@ export interface ExternalDataSchemasReloadCreateRequest {
   enabled_columns?: ExternalDataSchemasReloadCreateRequestEnabledColumnsList | null;
   /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
   row_filters?: ExternalDataSchemasReloadCreateRequestRowFiltersList | null;
-  /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
-  available_columns?: ExternalDataSchemasReloadCreateRequestAvailableColumnsList;
-  /** Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
-  source?: ExternalDataSchemasReloadCreateRequestSource | null;
   /** Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas. */
   api_version?: string | null;
-  /** Set when this schema's version override is deprecated by the vendor; null when there is no override or it is not deprecated. The source-level field covers the source pin. */
-  api_version_deprecation?: ExternalDataSourceApiVersionDeprecation | null;
 }
 export const ExternalDataSchemasReloadCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      label: S.optional(S.NullOr(S.String)),
-      table: S.optional(
-        S.NullOr(ExternalDataSchemasReloadCreateRequestTableMap),
-      ),
       should_sync: S.optional(S.Boolean),
-      last_synced_at: S.optional(S.NullOr(S.String)),
-      latest_error: S.optional(S.NullOr(S.String)),
-      incremental: S.optional(S.Boolean),
-      status: S.optional(S.NullOr(S.String)),
       sync_type: S.optional(S.NullOr(SyncTypeEnum)),
       incremental_field: S.optional(S.NullOr(S.String)),
       incremental_field_type: S.optional(S.NullOr(IncrementalFieldTypeEnum)),
       incremental_field_lookback_seconds: S.optional(S.NullOr(S.Number)),
       sync_frequency: S.optional(S.NullOr(SyncFrequencyEnum)),
       sync_time_of_day: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
       primary_key_columns: S.optional(
         S.NullOr(ExternalDataSchemasReloadCreateRequestPrimaryKeyColumnsList),
       ),
@@ -1065,16 +766,7 @@ export const ExternalDataSchemasReloadCreateRequest = /*@__PURE__*/ S.suspend(
       row_filters: S.optional(
         S.NullOr(ExternalDataSchemasReloadCreateRequestRowFiltersList),
       ),
-      available_columns: S.optional(
-        ExternalDataSchemasReloadCreateRequestAvailableColumnsList,
-      ),
-      source: S.optional(
-        S.NullOr(ExternalDataSchemasReloadCreateRequestSource),
-      ),
       api_version: S.optional(S.NullOr(S.String)),
-      api_version_deprecation: S.optional(
-        S.NullOr(ExternalDataSourceApiVersionDeprecation),
-      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1093,25 +785,17 @@ export const ExternalDataSchemasReloadCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "ExternalDataSchemasReloadCreateResponse",
 }) as any as S.Schema<ExternalDataSchemasReloadCreateResponse>;
 
-export type ExternalDataSchemasResyncCreateRequestTableMap = {
-  [key: string]: unknown | undefined;
-};
-export const ExternalDataSchemasResyncCreateRequestTableMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ExternalDataSchemasResyncCreateRequestTableMap>;
-
 /** Column names for primary key deduplication. */
 export type ExternalDataSchemasResyncCreateRequestPrimaryKeyColumnsList =
-  string[];
+  ReadonlyArray<string>;
 export const ExternalDataSchemasResyncCreateRequestPrimaryKeyColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExternalDataSchemasResyncCreateRequestPrimaryKeyColumnsList>;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
-export type ExternalDataSchemasResyncCreateRequestEnabledColumnsList = string[];
+export type ExternalDataSchemasResyncCreateRequestEnabledColumnsList =
+  ReadonlyArray<string>;
 export const ExternalDataSchemasResyncCreateRequestEnabledColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1137,84 +821,18 @@ export const ExternalDataSchemasResyncCreateRequestRowFiltersItem =
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemasResyncCreateRequestRowFiltersList =
-  ExternalDataSchemasResyncCreateRequestRowFiltersItem[];
+  ReadonlyArray<ExternalDataSchemasResyncCreateRequestRowFiltersItem>;
 export const ExternalDataSchemasResyncCreateRequestRowFiltersList =
   /*@__PURE__*/ S.Array(
     ExternalDataSchemasResyncCreateRequestRowFiltersItem,
   ) as any as S.Schema<ExternalDataSchemasResyncCreateRequestRowFiltersList>;
-
-export interface ExternalDataSchemasResyncCreateRequestAvailableColumnsItem {
-  name: string;
-  data_type?: string;
-  is_nullable?: boolean;
-}
-export const ExternalDataSchemasResyncCreateRequestAvailableColumnsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      data_type: S.optional(S.String),
-      is_nullable: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ExternalDataSchemasResyncCreateRequestAvailableColumnsItem",
-  }) as any as S.Schema<ExternalDataSchemasResyncCreateRequestAvailableColumnsItem>;
-
-/** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
-export type ExternalDataSchemasResyncCreateRequestAvailableColumnsList =
-  ExternalDataSchemasResyncCreateRequestAvailableColumnsItem[];
-export const ExternalDataSchemasResyncCreateRequestAvailableColumnsList =
-  /*@__PURE__*/ S.Array(
-    ExternalDataSchemasResyncCreateRequestAvailableColumnsItem,
-  ) as any as S.Schema<ExternalDataSchemasResyncCreateRequestAvailableColumnsList>;
-
-export type ExternalDataSchemasResyncCreateRequestSourceSupportedApiVersionsList =
-  string[];
-export const ExternalDataSchemasResyncCreateRequestSourceSupportedApiVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSchemasResyncCreateRequestSourceSupportedApiVersionsList>;
-
-/** Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
-export interface ExternalDataSchemasResyncCreateRequestSource {
-  id?: string;
-  source_type?: string;
-  supports_column_selection?: boolean;
-  supports_row_filters?: boolean;
-  user_access_level?: string | null;
-  api_version?: string | null;
-  supported_api_versions?: ExternalDataSchemasResyncCreateRequestSourceSupportedApiVersionsList;
-}
-export const ExternalDataSchemasResyncCreateRequestSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      source_type: S.optional(S.String),
-      supports_column_selection: S.optional(S.Boolean),
-      supports_row_filters: S.optional(S.Boolean),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      api_version: S.optional(S.NullOr(S.String)),
-      supported_api_versions: S.optional(
-        ExternalDataSchemasResyncCreateRequestSourceSupportedApiVersionsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ExternalDataSchemasResyncCreateRequestSource",
-  }) as any as S.Schema<ExternalDataSchemasResyncCreateRequestSource>;
 
 export interface ExternalDataSchemasResyncCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data schema. */
   id: string;
-  name?: string;
-  label?: string | null;
-  table?: ExternalDataSchemasResyncCreateRequestTableMap | null;
   should_sync?: boolean;
-  last_synced_at?: string | null;
-  /** The latest error that occurred when syncing this schema. */
-  latest_error?: string | null;
-  incremental?: boolean;
-  status?: string | null;
   /** Sync strategy: incremental, full_refresh, append, cdc, or xmin. * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
   sync_type?: SyncTypeEnum | null;
   /** Column name used to track sync progress. */
@@ -1227,7 +845,6 @@ export interface ExternalDataSchemasResyncCreateRequest {
   sync_frequency?: SyncFrequencyEnum | null;
   /** UTC time of day to run the sync (HH:MM:SS). */
   sync_time_of_day?: string | null;
-  description?: string | null;
   /** Column names for primary key deduplication. */
   primary_key_columns?: ExternalDataSchemasResyncCreateRequestPrimaryKeyColumnsList | null;
   /** For CDC syncs: consolidated, cdc_only, or both. * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
@@ -1236,37 +853,21 @@ export interface ExternalDataSchemasResyncCreateRequest {
   enabled_columns?: ExternalDataSchemasResyncCreateRequestEnabledColumnsList | null;
   /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
   row_filters?: ExternalDataSchemasResyncCreateRequestRowFiltersList | null;
-  /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
-  available_columns?: ExternalDataSchemasResyncCreateRequestAvailableColumnsList;
-  /** Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
-  source?: ExternalDataSchemasResyncCreateRequestSource | null;
   /** Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas. */
   api_version?: string | null;
-  /** Set when this schema's version override is deprecated by the vendor; null when there is no override or it is not deprecated. The source-level field covers the source pin. */
-  api_version_deprecation?: ExternalDataSourceApiVersionDeprecation | null;
 }
 export const ExternalDataSchemasResyncCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      label: S.optional(S.NullOr(S.String)),
-      table: S.optional(
-        S.NullOr(ExternalDataSchemasResyncCreateRequestTableMap),
-      ),
       should_sync: S.optional(S.Boolean),
-      last_synced_at: S.optional(S.NullOr(S.String)),
-      latest_error: S.optional(S.NullOr(S.String)),
-      incremental: S.optional(S.Boolean),
-      status: S.optional(S.NullOr(S.String)),
       sync_type: S.optional(S.NullOr(SyncTypeEnum)),
       incremental_field: S.optional(S.NullOr(S.String)),
       incremental_field_type: S.optional(S.NullOr(IncrementalFieldTypeEnum)),
       incremental_field_lookback_seconds: S.optional(S.NullOr(S.Number)),
       sync_frequency: S.optional(S.NullOr(SyncFrequencyEnum)),
       sync_time_of_day: S.optional(S.NullOr(S.String)),
-      description: S.optional(S.NullOr(S.String)),
       primary_key_columns: S.optional(
         S.NullOr(ExternalDataSchemasResyncCreateRequestPrimaryKeyColumnsList),
       ),
@@ -1277,16 +878,7 @@ export const ExternalDataSchemasResyncCreateRequest = /*@__PURE__*/ S.suspend(
       row_filters: S.optional(
         S.NullOr(ExternalDataSchemasResyncCreateRequestRowFiltersList),
       ),
-      available_columns: S.optional(
-        ExternalDataSchemasResyncCreateRequestAvailableColumnsList,
-      ),
-      source: S.optional(
-        S.NullOr(ExternalDataSchemasResyncCreateRequestSource),
-      ),
       api_version: S.optional(S.NullOr(S.String)),
-      api_version_deprecation: S.optional(
-        S.NullOr(ExternalDataSourceApiVersionDeprecation),
-      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1326,23 +918,17 @@ export const ExternalDataSchemasRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExternalDataSchemasRetrieveRequest",
 }) as any as S.Schema<ExternalDataSchemasRetrieveRequest>;
 
-export type ExternalDataSchemasUpdateRequestTableMap = {
-  [key: string]: unknown | undefined;
-};
-export const ExternalDataSchemasUpdateRequestTableMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ExternalDataSchemasUpdateRequestTableMap>;
-
 /** Column names for primary key deduplication. */
-export type ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList = string[];
+export type ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList =
+  ReadonlyArray<string>;
 export const ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList>;
 
 /** Names of source columns to sync. `null` (default) syncs all columns. Primary-key columns and the active incremental field are always retained, even if not listed here. */
-export type ExternalDataSchemasUpdateRequestEnabledColumnsList = string[];
+export type ExternalDataSchemasUpdateRequestEnabledColumnsList =
+  ReadonlyArray<string>;
 export const ExternalDataSchemasUpdateRequestEnabledColumnsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1368,84 +954,18 @@ export const ExternalDataSchemasUpdateRequestRowFiltersItem =
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemasUpdateRequestRowFiltersList =
-  ExternalDataSchemasUpdateRequestRowFiltersItem[];
+  ReadonlyArray<ExternalDataSchemasUpdateRequestRowFiltersItem>;
 export const ExternalDataSchemasUpdateRequestRowFiltersList =
   /*@__PURE__*/ S.Array(
     ExternalDataSchemasUpdateRequestRowFiltersItem,
   ) as any as S.Schema<ExternalDataSchemasUpdateRequestRowFiltersList>;
-
-export interface ExternalDataSchemasUpdateRequestAvailableColumnsItem {
-  name: string;
-  data_type?: string;
-  is_nullable?: boolean;
-}
-export const ExternalDataSchemasUpdateRequestAvailableColumnsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      data_type: S.optional(S.String),
-      is_nullable: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ExternalDataSchemasUpdateRequestAvailableColumnsItem",
-  }) as any as S.Schema<ExternalDataSchemasUpdateRequestAvailableColumnsItem>;
-
-/** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
-export type ExternalDataSchemasUpdateRequestAvailableColumnsList =
-  ExternalDataSchemasUpdateRequestAvailableColumnsItem[];
-export const ExternalDataSchemasUpdateRequestAvailableColumnsList =
-  /*@__PURE__*/ S.Array(
-    ExternalDataSchemasUpdateRequestAvailableColumnsItem,
-  ) as any as S.Schema<ExternalDataSchemasUpdateRequestAvailableColumnsList>;
-
-export type ExternalDataSchemasUpdateRequestSourceSupportedApiVersionsList =
-  string[];
-export const ExternalDataSchemasUpdateRequestSourceSupportedApiVersionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExternalDataSchemasUpdateRequestSourceSupportedApiVersionsList>;
-
-/** Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
-export interface ExternalDataSchemasUpdateRequestSource {
-  id?: string;
-  source_type?: string;
-  supports_column_selection?: boolean;
-  supports_row_filters?: boolean;
-  user_access_level?: string | null;
-  api_version?: string | null;
-  supported_api_versions?: ExternalDataSchemasUpdateRequestSourceSupportedApiVersionsList;
-}
-export const ExternalDataSchemasUpdateRequestSource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      source_type: S.optional(S.String),
-      supports_column_selection: S.optional(S.Boolean),
-      supports_row_filters: S.optional(S.Boolean),
-      user_access_level: S.optional(S.NullOr(S.String)),
-      api_version: S.optional(S.NullOr(S.String)),
-      supported_api_versions: S.optional(
-        ExternalDataSchemasUpdateRequestSourceSupportedApiVersionsList,
-      ),
-    }),
-).annotate({
-  identifier: "ExternalDataSchemasUpdateRequestSource",
-}) as any as S.Schema<ExternalDataSchemasUpdateRequestSource>;
 
 export interface ExternalDataSchemasUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data schema. */
   id: string;
-  name?: string;
-  label?: string | null;
-  table?: ExternalDataSchemasUpdateRequestTableMap | null;
   should_sync?: boolean;
-  last_synced_at?: string | null;
-  /** The latest error that occurred when syncing this schema. */
-  latest_error?: string | null;
-  incremental?: boolean;
-  status?: string | null;
   /** Sync strategy: incremental, full_refresh, append, cdc, or xmin. * `full_refresh` - full_refresh * `incremental` - incremental * `append` - append * `webhook` - webhook * `cdc` - cdc * `xmin` - xmin */
   sync_type?: SyncTypeEnum | null;
   /** Column name used to track sync progress. */
@@ -1458,7 +978,6 @@ export interface ExternalDataSchemasUpdateRequest {
   sync_frequency?: SyncFrequencyEnum | null;
   /** UTC time of day to run the sync (HH:MM:SS). */
   sync_time_of_day?: string | null;
-  description?: string | null;
   /** Column names for primary key deduplication. */
   primary_key_columns?: ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList | null;
   /** For CDC syncs: consolidated, cdc_only, or both. * `consolidated` - consolidated * `cdc_only` - cdc_only * `both` - both */
@@ -1467,34 +986,20 @@ export interface ExternalDataSchemasUpdateRequest {
   enabled_columns?: ExternalDataSchemasUpdateRequestEnabledColumnsList | null;
   /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
   row_filters?: ExternalDataSchemasUpdateRequestRowFiltersList | null;
-  /** Column metadata (name, data type, nullable) for this schema. For SQL sources this is the source-side schema discovered via `refresh_schemas`; for other sources (and once synced) it falls back to the synced table's columns. Empty only before the first successful sync/refresh. */
-  available_columns?: ExternalDataSchemasUpdateRequestAvailableColumnsList;
-  /** Lightweight parent-source summary (id, source_type, column-selection support, the requesting user's access level). Only populated on the single-schema retrieve endpoint — `null` elsewhere — so read-only views can render without fetching the full source and all its schemas. */
-  source?: ExternalDataSchemasUpdateRequestSource | null;
   /** Vendor API version override for this schema. `null` (default) syncs on the source's pinned version. Must be one of the source type's supported versions. User-managed: version-migration tooling never changes it. Not available for webhook-sync schemas. */
   api_version?: string | null;
-  /** Set when this schema's version override is deprecated by the vendor; null when there is no override or it is not deprecated. The source-level field covers the source pin. */
-  api_version_deprecation?: ExternalDataSourceApiVersionDeprecation | null;
 }
 export const ExternalDataSchemasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    label: S.optional(S.NullOr(S.String)),
-    table: S.optional(S.NullOr(ExternalDataSchemasUpdateRequestTableMap)),
     should_sync: S.optional(S.Boolean),
-    last_synced_at: S.optional(S.NullOr(S.String)),
-    latest_error: S.optional(S.NullOr(S.String)),
-    incremental: S.optional(S.Boolean),
-    status: S.optional(S.NullOr(S.String)),
     sync_type: S.optional(S.NullOr(SyncTypeEnum)),
     incremental_field: S.optional(S.NullOr(S.String)),
     incremental_field_type: S.optional(S.NullOr(IncrementalFieldTypeEnum)),
     incremental_field_lookback_seconds: S.optional(S.NullOr(S.Number)),
     sync_frequency: S.optional(S.NullOr(SyncFrequencyEnum)),
     sync_time_of_day: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
     primary_key_columns: S.optional(
       S.NullOr(ExternalDataSchemasUpdateRequestPrimaryKeyColumnsList),
     ),
@@ -1505,14 +1010,7 @@ export const ExternalDataSchemasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     row_filters: S.optional(
       S.NullOr(ExternalDataSchemasUpdateRequestRowFiltersList),
     ),
-    available_columns: S.optional(
-      ExternalDataSchemasUpdateRequestAvailableColumnsList,
-    ),
-    source: S.optional(S.NullOr(ExternalDataSchemasUpdateRequestSource)),
     api_version: S.optional(S.NullOr(S.String)),
-    api_version_deprecation: S.optional(
-      S.NullOr(ExternalDataSourceApiVersionDeprecation),
-    ),
   }).pipe(
     T.Http({
       method: "PUT",

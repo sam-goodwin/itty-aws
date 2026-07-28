@@ -705,16 +705,125 @@
             "smithy.api#documentation": "The name of the customized accelerator."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "acceleratorType": {
+          "target": "com.azure.appplatform#CustomizedAcceleratorsValidateRequestAcceleratorType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Type of the customized accelerator."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String"
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "iconUrl": {
+          "target": "smithy.api#String"
+        },
+        "acceleratorTags": {
+          "target": "com.azure.appplatform#CustomizedAcceleratorsValidateRequestAcceleratorTagsList"
+        },
+        "gitRepository": {
+          "target": "com.azure.appplatform#AcceleratorGitRepository",
+          "traits": {
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#AcceleratorGitRepository": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Git repository URL for the accelerator.",
+            "smithy.api#required": {}
+          }
+        },
+        "intervalInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Interval for checking for updates to Git or image repository."
+          }
+        },
+        "branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Git repository branch to be used."
+          }
+        },
+        "commit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Git repository commit to be used."
+          }
+        },
+        "gitTag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Git repository tag to be used."
+          }
+        },
+        "authSetting": {
+          "target": "com.azure.appplatform#AcceleratorAuthSetting",
+          "traits": {
+            "smithy.api#documentation": "Properties of the auth setting payload.",
+            "smithy.api#required": {}
+          }
+        },
+        "subPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Folder path inside the git repository to consider as the root of the accelerator or fragment."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.appplatform#AcceleratorAuthSetting": {
+      "type": "structure",
+      "members": {
+        "authType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the auth setting.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Auth setting payload."
+      }
+    },
+    "com.azure.appplatform#CustomizedAcceleratorsValidateRequestAcceleratorTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.appplatform#CustomizedAcceleratorsValidateRequestAcceleratorType": {
+      "type": "enum",
+      "members": {
+        "ACCELERATOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Accelerator"
+          }
+        },
+        "FRAGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Fragment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of the customized accelerator."
       }
     },
     "com.azure.appplatform#CustomizedAcceleratorsDelete": {
@@ -885,71 +994,6 @@
         "smithy.api#documentation": "Customized accelerator properties payload"
       }
     },
-    "com.azure.appplatform#AcceleratorGitRepository": {
-      "type": "structure",
-      "members": {
-        "url": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Git repository URL for the accelerator.",
-            "smithy.api#required": {}
-          }
-        },
-        "intervalInSeconds": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Interval for checking for updates to Git or image repository."
-          }
-        },
-        "branch": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Git repository branch to be used."
-          }
-        },
-        "commit": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Git repository commit to be used."
-          }
-        },
-        "gitTag": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Git repository tag to be used."
-          }
-        },
-        "authSetting": {
-          "target": "com.azure.appplatform#AcceleratorAuthSetting",
-          "traits": {
-            "smithy.api#documentation": "Properties of the auth setting payload.",
-            "smithy.api#required": {}
-          }
-        },
-        "subPath": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Folder path inside the git repository to consider as the root of the accelerator or fragment."
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.azure.appplatform#AcceleratorAuthSetting": {
-      "type": "structure",
-      "members": {
-        "authType": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of the auth setting.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Auth setting payload."
-      }
-    },
     "com.azure.appplatform#CustomizedAcceleratorPropertiesImportsList": {
       "type": "list",
       "member": {
@@ -1073,16 +1117,77 @@
             "smithy.api#documentation": "The name of the customized accelerator."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#CustomizedAcceleratorPropertiesInput"
+        },
+        "sku": {
+          "target": "com.azure.appplatform#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Sku of the customized accelerator resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#CustomizedAcceleratorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "acceleratorType": {
+          "target": "com.azure.appplatform#CustomizedAcceleratorPropertiesInputAcceleratorType",
+          "traits": {
+            "smithy.api#documentation": "Type of the customized accelerator."
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String"
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "iconUrl": {
+          "target": "smithy.api#String"
+        },
+        "acceleratorTags": {
+          "target": "com.azure.appplatform#CustomizedAcceleratorPropertiesInputAcceleratorTagsList"
+        },
+        "gitRepository": {
+          "target": "com.azure.appplatform#AcceleratorGitRepository",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Customized accelerator properties payload"
+      }
+    },
+    "com.azure.appplatform#CustomizedAcceleratorPropertiesInputAcceleratorTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.azure.appplatform#CustomizedAcceleratorPropertiesInputAcceleratorType": {
+      "type": "enum",
+      "members": {
+        "ACCELERATOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Accelerator"
+          }
+        },
+        "FRAGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Fragment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of the customized accelerator."
       }
     },
     "com.azure.appplatform#CustomizedAcceleratorsGet": {
@@ -1594,16 +1699,25 @@
             "smithy.api#documentation": "The name of the application accelerator."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#ApplicationAcceleratorPropertiesInput"
+        },
+        "sku": {
+          "target": "com.azure.appplatform#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Sku of the application accelerator resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ApplicationAcceleratorPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Application accelerator properties payload"
       }
     },
     "com.azure.appplatform#ApplicationAcceleratorsGet": {
@@ -1895,10 +2009,10 @@
             "smithy.api#documentation": "The name of API portal."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Name to be validated",
             "smithy.api#required": {}
           }
         }
@@ -2202,12 +2316,8 @@
             "smithy.api#documentation": "The name of the API portal custom domain."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.appplatform#ApiPortalCustomDomainProperties"
         }
       },
       "traits": {
@@ -2814,16 +2924,97 @@
             "smithy.api#documentation": "The name of API portal."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#ApiPortalPropertiesInput"
+        },
+        "sku": {
+          "target": "com.azure.appplatform#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Sku of the API portal resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ApiPortalPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "public": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the API portal exposes endpoint."
+          }
+        },
+        "httpsOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicate if only https is allowed."
+          }
+        },
+        "gatewayIds": {
+          "target": "com.azure.appplatform#ApiPortalPropertiesInputGatewayIdsList",
+          "traits": {
+            "smithy.api#documentation": "The array of resource Ids of gateway to integrate with API portal."
+          }
+        },
+        "sourceUrls": {
+          "target": "com.azure.appplatform#ApiPortalPropertiesInputSourceUrlsList",
+          "traits": {
+            "smithy.api#documentation": "Collection of OpenAPI source URL locations."
+          }
+        },
+        "ssoProperties": {
+          "target": "com.azure.appplatform#SsoProperties"
+        },
+        "apiTryOutEnabledState": {
+          "target": "com.azure.appplatform#ApiPortalPropertiesInputApiTryOutEnabledState",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "API portal properties payload"
+      }
+    },
+    "com.azure.appplatform#ApiPortalPropertiesInputApiTryOutEnabledState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API."
+      }
+    },
+    "com.azure.appplatform#ApiPortalPropertiesInputSourceUrlsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of OpenAPI source URL locations."
+      }
+    },
+    "com.azure.appplatform#ApiPortalPropertiesInputGatewayIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The array of resource Ids of gateway to integrate with API portal."
       }
     },
     "com.azure.appplatform#ApiPortalsGet": {
@@ -2977,10 +3168,10 @@
             "smithy.api#documentation": "The name of Spring Cloud Gateway."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Name to be validated",
             "smithy.api#required": {}
           }
         }
@@ -3284,12 +3475,8 @@
             "smithy.api#documentation": "The name of the Spring Cloud Gateway custom domain."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.appplatform#GatewayCustomDomainProperties"
         }
       },
       "traits": {
@@ -3917,16 +4104,106 @@
             "smithy.api#documentation": "The name of the Spring Cloud Gateway route config."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.appplatform#GatewayRouteConfigPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#GatewayRouteConfigPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "appResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource Id of the Azure Spring Apps app, required unless route defines `uri`."
+          }
+        },
+        "openApi": {
+          "target": "com.azure.appplatform#GatewayRouteConfigOpenApiProperties"
+        },
+        "protocol": {
+          "target": "com.azure.appplatform#GatewayRouteConfigPropertiesInputProtocol",
+          "traits": {
+            "smithy.api#documentation": "Protocol of routed Azure Spring Apps applications."
+          }
+        },
+        "routes": {
+          "target": "com.azure.appplatform#GatewayRouteConfigPropertiesInputRoutesList",
+          "traits": {
+            "smithy.api#documentation": "Array of API routes, each route contains properties such as `title`, `uri`, `ssoEnabled`, `predicates`, `filters`."
+          }
+        },
+        "ssoEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable Single Sign-On in app level."
+          }
+        },
+        "predicates": {
+          "target": "com.azure.appplatform#GatewayRouteConfigPropertiesInputPredicatesList",
+          "traits": {
+            "smithy.api#documentation": "A number of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request."
+          }
+        },
+        "filters": {
+          "target": "com.azure.appplatform#GatewayRouteConfigPropertiesInputFiltersList",
+          "traits": {
+            "smithy.api#documentation": "To modify the request before sending it to the target endpoint, or the received response in app level."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "API route config of the Spring Cloud Gateway"
+      }
+    },
+    "com.azure.appplatform#GatewayRouteConfigPropertiesInputFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "To modify the request before sending it to the target endpoint, or the received response in app level."
+      }
+    },
+    "com.azure.appplatform#GatewayRouteConfigPropertiesInputPredicatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A number of conditions to evaluate a route for each request in app level. Each predicate may be evaluated against request headers and parameter values. All of the predicates associated with a route must evaluate to true for the route to be matched to the request."
+      }
+    },
+    "com.azure.appplatform#GatewayRouteConfigPropertiesInputRoutesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appplatform#GatewayApiRoute"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of API routes, each route contains properties such as `title`, `uri`, `ssoEnabled`, `predicates`, `filters`."
+      }
+    },
+    "com.azure.appplatform#GatewayRouteConfigPropertiesInputProtocol": {
+      "type": "enum",
+      "members": {
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HTTP"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HTTPS"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Protocol of routed Azure Spring Apps applications."
       }
     },
     "com.azure.appplatform#GatewayRouteConfigsGet": {
@@ -4694,7 +4971,7 @@
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.appplatform#GatewayEnvSecrets",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -4703,6 +4980,18 @@
       },
       "traits": {
         "smithy.api#output": {}
+      }
+    },
+    "com.azure.appplatform#GatewayEnvSecrets": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Sensitive properties for Spring Cloud Gateway"
       }
     },
     "com.azure.appplatform#GatewaysListEnvSecretsRequest": {
@@ -4896,16 +5185,164 @@
             "smithy.api#documentation": "The name of Spring Cloud Gateway."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#GatewayPropertiesInput"
+        },
+        "sku": {
+          "target": "com.azure.appplatform#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Sku of the Spring Cloud Gateway resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#GatewayPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "public": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the Spring Cloud Gateway exposes endpoint."
+          }
+        },
+        "httpsOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicate if only https is allowed."
+          }
+        },
+        "ssoProperties": {
+          "target": "com.azure.appplatform#SsoProperties"
+        },
+        "apiMetadataProperties": {
+          "target": "com.azure.appplatform#GatewayApiMetadataProperties"
+        },
+        "corsProperties": {
+          "target": "com.azure.appplatform#GatewayCorsProperties"
+        },
+        "clientAuth": {
+          "target": "com.azure.appplatform#GatewayPropertiesInputClientAuth",
+          "traits": {
+            "smithy.api#documentation": "Client-Certification Authentication."
+          }
+        },
+        "apms": {
+          "target": "com.azure.appplatform#ApmReferenceCollection",
+          "traits": {
+            "smithy.api#documentation": "Collection of ApmReferences in service level"
+          }
+        },
+        "environmentVariables": {
+          "target": "com.azure.appplatform#GatewayPropertiesInputEnvironmentVariables",
+          "traits": {
+            "smithy.api#documentation": "Environment variables of Spring Cloud Gateway"
+          }
+        },
+        "resourceRequests": {
+          "target": "com.azure.appplatform#GatewayResourceRequests",
+          "traits": {
+            "smithy.api#documentation": "The requested resource quantity for required CPU and Memory."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Spring Cloud Gateway properties payload"
+      }
+    },
+    "com.azure.appplatform#GatewayPropertiesInputEnvironmentVariables": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.appplatform#GatewayPropertiesInputEnvironmentVariablesPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "Non-sensitive properties"
+          }
+        },
+        "secrets": {
+          "target": "com.azure.appplatform#GatewayPropertiesInputEnvironmentVariablesSecretsMap",
+          "traits": {
+            "smithy.api#documentation": "Sensitive properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Environment variables of Spring Cloud Gateway"
+      }
+    },
+    "com.azure.appplatform#GatewayPropertiesInputEnvironmentVariablesSecretsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Sensitive properties"
+      }
+    },
+    "com.azure.appplatform#GatewayPropertiesInputEnvironmentVariablesPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Non-sensitive properties"
+      }
+    },
+    "com.azure.appplatform#GatewayPropertiesInputClientAuth": {
+      "type": "structure",
+      "members": {
+        "certificates": {
+          "target": "com.azure.appplatform#GatewayPropertiesInputClientAuthCertificatesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of certificate resource Ids in Azure Spring Apps."
+          }
+        },
+        "certificateVerification": {
+          "target": "com.azure.appplatform#GatewayPropertiesInputClientAuthCertificateVerification",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable certificate verification or not"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Client-Certification Authentication."
+      }
+    },
+    "com.azure.appplatform#GatewayPropertiesInputClientAuthCertificateVerification": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Whether to enable certificate verification or not"
+      }
+    },
+    "com.azure.appplatform#GatewayPropertiesInputClientAuthCertificatesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of certificate resource Ids in Azure Spring Apps."
       }
     },
     "com.azure.appplatform#GatewaysGet": {
@@ -6608,11 +7045,22 @@
             "smithy.api#documentation": "The name of the Deployment resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "appInstance": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "App instance name"
+          }
+        },
+        "filePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Your target file path in your own BYOS"
+          }
+        },
+        "duration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Duration of your JFR. 1 min can be represented by 1m or 60s."
           }
         }
       },
@@ -6682,11 +7130,22 @@
             "smithy.api#documentation": "The name of the Deployment resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "appInstance": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "App instance name"
+          }
+        },
+        "filePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Your target file path in your own BYOS"
+          }
+        },
+        "duration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Duration of your JFR. 1 min can be represented by 1m or 60s."
           }
         }
       },
@@ -6756,11 +7215,22 @@
             "smithy.api#documentation": "The name of the Deployment resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "appInstance": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "App instance name"
+          }
+        },
+        "filePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Your target file path in your own BYOS"
+          }
+        },
+        "duration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Duration of your JFR. 1 min can be represented by 1m or 60s."
           }
         }
       },
@@ -7066,10 +7536,10 @@
             "smithy.api#documentation": "The name of the Deployment resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "port": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Application debugging port."
           }
         }
       },
@@ -8132,16 +8602,47 @@
             "smithy.api#documentation": "The name of the Deployment resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#DeploymentResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the Deployment resource"
+          }
+        },
+        "sku": {
+          "target": "com.azure.appplatform#Sku",
+          "traits": {
+            "smithy.api#documentation": "Sku of the Deployment resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#DeploymentResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "com.azure.appplatform#UserSourceInfo",
+          "traits": {
+            "smithy.api#documentation": "Uploaded source information of the deployment."
+          }
+        },
+        "deploymentSettings": {
+          "target": "com.azure.appplatform#DeploymentSettings",
+          "traits": {
+            "smithy.api#documentation": "Deployment settings of the Deployment"
+          }
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the Deployment is active"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Deployment resource properties payload"
       }
     },
     "com.azure.appplatform#DeploymentsCreateOrUpdate": {
@@ -8247,11 +8748,16 @@
             "smithy.api#documentation": "The name of the Deployment resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#DeploymentResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the Deployment resource"
+          }
+        },
+        "sku": {
+          "target": "com.azure.appplatform#Sku",
+          "traits": {
+            "smithy.api#documentation": "Sku of the Deployment resource"
           }
         }
       },
@@ -8421,10 +8927,10 @@
             "smithy.api#documentation": "The name of the App resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Name to be validated",
             "smithy.api#required": {}
           }
         }
@@ -8790,16 +9296,35 @@
             "smithy.api#documentation": "The name of the custom domain resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#CustomDomainPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the custom domain resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#CustomDomainPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "thumbprint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The thumbprint of bound certificate."
+          }
+        },
+        "certName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The bound certificate name of domain."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom domain of app resource payload."
       }
     },
     "com.azure.appplatform#CustomDomainsCreateOrUpdate": {
@@ -8899,11 +9424,10 @@
             "smithy.api#documentation": "The name of the custom domain resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#CustomDomainPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the custom domain resource."
           }
         }
       },
@@ -9077,10 +9601,17 @@
             "smithy.api#documentation": "the region"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "type": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Type of the resource to check name availability",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name to be checked",
             "smithy.api#required": {}
           }
         }
@@ -9462,16 +9993,30 @@
             "smithy.api#documentation": "The name of the certificate resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#CertificatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the certificate resource payload."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#CertificatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the certificate source.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Certificate resource payload."
       }
     },
     "com.azure.appplatform#CertificatesGet": {
@@ -9860,11 +10405,10 @@
             "smithy.api#documentation": "The name of the storage resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#StorageProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the storage resource payload."
           }
         }
       },
@@ -10321,16 +10865,53 @@
             "smithy.api#documentation": "The name of the Binding resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#BindingResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the Binding resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#BindingResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Azure resource id of the bound resource"
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the bound resource"
+          }
+        },
+        "bindingParameters": {
+          "target": "com.azure.appplatform#BindingResourcePropertiesInputBindingParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Binding parameters of the Binding resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Binding resource properties payload"
+      }
+    },
+    "com.azure.appplatform#BindingResourcePropertiesInputBindingParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Binding parameters of the Binding resource"
       }
     },
     "com.azure.appplatform#BindingsCreateOrUpdate": {
@@ -10430,11 +11011,10 @@
             "smithy.api#documentation": "The name of the Binding resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#BindingResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the Binding resource"
           }
         }
       },
@@ -11173,16 +11753,24 @@
             "smithy.api#documentation": "The name of the App resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "activeDeploymentNames": {
+          "target": "com.azure.appplatform#AppsSetActiveDeploymentsRequestActiveDeploymentNamesList",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Collection of Deployment name."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#AppsSetActiveDeploymentsRequestActiveDeploymentNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of Deployment name."
       }
     },
     "com.azure.appplatform#AppsGetResourceUploadUrl": {
@@ -11551,16 +12139,224 @@
             "smithy.api#documentation": "The name of the App resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#AppResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the App resource"
+          }
+        },
+        "identity": {
+          "target": "com.azure.appplatform#ManagedIdentityPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The Managed Identity type of the app resource"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The GEO location of the application, always the same with its parent resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ManagedIdentityPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.appplatform#ManagedIdentityPropertiesInputType",
+          "traits": {
+            "smithy.api#documentation": "Type of the managed identity"
+          }
+        },
+        "principalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Principal Id of system-assigned managed identity."
+          }
+        },
+        "tenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tenant Id of system-assigned managed identity."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.appplatform#UserAssignedManagedIdentitiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of user-assigned managed identities"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed identity properties retrieved from ARM request headers."
+      }
+    },
+    "com.azure.appplatform#UserAssignedManagedIdentitiesInput": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.appplatform#UserAssignedManagedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "User-assigned managed identities in key-value map. The key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.appplatform#UserAssignedManagedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The details of the user-assigned managed identity assigned to an App."
+      }
+    },
+    "com.azure.appplatform#ManagedIdentityPropertiesInputType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        },
+        "SYSTEMASSIGNED_USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned,UserAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of the managed identity"
+      }
+    },
+    "com.azure.appplatform#AppResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "public": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the App exposes public endpoint"
+          }
+        },
+        "addonConfigs": {
+          "target": "com.azure.appplatform#AppResourcePropertiesInputAddonConfigsMap",
+          "traits": {
+            "smithy.api#documentation": "Collection of addons"
+          }
+        },
+        "httpsOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicate if only https is allowed."
+          }
+        },
+        "temporaryDisk": {
+          "target": "com.azure.appplatform#TemporaryDisk",
+          "traits": {
+            "smithy.api#documentation": "Temporary disk settings"
+          }
+        },
+        "persistentDisk": {
+          "target": "com.azure.appplatform#PersistentDiskInput",
+          "traits": {
+            "smithy.api#documentation": "Persistent disk settings"
+          }
+        },
+        "customPersistentDisks": {
+          "target": "com.azure.appplatform#CustomPersistentDiskCollection",
+          "traits": {
+            "smithy.api#documentation": "List of custom persistent disks"
+          }
+        },
+        "enableEndToEndTLS": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicate if end to end TLS is enabled."
+          }
+        },
+        "loadedCertificates": {
+          "target": "com.azure.appplatform#LoadedCertificateCollection",
+          "traits": {
+            "smithy.api#documentation": "Collection of loaded certificates"
+          }
+        },
+        "vnetAddons": {
+          "target": "com.azure.appplatform#AppVNetAddonsInput",
+          "traits": {
+            "smithy.api#documentation": "Additional App settings in vnet injection instance"
+          }
+        },
+        "ingressSettings": {
+          "target": "com.azure.appplatform#IngressSettings",
+          "traits": {
+            "smithy.api#documentation": "App ingress settings payload."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "App resource properties payload"
+      }
+    },
+    "com.azure.appplatform#AppVNetAddonsInput": {
+      "type": "structure",
+      "members": {
+        "publicEndpoint": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Additional App settings in vnet injection instance"
+      }
+    },
+    "com.azure.appplatform#PersistentDiskInput": {
+      "type": "structure",
+      "members": {
+        "sizeInGB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Size of the persistent disk in GB"
+          }
+        },
+        "mountPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Mount path of the persistent disk"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Persistent disk payload"
+      }
+    },
+    "com.azure.appplatform#AppResourcePropertiesInputAddonConfigsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of addons"
       }
     },
     "com.azure.appplatform#AppsCreateOrUpdate": {
@@ -11664,11 +12460,22 @@
             "smithy.api#documentation": "The name of the App resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#AppResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the App resource"
+          }
+        },
+        "identity": {
+          "target": "com.azure.appplatform#ManagedIdentityPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The Managed Identity type of the app resource"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The GEO location of the application, always the same with its parent resource"
           }
         }
       },
@@ -11980,16 +12787,60 @@
             "smithy.api#documentation": "The name of the Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#MonitoringSettingPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the Monitoring Setting resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#MonitoringSettingPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "com.azure.appplatform#Error",
+          "traits": {
+            "smithy.api#documentation": "Error when apply Monitoring Setting changes."
+          }
+        },
+        "traceEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether enable the trace functionality, which will be deprecated since api version 2020-11-01-preview. Please leverage appInsightsInstrumentationKey to indicate if monitoringSettings enabled or not"
+          }
+        },
+        "appInsightsInstrumentationKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target application insight instrumentation key, null or whitespace include empty will disable monitoringSettings"
+          }
+        },
+        "appInsightsSamplingRate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Indicates the sampling rate of application insight agent, should be in range [0.0, 100.0]"
+          }
+        },
+        "appInsightsAgentVersions": {
+          "target": "com.azure.appplatform#ApplicationInsightsAgentVersionsInput",
+          "traits": {
+            "smithy.api#documentation": "Indicates the versions of application insight agent"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Monitoring Setting properties payload"
+      }
+    },
+    "com.azure.appplatform#ApplicationInsightsAgentVersionsInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Application Insights agent versions properties payload"
       }
     },
     "com.azure.appplatform#MonitoringSettingsUpdatePut": {
@@ -12073,11 +12924,10 @@
             "smithy.api#documentation": "The name of the Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#MonitoringSettingPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the Monitoring Setting resource"
           }
         }
       },
@@ -12314,16 +13164,43 @@
             "smithy.api#documentation": "The name of the build service agent pool resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#BuildServiceAgentPoolPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "build service agent pool properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#BuildServiceAgentPoolPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "poolSize": {
+          "target": "com.azure.appplatform#BuildServiceAgentPoolSizePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "build service agent pool size properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Build service agent pool properties"
+      }
+    },
+    "com.azure.appplatform#BuildServiceAgentPoolSizePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of build service agent pool size"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Build service agent pool size properties"
       }
     },
     "com.azure.appplatform#BuildServiceAgentPoolGet": {
@@ -13505,16 +14382,44 @@
             "smithy.api#documentation": "The name of the builder resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#BuilderPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Property of the Builder resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#BuilderPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "stack": {
+          "target": "com.azure.appplatform#StackProperties",
+          "traits": {
+            "smithy.api#documentation": "Builder cluster stack property."
+          }
+        },
+        "buildpackGroups": {
+          "target": "com.azure.appplatform#BuilderPropertiesInputBuildpackGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Builder buildpack groups."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "KPack Builder properties payload"
+      }
+    },
+    "com.azure.appplatform#BuilderPropertiesInputBuildpackGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appplatform#BuildpacksGroupProperties"
+      },
+      "traits": {
+        "smithy.api#documentation": "Builder buildpack groups."
       }
     },
     "com.azure.appplatform#BuildServiceBuilderGet": {
@@ -14567,16 +15472,79 @@
             "smithy.api#documentation": "The name of the Buildpack Binding Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#BuildpackBindingPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a buildpack binding"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#BuildpackBindingPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "bindingType": {
+          "target": "com.azure.appplatform#BuildpackBindingPropertiesInputBindingType",
+          "traits": {
+            "smithy.api#documentation": "Buildpack Binding Type"
+          }
+        },
+        "launchProperties": {
+          "target": "com.azure.appplatform#BuildpackBindingLaunchProperties",
+          "traits": {
+            "smithy.api#documentation": "The object describes the buildpack binding launch properties"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a buildpack binding"
+      }
+    },
+    "com.azure.appplatform#BuildpackBindingPropertiesInputBindingType": {
+      "type": "enum",
+      "members": {
+        "APPLICATIONINSIGHTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ApplicationInsights"
+          }
+        },
+        "APACHESKYWALKING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ApacheSkyWalking"
+          }
+        },
+        "APPDYNAMICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AppDynamics"
+          }
+        },
+        "DYNATRACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Dynatrace"
+          }
+        },
+        "NEWRELIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NewRelic"
+          }
+        },
+        "ELASTICAPM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ElasticAPM"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Buildpack Binding Type"
       }
     },
     "com.azure.appplatform#BuildpackBindingGet": {
@@ -15148,16 +16116,77 @@
             "smithy.api#documentation": "The name of the build resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#BuildPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the build resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#BuildPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "relativePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The relative path of source code"
+          }
+        },
+        "builder": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of builder to build the source code"
+          }
+        },
+        "agentPool": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of agent pool"
+          }
+        },
+        "env": {
+          "target": "com.azure.appplatform#BuildPropertiesInputEnvMap",
+          "traits": {
+            "smithy.api#documentation": "The environment variables for this build"
+          }
+        },
+        "apms": {
+          "target": "com.azure.appplatform#ApmReferenceCollection",
+          "traits": {
+            "smithy.api#documentation": "The APMs for this build"
+          }
+        },
+        "certificates": {
+          "target": "com.azure.appplatform#CertificateReferenceCollection",
+          "traits": {
+            "smithy.api#documentation": "The CA Certificates for this build"
+          }
+        },
+        "resourceRequests": {
+          "target": "com.azure.appplatform#BuildResourceRequests",
+          "traits": {
+            "smithy.api#documentation": "The customized build resource for this build"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Build resource properties payload"
+      }
+    },
+    "com.azure.appplatform#BuildPropertiesInputEnvMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The environment variables for this build"
       }
     },
     "com.azure.appplatform#BuildServiceGetBuild": {
@@ -15564,16 +16593,42 @@
             "smithy.api#documentation": "The name of the build service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#BuildServicePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the build resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#BuildServicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "containerRegistry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource id of the container registry used in this build service."
+          }
+        },
+        "resourceRequests": {
+          "target": "com.azure.appplatform#BuildServicePropertiesInputResourceRequests",
+          "traits": {
+            "smithy.api#documentation": "The runtime resource configuration of this build service."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Build service resource properties payload"
+      }
+    },
+    "com.azure.appplatform#BuildServicePropertiesInputResourceRequests": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The runtime resource configuration of this build service."
       }
     },
     "com.azure.appplatform#BuildServiceGetBuildService": {
@@ -15859,16 +16914,31 @@
             "smithy.api#documentation": "The name of the container registry."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "credentials": {
+          "target": "com.azure.appplatform#ContainerRegistryCredentials",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The credentials of the container registry resource.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ContainerRegistryCredentials": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The credential type of the container registry credentials.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The credential for the container registry resource."
       }
     },
     "com.azure.appplatform#ContainerRegistriesDelete": {
@@ -16049,21 +17119,6 @@
         "smithy.api#documentation": "State of the Container Registry."
       }
     },
-    "com.azure.appplatform#ContainerRegistryCredentials": {
-      "type": "structure",
-      "members": {
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The credential type of the container registry credentials.",
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The credential for the container registry resource."
-      }
-    },
     "com.azure.appplatform#ContainerRegistriesCreateOrUpdateRequest": {
       "type": "structure",
       "members": {
@@ -16099,16 +17154,30 @@
             "smithy.api#documentation": "The name of the container registry."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#ContainerRegistryPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the container registry resource payload."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ContainerRegistryPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "credentials": {
+          "target": "com.azure.appplatform#ContainerRegistryCredentials",
+          "traits": {
+            "smithy.api#documentation": "The credentials of the container registry resource.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Container registry resource payload."
       }
     },
     "com.azure.appplatform#ContainerRegistriesGet": {
@@ -16740,16 +17809,92 @@
             "smithy.api#documentation": "The name of Dev Tool Portal."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.appplatform#DevToolPortalPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#DevToolPortalPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "public": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the resource exposes public endpoint"
+          }
+        },
+        "ssoProperties": {
+          "target": "com.azure.appplatform#DevToolPortalSsoProperties",
+          "traits": {
+            "smithy.api#documentation": "Single sign-on related configuration"
+          }
+        },
+        "features": {
+          "target": "com.azure.appplatform#DevToolPortalFeatureSettingsInput",
+          "traits": {
+            "smithy.api#documentation": "Settings for Dev Tool Portal"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dev Tool Portal properties payload"
+      }
+    },
+    "com.azure.appplatform#DevToolPortalFeatureSettingsInput": {
+      "type": "structure",
+      "members": {
+        "applicationAccelerator": {
+          "target": "com.azure.appplatform#DevToolPortalFeatureDetailInput",
+          "traits": {
+            "smithy.api#documentation": "Detail of Accelerator plugin"
+          }
+        },
+        "applicationLiveView": {
+          "target": "com.azure.appplatform#DevToolPortalFeatureDetailInput",
+          "traits": {
+            "smithy.api#documentation": "Detail of App Live View plugin"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Settings for Dev Tool Portal"
+      }
+    },
+    "com.azure.appplatform#DevToolPortalFeatureDetailInput": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.appplatform#DevToolPortalFeatureDetailInputState",
+          "traits": {
+            "smithy.api#documentation": "State of the plugin"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Detail settings for Dev Tool Portal feature"
+      }
+    },
+    "com.azure.appplatform#DevToolPortalFeatureDetailInputState": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "State of the plugin"
       }
     },
     "com.azure.appplatform#DevToolPortalsGet": {
@@ -17254,16 +18399,19 @@
             "smithy.api#documentation": "The name of Application Live View."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.appplatform#ApplicationLiveViewPropertiesInput"
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ApplicationLiveViewPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Application Live View properties payload"
       }
     },
     "com.azure.appplatform#ApplicationLiveViewsGet": {
@@ -18064,189 +19212,21 @@
             "smithy.api#documentation": "The name of Application Configuration Service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.azure.appplatform#ConfigurationServicesValidate": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.appplatform#ConfigurationServicesValidateRequest"
-      },
-      "output": {
-        "target": "com.azure.appplatform#ConfigurationServiceSettingsValidateResult"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validate",
-          "code": 200,
-          "apiVersion": "2023-12-01"
-        },
-        "smithy.api#documentation": "Check if the Application Configuration Service settings are valid.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
-      }
-    },
-    "com.azure.appplatform#ConfigurationServicesValidateRequest": {
-      "type": "structure",
-      "members": {
-        "subscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
-          }
-        },
-        "resourceGroupName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal."
-          }
-        },
-        "serviceName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of the Service resource."
-          }
-        },
-        "configurationServiceName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {},
-            "smithy.api#documentation": "The name of Application Configuration Service."
-          }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.azure.appplatform#ConfigurationServicesList": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.appplatform#ConfigurationServicesListRequest"
-      },
-      "output": {
-        "target": "com.azure.appplatform#ConfigurationServiceResourceCollection"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices",
-          "code": 200,
-          "apiVersion": "2023-12-01"
-        },
-        "smithy.api#documentation": "Handles requests to list all resources in a Service.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
-      }
-    },
-    "com.azure.appplatform#ConfigurationServiceResourceCollection": {
-      "type": "structure",
-      "members": {
-        "value": {
-          "target": "com.azure.appplatform#ConfigurationServiceResourceCollectionValueList",
-          "traits": {
-            "smithy.api#documentation": "Collection of configuration service resources"
-          }
-        },
-        "nextLink": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "URL client should use to fetch the next page (per server side paging).\r\nIt's null for now, added for future use."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Object that includes an array of configuration service resources and a possible link for next set"
-      }
-    },
-    "com.azure.appplatform#ConfigurationServiceResourceCollectionValueList": {
-      "type": "list",
-      "member": {
-        "target": "com.azure.appplatform#ConfigurationServiceResource"
-      },
-      "traits": {
-        "smithy.api#documentation": "Collection of configuration service resources"
-      }
-    },
-    "com.azure.appplatform#ConfigurationServiceResource": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Fully qualified resource Id for the resource."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the resource."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of the resource."
-          }
-        },
-        "systemData": {
-          "target": "com.azure.appplatform#SystemData"
-        },
         "properties": {
-          "target": "com.azure.appplatform#ConfigurationServiceProperties"
+          "target": "com.azure.appplatform#ConfigurationServicePropertiesInput"
         }
       },
       "traits": {
-        "smithy.api#documentation": "Application Configuration Service resource"
+        "smithy.api#input": {}
       }
     },
-    "com.azure.appplatform#ConfigurationServiceProperties": {
+    "com.azure.appplatform#ConfigurationServicePropertiesInput": {
       "type": "structure",
       "members": {
-        "provisioningState": {
-          "target": "com.azure.appplatform#ConfigurationServicePropertiesProvisioningState",
-          "traits": {
-            "smithy.api#documentation": "State of the Application Configuration Service."
-          }
-        },
         "generation": {
-          "target": "com.azure.appplatform#ConfigurationServicePropertiesGeneration",
+          "target": "com.azure.appplatform#ConfigurationServicePropertiesInputGeneration",
           "traits": {
             "smithy.api#documentation": "The generation of the Application Configuration Service."
-          }
-        },
-        "resourceRequests": {
-          "target": "com.azure.appplatform#ConfigurationServiceResourceRequests",
-          "traits": {
-            "smithy.api#documentation": "The requested resource quantity for required CPU and Memory."
-          }
-        },
-        "instances": {
-          "target": "com.azure.appplatform#ConfigurationServicePropertiesInstancesList",
-          "traits": {
-            "smithy.api#documentation": "Collection of instances belong to Application Configuration Service."
           }
         },
         "settings": {
@@ -18416,6 +19396,203 @@
       },
       "traits": {
         "smithy.api#documentation": "Collection of patterns of the repository"
+      }
+    },
+    "com.azure.appplatform#ConfigurationServicePropertiesInputGeneration": {
+      "type": "enum",
+      "members": {
+        "GEN1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Gen1"
+          }
+        },
+        "GEN2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Gen2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The generation of the Application Configuration Service."
+      }
+    },
+    "com.azure.appplatform#ConfigurationServicesValidate": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appplatform#ConfigurationServicesValidateRequest"
+      },
+      "output": {
+        "target": "com.azure.appplatform#ConfigurationServiceSettingsValidateResult"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices/{configurationServiceName}/validate",
+          "code": 200,
+          "apiVersion": "2023-12-01"
+        },
+        "smithy.api#documentation": "Check if the Application Configuration Service settings are valid.",
+        "com.distilled.openapi#apiVersion": "2023-12-01"
+      }
+    },
+    "com.azure.appplatform#ConfigurationServicesValidateRequest": {
+      "type": "structure",
+      "members": {
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call."
+          }
+        },
+        "resourceGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal."
+          }
+        },
+        "serviceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the Service resource."
+          }
+        },
+        "configurationServiceName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of Application Configuration Service."
+          }
+        },
+        "gitProperty": {
+          "target": "com.azure.appplatform#ConfigurationServiceGitProperty"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ConfigurationServicesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appplatform#ConfigurationServicesListRequest"
+      },
+      "output": {
+        "target": "com.azure.appplatform#ConfigurationServiceResourceCollection"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configurationServices",
+          "code": 200,
+          "apiVersion": "2023-12-01"
+        },
+        "smithy.api#documentation": "Handles requests to list all resources in a Service.",
+        "com.distilled.openapi#apiVersion": "2023-12-01"
+      }
+    },
+    "com.azure.appplatform#ConfigurationServiceResourceCollection": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.appplatform#ConfigurationServiceResourceCollectionValueList",
+          "traits": {
+            "smithy.api#documentation": "Collection of configuration service resources"
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL client should use to fetch the next page (per server side paging).\r\nIt's null for now, added for future use."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object that includes an array of configuration service resources and a possible link for next set"
+      }
+    },
+    "com.azure.appplatform#ConfigurationServiceResourceCollectionValueList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.appplatform#ConfigurationServiceResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of configuration service resources"
+      }
+    },
+    "com.azure.appplatform#ConfigurationServiceResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource Id for the resource."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource."
+          }
+        },
+        "systemData": {
+          "target": "com.azure.appplatform#SystemData"
+        },
+        "properties": {
+          "target": "com.azure.appplatform#ConfigurationServiceProperties"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Application Configuration Service resource"
+      }
+    },
+    "com.azure.appplatform#ConfigurationServiceProperties": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.appplatform#ConfigurationServicePropertiesProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "State of the Application Configuration Service."
+          }
+        },
+        "generation": {
+          "target": "com.azure.appplatform#ConfigurationServicePropertiesGeneration",
+          "traits": {
+            "smithy.api#documentation": "The generation of the Application Configuration Service."
+          }
+        },
+        "resourceRequests": {
+          "target": "com.azure.appplatform#ConfigurationServiceResourceRequests",
+          "traits": {
+            "smithy.api#documentation": "The requested resource quantity for required CPU and Memory."
+          }
+        },
+        "instances": {
+          "target": "com.azure.appplatform#ConfigurationServicePropertiesInstancesList",
+          "traits": {
+            "smithy.api#documentation": "Collection of instances belong to Application Configuration Service."
+          }
+        },
+        "settings": {
+          "target": "com.azure.appplatform#ConfigurationServiceSettings"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Application Configuration Service properties payload"
       }
     },
     "com.azure.appplatform#ConfigurationServicePropertiesInstancesList": {
@@ -18708,12 +19885,8 @@
             "smithy.api#documentation": "The name of Application Configuration Service."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.appplatform#ConfigurationServicePropertiesInput"
         }
       },
       "traits": {
@@ -18921,101 +20094,6 @@
             "smithy.api#documentation": "The name of the Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.azure.appplatform#ConfigServersUpdatePatch": {
-      "type": "operation",
-      "input": {
-        "target": "com.azure.appplatform#ConfigServersUpdatePatchRequest"
-      },
-      "output": {
-        "target": "com.azure.appplatform#ConfigServersUpdatePatchResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "PATCH",
-          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
-          "code": 200,
-          "apiVersion": "2023-12-01"
-        },
-        "smithy.api#documentation": "Update the config server.",
-        "com.distilled.openapi#apiVersion": "2023-12-01"
-      }
-    },
-    "com.azure.appplatform#ConfigServersUpdatePatchResponse": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Fully qualified resource Id for the resource."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The name of the resource."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of the resource."
-          }
-        },
-        "systemData": {
-          "target": "com.azure.appplatform#SystemData"
-        },
-        "properties": {
-          "target": "com.azure.appplatform#ConfigServerProperties",
-          "traits": {
-            "smithy.api#documentation": "Properties of the Config Server resource"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.azure.appplatform#ConfigServerProperties": {
-      "type": "structure",
-      "members": {
-        "provisioningState": {
-          "target": "com.azure.appplatform#ConfigServerPropertiesProvisioningState",
-          "traits": {
-            "smithy.api#documentation": "State of the config server."
-          }
-        },
-        "error": {
-          "target": "com.azure.appplatform#Error",
-          "traits": {
-            "smithy.api#documentation": "Error when apply config server settings."
-          }
-        },
-        "configServer": {
-          "target": "com.azure.appplatform#ConfigServerSettings",
-          "traits": {
-            "smithy.api#documentation": "Settings of config server."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Config server git properties payload"
-      }
-    },
-    "com.azure.appplatform#ConfigServerSettings": {
-      "type": "structure",
-      "members": {
         "gitProperty": {
           "target": "com.azure.appplatform#ConfigServerGitProperty",
           "traits": {
@@ -19024,7 +20102,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The settings of config server."
+        "smithy.api#input": {}
       }
     },
     "com.azure.appplatform#ConfigServerGitProperty": {
@@ -19212,6 +20290,100 @@
         "smithy.api#documentation": "Collection of pattern of the repository"
       }
     },
+    "com.azure.appplatform#ConfigServersUpdatePatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.azure.appplatform#ConfigServersUpdatePatchRequest"
+      },
+      "output": {
+        "target": "com.azure.appplatform#ConfigServersUpdatePatchResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}/configServers/default",
+          "code": 200,
+          "apiVersion": "2023-12-01"
+        },
+        "smithy.api#documentation": "Update the config server.",
+        "com.distilled.openapi#apiVersion": "2023-12-01"
+      }
+    },
+    "com.azure.appplatform#ConfigServersUpdatePatchResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource Id for the resource."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the resource."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource."
+          }
+        },
+        "systemData": {
+          "target": "com.azure.appplatform#SystemData"
+        },
+        "properties": {
+          "target": "com.azure.appplatform#ConfigServerProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Config Server resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.azure.appplatform#ConfigServerProperties": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.appplatform#ConfigServerPropertiesProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "State of the config server."
+          }
+        },
+        "error": {
+          "target": "com.azure.appplatform#Error",
+          "traits": {
+            "smithy.api#documentation": "Error when apply config server settings."
+          }
+        },
+        "configServer": {
+          "target": "com.azure.appplatform#ConfigServerSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings of config server."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Config server git properties payload"
+      }
+    },
+    "com.azure.appplatform#ConfigServerSettings": {
+      "type": "structure",
+      "members": {
+        "gitProperty": {
+          "target": "com.azure.appplatform#ConfigServerGitProperty",
+          "traits": {
+            "smithy.api#documentation": "Property of git environment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The settings of config server."
+      }
+    },
     "com.azure.appplatform#ConfigServerPropertiesProvisioningState": {
       "type": "enum",
       "members": {
@@ -19277,16 +20449,35 @@
             "smithy.api#documentation": "The name of the Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#ConfigServerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the Config Server resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ConfigServerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "com.azure.appplatform#Error",
+          "traits": {
+            "smithy.api#documentation": "Error when apply config server settings."
+          }
+        },
+        "configServer": {
+          "target": "com.azure.appplatform#ConfigServerSettings",
+          "traits": {
+            "smithy.api#documentation": "Settings of config server."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Config server git properties payload"
       }
     },
     "com.azure.appplatform#ConfigServersUpdatePut": {
@@ -19370,11 +20561,10 @@
             "smithy.api#documentation": "The name of the Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#ConfigServerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the Config Server resource"
           }
         }
       },
@@ -19799,16 +20989,66 @@
             "smithy.api#documentation": "The name of the APM"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.appplatform#ApmPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of an APM"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ApmPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "APM Type",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.appplatform#ApmPropertiesInputPropertiesMap",
+          "traits": {
+            "smithy.api#documentation": "Non-sensitive properties for the APM"
+          }
+        },
+        "secrets": {
+          "target": "com.azure.appplatform#ApmPropertiesInputSecretsMap",
+          "traits": {
+            "smithy.api#documentation": "Sensitive properties for the APM"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of an APM"
+      }
+    },
+    "com.azure.appplatform#ApmPropertiesInputSecretsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Sensitive properties for the APM"
+      }
+    },
+    "com.azure.appplatform#ApmPropertiesInputPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Non-sensitive properties for the APM"
       }
     },
     "com.azure.appplatform#ApmsGet": {
@@ -20066,10 +21306,10 @@
             "smithy.api#documentation": "The name of the Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource Id of the APM",
             "smithy.api#required": {}
           }
         }
@@ -20124,10 +21364,10 @@
             "smithy.api#documentation": "The name of the Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resourceId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource Id of the APM",
             "smithy.api#required": {}
           }
         }
@@ -20643,16 +21883,36 @@
             "smithy.api#documentation": "The name of the Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyType": {
+          "target": "com.azure.appplatform#ServicesRegenerateTestKeyRequestKeyType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Type of the test key",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ServicesRegenerateTestKeyRequestKeyType": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Primary"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Secondary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of the test key"
       }
     },
     "com.azure.appplatform#ServicesListTestKeys": {
@@ -20868,16 +22128,124 @@
             "smithy.api#documentation": "The name of the Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The GEO location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appplatform#ServicesUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags of the service which is a list of key value pairs that describe the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.appplatform#ClusterResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Service resource"
+          }
+        },
+        "sku": {
+          "target": "com.azure.appplatform#Sku",
+          "traits": {
+            "smithy.api#documentation": "Sku of the Service resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ClusterResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "networkProfile": {
+          "target": "com.azure.appplatform#NetworkProfileInput",
+          "traits": {
+            "smithy.api#documentation": "Network profile of the Service"
+          }
+        },
+        "vnetAddons": {
+          "target": "com.azure.appplatform#ServiceVNetAddons",
+          "traits": {
+            "smithy.api#documentation": "Additional Service settings in vnet injection instance"
+          }
+        },
+        "zoneRedundant": {
+          "target": "smithy.api#Boolean"
+        },
+        "marketplaceResource": {
+          "target": "com.azure.appplatform#MarketplaceResource",
+          "traits": {
+            "smithy.api#documentation": "Purchasing 3rd party product of the Service resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Service properties payload"
+      }
+    },
+    "com.azure.appplatform#NetworkProfileInput": {
+      "type": "structure",
+      "members": {
+        "serviceRuntimeSubnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime"
+          }
+        },
+        "appSubnetId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Fully qualified resource Id of the subnet to host customer apps in Azure Spring Apps"
+          }
+        },
+        "serviceCidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Spring Apps service reserved CIDR"
+          }
+        },
+        "serviceRuntimeNetworkResourceGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the resource group containing network resources of Azure Spring Apps Service Runtime"
+          }
+        },
+        "appNetworkResourceGroup": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the resource group containing network resources for customer apps in Azure Spring Apps"
+          }
+        },
+        "ingressConfig": {
+          "target": "com.azure.appplatform#IngressConfig",
+          "traits": {
+            "smithy.api#documentation": "Ingress configuration payload for Azure Spring Apps resource."
+          }
+        },
+        "outboundType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The egress traffic type of Azure Spring Apps VNet instances."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Service network profile payload"
+      }
+    },
+    "com.azure.appplatform#ServicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the service which is a list of key value pairs that describe the resource."
       }
     },
     "com.azure.appplatform#ServicesCreateOrUpdate": {
@@ -20991,16 +22359,45 @@
             "smithy.api#documentation": "The name of the Service resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The GEO location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.appplatform#ServicesCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Tags of the service which is a list of key value pairs that describe the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.appplatform#ClusterResourcePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties of the Service resource"
+          }
+        },
+        "sku": {
+          "target": "com.azure.appplatform#Sku",
+          "traits": {
+            "smithy.api#documentation": "Sku of the Service resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.appplatform#ServicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags of the service which is a list of key value pairs that describe the resource."
       }
     },
     "com.azure.appplatform#ServicesGet": {

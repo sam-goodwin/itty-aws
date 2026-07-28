@@ -142,16 +142,10 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "created_at": {
-          "target": "smithy.api#String"
-        },
-        "feature_flag_key": {
           "target": "smithy.api#String"
         },
         "variants": {
@@ -265,9 +259,6 @@
         "created_at": {
           "target": "smithy.api#String"
         },
-        "feature_flag_key": {
-          "target": "smithy.api#String"
-        },
         "variants": {
           "target": "smithy.api#Document",
           "traits": {
@@ -329,9 +320,6 @@
           "target": "smithy.api#String"
         },
         "created_at": {
-          "target": "smithy.api#String"
-        },
-        "feature_flag_key": {
           "target": "smithy.api#String"
         },
         "variants": {

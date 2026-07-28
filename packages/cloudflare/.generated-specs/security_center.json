@@ -261,6 +261,47 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.security_center#InsightsListForAccountResponseIssuesItemIssueType": {
+      "type": "enum",
+      "members": {
+        "COMPLIANCE_VIOLATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "compliance_violation"
+          }
+        },
+        "EMAIL_SECURITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security"
+          }
+        },
+        "EXPOSED_INFRASTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exposed_infrastructure"
+          }
+        },
+        "INSECURE_CONFIGURATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "insecure_configuration"
+          }
+        },
+        "WEAK_AUTHENTICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weak_authentication"
+          }
+        },
+        "CONFIGURATION_SUGGESTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "configuration_suggestion"
+          }
+        }
+      }
+    },
     "com.cloudflare.security_center#InsightsListForAccountResponseIssuesItemPayload": {
       "type": "structure",
       "members": {
@@ -357,7 +398,7 @@
           "target": "smithy.api#String"
         },
         "issue_type": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.security_center#InsightsListForAccountResponseIssuesItemIssueType"
         },
         "payload": {
           "target": "com.cloudflare.security_center#InsightsListForAccountResponseIssuesItemPayload"
@@ -604,6 +645,47 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.security_center#InsightsListForZoneResponseIssuesItemIssueType": {
+      "type": "enum",
+      "members": {
+        "COMPLIANCE_VIOLATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "compliance_violation"
+          }
+        },
+        "EMAIL_SECURITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email_security"
+          }
+        },
+        "EXPOSED_INFRASTRUCTURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exposed_infrastructure"
+          }
+        },
+        "INSECURE_CONFIGURATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "insecure_configuration"
+          }
+        },
+        "WEAK_AUTHENTICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weak_authentication"
+          }
+        },
+        "CONFIGURATION_SUGGESTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "configuration_suggestion"
+          }
+        }
+      }
+    },
     "com.cloudflare.security_center#InsightsListForZoneResponseIssuesItemPayload": {
       "type": "structure",
       "members": {
@@ -700,7 +782,7 @@
           "target": "smithy.api#String"
         },
         "issue_type": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.security_center#InsightsListForZoneResponseIssuesItemIssueType"
         },
         "payload": {
           "target": "com.cloudflare.security_center#InsightsListForZoneResponseIssuesItemPayload"

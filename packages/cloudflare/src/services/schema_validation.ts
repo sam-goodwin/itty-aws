@@ -79,12 +79,36 @@ export class ZonePurged extends T.applyErrorMatchers(
   [{ message: { includes: "has been purged" } }],
 ) {}
 
+export type SettingsOperationsBulkEditRequestBodyValueMitigationAction =
+  | "none"
+  | "log"
+  | "block";
+export const SettingsOperationsBulkEditRequestBodyValueMitigationAction =
+  /*@__PURE__*/ S.String;
+
+export interface SettingsOperationsBulkEditRequestBodyValue {
+  /** Mitigation actions are as follows: */
+  mitigationAction?: SettingsOperationsBulkEditRequestBodyValueMitigationAction;
+}
+export const SettingsOperationsBulkEditRequestBodyValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mitigationAction: S.optional(
+        SettingsOperationsBulkEditRequestBodyValueMitigationAction.pipe(
+          T.Body("mitigation_action"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SettingsOperationsBulkEditRequestBodyValue",
+  }) as any as S.Schema<SettingsOperationsBulkEditRequestBodyValue>;
+
 export type SettingsOperationsBulkEditRequestBodyMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: SettingsOperationsBulkEditRequestBodyValue | undefined;
 };
 export const SettingsOperationsBulkEditRequestBodyMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  SettingsOperationsBulkEditRequestBodyValue,
 ) as any as S.Schema<SettingsOperationsBulkEditRequestBodyMap>;
 
 export interface BulkPatchSettingOperationsRequest {
@@ -109,12 +133,38 @@ export const BulkPatchSettingOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPatchSettingOperationsRequest",
 }) as any as S.Schema<BulkPatchSettingOperationsRequest>;
 
+export type SettingsOperationsBulkEditResultValueMitigationAction =
+  | "log"
+  | "block"
+  | "none";
+export const SettingsOperationsBulkEditResultValueMitigationAction =
+  /*@__PURE__*/ S.String;
+
+export interface SettingsOperationsBulkEditResultValue {
+  /** When set, this applies a mitigation action to this operation which supersedes a global schema validation setting just for this operation */
+  mitigationAction: SettingsOperationsBulkEditResultValueMitigationAction;
+  /** UUID. */
+  operationId: string;
+}
+export const SettingsOperationsBulkEditResultValue = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      mitigationAction:
+        SettingsOperationsBulkEditResultValueMitigationAction.pipe(
+          T.Body("mitigation_action"),
+        ),
+      operationId: S.String.pipe(T.Body("operation_id")),
+    }),
+).annotate({
+  identifier: "SettingsOperationsBulkEditResultValue",
+}) as any as S.Schema<SettingsOperationsBulkEditResultValue>;
+
 export type SettingsOperationsBulkEditResultMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: SettingsOperationsBulkEditResultValue | undefined;
 };
 export const SettingsOperationsBulkEditResultMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
+  SettingsOperationsBulkEditResultValue,
 ) as any as S.Schema<SettingsOperationsBulkEditResultMap>;
 
 export type BulkPatchSettingOperationsResponse =
@@ -125,7 +175,7 @@ export const BulkPatchSettingOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPatchSettingOperationsResponse",
 }) as any as S.Schema<BulkPatchSettingOperationsResponse>;
 
-export type SchemasCreateRequestKind = "openapi_v3" | (string & {});
+export type SchemasCreateRequestKind = "openapi_v3";
 export const SchemasCreateRequestKind = /*@__PURE__*/ S.String;
 
 export interface CreateSchemaRequest {
@@ -160,7 +210,7 @@ export const CreateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateSchemaRequest",
 }) as any as S.Schema<CreateSchemaRequest>;
 
-export type SchemasCreateResponseKind = "openapi_v3" | (string & {});
+export type SchemasCreateResponseKind = "openapi_v3";
 export const SchemasCreateResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -288,7 +338,7 @@ export const GetSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetSchemaRequest",
 }) as any as S.Schema<GetSchemaRequest>;
 
-export type SchemasGetResponseKind = "openapi_v3" | (string & {});
+export type SchemasGetResponseKind = "openapi_v3";
 export const SchemasGetResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -341,14 +391,11 @@ export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsGetResponseValidationDefaultMitigationAction =
   | "none"
   | "log"
-  | "block"
-  | (string & {});
+  | "block";
 export const SettingsGetResponseValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
-export type SettingsGetResponseValidationOverrideMitigationAction =
-  | "none"
-  | (string & {});
+export type SettingsGetResponseValidationOverrideMitigationAction = "none";
 export const SettingsGetResponseValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -401,8 +448,7 @@ export const GetSettingOperationRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsOperationsGetResponseMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const SettingsOperationsGetResponseMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -458,7 +504,7 @@ export const ListSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSchemasRequest",
 }) as any as S.Schema<ListSchemasRequest>;
 
-export type SchemasListResultItemKind = "openapi_v3" | (string & {});
+export type SchemasListResultItemKind = "openapi_v3";
 export const SchemasListResultItemKind = /*@__PURE__*/ S.String;
 
 export interface SchemasListResultItem {
@@ -487,7 +533,7 @@ export const SchemasListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemasListResultItem",
 }) as any as S.Schema<SchemasListResultItem>;
 
-export type SchemasListResultList = SchemasListResultItem[];
+export type SchemasListResultList = ReadonlyArray<SchemasListResultItem>;
 export const SchemasListResultList = /*@__PURE__*/ S.Array(
   SchemasListResultItem,
 ) as any as S.Schema<SchemasListResultList>;
@@ -536,8 +582,7 @@ export const ListSettingOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsOperationsListResultItemMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const SettingsOperationsListResultItemMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -559,7 +604,7 @@ export const SettingsOperationsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsOperationsListResultItem>;
 
 export type SettingsOperationsListResultList =
-  SettingsOperationsListResultItem[];
+  ReadonlyArray<SettingsOperationsListResultItem>;
 export const SettingsOperationsListResultList = /*@__PURE__*/ S.Array(
   SettingsOperationsListResultItem,
 ) as any as S.Schema<SettingsOperationsListResultList>;
@@ -605,7 +650,7 @@ export const PatchSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchSchemaRequest",
 }) as any as S.Schema<PatchSchemaRequest>;
 
-export type SchemasEditResponseKind = "openapi_v3" | (string & {});
+export type SchemasEditResponseKind = "openapi_v3";
 export const SchemasEditResponseKind = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -638,14 +683,11 @@ export const PatchSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsEditRequestValidationDefaultMitigationAction =
   | "none"
   | "log"
-  | "block"
-  | (string & {});
+  | "block";
 export const SettingsEditRequestValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
-export type SettingsEditRequestValidationOverrideMitigationAction =
-  | "none"
-  | (string & {});
+export type SettingsEditRequestValidationOverrideMitigationAction = "none";
 export const SettingsEditRequestValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -655,7 +697,7 @@ export interface PatchSettingRequest {
   /** The default mitigation action used */
   validationDefaultMitigationAction?: SettingsEditRequestValidationDefaultMitigationAction;
   /** When set, this overrides both zone level and operation level mitigation actions. */
-  validationOverrideMitigationAction?: SettingsEditRequestValidationOverrideMitigationAction;
+  validationOverrideMitigationAction?: SettingsEditRequestValidationOverrideMitigationAction | null;
 }
 export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -666,7 +708,7 @@ export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
     validationOverrideMitigationAction: S.optional(
-      SettingsEditRequestValidationOverrideMitigationAction.pipe(
+      S.NullOr(SettingsEditRequestValidationOverrideMitigationAction).pipe(
         T.Body("validation_override_mitigation_action"),
       ),
     ),
@@ -686,14 +728,11 @@ export const PatchSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsEditResponseValidationDefaultMitigationAction =
   | "none"
   | "log"
-  | "block"
-  | (string & {});
+  | "block";
 export const SettingsEditResponseValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
-export type SettingsEditResponseValidationOverrideMitigationAction =
-  | "none"
-  | (string & {});
+export type SettingsEditResponseValidationOverrideMitigationAction = "none";
 export const SettingsEditResponseValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -723,14 +762,11 @@ export const PatchSettingResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsUpdateRequestValidationDefaultMitigationAction =
   | "none"
   | "log"
-  | "block"
-  | (string & {});
+  | "block";
 export const SettingsUpdateRequestValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
-export type SettingsUpdateRequestValidationOverrideMitigationAction =
-  | "none"
-  | (string & {});
+export type SettingsUpdateRequestValidationOverrideMitigationAction = "none";
 export const SettingsUpdateRequestValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -740,7 +776,7 @@ export interface PutSettingRequest {
   /** The default mitigation action used */
   validationDefaultMitigationAction: SettingsUpdateRequestValidationDefaultMitigationAction;
   /** When set, this overrides both zone level and operation level mitigation actions. */
-  validationOverrideMitigationAction?: SettingsUpdateRequestValidationOverrideMitigationAction;
+  validationOverrideMitigationAction?: SettingsUpdateRequestValidationOverrideMitigationAction | null;
 }
 export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -750,7 +786,7 @@ export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
         T.Body("validation_default_mitigation_action"),
       ),
     validationOverrideMitigationAction: S.optional(
-      SettingsUpdateRequestValidationOverrideMitigationAction.pipe(
+      S.NullOr(SettingsUpdateRequestValidationOverrideMitigationAction).pipe(
         T.Body("validation_override_mitigation_action"),
       ),
     ),
@@ -770,14 +806,11 @@ export const PutSettingRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsUpdateResponseValidationDefaultMitigationAction =
   | "none"
   | "log"
-  | "block"
-  | (string & {});
+  | "block";
 export const SettingsUpdateResponseValidationDefaultMitigationAction =
   /*@__PURE__*/ S.String;
 
-export type SettingsUpdateResponseValidationOverrideMitigationAction =
-  | "none"
-  | (string & {});
+export type SettingsUpdateResponseValidationOverrideMitigationAction = "none";
 export const SettingsUpdateResponseValidationOverrideMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -807,8 +840,7 @@ export const PutSettingResponse = /*@__PURE__*/ S.suspend(() =>
 export type SettingsOperationsUpdateRequestMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const SettingsOperationsUpdateRequestMitigationAction =
   /*@__PURE__*/ S.String;
 
@@ -843,8 +875,7 @@ export const PutSettingOperationRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingsOperationsUpdateResponseMitigationAction =
   | "log"
   | "block"
-  | "none"
-  | (string & {});
+  | "none";
 export const SettingsOperationsUpdateResponseMitigationAction =
   /*@__PURE__*/ S.String;
 

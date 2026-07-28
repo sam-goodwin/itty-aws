@@ -13,6 +13,74 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Resource tags. */
+export type AppliancesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AppliancesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AppliancesCreateOrUpdateRequestTagsMap>;
+
+/** Represents a supported Fabric/Infra. (AKSEdge etc...). */
+export type AppliancePropertiesInputDistro = "AKSEdge";
+export const AppliancePropertiesInputDistro = /*@__PURE__*/ S.String;
+
+/** Information about the connected appliance. */
+export type Provider = "VMWare" | "HCI" | "SCVMM";
+export const Provider = /*@__PURE__*/ S.String;
+
+/** Contains infrastructure information about the Appliance */
+export interface AppliancePropertiesInfrastructureConfig {
+  /** Information about the connected appliance. */
+  provider?: Provider;
+}
+export const AppliancePropertiesInfrastructureConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      provider: S.optional(Provider),
+    }),
+).annotate({
+  identifier: "AppliancePropertiesInfrastructureConfig",
+}) as any as S.Schema<AppliancePropertiesInfrastructureConfig>;
+
+/** Properties for an appliance. */
+export interface AppliancePropertiesInput {
+  /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
+  distro?: AppliancePropertiesInputDistro;
+  /** Contains infrastructure information about the Appliance */
+  infrastructureConfig?: AppliancePropertiesInfrastructureConfig;
+  /** Certificates pair used to download MSI certificate from HIS. Can only be set once. */
+  publicKey?: string;
+  /** Version of the Appliance */
+  version?: string;
+}
+export const AppliancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    distro: S.optional(AppliancePropertiesInputDistro),
+    infrastructureConfig: S.optional(AppliancePropertiesInfrastructureConfig),
+    publicKey: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppliancePropertiesInput",
+}) as any as S.Schema<AppliancePropertiesInput>;
+
+/** The identity type. */
+export type ResourceIdentityType = "SystemAssigned" | "None";
+export const ResourceIdentityType = /*@__PURE__*/ S.String;
+
+/** Identity for the resource. */
+export interface IdentityInput {
+  /** The identity type. */
+  type?: ResourceIdentityType;
+}
+export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ResourceIdentityType),
+  }),
+).annotate({ identifier: "IdentityInput" }) as any as S.Schema<IdentityInput>;
+
 export interface AppliancesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -20,14 +88,24 @@ export interface AppliancesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Appliances name. */
   resourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AppliancesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The set of properties specific to an Appliance */
+  properties?: AppliancePropertiesInput;
+  /** Identity for the resource. */
+  identity?: IdentityInput;
 }
 export const AppliancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AppliancesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(AppliancePropertiesInput),
+    identity: S.optional(IdentityInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -45,8 +123,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -54,8 +131,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -94,26 +170,8 @@ export const AppliancesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AppliancesCreateOrUpdateResponseTagsMap>;
 
 /** Represents a supported Fabric/Infra. (AKSEdge etc...). */
-export type AppliancePropertiesDistro = "AKSEdge" | (string & {});
+export type AppliancePropertiesDistro = "AKSEdge";
 export const AppliancePropertiesDistro = /*@__PURE__*/ S.String;
-
-/** Information about the connected appliance. */
-export type Provider = "VMWare" | "HCI" | "SCVMM" | (string & {});
-export const Provider = /*@__PURE__*/ S.String;
-
-/** Contains infrastructure information about the Appliance */
-export interface AppliancePropertiesInfrastructureConfig {
-  /** Information about the connected appliance. */
-  provider?: Provider;
-}
-export const AppliancePropertiesInfrastructureConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      provider: S.optional(Provider),
-    }),
-).annotate({
-  identifier: "AppliancePropertiesInfrastructureConfig",
-}) as any as S.Schema<AppliancePropertiesInfrastructureConfig>;
 
 /** Appliance’s health and state of connection to on-prem. This list of values is not exhaustive. */
 export type Status =
@@ -148,8 +206,7 @@ export type Status =
   | "UpgradeClusterExtensionFailedToDelete"
   | "UpgradeFailed"
   | "Offline"
-  | "None"
-  | (string & {});
+  | "None";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Properties for an appliance. */
@@ -179,10 +236,6 @@ export const ApplianceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplianceProperties",
 }) as any as S.Schema<ApplianceProperties>;
-
-/** The identity type. */
-export type ResourceIdentityType = "SystemAssigned" | "None" | (string & {});
-export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
 export interface Identity {
@@ -464,7 +517,8 @@ export const SupportedVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportedVersion>;
 
 /** This contains the current version and supported upgrade versions. */
-export type UpgradeGraphPropertiesSupportedVersionsList = SupportedVersion[];
+export type UpgradeGraphPropertiesSupportedVersionsList =
+  ReadonlyArray<SupportedVersion>;
 export const UpgradeGraphPropertiesSupportedVersionsList =
   /*@__PURE__*/ S.Array(
     SupportedVersion,
@@ -566,7 +620,7 @@ export const Appliance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Appliance" }) as any as S.Schema<Appliance>;
 
 /** The Appliance items on this page */
-export type ApplianceListResultValueList = Appliance[];
+export type ApplianceListResultValueList = ReadonlyArray<Appliance>;
 export const ApplianceListResultValueList = /*@__PURE__*/ S.Array(
   Appliance,
 ) as any as S.Schema<ApplianceListResultValueList>;
@@ -655,10 +709,7 @@ export const HybridConnectionConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridConnectionConfig>;
 
 /** Name which contains the role of the kubeconfig. */
-export type AccessProfileType =
-  | "clusterUser"
-  | "clusterCustomerUser"
-  | (string & {});
+export type AccessProfileType = "clusterUser" | "clusterCustomerUser";
 export const AccessProfileType = /*@__PURE__*/ S.String;
 
 /** Cluster User Credential appliance. */
@@ -679,7 +730,7 @@ export const ApplianceCredentialKubeconfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of appliance kubeconfigs. */
 export type ApplianceListCredentialResultsKubeconfigsList =
-  ApplianceCredentialKubeconfig[];
+  ReadonlyArray<ApplianceCredentialKubeconfig>;
 export const ApplianceListCredentialResultsKubeconfigsList =
   /*@__PURE__*/ S.Array(
     ApplianceCredentialKubeconfig,
@@ -754,7 +805,7 @@ export const ApplianceListKeysResultsArtifactProfilesMap =
 
 /** The list of appliance kubeconfigs. */
 export type ApplianceListKeysResultsKubeconfigsList =
-  ApplianceCredentialKubeconfig[];
+  ReadonlyArray<ApplianceCredentialKubeconfig>;
 export const ApplianceListKeysResultsKubeconfigsList = /*@__PURE__*/ S.Array(
   ApplianceCredentialKubeconfig,
 ) as any as S.Schema<ApplianceListKeysResultsKubeconfigsList>;
@@ -869,7 +920,8 @@ export const ApplianceOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplianceOperation>;
 
 /** The ApplianceOperation items on this page */
-export type ApplianceOperationsListValueList = ApplianceOperation[];
+export type ApplianceOperationsListValueList =
+  ReadonlyArray<ApplianceOperation>;
 export const ApplianceOperationsListValueList = /*@__PURE__*/ S.Array(
   ApplianceOperation,
 ) as any as S.Schema<ApplianceOperationsListValueList>;
@@ -890,6 +942,15 @@ export const ApplianceOperationsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApplianceOperationsList",
 }) as any as S.Schema<ApplianceOperationsList>;
 
+/** Resource tags */
+export type AppliancesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AppliancesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AppliancesUpdateRequestTagsMap>;
+
 export interface AppliancesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -897,14 +958,15 @@ export interface AppliancesUpdateRequest {
   resourceGroupName: string;
   /** Appliances name. */
   resourceName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: AppliancesUpdateRequestTagsMap;
 }
 export const AppliancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AppliancesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",

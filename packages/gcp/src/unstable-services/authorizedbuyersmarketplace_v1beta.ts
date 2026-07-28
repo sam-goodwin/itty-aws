@@ -90,7 +90,7 @@ export const ActivateCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ActivateCuratorsCuratedPackagesRequest",
 }) as any as S.Schema<ActivateCuratorsCuratedPackagesRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -128,15 +128,13 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 export type CuratedPackageStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const CuratedPackageStateEnum = /*@__PURE__*/ S.String;
 
 export type CuratedPackageCurationFeeVisibilityEnum =
   | "CURATION_FEE_VISIBILITY_UNSPECIFIED"
   | "DISCLOSED"
-  | "NON_DISCLOSED"
-  | (string & {});
+  | "NON_DISCLOSED";
 export const CuratedPackageCurationFeeVisibilityEnum = /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedDeviceTypesItemEnum =
@@ -144,13 +142,12 @@ export type PackageTargetingIncludedDeviceTypesItemEnum =
   | "DEVICE_TYPE_PERSONAL_COMPUTER"
   | "DEVICE_TYPE_CONNECTED_TV"
   | "DEVICE_TYPE_PHONE"
-  | "DEVICE_TYPE_TABLET"
-  | (string & {});
+  | "DEVICE_TYPE_TABLET";
 export const PackageTargetingIncludedDeviceTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedDeviceTypesItemEnumList =
-  PackageTargetingIncludedDeviceTypesItemEnum[];
+  ReadonlyArray<PackageTargetingIncludedDeviceTypesItemEnum>;
 export const PackageTargetingIncludedDeviceTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageTargetingIncludedDeviceTypesItemEnum,
@@ -159,8 +156,7 @@ export const PackageTargetingIncludedDeviceTypesItemEnumList =
 export type StringTargetingDimensionSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
-  | "SELECTION_TYPE_EXCLUDE"
-  | (string & {});
+  | "SELECTION_TYPE_EXCLUDE";
 export const StringTargetingDimensionSelectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Generic targeting with string values. */
@@ -218,8 +214,7 @@ export const PackagePublisherProvidedSignalsTargeting = /*@__PURE__*/ S.suspend(
 export type VideoPlcmtTargetingSelectionTypeEnum =
   | "SELECTION_TYPE_UNSPECIFIED"
   | "SELECTION_TYPE_INCLUDE"
-  | "SELECTION_TYPE_EXCLUDE"
-  | (string & {});
+  | "SELECTION_TYPE_EXCLUDE";
 export const VideoPlcmtTargetingSelectionTypeEnum = /*@__PURE__*/ S.String;
 
 export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
@@ -227,13 +222,12 @@ export type VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   | "INSTREAM"
   | "ACCOMPANYING_CONTENT"
   | "INTERSTITIAL"
-  | "NO_CONTENT"
-  | (string & {});
+  | "NO_CONTENT";
 export const VideoPlcmtTargetingVideoPlcmtTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type VideoPlcmtTargetingVideoPlcmtTypesItemEnumList =
-  VideoPlcmtTargetingVideoPlcmtTypesItemEnum[];
+  ReadonlyArray<VideoPlcmtTargetingVideoPlcmtTypesItemEnum>;
 export const VideoPlcmtTargetingVideoPlcmtTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     VideoPlcmtTargetingVideoPlcmtTypesItemEnum,
@@ -278,8 +272,7 @@ export type PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum =
   | "MAXIMUM_VIDEO_AD_DURATION_THIRTY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_SIXTY_SECONDS"
   | "MAXIMUM_VIDEO_AD_DURATION_NINETY_SECONDS"
-  | "MAXIMUM_VIDEO_AD_DURATION_ONE_HUNDRED_TWENTY_SECONDS"
-  | (string & {});
+  | "MAXIMUM_VIDEO_AD_DURATION_ONE_HUNDRED_TWENTY_SECONDS";
 export const PackageVideoTargetingIncludedMaximumAdDurationTargetingEnum =
   /*@__PURE__*/ S.String;
 
@@ -287,13 +280,12 @@ export type PackageVideoTargetingIncludedPositionTypesItemEnum =
   | "POSITION_TYPE_UNSPECIFIED"
   | "POSITION_TYPE_MIDROLL"
   | "POSITION_TYPE_POSTROLL"
-  | "POSITION_TYPE_PREROLL"
-  | (string & {});
+  | "POSITION_TYPE_PREROLL";
 export const PackageVideoTargetingIncludedPositionTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageVideoTargetingIncludedPositionTypesItemEnumList =
-  PackageVideoTargetingIncludedPositionTypesItemEnum[];
+  ReadonlyArray<PackageVideoTargetingIncludedPositionTypesItemEnum>;
 export const PackageVideoTargetingIncludedPositionTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageVideoTargetingIncludedPositionTypesItemEnum,
@@ -303,13 +295,12 @@ export type PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
   | "PLAYBACK_METHOD_UNSPECIFIED"
   | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_ON"
   | "PLAYBACK_METHOD_AUTO_PLAY_SOUND_OFF"
-  | "PLAYBACK_METHOD_CLICK_TO_PLAY"
-  | (string & {});
+  | "PLAYBACK_METHOD_CLICK_TO_PLAY";
 export const PackageVideoTargetingIncludedPlaybackMethodsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageVideoTargetingIncludedPlaybackMethodsItemEnumList =
-  PackageVideoTargetingIncludedPlaybackMethodsItemEnum[];
+  ReadonlyArray<PackageVideoTargetingIncludedPlaybackMethodsItemEnum>;
 export const PackageVideoTargetingIncludedPlaybackMethodsItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageVideoTargetingIncludedPlaybackMethodsItemEnum,
@@ -322,13 +313,12 @@ export type PackageVideoTargetingIncludedMimeTypesItemEnum =
   | "VIDEO_MIME_TYPE_MP4"
   | "VIDEO_MIME_TYPE_APPLICATION_MPEGDASH"
   | "VIDEO_MIME_TYPE_APPLICATION_JAVASCRIPT"
-  | "VIDEO_MIME_TYPE_WEBM"
-  | (string & {});
+  | "VIDEO_MIME_TYPE_WEBM";
 export const PackageVideoTargetingIncludedMimeTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageVideoTargetingIncludedMimeTypesItemEnumList =
-  PackageVideoTargetingIncludedMimeTypesItemEnum[];
+  ReadonlyArray<PackageVideoTargetingIncludedMimeTypesItemEnum>;
 export const PackageVideoTargetingIncludedMimeTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageVideoTargetingIncludedMimeTypesItemEnum,
@@ -337,8 +327,7 @@ export const PackageVideoTargetingIncludedMimeTypesItemEnumList =
 export type PackageVideoTargetingIncludedContentDeliveryMethodEnum =
   | "CONTENT_DELIVERY_METHOD_UNSPECIFIED"
   | "CONTENT_DELIVERY_METHOD_STREAMING"
-  | "CONTENT_DELIVERY_METHOD_PROGRESSIVE"
-  | (string & {});
+  | "CONTENT_DELIVERY_METHOD_PROGRESSIVE";
 export const PackageVideoTargetingIncludedContentDeliveryMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -424,20 +413,18 @@ export const CriteriaTargeting = /*@__PURE__*/ S.suspend(() =>
 export type PackageTargetingIncludedEnvironmentEnum =
   | "ENVIRONMENT_UNSPECIFIED"
   | "ENVIRONMENT_SITE"
-  | "ENVIRONMENT_APP"
-  | (string & {});
+  | "ENVIRONMENT_APP";
 export const PackageTargetingIncludedEnvironmentEnum = /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedNativeInventoryTypesItemEnum =
   | "NATIVE_INVENTORY_TYPE_UNSPECIFIED"
   | "NATIVE_INVENTORY_TYPE_NATIVE_ONLY"
-  | "NATIVE_INVENTORY_TYPE_NATIVE_OR_BANNER"
-  | (string & {});
+  | "NATIVE_INVENTORY_TYPE_NATIVE_OR_BANNER";
 export const PackageTargetingIncludedNativeInventoryTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedNativeInventoryTypesItemEnumList =
-  PackageTargetingIncludedNativeInventoryTypesItemEnum[];
+  ReadonlyArray<PackageTargetingIncludedNativeInventoryTypesItemEnum>;
 export const PackageTargetingIncludedNativeInventoryTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageTargetingIncludedNativeInventoryTypesItemEnum,
@@ -447,21 +434,19 @@ export type PackageTargetingIncludedCreativeFormatEnum =
   | "CREATIVE_FORMAT_UNSPECIFIED"
   | "CREATIVE_FORMAT_DISPLAY"
   | "CREATIVE_FORMAT_VIDEO"
-  | "CREATIVE_FORMAT_AUDIO"
-  | (string & {});
+  | "CREATIVE_FORMAT_AUDIO";
 export const PackageTargetingIncludedCreativeFormatEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedRestrictedCategoriesItemEnum =
   | "RESTRICTED_CATEGORY_UNSPECIFIED"
   | "RESTRICTED_CATEGORY_ALCOHOL"
-  | "RESTRICTED_CATEGORY_GAMBLING"
-  | (string & {});
+  | "RESTRICTED_CATEGORY_GAMBLING";
 export const PackageTargetingIncludedRestrictedCategoriesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedRestrictedCategoriesItemEnumList =
-  PackageTargetingIncludedRestrictedCategoriesItemEnum[];
+  ReadonlyArray<PackageTargetingIncludedRestrictedCategoriesItemEnum>;
 export const PackageTargetingIncludedRestrictedCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageTargetingIncludedRestrictedCategoriesItemEnum,
@@ -471,20 +456,18 @@ export type PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
   | "ACCELERATED_MOBILE_PAGE_TYPE_UNSPECIFIED"
   | "ACCELERATED_MOBILE_PAGE_TYPE_NON_AMP"
   | "ACCELERATED_MOBILE_PAGE_TYPE_AMP"
-  | "ACCELERATED_MOBILE_PAGE_TYPE_AMP_STORY"
-  | (string & {});
+  | "ACCELERATED_MOBILE_PAGE_TYPE_AMP_STORY";
 export const PackageTargetingIncludedAcceleratedMobilePageTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedOpenMeasurementTypesItemEnum =
   | "OPEN_MEASUREMENT_TYPE_UNSPECIFIED"
-  | "OPEN_MEASUREMENT_TYPE_OMID_V1"
-  | (string & {});
+  | "OPEN_MEASUREMENT_TYPE_OMID_V1";
 export const PackageTargetingIncludedOpenMeasurementTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedOpenMeasurementTypesItemEnumList =
-  PackageTargetingIncludedOpenMeasurementTypesItemEnum[];
+  ReadonlyArray<PackageTargetingIncludedOpenMeasurementTypesItemEnum>;
 export const PackageTargetingIncludedOpenMeasurementTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageTargetingIncludedOpenMeasurementTypesItemEnum,
@@ -495,8 +478,7 @@ export type AdSizeTypeEnum =
   | "PIXEL"
   | "INTERSTITIAL"
   | "NATIVE"
-  | "FLUID"
-  | (string & {});
+  | "FLUID";
 export const AdSizeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents size of a single ad slot, or a creative. */
@@ -516,7 +498,7 @@ export const AdSize = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AdSize" }) as any as S.Schema<AdSize>;
 
-export type AdSizeList = AdSize[];
+export type AdSizeList = ReadonlyArray<AdSize>;
 export const AdSizeList = /*@__PURE__*/ S.Array(
   AdSize,
 ) as any as S.Schema<AdSizeList>;
@@ -524,13 +506,12 @@ export const AdSizeList = /*@__PURE__*/ S.Array(
 export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnum =
   | "AUTHORIZED_SELLER_STATUS_UNSPECIFIED"
   | "AUTHORIZED_SELLER_STATUS_DIRECT"
-  | "AUTHORIZED_SELLER_STATUS_RESELLER"
-  | (string & {});
+  | "AUTHORIZED_SELLER_STATUS_RESELLER";
 export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
-  PackageTargetingIncludedAuthorizedSellerStatusesItemEnum[];
+  ReadonlyArray<PackageTargetingIncludedAuthorizedSellerStatusesItemEnum>;
 export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
   /*@__PURE__*/ S.Array(
     PackageTargetingIncludedAuthorizedSellerStatusesItemEnum,
@@ -539,8 +520,7 @@ export const PackageTargetingIncludedAuthorizedSellerStatusesItemEnumList =
 export type PackageTargetingIncludedRewardedTypeEnum =
   | "REWARDED_TYPE_UNSPECIFIED"
   | "REWARDED_TYPE_NON_REWARDED"
-  | "REWARDED_TYPE_REWARDED"
-  | (string & {});
+  | "REWARDED_TYPE_REWARDED";
 export const PackageTargetingIncludedRewardedTypeEnum = /*@__PURE__*/ S.String;
 
 /** Targeting criteria for curated and auction packages. */
@@ -706,8 +686,7 @@ export type DataSegmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const DataSegmentStateEnum = /*@__PURE__*/ S.String;
 
 /** Defines an identifier for a segment of inventory that can be targeted by curators or media planners in the deals or auction packages UI. Curation of inventory is done by curators on external platforms. -- Next ID: 9 -- */
@@ -902,7 +881,7 @@ export const ListCuratorsCuratedPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCuratorsCuratedPackagesRequest",
 }) as any as S.Schema<ListCuratorsCuratedPackagesRequest>;
 
-export type CuratedPackageList = CuratedPackage[];
+export type CuratedPackageList = ReadonlyArray<CuratedPackage>;
 export const CuratedPackageList = /*@__PURE__*/ S.Array(
   CuratedPackage,
 ) as any as S.Schema<CuratedPackageList>;
@@ -947,7 +926,7 @@ export const ListCuratorsDataSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCuratorsDataSegmentsRequest",
 }) as any as S.Schema<ListCuratorsDataSegmentsRequest>;
 
-export type DataSegmentList = DataSegment[];
+export type DataSegmentList = ReadonlyArray<DataSegment>;
 export const DataSegmentList = /*@__PURE__*/ S.Array(
   DataSegment,
 ) as any as S.Schema<DataSegmentList>;
@@ -1012,7 +991,7 @@ export const MediaPlanner = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MediaPlanner" }) as any as S.Schema<MediaPlanner>;
 
-export type MediaPlannerList = MediaPlanner[];
+export type MediaPlannerList = ReadonlyArray<MediaPlanner>;
 export const MediaPlannerList = /*@__PURE__*/ S.Array(
   MediaPlanner,
 ) as any as S.Schema<MediaPlannerList>;

@@ -66,16 +66,6 @@
         "smithy.api#documentation": "Deprecated: use /api/environments/{id}/ instead."
       }
     },
-    "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestDefaultModifiersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestAppUrlsList": {
       "type": "list",
       "member": {
@@ -3727,6 +3717,26 @@
         "smithy.api#documentation": "* `30d` - 30 Days\n* `90d` - 90 Days\n* `1y` - 1 Year\n* `5y` - 5 Years"
       }
     },
+    "com.posthog.environments#WeekStartDayEnum": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `0` - Sunday\n* `1` - Monday"
+      }
+    },
     "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestLiveEventsColumnsList": {
       "type": "list",
       "member": {
@@ -3740,6 +3750,32 @@
         "target": "smithy.api#String"
       },
       "traits": {}
+    },
+    "com.posthog.environments#CookielessServerHashModeEnum": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `0` - Disabled\n* `1` - Stateless\n* `2` - Stateful"
+      }
     },
     "com.posthog.environments#TeamRevenueAnalyticsConfig": {
       "type": "structure",
@@ -4851,479 +4887,6 @@
       },
       "traits": {}
     },
-    "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestGroupTypesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestGroupTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestGroupTypesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestProductIntentsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestProductIntentsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestProductIntentsItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestManagedViewsetsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Boolean"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#AvailableSetupTaskIdsEnum": {
-      "type": "enum",
-      "members": {
-        "INGEST_FIRST_EVENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ingest_first_event"
-          }
-        },
-        "SET_UP_REVERSE_PROXY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "set_up_reverse_proxy"
-          }
-        },
-        "CREATE_FIRST_INSIGHT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_first_insight"
-          }
-        },
-        "CREATE_FIRST_DASHBOARD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_first_dashboard"
-          }
-        },
-        "TRACK_CUSTOM_EVENTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "track_custom_events"
-          }
-        },
-        "DEFINE_ACTIONS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "define_actions"
-          }
-        },
-        "SET_UP_COHORTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "set_up_cohorts"
-          }
-        },
-        "EXPLORE_TRENDS_INSIGHT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "explore_trends_insight"
-          }
-        },
-        "CREATE_FUNNEL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_funnel"
-          }
-        },
-        "EXPLORE_RETENTION_INSIGHT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "explore_retention_insight"
-          }
-        },
-        "EXPLORE_PATHS_INSIGHT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "explore_paths_insight"
-          }
-        },
-        "EXPLORE_STICKINESS_INSIGHT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "explore_stickiness_insight"
-          }
-        },
-        "EXPLORE_LIFECYCLE_INSIGHT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "explore_lifecycle_insight"
-          }
-        },
-        "ADD_AUTHORIZED_DOMAIN": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "add_authorized_domain"
-          }
-        },
-        "SET_UP_WEB_VITALS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "set_up_web_vitals"
-          }
-        },
-        "REVIEW_WEB_ANALYTICS_DASHBOARD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "review_web_analytics_dashboard"
-          }
-        },
-        "FILTER_WEB_ANALYTICS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "filter_web_analytics"
-          }
-        },
-        "SET_UP_WEB_ANALYTICS_CONVERSION_GOALS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "set_up_web_analytics_conversion_goals"
-          }
-        },
-        "VISIT_WEB_VITALS_DASHBOARD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "visit_web_vitals_dashboard"
-          }
-        },
-        "SETUP_SESSION_RECORDINGS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "setup_session_recordings"
-          }
-        },
-        "WATCH_SESSION_RECORDING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "watch_session_recording"
-          }
-        },
-        "CONFIGURE_RECORDING_SETTINGS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "configure_recording_settings"
-          }
-        },
-        "CREATE_RECORDING_PLAYLIST": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_recording_playlist"
-          }
-        },
-        "ENABLE_CONSOLE_LOGS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "enable_console_logs"
-          }
-        },
-        "CREATE_FEATURE_FLAG": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_feature_flag"
-          }
-        },
-        "IMPLEMENT_FLAG_IN_CODE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "implement_flag_in_code"
-          }
-        },
-        "UPDATE_FEATURE_FLAG_RELEASE_CONDITIONS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "update_feature_flag_release_conditions"
-          }
-        },
-        "CREATE_MULTIVARIATE_FLAG": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_multivariate_flag"
-          }
-        },
-        "SET_UP_FLAG_PAYLOADS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "set_up_flag_payloads"
-          }
-        },
-        "SET_UP_FLAG_EVALUATION_RUNTIMES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "set_up_flag_evaluation_runtimes"
-          }
-        },
-        "CREATE_EXPERIMENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_experiment"
-          }
-        },
-        "IMPLEMENT_EXPERIMENT_VARIANTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "implement_experiment_variants"
-          }
-        },
-        "LAUNCH_EXPERIMENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "launch_experiment"
-          }
-        },
-        "REVIEW_EXPERIMENT_RESULTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "review_experiment_results"
-          }
-        },
-        "CREATE_SURVEY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_survey"
-          }
-        },
-        "LAUNCH_SURVEY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "launch_survey"
-          }
-        },
-        "COLLECT_SURVEY_RESPONSES": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "collect_survey_responses"
-          }
-        },
-        "CONNECT_SOURCE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "connect_source"
-          }
-        },
-        "RUN_FIRST_QUERY": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "run_first_query"
-          }
-        },
-        "JOIN_EXTERNAL_DATA": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "join_external_data"
-          }
-        },
-        "CREATE_SAVED_VIEW": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_saved_view"
-          }
-        },
-        "ENABLE_ERROR_TRACKING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "enable_error_tracking"
-          }
-        },
-        "UPLOAD_SOURCE_MAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "upload_source_maps"
-          }
-        },
-        "VIEW_FIRST_ERROR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "view_first_error"
-          }
-        },
-        "RESOLVE_FIRST_ERROR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "resolve_first_error"
-          }
-        },
-        "INGEST_FIRST_LLM_EVENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ingest_first_llm_event"
-          }
-        },
-        "VIEW_FIRST_TRACE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "view_first_trace"
-          }
-        },
-        "TRACK_COSTS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "track_costs"
-          }
-        },
-        "SET_UP_LLM_EVALUATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "set_up_llm_evaluation"
-          }
-        },
-        "RUN_AI_PLAYGROUND": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "run_ai_playground"
-          }
-        },
-        "ENABLE_REVENUE_ANALYTICS_VIEWSET": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "enable_revenue_analytics_viewset"
-          }
-        },
-        "CONNECT_REVENUE_SOURCE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "connect_revenue_source"
-          }
-        },
-        "SET_UP_REVENUE_GOAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "set_up_revenue_goal"
-          }
-        },
-        "ENABLE_LOG_CAPTURE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "enable_log_capture"
-          }
-        },
-        "VIEW_FIRST_LOGS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "view_first_logs"
-          }
-        },
-        "CREATE_FIRST_WORKFLOW": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_first_workflow"
-          }
-        },
-        "SET_UP_FIRST_WORKFLOW_CHANNEL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "set_up_first_workflow_channel"
-          }
-        },
-        "CONFIGURE_WORKFLOW_TRIGGER": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "configure_workflow_trigger"
-          }
-        },
-        "ADD_WORKFLOW_ACTION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "add_workflow_action"
-          }
-        },
-        "LAUNCH_WORKFLOW": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "launch_workflow"
-          }
-        },
-        "CREATE_FIRST_ENDPOINT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_first_endpoint"
-          }
-        },
-        "CONFIGURE_ENDPOINT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "configure_endpoint"
-          }
-        },
-        "TEST_ENDPOINT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "test_endpoint"
-          }
-        },
-        "CREATE_EARLY_ACCESS_FEATURE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "create_early_access_feature"
-          }
-        },
-        "UPDATE_FEATURE_STAGE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "update_feature_stage"
-          }
-        },
-        "USE_POSTHOG_AI": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "use_posthog_ai"
-          }
-        },
-        "USE_POSTHOG_CODE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "use_posthog_code"
-          }
-        },
-        "USE_POSTHOG_MCP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "use_posthog_mcp"
-          }
-        },
-        "USE_POSTHOG_IN_SLACK": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "use_posthog_in_slack"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "* `ingest_first_event` - ingest_first_event\n* `set_up_reverse_proxy` - set_up_reverse_proxy\n* `create_first_insight` - create_first_insight\n* `create_first_dashboard` - create_first_dashboard\n* `track_custom_events` - track_custom_events\n* `define_actions` - define_actions\n* `set_up_cohorts` - set_up_cohorts\n* `explore_trends_insight` - explore_trends_insight\n* `create_funnel` - create_funnel\n* `explore_retention_insight` - explore_retention_insight\n* `explore_paths_insight` - explore_paths_insight\n* `explore_stickiness_insight` - explore_stickiness_insight\n* `explore_lifecycle_insight` - explore_lifecycle_insight\n* `add_authorized_domain` - add_authorized_domain\n* `set_up_web_vitals` - set_up_web_vitals\n* `review_web_analytics_dashboard` - review_web_analytics_dashboard\n* `filter_web_analytics` - filter_web_analytics\n* `set_up_web_analytics_conversion_goals` - set_up_web_analytics_conversion_goals\n* `visit_web_vitals_dashboard` - visit_web_vitals_dashboard\n* `setup_session_recordings` - setup_session_recordings\n* `watch_session_recording` - watch_session_recording\n* `configure_recording_settings` - configure_recording_settings\n* `create_recording_playlist` - create_recording_playlist\n* `enable_console_logs` - enable_console_logs\n* `create_feature_flag` - create_feature_flag\n* `implement_flag_in_code` - implement_flag_in_code\n* `update_feature_flag_release_conditions` - update_feature_flag_release_conditions\n* `create_multivariate_flag` - create_multivariate_flag\n* `set_up_flag_payloads` - set_up_flag_payloads\n* `set_up_flag_evaluation_runtimes` - set_up_flag_evaluation_runtimes\n* `create_experiment` - create_experiment\n* `implement_experiment_variants` - implement_experiment_variants\n* `launch_experiment` - launch_experiment\n* `review_experiment_results` - review_experiment_results\n* `create_survey` - create_survey\n* `launch_survey` - launch_survey\n* `collect_survey_responses` - collect_survey_responses\n* `connect_source` - connect_source\n* `run_first_query` - run_first_query\n* `join_external_data` - join_external_data\n* `create_saved_view` - create_saved_view\n* `enable_error_tracking` - enable_error_tracking\n* `upload_source_maps` - upload_source_maps\n* `view_first_error` - view_first_error\n* `resolve_first_error` - resolve_first_error\n* `ingest_first_llm_event` - ingest_first_llm_event\n* `view_first_trace` - view_first_trace\n* `track_costs` - track_costs\n* `set_up_llm_evaluation` - set_up_llm_evaluation\n* `run_ai_playground` - run_ai_playground\n* `enable_revenue_analytics_viewset` - enable_revenue_analytics_viewset\n* `connect_revenue_source` - connect_revenue_source\n* `set_up_revenue_goal` - set_up_revenue_goal\n* `enable_log_capture` - enable_log_capture\n* `view_first_logs` - view_first_logs\n* `create_first_workflow` - create_first_workflow\n* `set_up_first_workflow_channel` - set_up_first_workflow_channel\n* `configure_workflow_trigger` - configure_workflow_trigger\n* `add_workflow_action` - add_workflow_action\n* `launch_workflow` - launch_workflow\n* `create_first_endpoint` - create_first_endpoint\n* `configure_endpoint` - configure_endpoint\n* `test_endpoint` - test_endpoint\n* `create_early_access_feature` - create_early_access_feature\n* `update_feature_stage` - update_feature_stage\n* `use_posthog_ai` - use_posthog_ai\n* `use_posthog_code` - use_posthog_code\n* `use_posthog_mcp` - use_posthog_mcp\n* `use_posthog_in_slack` - use_posthog_in_slack"
-      }
-    },
-    "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestAvailableSetupTaskIdsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#AvailableSetupTaskIdsEnum"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -5343,57 +4906,11 @@
             "smithy.api#documentation": "A unique integer value identifying this environment (aka team)."
           }
         },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "access_control": {
           "target": "smithy.api#Boolean"
-        },
-        "organization": {
-          "target": "smithy.api#String"
-        },
-        "api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "secret_api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "secret_api_token_backup": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "ingested_event": {
-          "target": "smithy.api#Boolean"
-        },
-        "default_modifiers": {
-          "target": "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestDefaultModifiersMap"
-        },
-        "person_on_events_querying_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "app_urls": {
           "target": "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestAppUrlsList"
@@ -5540,7 +5057,7 @@
           "target": "smithy.api#Document"
         },
         "week_start_day": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#WeekStartDayEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -5564,7 +5081,7 @@
           }
         },
         "cookieless_server_hash_mode": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#CookielessServerHashModeEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -5697,42 +5214,6 @@
         },
         "workflows_config": {
           "target": "com.posthog.environments#TeamWorkflowsConfig"
-        },
-        "effective_membership_level": {
-          "target": "smithy.api#Double"
-        },
-        "has_group_types": {
-          "target": "smithy.api#Boolean"
-        },
-        "group_types": {
-          "target": "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestGroupTypesList"
-        },
-        "live_events_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "product_intents": {
-          "target": "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestProductIntentsList"
-        },
-        "managed_viewsets": {
-          "target": "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestManagedViewsetsMap"
-        },
-        "available_setup_task_ids": {
-          "target": "com.posthog.environments#EnvironmentsAddProductIntentPartialUpdateRequestAvailableSetupTaskIdsList"
-        },
-        "event_retention_months": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months."
-          }
-        },
-        "events_retention_enforced": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether events data retention is currently enforced for this team (cohort/flag gated)."
-          }
         }
       },
       "traits": {
@@ -5766,16 +5247,6 @@
         },
         "smithy.api#documentation": "Deprecated: use /api/environments/{id}/ instead."
       }
-    },
-    "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestDefaultModifiersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
     },
     "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestAppUrlsList": {
       "type": "list",
@@ -5840,57 +5311,6 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestGroupTypesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestGroupTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestGroupTypesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestProductIntentsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestProductIntentsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestProductIntentsItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestManagedViewsetsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Boolean"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestAvailableSetupTaskIdsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#AvailableSetupTaskIdsEnum"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -5910,57 +5330,11 @@
             "smithy.api#documentation": "A unique integer value identifying this environment (aka team)."
           }
         },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "access_control": {
           "target": "smithy.api#Boolean"
-        },
-        "organization": {
-          "target": "smithy.api#String"
-        },
-        "api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "secret_api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "secret_api_token_backup": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "ingested_event": {
-          "target": "smithy.api#Boolean"
-        },
-        "default_modifiers": {
-          "target": "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestDefaultModifiersMap"
-        },
-        "person_on_events_querying_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "app_urls": {
           "target": "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestAppUrlsList"
@@ -6107,7 +5481,7 @@
           "target": "smithy.api#Document"
         },
         "week_start_day": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#WeekStartDayEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -6131,7 +5505,7 @@
           }
         },
         "cookieless_server_hash_mode": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#CookielessServerHashModeEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -6264,42 +5638,6 @@
         },
         "workflows_config": {
           "target": "com.posthog.environments#TeamWorkflowsConfig"
-        },
-        "effective_membership_level": {
-          "target": "smithy.api#Double"
-        },
-        "has_group_types": {
-          "target": "smithy.api#Boolean"
-        },
-        "group_types": {
-          "target": "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestGroupTypesList"
-        },
-        "live_events_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "product_intents": {
-          "target": "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestProductIntentsList"
-        },
-        "managed_viewsets": {
-          "target": "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestManagedViewsetsMap"
-        },
-        "available_setup_task_ids": {
-          "target": "com.posthog.environments#EnvironmentsCompleteProductOnboardingPartialUpdateRequestAvailableSetupTaskIdsList"
-        },
-        "event_retention_months": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months."
-          }
-        },
-        "events_retention_enforced": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether events data retention is currently enforced for this team (cohort/flag gated)."
-          }
         }
       },
       "traits": {
@@ -6383,16 +5721,6 @@
         "smithy.api#documentation": "Manage default evaluation contexts for a team."
       }
     },
-    "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestDefaultModifiersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestAppUrlsList": {
       "type": "list",
       "member": {
@@ -6456,57 +5784,6 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestGroupTypesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestGroupTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestGroupTypesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestProductIntentsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestProductIntentsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestProductIntentsItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestManagedViewsetsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Boolean"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestAvailableSetupTaskIdsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#AvailableSetupTaskIdsEnum"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequest": {
       "type": "structure",
       "members": {
@@ -6526,57 +5803,11 @@
             "smithy.api#documentation": "A unique integer value identifying this environment (aka team)."
           }
         },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "access_control": {
           "target": "smithy.api#Boolean"
-        },
-        "organization": {
-          "target": "smithy.api#String"
-        },
-        "api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "secret_api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "secret_api_token_backup": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "ingested_event": {
-          "target": "smithy.api#Boolean"
-        },
-        "default_modifiers": {
-          "target": "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestDefaultModifiersMap"
-        },
-        "person_on_events_querying_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "app_urls": {
           "target": "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestAppUrlsList"
@@ -6723,7 +5954,7 @@
           "target": "smithy.api#Document"
         },
         "week_start_day": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#WeekStartDayEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -6747,7 +5978,7 @@
           }
         },
         "cookieless_server_hash_mode": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#CookielessServerHashModeEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -6880,42 +6111,6 @@
         },
         "workflows_config": {
           "target": "com.posthog.environments#TeamWorkflowsConfig"
-        },
-        "effective_membership_level": {
-          "target": "smithy.api#Double"
-        },
-        "has_group_types": {
-          "target": "smithy.api#Boolean"
-        },
-        "group_types": {
-          "target": "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestGroupTypesList"
-        },
-        "live_events_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "product_intents": {
-          "target": "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestProductIntentsList"
-        },
-        "managed_viewsets": {
-          "target": "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestManagedViewsetsMap"
-        },
-        "available_setup_task_ids": {
-          "target": "com.posthog.environments#EnvironmentsDefaultEvaluationContextsCreateRequestAvailableSetupTaskIdsList"
-        },
-        "event_retention_months": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months."
-          }
-        },
-        "events_retention_enforced": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether events data retention is currently enforced for this team (cohort/flag gated)."
-          }
         }
       },
       "traits": {
@@ -7048,16 +6243,6 @@
         "smithy.api#documentation": "Manage default release conditions for new feature flags in this team."
       }
     },
-    "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestDefaultModifiersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestAppUrlsList": {
       "type": "list",
       "member": {
@@ -7121,57 +6306,6 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestGroupTypesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestGroupTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestGroupTypesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestProductIntentsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestProductIntentsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestProductIntentsItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestManagedViewsetsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Boolean"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestAvailableSetupTaskIdsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#AvailableSetupTaskIdsEnum"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequest": {
       "type": "structure",
       "members": {
@@ -7191,57 +6325,11 @@
             "smithy.api#documentation": "A unique integer value identifying this environment (aka team)."
           }
         },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "access_control": {
           "target": "smithy.api#Boolean"
-        },
-        "organization": {
-          "target": "smithy.api#String"
-        },
-        "api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "secret_api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "secret_api_token_backup": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "ingested_event": {
-          "target": "smithy.api#Boolean"
-        },
-        "default_modifiers": {
-          "target": "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestDefaultModifiersMap"
-        },
-        "person_on_events_querying_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "app_urls": {
           "target": "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestAppUrlsList"
@@ -7388,7 +6476,7 @@
           "target": "smithy.api#Document"
         },
         "week_start_day": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#WeekStartDayEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -7412,7 +6500,7 @@
           }
         },
         "cookieless_server_hash_mode": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#CookielessServerHashModeEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -7545,42 +6633,6 @@
         },
         "workflows_config": {
           "target": "com.posthog.environments#TeamWorkflowsConfig"
-        },
-        "effective_membership_level": {
-          "target": "smithy.api#Double"
-        },
-        "has_group_types": {
-          "target": "smithy.api#Boolean"
-        },
-        "group_types": {
-          "target": "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestGroupTypesList"
-        },
-        "live_events_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "product_intents": {
-          "target": "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestProductIntentsList"
-        },
-        "managed_viewsets": {
-          "target": "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestManagedViewsetsMap"
-        },
-        "available_setup_task_ids": {
-          "target": "com.posthog.environments#EnvironmentsDefaultReleaseConditionsUpdateRequestAvailableSetupTaskIdsList"
-        },
-        "event_retention_months": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months."
-          }
-        },
-        "events_retention_enforced": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether events data retention is currently enforced for this team (cohort/flag gated)."
-          }
         }
       },
       "traits": {
@@ -7614,16 +6666,6 @@
         },
         "smithy.api#documentation": "Manage default release conditions for new feature flags in this team."
       }
-    },
-    "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestDefaultModifiersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
     },
     "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList": {
       "type": "list",
@@ -7688,57 +6730,6 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestManagedViewsetsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Boolean"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestAvailableSetupTaskIdsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#AvailableSetupTaskIdsEnum"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -7758,57 +6749,11 @@
             "smithy.api#documentation": "A unique integer value identifying this environment (aka team)."
           }
         },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "access_control": {
           "target": "smithy.api#Boolean"
-        },
-        "organization": {
-          "target": "smithy.api#String"
-        },
-        "api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "secret_api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "secret_api_token_backup": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "ingested_event": {
-          "target": "smithy.api#Boolean"
-        },
-        "default_modifiers": {
-          "target": "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestDefaultModifiersMap"
-        },
-        "person_on_events_querying_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "app_urls": {
           "target": "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestAppUrlsList"
@@ -7955,7 +6900,7 @@
           "target": "smithy.api#Document"
         },
         "week_start_day": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#WeekStartDayEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -7979,7 +6924,7 @@
           }
         },
         "cookieless_server_hash_mode": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#CookielessServerHashModeEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -8112,42 +7057,6 @@
         },
         "workflows_config": {
           "target": "com.posthog.environments#TeamWorkflowsConfig"
-        },
-        "effective_membership_level": {
-          "target": "smithy.api#Double"
-        },
-        "has_group_types": {
-          "target": "smithy.api#Boolean"
-        },
-        "group_types": {
-          "target": "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestGroupTypesList"
-        },
-        "live_events_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "product_intents": {
-          "target": "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestProductIntentsList"
-        },
-        "managed_viewsets": {
-          "target": "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestManagedViewsetsMap"
-        },
-        "available_setup_task_ids": {
-          "target": "com.posthog.environments#EnvironmentsDeleteSecretTokenBackupPartialUpdateRequestAvailableSetupTaskIdsList"
-        },
-        "event_retention_months": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months."
-          }
-        },
-        "events_retention_enforced": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether events data retention is currently enforced for this team (cohort/flag gated)."
-          }
         }
       },
       "traits": {
@@ -8404,16 +7313,6 @@
         "smithy.api#documentation": "Manage experiment configuration for this environment."
       }
     },
-    "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestDefaultModifiersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestAppUrlsList": {
       "type": "list",
       "member": {
@@ -8477,57 +7376,6 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestGroupTypesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestGroupTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestGroupTypesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestProductIntentsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestProductIntentsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestProductIntentsItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestManagedViewsetsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Boolean"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestAvailableSetupTaskIdsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#AvailableSetupTaskIdsEnum"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -8547,57 +7395,11 @@
             "smithy.api#documentation": "A unique integer value identifying this environment (aka team)."
           }
         },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "access_control": {
           "target": "smithy.api#Boolean"
-        },
-        "organization": {
-          "target": "smithy.api#String"
-        },
-        "api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "secret_api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "secret_api_token_backup": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "ingested_event": {
-          "target": "smithy.api#Boolean"
-        },
-        "default_modifiers": {
-          "target": "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestDefaultModifiersMap"
-        },
-        "person_on_events_querying_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "app_urls": {
           "target": "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestAppUrlsList"
@@ -8744,7 +7546,7 @@
           "target": "smithy.api#Document"
         },
         "week_start_day": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#WeekStartDayEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -8768,7 +7570,7 @@
           }
         },
         "cookieless_server_hash_mode": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#CookielessServerHashModeEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -8901,42 +7703,6 @@
         },
         "workflows_config": {
           "target": "com.posthog.environments#TeamWorkflowsConfig"
-        },
-        "effective_membership_level": {
-          "target": "smithy.api#Double"
-        },
-        "has_group_types": {
-          "target": "smithy.api#Boolean"
-        },
-        "group_types": {
-          "target": "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestGroupTypesList"
-        },
-        "live_events_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "product_intents": {
-          "target": "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestProductIntentsList"
-        },
-        "managed_viewsets": {
-          "target": "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestManagedViewsetsMap"
-        },
-        "available_setup_task_ids": {
-          "target": "com.posthog.environments#EnvironmentsExperimentsConfigPartialUpdateRequestAvailableSetupTaskIdsList"
-        },
-        "event_retention_months": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months."
-          }
-        },
-        "events_retention_enforced": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether events data retention is currently enforced for this team (cohort/flag gated)."
-          }
         }
       },
       "traits": {
@@ -8970,16 +7736,6 @@
         },
         "smithy.api#documentation": "Manage experiment configuration for this environment."
       }
-    },
-    "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestDefaultModifiersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
     },
     "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestAppUrlsList": {
       "type": "list",
@@ -9044,57 +7800,6 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestGroupTypesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestGroupTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestGroupTypesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestProductIntentsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestProductIntentsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestProductIntentsItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestManagedViewsetsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Boolean"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestAvailableSetupTaskIdsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#AvailableSetupTaskIdsEnum"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequest": {
       "type": "structure",
       "members": {
@@ -9114,57 +7819,11 @@
             "smithy.api#documentation": "A unique integer value identifying this environment (aka team)."
           }
         },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "access_control": {
           "target": "smithy.api#Boolean"
-        },
-        "organization": {
-          "target": "smithy.api#String"
-        },
-        "api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "secret_api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "secret_api_token_backup": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "ingested_event": {
-          "target": "smithy.api#Boolean"
-        },
-        "default_modifiers": {
-          "target": "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestDefaultModifiersMap"
-        },
-        "person_on_events_querying_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "app_urls": {
           "target": "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestAppUrlsList"
@@ -9311,7 +7970,7 @@
           "target": "smithy.api#Document"
         },
         "week_start_day": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#WeekStartDayEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -9335,7 +7994,7 @@
           }
         },
         "cookieless_server_hash_mode": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#CookielessServerHashModeEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -9468,42 +8127,6 @@
         },
         "workflows_config": {
           "target": "com.posthog.environments#TeamWorkflowsConfig"
-        },
-        "effective_membership_level": {
-          "target": "smithy.api#Double"
-        },
-        "has_group_types": {
-          "target": "smithy.api#Boolean"
-        },
-        "group_types": {
-          "target": "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestGroupTypesList"
-        },
-        "live_events_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "product_intents": {
-          "target": "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestProductIntentsList"
-        },
-        "managed_viewsets": {
-          "target": "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestManagedViewsetsMap"
-        },
-        "available_setup_task_ids": {
-          "target": "com.posthog.environments#EnvironmentsGenerateConversationsPublicTokenCreateRequestAvailableSetupTaskIdsList"
-        },
-        "event_retention_months": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months."
-          }
-        },
-        "events_retention_enforced": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether events data retention is currently enforced for this team (cohort/flag gated)."
-          }
         }
       },
       "traits": {
@@ -9628,16 +8251,6 @@
         "smithy.api#documentation": "Manage logs product configuration for this environment. Members can read;\nwriting requires project admin, matching the admin-only settings UI."
       }
     },
-    "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestDefaultModifiersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestAppUrlsList": {
       "type": "list",
       "member": {
@@ -9701,57 +8314,6 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestGroupTypesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestGroupTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestGroupTypesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestProductIntentsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestProductIntentsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestProductIntentsItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestManagedViewsetsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Boolean"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestAvailableSetupTaskIdsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#AvailableSetupTaskIdsEnum"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -9771,57 +8333,11 @@
             "smithy.api#documentation": "A unique integer value identifying this environment (aka team)."
           }
         },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "access_control": {
           "target": "smithy.api#Boolean"
-        },
-        "organization": {
-          "target": "smithy.api#String"
-        },
-        "api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "secret_api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "secret_api_token_backup": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "ingested_event": {
-          "target": "smithy.api#Boolean"
-        },
-        "default_modifiers": {
-          "target": "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestDefaultModifiersMap"
-        },
-        "person_on_events_querying_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "app_urls": {
           "target": "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestAppUrlsList"
@@ -9968,7 +8484,7 @@
           "target": "smithy.api#Document"
         },
         "week_start_day": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#WeekStartDayEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -9992,7 +8508,7 @@
           }
         },
         "cookieless_server_hash_mode": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#CookielessServerHashModeEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -10125,42 +8641,6 @@
         },
         "workflows_config": {
           "target": "com.posthog.environments#TeamWorkflowsConfig"
-        },
-        "effective_membership_level": {
-          "target": "smithy.api#Double"
-        },
-        "has_group_types": {
-          "target": "smithy.api#Boolean"
-        },
-        "group_types": {
-          "target": "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestGroupTypesList"
-        },
-        "live_events_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "product_intents": {
-          "target": "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestProductIntentsList"
-        },
-        "managed_viewsets": {
-          "target": "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestManagedViewsetsMap"
-        },
-        "available_setup_task_ids": {
-          "target": "com.posthog.environments#EnvironmentsLogsConfigPartialUpdateRequestAvailableSetupTaskIdsList"
-        },
-        "event_retention_months": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months."
-          }
-        },
-        "events_retention_enforced": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether events data retention is currently enforced for this team (cohort/flag gated)."
-          }
         }
       },
       "traits": {
@@ -10183,16 +8663,6 @@
         },
         "smithy.api#documentation": "Manage logs product configuration for this environment. Members can read;\nwriting requires project admin, matching the admin-only settings UI."
       }
-    },
-    "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestDefaultModifiersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
     },
     "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestAppUrlsList": {
       "type": "list",
@@ -10257,57 +8727,6 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestGroupTypesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestGroupTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestGroupTypesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestProductIntentsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestProductIntentsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestProductIntentsItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestManagedViewsetsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Boolean"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestAvailableSetupTaskIdsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#AvailableSetupTaskIdsEnum"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -10327,57 +8746,11 @@
             "smithy.api#documentation": "A unique integer value identifying this environment (aka team)."
           }
         },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "access_control": {
           "target": "smithy.api#Boolean"
-        },
-        "organization": {
-          "target": "smithy.api#String"
-        },
-        "api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "secret_api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "secret_api_token_backup": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "ingested_event": {
-          "target": "smithy.api#Boolean"
-        },
-        "default_modifiers": {
-          "target": "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestDefaultModifiersMap"
-        },
-        "person_on_events_querying_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "app_urls": {
           "target": "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestAppUrlsList"
@@ -10524,7 +8897,7 @@
           "target": "smithy.api#Document"
         },
         "week_start_day": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#WeekStartDayEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -10548,7 +8921,7 @@
           }
         },
         "cookieless_server_hash_mode": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#CookielessServerHashModeEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -10681,42 +9054,6 @@
         },
         "workflows_config": {
           "target": "com.posthog.environments#TeamWorkflowsConfig"
-        },
-        "effective_membership_level": {
-          "target": "smithy.api#Double"
-        },
-        "has_group_types": {
-          "target": "smithy.api#Boolean"
-        },
-        "group_types": {
-          "target": "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestGroupTypesList"
-        },
-        "live_events_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "product_intents": {
-          "target": "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestProductIntentsList"
-        },
-        "managed_viewsets": {
-          "target": "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestManagedViewsetsMap"
-        },
-        "available_setup_task_ids": {
-          "target": "com.posthog.environments#EnvironmentsResetTokenPartialUpdateRequestAvailableSetupTaskIdsList"
-        },
-        "event_retention_months": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months."
-          }
-        },
-        "events_retention_enforced": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether events data retention is currently enforced for this team (cohort/flag gated)."
-          }
         }
       },
       "traits": {
@@ -10750,16 +9087,6 @@
         },
         "smithy.api#documentation": "Deprecated: use /api/environments/{id}/ instead."
       }
-    },
-    "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestDefaultModifiersMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
     },
     "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestAppUrlsList": {
       "type": "list",
@@ -10824,57 +9151,6 @@
         "smithy.api#documentation": "Whether this project serves B2B or B2C customers, used to optimize the UI layout.\n\n* `b2b` - B2B\n* `b2c` - B2C\n* `other` - Other"
       }
     },
-    "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestGroupTypesItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestGroupTypesList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestGroupTypesItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestProductIntentsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestProductIntentsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestProductIntentsItemMap"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestManagedViewsetsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Boolean"
-      },
-      "traits": {}
-    },
-    "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestAvailableSetupTaskIdsList": {
-      "type": "list",
-      "member": {
-        "target": "com.posthog.environments#AvailableSetupTaskIdsEnum"
-      },
-      "traits": {}
-    },
     "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequest": {
       "type": "structure",
       "members": {
@@ -10894,57 +9170,11 @@
             "smithy.api#documentation": "A unique integer value identifying this environment (aka team)."
           }
         },
-        "uuid": {
-          "target": "smithy.api#String"
-        },
         "name": {
           "target": "smithy.api#String"
         },
         "access_control": {
           "target": "smithy.api#Boolean"
-        },
-        "organization": {
-          "target": "smithy.api#String"
-        },
-        "api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#sensitive": {}
-          }
-        },
-        "secret_api_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "secret_api_token_backup": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "ingested_event": {
-          "target": "smithy.api#Boolean"
-        },
-        "default_modifiers": {
-          "target": "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestDefaultModifiersMap"
-        },
-        "person_on_events_querying_enabled": {
-          "target": "smithy.api#Boolean"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "app_urls": {
           "target": "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestAppUrlsList"
@@ -11091,7 +9321,7 @@
           "target": "smithy.api#Document"
         },
         "week_start_day": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#WeekStartDayEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -11115,7 +9345,7 @@
           }
         },
         "cookieless_server_hash_mode": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.environments#CookielessServerHashModeEnum",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -11248,42 +9478,6 @@
         },
         "workflows_config": {
           "target": "com.posthog.environments#TeamWorkflowsConfig"
-        },
-        "effective_membership_level": {
-          "target": "smithy.api#Double"
-        },
-        "has_group_types": {
-          "target": "smithy.api#Boolean"
-        },
-        "group_types": {
-          "target": "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestGroupTypesList"
-        },
-        "live_events_token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "product_intents": {
-          "target": "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestProductIntentsList"
-        },
-        "managed_viewsets": {
-          "target": "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestManagedViewsetsMap"
-        },
-        "available_setup_task_ids": {
-          "target": "com.posthog.environments#EnvironmentsRotateSecretTokenPartialUpdateRequestAvailableSetupTaskIdsList"
-        },
-        "event_retention_months": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "The team's events data retention window in months (plan-derived, synced from billing). When retention enforcement is active for the team, queries do not return events older than this many months."
-          }
-        },
-        "events_retention_enforced": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether events data retention is currently enforced for this team (cohort/flag gated)."
-          }
         }
       },
       "traits": {

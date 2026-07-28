@@ -123,8 +123,7 @@ export type BestSellersBrandViewRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH"
-  | (string & {});
+  | "VERY_HIGH";
 export const BestSellersBrandViewRelativeDemandEnum = /*@__PURE__*/ S.String;
 
 export type BestSellersBrandViewPreviousRelativeDemandEnum =
@@ -133,8 +132,7 @@ export type BestSellersBrandViewPreviousRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH"
-  | (string & {});
+  | "VERY_HIGH";
 export const BestSellersBrandViewPreviousRelativeDemandEnum =
   /*@__PURE__*/ S.String;
 
@@ -142,16 +140,14 @@ export type BestSellersBrandViewRelativeDemandChangeEnum =
   | "RELATIVE_DEMAND_CHANGE_TYPE_ENUM_UNSPECIFIED"
   | "SINKER"
   | "FLAT"
-  | "RISER"
-  | (string & {});
+  | "RISER";
 export const BestSellersBrandViewRelativeDemandChangeEnum =
   /*@__PURE__*/ S.String;
 
 export type BestSellersBrandViewReportGranularityEnum =
   | "REPORT_GRANULARITY_ENUM_UNSPECIFIED"
   | "WEEKLY"
-  | "MONTHLY"
-  | (string & {});
+  | "MONTHLY";
 export const BestSellersBrandViewReportGranularityEnum = /*@__PURE__*/ S.String;
 
 /** Fields available for query in `best_sellers_brand_view` table. [Best sellers](https://support.google.com/merchants/answer/9488679) report with top brands. Values are only set for fields requested explicitly in the request's search query. */
@@ -202,8 +198,7 @@ export type CompetitiveVisibilityBenchmarkViewTrafficSourceEnum =
   | "TRAFFIC_SOURCE_ENUM_UNSPECIFIED"
   | "ORGANIC"
   | "ADS"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const CompetitiveVisibilityBenchmarkViewTrafficSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -241,8 +236,7 @@ export type PriceInsightsProductViewEffectivenessEnum =
   | "EFFECTIVENESS_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const PriceInsightsProductViewEffectivenessEnum = /*@__PURE__*/ S.String;
 
 /** The price represented as a number and currency. */
@@ -329,7 +323,7 @@ export const PriceInsightsProductView = /*@__PURE__*/ S.suspend(() =>
   identifier: "PriceInsightsProductView",
 }) as any as S.Schema<PriceInsightsProductView>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -338,8 +332,7 @@ export type ProductViewClickPotentialEnum =
   | "CLICK_POTENTIAL_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const ProductViewClickPotentialEnum = /*@__PURE__*/ S.String;
 
 /** Issue type. */
@@ -376,8 +369,7 @@ export type IssueSeverityPerReportingContextReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const IssueSeverityPerReportingContextReportingContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -403,7 +395,7 @@ export const IssueSeverityPerReportingContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueSeverityPerReportingContext>;
 
 export type IssueSeverityPerReportingContextList =
-  IssueSeverityPerReportingContext[];
+  ReadonlyArray<IssueSeverityPerReportingContext>;
 export const IssueSeverityPerReportingContextList = /*@__PURE__*/ S.Array(
   IssueSeverityPerReportingContext,
 ) as any as S.Schema<IssueSeverityPerReportingContextList>;
@@ -412,8 +404,7 @@ export type ItemIssueSeverityAggregatedSeverityEnum =
   | "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED"
   | "DISAPPROVED"
   | "DEMOTED"
-  | "PENDING"
-  | (string & {});
+  | "PENDING";
 export const ItemIssueSeverityAggregatedSeverityEnum = /*@__PURE__*/ S.String;
 
 /** How the issue affects the serving of the product. */
@@ -437,8 +428,7 @@ export const ItemIssueSeverity = /*@__PURE__*/ S.suspend(() =>
 export type ItemIssueResolutionEnum =
   | "ITEM_ISSUE_RESOLUTION_UNSPECIFIED"
   | "MERCHANT_ACTION"
-  | "PENDING_PROCESSING"
-  | (string & {});
+  | "PENDING_PROCESSING";
 export const ItemIssueResolutionEnum = /*@__PURE__*/ S.String;
 
 /** Item issue associated with the product. */
@@ -458,7 +448,7 @@ export const ItemIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemIssue" }) as any as S.Schema<ItemIssue>;
 
-export type ItemIssueList = ItemIssue[];
+export type ItemIssueList = ReadonlyArray<ItemIssue>;
 export const ItemIssueList = /*@__PURE__*/ S.Array(
   ItemIssue,
 ) as any as S.Schema<ItemIssueList>;
@@ -483,8 +473,7 @@ export type ProductViewReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const ProductViewReportingContextEnum = /*@__PURE__*/ S.String;
 
 export type ProductViewAggregatedReportingContextStatusEnum =
@@ -492,8 +481,7 @@ export type ProductViewAggregatedReportingContextStatusEnum =
   | "NOT_ELIGIBLE_OR_DISAPPROVED"
   | "PENDING"
   | "ELIGIBLE_LIMITED"
-  | "ELIGIBLE"
-  | (string & {});
+  | "ELIGIBLE";
 export const ProductViewAggregatedReportingContextStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -517,8 +505,7 @@ export type StatusPerReportingContextReportingContextEnum =
   | "LOCAL_CLOUD_RETAIL"
   | "PRODUCT_REVIEWS"
   | "MERCHANT_REVIEWS"
-  | "YOUTUBE_CHECKOUT"
-  | (string & {});
+  | "YOUTUBE_CHECKOUT";
 export const StatusPerReportingContextReportingContextEnum =
   /*@__PURE__*/ S.String;
 
@@ -544,7 +531,8 @@ export const StatusPerReportingContext = /*@__PURE__*/ S.suspend(() =>
   identifier: "StatusPerReportingContext",
 }) as any as S.Schema<StatusPerReportingContext>;
 
-export type StatusPerReportingContextList = StatusPerReportingContext[];
+export type StatusPerReportingContextList =
+  ReadonlyArray<StatusPerReportingContext>;
 export const StatusPerReportingContextList = /*@__PURE__*/ S.Array(
   StatusPerReportingContext,
 ) as any as S.Schema<StatusPerReportingContextList>;
@@ -552,8 +540,7 @@ export const StatusPerReportingContextList = /*@__PURE__*/ S.Array(
 export type ProductViewChannelEnum =
   | "CHANNEL_ENUM_UNSPECIFIED"
   | "ONLINE"
-  | "LOCAL"
-  | (string & {});
+  | "LOCAL";
 export const ProductViewChannelEnum = /*@__PURE__*/ S.String;
 
 /** Fields available for query in `product_view` table. Products in the current inventory. Products in this table are the same as a [Product resource in Products sub-API](https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products) but not all product attributes from Products sub-API are available for query in this table. In contrast to Products sub-API, this table allows to filter the returned list of products by product attributes. To retrieve a single product by `id` or list all products, Products sub-API should be used. Values are only set for fields requested explicitly in the request's search query. */
@@ -666,8 +653,7 @@ export type BestSellersProductClusterViewRelativeDemandChangeEnum =
   | "RELATIVE_DEMAND_CHANGE_TYPE_ENUM_UNSPECIFIED"
   | "SINKER"
   | "FLAT"
-  | "RISER"
-  | (string & {});
+  | "RISER";
 export const BestSellersProductClusterViewRelativeDemandChangeEnum =
   /*@__PURE__*/ S.String;
 
@@ -675,8 +661,7 @@ export type BestSellersProductClusterViewInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
-  | "NOT_IN_INVENTORY"
-  | (string & {});
+  | "NOT_IN_INVENTORY";
 export const BestSellersProductClusterViewInventoryStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -684,8 +669,7 @@ export type BestSellersProductClusterViewBrandInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
-  | "NOT_IN_INVENTORY"
-  | (string & {});
+  | "NOT_IN_INVENTORY";
 export const BestSellersProductClusterViewBrandInventoryStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -695,16 +679,14 @@ export type BestSellersProductClusterViewPreviousRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH"
-  | (string & {});
+  | "VERY_HIGH";
 export const BestSellersProductClusterViewPreviousRelativeDemandEnum =
   /*@__PURE__*/ S.String;
 
 export type BestSellersProductClusterViewReportGranularityEnum =
   | "REPORT_GRANULARITY_ENUM_UNSPECIFIED"
   | "WEEKLY"
-  | "MONTHLY"
-  | (string & {});
+  | "MONTHLY";
 export const BestSellersProductClusterViewReportGranularityEnum =
   /*@__PURE__*/ S.String;
 
@@ -714,8 +696,7 @@ export type BestSellersProductClusterViewRelativeDemandEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "VERY_HIGH"
-  | (string & {});
+  | "VERY_HIGH";
 export const BestSellersProductClusterViewRelativeDemandEnum =
   /*@__PURE__*/ S.String;
 
@@ -800,8 +781,7 @@ export type CompetitiveVisibilityCompetitorViewTrafficSourceEnum =
   | "TRAFFIC_SOURCE_ENUM_UNSPECIFIED"
   | "ORGANIC"
   | "ADS"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const CompetitiveVisibilityCompetitorViewTrafficSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -878,15 +858,13 @@ export const NonProductPerformanceView = /*@__PURE__*/ S.suspend(() =>
 export type ProductPerformanceViewStoreTypeEnum =
   | "STORE_TYPE_ENUM_UNSPECIFIED"
   | "ONLINE_STORE"
-  | "LOCAL_STORES"
-  | (string & {});
+  | "LOCAL_STORES";
 export const ProductPerformanceViewStoreTypeEnum = /*@__PURE__*/ S.String;
 
 export type ProductPerformanceViewMarketingMethodEnum =
   | "MARKETING_METHOD_ENUM_UNSPECIFIED"
   | "ORGANIC"
-  | "ADS"
-  | (string & {});
+  | "ADS";
 export const ProductPerformanceViewMarketingMethodEnum = /*@__PURE__*/ S.String;
 
 /** Fields available for query in `product_performance_view` table. Product performance data for your account, including performance metrics (for example, `clicks`) and dimensions according to which performance metrics are segmented (for example, `offer_id`). Values of product dimensions, such as `offer_id`, reflect the state of a product at the time of the impression. Segment fields cannot be selected in queries without also selecting at least one metric field. Values are only set for fields requested explicitly in the request's search query. */
@@ -1051,8 +1029,7 @@ export type CompetitiveVisibilityTopMerchantViewTrafficSourceEnum =
   | "TRAFFIC_SOURCE_ENUM_UNSPECIFIED"
   | "ORGANIC"
   | "ADS"
-  | "ALL"
-  | (string & {});
+  | "ALL";
 export const CompetitiveVisibilityTopMerchantViewTrafficSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1145,7 +1122,7 @@ export const ReportRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportRow" }) as any as S.Schema<ReportRow>;
 
-export type ReportRowList = ReportRow[];
+export type ReportRowList = ReadonlyArray<ReportRow>;
 export const ReportRowList = /*@__PURE__*/ S.Array(
   ReportRow,
 ) as any as S.Schema<ReportRowList>;

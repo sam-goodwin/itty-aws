@@ -13,6 +13,23 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Resource tags. */
+export type AiGatewaysCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AiGatewaysCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AiGatewaysCreateOrUpdateRequestTagsMap>;
+
+/** The properties of an AI gateway. */
+export interface AiGatewayPropertiesInput {}
+export const AiGatewayPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AiGatewayPropertiesInput",
+}) as any as S.Schema<AiGatewayPropertiesInput>;
+
 export interface AiGatewaysCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -20,14 +37,21 @@ export interface AiGatewaysCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the AI gateway */
   name: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AiGatewaysCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: AiGatewayPropertiesInput;
 }
 export const AiGatewaysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AiGatewaysCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(AiGatewayPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -45,8 +69,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -54,8 +77,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -232,19 +254,22 @@ export const AiGatewaysGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AiGatewaysGetResponse",
 }) as any as S.Schema<AiGatewaysGetResponse>;
 
-export type AiGatewaysListByResourceGroupRequestSelectList = string[];
+export type AiGatewaysListByResourceGroupRequestSelectList =
+  ReadonlyArray<string>;
 export const AiGatewaysListByResourceGroupRequestSelectList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AiGatewaysListByResourceGroupRequestSelectList>;
 
-export type AiGatewaysListByResourceGroupRequestExpandList = string[];
+export type AiGatewaysListByResourceGroupRequestExpandList =
+  ReadonlyArray<string>;
 export const AiGatewaysListByResourceGroupRequestExpandList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AiGatewaysListByResourceGroupRequestExpandList>;
 
-export type AiGatewaysListByResourceGroupRequestOrderbyList = string[];
+export type AiGatewaysListByResourceGroupRequestOrderbyList =
+  ReadonlyArray<string>;
 export const AiGatewaysListByResourceGroupRequestOrderbyList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -337,7 +362,7 @@ export const AiGateway = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AiGateway" }) as any as S.Schema<AiGateway>;
 
 /** The AiGateway items on this page */
-export type AiGatewayListResultValueList = AiGateway[];
+export type AiGatewayListResultValueList = ReadonlyArray<AiGateway>;
 export const AiGatewayListResultValueList = /*@__PURE__*/ S.Array(
   AiGateway,
 ) as any as S.Schema<AiGatewayListResultValueList>;
@@ -377,6 +402,15 @@ export const AiGatewaysListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AiGatewaysListBySubscriptionRequest",
 }) as any as S.Schema<AiGatewaysListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type AiGatewaysPatchRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AiGatewaysPatchRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AiGatewaysPatchRequestTagsMap>;
+
 export interface AiGatewaysPatchRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -384,14 +418,15 @@ export interface AiGatewaysPatchRequest {
   resourceGroupName: string;
   /** The name of the AI gateway */
   name: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AiGatewaysPatchRequestTagsMap;
 }
 export const AiGatewaysPatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(AiGatewaysPatchRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -443,6 +478,63 @@ export const AiGatewaysPatchResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AiGatewaysPatchResponse",
 }) as any as S.Schema<AiGatewaysPatchResponse>;
 
+/** A wrapper for an ARM resource id */
+export interface ArmIdWrapperInput {}
+export const ArmIdWrapperInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ArmIdWrapperInput",
+}) as any as S.Schema<ArmIdWrapperInput>;
+
+/** The state of a private link connection */
+export interface PrivateLinkConnectionState {
+  /** Status of a private link connection */
+  status?: string;
+  /** Description of a private link connection */
+  description?: string;
+  /** ActionsRequired for a private link connection */
+  actionsRequired?: string;
+}
+export const PrivateLinkConnectionState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(S.String),
+    description: S.optional(S.String),
+    actionsRequired: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PrivateLinkConnectionState",
+}) as any as S.Schema<PrivateLinkConnectionState>;
+
+/** Private IPAddresses mapped to the remote private endpoint */
+export type RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList =
+  ReadonlyArray<string>;
+export const RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList>;
+
+/** RemotePrivateEndpointConnectionARMResource resource specific properties */
+export interface RemotePrivateEndpointConnectionARMResourcePropertiesInput {
+  /** PrivateEndpoint of a remote private endpoint connection */
+  privateEndpoint?: ArmIdWrapperInput;
+  /** The state of a private link connection */
+  privateLinkServiceConnectionState?: PrivateLinkConnectionState;
+  /** Private IPAddresses mapped to the remote private endpoint */
+  ipAddresses?: RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList;
+}
+export const RemotePrivateEndpointConnectionARMResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      privateEndpoint: S.optional(ArmIdWrapperInput),
+      privateLinkServiceConnectionState: S.optional(PrivateLinkConnectionState),
+      ipAddresses: S.optional(
+        RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "RemotePrivateEndpointConnectionARMResourcePropertiesInput",
+  }) as any as S.Schema<RemotePrivateEndpointConnectionARMResourcePropertiesInput>;
+
 export interface AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -452,7 +544,10 @@ export interface AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionR
   name: string;
   /** Name of the private endpoint connection. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** RemotePrivateEndpointConnectionARMResource resource specific properties */
+  properties?: RemotePrivateEndpointConnectionARMResourcePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -461,7 +556,10 @@ export const AppServiceEnvironmentsApproveOrRejectPrivateEndpointConnectionReque
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(
+        RemotePrivateEndpointConnectionARMResourcePropertiesInput,
+      ),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -485,28 +583,9 @@ export const ArmIdWrapper = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ArmIdWrapper" }) as any as S.Schema<ArmIdWrapper>;
 
-/** The state of a private link connection */
-export interface PrivateLinkConnectionState {
-  /** Status of a private link connection */
-  status?: string;
-  /** Description of a private link connection */
-  description?: string;
-  /** ActionsRequired for a private link connection */
-  actionsRequired?: string;
-}
-export const PrivateLinkConnectionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    description: S.optional(S.String),
-    actionsRequired: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkConnectionState",
-}) as any as S.Schema<PrivateLinkConnectionState>;
-
 /** Private IPAddresses mapped to the remote private endpoint */
 export type RemotePrivateEndpointConnectionARMResourcePropertiesIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const RemotePrivateEndpointConnectionARMResourcePropertiesIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -574,7 +653,10 @@ export interface AppServiceEnvironmentsChangeVnetRequest {
   resourceGroupName: string;
   /** Name of the App Service Environment. */
   name: string;
-  body: unknown;
+  /** Resource id of the Virtual Network. */
+  id: string;
+  /** Subnet within the Virtual Network. */
+  subnet?: string;
 }
 export const AppServiceEnvironmentsChangeVnetRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -582,7 +664,8 @@ export const AppServiceEnvironmentsChangeVnetRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      id: S.String,
+      subnet: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -603,17 +686,17 @@ export const SiteTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SiteTagsMap>;
 
 /** Hostnames associated with the app. */
-export type SitePropertiesHostNamesList = string[];
+export type SitePropertiesHostNamesList = ReadonlyArray<string>;
 export const SitePropertiesHostNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitePropertiesHostNamesList>;
 
 /** State indicating whether the app has exceeded its quota usage. Read-only. */
-export type UsageState = "Normal" | "Exceeded" | (string & {});
+export type UsageState = "Normal" | "Exceeded";
 export const UsageState = /*@__PURE__*/ S.String;
 
 /** Enabled hostnames for the app.Hostnames need to be assigned (see HostNames) AND enabled. Otherwise, the app is not served on those hostnames. */
-export type SitePropertiesEnabledHostNamesList = string[];
+export type SitePropertiesEnabledHostNamesList = ReadonlyArray<string>;
 export const SitePropertiesEnabledHostNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitePropertiesEnabledHostNamesList>;
@@ -622,20 +705,15 @@ export const SitePropertiesEnabledHostNamesList = /*@__PURE__*/ S.Array(
 export type SiteAvailabilityState =
   | "Normal"
   | "Limited"
-  | "DisasterRecoveryMode"
-  | (string & {});
+  | "DisasterRecoveryMode";
 export const SiteAvailabilityState = /*@__PURE__*/ S.String;
 
 /** SSL type */
-export type SslState =
-  | "Disabled"
-  | "SniEnabled"
-  | "IpBasedEnabled"
-  | (string & {});
+export type SslState = "Disabled" | "SniEnabled" | "IpBasedEnabled";
 export const SslState = /*@__PURE__*/ S.String;
 
 /** Indicates whether the hostname is a standard or repository hostname. */
-export type HostType = "Standard" | "Repository" | (string & {});
+export type HostType = "Standard" | "Repository";
 export const HostType = /*@__PURE__*/ S.String;
 
 /** SSL-enabled hostname. */
@@ -667,13 +745,14 @@ export const HostNameSslState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostNameSslState>;
 
 /** Hostname SSL states are used to manage the SSL bindings for app's hostnames. */
-export type SitePropertiesHostNameSslStatesList = HostNameSslState[];
+export type SitePropertiesHostNameSslStatesList =
+  ReadonlyArray<HostNameSslState>;
 export const SitePropertiesHostNameSslStatesList = /*@__PURE__*/ S.Array(
   HostNameSslState,
 ) as any as S.Schema<SitePropertiesHostNameSslStatesList>;
 
 /** List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set. */
-export type SiteDnsConfigDnsServersList = string[];
+export type SiteDnsConfigDnsServersList = ReadonlyArray<string>;
 export const SiteDnsConfigDnsServersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteDnsConfigDnsServersList>;
@@ -732,7 +811,7 @@ export const OutboundVnetRouting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutboundVnetRouting>;
 
 /** Default documents. */
-export type SiteConfigDefaultDocumentsList = string[];
+export type SiteConfigDefaultDocumentsList = ReadonlyArray<string>;
 export const SiteConfigDefaultDocumentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteConfigDefaultDocumentsList>;
@@ -752,13 +831,13 @@ export const NameValuePair = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NameValuePair" }) as any as S.Schema<NameValuePair>;
 
 /** Application settings. This property is not returned in response to normal create and read requests since it may contain sensitive information. */
-export type SiteConfigAppSettingsList = NameValuePair[];
+export type SiteConfigAppSettingsList = ReadonlyArray<NameValuePair>;
 export const SiteConfigAppSettingsList = /*@__PURE__*/ S.Array(
   NameValuePair,
 ) as any as S.Schema<SiteConfigAppSettingsList>;
 
 /** Application metadata. This property cannot be retrieved, since it may contain secrets. */
-export type SiteConfigMetadataList = NameValuePair[];
+export type SiteConfigMetadataList = ReadonlyArray<NameValuePair>;
 export const SiteConfigMetadataList = /*@__PURE__*/ S.Array(
   NameValuePair,
 ) as any as S.Schema<SiteConfigMetadataList>;
@@ -775,8 +854,7 @@ export type ConnectionStringType =
   | "ApiHub"
   | "DocDb"
   | "RedisCache"
-  | "PostgreSQL"
-  | (string & {});
+  | "PostgreSQL";
 export const ConnectionStringType = /*@__PURE__*/ S.String;
 
 /** Database connection string information. */
@@ -797,7 +875,7 @@ export const ConnStringInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnStringInfo" }) as any as S.Schema<ConnStringInfo>;
 
 /** Connection strings. This property is not returned in response to normal create and read requests since it may contain sensitive information. */
-export type SiteConfigConnectionStringsList = ConnStringInfo[];
+export type SiteConfigConnectionStringsList = ReadonlyArray<ConnStringInfo>;
 export const SiteConfigConnectionStringsList = /*@__PURE__*/ S.Array(
   ConnStringInfo,
 ) as any as S.Schema<SiteConfigConnectionStringsList>;
@@ -840,7 +918,7 @@ export const HandlerMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HandlerMapping" }) as any as S.Schema<HandlerMapping>;
 
 /** Handler mappings. */
-export type SiteConfigHandlerMappingsList = HandlerMapping[];
+export type SiteConfigHandlerMappingsList = ReadonlyArray<HandlerMapping>;
 export const SiteConfigHandlerMappingsList = /*@__PURE__*/ S.Array(
   HandlerMapping,
 ) as any as S.Schema<SiteConfigHandlerMappingsList>;
@@ -860,12 +938,11 @@ export type ScmType =
   | "ExternalHg"
   | "OneDrive"
   | "VSO"
-  | "VSTSRM"
-  | (string & {});
+  | "VSTSRM";
 export const ScmType = /*@__PURE__*/ S.String;
 
 /** Managed pipeline mode. */
-export type ManagedPipelineMode = "Integrated" | "Classic" | (string & {});
+export type ManagedPipelineMode = "Integrated" | "Classic";
 export const ManagedPipelineMode = /*@__PURE__*/ S.String;
 
 /** Directory for virtual application. */
@@ -885,7 +962,8 @@ export const VirtualDirectory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualDirectory>;
 
 /** Virtual directories for virtual application. */
-export type VirtualApplicationVirtualDirectoriesList = VirtualDirectory[];
+export type VirtualApplicationVirtualDirectoriesList =
+  ReadonlyArray<VirtualDirectory>;
 export const VirtualApplicationVirtualDirectoriesList = /*@__PURE__*/ S.Array(
   VirtualDirectory,
 ) as any as S.Schema<VirtualApplicationVirtualDirectoriesList>;
@@ -913,7 +991,8 @@ export const VirtualApplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualApplication>;
 
 /** Virtual applications. */
-export type SiteConfigVirtualApplicationsList = VirtualApplication[];
+export type SiteConfigVirtualApplicationsList =
+  ReadonlyArray<VirtualApplication>;
 export const SiteConfigVirtualApplicationsList = /*@__PURE__*/ S.Array(
   VirtualApplication,
 ) as any as S.Schema<SiteConfigVirtualApplicationsList>;
@@ -926,8 +1005,7 @@ export type SiteLoadBalancing =
   | "WeightedTotalTraffic"
   | "RequestHash"
   | "PerSiteRoundRobin"
-  | "LeastRequestsWithTieBreaker"
-  | (string & {});
+  | "LeastRequestsWithTieBreaker";
 export const SiteLoadBalancing = /*@__PURE__*/ S.String;
 
 /** Routing rules for ramp up testing. This rule allows to redirect static traffic % to a slot or to gradually change routing % based on performance. */
@@ -963,7 +1041,7 @@ export const RampUpRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RampUpRule" }) as any as S.Schema<RampUpRule>;
 
 /** List of ramp-up rules. */
-export type ExperimentsRampUpRulesList = RampUpRule[];
+export type ExperimentsRampUpRulesList = ReadonlyArray<RampUpRule>;
 export const ExperimentsRampUpRulesList = /*@__PURE__*/ S.Array(
   RampUpRule,
 ) as any as S.Schema<ExperimentsRampUpRulesList>;
@@ -1041,7 +1119,8 @@ export const StatusCodesBasedTrigger = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StatusCodesBasedTrigger>;
 
 /** A rule based on status codes. */
-export type AutoHealTriggersStatusCodesList = StatusCodesBasedTrigger[];
+export type AutoHealTriggersStatusCodesList =
+  ReadonlyArray<StatusCodesBasedTrigger>;
 export const AutoHealTriggersStatusCodesList = /*@__PURE__*/ S.Array(
   StatusCodesBasedTrigger,
 ) as any as S.Schema<AutoHealTriggersStatusCodesList>;
@@ -1070,7 +1149,7 @@ export const SlowRequestsBasedTrigger = /*@__PURE__*/ S.suspend(() =>
 
 /** A rule based on multiple Slow Requests Rule with path */
 export type AutoHealTriggersSlowRequestsWithPathList =
-  SlowRequestsBasedTrigger[];
+  ReadonlyArray<SlowRequestsBasedTrigger>;
 export const AutoHealTriggersSlowRequestsWithPathList = /*@__PURE__*/ S.Array(
   SlowRequestsBasedTrigger,
 ) as any as S.Schema<AutoHealTriggersSlowRequestsWithPathList>;
@@ -1098,7 +1177,7 @@ export const StatusCodesRangeBasedTrigger = /*@__PURE__*/ S.suspend(() =>
 
 /** A rule based on status codes ranges. */
 export type AutoHealTriggersStatusCodesRangeList =
-  StatusCodesRangeBasedTrigger[];
+  ReadonlyArray<StatusCodesRangeBasedTrigger>;
 export const AutoHealTriggersStatusCodesRangeList = /*@__PURE__*/ S.Array(
   StatusCodesRangeBasedTrigger,
 ) as any as S.Schema<AutoHealTriggersStatusCodesRangeList>;
@@ -1132,11 +1211,7 @@ export const AutoHealTriggers = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoHealTriggers>;
 
 /** Predefined action to be taken. */
-export type AutoHealActionType =
-  | "Recycle"
-  | "LogEvent"
-  | "CustomAction"
-  | (string & {});
+export type AutoHealActionType = "Recycle" | "LogEvent" | "CustomAction";
 export const AutoHealActionType = /*@__PURE__*/ S.String;
 
 /** Custom action to be executed when an auto heal rule is triggered. */
@@ -1189,7 +1264,7 @@ export const AutoHealRules = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoHealRules" }) as any as S.Schema<AutoHealRules>;
 
 /** Gets or sets the list of origins that should be allowed to make cross-origin calls (for example: http://example.com:12345). Use "*" to allow all. */
-export type CorsSettingsAllowedOriginsList = string[];
+export type CorsSettingsAllowedOriginsList = ReadonlyArray<string>;
 export const CorsSettingsAllowedOriginsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CorsSettingsAllowedOriginsList>;
@@ -1280,10 +1355,10 @@ export const ApiManagementConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApiManagementConfig>;
 
 /** Defines what this IP filter will be used for. This is to support IP filtering on proxies. */
-export type IpFilterTag = "Default" | "XffProxy" | "ServiceTag" | (string & {});
+export type IpFilterTag = "Default" | "XffProxy" | "ServiceTag";
 export const IpFilterTag = /*@__PURE__*/ S.String;
 
-export type IpSecurityRestrictionHeadersValueList = string[];
+export type IpSecurityRestrictionHeadersValueList = ReadonlyArray<string>;
 export const IpSecurityRestrictionHeadersValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IpSecurityRestrictionHeadersValueList>;
@@ -1341,28 +1416,25 @@ export const IpSecurityRestriction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpSecurityRestriction>;
 
 /** IP security restrictions for main. */
-export type SiteConfigIpSecurityRestrictionsList = IpSecurityRestriction[];
+export type SiteConfigIpSecurityRestrictionsList =
+  ReadonlyArray<IpSecurityRestriction>;
 export const SiteConfigIpSecurityRestrictionsList = /*@__PURE__*/ S.Array(
   IpSecurityRestriction,
 ) as any as S.Schema<SiteConfigIpSecurityRestrictionsList>;
 
 /** Default action for main access restriction if no rules are matched. */
-export type DefaultAction = "Allow" | "Deny" | (string & {});
+export type DefaultAction = "Allow" | "Deny";
 export const DefaultAction = /*@__PURE__*/ S.String;
 
 /** IP security restrictions for scm. */
-export type SiteConfigScmIpSecurityRestrictionsList = IpSecurityRestriction[];
+export type SiteConfigScmIpSecurityRestrictionsList =
+  ReadonlyArray<IpSecurityRestriction>;
 export const SiteConfigScmIpSecurityRestrictionsList = /*@__PURE__*/ S.Array(
   IpSecurityRestriction,
 ) as any as S.Schema<SiteConfigScmIpSecurityRestrictionsList>;
 
 /** MinTlsVersion: configures the minimum version of TLS required for SSL requests */
-export type SupportedTlsVersions =
-  | "1.0"
-  | "1.1"
-  | "1.2"
-  | "1.3"
-  | (string & {});
+export type SupportedTlsVersions = "1.0" | "1.1" | "1.2" | "1.3";
 export const SupportedTlsVersions = /*@__PURE__*/ S.String;
 
 /** The minimum strength TLS cipher suite allowed for an application */
@@ -1383,16 +1455,15 @@ export type TlsCipherSuites =
   | "TLS_RSA_WITH_AES_256_CBC_SHA256"
   | "TLS_RSA_WITH_AES_128_CBC_SHA256"
   | "TLS_RSA_WITH_AES_256_CBC_SHA"
-  | "TLS_RSA_WITH_AES_128_CBC_SHA"
-  | (string & {});
+  | "TLS_RSA_WITH_AES_128_CBC_SHA";
 export const TlsCipherSuites = /*@__PURE__*/ S.String;
 
 /** State of FTP / FTPS service */
-export type FtpsState = "AllAllowed" | "FtpsOnly" | "Disabled" | (string & {});
+export type FtpsState = "AllAllowed" | "FtpsOnly" | "Disabled";
 export const FtpsState = /*@__PURE__*/ S.String;
 
 /** Type of storage. */
-export type AzureStorageType = "AzureFiles" | "AzureBlob" | (string & {});
+export type AzureStorageType = "AzureFiles" | "AzureBlob";
 export const AzureStorageType = /*@__PURE__*/ S.String;
 
 /** State of the storage account. */
@@ -1400,12 +1471,11 @@ export type AzureStorageState =
   | "Ok"
   | "InvalidCredentials"
   | "InvalidShare"
-  | "NotValidated"
-  | (string & {});
+  | "NotValidated";
 export const AzureStorageState = /*@__PURE__*/ S.String;
 
 /** Mounting protocol to use for the storage account. */
-export type AzureStorageProtocol = "Smb" | "Http" | "Nfs" | (string & {});
+export type AzureStorageProtocol = "Smb" | "Http" | "Nfs";
 export const AzureStorageProtocol = /*@__PURE__*/ S.String;
 
 /** Azure Files or Blob Storage access information value for dictionary storage. */
@@ -1678,15 +1748,14 @@ export const SiteConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SiteConfig" }) as any as S.Schema<SiteConfig>;
 
 /** Property to select Azure Storage type. Available options: blobContainer. */
-export type FunctionsDeploymentStorageType = "blobContainer" | (string & {});
+export type FunctionsDeploymentStorageType = "blobContainer";
 export const FunctionsDeploymentStorageType = /*@__PURE__*/ S.String;
 
 /** Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString. */
 export type AuthenticationType =
   | "SystemAssignedIdentity"
   | "UserAssignedIdentity"
-  | "StorageAccountConnectionString"
-  | (string & {});
+  | "StorageAccountConnectionString";
 export const AuthenticationType = /*@__PURE__*/ S.String;
 
 /** Authentication method to access the storage account for deployment. */
@@ -1749,8 +1818,7 @@ export type RuntimeName =
   | "powershell"
   | "python"
   | "go"
-  | "custom"
-  | (string & {});
+  | "custom";
 export const RuntimeName = /*@__PURE__*/ S.String;
 
 /** Function app runtime name and version. */
@@ -1787,7 +1855,7 @@ export const FunctionsAlwaysReadyConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** 'Always Ready' configuration for the function app. */
 export type FunctionsScaleAndConcurrencyAlwaysReadyList =
-  FunctionsAlwaysReadyConfig[];
+  ReadonlyArray<FunctionsAlwaysReadyConfig>;
 export const FunctionsScaleAndConcurrencyAlwaysReadyList =
   /*@__PURE__*/ S.Array(
     FunctionsAlwaysReadyConfig,
@@ -1844,10 +1912,7 @@ export const FunctionsScaleAndConcurrency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionsScaleAndConcurrency>;
 
 /** Function app site update strategy type. Available options: Recreate, RollingUpdate */
-export type SiteUpdateStrategyType =
-  | "Recreate"
-  | "RollingUpdate"
-  | (string & {});
+export type SiteUpdateStrategyType = "Recreate" | "RollingUpdate";
 export const SiteUpdateStrategyType = /*@__PURE__*/ S.String;
 
 /** Function app site update strategy configuration for deployments and site config updates. */
@@ -1886,7 +1951,7 @@ export const FunctionAppConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionAppConfig>;
 
 /** Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info. */
-export type DaprLogLevel = "info" | "debug" | "warn" | "error" | (string & {});
+export type DaprLogLevel = "info" | "debug" | "warn" | "error";
 export const DaprLogLevel = /*@__PURE__*/ S.String;
 
 /** App Dapr configuration. */
@@ -1919,7 +1984,7 @@ export const DaprConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DaprConfig" }) as any as S.Schema<DaprConfig>;
 
 /** The list of tools exposed by this MCP server. */
-export type McpServerConfigToolListList = string[];
+export type McpServerConfigToolListList = ReadonlyArray<string>;
 export const McpServerConfigToolListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<McpServerConfigToolListList>;
@@ -1950,7 +2015,7 @@ export const McpServerConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<McpServerConfig>;
 
 /** Array of MCP server configurations. This array is replaced in its entirety on update; individual servers cannot be patched independently. An empty array signals that MCP should be disabled/deleted. */
-export type McpSettingsServersList = McpServerConfig[];
+export type McpSettingsServersList = ReadonlyArray<McpServerConfig>;
 export const McpSettingsServersList = /*@__PURE__*/ S.Array(
   McpServerConfig,
 ) as any as S.Schema<McpSettingsServersList>;
@@ -1967,7 +2032,7 @@ export const McpSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "McpSettings" }) as any as S.Schema<McpSettings>;
 
 /** OAuth scopes for Protected Resource Metadata (PRM). Required for custom site authentication. */
-export type SiteAuthInfoScopesList = string[];
+export type SiteAuthInfoScopesList = ReadonlyArray<string>;
 export const SiteAuthInfoScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteAuthInfoScopesList>;
@@ -2027,7 +2092,7 @@ export const ResourceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceConfig" }) as any as S.Schema<ResourceConfig>;
 
 /** Azure Traffic Manager hostnames associated with the app. Read-only. */
-export type SitePropertiesTrafficManagerHostNamesList = string[];
+export type SitePropertiesTrafficManagerHostNamesList = ReadonlyArray<string>;
 export const SitePropertiesTrafficManagerHostNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SitePropertiesTrafficManagerHostNamesList>;
@@ -2055,12 +2120,11 @@ export const HostingEnvironmentProfile = /*@__PURE__*/ S.suspend(() =>
 export type ClientCertMode =
   | "Required"
   | "Optional"
-  | "OptionalInteractiveUser"
-  | (string & {});
+  | "OptionalInteractiveUser";
 export const ClientCertMode = /*@__PURE__*/ S.String;
 
 /** Specifies the IP mode of the app. */
-export type IPMode = "IPv4" | "IPv6" | "IPv4AndIPv6" | (string & {});
+export type IPMode = "IPv4" | "IPv6" | "IPv4AndIPv6";
 export const IPMode = /*@__PURE__*/ S.String;
 
 /** Application setting overrides for cloned app. If specified, these settings override the settings cloned from source app. Otherwise, application settings from source app are retained. */
@@ -2136,8 +2200,7 @@ export type RedundancyMode =
   | "Manual"
   | "Failover"
   | "ActiveActive"
-  | "GeoRedundant"
-  | (string & {});
+  | "GeoRedundant";
 export const RedundancyMode = /*@__PURE__*/ S.String;
 
 /** Specifies the scope of uniqueness for the default hostname during resource creation */
@@ -2145,16 +2208,11 @@ export type AutoGeneratedDomainNameLabelScope =
   | "TenantReuse"
   | "SubscriptionReuse"
   | "ResourceGroupReuse"
-  | "NoReuse"
-  | (string & {});
+  | "NoReuse";
 export const AutoGeneratedDomainNameLabelScope = /*@__PURE__*/ S.String;
 
 /** The platform release channel for the site. */
-export type PlatformReleaseChannel =
-  | "Latest"
-  | "Standard"
-  | "Extended"
-  | (string & {});
+export type PlatformReleaseChannel = "Latest" | "Standard" | "Extended";
 export const PlatformReleaseChannel = /*@__PURE__*/ S.String;
 
 /** Site resource specific properties */
@@ -2354,8 +2412,7 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
-  | "None"
-  | (string & {});
+  | "None";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User Assigned identity. */
@@ -2463,7 +2520,7 @@ export const Site = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
 
 /** The Site items on this page */
-export type WebAppCollectionValueList = Site[];
+export type WebAppCollectionValueList = ReadonlyArray<Site>;
 export const WebAppCollectionValueList = /*@__PURE__*/ S.Array(
   Site,
 ) as any as S.Schema<WebAppCollectionValueList>;
@@ -2484,6 +2541,191 @@ export const WebAppCollection = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppCollection",
 }) as any as S.Schema<WebAppCollection>;
 
+/** Resource tags. */
+export type AppServiceEnvironmentsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AppServiceEnvironmentsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AppServiceEnvironmentsCreateOrUpdateRequestTagsMap>;
+
+/** Specification for using a Virtual Network. */
+export interface VirtualNetworkProfileInput {
+  /** Resource id of the Virtual Network. */
+  id: string;
+  /** Subnet within the Virtual Network. */
+  subnet?: string;
+}
+export const VirtualNetworkProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    subnet: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VirtualNetworkProfileInput",
+}) as any as S.Schema<VirtualNetworkProfileInput>;
+
+/** Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment. */
+export type LoadBalancingMode =
+  | "None"
+  | "Web"
+  | "Publishing"
+  | "Web, Publishing";
+export const LoadBalancingMode = /*@__PURE__*/ S.String;
+
+/** Custom settings for changing the behavior of the App Service Environment. */
+export type AppServiceEnvironmentInputClusterSettingsList =
+  ReadonlyArray<NameValuePair>;
+export const AppServiceEnvironmentInputClusterSettingsList =
+  /*@__PURE__*/ S.Array(
+    NameValuePair,
+  ) as any as S.Schema<AppServiceEnvironmentInputClusterSettingsList>;
+
+/** User added ip ranges to whitelist on ASE db */
+export type AppServiceEnvironmentInputUserWhitelistedIpRangesList =
+  ReadonlyArray<string>;
+export const AppServiceEnvironmentInputUserWhitelistedIpRangesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AppServiceEnvironmentInputUserWhitelistedIpRangesList>;
+
+/** Upgrade Preference */
+export type AppServiceEnvironmentInputUpgradePreference =
+  | "None"
+  | "Early"
+  | "Late"
+  | "Manual";
+export const AppServiceEnvironmentInputUpgradePreference =
+  /*@__PURE__*/ S.String;
+
+/** CustomDnsSuffixConfiguration resource specific properties */
+export interface CustomDnsSuffixConfigurationPropertiesInput {
+  /** The default custom domain suffix to use for all sites deployed on the ASE. */
+  dnsSuffix?: string;
+  /** The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix. */
+  certificateUrl?: string;
+  /** The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available. */
+  keyVaultReferenceIdentity?: string;
+}
+export const CustomDnsSuffixConfigurationPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dnsSuffix: S.optional(S.String),
+      certificateUrl: S.optional(S.String),
+      keyVaultReferenceIdentity: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CustomDnsSuffixConfigurationPropertiesInput",
+  }) as any as S.Schema<CustomDnsSuffixConfigurationPropertiesInput>;
+
+/** Full view of the custom domain suffix configuration for ASEv3. */
+export interface CustomDnsSuffixConfigurationInput {
+  /** CustomDnsSuffixConfiguration resource specific properties */
+  properties?: CustomDnsSuffixConfigurationPropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
+}
+export const CustomDnsSuffixConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(CustomDnsSuffixConfigurationPropertiesInput),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomDnsSuffixConfigurationInput",
+}) as any as S.Schema<CustomDnsSuffixConfigurationInput>;
+
+/** AseV3NetworkingConfiguration resource specific properties */
+export interface AseV3NetworkingConfigurationPropertiesInput {
+  /** Property to enable and disable new private endpoint connection creation on ASE */
+  allowNewPrivateEndpointConnections?: boolean;
+  /** Property to enable and disable FTP on ASEV3 */
+  ftpEnabled?: boolean;
+  /** Property to enable and disable Remote Debug on ASEV3 */
+  remoteDebugEnabled?: boolean;
+  /** Customer provided Inbound IP Address. Only able to be set on Ase create. */
+  inboundIpAddressOverride?: string;
+}
+export const AseV3NetworkingConfigurationPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      allowNewPrivateEndpointConnections: S.optional(S.Boolean),
+      ftpEnabled: S.optional(S.Boolean),
+      remoteDebugEnabled: S.optional(S.Boolean),
+      inboundIpAddressOverride: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AseV3NetworkingConfigurationPropertiesInput",
+  }) as any as S.Schema<AseV3NetworkingConfigurationPropertiesInput>;
+
+/** Full view of networking configuration for an ASE. */
+export interface AseV3NetworkingConfigurationInput {
+  /** AseV3NetworkingConfiguration resource specific properties */
+  properties?: AseV3NetworkingConfigurationPropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
+}
+export const AseV3NetworkingConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(AseV3NetworkingConfigurationPropertiesInput),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AseV3NetworkingConfigurationInput",
+}) as any as S.Schema<AseV3NetworkingConfigurationInput>;
+
+/** Description of an App Service Environment. */
+export interface AppServiceEnvironmentInput {
+  /** Description of the Virtual Network. */
+  virtualNetwork: VirtualNetworkProfileInput;
+  /** Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment. */
+  internalLoadBalancingMode?: LoadBalancingMode;
+  /** Front-end VM size, e.g. "Medium", "Large". */
+  multiSize?: string;
+  /** Number of IP SSL addresses reserved for the App Service Environment. */
+  ipsslAddressCount?: number;
+  /** DNS suffix of the App Service Environment. */
+  dnsSuffix?: string;
+  /** Scale factor for front-ends. */
+  frontEndScaleFactor?: number;
+  /** Custom settings for changing the behavior of the App Service Environment. */
+  clusterSettings?: AppServiceEnvironmentInputClusterSettingsList;
+  /** User added ip ranges to whitelist on ASE db */
+  userWhitelistedIpRanges?: AppServiceEnvironmentInputUserWhitelistedIpRangesList;
+  /** Upgrade Preference */
+  upgradePreference?: AppServiceEnvironmentInputUpgradePreference;
+  /** Dedicated Host Count */
+  dedicatedHostCount?: number;
+  /** Whether or not this App Service Environment is zone-redundant. */
+  zoneRedundant?: boolean;
+  /** Full view of the custom domain suffix configuration for ASEv3. */
+  customDnsSuffixConfiguration?: CustomDnsSuffixConfigurationInput;
+  /** Full view of networking configuration for an ASE. */
+  networkingConfiguration?: AseV3NetworkingConfigurationInput;
+}
+export const AppServiceEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    virtualNetwork: VirtualNetworkProfileInput,
+    internalLoadBalancingMode: S.optional(LoadBalancingMode),
+    multiSize: S.optional(S.String),
+    ipsslAddressCount: S.optional(S.Number),
+    dnsSuffix: S.optional(S.String),
+    frontEndScaleFactor: S.optional(S.Number),
+    clusterSettings: S.optional(AppServiceEnvironmentInputClusterSettingsList),
+    userWhitelistedIpRanges: S.optional(
+      AppServiceEnvironmentInputUserWhitelistedIpRangesList,
+    ),
+    upgradePreference: S.optional(AppServiceEnvironmentInputUpgradePreference),
+    dedicatedHostCount: S.optional(S.Number),
+    zoneRedundant: S.optional(S.Boolean),
+    customDnsSuffixConfiguration: S.optional(CustomDnsSuffixConfigurationInput),
+    networkingConfiguration: S.optional(AseV3NetworkingConfigurationInput),
+  }),
+).annotate({
+  identifier: "AppServiceEnvironmentInput",
+}) as any as S.Schema<AppServiceEnvironmentInput>;
+
 export interface AppServiceEnvironmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2491,7 +2733,14 @@ export interface AppServiceEnvironmentsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the App Service Environment. */
   name: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AppServiceEnvironmentsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Core resource properties */
+  properties?: AppServiceEnvironmentInput;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const AppServiceEnvironmentsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2499,7 +2748,10 @@ export const AppServiceEnvironmentsCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(AppServiceEnvironmentsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(AppServiceEnvironmentInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2528,8 +2780,7 @@ export type ProvisioningState =
   | "Failed"
   | "Canceled"
   | "InProgress"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Current status of the App Service Environment. */
@@ -2537,8 +2788,7 @@ export type HostingEnvironmentStatus =
   | "Preparing"
   | "Ready"
   | "Scaling"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const HostingEnvironmentStatus = /*@__PURE__*/ S.String;
 
 /** Specification for using a Virtual Network. */
@@ -2563,23 +2813,16 @@ export const VirtualNetworkProfile = /*@__PURE__*/ S.suspend(() =>
   identifier: "VirtualNetworkProfile",
 }) as any as S.Schema<VirtualNetworkProfile>;
 
-/** Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment. */
-export type LoadBalancingMode =
-  | "None"
-  | "Web"
-  | "Publishing"
-  | "Web, Publishing"
-  | (string & {});
-export const LoadBalancingMode = /*@__PURE__*/ S.String;
-
 /** Custom settings for changing the behavior of the App Service Environment. */
-export type AppServiceEnvironmentClusterSettingsList = NameValuePair[];
+export type AppServiceEnvironmentClusterSettingsList =
+  ReadonlyArray<NameValuePair>;
 export const AppServiceEnvironmentClusterSettingsList = /*@__PURE__*/ S.Array(
   NameValuePair,
 ) as any as S.Schema<AppServiceEnvironmentClusterSettingsList>;
 
 /** User added ip ranges to whitelist on ASE db */
-export type AppServiceEnvironmentUserWhitelistedIpRangesList = string[];
+export type AppServiceEnvironmentUserWhitelistedIpRangesList =
+  ReadonlyArray<string>;
 export const AppServiceEnvironmentUserWhitelistedIpRangesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2590,16 +2833,14 @@ export type AppServiceEnvironmentUpgradePreference =
   | "None"
   | "Early"
   | "Late"
-  | "Manual"
-  | (string & {});
+  | "Manual";
 export const AppServiceEnvironmentUpgradePreference = /*@__PURE__*/ S.String;
 
 export type CustomDnsSuffixProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Degraded"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const CustomDnsSuffixProvisioningState = /*@__PURE__*/ S.String;
 
 /** CustomDnsSuffixConfiguration resource specific properties */
@@ -2655,28 +2896,28 @@ export const CustomDnsSuffixConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomDnsSuffixConfiguration>;
 
 export type AseV3NetworkingConfigurationPropertiesWindowsOutboundIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const AseV3NetworkingConfigurationPropertiesWindowsOutboundIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AseV3NetworkingConfigurationPropertiesWindowsOutboundIpAddressesList>;
 
 export type AseV3NetworkingConfigurationPropertiesLinuxOutboundIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const AseV3NetworkingConfigurationPropertiesLinuxOutboundIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AseV3NetworkingConfigurationPropertiesLinuxOutboundIpAddressesList>;
 
 export type AseV3NetworkingConfigurationPropertiesExternalInboundIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const AseV3NetworkingConfigurationPropertiesExternalInboundIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AseV3NetworkingConfigurationPropertiesExternalInboundIpAddressesList>;
 
 export type AseV3NetworkingConfigurationPropertiesInternalInboundIpAddressesList =
-  string[];
+  ReadonlyArray<string>;
 export const AseV3NetworkingConfigurationPropertiesInternalInboundIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2750,7 +2991,7 @@ export const AseV3NetworkingConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AseV3NetworkingConfiguration>;
 
 /** Whether an upgrade is available for this App Service Environment. */
-export type UpgradeAvailability = "None" | "Ready" | (string & {});
+export type UpgradeAvailability = "None" | "Ready";
 export const UpgradeAvailability = /*@__PURE__*/ S.String;
 
 /** Description of an App Service Environment. */
@@ -2859,50 +3100,12 @@ export const AppServiceEnvironmentsCreateOrUpdateResponse =
     identifier: "AppServiceEnvironmentsCreateOrUpdateResponse",
   }) as any as S.Schema<AppServiceEnvironmentsCreateOrUpdateResponse>;
 
-export interface AppServiceEnvironmentsCreateOrUpdateMultiRolePoolRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the App Service Environment. */
-  name: string;
-  body: unknown;
-}
-export const AppServiceEnvironmentsCreateOrUpdateMultiRolePoolRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default",
-        code: 200,
-        apiVersion: "2026-07-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "AppServiceEnvironmentsCreateOrUpdateMultiRolePoolRequest",
-  }) as any as S.Schema<AppServiceEnvironmentsCreateOrUpdateMultiRolePoolRequest>;
-
 /** Shared/dedicated workers. */
-export type ComputeModeOptions =
-  | "Shared"
-  | "Dedicated"
-  | "Dynamic"
-  | (string & {});
+export type ComputeModeOptions = "Shared" | "Dedicated" | "Dynamic";
 export const ComputeModeOptions = /*@__PURE__*/ S.String;
 
-/** Names of all instances in the worker pool (read only). */
-export type WorkerPoolInstanceNamesList = string[];
-export const WorkerPoolInstanceNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WorkerPoolInstanceNamesList>;
-
 /** Worker pool of an App Service Environment. */
-export interface WorkerPool {
+export interface WorkerPoolInput {
   /** Worker size ID for referencing this worker pool. */
   workerSizeId?: number;
   /** Shared or dedicated app hosting. */
@@ -2911,18 +3114,17 @@ export interface WorkerPool {
   workerSize?: string;
   /** Number of instances in the worker pool. */
   workerCount?: number;
-  /** Names of all instances in the worker pool (read only). */
-  instanceNames?: WorkerPoolInstanceNamesList;
 }
-export const WorkerPool = /*@__PURE__*/ S.suspend(() =>
+export const WorkerPoolInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerSizeId: S.optional(S.Number),
     computeMode: S.optional(ComputeModeOptions),
     workerSize: S.optional(S.String),
     workerCount: S.optional(S.Number),
-    instanceNames: S.optional(WorkerPoolInstanceNamesList),
   }),
-).annotate({ identifier: "WorkerPool" }) as any as S.Schema<WorkerPool>;
+).annotate({
+  identifier: "WorkerPoolInput",
+}) as any as S.Schema<WorkerPoolInput>;
 
 /** Description of the App Service plan scale options. */
 export interface SkuCapacity {
@@ -2948,7 +3150,7 @@ export const SkuCapacity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuCapacity" }) as any as S.Schema<SkuCapacity>;
 
 /** Locations of the SKU. */
-export type SkuDescriptionLocationsList = string[];
+export type SkuDescriptionLocationsList = ReadonlyArray<string>;
 export const SkuDescriptionLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SkuDescriptionLocationsList>;
@@ -2971,7 +3173,7 @@ export const Capability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Capability" }) as any as S.Schema<Capability>;
 
 /** Capabilities of the SKU, e.g., is traffic manager enabled? */
-export type SkuDescriptionCapabilitiesList = Capability[];
+export type SkuDescriptionCapabilitiesList = ReadonlyArray<Capability>;
 export const SkuDescriptionCapabilitiesList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<SkuDescriptionCapabilitiesList>;
@@ -3007,6 +3209,70 @@ export const SkuDescription = /*@__PURE__*/ S.suspend(() =>
     capabilities: S.optional(SkuDescriptionCapabilitiesList),
   }),
 ).annotate({ identifier: "SkuDescription" }) as any as S.Schema<SkuDescription>;
+
+export interface AppServiceEnvironmentsCreateOrUpdateMultiRolePoolRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the App Service Environment. */
+  name: string;
+  /** Core resource properties */
+  properties?: WorkerPoolInput;
+  /** Description of a SKU for a scalable resource. */
+  sku?: SkuDescription;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
+}
+export const AppServiceEnvironmentsCreateOrUpdateMultiRolePoolRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      name: S.String.pipe(T.Label()),
+      properties: S.optional(WorkerPoolInput),
+      sku: S.optional(SkuDescription),
+      kind: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/hostingEnvironments/{name}/multiRolePools/default",
+        code: 200,
+        apiVersion: "2026-07-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "AppServiceEnvironmentsCreateOrUpdateMultiRolePoolRequest",
+  }) as any as S.Schema<AppServiceEnvironmentsCreateOrUpdateMultiRolePoolRequest>;
+
+/** Names of all instances in the worker pool (read only). */
+export type WorkerPoolInstanceNamesList = ReadonlyArray<string>;
+export const WorkerPoolInstanceNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<WorkerPoolInstanceNamesList>;
+
+/** Worker pool of an App Service Environment. */
+export interface WorkerPool {
+  /** Worker size ID for referencing this worker pool. */
+  workerSizeId?: number;
+  /** Shared or dedicated app hosting. */
+  computeMode?: ComputeModeOptions;
+  /** VM size of the worker pool instances. */
+  workerSize?: string;
+  /** Number of instances in the worker pool. */
+  workerCount?: number;
+  /** Names of all instances in the worker pool (read only). */
+  instanceNames?: WorkerPoolInstanceNamesList;
+}
+export const WorkerPool = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workerSizeId: S.optional(S.Number),
+    computeMode: S.optional(ComputeModeOptions),
+    workerSize: S.optional(S.String),
+    workerCount: S.optional(S.Number),
+    instanceNames: S.optional(WorkerPoolInstanceNamesList),
+  }),
+).annotate({ identifier: "WorkerPool" }) as any as S.Schema<WorkerPool>;
 
 export interface AppServiceEnvironmentsCreateOrUpdateMultiRolePoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3048,7 +3314,12 @@ export interface AppServiceEnvironmentsCreateOrUpdateWorkerPoolRequest {
   name: string;
   /** Name of the worker pool. */
   workerPoolName: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: WorkerPoolInput;
+  /** Description of a SKU for a scalable resource. */
+  sku?: SkuDescription;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const AppServiceEnvironmentsCreateOrUpdateWorkerPoolRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3057,7 +3328,9 @@ export const AppServiceEnvironmentsCreateOrUpdateWorkerPoolRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       workerPoolName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(WorkerPoolInput),
+      sku: S.optional(SkuDescription),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3456,13 +3729,13 @@ export const AppServiceEnvironmentsGetInboundNetworkDependenciesEndpointsRequest
   }) as any as S.Schema<AppServiceEnvironmentsGetInboundNetworkDependenciesEndpointsRequest>;
 
 /** The IP addresses that network traffic will originate from in cidr notation. */
-export type InboundEnvironmentEndpointEndpointsList = string[];
+export type InboundEnvironmentEndpointEndpointsList = ReadonlyArray<string>;
 export const InboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InboundEnvironmentEndpointEndpointsList>;
 
 /** The ports that network traffic will arrive to the App Service Environment at. */
-export type InboundEnvironmentEndpointPortsList = string[];
+export type InboundEnvironmentEndpointPortsList = ReadonlyArray<string>;
 export const InboundEnvironmentEndpointPortsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<InboundEnvironmentEndpointPortsList>;
@@ -3488,7 +3761,7 @@ export const InboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The InboundEnvironmentEndpoint items on this page */
 export type InboundEnvironmentEndpointCollectionValueList =
-  InboundEnvironmentEndpoint[];
+  ReadonlyArray<InboundEnvironmentEndpoint>;
 export const InboundEnvironmentEndpointCollectionValueList =
   /*@__PURE__*/ S.Array(
     InboundEnvironmentEndpoint,
@@ -3616,7 +3889,8 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EndpointDetail" }) as any as S.Schema<EndpointDetail>;
 
 /** The IP Addresses and Ports used when connecting to DomainName. */
-export type EndpointDependencyEndpointDetailsList = EndpointDetail[];
+export type EndpointDependencyEndpointDetailsList =
+  ReadonlyArray<EndpointDetail>;
 export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
@@ -3638,7 +3912,8 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointDependency>;
 
 /** The endpoints that the App Service Environment reaches the service at. */
-export type OutboundEnvironmentEndpointEndpointsList = EndpointDependency[];
+export type OutboundEnvironmentEndpointEndpointsList =
+  ReadonlyArray<EndpointDependency>;
 export const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
@@ -3661,7 +3936,7 @@ export const OutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The OutboundEnvironmentEndpoint items on this page */
 export type OutboundEnvironmentEndpointCollectionValueList =
-  OutboundEnvironmentEndpoint[];
+  ReadonlyArray<OutboundEnvironmentEndpoint>;
 export const OutboundEnvironmentEndpointCollectionValueList =
   /*@__PURE__*/ S.Array(
     OutboundEnvironmentEndpoint,
@@ -3802,7 +4077,7 @@ export const RemotePrivateEndpointConnectionARMResource =
 
 /** The RemotePrivateEndpointConnectionARMResource items on this page */
 export type PrivateEndpointConnectionCollectionValueList =
-  RemotePrivateEndpointConnectionARMResource[];
+  ReadonlyArray<RemotePrivateEndpointConnectionARMResource>;
 export const PrivateEndpointConnectionCollectionValueList =
   /*@__PURE__*/ S.Array(
     RemotePrivateEndpointConnectionARMResource,
@@ -3851,14 +4126,16 @@ export const AppServiceEnvironmentsGetPrivateLinkResourcesRequest =
   }) as any as S.Schema<AppServiceEnvironmentsGetPrivateLinkResourcesRequest>;
 
 /** RequiredMembers of a private link resource */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** RequiredZoneNames of a private link resource */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3907,7 +4184,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResource",
 }) as any as S.Schema<PrivateLinkResource>;
 
-export type PrivateLinkResourcesWrapperValueList = PrivateLinkResource[];
+export type PrivateLinkResourcesWrapperValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourcesWrapperValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourcesWrapperValueList>;
@@ -3951,7 +4229,8 @@ export const AppServiceEnvironmentsGetVipInfoRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AppServiceEnvironmentsGetVipInfoRequest>;
 
 /** IP addresses appearing on outbound connections. */
-export type AddressResponsePropertiesOutboundIpAddressesList = string[];
+export type AddressResponsePropertiesOutboundIpAddressesList =
+  ReadonlyArray<string>;
 export const AddressResponsePropertiesOutboundIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3983,7 +4262,8 @@ export const VirtualIPMapping = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualIPMapping>;
 
 /** Additional virtual IPs. */
-export type AddressResponsePropertiesVipMappingsList = VirtualIPMapping[];
+export type AddressResponsePropertiesVipMappingsList =
+  ReadonlyArray<VirtualIPMapping>;
 export const AddressResponsePropertiesVipMappingsList = /*@__PURE__*/ S.Array(
   VirtualIPMapping,
 ) as any as S.Schema<AddressResponsePropertiesVipMappingsList>;
@@ -4164,7 +4444,7 @@ export const AppServiceEnvironmentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The AppServiceEnvironmentResource items on this page */
 export type AppServiceEnvironmentCollectionValueList =
-  AppServiceEnvironmentResource[];
+  ReadonlyArray<AppServiceEnvironmentResource>;
 export const AppServiceEnvironmentCollectionValueList = /*@__PURE__*/ S.Array(
   AppServiceEnvironmentResource,
 ) as any as S.Schema<AppServiceEnvironmentCollectionValueList>;
@@ -4219,7 +4499,7 @@ export const AppServicePlanTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AppServicePlanTagsMap>;
 
 /** App Service plan status. */
-export type StatusOptions = "Ready" | "Pending" | "Creating" | (string & {});
+export type StatusOptions = "Ready" | "Pending" | "Creating";
 export const StatusOptions = /*@__PURE__*/ S.String;
 
 /** Specification for a Kubernetes Environment to use for this resource. */
@@ -4261,8 +4541,7 @@ export type RegistryAdapterType =
   | "Expand_String"
   | "Multi_String"
   | "DWord"
-  | "QWord"
-  | (string & {});
+  | "QWord";
 export const RegistryAdapterType = /*@__PURE__*/ S.String;
 
 /** Object to hold key vault reference and the resolution status */
@@ -4301,17 +4580,15 @@ export const RegistryAdapter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistryAdapter>;
 
 /** Registry adapters associated with this App Service plan. */
-export type AppServicePlanPropertiesRegistryAdaptersList = RegistryAdapter[];
+export type AppServicePlanPropertiesRegistryAdaptersList =
+  ReadonlyArray<RegistryAdapter>;
 export const AppServicePlanPropertiesRegistryAdaptersList =
   /*@__PURE__*/ S.Array(
     RegistryAdapter,
   ) as any as S.Schema<AppServicePlanPropertiesRegistryAdaptersList>;
 
 /** Type of the install script. */
-export type InstallScriptType =
-  | "RemoteAzureBlob"
-  | "PlatformStorage"
-  | (string & {});
+export type InstallScriptType = "RemoteAzureBlob" | "PlatformStorage";
 export const InstallScriptType = /*@__PURE__*/ S.String;
 
 /** Object to hold install script reference. */
@@ -4345,7 +4622,8 @@ export const InstallScript = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstallScript" }) as any as S.Schema<InstallScript>;
 
 /** Install scripts associated with this App Service plan. */
-export type AppServicePlanPropertiesInstallScriptsList = InstallScript[];
+export type AppServicePlanPropertiesInstallScriptsList =
+  ReadonlyArray<InstallScript>;
 export const AppServicePlanPropertiesInstallScriptsList = /*@__PURE__*/ S.Array(
   InstallScript,
 ) as any as S.Schema<AppServicePlanPropertiesInstallScriptsList>;
@@ -4364,11 +4642,7 @@ export const ServerFarmNetworkSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerFarmNetworkSettings>;
 
 /** Type of the storage mount. */
-export type StorageMountType =
-  | "AzureFiles"
-  | "LocalStorage"
-  | "FileShare"
-  | (string & {});
+export type StorageMountType = "AzureFiles" | "LocalStorage" | "FileShare";
 export const StorageMountType = /*@__PURE__*/ S.String;
 
 /** Server farm storage mount configuration. */
@@ -4395,7 +4669,8 @@ export const StorageMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageMount" }) as any as S.Schema<StorageMount>;
 
 /** Storage mounts associated with this App Service plan. */
-export type AppServicePlanPropertiesStorageMountsList = StorageMount[];
+export type AppServicePlanPropertiesStorageMountsList =
+  ReadonlyArray<StorageMount>;
 export const AppServicePlanPropertiesStorageMountsList = /*@__PURE__*/ S.Array(
   StorageMount,
 ) as any as S.Schema<AppServicePlanPropertiesStorageMountsList>;
@@ -4545,7 +4820,7 @@ export const AppServicePlan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppServicePlan" }) as any as S.Schema<AppServicePlan>;
 
 /** The AppServicePlan items on this page */
-export type AppServicePlanCollectionValueList = AppServicePlan[];
+export type AppServicePlanCollectionValueList = ReadonlyArray<AppServicePlan>;
 export const AppServicePlanCollectionValueList = /*@__PURE__*/ S.Array(
   AppServicePlan,
 ) as any as S.Schema<AppServicePlanCollectionValueList>;
@@ -4628,8 +4903,7 @@ export type WorkerSizeOptions =
   | "LargeV3"
   | "NestedSmall"
   | "NestedSmallLinux"
-  | "Default"
-  | (string & {});
+  | "Default";
 export const WorkerSizeOptions = /*@__PURE__*/ S.String;
 
 /** Stamp capacity information. */
@@ -4674,7 +4948,7 @@ export const StampCapacity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StampCapacity" }) as any as S.Schema<StampCapacity>;
 
 /** The StampCapacity items on this page */
-export type StampCapacityCollectionValueList = StampCapacity[];
+export type StampCapacityCollectionValueList = ReadonlyArray<StampCapacity>;
 export const StampCapacityCollectionValueList = /*@__PURE__*/ S.Array(
   StampCapacity,
 ) as any as S.Schema<StampCapacityCollectionValueList>;
@@ -4722,7 +4996,7 @@ export const AppServiceEnvironmentsListDiagnosticsRequest =
   }) as any as S.Schema<AppServiceEnvironmentsListDiagnosticsRequest>;
 
 export type AppServiceEnvironmentsListDiagnosticsResponseBodyList =
-  HostingEnvironmentDiagnostics[];
+  ReadonlyArray<HostingEnvironmentDiagnostics>;
 export const AppServiceEnvironmentsListDiagnosticsResponseBodyList =
   /*@__PURE__*/ S.Array(
     HostingEnvironmentDiagnostics,
@@ -4783,7 +5057,7 @@ export const ResourceMetricAvailability = /*@__PURE__*/ S.suspend(() =>
 
 /** List of time grains supported for the metric together with retention period. */
 export type ResourceMetricDefinitionPropertiesMetricAvailabilitiesList =
-  ResourceMetricAvailability[];
+  ReadonlyArray<ResourceMetricAvailability>;
 export const ResourceMetricDefinitionPropertiesMetricAvailabilitiesList =
   /*@__PURE__*/ S.Array(
     ResourceMetricAvailability,
@@ -4853,7 +5127,7 @@ export const ResourceMetricDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The ResourceMetricDefinition items on this page */
 export type ResourceMetricDefinitionCollectionValueList =
-  ResourceMetricDefinition[];
+  ReadonlyArray<ResourceMetricDefinition>;
 export const ResourceMetricDefinitionCollectionValueList =
   /*@__PURE__*/ S.Array(
     ResourceMetricDefinition,
@@ -4963,7 +5237,7 @@ export const WorkerPoolResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkerPoolResource>;
 
 /** The WorkerPoolResource items on this page */
-export type WorkerPoolCollectionValueList = WorkerPoolResource[];
+export type WorkerPoolCollectionValueList = ReadonlyArray<WorkerPoolResource>;
 export const WorkerPoolCollectionValueList = /*@__PURE__*/ S.Array(
   WorkerPoolResource,
 ) as any as S.Schema<WorkerPoolCollectionValueList>;
@@ -5028,7 +5302,7 @@ export const SkuInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkuInfo" }) as any as S.Schema<SkuInfo>;
 
 /** The SkuInfo items on this page */
-export type SkuInfoCollectionValueList = SkuInfo[];
+export type SkuInfoCollectionValueList = ReadonlyArray<SkuInfo>;
 export const SkuInfoCollectionValueList = /*@__PURE__*/ S.Array(
   SkuInfo,
 ) as any as S.Schema<SkuInfoCollectionValueList>;
@@ -5133,7 +5407,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
 /** The Usage items on this page */
-export type UsageCollectionValueList = Usage[];
+export type UsageCollectionValueList = ReadonlyArray<Usage>;
 export const UsageCollectionValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageCollectionValueList>;
@@ -5186,24 +5460,23 @@ export type OperationStatus =
   | "Failed"
   | "Succeeded"
   | "TimedOut"
-  | "Created"
-  | (string & {});
+  | "Created";
 export const OperationStatus = /*@__PURE__*/ S.String;
 
 /** Parameters for the template. */
-export type ErrorEntityParametersList = string[];
+export type ErrorEntityParametersList = ReadonlyArray<string>;
 export const ErrorEntityParametersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ErrorEntityParametersList>;
 
 /** Inner errors. */
-export type ErrorEntityInnerErrorsList = ErrorEntity[];
+export type ErrorEntityInnerErrorsList = ReadonlyArray<ErrorEntity>;
 export const ErrorEntityInnerErrorsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorEntity),
 ) as any as S.Schema<ErrorEntityInnerErrorsList>;
 
 /** Error Details. */
-export type ErrorEntityDetailsList = ErrorEntity[];
+export type ErrorEntityDetailsList = ReadonlyArray<ErrorEntity>;
 export const ErrorEntityDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorEntity),
 ) as any as S.Schema<ErrorEntityDetailsList>;
@@ -5241,7 +5514,7 @@ export const ErrorEntity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorEntity" }) as any as S.Schema<ErrorEntity>;
 
 /** Any errors associate with the operation. */
-export type OperationErrorsList = ErrorEntity[];
+export type OperationErrorsList = ReadonlyArray<ErrorEntity>;
 export const OperationErrorsList = /*@__PURE__*/ S.Array(
   ErrorEntity,
 ) as any as S.Schema<OperationErrorsList>;
@@ -5278,7 +5551,8 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
-export type AppServiceEnvironmentsListOperationsResponseBodyList = Operation[];
+export type AppServiceEnvironmentsListOperationsResponseBodyList =
+  ReadonlyArray<Operation>;
 export const AppServiceEnvironmentsListOperationsResponseBodyList =
   /*@__PURE__*/ S.Array(
     Operation,
@@ -5364,7 +5638,7 @@ export const CsmUsageQuota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CsmUsageQuota" }) as any as S.Schema<CsmUsageQuota>;
 
 /** The CsmUsageQuota items on this page */
-export type CsmUsageQuotaCollectionValueList = CsmUsageQuota[];
+export type CsmUsageQuotaCollectionValueList = ReadonlyArray<CsmUsageQuota>;
 export const CsmUsageQuotaCollectionValueList = /*@__PURE__*/ S.Array(
   CsmUsageQuota,
 ) as any as S.Schema<CsmUsageQuotaCollectionValueList>;
@@ -5683,14 +5957,18 @@ export interface AppServiceEnvironmentsUpdateRequest {
   resourceGroupName: string;
   /** Name of the App Service Environment. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Core resource properties */
+  properties?: AppServiceEnvironmentInput;
 }
 export const AppServiceEnvironmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(AppServiceEnvironmentInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5754,7 +6032,10 @@ export interface AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfigurationRequ
   resourceGroupName: string;
   /** Name of the App Service Environment. */
   name: string;
-  body: unknown;
+  /** CustomDnsSuffixConfiguration resource specific properties */
+  properties?: CustomDnsSuffixConfigurationPropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5762,7 +6043,8 @@ export const AppServiceEnvironmentsUpdateAseCustomDnsSuffixConfigurationRequest 
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(CustomDnsSuffixConfigurationPropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5812,7 +6094,10 @@ export interface AppServiceEnvironmentsUpdateAseNetworkingConfigurationRequest {
   resourceGroupName: string;
   /** Name of the App Service Environment. */
   name: string;
-  body: unknown;
+  /** AseV3NetworkingConfiguration resource specific properties */
+  properties?: AseV3NetworkingConfigurationPropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const AppServiceEnvironmentsUpdateAseNetworkingConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5820,7 +6105,8 @@ export const AppServiceEnvironmentsUpdateAseNetworkingConfigurationRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AseV3NetworkingConfigurationPropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5869,7 +6155,12 @@ export interface AppServiceEnvironmentsUpdateMultiRolePoolRequest {
   resourceGroupName: string;
   /** Name of the App Service Environment. */
   name: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: WorkerPoolInput;
+  /** Description of a SKU for a scalable resource. */
+  sku?: SkuDescription;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const AppServiceEnvironmentsUpdateMultiRolePoolRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5877,7 +6168,9 @@ export const AppServiceEnvironmentsUpdateMultiRolePoolRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(WorkerPoolInput),
+      sku: S.optional(SkuDescription),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -5930,7 +6223,12 @@ export interface AppServiceEnvironmentsUpdateWorkerPoolRequest {
   name: string;
   /** Name of the worker pool. */
   workerPoolName: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: WorkerPoolInput;
+  /** Description of a SKU for a scalable resource. */
+  sku?: SkuDescription;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const AppServiceEnvironmentsUpdateWorkerPoolRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5939,7 +6237,9 @@ export const AppServiceEnvironmentsUpdateWorkerPoolRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       workerPoolName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(WorkerPoolInput),
+      sku: S.optional(SkuDescription),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -6016,6 +6316,196 @@ export const AppServiceEnvironmentsUpgradeResponse = /*@__PURE__*/ S.suspend(
   identifier: "AppServiceEnvironmentsUpgradeResponse",
 }) as any as S.Schema<AppServiceEnvironmentsUpgradeResponse>;
 
+/** Resource tags. */
+export type AppServicePlansCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AppServicePlansCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AppServicePlansCreateOrUpdateRequestTagsMap>;
+
+/** Specification for an App Service Environment to use for this resource. */
+export interface HostingEnvironmentProfileInput {
+  /** Resource ID of the App Service Environment. */
+  id?: string;
+}
+export const HostingEnvironmentProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HostingEnvironmentProfileInput",
+}) as any as S.Schema<HostingEnvironmentProfileInput>;
+
+/** Specification for a Kubernetes Environment to use for this resource. */
+export interface KubeEnvironmentProfileInput {
+  /** Resource ID of the Kubernetes Environment. */
+  id?: string;
+}
+export const KubeEnvironmentProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KubeEnvironmentProfileInput",
+}) as any as S.Schema<KubeEnvironmentProfileInput>;
+
+/** Registry adapters associated with this App Service plan. */
+export type AppServicePlanPropertiesInputRegistryAdaptersList =
+  ReadonlyArray<RegistryAdapter>;
+export const AppServicePlanPropertiesInputRegistryAdaptersList =
+  /*@__PURE__*/ S.Array(
+    RegistryAdapter,
+  ) as any as S.Schema<AppServicePlanPropertiesInputRegistryAdaptersList>;
+
+/** Install scripts associated with this App Service plan. */
+export type AppServicePlanPropertiesInputInstallScriptsList =
+  ReadonlyArray<InstallScript>;
+export const AppServicePlanPropertiesInputInstallScriptsList =
+  /*@__PURE__*/ S.Array(
+    InstallScript,
+  ) as any as S.Schema<AppServicePlanPropertiesInputInstallScriptsList>;
+
+/** Storage mounts associated with this App Service plan. */
+export type AppServicePlanPropertiesInputStorageMountsList =
+  ReadonlyArray<StorageMount>;
+export const AppServicePlanPropertiesInputStorageMountsList =
+  /*@__PURE__*/ S.Array(
+    StorageMount,
+  ) as any as S.Schema<AppServicePlanPropertiesInputStorageMountsList>;
+
+/** AppServicePlan resource specific properties */
+export interface AppServicePlanPropertiesInput {
+  /** Target worker tier assigned to the App Service plan. */
+  workerTierName?: string;
+  /** Specification for the App Service Environment to use for the App Service plan. */
+  hostingEnvironmentProfile?: HostingEnvironmentProfileInput;
+  /** If <code>true</code>, apps assigned to this App Service plan can be scaled independently. If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan. */
+  perSiteScaling?: boolean;
+  /** ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku */
+  elasticScaleEnabled?: boolean;
+  /** Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan */
+  maximumElasticWorkerCount?: number;
+  /** If <code>true</code>, this App Service Plan owns spot instances. */
+  isSpot?: boolean;
+  /** The time when the server farm expires. Valid only if it is a spot server farm. */
+  spotExpirationTime?: string;
+  /** The time when the server farm free offer expires. */
+  freeOfferExpirationTime?: string;
+  /** If Linux app service plan <code>true</code>, <code>false</code> otherwise. */
+  reserved?: boolean;
+  /** Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise. */
+  isXenon?: boolean;
+  /** If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise. */
+  hyperV?: boolean;
+  /** Scaling worker count. */
+  targetWorkerCount?: number;
+  /** Scaling worker size ID. */
+  targetWorkerSizeId?: number;
+  /** Specification for the Kubernetes Environment to use for the App Service plan. */
+  kubeEnvironmentProfile?: KubeEnvironmentProfileInput;
+  /** If <code>true</code>, this App Service Plan will perform availability zone balancing. If <code>false</code>, this App Service Plan will not perform availability zone balancing. */
+  zoneRedundant?: boolean;
+  /** If <code>true</code>, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously. If <code>false</code>, this App Service Plan will only attempt sync scaling. */
+  asyncScalingEnabled?: boolean;
+  /** Identity to use by platform for various features and integrations using managed identity. */
+  planDefaultIdentity?: DefaultIdentity;
+  /** Whether this server farm is in custom mode. */
+  isCustomMode?: boolean;
+  /** Registry adapters associated with this App Service plan. */
+  registryAdapters?: AppServicePlanPropertiesInputRegistryAdaptersList;
+  /** Install scripts associated with this App Service plan. */
+  installScripts?: AppServicePlanPropertiesInputInstallScriptsList;
+  /** All network settings for the server farm. */
+  network?: ServerFarmNetworkSettings;
+  /** Storage mounts associated with this App Service plan. */
+  storageMounts?: AppServicePlanPropertiesInputStorageMountsList;
+  /** If <code>true</code>, RDP access is enabled for this App Service plan. Only applicable for IsCustomMode ASPs. If <code>false</code>, RDP access is disabled. */
+  rdpEnabled?: boolean;
+}
+export const AppServicePlanPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workerTierName: S.optional(S.String),
+    hostingEnvironmentProfile: S.optional(HostingEnvironmentProfileInput),
+    perSiteScaling: S.optional(S.Boolean),
+    elasticScaleEnabled: S.optional(S.Boolean),
+    maximumElasticWorkerCount: S.optional(S.Number),
+    isSpot: S.optional(S.Boolean),
+    spotExpirationTime: S.optional(S.String),
+    freeOfferExpirationTime: S.optional(S.String),
+    reserved: S.optional(S.Boolean),
+    isXenon: S.optional(S.Boolean),
+    hyperV: S.optional(S.Boolean),
+    targetWorkerCount: S.optional(S.Number),
+    targetWorkerSizeId: S.optional(S.Number),
+    kubeEnvironmentProfile: S.optional(KubeEnvironmentProfileInput),
+    zoneRedundant: S.optional(S.Boolean),
+    asyncScalingEnabled: S.optional(S.Boolean),
+    planDefaultIdentity: S.optional(DefaultIdentity),
+    isCustomMode: S.optional(S.Boolean),
+    registryAdapters: S.optional(
+      AppServicePlanPropertiesInputRegistryAdaptersList,
+    ),
+    installScripts: S.optional(AppServicePlanPropertiesInputInstallScriptsList),
+    network: S.optional(ServerFarmNetworkSettings),
+    storageMounts: S.optional(AppServicePlanPropertiesInputStorageMountsList),
+    rdpEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AppServicePlanPropertiesInput",
+}) as any as S.Schema<AppServicePlanPropertiesInput>;
+
+/** Extended Location. */
+export interface ExtendedLocationInput {
+  /** Name of extended location. */
+  name?: string;
+}
+export const ExtendedLocationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExtendedLocationInput",
+}) as any as S.Schema<ExtendedLocationInput>;
+
+/** User Assigned identity. */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
+export type ManagedServiceIdentityInputUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const ManagedServiceIdentityInputUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<ManagedServiceIdentityInputUserAssignedIdentitiesMap>;
+
+/** Managed service identity. */
+export interface ManagedServiceIdentityInput {
+  /** Type of managed service identity. */
+  type?: ManagedServiceIdentityType;
+  /** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
+  userAssignedIdentities?: ManagedServiceIdentityInputUserAssignedIdentitiesMap;
+}
+export const ManagedServiceIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ManagedServiceIdentityType),
+    userAssignedIdentities: S.optional(
+      ManagedServiceIdentityInputUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ManagedServiceIdentityInput",
+}) as any as S.Schema<ManagedServiceIdentityInput>;
+
 export interface AppServicePlansCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6023,7 +6513,20 @@ export interface AppServicePlansCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the App Service plan. */
   name: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AppServicePlansCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** AppServicePlan resource specific properties */
+  properties?: AppServicePlanPropertiesInput;
+  /** Description of a SKU for a scalable resource. */
+  sku?: SkuDescription;
+  /** Extended Location. */
+  extendedLocation?: ExtendedLocationInput;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
+  /** Managed service identity. */
+  identity?: ManagedServiceIdentityInput;
 }
 export const AppServicePlansCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6031,7 +6534,13 @@ export const AppServicePlansCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(AppServicePlansCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(AppServicePlanPropertiesInput),
+      sku: S.optional(SkuDescription),
+      extendedLocation: S.optional(ExtendedLocationInput),
+      kind: S.optional(S.String),
+      identity: S.optional(ManagedServiceIdentityInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6097,42 +6606,8 @@ export const AppServicePlansCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "AppServicePlansCreateOrUpdateResponse",
 }) as any as S.Schema<AppServicePlansCreateOrUpdateResponse>;
 
-export interface AppServicePlansCreateOrUpdateVnetRouteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the App Service plan. */
-  name: string;
-  /** Name of the Virtual Network. */
-  vnetName: string;
-  /** Name of the Virtual Network route. */
-  routeName: string;
-  body: unknown;
-}
-export const AppServicePlansCreateOrUpdateVnetRouteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      vnetName: S.String.pipe(T.Label()),
-      routeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
-        code: 200,
-        apiVersion: "2026-07-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "AppServicePlansCreateOrUpdateVnetRouteRequest",
-  }) as any as S.Schema<AppServicePlansCreateOrUpdateVnetRouteRequest>;
-
 /** The type of route this is: DEFAULT - By default, every app has routes to the local address ranges specified by RFC1918 INHERITED - Routes inherited from the real Virtual Network routes STATIC - Static route set on the app only These values will be used for syncing an app's routes with those from a Virtual Network. */
-export type RouteType = "DEFAULT" | "INHERITED" | "STATIC" | (string & {});
+export type RouteType = "DEFAULT" | "INHERITED" | "STATIC";
 export const RouteType = /*@__PURE__*/ S.String;
 
 /** VnetRoute resource specific properties */
@@ -6153,6 +6628,44 @@ export const VnetRouteProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VnetRouteProperties",
 }) as any as S.Schema<VnetRouteProperties>;
+
+export interface AppServicePlansCreateOrUpdateVnetRouteRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the App Service plan. */
+  name: string;
+  /** Name of the Virtual Network. */
+  vnetName: string;
+  /** Name of the Virtual Network route. */
+  routeName: string;
+  /** VnetRoute resource specific properties */
+  properties?: VnetRouteProperties;
+  /** Kind of resource. */
+  kind?: string;
+}
+export const AppServicePlansCreateOrUpdateVnetRouteRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      name: S.String.pipe(T.Label()),
+      vnetName: S.String.pipe(T.Label()),
+      routeName: S.String.pipe(T.Label()),
+      properties: S.optional(VnetRouteProperties),
+      kind: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}/virtualNetworkConnections/{vnetName}/routes/{routeName}",
+        code: 200,
+        apiVersion: "2026-07-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "AppServicePlansCreateOrUpdateVnetRouteRequest",
+  }) as any as S.Schema<AppServicePlansCreateOrUpdateVnetRouteRequest>;
 
 export interface AppServicePlansCreateOrUpdateVnetRouteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6589,7 +7102,8 @@ export const VnetRoute = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VnetRoute" }) as any as S.Schema<VnetRoute>;
 
-export type AppServicePlansGetRouteForVnetResponseBodyList = VnetRoute[];
+export type AppServicePlansGetRouteForVnetResponseBodyList =
+  ReadonlyArray<VnetRoute>;
 export const AppServicePlansGetRouteForVnetResponseBodyList =
   /*@__PURE__*/ S.Array(
     VnetRoute,
@@ -6650,7 +7164,8 @@ export const ServerFarmInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerFarmInstance>;
 
 /** The list of server farm instances. */
-export type ServerFarmInstanceDetailsInstancesList = ServerFarmInstance[];
+export type ServerFarmInstanceDetailsInstancesList =
+  ReadonlyArray<ServerFarmInstance>;
 export const ServerFarmInstanceDetailsInstancesList = /*@__PURE__*/ S.Array(
   ServerFarmInstance,
 ) as any as S.Schema<ServerFarmInstanceDetailsInstancesList>;
@@ -6779,7 +7294,7 @@ export const AppServicePlansGetVnetFromServerFarmRequest =
   }) as any as S.Schema<AppServicePlansGetVnetFromServerFarmRequest>;
 
 /** The routes that this Virtual Network connection uses. */
-export type VnetInfoRoutesList = VnetRoute[];
+export type VnetInfoRoutesList = ReadonlyArray<VnetRoute>;
 export const VnetInfoRoutesList = /*@__PURE__*/ S.Array(
   VnetRoute,
 ) as any as S.Schema<VnetInfoRoutesList>;
@@ -6988,7 +7503,8 @@ export const AppServicePlansListCapabilitiesRequest = /*@__PURE__*/ S.suspend(
   identifier: "AppServicePlansListCapabilitiesRequest",
 }) as any as S.Schema<AppServicePlansListCapabilitiesRequest>;
 
-export type AppServicePlansListCapabilitiesResponseBodyList = Capability[];
+export type AppServicePlansListCapabilitiesResponseBodyList =
+  ReadonlyArray<Capability>;
 export const AppServicePlansListCapabilitiesResponseBodyList =
   /*@__PURE__*/ S.Array(
     Capability,
@@ -7131,7 +7647,8 @@ export const HybridConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridConnection>;
 
 /** The HybridConnection items on this page */
-export type HybridConnectionCollectionValueList = HybridConnection[];
+export type HybridConnectionCollectionValueList =
+  ReadonlyArray<HybridConnection>;
 export const HybridConnectionCollectionValueList = /*@__PURE__*/ S.Array(
   HybridConnection,
 ) as any as S.Schema<HybridConnectionCollectionValueList>;
@@ -7181,7 +7698,8 @@ export const AppServicePlansListRoutesForVnetRequest = /*@__PURE__*/ S.suspend(
   identifier: "AppServicePlansListRoutesForVnetRequest",
 }) as any as S.Schema<AppServicePlansListRoutesForVnetRequest>;
 
-export type AppServicePlansListRoutesForVnetResponseBodyList = VnetRoute[];
+export type AppServicePlansListRoutesForVnetResponseBodyList =
+  ReadonlyArray<VnetRoute>;
 export const AppServicePlansListRoutesForVnetResponseBodyList =
   /*@__PURE__*/ S.Array(
     VnetRoute,
@@ -7277,7 +7795,8 @@ export const VnetInfoResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "VnetInfoResource",
 }) as any as S.Schema<VnetInfoResource>;
 
-export type AppServicePlansListVnetsResponseBodyList = VnetInfoResource[];
+export type AppServicePlansListVnetsResponseBodyList =
+  ReadonlyArray<VnetInfoResource>;
 export const AppServicePlansListVnetsResponseBodyList = /*@__PURE__*/ S.Array(
   VnetInfoResource,
 ) as any as S.Schema<AppServicePlansListVnetsResponseBodyList>;
@@ -7357,7 +7876,7 @@ export const AppServicePlansListWebAppsByHybridConnectionRequest =
   }) as any as S.Schema<AppServicePlansListWebAppsByHybridConnectionRequest>;
 
 /** Collection of resources. */
-export type ResourceCollectionValueList = string[];
+export type ResourceCollectionValueList = ReadonlyArray<string>;
 export const ResourceCollectionValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourceCollectionValueList>;
@@ -7542,6 +8061,62 @@ export const AppServicePlansStopWebAppsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppServicePlansStopWebAppsResponse",
 }) as any as S.Schema<AppServicePlansStopWebAppsResponse>;
 
+/** AppServicePlanPatchResource resource specific properties */
+export interface AppServicePlanPatchResourcePropertiesInput {
+  /** Target worker tier assigned to the App Service plan. */
+  workerTierName?: string;
+  /** Specification for the App Service Environment to use for the App Service plan. */
+  hostingEnvironmentProfile?: HostingEnvironmentProfileInput;
+  /** If <code>true</code>, apps assigned to this App Service plan can be scaled independently. If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan. */
+  perSiteScaling?: boolean;
+  /** ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku */
+  elasticScaleEnabled?: boolean;
+  /** Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan */
+  maximumElasticWorkerCount?: number;
+  /** If <code>true</code>, this App Service Plan owns spot instances. */
+  isSpot?: boolean;
+  /** The time when the server farm expires. Valid only if it is a spot server farm. */
+  spotExpirationTime?: string;
+  /** The time when the server farm free offer expires. */
+  freeOfferExpirationTime?: string;
+  /** If Linux app service plan <code>true</code>, <code>false</code> otherwise. */
+  reserved?: boolean;
+  /** Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise. */
+  isXenon?: boolean;
+  /** If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise. */
+  hyperV?: boolean;
+  /** Scaling worker count. */
+  targetWorkerCount?: number;
+  /** Scaling worker size ID. */
+  targetWorkerSizeId?: number;
+  /** Specification for the Kubernetes Environment to use for the App Service plan. */
+  kubeEnvironmentProfile?: KubeEnvironmentProfileInput;
+  /** If <code>true</code>, this App Service Plan will perform availability zone balancing. If <code>false</code>, this App Service Plan will not perform availability zone balancing. */
+  zoneRedundant?: boolean;
+}
+export const AppServicePlanPatchResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      workerTierName: S.optional(S.String),
+      hostingEnvironmentProfile: S.optional(HostingEnvironmentProfileInput),
+      perSiteScaling: S.optional(S.Boolean),
+      elasticScaleEnabled: S.optional(S.Boolean),
+      maximumElasticWorkerCount: S.optional(S.Number),
+      isSpot: S.optional(S.Boolean),
+      spotExpirationTime: S.optional(S.String),
+      freeOfferExpirationTime: S.optional(S.String),
+      reserved: S.optional(S.Boolean),
+      isXenon: S.optional(S.Boolean),
+      hyperV: S.optional(S.Boolean),
+      targetWorkerCount: S.optional(S.Number),
+      targetWorkerSizeId: S.optional(S.Number),
+      kubeEnvironmentProfile: S.optional(KubeEnvironmentProfileInput),
+      zoneRedundant: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "AppServicePlanPatchResourcePropertiesInput",
+  }) as any as S.Schema<AppServicePlanPatchResourcePropertiesInput>;
+
 export interface AppServicePlansUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7549,14 +8124,21 @@ export interface AppServicePlansUpdateRequest {
   resourceGroupName: string;
   /** Name of the App Service plan. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** AppServicePlanPatchResource resource specific properties */
+  properties?: AppServicePlanPatchResourcePropertiesInput;
+  /** Managed service identity. */
+  identity?: ManagedServiceIdentityInput;
 }
 export const AppServicePlansUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(AppServicePlanPatchResourcePropertiesInput),
+    identity: S.optional(ManagedServiceIdentityInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7631,7 +8213,10 @@ export interface AppServicePlansUpdateVnetGatewayRequest {
   vnetName: string;
   /** Name of the gateway. Only the 'primary' gateway is supported. */
   gatewayName: string;
-  body: unknown;
+  /** VnetGateway resource specific properties */
+  properties?: VnetGatewayProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const AppServicePlansUpdateVnetGatewayRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7641,7 +8226,8 @@ export const AppServicePlansUpdateVnetGatewayRequest = /*@__PURE__*/ S.suspend(
       name: S.String.pipe(T.Label()),
       vnetName: S.String.pipe(T.Label()),
       gatewayName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(VnetGatewayProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -7693,7 +8279,10 @@ export interface AppServicePlansUpdateVnetRouteRequest {
   vnetName: string;
   /** Name of the Virtual Network route. */
   routeName: string;
-  body: unknown;
+  /** VnetRoute resource specific properties */
+  properties?: VnetRouteProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const AppServicePlansUpdateVnetRouteRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7703,7 +8292,8 @@ export const AppServicePlansUpdateVnetRouteRequest = /*@__PURE__*/ S.suspend(
       name: S.String.pipe(T.Label()),
       vnetName: S.String.pipe(T.Label()),
       routeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(VnetRouteProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -7744,6 +8334,55 @@ export const AppServicePlansUpdateVnetRouteResponse = /*@__PURE__*/ S.suspend(
   identifier: "AppServicePlansUpdateVnetRouteResponse",
 }) as any as S.Schema<AppServicePlansUpdateVnetRouteResponse>;
 
+/** Resource tags. */
+export type CertificatesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CertificatesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CertificatesCreateOrUpdateRequestTagsMap>;
+
+/** Host names the certificate applies to. */
+export type CertificatePropertiesInputHostNamesList = ReadonlyArray<string>;
+export const CertificatePropertiesInputHostNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CertificatePropertiesInputHostNamesList>;
+
+/** Certificate resource specific properties */
+export interface CertificatePropertiesInput {
+  /** Certificate password. */
+  password?: string | Redacted.Redacted<string>;
+  /** Host names the certificate applies to. */
+  hostNames?: CertificatePropertiesInputHostNamesList;
+  /** Pfx blob. */
+  pfxBlob?: string;
+  /** Azure Key Vault Csm resource Id. */
+  keyVaultId?: string;
+  /** Azure Key Vault secret name. */
+  keyVaultSecretName?: string;
+  /** Resource ID of the associated App Service plan. */
+  serverFarmId?: string;
+  /** CNAME of the certificate to be issued via free certificate */
+  canonicalName?: string;
+  /** Method of domain validation for free cert */
+  domainValidationMethod?: string;
+}
+export const CertificatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    hostNames: S.optional(CertificatePropertiesInputHostNamesList),
+    pfxBlob: S.optional(S.String),
+    keyVaultId: S.optional(S.String),
+    keyVaultSecretName: S.optional(S.String),
+    serverFarmId: S.optional(S.String),
+    canonicalName: S.optional(S.String),
+    domainValidationMethod: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CertificatePropertiesInput",
+}) as any as S.Schema<CertificatePropertiesInput>;
+
 export interface CertificatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7751,14 +8390,24 @@ export interface CertificatesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the certificate. */
   name: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: CertificatesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Certificate resource specific properties */
+  properties?: CertificatePropertiesInput;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const CertificatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(CertificatesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(CertificatePropertiesInput),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7781,7 +8430,7 @@ export const CertificatesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CertificatesCreateOrUpdateResponseTagsMap>;
 
 /** Host names the certificate applies to. */
-export type CertificatePropertiesHostNamesList = string[];
+export type CertificatePropertiesHostNamesList = ReadonlyArray<string>;
 export const CertificatePropertiesHostNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CertificatePropertiesHostNamesList>;
@@ -7798,8 +8447,7 @@ export type KeyVaultSecretStatus =
   | "KeyVaultSecretDoesNotExist"
   | "UnknownError"
   | "ExternalPrivateKey"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const KeyVaultSecretStatus = /*@__PURE__*/ S.String;
 
 /** Certificate resource specific properties */
@@ -8069,7 +8717,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Certificate" }) as any as S.Schema<Certificate>;
 
 /** The Certificate items on this page */
-export type CertificateCollectionValueList = Certificate[];
+export type CertificateCollectionValueList = ReadonlyArray<Certificate>;
 export const CertificateCollectionValueList = /*@__PURE__*/ S.Array(
   Certificate,
 ) as any as S.Schema<CertificateCollectionValueList>;
@@ -8113,6 +8761,48 @@ export const CertificatesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
   identifier: "CertificatesListByResourceGroupRequest",
 }) as any as S.Schema<CertificatesListByResourceGroupRequest>;
 
+/** Host names the certificate applies to. */
+export type CertificatePatchResourcePropertiesInputHostNamesList =
+  ReadonlyArray<string>;
+export const CertificatePatchResourcePropertiesInputHostNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CertificatePatchResourcePropertiesInputHostNamesList>;
+
+/** CertificatePatchResource resource specific properties */
+export interface CertificatePatchResourcePropertiesInput {
+  /** Host names the certificate applies to. */
+  hostNames?: CertificatePatchResourcePropertiesInputHostNamesList;
+  /** Pfx blob. */
+  pfxBlob?: string;
+  /** Key Vault Csm resource Id. */
+  keyVaultId?: string;
+  /** Key Vault secret name. */
+  keyVaultSecretName?: string;
+  /** Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}". */
+  serverFarmId?: string;
+  /** CNAME of the certificate to be issued via free certificate */
+  canonicalName?: string;
+  /** Method of domain validation for free cert */
+  domainValidationMethod?: string;
+}
+export const CertificatePatchResourcePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      hostNames: S.optional(
+        CertificatePatchResourcePropertiesInputHostNamesList,
+      ),
+      pfxBlob: S.optional(S.String),
+      keyVaultId: S.optional(S.String),
+      keyVaultSecretName: S.optional(S.String),
+      serverFarmId: S.optional(S.String),
+      canonicalName: S.optional(S.String),
+      domainValidationMethod: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "CertificatePatchResourcePropertiesInput",
+}) as any as S.Schema<CertificatePatchResourcePropertiesInput>;
+
 export interface CertificatesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8120,14 +8810,18 @@ export interface CertificatesUpdateRequest {
   resourceGroupName: string;
   /** Name of the certificate. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** CertificatePatchResource resource specific properties */
+  properties?: CertificatePatchResourcePropertiesInput;
 }
 export const CertificatesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(CertificatePatchResourcePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -8182,15 +8876,37 @@ export const CertificatesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CertificatesUpdateResponse",
 }) as any as S.Schema<CertificatesUpdateResponse>;
 
+/** Resource type used for verification. */
+export type CheckNameResourceTypes =
+  | "Site"
+  | "Slot"
+  | "HostingEnvironment"
+  | "PublishingUser"
+  | "Microsoft.Web/sites"
+  | "Microsoft.Web/sites/slots"
+  | "Microsoft.Web/hostingEnvironments"
+  | "Microsoft.Web/publishingUsers";
+export const CheckNameResourceTypes = /*@__PURE__*/ S.String;
+
 export interface CheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** Resource name to verify. */
+  name: string;
+  /** Resource type used for verification. */
+  type: CheckNameResourceTypes;
+  /** Is fully qualified domain name. */
+  isFqdn?: boolean;
+  /** Azure Resource Manager ID of the customer's selected Container Apps Environment on which to host the Function app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName} */
+  environmentId?: string;
 }
 export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.String,
+    type: CheckNameResourceTypes,
+    isFqdn: S.optional(S.Boolean),
+    environmentId: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -8204,10 +8920,7 @@ export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckNameAvailabilityRequest>;
 
 /** <code>Invalid</code> indicates the name provided does not match Azure App Service naming requirements. <code>AlreadyExists</code> indicates that the name is already in use and is therefore unavailable. */
-export type InAvailabilityReasonType =
-  | "Invalid"
-  | "AlreadyExists"
-  | (string & {});
+export type InAvailabilityReasonType = "Invalid" | "AlreadyExists";
 export const InAvailabilityReasonType = /*@__PURE__*/ S.String;
 
 /** Information regarding availability of a resource name. */
@@ -8363,7 +9076,7 @@ export const DeletedSite = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletedSite" }) as any as S.Schema<DeletedSite>;
 
 /** The DeletedSite items on this page */
-export type DeletedWebAppCollectionValueList = DeletedSite[];
+export type DeletedWebAppCollectionValueList = ReadonlyArray<DeletedSite>;
 export const DeletedWebAppCollectionValueList = /*@__PURE__*/ S.Array(
   DeletedSite,
 ) as any as S.Schema<DeletedWebAppCollectionValueList>;
@@ -8447,14 +9160,15 @@ export const DiagnosticsExecuteSiteAnalysisRequest = /*@__PURE__*/ S.suspend(
   identifier: "DiagnosticsExecuteSiteAnalysisRequest",
 }) as any as S.Schema<DiagnosticsExecuteSiteAnalysisRequest>;
 
-export type DetectorAbnormalTimePeriodMetaDataItemList = NameValuePair[];
+export type DetectorAbnormalTimePeriodMetaDataItemList =
+  ReadonlyArray<NameValuePair>;
 export const DetectorAbnormalTimePeriodMetaDataItemList = /*@__PURE__*/ S.Array(
   NameValuePair,
 ) as any as S.Schema<DetectorAbnormalTimePeriodMetaDataItemList>;
 
 /** Downtime metadata */
 export type DetectorAbnormalTimePeriodMetaDataList =
-  DetectorAbnormalTimePeriodMetaDataItemList[];
+  ReadonlyArray<DetectorAbnormalTimePeriodMetaDataItemList>;
 export const DetectorAbnormalTimePeriodMetaDataList = /*@__PURE__*/ S.Array(
   DetectorAbnormalTimePeriodMetaDataItemList,
 ) as any as S.Schema<DetectorAbnormalTimePeriodMetaDataList>;
@@ -8468,36 +9182,34 @@ export type IssueType =
   | "AseDeployment"
   | "UserIssue"
   | "PlatformIssue"
-  | "Other"
-  | (string & {});
+  | "Other";
 export const IssueType = /*@__PURE__*/ S.String;
 
 /** Type of Solution */
 export type SolutionType =
   | "QuickSolution"
   | "DeepInvestigation"
-  | "BestPractices"
-  | (string & {});
+  | "BestPractices";
 export const SolutionType = /*@__PURE__*/ S.String;
 
-export type SolutionDataItemList = NameValuePair[];
+export type SolutionDataItemList = ReadonlyArray<NameValuePair>;
 export const SolutionDataItemList = /*@__PURE__*/ S.Array(
   NameValuePair,
 ) as any as S.Schema<SolutionDataItemList>;
 
 /** Solution Data. */
-export type SolutionDataList = SolutionDataItemList[];
+export type SolutionDataList = ReadonlyArray<SolutionDataItemList>;
 export const SolutionDataList = /*@__PURE__*/ S.Array(
   SolutionDataItemList,
 ) as any as S.Schema<SolutionDataList>;
 
-export type SolutionMetadataItemList = NameValuePair[];
+export type SolutionMetadataItemList = ReadonlyArray<NameValuePair>;
 export const SolutionMetadataItemList = /*@__PURE__*/ S.Array(
   NameValuePair,
 ) as any as S.Schema<SolutionMetadataItemList>;
 
 /** Solution Metadata. */
-export type SolutionMetadataList = SolutionMetadataItemList[];
+export type SolutionMetadataList = ReadonlyArray<SolutionMetadataItemList>;
 export const SolutionMetadataList = /*@__PURE__*/ S.Array(
   SolutionMetadataItemList,
 ) as any as S.Schema<SolutionMetadataList>;
@@ -8532,7 +9244,7 @@ export const Solution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Solution" }) as any as S.Schema<Solution>;
 
 /** List of proposed solutions */
-export type DetectorAbnormalTimePeriodSolutionsList = Solution[];
+export type DetectorAbnormalTimePeriodSolutionsList = ReadonlyArray<Solution>;
 export const DetectorAbnormalTimePeriodSolutionsList = /*@__PURE__*/ S.Array(
   Solution,
 ) as any as S.Schema<DetectorAbnormalTimePeriodSolutionsList>;
@@ -8572,13 +9284,14 @@ export const DetectorAbnormalTimePeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectorAbnormalTimePeriod>;
 
 /** List of Possible Cause of downtime */
-export type AbnormalTimePeriodEventsList = DetectorAbnormalTimePeriod[];
+export type AbnormalTimePeriodEventsList =
+  ReadonlyArray<DetectorAbnormalTimePeriod>;
 export const AbnormalTimePeriodEventsList = /*@__PURE__*/ S.Array(
   DetectorAbnormalTimePeriod,
 ) as any as S.Schema<AbnormalTimePeriodEventsList>;
 
 /** List of proposed solutions */
-export type AbnormalTimePeriodSolutionsList = Solution[];
+export type AbnormalTimePeriodSolutionsList = ReadonlyArray<Solution>;
 export const AbnormalTimePeriodSolutionsList = /*@__PURE__*/ S.Array(
   Solution,
 ) as any as S.Schema<AbnormalTimePeriodSolutionsList>;
@@ -8607,7 +9320,7 @@ export const AbnormalTimePeriod = /*@__PURE__*/ S.suspend(() =>
 
 /** List of time periods. */
 export type DiagnosticAnalysisPropertiesAbnormalTimePeriodsList =
-  AbnormalTimePeriod[];
+  ReadonlyArray<AbnormalTimePeriod>;
 export const DiagnosticAnalysisPropertiesAbnormalTimePeriodsList =
   /*@__PURE__*/ S.Array(
     AbnormalTimePeriod,
@@ -8664,7 +9377,8 @@ export const DiagnosticMetricSample = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiagnosticMetricSample>;
 
 /** Collection of metric values for the selected period based on the {Microsoft.Web.Hosting.Administration.DiagnosticMetricSet.TimeGrain} */
-export type DiagnosticMetricSetValuesList = DiagnosticMetricSample[];
+export type DiagnosticMetricSetValuesList =
+  ReadonlyArray<DiagnosticMetricSample>;
 export const DiagnosticMetricSetValuesList = /*@__PURE__*/ S.Array(
   DiagnosticMetricSample,
 ) as any as S.Schema<DiagnosticMetricSetValuesList>;
@@ -8698,30 +9412,30 @@ export const DiagnosticMetricSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiagnosticMetricSet>;
 
 /** Source Metrics */
-export type AnalysisDataMetricsList = DiagnosticMetricSet[];
+export type AnalysisDataMetricsList = ReadonlyArray<DiagnosticMetricSet>;
 export const AnalysisDataMetricsList = /*@__PURE__*/ S.Array(
   DiagnosticMetricSet,
 ) as any as S.Schema<AnalysisDataMetricsList>;
 
-export type AnalysisDataDataItemList = NameValuePair[];
+export type AnalysisDataDataItemList = ReadonlyArray<NameValuePair>;
 export const AnalysisDataDataItemList = /*@__PURE__*/ S.Array(
   NameValuePair,
 ) as any as S.Schema<AnalysisDataDataItemList>;
 
 /** Additional Source Data */
-export type AnalysisDataDataList = AnalysisDataDataItemList[];
+export type AnalysisDataDataList = ReadonlyArray<AnalysisDataDataItemList>;
 export const AnalysisDataDataList = /*@__PURE__*/ S.Array(
   AnalysisDataDataItemList,
 ) as any as S.Schema<AnalysisDataDataList>;
 
 /** Instructions if any for the data source */
-export type DataSourceInstructionsList = string[];
+export type DataSourceInstructionsList = ReadonlyArray<string>;
 export const DataSourceInstructionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataSourceInstructionsList>;
 
 /** Datasource Uri Links */
-export type DataSourceDataSourceUriList = NameValuePair[];
+export type DataSourceDataSourceUriList = ReadonlyArray<NameValuePair>;
 export const DataSourceDataSourceUriList = /*@__PURE__*/ S.Array(
   NameValuePair,
 ) as any as S.Schema<DataSourceDataSourceUriList>;
@@ -8776,14 +9490,15 @@ export const AnalysisData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnalysisData" }) as any as S.Schema<AnalysisData>;
 
 /** Data by each detector */
-export type DiagnosticAnalysisPropertiesPayloadList = AnalysisData[];
+export type DiagnosticAnalysisPropertiesPayloadList =
+  ReadonlyArray<AnalysisData>;
 export const DiagnosticAnalysisPropertiesPayloadList = /*@__PURE__*/ S.Array(
   AnalysisData,
 ) as any as S.Schema<DiagnosticAnalysisPropertiesPayloadList>;
 
 /** Data by each detector for detectors that did not corelate */
 export type DiagnosticAnalysisPropertiesNonCorrelatedDetectorsList =
-  DetectorDefinition[];
+  ReadonlyArray<DetectorDefinition>;
 export const DiagnosticAnalysisPropertiesNonCorrelatedDetectorsList =
   /*@__PURE__*/ S.Array(
     DetectorDefinition,
@@ -8955,7 +9670,7 @@ export const DiagnosticsExecuteSiteDetectorRequest = /*@__PURE__*/ S.suspend(
 
 /** Metrics provided by the detector */
 export type DiagnosticDetectorResponsePropertiesMetricsList =
-  DiagnosticMetricSet[];
+  ReadonlyArray<DiagnosticMetricSet>;
 export const DiagnosticDetectorResponsePropertiesMetricsList =
   /*@__PURE__*/ S.Array(
     DiagnosticMetricSet,
@@ -8963,13 +9678,14 @@ export const DiagnosticDetectorResponsePropertiesMetricsList =
 
 /** List of Correlated events found by the detector */
 export type DiagnosticDetectorResponsePropertiesAbnormalTimePeriodsList =
-  DetectorAbnormalTimePeriod[];
+  ReadonlyArray<DetectorAbnormalTimePeriod>;
 export const DiagnosticDetectorResponsePropertiesAbnormalTimePeriodsList =
   /*@__PURE__*/ S.Array(
     DetectorAbnormalTimePeriod,
   ) as any as S.Schema<DiagnosticDetectorResponsePropertiesAbnormalTimePeriodsList>;
 
-export type DiagnosticDetectorResponsePropertiesDataItemList = NameValuePair[];
+export type DiagnosticDetectorResponsePropertiesDataItemList =
+  ReadonlyArray<NameValuePair>;
 export const DiagnosticDetectorResponsePropertiesDataItemList =
   /*@__PURE__*/ S.Array(
     NameValuePair,
@@ -8977,7 +9693,7 @@ export const DiagnosticDetectorResponsePropertiesDataItemList =
 
 /** Additional Data that detector wants to send. */
 export type DiagnosticDetectorResponsePropertiesDataList =
-  DiagnosticDetectorResponsePropertiesDataItemList[];
+  ReadonlyArray<DiagnosticDetectorResponsePropertiesDataItemList>;
 export const DiagnosticDetectorResponsePropertiesDataList =
   /*@__PURE__*/ S.Array(
     DiagnosticDetectorResponsePropertiesDataItemList,
@@ -9167,23 +9883,19 @@ export const SupportTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SupportTopic" }) as any as S.Schema<SupportTopic>;
 
 /** List of Support Topics for which this detector is enabled. */
-export type DetectorInfoSupportTopicListList = SupportTopic[];
+export type DetectorInfoSupportTopicListList = ReadonlyArray<SupportTopic>;
 export const DetectorInfoSupportTopicListList = /*@__PURE__*/ S.Array(
   SupportTopic,
 ) as any as S.Schema<DetectorInfoSupportTopicListList>;
 
 /** Analysis Types for which this detector should apply to. */
-export type DetectorInfoAnalysisTypeList = string[];
+export type DetectorInfoAnalysisTypeList = ReadonlyArray<string>;
 export const DetectorInfoAnalysisTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DetectorInfoAnalysisTypeList>;
 
 /** Whether this detector is an Analysis Detector or not. */
-export type DetectorType =
-  | "Detector"
-  | "Analysis"
-  | "CategoryOverview"
-  | (string & {});
+export type DetectorType = "Detector" | "Analysis" | "CategoryOverview";
 export const DetectorType = /*@__PURE__*/ S.String;
 
 /** Definition of Detector */
@@ -9241,19 +9953,20 @@ export const DataTableResponseColumn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataTableResponseColumn>;
 
 /** List of columns with data types */
-export type DataTableResponseObjectColumnsList = DataTableResponseColumn[];
+export type DataTableResponseObjectColumnsList =
+  ReadonlyArray<DataTableResponseColumn>;
 export const DataTableResponseObjectColumnsList = /*@__PURE__*/ S.Array(
   DataTableResponseColumn,
 ) as any as S.Schema<DataTableResponseObjectColumnsList>;
 
-export type DataTableResponseObjectRowsItemList = string[];
+export type DataTableResponseObjectRowsItemList = ReadonlyArray<string>;
 export const DataTableResponseObjectRowsItemList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DataTableResponseObjectRowsItemList>;
 
 /** Raw row values */
 export type DataTableResponseObjectRowsList =
-  DataTableResponseObjectRowsItemList[];
+  ReadonlyArray<DataTableResponseObjectRowsItemList>;
 export const DataTableResponseObjectRowsList = /*@__PURE__*/ S.Array(
   DataTableResponseObjectRowsItemList,
 ) as any as S.Schema<DataTableResponseObjectRowsList>;
@@ -9303,8 +10016,7 @@ export type RenderingType =
   | "DownTime"
   | "SummaryCard"
   | "SearchComponent"
-  | "AppInsightEnablement"
-  | (string & {});
+  | "AppInsightEnablement";
 export const RenderingType = /*@__PURE__*/ S.String;
 
 /** Instructions for rendering the data */
@@ -9339,7 +10051,8 @@ export const DiagnosticData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiagnosticData" }) as any as S.Schema<DiagnosticData>;
 
 /** Data Set */
-export type DetectorResponsePropertiesDatasetList = DiagnosticData[];
+export type DetectorResponsePropertiesDatasetList =
+  ReadonlyArray<DiagnosticData>;
 export const DetectorResponsePropertiesDatasetList = /*@__PURE__*/ S.Array(
   DiagnosticData,
 ) as any as S.Schema<DetectorResponsePropertiesDatasetList>;
@@ -9350,8 +10063,7 @@ export type InsightStatus =
   | "Warning"
   | "Info"
   | "Success"
-  | "None"
-  | (string & {});
+  | "None";
 export const InsightStatus = /*@__PURE__*/ S.String;
 
 /** Identify the status of the most severe insight generated by the detector. */
@@ -9383,7 +10095,8 @@ export const KeyValuePairStringObject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyValuePairStringObject>;
 
 /** Settings for the data provider */
-export type DataProviderMetadataPropertyBagList = KeyValuePairStringObject[];
+export type DataProviderMetadataPropertyBagList =
+  ReadonlyArray<KeyValuePairStringObject>;
 export const DataProviderMetadataPropertyBagList = /*@__PURE__*/ S.Array(
   KeyValuePairStringObject,
 ) as any as S.Schema<DataProviderMetadataPropertyBagList>;
@@ -9405,14 +10118,14 @@ export const DataProviderMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional configuration for different data providers to be used by the UI */
 export type DetectorResponsePropertiesDataProvidersMetadataList =
-  DataProviderMetadata[];
+  ReadonlyArray<DataProviderMetadata>;
 export const DetectorResponsePropertiesDataProvidersMetadataList =
   /*@__PURE__*/ S.Array(
     DataProviderMetadata,
   ) as any as S.Schema<DetectorResponsePropertiesDataProvidersMetadataList>;
 
 /** Links attribute of sample utterance. */
-export type SampleUtteranceLinksList = string[];
+export type SampleUtteranceLinksList = ReadonlyArray<string>;
 export const SampleUtteranceLinksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SampleUtteranceLinksList>;
@@ -9453,7 +10166,8 @@ export const QueryUtterancesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryUtterancesResult>;
 
 /** Array of utterance results for search query. */
-export type QueryUtterancesResultsResultsList = QueryUtterancesResult[];
+export type QueryUtterancesResultsResultsList =
+  ReadonlyArray<QueryUtterancesResult>;
 export const QueryUtterancesResultsResultsList = /*@__PURE__*/ S.Array(
   QueryUtterancesResult,
 ) as any as S.Schema<QueryUtterancesResultsResultsList>;
@@ -10104,7 +10818,8 @@ export const DetectorResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectorResponse>;
 
 /** The DetectorResponse items on this page */
-export type DetectorResponseCollectionValueList = DetectorResponse[];
+export type DetectorResponseCollectionValueList =
+  ReadonlyArray<DetectorResponse>;
 export const DetectorResponseCollectionValueList = /*@__PURE__*/ S.Array(
   DetectorResponse,
 ) as any as S.Schema<DetectorResponseCollectionValueList>;
@@ -10182,7 +10897,8 @@ export const AnalysisDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalysisDefinition>;
 
 /** The AnalysisDefinition items on this page */
-export type DiagnosticAnalysisCollectionValueList = AnalysisDefinition[];
+export type DiagnosticAnalysisCollectionValueList =
+  ReadonlyArray<AnalysisDefinition>;
 export const DiagnosticAnalysisCollectionValueList = /*@__PURE__*/ S.Array(
   AnalysisDefinition,
 ) as any as S.Schema<DiagnosticAnalysisCollectionValueList>;
@@ -10348,7 +11064,7 @@ export const DetectorDefinitionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DetectorDefinitionResource items on this page */
 export type DiagnosticDetectorCollectionValueList =
-  DetectorDefinitionResource[];
+  ReadonlyArray<DetectorDefinitionResource>;
 export const DiagnosticDetectorCollectionValueList = /*@__PURE__*/ S.Array(
   DetectorDefinitionResource,
 ) as any as S.Schema<DiagnosticDetectorCollectionValueList>;
@@ -10456,7 +11172,8 @@ export const DiagnosticCategory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiagnosticCategory>;
 
 /** The DiagnosticCategory items on this page */
-export type DiagnosticCategoryCollectionValueList = DiagnosticCategory[];
+export type DiagnosticCategoryCollectionValueList =
+  ReadonlyArray<DiagnosticCategory>;
 export const DiagnosticCategoryCollectionValueList = /*@__PURE__*/ S.Array(
   DiagnosticCategory,
 ) as any as S.Schema<DiagnosticCategoryCollectionValueList>;
@@ -10701,14 +11418,14 @@ export const GeoRegion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeoRegion" }) as any as S.Schema<GeoRegion>;
 
 /** Available regions. */
-export type DeploymentLocationsLocationsList = GeoRegion[];
+export type DeploymentLocationsLocationsList = ReadonlyArray<GeoRegion>;
 export const DeploymentLocationsLocationsList = /*@__PURE__*/ S.Array(
   GeoRegion,
 ) as any as S.Schema<DeploymentLocationsLocationsList>;
 
 /** Available App Service Environments with full descriptions of the environments. */
 export type DeploymentLocationsHostingEnvironmentsList =
-  AppServiceEnvironment[];
+  ReadonlyArray<AppServiceEnvironment>;
 export const DeploymentLocationsHostingEnvironmentsList = /*@__PURE__*/ S.Array(
   AppServiceEnvironment,
 ) as any as S.Schema<DeploymentLocationsHostingEnvironmentsList>;
@@ -10731,7 +11448,7 @@ export const HostingEnvironmentDeploymentInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Available App Service Environments with basic information. */
 export type DeploymentLocationsHostingEnvironmentDeploymentInfosList =
-  HostingEnvironmentDeploymentInfo[];
+  ReadonlyArray<HostingEnvironmentDeploymentInfo>;
 export const DeploymentLocationsHostingEnvironmentDeploymentInfosList =
   /*@__PURE__*/ S.Array(
     HostingEnvironmentDeploymentInfo,
@@ -10888,7 +11605,8 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
-export type GlobalGetDeletedWebAppSnapshotsResponseBodyList = Snapshot[];
+export type GlobalGetDeletedWebAppSnapshotsResponseBodyList =
+  ReadonlyArray<Snapshot>;
 export const GlobalGetDeletedWebAppSnapshotsResponseBodyList =
   /*@__PURE__*/ S.Array(
     Snapshot,
@@ -10935,63 +11653,20 @@ export const GlobalGetSubscriptionOperationWithAsyncResponseResponse =
     identifier: "GlobalGetSubscriptionOperationWithAsyncResponseResponse",
   }) as any as S.Schema<GlobalGetSubscriptionOperationWithAsyncResponseResponse>;
 
-export interface KubeEnvironmentsCreateOrUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Kubernetes Environment. */
-  name: string;
-  body: unknown;
-}
-export const KubeEnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
-        code: 200,
-        apiVersion: "2026-07-15",
-      }),
-    ),
-).annotate({
-  identifier: "KubeEnvironmentsCreateOrUpdateRequest",
-}) as any as S.Schema<KubeEnvironmentsCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type KubeEnvironmentsCreateOrUpdateResponseTagsMap = {
+export type KubeEnvironmentsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const KubeEnvironmentsCreateOrUpdateResponseTagsMap =
+export const KubeEnvironmentsCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<KubeEnvironmentsCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<KubeEnvironmentsCreateOrUpdateRequestTagsMap>;
 
-/** Provisioning state of the Kubernetes Environment. */
-export type KubeEnvironmentProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Canceled"
-  | "Waiting"
-  | "InitializationInProgress"
-  | "InfrastructureSetupInProgress"
-  | "InfrastructureSetupComplete"
-  | "ScheduledForDelete"
-  | "UpgradeRequested"
-  | "UpgradeFailed"
-  | (string & {});
-export const KubeEnvironmentProvisioningState = /*@__PURE__*/ S.String;
-
-export type StorageType = "LocalNode" | "NetworkFileSystem" | (string & {});
+export type StorageType = "LocalNode" | "NetworkFileSystem";
 export const StorageType = /*@__PURE__*/ S.String;
 
-export type FrontEndServiceType = "NodePort" | "LoadBalancer" | (string & {});
+export type FrontEndServiceType = "NodePort" | "LoadBalancer";
 export const FrontEndServiceType = /*@__PURE__*/ S.String;
 
 export interface FrontEndConfiguration {
@@ -11080,6 +11755,101 @@ export const ContainerAppsConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContainerAppsConfiguration",
 }) as any as S.Schema<ContainerAppsConfiguration>;
+
+/** KubeEnvironment resource specific properties */
+export interface KubeEnvironmentPropertiesInput {
+  /** Only visible within Vnet/Subnet */
+  internalLoadBalancerEnabled?: boolean;
+  /** Static IP of the KubeEnvironment */
+  staticIp?: string;
+  /** Type of Kubernetes Environment. Only supported for Container App Environments with value as Managed */
+  environmentType?: string;
+  /** Cluster configuration which determines the ARC cluster components types. Eg: Choosing between BuildService kind, FrontEnd Service ArtifactsStorageType etc. */
+  arcConfiguration?: ArcConfiguration;
+  /** Cluster configuration which enables the log daemon to export app logs to a destination. Currently only "log-analytics" is supported */
+  appLogsConfiguration?: AppLogsConfiguration;
+  /** Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration */
+  containerAppsConfiguration?: ContainerAppsConfiguration;
+  aksResourceID?: string;
+}
+export const KubeEnvironmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    internalLoadBalancerEnabled: S.optional(S.Boolean),
+    staticIp: S.optional(S.String),
+    environmentType: S.optional(S.String),
+    arcConfiguration: S.optional(ArcConfiguration),
+    appLogsConfiguration: S.optional(AppLogsConfiguration),
+    containerAppsConfiguration: S.optional(ContainerAppsConfiguration),
+    aksResourceID: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KubeEnvironmentPropertiesInput",
+}) as any as S.Schema<KubeEnvironmentPropertiesInput>;
+
+export interface KubeEnvironmentsCreateOrUpdateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Kubernetes Environment. */
+  name: string;
+  /** Resource tags. */
+  tags?: KubeEnvironmentsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** KubeEnvironment resource specific properties */
+  properties?: KubeEnvironmentPropertiesInput;
+  /** Extended Location. */
+  extendedLocation?: ExtendedLocationInput;
+  /** Kind of resource. */
+  kind?: string;
+}
+export const KubeEnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      name: S.String.pipe(T.Label()),
+      tags: S.optional(KubeEnvironmentsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(KubeEnvironmentPropertiesInput),
+      extendedLocation: S.optional(ExtendedLocationInput),
+      kind: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/kubeEnvironments/{name}",
+        code: 200,
+        apiVersion: "2026-07-15",
+      }),
+    ),
+).annotate({
+  identifier: "KubeEnvironmentsCreateOrUpdateRequest",
+}) as any as S.Schema<KubeEnvironmentsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type KubeEnvironmentsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const KubeEnvironmentsCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<KubeEnvironmentsCreateOrUpdateResponseTagsMap>;
+
+/** Provisioning state of the Kubernetes Environment. */
+export type KubeEnvironmentProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Canceled"
+  | "Waiting"
+  | "InitializationInProgress"
+  | "InfrastructureSetupInProgress"
+  | "InfrastructureSetupComplete"
+  | "ScheduledForDelete"
+  | "UpgradeRequested"
+  | "UpgradeFailed";
+export const KubeEnvironmentProvisioningState = /*@__PURE__*/ S.String;
 
 /** KubeEnvironment resource specific properties */
 export interface KubeEnvironmentProperties {
@@ -11327,7 +12097,7 @@ export const KubeEnvironment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KubeEnvironment>;
 
 /** The KubeEnvironment items on this page */
-export type KubeEnvironmentCollectionValueList = KubeEnvironment[];
+export type KubeEnvironmentCollectionValueList = ReadonlyArray<KubeEnvironment>;
 export const KubeEnvironmentCollectionValueList = /*@__PURE__*/ S.Array(
   KubeEnvironment,
 ) as any as S.Schema<KubeEnvironmentCollectionValueList>;
@@ -11368,6 +12138,34 @@ export const KubeEnvironmentsListBySubscriptionRequest =
     identifier: "KubeEnvironmentsListBySubscriptionRequest",
   }) as any as S.Schema<KubeEnvironmentsListBySubscriptionRequest>;
 
+/** KubeEnvironmentPatchResource resource specific properties */
+export interface KubeEnvironmentPatchResourcePropertiesInput {
+  /** Only visible within Vnet/Subnet */
+  internalLoadBalancerEnabled?: boolean;
+  /** Static IP of the KubeEnvironment */
+  staticIp?: string;
+  /** Cluster configuration which determines the ARC cluster components types. Eg: Choosing between BuildService kind, FrontEnd Service ArtifactsStorageType etc. */
+  arcConfiguration?: ArcConfiguration;
+  /** Cluster configuration which enables the log daemon to export app logs to a destination. Currently only "log-analytics" is supported */
+  appLogsConfiguration?: AppLogsConfiguration;
+  /** Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration */
+  containerAppsConfiguration?: ContainerAppsConfiguration;
+  aksResourceID?: string;
+}
+export const KubeEnvironmentPatchResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      internalLoadBalancerEnabled: S.optional(S.Boolean),
+      staticIp: S.optional(S.String),
+      arcConfiguration: S.optional(ArcConfiguration),
+      appLogsConfiguration: S.optional(AppLogsConfiguration),
+      containerAppsConfiguration: S.optional(ContainerAppsConfiguration),
+      aksResourceID: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "KubeEnvironmentPatchResourcePropertiesInput",
+  }) as any as S.Schema<KubeEnvironmentPatchResourcePropertiesInput>;
+
 export interface KubeEnvironmentsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -11375,14 +12173,18 @@ export interface KubeEnvironmentsUpdateRequest {
   resourceGroupName: string;
   /** Name of the Kubernetes Environment. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** KubeEnvironmentPatchResource resource specific properties */
+  properties?: KubeEnvironmentPatchResourcePropertiesInput;
 }
 export const KubeEnvironmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(KubeEnvironmentPatchResourcePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -11460,13 +12262,13 @@ export const ListAseRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAseRegionsRequest>;
 
 /** Available Skus in region. */
-export type AseRegionPropertiesAvailableSkuList = string[];
+export type AseRegionPropertiesAvailableSkuList = ReadonlyArray<string>;
 export const AseRegionPropertiesAvailableSkuList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AseRegionPropertiesAvailableSkuList>;
 
 /** Available OSs in region. */
-export type AseRegionPropertiesAvailableOSList = string[];
+export type AseRegionPropertiesAvailableOSList = ReadonlyArray<string>;
 export const AseRegionPropertiesAvailableOSList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AseRegionPropertiesAvailableOSList>;
@@ -11523,7 +12325,7 @@ export const AseRegion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AseRegion" }) as any as S.Schema<AseRegion>;
 
 /** The AseRegion items on this page */
-export type AseRegionCollectionValueList = AseRegion[];
+export type AseRegionCollectionValueList = ReadonlyArray<AseRegion>;
 export const AseRegionCollectionValueList = /*@__PURE__*/ S.Array(
   AseRegion,
 ) as any as S.Schema<AseRegionCollectionValueList>;
@@ -11624,7 +12426,7 @@ export const BillingMeter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingMeter" }) as any as S.Schema<BillingMeter>;
 
 /** The BillingMeter items on this page */
-export type BillingMeterCollectionValueList = BillingMeter[];
+export type BillingMeterCollectionValueList = ReadonlyArray<BillingMeter>;
 export const BillingMeterCollectionValueList = /*@__PURE__*/ S.Array(
   BillingMeter,
 ) as any as S.Schema<BillingMeterCollectionValueList>;
@@ -11706,7 +12508,8 @@ export const Identifier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Identifier" }) as any as S.Schema<Identifier>;
 
-export type CustomHostnameSitesPropertiesSiteResourceIdsList = Identifier[];
+export type CustomHostnameSitesPropertiesSiteResourceIdsList =
+  ReadonlyArray<Identifier>;
 export const CustomHostnameSitesPropertiesSiteResourceIdsList =
   /*@__PURE__*/ S.Array(
     Identifier,
@@ -11756,7 +12559,8 @@ export const CustomHostnameSites = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomHostnameSites>;
 
 /** The CustomHostnameSites items on this page */
-export type CustomHostnameSitesCollectionValueList = CustomHostnameSites[];
+export type CustomHostnameSitesCollectionValueList =
+  ReadonlyArray<CustomHostnameSites>;
 export const CustomHostnameSitesCollectionValueList = /*@__PURE__*/ S.Array(
   CustomHostnameSites,
 ) as any as S.Schema<CustomHostnameSitesCollectionValueList>;
@@ -11791,8 +12595,7 @@ export type ListGeoRegionsRequestSku =
   | "PremiumContainer"
   | "ElasticPremium"
   | "ElasticIsolated"
-  | "FlexConsumption"
-  | (string & {});
+  | "FlexConsumption";
 export const ListGeoRegionsRequestSku = /*@__PURE__*/ S.String;
 
 export interface ListGeoRegionsRequest {
@@ -11830,7 +12633,7 @@ export const ListGeoRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGeoRegionsRequest>;
 
 /** The GeoRegion items on this page */
-export type GeoRegionCollectionValueList = GeoRegion[];
+export type GeoRegionCollectionValueList = ReadonlyArray<GeoRegion>;
 export const GeoRegionCollectionValueList = /*@__PURE__*/ S.Array(
   GeoRegion,
 ) as any as S.Schema<GeoRegionCollectionValueList>;
@@ -11877,8 +12680,7 @@ export type AppServicePlanRestrictions =
   | "Shared"
   | "Basic"
   | "Standard"
-  | "Premium"
-  | (string & {});
+  | "Premium";
 export const AppServicePlanRestrictions = /*@__PURE__*/ S.String;
 
 /** PremierAddOnOffer resource specific properties */
@@ -11947,7 +12749,8 @@ export const PremierAddOnOffer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PremierAddOnOffer>;
 
 /** The PremierAddOnOffer items on this page */
-export type PremierAddOnOfferCollectionValueList = PremierAddOnOffer[];
+export type PremierAddOnOfferCollectionValueList =
+  ReadonlyArray<PremierAddOnOffer>;
 export const PremierAddOnOfferCollectionValueList = /*@__PURE__*/ S.Array(
   PremierAddOnOffer,
 ) as any as S.Schema<PremierAddOnOfferCollectionValueList>;
@@ -11971,13 +12774,14 @@ export const PremierAddOnOfferCollection = /*@__PURE__*/ S.suspend(() =>
 export interface ListSiteIdentifiersAssignedToHostNameRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** Name of the object. */
+  name?: string;
 }
 export const ListSiteIdentifiersAssignedToHostNameRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      name: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -11991,7 +12795,7 @@ export const ListSiteIdentifiersAssignedToHostNameRequest =
   }) as any as S.Schema<ListSiteIdentifiersAssignedToHostNameRequest>;
 
 /** The Identifier items on this page */
-export type IdentifierCollectionValueList = Identifier[];
+export type IdentifierCollectionValueList = ReadonlyArray<Identifier>;
 export const IdentifierCollectionValueList = /*@__PURE__*/ S.Array(
   Identifier,
 ) as any as S.Schema<IdentifierCollectionValueList>;
@@ -12032,13 +12836,13 @@ export const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSkusRequest>;
 
 /** Locations of the SKU. */
-export type GlobalCsmSkuDescriptionLocationsList = string[];
+export type GlobalCsmSkuDescriptionLocationsList = ReadonlyArray<string>;
 export const GlobalCsmSkuDescriptionLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GlobalCsmSkuDescriptionLocationsList>;
 
 /** Capabilities of the SKU, e.g., is traffic manager enabled? */
-export type GlobalCsmSkuDescriptionCapabilitiesList = Capability[];
+export type GlobalCsmSkuDescriptionCapabilitiesList = ReadonlyArray<Capability>;
 export const GlobalCsmSkuDescriptionCapabilitiesList = /*@__PURE__*/ S.Array(
   Capability,
 ) as any as S.Schema<GlobalCsmSkuDescriptionCapabilitiesList>;
@@ -12075,7 +12879,7 @@ export const GlobalCsmSkuDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GlobalCsmSkuDescription>;
 
 /** List of SKUs the subscription is able to use. */
-export type SkuInfosSkusList = GlobalCsmSkuDescription[];
+export type SkuInfosSkusList = ReadonlyArray<GlobalCsmSkuDescription>;
 export const SkuInfosSkusList = /*@__PURE__*/ S.Array(
   GlobalCsmSkuDescription,
 ) as any as S.Schema<SkuInfosSkusList>;
@@ -12135,7 +12939,7 @@ export const SourceControl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceControl" }) as any as S.Schema<SourceControl>;
 
 /** The SourceControl items on this page */
-export type SourceControlCollectionValueList = SourceControl[];
+export type SourceControlCollectionValueList = ReadonlyArray<SourceControl>;
 export const SourceControlCollectionValueList = /*@__PURE__*/ S.Array(
   SourceControl,
 ) as any as S.Schema<SourceControlCollectionValueList>;
@@ -12156,18 +12960,25 @@ export const SourceControlCollection = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceControlCollection",
 }) as any as S.Schema<SourceControlCollection>;
 
+export type MoveRequestResourcesList = ReadonlyArray<string>;
+export const MoveRequestResourcesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MoveRequestResourcesList>;
+
 export interface MoveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  body: unknown;
+  targetResourceGroup?: string;
+  resources?: MoveRequestResourcesList;
 }
 export const MoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    targetResourceGroup: S.optional(S.String),
+    resources: S.optional(MoveRequestResourcesList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -12188,8 +12999,7 @@ export type ProviderGetAvailableStacksRequestOsTypeSelected =
   | "Linux"
   | "WindowsFunctions"
   | "LinuxFunctions"
-  | "All"
-  | (string & {});
+  | "All";
 export const ProviderGetAvailableStacksRequestOsTypeSelected =
   /*@__PURE__*/ S.String;
 
@@ -12236,7 +13046,8 @@ export const StackMinorVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StackMinorVersion>;
 
 /** Minor versions associated with the major version. */
-export type StackMajorVersionMinorVersionsList = StackMinorVersion[];
+export type StackMajorVersionMinorVersionsList =
+  ReadonlyArray<StackMinorVersion>;
 export const StackMajorVersionMinorVersionsList = /*@__PURE__*/ S.Array(
   StackMinorVersion,
 ) as any as S.Schema<StackMajorVersionMinorVersionsList>;
@@ -12305,19 +13116,20 @@ export const StackMajorVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StackMajorVersion>;
 
 /** List of major versions available. */
-export type ApplicationStackMajorVersionsList = StackMajorVersion[];
+export type ApplicationStackMajorVersionsList =
+  ReadonlyArray<StackMajorVersion>;
 export const ApplicationStackMajorVersionsList = /*@__PURE__*/ S.Array(
   StackMajorVersion,
 ) as any as S.Schema<ApplicationStackMajorVersionsList>;
 
 /** List of frameworks associated with application stack. */
-export type ApplicationStackFrameworksList = ApplicationStack[];
+export type ApplicationStackFrameworksList = ReadonlyArray<ApplicationStack>;
 export const ApplicationStackFrameworksList = /*@__PURE__*/ S.Array(
   S.suspend(() => ApplicationStack),
 ) as any as S.Schema<ApplicationStackFrameworksList>;
 
 /** <code>true</code> if this is the stack is deprecated; otherwise, <code>false</code>. */
-export type ApplicationStackIsDeprecatedList = ApplicationStack[];
+export type ApplicationStackIsDeprecatedList = ReadonlyArray<ApplicationStack>;
 export const ApplicationStackIsDeprecatedList = /*@__PURE__*/ S.Array(
   S.suspend(() => ApplicationStack),
 ) as any as S.Schema<ApplicationStackIsDeprecatedList>;
@@ -12376,7 +13188,8 @@ export const ApplicationStackResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationStackResource>;
 
 /** The ApplicationStackResource items on this page */
-export type ApplicationStackCollectionValueList = ApplicationStackResource[];
+export type ApplicationStackCollectionValueList =
+  ReadonlyArray<ApplicationStackResource>;
 export const ApplicationStackCollectionValueList = /*@__PURE__*/ S.Array(
   ApplicationStackResource,
 ) as any as S.Schema<ApplicationStackCollectionValueList>;
@@ -12402,8 +13215,7 @@ export type ProviderGetAvailableStacksOnPremRequestOsTypeSelected =
   | "Linux"
   | "WindowsFunctions"
   | "LinuxFunctions"
-  | "All"
-  | (string & {});
+  | "All";
 export const ProviderGetAvailableStacksOnPremRequestOsTypeSelected =
   /*@__PURE__*/ S.String;
 
@@ -12434,8 +13246,7 @@ export const ProviderGetAvailableStacksOnPremRequest = /*@__PURE__*/ S.suspend(
 export type ProviderGetFunctionAppStacksRequestStackOsType =
   | "Windows"
   | "Linux"
-  | "All"
-  | (string & {});
+  | "All";
 export const ProviderGetFunctionAppStacksRequestStackOsType =
   /*@__PURE__*/ S.String;
 
@@ -12526,7 +13337,7 @@ export const SiteConfigPropertiesDictionary = /*@__PURE__*/ S.suspend(() =>
 
 /** List of supported Functions extension versions. */
 export type FunctionAppRuntimeSettingsSupportedFunctionsExtensionVersionsList =
-  string[];
+  ReadonlyArray<string>;
 export const FunctionAppRuntimeSettingsSupportedFunctionsExtensionVersionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -12625,7 +13436,7 @@ export const FunctionAppMinorVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** Minor versions associated with the major version. */
 export type FunctionAppMajorVersionMinorVersionsList =
-  FunctionAppMinorVersion[];
+  ReadonlyArray<FunctionAppMinorVersion>;
 export const FunctionAppMajorVersionMinorVersionsList = /*@__PURE__*/ S.Array(
   FunctionAppMinorVersion,
 ) as any as S.Schema<FunctionAppMajorVersionMinorVersionsList>;
@@ -12651,14 +13462,14 @@ export const FunctionAppMajorVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** List of major versions available. */
 export type FunctionAppStackPropertiesMajorVersionsList =
-  FunctionAppMajorVersion[];
+  ReadonlyArray<FunctionAppMajorVersion>;
 export const FunctionAppStackPropertiesMajorVersionsList =
   /*@__PURE__*/ S.Array(
     FunctionAppMajorVersion,
   ) as any as S.Schema<FunctionAppStackPropertiesMajorVersionsList>;
 
 /** Function App stack preferred OS. */
-export type StackPreferredOs = "Windows" | "Linux" | (string & {});
+export type StackPreferredOs = "Windows" | "Linux";
 export const StackPreferredOs = /*@__PURE__*/ S.String;
 
 /** FunctionAppStack resource specific properties */
@@ -12712,7 +13523,8 @@ export const FunctionAppStack = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionAppStack>;
 
 /** The FunctionAppStack items on this page */
-export type FunctionAppStackCollectionValueList = FunctionAppStack[];
+export type FunctionAppStackCollectionValueList =
+  ReadonlyArray<FunctionAppStack>;
 export const FunctionAppStackCollectionValueList = /*@__PURE__*/ S.Array(
   FunctionAppStack,
 ) as any as S.Schema<FunctionAppStackCollectionValueList>;
@@ -12736,8 +13548,7 @@ export const FunctionAppStackCollection = /*@__PURE__*/ S.suspend(() =>
 export type ProviderGetFunctionAppStacksForLocationRequestStackOsType =
   | "Windows"
   | "Linux"
-  | "All"
-  | (string & {});
+  | "All";
 export const ProviderGetFunctionAppStacksForLocationRequestStackOsType =
   /*@__PURE__*/ S.String;
 
@@ -12771,8 +13582,7 @@ export const ProviderGetFunctionAppStacksForLocationRequest =
 export type ProviderGetWebAppStacksRequestStackOsType =
   | "Windows"
   | "Linux"
-  | "All"
-  | (string & {});
+  | "All";
 export const ProviderGetWebAppStacksRequestStackOsType = /*@__PURE__*/ S.String;
 
 export interface ProviderGetWebAppStacksRequest {
@@ -12944,7 +13754,8 @@ export const WebAppMinorVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppMinorVersion>;
 
 /** Minor versions associated with the major version. */
-export type WebAppMajorVersionMinorVersionsList = WebAppMinorVersion[];
+export type WebAppMajorVersionMinorVersionsList =
+  ReadonlyArray<WebAppMinorVersion>;
 export const WebAppMajorVersionMinorVersionsList = /*@__PURE__*/ S.Array(
   WebAppMinorVersion,
 ) as any as S.Schema<WebAppMajorVersionMinorVersionsList>;
@@ -12969,7 +13780,8 @@ export const WebAppMajorVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppMajorVersion>;
 
 /** List of major versions available. */
-export type WebAppStackPropertiesMajorVersionsList = WebAppMajorVersion[];
+export type WebAppStackPropertiesMajorVersionsList =
+  ReadonlyArray<WebAppMajorVersion>;
 export const WebAppStackPropertiesMajorVersionsList = /*@__PURE__*/ S.Array(
   WebAppMajorVersion,
 ) as any as S.Schema<WebAppStackPropertiesMajorVersionsList>;
@@ -13023,7 +13835,7 @@ export const WebAppStack = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebAppStack" }) as any as S.Schema<WebAppStack>;
 
 /** The WebAppStack items on this page */
-export type WebAppStackCollectionValueList = WebAppStack[];
+export type WebAppStackCollectionValueList = ReadonlyArray<WebAppStack>;
 export const WebAppStackCollectionValueList = /*@__PURE__*/ S.Array(
   WebAppStack,
 ) as any as S.Schema<WebAppStackCollectionValueList>;
@@ -13047,8 +13859,7 @@ export const WebAppStackCollection = /*@__PURE__*/ S.suspend(() =>
 export type ProviderGetWebAppStacksForLocationRequestStackOsType =
   | "Windows"
   | "Linux"
-  | "All"
-  | (string & {});
+  | "All";
 export const ProviderGetWebAppStacksForLocationRequestStackOsType =
   /*@__PURE__*/ S.String;
 
@@ -13125,7 +13936,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dimension" }) as any as S.Schema<Dimension>;
 
-export type MetricSpecificationDimensionsList = Dimension[];
+export type MetricSpecificationDimensionsList = ReadonlyArray<Dimension>;
 export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationDimensionsList>;
@@ -13144,18 +13955,21 @@ export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricAvailability",
 }) as any as S.Schema<MetricAvailability>;
 
-export type MetricSpecificationAvailabilitiesList = MetricAvailability[];
+export type MetricSpecificationAvailabilitiesList =
+  ReadonlyArray<MetricAvailability>;
 export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
   MetricAvailability,
 ) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
 
-export type MetricSpecificationSupportedTimeGrainTypesList = string[];
+export type MetricSpecificationSupportedTimeGrainTypesList =
+  ReadonlyArray<string>;
 export const MetricSpecificationSupportedTimeGrainTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
 
-export type MetricSpecificationSupportedAggregationTypesList = string[];
+export type MetricSpecificationSupportedAggregationTypesList =
+  ReadonlyArray<string>;
 export const MetricSpecificationSupportedAggregationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13210,7 +14024,7 @@ export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricSpecification>;
 
 export type ServiceSpecificationMetricSpecificationsList =
-  MetricSpecification[];
+  ReadonlyArray<MetricSpecification>;
 export const ServiceSpecificationMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     MetricSpecification,
@@ -13234,7 +14048,8 @@ export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogSpecification",
 }) as any as S.Schema<LogSpecification>;
 
-export type ServiceSpecificationLogSpecificationsList = LogSpecification[];
+export type ServiceSpecificationLogSpecificationsList =
+  ReadonlyArray<LogSpecification>;
 export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
   LogSpecification,
 ) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
@@ -13291,7 +14106,8 @@ export const CsmOperationDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CsmOperationDescription>;
 
 /** Collection of resources. */
-export type CsmOperationCollectionValueList = CsmOperationDescription[];
+export type CsmOperationCollectionValueList =
+  ReadonlyArray<CsmOperationDescription>;
 export const CsmOperationCollectionValueList = /*@__PURE__*/ S.Array(
   CsmOperationDescription,
 ) as any as S.Schema<CsmOperationCollectionValueList>;
@@ -13523,22 +14339,16 @@ export type NotificationLevel =
   | "Critical"
   | "Warning"
   | "Information"
-  | "NonUrgentSuggestion"
-  | (string & {});
+  | "NonUrgentSuggestion";
 export const NotificationLevel = /*@__PURE__*/ S.String;
 
 /** List of channels that this recommendation can apply. */
-export type Channels =
-  | "Notification"
-  | "Api"
-  | "Email"
-  | "Webhook"
-  | "All"
-  | (string & {});
+export type Channels = "Notification" | "Api" | "Email" | "Webhook" | "All";
 export const Channels = /*@__PURE__*/ S.String;
 
 /** The list of category tags that this recommendation rule belongs to. */
-export type RecommendationRulePropertiesCategoryTagsList = string[];
+export type RecommendationRulePropertiesCategoryTagsList =
+  ReadonlyArray<string>;
 export const RecommendationRulePropertiesCategoryTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -13710,21 +14520,17 @@ export const RecommendationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationsListRequest>;
 
 /** Name of a resource type this recommendation applies, e.g. Subscription, ServerFarm, Site. */
-export type ResourceScopeType =
-  | "ServerFarm"
-  | "Subscription"
-  | "WebSite"
-  | (string & {});
+export type ResourceScopeType = "ServerFarm" | "Subscription" | "WebSite";
 export const ResourceScopeType = /*@__PURE__*/ S.String;
 
 /** The list of category tags that this recommendation belongs to. */
-export type RecommendationPropertiesCategoryTagsList = string[];
+export type RecommendationPropertiesCategoryTagsList = ReadonlyArray<string>;
 export const RecommendationPropertiesCategoryTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecommendationPropertiesCategoryTagsList>;
 
 /** The list of states of this recommendation. If it's null then it should be considered "Active". */
-export type RecommendationPropertiesStatesList = string[];
+export type RecommendationPropertiesStatesList = ReadonlyArray<string>;
 export const RecommendationPropertiesStatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecommendationPropertiesStatesList>;
@@ -13832,7 +14638,7 @@ export const Recommendation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 
 /** The Recommendation items on this page */
-export type RecommendationCollectionValueList = Recommendation[];
+export type RecommendationCollectionValueList = ReadonlyArray<Recommendation>;
 export const RecommendationCollectionValueList = /*@__PURE__*/ S.Array(
   Recommendation,
 ) as any as S.Schema<RecommendationCollectionValueList>;
@@ -14081,14 +14887,24 @@ export interface RegionalCheckNameAvailabilityRequest {
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
-  body: unknown;
+  /** Resource group name */
+  resourceGroupName?: string;
+  /** Indicates the endpoint name reuse scope.The default value is TenantReuse. Supported values are TenantReuse, SubscriptionReuse, ResourceGroupReuse, NoReuse */
+  autoGeneratedDomainNameLabelScope?: string;
+  /** Resource name to verify. */
+  name: string;
+  /** Resource type used for verification. */
+  type: CheckNameResourceTypes;
 }
 export const RegionalCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceGroupName: S.optional(S.String),
+      autoGeneratedDomainNameLabelScope: S.optional(S.String),
+      name: S.String,
+      type: CheckNameResourceTypes,
     }).pipe(
       T.Http({
         method: "POST",
@@ -14298,7 +15114,7 @@ export const ResourceHealthMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The ResourceHealthMetadata items on this page */
 export type ResourceHealthMetadataCollectionValueList =
-  ResourceHealthMetadata[];
+  ReadonlyArray<ResourceHealthMetadata>;
 export const ResourceHealthMetadataCollectionValueList = /*@__PURE__*/ S.Array(
   ResourceHealthMetadata,
 ) as any as S.Schema<ResourceHealthMetadataCollectionValueList>;
@@ -14397,6 +15213,16 @@ export const ResourceHealthMetadataListBySiteSlotRequest =
     identifier: "ResourceHealthMetadataListBySiteSlotRequest",
   }) as any as S.Schema<ResourceHealthMetadataListBySiteSlotRequest>;
 
+/** Resource tags. */
+export type SiteCertificatesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SiteCertificatesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SiteCertificatesCreateOrUpdateRequestTagsMap>;
+
 export interface SiteCertificatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14406,7 +15232,14 @@ export interface SiteCertificatesCreateOrUpdateRequest {
   name: string;
   /** Name of the certificate. */
   certificateName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SiteCertificatesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Certificate resource specific properties */
+  properties?: CertificatePropertiesInput;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const SiteCertificatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -14415,7 +15248,10 @@ export const SiteCertificatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       certificateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(SiteCertificatesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(CertificatePropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -14472,6 +15308,16 @@ export const SiteCertificatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "SiteCertificatesCreateOrUpdateResponse",
 }) as any as S.Schema<SiteCertificatesCreateOrUpdateResponse>;
 
+/** Resource tags. */
+export type SiteCertificatesCreateOrUpdateSlotRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SiteCertificatesCreateOrUpdateSlotRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<SiteCertificatesCreateOrUpdateSlotRequestTagsMap>;
+
 export interface SiteCertificatesCreateOrUpdateSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -14483,7 +15329,14 @@ export interface SiteCertificatesCreateOrUpdateSlotRequest {
   slot: string;
   /** Name of the certificate. */
   certificateName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: SiteCertificatesCreateOrUpdateSlotRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Certificate resource specific properties */
+  properties?: CertificatePropertiesInput;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const SiteCertificatesCreateOrUpdateSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -14493,7 +15346,10 @@ export const SiteCertificatesCreateOrUpdateSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       certificateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(SiteCertificatesCreateOrUpdateSlotRequestTagsMap),
+      location: S.String,
+      properties: S.optional(CertificatePropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -14828,7 +15684,10 @@ export interface SiteCertificatesUpdateRequest {
   name: string;
   /** Name of the certificate. */
   certificateName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** CertificatePatchResource resource specific properties */
+  properties?: CertificatePatchResourcePropertiesInput;
 }
 export const SiteCertificatesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14836,7 +15695,8 @@ export const SiteCertificatesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     certificateName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(CertificatePatchResourcePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -14902,7 +15762,10 @@ export interface SiteCertificatesUpdateSlotRequest {
   slot: string;
   /** Name of the certificate. */
   certificateName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** CertificatePatchResource resource specific properties */
+  properties?: CertificatePatchResourcePropertiesInput;
 }
 export const SiteCertificatesUpdateSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14911,7 +15774,8 @@ export const SiteCertificatesUpdateSlotRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
     certificateName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(CertificatePatchResourcePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -14996,14 +15860,16 @@ export const SitesGetNetworkSecurityPerimeterConfigurationRequest =
   }) as any as S.Schema<SitesGetNetworkSecurityPerimeterConfigurationRequest>;
 
 /** Recommended ARM Ids to resolve the issue */
-export type NspProvisioningIssuePropertiesSuggestedResourceIdsList = string[];
+export type NspProvisioningIssuePropertiesSuggestedResourceIdsList =
+  ReadonlyArray<string>;
 export const NspProvisioningIssuePropertiesSuggestedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NspProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 /** Recommended access rules to resolve the issue */
-export type NspProvisioningIssuePropertiesSuggestedAccessRulesList = string[];
+export type NspProvisioningIssuePropertiesSuggestedAccessRulesList =
+  ReadonlyArray<string>;
 export const NspProvisioningIssuePropertiesSuggestedAccessRulesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15056,7 +15922,7 @@ export const NspProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** Reflects any misconfigurations and failures detected while provisioning the association or while processing configuration changes. */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  NspProvisioningIssue[];
+  ReadonlyArray<NspProvisioningIssue>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     NspProvisioningIssue,
@@ -15098,21 +15964,24 @@ export const NspResourceAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NspResourceAssociation>;
 
 /** IP Address Ranges of Access Rule */
-export type NspProfileAccessRulePropertiesAddressPrefixesList = string[];
+export type NspProfileAccessRulePropertiesAddressPrefixesList =
+  ReadonlyArray<string>;
 export const NspProfileAccessRulePropertiesAddressPrefixesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NspProfileAccessRulePropertiesAddressPrefixesList>;
 
 /** Service Tags of Access Rule */
-export type NspProfileAccessRulePropertiesServiceTagsList = string[];
+export type NspProfileAccessRulePropertiesServiceTagsList =
+  ReadonlyArray<string>;
 export const NspProfileAccessRulePropertiesServiceTagsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NspProfileAccessRulePropertiesServiceTagsList>;
 
 /** Names of applied Granular Features. */
-export type NspProfileAccessRuleGranularFeatureFeaturesList = string[];
+export type NspProfileAccessRuleGranularFeatureFeaturesList =
+  ReadonlyArray<string>;
 export const NspProfileAccessRuleGranularFeatureFeaturesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15136,7 +16005,7 @@ export const NspProfileAccessRuleGranularFeature = /*@__PURE__*/ S.suspend(() =>
 
 /** Granular Features of Access Rule */
 export type NspProfileAccessRulePropertiesAppliesToList =
-  NspProfileAccessRuleGranularFeature[];
+  ReadonlyArray<NspProfileAccessRuleGranularFeature>;
 export const NspProfileAccessRulePropertiesAppliesToList =
   /*@__PURE__*/ S.Array(
     NspProfileAccessRuleGranularFeature,
@@ -15156,7 +16025,8 @@ export const NspSubscription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NspSubscription>;
 
 /** Subscriptions of Access Rule. Not supported by App Service. */
-export type NspProfileAccessRulePropertiesSubscriptionsList = NspSubscription[];
+export type NspProfileAccessRulePropertiesSubscriptionsList =
+  ReadonlyArray<NspSubscription>;
 export const NspProfileAccessRulePropertiesSubscriptionsList =
   /*@__PURE__*/ S.Array(
     NspSubscription,
@@ -15164,7 +16034,7 @@ export const NspProfileAccessRulePropertiesSubscriptionsList =
 
 /** NetworkSecurityPerimeter of Access Rule. Not supported by App Service. */
 export type NspProfileAccessRulePropertiesNetworkSecurityPerimetersList =
-  NetworkSecurityPerimeter[];
+  ReadonlyArray<NetworkSecurityPerimeter>;
 export const NspProfileAccessRulePropertiesNetworkSecurityPerimetersList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeter,
@@ -15172,21 +16042,23 @@ export const NspProfileAccessRulePropertiesNetworkSecurityPerimetersList =
 
 /** Fully Qualified Domain Names of Access Rule. Not supported by App Service. */
 export type NspProfileAccessRulePropertiesFullyQualifiedDomainNamesList =
-  string[];
+  ReadonlyArray<string>;
 export const NspProfileAccessRulePropertiesFullyQualifiedDomainNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NspProfileAccessRulePropertiesFullyQualifiedDomainNamesList>;
 
 /** Email Addresses of Access Rule. Not supported by App Service. */
-export type NspProfileAccessRulePropertiesEmailAddressesList = string[];
+export type NspProfileAccessRulePropertiesEmailAddressesList =
+  ReadonlyArray<string>;
 export const NspProfileAccessRulePropertiesEmailAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<NspProfileAccessRulePropertiesEmailAddressesList>;
 
 /** Phone Numbers of Access Rule. Not supported by App Service. */
-export type NspProfileAccessRulePropertiesPhoneNumbersList = string[];
+export type NspProfileAccessRulePropertiesPhoneNumbersList =
+  ReadonlyArray<string>;
 export const NspProfileAccessRulePropertiesPhoneNumbersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15254,13 +16126,13 @@ export const NspProfileAccessRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NspProfileAccessRule>;
 
 /** Access Rules for the Network Security Perimeter Profile. */
-export type NspProfileAccessRulesList = NspProfileAccessRule[];
+export type NspProfileAccessRulesList = ReadonlyArray<NspProfileAccessRule>;
 export const NspProfileAccessRulesList = /*@__PURE__*/ S.Array(
   NspProfileAccessRule,
 ) as any as S.Schema<NspProfileAccessRulesList>;
 
 /** Enabled Log Categories for the Network Security Perimeter Profile. */
-export type NspProfileEnabledLogCategoriesList = string[];
+export type NspProfileEnabledLogCategoriesList = ReadonlyArray<string>;
 export const NspProfileEnabledLogCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NspProfileEnabledLogCategoriesList>;
@@ -15395,7 +16267,7 @@ export const NetworkSecurityPerimeterConfiguration = /*@__PURE__*/ S.suspend(
 
 /** The NetworkSecurityPerimeterConfiguration items on this page */
 export type NetworkSecurityPerimeterConfigurationCollectionValueList =
-  NetworkSecurityPerimeterConfiguration[];
+  ReadonlyArray<NetworkSecurityPerimeterConfiguration>;
 export const NetworkSecurityPerimeterConfigurationCollectionValueList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterConfiguration,
@@ -15427,7 +16299,10 @@ export interface StaticSitesApproveOrRejectPrivateEndpointConnectionRequest {
   name: string;
   /** Name of the private endpoint connection. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** RemotePrivateEndpointConnectionARMResource resource specific properties */
+  properties?: RemotePrivateEndpointConnectionARMResourcePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const StaticSitesApproveOrRejectPrivateEndpointConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -15436,7 +16311,10 @@ export const StaticSitesApproveOrRejectPrivateEndpointConnectionRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(
+        RemotePrivateEndpointConnectionARMResourcePropertiesInput,
+      ),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -15554,7 +16432,7 @@ export const StaticSitesAsyncOperationsGetOperationStatusRequest =
   }) as any as S.Schema<StaticSitesAsyncOperationsGetOperationStatusRequest>;
 
 /** The custom domains associated with this static site. */
-export type StaticSiteCustomDomainsList = string[];
+export type StaticSiteCustomDomainsList = ReadonlyArray<string>;
 export const StaticSiteCustomDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StaticSiteCustomDomainsList>;
@@ -15627,7 +16505,8 @@ export const ArmPlan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArmPlan" }) as any as S.Schema<ArmPlan>;
 
 /** Private IPAddresses mapped to the remote private endpoint */
-export type RemotePrivateEndpointConnectionPropertiesIpAddressesList = string[];
+export type RemotePrivateEndpointConnectionPropertiesIpAddressesList =
+  ReadonlyArray<string>;
 export const RemotePrivateEndpointConnectionPropertiesIpAddressesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15684,7 +16563,7 @@ export const RemotePrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Logical Availability Zones the service is hosted in */
 export type ResponseMessageEnvelopeRemotePrivateEndpointConnectionZonesList =
-  string[];
+  ReadonlyArray<string>;
 export const ResponseMessageEnvelopeRemotePrivateEndpointConnectionZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -15743,13 +16622,13 @@ export const ResponseMessageEnvelopeRemotePrivateEndpointConnection =
 
 /** Private endpoint connections */
 export type StaticSitePrivateEndpointConnectionsList =
-  ResponseMessageEnvelopeRemotePrivateEndpointConnection[];
+  ReadonlyArray<ResponseMessageEnvelopeRemotePrivateEndpointConnection>;
 export const StaticSitePrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   ResponseMessageEnvelopeRemotePrivateEndpointConnection,
 ) as any as S.Schema<StaticSitePrivateEndpointConnectionsList>;
 
 /** State indicating whether staging environments are allowed or not allowed for a static web app. */
-export type StagingEnvironmentPolicy = "Enabled" | "Disabled" | (string & {});
+export type StagingEnvironmentPolicy = "Enabled" | "Disabled";
 export const StagingEnvironmentPolicy = /*@__PURE__*/ S.String;
 
 /** Template Options for the static site. */
@@ -15824,7 +16703,7 @@ export const StaticSiteUserProvidedFunctionApp = /*@__PURE__*/ S.suspend(() =>
 
 /** User provided function apps registered with the static site */
 export type StaticSiteUserProvidedFunctionAppsList =
-  StaticSiteUserProvidedFunctionApp[];
+  ReadonlyArray<StaticSiteUserProvidedFunctionApp>;
 export const StaticSiteUserProvidedFunctionAppsList = /*@__PURE__*/ S.Array(
   StaticSiteUserProvidedFunctionApp,
 ) as any as S.Schema<StaticSiteUserProvidedFunctionAppsList>;
@@ -15852,7 +16731,8 @@ export const StaticSiteLinkedBackend = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StaticSiteLinkedBackend>;
 
 /** Backends linked to the static side */
-export type StaticSiteLinkedBackendsList = StaticSiteLinkedBackend[];
+export type StaticSiteLinkedBackendsList =
+  ReadonlyArray<StaticSiteLinkedBackend>;
 export const StaticSiteLinkedBackendsList = /*@__PURE__*/ S.Array(
   StaticSiteLinkedBackend,
 ) as any as S.Schema<StaticSiteLinkedBackendsList>;
@@ -15862,8 +16742,7 @@ export type EnterpriseGradeCdnStatus =
   | "Enabled"
   | "Enabling"
   | "Disabled"
-  | "Disabling"
-  | (string & {});
+  | "Disabling";
 export const EnterpriseGradeCdnStatus = /*@__PURE__*/ S.String;
 
 /** A database connection configuration file */
@@ -15888,7 +16767,7 @@ export const StaticSiteDatabaseConnectionConfigurationFileOverview =
 
 /** A list of configuration files associated with this database connection. */
 export type DatabaseConnectionOverviewConfigurationFilesList =
-  StaticSiteDatabaseConnectionConfigurationFileOverview[];
+  ReadonlyArray<StaticSiteDatabaseConnectionConfigurationFileOverview>;
 export const DatabaseConnectionOverviewConfigurationFilesList =
   /*@__PURE__*/ S.Array(
     StaticSiteDatabaseConnectionConfigurationFileOverview,
@@ -15922,7 +16801,8 @@ export const DatabaseConnectionOverview = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseConnectionOverview>;
 
 /** Database connections for the static site */
-export type StaticSiteDatabaseConnectionsList = DatabaseConnectionOverview[];
+export type StaticSiteDatabaseConnectionsList =
+  ReadonlyArray<DatabaseConnectionOverview>;
 export const StaticSiteDatabaseConnectionsList = /*@__PURE__*/ S.Array(
   DatabaseConnectionOverview,
 ) as any as S.Schema<StaticSiteDatabaseConnectionsList>;
@@ -16068,11 +16948,42 @@ export const StaticSitesOperationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "StaticSitesOperationStatus",
 }) as any as S.Schema<StaticSitesOperationStatus>;
 
-export type StaticSitesCreateOrUpdateBasicAuthRequestBasicAuthName =
-  | "default"
-  | (string & {});
+export type StaticSitesCreateOrUpdateBasicAuthRequestBasicAuthName = "default";
 export const StaticSitesCreateOrUpdateBasicAuthRequestBasicAuthName =
   /*@__PURE__*/ S.String;
+
+/** The list of enabled environments for Basic Auth if ApplicableEnvironmentsMode is set to SpecifiedEnvironments. */
+export type StaticSiteBasicAuthPropertiesARMResourcePropertiesInputEnvironmentsList =
+  ReadonlyArray<string>;
+export const StaticSiteBasicAuthPropertiesARMResourcePropertiesInputEnvironmentsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<StaticSiteBasicAuthPropertiesARMResourcePropertiesInputEnvironmentsList>;
+
+/** StaticSiteBasicAuthPropertiesARMResource resource specific properties */
+export interface StaticSiteBasicAuthPropertiesARMResourcePropertiesInput {
+  /** The password for basic auth. */
+  password?: string | Redacted.Redacted<string>;
+  /** Url to the secret in Key Vault. */
+  secretUrl?: string;
+  /** State indicating if basic auth is enabled and for what environments it is active. */
+  applicableEnvironmentsMode: string;
+  /** The list of enabled environments for Basic Auth if ApplicableEnvironmentsMode is set to SpecifiedEnvironments. */
+  environments?: StaticSiteBasicAuthPropertiesARMResourcePropertiesInputEnvironmentsList;
+}
+export const StaticSiteBasicAuthPropertiesARMResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      secretUrl: S.optional(S.String),
+      applicableEnvironmentsMode: S.String,
+      environments: S.optional(
+        StaticSiteBasicAuthPropertiesARMResourcePropertiesInputEnvironmentsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "StaticSiteBasicAuthPropertiesARMResourcePropertiesInput",
+  }) as any as S.Schema<StaticSiteBasicAuthPropertiesARMResourcePropertiesInput>;
 
 export interface StaticSitesCreateOrUpdateBasicAuthRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16083,7 +16994,10 @@ export interface StaticSitesCreateOrUpdateBasicAuthRequest {
   name: string;
   /** name of the basic auth entry. */
   basicAuthName: StaticSitesCreateOrUpdateBasicAuthRequestBasicAuthName;
-  body: unknown;
+  /** StaticSiteBasicAuthPropertiesARMResource resource specific properties */
+  properties?: StaticSiteBasicAuthPropertiesARMResourcePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const StaticSitesCreateOrUpdateBasicAuthRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16093,7 +17007,10 @@ export const StaticSitesCreateOrUpdateBasicAuthRequest =
       name: S.String.pipe(T.Label()),
       basicAuthName:
         StaticSitesCreateOrUpdateBasicAuthRequestBasicAuthName.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(
+        StaticSiteBasicAuthPropertiesARMResourcePropertiesInput,
+      ),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -16108,7 +17025,7 @@ export const StaticSitesCreateOrUpdateBasicAuthRequest =
 
 /** The list of enabled environments for Basic Auth if ApplicableEnvironmentsMode is set to SpecifiedEnvironments. */
 export type StaticSiteBasicAuthPropertiesARMResourcePropertiesEnvironmentsList =
-  string[];
+  ReadonlyArray<string>;
 export const StaticSiteBasicAuthPropertiesARMResourcePropertiesEnvironmentsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -16172,6 +17089,28 @@ export const StaticSitesCreateOrUpdateBasicAuthResponse =
     identifier: "StaticSitesCreateOrUpdateBasicAuthResponse",
   }) as any as S.Schema<StaticSitesCreateOrUpdateBasicAuthResponse>;
 
+/** DatabaseConnection resource specific properties */
+export interface DatabaseConnectionPropertiesInput {
+  /** The resource id of the database. */
+  resourceId: string;
+  /** If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource. */
+  connectionIdentity?: string;
+  /** The connection string to use to connect to the database. */
+  connectionString?: string | Redacted.Redacted<string>;
+  /** The region of the database resource. */
+  region: string;
+}
+export const DatabaseConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceId: S.String,
+    connectionIdentity: S.optional(S.String),
+    connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    region: S.String,
+  }),
+).annotate({
+  identifier: "DatabaseConnectionPropertiesInput",
+}) as any as S.Schema<DatabaseConnectionPropertiesInput>;
+
 export interface StaticSitesCreateOrUpdateBuildDatabaseConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16183,7 +17122,10 @@ export interface StaticSitesCreateOrUpdateBuildDatabaseConnectionRequest {
   environmentName: string;
   /** Name of the database connection. */
   databaseConnectionName: string;
-  body: unknown;
+  /** DatabaseConnection resource specific properties */
+  properties?: DatabaseConnectionPropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const StaticSitesCreateOrUpdateBuildDatabaseConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16193,7 +17135,8 @@ export const StaticSitesCreateOrUpdateBuildDatabaseConnectionRequest =
       name: S.String.pipe(T.Label()),
       environmentName: S.String.pipe(T.Label()),
       databaseConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DatabaseConnectionPropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -16208,7 +17151,7 @@ export const StaticSitesCreateOrUpdateBuildDatabaseConnectionRequest =
 
 /** A list of configuration files associated with this database connection. */
 export type DatabaseConnectionPropertiesConfigurationFilesList =
-  StaticSiteDatabaseConnectionConfigurationFileOverview[];
+  ReadonlyArray<StaticSiteDatabaseConnectionConfigurationFileOverview>;
 export const DatabaseConnectionPropertiesConfigurationFilesList =
   /*@__PURE__*/ S.Array(
     StaticSiteDatabaseConnectionConfigurationFileOverview,
@@ -16278,7 +17221,10 @@ export interface StaticSitesCreateOrUpdateDatabaseConnectionRequest {
   name: string;
   /** Name of the database connection. */
   databaseConnectionName: string;
-  body: unknown;
+  /** DatabaseConnection resource specific properties */
+  properties?: DatabaseConnectionPropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const StaticSitesCreateOrUpdateDatabaseConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16287,7 +17233,8 @@ export const StaticSitesCreateOrUpdateDatabaseConnectionRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       databaseConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DatabaseConnectionPropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -16328,6 +17275,56 @@ export const StaticSitesCreateOrUpdateDatabaseConnectionResponse =
     identifier: "StaticSitesCreateOrUpdateDatabaseConnectionResponse",
   }) as any as S.Schema<StaticSitesCreateOrUpdateDatabaseConnectionResponse>;
 
+/** Resource tags. */
+export type StaticSitesCreateOrUpdateStaticSiteRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const StaticSitesCreateOrUpdateStaticSiteRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteRequestTagsMap>;
+
+/** A static site. */
+export interface StaticSiteInput {
+  /** URL for the repository of the static site. */
+  repositoryUrl?: string;
+  /** The target branch in the repository. */
+  branch?: string;
+  /** A user's github repository token. This is used to setup the Github Actions workflow file and API secrets. */
+  repositoryToken?: string;
+  /** Build properties to configure on the repository. */
+  buildProperties?: StaticSiteBuildProperties;
+  /** State indicating whether staging environments are allowed or not allowed for a static web app. */
+  stagingEnvironmentPolicy?: StagingEnvironmentPolicy;
+  /** <code>false</code> if config file is locked for this static web app; otherwise, <code>true</code>. */
+  allowConfigFileUpdates?: boolean;
+  /** Template options for generating a new repository. */
+  templateProperties?: StaticSiteTemplateOptions;
+  /** The provider that submitted the last deployment to the primary environment of the static site. */
+  provider?: string;
+  /** State indicating the status of the enterprise grade CDN serving traffic to the static web app. */
+  enterpriseGradeCdnStatus?: EnterpriseGradeCdnStatus;
+  /** State indicating whether public traffic are allowed or not for a static web app. Allowed Values: 'Enabled', 'Disabled' or an empty string. */
+  publicNetworkAccess?: string;
+}
+export const StaticSiteInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repositoryUrl: S.optional(S.String),
+    branch: S.optional(S.String),
+    repositoryToken: S.optional(S.String),
+    buildProperties: S.optional(StaticSiteBuildProperties),
+    stagingEnvironmentPolicy: S.optional(StagingEnvironmentPolicy),
+    allowConfigFileUpdates: S.optional(S.Boolean),
+    templateProperties: S.optional(StaticSiteTemplateOptions),
+    provider: S.optional(S.String),
+    enterpriseGradeCdnStatus: S.optional(EnterpriseGradeCdnStatus),
+    publicNetworkAccess: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StaticSiteInput",
+}) as any as S.Schema<StaticSiteInput>;
+
 export interface StaticSitesCreateOrUpdateStaticSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16335,7 +17332,18 @@ export interface StaticSitesCreateOrUpdateStaticSiteRequest {
   resourceGroupName: string;
   /** Name of the static site. */
   name: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: StaticSitesCreateOrUpdateStaticSiteRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Core resource properties */
+  properties?: StaticSiteInput;
+  /** Kind of resource. */
+  kind?: string;
+  /** Description of a SKU for a scalable resource. */
+  sku?: SkuDescription;
+  /** Managed service identity. */
+  identity?: ManagedServiceIdentityInput;
 }
 export const StaticSitesCreateOrUpdateStaticSiteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16343,7 +17351,12 @@ export const StaticSitesCreateOrUpdateStaticSiteRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(StaticSitesCreateOrUpdateStaticSiteRequestTagsMap),
+      location: S.String,
+      properties: S.optional(StaticSiteInput),
+      kind: S.optional(S.String),
+      sku: S.optional(SkuDescription),
+      identity: S.optional(ManagedServiceIdentityInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -16406,6 +17419,15 @@ export const StaticSitesCreateOrUpdateStaticSiteResponse =
     identifier: "StaticSitesCreateOrUpdateStaticSiteResponse",
   }) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteResponse>;
 
+/** Settings. */
+export type StaticSitesCreateOrUpdateStaticSiteAppSettingsRequestPropertiesMap =
+  { [key: string]: string | undefined };
+export const StaticSitesCreateOrUpdateStaticSiteAppSettingsRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteAppSettingsRequestPropertiesMap>;
+
 export interface StaticSitesCreateOrUpdateStaticSiteAppSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16413,7 +17435,10 @@ export interface StaticSitesCreateOrUpdateStaticSiteAppSettingsRequest {
   resourceGroupName: string;
   /** Name of the static site. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Settings. */
+  properties?: StaticSitesCreateOrUpdateStaticSiteAppSettingsRequestPropertiesMap;
 }
 export const StaticSitesCreateOrUpdateStaticSiteAppSettingsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16421,7 +17446,10 @@ export const StaticSitesCreateOrUpdateStaticSiteAppSettingsRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        StaticSitesCreateOrUpdateStaticSiteAppSettingsRequestPropertiesMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -16470,6 +17498,15 @@ export const StaticSitesCreateOrUpdateStaticSiteAppSettingsResponse =
     identifier: "StaticSitesCreateOrUpdateStaticSiteAppSettingsResponse",
   }) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteAppSettingsResponse>;
 
+/** Settings. */
+export type StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequestPropertiesMap =
+  { [key: string]: string | undefined };
+export const StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequestPropertiesMap>;
+
 export interface StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16479,7 +17516,10 @@ export interface StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequest {
   name: string;
   /** The stage site identifier. */
   environmentName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Settings. */
+  properties?: StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequestPropertiesMap;
 }
 export const StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16488,7 +17528,10 @@ export const StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       environmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsRequestPropertiesMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -16537,6 +17580,15 @@ export const StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsResponse =
     identifier: "StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsResponse",
   }) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildAppSettingsResponse>;
 
+/** Settings. */
+export type StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequestPropertiesMap =
+  { [key: string]: string | undefined };
+export const StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequestPropertiesMap>;
+
 export interface StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16546,7 +17598,10 @@ export interface StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequ
   name: string;
   /** The stage site identifier. */
   environmentName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Settings. */
+  properties?: StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequestPropertiesMap;
 }
 export const StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16555,7 +17610,10 @@ export const StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequest 
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       environmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsRequestPropertiesMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -16606,6 +17664,20 @@ export const StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsResponse
       "StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsResponse",
   }) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteBuildFunctionAppSettingsResponse>;
 
+/** StaticSiteCustomDomainRequestPropertiesARMResource resource specific properties */
+export interface StaticSiteCustomDomainRequestPropertiesARMResourceProperties {
+  /** Validation method for adding a custom domain */
+  validationMethod?: string;
+}
+export const StaticSiteCustomDomainRequestPropertiesARMResourceProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      validationMethod: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "StaticSiteCustomDomainRequestPropertiesARMResourceProperties",
+  }) as any as S.Schema<StaticSiteCustomDomainRequestPropertiesARMResourceProperties>;
+
 export interface StaticSitesCreateOrUpdateStaticSiteCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16615,7 +17687,10 @@ export interface StaticSitesCreateOrUpdateStaticSiteCustomDomainRequest {
   name: string;
   /** The custom domain name. */
   domainName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** StaticSiteCustomDomainRequestPropertiesARMResource resource specific properties */
+  properties?: StaticSiteCustomDomainRequestPropertiesARMResourceProperties;
 }
 export const StaticSitesCreateOrUpdateStaticSiteCustomDomainRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16624,7 +17699,10 @@ export const StaticSitesCreateOrUpdateStaticSiteCustomDomainRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       domainName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        StaticSiteCustomDomainRequestPropertiesARMResourceProperties,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -16645,8 +17723,7 @@ export type CustomDomainStatus =
   | "Ready"
   | "Failed"
   | "Deleting"
-  | "Unhealthy"
-  | (string & {});
+  | "Unhealthy";
 export const CustomDomainStatus = /*@__PURE__*/ S.String;
 
 /** StaticSiteCustomDomainOverviewARMResource resource specific properties */
@@ -16704,6 +17781,15 @@ export const StaticSitesCreateOrUpdateStaticSiteCustomDomainResponse =
     identifier: "StaticSitesCreateOrUpdateStaticSiteCustomDomainResponse",
   }) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteCustomDomainResponse>;
 
+/** Settings. */
+export type StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequestPropertiesMap =
+  { [key: string]: string | undefined };
+export const StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequestPropertiesMap>;
+
 export interface StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16711,7 +17797,10 @@ export interface StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequest {
   resourceGroupName: string;
   /** Name of the static site. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Settings. */
+  properties?: StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequestPropertiesMap;
 }
 export const StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16719,7 +17808,10 @@ export const StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsRequestPropertiesMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -16769,6 +17861,32 @@ export const StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponse =
       "StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponse",
   }) as any as S.Schema<StaticSitesCreateOrUpdateStaticSiteFunctionAppSettingsResponse>;
 
+/** StaticSiteUserInvitationRequestResource resource specific properties */
+export interface StaticSiteUserInvitationRequestResourceProperties {
+  /** The domain name for the static site custom domain. */
+  domain?: string;
+  /** The identity provider for the static site user. */
+  provider?: string;
+  /** The user id for the static site user. */
+  userDetails?: string;
+  /** The roles for the static site user, in free-form string format */
+  roles?: string;
+  /** The number of hours the sas token stays valid */
+  numHoursToExpiration?: number;
+}
+export const StaticSiteUserInvitationRequestResourceProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      domain: S.optional(S.String),
+      provider: S.optional(S.String),
+      userDetails: S.optional(S.String),
+      roles: S.optional(S.String),
+      numHoursToExpiration: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "StaticSiteUserInvitationRequestResourceProperties",
+  }) as any as S.Schema<StaticSiteUserInvitationRequestResourceProperties>;
+
 export interface StaticSitesCreateUserRolesInvitationLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16776,7 +17894,10 @@ export interface StaticSitesCreateUserRolesInvitationLinkRequest {
   resourceGroupName: string;
   /** Name of the static site. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** StaticSiteUserInvitationRequestResource resource specific properties */
+  properties?: StaticSiteUserInvitationRequestResourceProperties;
 }
 export const StaticSitesCreateUserRolesInvitationLinkRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16784,7 +17905,8 @@ export const StaticSitesCreateUserRolesInvitationLinkRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(StaticSiteUserInvitationRequestResourceProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -16841,6 +17963,31 @@ export const StaticSitesCreateUserRolesInvitationLinkResponse =
     identifier: "StaticSitesCreateUserRolesInvitationLinkResponse",
   }) as any as S.Schema<StaticSitesCreateUserRolesInvitationLinkResponse>;
 
+/** A static site zip deployment. */
+export interface StaticSiteZipDeployment {
+  /** URL for the zipped app content */
+  appZipUrl?: string;
+  /** URL for the zipped api content */
+  apiZipUrl?: string;
+  /** A title to label the deployment */
+  deploymentTitle?: string;
+  /** The provider submitting this deployment */
+  provider?: string;
+  /** The language of the api content, if it exists */
+  functionLanguage?: string;
+}
+export const StaticSiteZipDeployment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appZipUrl: S.optional(S.String),
+    apiZipUrl: S.optional(S.String),
+    deploymentTitle: S.optional(S.String),
+    provider: S.optional(S.String),
+    functionLanguage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StaticSiteZipDeployment",
+}) as any as S.Schema<StaticSiteZipDeployment>;
+
 export interface StaticSitesCreateZipDeploymentForStaticSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -16848,7 +17995,10 @@ export interface StaticSitesCreateZipDeploymentForStaticSiteRequest {
   resourceGroupName: string;
   /** Name of the static site. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Core resource properties */
+  properties?: StaticSiteZipDeployment;
 }
 export const StaticSitesCreateZipDeploymentForStaticSiteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16856,7 +18006,8 @@ export const StaticSitesCreateZipDeploymentForStaticSiteRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(StaticSiteZipDeployment),
     }).pipe(
       T.Http({
         method: "POST",
@@ -16884,7 +18035,10 @@ export interface StaticSitesCreateZipDeploymentForStaticSiteBuildRequest {
   name: string;
   /** The stage site identifier. */
   environmentName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Core resource properties */
+  properties?: StaticSiteZipDeployment;
 }
 export const StaticSitesCreateZipDeploymentForStaticSiteBuildRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -16893,7 +18047,8 @@ export const StaticSitesCreateZipDeploymentForStaticSiteBuildRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       environmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(StaticSiteZipDeployment),
     }).pipe(
       T.Http({
         method: "POST",
@@ -17267,9 +18422,7 @@ export const StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildResponse
       "StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildResponse",
   }) as any as S.Schema<StaticSitesDetachUserProvidedFunctionAppFromStaticSiteBuildResponse>;
 
-export type StaticSitesGetBasicAuthRequestBasicAuthName =
-  | "default"
-  | (string & {});
+export type StaticSitesGetBasicAuthRequestBasicAuthName = "default";
 export const StaticSitesGetBasicAuthRequestBasicAuthName =
   /*@__PURE__*/ S.String;
 
@@ -17446,7 +18599,8 @@ export const DatabaseConnection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseConnection>;
 
 /** The DatabaseConnection items on this page */
-export type DatabaseConnectionCollectionValueList = DatabaseConnection[];
+export type DatabaseConnectionCollectionValueList =
+  ReadonlyArray<DatabaseConnection>;
 export const DatabaseConnectionCollectionValueList = /*@__PURE__*/ S.Array(
   DatabaseConnection,
 ) as any as S.Schema<DatabaseConnectionCollectionValueList>;
@@ -17915,7 +19069,7 @@ export const StaticSiteLinkedBackendARMResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The StaticSiteLinkedBackendARMResource items on this page */
 export type StaticSiteLinkedBackendsCollectionValueList =
-  StaticSiteLinkedBackendARMResource[];
+  ReadonlyArray<StaticSiteLinkedBackendARMResource>;
 export const StaticSiteLinkedBackendsCollectionValueList =
   /*@__PURE__*/ S.Array(
     StaticSiteLinkedBackendARMResource,
@@ -18187,13 +19341,12 @@ export type BuildStatus =
   | "Ready"
   | "Failed"
   | "Deleting"
-  | "Detached"
-  | (string & {});
+  | "Detached";
 export const BuildStatus = /*@__PURE__*/ S.String;
 
 /** User provided function apps registered with the static site build */
 export type StaticSiteBuildARMResourcePropertiesUserProvidedFunctionAppsList =
-  StaticSiteUserProvidedFunctionApp[];
+  ReadonlyArray<StaticSiteUserProvidedFunctionApp>;
 export const StaticSiteBuildARMResourcePropertiesUserProvidedFunctionAppsList =
   /*@__PURE__*/ S.Array(
     StaticSiteUserProvidedFunctionApp,
@@ -18201,7 +19354,7 @@ export const StaticSiteBuildARMResourcePropertiesUserProvidedFunctionAppsList =
 
 /** Backends linked to the static side build */
 export type StaticSiteBuildARMResourcePropertiesLinkedBackendsList =
-  StaticSiteLinkedBackend[];
+  ReadonlyArray<StaticSiteLinkedBackend>;
 export const StaticSiteBuildARMResourcePropertiesLinkedBackendsList =
   /*@__PURE__*/ S.Array(
     StaticSiteLinkedBackend,
@@ -18209,7 +19362,7 @@ export const StaticSiteBuildARMResourcePropertiesLinkedBackendsList =
 
 /** Database connections for the static site build */
 export type StaticSiteBuildARMResourcePropertiesDatabaseConnectionsList =
-  DatabaseConnectionOverview[];
+  ReadonlyArray<DatabaseConnectionOverview>;
 export const StaticSiteBuildARMResourcePropertiesDatabaseConnectionsList =
   /*@__PURE__*/ S.Array(
     DatabaseConnectionOverview,
@@ -18345,7 +19498,8 @@ export const StaticSiteBuildARMResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StaticSiteBuildARMResource>;
 
 /** The StaticSiteBuildARMResource items on this page */
-export type StaticSiteBuildCollectionValueList = StaticSiteBuildARMResource[];
+export type StaticSiteBuildCollectionValueList =
+  ReadonlyArray<StaticSiteBuildARMResource>;
 export const StaticSiteBuildCollectionValueList = /*@__PURE__*/ S.Array(
   StaticSiteBuildARMResource,
 ) as any as S.Schema<StaticSiteBuildCollectionValueList>;
@@ -18498,7 +19652,8 @@ export const StaticSiteARMResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StaticSiteARMResource>;
 
 /** The StaticSiteARMResource items on this page */
-export type StaticSiteCollectionValueList = StaticSiteARMResource[];
+export type StaticSiteCollectionValueList =
+  ReadonlyArray<StaticSiteARMResource>;
 export const StaticSiteCollectionValueList = /*@__PURE__*/ S.Array(
   StaticSiteARMResource,
 ) as any as S.Schema<StaticSiteCollectionValueList>;
@@ -18721,7 +19876,7 @@ export const StaticSiteUserProvidedFunctionAppARMResource =
 
 /** The StaticSiteUserProvidedFunctionAppARMResource items on this page */
 export type StaticSiteUserProvidedFunctionAppsCollectionValueList =
-  StaticSiteUserProvidedFunctionAppARMResource[];
+  ReadonlyArray<StaticSiteUserProvidedFunctionAppARMResource>;
 export const StaticSiteUserProvidedFunctionAppsCollectionValueList =
   /*@__PURE__*/ S.Array(
     StaticSiteUserProvidedFunctionAppARMResource,
@@ -18774,6 +19929,23 @@ export const StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildRequest =
       "StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildRequest",
   }) as any as S.Schema<StaticSitesGetUserProvidedFunctionAppsForStaticSiteBuildRequest>;
 
+/** StaticSiteLinkedBackendARMResource resource specific properties */
+export interface StaticSiteLinkedBackendARMResourcePropertiesInput {
+  /** The resource id of the backend linked to the static site */
+  backendResourceId?: string;
+  /** The region of the backend linked to the static site */
+  region?: string;
+}
+export const StaticSiteLinkedBackendARMResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      backendResourceId: S.optional(S.String),
+      region: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "StaticSiteLinkedBackendARMResourcePropertiesInput",
+  }) as any as S.Schema<StaticSiteLinkedBackendARMResourcePropertiesInput>;
+
 export interface StaticSitesLinkBackendRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -18783,7 +19955,10 @@ export interface StaticSitesLinkBackendRequest {
   name: string;
   /** Name of the linked backend that should be retrieved */
   linkedBackendName: string;
-  body: unknown;
+  /** StaticSiteLinkedBackendARMResource resource specific properties */
+  properties?: StaticSiteLinkedBackendARMResourcePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const StaticSitesLinkBackendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18791,7 +19966,8 @@ export const StaticSitesLinkBackendRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     linkedBackendName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(StaticSiteLinkedBackendARMResourcePropertiesInput),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -18842,7 +20018,10 @@ export interface StaticSitesLinkBackendToBuildRequest {
   environmentName: string;
   /** Name of the linked backend that should be retrieved */
   linkedBackendName: string;
-  body: unknown;
+  /** StaticSiteLinkedBackendARMResource resource specific properties */
+  properties?: StaticSiteLinkedBackendARMResourcePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const StaticSitesLinkBackendToBuildRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -18852,7 +20031,8 @@ export const StaticSitesLinkBackendToBuildRequest = /*@__PURE__*/ S.suspend(
       name: S.String.pipe(T.Label()),
       environmentName: S.String.pipe(T.Label()),
       linkedBackendName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(StaticSiteLinkedBackendARMResourcePropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -18970,7 +20150,7 @@ export const StaticSiteBasicAuthPropertiesARMResource = /*@__PURE__*/ S.suspend(
 
 /** The StaticSiteBasicAuthPropertiesARMResource items on this page */
 export type StaticSiteBasicAuthPropertiesCollectionValueList =
-  StaticSiteBasicAuthPropertiesARMResource[];
+  ReadonlyArray<StaticSiteBasicAuthPropertiesARMResource>;
 export const StaticSiteBasicAuthPropertiesCollectionValueList =
   /*@__PURE__*/ S.Array(
     StaticSiteBasicAuthPropertiesARMResource,
@@ -19217,7 +20397,7 @@ export const StaticSitesListStaticSiteBuildFunctionsRequest =
   }) as any as S.Schema<StaticSitesListStaticSiteBuildFunctionsRequest>;
 
 /** The trigger type of the function */
-export type TriggerTypes = "HttpTrigger" | "Unknown" | (string & {});
+export type TriggerTypes = "HttpTrigger" | "Unknown";
 export const TriggerTypes = /*@__PURE__*/ S.String;
 
 /** StaticSiteFunctionOverviewARMResource resource specific properties */
@@ -19265,7 +20445,7 @@ export const StaticSiteFunctionOverviewARMResource = /*@__PURE__*/ S.suspend(
 
 /** The StaticSiteFunctionOverviewARMResource items on this page */
 export type StaticSiteFunctionOverviewCollectionValueList =
-  StaticSiteFunctionOverviewARMResource[];
+  ReadonlyArray<StaticSiteFunctionOverviewARMResource>;
 export const StaticSiteFunctionOverviewCollectionValueList =
   /*@__PURE__*/ S.Array(
     StaticSiteFunctionOverviewARMResource,
@@ -19316,7 +20496,7 @@ export const StaticSitesListStaticSiteConfiguredRolesRequest =
 
 /** List of string resources. */
 export type StaticSitesListStaticSiteConfiguredRolesResponsePropertiesList =
-  string[];
+  ReadonlyArray<string>;
 export const StaticSitesListStaticSiteConfiguredRolesResponsePropertiesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -19408,7 +20588,7 @@ export const StaticSiteCustomDomainOverviewARMResource =
 
 /** The StaticSiteCustomDomainOverviewARMResource items on this page */
 export type StaticSiteCustomDomainOverviewCollectionValueList =
-  StaticSiteCustomDomainOverviewARMResource[];
+  ReadonlyArray<StaticSiteCustomDomainOverviewARMResource>;
 export const StaticSiteCustomDomainOverviewCollectionValueList =
   /*@__PURE__*/ S.Array(
     StaticSiteCustomDomainOverviewARMResource,
@@ -19658,7 +20838,8 @@ export const StaticSiteUserARMResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StaticSiteUserARMResource>;
 
 /** The StaticSiteUserARMResource items on this page */
-export type StaticSiteUserCollectionValueList = StaticSiteUserARMResource[];
+export type StaticSiteUserCollectionValueList =
+  ReadonlyArray<StaticSiteUserARMResource>;
 export const StaticSiteUserCollectionValueList = /*@__PURE__*/ S.Array(
   StaticSiteUserARMResource,
 ) as any as S.Schema<StaticSiteUserCollectionValueList>;
@@ -19679,18 +20860,42 @@ export const StaticSiteUserCollection = /*@__PURE__*/ S.suspend(() =>
   identifier: "StaticSiteUserCollection",
 }) as any as S.Schema<StaticSiteUserCollection>;
 
+/** StaticSitesWorkflowPreviewRequest resource specific properties */
+export interface StaticSitesWorkflowPreviewRequestProperties {
+  /** URL for the repository of the static site. */
+  repositoryUrl?: string;
+  /** The target branch in the repository. */
+  branch?: string;
+  /** Build properties to configure on the repository. */
+  buildProperties?: StaticSiteBuildProperties;
+}
+export const StaticSitesWorkflowPreviewRequestProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      repositoryUrl: S.optional(S.String),
+      branch: S.optional(S.String),
+      buildProperties: S.optional(StaticSiteBuildProperties),
+    }),
+  ).annotate({
+    identifier: "StaticSitesWorkflowPreviewRequestProperties",
+  }) as any as S.Schema<StaticSitesWorkflowPreviewRequestProperties>;
+
 export interface StaticSitesPreviewWorkflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** StaticSitesWorkflowPreviewRequest resource specific properties */
+  properties?: StaticSitesWorkflowPreviewRequestProperties;
 }
 export const StaticSitesPreviewWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(StaticSitesWorkflowPreviewRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -19744,6 +20949,23 @@ export const StaticSitesPreviewWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StaticSitesPreviewWorkflowResponse",
 }) as any as S.Schema<StaticSitesPreviewWorkflowResponse>;
 
+/** StaticSiteUserProvidedFunctionAppARMResource resource specific properties */
+export interface StaticSiteUserProvidedFunctionAppARMResourcePropertiesInput {
+  /** The resource id of the function app registered with the static site */
+  functionAppResourceId?: string;
+  /** The region of the function app registered with the static site */
+  functionAppRegion?: string;
+}
+export const StaticSiteUserProvidedFunctionAppARMResourcePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      functionAppResourceId: S.optional(S.String),
+      functionAppRegion: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "StaticSiteUserProvidedFunctionAppARMResourcePropertiesInput",
+  }) as any as S.Schema<StaticSiteUserProvidedFunctionAppARMResourcePropertiesInput>;
+
 export interface StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19755,7 +20977,10 @@ export interface StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteRequest
   functionAppName: string;
   /** Specify <code>true</code> to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app. The default is <code>false</code>. */
   isForced?: boolean;
-  body: unknown;
+  /** StaticSiteUserProvidedFunctionAppARMResource resource specific properties */
+  properties?: StaticSiteUserProvidedFunctionAppARMResourcePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -19765,7 +20990,10 @@ export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteRequest =
       name: S.String.pipe(T.Label()),
       functionAppName: S.String.pipe(T.Label()),
       isForced: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(
+        StaticSiteUserProvidedFunctionAppARMResourcePropertiesInput,
+      ),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -19823,7 +21051,10 @@ export interface StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildRe
   functionAppName: string;
   /** Specify <code>true</code> to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app. The default is <code>false</code>. */
   isForced?: boolean;
-  body: unknown;
+  /** StaticSiteUserProvidedFunctionAppARMResource resource specific properties */
+  properties?: StaticSiteUserProvidedFunctionAppARMResourcePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -19834,7 +21065,10 @@ export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildReques
       environmentName: S.String.pipe(T.Label()),
       functionAppName: S.String.pipe(T.Label()),
       isForced: S.optional(S.Boolean.pipe(T.Query())),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(
+        StaticSiteUserProvidedFunctionAppARMResourcePropertiesInput,
+      ),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -19879,6 +21113,23 @@ export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildRespon
       "StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildResponse",
   }) as any as S.Schema<StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildResponse>;
 
+/** StaticSiteResetPropertiesARMResource resource specific properties */
+export interface StaticSiteResetPropertiesARMResourceProperties {
+  /** The token which proves admin privileges to the repository. */
+  repositoryToken?: string;
+  /** Determines whether the repository should be updated with the new properties. */
+  shouldUpdateRepository?: boolean;
+}
+export const StaticSiteResetPropertiesARMResourceProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      repositoryToken: S.optional(S.String),
+      shouldUpdateRepository: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "StaticSiteResetPropertiesARMResourceProperties",
+  }) as any as S.Schema<StaticSiteResetPropertiesARMResourceProperties>;
+
 export interface StaticSitesResetStaticSiteApiKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -19886,7 +21137,10 @@ export interface StaticSitesResetStaticSiteApiKeyRequest {
   resourceGroupName: string;
   /** Name of the static site. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** StaticSiteResetPropertiesARMResource resource specific properties */
+  properties?: StaticSiteResetPropertiesARMResourceProperties;
 }
 export const StaticSitesResetStaticSiteApiKeyRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -19894,7 +21148,8 @@ export const StaticSitesResetStaticSiteApiKeyRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(StaticSiteResetPropertiesARMResourceProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -19993,6 +21248,29 @@ export const StaticSitesUnlinkBackendFromBuildResponse =
     identifier: "StaticSitesUnlinkBackendFromBuildResponse",
   }) as any as S.Schema<StaticSitesUnlinkBackendFromBuildResponse>;
 
+/** DatabaseConnectionPatchRequest resource specific properties */
+export interface DatabaseConnectionPatchRequestProperties {
+  /** The resource id of the database. */
+  resourceId?: string;
+  /** If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource. */
+  connectionIdentity?: string;
+  /** The connection string to use to connect to the database. */
+  connectionString?: string | Redacted.Redacted<string>;
+  /** The region of the database resource. */
+  region?: string;
+}
+export const DatabaseConnectionPatchRequestProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resourceId: S.optional(S.String),
+      connectionIdentity: S.optional(S.String),
+      connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      region: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "DatabaseConnectionPatchRequestProperties",
+}) as any as S.Schema<DatabaseConnectionPatchRequestProperties>;
+
 export interface StaticSitesUpdateBuildDatabaseConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -20004,7 +21282,8 @@ export interface StaticSitesUpdateBuildDatabaseConnectionRequest {
   environmentName: string;
   /** Name of the database connection. */
   databaseConnectionName: string;
-  body: unknown;
+  /** DatabaseConnectionPatchRequest resource specific properties */
+  properties?: DatabaseConnectionPatchRequestProperties;
 }
 export const StaticSitesUpdateBuildDatabaseConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -20014,7 +21293,7 @@ export const StaticSitesUpdateBuildDatabaseConnectionRequest =
       name: S.String.pipe(T.Label()),
       environmentName: S.String.pipe(T.Label()),
       databaseConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DatabaseConnectionPatchRequestProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -20064,7 +21343,8 @@ export interface StaticSitesUpdateDatabaseConnectionRequest {
   name: string;
   /** Name of the database connection. */
   databaseConnectionName: string;
-  body: unknown;
+  /** DatabaseConnectionPatchRequest resource specific properties */
+  properties?: DatabaseConnectionPatchRequestProperties;
 }
 export const StaticSitesUpdateDatabaseConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -20073,7 +21353,7 @@ export const StaticSitesUpdateDatabaseConnectionRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       databaseConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(DatabaseConnectionPatchRequestProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -20121,14 +21401,18 @@ export interface StaticSitesUpdateStaticSiteRequest {
   resourceGroupName: string;
   /** Name of the static site. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Core resource properties */
+  properties?: StaticSiteInput;
 }
 export const StaticSitesUpdateStaticSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(StaticSiteInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -20190,6 +21474,20 @@ export const StaticSitesUpdateStaticSiteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StaticSitesUpdateStaticSiteResponse",
 }) as any as S.Schema<StaticSitesUpdateStaticSiteResponse>;
 
+/** StaticSiteUserARMResource resource specific properties */
+export interface StaticSiteUserARMResourcePropertiesInput {
+  /** The roles for the static site user, in free-form string format */
+  roles?: string;
+}
+export const StaticSiteUserARMResourcePropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      roles: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "StaticSiteUserARMResourcePropertiesInput",
+}) as any as S.Schema<StaticSiteUserARMResourcePropertiesInput>;
+
 export interface StaticSitesUpdateStaticSiteUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -20198,7 +21496,10 @@ export interface StaticSitesUpdateStaticSiteUserRequest {
   name: string;
   authprovider: string;
   userid: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** StaticSiteUserARMResource resource specific properties */
+  properties?: StaticSiteUserARMResourcePropertiesInput;
 }
 export const StaticSitesUpdateStaticSiteUserRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -20208,7 +21509,8 @@ export const StaticSitesUpdateStaticSiteUserRequest = /*@__PURE__*/ S.suspend(
       name: S.String.pipe(T.Label()),
       authprovider: S.String.pipe(T.Label()),
       userid: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(StaticSiteUserARMResourcePropertiesInput),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -20255,7 +21557,10 @@ export interface StaticSitesValidateBackendRequest {
   name: string;
   /** Name of the linked backend that should be retrieved */
   linkedBackendName: string;
-  body: unknown;
+  /** StaticSiteLinkedBackendARMResource resource specific properties */
+  properties?: StaticSiteLinkedBackendARMResourcePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const StaticSitesValidateBackendRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20263,7 +21568,8 @@ export const StaticSitesValidateBackendRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     linkedBackendName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(StaticSiteLinkedBackendARMResourcePropertiesInput),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -20294,7 +21600,10 @@ export interface StaticSitesValidateBackendForBuildRequest {
   environmentName: string;
   /** Name of the linked backend that should be retrieved */
   linkedBackendName: string;
-  body: unknown;
+  /** StaticSiteLinkedBackendARMResource resource specific properties */
+  properties?: StaticSiteLinkedBackendARMResourcePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const StaticSitesValidateBackendForBuildRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -20304,7 +21613,8 @@ export const StaticSitesValidateBackendForBuildRequest =
       name: S.String.pipe(T.Label()),
       environmentName: S.String.pipe(T.Label()),
       linkedBackendName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(StaticSiteLinkedBackendARMResourcePropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -20332,7 +21642,10 @@ export interface StaticSitesValidateCustomDomainCanBeAddedToStaticSiteRequest {
   name: string;
   /** The custom domain name. */
   domainName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** StaticSiteCustomDomainRequestPropertiesARMResource resource specific properties */
+  properties?: StaticSiteCustomDomainRequestPropertiesARMResourceProperties;
 }
 export const StaticSitesValidateCustomDomainCanBeAddedToStaticSiteRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -20341,7 +21654,10 @@ export const StaticSitesValidateCustomDomainCanBeAddedToStaticSiteRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       domainName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        StaticSiteCustomDomainRequestPropertiesARMResourceProperties,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -20361,11 +21677,15 @@ export const StaticSitesValidateCustomDomainCanBeAddedToStaticSiteResponse =
   }) as any as S.Schema<StaticSitesValidateCustomDomainCanBeAddedToStaticSiteResponse>;
 
 export interface UpdatePublishingUserRequest {
-  body: unknown;
+  /** User resource specific properties */
+  properties?: UserProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const UpdatePublishingUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(UserProperties),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -20408,12 +21728,16 @@ export const UpdatePublishingUserResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSourceControlRequest {
   /** Type of source control */
   sourceControlType: string;
-  body: unknown;
+  /** SourceControl resource specific properties */
+  properties?: SourceControlProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const UpdateSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceControlType: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SourceControlProperties),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -20453,18 +21777,87 @@ export const UpdateSourceControlResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateSourceControlResponse",
 }) as any as S.Schema<UpdateSourceControlResponse>;
 
+/** Resource type used for verification. */
+export type ValidateResourceTypes =
+  | "ServerFarm"
+  | "Site"
+  | "Microsoft.Web/hostingEnvironments";
+export const ValidateResourceTypes = /*@__PURE__*/ S.String;
+
+/** App properties used for validation. */
+export interface ValidatePropertiesInput {
+  /** ARM resource ID of an App Service plan that would host the app. */
+  serverFarmId?: string;
+  /** Name of the target SKU for the App Service plan. */
+  skuName?: string;
+  /** <code>true</code> if App Service plan is for Linux workers; otherwise, <code>false</code>. */
+  needLinuxWorkers?: boolean;
+  /** <code>true</code> if App Service plan is for Spot instances; otherwise, <code>false</code>. */
+  isSpot?: boolean;
+  /** Target capacity of the App Service plan (number of VMs). */
+  capacity?: number;
+  /** Name of App Service Environment where app or App Service plan should be created. */
+  hostingEnvironment?: string;
+  /** <code>true</code> if App Service plan is running as a windows container */
+  isXenon?: boolean;
+  /** Base URL of the container registry */
+  containerRegistryBaseUrl?: string;
+  /** Username for to access the container registry */
+  containerRegistryUsername?: string;
+  /** Password for to access the container registry */
+  containerRegistryPassword?: string | Redacted.Redacted<string>;
+  /** Repository name (image name) */
+  containerImageRepository?: string;
+  /** Image tag */
+  containerImageTag?: string;
+  /** Platform (windows or linux) */
+  containerImagePlatform?: string;
+  /** App Service Environment Properties */
+  appServiceEnvironment?: AppServiceEnvironmentInput;
+}
+export const ValidatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serverFarmId: S.optional(S.String),
+    skuName: S.optional(S.String),
+    needLinuxWorkers: S.optional(S.Boolean),
+    isSpot: S.optional(S.Boolean),
+    capacity: S.optional(S.Number),
+    hostingEnvironment: S.optional(S.String),
+    isXenon: S.optional(S.Boolean),
+    containerRegistryBaseUrl: S.optional(S.String),
+    containerRegistryUsername: S.optional(S.String),
+    containerRegistryPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    containerImageRepository: S.optional(S.String),
+    containerImageTag: S.optional(S.String),
+    containerImagePlatform: S.optional(S.String),
+    appServiceEnvironment: S.optional(AppServiceEnvironmentInput),
+  }),
+).annotate({
+  identifier: "ValidatePropertiesInput",
+}) as any as S.Schema<ValidatePropertiesInput>;
+
 export interface ValidateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  body: unknown;
+  /** Resource name to verify. */
+  name: string;
+  /** Resource type used for verification. */
+  type: ValidateResourceTypes;
+  /** Expected location of the resource. */
+  location: string;
+  /** Properties of the resource to validate. */
+  properties: ValidatePropertiesInput;
 }
 export const ValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    name: S.String,
+    type: ValidateResourceTypes,
+    location: S.String,
+    properties: ValidatePropertiesInput,
   }).pipe(
     T.Http({
       method: "POST",
@@ -20509,18 +21902,25 @@ export const ValidateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateResponse",
 }) as any as S.Schema<ValidateResponse>;
 
+export type ValidateMoveRequestResourcesList = ReadonlyArray<string>;
+export const ValidateMoveRequestResourcesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ValidateMoveRequestResourcesList>;
+
 export interface ValidateMoveRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  body: unknown;
+  targetResourceGroup?: string;
+  resources?: ValidateMoveRequestResourcesList;
 }
 export const ValidateMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    targetResourceGroup: S.optional(S.String),
+    resources: S.optional(ValidateMoveRequestResourcesList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -20540,15 +21940,41 @@ export const ValidateMoveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateMoveResponse",
 }) as any as S.Schema<ValidateMoveResponse>;
 
+/** VnetParameters resource specific properties */
+export interface VnetParametersProperties {
+  /** The Resource Group of the VNET to be validated */
+  vnetResourceGroup?: string;
+  /** The name of the VNET to be validated */
+  vnetName?: string;
+  /** The subnet name to be validated */
+  vnetSubnetName?: string;
+  /** The ARM Resource ID of the subnet to validate */
+  subnetResourceId?: string;
+}
+export const VnetParametersProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vnetResourceGroup: S.optional(S.String),
+    vnetName: S.optional(S.String),
+    vnetSubnetName: S.optional(S.String),
+    subnetResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VnetParametersProperties",
+}) as any as S.Schema<VnetParametersProperties>;
+
 export interface VerifyHostingEnvironmentVnetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** VnetParameters resource specific properties */
+  properties?: VnetParametersProperties;
 }
 export const VerifyHostingEnvironmentVnetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(VnetParametersProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -20604,7 +22030,7 @@ export const VnetValidationTestFailure = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tests that failed in the validation. */
 export type VnetValidationFailureDetailsPropertiesFailedTestsList =
-  VnetValidationTestFailure[];
+  ReadonlyArray<VnetValidationTestFailure>;
 export const VnetValidationFailureDetailsPropertiesFailedTestsList =
   /*@__PURE__*/ S.Array(
     VnetValidationTestFailure,
@@ -20612,7 +22038,7 @@ export const VnetValidationFailureDetailsPropertiesFailedTestsList =
 
 /** A list of warnings generated during validation. */
 export type VnetValidationFailureDetailsPropertiesWarningsList =
-  VnetValidationTestFailure[];
+  ReadonlyArray<VnetValidationTestFailure>;
 export const VnetValidationFailureDetailsPropertiesWarningsList =
   /*@__PURE__*/ S.Array(
     VnetValidationTestFailure,
@@ -20668,44 +22094,14 @@ export const VerifyHostingEnvironmentVnetResponse = /*@__PURE__*/ S.suspend(
   identifier: "VerifyHostingEnvironmentVnetResponse",
 }) as any as S.Schema<VerifyHostingEnvironmentVnetResponse>;
 
-export interface WebAppsAddPremierAddOnRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the app. */
-  name: string;
-  /** Add-on name. */
-  premierAddOnName: string;
-  body: unknown;
-}
-export const WebAppsAddPremierAddOnRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    name: S.String.pipe(T.Label()),
-    premierAddOnName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
-      code: 200,
-      apiVersion: "2026-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "WebAppsAddPremierAddOnRequest",
-}) as any as S.Schema<WebAppsAddPremierAddOnRequest>;
-
 /** Resource tags. */
-export type WebAppsAddPremierAddOnResponseTagsMap = {
+export type WebAppsAddPremierAddOnRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const WebAppsAddPremierAddOnResponseTagsMap = /*@__PURE__*/ S.Record(
+export const WebAppsAddPremierAddOnRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<WebAppsAddPremierAddOnResponseTagsMap>;
+) as any as S.Schema<WebAppsAddPremierAddOnRequestTagsMap>;
 
 /** PremierAddOn resource specific properties */
 export interface PremierAddOnProperties {
@@ -20731,6 +22127,55 @@ export const PremierAddOnProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PremierAddOnProperties",
 }) as any as S.Schema<PremierAddOnProperties>;
+
+export interface WebAppsAddPremierAddOnRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the app. */
+  name: string;
+  /** Add-on name. */
+  premierAddOnName: string;
+  /** Resource tags. */
+  tags?: WebAppsAddPremierAddOnRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** PremierAddOn resource specific properties */
+  properties?: PremierAddOnProperties;
+  /** Kind of resource. */
+  kind?: string;
+}
+export const WebAppsAddPremierAddOnRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    premierAddOnName: S.String.pipe(T.Label()),
+    tags: S.optional(WebAppsAddPremierAddOnRequestTagsMap),
+    location: S.String,
+    properties: S.optional(PremierAddOnProperties),
+    kind: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/premieraddons/{premierAddOnName}",
+      code: 200,
+      apiVersion: "2026-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "WebAppsAddPremierAddOnRequest",
+}) as any as S.Schema<WebAppsAddPremierAddOnRequest>;
+
+/** Resource tags. */
+export type WebAppsAddPremierAddOnResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WebAppsAddPremierAddOnResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WebAppsAddPremierAddOnResponseTagsMap>;
 
 export interface WebAppsAddPremierAddOnResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -20765,6 +22210,15 @@ export const WebAppsAddPremierAddOnResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsAddPremierAddOnResponse",
 }) as any as S.Schema<WebAppsAddPremierAddOnResponse>;
 
+/** Resource tags. */
+export type WebAppsAddPremierAddOnSlotRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WebAppsAddPremierAddOnSlotRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WebAppsAddPremierAddOnSlotRequestTagsMap>;
+
 export interface WebAppsAddPremierAddOnSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -20776,7 +22230,14 @@ export interface WebAppsAddPremierAddOnSlotRequest {
   slot: string;
   /** Add-on name. */
   premierAddOnName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: WebAppsAddPremierAddOnSlotRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** PremierAddOn resource specific properties */
+  properties?: PremierAddOnProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsAddPremierAddOnSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20785,7 +22246,10 @@ export const WebAppsAddPremierAddOnSlotRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
     premierAddOnName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(WebAppsAddPremierAddOnSlotRequestTagsMap),
+    location: S.String,
+    properties: S.optional(PremierAddOnProperties),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -20869,29 +22333,28 @@ export const WebAppsAnalyzeCustomHostnameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppsAnalyzeCustomHostnameRequest>;
 
 /** DNS verification test result. */
-export type DnsVerificationTestResult =
-  | "Passed"
-  | "Failed"
-  | "Skipped"
-  | (string & {});
+export type DnsVerificationTestResult = "Passed" | "Failed" | "Skipped";
 export const DnsVerificationTestResult = /*@__PURE__*/ S.String;
 
 /** CName records controller can see for this hostname. */
-export type CustomHostnameAnalysisResultPropertiesCNameRecordsList = string[];
+export type CustomHostnameAnalysisResultPropertiesCNameRecordsList =
+  ReadonlyArray<string>;
 export const CustomHostnameAnalysisResultPropertiesCNameRecordsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CustomHostnameAnalysisResultPropertiesCNameRecordsList>;
 
 /** TXT records controller can see for this hostname. */
-export type CustomHostnameAnalysisResultPropertiesTxtRecordsList = string[];
+export type CustomHostnameAnalysisResultPropertiesTxtRecordsList =
+  ReadonlyArray<string>;
 export const CustomHostnameAnalysisResultPropertiesTxtRecordsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CustomHostnameAnalysisResultPropertiesTxtRecordsList>;
 
 /** A records controller can see for this hostname. */
-export type CustomHostnameAnalysisResultPropertiesARecordsList = string[];
+export type CustomHostnameAnalysisResultPropertiesARecordsList =
+  ReadonlyArray<string>;
 export const CustomHostnameAnalysisResultPropertiesARecordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20899,7 +22362,7 @@ export const CustomHostnameAnalysisResultPropertiesARecordsList =
 
 /** Alternate CName records controller can see for this hostname. */
 export type CustomHostnameAnalysisResultPropertiesAlternateCNameRecordsList =
-  string[];
+  ReadonlyArray<string>;
 export const CustomHostnameAnalysisResultPropertiesAlternateCNameRecordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -20907,7 +22370,7 @@ export const CustomHostnameAnalysisResultPropertiesAlternateCNameRecordsList =
 
 /** Alternate TXT records controller can see for this hostname. */
 export type CustomHostnameAnalysisResultPropertiesAlternateTxtRecordsList =
-  string[];
+  ReadonlyArray<string>;
 export const CustomHostnameAnalysisResultPropertiesAlternateTxtRecordsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -21054,7 +22517,10 @@ export interface WebAppsApplySlotConfigToProductionRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Destination deployment slot during swap operation. */
+  targetSlot: string;
+  /** <code>true</code> to preserve Virtual Network to the slot during swap; otherwise, <code>false</code>. */
+  preserveVnet: boolean;
 }
 export const WebAppsApplySlotConfigToProductionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -21062,7 +22528,8 @@ export const WebAppsApplySlotConfigToProductionRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      targetSlot: S.String,
+      preserveVnet: S.Boolean,
     }).pipe(
       T.Http({
         method: "POST",
@@ -21090,7 +22557,10 @@ export interface WebAppsApplySlotConfigurationSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Destination deployment slot during swap operation. */
+  targetSlot: string;
+  /** <code>true</code> to preserve Virtual Network to the slot during swap; otherwise, <code>false</code>. */
+  preserveVnet: boolean;
 }
 export const WebAppsApplySlotConfigurationSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -21099,7 +22569,8 @@ export const WebAppsApplySlotConfigurationSlotRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      targetSlot: S.String,
+      preserveVnet: S.Boolean,
     }).pipe(
       T.Http({
         method: "POST",
@@ -21127,7 +22598,10 @@ export interface WebAppsApproveOrRejectPrivateEndpointConnectionRequest {
   name: string;
   /** Name of the private endpoint connection. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** RemotePrivateEndpointConnectionARMResource resource specific properties */
+  properties?: RemotePrivateEndpointConnectionARMResourcePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsApproveOrRejectPrivateEndpointConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -21136,7 +22610,10 @@ export const WebAppsApproveOrRejectPrivateEndpointConnectionRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(
+        RemotePrivateEndpointConnectionARMResourcePropertiesInput,
+      ),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -21190,7 +22667,10 @@ export interface WebAppsApproveOrRejectPrivateEndpointConnectionSlotRequest {
   slot: string;
   /** Name of the private endpoint connection. */
   privateEndpointConnectionName: string;
-  body: unknown;
+  /** RemotePrivateEndpointConnectionARMResource resource specific properties */
+  properties?: RemotePrivateEndpointConnectionARMResourcePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsApproveOrRejectPrivateEndpointConnectionSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -21200,7 +22680,10 @@ export const WebAppsApproveOrRejectPrivateEndpointConnectionSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(
+        RemotePrivateEndpointConnectionARMResourcePropertiesInput,
+      ),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -21243,55 +22726,37 @@ export const WebAppsApproveOrRejectPrivateEndpointConnectionSlotResponse =
     identifier: "WebAppsApproveOrRejectPrivateEndpointConnectionSlotResponse",
   }) as any as S.Schema<WebAppsApproveOrRejectPrivateEndpointConnectionSlotResponse>;
 
-export interface WebAppsBackupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the app. */
-  name: string;
-  body: unknown;
-}
-export const WebAppsBackupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backup",
-      code: 200,
-      apiVersion: "2026-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "WebAppsBackupRequest",
-}) as any as S.Schema<WebAppsBackupRequest>;
+/** The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7) */
+export type BackupScheduleInputFrequencyUnit = "Day" | "Hour";
+export const BackupScheduleInputFrequencyUnit = /*@__PURE__*/ S.String;
 
-/** Backup status. */
-export type BackupItemStatus =
-  | "InProgress"
-  | "Failed"
-  | "Succeeded"
-  | "TimedOut"
-  | "Created"
-  | "Skipped"
-  | "PartiallySucceeded"
-  | "DeleteInProgress"
-  | "DeleteFailed"
-  | "Deleted"
-  | (string & {});
-export const BackupItemStatus = /*@__PURE__*/ S.String;
+/** Description of a backup schedule. Describes how often should be the backup performed and what should be the retention policy. */
+export interface BackupScheduleInput {
+  /** How often the backup should be executed (e.g. for weekly backup, this should be set to 7 and FrequencyUnit should be set to Day) */
+  frequencyInterval: number;
+  /** The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7) */
+  frequencyUnit: BackupScheduleInputFrequencyUnit;
+  /** True if the retention policy should always keep at least one backup in the storage account, regardless how old it is; false otherwise. */
+  keepAtLeastOneBackup: boolean;
+  /** After how many days backups should be deleted. */
+  retentionPeriodInDays: number;
+  /** When the schedule should start working. */
+  startTime?: string;
+}
+export const BackupScheduleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    frequencyInterval: S.Number,
+    frequencyUnit: BackupScheduleInputFrequencyUnit,
+    keepAtLeastOneBackup: S.Boolean,
+    retentionPeriodInDays: S.Number,
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BackupScheduleInput",
+}) as any as S.Schema<BackupScheduleInput>;
 
 /** Database type (e.g. SqlAzure / MySql). */
-export type DatabaseType =
-  | "SqlAzure"
-  | "MySql"
-  | "LocalMySql"
-  | "PostgreSql"
-  | (string & {});
+export type DatabaseType = "SqlAzure" | "MySql" | "LocalMySql" | "PostgreSql";
 export const DatabaseType = /*@__PURE__*/ S.String;
 
 /** Database backup settings. */
@@ -21315,8 +22780,86 @@ export const DatabaseBackupSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseBackupSetting",
 }) as any as S.Schema<DatabaseBackupSetting>;
 
+/** Databases included in the backup. */
+export type BackupRequestPropertiesInputDatabasesList =
+  ReadonlyArray<DatabaseBackupSetting>;
+export const BackupRequestPropertiesInputDatabasesList = /*@__PURE__*/ S.Array(
+  DatabaseBackupSetting,
+) as any as S.Schema<BackupRequestPropertiesInputDatabasesList>;
+
+/** BackupRequest resource specific properties */
+export interface BackupRequestPropertiesInput {
+  /** Name of the backup. */
+  backupName?: string;
+  /** True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled. */
+  enabled?: boolean;
+  /** SAS URL to the container. */
+  storageAccountUrl: string;
+  /** Schedule for the backup if it is executed periodically. */
+  backupSchedule?: BackupScheduleInput;
+  /** Databases included in the backup. */
+  databases?: BackupRequestPropertiesInputDatabasesList;
+}
+export const BackupRequestPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    backupName: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    storageAccountUrl: S.String,
+    backupSchedule: S.optional(BackupScheduleInput),
+    databases: S.optional(BackupRequestPropertiesInputDatabasesList),
+  }),
+).annotate({
+  identifier: "BackupRequestPropertiesInput",
+}) as any as S.Schema<BackupRequestPropertiesInput>;
+
+export interface WebAppsBackupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the app. */
+  name: string;
+  /** Kind of resource. */
+  kind?: string;
+  /** BackupRequest resource specific properties */
+  properties?: BackupRequestPropertiesInput;
+}
+export const WebAppsBackupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    kind: S.optional(S.String),
+    properties: S.optional(BackupRequestPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/backup",
+      code: 200,
+      apiVersion: "2026-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "WebAppsBackupRequest",
+}) as any as S.Schema<WebAppsBackupRequest>;
+
+/** Backup status. */
+export type BackupItemStatus =
+  | "InProgress"
+  | "Failed"
+  | "Succeeded"
+  | "TimedOut"
+  | "Created"
+  | "Skipped"
+  | "PartiallySucceeded"
+  | "DeleteInProgress"
+  | "DeleteFailed"
+  | "Deleted";
+export const BackupItemStatus = /*@__PURE__*/ S.String;
+
 /** List of databases included in the backup. */
-export type BackupItemPropertiesDatabasesList = DatabaseBackupSetting[];
+export type BackupItemPropertiesDatabasesList =
+  ReadonlyArray<DatabaseBackupSetting>;
 export const BackupItemPropertiesDatabasesList = /*@__PURE__*/ S.Array(
   DatabaseBackupSetting,
 ) as any as S.Schema<BackupItemPropertiesDatabasesList>;
@@ -21409,7 +22952,10 @@ export interface WebAppsBackupSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** BackupRequest resource specific properties */
+  properties?: BackupRequestPropertiesInput;
 }
 export const WebAppsBackupSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21417,7 +22963,8 @@ export const WebAppsBackupSlotRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(BackupRequestPropertiesInput),
   }).pipe(
     T.Http({
       method: "POST",
@@ -21457,36 +23004,6 @@ export const WebAppsBackupSlotResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsBackupSlotResponse",
 }) as any as S.Schema<WebAppsBackupSlotResponse>;
 
-export interface WebAppsCreateDeploymentRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the app. */
-  name: string;
-  /** Deployment ID. */
-  id: string;
-  body: unknown;
-}
-export const WebAppsCreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    name: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}",
-      code: 200,
-      apiVersion: "2026-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "WebAppsCreateDeploymentRequest",
-}) as any as S.Schema<WebAppsCreateDeploymentRequest>;
-
 /** Deployment resource specific properties */
 export interface DeploymentProperties {
   /** Deployment status. */
@@ -21523,6 +23040,40 @@ export const DeploymentProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeploymentProperties",
 }) as any as S.Schema<DeploymentProperties>;
+
+export interface WebAppsCreateDeploymentRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the app. */
+  name: string;
+  /** Deployment ID. */
+  id: string;
+  /** Deployment resource specific properties */
+  properties?: DeploymentProperties;
+  /** Kind of resource. */
+  kind?: string;
+}
+export const WebAppsCreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    properties: S.optional(DeploymentProperties),
+    kind: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/deployments/{id}",
+      code: 200,
+      apiVersion: "2026-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "WebAppsCreateDeploymentRequest",
+}) as any as S.Schema<WebAppsCreateDeploymentRequest>;
 
 export interface WebAppsCreateDeploymentResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -21562,7 +23113,10 @@ export interface WebAppsCreateDeploymentSlotRequest {
   slot: string;
   /** Deployment ID. */
   id: string;
-  body: unknown;
+  /** Deployment resource specific properties */
+  properties?: DeploymentProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateDeploymentSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21571,7 +23125,8 @@ export const WebAppsCreateDeploymentSlotRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(DeploymentProperties),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -21610,36 +23165,6 @@ export const WebAppsCreateDeploymentSlotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WebAppsCreateDeploymentSlotResponse",
 }) as any as S.Schema<WebAppsCreateDeploymentSlotResponse>;
-
-export interface WebAppsCreateFunctionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Site name. */
-  name: string;
-  /** Function name. */
-  functionName: string;
-  body: unknown;
-}
-export const WebAppsCreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    name: S.String.pipe(T.Label()),
-    functionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
-      code: 200,
-      apiVersion: "2026-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "WebAppsCreateFunctionRequest",
-}) as any as S.Schema<WebAppsCreateFunctionRequest>;
 
 /** File list. */
 export type FunctionEnvelopePropertiesFilesMap = {
@@ -21699,6 +23224,40 @@ export const FunctionEnvelopeProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunctionEnvelopeProperties",
 }) as any as S.Schema<FunctionEnvelopeProperties>;
 
+export interface WebAppsCreateFunctionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Site name. */
+  name: string;
+  /** Function name. */
+  functionName: string;
+  /** FunctionEnvelope resource specific properties */
+  properties?: FunctionEnvelopeProperties;
+  /** Kind of resource. */
+  kind?: string;
+}
+export const WebAppsCreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    functionName: S.String.pipe(T.Label()),
+    properties: S.optional(FunctionEnvelopeProperties),
+    kind: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/functions/{functionName}",
+      code: 200,
+      apiVersion: "2026-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "WebAppsCreateFunctionRequest",
+}) as any as S.Schema<WebAppsCreateFunctionRequest>;
+
 export interface WebAppsCreateFunctionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -21737,7 +23296,10 @@ export interface WebAppsCreateInstanceFunctionSlotRequest {
   slot: string;
   /** Function name. */
   functionName: string;
-  body: unknown;
+  /** FunctionEnvelope resource specific properties */
+  properties?: FunctionEnvelopeProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateInstanceFunctionSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -21747,7 +23309,8 @@ export const WebAppsCreateInstanceFunctionSlotRequest = /*@__PURE__*/ S.suspend(
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       functionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(FunctionEnvelopeProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -21788,6 +23351,93 @@ export const WebAppsCreateInstanceFunctionSlotResponse =
     identifier: "WebAppsCreateInstanceFunctionSlotResponse",
   }) as any as S.Schema<WebAppsCreateInstanceFunctionSlotResponse>;
 
+/** MSDeploy Parameters. Must not be set if SetParametersXmlFileUri is used. */
+export type MSDeployPropertiesSetParametersMap = {
+  [key: string]: string | undefined;
+};
+export const MSDeployPropertiesSetParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MSDeployPropertiesSetParametersMap>;
+
+/** MSDeploy Parameters. Must not be set if SetParametersXmlFileUri is used. */
+export type MSDeployCoreSetParametersMap = {
+  [key: string]: string | undefined;
+};
+export const MSDeployCoreSetParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MSDeployCoreSetParametersMap>;
+
+/** MSDeploy ARM PUT core information */
+export interface MSDeployCore {
+  /** Package URI */
+  packageUri?: string;
+  /** SQL Connection String */
+  connectionString?: string | Redacted.Redacted<string>;
+  /** Database Type */
+  dbType?: string;
+  /** URI of MSDeploy Parameters file. Must not be set if SetParameters is used. */
+  setParametersXmlFileUri?: string;
+  /** MSDeploy Parameters. Must not be set if SetParametersXmlFileUri is used. */
+  setParameters?: MSDeployCoreSetParametersMap;
+  /** Controls whether the MSDeploy operation skips the App_Data directory. If set to <code>true</code>, the existing App_Data directory on the destination will not be deleted, and any App_Data directory in the source will be ignored. Setting is <code>false</code> by default. */
+  skipAppData?: boolean;
+  /** Sets the AppOffline rule while the MSDeploy operation executes. Setting is <code>false</code> by default. */
+  appOffline?: boolean;
+}
+export const MSDeployCore = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packageUri: S.optional(S.String),
+    connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    dbType: S.optional(S.String),
+    setParametersXmlFileUri: S.optional(S.String),
+    setParameters: S.optional(MSDeployCoreSetParametersMap),
+    skipAppData: S.optional(S.Boolean),
+    appOffline: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "MSDeployCore" }) as any as S.Schema<MSDeployCore>;
+
+/** List of Add-On packages. Add-On packages implicitly enable the Do Not Delete MSDeploy rule. */
+export type MSDeployPropertiesAddOnPackagesList = ReadonlyArray<MSDeployCore>;
+export const MSDeployPropertiesAddOnPackagesList = /*@__PURE__*/ S.Array(
+  MSDeployCore,
+) as any as S.Schema<MSDeployPropertiesAddOnPackagesList>;
+
+/** MSDeploy ARM PUT information properties */
+export interface MSDeployProperties {
+  /** Package URI */
+  packageUri?: string;
+  /** SQL Connection String */
+  connectionString?: string | Redacted.Redacted<string>;
+  /** Database Type */
+  dbType?: string;
+  /** URI of MSDeploy Parameters file. Must not be set if SetParameters is used. */
+  setParametersXmlFileUri?: string;
+  /** MSDeploy Parameters. Must not be set if SetParametersXmlFileUri is used. */
+  setParameters?: MSDeployPropertiesSetParametersMap;
+  /** Controls whether the MSDeploy operation skips the App_Data directory. If set to <code>true</code>, the existing App_Data directory on the destination will not be deleted, and any App_Data directory in the source will be ignored. Setting is <code>false</code> by default. */
+  skipAppData?: boolean;
+  /** Sets the AppOffline rule while the MSDeploy operation executes. Setting is <code>false</code> by default. */
+  appOffline?: boolean;
+  /** List of Add-On packages. Add-On packages implicitly enable the Do Not Delete MSDeploy rule. */
+  addOnPackages?: MSDeployPropertiesAddOnPackagesList;
+}
+export const MSDeployProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packageUri: S.optional(S.String),
+    connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    dbType: S.optional(S.String),
+    setParametersXmlFileUri: S.optional(S.String),
+    setParameters: S.optional(MSDeployPropertiesSetParametersMap),
+    skipAppData: S.optional(S.Boolean),
+    appOffline: S.optional(S.Boolean),
+    addOnPackages: S.optional(MSDeployPropertiesAddOnPackagesList),
+  }),
+).annotate({
+  identifier: "MSDeployProperties",
+}) as any as S.Schema<MSDeployProperties>;
+
 export interface WebAppsCreateInstanceMSDeployOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -21797,7 +23447,10 @@ export interface WebAppsCreateInstanceMSDeployOperationRequest {
   name: string;
   /** ID of web app instance. */
   instanceId: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Core resource properties */
+  properties?: MSDeployProperties;
 }
 export const WebAppsCreateInstanceMSDeployOperationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -21806,7 +23459,8 @@ export const WebAppsCreateInstanceMSDeployOperationRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       instanceId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(MSDeployProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -21825,8 +23479,7 @@ export type MSDeployProvisioningState =
   | "running"
   | "succeeded"
   | "failed"
-  | "canceled"
-  | (string & {});
+  | "canceled";
 export const MSDeployProvisioningState = /*@__PURE__*/ S.String;
 
 /** MSDeployStatus resource specific properties */
@@ -21893,7 +23546,10 @@ export interface WebAppsCreateInstanceMSDeployOperationSlotRequest {
   slot: string;
   /** ID of web app instance. */
   instanceId: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Core resource properties */
+  properties?: MSDeployProperties;
 }
 export const WebAppsCreateInstanceMSDeployOperationSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -21903,7 +23559,8 @@ export const WebAppsCreateInstanceMSDeployOperationSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       instanceId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(MSDeployProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -21951,7 +23608,10 @@ export interface WebAppsCreateMSDeployOperationRequest {
   resourceGroupName: string;
   /** Name of web app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Core resource properties */
+  properties?: MSDeployProperties;
 }
 export const WebAppsCreateMSDeployOperationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -21959,7 +23619,8 @@ export const WebAppsCreateMSDeployOperationRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(MSDeployProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22009,7 +23670,10 @@ export interface WebAppsCreateMSDeployOperationSlotRequest {
   name: string;
   /** Name of web app slot. If not specified then will default to production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Core resource properties */
+  properties?: MSDeployProperties;
 }
 export const WebAppsCreateMSDeployOperationSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22018,7 +23682,8 @@ export const WebAppsCreateMSDeployOperationSlotRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(MSDeployProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22092,6 +23757,495 @@ export const WebAppsCreateOneDeployOperationResponse = /*@__PURE__*/ S.suspend(
   identifier: "WebAppsCreateOneDeployOperationResponse",
 }) as any as S.Schema<WebAppsCreateOneDeployOperationResponse>;
 
+/** Resource tags. */
+export type WebAppsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WebAppsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WebAppsCreateOrUpdateRequestTagsMap>;
+
+/** Hostname SSL states are used to manage the SSL bindings for app's hostnames. */
+export type SitePropertiesInputHostNameSslStatesList =
+  ReadonlyArray<HostNameSslState>;
+export const SitePropertiesInputHostNameSslStatesList = /*@__PURE__*/ S.Array(
+  HostNameSslState,
+) as any as S.Schema<SitePropertiesInputHostNameSslStatesList>;
+
+/** List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set. */
+export type SiteDnsConfigInputDnsServersList = ReadonlyArray<string>;
+export const SiteDnsConfigInputDnsServersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SiteDnsConfigInputDnsServersList>;
+
+export interface SiteDnsConfigInput {
+  /** List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set. */
+  dnsServers?: SiteDnsConfigInputDnsServersList;
+  /** Alternate DNS server to be used by apps. This property replicates the WEBSITE_DNS_ALT_SERVER app setting. */
+  dnsAltServer?: string;
+  /** Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3. */
+  dnsRetryAttemptTimeout?: number;
+  /** Total number of retries for dns lookup. Allowed range: 1-5. Default is 3. */
+  dnsRetryAttemptCount?: number;
+  /** Custom time for DNS to be cached in seconds. Allowed range: 0-60. Default is 30 seconds. 0 means caching disabled. */
+  dnsMaxCacheTimeout?: number;
+}
+export const SiteDnsConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dnsServers: S.optional(SiteDnsConfigInputDnsServersList),
+    dnsAltServer: S.optional(S.String),
+    dnsRetryAttemptTimeout: S.optional(S.Number),
+    dnsRetryAttemptCount: S.optional(S.Number),
+    dnsMaxCacheTimeout: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SiteDnsConfigInput",
+}) as any as S.Schema<SiteDnsConfigInput>;
+
+/** Default documents. */
+export type SiteConfigInputDefaultDocumentsList = ReadonlyArray<string>;
+export const SiteConfigInputDefaultDocumentsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SiteConfigInputDefaultDocumentsList>;
+
+/** Application settings. This property is not returned in response to normal create and read requests since it may contain sensitive information. */
+export type SiteConfigInputAppSettingsList = ReadonlyArray<NameValuePair>;
+export const SiteConfigInputAppSettingsList = /*@__PURE__*/ S.Array(
+  NameValuePair,
+) as any as S.Schema<SiteConfigInputAppSettingsList>;
+
+/** Application metadata. This property cannot be retrieved, since it may contain secrets. */
+export type SiteConfigInputMetadataList = ReadonlyArray<NameValuePair>;
+export const SiteConfigInputMetadataList = /*@__PURE__*/ S.Array(
+  NameValuePair,
+) as any as S.Schema<SiteConfigInputMetadataList>;
+
+/** Connection strings. This property is not returned in response to normal create and read requests since it may contain sensitive information. */
+export type SiteConfigInputConnectionStringsList =
+  ReadonlyArray<ConnStringInfo>;
+export const SiteConfigInputConnectionStringsList = /*@__PURE__*/ S.Array(
+  ConnStringInfo,
+) as any as S.Schema<SiteConfigInputConnectionStringsList>;
+
+/** Handler mappings. */
+export type SiteConfigInputHandlerMappingsList = ReadonlyArray<HandlerMapping>;
+export const SiteConfigInputHandlerMappingsList = /*@__PURE__*/ S.Array(
+  HandlerMapping,
+) as any as S.Schema<SiteConfigInputHandlerMappingsList>;
+
+/** Virtual applications. */
+export type SiteConfigInputVirtualApplicationsList =
+  ReadonlyArray<VirtualApplication>;
+export const SiteConfigInputVirtualApplicationsList = /*@__PURE__*/ S.Array(
+  VirtualApplication,
+) as any as S.Schema<SiteConfigInputVirtualApplicationsList>;
+
+/** Push settings for the App. */
+export interface PushSettingsInput {
+  /** Kind of resource. */
+  kind?: string;
+  /** PushSettings resource specific properties */
+  properties?: PushSettingsProperties;
+}
+export const PushSettingsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.optional(S.String),
+    properties: S.optional(PushSettingsProperties),
+  }),
+).annotate({
+  identifier: "PushSettingsInput",
+}) as any as S.Schema<PushSettingsInput>;
+
+/** IP security restrictions for main. */
+export type SiteConfigInputIpSecurityRestrictionsList =
+  ReadonlyArray<IpSecurityRestriction>;
+export const SiteConfigInputIpSecurityRestrictionsList = /*@__PURE__*/ S.Array(
+  IpSecurityRestriction,
+) as any as S.Schema<SiteConfigInputIpSecurityRestrictionsList>;
+
+/** IP security restrictions for scm. */
+export type SiteConfigInputScmIpSecurityRestrictionsList =
+  ReadonlyArray<IpSecurityRestriction>;
+export const SiteConfigInputScmIpSecurityRestrictionsList =
+  /*@__PURE__*/ S.Array(
+    IpSecurityRestriction,
+  ) as any as S.Schema<SiteConfigInputScmIpSecurityRestrictionsList>;
+
+/** List of Azure Storage Accounts. */
+export type SiteConfigInputAzureStorageAccountsMap = {
+  [key: string]: AzureStorageInfoValue | undefined;
+};
+export const SiteConfigInputAzureStorageAccountsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  AzureStorageInfoValue,
+) as any as S.Schema<SiteConfigInputAzureStorageAccountsMap>;
+
+/** Configuration of an App Service app. */
+export interface SiteConfigInput {
+  /** Number of workers. */
+  numberOfWorkers?: number;
+  /** Default documents. */
+  defaultDocuments?: SiteConfigInputDefaultDocumentsList;
+  /** .NET Framework version. */
+  netFrameworkVersion?: string;
+  /** Version of PHP. */
+  phpVersion?: string;
+  /** Version of Python. */
+  pythonVersion?: string;
+  /** Version of Node.js. */
+  nodeVersion?: string;
+  /** Version of PowerShell. */
+  powerShellVersion?: string;
+  /** Linux App Framework and version */
+  linuxFxVersion?: string;
+  /** Xenon App Framework and version */
+  windowsFxVersion?: string;
+  /** <code>true</code> if request tracing is enabled; otherwise, <code>false</code>. */
+  requestTracingEnabled?: boolean;
+  /** Request tracing expiration time. */
+  requestTracingExpirationTime?: string;
+  /** <code>true</code> if remote debugging is enabled; otherwise, <code>false</code>. */
+  remoteDebuggingEnabled?: boolean;
+  /** Remote debugging version. */
+  remoteDebuggingVersion?: string;
+  /** <code>true</code> if HTTP logging is enabled; otherwise, <code>false</code>. */
+  httpLoggingEnabled?: boolean;
+  /** Flag to use Managed Identity Creds for ACR pull */
+  acrUseManagedIdentityCreds?: boolean;
+  /** If using user managed identity, the user managed identity ClientId */
+  acrUserManagedIdentityID?: string;
+  /** HTTP logs directory size limit. */
+  logsDirectorySizeLimit?: number;
+  /** <code>true</code> if detailed error logging is enabled; otherwise, <code>false</code>. */
+  detailedErrorLoggingEnabled?: boolean;
+  /** Publishing user name. */
+  publishingUsername?: string;
+  /** Application settings. This property is not returned in response to normal create and read requests since it may contain sensitive information. */
+  appSettings?: SiteConfigInputAppSettingsList;
+  /** Application metadata. This property cannot be retrieved, since it may contain secrets. */
+  metadata?: SiteConfigInputMetadataList;
+  /** Connection strings. This property is not returned in response to normal create and read requests since it may contain sensitive information. */
+  connectionStrings?: SiteConfigInputConnectionStringsList;
+  /** Handler mappings. */
+  handlerMappings?: SiteConfigInputHandlerMappingsList;
+  /** Document root. */
+  documentRoot?: string;
+  /** SCM type. */
+  scmType?: ScmType;
+  /** <code>true</code> to use 32-bit worker process; otherwise, <code>false</code>. */
+  use32BitWorkerProcess?: boolean;
+  /** <code>true</code> if WebSocket is enabled; otherwise, <code>false</code>. */
+  webSocketsEnabled?: boolean;
+  /** <code>true</code> if Always On is enabled; otherwise, <code>false</code>. */
+  alwaysOn?: boolean;
+  /** Java version. */
+  javaVersion?: string;
+  /** Java container. */
+  javaContainer?: string;
+  /** Java container version. */
+  javaContainerVersion?: string;
+  /** App command line to launch. */
+  appCommandLine?: string;
+  /** Managed pipeline mode. */
+  managedPipelineMode?: ManagedPipelineMode;
+  /** Virtual applications. */
+  virtualApplications?: SiteConfigInputVirtualApplicationsList;
+  /** Site load balancing. */
+  loadBalancing?: SiteLoadBalancing;
+  /** This is work around for polymorphic types. */
+  experiments?: Experiments;
+  /** Site limits. */
+  limits?: SiteLimits;
+  /** <code>true</code> if Auto Heal is enabled; otherwise, <code>false</code>. */
+  autoHealEnabled?: boolean;
+  /** Auto Heal rules. */
+  autoHealRules?: AutoHealRules;
+  /** Tracing options. */
+  tracingOptions?: string;
+  /** Virtual Network name. */
+  vnetName?: string;
+  /** Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied. */
+  vnetRouteAllEnabled?: boolean;
+  /** The number of private ports assigned to this app. These will be assigned dynamically on runtime. */
+  vnetPrivatePortsCount?: number;
+  /** Cross-Origin Resource Sharing (CORS) settings. */
+  cors?: CorsSettings;
+  /** Push endpoint settings. */
+  push?: PushSettingsInput;
+  /** Information about the formal API definition for the app. */
+  apiDefinition?: ApiDefinitionInfo;
+  /** Azure API management settings linked to the app. */
+  apiManagementConfig?: ApiManagementConfig;
+  /** Auto-swap slot name. */
+  autoSwapSlotName?: string;
+  /** <code>true</code> to enable local MySQL; otherwise, <code>false</code>. */
+  localMySqlEnabled?: boolean;
+  /** Managed Service Identity Id */
+  managedServiceIdentityId?: number;
+  /** Explicit Managed Service Identity Id */
+  xManagedServiceIdentityId?: number;
+  /** Identity to use for Key Vault Reference authentication. */
+  keyVaultReferenceIdentity?: string;
+  /** IP security restrictions for main. */
+  ipSecurityRestrictions?: SiteConfigInputIpSecurityRestrictionsList;
+  /** Default action for main access restriction if no rules are matched. */
+  ipSecurityRestrictionsDefaultAction?: DefaultAction;
+  /** IP security restrictions for scm. */
+  scmIpSecurityRestrictions?: SiteConfigInputScmIpSecurityRestrictionsList;
+  /** Default action for scm access restriction if no rules are matched. */
+  scmIpSecurityRestrictionsDefaultAction?: DefaultAction;
+  /** IP security restrictions for scm to use main. */
+  scmIpSecurityRestrictionsUseMain?: boolean;
+  /** Http20Enabled: configures a web site to allow clients to connect over http2.0 */
+  http20Enabled?: boolean;
+  /** Http20ProxyFlag: Configures a website to allow http2.0 to pass be proxied all the way to the app. 0 = disabled, 1 = pass through all http2 traffic, 2 = pass through gRPC only. */
+  http20ProxyFlag?: number;
+  /** MinTlsVersion: configures the minimum version of TLS required for SSL requests */
+  minTlsVersion?: SupportedTlsVersions;
+  /** The minimum strength TLS cipher suite allowed for an application */
+  minTlsCipherSuite?: TlsCipherSuites;
+  /** ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site */
+  scmMinTlsVersion?: SupportedTlsVersions;
+  /** State of FTP / FTPS service */
+  ftpsState?: FtpsState;
+  /** Number of preWarmed instances. This setting only applies to the Consumption and Elastic Plans */
+  preWarmedInstanceCount?: number;
+  /** Maximum number of workers that a site can scale out to. This setting only applies to the Consumption and Elastic Premium Plans */
+  functionAppScaleLimit?: number;
+  /** Maximum number of workers that a site can scale out to. This setting only applies to apps in plans where ElasticScaleEnabled is <code>true</code> */
+  elasticWebAppScaleLimit?: number;
+  /** Health check path */
+  healthCheckPath?: string;
+  /** Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled, the ScaleController will not monitor event sources directly, but will instead call to the runtime to get scale status. */
+  functionsRuntimeScaleMonitoringEnabled?: boolean;
+  /** Sets the time zone a site uses for generating timestamps. Compatible with Linux and Windows App Service. Setting the WEBSITE_TIME_ZONE app setting takes precedence over this config. For Linux, expects tz database values https://www.iana.org/time-zones (for a quick reference see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For Windows, expects one of the time zones listed under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones */
+  websiteTimeZone?: string;
+  /** Number of minimum instance count for a site This setting only applies to the Elastic Plans */
+  minimumElasticInstanceCount?: number;
+  /** List of Azure Storage Accounts. */
+  azureStorageAccounts?: SiteConfigInputAzureStorageAccountsMap;
+  /** Property to allow or block all public traffic. */
+  publicNetworkAccess?: string;
+}
+export const SiteConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    numberOfWorkers: S.optional(S.Number),
+    defaultDocuments: S.optional(SiteConfigInputDefaultDocumentsList),
+    netFrameworkVersion: S.optional(S.String),
+    phpVersion: S.optional(S.String),
+    pythonVersion: S.optional(S.String),
+    nodeVersion: S.optional(S.String),
+    powerShellVersion: S.optional(S.String),
+    linuxFxVersion: S.optional(S.String),
+    windowsFxVersion: S.optional(S.String),
+    requestTracingEnabled: S.optional(S.Boolean),
+    requestTracingExpirationTime: S.optional(S.String),
+    remoteDebuggingEnabled: S.optional(S.Boolean),
+    remoteDebuggingVersion: S.optional(S.String),
+    httpLoggingEnabled: S.optional(S.Boolean),
+    acrUseManagedIdentityCreds: S.optional(S.Boolean),
+    acrUserManagedIdentityID: S.optional(S.String),
+    logsDirectorySizeLimit: S.optional(S.Number),
+    detailedErrorLoggingEnabled: S.optional(S.Boolean),
+    publishingUsername: S.optional(S.String),
+    appSettings: S.optional(SiteConfigInputAppSettingsList),
+    metadata: S.optional(SiteConfigInputMetadataList),
+    connectionStrings: S.optional(SiteConfigInputConnectionStringsList),
+    handlerMappings: S.optional(SiteConfigInputHandlerMappingsList),
+    documentRoot: S.optional(S.String),
+    scmType: S.optional(ScmType),
+    use32BitWorkerProcess: S.optional(S.Boolean),
+    webSocketsEnabled: S.optional(S.Boolean),
+    alwaysOn: S.optional(S.Boolean),
+    javaVersion: S.optional(S.String),
+    javaContainer: S.optional(S.String),
+    javaContainerVersion: S.optional(S.String),
+    appCommandLine: S.optional(S.String),
+    managedPipelineMode: S.optional(ManagedPipelineMode),
+    virtualApplications: S.optional(SiteConfigInputVirtualApplicationsList),
+    loadBalancing: S.optional(SiteLoadBalancing),
+    experiments: S.optional(Experiments),
+    limits: S.optional(SiteLimits),
+    autoHealEnabled: S.optional(S.Boolean),
+    autoHealRules: S.optional(AutoHealRules),
+    tracingOptions: S.optional(S.String),
+    vnetName: S.optional(S.String),
+    vnetRouteAllEnabled: S.optional(S.Boolean),
+    vnetPrivatePortsCount: S.optional(S.Number),
+    cors: S.optional(CorsSettings),
+    push: S.optional(PushSettingsInput),
+    apiDefinition: S.optional(ApiDefinitionInfo),
+    apiManagementConfig: S.optional(ApiManagementConfig),
+    autoSwapSlotName: S.optional(S.String),
+    localMySqlEnabled: S.optional(S.Boolean),
+    managedServiceIdentityId: S.optional(S.Number),
+    xManagedServiceIdentityId: S.optional(S.Number),
+    keyVaultReferenceIdentity: S.optional(S.String),
+    ipSecurityRestrictions: S.optional(
+      SiteConfigInputIpSecurityRestrictionsList,
+    ),
+    ipSecurityRestrictionsDefaultAction: S.optional(DefaultAction),
+    scmIpSecurityRestrictions: S.optional(
+      SiteConfigInputScmIpSecurityRestrictionsList,
+    ),
+    scmIpSecurityRestrictionsDefaultAction: S.optional(DefaultAction),
+    scmIpSecurityRestrictionsUseMain: S.optional(S.Boolean),
+    http20Enabled: S.optional(S.Boolean),
+    http20ProxyFlag: S.optional(S.Number),
+    minTlsVersion: S.optional(SupportedTlsVersions),
+    minTlsCipherSuite: S.optional(TlsCipherSuites),
+    scmMinTlsVersion: S.optional(SupportedTlsVersions),
+    ftpsState: S.optional(FtpsState),
+    preWarmedInstanceCount: S.optional(S.Number),
+    functionAppScaleLimit: S.optional(S.Number),
+    elasticWebAppScaleLimit: S.optional(S.Number),
+    healthCheckPath: S.optional(S.String),
+    functionsRuntimeScaleMonitoringEnabled: S.optional(S.Boolean),
+    websiteTimeZone: S.optional(S.String),
+    minimumElasticInstanceCount: S.optional(S.Number),
+    azureStorageAccounts: S.optional(SiteConfigInputAzureStorageAccountsMap),
+    publicNetworkAccess: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SiteConfigInput",
+}) as any as S.Schema<SiteConfigInput>;
+
+/** Site resource specific properties */
+export interface SitePropertiesInput {
+  /** <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline). */
+  enabled?: boolean;
+  /** <code>true</code> if site scoped certificates are enabled; otherwise, <code>false</code>. */
+  siteScopedCertificatesEnabled?: boolean;
+  /** Hostname SSL states are used to manage the SSL bindings for app's hostnames. */
+  hostNameSslStates?: SitePropertiesInputHostNameSslStatesList;
+  /** Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}". */
+  serverFarmId?: string;
+  /** <code>true</code> if reserved; otherwise, <code>false</code>. */
+  reserved?: boolean;
+  /** Obsolete: Hyper-V sandbox. */
+  isXenon?: boolean;
+  /** Hyper-V sandbox. */
+  hyperV?: boolean;
+  /** Property to configure various DNS related settings for a site. */
+  dnsConfiguration?: SiteDnsConfigInput;
+  /** Property to configure various outbound traffic routing options over virtual network for a site */
+  outboundVnetRouting?: OutboundVnetRouting;
+  /** Configuration of an App Service app. This property is not returned in response to normal create and read requests since it may contain sensitive information. */
+  siteConfig?: SiteConfigInput;
+  /** Configuration specific of the Azure Function app. */
+  functionAppConfig?: FunctionAppConfig;
+  /** Dapr configuration of the app. */
+  daprConfig?: DaprConfig;
+  /** AI integration configuration for the app. */
+  aiIntegration?: AiIntegration;
+  /** Workload profile name for function app to execute on. */
+  workloadProfileName?: string;
+  /** Function app resource requirements. */
+  resourceConfig?: ResourceConfig;
+  /** <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>. */
+  scmSiteAlsoStopped?: boolean;
+  /** App Service Environment to use for the app. */
+  hostingEnvironmentProfile?: HostingEnvironmentProfileInput;
+  /** <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>. */
+  clientAffinityEnabled?: boolean;
+  /** <code>true</code> to enable client affinity partitioning using CHIPS cookies, this will add the <code>partitioned</code> property to the affinity cookies; <code>false</code> to stop sending partitioned affinity cookies. Default is <code>false</code>. */
+  clientAffinityPartitioningEnabled?: boolean;
+  /** <code>true</code> to override client affinity cookie domain with X-Forwarded-Host request header. <code>false</code> to use default domain. Default is <code>false</code>. */
+  clientAffinityProxyEnabled?: boolean;
+  /** <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>. */
+  clientCertEnabled?: boolean;
+  /** This composes with ClientCertEnabled setting. - ClientCertEnabled: false means ClientCert is ignored. - ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required. - ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted. */
+  clientCertMode?: ClientCertMode;
+  /** client certificate authentication comma-separated exclusion paths */
+  clientCertExclusionPaths?: string;
+  /** Specifies the IP mode of the app. */
+  ipMode?: IPMode;
+  /** Whether to use end to end encryption between the FrontEnd and the Worker */
+  endToEndEncryptionEnabled?: boolean;
+  /** Whether to enable ssh access. */
+  sshEnabled?: boolean;
+  /** <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>. If <code>true</code>, the app is only accessible via API management process. */
+  hostNamesDisabled?: boolean;
+  /** Unique identifier that verifies the custom domains assigned to the app. Customer will add this id to a txt record for verification. */
+  customDomainVerificationId?: string;
+  /** Size of the function container. */
+  containerSize?: number;
+  /** Maximum allowed daily memory-time quota (applicable on dynamic apps only). */
+  dailyMemoryTimeQuota?: number;
+  /** If specified during app creation, the app is cloned from a source app. */
+  cloningInfo?: CloningInfo;
+  /** HttpsOnly: configures a web site to accept only https requests. Issues redirect for http requests */
+  httpsOnly?: boolean;
+  /** Site redundancy mode */
+  redundancyMode?: RedundancyMode;
+  /** Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string. */
+  publicNetworkAccess?: string;
+  /** Checks if Customer provided storage account is required */
+  storageAccountRequired?: boolean;
+  /** Identity to use for Key Vault Reference authentication. */
+  keyVaultReferenceIdentity?: string;
+  /** Specifies the scope of uniqueness for the default hostname during resource creation */
+  autoGeneratedDomainNameLabelScope?: AutoGeneratedDomainNameLabelScope;
+  /** Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration. This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName} */
+  virtualNetworkSubnetId?: string;
+  /** Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName} */
+  managedEnvironmentId?: string;
+  /** The platform release channel for the site. Latest receives updates earliest, followed by Standard, then Extended. */
+  platformReleaseChannel?: PlatformReleaseChannel;
+  /** <code>true</code> if the app is in maintenance mode; otherwise, <code>false</code>. Setting this value to true puts the app in maintenance mode, making it return the maintenance custom error page. The maintenance custom error page is required to set the site to maintenance. Default value is <code>false</code>. */
+  maintenanceEnabled?: boolean;
+}
+export const SitePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    siteScopedCertificatesEnabled: S.optional(S.Boolean),
+    hostNameSslStates: S.optional(SitePropertiesInputHostNameSslStatesList),
+    serverFarmId: S.optional(S.String),
+    reserved: S.optional(S.Boolean),
+    isXenon: S.optional(S.Boolean),
+    hyperV: S.optional(S.Boolean),
+    dnsConfiguration: S.optional(SiteDnsConfigInput),
+    outboundVnetRouting: S.optional(OutboundVnetRouting),
+    siteConfig: S.optional(SiteConfigInput),
+    functionAppConfig: S.optional(FunctionAppConfig),
+    daprConfig: S.optional(DaprConfig),
+    aiIntegration: S.optional(AiIntegration),
+    workloadProfileName: S.optional(S.String),
+    resourceConfig: S.optional(ResourceConfig),
+    scmSiteAlsoStopped: S.optional(S.Boolean),
+    hostingEnvironmentProfile: S.optional(HostingEnvironmentProfileInput),
+    clientAffinityEnabled: S.optional(S.Boolean),
+    clientAffinityPartitioningEnabled: S.optional(S.Boolean),
+    clientAffinityProxyEnabled: S.optional(S.Boolean),
+    clientCertEnabled: S.optional(S.Boolean),
+    clientCertMode: S.optional(ClientCertMode),
+    clientCertExclusionPaths: S.optional(S.String),
+    ipMode: S.optional(IPMode),
+    endToEndEncryptionEnabled: S.optional(S.Boolean),
+    sshEnabled: S.optional(S.Boolean),
+    hostNamesDisabled: S.optional(S.Boolean),
+    customDomainVerificationId: S.optional(S.String),
+    containerSize: S.optional(S.Number),
+    dailyMemoryTimeQuota: S.optional(S.Number),
+    cloningInfo: S.optional(CloningInfo),
+    httpsOnly: S.optional(S.Boolean),
+    redundancyMode: S.optional(RedundancyMode),
+    publicNetworkAccess: S.optional(S.String),
+    storageAccountRequired: S.optional(S.Boolean),
+    keyVaultReferenceIdentity: S.optional(S.String),
+    autoGeneratedDomainNameLabelScope: S.optional(
+      AutoGeneratedDomainNameLabelScope,
+    ),
+    virtualNetworkSubnetId: S.optional(S.String),
+    managedEnvironmentId: S.optional(S.String),
+    platformReleaseChannel: S.optional(PlatformReleaseChannel),
+    maintenanceEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SitePropertiesInput",
+}) as any as S.Schema<SitePropertiesInput>;
+
 export interface WebAppsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -22099,14 +24253,30 @@ export interface WebAppsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: WebAppsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Site resource specific properties */
+  properties?: SitePropertiesInput;
+  /** Managed service identity. */
+  identity?: ManagedServiceIdentityInput;
+  /** Extended Location. */
+  extendedLocation?: ExtendedLocationInput;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(WebAppsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(SitePropertiesInput),
+    identity: S.optional(ManagedServiceIdentityInput),
+    extendedLocation: S.optional(ExtendedLocationInput),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -22174,7 +24344,10 @@ export interface WebAppsCreateOrUpdateConfigurationRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: SiteConfigInput;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22182,7 +24355,8 @@ export const WebAppsCreateOrUpdateConfigurationRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SiteConfigInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22232,7 +24406,10 @@ export interface WebAppsCreateOrUpdateConfigurationSlotRequest {
   name: string;
   /** Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot. */
   slot: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: SiteConfigInput;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateConfigurationSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22241,7 +24418,8 @@ export const WebAppsCreateOrUpdateConfigurationSlotRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SiteConfigInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22291,7 +24469,10 @@ export interface WebAppsCreateOrUpdateDomainOwnershipIdentifierRequest {
   name: string;
   /** Name of domain ownership identifier. */
   domainOwnershipIdentifierName: string;
-  body: unknown;
+  /** Identifier resource specific properties */
+  properties?: IdentifierProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateDomainOwnershipIdentifierRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22300,7 +24481,8 @@ export const WebAppsCreateOrUpdateDomainOwnershipIdentifierRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       domainOwnershipIdentifierName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(IdentifierProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22352,7 +24534,10 @@ export interface WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotRequest {
   slot: string;
   /** Name of domain ownership identifier. */
   domainOwnershipIdentifierName: string;
-  body: unknown;
+  /** Identifier resource specific properties */
+  properties?: IdentifierProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22362,7 +24547,8 @@ export const WebAppsCreateOrUpdateDomainOwnershipIdentifierSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       domainOwnershipIdentifierName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(IdentifierProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22411,7 +24597,8 @@ export interface WebAppsCreateOrUpdateFunctionSecretRequest {
   name: string;
   functionName: string;
   keyName: string;
-  body: unknown;
+  /** Key value */
+  value?: string;
 }
 export const WebAppsCreateOrUpdateFunctionSecretRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22421,7 +24608,7 @@ export const WebAppsCreateOrUpdateFunctionSecretRequest =
       name: S.String.pipe(T.Label()),
       functionName: S.String.pipe(T.Label()),
       keyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      value: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22457,7 +24644,8 @@ export interface WebAppsCreateOrUpdateFunctionSecretSlotRequest {
   slot: string;
   functionName: string;
   keyName: string;
-  body: unknown;
+  /** Key value */
+  value?: string;
 }
 export const WebAppsCreateOrUpdateFunctionSecretSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22468,7 +24656,7 @@ export const WebAppsCreateOrUpdateFunctionSecretSlotRequest =
       slot: S.String.pipe(T.Label()),
       functionName: S.String.pipe(T.Label()),
       keyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      value: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22481,6 +24669,52 @@ export const WebAppsCreateOrUpdateFunctionSecretSlotRequest =
     identifier: "WebAppsCreateOrUpdateFunctionSecretSlotRequest",
   }) as any as S.Schema<WebAppsCreateOrUpdateFunctionSecretSlotRequest>;
 
+/** Azure resource type. */
+export type AzureResourceType = "Website" | "TrafficManager";
+export const AzureResourceType = /*@__PURE__*/ S.String;
+
+/** Custom DNS record type. */
+export type CustomHostNameDnsRecordType = "CName" | "A";
+export const CustomHostNameDnsRecordType = /*@__PURE__*/ S.String;
+
+/** Hostname type. */
+export type HostNameType = "Verified" | "Managed";
+export const HostNameType = /*@__PURE__*/ S.String;
+
+/** HostNameBinding resource specific properties */
+export interface HostNameBindingPropertiesInput {
+  /** App Service app name. */
+  siteName?: string;
+  /** Fully qualified ARM domain resource URI. */
+  domainId?: string;
+  /** Azure resource name. */
+  azureResourceName?: string;
+  /** Azure resource type. */
+  azureResourceType?: AzureResourceType;
+  /** Custom DNS record type. */
+  customHostNameDnsRecordType?: CustomHostNameDnsRecordType;
+  /** Hostname type. */
+  hostNameType?: HostNameType;
+  /** SSL type */
+  sslState?: SslState;
+  /** SSL certificate thumbprint */
+  thumbprint?: string;
+}
+export const HostNameBindingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    siteName: S.optional(S.String),
+    domainId: S.optional(S.String),
+    azureResourceName: S.optional(S.String),
+    azureResourceType: S.optional(AzureResourceType),
+    customHostNameDnsRecordType: S.optional(CustomHostNameDnsRecordType),
+    hostNameType: S.optional(HostNameType),
+    sslState: S.optional(SslState),
+    thumbprint: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HostNameBindingPropertiesInput",
+}) as any as S.Schema<HostNameBindingPropertiesInput>;
+
 export interface WebAppsCreateOrUpdateHostNameBindingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -22490,7 +24724,10 @@ export interface WebAppsCreateOrUpdateHostNameBindingRequest {
   name: string;
   /** Hostname in the hostname binding. */
   hostName: string;
-  body: unknown;
+  /** HostNameBinding resource specific properties */
+  properties?: HostNameBindingPropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateHostNameBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22499,7 +24736,8 @@ export const WebAppsCreateOrUpdateHostNameBindingRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       hostName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(HostNameBindingPropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22511,18 +24749,6 @@ export const WebAppsCreateOrUpdateHostNameBindingRequest =
   ).annotate({
     identifier: "WebAppsCreateOrUpdateHostNameBindingRequest",
   }) as any as S.Schema<WebAppsCreateOrUpdateHostNameBindingRequest>;
-
-/** Azure resource type. */
-export type AzureResourceType = "Website" | "TrafficManager" | (string & {});
-export const AzureResourceType = /*@__PURE__*/ S.String;
-
-/** Custom DNS record type. */
-export type CustomHostNameDnsRecordType = "CName" | "A" | (string & {});
-export const CustomHostNameDnsRecordType = /*@__PURE__*/ S.String;
-
-/** Hostname type. */
-export type HostNameType = "Verified" | "Managed" | (string & {});
-export const HostNameType = /*@__PURE__*/ S.String;
 
 /** HostNameBinding resource specific properties */
 export interface HostNameBindingProperties {
@@ -22600,7 +24826,10 @@ export interface WebAppsCreateOrUpdateHostNameBindingSlotRequest {
   slot: string;
   /** Hostname in the hostname binding. */
   hostName: string;
-  body: unknown;
+  /** HostNameBinding resource specific properties */
+  properties?: HostNameBindingPropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateHostNameBindingSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22610,7 +24839,8 @@ export const WebAppsCreateOrUpdateHostNameBindingSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       hostName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(HostNameBindingPropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22662,7 +24892,8 @@ export interface WebAppsCreateOrUpdateHostSecretRequest {
   keyType: string;
   /** The name of the key. */
   keyName: string;
-  body: unknown;
+  /** Key value */
+  value?: string;
 }
 export const WebAppsCreateOrUpdateHostSecretRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -22672,7 +24903,7 @@ export const WebAppsCreateOrUpdateHostSecretRequest = /*@__PURE__*/ S.suspend(
       name: S.String.pipe(T.Label()),
       keyType: S.String.pipe(T.Label()),
       keyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      value: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22698,7 +24929,8 @@ export interface WebAppsCreateOrUpdateHostSecretSlotRequest {
   keyType: string;
   /** The name of the key. */
   keyName: string;
-  body: unknown;
+  /** Key value */
+  value?: string;
 }
 export const WebAppsCreateOrUpdateHostSecretSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22709,7 +24941,7 @@ export const WebAppsCreateOrUpdateHostSecretSlotRequest =
       slot: S.String.pipe(T.Label()),
       keyType: S.String.pipe(T.Label()),
       keyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      value: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22733,7 +24965,10 @@ export interface WebAppsCreateOrUpdateHybridConnectionRequest {
   namespaceName: string;
   /** The relay name for this hybrid connection. */
   relayName: string;
-  body: unknown;
+  /** HybridConnection resource specific properties */
+  properties?: HybridConnectionProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateHybridConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22743,7 +24978,8 @@ export const WebAppsCreateOrUpdateHybridConnectionRequest =
       name: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       relayName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(HybridConnectionProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22797,7 +25033,10 @@ export interface WebAppsCreateOrUpdateHybridConnectionSlotRequest {
   namespaceName: string;
   /** The relay name for this hybrid connection. */
   relayName: string;
-  body: unknown;
+  /** HybridConnection resource specific properties */
+  properties?: HybridConnectionProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateHybridConnectionSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22808,7 +25047,8 @@ export const WebAppsCreateOrUpdateHybridConnectionSlotRequest =
       slot: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       relayName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(HybridConnectionProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22849,6 +25089,29 @@ export const WebAppsCreateOrUpdateHybridConnectionSlotResponse =
     identifier: "WebAppsCreateOrUpdateHybridConnectionSlotResponse",
   }) as any as S.Schema<WebAppsCreateOrUpdateHybridConnectionSlotResponse>;
 
+/** Public Certificate Location */
+export type PublicCertificateLocation =
+  | "CurrentUserMy"
+  | "LocalMachineMy"
+  | "Unknown";
+export const PublicCertificateLocation = /*@__PURE__*/ S.String;
+
+/** PublicCertificate resource specific properties */
+export interface PublicCertificatePropertiesInput {
+  /** Public Certificate byte array */
+  blob?: string;
+  /** Public Certificate Location */
+  publicCertificateLocation?: PublicCertificateLocation;
+}
+export const PublicCertificatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    blob: S.optional(S.String),
+    publicCertificateLocation: S.optional(PublicCertificateLocation),
+  }),
+).annotate({
+  identifier: "PublicCertificatePropertiesInput",
+}) as any as S.Schema<PublicCertificatePropertiesInput>;
+
 export interface WebAppsCreateOrUpdatePublicCertificateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -22858,7 +25121,10 @@ export interface WebAppsCreateOrUpdatePublicCertificateRequest {
   name: string;
   /** Public certificate name. */
   publicCertificateName: string;
-  body: unknown;
+  /** PublicCertificate resource specific properties */
+  properties?: PublicCertificatePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdatePublicCertificateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22867,7 +25133,8 @@ export const WebAppsCreateOrUpdatePublicCertificateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       publicCertificateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PublicCertificatePropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22879,14 +25146,6 @@ export const WebAppsCreateOrUpdatePublicCertificateRequest =
   ).annotate({
     identifier: "WebAppsCreateOrUpdatePublicCertificateRequest",
   }) as any as S.Schema<WebAppsCreateOrUpdatePublicCertificateRequest>;
-
-/** Public Certificate Location */
-export type PublicCertificateLocation =
-  | "CurrentUserMy"
-  | "LocalMachineMy"
-  | "Unknown"
-  | (string & {});
-export const PublicCertificateLocation = /*@__PURE__*/ S.String;
 
 /** PublicCertificate resource specific properties */
 export interface PublicCertificateProperties {
@@ -22946,7 +25205,10 @@ export interface WebAppsCreateOrUpdatePublicCertificateSlotRequest {
   slot: string;
   /** Public certificate name. */
   publicCertificateName: string;
-  body: unknown;
+  /** PublicCertificate resource specific properties */
+  properties?: PublicCertificatePropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdatePublicCertificateSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -22956,7 +25218,8 @@ export const WebAppsCreateOrUpdatePublicCertificateSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       publicCertificateName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PublicCertificatePropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -22997,37 +25260,6 @@ export const WebAppsCreateOrUpdatePublicCertificateSlotResponse =
     identifier: "WebAppsCreateOrUpdatePublicCertificateSlotResponse",
   }) as any as S.Schema<WebAppsCreateOrUpdatePublicCertificateSlotResponse>;
 
-export interface WebAppsCreateOrUpdateRelayServiceConnectionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the app. */
-  name: string;
-  /** Name of the hybrid connection. */
-  entityName: string;
-  body: unknown;
-}
-export const WebAppsCreateOrUpdateRelayServiceConnectionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      entityName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection/{entityName}",
-        code: 200,
-        apiVersion: "2026-07-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "WebAppsCreateOrUpdateRelayServiceConnectionRequest",
-  }) as any as S.Schema<WebAppsCreateOrUpdateRelayServiceConnectionRequest>;
-
 /** RelayServiceConnectionEntity resource specific properties */
 export interface RelayServiceConnectionEntityProperties {
   entityName?: string;
@@ -23052,6 +25284,41 @@ export const RelayServiceConnectionEntityProperties = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "RelayServiceConnectionEntityProperties",
 }) as any as S.Schema<RelayServiceConnectionEntityProperties>;
+
+export interface WebAppsCreateOrUpdateRelayServiceConnectionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the app. */
+  name: string;
+  /** Name of the hybrid connection. */
+  entityName: string;
+  /** RelayServiceConnectionEntity resource specific properties */
+  properties?: RelayServiceConnectionEntityProperties;
+  /** Kind of resource. */
+  kind?: string;
+}
+export const WebAppsCreateOrUpdateRelayServiceConnectionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      name: S.String.pipe(T.Label()),
+      entityName: S.String.pipe(T.Label()),
+      properties: S.optional(RelayServiceConnectionEntityProperties),
+      kind: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/hybridconnection/{entityName}",
+        code: 200,
+        apiVersion: "2026-07-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "WebAppsCreateOrUpdateRelayServiceConnectionRequest",
+  }) as any as S.Schema<WebAppsCreateOrUpdateRelayServiceConnectionRequest>;
 
 export interface WebAppsCreateOrUpdateRelayServiceConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -23092,7 +25359,10 @@ export interface WebAppsCreateOrUpdateRelayServiceConnectionSlotRequest {
   slot: string;
   /** Name of the hybrid connection. */
   entityName: string;
-  body: unknown;
+  /** RelayServiceConnectionEntity resource specific properties */
+  properties?: RelayServiceConnectionEntityProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateRelayServiceConnectionSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -23102,7 +25372,8 @@ export const WebAppsCreateOrUpdateRelayServiceConnectionSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       entityName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RelayServiceConnectionEntityProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -23143,44 +25414,12 @@ export const WebAppsCreateOrUpdateRelayServiceConnectionSlotResponse =
     identifier: "WebAppsCreateOrUpdateRelayServiceConnectionSlotResponse",
   }) as any as S.Schema<WebAppsCreateOrUpdateRelayServiceConnectionSlotResponse>;
 
-export interface WebAppsCreateOrUpdateSiteContainerRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the app. */
-  name: string;
-  /** Site Container Name */
-  containerName: string;
-  body: unknown;
-}
-export const WebAppsCreateOrUpdateSiteContainerRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      containerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers/{containerName}",
-        code: 200,
-        apiVersion: "2026-07-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "WebAppsCreateOrUpdateSiteContainerRequest",
-  }) as any as S.Schema<WebAppsCreateOrUpdateSiteContainerRequest>;
-
 /** Auth Type */
 export type AuthType =
   | "Anonymous"
   | "UserCredentials"
   | "SystemIdentity"
-  | "UserAssigned"
-  | (string & {});
+  | "UserAssigned";
 export const AuthType = /*@__PURE__*/ S.String;
 
 export interface VolumeMount {
@@ -23203,10 +25442,12 @@ export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeMount" }) as any as S.Schema<VolumeMount>;
 
 /** List of volume mounts */
-export type SiteContainerPropertiesVolumeMountsList = VolumeMount[];
-export const SiteContainerPropertiesVolumeMountsList = /*@__PURE__*/ S.Array(
-  VolumeMount,
-) as any as S.Schema<SiteContainerPropertiesVolumeMountsList>;
+export type SiteContainerPropertiesInputVolumeMountsList =
+  ReadonlyArray<VolumeMount>;
+export const SiteContainerPropertiesInputVolumeMountsList =
+  /*@__PURE__*/ S.Array(
+    VolumeMount,
+  ) as any as S.Schema<SiteContainerPropertiesInputVolumeMountsList>;
 
 export interface EnvironmentVariable {
   /** Environment variable name */
@@ -23224,8 +25465,103 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentVariable>;
 
 /** List of environment variables */
+export type SiteContainerPropertiesInputEnvironmentVariablesList =
+  ReadonlyArray<EnvironmentVariable>;
+export const SiteContainerPropertiesInputEnvironmentVariablesList =
+  /*@__PURE__*/ S.Array(
+    EnvironmentVariable,
+  ) as any as S.Schema<SiteContainerPropertiesInputEnvironmentVariablesList>;
+
+/** SiteContainer resource specific properties */
+export interface SiteContainerPropertiesInput {
+  /** Image Name */
+  image: string;
+  /** Target Port */
+  targetPort?: string;
+  /** <code>true</code> if the container is the main site container; <code>false</code> otherwise. */
+  isMain: boolean;
+  /** StartUp Command */
+  startUpCommand?: string;
+  /** Auth Type */
+  authType?: AuthType;
+  /** User Name */
+  userName?: string;
+  /** Password Secret */
+  passwordSecret?: string | Redacted.Redacted<string>;
+  /** UserManagedIdentity ClientId */
+  userManagedIdentityClientId?: string;
+  /** List of volume mounts */
+  volumeMounts?: SiteContainerPropertiesInputVolumeMountsList;
+  /** <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise. */
+  inheritAppSettingsAndConnectionStrings?: boolean;
+  /** List of environment variables */
+  environmentVariables?: SiteContainerPropertiesInputEnvironmentVariablesList;
+}
+export const SiteContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    image: S.String,
+    targetPort: S.optional(S.String),
+    isMain: S.Boolean,
+    startUpCommand: S.optional(S.String),
+    authType: S.optional(AuthType),
+    userName: S.optional(S.String),
+    passwordSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    userManagedIdentityClientId: S.optional(S.String),
+    volumeMounts: S.optional(SiteContainerPropertiesInputVolumeMountsList),
+    inheritAppSettingsAndConnectionStrings: S.optional(S.Boolean),
+    environmentVariables: S.optional(
+      SiteContainerPropertiesInputEnvironmentVariablesList,
+    ),
+  }),
+).annotate({
+  identifier: "SiteContainerPropertiesInput",
+}) as any as S.Schema<SiteContainerPropertiesInput>;
+
+export interface WebAppsCreateOrUpdateSiteContainerRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the app. */
+  name: string;
+  /** Site Container Name */
+  containerName: string;
+  /** SiteContainer resource specific properties */
+  properties?: SiteContainerPropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
+}
+export const WebAppsCreateOrUpdateSiteContainerRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      name: S.String.pipe(T.Label()),
+      containerName: S.String.pipe(T.Label()),
+      properties: S.optional(SiteContainerPropertiesInput),
+      kind: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sitecontainers/{containerName}",
+        code: 200,
+        apiVersion: "2026-07-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "WebAppsCreateOrUpdateSiteContainerRequest",
+  }) as any as S.Schema<WebAppsCreateOrUpdateSiteContainerRequest>;
+
+/** List of volume mounts */
+export type SiteContainerPropertiesVolumeMountsList =
+  ReadonlyArray<VolumeMount>;
+export const SiteContainerPropertiesVolumeMountsList = /*@__PURE__*/ S.Array(
+  VolumeMount,
+) as any as S.Schema<SiteContainerPropertiesVolumeMountsList>;
+
+/** List of environment variables */
 export type SiteContainerPropertiesEnvironmentVariablesList =
-  EnvironmentVariable[];
+  ReadonlyArray<EnvironmentVariable>;
 export const SiteContainerPropertiesEnvironmentVariablesList =
   /*@__PURE__*/ S.Array(
     EnvironmentVariable,
@@ -23321,7 +25657,10 @@ export interface WebAppsCreateOrUpdateSiteContainerSlotRequest {
   slot: string;
   /** Site Container Name */
   containerName: string;
-  body: unknown;
+  /** SiteContainer resource specific properties */
+  properties?: SiteContainerPropertiesInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateSiteContainerSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -23331,7 +25670,8 @@ export const WebAppsCreateOrUpdateSiteContainerSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       containerName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SiteContainerPropertiesInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -23372,6 +25712,15 @@ export const WebAppsCreateOrUpdateSiteContainerSlotResponse =
     identifier: "WebAppsCreateOrUpdateSiteContainerSlotResponse",
   }) as any as S.Schema<WebAppsCreateOrUpdateSiteContainerSlotResponse>;
 
+/** Resource tags. */
+export type WebAppsCreateOrUpdateSlotRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WebAppsCreateOrUpdateSlotRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WebAppsCreateOrUpdateSlotRequestTagsMap>;
+
 export interface WebAppsCreateOrUpdateSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -23381,7 +25730,18 @@ export interface WebAppsCreateOrUpdateSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: WebAppsCreateOrUpdateSlotRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Site resource specific properties */
+  properties?: SitePropertiesInput;
+  /** Managed service identity. */
+  identity?: ManagedServiceIdentityInput;
+  /** Extended Location. */
+  extendedLocation?: ExtendedLocationInput;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23389,7 +25749,12 @@ export const WebAppsCreateOrUpdateSlotRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(WebAppsCreateOrUpdateSlotRequestTagsMap),
+    location: S.String,
+    properties: S.optional(SitePropertiesInput),
+    identity: S.optional(ManagedServiceIdentityInput),
+    extendedLocation: S.optional(ExtendedLocationInput),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -23449,34 +25814,6 @@ export const WebAppsCreateOrUpdateSlotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WebAppsCreateOrUpdateSlotResponse",
 }) as any as S.Schema<WebAppsCreateOrUpdateSlotResponse>;
-
-export interface WebAppsCreateOrUpdateSourceControlRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the app. */
-  name: string;
-  body: unknown;
-}
-export const WebAppsCreateOrUpdateSourceControlRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
-        code: 200,
-        apiVersion: "2026-07-15",
-      }),
-    ),
-  ).annotate({
-    identifier: "WebAppsCreateOrUpdateSourceControlRequest",
-  }) as any as S.Schema<WebAppsCreateOrUpdateSourceControlRequest>;
 
 /** The GitHub action code configuration. */
 export interface GitHubActionCodeConfiguration {
@@ -23569,6 +25906,38 @@ export const SiteSourceControlProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "SiteSourceControlProperties",
 }) as any as S.Schema<SiteSourceControlProperties>;
 
+export interface WebAppsCreateOrUpdateSourceControlRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the app. */
+  name: string;
+  /** SiteSourceControl resource specific properties */
+  properties?: SiteSourceControlProperties;
+  /** Kind of resource. */
+  kind?: string;
+}
+export const WebAppsCreateOrUpdateSourceControlRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      name: S.String.pipe(T.Label()),
+      properties: S.optional(SiteSourceControlProperties),
+      kind: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/sourcecontrols/web",
+        code: 200,
+        apiVersion: "2026-07-15",
+      }),
+    ),
+  ).annotate({
+    identifier: "WebAppsCreateOrUpdateSourceControlRequest",
+  }) as any as S.Schema<WebAppsCreateOrUpdateSourceControlRequest>;
+
 export interface WebAppsCreateOrUpdateSourceControlResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -23606,7 +25975,10 @@ export interface WebAppsCreateOrUpdateSourceControlSlotRequest {
   name: string;
   /** Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot. */
   slot: string;
-  body: unknown;
+  /** SiteSourceControl resource specific properties */
+  properties?: SiteSourceControlProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateSourceControlSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -23615,7 +25987,8 @@ export const WebAppsCreateOrUpdateSourceControlSlotRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SiteSourceControlProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -23656,35 +26029,6 @@ export const WebAppsCreateOrUpdateSourceControlSlotResponse =
     identifier: "WebAppsCreateOrUpdateSourceControlSlotResponse",
   }) as any as S.Schema<WebAppsCreateOrUpdateSourceControlSlotResponse>;
 
-export interface WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the app. */
-  name: string;
-  body: unknown;
-}
-export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork",
-        code: 200,
-        apiVersion: "2026-07-15",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckRequest",
-  }) as any as S.Schema<WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckRequest>;
-
 /** SwiftVirtualNetwork resource specific properties */
 export interface SwiftVirtualNetworkProperties {
   /** The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first. */
@@ -23700,6 +26044,39 @@ export const SwiftVirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SwiftVirtualNetworkProperties",
 }) as any as S.Schema<SwiftVirtualNetworkProperties>;
+
+export interface WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the app. */
+  name: string;
+  /** SwiftVirtualNetwork resource specific properties */
+  properties?: SwiftVirtualNetworkProperties;
+  /** Kind of resource. */
+  kind?: string;
+}
+export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      name: S.String.pipe(T.Label()),
+      properties: S.optional(SwiftVirtualNetworkProperties),
+      kind: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/networkConfig/virtualNetwork",
+        code: 200,
+        apiVersion: "2026-07-15",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckRequest",
+  }) as any as S.Schema<WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckRequest>;
 
 export interface WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -23739,7 +26116,10 @@ export interface WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlot
   name: string;
   /** Name of the deployment slot. If a slot is not specified, the API will get a gateway for the production slot's Virtual Network. */
   slot: string;
-  body: unknown;
+  /** SwiftVirtualNetwork resource specific properties */
+  properties?: SwiftVirtualNetworkProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -23748,7 +26128,8 @@ export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotRequ
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SwiftVirtualNetworkProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -23791,6 +26172,26 @@ export const WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotResp
       "WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotResponse",
   }) as any as S.Schema<WebAppsCreateOrUpdateSwiftVirtualNetworkConnectionWithCheckSlotResponse>;
 
+/** Virtual Network information contract. */
+export interface VnetInfoInput {
+  /** The Virtual Network's resource ID. */
+  vnetResourceId?: string;
+  /** A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection. */
+  certBlob?: string;
+  /** DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses. */
+  dnsServers?: string;
+  /** Flag that is used to denote if this is VNET injection */
+  isSwift?: boolean;
+}
+export const VnetInfoInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vnetResourceId: S.optional(S.String),
+    certBlob: S.optional(S.String),
+    dnsServers: S.optional(S.String),
+    isSwift: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "VnetInfoInput" }) as any as S.Schema<VnetInfoInput>;
+
 export interface WebAppsCreateOrUpdateVnetConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -23800,7 +26201,10 @@ export interface WebAppsCreateOrUpdateVnetConnectionRequest {
   name: string;
   /** Name of the virtual network. */
   vnetName: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: VnetInfoInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateVnetConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -23809,7 +26213,8 @@ export const WebAppsCreateOrUpdateVnetConnectionRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       vnetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(VnetInfoInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -23861,7 +26266,10 @@ export interface WebAppsCreateOrUpdateVnetConnectionGatewayRequest {
   vnetName: string;
   /** Name of the gateway. Currently, the only supported string is "primary". */
   gatewayName: string;
-  body: unknown;
+  /** VnetGateway resource specific properties */
+  properties?: VnetGatewayProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateVnetConnectionGatewayRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -23871,7 +26279,8 @@ export const WebAppsCreateOrUpdateVnetConnectionGatewayRequest =
       name: S.String.pipe(T.Label()),
       vnetName: S.String.pipe(T.Label()),
       gatewayName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(VnetGatewayProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -23925,7 +26334,10 @@ export interface WebAppsCreateOrUpdateVnetConnectionGatewaySlotRequest {
   vnetName: string;
   /** Name of the gateway. Currently, the only supported string is "primary". */
   gatewayName: string;
-  body: unknown;
+  /** VnetGateway resource specific properties */
+  properties?: VnetGatewayProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateVnetConnectionGatewaySlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -23936,7 +26348,8 @@ export const WebAppsCreateOrUpdateVnetConnectionGatewaySlotRequest =
       slot: S.String.pipe(T.Label()),
       vnetName: S.String.pipe(T.Label()),
       gatewayName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(VnetGatewayProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -23988,7 +26401,10 @@ export interface WebAppsCreateOrUpdateVnetConnectionSlotRequest {
   slot: string;
   /** Name of the virtual network. */
   vnetName: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: VnetInfoInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsCreateOrUpdateVnetConnectionSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -23998,7 +26414,8 @@ export const WebAppsCreateOrUpdateVnetConnectionSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       vnetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(VnetInfoInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -25741,6 +28158,24 @@ export const WebAppsDeleteVnetConnectionSlotResponse = /*@__PURE__*/ S.suspend(
   identifier: "WebAppsDeleteVnetConnectionSlotResponse",
 }) as any as S.Schema<WebAppsDeleteVnetConnectionSlotResponse>;
 
+/** Files of the app. */
+export type WebAppsDeployWorkflowArtifactsRequestFilesMap = {
+  [key: string]: unknown | undefined;
+};
+export const WebAppsDeployWorkflowArtifactsRequestFilesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<WebAppsDeployWorkflowArtifactsRequestFilesMap>;
+
+/** Files of the app to delete. */
+export type WebAppsDeployWorkflowArtifactsRequestFilesToDeleteList =
+  ReadonlyArray<string>;
+export const WebAppsDeployWorkflowArtifactsRequestFilesToDeleteList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<WebAppsDeployWorkflowArtifactsRequestFilesToDeleteList>;
+
 export interface WebAppsDeployWorkflowArtifactsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -25748,7 +28183,12 @@ export interface WebAppsDeployWorkflowArtifactsRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body?: unknown;
+  /** Application settings of the workflow. */
+  appSettings?: unknown;
+  /** Files of the app. */
+  files?: WebAppsDeployWorkflowArtifactsRequestFilesMap;
+  /** Files of the app to delete. */
+  filesToDelete?: WebAppsDeployWorkflowArtifactsRequestFilesToDeleteList;
 }
 export const WebAppsDeployWorkflowArtifactsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -25756,7 +28196,11 @@ export const WebAppsDeployWorkflowArtifactsRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      appSettings: S.optional(S.Unknown),
+      files: S.optional(WebAppsDeployWorkflowArtifactsRequestFilesMap),
+      filesToDelete: S.optional(
+        WebAppsDeployWorkflowArtifactsRequestFilesToDeleteList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -25776,6 +28220,24 @@ export const WebAppsDeployWorkflowArtifactsResponse = /*@__PURE__*/ S.suspend(
   identifier: "WebAppsDeployWorkflowArtifactsResponse",
 }) as any as S.Schema<WebAppsDeployWorkflowArtifactsResponse>;
 
+/** Files of the app. */
+export type WebAppsDeployWorkflowArtifactsSlotRequestFilesMap = {
+  [key: string]: unknown | undefined;
+};
+export const WebAppsDeployWorkflowArtifactsSlotRequestFilesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<WebAppsDeployWorkflowArtifactsSlotRequestFilesMap>;
+
+/** Files of the app to delete. */
+export type WebAppsDeployWorkflowArtifactsSlotRequestFilesToDeleteList =
+  ReadonlyArray<string>;
+export const WebAppsDeployWorkflowArtifactsSlotRequestFilesToDeleteList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<WebAppsDeployWorkflowArtifactsSlotRequestFilesToDeleteList>;
+
 export interface WebAppsDeployWorkflowArtifactsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -25785,7 +28247,12 @@ export interface WebAppsDeployWorkflowArtifactsSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body?: unknown;
+  /** Application settings of the workflow. */
+  appSettings?: unknown;
+  /** Files of the app. */
+  files?: WebAppsDeployWorkflowArtifactsSlotRequestFilesMap;
+  /** Files of the app to delete. */
+  filesToDelete?: WebAppsDeployWorkflowArtifactsSlotRequestFilesToDeleteList;
 }
 export const WebAppsDeployWorkflowArtifactsSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -25794,7 +28261,11 @@ export const WebAppsDeployWorkflowArtifactsSlotRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      appSettings: S.optional(S.Unknown),
+      files: S.optional(WebAppsDeployWorkflowArtifactsSlotRequestFilesMap),
+      filesToDelete: S.optional(
+        WebAppsDeployWorkflowArtifactsSlotRequestFilesToDeleteList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -25813,35 +28284,9 @@ export const WebAppsDeployWorkflowArtifactsSlotResponse =
     identifier: "WebAppsDeployWorkflowArtifactsSlotResponse",
   }) as any as S.Schema<WebAppsDeployWorkflowArtifactsSlotResponse>;
 
-export interface WebAppsDiscoverBackupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the app. */
-  name: string;
-  body: unknown;
-}
-export const WebAppsDiscoverBackupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/discoverbackup",
-      code: 200,
-      apiVersion: "2026-07-15",
-    }),
-  ),
-).annotate({
-  identifier: "WebAppsDiscoverBackupRequest",
-}) as any as S.Schema<WebAppsDiscoverBackupRequest>;
-
 /** Collection of databases which should be restored. This list has to match the list of databases included in the backup. */
-export type RestoreRequestPropertiesDatabasesList = DatabaseBackupSetting[];
+export type RestoreRequestPropertiesDatabasesList =
+  ReadonlyArray<DatabaseBackupSetting>;
 export const RestoreRequestPropertiesDatabasesList = /*@__PURE__*/ S.Array(
   DatabaseBackupSetting,
 ) as any as S.Schema<RestoreRequestPropertiesDatabasesList>;
@@ -25852,8 +28297,7 @@ export type RestoreRequestPropertiesOperationType =
   | "Clone"
   | "Relocation"
   | "Snapshot"
-  | "CloudFS"
-  | (string & {});
+  | "CloudFS";
 export const RestoreRequestPropertiesOperationType = /*@__PURE__*/ S.String;
 
 /** RestoreRequest resource specific properties */
@@ -25899,6 +28343,37 @@ export const RestoreRequestProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "RestoreRequestProperties",
 }) as any as S.Schema<RestoreRequestProperties>;
 
+export interface WebAppsDiscoverBackupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the app. */
+  name: string;
+  /** Kind of resource. */
+  kind?: string;
+  /** RestoreRequest resource specific properties */
+  properties?: RestoreRequestProperties;
+}
+export const WebAppsDiscoverBackupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    kind: S.optional(S.String),
+    properties: S.optional(RestoreRequestProperties),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/discoverbackup",
+      code: 200,
+      apiVersion: "2026-07-15",
+    }),
+  ),
+).annotate({
+  identifier: "WebAppsDiscoverBackupRequest",
+}) as any as S.Schema<WebAppsDiscoverBackupRequest>;
+
 export interface WebAppsDiscoverBackupResponse {
   /** Resource Id. */
   id?: string;
@@ -25932,7 +28407,10 @@ export interface WebAppsDiscoverBackupSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** RestoreRequest resource specific properties */
+  properties?: RestoreRequestProperties;
 }
 export const WebAppsDiscoverBackupSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -25940,7 +28418,8 @@ export const WebAppsDiscoverBackupSlotRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(RestoreRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -26155,11 +28634,10 @@ export type ResolveStatus =
   | "AccessToKeyVaultDenied"
   | "OtherReasons"
   | "FetchTimedOut"
-  | "UnauthorizedClient"
-  | (string & {});
+  | "UnauthorizedClient";
 export const ResolveStatus = /*@__PURE__*/ S.String;
 
-export type ApiKVReferencePropertiesSource = "KeyVault" | (string & {});
+export type ApiKVReferencePropertiesSource = "KeyVault";
 export const ApiKVReferencePropertiesSource = /*@__PURE__*/ S.String;
 
 /** ApiKVReference resource specific properties */
@@ -26331,7 +28809,7 @@ export const ApiKVReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiKVReference" }) as any as S.Schema<ApiKVReference>;
 
 /** The ApiKVReference items on this page */
-export type ApiKVReferenceCollectionValueList = ApiKVReference[];
+export type ApiKVReferenceCollectionValueList = ReadonlyArray<ApiKVReference>;
 export const ApiKVReferenceCollectionValueList = /*@__PURE__*/ S.Array(
   ApiKVReference,
 ) as any as S.Schema<ApiKVReferenceCollectionValueList>;
@@ -26408,13 +28886,12 @@ export const WebAppsGetAuthSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 /** The action to take when an unauthenticated client attempts to access the app. */
 export type UnauthenticatedClientAction =
   | "RedirectToLoginPage"
-  | "AllowAnonymous"
-  | (string & {});
+  | "AllowAnonymous";
 export const UnauthenticatedClientAction = /*@__PURE__*/ S.String;
 
 /** External URLs that can be redirected to as part of logging in or logging out of the app. Note that the query string part of the URL is ignored. This is an advanced setting typically only needed by Windows Store application backends. Note that URLs within the current domain are always implicitly allowed. */
 export type SiteAuthSettingsPropertiesAllowedExternalRedirectUrlsList =
-  string[];
+  ReadonlyArray<string>;
 export const SiteAuthSettingsPropertiesAllowedExternalRedirectUrlsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26427,40 +28904,44 @@ export type BuiltInAuthenticationProvider =
   | "Google"
   | "MicrosoftAccount"
   | "Twitter"
-  | "Github"
-  | (string & {});
+  | "Github";
 export const BuiltInAuthenticationProvider = /*@__PURE__*/ S.String;
 
 /** Allowed audience values to consider when validating JSON Web Tokens issued by Azure Active Directory. Note that the <code>ClientID</code> value is always considered an allowed audience, regardless of this setting. */
-export type SiteAuthSettingsPropertiesAllowedAudiencesList = string[];
+export type SiteAuthSettingsPropertiesAllowedAudiencesList =
+  ReadonlyArray<string>;
 export const SiteAuthSettingsPropertiesAllowedAudiencesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SiteAuthSettingsPropertiesAllowedAudiencesList>;
 
 /** Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value". */
-export type SiteAuthSettingsPropertiesAdditionalLoginParamsList = string[];
+export type SiteAuthSettingsPropertiesAdditionalLoginParamsList =
+  ReadonlyArray<string>;
 export const SiteAuthSettingsPropertiesAdditionalLoginParamsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SiteAuthSettingsPropertiesAdditionalLoginParamsList>;
 
 /** The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. This setting is optional. If not specified, "openid", "profile", and "email" are used as default scopes. Google Sign-In documentation: https://developers.google.com/identity/sign-in/web/ */
-export type SiteAuthSettingsPropertiesGoogleOAuthScopesList = string[];
+export type SiteAuthSettingsPropertiesGoogleOAuthScopesList =
+  ReadonlyArray<string>;
 export const SiteAuthSettingsPropertiesGoogleOAuthScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SiteAuthSettingsPropertiesGoogleOAuthScopesList>;
 
 /** The OAuth 2.0 scopes that will be requested as part of Facebook Login authentication. This setting is optional. Facebook Login documentation: https://developers.facebook.com/docs/facebook-login */
-export type SiteAuthSettingsPropertiesFacebookOAuthScopesList = string[];
+export type SiteAuthSettingsPropertiesFacebookOAuthScopesList =
+  ReadonlyArray<string>;
 export const SiteAuthSettingsPropertiesFacebookOAuthScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SiteAuthSettingsPropertiesFacebookOAuthScopesList>;
 
 /** The OAuth 2.0 scopes that will be requested as part of GitHub Login authentication. This setting is optional */
-export type SiteAuthSettingsPropertiesGitHubOAuthScopesList = string[];
+export type SiteAuthSettingsPropertiesGitHubOAuthScopesList =
+  ReadonlyArray<string>;
 export const SiteAuthSettingsPropertiesGitHubOAuthScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26468,7 +28949,7 @@ export const SiteAuthSettingsPropertiesGitHubOAuthScopesList =
 
 /** The OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. This setting is optional. If not specified, "wl.basic" is used as the default scope. Microsoft Account Scopes and permissions documentation: https://msdn.microsoft.com/en-us/library/dn631845.aspx */
 export type SiteAuthSettingsPropertiesMicrosoftAccountOAuthScopesList =
-  string[];
+  ReadonlyArray<string>;
 export const SiteAuthSettingsPropertiesMicrosoftAccountOAuthScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26735,12 +29216,11 @@ export type UnauthenticatedClientActionV2 =
   | "RedirectToLoginPage"
   | "AllowAnonymous"
   | "Return401"
-  | "Return403"
-  | (string & {});
+  | "Return403";
 export const UnauthenticatedClientActionV2 = /*@__PURE__*/ S.String;
 
 /** The paths for which unauthenticated flow would not be redirected to the login page. */
-export type GlobalValidationExcludedPathsList = string[];
+export type GlobalValidationExcludedPathsList = ReadonlyArray<string>;
 export const GlobalValidationExcludedPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GlobalValidationExcludedPathsList>;
@@ -26796,7 +29276,8 @@ export const AzureActiveDirectoryRegistration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureActiveDirectoryRegistration>;
 
 /** Login parameters to send to the OpenID Connect authorization endpoint when a user logs in. Each parameter must be in the form "key=value". */
-export type AzureActiveDirectoryLoginLoginParametersList = string[];
+export type AzureActiveDirectoryLoginLoginParametersList =
+  ReadonlyArray<string>;
 export const AzureActiveDirectoryLoginLoginParametersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26819,13 +29300,13 @@ export const AzureActiveDirectoryLogin = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureActiveDirectoryLogin>;
 
 /** The list of the allowed groups. */
-export type JwtClaimChecksAllowedGroupsList = string[];
+export type JwtClaimChecksAllowedGroupsList = ReadonlyArray<string>;
 export const JwtClaimChecksAllowedGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JwtClaimChecksAllowedGroupsList>;
 
 /** The list of the allowed client applications. */
-export type JwtClaimChecksAllowedClientApplicationsList = string[];
+export type JwtClaimChecksAllowedClientApplicationsList = ReadonlyArray<string>;
 export const JwtClaimChecksAllowedClientApplicationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26848,20 +29329,21 @@ export const JwtClaimChecks = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JwtClaimChecks" }) as any as S.Schema<JwtClaimChecks>;
 
 /** The list of audiences that can make successful authentication/authorization requests. */
-export type AzureActiveDirectoryValidationAllowedAudiencesList = string[];
+export type AzureActiveDirectoryValidationAllowedAudiencesList =
+  ReadonlyArray<string>;
 export const AzureActiveDirectoryValidationAllowedAudiencesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AzureActiveDirectoryValidationAllowedAudiencesList>;
 
 /** The list of the allowed groups. */
-export type AllowedPrincipalsGroupsList = string[];
+export type AllowedPrincipalsGroupsList = ReadonlyArray<string>;
 export const AllowedPrincipalsGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AllowedPrincipalsGroupsList>;
 
 /** The list of the allowed identities. */
-export type AllowedPrincipalsIdentitiesList = string[];
+export type AllowedPrincipalsIdentitiesList = ReadonlyArray<string>;
 export const AllowedPrincipalsIdentitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AllowedPrincipalsIdentitiesList>;
@@ -26883,7 +29365,8 @@ export const AllowedPrincipals = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AllowedPrincipals>;
 
 /** The configuration settings of the Azure Active Directory allowed applications. */
-export type DefaultAuthorizationPolicyAllowedApplicationsList = string[];
+export type DefaultAuthorizationPolicyAllowedApplicationsList =
+  ReadonlyArray<string>;
 export const DefaultAuthorizationPolicyAllowedApplicationsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -26970,7 +29453,7 @@ export const AppRegistration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppRegistration>;
 
 /** A list of the scopes that should be requested while authenticating. */
-export type LoginScopesScopesList = string[];
+export type LoginScopesScopesList = ReadonlyArray<string>;
 export const LoginScopesScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoginScopesScopesList>;
@@ -27040,7 +29523,8 @@ export const GitHub = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GitHub" }) as any as S.Schema<GitHub>;
 
 /** The configuration settings of the allowed list of audiences from which to validate the JWT token. */
-export type AllowedAudiencesValidationAllowedAudiencesList = string[];
+export type AllowedAudiencesValidationAllowedAudiencesList =
+  ReadonlyArray<string>;
 export const AllowedAudiencesValidationAllowedAudiencesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -27196,9 +29680,7 @@ export const AzureStaticWebApps = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureStaticWebApps>;
 
 /** The method that should be used to authenticate the user. */
-export type OpenIdConnectClientCredentialMethod =
-  | "ClientSecretPost"
-  | (string & {});
+export type OpenIdConnectClientCredentialMethod = "ClientSecretPost";
 export const OpenIdConnectClientCredentialMethod = /*@__PURE__*/ S.String;
 
 /** The authentication client credentials of the custom Open ID Connect provider. */
@@ -27262,7 +29744,7 @@ export const OpenIdConnectRegistration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenIdConnectRegistration>;
 
 /** A list of the scopes that should be requested while authenticating. */
-export type OpenIdConnectLoginScopesList = string[];
+export type OpenIdConnectLoginScopesList = ReadonlyArray<string>;
 export const OpenIdConnectLoginScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OpenIdConnectLoginScopesList>;
@@ -27409,7 +29891,7 @@ export const TokenStore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TokenStore" }) as any as S.Schema<TokenStore>;
 
 /** External URLs that can be redirected to as part of logging in or logging out of the app. Note that the query string part of the URL is ignored. This is an advanced setting typically only needed by Windows Store application backends. Note that URLs within the current domain are always implicitly allowed. */
-export type LoginAllowedExternalRedirectUrlsList = string[];
+export type LoginAllowedExternalRedirectUrlsList = ReadonlyArray<string>;
 export const LoginAllowedExternalRedirectUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LoginAllowedExternalRedirectUrlsList>;
@@ -27417,8 +29899,7 @@ export const LoginAllowedExternalRedirectUrlsList = /*@__PURE__*/ S.Array(
 /** The convention used when determining the session cookie's expiration. */
 export type CookieExpirationConvention =
   | "FixedTime"
-  | "IdentityProviderDerived"
-  | (string & {});
+  | "IdentityProviderDerived";
 export const CookieExpirationConvention = /*@__PURE__*/ S.String;
 
 /** The configuration settings of the session cookie's expiration. */
@@ -27493,11 +29974,7 @@ export const HttpSettingsRoutes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpSettingsRoutes>;
 
 /** The convention used to determine the url of the request made. */
-export type ForwardProxyConvention =
-  | "NoProxy"
-  | "Standard"
-  | "Custom"
-  | (string & {});
+export type ForwardProxyConvention = "NoProxy" | "Standard" | "Custom";
 export const ForwardProxyConvention = /*@__PURE__*/ S.String;
 
 /** The configuration settings of a forward proxy used to make the requests. */
@@ -27780,7 +30257,7 @@ export const WebAppsGetBackupConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebAppsGetBackupConfigurationRequest>;
 
 /** The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7) */
-export type BackupScheduleFrequencyUnit = "Day" | "Hour" | (string & {});
+export type BackupScheduleFrequencyUnit = "Day" | "Hour";
 export const BackupScheduleFrequencyUnit = /*@__PURE__*/ S.String;
 
 /** Description of a backup schedule. Describes how often should be the backup performed and what should be the retention policy. */
@@ -27810,7 +30287,8 @@ export const BackupSchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackupSchedule" }) as any as S.Schema<BackupSchedule>;
 
 /** Databases included in the backup. */
-export type BackupRequestPropertiesDatabasesList = DatabaseBackupSetting[];
+export type BackupRequestPropertiesDatabasesList =
+  ReadonlyArray<DatabaseBackupSetting>;
 export const BackupRequestPropertiesDatabasesList = /*@__PURE__*/ S.Array(
   DatabaseBackupSetting,
 ) as any as S.Schema<BackupRequestPropertiesDatabasesList>;
@@ -28358,12 +30836,11 @@ export type ContinuousWebJobStatus =
   | "Starting"
   | "Running"
   | "PendingRestart"
-  | "Stopped"
-  | (string & {});
+  | "Stopped";
 export const ContinuousWebJobStatus = /*@__PURE__*/ S.String;
 
 /** Job type. */
-export type WebJobType = "Continuous" | "Triggered" | (string & {});
+export type WebJobType = "Continuous" | "Triggered";
 export const WebJobType = /*@__PURE__*/ S.String;
 
 /** Job settings. */
@@ -28647,8 +31124,7 @@ export type FileSystemApplicationLogsConfigLevel =
   | "Verbose"
   | "Information"
   | "Warning"
-  | "Error"
-  | (string & {});
+  | "Error";
 export const FileSystemApplicationLogsConfigLevel = /*@__PURE__*/ S.String;
 
 /** Application logs to file system configuration. */
@@ -28665,13 +31141,7 @@ export const FileSystemApplicationLogsConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileSystemApplicationLogsConfig>;
 
 /** Log level. */
-export type LogLevel =
-  | "Off"
-  | "Verbose"
-  | "Information"
-  | "Warning"
-  | "Error"
-  | (string & {});
+export type LogLevel = "Off" | "Verbose" | "Information" | "Warning" | "Error";
 export const LogLevel = /*@__PURE__*/ S.String;
 
 /** Application logs to Azure table storage configuration. */
@@ -29583,10 +32053,10 @@ export const WebAppsGetInstanceInfoRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsGetInstanceInfoRequest",
 }) as any as S.Schema<WebAppsGetInstanceInfoRequest>;
 
-export type SiteRuntimeState = "READY" | "STOPPED" | "UNKNOWN" | (string & {});
+export type SiteRuntimeState = "READY" | "STOPPED" | "UNKNOWN";
 export const SiteRuntimeState = /*@__PURE__*/ S.String;
 
-export type ContainerCpuUsagePerCpuUsageList = number[];
+export type ContainerCpuUsagePerCpuUsageList = ReadonlyArray<number>;
 export const ContainerCpuUsagePerCpuUsageList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ContainerCpuUsagePerCpuUsageList>;
@@ -29857,11 +32327,7 @@ export const WebAppsGetInstanceMSDeployLogRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebAppsGetInstanceMSDeployLogRequest>;
 
 /** Log entry type */
-export type MSDeployLogEntryType =
-  | "Message"
-  | "Warning"
-  | "Error"
-  | (string & {});
+export type MSDeployLogEntryType = "Message" | "Warning" | "Error";
 export const MSDeployLogEntryType = /*@__PURE__*/ S.String;
 
 /** MSDeploy log entry */
@@ -29884,7 +32350,7 @@ export const MSDeployLogEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MSDeployLogEntry>;
 
 /** List of log entry messages */
-export type MSDeployLogPropertiesEntriesList = MSDeployLogEntry[];
+export type MSDeployLogPropertiesEntriesList = ReadonlyArray<MSDeployLogEntry>;
 export const MSDeployLogPropertiesEntriesList = /*@__PURE__*/ S.Array(
   MSDeployLogEntry,
 ) as any as S.Schema<MSDeployLogPropertiesEntriesList>;
@@ -30133,7 +32599,7 @@ export const WebAppsGetInstanceProcessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppsGetInstanceProcessRequest>;
 
 /** Child process list. */
-export type ProcessInfoPropertiesChildrenList = string[];
+export type ProcessInfoPropertiesChildrenList = ReadonlyArray<string>;
 export const ProcessInfoPropertiesChildrenList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProcessInfoPropertiesChildrenList>;
@@ -30210,13 +32676,13 @@ export const ProcessThreadInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProcessThreadInfo>;
 
 /** Thread list. */
-export type ProcessInfoPropertiesThreadsList = ProcessThreadInfo[];
+export type ProcessInfoPropertiesThreadsList = ReadonlyArray<ProcessThreadInfo>;
 export const ProcessInfoPropertiesThreadsList = /*@__PURE__*/ S.Array(
   ProcessThreadInfo,
 ) as any as S.Schema<ProcessInfoPropertiesThreadsList>;
 
 /** List of open files. */
-export type ProcessInfoPropertiesOpenFileHandlesList = string[];
+export type ProcessInfoPropertiesOpenFileHandlesList = ReadonlyArray<string>;
 export const ProcessInfoPropertiesOpenFileHandlesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProcessInfoPropertiesOpenFileHandlesList>;
@@ -30293,7 +32759,7 @@ export const ProcessModuleInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProcessModuleInfo>;
 
 /** List of modules. */
-export type ProcessInfoPropertiesModulesList = ProcessModuleInfo[];
+export type ProcessInfoPropertiesModulesList = ReadonlyArray<ProcessModuleInfo>;
 export const ProcessInfoPropertiesModulesList = /*@__PURE__*/ S.Array(
   ProcessModuleInfo,
 ) as any as S.Schema<ProcessInfoPropertiesModulesList>;
@@ -30775,8 +33241,7 @@ export type WorkflowState =
   | "Enabled"
   | "Disabled"
   | "Deleted"
-  | "Suspended"
-  | (string & {});
+  | "Suspended";
 export const WorkflowState = /*@__PURE__*/ S.String;
 
 /** Gets or sets the workflow health state. */
@@ -30784,8 +33249,7 @@ export type WorkflowHealthState =
   | "NotSpecified"
   | "Healthy"
   | "Unhealthy"
-  | "Unknown"
-  | (string & {});
+  | "Unknown";
 export const WorkflowHealthState = /*@__PURE__*/ S.String;
 
 /** Represents the workflow health. */
@@ -31236,7 +33700,8 @@ export const NetworkTrace = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkTrace" }) as any as S.Schema<NetworkTrace>;
 
-export type WebAppsGetNetworkTraceOperationResponseBodyList = NetworkTrace[];
+export type WebAppsGetNetworkTraceOperationResponseBodyList =
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsGetNetworkTraceOperationResponseBodyList =
   /*@__PURE__*/ S.Array(
     NetworkTrace,
@@ -31284,7 +33749,7 @@ export const WebAppsGetNetworkTraceOperationSlotRequest =
   }) as any as S.Schema<WebAppsGetNetworkTraceOperationSlotRequest>;
 
 export type WebAppsGetNetworkTraceOperationSlotResponseBodyList =
-  NetworkTrace[];
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsGetNetworkTraceOperationSlotResponseBodyList =
   /*@__PURE__*/ S.Array(
     NetworkTrace,
@@ -31334,7 +33799,7 @@ export const WebAppsGetNetworkTraceOperationSlotV2Request =
   }) as any as S.Schema<WebAppsGetNetworkTraceOperationSlotV2Request>;
 
 export type WebAppsGetNetworkTraceOperationSlotV2ResponseBodyList =
-  NetworkTrace[];
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsGetNetworkTraceOperationSlotV2ResponseBodyList =
   /*@__PURE__*/ S.Array(
     NetworkTrace,
@@ -31380,7 +33845,8 @@ export const WebAppsGetNetworkTraceOperationV2Request = /*@__PURE__*/ S.suspend(
   identifier: "WebAppsGetNetworkTraceOperationV2Request",
 }) as any as S.Schema<WebAppsGetNetworkTraceOperationV2Request>;
 
-export type WebAppsGetNetworkTraceOperationV2ResponseBodyList = NetworkTrace[];
+export type WebAppsGetNetworkTraceOperationV2ResponseBodyList =
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsGetNetworkTraceOperationV2ResponseBodyList =
   /*@__PURE__*/ S.Array(
     NetworkTrace,
@@ -31423,7 +33889,8 @@ export const WebAppsGetNetworkTracesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsGetNetworkTracesRequest",
 }) as any as S.Schema<WebAppsGetNetworkTracesRequest>;
 
-export type WebAppsGetNetworkTracesResponseBodyList = NetworkTrace[];
+export type WebAppsGetNetworkTracesResponseBodyList =
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsGetNetworkTracesResponseBodyList = /*@__PURE__*/ S.Array(
   NetworkTrace,
 ) as any as S.Schema<WebAppsGetNetworkTracesResponseBodyList>;
@@ -31467,7 +33934,8 @@ export const WebAppsGetNetworkTracesSlotRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsGetNetworkTracesSlotRequest",
 }) as any as S.Schema<WebAppsGetNetworkTracesSlotRequest>;
 
-export type WebAppsGetNetworkTracesSlotResponseBodyList = NetworkTrace[];
+export type WebAppsGetNetworkTracesSlotResponseBodyList =
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsGetNetworkTracesSlotResponseBodyList =
   /*@__PURE__*/ S.Array(
     NetworkTrace,
@@ -31513,7 +33981,8 @@ export const WebAppsGetNetworkTracesSlotV2Request = /*@__PURE__*/ S.suspend(
   identifier: "WebAppsGetNetworkTracesSlotV2Request",
 }) as any as S.Schema<WebAppsGetNetworkTracesSlotV2Request>;
 
-export type WebAppsGetNetworkTracesSlotV2ResponseBodyList = NetworkTrace[];
+export type WebAppsGetNetworkTracesSlotV2ResponseBodyList =
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsGetNetworkTracesSlotV2ResponseBodyList =
   /*@__PURE__*/ S.Array(
     NetworkTrace,
@@ -31555,7 +34024,8 @@ export const WebAppsGetNetworkTracesV2Request = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsGetNetworkTracesV2Request",
 }) as any as S.Schema<WebAppsGetNetworkTracesV2Request>;
 
-export type WebAppsGetNetworkTracesV2ResponseBodyList = NetworkTrace[];
+export type WebAppsGetNetworkTracesV2ResponseBodyList =
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsGetNetworkTracesV2ResponseBodyList = /*@__PURE__*/ S.Array(
   NetworkTrace,
 ) as any as S.Schema<WebAppsGetNetworkTracesV2ResponseBodyList>;
@@ -31785,7 +34255,8 @@ export const PrivateAccessSubnet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateAccessSubnet>;
 
 /** A List of subnets that access is allowed to on this Virtual Network. An empty array (but not null) is interpreted to mean that all subnets are allowed within this Virtual Network. */
-export type PrivateAccessVirtualNetworkSubnetsList = PrivateAccessSubnet[];
+export type PrivateAccessVirtualNetworkSubnetsList =
+  ReadonlyArray<PrivateAccessSubnet>;
 export const PrivateAccessVirtualNetworkSubnetsList = /*@__PURE__*/ S.Array(
   PrivateAccessSubnet,
 ) as any as S.Schema<PrivateAccessVirtualNetworkSubnetsList>;
@@ -31814,7 +34285,7 @@ export const PrivateAccessVirtualNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** The Virtual Networks (and subnets) allowed to access the site privately. */
 export type PrivateAccessPropertiesVirtualNetworksList =
-  PrivateAccessVirtualNetwork[];
+  ReadonlyArray<PrivateAccessVirtualNetwork>;
 export const PrivateAccessPropertiesVirtualNetworksList = /*@__PURE__*/ S.Array(
   PrivateAccessVirtualNetwork,
 ) as any as S.Schema<PrivateAccessPropertiesVirtualNetworksList>;
@@ -32496,19 +34967,20 @@ export type DeploymentBuildStatus =
   | "StartPolling"
   | "StartPollingWithRestart"
   | "RuntimeStarting"
-  | "RuntimeSuccessful"
-  | (string & {});
+  | "RuntimeSuccessful";
 export const DeploymentBuildStatus = /*@__PURE__*/ S.String;
 
 /** List of URLs pointing to logs for instances which failed to provision. */
-export type CsmDeploymentStatusPropertiesFailedInstancesLogsList = string[];
+export type CsmDeploymentStatusPropertiesFailedInstancesLogsList =
+  ReadonlyArray<string>;
 export const CsmDeploymentStatusPropertiesFailedInstancesLogsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CsmDeploymentStatusPropertiesFailedInstancesLogsList>;
 
 /** List of errors. */
-export type CsmDeploymentStatusPropertiesErrorsList = ErrorEntity[];
+export type CsmDeploymentStatusPropertiesErrorsList =
+  ReadonlyArray<ErrorEntity>;
 export const CsmDeploymentStatusPropertiesErrorsList = /*@__PURE__*/ S.Array(
   ErrorEntity,
 ) as any as S.Schema<CsmDeploymentStatusPropertiesErrorsList>;
@@ -33222,11 +35694,11 @@ export const WebAppsGetSiteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppsGetSiteExtensionRequest>;
 
 /** Site extension type. */
-export type SiteExtensionType = "Gallery" | "WebRoot" | (string & {});
+export type SiteExtensionType = "Gallery" | "WebRoot";
 export const SiteExtensionType = /*@__PURE__*/ S.String;
 
 /** List of authors. */
-export type SiteExtensionInfoPropertiesAuthorsList = string[];
+export type SiteExtensionInfoPropertiesAuthorsList = ReadonlyArray<string>;
 export const SiteExtensionInfoPropertiesAuthorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SiteExtensionInfoPropertiesAuthorsList>;
@@ -33900,8 +36372,7 @@ export type TriggeredWebJobStatus =
   | "Failed"
   | "Error"
   | "Aborted"
-  | "Running"
-  | (string & {});
+  | "Running";
 export const TriggeredWebJobStatus = /*@__PURE__*/ S.String;
 
 /** Triggered Web Job Run Information. */
@@ -34062,7 +36533,8 @@ export const WebAppsGetTriggeredWebJobHistoryRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebAppsGetTriggeredWebJobHistoryRequest>;
 
 /** List of triggered web job runs. */
-export type TriggeredJobHistoryPropertiesRunsList = TriggeredJobRun[];
+export type TriggeredJobHistoryPropertiesRunsList =
+  ReadonlyArray<TriggeredJobRun>;
 export const TriggeredJobHistoryPropertiesRunsList = /*@__PURE__*/ S.Array(
   TriggeredJobRun,
 ) as any as S.Schema<TriggeredJobHistoryPropertiesRunsList>;
@@ -34891,8 +37363,7 @@ export const WebAppsIsCloneableRequest = /*@__PURE__*/ S.suspend(() =>
 export type CloneAbilityResult =
   | "Cloneable"
   | "PartiallyCloneable"
-  | "NotCloneable"
-  | (string & {});
+  | "NotCloneable";
 export const CloneAbilityResult = /*@__PURE__*/ S.String;
 
 /** An app cloneability criterion. */
@@ -34912,21 +37383,22 @@ export const SiteCloneabilityCriterion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SiteCloneabilityCriterion>;
 
 /** List of features enabled on app that prevent cloning. */
-export type SiteCloneabilityBlockingFeaturesList = SiteCloneabilityCriterion[];
+export type SiteCloneabilityBlockingFeaturesList =
+  ReadonlyArray<SiteCloneabilityCriterion>;
 export const SiteCloneabilityBlockingFeaturesList = /*@__PURE__*/ S.Array(
   SiteCloneabilityCriterion,
 ) as any as S.Schema<SiteCloneabilityBlockingFeaturesList>;
 
 /** List of features enabled on app that are non-blocking but cannot be cloned. The app can still be cloned but the features in this list will not be set up on cloned app. */
 export type SiteCloneabilityUnsupportedFeaturesList =
-  SiteCloneabilityCriterion[];
+  ReadonlyArray<SiteCloneabilityCriterion>;
 export const SiteCloneabilityUnsupportedFeaturesList = /*@__PURE__*/ S.Array(
   SiteCloneabilityCriterion,
 ) as any as S.Schema<SiteCloneabilityUnsupportedFeaturesList>;
 
 /** List of blocking application characteristics. */
 export type SiteCloneabilityBlockingCharacteristicsList =
-  SiteCloneabilityCriterion[];
+  ReadonlyArray<SiteCloneabilityCriterion>;
 export const SiteCloneabilityBlockingCharacteristicsList =
   /*@__PURE__*/ S.Array(
     SiteCloneabilityCriterion,
@@ -35313,7 +37785,7 @@ export const BackupItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackupItem" }) as any as S.Schema<BackupItem>;
 
 /** The BackupItem items on this page */
-export type BackupItemCollectionValueList = BackupItem[];
+export type BackupItemCollectionValueList = ReadonlyArray<BackupItem>;
 export const BackupItemCollectionValueList = /*@__PURE__*/ S.Array(
   BackupItem,
 ) as any as S.Schema<BackupItemCollectionValueList>;
@@ -35371,7 +37843,10 @@ export interface WebAppsListBackupStatusSecretsRequest {
   name: string;
   /** ID of the backup. */
   backupId: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** BackupRequest resource specific properties */
+  properties?: BackupRequestPropertiesInput;
 }
 export const WebAppsListBackupStatusSecretsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -35380,7 +37855,8 @@ export const WebAppsListBackupStatusSecretsRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       backupId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(BackupRequestPropertiesInput),
     }).pipe(
       T.Http({
         method: "POST",
@@ -35432,7 +37908,10 @@ export interface WebAppsListBackupStatusSecretsSlotRequest {
   slot: string;
   /** ID of the backup. */
   backupId: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** BackupRequest resource specific properties */
+  properties?: BackupRequestPropertiesInput;
 }
 export const WebAppsListBackupStatusSecretsSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -35442,7 +37921,8 @@ export const WebAppsListBackupStatusSecretsSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       backupId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(BackupRequestPropertiesInput),
     }).pipe(
       T.Http({
         method: "POST",
@@ -35540,7 +38020,7 @@ export const CsmPublishingCredentialsPoliciesEntity = /*@__PURE__*/ S.suspend(
 
 /** The CsmPublishingCredentialsPoliciesEntity items on this page */
 export type PublishingCredentialsPoliciesCollectionValueList =
-  CsmPublishingCredentialsPoliciesEntity[];
+  ReadonlyArray<CsmPublishingCredentialsPoliciesEntity>;
 export const PublishingCredentialsPoliciesCollectionValueList =
   /*@__PURE__*/ S.Array(
     CsmPublishingCredentialsPoliciesEntity,
@@ -35670,7 +38150,8 @@ export const SiteConfigResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SiteConfigResource>;
 
 /** The SiteConfigResource items on this page */
-export type SiteConfigResourceCollectionValueList = SiteConfigResource[];
+export type SiteConfigResourceCollectionValueList =
+  ReadonlyArray<SiteConfigResource>;
 export const SiteConfigResourceCollectionValueList = /*@__PURE__*/ S.Array(
   SiteConfigResource,
 ) as any as S.Schema<SiteConfigResourceCollectionValueList>;
@@ -35761,7 +38242,7 @@ export const SiteConfigurationSnapshotInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The SiteConfigurationSnapshotInfo items on this page */
 export type SiteConfigurationSnapshotInfoCollectionValueList =
-  SiteConfigurationSnapshotInfo[];
+  ReadonlyArray<SiteConfigurationSnapshotInfo>;
 export const SiteConfigurationSnapshotInfoCollectionValueList =
   /*@__PURE__*/ S.Array(
     SiteConfigurationSnapshotInfo,
@@ -36038,7 +38519,8 @@ export const ContinuousWebJob = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContinuousWebJob>;
 
 /** The ContinuousWebJob items on this page */
-export type ContinuousWebJobCollectionValueList = ContinuousWebJob[];
+export type ContinuousWebJobCollectionValueList =
+  ReadonlyArray<ContinuousWebJob>;
 export const ContinuousWebJobCollectionValueList = /*@__PURE__*/ S.Array(
   ContinuousWebJob,
 ) as any as S.Schema<ContinuousWebJobCollectionValueList>;
@@ -36254,7 +38736,7 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Deployment" }) as any as S.Schema<Deployment>;
 
 /** The Deployment items on this page */
-export type DeploymentCollectionValueList = Deployment[];
+export type DeploymentCollectionValueList = ReadonlyArray<Deployment>;
 export const DeploymentCollectionValueList = /*@__PURE__*/ S.Array(
   Deployment,
 ) as any as S.Schema<DeploymentCollectionValueList>;
@@ -36536,7 +39018,8 @@ export const FunctionEnvelope = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionEnvelope>;
 
 /** The FunctionEnvelope items on this page */
-export type FunctionEnvelopeCollectionValueList = FunctionEnvelope[];
+export type FunctionEnvelopeCollectionValueList =
+  ReadonlyArray<FunctionEnvelope>;
 export const FunctionEnvelopeCollectionValueList = /*@__PURE__*/ S.Array(
   FunctionEnvelope,
 ) as any as S.Schema<FunctionEnvelopeCollectionValueList>;
@@ -36771,7 +39254,7 @@ export const HostNameBinding = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostNameBinding>;
 
 /** The HostNameBinding items on this page */
-export type HostNameBindingCollectionValueList = HostNameBinding[];
+export type HostNameBindingCollectionValueList = ReadonlyArray<HostNameBinding>;
 export const HostNameBindingCollectionValueList = /*@__PURE__*/ S.Array(
   HostNameBinding,
 ) as any as S.Schema<HostNameBindingCollectionValueList>;
@@ -37015,7 +39498,8 @@ export const WebSiteInstanceStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebSiteInstanceStatus>;
 
 /** The WebSiteInstanceStatus items on this page */
-export type WebAppInstanceStatusCollectionValueList = WebSiteInstanceStatus[];
+export type WebAppInstanceStatusCollectionValueList =
+  ReadonlyArray<WebSiteInstanceStatus>;
 export const WebAppInstanceStatusCollectionValueList = /*@__PURE__*/ S.Array(
   WebSiteInstanceStatus,
 ) as any as S.Schema<WebAppInstanceStatusCollectionValueList>;
@@ -37120,7 +39604,7 @@ export const ProcessInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProcessInfo" }) as any as S.Schema<ProcessInfo>;
 
 /** The ProcessInfo items on this page */
-export type ProcessInfoCollectionValueList = ProcessInfo[];
+export type ProcessInfoCollectionValueList = ReadonlyArray<ProcessInfo>;
 export const ProcessInfoCollectionValueList = /*@__PURE__*/ S.Array(
   ProcessInfo,
 ) as any as S.Schema<ProcessInfoCollectionValueList>;
@@ -37206,7 +39690,8 @@ export const WebAppsListInstanceProcessModulesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebAppsListInstanceProcessModulesRequest>;
 
 /** The ProcessModuleInfo items on this page */
-export type ProcessModuleInfoCollectionValueList = ProcessModuleInfo[];
+export type ProcessModuleInfoCollectionValueList =
+  ReadonlyArray<ProcessModuleInfo>;
 export const ProcessModuleInfoCollectionValueList = /*@__PURE__*/ S.Array(
   ProcessModuleInfo,
 ) as any as S.Schema<ProcessModuleInfoCollectionValueList>;
@@ -37295,7 +39780,8 @@ export const WebAppsListInstanceProcessThreadsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebAppsListInstanceProcessThreadsRequest>;
 
 /** The ProcessThreadInfo items on this page */
-export type ProcessThreadInfoCollectionValueList = ProcessThreadInfo[];
+export type ProcessThreadInfoCollectionValueList =
+  ReadonlyArray<ProcessThreadInfo>;
 export const ProcessThreadInfoCollectionValueList = /*@__PURE__*/ S.Array(
   ProcessThreadInfo,
 ) as any as S.Schema<ProcessThreadInfoCollectionValueList>;
@@ -37412,7 +39898,8 @@ export const WorkflowEnvelope = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowEnvelope>;
 
 /** The WorkflowEnvelope items on this page */
-export type WorkflowEnvelopeCollectionValueList = WorkflowEnvelope[];
+export type WorkflowEnvelopeCollectionValueList =
+  ReadonlyArray<WorkflowEnvelope>;
 export const WorkflowEnvelopeCollectionValueList = /*@__PURE__*/ S.Array(
   WorkflowEnvelope,
 ) as any as S.Schema<WorkflowEnvelopeCollectionValueList>;
@@ -37611,7 +40098,7 @@ export const RelayServiceConnectionEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** The Hybrid Connections summary view. */
 export type NetworkFeaturesPropertiesHybridConnectionsList =
-  RelayServiceConnectionEntity[];
+  ReadonlyArray<RelayServiceConnectionEntity>;
 export const NetworkFeaturesPropertiesHybridConnectionsList =
   /*@__PURE__*/ S.Array(
     RelayServiceConnectionEntity,
@@ -37619,7 +40106,7 @@ export const NetworkFeaturesPropertiesHybridConnectionsList =
 
 /** The Hybrid Connection V2 (Service Bus) view. */
 export type NetworkFeaturesPropertiesHybridConnectionsV2List =
-  HybridConnection[];
+  ReadonlyArray<HybridConnection>;
 export const NetworkFeaturesPropertiesHybridConnectionsV2List =
   /*@__PURE__*/ S.Array(
     HybridConnection,
@@ -37784,7 +40271,7 @@ export const PerfMonSample = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PerfMonSample" }) as any as S.Schema<PerfMonSample>;
 
 /** Collection of workers that are active during this time. */
-export type PerfMonSetValuesList = PerfMonSample[];
+export type PerfMonSetValuesList = ReadonlyArray<PerfMonSample>;
 export const PerfMonSetValuesList = /*@__PURE__*/ S.Array(
   PerfMonSample,
 ) as any as S.Schema<PerfMonSetValuesList>;
@@ -37832,7 +40319,7 @@ export const PerfMonResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PerfMonResponse>;
 
 /** The PerfMonResponse items on this page */
-export type PerfMonCounterCollectionValueList = PerfMonResponse[];
+export type PerfMonCounterCollectionValueList = ReadonlyArray<PerfMonResponse>;
 export const PerfMonCounterCollectionValueList = /*@__PURE__*/ S.Array(
   PerfMonResponse,
 ) as any as S.Schema<PerfMonCounterCollectionValueList>;
@@ -38252,7 +40739,8 @@ export const CsmDeploymentStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CsmDeploymentStatus>;
 
 /** The CsmDeploymentStatus items on this page */
-export type CsmDeploymentStatusCollectionValueList = CsmDeploymentStatus[];
+export type CsmDeploymentStatusCollectionValueList =
+  ReadonlyArray<CsmDeploymentStatus>;
 export const CsmDeploymentStatusCollectionValueList = /*@__PURE__*/ S.Array(
   CsmDeploymentStatus,
 ) as any as S.Schema<CsmDeploymentStatusCollectionValueList>;
@@ -38328,7 +40816,8 @@ export const PublicCertificate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublicCertificate>;
 
 /** The PublicCertificate items on this page */
-export type PublicCertificateCollectionValueList = PublicCertificate[];
+export type PublicCertificateCollectionValueList =
+  ReadonlyArray<PublicCertificate>;
 export const PublicCertificateCollectionValueList = /*@__PURE__*/ S.Array(
   PublicCertificate,
 ) as any as S.Schema<PublicCertificateCollectionValueList>;
@@ -38489,6 +40978,10 @@ export const WebAppsListPublishingCredentialsSlotResponse =
     identifier: "WebAppsListPublishingCredentialsSlotResponse",
   }) as any as S.Schema<WebAppsListPublishingCredentialsSlotResponse>;
 
+/** Name of the format. Valid values are: FileZilla3 WebDeploy -- default Ftp */
+export type PublishingProfileFormat = "FileZilla3" | "WebDeploy" | "Ftp";
+export const PublishingProfileFormat = /*@__PURE__*/ S.String;
+
 export interface WebAppsListPublishingProfileXmlWithSecretsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -38496,7 +40989,10 @@ export interface WebAppsListPublishingProfileXmlWithSecretsRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Name of the format. Valid values are: FileZilla3 WebDeploy -- default Ftp */
+  format?: PublishingProfileFormat;
+  /** Include the DisasterRecover endpoint if true */
+  includeDisasterRecoveryEndpoints?: boolean;
 }
 export const WebAppsListPublishingProfileXmlWithSecretsRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -38504,7 +41000,8 @@ export const WebAppsListPublishingProfileXmlWithSecretsRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      format: S.optional(PublishingProfileFormat),
+      includeDisasterRecoveryEndpoints: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -38532,7 +41029,10 @@ export interface WebAppsListPublishingProfileXmlWithSecretsSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Name of the format. Valid values are: FileZilla3 WebDeploy -- default Ftp */
+  format?: PublishingProfileFormat;
+  /** Include the DisasterRecover endpoint if true */
+  includeDisasterRecoveryEndpoints?: boolean;
 }
 export const WebAppsListPublishingProfileXmlWithSecretsSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -38541,7 +41041,8 @@ export const WebAppsListPublishingProfileXmlWithSecretsSlotRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      format: S.optional(PublishingProfileFormat),
+      includeDisasterRecoveryEndpoints: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -38776,7 +41277,7 @@ export const SiteContainer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SiteContainer" }) as any as S.Schema<SiteContainer>;
 
 /** The SiteContainer items on this page */
-export type SiteContainerCollectionValueList = SiteContainer[];
+export type SiteContainerCollectionValueList = ReadonlyArray<SiteContainer>;
 export const SiteContainerCollectionValueList = /*@__PURE__*/ S.Array(
   SiteContainer,
 ) as any as S.Schema<SiteContainerCollectionValueList>;
@@ -38880,7 +41381,8 @@ export const SiteExtensionInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SiteExtensionInfo>;
 
 /** The SiteExtensionInfo items on this page */
-export type SiteExtensionInfoCollectionValueList = SiteExtensionInfo[];
+export type SiteExtensionInfoCollectionValueList =
+  ReadonlyArray<SiteExtensionInfo>;
 export const SiteExtensionInfoCollectionValueList = /*@__PURE__*/ S.Array(
   SiteExtensionInfo,
 ) as any as S.Schema<SiteExtensionInfoCollectionValueList>;
@@ -39060,19 +41562,19 @@ export const WebAppsListSlotConfigurationNamesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WebAppsListSlotConfigurationNamesRequest>;
 
 /** List of connection string names. */
-export type SlotConfigNamesConnectionStringNamesList = string[];
+export type SlotConfigNamesConnectionStringNamesList = ReadonlyArray<string>;
 export const SlotConfigNamesConnectionStringNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SlotConfigNamesConnectionStringNamesList>;
 
 /** List of application settings names. */
-export type SlotConfigNamesAppSettingNamesList = string[];
+export type SlotConfigNamesAppSettingNamesList = ReadonlyArray<string>;
 export const SlotConfigNamesAppSettingNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SlotConfigNamesAppSettingNamesList>;
 
 /** List of external Azure storage account identifiers. */
-export type SlotConfigNamesAzureStorageConfigNamesList = string[];
+export type SlotConfigNamesAzureStorageConfigNamesList = ReadonlyArray<string>;
 export const SlotConfigNamesAzureStorageConfigNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SlotConfigNamesAzureStorageConfigNamesList>;
@@ -39133,7 +41635,10 @@ export interface WebAppsListSlotDifferencesFromProductionRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Destination deployment slot during swap operation. */
+  targetSlot: string;
+  /** <code>true</code> to preserve Virtual Network to the slot during swap; otherwise, <code>false</code>. */
+  preserveVnet: boolean;
 }
 export const WebAppsListSlotDifferencesFromProductionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -39141,7 +41646,8 @@ export const WebAppsListSlotDifferencesFromProductionRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      targetSlot: S.String,
+      preserveVnet: S.Boolean,
     }).pipe(
       T.Http({
         method: "POST",
@@ -39209,7 +41715,7 @@ export const SlotDifference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SlotDifference" }) as any as S.Schema<SlotDifference>;
 
 /** The SlotDifference items on this page */
-export type SlotDifferenceCollectionValueList = SlotDifference[];
+export type SlotDifferenceCollectionValueList = ReadonlyArray<SlotDifference>;
 export const SlotDifferenceCollectionValueList = /*@__PURE__*/ S.Array(
   SlotDifference,
 ) as any as S.Schema<SlotDifferenceCollectionValueList>;
@@ -39239,7 +41745,10 @@ export interface WebAppsListSlotDifferencesSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Destination deployment slot during swap operation. */
+  targetSlot: string;
+  /** <code>true</code> to preserve Virtual Network to the slot during swap; otherwise, <code>false</code>. */
+  preserveVnet: boolean;
 }
 export const WebAppsListSlotDifferencesSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -39248,7 +41757,8 @@ export const WebAppsListSlotDifferencesSlotRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      targetSlot: S.String,
+      preserveVnet: S.Boolean,
     }).pipe(
       T.Http({
         method: "POST",
@@ -39341,7 +41851,7 @@ export const WebAppsListSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppsListSnapshotsRequest>;
 
 /** The Snapshot items on this page */
-export type SnapshotCollectionValueList = Snapshot[];
+export type SnapshotCollectionValueList = ReadonlyArray<Snapshot>;
 export const SnapshotCollectionValueList = /*@__PURE__*/ S.Array(
   Snapshot,
 ) as any as S.Schema<SnapshotCollectionValueList>;
@@ -39625,7 +42135,8 @@ export const TriggeredJobHistory = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggeredJobHistory>;
 
 /** The TriggeredJobHistory items on this page */
-export type TriggeredJobHistoryCollectionValueList = TriggeredJobHistory[];
+export type TriggeredJobHistoryCollectionValueList =
+  ReadonlyArray<TriggeredJobHistory>;
 export const TriggeredJobHistoryCollectionValueList = /*@__PURE__*/ S.Array(
   TriggeredJobHistory,
 ) as any as S.Schema<TriggeredJobHistoryCollectionValueList>;
@@ -39732,7 +42243,7 @@ export const TriggeredWebJob = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggeredWebJob>;
 
 /** The TriggeredWebJob items on this page */
-export type TriggeredWebJobCollectionValueList = TriggeredWebJob[];
+export type TriggeredWebJobCollectionValueList = ReadonlyArray<TriggeredWebJob>;
 export const TriggeredWebJobCollectionValueList = /*@__PURE__*/ S.Array(
   TriggeredWebJob,
 ) as any as S.Schema<TriggeredWebJobCollectionValueList>;
@@ -39866,7 +42377,8 @@ export const WebAppsListVnetConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsListVnetConnectionsRequest",
 }) as any as S.Schema<WebAppsListVnetConnectionsRequest>;
 
-export type WebAppsListVnetConnectionsResponseBodyList = VnetInfoResource[];
+export type WebAppsListVnetConnectionsResponseBodyList =
+  ReadonlyArray<VnetInfoResource>;
 export const WebAppsListVnetConnectionsResponseBodyList = /*@__PURE__*/ S.Array(
   VnetInfoResource,
 ) as any as S.Schema<WebAppsListVnetConnectionsResponseBodyList>;
@@ -39908,7 +42420,8 @@ export const WebAppsListVnetConnectionsSlotRequest = /*@__PURE__*/ S.suspend(
   identifier: "WebAppsListVnetConnectionsSlotRequest",
 }) as any as S.Schema<WebAppsListVnetConnectionsSlotRequest>;
 
-export type WebAppsListVnetConnectionsSlotResponseBodyList = VnetInfoResource[];
+export type WebAppsListVnetConnectionsSlotResponseBodyList =
+  ReadonlyArray<VnetInfoResource>;
 export const WebAppsListVnetConnectionsSlotResponseBodyList =
   /*@__PURE__*/ S.Array(
     VnetInfoResource,
@@ -39975,7 +42488,7 @@ export const WebJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebJob" }) as any as S.Schema<WebJob>;
 
 /** The WebJob items on this page */
-export type WebJobCollectionValueList = WebJob[];
+export type WebJobCollectionValueList = ReadonlyArray<WebJob>;
 export const WebJobCollectionValueList = /*@__PURE__*/ S.Array(
   WebJob,
 ) as any as S.Schema<WebJobCollectionValueList>;
@@ -40166,6 +42679,26 @@ export const WebAppsListWorkflowsConnectionsSlotResponse =
     identifier: "WebAppsListWorkflowsConnectionsSlotResponse",
   }) as any as S.Schema<WebAppsListWorkflowsConnectionsSlotResponse>;
 
+/** The type of migration operation to be done */
+export type MySqlMigrationType = "LocalToRemote" | "RemoteToLocal";
+export const MySqlMigrationType = /*@__PURE__*/ S.String;
+
+/** MigrateMySqlRequest resource specific properties */
+export interface MigrateMySqlRequestProperties {
+  /** Connection string to the remote MySQL database. */
+  connectionString: string | Redacted.Redacted<string>;
+  /** The type of migration operation to be done */
+  migrationType: MySqlMigrationType;
+}
+export const MigrateMySqlRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectionString: S.String.pipe(T.SensitiveValue({})),
+    migrationType: MySqlMigrationType,
+  }),
+).annotate({
+  identifier: "MigrateMySqlRequestProperties",
+}) as any as S.Schema<MigrateMySqlRequestProperties>;
+
 export interface WebAppsMigrateMySqlRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -40173,14 +42706,18 @@ export interface WebAppsMigrateMySqlRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** MigrateMySqlRequest resource specific properties */
+  properties?: MigrateMySqlRequestProperties;
 }
 export const WebAppsMigrateMySqlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(MigrateMySqlRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -40193,6 +42730,28 @@ export const WebAppsMigrateMySqlRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsMigrateMySqlRequest",
 }) as any as S.Schema<WebAppsMigrateMySqlRequest>;
 
+/** StorageMigrationOptions resource specific properties */
+export interface StorageMigrationOptionsProperties {
+  /** AzureFiles connection string. */
+  azurefilesConnectionString: string;
+  /** AzureFiles share. */
+  azurefilesShare: string;
+  /** <code>true</code>if the app should be switched over; otherwise, <code>false</code>. */
+  switchSiteAfterMigration?: boolean;
+  /** <code>true</code> if the app should be read only during copy operation; otherwise, <code>false</code>. */
+  blockWriteAccessToSite?: boolean;
+}
+export const StorageMigrationOptionsProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    azurefilesConnectionString: S.String,
+    azurefilesShare: S.String,
+    switchSiteAfterMigration: S.optional(S.Boolean),
+    blockWriteAccessToSite: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "StorageMigrationOptionsProperties",
+}) as any as S.Schema<StorageMigrationOptionsProperties>;
+
 export interface WebAppsMigrateStorageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -40202,7 +42761,10 @@ export interface WebAppsMigrateStorageRequest {
   name: string;
   /** Azure subscription */
   subscriptionName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** StorageMigrationOptions resource specific properties */
+  properties?: StorageMigrationOptionsProperties;
 }
 export const WebAppsMigrateStorageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -40210,7 +42772,8 @@ export const WebAppsMigrateStorageRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     subscriptionName: S.String.pipe(T.Query()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(StorageMigrationOptionsProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -40267,14 +42830,18 @@ export interface WebAppsPutPrivateAccessVnetRequest {
   resourceGroupName: string;
   /** The name of the web app. */
   name: string;
-  body: unknown;
+  /** PrivateAccess resource specific properties */
+  properties?: PrivateAccessProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsPutPrivateAccessVnetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(PrivateAccessProperties),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -40323,7 +42890,10 @@ export interface WebAppsPutPrivateAccessVnetSlotRequest {
   name: string;
   /** The name of the slot for the web app. */
   slot: string;
-  body: unknown;
+  /** PrivateAccess resource specific properties */
+  properties?: PrivateAccessProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsPutPrivateAccessVnetSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -40332,7 +42902,8 @@ export const WebAppsPutPrivateAccessVnetSlotRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(PrivateAccessProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -40602,7 +43173,10 @@ export interface WebAppsRestoreRequest {
   name: string;
   /** ID of the backup. */
   backupId: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** RestoreRequest resource specific properties */
+  properties?: RestoreRequestProperties;
 }
 export const WebAppsRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -40610,7 +43184,8 @@ export const WebAppsRestoreRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     backupId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(RestoreRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -40637,14 +43212,18 @@ export interface WebAppsRestoreFromBackupBlobRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** RestoreRequest resource specific properties */
+  properties?: RestoreRequestProperties;
 }
 export const WebAppsRestoreFromBackupBlobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(RestoreRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -40673,7 +43252,10 @@ export interface WebAppsRestoreFromBackupBlobSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** RestoreRequest resource specific properties */
+  properties?: RestoreRequestProperties;
 }
 export const WebAppsRestoreFromBackupBlobSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -40682,7 +43264,8 @@ export const WebAppsRestoreFromBackupBlobSlotRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(RestoreRequestProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -40702,6 +43285,28 @@ export const WebAppsRestoreFromBackupBlobSlotResponse = /*@__PURE__*/ S.suspend(
   identifier: "WebAppsRestoreFromBackupBlobSlotResponse",
 }) as any as S.Schema<WebAppsRestoreFromBackupBlobSlotResponse>;
 
+/** DeletedAppRestoreRequest resource specific properties */
+export interface DeletedAppRestoreRequestProperties {
+  /** ARM resource ID of the deleted app. Example: /subscriptions/{subId}/providers/Microsoft.Web/deletedSites/{deletedSiteId} */
+  deletedSiteId?: string;
+  /** If true, deleted site configuration, in addition to content, will be restored. */
+  recoverConfiguration?: boolean;
+  /** Point in time to restore the deleted app from, formatted as a DateTime string. If unspecified, default value is the time that the app was deleted. */
+  snapshotTime?: string;
+  /** If true, the snapshot is retrieved from DRSecondary endpoint. */
+  useDRSecondary?: boolean;
+}
+export const DeletedAppRestoreRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deletedSiteId: S.optional(S.String),
+    recoverConfiguration: S.optional(S.Boolean),
+    snapshotTime: S.optional(S.String),
+    useDRSecondary: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DeletedAppRestoreRequestProperties",
+}) as any as S.Schema<DeletedAppRestoreRequestProperties>;
+
 export interface WebAppsRestoreFromDeletedAppRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -40709,14 +43314,18 @@ export interface WebAppsRestoreFromDeletedAppRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** DeletedAppRestoreRequest resource specific properties */
+  properties?: DeletedAppRestoreRequestProperties;
 }
 export const WebAppsRestoreFromDeletedAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(DeletedAppRestoreRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -40745,7 +43354,10 @@ export interface WebAppsRestoreFromDeletedAppSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** DeletedAppRestoreRequest resource specific properties */
+  properties?: DeletedAppRestoreRequestProperties;
 }
 export const WebAppsRestoreFromDeletedAppSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -40754,7 +43366,8 @@ export const WebAppsRestoreFromDeletedAppSlotRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(DeletedAppRestoreRequestProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -40785,7 +43398,10 @@ export interface WebAppsRestoreSlotRequest {
   slot: string;
   /** ID of the backup. */
   backupId: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** RestoreRequest resource specific properties */
+  properties?: RestoreRequestProperties;
 }
 export const WebAppsRestoreSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -40794,7 +43410,8 @@ export const WebAppsRestoreSlotRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
     backupId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(RestoreRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -40814,6 +43431,50 @@ export const WebAppsRestoreSlotResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsRestoreSlotResponse",
 }) as any as S.Schema<WebAppsRestoreSlotResponse>;
 
+/** Specifies the web app that snapshot contents will be retrieved from. */
+export interface SnapshotRecoverySource {
+  /** Geographical location of the source web app, e.g. SouthEastAsia, SouthCentralUS */
+  location?: string;
+  /** ARM resource ID of the source app. /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName} for production slots and /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/slots/{slotName} for other slots. */
+  id?: string;
+}
+export const SnapshotRecoverySource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SnapshotRecoverySource",
+}) as any as S.Schema<SnapshotRecoverySource>;
+
+/** SnapshotRestoreRequest resource specific properties */
+export interface SnapshotRestoreRequestProperties {
+  /** Point in time in which the app restore should be done, formatted as a DateTime string. */
+  snapshotTime?: string;
+  /** Optional. Specifies the web app that snapshot contents will be retrieved from. If empty, the targeted web app will be used as the source. */
+  recoverySource?: SnapshotRecoverySource;
+  /** If <code>true</code> the restore operation can overwrite source app; otherwise, <code>false</code>. */
+  overwrite: boolean;
+  /** If true, site configuration, in addition to content, will be reverted. */
+  recoverConfiguration?: boolean;
+  /** If true, custom hostname conflicts will be ignored when recovering to a target web app. This setting is only necessary when RecoverConfiguration is enabled. */
+  ignoreConflictingHostNames?: boolean;
+  /** If true, the snapshot is retrieved from DRSecondary endpoint. */
+  useDRSecondary?: boolean;
+}
+export const SnapshotRestoreRequestProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    snapshotTime: S.optional(S.String),
+    recoverySource: S.optional(SnapshotRecoverySource),
+    overwrite: S.Boolean,
+    recoverConfiguration: S.optional(S.Boolean),
+    ignoreConflictingHostNames: S.optional(S.Boolean),
+    useDRSecondary: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SnapshotRestoreRequestProperties",
+}) as any as S.Schema<SnapshotRestoreRequestProperties>;
+
 export interface WebAppsRestoreSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -40821,14 +43482,18 @@ export interface WebAppsRestoreSnapshotRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** SnapshotRestoreRequest resource specific properties */
+  properties?: SnapshotRestoreRequestProperties;
 }
 export const WebAppsRestoreSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(SnapshotRestoreRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -40857,7 +43522,10 @@ export interface WebAppsRestoreSnapshotSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** SnapshotRestoreRequest resource specific properties */
+  properties?: SnapshotRestoreRequestProperties;
 }
 export const WebAppsRestoreSnapshotSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -40865,7 +43533,8 @@ export const WebAppsRestoreSnapshotSlotRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(SnapshotRestoreRequestProperties),
   }).pipe(
     T.Http({
       method: "POST",
@@ -41099,7 +43768,8 @@ export const WebAppsStartNetworkTraceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsStartNetworkTraceRequest",
 }) as any as S.Schema<WebAppsStartNetworkTraceRequest>;
 
-export type WebAppsStartNetworkTraceResponseBodyList = NetworkTrace[];
+export type WebAppsStartNetworkTraceResponseBodyList =
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsStartNetworkTraceResponseBodyList = /*@__PURE__*/ S.Array(
   NetworkTrace,
 ) as any as S.Schema<WebAppsStartNetworkTraceResponseBodyList>;
@@ -41149,7 +43819,8 @@ export const WebAppsStartNetworkTraceSlotRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsStartNetworkTraceSlotRequest",
 }) as any as S.Schema<WebAppsStartNetworkTraceSlotRequest>;
 
-export type WebAppsStartNetworkTraceSlotResponseBodyList = NetworkTrace[];
+export type WebAppsStartNetworkTraceSlotResponseBodyList =
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsStartNetworkTraceSlotResponseBodyList =
   /*@__PURE__*/ S.Array(
     NetworkTrace,
@@ -41276,7 +43947,7 @@ export const WebAppsStartWebSiteNetworkTraceOperationRequest =
   }) as any as S.Schema<WebAppsStartWebSiteNetworkTraceOperationRequest>;
 
 export type WebAppsStartWebSiteNetworkTraceOperationResponseBodyList =
-  NetworkTrace[];
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsStartWebSiteNetworkTraceOperationResponseBodyList =
   /*@__PURE__*/ S.Array(
     NetworkTrace,
@@ -41332,7 +44003,7 @@ export const WebAppsStartWebSiteNetworkTraceOperationSlotRequest =
   }) as any as S.Schema<WebAppsStartWebSiteNetworkTraceOperationSlotRequest>;
 
 export type WebAppsStartWebSiteNetworkTraceOperationSlotResponseBodyList =
-  NetworkTrace[];
+  ReadonlyArray<NetworkTrace>;
 export const WebAppsStartWebSiteNetworkTraceOperationSlotResponseBodyList =
   /*@__PURE__*/ S.Array(
     NetworkTrace,
@@ -41678,7 +44349,10 @@ export interface WebAppsSwapSlotSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Destination deployment slot during swap operation. */
+  targetSlot: string;
+  /** <code>true</code> to preserve Virtual Network to the slot during swap; otherwise, <code>false</code>. */
+  preserveVnet: boolean;
 }
 export const WebAppsSwapSlotSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -41686,7 +44360,8 @@ export const WebAppsSwapSlotSlotRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    targetSlot: S.String,
+    preserveVnet: S.Boolean,
   }).pipe(
     T.Http({
       method: "POST",
@@ -41713,7 +44388,10 @@ export interface WebAppsSwapSlotWithProductionRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Destination deployment slot during swap operation. */
+  targetSlot: string;
+  /** <code>true</code> to preserve Virtual Network to the slot during swap; otherwise, <code>false</code>. */
+  preserveVnet: boolean;
 }
 export const WebAppsSwapSlotWithProductionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -41721,7 +44399,8 @@ export const WebAppsSwapSlotWithProductionRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      targetSlot: S.String,
+      preserveVnet: S.Boolean,
     }).pipe(
       T.Http({
         method: "POST",
@@ -41943,6 +44622,110 @@ export const WebAppsSyncRepositorySlotResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsSyncRepositorySlotResponse",
 }) as any as S.Schema<WebAppsSyncRepositorySlotResponse>;
 
+/** Hostname SSL states are used to manage the SSL bindings for app's hostnames. */
+export type SitePatchResourcePropertiesInputHostNameSslStatesList =
+  ReadonlyArray<HostNameSslState>;
+export const SitePatchResourcePropertiesInputHostNameSslStatesList =
+  /*@__PURE__*/ S.Array(
+    HostNameSslState,
+  ) as any as S.Schema<SitePatchResourcePropertiesInputHostNameSslStatesList>;
+
+/** SitePatchResource resource specific properties */
+export interface SitePatchResourcePropertiesInput {
+  /** <code>true</code> if the app is enabled; otherwise, <code>false</code>. Setting this value to false disables the app (takes the app offline). */
+  enabled?: boolean;
+  /** <code>true</code> if site scoped certificates are enabled; otherwise, <code>false</code>. */
+  siteScopedCertificatesEnabled?: boolean;
+  /** Hostname SSL states are used to manage the SSL bindings for app's hostnames. */
+  hostNameSslStates?: SitePatchResourcePropertiesInputHostNameSslStatesList;
+  /** Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}". */
+  serverFarmId?: string;
+  /** <code>true</code> if reserved; otherwise, <code>false</code>. */
+  reserved?: boolean;
+  /** Obsolete: Hyper-V sandbox. */
+  isXenon?: boolean;
+  /** Hyper-V sandbox. */
+  hyperV?: boolean;
+  /** Property to configure various DNS related settings for a site. */
+  dnsConfiguration?: SiteDnsConfigInput;
+  /** Configuration of the app. */
+  siteConfig?: SiteConfigInput;
+  /** AI integration configuration for the app. */
+  aiIntegration?: AiIntegration;
+  /** <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>. */
+  scmSiteAlsoStopped?: boolean;
+  /** App Service Environment to use for the app. */
+  hostingEnvironmentProfile?: HostingEnvironmentProfileInput;
+  /** <code>true</code> to enable client affinity; <code>false</code> to stop sending session affinity cookies, which route client requests in the same session to the same instance. Default is <code>true</code>. */
+  clientAffinityEnabled?: boolean;
+  /** <code>true</code> to override client affinity cookie domain with X-Forwarded-Host request header. <code>false</code> to use default domain. Default is <code>false</code>. */
+  clientAffinityProxyEnabled?: boolean;
+  /** <code>true</code> to enable client certificate authentication (TLS mutual authentication); otherwise, <code>false</code>. Default is <code>false</code>. */
+  clientCertEnabled?: boolean;
+  /** This composes with ClientCertEnabled setting. - ClientCertEnabled: false means ClientCert is ignored. - ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required. - ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted. */
+  clientCertMode?: ClientCertMode;
+  /** client certificate authentication comma-separated exclusion paths */
+  clientCertExclusionPaths?: string;
+  /** <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.\n If <code>true</code>, the app is only accessible via API management process. */
+  hostNamesDisabled?: boolean;
+  /** Unique identifier that verifies the custom domains assigned to the app. Customer will add this id to a txt record for verification. */
+  customDomainVerificationId?: string;
+  /** Size of the function container. */
+  containerSize?: number;
+  /** Maximum allowed daily memory-time quota (applicable on dynamic apps only). */
+  dailyMemoryTimeQuota?: number;
+  /** If specified during app creation, the app is cloned from a source app. */
+  cloningInfo?: CloningInfo;
+  /** HttpsOnly: configures a web site to accept only https requests. Issues redirect for http requests */
+  httpsOnly?: boolean;
+  /** Site redundancy mode */
+  redundancyMode?: RedundancyMode;
+  /** Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled' or an empty string. */
+  publicNetworkAccess?: string;
+  /** Checks if Customer provided storage account is required */
+  storageAccountRequired?: boolean;
+  /** Identity to use for Key Vault Reference authentication. */
+  keyVaultReferenceIdentity?: string;
+  /** Azure Resource Manager ID of the Virtual network and subnet to be joined by Regional VNET Integration. This must be of the form /subscriptions/{subscriptionName}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName} */
+  virtualNetworkSubnetId?: string;
+}
+export const SitePatchResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    siteScopedCertificatesEnabled: S.optional(S.Boolean),
+    hostNameSslStates: S.optional(
+      SitePatchResourcePropertiesInputHostNameSslStatesList,
+    ),
+    serverFarmId: S.optional(S.String),
+    reserved: S.optional(S.Boolean),
+    isXenon: S.optional(S.Boolean),
+    hyperV: S.optional(S.Boolean),
+    dnsConfiguration: S.optional(SiteDnsConfigInput),
+    siteConfig: S.optional(SiteConfigInput),
+    aiIntegration: S.optional(AiIntegration),
+    scmSiteAlsoStopped: S.optional(S.Boolean),
+    hostingEnvironmentProfile: S.optional(HostingEnvironmentProfileInput),
+    clientAffinityEnabled: S.optional(S.Boolean),
+    clientAffinityProxyEnabled: S.optional(S.Boolean),
+    clientCertEnabled: S.optional(S.Boolean),
+    clientCertMode: S.optional(ClientCertMode),
+    clientCertExclusionPaths: S.optional(S.String),
+    hostNamesDisabled: S.optional(S.Boolean),
+    customDomainVerificationId: S.optional(S.String),
+    containerSize: S.optional(S.Number),
+    dailyMemoryTimeQuota: S.optional(S.Number),
+    cloningInfo: S.optional(CloningInfo),
+    httpsOnly: S.optional(S.Boolean),
+    redundancyMode: S.optional(RedundancyMode),
+    publicNetworkAccess: S.optional(S.String),
+    storageAccountRequired: S.optional(S.Boolean),
+    keyVaultReferenceIdentity: S.optional(S.String),
+    virtualNetworkSubnetId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SitePatchResourcePropertiesInput",
+}) as any as S.Schema<SitePatchResourcePropertiesInput>;
+
 export interface WebAppsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -41950,14 +44733,21 @@ export interface WebAppsUpdateRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** SitePatchResource resource specific properties */
+  properties?: SitePatchResourcePropertiesInput;
+  /** Managed service identity. */
+  identity?: ManagedServiceIdentityInput;
 }
 export const WebAppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(SitePatchResourcePropertiesInput),
+    identity: S.optional(ManagedServiceIdentityInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -42018,6 +44808,16 @@ export const WebAppsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsUpdateResponse",
 }) as any as S.Schema<WebAppsUpdateResponse>;
 
+/** Settings. */
+export type WebAppsUpdateApplicationSettingsRequestPropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const WebAppsUpdateApplicationSettingsRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<WebAppsUpdateApplicationSettingsRequestPropertiesMap>;
+
 export interface WebAppsUpdateApplicationSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -42025,7 +44825,10 @@ export interface WebAppsUpdateApplicationSettingsRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Settings. */
+  properties?: WebAppsUpdateApplicationSettingsRequestPropertiesMap;
 }
 export const WebAppsUpdateApplicationSettingsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -42033,7 +44836,10 @@ export const WebAppsUpdateApplicationSettingsRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        WebAppsUpdateApplicationSettingsRequestPropertiesMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42083,6 +44889,16 @@ export const WebAppsUpdateApplicationSettingsResponse = /*@__PURE__*/ S.suspend(
   identifier: "WebAppsUpdateApplicationSettingsResponse",
 }) as any as S.Schema<WebAppsUpdateApplicationSettingsResponse>;
 
+/** Settings. */
+export type WebAppsUpdateApplicationSettingsSlotRequestPropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const WebAppsUpdateApplicationSettingsSlotRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<WebAppsUpdateApplicationSettingsSlotRequestPropertiesMap>;
+
 export interface WebAppsUpdateApplicationSettingsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -42092,7 +44908,10 @@ export interface WebAppsUpdateApplicationSettingsSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Settings. */
+  properties?: WebAppsUpdateApplicationSettingsSlotRequestPropertiesMap;
 }
 export const WebAppsUpdateApplicationSettingsSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -42101,7 +44920,10 @@ export const WebAppsUpdateApplicationSettingsSlotRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        WebAppsUpdateApplicationSettingsSlotRequestPropertiesMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42158,14 +44980,18 @@ export interface WebAppsUpdateAuthSettingsRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** SiteAuthSettings resource specific properties */
+  properties?: SiteAuthSettingsProperties;
 }
 export const WebAppsUpdateAuthSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(SiteAuthSettingsProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -42211,7 +45037,10 @@ export interface WebAppsUpdateAuthSettingsSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** SiteAuthSettings resource specific properties */
+  properties?: SiteAuthSettingsProperties;
 }
 export const WebAppsUpdateAuthSettingsSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -42220,7 +45049,8 @@ export const WebAppsUpdateAuthSettingsSlotRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(SiteAuthSettingsProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42265,14 +45095,18 @@ export interface WebAppsUpdateAuthSettingsV2Request {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** SiteAuthSettingsV2 resource specific properties */
+  properties?: SiteAuthSettingsV2Properties;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const WebAppsUpdateAuthSettingsV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SiteAuthSettingsV2Properties),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -42321,7 +45155,10 @@ export interface WebAppsUpdateAuthSettingsV2SlotRequest {
   name: string;
   /** Name of the deployment slot. If a slot is not specified, the API will get the settings for the production slot. */
   slot: string;
-  body: unknown;
+  /** SiteAuthSettingsV2 resource specific properties */
+  properties?: SiteAuthSettingsV2Properties;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const WebAppsUpdateAuthSettingsV2SlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -42330,7 +45167,8 @@ export const WebAppsUpdateAuthSettingsV2SlotRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SiteAuthSettingsV2Properties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42371,6 +45209,16 @@ export const WebAppsUpdateAuthSettingsV2SlotResponse = /*@__PURE__*/ S.suspend(
   identifier: "WebAppsUpdateAuthSettingsV2SlotResponse",
 }) as any as S.Schema<WebAppsUpdateAuthSettingsV2SlotResponse>;
 
+/** Azure storage accounts. */
+export type WebAppsUpdateAzureStorageAccountsRequestPropertiesMap = {
+  [key: string]: AzureStorageInfoValue | undefined;
+};
+export const WebAppsUpdateAzureStorageAccountsRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    AzureStorageInfoValue,
+  ) as any as S.Schema<WebAppsUpdateAzureStorageAccountsRequestPropertiesMap>;
+
 export interface WebAppsUpdateAzureStorageAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -42378,7 +45226,10 @@ export interface WebAppsUpdateAzureStorageAccountsRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Azure storage accounts. */
+  properties?: WebAppsUpdateAzureStorageAccountsRequestPropertiesMap;
 }
 export const WebAppsUpdateAzureStorageAccountsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -42386,7 +45237,10 @@ export const WebAppsUpdateAzureStorageAccountsRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        WebAppsUpdateAzureStorageAccountsRequestPropertiesMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42436,6 +45290,16 @@ export const WebAppsUpdateAzureStorageAccountsResponse =
     identifier: "WebAppsUpdateAzureStorageAccountsResponse",
   }) as any as S.Schema<WebAppsUpdateAzureStorageAccountsResponse>;
 
+/** Azure storage accounts. */
+export type WebAppsUpdateAzureStorageAccountsSlotRequestPropertiesMap = {
+  [key: string]: AzureStorageInfoValue | undefined;
+};
+export const WebAppsUpdateAzureStorageAccountsSlotRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    AzureStorageInfoValue,
+  ) as any as S.Schema<WebAppsUpdateAzureStorageAccountsSlotRequestPropertiesMap>;
+
 export interface WebAppsUpdateAzureStorageAccountsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -42445,7 +45309,10 @@ export interface WebAppsUpdateAzureStorageAccountsSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Azure storage accounts. */
+  properties?: WebAppsUpdateAzureStorageAccountsSlotRequestPropertiesMap;
 }
 export const WebAppsUpdateAzureStorageAccountsSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -42454,7 +45321,10 @@ export const WebAppsUpdateAzureStorageAccountsSlotRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        WebAppsUpdateAzureStorageAccountsSlotRequestPropertiesMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42511,7 +45381,10 @@ export interface WebAppsUpdateBackupConfigurationRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** BackupRequest resource specific properties */
+  properties?: BackupRequestPropertiesInput;
 }
 export const WebAppsUpdateBackupConfigurationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -42519,7 +45392,8 @@ export const WebAppsUpdateBackupConfigurationRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(BackupRequestPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42566,7 +45440,10 @@ export interface WebAppsUpdateBackupConfigurationSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** BackupRequest resource specific properties */
+  properties?: BackupRequestPropertiesInput;
 }
 export const WebAppsUpdateBackupConfigurationSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -42575,7 +45452,8 @@ export const WebAppsUpdateBackupConfigurationSlotRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(BackupRequestPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42620,14 +45498,18 @@ export interface WebAppsUpdateConfigurationRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: SiteConfigInput;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const WebAppsUpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SiteConfigInput),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -42676,7 +45558,10 @@ export interface WebAppsUpdateConfigurationSlotRequest {
   name: string;
   /** Name of the deployment slot. If a slot is not specified, the API will return configuration for the production slot. */
   slot: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: SiteConfigInput;
+  /** Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind. */
+  kind?: string;
 }
 export const WebAppsUpdateConfigurationSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -42685,7 +45570,8 @@ export const WebAppsUpdateConfigurationSlotRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SiteConfigInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -42726,6 +45612,16 @@ export const WebAppsUpdateConfigurationSlotResponse = /*@__PURE__*/ S.suspend(
   identifier: "WebAppsUpdateConfigurationSlotResponse",
 }) as any as S.Schema<WebAppsUpdateConfigurationSlotResponse>;
 
+/** Connection strings. */
+export type WebAppsUpdateConnectionStringsRequestPropertiesMap = {
+  [key: string]: ConnStringValueTypePair | undefined;
+};
+export const WebAppsUpdateConnectionStringsRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ConnStringValueTypePair,
+  ) as any as S.Schema<WebAppsUpdateConnectionStringsRequestPropertiesMap>;
+
 export interface WebAppsUpdateConnectionStringsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -42733,7 +45629,10 @@ export interface WebAppsUpdateConnectionStringsRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Connection strings. */
+  properties?: WebAppsUpdateConnectionStringsRequestPropertiesMap;
 }
 export const WebAppsUpdateConnectionStringsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -42741,7 +45640,10 @@ export const WebAppsUpdateConnectionStringsRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        WebAppsUpdateConnectionStringsRequestPropertiesMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42791,6 +45693,16 @@ export const WebAppsUpdateConnectionStringsResponse = /*@__PURE__*/ S.suspend(
   identifier: "WebAppsUpdateConnectionStringsResponse",
 }) as any as S.Schema<WebAppsUpdateConnectionStringsResponse>;
 
+/** Connection strings. */
+export type WebAppsUpdateConnectionStringsSlotRequestPropertiesMap = {
+  [key: string]: ConnStringValueTypePair | undefined;
+};
+export const WebAppsUpdateConnectionStringsSlotRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    ConnStringValueTypePair,
+  ) as any as S.Schema<WebAppsUpdateConnectionStringsSlotRequestPropertiesMap>;
+
 export interface WebAppsUpdateConnectionStringsSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -42800,7 +45712,10 @@ export interface WebAppsUpdateConnectionStringsSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Connection strings. */
+  properties?: WebAppsUpdateConnectionStringsSlotRequestPropertiesMap;
 }
 export const WebAppsUpdateConnectionStringsSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -42809,7 +45724,10 @@ export const WebAppsUpdateConnectionStringsSlotRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(
+        WebAppsUpdateConnectionStringsSlotRequestPropertiesMap,
+      ),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42866,7 +45784,10 @@ export interface WebAppsUpdateDiagnosticLogsConfigRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** SiteLogsConfig resource specific properties */
+  properties?: SiteLogsConfigProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateDiagnosticLogsConfigRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -42874,7 +45795,8 @@ export const WebAppsUpdateDiagnosticLogsConfigRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SiteLogsConfigProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42924,7 +45846,10 @@ export interface WebAppsUpdateDiagnosticLogsConfigSlotRequest {
   name: string;
   /** Name of the deployment slot. If a slot is not specified, the API will get the logging configuration for the production slot. */
   slot: string;
-  body: unknown;
+  /** SiteLogsConfig resource specific properties */
+  properties?: SiteLogsConfigProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateDiagnosticLogsConfigSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -42933,7 +45858,8 @@ export const WebAppsUpdateDiagnosticLogsConfigSlotRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SiteLogsConfigProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -42983,7 +45909,10 @@ export interface WebAppsUpdateDomainOwnershipIdentifierRequest {
   name: string;
   /** Name of domain ownership identifier. */
   domainOwnershipIdentifierName: string;
-  body: unknown;
+  /** Identifier resource specific properties */
+  properties?: IdentifierProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateDomainOwnershipIdentifierRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -42992,7 +45921,8 @@ export const WebAppsUpdateDomainOwnershipIdentifierRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       domainOwnershipIdentifierName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(IdentifierProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -43044,7 +45974,10 @@ export interface WebAppsUpdateDomainOwnershipIdentifierSlotRequest {
   slot: string;
   /** Name of domain ownership identifier. */
   domainOwnershipIdentifierName: string;
-  body: unknown;
+  /** Identifier resource specific properties */
+  properties?: IdentifierProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateDomainOwnershipIdentifierSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -43054,7 +45987,8 @@ export const WebAppsUpdateDomainOwnershipIdentifierSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       domainOwnershipIdentifierName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(IdentifierProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -43102,14 +46036,18 @@ export interface WebAppsUpdateFtpAllowedRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** CsmPublishingCredentialsPoliciesEntity resource specific properties */
+  properties?: CsmPublishingCredentialsPoliciesEntityProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateFtpAllowedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -43157,7 +46095,10 @@ export interface WebAppsUpdateFtpAllowedSlotRequest {
   /** Name of the app. */
   name: string;
   slot: string;
-  body: unknown;
+  /** CsmPublishingCredentialsPoliciesEntity resource specific properties */
+  properties?: CsmPublishingCredentialsPoliciesEntityProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateFtpAllowedSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -43165,7 +46106,8 @@ export const WebAppsUpdateFtpAllowedSlotRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -43216,7 +46158,10 @@ export interface WebAppsUpdateHybridConnectionRequest {
   namespaceName: string;
   /** The relay name for this hybrid connection. */
   relayName: string;
-  body: unknown;
+  /** HybridConnection resource specific properties */
+  properties?: HybridConnectionProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateHybridConnectionRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -43226,7 +46171,8 @@ export const WebAppsUpdateHybridConnectionRequest = /*@__PURE__*/ S.suspend(
       name: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       relayName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(HybridConnectionProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -43280,7 +46226,10 @@ export interface WebAppsUpdateHybridConnectionSlotRequest {
   namespaceName: string;
   /** The relay name for this hybrid connection. */
   relayName: string;
-  body: unknown;
+  /** HybridConnection resource specific properties */
+  properties?: HybridConnectionProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateHybridConnectionSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -43291,7 +46240,8 @@ export const WebAppsUpdateHybridConnectionSlotRequest = /*@__PURE__*/ S.suspend(
       slot: S.String.pipe(T.Label()),
       namespaceName: S.String.pipe(T.Label()),
       relayName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(HybridConnectionProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -43364,6 +46314,15 @@ export const WebAppsUpdateMachineKeyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsUpdateMachineKeyResponse",
 }) as any as S.Schema<WebAppsUpdateMachineKeyResponse>;
 
+/** Settings. */
+export type WebAppsUpdateMetadataRequestPropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const WebAppsUpdateMetadataRequestPropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WebAppsUpdateMetadataRequestPropertiesMap>;
+
 export interface WebAppsUpdateMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -43371,14 +46330,18 @@ export interface WebAppsUpdateMetadataRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Settings. */
+  properties?: WebAppsUpdateMetadataRequestPropertiesMap;
 }
 export const WebAppsUpdateMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(WebAppsUpdateMetadataRequestPropertiesMap),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -43425,6 +46388,16 @@ export const WebAppsUpdateMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsUpdateMetadataResponse",
 }) as any as S.Schema<WebAppsUpdateMetadataResponse>;
 
+/** Settings. */
+export type WebAppsUpdateMetadataSlotRequestPropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const WebAppsUpdateMetadataSlotRequestPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<WebAppsUpdateMetadataSlotRequestPropertiesMap>;
+
 export interface WebAppsUpdateMetadataSlotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -43434,7 +46407,10 @@ export interface WebAppsUpdateMetadataSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** Settings. */
+  properties?: WebAppsUpdateMetadataSlotRequestPropertiesMap;
 }
 export const WebAppsUpdateMetadataSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -43442,7 +46418,8 @@ export const WebAppsUpdateMetadataSlotRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(WebAppsUpdateMetadataSlotRequestPropertiesMap),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -43489,6 +46466,31 @@ export const WebAppsUpdateMetadataSlotResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebAppsUpdateMetadataSlotResponse",
 }) as any as S.Schema<WebAppsUpdateMetadataSlotResponse>;
 
+/** PremierAddOnPatchResource resource specific properties */
+export interface PremierAddOnPatchResourceProperties {
+  /** Premier add on SKU. */
+  sku?: string;
+  /** Premier add on Product. */
+  product?: string;
+  /** Premier add on Vendor. */
+  vendor?: string;
+  /** Premier add on Marketplace publisher. */
+  marketplacePublisher?: string;
+  /** Premier add on Marketplace offer. */
+  marketplaceOffer?: string;
+}
+export const PremierAddOnPatchResourceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sku: S.optional(S.String),
+    product: S.optional(S.String),
+    vendor: S.optional(S.String),
+    marketplacePublisher: S.optional(S.String),
+    marketplaceOffer: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PremierAddOnPatchResourceProperties",
+}) as any as S.Schema<PremierAddOnPatchResourceProperties>;
+
 export interface WebAppsUpdatePremierAddOnRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -43498,7 +46500,10 @@ export interface WebAppsUpdatePremierAddOnRequest {
   name: string;
   /** Add-on name. */
   premierAddOnName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** PremierAddOnPatchResource resource specific properties */
+  properties?: PremierAddOnPatchResourceProperties;
 }
 export const WebAppsUpdatePremierAddOnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -43506,7 +46511,8 @@ export const WebAppsUpdatePremierAddOnRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     premierAddOnName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(PremierAddOnPatchResourceProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -43572,7 +46578,10 @@ export interface WebAppsUpdatePremierAddOnSlotRequest {
   slot: string;
   /** Add-on name. */
   premierAddOnName: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** PremierAddOnPatchResource resource specific properties */
+  properties?: PremierAddOnPatchResourceProperties;
 }
 export const WebAppsUpdatePremierAddOnSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -43582,7 +46591,8 @@ export const WebAppsUpdatePremierAddOnSlotRequest = /*@__PURE__*/ S.suspend(
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       premierAddOnName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(PremierAddOnPatchResourceProperties),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -43648,7 +46658,10 @@ export interface WebAppsUpdateRelayServiceConnectionRequest {
   name: string;
   /** Name of the hybrid connection. */
   entityName: string;
-  body: unknown;
+  /** RelayServiceConnectionEntity resource specific properties */
+  properties?: RelayServiceConnectionEntityProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateRelayServiceConnectionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -43657,7 +46670,8 @@ export const WebAppsUpdateRelayServiceConnectionRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       entityName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RelayServiceConnectionEntityProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -43709,7 +46723,10 @@ export interface WebAppsUpdateRelayServiceConnectionSlotRequest {
   slot: string;
   /** Name of the hybrid connection. */
   entityName: string;
-  body: unknown;
+  /** RelayServiceConnectionEntity resource specific properties */
+  properties?: RelayServiceConnectionEntityProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateRelayServiceConnectionSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -43719,7 +46736,8 @@ export const WebAppsUpdateRelayServiceConnectionSlotRequest =
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       entityName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RelayServiceConnectionEntityProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -43767,14 +46785,18 @@ export interface WebAppsUpdateScmAllowedRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** CsmPublishingCredentialsPoliciesEntity resource specific properties */
+  properties?: CsmPublishingCredentialsPoliciesEntityProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateScmAllowedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -43822,7 +46844,10 @@ export interface WebAppsUpdateScmAllowedSlotRequest {
   /** Name of the app. */
   name: string;
   slot: string;
-  body: unknown;
+  /** CsmPublishingCredentialsPoliciesEntity resource specific properties */
+  properties?: CsmPublishingCredentialsPoliciesEntityProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateScmAllowedSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -43830,7 +46855,8 @@ export const WebAppsUpdateScmAllowedSlotRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(CsmPublishingCredentialsPoliciesEntityProperties),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -43877,7 +46903,10 @@ export interface WebAppsUpdateSitePushSettingsRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** PushSettings resource specific properties */
+  properties?: PushSettingsProperties;
 }
 export const WebAppsUpdateSitePushSettingsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -43885,7 +46914,8 @@ export const WebAppsUpdateSitePushSettingsRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(PushSettingsProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -43932,7 +46962,10 @@ export interface WebAppsUpdateSitePushSettingsSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** PushSettings resource specific properties */
+  properties?: PushSettingsProperties;
 }
 export const WebAppsUpdateSitePushSettingsSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -43941,7 +46974,8 @@ export const WebAppsUpdateSitePushSettingsSlotRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      kind: S.optional(S.String),
+      properties: S.optional(PushSettingsProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -43988,7 +47022,12 @@ export interface WebAppsUpdateSlotRequest {
   name: string;
   /** Name of the deployment slot. By default, this API returns the production slot. */
   slot: string;
-  body: unknown;
+  /** Kind of resource. */
+  kind?: string;
+  /** SitePatchResource resource specific properties */
+  properties?: SitePatchResourcePropertiesInput;
+  /** Managed service identity. */
+  identity?: ManagedServiceIdentityInput;
 }
 export const WebAppsUpdateSlotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -43996,7 +47035,9 @@ export const WebAppsUpdateSlotRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     slot: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    kind: S.optional(S.String),
+    properties: S.optional(SitePatchResourcePropertiesInput),
+    identity: S.optional(ManagedServiceIdentityInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -44064,7 +47105,10 @@ export interface WebAppsUpdateSlotConfigurationNamesRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: SlotConfigNames;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateSlotConfigurationNamesRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44072,7 +47116,8 @@ export const WebAppsUpdateSlotConfigurationNamesRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SlotConfigNames),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -44120,14 +47165,18 @@ export interface WebAppsUpdateSourceControlRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** SiteSourceControl resource specific properties */
+  properties?: SiteSourceControlProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateSourceControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SiteSourceControlProperties),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -44176,7 +47225,10 @@ export interface WebAppsUpdateSourceControlSlotRequest {
   name: string;
   /** Name of the deployment slot. If a slot is not specified, the API will get the source control configuration for the production slot. */
   slot: string;
-  body: unknown;
+  /** SiteSourceControl resource specific properties */
+  properties?: SiteSourceControlProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateSourceControlSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -44185,7 +47237,8 @@ export const WebAppsUpdateSourceControlSlotRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SiteSourceControlProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -44233,7 +47286,10 @@ export interface WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckRequest {
   resourceGroupName: string;
   /** Name of the app. */
   name: string;
-  body: unknown;
+  /** SwiftVirtualNetwork resource specific properties */
+  properties?: SwiftVirtualNetworkProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44241,7 +47297,8 @@ export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SwiftVirtualNetworkProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -44291,7 +47348,10 @@ export interface WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlotRequest 
   name: string;
   /** Name of the deployment slot. If a slot is not specified, the API will get a gateway for the production slot's Virtual Network. */
   slot: string;
-  body: unknown;
+  /** SwiftVirtualNetwork resource specific properties */
+  properties?: SwiftVirtualNetworkProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44300,7 +47360,8 @@ export const WebAppsUpdateSwiftVirtualNetworkConnectionWithCheckSlotRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(SwiftVirtualNetworkProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -44352,7 +47413,10 @@ export interface WebAppsUpdateVnetConnectionRequest {
   name: string;
   /** Name of the virtual network. */
   vnetName: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: VnetInfoInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateVnetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -44360,7 +47424,8 @@ export const WebAppsUpdateVnetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     vnetName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(VnetInfoInput),
+    kind: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -44411,7 +47476,10 @@ export interface WebAppsUpdateVnetConnectionGatewayRequest {
   vnetName: string;
   /** Name of the gateway. Currently, the only supported string is "primary". */
   gatewayName: string;
-  body: unknown;
+  /** VnetGateway resource specific properties */
+  properties?: VnetGatewayProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateVnetConnectionGatewayRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44421,7 +47489,8 @@ export const WebAppsUpdateVnetConnectionGatewayRequest =
       name: S.String.pipe(T.Label()),
       vnetName: S.String.pipe(T.Label()),
       gatewayName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(VnetGatewayProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -44475,7 +47544,10 @@ export interface WebAppsUpdateVnetConnectionGatewaySlotRequest {
   vnetName: string;
   /** Name of the gateway. Currently, the only supported string is "primary". */
   gatewayName: string;
-  body: unknown;
+  /** VnetGateway resource specific properties */
+  properties?: VnetGatewayProperties;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateVnetConnectionGatewaySlotRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -44486,7 +47558,8 @@ export const WebAppsUpdateVnetConnectionGatewaySlotRequest =
       slot: S.String.pipe(T.Label()),
       vnetName: S.String.pipe(T.Label()),
       gatewayName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(VnetGatewayProperties),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -44538,7 +47611,10 @@ export interface WebAppsUpdateVnetConnectionSlotRequest {
   slot: string;
   /** Name of the virtual network. */
   vnetName: string;
-  body: unknown;
+  /** Core resource properties */
+  properties?: VnetInfoInput;
+  /** Kind of resource. */
+  kind?: string;
 }
 export const WebAppsUpdateVnetConnectionSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -44548,7 +47624,8 @@ export const WebAppsUpdateVnetConnectionSlotRequest = /*@__PURE__*/ S.suspend(
       name: S.String.pipe(T.Label()),
       slot: S.String.pipe(T.Label()),
       vnetName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(VnetInfoInput),
+      kind: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -44638,7 +47715,7 @@ export const WorkflowRunActionRepetitionsGetResponseTagsMap =
   ) as any as S.Schema<WorkflowRunActionRepetitionsGetResponseTagsMap>;
 
 /** The client keywords. */
-export type RunActionCorrelationClientKeywordsList = string[];
+export type RunActionCorrelationClientKeywordsList = ReadonlyArray<string>;
 export const RunActionCorrelationClientKeywordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RunActionCorrelationClientKeywordsList>;
@@ -44676,8 +47753,7 @@ export type WorkflowStatus =
   | "Faulted"
   | "TimedOut"
   | "Aborted"
-  | "Ignored"
-  | (string & {});
+  | "Ignored";
 export const WorkflowStatus = /*@__PURE__*/ S.String;
 
 /** The content hash. */
@@ -44745,7 +47821,7 @@ export const RetryHistory = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the retry histories. */
 export type WorkflowRunActionRepetitionPropertiesRetryHistoryList =
-  RetryHistory[];
+  ReadonlyArray<RetryHistory>;
 export const WorkflowRunActionRepetitionPropertiesRetryHistoryList =
   /*@__PURE__*/ S.Array(
     RetryHistory,
@@ -44769,7 +47845,7 @@ export const RepetitionIndex = /*@__PURE__*/ S.suspend(() =>
 
 /** The repetition indexes. */
 export type WorkflowRunActionRepetitionPropertiesRepetitionIndexesList =
-  RepetitionIndex[];
+  ReadonlyArray<RepetitionIndex>;
 export const WorkflowRunActionRepetitionPropertiesRepetitionIndexesList =
   /*@__PURE__*/ S.Array(
     RepetitionIndex,
@@ -44944,7 +48020,7 @@ export const WorkflowRunActionRepetitionDefinition = /*@__PURE__*/ S.suspend(
 
 /** The WorkflowRunActionRepetitionDefinition items on this page */
 export type WorkflowRunActionRepetitionDefinitionCollectionValueList =
-  WorkflowRunActionRepetitionDefinition[];
+  ReadonlyArray<WorkflowRunActionRepetitionDefinition>;
 export const WorkflowRunActionRepetitionDefinitionCollectionValueList =
   /*@__PURE__*/ S.Array(
     WorkflowRunActionRepetitionDefinition,
@@ -45006,13 +48082,14 @@ export const WorkflowRunActionRepetitionsListExpressionTracesRequest =
   }) as any as S.Schema<WorkflowRunActionRepetitionsListExpressionTracesRequest>;
 
 /** The sub expressions. */
-export type ExpressionSubexpressionsList = Expression[];
+export type ExpressionSubexpressionsList = ReadonlyArray<Expression>;
 export const ExpressionSubexpressionsList = /*@__PURE__*/ S.Array(
   S.suspend(() => Expression),
 ) as any as S.Schema<ExpressionSubexpressionsList>;
 
 /** The error details. */
-export type AzureResourceErrorInfoDetailsList = AzureResourceErrorInfo[];
+export type AzureResourceErrorInfoDetailsList =
+  ReadonlyArray<AzureResourceErrorInfo>;
 export const AzureResourceErrorInfoDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => AzureResourceErrorInfo),
 ) as any as S.Schema<AzureResourceErrorInfoDetailsList>;
@@ -45057,7 +48134,7 @@ export const Expression = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Expression" }) as any as S.Schema<Expression>;
 
 /** The sub expressions. */
-export type ExpressionRootSubexpressionsList = Expression[];
+export type ExpressionRootSubexpressionsList = ReadonlyArray<Expression>;
 export const ExpressionRootSubexpressionsList = /*@__PURE__*/ S.Array(
   Expression,
 ) as any as S.Schema<ExpressionRootSubexpressionsList>;
@@ -45085,7 +48162,7 @@ export const ExpressionRoot = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExpressionRoot" }) as any as S.Schema<ExpressionRoot>;
 
-export type ExpressionTracesInputsList = ExpressionRoot[];
+export type ExpressionTracesInputsList = ReadonlyArray<ExpressionRoot>;
 export const ExpressionTracesInputsList = /*@__PURE__*/ S.Array(
   ExpressionRoot,
 ) as any as S.Schema<ExpressionTracesInputsList>;
@@ -45322,7 +48399,7 @@ export const RequestHistory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestHistory" }) as any as S.Schema<RequestHistory>;
 
 /** The RequestHistory items on this page */
-export type RequestHistoryListResultValueList = RequestHistory[];
+export type RequestHistoryListResultValueList = ReadonlyArray<RequestHistory>;
 export const RequestHistoryListResultValueList = /*@__PURE__*/ S.Array(
   RequestHistory,
 ) as any as S.Schema<RequestHistoryListResultValueList>;
@@ -45492,7 +48569,8 @@ export const WorkflowRunActionsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowRunActionsGetRequest>;
 
 /** Gets the retry histories. */
-export type WorkflowRunActionPropertiesRetryHistoryList = RetryHistory[];
+export type WorkflowRunActionPropertiesRetryHistoryList =
+  ReadonlyArray<RetryHistory>;
 export const WorkflowRunActionPropertiesRetryHistoryList =
   /*@__PURE__*/ S.Array(
     RetryHistory,
@@ -45628,7 +48706,8 @@ export const WorkflowRunAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowRunAction>;
 
 /** The WorkflowRunAction items on this page */
-export type WorkflowRunActionListResultValueList = WorkflowRunAction[];
+export type WorkflowRunActionListResultValueList =
+  ReadonlyArray<WorkflowRunAction>;
 export const WorkflowRunActionListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowRunAction,
 ) as any as S.Schema<WorkflowRunActionListResultValueList>;
@@ -45845,8 +48924,7 @@ export type ParameterType =
   | "Bool"
   | "Array"
   | "Object"
-  | "SecureObject"
-  | (string & {});
+  | "SecureObject";
 export const ParameterType = /*@__PURE__*/ S.String;
 
 /** The workflow output parameter. */
@@ -46011,7 +49089,7 @@ export const WorkflowRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkflowRun" }) as any as S.Schema<WorkflowRun>;
 
 /** The WorkflowRun items on this page */
-export type WorkflowRunListResultValueList = WorkflowRun[];
+export type WorkflowRunListResultValueList = ReadonlyArray<WorkflowRun>;
 export const WorkflowRunListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowRun,
 ) as any as S.Schema<WorkflowRunListResultValueList>;
@@ -46032,6 +49110,10 @@ export const WorkflowRunListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkflowRunListResult",
 }) as any as S.Schema<WorkflowRunListResult>;
 
+/** The key type. */
+export type KeyType = "NotSpecified" | "Primary" | "Secondary";
+export const KeyType = /*@__PURE__*/ S.String;
+
 export interface WorkflowsRegenerateAccessKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -46041,7 +49123,8 @@ export interface WorkflowsRegenerateAccessKeyRequest {
   name: string;
   /** The workflow name. */
   workflowName: string;
-  body: unknown;
+  /** The key type. */
+  keyType?: KeyType;
 }
 export const WorkflowsRegenerateAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -46049,7 +49132,7 @@ export const WorkflowsRegenerateAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     workflowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    keyType: S.optional(KeyType),
   }).pipe(
     T.Http({
       method: "POST",
@@ -46069,6 +49152,279 @@ export const WorkflowsRegenerateAccessKeyResponse = /*@__PURE__*/ S.suspend(
   identifier: "WorkflowsRegenerateAccessKeyResponse",
 }) as any as S.Schema<WorkflowsRegenerateAccessKeyResponse>;
 
+/** The resource tags. */
+export type WorkflowsValidateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const WorkflowsValidateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<WorkflowsValidateRequestTagsMap>;
+
+/** The ip address. */
+export interface IpAddress {
+  /** The address. */
+  address?: string;
+}
+export const IpAddress = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+  }),
+).annotate({ identifier: "IpAddress" }) as any as S.Schema<IpAddress>;
+
+/** The outgoing ip address. */
+export type FlowEndpointsOutgoingIpAddressesList = ReadonlyArray<IpAddress>;
+export const FlowEndpointsOutgoingIpAddressesList = /*@__PURE__*/ S.Array(
+  IpAddress,
+) as any as S.Schema<FlowEndpointsOutgoingIpAddressesList>;
+
+/** The access endpoint ip address. */
+export type FlowEndpointsAccessEndpointIpAddressesList =
+  ReadonlyArray<IpAddress>;
+export const FlowEndpointsAccessEndpointIpAddressesList = /*@__PURE__*/ S.Array(
+  IpAddress,
+) as any as S.Schema<FlowEndpointsAccessEndpointIpAddressesList>;
+
+/** The flow endpoints configuration. */
+export interface FlowEndpoints {
+  /** The outgoing ip address. */
+  outgoingIpAddresses?: FlowEndpointsOutgoingIpAddressesList;
+  /** The access endpoint ip address. */
+  accessEndpointIpAddresses?: FlowEndpointsAccessEndpointIpAddressesList;
+}
+export const FlowEndpoints = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    outgoingIpAddresses: S.optional(FlowEndpointsOutgoingIpAddressesList),
+    accessEndpointIpAddresses: S.optional(
+      FlowEndpointsAccessEndpointIpAddressesList,
+    ),
+  }),
+).annotate({ identifier: "FlowEndpoints" }) as any as S.Schema<FlowEndpoints>;
+
+/** The endpoints configuration. */
+export interface FlowEndpointsConfiguration {
+  /** The workflow endpoints. */
+  workflow?: FlowEndpoints;
+  /** The connector endpoints. */
+  connector?: FlowEndpoints;
+}
+export const FlowEndpointsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflow: S.optional(FlowEndpoints),
+    connector: S.optional(FlowEndpoints),
+  }),
+).annotate({
+  identifier: "FlowEndpointsConfiguration",
+}) as any as S.Schema<FlowEndpointsConfiguration>;
+
+/** The ip address range. */
+export interface IpAddressRange {
+  /** The IP address range. */
+  addressRange?: string;
+}
+export const IpAddressRange = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    addressRange: S.optional(S.String),
+  }),
+).annotate({ identifier: "IpAddressRange" }) as any as S.Schema<IpAddressRange>;
+
+/** The allowed caller IP address ranges. */
+export type FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList =
+  ReadonlyArray<IpAddressRange>;
+export const FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList =
+  /*@__PURE__*/ S.Array(
+    IpAddressRange,
+  ) as any as S.Schema<FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList>;
+
+/** Open authentication policy provider type. */
+export type OpenAuthenticationProviderType = "AAD";
+export const OpenAuthenticationProviderType = /*@__PURE__*/ S.String;
+
+/** Open authentication policy claim. */
+export interface OpenAuthenticationPolicyClaim {
+  /** The name of the claim. */
+  name?: string;
+  /** The value of the claim. */
+  value?: string;
+}
+export const OpenAuthenticationPolicyClaim = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OpenAuthenticationPolicyClaim",
+}) as any as S.Schema<OpenAuthenticationPolicyClaim>;
+
+/** The access policy claims. */
+export type OpenAuthenticationAccessPolicyClaimsList =
+  ReadonlyArray<OpenAuthenticationPolicyClaim>;
+export const OpenAuthenticationAccessPolicyClaimsList = /*@__PURE__*/ S.Array(
+  OpenAuthenticationPolicyClaim,
+) as any as S.Schema<OpenAuthenticationAccessPolicyClaimsList>;
+
+/** Open authentication access policy defined by user. */
+export interface OpenAuthenticationAccessPolicy {
+  /** Type of provider for OAuth. */
+  type?: OpenAuthenticationProviderType;
+  /** The access policy claims. */
+  claims?: OpenAuthenticationAccessPolicyClaimsList;
+}
+export const OpenAuthenticationAccessPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(OpenAuthenticationProviderType),
+    claims: S.optional(OpenAuthenticationAccessPolicyClaimsList),
+  }),
+).annotate({
+  identifier: "OpenAuthenticationAccessPolicy",
+}) as any as S.Schema<OpenAuthenticationAccessPolicy>;
+
+/** Open authentication policies. */
+export type OpenAuthenticationAccessPoliciesPoliciesMap = {
+  [key: string]: OpenAuthenticationAccessPolicy | undefined;
+};
+export const OpenAuthenticationAccessPoliciesPoliciesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    OpenAuthenticationAccessPolicy,
+  ) as any as S.Schema<OpenAuthenticationAccessPoliciesPoliciesMap>;
+
+/** AuthenticationPolicy of type Open. */
+export interface OpenAuthenticationAccessPolicies {
+  /** Open authentication policies. */
+  policies?: OpenAuthenticationAccessPoliciesPoliciesMap;
+}
+export const OpenAuthenticationAccessPolicies = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policies: S.optional(OpenAuthenticationAccessPoliciesPoliciesMap),
+  }),
+).annotate({
+  identifier: "OpenAuthenticationAccessPolicies",
+}) as any as S.Schema<OpenAuthenticationAccessPolicies>;
+
+/** The access control configuration policy. */
+export interface FlowAccessControlConfigurationPolicy {
+  /** The allowed caller IP address ranges. */
+  allowedCallerIpAddresses?: FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList;
+  /** The authentication policies for workflow. */
+  openAuthenticationPolicies?: OpenAuthenticationAccessPolicies;
+}
+export const FlowAccessControlConfigurationPolicy = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      allowedCallerIpAddresses: S.optional(
+        FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList,
+      ),
+      openAuthenticationPolicies: S.optional(OpenAuthenticationAccessPolicies),
+    }),
+).annotate({
+  identifier: "FlowAccessControlConfigurationPolicy",
+}) as any as S.Schema<FlowAccessControlConfigurationPolicy>;
+
+/** The access control configuration. */
+export interface FlowAccessControlConfiguration {
+  /** The access control configuration for invoking workflow triggers. */
+  triggers?: FlowAccessControlConfigurationPolicy;
+  /** The access control configuration for accessing workflow run contents. */
+  contents?: FlowAccessControlConfigurationPolicy;
+  /** The access control configuration for workflow actions. */
+  actions?: FlowAccessControlConfigurationPolicy;
+  /** The access control configuration for workflow management. */
+  workflowManagement?: FlowAccessControlConfigurationPolicy;
+}
+export const FlowAccessControlConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    triggers: S.optional(FlowAccessControlConfigurationPolicy),
+    contents: S.optional(FlowAccessControlConfigurationPolicy),
+    actions: S.optional(FlowAccessControlConfigurationPolicy),
+    workflowManagement: S.optional(FlowAccessControlConfigurationPolicy),
+  }),
+).annotate({
+  identifier: "FlowAccessControlConfiguration",
+}) as any as S.Schema<FlowAccessControlConfiguration>;
+
+/** The resource reference. */
+export interface ResourceReferenceInput {
+  /** The resource id. */
+  id?: string;
+}
+export const ResourceReferenceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceReferenceInput",
+}) as any as S.Schema<ResourceReferenceInput>;
+
+/** The workflow parameters. */
+export interface WorkflowParameter {
+  /** The type. */
+  type?: ParameterType;
+  /** The value. */
+  value?: unknown;
+  /** The metadata. */
+  metadata?: unknown;
+  /** The description. */
+  description?: string;
+}
+export const WorkflowParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ParameterType),
+    value: S.optional(S.Unknown),
+    metadata: S.optional(S.Unknown),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WorkflowParameter",
+}) as any as S.Schema<WorkflowParameter>;
+
+/** The parameters. */
+export type WorkflowPropertiesInputParametersMap = {
+  [key: string]: WorkflowParameter | undefined;
+};
+export const WorkflowPropertiesInputParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  WorkflowParameter,
+) as any as S.Schema<WorkflowPropertiesInputParametersMap>;
+
+/** The workflow kind. */
+export type Kind = "Stateful" | "Stateless";
+export const Kind = /*@__PURE__*/ S.String;
+
+/** The workflow properties. */
+export interface WorkflowPropertiesInput {
+  /** The state. */
+  state?: WorkflowState;
+  /** The endpoints configuration. */
+  endpointsConfiguration?: FlowEndpointsConfiguration;
+  /** The access control configuration. */
+  accessControl?: FlowAccessControlConfiguration;
+  /** The integration account. */
+  integrationAccount?: ResourceReferenceInput;
+  /** The integration service environment. */
+  integrationServiceEnvironment?: ResourceReferenceInput;
+  /** The definition. */
+  definition?: unknown;
+  /** The parameters. */
+  parameters?: WorkflowPropertiesInputParametersMap;
+  /** The workflow kind. */
+  kind?: Kind;
+}
+export const WorkflowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: S.optional(WorkflowState),
+    endpointsConfiguration: S.optional(FlowEndpointsConfiguration),
+    accessControl: S.optional(FlowAccessControlConfiguration),
+    integrationAccount: S.optional(ResourceReferenceInput),
+    integrationServiceEnvironment: S.optional(ResourceReferenceInput),
+    definition: S.optional(S.Unknown),
+    parameters: S.optional(WorkflowPropertiesInputParametersMap),
+    kind: S.optional(Kind),
+  }),
+).annotate({
+  identifier: "WorkflowPropertiesInput",
+}) as any as S.Schema<WorkflowPropertiesInput>;
+
 export interface WorkflowsValidateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -46078,7 +49434,14 @@ export interface WorkflowsValidateRequest {
   name: string;
   /** The workflow name. */
   workflowName: string;
-  body: unknown;
+  /** The resource location. */
+  location?: string;
+  /** The resource tags. */
+  tags?: WorkflowsValidateRequestTagsMap;
+  /** The workflow properties. */
+  properties?: WorkflowPropertiesInput;
+  /** Managed service identity. */
+  identity?: ManagedServiceIdentityInput;
 }
 export const WorkflowsValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -46086,7 +49449,10 @@ export const WorkflowsValidateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
     workflowName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    location: S.optional(S.String),
+    tags: S.optional(WorkflowsValidateRequestTagsMap),
+    properties: S.optional(WorkflowPropertiesInput),
+    identity: S.optional(ManagedServiceIdentityInput),
   }).pipe(
     T.Http({
       method: "POST",
@@ -46274,7 +49640,7 @@ export const WorkflowTriggerHistory = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkflowTriggerHistory items on this page */
 export type WorkflowTriggerHistoryListResultValueList =
-  WorkflowTriggerHistory[];
+  ReadonlyArray<WorkflowTriggerHistory>;
 export const WorkflowTriggerHistoryListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowTriggerHistory,
 ) as any as S.Schema<WorkflowTriggerHistoryListResultValueList>;
@@ -46387,8 +49753,7 @@ export type WorkflowTriggerProvisioningState =
   | "Registered"
   | "Unregistering"
   | "Unregistered"
-  | "Completed"
-  | (string & {});
+  | "Completed";
 export const WorkflowTriggerProvisioningState = /*@__PURE__*/ S.String;
 
 /** The recurrence frequency. */
@@ -46400,18 +49765,17 @@ export type RecurrenceFrequency =
   | "Day"
   | "Week"
   | "Month"
-  | "Year"
-  | (string & {});
+  | "Year";
 export const RecurrenceFrequency = /*@__PURE__*/ S.String;
 
 /** The minutes. */
-export type RecurrenceScheduleMinutesList = number[];
+export type RecurrenceScheduleMinutesList = ReadonlyArray<number>;
 export const RecurrenceScheduleMinutesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RecurrenceScheduleMinutesList>;
 
 /** The hours. */
-export type RecurrenceScheduleHoursList = number[];
+export type RecurrenceScheduleHoursList = ReadonlyArray<number>;
 export const RecurrenceScheduleHoursList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RecurrenceScheduleHoursList>;
@@ -46423,18 +49787,17 @@ export type DaysOfWeek =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday"
-  | (string & {});
+  | "Saturday";
 export const DaysOfWeek = /*@__PURE__*/ S.String;
 
 /** The days of the week. */
-export type RecurrenceScheduleWeekDaysList = DaysOfWeek[];
+export type RecurrenceScheduleWeekDaysList = ReadonlyArray<DaysOfWeek>;
 export const RecurrenceScheduleWeekDaysList = /*@__PURE__*/ S.Array(
   DaysOfWeek,
 ) as any as S.Schema<RecurrenceScheduleWeekDaysList>;
 
 /** The month days. */
-export type RecurrenceScheduleMonthDaysList = number[];
+export type RecurrenceScheduleMonthDaysList = ReadonlyArray<number>;
 export const RecurrenceScheduleMonthDaysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RecurrenceScheduleMonthDaysList>;
@@ -46447,8 +49810,7 @@ export type DayOfWeek =
   | "Wednesday"
   | "Thursday"
   | "Friday"
-  | "Saturday"
-  | (string & {});
+  | "Saturday";
 export const DayOfWeek = /*@__PURE__*/ S.String;
 
 /** The recurrence schedule occurrence. */
@@ -46469,7 +49831,7 @@ export const RecurrenceScheduleOccurrence = /*@__PURE__*/ S.suspend(() =>
 
 /** The monthly occurrences. */
 export type RecurrenceScheduleMonthlyOccurrencesList =
-  RecurrenceScheduleOccurrence[];
+  ReadonlyArray<RecurrenceScheduleOccurrence>;
 export const RecurrenceScheduleMonthlyOccurrencesList = /*@__PURE__*/ S.Array(
   RecurrenceScheduleOccurrence,
 ) as any as S.Schema<RecurrenceScheduleMonthlyOccurrencesList>;
@@ -46694,7 +50056,7 @@ export const WorkflowTrigger = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowTrigger>;
 
 /** The WorkflowTrigger items on this page */
-export type WorkflowTriggerListResultValueList = WorkflowTrigger[];
+export type WorkflowTriggerListResultValueList = ReadonlyArray<WorkflowTrigger>;
 export const WorkflowTriggerListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowTrigger,
 ) as any as S.Schema<WorkflowTriggerListResultValueList>;
@@ -46748,7 +50110,8 @@ export const WorkflowTriggersListCallbackUrlRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkflowTriggersListCallbackUrlRequest>;
 
 /** Gets the workflow trigger callback URL relative path parameters. */
-export type WorkflowTriggerCallbackUrlRelativePathParametersList = string[];
+export type WorkflowTriggerCallbackUrlRelativePathParametersList =
+  ReadonlyArray<string>;
 export const WorkflowTriggerCallbackUrlRelativePathParametersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -46911,190 +50274,8 @@ export type WorkflowProvisioningState =
   | "Renewing"
   | "Pending"
   | "Waiting"
-  | "InProgress"
-  | (string & {});
+  | "InProgress";
 export const WorkflowProvisioningState = /*@__PURE__*/ S.String;
-
-/** The ip address. */
-export interface IpAddress {
-  /** The address. */
-  address?: string;
-}
-export const IpAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-  }),
-).annotate({ identifier: "IpAddress" }) as any as S.Schema<IpAddress>;
-
-/** The outgoing ip address. */
-export type FlowEndpointsOutgoingIpAddressesList = IpAddress[];
-export const FlowEndpointsOutgoingIpAddressesList = /*@__PURE__*/ S.Array(
-  IpAddress,
-) as any as S.Schema<FlowEndpointsOutgoingIpAddressesList>;
-
-/** The access endpoint ip address. */
-export type FlowEndpointsAccessEndpointIpAddressesList = IpAddress[];
-export const FlowEndpointsAccessEndpointIpAddressesList = /*@__PURE__*/ S.Array(
-  IpAddress,
-) as any as S.Schema<FlowEndpointsAccessEndpointIpAddressesList>;
-
-/** The flow endpoints configuration. */
-export interface FlowEndpoints {
-  /** The outgoing ip address. */
-  outgoingIpAddresses?: FlowEndpointsOutgoingIpAddressesList;
-  /** The access endpoint ip address. */
-  accessEndpointIpAddresses?: FlowEndpointsAccessEndpointIpAddressesList;
-}
-export const FlowEndpoints = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    outgoingIpAddresses: S.optional(FlowEndpointsOutgoingIpAddressesList),
-    accessEndpointIpAddresses: S.optional(
-      FlowEndpointsAccessEndpointIpAddressesList,
-    ),
-  }),
-).annotate({ identifier: "FlowEndpoints" }) as any as S.Schema<FlowEndpoints>;
-
-/** The endpoints configuration. */
-export interface FlowEndpointsConfiguration {
-  /** The workflow endpoints. */
-  workflow?: FlowEndpoints;
-  /** The connector endpoints. */
-  connector?: FlowEndpoints;
-}
-export const FlowEndpointsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflow: S.optional(FlowEndpoints),
-    connector: S.optional(FlowEndpoints),
-  }),
-).annotate({
-  identifier: "FlowEndpointsConfiguration",
-}) as any as S.Schema<FlowEndpointsConfiguration>;
-
-/** The ip address range. */
-export interface IpAddressRange {
-  /** The IP address range. */
-  addressRange?: string;
-}
-export const IpAddressRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addressRange: S.optional(S.String),
-  }),
-).annotate({ identifier: "IpAddressRange" }) as any as S.Schema<IpAddressRange>;
-
-/** The allowed caller IP address ranges. */
-export type FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList =
-  IpAddressRange[];
-export const FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList =
-  /*@__PURE__*/ S.Array(
-    IpAddressRange,
-  ) as any as S.Schema<FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList>;
-
-/** Open authentication policy provider type. */
-export type OpenAuthenticationProviderType = "AAD" | (string & {});
-export const OpenAuthenticationProviderType = /*@__PURE__*/ S.String;
-
-/** Open authentication policy claim. */
-export interface OpenAuthenticationPolicyClaim {
-  /** The name of the claim. */
-  name?: string;
-  /** The value of the claim. */
-  value?: string;
-}
-export const OpenAuthenticationPolicyClaim = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OpenAuthenticationPolicyClaim",
-}) as any as S.Schema<OpenAuthenticationPolicyClaim>;
-
-/** The access policy claims. */
-export type OpenAuthenticationAccessPolicyClaimsList =
-  OpenAuthenticationPolicyClaim[];
-export const OpenAuthenticationAccessPolicyClaimsList = /*@__PURE__*/ S.Array(
-  OpenAuthenticationPolicyClaim,
-) as any as S.Schema<OpenAuthenticationAccessPolicyClaimsList>;
-
-/** Open authentication access policy defined by user. */
-export interface OpenAuthenticationAccessPolicy {
-  /** Type of provider for OAuth. */
-  type?: OpenAuthenticationProviderType;
-  /** The access policy claims. */
-  claims?: OpenAuthenticationAccessPolicyClaimsList;
-}
-export const OpenAuthenticationAccessPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(OpenAuthenticationProviderType),
-    claims: S.optional(OpenAuthenticationAccessPolicyClaimsList),
-  }),
-).annotate({
-  identifier: "OpenAuthenticationAccessPolicy",
-}) as any as S.Schema<OpenAuthenticationAccessPolicy>;
-
-/** Open authentication policies. */
-export type OpenAuthenticationAccessPoliciesPoliciesMap = {
-  [key: string]: OpenAuthenticationAccessPolicy | undefined;
-};
-export const OpenAuthenticationAccessPoliciesPoliciesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    OpenAuthenticationAccessPolicy,
-  ) as any as S.Schema<OpenAuthenticationAccessPoliciesPoliciesMap>;
-
-/** AuthenticationPolicy of type Open. */
-export interface OpenAuthenticationAccessPolicies {
-  /** Open authentication policies. */
-  policies?: OpenAuthenticationAccessPoliciesPoliciesMap;
-}
-export const OpenAuthenticationAccessPolicies = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policies: S.optional(OpenAuthenticationAccessPoliciesPoliciesMap),
-  }),
-).annotate({
-  identifier: "OpenAuthenticationAccessPolicies",
-}) as any as S.Schema<OpenAuthenticationAccessPolicies>;
-
-/** The access control configuration policy. */
-export interface FlowAccessControlConfigurationPolicy {
-  /** The allowed caller IP address ranges. */
-  allowedCallerIpAddresses?: FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList;
-  /** The authentication policies for workflow. */
-  openAuthenticationPolicies?: OpenAuthenticationAccessPolicies;
-}
-export const FlowAccessControlConfigurationPolicy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowedCallerIpAddresses: S.optional(
-        FlowAccessControlConfigurationPolicyAllowedCallerIpAddressesList,
-      ),
-      openAuthenticationPolicies: S.optional(OpenAuthenticationAccessPolicies),
-    }),
-).annotate({
-  identifier: "FlowAccessControlConfigurationPolicy",
-}) as any as S.Schema<FlowAccessControlConfigurationPolicy>;
-
-/** The access control configuration. */
-export interface FlowAccessControlConfiguration {
-  /** The access control configuration for invoking workflow triggers. */
-  triggers?: FlowAccessControlConfigurationPolicy;
-  /** The access control configuration for accessing workflow run contents. */
-  contents?: FlowAccessControlConfigurationPolicy;
-  /** The access control configuration for workflow actions. */
-  actions?: FlowAccessControlConfigurationPolicy;
-  /** The access control configuration for workflow management. */
-  workflowManagement?: FlowAccessControlConfigurationPolicy;
-}
-export const FlowAccessControlConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    triggers: S.optional(FlowAccessControlConfigurationPolicy),
-    contents: S.optional(FlowAccessControlConfigurationPolicy),
-    actions: S.optional(FlowAccessControlConfigurationPolicy),
-    workflowManagement: S.optional(FlowAccessControlConfigurationPolicy),
-  }),
-).annotate({
-  identifier: "FlowAccessControlConfiguration",
-}) as any as S.Schema<FlowAccessControlConfiguration>;
 
 /** The sku name. */
 export type WorkflowSkuName =
@@ -47103,8 +50284,7 @@ export type WorkflowSkuName =
   | "Shared"
   | "Basic"
   | "Standard"
-  | "Premium"
-  | (string & {});
+  | "Premium";
 export const WorkflowSkuName = /*@__PURE__*/ S.String;
 
 /** The sku type. */
@@ -47120,28 +50300,6 @@ export const WorkflowSku = /*@__PURE__*/ S.suspend(() =>
     plan: S.optional(ResourceReference),
   }),
 ).annotate({ identifier: "WorkflowSku" }) as any as S.Schema<WorkflowSku>;
-
-/** The workflow parameters. */
-export interface WorkflowParameter {
-  /** The type. */
-  type?: ParameterType;
-  /** The value. */
-  value?: unknown;
-  /** The metadata. */
-  metadata?: unknown;
-  /** The description. */
-  description?: string;
-}
-export const WorkflowParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ParameterType),
-    value: S.optional(S.Unknown),
-    metadata: S.optional(S.Unknown),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkflowParameter",
-}) as any as S.Schema<WorkflowParameter>;
 
 /** The parameters. */
 export type WorkflowVersionPropertiesParametersMap = {
@@ -47298,7 +50456,7 @@ export const WorkflowVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowVersion>;
 
 /** The WorkflowVersion items on this page */
-export type WorkflowVersionListResultValueList = WorkflowVersion[];
+export type WorkflowVersionListResultValueList = ReadonlyArray<WorkflowVersion>;
 export const WorkflowVersionListResultValueList = /*@__PURE__*/ S.Array(
   WorkflowVersion,
 ) as any as S.Schema<WorkflowVersionListResultValueList>;

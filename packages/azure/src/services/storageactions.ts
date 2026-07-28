@@ -49,11 +49,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -80,7 +80,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -142,7 +142,8 @@ export const StorageTaskAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageTaskAssignment>;
 
 /** List of Storage Task Assignment Resource IDs associated with this Storage Task. */
-export type StorageTaskAssignmentsListResultValueList = StorageTaskAssignment[];
+export type StorageTaskAssignmentsListResultValueList =
+  ReadonlyArray<StorageTaskAssignment>;
 export const StorageTaskAssignmentsListResultValueList = /*@__PURE__*/ S.Array(
   StorageTaskAssignment,
 ) as any as S.Schema<StorageTaskAssignmentsListResultValueList>;
@@ -163,6 +164,176 @@ export const StorageTaskAssignmentsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageTaskAssignmentsListResult",
 }) as any as S.Schema<StorageTaskAssignmentsListResult>;
 
+/** Resource tags. */
+export type StorageTasksCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const StorageTasksCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StorageTasksCreateRequestTagsMap>;
+
+/** The operation to be performed on the object. */
+export type StorageTaskOperationName =
+  | "SetBlobTier"
+  | "SetBlobTags"
+  | "SetBlobImmutabilityPolicy"
+  | "SetBlobLegalHold"
+  | "SetBlobExpiry"
+  | "DeleteBlob"
+  | "UndeleteBlob";
+export const StorageTaskOperationName = /*@__PURE__*/ S.String;
+
+/** Key-value parameters for the operation. */
+export type StorageTaskOperationParametersMap = {
+  [key: string]: string | undefined;
+};
+export const StorageTaskOperationParametersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StorageTaskOperationParametersMap>;
+
+/** Action to be taken when the operation is successful for a object. */
+export type OnSuccess = "continue";
+export const OnSuccess = /*@__PURE__*/ S.String;
+
+/** Action to be taken when the operation fails for a object. */
+export type OnFailure = "break";
+export const OnFailure = /*@__PURE__*/ S.String;
+
+/** Represents an operation to be performed on the object */
+export interface StorageTaskOperation {
+  /** The operation to be performed on the object. */
+  name: StorageTaskOperationName;
+  /** Key-value parameters for the operation. */
+  parameters?: StorageTaskOperationParametersMap;
+  /** Action to be taken when the operation is successful for a object. */
+  onSuccess?: OnSuccess;
+  /** Action to be taken when the operation fails for a object. */
+  onFailure?: OnFailure;
+}
+export const StorageTaskOperation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: StorageTaskOperationName,
+    parameters: S.optional(StorageTaskOperationParametersMap),
+    onSuccess: S.optional(OnSuccess),
+    onFailure: S.optional(OnFailure),
+  }),
+).annotate({
+  identifier: "StorageTaskOperation",
+}) as any as S.Schema<StorageTaskOperation>;
+
+/** List of operations to execute when the condition predicate satisfies. */
+export type IfConditionOperationsList = ReadonlyArray<StorageTaskOperation>;
+export const IfConditionOperationsList = /*@__PURE__*/ S.Array(
+  StorageTaskOperation,
+) as any as S.Schema<IfConditionOperationsList>;
+
+/** The if block of storage task operation */
+export interface IfCondition {
+  /** Condition predicate to evaluate each object. See https://aka.ms/storagetaskconditions for valid properties and operators. */
+  condition: string;
+  /** List of operations to execute when the condition predicate satisfies. */
+  operations: IfConditionOperationsList;
+}
+export const IfCondition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    condition: S.String,
+    operations: IfConditionOperationsList,
+  }),
+).annotate({ identifier: "IfCondition" }) as any as S.Schema<IfCondition>;
+
+/** List of operations to execute in the else block */
+export type ElseConditionOperationsList = ReadonlyArray<StorageTaskOperation>;
+export const ElseConditionOperationsList = /*@__PURE__*/ S.Array(
+  StorageTaskOperation,
+) as any as S.Schema<ElseConditionOperationsList>;
+
+/** The else block of storage task operation */
+export interface ElseCondition {
+  /** List of operations to execute in the else block */
+  operations: ElseConditionOperationsList;
+}
+export const ElseCondition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operations: ElseConditionOperationsList,
+  }),
+).annotate({ identifier: "ElseCondition" }) as any as S.Schema<ElseCondition>;
+
+/** The storage task action represents conditional statements and operations to be performed on target objects. */
+export interface StorageTaskAction {
+  /** The if block of storage task operation */
+  if: IfCondition;
+  /** The else block of storage task operation */
+  else?: ElseCondition;
+}
+export const StorageTaskAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    if: IfCondition,
+    else: S.optional(ElseCondition),
+  }),
+).annotate({
+  identifier: "StorageTaskAction",
+}) as any as S.Schema<StorageTaskAction>;
+
+/** Properties of the storage task. */
+export interface StorageTaskPropertiesInput {
+  /** Storage Task is enabled when set to true and disabled when set to false */
+  enabled: boolean;
+  /** Text that describes the purpose of the storage task */
+  description: string;
+  /** The storage task action that is executed */
+  action: StorageTaskAction;
+}
+export const StorageTaskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    description: S.String,
+    action: StorageTaskAction,
+  }),
+).annotate({
+  identifier: "StorageTaskPropertiesInput",
+}) as any as S.Schema<StorageTaskPropertiesInput>;
+
+/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
+export type ManagedServiceIdentityType =
+  | "None"
+  | "SystemAssigned"
+  | "UserAssigned"
+  | "SystemAssigned,UserAssigned";
+export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type UserAssignedIdentitiesInput = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentityInput,
+) as any as S.Schema<UserAssignedIdentitiesInput>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface StorageTasksCreateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const StorageTasksCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "StorageTasksCreateRequestIdentity",
+}) as any as S.Schema<StorageTasksCreateRequestIdentity>;
+
 export interface StorageTasksCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -170,14 +341,24 @@ export interface StorageTasksCreateRequest {
   resourceGroupName: string;
   /** The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only. */
   storageTaskName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: StorageTasksCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the storage task. */
+  properties: StorageTaskPropertiesInput;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity: StorageTasksCreateRequestIdentity;
 }
 export const StorageTasksCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     storageTaskName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(StorageTasksCreateRequestTagsMap),
+    location: S.String,
+    properties: StorageTaskPropertiesInput,
+    identity: StorageTasksCreateRequestIdentity,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -195,8 +376,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -204,8 +384,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -243,110 +422,6 @@ export const StorageTasksCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StorageTasksCreateResponseTagsMap>;
 
-/** The operation to be performed on the object. */
-export type StorageTaskOperationName =
-  | "SetBlobTier"
-  | "SetBlobTags"
-  | "SetBlobImmutabilityPolicy"
-  | "SetBlobLegalHold"
-  | "SetBlobExpiry"
-  | "DeleteBlob"
-  | "UndeleteBlob"
-  | (string & {});
-export const StorageTaskOperationName = /*@__PURE__*/ S.String;
-
-/** Key-value parameters for the operation. */
-export type StorageTaskOperationParametersMap = {
-  [key: string]: string | undefined;
-};
-export const StorageTaskOperationParametersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StorageTaskOperationParametersMap>;
-
-/** Action to be taken when the operation is successful for a object. */
-export type OnSuccess = "continue" | (string & {});
-export const OnSuccess = /*@__PURE__*/ S.String;
-
-/** Action to be taken when the operation fails for a object. */
-export type OnFailure = "break" | (string & {});
-export const OnFailure = /*@__PURE__*/ S.String;
-
-/** Represents an operation to be performed on the object */
-export interface StorageTaskOperation {
-  /** The operation to be performed on the object. */
-  name: StorageTaskOperationName;
-  /** Key-value parameters for the operation. */
-  parameters?: StorageTaskOperationParametersMap;
-  /** Action to be taken when the operation is successful for a object. */
-  onSuccess?: OnSuccess;
-  /** Action to be taken when the operation fails for a object. */
-  onFailure?: OnFailure;
-}
-export const StorageTaskOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: StorageTaskOperationName,
-    parameters: S.optional(StorageTaskOperationParametersMap),
-    onSuccess: S.optional(OnSuccess),
-    onFailure: S.optional(OnFailure),
-  }),
-).annotate({
-  identifier: "StorageTaskOperation",
-}) as any as S.Schema<StorageTaskOperation>;
-
-/** List of operations to execute when the condition predicate satisfies. */
-export type IfConditionOperationsList = StorageTaskOperation[];
-export const IfConditionOperationsList = /*@__PURE__*/ S.Array(
-  StorageTaskOperation,
-) as any as S.Schema<IfConditionOperationsList>;
-
-/** The if block of storage task operation */
-export interface IfCondition {
-  /** Condition predicate to evaluate each object. See https://aka.ms/storagetaskconditions for valid properties and operators. */
-  condition: string;
-  /** List of operations to execute when the condition predicate satisfies. */
-  operations: IfConditionOperationsList;
-}
-export const IfCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.String,
-    operations: IfConditionOperationsList,
-  }),
-).annotate({ identifier: "IfCondition" }) as any as S.Schema<IfCondition>;
-
-/** List of operations to execute in the else block */
-export type ElseConditionOperationsList = StorageTaskOperation[];
-export const ElseConditionOperationsList = /*@__PURE__*/ S.Array(
-  StorageTaskOperation,
-) as any as S.Schema<ElseConditionOperationsList>;
-
-/** The else block of storage task operation */
-export interface ElseCondition {
-  /** List of operations to execute in the else block */
-  operations: ElseConditionOperationsList;
-}
-export const ElseCondition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operations: ElseConditionOperationsList,
-  }),
-).annotate({ identifier: "ElseCondition" }) as any as S.Schema<ElseCondition>;
-
-/** The storage task action represents conditional statements and operations to be performed on target objects. */
-export interface StorageTaskAction {
-  /** The if block of storage task operation */
-  if: IfCondition;
-  /** The else block of storage task operation */
-  else?: ElseCondition;
-}
-export const StorageTaskAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    if: IfCondition,
-    else: S.optional(ElseCondition),
-  }),
-).annotate({
-  identifier: "StorageTaskAction",
-}) as any as S.Schema<StorageTaskAction>;
-
 /** Represents the provisioning state of the storage task. */
 export type ProvisioningState =
   | "ValidateSubscriptionQuotaBegin"
@@ -356,8 +431,7 @@ export type ProvisioningState =
   | "Succeeded"
   | "Deleting"
   | "Canceled"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Properties of the storage task. */
@@ -387,15 +461,6 @@ export const StorageTaskProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StorageTaskProperties",
 }) as any as S.Schema<StorageTaskProperties>;
-
-/** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
-export type ManagedServiceIdentityType =
-  | "None"
-  | "SystemAssigned"
-  | "UserAssigned"
-  | "SystemAssigned,UserAssigned"
-  | (string & {});
-export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
@@ -677,7 +742,7 @@ export const StorageTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageTask" }) as any as S.Schema<StorageTask>;
 
 /** Gets the list of storage tasks and their properties. */
-export type StorageTasksListResultValueList = StorageTask[];
+export type StorageTasksListResultValueList = ReadonlyArray<StorageTask>;
 export const StorageTasksListResultValueList = /*@__PURE__*/ S.Array(
   StorageTask,
 ) as any as S.Schema<StorageTasksListResultValueList>;
@@ -718,30 +783,6 @@ export const StorageTasksListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "StorageTasksListBySubscriptionRequest",
 }) as any as S.Schema<StorageTasksListBySubscriptionRequest>;
 
-export interface StorageTasksPreviewActionsRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** Represents an Azure geography region where supported resource providers live. */
-  location: string;
-  body: unknown;
-}
-export const StorageTasksPreviewActionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageActions/locations/{location}/previewActions",
-      code: 200,
-      apiVersion: "2026-03-01",
-    }),
-  ),
-).annotate({
-  identifier: "StorageTasksPreviewActionsRequest",
-}) as any as S.Schema<StorageTasksPreviewActionsRequest>;
-
 /** Storage task preview object key value pair properties. */
 export interface StorageTaskPreviewKeyValueProperties {
   /** Represents the key property of the pair. */
@@ -761,7 +802,7 @@ export const StorageTaskPreviewKeyValueProperties = /*@__PURE__*/ S.suspend(
 
 /** metadata key value pairs to be tested for a match against the provided condition. */
 export type StorageTaskPreviewContainerPropertiesMetadataList =
-  StorageTaskPreviewKeyValueProperties[];
+  ReadonlyArray<StorageTaskPreviewKeyValueProperties>;
 export const StorageTaskPreviewContainerPropertiesMetadataList =
   /*@__PURE__*/ S.Array(
     StorageTaskPreviewKeyValueProperties,
@@ -786,7 +827,7 @@ export const StorageTaskPreviewContainerProperties = /*@__PURE__*/ S.suspend(
 
 /** properties key value pairs to be tested for a match against the provided condition. */
 export type StorageTaskPreviewBlobPropertiesPropertiesList =
-  StorageTaskPreviewKeyValueProperties[];
+  ReadonlyArray<StorageTaskPreviewKeyValueProperties>;
 export const StorageTaskPreviewBlobPropertiesPropertiesList =
   /*@__PURE__*/ S.Array(
     StorageTaskPreviewKeyValueProperties,
@@ -794,7 +835,7 @@ export const StorageTaskPreviewBlobPropertiesPropertiesList =
 
 /** metadata key value pairs to be tested for a match against the provided condition. */
 export type StorageTaskPreviewBlobPropertiesMetadataList =
-  StorageTaskPreviewKeyValueProperties[];
+  ReadonlyArray<StorageTaskPreviewKeyValueProperties>;
 export const StorageTaskPreviewBlobPropertiesMetadataList =
   /*@__PURE__*/ S.Array(
     StorageTaskPreviewKeyValueProperties,
@@ -802,14 +843,10 @@ export const StorageTaskPreviewBlobPropertiesMetadataList =
 
 /** tags key value pairs to be tested for a match against the provided condition. */
 export type StorageTaskPreviewBlobPropertiesTagsList =
-  StorageTaskPreviewKeyValueProperties[];
+  ReadonlyArray<StorageTaskPreviewKeyValueProperties>;
 export const StorageTaskPreviewBlobPropertiesTagsList = /*@__PURE__*/ S.Array(
   StorageTaskPreviewKeyValueProperties,
 ) as any as S.Schema<StorageTaskPreviewBlobPropertiesTagsList>;
-
-/** Represents the condition block name that matched blob properties. */
-export type MatchedBlockName = "If" | "Else" | "None" | (string & {});
-export const MatchedBlockName = /*@__PURE__*/ S.String;
 
 /** Storage task preview container properties */
 export interface StorageTaskPreviewBlobProperties {
@@ -821,8 +858,6 @@ export interface StorageTaskPreviewBlobProperties {
   metadata?: StorageTaskPreviewBlobPropertiesMetadataList;
   /** tags key value pairs to be tested for a match against the provided condition. */
   tags?: StorageTaskPreviewBlobPropertiesTagsList;
-  /** Represents the condition block name that matched blob properties. */
-  matchedBlock?: MatchedBlockName;
 }
 export const StorageTaskPreviewBlobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -830,7 +865,6 @@ export const StorageTaskPreviewBlobProperties = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(StorageTaskPreviewBlobPropertiesPropertiesList),
     metadata: S.optional(StorageTaskPreviewBlobPropertiesMetadataList),
     tags: S.optional(StorageTaskPreviewBlobPropertiesTagsList),
-    matchedBlock: S.optional(MatchedBlockName),
   }),
 ).annotate({
   identifier: "StorageTaskPreviewBlobProperties",
@@ -838,7 +872,7 @@ export const StorageTaskPreviewBlobProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties of some sample blobs in the container to test for matches with the preview action. */
 export type StorageTaskPreviewActionPropertiesBlobsList =
-  StorageTaskPreviewBlobProperties[];
+  ReadonlyArray<StorageTaskPreviewBlobProperties>;
 export const StorageTaskPreviewActionPropertiesBlobsList =
   /*@__PURE__*/ S.Array(
     StorageTaskPreviewBlobProperties,
@@ -892,6 +926,31 @@ export const StorageTaskPreviewActionProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "StorageTaskPreviewActionProperties",
 }) as any as S.Schema<StorageTaskPreviewActionProperties>;
 
+export interface StorageTasksPreviewActionsRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** Represents an Azure geography region where supported resource providers live. */
+  location: string;
+  /** Properties of the storage task preview. */
+  properties: StorageTaskPreviewActionProperties;
+}
+export const StorageTasksPreviewActionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    properties: StorageTaskPreviewActionProperties,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.StorageActions/locations/{location}/previewActions",
+      code: 200,
+      apiVersion: "2026-03-01",
+    }),
+  ),
+).annotate({
+  identifier: "StorageTasksPreviewActionsRequest",
+}) as any as S.Schema<StorageTasksPreviewActionsRequest>;
+
 /** Storage Task Preview Action. */
 export interface StorageTaskPreviewAction {
   /** Properties of the storage task preview. */
@@ -937,11 +996,11 @@ export const StorageTasksReportListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageTasksReportListRequest>;
 
 /** Represents the status of the execution. */
-export type RunStatusEnum = "InProgress" | "Finished" | (string & {});
+export type RunStatusEnum = "InProgress" | "Finished";
 export const RunStatusEnum = /*@__PURE__*/ S.String;
 
 /** Represents the overall result of the execution for the run instance */
-export type RunResult = "Succeeded" | "Failed" | (string & {});
+export type RunResult = "Succeeded" | "Failed";
 export const RunResult = /*@__PURE__*/ S.String;
 
 /** Storage task execution report for a run instance. */
@@ -1022,7 +1081,8 @@ export const StorageTaskReportInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageTaskReportInstance>;
 
 /** Gets storage tasks run result summary. */
-export type StorageTaskReportSummaryValueList = StorageTaskReportInstance[];
+export type StorageTaskReportSummaryValueList =
+  ReadonlyArray<StorageTaskReportInstance>;
 export const StorageTaskReportSummaryValueList = /*@__PURE__*/ S.Array(
   StorageTaskReportInstance,
 ) as any as S.Schema<StorageTaskReportSummaryValueList>;
@@ -1076,6 +1136,48 @@ export const StorageTasksStopAllAssignmentsResponse = /*@__PURE__*/ S.suspend(
   identifier: "StorageTasksStopAllAssignmentsResponse",
 }) as any as S.Schema<StorageTasksStopAllAssignmentsResponse>;
 
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface StorageTasksUpdateRequestIdentity {
+  type: ManagedServiceIdentityType;
+  userAssignedIdentities?: UserAssignedIdentitiesInput;
+}
+export const StorageTasksUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+  }),
+).annotate({
+  identifier: "StorageTasksUpdateRequestIdentity",
+}) as any as S.Schema<StorageTasksUpdateRequestIdentity>;
+
+/** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters. */
+export type StorageTasksUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const StorageTasksUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StorageTasksUpdateRequestTagsMap>;
+
+/** Properties of the storage task. */
+export interface StorageTaskUpdatePropertiesInput {
+  /** Storage Task is enabled when set to true and disabled when set to false */
+  enabled?: boolean;
+  /** Text that describes the purpose of the storage task */
+  description?: string;
+  /** The storage task action that is executed */
+  action?: StorageTaskAction;
+}
+export const StorageTaskUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    action: S.optional(StorageTaskAction),
+  }),
+).annotate({
+  identifier: "StorageTaskUpdatePropertiesInput",
+}) as any as S.Schema<StorageTaskUpdatePropertiesInput>;
+
 export interface StorageTasksUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1083,14 +1185,21 @@ export interface StorageTasksUpdateRequest {
   resourceGroupName: string;
   /** The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only. */
   storageTaskName: string;
-  body: unknown;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: StorageTasksUpdateRequestIdentity;
+  /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters. */
+  tags?: StorageTasksUpdateRequestTagsMap;
+  /** Properties of the storage task. */
+  properties?: StorageTaskUpdatePropertiesInput;
 }
 export const StorageTasksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     storageTaskName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    identity: S.optional(StorageTasksUpdateRequestIdentity),
+    tags: S.optional(StorageTasksUpdateRequestTagsMap),
+    properties: S.optional(StorageTaskUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

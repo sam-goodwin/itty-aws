@@ -35,6 +35,36 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
+/** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
+export type ProjectSecretApiKeysCreateRequestScopesList = ReadonlyArray<string>;
+export const ProjectSecretApiKeysCreateRequestScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ProjectSecretApiKeysCreateRequestScopesList>;
+
+export interface ProjectSecretApiKeysCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  label?: string;
+  /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
+  scopes?: ProjectSecretApiKeysCreateRequestScopesList;
+}
+export const ProjectSecretApiKeysCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    label: S.optional(S.String),
+    scopes: S.optional(ProjectSecretApiKeysCreateRequestScopesList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/project_secret_api_keys/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ProjectSecretApiKeysCreateRequest",
+}) as any as S.Schema<ProjectSecretApiKeysCreateRequest>;
+
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -50,11 +80,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -87,51 +116,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
-export type ProjectSecretApiKeysCreateRequestScopesList = string[];
-export const ProjectSecretApiKeysCreateRequestScopesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectSecretApiKeysCreateRequestScopesList>;
-
-export interface ProjectSecretApiKeysCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: string;
-  label?: string;
-  value?: string;
-  mask_value?: string | null;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_used_at?: string | null;
-  last_rolled_at?: string | null;
-  /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
-  scopes?: ProjectSecretApiKeysCreateRequestScopesList;
-}
-export const ProjectSecretApiKeysCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    label: S.optional(S.String),
-    value: S.optional(S.String),
-    mask_value: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    last_used_at: S.optional(S.NullOr(S.String)),
-    last_rolled_at: S.optional(S.NullOr(S.String)),
-    scopes: S.optional(ProjectSecretApiKeysCreateRequestScopesList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/project_secret_api_keys/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ProjectSecretApiKeysCreateRequest",
-}) as any as S.Schema<ProjectSecretApiKeysCreateRequest>;
-
-/** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
-export type ProjectSecretAPIKeyScopesList = string[];
+export type ProjectSecretAPIKeyScopesList = ReadonlyArray<string>;
 export const ProjectSecretAPIKeyScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProjectSecretAPIKeyScopesList>;
@@ -216,7 +201,8 @@ export const ProjectSecretApiKeysListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectSecretApiKeysListRequest",
 }) as any as S.Schema<ProjectSecretApiKeysListRequest>;
 
-export type PaginatedProjectSecretAPIKeyListResultsList = ProjectSecretAPIKey[];
+export type PaginatedProjectSecretAPIKeyListResultsList =
+  ReadonlyArray<ProjectSecretAPIKey>;
 export const PaginatedProjectSecretAPIKeyListResultsList =
   /*@__PURE__*/ S.Array(
     ProjectSecretAPIKey,
@@ -240,7 +226,8 @@ export const PaginatedProjectSecretAPIKeyList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedProjectSecretAPIKeyList>;
 
 /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
-export type ProjectSecretApiKeysPartialUpdateRequestScopesList = string[];
+export type ProjectSecretApiKeysPartialUpdateRequestScopesList =
+  ReadonlyArray<string>;
 export const ProjectSecretApiKeysPartialUpdateRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -252,12 +239,6 @@ export interface ProjectSecretApiKeysPartialUpdateRequest {
   /** A unique value identifying this project secret api key. */
   id: string;
   label?: string;
-  value?: string;
-  mask_value?: string | null;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_used_at?: string | null;
-  last_rolled_at?: string | null;
   /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
   scopes?: ProjectSecretApiKeysPartialUpdateRequestScopesList;
 }
@@ -267,12 +248,6 @@ export const ProjectSecretApiKeysPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
       label: S.optional(S.String),
-      value: S.optional(S.String),
-      mask_value: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      last_used_at: S.optional(S.NullOr(S.String)),
-      last_rolled_at: S.optional(S.NullOr(S.String)),
       scopes: S.optional(ProjectSecretApiKeysPartialUpdateRequestScopesList),
     }).pipe(
       T.Http({
@@ -329,7 +304,7 @@ export const ProjectSecretApiKeysRollCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ProjectSecretApiKeysRollCreateRequest>;
 
 /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
-export type ProjectSecretApiKeysUpdateRequestScopesList = string[];
+export type ProjectSecretApiKeysUpdateRequestScopesList = ReadonlyArray<string>;
 export const ProjectSecretApiKeysUpdateRequestScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -341,12 +316,6 @@ export interface ProjectSecretApiKeysUpdateRequest {
   /** A unique value identifying this project secret api key. */
   id: string;
   label?: string;
-  value?: string;
-  mask_value?: string | null;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_used_at?: string | null;
-  last_rolled_at?: string | null;
   /** Project-wide API scopes granted to this key. Project secret API keys do not honor object-level access controls, so a scope can access resources of that type even when per-resource RBAC would hide them from an individual user. */
   scopes?: ProjectSecretApiKeysUpdateRequestScopesList;
 }
@@ -355,12 +324,6 @@ export const ProjectSecretApiKeysUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     label: S.optional(S.String),
-    value: S.optional(S.String),
-    mask_value: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-    last_used_at: S.optional(S.NullOr(S.String)),
-    last_rolled_at: S.optional(S.NullOr(S.String)),
     scopes: S.optional(ProjectSecretApiKeysUpdateRequestScopesList),
   }).pipe(
     T.Http({

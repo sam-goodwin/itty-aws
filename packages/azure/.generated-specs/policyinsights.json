@@ -2210,16 +2210,65 @@
             "smithy.api#documentation": "The name of the remediation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.policyinsights#RemediationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for the remediation."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.policyinsights#RemediationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "policyAssignmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the policy assignment that should be remediated."
+          }
+        },
+        "policyDefinitionReferenceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition."
+          }
+        },
+        "resourceDiscoveryMode": {
+          "target": "com.azure.policyinsights#ResourceDiscoveryMode",
+          "traits": {
+            "smithy.api#documentation": "The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified."
+          }
+        },
+        "filters": {
+          "target": "com.azure.policyinsights#RemediationFilters",
+          "traits": {
+            "smithy.api#documentation": "The filters that will be applied to determine which resources to remediate."
+          }
+        },
+        "resourceCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used."
+          }
+        },
+        "parallelDeployments": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used."
+          }
+        },
+        "failureThreshold": {
+          "target": "com.azure.policyinsights#RemediationPropertiesFailureThreshold",
+          "traits": {
+            "smithy.api#documentation": "The remediation failure threshold settings"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The remediation properties."
       }
     },
     "com.azure.policyinsights#RemediationsGetAtResourceGroup": {
@@ -3570,16 +3619,94 @@
             "smithy.api#documentation": "The name of the resource group. The name is case insensitive."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resourceDetails": {
+          "target": "com.azure.policyinsights#CheckRestrictionsResourceDetails",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The information about the resource that will be evaluated.",
             "smithy.api#required": {}
+          }
+        },
+        "pendingFields": {
+          "target": "com.azure.policyinsights#PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList",
+          "traits": {
+            "smithy.api#documentation": "The list of fields and values that should be evaluated for potential restrictions."
+          }
+        },
+        "includeAuditEffect": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to include policies with the 'audit' effect in the results. Defaults to false."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.policyinsights#PolicyRestrictionsCheckAtResourceGroupScopeRequestPendingFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.policyinsights#PendingField"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of fields and values that should be evaluated for potential restrictions."
+      }
+    },
+    "com.azure.policyinsights#PendingField": {
+      "type": "structure",
+      "members": {
+        "field": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the field. This can be a top-level property like 'name' or 'type' or an Azure Policy field alias.",
+            "smithy.api#required": {}
+          }
+        },
+        "values": {
+          "target": "com.azure.policyinsights#PendingFieldValuesList",
+          "traits": {
+            "smithy.api#documentation": "The list of potential values for the field that should be evaluated against Azure Policy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A field that should be evaluated against Azure Policy to determine restrictions."
+      }
+    },
+    "com.azure.policyinsights#PendingFieldValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of potential values for the field that should be evaluated against Azure Policy."
+      }
+    },
+    "com.azure.policyinsights#CheckRestrictionsResourceDetails": {
+      "type": "structure",
+      "members": {
+        "resourceContent": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The resource content. This should include whatever properties are already known and can be a partial set of all resource properties.",
+            "smithy.api#required": {}
+          }
+        },
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The api-version of the resource content."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The scope where the resource is being created. For example, if the resource is a child resource this would be the parent resource's resource ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The information about the resource that will be evaluated."
       }
     },
     "com.azure.policyinsights#AttestationsDeleteAtResourceGroup": {
@@ -3848,16 +3975,88 @@
             "smithy.api#documentation": "The name of the attestation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.policyinsights#AttestationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties for the attestation.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.policyinsights#AttestationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "policyAssignmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource ID of the policy assignment that the attestation is setting the state for.",
+            "smithy.api#required": {}
+          }
+        },
+        "policyDefinitionReferenceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The policy definition reference ID from a policy set definition that the attestation is setting the state for. If the policy assignment assigns a policy set definition the attestation can choose a definition within the set definition with this property or omit this and set the state for the entire set definition."
+          }
+        },
+        "complianceState": {
+          "target": "com.azure.policyinsights#ComplianceState",
+          "traits": {
+            "smithy.api#documentation": "The compliance state that should be set on the resource."
+          }
+        },
+        "expiresOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time the compliance state should expire."
+          }
+        },
+        "owner": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The person responsible for setting the state of the resource. This value is typically an Azure Active Directory object ID."
+          }
+        },
+        "comments": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Comments describing why this attestation was created."
+          }
+        },
+        "evidence": {
+          "target": "com.azure.policyinsights#AttestationPropertiesInputEvidenceList",
+          "traits": {
+            "smithy.api#documentation": "The evidence supporting the compliance state set in this attestation."
+          }
+        },
+        "assessmentDate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time the evidence was assessed"
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Additional metadata for this attestation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an attestation resource."
+      }
+    },
+    "com.azure.policyinsights#AttestationPropertiesInputEvidenceList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.policyinsights#AttestationEvidence"
+      },
+      "traits": {
+        "smithy.api#documentation": "The evidence supporting the compliance state set in this attestation."
       }
     },
     "com.azure.policyinsights#AttestationsGetAtResourceGroup": {
@@ -4504,11 +4703,10 @@
             "smithy.api#documentation": "The name of the remediation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.policyinsights#RemediationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for the remediation."
           }
         }
       },
@@ -5126,16 +5324,37 @@
             "smithy.api#documentation": "The ID of the target subscription."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resourceDetails": {
+          "target": "com.azure.policyinsights#CheckRestrictionsResourceDetails",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The information about the resource that will be evaluated.",
             "smithy.api#required": {}
+          }
+        },
+        "pendingFields": {
+          "target": "com.azure.policyinsights#PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList",
+          "traits": {
+            "smithy.api#documentation": "The list of fields and values that should be evaluated for potential restrictions."
+          }
+        },
+        "includeAuditEffect": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to include policies with the 'audit' effect in the results. Defaults to false."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.policyinsights#PolicyRestrictionsCheckAtSubscriptionScopeRequestPendingFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.policyinsights#PendingField"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of fields and values that should be evaluated for potential restrictions."
       }
     },
     "com.azure.policyinsights#AttestationsDeleteAtSubscription": {
@@ -5258,10 +5477,10 @@
             "smithy.api#documentation": "The name of the attestation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.policyinsights#AttestationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties for the attestation.",
             "smithy.api#required": {}
           }
         }
@@ -7582,11 +7801,10 @@
             "smithy.api#documentation": "The name of the remediation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.policyinsights#RemediationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for the remediation."
           }
         }
       },
@@ -8185,16 +8403,30 @@
             "smithy.api#documentation": "Management group ID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resourceDetails": {
+          "target": "com.azure.policyinsights#CheckRestrictionsResourceDetails",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The information about the resource that will be evaluated."
+          }
+        },
+        "pendingFields": {
+          "target": "com.azure.policyinsights#PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList",
+          "traits": {
+            "smithy.api#documentation": "The list of fields and values that should be evaluated for potential restrictions."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.policyinsights#PolicyRestrictionsCheckAtManagementGroupScopeRequestPendingFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.policyinsights#PendingField"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of fields and values that should be evaluated for potential restrictions."
       }
     },
     "com.azure.policyinsights#PolicyRestrictionsCheckAtManagementGroupScopeRequestManagementGroupsNamespace": {
@@ -8497,11 +8729,10 @@
             "smithy.api#documentation": "The name of the remediation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.policyinsights#RemediationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties for the remediation."
           }
         }
       },
@@ -9195,10 +9426,10 @@
             "smithy.api#documentation": "The name of the attestation."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.policyinsights#AttestationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties for the attestation.",
             "smithy.api#required": {}
           }
         }

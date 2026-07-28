@@ -32,9 +32,17 @@ export const WebVitalsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WebVitalsRetrieveRequest",
 }) as any as S.Schema<WebVitalsRetrieveRequest>;
 
-export type WebVitalsRetrieveResponse = unknown;
+export type WebVitalsRetrieveResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const WebVitalsRetrieveResponseBodyMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<WebVitalsRetrieveResponseBodyMap>;
+
+export type WebVitalsRetrieveResponse = WebVitalsRetrieveResponseBodyMap;
 export const WebVitalsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  WebVitalsRetrieveResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "WebVitalsRetrieveResponse",
 }) as any as S.Schema<WebVitalsRetrieveResponse>;

@@ -40,8 +40,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -49,8 +48,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -94,7 +92,7 @@ export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Collector Policies for Azure Traffic Collector. */
 export type AzureTrafficCollectorPropertiesFormatCollectorPoliciesList =
-  ResourceReference[];
+  ReadonlyArray<ResourceReference>;
 export const AzureTrafficCollectorPropertiesFormatCollectorPoliciesList =
   /*@__PURE__*/ S.Array(
     ResourceReference,
@@ -105,8 +103,7 @@ export type ProvisioningState =
   | "Succeeded"
   | "Updating"
   | "Deleting"
-  | "Failed"
-  | (string & {});
+  | "Failed";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Azure Traffic Collector resource properties. */
@@ -175,7 +172,8 @@ export const AzureTrafficCollector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureTrafficCollector>;
 
 /** The AzureTrafficCollector items on this page */
-export type AzureTrafficCollectorListResultValueList = AzureTrafficCollector[];
+export type AzureTrafficCollectorListResultValueList =
+  ReadonlyArray<AzureTrafficCollector>;
 export const AzureTrafficCollectorListResultValueList = /*@__PURE__*/ S.Array(
   AzureTrafficCollector,
 ) as any as S.Schema<AzureTrafficCollectorListResultValueList>;
@@ -216,6 +214,38 @@ export const AzureTrafficCollectorsBySubscriptionListRequest =
     identifier: "AzureTrafficCollectorsBySubscriptionListRequest",
   }) as any as S.Schema<AzureTrafficCollectorsBySubscriptionListRequest>;
 
+/** Resource reference properties. */
+export interface ResourceReferenceInput {}
+export const ResourceReferenceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ResourceReferenceInput",
+}) as any as S.Schema<ResourceReferenceInput>;
+
+/** Azure Traffic Collector resource properties. */
+export interface AzureTrafficCollectorPropertiesFormatInput {
+  /** The virtualHub to which the Azure Traffic Collector belongs. */
+  virtualHub?: ResourceReferenceInput;
+}
+export const AzureTrafficCollectorPropertiesFormatInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      virtualHub: S.optional(ResourceReferenceInput),
+    }),
+  ).annotate({
+    identifier: "AzureTrafficCollectorPropertiesFormatInput",
+  }) as any as S.Schema<AzureTrafficCollectorPropertiesFormatInput>;
+
+/** Resource tags. */
+export type AzureTrafficCollectorsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AzureTrafficCollectorsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AzureTrafficCollectorsCreateOrUpdateRequestTagsMap>;
+
 export interface AzureTrafficCollectorsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -223,7 +253,12 @@ export interface AzureTrafficCollectorsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Azure Traffic Collector name */
   azureTrafficCollectorName: string;
-  body: unknown;
+  /** Properties of the Azure Traffic Collector. */
+  properties?: AzureTrafficCollectorPropertiesFormatInput;
+  /** Resource location. */
+  location: string;
+  /** Resource tags. */
+  tags?: AzureTrafficCollectorsCreateOrUpdateRequestTagsMap;
 }
 export const AzureTrafficCollectorsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -231,7 +266,9 @@ export const AzureTrafficCollectorsCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       azureTrafficCollectorName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(AzureTrafficCollectorPropertiesFormatInput),
+      location: S.String,
+      tags: S.optional(AzureTrafficCollectorsCreateOrUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -387,6 +424,16 @@ export const AzureTrafficCollectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AzureTrafficCollectorsGetResponse",
 }) as any as S.Schema<AzureTrafficCollectorsGetResponse>;
 
+/** Resource tags. */
+export type AzureTrafficCollectorsUpdateTagsRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AzureTrafficCollectorsUpdateTagsRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AzureTrafficCollectorsUpdateTagsRequestTagsMap>;
+
 export interface AzureTrafficCollectorsUpdateTagsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -394,7 +441,8 @@ export interface AzureTrafficCollectorsUpdateTagsRequest {
   resourceGroupName: string;
   /** Azure Traffic Collector name */
   azureTrafficCollectorName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: AzureTrafficCollectorsUpdateTagsRequestTagsMap;
 }
 export const AzureTrafficCollectorsUpdateTagsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -402,7 +450,7 @@ export const AzureTrafficCollectorsUpdateTagsRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       azureTrafficCollectorName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(AzureTrafficCollectorsUpdateTagsRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -459,43 +507,12 @@ export const AzureTrafficCollectorsUpdateTagsResponse = /*@__PURE__*/ S.suspend(
   identifier: "AzureTrafficCollectorsUpdateTagsResponse",
 }) as any as S.Schema<AzureTrafficCollectorsUpdateTagsResponse>;
 
-export interface CollectorPoliciesCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Azure Traffic Collector name */
-  azureTrafficCollectorName: string;
-  /** Collector Policy Name */
-  collectorPolicyName: string;
-  body: unknown;
-}
-export const CollectorPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      azureTrafficCollectorName: S.String.pipe(T.Label()),
-      collectorPolicyName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
-        code: 200,
-        apiVersion: "2022-11-01",
-      }),
-    ),
-).annotate({
-  identifier: "CollectorPoliciesCreateOrUpdateRequest",
-}) as any as S.Schema<CollectorPoliciesCreateOrUpdateRequest>;
-
 /** The ingestion type. */
-export type IngestionType = "IPFIX" | (string & {});
+export type IngestionType = "IPFIX";
 export const IngestionType = /*@__PURE__*/ S.String;
 
 /** Ingestion source type. */
-export type SourceType = "Resource" | (string & {});
+export type SourceType = "Resource";
 export const SourceType = /*@__PURE__*/ S.String;
 
 /** Ingestion policy properties. */
@@ -516,7 +533,7 @@ export const IngestionSourcesPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Ingestion Sources. */
 export type IngestionPolicyPropertiesFormatIngestionSourcesList =
-  IngestionSourcesPropertiesFormat[];
+  ReadonlyArray<IngestionSourcesPropertiesFormat>;
 export const IngestionPolicyPropertiesFormatIngestionSourcesList =
   /*@__PURE__*/ S.Array(
     IngestionSourcesPropertiesFormat,
@@ -541,11 +558,11 @@ export const IngestionPolicyPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IngestionPolicyPropertiesFormat>;
 
 /** Emission format type. */
-export type EmissionType = "IPFIX" | (string & {});
+export type EmissionType = "IPFIX";
 export const EmissionType = /*@__PURE__*/ S.String;
 
 /** Emission destination type. */
-export type DestinationType = "AzureMonitor" | (string & {});
+export type DestinationType = "AzureMonitor";
 export const DestinationType = /*@__PURE__*/ S.String;
 
 /** Emission policy destination properties. */
@@ -563,7 +580,7 @@ export const EmissionPolicyDestination = /*@__PURE__*/ S.suspend(() =>
 
 /** Emission policy destinations. */
 export type EmissionPoliciesPropertiesFormatEmissionDestinationsList =
-  EmissionPolicyDestination[];
+  ReadonlyArray<EmissionPolicyDestination>;
 export const EmissionPoliciesPropertiesFormatEmissionDestinationsList =
   /*@__PURE__*/ S.Array(
     EmissionPolicyDestination,
@@ -589,7 +606,7 @@ export const EmissionPoliciesPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** Emission policies. */
 export type CollectorPolicyPropertiesFormatEmissionPoliciesList =
-  EmissionPoliciesPropertiesFormat[];
+  ReadonlyArray<EmissionPoliciesPropertiesFormat>;
 export const CollectorPolicyPropertiesFormatEmissionPoliciesList =
   /*@__PURE__*/ S.Array(
     EmissionPoliciesPropertiesFormat,
@@ -615,6 +632,54 @@ export const CollectorPolicyPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CollectorPolicyPropertiesFormat",
 }) as any as S.Schema<CollectorPolicyPropertiesFormat>;
+
+/** Resource tags. */
+export type CollectorPoliciesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CollectorPoliciesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<CollectorPoliciesCreateOrUpdateRequestTagsMap>;
+
+export interface CollectorPoliciesCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Azure Traffic Collector name */
+  azureTrafficCollectorName: string;
+  /** Collector Policy Name */
+  collectorPolicyName: string;
+  /** Properties of the Collector Policy. */
+  properties?: CollectorPolicyPropertiesFormat;
+  /** Resource location. */
+  location: string;
+  /** Resource tags. */
+  tags?: CollectorPoliciesCreateOrUpdateRequestTagsMap;
+}
+export const CollectorPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      azureTrafficCollectorName: S.String.pipe(T.Label()),
+      collectorPolicyName: S.String.pipe(T.Label()),
+      properties: S.optional(CollectorPolicyPropertiesFormat),
+      location: S.String,
+      tags: S.optional(CollectorPoliciesCreateOrUpdateRequestTagsMap),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
+        code: 200,
+        apiVersion: "2022-11-01",
+      }),
+    ),
+).annotate({
+  identifier: "CollectorPoliciesCreateOrUpdateRequest",
+}) as any as S.Schema<CollectorPoliciesCreateOrUpdateRequest>;
 
 /** Resource tags. */
 export type CollectorPoliciesCreateOrUpdateResponseTagsMap = {
@@ -832,7 +897,7 @@ export const CollectorPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectorPolicy>;
 
 /** The CollectorPolicy items on this page */
-export type CollectorPolicyListResultValueList = CollectorPolicy[];
+export type CollectorPolicyListResultValueList = ReadonlyArray<CollectorPolicy>;
 export const CollectorPolicyListResultValueList = /*@__PURE__*/ S.Array(
   CollectorPolicy,
 ) as any as S.Schema<CollectorPolicyListResultValueList>;
@@ -853,6 +918,15 @@ export const CollectorPolicyListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectorPolicyListResult",
 }) as any as S.Schema<CollectorPolicyListResult>;
 
+/** Resource tags. */
+export type CollectorPoliciesUpdateTagsRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CollectorPoliciesUpdateTagsRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CollectorPoliciesUpdateTagsRequestTagsMap>;
+
 export interface CollectorPoliciesUpdateTagsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -862,7 +936,8 @@ export interface CollectorPoliciesUpdateTagsRequest {
   azureTrafficCollectorName: string;
   /** Collector Policy Name */
   collectorPolicyName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: CollectorPoliciesUpdateTagsRequestTagsMap;
 }
 export const CollectorPoliciesUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -870,7 +945,7 @@ export const CollectorPoliciesUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     azureTrafficCollectorName: S.String.pipe(T.Label()),
     collectorPolicyName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(CollectorPoliciesUpdateTagsRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -984,7 +1059,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** The Operation items on this page */
-export type OperationListResultValueList = Operation[];
+export type OperationListResultValueList = ReadonlyArray<Operation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;

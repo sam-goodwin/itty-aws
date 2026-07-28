@@ -38,7 +38,7 @@ export class UnprocessableEntity extends T.applyErrorMatchers(
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
-  string[];
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -68,7 +68,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement =
 
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
-  IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
 export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
@@ -107,7 +107,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelector =
 
 /** clusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added */
 export type IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList =
-  IoK8sApimachineryPkgApisMetaV1LabelSelector[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1LabelSelector>;
 export const IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1LabelSelector,
@@ -139,7 +139,8 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
-export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = string[];
+export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -189,7 +190,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry =
 
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
-  IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
@@ -226,7 +227,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference =
 
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
-  IoK8sApimachineryPkgApisMetaV1OwnerReference[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
 export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1OwnerReference,
@@ -297,32 +298,32 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
 
 /** apiGroups is the name of the APIGroup that contains the resources. If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups. */
-export type IoK8sApiRbacV1PolicyRuleApiGroupsList = string[];
+export type IoK8sApiRbacV1PolicyRuleApiGroupsList = ReadonlyArray<string>;
 export const IoK8sApiRbacV1PolicyRuleApiGroupsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiRbacV1PolicyRuleApiGroupsList>;
 
 /** nonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only as the full, final step in the path Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"), but not both. */
-export type IoK8sApiRbacV1PolicyRuleNonResourceURLsList = string[];
+export type IoK8sApiRbacV1PolicyRuleNonResourceURLsList = ReadonlyArray<string>;
 export const IoK8sApiRbacV1PolicyRuleNonResourceURLsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApiRbacV1PolicyRuleNonResourceURLsList>;
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
-export type IoK8sApiRbacV1PolicyRuleResourceNamesList = string[];
+export type IoK8sApiRbacV1PolicyRuleResourceNamesList = ReadonlyArray<string>;
 export const IoK8sApiRbacV1PolicyRuleResourceNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiRbacV1PolicyRuleResourceNamesList>;
 
 /** resources is a list of resources this rule applies to. '*' represents all resources. */
-export type IoK8sApiRbacV1PolicyRuleResourcesList = string[];
+export type IoK8sApiRbacV1PolicyRuleResourcesList = ReadonlyArray<string>;
 export const IoK8sApiRbacV1PolicyRuleResourcesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiRbacV1PolicyRuleResourcesList>;
 
 /** verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs. */
-export type IoK8sApiRbacV1PolicyRuleVerbsList = string[];
+export type IoK8sApiRbacV1PolicyRuleVerbsList = ReadonlyArray<string>;
 export const IoK8sApiRbacV1PolicyRuleVerbsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApiRbacV1PolicyRuleVerbsList>;
@@ -354,7 +355,7 @@ export const IoK8sApiRbacV1PolicyRule = /*@__PURE__*/ S.suspend(() =>
 
 /** rules holds all the PolicyRules for this ClusterRole */
 export type CreateRbacAuthorizationV1ClusterRoleRequestRulesList =
-  IoK8sApiRbacV1PolicyRule[];
+  ReadonlyArray<IoK8sApiRbacV1PolicyRule>;
 export const CreateRbacAuthorizationV1ClusterRoleRequestRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiRbacV1PolicyRule,
@@ -404,7 +405,8 @@ export const CreateRbacAuthorizationV1ClusterRoleRequest =
   }) as any as S.Schema<CreateRbacAuthorizationV1ClusterRoleRequest>;
 
 /** rules holds all the PolicyRules for this ClusterRole */
-export type IoK8sApiRbacV1ClusterRoleRulesList = IoK8sApiRbacV1PolicyRule[];
+export type IoK8sApiRbacV1ClusterRoleRulesList =
+  ReadonlyArray<IoK8sApiRbacV1PolicyRule>;
 export const IoK8sApiRbacV1ClusterRoleRulesList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1PolicyRule,
 ) as any as S.Schema<IoK8sApiRbacV1ClusterRoleRulesList>;
@@ -477,7 +479,7 @@ export const IoK8sApiRbacV1Subject = /*@__PURE__*/ S.suspend(() =>
 
 /** subjects holds references to the objects the role applies to. */
 export type CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
-  IoK8sApiRbacV1Subject[];
+  ReadonlyArray<IoK8sApiRbacV1Subject>;
 export const CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiRbacV1Subject,
@@ -530,7 +532,7 @@ export const CreateRbacAuthorizationV1ClusterRoleBindingRequest =
 
 /** subjects holds references to the objects the role applies to. */
 export type IoK8sApiRbacV1ClusterRoleBindingSubjectsList =
-  IoK8sApiRbacV1Subject[];
+  ReadonlyArray<IoK8sApiRbacV1Subject>;
 export const IoK8sApiRbacV1ClusterRoleBindingSubjectsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiRbacV1Subject,
@@ -563,7 +565,7 @@ export const IoK8sApiRbacV1ClusterRoleBinding = /*@__PURE__*/ S.suspend(() =>
 
 /** rules holds all the PolicyRules for this Role */
 export type CreateRbacAuthorizationV1NamespacedRoleRequestRulesList =
-  IoK8sApiRbacV1PolicyRule[];
+  ReadonlyArray<IoK8sApiRbacV1PolicyRule>;
 export const CreateRbacAuthorizationV1NamespacedRoleRequestRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiRbacV1PolicyRule,
@@ -615,7 +617,8 @@ export const CreateRbacAuthorizationV1NamespacedRoleRequest =
   }) as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleRequest>;
 
 /** rules holds all the PolicyRules for this Role */
-export type IoK8sApiRbacV1RoleRulesList = IoK8sApiRbacV1PolicyRule[];
+export type IoK8sApiRbacV1RoleRulesList =
+  ReadonlyArray<IoK8sApiRbacV1PolicyRule>;
 export const IoK8sApiRbacV1RoleRulesList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1PolicyRule,
 ) as any as S.Schema<IoK8sApiRbacV1RoleRulesList>;
@@ -644,7 +647,7 @@ export const IoK8sApiRbacV1Role = /*@__PURE__*/ S.suspend(() =>
 
 /** subjects holds references to the objects the role applies to. */
 export type CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
-  IoK8sApiRbacV1Subject[];
+  ReadonlyArray<IoK8sApiRbacV1Subject>;
 export const CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiRbacV1Subject,
@@ -699,7 +702,8 @@ export const CreateRbacAuthorizationV1NamespacedRoleBindingRequest =
   }) as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleBindingRequest>;
 
 /** subjects holds references to the objects the role applies to. */
-export type IoK8sApiRbacV1RoleBindingSubjectsList = IoK8sApiRbacV1Subject[];
+export type IoK8sApiRbacV1RoleBindingSubjectsList =
+  ReadonlyArray<IoK8sApiRbacV1Subject>;
 export const IoK8sApiRbacV1RoleBindingSubjectsList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1Subject,
 ) as any as S.Schema<IoK8sApiRbacV1RoleBindingSubjectsList>;
@@ -816,7 +820,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause =
 
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
-  IoK8sApimachineryPkgApisMetaV1StatusCause[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1StatusCause>;
 export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1StatusCause,
@@ -1420,7 +1424,7 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR =
 
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
@@ -1428,7 +1432,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsLis
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
-  IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
 export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
@@ -1482,21 +1486,24 @@ export const GetRbacAuthorizationV1APIResourcesRequest =
   }) as any as S.Schema<GetRbacAuthorizationV1APIResourcesRequest>;
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
-export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = string[];
+export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+  ReadonlyArray<string>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1549,7 +1556,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource =
 
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
-  IoK8sApimachineryPkgApisMetaV1APIResource[];
+  ReadonlyArray<IoK8sApimachineryPkgApisMetaV1APIResource>;
 export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   /*@__PURE__*/ S.Array(
     IoK8sApimachineryPkgApisMetaV1APIResource,
@@ -1632,7 +1639,7 @@ export const ListRbacAuthorizationV1ClusterRoleRequest =
 
 /** Items is a list of ClusterRoles */
 export type IoK8sApiRbacV1ClusterRoleListItemsList =
-  IoK8sApiRbacV1ClusterRole[];
+  ReadonlyArray<IoK8sApiRbacV1ClusterRole>;
 export const IoK8sApiRbacV1ClusterRoleListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1ClusterRole,
 ) as any as S.Schema<IoK8sApiRbacV1ClusterRoleListItemsList>;
@@ -1713,7 +1720,7 @@ export const ListRbacAuthorizationV1ClusterRoleBindingRequest =
 
 /** Items is a list of ClusterRoleBindings */
 export type IoK8sApiRbacV1ClusterRoleBindingListItemsList =
-  IoK8sApiRbacV1ClusterRoleBinding[];
+  ReadonlyArray<IoK8sApiRbacV1ClusterRoleBinding>;
 export const IoK8sApiRbacV1ClusterRoleBindingListItemsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiRbacV1ClusterRoleBinding,
@@ -1798,7 +1805,7 @@ export const ListRbacAuthorizationV1NamespacedRoleRequest =
   }) as any as S.Schema<ListRbacAuthorizationV1NamespacedRoleRequest>;
 
 /** Items is a list of Roles */
-export type IoK8sApiRbacV1RoleListItemsList = IoK8sApiRbacV1Role[];
+export type IoK8sApiRbacV1RoleListItemsList = ReadonlyArray<IoK8sApiRbacV1Role>;
 export const IoK8sApiRbacV1RoleListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1Role,
 ) as any as S.Schema<IoK8sApiRbacV1RoleListItemsList>;
@@ -1882,7 +1889,7 @@ export const ListRbacAuthorizationV1NamespacedRoleBindingRequest =
 
 /** Items is a list of RoleBindings */
 export type IoK8sApiRbacV1RoleBindingListItemsList =
-  IoK8sApiRbacV1RoleBinding[];
+  ReadonlyArray<IoK8sApiRbacV1RoleBinding>;
 export const IoK8sApiRbacV1RoleBindingListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1RoleBinding,
 ) as any as S.Schema<IoK8sApiRbacV1RoleBindingListItemsList>;
@@ -2251,7 +2258,7 @@ export const ReadRbacAuthorizationV1NamespacedRoleBindingRequest =
 
 /** rules holds all the PolicyRules for this ClusterRole */
 export type ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList =
-  IoK8sApiRbacV1PolicyRule[];
+  ReadonlyArray<IoK8sApiRbacV1PolicyRule>;
 export const ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiRbacV1PolicyRule,
@@ -2305,7 +2312,7 @@ export const ReplaceRbacAuthorizationV1ClusterRoleRequest =
 
 /** subjects holds references to the objects the role applies to. */
 export type ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
-  IoK8sApiRbacV1Subject[];
+  ReadonlyArray<IoK8sApiRbacV1Subject>;
 export const ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiRbacV1Subject,
@@ -2361,7 +2368,7 @@ export const ReplaceRbacAuthorizationV1ClusterRoleBindingRequest =
 
 /** rules holds all the PolicyRules for this Role */
 export type ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList =
-  IoK8sApiRbacV1PolicyRule[];
+  ReadonlyArray<IoK8sApiRbacV1PolicyRule>;
 export const ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiRbacV1PolicyRule,
@@ -2417,7 +2424,7 @@ export const ReplaceRbacAuthorizationV1NamespacedRoleRequest =
 
 /** subjects holds references to the objects the role applies to. */
 export type ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
-  IoK8sApiRbacV1Subject[];
+  ReadonlyArray<IoK8sApiRbacV1Subject>;
 export const ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
   /*@__PURE__*/ S.Array(
     IoK8sApiRbacV1Subject,

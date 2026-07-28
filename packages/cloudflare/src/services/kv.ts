@@ -103,7 +103,7 @@ export class TitleRequired extends T.applyErrorMatchers(
   [{ code: 10019 }],
 ) {}
 
-export type NamespacesBulkDeleteRequestBodyList = string[];
+export type NamespacesBulkDeleteRequestBodyList = ReadonlyArray<string>;
 export const NamespacesBulkDeleteRequestBodyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesBulkDeleteRequestBodyList>;
@@ -133,7 +133,8 @@ export const BulkDeleteNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkDeleteNamespacesRequest",
 }) as any as S.Schema<BulkDeleteNamespacesRequest>;
 
-export type NamespacesBulkDeleteResponseUnsuccessfulKeysList = string[];
+export type NamespacesBulkDeleteResponseUnsuccessfulKeysList =
+  ReadonlyArray<string>;
 export const NamespacesBulkDeleteResponseUnsuccessfulKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -161,12 +162,12 @@ export const BulkDeleteNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkDeleteNamespacesResponse",
 }) as any as S.Schema<BulkDeleteNamespacesResponse>;
 
-export type NamespacesBulkGetRequestKeysList = string[];
+export type NamespacesBulkGetRequestKeysList = ReadonlyArray<string>;
 export const NamespacesBulkGetRequestKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesBulkGetRequestKeysList>;
 
-export type NamespacesBulkGetRequestType = "text" | "json" | (string & {});
+export type NamespacesBulkGetRequestType = "text" | "json";
 export const NamespacesBulkGetRequestType = /*@__PURE__*/ S.String;
 
 export interface BulkGetNamespacesRequest {
@@ -201,41 +202,93 @@ export const BulkGetNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkGetNamespacesRequest",
 }) as any as S.Schema<BulkGetNamespacesRequest>;
 
-export interface NamespacesBulkGetResponseValuesValue {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-  mapUnknown_: unknown;
-}
-export const NamespacesBulkGetResponseValuesValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
-    }),
-).annotate({
-  identifier: "NamespacesBulkGetResponseValuesValue",
-}) as any as S.Schema<NamespacesBulkGetResponseValuesValue>;
-
-export type NamespacesBulkGetResponseValuesMap = {
-  [key: string]: NamespacesBulkGetResponseValuesValue | undefined;
+export type NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map = {
+  [key: string]: unknown | undefined;
 };
-export const NamespacesBulkGetResponseValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  NamespacesBulkGetResponseValuesValue,
-) as any as S.Schema<NamespacesBulkGetResponseValuesMap>;
+export const NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BulkGetNamespacesResponse {
+export type NamespacesBulkGetResultWorkersKVBulkGetResultValues =
+  | string
+  | number
+  | boolean
+  | NamespacesBulkGetResultWorkersKVBulkGetResultValuesCase3Map;
+export const NamespacesBulkGetResultWorkersKVBulkGetResultValues =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], []]));
+
+export interface NamespacesBulkGetResultWorkersKVBulkGetResult {
   /** Requested keys are paired with their values in an object. */
-  values?: NamespacesBulkGetResponseValuesMap;
+  values?: NamespacesBulkGetResultWorkersKVBulkGetResultValues;
 }
+export const NamespacesBulkGetResultWorkersKVBulkGetResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      values: S.optional(NamespacesBulkGetResultWorkersKVBulkGetResultValues),
+    }),
+  ).annotate({
+    identifier: "NamespacesBulkGetResultWorkersKVBulkGetResult",
+  }) as any as S.Schema<NamespacesBulkGetResultWorkersKVBulkGetResult>;
+
+export interface NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue {
+  /** The metadata associated with the key. */
+  metadata: unknown;
+  /** The value associated with the key. */
+  value: unknown;
+  /** Expires the key at a certain time, measured in number of seconds since the UNIX epoch. */
+  expiration?: number;
+}
+export const NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      metadata: S.Unknown,
+      value: S.Unknown,
+      expiration: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue",
+  }) as any as S.Schema<NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue>;
+
+export type NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap =
+  {
+    [key: string]:
+      | NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue
+      | undefined;
+  };
+export const NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue,
+  ) as any as S.Schema<NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap>;
+
+export interface NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata {
+  /** Requested keys are paired with their values and metadata in an object. */
+  values?: NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap;
+}
+export const NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      values: S.optional(
+        NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata",
+  }) as any as S.Schema<NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata>;
+
+export type NamespacesBulkGetResult =
+  | NamespacesBulkGetResultWorkersKVBulkGetResult
+  | NamespacesBulkGetResultWorkersKVBulkGetResultWithMetadata;
+export const NamespacesBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["values"], ["values"]]),
+);
+
+export type BulkGetNamespacesResponse = NamespacesBulkGetResult;
 export const BulkGetNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(NamespacesBulkGetResponseValuesMap),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  NamespacesBulkGetResult.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "BulkGetNamespacesResponse",
 }) as any as S.Schema<BulkGetNamespacesResponse>;
@@ -268,7 +321,7 @@ export const NamespacesBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesBulkUpdateRequestBodyItem>;
 
 export type NamespacesBulkUpdateRequestBodyList =
-  NamespacesBulkUpdateRequestBodyItem[];
+  ReadonlyArray<NamespacesBulkUpdateRequestBodyItem>;
 export const NamespacesBulkUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   NamespacesBulkUpdateRequestBodyItem,
 ) as any as S.Schema<NamespacesBulkUpdateRequestBodyList>;
@@ -298,7 +351,8 @@ export const BulkPutNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkPutNamespacesRequest",
 }) as any as S.Schema<BulkPutNamespacesRequest>;
 
-export type NamespacesBulkUpdateResponseUnsuccessfulKeysList = string[];
+export type NamespacesBulkUpdateResponseUnsuccessfulKeysList =
+  ReadonlyArray<string>;
 export const NamespacesBulkUpdateResponseUnsuccessfulKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -593,7 +647,8 @@ export const NamespacesKeysListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesKeysListResultItem",
 }) as any as S.Schema<NamespacesKeysListResultItem>;
 
-export type NamespacesKeysListResultList = NamespacesKeysListResultItem[];
+export type NamespacesKeysListResultList =
+  ReadonlyArray<NamespacesKeysListResultItem>;
 export const NamespacesKeysListResultList = /*@__PURE__*/ S.Array(
   NamespacesKeysListResultItem,
 ) as any as S.Schema<NamespacesKeysListResultList>;
@@ -613,10 +668,10 @@ export const ListNamespaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespaceKeysResponse",
 }) as any as S.Schema<ListNamespaceKeysResponse>;
 
-export type NamespacesListRequestDirection = "asc" | "desc" | (string & {});
+export type NamespacesListRequestDirection = "asc" | "desc";
 export const NamespacesListRequestDirection = /*@__PURE__*/ S.String;
 
-export type NamespacesListRequestOrder = "id" | "title" | (string & {});
+export type NamespacesListRequestOrder = "id" | "title";
 export const NamespacesListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListNamespacesRequest {
@@ -671,7 +726,7 @@ export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesListResultItem",
 }) as any as S.Schema<NamespacesListResultItem>;
 
-export type NamespacesListResultList = NamespacesListResultItem[];
+export type NamespacesListResultList = ReadonlyArray<NamespacesListResultItem>;
 export const NamespacesListResultList = /*@__PURE__*/ S.Array(
   NamespacesListResultItem,
 ) as any as S.Schema<NamespacesListResultList>;
@@ -691,7 +746,7 @@ export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamespacesResponse",
 }) as any as S.Schema<ListNamespacesResponse>;
 
-export type NamespacesKeysBulkDeleteRequestBodyList = string[];
+export type NamespacesKeysBulkDeleteRequestBodyList = ReadonlyArray<string>;
 export const NamespacesKeysBulkDeleteRequestBodyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesKeysBulkDeleteRequestBodyList>;
@@ -721,7 +776,8 @@ export const NamespacesKeysBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesKeysBulkDeleteRequest",
 }) as any as S.Schema<NamespacesKeysBulkDeleteRequest>;
 
-export type NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList = string[];
+export type NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList =
+  ReadonlyArray<string>;
 export const NamespacesKeysBulkDeleteResponseUnsuccessfulKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -749,12 +805,12 @@ export const NamespacesKeysBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesKeysBulkDeleteResponse",
 }) as any as S.Schema<NamespacesKeysBulkDeleteResponse>;
 
-export type NamespacesKeysBulkGetRequestKeysList = string[];
+export type NamespacesKeysBulkGetRequestKeysList = ReadonlyArray<string>;
 export const NamespacesKeysBulkGetRequestKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesKeysBulkGetRequestKeysList>;
 
-export type NamespacesKeysBulkGetRequestType = "text" | "json" | (string & {});
+export type NamespacesKeysBulkGetRequestType = "text" | "json";
 export const NamespacesKeysBulkGetRequestType = /*@__PURE__*/ S.String;
 
 export interface NamespacesKeysBulkGetRequest {
@@ -789,41 +845,95 @@ export const NamespacesKeysBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesKeysBulkGetRequest",
 }) as any as S.Schema<NamespacesKeysBulkGetRequest>;
 
-export interface NamespacesKeysBulkGetResponseValuesValue {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-  mapUnknown_: unknown;
-}
-export const NamespacesKeysBulkGetResponseValuesValue = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-      mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
-    }),
-).annotate({
-  identifier: "NamespacesKeysBulkGetResponseValuesValue",
-}) as any as S.Schema<NamespacesKeysBulkGetResponseValuesValue>;
-
-export type NamespacesKeysBulkGetResponseValuesMap = {
-  [key: string]: NamespacesKeysBulkGetResponseValuesValue | undefined;
+export type NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map = {
+  [key: string]: unknown | undefined;
 };
-export const NamespacesKeysBulkGetResponseValuesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  NamespacesKeysBulkGetResponseValuesValue,
-) as any as S.Schema<NamespacesKeysBulkGetResponseValuesMap>;
+export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface NamespacesKeysBulkGetResponse {
+export type NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues =
+  | string
+  | number
+  | boolean
+  | NamespacesKeysBulkGetResultWorkersKVBulkGetResultValuesCase3Map;
+export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues =
+  /*@__PURE__*/ S.Unknown.pipe(T.UnionCases([[], [], [], []]));
+
+export interface NamespacesKeysBulkGetResultWorkersKVBulkGetResult {
   /** Requested keys are paired with their values in an object. */
-  values?: NamespacesKeysBulkGetResponseValuesMap;
+  values?: NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues;
 }
+export const NamespacesKeysBulkGetResultWorkersKVBulkGetResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      values: S.optional(
+        NamespacesKeysBulkGetResultWorkersKVBulkGetResultValues,
+      ),
+    }),
+  ).annotate({
+    identifier: "NamespacesKeysBulkGetResultWorkersKVBulkGetResult",
+  }) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResult>;
+
+export interface NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue {
+  /** The metadata associated with the key. */
+  metadata: unknown;
+  /** The value associated with the key. */
+  value: unknown;
+  /** Expires the key at a certain time, measured in number of seconds since the UNIX epoch. */
+  expiration?: number;
+}
+export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      metadata: S.Unknown,
+      value: S.Unknown,
+      expiration: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue",
+  }) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue>;
+
+export type NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap =
+  {
+    [key: string]:
+      | NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue
+      | undefined;
+  };
+export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesValue,
+  ) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap>;
+
+export interface NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata {
+  /** Requested keys are paired with their values and metadata in an object. */
+  values?: NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap;
+}
+export const NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      values: S.optional(
+        NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadataValuesMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata",
+  }) as any as S.Schema<NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata>;
+
+export type NamespacesKeysBulkGetResult =
+  | NamespacesKeysBulkGetResultWorkersKVBulkGetResult
+  | NamespacesKeysBulkGetResultWorkersKVBulkGetResultWithMetadata;
+export const NamespacesKeysBulkGetResult = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([["values"], ["values"]]),
+);
+
+export type NamespacesKeysBulkGetResponse = NamespacesKeysBulkGetResult;
 export const NamespacesKeysBulkGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(NamespacesKeysBulkGetResponseValuesMap),
-  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  NamespacesKeysBulkGetResult.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
   identifier: "NamespacesKeysBulkGetResponse",
 }) as any as S.Schema<NamespacesKeysBulkGetResponse>;
@@ -857,7 +967,7 @@ export const NamespacesKeysBulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NamespacesKeysBulkUpdateRequestBodyItem>;
 
 export type NamespacesKeysBulkUpdateRequestBodyList =
-  NamespacesKeysBulkUpdateRequestBodyItem[];
+  ReadonlyArray<NamespacesKeysBulkUpdateRequestBodyItem>;
 export const NamespacesKeysBulkUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   NamespacesKeysBulkUpdateRequestBodyItem,
 ) as any as S.Schema<NamespacesKeysBulkUpdateRequestBodyList>;
@@ -887,7 +997,8 @@ export const NamespacesKeysBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesKeysBulkUpdateRequest",
 }) as any as S.Schema<NamespacesKeysBulkUpdateRequest>;
 
-export type NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList = string[];
+export type NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList =
+  ReadonlyArray<string>;
 export const NamespacesKeysBulkUpdateResponseUnsuccessfulKeysList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -926,6 +1037,10 @@ export interface PutNamespaceValueRequest {
   expiration?: number;
   /** Expires the key after a number of seconds. Must be at least 60. */
   expirationTtl?: number;
+  /** A byte sequence to be stored, up to 25 MiB in length. */
+  value: string;
+  /** Associates arbitrary JSON data with a key/value pair. */
+  metadata?: unknown;
 }
 export const PutNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -934,12 +1049,15 @@ export const PutNamespaceValueRequest = /*@__PURE__*/ S.suspend(() =>
     keyName: S.String.pipe(T.Label("key_name")),
     expiration: S.optional(S.Number.pipe(T.Query())),
     expirationTtl: S.optional(S.Number.pipe(T.Query("expiration_ttl"))),
+    value: S.String,
+    metadata: S.optional(S.Unknown),
   })
     .pipe(
       T.Http({
         method: "PUT",
         uri: "/accounts/{account_id}/storage/kv/namespaces/{namespace_id}/values/{key_name}",
         code: 200,
+        contentType: "multipart",
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),

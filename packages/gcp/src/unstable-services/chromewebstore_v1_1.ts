@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type GetItemsProjectionEnum = "DRAFT" | "PUBLISHED" | (string & {});
+export type GetItemsProjectionEnum = "DRAFT" | "PUBLISHED";
 export const GetItemsProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetItemsRequest {
@@ -98,7 +98,7 @@ export const ItemError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ItemError" }) as any as S.Schema<ItemError>;
 
-export type ItemErrorList = ItemError[];
+export type ItemErrorList = ReadonlyArray<ItemError>;
 export const ItemErrorList = /*@__PURE__*/ S.Array(
   ItemError,
 ) as any as S.Schema<ItemErrorList>;
@@ -192,7 +192,7 @@ export const PublishItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PublishItemsRequest",
 }) as any as S.Schema<PublishItemsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;

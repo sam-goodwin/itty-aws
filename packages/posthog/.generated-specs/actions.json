@@ -99,7 +99,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.actions#PaginatedActionList": {
+    "com.posthog.actions#PaginatedActionListOutput": {
       "type": "structure",
       "members": {
         "count": {
@@ -118,12 +118,12 @@
           }
         },
         "results": {
-          "target": "com.posthog.actions#PaginatedActionListResultsList"
+          "target": "com.posthog.actions#PaginatedActionListOutputResultsList"
         }
       },
       "traits": {}
     },
-    "com.posthog.actions#Action": {
+    "com.posthog.actions#ActionOutput": {
       "type": "structure",
       "members": {
         "id": {
@@ -143,7 +143,7 @@
           }
         },
         "tags": {
-          "target": "com.posthog.actions#ActionTagsList"
+          "target": "com.posthog.actions#ActionOutputTagsList"
         },
         "post_to_slack": {
           "target": "smithy.api#Boolean",
@@ -158,7 +158,7 @@
           }
         },
         "steps": {
-          "target": "com.posthog.actions#ActionStepsList",
+          "target": "com.posthog.actions#ActionOutputStepsList",
           "traits": {
             "smithy.api#documentation": "Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together."
           }
@@ -167,7 +167,10 @@
           "target": "smithy.api#String"
         },
         "created_by": {
-          "target": "com.posthog.actions#UserBasic"
+          "target": "com.posthog.actions#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "deleted": {
           "target": "smithy.api#Boolean"
@@ -203,9 +206,6 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "_create_in_folder": {
-          "target": "smithy.api#String"
-        },
         "user_access_level": {
           "target": "smithy.api#String",
           "traits": {
@@ -218,7 +218,7 @@
         "smithy.api#documentation": "Serializer mixin that handles tags for objects."
       }
     },
-    "com.posthog.actions#ActionTagsList": {
+    "com.posthog.actions#ActionOutputTagsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
@@ -880,7 +880,7 @@
         "smithy.api#documentation": "* `contains` - contains\n* `regex` - regex\n* `exact` - exact"
       }
     },
-    "com.posthog.actions#ActionStepsList": {
+    "com.posthog.actions#ActionOutputStepsList": {
       "type": "list",
       "member": {
         "target": "com.posthog.actions#ActionStepJSON"
@@ -1024,10 +1024,10 @@
       },
       "traits": {}
     },
-    "com.posthog.actions#PaginatedActionListResultsList": {
+    "com.posthog.actions#PaginatedActionListOutputResultsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.actions#Action"
+        "target": "com.posthog.actions#ActionOutput"
       },
       "traits": {}
     },
@@ -1037,7 +1037,7 @@
         "target": "com.posthog.actions#ActionsListRequest"
       },
       "output": {
-        "target": "com.posthog.actions#PaginatedActionList"
+        "target": "com.posthog.actions#PaginatedActionListOutput"
       },
       "errors": [
         {
@@ -1083,10 +1083,95 @@
       },
       "traits": {}
     },
+    "com.posthog.actions#ActionStepJSONInput": {
+      "type": "structure",
+      "members": {
+        "event": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Event name to match (e.g. '$pageview', '$autocapture', or a custom event name).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.posthog.actions#ActionStepJSONInputPropertiesList",
+          "traits": {
+            "smithy.api#documentation": "Event or person property filters. Each item should have 'key' (string), 'value' (string, number, boolean, or array), optional 'operator' (exact, is_not, is_set, is_not_set, icontains, not_icontains, regex, not_regex, gt, gte, lt, lte), and optional 'type' (event, person).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "selector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CSS selector to match the target element (e.g. 'div > button.cta').",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tag_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTML tag name to match (e.g. \"button\", \"a\", \"input\").",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Element text content to match.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "text_matching": {
+          "target": "com.posthog.actions#ActionStepMatchingEnum",
+          "traits": {
+            "smithy.api#documentation": "How to match the text value. Defaults to exact.\n\n* `contains` - contains\n* `regex` - regex\n* `exact` - exact",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "href": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link href attribute to match.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "href_matching": {
+          "target": "com.posthog.actions#ActionStepMatchingEnum",
+          "traits": {
+            "smithy.api#documentation": "How to match the href value. Defaults to exact.\n\n* `contains` - contains\n* `regex` - regex\n* `exact` - exact",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Page URL to match.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "url_matching": {
+          "target": "com.posthog.actions#ActionStepMatchingEnum",
+          "traits": {
+            "smithy.api#documentation": "How to match the URL value. Defaults to contains.\n\n* `contains` - contains\n* `regex` - regex\n* `exact` - exact",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.actions#ActionStepJSONInputPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.actions#ActionStepPropertyFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Event or person property filters. Each item should have 'key' (string), 'value' (string, number, boolean, or array), optional 'operator' (exact, is_not, is_set, is_not_set, icontains, not_icontains, regex, not_regex, gt, gte, lt, lte), and optional 'type' (event, person)."
+      }
+    },
     "com.posthog.actions#ActionsCreateRequestStepsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.actions#ActionStepJSON"
+        "target": "com.posthog.actions#ActionStepJSONInput"
       },
       "traits": {
         "smithy.api#documentation": "Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together."
@@ -1108,9 +1193,6 @@
           "traits": {
             "smithy.api#httpQuery": "format"
           }
-        },
-        "id": {
-          "target": "smithy.api#Integer"
         },
         "name": {
           "target": "smithy.api#String",
@@ -1146,32 +1228,11 @@
             "smithy.api#documentation": "Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.actions#UserBasic"
-        },
         "deleted": {
-          "target": "smithy.api#Boolean"
-        },
-        "is_calculating": {
           "target": "smithy.api#Boolean"
         },
         "last_calculated_at": {
           "target": "smithy.api#String"
-        },
-        "team_id": {
-          "target": "smithy.api#Integer"
-        },
-        "is_action": {
-          "target": "smithy.api#Boolean"
-        },
-        "bytecode_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "pinned_at": {
           "target": "smithy.api#String",
@@ -1180,21 +1241,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "creation_context": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "_create_in_folder": {
           "target": "smithy.api#String"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -1207,7 +1255,7 @@
         "target": "com.posthog.actions#ActionsCreateRequest"
       },
       "output": {
-        "target": "com.posthog.actions#Action"
+        "target": "com.posthog.actions#ActionOutput"
       },
       "errors": [
         {
@@ -1282,7 +1330,7 @@
         "target": "com.posthog.actions#ActionsRetrieveRequest"
       },
       "output": {
-        "target": "com.posthog.actions#Action"
+        "target": "com.posthog.actions#ActionOutput"
       },
       "errors": [
         {
@@ -1331,7 +1379,7 @@
     "com.posthog.actions#ActionsUpdateRequestStepsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.actions#ActionStepJSON"
+        "target": "com.posthog.actions#ActionStepJSONInput"
       },
       "traits": {
         "smithy.api#documentation": "Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together."
@@ -1396,32 +1444,11 @@
             "smithy.api#documentation": "Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.actions#UserBasic"
-        },
         "deleted": {
-          "target": "smithy.api#Boolean"
-        },
-        "is_calculating": {
           "target": "smithy.api#Boolean"
         },
         "last_calculated_at": {
           "target": "smithy.api#String"
-        },
-        "team_id": {
-          "target": "smithy.api#Integer"
-        },
-        "is_action": {
-          "target": "smithy.api#Boolean"
-        },
-        "bytecode_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "pinned_at": {
           "target": "smithy.api#String",
@@ -1430,21 +1457,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "creation_context": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "_create_in_folder": {
           "target": "smithy.api#String"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -1457,7 +1471,7 @@
         "target": "com.posthog.actions#ActionsUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.actions#Action"
+        "target": "com.posthog.actions#ActionOutput"
       },
       "errors": [
         {
@@ -1506,7 +1520,7 @@
     "com.posthog.actions#ActionsPartialUpdateRequestStepsList": {
       "type": "list",
       "member": {
-        "target": "com.posthog.actions#ActionStepJSON"
+        "target": "com.posthog.actions#ActionStepJSONInput"
       },
       "traits": {
         "smithy.api#documentation": "Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together."
@@ -1571,32 +1585,11 @@
             "smithy.api#documentation": "Action steps defining trigger conditions. Each step matches events by name, properties, URL, or element attributes. Multiple steps are OR-ed together."
           }
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.actions#UserBasic"
-        },
         "deleted": {
-          "target": "smithy.api#Boolean"
-        },
-        "is_calculating": {
           "target": "smithy.api#Boolean"
         },
         "last_calculated_at": {
           "target": "smithy.api#String"
-        },
-        "team_id": {
-          "target": "smithy.api#Integer"
-        },
-        "is_action": {
-          "target": "smithy.api#Boolean"
-        },
-        "bytecode_error": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "pinned_at": {
           "target": "smithy.api#String",
@@ -1605,21 +1598,8 @@
             "com.distilled.openapi#nullable": {}
           }
         },
-        "creation_context": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
         "_create_in_folder": {
           "target": "smithy.api#String"
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {
@@ -1632,7 +1612,7 @@
         "target": "com.posthog.actions#ActionsPartialUpdateRequest"
       },
       "output": {
-        "target": "com.posthog.actions#Action"
+        "target": "com.posthog.actions#ActionOutput"
       },
       "errors": [
         {

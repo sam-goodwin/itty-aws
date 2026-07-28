@@ -66,6 +66,24 @@
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
           }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
+          }
         }
       }
     },
@@ -219,6 +237,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
+          }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
           }
         }
       }
@@ -540,6 +576,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
+          }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
           }
         }
       }
@@ -877,6 +931,24 @@
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
           }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
+          }
         }
       }
     },
@@ -1169,6 +1241,24 @@
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
           }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
+          }
         }
       }
     },
@@ -1393,6 +1483,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
+          }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
           }
         }
       }
@@ -1739,6 +1847,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
+          }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
           }
         }
       }
@@ -2688,6 +2814,24 @@
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
           }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
+          }
         }
       }
     },
@@ -2762,6 +2906,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
+          }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
           }
         }
       }
@@ -2929,6 +3091,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
+          }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
           }
         }
       }
@@ -3098,6 +3278,24 @@
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
           }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
+          }
         }
       }
     },
@@ -3234,6 +3432,24 @@
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
           }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
+          }
         }
       }
     },
@@ -3331,6 +3547,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
+          }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
           }
         }
       }
@@ -3523,6 +3757,24 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "gateway-destination-ip"
+          }
+        },
+        "GATEWAY_BLOCK_PAGE_SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-block-page-settings"
+          }
+        },
+        "GATEWAY_EXTENDED_EMAIL_MATCHING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway-extended-email-matching"
+          }
+        },
+        "IDP_FEDERATION_GRANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "idp-federation-grant"
           }
         }
       }

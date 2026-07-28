@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -140,7 +140,7 @@ export const GoogleFirebaseAppdistroV1alphaAiStep = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaAiStep>;
 
 export type GoogleFirebaseAppdistroV1alphaAiStepList =
-  GoogleFirebaseAppdistroV1alphaAiStep[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1alphaAiStep>;
 export const GoogleFirebaseAppdistroV1alphaAiStepList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1alphaAiStep,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaAiStepList>;
@@ -205,7 +205,7 @@ export const GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest =
   }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest>;
 
 export type GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequestList =
-  GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest>;
 export const GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequestList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest,
@@ -254,7 +254,7 @@ export const BatchUpdateProjectsAppsTestCasesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BatchUpdateProjectsAppsTestCasesRequest>;
 
 export type GoogleFirebaseAppdistroV1alphaTestCaseList =
-  GoogleFirebaseAppdistroV1alphaTestCase[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1alphaTestCase>;
 export const GoogleFirebaseAppdistroV1alphaTestCaseList = /*@__PURE__*/ S.Array(
   GoogleFirebaseAppdistroV1alphaTestCase,
 ) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestCaseList>;
@@ -323,7 +323,7 @@ export const GoogleFirebaseAppdistroV1alphaTestDevice = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTestDevice>;
 
 export type GoogleFirebaseAppdistroV1alphaTestDeviceList =
-  GoogleFirebaseAppdistroV1alphaTestDevice[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1alphaTestDevice>;
 export const GoogleFirebaseAppdistroV1alphaTestDeviceList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaTestDevice,
@@ -449,8 +449,7 @@ export type GoogleFirebaseAppdistroV1alphaDeviceExecutionInconclusiveReasonEnum 
     | "FORBIDDEN_PERMISSIONS"
     | "DEVICE_ADMIN_RECEIVER"
     | "NO_CODE_APK"
-    | "INVALID_APK_PREVIEW_SDK"
-    | (string & {});
+    | "INVALID_APK_PREVIEW_SDK";
 export const GoogleFirebaseAppdistroV1alphaDeviceExecutionInconclusiveReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -476,8 +475,7 @@ export type GoogleFirebaseAppdistroV1alphaDeviceExecutionStateEnum =
   | "IN_PROGRESS"
   | "PASSED"
   | "FAILED"
-  | "INCONCLUSIVE"
-  | (string & {});
+  | "INCONCLUSIVE";
 export const GoogleFirebaseAppdistroV1alphaDeviceExecutionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -486,8 +484,7 @@ export type GoogleFirebaseAppdistroV1alphaDeviceExecutionExecutionTypeEnum =
   | "AI"
   | "ACTION_BASED_REPLAY"
   | "AI_REPLAY"
-  | "RANDOM_CRAWL"
-  | (string & {});
+  | "RANDOM_CRAWL";
 export const GoogleFirebaseAppdistroV1alphaDeviceExecutionExecutionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -498,8 +495,7 @@ export type GoogleFirebaseAppdistroV1alphaDeviceExecutionFailedReasonEnum =
   | "UNABLE_TO_CRAWL"
   | "DEVICE_OUT_OF_MEMORY"
   | "FAILED_AI_STEP"
-  | "TIMED_OUT"
-  | (string & {});
+  | "TIMED_OUT";
 export const GoogleFirebaseAppdistroV1alphaDeviceExecutionFailedReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -532,8 +528,7 @@ export type GoogleFirebaseAppdistroV1alphaAiStepResultStateEnum =
   | "PASSED"
   | "FAILED"
   | "TIMED_OUT"
-  | "GOAL_ACTION_LIMIT_REACHED"
-  | (string & {});
+  | "GOAL_ACTION_LIMIT_REACHED";
 export const GoogleFirebaseAppdistroV1alphaAiStepResultStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -606,7 +601,7 @@ export const AndroidxCrawlerOutputPoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AndroidxCrawlerOutputPoint>;
 
 export type GoogleFirebaseAppdistroV1alphaDeviceInteractionTargetOrientationEnum =
-  "ORIENTATION_UNSPECIFIED" | "PORTRAIT" | "LANDSCAPE" | (string & {});
+  "ORIENTATION_UNSPECIFIED" | "PORTRAIT" | "LANDSCAPE";
 export const GoogleFirebaseAppdistroV1alphaDeviceInteractionTargetOrientationEnum =
   /*@__PURE__*/ S.String;
 
@@ -742,7 +737,7 @@ export const GoogleFirebaseAppdistroV1alphaDeviceInteraction =
   }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteraction>;
 
 export type GoogleFirebaseAppdistroV1alphaDeviceInteractionList =
-  GoogleFirebaseAppdistroV1alphaDeviceInteraction[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1alphaDeviceInteraction>;
 export const GoogleFirebaseAppdistroV1alphaDeviceInteractionList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaDeviceInteraction,
@@ -770,8 +765,7 @@ export const GoogleFirebaseAppdistroV1alphaDeviceAction =
 export type GoogleFirebaseAppdistroV1alphaTerminalActionReasonEnum =
   | "REASON_UNSPECIFIED"
   | "GOAL_IMPOSSIBLE"
-  | "GOAL_COMPLETE"
-  | (string & {});
+  | "GOAL_COMPLETE";
 export const GoogleFirebaseAppdistroV1alphaTerminalActionReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -798,8 +792,7 @@ export type GoogleFirebaseAppdistroV1alphaGoalActionCachingTypeEnum =
   | "CACHING_TYPE_UNSPECIFIED"
   | "NO_CACHING"
   | "CACHE_AND_MODEL"
-  | "CACHE_ONLY"
-  | (string & {});
+  | "CACHE_ONLY";
 export const GoogleFirebaseAppdistroV1alphaGoalActionCachingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -852,7 +845,7 @@ export const GoogleFirebaseAppdistroV1alphaGoalAction = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaGoalAction>;
 
 export type GoogleFirebaseAppdistroV1alphaGoalActionList =
-  GoogleFirebaseAppdistroV1alphaGoalAction[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1alphaGoalAction>;
 export const GoogleFirebaseAppdistroV1alphaGoalActionList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaGoalAction,
@@ -898,7 +891,7 @@ export const GoogleFirebaseAppdistroV1alphaAiStepResult =
   }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaAiStepResult>;
 
 export type GoogleFirebaseAppdistroV1alphaAiStepResultList =
-  GoogleFirebaseAppdistroV1alphaAiStepResult[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1alphaAiStepResult>;
 export const GoogleFirebaseAppdistroV1alphaAiStepResultList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaAiStepResult,
@@ -970,7 +963,7 @@ export const GoogleFirebaseAppdistroV1alphaDeviceExecution =
   }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaDeviceExecution>;
 
 export type GoogleFirebaseAppdistroV1alphaDeviceExecutionList =
-  GoogleFirebaseAppdistroV1alphaDeviceExecution[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1alphaDeviceExecution>;
 export const GoogleFirebaseAppdistroV1alphaDeviceExecutionList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaDeviceExecution,
@@ -981,8 +974,7 @@ export type GoogleFirebaseAppdistroV1alphaReleaseTestTestStateEnum =
   | "IN_PROGRESS"
   | "PASSED"
   | "FAILED"
-  | "INCONCLUSIVE"
-  | (string & {});
+  | "INCONCLUSIVE";
 export const GoogleFirebaseAppdistroV1alphaReleaseTestTestStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1199,11 +1191,7 @@ export const GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse =
     identifier: "GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse",
   }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse>;
 
-export type GetAppsAppViewEnum =
-  | "APP_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
+export type GetAppsAppViewEnum = "APP_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
 export const GetAppsAppViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAppsRequest {
@@ -1232,8 +1220,7 @@ export type GoogleFirebaseAppdistroV1alphaAppAabStateEnum =
   | "NO_APP_WITH_GIVEN_BUNDLE_ID_IN_PLAY_ACCOUNT"
   | "APP_NOT_PUBLISHED"
   | "AAB_STATE_UNAVAILABLE"
-  | "PLAY_IAS_TERMS_NOT_ACCEPTED"
-  | (string & {});
+  | "PLAY_IAS_TERMS_NOT_ACCEPTED";
 export const GoogleFirebaseAppdistroV1alphaAppAabStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1393,8 +1380,7 @@ export type GoogleFirebaseAppdistroV1alphaGetUploadStatusResponseStatusEnum =
   | "IN_PROGRESS"
   | "ALREADY_UPLOADED"
   | "SUCCESS"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const GoogleFirebaseAppdistroV1alphaGetUploadStatusResponseStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1423,8 +1409,7 @@ export type GoogleFirebaseAppdistroV1alphaGetUploadStatusResponseErrorCodeEnum =
     | "AAB_UPLOAD_ERROR"
     | "APP_NOT_FOUND"
     | "AAB_ADHOC_SHARING_KEY_NOT_REGISTERED"
-    | "AAB_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND"
-    | (string & {});
+    | "AAB_ANDROID_DEVELOPER_CONSOLE_ACCOUNT_NOT_FOUND";
 export const GoogleFirebaseAppdistroV1alphaGetUploadStatusResponseErrorCodeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1627,7 +1612,7 @@ export const GoogleFirebaseAppdistroV1alphaTesterUdid = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleFirebaseAppdistroV1alphaTesterUdid>;
 
 export type GoogleFirebaseAppdistroV1alphaTesterUdidList =
-  GoogleFirebaseAppdistroV1alphaTesterUdid[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1alphaTesterUdid>;
 export const GoogleFirebaseAppdistroV1alphaTesterUdidList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaTesterUdid,
@@ -1709,8 +1694,7 @@ export const GetUdidsProjectsTestersRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsAppsReleasesTestsViewEnum =
   | "RELEASE_TEST_VIEW_UNSPECIFIED"
   | "RELEASE_TEST_VIEW_BASIC"
-  | "RELEASE_TEST_VIEW_FULL"
-  | (string & {});
+  | "RELEASE_TEST_VIEW_FULL";
 export const ListProjectsAppsReleasesTestsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsAppsReleasesTestsRequest {
@@ -1742,7 +1726,7 @@ export const ListProjectsAppsReleasesTestsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsAppsReleasesTestsRequest>;
 
 export type GoogleFirebaseAppdistroV1alphaReleaseTestList =
-  GoogleFirebaseAppdistroV1alphaReleaseTest[];
+  ReadonlyArray<GoogleFirebaseAppdistroV1alphaReleaseTest>;
 export const GoogleFirebaseAppdistroV1alphaReleaseTestList =
   /*@__PURE__*/ S.Array(
     GoogleFirebaseAppdistroV1alphaReleaseTest,

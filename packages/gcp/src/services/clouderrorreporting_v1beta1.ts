@@ -134,7 +134,7 @@ export const TrackingIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TrackingIssue" }) as any as S.Schema<TrackingIssue>;
 
-export type TrackingIssueList = TrackingIssue[];
+export type TrackingIssueList = ReadonlyArray<TrackingIssue>;
 export const TrackingIssueList = /*@__PURE__*/ S.Array(
   TrackingIssue,
 ) as any as S.Schema<TrackingIssueList>;
@@ -144,8 +144,7 @@ export type ErrorGroupResolutionStatusEnum =
   | "OPEN"
   | "ACKNOWLEDGED"
   | "RESOLVED"
-  | "MUTED"
-  | (string & {});
+  | "MUTED";
 export const ErrorGroupResolutionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Description of a group of similar error events. */
@@ -192,8 +191,7 @@ export type ListProjectsEventsTimeRange_periodEnum =
   | "PERIOD_6_HOURS"
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
-  | "PERIOD_30_DAYS"
-  | (string & {});
+  | "PERIOD_30_DAYS";
 export const ListProjectsEventsTimeRange_periodEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsEventsRequest {
@@ -315,7 +313,7 @@ export const SourceReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceReference",
 }) as any as S.Schema<SourceReference>;
 
-export type SourceReferenceList = SourceReference[];
+export type SourceReferenceList = ReadonlyArray<SourceReference>;
 export const SourceReferenceList = /*@__PURE__*/ S.Array(
   SourceReference,
 ) as any as S.Schema<SourceReferenceList>;
@@ -360,7 +358,7 @@ export const ErrorEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ErrorEvent" }) as any as S.Schema<ErrorEvent>;
 
-export type ErrorEventList = ErrorEvent[];
+export type ErrorEventList = ReadonlyArray<ErrorEvent>;
 export const ErrorEventList = /*@__PURE__*/ S.Array(
   ErrorEvent,
 ) as any as S.Schema<ErrorEventList>;
@@ -389,11 +387,10 @@ export type ListProjectsGroupStatsOrderEnum =
   | "COUNT_DESC"
   | "LAST_SEEN_DESC"
   | "CREATED_DESC"
-  | "AFFECTED_USERS_DESC"
-  | (string & {});
+  | "AFFECTED_USERS_DESC";
 export const ListProjectsGroupStatsOrderEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -401,8 +398,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type ListProjectsGroupStatsAlignmentEnum =
   | "ERROR_COUNT_ALIGNMENT_UNSPECIFIED"
   | "ALIGNMENT_EQUAL_ROUNDED"
-  | "ALIGNMENT_EQUAL_AT_END"
-  | (string & {});
+  | "ALIGNMENT_EQUAL_AT_END";
 export const ListProjectsGroupStatsAlignmentEnum = /*@__PURE__*/ S.String;
 
 export type ListProjectsGroupStatsTimeRange_periodEnum =
@@ -411,8 +407,7 @@ export type ListProjectsGroupStatsTimeRange_periodEnum =
   | "PERIOD_6_HOURS"
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
-  | "PERIOD_30_DAYS"
-  | (string & {});
+  | "PERIOD_30_DAYS";
 export const ListProjectsGroupStatsTimeRange_periodEnum =
   /*@__PURE__*/ S.String;
 
@@ -486,12 +481,12 @@ export const TimedCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TimedCount" }) as any as S.Schema<TimedCount>;
 
-export type TimedCountList = TimedCount[];
+export type TimedCountList = ReadonlyArray<TimedCount>;
 export const TimedCountList = /*@__PURE__*/ S.Array(
   TimedCount,
 ) as any as S.Schema<TimedCountList>;
 
-export type ServiceContextList = ServiceContext[];
+export type ServiceContextList = ReadonlyArray<ServiceContext>;
 export const ServiceContextList = /*@__PURE__*/ S.Array(
   ServiceContext,
 ) as any as S.Schema<ServiceContextList>;
@@ -533,7 +528,7 @@ export const ErrorGroupStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "ErrorGroupStats",
 }) as any as S.Schema<ErrorGroupStats>;
 
-export type ErrorGroupStatsList = ErrorGroupStats[];
+export type ErrorGroupStatsList = ReadonlyArray<ErrorGroupStats>;
 export const ErrorGroupStatsList = /*@__PURE__*/ S.Array(
   ErrorGroupStats,
 ) as any as S.Schema<ErrorGroupStatsList>;
@@ -563,8 +558,7 @@ export type ListProjectsLocationsEventsTimeRange_periodEnum =
   | "PERIOD_6_HOURS"
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
-  | "PERIOD_30_DAYS"
-  | (string & {});
+  | "PERIOD_30_DAYS";
 export const ListProjectsLocationsEventsTimeRange_periodEnum =
   /*@__PURE__*/ S.String;
 
@@ -614,8 +608,7 @@ export type ListProjectsLocationsGroupStatsOrderEnum =
   | "COUNT_DESC"
   | "LAST_SEEN_DESC"
   | "CREATED_DESC"
-  | "AFFECTED_USERS_DESC"
-  | (string & {});
+  | "AFFECTED_USERS_DESC";
 export const ListProjectsLocationsGroupStatsOrderEnum = /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsGroupStatsTimeRange_periodEnum =
@@ -624,16 +617,14 @@ export type ListProjectsLocationsGroupStatsTimeRange_periodEnum =
   | "PERIOD_6_HOURS"
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
-  | "PERIOD_30_DAYS"
-  | (string & {});
+  | "PERIOD_30_DAYS";
 export const ListProjectsLocationsGroupStatsTimeRange_periodEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsGroupStatsAlignmentEnum =
   | "ERROR_COUNT_ALIGNMENT_UNSPECIFIED"
   | "ALIGNMENT_EQUAL_ROUNDED"
-  | "ALIGNMENT_EQUAL_AT_END"
-  | (string & {});
+  | "ALIGNMENT_EQUAL_AT_END";
 export const ListProjectsLocationsGroupStatsAlignmentEnum =
   /*@__PURE__*/ S.String;
 

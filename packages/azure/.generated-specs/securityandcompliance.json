@@ -1115,16 +1115,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.securityandcompliance#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The resource of private end point."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the PrivateEndpointConnectProperties."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
     "com.azure.securityandcompliance#PrivateEndpointConnectionsForEDMGet": {
@@ -2729,16 +2756,67 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Instance tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#ServicesPropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties for updating a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#ServicesPropertiesUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.securityandcompliance#ServicesPropertiesUpdateParametersPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties for updating a service instance."
+      }
+    },
+    "com.azure.securityandcompliance#ServicesPropertiesUpdateParametersPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Instance tags"
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdate": {
@@ -3196,16 +3274,212 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The kind of the service.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource location.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An etag associated with the resource, used for optimistic concurrency when editing it."
+          }
+        },
+        "identity": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "accessPolicies": {
+          "target": "com.azure.securityandcompliance#ServiceAccessPoliciesInfo",
+          "traits": {
+            "smithy.api#documentation": "The access policies of the service instance."
+          }
+        },
+        "cosmosDbConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCosmosDbConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the Cosmos DB database backing the service."
+          }
+        },
+        "authenticationConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceAuthenticationConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The authentication configuration for the service instance."
+          }
+        },
+        "corsConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCorsConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the CORS configuration of the service instance."
+          }
+        },
+        "exportConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceExportConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the export operation of the service instance."
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a service instance."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityandcompliance#PrivateEndpointConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateEndpointConnectionInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateEndpointConnectionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Resource properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Private Endpoint Connection resource."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadCreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "FHIR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir"
+          }
+        },
+        "FHIR_STU3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-Stu3"
+          }
+        },
+        "FHIR_R4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-R4"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the service."
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForEDMUploadGet": {
@@ -4212,11 +4486,10 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -5531,16 +5804,33 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Instance tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#ServicesPropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties for updating a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Instance tags"
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdate": {
@@ -5998,16 +6288,198 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The kind of the service.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource location.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An etag associated with the resource, used for optimistic concurrency when editing it."
+          }
+        },
+        "identity": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "accessPolicies": {
+          "target": "com.azure.securityandcompliance#ServiceAccessPoliciesInfo",
+          "traits": {
+            "smithy.api#documentation": "The access policies of the service instance."
+          }
+        },
+        "cosmosDbConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCosmosDbConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the Cosmos DB database backing the service."
+          }
+        },
+        "authenticationConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceAuthenticationConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The authentication configuration for the service instance."
+          }
+        },
+        "corsConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCorsConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the CORS configuration of the service instance."
+          }
+        },
+        "exportConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceExportConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the export operation of the service instance."
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a service instance."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityandcompliance#PrivateEndpointConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterCreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "FHIR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir"
+          }
+        },
+        "FHIR_STU3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-Stu3"
+          }
+        },
+        "FHIR_R4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-R4"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the service."
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForM365ComplianceCenterGet": {
@@ -7014,11 +7486,10 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -8333,16 +8804,33 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Instance tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#ServicesPropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties for updating a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Instance tags"
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdate": {
@@ -8800,16 +9288,198 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The kind of the service.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource location.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An etag associated with the resource, used for optimistic concurrency when editing it."
+          }
+        },
+        "identity": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "accessPolicies": {
+          "target": "com.azure.securityandcompliance#ServiceAccessPoliciesInfo",
+          "traits": {
+            "smithy.api#documentation": "The access policies of the service instance."
+          }
+        },
+        "cosmosDbConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCosmosDbConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the Cosmos DB database backing the service."
+          }
+        },
+        "authenticationConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceAuthenticationConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The authentication configuration for the service instance."
+          }
+        },
+        "corsConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCorsConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the CORS configuration of the service instance."
+          }
+        },
+        "exportConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceExportConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the export operation of the service instance."
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a service instance."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityandcompliance#PrivateEndpointConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterCreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "FHIR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir"
+          }
+        },
+        "FHIR_STU3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-Stu3"
+          }
+        },
+        "FHIR_R4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-R4"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the service."
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForM365SecurityCenterGet": {
@@ -9816,11 +10486,10 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -11135,16 +11804,33 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Instance tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#ServicesPropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties for updating a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Instance tags"
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdate": {
@@ -11602,16 +12288,198 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The kind of the service.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource location.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An etag associated with the resource, used for optimistic concurrency when editing it."
+          }
+        },
+        "identity": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "accessPolicies": {
+          "target": "com.azure.securityandcompliance#ServiceAccessPoliciesInfo",
+          "traits": {
+            "smithy.api#documentation": "The access policies of the service instance."
+          }
+        },
+        "cosmosDbConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCosmosDbConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the Cosmos DB database backing the service."
+          }
+        },
+        "authenticationConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceAuthenticationConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The authentication configuration for the service instance."
+          }
+        },
+        "corsConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCorsConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the CORS configuration of the service instance."
+          }
+        },
+        "exportConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceExportConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the export operation of the service instance."
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a service instance."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityandcompliance#PrivateEndpointConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncCreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "FHIR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir"
+          }
+        },
+        "FHIR_STU3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-Stu3"
+          }
+        },
+        "FHIR_R4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-R4"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the service."
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForMIPPolicySyncGet": {
@@ -12618,11 +13486,10 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -13937,16 +14804,33 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPIUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Instance tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#ServicesPropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties for updating a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPIUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Instance tags"
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdate": {
@@ -14404,16 +15288,198 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The kind of the service.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource location.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An etag associated with the resource, used for optimistic concurrency when editing it."
+          }
+        },
+        "identity": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "accessPolicies": {
+          "target": "com.azure.securityandcompliance#ServiceAccessPoliciesInfo",
+          "traits": {
+            "smithy.api#documentation": "The access policies of the service instance."
+          }
+        },
+        "cosmosDbConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCosmosDbConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the Cosmos DB database backing the service."
+          }
+        },
+        "authenticationConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceAuthenticationConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The authentication configuration for the service instance."
+          }
+        },
+        "corsConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCorsConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the CORS configuration of the service instance."
+          }
+        },
+        "exportConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceExportConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the export operation of the service instance."
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a service instance."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityandcompliance#PrivateEndpointConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPICreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "FHIR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir"
+          }
+        },
+        "FHIR_STU3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-Stu3"
+          }
+        },
+        "FHIR_R4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-R4"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the service."
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForO365ManagementActivityAPIGet": {
@@ -15420,11 +16486,10 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
@@ -16739,16 +17804,33 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Instance tags"
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#ServicesPropertiesUpdateParameters",
+          "traits": {
+            "smithy.api#documentation": "The properties for updating a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Instance tags"
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdate": {
@@ -17206,16 +18288,198 @@
             "smithy.api#documentation": "The name of the service instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestKind",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The kind of the service.",
             "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource location.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An etag associated with the resource, used for optimistic concurrency when editing it."
+          }
+        },
+        "identity": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+          }
+        },
+        "properties": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties of a service instance."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestProperties": {
+      "type": "structure",
+      "members": {
+        "accessPolicies": {
+          "target": "com.azure.securityandcompliance#ServiceAccessPoliciesInfo",
+          "traits": {
+            "smithy.api#documentation": "The access policies of the service instance."
+          }
+        },
+        "cosmosDbConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCosmosDbConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the Cosmos DB database backing the service."
+          }
+        },
+        "authenticationConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceAuthenticationConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The authentication configuration for the service instance."
+          }
+        },
+        "corsConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceCorsConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the CORS configuration of the service instance."
+          }
+        },
+        "exportConfiguration": {
+          "target": "com.azure.securityandcompliance#ServiceExportConfigurationInfo",
+          "traits": {
+            "smithy.api#documentation": "The settings for the export operation of the service instance."
+          }
+        },
+        "privateEndpointConnections": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a service instance."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Control permission for data plane traffic coming from public networks while private endpoint is enabled."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestPropertiesPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.securityandcompliance#PrivateEndpointConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of private endpoint connections that are set up for this resource."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Setting indicating whether the service has a managed identity associated with it."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestIdentityType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of identity being specified, currently SystemAssigned and None are allowed."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
+      }
+    },
+    "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellCreateOrUpdateRequestKind": {
+      "type": "enum",
+      "members": {
+        "FHIR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir"
+          }
+        },
+        "FHIR_STU3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-Stu3"
+          }
+        },
+        "FHIR_R4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fhir-R4"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of the service."
       }
     },
     "com.azure.securityandcompliance#PrivateLinkServicesForSCCPowershellGet": {

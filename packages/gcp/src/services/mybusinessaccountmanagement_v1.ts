@@ -100,16 +100,14 @@ export type AccountTypeEnum =
   | "PERSONAL"
   | "LOCATION_GROUP"
   | "USER_GROUP"
-  | "ORGANIZATION"
-  | (string & {});
+  | "ORGANIZATION";
 export const AccountTypeEnum = /*@__PURE__*/ S.String;
 
 export type AccountVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "VERIFIED"
   | "UNVERIFIED"
-  | "VERIFICATION_REQUESTED"
-  | (string & {});
+  | "VERIFICATION_REQUESTED";
 export const AccountVerificationStateEnum = /*@__PURE__*/ S.String;
 
 export type AccountRoleEnum =
@@ -117,19 +115,17 @@ export type AccountRoleEnum =
   | "PRIMARY_OWNER"
   | "OWNER"
   | "MANAGER"
-  | "SITE_MANAGER"
-  | (string & {});
+  | "SITE_MANAGER";
 export const AccountRoleEnum = /*@__PURE__*/ S.String;
 
 export type AccountVettedStateEnum =
   | "VETTED_STATE_UNSPECIFIED"
   | "NOT_VETTED"
   | "VETTED"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const AccountVettedStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -197,8 +193,7 @@ export const OrganizationInfo = /*@__PURE__*/ S.suspend(() =>
 export type AccountPermissionLevelEnum =
   | "PERMISSION_LEVEL_UNSPECIFIED"
   | "OWNER_LEVEL"
-  | "MEMBER_LEVEL"
-  | (string & {});
+  | "MEMBER_LEVEL";
 export const AccountPermissionLevelEnum = /*@__PURE__*/ S.String;
 
 /** An account is a container for your location. If you are the only user who manages locations for your business, you can use your personal Google Account. To share management of locations with multiple users, [create a business account] (https://support.google.com/business/answer/6085339?ref_topic=6085325). */
@@ -262,8 +257,7 @@ export type AdminRoleEnum =
   | "PRIMARY_OWNER"
   | "OWNER"
   | "MANAGER"
-  | "SITE_MANAGER"
-  | (string & {});
+  | "SITE_MANAGER";
 export const AdminRoleEnum = /*@__PURE__*/ S.String;
 
 /** An administrator of an Account or a location. */
@@ -441,7 +435,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 
-export type AccountList = Account[];
+export type AccountList = ReadonlyArray<Account>;
 export const AccountList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountList>;
@@ -480,7 +474,7 @@ export const ListAccountsAdminsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsAdminsRequest",
 }) as any as S.Schema<ListAccountsAdminsRequest>;
 
-export type AdminList = Admin[];
+export type AdminList = ReadonlyArray<Admin>;
 export const AdminList = /*@__PURE__*/ S.Array(
   Admin,
 ) as any as S.Schema<AdminList>;
@@ -524,8 +518,7 @@ export type InvitationRoleEnum =
   | "PRIMARY_OWNER"
   | "OWNER"
   | "MANAGER"
-  | "SITE_MANAGER"
-  | (string & {});
+  | "SITE_MANAGER";
 export const InvitationRoleEnum = /*@__PURE__*/ S.String;
 
 /** Represents a target location for a pending invitation. */
@@ -548,8 +541,7 @@ export const TargetLocation = /*@__PURE__*/ S.suspend(() =>
 export type InvitationTargetTypeEnum =
   | "TARGET_TYPE_UNSPECIFIED"
   | "ACCOUNTS_ONLY"
-  | "LOCATIONS_ONLY"
-  | (string & {});
+  | "LOCATIONS_ONLY";
 export const InvitationTargetTypeEnum = /*@__PURE__*/ S.String;
 
 /** Represents a pending invitation. */
@@ -575,7 +567,7 @@ export const Invitation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
 
-export type InvitationList = Invitation[];
+export type InvitationList = ReadonlyArray<Invitation>;
 export const InvitationList = /*@__PURE__*/ S.Array(
   Invitation,
 ) as any as S.Schema<InvitationList>;

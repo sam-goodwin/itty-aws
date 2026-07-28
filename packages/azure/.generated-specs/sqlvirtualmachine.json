@@ -143,16 +143,47 @@
             "smithy.api#documentation": "Name of the SQL virtual machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "startTimeUtc": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Start time in UTC timezone."
+          }
+        },
+        "endTimeUtc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time in UTC timezone."
+          }
+        },
+        "troubleshootingScenario": {
+          "target": "com.azure.sqlvirtualmachine#SqlVirtualMachineTroubleshootTroubleshootRequestTroubleshootingScenario",
+          "traits": {
+            "smithy.api#documentation": "SQL VM troubleshooting scenario."
+          }
+        },
+        "properties": {
+          "target": "com.azure.sqlvirtualmachine#TroubleshootingAdditionalProperties",
+          "traits": {
+            "smithy.api#documentation": "Troubleshooting properties"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sqlvirtualmachine#SqlVirtualMachineTroubleshootTroubleshootRequestTroubleshootingScenario": {
+      "type": "enum",
+      "members": {
+        "UNHEALTHYREPLICA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UnhealthyReplica"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL VM troubleshooting scenario."
       }
     },
     "com.azure.sqlvirtualmachine#SqlVirtualMachinesStartAssessment": {
@@ -303,11 +334,10 @@
             "smithy.api#documentation": "Name of the SQL virtual machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "runDiskConfigRules": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Boolean to run disk config Assessment. Use false to fetch past Assessment."
           }
         }
       },
@@ -1987,16 +2017,27 @@
             "smithy.api#documentation": "Name of the SQL virtual machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.sqlvirtualmachine#SqlVirtualMachinesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sqlvirtualmachine#SqlVirtualMachinesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.sqlvirtualmachine#SqlVirtualMachinesCreateOrUpdate": {
@@ -2114,16 +2155,190 @@
             "smithy.api#documentation": "Name of the SQL virtual machine."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.sqlvirtualmachine#SqlVirtualMachinesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.sqlvirtualmachine#SqlVirtualMachinePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Resource properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.sqlvirtualmachine#ResourceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sqlvirtualmachine#ResourceIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.sqlvirtualmachine#IdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Azure Active Directory identity configuration for a resource."
+      }
+    },
+    "com.azure.sqlvirtualmachine#SqlVirtualMachinePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "virtualMachineResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM Resource id of underlying virtual machine created from SQL marketplace image."
+          }
+        },
+        "sqlImageOffer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SQL image offer. Examples include SQL2016-WS2016, SQL2017-WS2016."
+          }
+        },
+        "sqlServerLicenseType": {
+          "target": "com.azure.sqlvirtualmachine#SqlServerLicenseType",
+          "traits": {
+            "smithy.api#documentation": "SQL Server license type."
+          }
+        },
+        "sqlManagement": {
+          "target": "com.azure.sqlvirtualmachine#SqlManagementMode",
+          "traits": {
+            "smithy.api#documentation": "SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it."
+          }
+        },
+        "leastPrivilegeMode": {
+          "target": "com.azure.sqlvirtualmachine#SqlVirtualMachinePropertiesInputLeastPrivilegeMode",
+          "traits": {
+            "smithy.api#documentation": "SQL IaaS Agent least privilege mode."
+          }
+        },
+        "sqlImageSku": {
+          "target": "com.azure.sqlvirtualmachine#SqlImageSku",
+          "traits": {
+            "smithy.api#documentation": "SQL Server edition type."
+          }
+        },
+        "sqlVirtualMachineGroupResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ARM resource id of the SQL virtual machine group this SQL virtual machine is or will be part of."
+          }
+        },
+        "wsfcDomainCredentials": {
+          "target": "com.azure.sqlvirtualmachine#WsfcDomainCredentials",
+          "traits": {
+            "smithy.api#documentation": "Domain credentials for setting up Windows Server Failover Cluster for SQL availability group."
+          }
+        },
+        "wsfcStaticIp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Domain credentials for setting up Windows Server Failover Cluster for SQL availability group."
+          }
+        },
+        "autoPatchingSettings": {
+          "target": "com.azure.sqlvirtualmachine#AutoPatchingSettings",
+          "traits": {
+            "smithy.api#documentation": "Auto patching settings for applying critical security updates to SQL virtual machine."
+          }
+        },
+        "autoBackupSettings": {
+          "target": "com.azure.sqlvirtualmachine#AutoBackupSettings",
+          "traits": {
+            "smithy.api#documentation": "Auto backup settings for SQL Server."
+          }
+        },
+        "keyVaultCredentialSettings": {
+          "target": "com.azure.sqlvirtualmachine#KeyVaultCredentialSettings",
+          "traits": {
+            "smithy.api#documentation": "Key vault credential settings."
+          }
+        },
+        "serverConfigurationsManagementSettings": {
+          "target": "com.azure.sqlvirtualmachine#ServerConfigurationsManagementSettings",
+          "traits": {
+            "smithy.api#documentation": "SQL Server configuration management settings."
+          }
+        },
+        "storageConfigurationSettings": {
+          "target": "com.azure.sqlvirtualmachine#StorageConfigurationSettings",
+          "traits": {
+            "smithy.api#documentation": "Storage Configuration Settings."
+          }
+        },
+        "assessmentSettings": {
+          "target": "com.azure.sqlvirtualmachine#AssessmentSettings",
+          "traits": {
+            "smithy.api#documentation": "SQL best practices Assessment Settings."
+          }
+        },
+        "enableAutomaticUpgrade": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable automatic upgrade of Sql IaaS extension Agent."
+          }
+        },
+        "virtualMachineIdentitySettings": {
+          "target": "com.azure.sqlvirtualmachine#VirtualMachineIdentity",
+          "traits": {
+            "smithy.api#documentation": "Virtual Machine Identity details used for Sql IaaS extension configurations."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SQL virtual machine properties."
+      }
+    },
+    "com.azure.sqlvirtualmachine#SqlVirtualMachinePropertiesInputLeastPrivilegeMode": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "NOTSET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NotSet"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL IaaS Agent least privilege mode."
+      }
+    },
+    "com.azure.sqlvirtualmachine#SqlVirtualMachinesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.sqlvirtualmachine#SqlVirtualMachinesGet": {
@@ -2901,16 +3116,77 @@
             "smithy.api#documentation": "Name of the availability group listener."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.sqlvirtualmachine#AvailabilityGroupListenerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sqlvirtualmachine#AvailabilityGroupListenerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "availabilityGroupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the availability group."
+          }
+        },
+        "loadBalancerConfigurations": {
+          "target": "com.azure.sqlvirtualmachine#AvailabilityGroupListenerPropertiesInputLoadBalancerConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "List of load balancer configurations for an availability group listener."
+          }
+        },
+        "multiSubnetIpConfigurations": {
+          "target": "com.azure.sqlvirtualmachine#AvailabilityGroupListenerPropertiesInputMultiSubnetIpConfigurationsList",
+          "traits": {
+            "smithy.api#documentation": "List of multi subnet IP configurations for an AG listener."
+          }
+        },
+        "createDefaultAvailabilityGroupIfNotExist": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Create a default availability group if it does not exist."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Listener port."
+          }
+        },
+        "availabilityGroupConfiguration": {
+          "target": "com.azure.sqlvirtualmachine#AgConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Availability Group configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of an availability group listener."
+      }
+    },
+    "com.azure.sqlvirtualmachine#AvailabilityGroupListenerPropertiesInputMultiSubnetIpConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.sqlvirtualmachine#MultiSubnetIpConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of multi subnet IP configurations for an AG listener."
+      }
+    },
+    "com.azure.sqlvirtualmachine#AvailabilityGroupListenerPropertiesInputLoadBalancerConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.sqlvirtualmachine#LoadBalancerConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of load balancer configurations for an availability group listener."
       }
     },
     "com.azure.sqlvirtualmachine#AvailabilityGroupListenersGet": {
@@ -3496,16 +3772,27 @@
             "smithy.api#documentation": "Name of the SQL virtual machine group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupsCreateOrUpdate": {
@@ -3617,16 +3904,66 @@
             "smithy.api#documentation": "Name of the SQL virtual machine group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sqlImageOffer": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016."
+          }
+        },
+        "sqlImageSku": {
+          "target": "com.azure.sqlvirtualmachine#SqlVmGroupImageSku",
+          "traits": {
+            "smithy.api#documentation": "SQL image sku."
+          }
+        },
+        "wsfcDomainProfile": {
+          "target": "com.azure.sqlvirtualmachine#WsfcDomainProfile",
+          "traits": {
+            "smithy.api#documentation": "Cluster Active Directory domain profile."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a SQL virtual machine group."
+      }
+    },
+    "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.sqlvirtualmachine#SqlVirtualMachineGroupsGet": {

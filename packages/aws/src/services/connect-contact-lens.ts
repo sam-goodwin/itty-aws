@@ -148,11 +148,7 @@ export type ParticipantId = string;
 export type ParticipantRole = string;
 export type TranscriptContent = string;
 export type OffsetMillis = number;
-export type SentimentValue =
-  | "POSITIVE"
-  | "NEUTRAL"
-  | "NEGATIVE"
-  | (string & {});
+export type SentimentValue = "POSITIVE" | "NEUTRAL" | "NEGATIVE";
 export const SentimentValue = /*@__PURE__*/ S.String;
 
 export type CharacterOffset = number;
@@ -239,7 +235,7 @@ export const Categories = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Categories" }) as any as S.Schema<Categories>;
 export type PostContactSummaryContent = string;
-export type PostContactSummaryStatus = "FAILED" | "COMPLETED" | (string & {});
+export type PostContactSummaryStatus = "FAILED" | "COMPLETED";
 export const PostContactSummaryStatus = /*@__PURE__*/ S.String;
 
 export type PostContactSummaryFailureCode =
@@ -247,8 +243,7 @@ export type PostContactSummaryFailureCode =
   | "INSUFFICIENT_CONVERSATION_CONTENT"
   | "FAILED_SAFETY_GUIDELINES"
   | "INVALID_ANALYSIS_CONFIGURATION"
-  | "INTERNAL_ERROR"
-  | (string & {});
+  | "INTERNAL_ERROR";
 export const PostContactSummaryFailureCode = /*@__PURE__*/ S.String;
 
 export interface PostContactSummary {

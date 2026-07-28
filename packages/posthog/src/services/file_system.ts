@@ -38,33 +38,22 @@ export class NotFound extends T.applyErrorMatchers(
 export interface FileSystemCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   path?: string;
-  depth?: number | null;
   type?: string;
   ref?: string | null;
   href?: string | null;
   meta?: unknown;
   shortcut?: boolean | null;
-  created_at?: string;
-  last_viewed_at?: string | null;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const FileSystemCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     path: S.optional(S.String),
-    depth: S.optional(S.NullOr(S.Number)),
     type: S.optional(S.String),
     ref: S.optional(S.NullOr(S.String)),
     href: S.optional(S.NullOr(S.String)),
     meta: S.optional(S.Unknown),
     shortcut: S.optional(S.NullOr(S.Boolean)),
-    created_at: S.optional(S.String),
-    last_viewed_at: S.optional(S.NullOr(S.String)),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -161,7 +150,7 @@ export const FileSystemListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileSystemListRequest",
 }) as any as S.Schema<FileSystemListRequest>;
 
-export type PaginatedFileSystemListResultsList = FileSystem2[];
+export type PaginatedFileSystemListResultsList = ReadonlyArray<FileSystem2>;
 export const PaginatedFileSystemListResultsList = /*@__PURE__*/ S.Array(
   FileSystem2,
 ) as any as S.Schema<PaginatedFileSystemListResultsList>;
@@ -189,31 +178,22 @@ export interface FileSystemPartialUpdateRequest {
   /** A UUID string identifying this file system. */
   id: string;
   path?: string;
-  depth?: number | null;
   type?: string;
   ref?: string | null;
   href?: string | null;
   meta?: unknown;
   shortcut?: boolean | null;
-  created_at?: string;
-  last_viewed_at?: string | null;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const FileSystemPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     path: S.optional(S.String),
-    depth: S.optional(S.NullOr(S.Number)),
     type: S.optional(S.String),
     ref: S.optional(S.NullOr(S.String)),
     href: S.optional(S.NullOr(S.String)),
     meta: S.optional(S.Unknown),
     shortcut: S.optional(S.NullOr(S.Boolean)),
-    created_at: S.optional(S.String),
-    last_viewed_at: S.optional(S.NullOr(S.String)),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -249,33 +229,22 @@ export const FileSystemRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FileSystemUndoDeleteCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   path?: string;
-  depth?: number | null;
   type?: string;
   ref?: string | null;
   href?: string | null;
   meta?: unknown;
   shortcut?: boolean | null;
-  created_at?: string;
-  last_viewed_at?: string | null;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const FileSystemUndoDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     path: S.optional(S.String),
-    depth: S.optional(S.NullOr(S.Number)),
     type: S.optional(S.String),
     ref: S.optional(S.NullOr(S.String)),
     href: S.optional(S.NullOr(S.String)),
     meta: S.optional(S.Unknown),
     shortcut: S.optional(S.NullOr(S.Boolean)),
-    created_at: S.optional(S.String),
-    last_viewed_at: S.optional(S.NullOr(S.String)),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -300,31 +269,22 @@ export interface FileSystemUpdateRequest {
   /** A UUID string identifying this file system. */
   id: string;
   path?: string;
-  depth?: number | null;
   type?: string;
   ref?: string | null;
   href?: string | null;
   meta?: unknown;
   shortcut?: boolean | null;
-  created_at?: string;
-  last_viewed_at?: string | null;
-  /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
-  user_access_level?: string | null;
 }
 export const FileSystemUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
     path: S.optional(S.String),
-    depth: S.optional(S.NullOr(S.Number)),
     type: S.optional(S.String),
     ref: S.optional(S.NullOr(S.String)),
     href: S.optional(S.NullOr(S.String)),
     meta: S.optional(S.Unknown),
     shortcut: S.optional(S.NullOr(S.Boolean)),
-    created_at: S.optional(S.String),
-    last_viewed_at: S.optional(S.NullOr(S.String)),
-    user_access_level: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PUT",

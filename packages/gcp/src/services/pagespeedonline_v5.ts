@@ -43,12 +43,11 @@ export type RunpagespeedPagespeedapiCategoryEnum =
   | "PERFORMANCE"
   | "PWA"
   | "SEO"
-  | "AGENTIC_BROWSING"
-  | (string & {});
+  | "AGENTIC_BROWSING";
 export const RunpagespeedPagespeedapiCategoryEnum = /*@__PURE__*/ S.String;
 
 export type RunpagespeedPagespeedapiCategoryEnumList =
-  RunpagespeedPagespeedapiCategoryEnum[];
+  ReadonlyArray<RunpagespeedPagespeedapiCategoryEnum>;
 export const RunpagespeedPagespeedapiCategoryEnumList = /*@__PURE__*/ S.Array(
   RunpagespeedPagespeedapiCategoryEnum,
 ) as any as S.Schema<RunpagespeedPagespeedapiCategoryEnumList>;
@@ -56,8 +55,7 @@ export const RunpagespeedPagespeedapiCategoryEnumList = /*@__PURE__*/ S.Array(
 export type RunpagespeedPagespeedapiStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "DESKTOP"
-  | "MOBILE"
-  | (string & {});
+  | "MOBILE";
 export const RunpagespeedPagespeedapiStrategyEnum = /*@__PURE__*/ S.String;
 
 export interface RunpagespeedPagespeedapiRequest {
@@ -375,12 +373,12 @@ export const Environment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -411,7 +409,7 @@ export const LhrEntity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LhrEntity" }) as any as S.Schema<LhrEntity>;
 
-export type LhrEntityList = LhrEntity[];
+export type LhrEntityList = ReadonlyArray<LhrEntity>;
 export const LhrEntityList = /*@__PURE__*/ S.Array(
   LhrEntity,
 ) as any as S.Schema<LhrEntityList>;
@@ -436,7 +434,7 @@ export const StackPack = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StackPack" }) as any as S.Schema<StackPack>;
 
-export type StackPackList = StackPack[];
+export type StackPackList = ReadonlyArray<StackPack>;
 export const StackPackList = /*@__PURE__*/ S.Array(
   StackPack,
 ) as any as S.Schema<StackPackList>;
@@ -500,7 +498,7 @@ export const AuditRefs = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditRefs" }) as any as S.Schema<AuditRefs>;
 
-export type AuditRefsList = AuditRefs[];
+export type AuditRefsList = ReadonlyArray<AuditRefs>;
 export const AuditRefsList = /*@__PURE__*/ S.Array(
   AuditRefs,
 ) as any as S.Schema<AuditRefsList>;
@@ -508,8 +506,7 @@ export const AuditRefsList = /*@__PURE__*/ S.Array(
 export type LighthouseCategoryV5CategoryScoreDisplayModeEnum =
   | "CATEGORY_SCORE_DISPLAY_MODE_UNSPECIFIED"
   | "GAUGE"
-  | "FRACTION"
-  | (string & {});
+  | "FRACTION";
 export const LighthouseCategoryV5CategoryScoreDisplayModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -690,7 +687,7 @@ export const Bucket = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 
-export type BucketList = Bucket[];
+export type BucketList = ReadonlyArray<Bucket>;
 export const BucketList = /*@__PURE__*/ S.Array(
   Bucket,
 ) as any as S.Schema<BucketList>;

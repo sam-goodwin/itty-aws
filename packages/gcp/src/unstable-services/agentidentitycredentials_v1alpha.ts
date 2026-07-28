@@ -115,7 +115,7 @@ export const GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsRespo
       "GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsResponse",
   }) as any as S.Schema<GoogleCloudAgentidentitycredentialsV1alpha_FinalizeCredentialsResponse>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;

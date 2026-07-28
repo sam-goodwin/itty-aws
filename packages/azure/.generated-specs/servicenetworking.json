@@ -406,16 +406,61 @@
             "smithy.api#documentation": "SecurityPolicy"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicenetworking#SecurityPolicyUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicenetworking#SecurityPolicyUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "wafPolicy": {
+          "target": "com.azure.servicenetworking#WafPolicyUpdate",
+          "traits": {
+            "smithy.api#documentation": "Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the SecurityPolicy."
+      }
+    },
+    "com.azure.servicenetworking#WafPolicyUpdate": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of the WAF"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Web Application Firewall Policy"
+      }
+    },
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.servicenetworking#SecurityPoliciesInterfaceCreateOrUpdate": {
@@ -535,16 +580,54 @@
             "smithy.api#documentation": "SecurityPolicy"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.servicenetworking#SecurityPoliciesInterfaceCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicenetworking#SecurityPolicyPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicenetworking#SecurityPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "wafPolicy": {
+          "target": "com.azure.servicenetworking#WafPolicy",
+          "traits": {
+            "smithy.api#documentation": "Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SecurityPolicy Properties."
+      }
+    },
+    "com.azure.servicenetworking#SecurityPoliciesInterfaceCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.servicenetworking#SecurityPoliciesInterfaceGet": {
@@ -1009,16 +1092,27 @@
             "smithy.api#documentation": "Frontends"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.servicenetworking#FrontendsInterfaceUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicenetworking#FrontendsInterfaceUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.servicenetworking#FrontendsInterfaceCreateOrUpdate": {
@@ -1138,16 +1232,47 @@
             "smithy.api#documentation": "Frontends"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.servicenetworking#FrontendsInterfaceCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicenetworking#FrontendPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicenetworking#FrontendPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Frontend Properties."
+      }
+    },
+    "com.azure.servicenetworking#FrontendsInterfaceCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.servicenetworking#FrontendsInterfaceGet": {
@@ -1648,16 +1773,67 @@
             "smithy.api#documentation": "Name of Association"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.servicenetworking#AssociationsInterfaceUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicenetworking#AssociationUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicenetworking#AssociationUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "associationType": {
+          "target": "com.azure.servicenetworking#AssociationType",
+          "traits": {
+            "smithy.api#documentation": "Association Type"
+          }
+        },
+        "subnet": {
+          "target": "com.azure.servicenetworking#AssociationSubnetUpdate",
+          "traits": {
+            "smithy.api#documentation": "Association Subnet"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the Association."
+      }
+    },
+    "com.azure.servicenetworking#AssociationSubnetUpdate": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Association ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Association Subnet."
+      }
+    },
+    "com.azure.servicenetworking#AssociationsInterfaceUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.servicenetworking#AssociationsInterfaceCreateOrUpdate": {
@@ -1777,16 +1953,61 @@
             "smithy.api#documentation": "Name of Association"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.servicenetworking#AssociationsInterfaceCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicenetworking#AssociationPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicenetworking#AssociationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "associationType": {
+          "target": "com.azure.servicenetworking#AssociationType",
+          "traits": {
+            "smithy.api#documentation": "Association Type",
+            "smithy.api#required": {}
+          }
+        },
+        "subnet": {
+          "target": "com.azure.servicenetworking#AssociationSubnet",
+          "traits": {
+            "smithy.api#documentation": "Association Subnet"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Association Properties."
+      }
+    },
+    "com.azure.servicenetworking#AssociationsInterfaceCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.servicenetworking#AssociationsInterfaceGet": {
@@ -2339,16 +2560,75 @@
             "smithy.api#documentation": "traffic controller name for path"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.servicenetworking#TrafficControllerInterfaceUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicenetworking#TrafficControllerUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicenetworking#TrafficControllerUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "securityPolicyConfigurations": {
+          "target": "com.azure.servicenetworking#SecurityPolicyConfigurationsUpdate",
+          "traits": {
+            "smithy.api#documentation": "Security Policy Configuration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the TrafficController."
+      }
+    },
+    "com.azure.servicenetworking#SecurityPolicyConfigurationsUpdate": {
+      "type": "structure",
+      "members": {
+        "wafSecurityPolicy": {
+          "target": "com.azure.servicenetworking#WafSecurityPolicyUpdate",
+          "traits": {
+            "smithy.api#documentation": "Contains reference to a WAF-type security policy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SecurityPolicyConfigurations Subresource of Traffic Controller."
+      }
+    },
+    "com.azure.servicenetworking#WafSecurityPolicyUpdate": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of the Waf Security Policy"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Web Application Firewall Security Policy"
+      }
+    },
+    "com.azure.servicenetworking#TrafficControllerInterfaceUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.servicenetworking#TrafficControllerInterfaceCreateOrUpdate": {
@@ -2460,16 +2740,54 @@
             "smithy.api#documentation": "traffic controller name for path"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.servicenetworking#TrafficControllerInterfaceCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.servicenetworking#TrafficControllerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.servicenetworking#TrafficControllerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "securityPolicyConfigurations": {
+          "target": "com.azure.servicenetworking#SecurityPolicyConfigurations",
+          "traits": {
+            "smithy.api#documentation": "Security Policy Configuration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Traffic Controller Properties."
+      }
+    },
+    "com.azure.servicenetworking#TrafficControllerInterfaceCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.servicenetworking#TrafficControllerInterfaceGet": {

@@ -113,8 +113,7 @@ export type ConnectionState =
   | "deleting"
   | "deleted"
   | "failed"
-  | "updating"
-  | (string & {});
+  | "updating";
 export const ConnectionState = /*@__PURE__*/ S.String;
 
 export type ConnectionSharedId = string;
@@ -277,11 +276,7 @@ export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnvironmentRequest",
 }) as any as S.Schema<GetEnvironmentRequest>;
-export type EnvironmentState =
-  | "available"
-  | "limited"
-  | "unavailable"
-  | (string & {});
+export type EnvironmentState = "available" | "limited" | "unavailable";
 export const EnvironmentState = /*@__PURE__*/ S.String;
 
 export type BandwidthList = string[];
@@ -296,7 +291,7 @@ export const Bandwidths = /*@__PURE__*/ S.suspend(() =>
     supported: S.optional(BandwidthList),
   }),
 ).annotate({ identifier: "Bandwidths" }) as any as S.Schema<Bandwidths>;
-export type RemoteAccountIdentifierType = "account" | "email" | (string & {});
+export type RemoteAccountIdentifierType = "account" | "email";
 export const RemoteAccountIdentifierType = /*@__PURE__*/ S.String;
 
 export interface Environment {
@@ -347,7 +342,7 @@ export const ListAttachPointsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAttachPointsRequest",
 }) as any as S.Schema<ListAttachPointsRequest>;
-export type AttachPointType = "DirectConnectGateway" | (string & {});
+export type AttachPointType = "DirectConnectGateway";
 export const AttachPointType = /*@__PURE__*/ S.String;
 
 export interface AttachPointDescriptor {

@@ -3196,6 +3196,24 @@
             "smithy.api#documentation": "The slug of the permission to check.",
             "smithy.api#required": {}
           }
+        },
+        "resource_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the resource. Mutually exclusive with `resource_external_id` and `resource_type_slug`."
+          }
+        },
+        "resource_external_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The external ID of the resource. Required with `resource_type_slug`. Mutually exclusive with `resource_id`."
+          }
+        },
+        "resource_type_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug of the resource type. Required with `resource_external_id`. Mutually exclusive with `resource_id`."
+          }
         }
       },
       "traits": {
@@ -4058,6 +4076,24 @@
             "smithy.api#documentation": "The slug of the role to assign.",
             "smithy.api#required": {}
           }
+        },
+        "resource_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the resource. Mutually exclusive with `resource_external_id` and `resource_type_slug`."
+          }
+        },
+        "resource_external_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The external ID of the resource. Required with `resource_type_slug`. Mutually exclusive with `resource_id`."
+          }
+        },
+        "resource_type_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type slug. Required with `resource_external_id`. Mutually exclusive with `resource_id`."
+          }
         }
       },
       "traits": {
@@ -4108,6 +4144,24 @@
           "traits": {
             "smithy.api#documentation": "The slug of the role to remove.",
             "smithy.api#required": {}
+          }
+        },
+        "resource_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the resource. Mutually exclusive with `resource_external_id` and `resource_type_slug`."
+          }
+        },
+        "resource_external_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The external ID of the resource. Required with `resource_type_slug`. Mutually exclusive with `resource_id`."
+          }
+        },
+        "resource_type_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type slug. Required with `resource_external_id`. Mutually exclusive with `resource_id`."
           }
         }
       },
@@ -5415,6 +5469,24 @@
             "smithy.api#documentation": "An optional description of the resource.",
             "com.distilled.openapi#nullable": {}
           }
+        },
+        "parent_resource_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the parent resource. Mutually exclusive with `parent_resource_external_id` and `parent_resource_type_slug`."
+          }
+        },
+        "parent_resource_external_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The external ID of the parent resource. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`."
+          }
+        },
+        "parent_resource_type_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`."
+          }
         }
       },
       "traits": {
@@ -6584,6 +6656,25 @@
             "smithy.api#documentation": "The ID of the organization this resource belongs to.",
             "smithy.api#required": {}
           }
+        },
+        "parent_resource_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the parent resource. Mutually exclusive with `parent_resource_external_id` and `parent_resource_type_slug`.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "parent_resource_external_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The external ID of the parent resource. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`."
+          }
+        },
+        "parent_resource_type_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`."
+          }
         }
       },
       "traits": {
@@ -6770,6 +6861,24 @@
           "traits": {
             "smithy.api#documentation": "An optional description of the resource.",
             "com.distilled.openapi#nullable": {}
+          }
+        },
+        "parent_resource_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the parent resource. Mutually exclusive with `parent_resource_external_id` and `parent_resource_type_slug`."
+          }
+        },
+        "parent_resource_external_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The external ID of the parent resource. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`."
+          }
+        },
+        "parent_resource_type_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`."
           }
         }
       },
@@ -8081,6 +8190,42 @@
             "smithy.api#documentation": "An ISO 8601 timestamp.",
             "smithy.api#required": {}
           }
+        },
+        "application_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the application."
+          }
+        },
+        "redirect_uris": {
+          "target": "com.workos.api#ConnectApplicationRedirectUrisList",
+          "traits": {
+            "smithy.api#documentation": "The redirect URIs configured for this application."
+          }
+        },
+        "uses_pkce": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application uses PKCE for authorization."
+          }
+        },
+        "is_first_party": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application is a first-party application."
+          }
+        },
+        "was_dynamically_registered": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application was dynamically registered."
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the organization the application belongs to."
+          }
         }
       },
       "traits": {}
@@ -8092,6 +8237,35 @@
       },
       "traits": {
         "smithy.api#documentation": "The scopes available for this application."
+      }
+    },
+    "com.workos.api#ConnectApplicationRedirectUrisItem": {
+      "type": "structure",
+      "members": {
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The redirect URI for the application.",
+            "smithy.api#required": {}
+          }
+        },
+        "default": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this is the default redirect URI.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.workos.api#ConnectApplicationRedirectUrisList": {
+      "type": "list",
+      "member": {
+        "target": "com.workos.api#ConnectApplicationRedirectUrisItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The redirect URIs configured for this application."
       }
     },
     "com.workos.api#ConnectApplicationListDataList": {
@@ -8328,6 +8502,35 @@
         "smithy.api#documentation": "The scopes available for this application."
       }
     },
+    "com.workos.api#ApplicationsControllerCreateResponseRedirectUrisItem": {
+      "type": "structure",
+      "members": {
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The redirect URI for the application.",
+            "smithy.api#required": {}
+          }
+        },
+        "default": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this is the default redirect URI.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.workos.api#ApplicationsControllerCreateResponseRedirectUrisList": {
+      "type": "list",
+      "member": {
+        "target": "com.workos.api#ApplicationsControllerCreateResponseRedirectUrisItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The redirect URIs configured for this application."
+      }
+    },
     "com.workos.api#ApplicationsControllerCreateResponse": {
       "type": "structure",
       "members": {
@@ -8387,6 +8590,42 @@
             "smithy.api#documentation": "An ISO 8601 timestamp.",
             "smithy.api#required": {}
           }
+        },
+        "application_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the application."
+          }
+        },
+        "redirect_uris": {
+          "target": "com.workos.api#ApplicationsControllerCreateResponseRedirectUrisList",
+          "traits": {
+            "smithy.api#documentation": "The redirect URIs configured for this application."
+          }
+        },
+        "uses_pkce": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application uses PKCE for authorization."
+          }
+        },
+        "is_first_party": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application is a first-party application."
+          }
+        },
+        "was_dynamically_registered": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application was dynamically registered."
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the organization the application belongs to."
+          }
         }
       },
       "traits": {
@@ -8441,6 +8680,35 @@
       },
       "traits": {
         "smithy.api#documentation": "The scopes available for this application."
+      }
+    },
+    "com.workos.api#ApplicationsControllerFindResponseRedirectUrisItem": {
+      "type": "structure",
+      "members": {
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The redirect URI for the application.",
+            "smithy.api#required": {}
+          }
+        },
+        "default": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this is the default redirect URI.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.workos.api#ApplicationsControllerFindResponseRedirectUrisList": {
+      "type": "list",
+      "member": {
+        "target": "com.workos.api#ApplicationsControllerFindResponseRedirectUrisItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The redirect URIs configured for this application."
       }
     },
     "com.workos.api#ApplicationsControllerFindResponse": {
@@ -8501,6 +8769,42 @@
           "traits": {
             "smithy.api#documentation": "An ISO 8601 timestamp.",
             "smithy.api#required": {}
+          }
+        },
+        "application_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the application."
+          }
+        },
+        "redirect_uris": {
+          "target": "com.workos.api#ApplicationsControllerFindResponseRedirectUrisList",
+          "traits": {
+            "smithy.api#documentation": "The redirect URIs configured for this application."
+          }
+        },
+        "uses_pkce": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application uses PKCE for authorization."
+          }
+        },
+        "is_first_party": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application is a first-party application."
+          }
+        },
+        "was_dynamically_registered": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application was dynamically registered."
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the organization the application belongs to."
           }
         }
       },
@@ -8600,6 +8904,35 @@
         "smithy.api#documentation": "The scopes available for this application."
       }
     },
+    "com.workos.api#ApplicationsControllerUpdateResponseRedirectUrisItem": {
+      "type": "structure",
+      "members": {
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The redirect URI for the application.",
+            "smithy.api#required": {}
+          }
+        },
+        "default": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this is the default redirect URI.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.workos.api#ApplicationsControllerUpdateResponseRedirectUrisList": {
+      "type": "list",
+      "member": {
+        "target": "com.workos.api#ApplicationsControllerUpdateResponseRedirectUrisItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The redirect URIs configured for this application."
+      }
+    },
     "com.workos.api#ApplicationsControllerUpdateResponse": {
       "type": "structure",
       "members": {
@@ -8658,6 +8991,42 @@
           "traits": {
             "smithy.api#documentation": "An ISO 8601 timestamp.",
             "smithy.api#required": {}
+          }
+        },
+        "application_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of the application."
+          }
+        },
+        "redirect_uris": {
+          "target": "com.workos.api#ApplicationsControllerUpdateResponseRedirectUrisList",
+          "traits": {
+            "smithy.api#documentation": "The redirect URIs configured for this application."
+          }
+        },
+        "uses_pkce": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application uses PKCE for authorization."
+          }
+        },
+        "is_first_party": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application is a first-party application."
+          }
+        },
+        "was_dynamically_registered": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the application was dynamically registered."
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the organization the application belongs to."
           }
         }
       },
@@ -23179,6 +23548,15 @@
         "smithy.api#documentation": "List organization memberships\n\nGet a list of all organization memberships matching the criteria specified. At least one of `user_id` or `organization_id` must be provided. By default only active memberships are returned. Use the `statuses` parameter to filter by other statuses."
       }
     },
+    "com.workos.api#UserlandUserOrganizationMembershipsControllerCreateRequestRoleSlugsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`."
+      }
+    },
     "com.workos.api#UserlandUserOrganizationMembershipsControllerCreateRequest": {
       "type": "structure",
       "members": {
@@ -23194,6 +23572,18 @@
           "traits": {
             "smithy.api#documentation": "The ID of the [organization](/reference/organization) which the user belongs to.",
             "smithy.api#required": {}
+          }
+        },
+        "role_slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single role identifier. Defaults to `member` or the explicit default role. Mutually exclusive with `role_slugs`."
+          }
+        },
+        "role_slugs": {
+          "target": "com.workos.api#UserlandUserOrganizationMembershipsControllerCreateRequestRoleSlugsList",
+          "traits": {
+            "smithy.api#documentation": "An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`."
           }
         }
       },
@@ -24693,6 +25083,56 @@
         "smithy.api#documentation": "Object containing metadata key/value pairs associated with the user."
       }
     },
+    "com.workos.api#UserlandUsersControllerCreate0RequestPasswordHashType": {
+      "type": "enum",
+      "members": {
+        "BCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bcrypt"
+          }
+        },
+        "FIREBASE_SCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firebase-scrypt"
+          }
+        },
+        "SSHA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssha"
+          }
+        },
+        "SSHA256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssha256"
+          }
+        },
+        "SCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scrypt"
+          }
+        },
+        "PBKDF2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pbkdf2"
+          }
+        },
+        "ARGON2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "argon2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`."
+      }
+    },
     "com.workos.api#UserlandUsersControllerCreate0Request": {
       "type": "structure",
       "members": {
@@ -24763,6 +25203,27 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "An optional Radar signals ID to correlate client-side signals with this request."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password to set for the user. Mutually exclusive with `password_hash` and `password_hash_type`.",
+            "com.distilled.openapi#nullable": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "password_hash": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hashed password to set for the user. Required with `password_hash_type`. Mutually exclusive with `password`.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "password_hash_type": {
+          "target": "com.workos.api#UserlandUsersControllerCreate0RequestPasswordHashType",
+          "traits": {
+            "smithy.api#documentation": "The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`."
           }
         }
       },
@@ -25003,6 +25464,56 @@
         "smithy.api#documentation": "Object containing metadata key/value pairs associated with the user."
       }
     },
+    "com.workos.api#UserlandUsersControllerUpdate0RequestPasswordHashType": {
+      "type": "enum",
+      "members": {
+        "BCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bcrypt"
+          }
+        },
+        "FIREBASE_SCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firebase-scrypt"
+          }
+        },
+        "SSHA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssha"
+          }
+        },
+        "SSHA256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ssha256"
+          }
+        },
+        "SCRYPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scrypt"
+          }
+        },
+        "PBKDF2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pbkdf2"
+          }
+        },
+        "ARGON2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "argon2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`."
+      }
+    },
     "com.workos.api#UserlandUsersControllerUpdate0Request": {
       "type": "structure",
       "members": {
@@ -25063,6 +25574,26 @@
           "traits": {
             "smithy.api#documentation": "The user's preferred locale.",
             "com.distilled.openapi#nullable": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The password to set for the user. Mutually exclusive with `password_hash` and `password_hash_type`.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "password_hash": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hashed password to set for the user. Required with `password_hash_type`. Mutually exclusive with `password`.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "password_hash_type": {
+          "target": "com.workos.api#UserlandUsersControllerUpdate0RequestPasswordHashType",
+          "traits": {
+            "smithy.api#documentation": "The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`."
           }
         }
       },

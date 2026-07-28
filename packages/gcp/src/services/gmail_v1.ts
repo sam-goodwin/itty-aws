@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -121,7 +121,8 @@ export const ClassificationLabelFieldValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClassificationLabelFieldValue",
 }) as any as S.Schema<ClassificationLabelFieldValue>;
 
-export type ClassificationLabelFieldValueList = ClassificationLabelFieldValue[];
+export type ClassificationLabelFieldValueList =
+  ReadonlyArray<ClassificationLabelFieldValue>;
 export const ClassificationLabelFieldValueList = /*@__PURE__*/ S.Array(
   ClassificationLabelFieldValue,
 ) as any as S.Schema<ClassificationLabelFieldValueList>;
@@ -142,7 +143,8 @@ export const ClassificationLabelValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClassificationLabelValue",
 }) as any as S.Schema<ClassificationLabelValue>;
 
-export type ClassificationLabelValueList = ClassificationLabelValue[];
+export type ClassificationLabelValueList =
+  ReadonlyArray<ClassificationLabelValue>;
 export const ClassificationLabelValueList = /*@__PURE__*/ S.Array(
   ClassificationLabelValue,
 ) as any as S.Schema<ClassificationLabelValueList>;
@@ -233,12 +235,12 @@ export const MessagePartHeader = /*@__PURE__*/ S.suspend(() =>
   identifier: "MessagePartHeader",
 }) as any as S.Schema<MessagePartHeader>;
 
-export type MessagePartHeaderList = MessagePartHeader[];
+export type MessagePartHeaderList = ReadonlyArray<MessagePartHeader>;
 export const MessagePartHeaderList = /*@__PURE__*/ S.Array(
   MessagePartHeader,
 ) as any as S.Schema<MessagePartHeaderList>;
 
-export type MessagePartList = MessagePart[];
+export type MessagePartList = ReadonlyArray<MessagePart>;
 export const MessagePartList = /*@__PURE__*/ S.Array(
   S.suspend(() => MessagePart),
 ) as any as S.Schema<MessagePartList>;
@@ -345,8 +347,7 @@ export const CreateUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
 export type LabelLabelListVisibilityEnum =
   | "labelShow"
   | "labelShowIfUnread"
-  | "labelHide"
-  | (string & {});
+  | "labelHide";
 export const LabelLabelListVisibilityEnum = /*@__PURE__*/ S.String;
 
 export interface LabelColor {
@@ -362,10 +363,10 @@ export const LabelColor = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LabelColor" }) as any as S.Schema<LabelColor>;
 
-export type LabelTypeEnum = "system" | "user" | (string & {});
+export type LabelTypeEnum = "system" | "user";
 export const LabelTypeEnum = /*@__PURE__*/ S.String;
 
-export type LabelMessageListVisibilityEnum = "show" | "hide" | (string & {});
+export type LabelMessageListVisibilityEnum = "show" | "hide";
 export const LabelMessageListVisibilityEnum = /*@__PURE__*/ S.String;
 
 /** Labels are used to categorize messages and threads within the user's mailbox. The maximum number of labels supported for a user's mailbox is 10,000. */
@@ -530,7 +531,7 @@ export const CsePrivateKeyMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "CsePrivateKeyMetadata",
 }) as any as S.Schema<CsePrivateKeyMetadata>;
 
-export type CsePrivateKeyMetadataList = CsePrivateKeyMetadata[];
+export type CsePrivateKeyMetadataList = ReadonlyArray<CsePrivateKeyMetadata>;
 export const CsePrivateKeyMetadataList = /*@__PURE__*/ S.Array(
   CsePrivateKeyMetadata,
 ) as any as S.Schema<CsePrivateKeyMetadataList>;
@@ -538,8 +539,7 @@ export const CsePrivateKeyMetadataList = /*@__PURE__*/ S.Array(
 export type CseKeyPairEnablementStateEnum =
   | "stateUnspecified"
   | "enabled"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const CseKeyPairEnablementStateEnum = /*@__PURE__*/ S.String;
 
 /** A client-side encryption S/MIME key pair, which is comprised of a public key, its certificate chain, and metadata for its paired private key. Gmail uses the key pair to complete the following tasks: - Sign outgoing client-side encrypted messages. - Save and reopen drafts of client-side encrypted messages. - Save and reopen sent messages. - Decrypt incoming or archived S/MIME messages. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
@@ -598,8 +598,7 @@ export type DelegateVerificationStatusEnum =
   | "accepted"
   | "pending"
   | "rejected"
-  | "expired"
-  | (string & {});
+  | "expired";
 export const DelegateVerificationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Settings for a delegate. Delegates can read, send, and delete messages, as well as view and add contacts, for the delegator's account. See "Set up mail delegation" for more information about delegates. */
@@ -640,8 +639,7 @@ export const CreateUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type FilterCriteriaSizeComparisonEnum =
   | "unspecified"
   | "smaller"
-  | "larger"
-  | (string & {});
+  | "larger";
 export const FilterCriteriaSizeComparisonEnum = /*@__PURE__*/ S.String;
 
 /** Message matching criteria. */
@@ -737,8 +735,7 @@ export const CreateUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 export type ForwardingAddressVerificationStatusEnum =
   | "verificationStatusUnspecified"
   | "accepted"
-  | "pending"
-  | (string & {});
+  | "pending";
 export const ForwardingAddressVerificationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Settings for a forwarding address. */
@@ -782,16 +779,14 @@ export const CreateUsersSettingsForwardingAddressesRequest =
 export type SendAsVerificationStatusEnum =
   | "verificationStatusUnspecified"
   | "accepted"
-  | "pending"
-  | (string & {});
+  | "pending";
 export const SendAsVerificationStatusEnum = /*@__PURE__*/ S.String;
 
 export type SmtpMsaSecurityModeEnum =
   | "securityModeUnspecified"
   | "none"
   | "ssl"
-  | "starttls"
-  | (string & {});
+  | "starttls";
 export const SmtpMsaSecurityModeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for communication with an SMTP service. */
@@ -1247,8 +1242,7 @@ export type AutoForwardingDispositionEnum =
   | "leaveInInbox"
   | "archive"
   | "trash"
-  | "markRead"
-  | (string & {});
+  | "markRead";
 export const AutoForwardingDispositionEnum = /*@__PURE__*/ S.String;
 
 /** Auto-forwarding settings for an account. */
@@ -1290,8 +1284,7 @@ export type ImapSettingsExpungeBehaviorEnum =
   | "expungeBehaviorUnspecified"
   | "archive"
   | "trash"
-  | "deleteForever"
-  | (string & {});
+  | "deleteForever";
 export const ImapSettingsExpungeBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** IMAP settings for an account. */
@@ -1367,8 +1360,7 @@ export type PopSettingsAccessWindowEnum =
   | "accessWindowUnspecified"
   | "disabled"
   | "fromNowOn"
-  | "allMail"
-  | (string & {});
+  | "allMail";
 export const PopSettingsAccessWindowEnum = /*@__PURE__*/ S.String;
 
 export type PopSettingsDispositionEnum =
@@ -1376,8 +1368,7 @@ export type PopSettingsDispositionEnum =
   | "leaveInInbox"
   | "archive"
   | "trash"
-  | "markRead"
-  | (string & {});
+  | "markRead";
 export const PopSettingsDispositionEnum = /*@__PURE__*/ S.String;
 
 /** POP settings for an account. */
@@ -1432,12 +1423,7 @@ export const Profile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
 
-export type GetUsersDraftsFormatEnum =
-  | "minimal"
-  | "full"
-  | "raw"
-  | "metadata"
-  | (string & {});
+export type GetUsersDraftsFormatEnum = "minimal" | "full" | "raw" | "metadata";
 export const GetUsersDraftsFormatEnum = /*@__PURE__*/ S.String;
 
 export interface GetUsersDraftsRequest {
@@ -1489,8 +1475,7 @@ export type GetUsersMessagesFormatEnum =
   | "minimal"
   | "full"
   | "raw"
-  | "metadata"
-  | (string & {});
+  | "metadata";
 export const GetUsersMessagesFormatEnum = /*@__PURE__*/ S.String;
 
 export interface GetUsersMessagesRequest {
@@ -1726,11 +1711,7 @@ export const SmimeInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SmimeInfo" }) as any as S.Schema<SmimeInfo>;
 
-export type GetUsersThreadsFormatEnum =
-  | "full"
-  | "metadata"
-  | "minimal"
-  | (string & {});
+export type GetUsersThreadsFormatEnum = "full" | "metadata" | "minimal";
 export const GetUsersThreadsFormatEnum = /*@__PURE__*/ S.String;
 
 export interface GetUsersThreadsRequest {
@@ -1760,7 +1741,7 @@ export const GetUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetUsersThreadsRequest",
 }) as any as S.Schema<GetUsersThreadsRequest>;
 
-export type MessageList = Message[];
+export type MessageList = ReadonlyArray<Message>;
 export const MessageList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<MessageList>;
@@ -1839,8 +1820,7 @@ export const VacationSettings = /*@__PURE__*/ S.suspend(() =>
 
 export type ImportUsersMessagesInternalDateSourceEnum =
   | "receivedTime"
-  | "dateHeader"
-  | (string & {});
+  | "dateHeader";
 export const ImportUsersMessagesInternalDateSourceEnum = /*@__PURE__*/ S.String;
 
 export interface ImportUsersMessagesRequest {
@@ -1880,8 +1860,7 @@ export const ImportUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type InsertUsersMessagesInternalDateSourceEnum =
   | "receivedTime"
-  | "dateHeader"
-  | (string & {});
+  | "dateHeader";
 export const InsertUsersMessagesInternalDateSourceEnum = /*@__PURE__*/ S.String;
 
 export interface InsertUsersMessagesRequest {
@@ -1968,7 +1947,7 @@ export const ListUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersDraftsRequest",
 }) as any as S.Schema<ListUsersDraftsRequest>;
 
-export type DraftList = Draft[];
+export type DraftList = ReadonlyArray<Draft>;
 export const DraftList = /*@__PURE__*/ S.Array(
   Draft,
 ) as any as S.Schema<DraftList>;
@@ -1995,12 +1974,11 @@ export type ListUsersHistoryHistoryTypesEnum =
   | "messageAdded"
   | "messageDeleted"
   | "labelAdded"
-  | "labelRemoved"
-  | (string & {});
+  | "labelRemoved";
 export const ListUsersHistoryHistoryTypesEnum = /*@__PURE__*/ S.String;
 
 export type ListUsersHistoryHistoryTypesEnumList =
-  ListUsersHistoryHistoryTypesEnum[];
+  ReadonlyArray<ListUsersHistoryHistoryTypesEnum>;
 export const ListUsersHistoryHistoryTypesEnumList = /*@__PURE__*/ S.Array(
   ListUsersHistoryHistoryTypesEnum,
 ) as any as S.Schema<ListUsersHistoryHistoryTypesEnumList>;
@@ -2051,7 +2029,7 @@ export const HistoryMessageAdded = /*@__PURE__*/ S.suspend(() =>
   identifier: "HistoryMessageAdded",
 }) as any as S.Schema<HistoryMessageAdded>;
 
-export type HistoryMessageAddedList = HistoryMessageAdded[];
+export type HistoryMessageAddedList = ReadonlyArray<HistoryMessageAdded>;
 export const HistoryMessageAddedList = /*@__PURE__*/ S.Array(
   HistoryMessageAdded,
 ) as any as S.Schema<HistoryMessageAddedList>;
@@ -2070,7 +2048,7 @@ export const HistoryLabelAdded = /*@__PURE__*/ S.suspend(() =>
   identifier: "HistoryLabelAdded",
 }) as any as S.Schema<HistoryLabelAdded>;
 
-export type HistoryLabelAddedList = HistoryLabelAdded[];
+export type HistoryLabelAddedList = ReadonlyArray<HistoryLabelAdded>;
 export const HistoryLabelAddedList = /*@__PURE__*/ S.Array(
   HistoryLabelAdded,
 ) as any as S.Schema<HistoryLabelAddedList>;
@@ -2089,7 +2067,7 @@ export const HistoryLabelRemoved = /*@__PURE__*/ S.suspend(() =>
   identifier: "HistoryLabelRemoved",
 }) as any as S.Schema<HistoryLabelRemoved>;
 
-export type HistoryLabelRemovedList = HistoryLabelRemoved[];
+export type HistoryLabelRemovedList = ReadonlyArray<HistoryLabelRemoved>;
 export const HistoryLabelRemovedList = /*@__PURE__*/ S.Array(
   HistoryLabelRemoved,
 ) as any as S.Schema<HistoryLabelRemovedList>;
@@ -2105,7 +2083,7 @@ export const HistoryMessageDeleted = /*@__PURE__*/ S.suspend(() =>
   identifier: "HistoryMessageDeleted",
 }) as any as S.Schema<HistoryMessageDeleted>;
 
-export type HistoryMessageDeletedList = HistoryMessageDeleted[];
+export type HistoryMessageDeletedList = ReadonlyArray<HistoryMessageDeleted>;
 export const HistoryMessageDeletedList = /*@__PURE__*/ S.Array(
   HistoryMessageDeleted,
 ) as any as S.Schema<HistoryMessageDeletedList>;
@@ -2136,7 +2114,7 @@ export const History = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "History" }) as any as S.Schema<History>;
 
-export type HistoryList = History[];
+export type HistoryList = ReadonlyArray<History>;
 export const HistoryList = /*@__PURE__*/ S.Array(
   History,
 ) as any as S.Schema<HistoryList>;
@@ -2177,7 +2155,7 @@ export const ListUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersLabelsRequest",
 }) as any as S.Schema<ListUsersLabelsRequest>;
 
-export type LabelList = Label[];
+export type LabelList = ReadonlyArray<Label>;
 export const LabelList = /*@__PURE__*/ S.Array(
   Label,
 ) as any as S.Schema<LabelList>;
@@ -2270,7 +2248,7 @@ export const ListUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListUsersSettingsCseIdentitiesRequest",
 }) as any as S.Schema<ListUsersSettingsCseIdentitiesRequest>;
 
-export type CseIdentityList = CseIdentity[];
+export type CseIdentityList = ReadonlyArray<CseIdentity>;
 export const CseIdentityList = /*@__PURE__*/ S.Array(
   CseIdentity,
 ) as any as S.Schema<CseIdentityList>;
@@ -2314,7 +2292,7 @@ export const ListUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersSettingsCseKeypairsRequest",
 }) as any as S.Schema<ListUsersSettingsCseKeypairsRequest>;
 
-export type CseKeyPairList = CseKeyPair[];
+export type CseKeyPairList = ReadonlyArray<CseKeyPair>;
 export const CseKeyPairList = /*@__PURE__*/ S.Array(
   CseKeyPair,
 ) as any as S.Schema<CseKeyPairList>;
@@ -2352,7 +2330,7 @@ export const ListUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersSettingsDelegatesRequest",
 }) as any as S.Schema<ListUsersSettingsDelegatesRequest>;
 
-export type DelegateList = Delegate[];
+export type DelegateList = ReadonlyArray<Delegate>;
 export const DelegateList = /*@__PURE__*/ S.Array(
   Delegate,
 ) as any as S.Schema<DelegateList>;
@@ -2388,7 +2366,7 @@ export const ListUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersSettingsFiltersRequest",
 }) as any as S.Schema<ListUsersSettingsFiltersRequest>;
 
-export type FilterList = Filter[];
+export type FilterList = ReadonlyArray<Filter>;
 export const FilterList = /*@__PURE__*/ S.Array(
   Filter,
 ) as any as S.Schema<FilterList>;
@@ -2425,7 +2403,7 @@ export const ListUsersSettingsForwardingAddressesRequest =
     identifier: "ListUsersSettingsForwardingAddressesRequest",
   }) as any as S.Schema<ListUsersSettingsForwardingAddressesRequest>;
 
-export type ForwardingAddressList = ForwardingAddress[];
+export type ForwardingAddressList = ReadonlyArray<ForwardingAddress>;
 export const ForwardingAddressList = /*@__PURE__*/ S.Array(
   ForwardingAddress,
 ) as any as S.Schema<ForwardingAddressList>;
@@ -2461,7 +2439,7 @@ export const ListUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersSettingsSendAsRequest",
 }) as any as S.Schema<ListUsersSettingsSendAsRequest>;
 
-export type SendAsList = SendAs[];
+export type SendAsList = ReadonlyArray<SendAs>;
 export const SendAsList = /*@__PURE__*/ S.Array(
   SendAs,
 ) as any as S.Schema<SendAsList>;
@@ -2501,7 +2479,7 @@ export const ListUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListUsersSettingsSendAsSmimeInfoRequest",
 }) as any as S.Schema<ListUsersSettingsSendAsSmimeInfoRequest>;
 
-export type SmimeInfoList = SmimeInfo[];
+export type SmimeInfoList = ReadonlyArray<SmimeInfo>;
 export const SmimeInfoList = /*@__PURE__*/ S.Array(
   SmimeInfo,
 ) as any as S.Schema<SmimeInfoList>;
@@ -2551,7 +2529,7 @@ export const ListUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUsersThreadsRequest",
 }) as any as S.Schema<ListUsersThreadsRequest>;
 
-export type ThreadList = Thread[];
+export type ThreadList = ReadonlyArray<Thread>;
 export const ThreadList = /*@__PURE__*/ S.Array(
   Thread,
 ) as any as S.Schema<ThreadList>;
@@ -3158,16 +3136,10 @@ export const VerifyUsersSettingsSendAsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerifyUsersSettingsSendAsResponse",
 }) as any as S.Schema<VerifyUsersSettingsSendAsResponse>;
 
-export type WatchRequestLabelFilterActionEnum =
-  | "include"
-  | "exclude"
-  | (string & {});
+export type WatchRequestLabelFilterActionEnum = "include" | "exclude";
 export const WatchRequestLabelFilterActionEnum = /*@__PURE__*/ S.String;
 
-export type WatchRequestLabelFilterBehaviorEnum =
-  | "include"
-  | "exclude"
-  | (string & {});
+export type WatchRequestLabelFilterBehaviorEnum = "include" | "exclude";
 export const WatchRequestLabelFilterBehaviorEnum = /*@__PURE__*/ S.String;
 
 /** Set up or update a new push notification watch on this user's mailbox. */

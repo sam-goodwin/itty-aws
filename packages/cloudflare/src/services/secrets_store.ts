@@ -181,7 +181,8 @@ export const CreateStoreResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateStoreResponse",
 }) as any as S.Schema<CreateStoreResponse>;
 
-export type StoresSecretsCreateRequestBodyItemScopesList = string[];
+export type StoresSecretsCreateRequestBodyItemScopesList =
+  ReadonlyArray<string>;
 export const StoresSecretsCreateRequestBodyItemScopesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -209,7 +210,7 @@ export const StoresSecretsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoresSecretsCreateRequestBodyItem>;
 
 export type StoresSecretsCreateRequestBodyList =
-  StoresSecretsCreateRequestBodyItem[];
+  ReadonlyArray<StoresSecretsCreateRequestBodyItem>;
 export const StoresSecretsCreateRequestBodyList = /*@__PURE__*/ S.Array(
   StoresSecretsCreateRequestBodyItem,
 ) as any as S.Schema<StoresSecretsCreateRequestBodyList>;
@@ -242,11 +243,10 @@ export const CreateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 export type StoresSecretsCreateResultItemStatus =
   | "pending"
   | "active"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const StoresSecretsCreateResultItemStatus = /*@__PURE__*/ S.String;
 
-export type StoresSecretsCreateResultItemScopesList = string[];
+export type StoresSecretsCreateResultItemScopesList = ReadonlyArray<string>;
 export const StoresSecretsCreateResultItemScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StoresSecretsCreateResultItemScopesList>;
@@ -283,7 +283,8 @@ export const StoresSecretsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoresSecretsCreateResultItem",
 }) as any as S.Schema<StoresSecretsCreateResultItem>;
 
-export type StoresSecretsCreateResultList = StoresSecretsCreateResultItem[];
+export type StoresSecretsCreateResultList =
+  ReadonlyArray<StoresSecretsCreateResultItem>;
 export const StoresSecretsCreateResultList = /*@__PURE__*/ S.Array(
   StoresSecretsCreateResultItem,
 ) as any as S.Schema<StoresSecretsCreateResultList>;
@@ -369,7 +370,7 @@ export const DeleteStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteStoreSecretResponse",
 }) as any as S.Schema<DeleteStoreSecretResponse>;
 
-export type StoresSecretsDuplicateRequestScopesList = string[];
+export type StoresSecretsDuplicateRequestScopesList = ReadonlyArray<string>;
 export const StoresSecretsDuplicateRequestScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StoresSecretsDuplicateRequestScopesList>;
@@ -412,11 +413,10 @@ export const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
 export type StoresSecretsDuplicateResponseStatus =
   | "pending"
   | "active"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const StoresSecretsDuplicateResponseStatus = /*@__PURE__*/ S.String;
 
-export type StoresSecretsDuplicateResponseScopesList = string[];
+export type StoresSecretsDuplicateResponseScopesList = ReadonlyArray<string>;
 export const StoresSecretsDuplicateResponseScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StoresSecretsDuplicateResponseScopesList>;
@@ -575,14 +575,10 @@ export const GetStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStoreSecretRequest",
 }) as any as S.Schema<GetStoreSecretRequest>;
 
-export type StoresSecretsGetResponseStatus =
-  | "pending"
-  | "active"
-  | "deleted"
-  | (string & {});
+export type StoresSecretsGetResponseStatus = "pending" | "active" | "deleted";
 export const StoresSecretsGetResponseStatus = /*@__PURE__*/ S.String;
 
-export type StoresSecretsGetResponseScopesList = string[];
+export type StoresSecretsGetResponseScopesList = ReadonlyArray<string>;
 export const StoresSecretsGetResponseScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StoresSecretsGetResponseScopesList>;
@@ -620,14 +616,15 @@ export const GetStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetStoreSecretResponse",
 }) as any as S.Schema<GetStoreSecretResponse>;
 
-export type StoresListRequestDirection = "asc" | "desc" | (string & {});
+export type StoresListRequestDirection = "asc" | "desc";
 export const StoresListRequestDirection = /*@__PURE__*/ S.String;
 
 export type StoresListRequestOrder =
   | "name"
   | "comment"
   | "created"
-  | (string & {});
+  | "modified"
+  | "status";
 export const StoresListRequestOrder = /*@__PURE__*/ S.String;
 
 export interface ListStoresRequest {
@@ -686,7 +683,7 @@ export const StoresListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoresListResultItem",
 }) as any as S.Schema<StoresListResultItem>;
 
-export type StoresListResultList = StoresListResultItem[];
+export type StoresListResultList = ReadonlyArray<StoresListResultItem>;
 export const StoresListResultList = /*@__PURE__*/ S.Array(
   StoresListResultItem,
 ) as any as S.Schema<StoresListResultList>;
@@ -706,17 +703,18 @@ export const ListStoresResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStoresResponse",
 }) as any as S.Schema<ListStoresResponse>;
 
-export type StoresSecretsListRequestDirection = "asc" | "desc" | (string & {});
+export type StoresSecretsListRequestDirection = "asc" | "desc";
 export const StoresSecretsListRequestDirection = /*@__PURE__*/ S.String;
 
 export type StoresSecretsListRequestOrder =
   | "name"
   | "comment"
   | "created"
-  | (string & {});
+  | "modified"
+  | "status";
 export const StoresSecretsListRequestOrder = /*@__PURE__*/ S.String;
 
-export type StoresSecretsListRequestScopesList = string[];
+export type StoresSecretsListRequestScopesList = ReadonlyArray<string>;
 export const StoresSecretsListRequestScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StoresSecretsListRequestScopesList>;
@@ -765,11 +763,10 @@ export const ListStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 export type StoresSecretsListResultItemStatus =
   | "pending"
   | "active"
-  | "deleted"
-  | (string & {});
+  | "deleted";
 export const StoresSecretsListResultItemStatus = /*@__PURE__*/ S.String;
 
-export type StoresSecretsListResultItemScopesList = string[];
+export type StoresSecretsListResultItemScopesList = ReadonlyArray<string>;
 export const StoresSecretsListResultItemScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StoresSecretsListResultItemScopesList>;
@@ -806,7 +803,8 @@ export const StoresSecretsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "StoresSecretsListResultItem",
 }) as any as S.Schema<StoresSecretsListResultItem>;
 
-export type StoresSecretsListResultList = StoresSecretsListResultItem[];
+export type StoresSecretsListResultList =
+  ReadonlyArray<StoresSecretsListResultItem>;
 export const StoresSecretsListResultList = /*@__PURE__*/ S.Array(
   StoresSecretsListResultItem,
 ) as any as S.Schema<StoresSecretsListResultList>;
@@ -826,7 +824,7 @@ export const ListStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListStoreSecretsResponse",
 }) as any as S.Schema<ListStoreSecretsResponse>;
 
-export type StoresSecretsEditRequestScopesList = string[];
+export type StoresSecretsEditRequestScopesList = ReadonlyArray<string>;
 export const StoresSecretsEditRequestScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StoresSecretsEditRequestScopesList>;
@@ -866,14 +864,10 @@ export const PatchStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchStoreSecretRequest",
 }) as any as S.Schema<PatchStoreSecretRequest>;
 
-export type StoresSecretsEditResponseStatus =
-  | "pending"
-  | "active"
-  | "deleted"
-  | (string & {});
+export type StoresSecretsEditResponseStatus = "pending" | "active" | "deleted";
 export const StoresSecretsEditResponseStatus = /*@__PURE__*/ S.String;
 
-export type StoresSecretsEditResponseScopesList = string[];
+export type StoresSecretsEditResponseScopesList = ReadonlyArray<string>;
 export const StoresSecretsEditResponseScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StoresSecretsEditResponseScopesList>;

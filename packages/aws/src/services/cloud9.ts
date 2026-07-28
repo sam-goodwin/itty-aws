@@ -169,7 +169,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
-export type ConnectionType = "CONNECT_SSH" | "CONNECT_SSM" | (string & {});
+export type ConnectionType = "CONNECT_SSH" | "CONNECT_SSM";
 export const ConnectionType = /*@__PURE__*/ S.String;
 
 export interface CreateEnvironmentEC2Request {
@@ -213,7 +213,7 @@ export const CreateEnvironmentEC2Result = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentEC2Result",
 }) as any as S.Schema<CreateEnvironmentEC2Result>;
-export type MemberPermissions = "read-write" | "read-only" | (string & {});
+export type MemberPermissions = "read-write" | "read-only";
 export const MemberPermissions = /*@__PURE__*/ S.String;
 
 export interface CreateEnvironmentMembershipRequest {
@@ -232,7 +232,7 @@ export const CreateEnvironmentMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentMembershipRequest",
 }) as any as S.Schema<CreateEnvironmentMembershipRequest>;
-export type Permissions = "owner" | "read-write" | "read-only" | (string & {});
+export type Permissions = "owner" | "read-write" | "read-only";
 export const Permissions = /*@__PURE__*/ S.String;
 
 export interface EnvironmentMember {
@@ -345,7 +345,7 @@ export const DescribeEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEnvironmentsRequest",
 }) as any as S.Schema<DescribeEnvironmentsRequest>;
-export type EnvironmentType = "ssh" | "ec2" | (string & {});
+export type EnvironmentType = "ssh" | "ec2";
 export const EnvironmentType = /*@__PURE__*/ S.String;
 
 export type EnvironmentLifecycleStatus =
@@ -353,8 +353,7 @@ export type EnvironmentLifecycleStatus =
   | "CREATED"
   | "CREATE_FAILED"
   | "DELETING"
-  | "DELETE_FAILED"
-  | (string & {});
+  | "DELETE_FAILED";
 export const EnvironmentLifecycleStatus = /*@__PURE__*/ S.String;
 
 export interface EnvironmentLifecycle {
@@ -382,8 +381,7 @@ export type ManagedCredentialsStatus =
   | "PENDING_REMOVAL_BY_OWNER"
   | "PENDING_START_REMOVAL_BY_OWNER"
   | "FAILED_REMOVAL_BY_COLLABORATOR"
-  | "FAILED_REMOVAL_BY_OWNER"
-  | (string & {});
+  | "FAILED_REMOVAL_BY_OWNER";
 export const ManagedCredentialsStatus = /*@__PURE__*/ S.String;
 
 export interface Environment {
@@ -437,8 +435,7 @@ export type EnvironmentStatus =
   | "ready"
   | "stopping"
   | "stopped"
-  | "deleting"
-  | (string & {});
+  | "deleting";
 export const EnvironmentStatus = /*@__PURE__*/ S.String;
 
 export interface DescribeEnvironmentStatusResult {
@@ -533,7 +530,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export type ManagedCredentialsAction = "ENABLE" | "DISABLE" | (string & {});
+export type ManagedCredentialsAction = "ENABLE" | "DISABLE";
 export const ManagedCredentialsAction = /*@__PURE__*/ S.String;
 
 export interface UpdateEnvironmentRequest {

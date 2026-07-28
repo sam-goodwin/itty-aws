@@ -63,13 +63,12 @@ export class NotFound extends T.applyErrorMatchers(
 export type CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
-    | (string & {});
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
 export const CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 
 export type CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList =
-  CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum[];
+  ReadonlyArray<CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum>;
 export const CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList =
   /*@__PURE__*/ S.Array(
     CreateServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum,
@@ -151,7 +150,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -259,13 +258,12 @@ export const CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesReques
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
-    | (string & {});
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
 export const DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList =
-  DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum[];
+  ReadonlyArray<DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum>;
 export const DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList =
   /*@__PURE__*/ S.Array(
     DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum,
@@ -354,8 +352,7 @@ export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetServicesConsumerQuotaMetricsViewEnum =
   | "QUOTA_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetServicesConsumerQuotaMetricsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetServicesConsumerQuotaMetricsRequest {
@@ -427,12 +424,12 @@ export const V1Beta1QuotaBucket = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1Beta1QuotaBucket",
 }) as any as S.Schema<V1Beta1QuotaBucket>;
 
-export type V1Beta1QuotaBucketList = V1Beta1QuotaBucket[];
+export type V1Beta1QuotaBucketList = ReadonlyArray<V1Beta1QuotaBucket>;
 export const V1Beta1QuotaBucketList = /*@__PURE__*/ S.Array(
   V1Beta1QuotaBucket,
 ) as any as S.Schema<V1Beta1QuotaBucketList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -465,7 +462,8 @@ export const V1Beta1ConsumerQuotaLimit = /*@__PURE__*/ S.suspend(() =>
   identifier: "V1Beta1ConsumerQuotaLimit",
 }) as any as S.Schema<V1Beta1ConsumerQuotaLimit>;
 
-export type V1Beta1ConsumerQuotaLimitList = V1Beta1ConsumerQuotaLimit[];
+export type V1Beta1ConsumerQuotaLimitList =
+  ReadonlyArray<V1Beta1ConsumerQuotaLimit>;
 export const V1Beta1ConsumerQuotaLimitList = /*@__PURE__*/ S.Array(
   V1Beta1ConsumerQuotaLimit,
 ) as any as S.Schema<V1Beta1ConsumerQuotaLimitList>;
@@ -501,8 +499,7 @@ export const V1Beta1ConsumerQuotaMetric = /*@__PURE__*/ S.suspend(() =>
 export type GetServicesConsumerQuotaMetricsLimitsViewEnum =
   | "QUOTA_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetServicesConsumerQuotaMetricsLimitsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -530,7 +527,7 @@ export const GetServicesConsumerQuotaMetricsLimitsRequest =
     identifier: "GetServicesConsumerQuotaMetricsLimitsRequest",
   }) as any as S.Schema<GetServicesConsumerQuotaMetricsLimitsRequest>;
 
-export type V1Beta1QuotaOverrideList = V1Beta1QuotaOverride[];
+export type V1Beta1QuotaOverrideList = ReadonlyArray<V1Beta1QuotaOverride>;
 export const V1Beta1QuotaOverrideList = /*@__PURE__*/ S.Array(
   V1Beta1QuotaOverride,
 ) as any as S.Schema<V1Beta1QuotaOverrideList>;
@@ -551,13 +548,12 @@ export const V1Beta1OverrideInlineSource = /*@__PURE__*/ S.suspend(() =>
 export type V1Beta1ImportProducerOverridesRequestForceOnlyItemEnum =
   | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
   | "LIMIT_DECREASE_BELOW_USAGE"
-  | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
-  | (string & {});
+  | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
 export const V1Beta1ImportProducerOverridesRequestForceOnlyItemEnum =
   /*@__PURE__*/ S.String;
 
 export type V1Beta1ImportProducerOverridesRequestForceOnlyItemEnumList =
-  V1Beta1ImportProducerOverridesRequestForceOnlyItemEnum[];
+  ReadonlyArray<V1Beta1ImportProducerOverridesRequestForceOnlyItemEnum>;
 export const V1Beta1ImportProducerOverridesRequestForceOnlyItemEnumList =
   /*@__PURE__*/ S.Array(
     V1Beta1ImportProducerOverridesRequestForceOnlyItemEnum,
@@ -612,7 +608,8 @@ export const ImportProducerOverridesServicesConsumerQuotaMetricsRequest =
     identifier: "ImportProducerOverridesServicesConsumerQuotaMetricsRequest",
   }) as any as S.Schema<ImportProducerOverridesServicesConsumerQuotaMetricsRequest>;
 
-export type V1Beta1ProducerQuotaPolicyList = V1Beta1ProducerQuotaPolicy[];
+export type V1Beta1ProducerQuotaPolicyList =
+  ReadonlyArray<V1Beta1ProducerQuotaPolicy>;
 export const V1Beta1ProducerQuotaPolicyList = /*@__PURE__*/ S.Array(
   V1Beta1ProducerQuotaPolicy,
 ) as any as S.Schema<V1Beta1ProducerQuotaPolicyList>;
@@ -684,8 +681,7 @@ export const ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest =
 export type ListServicesConsumerQuotaMetricsViewEnum =
   | "QUOTA_VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListServicesConsumerQuotaMetricsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListServicesConsumerQuotaMetricsRequest {
@@ -718,7 +714,8 @@ export const ListServicesConsumerQuotaMetricsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListServicesConsumerQuotaMetricsRequest",
 }) as any as S.Schema<ListServicesConsumerQuotaMetricsRequest>;
 
-export type V1Beta1ConsumerQuotaMetricList = V1Beta1ConsumerQuotaMetric[];
+export type V1Beta1ConsumerQuotaMetricList =
+  ReadonlyArray<V1Beta1ConsumerQuotaMetric>;
 export const V1Beta1ConsumerQuotaMetricList = /*@__PURE__*/ S.Array(
   V1Beta1ConsumerQuotaMetric,
 ) as any as S.Schema<V1Beta1ConsumerQuotaMetricList>;
@@ -829,13 +826,12 @@ export const V1Beta1ListProducerQuotaPoliciesResponse = /*@__PURE__*/ S.suspend(
 export type PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
     | "QUOTA_SAFETY_CHECK_UNSPECIFIED"
     | "LIMIT_DECREASE_BELOW_USAGE"
-    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH"
-    | (string & {});
+    | "LIMIT_DECREASE_PERCENTAGE_TOO_HIGH";
 export const PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum =
   /*@__PURE__*/ S.String;
 
 export type PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList =
-  PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum[];
+  ReadonlyArray<PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum>;
 export const PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnumList =
   /*@__PURE__*/ S.Array(
     PatchServicesConsumerQuotaMetricsLimitsProducerOverridesForceOnlyEnum,

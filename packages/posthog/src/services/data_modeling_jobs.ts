@@ -42,8 +42,7 @@ export type DataModelingJobStatusEnum =
   | "Cancelled"
   | "Completed"
   | "Failed"
-  | "Running"
-  | (string & {});
+  | "Running";
 export const DataModelingJobStatusEnum = /*@__PURE__*/ S.String;
 
 export interface DataModelingJob {
@@ -76,7 +75,8 @@ export const DataModelingJob = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataModelingJob",
 }) as any as S.Schema<DataModelingJob>;
 
-export type PaginatedDataModelingJobListResultsList = DataModelingJob[];
+export type PaginatedDataModelingJobListResultsList =
+  ReadonlyArray<DataModelingJob>;
 export const PaginatedDataModelingJobListResultsList = /*@__PURE__*/ S.Array(
   DataModelingJob,
 ) as any as S.Schema<PaginatedDataModelingJobListResultsList>;

@@ -134,10 +134,7 @@ export const DefinitionS3Location = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefinitionS3Location>;
 export type RoleARN = string;
 export type DescriptionString = string;
-export type EncryptionType =
-  | "AWS_MANAGED_KEY"
-  | "CUSTOMER_MANAGED_KEY"
-  | (string & {});
+export type EncryptionType = "AWS_MANAGED_KEY" | "CUSTOMER_MANAGED_KEY";
 export const EncryptionType = /*@__PURE__*/ S.String;
 
 export interface EncryptionConfiguration {
@@ -222,7 +219,7 @@ export const CreateWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkflowRequest>;
 export type WorkflowArn = string;
 export type TimestampValue = Date;
-export type WorkflowStatus = "READY" | "DELETING" | (string & {});
+export type WorkflowStatus = "READY" | "DELETING";
 export const WorkflowStatus = /*@__PURE__*/ S.String;
 
 export type WorkflowVersion = string;
@@ -325,8 +322,7 @@ export type TaskInstanceStatus =
   | "DEFERRED"
   | "NONE"
   | "CANCELLED"
-  | "TIMEOUT"
-  | (string & {});
+  | "TIMEOUT";
 export const TaskInstanceStatus = /*@__PURE__*/ S.String;
 
 export type GenericMap = { [key: string]: string | undefined };
@@ -470,7 +466,7 @@ export const GetWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkflowRunRequest",
 }) as any as S.Schema<GetWorkflowRunRequest>;
-export type RunType = "ON_DEMAND" | "SCHEDULED" | (string & {});
+export type RunType = "ON_DEMAND" | "SCHEDULED";
 export const RunType = /*@__PURE__*/ S.String;
 
 export type ObjectMap = { [key: string]: any | undefined };
@@ -488,8 +484,7 @@ export type WorkflowRunStatus =
   | "FAILED"
   | "TIMEOUT"
   | "STOPPING"
-  | "STOPPED"
-  | (string & {});
+  | "STOPPED";
 export const WorkflowRunStatus = /*@__PURE__*/ S.String;
 
 export interface WorkflowRunDetail {
@@ -1039,8 +1034,7 @@ export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
-  | "other"
-  | (string & {});
+  | "other";
 export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
 export interface ValidationExceptionField {

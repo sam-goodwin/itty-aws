@@ -41,7 +41,7 @@ export const ClusteringConfigEventFiltersItemMap = /*@__PURE__*/ S.Record(
 
 /** PostHog property filters that scope automated clustering jobs. Empty array means no saved filters. */
 export type ClusteringConfigEventFiltersList =
-  ClusteringConfigEventFiltersItemMap[];
+  ReadonlyArray<ClusteringConfigEventFiltersItemMap>;
 export const ClusteringConfigEventFiltersList = /*@__PURE__*/ S.Array(
   ClusteringConfigEventFiltersItemMap,
 ) as any as S.Schema<ClusteringConfigEventFiltersList>;
@@ -72,7 +72,7 @@ export const LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFilter
 
 /** PostHog property filters to save for automated clustering jobs. Pass an empty array to clear filters. */
 export type LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFiltersList =
-  LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFiltersItemMap[];
+  ReadonlyArray<LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFiltersItemMap>;
 export const LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFiltersList =
   /*@__PURE__*/ S.Array(
     LlmAnalyticsClusteringConfigSetEventFiltersCreateRequestEventFiltersItemMap,
@@ -102,35 +102,25 @@ export const LlmAnalyticsClusteringConfigSetEventFiltersCreateRequest =
   }) as any as S.Schema<LlmAnalyticsClusteringConfigSetEventFiltersCreateRequest>;
 
 /** * `trace` - trace * `generation` - generation * `evaluation` - evaluation */
-export type AnalysisLevelEnum =
-  | "trace"
-  | "generation"
-  | "evaluation"
-  | (string & {});
+export type AnalysisLevelEnum = "trace" | "generation" | "evaluation";
 export const AnalysisLevelEnum = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsClusteringJobsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   name?: string;
   analysis_level?: AnalysisLevelEnum;
   event_filters?: unknown;
   enabled?: boolean;
-  created_at?: string;
-  updated_at?: string;
 }
 export const LlmAnalyticsClusteringJobsCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
       name: S.optional(S.String),
       analysis_level: S.optional(AnalysisLevelEnum),
       event_filters: S.optional(S.Unknown),
       enabled: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -216,7 +206,8 @@ export const LlmAnalyticsClusteringJobsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "LlmAnalyticsClusteringJobsListRequest",
 }) as any as S.Schema<LlmAnalyticsClusteringJobsListRequest>;
 
-export type PaginatedClusteringJobListResultsList = ClusteringJob[];
+export type PaginatedClusteringJobListResultsList =
+  ReadonlyArray<ClusteringJob>;
 export const PaginatedClusteringJobListResultsList = /*@__PURE__*/ S.Array(
   ClusteringJob,
 ) as any as S.Schema<PaginatedClusteringJobListResultsList>;
@@ -247,8 +238,6 @@ export interface LlmAnalyticsClusteringJobsPartialUpdateRequest {
   analysis_level?: AnalysisLevelEnum;
   event_filters?: unknown;
   enabled?: boolean;
-  created_at?: string;
-  updated_at?: string;
 }
 export const LlmAnalyticsClusteringJobsPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -259,8 +248,6 @@ export const LlmAnalyticsClusteringJobsPartialUpdateRequest =
       analysis_level: S.optional(AnalysisLevelEnum),
       event_filters: S.optional(S.Unknown),
       enabled: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -303,8 +290,6 @@ export interface LlmAnalyticsClusteringJobsUpdateRequest {
   analysis_level?: AnalysisLevelEnum;
   event_filters?: unknown;
   enabled?: boolean;
-  created_at?: string;
-  updated_at?: string;
 }
 export const LlmAnalyticsClusteringJobsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -315,8 +300,6 @@ export const LlmAnalyticsClusteringJobsUpdateRequest = /*@__PURE__*/ S.suspend(
       analysis_level: S.optional(AnalysisLevelEnum),
       event_filters: S.optional(S.Unknown),
       enabled: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -329,23 +312,19 @@ export const LlmAnalyticsClusteringJobsUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LlmAnalyticsClusteringJobsUpdateRequest>;
 
 /** * `none` - none * `l2` - l2 */
-export type EmbeddingNormalizationEnum = "none" | "l2" | (string & {});
+export type EmbeddingNormalizationEnum = "none" | "l2";
 export const EmbeddingNormalizationEnum = /*@__PURE__*/ S.String;
 
 /** * `none` - none * `umap` - umap * `pca` - pca */
-export type DimensionalityReductionMethodEnum =
-  | "none"
-  | "umap"
-  | "pca"
-  | (string & {});
+export type DimensionalityReductionMethodEnum = "none" | "umap" | "pca";
 export const DimensionalityReductionMethodEnum = /*@__PURE__*/ S.String;
 
 /** * `hdbscan` - hdbscan * `kmeans` - kmeans */
-export type ClusteringMethodEnum = "hdbscan" | "kmeans" | (string & {});
+export type ClusteringMethodEnum = "hdbscan" | "kmeans";
 export const ClusteringMethodEnum = /*@__PURE__*/ S.String;
 
 /** * `umap` - umap * `pca` - pca * `tsne` - tsne */
-export type VisualizationMethodEnum = "umap" | "pca" | "tsne" | (string & {});
+export type VisualizationMethodEnum = "umap" | "pca" | "tsne";
 export const VisualizationMethodEnum = /*@__PURE__*/ S.String;
 
 export type LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap = {
@@ -359,7 +338,7 @@ export const LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap =
 
 /** Property filters to scope which traces are included in clustering (PostHog standard format) */
 export type LlmAnalyticsClusteringRunsCreateRequestEventFiltersList =
-  LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap[];
+  ReadonlyArray<LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap>;
 export const LlmAnalyticsClusteringRunsCreateRequestEventFiltersList =
   /*@__PURE__*/ S.Array(
     LlmAnalyticsClusteringRunsCreateRequestEventFiltersItemMap,
@@ -440,7 +419,7 @@ export const ClusteringRunRequestEventFiltersItemMap = /*@__PURE__*/ S.Record(
 
 /** Property filters to scope which traces are included in clustering (PostHog standard format) */
 export type ClusteringRunRequestEventFiltersList =
-  ClusteringRunRequestEventFiltersItemMap[];
+  ReadonlyArray<ClusteringRunRequestEventFiltersItemMap>;
 export const ClusteringRunRequestEventFiltersList = /*@__PURE__*/ S.Array(
   ClusteringRunRequestEventFiltersItemMap,
 ) as any as S.Schema<ClusteringRunRequestEventFiltersList>;
@@ -528,17 +507,11 @@ export type LLMProviderEnum =
   | "azure_openai"
   | "together_ai"
   | "minimax"
-  | "zeabur"
-  | (string & {});
+  | "zeabur";
 export const LLMProviderEnum = /*@__PURE__*/ S.String;
 
 /** * `unknown` - Unknown * `ok` - Ok * `invalid` - Invalid * `error` - Error */
-export type LLMProviderKeyStateEnum =
-  | "unknown"
-  | "ok"
-  | "invalid"
-  | "error"
-  | (string & {});
+export type LLMProviderKeyStateEnum = "unknown" | "ok" | "invalid" | "error";
 export const LLMProviderKeyStateEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
@@ -556,11 +529,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -592,64 +564,56 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export interface LLMProviderKey {
+export interface LLMProviderKeyOutput {
   id?: string;
   provider?: LLMProviderEnum;
   name?: string;
   state?: LLMProviderKeyStateEnum;
   error_message?: string | null;
-  api_key?: string | Redacted.Redacted<string>;
   api_key_masked?: string;
-  /** Azure OpenAI endpoint URL */
-  azure_endpoint?: string;
-  /** Azure OpenAI API version */
-  api_version?: string;
   /** Azure endpoint (read-only, for display) */
   azure_endpoint_display?: string | null;
   /** Azure API version (read-only, for display) */
   api_version_display?: string | null;
-  set_as_active?: boolean;
   created_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   last_used_at?: string | null;
 }
-export const LLMProviderKey = /*@__PURE__*/ S.suspend(() =>
+export const LLMProviderKeyOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     provider: S.optional(LLMProviderEnum),
     name: S.optional(S.String),
     state: S.optional(LLMProviderKeyStateEnum),
     error_message: S.optional(S.NullOr(S.String)),
-    api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
     api_key_masked: S.optional(S.String),
-    azure_endpoint: S.optional(S.String),
-    api_version: S.optional(S.String),
     azure_endpoint_display: S.optional(S.NullOr(S.String)),
     api_version_display: S.optional(S.NullOr(S.String)),
-    set_as_active: S.optional(S.Boolean),
     created_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     last_used_at: S.optional(S.NullOr(S.String)),
   }),
-).annotate({ identifier: "LLMProviderKey" }) as any as S.Schema<LLMProviderKey>;
+).annotate({
+  identifier: "LLMProviderKeyOutput",
+}) as any as S.Schema<LLMProviderKeyOutput>;
 
-export interface EvaluationConfig {
+export interface EvaluationConfigOutput {
   /** Provider key used to run llm_judge evals; null if none configured yet. */
-  active_provider_key: LLMProviderKey | null;
+  active_provider_key: LLMProviderKeyOutput | null;
   /** Timestamp when the evaluation config row was created. */
   created_at: string;
   /** Timestamp when the evaluation config row was last modified. */
   updated_at: string;
 }
-export const EvaluationConfig = /*@__PURE__*/ S.suspend(() =>
+export const EvaluationConfigOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    active_provider_key: S.NullOr(LLMProviderKey),
+    active_provider_key: S.NullOr(LLMProviderKeyOutput),
     created_at: S.String,
     updated_at: S.String,
   }),
 ).annotate({
-  identifier: "EvaluationConfig",
-}) as any as S.Schema<EvaluationConfig>;
+  identifier: "EvaluationConfigOutput",
+}) as any as S.Schema<EvaluationConfigOutput>;
 
 export interface LlmAnalyticsEvaluationConfigSetActiveKeyCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -674,36 +638,24 @@ export const LlmAnalyticsEvaluationConfigSetActiveKeyCreateRequest =
   }) as any as S.Schema<LlmAnalyticsEvaluationConfigSetActiveKeyCreateRequest>;
 
 /** * `scheduled` - Scheduled * `every_n` - Every N */
-export type EvaluationReportFrequencyEnum =
-  | "scheduled"
-  | "every_n"
-  | (string & {});
+export type EvaluationReportFrequencyEnum = "scheduled" | "every_n";
 export const EvaluationReportFrequencyEnum = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsEvaluationReportsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   /** UUID of the evaluation this report config belongs to. */
   evaluation?: string;
   /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule. * `scheduled` - Scheduled * `every_n` - Every N */
   frequency?: EvaluationReportFrequencyEnum;
   /** RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise. */
   rrule?: string;
-  /** Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode. */
-  starts_at?: string | null;
-  /** Read-only timezone used for scheduled reports. Evaluation reports use UTC. */
-  timezone_name?: string;
-  next_delivery_date?: string | null;
   /** List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team. */
   delivery_targets?: unknown;
   /** Maximum number of evaluation runs included in each report. Defaults to 200. */
   max_sample_size?: number;
   /** Whether report delivery is active. Disabled configs do not fire. */
   enabled?: boolean;
-  /** Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries. */
-  deleted?: boolean;
-  last_delivered_at?: string | null;
   /** Optional custom instructions appended to the AI report prompt to steer focus, scope, or section choices without modifying the base prompt. */
   report_prompt_guidance?: string;
   /** Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
@@ -712,31 +664,21 @@ export interface LlmAnalyticsEvaluationReportsCreateRequest {
   cooldown_minutes?: number;
   /** Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10. */
   daily_run_cap?: number;
-  created_by?: number | null;
-  created_at?: string;
 }
 export const LlmAnalyticsEvaluationReportsCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
       evaluation: S.optional(S.String),
       frequency: S.optional(EvaluationReportFrequencyEnum),
       rrule: S.optional(S.String),
-      starts_at: S.optional(S.NullOr(S.String)),
-      timezone_name: S.optional(S.String),
-      next_delivery_date: S.optional(S.NullOr(S.String)),
       delivery_targets: S.optional(S.Unknown),
       max_sample_size: S.optional(S.Number),
       enabled: S.optional(S.Boolean),
-      deleted: S.optional(S.Boolean),
-      last_delivered_at: S.optional(S.NullOr(S.String)),
       report_prompt_guidance: S.optional(S.String),
       trigger_threshold: S.optional(S.NullOr(S.Number)),
       cooldown_minutes: S.optional(S.Number),
       daily_run_cap: S.optional(S.Number),
-      created_by: S.optional(S.NullOr(S.Number)),
-      created_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -890,7 +832,8 @@ export const LlmAnalyticsEvaluationReportsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "LlmAnalyticsEvaluationReportsListRequest",
 }) as any as S.Schema<LlmAnalyticsEvaluationReportsListRequest>;
 
-export type PaginatedEvaluationReportListResultsList = EvaluationReport[];
+export type PaginatedEvaluationReportListResultsList =
+  ReadonlyArray<EvaluationReport>;
 export const PaginatedEvaluationReportListResultsList = /*@__PURE__*/ S.Array(
   EvaluationReport,
 ) as any as S.Schema<PaginatedEvaluationReportListResultsList>;
@@ -917,26 +860,16 @@ export interface LlmAnalyticsEvaluationReportsPartialUpdateRequest {
   project_id: string;
   /** A UUID string identifying this evaluation report. */
   id: string;
-  /** UUID of the evaluation this report config belongs to. */
-  evaluation?: string;
   /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule. * `scheduled` - Scheduled * `every_n` - Every N */
   frequency?: EvaluationReportFrequencyEnum;
   /** RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise. */
   rrule?: string;
-  /** Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode. */
-  starts_at?: string | null;
-  /** Read-only timezone used for scheduled reports. Evaluation reports use UTC. */
-  timezone_name?: string;
-  next_delivery_date?: string | null;
   /** List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team. */
   delivery_targets?: unknown;
   /** Maximum number of evaluation runs included in each report. Defaults to 200. */
   max_sample_size?: number;
   /** Whether report delivery is active. Disabled configs do not fire. */
   enabled?: boolean;
-  /** Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries. */
-  deleted?: boolean;
-  last_delivered_at?: string | null;
   /** Optional custom instructions appended to the AI report prompt to steer focus, scope, or section choices without modifying the base prompt. */
   report_prompt_guidance?: string;
   /** Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
@@ -945,31 +878,21 @@ export interface LlmAnalyticsEvaluationReportsPartialUpdateRequest {
   cooldown_minutes?: number;
   /** Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10. */
   daily_run_cap?: number;
-  created_by?: number | null;
-  created_at?: string;
 }
 export const LlmAnalyticsEvaluationReportsPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      evaluation: S.optional(S.String),
       frequency: S.optional(EvaluationReportFrequencyEnum),
       rrule: S.optional(S.String),
-      starts_at: S.optional(S.NullOr(S.String)),
-      timezone_name: S.optional(S.String),
-      next_delivery_date: S.optional(S.NullOr(S.String)),
       delivery_targets: S.optional(S.Unknown),
       max_sample_size: S.optional(S.Number),
       enabled: S.optional(S.Boolean),
-      deleted: S.optional(S.Boolean),
-      last_delivered_at: S.optional(S.NullOr(S.String)),
       report_prompt_guidance: S.optional(S.String),
       trigger_threshold: S.optional(S.NullOr(S.Number)),
       cooldown_minutes: S.optional(S.Number),
       daily_run_cap: S.optional(S.Number),
-      created_by: S.optional(S.NullOr(S.Number)),
-      created_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1090,7 +1013,7 @@ export const LlmAnalyticsEvaluationReportsRunsListRequest =
   }) as any as S.Schema<LlmAnalyticsEvaluationReportsRunsListRequest>;
 
 /** * `generation` - Generation * `trace` - Trace */
-export type EvaluationTargetEnum = "generation" | "trace" | (string & {});
+export type EvaluationTargetEnum = "generation" | "trace";
 export const EvaluationTargetEnum = /*@__PURE__*/ S.String;
 
 export interface EvaluationReportSection {
@@ -1109,7 +1032,8 @@ export const EvaluationReportSection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationReportSection>;
 
 /** Ordered narrative sections in the report. */
-export type EvaluationReportRunContentSectionsList = EvaluationReportSection[];
+export type EvaluationReportRunContentSectionsList =
+  ReadonlyArray<EvaluationReportSection>;
 export const EvaluationReportRunContentSectionsList = /*@__PURE__*/ S.Array(
   EvaluationReportSection,
 ) as any as S.Schema<EvaluationReportRunContentSectionsList>;
@@ -1134,13 +1058,13 @@ export const EvaluationReportCitation = /*@__PURE__*/ S.suspend(() =>
 
 /** References grounding findings in the report. */
 export type EvaluationReportRunContentCitationsList =
-  EvaluationReportCitation[];
+  ReadonlyArray<EvaluationReportCitation>;
 export const EvaluationReportRunContentCitationsList = /*@__PURE__*/ S.Array(
   EvaluationReportCitation,
 ) as any as S.Schema<EvaluationReportRunContentCitationsList>;
 
 /** * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
-export type OutputTypeEnum = "boolean" | "sentiment" | (string & {});
+export type OutputTypeEnum = "boolean" | "sentiment";
 export const OutputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Count by output-specific result label, such as pass/fail/N/A or positive/neutral/negative. */
@@ -1257,12 +1181,11 @@ export type DeliveryStatusEnum =
   | "generated"
   | "delivered"
   | "partial_failure"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const DeliveryStatusEnum = /*@__PURE__*/ S.String;
 
 /** Delivery error messages. Empty when all configured deliveries succeeded. */
-export type EvaluationReportRunDeliveryErrorsList = string[];
+export type EvaluationReportRunDeliveryErrorsList = ReadonlyArray<string>;
 export const EvaluationReportRunDeliveryErrorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<EvaluationReportRunDeliveryErrorsList>;
@@ -1303,7 +1226,8 @@ export const EvaluationReportRun = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluationReportRun",
 }) as any as S.Schema<EvaluationReportRun>;
 
-export type PaginatedEvaluationReportRunListResultsList = EvaluationReportRun[];
+export type PaginatedEvaluationReportRunListResultsList =
+  ReadonlyArray<EvaluationReportRun>;
 export const PaginatedEvaluationReportRunListResultsList =
   /*@__PURE__*/ S.Array(
     EvaluationReportRun,
@@ -1331,26 +1255,16 @@ export interface LlmAnalyticsEvaluationReportsUpdateRequest {
   project_id: string;
   /** A UUID string identifying this evaluation report. */
   id: string;
-  /** UUID of the evaluation this report config belongs to. */
-  evaluation: string;
   /** How report generation is triggered. 'every_n' fires once N new evaluation results have accumulated (subject to cooldown_minutes and daily_run_cap). 'scheduled' fires on the cadence defined by rrule. * `scheduled` - Scheduled * `every_n` - Every N */
   frequency?: EvaluationReportFrequencyEnum;
   /** RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use 'FREQ=DAILY' or 'FREQ=WEEKLY;BYDAY=MO,FR'. Required when frequency is 'scheduled'; ignored otherwise. */
   rrule?: string;
-  /** Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode. */
-  starts_at: string | null;
-  /** Read-only timezone used for scheduled reports. Evaluation reports use UTC. */
-  timezone_name: string;
-  next_delivery_date: string | null;
   /** List of delivery targets. Each entry is either {type: 'email', value: 'user@example.com'} or {type: 'slack', integration_id: <int>, channel: '<channel>'}. Slack integration_id must belong to this team. */
   delivery_targets?: unknown;
   /** Maximum number of evaluation runs included in each report. Defaults to 200. */
   max_sample_size?: number;
   /** Whether report delivery is active. Disabled configs do not fire. */
   enabled?: boolean;
-  /** Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries. */
-  deleted: boolean;
-  last_delivered_at: string | null;
   /** Optional custom instructions appended to the AI report prompt to steer focus, scope, or section choices without modifying the base prompt. */
   report_prompt_guidance?: string;
   /** Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is 'every_n'. */
@@ -1359,31 +1273,21 @@ export interface LlmAnalyticsEvaluationReportsUpdateRequest {
   cooldown_minutes?: number;
   /** Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10. */
   daily_run_cap?: number;
-  created_by: number | null;
-  created_at: string;
 }
 export const LlmAnalyticsEvaluationReportsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      evaluation: S.String,
       frequency: S.optional(EvaluationReportFrequencyEnum),
       rrule: S.optional(S.String),
-      starts_at: S.NullOr(S.String),
-      timezone_name: S.String,
-      next_delivery_date: S.NullOr(S.String),
       delivery_targets: S.optional(S.Unknown),
       max_sample_size: S.optional(S.Number),
       enabled: S.optional(S.Boolean),
-      deleted: S.Boolean,
-      last_delivered_at: S.NullOr(S.String),
       report_prompt_guidance: S.optional(S.String),
       trigger_threshold: S.optional(S.NullOr(S.Number)),
       cooldown_minutes: S.optional(S.Number),
       daily_run_cap: S.optional(S.Number),
-      created_by: S.NullOr(S.Number),
-      created_at: S.String,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1404,8 +1308,7 @@ export type LlmAnalyticsModelsRetrieveRequestProvider =
   | "openai"
   | "openrouter"
   | "together_ai"
-  | "zeabur"
-  | (string & {});
+  | "zeabur";
 export const LlmAnalyticsModelsRetrieveRequestProvider = /*@__PURE__*/ S.String;
 
 export interface LlmAnalyticsModelsRetrieveRequest {
@@ -1443,7 +1346,7 @@ export const LLMModelInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LLMModelInfo" }) as any as S.Schema<LLMModelInfo>;
 
 /** Models supported for the requested provider. */
-export type LLMModelsListResponseModelsList = LLMModelInfo[];
+export type LLMModelsListResponseModelsList = ReadonlyArray<LLMModelInfo>;
 export const LLMModelsListResponseModelsList = /*@__PURE__*/ S.Array(
   LLMModelInfo,
 ) as any as S.Schema<LLMModelsListResponseModelsList>;
@@ -1463,26 +1366,17 @@ export const LLMModelsListResponse = /*@__PURE__*/ S.suspend(() =>
 export interface LlmAnalyticsParserRecipesCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id: string;
   /** Human-readable recipe name shown in the editor. */
   name: string;
   /** Raw YAML recipe source. Must parse as YAML; recipe semantics are compiled and validated client-side. */
   source: string;
-  /** User who created the recipe. */
-  created_by: UserBasic | null;
-  created_at: string;
-  updated_at: string | null;
 }
 export const LlmAnalyticsParserRecipesCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      id: S.String,
       name: S.String,
       source: S.String,
-      created_by: S.NullOr(UserBasic),
-      created_at: S.String,
-      updated_at: S.NullOr(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1570,7 +1464,7 @@ export const LlmAnalyticsParserRecipesListRequest = /*@__PURE__*/ S.suspend(
   identifier: "LlmAnalyticsParserRecipesListRequest",
 }) as any as S.Schema<LlmAnalyticsParserRecipesListRequest>;
 
-export type PaginatedParserRecipeListResultsList = ParserRecipe[];
+export type PaginatedParserRecipeListResultsList = ReadonlyArray<ParserRecipe>;
 export const PaginatedParserRecipeListResultsList = /*@__PURE__*/ S.Array(
   ParserRecipe,
 ) as any as S.Schema<PaginatedParserRecipeListResultsList>;
@@ -1601,10 +1495,6 @@ export interface LlmAnalyticsParserRecipesPartialUpdateRequest {
   name?: string;
   /** Raw YAML recipe source. Must parse as YAML; recipe semantics are compiled and validated client-side. */
   source?: string;
-  /** User who created the recipe. */
-  created_by?: UserBasic | null;
-  created_at?: string;
-  updated_at?: string | null;
 }
 export const LlmAnalyticsParserRecipesPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1613,9 +1503,6 @@ export const LlmAnalyticsParserRecipesPartialUpdateRequest =
       id: S.String.pipe(T.Label()),
       name: S.optional(S.String),
       source: S.optional(S.String),
-      created_by: S.optional(S.NullOr(UserBasic)),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1652,45 +1539,25 @@ export const LlmAnalyticsParserRecipesRetrieveRequest = /*@__PURE__*/ S.suspend(
 export interface LlmAnalyticsProviderKeysCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id?: string;
   provider?: LLMProviderEnum;
   name?: string;
-  state?: LLMProviderKeyStateEnum;
-  error_message?: string | null;
   api_key?: string | Redacted.Redacted<string>;
-  api_key_masked?: string;
   /** Azure OpenAI endpoint URL */
   azure_endpoint?: string;
   /** Azure OpenAI API version */
   api_version?: string;
-  /** Azure endpoint (read-only, for display) */
-  azure_endpoint_display?: string | null;
-  /** Azure API version (read-only, for display) */
-  api_version_display?: string | null;
   set_as_active?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_used_at?: string | null;
 }
 export const LlmAnalyticsProviderKeysCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
       provider: S.optional(LLMProviderEnum),
       name: S.optional(S.String),
-      state: S.optional(LLMProviderKeyStateEnum),
-      error_message: S.optional(S.NullOr(S.String)),
       api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      api_key_masked: S.optional(S.String),
       azure_endpoint: S.optional(S.String),
       api_version: S.optional(S.String),
-      azure_endpoint_display: S.optional(S.NullOr(S.String)),
-      api_version_display: S.optional(S.NullOr(S.String)),
       set_as_active: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      last_used_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1777,27 +1644,29 @@ export const LlmAnalyticsProviderKeysListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmAnalyticsProviderKeysListRequest",
 }) as any as S.Schema<LlmAnalyticsProviderKeysListRequest>;
 
-export type PaginatedLLMProviderKeyListResultsList = LLMProviderKey[];
-export const PaginatedLLMProviderKeyListResultsList = /*@__PURE__*/ S.Array(
-  LLMProviderKey,
-) as any as S.Schema<PaginatedLLMProviderKeyListResultsList>;
+export type PaginatedLLMProviderKeyListOutputResultsList =
+  ReadonlyArray<LLMProviderKeyOutput>;
+export const PaginatedLLMProviderKeyListOutputResultsList =
+  /*@__PURE__*/ S.Array(
+    LLMProviderKeyOutput,
+  ) as any as S.Schema<PaginatedLLMProviderKeyListOutputResultsList>;
 
-export interface PaginatedLLMProviderKeyList {
+export interface PaginatedLLMProviderKeyListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
-  results?: PaginatedLLMProviderKeyListResultsList;
+  results?: PaginatedLLMProviderKeyListOutputResultsList;
 }
-export const PaginatedLLMProviderKeyList = /*@__PURE__*/ S.suspend(() =>
+export const PaginatedLLMProviderKeyListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedLLMProviderKeyListResultsList),
+    results: S.optional(PaginatedLLMProviderKeyListOutputResultsList),
   }),
 ).annotate({
-  identifier: "PaginatedLLMProviderKeyList",
-}) as any as S.Schema<PaginatedLLMProviderKeyList>;
+  identifier: "PaginatedLLMProviderKeyListOutput",
+}) as any as S.Schema<PaginatedLLMProviderKeyListOutput>;
 
 export interface LlmAnalyticsProviderKeysPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1806,22 +1675,12 @@ export interface LlmAnalyticsProviderKeysPartialUpdateRequest {
   id: string;
   provider?: LLMProviderEnum;
   name?: string;
-  state?: LLMProviderKeyStateEnum;
-  error_message?: string | null;
   api_key?: string | Redacted.Redacted<string>;
-  api_key_masked?: string;
   /** Azure OpenAI endpoint URL */
   azure_endpoint?: string;
   /** Azure OpenAI API version */
   api_version?: string;
-  /** Azure endpoint (read-only, for display) */
-  azure_endpoint_display?: string | null;
-  /** Azure API version (read-only, for display) */
-  api_version_display?: string | null;
   set_as_active?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_used_at?: string | null;
 }
 export const LlmAnalyticsProviderKeysPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1830,18 +1689,10 @@ export const LlmAnalyticsProviderKeysPartialUpdateRequest =
       id: S.String.pipe(T.Label()),
       provider: S.optional(LLMProviderEnum),
       name: S.optional(S.String),
-      state: S.optional(LLMProviderKeyStateEnum),
-      error_message: S.optional(S.NullOr(S.String)),
       api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      api_key_masked: S.optional(S.String),
       azure_endpoint: S.optional(S.String),
       api_version: S.optional(S.String),
-      azure_endpoint_display: S.optional(S.NullOr(S.String)),
-      api_version_display: S.optional(S.NullOr(S.String)),
       set_as_active: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      last_used_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1882,22 +1733,12 @@ export interface LlmAnalyticsProviderKeysUpdateRequest {
   id: string;
   provider?: LLMProviderEnum;
   name?: string;
-  state?: LLMProviderKeyStateEnum;
-  error_message?: string | null;
   api_key?: string | Redacted.Redacted<string>;
-  api_key_masked?: string;
   /** Azure OpenAI endpoint URL */
   azure_endpoint?: string;
   /** Azure OpenAI API version */
   api_version?: string;
-  /** Azure endpoint (read-only, for display) */
-  azure_endpoint_display?: string | null;
-  /** Azure API version (read-only, for display) */
-  api_version_display?: string | null;
   set_as_active?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_used_at?: string | null;
 }
 export const LlmAnalyticsProviderKeysUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1906,18 +1747,10 @@ export const LlmAnalyticsProviderKeysUpdateRequest = /*@__PURE__*/ S.suspend(
       id: S.String.pipe(T.Label()),
       provider: S.optional(LLMProviderEnum),
       name: S.optional(S.String),
-      state: S.optional(LLMProviderKeyStateEnum),
-      error_message: S.optional(S.NullOr(S.String)),
       api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      api_key_masked: S.optional(S.String),
       azure_endpoint: S.optional(S.String),
       api_version: S.optional(S.String),
-      azure_endpoint_display: S.optional(S.NullOr(S.String)),
-      api_version_display: S.optional(S.NullOr(S.String)),
       set_as_active: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      last_used_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1936,22 +1769,12 @@ export interface LlmAnalyticsProviderKeysValidateCreateRequest {
   id: string;
   provider?: LLMProviderEnum;
   name?: string;
-  state?: LLMProviderKeyStateEnum;
-  error_message?: string | null;
   api_key?: string | Redacted.Redacted<string>;
-  api_key_masked?: string;
   /** Azure OpenAI endpoint URL */
   azure_endpoint?: string;
   /** Azure OpenAI API version */
   api_version?: string;
-  /** Azure endpoint (read-only, for display) */
-  azure_endpoint_display?: string | null;
-  /** Azure API version (read-only, for display) */
-  api_version_display?: string | null;
   set_as_active?: boolean;
-  created_at?: string;
-  created_by?: UserBasic;
-  last_used_at?: string | null;
 }
 export const LlmAnalyticsProviderKeysValidateCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1960,18 +1783,10 @@ export const LlmAnalyticsProviderKeysValidateCreateRequest =
       id: S.String.pipe(T.Label()),
       provider: S.optional(LLMProviderEnum),
       name: S.optional(S.String),
-      state: S.optional(LLMProviderKeyStateEnum),
-      error_message: S.optional(S.NullOr(S.String)),
       api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      api_key_masked: S.optional(S.String),
       azure_endpoint: S.optional(S.String),
       api_version: S.optional(S.String),
-      azure_endpoint_display: S.optional(S.NullOr(S.String)),
-      api_version_display: S.optional(S.NullOr(S.String)),
       set_as_active: S.optional(S.Boolean),
-      created_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
-      last_used_at: S.optional(S.NullOr(S.String)),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2002,9 +1817,23 @@ export const LlmAnalyticsProviderKeyValidationsCreateRequest =
     identifier: "LlmAnalyticsProviderKeyValidationsCreateRequest",
   }) as any as S.Schema<LlmAnalyticsProviderKeyValidationsCreateRequest>;
 
-export type LlmAnalyticsProviderKeyValidationsCreateResponse = unknown;
+export type LlmAnalyticsProviderKeyValidationsCreateResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const LlmAnalyticsProviderKeyValidationsCreateResponseBodyMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<LlmAnalyticsProviderKeyValidationsCreateResponseBodyMap>;
+
+export type LlmAnalyticsProviderKeyValidationsCreateResponse =
+  LlmAnalyticsProviderKeyValidationsCreateResponseBodyMap;
 export const LlmAnalyticsProviderKeyValidationsCreateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+  /*@__PURE__*/ S.suspend(() =>
+    LlmAnalyticsProviderKeyValidationsCreateResponseBodyMap.pipe(
+      T.RawResponseRoot(),
+    ),
+  ).annotate({
     identifier: "LlmAnalyticsProviderKeyValidationsCreateResponse",
   }) as any as S.Schema<LlmAnalyticsProviderKeyValidationsCreateResponse>;
 
@@ -2044,7 +1873,7 @@ export interface ReviewQueueItem {
   created_at?: string;
   updated_at?: string | null;
   /** User who queued this trace. */
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   team?: number;
 }
 export const ReviewQueueItem = /*@__PURE__*/ S.suspend(() =>
@@ -2055,7 +1884,7 @@ export const ReviewQueueItem = /*@__PURE__*/ S.suspend(() =>
     trace_id: S.optional(S.String),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     team: S.optional(S.Number),
   }),
 ).annotate({
@@ -2130,7 +1959,8 @@ export const LlmAnalyticsReviewQueueItemsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "LlmAnalyticsReviewQueueItemsListRequest",
 }) as any as S.Schema<LlmAnalyticsReviewQueueItemsListRequest>;
 
-export type PaginatedReviewQueueItemListResultsList = ReviewQueueItem[];
+export type PaginatedReviewQueueItemListResultsList =
+  ReadonlyArray<ReviewQueueItem>;
 export const PaginatedReviewQueueItemListResultsList = /*@__PURE__*/ S.Array(
   ReviewQueueItem,
 ) as any as S.Schema<PaginatedReviewQueueItemListResultsList>;
@@ -2230,7 +2060,7 @@ export interface ReviewQueue {
   created_at?: string;
   updated_at?: string | null;
   /** User who created this review queue. */
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   team?: number;
 }
 export const ReviewQueue = /*@__PURE__*/ S.suspend(() =>
@@ -2240,7 +2070,7 @@ export const ReviewQueue = /*@__PURE__*/ S.suspend(() =>
     pending_item_count: S.optional(S.Number),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     team: S.optional(S.Number),
   }),
 ).annotate({ identifier: "ReviewQueue" }) as any as S.Schema<ReviewQueue>;
@@ -2306,7 +2136,7 @@ export const LlmAnalyticsReviewQueuesListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmAnalyticsReviewQueuesListRequest",
 }) as any as S.Schema<LlmAnalyticsReviewQueuesListRequest>;
 
-export type PaginatedReviewQueueListResultsList = ReviewQueue[];
+export type PaginatedReviewQueueListResultsList = ReadonlyArray<ReviewQueue>;
 export const PaginatedReviewQueueListResultsList = /*@__PURE__*/ S.Array(
   ReviewQueue,
 ) as any as S.Schema<PaginatedReviewQueueListResultsList>;
@@ -2376,11 +2206,7 @@ export const LlmAnalyticsReviewQueuesRetrieveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LlmAnalyticsReviewQueuesRetrieveRequest>;
 
 /** * `categorical` - categorical * `numeric` - numeric * `boolean` - boolean */
-export type ExperimentMetricKindEnum =
-  | "categorical"
-  | "numeric"
-  | "boolean"
-  | (string & {});
+export type ExperimentMetricKindEnum = "categorical" | "numeric" | "boolean";
 export const ExperimentMetricKindEnum = /*@__PURE__*/ S.String;
 
 export interface CategoricalScoreOption {
@@ -2400,14 +2226,14 @@ export const CategoricalScoreOption = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered categorical options available to the scorer. */
 export type CategoricalScoreDefinitionConfigOptionsList =
-  CategoricalScoreOption[];
+  ReadonlyArray<CategoricalScoreOption>;
 export const CategoricalScoreDefinitionConfigOptionsList =
   /*@__PURE__*/ S.Array(
     CategoricalScoreOption,
   ) as any as S.Schema<CategoricalScoreDefinitionConfigOptionsList>;
 
 /** * `single` - single * `multiple` - multiple */
-export type SelectionModeEnum = "single" | "multiple" | (string & {});
+export type SelectionModeEnum = "single" | "multiple";
 export const SelectionModeEnum = /*@__PURE__*/ S.String;
 
 export interface CategoricalScoreDefinitionConfig {
@@ -2579,7 +2405,8 @@ export const LlmAnalyticsScoreDefinitionsListRequest = /*@__PURE__*/ S.suspend(
   identifier: "LlmAnalyticsScoreDefinitionsListRequest",
 }) as any as S.Schema<LlmAnalyticsScoreDefinitionsListRequest>;
 
-export type PaginatedScoreDefinitionListResultsList = ScoreDefinition[];
+export type PaginatedScoreDefinitionListResultsList =
+  ReadonlyArray<ScoreDefinition>;
 export const PaginatedScoreDefinitionListResultsList = /*@__PURE__*/ S.Array(
   ScoreDefinition,
 ) as any as S.Schema<PaginatedScoreDefinitionListResultsList>;
@@ -2683,7 +2510,7 @@ export const LlmAnalyticsScoreDefinitionsRetrieveRequest =
   }) as any as S.Schema<LlmAnalyticsScoreDefinitionsRetrieveRequest>;
 
 /** Categorical option keys selected for this score. */
-export type TraceReviewScoreWriteCategoricalValuesList = string[];
+export type TraceReviewScoreWriteCategoricalValuesList = ReadonlyArray<string>;
 export const TraceReviewScoreWriteCategoricalValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TraceReviewScoreWriteCategoricalValuesList>;
@@ -2716,7 +2543,7 @@ export const TraceReviewScoreWrite = /*@__PURE__*/ S.suspend(() =>
 
 /** Full desired score set for this review. Omit scorers you want to leave blank. */
 export type LlmAnalyticsTraceReviewsCreateRequestScoresList =
-  TraceReviewScoreWrite[];
+  ReadonlyArray<TraceReviewScoreWrite>;
 export const LlmAnalyticsTraceReviewsCreateRequestScoresList =
   /*@__PURE__*/ S.Array(
     TraceReviewScoreWrite,
@@ -2754,7 +2581,7 @@ export const LlmAnalyticsTraceReviewsCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LlmAnalyticsTraceReviewsCreateRequest>;
 
 /** Categorical option keys selected for this score. */
-export type TraceReviewScoreCategoricalValuesList = string[];
+export type TraceReviewScoreCategoricalValuesList = ReadonlyArray<string>;
 export const TraceReviewScoreCategoricalValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TraceReviewScoreCategoricalValuesList>;
@@ -2805,7 +2632,7 @@ export const TraceReviewScore = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TraceReviewScore>;
 
 /** Saved scorer values for this review. */
-export type TraceReviewScoresList = TraceReviewScore[];
+export type TraceReviewScoresList = ReadonlyArray<TraceReviewScore>;
 export const TraceReviewScoresList = /*@__PURE__*/ S.Array(
   TraceReviewScore,
 ) as any as S.Schema<TraceReviewScoresList>;
@@ -2820,9 +2647,9 @@ export interface TraceReview {
   comment?: string | null;
   created_at?: string;
   updated_at?: string | null;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   /** User who last saved this review. */
-  reviewed_by?: UserBasic;
+  reviewed_by?: UserBasic | null;
   /** Saved scorer values for this review. */
   scores?: TraceReviewScoresList;
   team?: number;
@@ -2835,8 +2662,8 @@ export const TraceReview = /*@__PURE__*/ S.suspend(() =>
     comment: S.optional(S.NullOr(S.String)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.NullOr(S.String)),
-    created_by: S.optional(UserBasic),
-    reviewed_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
+    reviewed_by: S.optional(S.NullOr(UserBasic)),
     scores: S.optional(TraceReviewScoresList),
     team: S.optional(S.Number),
   }),
@@ -2913,7 +2740,7 @@ export const LlmAnalyticsTraceReviewsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmAnalyticsTraceReviewsListRequest",
 }) as any as S.Schema<LlmAnalyticsTraceReviewsListRequest>;
 
-export type PaginatedTraceReviewListResultsList = TraceReview[];
+export type PaginatedTraceReviewListResultsList = ReadonlyArray<TraceReview>;
 export const PaginatedTraceReviewListResultsList = /*@__PURE__*/ S.Array(
   TraceReview,
 ) as any as S.Schema<PaginatedTraceReviewListResultsList>;
@@ -2937,7 +2764,7 @@ export const PaginatedTraceReviewList = /*@__PURE__*/ S.suspend(() =>
 
 /** Full desired score set for this review. Omit scorers you want to leave blank. */
 export type LlmAnalyticsTraceReviewsPartialUpdateRequestScoresList =
-  TraceReviewScoreWrite[];
+  ReadonlyArray<TraceReviewScoreWrite>;
 export const LlmAnalyticsTraceReviewsPartialUpdateRequestScoresList =
   /*@__PURE__*/ S.Array(
     TraceReviewScoreWrite,
@@ -3025,9 +2852,19 @@ export const LlmAnalyticsTranslateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LlmAnalyticsTranslateCreateRequest",
 }) as any as S.Schema<LlmAnalyticsTranslateCreateRequest>;
 
-export type LlmAnalyticsTranslateCreateResponse = unknown;
+export type LlmAnalyticsTranslateCreateResponseBodyMap = {
+  [key: string]: unknown | undefined;
+};
+export const LlmAnalyticsTranslateCreateResponseBodyMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<LlmAnalyticsTranslateCreateResponseBodyMap>;
+
+export type LlmAnalyticsTranslateCreateResponse =
+  LlmAnalyticsTranslateCreateResponseBodyMap;
 export const LlmAnalyticsTranslateCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  LlmAnalyticsTranslateCreateResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "LlmAnalyticsTranslateCreateResponse",
 }) as any as S.Schema<LlmAnalyticsTranslateCreateResponse>;
@@ -3172,12 +3009,12 @@ export type LlmAnalyticsEvaluationConfigRetrieveError = PosthogOpError;
 /** Get the evaluation config for this team */
 export const llmAnalyticsEvaluationConfigRetrieve: API.OperationMethod<
   LlmAnalyticsEvaluationConfigRetrieveRequest,
-  EvaluationConfig,
+  EvaluationConfigOutput,
   LlmAnalyticsEvaluationConfigRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsEvaluationConfigRetrieveRequest,
-  output: EvaluationConfig,
+  output: EvaluationConfigOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3188,12 +3025,12 @@ export type LlmAnalyticsEvaluationConfigSetActiveKeyCreateError =
 /** Set the active provider key for evaluations */
 export const llmAnalyticsEvaluationConfigSetActiveKeyCreate: API.OperationMethod<
   LlmAnalyticsEvaluationConfigSetActiveKeyCreateRequest,
-  EvaluationConfig,
+  EvaluationConfigOutput,
   LlmAnalyticsEvaluationConfigSetActiveKeyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsEvaluationConfigSetActiveKeyCreateRequest,
-  output: EvaluationConfig,
+  output: EvaluationConfigOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3407,12 +3244,12 @@ export const llmAnalyticsParserRecipesRetrieve: API.OperationMethod<
 export type LlmAnalyticsProviderKeysCreateError = PosthogOpError;
 export const llmAnalyticsProviderKeysCreate: API.OperationMethod<
   LlmAnalyticsProviderKeysCreateRequest,
-  LLMProviderKey,
+  LLMProviderKeyOutput,
   LlmAnalyticsProviderKeysCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsProviderKeysCreateRequest,
-  output: LLMProviderKey,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3423,12 +3260,12 @@ export type LlmAnalyticsProviderKeysDependentConfigsRetrieveError =
 /** Get evaluations using this key and alternative keys for replacement. */
 export const llmAnalyticsProviderKeysDependentConfigsRetrieve: API.OperationMethod<
   LlmAnalyticsProviderKeysDependentConfigsRetrieveRequest,
-  LLMProviderKey,
+  LLMProviderKeyOutput,
   LlmAnalyticsProviderKeysDependentConfigsRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsProviderKeysDependentConfigsRetrieveRequest,
-  output: LLMProviderKey,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3451,12 +3288,12 @@ export const llmAnalyticsProviderKeysDestroy: API.OperationMethod<
 export type LlmAnalyticsProviderKeysListError = PosthogOpError;
 export const llmAnalyticsProviderKeysList: API.OperationMethod<
   LlmAnalyticsProviderKeysListRequest,
-  PaginatedLLMProviderKeyList,
+  PaginatedLLMProviderKeyListOutput,
   LlmAnalyticsProviderKeysListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsProviderKeysListRequest,
-  output: PaginatedLLMProviderKeyList,
+  output: PaginatedLLMProviderKeyListOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3465,12 +3302,12 @@ export const llmAnalyticsProviderKeysList: API.OperationMethod<
 export type LlmAnalyticsProviderKeysPartialUpdateError = PosthogOpError;
 export const llmAnalyticsProviderKeysPartialUpdate: API.OperationMethod<
   LlmAnalyticsProviderKeysPartialUpdateRequest,
-  LLMProviderKey,
+  LLMProviderKeyOutput,
   LlmAnalyticsProviderKeysPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsProviderKeysPartialUpdateRequest,
-  output: LLMProviderKey,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3479,12 +3316,12 @@ export const llmAnalyticsProviderKeysPartialUpdate: API.OperationMethod<
 export type LlmAnalyticsProviderKeysRetrieveError = PosthogOpError;
 export const llmAnalyticsProviderKeysRetrieve: API.OperationMethod<
   LlmAnalyticsProviderKeysRetrieveRequest,
-  LLMProviderKey,
+  LLMProviderKeyOutput,
   LlmAnalyticsProviderKeysRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsProviderKeysRetrieveRequest,
-  output: LLMProviderKey,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3493,12 +3330,12 @@ export const llmAnalyticsProviderKeysRetrieve: API.OperationMethod<
 export type LlmAnalyticsProviderKeysUpdateError = PosthogOpError;
 export const llmAnalyticsProviderKeysUpdate: API.OperationMethod<
   LlmAnalyticsProviderKeysUpdateRequest,
-  LLMProviderKey,
+  LLMProviderKeyOutput,
   LlmAnalyticsProviderKeysUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsProviderKeysUpdateRequest,
-  output: LLMProviderKey,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3507,12 +3344,12 @@ export const llmAnalyticsProviderKeysUpdate: API.OperationMethod<
 export type LlmAnalyticsProviderKeysValidateCreateError = PosthogOpError;
 export const llmAnalyticsProviderKeysValidateCreate: API.OperationMethod<
   LlmAnalyticsProviderKeysValidateCreateRequest,
-  LLMProviderKey,
+  LLMProviderKeyOutput,
   LlmAnalyticsProviderKeysValidateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: LlmAnalyticsProviderKeysValidateCreateRequest,
-  output: LLMProviderKey,
+  output: LLMProviderKeyOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

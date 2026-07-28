@@ -85,7 +85,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -161,12 +161,12 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -212,8 +212,7 @@ export type VoiceSsmlGenderEnum =
   | "SSML_VOICE_GENDER_UNSPECIFIED"
   | "MALE"
   | "FEMALE"
-  | "NEUTRAL"
-  | (string & {});
+  | "NEUTRAL";
 export const VoiceSsmlGenderEnum = /*@__PURE__*/ S.String;
 
 /** Description of a voice supported by the TTS service. */
@@ -236,7 +235,7 @@ export const Voice = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Voice" }) as any as S.Schema<Voice>;
 
-export type VoiceList = Voice[];
+export type VoiceList = ReadonlyArray<Voice>;
 export const VoiceList = /*@__PURE__*/ S.Array(
   Voice,
 ) as any as S.Schema<VoiceList>;
@@ -259,8 +258,7 @@ export type CustomPronunciationParamsPhoneticEncodingEnum =
   | "PHONETIC_ENCODING_IPA"
   | "PHONETIC_ENCODING_X_SAMPA"
   | "PHONETIC_ENCODING_JAPANESE_YOMIGANA"
-  | "PHONETIC_ENCODING_PINYIN"
-  | (string & {});
+  | "PHONETIC_ENCODING_PINYIN";
 export const CustomPronunciationParamsPhoneticEncodingEnum =
   /*@__PURE__*/ S.String;
 
@@ -283,7 +281,8 @@ export const CustomPronunciationParams = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomPronunciationParams",
 }) as any as S.Schema<CustomPronunciationParams>;
 
-export type CustomPronunciationParamsList = CustomPronunciationParams[];
+export type CustomPronunciationParamsList =
+  ReadonlyArray<CustomPronunciationParams>;
 export const CustomPronunciationParamsList = /*@__PURE__*/ S.Array(
   CustomPronunciationParams,
 ) as any as S.Schema<CustomPronunciationParamsList>;
@@ -315,7 +314,7 @@ export const Turn = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Turn" }) as any as S.Schema<Turn>;
 
-export type TurnList = Turn[];
+export type TurnList = ReadonlyArray<Turn>;
 export const TurnList = /*@__PURE__*/ S.Array(
   Turn,
 ) as any as S.Schema<TurnList>;
@@ -375,7 +374,8 @@ export const MultispeakerPrebuiltVoice = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultispeakerPrebuiltVoice",
 }) as any as S.Schema<MultispeakerPrebuiltVoice>;
 
-export type MultispeakerPrebuiltVoiceList = MultispeakerPrebuiltVoice[];
+export type MultispeakerPrebuiltVoiceList =
+  ReadonlyArray<MultispeakerPrebuiltVoice>;
 export const MultispeakerPrebuiltVoiceList = /*@__PURE__*/ S.Array(
   MultispeakerPrebuiltVoice,
 ) as any as S.Schema<MultispeakerPrebuiltVoiceList>;
@@ -396,8 +396,7 @@ export const MultiSpeakerVoiceConfig = /*@__PURE__*/ S.suspend(() =>
 export type CustomVoiceParamsReportedUsageEnum =
   | "REPORTED_USAGE_UNSPECIFIED"
   | "REALTIME"
-  | "OFFLINE"
-  | (string & {});
+  | "OFFLINE";
 export const CustomVoiceParamsReportedUsageEnum = /*@__PURE__*/ S.String;
 
 /** Description of the custom voice to be synthesized. */
@@ -420,8 +419,7 @@ export type VoiceSelectionParamsSsmlGenderEnum =
   | "SSML_VOICE_GENDER_UNSPECIFIED"
   | "MALE"
   | "FEMALE"
-  | "NEUTRAL"
-  | (string & {});
+  | "NEUTRAL";
 export const VoiceSelectionParamsSsmlGenderEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of Voice Clone feature. */
@@ -477,8 +475,7 @@ export type AudioConfigAudioEncodingEnum =
   | "MULAW"
   | "ALAW"
   | "PCM"
-  | "M4A"
-  | (string & {});
+  | "M4A";
 export const AudioConfigAudioEncodingEnum = /*@__PURE__*/ S.String;
 
 /** Description of audio data to be synthesized. */
@@ -557,8 +554,7 @@ export type SafetySettingThresholdEnum =
   | "BLOCK_MEDIUM_AND_ABOVE"
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
-  | "OFF"
-  | (string & {});
+  | "OFF";
 export const SafetySettingThresholdEnum = /*@__PURE__*/ S.String;
 
 export type SafetySettingCategoryEnum =
@@ -566,8 +562,7 @@ export type SafetySettingCategoryEnum =
   | "HARM_CATEGORY_HATE_SPEECH"
   | "HARM_CATEGORY_DANGEROUS_CONTENT"
   | "HARM_CATEGORY_HARASSMENT"
-  | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
-  | (string & {});
+  | "HARM_CATEGORY_SEXUALLY_EXPLICIT";
 export const SafetySettingCategoryEnum = /*@__PURE__*/ S.String;
 
 /** Safety setting for a single harm category. */
@@ -584,7 +579,7 @@ export const SafetySetting = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SafetySetting" }) as any as S.Schema<SafetySetting>;
 
-export type SafetySettingList = SafetySetting[];
+export type SafetySettingList = ReadonlyArray<SafetySetting>;
 export const SafetySettingList = /*@__PURE__*/ S.Array(
   SafetySetting,
 ) as any as S.Schema<SafetySettingList>;
@@ -624,13 +619,12 @@ export const AdvancedVoiceOptions = /*@__PURE__*/ S.suspend(() =>
 
 export type SynthesizeSpeechRequestEnableTimePointingItemEnum =
   | "TIMEPOINT_TYPE_UNSPECIFIED"
-  | "SSML_MARK"
-  | (string & {});
+  | "SSML_MARK";
 export const SynthesizeSpeechRequestEnableTimePointingItemEnum =
   /*@__PURE__*/ S.String;
 
 export type SynthesizeSpeechRequestEnableTimePointingItemEnumList =
-  SynthesizeSpeechRequestEnableTimePointingItemEnum[];
+  ReadonlyArray<SynthesizeSpeechRequestEnableTimePointingItemEnum>;
 export const SynthesizeSpeechRequestEnableTimePointingItemEnumList =
   /*@__PURE__*/ S.Array(
     SynthesizeSpeechRequestEnableTimePointingItemEnum,
@@ -695,7 +689,7 @@ export const Timepoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Timepoint" }) as any as S.Schema<Timepoint>;
 
-export type TimepointList = Timepoint[];
+export type TimepointList = ReadonlyArray<Timepoint>;
 export const TimepointList = /*@__PURE__*/ S.Array(
   Timepoint,
 ) as any as S.Schema<TimepointList>;

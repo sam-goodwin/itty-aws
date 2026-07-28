@@ -94,7 +94,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -118,7 +118,7 @@ export const GoogleApiHttpBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleApiHttpBody",
 }) as any as S.Schema<GoogleApiHttpBody>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -139,7 +139,7 @@ export const GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy 
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>;
 
 export type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyList =
-  GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy[];
+  ReadonlyArray<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>;
 export const GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy,
@@ -150,8 +150,7 @@ export type GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateEn
     | "IN_STOCK"
     | "OUT_OF_STOCK"
     | "PREORDER"
-    | "BACKORDER"
-    | (string & {});
+    | "BACKORDER";
 export const GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -176,7 +175,7 @@ export const GoogleCloudRecommendationengineV1beta1Image =
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1Image>;
 
 export type GoogleCloudRecommendationengineV1beta1ImageList =
-  GoogleCloudRecommendationengineV1beta1Image[];
+  ReadonlyArray<GoogleCloudRecommendationengineV1beta1Image>;
 export const GoogleCloudRecommendationengineV1beta1ImageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1Image,
@@ -290,7 +289,7 @@ export const GoogleCloudRecommendationengineV1beta1FeatureMapStringListMap =
     GoogleCloudRecommendationengineV1beta1FeatureMapStringList,
   ) as any as S.Schema<GoogleCloudRecommendationengineV1beta1FeatureMapStringListMap>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -678,8 +677,7 @@ export type GoogleCloudRecommendationengineV1beta1ProductDetailStockStateEnum =
   | "IN_STOCK"
   | "OUT_OF_STOCK"
   | "PREORDER"
-  | "BACKORDER"
-  | (string & {});
+  | "BACKORDER";
 export const GoogleCloudRecommendationengineV1beta1ProductDetailStockStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -723,7 +721,7 @@ export const GoogleCloudRecommendationengineV1beta1ProductDetail =
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1ProductDetail>;
 
 export type GoogleCloudRecommendationengineV1beta1ProductDetailList =
-  GoogleCloudRecommendationengineV1beta1ProductDetail[];
+  ReadonlyArray<GoogleCloudRecommendationengineV1beta1ProductDetail>;
 export const GoogleCloudRecommendationengineV1beta1ProductDetailList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1ProductDetail,
@@ -768,8 +766,7 @@ export type GoogleCloudRecommendationengineV1beta1UserEventEventSourceEnum =
   | "EVENT_SOURCE_UNSPECIFIED"
   | "AUTOML"
   | "ECOMMERCE"
-  | "BATCH_UPLOAD"
-  | (string & {});
+  | "BATCH_UPLOAD";
 export const GoogleCloudRecommendationengineV1beta1UserEventEventSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -866,7 +863,7 @@ export const GoogleCloudRecommendationengineV1beta1UserEvent =
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1UserEvent>;
 
 export type GoogleCloudRecommendationengineV1beta1UserEventList =
-  GoogleCloudRecommendationengineV1beta1UserEvent[];
+  ReadonlyArray<GoogleCloudRecommendationengineV1beta1UserEvent>;
 export const GoogleCloudRecommendationengineV1beta1UserEventList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1UserEvent,
@@ -889,7 +886,7 @@ export const GoogleCloudRecommendationengineV1beta1UserEventInlineSource =
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1UserEventInlineSource>;
 
 export type GoogleCloudRecommendationengineV1beta1CatalogItemList =
-  GoogleCloudRecommendationengineV1beta1CatalogItem[];
+  ReadonlyArray<GoogleCloudRecommendationengineV1beta1CatalogItem>;
 export const GoogleCloudRecommendationengineV1beta1CatalogItemList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1CatalogItem,
@@ -1096,12 +1093,12 @@ export const ListProjectsLocationsCatalogsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsCatalogsRequest>;
 
 export type GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigPredictItemLevelEnum =
-  "CATALOG_ITEM_LEVEL_UNSPECIFIED" | "VARIANT" | "MASTER" | (string & {});
+  "CATALOG_ITEM_LEVEL_UNSPECIFIED" | "VARIANT" | "MASTER";
 export const GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigPredictItemLevelEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigEventItemLevelEnum =
-  "CATALOG_ITEM_LEVEL_UNSPECIFIED" | "VARIANT" | "MASTER" | (string & {});
+  "CATALOG_ITEM_LEVEL_UNSPECIFIED" | "VARIANT" | "MASTER";
 export const GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfigEventItemLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1152,7 +1149,7 @@ export const GoogleCloudRecommendationengineV1beta1Catalog =
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1Catalog>;
 
 export type GoogleCloudRecommendationengineV1beta1CatalogList =
-  GoogleCloudRecommendationengineV1beta1Catalog[];
+  ReadonlyArray<GoogleCloudRecommendationengineV1beta1Catalog>;
 export const GoogleCloudRecommendationengineV1beta1CatalogList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1Catalog,
@@ -1254,7 +1251,8 @@ export const ListProjectsLocationsCatalogsEventStoresOperationsRequest =
     identifier: "ListProjectsLocationsCatalogsEventStoresOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsCatalogsEventStoresOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -1306,7 +1304,7 @@ export const ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistratio
   }) as any as S.Schema<ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest>;
 
 export type GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistrationList =
-  GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration[];
+  ReadonlyArray<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>;
 export const GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistrationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration,
@@ -1544,7 +1542,7 @@ export const GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResu
   }) as any as S.Schema<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>;
 
 export type GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResultList =
-  GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult[];
+  ReadonlyArray<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>;
 export const GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult,
@@ -1625,10 +1623,7 @@ export const PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest =
   }) as any as S.Schema<PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest>;
 
 export type GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequestUserEventRejoinScopeEnum =
-    | "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED"
-    | "JOINED_EVENTS"
-    | "UNJOINED_EVENTS"
-    | (string & {});
+  "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED" | "JOINED_EVENTS" | "UNJOINED_EVENTS";
 export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequestUserEventRejoinScopeEnum =
   /*@__PURE__*/ S.String;
 

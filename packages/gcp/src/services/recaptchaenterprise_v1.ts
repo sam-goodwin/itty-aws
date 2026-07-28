@@ -62,8 +62,7 @@ export class NotFound extends T.applyErrorMatchers(
 
 export type GoogleCloudRecaptchaenterpriseV1IpOverrideDataOverrideTypeEnum =
   | "OVERRIDE_TYPE_UNSPECIFIED"
-  | "ALLOW"
-  | (string & {});
+  | "ALLOW";
 export const GoogleCloudRecaptchaenterpriseV1IpOverrideDataOverrideTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -147,13 +146,12 @@ export type GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItem
     | "FAILED_TWO_FACTOR"
     | "CORRECT_PASSWORD"
     | "INCORRECT_PASSWORD"
-    | "SOCIAL_SPAM"
-    | (string & {});
+    | "SOCIAL_SPAM";
 export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList =
-  GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum>;
 export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestReasonsItemEnum,
@@ -181,8 +179,7 @@ export type GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestAnnotationE
     | "LEGITIMATE"
     | "FRAUDULENT"
     | "PASSWORD_CORRECT"
-    | "PASSWORD_INCORRECT"
-    | (string & {});
+    | "PASSWORD_INCORRECT";
 export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequestAnnotationEnum =
   /*@__PURE__*/ S.String;
 
@@ -205,8 +202,7 @@ export type GoogleCloudRecaptchaenterpriseV1TransactionEventEventTypeEnum =
   | "REFUND_REQUEST"
   | "REFUND_DECLINE"
   | "REFUND"
-  | "REFUND_REVERSE"
-  | (string & {});
+  | "REFUND_REVERSE";
 export const GoogleCloudRecaptchaenterpriseV1TransactionEventEventTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -305,16 +301,12 @@ export const GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse>;
 
 export type GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum =
-    | "CARD_LABEL_UNSPECIFIED"
-    | "PREPAID"
-    | "VIRTUAL"
-    | "UNEXPECTED_LOCATION"
-    | (string & {});
+  "CARD_LABEL_UNSPECIFIED" | "PREPAID" | "VIRTUAL" | "UNEXPECTED_LOCATION";
 export const GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList =
-  GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum>;
 export const GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignalsCardLabelsItemEnum,
@@ -379,13 +371,12 @@ export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemE
     | "PROFILE_MATCH"
     | "SUSPICIOUS_LOGIN_ACTIVITY"
     | "SUSPICIOUS_ACCOUNT_CREATION"
-    | "RELATED_ACCOUNTS_NUMBER_HIGH"
-    | (string & {});
+    | "RELATED_ACCOUNTS_NUMBER_HIGH";
 export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList =
-  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum>;
 export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentLabelsItemEnum,
@@ -396,8 +387,7 @@ export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRisk
     | "CLIENT_HISTORICAL_BOT_ACTIVITY"
     | "ACCOUNT_IN_LARGE_RELATED_GROUP"
     | "CLIENT_ACCESSED_MANY_ACCOUNTS"
-    | "DISPOSABLE_EMAIL_DOMAIN"
-    | (string & {});
+    | "DISPOSABLE_EMAIL_DOMAIN";
 export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -419,7 +409,7 @@ export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRis
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>;
 
 export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList =
-  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason>;
 export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReasonList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountRiskReason,
@@ -430,8 +420,7 @@ export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrus
     | "PROFILE_MATCH"
     | "ACCOUNT_HISTORY_REPUTABLE"
     | "IDENTITY_GLOBAL_ACTIVITY_REPUTABLE"
-    | "IDENTITY_HISTORY_REPUTABLE"
-    | (string & {});
+    | "IDENTITY_HISTORY_REPUTABLE";
 export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -453,7 +442,7 @@ export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTru
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason>;
 
 export type GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList =
-  GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason>;
 export const GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReasonList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1AccountDefenderAssessmentAccountTrustReason,
@@ -526,16 +515,14 @@ export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisChallengeEnum =
   | "CHALLENGE_UNSPECIFIED"
   | "NOCAPTCHA"
   | "PASSED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisChallengeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisLastChallengeTypeEnum =
   | "CHALLENGE_TYPE_UNSPECIFIED"
   | "CHALLENGE_TYPE_VISUAL"
-  | "CHALLENGE_TYPE_AUDIO"
-  | (string & {});
+  | "CHALLENGE_TYPE_AUDIO";
 export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisLastChallengeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -543,8 +530,7 @@ export type GoogleCloudRecaptchaenterpriseV1BotBotTypeEnum =
   | "BOT_TYPE_UNSPECIFIED"
   | "AI_AGENT"
   | "CONTENT_SCRAPER"
-  | "SEARCH_INDEXER"
-  | (string & {});
+  | "SEARCH_INDEXER";
 export const GoogleCloudRecaptchaenterpriseV1BotBotTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -565,7 +551,7 @@ export const GoogleCloudRecaptchaenterpriseV1Bot = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Bot>;
 
 export type GoogleCloudRecaptchaenterpriseV1BotList =
-  GoogleCloudRecaptchaenterpriseV1Bot[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1Bot>;
 export const GoogleCloudRecaptchaenterpriseV1BotList = /*@__PURE__*/ S.Array(
   GoogleCloudRecaptchaenterpriseV1Bot,
 ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1BotList>;
@@ -578,19 +564,18 @@ export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum =
   | "UNEXPECTED_USAGE_PATTERNS"
   | "LOW_CONFIDENCE_SCORE"
   | "SUSPECTED_CARDING"
-  | "SUSPECTED_CHARGEBACK"
-  | (string & {});
+  | "SUSPECTED_CHARGEBACK";
 export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList =
-  GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum>;
 export const GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnum,
   ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RiskAnalysisReasonsItemEnumList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -640,8 +625,7 @@ export type GoogleCloudRecaptchaenterpriseV1AccountVerificationInfoLatestVerific
     | "ERROR_CRITICAL_INTERNAL"
     | "ERROR_CUSTOMER_QUOTA_EXHAUSTED"
     | "ERROR_VERIFICATION_BYPASSED"
-    | "ERROR_VERDICT_MISMATCH"
-    | (string & {});
+    | "ERROR_VERDICT_MISMATCH";
 export const GoogleCloudRecaptchaenterpriseV1AccountVerificationInfoLatestVerificationResultEnum =
   /*@__PURE__*/ S.String;
 
@@ -669,7 +653,7 @@ export const GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>;
 
 export type GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfoList =
-  GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo>;
 export const GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1EndpointVerificationInfo,
@@ -746,8 +730,7 @@ export type GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonR
     | "EXCESSIVE_ENUMERATION_PATTERN"
     | "SHORT_IDENTITY_HISTORY"
     | "GEOLOCATION_DISCREPANCY"
-    | "ASSOCIATED_WITH_FRAUD_CLUSTER"
-    | (string & {});
+    | "ASSOCIATED_WITH_FRAUD_CLUSTER";
 export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -769,7 +752,7 @@ export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
 
 export type GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList =
-  GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason>;
 export const GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReasonList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentRiskReason,
@@ -845,7 +828,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -972,7 +955,7 @@ export const GoogleCloudRecaptchaenterpriseV1FirewallAction =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1FirewallAction>;
 
 export type GoogleCloudRecaptchaenterpriseV1FirewallActionList =
-  GoogleCloudRecaptchaenterpriseV1FirewallAction[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FirewallAction>;
 export const GoogleCloudRecaptchaenterpriseV1FirewallActionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1FirewallAction,
@@ -1044,7 +1027,7 @@ export const GoogleCloudRecaptchaenterpriseV1UserId = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1UserId>;
 
 export type GoogleCloudRecaptchaenterpriseV1UserIdList =
-  GoogleCloudRecaptchaenterpriseV1UserId[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1UserId>;
 export const GoogleCloudRecaptchaenterpriseV1UserIdList = /*@__PURE__*/ S.Array(
   GoogleCloudRecaptchaenterpriseV1UserId,
 ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1UserIdList>;
@@ -1099,7 +1082,7 @@ export const GoogleCloudRecaptchaenterpriseV1TransactionDataUser =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataUser>;
 
 export type GoogleCloudRecaptchaenterpriseV1TransactionDataUserList =
-  GoogleCloudRecaptchaenterpriseV1TransactionDataUser[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1TransactionDataUser>;
 export const GoogleCloudRecaptchaenterpriseV1TransactionDataUserList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1TransactionDataUser,
@@ -1181,7 +1164,7 @@ export const GoogleCloudRecaptchaenterpriseV1TransactionDataItem =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1TransactionDataItem>;
 
 export type GoogleCloudRecaptchaenterpriseV1TransactionDataItemList =
-  GoogleCloudRecaptchaenterpriseV1TransactionDataItem[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1TransactionDataItem>;
 export const GoogleCloudRecaptchaenterpriseV1TransactionDataItemList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1TransactionDataItem,
@@ -1250,8 +1233,7 @@ export const GoogleCloudRecaptchaenterpriseV1TransactionData =
 export type GoogleCloudRecaptchaenterpriseV1EventFraudPreventionEnum =
   | "FRAUD_PREVENTION_UNSPECIFIED"
   | "ENABLED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const GoogleCloudRecaptchaenterpriseV1EventFraudPreventionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1319,12 +1301,12 @@ export const GoogleCloudRecaptchaenterpriseV1Event = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1Event>;
 
 export type GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum =
-  "SMS_TOLL_FRAUD_REASON_UNSPECIFIED" | "INVALID_PHONE_NUMBER" | (string & {});
+  "SMS_TOLL_FRAUD_REASON_UNSPECIFIED" | "INVALID_PHONE_NUMBER";
 export const GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList =
-  GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum>;
 export const GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdictReasonsItemEnum,
@@ -1399,8 +1381,7 @@ export type GoogleCloudRecaptchaenterpriseV1TokenPropertiesInvalidReasonEnum =
   | "BROWSER_ERROR"
   | "UNEXPECTED_ACTION"
   | "KEY_MISMATCH"
-  | "DOMAIN_MISMATCH"
-  | (string & {});
+  | "DOMAIN_MISMATCH";
 export const GoogleCloudRecaptchaenterpriseV1TokenPropertiesInvalidReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -1584,8 +1565,7 @@ export type GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceEnum =
   | "CA"
   | "FASTLY"
   | "CLOUDFLARE"
-  | "AKAMAI"
-  | (string & {});
+  | "AKAMAI";
 export const GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1594,8 +1574,7 @@ export type GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureEnum =
   | "CHALLENGE_PAGE"
   | "SESSION_TOKEN"
   | "ACTION_TOKEN"
-  | "EXPRESS"
-  | (string & {});
+  | "EXPRESS";
 export const GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureEnum =
   /*@__PURE__*/ S.String;
 
@@ -1639,8 +1618,7 @@ export type GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeEnum =
   | "SCORE"
   | "CHECKBOX"
   | "INVISIBLE"
-  | "POLICY_BASED_CHALLENGE"
-  | (string & {});
+  | "POLICY_BASED_CHALLENGE";
 export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1695,8 +1673,7 @@ export type GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPrefe
     | "CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED"
     | "USABILITY"
     | "BALANCE"
-    | "SECURITY"
-    | (string & {});
+    | "SECURITY";
 export const GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceEnum =
   /*@__PURE__*/ S.String;
 
@@ -1736,10 +1713,7 @@ export const GoogleCloudRecaptchaenterpriseV1WebKeySettings =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1WebKeySettings>;
 
 export type GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeEnum =
-    | "TESTING_CHALLENGE_UNSPECIFIED"
-    | "NOCAPTCHA"
-    | "UNSOLVABLE_CHALLENGE"
-    | (string & {});
+  "TESTING_CHALLENGE_UNSPECIFIED" | "NOCAPTCHA" | "UNSOLVABLE_CHALLENGE";
 export const GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1982,7 +1956,7 @@ export const GoogleCloudRecaptchaenterpriseV1ScoreMetrics =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>;
 
 export type GoogleCloudRecaptchaenterpriseV1ScoreMetricsList =
-  GoogleCloudRecaptchaenterpriseV1ScoreMetrics[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ScoreMetrics>;
 export const GoogleCloudRecaptchaenterpriseV1ScoreMetricsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1ScoreMetrics,
@@ -2012,7 +1986,7 @@ export const GoogleCloudRecaptchaenterpriseV1ChallengeMetrics =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>;
 
 export type GoogleCloudRecaptchaenterpriseV1ChallengeMetricsList =
-  GoogleCloudRecaptchaenterpriseV1ChallengeMetrics[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ChallengeMetrics>;
 export const GoogleCloudRecaptchaenterpriseV1ChallengeMetricsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1ChallengeMetrics,
@@ -2081,7 +2055,7 @@ export const GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint>;
 
 export type GoogleCloudRecaptchaenterpriseV1ProtectedEndpointList =
-  GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint>;
 export const GoogleCloudRecaptchaenterpriseV1ProtectedEndpointList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1ProtectedEndpoint,
@@ -2137,8 +2111,7 @@ export type GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcomeDifficu
     | "CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED"
     | "USABILITY"
     | "BALANCE"
-    | "SECURITY"
-    | (string & {});
+    | "SECURITY";
 export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleChallengeOutcomeDifficultyEnum =
   /*@__PURE__*/ S.String;
 
@@ -2183,7 +2156,7 @@ export const GoogleCloudRecaptchaenterpriseV1ChallengeRule =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRule>;
 
 export type GoogleCloudRecaptchaenterpriseV1ChallengeRuleList =
-  GoogleCloudRecaptchaenterpriseV1ChallengeRule[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ChallengeRule>;
 export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1ChallengeRule,
@@ -2209,7 +2182,7 @@ export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup>;
 
 export type GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroupList =
-  GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup>;
 export const GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1ChallengeRuleGroup,
@@ -2300,7 +2273,7 @@ export const ListIpOverridesProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIpOverridesProjectsKeysRequest>;
 
 export type GoogleCloudRecaptchaenterpriseV1IpOverrideDataList =
-  GoogleCloudRecaptchaenterpriseV1IpOverrideData[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1IpOverrideData>;
 export const GoogleCloudRecaptchaenterpriseV1IpOverrideDataList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1IpOverrideData,
@@ -2350,7 +2323,7 @@ export const ListProjectsFirewallpoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsFirewallpoliciesRequest>;
 
 export type GoogleCloudRecaptchaenterpriseV1FirewallPolicyList =
-  GoogleCloudRecaptchaenterpriseV1FirewallPolicy[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1FirewallPolicy>;
 export const GoogleCloudRecaptchaenterpriseV1FirewallPolicyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1FirewallPolicy,
@@ -2400,7 +2373,7 @@ export const ListProjectsKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsKeysRequest>;
 
 export type GoogleCloudRecaptchaenterpriseV1KeyList =
-  GoogleCloudRecaptchaenterpriseV1Key[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1Key>;
 export const GoogleCloudRecaptchaenterpriseV1KeyList = /*@__PURE__*/ S.Array(
   GoogleCloudRecaptchaenterpriseV1Key,
 ) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1KeyList>;
@@ -2462,7 +2435,7 @@ export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup>;
 
 export type GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupList =
-  GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup>;
 export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1RelatedAccountGroup,
@@ -2534,7 +2507,7 @@ export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership =
   }) as any as S.Schema<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>;
 
 export type GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList =
-  GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership[];
+  ReadonlyArray<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership>;
 export const GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembershipList =
   /*@__PURE__*/ S.Array(
     GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership,

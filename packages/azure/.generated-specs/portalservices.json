@@ -409,16 +409,29 @@
     "com.azure.portalservices#CopilotSettingsUpdateRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.portalservices#CopilotSettingsResourceUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.portalservices#CopilotSettingsResourceUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "accessControlEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Boolean indicating if role-based access control is enabled for copilot in this tenant."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The updatable properties of the CopilotSettingsResource."
       }
     },
     "com.azure.portalservices#CopilotSettingsCreateOrUpdate": {
@@ -481,16 +494,30 @@
     "com.azure.portalservices#CopilotSettingsCreateOrUpdateRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.portalservices#CopilotSettingsPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.portalservices#CopilotSettingsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "accessControlEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Boolean indicating if role-based access control is enabled for copilot in this tenant.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Copilot Settings properties."
       }
     },
     "com.azure.portalservices#CopilotSettingsGet": {
@@ -573,7 +600,7 @@
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.azure.portalservices#PortalTenantCompileFileResult",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -584,19 +611,79 @@
         "smithy.api#output": {}
       }
     },
+    "com.azure.portalservices#PortalTenantCompileFileResult": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The contents of the file to compile."
+      }
+    },
     "com.azure.portalservices#PortalTenantCompilefileRequest": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "smithy.api#Document",
+        "contents": {
+          "target": "com.azure.portalservices#PortalTenantCompilefileRequestContentsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The contents of the file.",
             "smithy.api#required": {}
+          }
+        },
+        "stringSource": {
+          "target": "com.azure.portalservices#PortalTenantCompilefileRequestStringSourceMap",
+          "traits": {
+            "smithy.api#documentation": "The contents of the string source."
+          }
+        },
+        "files": {
+          "target": "com.azure.portalservices#PortalTenantCompilefileRequestFilesMap",
+          "traits": {
+            "smithy.api#documentation": "The contents of referenced files. The property name is the relative file path and the value is its contents."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.portalservices#PortalTenantCompilefileRequestFilesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The contents of referenced files. The property name is the relative file path and the value is its contents."
+      }
+    },
+    "com.azure.portalservices#PortalTenantCompilefileRequestStringSourceMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The contents of the string source."
+      }
+    },
+    "com.azure.portalservices#PortalTenantCompilefileRequestContentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The contents of the file."
       }
     },
     "com.azure.portalservices#Portalservices": {

@@ -102,8 +102,7 @@ export type InstanceStateEnum =
   | "REPAIRING"
   | "STOPPED"
   | "UPDATING"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents a scheduled maintenance event. */
@@ -125,8 +124,7 @@ export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
 export type DynamicTierOptionsModeEnum =
   | "MODE_UNSPECIFIED"
   | "DISABLED"
-  | "DEFAULT_CACHE"
-  | (string & {});
+  | "DEFAULT_CACHE";
 export const DynamicTierOptionsModeEnum = /*@__PURE__*/ S.String;
 
 /** Dynamic tier options for a Managed Lustre instance. */
@@ -198,7 +196,8 @@ export const MaintenanceExclusionWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceExclusionWindow",
 }) as any as S.Schema<MaintenanceExclusionWindow>;
 
-export type MaintenanceExclusionWindowList = MaintenanceExclusionWindow[];
+export type MaintenanceExclusionWindowList =
+  ReadonlyArray<MaintenanceExclusionWindow>;
 export const MaintenanceExclusionWindowList = /*@__PURE__*/ S.Array(
   MaintenanceExclusionWindow,
 ) as any as S.Schema<MaintenanceExclusionWindowList>;
@@ -211,8 +210,7 @@ export type WeeklyMaintenanceWindowDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const WeeklyMaintenanceWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Weekly time window in which maintenance updates may occur. Duration of the window is currently fixed at 1 hour. Time zone is UTC. */
@@ -231,7 +229,8 @@ export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "WeeklyMaintenanceWindow",
 }) as any as S.Schema<WeeklyMaintenanceWindow>;
 
-export type WeeklyMaintenanceWindowList = WeeklyMaintenanceWindow[];
+export type WeeklyMaintenanceWindowList =
+  ReadonlyArray<WeeklyMaintenanceWindow>;
 export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
   WeeklyMaintenanceWindow,
 ) as any as S.Schema<WeeklyMaintenanceWindowList>;
@@ -255,11 +254,10 @@ export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
 export type AccessRuleSquashModeEnum =
   | "SQUASH_MODE_UNSPECIFIED"
   | "NO_SQUASH"
-  | "ROOT_SQUASH"
-  | (string & {});
+  | "ROOT_SQUASH";
 export const AccessRuleSquashModeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -281,7 +279,7 @@ export const AccessRule = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccessRule" }) as any as S.Schema<AccessRule>;
 
-export type AccessRuleList = AccessRule[];
+export type AccessRuleList = ReadonlyArray<AccessRule>;
 export const AccessRuleList = /*@__PURE__*/ S.Array(
   AccessRule,
 ) as any as S.Schema<AccessRuleList>;
@@ -289,8 +287,7 @@ export const AccessRuleList = /*@__PURE__*/ S.Array(
 export type AccessRulesOptionsDefaultSquashModeEnum =
   | "SQUASH_MODE_UNSPECIFIED"
   | "NO_SQUASH"
-  | "ROOT_SQUASH"
-  | (string & {});
+  | "ROOT_SQUASH";
 export const AccessRulesOptionsDefaultSquashModeEnum = /*@__PURE__*/ S.String;
 
 /** IP-based access rules for the Managed Lustre instance. These options define the root user squash configuration. */
@@ -417,7 +414,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -725,7 +722,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -777,7 +774,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -832,7 +829,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -888,8 +885,7 @@ export type RescheduleRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
   | "IMMEDIATE"
   | "NEXT_AVAILABLE_WINDOW"
-  | "BY_TIME"
-  | (string & {});
+  | "BY_TIME";
 export const RescheduleRescheduleTypeEnum = /*@__PURE__*/ S.String;
 
 /** The desired reschedule settings. */

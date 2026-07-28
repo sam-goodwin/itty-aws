@@ -68,8 +68,7 @@ export type ProfileProfileTypeEnum =
   | "THREADS"
   | "CONTENTION"
   | "PEAK_HEAP"
-  | "HEAP_ALLOC"
-  | (string & {});
+  | "HEAP_ALLOC";
 export const ProfileProfileTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -154,12 +153,11 @@ export type CreateProfileRequestProfileTypeItemEnum =
   | "THREADS"
   | "CONTENTION"
   | "PEAK_HEAP"
-  | "HEAP_ALLOC"
-  | (string & {});
+  | "HEAP_ALLOC";
 export const CreateProfileRequestProfileTypeItemEnum = /*@__PURE__*/ S.String;
 
 export type CreateProfileRequestProfileTypeItemEnumList =
-  CreateProfileRequestProfileTypeItemEnum[];
+  ReadonlyArray<CreateProfileRequestProfileTypeItemEnum>;
 export const CreateProfileRequestProfileTypeItemEnumList =
   /*@__PURE__*/ S.Array(
     CreateProfileRequestProfileTypeItemEnum,
@@ -226,7 +224,7 @@ export const ListProjectsProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsProfilesRequest",
 }) as any as S.Schema<ListProjectsProfilesRequest>;
 
-export type ProfileList = Profile[];
+export type ProfileList = ReadonlyArray<Profile>;
 export const ProfileList = /*@__PURE__*/ S.Array(
   Profile,
 ) as any as S.Schema<ProfileList>;

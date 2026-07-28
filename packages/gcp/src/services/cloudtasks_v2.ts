@@ -66,7 +66,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -140,8 +140,7 @@ export type AppEngineHttpRequestHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS"
-  | (string & {});
+  | "OPTIONS";
 export const AppEngineHttpRequestHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** App Engine Routing. Defines routing characteristics specific to App Engine - service, version, and instance. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed). Using AppEngineRouting requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform` */
@@ -191,11 +190,7 @@ export const AppEngineHttpRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppEngineHttpRequest",
 }) as any as S.Schema<AppEngineHttpRequest>;
 
-export type TaskViewEnum =
-  | "VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL"
-  | (string & {});
+export type TaskViewEnum = "VIEW_UNSPECIFIED" | "BASIC" | "FULL";
 export const TaskViewEnum = /*@__PURE__*/ S.String;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
@@ -271,8 +266,7 @@ export type HttpRequestHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS"
-  | (string & {});
+  | "OPTIONS";
 export const HttpRequestHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** HTTP request. The task will be pushed to the worker as an HTTP request. If the worker or the redirected worker acknowledges the task by returning a successful HTTP response code ([`200` - `299`]), the task will be removed from the queue. If any other HTTP response code is returned or no response is received, the task will be retried according to the following: * User-specified throttling: retry configuration, rate limits, and the queue's state. * System throttling: To prevent the worker from overloading, Cloud Tasks may temporarily reduce the queue's effective rate. User-specified settings will not be changed. System throttling happens because: * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is considered. * To prevent traffic spikes and to smooth sudden increases in traffic, dispatches ramp up slowly when the queue is newly created or idle and if large numbers of tasks suddenly become available to dispatch (due to spikes in create task rates, the queue being unpaused, or many tasks that are scheduled at the same time). */
@@ -371,8 +365,7 @@ export const StackdriverLoggingConfig = /*@__PURE__*/ S.suspend(() =>
 export type UriOverrideUriOverrideEnforceModeEnum =
   | "URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED"
   | "IF_NOT_EXISTS"
-  | "ALWAYS"
-  | (string & {});
+  | "ALWAYS";
 export const UriOverrideUriOverrideEnforceModeEnum = /*@__PURE__*/ S.String;
 
 /** PathOverride. Path message defines path override for HTTP targets. */
@@ -397,11 +390,7 @@ export const QueryOverride = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryOverride" }) as any as S.Schema<QueryOverride>;
 
-export type UriOverrideSchemeEnum =
-  | "SCHEME_UNSPECIFIED"
-  | "HTTP"
-  | "HTTPS"
-  | (string & {});
+export type UriOverrideSchemeEnum = "SCHEME_UNSPECIFIED" | "HTTP" | "HTTPS";
 export const UriOverrideSchemeEnum = /*@__PURE__*/ S.String;
 
 /** URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values. */
@@ -438,8 +427,7 @@ export type HttpTargetHttpMethodEnum =
   | "PUT"
   | "DELETE"
   | "PATCH"
-  | "OPTIONS"
-  | (string & {});
+  | "OPTIONS";
 export const HttpTargetHttpMethodEnum = /*@__PURE__*/ S.String;
 
 /** Defines a header message. A header can have a key and a value. */
@@ -467,7 +455,7 @@ export const HeaderOverride = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HeaderOverride" }) as any as S.Schema<HeaderOverride>;
 
-export type HeaderOverrideList = HeaderOverride[];
+export type HeaderOverrideList = ReadonlyArray<HeaderOverride>;
 export const HeaderOverrideList = /*@__PURE__*/ S.Array(
   HeaderOverride,
 ) as any as S.Schema<HeaderOverrideList>;
@@ -539,8 +527,7 @@ export type QueueStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
   | "PAUSED"
-  | "DISABLED"
-  | (string & {});
+  | "DISABLED";
 export const QueueStateEnum = /*@__PURE__*/ S.String;
 
 /** A queue is a container of related tasks. Queues are configured to manage how those tasks are dispatched. Configurable properties include rate limits, retry options, queue types, and others. */
@@ -600,8 +587,7 @@ export const CreateProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(
 export type CreateTaskRequestResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const CreateTaskRequestResponseViewEnum = /*@__PURE__*/ S.String;
 
 /** Request message for CreateTask. */
@@ -767,7 +753,7 @@ export const GetIamPolicyProjectsLocationsQueuesRequest =
     identifier: "GetIamPolicyProjectsLocationsQueuesRequest",
   }) as any as S.Schema<GetIamPolicyProjectsLocationsQueuesRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -809,7 +795,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -893,8 +879,7 @@ export const GetProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsQueuesTasksResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const GetProjectsLocationsQueuesTasksResponseViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -952,7 +937,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1000,7 +985,7 @@ export const ListProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsQueuesRequest",
 }) as any as S.Schema<ListProjectsLocationsQueuesRequest>;
 
-export type QueueList = Queue[];
+export type QueueList = ReadonlyArray<Queue>;
 export const QueueList = /*@__PURE__*/ S.Array(
   Queue,
 ) as any as S.Schema<QueueList>;
@@ -1024,8 +1009,7 @@ export const ListQueuesResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListProjectsLocationsQueuesTasksResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const ListProjectsLocationsQueuesTasksResponseViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -1059,7 +1043,7 @@ export const ListProjectsLocationsQueuesTasksRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsQueuesTasksRequest",
 }) as any as S.Schema<ListProjectsLocationsQueuesTasksRequest>;
 
-export type TaskList = Task[];
+export type TaskList = ReadonlyArray<Task>;
 export const TaskList = /*@__PURE__*/ S.Array(
   Task,
 ) as any as S.Schema<TaskList>;
@@ -1195,8 +1179,7 @@ export const ResumeProjectsLocationsQueuesRequest = /*@__PURE__*/ S.suspend(
 export type RunTaskRequestResponseViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC"
-  | "FULL"
-  | (string & {});
+  | "FULL";
 export const RunTaskRequestResponseViewEnum = /*@__PURE__*/ S.String;
 
 /** Request message for forcing a task to run now using RunTask. */

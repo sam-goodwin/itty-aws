@@ -15,12 +15,10 @@ export type { CloudflareOpError, CloudflareOpContext };
 export interface CacheReserveClearClearRequest {
   /** Identifier. */
   zoneId: string;
-  body: unknown;
 }
 export const CacheReserveClearClearRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown.pipe(T.HttpBody()),
   }).pipe(
     T.Http({
       method: "POST",
@@ -32,16 +30,16 @@ export const CacheReserveClearClearRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CacheReserveClearClearRequest",
 }) as any as S.Schema<CacheReserveClearClearRequest>;
 
-export type CacheReserveClearClearResponseState =
-  | "In-progress"
-  | "Completed"
-  | (string & {});
+export type CacheReserveClearClearResponseId = "cache_reserve_clear";
+export const CacheReserveClearClearResponseId = /*@__PURE__*/ S.String;
+
+export type CacheReserveClearClearResponseState = "In-progress" | "Completed";
 export const CacheReserveClearClearResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CacheReserveClearClearResponse {
   /** ID of the zone setting. */
-  id: unknown;
+  id: CacheReserveClearClearResponseId;
   /** The time that the latest Cache Reserve Clear operation started. */
   startTs: string;
   /** The current state of the Cache Reserve Clear operation. */
@@ -53,7 +51,7 @@ export interface CacheReserveClearClearResponse {
 }
 export const CacheReserveClearClearResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.Unknown,
+    id: CacheReserveClearClearResponseId,
     startTs: S.String.pipe(T.Body("start_ts")),
     state: CacheReserveClearClearResponseState,
     endTs: S.optional(S.String.pipe(T.Body("end_ts"))),
@@ -81,16 +79,16 @@ export const CacheReserveClearStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CacheReserveClearStatusRequest",
 }) as any as S.Schema<CacheReserveClearStatusRequest>;
 
-export type CacheReserveClearStatusResponseState =
-  | "In-progress"
-  | "Completed"
-  | (string & {});
+export type CacheReserveClearStatusResponseId = "cache_reserve_clear";
+export const CacheReserveClearStatusResponseId = /*@__PURE__*/ S.String;
+
+export type CacheReserveClearStatusResponseState = "In-progress" | "Completed";
 export const CacheReserveClearStatusResponseState = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CacheReserveClearStatusResponse {
   /** ID of the zone setting. */
-  id: unknown;
+  id: CacheReserveClearStatusResponseId;
   /** The time that the latest Cache Reserve Clear operation started. */
   startTs: string;
   /** The current state of the Cache Reserve Clear operation. */
@@ -102,7 +100,7 @@ export interface CacheReserveClearStatusResponse {
 }
 export const CacheReserveClearStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.Unknown,
+    id: CacheReserveClearStatusResponseId,
     startTs: S.String.pipe(T.Body("start_ts")),
     state: CacheReserveClearStatusResponseState,
     endTs: S.optional(S.String.pipe(T.Body("end_ts"))),
@@ -124,7 +122,7 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
-export type GetResponseCacheReserveValue = "on" | "off" | (string & {});
+export type GetResponseCacheReserveValue = "on" | "off";
 export const GetResponseCacheReserveValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseCacheReserve {
@@ -145,7 +143,7 @@ export const GetResponseCacheReserve = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseCacheReserve",
 }) as any as S.Schema<GetResponseCacheReserve>;
 
-export type GetResponseRegionalTieredCacheValue = "on" | "off" | (string & {});
+export type GetResponseRegionalTieredCacheValue = "on" | "off";
 export const GetResponseRegionalTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseRegionalTieredCache {
@@ -166,7 +164,7 @@ export const GetResponseRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseRegionalTieredCache",
 }) as any as S.Schema<GetResponseRegionalTieredCache>;
 
-export type GetResponseSmartRoutingValue = "on" | "off" | (string & {});
+export type GetResponseSmartRoutingValue = "on" | "off";
 export const GetResponseSmartRoutingValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseSmartRouting {
@@ -187,7 +185,7 @@ export const GetResponseSmartRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetResponseSmartRouting",
 }) as any as S.Schema<GetResponseSmartRouting>;
 
-export type GetResponseSmartTieredCacheValue = "on" | "off" | (string & {});
+export type GetResponseSmartTieredCacheValue = "on" | "off";
 export const GetResponseSmartTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface GetResponseSmartTieredCache {
@@ -238,34 +236,49 @@ export type HealthChecksCreateRequestCheckRegionsItem =
   | "WNAM"
   | "ENAM"
   | "WEU"
-  | (string & {});
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "IN"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
 export const HealthChecksCreateRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type HealthChecksCreateRequestCheckRegionsList =
-  HealthChecksCreateRequestCheckRegionsItem[];
+  ReadonlyArray<HealthChecksCreateRequestCheckRegionsItem>;
 export const HealthChecksCreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksCreateRequestCheckRegionsItem,
 ) as any as S.Schema<HealthChecksCreateRequestCheckRegionsList>;
 
-export type HealthChecksCreateRequestHttpConfigExpectedCodesList = string[];
+export type HealthChecksCreateRequestHttpConfigExpectedCodesList =
+  ReadonlyArray<string>;
 export const HealthChecksCreateRequestHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksCreateRequestHttpConfigExpectedCodesList>;
 
+export type HealthChecksCreateRequestHttpConfigHeaderValueList =
+  ReadonlyArray<string>;
+export const HealthChecksCreateRequestHttpConfigHeaderValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HealthChecksCreateRequestHttpConfigHeaderValueList>;
+
 export type HealthChecksCreateRequestHttpConfigHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: HealthChecksCreateRequestHttpConfigHeaderValueList | undefined;
 };
 export const HealthChecksCreateRequestHttpConfigHeaderMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    HealthChecksCreateRequestHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksCreateRequestHttpConfigHeaderMap>;
 
-export type HealthChecksCreateRequestHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksCreateRequestHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksCreateRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksCreateRequestHttpConfig {
@@ -305,9 +318,7 @@ export const HealthChecksCreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksCreateRequestHttpConfig",
 }) as any as S.Schema<HealthChecksCreateRequestHttpConfig>;
 
-export type HealthChecksCreateRequestTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+export type HealthChecksCreateRequestTcpConfigMethod = "connection_established";
 export const HealthChecksCreateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksCreateRequestTcpConfig {
@@ -394,35 +405,52 @@ export type HealthChecksCreateResponseCheckRegionsItem =
   | "WNAM"
   | "ENAM"
   | "WEU"
-  | (string & {});
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "IN"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
 export const HealthChecksCreateResponseCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
 export type HealthChecksCreateResponseCheckRegionsList =
-  HealthChecksCreateResponseCheckRegionsItem[];
+  ReadonlyArray<HealthChecksCreateResponseCheckRegionsItem>;
 export const HealthChecksCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksCreateResponseCheckRegionsItem,
 ) as any as S.Schema<HealthChecksCreateResponseCheckRegionsList>;
 
-export type HealthChecksCreateResponseHttpConfigExpectedCodesList = string[];
+export type HealthChecksCreateResponseHttpConfigExpectedCodesList =
+  ReadonlyArray<string>;
 export const HealthChecksCreateResponseHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksCreateResponseHttpConfigExpectedCodesList>;
 
+export type HealthChecksCreateResponseHttpConfigHeaderValueList =
+  ReadonlyArray<string>;
+export const HealthChecksCreateResponseHttpConfigHeaderValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HealthChecksCreateResponseHttpConfigHeaderValueList>;
+
 export type HealthChecksCreateResponseHttpConfigHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | HealthChecksCreateResponseHttpConfigHeaderValueList
+    | undefined;
 };
 export const HealthChecksCreateResponseHttpConfigHeaderMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    HealthChecksCreateResponseHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksCreateResponseHttpConfigHeaderMap>;
 
-export type HealthChecksCreateResponseHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksCreateResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksCreateResponseHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
@@ -468,13 +496,11 @@ export type HealthChecksCreateResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksCreateResponseStatus = /*@__PURE__*/ S.String;
 
 export type HealthChecksCreateResponseTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+  "connection_established";
 export const HealthChecksCreateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksCreateResponseTcpConfig {
@@ -600,34 +626,49 @@ export type HealthChecksEditRequestCheckRegionsItem =
   | "WNAM"
   | "ENAM"
   | "WEU"
-  | (string & {});
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "IN"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
 export const HealthChecksEditRequestCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type HealthChecksEditRequestCheckRegionsList =
-  HealthChecksEditRequestCheckRegionsItem[];
+  ReadonlyArray<HealthChecksEditRequestCheckRegionsItem>;
 export const HealthChecksEditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksEditRequestCheckRegionsItem,
 ) as any as S.Schema<HealthChecksEditRequestCheckRegionsList>;
 
-export type HealthChecksEditRequestHttpConfigExpectedCodesList = string[];
+export type HealthChecksEditRequestHttpConfigExpectedCodesList =
+  ReadonlyArray<string>;
 export const HealthChecksEditRequestHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksEditRequestHttpConfigExpectedCodesList>;
 
+export type HealthChecksEditRequestHttpConfigHeaderValueList =
+  ReadonlyArray<string>;
+export const HealthChecksEditRequestHttpConfigHeaderValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HealthChecksEditRequestHttpConfigHeaderValueList>;
+
 export type HealthChecksEditRequestHttpConfigHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: HealthChecksEditRequestHttpConfigHeaderValueList | undefined;
 };
 export const HealthChecksEditRequestHttpConfigHeaderMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    HealthChecksEditRequestHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksEditRequestHttpConfigHeaderMap>;
 
-export type HealthChecksEditRequestHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksEditRequestHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksEditRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditRequestHttpConfig {
@@ -667,9 +708,7 @@ export const HealthChecksEditRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksEditRequestHttpConfig",
 }) as any as S.Schema<HealthChecksEditRequestHttpConfig>;
 
-export type HealthChecksEditRequestTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+export type HealthChecksEditRequestTcpConfigMethod = "connection_established";
 export const HealthChecksEditRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditRequestTcpConfig {
@@ -759,34 +798,49 @@ export type HealthChecksEditResponseCheckRegionsItem =
   | "WNAM"
   | "ENAM"
   | "WEU"
-  | (string & {});
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "IN"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
 export const HealthChecksEditResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type HealthChecksEditResponseCheckRegionsList =
-  HealthChecksEditResponseCheckRegionsItem[];
+  ReadonlyArray<HealthChecksEditResponseCheckRegionsItem>;
 export const HealthChecksEditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksEditResponseCheckRegionsItem,
 ) as any as S.Schema<HealthChecksEditResponseCheckRegionsList>;
 
-export type HealthChecksEditResponseHttpConfigExpectedCodesList = string[];
+export type HealthChecksEditResponseHttpConfigExpectedCodesList =
+  ReadonlyArray<string>;
 export const HealthChecksEditResponseHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksEditResponseHttpConfigExpectedCodesList>;
 
+export type HealthChecksEditResponseHttpConfigHeaderValueList =
+  ReadonlyArray<string>;
+export const HealthChecksEditResponseHttpConfigHeaderValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HealthChecksEditResponseHttpConfigHeaderValueList>;
+
 export type HealthChecksEditResponseHttpConfigHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: HealthChecksEditResponseHttpConfigHeaderValueList | undefined;
 };
 export const HealthChecksEditResponseHttpConfigHeaderMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    HealthChecksEditResponseHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksEditResponseHttpConfigHeaderMap>;
 
-export type HealthChecksEditResponseHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksEditResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksEditResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditResponseHttpConfig {
@@ -830,13 +884,10 @@ export type HealthChecksEditResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksEditResponseStatus = /*@__PURE__*/ S.String;
 
-export type HealthChecksEditResponseTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+export type HealthChecksEditResponseTcpConfigMethod = "connection_established";
 export const HealthChecksEditResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksEditResponseTcpConfig {
@@ -949,34 +1000,49 @@ export type HealthChecksGetResponseCheckRegionsItem =
   | "WNAM"
   | "ENAM"
   | "WEU"
-  | (string & {});
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "IN"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
 export const HealthChecksGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
 
 export type HealthChecksGetResponseCheckRegionsList =
-  HealthChecksGetResponseCheckRegionsItem[];
+  ReadonlyArray<HealthChecksGetResponseCheckRegionsItem>;
 export const HealthChecksGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksGetResponseCheckRegionsItem,
 ) as any as S.Schema<HealthChecksGetResponseCheckRegionsList>;
 
-export type HealthChecksGetResponseHttpConfigExpectedCodesList = string[];
+export type HealthChecksGetResponseHttpConfigExpectedCodesList =
+  ReadonlyArray<string>;
 export const HealthChecksGetResponseHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksGetResponseHttpConfigExpectedCodesList>;
 
+export type HealthChecksGetResponseHttpConfigHeaderValueList =
+  ReadonlyArray<string>;
+export const HealthChecksGetResponseHttpConfigHeaderValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HealthChecksGetResponseHttpConfigHeaderValueList>;
+
 export type HealthChecksGetResponseHttpConfigHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]: HealthChecksGetResponseHttpConfigHeaderValueList | undefined;
 };
 export const HealthChecksGetResponseHttpConfigHeaderMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    HealthChecksGetResponseHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksGetResponseHttpConfigHeaderMap>;
 
-export type HealthChecksGetResponseHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksGetResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksGetResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksGetResponseHttpConfig {
@@ -1020,13 +1086,10 @@ export type HealthChecksGetResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksGetResponseStatus = /*@__PURE__*/ S.String;
 
-export type HealthChecksGetResponseTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+export type HealthChecksGetResponseTcpConfigMethod = "connection_established";
 export const HealthChecksGetResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksGetResponseTcpConfig {
@@ -1142,35 +1205,52 @@ export type HealthChecksListResultItemCheckRegionsItem =
   | "WNAM"
   | "ENAM"
   | "WEU"
-  | (string & {});
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "IN"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
 export const HealthChecksListResultItemCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
 export type HealthChecksListResultItemCheckRegionsList =
-  HealthChecksListResultItemCheckRegionsItem[];
+  ReadonlyArray<HealthChecksListResultItemCheckRegionsItem>;
 export const HealthChecksListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksListResultItemCheckRegionsItem,
 ) as any as S.Schema<HealthChecksListResultItemCheckRegionsList>;
 
-export type HealthChecksListResultItemHttpConfigExpectedCodesList = string[];
+export type HealthChecksListResultItemHttpConfigExpectedCodesList =
+  ReadonlyArray<string>;
 export const HealthChecksListResultItemHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksListResultItemHttpConfigExpectedCodesList>;
 
+export type HealthChecksListResultItemHttpConfigHeaderValueList =
+  ReadonlyArray<string>;
+export const HealthChecksListResultItemHttpConfigHeaderValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HealthChecksListResultItemHttpConfigHeaderValueList>;
+
 export type HealthChecksListResultItemHttpConfigHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | HealthChecksListResultItemHttpConfigHeaderValueList
+    | undefined;
 };
 export const HealthChecksListResultItemHttpConfigHeaderMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    HealthChecksListResultItemHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksListResultItemHttpConfigHeaderMap>;
 
-export type HealthChecksListResultItemHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksListResultItemHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksListResultItemHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
@@ -1216,13 +1296,11 @@ export type HealthChecksListResultItemStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksListResultItemStatus = /*@__PURE__*/ S.String;
 
 export type HealthChecksListResultItemTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+  "connection_established";
 export const HealthChecksListResultItemTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksListResultItemTcpConfig {
@@ -1309,7 +1387,8 @@ export const HealthChecksListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksListResultItem",
 }) as any as S.Schema<HealthChecksListResultItem>;
 
-export type HealthChecksListResultList = HealthChecksListResultItem[];
+export type HealthChecksListResultList =
+  ReadonlyArray<HealthChecksListResultItem>;
 export const HealthChecksListResultList = /*@__PURE__*/ S.Array(
   HealthChecksListResultItem,
 ) as any as S.Schema<HealthChecksListResultList>;
@@ -1351,7 +1430,7 @@ export const HealthChecksUpdateRequestErrorsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthChecksUpdateRequestErrorsItem>;
 
 export type HealthChecksUpdateRequestErrorsList =
-  HealthChecksUpdateRequestErrorsItem[];
+  ReadonlyArray<HealthChecksUpdateRequestErrorsItem>;
 export const HealthChecksUpdateRequestErrorsList = /*@__PURE__*/ S.Array(
   HealthChecksUpdateRequestErrorsItem,
 ) as any as S.Schema<HealthChecksUpdateRequestErrorsList>;
@@ -1375,7 +1454,7 @@ export const HealthChecksUpdateRequestMessagesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<HealthChecksUpdateRequestMessagesItem>;
 
 export type HealthChecksUpdateRequestMessagesList =
-  HealthChecksUpdateRequestMessagesItem[];
+  ReadonlyArray<HealthChecksUpdateRequestMessagesItem>;
 export const HealthChecksUpdateRequestMessagesList = /*@__PURE__*/ S.Array(
   HealthChecksUpdateRequestMessagesItem,
 ) as any as S.Schema<HealthChecksUpdateRequestMessagesList>;
@@ -1384,37 +1463,53 @@ export type HealthChecksUpdateRequestResultCheckRegionsItem =
   | "WNAM"
   | "ENAM"
   | "WEU"
-  | (string & {});
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "IN"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
 export const HealthChecksUpdateRequestResultCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
 export type HealthChecksUpdateRequestResultCheckRegionsList =
-  HealthChecksUpdateRequestResultCheckRegionsItem[];
+  ReadonlyArray<HealthChecksUpdateRequestResultCheckRegionsItem>;
 export const HealthChecksUpdateRequestResultCheckRegionsList =
   /*@__PURE__*/ S.Array(
     HealthChecksUpdateRequestResultCheckRegionsItem,
   ) as any as S.Schema<HealthChecksUpdateRequestResultCheckRegionsList>;
 
 export type HealthChecksUpdateRequestResultHttpConfigExpectedCodesList =
-  string[];
+  ReadonlyArray<string>;
 export const HealthChecksUpdateRequestResultHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksUpdateRequestResultHttpConfigExpectedCodesList>;
 
+export type HealthChecksUpdateRequestResultHttpConfigHeaderValueList =
+  ReadonlyArray<string>;
+export const HealthChecksUpdateRequestResultHttpConfigHeaderValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HealthChecksUpdateRequestResultHttpConfigHeaderValueList>;
+
 export type HealthChecksUpdateRequestResultHttpConfigHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | HealthChecksUpdateRequestResultHttpConfigHeaderValueList
+    | undefined;
 };
 export const HealthChecksUpdateRequestResultHttpConfigHeaderMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    HealthChecksUpdateRequestResultHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksUpdateRequestResultHttpConfigHeaderMap>;
 
-export type HealthChecksUpdateRequestResultHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksUpdateRequestResultHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksUpdateRequestResultHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
@@ -1460,13 +1555,11 @@ export type HealthChecksUpdateRequestResultStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksUpdateRequestResultStatus = /*@__PURE__*/ S.String;
 
 export type HealthChecksUpdateRequestResultTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+  "connection_established";
 export const HealthChecksUpdateRequestResultTcpConfigMethod =
   /*@__PURE__*/ S.String;
 
@@ -1591,35 +1684,52 @@ export type HealthChecksUpdateResponseCheckRegionsItem =
   | "WNAM"
   | "ENAM"
   | "WEU"
-  | (string & {});
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "IN"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
 export const HealthChecksUpdateResponseCheckRegionsItem =
   /*@__PURE__*/ S.String;
 
 export type HealthChecksUpdateResponseCheckRegionsList =
-  HealthChecksUpdateResponseCheckRegionsItem[];
+  ReadonlyArray<HealthChecksUpdateResponseCheckRegionsItem>;
 export const HealthChecksUpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   HealthChecksUpdateResponseCheckRegionsItem,
 ) as any as S.Schema<HealthChecksUpdateResponseCheckRegionsList>;
 
-export type HealthChecksUpdateResponseHttpConfigExpectedCodesList = string[];
+export type HealthChecksUpdateResponseHttpConfigExpectedCodesList =
+  ReadonlyArray<string>;
 export const HealthChecksUpdateResponseHttpConfigExpectedCodesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<HealthChecksUpdateResponseHttpConfigExpectedCodesList>;
 
+export type HealthChecksUpdateResponseHttpConfigHeaderValueList =
+  ReadonlyArray<string>;
+export const HealthChecksUpdateResponseHttpConfigHeaderValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HealthChecksUpdateResponseHttpConfigHeaderValueList>;
+
 export type HealthChecksUpdateResponseHttpConfigHeaderMap = {
-  [key: string]: unknown | undefined;
+  [key: string]:
+    | HealthChecksUpdateResponseHttpConfigHeaderValueList
+    | undefined;
 };
 export const HealthChecksUpdateResponseHttpConfigHeaderMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    S.Unknown,
+    HealthChecksUpdateResponseHttpConfigHeaderValueList,
   ) as any as S.Schema<HealthChecksUpdateResponseHttpConfigHeaderMap>;
 
-export type HealthChecksUpdateResponseHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
+export type HealthChecksUpdateResponseHttpConfigMethod = "GET" | "HEAD";
 export const HealthChecksUpdateResponseHttpConfigMethod =
   /*@__PURE__*/ S.String;
 
@@ -1665,13 +1775,11 @@ export type HealthChecksUpdateResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
-  | "suspended"
-  | (string & {});
+  | "suspended";
 export const HealthChecksUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 export type HealthChecksUpdateResponseTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
+  "connection_established";
 export const HealthChecksUpdateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
 export interface HealthChecksUpdateResponseTcpConfig {
@@ -1759,7 +1867,7 @@ export const HealthChecksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksUpdateResponse",
 }) as any as S.Schema<HealthChecksUpdateResponse>;
 
-export type UpdateRequestCacheReserveValue = "on" | "off" | (string & {});
+export type UpdateRequestCacheReserveValue = "on" | "off";
 export const UpdateRequestCacheReserveValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestCacheReserve {
@@ -1774,10 +1882,7 @@ export const UpdateRequestCacheReserve = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestCacheReserve",
 }) as any as S.Schema<UpdateRequestCacheReserve>;
 
-export type UpdateRequestRegionalTieredCacheValue =
-  | "on"
-  | "off"
-  | (string & {});
+export type UpdateRequestRegionalTieredCacheValue = "on" | "off";
 export const UpdateRequestRegionalTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestRegionalTieredCache {
@@ -1792,7 +1897,7 @@ export const UpdateRequestRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestRegionalTieredCache",
 }) as any as S.Schema<UpdateRequestRegionalTieredCache>;
 
-export type UpdateRequestSmartRoutingValue = "on" | "off" | (string & {});
+export type UpdateRequestSmartRoutingValue = "on" | "off";
 export const UpdateRequestSmartRoutingValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestSmartRouting {
@@ -1807,7 +1912,7 @@ export const UpdateRequestSmartRouting = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestSmartRouting",
 }) as any as S.Schema<UpdateRequestSmartRouting>;
 
-export type UpdateRequestSmartTieredCacheValue = "on" | "off" | (string & {});
+export type UpdateRequestSmartTieredCacheValue = "on" | "off";
 export const UpdateRequestSmartTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface UpdateRequestSmartTieredCache {
@@ -1854,7 +1959,7 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
 
-export type UpdateResponseSmartTieredCacheValue = "on" | "off" | (string & {});
+export type UpdateResponseSmartTieredCacheValue = "on" | "off";
 export const UpdateResponseSmartTieredCacheValue = /*@__PURE__*/ S.String;
 
 export interface UpdateResponseSmartTieredCache {

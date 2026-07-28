@@ -11,19 +11,9 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-/** * `manual` - MANUAL * `slack_name_match` - SLACK_NAME_MATCH * `stamphog_config` - STAMPHOG_CONFIG * `owners_contact` - OWNERS_CONTACT */
-export type ResolutionSourceEnum =
-  | "manual"
-  | "slack_name_match"
-  | "stamphog_config"
-  | "owners_contact"
-  | (string & {});
-export const ResolutionSourceEnum = /*@__PURE__*/ S.String;
-
 export interface StamphogDigestChannelsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id: string;
   /** Opaque digest bucket this channel receives, e.g. 'repo:PostHog/posthog'. Immutable after creation — it anchors the audience and its opt-out tombstone. */
   audience_key: string;
   /** ID of the team's Slack integration used to post the digest. */
@@ -32,27 +22,17 @@ export interface StamphogDigestChannelsCreateRequest {
   slack_channel_id: string;
   /** Human-readable Slack channel name, for display only. */
   slack_channel_name?: string;
-  /** How this row was created: 'manual' (via this API), 'slack_name_match' (auto-provisioned because the workspace has a channel named exactly like the audience_key), 'stamphog_config' (auto-provisioned from the channel the repo declared under 'digest:' in .stamphog/policy.yml), or 'owners_contact' (reserved for the future owners.yaml contact.slack step, not implemented yet). * `manual` - MANUAL * `slack_name_match` - SLACK_NAME_MATCH * `stamphog_config` - STAMPHOG_CONFIG * `owners_contact` - OWNERS_CONTACT */
-  resolution_source: ResolutionSourceEnum;
   /** Whether this channel is included in the daily digest fan-out. */
   enabled?: boolean;
-  last_digest_at: string | null;
-  created_at: string;
-  updated_at: string;
 }
 export const StamphogDigestChannelsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.String,
     audience_key: S.String,
     slack_integration_id: S.Number,
     slack_channel_id: S.String,
     slack_channel_name: S.optional(S.String),
-    resolution_source: ResolutionSourceEnum,
     enabled: S.optional(S.Boolean),
-    last_digest_at: S.NullOr(S.String),
-    created_at: S.String,
-    updated_at: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -63,6 +43,14 @@ export const StamphogDigestChannelsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StamphogDigestChannelsCreateRequest",
 }) as any as S.Schema<StamphogDigestChannelsCreateRequest>;
+
+/** * `manual` - MANUAL * `slack_name_match` - SLACK_NAME_MATCH * `stamphog_config` - STAMPHOG_CONFIG * `owners_contact` - OWNERS_CONTACT */
+export type ResolutionSourceEnum =
+  | "manual"
+  | "slack_name_match"
+  | "stamphog_config"
+  | "owners_contact";
+export const ResolutionSourceEnum = /*@__PURE__*/ S.String;
 
 export interface DigestChannel {
   id: string;
@@ -150,7 +138,8 @@ export const StamphogDigestChannelsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StamphogDigestChannelsListRequest",
 }) as any as S.Schema<StamphogDigestChannelsListRequest>;
 
-export type PaginatedDigestChannelListResultsList = DigestChannel[];
+export type PaginatedDigestChannelListResultsList =
+  ReadonlyArray<DigestChannel>;
 export const PaginatedDigestChannelListResultsList = /*@__PURE__*/ S.Array(
   DigestChannel,
 ) as any as S.Schema<PaginatedDigestChannelListResultsList>;
@@ -185,13 +174,8 @@ export interface StamphogDigestChannelsPartialUpdateRequest {
   slack_channel_id?: string;
   /** Human-readable Slack channel name, for display only. */
   slack_channel_name?: string;
-  /** How this row was created: 'manual' (via this API), 'slack_name_match' (auto-provisioned because the workspace has a channel named exactly like the audience_key), 'stamphog_config' (auto-provisioned from the channel the repo declared under 'digest:' in .stamphog/policy.yml), or 'owners_contact' (reserved for the future owners.yaml contact.slack step, not implemented yet). * `manual` - MANUAL * `slack_name_match` - SLACK_NAME_MATCH * `stamphog_config` - STAMPHOG_CONFIG * `owners_contact` - OWNERS_CONTACT */
-  resolution_source?: ResolutionSourceEnum;
   /** Whether this channel is included in the daily digest fan-out. */
   enabled?: boolean;
-  last_digest_at?: string | null;
-  created_at?: string;
-  updated_at?: string;
 }
 export const StamphogDigestChannelsPartialUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -202,11 +186,7 @@ export const StamphogDigestChannelsPartialUpdateRequest =
       slack_integration_id: S.optional(S.Number),
       slack_channel_id: S.optional(S.String),
       slack_channel_name: S.optional(S.String),
-      resolution_source: S.optional(ResolutionSourceEnum),
       enabled: S.optional(S.Boolean),
-      last_digest_at: S.optional(S.NullOr(S.String)),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -253,13 +233,8 @@ export interface StamphogDigestChannelsUpdateRequest {
   slack_channel_id: string;
   /** Human-readable Slack channel name, for display only. */
   slack_channel_name?: string;
-  /** How this row was created: 'manual' (via this API), 'slack_name_match' (auto-provisioned because the workspace has a channel named exactly like the audience_key), 'stamphog_config' (auto-provisioned from the channel the repo declared under 'digest:' in .stamphog/policy.yml), or 'owners_contact' (reserved for the future owners.yaml contact.slack step, not implemented yet). * `manual` - MANUAL * `slack_name_match` - SLACK_NAME_MATCH * `stamphog_config` - STAMPHOG_CONFIG * `owners_contact` - OWNERS_CONTACT */
-  resolution_source: ResolutionSourceEnum;
   /** Whether this channel is included in the daily digest fan-out. */
   enabled?: boolean;
-  last_digest_at: string | null;
-  created_at: string;
-  updated_at: string;
 }
 export const StamphogDigestChannelsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -269,11 +244,7 @@ export const StamphogDigestChannelsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     slack_integration_id: S.Number,
     slack_channel_id: S.String,
     slack_channel_name: S.optional(S.String),
-    resolution_source: ResolutionSourceEnum,
     enabled: S.optional(S.Boolean),
-    last_digest_at: S.NullOr(S.String),
-    created_at: S.String,
-    updated_at: S.String,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -313,11 +284,7 @@ export const StamphogDigestRunsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StamphogDigestRunsListRequest>;
 
 /** * `pending` - PENDING * `completed` - COMPLETED * `failed` - FAILED */
-export type DigestRunStatusEnum =
-  | "pending"
-  | "completed"
-  | "failed"
-  | (string & {});
+export type DigestRunStatusEnum = "pending" | "completed" | "failed";
 export const DigestRunStatusEnum = /*@__PURE__*/ S.String;
 
 export interface DigestRun {
@@ -350,7 +317,7 @@ export const DigestRun = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DigestRun" }) as any as S.Schema<DigestRun>;
 
-export type PaginatedDigestRunListResultsList = DigestRun[];
+export type PaginatedDigestRunListResultsList = ReadonlyArray<DigestRun>;
 export const PaginatedDigestRunListResultsList = /*@__PURE__*/ S.Array(
   DigestRun,
 ) as any as S.Schema<PaginatedDigestRunListResultsList>;
@@ -482,7 +449,8 @@ export const StamphogPullRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StamphogPullRequest",
 }) as any as S.Schema<StamphogPullRequest>;
 
-export type PaginatedStamphogPullRequestListResultsList = StamphogPullRequest[];
+export type PaginatedStamphogPullRequestListResultsList =
+  ReadonlyArray<StamphogPullRequest>;
 export const PaginatedStamphogPullRequestListResultsList =
   /*@__PURE__*/ S.Array(
     StamphogPullRequest,
@@ -527,43 +495,34 @@ export const StamphogPullRequestsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StamphogPullRequestsRetrieveRequest>;
 
 /** * `all` - all * `label` - label */
-export type ReviewModeEnum = "all" | "label" | (string & {});
+export type ReviewModeEnum = "all" | "label";
 export const ReviewModeEnum = /*@__PURE__*/ S.String;
 
 export interface StamphogRepoConfigsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id: string;
   /** SCM provider this config talks to. Defaults to 'github'. */
   provider?: string;
   /** Repository full name, e.g. 'PostHog/posthog'. */
   repository: string;
   /** Whether stamphog actively reviews pull requests for this repo. */
   enabled?: boolean;
-  /** Provider app installation ID that authorizes API calls for this repo. Set only by the verified sync_installation flow; ignored on direct writes. */
-  installation_id: string;
   /** Whether merged PRs on this repo are captured for the daily Slack digest. */
   digest_enabled?: boolean;
   /** When reviews run: 'all' reviews every pull request (the default); 'label' reviews only pull requests carrying the trigger label, mirroring the Action's opt-in flow. * `all` - all * `label` - label */
   review_mode?: ReviewModeEnum;
   /** Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'. */
   trigger_label?: string;
-  created_at: string;
-  updated_at: string;
 }
 export const StamphogRepoConfigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.String,
     provider: S.optional(S.String),
     repository: S.String,
     enabled: S.optional(S.Boolean),
-    installation_id: S.String,
     digest_enabled: S.optional(S.Boolean),
     review_mode: S.optional(ReviewModeEnum),
     trigger_label: S.optional(S.String),
-    created_at: S.String,
-    updated_at: S.String,
   }).pipe(
     T.Http({
       method: "POST",
@@ -701,7 +660,8 @@ export const StamphogRepoConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StamphogRepoConfigsListRequest",
 }) as any as S.Schema<StamphogRepoConfigsListRequest>;
 
-export type PaginatedStamphogRepoConfigListResultsList = StamphogRepoConfig[];
+export type PaginatedStamphogRepoConfigListResultsList =
+  ReadonlyArray<StamphogRepoConfig>;
 export const PaginatedStamphogRepoConfigListResultsList = /*@__PURE__*/ S.Array(
   StamphogRepoConfig,
 ) as any as S.Schema<PaginatedStamphogRepoConfigListResultsList>;
@@ -734,16 +694,12 @@ export interface StamphogRepoConfigsPartialUpdateRequest {
   repository?: string;
   /** Whether stamphog actively reviews pull requests for this repo. */
   enabled?: boolean;
-  /** Provider app installation ID that authorizes API calls for this repo. Set only by the verified sync_installation flow; ignored on direct writes. */
-  installation_id?: string;
   /** Whether merged PRs on this repo are captured for the daily Slack digest. */
   digest_enabled?: boolean;
   /** When reviews run: 'all' reviews every pull request (the default); 'label' reviews only pull requests carrying the trigger label, mirroring the Action's opt-in flow. * `all` - all * `label` - label */
   review_mode?: ReviewModeEnum;
   /** Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'. */
   trigger_label?: string;
-  created_at?: string;
-  updated_at?: string;
 }
 export const StamphogRepoConfigsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -753,12 +709,9 @@ export const StamphogRepoConfigsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       provider: S.optional(S.String),
       repository: S.optional(S.String),
       enabled: S.optional(S.Boolean),
-      installation_id: S.optional(S.String),
       digest_enabled: S.optional(S.Boolean),
       review_mode: S.optional(ReviewModeEnum),
       trigger_label: S.optional(S.String),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -820,13 +773,14 @@ export const StamphogRepoConfigsSyncInstallationCreateRequest =
   }) as any as S.Schema<StamphogRepoConfigsSyncInstallationCreateRequest>;
 
 /** Repo configs now bound to this team for the installation (created this call or already present). */
-export type StamphogSyncInstallationResponseSyncedList = StamphogRepoConfig[];
+export type StamphogSyncInstallationResponseSyncedList =
+  ReadonlyArray<StamphogRepoConfig>;
 export const StamphogSyncInstallationResponseSyncedList = /*@__PURE__*/ S.Array(
   StamphogRepoConfig,
 ) as any as S.Schema<StamphogSyncInstallationResponseSyncedList>;
 
 /** Repository full names skipped because another team already owns them under this installation. */
-export type StamphogSyncInstallationResponseSkippedList = string[];
+export type StamphogSyncInstallationResponseSkippedList = ReadonlyArray<string>;
 export const StamphogSyncInstallationResponseSkippedList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -850,7 +804,7 @@ export const StamphogDiscoveredInstallation = /*@__PURE__*/ S.suspend(() =>
 
 /** Populated only on the discovery path when the caller can reach MORE than one installation of this App: nothing was bound, and the user must pick which installation to connect. The frontend re-runs the authorize flow and calls back with the chosen installation_id, which the explicit path verifies. Empty whenever a bind happened (or nothing was found). */
 export type StamphogSyncInstallationResponseInstallationsList =
-  StamphogDiscoveredInstallation[];
+  ReadonlyArray<StamphogDiscoveredInstallation>;
 export const StamphogSyncInstallationResponseInstallationsList =
   /*@__PURE__*/ S.Array(
     StamphogDiscoveredInstallation,
@@ -889,16 +843,12 @@ export interface StamphogRepoConfigsUpdateRequest {
   repository: string;
   /** Whether stamphog actively reviews pull requests for this repo. */
   enabled?: boolean;
-  /** Provider app installation ID that authorizes API calls for this repo. Set only by the verified sync_installation flow; ignored on direct writes. */
-  installation_id: string;
   /** Whether merged PRs on this repo are captured for the daily Slack digest. */
   digest_enabled?: boolean;
   /** When reviews run: 'all' reviews every pull request (the default); 'label' reviews only pull requests carrying the trigger label, mirroring the Action's opt-in flow. * `all` - all * `label` - label */
   review_mode?: ReviewModeEnum;
   /** Pull request label that triggers a review when review_mode is 'label'. Defaults to 'stamphog'. */
   trigger_label?: string;
-  created_at: string;
-  updated_at: string;
 }
 export const StamphogRepoConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -907,12 +857,9 @@ export const StamphogRepoConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     provider: S.optional(S.String),
     repository: S.String,
     enabled: S.optional(S.Boolean),
-    installation_id: S.String,
     digest_enabled: S.optional(S.Boolean),
     review_mode: S.optional(ReviewModeEnum),
     trigger_label: S.optional(S.String),
-    created_at: S.String,
-    updated_at: S.String,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -964,8 +911,7 @@ export type ReviewRunStatusEnum =
   | "reviewing"
   | "completed"
   | "failed"
-  | "superseded"
-  | (string & {});
+  | "superseded";
 export const ReviewRunStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `none` - NONE * `approved` - APPROVED * `refused` - REFUSED * `escalate` - ESCALATE * `wait` - WAIT * `error` - ERROR */
@@ -975,8 +921,7 @@ export type ReviewRunVerdictEnum =
   | "refused"
   | "escalate"
   | "wait"
-  | "error"
-  | (string & {});
+  | "error";
 export const ReviewRunVerdictEnum = /*@__PURE__*/ S.String;
 
 /** Allowlisted, content-free slice of ``ReviewRun.gate_result``. The raw gate blob nests ``gates``, ``classification``, and ``policy`` sub-objects that carry repository content — changed-file paths (``safe_migration_files``, ``invalid_folder_files``), manifest gate messages, and declared ``policy.scopes`` — which a project member without repo access must not read. Only the terminal decision is exposed. */
@@ -1065,7 +1010,7 @@ export const ReviewRun = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReviewRun" }) as any as S.Schema<ReviewRun>;
 
-export type PaginatedReviewRunListResultsList = ReviewRun[];
+export type PaginatedReviewRunListResultsList = ReadonlyArray<ReviewRun>;
 export const PaginatedReviewRunListResultsList = /*@__PURE__*/ S.Array(
   ReviewRun,
 ) as any as S.Schema<PaginatedReviewRunListResultsList>;

@@ -443,16 +443,65 @@
             "smithy.api#documentation": "The webhook name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the name of the webhook."
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#WebhookUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the value of the webhook."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#WebhookUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "isEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the value of the enabled flag of webhook."
+          }
+        },
+        "runOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the hybrid worker group the webhook job will run on."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.automation#WebhookUpdatePropertiesParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the parameters of the job."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the webhook."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the update webhook."
+      }
+    },
+    "com.azure.automation#WebhookUpdatePropertiesParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the parameters of the job."
       }
     },
     "com.azure.automation#WebhookCreateOrUpdate": {
@@ -547,16 +596,79 @@
             "smithy.api#documentation": "The webhook name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the name of the webhook.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#WebhookCreateOrUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the properties of the webhook.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#WebhookCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "isEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the value of the enabled flag of webhook."
+          }
+        },
+        "uri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the uri."
+          }
+        },
+        "expiryTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the expiry time."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.automation#WebhookCreateOrUpdatePropertiesParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the parameters of the job."
+          }
+        },
+        "runbook": {
+          "target": "com.azure.automation#RunbookAssociationProperty",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the runbook."
+          }
+        },
+        "runOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the hybrid worker group the webhook job will run on."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the create webhook operation."
+      }
+    },
+    "com.azure.automation#WebhookCreateOrUpdatePropertiesParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the parameters of the job."
       }
     },
     "com.azure.automation#WebhookGet": {
@@ -1155,16 +1267,35 @@
             "smithy.api#documentation": "The watcher name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#WatcherUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the watcher update properties."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#WatcherUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "executionFrequencyInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the frequency at which the watcher is invoked."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the update watcher operation."
       }
     },
     "com.azure.automation#WatcherCreateOrUpdate": {
@@ -1289,16 +1420,95 @@
             "smithy.api#documentation": "The watcher name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#WatcherPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the watcher properties."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the etag of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#WatcherCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#WatcherCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.automation#WatcherPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "executionFrequencyInSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the frequency at which the watcher is invoked."
+          }
+        },
+        "scriptName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the script the watcher is attached to, i.e. the name of an existing runbook."
+          }
+        },
+        "scriptParameters": {
+          "target": "com.azure.automation#WatcherPropertiesInputScriptParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the parameters of the script."
+          }
+        },
+        "scriptRunOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the hybrid worker group the watcher will run on."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of the watcher properties"
+      }
+    },
+    "com.azure.automation#WatcherPropertiesInputScriptParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the parameters of the script."
       }
     },
     "com.azure.automation#WatcherGet": {
@@ -1774,16 +1984,41 @@
             "smithy.api#documentation": "The name of variable."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the name of the variable."
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#VariableUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the value of the variable."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#VariableUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the value of the variable."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the variable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the update variable"
       }
     },
     "com.azure.automation#VariableCreateOrUpdate": {
@@ -1878,16 +2113,49 @@
             "smithy.api#documentation": "The name of variable."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the name of the variable.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#VariableCreateOrUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the properties of the variable.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#VariableCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the value of the variable."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the variable."
+          }
+        },
+        "isEncrypted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the encrypted flag of the variable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the create variable operation."
       }
     },
     "com.azure.automation#VariableGet": {
@@ -2885,16 +3153,31 @@
             "smithy.api#documentation": "The source control sync job id."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#SourceControlSyncJobCreateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the source control sync job.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#SourceControlSyncJobCreateProperties": {
+      "type": "structure",
+      "members": {
+        "commitId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The commit id of the source control sync job. If not syncing to a commitId, enter an empty string.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of create source control sync job properties."
       }
     },
     "com.azure.automation#SourceControlSyncJobGet": {
@@ -3371,16 +3654,105 @@
             "smithy.api#documentation": "The name of source control."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#SourceControlUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The value of the source control."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#SourceControlUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The repo branch of the source control."
+          }
+        },
+        "folderPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The folder path of the source control. Path must be relative."
+          }
+        },
+        "autoSync": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The auto sync of the source control. Default is false."
+          }
+        },
+        "publishRunbook": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The auto publish of the source control. Default is true."
+          }
+        },
+        "securityToken": {
+          "target": "com.azure.automation#SourceControlSecurityTokenProperties",
+          "traits": {
+            "smithy.api#documentation": "The authorization token for the repo of the source control."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user description of the source control."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the update source control"
+      }
+    },
+    "com.azure.automation#SourceControlSecurityTokenProperties": {
+      "type": "structure",
+      "members": {
+        "accessToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The access token.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "refreshToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The refresh token.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "tokenType": {
+          "target": "com.azure.automation#TokenType",
+          "traits": {
+            "smithy.api#documentation": "The token type. Must be either PersonalAccessToken or Oauth."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.automation#TokenType": {
+      "type": "enum",
+      "members": {
+        "PERSONALACCESSTOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PersonalAccessToken"
+          }
+        },
+        "OAUTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Oauth"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The token type. Must be either PersonalAccessToken or Oauth."
       }
     },
     "com.azure.automation#SourceControlCreateOrUpdate": {
@@ -3475,16 +3847,72 @@
             "smithy.api#documentation": "The name of source control."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#SourceControlCreateOrUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the source control.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#SourceControlCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "repoUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The repo url of the source control."
+          }
+        },
+        "branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The repo branch of the source control. Include branch as empty string for VsoTfvc."
+          }
+        },
+        "folderPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The folder path of the source control. Path must be relative."
+          }
+        },
+        "autoSync": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The auto async of the source control. Default is false."
+          }
+        },
+        "publishRunbook": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The auto publish of the source control. Default is true."
+          }
+        },
+        "sourceType": {
+          "target": "com.azure.automation#SourceType",
+          "traits": {
+            "smithy.api#documentation": "The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive."
+          }
+        },
+        "securityToken": {
+          "target": "com.azure.automation#SourceControlSecurityTokenProperties",
+          "traits": {
+            "smithy.api#documentation": "The authorization token for the repo of the source control."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user description of the source control."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the create source control operation."
       }
     },
     "com.azure.automation#SourceControlGet": {
@@ -4703,16 +5131,138 @@
             "smithy.api#documentation": "The name of the software update configuration to be created."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#SoftwareUpdateConfigurationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Software update configuration properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#SoftwareUpdateConfigurationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "updateConfiguration": {
+          "target": "com.azure.automation#UpdateConfiguration",
+          "traits": {
+            "smithy.api#documentation": "update specific properties for the Software update configuration",
+            "smithy.api#required": {}
+          }
+        },
+        "scheduleInfo": {
+          "target": "com.azure.automation#SUCSchedulePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Schedule information for the Software update configuration",
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.azure.automation#AutomationErrorResponse",
+          "traits": {
+            "smithy.api#documentation": "Details of provisioning error"
+          }
+        },
+        "tasks": {
+          "target": "com.azure.automation#SoftwareUpdateConfigurationTasks",
+          "traits": {
+            "smithy.api#documentation": "Tasks information for the Software update configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Software update configuration properties."
+      }
+    },
+    "com.azure.automation#SUCSchedulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the start time of the schedule."
+          }
+        },
+        "expiryTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the end time of the schedule.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expiryTimeOffsetMinutes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the expiry time's offset in minutes."
+          }
+        },
+        "isEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether this schedule is enabled."
+          }
+        },
+        "nextRun": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the next run time of the schedule.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "nextRunOffsetMinutes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the next run time's offset in minutes."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the interval of the schedule."
+          }
+        },
+        "frequency": {
+          "target": "com.azure.automation#ScheduleFrequency",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the frequency of the schedule."
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the time zone of the schedule."
+          }
+        },
+        "advancedSchedule": {
+          "target": "com.azure.automation#AdvancedSchedule",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the advanced schedule."
+          }
+        },
+        "creationTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the creation time."
+          }
+        },
+        "lastModifiedTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the last modified time."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of schedule parameters."
       }
     },
     "com.azure.automation#SoftwareUpdateConfigurationsGetByName": {
@@ -5863,16 +6413,41 @@
             "smithy.api#documentation": "The schedule name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the name of the Schedule."
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#ScheduleUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of schedule properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#ScheduleUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the schedule."
+          }
+        },
+        "isEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether this schedule is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the update schedule operation."
       }
     },
     "com.azure.automation#ScheduleCreateOrUpdate": {
@@ -5967,16 +6542,76 @@
             "smithy.api#documentation": "The schedule name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the name of the Schedule.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#ScheduleCreateOrUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the list of schedule properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#ScheduleCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the schedule."
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the start time of the schedule.",
+            "smithy.api#required": {}
+          }
+        },
+        "expiryTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the end time of the schedule.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the interval of the schedule."
+          }
+        },
+        "frequency": {
+          "target": "com.azure.automation#ScheduleFrequency",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the frequency of the schedule.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeZone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the time zone of the schedule."
+          }
+        },
+        "advancedSchedule": {
+          "target": "com.azure.automation#AdvancedSchedule",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the AdvancedSchedule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the create or update schedule operation."
       }
     },
     "com.azure.automation#ScheduleGet": {
@@ -6717,16 +7352,68 @@
             "smithy.api#documentation": "The Package name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#PackageUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the package update properties."
+          }
+        },
+        "allOf": {
+          "target": "com.azure.automation#PackageUpdateRequestAllOf",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#PackageUpdateRequestAllOf": {
+      "type": "structure",
+      "members": {
+        "tags": {
+          "target": "com.azure.automation#PackageUpdateRequestAllOfTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'"
+      }
+    },
+    "com.azure.automation#PackageUpdateRequestAllOfTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.automation#PackageUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "contentLink": {
+          "target": "com.azure.automation#ContentLink",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the package content link."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the update properties."
       }
     },
     "com.azure.automation#PackageCreateOrUpdate": {
@@ -6854,16 +7541,70 @@
             "smithy.api#documentation": "The Package name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#PackageCreateOrUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the package create properties.",
             "smithy.api#required": {}
+          }
+        },
+        "allOf": {
+          "target": "com.azure.automation#PackageCreateOrUpdateRequestAllOf",
+          "traits": {
+            "smithy.api#documentation": "The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#PackageCreateOrUpdateRequestAllOf": {
+      "type": "structure",
+      "members": {
+        "tags": {
+          "target": "com.azure.automation#PackageCreateOrUpdateRequestAllOfTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'"
+      }
+    },
+    "com.azure.automation#PackageCreateOrUpdateRequestAllOfTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.automation#PackageCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "contentLink": {
+          "target": "com.azure.automation#ContentLink",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the package content link.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the create or update package properties."
       }
     },
     "com.azure.automation#PackageGet": {
@@ -7382,16 +8123,41 @@
             "smithy.api#documentation": "The name of the Runtime Environment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#RuntimeEnvironmentUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets Runtime update properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#RuntimeEnvironmentUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "defaultPackages": {
+          "target": "com.azure.automation#RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap",
+          "traits": {
+            "smithy.api#documentation": "List of Default packages for Environment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets Runtime update properties."
+      }
+    },
+    "com.azure.automation#RuntimeEnvironmentUpdatePropertiesDefaultPackagesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of Default packages for Environment"
       }
     },
     "com.azure.automation#RuntimeEnvironmentsCreate": {
@@ -7511,16 +8277,40 @@
             "smithy.api#documentation": "The name of the Runtime Environment."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.automation#RuntimeEnvironmentsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#RuntimeEnvironmentProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the Runtime Environment properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#RuntimeEnvironmentsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.automation#RuntimeEnvironmentsGet": {
@@ -8819,16 +9609,39 @@
             "smithy.api#documentation": "The runbook name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "parameters": {
+          "target": "com.azure.automation#TestJobCreateRequestParametersMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the parameters of the test job."
+          }
+        },
+        "runOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the runOn which specifies the group name where the job is to be executed."
+          }
+        },
+        "runtimeEnvironment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The runtime Environment Name on which job needs to be tested"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#TestJobCreateRequestParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the parameters of the test job."
       }
     },
     "com.azure.automation#TestJobGet": {
@@ -8945,7 +9758,7 @@
           }
         },
         "body": {
-          "target": "smithy.api#Document",
+          "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#required": {}
@@ -9673,16 +10486,77 @@
             "smithy.api#documentation": "The runbook name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#RunbookUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the runbook update properties."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#RunbookUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#RunbookUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
+      }
+    },
+    "com.azure.automation#RunbookUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the runbook."
+          }
+        },
+        "logVerbose": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets verbose log option."
+          }
+        },
+        "logProgress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets progress log option."
+          }
+        },
+        "logActivityTrace": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the activity-level tracing options of the runbook."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the update runbook properties."
       }
     },
     "com.azure.automation#RunbookCreateOrUpdate": {
@@ -9808,16 +10682,103 @@
             "smithy.api#documentation": "The runbook name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#RunbookCreateOrUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets runbook create or update properties.",
             "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#RunbookCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#RunbookCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
+      }
+    },
+    "com.azure.automation#RunbookCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "logVerbose": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets verbose log option."
+          }
+        },
+        "logProgress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets progress log option."
+          }
+        },
+        "runtimeEnvironment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Environment of the runbook."
+          }
+        },
+        "runbookType": {
+          "target": "com.azure.automation#RunbookTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the type of the runbook.",
+            "smithy.api#required": {}
+          }
+        },
+        "draft": {
+          "target": "com.azure.automation#RunbookDraft",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the draft runbook properties."
+          }
+        },
+        "publishContentLink": {
+          "target": "com.azure.automation#ContentLink",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the published runbook content link."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the runbook."
+          }
+        },
+        "logActivityTrace": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the activity-level tracing options of the runbook."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the create or update runbook properties."
       }
     },
     "com.azure.automation#RunbookGet": {
@@ -10478,16 +11439,27 @@
             "smithy.api#documentation": "The python package name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.automation#Python3PackageUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#Python3PackageUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
       }
     },
     "com.azure.automation#Python3PackageCreateOrUpdate": {
@@ -10613,16 +11585,49 @@
             "smithy.api#documentation": "The python package name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#PythonPackageCreateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the module create properties.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#Python3PackageCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#Python3PackageCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
+      }
+    },
+    "com.azure.automation#PythonPackageCreateProperties": {
+      "type": "structure",
+      "members": {
+        "contentLink": {
+          "target": "com.azure.automation#ContentLink",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the module content link.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the create or update module properties."
       }
     },
     "com.azure.automation#Python3PackageGet": {
@@ -11085,16 +12090,27 @@
             "smithy.api#documentation": "The python package name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.automation#Python2PackageUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#Python2PackageUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
       }
     },
     "com.azure.automation#Python2PackageCreateOrUpdate": {
@@ -11220,16 +12236,34 @@
             "smithy.api#documentation": "The python package name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#PythonPackageCreateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the module create properties.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#Python2PackageCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#Python2PackageCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
       }
     },
     "com.azure.automation#Python2PackageGet": {
@@ -11781,16 +12815,70 @@
             "smithy.api#documentation": "The name of the private endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.automation#PrivateEndpointProperty",
+          "traits": {
+            "smithy.api#documentation": "Private endpoint which the connection belongs to."
+          }
+        },
+        "groupIds": {
+          "target": "com.azure.automation#PrivateEndpointConnectionPropertiesInputGroupIdsList",
+          "traits": {
+            "smithy.api#documentation": "Gets the groupIds."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.automation#PrivateLinkServiceConnectionStatePropertyInput",
+          "traits": {
+            "smithy.api#documentation": "Connection State of the Private Endpoint Connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a private endpoint connection."
+      }
+    },
+    "com.azure.automation#PrivateLinkServiceConnectionStatePropertyInput": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection status."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The private link service connection description."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Connection State of the Private Endpoint Connection."
+      }
+    },
+    "com.azure.automation#PrivateEndpointConnectionPropertiesInputGroupIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets the groupIds."
       }
     },
     "com.azure.automation#PrivateEndpointConnectionsGet": {
@@ -12846,7 +13934,8 @@
         "nodeConfiguration": {
           "target": "com.azure.automation#DscNodeConfigurationAssociationProperty",
           "traits": {
-            "smithy.api#documentation": "Gets or sets the configuration of the node."
+            "smithy.api#documentation": "Gets or sets the configuration of the node.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "status": {
@@ -12962,17 +14051,25 @@
             "smithy.api#documentation": "The node id."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
+        "properties": {
+          "target": "com.azure.automation#DscNodeUpdateParametersProperties"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.automation#DscNodeUpdateParametersProperties": {
+      "type": "structure",
+      "members": {
+        "nodeConfiguration": {
+          "target": "com.azure.automation#DscNodeConfigurationAssociationProperty",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the configuration of the node."
+          }
+        }
+      },
+      "traits": {}
     },
     "com.azure.automation#DscNodeGet": {
       "type": "operation",
@@ -13471,16 +14568,133 @@
             "smithy.api#documentation": "The Dsc node configuration name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#DscNodeConfigurationCreateOrUpdateParametersProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Node configuration properties"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the node configuration."
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#DscNodeConfigurationCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#DscNodeConfigurationCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
+      }
+    },
+    "com.azure.automation#DscNodeConfigurationCreateOrUpdateParametersProperties": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "com.azure.automation#ContentSource",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the source.",
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "com.azure.automation#DscConfigurationAssociationProperty",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the configuration of the node.",
+            "smithy.api#required": {}
+          }
+        },
+        "incrementNodeConfigurationBuild": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If a new build version of NodeConfiguration is required."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameter properties supplied to the create or update node configuration operation."
+      }
+    },
+    "com.azure.automation#DscConfigurationAssociationProperty": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the Dsc configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Dsc configuration property associated with the entity."
+      }
+    },
+    "com.azure.automation#ContentSource": {
+      "type": "structure",
+      "members": {
+        "hash": {
+          "target": "com.azure.automation#ContentHash",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the hash."
+          }
+        },
+        "type": {
+          "target": "com.azure.automation#ContentSourceType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the content source type."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the value of the content. This is based on the content source type."
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the version of the content."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Definition of the content source."
+      }
+    },
+    "com.azure.automation#ContentSourceType": {
+      "type": "enum",
+      "members": {
+        "EMBEDDEDCONTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "embeddedContent"
+          }
+        },
+        "URI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uri"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the content source type."
       }
     },
     "com.azure.automation#DscNodeConfigurationGet": {
@@ -13582,20 +14796,6 @@
       },
       "traits": {
         "smithy.api#documentation": "Properties for the DscNodeConfiguration"
-      }
-    },
-    "com.azure.automation#DscConfigurationAssociationProperty": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Gets or sets the name of the Dsc configuration."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The Dsc configuration property associated with the entity."
       }
     },
     "com.azure.automation#DscNodeConfigurationGetRequest": {
@@ -14490,16 +15690,47 @@
             "smithy.api#documentation": "The module name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#ModuleUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the module update properties."
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#ModuleUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#ModuleUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
+      }
+    },
+    "com.azure.automation#ModuleUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "contentLink": {
+          "target": "com.azure.automation#ContentLink",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the module content link."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the update properties."
       }
     },
     "com.azure.automation#ModuleCreateOrUpdate": {
@@ -14625,16 +15856,61 @@
             "smithy.api#documentation": "The module name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#ModuleCreateOrUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the module create properties.",
             "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets name of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#ModuleCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#ModuleCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
+      }
+    },
+    "com.azure.automation#ModuleCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "contentLink": {
+          "target": "com.azure.automation#ContentLink",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the module content link.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the create or update module properties."
       }
     },
     "com.azure.automation#ModuleGet": {
@@ -15973,16 +17249,52 @@
             "smithy.api#documentation": "The job name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#JobCreateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the list of job properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#JobCreateProperties": {
+      "type": "structure",
+      "members": {
+        "runbook": {
+          "target": "com.azure.automation#RunbookAssociationProperty",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the runbook."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.automation#JobCreatePropertiesParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the parameters of the job."
+          }
+        },
+        "runOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the runOn which specifies the group name where the job is to be executed."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.automation#JobCreatePropertiesParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the parameters of the job."
       }
     },
     "com.azure.automation#JobGet": {
@@ -16502,16 +17814,62 @@
             "smithy.api#documentation": "The job schedule name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#JobScheduleCreateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the list of job schedule properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#JobScheduleCreateProperties": {
+      "type": "structure",
+      "members": {
+        "schedule": {
+          "target": "com.azure.automation#ScheduleAssociationProperty",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the schedule.",
+            "smithy.api#required": {}
+          }
+        },
+        "runbook": {
+          "target": "com.azure.automation#RunbookAssociationProperty",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the runbook.",
+            "smithy.api#required": {}
+          }
+        },
+        "runOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the hybrid worker group that the scheduled job should run on."
+          }
+        },
+        "parameters": {
+          "target": "com.azure.automation#JobScheduleCreatePropertiesParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a list of job properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the create job schedule operation."
+      }
+    },
+    "com.azure.automation#JobScheduleCreatePropertiesParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets a list of job properties."
       }
     },
     "com.azure.automation#JobScheduleGet": {
@@ -16798,13 +18156,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The hybrid runbook worker id"
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -17067,15 +18418,29 @@
             "smithy.api#documentation": "The hybrid runbook worker id"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#HybridRunbookWorkerCreateOrUpdateParameters",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets hybrid runbook worker group create or update properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#HybridRunbookWorkerCreateOrUpdateParameters": {
+      "type": "structure",
+      "members": {
+        "vmResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Azure Resource Manager Id for a virtual machine."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the create or update hybrid runbook worker operation."
       }
     },
     "com.azure.automation#HybridRunbookWorkersCreate": {
@@ -17203,11 +18568,10 @@
             "smithy.api#documentation": "The hybrid runbook worker id"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#HybridRunbookWorkerCreateOrUpdateParameters",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets hybrid runbook worker group create or update properties."
           }
         }
       },
@@ -17734,16 +19098,35 @@
             "smithy.api#documentation": "The hybrid runbook worker group name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#HybridRunbookWorkerGroupCreateOrUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets hybrid runbook worker group create or update properties."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#HybridRunbookWorkerGroupCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "credential": {
+          "target": "com.azure.automation#RunAsCredentialAssociationProperty",
+          "traits": {
+            "smithy.api#documentation": "Sets the credential of a worker group."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The hybrid runbook worker group properties."
       }
     },
     "com.azure.automation#HybridRunbookWorkerGroupCreate": {
@@ -17863,11 +19246,16 @@
             "smithy.api#documentation": "The hybrid runbook worker group name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#HybridRunbookWorkerGroupCreateOrUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets hybrid runbook worker group create or update properties."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the resource."
           }
         }
       },
@@ -18331,16 +19719,48 @@
             "smithy.api#documentation": "The name of credential."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the name of the credential."
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#CredentialUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the properties of the variable."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#CredentialUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "userName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the user name of the credential."
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the password of the credential.",
+            "smithy.api#sensitive": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the credential."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the Update credential"
       }
     },
     "com.azure.automation#CredentialCreateOrUpdate": {
@@ -18435,16 +19855,52 @@
             "smithy.api#documentation": "The name of credential."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the name of the credential.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#CredentialCreateOrUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the properties of the credential.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#CredentialCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "userName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the user name of the credential.",
+            "smithy.api#required": {}
+          }
+        },
+        "password": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the password of the credential.",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the credential."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the create credential operation."
       }
     },
     "com.azure.automation#CredentialGet": {
@@ -18688,7 +20144,8 @@
         "rawContent": {
           "target": "com.azure.automation#RawGraphicalRunbookContent",
           "traits": {
-            "smithy.api#documentation": "Raw graphical Runbook content."
+            "smithy.api#documentation": "Raw graphical Runbook content.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "graphRunbookJson": {
@@ -18776,11 +20233,18 @@
             "smithy.api#documentation": "The name of the automation account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "rawContent": {
+          "target": "com.azure.automation#RawGraphicalRunbookContent",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Raw graphical Runbook content.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "graphRunbookJson": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Graphical Runbook content as JSON",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -19003,16 +20467,53 @@
             "smithy.api#documentation": "The name of connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the name of the connection."
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#ConnectionUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the properties of the connection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#ConnectionUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the connection."
+          }
+        },
+        "fieldDefinitionValues": {
+          "target": "com.azure.automation#ConnectionUpdatePropertiesFieldDefinitionValuesMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the field definition values of the connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the update connection operation."
+      }
+    },
+    "com.azure.automation#ConnectionUpdatePropertiesFieldDefinitionValuesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the field definition values of the connection."
       }
     },
     "com.azure.automation#ConnectionCreateOrUpdate": {
@@ -19107,16 +20608,62 @@
             "smithy.api#documentation": "The name of connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the name of the connection.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#ConnectionCreateOrUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the properties of the connection.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#ConnectionCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the connection."
+          }
+        },
+        "connectionType": {
+          "target": "com.azure.automation#ConnectionTypeAssociationProperty",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the connectionType of the connection.",
+            "smithy.api#required": {}
+          }
+        },
+        "fieldDefinitionValues": {
+          "target": "com.azure.automation#ConnectionCreateOrUpdatePropertiesFieldDefinitionValuesMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the field definition properties of the connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the create connection properties"
+      }
+    },
+    "com.azure.automation#ConnectionCreateOrUpdatePropertiesFieldDefinitionValuesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the field definition properties of the connection."
       }
     },
     "com.azure.automation#ConnectionGet": {
@@ -19563,16 +21110,56 @@
             "smithy.api#documentation": "The name of connection type."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the name of the connection type.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#ConnectionTypeCreateOrUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the value of the connection type.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#ConnectionTypeCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "isGlobal": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a Boolean value to indicate if the connection type is global."
+          }
+        },
+        "fieldDefinitions": {
+          "target": "com.azure.automation#ConnectionTypeCreateOrUpdatePropertiesFieldDefinitionsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the field definitions of the connection type.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the create connection type."
+      }
+    },
+    "com.azure.automation#ConnectionTypeCreateOrUpdatePropertiesFieldDefinitionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.automation#FieldDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the field definitions of the connection type."
       }
     },
     "com.azure.automation#ConnectionTypeGet": {
@@ -20094,58 +21681,6 @@
         "smithy.api#documentation": "Gets or sets the state of the configuration."
       }
     },
-    "com.azure.automation#ContentSource": {
-      "type": "structure",
-      "members": {
-        "hash": {
-          "target": "com.azure.automation#ContentHash",
-          "traits": {
-            "smithy.api#documentation": "Gets or sets the hash."
-          }
-        },
-        "type": {
-          "target": "com.azure.automation#ContentSourceType",
-          "traits": {
-            "smithy.api#documentation": "Gets or sets the content source type."
-          }
-        },
-        "value": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Gets or sets the value of the content. This is based on the content source type."
-          }
-        },
-        "version": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Gets or sets the version of the content."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Definition of the content source."
-      }
-    },
-    "com.azure.automation#ContentSourceType": {
-      "type": "enum",
-      "members": {
-        "EMBEDDEDCONTENT": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "embeddedContent"
-          }
-        },
-        "URI": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "uri"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Gets or sets the content source type."
-      }
-    },
     "com.azure.automation#DscConfigurationPropertiesParametersMap": {
       "type": "map",
       "key": {
@@ -20251,15 +21786,90 @@
             "smithy.api#documentation": "The configuration name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#DscConfigurationCreateOrUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets configuration create or update properties."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets name of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#DscConfigurationUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#DscConfigurationUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
+      }
+    },
+    "com.azure.automation#DscConfigurationCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "logVerbose": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets verbose log option."
+          }
+        },
+        "logProgress": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets progress log option."
+          }
+        },
+        "source": {
+          "target": "com.azure.automation#ContentSource",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the source.",
+            "smithy.api#required": {}
+          }
+        },
+        "parameters": {
+          "target": "com.azure.automation#DscConfigurationCreateOrUpdatePropertiesParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the configuration parameters."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the configuration."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties to create or update configuration."
+      }
+    },
+    "com.azure.automation#DscConfigurationCreateOrUpdatePropertiesParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.automation#DscConfigurationParameter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the configuration parameters."
       }
     },
     "com.azure.automation#DscConfigurationCreateOrUpdate": {
@@ -20385,16 +21995,46 @@
             "smithy.api#documentation": "The configuration name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#DscConfigurationCreateOrUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets configuration create or update properties.",
             "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets name of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location of the resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#DscConfigurationCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#DscConfigurationCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
       }
     },
     "com.azure.automation#DscConfigurationGet": {
@@ -20903,16 +22543,35 @@
             "smithy.api#documentation": "The name of certificate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the name of the certificate."
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#CertificateUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the properties of the certificate."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#CertificateUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the certificate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the update certificate operation"
       }
     },
     "com.azure.automation#CertificateCreateOrUpdate": {
@@ -21007,16 +22666,56 @@
             "smithy.api#documentation": "The name of certificate."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the name of the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.automation#CertificateCreateOrUpdateProperties",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the properties of the certificate.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#CertificateCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "base64Value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the base64 encoded value of the certificate.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the description of the certificate."
+          }
+        },
+        "thumbprint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the thumbprint of the certificate."
+          }
+        },
+        "isExportable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the is exportable flag of the certificate."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the create certificate operation."
       }
     },
     "com.azure.automation#CertificateGet": {
@@ -21333,16 +23032,36 @@
             "smithy.api#documentation": "The name of the automation account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "com.azure.automation#AgentRegistrationKeyName",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Gets or sets the agent registration key name - primary or secondary.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#AgentRegistrationKeyName": {
+      "type": "enum",
+      "members": {
+        "PRIMARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "primary"
+          }
+        },
+        "SECONDARY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "secondary"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the agent registration key name - primary or secondary."
       }
     },
     "com.azure.automation#AgentRegistrationInformationGet": {
@@ -21904,16 +23623,120 @@
             "smithy.api#documentation": "The name of the automation account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#AutomationAccountUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets account update properties."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the name of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location of the resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.automation#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Sets the identity property for automation account"
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#AutomationAccountUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#AutomationAccountUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
+      }
+    },
+    "com.azure.automation#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.automation#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.automation#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.automation#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.automation#UserAssignedIdentitiesPropertiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.automation#UserAssignedIdentitiesPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
+    },
+    "com.azure.automation#AutomationAccountUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "sku": {
+          "target": "com.azure.automation#Sku",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets account SKU."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.automation#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "Set the encryption properties for the automation account"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether traffic on the non-ARM endpoint (Webhook/Agent) is allowed from the public internet"
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether requests using non-AAD authentication are blocked"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the update account properties."
       }
     },
     "com.azure.automation#AutomationAccountCreateOrUpdate": {
@@ -22037,16 +23860,83 @@
             "smithy.api#documentation": "The name of the automation account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.automation#AutomationAccountCreateOrUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets account create or update properties."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets name of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the location of the resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.automation#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Sets the identity property for automation account"
+          }
+        },
+        "tags": {
+          "target": "com.azure.automation#AutomationAccountCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the tags attached to the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.automation#AutomationAccountCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the tags attached to the resource."
+      }
+    },
+    "com.azure.automation#AutomationAccountCreateOrUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "sku": {
+          "target": "com.azure.automation#Sku",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets account SKU."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.automation#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "Set the encryption properties for the automation account"
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether traffic on the non-ARM endpoint (Webhook/Agent) is allowed from the public internet"
+          }
+        },
+        "disableLocalAuth": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether requests using non-AAD authentication are blocked"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters supplied to the create or update account properties."
       }
     },
     "com.azure.automation#AutomationAccountGet": {

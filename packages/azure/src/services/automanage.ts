@@ -49,8 +49,7 @@ export type BestPracticeSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const BestPracticeSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -58,8 +57,7 @@ export type BestPracticeSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const BestPracticeSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -128,7 +126,7 @@ export const BestPracticesListByTenantRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BestPracticesListByTenantRequest>;
 
 /** Result of the list best practice operation. */
-export type BestPracticeListValueList = BestPractice[];
+export type BestPracticeListValueList = ReadonlyArray<BestPractice>;
 export const BestPracticeListValueList = /*@__PURE__*/ S.Array(
   BestPractice,
 ) as any as S.Schema<BestPracticeListValueList>;
@@ -188,6 +186,20 @@ export const BestPracticesVersionsListByTenantRequest = /*@__PURE__*/ S.suspend(
   identifier: "BestPracticesVersionsListByTenantRequest",
 }) as any as S.Schema<BestPracticesVersionsListByTenantRequest>;
 
+/** Automanage configuration profile assignment properties. */
+export interface ConfigurationProfileAssignmentPropertiesInput {
+  /** The Automanage configurationProfile ARM Resource URI. */
+  configurationProfile?: string;
+}
+export const ConfigurationProfileAssignmentPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      configurationProfile: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConfigurationProfileAssignmentPropertiesInput",
+  }) as any as S.Schema<ConfigurationProfileAssignmentPropertiesInput>;
+
 export interface ConfigurationProfileAssignmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -197,7 +209,8 @@ export interface ConfigurationProfileAssignmentsCreateOrUpdateRequest {
   vmName: string;
   /** Name of the configuration profile assignment. Only default is supported. */
   configurationProfileAssignmentName: string;
-  body: unknown;
+  /** Properties of the configuration profile assignment. */
+  properties?: ConfigurationProfileAssignmentPropertiesInput;
 }
 export const ConfigurationProfileAssignmentsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -206,7 +219,7 @@ export const ConfigurationProfileAssignmentsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       vmName: S.String.pipe(T.Label()),
       configurationProfileAssignmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ConfigurationProfileAssignmentPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -241,13 +254,13 @@ export const ConfigurationProfileAssignmentProperties = /*@__PURE__*/ S.suspend(
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfileAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -384,14 +397,13 @@ export type ConfigurationProfileAssignmentsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfigurationProfileAssignmentsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfileAssignmentsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -486,8 +498,7 @@ export type ConfigurationProfileAssignmentSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfigurationProfileAssignmentSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -496,8 +507,7 @@ export type ConfigurationProfileAssignmentSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfigurationProfileAssignmentSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -564,7 +574,7 @@ export const ConfigurationProfileAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the list configuration profile assignment operation. */
 export type ConfigurationProfileAssignmentListValueList =
-  ConfigurationProfileAssignment[];
+  ReadonlyArray<ConfigurationProfileAssignment>;
 export const ConfigurationProfileAssignmentListValueList =
   /*@__PURE__*/ S.Array(
     ConfigurationProfileAssignment,
@@ -690,7 +700,8 @@ export interface ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest {
   clusterName: string;
   /** Name of the configuration profile assignment. Only default is supported. */
   configurationProfileAssignmentName: string;
-  body: unknown;
+  /** Properties of the configuration profile assignment. */
+  properties?: ConfigurationProfileAssignmentPropertiesInput;
 }
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -699,7 +710,7 @@ export const ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       configurationProfileAssignmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ConfigurationProfileAssignmentPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -714,13 +725,13 @@ export const ConfigurationProfileHCIAssignmentsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfileHCIAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -854,13 +865,13 @@ export const ConfigurationProfileHCIAssignmentsGetRequest =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfileHCIAssignmentsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfileHCIAssignmentsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -936,7 +947,8 @@ export interface ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest {
   machineName: string;
   /** Name of the configuration profile assignment. Only default is supported. */
   configurationProfileAssignmentName: string;
-  body: unknown;
+  /** Properties of the configuration profile assignment. */
+  properties?: ConfigurationProfileAssignmentPropertiesInput;
 }
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -945,7 +957,7 @@ export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       machineName: S.String.pipe(T.Label()),
       configurationProfileAssignmentName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(ConfigurationProfileAssignmentPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -960,13 +972,13 @@ export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateRequest =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfileHCRPAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1100,13 +1112,13 @@ export const ConfigurationProfileHCRPAssignmentsGetRequest =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfileHCRPAssignmentsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfileHCRPAssignmentsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1173,6 +1185,16 @@ export const ConfigurationProfileHCRPAssignmentsGetResponse =
     identifier: "ConfigurationProfileHCRPAssignmentsGetResponse",
   }) as any as S.Schema<ConfigurationProfileHCRPAssignmentsGetResponse>;
 
+/** Resource tags. */
+export type ConfigurationProfilesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationProfilesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConfigurationProfilesCreateOrUpdateRequestTagsMap>;
+
 export interface ConfigurationProfilesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1180,7 +1202,12 @@ export interface ConfigurationProfilesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the configuration profile. */
   configurationProfileName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ConfigurationProfilesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the configuration profile. */
+  properties?: ConfigurationProfileProperties;
 }
 export const ConfigurationProfilesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1188,7 +1215,9 @@ export const ConfigurationProfilesCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       configurationProfileName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(ConfigurationProfilesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(ConfigurationProfileProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1213,13 +1242,13 @@ export const ConfigurationProfilesCreateOrUpdateResponseTagsMap =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfilesCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfilesCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfilesCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1360,8 +1389,7 @@ export type ConfigurationProfilesGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfigurationProfilesGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1370,8 +1398,7 @@ export type ConfigurationProfilesGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfigurationProfilesGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1473,8 +1500,7 @@ export type ConfigurationProfileSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfigurationProfileSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1483,8 +1509,7 @@ export type ConfigurationProfileSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfigurationProfileSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1550,7 +1575,8 @@ export const ConfigurationProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationProfile>;
 
 /** Result of the list ConfigurationProfile operation. */
-export type ConfigurationProfileListValueList = ConfigurationProfile[];
+export type ConfigurationProfileListValueList =
+  ReadonlyArray<ConfigurationProfile>;
 export const ConfigurationProfileListValueList = /*@__PURE__*/ S.Array(
   ConfigurationProfile,
 ) as any as S.Schema<ConfigurationProfileListValueList>;
@@ -1588,6 +1614,15 @@ export const ConfigurationProfilesListBySubscriptionRequest =
     identifier: "ConfigurationProfilesListBySubscriptionRequest",
   }) as any as S.Schema<ConfigurationProfilesListBySubscriptionRequest>;
 
+/** The tags of the resource. */
+export type ConfigurationProfilesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationProfilesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConfigurationProfilesUpdateRequestTagsMap>;
+
 export interface ConfigurationProfilesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1595,14 +1630,18 @@ export interface ConfigurationProfilesUpdateRequest {
   resourceGroupName: string;
   /** Name of the configuration profile. */
   configurationProfileName: string;
-  body: unknown;
+  /** The tags of the resource. */
+  tags?: ConfigurationProfilesUpdateRequestTagsMap;
+  /** Properties of the configuration profile. */
+  properties?: ConfigurationProfileProperties;
 }
 export const ConfigurationProfilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     configurationProfileName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(ConfigurationProfilesUpdateRequestTagsMap),
+    properties: S.optional(ConfigurationProfileProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1630,8 +1669,7 @@ export type ConfigurationProfilesUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfigurationProfilesUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -1640,8 +1678,7 @@ export type ConfigurationProfilesUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfigurationProfilesUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1708,6 +1745,16 @@ export const ConfigurationProfilesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigurationProfilesUpdateResponse",
 }) as any as S.Schema<ConfigurationProfilesUpdateResponse>;
 
+/** Resource tags. */
+export type ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap>;
+
 export interface ConfigurationProfilesVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1717,7 +1764,12 @@ export interface ConfigurationProfilesVersionsCreateOrUpdateRequest {
   configurationProfileName: string;
   /** The configuration profile version name. */
   versionName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the configuration profile. */
+  properties?: ConfigurationProfileProperties;
 }
 export const ConfigurationProfilesVersionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1726,7 +1778,11 @@ export const ConfigurationProfilesVersionsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       configurationProfileName: S.String.pipe(T.Label()),
       versionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(
+        ConfigurationProfilesVersionsCreateOrUpdateRequestTagsMap,
+      ),
+      location: S.String,
+      properties: S.optional(ConfigurationProfileProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1751,13 +1807,13 @@ export const ConfigurationProfilesVersionsCreateOrUpdateResponseTagsMap =
 
 /** The type of identity that created the resource. */
 export type ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataCreatedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfilesVersionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -1908,14 +1964,13 @@ export type ConfigurationProfilesVersionsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ConfigurationProfilesVersionsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationProfilesVersionsGetResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const ConfigurationProfilesVersionsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2043,7 +2098,7 @@ export const HCIReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HCIReportsGetRequest>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -2065,7 +2120,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -2094,13 +2149,14 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type ReportResourceErrorDetailsList = ErrorDetail[];
+export type ReportResourceErrorDetailsList = ReadonlyArray<ErrorDetail>;
 export const ReportResourceErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ReportResourceErrorDetailsList>;
 
 /** The error additional info. */
-export type ReportResourceErrorAdditionalInfoList = ErrorAdditionalInfo[];
+export type ReportResourceErrorAdditionalInfoList =
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const ReportResourceErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ReportResourceErrorAdditionalInfoList>;
@@ -2154,20 +2210,22 @@ export const ReportResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportResource" }) as any as S.Schema<ReportResource>;
 
 /** List of resources processed by the configuration profile assignment. */
-export type AssignmentReportPropertiesResourcesList = ReportResource[];
+export type AssignmentReportPropertiesResourcesList =
+  ReadonlyArray<ReportResource>;
 export const AssignmentReportPropertiesResourcesList = /*@__PURE__*/ S.Array(
   ReportResource,
 ) as any as S.Schema<AssignmentReportPropertiesResourcesList>;
 
 /** The error details. */
-export type AssignmentReportPropertiesErrorDetailsList = ErrorDetail[];
+export type AssignmentReportPropertiesErrorDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const AssignmentReportPropertiesErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<AssignmentReportPropertiesErrorDetailsList>;
 
 /** The error additional info. */
 export type AssignmentReportPropertiesErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const AssignmentReportPropertiesErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -2245,8 +2303,7 @@ export type HCIReportsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const HCIReportsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2255,8 +2312,7 @@ export type HCIReportsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const HCIReportsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2348,8 +2404,7 @@ export type ReportSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ReportSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2357,8 +2412,7 @@ export type ReportSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ReportSystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -2413,7 +2467,7 @@ export const Report = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Report" }) as any as S.Schema<Report>;
 
 /** Result of the list report operation. */
-export type ReportListValueList = Report[];
+export type ReportListValueList = ReadonlyArray<Report>;
 export const ReportListValueList = /*@__PURE__*/ S.Array(
   Report,
 ) as any as S.Schema<ReportListValueList>;
@@ -2465,8 +2519,7 @@ export type HCRPReportsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const HCRPReportsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2475,8 +2528,7 @@ export type HCRPReportsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const HCRPReportsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2600,11 +2652,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -2631,7 +2683,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -2687,8 +2739,7 @@ export type ReportsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ReportsGetResponseSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2696,8 +2747,7 @@ export type ReportsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ReportsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2824,8 +2874,7 @@ export type ServicePrincipalsGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ServicePrincipalsGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -2834,8 +2883,7 @@ export type ServicePrincipalsGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ServicePrincipalsGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2921,8 +2969,7 @@ export type ServicePrincipalSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ServicePrincipalSystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -2930,8 +2977,7 @@ export type ServicePrincipalSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const ServicePrincipalSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -2991,7 +3037,8 @@ export const ServicePrincipal = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicePrincipal>;
 
 /** The list of servicePrincipals. */
-export type ServicePrincipalListResultValueList = ServicePrincipal[];
+export type ServicePrincipalListResultValueList =
+  ReadonlyArray<ServicePrincipal>;
 export const ServicePrincipalListResultValueList = /*@__PURE__*/ S.Array(
   ServicePrincipal,
 ) as any as S.Schema<ServicePrincipalListResultValueList>;

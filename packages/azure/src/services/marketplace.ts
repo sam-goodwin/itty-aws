@@ -77,7 +77,7 @@ export const SingleOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SingleOperation>;
 
 /** List of Microsoft.Marketplace operations supported by the Microsoft.Marketplace resource provider. */
-export type OperationListResultValueList = SingleOperation[];
+export type OperationListResultValueList = ReadonlyArray<SingleOperation>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   SingleOperation,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -98,19 +98,61 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
+/** Gets or sets added plans */
+export type AcknowledgeOfferNotificationDetailsAddPlansList =
+  ReadonlyArray<string>;
+export const AcknowledgeOfferNotificationDetailsAddPlansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AcknowledgeOfferNotificationDetailsAddPlansList>;
+
+/** Gets or sets remove plans */
+export type AcknowledgeOfferNotificationDetailsRemovePlansList =
+  ReadonlyArray<string>;
+export const AcknowledgeOfferNotificationDetailsRemovePlansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AcknowledgeOfferNotificationDetailsRemovePlansList>;
+
+/** Notification update request payload details */
+export interface AcknowledgeOfferNotificationDetails {
+  /** Gets or sets a value indicating whether acknowledge action flag is enabled */
+  acknowledge?: boolean;
+  /** Gets or sets a value indicating whether dismiss action flag is enabled */
+  dismiss?: boolean;
+  /** Gets or sets a value indicating whether remove offer action flag is enabled */
+  removeOffer?: boolean;
+  /** Gets or sets added plans */
+  addPlans?: AcknowledgeOfferNotificationDetailsAddPlansList;
+  /** Gets or sets remove plans */
+  removePlans?: AcknowledgeOfferNotificationDetailsRemovePlansList;
+}
+export const AcknowledgeOfferNotificationDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    acknowledge: S.optional(S.Boolean),
+    dismiss: S.optional(S.Boolean),
+    removeOffer: S.optional(S.Boolean),
+    addPlans: S.optional(AcknowledgeOfferNotificationDetailsAddPlansList),
+    removePlans: S.optional(AcknowledgeOfferNotificationDetailsRemovePlansList),
+  }),
+).annotate({
+  identifier: "AcknowledgeOfferNotificationDetails",
+}) as any as S.Schema<AcknowledgeOfferNotificationDetails>;
+
 export interface PrivateStoreAcknowledgeOfferNotificationRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
   /** The offer ID to update or delete */
   offerId: string;
-  body?: unknown;
+  /** Notification update request payload details */
+  properties?: AcknowledgeOfferNotificationDetails;
 }
 export const PrivateStoreAcknowledgeOfferNotificationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       privateStoreId: S.String.pipe(T.Label()),
       offerId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(AcknowledgeOfferNotificationDetails),
     }).pipe(
       T.Http({
         method: "POST",
@@ -150,12 +192,7 @@ export const PrivateStoreAdminRequestApprovalsListRequest =
   }) as any as S.Schema<PrivateStoreAdminRequestApprovalsListRequest>;
 
 /** The type of identity that creates/modifies resources */
-export type IdentityType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+export type IdentityType = "User" | "Application" | "ManagedIdentity" | "Key";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** Read only system data */
@@ -185,11 +222,12 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Gets or sets admin action */
-export type AdminAction = "Approved" | "Rejected" | (string & {});
+export type AdminAction = "Approved" | "Rejected";
 export const AdminAction = /*@__PURE__*/ S.String;
 
 /** Gets or sets Approved plans ids, empty in case of rejected */
-export type AdminRequestApprovalPropertiesApprovedPlansList = string[];
+export type AdminRequestApprovalPropertiesApprovedPlansList =
+  ReadonlyArray<string>;
 export const AdminRequestApprovalPropertiesApprovedPlansList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -221,7 +259,8 @@ export const UserRequestDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserRequestDetails>;
 
 /** Gets requesters details list */
-export type PlanRequesterDetailsRequestersList = UserRequestDetails[];
+export type PlanRequesterDetailsRequestersList =
+  ReadonlyArray<UserRequestDetails>;
 export const PlanRequesterDetailsRequestersList = /*@__PURE__*/ S.Array(
   UserRequestDetails,
 ) as any as S.Schema<PlanRequesterDetailsRequestersList>;
@@ -246,13 +285,15 @@ export const PlanRequesterDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlanRequesterDetails>;
 
 /** Gets list of plans with requesters details */
-export type AdminRequestApprovalPropertiesPlansList = PlanRequesterDetails[];
+export type AdminRequestApprovalPropertiesPlansList =
+  ReadonlyArray<PlanRequesterDetails>;
 export const AdminRequestApprovalPropertiesPlansList = /*@__PURE__*/ S.Array(
   PlanRequesterDetails,
 ) as any as S.Schema<AdminRequestApprovalPropertiesPlansList>;
 
 /** Gets or sets list of associated collection ids */
-export type AdminRequestApprovalPropertiesCollectionIdsList = string[];
+export type AdminRequestApprovalPropertiesCollectionIdsList =
+  ReadonlyArray<string>;
 export const AdminRequestApprovalPropertiesCollectionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -324,7 +365,7 @@ export const AdminRequestApprovalsResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdminRequestApprovalsResource>;
 
 export type AdminRequestApprovalsListValueList =
-  AdminRequestApprovalsResource[];
+  ReadonlyArray<AdminRequestApprovalsResource>;
 export const AdminRequestApprovalsListValueList = /*@__PURE__*/ S.Array(
   AdminRequestApprovalsResource,
 ) as any as S.Schema<AdminRequestApprovalsListValueList>;
@@ -398,7 +439,7 @@ export const PrivateStoreBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateStoreBillingAccountsRequest>;
 
 /** Billing accounts list */
-export type BillingAccountsResponseBillingAccountsList = string[];
+export type BillingAccountsResponseBillingAccountsList = ReadonlyArray<string>;
 export const BillingAccountsResponseBillingAccountsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BillingAccountsResponseBillingAccountsList>;
@@ -416,16 +457,39 @@ export const BillingAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingAccountsResponse",
 }) as any as S.Schema<BillingAccountsResponse>;
 
+/** collection ids list that the action is performed on */
+export type BulkCollectionsDetailsCollectionIdsList = ReadonlyArray<string>;
+export const BulkCollectionsDetailsCollectionIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BulkCollectionsDetailsCollectionIdsList>;
+
+/** Bulk collection details */
+export interface BulkCollectionsDetails {
+  /** collection ids list that the action is performed on */
+  collectionIds?: BulkCollectionsDetailsCollectionIdsList;
+  /** Action to perform (For example: EnableCollections, DisableCollections) */
+  action?: string;
+}
+export const BulkCollectionsDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    collectionIds: S.optional(BulkCollectionsDetailsCollectionIdsList),
+    action: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BulkCollectionsDetails",
+}) as any as S.Schema<BulkCollectionsDetails>;
+
 export interface PrivateStoreBulkCollectionsActionRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
-  body?: unknown;
+  /** bulk collections properties details */
+  properties?: BulkCollectionsDetails;
 }
 export const PrivateStoreBulkCollectionsActionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       privateStoreId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(BulkCollectionsDetails),
     }).pipe(
       T.Http({
         method: "POST",
@@ -455,13 +519,15 @@ export const CollectionsDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectionsDetails>;
 
 /** Succeeded collections */
-export type BulkCollectionsResponseSucceededList = CollectionsDetails[];
+export type BulkCollectionsResponseSucceededList =
+  ReadonlyArray<CollectionsDetails>;
 export const BulkCollectionsResponseSucceededList = /*@__PURE__*/ S.Array(
   CollectionsDetails,
 ) as any as S.Schema<BulkCollectionsResponseSucceededList>;
 
 /** Failed collections */
-export type BulkCollectionsResponseFailedList = CollectionsDetails[];
+export type BulkCollectionsResponseFailedList =
+  ReadonlyArray<CollectionsDetails>;
 export const BulkCollectionsResponseFailedList = /*@__PURE__*/ S.Array(
   CollectionsDetails,
 ) as any as S.Schema<BulkCollectionsResponseFailedList>;
@@ -506,16 +572,16 @@ export const PrivateStoreCollectionApproveAllItemsRequest =
   }) as any as S.Schema<PrivateStoreCollectionApproveAllItemsRequest>;
 
 /** Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request */
-export type CollectionPropertiesSubscriptionsListList = string[];
+export type CollectionPropertiesSubscriptionsListList = ReadonlyArray<string>;
 export const CollectionPropertiesSubscriptionsListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CollectionPropertiesSubscriptionsListList>;
 
 /** Rule type */
-export type RuleType = "PrivateProducts" | "TermsAndCondition" | (string & {});
+export type RuleType = "PrivateProducts" | "TermsAndCondition";
 export const RuleType = /*@__PURE__*/ S.String;
 
-export type RuleValueList = string[];
+export type RuleValueList = ReadonlyArray<string>;
 export const RuleValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RuleValueList>;
@@ -533,7 +599,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
 
 /** Gets list of collection rules */
-export type CollectionPropertiesAppliedRulesList = Rule[];
+export type CollectionPropertiesAppliedRulesList = ReadonlyArray<Rule>;
 export const CollectionPropertiesAppliedRulesList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<CollectionPropertiesAppliedRulesList>;
@@ -603,19 +669,55 @@ export const PrivateStoreCollectionApproveAllItemsResponse =
     identifier: "PrivateStoreCollectionApproveAllItemsResponse",
   }) as any as S.Schema<PrivateStoreCollectionApproveAllItemsResponse>;
 
+/** Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request */
+export type CollectionPropertiesInputSubscriptionsListList =
+  ReadonlyArray<string>;
+export const CollectionPropertiesInputSubscriptionsListList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CollectionPropertiesInputSubscriptionsListList>;
+
+/** The collection details */
+export interface CollectionPropertiesInput {
+  /** Gets or sets collection name. */
+  collectionName?: string;
+  /** Gets or sets the association with Commercial's Billing Account. */
+  claim?: string;
+  /** Indicating whether all subscriptions are selected (=true) or not (=false). */
+  allSubscriptions?: boolean;
+  /** Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request */
+  subscriptionsList?: CollectionPropertiesInputSubscriptionsListList;
+  /** Indicating whether the collection is enabled or disabled. */
+  enabled?: boolean;
+}
+export const CollectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    collectionName: S.optional(S.String),
+    claim: S.optional(S.String),
+    allSubscriptions: S.optional(S.Boolean),
+    subscriptionsList: S.optional(
+      CollectionPropertiesInputSubscriptionsListList,
+    ),
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CollectionPropertiesInput",
+}) as any as S.Schema<CollectionPropertiesInput>;
+
 export interface PrivateStoreCollectionCreateOrUpdateRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
   /** The collection ID */
   collectionId: string;
-  body?: unknown;
+  /** The collection data structure. */
+  properties?: CollectionPropertiesInput;
 }
 export const PrivateStoreCollectionCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       privateStoreId: S.String.pipe(T.Label()),
       collectionId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(CollectionPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -818,7 +920,7 @@ export const Collection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Collection" }) as any as S.Schema<Collection>;
 
-export type CollectionsListValueList = Collection[];
+export type CollectionsListValueList = ReadonlyArray<Collection>;
 export const CollectionsListValueList = /*@__PURE__*/ S.Array(
   Collection,
 ) as any as S.Schema<CollectionsListValueList>;
@@ -837,6 +939,30 @@ export const CollectionsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectionsList",
 }) as any as S.Schema<CollectionsList>;
 
+/** Subscription ids list */
+export type CollectionOffersByAllContextsPropertiesSubscriptionIdsList =
+  ReadonlyArray<string>;
+export const CollectionOffersByAllContextsPropertiesSubscriptionIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CollectionOffersByAllContextsPropertiesSubscriptionIdsList>;
+
+/** Suggested subscription list */
+export interface CollectionOffersByAllContextsProperties {
+  /** Subscription ids list */
+  subscriptionIds?: CollectionOffersByAllContextsPropertiesSubscriptionIdsList;
+}
+export const CollectionOffersByAllContextsProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionIds: S.optional(
+        CollectionOffersByAllContextsPropertiesSubscriptionIdsList,
+      ),
+    }),
+).annotate({
+  identifier: "CollectionOffersByAllContextsProperties",
+}) as any as S.Schema<CollectionOffersByAllContextsProperties>;
+
 export interface PrivateStoreCollectionOfferContextsViewRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
@@ -844,7 +970,8 @@ export interface PrivateStoreCollectionOfferContextsViewRequest {
   collectionId: string;
   /** The offer ID to update or delete */
   offerId: string;
-  body?: unknown;
+  /** Subscriptions ids list */
+  properties?: CollectionOffersByAllContextsProperties;
 }
 export const PrivateStoreCollectionOfferContextsViewRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -852,7 +979,7 @@ export const PrivateStoreCollectionOfferContextsViewRequest =
       privateStoreId: S.String.pipe(T.Label()),
       collectionId: S.String.pipe(T.Label()),
       offerId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(CollectionOffersByAllContextsProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -866,7 +993,8 @@ export const PrivateStoreCollectionOfferContextsViewRequest =
   }) as any as S.Schema<PrivateStoreCollectionOfferContextsViewRequest>;
 
 /** Plan ids limitation for this offer */
-export type OfferPropertiesSpecificPlanIdsLimitationList = string[];
+export type OfferPropertiesSpecificPlanIdsLimitationList =
+  ReadonlyArray<string>;
 export const OfferPropertiesSpecificPlanIdsLimitationList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -886,8 +1014,7 @@ export type Accessibility =
   | "Unknown"
   | "Public"
   | "PrivateTenantOnLevel"
-  | "PrivateSubscriptionOnLevel"
-  | (string & {});
+  | "PrivateSubscriptionOnLevel";
 export const Accessibility = /*@__PURE__*/ S.String;
 
 export interface Plan {
@@ -919,7 +1046,7 @@ export const Plan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Plan" }) as any as S.Schema<Plan>;
 
 /** Offer plans */
-export type OfferPropertiesPlansList = Plan[];
+export type OfferPropertiesPlansList = ReadonlyArray<Plan>;
 export const OfferPropertiesPlansList = /*@__PURE__*/ S.Array(
   Plan,
 ) as any as S.Schema<OfferPropertiesPlansList>;
@@ -996,6 +1123,65 @@ export const PrivateStoreCollectionOfferContextsViewResponse =
     identifier: "PrivateStoreCollectionOfferContextsViewResponse",
   }) as any as S.Schema<PrivateStoreCollectionOfferContextsViewResponse>;
 
+/** Plan ids limitation for this offer */
+export type OfferPropertiesInputSpecificPlanIdsLimitationList =
+  ReadonlyArray<string>;
+export const OfferPropertiesInputSpecificPlanIdsLimitationList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OfferPropertiesInputSpecificPlanIdsLimitationList>;
+
+/** Icon File Uris */
+export type OfferPropertiesInputIconFileUrisMap = {
+  [key: string]: string | undefined;
+};
+export const OfferPropertiesInputIconFileUrisMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<OfferPropertiesInputIconFileUrisMap>;
+
+export interface PlanInput {
+  /** Plan accessibility */
+  accessibility?: Accessibility;
+}
+export const PlanInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessibility: S.optional(Accessibility),
+  }),
+).annotate({ identifier: "PlanInput" }) as any as S.Schema<PlanInput>;
+
+/** Offer plans */
+export type OfferPropertiesInputPlansList = ReadonlyArray<PlanInput>;
+export const OfferPropertiesInputPlansList = /*@__PURE__*/ S.Array(
+  PlanInput,
+) as any as S.Schema<OfferPropertiesInputPlansList>;
+
+export interface OfferPropertiesInput {
+  /** Identifier for purposes of race condition */
+  eTag?: string;
+  /** Plan ids limitation for this offer */
+  specificPlanIdsLimitation?: OfferPropertiesInputSpecificPlanIdsLimitationList;
+  /** Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated. */
+  updateSuppressedDueIdempotence?: boolean;
+  /** Icon File Uris */
+  iconFileUris?: OfferPropertiesInputIconFileUrisMap;
+  /** Offer plans */
+  plans?: OfferPropertiesInputPlansList;
+}
+export const OfferPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    eTag: S.optional(S.String),
+    specificPlanIdsLimitation: S.optional(
+      OfferPropertiesInputSpecificPlanIdsLimitationList,
+    ),
+    updateSuppressedDueIdempotence: S.optional(S.Boolean),
+    iconFileUris: S.optional(OfferPropertiesInputIconFileUrisMap),
+    plans: S.optional(OfferPropertiesInputPlansList),
+  }),
+).annotate({
+  identifier: "OfferPropertiesInput",
+}) as any as S.Schema<OfferPropertiesInput>;
+
 export interface PrivateStoreCollectionOfferCreateOrUpdateRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
@@ -1003,7 +1189,8 @@ export interface PrivateStoreCollectionOfferCreateOrUpdateRequest {
   collectionId: string;
   /** The offer ID to update or delete */
   offerId: string;
-  body: unknown;
+  /** The privateStore offer data structure. */
+  properties?: OfferPropertiesInput;
 }
 export const PrivateStoreCollectionOfferCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1011,7 +1198,7 @@ export const PrivateStoreCollectionOfferCreateOrUpdateRequest =
       privateStoreId: S.String.pipe(T.Label()),
       collectionId: S.String.pipe(T.Label()),
       offerId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(OfferPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1179,7 +1366,7 @@ export const Offer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Offer" }) as any as S.Schema<Offer>;
 
 /** The Offer items on this page */
-export type OfferListResponseValueList = Offer[];
+export type OfferListResponseValueList = ReadonlyArray<Offer>;
 export const OfferListResponseValueList = /*@__PURE__*/ S.Array(
   Offer,
 ) as any as S.Schema<OfferListResponseValueList>;
@@ -1205,14 +1392,15 @@ export interface PrivateStoreCollectionOfferListByContextsRequest {
   privateStoreId: string;
   /** The collection ID */
   collectionId: string;
-  body?: unknown;
+  /** Subscriptions ids list */
+  properties?: CollectionOffersByAllContextsProperties;
 }
 export const PrivateStoreCollectionOfferListByContextsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       privateStoreId: S.String.pipe(T.Label()),
       collectionId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(CollectionOffersByAllContextsProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1225,7 +1413,8 @@ export const PrivateStoreCollectionOfferListByContextsRequest =
     identifier: "PrivateStoreCollectionOfferListByContextsRequest",
   }) as any as S.Schema<PrivateStoreCollectionOfferListByContextsRequest>;
 
-export type CollectionOffersByContextOffersValueList = OfferProperties[];
+export type CollectionOffersByContextOffersValueList =
+  ReadonlyArray<OfferProperties>;
 export const CollectionOffersByContextOffersValueList = /*@__PURE__*/ S.Array(
   OfferProperties,
 ) as any as S.Schema<CollectionOffersByContextOffersValueList>;
@@ -1259,7 +1448,7 @@ export const CollectionOffersByContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectionOffersByContext>;
 
 export type CollectionOffersByContextListValueList =
-  CollectionOffersByContext[];
+  ReadonlyArray<CollectionOffersByContext>;
 export const CollectionOffersByContextListValueList = /*@__PURE__*/ S.Array(
   CollectionOffersByContext,
 ) as any as S.Schema<CollectionOffersByContextListValueList>;
@@ -1279,6 +1468,14 @@ export const CollectionOffersByContextList = /*@__PURE__*/ S.suspend(() =>
   identifier: "CollectionOffersByContextList",
 }) as any as S.Schema<CollectionOffersByContextList>;
 
+/** Set the Operation for the POST method. Ping or Delete */
+export type Operation =
+  | "DeletePrivateStoreOffer"
+  | "DeletePrivateStoreCollection"
+  | "DeletePrivateStoreCollectionOffer"
+  | "Ping";
+export const Operation = /*@__PURE__*/ S.String;
+
 export interface PrivateStoreCollectionOfferPostRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
@@ -1286,7 +1483,7 @@ export interface PrivateStoreCollectionOfferPostRequest {
   collectionId: string;
   /** The offer ID to update or delete */
   offerId: string;
-  body?: unknown;
+  body?: Operation;
 }
 export const PrivateStoreCollectionOfferPostRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1294,7 +1491,7 @@ export const PrivateStoreCollectionOfferPostRequest = /*@__PURE__*/ S.suspend(
       privateStoreId: S.String.pipe(T.Label()),
       collectionId: S.String.pipe(T.Label()),
       offerId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      body: S.optional(Operation.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1314,6 +1511,53 @@ export const PrivateStoreCollectionOfferPostResponse = /*@__PURE__*/ S.suspend(
   identifier: "PrivateStoreCollectionOfferPostResponse",
 }) as any as S.Schema<PrivateStoreCollectionOfferPostResponse>;
 
+/** List of plan IDs. */
+export type ContextAndPlansDetailsPlanIdsList = ReadonlyArray<string>;
+export const ContextAndPlansDetailsPlanIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ContextAndPlansDetailsPlanIdsList>;
+
+/** Object of plans per context. */
+export interface ContextAndPlansDetails {
+  /** Plan's context, e.g. subscription ID, tenant ID. */
+  context?: string;
+  /** List of plan IDs. */
+  planIds?: ContextAndPlansDetailsPlanIdsList;
+}
+export const ContextAndPlansDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    context: S.optional(S.String),
+    planIds: S.optional(ContextAndPlansDetailsPlanIdsList),
+  }),
+).annotate({
+  identifier: "ContextAndPlansDetails",
+}) as any as S.Schema<ContextAndPlansDetails>;
+
+export type MultiContextAndPlansPropertiesPlansContextList =
+  ReadonlyArray<ContextAndPlansDetails>;
+export const MultiContextAndPlansPropertiesPlansContextList =
+  /*@__PURE__*/ S.Array(
+    ContextAndPlansDetails,
+  ) as any as S.Schema<MultiContextAndPlansPropertiesPlansContextList>;
+
+/** Object describes multiple context and plans. */
+export interface MultiContextAndPlansProperties {
+  /** The offer ID which contains the plans. */
+  offerId?: string;
+  /** The offer's eTag. */
+  eTag?: string;
+  plansContext?: MultiContextAndPlansPropertiesPlansContextList;
+}
+export const MultiContextAndPlansProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    offerId: S.optional(S.String),
+    eTag: S.optional(S.String),
+    plansContext: S.optional(MultiContextAndPlansPropertiesPlansContextList),
+  }),
+).annotate({
+  identifier: "MultiContextAndPlansProperties",
+}) as any as S.Schema<MultiContextAndPlansProperties>;
+
 export interface PrivateStoreCollectionOfferUpsertOfferWithMultiContextRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
@@ -1321,7 +1565,8 @@ export interface PrivateStoreCollectionOfferUpsertOfferWithMultiContextRequest {
   collectionId: string;
   /** The offer ID to update or delete */
   offerId: string;
-  body?: unknown;
+  /** Object describes multiple context and plans. */
+  properties?: MultiContextAndPlansProperties;
 }
 export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1329,7 +1574,7 @@ export const PrivateStoreCollectionOfferUpsertOfferWithMultiContextRequest =
       privateStoreId: S.String.pipe(T.Label()),
       collectionId: S.String.pipe(T.Label()),
       offerId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(MultiContextAndPlansProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1373,13 +1618,13 @@ export interface PrivateStoreCollectionPostRequest {
   privateStoreId: string;
   /** The collection ID */
   collectionId: string;
-  body?: unknown;
+  body?: Operation;
 }
 export const PrivateStoreCollectionPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    body: S.optional(Operation.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1399,16 +1644,41 @@ export const PrivateStoreCollectionPostResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateStoreCollectionPostResponse",
 }) as any as S.Schema<PrivateStoreCollectionPostResponse>;
 
+/** Subscriptions ids list */
+export type CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList =
+  ReadonlyArray<string>;
+export const CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList>;
+
+/** The subscriptions list to get the related collections */
+export interface CollectionsToSubscriptionsMappingProperties {
+  /** Subscriptions ids list */
+  subscriptionIds?: CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList;
+}
+export const CollectionsToSubscriptionsMappingProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionIds: S.optional(
+        CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "CollectionsToSubscriptionsMappingProperties",
+  }) as any as S.Schema<CollectionsToSubscriptionsMappingProperties>;
+
 export interface PrivateStoreCollectionsToSubscriptionsMappingRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
-  body?: unknown;
+  /** Subscriptions ids list */
+  properties?: CollectionsToSubscriptionsMappingProperties;
 }
 export const PrivateStoreCollectionsToSubscriptionsMappingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       privateStoreId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(CollectionsToSubscriptionsMappingProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1422,7 +1692,8 @@ export const PrivateStoreCollectionsToSubscriptionsMappingRequest =
   }) as any as S.Schema<PrivateStoreCollectionsToSubscriptionsMappingRequest>;
 
 /** Subscriptions ids list */
-export type CollectionsSubscriptionsMappingDetailsSubscriptionsList = string[];
+export type CollectionsSubscriptionsMappingDetailsSubscriptionsList =
+  ReadonlyArray<string>;
 export const CollectionsSubscriptionsMappingDetailsSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -1471,19 +1742,51 @@ export const CollectionsToSubscriptionsMappingResponse =
     identifier: "CollectionsToSubscriptionsMappingResponse",
   }) as any as S.Schema<CollectionsToSubscriptionsMappingResponse>;
 
+/** Target collections ids */
+export type TransferOffersDetailsTargetCollectionsList = ReadonlyArray<string>;
+export const TransferOffersDetailsTargetCollectionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TransferOffersDetailsTargetCollectionsList>;
+
+/** Offers ids list to transfer from source collection to target collection(s) */
+export type TransferOffersDetailsOfferIdsListList = ReadonlyArray<string>;
+export const TransferOffersDetailsOfferIdsListList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TransferOffersDetailsOfferIdsListList>;
+
+/** Transfer offers response details */
+export interface TransferOffersDetails {
+  /** Target collections ids */
+  targetCollections?: TransferOffersDetailsTargetCollectionsList;
+  /** Operation to perform (For example: Copy or Move) */
+  operation?: string;
+  /** Offers ids list to transfer from source collection to target collection(s) */
+  offerIdsList?: TransferOffersDetailsOfferIdsListList;
+}
+export const TransferOffersDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetCollections: S.optional(TransferOffersDetailsTargetCollectionsList),
+    operation: S.optional(S.String),
+    offerIdsList: S.optional(TransferOffersDetailsOfferIdsListList),
+  }),
+).annotate({
+  identifier: "TransferOffersDetails",
+}) as any as S.Schema<TransferOffersDetails>;
+
 export interface PrivateStoreCollectionTransferOffersRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
   /** The collection ID */
   collectionId: string;
-  body?: unknown;
+  /** transfer offers properties details */
+  properties?: TransferOffersDetails;
 }
 export const PrivateStoreCollectionTransferOffersRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       privateStoreId: S.String.pipe(T.Label()),
       collectionId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(TransferOffersDetails),
     }).pipe(
       T.Http({
         method: "POST",
@@ -1497,13 +1800,15 @@ export const PrivateStoreCollectionTransferOffersRequest =
   }) as any as S.Schema<PrivateStoreCollectionTransferOffersRequest>;
 
 /** Succeeded collections */
-export type TransferOffersResponseSucceededList = CollectionsDetails[];
+export type TransferOffersResponseSucceededList =
+  ReadonlyArray<CollectionsDetails>;
 export const TransferOffersResponseSucceededList = /*@__PURE__*/ S.Array(
   CollectionsDetails,
 ) as any as S.Schema<TransferOffersResponseSucceededList>;
 
 /** Failed collections */
-export type TransferOffersResponseFailedList = CollectionsDetails[];
+export type TransferOffersResponseFailedList =
+  ReadonlyArray<CollectionsDetails>;
 export const TransferOffersResponseFailedList = /*@__PURE__*/ S.Array(
   CollectionsDetails,
 ) as any as S.Schema<TransferOffersResponseFailedList>;
@@ -1524,19 +1829,72 @@ export const TransferOffersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransferOffersResponse",
 }) as any as S.Schema<TransferOffersResponse>;
 
+/** Return plan with request details */
+export interface PlanDetailsInput {
+  /** Gets or sets Plan Id */
+  planId?: string;
+  /** Gets or sets user's justification for the plan's request */
+  justification?: string;
+  /** Gets or sets the subscription id that the user is requesting to add the plan to */
+  subscriptionId?: string;
+  /** Gets or sets the subscription name that the user is requesting to add the plan to */
+  subscriptionName?: string;
+}
+export const PlanDetailsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    planId: S.optional(S.String),
+    justification: S.optional(S.String),
+    subscriptionId: S.optional(S.String),
+    subscriptionName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PlanDetailsInput",
+}) as any as S.Schema<PlanDetailsInput>;
+
+/** Gets or sets the plans details */
+export type RequestApprovalPropertiesInputPlansDetailsList =
+  ReadonlyArray<PlanDetailsInput>;
+export const RequestApprovalPropertiesInputPlansDetailsList =
+  /*@__PURE__*/ S.Array(
+    PlanDetailsInput,
+  ) as any as S.Schema<RequestApprovalPropertiesInputPlansDetailsList>;
+
+/** Approval request resource properties */
+export interface RequestApprovalPropertiesInput {
+  /** Gets or sets unique offer id. */
+  offerId?: string;
+  /** The offer's publisher id */
+  publisherId?: string;
+  /** Gets or sets the plans details */
+  plansDetails?: RequestApprovalPropertiesInputPlansDetailsList;
+  /** Gets or sets the request approval message code */
+  messageCode?: number;
+}
+export const RequestApprovalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    offerId: S.optional(S.String),
+    publisherId: S.optional(S.String),
+    plansDetails: S.optional(RequestApprovalPropertiesInputPlansDetailsList),
+    messageCode: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RequestApprovalPropertiesInput",
+}) as any as S.Schema<RequestApprovalPropertiesInput>;
+
 export interface PrivateStoreCreateApprovalRequestRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
   /** The request approval ID to get create or update */
   requestApprovalId: string;
-  body: unknown;
+  /** The privateStore approval request data structure. */
+  properties?: RequestApprovalPropertiesInput;
 }
 export const PrivateStoreCreateApprovalRequestRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       privateStoreId: S.String.pipe(T.Label()),
       requestApprovalId: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(RequestApprovalPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1550,12 +1908,7 @@ export const PrivateStoreCreateApprovalRequestRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateStoreCreateApprovalRequestRequest>;
 
 /** Gets the plan status */
-export type Status =
-  | "Pending"
-  | "Rejected"
-  | "Approved"
-  | "None"
-  | (string & {});
+export type Status = "Pending" | "Rejected" | "Approved" | "None";
 export const Status = /*@__PURE__*/ S.String;
 
 /** Return plan with request details */
@@ -1585,7 +1938,8 @@ export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlanDetails" }) as any as S.Schema<PlanDetails>;
 
 /** Gets or sets the plans details */
-export type RequestApprovalPropertiesPlansDetailsList = PlanDetails[];
+export type RequestApprovalPropertiesPlansDetailsList =
+  ReadonlyArray<PlanDetails>;
 export const RequestApprovalPropertiesPlansDetailsList = /*@__PURE__*/ S.Array(
   PlanDetails,
 ) as any as S.Schema<RequestApprovalPropertiesPlansDetailsList>;
@@ -1643,15 +1997,98 @@ export const PrivateStoreCreateApprovalRequestResponse =
     identifier: "PrivateStoreCreateApprovalRequestResponse",
   }) as any as S.Schema<PrivateStoreCreateApprovalRequestResponse>;
 
+/** Indicates private store availability */
+export type Availability = "enabled" | "disabled";
+export const Availability = /*@__PURE__*/ S.String;
+
+/** Gets or sets list of branding characteristics */
+export type PrivateStorePropertiesInputBrandingMap = {
+  [key: string]: string | undefined;
+};
+export const PrivateStorePropertiesInputBrandingMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PrivateStorePropertiesInputBrandingMap>;
+
+/** Describes the json payload for a notified recipient for new requests */
+export interface RecipientInput {
+  /** Principal ID */
+  principalId?: string;
+}
+export const RecipientInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+  }),
+).annotate({ identifier: "RecipientInput" }) as any as S.Schema<RecipientInput>;
+
+/** Gets or sets list of notified recipients for new requests */
+export type NotificationsSettingsPropertiesInputRecipientsList =
+  ReadonlyArray<RecipientInput>;
+export const NotificationsSettingsPropertiesInputRecipientsList =
+  /*@__PURE__*/ S.Array(
+    RecipientInput,
+  ) as any as S.Schema<NotificationsSettingsPropertiesInputRecipientsList>;
+
+/** Describes the json payload for notifications settings */
+export interface NotificationsSettingsPropertiesInput {
+  /** Gets or sets list of notified recipients for new requests */
+  recipients?: NotificationsSettingsPropertiesInputRecipientsList;
+  /** Gets or sets whether to send email to all marketplace admins for new requests */
+  sendToAllMarketplaceAdmins?: boolean;
+}
+export const NotificationsSettingsPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      recipients: S.optional(
+        NotificationsSettingsPropertiesInputRecipientsList,
+      ),
+      sendToAllMarketplaceAdmins: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "NotificationsSettingsPropertiesInput",
+}) as any as S.Schema<NotificationsSettingsPropertiesInput>;
+
+/** Describes the json payload on whether or not the private store is enabled for a given tenant */
+export interface PrivateStorePropertiesInput {
+  /** Indicates private store availability */
+  availability?: Availability;
+  /** Identifier for purposes of race condition */
+  eTag?: string;
+  /** Private Store Name */
+  privateStoreName?: string;
+  /** Tenant id */
+  tenantId?: string;
+  /** Is government */
+  isGov?: boolean;
+  /** Gets or sets list of branding characteristics */
+  branding?: PrivateStorePropertiesInputBrandingMap;
+  /** Gets or sets notifications settings */
+  notificationsSettings?: NotificationsSettingsPropertiesInput;
+}
+export const PrivateStorePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    availability: S.optional(Availability),
+    eTag: S.optional(S.String),
+    privateStoreName: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    isGov: S.optional(S.Boolean),
+    branding: S.optional(PrivateStorePropertiesInputBrandingMap),
+    notificationsSettings: S.optional(NotificationsSettingsPropertiesInput),
+  }),
+).annotate({
+  identifier: "PrivateStorePropertiesInput",
+}) as any as S.Schema<PrivateStorePropertiesInput>;
+
 export interface PrivateStoreCreateOrUpdateRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
-  body?: unknown;
+  /** The PrivateStore data structure. */
+  properties?: PrivateStorePropertiesInput;
 }
 export const PrivateStoreCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(PrivateStorePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1723,8 +2160,7 @@ export type SubscriptionState =
   | "Warned"
   | "PastDue"
   | "Disabled"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const SubscriptionState = /*@__PURE__*/ S.String;
 
 /** Subscription information. */
@@ -1748,7 +2184,7 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 
 /** An array of subscriptions. */
-export type SubscriptionsResponseValueList = Subscription[];
+export type SubscriptionsResponseValueList = ReadonlyArray<Subscription>;
 export const SubscriptionsResponseValueList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionsResponseValueList>;
@@ -1791,12 +2227,8 @@ export const PrivateStoreGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateStoreGetRequest",
 }) as any as S.Schema<PrivateStoreGetRequest>;
 
-/** Indicates private store availability */
-export type Availability = "enabled" | "disabled" | (string & {});
-export const Availability = /*@__PURE__*/ S.String;
-
 /** Gets list of associated collection ids */
-export type PrivateStorePropertiesCollectionIdsList = string[];
+export type PrivateStorePropertiesCollectionIdsList = ReadonlyArray<string>;
 export const PrivateStorePropertiesCollectionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateStorePropertiesCollectionIdsList>;
@@ -1828,7 +2260,8 @@ export const Recipient = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Recipient" }) as any as S.Schema<Recipient>;
 
 /** Gets or sets list of notified recipients for new requests */
-export type NotificationsSettingsPropertiesRecipientsList = Recipient[];
+export type NotificationsSettingsPropertiesRecipientsList =
+  ReadonlyArray<Recipient>;
 export const NotificationsSettingsPropertiesRecipientsList =
   /*@__PURE__*/ S.Array(
     Recipient,
@@ -2007,7 +2440,8 @@ export const RequestApprovalResource = /*@__PURE__*/ S.suspend(() =>
   identifier: "RequestApprovalResource",
 }) as any as S.Schema<RequestApprovalResource>;
 
-export type RequestApprovalsListValueList = RequestApprovalResource[];
+export type RequestApprovalsListValueList =
+  ReadonlyArray<RequestApprovalResource>;
 export const RequestApprovalsListValueList = /*@__PURE__*/ S.Array(
   RequestApprovalResource,
 ) as any as S.Schema<RequestApprovalsListValueList>;
@@ -2118,7 +2552,7 @@ export const PrivateStore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrivateStore" }) as any as S.Schema<PrivateStore>;
 
 /** The PrivateStore items on this page */
-export type PrivateStoreListValueList = PrivateStore[];
+export type PrivateStoreListValueList = ReadonlyArray<PrivateStore>;
 export const PrivateStoreListValueList = /*@__PURE__*/ S.Array(
   PrivateStore,
 ) as any as S.Schema<PrivateStoreListValueList>;
@@ -2176,7 +2610,7 @@ export const PlanNotificationDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlanNotificationDetails>;
 
 /** Gets or sets removed plans notifications */
-export type NewNotificationsPlansList = PlanNotificationDetails[];
+export type NewNotificationsPlansList = ReadonlyArray<PlanNotificationDetails>;
 export const NewNotificationsPlansList = /*@__PURE__*/ S.Array(
   PlanNotificationDetails,
 ) as any as S.Schema<NewNotificationsPlansList>;
@@ -2210,7 +2644,7 @@ export const NewNotifications = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NewNotifications>;
 
 export type NewPlansNotificationsListNewPlansNotificationsList =
-  NewNotifications[];
+  ReadonlyArray<NewNotifications>;
 export const NewPlansNotificationsListNewPlansNotificationsList =
   /*@__PURE__*/ S.Array(
     NewNotifications,
@@ -2230,16 +2664,25 @@ export const NewPlansNotificationsList = /*@__PURE__*/ S.suspend(() =>
   identifier: "NewPlansNotificationsList",
 }) as any as S.Schema<NewPlansNotificationsList>;
 
+export type PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList =
+  ReadonlyArray<string>;
+export const PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList>;
+
 export interface PrivateStoreListStopSellOffersPlansNotificationsRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
-  body?: unknown;
+  subscriptions?: PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList;
 }
 export const PrivateStoreListStopSellOffersPlansNotificationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       privateStoreId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      subscriptions: S.optional(
+        PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList,
+      ),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2254,7 +2697,7 @@ export const PrivateStoreListStopSellOffersPlansNotificationsRequest =
 
 /** The list of removed plans notifications */
 export type StopSellOffersPlansNotificationsListPropertiesPlansList =
-  PlanNotificationDetails[];
+  ReadonlyArray<PlanNotificationDetails>;
 export const StopSellOffersPlansNotificationsListPropertiesPlansList =
   /*@__PURE__*/ S.Array(
     PlanNotificationDetails,
@@ -2262,7 +2705,7 @@ export const StopSellOffersPlansNotificationsListPropertiesPlansList =
 
 /** The subscriptions related to private plans */
 export type StopSellOffersPlansNotificationsListPropertiesSubscriptionsIdsList =
-  string[];
+  ReadonlyArray<string>;
 export const StopSellOffersPlansNotificationsListPropertiesSubscriptionsIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2308,7 +2751,7 @@ export const StopSellOffersPlansNotificationsListProperties =
   }) as any as S.Schema<StopSellOffersPlansNotificationsListProperties>;
 
 export type StopSellOffersPlansNotificationsListStopSellNotificationsList =
-  StopSellOffersPlansNotificationsListProperties[];
+  ReadonlyArray<StopSellOffersPlansNotificationsListProperties>;
 export const StopSellOffersPlansNotificationsListStopSellNotificationsList =
   /*@__PURE__*/ S.Array(
     StopSellOffersPlansNotificationsListProperties,
@@ -2349,7 +2792,8 @@ export const PrivateStoreListSubscriptionsContextRequest =
     identifier: "PrivateStoreListSubscriptionsContextRequest",
   }) as any as S.Schema<PrivateStoreListSubscriptionsContextRequest>;
 
-export type SubscriptionsContextListSubscriptionsIdsList = string[];
+export type SubscriptionsContextListSubscriptionsIdsList =
+  ReadonlyArray<string>;
 export const SubscriptionsContextListSubscriptionsIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2367,16 +2811,48 @@ export const SubscriptionsContextList = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionsContextList",
 }) as any as S.Schema<SubscriptionsContextList>;
 
+/** Offer plan ids */
+export type QueryApprovedPlansPlanIdsList = ReadonlyArray<string>;
+export const QueryApprovedPlansPlanIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<QueryApprovedPlansPlanIdsList>;
+
+/** List of subscription IDs */
+export type QueryApprovedPlansSubscriptionIdsList = ReadonlyArray<string>;
+export const QueryApprovedPlansSubscriptionIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<QueryApprovedPlansSubscriptionIdsList>;
+
+/** Query approved plans details */
+export interface QueryApprovedPlans {
+  /** Offer id */
+  offerId?: string;
+  /** Offer plan ids */
+  planIds?: QueryApprovedPlansPlanIdsList;
+  /** List of subscription IDs */
+  subscriptionIds?: QueryApprovedPlansSubscriptionIdsList;
+}
+export const QueryApprovedPlans = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    offerId: S.optional(S.String),
+    planIds: S.optional(QueryApprovedPlansPlanIdsList),
+    subscriptionIds: S.optional(QueryApprovedPlansSubscriptionIdsList),
+  }),
+).annotate({
+  identifier: "QueryApprovedPlans",
+}) as any as S.Schema<QueryApprovedPlans>;
+
 export interface PrivateStoreQueryApprovedPlansRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
-  body?: unknown;
+  /** Query approved plans details */
+  properties?: QueryApprovedPlans;
 }
 export const PrivateStoreQueryApprovedPlansRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       privateStoreId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(QueryApprovedPlans),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2390,7 +2866,8 @@ export const PrivateStoreQueryApprovedPlansRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateStoreQueryApprovedPlansRequest>;
 
 /** Approved subscription ids list. In case all subscriptions are approved for a plan, allSubscriptions flag is true and list is empty ( else flag is set to false). In case both subscriptions list is empty and allSubscriptions flag is false, the plan is not approved for any subscription. */
-export type QueryApprovedPlansDetailsSubscriptionIdsList = string[];
+export type QueryApprovedPlansDetailsSubscriptionIdsList =
+  ReadonlyArray<string>;
 export const QueryApprovedPlansDetailsSubscriptionIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -2416,7 +2893,8 @@ export const QueryApprovedPlansDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryApprovedPlansDetails>;
 
 /** A list indicating for each plan which subscriptions are approved. Plan Id is unique */
-export type QueryApprovedPlansResponseDetailsList = QueryApprovedPlansDetails[];
+export type QueryApprovedPlansResponseDetailsList =
+  ReadonlyArray<QueryApprovedPlansDetails>;
 export const QueryApprovedPlansResponseDetailsList = /*@__PURE__*/ S.Array(
   QueryApprovedPlansDetails,
 ) as any as S.Schema<QueryApprovedPlansResponseDetailsList>;
@@ -2455,7 +2933,8 @@ export const PrivateStoreQueryNotificationsStateRequest =
   }) as any as S.Schema<PrivateStoreQueryNotificationsStateRequest>;
 
 /** Gets or sets removed plans notifications */
-export type StopSellNotificationsPlansList = PlanNotificationDetails[];
+export type StopSellNotificationsPlansList =
+  ReadonlyArray<PlanNotificationDetails>;
 export const StopSellNotificationsPlansList = /*@__PURE__*/ S.Array(
   PlanNotificationDetails,
 ) as any as S.Schema<StopSellNotificationsPlansList>;
@@ -2489,21 +2968,22 @@ export const StopSellNotifications = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopSellNotifications>;
 
 export type PrivateStoreNotificationsStateStopSellNotificationsList =
-  StopSellNotifications[];
+  ReadonlyArray<StopSellNotifications>;
 export const PrivateStoreNotificationsStateStopSellNotificationsList =
   /*@__PURE__*/ S.Array(
     StopSellNotifications,
   ) as any as S.Schema<PrivateStoreNotificationsStateStopSellNotificationsList>;
 
 export type PrivateStoreNotificationsStateNewNotificationsList =
-  NewNotifications[];
+  ReadonlyArray<NewNotifications>;
 export const PrivateStoreNotificationsStateNewNotificationsList =
   /*@__PURE__*/ S.Array(
     NewNotifications,
   ) as any as S.Schema<PrivateStoreNotificationsStateNewNotificationsList>;
 
 /** Gets or sets removed plans notifications */
-export type RequestApprovalsDetailsPlansList = PlanNotificationDetails[];
+export type RequestApprovalsDetailsPlansList =
+  ReadonlyArray<PlanNotificationDetails>;
 export const RequestApprovalsDetailsPlansList = /*@__PURE__*/ S.Array(
   PlanNotificationDetails,
 ) as any as S.Schema<RequestApprovalsDetailsPlansList>;
@@ -2537,7 +3017,7 @@ export const RequestApprovalsDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestApprovalsDetails>;
 
 export type PrivateStoreNotificationsStateApprovalRequestsList =
-  RequestApprovalsDetails[];
+  ReadonlyArray<RequestApprovalsDetails>;
 export const PrivateStoreNotificationsStateApprovalRequestsList =
   /*@__PURE__*/ S.Array(
     RequestApprovalsDetails,
@@ -2584,7 +3064,7 @@ export const PrivateStoreQueryOffersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateStoreQueryOffersRequest",
 }) as any as S.Schema<PrivateStoreQueryOffersRequest>;
 
-export type QueryOffersValueList = OfferProperties[];
+export type QueryOffersValueList = ReadonlyArray<OfferProperties>;
 export const QueryOffersValueList = /*@__PURE__*/ S.Array(
   OfferProperties,
 ) as any as S.Schema<QueryOffersValueList>;
@@ -2602,19 +3082,43 @@ export const QueryOffers = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QueryOffers" }) as any as S.Schema<QueryOffers>;
 
+/** Current plans list */
+export type RequestDetailsPlanIdsList = ReadonlyArray<string>;
+export const RequestDetailsPlanIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RequestDetailsPlanIdsList>;
+
+/** Request details needed to get the plans statuses */
+export interface RequestDetails {
+  /** The offer's publisher id */
+  publisherId?: string;
+  /** Current plans list */
+  planIds?: RequestDetailsPlanIdsList;
+  /** Gets or sets the subscription id */
+  subscriptionId?: string;
+}
+export const RequestDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publisherId: S.optional(S.String),
+    planIds: S.optional(RequestDetailsPlanIdsList),
+    subscriptionId: S.optional(S.String),
+  }),
+).annotate({ identifier: "RequestDetails" }) as any as S.Schema<RequestDetails>;
+
 export interface PrivateStoreQueryRequestApprovalRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
   /** The request approval ID to get create or update */
   requestApprovalId: string;
-  body?: unknown;
+  /** The details to get the request plans statuses */
+  properties?: RequestDetails;
 }
 export const PrivateStoreQueryRequestApprovalRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       privateStoreId: S.String.pipe(T.Label()),
       requestApprovalId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(RequestDetails),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2658,15 +3162,44 @@ export const QueryRequestApproval = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryRequestApproval",
 }) as any as S.Schema<QueryRequestApproval>;
 
+/** List of offer IDs */
+export type QueryUserOffersDetailsOfferIdsList = ReadonlyArray<string>;
+export const QueryUserOffersDetailsOfferIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<QueryUserOffersDetailsOfferIdsList>;
+
+/** List of subscription IDs */
+export type QueryUserOffersDetailsSubscriptionIdsList = ReadonlyArray<string>;
+export const QueryUserOffersDetailsSubscriptionIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<QueryUserOffersDetailsSubscriptionIdsList>;
+
+/** List of offers IDs and list of user's subscriptions IDs to query the user's approved offers */
+export interface QueryUserOffersDetails {
+  /** List of offer IDs */
+  offerIds?: QueryUserOffersDetailsOfferIdsList;
+  /** List of subscription IDs */
+  subscriptionIds?: QueryUserOffersDetailsSubscriptionIdsList;
+}
+export const QueryUserOffersDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    offerIds: S.optional(QueryUserOffersDetailsOfferIdsList),
+    subscriptionIds: S.optional(QueryUserOffersDetailsSubscriptionIdsList),
+  }),
+).annotate({
+  identifier: "QueryUserOffersDetails",
+}) as any as S.Schema<QueryUserOffersDetails>;
+
 export interface PrivateStoreQueryUserOffersRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
-  body?: unknown;
+  /** Query user's offers details */
+  properties?: QueryUserOffersDetails;
 }
 export const PrivateStoreQueryUserOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(QueryUserOffersDetails),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2679,19 +3212,71 @@ export const PrivateStoreQueryUserOffersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateStoreQueryUserOffersRequest",
 }) as any as S.Schema<PrivateStoreQueryUserOffersRequest>;
 
+/** Gets or sets Approved plans ids, empty in case of rejected */
+export type AdminRequestApprovalPropertiesInputApprovedPlansList =
+  ReadonlyArray<string>;
+export const AdminRequestApprovalPropertiesInputApprovedPlansList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AdminRequestApprovalPropertiesInputApprovedPlansList>;
+
+/** Gets or sets list of associated collection ids */
+export type AdminRequestApprovalPropertiesInputCollectionIdsList =
+  ReadonlyArray<string>;
+export const AdminRequestApprovalPropertiesInputCollectionIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AdminRequestApprovalPropertiesInputCollectionIdsList>;
+
+/** Admin approval request resource properties */
+export interface AdminRequestApprovalPropertiesInput {
+  /** Gets or sets offer Id */
+  offerId?: string;
+  /** Gets or sets publisher Id */
+  publisherId?: string;
+  /** Gets or sets admin action */
+  adminAction?: AdminAction;
+  /** Gets or sets Approved plans ids, empty in case of rejected */
+  approvedPlans?: AdminRequestApprovalPropertiesInputApprovedPlansList;
+  /** Gets or sets admin comment */
+  comment?: string;
+  /** Gets or sets admin details */
+  administrator?: string;
+  /** Gets or sets list of associated collection ids */
+  collectionIds?: AdminRequestApprovalPropertiesInputCollectionIdsList;
+}
+export const AdminRequestApprovalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    offerId: S.optional(S.String),
+    publisherId: S.optional(S.String),
+    adminAction: S.optional(AdminAction),
+    approvedPlans: S.optional(
+      AdminRequestApprovalPropertiesInputApprovedPlansList,
+    ),
+    comment: S.optional(S.String),
+    administrator: S.optional(S.String),
+    collectionIds: S.optional(
+      AdminRequestApprovalPropertiesInputCollectionIdsList,
+    ),
+  }),
+).annotate({
+  identifier: "AdminRequestApprovalPropertiesInput",
+}) as any as S.Schema<AdminRequestApprovalPropertiesInput>;
+
 export interface PrivateStoreUpdateAdminRequestApprovalRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
   /** The admin request approval ID to get create or update */
   adminRequestApprovalId: string;
-  body?: unknown;
+  /** The privateStore admin Approval request data structure. */
+  properties?: AdminRequestApprovalPropertiesInput;
 }
 export const PrivateStoreUpdateAdminRequestApprovalRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       privateStoreId: S.String.pipe(T.Label()),
       adminRequestApprovalId: S.String.pipe(T.Label()),
-      body: S.optional(S.Unknown.pipe(T.HttpBody())),
+      properties: S.optional(AdminRequestApprovalPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2729,18 +3314,35 @@ export const PrivateStoreUpdateAdminRequestApprovalResponse =
     identifier: "PrivateStoreUpdateAdminRequestApprovalResponse",
   }) as any as S.Schema<PrivateStoreUpdateAdminRequestApprovalResponse>;
 
+/** Withdraw properties details */
+export interface WithdrawDetails {
+  /** Gets or sets Plan Id */
+  planId?: string;
+  /** The offer's publisher id */
+  publisherId?: string;
+}
+export const WithdrawDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    planId: S.optional(S.String),
+    publisherId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WithdrawDetails",
+}) as any as S.Schema<WithdrawDetails>;
+
 export interface PrivateStoreWithdrawPlanRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
   /** The request approval ID to get create or update */
   requestApprovalId: string;
-  body?: unknown;
+  /** Withdraw properties details */
+  properties?: WithdrawDetails;
 }
 export const PrivateStoreWithdrawPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     requestApprovalId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(WithdrawDetails),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2782,7 +3384,7 @@ export const QueryRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryRulesRequest",
 }) as any as S.Schema<QueryRulesRequest>;
 
-export type RuleListResponseValueList = Rule[];
+export type RuleListResponseValueList = ReadonlyArray<Rule>;
 export const RuleListResponseValueList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<RuleListResponseValueList>;
@@ -2801,15 +3403,35 @@ export const RuleListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RuleListResponse",
 }) as any as S.Schema<RuleListResponse>;
 
+/** List of subscription IDs */
+export type QueryUserRulesDetailsSubscriptionIdsList = ReadonlyArray<string>;
+export const QueryUserRulesDetailsSubscriptionIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<QueryUserRulesDetailsSubscriptionIdsList>;
+
+/** List of subscriptions IDs to query the user's rules */
+export interface QueryUserRulesDetails {
+  /** List of subscription IDs */
+  subscriptionIds?: QueryUserRulesDetailsSubscriptionIdsList;
+}
+export const QueryUserRulesDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionIds: S.optional(QueryUserRulesDetailsSubscriptionIdsList),
+  }),
+).annotate({
+  identifier: "QueryUserRulesDetails",
+}) as any as S.Schema<QueryUserRulesDetails>;
+
 export interface QueryUserRulesRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
-  body?: unknown;
+  /** Query user's rules details */
+  properties?: QueryUserRulesDetails;
 }
 export const QueryUserRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    properties: S.optional(QueryUserRulesDetails),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2822,18 +3444,26 @@ export const QueryUserRulesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryUserRulesRequest",
 }) as any as S.Schema<QueryUserRulesRequest>;
 
+export type SetCollectionRulesRequestValueList = ReadonlyArray<Rule>;
+export const SetCollectionRulesRequestValueList = /*@__PURE__*/ S.Array(
+  Rule,
+) as any as S.Schema<SetCollectionRulesRequestValueList>;
+
 export interface SetCollectionRulesRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
   /** The collection ID */
   collectionId: string;
-  body?: unknown;
+  value?: SetCollectionRulesRequestValueList;
+  /** URL to get the next set of rules list results if there are any. */
+  nextLink?: string;
 }
 export const SetCollectionRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
-    body: S.optional(S.Unknown.pipe(T.HttpBody())),
+    value: S.optional(SetCollectionRulesRequestValueList),
+    nextLink: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",

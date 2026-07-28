@@ -152,8 +152,7 @@ export type AddVolumeMylibraryBookshelvesReasonEnum =
   | "REASON_UNDEFINED"
   | "IOS_PREX"
   | "IOS_SEARCH"
-  | "ONBOARDING"
-  | (string & {});
+  | "ONBOARDING";
 export const AddVolumeMylibraryBookshelvesReasonEnum = /*@__PURE__*/ S.String;
 
 export interface AddVolumeMylibraryBookshelvesRequest {
@@ -425,7 +424,7 @@ export const GetLayersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetLayersRequest",
 }) as any as S.Schema<GetLayersRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -577,7 +576,7 @@ export const DictlayerdataDictWordsItemSensesItemSynonymsItem =
   }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItem>;
 
 export type DictlayerdataDictWordsItemSensesItemSynonymsItemList =
-  DictlayerdataDictWordsItemSensesItemSynonymsItem[];
+  ReadonlyArray<DictlayerdataDictWordsItemSensesItemSynonymsItem>;
 export const DictlayerdataDictWordsItemSensesItemSynonymsItemList =
   /*@__PURE__*/ S.Array(
     DictlayerdataDictWordsItemSensesItemSynonymsItem,
@@ -616,7 +615,7 @@ export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem =
   }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem>;
 
 export type DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList =
-  DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem[];
+  ReadonlyArray<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem>;
 export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList =
   /*@__PURE__*/ S.Array(
     DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem,
@@ -639,7 +638,7 @@ export const DictlayerdataDictWordsItemSensesItemDefinitionsItem =
   }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItem>;
 
 export type DictlayerdataDictWordsItemSensesItemDefinitionsItemList =
-  DictlayerdataDictWordsItemSensesItemDefinitionsItem[];
+  ReadonlyArray<DictlayerdataDictWordsItemSensesItemDefinitionsItem>;
 export const DictlayerdataDictWordsItemSensesItemDefinitionsItemList =
   /*@__PURE__*/ S.Array(
     DictlayerdataDictWordsItemSensesItemDefinitionsItem,
@@ -674,7 +673,7 @@ export const DictlayerdataDictWordsItemSensesItemConjugationsItem =
   }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemConjugationsItem>;
 
 export type DictlayerdataDictWordsItemSensesItemConjugationsItemList =
-  DictlayerdataDictWordsItemSensesItemConjugationsItem[];
+  ReadonlyArray<DictlayerdataDictWordsItemSensesItemConjugationsItem>;
 export const DictlayerdataDictWordsItemSensesItemConjugationsItemList =
   /*@__PURE__*/ S.Array(
     DictlayerdataDictWordsItemSensesItemConjugationsItem,
@@ -713,7 +712,7 @@ export const DictlayerdataDictWordsItemSensesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DictlayerdataDictWordsItemSensesItem>;
 
 export type DictlayerdataDictWordsItemSensesItemList =
-  DictlayerdataDictWordsItemSensesItem[];
+  ReadonlyArray<DictlayerdataDictWordsItemSensesItem>;
 export const DictlayerdataDictWordsItemSensesItemList = /*@__PURE__*/ S.Array(
   DictlayerdataDictWordsItemSensesItem,
 ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemList>;
@@ -747,7 +746,7 @@ export const DictlayerdataDictWordsItemExamplesItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DictlayerdataDictWordsItemExamplesItem>;
 
 export type DictlayerdataDictWordsItemExamplesItemList =
-  DictlayerdataDictWordsItemExamplesItem[];
+  ReadonlyArray<DictlayerdataDictWordsItemExamplesItem>;
 export const DictlayerdataDictWordsItemExamplesItemList = /*@__PURE__*/ S.Array(
   DictlayerdataDictWordsItemExamplesItem,
 ) as any as S.Schema<DictlayerdataDictWordsItemExamplesItemList>;
@@ -794,7 +793,7 @@ export const DictlayerdataDictWordsItemDerivativesItem =
   }) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItem>;
 
 export type DictlayerdataDictWordsItemDerivativesItemList =
-  DictlayerdataDictWordsItemDerivativesItem[];
+  ReadonlyArray<DictlayerdataDictWordsItemDerivativesItem>;
 export const DictlayerdataDictWordsItemDerivativesItemList =
   /*@__PURE__*/ S.Array(
     DictlayerdataDictWordsItemDerivativesItem,
@@ -818,7 +817,8 @@ export const DictlayerdataDictWordsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DictlayerdataDictWordsItem",
 }) as any as S.Schema<DictlayerdataDictWordsItem>;
 
-export type DictlayerdataDictWordsItemList = DictlayerdataDictWordsItem[];
+export type DictlayerdataDictWordsItemList =
+  ReadonlyArray<DictlayerdataDictWordsItem>;
 export const DictlayerdataDictWordsItemList = /*@__PURE__*/ S.Array(
   DictlayerdataDictWordsItem,
 ) as any as S.Schema<DictlayerdataDictWordsItemList>;
@@ -1152,8 +1152,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
 export type GetPersonalizedstreamMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
-  | "not-mature"
-  | (string & {});
+  | "not-mature";
 export const GetPersonalizedstreamMaxAllowedMaturityRatingEnum =
   /*@__PURE__*/ S.String;
 
@@ -1259,7 +1258,8 @@ export const VolumeSaleInfoOffersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "VolumeSaleInfoOffersItem",
 }) as any as S.Schema<VolumeSaleInfoOffersItem>;
 
-export type VolumeSaleInfoOffersItemList = VolumeSaleInfoOffersItem[];
+export type VolumeSaleInfoOffersItemList =
+  ReadonlyArray<VolumeSaleInfoOffersItem>;
 export const VolumeSaleInfoOffersItemList = /*@__PURE__*/ S.Array(
   VolumeSaleInfoOffersItem,
 ) as any as S.Schema<VolumeSaleInfoOffersItemList>;
@@ -1340,7 +1340,8 @@ export const VolumeLayerInfoLayersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "VolumeLayerInfoLayersItem",
 }) as any as S.Schema<VolumeLayerInfoLayersItem>;
 
-export type VolumeLayerInfoLayersItemList = VolumeLayerInfoLayersItem[];
+export type VolumeLayerInfoLayersItemList =
+  ReadonlyArray<VolumeLayerInfoLayersItem>;
 export const VolumeLayerInfoLayersItemList = /*@__PURE__*/ S.Array(
   VolumeLayerInfoLayersItem,
 ) as any as S.Schema<VolumeLayerInfoLayersItemList>;
@@ -1545,7 +1546,7 @@ export const VolumeVolumeInfoIndustryIdentifiersItem = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VolumeVolumeInfoIndustryIdentifiersItem>;
 
 export type VolumeVolumeInfoIndustryIdentifiersItemList =
-  VolumeVolumeInfoIndustryIdentifiersItem[];
+  ReadonlyArray<VolumeVolumeInfoIndustryIdentifiersItem>;
 export const VolumeVolumeInfoIndustryIdentifiersItemList =
   /*@__PURE__*/ S.Array(
     VolumeVolumeInfoIndustryIdentifiersItem,
@@ -1597,7 +1598,7 @@ export const VolumeseriesinfoVolumeSeriesItemIssueItem =
   }) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemIssueItem>;
 
 export type VolumeseriesinfoVolumeSeriesItemIssueItemList =
-  VolumeseriesinfoVolumeSeriesItemIssueItem[];
+  ReadonlyArray<VolumeseriesinfoVolumeSeriesItemIssueItem>;
 export const VolumeseriesinfoVolumeSeriesItemIssueItemList =
   /*@__PURE__*/ S.Array(
     VolumeseriesinfoVolumeSeriesItemIssueItem,
@@ -1625,7 +1626,7 @@ export const VolumeseriesinfoVolumeSeriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeseriesinfoVolumeSeriesItem>;
 
 export type VolumeseriesinfoVolumeSeriesItemList =
-  VolumeseriesinfoVolumeSeriesItem[];
+  ReadonlyArray<VolumeseriesinfoVolumeSeriesItem>;
 export const VolumeseriesinfoVolumeSeriesItemList = /*@__PURE__*/ S.Array(
   VolumeseriesinfoVolumeSeriesItem,
 ) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemList>;
@@ -1986,7 +1987,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
-export type VolumeList = Volume[];
+export type VolumeList = ReadonlyArray<Volume>;
 export const VolumeList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumeList>;
@@ -2036,7 +2037,8 @@ export const DiscoveryclustersClustersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiscoveryclustersClustersItem",
 }) as any as S.Schema<DiscoveryclustersClustersItem>;
 
-export type DiscoveryclustersClustersItemList = DiscoveryclustersClustersItem[];
+export type DiscoveryclustersClustersItemList =
+  ReadonlyArray<DiscoveryclustersClustersItem>;
 export const DiscoveryclustersClustersItemList = /*@__PURE__*/ S.Array(
   DiscoveryclustersClustersItem,
 ) as any as S.Schema<DiscoveryclustersClustersItemList>;
@@ -2111,7 +2113,8 @@ export const OffersItemsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OffersItemsItemItemsItem",
 }) as any as S.Schema<OffersItemsItemItemsItem>;
 
-export type OffersItemsItemItemsItemList = OffersItemsItemItemsItem[];
+export type OffersItemsItemItemsItemList =
+  ReadonlyArray<OffersItemsItemItemsItem>;
 export const OffersItemsItemItemsItemList = /*@__PURE__*/ S.Array(
   OffersItemsItemItemsItem,
 ) as any as S.Schema<OffersItemsItemItemsItemList>;
@@ -2133,7 +2136,7 @@ export const OffersItemsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "OffersItemsItem",
 }) as any as S.Schema<OffersItemsItem>;
 
-export type OffersItemsItemList = OffersItemsItem[];
+export type OffersItemsItemList = ReadonlyArray<OffersItemsItem>;
 export const OffersItemsItemList = /*@__PURE__*/ S.Array(
   OffersItemsItem,
 ) as any as S.Schema<OffersItemsItemList>;
@@ -2259,7 +2262,7 @@ export const SeriesSeriesItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "SeriesSeriesItem",
 }) as any as S.Schema<SeriesSeriesItem>;
 
-export type SeriesSeriesItemList = SeriesSeriesItem[];
+export type SeriesSeriesItemList = ReadonlyArray<SeriesSeriesItem>;
 export const SeriesSeriesItemList = /*@__PURE__*/ S.Array(
   SeriesSeriesItem,
 ) as any as S.Schema<SeriesSeriesItemList>;
@@ -2440,11 +2443,7 @@ export const Usersettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Usersettings" }) as any as S.Schema<Usersettings>;
 
-export type GetVolumesProjectionEnum =
-  | "PROJECTION_UNDEFINED"
-  | "FULL"
-  | "LITE"
-  | (string & {});
+export type GetVolumesProjectionEnum = "PROJECTION_UNDEFINED" | "FULL" | "LITE";
 export const GetVolumesProjectionEnum = /*@__PURE__*/ S.String;
 
 export interface GetVolumesRequest {
@@ -2656,7 +2655,7 @@ export const ListBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBookshelvesRequest",
 }) as any as S.Schema<ListBookshelvesRequest>;
 
-export type BookshelfList = Bookshelf[];
+export type BookshelfList = ReadonlyArray<Bookshelf>;
 export const BookshelfList = /*@__PURE__*/ S.Array(
   Bookshelf,
 ) as any as S.Schema<BookshelfList>;
@@ -2756,7 +2755,7 @@ export const CategoryItemsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "CategoryItemsItem",
 }) as any as S.Schema<CategoryItemsItem>;
 
-export type CategoryItemsItemList = CategoryItemsItem[];
+export type CategoryItemsItemList = ReadonlyArray<CategoryItemsItem>;
 export const CategoryItemsItemList = /*@__PURE__*/ S.Array(
   CategoryItemsItem,
 ) as any as S.Schema<CategoryItemsItemList>;
@@ -2777,8 +2776,7 @@ export const Category = /*@__PURE__*/ S.suspend(() =>
 export type ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
-  | "not-mature"
-  | (string & {});
+  | "not-mature";
 export const ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum =
   /*@__PURE__*/ S.String;
 
@@ -2862,7 +2860,7 @@ export const ListLayersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLayersRequest",
 }) as any as S.Schema<ListLayersRequest>;
 
-export type LayersummaryList = Layersummary[];
+export type LayersummaryList = ReadonlyArray<Layersummary>;
 export const LayersummaryList = /*@__PURE__*/ S.Array(
   Layersummary,
 ) as any as S.Schema<LayersummaryList>;
@@ -3082,7 +3080,7 @@ export const GeoAnnotationdata = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeoAnnotationdata",
 }) as any as S.Schema<GeoAnnotationdata>;
 
-export type GeoAnnotationdataList = GeoAnnotationdata[];
+export type GeoAnnotationdataList = ReadonlyArray<GeoAnnotationdata>;
 export const GeoAnnotationdataList = /*@__PURE__*/ S.Array(
   GeoAnnotationdata,
 ) as any as S.Schema<GeoAnnotationdataList>;
@@ -3168,7 +3166,7 @@ export const ListLayersVolumeAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLayersVolumeAnnotationsRequest",
 }) as any as S.Schema<ListLayersVolumeAnnotationsRequest>;
 
-export type VolumeannotationList = Volumeannotation[];
+export type VolumeannotationList = ReadonlyArray<Volumeannotation>;
 export const VolumeannotationList = /*@__PURE__*/ S.Array(
   Volumeannotation,
 ) as any as S.Schema<VolumeannotationList>;
@@ -3242,7 +3240,7 @@ export const ListMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMylibraryAnnotationsRequest",
 }) as any as S.Schema<ListMylibraryAnnotationsRequest>;
 
-export type AnnotationList = Annotation[];
+export type AnnotationList = ReadonlyArray<Annotation>;
 export const AnnotationList = /*@__PURE__*/ S.Array(
   Annotation,
 ) as any as S.Schema<AnnotationList>;
@@ -3287,8 +3285,7 @@ export const ListMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListMylibraryBookshelvesVolumesProjectionEnum =
   | "PROJECTION_UNDEFINED"
   | "FULL"
-  | "LITE"
-  | (string & {});
+  | "LITE";
 export const ListMylibraryBookshelvesVolumesProjectionEnum =
   /*@__PURE__*/ S.String;
 
@@ -3372,7 +3369,7 @@ export const MetadataItemsItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetadataItemsItem",
 }) as any as S.Schema<MetadataItemsItem>;
 
-export type MetadataItemsItemList = MetadataItemsItem[];
+export type MetadataItemsItemList = ReadonlyArray<MetadataItemsItem>;
 export const MetadataItemsItemList = /*@__PURE__*/ S.Array(
   MetadataItemsItem,
 ) as any as S.Schema<MetadataItemsItemList>;
@@ -3394,8 +3391,7 @@ export type ListVolumesPrintTypeEnum =
   | "PRINT_TYPE_UNDEFINED"
   | "ALL"
   | "BOOKS"
-  | "MAGAZINES"
-  | (string & {});
+  | "MAGAZINES";
 export const ListVolumesPrintTypeEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesFilterEnum =
@@ -3404,42 +3400,34 @@ export type ListVolumesFilterEnum =
   | "free-ebooks"
   | "full"
   | "paid-ebooks"
-  | "partial"
-  | (string & {});
+  | "partial";
 export const ListVolumesFilterEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesOrderByEnum =
   | "ORDER_BY_UNDEFINED"
   | "newest"
-  | "relevance"
-  | (string & {});
+  | "relevance";
 export const ListVolumesOrderByEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesLibraryRestrictEnum =
   | "LIBRARY_RESTRICT_UNDEFINED"
   | "my-library"
-  | "no-restrict"
-  | (string & {});
+  | "no-restrict";
 export const ListVolumesLibraryRestrictEnum = /*@__PURE__*/ S.String;
 
-export type ListVolumesDownloadEnum =
-  | "DOWNLOAD_UNDEFINED"
-  | "EPUB"
-  | (string & {});
+export type ListVolumesDownloadEnum = "DOWNLOAD_UNDEFINED" | "EPUB";
 export const ListVolumesDownloadEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesProjectionEnum =
   | "PROJECTION_UNDEFINED"
   | "FULL"
-  | "LITE"
-  | (string & {});
+  | "LITE";
 export const ListVolumesProjectionEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
-  | "not-mature"
-  | (string & {});
+  | "not-mature";
 export const ListVolumesMaxAllowedMaturityRatingEnum = /*@__PURE__*/ S.String;
 
 export interface ListVolumesRequest {
@@ -3505,15 +3493,13 @@ export type ListVolumesAssociatedAssociationEnum =
   | "ASSOCIATION_UNDEFINED"
   | "end-of-sample"
   | "end-of-volume"
-  | "related-for-play"
-  | (string & {});
+  | "related-for-play";
 export const ListVolumesAssociatedAssociationEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesAssociatedMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
-  | "not-mature"
-  | (string & {});
+  | "not-mature";
 export const ListVolumesAssociatedMaxAllowedMaturityRatingEnum =
   /*@__PURE__*/ S.String;
 
@@ -3555,12 +3541,11 @@ export type ListVolumesMybooksProcessingStateEnum =
   | "PROCESSING_STATE_UNDEFINED"
   | "COMPLETED_FAILED"
   | "COMPLETED_SUCCESS"
-  | "RUNNING"
-  | (string & {});
+  | "RUNNING";
 export const ListVolumesMybooksProcessingStateEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesMybooksProcessingStateEnumList =
-  ListVolumesMybooksProcessingStateEnum[];
+  ReadonlyArray<ListVolumesMybooksProcessingStateEnum>;
 export const ListVolumesMybooksProcessingStateEnumList = /*@__PURE__*/ S.Array(
   ListVolumesMybooksProcessingStateEnum,
 ) as any as S.Schema<ListVolumesMybooksProcessingStateEnumList>;
@@ -3574,12 +3559,11 @@ export type ListVolumesMybooksAcquireMethodEnum =
   | "PURCHASED"
   | "RENTED"
   | "SAMPLE"
-  | "UPLOADED"
-  | (string & {});
+  | "UPLOADED";
 export const ListVolumesMybooksAcquireMethodEnum = /*@__PURE__*/ S.String;
 
 export type ListVolumesMybooksAcquireMethodEnumList =
-  ListVolumesMybooksAcquireMethodEnum[];
+  ReadonlyArray<ListVolumesMybooksAcquireMethodEnum>;
 export const ListVolumesMybooksAcquireMethodEnumList = /*@__PURE__*/ S.Array(
   ListVolumesMybooksAcquireMethodEnum,
 ) as any as S.Schema<ListVolumesMybooksAcquireMethodEnumList>;
@@ -3627,8 +3611,7 @@ export const ListVolumesMybooksRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListVolumesRecommendedMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
-  | "not-mature"
-  | (string & {});
+  | "not-mature";
 export const ListVolumesRecommendedMaxAllowedMaturityRatingEnum =
   /*@__PURE__*/ S.String;
 
@@ -3662,13 +3645,12 @@ export type ListVolumesUseruploadedProcessingStateEnum =
   | "PROCESSING_STATE_UNDEFINED"
   | "COMPLETED_FAILED"
   | "COMPLETED_SUCCESS"
-  | "RUNNING"
-  | (string & {});
+  | "RUNNING";
 export const ListVolumesUseruploadedProcessingStateEnum =
   /*@__PURE__*/ S.String;
 
 export type ListVolumesUseruploadedProcessingStateEnumList =
-  ListVolumesUseruploadedProcessingStateEnum[];
+  ReadonlyArray<ListVolumesUseruploadedProcessingStateEnum>;
 export const ListVolumesUseruploadedProcessingStateEnumList =
   /*@__PURE__*/ S.Array(
     ListVolumesUseruploadedProcessingStateEnum,
@@ -3740,8 +3722,7 @@ export const MoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(
 export type RateVolumesRecommendedRatingEnum =
   | "RATING_UNDEFINED"
   | "HAVE_IT"
-  | "NOT_INTERESTED"
-  | (string & {});
+  | "NOT_INTERESTED";
 export const RateVolumesRecommendedRatingEnum = /*@__PURE__*/ S.String;
 
 export interface RateVolumesRecommendedRequest {
@@ -3810,7 +3791,8 @@ export const ReleaseDownloadAccessMyconfigRequest = /*@__PURE__*/ S.suspend(
   identifier: "ReleaseDownloadAccessMyconfigRequest",
 }) as any as S.Schema<ReleaseDownloadAccessMyconfigRequest>;
 
-export type DownloadAccessRestrictionList = DownloadAccessRestriction[];
+export type DownloadAccessRestrictionList =
+  ReadonlyArray<DownloadAccessRestriction>;
 export const DownloadAccessRestrictionList = /*@__PURE__*/ S.Array(
   DownloadAccessRestriction,
 ) as any as S.Schema<DownloadAccessRestrictionList>;
@@ -3832,8 +3814,7 @@ export const DownloadAccesses = /*@__PURE__*/ S.suspend(() =>
 
 export type RemoveVolumeMylibraryBookshelvesReasonEnum =
   | "REASON_UNDEFINED"
-  | "ONBOARDING"
-  | (string & {});
+  | "ONBOARDING";
 export const RemoveVolumeMylibraryBookshelvesReasonEnum =
   /*@__PURE__*/ S.String;
 
@@ -3871,8 +3852,7 @@ export type RequestAccessMyconfigLicenseTypesEnum =
   | "LICENSE_TYPES_UNDEFINED"
   | "BOTH"
   | "CONCURRENT"
-  | "DOWNLOAD"
-  | (string & {});
+  | "DOWNLOAD";
 export const RequestAccessMyconfigLicenseTypesEnum = /*@__PURE__*/ S.String;
 
 export interface RequestAccessMyconfigRequest {
@@ -3977,8 +3957,7 @@ export type SetPositionMylibraryReadingpositionsActionEnum =
   | "next-page"
   | "prev-page"
   | "scroll"
-  | "search"
-  | (string & {});
+  | "search";
 export const SetPositionMylibraryReadingpositionsActionEnum =
   /*@__PURE__*/ S.String;
 
@@ -4088,7 +4067,8 @@ export const AnnotationsSummaryLayersItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnnotationsSummaryLayersItem",
 }) as any as S.Schema<AnnotationsSummaryLayersItem>;
 
-export type AnnotationsSummaryLayersItemList = AnnotationsSummaryLayersItem[];
+export type AnnotationsSummaryLayersItemList =
+  ReadonlyArray<AnnotationsSummaryLayersItem>;
 export const AnnotationsSummaryLayersItemList = /*@__PURE__*/ S.Array(
   AnnotationsSummaryLayersItem,
 ) as any as S.Schema<AnnotationsSummaryLayersItemList>;
@@ -4108,12 +4088,11 @@ export const AnnotationsSummary = /*@__PURE__*/ S.suspend(() =>
 
 export type SyncVolumeLicensesMyconfigFeaturesEnum =
   | "FEATURES_UNDEFINED"
-  | "RENTALS"
-  | (string & {});
+  | "RENTALS";
 export const SyncVolumeLicensesMyconfigFeaturesEnum = /*@__PURE__*/ S.String;
 
 export type SyncVolumeLicensesMyconfigFeaturesEnumList =
-  SyncVolumeLicensesMyconfigFeaturesEnum[];
+  ReadonlyArray<SyncVolumeLicensesMyconfigFeaturesEnum>;
 export const SyncVolumeLicensesMyconfigFeaturesEnumList = /*@__PURE__*/ S.Array(
   SyncVolumeLicensesMyconfigFeaturesEnum,
 ) as any as S.Schema<SyncVolumeLicensesMyconfigFeaturesEnumList>;

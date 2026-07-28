@@ -351,15 +351,36 @@
             "smithy.api#documentation": "A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#TablePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Table resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#TablePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "signedIdentifiers": {
+          "target": "com.azure.storage#TablePropertiesInputSignedIdentifiersList",
+          "traits": {
+            "smithy.api#documentation": "List of stored access policies specified on the table."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.storage#TablePropertiesInputSignedIdentifiersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#TableSignedIdentifier"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of stored access policies specified on the table."
       }
     },
     "com.azure.storage#TableCreate": {
@@ -454,10 +475,10 @@
             "smithy.api#documentation": "A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#TablePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Table resource properties."
           }
         }
       },
@@ -947,11 +968,10 @@
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#TableServicePropertiesProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a storage account’s Table service."
           }
         }
       },
@@ -1926,16 +1946,152 @@
             "smithy.api#documentation": "The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#StorageTaskAssignmentUpdatePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the storage task assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#StorageTaskAssignmentUpdatePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the storage task assignment is enabled or not"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text that describes the purpose of the storage task assignment"
+          }
+        },
+        "executionContext": {
+          "target": "com.azure.storage#StorageTaskAssignmentUpdateExecutionContext",
+          "traits": {
+            "smithy.api#documentation": "The storage task assignment execution context"
+          }
+        },
+        "report": {
+          "target": "com.azure.storage#StorageTaskAssignmentUpdateReport",
+          "traits": {
+            "smithy.api#documentation": "The storage task assignment report"
+          }
+        },
+        "runStatus": {
+          "target": "com.azure.storage#StorageTaskReportPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Run status of storage task assignment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the storage task update assignment."
+      }
+    },
+    "com.azure.storage#StorageTaskReportPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Storage task execution report for a run instance."
+      }
+    },
+    "com.azure.storage#StorageTaskAssignmentUpdateReport": {
+      "type": "structure",
+      "members": {
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The prefix of the storage task assignment report"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage task assignment report"
+      }
+    },
+    "com.azure.storage#StorageTaskAssignmentUpdateExecutionContext": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "com.azure.storage#ExecutionTarget",
+          "traits": {
+            "smithy.api#documentation": "Execution target of the storage task assignment"
+          }
+        },
+        "trigger": {
+          "target": "com.azure.storage#ExecutionTriggerUpdate",
+          "traits": {
+            "smithy.api#documentation": "Execution trigger of the storage task assignment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Execution context of the storage task assignment update."
+      }
+    },
+    "com.azure.storage#ExecutionTriggerUpdate": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.storage#TriggerType",
+          "traits": {
+            "smithy.api#documentation": "The trigger type of the storage task assignment execution"
+          }
+        },
+        "parameters": {
+          "target": "com.azure.storage#TriggerParametersUpdate",
+          "traits": {
+            "smithy.api#documentation": "The trigger parameters of the storage task assignment execution"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Execution trigger update for storage task assignment"
+      }
+    },
+    "com.azure.storage#TriggerParametersUpdate": {
+      "type": "structure",
+      "members": {
+        "startFrom": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When to start task execution. This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'"
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Run interval of task execution. This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'"
+          }
+        },
+        "intervalUnit": {
+          "target": "com.azure.storage#IntervalUnit",
+          "traits": {
+            "smithy.api#documentation": "Run interval unit of task execution. This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'"
+          }
+        },
+        "endBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When to end task execution. This is a mutable field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'"
+          }
+        },
+        "startOn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When to start task execution. This is a mutable field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The trigger parameters update for the storage task assignment execution"
       }
     },
     "com.azure.storage#StorageTaskAssignmentsCreate": {
@@ -2030,16 +2186,64 @@
             "smithy.api#documentation": "The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#StorageTaskAssignmentPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the storage task assignment."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#StorageTaskAssignmentPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "taskId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Id of the corresponding storage task",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the storage task assignment is enabled or not",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text that describes the purpose of the storage task assignment",
+            "smithy.api#required": {}
+          }
+        },
+        "executionContext": {
+          "target": "com.azure.storage#StorageTaskAssignmentExecutionContext",
+          "traits": {
+            "smithy.api#documentation": "The storage task assignment execution context",
+            "smithy.api#required": {}
+          }
+        },
+        "report": {
+          "target": "com.azure.storage#StorageTaskAssignmentReport",
+          "traits": {
+            "smithy.api#documentation": "The storage task assignment report",
+            "smithy.api#required": {}
+          }
+        },
+        "runStatus": {
+          "target": "com.azure.storage#StorageTaskReportPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Run status of storage task assignment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the storage task assignment."
       }
     },
     "com.azure.storage#StorageTaskAssignmentsGet": {
@@ -2311,16 +2515,123 @@
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#StorageAccountMigrationPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of a storage account’s ongoing or enqueued migration.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#StorageAccountMigrationPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "targetSkuName": {
+          "target": "com.azure.storage#SkuName",
+          "traits": {
+            "smithy.api#documentation": "Target sku name for the account",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a storage account's ongoing or enqueued migration."
+      }
+    },
+    "com.azure.storage#SkuName": {
+      "type": "enum",
+      "members": {
+        "STANDARD_LRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_LRS"
+          }
+        },
+        "STANDARD_GRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_GRS"
+          }
+        },
+        "STANDARD_RAGRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_RAGRS"
+          }
+        },
+        "STANDARD_ZRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_ZRS"
+          }
+        },
+        "PREMIUM_LRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Premium_LRS"
+          }
+        },
+        "PREMIUM_ZRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Premium_ZRS"
+          }
+        },
+        "STANDARD_GZRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_GZRS"
+          }
+        },
+        "STANDARD_RAGZRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Standard_RAGZRS"
+          }
+        },
+        "STANDARDV2_LRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StandardV2_LRS"
+          }
+        },
+        "STANDARDV2_GRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StandardV2_GRS"
+          }
+        },
+        "STANDARDV2_ZRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StandardV2_ZRS"
+          }
+        },
+        "STANDARDV2_GZRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "StandardV2_GZRS"
+          }
+        },
+        "PREMIUMV2_LRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PremiumV2_LRS"
+          }
+        },
+        "PREMIUMV2_ZRS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PremiumV2_ZRS"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType."
       }
     },
     "com.azure.storage#StorageAccountsRevokeUserDelegationKeys": {
@@ -2531,16 +2842,32 @@
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "timeToRestore": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Restore blob to the specified time.",
+            "smithy.api#required": {}
+          }
+        },
+        "blobRanges": {
+          "target": "com.azure.storage#StorageAccountsRestoreBlobRangesRequestBlobRangesList",
+          "traits": {
+            "smithy.api#documentation": "Blob ranges to restore.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#StorageAccountsRestoreBlobRangesRequestBlobRangesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#BlobRestoreRange"
+      },
+      "traits": {
+        "smithy.api#documentation": "Blob ranges to restore."
       }
     },
     "com.azure.storage#StorageTaskAssignmentsInstancesReportList": {
@@ -2729,10 +3056,10 @@
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The name of storage keys that want to be regenerated, possible values are key1, key2, kerb1, kerb2.",
             "smithy.api#required": {}
           }
         }
@@ -2922,16 +3249,39 @@
             "smithy.api#documentation": "A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#QueuePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Queue resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#QueuePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "com.azure.storage#QueuePropertiesInputMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "A name-value pair that represents queue metadata."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.azure.storage#QueuePropertiesInputMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A name-value pair that represents queue metadata."
       }
     },
     "com.azure.storage#QueueCreate": {
@@ -3026,11 +3376,10 @@
             "smithy.api#documentation": "A queue name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of lowercase alphanumeric and dash(-) characters only, it should begin and end with an alphanumeric character and it cannot have two consecutive dash(-) characters."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#QueuePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Queue resource properties."
           }
         }
       },
@@ -3388,11 +3737,10 @@
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#QueueServicePropertiesProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a storage account’s Queue service."
           }
         }
       },
@@ -4031,16 +4379,43 @@
             "smithy.api#documentation": "The name of the private endpoint connection associated with the Azure resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#PrivateEndpointConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#PrivateEndpointConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.storage#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The resource of private end point."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.storage#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "A collection of information about the state of the connection between service consumer and provider.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the PrivateEndpointConnectProperties."
+      }
+    },
+    "com.azure.storage#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
     "com.azure.storage#PrivateEndpointConnectionsGet": {
@@ -4578,16 +4953,70 @@
             "smithy.api#documentation": "For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#ObjectReplicationPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Returns the Storage Account Object Replication Policy."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#ObjectReplicationPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sourceAccount": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.",
+            "smithy.api#required": {}
+          }
+        },
+        "destinationAccount": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Destination account name. It should be full resource id if allowCrossTenantReplication set to false.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.azure.storage#ObjectReplicationPolicyPropertiesInputRulesList",
+          "traits": {
+            "smithy.api#documentation": "The storage account object replication rules."
+          }
+        },
+        "metrics": {
+          "target": "com.azure.storage#ObjectReplicationPolicyPropertiesMetrics",
+          "traits": {
+            "smithy.api#documentation": "Optional. The object replication policy metrics feature options."
+          }
+        },
+        "priorityReplication": {
+          "target": "com.azure.storage#ObjectReplicationPolicyPropertiesPriorityReplication",
+          "traits": {
+            "smithy.api#documentation": "Optional. The object replication policy priority replication feature options."
+          }
+        },
+        "tagsReplication": {
+          "target": "com.azure.storage#ObjectReplicationPolicyPropertiesTagsReplication",
+          "traits": {
+            "smithy.api#documentation": "Optional. The object replication policy tags replication feature options."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Storage Account ObjectReplicationPolicy properties."
+      }
+    },
+    "com.azure.storage#ObjectReplicationPolicyPropertiesInputRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#ObjectReplicationPolicyRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage account object replication rules."
       }
     },
     "com.azure.storage#ObjectReplicationPoliciesGet": {
@@ -6064,16 +6493,30 @@
             "smithy.api#documentation": "The name of the Storage Account Management Policy. It should always be 'default'"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#ManagementPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Returns the Storage Account Data Policies Rules."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#ManagementPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "policy": {
+          "target": "com.azure.storage#ManagementPolicySchema",
+          "traits": {
+            "smithy.api#documentation": "The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Storage Account ManagementPolicy properties."
       }
     },
     "com.azure.storage#ManagementPoliciesCreateOrUpdateRequestManagementPolicyName": {
@@ -6662,16 +7105,110 @@
             "smithy.api#documentation": "The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#LocalUserPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Storage account local user properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#LocalUserPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "permissionScopes": {
+          "target": "com.azure.storage#LocalUserPropertiesInputPermissionScopesList",
+          "traits": {
+            "smithy.api#documentation": "The permission scopes of the local user."
+          }
+        },
+        "homeDirectory": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional, local user home directory."
+          }
+        },
+        "sshAuthorizedKeys": {
+          "target": "com.azure.storage#LocalUserPropertiesInputSshAuthorizedKeysList",
+          "traits": {
+            "smithy.api#documentation": "Optional, local user ssh authorized keys for SFTP."
+          }
+        },
+        "hasSharedKey": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether shared key exists. Set it to false to remove existing shared key."
+          }
+        },
+        "hasSshKey": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether ssh key exists. Set it to false to remove existing SSH key."
+          }
+        },
+        "hasSshPassword": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether ssh password exists. Set it to false to remove existing SSH password."
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "An identifier for associating a group of users."
+          }
+        },
+        "allowAclAuthorization": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether ACL authorization is allowed for this user. Set it to false to disallow using ACL authorization."
+          }
+        },
+        "extendedGroups": {
+          "target": "com.azure.storage#LocalUserPropertiesInputExtendedGroupsList",
+          "traits": {
+            "smithy.api#documentation": "Supplementary group membership. Only applicable for local users enabled for NFSv3 access."
+          }
+        },
+        "isNFSv3Enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates if the local user is enabled for access with NFSv3 protocol."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Storage Account Local User properties."
+      }
+    },
+    "com.azure.storage#LocalUserPropertiesInputExtendedGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Supplementary group membership. Only applicable for local users enabled for NFSv3 access."
+      }
+    },
+    "com.azure.storage#LocalUserPropertiesInputSshAuthorizedKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#SshPublicKey"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional, local user ssh authorized keys for SFTP."
+      }
+    },
+    "com.azure.storage#LocalUserPropertiesInputPermissionScopesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#PermissionScope"
+      },
+      "traits": {
+        "smithy.api#documentation": "The permission scopes of the local user."
       }
     },
     "com.azure.storage#LocalUsersGet": {
@@ -6983,16 +7520,226 @@
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "canonicalizedResource": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The canonical path to the signed resource.",
             "smithy.api#required": {}
+          }
+        },
+        "signedResource": {
+          "target": "com.azure.storage#SignedResource",
+          "traits": {
+            "smithy.api#documentation": "The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share (s)."
+          }
+        },
+        "signedPermission": {
+          "target": "com.azure.storage#Permissions",
+          "traits": {
+            "smithy.api#documentation": "The signed permissions for the service SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p)."
+          }
+        },
+        "signedIp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An IP address or a range of IP addresses from which to accept requests."
+          }
+        },
+        "signedProtocol": {
+          "target": "com.azure.storage#HttpProtocol",
+          "traits": {
+            "smithy.api#documentation": "The protocol permitted for a request made with the account SAS."
+          }
+        },
+        "signedStart": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at which the SAS becomes valid."
+          }
+        },
+        "signedExpiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at which the shared access signature becomes invalid."
+          }
+        },
+        "signedIdentifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique value up to 64 characters in length that correlates to an access policy specified for the container, queue, or table."
+          }
+        },
+        "startPk": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start of partition key."
+          }
+        },
+        "endPk": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end of partition key."
+          }
+        },
+        "startRk": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start of row key."
+          }
+        },
+        "endRk": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end of row key."
+          }
+        },
+        "keyToSign": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key to sign the account SAS token with."
+          }
+        },
+        "rscc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The response header override for cache control."
+          }
+        },
+        "rscd": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The response header override for content disposition."
+          }
+        },
+        "rsce": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The response header override for content encoding."
+          }
+        },
+        "rscl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The response header override for content language."
+          }
+        },
+        "rsct": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The response header override for content type."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#HttpProtocol": {
+      "type": "enum",
+      "members": {
+        "HTTPS_HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https,http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The protocol permitted for a request made with the account SAS."
+      }
+    },
+    "com.azure.storage#Permissions": {
+      "type": "enum",
+      "members": {
+        "R": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r"
+          }
+        },
+        "D": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "d"
+          }
+        },
+        "W": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "w"
+          }
+        },
+        "L": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "l"
+          }
+        },
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "a"
+          }
+        },
+        "C": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "c"
+          }
+        },
+        "U": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "u"
+          }
+        },
+        "P": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "p"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p)."
+      }
+    },
+    "com.azure.storage#SignedResource": {
+      "type": "enum",
+      "members": {
+        "B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "b"
+          }
+        },
+        "C": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "c"
+          }
+        },
+        "F": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "f"
+          }
+        },
+        "S": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "s"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share (s)."
       }
     },
     "com.azure.storage#StorageAccountsListKeys": {
@@ -7125,16 +7872,119 @@
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "signedServices": {
+          "target": "com.azure.storage#Services",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).",
             "smithy.api#required": {}
+          }
+        },
+        "signedResourceTypes": {
+          "target": "com.azure.storage#SignedResourceTypes",
+          "traits": {
+            "smithy.api#documentation": "The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files.",
+            "smithy.api#required": {}
+          }
+        },
+        "signedPermission": {
+          "target": "com.azure.storage#Permissions",
+          "traits": {
+            "smithy.api#documentation": "The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).",
+            "smithy.api#required": {}
+          }
+        },
+        "signedIp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An IP address or a range of IP addresses from which to accept requests."
+          }
+        },
+        "signedProtocol": {
+          "target": "com.azure.storage#HttpProtocol",
+          "traits": {
+            "smithy.api#documentation": "The protocol permitted for a request made with the account SAS."
+          }
+        },
+        "signedStart": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at which the SAS becomes valid."
+          }
+        },
+        "signedExpiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time at which the shared access signature becomes invalid.",
+            "smithy.api#required": {}
+          }
+        },
+        "keyToSign": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key to sign the account SAS token with."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#SignedResourceTypes": {
+      "type": "enum",
+      "members": {
+        "S": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "s"
+          }
+        },
+        "C": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "c"
+          }
+        },
+        "O": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "o"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files."
+      }
+    },
+    "com.azure.storage#Services": {
+      "type": "enum",
+      "members": {
+        "B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "b"
+          }
+        },
+        "Q": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "q"
+          }
+        },
+        "T": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "t"
+          }
+        },
+        "F": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "f"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f)."
       }
     },
     "com.azure.storage#BlobInventoryPoliciesDelete": {
@@ -7617,16 +8467,68 @@
             "smithy.api#documentation": "The name of the storage account blob inventory policy. It should always be 'default'"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#BlobInventoryPolicyPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Returns the storage account blob inventory policy rules."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#BlobInventoryPolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "policy": {
+          "target": "com.azure.storage#BlobInventoryPolicySchemaInput",
+          "traits": {
+            "smithy.api#documentation": "The storage account blob inventory policy object. It is composed of policy rules.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage account blob inventory policy properties."
+      }
+    },
+    "com.azure.storage#BlobInventoryPolicySchemaInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Policy is enabled if set to true.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.storage#InventoryRuleType",
+          "traits": {
+            "smithy.api#documentation": "The valid value is Inventory",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.azure.storage#BlobInventoryPolicySchemaInputRulesList",
+          "traits": {
+            "smithy.api#documentation": "The storage account blob inventory policy rules. The rule is applied when it is enabled.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage account blob inventory policy rules."
+      }
+    },
+    "com.azure.storage#BlobInventoryPolicySchemaInputRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#BlobInventoryPolicyRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage account blob inventory policy rules. The rule is applied when it is enabled."
       }
     },
     "com.azure.storage#BlobInventoryPoliciesCreateOrUpdateRequestBlobInventoryPolicyName": {
@@ -8429,10 +9331,17 @@
             "smithy.api#documentation": "The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "deletedShareName": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Required. Identify the name of the deleted share that will be restored.",
+            "smithy.api#required": {}
+          }
+        },
+        "deletedShareVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Identify the version of the deleted share that will be restored.",
             "smithy.api#required": {}
           }
         }
@@ -8515,15 +9424,78 @@
             "smithy.api#documentation": "The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "action": {
+          "target": "com.azure.storage#LeaseShareAction",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Specifies the lease action. Can be one of the available actions.",
+            "smithy.api#required": {}
+          }
+        },
+        "leaseId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the lease. Can be specified in any valid GUID string format."
+          }
+        },
+        "breakPeriod": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Optional. For a break action, proposed duration the lease should continue before it is broken, in seconds, between 0 and 60."
+          }
+        },
+        "leaseDuration": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Required for acquire. Specifies the duration of the lease, in seconds, or negative one (-1) for a lease that never expires."
+          }
+        },
+        "proposedLeaseId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional for acquire, required for change. Proposed lease ID, in a GUID string format."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#LeaseShareAction": {
+      "type": "enum",
+      "members": {
+        "ACQUIRE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Acquire"
+          }
+        },
+        "RENEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Renew"
+          }
+        },
+        "CHANGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Change"
+          }
+        },
+        "RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Release"
+          }
+        },
+        "BREAK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Break"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the lease action. Can be one of the available actions."
       }
     },
     "com.azure.storage#FileSharesDelete": {
@@ -9099,16 +10071,98 @@
             "smithy.api#documentation": "The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#FileSharePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the file share."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#FileSharePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "com.azure.storage#FileSharePropertiesInputMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "A name-value pair to associate with the share as metadata."
+          }
+        },
+        "shareQuota": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The provisioned size of the share, in gibibytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400. For file shares created under Files Provisioned v2 account type, please refer to the GetFileServiceUsage API response for the minimum and maximum allowed provisioned storage size."
+          }
+        },
+        "provisionedIops": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The provisioned IOPS of the share. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed value for provisioned IOPS."
+          }
+        },
+        "provisionedBandwidthMibps": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The provisioned bandwidth of the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v2 account type. Please refer to the GetFileServiceUsage API response for the minimum and maximum allowed value for provisioned bandwidth."
+          }
+        },
+        "enabledProtocols": {
+          "target": "com.azure.storage#EnabledProtocols",
+          "traits": {
+            "smithy.api#documentation": "The authentication protocol that is used for the file share. Can only be specified when creating a share."
+          }
+        },
+        "rootSquash": {
+          "target": "com.azure.storage#RootSquashType",
+          "traits": {
+            "smithy.api#documentation": "The property is for NFS share only. The default is NoRootSquash."
+          }
+        },
+        "accessTier": {
+          "target": "com.azure.storage#ShareAccessTier",
+          "traits": {
+            "smithy.api#documentation": "Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium."
+          }
+        },
+        "signedIdentifiers": {
+          "target": "com.azure.storage#FileSharePropertiesInputSignedIdentifiersList",
+          "traits": {
+            "smithy.api#documentation": "List of stored access policies specified on the share."
+          }
+        },
+        "fileSharePaidBursting": {
+          "target": "com.azure.storage#FileSharePropertiesFileSharePaidBursting",
+          "traits": {
+            "smithy.api#documentation": "File Share Paid Bursting properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the file share."
+      }
+    },
+    "com.azure.storage#FileSharePropertiesInputSignedIdentifiersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#SignedIdentifier"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of stored access policies specified on the share."
+      }
+    },
+    "com.azure.storage#FileSharePropertiesInputMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A name-value pair to associate with the share as metadata."
       }
     },
     "com.azure.storage#FileSharesCreate": {
@@ -9216,11 +10270,10 @@
             "smithy.api#documentation": "Optional, used to expand the properties within share's properties. Valid values are: snapshots. Should be passed as a string with delimiter ','"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#FileSharePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the file share."
           }
         }
       },
@@ -9588,98 +10641,6 @@
         "smithy.api#documentation": "The SKU tier. This is based on the SKU name."
       }
     },
-    "com.azure.storage#SkuName": {
-      "type": "enum",
-      "members": {
-        "STANDARD_LRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Standard_LRS"
-          }
-        },
-        "STANDARD_GRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Standard_GRS"
-          }
-        },
-        "STANDARD_RAGRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Standard_RAGRS"
-          }
-        },
-        "STANDARD_ZRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Standard_ZRS"
-          }
-        },
-        "PREMIUM_LRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Premium_LRS"
-          }
-        },
-        "PREMIUM_ZRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Premium_ZRS"
-          }
-        },
-        "STANDARD_GZRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Standard_GZRS"
-          }
-        },
-        "STANDARD_RAGZRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "Standard_RAGZRS"
-          }
-        },
-        "STANDARDV2_LRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "StandardV2_LRS"
-          }
-        },
-        "STANDARDV2_GRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "StandardV2_GRS"
-          }
-        },
-        "STANDARDV2_ZRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "StandardV2_ZRS"
-          }
-        },
-        "STANDARDV2_GZRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "StandardV2_GZRS"
-          }
-        },
-        "PREMIUMV2_LRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PremiumV2_LRS"
-          }
-        },
-        "PREMIUMV2_ZRS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PremiumV2_ZRS"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType."
-      }
-    },
     "com.azure.storage#FileServicePropertiesProperties": {
       "type": "structure",
       "members": {
@@ -9865,11 +10826,10 @@
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#FileServicePropertiesProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of File services in storage account."
           }
         }
       },
@@ -10360,16 +11320,61 @@
             "smithy.api#documentation": "The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#EncryptionScopePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the encryption scope."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#EncryptionScopePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "com.azure.storage#EncryptionScopeSource",
+          "traits": {
+            "smithy.api#documentation": "The provider for the encryption scope. Possible values (case-insensitive):  Microsoft.Storage, Microsoft.KeyVault."
+          }
+        },
+        "state": {
+          "target": "com.azure.storage#EncryptionScopeState",
+          "traits": {
+            "smithy.api#documentation": "The state of the encryption scope. Possible values (case-insensitive):  Enabled, Disabled."
+          }
+        },
+        "keyVaultProperties": {
+          "target": "com.azure.storage#EncryptionScopeKeyVaultPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'."
+          }
+        },
+        "requireInfrastructureEncryption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of the encryption scope."
+      }
+    },
+    "com.azure.storage#EncryptionScopeKeyVaultPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "keyUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The object identifier for a key vault key object. When applied, the encryption scope will use the key referenced by the identifier to enable customer-managed key support on this encryption scope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'."
       }
     },
     "com.azure.storage#EncryptionScopesPut": {
@@ -10464,11 +11469,10 @@
             "smithy.api#documentation": "The name of the encryption scope within the specified storage account. Encryption scope names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#EncryptionScopePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the encryption scope."
           }
         }
       },
@@ -11093,16 +12097,77 @@
             "smithy.api#documentation": "The name of the Storage DataShare."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storage#DataSharesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storage#StorageDataSharePropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Storage DataShare."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#StorageDataSharePropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Arbitrary description of this Data Share. Max 250 characters."
+          }
+        },
+        "accessPolicies": {
+          "target": "com.azure.storage#StorageDataSharePropertiesUpdateAccessPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "List of access policies that specify the permission allowed to a managed identity.\nFor Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array.\nFor Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged.\nIf provided with a non-null value, the existing access policies are replaced with the specified list."
+          }
+        },
+        "assets": {
+          "target": "com.azure.storage#StorageDataSharePropertiesUpdateAssetsList",
+          "traits": {
+            "smithy.api#documentation": "List of assets that specify the properties of the shared resources.\nFor Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array.\nFor Update - This property is optional. If set to null or not passed, the existing assets are left unchanged.\nIf provided with a non-null value, the existing assets are replaced with the specified list."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage datashare properties"
+      }
+    },
+    "com.azure.storage#StorageDataSharePropertiesUpdateAssetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#StorageDataShareAsset"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of assets that specify the properties of the shared resources.\nFor Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array.\nFor Update - This property is optional. If set to null or not passed, the existing assets are left unchanged.\nIf provided with a non-null value, the existing assets are replaced with the specified list."
+      }
+    },
+    "com.azure.storage#StorageDataSharePropertiesUpdateAccessPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#StorageDataShareAccessPolicy"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of access policies that specify the permission allowed to a managed identity.\nFor Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array.\nFor Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged.\nIf provided with a non-null value, the existing access policies are replaced with the specified list."
+      }
+    },
+    "com.azure.storage#DataSharesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.storage#DataSharesCreate": {
@@ -11223,16 +12288,87 @@
             "smithy.api#documentation": "The name of the Storage DataShare."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storage#DataSharesCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.storage#StorageDataSharePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Storage DataShare.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#StorageDataSharePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Arbitrary description of this Data Share. Max 250 characters."
+          }
+        },
+        "accessPolicies": {
+          "target": "com.azure.storage#StorageDataSharePropertiesInputAccessPoliciesList",
+          "traits": {
+            "smithy.api#documentation": "List of access policies that specify the permission allowed to a managed identity.\nFor Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array.\nFor Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged.\nIf provided with a non-null value, the existing access policies are replaced with the specified list.",
+            "smithy.api#required": {}
+          }
+        },
+        "assets": {
+          "target": "com.azure.storage#StorageDataSharePropertiesInputAssetsList",
+          "traits": {
+            "smithy.api#documentation": "List of assets that specify the properties of the shared resources.\nFor Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array.\nFor Update - This property is optional. If set to null or not passed, the existing assets are left unchanged.\nIf provided with a non-null value, the existing assets are replaced with the specified list.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage datashare properties"
+      }
+    },
+    "com.azure.storage#StorageDataSharePropertiesInputAssetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#StorageDataShareAsset"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of assets that specify the properties of the shared resources.\nFor Create - This property is required and cannot be null. If no assets are provided at creation time, specify an empty array.\nFor Update - This property is optional. If set to null or not passed, the existing assets are left unchanged.\nIf provided with a non-null value, the existing assets are replaced with the specified list."
+      }
+    },
+    "com.azure.storage#StorageDataSharePropertiesInputAccessPoliciesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#StorageDataShareAccessPolicy"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of access policies that specify the permission allowed to a managed identity.\nFor Create - This property is required and cannot be null. If no access policies are provided at creation time, specify an empty array.\nFor Update - This property is optional. If set to null or not passed, the existing access policies are left unchanged.\nIf provided with a non-null value, the existing access policies are replaced with the specified list."
+      }
+    },
+    "com.azure.storage#DataSharesCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.storage#DataSharesGet": {
@@ -11585,10 +12721,10 @@
             "smithy.api#documentation": "The name of the Storage Connector."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "uniqueId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The uniqueId of the storage connector as returned by the server.",
             "smithy.api#required": {}
           }
         }
@@ -11895,16 +13031,100 @@
             "smithy.api#documentation": "The name of the Storage Connector."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storage#ConnectorsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storage#StorageConnectorPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Storage Connector."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#StorageConnectorPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.storage#StorageConnectorPropertiesUpdateState",
+          "traits": {
+            "smithy.api#documentation": "State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active)\n(While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Arbitrary description of this Storage Connector. Max 250 characters."
+          }
+        },
+        "testConnection": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Test connection to backing data source before creating the storage connector."
+          }
+        },
+        "source": {
+          "target": "com.azure.storage#StorageConnectorSourceUpdate",
+          "traits": {
+            "smithy.api#documentation": "Information about how to communicate with and authenticate to the backing data store."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage connector properties"
+      }
+    },
+    "com.azure.storage#StorageConnectorSourceUpdate": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.storage#StorageConnectorSourceType",
+          "traits": {
+            "smithy.api#documentation": "Type of the Storage Connector. Not mutable once the Storage Connector is created.\"",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage connector backing data source information"
+      }
+    },
+    "com.azure.storage#StorageConnectorPropertiesUpdateState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inactive"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active)\n(While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise."
+      }
+    },
+    "com.azure.storage#ConnectorsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.storage#ConnectorsCreate": {
@@ -12025,16 +13245,101 @@
             "smithy.api#documentation": "The name of the Storage Connector."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storage#ConnectorsCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.storage#StorageConnectorPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Storage Connector.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#StorageConnectorPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.azure.storage#StorageConnectorPropertiesInputState",
+          "traits": {
+            "smithy.api#documentation": "State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active)\n(While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Arbitrary description of this Storage Connector. Max 250 characters."
+          }
+        },
+        "testConnection": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Test connection to backing data source before creating the storage connector."
+          }
+        },
+        "dataSourceType": {
+          "target": "com.azure.storage#StorageConnectorDataSourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of backing data source for this Storage Connector.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "com.azure.storage#StorageConnectorSource",
+          "traits": {
+            "smithy.api#documentation": "Information about how to communicate with and authenticate to the backing data store.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage connector properties"
+      }
+    },
+    "com.azure.storage#StorageConnectorPropertiesInputState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Active"
+          }
+        },
+        "INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inactive"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active)\n(While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise."
+      }
+    },
+    "com.azure.storage#ConnectorsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.storage#ConnectorsGet": {
@@ -12395,16 +13700,31 @@
             "smithy.api#documentation": "The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storage#BlobContainersSetLegalHoldRequestTagsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP.",
             "smithy.api#required": {}
+          }
+        },
+        "allowProtectedAppendWritesAll": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#BlobContainersSetLegalHoldRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP."
       }
     },
     "com.azure.storage#BlobContainersObjectLevelWorm": {
@@ -12540,15 +13860,78 @@
             "smithy.api#documentation": "The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "action": {
+          "target": "com.azure.storage#LeaseContainerRequestAction",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Specifies the lease action. Can be one of the available actions.",
+            "smithy.api#required": {}
+          }
+        },
+        "leaseId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the lease. Can be specified in any valid GUID string format."
+          }
+        },
+        "breakPeriod": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Optional. For a break action, proposed duration the lease should continue before it is broken, in seconds, between 0 and 60."
+          }
+        },
+        "leaseDuration": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Required for acquire. Specifies the duration of the lease, in seconds, or negative one (-1) for a lease that never expires."
+          }
+        },
+        "proposedLeaseId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional for acquire, required for change. Proposed lease ID, in a GUID string format."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#LeaseContainerRequestAction": {
+      "type": "enum",
+      "members": {
+        "ACQUIRE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Acquire"
+          }
+        },
+        "RENEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Renew"
+          }
+        },
+        "CHANGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Change"
+          }
+        },
+        "RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Release"
+          }
+        },
+        "BREAK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Break"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the lease action. Can be one of the available actions."
       }
     },
     "com.azure.storage#BlobContainersLockImmutabilityPolicy": {
@@ -12806,10 +14189,11 @@
             "smithy.api#documentation": "The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#ImmutabilityPolicyProperty",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The properties of an ImmutabilityPolicy of a blob container.",
+            "smithy.api#required": {}
           }
         }
       },
@@ -13020,10 +14404,11 @@
             "smithy.api#documentation": "The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#ImmutabilityPolicyProperty",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The properties of an ImmutabilityPolicy of a blob container.",
+            "smithy.api#required": {}
           }
         }
       },
@@ -13189,16 +14574,31 @@
             "smithy.api#documentation": "The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.storage#BlobContainersClearLegalHoldRequestTagsList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP.",
             "smithy.api#required": {}
+          }
+        },
+        "allowProtectedAppendWritesAll": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#BlobContainersClearLegalHoldRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case at SRP."
       }
     },
     "com.azure.storage#BlobContainersDelete": {
@@ -13774,16 +15174,91 @@
             "smithy.api#documentation": "The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#ContainerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the blob container."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#ContainerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "defaultEncryptionScope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Default the container to use specified encryption scope for all writes."
+          }
+        },
+        "denyEncryptionScopeOverride": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Block override of encryption scope from the container default."
+          }
+        },
+        "publicAccess": {
+          "target": "com.azure.storage#PublicAccess",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether data in the container may be accessed publicly and the level of access."
+          }
+        },
+        "metadata": {
+          "target": "com.azure.storage#ContainerPropertiesInputMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "A name-value pair to associate with the container as metadata."
+          }
+        },
+        "immutableStorageWithVersioning": {
+          "target": "com.azure.storage#ImmutableStorageWithVersioningInput",
+          "traits": {
+            "smithy.api#documentation": "The object level immutability property of the container. The property is immutable and can only be set to true at the container creation time. Existing containers must undergo a migration process."
+          }
+        },
+        "enableNfsV3RootSquash": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable NFSv3 root squash on blob container."
+          }
+        },
+        "enableNfsV3AllSquash": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable NFSv3 all squash on blob container."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a container."
+      }
+    },
+    "com.azure.storage#ImmutableStorageWithVersioningInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This is an immutable property, when set to true it enables object level immutability at the container level."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object level immutability properties of the container."
+      }
+    },
+    "com.azure.storage#ContainerPropertiesInputMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A name-value pair to associate with the container as metadata."
       }
     },
     "com.azure.storage#BlobContainersCreate": {
@@ -13884,11 +15359,10 @@
             "smithy.api#documentation": "The name of the blob container within the specified storage account. Blob container names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#ContainerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of the blob container."
           }
         }
       },
@@ -14457,16 +15931,104 @@
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#BlobServicePropertiesPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The properties of a storage account’s Blob service."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#BlobServicePropertiesPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "cors": {
+          "target": "com.azure.storage#CorsRules",
+          "traits": {
+            "smithy.api#documentation": "Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service."
+          }
+        },
+        "defaultServiceVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions."
+          }
+        },
+        "deleteRetentionPolicy": {
+          "target": "com.azure.storage#DeleteRetentionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The blob service properties for blob soft delete."
+          }
+        },
+        "staticWebsite": {
+          "target": "com.azure.storage#StaticWebsite",
+          "traits": {
+            "smithy.api#documentation": "The static website properties for blob storage."
+          }
+        },
+        "isVersioningEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Versioning is enabled if set to true."
+          }
+        },
+        "automaticSnapshotPolicyEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Deprecated in favor of isVersioningEnabled property."
+          }
+        },
+        "changeFeed": {
+          "target": "com.azure.storage#ChangeFeed",
+          "traits": {
+            "smithy.api#documentation": "The blob service properties for change feed events."
+          }
+        },
+        "restorePolicy": {
+          "target": "com.azure.storage#RestorePolicyPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The blob service properties for blob restore policy."
+          }
+        },
+        "containerDeleteRetentionPolicy": {
+          "target": "com.azure.storage#DeleteRetentionPolicy",
+          "traits": {
+            "smithy.api#documentation": "The blob service properties for container soft delete."
+          }
+        },
+        "lastAccessTimeTrackingPolicy": {
+          "target": "com.azure.storage#LastAccessTimeTrackingPolicy",
+          "traits": {
+            "smithy.api#documentation": "The blob service property to configure last access time based tracking policy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a storage account’s Blob service."
+      }
+    },
+    "com.azure.storage#RestorePolicyPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Blob restore is enabled if set to true.",
+            "smithy.api#required": {}
+          }
+        },
+        "days": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The blob service properties for blob restore policy"
       }
     },
     "com.azure.storage#BlobServicesGetServiceProperties": {
@@ -14984,16 +16546,37 @@
             "smithy.api#documentation": "The type of the advanced platform metrics rule."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.storage#AdvancedPlatformMetricsRulePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Returns the advanced platform metrics rule."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#AdvancedPlatformMetricsRulePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean flag which enables the advanced platform metrics rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "ruleConfig": {
+          "target": "com.azure.storage#AdvancedPlatformMetricsRuleConfig",
+          "traits": {
+            "smithy.api#documentation": "Configuration for the advanced platform metrics rule.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object that defines the advanced platform metrics rule."
       }
     },
     "com.azure.storage#AdvancedPlatformMetricsCreateOrUpdateRequestAdvancedPlatformMetricsRuleType": {
@@ -17709,16 +19292,580 @@
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.storage#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the SKU name. Note that the SKU name cannot be updated to Standard_ZRS, Premium_LRS or Premium_ZRS, nor can accounts of those SKU names be updated to any other value."
+          }
+        },
+        "tags": {
+          "target": "com.azure.storage#StorageAccountsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters."
+          }
+        },
+        "identity": {
+          "target": "com.azure.storage#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storage#StorageAccountPropertiesUpdateParametersInput",
+          "traits": {
+            "smithy.api#documentation": "The parameters used when updating a storage account."
+          }
+        },
+        "kind": {
+          "target": "com.azure.storage#Kind",
+          "traits": {
+            "smithy.api#documentation": "Optional. Indicates the type of storage account. Currently only StorageV2 value supported by server."
+          }
+        },
+        "zones": {
+          "target": "com.azure.storage#StorageAccountsUpdateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "Optional. Gets or sets the pinned logical availability zone for the storage account."
+          }
+        },
+        "placement": {
+          "target": "com.azure.storage#Placement",
+          "traits": {
+            "smithy.api#documentation": "Optional. Gets or sets the zonal placement details for the storage account."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#StorageAccountsUpdateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional. Gets or sets the pinned logical availability zone for the storage account."
+      }
+    },
+    "com.azure.storage#StorageAccountPropertiesUpdateParametersInput": {
+      "type": "structure",
+      "members": {
+        "customDomain": {
+          "target": "com.azure.storage#CustomDomain",
+          "traits": {
+            "smithy.api#documentation": "Custom domain assigned to the storage account by the user. Name is the CNAME source. Only one custom domain is supported per storage account at this time. To clear the existing custom domain, use an empty string for the custom domain name property."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.storage#EncryptionInput",
+          "traits": {
+            "smithy.api#documentation": "Not applicable. Azure Storage encryption at rest is enabled by default for all storage accounts and cannot be disabled."
+          }
+        },
+        "sasPolicy": {
+          "target": "com.azure.storage#SasPolicy",
+          "traits": {
+            "smithy.api#documentation": "SasPolicy assigned to the storage account."
+          }
+        },
+        "keyPolicy": {
+          "target": "com.azure.storage#KeyPolicy",
+          "traits": {
+            "smithy.api#documentation": "KeyPolicy assigned to the storage account."
+          }
+        },
+        "accessTier": {
+          "target": "com.azure.storage#AccessTier",
+          "traits": {
+            "smithy.api#documentation": "Required for storage accounts where kind = BlobStorage. The access tier is used for billing. The 'Premium' access tier is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs storage account type."
+          }
+        },
+        "azureFilesIdentityBasedAuthentication": {
+          "target": "com.azure.storage#AzureFilesIdentityBasedAuthentication",
+          "traits": {
+            "smithy.api#documentation": "Provides the identity based authentication settings for Azure Files."
+          }
+        },
+        "supportsHttpsTrafficOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allows https traffic only to storage service if sets to true."
+          }
+        },
+        "isSftpEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables Secure File Transfer Protocol, if set to true"
+          }
+        },
+        "isLocalUserEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables local users feature, if set to true"
+          }
+        },
+        "enableExtendedGroups": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables extended group support with local users feature, if set to true"
+          }
+        },
+        "networkAcls": {
+          "target": "com.azure.storage#NetworkRuleSetInput",
+          "traits": {
+            "smithy.api#documentation": "Network rule set"
+          }
+        },
+        "largeFileSharesState": {
+          "target": "com.azure.storage#LargeFileSharesState",
+          "traits": {
+            "smithy.api#documentation": "Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled."
+          }
+        },
+        "routingPreference": {
+          "target": "com.azure.storage#RoutingPreference",
+          "traits": {
+            "smithy.api#documentation": "Maintains information about the network routing choice opted by the user for data transfer"
+          }
+        },
+        "dualStackEndpointPreference": {
+          "target": "com.azure.storage#DualStackEndpointPreference",
+          "traits": {
+            "smithy.api#documentation": "Maintains information about the Internet protocol opted by the user."
+          }
+        },
+        "allowBlobPublicAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false for this property."
+          }
+        },
+        "minimumTlsVersion": {
+          "target": "com.azure.storage#MinimumTlsVersion",
+          "traits": {
+            "smithy.api#documentation": "Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported."
+          }
+        },
+        "allowSharedKeyAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true."
+          }
+        },
+        "allowCrossTenantReplication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false for new accounts to follow best security practices by default."
+          }
+        },
+        "defaultToOAuthAuthentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false for this property."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.storage#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'."
+          }
+        },
+        "immutableStorageWithVersioning": {
+          "target": "com.azure.storage#ImmutableStorageAccount",
+          "traits": {
+            "smithy.api#documentation": "The property is immutable and can only be set to true at the account creation time. When set to true, it enables object level immutability for all the containers in the account by default."
+          }
+        },
+        "allowedCopyScope": {
+          "target": "com.azure.storage#AllowedCopyScope",
+          "traits": {
+            "smithy.api#documentation": "Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet."
+          }
+        },
+        "dnsEndpointType": {
+          "target": "com.azure.storage#DnsEndpointType",
+          "traits": {
+            "smithy.api#documentation": "Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier."
+          }
+        },
+        "geoPriorityReplicationStatus": {
+          "target": "com.azure.storage#GeoPriorityReplicationStatus",
+          "traits": {
+            "smithy.api#documentation": "Status indicating whether Geo Priority Replication is enabled for the account."
+          }
+        },
+        "allowSharedKeyAccessForServices": {
+          "target": "com.azure.storage#StorageAccountSharedKeyAccessProperties",
+          "traits": {
+            "smithy.api#documentation": "Indicate shared key access properties at service level"
+          }
+        },
+        "dataCollaborationPolicyProperties": {
+          "target": "com.azure.storage#StorageDataCollaborationPolicyProperties",
+          "traits": {
+            "smithy.api#documentation": "Data Collaboration policy for the storage account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters used when updating a storage account."
+      }
+    },
+    "com.azure.storage#NetworkRuleSetInput": {
+      "type": "structure",
+      "members": {
+        "bypass": {
+          "target": "com.azure.storage#NetworkRuleSetInputBypass",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, \"Logging, Metrics\"), or None to bypass none of those traffics."
+          }
+        },
+        "resourceAccessRules": {
+          "target": "com.azure.storage#NetworkRuleSetInputResourceAccessRulesList",
+          "traits": {
+            "smithy.api#documentation": "Sets the resource access rules"
+          }
+        },
+        "virtualNetworkRules": {
+          "target": "com.azure.storage#NetworkRuleSetInputVirtualNetworkRulesList",
+          "traits": {
+            "smithy.api#documentation": "Sets the virtual network rules"
+          }
+        },
+        "ipRules": {
+          "target": "com.azure.storage#NetworkRuleSetInputIpRulesList",
+          "traits": {
+            "smithy.api#documentation": "Sets the IP ACL rules"
+          }
+        },
+        "ipv6Rules": {
+          "target": "com.azure.storage#NetworkRuleSetInputIpv6RulesList",
+          "traits": {
+            "smithy.api#documentation": "Sets the IPv6 ACL rules."
+          }
+        },
+        "defaultAction": {
+          "target": "com.azure.storage#NetworkRuleSetInputDefaultAction",
+          "traits": {
+            "smithy.api#documentation": "Specifies the default action of allow or deny when no other rules match.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Network rule set"
+      }
+    },
+    "com.azure.storage#NetworkRuleSetInputDefaultAction": {
+      "type": "enum",
+      "members": {
+        "ALLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Allow"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Deny"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the default action of allow or deny when no other rules match."
+      }
+    },
+    "com.azure.storage#NetworkRuleSetInputIpv6RulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#IPRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "Sets the IPv6 ACL rules."
+      }
+    },
+    "com.azure.storage#NetworkRuleSetInputIpRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#IPRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "Sets the IP ACL rules"
+      }
+    },
+    "com.azure.storage#NetworkRuleSetInputVirtualNetworkRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#VirtualNetworkRuleInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Sets the virtual network rules"
+      }
+    },
+    "com.azure.storage#VirtualNetworkRuleInput": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.",
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.azure.storage#VirtualNetworkRuleInputAction",
+          "traits": {
+            "smithy.api#documentation": "The action of virtual network rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Virtual Network rule."
+      }
+    },
+    "com.azure.storage#VirtualNetworkRuleInputAction": {
+      "type": "enum",
+      "members": {
+        "ALLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Allow"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The action of virtual network rule."
+      }
+    },
+    "com.azure.storage#NetworkRuleSetInputResourceAccessRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.storage#ResourceAccessRule"
+      },
+      "traits": {
+        "smithy.api#documentation": "Sets the resource access rules"
+      }
+    },
+    "com.azure.storage#NetworkRuleSetInputBypass": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "LOGGING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Logging"
+          }
+        },
+        "METRICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Metrics"
+          }
+        },
+        "AZURESERVICES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureServices"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, \"Logging, Metrics\"), or None to bypass none of those traffics."
+      }
+    },
+    "com.azure.storage#EncryptionInput": {
+      "type": "structure",
+      "members": {
+        "services": {
+          "target": "com.azure.storage#EncryptionServicesInput",
+          "traits": {
+            "smithy.api#documentation": "List of services which support encryption."
+          }
+        },
+        "keySource": {
+          "target": "com.azure.storage#EncryptionInputKeySource",
+          "traits": {
+            "smithy.api#documentation": "The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault"
+          }
+        },
+        "requireInfrastructureEncryption": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest."
+          }
+        },
+        "keyvaultproperties": {
+          "target": "com.azure.storage#KeyVaultPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Properties provided by key vault."
+          }
+        },
+        "identity": {
+          "target": "com.azure.storage#EncryptionIdentity",
+          "traits": {
+            "smithy.api#documentation": "The identity to be used with service-side encryption at rest."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The encryption settings on the storage account."
+      }
+    },
+    "com.azure.storage#KeyVaultPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "keyname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of KeyVault key."
+          }
+        },
+        "keyversion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of KeyVault key."
+          }
+        },
+        "keyvaulturi": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Uri of KeyVault."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of key vault."
+      }
+    },
+    "com.azure.storage#EncryptionInputKeySource": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_STORAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Storage"
+          }
+        },
+        "MICROSOFT_KEYVAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Keyvault"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault"
+      }
+    },
+    "com.azure.storage#EncryptionServicesInput": {
+      "type": "structure",
+      "members": {
+        "blob": {
+          "target": "com.azure.storage#EncryptionServiceInput",
+          "traits": {
+            "smithy.api#documentation": "The encryption function of the blob storage service."
+          }
+        },
+        "file": {
+          "target": "com.azure.storage#EncryptionServiceInput",
+          "traits": {
+            "smithy.api#documentation": "The encryption function of the file storage service."
+          }
+        },
+        "table": {
+          "target": "com.azure.storage#EncryptionServiceInput",
+          "traits": {
+            "smithy.api#documentation": "The encryption function of the table storage service."
+          }
+        },
+        "queue": {
+          "target": "com.azure.storage#EncryptionServiceInput",
+          "traits": {
+            "smithy.api#documentation": "The encryption function of the queue storage service."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of services that support encryption."
+      }
+    },
+    "com.azure.storage#EncryptionServiceInput": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean indicating whether or not the service encrypts the data as it is stored. Encryption at rest is enabled by default today and cannot be disabled."
+          }
+        },
+        "keyType": {
+          "target": "com.azure.storage#KeyType",
+          "traits": {
+            "smithy.api#documentation": "Encryption key type to be used for the encryption service. 'Account' key type implies that an account-scoped encryption key will be used. 'Service' key type implies that a default service key is used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A service that allows server-side encryption to be used."
+      }
+    },
+    "com.azure.storage#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.storage#IdentityType",
+          "traits": {
+            "smithy.api#documentation": "The identity type.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.storage#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.storage#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.storage#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here."
+      }
+    },
+    "com.azure.storage#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "UserAssignedIdentity for the resource."
+      }
+    },
+    "com.azure.storage#StorageAccountsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters."
       }
     },
     "com.azure.storage#StorageAccountsCreate": {
@@ -17875,16 +20022,263 @@
             "smithy.api#documentation": "The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.storage#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Required. Gets or sets the SKU name.",
             "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.azure.storage#Kind",
+          "traits": {
+            "smithy.api#documentation": "Required. Indicates the type of storage account.",
+            "smithy.api#required": {}
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Gets or sets the location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource cannot be changed once it is created, but if an identical geo region is specified on update, the request will succeed.",
+            "smithy.api#required": {}
+          }
+        },
+        "extendedLocation": {
+          "target": "com.azure.storage#ExtendedLocation",
+          "traits": {
+            "smithy.api#documentation": "Optional. Set the extended location of the resource. If not set, the storage account will be created in Azure main region. Otherwise it will be created in the specified extended location"
+          }
+        },
+        "zones": {
+          "target": "com.azure.storage#StorageAccountsCreateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "Optional. Gets or sets the pinned logical availability zone for the storage account."
+          }
+        },
+        "placement": {
+          "target": "com.azure.storage#Placement",
+          "traits": {
+            "smithy.api#documentation": "Optional. Gets or sets the zonal placement details for the storage account."
+          }
+        },
+        "tags": {
+          "target": "com.azure.storage#StorageAccountsCreateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used for viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters."
+          }
+        },
+        "identity": {
+          "target": "com.azure.storage#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the resource."
+          }
+        },
+        "properties": {
+          "target": "com.azure.storage#StorageAccountPropertiesCreateParametersInput",
+          "traits": {
+            "smithy.api#documentation": "The parameters used to create the storage account."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#StorageAccountPropertiesCreateParametersInput": {
+      "type": "structure",
+      "members": {
+        "allowedCopyScope": {
+          "target": "com.azure.storage#AllowedCopyScope",
+          "traits": {
+            "smithy.api#documentation": "Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.storage#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Allow, disallow, or let Network Security Perimeter configuration to evaluate public network access to Storage Account. Value is optional but if passed in, must be 'Enabled', 'Disabled' or 'SecuredByPerimeter'."
+          }
+        },
+        "sasPolicy": {
+          "target": "com.azure.storage#SasPolicy",
+          "traits": {
+            "smithy.api#documentation": "SasPolicy assigned to the storage account."
+          }
+        },
+        "keyPolicy": {
+          "target": "com.azure.storage#KeyPolicy",
+          "traits": {
+            "smithy.api#documentation": "KeyPolicy assigned to the storage account."
+          }
+        },
+        "customDomain": {
+          "target": "com.azure.storage#CustomDomain",
+          "traits": {
+            "smithy.api#documentation": "User domain assigned to the storage account. Name is the CNAME source. Only one custom domain is supported per storage account at this time. To clear the existing custom domain, use an empty string for the custom domain name property."
+          }
+        },
+        "encryption": {
+          "target": "com.azure.storage#EncryptionInput",
+          "traits": {
+            "smithy.api#documentation": "Encryption settings to be used for server-side encryption for the storage account."
+          }
+        },
+        "networkAcls": {
+          "target": "com.azure.storage#NetworkRuleSetInput",
+          "traits": {
+            "smithy.api#documentation": "Network rule set"
+          }
+        },
+        "accessTier": {
+          "target": "com.azure.storage#AccessTier",
+          "traits": {
+            "smithy.api#documentation": "Required for storage accounts where kind = BlobStorage. The access tier is used for billing. The 'Premium' access tier is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs storage account type."
+          }
+        },
+        "azureFilesIdentityBasedAuthentication": {
+          "target": "com.azure.storage#AzureFilesIdentityBasedAuthentication",
+          "traits": {
+            "smithy.api#documentation": "Provides the identity based authentication settings for Azure Files."
+          }
+        },
+        "supportsHttpsTrafficOnly": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01."
+          }
+        },
+        "isSftpEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables Secure File Transfer Protocol, if set to true"
+          }
+        },
+        "isLocalUserEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables local users feature, if set to true"
+          }
+        },
+        "enableExtendedGroups": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enables extended group support with local users feature, if set to true"
+          }
+        },
+        "isHnsEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Account HierarchicalNamespace enabled if sets to true."
+          }
+        },
+        "largeFileSharesState": {
+          "target": "com.azure.storage#LargeFileSharesState",
+          "traits": {
+            "smithy.api#documentation": "Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled."
+          }
+        },
+        "routingPreference": {
+          "target": "com.azure.storage#RoutingPreference",
+          "traits": {
+            "smithy.api#documentation": "Maintains information about the network routing choice opted by the user for data transfer"
+          }
+        },
+        "dualStackEndpointPreference": {
+          "target": "com.azure.storage#DualStackEndpointPreference",
+          "traits": {
+            "smithy.api#documentation": "Maintains information about the Internet protocol opted by the user."
+          }
+        },
+        "allowBlobPublicAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false for this property."
+          }
+        },
+        "minimumTlsVersion": {
+          "target": "com.azure.storage#MinimumTlsVersion",
+          "traits": {
+            "smithy.api#documentation": "Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property. Minimum TLS version 1.3 version is not supported."
+          }
+        },
+        "allowSharedKeyAccess": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true."
+          }
+        },
+        "isNfsV3Enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "NFS 3.0 protocol support enabled if set to true."
+          }
+        },
+        "allowCrossTenantReplication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false for new accounts to follow best security practices by default."
+          }
+        },
+        "defaultToOAuthAuthentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false for this property."
+          }
+        },
+        "immutableStorageWithVersioning": {
+          "target": "com.azure.storage#ImmutableStorageAccount",
+          "traits": {
+            "smithy.api#documentation": "The property is immutable and can only be set to true at the account creation time. When set to true, it enables object level immutability for all the new containers in the account by default."
+          }
+        },
+        "dnsEndpointType": {
+          "target": "com.azure.storage#DnsEndpointType",
+          "traits": {
+            "smithy.api#documentation": "Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier."
+          }
+        },
+        "geoPriorityReplicationStatus": {
+          "target": "com.azure.storage#GeoPriorityReplicationStatus",
+          "traits": {
+            "smithy.api#documentation": "Status indicating whether Geo Priority Replication is enabled for the account."
+          }
+        },
+        "allowSharedKeyAccessForServices": {
+          "target": "com.azure.storage#StorageAccountSharedKeyAccessProperties",
+          "traits": {
+            "smithy.api#documentation": "Indicate shared key access properties at service level"
+          }
+        },
+        "dataCollaborationPolicyProperties": {
+          "target": "com.azure.storage#StorageDataCollaborationPolicyProperties",
+          "traits": {
+            "smithy.api#documentation": "Data Collaboration policy for the storage account."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The parameters used to create the storage account."
+      }
+    },
+    "com.azure.storage#StorageAccountsCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets a list of key value pairs that describe the resource. These tags can be used for viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters."
+      }
+    },
+    "com.azure.storage#StorageAccountsCreateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional. Gets or sets the pinned logical availability zone for the storage account."
       }
     },
     "com.azure.storage#StorageAccountsGetProperties": {
@@ -19009,16 +21403,37 @@
             "smithy.api#documentation": "The ID of the target subscription. The value must be an UUID."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The storage account name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.storage#StorageAccountsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, Microsoft.Storage/storageAccounts",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.storage#StorageAccountsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_STORAGE_STORAGEACCOUNTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.Storage/storageAccounts"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, Microsoft.Storage/storageAccounts"
       }
     },
     "com.azure.storage#OperationsList": {

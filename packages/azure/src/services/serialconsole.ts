@@ -201,7 +201,7 @@ export const SerialConsoleOperationsValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Serial Console operations */
 export type SerialConsoleOperationsValueList =
-  SerialConsoleOperationsValueItem[];
+  ReadonlyArray<SerialConsoleOperationsValueItem>;
 export const SerialConsoleOperationsValueList = /*@__PURE__*/ S.Array(
   SerialConsoleOperationsValueItem,
 ) as any as S.Schema<SerialConsoleOperationsValueList>;
@@ -266,6 +266,30 @@ export const SerialPortConnectResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SerialPortConnectResult",
 }) as any as S.Schema<SerialPortConnectResult>;
 
+/** Specifies whether the port is enabled for a serial console connection. */
+export type SerialPortState = "enabled" | "disabled";
+export const SerialPortState = /*@__PURE__*/ S.String;
+
+/** Specifies whether the port is currently active. */
+export type SerialPortConnectionState = "active" | "inactive";
+export const SerialPortConnectionState = /*@__PURE__*/ S.String;
+
+/** The properties of the serial port. */
+export interface SerialPortProperties {
+  /** Specifies whether the port is enabled for a serial console connection. */
+  state?: SerialPortState;
+  /** Specifies whether the port is currently active. */
+  connectionState?: SerialPortConnectionState;
+}
+export const SerialPortProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: S.optional(SerialPortState),
+    connectionState: S.optional(SerialPortConnectionState),
+  }),
+).annotate({
+  identifier: "SerialPortProperties",
+}) as any as S.Schema<SerialPortProperties>;
+
 export interface SerialPortsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -279,7 +303,8 @@ export interface SerialPortsCreateRequest {
   parentResource: string;
   /** The name of the serial port to connect to. */
   serialPort: string;
-  body: unknown;
+  /** The properties of the serial port. */
+  properties?: SerialPortProperties;
 }
 export const SerialPortsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -289,7 +314,7 @@ export const SerialPortsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     parentResourceType: S.String.pipe(T.Label()),
     parentResource: S.String.pipe(T.Label()),
     serialPort: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SerialPortProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -307,8 +332,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -316,8 +340,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -345,30 +368,6 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
     lastModifiedAt: S.optional(S.String),
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-/** Specifies whether the port is enabled for a serial console connection. */
-export type SerialPortState = "enabled" | "disabled" | (string & {});
-export const SerialPortState = /*@__PURE__*/ S.String;
-
-/** Specifies whether the port is currently active. */
-export type SerialPortConnectionState = "active" | "inactive" | (string & {});
-export const SerialPortConnectionState = /*@__PURE__*/ S.String;
-
-/** The properties of the serial port. */
-export interface SerialPortProperties {
-  /** Specifies whether the port is enabled for a serial console connection. */
-  state?: SerialPortState;
-  /** Specifies whether the port is currently active. */
-  connectionState?: SerialPortConnectionState;
-}
-export const SerialPortProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(SerialPortState),
-    connectionState: S.optional(SerialPortConnectionState),
-  }),
-).annotate({
-  identifier: "SerialPortProperties",
-}) as any as S.Schema<SerialPortProperties>;
 
 export interface SerialPortsCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -507,7 +506,7 @@ export const SerialPort = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SerialPort" }) as any as S.Schema<SerialPort>;
 
 /** The list of serial ports. */
-export type SerialPortListResultValueList = SerialPort[];
+export type SerialPortListResultValueList = ReadonlyArray<SerialPort>;
 export const SerialPortListResultValueList = /*@__PURE__*/ S.Array(
   SerialPort,
 ) as any as S.Schema<SerialPortListResultValueList>;

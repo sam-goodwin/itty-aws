@@ -12,18 +12,41 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The SKU to be applied for this resource */
+export interface Sku {
+  /** Name of the SKU to be applied */
+  name?: string;
+}
+export const Sku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
+
+/** Hybrid use benefit properties */
+export interface HybridUseBenefitPropertiesInput {}
+export const HybridUseBenefitPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "HybridUseBenefitPropertiesInput",
+}) as any as S.Schema<HybridUseBenefitPropertiesInput>;
+
 export interface HybridUseBenefitCreateRequest {
   /** The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now */
   scope: string;
   /** This is a unique identifier for a plan. Should be a guid. */
   planId: string;
-  body: unknown;
+  /** Hybrid use benefit SKU */
+  sku: Sku;
+  /** Property bag for a hybrid use benefit response */
+  properties?: HybridUseBenefitPropertiesInput;
 }
 export const HybridUseBenefitCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     planId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sku: Sku,
+    properties: S.optional(HybridUseBenefitPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -36,23 +59,8 @@ export const HybridUseBenefitCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "HybridUseBenefitCreateRequest",
 }) as any as S.Schema<HybridUseBenefitCreateRequest>;
 
-/** The SKU to be applied for this resource */
-export interface Sku {
-  /** Name of the SKU to be applied */
-  name?: string;
-}
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
-
 /** Represent the current state of the Reservation. */
-export type ProvisioningState =
-  | "Succeeded"
-  | "Cancelled"
-  | "Failed"
-  | (string & {});
+export type ProvisioningState = "Succeeded" | "Cancelled" | "Failed";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Hybrid use benefit properties */
@@ -230,7 +238,8 @@ export const HybridUseBenefitModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridUseBenefitModel>;
 
 /** List of hybrid use benefits */
-export type HybridUseBenefitListResultValueList = HybridUseBenefitModel[];
+export type HybridUseBenefitListResultValueList =
+  ReadonlyArray<HybridUseBenefitModel>;
 export const HybridUseBenefitListResultValueList = /*@__PURE__*/ S.Array(
   HybridUseBenefitModel,
 ) as any as S.Schema<HybridUseBenefitListResultValueList>;
@@ -278,13 +287,17 @@ export interface HybridUseBenefitUpdateRequest {
   scope: string;
   /** This is a unique identifier for a plan. Should be a guid. */
   planId: string;
-  body: unknown;
+  /** Hybrid use benefit SKU */
+  sku: Sku;
+  /** Property bag for a hybrid use benefit response */
+  properties?: HybridUseBenefitPropertiesInput;
 }
 export const HybridUseBenefitUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     planId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    sku: Sku,
+    properties: S.optional(HybridUseBenefitPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -385,7 +398,7 @@ export const OperationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationResponse>;
 
 /** List of all operations */
-export type OperationListValueList = OperationResponse[];
+export type OperationListValueList = ReadonlyArray<OperationResponse>;
 export const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationResponse,
 ) as any as S.Schema<OperationListValueList>;

@@ -17,6 +17,29 @@
     ]
   },
   "shapes": {
+    "com.cloudflare.custom_certificates#CreateRequestBundleMethod": {
+      "type": "enum",
+      "members": {
+        "UBIQUITOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ubiquitous"
+          }
+        },
+        "OPTIMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "optimal"
+          }
+        },
+        "FORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "force"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_certificates#CreateRequestDeploy": {
       "type": "enum",
       "members": {
@@ -101,7 +124,7 @@
           }
         },
         "bundle_method": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.custom_certificates#CreateRequestBundleMethod",
           "traits": {
             "smithy.api#documentation": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it."
           }
@@ -145,6 +168,29 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_certificates#CreateResponseBundleMethod": {
+      "type": "enum",
+      "members": {
+        "UBIQUITOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ubiquitous"
+          }
+        },
+        "OPTIMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "optimal"
+          }
+        },
+        "FORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "force"
+          }
+        }
       }
     },
     "com.cloudflare.custom_certificates#CreateResponseGeoRestrictionsLabel": {
@@ -320,6 +366,18 @@
           "traits": {
             "smithy.api#enumValue": "deleted"
           }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
         }
       }
     },
@@ -341,7 +399,7 @@
           }
         },
         "bundle_method": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.custom_certificates#CreateResponseBundleMethod",
           "traits": {
             "smithy.api#documentation": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it."
           }
@@ -492,6 +550,29 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.custom_certificates#EditRequestBundleMethod": {
+      "type": "enum",
+      "members": {
+        "UBIQUITOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ubiquitous"
+          }
+        },
+        "OPTIMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "optimal"
+          }
+        },
+        "FORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "force"
+          }
+        }
+      }
+    },
     "com.cloudflare.custom_certificates#EditRequestDeploy": {
       "type": "enum",
       "members": {
@@ -560,7 +641,7 @@
           }
         },
         "bundle_method": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.custom_certificates#EditRequestBundleMethod",
           "traits": {
             "smithy.api#documentation": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it."
           }
@@ -604,6 +685,29 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_certificates#EditResponseBundleMethod": {
+      "type": "enum",
+      "members": {
+        "UBIQUITOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ubiquitous"
+          }
+        },
+        "OPTIMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "optimal"
+          }
+        },
+        "FORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "force"
+          }
+        }
       }
     },
     "com.cloudflare.custom_certificates#EditResponseGeoRestrictionsLabel": {
@@ -779,6 +883,18 @@
           "traits": {
             "smithy.api#enumValue": "deleted"
           }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
         }
       }
     },
@@ -800,7 +916,7 @@
           }
         },
         "bundle_method": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.custom_certificates#EditResponseBundleMethod",
           "traits": {
             "smithy.api#documentation": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it."
           }
@@ -916,6 +1032,29 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_certificates#GetResponseBundleMethod": {
+      "type": "enum",
+      "members": {
+        "UBIQUITOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ubiquitous"
+          }
+        },
+        "OPTIMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "optimal"
+          }
+        },
+        "FORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "force"
+          }
+        }
       }
     },
     "com.cloudflare.custom_certificates#GetResponseGeoRestrictionsLabel": {
@@ -1091,6 +1230,18 @@
           "traits": {
             "smithy.api#enumValue": "deleted"
           }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
         }
       }
     },
@@ -1112,7 +1263,7 @@
           }
         },
         "bundle_method": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.custom_certificates#GetResponseBundleMethod",
           "traits": {
             "smithy.api#documentation": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it."
           }
@@ -1244,6 +1395,18 @@
           "traits": {
             "smithy.api#enumValue": "deleted"
           }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
         }
       }
     },
@@ -1289,6 +1452,29 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_certificates#ListResultItemBundleMethod": {
+      "type": "enum",
+      "members": {
+        "UBIQUITOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ubiquitous"
+          }
+        },
+        "OPTIMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "optimal"
+          }
+        },
+        "FORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "force"
+          }
+        }
       }
     },
     "com.cloudflare.custom_certificates#ListResultItemGeoRestrictionsLabel": {
@@ -1464,6 +1650,18 @@
           "traits": {
             "smithy.api#enumValue": "deleted"
           }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
         }
       }
     },
@@ -1485,7 +1683,7 @@
           }
         },
         "bundle_method": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.custom_certificates#ListResultItemBundleMethod",
           "traits": {
             "smithy.api#documentation": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it."
           }
@@ -1641,6 +1839,29 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_certificates#PrioritizeUpdateResultItemBundleMethod": {
+      "type": "enum",
+      "members": {
+        "UBIQUITOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ubiquitous"
+          }
+        },
+        "OPTIMAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "optimal"
+          }
+        },
+        "FORCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "force"
+          }
+        }
       }
     },
     "com.cloudflare.custom_certificates#PrioritizeUpdateResultItemGeoRestrictionsLabel": {
@@ -1816,6 +2037,18 @@
           "traits": {
             "smithy.api#enumValue": "deleted"
           }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
         }
       }
     },
@@ -1837,7 +2070,7 @@
           }
         },
         "bundle_method": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.custom_certificates#PrioritizeUpdateResultItemBundleMethod",
           "traits": {
             "smithy.api#documentation": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it."
           }

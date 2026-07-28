@@ -99,7 +99,7 @@ export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedExce
   "NotAuthorizedException",
   { Message: S.optional(S.String) },
 ) {}
-export type ServiceType = "RDS" | "DOCDB" | (string & {});
+export type ServiceType = "RDS" | "DOCDB";
 export const ServiceType = /*@__PURE__*/ S.String;
 
 export type IdentifierString = string;
@@ -345,11 +345,7 @@ export const GetDimensionKeyDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDimensionKeyDetailsRequest",
 }) as any as S.Schema<GetDimensionKeyDetailsRequest>;
-export type DetailStatus =
-  | "AVAILABLE"
-  | "PROCESSING"
-  | "UNAVAILABLE"
-  | (string & {});
+export type DetailStatus = "AVAILABLE" | "PROCESSING" | "UNAVAILABLE";
 export const DetailStatus = /*@__PURE__*/ S.String;
 
 export interface DimensionKeyDetail {
@@ -376,10 +372,10 @@ export const GetDimensionKeyDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDimensionKeyDetailsResponse",
 }) as any as S.Schema<GetDimensionKeyDetailsResponse>;
-export type TextFormat = "PLAIN_TEXT" | "MARKDOWN" | (string & {});
+export type TextFormat = "PLAIN_TEXT" | "MARKDOWN";
 export const TextFormat = /*@__PURE__*/ S.String;
 
-export type AcceptLanguage = "EN_US" | (string & {});
+export type AcceptLanguage = "EN_US";
 export const AcceptLanguage = /*@__PURE__*/ S.String;
 
 export interface GetPerformanceAnalysisReportRequest {
@@ -410,13 +406,13 @@ export const GetPerformanceAnalysisReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPerformanceAnalysisReportRequest",
 }) as any as S.Schema<GetPerformanceAnalysisReportRequest>;
-export type AnalysisStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | (string & {});
+export type AnalysisStatus = "RUNNING" | "SUCCEEDED" | "FAILED";
 export const AnalysisStatus = /*@__PURE__*/ S.String;
 
-export type ContextType = "CAUSAL" | "CONTEXTUAL" | (string & {});
+export type ContextType = "CAUSAL" | "CONTEXTUAL";
 export const ContextType = /*@__PURE__*/ S.String;
 
-export type Severity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
+export type Severity = "LOW" | "MEDIUM" | "HIGH";
 export const Severity = /*@__PURE__*/ S.String;
 
 export type MarkdownString = string | redacted.Redacted<string>;
@@ -559,8 +555,7 @@ export type FeatureStatus =
   | "UNSUPPORTED"
   | "ENABLED_PENDING_REBOOT"
   | "DISABLED_PENDING_REBOOT"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const FeatureStatus = /*@__PURE__*/ S.String;
 
 export interface FeatureMetadata {
@@ -602,7 +597,7 @@ export const MetricQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricQuery" }) as any as S.Schema<MetricQuery>;
 export type MetricQueryList = MetricQuery[];
 export const MetricQueryList = /*@__PURE__*/ S.Array(MetricQuery);
-export type PeriodAlignment = "END_TIME" | "START_TIME" | (string & {});
+export type PeriodAlignment = "END_TIME" | "START_TIME";
 export const PeriodAlignment = /*@__PURE__*/ S.String;
 
 export interface GetResourceMetricsRequest {
@@ -702,8 +697,7 @@ export const DimensionsMetricList = /*@__PURE__*/ S.Array(S.String);
 export type FineGrainedAction =
   | "DescribeDimensionKeys"
   | "GetDimensionKeyDetails"
-  | "GetResourceMetrics"
-  | (string & {});
+  | "GetResourceMetrics";
 export const FineGrainedAction = /*@__PURE__*/ S.String;
 
 export type AuthorizedActionsList = FineGrainedAction[];

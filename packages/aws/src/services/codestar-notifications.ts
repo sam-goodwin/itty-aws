@@ -146,7 +146,7 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
 export type Targets = Target[];
 export const Targets = /*@__PURE__*/ S.Array(Target);
-export type DetailType = "BASIC" | "FULL" | (string & {});
+export type DetailType = "BASIC" | "FULL";
 export const DetailType = /*@__PURE__*/ S.String;
 
 export type ClientRequestToken = string;
@@ -154,7 +154,7 @@ export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
-export type NotificationRuleStatus = "ENABLED" | "DISABLED" | (string & {});
+export type NotificationRuleStatus = "ENABLED" | "DISABLED";
 export const NotificationRuleStatus = /*@__PURE__*/ S.String;
 
 export interface CreateNotificationRuleRequest {
@@ -295,8 +295,7 @@ export type TargetStatus =
   | "ACTIVE"
   | "UNREACHABLE"
   | "INACTIVE"
-  | "DEACTIVATED"
-  | (string & {});
+  | "DEACTIVATED";
 export const TargetStatus = /*@__PURE__*/ S.String;
 
 export interface TargetSummary {
@@ -350,10 +349,7 @@ export const DescribeNotificationRuleResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeNotificationRuleResult",
 }) as any as S.Schema<DescribeNotificationRuleResult>;
-export type ListEventTypesFilterName =
-  | "RESOURCE_TYPE"
-  | "SERVICE_NAME"
-  | (string & {});
+export type ListEventTypesFilterName = "RESOURCE_TYPE" | "SERVICE_NAME";
 export const ListEventTypesFilterName = /*@__PURE__*/ S.String;
 
 export type ListEventTypesFilterValue = string;
@@ -410,8 +406,7 @@ export type ListNotificationRulesFilterName =
   | "EVENT_TYPE_ID"
   | "CREATED_BY"
   | "RESOURCE"
-  | "TARGET_ADDRESS"
-  | (string & {});
+  | "TARGET_ADDRESS";
 export const ListNotificationRulesFilterName = /*@__PURE__*/ S.String;
 
 export type ListNotificationRulesFilterValue = string;
@@ -505,8 +500,7 @@ export const ListTagsForResourceResult = /*@__PURE__*/ S.suspend(() =>
 export type ListTargetsFilterName =
   | "TARGET_TYPE"
   | "TARGET_ADDRESS"
-  | "TARGET_STATUS"
-  | (string & {});
+  | "TARGET_STATUS";
 export const ListTargetsFilterName = /*@__PURE__*/ S.String;
 
 export type ListTargetsFilterValue = string;

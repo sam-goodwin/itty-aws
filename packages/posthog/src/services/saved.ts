@@ -36,13 +36,13 @@ export class NotFound extends T.applyErrorMatchers(
 ) {}
 
 /** Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
-export type SavedCreateRequestWidthsList = number[];
+export type SavedCreateRequestWidthsList = ReadonlyArray<number>;
 export const SavedCreateRequestWidthsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SavedCreateRequestWidthsList>;
 
 /** * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
-export type HeatmapType = "screenshot" | "iframe" | "recording" | (string & {});
+export type HeatmapType = "screenshot" | "iframe" | "recording";
 export const HeatmapType = /*@__PURE__*/ S.String;
 
 export interface SavedCreateRequest {
@@ -88,8 +88,7 @@ export const SavedCreateRequest = /*@__PURE__*/ S.suspend(() =>
 export type HeatmapScreenshotResponseStatusEnum =
   | "processing"
   | "completed"
-  | "failed"
-  | (string & {});
+  | "failed";
 export const HeatmapScreenshotResponseStatusEnum = /*@__PURE__*/ S.String;
 
 export interface HeatmapSnapshotMetadata {
@@ -108,7 +107,8 @@ export const HeatmapSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HeatmapSnapshotMetadata>;
 
 /** Per-width render metadata. Fetch the actual image bytes for a width from the content endpoint. */
-export type HeatmapScreenshotResponseSnapshotsList = HeatmapSnapshotMetadata[];
+export type HeatmapScreenshotResponseSnapshotsList =
+  ReadonlyArray<HeatmapSnapshotMetadata>;
 export const HeatmapScreenshotResponseSnapshotsList = /*@__PURE__*/ S.Array(
   HeatmapSnapshotMetadata,
 ) as any as S.Schema<HeatmapScreenshotResponseSnapshotsList>;
@@ -128,11 +128,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -188,7 +187,7 @@ export interface HeatmapScreenshotResponse {
   deleted?: boolean;
   /** Whether the headless browser dismisses cookie/consent banners before capturing the screenshot. Only applies to 'screenshot' heatmaps. */
   block_consent_modals?: boolean;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
   created_at?: string;
   updated_at?: string;
   /** Error detail when screenshot generation failed, otherwise null. */
@@ -208,7 +207,7 @@ export const HeatmapScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
     snapshots: S.optional(HeatmapScreenshotResponseSnapshotsList),
     deleted: S.optional(S.Boolean),
     block_consent_modals: S.optional(S.Boolean),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
     exception: S.optional(S.NullOr(S.String)),
@@ -283,7 +282,8 @@ export const SavedListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SavedListRequest",
 }) as any as S.Schema<SavedListRequest>;
 
-export type SavedHeatmapListResponseResultsList = HeatmapScreenshotResponse[];
+export type SavedHeatmapListResponseResultsList =
+  ReadonlyArray<HeatmapScreenshotResponse>;
 export const SavedHeatmapListResponseResultsList = /*@__PURE__*/ S.Array(
   HeatmapScreenshotResponse,
 ) as any as S.Schema<SavedHeatmapListResponseResultsList>;
@@ -302,7 +302,7 @@ export const SavedHeatmapListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SavedHeatmapListResponse",
 }) as any as S.Schema<SavedHeatmapListResponse>;
 
-export type SavedListResponseBodyList = SavedHeatmapListResponse[];
+export type SavedListResponseBodyList = ReadonlyArray<SavedHeatmapListResponse>;
 export const SavedListResponseBodyList = /*@__PURE__*/ S.Array(
   SavedHeatmapListResponse,
 ) as any as S.Schema<SavedListResponseBodyList>;
@@ -315,7 +315,7 @@ export const SavedListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SavedListResponse>;
 
 /** Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
-export type SavedPartialUpdateRequestWidthsList = number[];
+export type SavedPartialUpdateRequestWidthsList = ReadonlyArray<number>;
 export const SavedPartialUpdateRequestWidthsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SavedPartialUpdateRequestWidthsList>;

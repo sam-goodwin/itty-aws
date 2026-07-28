@@ -12,6 +12,282 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** Resource tags. */
+export type EnterpriseMccCacheNodesOperationsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EnterpriseMccCacheNodesOperationsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<EnterpriseMccCacheNodesOperationsCreateOrUpdateRequestTagsMap>;
+
+/** Cache node resource comma separated values of Cidrs. */
+export type CacheNodeEntityInputCidrCsvList = ReadonlyArray<string>;
+export const CacheNodeEntityInputCidrCsvList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CacheNodeEntityInputCidrCsvList>;
+
+/** Auto update Ring type */
+export type AutoUpdateRingType =
+  | "Preview"
+  | "Slow"
+  | "Fast"
+  | "Stable"
+  | "Beta";
+export const AutoUpdateRingType = /*@__PURE__*/ S.String;
+
+/** Model representing Cache Node for ConnectedCache resource */
+export interface CacheNodeEntityInput {
+  /** Cache node resource Azure fully qualified resource Id. */
+  fullyQualifiedResourceId?: string;
+  /** Cache node resource customer resource name. */
+  customerName?: string;
+  /** Cache node resource Ip address. */
+  ipAddress?: string;
+  /** Cache node resource customer index as string. */
+  customerIndex?: string;
+  /** Cache node resource identifier of the cache node */
+  cacheNodeId?: string;
+  /** Cache node resource name. */
+  cacheNodeName?: string;
+  /** Cache node resource customer resource Asn (autonomous system number) */
+  customerAsn?: number;
+  /** Cache node resource flag for indicating if cache node is enabled. */
+  isEnabled?: boolean;
+  /** Cache node resource maximum allowed egress in Mbps. */
+  maxAllowableEgressInMbps?: number;
+  /** Cache node resource flag for determining if managed by enterprise as boolean. */
+  isEnterpriseManaged?: boolean;
+  /** Cache node resource comma separated values of Cidrs. */
+  cidrCsv?: CacheNodeEntityInputCidrCsvList;
+  /** Cache node resource Bgp network interface. */
+  bgpNetworkInterface?: string;
+  /** Cache node resource flag for determining if customer will be migrated. */
+  shouldMigrate?: boolean;
+  /** Cache node resource current Cidr range precedence selection type. */
+  cidrSelectionType?: number;
+  /** FQDN(fully qualified domain name) value of the mcc cache node */
+  fullyQualifiedDomainName?: string;
+  /** Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01. */
+  autoUpdateRingType?: AutoUpdateRingType;
+  /** Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc. */
+  autoUpdateRequestedWeek?: number;
+  /** Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc. */
+  autoUpdateRequestedDay?: number;
+  /** Customer requested time of the day for mcc install of auto update cycle, should be hh:mm */
+  autoUpdateRequestedTime?: string;
+  /** Cache node port firewall rule creation opt-in for port 80 property */
+  openFirewallPort80?: boolean;
+  /** Cache node port firewall rule creation opt-in for port 443 property */
+  openFirewallPort443?: boolean;
+  /** Cache node port firewall rule creation opt-in for port 5000 property */
+  openFirewallPort5000?: boolean;
+  /** Cache node port firewall rule creation opt-in for port 5001 property */
+  openFirewallPort5001?: boolean;
+  /** Connected Cache runtime account type */
+  runtimeAccountType?: string;
+}
+export const CacheNodeEntityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fullyQualifiedResourceId: S.optional(S.String),
+    customerName: S.optional(S.String),
+    ipAddress: S.optional(S.String),
+    customerIndex: S.optional(S.String),
+    cacheNodeId: S.optional(S.String),
+    cacheNodeName: S.optional(S.String),
+    customerAsn: S.optional(S.Number),
+    isEnabled: S.optional(S.Boolean),
+    maxAllowableEgressInMbps: S.optional(S.Number),
+    isEnterpriseManaged: S.optional(S.Boolean),
+    cidrCsv: S.optional(CacheNodeEntityInputCidrCsvList),
+    bgpNetworkInterface: S.optional(S.String),
+    shouldMigrate: S.optional(S.Boolean),
+    cidrSelectionType: S.optional(S.Number),
+    fullyQualifiedDomainName: S.optional(S.String),
+    autoUpdateRingType: S.optional(AutoUpdateRingType),
+    autoUpdateRequestedWeek: S.optional(S.Number),
+    autoUpdateRequestedDay: S.optional(S.Number),
+    autoUpdateRequestedTime: S.optional(S.String),
+    openFirewallPort80: S.optional(S.Boolean),
+    openFirewallPort443: S.optional(S.Boolean),
+    openFirewallPort5000: S.optional(S.Boolean),
+    openFirewallPort5001: S.optional(S.Boolean),
+    runtimeAccountType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CacheNodeEntityInput",
+}) as any as S.Schema<CacheNodeEntityInput>;
+
+/** issues list to return the issues as part of the additional cache node properties */
+export type AdditionalCacheNodePropertiesInputCacheNodePropertiesDetailsIssuesListList =
+  ReadonlyArray<string>;
+export const AdditionalCacheNodePropertiesInputCacheNodePropertiesDetailsIssuesListList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AdditionalCacheNodePropertiesInputCacheNodePropertiesDetailsIssuesListList>;
+
+/** Drive configuration for cache node */
+export interface CacheNodeDriveConfiguration {
+  /** physical path location of the folder used for caching content */
+  physicalPath?: string;
+  /** physical size of the drive used for caching content */
+  sizeInGb?: number;
+  /** corresponding nginx cache number. Valid cache numbers are 1 - 20 */
+  cacheNumber?: number;
+  /** full binding for corresponding nginx cache drive */
+  nginxMapping?: string;
+}
+export const CacheNodeDriveConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    physicalPath: S.optional(S.String),
+    sizeInGb: S.optional(S.Number),
+    cacheNumber: S.optional(S.Number),
+    nginxMapping: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CacheNodeDriveConfiguration",
+}) as any as S.Schema<CacheNodeDriveConfiguration>;
+
+/** Cache node resource drive configurations. */
+export type AdditionalCacheNodePropertiesInputDriveConfigurationList =
+  ReadonlyArray<CacheNodeDriveConfiguration>;
+export const AdditionalCacheNodePropertiesInputDriveConfigurationList =
+  /*@__PURE__*/ S.Array(
+    CacheNodeDriveConfiguration,
+  ) as any as S.Schema<AdditionalCacheNodePropertiesInputDriveConfigurationList>;
+
+/** Bgp configuration of cache node */
+export interface BgpConfiguration {
+  /** Asn to ip address mapping */
+  asnToIpAddressMapping?: string;
+}
+export const BgpConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    asnToIpAddressMapping: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BgpConfiguration",
+}) as any as S.Schema<BgpConfiguration>;
+
+/** ProxyUrl configuration of cache node */
+export interface ProxyUrlConfiguration {
+  /** Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80 */
+  proxyUrl?: string;
+}
+export const ProxyUrlConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    proxyUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProxyUrlConfiguration",
+}) as any as S.Schema<ProxyUrlConfiguration>;
+
+/** Proxy details enum */
+export type ProxyRequired = "None" | "Required";
+export const ProxyRequired = /*@__PURE__*/ S.String;
+
+/** Operating System of the cache node */
+export type OsType = "Windows" | "Linux" | "Eflow";
+export const OsType = /*@__PURE__*/ S.String;
+
+/** Model representing cache node for connected cache resource */
+export interface AdditionalCacheNodePropertiesInput {
+  /** issues list to return the issues as part of the additional cache node properties */
+  cacheNodePropertiesDetailsIssuesList?: AdditionalCacheNodePropertiesInputCacheNodePropertiesDetailsIssuesListList;
+  /** Cache node resource drive configurations. */
+  driveConfiguration?: AdditionalCacheNodePropertiesInputDriveConfigurationList;
+  /** Cache node resource Bgp configuration. */
+  bgpConfiguration?: BgpConfiguration;
+  /** proxyUrl configuration of the cache node */
+  proxyUrlConfiguration?: ProxyUrlConfiguration;
+  /** Cache node resource requires a proxy */
+  isProxyRequired?: ProxyRequired;
+  /** Operating system of the cache node */
+  osType?: OsType;
+  /** Auto update or fast update version */
+  autoUpdateVersion?: string;
+  /** Update related information details */
+  updateInfoDetails?: string;
+  /** customer requested date time for mcc install of update cycle */
+  updateRequestedDateTime?: string;
+  /** Resource creation method of mcc cache node resource, cli or portal */
+  creationMethod?: number;
+  /** Optional property #1 of Mcc response object */
+  optionalProperty1?: string;
+  /** Optional property #2 of Mcc response object */
+  optionalProperty2?: string;
+  /** Optional property #3 of Mcc response object */
+  optionalProperty3?: string;
+  /** Optional property #4 of Mcc response object */
+  optionalProperty4?: string;
+  /** Optional property #5 of Mcc response object */
+  optionalProperty5?: string;
+}
+export const AdditionalCacheNodePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cacheNodePropertiesDetailsIssuesList: S.optional(
+      AdditionalCacheNodePropertiesInputCacheNodePropertiesDetailsIssuesListList,
+    ),
+    driveConfiguration: S.optional(
+      AdditionalCacheNodePropertiesInputDriveConfigurationList,
+    ),
+    bgpConfiguration: S.optional(BgpConfiguration),
+    proxyUrlConfiguration: S.optional(ProxyUrlConfiguration),
+    isProxyRequired: S.optional(ProxyRequired),
+    osType: S.optional(OsType),
+    autoUpdateVersion: S.optional(S.String),
+    updateInfoDetails: S.optional(S.String),
+    updateRequestedDateTime: S.optional(S.String),
+    creationMethod: S.optional(S.Number),
+    optionalProperty1: S.optional(S.String),
+    optionalProperty2: S.optional(S.String),
+    optionalProperty3: S.optional(S.String),
+    optionalProperty4: S.optional(S.String),
+    optionalProperty5: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AdditionalCacheNodePropertiesInput",
+}) as any as S.Schema<AdditionalCacheNodePropertiesInput>;
+
+/** The error detail. */
+export interface CacheNodePropertyInputError {}
+export const CacheNodePropertyInputError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CacheNodePropertyInputError",
+}) as any as S.Schema<CacheNodePropertyInputError>;
+
+/** Model representing an Mcc cache node connectedCache resource */
+export interface CacheNodePropertyInput {
+  /** Mcc cache node resource (cache node entity). */
+  cacheNode?: CacheNodeEntityInput;
+  /** Mcc cache node resource additional properties. */
+  additionalCacheNodeProperties?: AdditionalCacheNodePropertiesInput;
+  /** Mcc response status code. */
+  statusCode?: string;
+  /** Mcc response status text as string for retrieving status details. */
+  statusText?: string;
+  /** Mcc response status details for retrieving response inner details. */
+  statusDetails?: string;
+  /** The error detail. */
+  error?: CacheNodePropertyInputError;
+}
+export const CacheNodePropertyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cacheNode: S.optional(CacheNodeEntityInput),
+    additionalCacheNodeProperties: S.optional(
+      AdditionalCacheNodePropertiesInput,
+    ),
+    statusCode: S.optional(S.String),
+    statusText: S.optional(S.String),
+    statusDetails: S.optional(S.String),
+    error: S.optional(CacheNodePropertyInputError),
+  }),
+).annotate({
+  identifier: "CacheNodePropertyInput",
+}) as any as S.Schema<CacheNodePropertyInput>;
+
 export interface EnterpriseMccCacheNodesOperationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -21,7 +297,12 @@ export interface EnterpriseMccCacheNodesOperationsCreateOrUpdateRequest {
   customerResourceName: string;
   /** Name of the ConnectedCache resource */
   cacheNodeResourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: EnterpriseMccCacheNodesOperationsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: CacheNodePropertyInput;
 }
 export const EnterpriseMccCacheNodesOperationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -30,7 +311,11 @@ export const EnterpriseMccCacheNodesOperationsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       customerResourceName: S.String.pipe(T.Label()),
       cacheNodeResourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(
+        EnterpriseMccCacheNodesOperationsCreateOrUpdateRequestTagsMap,
+      ),
+      location: S.String,
+      properties: S.optional(CacheNodePropertyInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -48,8 +333,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -57,8 +341,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -105,12 +388,11 @@ export type ProvisioningState =
   | "Unknown"
   | "Accepted"
   | "Upgrading"
-  | "Deleting"
-  | (string & {});
+  | "Deleting";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
 /** Cache node resource comma separated values of Cidrs. */
-export type CacheNodeEntityCidrCsvList = string[];
+export type CacheNodeEntityCidrCsvList = ReadonlyArray<string>;
 export const CacheNodeEntityCidrCsvList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CacheNodeEntityCidrCsvList>;
@@ -120,26 +402,12 @@ export type BgpReviewStateEnum =
   | "NotConfigured"
   | "InReview"
   | "Approved"
-  | "AttentionRequired"
-  | (string & {});
+  | "AttentionRequired";
 export const BgpReviewStateEnum = /*@__PURE__*/ S.String;
 
 /** Cache node configuration setup state */
-export type ConfigurationState =
-  | "Configured"
-  | "NotConfigured_Ip"
-  | (string & {});
+export type ConfigurationState = "Configured" | "NotConfigured_Ip";
 export const ConfigurationState = /*@__PURE__*/ S.String;
-
-/** Auto update Ring type */
-export type AutoUpdateRingType =
-  | "Preview"
-  | "Slow"
-  | "Fast"
-  | "Stable"
-  | "Beta"
-  | (string & {});
-export const AutoUpdateRingType = /*@__PURE__*/ S.String;
 
 /** Model representing Cache Node for ConnectedCache resource */
 export interface CacheNodeEntity {
@@ -327,14 +595,14 @@ export const CacheNodeEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** issues list to return the issues as part of the additional cache node properties */
 export type AdditionalCacheNodePropertiesCacheNodePropertiesDetailsIssuesListList =
-  string[];
+  ReadonlyArray<string>;
 export const AdditionalCacheNodePropertiesCacheNodePropertiesDetailsIssuesListList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AdditionalCacheNodePropertiesCacheNodePropertiesDetailsIssuesListList>;
 
 /** current cache node issue list. */
-export type AdditionalCacheNodePropertiesIssuesListList = string[];
+export type AdditionalCacheNodePropertiesIssuesListList = ReadonlyArray<string>;
 export const AdditionalCacheNodePropertiesIssuesListList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -435,69 +703,13 @@ export const MccCacheNodeAutoUpdateInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "MccCacheNodeAutoUpdateInfo",
 }) as any as S.Schema<MccCacheNodeAutoUpdateInfo>;
 
-/** Drive configuration for cache node */
-export interface CacheNodeDriveConfiguration {
-  /** physical path location of the folder used for caching content */
-  physicalPath?: string;
-  /** physical size of the drive used for caching content */
-  sizeInGb?: number;
-  /** corresponding nginx cache number. Valid cache numbers are 1 - 20 */
-  cacheNumber?: number;
-  /** full binding for corresponding nginx cache drive */
-  nginxMapping?: string;
-}
-export const CacheNodeDriveConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    physicalPath: S.optional(S.String),
-    sizeInGb: S.optional(S.Number),
-    cacheNumber: S.optional(S.Number),
-    nginxMapping: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CacheNodeDriveConfiguration",
-}) as any as S.Schema<CacheNodeDriveConfiguration>;
-
 /** Cache node resource drive configurations. */
 export type AdditionalCacheNodePropertiesDriveConfigurationList =
-  CacheNodeDriveConfiguration[];
+  ReadonlyArray<CacheNodeDriveConfiguration>;
 export const AdditionalCacheNodePropertiesDriveConfigurationList =
   /*@__PURE__*/ S.Array(
     CacheNodeDriveConfiguration,
   ) as any as S.Schema<AdditionalCacheNodePropertiesDriveConfigurationList>;
-
-/** Bgp configuration of cache node */
-export interface BgpConfiguration {
-  /** Asn to ip address mapping */
-  asnToIpAddressMapping?: string;
-}
-export const BgpConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asnToIpAddressMapping: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BgpConfiguration",
-}) as any as S.Schema<BgpConfiguration>;
-
-/** ProxyUrl configuration of cache node */
-export interface ProxyUrlConfiguration {
-  /** Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80 */
-  proxyUrl?: string;
-}
-export const ProxyUrlConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    proxyUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProxyUrlConfiguration",
-}) as any as S.Schema<ProxyUrlConfiguration>;
-
-/** Proxy details enum */
-export type ProxyRequired = "None" | "Required" | (string & {});
-export const ProxyRequired = /*@__PURE__*/ S.String;
-
-/** Operating System of the cache node */
-export type OsType = "Windows" | "Linux" | "Eflow" | (string & {});
-export const OsType = /*@__PURE__*/ S.String;
 
 /** Model representing cache node for connected cache resource */
 export interface AdditionalCacheNodeProperties {
@@ -655,7 +867,7 @@ export const AdditionalCacheNodeProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalCacheNodeProperties>;
 
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -677,7 +889,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -706,13 +918,14 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 
 /** The error details. */
-export type CacheNodePropertyErrorDetailsList = ErrorDetail[];
+export type CacheNodePropertyErrorDetailsList = ReadonlyArray<ErrorDetail>;
 export const CacheNodePropertyErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<CacheNodePropertyErrorDetailsList>;
 
 /** The error additional info. */
-export type CacheNodePropertyErrorAdditionalInfoList = ErrorAdditionalInfo[];
+export type CacheNodePropertyErrorAdditionalInfoList =
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const CacheNodePropertyErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<CacheNodePropertyErrorAdditionalInfoList>;
@@ -955,7 +1168,7 @@ export const EnterpriseMccCacheNodesOperationsGetCacheNodeAutoUpdateHistoryRespo
 
 /** Cache node resource auto update history information. */
 export type MccCacheNodeAutoUpdateHistoryPropertiesAutoUpdateHistoryList =
-  MccCacheNodeAutoUpdateInfo[];
+  ReadonlyArray<MccCacheNodeAutoUpdateInfo>;
 export const MccCacheNodeAutoUpdateHistoryPropertiesAutoUpdateHistoryList =
   /*@__PURE__*/ S.Array(
     MccCacheNodeAutoUpdateInfo,
@@ -1058,7 +1271,7 @@ export const EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetailsResponse
 
 /** Cache node resource drive configurations. */
 export type CacheNodeInstallPropertiesDriveConfigurationList =
-  CacheNodeDriveConfiguration[];
+  ReadonlyArray<CacheNodeDriveConfiguration>;
 export const CacheNodeInstallPropertiesDriveConfigurationList =
   /*@__PURE__*/ S.Array(
     CacheNodeDriveConfiguration,
@@ -1200,7 +1413,8 @@ export const MccIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MccIssue" }) as any as S.Schema<MccIssue>;
 
 /** Cache node resource issue details history. */
-export type MccCacheNodeIssueHistoryPropertiesMccIssueHistoryList = MccIssue[];
+export type MccCacheNodeIssueHistoryPropertiesMccIssueHistoryList =
+  ReadonlyArray<MccIssue>;
 export const MccCacheNodeIssueHistoryPropertiesMccIssueHistoryList =
   /*@__PURE__*/ S.Array(
     MccIssue,
@@ -1302,7 +1516,7 @@ export const EnterpriseMccCacheNodesOperationsGetCacheNodeTlsCertificateHistoryR
 
 /** Cache node resource tls certificate history details. */
 export type MccCacheNodeTlsCertificatePropertiesTlsCertificateHistoryList =
-  MccCacheNodeTlsCertificate[];
+  ReadonlyArray<MccCacheNodeTlsCertificate>;
 export const MccCacheNodeTlsCertificatePropertiesTlsCertificateHistoryList =
   /*@__PURE__*/ S.Array(
     MccCacheNodeTlsCertificate,
@@ -1433,7 +1647,7 @@ export const EnterpriseMccCacheNodeResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The EnterpriseMccCacheNodeResource items on this page */
 export type EnterpriseMccCacheNodeResourceListResultValueList =
-  EnterpriseMccCacheNodeResource[];
+  ReadonlyArray<EnterpriseMccCacheNodeResource>;
 export const EnterpriseMccCacheNodeResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     EnterpriseMccCacheNodeResource,
@@ -1456,6 +1670,16 @@ export const EnterpriseMccCacheNodeResourceListResult = /*@__PURE__*/ S.suspend(
   identifier: "EnterpriseMccCacheNodeResourceListResult",
 }) as any as S.Schema<EnterpriseMccCacheNodeResourceListResult>;
 
+/** Resource tags. */
+export type EnterpriseMccCacheNodesOperationsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EnterpriseMccCacheNodesOperationsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<EnterpriseMccCacheNodesOperationsUpdateRequestTagsMap>;
+
 export interface EnterpriseMccCacheNodesOperationsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1465,7 +1689,8 @@ export interface EnterpriseMccCacheNodesOperationsUpdateRequest {
   customerResourceName: string;
   /** Name of the ConnectedCache resource */
   cacheNodeResourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: EnterpriseMccCacheNodesOperationsUpdateRequestTagsMap;
 }
 export const EnterpriseMccCacheNodesOperationsUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1474,7 +1699,7 @@ export const EnterpriseMccCacheNodesOperationsUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       customerResourceName: S.String.pipe(T.Label()),
       cacheNodeResourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(EnterpriseMccCacheNodesOperationsUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -1528,6 +1753,148 @@ export const EnterpriseMccCacheNodesOperationsUpdateResponse =
     identifier: "EnterpriseMccCacheNodesOperationsUpdateResponse",
   }) as any as S.Schema<EnterpriseMccCacheNodesOperationsUpdateResponse>;
 
+/** Resource tags. */
+export type EnterpriseMccCustomersCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EnterpriseMccCustomersCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<EnterpriseMccCustomersCreateOrUpdateRequestTagsMap>;
+
+/** Model representing Customer resource for ConnectedCache resource */
+export interface CustomerEntityInput {
+  /** Customer resource Azure fully qualified resource Id. */
+  fullyQualifiedResourceId?: string;
+  /** Customer resource name. */
+  customerName?: string;
+  /** Customer resource contact email. */
+  contactEmail?: string;
+  /** Customer resource contact phone. */
+  contactPhone?: string;
+  /** Customer resource contact full name. */
+  contactName?: string;
+  /** Customer resource entitlement flag as boolean. */
+  isEntitled?: boolean;
+  /** Customer resource Mcc release version. */
+  releaseVersion?: number;
+  /** Customer resource client tenant Id of subscription. */
+  clientTenantId?: string;
+  /** Customer resource flag for enterprise management as boolean. */
+  isEnterpriseManaged?: boolean;
+  /** Customer resource flag for migration. */
+  shouldMigrate?: boolean;
+  /** Customer resource flag for resending signup code as boolean. */
+  resendSignupCode?: boolean;
+  /** Customer resource flag for requiring verification of signup code as boolean. */
+  verifySignupCode?: boolean;
+  /** Customer resource phrase for verifying signup. */
+  verifySignupPhrase?: string;
+}
+export const CustomerEntityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fullyQualifiedResourceId: S.optional(S.String),
+    customerName: S.optional(S.String),
+    contactEmail: S.optional(S.String),
+    contactPhone: S.optional(S.String),
+    contactName: S.optional(S.String),
+    isEntitled: S.optional(S.Boolean),
+    releaseVersion: S.optional(S.Number),
+    clientTenantId: S.optional(S.String),
+    isEnterpriseManaged: S.optional(S.Boolean),
+    shouldMigrate: S.optional(S.Boolean),
+    resendSignupCode: S.optional(S.Boolean),
+    verifySignupCode: S.optional(S.Boolean),
+    verifySignupPhrase: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomerEntityInput",
+}) as any as S.Schema<CustomerEntityInput>;
+
+/** Customer resource transit states */
+export type CustomerTransitState =
+  | "NoTransit"
+  | "CombinedTransit"
+  | "TransitOnly";
+export const CustomerTransitState = /*@__PURE__*/ S.String;
+
+/** Model representing customer for connected cache resource */
+export interface AdditionalCustomerPropertiesInput {
+  /** Customer resource contact email. */
+  customerEmail?: string;
+  /** Customer resource transit Asn (autonomous system number). */
+  customerTransitAsn?: string;
+  /** Customer resource transit state. */
+  customerTransitState?: CustomerTransitState;
+  /** Customer resource Asn (autonomous system number). */
+  customerAsn?: string;
+  /** Customer resource entitlement Sku Id. */
+  customerEntitlementSkuId?: string;
+  /** Customer resource entitlement Sku Guid. */
+  customerEntitlementSkuGuid?: string;
+  /** Customer resource entitlement Sku name. */
+  customerEntitlementSkuName?: string;
+  /** Customer resource entitlement expiration date string. */
+  customerEntitlementExpiration?: string;
+  /** Optional property #1 of Mcc response object. */
+  optionalProperty1?: string;
+  /** Optional property #2 of Mcc response object. */
+  optionalProperty2?: string;
+  /** Optional property #3 of Mcc response object. */
+  optionalProperty3?: string;
+  /** Optional property #4 of Mcc response object. */
+  optionalProperty4?: string;
+  /** Optional property #5 of Mcc response object. */
+  optionalProperty5?: string;
+}
+export const AdditionalCustomerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerEmail: S.optional(S.String),
+    customerTransitAsn: S.optional(S.String),
+    customerTransitState: S.optional(CustomerTransitState),
+    customerAsn: S.optional(S.String),
+    customerEntitlementSkuId: S.optional(S.String),
+    customerEntitlementSkuGuid: S.optional(S.String),
+    customerEntitlementSkuName: S.optional(S.String),
+    customerEntitlementExpiration: S.optional(S.String),
+    optionalProperty1: S.optional(S.String),
+    optionalProperty2: S.optional(S.String),
+    optionalProperty3: S.optional(S.String),
+    optionalProperty4: S.optional(S.String),
+    optionalProperty5: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AdditionalCustomerPropertiesInput",
+}) as any as S.Schema<AdditionalCustomerPropertiesInput>;
+
+/** The error detail. */
+export interface CustomerPropertyInputError {}
+export const CustomerPropertyInputError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CustomerPropertyInputError",
+}) as any as S.Schema<CustomerPropertyInputError>;
+
+/** Model representing customer for connectedCache resource */
+export interface CustomerPropertyInput {
+  /** Mcc customer resource (customer entity). */
+  customer?: CustomerEntityInput;
+  /** Mcc customer resource additional properties. */
+  additionalCustomerProperties?: AdditionalCustomerPropertiesInput;
+  /** The error detail. */
+  error?: CustomerPropertyInputError;
+}
+export const CustomerPropertyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customer: S.optional(CustomerEntityInput),
+    additionalCustomerProperties: S.optional(AdditionalCustomerPropertiesInput),
+    error: S.optional(CustomerPropertyInputError),
+  }),
+).annotate({
+  identifier: "CustomerPropertyInput",
+}) as any as S.Schema<CustomerPropertyInput>;
+
 export interface EnterpriseMccCustomersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1535,7 +1902,12 @@ export interface EnterpriseMccCustomersCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the Customer resource */
   customerResourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: EnterpriseMccCustomersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: CustomerPropertyInput;
 }
 export const EnterpriseMccCustomersCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1543,7 +1915,9 @@ export const EnterpriseMccCustomersCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       customerResourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(EnterpriseMccCustomersCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(CustomerPropertyInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1627,14 +2001,6 @@ export const CustomerEntity = /*@__PURE__*/ S.suspend(() =>
     verifySignupPhrase: S.optional(S.String),
   }),
 ).annotate({ identifier: "CustomerEntity" }) as any as S.Schema<CustomerEntity>;
-
-/** Customer resource transit states */
-export type CustomerTransitState =
-  | "NoTransit"
-  | "CombinedTransit"
-  | "TransitOnly"
-  | (string & {});
-export const CustomerTransitState = /*@__PURE__*/ S.String;
 
 /** Model representing customer for connected cache resource */
 export interface AdditionalCustomerProperties {
@@ -1737,13 +2103,14 @@ export const AdditionalCustomerProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdditionalCustomerProperties>;
 
 /** The error details. */
-export type CustomerPropertyErrorDetailsList = ErrorDetail[];
+export type CustomerPropertyErrorDetailsList = ReadonlyArray<ErrorDetail>;
 export const CustomerPropertyErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<CustomerPropertyErrorDetailsList>;
 
 /** The error additional info. */
-export type CustomerPropertyErrorAdditionalInfoList = ErrorAdditionalInfo[];
+export type CustomerPropertyErrorAdditionalInfoList =
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const CustomerPropertyErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<CustomerPropertyErrorAdditionalInfoList>;
@@ -1999,7 +2366,7 @@ export const EnterpriseMccCustomerResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The EnterpriseMccCustomerResource items on this page */
 export type EnterpriseMccCustomerResourceListResultValueList =
-  EnterpriseMccCustomerResource[];
+  ReadonlyArray<EnterpriseMccCustomerResource>;
 export const EnterpriseMccCustomerResourceListResultValueList =
   /*@__PURE__*/ S.Array(
     EnterpriseMccCustomerResource,
@@ -2042,6 +2409,16 @@ export const EnterpriseMccCustomersListBySubscriptionRequest =
     identifier: "EnterpriseMccCustomersListBySubscriptionRequest",
   }) as any as S.Schema<EnterpriseMccCustomersListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type EnterpriseMccCustomersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EnterpriseMccCustomersUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<EnterpriseMccCustomersUpdateRequestTagsMap>;
+
 export interface EnterpriseMccCustomersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2049,14 +2426,15 @@ export interface EnterpriseMccCustomersUpdateRequest {
   resourceGroupName: string;
   /** Name of the Customer resource */
   customerResourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: EnterpriseMccCustomersUpdateRequestTagsMap;
 }
 export const EnterpriseMccCustomersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     customerResourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(EnterpriseMccCustomersUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2110,6 +2488,16 @@ export const EnterpriseMccCustomersUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "EnterpriseMccCustomersUpdateResponse",
 }) as any as S.Schema<EnterpriseMccCustomersUpdateResponse>;
 
+/** Resource tags. */
+export type IspCacheNodesOperationsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IspCacheNodesOperationsCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<IspCacheNodesOperationsCreateOrUpdateRequestTagsMap>;
+
 export interface IspCacheNodesOperationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2119,7 +2507,12 @@ export interface IspCacheNodesOperationsCreateOrUpdateRequest {
   customerResourceName: string;
   /** Name of the ConnectedCache resource */
   cacheNodeResourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: IspCacheNodesOperationsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: CacheNodePropertyInput;
 }
 export const IspCacheNodesOperationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2128,7 +2521,9 @@ export const IspCacheNodesOperationsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       customerResourceName: S.String.pipe(T.Label()),
       cacheNodeResourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(IspCacheNodesOperationsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(CacheNodePropertyInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -2325,7 +2720,7 @@ export const IspCacheNodesOperationsGetBgpCidrsResponseTagsMap =
   ) as any as S.Schema<IspCacheNodesOperationsGetBgpCidrsResponseTagsMap>;
 
 /** Mcc cache node Bgp Cidr details. */
-export type BgpCidrsConfigurationBgpCidrsList = string[];
+export type BgpCidrsConfigurationBgpCidrsList = ReadonlyArray<string>;
 export const BgpCidrsConfigurationBgpCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BgpCidrsConfigurationBgpCidrsList>;
@@ -2655,7 +3050,8 @@ export const IspCacheNodeResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IspCacheNodeResource>;
 
 /** The IspCacheNodeResource items on this page */
-export type IspCacheNodeResourceListResultValueList = IspCacheNodeResource[];
+export type IspCacheNodeResourceListResultValueList =
+  ReadonlyArray<IspCacheNodeResource>;
 export const IspCacheNodeResourceListResultValueList = /*@__PURE__*/ S.Array(
   IspCacheNodeResource,
 ) as any as S.Schema<IspCacheNodeResourceListResultValueList>;
@@ -2676,6 +3072,16 @@ export const IspCacheNodeResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "IspCacheNodeResourceListResult",
 }) as any as S.Schema<IspCacheNodeResourceListResult>;
 
+/** Resource tags. */
+export type IspCacheNodesOperationsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IspCacheNodesOperationsUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<IspCacheNodesOperationsUpdateRequestTagsMap>;
+
 export interface IspCacheNodesOperationsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2685,7 +3091,8 @@ export interface IspCacheNodesOperationsUpdateRequest {
   customerResourceName: string;
   /** Name of the ConnectedCache resource */
   cacheNodeResourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: IspCacheNodesOperationsUpdateRequestTagsMap;
 }
 export const IspCacheNodesOperationsUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2694,7 +3101,7 @@ export const IspCacheNodesOperationsUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       customerResourceName: S.String.pipe(T.Label()),
       cacheNodeResourceName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(IspCacheNodesOperationsUpdateRequestTagsMap),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -2748,6 +3155,15 @@ export const IspCacheNodesOperationsUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "IspCacheNodesOperationsUpdateResponse",
 }) as any as S.Schema<IspCacheNodesOperationsUpdateResponse>;
 
+/** Resource tags. */
+export type IspCustomersCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IspCustomersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IspCustomersCreateOrUpdateRequestTagsMap>;
+
 export interface IspCustomersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2755,14 +3171,21 @@ export interface IspCustomersCreateOrUpdateRequest {
   resourceGroupName: string;
   /** Name of the Customer resource */
   customerResourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: IspCustomersCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The resource-specific properties for this resource. */
+  properties?: CustomerPropertyInput;
 }
 export const IspCustomersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     customerResourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(IspCustomersCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(CustomerPropertyInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2972,7 +3395,8 @@ export const IspCustomerResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IspCustomerResource>;
 
 /** The IspCustomerResource items on this page */
-export type IspCustomerResourceListResultValueList = IspCustomerResource[];
+export type IspCustomerResourceListResultValueList =
+  ReadonlyArray<IspCustomerResource>;
 export const IspCustomerResourceListResultValueList = /*@__PURE__*/ S.Array(
   IspCustomerResource,
 ) as any as S.Schema<IspCustomerResourceListResultValueList>;
@@ -3013,6 +3437,15 @@ export const IspCustomersListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   identifier: "IspCustomersListBySubscriptionRequest",
 }) as any as S.Schema<IspCustomersListBySubscriptionRequest>;
 
+/** Resource tags. */
+export type IspCustomersUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const IspCustomersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<IspCustomersUpdateRequestTagsMap>;
+
 export interface IspCustomersUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3020,14 +3453,15 @@ export interface IspCustomersUpdateRequest {
   resourceGroupName: string;
   /** Name of the Customer resource */
   customerResourceName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: IspCustomersUpdateRequestTagsMap;
 }
 export const IspCustomersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     customerResourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(IspCustomersUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3116,11 +3550,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -3147,7 +3581,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;

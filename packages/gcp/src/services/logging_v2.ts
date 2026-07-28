@@ -226,7 +226,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -297,11 +297,10 @@ export type LogBucketLifecycleStateEnum =
   | "DELETE_REQUESTED"
   | "UPDATING"
   | "CREATING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const LogBucketLifecycleStateEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -309,8 +308,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type IndexConfigTypeEnum =
   | "INDEX_TYPE_UNSPECIFIED"
   | "INDEX_TYPE_STRING"
-  | "INDEX_TYPE_INTEGER"
-  | (string & {});
+  | "INDEX_TYPE_INTEGER";
 export const IndexConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for an indexed field. */
@@ -330,7 +328,7 @@ export const IndexConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IndexConfig" }) as any as S.Schema<IndexConfig>;
 
-export type IndexConfigList = IndexConfig[];
+export type IndexConfigList = ReadonlyArray<IndexConfig>;
 export const IndexConfigList = /*@__PURE__*/ S.Array(
   IndexConfig,
 ) as any as S.Schema<IndexConfigList>;
@@ -579,8 +577,7 @@ export type LinkLifecycleStateEnum =
   | "DELETE_REQUESTED"
   | "UPDATING"
   | "CREATING"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const LinkLifecycleStateEnum = /*@__PURE__*/ S.String;
 
 /** Describes a BigQuery dataset that was created by a link. */
@@ -695,11 +692,10 @@ export const CreateBillingAccountsLocationsBucketsViewsRequest =
 export type SavedQueryVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "PRIVATE"
-  | "SHARED"
-  | (string & {});
+  | "SHARED";
 export const SavedQueryVisibilityEnum = /*@__PURE__*/ S.String;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -722,8 +718,7 @@ export const FunctionApplication = /*@__PURE__*/ S.suspend(() =>
 
 export type VirtualFieldVirtualFieldTypeEnum =
   | "VIRTUAL_FIELD_TYPE_UNSPECIFIED"
-  | "COALESCE"
-  | (string & {});
+  | "COALESCE";
 export const VirtualFieldVirtualFieldTypeEnum = /*@__PURE__*/ S.String;
 
 /** A virtual field is a field that is not physically present in the underlying data schema, but is created through specific operations within the query builder model based on other fields in the schema. */
@@ -744,8 +739,7 @@ export type ProjectedFieldOperationEnum =
   | "FIELD_OPERATION_UNSPECIFIED"
   | "NO_SETTING"
   | "GROUP_BY"
-  | "AGGREGATE"
-  | (string & {});
+  | "AGGREGATE";
 export const ProjectedFieldOperationEnum = /*@__PURE__*/ S.String;
 
 /** Represents a field selected in the query, analogous to an item in a SQL SELECT clause. It specifies the source field and optionally applies transformations like aggregation, casting, regex extraction, or assigns an alias. Use ProjectedField when you need more than just the raw source field name (for which you might use FieldSource directly in QueryBuilderConfig's field_sources list if no transformations or specific operation type are needed).A ProjectedField can represent either a field present in the data schema (specified via the field property) or a virtual field that is computed from other fields (specified via the virtual_field property). */
@@ -806,7 +800,7 @@ export const FieldSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldSource" }) as any as S.Schema<FieldSource>;
 
-export type FieldSourceList = FieldSource[];
+export type FieldSourceList = ReadonlyArray<FieldSource>;
 export const FieldSourceList = /*@__PURE__*/ S.Array(
   FieldSource,
 ) as any as S.Schema<FieldSourceList>;
@@ -815,8 +809,7 @@ export type SortOrderParameterSortOrderDirectionEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
-  | "SORT_ORDER_DESCENDING"
-  | (string & {});
+  | "SORT_ORDER_DESCENDING";
 export const SortOrderParameterSortOrderDirectionEnum = /*@__PURE__*/ S.String;
 
 /** A sort order for a query based on a column. */
@@ -835,7 +828,7 @@ export const SortOrderParameter = /*@__PURE__*/ S.suspend(() =>
   identifier: "SortOrderParameter",
 }) as any as S.Schema<SortOrderParameter>;
 
-export type SortOrderParameterList = SortOrderParameter[];
+export type SortOrderParameterList = ReadonlyArray<SortOrderParameter>;
 export const SortOrderParameterList = /*@__PURE__*/ S.Array(
   SortOrderParameter,
 ) as any as S.Schema<SortOrderParameterList>;
@@ -850,8 +843,7 @@ export type FilterExpressionComparatorEnum =
   | "LESS_THAN_EQUALS"
   | "IS_NULL"
   | "IN"
-  | "LIKE"
-  | (string & {});
+  | "LIKE";
 export const FilterExpressionComparatorEnum = /*@__PURE__*/ S.String;
 
 /** This is a leaf of the FilterPredicate. Ex: { field: json_payload.message.error_code, filter_value: {numeric_value: 400}, comparator: EQUAL_TO} The field will be schema field that is selected using the . annotation to display the drill down value. The value will be the user inputted text that the filter is comparing against. */
@@ -879,7 +871,7 @@ export const FilterExpression = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilterExpression",
 }) as any as S.Schema<FilterExpression>;
 
-export type FilterPredicateList = FilterPredicate[];
+export type FilterPredicateList = ReadonlyArray<FilterPredicate>;
 export const FilterPredicateList = /*@__PURE__*/ S.Array(
   S.suspend(() => FilterPredicate),
 ) as any as S.Schema<FilterPredicateList>;
@@ -888,8 +880,7 @@ export type FilterPredicateOperatorTypeEnum =
   | "OPERATOR_TYPE_UNSPECIFIED"
   | "AND"
   | "OR"
-  | "LEAF"
-  | (string & {});
+  | "LEAF";
 export const FilterPredicateOperatorTypeEnum = /*@__PURE__*/ S.String;
 
 /** A filter for a query. This equates to the WHERE clause in SQL. */
@@ -966,7 +957,7 @@ export const SummaryField = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SummaryField" }) as any as S.Schema<SummaryField>;
 
-export type SummaryFieldList = SummaryField[];
+export type SummaryFieldList = ReadonlyArray<SummaryField>;
 export const SummaryFieldList = /*@__PURE__*/ S.Array(
   SummaryField,
 ) as any as S.Schema<SummaryFieldList>;
@@ -1051,8 +1042,7 @@ export const CreateBillingAccountsLocationsSavedQueriesRequest =
 export type LogSinkOutputVersionFormatEnum =
   | "VERSION_FORMAT_UNSPECIFIED"
   | "V2"
-  | "V1"
-  | (string & {});
+  | "V1";
 export const LogSinkOutputVersionFormatEnum = /*@__PURE__*/ S.String;
 
 /** Options that change functionality of a sink exporting data to BigQuery. */
@@ -1071,7 +1061,7 @@ export const BigQueryOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "BigQueryOptions",
 }) as any as S.Schema<BigQueryOptions>;
 
-export type LogExclusionList = LogExclusion[];
+export type LogExclusionList = ReadonlyArray<LogExclusion>;
 export const LogExclusionList = /*@__PURE__*/ S.Array(
   LogExclusion,
 ) as any as S.Schema<LogExclusionList>;
@@ -1779,7 +1769,7 @@ export const Exponential = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Exponential" }) as any as S.Schema<Exponential>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -1843,16 +1833,14 @@ export type MetricDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const MetricDescriptorLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
-  | "CUMULATIVE"
-  | (string & {});
+  | "CUMULATIVE";
 export const MetricDescriptorMetricKindEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorValueTypeEnum =
@@ -1862,15 +1850,10 @@ export type MetricDescriptorValueTypeEnum =
   | "DOUBLE"
   | "STRING"
   | "DISTRIBUTION"
-  | "MONEY"
-  | (string & {});
+  | "MONEY";
 export const MetricDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
-export type LabelDescriptorValueTypeEnum =
-  | "STRING"
-  | "BOOL"
-  | "INT64"
-  | (string & {});
+export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
 export const LabelDescriptorValueTypeEnum = /*@__PURE__*/ S.String;
 
 /** A description of a label. */
@@ -1892,7 +1875,7 @@ export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "LabelDescriptor",
 }) as any as S.Schema<LabelDescriptor>;
 
-export type LabelDescriptorList = LabelDescriptor[];
+export type LabelDescriptorList = ReadonlyArray<LabelDescriptor>;
 export const LabelDescriptorList = /*@__PURE__*/ S.Array(
   LabelDescriptor,
 ) as any as S.Schema<LabelDescriptorList>;
@@ -1905,21 +1888,19 @@ export type MetricDescriptorMetadataLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const MetricDescriptorMetadataLaunchStageEnum = /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
   | "PROJECT"
   | "ORGANIZATION"
-  | "FOLDER"
-  | (string & {});
+  | "FOLDER";
 export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   /*@__PURE__*/ S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList =
-  MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum[];
+  ReadonlyArray<MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum>;
 export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList =
   /*@__PURE__*/ S.Array(
     MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum,
@@ -1992,7 +1973,7 @@ export const MetricDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricDescriptor",
 }) as any as S.Schema<MetricDescriptor>;
 
-export type LogMetricVersionEnum = "V2" | "V1" | (string & {});
+export type LogMetricVersionEnum = "V2" | "V1";
 export const LogMetricVersionEnum = /*@__PURE__*/ S.String;
 
 /** Describes a logs-based metric. The value of the metric is the number of log entries that match a logs filter in a given time interval.Logs-based metrics can also be used to extract values from logs and create a distribution of the values. The distribution records the statistics of the extracted values along with an optional histogram of the values as specified by the bucket options. */
@@ -3354,7 +3335,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -3906,8 +3887,7 @@ export const GetSettingsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 export type DefaultSinkConfigModeEnum =
   | "FILTER_WRITE_MODE_UNSPECIFIED"
   | "APPEND"
-  | "OVERWRITE"
-  | (string & {});
+  | "OVERWRITE";
 export const DefaultSinkConfigModeEnum = /*@__PURE__*/ S.String;
 
 /** Describes the custom _Default sink configuration that is used to override the built-in _Default sink configuration in newly created resource containers, such as projects or folders. */
@@ -4119,7 +4099,7 @@ export const ListBillingAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBillingAccountsLocationsRequest",
 }) as any as S.Schema<ListBillingAccountsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -4165,7 +4145,7 @@ export const ListBillingAccountsLocationsBucketsRequest =
     identifier: "ListBillingAccountsLocationsBucketsRequest",
   }) as any as S.Schema<ListBillingAccountsLocationsBucketsRequest>;
 
-export type LogBucketList = LogBucket[];
+export type LogBucketList = ReadonlyArray<LogBucket>;
 export const LogBucketList = /*@__PURE__*/ S.Array(
   LogBucket,
 ) as any as S.Schema<LogBucketList>;
@@ -4211,7 +4191,7 @@ export const ListBillingAccountsLocationsBucketsLinksRequest =
     identifier: "ListBillingAccountsLocationsBucketsLinksRequest",
   }) as any as S.Schema<ListBillingAccountsLocationsBucketsLinksRequest>;
 
-export type LinkList = Link[];
+export type LinkList = ReadonlyArray<Link>;
 export const LinkList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<LinkList>;
@@ -4257,7 +4237,7 @@ export const ListBillingAccountsLocationsBucketsViewsRequest =
     identifier: "ListBillingAccountsLocationsBucketsViewsRequest",
   }) as any as S.Schema<ListBillingAccountsLocationsBucketsViewsRequest>;
 
-export type LogViewList = LogView[];
+export type LogViewList = ReadonlyArray<LogView>;
 export const LogViewList = /*@__PURE__*/ S.Array(
   LogView,
 ) as any as S.Schema<LogViewList>;
@@ -4353,7 +4333,7 @@ export const ListBillingAccountsLocationsOperationsRequest =
     identifier: "ListBillingAccountsLocationsOperationsRequest",
   }) as any as S.Schema<ListBillingAccountsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -4425,7 +4405,7 @@ export const RecentQuery = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RecentQuery" }) as any as S.Schema<RecentQuery>;
 
-export type RecentQueryList = RecentQuery[];
+export type RecentQueryList = ReadonlyArray<RecentQuery>;
 export const RecentQueryList = /*@__PURE__*/ S.Array(
   RecentQuery,
 ) as any as S.Schema<RecentQueryList>;
@@ -4477,7 +4457,7 @@ export const ListBillingAccountsLocationsSavedQueriesRequest =
     identifier: "ListBillingAccountsLocationsSavedQueriesRequest",
   }) as any as S.Schema<ListBillingAccountsLocationsSavedQueriesRequest>;
 
-export type SavedQueryList = SavedQuery[];
+export type SavedQueryList = ReadonlyArray<SavedQuery>;
 export const SavedQueryList = /*@__PURE__*/ S.Array(
   SavedQuery,
 ) as any as S.Schema<SavedQueryList>;
@@ -4555,7 +4535,7 @@ export const ListBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBillingAccountsSinksRequest",
 }) as any as S.Schema<ListBillingAccountsSinksRequest>;
 
-export type LogSinkList = LogSink[];
+export type LogSinkList = ReadonlyArray<LogSink>;
 export const LogSinkList = /*@__PURE__*/ S.Array(
   LogSink,
 ) as any as S.Schema<LogSinkList>;
@@ -4706,8 +4686,7 @@ export type LogEntrySeverityEnum =
   | "ERROR"
   | "CRITICAL"
   | "ALERT"
-  | "EMERGENCY"
-  | (string & {});
+  | "EMERGENCY";
 export const LogEntrySeverityEnum = /*@__PURE__*/ S.String;
 
 /** Additional information about the source code location that produced the log entry. */
@@ -4843,7 +4822,7 @@ export const LogErrorGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogErrorGroup" }) as any as S.Schema<LogErrorGroup>;
 
-export type LogErrorGroupList = LogErrorGroup[];
+export type LogErrorGroupList = ReadonlyArray<LogErrorGroup>;
 export const LogErrorGroupList = /*@__PURE__*/ S.Array(
   LogErrorGroup,
 ) as any as S.Schema<LogErrorGroupList>;
@@ -4941,7 +4920,7 @@ export const LogEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogEntry" }) as any as S.Schema<LogEntry>;
 
-export type LogEntryList = LogEntry[];
+export type LogEntryList = ReadonlyArray<LogEntry>;
 export const LogEntryList = /*@__PURE__*/ S.Array(
   LogEntry,
 ) as any as S.Schema<LogEntryList>;
@@ -5167,7 +5146,7 @@ export const ListFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListFoldersLocationsLogScopesRequest",
 }) as any as S.Schema<ListFoldersLocationsLogScopesRequest>;
 
-export type LogScopeList = LogScope[];
+export type LogScopeList = ReadonlyArray<LogScope>;
 export const LogScopeList = /*@__PURE__*/ S.Array(
   LogScope,
 ) as any as S.Schema<LogScopeList>;
@@ -5518,8 +5497,7 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "ALPHA"
   | "BETA"
   | "GA"
-  | "DEPRECATED"
-  | (string & {});
+  | "DEPRECATED";
 export const MonitoredResourceDescriptorLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -5551,7 +5529,8 @@ export const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "MonitoredResourceDescriptor",
 }) as any as S.Schema<MonitoredResourceDescriptor>;
 
-export type MonitoredResourceDescriptorList = MonitoredResourceDescriptor[];
+export type MonitoredResourceDescriptorList =
+  ReadonlyArray<MonitoredResourceDescriptor>;
 export const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
   MonitoredResourceDescriptor,
 ) as any as S.Schema<MonitoredResourceDescriptorList>;
@@ -6215,7 +6194,7 @@ export const ListProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsMetricsRequest",
 }) as any as S.Schema<ListProjectsMetricsRequest>;
 
-export type LogMetricList = LogMetric[];
+export type LogMetricList = ReadonlyArray<LogMetric>;
 export const LogMetricList = /*@__PURE__*/ S.Array(
   LogMetric,
 ) as any as S.Schema<LogMetricList>;
@@ -7097,8 +7076,7 @@ export const TailEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 export type SuppressionInfoReasonEnum =
   | "REASON_UNSPECIFIED"
   | "RATE_LIMIT"
-  | "NOT_CONSUMED"
-  | (string & {});
+  | "NOT_CONSUMED";
 export const SuppressionInfoReasonEnum = /*@__PURE__*/ S.String;
 
 /** Information about entries that were omitted from the session. */
@@ -7117,7 +7095,7 @@ export const SuppressionInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuppressionInfo",
 }) as any as S.Schema<SuppressionInfo>;
 
-export type SuppressionInfoList = SuppressionInfo[];
+export type SuppressionInfoList = ReadonlyArray<SuppressionInfo>;
 export const SuppressionInfoList = /*@__PURE__*/ S.Array(
   SuppressionInfo,
 ) as any as S.Schema<SuppressionInfoList>;

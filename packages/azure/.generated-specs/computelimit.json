@@ -506,13 +506,6 @@
             "smithy.api#required": {},
             "smithy.api#documentation": "The name of the TrustedHostSubscription"
           }
-        },
-        "body": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
-          }
         }
       },
       "traits": {
@@ -895,16 +888,22 @@
             "smithy.api#documentation": "The name of the SharedLimit"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.computelimit#SharedLimitPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.computelimit#SharedLimitPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Properties of the compute shared limit."
       }
     },
     "com.azure.computelimit#SharedLimitsGet": {
@@ -1199,16 +1198,25 @@
             "smithy.api#documentation": "The name of the SharedLimitCap"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "memberCapOverrides": {
+          "target": "com.azure.computelimit#SharedLimitCapsSetMemberCapOverridesRequestMemberCapOverridesList",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The full set of per-member cap overrides to persist for this resource.\nThis call replaces the existing set entirely; supply an empty array\n(`[]`) to clear all overrides.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.computelimit#SharedLimitCapsSetMemberCapOverridesRequestMemberCapOverridesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.computelimit#MemberCap"
+      },
+      "traits": {
+        "smithy.api#documentation": "The full set of per-member cap overrides to persist for this resource.\nThis call replaces the existing set entirely; supply an empty array\n(`[]`) to clear all overrides."
       }
     },
     "com.azure.computelimit#MemberCapOverridesDelete": {
@@ -1383,16 +1391,30 @@
             "smithy.api#documentation": "The name of the MemberCapOverride"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.computelimit#MemberCapOverridePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.computelimit#MemberCapOverridePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "cap": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The cap value in count units for this member subscription.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a per-member cap override."
       }
     },
     "com.azure.computelimit#MemberCapOverridesGet": {
@@ -1773,16 +1795,36 @@
             "smithy.api#documentation": "The name of the SharedLimitCap"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.computelimit#SharedLimitCapPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.computelimit#SharedLimitCapPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "defaultMemberCap": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The default member cap value (in count units).\nSet to a non-negative integer to apply a cap to all member subscriptions\nthat do not have a per-member override. Omit the property to leave no\ndefault cap in effect."
+          }
+        },
+        "isBoundedCap": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Controls whether the service validates the aggregate cap against the\ngroup limit for the VM family.\n\nSUM(caps) is the sum of all per-member overrides' cap values plus\n`defaultMemberCap` multiplied by the number of member subscriptions without an override.\n\nWhen true, the service rejects any configuration where SUM(caps)\nexceeds the group limit. When false, SUM(caps) is permitted to exceed\nthe group limit.\n\nEnabling this flag is rejected if the current configuration already breaches the group limit;\nreduce caps first, then enable.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a shared limit cap resource."
       }
     },
     "com.azure.computelimit#SharedLimitCapsGet": {
@@ -2134,16 +2176,22 @@
             "smithy.api#documentation": "The name of the GuestSubscription"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.computelimit#GuestSubscriptionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.computelimit#GuestSubscriptionPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Properties for guest subscription."
       }
     },
     "com.azure.computelimit#GuestSubscriptionsGet": {
@@ -2612,10 +2660,10 @@
             "smithy.api#documentation": "The name of the Feature"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "serviceTreeId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The Service Tree identifier associated with this feature action."
           }
         }
       },

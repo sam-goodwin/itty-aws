@@ -72,7 +72,7 @@ export const AgentVersionListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentVersionListRequest>;
 
 /** The list of available Agent Versions. */
-export type AgentVersionsListValueList = AgentVersion[];
+export type AgentVersionsListValueList = ReadonlyArray<AgentVersion>;
 export const AgentVersionsListValueList = /*@__PURE__*/ S.Array(
   AgentVersion,
 ) as any as S.Schema<AgentVersionsListValueList>;
@@ -129,8 +129,7 @@ export type SystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
@@ -138,8 +137,7 @@ export type SystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
@@ -263,7 +261,7 @@ export const ExtensionValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExtensionValue" }) as any as S.Schema<ExtensionValue>;
 
 /** The list of extension metadata */
-export type ExtensionValueListResultValueList = ExtensionValue[];
+export type ExtensionValueListResultValueList = ReadonlyArray<ExtensionValue>;
 export const ExtensionValueListResultValueList = /*@__PURE__*/ S.Array(
   ExtensionValue,
 ) as any as S.Schema<ExtensionValueListResultValueList>;
@@ -310,14 +308,14 @@ export const ExtensionMetadataV2GetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionMetadataV2GetRequest>;
 
 /** A list of locations where the extension packages can be found. */
-export type ExtensionValueV2PropertiesExtensionUrisList = string[];
+export type ExtensionValueV2PropertiesExtensionUrisList = ReadonlyArray<string>;
 export const ExtensionValueV2PropertiesExtensionUrisList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ExtensionValueV2PropertiesExtensionUrisList>;
 
 /** Architectures (x64, arms64, etc.) that this extension supports. */
-export type ExtensionValueV2PropertiesArchitectureList = string[];
+export type ExtensionValueV2PropertiesArchitectureList = ReadonlyArray<string>;
 export const ExtensionValueV2PropertiesArchitectureList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExtensionValueV2PropertiesArchitectureList>;
@@ -428,7 +426,8 @@ export const ExtensionValueV2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionValueV2>;
 
 /** The list of extension metadata. */
-export type ExtensionValueListResultV2ValueList = ExtensionValueV2[];
+export type ExtensionValueListResultV2ValueList =
+  ReadonlyArray<ExtensionValueV2>;
 export const ExtensionValueListResultV2ValueList = /*@__PURE__*/ S.Array(
   ExtensionValueV2,
 ) as any as S.Schema<ExtensionValueListResultV2ValueList>;
@@ -485,7 +484,8 @@ export const ExtensionPublisher = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionPublisher>;
 
 /** The list of extension publishers. */
-export type ExtensionPublisherListResultValueList = ExtensionPublisher[];
+export type ExtensionPublisherListResultValueList =
+  ReadonlyArray<ExtensionPublisher>;
 export const ExtensionPublisherListResultValueList = /*@__PURE__*/ S.Array(
   ExtensionPublisher,
 ) as any as S.Schema<ExtensionPublisherListResultValueList>;
@@ -543,7 +543,7 @@ export const ExtensionType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExtensionType" }) as any as S.Schema<ExtensionType>;
 
 /** The list of extension types. */
-export type ExtensionTypeListResultValueList = ExtensionType[];
+export type ExtensionTypeListResultValueList = ReadonlyArray<ExtensionType>;
 export const ExtensionTypeListResultValueList = /*@__PURE__*/ S.Array(
   ExtensionType,
 ) as any as S.Schema<ExtensionTypeListResultValueList>;
@@ -564,6 +564,41 @@ export const ExtensionTypeListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExtensionTypeListResult",
 }) as any as S.Schema<ExtensionTypeListResult>;
 
+/** Resource tags. */
+export type GatewaysCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const GatewaysCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<GatewaysCreateOrUpdateRequestTagsMap>;
+
+/** The type of the Gateway resource. */
+export type GatewayType = "Public";
+export const GatewayType = /*@__PURE__*/ S.String;
+
+/** Specifies the list of features that are enabled for this Gateway. */
+export type GatewayPropertiesInputAllowedFeaturesList = ReadonlyArray<string>;
+export const GatewayPropertiesInputAllowedFeaturesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GatewayPropertiesInputAllowedFeaturesList>;
+
+/** Describes the properties of a Gateway Profile. */
+export interface GatewayPropertiesInput {
+  /** The type of the Gateway resource. */
+  gatewayType?: GatewayType;
+  /** Specifies the list of features that are enabled for this Gateway. */
+  allowedFeatures?: GatewayPropertiesInputAllowedFeaturesList;
+}
+export const GatewayPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayType: S.optional(GatewayType),
+    allowedFeatures: S.optional(GatewayPropertiesInputAllowedFeaturesList),
+  }),
+).annotate({
+  identifier: "GatewayPropertiesInput",
+}) as any as S.Schema<GatewayPropertiesInput>;
+
 export interface GatewaysCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -571,14 +606,21 @@ export interface GatewaysCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Gateway. */
   gatewayName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: GatewaysCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Hybrid Compute Gateway properties */
+  properties?: GatewayPropertiesInput;
 }
 export const GatewaysCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     gatewayName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(GatewaysCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(GatewayPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -609,16 +651,11 @@ export type ProvisioningState =
   | "Failed"
   | "Accepted"
   | "Canceled"
-  | "Deleted"
-  | (string & {});
+  | "Deleted";
 export const ProvisioningState = /*@__PURE__*/ S.String;
 
-/** The type of the Gateway resource. */
-export type GatewayType = "Public" | (string & {});
-export const GatewayType = /*@__PURE__*/ S.String;
-
 /** Specifies the list of features that are enabled for this Gateway. */
-export type GatewayPropertiesAllowedFeaturesList = string[];
+export type GatewayPropertiesAllowedFeaturesList = ReadonlyArray<string>;
 export const GatewayPropertiesAllowedFeaturesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GatewayPropertiesAllowedFeaturesList>;
@@ -831,7 +868,7 @@ export const Gateway = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Gateway" }) as any as S.Schema<Gateway>;
 
 /** The list of Gateways. */
-export type GatewaysListResultValueList = Gateway[];
+export type GatewaysListResultValueList = ReadonlyArray<Gateway>;
 export const GatewaysListResultValueList = /*@__PURE__*/ S.Array(
   Gateway,
 ) as any as S.Schema<GatewaysListResultValueList>;
@@ -871,6 +908,34 @@ export const GatewaysListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GatewaysListBySubscriptionRequest",
 }) as any as S.Schema<GatewaysListBySubscriptionRequest>;
 
+/** Resource tags */
+export type GatewaysUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const GatewaysUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<GatewaysUpdateRequestTagsMap>;
+
+/** Specifies the list of features that are enabled for this Gateway. */
+export type GatewayUpdatePropertiesAllowedFeaturesList = ReadonlyArray<string>;
+export const GatewayUpdatePropertiesAllowedFeaturesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GatewayUpdatePropertiesAllowedFeaturesList>;
+
+/** Describes the Update properties of a Gateway Profile. */
+export interface GatewayUpdateProperties {
+  /** Specifies the list of features that are enabled for this Gateway. */
+  allowedFeatures?: GatewayUpdatePropertiesAllowedFeaturesList;
+}
+export const GatewayUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedFeatures: S.optional(GatewayUpdatePropertiesAllowedFeaturesList),
+  }),
+).annotate({
+  identifier: "GatewayUpdateProperties",
+}) as any as S.Schema<GatewayUpdateProperties>;
+
 export interface GatewaysUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -878,14 +943,18 @@ export interface GatewaysUpdateRequest {
   resourceGroupName: string;
   /** The name of the Gateway. */
   gatewayName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: GatewaysUpdateRequestTagsMap;
+  /** Gateway Update properties */
+  properties?: GatewayUpdateProperties;
 }
 export const GatewaysUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     gatewayName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(GatewaysUpdateRequestTagsMap),
+    properties: S.optional(GatewayUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -966,9 +1035,7 @@ export const HybridIdentityMetadataGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridIdentityMetadataGetRequest>;
 
 /** The identity type. */
-export type HybridIdentityMetadataPropertiesIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+export type HybridIdentityMetadataPropertiesIdentityType = "SystemAssigned";
 export const HybridIdentityMetadataPropertiesIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -1087,7 +1154,8 @@ export const HybridIdentityMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HybridIdentityMetadata>;
 
 /** Array of HybridIdentityMetadata */
-export type HybridIdentityMetadataListValueList = HybridIdentityMetadata[];
+export type HybridIdentityMetadataListValueList =
+  ReadonlyArray<HybridIdentityMetadata>;
 export const HybridIdentityMetadataListValueList = /*@__PURE__*/ S.Array(
   HybridIdentityMetadata,
 ) as any as S.Schema<HybridIdentityMetadataListValueList>;
@@ -1108,11 +1176,152 @@ export const HybridIdentityMetadataList = /*@__PURE__*/ S.suspend(() =>
   identifier: "HybridIdentityMetadataList",
 }) as any as S.Schema<HybridIdentityMetadataList>;
 
-export type LicenseProfilesCreateOrUpdateRequestLicenseProfileName =
-  | "default"
-  | (string & {});
+export type LicenseProfilesCreateOrUpdateRequestLicenseProfileName = "default";
 export const LicenseProfilesCreateOrUpdateRequestLicenseProfileName =
   /*@__PURE__*/ S.String;
+
+/** Resource tags. */
+export type LicenseProfilesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const LicenseProfilesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<LicenseProfilesCreateOrUpdateRequestTagsMap>;
+
+export interface LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance {
+  /** Specifies if this machine is licensed as part of a Software Assurance agreement. */
+  softwareAssuranceCustomer?: boolean;
+}
+export const LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      softwareAssuranceCustomer: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance",
+  }) as any as S.Schema<LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance>;
+
+/** Describes the properties of a License Profile ARM model. */
+export interface LicenseProfileArmEsuPropertiesInput {
+  /** The resource id of the license. */
+  assignedLicense?: string;
+}
+export const LicenseProfileArmEsuPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assignedLicense: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LicenseProfileArmEsuPropertiesInput",
+}) as any as S.Schema<LicenseProfileArmEsuPropertiesInput>;
+
+/** Subscription status of the OS or Product feature. */
+export type LicenseProfileSubscriptionStatus =
+  | "Unknown"
+  | "Enabling"
+  | "Enabled"
+  | "Disabled"
+  | "Disabling"
+  | "Failed";
+export const LicenseProfileSubscriptionStatus = /*@__PURE__*/ S.String;
+
+/** The product type of the license. */
+export type LicenseProfileProductType =
+  | "WindowsServer"
+  | "WindowsIoTEnterprise";
+export const LicenseProfileProductType = /*@__PURE__*/ S.String;
+
+/** The error detail. */
+export interface LicenseProfileArmProductProfilePropertiesInputError {}
+export const LicenseProfileArmProductProfilePropertiesInputError =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "LicenseProfileArmProductProfilePropertiesInputError",
+  }) as any as S.Schema<LicenseProfileArmProductProfilePropertiesInputError>;
+
+/** The error detail. */
+export interface ProductFeatureInputError {}
+export const ProductFeatureInputError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ProductFeatureInputError",
+}) as any as S.Schema<ProductFeatureInputError>;
+
+/** Product Feature */
+export interface ProductFeatureInput {
+  /** Product feature name. */
+  name?: string;
+  /** Indicates the current status of the product features. */
+  subscriptionStatus?: LicenseProfileSubscriptionStatus;
+  /** The error detail. */
+  error?: ProductFeatureInputError;
+}
+export const ProductFeatureInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    subscriptionStatus: S.optional(LicenseProfileSubscriptionStatus),
+    error: S.optional(ProductFeatureInputError),
+  }),
+).annotate({
+  identifier: "ProductFeatureInput",
+}) as any as S.Schema<ProductFeatureInput>;
+
+/** The list of product features. */
+export type LicenseProfileArmProductProfilePropertiesInputProductFeaturesList =
+  ReadonlyArray<ProductFeatureInput>;
+export const LicenseProfileArmProductProfilePropertiesInputProductFeaturesList =
+  /*@__PURE__*/ S.Array(
+    ProductFeatureInput,
+  ) as any as S.Schema<LicenseProfileArmProductProfilePropertiesInputProductFeaturesList>;
+
+/** Describes the properties of a Product License Profile ARM model. */
+export interface LicenseProfileArmProductProfilePropertiesInput {
+  /** Indicates the subscription status of the product. */
+  subscriptionStatus?: LicenseProfileSubscriptionStatus;
+  /** Indicates the product type of the license. */
+  productType?: LicenseProfileProductType;
+  /** The error detail. */
+  error?: LicenseProfileArmProductProfilePropertiesInputError;
+  /** The list of product features. */
+  productFeatures?: LicenseProfileArmProductProfilePropertiesInputProductFeaturesList;
+}
+export const LicenseProfileArmProductProfilePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionStatus: S.optional(LicenseProfileSubscriptionStatus),
+      productType: S.optional(LicenseProfileProductType),
+      error: S.optional(LicenseProfileArmProductProfilePropertiesInputError),
+      productFeatures: S.optional(
+        LicenseProfileArmProductProfilePropertiesInputProductFeaturesList,
+      ),
+    }),
+  ).annotate({
+    identifier: "LicenseProfileArmProductProfilePropertiesInput",
+  }) as any as S.Schema<LicenseProfileArmProductProfilePropertiesInput>;
+
+/** Describe the properties of a license profile. */
+export interface LicenseProfilesCreateOrUpdateRequestProperties {
+  softwareAssurance?: LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
+  /** Hybrid Compute ESU Profile properties */
+  esuProfile?: LicenseProfileArmEsuPropertiesInput;
+  /** Hybrid Compute Product Profile properties */
+  productProfile?: LicenseProfileArmProductProfilePropertiesInput;
+}
+export const LicenseProfilesCreateOrUpdateRequestProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      softwareAssurance: S.optional(
+        LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance,
+      ),
+      esuProfile: S.optional(LicenseProfileArmEsuPropertiesInput),
+      productProfile: S.optional(
+        LicenseProfileArmProductProfilePropertiesInput,
+      ),
+    }),
+  ).annotate({
+    identifier: "LicenseProfilesCreateOrUpdateRequestProperties",
+  }) as any as S.Schema<LicenseProfilesCreateOrUpdateRequestProperties>;
 
 export interface LicenseProfilesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -1123,7 +1332,12 @@ export interface LicenseProfilesCreateOrUpdateRequest {
   machineName: string;
   /** The name of the license profile. */
   licenseProfileName: LicenseProfilesCreateOrUpdateRequestLicenseProfileName;
-  body: unknown;
+  /** Resource tags. */
+  tags?: LicenseProfilesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Describe the properties of a license profile. */
+  properties?: LicenseProfilesCreateOrUpdateRequestProperties;
 }
 export const LicenseProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -1133,7 +1347,9 @@ export const LicenseProfilesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       machineName: S.String.pipe(T.Label()),
       licenseProfileName:
         LicenseProfilesCreateOrUpdateRequestLicenseProfileName.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      tags: S.optional(LicenseProfilesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(LicenseProfilesCreateOrUpdateRequestProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1185,25 +1401,21 @@ export const EsuKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EsuKey" }) as any as S.Schema<EsuKey>;
 
 /** The list of ESU keys. */
-export type LicenseProfileArmEsuPropertiesEsuKeysList = EsuKey[];
+export type LicenseProfileArmEsuPropertiesEsuKeysList = ReadonlyArray<EsuKey>;
 export const LicenseProfileArmEsuPropertiesEsuKeysList = /*@__PURE__*/ S.Array(
   EsuKey,
 ) as any as S.Schema<LicenseProfileArmEsuPropertiesEsuKeysList>;
 
 /** The server types for Esu. */
-export type EsuServerType = "Standard" | "Datacenter" | (string & {});
+export type EsuServerType = "Standard" | "Datacenter";
 export const EsuServerType = /*@__PURE__*/ S.String;
 
 /** The ESU eligibility. */
-export type EsuEligibility =
-  | "Eligible"
-  | "Ineligible"
-  | "Unknown"
-  | (string & {});
+export type EsuEligibility = "Eligible" | "Ineligible" | "Unknown";
 export const EsuEligibility = /*@__PURE__*/ S.String;
 
 /** The ESU key state. */
-export type EsuKeyState = "Inactive" | "Active" | (string & {});
+export type EsuKeyState = "Inactive" | "Active";
 export const EsuKeyState = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a License Profile ARM model. */
@@ -1234,26 +1446,8 @@ export const LicenseProfileArmEsuProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicenseProfileArmEsuProperties",
 }) as any as S.Schema<LicenseProfileArmEsuProperties>;
 
-/** Subscription status of the OS or Product feature. */
-export type LicenseProfileSubscriptionStatus =
-  | "Unknown"
-  | "Enabling"
-  | "Enabled"
-  | "Disabled"
-  | "Disabling"
-  | "Failed"
-  | (string & {});
-export const LicenseProfileSubscriptionStatus = /*@__PURE__*/ S.String;
-
-/** The product type of the license. */
-export type LicenseProfileProductType =
-  | "WindowsServer"
-  | "WindowsIoTEnterprise"
-  | (string & {});
-export const LicenseProfileProductType = /*@__PURE__*/ S.String;
-
 /** The error details. */
-export type ErrorDetailDetailsList = ErrorDetail[];
+export type ErrorDetailDetailsList = ReadonlyArray<ErrorDetail>;
 export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
@@ -1275,7 +1469,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ErrorAdditionalInfo>;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = ErrorAdditionalInfo[];
+export type ErrorDetailAdditionalInfoList = ReadonlyArray<ErrorAdditionalInfo>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
@@ -1305,7 +1499,7 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type LicenseProfileArmProductProfilePropertiesErrorDetailsList =
-  ErrorDetail[];
+  ReadonlyArray<ErrorDetail>;
 export const LicenseProfileArmProductProfilePropertiesErrorDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -1313,7 +1507,7 @@ export const LicenseProfileArmProductProfilePropertiesErrorDetailsList =
 
 /** The error additional info. */
 export type LicenseProfileArmProductProfilePropertiesErrorAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const LicenseProfileArmProductProfilePropertiesErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -1350,13 +1544,14 @@ export const LicenseProfileArmProductProfilePropertiesError =
   }) as any as S.Schema<LicenseProfileArmProductProfilePropertiesError>;
 
 /** The error details. */
-export type ProductFeatureErrorDetailsList = ErrorDetail[];
+export type ProductFeatureErrorDetailsList = ReadonlyArray<ErrorDetail>;
 export const ProductFeatureErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<ProductFeatureErrorDetailsList>;
 
 /** The error additional info. */
-export type ProductFeatureErrorAdditionalInfoList = ErrorAdditionalInfo[];
+export type ProductFeatureErrorAdditionalInfoList =
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const ProductFeatureErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ProductFeatureErrorAdditionalInfoList>;
@@ -1417,7 +1612,7 @@ export const ProductFeature = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of product features. */
 export type LicenseProfileArmProductProfilePropertiesProductFeaturesList =
-  ProductFeature[];
+  ReadonlyArray<ProductFeature>;
 export const LicenseProfileArmProductProfilePropertiesProductFeaturesList =
   /*@__PURE__*/ S.Array(
     ProductFeature,
@@ -1515,9 +1710,7 @@ export const LicenseProfilesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "LicenseProfilesCreateOrUpdateResponse",
 }) as any as S.Schema<LicenseProfilesCreateOrUpdateResponse>;
 
-export type LicenseProfilesDeleteRequestLicenseProfileName =
-  | "default"
-  | (string & {});
+export type LicenseProfilesDeleteRequestLicenseProfileName = "default";
 export const LicenseProfilesDeleteRequestLicenseProfileName =
   /*@__PURE__*/ S.String;
 
@@ -1558,9 +1751,7 @@ export const LicenseProfilesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicenseProfilesDeleteResponse",
 }) as any as S.Schema<LicenseProfilesDeleteResponse>;
 
-export type LicenseProfilesGetRequestLicenseProfileName =
-  | "default"
-  | (string & {});
+export type LicenseProfilesGetRequestLicenseProfileName = "default";
 export const LicenseProfilesGetRequestLicenseProfileName =
   /*@__PURE__*/ S.String;
 
@@ -1766,7 +1957,7 @@ export const LicenseProfile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LicenseProfile" }) as any as S.Schema<LicenseProfile>;
 
 /** The list of license profiles. */
-export type LicenseProfilesListResultValueList = LicenseProfile[];
+export type LicenseProfilesListResultValueList = ReadonlyArray<LicenseProfile>;
 export const LicenseProfilesListResultValueList = /*@__PURE__*/ S.Array(
   LicenseProfile,
 ) as any as S.Schema<LicenseProfilesListResultValueList>;
@@ -1787,11 +1978,114 @@ export const LicenseProfilesListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicenseProfilesListResult",
 }) as any as S.Schema<LicenseProfilesListResult>;
 
-export type LicenseProfilesUpdateRequestLicenseProfileName =
-  | "default"
-  | (string & {});
+export type LicenseProfilesUpdateRequestLicenseProfileName = "default";
 export const LicenseProfilesUpdateRequestLicenseProfileName =
   /*@__PURE__*/ S.String;
+
+/** Resource tags */
+export type LicenseProfilesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const LicenseProfilesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LicenseProfilesUpdateRequestTagsMap>;
+
+export interface LicenseProfilesUpdateRequestPropertiesSoftwareAssurance {
+  /** Specifies if this machine is licensed as part of a Software Assurance agreement. */
+  softwareAssuranceCustomer?: boolean;
+}
+export const LicenseProfilesUpdateRequestPropertiesSoftwareAssurance =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      softwareAssuranceCustomer: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "LicenseProfilesUpdateRequestPropertiesSoftwareAssurance",
+  }) as any as S.Schema<LicenseProfilesUpdateRequestPropertiesSoftwareAssurance>;
+
+/** Describes the Update properties of a ESU License Profile. */
+export interface EsuProfileUpdateProperties {
+  /** The resource id of the license. */
+  assignedLicense?: string;
+}
+export const EsuProfileUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assignedLicense: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EsuProfileUpdateProperties",
+}) as any as S.Schema<EsuProfileUpdateProperties>;
+
+/** Indicates the new subscription status of the OS or Product Features. */
+export type LicenseProfileSubscriptionStatusUpdate = "Enable" | "Disable";
+export const LicenseProfileSubscriptionStatusUpdate = /*@__PURE__*/ S.String;
+
+/** Product Feature */
+export interface ProductFeatureUpdate {
+  /** Product feature name. */
+  name?: string;
+  /** Indicates the new status of the product feature. */
+  subscriptionStatus?: LicenseProfileSubscriptionStatusUpdate;
+}
+export const ProductFeatureUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    subscriptionStatus: S.optional(LicenseProfileSubscriptionStatusUpdate),
+  }),
+).annotate({
+  identifier: "ProductFeatureUpdate",
+}) as any as S.Schema<ProductFeatureUpdate>;
+
+/** The list of product feature updates. */
+export type ProductProfileUpdatePropertiesProductFeaturesList =
+  ReadonlyArray<ProductFeatureUpdate>;
+export const ProductProfileUpdatePropertiesProductFeaturesList =
+  /*@__PURE__*/ S.Array(
+    ProductFeatureUpdate,
+  ) as any as S.Schema<ProductProfileUpdatePropertiesProductFeaturesList>;
+
+/** Describes the Update properties of a Product Profile. */
+export interface ProductProfileUpdateProperties {
+  /** Indicates the subscription status of the product. */
+  subscriptionStatus?: LicenseProfileSubscriptionStatusUpdate;
+  /** Indicates the product type of the license. */
+  productType?: LicenseProfileProductType;
+  /** The list of product feature updates. */
+  productFeatures?: ProductProfileUpdatePropertiesProductFeaturesList;
+}
+export const ProductProfileUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionStatus: S.optional(LicenseProfileSubscriptionStatusUpdate),
+    productType: S.optional(LicenseProfileProductType),
+    productFeatures: S.optional(
+      ProductProfileUpdatePropertiesProductFeaturesList,
+    ),
+  }),
+).annotate({
+  identifier: "ProductProfileUpdateProperties",
+}) as any as S.Schema<ProductProfileUpdateProperties>;
+
+/** Describe the Update properties of a license profile. */
+export interface LicenseProfilesUpdateRequestProperties {
+  softwareAssurance?: LicenseProfilesUpdateRequestPropertiesSoftwareAssurance;
+  /** Hybrid Compute ESU Profile Update properties */
+  esuProfile?: EsuProfileUpdateProperties;
+  /** Hybrid Compute Product Profile Update properties */
+  productProfile?: ProductProfileUpdateProperties;
+}
+export const LicenseProfilesUpdateRequestProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      softwareAssurance: S.optional(
+        LicenseProfilesUpdateRequestPropertiesSoftwareAssurance,
+      ),
+      esuProfile: S.optional(EsuProfileUpdateProperties),
+      productProfile: S.optional(ProductProfileUpdateProperties),
+    }),
+).annotate({
+  identifier: "LicenseProfilesUpdateRequestProperties",
+}) as any as S.Schema<LicenseProfilesUpdateRequestProperties>;
 
 export interface LicenseProfilesUpdateRequest {
   /** The ID of the target subscription. */
@@ -1802,7 +2096,10 @@ export interface LicenseProfilesUpdateRequest {
   machineName: string;
   /** The name of the license profile. */
   licenseProfileName: LicenseProfilesUpdateRequestLicenseProfileName;
-  body: unknown;
+  /** Resource tags */
+  tags?: LicenseProfilesUpdateRequestTagsMap;
+  /** Describe the Update properties of a license profile. */
+  properties?: LicenseProfilesUpdateRequestProperties;
 }
 export const LicenseProfilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1812,7 +2109,8 @@ export const LicenseProfilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     licenseProfileName: LicenseProfilesUpdateRequestLicenseProfileName.pipe(
       T.Label(),
     ),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(LicenseProfilesUpdateRequestTagsMap),
+    properties: S.optional(LicenseProfilesUpdateRequestProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1901,6 +2199,107 @@ export const LicenseProfilesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicenseProfilesUpdateResponse",
 }) as any as S.Schema<LicenseProfilesUpdateResponse>;
 
+/** Resource tags. */
+export type LicensesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const LicensesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LicensesCreateOrUpdateRequestTagsMap>;
+
+/** The type of the license resource. */
+export type LicenseType = "ESU";
+export const LicenseType = /*@__PURE__*/ S.String;
+
+/** Describes the state of the license. */
+export type LicenseState = "Activated" | "Deactivated";
+export const LicenseState = /*@__PURE__*/ S.String;
+
+/** Describes the license target server. */
+export type LicenseTarget = "Windows Server 2012" | "Windows Server 2012 R2";
+export const LicenseTarget = /*@__PURE__*/ S.String;
+
+/** Describes the edition of the license. The values are either Standard or Datacenter. */
+export type LicenseEdition = "Standard" | "Datacenter";
+export const LicenseEdition = /*@__PURE__*/ S.String;
+
+/** Describes the license core type (pCore or vCore). */
+export type LicenseCoreType = "pCore" | "vCore";
+export const LicenseCoreType = /*@__PURE__*/ S.String;
+
+/** Describes the program year the volume license is for. */
+export type VolumeLicenseDetailsProgramYear = "Year 1" | "Year 2" | "Year 3";
+export const VolumeLicenseDetailsProgramYear = /*@__PURE__*/ S.String;
+
+export interface VolumeLicenseDetails {
+  /** Describes the program year the volume license is for. */
+  programYear?: VolumeLicenseDetailsProgramYear;
+  /** The invoice id for the volume license. */
+  invoiceId?: string;
+}
+export const VolumeLicenseDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    programYear: S.optional(VolumeLicenseDetailsProgramYear),
+    invoiceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VolumeLicenseDetails",
+}) as any as S.Schema<VolumeLicenseDetails>;
+
+/** A list of volume license details. */
+export type LicenseDetailsInputVolumeLicenseDetailsList =
+  ReadonlyArray<VolumeLicenseDetails>;
+export const LicenseDetailsInputVolumeLicenseDetailsList =
+  /*@__PURE__*/ S.Array(
+    VolumeLicenseDetails,
+  ) as any as S.Schema<LicenseDetailsInputVolumeLicenseDetailsList>;
+
+/** Describes the properties of a License. */
+export interface LicenseDetailsInput {
+  state?: LicenseState;
+  target?: LicenseTarget;
+  edition?: LicenseEdition;
+  type?: LicenseCoreType;
+  /** Describes the number of processors. */
+  processors?: number;
+  /** A list of volume license details. */
+  volumeLicenseDetails?: LicenseDetailsInputVolumeLicenseDetailsList;
+}
+export const LicenseDetailsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: S.optional(LicenseState),
+    target: S.optional(LicenseTarget),
+    edition: S.optional(LicenseEdition),
+    type: S.optional(LicenseCoreType),
+    processors: S.optional(S.Number),
+    volumeLicenseDetails: S.optional(
+      LicenseDetailsInputVolumeLicenseDetailsList,
+    ),
+  }),
+).annotate({
+  identifier: "LicenseDetailsInput",
+}) as any as S.Schema<LicenseDetailsInput>;
+
+/** Describes the properties of a License Profile. */
+export interface LicensePropertiesInput {
+  /** Describes the tenant id. */
+  tenantId?: string;
+  /** The type of the license resource. */
+  licenseType?: LicenseType;
+  /** Describes the properties of a License. */
+  licenseDetails?: LicenseDetailsInput;
+}
+export const LicensePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenantId: S.optional(S.String),
+    licenseType: S.optional(LicenseType),
+    licenseDetails: S.optional(LicenseDetailsInput),
+  }),
+).annotate({
+  identifier: "LicensePropertiesInput",
+}) as any as S.Schema<LicensePropertiesInput>;
+
 export interface LicensesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1908,14 +2307,21 @@ export interface LicensesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the license. */
   licenseName: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: LicensesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Hybrid Compute License properties */
+  properties?: LicensePropertiesInput;
 }
 export const LicensesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     licenseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(LicensesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(LicensePropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1937,54 +2343,9 @@ export const LicensesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<LicensesCreateOrUpdateResponseTagsMap>;
 
-/** The type of the license resource. */
-export type LicenseType = "ESU" | (string & {});
-export const LicenseType = /*@__PURE__*/ S.String;
-
-/** Describes the state of the license. */
-export type LicenseState = "Activated" | "Deactivated" | (string & {});
-export const LicenseState = /*@__PURE__*/ S.String;
-
-/** Describes the license target server. */
-export type LicenseTarget =
-  | "Windows Server 2012"
-  | "Windows Server 2012 R2"
-  | (string & {});
-export const LicenseTarget = /*@__PURE__*/ S.String;
-
-/** Describes the edition of the license. The values are either Standard or Datacenter. */
-export type LicenseEdition = "Standard" | "Datacenter" | (string & {});
-export const LicenseEdition = /*@__PURE__*/ S.String;
-
-/** Describes the license core type (pCore or vCore). */
-export type LicenseCoreType = "pCore" | "vCore" | (string & {});
-export const LicenseCoreType = /*@__PURE__*/ S.String;
-
-/** Describes the program year the volume license is for. */
-export type VolumeLicenseDetailsProgramYear =
-  | "Year 1"
-  | "Year 2"
-  | "Year 3"
-  | (string & {});
-export const VolumeLicenseDetailsProgramYear = /*@__PURE__*/ S.String;
-
-export interface VolumeLicenseDetails {
-  /** Describes the program year the volume license is for. */
-  programYear?: VolumeLicenseDetailsProgramYear;
-  /** The invoice id for the volume license. */
-  invoiceId?: string;
-}
-export const VolumeLicenseDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    programYear: S.optional(VolumeLicenseDetailsProgramYear),
-    invoiceId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VolumeLicenseDetails",
-}) as any as S.Schema<VolumeLicenseDetails>;
-
 /** A list of volume license details. */
-export type LicenseDetailsVolumeLicenseDetailsList = VolumeLicenseDetails[];
+export type LicenseDetailsVolumeLicenseDetailsList =
+  ReadonlyArray<VolumeLicenseDetails>;
 export const LicenseDetailsVolumeLicenseDetailsList = /*@__PURE__*/ S.Array(
   VolumeLicenseDetails,
 ) as any as S.Schema<LicenseDetailsVolumeLicenseDetailsList>;
@@ -2222,7 +2583,7 @@ export const License = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "License" }) as any as S.Schema<License>;
 
 /** The list of licenses. */
-export type LicensesListResultValueList = License[];
+export type LicensesListResultValueList = ReadonlyArray<License>;
 export const LicensesListResultValueList = /*@__PURE__*/ S.Array(
   License,
 ) as any as S.Schema<LicensesListResultValueList>;
@@ -2262,6 +2623,51 @@ export const LicensesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicensesListBySubscriptionRequest",
 }) as any as S.Schema<LicensesListBySubscriptionRequest>;
 
+/** Resource tags */
+export type LicensesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const LicensesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LicensesUpdateRequestTagsMap>;
+
+export interface LicenseUpdatePropertiesLicenseDetails {
+  state?: LicenseState;
+  target?: LicenseTarget;
+  edition?: LicenseEdition;
+  type?: LicenseCoreType;
+  /** Describes the number of processors. */
+  processors?: number;
+}
+export const LicenseUpdatePropertiesLicenseDetails = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: S.optional(LicenseState),
+      target: S.optional(LicenseTarget),
+      edition: S.optional(LicenseEdition),
+      type: S.optional(LicenseCoreType),
+      processors: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "LicenseUpdatePropertiesLicenseDetails",
+}) as any as S.Schema<LicenseUpdatePropertiesLicenseDetails>;
+
+/** Describes the Update properties of a License Profile. */
+export interface LicenseUpdateProperties {
+  /** The type of the license resource. */
+  licenseType?: LicenseType;
+  licenseDetails?: LicenseUpdatePropertiesLicenseDetails;
+}
+export const LicenseUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    licenseType: S.optional(LicenseType),
+    licenseDetails: S.optional(LicenseUpdatePropertiesLicenseDetails),
+  }),
+).annotate({
+  identifier: "LicenseUpdateProperties",
+}) as any as S.Schema<LicenseUpdateProperties>;
+
 export interface LicensesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2269,14 +2675,18 @@ export interface LicensesUpdateRequest {
   resourceGroupName: string;
   /** The name of the license. */
   licenseName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: LicensesUpdateRequestTagsMap;
+  /** License Update properties */
+  properties?: LicenseUpdateProperties;
 }
 export const LicensesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     licenseName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(LicensesUpdateRequestTagsMap),
+    properties: S.optional(LicenseUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2328,15 +2738,31 @@ export const LicensesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicensesUpdateResponse",
 }) as any as S.Schema<LicensesUpdateResponse>;
 
+/** Resource tags. */
+export type LicensesValidateLicenseRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const LicensesValidateLicenseRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LicensesValidateLicenseRequestTagsMap>;
+
 export interface LicensesValidateLicenseRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: LicensesValidateLicenseRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Hybrid Compute License properties */
+  properties?: LicensePropertiesInput;
 }
 export const LicensesValidateLicenseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(LicensesValidateLicenseRequestTagsMap),
+    location: S.String,
+    properties: S.optional(LicensePropertiesInput),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2388,72 +2814,41 @@ export const LicensesValidateLicenseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LicensesValidateLicenseResponse",
 }) as any as S.Schema<LicensesValidateLicenseResponse>;
 
-export interface MachineExtensionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the machine where the extension should be created or updated. */
-  machineName: string;
-  /** The name of the machine extension. */
-  extensionName: string;
-  body: unknown;
-}
-export const MachineExtensionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      machineName: S.String.pipe(T.Label()),
-      extensionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
-        code: 200,
-        apiVersion: "2025-01-13",
-      }),
-    ),
-).annotate({
-  identifier: "MachineExtensionsCreateOrUpdateRequest",
-}) as any as S.Schema<MachineExtensionsCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type MachineExtensionsCreateOrUpdateResponseTagsMap = {
+export type MachineExtensionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const MachineExtensionsCreateOrUpdateResponseTagsMap =
+export const MachineExtensionsCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<MachineExtensionsCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<MachineExtensionsCreateOrUpdateRequestTagsMap>;
 
 /** Json formatted public settings for the extension. */
-export type MachineExtensionPropertiesSettingsMap = {
+export type MachineExtensionPropertiesInputSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const MachineExtensionPropertiesSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MachineExtensionPropertiesSettingsMap>;
-
-/** The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. */
-export type MachineExtensionPropertiesProtectedSettingsMap = {
-  [key: string]: unknown | undefined;
-};
-export const MachineExtensionPropertiesProtectedSettingsMap =
+export const MachineExtensionPropertiesInputSettingsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
-  ) as any as S.Schema<MachineExtensionPropertiesProtectedSettingsMap>;
+  ) as any as S.Schema<MachineExtensionPropertiesInputSettingsMap>;
+
+/** The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. */
+export type MachineExtensionPropertiesInputProtectedSettingsMap = {
+  [key: string]: unknown | undefined;
+};
+export const MachineExtensionPropertiesInputProtectedSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<MachineExtensionPropertiesInputProtectedSettingsMap>;
 
 /** The level code. */
 export type MachineExtensionInstanceViewStatusLevel =
   | "Info"
   | "Warning"
-  | "Error"
-  | (string & {});
+  | "Error";
 export const MachineExtensionInstanceViewStatusLevel = /*@__PURE__*/ S.String;
 
 /** Instance view status. */
@@ -2502,6 +2897,112 @@ export const MachineExtensionInstanceView = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MachineExtensionInstanceView",
 }) as any as S.Schema<MachineExtensionInstanceView>;
+
+/** Describes the properties of a Machine Extension. */
+export interface MachineExtensionPropertiesInput {
+  /** How the extension handler should be forced to update even if the extension configuration has not changed. */
+  forceUpdateTag?: string;
+  /** The name of the extension handler publisher. */
+  publisher?: string;
+  /** Specifies the type of the extension; an example is "CustomScriptExtension". */
+  type?: string;
+  /** Specifies the version of the script handler. */
+  typeHandlerVersion?: string;
+  /** Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available. */
+  enableAutomaticUpgrade?: boolean;
+  /** Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true. */
+  autoUpgradeMinorVersion?: boolean;
+  /** Json formatted public settings for the extension. */
+  settings?: MachineExtensionPropertiesInputSettingsMap;
+  /** The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. */
+  protectedSettings?: MachineExtensionPropertiesInputProtectedSettingsMap;
+  /** The machine extension instance view. */
+  instanceView?: MachineExtensionInstanceView;
+}
+export const MachineExtensionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    forceUpdateTag: S.optional(S.String),
+    publisher: S.optional(S.String),
+    type: S.optional(S.String),
+    typeHandlerVersion: S.optional(S.String),
+    enableAutomaticUpgrade: S.optional(S.Boolean),
+    autoUpgradeMinorVersion: S.optional(S.Boolean),
+    settings: S.optional(MachineExtensionPropertiesInputSettingsMap),
+    protectedSettings: S.optional(
+      MachineExtensionPropertiesInputProtectedSettingsMap,
+    ),
+    instanceView: S.optional(MachineExtensionInstanceView),
+  }),
+).annotate({
+  identifier: "MachineExtensionPropertiesInput",
+}) as any as S.Schema<MachineExtensionPropertiesInput>;
+
+export interface MachineExtensionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the machine where the extension should be created or updated. */
+  machineName: string;
+  /** The name of the machine extension. */
+  extensionName: string;
+  /** Resource tags. */
+  tags?: MachineExtensionsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Describes Machine Extension Properties. */
+  properties?: MachineExtensionPropertiesInput;
+}
+export const MachineExtensionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      machineName: S.String.pipe(T.Label()),
+      extensionName: S.String.pipe(T.Label()),
+      tags: S.optional(MachineExtensionsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(MachineExtensionPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/extensions/{extensionName}",
+        code: 200,
+        apiVersion: "2025-01-13",
+      }),
+    ),
+).annotate({
+  identifier: "MachineExtensionsCreateOrUpdateRequest",
+}) as any as S.Schema<MachineExtensionsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type MachineExtensionsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MachineExtensionsCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<MachineExtensionsCreateOrUpdateResponseTagsMap>;
+
+/** Json formatted public settings for the extension. */
+export type MachineExtensionPropertiesSettingsMap = {
+  [key: string]: unknown | undefined;
+};
+export const MachineExtensionPropertiesSettingsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MachineExtensionPropertiesSettingsMap>;
+
+/** The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. */
+export type MachineExtensionPropertiesProtectedSettingsMap = {
+  [key: string]: unknown | undefined;
+};
+export const MachineExtensionPropertiesProtectedSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<MachineExtensionPropertiesProtectedSettingsMap>;
 
 /** Describes the properties of a Machine Extension. */
 export interface MachineExtensionProperties {
@@ -2745,7 +3246,8 @@ export const MachineExtension = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineExtension>;
 
 /** The list of extensions */
-export type MachineExtensionsListResultValueList = MachineExtension[];
+export type MachineExtensionsListResultValueList =
+  ReadonlyArray<MachineExtension>;
 export const MachineExtensionsListResultValueList = /*@__PURE__*/ S.Array(
   MachineExtension,
 ) as any as S.Schema<MachineExtensionsListResultValueList>;
@@ -2766,6 +3268,71 @@ export const MachineExtensionsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachineExtensionsListResult",
 }) as any as S.Schema<MachineExtensionsListResult>;
 
+/** Resource tags */
+export type MachineExtensionsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MachineExtensionsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MachineExtensionsUpdateRequestTagsMap>;
+
+/** Json formatted public settings for the extension. */
+export type MachineExtensionUpdatePropertiesSettingsMap = {
+  [key: string]: unknown | undefined;
+};
+export const MachineExtensionUpdatePropertiesSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<MachineExtensionUpdatePropertiesSettingsMap>;
+
+/** The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. */
+export type MachineExtensionUpdatePropertiesProtectedSettingsMap = {
+  [key: string]: unknown | undefined;
+};
+export const MachineExtensionUpdatePropertiesProtectedSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<MachineExtensionUpdatePropertiesProtectedSettingsMap>;
+
+/** Describes the properties of a Machine Extension. */
+export interface MachineExtensionUpdateProperties {
+  /** How the extension handler should be forced to update even if the extension configuration has not changed. */
+  forceUpdateTag?: string;
+  /** The name of the extension handler publisher. */
+  publisher?: string;
+  /** Specifies the type of the extension; an example is "CustomScriptExtension". */
+  type?: string;
+  /** Specifies the version of the script handler. */
+  typeHandlerVersion?: string;
+  /** Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available. */
+  enableAutomaticUpgrade?: boolean;
+  /** Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true. */
+  autoUpgradeMinorVersion?: boolean;
+  /** Json formatted public settings for the extension. */
+  settings?: MachineExtensionUpdatePropertiesSettingsMap;
+  /** The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all. */
+  protectedSettings?: MachineExtensionUpdatePropertiesProtectedSettingsMap;
+}
+export const MachineExtensionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    forceUpdateTag: S.optional(S.String),
+    publisher: S.optional(S.String),
+    type: S.optional(S.String),
+    typeHandlerVersion: S.optional(S.String),
+    enableAutomaticUpgrade: S.optional(S.Boolean),
+    autoUpgradeMinorVersion: S.optional(S.Boolean),
+    settings: S.optional(MachineExtensionUpdatePropertiesSettingsMap),
+    protectedSettings: S.optional(
+      MachineExtensionUpdatePropertiesProtectedSettingsMap,
+    ),
+  }),
+).annotate({
+  identifier: "MachineExtensionUpdateProperties",
+}) as any as S.Schema<MachineExtensionUpdateProperties>;
+
 export interface MachineExtensionsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2775,7 +3342,10 @@ export interface MachineExtensionsUpdateRequest {
   machineName: string;
   /** The name of the machine extension. */
   extensionName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: MachineExtensionsUpdateRequestTagsMap;
+  /** Describes Machine Extension Update Properties. */
+  properties?: MachineExtensionUpdateProperties;
 }
 export const MachineExtensionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2783,7 +3353,8 @@ export const MachineExtensionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     machineName: S.String.pipe(T.Label()),
     extensionName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(MachineExtensionsUpdateRequestTagsMap),
+    properties: S.optional(MachineExtensionUpdateProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2835,46 +3406,15 @@ export const MachineExtensionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachineExtensionsUpdateResponse",
 }) as any as S.Schema<MachineExtensionsUpdateResponse>;
 
-export interface MachineRunCommandsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the hybrid machine. */
-  machineName: string;
-  /** The name of the run command. */
-  runCommandName: string;
-  body: unknown;
-}
-export const MachineRunCommandsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      machineName: S.String.pipe(T.Label()),
-      runCommandName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
-        code: 200,
-        apiVersion: "2025-01-13",
-      }),
-    ),
-).annotate({
-  identifier: "MachineRunCommandsCreateOrUpdateRequest",
-}) as any as S.Schema<MachineRunCommandsCreateOrUpdateRequest>;
-
 /** Resource tags. */
-export type MachineRunCommandsCreateOrUpdateResponseTagsMap = {
+export type MachineRunCommandsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const MachineRunCommandsCreateOrUpdateResponseTagsMap =
+export const MachineRunCommandsCreateOrUpdateRequestTagsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.String,
-  ) as any as S.Schema<MachineRunCommandsCreateOrUpdateResponseTagsMap>;
+  ) as any as S.Schema<MachineRunCommandsCreateOrUpdateRequestTagsMap>;
 
 /** Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged. */
 export interface RunCommandManagedIdentity {
@@ -2931,15 +3471,124 @@ export const RunCommandInputParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunCommandInputParameter>;
 
 /** The parameters used by the script. */
+export type MachineRunCommandPropertiesInputParametersList =
+  ReadonlyArray<RunCommandInputParameter>;
+export const MachineRunCommandPropertiesInputParametersList =
+  /*@__PURE__*/ S.Array(
+    RunCommandInputParameter,
+  ) as any as S.Schema<MachineRunCommandPropertiesInputParametersList>;
+
+/** The parameters used by the script. */
+export type MachineRunCommandPropertiesInputProtectedParametersList =
+  ReadonlyArray<RunCommandInputParameter>;
+export const MachineRunCommandPropertiesInputProtectedParametersList =
+  /*@__PURE__*/ S.Array(
+    RunCommandInputParameter,
+  ) as any as S.Schema<MachineRunCommandPropertiesInputProtectedParametersList>;
+
+/** Describes the properties of a run command. */
+export interface MachineRunCommandPropertiesInput {
+  /** The source of the run command script. */
+  source?: MachineRunCommandScriptSource;
+  /** The parameters used by the script. */
+  parameters?: MachineRunCommandPropertiesInputParametersList;
+  /** The parameters used by the script. */
+  protectedParameters?: MachineRunCommandPropertiesInputProtectedParametersList;
+  /** Optional. If set to true, provisioning will complete as soon as script starts and will not wait for script to complete. */
+  asyncExecution?: boolean;
+  /** Specifies the user account on the machine when executing the run command. */
+  runAsUser?: string;
+  /** Specifies the user account password on the machine when executing the run command. */
+  runAsPassword?: string | Redacted.Redacted<string>;
+  /** The timeout in seconds to execute the run command. */
+  timeoutInSeconds?: number;
+  /** Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. */
+  outputBlobUri?: string;
+  /** Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter. */
+  errorBlobUri?: string;
+  /** User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged */
+  outputBlobManagedIdentity?: RunCommandManagedIdentity;
+  /** User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged */
+  errorBlobManagedIdentity?: RunCommandManagedIdentity;
+}
+export const MachineRunCommandPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    source: S.optional(MachineRunCommandScriptSource),
+    parameters: S.optional(MachineRunCommandPropertiesInputParametersList),
+    protectedParameters: S.optional(
+      MachineRunCommandPropertiesInputProtectedParametersList,
+    ),
+    asyncExecution: S.optional(S.Boolean),
+    runAsUser: S.optional(S.String),
+    runAsPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    timeoutInSeconds: S.optional(S.Number),
+    outputBlobUri: S.optional(S.String),
+    errorBlobUri: S.optional(S.String),
+    outputBlobManagedIdentity: S.optional(RunCommandManagedIdentity),
+    errorBlobManagedIdentity: S.optional(RunCommandManagedIdentity),
+  }),
+).annotate({
+  identifier: "MachineRunCommandPropertiesInput",
+}) as any as S.Schema<MachineRunCommandPropertiesInput>;
+
+export interface MachineRunCommandsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the hybrid machine. */
+  machineName: string;
+  /** The name of the run command. */
+  runCommandName: string;
+  /** Resource tags. */
+  tags?: MachineRunCommandsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Describes Run Command Properties */
+  properties?: MachineRunCommandPropertiesInput;
+}
+export const MachineRunCommandsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      machineName: S.String.pipe(T.Label()),
+      runCommandName: S.String.pipe(T.Label()),
+      tags: S.optional(MachineRunCommandsCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(MachineRunCommandPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}",
+        code: 200,
+        apiVersion: "2025-01-13",
+      }),
+    ),
+).annotate({
+  identifier: "MachineRunCommandsCreateOrUpdateRequest",
+}) as any as S.Schema<MachineRunCommandsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type MachineRunCommandsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MachineRunCommandsCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<MachineRunCommandsCreateOrUpdateResponseTagsMap>;
+
+/** The parameters used by the script. */
 export type MachineRunCommandPropertiesParametersList =
-  RunCommandInputParameter[];
+  ReadonlyArray<RunCommandInputParameter>;
 export const MachineRunCommandPropertiesParametersList = /*@__PURE__*/ S.Array(
   RunCommandInputParameter,
 ) as any as S.Schema<MachineRunCommandPropertiesParametersList>;
 
 /** The parameters used by the script. */
 export type MachineRunCommandPropertiesProtectedParametersList =
-  RunCommandInputParameter[];
+  ReadonlyArray<RunCommandInputParameter>;
 export const MachineRunCommandPropertiesProtectedParametersList =
   /*@__PURE__*/ S.Array(
     RunCommandInputParameter,
@@ -2953,17 +3602,12 @@ export type MachineRunCommandInstanceViewExecutionState =
   | "Failed"
   | "Succeeded"
   | "TimedOut"
-  | "Canceled"
-  | (string & {});
+  | "Canceled";
 export const MachineRunCommandInstanceViewExecutionState =
   /*@__PURE__*/ S.String;
 
 /** The level code. */
-export type ExtensionsResourceStatusLevel =
-  | "Info"
-  | "Warning"
-  | "Error"
-  | (string & {});
+export type ExtensionsResourceStatusLevel = "Info" | "Warning" | "Error";
 export const ExtensionsResourceStatusLevel = /*@__PURE__*/ S.String;
 
 /** Instance view status. */
@@ -2993,7 +3637,7 @@ export const ExtensionsResourceStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** The status information. */
 export type MachineRunCommandInstanceViewStatusesList =
-  ExtensionsResourceStatus[];
+  ReadonlyArray<ExtensionsResourceStatus>;
 export const MachineRunCommandInstanceViewStatusesList = /*@__PURE__*/ S.Array(
   ExtensionsResourceStatus,
 ) as any as S.Schema<MachineRunCommandInstanceViewStatusesList>;
@@ -3283,7 +3927,8 @@ export const MachineRunCommand = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineRunCommand>;
 
 /** The list of run commands */
-export type MachineRunCommandsListResultValueList = MachineRunCommand[];
+export type MachineRunCommandsListResultValueList =
+  ReadonlyArray<MachineRunCommand>;
 export const MachineRunCommandsListResultValueList = /*@__PURE__*/ S.Array(
   MachineRunCommand,
 ) as any as S.Schema<MachineRunCommandsListResultValueList>;
@@ -3304,6 +3949,15 @@ export const MachineRunCommandsListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachineRunCommandsListResult",
 }) as any as S.Schema<MachineRunCommandsListResult>;
 
+/** Resource tags */
+export type MachineRunCommandsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MachineRunCommandsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MachineRunCommandsUpdateRequestTagsMap>;
+
 export interface MachineRunCommandsUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3313,7 +3967,8 @@ export interface MachineRunCommandsUpdateRequest {
   machineName: string;
   /** The name of the run command. */
   runCommandName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: MachineRunCommandsUpdateRequestTagsMap;
 }
 export const MachineRunCommandsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3321,7 +3976,7 @@ export const MachineRunCommandsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     machineName: S.String.pipe(T.Label()),
     runCommandName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(MachineRunCommandsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3404,8 +4059,7 @@ export type MachineAssessPatchesResultStatus =
   | "InProgress"
   | "Failed"
   | "Succeeded"
-  | "CompletedWithWarnings"
-  | (string & {});
+  | "CompletedWithWarnings";
 export const MachineAssessPatchesResultStatus = /*@__PURE__*/ S.String;
 
 /** Summarization of patches available for installation on the machine by classification. */
@@ -3446,10 +4100,7 @@ export const AvailablePatchCountByClassification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailablePatchCountByClassification>;
 
 /** Indicates if operation was triggered by user or by platform. */
-export type MachineAssessPatchesResultStartedBy =
-  | "User"
-  | "Platform"
-  | (string & {});
+export type MachineAssessPatchesResultStartedBy = "User" | "Platform";
 export const MachineAssessPatchesResultStartedBy = /*@__PURE__*/ S.String;
 
 /** Specifies the patch service used for the operation. */
@@ -3459,20 +4110,17 @@ export type MachineAssessPatchesResultPatchServiceUsed =
   | "WU_WSUS"
   | "YUM"
   | "APT"
-  | "Zypper"
-  | (string & {});
+  | "Zypper";
 export const MachineAssessPatchesResultPatchServiceUsed =
   /*@__PURE__*/ S.String;
 
 /** The operating system type of the machine. */
-export type MachineAssessPatchesResultOsType =
-  | "Windows"
-  | "Linux"
-  | (string & {});
+export type MachineAssessPatchesResultOsType = "Windows" | "Linux";
 export const MachineAssessPatchesResultOsType = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type MachineAssessPatchesResultErrorDetailsDetailsList = ErrorDetail[];
+export type MachineAssessPatchesResultErrorDetailsDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const MachineAssessPatchesResultErrorDetailsDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -3480,7 +4128,7 @@ export const MachineAssessPatchesResultErrorDetailsDetailsList =
 
 /** The error additional info. */
 export type MachineAssessPatchesResultErrorDetailsAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const MachineAssessPatchesResultErrorDetailsAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -3556,6 +4204,324 @@ export const MachineAssessPatchesResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachineAssessPatchesResult",
 }) as any as S.Schema<MachineAssessPatchesResult>;
 
+/** Resource tags. */
+export type MachinesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MachinesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MachinesCreateOrUpdateRequestTagsMap>;
+
+/** Metadata pertaining to the geographic location of the resource. */
+export interface MachinePropertiesInputLocationData {
+  /** A canonical name for the geographic or physical location. */
+  name: string;
+  /** The city or locality where the resource is located. */
+  city?: string;
+  /** The district, state, or province where the resource is located. */
+  district?: string;
+  /** The country or region where the resource is located */
+  countryOrRegion?: string;
+}
+export const MachinePropertiesInputLocationData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    city: S.optional(S.String),
+    district: S.optional(S.String),
+    countryOrRegion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MachinePropertiesInputLocationData",
+}) as any as S.Schema<MachinePropertiesInputLocationData>;
+
+/** Describes the status and behavior of a service. */
+export interface ServiceStatus {
+  /** The current status of the service. */
+  status?: string;
+  /** The behavior of the service when the Arc-enabled machine starts up. */
+  startupType?: string;
+}
+export const ServiceStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(S.String),
+    startupType: S.optional(S.String),
+  }),
+).annotate({ identifier: "ServiceStatus" }) as any as S.Schema<ServiceStatus>;
+
+/** Reports the state and behavior of dependent services. */
+export interface ServiceStatuses {
+  /** The state of the extension service on the Arc-enabled machine. */
+  extensionService?: ServiceStatus;
+  /** The state of the guest configuration service on the Arc-enabled machine. */
+  guestConfigurationService?: ServiceStatus;
+}
+export const ServiceStatuses = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    extensionService: S.optional(ServiceStatus),
+    guestConfigurationService: S.optional(ServiceStatus),
+  }),
+).annotate({
+  identifier: "ServiceStatuses",
+}) as any as S.Schema<ServiceStatuses>;
+
+/** The metadata of the cloud environment (Azure/GCP/AWS/OCI...). */
+export interface CloudMetadataInput {}
+export const CloudMetadataInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CloudMetadataInput",
+}) as any as S.Schema<CloudMetadataInput>;
+
+/** The info w.r.t Agent Upgrade. */
+export interface AgentUpgradeInput {
+  /** Specifies the version info w.r.t AgentUpgrade for the machine. */
+  desiredVersion?: string;
+  /** The correlation ID associated with an agent upgrade operation. */
+  correlationId?: string;
+  /** Specifies if the machine's agent should be upgraded */
+  enableAutomaticUpgrade?: boolean;
+}
+export const AgentUpgradeInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    desiredVersion: S.optional(S.String),
+    correlationId: S.optional(S.String),
+    enableAutomaticUpgrade: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "AgentUpgradeInput",
+}) as any as S.Schema<AgentUpgradeInput>;
+
+/** Specifies the assessment mode. */
+export type PatchSettingsInputAssessmentMode =
+  | "ImageDefault"
+  | "AutomaticByPlatform";
+export const PatchSettingsInputAssessmentMode = /*@__PURE__*/ S.String;
+
+/** Specifies the patch mode. */
+export type PatchSettingsInputPatchMode =
+  | "ImageDefault"
+  | "AutomaticByPlatform"
+  | "AutomaticByOS"
+  | "Manual";
+export const PatchSettingsInputPatchMode = /*@__PURE__*/ S.String;
+
+/** Specifies the patch settings. */
+export interface PatchSettingsInput {
+  /** Specifies the assessment mode. */
+  assessmentMode?: PatchSettingsInputAssessmentMode;
+  /** Specifies the patch mode. */
+  patchMode?: PatchSettingsInputPatchMode;
+  /** Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot. */
+  enableHotpatching?: boolean;
+}
+export const PatchSettingsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assessmentMode: S.optional(PatchSettingsInputAssessmentMode),
+    patchMode: S.optional(PatchSettingsInputPatchMode),
+    enableHotpatching: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PatchSettingsInput",
+}) as any as S.Schema<PatchSettingsInput>;
+
+/** Specifies the windows configuration for update management. */
+export interface OSProfileInputWindowsConfiguration {
+  patchSettings?: PatchSettingsInput;
+}
+export const OSProfileInputWindowsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    patchSettings: S.optional(PatchSettingsInput),
+  }),
+).annotate({
+  identifier: "OSProfileInputWindowsConfiguration",
+}) as any as S.Schema<OSProfileInputWindowsConfiguration>;
+
+/** Specifies the linux configuration for update management. */
+export interface OSProfileInputLinuxConfiguration {
+  patchSettings?: PatchSettingsInput;
+}
+export const OSProfileInputLinuxConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    patchSettings: S.optional(PatchSettingsInput),
+  }),
+).annotate({
+  identifier: "OSProfileInputLinuxConfiguration",
+}) as any as S.Schema<OSProfileInputLinuxConfiguration>;
+
+/** Specifies the operating system settings for the hybrid machine. */
+export interface OSProfileInput {
+  /** Specifies the windows configuration for update management. */
+  windowsConfiguration?: OSProfileInputWindowsConfiguration;
+  /** Specifies the linux configuration for update management. */
+  linuxConfiguration?: OSProfileInputLinuxConfiguration;
+}
+export const OSProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    windowsConfiguration: S.optional(OSProfileInputWindowsConfiguration),
+    linuxConfiguration: S.optional(OSProfileInputLinuxConfiguration),
+  }),
+).annotate({ identifier: "OSProfileInput" }) as any as S.Schema<OSProfileInput>;
+
+/** Resource tags. */
+export type LicenseInputTagsMap = { [key: string]: string | undefined };
+export const LicenseInputTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<LicenseInputTagsMap>;
+
+/** Describes a license in a hybrid machine. */
+export interface LicenseInput {
+  /** Resource tags. */
+  tags?: LicenseInputTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Hybrid Compute License properties */
+  properties?: LicensePropertiesInput;
+}
+export const LicenseInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tags: S.optional(LicenseInputTagsMap),
+    location: S.String,
+    properties: S.optional(LicensePropertiesInput),
+  }),
+).annotate({ identifier: "LicenseInput" }) as any as S.Schema<LicenseInput>;
+
+/** Describes the license assignment state (Assigned or NotAssigned). */
+export type LicenseProfileMachineInstanceViewEsuPropertiesInputLicenseAssignmentState =
+  "Assigned" | "NotAssigned";
+export const LicenseProfileMachineInstanceViewEsuPropertiesInputLicenseAssignmentState =
+  /*@__PURE__*/ S.String;
+
+/** Properties for the Machine ESU profile. */
+export interface LicenseProfileMachineInstanceViewEsuPropertiesInput {
+  /** The assigned license resource. */
+  assignedLicense?: LicenseInput;
+  /** Describes the license assignment state (Assigned or NotAssigned). */
+  licenseAssignmentState?: LicenseProfileMachineInstanceViewEsuPropertiesInputLicenseAssignmentState;
+}
+export const LicenseProfileMachineInstanceViewEsuPropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      assignedLicense: S.optional(LicenseInput),
+      licenseAssignmentState: S.optional(
+        LicenseProfileMachineInstanceViewEsuPropertiesInputLicenseAssignmentState,
+      ),
+    }),
+  ).annotate({
+    identifier: "LicenseProfileMachineInstanceViewEsuPropertiesInput",
+  }) as any as S.Schema<LicenseProfileMachineInstanceViewEsuPropertiesInput>;
+
+/** License Profile Instance View in Machine Properties. */
+export interface LicenseProfileMachineInstanceViewInput {
+  esuProfile?: LicenseProfileMachineInstanceViewEsuPropertiesInput;
+}
+export const LicenseProfileMachineInstanceViewInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      esuProfile: S.optional(
+        LicenseProfileMachineInstanceViewEsuPropertiesInput,
+      ),
+    }),
+).annotate({
+  identifier: "LicenseProfileMachineInstanceViewInput",
+}) as any as S.Schema<LicenseProfileMachineInstanceViewInput>;
+
+/** Specifies the identity key store a machine is using. */
+export type MachinePropertiesInputIdentityKeyStore = "TPM" | "Default";
+export const MachinePropertiesInputIdentityKeyStore = /*@__PURE__*/ S.String;
+
+/** Machine Extensions information (deprecated field) */
+export type MachinePropertiesInputExtensionsList =
+  ReadonlyArray<MachineExtensionInstanceView>;
+export const MachinePropertiesInputExtensionsList = /*@__PURE__*/ S.Array(
+  MachineExtensionInstanceView,
+) as any as S.Schema<MachinePropertiesInputExtensionsList>;
+
+/** Describes the properties of a hybrid machine. */
+export interface MachinePropertiesInput {
+  /** Metadata pertaining to the geographic location of the resource. */
+  locationData?: MachinePropertiesInputLocationData;
+  /** Statuses of dependent services that are reported back to ARM. */
+  serviceStatuses?: ServiceStatuses;
+  /** The metadata of the cloud environment (Azure/GCP/AWS/OCI...). */
+  cloudMetadata?: CloudMetadataInput;
+  /** The info of the machine w.r.t Agent Upgrade */
+  agentUpgrade?: AgentUpgradeInput;
+  /** Specifies the operating system settings for the hybrid machine. */
+  osProfile?: OSProfileInput;
+  /** Specifies the License related properties for a machine. */
+  licenseProfile?: LicenseProfileMachineInstanceViewInput;
+  /** Specifies the hybrid machine unique ID. */
+  vmId?: string;
+  /** Public Key that the client provides to be used during initial resource onboarding */
+  clientPublicKey?: string;
+  /** Specifies the identity key store a machine is using. */
+  identityKeyStore?: MachinePropertiesInputIdentityKeyStore;
+  /** Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource onboarding. */
+  tpmEkCertificate?: string;
+  /** The type of Operating System (windows/linux). */
+  osType?: string;
+  /** Machine Extensions information (deprecated field) */
+  extensions?: MachinePropertiesInputExtensionsList;
+  /** The resource id of the private link scope this machine is assigned to, if any. */
+  privateLinkScopeResourceId?: string;
+  /** The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any. */
+  parentClusterResourceId?: string;
+  /** Specifies whether any MS SQL instance is discovered on the machine. */
+  mssqlDiscovered?: string;
+}
+export const MachinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    locationData: S.optional(MachinePropertiesInputLocationData),
+    serviceStatuses: S.optional(ServiceStatuses),
+    cloudMetadata: S.optional(CloudMetadataInput),
+    agentUpgrade: S.optional(AgentUpgradeInput),
+    osProfile: S.optional(OSProfileInput),
+    licenseProfile: S.optional(LicenseProfileMachineInstanceViewInput),
+    vmId: S.optional(S.String),
+    clientPublicKey: S.optional(S.String),
+    identityKeyStore: S.optional(MachinePropertiesInputIdentityKeyStore),
+    tpmEkCertificate: S.optional(S.String),
+    osType: S.optional(S.String),
+    extensions: S.optional(MachinePropertiesInputExtensionsList),
+    privateLinkScopeResourceId: S.optional(S.String),
+    parentClusterResourceId: S.optional(S.String),
+    mssqlDiscovered: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MachinePropertiesInput",
+}) as any as S.Schema<MachinePropertiesInput>;
+
+/** The identity type. */
+export type MachinesCreateOrUpdateRequestIdentityType = "SystemAssigned";
+export const MachinesCreateOrUpdateRequestIdentityType = /*@__PURE__*/ S.String;
+
+/** Identity for the resource. */
+export interface MachinesCreateOrUpdateRequestIdentity {
+  /** The identity type. */
+  type?: MachinesCreateOrUpdateRequestIdentityType;
+}
+export const MachinesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: S.optional(MachinesCreateOrUpdateRequestIdentityType),
+    }),
+).annotate({
+  identifier: "MachinesCreateOrUpdateRequestIdentity",
+}) as any as S.Schema<MachinesCreateOrUpdateRequestIdentity>;
+
+/** Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc. */
+export type ArcKindEnum =
+  | "AVS"
+  | "HCI"
+  | "SCVMM"
+  | "VMware"
+  | "EPS"
+  | "GCP"
+  | "AWS";
+export const ArcKindEnum = /*@__PURE__*/ S.String;
+
 export interface MachinesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3565,7 +4531,15 @@ export interface MachinesCreateOrUpdateRequest {
   machineName: string;
   /** Expands referenced resources. */
   _expand?: string;
-  body: unknown;
+  /** Resource tags. */
+  tags?: MachinesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Hybrid Compute Machine properties */
+  properties?: MachinePropertiesInput;
+  /** Identity for the resource. */
+  identity?: MachinesCreateOrUpdateRequestIdentity;
+  kind?: ArcKindEnum;
 }
 export const MachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3573,7 +4547,11 @@ export const MachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     machineName: S.String.pipe(T.Label()),
     _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(MachinesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(MachinePropertiesInput),
+    identity: S.optional(MachinesCreateOrUpdateRequestIdentity),
+    kind: S.optional(ArcKindEnum),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3618,7 +4596,8 @@ export const MachinePropertiesLocationData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachinePropertiesLocationData>;
 
 /** Specifies the list of ports that the agent will be able to listen on. */
-export type AgentConfigurationIncomingConnectionsPortsList = string[];
+export type AgentConfigurationIncomingConnectionsPortsList =
+  ReadonlyArray<string>;
 export const AgentConfigurationIncomingConnectionsPortsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -3642,26 +4621,26 @@ export const ConfigurationExtension = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of extensions that are allowed to be installed or updated. */
 export type AgentConfigurationExtensionsAllowListList =
-  ConfigurationExtension[];
+  ReadonlyArray<ConfigurationExtension>;
 export const AgentConfigurationExtensionsAllowListList = /*@__PURE__*/ S.Array(
   ConfigurationExtension,
 ) as any as S.Schema<AgentConfigurationExtensionsAllowListList>;
 
 /** Array of extensions that are blocked (cannot be installed or updated) */
 export type AgentConfigurationExtensionsBlockListList =
-  ConfigurationExtension[];
+  ReadonlyArray<ConfigurationExtension>;
 export const AgentConfigurationExtensionsBlockListList = /*@__PURE__*/ S.Array(
   ConfigurationExtension,
 ) as any as S.Schema<AgentConfigurationExtensionsBlockListList>;
 
 /** List of service names which should not use the specified proxy server. */
-export type AgentConfigurationProxyBypassList = string[];
+export type AgentConfigurationProxyBypassList = ReadonlyArray<string>;
 export const AgentConfigurationProxyBypassList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AgentConfigurationProxyBypassList>;
 
 /** Name of configuration mode to use. Modes are pre-defined configurations of security controls, extension allowlists and guest configuration, maintained by Microsoft. */
-export type AgentConfigurationConfigMode = "full" | "monitor" | (string & {});
+export type AgentConfigurationConfigMode = "full" | "monitor";
 export const AgentConfigurationConfigMode = /*@__PURE__*/ S.String;
 
 /** Configurable properties that the user can set locally via the azcmagent config command, or remotely via ARM. */
@@ -3700,36 +4679,6 @@ export const AgentConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentConfiguration",
 }) as any as S.Schema<AgentConfiguration>;
 
-/** Describes the status and behavior of a service. */
-export interface ServiceStatus {
-  /** The current status of the service. */
-  status?: string;
-  /** The behavior of the service when the Arc-enabled machine starts up. */
-  startupType?: string;
-}
-export const ServiceStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(S.String),
-    startupType: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceStatus" }) as any as S.Schema<ServiceStatus>;
-
-/** Reports the state and behavior of dependent services. */
-export interface ServiceStatuses {
-  /** The state of the extension service on the Arc-enabled machine. */
-  extensionService?: ServiceStatus;
-  /** The state of the guest configuration service on the Arc-enabled machine. */
-  guestConfigurationService?: ServiceStatus;
-}
-export const ServiceStatuses = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extensionService: S.optional(ServiceStatus),
-    guestConfigurationService: S.optional(ServiceStatus),
-  }),
-).annotate({
-  identifier: "ServiceStatuses",
-}) as any as S.Schema<ServiceStatuses>;
-
 /** Describes the firmware of the machine */
 export interface Processor {
   /** The name of the processor. */
@@ -3745,7 +4694,7 @@ export const Processor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Processor" }) as any as S.Schema<Processor>;
 
 /** The physical processors of the machine. */
-export type HardwareProfileProcessorsList = Processor[];
+export type HardwareProfileProcessorsList = ReadonlyArray<Processor>;
 export const HardwareProfileProcessorsList = /*@__PURE__*/ S.Array(
   Processor,
 ) as any as S.Schema<HardwareProfileProcessorsList>;
@@ -3799,7 +4748,7 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
 /** The disks on the machine. */
-export type StorageProfileDisksList = Disk[];
+export type StorageProfileDisksList = ReadonlyArray<Disk>;
 export const StorageProfileDisksList = /*@__PURE__*/ S.Array(
   Disk,
 ) as any as S.Schema<StorageProfileDisksList>;
@@ -3843,10 +4792,7 @@ export const CloudMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudMetadata" }) as any as S.Schema<CloudMetadata>;
 
 /** Specifies the status of Agent Upgrade. */
-export type AgentUpgradeLastAttemptStatus =
-  | "Success"
-  | "Failed"
-  | (string & {});
+export type AgentUpgradeLastAttemptStatus = "Success" | "Failed";
 export const AgentUpgradeLastAttemptStatus = /*@__PURE__*/ S.String;
 
 /** The info w.r.t Agent Upgrade. */
@@ -3881,8 +4827,7 @@ export const AgentUpgrade = /*@__PURE__*/ S.suspend(() =>
 /** Specifies the assessment mode. */
 export type PatchSettingsAssessmentMode =
   | "ImageDefault"
-  | "AutomaticByPlatform"
-  | (string & {});
+  | "AutomaticByPlatform";
 export const PatchSettingsAssessmentMode = /*@__PURE__*/ S.String;
 
 /** Specifies the patch mode. */
@@ -3890,8 +4835,7 @@ export type PatchSettingsPatchMode =
   | "ImageDefault"
   | "AutomaticByPlatform"
   | "AutomaticByOS"
-  | "Manual"
-  | (string & {});
+  | "Manual";
 export const PatchSettingsPatchMode = /*@__PURE__*/ S.String;
 
 /** Status of hotpatch enablement or disablement. */
@@ -3900,18 +4844,18 @@ export type HotpatchEnablementStatus =
   | "PendingEvaluation"
   | "Disabled"
   | "ActionRequired"
-  | "Enabled"
-  | (string & {});
+  | "Enabled";
 export const HotpatchEnablementStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type PatchSettingsStatusErrorDetailsList = ErrorDetail[];
+export type PatchSettingsStatusErrorDetailsList = ReadonlyArray<ErrorDetail>;
 export const PatchSettingsStatusErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<PatchSettingsStatusErrorDetailsList>;
 
 /** The error additional info. */
-export type PatchSettingsStatusErrorAdditionalInfoList = ErrorAdditionalInfo[];
+export type PatchSettingsStatusErrorAdditionalInfoList =
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const PatchSettingsStatusErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<PatchSettingsStatusErrorAdditionalInfoList>;
@@ -4026,8 +4970,7 @@ export type LicenseStatus =
   | "OOTGrace"
   | "NonGenuineGrace"
   | "Notification"
-  | "ExtendedGrace"
-  | (string & {});
+  | "ExtendedGrace";
 export const LicenseStatus = /*@__PURE__*/ S.String;
 
 export interface LicenseProfileMachineInstanceViewSoftwareAssurance {
@@ -4045,7 +4988,7 @@ export const LicenseProfileMachineInstanceViewSoftwareAssurance =
 
 /** The list of ESU keys. */
 export type LicenseProfileMachineInstanceViewEsuPropertiesEsuKeysList =
-  EsuKey[];
+  ReadonlyArray<EsuKey>;
 export const LicenseProfileMachineInstanceViewEsuPropertiesEsuKeysList =
   /*@__PURE__*/ S.Array(
     EsuKey,
@@ -4053,7 +4996,7 @@ export const LicenseProfileMachineInstanceViewEsuPropertiesEsuKeysList =
 
 /** Describes the license assignment state (Assigned or NotAssigned). */
 export type LicenseProfileMachineInstanceViewEsuPropertiesLicenseAssignmentState =
-  "Assigned" | "NotAssigned" | (string & {});
+  "Assigned" | "NotAssigned";
 export const LicenseProfileMachineInstanceViewEsuPropertiesLicenseAssignmentState =
   /*@__PURE__*/ S.String;
 
@@ -4119,15 +5062,12 @@ export const LicenseProfileMachineInstanceView = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LicenseProfileMachineInstanceView>;
 
 /** The status of the hybrid machine agent. */
-export type MachinePropertiesStatus =
-  | "Connected"
-  | "Disconnected"
-  | "Error"
-  | (string & {});
+export type MachinePropertiesStatus = "Connected" | "Disconnected" | "Error";
 export const MachinePropertiesStatus = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type MachinePropertiesErrorDetailsItemDetailsList = ErrorDetail[];
+export type MachinePropertiesErrorDetailsItemDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const MachinePropertiesErrorDetailsItemDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -4135,7 +5075,7 @@ export const MachinePropertiesErrorDetailsItemDetailsList =
 
 /** The error additional info. */
 export type MachinePropertiesErrorDetailsItemAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const MachinePropertiesErrorDetailsItemAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -4170,20 +5110,18 @@ export const MachinePropertiesErrorDetailsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about the error state. */
 export type MachinePropertiesErrorDetailsList =
-  MachinePropertiesErrorDetailsItem[];
+  ReadonlyArray<MachinePropertiesErrorDetailsItem>;
 export const MachinePropertiesErrorDetailsList = /*@__PURE__*/ S.Array(
   MachinePropertiesErrorDetailsItem,
 ) as any as S.Schema<MachinePropertiesErrorDetailsList>;
 
 /** Specifies the identity key store a machine is using. */
-export type MachinePropertiesIdentityKeyStore =
-  | "TPM"
-  | "Default"
-  | (string & {});
+export type MachinePropertiesIdentityKeyStore = "TPM" | "Default";
 export const MachinePropertiesIdentityKeyStore = /*@__PURE__*/ S.String;
 
 /** Machine Extensions information (deprecated field) */
-export type MachinePropertiesExtensionsList = MachineExtensionInstanceView[];
+export type MachinePropertiesExtensionsList =
+  ReadonlyArray<MachineExtensionInstanceView>;
 export const MachinePropertiesExtensionsList = /*@__PURE__*/ S.Array(
   MachineExtensionInstanceView,
 ) as any as S.Schema<MachinePropertiesExtensionsList>;
@@ -4224,7 +5162,7 @@ export const IpAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpAddress" }) as any as S.Schema<IpAddress>;
 
 /** The list of IP addresses in this interface. */
-export type NetworkInterfaceIpAddressesList = IpAddress[];
+export type NetworkInterfaceIpAddressesList = ReadonlyArray<IpAddress>;
 export const NetworkInterfaceIpAddressesList = /*@__PURE__*/ S.Array(
   IpAddress,
 ) as any as S.Schema<NetworkInterfaceIpAddressesList>;
@@ -4252,7 +5190,8 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterface>;
 
 /** The list of network interfaces. */
-export type NetworkProfileNetworkInterfacesList = NetworkInterface[];
+export type NetworkProfileNetworkInterfacesList =
+  ReadonlyArray<NetworkInterface>;
 export const NetworkProfileNetworkInterfacesList = /*@__PURE__*/ S.Array(
   NetworkInterface,
 ) as any as S.Schema<NetworkProfileNetworkInterfacesList>;
@@ -4387,16 +5326,15 @@ export const MachineProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachineProperties>;
 
 /** The list of extensions affiliated to the machine */
-export type MachinesCreateOrUpdateResponseResourcesList = MachineExtension[];
+export type MachinesCreateOrUpdateResponseResourcesList =
+  ReadonlyArray<MachineExtension>;
 export const MachinesCreateOrUpdateResponseResourcesList =
   /*@__PURE__*/ S.Array(
     MachineExtension,
   ) as any as S.Schema<MachinesCreateOrUpdateResponseResourcesList>;
 
 /** The identity type. */
-export type MachinesCreateOrUpdateResponseIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+export type MachinesCreateOrUpdateResponseIdentityType = "SystemAssigned";
 export const MachinesCreateOrUpdateResponseIdentityType =
   /*@__PURE__*/ S.String;
 
@@ -4419,18 +5357,6 @@ export const MachinesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "MachinesCreateOrUpdateResponseIdentity",
 }) as any as S.Schema<MachinesCreateOrUpdateResponseIdentity>;
-
-/** Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc. */
-export type ArcKindEnum =
-  | "AVS"
-  | "HCI"
-  | "SCVMM"
-  | "VMware"
-  | "EPS"
-  | "GCP"
-  | "AWS"
-  | (string & {});
-export const ArcKindEnum = /*@__PURE__*/ S.String;
 
 export interface MachinesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4502,7 +5428,7 @@ export const MachinesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachinesDeleteResponse",
 }) as any as S.Schema<MachinesDeleteResponse>;
 
-export type MachinesGetRequestExpand = "instanceView" | (string & {});
+export type MachinesGetRequestExpand = "instanceView";
 export const MachinesGetRequestExpand = /*@__PURE__*/ S.String;
 
 export interface MachinesGetRequest {
@@ -4541,13 +5467,13 @@ export const MachinesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MachinesGetResponseTagsMap>;
 
 /** The list of extensions affiliated to the machine */
-export type MachinesGetResponseResourcesList = MachineExtension[];
+export type MachinesGetResponseResourcesList = ReadonlyArray<MachineExtension>;
 export const MachinesGetResponseResourcesList = /*@__PURE__*/ S.Array(
   MachineExtension,
 ) as any as S.Schema<MachinesGetResponseResourcesList>;
 
 /** The identity type. */
-export type MachinesGetResponseIdentityType = "SystemAssigned" | (string & {});
+export type MachinesGetResponseIdentityType = "SystemAssigned";
 export const MachinesGetResponseIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -4607,6 +5533,129 @@ export const MachinesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachinesGetResponse",
 }) as any as S.Schema<MachinesGetResponse>;
 
+/** Defines when it is acceptable to reboot a VM during a software update operation. */
+export type MachinesInstallPatchesRequestRebootSetting =
+  | "IfRequired"
+  | "Never"
+  | "Always";
+export const MachinesInstallPatchesRequestRebootSetting =
+  /*@__PURE__*/ S.String;
+
+export type WindowsParametersClassificationsToIncludeItem =
+  | "Critical"
+  | "Security"
+  | "UpdateRollUp"
+  | "FeaturePack"
+  | "ServicePack"
+  | "Definition"
+  | "Tools"
+  | "Updates";
+export const WindowsParametersClassificationsToIncludeItem =
+  /*@__PURE__*/ S.String;
+
+/** The update classifications to select when installing patches for Windows. */
+export type WindowsParametersClassificationsToIncludeList =
+  ReadonlyArray<WindowsParametersClassificationsToIncludeItem>;
+export const WindowsParametersClassificationsToIncludeList =
+  /*@__PURE__*/ S.Array(
+    WindowsParametersClassificationsToIncludeItem,
+  ) as any as S.Schema<WindowsParametersClassificationsToIncludeList>;
+
+/** Kbs to include in the patch operation */
+export type WindowsParametersKbNumbersToIncludeList = ReadonlyArray<string>;
+export const WindowsParametersKbNumbersToIncludeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<WindowsParametersKbNumbersToIncludeList>;
+
+/** Kbs to exclude in the patch operation */
+export type WindowsParametersKbNumbersToExcludeList = ReadonlyArray<string>;
+export const WindowsParametersKbNumbersToExcludeList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<WindowsParametersKbNumbersToExcludeList>;
+
+/** Input for InstallPatches on a Windows VM, as directly received by the API */
+export interface WindowsParameters {
+  /** The update classifications to select when installing patches for Windows. */
+  classificationsToInclude?: WindowsParametersClassificationsToIncludeList;
+  /** Kbs to include in the patch operation */
+  kbNumbersToInclude?: WindowsParametersKbNumbersToIncludeList;
+  /** Kbs to exclude in the patch operation */
+  kbNumbersToExclude?: WindowsParametersKbNumbersToExcludeList;
+  /** Filters out Kbs that don't have an InstallationRebootBehavior of 'NeverReboots' when this is set to true. */
+  excludeKbsRequiringReboot?: boolean;
+  /** This is used to install patches that were published on or before this given max published date. */
+  maxPatchPublishDate?: string;
+}
+export const WindowsParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    classificationsToInclude: S.optional(
+      WindowsParametersClassificationsToIncludeList,
+    ),
+    kbNumbersToInclude: S.optional(WindowsParametersKbNumbersToIncludeList),
+    kbNumbersToExclude: S.optional(WindowsParametersKbNumbersToExcludeList),
+    excludeKbsRequiringReboot: S.optional(S.Boolean),
+    maxPatchPublishDate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WindowsParameters",
+}) as any as S.Schema<WindowsParameters>;
+
+export type LinuxParametersClassificationsToIncludeItem =
+  | "Critical"
+  | "Security"
+  | "Other";
+export const LinuxParametersClassificationsToIncludeItem =
+  /*@__PURE__*/ S.String;
+
+/** The update classifications to select when installing patches for Linux. */
+export type LinuxParametersClassificationsToIncludeList =
+  ReadonlyArray<LinuxParametersClassificationsToIncludeItem>;
+export const LinuxParametersClassificationsToIncludeList =
+  /*@__PURE__*/ S.Array(
+    LinuxParametersClassificationsToIncludeItem,
+  ) as any as S.Schema<LinuxParametersClassificationsToIncludeList>;
+
+/** packages to include in the patch operation. Format: packageName_packageVersion */
+export type LinuxParametersPackageNameMasksToIncludeList =
+  ReadonlyArray<string>;
+export const LinuxParametersPackageNameMasksToIncludeList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<LinuxParametersPackageNameMasksToIncludeList>;
+
+/** packages to exclude in the patch operation. Format: packageName_packageVersion */
+export type LinuxParametersPackageNameMasksToExcludeList =
+  ReadonlyArray<string>;
+export const LinuxParametersPackageNameMasksToExcludeList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<LinuxParametersPackageNameMasksToExcludeList>;
+
+/** Input for InstallPatches on a Linux VM, as directly received by the API */
+export interface LinuxParameters {
+  /** The update classifications to select when installing patches for Linux. */
+  classificationsToInclude?: LinuxParametersClassificationsToIncludeList;
+  /** packages to include in the patch operation. Format: packageName_packageVersion */
+  packageNameMasksToInclude?: LinuxParametersPackageNameMasksToIncludeList;
+  /** packages to exclude in the patch operation. Format: packageName_packageVersion */
+  packageNameMasksToExclude?: LinuxParametersPackageNameMasksToExcludeList;
+}
+export const LinuxParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    classificationsToInclude: S.optional(
+      LinuxParametersClassificationsToIncludeList,
+    ),
+    packageNameMasksToInclude: S.optional(
+      LinuxParametersPackageNameMasksToIncludeList,
+    ),
+    packageNameMasksToExclude: S.optional(
+      LinuxParametersPackageNameMasksToExcludeList,
+    ),
+  }),
+).annotate({
+  identifier: "LinuxParameters",
+}) as any as S.Schema<LinuxParameters>;
+
 export interface MachinesInstallPatchesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4614,14 +5663,24 @@ export interface MachinesInstallPatchesRequest {
   resourceGroupName: string;
   /** The name of the hybrid machine. */
   name: string;
-  body: unknown;
+  /** Specifies the maximum amount of time that the operation will run. It must be an ISO 8601-compliant duration string such as PT4H (4 hours) */
+  maximumDuration: string;
+  /** Defines when it is acceptable to reboot a VM during a software update operation. */
+  rebootSetting: MachinesInstallPatchesRequestRebootSetting;
+  /** Input for InstallPatches on a Windows VM, as directly received by the API */
+  windowsParameters?: WindowsParameters;
+  /** Input for InstallPatches on a Linux VM, as directly received by the API */
+  linuxParameters?: LinuxParameters;
 }
 export const MachinesInstallPatchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    maximumDuration: S.String,
+    rebootSetting: MachinesInstallPatchesRequestRebootSetting,
+    windowsParameters: S.optional(WindowsParameters),
+    linuxParameters: S.optional(LinuxParameters),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4640,8 +5699,7 @@ export type MachineInstallPatchesResultStatus =
   | "InProgress"
   | "Failed"
   | "Succeeded"
-  | "CompletedWithWarnings"
-  | (string & {});
+  | "CompletedWithWarnings";
 export const MachineInstallPatchesResultStatus = /*@__PURE__*/ S.String;
 
 /** The reboot state of the VM following completion of the operation. */
@@ -4651,15 +5709,11 @@ export type MachineInstallPatchesResultRebootStatus =
   | "Required"
   | "Started"
   | "Failed"
-  | "Completed"
-  | (string & {});
+  | "Completed";
 export const MachineInstallPatchesResultRebootStatus = /*@__PURE__*/ S.String;
 
 /** Indicates if operation was triggered by user or by platform. */
-export type MachineInstallPatchesResultStartedBy =
-  | "User"
-  | "Platform"
-  | (string & {});
+export type MachineInstallPatchesResultStartedBy = "User" | "Platform";
 export const MachineInstallPatchesResultStartedBy = /*@__PURE__*/ S.String;
 
 /** Specifies the patch service used for the operation. */
@@ -4669,20 +5723,17 @@ export type MachineInstallPatchesResultPatchServiceUsed =
   | "WU_WSUS"
   | "YUM"
   | "APT"
-  | "Zypper"
-  | (string & {});
+  | "Zypper";
 export const MachineInstallPatchesResultPatchServiceUsed =
   /*@__PURE__*/ S.String;
 
 /** The operating system type of the machine. */
-export type MachineInstallPatchesResultOsType =
-  | "Windows"
-  | "Linux"
-  | (string & {});
+export type MachineInstallPatchesResultOsType = "Windows" | "Linux";
 export const MachineInstallPatchesResultOsType = /*@__PURE__*/ S.String;
 
 /** The error details. */
-export type MachineInstallPatchesResultErrorDetailsDetailsList = ErrorDetail[];
+export type MachineInstallPatchesResultErrorDetailsDetailsList =
+  ReadonlyArray<ErrorDetail>;
 export const MachineInstallPatchesResultErrorDetailsDetailsList =
   /*@__PURE__*/ S.Array(
     ErrorDetail,
@@ -4690,7 +5741,7 @@ export const MachineInstallPatchesResultErrorDetailsDetailsList =
 
 /** The error additional info. */
 export type MachineInstallPatchesResultErrorDetailsAdditionalInfoList =
-  ErrorAdditionalInfo[];
+  ReadonlyArray<ErrorAdditionalInfo>;
 export const MachineInstallPatchesResultErrorDetailsAdditionalInfoList =
   /*@__PURE__*/ S.Array(
     ErrorAdditionalInfo,
@@ -4812,13 +5863,13 @@ export const MachineTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MachineTagsMap>;
 
 /** The list of extensions affiliated to the machine */
-export type MachineResourcesList = MachineExtension[];
+export type MachineResourcesList = ReadonlyArray<MachineExtension>;
 export const MachineResourcesList = /*@__PURE__*/ S.Array(
   MachineExtension,
 ) as any as S.Schema<MachineResourcesList>;
 
 /** The identity type. */
-export type MachineIdentityType = "SystemAssigned" | (string & {});
+export type MachineIdentityType = "SystemAssigned";
 export const MachineIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -4878,7 +5929,7 @@ export const Machine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Machine" }) as any as S.Schema<Machine>;
 
 /** The list of hybrid machines. */
-export type MachineListResultValueList = Machine[];
+export type MachineListResultValueList = ReadonlyArray<Machine>;
 export const MachineListResultValueList = /*@__PURE__*/ S.Array(
   Machine,
 ) as any as S.Schema<MachineListResultValueList>;
@@ -4918,6 +5969,88 @@ export const MachinesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachinesListBySubscriptionRequest",
 }) as any as S.Schema<MachinesListBySubscriptionRequest>;
 
+/** Resource tags */
+export type MachinesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MachinesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MachinesUpdateRequestTagsMap>;
+
+/** The identity type. */
+export type MachinesUpdateRequestIdentityType = "SystemAssigned";
+export const MachinesUpdateRequestIdentityType = /*@__PURE__*/ S.String;
+
+/** Identity for the resource. */
+export interface MachinesUpdateRequestIdentity {
+  /** The identity type. */
+  type?: MachinesUpdateRequestIdentityType;
+}
+export const MachinesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(MachinesUpdateRequestIdentityType),
+  }),
+).annotate({
+  identifier: "MachinesUpdateRequestIdentity",
+}) as any as S.Schema<MachinesUpdateRequestIdentity>;
+
+/** Metadata pertaining to the geographic location of the resource. */
+export interface MachineUpdatePropertiesInputLocationData {
+  /** A canonical name for the geographic or physical location. */
+  name: string;
+  /** The city or locality where the resource is located. */
+  city?: string;
+  /** The district, state, or province where the resource is located. */
+  district?: string;
+  /** The country or region where the resource is located */
+  countryOrRegion?: string;
+}
+export const MachineUpdatePropertiesInputLocationData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      city: S.optional(S.String),
+      district: S.optional(S.String),
+      countryOrRegion: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "MachineUpdatePropertiesInputLocationData",
+}) as any as S.Schema<MachineUpdatePropertiesInputLocationData>;
+
+/** Describes the ARM updatable properties of a hybrid machine. */
+export interface MachineUpdatePropertiesInput {
+  /** Metadata pertaining to the geographic location of the resource. */
+  locationData?: MachineUpdatePropertiesInputLocationData;
+  osProfile?: OSProfileInput;
+  /** The metadata of the cloud environment (Azure/GCP/AWS/OCI...). */
+  cloudMetadata?: CloudMetadataInput;
+  /** The info of the machine w.r.t Agent Upgrade */
+  agentUpgrade?: AgentUpgradeInput;
+  /** The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any. */
+  parentClusterResourceId?: string;
+  /** The resource id of the private link scope this machine is assigned to, if any. */
+  privateLinkScopeResourceId?: string;
+  /** Identity key store type of the machine */
+  identityKeyStore?: string;
+  /** Endorsement Key Certificate of the Trusted Platform Module (TPM) that the client provides to be used during initial resource onboarding. */
+  tpmEkCertificate?: string;
+}
+export const MachineUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    locationData: S.optional(MachineUpdatePropertiesInputLocationData),
+    osProfile: S.optional(OSProfileInput),
+    cloudMetadata: S.optional(CloudMetadataInput),
+    agentUpgrade: S.optional(AgentUpgradeInput),
+    parentClusterResourceId: S.optional(S.String),
+    privateLinkScopeResourceId: S.optional(S.String),
+    identityKeyStore: S.optional(S.String),
+    tpmEkCertificate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MachineUpdatePropertiesInput",
+}) as any as S.Schema<MachineUpdatePropertiesInput>;
+
 export interface MachinesUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4925,14 +6058,23 @@ export interface MachinesUpdateRequest {
   resourceGroupName: string;
   /** The name of the hybrid machine. */
   machineName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: MachinesUpdateRequestTagsMap;
+  /** Identity for the resource. */
+  identity?: MachinesUpdateRequestIdentity;
+  kind?: ArcKindEnum;
+  /** Hybrid Compute Machine properties */
+  properties?: MachineUpdatePropertiesInput;
 }
 export const MachinesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     machineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(MachinesUpdateRequestTagsMap),
+    identity: S.optional(MachinesUpdateRequestIdentity),
+    kind: S.optional(ArcKindEnum),
+    properties: S.optional(MachineUpdatePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4955,15 +6097,14 @@ export const MachinesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MachinesUpdateResponseTagsMap>;
 
 /** The list of extensions affiliated to the machine */
-export type MachinesUpdateResponseResourcesList = MachineExtension[];
+export type MachinesUpdateResponseResourcesList =
+  ReadonlyArray<MachineExtension>;
 export const MachinesUpdateResponseResourcesList = /*@__PURE__*/ S.Array(
   MachineExtension,
 ) as any as S.Schema<MachinesUpdateResponseResourcesList>;
 
 /** The identity type. */
-export type MachinesUpdateResponseIdentityType =
-  | "SystemAssigned"
-  | (string & {});
+export type MachinesUpdateResponseIdentityType = "SystemAssigned";
 export const MachinesUpdateResponseIdentityType = /*@__PURE__*/ S.String;
 
 /** Identity for the resource. */
@@ -5023,6 +6164,25 @@ export const MachinesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MachinesUpdateResponse",
 }) as any as S.Schema<MachinesUpdateResponse>;
 
+/** Network configuration properties */
+export interface NetworkConfigurationPropertiesInput {
+  /** Resource location */
+  location?: string;
+  /** Associated Network Configuration Scope Id (GUID) */
+  networkConfigurationScopeId?: string;
+  /** Associated Network Configuration Scope Resource Id */
+  networkConfigurationScopeResourceId?: string;
+}
+export const NetworkConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(S.String),
+    networkConfigurationScopeId: S.optional(S.String),
+    networkConfigurationScopeResourceId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "NetworkConfigurationPropertiesInput",
+}) as any as S.Schema<NetworkConfigurationPropertiesInput>;
+
 export interface NetworkConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5030,7 +6190,7 @@ export interface NetworkConfigurationsCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the target machine to get the private link scope validation details for. */
   machineName: string;
-  body: unknown;
+  properties?: NetworkConfigurationPropertiesInput;
 }
 export const NetworkConfigurationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5038,7 +6198,7 @@ export const NetworkConfigurationsCreateOrUpdateRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       machineName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      properties: S.optional(NetworkConfigurationPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -5186,14 +6346,14 @@ export interface NetworkConfigurationsUpdateRequest {
   resourceGroupName: string;
   /** The name of the target machine to get the private link scope validation details for. */
   machineName: string;
-  body: unknown;
+  properties?: NetworkConfigurationPropertiesInput;
 }
 export const NetworkConfigurationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     machineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(NetworkConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -5289,27 +6449,27 @@ export type ProvisioningIssueType =
   | "MissingPerimeterConfiguration"
   | "MissingIdentityConfiguration"
   | "ConfigurationPropagationFailure"
-  | "Other"
-  | (string & {});
+  | "Other";
 export const ProvisioningIssueType = /*@__PURE__*/ S.String;
 
 /** Severity of the provisioning issue. */
-export type ProvisioningIssueSeverity = "Warning" | "Error" | (string & {});
+export type ProvisioningIssueSeverity = "Warning" | "Error";
 export const ProvisioningIssueSeverity = /*@__PURE__*/ S.String;
 
 /** ARM Ids of the resources that can be associated to the same perimeter to remediate the issue */
-export type ProvisioningIssuePropertiesSuggestedResourceIdsList = string[];
+export type ProvisioningIssuePropertiesSuggestedResourceIdsList =
+  ReadonlyArray<string>;
 export const ProvisioningIssuePropertiesSuggestedResourceIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
 
 /** Indicates direction of an access rule. */
-export type AccessRuleDirection = "Inbound" | "Outbound" | (string & {});
+export type AccessRuleDirection = "Inbound" | "Outbound";
 export const AccessRuleDirection = /*@__PURE__*/ S.String;
 
 /** Address prefixes that are allowed access. */
-export type AccessRulePropertiesAddressPrefixesList = string[];
+export type AccessRulePropertiesAddressPrefixesList = ReadonlyArray<string>;
 export const AccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRulePropertiesAddressPrefixesList>;
@@ -5345,7 +6505,8 @@ export const AccessRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessRule" }) as any as S.Schema<AccessRule>;
 
 /** Access rules that can be added to the perimeter to remediate the issue */
-export type ProvisioningIssuePropertiesSuggestedAccessRulesList = AccessRule[];
+export type ProvisioningIssuePropertiesSuggestedAccessRulesList =
+  ReadonlyArray<AccessRule>;
 export const ProvisioningIssuePropertiesSuggestedAccessRulesList =
   /*@__PURE__*/ S.Array(
     AccessRule,
@@ -5398,7 +6559,7 @@ export const ProvisioningIssue = /*@__PURE__*/ S.suspend(() =>
 
 /** Provisioning issues. */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
-  ProvisioningIssue[];
+  ReadonlyArray<ProvisioningIssue>;
 export const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   /*@__PURE__*/ S.Array(
     ProvisioningIssue,
@@ -5424,7 +6585,7 @@ export const NetworkSecurityPerimeter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkSecurityPerimeter>;
 
 /** Property that impacts a resource's logging behavior and its connectivity with other resources and public networks. */
-export type AccessMode = "enforced" | "audit" | "learning" | (string & {});
+export type AccessMode = "enforced" | "audit" | "learning";
 export const AccessMode = /*@__PURE__*/ S.String;
 
 /** Properties that define a Resource Association. */
@@ -5444,14 +6605,16 @@ export const ResourceAssociation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceAssociation>;
 
 /** Collection of access rules for the profile */
-export type NetworkSecurityPerimeterProfileAccessRulesList = AccessRule[];
+export type NetworkSecurityPerimeterProfileAccessRulesList =
+  ReadonlyArray<AccessRule>;
 export const NetworkSecurityPerimeterProfileAccessRulesList =
   /*@__PURE__*/ S.Array(
     AccessRule,
   ) as any as S.Schema<NetworkSecurityPerimeterProfileAccessRulesList>;
 
 /** Collection of enabled log categories for the profile */
-export type NetworkSecurityPerimeterProfileEnabledLogCategoriesList = string[];
+export type NetworkSecurityPerimeterProfileEnabledLogCategoriesList =
+  ReadonlyArray<string>;
 export const NetworkSecurityPerimeterProfileEnabledLogCategoriesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5564,7 +6727,7 @@ export const NetworkSecurityPerimeterConfigurationsListByPrivateLinkScopeRequest
 
 /** Array of results. */
 export type NetworkSecurityPerimeterConfigurationListResultValueList =
-  NetworkSecurityPerimeterConfiguration[];
+  ReadonlyArray<NetworkSecurityPerimeterConfiguration>;
 export const NetworkSecurityPerimeterConfigurationListResultValueList =
   /*@__PURE__*/ S.Array(
     NetworkSecurityPerimeterConfiguration,
@@ -5690,7 +6853,7 @@ export const OperationValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OperationValue" }) as any as S.Schema<OperationValue>;
 
 /** The list of compute operations */
-export type OperationListResultValueList = OperationValue[];
+export type OperationListResultValueList = ReadonlyArray<OperationValue>;
 export const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationValue,
 ) as any as S.Schema<OperationListResultValueList>;
@@ -5708,37 +6871,6 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
-export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Azure Arc PrivateLinkScope resource. */
-  scopeName: string;
-  /** The name of the private endpoint connection. */
-  privateEndpointConnectionName: string;
-  body: unknown;
-}
-export const PrivateEndpointConnectionsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      scopeName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2025-01-13",
-      }),
-    ),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
-  }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
-
 /** Private endpoint which the connection belongs to. */
 export interface PrivateEndpointProperty {
   /** Resource id of the private endpoint. */
@@ -5751,6 +6883,74 @@ export const PrivateEndpointProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PrivateEndpointProperty",
 }) as any as S.Schema<PrivateEndpointProperty>;
+
+/** State of the private endpoint connection. */
+export interface PrivateLinkServiceConnectionStatePropertyInput {
+  /** The private link service connection status. */
+  status: string;
+  /** The private link service connection description. */
+  description: string;
+}
+export const PrivateLinkServiceConnectionStatePropertyInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      status: S.String,
+      description: S.String,
+    }),
+  ).annotate({
+    identifier: "PrivateLinkServiceConnectionStatePropertyInput",
+  }) as any as S.Schema<PrivateLinkServiceConnectionStatePropertyInput>;
+
+/** Properties of a private endpoint connection. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** Private endpoint which the connection belongs to. */
+  privateEndpoint?: PrivateEndpointProperty;
+  /** Connection state of the private endpoint connection. */
+  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStatePropertyInput;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointProperty),
+      privateLinkServiceConnectionState: S.optional(
+        PrivateLinkServiceConnectionStatePropertyInput,
+      ),
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
+export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Azure Arc PrivateLinkScope resource. */
+  scopeName: string;
+  /** The name of the private endpoint connection. */
+  privateEndpointConnectionName: string;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
+}
+export const PrivateEndpointConnectionsCreateOrUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      scopeName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/privateLinkScopes/{scopeName}/privateEndpointConnections/{privateEndpointConnectionName}",
+        code: 200,
+        apiVersion: "2025-01-13",
+      }),
+    ),
+  ).annotate({
+    identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest",
+  }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
 
 /** State of the private endpoint connection. */
 export interface PrivateLinkServiceConnectionStateProperty {
@@ -5773,7 +6973,8 @@ export const PrivateLinkServiceConnectionStateProperty =
   }) as any as S.Schema<PrivateLinkServiceConnectionStateProperty>;
 
 /** List of group IDs. */
-export type PrivateEndpointConnectionPropertiesGroupIdsList = string[];
+export type PrivateEndpointConnectionPropertiesGroupIdsList =
+  ReadonlyArray<string>;
 export const PrivateEndpointConnectionPropertiesGroupIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -5971,7 +7172,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of results. */
 export type PrivateEndpointConnectionListResultValueList =
-  PrivateEndpointConnection[];
+  ReadonlyArray<PrivateEndpointConnection>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnection,
@@ -6022,14 +7223,16 @@ export const PrivateLinkResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesGetRequest>;
 
 /** The private link resource required member names. */
-export type PrivateLinkResourcePropertiesRequiredMembersList = string[];
+export type PrivateLinkResourcePropertiesRequiredMembersList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredMembersList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** Required DNS zone names of the the private link resource. */
-export type PrivateLinkResourcePropertiesRequiredZoneNamesList = string[];
+export type PrivateLinkResourcePropertiesRequiredZoneNamesList =
+  ReadonlyArray<string>;
 export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
@@ -6134,7 +7337,8 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResource>;
 
 /** Array of results. */
-export type PrivateLinkResourceListResultValueList = PrivateLinkResource[];
+export type PrivateLinkResourceListResultValueList =
+  ReadonlyArray<PrivateLinkResource>;
 export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
@@ -6155,6 +7359,34 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "PrivateLinkResourceListResult",
 }) as any as S.Schema<PrivateLinkResourceListResult>;
 
+/** Resource tags */
+export type PrivateLinkScopesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PrivateLinkScopesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<PrivateLinkScopesCreateOrUpdateRequestTagsMap>;
+
+/** The network access policy to determine if Azure Arc agents can use public Azure Arc service endpoints. Defaults to disabled (access to Azure Arc services only via private link). */
+export type PublicNetworkAccessType = "Enabled" | "Disabled";
+export const PublicNetworkAccessType = /*@__PURE__*/ S.String;
+
+/** Properties that define a Azure Arc PrivateLinkScope resource. */
+export interface HybridComputePrivateLinkScopePropertiesInput {
+  /** Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints. */
+  publicNetworkAccess?: PublicNetworkAccessType;
+}
+export const HybridComputePrivateLinkScopePropertiesInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      publicNetworkAccess: S.optional(PublicNetworkAccessType),
+    }),
+  ).annotate({
+    identifier: "HybridComputePrivateLinkScopePropertiesInput",
+  }) as any as S.Schema<HybridComputePrivateLinkScopePropertiesInput>;
+
 export interface PrivateLinkScopesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6162,7 +7394,12 @@ export interface PrivateLinkScopesCreateOrUpdateRequest {
   resourceGroupName: string;
   /** The name of the Azure Arc PrivateLinkScope resource. */
   scopeName: string;
-  body: unknown;
+  /** Resource location */
+  location: string;
+  /** Resource tags */
+  tags?: PrivateLinkScopesCreateOrUpdateRequestTagsMap;
+  /** Properties that define a Azure Arc PrivateLinkScope resource. */
+  properties?: HybridComputePrivateLinkScopePropertiesInput;
 }
 export const PrivateLinkScopesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6170,7 +7407,9 @@ export const PrivateLinkScopesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       scopeName: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      location: S.String,
+      tags: S.optional(PrivateLinkScopesCreateOrUpdateRequestTagsMap),
+      properties: S.optional(HybridComputePrivateLinkScopePropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6192,10 +7431,6 @@ export const PrivateLinkScopesCreateOrUpdateResponseTagsMap =
     S.String,
     S.String,
   ) as any as S.Schema<PrivateLinkScopesCreateOrUpdateResponseTagsMap>;
-
-/** The network access policy to determine if Azure Arc agents can use public Azure Arc service endpoints. Defaults to disabled (access to Azure Arc services only via private link). */
-export type PublicNetworkAccessType = "Enabled" | "Disabled" | (string & {});
-export const PublicNetworkAccessType = /*@__PURE__*/ S.String;
 
 /** The Data Model for a Private Endpoint Connection associated with a Private Link Scope */
 export interface PrivateEndpointConnectionDataModel {
@@ -6221,7 +7456,7 @@ export const PrivateEndpointConnectionDataModel = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of associated Private Endpoint Connections. */
 export type HybridComputePrivateLinkScopePropertiesPrivateEndpointConnectionsList =
-  PrivateEndpointConnectionDataModel[];
+  ReadonlyArray<PrivateEndpointConnectionDataModel>;
 export const HybridComputePrivateLinkScopePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
     PrivateEndpointConnectionDataModel,
@@ -6257,14 +7492,13 @@ export type PrivateLinkScopesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PrivateLinkScopesCreateOrUpdateResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
 /** The type of identity that last modified the resource. */
 export type PrivateLinkScopesCreateOrUpdateResponseSystemDataLastModifiedByType =
-  "User" | "Application" | "ManagedIdentity" | "Key" | (string & {});
+  "User" | "Application" | "ManagedIdentity" | "Key";
 export const PrivateLinkScopesCreateOrUpdateResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -6403,8 +7637,7 @@ export type PrivateLinkScopesGetResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PrivateLinkScopesGetResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -6413,8 +7646,7 @@ export type PrivateLinkScopesGetResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PrivateLinkScopesGetResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -6533,7 +7765,7 @@ export const ConnectionDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Private Endpoint Connection details. */
 export type PrivateLinkScopeValidationDetailsConnectionDetailsList =
-  ConnectionDetail[];
+  ReadonlyArray<ConnectionDetail>;
 export const PrivateLinkScopeValidationDetailsConnectionDetailsList =
   /*@__PURE__*/ S.Array(
     ConnectionDetail,
@@ -6618,8 +7850,7 @@ export type HybridComputePrivateLinkScopeSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const HybridComputePrivateLinkScopeSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -6628,8 +7859,7 @@ export type HybridComputePrivateLinkScopeSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const HybridComputePrivateLinkScopeSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -6699,7 +7929,7 @@ export const HybridComputePrivateLinkScope = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Azure Arc PrivateLinkScope definitions. */
 export type HybridComputePrivateLinkScopeListResultValueList =
-  HybridComputePrivateLinkScope[];
+  ReadonlyArray<HybridComputePrivateLinkScope>;
 export const HybridComputePrivateLinkScopeListResultValueList =
   /*@__PURE__*/ S.Array(
     HybridComputePrivateLinkScope,
@@ -6745,6 +7975,15 @@ export const PrivateLinkScopesListByResourceGroupRequest =
     identifier: "PrivateLinkScopesListByResourceGroupRequest",
   }) as any as S.Schema<PrivateLinkScopesListByResourceGroupRequest>;
 
+/** Resource tags */
+export type PrivateLinkScopesUpdateTagsRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PrivateLinkScopesUpdateTagsRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PrivateLinkScopesUpdateTagsRequestTagsMap>;
+
 export interface PrivateLinkScopesUpdateTagsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6752,14 +7991,15 @@ export interface PrivateLinkScopesUpdateTagsRequest {
   resourceGroupName: string;
   /** The name of the Azure Arc PrivateLinkScope resource. */
   scopeName: string;
-  body: unknown;
+  /** Resource tags */
+  tags?: PrivateLinkScopesUpdateTagsRequestTagsMap;
 }
 export const PrivateLinkScopesUpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     scopeName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    tags: S.optional(PrivateLinkScopesUpdateTagsRequestTagsMap),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -6787,8 +8027,7 @@ export type PrivateLinkScopesUpdateTagsResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PrivateLinkScopesUpdateTagsResponseSystemDataCreatedByType =
   /*@__PURE__*/ S.String;
 
@@ -6797,8 +8036,7 @@ export type PrivateLinkScopesUpdateTagsResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
-  | "Key"
-  | (string & {});
+  | "Key";
 export const PrivateLinkScopesUpdateTagsResponseSystemDataLastModifiedByType =
   /*@__PURE__*/ S.String;
 
@@ -6950,6 +8188,18 @@ export const SettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsGetResponse",
 }) as any as S.Schema<SettingsGetResponse>;
 
+/** Settings properties */
+export interface SettingsPropertiesInput {
+  gatewayProperties?: SettingsGatewayProperties;
+}
+export const SettingsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayProperties: S.optional(SettingsGatewayProperties),
+  }),
+).annotate({
+  identifier: "SettingsPropertiesInput",
+}) as any as S.Schema<SettingsPropertiesInput>;
+
 export interface SettingsPatchRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6963,7 +8213,7 @@ export interface SettingsPatchRequest {
   baseResourceName: string;
   /** The name of the settings resource. */
   settingsResourceName: string;
-  body: unknown;
+  properties?: SettingsPropertiesInput;
 }
 export const SettingsPatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6973,7 +8223,7 @@ export const SettingsPatchRequest = /*@__PURE__*/ S.suspend(() =>
     baseResourceType: S.String.pipe(T.Label()),
     baseResourceName: S.String.pipe(T.Label()),
     settingsResourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SettingsPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -7022,7 +8272,7 @@ export interface SettingsUpdateRequest {
   baseResourceName: string;
   /** The name of the settings resource. */
   settingsResourceName: string;
-  body: unknown;
+  properties?: SettingsPropertiesInput;
 }
 export const SettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7032,7 +8282,7 @@ export const SettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     baseResourceType: S.String.pipe(T.Label()),
     baseResourceName: S.String.pipe(T.Label()),
     settingsResourceName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    properties: S.optional(SettingsPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -7068,6 +8318,13 @@ export const SettingsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsUpdateResponse",
 }) as any as S.Schema<SettingsUpdateResponse>;
 
+/** The list of extensions */
+export type SetupExtensionsRequestExtensionsList =
+  ReadonlyArray<MachineExtensionPropertiesInput>;
+export const SetupExtensionsRequestExtensionsList = /*@__PURE__*/ S.Array(
+  MachineExtensionPropertiesInput,
+) as any as S.Schema<SetupExtensionsRequestExtensionsList>;
+
 export interface SetupExtensionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7075,14 +8332,15 @@ export interface SetupExtensionsRequest {
   resourceGroupName: string;
   /** The name of the hybrid machine. */
   machineName: string;
-  body: unknown;
+  /** The list of extensions */
+  extensions?: SetupExtensionsRequestExtensionsList;
 }
 export const SetupExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     machineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    extensions: S.optional(SetupExtensionsRequestExtensionsList),
   }).pipe(
     T.Http({
       method: "POST",
@@ -7096,7 +8354,8 @@ export const SetupExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetupExtensionsRequest>;
 
 /** The list of extensions */
-export type SetupExtensionRequestExtensionsList = MachineExtensionProperties[];
+export type SetupExtensionRequestExtensionsList =
+  ReadonlyArray<MachineExtensionProperties>;
 export const SetupExtensionRequestExtensionsList = /*@__PURE__*/ S.Array(
   MachineExtensionProperties,
 ) as any as S.Schema<SetupExtensionRequestExtensionsList>;
@@ -7113,6 +8372,28 @@ export const SetupExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetupExtensionRequest",
 }) as any as S.Schema<SetupExtensionRequest>;
 
+/** Describes the Machine Extension Target Version Properties */
+export interface ExtensionTargetProperties {
+  /** Properties for the specified Extension to Upgrade. */
+  targetVersion?: string;
+}
+export const ExtensionTargetProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExtensionTargetProperties",
+}) as any as S.Schema<ExtensionTargetProperties>;
+
+/** Describes the Machine Extension Target Properties */
+export type ExtensionTarget = {
+  [key: string]: ExtensionTargetProperties | undefined;
+};
+export const ExtensionTarget = /*@__PURE__*/ S.Record(
+  S.String,
+  ExtensionTargetProperties,
+) as any as S.Schema<ExtensionTarget>;
+
 export interface UpgradeExtensionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7120,14 +8401,15 @@ export interface UpgradeExtensionsRequest {
   resourceGroupName: string;
   /** The name of the hybrid machine. */
   machineName: string;
-  body: unknown;
+  /** Describes the Extension Target Properties. */
+  extensionTargets?: ExtensionTarget;
 }
 export const UpgradeExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     machineName: S.String.pipe(T.Label()),
-    body: S.Unknown.pipe(T.HttpBody()),
+    extensionTargets: S.optional(ExtensionTarget),
   }).pipe(
     T.Http({
       method: "POST",

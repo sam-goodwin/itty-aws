@@ -120,8 +120,7 @@ export type CustomDomainStateEnum =
   | "MODIFYING"
   | "AVAILABLE"
   | "UNAVAILABLE"
-  | "UNKNOWN"
-  | (string & {});
+  | "UNKNOWN";
 export const CustomDomainStateEnum = /*@__PURE__*/ S.String;
 
 /** Custom domain information. */
@@ -150,8 +149,7 @@ export type InstancePlatformEditionEnum =
   | "LOOKER_CORE_NONPROD_EMBED_ANNUAL"
   | "LOOKER_CORE_TRIAL_STANDARD"
   | "LOOKER_CORE_TRIAL_ENTERPRISE"
-  | "LOOKER_CORE_TRIAL_EMBED"
-  | (string & {});
+  | "LOOKER_CORE_TRIAL_EMBED";
 export const InstancePlatformEditionEnum = /*@__PURE__*/ S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
@@ -219,15 +217,10 @@ export type InstanceStateEnum =
   | "UPDATING"
   | "DELETING"
   | "EXPORTING"
-  | "IMPORTING"
-  | (string & {});
+  | "IMPORTING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
-export type InstanceClassTypeEnum =
-  | "CLASS_TYPE_UNSPECIFIED"
-  | "R1"
-  | "P1"
-  | (string & {});
+export type InstanceClassTypeEnum = "CLASS_TYPE_UNSPECIFIED" | "R1" | "P1";
 export const InstanceClassTypeEnum = /*@__PURE__*/ S.String;
 
 /** Ingress IP allowlist rule. */
@@ -246,7 +239,7 @@ export const IngressIpAllowlistRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "IngressIpAllowlistRule",
 }) as any as S.Schema<IngressIpAllowlistRule>;
 
-export type IngressIpAllowlistRuleList = IngressIpAllowlistRule[];
+export type IngressIpAllowlistRuleList = ReadonlyArray<IngressIpAllowlistRule>;
 export const IngressIpAllowlistRuleList = /*@__PURE__*/ S.Array(
   IngressIpAllowlistRule,
 ) as any as S.Schema<IngressIpAllowlistRuleList>;
@@ -273,8 +266,7 @@ export const IngressIpAllowlistConfig = /*@__PURE__*/ S.suspend(() =>
 export type EncryptionConfigKmsKeyStateEnum =
   | "KMS_KEY_STATE_UNSPECIFIED"
   | "VALID"
-  | "REVOKED"
-  | (string & {});
+  | "REVOKED";
 export const EncryptionConfigKmsKeyStateEnum = /*@__PURE__*/ S.String;
 
 /** Encryption configuration (i.e. CMEK). */
@@ -300,16 +292,14 @@ export type InstanceSoftDeleteReasonEnum =
   | "SOFT_DELETE_REASON_UNSPECIFIED"
   | "BILLING_ACCOUNT_ISSUE"
   | "TRIAL_EXPIRED"
-  | "CUSTOMER_REQUEST"
-  | (string & {});
+  | "CUSTOMER_REQUEST";
 export const InstanceSoftDeleteReasonEnum = /*@__PURE__*/ S.String;
 
 export type InstanceReleaseChannelEnum =
   | "RELEASE_CHANNEL_UNSPECIFIED"
   | "RAPID"
   | "REGULAR"
-  | "STABLE"
-  | (string & {});
+  | "STABLE";
 export const InstanceReleaseChannelEnum = /*@__PURE__*/ S.String;
 
 /** Published upcoming future maintenance schedule. */
@@ -328,7 +318,7 @@ export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   identifier: "MaintenanceSchedule",
 }) as any as S.Schema<MaintenanceSchedule>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -339,8 +329,7 @@ export type ServiceAttachmentConnectionStatusEnum =
   | "PENDING"
   | "REJECTED"
   | "NEEDS_ATTENTION"
-  | "CLOSED"
-  | (string & {});
+  | "CLOSED";
 export const ServiceAttachmentConnectionStatusEnum = /*@__PURE__*/ S.String;
 
 /** Service attachment configuration. */
@@ -368,7 +357,7 @@ export const ServiceAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceAttachment",
 }) as any as S.Schema<ServiceAttachment>;
 
-export type ServiceAttachmentList = ServiceAttachment[];
+export type ServiceAttachmentList = ReadonlyArray<ServiceAttachment>;
 export const ServiceAttachmentList = /*@__PURE__*/ S.Array(
   ServiceAttachment,
 ) as any as S.Schema<ServiceAttachmentList>;
@@ -409,8 +398,7 @@ export type MaintenanceWindowDayOfWeekEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const MaintenanceWindowDayOfWeekEnum = /*@__PURE__*/ S.String;
 
 /** Specifies the recurring maintenance window. */
@@ -643,7 +631,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -693,8 +681,7 @@ export type InstanceBackupStateEnum =
   | "CREATING"
   | "DELETING"
   | "ACTIVE"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const InstanceBackupStateEnum = /*@__PURE__*/ S.String;
 
 /** The details of a backup resource. */
@@ -1022,7 +1009,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1071,7 +1058,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -1123,7 +1110,7 @@ export const ListProjectsLocationsInstancesBackupsRequest =
     identifier: "ListProjectsLocationsInstancesBackupsRequest",
   }) as any as S.Schema<ListProjectsLocationsInstancesBackupsRequest>;
 
-export type InstanceBackupList = InstanceBackup[];
+export type InstanceBackupList = ReadonlyArray<InstanceBackup>;
 export const InstanceBackupList = /*@__PURE__*/ S.Array(
   InstanceBackup,
 ) as any as S.Schema<InstanceBackupList>;
@@ -1178,7 +1165,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;

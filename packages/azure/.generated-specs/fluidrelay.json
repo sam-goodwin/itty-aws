@@ -1278,16 +1278,36 @@
             "smithy.api#documentation": "The Fluid Relay server resource name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "keyName": {
+          "target": "com.azure.fluidrelay#FluidRelayServersRegenerateKeyRequestKeyName",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The key to regenerate.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fluidrelay#FluidRelayServersRegenerateKeyRequestKeyName": {
+      "type": "enum",
+      "members": {
+        "KEY1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key1"
+          }
+        },
+        "KEY2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "key2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The key to regenerate."
       }
     },
     "com.azure.fluidrelay#FluidRelayServersDelete": {
@@ -1564,16 +1584,128 @@
             "smithy.api#documentation": "The Fluid Relay server resource name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.fluidrelay#FluidRelayServerUpdateProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties that can be updated for this resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.fluidrelay#FluidRelayServersUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.fluidrelay#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fluidrelay#IdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.fluidrelay#IdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "The identity type."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.fluidrelay#IdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the resource."
+      }
+    },
+    "com.azure.fluidrelay#IdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.fluidrelay#IdentityInputUserAssignedIdentitiesValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource."
+      }
+    },
+    "com.azure.fluidrelay#IdentityInputUserAssignedIdentitiesValue": {
+      "type": "structure",
+      "members": {},
+      "traits": {}
+    },
+    "com.azure.fluidrelay#IdentityInputType": {
+      "type": "enum",
+      "members": {
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        },
+        "SYSTEMASSIGNED_USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned, UserAssigned"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The identity type."
+      }
+    },
+    "com.azure.fluidrelay#FluidRelayServersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.fluidrelay#FluidRelayServerUpdateProperties": {
+      "type": "structure",
+      "members": {
+        "encryption": {
+          "target": "com.azure.fluidrelay#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "All encryption configuration for a resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties that can be provided when updating FluidRelayServer resource"
       }
     },
     "com.azure.fluidrelay#FluidRelayServersCreateOrUpdate": {
@@ -1799,16 +1931,118 @@
             "smithy.api#documentation": "The Fluid Relay server resource name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.fluidrelay#FluidRelayServersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.fluidrelay#FluidRelayServerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.fluidrelay#IdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.fluidrelay#FluidRelayServerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "provisioningState": {
+          "target": "com.azure.fluidrelay#FluidRelayServerPropertiesInputProvisioningState",
+          "traits": {
+            "smithy.api#documentation": "Provision states for FluidRelay RP"
+          }
+        },
+        "encryption": {
+          "target": "com.azure.fluidrelay#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "All encryption configuration for a resource."
+          }
+        },
+        "storagesku": {
+          "target": "com.azure.fluidrelay#FluidRelayServerPropertiesInputStoragesku",
+          "traits": {
+            "smithy.api#documentation": "Sku of the storage associated with the resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a Fluid Relay Service resource."
+      }
+    },
+    "com.azure.fluidrelay#FluidRelayServerPropertiesInputStoragesku": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "standard"
+          }
+        },
+        "BASIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "basic"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Sku of the storage associated with the resource"
+      }
+    },
+    "com.azure.fluidrelay#FluidRelayServerPropertiesInputProvisioningState": {
+      "type": "enum",
+      "members": {
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Succeeded"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Failed"
+          }
+        },
+        "CANCELED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Canceled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Provision states for FluidRelay RP"
+      }
+    },
+    "com.azure.fluidrelay#FluidRelayServersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.fluidrelay#FluidRelayServersGet": {

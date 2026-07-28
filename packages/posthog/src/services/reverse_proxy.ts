@@ -35,49 +35,16 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-/** * `waiting` - Waiting * `issuing` - Issuing * `valid` - Valid * `warning` - Warning * `erroring` - Erroring * `deleting` - Deleting * `timed_out` - Timed Out */
-export type ProxyRecordStatusEnum =
-  | "waiting"
-  | "issuing"
-  | "valid"
-  | "warning"
-  | "erroring"
-  | "deleting"
-  | "timed_out"
-  | (string & {});
-export const ProxyRecordStatusEnum = /*@__PURE__*/ S.String;
-
 export interface ProxyRecordsCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
-  /** Unique identifier for the proxy record. */
-  id?: string;
   /** The custom domain to proxy through, e.g. 'e.example.com'. Must be a valid subdomain you control. */
   domain?: string;
-  /** The CNAME target to add as a DNS record for your domain. Point your domain's CNAME to this value. */
-  target_cname?: string;
-  /** Current provisioning status. Values: waiting (DNS verification pending), issuing (SSL certificate being issued), valid (proxy is live and working), warning (proxy has issues but is operational), erroring (proxy setup failed), deleting (removal in progress), timed_out (DNS verification timed out). * `waiting` - Waiting * `issuing` - Issuing * `valid` - Valid * `warning` - Warning * `erroring` - Erroring * `deleting` - Deleting * `timed_out` - Timed Out */
-  status?: ProxyRecordStatusEnum;
-  /** Human-readable status message with details about errors or warnings, if any. */
-  message?: string | null;
-  /** When this proxy record was created. */
-  created_at?: string;
-  /** When this proxy record was last updated. */
-  updated_at?: string;
-  /** ID of the user who created this proxy record. */
-  created_by?: number;
 }
 export const ProxyRecordsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
     domain: S.optional(S.String),
-    target_cname: S.optional(S.String),
-    status: S.optional(ProxyRecordStatusEnum),
-    message: S.optional(S.NullOr(S.String)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    created_by: S.optional(S.Number),
   }).pipe(
     T.Http({
       method: "POST",
@@ -88,6 +55,17 @@ export const ProxyRecordsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProxyRecordsCreateRequest",
 }) as any as S.Schema<ProxyRecordsCreateRequest>;
+
+/** * `waiting` - Waiting * `issuing` - Issuing * `valid` - Valid * `warning` - Warning * `erroring` - Erroring * `deleting` - Deleting * `timed_out` - Timed Out */
+export type ProxyRecordStatusEnum =
+  | "waiting"
+  | "issuing"
+  | "valid"
+  | "warning"
+  | "erroring"
+  | "deleting"
+  | "timed_out";
+export const ProxyRecordStatusEnum = /*@__PURE__*/ S.String;
 
 export interface ProxyRecord {
   /** Unique identifier for the proxy record. */
@@ -170,11 +148,7 @@ export const ProxyRecordsDiagnoseCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProxyRecordsDiagnoseCreateRequest>;
 
 /** * `healthy` - healthy * `warn` - warn * `fail` - fail */
-export type DiagnosticReportSummaryStatusEnum =
-  | "healthy"
-  | "warn"
-  | "fail"
-  | (string & {});
+export type DiagnosticReportSummaryStatusEnum = "healthy" | "warn" | "fail";
 export const DiagnosticReportSummaryStatusEnum = /*@__PURE__*/ S.String;
 
 export interface DiagnosticReportSummary {
@@ -200,17 +174,11 @@ export type DiagnosticCheckResultStatusEnum =
   | "passed"
   | "warned"
   | "failed"
-  | "skipped"
-  | (string & {});
+  | "skipped";
 export const DiagnosticCheckResultStatusEnum = /*@__PURE__*/ S.String;
 
 /** * `dns` - dns * `config` - config * `wait` - wait * `retry` - retry */
-export type DiagnosticRemediationTypeEnum =
-  | "dns"
-  | "config"
-  | "wait"
-  | "retry"
-  | (string & {});
+export type DiagnosticRemediationTypeEnum = "dns" | "config" | "wait" | "retry";
 export const DiagnosticRemediationTypeEnum = /*@__PURE__*/ S.String;
 
 export interface DiagnosticDnsRecord {
@@ -232,7 +200,8 @@ export const DiagnosticDnsRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiagnosticDnsRecord>;
 
 /** DNS records the customer should add (empty when remediation is not DNS-based). */
-export type DiagnosticRemediationRecordsList = DiagnosticDnsRecord[];
+export type DiagnosticRemediationRecordsList =
+  ReadonlyArray<DiagnosticDnsRecord>;
 export const DiagnosticRemediationRecordsList = /*@__PURE__*/ S.Array(
   DiagnosticDnsRecord,
 ) as any as S.Schema<DiagnosticRemediationRecordsList>;
@@ -280,7 +249,7 @@ export const DiagnosticCheckResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiagnosticCheckResult>;
 
 /** Per-check results in execution order. */
-export type DiagnosticReportChecksList = DiagnosticCheckResult[];
+export type DiagnosticReportChecksList = ReadonlyArray<DiagnosticCheckResult>;
 export const DiagnosticReportChecksList = /*@__PURE__*/ S.Array(
   DiagnosticCheckResult,
 ) as any as S.Schema<DiagnosticReportChecksList>;
@@ -321,7 +290,7 @@ export const ProxyRecordsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProxyRecordsListRequest",
 }) as any as S.Schema<ProxyRecordsListRequest>;
 
-export type ProxyRecordListResponseResultsList = ProxyRecord[];
+export type ProxyRecordListResponseResultsList = ReadonlyArray<ProxyRecord>;
 export const ProxyRecordListResponseResultsList = /*@__PURE__*/ S.Array(
   ProxyRecord,
 ) as any as S.Schema<ProxyRecordListResponseResultsList>;
@@ -340,7 +309,8 @@ export const ProxyRecordListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProxyRecordListResponse",
 }) as any as S.Schema<ProxyRecordListResponse>;
 
-export type ProxyRecordsListResponseBodyList = ProxyRecordListResponse[];
+export type ProxyRecordsListResponseBodyList =
+  ReadonlyArray<ProxyRecordListResponse>;
 export const ProxyRecordsListResponseBodyList = /*@__PURE__*/ S.Array(
   ProxyRecordListResponse,
 ) as any as S.Schema<ProxyRecordsListResponseBodyList>;

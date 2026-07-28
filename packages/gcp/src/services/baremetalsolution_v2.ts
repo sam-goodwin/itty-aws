@@ -63,8 +63,7 @@ export class NotFound extends T.applyErrorMatchers(
 export type AllowedClientMountPermissionsEnum =
   | "MOUNT_PERMISSIONS_UNSPECIFIED"
   | "READ"
-  | "READ_WRITE"
-  | (string & {});
+  | "READ_WRITE";
 export const AllowedClientMountPermissionsEnum = /*@__PURE__*/ S.String;
 
 /** Represents an 'access point' for the share. */
@@ -99,7 +98,7 @@ export const AllowedClient = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AllowedClient" }) as any as S.Schema<AllowedClient>;
 
-export type AllowedClientList = AllowedClient[];
+export type AllowedClientList = ReadonlyArray<AllowedClient>;
 export const AllowedClientList = /*@__PURE__*/ S.Array(
   AllowedClient,
 ) as any as S.Schema<AllowedClientList>;
@@ -109,15 +108,13 @@ export type NfsShareStateEnum =
   | "PROVISIONED"
   | "CREATING"
   | "UPDATING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const NfsShareStateEnum = /*@__PURE__*/ S.String;
 
 export type NfsShareStorageTypeEnum =
   | "STORAGE_TYPE_UNSPECIFIED"
   | "SSD"
-  | "HDD"
-  | (string & {});
+  | "HDD";
 export const NfsShareStorageTypeEnum = /*@__PURE__*/ S.String;
 
 export type StringMap = { [key: string]: string | undefined };
@@ -192,7 +189,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -245,8 +242,7 @@ export type ProvisioningConfigStateEnum =
   | "PROVISIONED"
   | "VALIDATED"
   | "CANCELLED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const ProvisioningConfigStateEnum = /*@__PURE__*/ S.String;
 
 export type NetworkConfigServiceCidrEnum =
@@ -254,8 +250,7 @@ export type NetworkConfigServiceCidrEnum =
   | "DISABLED"
   | "HIGH_26"
   | "HIGH_27"
-  | "HIGH_28"
-  | (string & {});
+  | "HIGH_28";
 export const NetworkConfigServiceCidrEnum = /*@__PURE__*/ S.String;
 
 export type NetworkConfigBandwidthEnum =
@@ -263,15 +258,10 @@ export type NetworkConfigBandwidthEnum =
   | "BW_1_GBPS"
   | "BW_2_GBPS"
   | "BW_5_GBPS"
-  | "BW_10_GBPS"
-  | (string & {});
+  | "BW_10_GBPS";
 export const NetworkConfigBandwidthEnum = /*@__PURE__*/ S.String;
 
-export type NetworkConfigTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "CLIENT"
-  | "PRIVATE"
-  | (string & {});
+export type NetworkConfigTypeEnum = "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE";
 export const NetworkConfigTypeEnum = /*@__PURE__*/ S.String;
 
 /** A GCP vlan attachment. */
@@ -290,7 +280,7 @@ export const IntakeVlanAttachment = /*@__PURE__*/ S.suspend(() =>
   identifier: "IntakeVlanAttachment",
 }) as any as S.Schema<IntakeVlanAttachment>;
 
-export type IntakeVlanAttachmentList = IntakeVlanAttachment[];
+export type IntakeVlanAttachmentList = ReadonlyArray<IntakeVlanAttachment>;
 export const IntakeVlanAttachmentList = /*@__PURE__*/ S.Array(
   IntakeVlanAttachment,
 ) as any as S.Schema<IntakeVlanAttachmentList>;
@@ -339,7 +329,7 @@ export const NetworkConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkConfig" }) as any as S.Schema<NetworkConfig>;
 
-export type NetworkConfigList = NetworkConfig[];
+export type NetworkConfigList = ReadonlyArray<NetworkConfig>;
 export const NetworkConfigList = /*@__PURE__*/ S.Array(
   NetworkConfig,
 ) as any as S.Schema<NetworkConfigList>;
@@ -358,19 +348,15 @@ export const LunRange = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LunRange" }) as any as S.Schema<LunRange>;
 
-export type LunRangeList = LunRange[];
+export type LunRangeList = ReadonlyArray<LunRange>;
 export const LunRangeList = /*@__PURE__*/ S.Array(
   LunRange,
 ) as any as S.Schema<LunRangeList>;
 
-export type VolumeConfigTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "FLASH"
-  | "DISK"
-  | (string & {});
+export type VolumeConfigTypeEnum = "TYPE_UNSPECIFIED" | "FLASH" | "DISK";
 export const VolumeConfigTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -378,8 +364,7 @@ export const StringList = /*@__PURE__*/ S.Array(
 export type NfsExportPermissionsEnum =
   | "PERMISSIONS_UNSPECIFIED"
   | "READ_ONLY"
-  | "READ_WRITE"
-  | (string & {});
+  | "READ_WRITE";
 export const NfsExportPermissionsEnum = /*@__PURE__*/ S.String;
 
 /** A NFS export entry. */
@@ -411,7 +396,7 @@ export const NfsExport = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NfsExport" }) as any as S.Schema<NfsExport>;
 
-export type NfsExportList = NfsExport[];
+export type NfsExportList = ReadonlyArray<NfsExport>;
 export const NfsExportList = /*@__PURE__*/ S.Array(
   NfsExport,
 ) as any as S.Schema<NfsExportList>;
@@ -419,8 +404,7 @@ export const NfsExportList = /*@__PURE__*/ S.Array(
 export type VolumeConfigProtocolEnum =
   | "PROTOCOL_UNSPECIFIED"
   | "PROTOCOL_FC"
-  | "PROTOCOL_NFS"
-  | (string & {});
+  | "PROTOCOL_NFS";
 export const VolumeConfigProtocolEnum = /*@__PURE__*/ S.String;
 
 export type VolumeConfigPerformanceTierEnum =
@@ -428,8 +412,7 @@ export type VolumeConfigPerformanceTierEnum =
   | "VOLUME_PERFORMANCE_TIER_SHARED"
   | "VOLUME_PERFORMANCE_TIER_ASSIGNED"
   | "VOLUME_PERFORMANCE_TIER_HT"
-  | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE"
-  | (string & {});
+  | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE";
 export const VolumeConfigPerformanceTierEnum = /*@__PURE__*/ S.String;
 
 /** Configuration parameters for a new volume. */
@@ -476,7 +459,7 @@ export const VolumeConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VolumeConfig" }) as any as S.Schema<VolumeConfig>;
 
-export type VolumeConfigList = VolumeConfig[];
+export type VolumeConfigList = ReadonlyArray<VolumeConfig>;
 export const VolumeConfigList = /*@__PURE__*/ S.Array(
   VolumeConfig,
 ) as any as S.Schema<VolumeConfigList>;
@@ -484,8 +467,7 @@ export const VolumeConfigList = /*@__PURE__*/ S.Array(
 export type InstanceConfigNetworkConfigEnum =
   | "NETWORKCONFIG_UNSPECIFIED"
   | "SINGLE_VLAN"
-  | "MULTI_VLAN"
-  | (string & {});
+  | "MULTI_VLAN";
 export const InstanceConfigNetworkConfigEnum = /*@__PURE__*/ S.String;
 
 /** A network. */
@@ -508,8 +490,7 @@ export const NetworkAddress = /*@__PURE__*/ S.suspend(() =>
 export type LogicalNetworkInterfaceNetworkTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "CLIENT"
-  | "PRIVATE"
-  | (string & {});
+  | "PRIVATE";
 export const LogicalNetworkInterfaceNetworkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Each logical network interface is effectively a network and IP pair. */
@@ -537,7 +518,8 @@ export const LogicalNetworkInterface = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogicalNetworkInterface",
 }) as any as S.Schema<LogicalNetworkInterface>;
 
-export type LogicalNetworkInterfaceList = LogicalNetworkInterface[];
+export type LogicalNetworkInterfaceList =
+  ReadonlyArray<LogicalNetworkInterface>;
 export const LogicalNetworkInterfaceList = /*@__PURE__*/ S.Array(
   LogicalNetworkInterface,
 ) as any as S.Schema<LogicalNetworkInterfaceList>;
@@ -563,7 +545,7 @@ export const GoogleCloudBaremetalsolutionV2LogicalInterface =
   }) as any as S.Schema<GoogleCloudBaremetalsolutionV2LogicalInterface>;
 
 export type GoogleCloudBaremetalsolutionV2LogicalInterfaceList =
-  GoogleCloudBaremetalsolutionV2LogicalInterface[];
+  ReadonlyArray<GoogleCloudBaremetalsolutionV2LogicalInterface>;
 export const GoogleCloudBaremetalsolutionV2LogicalInterfaceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBaremetalsolutionV2LogicalInterface,
@@ -621,7 +603,7 @@ export const InstanceConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "InstanceConfig" }) as any as S.Schema<InstanceConfig>;
 
-export type InstanceConfigList = InstanceConfig[];
+export type InstanceConfigList = ReadonlyArray<InstanceConfig>;
 export const InstanceConfigList = /*@__PURE__*/ S.Array(
   InstanceConfig,
 ) as any as S.Schema<InstanceConfigList>;
@@ -748,8 +730,7 @@ export const CreateProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(
 export type VolumeSnapshotTypeEnum =
   | "SNAPSHOT_TYPE_UNSPECIFIED"
   | "AD_HOC"
-  | "SCHEDULED"
-  | (string & {});
+  | "SCHEDULED";
 export const VolumeSnapshotTypeEnum = /*@__PURE__*/ S.String;
 
 /** A snapshot of a volume. Only boot volumes can have snapshots. */
@@ -1155,21 +1136,15 @@ export type InstanceStateEnum =
   | "UPDATING"
   | "STARTING"
   | "STOPPING"
-  | "SHUTDOWN"
-  | (string & {});
+  | "SHUTDOWN";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 export type LunMultiprotocolTypeEnum =
   | "MULTIPROTOCOL_TYPE_UNSPECIFIED"
-  | "LINUX"
-  | (string & {});
+  | "LINUX";
 export const LunMultiprotocolTypeEnum = /*@__PURE__*/ S.String;
 
-export type LunStorageTypeEnum =
-  | "STORAGE_TYPE_UNSPECIFIED"
-  | "SSD"
-  | "HDD"
-  | (string & {});
+export type LunStorageTypeEnum = "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD";
 export const LunStorageTypeEnum = /*@__PURE__*/ S.String;
 
 export type LunStateEnum =
@@ -1178,8 +1153,7 @@ export type LunStateEnum =
   | "UPDATING"
   | "READY"
   | "DELETING"
-  | "COOL_OFF"
-  | (string & {});
+  | "COOL_OFF";
 export const LunStateEnum = /*@__PURE__*/ S.String;
 
 /** A storage volume logical unit number (LUN). */
@@ -1226,14 +1200,13 @@ export const Lun = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Lun" }) as any as S.Schema<Lun>;
 
-export type LunList = Lun[];
+export type LunList = ReadonlyArray<Lun>;
 export const LunList = /*@__PURE__*/ S.Array(Lun) as any as S.Schema<LunList>;
 
 export type VolumeWorkloadProfileEnum =
   | "WORKLOAD_PROFILE_UNSPECIFIED"
   | "GENERIC"
-  | "HANA"
-  | (string & {});
+  | "HANA";
 export const VolumeWorkloadProfileEnum = /*@__PURE__*/ S.String;
 
 export type VolumePerformanceTierEnum =
@@ -1241,8 +1214,7 @@ export type VolumePerformanceTierEnum =
   | "VOLUME_PERFORMANCE_TIER_SHARED"
   | "VOLUME_PERFORMANCE_TIER_ASSIGNED"
   | "VOLUME_PERFORMANCE_TIER_HT"
-  | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE"
-  | (string & {});
+  | "VOLUME_PERFORMANCE_TIER_QOS2_PERFORMANCE";
 export const VolumePerformanceTierEnum = /*@__PURE__*/ S.String;
 
 /** Details about snapshot space reservation and usage on the storage volume. */
@@ -1267,26 +1239,20 @@ export const SnapshotReservationDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "SnapshotReservationDetail",
 }) as any as S.Schema<SnapshotReservationDetail>;
 
-export type VolumeStorageTypeEnum =
-  | "STORAGE_TYPE_UNSPECIFIED"
-  | "SSD"
-  | "HDD"
-  | (string & {});
+export type VolumeStorageTypeEnum = "STORAGE_TYPE_UNSPECIFIED" | "SSD" | "HDD";
 export const VolumeStorageTypeEnum = /*@__PURE__*/ S.String;
 
 export type VolumeProtocolEnum =
   | "PROTOCOL_UNSPECIFIED"
   | "FIBRE_CHANNEL"
-  | "NFS"
-  | (string & {});
+  | "NFS";
 export const VolumeProtocolEnum = /*@__PURE__*/ S.String;
 
 export type VolumeSnapshotAutoDeleteBehaviorEnum =
   | "SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "OLDEST_FIRST"
-  | "NEWEST_FIRST"
-  | (string & {});
+  | "NEWEST_FIRST";
 export const VolumeSnapshotAutoDeleteBehaviorEnum = /*@__PURE__*/ S.String;
 
 export type VolumeStateEnum =
@@ -1295,8 +1261,7 @@ export type VolumeStateEnum =
   | "READY"
   | "DELETING"
   | "UPDATING"
-  | "COOL_OFF"
-  | (string & {});
+  | "COOL_OFF";
 export const VolumeStateEnum = /*@__PURE__*/ S.String;
 
 /** A storage volume. */
@@ -1381,7 +1346,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
-export type VolumeList = Volume[];
+export type VolumeList = ReadonlyArray<Volume>;
 export const VolumeList = /*@__PURE__*/ S.Array(
   Volume,
 ) as any as S.Schema<VolumeList>;
@@ -1405,7 +1370,8 @@ export const NetworkAddressReservation = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkAddressReservation",
 }) as any as S.Schema<NetworkAddressReservation>;
 
-export type NetworkAddressReservationList = NetworkAddressReservation[];
+export type NetworkAddressReservationList =
+  ReadonlyArray<NetworkAddressReservation>;
 export const NetworkAddressReservationList = /*@__PURE__*/ S.Array(
   NetworkAddressReservation,
 ) as any as S.Schema<NetworkAddressReservationList>;
@@ -1432,7 +1398,7 @@ export const NetworkMountPoint = /*@__PURE__*/ S.suspend(() =>
   identifier: "NetworkMountPoint",
 }) as any as S.Schema<NetworkMountPoint>;
 
-export type NetworkMountPointList = NetworkMountPoint[];
+export type NetworkMountPointList = ReadonlyArray<NetworkMountPoint>;
 export const NetworkMountPointList = /*@__PURE__*/ S.Array(
   NetworkMountPoint,
 ) as any as S.Schema<NetworkMountPointList>;
@@ -1448,11 +1414,7 @@ export const QosPolicy = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QosPolicy" }) as any as S.Schema<QosPolicy>;
 
-export type VRFStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "PROVISIONING"
-  | "PROVISIONED"
-  | (string & {});
+export type VRFStateEnum = "STATE_UNSPECIFIED" | "PROVISIONING" | "PROVISIONED";
 export const VRFStateEnum = /*@__PURE__*/ S.String;
 
 /** VLAN attachment details. */
@@ -1484,7 +1446,7 @@ export const VlanAttachment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VlanAttachment" }) as any as S.Schema<VlanAttachment>;
 
-export type VlanAttachmentList = VlanAttachment[];
+export type VlanAttachmentList = ReadonlyArray<VlanAttachment>;
 export const VlanAttachmentList = /*@__PURE__*/ S.Array(
   VlanAttachment,
 ) as any as S.Schema<VlanAttachmentList>;
@@ -1509,11 +1471,7 @@ export const VRF = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VRF" }) as any as S.Schema<VRF>;
 
-export type NetworkTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "CLIENT"
-  | "PRIVATE"
-  | (string & {});
+export type NetworkTypeEnum = "TYPE_UNSPECIFIED" | "CLIENT" | "PRIVATE";
 export const NetworkTypeEnum = /*@__PURE__*/ S.String;
 
 export type NetworkStateEnum =
@@ -1521,8 +1479,7 @@ export type NetworkStateEnum =
   | "PROVISIONING"
   | "PROVISIONED"
   | "DEPROVISIONING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const NetworkStateEnum = /*@__PURE__*/ S.String;
 
 /** A Network. */
@@ -1584,7 +1541,7 @@ export const Network = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Network" }) as any as S.Schema<Network>;
 
-export type NetworkList = Network[];
+export type NetworkList = ReadonlyArray<Network>;
 export const NetworkList = /*@__PURE__*/ S.Array(
   Network,
 ) as any as S.Schema<NetworkList>;
@@ -1592,8 +1549,7 @@ export const NetworkList = /*@__PURE__*/ S.Array(
 export type InstanceWorkloadProfileEnum =
   | "WORKLOAD_PROFILE_UNSPECIFIED"
   | "WORKLOAD_PROFILE_GENERIC"
-  | "WORKLOAD_PROFILE_HANA"
-  | (string & {});
+  | "WORKLOAD_PROFILE_HANA";
 export const InstanceWorkloadProfileEnum = /*@__PURE__*/ S.String;
 
 /** A server. */
@@ -1874,7 +1830,7 @@ export const NetworkUsage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NetworkUsage" }) as any as S.Schema<NetworkUsage>;
 
-export type NetworkUsageList = NetworkUsage[];
+export type NetworkUsageList = ReadonlyArray<NetworkUsage>;
 export const NetworkUsageList = /*@__PURE__*/ S.Array(
   NetworkUsage,
 ) as any as S.Schema<NetworkUsageList>;
@@ -1922,7 +1878,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -1971,7 +1927,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -2070,7 +2026,7 @@ export const ListProjectsLocationsNfsSharesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsNfsSharesRequest",
 }) as any as S.Schema<ListProjectsLocationsNfsSharesRequest>;
 
-export type NfsShareList = NfsShare[];
+export type NfsShareList = ReadonlyArray<NfsShare>;
 export const NfsShareList = /*@__PURE__*/ S.Array(
   NfsShare,
 ) as any as S.Schema<NfsShareList>;
@@ -2119,7 +2075,7 @@ export const ListProjectsLocationsOsImagesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOsImagesRequest",
 }) as any as S.Schema<ListProjectsLocationsOsImagesRequest>;
 
-export type OSImageList = OSImage[];
+export type OSImageList = ReadonlyArray<OSImage>;
 export const OSImageList = /*@__PURE__*/ S.Array(
   OSImage,
 ) as any as S.Schema<OSImageList>;
@@ -2192,8 +2148,7 @@ export type ProvisioningQuotaAssetTypeEnum =
   | "ASSET_TYPE_UNSPECIFIED"
   | "ASSET_TYPE_SERVER"
   | "ASSET_TYPE_STORAGE"
-  | "ASSET_TYPE_NETWORK"
-  | (string & {});
+  | "ASSET_TYPE_NETWORK";
 export const ProvisioningQuotaAssetTypeEnum = /*@__PURE__*/ S.String;
 
 /** A provisioning quota for a given project. */
@@ -2233,7 +2188,7 @@ export const ProvisioningQuota = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProvisioningQuota",
 }) as any as S.Schema<ProvisioningQuota>;
 
-export type ProvisioningQuotaList = ProvisioningQuota[];
+export type ProvisioningQuotaList = ReadonlyArray<ProvisioningQuota>;
 export const ProvisioningQuotaList = /*@__PURE__*/ S.Array(
   ProvisioningQuota,
 ) as any as S.Schema<ProvisioningQuotaList>;
@@ -2278,7 +2233,7 @@ export const ListProjectsLocationsSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsSshKeysRequest",
 }) as any as S.Schema<ListProjectsLocationsSshKeysRequest>;
 
-export type SSHKeyList = SSHKey[];
+export type SSHKeyList = ReadonlyArray<SSHKey>;
 export const SSHKeyList = /*@__PURE__*/ S.Array(
   SSHKey,
 ) as any as S.Schema<SSHKeyList>;
@@ -2414,7 +2369,7 @@ export const ListProjectsLocationsVolumesSnapshotsRequest =
     identifier: "ListProjectsLocationsVolumesSnapshotsRequest",
   }) as any as S.Schema<ListProjectsLocationsVolumesSnapshotsRequest>;
 
-export type VolumeSnapshotList = VolumeSnapshot[];
+export type VolumeSnapshotList = ReadonlyArray<VolumeSnapshot>;
 export const VolumeSnapshotList = /*@__PURE__*/ S.Array(
   VolumeSnapshot,
 ) as any as S.Schema<VolumeSnapshotList>;

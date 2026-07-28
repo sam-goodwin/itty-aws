@@ -217,7 +217,10 @@
           "target": "smithy.api#String"
         },
         "updated_by": {
-          "target": "com.posthog.property_definitions#UserBasic"
+          "target": "com.posthog.property_definitions#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "is_seen_on_filtered_events": {
           "target": "smithy.api#Boolean",
@@ -241,7 +244,10 @@
           }
         },
         "verified_by": {
-          "target": "com.posthog.property_definitions#UserBasic"
+          "target": "com.posthog.property_definitions#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "hidden": {
           "target": "smithy.api#Boolean",
@@ -572,9 +578,6 @@
             "smithy.api#documentation": "A UUID string identifying this property definition."
           }
         },
-        "name": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -583,21 +586,6 @@
         },
         "tags": {
           "target": "com.posthog.property_definitions#PropertyDefinitionsUpdateRequestTagsList"
-        },
-        "is_numerical": {
-          "target": "smithy.api#Boolean"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_by": {
-          "target": "com.posthog.property_definitions#UserBasic"
-        },
-        "is_seen_on_filtered_events": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "property_type": {
           "target": "com.posthog.property_definitions#PropertyDefinitionsUpdateRequestPropertyType",
@@ -608,25 +596,10 @@
         "verified": {
           "target": "smithy.api#Boolean"
         },
-        "verified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "verified_by": {
-          "target": "com.posthog.property_definitions#UserBasic"
-        },
         "hidden": {
           "target": "smithy.api#Boolean",
           "traits": {
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "warehouse_origin": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Provenance for a person property populated from a data warehouse source (source/table/column/last synced), or null. Read-only."
           }
         }
       },
@@ -699,9 +672,6 @@
             "smithy.api#documentation": "A UUID string identifying this property definition."
           }
         },
-        "name": {
-          "target": "smithy.api#String"
-        },
         "description": {
           "target": "smithy.api#String",
           "traits": {
@@ -710,21 +680,6 @@
         },
         "tags": {
           "target": "com.posthog.property_definitions#PropertyDefinitionsPartialUpdateRequestTagsList"
-        },
-        "is_numerical": {
-          "target": "smithy.api#Boolean"
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_by": {
-          "target": "com.posthog.property_definitions#UserBasic"
-        },
-        "is_seen_on_filtered_events": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
         },
         "property_type": {
           "target": "com.posthog.property_definitions#PropertyDefinitionsPartialUpdateRequestPropertyType",
@@ -735,25 +690,10 @@
         "verified": {
           "target": "smithy.api#Boolean"
         },
-        "verified_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "verified_by": {
-          "target": "com.posthog.property_definitions#UserBasic"
-        },
         "hidden": {
           "target": "smithy.api#Boolean",
           "traits": {
             "com.distilled.openapi#nullable": {}
-          }
-        },
-        "warehouse_origin": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Provenance for a person property populated from a data warehouse source (source/table/column/last synced), or null. Read-only."
           }
         }
       },

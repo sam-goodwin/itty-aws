@@ -620,16 +620,57 @@
             "smithy.api#documentation": "The name of the SandboxGroup."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerinstance#SandboxGroupsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerinstance#SandboxGroupsUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerinstance#SandboxGroupsUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerinstance#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.containerinstance#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.containerinstance#UserAssignedIdentitiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the container group. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'."
+      }
+    },
+    "com.azure.containerinstance#SandboxGroupsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerinstance#SandboxGroupsCreateOrUpdate": {
@@ -776,16 +817,77 @@
             "smithy.api#documentation": "The name of the SandboxGroup."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerinstance#SandboxGroupsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerinstance#SandboxGroupPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerinstance#SandboxGroupsCreateOrUpdateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerinstance#SandboxGroupsCreateOrUpdateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerinstance#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.containerinstance#UserAssignedIdentitiesInput"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.containerinstance#SandboxGroupPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "networkProfile": {
+          "target": "com.azure.containerinstance#SandboxGroupNetworkProfile",
+          "traits": {
+            "smithy.api#documentation": "The network profile of the SandboxGroup."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a SandboxGroup."
+      }
+    },
+    "com.azure.containerinstance#SandboxGroupsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerinstance#SandboxGroupsGet": {
@@ -2208,16 +2310,86 @@
             "smithy.api#documentation": "The NGroups name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerinstance#NGroupProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Describes the properties of the NGroups resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerinstance#NGroupIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the NGroup, if configured."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerinstance#NGroupsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "zones": {
+          "target": "com.azure.containerinstance#NGroupsUpdateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The zones for the NGroup."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerinstance#NGroupsUpdateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The zones for the NGroup."
+      }
+    },
+    "com.azure.containerinstance#NGroupsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
+      }
+    },
+    "com.azure.containerinstance#NGroupIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerinstance#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.containerinstance#NGroupIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the NGroup."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the NGroup."
+      }
+    },
+    "com.azure.containerinstance#NGroupIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.containerinstance#UserAssignedIdentitiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the NGroup."
       }
     },
     "com.azure.containerinstance#NGroupsCreateOrUpdate": {
@@ -2349,16 +2521,60 @@
             "smithy.api#documentation": "The NGroups name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerinstance#NGroupProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Describes the properties of the NGroups resource."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerinstance#NGroupsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "zones": {
+          "target": "com.azure.containerinstance#NGroupsCreateOrUpdateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The availability zones."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerinstance#NGroupIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the NGroup, if configured."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerinstance#NGroupsCreateOrUpdateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The availability zones."
+      }
+    },
+    "com.azure.containerinstance#NGroupsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerinstance#NGroupsGet": {
@@ -3041,16 +3257,41 @@
             "smithy.api#documentation": "The name of the container instance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "command": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The command to be executed."
+          }
+        },
+        "terminalSize": {
+          "target": "com.azure.containerinstance#ContainerExecRequestTerminalSize",
+          "traits": {
+            "smithy.api#documentation": "The size of the terminal."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerinstance#ContainerExecRequestTerminalSize": {
+      "type": "structure",
+      "members": {
+        "rows": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The row size of the terminal"
+          }
+        },
+        "cols": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The column size of the terminal"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The size of the terminal."
       }
     },
     "com.azure.containerinstance#ContainersAttach": {
@@ -5289,16 +5530,48 @@
             "smithy.api#documentation": "The name of the container group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource location."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerinstance#ContainerGroupsUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "zones": {
+          "target": "com.azure.containerinstance#ContainerGroupsUpdateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The zones for the container group."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupsUpdateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The zones for the container group."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.containerinstance#ContainerGroupsCreateOrUpdate": {
@@ -5431,16 +5704,579 @@
             "smithy.api#documentation": "The name of the container group."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location of the container group."
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerinstance#ContainerGroupsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags."
+          }
+        },
+        "zones": {
+          "target": "com.azure.containerinstance#ContainerGroupsCreateOrUpdateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The availability zones."
+          }
+        },
+        "identity": {
+          "target": "com.azure.containerinstance#ContainerGroupIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The identity of the container group, if configured."
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The container group properties",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "secretReferences": {
+          "target": "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputSecretReferencesList",
+          "traits": {
+            "smithy.api#documentation": "The secret references that will be referenced within the container group."
+          }
+        },
+        "containers": {
+          "target": "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputContainersList",
+          "traits": {
+            "smithy.api#documentation": "The containers within the container group.",
+            "smithy.api#required": {}
+          }
+        },
+        "imageRegistryCredentials": {
+          "target": "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputImageRegistryCredentialsList",
+          "traits": {
+            "smithy.api#documentation": "The image registry credentials by which the container group is created from."
+          }
+        },
+        "restartPolicy": {
+          "target": "com.azure.containerinstance#ContainerGroupRestartPolicy",
+          "traits": {
+            "smithy.api#documentation": "Restart policy for all containers within the container group.\n- `Always` Always restart\n- `OnFailure` Restart on failure\n- `Never` Never restart"
+          }
+        },
+        "ipAddress": {
+          "target": "com.azure.containerinstance#IpAddressInput",
+          "traits": {
+            "smithy.api#documentation": "The IP address type of the container group."
+          }
+        },
+        "osType": {
+          "target": "com.azure.containerinstance#OperatingSystemTypes",
+          "traits": {
+            "smithy.api#documentation": "The operating system type required by the containers in the container group."
+          }
+        },
+        "volumes": {
+          "target": "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputVolumesList",
+          "traits": {
+            "smithy.api#documentation": "The list of volumes that can be mounted by containers in this container group."
+          }
+        },
+        "diagnostics": {
+          "target": "com.azure.containerinstance#ContainerGroupDiagnostics",
+          "traits": {
+            "smithy.api#documentation": "The diagnostic information for a container group."
+          }
+        },
+        "subnetIds": {
+          "target": "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputSubnetIdsList",
+          "traits": {
+            "smithy.api#documentation": "The subnet resource IDs for a container group."
+          }
+        },
+        "dnsConfig": {
+          "target": "com.azure.containerinstance#DnsConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The DNS config information for a container group."
+          }
+        },
+        "sku": {
+          "target": "com.azure.containerinstance#ContainerGroupSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU for a container group."
+          }
+        },
+        "encryptionProperties": {
+          "target": "com.azure.containerinstance#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "The encryption properties for a container group."
+          }
+        },
+        "initContainers": {
+          "target": "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputInitContainersList",
+          "traits": {
+            "smithy.api#documentation": "The init containers for a container group."
+          }
+        },
+        "extensions": {
+          "target": "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputExtensionsList",
+          "traits": {
+            "smithy.api#documentation": "extensions used by virtual kubelet"
+          }
+        },
+        "confidentialComputeProperties": {
+          "target": "com.azure.containerinstance#ConfidentialComputeProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties for confidential container group"
+          }
+        },
+        "priority": {
+          "target": "com.azure.containerinstance#ContainerGroupPriority",
+          "traits": {
+            "smithy.api#documentation": "The priority of the container group."
+          }
+        },
+        "identityAcls": {
+          "target": "com.azure.containerinstance#IdentityAcls",
+          "traits": {
+            "smithy.api#documentation": "The access control levels of the identities."
+          }
+        },
+        "containerGroupProfile": {
+          "target": "com.azure.containerinstance#ContainerGroupProfileReferenceDefinition",
+          "traits": {
+            "smithy.api#documentation": "The reference container group profile properties."
+          }
+        },
+        "standbyPoolProfile": {
+          "target": "com.azure.containerinstance#StandbyPoolProfileDefinition",
+          "traits": {
+            "smithy.api#documentation": "The reference standby pool profile properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The container group properties"
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputExtensionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#DeploymentExtensionSpec"
+      },
+      "traits": {
+        "smithy.api#documentation": "extensions used by virtual kubelet"
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputInitContainersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#InitContainerDefinitionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The init containers for a container group."
+      }
+    },
+    "com.azure.containerinstance#InitContainerDefinitionInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name for the init container.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerinstance#InitContainerPropertiesDefinitionInput",
+          "traits": {
+            "smithy.api#documentation": "The properties for the init container.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The init container definition."
+      }
+    },
+    "com.azure.containerinstance#InitContainerPropertiesDefinitionInput": {
+      "type": "structure",
+      "members": {
+        "image": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The image of the init container."
+          }
+        },
+        "command": {
+          "target": "com.azure.containerinstance#InitContainerPropertiesDefinitionInputCommandList",
+          "traits": {
+            "smithy.api#documentation": "The command to execute within the init container in exec form."
+          }
+        },
+        "environmentVariables": {
+          "target": "com.azure.containerinstance#InitContainerPropertiesDefinitionInputEnvironmentVariablesList",
+          "traits": {
+            "smithy.api#documentation": "The environment variables to set in the init container."
+          }
+        },
+        "volumeMounts": {
+          "target": "com.azure.containerinstance#InitContainerPropertiesDefinitionInputVolumeMountsList",
+          "traits": {
+            "smithy.api#documentation": "The volume mounts available to the init container."
+          }
+        },
+        "securityContext": {
+          "target": "com.azure.containerinstance#SecurityContextDefinition",
+          "traits": {
+            "smithy.api#documentation": "The container security properties."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The init container definition properties."
+      }
+    },
+    "com.azure.containerinstance#InitContainerPropertiesDefinitionInputVolumeMountsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#VolumeMount"
+      },
+      "traits": {
+        "smithy.api#documentation": "The volume mounts available to the init container."
+      }
+    },
+    "com.azure.containerinstance#InitContainerPropertiesDefinitionInputEnvironmentVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#EnvironmentVariable"
+      },
+      "traits": {
+        "smithy.api#documentation": "The environment variables to set in the init container."
+      }
+    },
+    "com.azure.containerinstance#InitContainerPropertiesDefinitionInputCommandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The command to execute within the init container in exec form."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputSubnetIdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#ContainerGroupSubnetId"
+      },
+      "traits": {
+        "smithy.api#documentation": "The subnet resource IDs for a container group."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputVolumesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#Volume"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of volumes that can be mounted by containers in this container group."
+      }
+    },
+    "com.azure.containerinstance#IpAddressInput": {
+      "type": "structure",
+      "members": {
+        "ports": {
+          "target": "com.azure.containerinstance#IpAddressInputPortsList",
+          "traits": {
+            "smithy.api#documentation": "The list of ports exposed on the container group.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.containerinstance#ContainerGroupIpAddressType",
+          "traits": {
+            "smithy.api#documentation": "Specifies if the IP is exposed to the public internet or private VNET.",
+            "smithy.api#required": {}
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP exposed to the public internet."
+          }
+        },
+        "dnsNameLabel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Dns name label for the IP."
+          }
+        },
+        "autoGeneratedDomainNameLabelScope": {
+          "target": "com.azure.containerinstance#IpAddressInputAutoGeneratedDomainNameLabelScope",
+          "traits": {
+            "smithy.api#documentation": "The value representing the security enum. The 'Unsecure' value is the default value if not selected and means the object's domain name label is not secured against subdomain takeover. The 'TenantReuse' value is the default value if selected and means the object's domain name label can be reused within the same tenant. The 'SubscriptionReuse' value means the object's domain name label can be reused within the same subscription. The 'ResourceGroupReuse' value means the object's domain name label can be reused within the same resource group. The 'NoReuse' value means the object's domain name label cannot be reused within the same resource group, subscription, or tenant."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "IP address for the container group."
+      }
+    },
+    "com.azure.containerinstance#IpAddressInputAutoGeneratedDomainNameLabelScope": {
+      "type": "enum",
+      "members": {
+        "UNSECURE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unsecure"
+          }
+        },
+        "TENANTREUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TenantReuse"
+          }
+        },
+        "SUBSCRIPTIONREUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SubscriptionReuse"
+          }
+        },
+        "RESOURCEGROUPREUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ResourceGroupReuse"
+          }
+        },
+        "NOREUSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Noreuse"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The value representing the security enum. The 'Unsecure' value is the default value if not selected and means the object's domain name label is not secured against subdomain takeover. The 'TenantReuse' value is the default value if selected and means the object's domain name label can be reused within the same tenant. The 'SubscriptionReuse' value means the object's domain name label can be reused within the same subscription. The 'ResourceGroupReuse' value means the object's domain name label can be reused within the same resource group. The 'NoReuse' value means the object's domain name label cannot be reused within the same resource group, subscription, or tenant."
+      }
+    },
+    "com.azure.containerinstance#IpAddressInputPortsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#Port"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of ports exposed on the container group."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputImageRegistryCredentialsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#ImageRegistryCredential"
+      },
+      "traits": {
+        "smithy.api#documentation": "The image registry credentials by which the container group is created from."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputContainersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#ContainerInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The containers within the container group."
+      }
+    },
+    "com.azure.containerinstance#ContainerInput": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user-provided name of the container instance.",
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.containerinstance#ContainerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the container instance.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A container instance."
+      }
+    },
+    "com.azure.containerinstance#ContainerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "image": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the image used to create the container instance."
+          }
+        },
+        "command": {
+          "target": "com.azure.containerinstance#ContainerPropertiesInputCommandList",
+          "traits": {
+            "smithy.api#documentation": "The commands to execute within the container instance in exec form."
+          }
+        },
+        "ports": {
+          "target": "com.azure.containerinstance#ContainerPropertiesInputPortsList",
+          "traits": {
+            "smithy.api#documentation": "The exposed ports on the container instance."
+          }
+        },
+        "environmentVariables": {
+          "target": "com.azure.containerinstance#ContainerPropertiesInputEnvironmentVariablesList",
+          "traits": {
+            "smithy.api#documentation": "The environment variables to set in the container instance."
+          }
+        },
+        "resources": {
+          "target": "com.azure.containerinstance#ResourceRequirements",
+          "traits": {
+            "smithy.api#documentation": "The resource requirements of the container instance."
+          }
+        },
+        "volumeMounts": {
+          "target": "com.azure.containerinstance#ContainerPropertiesInputVolumeMountsList",
+          "traits": {
+            "smithy.api#documentation": "The volume mounts available to the container instance."
+          }
+        },
+        "livenessProbe": {
+          "target": "com.azure.containerinstance#ContainerProbe",
+          "traits": {
+            "smithy.api#documentation": "The liveness probe."
+          }
+        },
+        "readinessProbe": {
+          "target": "com.azure.containerinstance#ContainerProbe",
+          "traits": {
+            "smithy.api#documentation": "The readiness probe."
+          }
+        },
+        "securityContext": {
+          "target": "com.azure.containerinstance#SecurityContextDefinition",
+          "traits": {
+            "smithy.api#documentation": "The container security properties."
+          }
+        },
+        "configMap": {
+          "target": "com.azure.containerinstance#ConfigMap",
+          "traits": {
+            "smithy.api#documentation": "The config map."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The container instance properties."
+      }
+    },
+    "com.azure.containerinstance#ContainerPropertiesInputVolumeMountsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#VolumeMount"
+      },
+      "traits": {
+        "smithy.api#documentation": "The volume mounts available to the container instance."
+      }
+    },
+    "com.azure.containerinstance#ContainerPropertiesInputEnvironmentVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#EnvironmentVariable"
+      },
+      "traits": {
+        "smithy.api#documentation": "The environment variables to set in the container instance."
+      }
+    },
+    "com.azure.containerinstance#ContainerPropertiesInputPortsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#ContainerPort"
+      },
+      "traits": {
+        "smithy.api#documentation": "The exposed ports on the container instance."
+      }
+    },
+    "com.azure.containerinstance#ContainerPropertiesInputCommandList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The commands to execute within the container instance in exec form."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupPropertiesPropertiesInputSecretReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#SecretReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "The secret references that will be referenced within the container group."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.containerinstance#ResourceIdentityType",
+          "traits": {
+            "smithy.api#documentation": "The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.containerinstance#ContainerGroupIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the container group."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Identity for the container group."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.containerinstance#UserAssignedIdentitiesInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the container group."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupsCreateOrUpdateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The availability zones."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.containerinstance#ContainerGroupsGet": {
@@ -6660,16 +7496,27 @@
             "smithy.api#documentation": "ContainerGroupProfile name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.containerinstance#CGProfileUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerinstance#CGProfileUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.containerinstance#CGProfileCreateOrUpdate": {
@@ -6795,16 +7642,211 @@
             "smithy.api#documentation": "ContainerGroupProfile name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.containerinstance#ContainerGroupProfilePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The container group profile properties"
+          }
+        },
+        "tags": {
+          "target": "com.azure.containerinstance#CGProfileCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives"
+          }
+        },
+        "zones": {
+          "target": "com.azure.containerinstance#CGProfileCreateOrUpdateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The availability zones."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.containerinstance#CGProfileCreateOrUpdateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The availability zones."
+      }
+    },
+    "com.azure.containerinstance#CGProfileCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupProfilePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sku": {
+          "target": "com.azure.containerinstance#ContainerGroupSku",
+          "traits": {
+            "smithy.api#documentation": "The SKU for a container group."
+          }
+        },
+        "encryptionProperties": {
+          "target": "com.azure.containerinstance#EncryptionProperties",
+          "traits": {
+            "smithy.api#documentation": "The encryption properties for a container group."
+          }
+        },
+        "containers": {
+          "target": "com.azure.containerinstance#ContainerGroupProfilePropertiesInputContainersList",
+          "traits": {
+            "smithy.api#documentation": "The containers within the container group.",
+            "smithy.api#required": {}
+          }
+        },
+        "initContainers": {
+          "target": "com.azure.containerinstance#ContainerGroupProfilePropertiesInputInitContainersList",
+          "traits": {
+            "smithy.api#documentation": "The init containers for a container group."
+          }
+        },
+        "extensions": {
+          "target": "com.azure.containerinstance#ContainerGroupProfilePropertiesInputExtensionsList",
+          "traits": {
+            "smithy.api#documentation": "extensions used by virtual kubelet"
+          }
+        },
+        "imageRegistryCredentials": {
+          "target": "com.azure.containerinstance#ContainerGroupProfilePropertiesInputImageRegistryCredentialsList",
+          "traits": {
+            "smithy.api#documentation": "The image registry credentials by which the container group is created from."
+          }
+        },
+        "restartPolicy": {
+          "target": "com.azure.containerinstance#ContainerGroupRestartPolicy",
+          "traits": {
+            "smithy.api#documentation": "Restart policy for all containers within the container group.\n- `Always` Always restart\n- `OnFailure` Restart on failure\n- `Never` Never restart"
+          }
+        },
+        "shutdownGracePeriod": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shutdown grace period for containers in a container group."
+          }
+        },
+        "ipAddress": {
+          "target": "com.azure.containerinstance#IpAddressInput",
+          "traits": {
+            "smithy.api#documentation": "The IP address type of the container group."
+          }
+        },
+        "timeToLive": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Post completion time to live for containers of a CG"
+          }
+        },
+        "osType": {
+          "target": "com.azure.containerinstance#OperatingSystemTypes",
+          "traits": {
+            "smithy.api#documentation": "The operating system type required by the containers in the container group.",
+            "smithy.api#required": {}
+          }
+        },
+        "volumes": {
+          "target": "com.azure.containerinstance#ContainerGroupProfilePropertiesInputVolumesList",
+          "traits": {
+            "smithy.api#documentation": "The list of volumes that can be mounted by containers in this container group."
+          }
+        },
+        "diagnostics": {
+          "target": "com.azure.containerinstance#ContainerGroupDiagnostics",
+          "traits": {
+            "smithy.api#documentation": "The diagnostic information for a container group."
+          }
+        },
+        "priority": {
+          "target": "com.azure.containerinstance#ContainerGroupPriority",
+          "traits": {
+            "smithy.api#documentation": "The priority of the container group."
+          }
+        },
+        "confidentialComputeProperties": {
+          "target": "com.azure.containerinstance#ConfidentialComputeProperties",
+          "traits": {
+            "smithy.api#documentation": "The properties for confidential container group"
+          }
+        },
+        "securityContext": {
+          "target": "com.azure.containerinstance#SecurityContextDefinition",
+          "traits": {
+            "smithy.api#documentation": "The container security properties."
+          }
+        },
+        "useKrypton": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets Krypton use property."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The container group profile properties"
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupProfilePropertiesInputVolumesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#Volume"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of volumes that can be mounted by containers in this container group."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupProfilePropertiesInputImageRegistryCredentialsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#ImageRegistryCredential"
+      },
+      "traits": {
+        "smithy.api#documentation": "The image registry credentials by which the container group is created from."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupProfilePropertiesInputExtensionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#DeploymentExtensionSpec"
+      },
+      "traits": {
+        "smithy.api#documentation": "extensions used by virtual kubelet"
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupProfilePropertiesInputInitContainersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#InitContainerDefinitionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The init containers for a container group."
+      }
+    },
+    "com.azure.containerinstance#ContainerGroupProfilePropertiesInputContainersList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.containerinstance#ContainerInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The containers within the container group."
       }
     },
     "com.azure.containerinstance#CGProfileGet": {

@@ -290,8 +290,7 @@ export type GoogleCloudIntegrationsV1alphaCredentialCredentialTypeEnum =
   | "AUTH_TOKEN"
   | "SERVICE_ACCOUNT"
   | "CLIENT_CERTIFICATE_ONLY"
-  | "OIDC_TOKEN"
-  | (string & {});
+  | "OIDC_TOKEN";
 export const GoogleCloudIntegrationsV1alphaCredentialCredentialTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -312,7 +311,7 @@ export const GoogleCloudIntegrationsV1alphaUsernameAndPassword =
     identifier: "GoogleCloudIntegrationsV1alphaUsernameAndPassword",
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaUsernameAndPassword>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -345,7 +344,7 @@ export const GoogleCloudIntegrationsV1alphaIntParameterArray =
     identifier: "GoogleCloudIntegrationsV1alphaIntParameterArray",
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntParameterArray>;
 
-export type DoubleList = number[];
+export type DoubleList = ReadonlyArray<number>;
 export const DoubleList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<DoubleList>;
@@ -364,7 +363,7 @@ export const GoogleCloudIntegrationsV1alphaDoubleParameterArray =
     identifier: "GoogleCloudIntegrationsV1alphaDoubleParameterArray",
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaDoubleParameterArray>;
 
-export type BooleanList = boolean[];
+export type BooleanList = ReadonlyArray<boolean>;
 export const BooleanList = /*@__PURE__*/ S.Array(
   S.Boolean,
 ) as any as S.Schema<BooleanList>;
@@ -462,7 +461,7 @@ export const GoogleCloudIntegrationsV1alphaParameterMapEntry =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaParameterMapEntry>;
 
 export type GoogleCloudIntegrationsV1alphaParameterMapEntryList =
-  GoogleCloudIntegrationsV1alphaParameterMapEntry[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaParameterMapEntry>;
 export const GoogleCloudIntegrationsV1alphaParameterMapEntryList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaParameterMapEntry,
@@ -486,8 +485,7 @@ export type GoogleCloudIntegrationsV1alphaParameterMapKeyTypeEnum =
   | "SERIALIZED_OBJECT_VALUE"
   | "PROTO_ENUM_ARRAY"
   | "BYTES"
-  | "BYTES_ARRAY"
-  | (string & {});
+  | "BYTES_ARRAY";
 export const GoogleCloudIntegrationsV1alphaParameterMapKeyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -509,8 +507,7 @@ export type GoogleCloudIntegrationsV1alphaParameterMapValueTypeEnum =
   | "SERIALIZED_OBJECT_VALUE"
   | "PROTO_ENUM_ARRAY"
   | "BYTES"
-  | "BYTES_ARRAY"
-  | (string & {});
+  | "BYTES_ARRAY";
 export const GoogleCloudIntegrationsV1alphaParameterMapValueTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -568,8 +565,7 @@ export type GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeEnum
     | "REQUEST_TYPE_UNSPECIFIED"
     | "REQUEST_BODY"
     | "QUERY_PARAMETERS"
-    | "ENCODED_HEADER"
-    | (string & {});
+    | "ENCODED_HEADER";
 export const GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -623,8 +619,7 @@ export type GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeEnum
     | "REQUEST_TYPE_UNSPECIFIED"
     | "REQUEST_BODY"
     | "QUERY_PARAMETERS"
-    | "ENCODED_HEADER"
-    | (string & {});
+    | "ENCODED_HEADER";
 export const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -666,8 +661,7 @@ export type GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestT
     | "REQUEST_TYPE_UNSPECIFIED"
     | "REQUEST_BODY"
     | "QUERY_PARAMETERS"
-    | "ENCODED_HEADER"
-    | (string & {});
+    | "ENCODED_HEADER";
 export const GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -852,16 +846,14 @@ export type GoogleCloudIntegrationsV1alphaAuthConfigCredentialTypeEnum =
   | "AUTH_TOKEN"
   | "SERVICE_ACCOUNT"
   | "CLIENT_CERTIFICATE_ONLY"
-  | "OIDC_TOKEN"
-  | (string & {});
+  | "OIDC_TOKEN";
 export const GoogleCloudIntegrationsV1alphaAuthConfigCredentialTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIntegrationsV1alphaAuthConfigVisibilityEnum =
   | "AUTH_CONFIG_VISIBILITY_UNSPECIFIED"
   | "PRIVATE"
-  | "CLIENT_VISIBLE"
-  | (string & {});
+  | "CLIENT_VISIBLE";
 export const GoogleCloudIntegrationsV1alphaAuthConfigVisibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -872,8 +864,7 @@ export type GoogleCloudIntegrationsV1alphaAuthConfigStateEnum =
   | "SOFT_DELETED"
   | "EXPIRED"
   | "UNAUTHORIZED"
-  | "UNSUPPORTED"
-  | (string & {});
+  | "UNSUPPORTED";
 export const GoogleCloudIntegrationsV1alphaAuthConfigStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -981,8 +972,7 @@ export const CreateProjectsLocationsAuthConfigsRequest =
 export type GoogleCloudIntegrationsV1alphaCertificateCertificateStatusEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
-  | "EXPIRED"
-  | (string & {});
+  | "EXPIRED";
 export const GoogleCloudIntegrationsV1alphaCertificateCertificateStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1073,10 +1063,7 @@ export const CreateProjectsLocationsCertificatesRequest =
   }) as any as S.Schema<CreateProjectsLocationsCertificatesRequest>;
 
 export type GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequestGcfApiVersionEnum =
-    | "GCF_API_VERSION_UNSPECIFIED"
-    | "API_VERSION_V1"
-    | "API_VERSION_V2"
-    | (string & {});
+  "GCF_API_VERSION_UNSPECIFIED" | "API_VERSION_V1" | "API_VERSION_V2";
 export const GoogleCloudIntegrationsV1alphaCreateCloudFunctionRequestGcfApiVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1199,7 +1186,7 @@ export const EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray =
     identifier: "EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray",
   }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoDoubleParameterArray>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -1293,8 +1280,7 @@ export type EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeEnum =
   | "BYTES"
   | "BYTES_ARRAY"
   | "NON_SERIALIZABLE_OBJECT"
-  | "JSON_VALUE"
-  | (string & {});
+  | "JSON_VALUE";
 export const EnterpriseCrmFrontendsEventbusProtoParameterEntryDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1340,8 +1326,7 @@ export type EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyEnum =
   | "FIXED_INTERVAL"
   | "LINEAR_BACKOFF"
   | "EXPONENTIAL_BACKOFF"
-  | "RESTART_WORKFLOW_WITH_BACKOFF"
-  | (string & {});
+  | "RESTART_WORKFLOW_WITH_BACKOFF";
 export const EnterpriseCrmEventbusProtoFailurePolicyRetryStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1371,7 +1356,7 @@ export const EnterpriseCrmEventbusProtoFailurePolicy = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnterpriseCrmEventbusProtoFailurePolicy>;
 
 export type EnterpriseCrmEventbusProtoFailurePolicyList =
-  EnterpriseCrmEventbusProtoFailurePolicy[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoFailurePolicy>;
 export const EnterpriseCrmEventbusProtoFailurePolicyList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoFailurePolicy,
@@ -1402,8 +1387,7 @@ export type EnterpriseCrmEventbusProtoConditionOperatorEnum =
   | "EXISTS"
   | "DOES_NOT_EXIST"
   | "IS_EMPTY"
-  | "IS_NOT_EMPTY"
-  | (string & {});
+  | "IS_NOT_EMPTY";
 export const EnterpriseCrmEventbusProtoConditionOperatorEnum =
   /*@__PURE__*/ S.String;
 
@@ -1488,7 +1472,7 @@ export const EnterpriseCrmEventbusProtoCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnterpriseCrmEventbusProtoCondition>;
 
 export type EnterpriseCrmEventbusProtoConditionList =
-  EnterpriseCrmEventbusProtoCondition[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoCondition>;
 export const EnterpriseCrmEventbusProtoConditionList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoCondition,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoConditionList>;
@@ -1508,7 +1492,7 @@ export const EnterpriseCrmEventbusProtoCombinedCondition =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoCombinedCondition>;
 
 export type EnterpriseCrmEventbusProtoCombinedConditionList =
-  EnterpriseCrmEventbusProtoCombinedCondition[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoCombinedCondition>;
 export const EnterpriseCrmEventbusProtoCombinedConditionList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoCombinedCondition,
@@ -1545,13 +1529,13 @@ export const EnterpriseCrmEventbusProtoNextTask = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnterpriseCrmEventbusProtoNextTask>;
 
 export type EnterpriseCrmEventbusProtoNextTaskList =
-  EnterpriseCrmEventbusProtoNextTask[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoNextTask>;
 export const EnterpriseCrmEventbusProtoNextTaskList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoNextTask,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoNextTaskList>;
 
 export type EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyEnum =
-  "UNSPECIFIED" | "RUN_ALL_MATCH" | "RUN_FIRST_MATCH" | (string & {});
+  "UNSPECIFIED" | "RUN_ALL_MATCH" | "RUN_FIRST_MATCH";
 export const EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1561,16 +1545,14 @@ export type EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeEnum =
   | "TASK_WARNING_RATE"
   | "TASK_RATE"
   | "TASK_AVERAGE_DURATION"
-  | "TASK_PERCENTILE_DURATION"
-  | (string & {});
+  | "TASK_PERCENTILE_DURATION";
 export const EnterpriseCrmEventbusProtoTaskAlertConfigMetricTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeEnum =
   | "UNSPECIFIED_THRESHOLD_TYPE"
   | "EXPECTED_MIN"
-  | "EXPECTED_MAX"
-  | (string & {});
+  | "EXPECTED_MAX";
 export const EnterpriseCrmEventbusProtoTaskAlertConfigThresholdTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1590,7 +1572,7 @@ export const EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue>;
 
 export type EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeEnum =
-  "DEFAULT_INCLUSIVE" | "EXCLUSIVE" | (string & {});
+  "DEFAULT_INCLUSIVE" | "EXCLUSIVE";
 export const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1669,14 +1651,14 @@ export const EnterpriseCrmEventbusProtoTaskAlertConfig =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoTaskAlertConfig>;
 
 export type EnterpriseCrmEventbusProtoTaskAlertConfigList =
-  EnterpriseCrmEventbusProtoTaskAlertConfig[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoTaskAlertConfig>;
 export const EnterpriseCrmEventbusProtoTaskAlertConfigList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoTaskAlertConfig,
   ) as any as S.Schema<EnterpriseCrmEventbusProtoTaskAlertConfigList>;
 
 export type EnterpriseCrmFrontendsEventbusProtoParameterEntryList =
-  EnterpriseCrmFrontendsEventbusProtoParameterEntry[];
+  ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParameterEntry>;
 export const EnterpriseCrmFrontendsEventbusProtoParameterEntryList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmFrontendsEventbusProtoParameterEntry,
@@ -1738,16 +1720,14 @@ export const EnterpriseCrmEventbusProtoCoordinate = /*@__PURE__*/ S.suspend(
 export type EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyEnum =
     | "WHEN_ALL_SUCCEED"
     | "WHEN_ANY_SUCCEED"
-    | "WHEN_ALL_TASKS_AND_CONDITIONS_SUCCEED"
-    | (string & {});
+    | "WHEN_ALL_TASKS_AND_CONDITIONS_SUCCEED";
 export const EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategyEnum =
   /*@__PURE__*/ S.String;
 
 export type EnterpriseCrmEventbusProtoSuccessPolicyFinalStateEnum =
   | "UNSPECIFIED"
   | "SUCCEEDED"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const EnterpriseCrmEventbusProtoSuccessPolicyFinalStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -1783,7 +1763,7 @@ export const EnterpriseCrmEventbusProtoTaskMetadataAdmin =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoTaskMetadataAdmin>;
 
 export type EnterpriseCrmEventbusProtoTaskMetadataAdminList =
-  EnterpriseCrmEventbusProtoTaskMetadataAdmin[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoTaskMetadataAdmin>;
 export const EnterpriseCrmEventbusProtoTaskMetadataAdminList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoTaskMetadataAdmin,
@@ -1792,8 +1772,7 @@ export const EnterpriseCrmEventbusProtoTaskMetadataAdminList =
 export type EnterpriseCrmEventbusProtoTaskMetadataStatusEnum =
   | "UNSPECIFIED_STATUS"
   | "DEFAULT_INACTIVE"
-  | "ACTIVE"
-  | (string & {});
+  | "ACTIVE";
 export const EnterpriseCrmEventbusProtoTaskMetadataStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1807,8 +1786,7 @@ export type EnterpriseCrmEventbusProtoTaskMetadataCategoryEnum =
   | "HIDDEN"
   | "CLOUD_SYSTEMS"
   | "CUSTOM_TASK_TEMPLATE"
-  | "TASK_RECOMMENDATIONS"
-  | (string & {});
+  | "TASK_RECOMMENDATIONS";
 export const EnterpriseCrmEventbusProtoTaskMetadataCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -1823,8 +1801,7 @@ export type EnterpriseCrmEventbusProtoTaskMetadataSystemEnum =
   | "GOOGLE_GROUPS"
   | "EMAIL"
   | "SPANNER"
-  | "DATA_BRIDGE"
-  | (string & {});
+  | "DATA_BRIDGE";
 export const EnterpriseCrmEventbusProtoTaskMetadataSystemEnum =
   /*@__PURE__*/ S.String;
 
@@ -1833,8 +1810,7 @@ export type EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionEnu
     | "SKIP"
     | "PRE_EXECUTION"
     | "POST_EXECUTION"
-    | "PRE_POST_EXECUTION"
-    | (string & {});
+    | "PRE_POST_EXECUTION";
 export const EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -1853,8 +1829,7 @@ export type EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryEnum =
   | "EXTERNAL_BYOC"
   | "EXTERNAL_BYOT"
   | "EXTERNAL_ARTIFICIAL_INTELIGENCE"
-  | "EXTERNAL_DATA_MANIPULATION"
-  | (string & {});
+  | "EXTERNAL_DATA_MANIPULATION";
 export const EnterpriseCrmEventbusProtoTaskMetadataExternalCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -1939,15 +1914,13 @@ export type EnterpriseCrmEventbusStatsDimensionsRetryAttemptEnum =
   | "UNSPECIFIED"
   | "FINAL"
   | "RETRYABLE"
-  | "CANCELED"
-  | (string & {});
+  | "CANCELED";
 export const EnterpriseCrmEventbusStatsDimensionsRetryAttemptEnum =
   /*@__PURE__*/ S.String;
 
 export type EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeEnum =
   | "DEFAULT_INCLUSIVE"
-  | "EXCLUSIVE"
-  | (string & {});
+  | "EXCLUSIVE";
 export const EnterpriseCrmEventbusStatsDimensionsEnumFilterTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2030,8 +2003,7 @@ export type EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeEnum =
   | "BYTES"
   | "BYTES_ARRAY"
   | "NON_SERIALIZABLE_OBJECT"
-  | "JSON_VALUE"
-  | (string & {});
+  | "JSON_VALUE";
 export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2052,11 +2024,7 @@ export const EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition>;
 
 export type EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionEnum =
-    | "DEFAULT"
-    | "STRING_MULTI_LINE"
-    | "NUMBER_SLIDER"
-    | "BOOLEAN_TOGGLE"
-    | (string & {});
+  "DEFAULT" | "STRING_MULTI_LINE" | "NUMBER_SLIDER" | "BOOLEAN_TOGGLE";
 export const EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2064,8 +2032,7 @@ export type EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionEnu
     | "DEFAULT_NOT_PARAMETER_NAME"
     | "IS_PARAMETER_NAME"
     | "KEY_IS_PARAMETER_NAME"
-    | "VALUE_IS_PARAMETER_NAME"
-    | (string & {});
+    | "VALUE_IS_PARAMETER_NAME";
 export const EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOptionEnum =
   /*@__PURE__*/ S.String;
 
@@ -2239,7 +2206,7 @@ export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntry =
   }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>;
 
 export type EnterpriseCrmFrontendsEventbusProtoParamSpecEntryList =
-  EnterpriseCrmFrontendsEventbusProtoParamSpecEntry[];
+  ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>;
 export const EnterpriseCrmFrontendsEventbusProtoParamSpecEntryList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmFrontendsEventbusProtoParamSpecEntry,
@@ -2279,8 +2246,7 @@ export type EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdEnum =
   | "REST_CALLER"
   | "SUB_WORKFLOW_SCATTER_GATHER"
   | "CLOUD_SQL"
-  | "GENERIC_CONNECTOR_TASK"
-  | (string & {});
+  | "GENERIC_CONNECTOR_TASK";
 export const EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleIdEnum =
   /*@__PURE__*/ S.String;
 
@@ -2301,7 +2267,7 @@ export const EnterpriseCrmEventbusProtoTaskUiModuleConfig =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoTaskUiModuleConfig>;
 
 export type EnterpriseCrmEventbusProtoTaskUiModuleConfigList =
-  EnterpriseCrmEventbusProtoTaskUiModuleConfig[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoTaskUiModuleConfig>;
 export const EnterpriseCrmEventbusProtoTaskUiModuleConfigList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoTaskUiModuleConfig,
@@ -2326,8 +2292,7 @@ export const EnterpriseCrmEventbusProtoTaskUiConfig = /*@__PURE__*/ S.suspend(
 export type EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeEnum =
   | "TASK"
   | "ASIS_TEMPLATE"
-  | "IO_TEMPLATE"
-  | (string & {});
+  | "IO_TEMPLATE";
 export const EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2369,24 +2334,21 @@ export type EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionEnu
     | "SKIP"
     | "PRE_EXECUTION"
     | "POST_EXECUTION"
-    | "PRE_POST_EXECUTION"
-    | (string & {});
+    | "PRE_POST_EXECUTION";
 export const EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeEnum =
   | "TASK"
   | "ASIS_TEMPLATE"
-  | "IO_TEMPLATE"
-  | (string & {});
+  | "IO_TEMPLATE";
 export const EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeEnum =
   | "EXTERNAL_TASK_TYPE_UNSPECIFIED"
   | "NORMAL_TASK"
-  | "ERROR_TASK"
-  | (string & {});
+  | "ERROR_TASK";
 export const EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2506,7 +2468,7 @@ export const EnterpriseCrmFrontendsEventbusProtoTaskConfig =
   }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoTaskConfig>;
 
 export type EnterpriseCrmFrontendsEventbusProtoTaskConfigList =
-  EnterpriseCrmFrontendsEventbusProtoTaskConfig[];
+  ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoTaskConfig>;
 export const EnterpriseCrmFrontendsEventbusProtoTaskConfigList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmFrontendsEventbusProtoTaskConfig,
@@ -2549,8 +2511,7 @@ export type GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyEnum =
   | "FIXED_INTERVAL"
   | "LINEAR_BACKOFF"
   | "EXPONENTIAL_BACKOFF"
-  | "RESTART_INTEGRATION_WITH_BACKOFF"
-  | (string & {});
+  | "RESTART_INTEGRATION_WITH_BACKOFF";
 export const GoogleCloudIntegrationsV1alphaFailurePolicyRetryStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -2580,7 +2541,7 @@ export const GoogleCloudIntegrationsV1alphaFailurePolicy =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaFailurePolicy>;
 
 export type GoogleCloudIntegrationsV1alphaFailurePolicyList =
-  GoogleCloudIntegrationsV1alphaFailurePolicy[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaFailurePolicy>;
 export const GoogleCloudIntegrationsV1alphaFailurePolicyList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaFailurePolicy,
@@ -2634,7 +2595,7 @@ export const GoogleCloudIntegrationsV1alphaNextTask = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaNextTask>;
 
 export type GoogleCloudIntegrationsV1alphaNextTaskList =
-  GoogleCloudIntegrationsV1alphaNextTask[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaNextTask>;
 export const GoogleCloudIntegrationsV1alphaNextTaskList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaNextTask,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaNextTaskList>;
@@ -2642,8 +2603,7 @@ export const GoogleCloudIntegrationsV1alphaNextTaskList = /*@__PURE__*/ S.Array(
 export type GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyEnum =
     | "NEXT_TASKS_EXECUTION_POLICY_UNSPECIFIED"
     | "RUN_ALL_MATCH"
-    | "RUN_FIRST_MATCH"
-    | (string & {});
+    | "RUN_FIRST_MATCH";
 export const GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -2651,16 +2611,14 @@ export type GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyEnum =
   | "TASK_EXECUTION_STRATEGY_UNSPECIFIED"
   | "WHEN_ALL_SUCCEED"
   | "WHEN_ANY_SUCCEED"
-  | "WHEN_ALL_TASKS_AND_CONDITIONS_SUCCEED"
-  | (string & {});
+  | "WHEN_ALL_TASKS_AND_CONDITIONS_SUCCEED";
 export const GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategyEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateEnum =
   | "FINAL_STATE_UNSPECIFIED"
   | "SUCCEEDED"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const GoogleCloudIntegrationsV1alphaSuccessPolicyFinalStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2685,16 +2643,14 @@ export type GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionEnum =
   | "SKIP"
   | "PRE_EXECUTION"
   | "POST_EXECUTION"
-  | "PRE_POST_EXECUTION"
-  | (string & {});
+  | "PRE_POST_EXECUTION";
 export const GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOptionEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeEnum =
   | "EXTERNAL_TASK_TYPE_UNSPECIFIED"
   | "NORMAL_TASK"
-  | "ERROR_TASK"
-  | (string & {});
+  | "ERROR_TASK";
 export const GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2790,7 +2746,7 @@ export const GoogleCloudIntegrationsV1alphaTaskConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaTaskConfig>;
 
 export type GoogleCloudIntegrationsV1alphaTaskConfigList =
-  GoogleCloudIntegrationsV1alphaTaskConfig[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaTaskConfig>;
 export const GoogleCloudIntegrationsV1alphaTaskConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaTaskConfig,
@@ -2818,8 +2774,7 @@ export type EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeEnum =
   | "CLOUD_SCHEDULER"
   | "INTEGRATION_CONNECTOR_TRIGGER"
   | "PRIVATE_TRIGGER"
-  | "EVENTARC_TRIGGER"
-  | (string & {});
+  | "EVENTARC_TRIGGER";
 export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2834,16 +2789,14 @@ export type EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeEnum =
   | "EVENT_AVERAGE_DURATION"
   | "EVENT_PERCENTILE_DURATION"
   | "TASK_AVERAGE_DURATION"
-  | "TASK_PERCENTILE_DURATION"
-  | (string & {});
+  | "TASK_PERCENTILE_DURATION";
 export const EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeEnum =
   | "UNSPECIFIED_THRESHOLD_TYPE"
   | "EXPECTED_MIN"
-  | "EXPECTED_MAX"
-  | (string & {});
+  | "EXPECTED_MAX";
 export const EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2905,14 +2858,14 @@ export const EnterpriseCrmEventbusProtoWorkflowAlertConfig =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoWorkflowAlertConfig>;
 
 export type EnterpriseCrmEventbusProtoWorkflowAlertConfigList =
-  EnterpriseCrmEventbusProtoWorkflowAlertConfig[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoWorkflowAlertConfig>;
 export const EnterpriseCrmEventbusProtoWorkflowAlertConfigList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoWorkflowAlertConfig,
   ) as any as S.Schema<EnterpriseCrmEventbusProtoWorkflowAlertConfigList>;
 
 export type EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyEnum =
-  "UNSPECIFIED" | "RUN_ALL_MATCH" | "RUN_FIRST_MATCH" | (string & {});
+  "UNSPECIFIED" | "RUN_ALL_MATCH" | "RUN_FIRST_MATCH";
 export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -3044,7 +2997,7 @@ export const EnterpriseCrmEventbusProtoParameterEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnterpriseCrmEventbusProtoParameterEntry>;
 
 export type EnterpriseCrmEventbusProtoParameterEntryList =
-  EnterpriseCrmEventbusProtoParameterEntry[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoParameterEntry>;
 export const EnterpriseCrmEventbusProtoParameterEntryList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoParameterEntry,
@@ -3196,7 +3149,7 @@ export const EnterpriseCrmFrontendsEventbusProtoTriggerConfig =
   }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>;
 
 export type EnterpriseCrmFrontendsEventbusProtoTriggerConfigList =
-  EnterpriseCrmFrontendsEventbusProtoTriggerConfig[];
+  ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>;
 export const EnterpriseCrmFrontendsEventbusProtoTriggerConfigList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmFrontendsEventbusProtoTriggerConfig,
@@ -3213,8 +3166,7 @@ export type GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeEnum =
   | "INTEGRATION_CONNECTOR_TRIGGER"
   | "PRIVATE_TRIGGER"
   | "CLOUD_PUBSUB"
-  | "EVENTARC_TRIGGER"
-  | (string & {});
+  | "EVENTARC_TRIGGER";
 export const GoogleCloudIntegrationsV1alphaTriggerConfigTriggerTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3229,16 +3181,12 @@ export type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeEnum =
     | "EVENT_AVERAGE_DURATION"
     | "EVENT_PERCENTILE_DURATION"
     | "TASK_AVERAGE_DURATION"
-    | "TASK_PERCENTILE_DURATION"
-    | (string & {});
+    | "TASK_PERCENTILE_DURATION";
 export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigMetricTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeEnum =
-    | "THRESHOLD_TYPE_UNSPECIFIED"
-    | "EXPECTED_MIN"
-    | "EXPECTED_MAX"
-    | (string & {});
+  "THRESHOLD_TYPE_UNSPECIFIED" | "EXPECTED_MIN" | "EXPECTED_MAX";
 export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3305,7 +3253,7 @@ export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfig =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationAlertConfigList =
-  GoogleCloudIntegrationsV1alphaIntegrationAlertConfig[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationAlertConfig>;
 export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaIntegrationAlertConfig,
@@ -3314,8 +3262,7 @@ export const GoogleCloudIntegrationsV1alphaIntegrationAlertConfigList =
 export type GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyEnum =
     | "NEXT_TASKS_EXECUTION_POLICY_UNSPECIFIED"
     | "RUN_ALL_MATCH"
-    | "RUN_FIRST_MATCH"
-    | (string & {});
+    | "RUN_FIRST_MATCH";
 export const GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -3425,7 +3372,7 @@ export const GoogleCloudIntegrationsV1alphaTriggerConfig =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaTriggerConfig>;
 
 export type GoogleCloudIntegrationsV1alphaTriggerConfigList =
-  GoogleCloudIntegrationsV1alphaTriggerConfig[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaTriggerConfig>;
 export const GoogleCloudIntegrationsV1alphaTriggerConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaTriggerConfig,
@@ -3449,8 +3396,7 @@ export type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeEnu
     | "BYTES"
     | "BYTES_ARRAY"
     | "NON_SERIALIZABLE_OBJECT"
-    | "JSON_VALUE"
-    | (string & {});
+    | "JSON_VALUE";
 export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3460,8 +3406,7 @@ export type EnterpriseCrmEventbusProtoAttributesDataTypeEnum =
   | "URL"
   | "CURRENCY"
   | "TIMESTAMP"
-  | "DOMAIN_NAME"
-  | (string & {});
+  | "DOMAIN_NAME";
 export const EnterpriseCrmEventbusProtoAttributesDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3469,8 +3414,7 @@ export type EnterpriseCrmEventbusProtoLogSettingsSeedScopeEnum =
   | "SEED_SCOPE_UNSPECIFIED"
   | "EVENT_NAME"
   | "TIME_PERIOD"
-  | "PARAM_NAME"
-  | (string & {});
+  | "PARAM_NAME";
 export const EnterpriseCrmEventbusProtoLogSettingsSeedScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3478,8 +3422,7 @@ export type EnterpriseCrmEventbusProtoLogSettingsSeedPeriodEnum =
   | "SEED_PERIOD_UNSPECIFIED"
   | "DAY"
   | "WEEK"
-  | "MONTH"
-  | (string & {});
+  | "MONTH";
 export const EnterpriseCrmEventbusProtoLogSettingsSeedPeriodEnum =
   /*@__PURE__*/ S.String;
 
@@ -3506,8 +3449,7 @@ export const EnterpriseCrmEventbusProtoLogSettings = /*@__PURE__*/ S.suspend(
 export type EnterpriseCrmEventbusProtoAttributesSearchableEnum =
   | "UNSPECIFIED"
   | "YES"
-  | "NO"
-  | (string & {});
+  | "NO";
 export const EnterpriseCrmEventbusProtoAttributesSearchableEnum =
   /*@__PURE__*/ S.String;
 
@@ -3551,15 +3493,14 @@ export const EnterpriseCrmEventbusProtoAttributes = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnterpriseCrmEventbusProtoAttributes>;
 
 export type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeEnum =
-  "IN_OUT_TYPE_UNSPECIFIED" | "IN" | "OUT" | "IN_OUT" | (string & {});
+  "IN_OUT_TYPE_UNSPECIFIED" | "IN" | "OUT" | "IN_OUT";
 export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type EnterpriseCrmEventbusProtoNodeIdentifierElementTypeEnum =
   | "UNKNOWN_TYPE"
   | "TASK_CONFIG"
-  | "TRIGGER_CONFIG"
-  | (string & {});
+  | "TRIGGER_CONFIG";
 export const EnterpriseCrmEventbusProtoNodeIdentifierElementTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3649,7 +3590,7 @@ export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry =
   }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
 
 export type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryList =
-  EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry[];
+  ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry>;
 export const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry,
@@ -3689,13 +3630,12 @@ export type GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeEnum =
   | "SERIALIZED_OBJECT_VALUE"
   | "PROTO_ENUM_ARRAY"
   | "BYTES"
-  | "BYTES_ARRAY"
-  | (string & {});
+  | "BYTES_ARRAY";
 export const GoogleCloudIntegrationsV1alphaIntegrationParameterDataTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeEnum =
-  "IN_OUT_TYPE_UNSPECIFIED" | "IN" | "OUT" | "IN_OUT" | (string & {});
+  "IN_OUT_TYPE_UNSPECIFIED" | "IN" | "OUT" | "IN_OUT";
 export const GoogleCloudIntegrationsV1alphaIntegrationParameterInputOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3751,7 +3691,7 @@ export const GoogleCloudIntegrationsV1alphaIntegrationParameter =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationParameter>;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationParameterList =
-  GoogleCloudIntegrationsV1alphaIntegrationParameter[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationParameter>;
 export const GoogleCloudIntegrationsV1alphaIntegrationParameterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaIntegrationParameter,
@@ -3775,7 +3715,7 @@ export const EnterpriseCrmEventbusProtoPropertyEntry = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnterpriseCrmEventbusProtoPropertyEntry>;
 
 export type EnterpriseCrmEventbusProtoPropertyEntryList =
-  EnterpriseCrmEventbusProtoPropertyEntry[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoPropertyEntry>;
 export const EnterpriseCrmEventbusProtoPropertyEntryList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoPropertyEntry,
@@ -3836,7 +3776,7 @@ export const EnterpriseCrmEventbusProtoTeardownTaskConfig =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoTeardownTaskConfig>;
 
 export type EnterpriseCrmEventbusProtoTeardownTaskConfigList =
-  EnterpriseCrmEventbusProtoTeardownTaskConfig[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoTeardownTaskConfig>;
 export const EnterpriseCrmEventbusProtoTeardownTaskConfigList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoTeardownTaskConfig,
@@ -3862,8 +3802,7 @@ export type GoogleCloudIntegrationsV1alphaIntegrationVersionOriginEnum =
   | "PIPER_V2"
   | "PIPER_V3"
   | "APPLICATION_IP_PROVISIONING"
-  | "TEST_CASE"
-  | (string & {});
+  | "TEST_CASE";
 export const GoogleCloudIntegrationsV1alphaIntegrationVersionOriginEnum =
   /*@__PURE__*/ S.String;
 
@@ -3872,8 +3811,7 @@ export type GoogleCloudIntegrationsV1alphaIntegrationVersionStatusEnum =
   | "DRAFT"
   | "ACTIVE"
   | "ARCHIVED"
-  | "SNAPSHOT"
-  | (string & {});
+  | "SNAPSHOT";
 export const GoogleCloudIntegrationsV1alphaIntegrationVersionStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3882,16 +3820,14 @@ export type GoogleCloudIntegrationsV1alphaIntegrationVersionStateEnum =
   | "DRAFT"
   | "ACTIVE"
   | "ARCHIVED"
-  | "SNAPSHOT"
-  | (string & {});
+  | "SNAPSHOT";
 export const GoogleCloudIntegrationsV1alphaIntegrationVersionStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationVersionDatabasePersistencePolicyEnum =
     | "DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"
     | "DATABASE_PERSISTENCE_DISABLED"
-    | "DATABASE_PERSISTENCE_ASYNC"
-    | (string & {});
+    | "DATABASE_PERSISTENCE_ASYNC";
 export const GoogleCloudIntegrationsV1alphaIntegrationVersionDatabasePersistencePolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -3925,18 +3861,14 @@ export const GoogleCloudIntegrationsV1alphaErrorCatcherConfig =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>;
 
 export type GoogleCloudIntegrationsV1alphaErrorCatcherConfigList =
-  GoogleCloudIntegrationsV1alphaErrorCatcherConfig[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>;
 export const GoogleCloudIntegrationsV1alphaErrorCatcherConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaErrorCatcherConfig,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaErrorCatcherConfigList>;
 
 export type GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityEnum =
-    | "CLOUD_LOGGING_SEVERITY_UNSPECIFIED"
-    | "INFO"
-    | "ERROR"
-    | "WARNING"
-    | (string & {});
+  "CLOUD_LOGGING_SEVERITY_UNSPECIFIED" | "INFO" | "ERROR" | "WARNING";
 export const GoogleCloudIntegrationsV1alphaCloudLoggingDetailsCloudLoggingSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -3977,7 +3909,7 @@ export const GoogleCloudIntegrationsV1alphaIntegrationConfigParameter =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationConfigParameter>;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationConfigParameterList =
-  GoogleCloudIntegrationsV1alphaIntegrationConfigParameter[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationConfigParameter>;
 export const GoogleCloudIntegrationsV1alphaIntegrationConfigParameterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaIntegrationConfigParameter,
@@ -4134,13 +4066,12 @@ export type GoogleCloudIntegrationsV1alphaMockConfigMockStrategyEnum =
   | "NO_MOCK_STRATEGY"
   | "SPECIFIC_MOCK_STRATEGY"
   | "FAILURE_MOCK_STRATEGY"
-  | "SKIP_MOCK_STRATEGY"
-  | (string & {});
+  | "SKIP_MOCK_STRATEGY";
 export const GoogleCloudIntegrationsV1alphaMockConfigMockStrategyEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIntegrationsV1alphaEventParameterList =
-  GoogleCloudIntegrationsV1alphaEventParameter[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaEventParameter>;
 export const GoogleCloudIntegrationsV1alphaEventParameterList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaEventParameter,
@@ -4176,8 +4107,7 @@ export type GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyEnum =
   | "ASSERT_EQUALS"
   | "ASSERT_NOT_EQUALS"
   | "ASSERT_CONTAINS"
-  | "ASSERT_CONDITION"
-  | (string & {});
+  | "ASSERT_CONDITION";
 export const GoogleCloudIntegrationsV1alphaAssertionAssertionStrategyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4207,7 +4137,7 @@ export const GoogleCloudIntegrationsV1alphaAssertion = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaAssertion>;
 
 export type GoogleCloudIntegrationsV1alphaAssertionList =
-  GoogleCloudIntegrationsV1alphaAssertion[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaAssertion>;
 export const GoogleCloudIntegrationsV1alphaAssertionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaAssertion,
@@ -4240,7 +4170,7 @@ export const GoogleCloudIntegrationsV1alphaTestTaskConfig =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestTaskConfig>;
 
 export type GoogleCloudIntegrationsV1alphaTestTaskConfigList =
-  GoogleCloudIntegrationsV1alphaTestTaskConfig[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaTestTaskConfig>;
 export const GoogleCloudIntegrationsV1alphaTestTaskConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaTestTaskConfig,
@@ -4249,8 +4179,7 @@ export const GoogleCloudIntegrationsV1alphaTestTaskConfigList =
 export type GoogleCloudIntegrationsV1alphaTestCaseDatabasePersistencePolicyEnum =
     | "DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"
     | "DATABASE_PERSISTENCE_DISABLED"
-    | "DATABASE_PERSISTENCE_ASYNC"
-    | (string & {});
+    | "DATABASE_PERSISTENCE_ASYNC";
 export const GoogleCloudIntegrationsV1alphaTestCaseDatabasePersistencePolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -4645,7 +4574,7 @@ export const GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate>;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationVersionTemplateList =
-  GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate>;
 export const GoogleCloudIntegrationsV1alphaIntegrationVersionTemplateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaIntegrationVersionTemplate,
@@ -4676,8 +4605,7 @@ export type GoogleCloudIntegrationsV1alphaTemplateComponentTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "TRIGGER"
   | "TASK"
-  | "CONNECTOR"
-  | (string & {});
+  | "CONNECTOR";
 export const GoogleCloudIntegrationsV1alphaTemplateComponentTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4699,7 +4627,7 @@ export const GoogleCloudIntegrationsV1alphaTemplateComponent =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaTemplateComponent>;
 
 export type GoogleCloudIntegrationsV1alphaTemplateComponentList =
-  GoogleCloudIntegrationsV1alphaTemplateComponent[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaTemplateComponent>;
 export const GoogleCloudIntegrationsV1alphaTemplateComponentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaTemplateComponent,
@@ -4722,13 +4650,12 @@ export type GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnum =
   | "SALES_AND_MARKETING"
   | "UNIVERSAL_CONNECTORS"
   | "UTILITY"
-  | "OTHERS"
-  | (string & {});
+  | "OTHERS";
 export const GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnumList =
-  GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnum[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnum>;
 export const GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaTemplateCategoriesItemEnum,
@@ -4738,8 +4665,7 @@ export type GoogleCloudIntegrationsV1alphaTemplateVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "PRIVATE"
   | "SHARED"
-  | "PUBLIC"
-  | (string & {});
+  | "PUBLIC";
 export const GoogleCloudIntegrationsV1alphaTemplateVisibilityEnum =
   /*@__PURE__*/ S.String;
 
@@ -5124,13 +5050,12 @@ export const DeprovisionProjectsLocationsClientsRequest =
 export type DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnum =
   | "INTEGRATION_FILE_UNSPECIFIED"
   | "INTEGRATION"
-  | "INTEGRATION_CONFIG_VARIABLES"
-  | (string & {});
+  | "INTEGRATION_CONFIG_VARIABLES";
 export const DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnum =
   /*@__PURE__*/ S.String;
 
 export type DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList =
-  DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnum[];
+  ReadonlyArray<DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnum>;
 export const DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnumList =
   /*@__PURE__*/ S.Array(
     DownloadJsonPackageProjectsLocationsIntegrationsVersionsFilesEnum,
@@ -5166,8 +5091,7 @@ export const DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest =
 export type GoogleCloudIntegrationsV1alphaFileTypeEnum =
   | "INTEGRATION_FILE_UNSPECIFIED"
   | "INTEGRATION"
-  | "INTEGRATION_CONFIG_VARIABLES"
-  | (string & {});
+  | "INTEGRATION_CONFIG_VARIABLES";
 export const GoogleCloudIntegrationsV1alphaFileTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -5193,7 +5117,7 @@ export const GoogleCloudIntegrationsV1alphaFile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaFile>;
 
 export type GoogleCloudIntegrationsV1alphaFileList =
-  GoogleCloudIntegrationsV1alphaFile[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaFile>;
 export const GoogleCloudIntegrationsV1alphaFileList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaFile,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaFileList>;
@@ -5248,21 +5172,19 @@ export const GoogleCloudIntegrationsV1alphaDownloadExecutionResponse =
 export type DownloadProjectsLocationsIntegrationsVersionsFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
-  | "YAML"
-  | (string & {});
+  | "YAML";
 export const DownloadProjectsLocationsIntegrationsVersionsFileFormatEnum =
   /*@__PURE__*/ S.String;
 
 export type DownloadProjectsLocationsIntegrationsVersionsFilesEnum =
   | "INTEGRATION_FILE_UNSPECIFIED"
   | "INTEGRATION"
-  | "INTEGRATION_CONFIG_VARIABLES"
-  | (string & {});
+  | "INTEGRATION_CONFIG_VARIABLES";
 export const DownloadProjectsLocationsIntegrationsVersionsFilesEnum =
   /*@__PURE__*/ S.String;
 
 export type DownloadProjectsLocationsIntegrationsVersionsFilesEnumList =
-  DownloadProjectsLocationsIntegrationsVersionsFilesEnum[];
+  ReadonlyArray<DownloadProjectsLocationsIntegrationsVersionsFilesEnum>;
 export const DownloadProjectsLocationsIntegrationsVersionsFilesEnumList =
   /*@__PURE__*/ S.Array(
     DownloadProjectsLocationsIntegrationsVersionsFilesEnum,
@@ -5304,8 +5226,7 @@ export const DownloadProjectsLocationsIntegrationsVersionsRequest =
 export type GoogleCloudIntegrationsV1alphaSerializedFileFileEnum =
   | "INTEGRATION_FILE_UNSPECIFIED"
   | "INTEGRATION"
-  | "INTEGRATION_CONFIG_VARIABLES"
-  | (string & {});
+  | "INTEGRATION_CONFIG_VARIABLES";
 export const GoogleCloudIntegrationsV1alphaSerializedFileFileEnum =
   /*@__PURE__*/ S.String;
 
@@ -5327,7 +5248,7 @@ export const GoogleCloudIntegrationsV1alphaSerializedFile =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaSerializedFile>;
 
 export type GoogleCloudIntegrationsV1alphaSerializedFileList =
-  GoogleCloudIntegrationsV1alphaSerializedFile[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaSerializedFile>;
 export const GoogleCloudIntegrationsV1alphaSerializedFileList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaSerializedFile,
@@ -5352,7 +5273,7 @@ export const GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse>;
 
 export type DownloadProjectsLocationsIntegrationsVersionsTestCasesFileFormatEnum =
-  "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
+  "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML";
 export const DownloadProjectsLocationsIntegrationsVersionsTestCasesFileFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -5417,20 +5338,19 @@ export const DownloadProjectsLocationsProductsIntegrationsExecutionsRequest =
   }) as any as S.Schema<DownloadProjectsLocationsProductsIntegrationsExecutionsRequest>;
 
 export type DownloadProjectsLocationsProductsIntegrationsVersionsFileFormatEnum =
-  "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
+  "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML";
 export const DownloadProjectsLocationsProductsIntegrationsVersionsFileFormatEnum =
   /*@__PURE__*/ S.String;
 
 export type DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum =
   | "INTEGRATION_FILE_UNSPECIFIED"
   | "INTEGRATION"
-  | "INTEGRATION_CONFIG_VARIABLES"
-  | (string & {});
+  | "INTEGRATION_CONFIG_VARIABLES";
 export const DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum =
   /*@__PURE__*/ S.String;
 
 export type DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList =
-  DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum[];
+  ReadonlyArray<DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum>;
 export const DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnumList =
   /*@__PURE__*/ S.Array(
     DownloadProjectsLocationsProductsIntegrationsVersionsFilesEnum,
@@ -5472,8 +5392,7 @@ export const DownloadProjectsLocationsProductsIntegrationsVersionsRequest =
 export type DownloadProjectsLocationsTemplatesFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
-  | "YAML"
-  | (string & {});
+  | "YAML";
 export const DownloadProjectsLocationsTemplatesFileFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -5720,8 +5639,7 @@ export const ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest =
 export type GoogleCloudIntegrationsV1alphaAssertionResultStatusEnum =
   | "ASSERTION_STATUS_UNSPECIFIED"
   | "SUCCEEDED"
-  | "FAILED"
-  | (string & {});
+  | "FAILED";
 export const GoogleCloudIntegrationsV1alphaAssertionResultStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -5754,14 +5672,14 @@ export const GoogleCloudIntegrationsV1alphaAssertionResult =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaAssertionResult>;
 
 export type GoogleCloudIntegrationsV1alphaAssertionResultList =
-  GoogleCloudIntegrationsV1alphaAssertionResult[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaAssertionResult>;
 export const GoogleCloudIntegrationsV1alphaAssertionResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaAssertionResult,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaAssertionResultList>;
 
 export type GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseTestExecutionStateEnum =
-  "STATE_UNSPECIFIED" | "PASSED" | "FAILED" | (string & {});
+  "STATE_UNSPECIFIED" | "PASSED" | "FAILED";
 export const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseTestExecutionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -5793,7 +5711,7 @@ export const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>;
 
 export type GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseList =
-  GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse>;
 export const GoogleCloudIntegrationsV1alphaExecuteTestCaseResponseList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse,
@@ -5898,14 +5816,14 @@ export const GoogleCloudIntegrationsV1alphaApiTriggerResource =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaApiTriggerResource>;
 
 export type GoogleCloudIntegrationsV1alphaApiTriggerResourceList =
-  GoogleCloudIntegrationsV1alphaApiTriggerResource[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaApiTriggerResource>;
 export const GoogleCloudIntegrationsV1alphaApiTriggerResourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaApiTriggerResource,
   ) as any as S.Schema<GoogleCloudIntegrationsV1alphaApiTriggerResourceList>;
 
 export type GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequestFileFormatEnum =
-  "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
+  "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML";
 export const GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecRequestFileFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -5974,8 +5892,7 @@ export type GenerateTokenCallbackProductEnum =
   | "UNSPECIFIED_PRODUCT"
   | "IP"
   | "APIGEE"
-  | "SECURITY"
-  | (string & {});
+  | "SECURITY";
 export const GenerateTokenCallbackProductEnum = /*@__PURE__*/ S.String;
 
 export interface GenerateTokenCallbackRequest {
@@ -6044,8 +5961,7 @@ export type GoogleCloudIntegrationsV1alphaProjectPropertiesIpEnablementStateEnum
     | "IP_ENABLEMENT_STATE_UNSPECIFIED"
     | "IP_ENABLEMENT_STATE_STANDALONE"
     | "IP_ENABLEMENT_STATE_APIGEE"
-    | "IP_ENABLEMENT_STATE_APIGEE_ENTITLED"
-    | (string & {});
+    | "IP_ENABLEMENT_STATE_APIGEE_ENTITLED";
 export const GoogleCloudIntegrationsV1alphaProjectPropertiesIpEnablementStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6055,8 +5971,7 @@ export type GoogleCloudIntegrationsV1alphaProjectPropertiesBillingTypeEnum =
   | "APIGEE_SUBSCRIPTION"
   | "PAYG"
   | "SUBSCRIPTION"
-  | "NO_BILLING"
-  | (string & {});
+  | "NO_BILLING";
 export const GoogleCloudIntegrationsV1alphaProjectPropertiesBillingTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -6120,16 +6035,14 @@ export type GoogleCloudIntegrationsV1alphaClientConfigBillingTypeEnum =
   | "BILLING_TYPE_UNSPECIFIED"
   | "BILLING_TYPE_APIGEE_TRIALS"
   | "BILLING_TYPE_APIGEE_SUBSCRIPTION"
-  | "BILLING_TYPE_PAYG"
-  | (string & {});
+  | "BILLING_TYPE_PAYG";
 export const GoogleCloudIntegrationsV1alphaClientConfigBillingTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIntegrationsV1alphaClientConfigClientStateEnum =
   | "CLIENT_STATE_UNSPECIFIED"
   | "CLIENT_STATE_ACTIVE"
-  | "CLIENT_STATE_DISABLED"
-  | (string & {});
+  | "CLIENT_STATE_DISABLED";
 export const GoogleCloudIntegrationsV1alphaClientConfigClientStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6306,8 +6219,7 @@ export type GoogleCloudIntegrationsV1alphaExecutionExecutionMethodEnum =
   | "EXECUTION_METHOD_UNSPECIFIED"
   | "POST"
   | "POST_TO_QUEUE"
-  | "SCHEDULE"
-  | (string & {});
+  | "SCHEDULE";
 export const GoogleCloudIntegrationsV1alphaExecutionExecutionMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -6319,8 +6231,7 @@ export type EnterpriseCrmEventbusProtoEventExecutionDetailsEventExecutionStateEn
     | "FAILED"
     | "CANCELED"
     | "RETRY_ON_HOLD"
-    | "SUSPENDED"
-    | (string & {});
+    | "SUSPENDED";
 export const EnterpriseCrmEventbusProtoEventExecutionDetailsEventExecutionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6372,8 +6283,7 @@ export type EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskExecutionStateEnum
     | "PENDING_ROLLBACK"
     | "ROLLBACK_IN_PROCESS"
     | "ROLLEDBACK"
-    | "SUSPENDED"
-    | (string & {});
+    | "SUSPENDED";
 export const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskExecutionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6395,7 +6305,7 @@ export const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>;
 
 export type EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStatsList =
-  EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats>;
 export const EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStatsList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoTaskExecutionDetailsTaskAttemptStats,
@@ -6427,7 +6337,7 @@ export const EnterpriseCrmEventbusProtoTaskExecutionDetails =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoTaskExecutionDetails>;
 
 export type EnterpriseCrmEventbusProtoTaskExecutionDetailsList =
-  EnterpriseCrmEventbusProtoTaskExecutionDetails[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoTaskExecutionDetails>;
 export const EnterpriseCrmEventbusProtoTaskExecutionDetailsList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoTaskExecutionDetails,
@@ -6454,7 +6364,7 @@ export const EnterpriseCrmEventbusProtoConditionResult =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoConditionResult>;
 
 export type EnterpriseCrmEventbusProtoConditionResultList =
-  EnterpriseCrmEventbusProtoConditionResult[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoConditionResult>;
 export const EnterpriseCrmEventbusProtoConditionResultList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoConditionResult,
@@ -6516,7 +6426,7 @@ export const EnterpriseCrmEventbusProtoEventExecutionSnapshot =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoEventExecutionSnapshot>;
 
 export type EnterpriseCrmEventbusProtoEventExecutionSnapshotList =
-  EnterpriseCrmEventbusProtoEventExecutionSnapshot[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoEventExecutionSnapshot>;
 export const EnterpriseCrmEventbusProtoEventExecutionSnapshotList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoEventExecutionSnapshot,
@@ -6540,7 +6450,7 @@ export const EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>;
 
 export type EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStatsList =
-  EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats>;
 export const EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStatsList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoEventExecutionDetailsEventAttemptStats,
@@ -6591,7 +6501,7 @@ export const EnterpriseCrmEventbusProtoEventExecutionDetails =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoEventExecutionDetails>;
 
 export type GoogleCloudIntegrationsV1alphaExecutionList =
-  GoogleCloudIntegrationsV1alphaExecution[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaExecution>;
 export const GoogleCloudIntegrationsV1alphaExecutionList =
   /*@__PURE__*/ S.Array(
     S.suspend(() => GoogleCloudIntegrationsV1alphaExecution),
@@ -6605,8 +6515,7 @@ export type GoogleCloudIntegrationsV1alphaExecutionDetailsStateEnum =
   | "FAILED"
   | "CANCELLED"
   | "RETRY_ON_HOLD"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const GoogleCloudIntegrationsV1alphaExecutionDetailsStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6659,8 +6568,7 @@ export type GoogleCloudIntegrationsV1alphaTaskExecutionDetailsTaskExecutionState
     | "PENDING_ROLLBACK"
     | "ROLLBACK_IN_PROCESS"
     | "ROLLEDBACK"
-    | "SUSPENDED"
-    | (string & {});
+    | "SUSPENDED";
 export const GoogleCloudIntegrationsV1alphaTaskExecutionDetailsTaskExecutionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -6682,7 +6590,7 @@ export const GoogleCloudIntegrationsV1alphaAttemptStats =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaAttemptStats>;
 
 export type GoogleCloudIntegrationsV1alphaAttemptStatsList =
-  GoogleCloudIntegrationsV1alphaAttemptStats[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaAttemptStats>;
 export const GoogleCloudIntegrationsV1alphaAttemptStatsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaAttemptStats,
@@ -6713,7 +6621,7 @@ export const GoogleCloudIntegrationsV1alphaTaskExecutionDetails =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaTaskExecutionDetails>;
 
 export type GoogleCloudIntegrationsV1alphaTaskExecutionDetailsList =
-  GoogleCloudIntegrationsV1alphaTaskExecutionDetails[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaTaskExecutionDetails>;
 export const GoogleCloudIntegrationsV1alphaTaskExecutionDetailsList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaTaskExecutionDetails,
@@ -6747,7 +6655,7 @@ export const GoogleCloudIntegrationsV1alphaExecutionSnapshot =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaExecutionSnapshot>;
 
 export type GoogleCloudIntegrationsV1alphaExecutionSnapshotList =
-  GoogleCloudIntegrationsV1alphaExecutionSnapshot[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaExecutionSnapshot>;
 export const GoogleCloudIntegrationsV1alphaExecutionSnapshotList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaExecutionSnapshot,
@@ -6785,16 +6693,14 @@ export type GoogleCloudIntegrationsV1alphaExecutionIntegrationVersionStateEnum =
     | "DRAFT"
     | "ACTIVE"
     | "ARCHIVED"
-    | "SNAPSHOT"
-    | (string & {});
+    | "SNAPSHOT";
 export const GoogleCloudIntegrationsV1alphaExecutionIntegrationVersionStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIntegrationsV1alphaExecutionReplayInfoReplayModeEnum =
   | "REPLAY_MODE_UNSPECIFIED"
   | "REPLAY_MODE_FROM_BEGINNING"
-  | "REPLAY_MODE_POINT_OF_FAILURE"
-  | (string & {});
+  | "REPLAY_MODE_POINT_OF_FAILURE";
 export const GoogleCloudIntegrationsV1alphaExecutionReplayInfoReplayModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7185,7 +7091,7 @@ export const ImportProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ImportProjectsLocationsTemplatesRequest>;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationVersionList =
-  GoogleCloudIntegrationsV1alphaIntegrationVersion[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegrationVersion>;
 export const GoogleCloudIntegrationsV1alphaIntegrationVersionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaIntegrationVersion,
@@ -7375,7 +7281,7 @@ export const ListProjectsLocationsAuthConfigsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsAuthConfigsRequest>;
 
 export type GoogleCloudIntegrationsV1alphaAuthConfigList =
-  GoogleCloudIntegrationsV1alphaAuthConfig[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaAuthConfig>;
 export const GoogleCloudIntegrationsV1alphaAuthConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaAuthConfig,
@@ -7430,7 +7336,7 @@ export const ListProjectsLocationsCertificatesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsCertificatesRequest>;
 
 export type GoogleCloudIntegrationsV1alphaCertificateList =
-  GoogleCloudIntegrationsV1alphaCertificate[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaCertificate>;
 export const GoogleCloudIntegrationsV1alphaCertificateList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaCertificate,
@@ -7492,8 +7398,7 @@ export type GoogleCloudConnectorsV1ConnectionStatusStateEnum =
   | "DELETING"
   | "UPDATING"
   | "ERROR"
-  | "AUTHORIZATION_REQUIRED"
-  | (string & {});
+  | "AUTHORIZATION_REQUIRED";
 export const GoogleCloudConnectorsV1ConnectionStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -7533,8 +7438,7 @@ export const GoogleCloudConnectorsV1Secret = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudConnectorsV1EncryptionKeyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GOOGLE_MANAGED"
-  | "CUSTOMER_MANAGED"
-  | (string & {});
+  | "CUSTOMER_MANAGED";
 export const GoogleCloudConnectorsV1EncryptionKeyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7585,7 +7489,7 @@ export const GoogleCloudConnectorsV1ConfigVariable = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudConnectorsV1ConfigVariable>;
 
 export type GoogleCloudConnectorsV1ConfigVariableList =
-  GoogleCloudConnectorsV1ConfigVariable[];
+  ReadonlyArray<GoogleCloudConnectorsV1ConfigVariable>;
 export const GoogleCloudConnectorsV1ConfigVariableList = /*@__PURE__*/ S.Array(
   GoogleCloudConnectorsV1ConfigVariable,
 ) as any as S.Schema<GoogleCloudConnectorsV1ConfigVariableList>;
@@ -7598,8 +7502,7 @@ export type GoogleCloudConnectorsV1AuthConfigAuthTypeEnum =
   | "SSH_PUBLIC_KEY"
   | "OAUTH2_AUTH_CODE_FLOW"
   | "GOOGLE_AUTHENTICATION"
-  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED"
-  | (string & {});
+  | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
 export const GoogleCloudConnectorsV1AuthConfigAuthTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7835,7 +7738,7 @@ export const GoogleCloudConnectorsV1Destination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudConnectorsV1Destination>;
 
 export type GoogleCloudConnectorsV1DestinationList =
-  GoogleCloudConnectorsV1Destination[];
+  ReadonlyArray<GoogleCloudConnectorsV1Destination>;
 export const GoogleCloudConnectorsV1DestinationList = /*@__PURE__*/ S.Array(
   GoogleCloudConnectorsV1Destination,
 ) as any as S.Schema<GoogleCloudConnectorsV1DestinationList>;
@@ -7858,7 +7761,7 @@ export const GoogleCloudConnectorsV1DestinationConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudConnectorsV1DestinationConfig>;
 
 export type GoogleCloudConnectorsV1DestinationConfigList =
-  GoogleCloudConnectorsV1DestinationConfig[];
+  ReadonlyArray<GoogleCloudConnectorsV1DestinationConfig>;
 export const GoogleCloudConnectorsV1DestinationConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudConnectorsV1DestinationConfig,
@@ -7884,8 +7787,7 @@ export type GoogleCloudConnectorsV1LogConfigLevelEnum =
   | "LOG_LEVEL_UNSPECIFIED"
   | "ERROR"
   | "INFO"
-  | "DEBUG"
-  | (string & {});
+  | "DEBUG";
 export const GoogleCloudConnectorsV1LogConfigLevelEnum = /*@__PURE__*/ S.String;
 
 /** Log configuration for the connection. */
@@ -7907,29 +7809,25 @@ export const GoogleCloudConnectorsV1LogConfig = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudConnectorsV1SslConfigTypeEnum =
   | "SSL_TYPE_UNSPECIFIED"
   | "TLS"
-  | "MTLS"
-  | (string & {});
+  | "MTLS";
 export const GoogleCloudConnectorsV1SslConfigTypeEnum = /*@__PURE__*/ S.String;
 
 export type GoogleCloudConnectorsV1SslConfigTrustModelEnum =
   | "PUBLIC"
   | "PRIVATE"
-  | "INSECURE"
-  | (string & {});
+  | "INSECURE";
 export const GoogleCloudConnectorsV1SslConfigTrustModelEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudConnectorsV1SslConfigServerCertTypeEnum =
   | "CERT_TYPE_UNSPECIFIED"
-  | "PEM"
-  | (string & {});
+  | "PEM";
 export const GoogleCloudConnectorsV1SslConfigServerCertTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudConnectorsV1SslConfigClientCertTypeEnum =
   | "CERT_TYPE_UNSPECIFIED"
-  | "PEM"
-  | (string & {});
+  | "PEM";
 export const GoogleCloudConnectorsV1SslConfigClientCertTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7980,16 +7878,14 @@ export const GoogleCloudConnectorsV1SslConfig = /*@__PURE__*/ S.suspend(() =>
 export type GoogleCloudConnectorsV1ConnectionSubscriptionTypeEnum =
   | "SUBSCRIPTION_TYPE_UNSPECIFIED"
   | "PAY_G"
-  | "PAID"
-  | (string & {});
+  | "PAID";
 export const GoogleCloudConnectorsV1ConnectionSubscriptionTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudConnectorsV1ConnectionEventingEnablementTypeEnum =
   | "EVENTING_ENABLEMENT_TYPE_UNSPECIFIED"
   | "EVENTING_AND_CONNECTION"
-  | "ONLY_EVENTING"
-  | (string & {});
+  | "ONLY_EVENTING";
 export const GoogleCloudConnectorsV1ConnectionEventingEnablementTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -8088,8 +7984,7 @@ export type GoogleCloudConnectorsV1ConnectionConnectorVersionLaunchStageEnum =
   | "GA"
   | "DEPRECATED"
   | "TEST"
-  | "PRIVATE_PREVIEW"
-  | (string & {});
+  | "PRIVATE_PREVIEW";
 export const GoogleCloudConnectorsV1ConnectionConnectorVersionLaunchStageEnum =
   /*@__PURE__*/ S.String;
 
@@ -8097,8 +7992,7 @@ export type GoogleCloudConnectorsV1EventingStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ERROR"
-  | "INGRESS_ENDPOINT_REQUIRED"
-  | (string & {});
+  | "INGRESS_ENDPOINT_REQUIRED";
 export const GoogleCloudConnectorsV1EventingStatusStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -8151,7 +8045,7 @@ export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookData =
   }) as any as S.Schema<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData>;
 
 export type GoogleCloudConnectorsV1EventingRuntimeDataWebhookDataList =
-  GoogleCloudConnectorsV1EventingRuntimeDataWebhookData[];
+  ReadonlyArray<GoogleCloudConnectorsV1EventingRuntimeDataWebhookData>;
 export const GoogleCloudConnectorsV1EventingRuntimeDataWebhookDataList =
   /*@__PURE__*/ S.Array(
     GoogleCloudConnectorsV1EventingRuntimeDataWebhookData,
@@ -8255,7 +8149,7 @@ export const GoogleCloudConnectorsV1ResourceLimits = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudConnectorsV1ResourceLimits>;
 
 export type GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelEnum =
-  "DEPLOYMENT_MODEL_UNSPECIFIED" | "GKE_MST" | "CLOUD_RUN_MST" | (string & {});
+  "DEPLOYMENT_MODEL_UNSPECIFIED" | "GKE_MST" | "CLOUD_RUN_MST";
 export const GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -8264,16 +8158,14 @@ export type GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelMig
     | "IN_PROGRESS"
     | "COMPLETED"
     | "ROLLEDBACK"
-    | "ROLLBACK_IN_PROGRESS"
-    | (string & {});
+    | "ROLLBACK_IN_PROGRESS";
 export const GoogleCloudConnectorsV1ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudConnectorsV1ConnectorVersionInfraConfigTlsMigrationStateEnum =
     | "TLS_MIGRATION_STATE_UNSPECIFIED"
     | "TLS_MIGRATION_NOT_STARTED"
-    | "TLS_MIGRATION_COMPLETED"
-    | (string & {});
+    | "TLS_MIGRATION_COMPLETED";
 export const GoogleCloudConnectorsV1ConnectorVersionInfraConfigTlsMigrationStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -8330,8 +8222,7 @@ export const GoogleCloudConnectorsV1ConnectorVersionInfraConfig =
 export type GoogleCloudConnectorsV1BillingConfigBillingCategoryEnum =
   | "BILLING_CATEGORY_UNSPECIFIED"
   | "GCP_AND_TECHNICAL_CONNECTOR"
-  | "NON_GCP_CONNECTOR"
-  | (string & {});
+  | "NON_GCP_CONNECTOR";
 export const GoogleCloudConnectorsV1BillingConfigBillingCategoryEnum =
   /*@__PURE__*/ S.String;
 
@@ -8369,7 +8260,7 @@ export const GoogleCloudConnectorsV1TrafficShapingConfig =
   }) as any as S.Schema<GoogleCloudConnectorsV1TrafficShapingConfig>;
 
 export type GoogleCloudConnectorsV1TrafficShapingConfigList =
-  GoogleCloudConnectorsV1TrafficShapingConfig[];
+  ReadonlyArray<GoogleCloudConnectorsV1TrafficShapingConfig>;
 export const GoogleCloudConnectorsV1TrafficShapingConfigList =
   /*@__PURE__*/ S.Array(
     GoogleCloudConnectorsV1TrafficShapingConfig,
@@ -8503,7 +8394,7 @@ export const GoogleCloudConnectorsV1Connection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleCloudConnectorsV1Connection>;
 
 export type GoogleCloudConnectorsV1ConnectionList =
-  GoogleCloudConnectorsV1Connection[];
+  ReadonlyArray<GoogleCloudConnectorsV1Connection>;
 export const GoogleCloudConnectorsV1ConnectionList = /*@__PURE__*/ S.Array(
   GoogleCloudConnectorsV1Connection,
 ) as any as S.Schema<GoogleCloudConnectorsV1ConnectionList>;
@@ -8574,7 +8465,7 @@ export const GoogleCloudIntegrationsV1alphaRuntimeActionSchema =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaRuntimeActionSchema>;
 
 export type GoogleCloudIntegrationsV1alphaRuntimeActionSchemaList =
-  GoogleCloudIntegrationsV1alphaRuntimeActionSchema[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaRuntimeActionSchema>;
 export const GoogleCloudIntegrationsV1alphaRuntimeActionSchemaList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaRuntimeActionSchema,
@@ -8649,7 +8540,7 @@ export const GoogleCloudIntegrationsV1alphaRuntimeEntitySchema =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaRuntimeEntitySchema>;
 
 export type GoogleCloudIntegrationsV1alphaRuntimeEntitySchemaList =
-  GoogleCloudIntegrationsV1alphaRuntimeEntitySchema[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaRuntimeEntitySchema>;
 export const GoogleCloudIntegrationsV1alphaRuntimeEntitySchemaList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaRuntimeEntitySchema,
@@ -8739,7 +8630,7 @@ export const GoogleCloudIntegrationsV1alphaIntegration =
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaIntegration>;
 
 export type GoogleCloudIntegrationsV1alphaIntegrationList =
-  GoogleCloudIntegrationsV1alphaIntegration[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaIntegration>;
 export const GoogleCloudIntegrationsV1alphaIntegrationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaIntegration,
@@ -8847,8 +8738,7 @@ export type EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoPostMethodEnum 
     | "POST_TO_QUEUE"
     | "SCHEDULE"
     | "POST_BY_EVENT_CONFIG_ID"
-    | "POST_WITH_EVENT_DETAILS"
-    | (string & {});
+    | "POST_WITH_EVENT_DETAILS";
 export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoPostMethodEnum =
   /*@__PURE__*/ S.String;
 
@@ -8860,8 +8750,7 @@ export type EnterpriseCrmFrontendsEventbusProtoEventExecutionDetailsEventExecuti
     | "FAILED"
     | "CANCELED"
     | "RETRY_ON_HOLD"
-    | "SUSPENDED"
-    | (string & {});
+    | "SUSPENDED";
 export const EnterpriseCrmFrontendsEventbusProtoEventExecutionDetailsEventExecutionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -8915,7 +8804,7 @@ export const EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot =
   }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot>;
 
 export type EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshotList =
-  EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot[];
+  ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot>;
 export const EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshotList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmFrontendsEventbusProtoEventExecutionSnapshot,
@@ -9029,8 +8918,7 @@ export type CrmlogErrorCodeCommonErrorCodeEnum =
   | "UNSANITIZED_USER_INPUT"
   | "TRANSFORM_EXPRESSION_EVALUATION_ERROR"
   | "HTTP_EXCEPTION"
-  | "EXECUTION_CANCELLED"
-  | (string & {});
+  | "EXECUTION_CANCELLED";
 export const CrmlogErrorCodeCommonErrorCodeEnum = /*@__PURE__*/ S.String;
 
 /** Registered ids for errors, as "oneof" enums. Each task or logical grouping of tasks may share the same enum. */
@@ -9049,8 +8937,7 @@ export type EnterpriseCrmEventbusProtoErrorDetailSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARN"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const EnterpriseCrmEventbusProtoErrorDetailSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -9078,7 +8965,7 @@ export const EnterpriseCrmEventbusProtoErrorDetail = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnterpriseCrmEventbusProtoErrorDetail>;
 
 export type EnterpriseCrmEventbusProtoErrorDetailList =
-  EnterpriseCrmEventbusProtoErrorDetail[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoErrorDetail>;
 export const EnterpriseCrmEventbusProtoErrorDetailList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoErrorDetail,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoErrorDetailList>;
@@ -9087,8 +8974,7 @@ export type EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoProductEnum =
   | "UNSPECIFIED_PRODUCT"
   | "IP"
   | "APIGEE"
-  | "SECURITY"
-  | (string & {});
+  | "SECURITY";
 export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoProductEnum =
   /*@__PURE__*/ S.String;
 
@@ -9112,8 +8998,7 @@ export const EnterpriseCrmEventbusProtoExecutionTraceInfo =
 export type EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfoReplayModeEnum =
     | "REPLAY_MODE_UNSPECIFIED"
     | "REPLAY_MODE_FROM_BEGINNING"
-    | "REPLAY_MODE_POINT_OF_FAILURE"
-    | (string & {});
+    | "REPLAY_MODE_POINT_OF_FAILURE";
 export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfoReplayModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -9144,11 +9029,7 @@ export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo =
   }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoReplayInfo>;
 
 export type EnterpriseCrmEventbusProtoCloudLoggingDetailsCloudLoggingSeverityEnum =
-    | "CLOUD_LOGGING_SEVERITY_UNSPECIFIED"
-    | "INFO"
-    | "ERROR"
-    | "WARNING"
-    | (string & {});
+  "CLOUD_LOGGING_SEVERITY_UNSPECIFIED" | "INFO" | "ERROR" | "WARNING";
 export const EnterpriseCrmEventbusProtoCloudLoggingDetailsCloudLoggingSeverityEnum =
   /*@__PURE__*/ S.String;
 
@@ -9265,7 +9146,7 @@ export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo =
   }) as any as S.Schema<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo>;
 
 export type EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoList =
-  EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo[];
+  ReadonlyArray<EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo>;
 export const EnterpriseCrmFrontendsEventbusProtoEventExecutionInfoList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmFrontendsEventbusProtoEventExecutionInfo,
@@ -9328,8 +9209,7 @@ export type GoogleCloudIntegrationsV1alphaSuspensionStateEnum =
   | "RESOLUTION_STATE_UNSPECIFIED"
   | "PENDING"
   | "REJECTED"
-  | "LIFTED"
-  | (string & {});
+  | "LIFTED";
 export const GoogleCloudIntegrationsV1alphaSuspensionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -9390,7 +9270,7 @@ export const EnterpriseCrmEventbusProtoSuspensionAuthPermissions =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoSuspensionAuthPermissions>;
 
 export type EnterpriseCrmEventbusProtoSuspensionAuthPermissionsList =
-  EnterpriseCrmEventbusProtoSuspensionAuthPermissions[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoSuspensionAuthPermissions>;
 export const EnterpriseCrmEventbusProtoSuspensionAuthPermissionsList =
   /*@__PURE__*/ S.Array(
     EnterpriseCrmEventbusProtoSuspensionAuthPermissions,
@@ -9410,7 +9290,7 @@ export const EnterpriseCrmEventbusProtoToken = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnterpriseCrmEventbusProtoToken>;
 
 export type EnterpriseCrmEventbusProtoTokenList =
-  EnterpriseCrmEventbusProtoToken[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoToken>;
 export const EnterpriseCrmEventbusProtoTokenList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoToken,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoTokenList>;
@@ -9455,12 +9335,7 @@ export const EnterpriseCrmEventbusProtoBuganizerNotification =
   }) as any as S.Schema<EnterpriseCrmEventbusProtoBuganizerNotification>;
 
 export type GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequestPriorityEnum =
-    | "UNSPCIFIED"
-    | "SHEDDABLE"
-    | "SHEDDABLE_PLUS"
-    | "CRITICAL"
-    | "CRITICAL_PLUS"
-    | (string & {});
+  "UNSPCIFIED" | "SHEDDABLE" | "SHEDDABLE_PLUS" | "CRITICAL" | "CRITICAL_PLUS";
 export const GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequestPriorityEnum =
   /*@__PURE__*/ S.String;
 
@@ -9556,7 +9431,7 @@ export const EnterpriseCrmEventbusProtoNotification = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<EnterpriseCrmEventbusProtoNotification>;
 
 export type EnterpriseCrmEventbusProtoNotificationList =
-  EnterpriseCrmEventbusProtoNotification[];
+  ReadonlyArray<EnterpriseCrmEventbusProtoNotification>;
 export const EnterpriseCrmEventbusProtoNotificationList = /*@__PURE__*/ S.Array(
   EnterpriseCrmEventbusProtoNotification,
 ) as any as S.Schema<EnterpriseCrmEventbusProtoNotificationList>;
@@ -9691,7 +9566,7 @@ export const GoogleCloudIntegrationsV1alphaSuspension = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudIntegrationsV1alphaSuspension>;
 
 export type GoogleCloudIntegrationsV1alphaSuspensionList =
-  GoogleCloudIntegrationsV1alphaSuspension[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaSuspension>;
 export const GoogleCloudIntegrationsV1alphaSuspensionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaSuspension,
@@ -9805,7 +9680,7 @@ export const ListProjectsLocationsIntegrationsVersionsTestCasesRequest =
   }) as any as S.Schema<ListProjectsLocationsIntegrationsVersionsTestCasesRequest>;
 
 export type GoogleCloudIntegrationsV1alphaTestCaseList =
-  GoogleCloudIntegrationsV1alphaTestCase[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaTestCase>;
 export const GoogleCloudIntegrationsV1alphaTestCaseList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaTestCase,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTestCaseList>;
@@ -10097,7 +9972,7 @@ export const ListProjectsLocationsProductsSfdcInstancesRequest =
   }) as any as S.Schema<ListProjectsLocationsProductsSfdcInstancesRequest>;
 
 export type GoogleCloudIntegrationsV1alphaSfdcInstanceList =
-  GoogleCloudIntegrationsV1alphaSfdcInstance[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaSfdcInstance>;
 export const GoogleCloudIntegrationsV1alphaSfdcInstanceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaSfdcInstance,
@@ -10152,7 +10027,7 @@ export const ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest =
   }) as any as S.Schema<ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest>;
 
 export type GoogleCloudIntegrationsV1alphaSfdcChannelList =
-  GoogleCloudIntegrationsV1alphaSfdcChannel[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaSfdcChannel>;
 export const GoogleCloudIntegrationsV1alphaSfdcChannelList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaSfdcChannel,
@@ -10272,7 +10147,7 @@ export const ListProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsTemplatesRequest>;
 
 export type GoogleCloudIntegrationsV1alphaTemplateList =
-  GoogleCloudIntegrationsV1alphaTemplate[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaTemplate>;
 export const GoogleCloudIntegrationsV1alphaTemplateList = /*@__PURE__*/ S.Array(
   GoogleCloudIntegrationsV1alphaTemplate,
 ) as any as S.Schema<GoogleCloudIntegrationsV1alphaTemplateList>;
@@ -10644,13 +10519,12 @@ export const PatchProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
 export type GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnum =
     | "SAMPLE_INTEGRATIONS_UNSPECIFIED"
     | "SAMPLE_WORKFLOW_ECOM_PROCESSING"
-    | "EXECUTE_CONNECTOR_TOOL_WORKFLOW"
-    | (string & {});
+    | "EXECUTE_CONNECTOR_TOOL_WORKFLOW";
 export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList =
-  GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnum[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnum>;
 export const GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorRequestWorkflowsItemEnum,
@@ -10881,8 +10755,7 @@ export const ReplaceProjectsLocationsClientsRequest = /*@__PURE__*/ S.suspend(
 export type GoogleCloudIntegrationsV1alphaReplayExecutionRequestReplayModeEnum =
     | "REPLAY_MODE_UNSPECIFIED"
     | "REPLAY_MODE_FROM_BEGINNING"
-    | "REPLAY_MODE_POINT_OF_FAILURE"
-    | (string & {});
+    | "REPLAY_MODE_POINT_OF_FAILURE";
 export const GoogleCloudIntegrationsV1alphaReplayExecutionRequestReplayModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -11173,8 +11046,7 @@ export type GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationS
     | "DRAFT"
     | "ACTIVE"
     | "ARCHIVED"
-    | "SNAPSHOT"
-    | (string & {});
+    | "SNAPSHOT";
 export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResultStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -11217,7 +11089,7 @@ export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegration
   }) as any as S.Schema<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult>;
 
 export type GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResultList =
-  GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult[];
+  ReadonlyArray<GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult>;
 export const GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudIntegrationsV1alphaSearchIntegrationsResponseIntegrationSearchResult,
@@ -11787,7 +11659,7 @@ export const UnshareProjectsLocationsTemplatesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UnshareProjectsLocationsTemplatesRequest>;
 
 export type GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequestFileFormatEnum =
-  "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML" | (string & {});
+  "FILE_FORMAT_UNSPECIFIED" | "JSON" | "YAML";
 export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionRequestFileFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -11856,8 +11728,7 @@ export const GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse =
 export type GoogleCloudIntegrationsV1alphaUploadTestCaseRequestFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
-  | "YAML"
-  | (string & {});
+  | "YAML";
 export const GoogleCloudIntegrationsV1alphaUploadTestCaseRequestFileFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -11947,8 +11818,7 @@ export const UploadProjectsLocationsProductsIntegrationsVersionsRequest =
 export type GoogleCloudIntegrationsV1alphaUploadTemplateRequestFileFormatEnum =
   | "FILE_FORMAT_UNSPECIFIED"
   | "JSON"
-  | "YAML"
-  | (string & {});
+  | "YAML";
 export const GoogleCloudIntegrationsV1alphaUploadTemplateRequestFileFormatEnum =
   /*@__PURE__*/ S.String;
 

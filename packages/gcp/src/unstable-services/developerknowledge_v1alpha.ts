@@ -102,7 +102,7 @@ export const CitationSource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CitationSource" }) as any as S.Schema<CitationSource>;
 
-export type CitationSourceList = CitationSource[];
+export type CitationSourceList = ReadonlyArray<CitationSource>;
 export const CitationSourceList = /*@__PURE__*/ S.Array(
   CitationSource,
 ) as any as S.Schema<CitationSourceList>;
@@ -124,7 +124,7 @@ export const AnswerCitation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AnswerCitation" }) as any as S.Schema<AnswerCitation>;
 
-export type AnswerCitationList = AnswerCitation[];
+export type AnswerCitationList = ReadonlyArray<AnswerCitation>;
 export const AnswerCitationList = /*@__PURE__*/ S.Array(
   AnswerCitation,
 ) as any as S.Schema<AnswerCitationList>;
@@ -133,8 +133,7 @@ export type DocumentViewEnum =
   | "DOCUMENT_VIEW_UNSPECIFIED"
   | "DOCUMENT_VIEW_BASIC"
   | "DOCUMENT_VIEW_FULL"
-  | "DOCUMENT_VIEW_CONTENT"
-  | (string & {});
+  | "DOCUMENT_VIEW_CONTENT";
 export const DocumentViewEnum = /*@__PURE__*/ S.String;
 
 /** A Document represents a piece of content from the Developer Knowledge corpus. */
@@ -218,7 +217,7 @@ export const AnswerReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnswerReference",
 }) as any as S.Schema<AnswerReference>;
 
-export type AnswerReferenceList = AnswerReference[];
+export type AnswerReferenceList = ReadonlyArray<AnswerReference>;
 export const AnswerReferenceList = /*@__PURE__*/ S.Array(
   AnswerReference,
 ) as any as S.Schema<AnswerReferenceList>;
@@ -253,7 +252,7 @@ export const AnswerQueryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AnswerQueryResponse",
 }) as any as S.Schema<AnswerQueryResponse>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -262,8 +261,7 @@ export type BatchGetDocumentsViewEnum =
   | "DOCUMENT_VIEW_UNSPECIFIED"
   | "DOCUMENT_VIEW_BASIC"
   | "DOCUMENT_VIEW_FULL"
-  | "DOCUMENT_VIEW_CONTENT"
-  | (string & {});
+  | "DOCUMENT_VIEW_CONTENT";
 export const BatchGetDocumentsViewEnum = /*@__PURE__*/ S.String;
 
 export interface BatchGetDocumentsRequest {
@@ -287,7 +285,7 @@ export const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetDocumentsRequest",
 }) as any as S.Schema<BatchGetDocumentsRequest>;
 
-export type DocumentList = Document[];
+export type DocumentList = ReadonlyArray<Document>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   Document,
 ) as any as S.Schema<DocumentList>;
@@ -309,8 +307,7 @@ export type GetDocumentsViewEnum =
   | "DOCUMENT_VIEW_UNSPECIFIED"
   | "DOCUMENT_VIEW_BASIC"
   | "DOCUMENT_VIEW_FULL"
-  | "DOCUMENT_VIEW_CONTENT"
-  | (string & {});
+  | "DOCUMENT_VIEW_CONTENT";
 export const GetDocumentsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetDocumentsRequest {
@@ -362,7 +359,7 @@ export const SearchDocumentChunksDocumentsRequest = /*@__PURE__*/ S.suspend(
   identifier: "SearchDocumentChunksDocumentsRequest",
 }) as any as S.Schema<SearchDocumentChunksDocumentsRequest>;
 
-export type DocumentChunkList = DocumentChunk[];
+export type DocumentChunkList = ReadonlyArray<DocumentChunk>;
 export const DocumentChunkList = /*@__PURE__*/ S.Array(
   DocumentChunk,
 ) as any as S.Schema<DocumentChunkList>;

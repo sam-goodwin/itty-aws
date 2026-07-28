@@ -103,8 +103,7 @@ export type MediaPropertiesAlignmentEnum =
   | "ALIGNMENT_UNSPECIFIED"
   | "LEFT"
   | "RIGHT"
-  | "CENTER"
-  | (string & {});
+  | "CENTER";
 export const MediaPropertiesAlignmentEnum = /*@__PURE__*/ S.String;
 
 /** Properties of the media. */
@@ -158,16 +157,14 @@ export type ChoiceQuestionTypeEnum =
   | "CHOICE_TYPE_UNSPECIFIED"
   | "RADIO"
   | "CHECKBOX"
-  | "DROP_DOWN"
-  | (string & {});
+  | "DROP_DOWN";
 export const ChoiceQuestionTypeEnum = /*@__PURE__*/ S.String;
 
 export type OptionGoToActionEnum =
   | "GO_TO_ACTION_UNSPECIFIED"
   | "NEXT_SECTION"
   | "RESTART_FORM"
-  | "SUBMIT_FORM"
-  | (string & {});
+  | "SUBMIT_FORM";
 export const OptionGoToActionEnum = /*@__PURE__*/ S.String;
 
 /** An option for a Choice question. */
@@ -193,7 +190,7 @@ export const Option = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Option" }) as any as S.Schema<Option>;
 
-export type OptionList = Option[];
+export type OptionList = ReadonlyArray<Option>;
 export const OptionList = /*@__PURE__*/ S.Array(
   Option,
 ) as any as S.Schema<OptionList>;
@@ -258,12 +255,11 @@ export type FileUploadQuestionTypesItemEnum =
   | "PDF"
   | "IMAGE"
   | "VIDEO"
-  | "AUDIO"
-  | (string & {});
+  | "AUDIO";
 export const FileUploadQuestionTypesItemEnum = /*@__PURE__*/ S.String;
 
 export type FileUploadQuestionTypesItemEnumList =
-  FileUploadQuestionTypesItemEnum[];
+  ReadonlyArray<FileUploadQuestionTypesItemEnum>;
 export const FileUploadQuestionTypesItemEnumList = /*@__PURE__*/ S.Array(
   FileUploadQuestionTypesItemEnum,
 ) as any as S.Schema<FileUploadQuestionTypesItemEnumList>;
@@ -332,7 +328,7 @@ export const ExtraMaterial = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExtraMaterial" }) as any as S.Schema<ExtraMaterial>;
 
-export type ExtraMaterialList = ExtraMaterial[];
+export type ExtraMaterialList = ReadonlyArray<ExtraMaterial>;
 export const ExtraMaterialList = /*@__PURE__*/ S.Array(
   ExtraMaterial,
 ) as any as S.Schema<ExtraMaterialList>;
@@ -362,7 +358,7 @@ export const CorrectAnswer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CorrectAnswer" }) as any as S.Schema<CorrectAnswer>;
 
-export type CorrectAnswerList = CorrectAnswer[];
+export type CorrectAnswerList = ReadonlyArray<CorrectAnswer>;
 export const CorrectAnswerList = /*@__PURE__*/ S.Array(
   CorrectAnswer,
 ) as any as S.Schema<CorrectAnswerList>;
@@ -405,8 +401,7 @@ export type RatingQuestionIconTypeEnum =
   | "RATING_ICON_TYPE_UNSPECIFIED"
   | "STAR"
   | "HEART"
-  | "THUMB_UP"
-  | (string & {});
+  | "THUMB_UP";
 export const RatingQuestionIconTypeEnum = /*@__PURE__*/ S.String;
 
 /** A rating question. The user has a range of icons to choose from. */
@@ -518,7 +513,7 @@ export const PageBreakItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({ identifier: "PageBreakItem" }) as any as S.Schema<PageBreakItem>;
 
-export type QuestionList = Question[];
+export type QuestionList = ReadonlyArray<Question>;
 export const QuestionList = /*@__PURE__*/ S.Array(
   Question,
 ) as any as S.Schema<QuestionList>;
@@ -690,8 +685,7 @@ export type FormSettingsEmailCollectionTypeEnum =
   | "EMAIL_COLLECTION_TYPE_UNSPECIFIED"
   | "DO_NOT_COLLECT"
   | "VERIFIED"
-  | "RESPONDER_INPUT"
-  | (string & {});
+  | "RESPONDER_INPUT";
 export const FormSettingsEmailCollectionTypeEnum = /*@__PURE__*/ S.String;
 
 /** A form's settings. */
@@ -769,7 +763,7 @@ export const Request = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
 
-export type RequestList = Request[];
+export type RequestList = ReadonlyArray<Request>;
 export const RequestList = /*@__PURE__*/ S.Array(
   Request,
 ) as any as S.Schema<RequestList>;
@@ -828,7 +822,7 @@ export const BatchUpdateFormsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchUpdateFormsRequest",
 }) as any as S.Schema<BatchUpdateFormsRequest>;
 
-export type ItemList = Item[];
+export type ItemList = ReadonlyArray<Item>;
 export const ItemList = /*@__PURE__*/ S.Array(
   Item,
 ) as any as S.Schema<ItemList>;
@@ -892,7 +886,7 @@ export const Form = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Form" }) as any as S.Schema<Form>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -924,7 +918,7 @@ export const Response = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
 
-export type ResponseList = Response[];
+export type ResponseList = ReadonlyArray<Response>;
 export const ResponseList = /*@__PURE__*/ S.Array(
   Response,
 ) as any as S.Schema<ResponseList>;
@@ -996,23 +990,17 @@ export const WatchTarget = /*@__PURE__*/ S.suspend(() =>
 export type WatchEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "SCHEMA"
-  | "RESPONSES"
-  | (string & {});
+  | "RESPONSES";
 export const WatchEventTypeEnum = /*@__PURE__*/ S.String;
 
 export type WatchErrorTypeEnum =
   | "ERROR_TYPE_UNSPECIFIED"
   | "PROJECT_NOT_AUTHORIZED"
   | "NO_USER_ACCESS"
-  | "OTHER_ERRORS"
-  | (string & {});
+  | "OTHER_ERRORS";
 export const WatchErrorTypeEnum = /*@__PURE__*/ S.String;
 
-export type WatchStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "SUSPENDED"
-  | (string & {});
+export type WatchStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED";
 export const WatchStateEnum = /*@__PURE__*/ S.String;
 
 /** A watch for events for a form. When the designated event happens, a notification will be published to the specified target. The notification's attributes will include a `formId` key that has the ID of the watched form and an `eventType` key that has the string of the type. Messages are sent with at-least-once delivery and are only dropped in extraordinary circumstances. Typically all notifications should be reliably delivered within a few seconds; however, in some situations notifications may be delayed. A watch expires seven days after it is created unless it is renewed with watches.renew */
@@ -1175,7 +1163,7 @@ export const TextAnswer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextAnswer" }) as any as S.Schema<TextAnswer>;
 
-export type TextAnswerList = TextAnswer[];
+export type TextAnswerList = ReadonlyArray<TextAnswer>;
 export const TextAnswerList = /*@__PURE__*/ S.Array(
   TextAnswer,
 ) as any as S.Schema<TextAnswerList>;
@@ -1210,7 +1198,7 @@ export const FileUploadAnswer = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileUploadAnswer",
 }) as any as S.Schema<FileUploadAnswer>;
 
-export type FileUploadAnswerList = FileUploadAnswer[];
+export type FileUploadAnswerList = ReadonlyArray<FileUploadAnswer>;
 export const FileUploadAnswerList = /*@__PURE__*/ S.Array(
   FileUploadAnswer,
 ) as any as S.Schema<FileUploadAnswerList>;
@@ -1310,7 +1298,7 @@ export const ListFormsResponsesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFormsResponsesRequest",
 }) as any as S.Schema<ListFormsResponsesRequest>;
 
-export type FormResponseList = FormResponse[];
+export type FormResponseList = ReadonlyArray<FormResponse>;
 export const FormResponseList = /*@__PURE__*/ S.Array(
   FormResponse,
 ) as any as S.Schema<FormResponseList>;
@@ -1349,7 +1337,7 @@ export const ListFormsWatchesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListFormsWatchesRequest",
 }) as any as S.Schema<ListFormsWatchesRequest>;
 
-export type WatchList = Watch[];
+export type WatchList = ReadonlyArray<Watch>;
 export const WatchList = /*@__PURE__*/ S.Array(
   Watch,
 ) as any as S.Schema<WatchList>;

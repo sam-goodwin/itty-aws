@@ -87,8 +87,7 @@ export type SuggestionClusterProtoCategoryEnum =
   | "contentLabeling"
   | "touchTargetSize"
   | "lowContrast"
-  | "implementation"
-  | (string & {});
+  | "implementation";
 export const SuggestionClusterProtoCategoryEnum = /*@__PURE__*/ S.String;
 
 /** IMPORTANT: It is unsafe to accept this message from an untrusted source, since it's trivial for an attacker to forge serialized messages that don't fulfill the type's safety contract -- for example, it could contain attacker controlled script. A system which receives a SafeHtmlProto implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe to return this message in RPC responses, but generally unsafe to accept it in RPC requests. */
@@ -106,8 +105,7 @@ export type SuggestionProtoPriorityEnum =
   | "unknownPriority"
   | "error"
   | "warning"
-  | "info"
-  | (string & {});
+  | "info";
 export const SuggestionProtoPriorityEnum = /*@__PURE__*/ S.String;
 
 /** A rectangular region. */
@@ -169,7 +167,7 @@ export const SuggestionProto = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuggestionProto",
 }) as any as S.Schema<SuggestionProto>;
 
-export type SuggestionProtoList = SuggestionProto[];
+export type SuggestionProtoList = ReadonlyArray<SuggestionProto>;
 export const SuggestionProtoList = /*@__PURE__*/ S.Array(
   SuggestionProto,
 ) as any as S.Schema<SuggestionProtoList>;
@@ -190,7 +188,7 @@ export const SuggestionClusterProto = /*@__PURE__*/ S.suspend(() =>
   identifier: "SuggestionClusterProto",
 }) as any as S.Schema<SuggestionClusterProto>;
 
-export type SuggestionClusterProtoList = SuggestionClusterProto[];
+export type SuggestionClusterProtoList = ReadonlyArray<SuggestionClusterProto>;
 export const SuggestionClusterProtoList = /*@__PURE__*/ S.Array(
   SuggestionClusterProto,
 ) as any as S.Schema<SuggestionClusterProtoList>;
@@ -240,7 +238,7 @@ export const PerfSample = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PerfSample" }) as any as S.Schema<PerfSample>;
 
-export type PerfSampleList = PerfSample[];
+export type PerfSampleList = ReadonlyArray<PerfSample>;
 export const PerfSampleList = /*@__PURE__*/ S.Array(
   PerfSample,
 ) as any as S.Schema<PerfSampleList>;
@@ -304,11 +302,7 @@ export const BatchCreatePerfSamplesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreatePerfSamplesResponse",
 }) as any as S.Schema<BatchCreatePerfSamplesResponse>;
 
-export type HistoryTestPlatformEnum =
-  | "unknownPlatform"
-  | "android"
-  | "ios"
-  | (string & {});
+export type HistoryTestPlatformEnum = "unknownPlatform" | "android" | "ios";
 export const HistoryTestPlatformEnum = /*@__PURE__*/ S.String;
 
 /** A History represents a sorted list of Executions ordered by the start_timestamp_millis field (descending). It can be used to group all the Executions of a continuous build. Note that the ordering only operates on one-dimension. If a repository has multiple branches, it means that multiple histories will need to be used in order to order Executions per branch. */
@@ -359,8 +353,7 @@ export type ExecutionStateEnum =
   | "unknownState"
   | "pending"
   | "inProgress"
-  | "complete"
-  | (string & {});
+  | "complete";
 export const ExecutionStateEnum = /*@__PURE__*/ S.String;
 
 /** One dimension of the matrix of different runs of a step. */
@@ -371,7 +364,8 @@ export const MatrixDimensionDefinition = /*@__PURE__*/ S.suspend(() =>
   identifier: "MatrixDimensionDefinition",
 }) as any as S.Schema<MatrixDimensionDefinition>;
 
-export type MatrixDimensionDefinitionList = MatrixDimensionDefinition[];
+export type MatrixDimensionDefinitionList =
+  ReadonlyArray<MatrixDimensionDefinition>;
 export const MatrixDimensionDefinitionList = /*@__PURE__*/ S.Array(
   MatrixDimensionDefinition,
 ) as any as S.Schema<MatrixDimensionDefinitionList>;
@@ -480,7 +474,7 @@ export const AndroidRoboTest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AndroidRoboTest",
 }) as any as S.Schema<AndroidRoboTest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -598,8 +592,7 @@ export type OutcomeSummaryEnum =
   | "failure"
   | "inconclusive"
   | "skipped"
-  | "flaky"
-  | (string & {});
+  | "flaky";
 export const OutcomeSummaryEnum = /*@__PURE__*/ S.String;
 
 /** Details for an outcome with a SUCCESS outcome summary. LINT.IfChange */
@@ -748,8 +741,7 @@ export type StepStateEnum =
   | "unknownState"
   | "pending"
   | "inProgress"
-  | "complete"
-  | (string & {});
+  | "complete";
 export const StepStateEnum = /*@__PURE__*/ S.String;
 
 /** A reference to a file. */
@@ -797,7 +789,7 @@ export const TestSuiteOverview = /*@__PURE__*/ S.suspend(() =>
   identifier: "TestSuiteOverview",
 }) as any as S.Schema<TestSuiteOverview>;
 
-export type TestSuiteOverviewList = TestSuiteOverview[];
+export type TestSuiteOverviewList = ReadonlyArray<TestSuiteOverview>;
 export const TestSuiteOverviewList = /*@__PURE__*/ S.Array(
   TestSuiteOverview,
 ) as any as S.Schema<TestSuiteOverviewList>;
@@ -840,12 +832,12 @@ export const ToolOutputReference = /*@__PURE__*/ S.suspend(() =>
   identifier: "ToolOutputReference",
 }) as any as S.Schema<ToolOutputReference>;
 
-export type ToolOutputReferenceList = ToolOutputReference[];
+export type ToolOutputReferenceList = ReadonlyArray<ToolOutputReference>;
 export const ToolOutputReferenceList = /*@__PURE__*/ S.Array(
   ToolOutputReference,
 ) as any as S.Schema<ToolOutputReferenceList>;
 
-export type FileReferenceList = FileReference[];
+export type FileReferenceList = ReadonlyArray<FileReference>;
 export const FileReferenceList = /*@__PURE__*/ S.Array(
   FileReference,
 ) as any as S.Schema<FileReferenceList>;
@@ -915,8 +907,7 @@ export type TestIssueTypeEnum =
   | "logcatCollectionError"
   | "detectedAppSplashScreen"
   | "assetIssue"
-  | "licensingProtectionTermination"
-  | (string & {});
+  | "licensingProtectionTermination";
 export const TestIssueTypeEnum = /*@__PURE__*/ S.String;
 
 /** `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" } */
@@ -949,15 +940,10 @@ export type TestIssueSeverityEnum =
   | "info"
   | "suggestion"
   | "warning"
-  | "severe"
-  | (string & {});
+  | "severe";
 export const TestIssueSeverityEnum = /*@__PURE__*/ S.String;
 
-export type TestIssueCategoryEnum =
-  | "unspecifiedCategory"
-  | "common"
-  | "robo"
-  | (string & {});
+export type TestIssueCategoryEnum = "unspecifiedCategory" | "common" | "robo";
 export const TestIssueCategoryEnum = /*@__PURE__*/ S.String;
 
 /** An issue detected occurring during a test execution. */
@@ -986,7 +972,7 @@ export const TestIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TestIssue" }) as any as S.Schema<TestIssue>;
 
-export type TestIssueList = TestIssue[];
+export type TestIssueList = ReadonlyArray<TestIssue>;
 export const TestIssueList = /*@__PURE__*/ S.Array(
   TestIssue,
 ) as any as S.Schema<TestIssueList>;
@@ -1037,7 +1023,7 @@ export const StepLabelsEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "StepLabelsEntry",
 }) as any as S.Schema<StepLabelsEntry>;
 
-export type StepLabelsEntryList = StepLabelsEntry[];
+export type StepLabelsEntryList = ReadonlyArray<StepLabelsEntry>;
 export const StepLabelsEntryList = /*@__PURE__*/ S.Array(
   StepLabelsEntry,
 ) as any as S.Schema<StepLabelsEntryList>;
@@ -1055,7 +1041,8 @@ export const StepDimensionValueEntry = /*@__PURE__*/ S.suspend(() =>
   identifier: "StepDimensionValueEntry",
 }) as any as S.Schema<StepDimensionValueEntry>;
 
-export type StepDimensionValueEntryList = StepDimensionValueEntry[];
+export type StepDimensionValueEntryList =
+  ReadonlyArray<StepDimensionValueEntry>;
 export const StepDimensionValueEntryList = /*@__PURE__*/ S.Array(
   StepDimensionValueEntry,
 ) as any as S.Schema<StepDimensionValueEntryList>;
@@ -1079,8 +1066,7 @@ export type PrimaryStepRollUpEnum =
   | "failure"
   | "inconclusive"
   | "skipped"
-  | "flaky"
-  | (string & {});
+  | "flaky";
 export const PrimaryStepRollUpEnum = /*@__PURE__*/ S.String;
 
 export type IndividualOutcomeOutcomeSummaryEnum =
@@ -1089,8 +1075,7 @@ export type IndividualOutcomeOutcomeSummaryEnum =
   | "failure"
   | "inconclusive"
   | "skipped"
-  | "flaky"
-  | (string & {});
+  | "flaky";
 export const IndividualOutcomeOutcomeSummaryEnum = /*@__PURE__*/ S.String;
 
 /** Step Id and outcome of each individual step that was run as a group with other steps with the same configuration. */
@@ -1113,7 +1098,7 @@ export const IndividualOutcome = /*@__PURE__*/ S.suspend(() =>
   identifier: "IndividualOutcome",
 }) as any as S.Schema<IndividualOutcome>;
 
-export type IndividualOutcomeList = IndividualOutcome[];
+export type IndividualOutcomeList = ReadonlyArray<IndividualOutcome>;
 export const IndividualOutcomeList = /*@__PURE__*/ S.Array(
   IndividualOutcome,
 ) as any as S.Schema<IndividualOutcomeList>;
@@ -1238,12 +1223,11 @@ export type PerfMetricsSummaryPerfMetricsItemEnum =
   | "memory"
   | "cpu"
   | "network"
-  | "graphics"
-  | (string & {});
+  | "graphics";
 export const PerfMetricsSummaryPerfMetricsItemEnum = /*@__PURE__*/ S.String;
 
 export type PerfMetricsSummaryPerfMetricsItemEnumList =
-  PerfMetricsSummaryPerfMetricsItemEnum[];
+  ReadonlyArray<PerfMetricsSummaryPerfMetricsItemEnum>;
 export const PerfMetricsSummaryPerfMetricsItemEnumList = /*@__PURE__*/ S.Array(
   PerfMetricsSummaryPerfMetricsItemEnum,
 ) as any as S.Schema<PerfMetricsSummaryPerfMetricsItemEnumList>;
@@ -1263,7 +1247,7 @@ export const GraphicsStatsBucket = /*@__PURE__*/ S.suspend(() =>
   identifier: "GraphicsStatsBucket",
 }) as any as S.Schema<GraphicsStatsBucket>;
 
-export type GraphicsStatsBucketList = GraphicsStatsBucket[];
+export type GraphicsStatsBucketList = ReadonlyArray<GraphicsStatsBucket>;
 export const GraphicsStatsBucketList = /*@__PURE__*/ S.Array(
   GraphicsStatsBucket,
 ) as any as S.Schema<GraphicsStatsBucketList>;
@@ -1448,8 +1432,7 @@ export type BasicPerfSampleSeriesSampleSeriesLabelEnum =
   | "ntBytesReceived"
   | "networkSent"
   | "networkReceived"
-  | "graphicsFrameRate"
-  | (string & {});
+  | "graphicsFrameRate";
 export const BasicPerfSampleSeriesSampleSeriesLabelEnum =
   /*@__PURE__*/ S.String;
 
@@ -1459,8 +1442,7 @@ export type BasicPerfSampleSeriesPerfUnitEnum =
   | "percent"
   | "bytesPerSecond"
   | "framesPerSecond"
-  | "byte"
-  | (string & {});
+  | "byte";
 export const BasicPerfSampleSeriesPerfUnitEnum = /*@__PURE__*/ S.String;
 
 export type BasicPerfSampleSeriesPerfMetricTypeEnum =
@@ -1468,8 +1450,7 @@ export type BasicPerfSampleSeriesPerfMetricTypeEnum =
   | "memory"
   | "cpu"
   | "network"
-  | "graphics"
-  | (string & {});
+  | "graphics";
 export const BasicPerfSampleSeriesPerfMetricTypeEnum = /*@__PURE__*/ S.String;
 
 /** Encapsulates the metadata for basic sample series represented by a line chart */
@@ -1668,7 +1649,7 @@ export const Screen = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Screen" }) as any as S.Schema<Screen>;
 
-export type ScreenList = Screen[];
+export type ScreenList = ReadonlyArray<Screen>;
 export const ScreenList = /*@__PURE__*/ S.Array(
   Screen,
 ) as any as S.Schema<ScreenList>;
@@ -1740,8 +1721,7 @@ export type MergedResultStateEnum =
   | "unknownState"
   | "pending"
   | "inProgress"
-  | "complete"
-  | (string & {});
+  | "complete";
 export const MergedResultStateEnum = /*@__PURE__*/ S.String;
 
 /** Merged test result for environment. If the environment has only one step (no reruns or shards), then the merged result is the same as the step result. If the environment has multiple shards and/or reruns, then the results of shards and reruns that belong to the same environment are merged into one environment result. */
@@ -1775,7 +1755,7 @@ export const EnvironmentDimensionValueEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentDimensionValueEntry>;
 
 export type EnvironmentDimensionValueEntryList =
-  EnvironmentDimensionValueEntry[];
+  ReadonlyArray<EnvironmentDimensionValueEntry>;
 export const EnvironmentDimensionValueEntryList = /*@__PURE__*/ S.Array(
   EnvironmentDimensionValueEntry,
 ) as any as S.Schema<EnvironmentDimensionValueEntryList>;
@@ -1786,7 +1766,7 @@ export const StepSummary = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
   { identifier: "StepSummary" },
 ) as any as S.Schema<StepSummary>;
 
-export type StepSummaryList = StepSummary[];
+export type StepSummaryList = ReadonlyArray<StepSummary>;
 export const StepSummaryList = /*@__PURE__*/ S.Array(
   StepSummary,
 ) as any as S.Schema<StepSummaryList>;
@@ -1805,7 +1785,7 @@ export const ShardSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ShardSummary" }) as any as S.Schema<ShardSummary>;
 
-export type ShardSummaryList = ShardSummary[];
+export type ShardSummaryList = ReadonlyArray<ShardSummary>;
 export const ShardSummaryList = /*@__PURE__*/ S.Array(
   ShardSummary,
 ) as any as S.Schema<ShardSummaryList>;
@@ -1941,7 +1921,7 @@ export const GetProjectsHistoriesExecutionsStepsTestCasesRequest =
     identifier: "GetProjectsHistoriesExecutionsStepsTestCasesRequest",
   }) as any as S.Schema<GetProjectsHistoriesExecutionsStepsTestCasesRequest>;
 
-export type StackTraceList = StackTrace[];
+export type StackTraceList = ReadonlyArray<StackTrace>;
 export const StackTraceList = /*@__PURE__*/ S.Array(
   StackTrace,
 ) as any as S.Schema<StackTraceList>;
@@ -1951,8 +1931,7 @@ export type TestCaseStatusEnum =
   | "failed"
   | "error"
   | "skipped"
-  | "flaky"
-  | (string & {});
+  | "flaky";
 export const TestCaseStatusEnum = /*@__PURE__*/ S.String;
 
 export interface TestCase {
@@ -2068,7 +2047,7 @@ export const ListProjectsHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsHistoriesRequest",
 }) as any as S.Schema<ListProjectsHistoriesRequest>;
 
-export type HistoryList = History[];
+export type HistoryList = ReadonlyArray<History>;
 export const HistoryList = /*@__PURE__*/ S.Array(
   History,
 ) as any as S.Schema<HistoryList>;
@@ -2117,7 +2096,7 @@ export const ListProjectsHistoriesExecutionsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsHistoriesExecutionsRequest",
 }) as any as S.Schema<ListProjectsHistoriesExecutionsRequest>;
 
-export type ExecutionList = Execution[];
+export type ExecutionList = ReadonlyArray<Execution>;
 export const ExecutionList = /*@__PURE__*/ S.Array(
   Execution,
 ) as any as S.Schema<ExecutionList>;
@@ -2162,7 +2141,7 @@ export const ListProjectsHistoriesExecutionsClustersRequest =
     identifier: "ListProjectsHistoriesExecutionsClustersRequest",
   }) as any as S.Schema<ListProjectsHistoriesExecutionsClustersRequest>;
 
-export type ScreenshotClusterList = ScreenshotCluster[];
+export type ScreenshotClusterList = ReadonlyArray<ScreenshotCluster>;
 export const ScreenshotClusterList = /*@__PURE__*/ S.Array(
   ScreenshotCluster,
 ) as any as S.Schema<ScreenshotClusterList>;
@@ -2210,7 +2189,7 @@ export const ListProjectsHistoriesExecutionsEnvironmentsRequest =
     identifier: "ListProjectsHistoriesExecutionsEnvironmentsRequest",
   }) as any as S.Schema<ListProjectsHistoriesExecutionsEnvironmentsRequest>;
 
-export type EnvironmentList = Environment[];
+export type EnvironmentList = ReadonlyArray<Environment>;
 export const EnvironmentList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<EnvironmentList>;
@@ -2271,7 +2250,7 @@ export const ListProjectsHistoriesExecutionsStepsRequest =
     identifier: "ListProjectsHistoriesExecutionsStepsRequest",
   }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsRequest>;
 
-export type StepList = Step[];
+export type StepList = ReadonlyArray<Step>;
 export const StepList = /*@__PURE__*/ S.Array(
   Step,
 ) as any as S.Schema<StepList>;
@@ -2297,13 +2276,12 @@ export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum =
   | "memory"
   | "cpu"
   | "network"
-  | "graphics"
-  | (string & {});
+  | "graphics";
 export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList =
-  ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum[];
+  ReadonlyArray<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum>;
 export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsHistoriesExecutionsStepsPerfSampleSeriesFilterEnum,
@@ -2344,7 +2322,7 @@ export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest =
     identifier: "ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest",
   }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest>;
 
-export type PerfSampleSeriesList = PerfSampleSeries[];
+export type PerfSampleSeriesList = ReadonlyArray<PerfSampleSeries>;
 export const PerfSampleSeriesList = /*@__PURE__*/ S.Array(
   PerfSampleSeries,
 ) as any as S.Schema<PerfSampleSeriesList>;
@@ -2447,7 +2425,7 @@ export const ListProjectsHistoriesExecutionsStepsTestCasesRequest =
     identifier: "ListProjectsHistoriesExecutionsStepsTestCasesRequest",
   }) as any as S.Schema<ListProjectsHistoriesExecutionsStepsTestCasesRequest>;
 
-export type TestCaseList = TestCase[];
+export type TestCaseList = ReadonlyArray<TestCase>;
 export const TestCaseList = /*@__PURE__*/ S.Array(
   TestCase,
 ) as any as S.Schema<TestCaseList>;
@@ -2507,7 +2485,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2569,7 +2547,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
-export type ImageList = Image[];
+export type ImageList = ReadonlyArray<Image>;
 export const ImageList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageList>;

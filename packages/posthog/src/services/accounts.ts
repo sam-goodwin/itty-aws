@@ -87,21 +87,14 @@ export const AccountsCreateRequestProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsCreateRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
-export type AccountsCreateRequestTagsList = string[];
+export type AccountsCreateRequestTagsList = ReadonlyArray<string>;
 export const AccountsCreateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsCreateRequestTagsList>;
 
-/** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
-export type AccountsCreateRequestNotebooksList = string[];
-export const AccountsCreateRequestNotebooksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountsCreateRequestNotebooksList>;
-
 export interface AccountsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  id: string;
   /** Human-readable name of the account. */
   name: string;
   /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
@@ -110,24 +103,14 @@ export interface AccountsCreateRequest {
   properties?: AccountsCreateRequestProperties | null;
   /** Tag names attached to the account. Pass a list to replace existing tags. */
   tags?: AccountsCreateRequestTagsList;
-  /** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
-  notebooks: AccountsCreateRequestNotebooksList;
-  created_at: string;
-  created_by: number | null;
-  updated_at: string | null;
 }
 export const AccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    id: S.String,
     name: S.String,
     external_id: S.optional(S.NullOr(S.String)),
     properties: S.optional(S.NullOr(AccountsCreateRequestProperties)),
     tags: S.optional(AccountsCreateRequestTagsList),
-    notebooks: AccountsCreateRequestNotebooksList,
-    created_at: S.String,
-    created_by: S.NullOr(S.Number),
-    updated_at: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -209,13 +192,13 @@ export const AccountProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
-export type AccountTagsList = string[];
+export type AccountTagsList = ReadonlyArray<string>;
 export const AccountTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountTagsList>;
 
 /** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
-export type AccountNotebooksList = string[];
+export type AccountNotebooksList = ReadonlyArray<string>;
 export const AccountNotebooksList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountNotebooksList>;
@@ -285,8 +268,7 @@ export type AccountsListRequestOrdering =
   | "-updated_at"
   | "created_at"
   | "name"
-  | "updated_at"
-  | (string & {});
+  | "updated_at";
 export const AccountsListRequestOrdering = /*@__PURE__*/ S.String;
 
 export interface AccountsListRequest {
@@ -334,7 +316,7 @@ export const AccountsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsListRequest",
 }) as any as S.Schema<AccountsListRequest>;
 
-export type PaginatedAccountListResultsList = Account[];
+export type PaginatedAccountListResultsList = ReadonlyArray<Account>;
 export const PaginatedAccountListResultsList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<PaginatedAccountListResultsList>;
@@ -434,16 +416,10 @@ export const AccountsPartialUpdateRequestProperties = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountsPartialUpdateRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
-export type AccountsPartialUpdateRequestTagsList = string[];
+export type AccountsPartialUpdateRequestTagsList = ReadonlyArray<string>;
 export const AccountsPartialUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsPartialUpdateRequestTagsList>;
-
-/** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
-export type AccountsPartialUpdateRequestNotebooksList = string[];
-export const AccountsPartialUpdateRequestNotebooksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountsPartialUpdateRequestNotebooksList>;
 
 export interface AccountsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -458,11 +434,6 @@ export interface AccountsPartialUpdateRequest {
   properties?: AccountsPartialUpdateRequestProperties | null;
   /** Tag names attached to the account. Pass a list to replace existing tags. */
   tags?: AccountsPartialUpdateRequestTagsList;
-  /** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
-  notebooks?: AccountsPartialUpdateRequestNotebooksList;
-  created_at?: string;
-  created_by?: number | null;
-  updated_at?: string | null;
 }
 export const AccountsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -472,10 +443,6 @@ export const AccountsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     external_id: S.optional(S.NullOr(S.String)),
     properties: S.optional(S.NullOr(AccountsPartialUpdateRequestProperties)),
     tags: S.optional(AccountsPartialUpdateRequestTagsList),
-    notebooks: S.optional(AccountsPartialUpdateRequestNotebooksList),
-    created_at: S.optional(S.String),
-    created_by: S.optional(S.NullOr(S.Number)),
-    updated_at: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -584,16 +551,10 @@ export const AccountsUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsUpdateRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
-export type AccountsUpdateRequestTagsList = string[];
+export type AccountsUpdateRequestTagsList = ReadonlyArray<string>;
 export const AccountsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountsUpdateRequestTagsList>;
-
-/** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
-export type AccountsUpdateRequestNotebooksList = string[];
-export const AccountsUpdateRequestNotebooksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AccountsUpdateRequestNotebooksList>;
 
 export interface AccountsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -608,11 +569,6 @@ export interface AccountsUpdateRequest {
   properties?: AccountsUpdateRequestProperties | null;
   /** Tag names attached to the account. Pass a list to replace existing tags. */
   tags?: AccountsUpdateRequestTagsList;
-  /** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
-  notebooks: AccountsUpdateRequestNotebooksList;
-  created_at: string;
-  created_by: number | null;
-  updated_at: string | null;
 }
 export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -622,10 +578,6 @@ export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     external_id: S.optional(S.NullOr(S.String)),
     properties: S.optional(S.NullOr(AccountsUpdateRequestProperties)),
     tags: S.optional(AccountsUpdateRequestTagsList),
-    notebooks: AccountsUpdateRequestNotebooksList,
-    created_at: S.String,
-    created_by: S.NullOr(S.Number),
-    updated_at: S.NullOr(S.String),
   }).pipe(
     T.Http({
       method: "PUT",

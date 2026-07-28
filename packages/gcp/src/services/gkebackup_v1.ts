@@ -170,7 +170,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -226,8 +226,7 @@ export type BackupPlanStateEnum =
   | "READY"
   | "FAILED"
   | "DEACTIVATED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const BackupPlanStateEnum = /*@__PURE__*/ S.String;
 
 /** Defined a customer managed encryption key that will be used to encrypt Backup artifacts. */
@@ -241,7 +240,7 @@ export const EncryptionKey = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EncryptionKey" }) as any as S.Schema<EncryptionKey>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -271,7 +270,7 @@ export const NamespacedName = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NamespacedName" }) as any as S.Schema<NamespacedName>;
 
-export type NamespacedNameList = NamespacedName[];
+export type NamespacedNameList = ReadonlyArray<NamespacedName>;
 export const NamespacedNameList = /*@__PURE__*/ S.Array(
   NamespacedName,
 ) as any as S.Schema<NamespacedNameList>;
@@ -303,7 +302,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
-export type LabelList = Label[];
+export type LabelList = ReadonlyArray<Label>;
 export const LabelList = /*@__PURE__*/ S.Array(
   Label,
 ) as any as S.Schema<LabelList>;
@@ -396,12 +395,11 @@ export type DayOfWeekListDaysOfWeekItemEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const DayOfWeekListDaysOfWeekItemEnum = /*@__PURE__*/ S.String;
 
 export type DayOfWeekListDaysOfWeekItemEnumList =
-  DayOfWeekListDaysOfWeekItemEnum[];
+  ReadonlyArray<DayOfWeekListDaysOfWeekItemEnum>;
 export const DayOfWeekListDaysOfWeekItemEnumList = /*@__PURE__*/ S.Array(
   DayOfWeekListDaysOfWeekItemEnum,
 ) as any as S.Schema<DayOfWeekListDaysOfWeekItemEnumList>;
@@ -442,7 +440,7 @@ export const ExclusionWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExclusionWindow",
 }) as any as S.Schema<ExclusionWindow>;
 
-export type ExclusionWindowList = ExclusionWindow[];
+export type ExclusionWindowList = ReadonlyArray<ExclusionWindow>;
 export const ExclusionWindowList = /*@__PURE__*/ S.Array(
   ExclusionWindow,
 ) as any as S.Schema<ExclusionWindowList>;
@@ -599,8 +597,7 @@ export type BackupStateEnum =
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | "FAILED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const BackupStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about the GKE cluster from which this Backup was created. */
@@ -842,16 +839,14 @@ export type RestoreConfigNamespacedResourceRestoreModeEnum =
   | "FAIL_ON_CONFLICT"
   | "MERGE_SKIP_ON_CONFLICT"
   | "MERGE_REPLACE_VOLUME_ON_CONFLICT"
-  | "MERGE_REPLACE_ON_CONFLICT"
-  | (string & {});
+  | "MERGE_REPLACE_ON_CONFLICT";
 export const RestoreConfigNamespacedResourceRestoreModeEnum =
   /*@__PURE__*/ S.String;
 
 export type RestoreConfigClusterResourceConflictPolicyEnum =
   | "CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED"
   | "USE_EXISTING_VERSION"
-  | "USE_BACKUP_VERSION"
-  | (string & {});
+  | "USE_BACKUP_VERSION";
 export const RestoreConfigClusterResourceConflictPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -869,7 +864,7 @@ export const GroupKind = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupKind" }) as any as S.Schema<GroupKind>;
 
-export type GroupKindList = GroupKind[];
+export type GroupKindList = ReadonlyArray<GroupKind>;
 export const GroupKindList = /*@__PURE__*/ S.Array(
   GroupKind,
 ) as any as S.Schema<GroupKindList>;
@@ -921,7 +916,7 @@ export const SubstitutionRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubstitutionRule",
 }) as any as S.Schema<SubstitutionRule>;
 
-export type SubstitutionRuleList = SubstitutionRule[];
+export type SubstitutionRuleList = ReadonlyArray<SubstitutionRule>;
 export const SubstitutionRuleList = /*@__PURE__*/ S.Array(
   SubstitutionRule,
 ) as any as S.Schema<SubstitutionRuleList>;
@@ -950,8 +945,7 @@ export type TransformationRuleActionOpEnum =
   | "COPY"
   | "ADD"
   | "TEST"
-  | "REPLACE"
-  | (string & {});
+  | "REPLACE";
 export const TransformationRuleActionOpEnum = /*@__PURE__*/ S.String;
 
 /** TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC (https://www.rfc-editor.org/rfc/rfc6902) */
@@ -976,7 +970,8 @@ export const TransformationRuleAction = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransformationRuleAction",
 }) as any as S.Schema<TransformationRuleAction>;
 
-export type TransformationRuleActionList = TransformationRuleAction[];
+export type TransformationRuleActionList =
+  ReadonlyArray<TransformationRuleAction>;
 export const TransformationRuleActionList = /*@__PURE__*/ S.Array(
   TransformationRuleAction,
 ) as any as S.Schema<TransformationRuleActionList>;
@@ -1000,7 +995,7 @@ export const TransformationRule = /*@__PURE__*/ S.suspend(() =>
   identifier: "TransformationRule",
 }) as any as S.Schema<TransformationRule>;
 
-export type TransformationRuleList = TransformationRule[];
+export type TransformationRuleList = ReadonlyArray<TransformationRule>;
 export const TransformationRuleList = /*@__PURE__*/ S.Array(
   TransformationRule,
 ) as any as S.Schema<TransformationRuleList>;
@@ -1021,7 +1016,7 @@ export const GroupKindDependency = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupKindDependency",
 }) as any as S.Schema<GroupKindDependency>;
 
-export type GroupKindDependencyList = GroupKindDependency[];
+export type GroupKindDependencyList = ReadonlyArray<GroupKindDependency>;
 export const GroupKindDependencyList = /*@__PURE__*/ S.Array(
   GroupKindDependency,
 ) as any as S.Schema<GroupKindDependencyList>;
@@ -1041,22 +1036,19 @@ export type RestoreConfigVolumeDataRestorePolicyEnum =
   | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
   | "RESTORE_VOLUME_DATA_FROM_BACKUP"
   | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
-  | "NO_VOLUME_DATA_RESTORATION"
-  | (string & {});
+  | "NO_VOLUME_DATA_RESTORATION";
 export const RestoreConfigVolumeDataRestorePolicyEnum = /*@__PURE__*/ S.String;
 
 export type VolumeDataRestorePolicyBindingPolicyEnum =
   | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
   | "RESTORE_VOLUME_DATA_FROM_BACKUP"
   | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
-  | "NO_VOLUME_DATA_RESTORATION"
-  | (string & {});
+  | "NO_VOLUME_DATA_RESTORATION";
 export const VolumeDataRestorePolicyBindingPolicyEnum = /*@__PURE__*/ S.String;
 
 export type VolumeDataRestorePolicyBindingVolumeTypeEnum =
   | "VOLUME_TYPE_UNSPECIFIED"
-  | "GCE_PERSISTENT_DISK"
-  | (string & {});
+  | "GCE_PERSISTENT_DISK";
 export const VolumeDataRestorePolicyBindingVolumeTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1077,7 +1069,7 @@ export const VolumeDataRestorePolicyBinding = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeDataRestorePolicyBinding>;
 
 export type VolumeDataRestorePolicyBindingList =
-  VolumeDataRestorePolicyBinding[];
+  ReadonlyArray<VolumeDataRestorePolicyBinding>;
 export const VolumeDataRestorePolicyBindingList = /*@__PURE__*/ S.Array(
   VolumeDataRestorePolicyBinding,
 ) as any as S.Schema<VolumeDataRestorePolicyBindingList>;
@@ -1142,8 +1134,7 @@ export type RestorePlanStateEnum =
   | "CLUSTER_PENDING"
   | "READY"
   | "FAILED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const RestorePlanStateEnum = /*@__PURE__*/ S.String;
 
 /** The configuration of a potential series of Restore operations to be performed against Backups belong to a particular BackupPlan. */
@@ -1225,16 +1216,14 @@ export type RestoreStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "DELETING"
-  | "VALIDATING"
-  | (string & {});
+  | "VALIDATING";
 export const RestoreStateEnum = /*@__PURE__*/ S.String;
 
 export type VolumeDataRestorePolicyOverridePolicyEnum =
   | "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
   | "RESTORE_VOLUME_DATA_FROM_BACKUP"
   | "REUSE_VOLUME_HANDLE_FROM_BACKUP"
-  | "NO_VOLUME_DATA_RESTORATION"
-  | (string & {});
+  | "NO_VOLUME_DATA_RESTORATION";
 export const VolumeDataRestorePolicyOverridePolicyEnum = /*@__PURE__*/ S.String;
 
 /** Defines an override to apply a VolumeDataRestorePolicy for scoped resources. */
@@ -1254,7 +1243,7 @@ export const VolumeDataRestorePolicyOverride = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeDataRestorePolicyOverride>;
 
 export type VolumeDataRestorePolicyOverrideList =
-  VolumeDataRestorePolicyOverride[];
+  ReadonlyArray<VolumeDataRestorePolicyOverride>;
 export const VolumeDataRestorePolicyOverrideList = /*@__PURE__*/ S.Array(
   VolumeDataRestorePolicyOverride,
 ) as any as S.Schema<VolumeDataRestorePolicyOverrideList>;
@@ -1281,7 +1270,7 @@ export const ResourceSelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceSelector",
 }) as any as S.Schema<ResourceSelector>;
 
-export type ResourceSelectorList = ResourceSelector[];
+export type ResourceSelectorList = ReadonlyArray<ResourceSelector>;
 export const ResourceSelectorList = /*@__PURE__*/ S.Array(
   ResourceSelector,
 ) as any as S.Schema<ResourceSelectorList>;
@@ -1650,7 +1639,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -1659,8 +1648,7 @@ export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -1677,7 +1665,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
-export type AuditLogConfigList = AuditLogConfig[];
+export type AuditLogConfigList = ReadonlyArray<AuditLogConfig>;
 export const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
@@ -1696,7 +1684,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
-export type AuditConfigList = AuditConfig[];
+export type AuditConfigList = ReadonlyArray<AuditConfig>;
 export const AuditConfigList = /*@__PURE__*/ S.Array(
   AuditConfig,
 ) as any as S.Schema<AuditConfigList>;
@@ -1919,8 +1907,7 @@ export type BackupPlanDetailsStateEnum =
   | "READY"
   | "FAILED"
   | "DEACTIVATED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const BackupPlanDetailsStateEnum = /*@__PURE__*/ S.String;
 
 /** BackupConfigDetails defines the configuration of Backups created via this BackupPlan. */
@@ -2100,14 +2087,12 @@ export type VolumeBackupStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "DELETING"
-  | "CLEANED_UP"
-  | (string & {});
+  | "CLEANED_UP";
 export const VolumeBackupStateEnum = /*@__PURE__*/ S.String;
 
 export type VolumeBackupFormatEnum =
   | "VOLUME_BACKUP_FORMAT_UNSPECIFIED"
-  | "GCE_PERSISTENT_DISK"
-  | (string & {});
+  | "GCE_PERSISTENT_DISK";
 export const VolumeBackupFormatEnum = /*@__PURE__*/ S.String;
 
 /** Represents the backup of a specific persistent volume as a component of a Backup - both the record of the operation and a pointer to the underlying storage-specific artifacts. */
@@ -2310,8 +2295,7 @@ export const GetProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
 
 export type VolumeRestoreVolumeTypeEnum =
   | "VOLUME_TYPE_UNSPECIFIED"
-  | "GCE_PERSISTENT_DISK"
-  | (string & {});
+  | "GCE_PERSISTENT_DISK";
 export const VolumeRestoreVolumeTypeEnum = /*@__PURE__*/ S.String;
 
 export type VolumeRestoreStateEnum =
@@ -2320,8 +2304,7 @@ export type VolumeRestoreStateEnum =
   | "RESTORING"
   | "SUCCEEDED"
   | "FAILED"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const VolumeRestoreStateEnum = /*@__PURE__*/ S.String;
 
 /** Represents the operation of restoring a volume from a VolumeBackup. */
@@ -2455,7 +2438,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -2507,7 +2490,7 @@ export const ListProjectsLocationsBackupChannelsRequest =
     identifier: "ListProjectsLocationsBackupChannelsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupChannelsRequest>;
 
-export type BackupChannelList = BackupChannel[];
+export type BackupChannelList = ReadonlyArray<BackupChannel>;
 export const BackupChannelList = /*@__PURE__*/ S.Array(
   BackupChannel,
 ) as any as S.Schema<BackupChannelList>;
@@ -2562,7 +2545,7 @@ export const ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest =
     identifier: "ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupChannelsBackupPlanBindingsRequest>;
 
-export type BackupPlanBindingList = BackupPlanBinding[];
+export type BackupPlanBindingList = ReadonlyArray<BackupPlanBinding>;
 export const BackupPlanBindingList = /*@__PURE__*/ S.Array(
   BackupPlanBinding,
 ) as any as S.Schema<BackupPlanBindingList>;
@@ -2617,7 +2600,7 @@ export const ListProjectsLocationsBackupPlansRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsBackupPlansRequest",
 }) as any as S.Schema<ListProjectsLocationsBackupPlansRequest>;
 
-export type BackupPlanList = BackupPlan[];
+export type BackupPlanList = ReadonlyArray<BackupPlan>;
 export const BackupPlanList = /*@__PURE__*/ S.Array(
   BackupPlan,
 ) as any as S.Schema<BackupPlanList>;
@@ -2675,7 +2658,7 @@ export const ListProjectsLocationsBackupPlansBackupsRequest =
     identifier: "ListProjectsLocationsBackupPlansBackupsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupPlansBackupsRequest>;
 
-export type BackupList = Backup[];
+export type BackupList = ReadonlyArray<Backup>;
 export const BackupList = /*@__PURE__*/ S.Array(
   Backup,
 ) as any as S.Schema<BackupList>;
@@ -2730,7 +2713,7 @@ export const ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest =
     identifier: "ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest",
   }) as any as S.Schema<ListProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
 
-export type VolumeBackupList = VolumeBackup[];
+export type VolumeBackupList = ReadonlyArray<VolumeBackup>;
 export const VolumeBackupList = /*@__PURE__*/ S.Array(
   VolumeBackup,
 ) as any as S.Schema<VolumeBackupList>;
@@ -2782,7 +2765,8 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -2838,7 +2822,7 @@ export const ListProjectsLocationsRestoreChannelsRequest =
     identifier: "ListProjectsLocationsRestoreChannelsRequest",
   }) as any as S.Schema<ListProjectsLocationsRestoreChannelsRequest>;
 
-export type RestoreChannelList = RestoreChannel[];
+export type RestoreChannelList = ReadonlyArray<RestoreChannel>;
 export const RestoreChannelList = /*@__PURE__*/ S.Array(
   RestoreChannel,
 ) as any as S.Schema<RestoreChannelList>;
@@ -2894,7 +2878,7 @@ export const ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest =
       "ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest",
   }) as any as S.Schema<ListProjectsLocationsRestoreChannelsRestorePlanBindingsRequest>;
 
-export type RestorePlanBindingList = RestorePlanBinding[];
+export type RestorePlanBindingList = ReadonlyArray<RestorePlanBinding>;
 export const RestorePlanBindingList = /*@__PURE__*/ S.Array(
   RestorePlanBinding,
 ) as any as S.Schema<RestorePlanBindingList>;
@@ -2949,7 +2933,7 @@ export const ListProjectsLocationsRestorePlansRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsRestorePlansRequest",
 }) as any as S.Schema<ListProjectsLocationsRestorePlansRequest>;
 
-export type RestorePlanList = RestorePlan[];
+export type RestorePlanList = ReadonlyArray<RestorePlan>;
 export const RestorePlanList = /*@__PURE__*/ S.Array(
   RestorePlan,
 ) as any as S.Schema<RestorePlanList>;
@@ -3004,7 +2988,7 @@ export const ListProjectsLocationsRestorePlansRestoresRequest =
     identifier: "ListProjectsLocationsRestorePlansRestoresRequest",
   }) as any as S.Schema<ListProjectsLocationsRestorePlansRestoresRequest>;
 
-export type RestoreList = Restore[];
+export type RestoreList = ReadonlyArray<Restore>;
 export const RestoreList = /*@__PURE__*/ S.Array(
   Restore,
 ) as any as S.Schema<RestoreList>;
@@ -3060,7 +3044,7 @@ export const ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
       "ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest",
   }) as any as S.Schema<ListProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
 
-export type VolumeRestoreList = VolumeRestore[];
+export type VolumeRestoreList = ReadonlyArray<VolumeRestore>;
 export const VolumeRestoreList = /*@__PURE__*/ S.Array(
   VolumeRestore,
 ) as any as S.Schema<VolumeRestoreList>;

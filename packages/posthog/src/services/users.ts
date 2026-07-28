@@ -46,10 +46,10 @@ export const UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettin
   ) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap>;
 
 /** * `disabled` - disabled * `toolbar` - toolbar */
-export type ToolbarModeEnum = "disabled" | "toolbar" | (string & {});
+export type ToolbarModeEnum = "disabled" | "toolbar";
 export const ToolbarModeEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode =
@@ -57,6 +57,864 @@ export type UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode =
   | BlankEnum;
 export const UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode>;
+
+/** * `light` - Light * `dark` - Dark * `system` - System */
+export type ThemeModeEnum = "light" | "dark" | "system";
+export const ThemeModeEnum = /*@__PURE__*/ S.String;
+
+export type UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode =
+  | ThemeModeEnum
+  | BlankEnum;
+export const UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode>;
+
+/** * `above` - Above * `below` - Below * `hidden` - Hidden */
+export type ShortcutPositionEnum = "above" | "below" | "hidden";
+export const ShortcutPositionEnum = /*@__PURE__*/ S.String;
+
+export type UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
+  | ShortcutPositionEnum
+  | BlankEnum;
+export const UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition>;
+
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
+export type RoleAtOrganizationEnum =
+  | "engineering"
+  | "data"
+  | "product"
+  | "founder"
+  | "leadership"
+  | "marketing"
+  | "sales"
+  | "other";
+export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
+
+export interface UsersCancelEmailChangeRequestPartialUpdateRequest {
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  notification_settings?: UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap;
+  /** Whether PostHog should anonymize events captured for this user when identified. */
+  anonymize_data?: boolean | null;
+  allow_impersonation?: boolean | null;
+  toolbar_mode?: UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode | null;
+  /** Designates whether the user can log into this admin site. */
+  is_staff?: boolean;
+  set_current_organization?: string;
+  set_current_team?: string;
+  password?: string | Redacted.Redacted<string>;
+  /** The user's current password. Required when changing `password` if the user already has a usable password set. */
+  current_password?: string | Redacted.Redacted<string>;
+  events_column_config?: unknown;
+  has_seen_product_intro_for?: unknown;
+  theme_mode?: UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode | null;
+  hedgehog_config?: unknown;
+  allow_sidebar_suggestions?: boolean | null;
+  shortcut_position?: UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition | null;
+  role_at_organization?: RoleAtOrganizationEnum;
+  /** Whether passkeys are enabled for 2FA authentication. Users can disable this to use only TOTP for 2FA while keeping passkeys for login. */
+  passkeys_enabled_for_2fa?: boolean | null;
+  /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
+  hide_mcp_hints?: boolean;
+}
+export const UsersCancelEmailChangeRequestPartialUpdateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      first_name: S.optional(S.String),
+      last_name: S.optional(S.String),
+      email: S.optional(S.String),
+      notification_settings: S.optional(
+        UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap,
+      ),
+      anonymize_data: S.optional(S.NullOr(S.Boolean)),
+      allow_impersonation: S.optional(S.NullOr(S.Boolean)),
+      toolbar_mode: S.optional(
+        S.NullOr(UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode),
+      ),
+      is_staff: S.optional(S.Boolean),
+      set_current_organization: S.optional(S.String),
+      set_current_team: S.optional(S.String),
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      events_column_config: S.optional(S.Unknown),
+      has_seen_product_intro_for: S.optional(S.Unknown),
+      theme_mode: S.optional(
+        S.NullOr(UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode),
+      ),
+      hedgehog_config: S.optional(S.Unknown),
+      allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
+      shortcut_position: S.optional(
+        S.NullOr(
+          UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition,
+        ),
+      ),
+      role_at_organization: S.optional(RoleAtOrganizationEnum),
+      passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
+      hide_mcp_hints: S.optional(S.Boolean),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/users/cancel_email_change_request/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UsersCancelEmailChangeRequestPartialUpdateRequest",
+  }) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequest>;
+
+export interface UsersCancelEmailChangeRequestPartialUpdateResponse {}
+export const UsersCancelEmailChangeRequestPartialUpdateResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "UsersCancelEmailChangeRequestPartialUpdateResponse",
+  }) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateResponse>;
+
+export interface UsersCredentialsReviewCompleteCreateRequest {
+  uuid: string;
+}
+export const UsersCredentialsReviewCompleteCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/users/{uuid}/credentials_review_complete/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UsersCredentialsReviewCompleteCreateRequest",
+  }) as any as S.Schema<UsersCredentialsReviewCompleteCreateRequest>;
+
+export interface UsersCredentialsReviewCompleteCreateResponse {}
+export const UsersCredentialsReviewCompleteCreateResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "UsersCredentialsReviewCompleteCreateResponse",
+  }) as any as S.Schema<UsersCredentialsReviewCompleteCreateResponse>;
+
+export interface UsersDestroyRequest {
+  uuid: string;
+}
+export const UsersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uuid: S.String.pipe(T.Label()),
+  }).pipe(T.Http({ method: "DELETE", uri: "/api/users/{uuid}/", code: 200 })),
+).annotate({
+  identifier: "UsersDestroyRequest",
+}) as any as S.Schema<UsersDestroyRequest>;
+
+export interface UsersDestroyResponse {}
+export const UsersDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UsersDestroyResponse",
+}) as any as S.Schema<UsersDestroyResponse>;
+
+export interface UsersGithubLoginRetrieveRequest {
+  uuid: string;
+}
+export const UsersGithubLoginRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uuid: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/users/{uuid}/github_login/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UsersGithubLoginRetrieveRequest",
+}) as any as S.Schema<UsersGithubLoginRetrieveRequest>;
+
+export interface UsersGithubLoginRetrieveResponse {}
+export const UsersGithubLoginRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UsersGithubLoginRetrieveResponse",
+}) as any as S.Schema<UsersGithubLoginRetrieveResponse>;
+
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+export type UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap = {
+  [key: string]: unknown | undefined;
+};
+export const UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap>;
+
+export type UsersHedgehogConfigPartialUpdateRequestToolbarMode =
+  | ToolbarModeEnum
+  | BlankEnum;
+export const UsersHedgehogConfigPartialUpdateRequestToolbarMode =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestToolbarMode>;
+
+export type UsersHedgehogConfigPartialUpdateRequestThemeMode =
+  | ThemeModeEnum
+  | BlankEnum;
+export const UsersHedgehogConfigPartialUpdateRequestThemeMode =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestThemeMode>;
+
+export type UsersHedgehogConfigPartialUpdateRequestShortcutPosition =
+  | ShortcutPositionEnum
+  | BlankEnum;
+export const UsersHedgehogConfigPartialUpdateRequestShortcutPosition =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestShortcutPosition>;
+
+export interface UsersHedgehogConfigPartialUpdateRequest {
+  uuid: string;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+  notification_settings?: UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap;
+  /** Whether PostHog should anonymize events captured for this user when identified. */
+  anonymize_data?: boolean | null;
+  allow_impersonation?: boolean | null;
+  toolbar_mode?: UsersHedgehogConfigPartialUpdateRequestToolbarMode | null;
+  /** Designates whether the user can log into this admin site. */
+  is_staff?: boolean;
+  set_current_organization?: string;
+  set_current_team?: string;
+  password?: string | Redacted.Redacted<string>;
+  /** The user's current password. Required when changing `password` if the user already has a usable password set. */
+  current_password?: string | Redacted.Redacted<string>;
+  events_column_config?: unknown;
+  has_seen_product_intro_for?: unknown;
+  theme_mode?: UsersHedgehogConfigPartialUpdateRequestThemeMode | null;
+  hedgehog_config?: unknown;
+  allow_sidebar_suggestions?: boolean | null;
+  shortcut_position?: UsersHedgehogConfigPartialUpdateRequestShortcutPosition | null;
+  role_at_organization?: RoleAtOrganizationEnum;
+  /** Whether passkeys are enabled for 2FA authentication. Users can disable this to use only TOTP for 2FA while keeping passkeys for login. */
+  passkeys_enabled_for_2fa?: boolean | null;
+  /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
+  hide_mcp_hints?: boolean;
+}
+export const UsersHedgehogConfigPartialUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+      first_name: S.optional(S.String),
+      last_name: S.optional(S.String),
+      email: S.optional(S.String),
+      notification_settings: S.optional(
+        UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap,
+      ),
+      anonymize_data: S.optional(S.NullOr(S.Boolean)),
+      allow_impersonation: S.optional(S.NullOr(S.Boolean)),
+      toolbar_mode: S.optional(
+        S.NullOr(UsersHedgehogConfigPartialUpdateRequestToolbarMode),
+      ),
+      is_staff: S.optional(S.Boolean),
+      set_current_organization: S.optional(S.String),
+      set_current_team: S.optional(S.String),
+      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+      events_column_config: S.optional(S.Unknown),
+      has_seen_product_intro_for: S.optional(S.Unknown),
+      theme_mode: S.optional(
+        S.NullOr(UsersHedgehogConfigPartialUpdateRequestThemeMode),
+      ),
+      hedgehog_config: S.optional(S.Unknown),
+      allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
+      shortcut_position: S.optional(
+        S.NullOr(UsersHedgehogConfigPartialUpdateRequestShortcutPosition),
+      ),
+      role_at_organization: S.optional(RoleAtOrganizationEnum),
+      passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
+      hide_mcp_hints: S.optional(S.Boolean),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/users/{uuid}/hedgehog_config/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "UsersHedgehogConfigPartialUpdateRequest",
+}) as any as S.Schema<UsersHedgehogConfigPartialUpdateRequest>;
+
+export interface UsersHedgehogConfigPartialUpdateResponse {}
+export const UsersHedgehogConfigPartialUpdateResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UsersHedgehogConfigPartialUpdateResponse",
+}) as any as S.Schema<UsersHedgehogConfigPartialUpdateResponse>;
+
+export interface UsersHedgehogConfigRetrieveRequest {
+  uuid: string;
+}
+export const UsersHedgehogConfigRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uuid: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/users/{uuid}/hedgehog_config/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UsersHedgehogConfigRetrieveRequest",
+}) as any as S.Schema<UsersHedgehogConfigRetrieveRequest>;
+
+export interface UsersHedgehogConfigRetrieveResponse {}
+export const UsersHedgehogConfigRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UsersHedgehogConfigRetrieveResponse",
+}) as any as S.Schema<UsersHedgehogConfigRetrieveResponse>;
+
+export interface UsersIntegrationsGithubBranchesRetrieveRequest {
+  uuid: string;
+  installation_id: string;
+  /** Maximum number of branches to return */
+  limit?: number;
+  /** Number of branches to skip */
+  offset?: number;
+  /** Repository in owner/repo format */
+  repo: string;
+  /** Optional case-insensitive branch name search query. */
+  search?: string;
+}
+export const UsersIntegrationsGithubBranchesRetrieveRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+      installation_id: S.String.pipe(T.Label()),
+      limit: S.optional(S.Number.pipe(T.Query())),
+      offset: S.optional(S.Number.pipe(T.Query())),
+      repo: S.String.pipe(T.Query()),
+      search: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/users/{uuid}/integrations/github/{installation_id}/branches/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UsersIntegrationsGithubBranchesRetrieveRequest",
+  }) as any as S.Schema<UsersIntegrationsGithubBranchesRetrieveRequest>;
+
+/** List of branch names */
+export type GitHubBranchesResponseBranchesList = ReadonlyArray<string>;
+export const GitHubBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GitHubBranchesResponseBranchesList>;
+
+export interface GitHubBranchesResponse {
+  /** List of branch names */
+  branches?: GitHubBranchesResponseBranchesList;
+  /** The default branch of the repository */
+  default_branch?: string | null;
+  /** Whether more branches exist beyond the returned page */
+  has_more?: boolean;
+}
+export const GitHubBranchesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branches: S.optional(GitHubBranchesResponseBranchesList),
+    default_branch: S.optional(S.NullOr(S.String)),
+    has_more: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GitHubBranchesResponse",
+}) as any as S.Schema<GitHubBranchesResponse>;
+
+export interface UsersIntegrationsGithubDestroyRequest {
+  uuid: string;
+  installation_id: string;
+}
+export const UsersIntegrationsGithubDestroyRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+      installation_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/api/users/{uuid}/integrations/github/{installation_id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "UsersIntegrationsGithubDestroyRequest",
+}) as any as S.Schema<UsersIntegrationsGithubDestroyRequest>;
+
+export interface UsersIntegrationsGithubDestroyResponse {}
+export const UsersIntegrationsGithubDestroyResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UsersIntegrationsGithubDestroyResponse",
+}) as any as S.Schema<UsersIntegrationsGithubDestroyResponse>;
+
+export interface UsersIntegrationsGithubPrepareCallbackCreateRequest {
+  uuid: string;
+  /** GitHub App installation id being managed on github.com. */
+  installation_id: string;
+}
+export const UsersIntegrationsGithubPrepareCallbackCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+      installation_id: S.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/users/{uuid}/integrations/github/prepare_callback/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UsersIntegrationsGithubPrepareCallbackCreateRequest",
+  }) as any as S.Schema<UsersIntegrationsGithubPrepareCallbackCreateRequest>;
+
+export interface UsersIntegrationsGithubPrepareCallbackCreateResponse {}
+export const UsersIntegrationsGithubPrepareCallbackCreateResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "UsersIntegrationsGithubPrepareCallbackCreateResponse",
+  }) as any as S.Schema<UsersIntegrationsGithubPrepareCallbackCreateResponse>;
+
+export interface UsersIntegrationsGithubReposRefreshCreateRequest {
+  uuid: string;
+  installation_id: string;
+}
+export const UsersIntegrationsGithubReposRefreshCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+      installation_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/users/{uuid}/integrations/github/{installation_id}/repos/refresh/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UsersIntegrationsGithubReposRefreshCreateRequest",
+  }) as any as S.Schema<UsersIntegrationsGithubReposRefreshCreateRequest>;
+
+export interface GitHubRepo {
+  /** GitHub repository numeric identifier. */
+  id?: number;
+  /** Repository short name (without the owner prefix). */
+  name?: string;
+  /** Fully-qualified repository name as 'owner/repo'. */
+  full_name?: string;
+  /** Whether the repository is private. */
+  private?: boolean;
+  /** The repository's default branch (e.g. 'main'). */
+  default_branch?: string;
+  /** Primary programming language GitHub detected for the repository. */
+  language?: string;
+  /** ISO 8601 timestamp of the most recent push, useful for sorting by recent activity. */
+  pushed_at?: string;
+  /** Whether the repository is archived. */
+  archived?: boolean;
+  /** Whether the PostHog GitHub App has write access — required to open pull requests. */
+  can_push?: boolean;
+}
+export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    name: S.optional(S.String),
+    full_name: S.optional(S.String),
+    private: S.optional(S.Boolean),
+    default_branch: S.optional(S.String),
+    language: S.optional(S.String),
+    pushed_at: S.optional(S.String),
+    archived: S.optional(S.Boolean),
+    can_push: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "GitHubRepo" }) as any as S.Schema<GitHubRepo>;
+
+/** The refreshed repository cache. */
+export type GitHubReposRefreshResponseRepositoriesList =
+  ReadonlyArray<GitHubRepo>;
+export const GitHubReposRefreshResponseRepositoriesList = /*@__PURE__*/ S.Array(
+  GitHubRepo,
+) as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
+
+export interface GitHubReposRefreshResponse {
+  /** The refreshed repository cache. */
+  repositories?: GitHubReposRefreshResponseRepositoriesList;
+}
+export const GitHubReposRefreshResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repositories: S.optional(GitHubReposRefreshResponseRepositoriesList),
+  }),
+).annotate({
+  identifier: "GitHubReposRefreshResponse",
+}) as any as S.Schema<GitHubReposRefreshResponse>;
+
+export interface UsersIntegrationsGithubReposRetrieveRequest {
+  uuid: string;
+  installation_id: string;
+  /** Maximum number of repositories to return per request (max 500). */
+  limit?: number;
+  /** Number of repositories to skip before returning results. */
+  offset?: number;
+  /** Optional case-insensitive repository name search query. */
+  search?: string;
+}
+export const UsersIntegrationsGithubReposRetrieveRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+      installation_id: S.String.pipe(T.Label()),
+      limit: S.optional(S.Number.pipe(T.Query())),
+      offset: S.optional(S.Number.pipe(T.Query())),
+      search: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/users/{uuid}/integrations/github/{installation_id}/repos/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UsersIntegrationsGithubReposRetrieveRequest",
+  }) as any as S.Schema<UsersIntegrationsGithubReposRetrieveRequest>;
+
+export type GitHubReposResponseRepositoriesList = ReadonlyArray<GitHubRepo>;
+export const GitHubReposResponseRepositoriesList = /*@__PURE__*/ S.Array(
+  GitHubRepo,
+) as any as S.Schema<GitHubReposResponseRepositoriesList>;
+
+export interface GitHubReposResponse {
+  repositories?: GitHubReposResponseRepositoriesList;
+  /** Whether more repositories are available beyond this page. */
+  has_more?: boolean;
+}
+export const GitHubReposResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repositories: S.optional(GitHubReposResponseRepositoriesList),
+    has_more: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GitHubReposResponse",
+}) as any as S.Schema<GitHubReposResponse>;
+
+export interface UsersIntegrationsGithubStartCreateRequest {
+  uuid: string;
+  /** Optional team/project id (e.g. PostHog Code); web UI uses the session's current team. */
+  team_id?: number | null;
+  /** Optional client hint (e.g. posthog_code) for return routing after OAuth. */
+  connect_from?: string;
+}
+export const UsersIntegrationsGithubStartCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+      team_id: S.optional(S.NullOr(S.Number)),
+      connect_from: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/users/{uuid}/integrations/github/start/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UsersIntegrationsGithubStartCreateRequest",
+  }) as any as S.Schema<UsersIntegrationsGithubStartCreateRequest>;
+
+export interface UserGitHubLinkStartResponse {
+  /** URL to open in the browser to install or authorize the GitHub App for this user. */
+  install_url: string;
+  /** OAuth or install flow used for this GitHub connection. */
+  connect_flow: string;
+}
+export const UserGitHubLinkStartResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    install_url: S.String,
+    connect_flow: S.String,
+  }),
+).annotate({
+  identifier: "UserGitHubLinkStartResponse",
+}) as any as S.Schema<UserGitHubLinkStartResponse>;
+
+export type UsersIntegrationsListRequestKind = "github" | "slack";
+export const UsersIntegrationsListRequestKind = /*@__PURE__*/ S.String;
+
+export interface UsersIntegrationsListRequest {
+  uuid: string;
+  /** Integration kind to list. Defaults to `github` for back-compat with mobile and the Code SDK, which call this endpoint without a query param and expect GitHub-shaped items. */
+  kind?: UsersIntegrationsListRequestKind;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const UsersIntegrationsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uuid: S.String.pipe(T.Label()),
+    kind: S.optional(UsersIntegrationsListRequestKind.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/users/{uuid}/integrations/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UsersIntegrationsListRequest",
+}) as any as S.Schema<UsersIntegrationsListRequest>;
+
+export interface UserGitHubAccount {
+  /** GitHub account type for the installation (e.g. User or Organization). */
+  type?: string | null;
+  /** GitHub login or organization name tied to the installation. */
+  name?: string | null;
+}
+export const UserGitHubAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "UserGitHubAccount",
+}) as any as S.Schema<UserGitHubAccount>;
+
+export interface UserGitHubIntegrationItem {
+  /** PostHog UserIntegration row id. */
+  id: string;
+  /** Integration kind; always `github` for this API. */
+  kind: string;
+  /** GitHub App installation id. */
+  installation_id: string;
+  /** Repository selection mode from GitHub (e.g. selected or all). */
+  repository_selection?: string | null;
+  /** Installation account metadata from GitHub. */
+  account?: UserGitHubAccount | null;
+  /** True when this installation id matches a team-level GitHub integration on the active project. */
+  uses_shared_installation: boolean;
+  /** When this integration row was created. */
+  created_at: string;
+}
+export const UserGitHubIntegrationItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    kind: S.String,
+    installation_id: S.String,
+    repository_selection: S.optional(S.NullOr(S.String)),
+    account: S.optional(S.NullOr(UserGitHubAccount)),
+    uses_shared_installation: S.Boolean,
+    created_at: S.String,
+  }),
+).annotate({
+  identifier: "UserGitHubIntegrationItem",
+}) as any as S.Schema<UserGitHubIntegrationItem>;
+
+/** GitHub personal integrations for the authenticated user. */
+export type UserGitHubIntegrationListResponseResultsList =
+  ReadonlyArray<UserGitHubIntegrationItem>;
+export const UserGitHubIntegrationListResponseResultsList =
+  /*@__PURE__*/ S.Array(
+    UserGitHubIntegrationItem,
+  ) as any as S.Schema<UserGitHubIntegrationListResponseResultsList>;
+
+export interface UserGitHubIntegrationListResponse {
+  /** GitHub personal integrations for the authenticated user. */
+  results: UserGitHubIntegrationListResponseResultsList;
+}
+export const UserGitHubIntegrationListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: UserGitHubIntegrationListResponseResultsList,
+  }),
+).annotate({
+  identifier: "UserGitHubIntegrationListResponse",
+}) as any as S.Schema<UserGitHubIntegrationListResponse>;
+
+export type PaginatedUserGitHubIntegrationListResponseListResultsList =
+  ReadonlyArray<UserGitHubIntegrationListResponse>;
+export const PaginatedUserGitHubIntegrationListResponseListResultsList =
+  /*@__PURE__*/ S.Array(
+    UserGitHubIntegrationListResponse,
+  ) as any as S.Schema<PaginatedUserGitHubIntegrationListResponseListResultsList>;
+
+export interface PaginatedUserGitHubIntegrationListResponseList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedUserGitHubIntegrationListResponseListResultsList;
+}
+export const PaginatedUserGitHubIntegrationListResponseList =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      count: S.Number,
+      next: S.optional(S.NullOr(S.String)),
+      previous: S.optional(S.NullOr(S.String)),
+      results: PaginatedUserGitHubIntegrationListResponseListResultsList,
+    }),
+  ).annotate({
+    identifier: "PaginatedUserGitHubIntegrationListResponseList",
+  }) as any as S.Schema<PaginatedUserGitHubIntegrationListResponseList>;
+
+export interface UsersIntegrationsSlackDestroyRequest {
+  uuid: string;
+  slack_user_id: string;
+}
+export const UsersIntegrationsSlackDestroyRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+      slack_user_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/api/users/{uuid}/integrations/slack/{slack_user_id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "UsersIntegrationsSlackDestroyRequest",
+}) as any as S.Schema<UsersIntegrationsSlackDestroyRequest>;
+
+export interface UsersIntegrationsSlackDestroyResponse {}
+export const UsersIntegrationsSlackDestroyResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UsersIntegrationsSlackDestroyResponse",
+}) as any as S.Schema<UsersIntegrationsSlackDestroyResponse>;
+
+export interface UsersIntegrationsSlackLinkableWorkspacesRetrieveRequest {
+  uuid: string;
+}
+export const UsersIntegrationsSlackLinkableWorkspacesRetrieveRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/users/{uuid}/integrations/slack/linkable_workspaces/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UsersIntegrationsSlackLinkableWorkspacesRetrieveRequest",
+  }) as any as S.Schema<UsersIntegrationsSlackLinkableWorkspacesRetrieveRequest>;
+
+export interface UserSlackLinkableWorkspaceItem {
+  /** PostHog team/project id owning the Slack workspace install. */
+  posthog_team_id: number;
+  /** PostHog team/project name, for display in a picker. */
+  posthog_team_name: string;
+  /** PostHog organization name owning the team, for picker disambiguation. */
+  posthog_organization_name: string;
+  /** Slack workspace (team) id. */
+  slack_team_id: string;
+  /** Slack workspace display name as known by PostHog. */
+  slack_team_name?: string | null;
+}
+export const UserSlackLinkableWorkspaceItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    posthog_team_id: S.Number,
+    posthog_team_name: S.String,
+    posthog_organization_name: S.String,
+    slack_team_id: S.String,
+    slack_team_name: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "UserSlackLinkableWorkspaceItem",
+}) as any as S.Schema<UserSlackLinkableWorkspaceItem>;
+
+/** Slack workspaces the user could link to but hasn't yet. */
+export type UserSlackLinkableWorkspaceListResponseResultsList =
+  ReadonlyArray<UserSlackLinkableWorkspaceItem>;
+export const UserSlackLinkableWorkspaceListResponseResultsList =
+  /*@__PURE__*/ S.Array(
+    UserSlackLinkableWorkspaceItem,
+  ) as any as S.Schema<UserSlackLinkableWorkspaceListResponseResultsList>;
+
+export interface UserSlackLinkableWorkspaceListResponse {
+  /** Slack workspaces the user could link to but hasn't yet. */
+  results: UserSlackLinkableWorkspaceListResponseResultsList;
+}
+export const UserSlackLinkableWorkspaceListResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      results: UserSlackLinkableWorkspaceListResponseResultsList,
+    }),
+).annotate({
+  identifier: "UserSlackLinkableWorkspaceListResponse",
+}) as any as S.Schema<UserSlackLinkableWorkspaceListResponse>;
+
+export interface UsersIntegrationsSlackStartCreateRequest {
+  uuid: string;
+  /** Optional team/project id to link against; defaults to the user's current team. */
+  team_id?: number | null;
+  /** Specific Slack workspace id to link against, scoped to the team. Disambiguates when one team has multiple Slack integrations (rare). */
+  slack_team_id?: string | null;
+}
+export const UsersIntegrationsSlackStartCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      uuid: S.String.pipe(T.Label()),
+      team_id: S.optional(S.NullOr(S.Number)),
+      slack_team_id: S.optional(S.NullOr(S.String)),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/users/{uuid}/integrations/slack/start/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "UsersIntegrationsSlackStartCreateRequest",
+}) as any as S.Schema<UsersIntegrationsSlackStartCreateRequest>;
+
+export interface UserSlackLinkStartResponse {
+  /** URL to open in the browser to start the Sign-in-with-Slack flow. */
+  install_url: string;
+}
+export const UserSlackLinkStartResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    install_url: S.String,
+  }),
+).annotate({
+  identifier: "UserSlackLinkStartResponse",
+}) as any as S.Schema<UserSlackLinkStartResponse>;
+
+export interface UsersListRequest {
+  email?: string;
+  is_staff?: boolean;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const UsersListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.optional(S.String.pipe(T.Query())),
+    is_staff: S.optional(S.Boolean.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(T.Http({ method: "GET", uri: "/api/users/", code: 200 })),
+).annotate({
+  identifier: "UsersListRequest",
+}) as any as S.Schema<UsersListRequest>;
+
+/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
+export type UserOutputNotificationSettingsMap = {
+  [key: string]: unknown | undefined;
+};
+export const UserOutputNotificationSettingsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UserOutputNotificationSettingsMap>;
+
+export type UserOutputToolbarMode = ToolbarModeEnum | BlankEnum;
+export const UserOutputToolbarMode =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserOutputToolbarMode>;
 
 /** * `Africa/Abidjan` - Africa/Abidjan * `Africa/Accra` - Africa/Accra * `Africa/Addis_Ababa` - Africa/Addis_Ababa * `Africa/Algiers` - Africa/Algiers * `Africa/Asmara` - Africa/Asmara * `Africa/Asmera` - Africa/Asmera * `Africa/Bamako` - Africa/Bamako * `Africa/Bangui` - Africa/Bangui * `Africa/Banjul` - Africa/Banjul * `Africa/Bissau` - Africa/Bissau * `Africa/Blantyre` - Africa/Blantyre * `Africa/Brazzaville` - Africa/Brazzaville * `Africa/Bujumbura` - Africa/Bujumbura * `Africa/Cairo` - Africa/Cairo * `Africa/Casablanca` - Africa/Casablanca * `Africa/Ceuta` - Africa/Ceuta * `Africa/Conakry` - Africa/Conakry * `Africa/Dakar` - Africa/Dakar * `Africa/Dar_es_Salaam` - Africa/Dar_es_Salaam * `Africa/Djibouti` - Africa/Djibouti * `Africa/Douala` - Africa/Douala * `Africa/El_Aaiun` - Africa/El_Aaiun * `Africa/Freetown` - Africa/Freetown * `Africa/Gaborone` - Africa/Gaborone * `Africa/Harare` - Africa/Harare * `Africa/Johannesburg` - Africa/Johannesburg * `Africa/Juba` - Africa/Juba * `Africa/Kampala` - Africa/Kampala * `Africa/Khartoum` - Africa/Khartoum * `Africa/Kigali` - Africa/Kigali * `Africa/Kinshasa` - Africa/Kinshasa * `Africa/Lagos` - Africa/Lagos * `Africa/Libreville` - Africa/Libreville * `Africa/Lome` - Africa/Lome * `Africa/Luanda` - Africa/Luanda * `Africa/Lubumbashi` - Africa/Lubumbashi * `Africa/Lusaka` - Africa/Lusaka * `Africa/Malabo` - Africa/Malabo * `Africa/Maputo` - Africa/Maputo * `Africa/Maseru` - Africa/Maseru * `Africa/Mbabane` - Africa/Mbabane * `Africa/Mogadishu` - Africa/Mogadishu * `Africa/Monrovia` - Africa/Monrovia * `Africa/Nairobi` - Africa/Nairobi * `Africa/Ndjamena` - Africa/Ndjamena * `Africa/Niamey` - Africa/Niamey * `Africa/Nouakchott` - Africa/Nouakchott * `Africa/Ouagadougou` - Africa/Ouagadougou * `Africa/Porto-Novo` - Africa/Porto-Novo * `Africa/Sao_Tome` - Africa/Sao_Tome * `Africa/Timbuktu` - Africa/Timbuktu * `Africa/Tripoli` - Africa/Tripoli * `Africa/Tunis` - Africa/Tunis * `Africa/Windhoek` - Africa/Windhoek * `America/Adak` - America/Adak * `America/Anchorage` - America/Anchorage * `America/Anguilla` - America/Anguilla * `America/Antigua` - America/Antigua * `America/Araguaina` - America/Araguaina * `America/Argentina/Buenos_Aires` - America/Argentina/Buenos_Aires * `America/Argentina/Catamarca` - America/Argentina/Catamarca * `America/Argentina/ComodRivadavia` - America/Argentina/ComodRivadavia * `America/Argentina/Cordoba` - America/Argentina/Cordoba * `America/Argentina/Jujuy` - America/Argentina/Jujuy * `America/Argentina/La_Rioja` - America/Argentina/La_Rioja * `America/Argentina/Mendoza` - America/Argentina/Mendoza * `America/Argentina/Rio_Gallegos` - America/Argentina/Rio_Gallegos * `America/Argentina/Salta` - America/Argentina/Salta * `America/Argentina/San_Juan` - America/Argentina/San_Juan * `America/Argentina/San_Luis` - America/Argentina/San_Luis * `America/Argentina/Tucuman` - America/Argentina/Tucuman * `America/Argentina/Ushuaia` - America/Argentina/Ushuaia * `America/Aruba` - America/Aruba * `America/Asuncion` - America/Asuncion * `America/Atikokan` - America/Atikokan * `America/Atka` - America/Atka * `America/Bahia` - America/Bahia * `America/Bahia_Banderas` - America/Bahia_Banderas * `America/Barbados` - America/Barbados * `America/Belem` - America/Belem * `America/Belize` - America/Belize * `America/Blanc-Sablon` - America/Blanc-Sablon * `America/Boa_Vista` - America/Boa_Vista * `America/Bogota` - America/Bogota * `America/Boise` - America/Boise * `America/Buenos_Aires` - America/Buenos_Aires * `America/Cambridge_Bay` - America/Cambridge_Bay * `America/Campo_Grande` - America/Campo_Grande * `America/Cancun` - America/Cancun * `America/Caracas` - America/Caracas * `America/Catamarca` - America/Catamarca * `America/Cayenne` - America/Cayenne * `America/Cayman` - America/Cayman * `America/Chicago` - America/Chicago * `America/Chihuahua` - America/Chihuahua * `America/Ciudad_Juarez` - America/Ciudad_Juarez * `America/Coral_Harbour` - America/Coral_Harbour * `America/Cordoba` - America/Cordoba * `America/Costa_Rica` - America/Costa_Rica * `America/Creston` - America/Creston * `America/Cuiaba` - America/Cuiaba * `America/Curacao` - America/Curacao * `America/Danmarkshavn` - America/Danmarkshavn * `America/Dawson` - America/Dawson * `America/Dawson_Creek` - America/Dawson_Creek * `America/Denver` - America/Denver * `America/Detroit` - America/Detroit * `America/Dominica` - America/Dominica * `America/Edmonton` - America/Edmonton * `America/Eirunepe` - America/Eirunepe * `America/El_Salvador` - America/El_Salvador * `America/Ensenada` - America/Ensenada * `America/Fort_Nelson` - America/Fort_Nelson * `America/Fort_Wayne` - America/Fort_Wayne * `America/Fortaleza` - America/Fortaleza * `America/Glace_Bay` - America/Glace_Bay * `America/Godthab` - America/Godthab * `America/Goose_Bay` - America/Goose_Bay * `America/Grand_Turk` - America/Grand_Turk * `America/Grenada` - America/Grenada * `America/Guadeloupe` - America/Guadeloupe * `America/Guatemala` - America/Guatemala * `America/Guayaquil` - America/Guayaquil * `America/Guyana` - America/Guyana * `America/Halifax` - America/Halifax * `America/Havana` - America/Havana * `America/Hermosillo` - America/Hermosillo * `America/Indiana/Indianapolis` - America/Indiana/Indianapolis * `America/Indiana/Knox` - America/Indiana/Knox * `America/Indiana/Marengo` - America/Indiana/Marengo * `America/Indiana/Petersburg` - America/Indiana/Petersburg * `America/Indiana/Tell_City` - America/Indiana/Tell_City * `America/Indiana/Vevay` - America/Indiana/Vevay * `America/Indiana/Vincennes` - America/Indiana/Vincennes * `America/Indiana/Winamac` - America/Indiana/Winamac * `America/Indianapolis` - America/Indianapolis * `America/Inuvik` - America/Inuvik * `America/Iqaluit` - America/Iqaluit * `America/Jamaica` - America/Jamaica * `America/Jujuy` - America/Jujuy * `America/Juneau` - America/Juneau * `America/Kentucky/Louisville` - America/Kentucky/Louisville * `America/Kentucky/Monticello` - America/Kentucky/Monticello * `America/Knox_IN` - America/Knox_IN * `America/Kralendijk` - America/Kralendijk * `America/La_Paz` - America/La_Paz * `America/Lima` - America/Lima * `America/Los_Angeles` - America/Los_Angeles * `America/Louisville` - America/Louisville * `America/Lower_Princes` - America/Lower_Princes * `America/Maceio` - America/Maceio * `America/Managua` - America/Managua * `America/Manaus` - America/Manaus * `America/Marigot` - America/Marigot * `America/Martinique` - America/Martinique * `America/Matamoros` - America/Matamoros * `America/Mazatlan` - America/Mazatlan * `America/Mendoza` - America/Mendoza * `America/Menominee` - America/Menominee * `America/Merida` - America/Merida * `America/Metlakatla` - America/Metlakatla * `America/Mexico_City` - America/Mexico_City * `America/Miquelon` - America/Miquelon * `America/Moncton` - America/Moncton * `America/Monterrey` - America/Monterrey * `America/Montevideo` - America/Montevideo * `America/Montreal` - America/Montreal * `America/Montserrat` - America/Montserrat * `America/Nassau` - America/Nassau * `America/New_York` - America/New_York * `America/Nipigon` - America/Nipigon * `America/Nome` - America/Nome * `America/Noronha` - America/Noronha * `America/North_Dakota/Beulah` - America/North_Dakota/Beulah * `America/North_Dakota/Center` - America/North_Dakota/Center * `America/North_Dakota/New_Salem` - America/North_Dakota/New_Salem * `America/Nuuk` - America/Nuuk * `America/Ojinaga` - America/Ojinaga * `America/Panama` - America/Panama * `America/Pangnirtung` - America/Pangnirtung * `America/Paramaribo` - America/Paramaribo * `America/Phoenix` - America/Phoenix * `America/Port-au-Prince` - America/Port-au-Prince * `America/Port_of_Spain` - America/Port_of_Spain * `America/Porto_Acre` - America/Porto_Acre * `America/Porto_Velho` - America/Porto_Velho * `America/Puerto_Rico` - America/Puerto_Rico * `America/Punta_Arenas` - America/Punta_Arenas * `America/Rainy_River` - America/Rainy_River * `America/Rankin_Inlet` - America/Rankin_Inlet * `America/Recife` - America/Recife * `America/Regina` - America/Regina * `America/Resolute` - America/Resolute * `America/Rio_Branco` - America/Rio_Branco * `America/Rosario` - America/Rosario * `America/Santa_Isabel` - America/Santa_Isabel * `America/Santarem` - America/Santarem * `America/Santiago` - America/Santiago * `America/Santo_Domingo` - America/Santo_Domingo * `America/Sao_Paulo` - America/Sao_Paulo * `America/Scoresbysund` - America/Scoresbysund * `America/Shiprock` - America/Shiprock * `America/Sitka` - America/Sitka * `America/St_Barthelemy` - America/St_Barthelemy * `America/St_Johns` - America/St_Johns * `America/St_Kitts` - America/St_Kitts * `America/St_Lucia` - America/St_Lucia * `America/St_Thomas` - America/St_Thomas * `America/St_Vincent` - America/St_Vincent * `America/Swift_Current` - America/Swift_Current * `America/Tegucigalpa` - America/Tegucigalpa * `America/Thule` - America/Thule * `America/Thunder_Bay` - America/Thunder_Bay * `America/Tijuana` - America/Tijuana * `America/Toronto` - America/Toronto * `America/Tortola` - America/Tortola * `America/Vancouver` - America/Vancouver * `America/Virgin` - America/Virgin * `America/Whitehorse` - America/Whitehorse * `America/Winnipeg` - America/Winnipeg * `America/Yakutat` - America/Yakutat * `America/Yellowknife` - America/Yellowknife * `Antarctica/Casey` - Antarctica/Casey * `Antarctica/Davis` - Antarctica/Davis * `Antarctica/DumontDUrville` - Antarctica/DumontDUrville * `Antarctica/Macquarie` - Antarctica/Macquarie * `Antarctica/Mawson` - Antarctica/Mawson * `Antarctica/McMurdo` - Antarctica/McMurdo * `Antarctica/Palmer` - Antarctica/Palmer * `Antarctica/Rothera` - Antarctica/Rothera * `Antarctica/South_Pole` - Antarctica/South_Pole * `Antarctica/Syowa` - Antarctica/Syowa * `Antarctica/Troll` - Antarctica/Troll * `Antarctica/Vostok` - Antarctica/Vostok * `Arctic/Longyearbyen` - Arctic/Longyearbyen * `Asia/Aden` - Asia/Aden * `Asia/Almaty` - Asia/Almaty * `Asia/Amman` - Asia/Amman * `Asia/Anadyr` - Asia/Anadyr * `Asia/Aqtau` - Asia/Aqtau * `Asia/Aqtobe` - Asia/Aqtobe * `Asia/Ashgabat` - Asia/Ashgabat * `Asia/Ashkhabad` - Asia/Ashkhabad * `Asia/Atyrau` - Asia/Atyrau * `Asia/Baghdad` - Asia/Baghdad * `Asia/Bahrain` - Asia/Bahrain * `Asia/Baku` - Asia/Baku * `Asia/Bangkok` - Asia/Bangkok * `Asia/Barnaul` - Asia/Barnaul * `Asia/Beirut` - Asia/Beirut * `Asia/Bishkek` - Asia/Bishkek * `Asia/Brunei` - Asia/Brunei * `Asia/Calcutta` - Asia/Calcutta * `Asia/Chita` - Asia/Chita * `Asia/Choibalsan` - Asia/Choibalsan * `Asia/Chongqing` - Asia/Chongqing * `Asia/Chungking` - Asia/Chungking * `Asia/Colombo` - Asia/Colombo * `Asia/Dacca` - Asia/Dacca * `Asia/Damascus` - Asia/Damascus * `Asia/Dhaka` - Asia/Dhaka * `Asia/Dili` - Asia/Dili * `Asia/Dubai` - Asia/Dubai * `Asia/Dushanbe` - Asia/Dushanbe * `Asia/Famagusta` - Asia/Famagusta * `Asia/Gaza` - Asia/Gaza * `Asia/Harbin` - Asia/Harbin * `Asia/Hebron` - Asia/Hebron * `Asia/Ho_Chi_Minh` - Asia/Ho_Chi_Minh * `Asia/Hong_Kong` - Asia/Hong_Kong * `Asia/Hovd` - Asia/Hovd * `Asia/Irkutsk` - Asia/Irkutsk * `Asia/Istanbul` - Asia/Istanbul * `Asia/Jakarta` - Asia/Jakarta * `Asia/Jayapura` - Asia/Jayapura * `Asia/Jerusalem` - Asia/Jerusalem * `Asia/Kabul` - Asia/Kabul * `Asia/Kamchatka` - Asia/Kamchatka * `Asia/Karachi` - Asia/Karachi * `Asia/Kashgar` - Asia/Kashgar * `Asia/Kathmandu` - Asia/Kathmandu * `Asia/Katmandu` - Asia/Katmandu * `Asia/Khandyga` - Asia/Khandyga * `Asia/Kolkata` - Asia/Kolkata * `Asia/Krasnoyarsk` - Asia/Krasnoyarsk * `Asia/Kuala_Lumpur` - Asia/Kuala_Lumpur * `Asia/Kuching` - Asia/Kuching * `Asia/Kuwait` - Asia/Kuwait * `Asia/Macao` - Asia/Macao * `Asia/Macau` - Asia/Macau * `Asia/Magadan` - Asia/Magadan * `Asia/Makassar` - Asia/Makassar * `Asia/Manila` - Asia/Manila * `Asia/Muscat` - Asia/Muscat * `Asia/Nicosia` - Asia/Nicosia * `Asia/Novokuznetsk` - Asia/Novokuznetsk * `Asia/Novosibirsk` - Asia/Novosibirsk * `Asia/Omsk` - Asia/Omsk * `Asia/Oral` - Asia/Oral * `Asia/Phnom_Penh` - Asia/Phnom_Penh * `Asia/Pontianak` - Asia/Pontianak * `Asia/Pyongyang` - Asia/Pyongyang * `Asia/Qatar` - Asia/Qatar * `Asia/Qostanay` - Asia/Qostanay * `Asia/Qyzylorda` - Asia/Qyzylorda * `Asia/Rangoon` - Asia/Rangoon * `Asia/Riyadh` - Asia/Riyadh * `Asia/Saigon` - Asia/Saigon * `Asia/Sakhalin` - Asia/Sakhalin * `Asia/Samarkand` - Asia/Samarkand * `Asia/Seoul` - Asia/Seoul * `Asia/Shanghai` - Asia/Shanghai * `Asia/Singapore` - Asia/Singapore * `Asia/Srednekolymsk` - Asia/Srednekolymsk * `Asia/Taipei` - Asia/Taipei * `Asia/Tashkent` - Asia/Tashkent * `Asia/Tbilisi` - Asia/Tbilisi * `Asia/Tehran` - Asia/Tehran * `Asia/Tel_Aviv` - Asia/Tel_Aviv * `Asia/Thimbu` - Asia/Thimbu * `Asia/Thimphu` - Asia/Thimphu * `Asia/Tokyo` - Asia/Tokyo * `Asia/Tomsk` - Asia/Tomsk * `Asia/Ujung_Pandang` - Asia/Ujung_Pandang * `Asia/Ulaanbaatar` - Asia/Ulaanbaatar * `Asia/Ulan_Bator` - Asia/Ulan_Bator * `Asia/Urumqi` - Asia/Urumqi * `Asia/Ust-Nera` - Asia/Ust-Nera * `Asia/Vientiane` - Asia/Vientiane * `Asia/Vladivostok` - Asia/Vladivostok * `Asia/Yakutsk` - Asia/Yakutsk * `Asia/Yangon` - Asia/Yangon * `Asia/Yekaterinburg` - Asia/Yekaterinburg * `Asia/Yerevan` - Asia/Yerevan * `Atlantic/Azores` - Atlantic/Azores * `Atlantic/Bermuda` - Atlantic/Bermuda * `Atlantic/Canary` - Atlantic/Canary * `Atlantic/Cape_Verde` - Atlantic/Cape_Verde * `Atlantic/Faeroe` - Atlantic/Faeroe * `Atlantic/Faroe` - Atlantic/Faroe * `Atlantic/Jan_Mayen` - Atlantic/Jan_Mayen * `Atlantic/Madeira` - Atlantic/Madeira * `Atlantic/Reykjavik` - Atlantic/Reykjavik * `Atlantic/South_Georgia` - Atlantic/South_Georgia * `Atlantic/St_Helena` - Atlantic/St_Helena * `Atlantic/Stanley` - Atlantic/Stanley * `Australia/ACT` - Australia/ACT * `Australia/Adelaide` - Australia/Adelaide * `Australia/Brisbane` - Australia/Brisbane * `Australia/Broken_Hill` - Australia/Broken_Hill * `Australia/Canberra` - Australia/Canberra * `Australia/Currie` - Australia/Currie * `Australia/Darwin` - Australia/Darwin * `Australia/Eucla` - Australia/Eucla * `Australia/Hobart` - Australia/Hobart * `Australia/LHI` - Australia/LHI * `Australia/Lindeman` - Australia/Lindeman * `Australia/Lord_Howe` - Australia/Lord_Howe * `Australia/Melbourne` - Australia/Melbourne * `Australia/NSW` - Australia/NSW * `Australia/North` - Australia/North * `Australia/Perth` - Australia/Perth * `Australia/Queensland` - Australia/Queensland * `Australia/South` - Australia/South * `Australia/Sydney` - Australia/Sydney * `Australia/Tasmania` - Australia/Tasmania * `Australia/Victoria` - Australia/Victoria * `Australia/West` - Australia/West * `Australia/Yancowinna` - Australia/Yancowinna * `Brazil/Acre` - Brazil/Acre * `Brazil/DeNoronha` - Brazil/DeNoronha * `Brazil/East` - Brazil/East * `Brazil/West` - Brazil/West * `CET` - CET * `CST6CDT` - CST6CDT * `Canada/Atlantic` - Canada/Atlantic * `Canada/Central` - Canada/Central * `Canada/Eastern` - Canada/Eastern * `Canada/Mountain` - Canada/Mountain * `Canada/Newfoundland` - Canada/Newfoundland * `Canada/Pacific` - Canada/Pacific * `Canada/Saskatchewan` - Canada/Saskatchewan * `Canada/Yukon` - Canada/Yukon * `Chile/Continental` - Chile/Continental * `Chile/EasterIsland` - Chile/EasterIsland * `Cuba` - Cuba * `EET` - EET * `EST` - EST * `EST5EDT` - EST5EDT * `Egypt` - Egypt * `Eire` - Eire * `Etc/GMT` - Etc/GMT * `Etc/GMT+0` - Etc/GMT+0 * `Etc/GMT+1` - Etc/GMT+1 * `Etc/GMT+10` - Etc/GMT+10 * `Etc/GMT+11` - Etc/GMT+11 * `Etc/GMT+12` - Etc/GMT+12 * `Etc/GMT+2` - Etc/GMT+2 * `Etc/GMT+3` - Etc/GMT+3 * `Etc/GMT+4` - Etc/GMT+4 * `Etc/GMT+5` - Etc/GMT+5 * `Etc/GMT+6` - Etc/GMT+6 * `Etc/GMT+7` - Etc/GMT+7 * `Etc/GMT+8` - Etc/GMT+8 * `Etc/GMT+9` - Etc/GMT+9 * `Etc/GMT-0` - Etc/GMT-0 * `Etc/GMT-1` - Etc/GMT-1 * `Etc/GMT-10` - Etc/GMT-10 * `Etc/GMT-11` - Etc/GMT-11 * `Etc/GMT-12` - Etc/GMT-12 * `Etc/GMT-13` - Etc/GMT-13 * `Etc/GMT-14` - Etc/GMT-14 * `Etc/GMT-2` - Etc/GMT-2 * `Etc/GMT-3` - Etc/GMT-3 * `Etc/GMT-4` - Etc/GMT-4 * `Etc/GMT-5` - Etc/GMT-5 * `Etc/GMT-6` - Etc/GMT-6 * `Etc/GMT-7` - Etc/GMT-7 * `Etc/GMT-8` - Etc/GMT-8 * `Etc/GMT-9` - Etc/GMT-9 * `Etc/GMT0` - Etc/GMT0 * `Etc/Greenwich` - Etc/Greenwich * `Etc/UCT` - Etc/UCT * `Etc/UTC` - Etc/UTC * `Etc/Universal` - Etc/Universal * `Etc/Zulu` - Etc/Zulu * `Europe/Amsterdam` - Europe/Amsterdam * `Europe/Andorra` - Europe/Andorra * `Europe/Astrakhan` - Europe/Astrakhan * `Europe/Athens` - Europe/Athens * `Europe/Belfast` - Europe/Belfast * `Europe/Belgrade` - Europe/Belgrade * `Europe/Berlin` - Europe/Berlin * `Europe/Bratislava` - Europe/Bratislava * `Europe/Brussels` - Europe/Brussels * `Europe/Bucharest` - Europe/Bucharest * `Europe/Budapest` - Europe/Budapest * `Europe/Busingen` - Europe/Busingen * `Europe/Chisinau` - Europe/Chisinau * `Europe/Copenhagen` - Europe/Copenhagen * `Europe/Dublin` - Europe/Dublin * `Europe/Gibraltar` - Europe/Gibraltar * `Europe/Guernsey` - Europe/Guernsey * `Europe/Helsinki` - Europe/Helsinki * `Europe/Isle_of_Man` - Europe/Isle_of_Man * `Europe/Istanbul` - Europe/Istanbul * `Europe/Jersey` - Europe/Jersey * `Europe/Kaliningrad` - Europe/Kaliningrad * `Europe/Kiev` - Europe/Kiev * `Europe/Kirov` - Europe/Kirov * `Europe/Kyiv` - Europe/Kyiv * `Europe/Lisbon` - Europe/Lisbon * `Europe/Ljubljana` - Europe/Ljubljana * `Europe/London` - Europe/London * `Europe/Luxembourg` - Europe/Luxembourg * `Europe/Madrid` - Europe/Madrid * `Europe/Malta` - Europe/Malta * `Europe/Mariehamn` - Europe/Mariehamn * `Europe/Minsk` - Europe/Minsk * `Europe/Monaco` - Europe/Monaco * `Europe/Moscow` - Europe/Moscow * `Europe/Nicosia` - Europe/Nicosia * `Europe/Oslo` - Europe/Oslo * `Europe/Paris` - Europe/Paris * `Europe/Podgorica` - Europe/Podgorica * `Europe/Prague` - Europe/Prague * `Europe/Riga` - Europe/Riga * `Europe/Rome` - Europe/Rome * `Europe/Samara` - Europe/Samara * `Europe/San_Marino` - Europe/San_Marino * `Europe/Sarajevo` - Europe/Sarajevo * `Europe/Saratov` - Europe/Saratov * `Europe/Simferopol` - Europe/Simferopol * `Europe/Skopje` - Europe/Skopje * `Europe/Sofia` - Europe/Sofia * `Europe/Stockholm` - Europe/Stockholm * `Europe/Tallinn` - Europe/Tallinn * `Europe/Tirane` - Europe/Tirane * `Europe/Tiraspol` - Europe/Tiraspol * `Europe/Ulyanovsk` - Europe/Ulyanovsk * `Europe/Uzhgorod` - Europe/Uzhgorod * `Europe/Vaduz` - Europe/Vaduz * `Europe/Vatican` - Europe/Vatican * `Europe/Vienna` - Europe/Vienna * `Europe/Vilnius` - Europe/Vilnius * `Europe/Volgograd` - Europe/Volgograd * `Europe/Warsaw` - Europe/Warsaw * `Europe/Zagreb` - Europe/Zagreb * `Europe/Zaporozhye` - Europe/Zaporozhye * `Europe/Zurich` - Europe/Zurich * `GB` - GB * `GB-Eire` - GB-Eire * `GMT` - GMT * `GMT+0` - GMT+0 * `GMT-0` - GMT-0 * `GMT0` - GMT0 * `Greenwich` - Greenwich * `HST` - HST * `Hongkong` - Hongkong * `Iceland` - Iceland * `Indian/Antananarivo` - Indian/Antananarivo * `Indian/Chagos` - Indian/Chagos * `Indian/Christmas` - Indian/Christmas * `Indian/Cocos` - Indian/Cocos * `Indian/Comoro` - Indian/Comoro * `Indian/Kerguelen` - Indian/Kerguelen * `Indian/Mahe` - Indian/Mahe * `Indian/Maldives` - Indian/Maldives * `Indian/Mauritius` - Indian/Mauritius * `Indian/Mayotte` - Indian/Mayotte * `Indian/Reunion` - Indian/Reunion * `Iran` - Iran * `Israel` - Israel * `Jamaica` - Jamaica * `Japan` - Japan * `Kwajalein` - Kwajalein * `Libya` - Libya * `MET` - MET * `MST` - MST * `MST7MDT` - MST7MDT * `Mexico/BajaNorte` - Mexico/BajaNorte * `Mexico/BajaSur` - Mexico/BajaSur * `Mexico/General` - Mexico/General * `NZ` - NZ * `NZ-CHAT` - NZ-CHAT * `Navajo` - Navajo * `PRC` - PRC * `PST8PDT` - PST8PDT * `Pacific/Apia` - Pacific/Apia * `Pacific/Auckland` - Pacific/Auckland * `Pacific/Bougainville` - Pacific/Bougainville * `Pacific/Chatham` - Pacific/Chatham * `Pacific/Chuuk` - Pacific/Chuuk * `Pacific/Easter` - Pacific/Easter * `Pacific/Efate` - Pacific/Efate * `Pacific/Enderbury` - Pacific/Enderbury * `Pacific/Fakaofo` - Pacific/Fakaofo * `Pacific/Fiji` - Pacific/Fiji * `Pacific/Funafuti` - Pacific/Funafuti * `Pacific/Galapagos` - Pacific/Galapagos * `Pacific/Gambier` - Pacific/Gambier * `Pacific/Guadalcanal` - Pacific/Guadalcanal * `Pacific/Guam` - Pacific/Guam * `Pacific/Honolulu` - Pacific/Honolulu * `Pacific/Johnston` - Pacific/Johnston * `Pacific/Kanton` - Pacific/Kanton * `Pacific/Kiritimati` - Pacific/Kiritimati * `Pacific/Kosrae` - Pacific/Kosrae * `Pacific/Kwajalein` - Pacific/Kwajalein * `Pacific/Majuro` - Pacific/Majuro * `Pacific/Marquesas` - Pacific/Marquesas * `Pacific/Midway` - Pacific/Midway * `Pacific/Nauru` - Pacific/Nauru * `Pacific/Niue` - Pacific/Niue * `Pacific/Norfolk` - Pacific/Norfolk * `Pacific/Noumea` - Pacific/Noumea * `Pacific/Pago_Pago` - Pacific/Pago_Pago * `Pacific/Palau` - Pacific/Palau * `Pacific/Pitcairn` - Pacific/Pitcairn * `Pacific/Pohnpei` - Pacific/Pohnpei * `Pacific/Ponape` - Pacific/Ponape * `Pacific/Port_Moresby` - Pacific/Port_Moresby * `Pacific/Rarotonga` - Pacific/Rarotonga * `Pacific/Saipan` - Pacific/Saipan * `Pacific/Samoa` - Pacific/Samoa * `Pacific/Tahiti` - Pacific/Tahiti * `Pacific/Tarawa` - Pacific/Tarawa * `Pacific/Tongatapu` - Pacific/Tongatapu * `Pacific/Truk` - Pacific/Truk * `Pacific/Wake` - Pacific/Wake * `Pacific/Wallis` - Pacific/Wallis * `Pacific/Yap` - Pacific/Yap * `Poland` - Poland * `Portugal` - Portugal * `ROC` - ROC * `ROK` - ROK * `Singapore` - Singapore * `Turkey` - Turkey * `UCT` - UCT * `US/Alaska` - US/Alaska * `US/Aleutian` - US/Aleutian * `US/Arizona` - US/Arizona * `US/Central` - US/Central * `US/East-Indiana` - US/East-Indiana * `US/Eastern` - US/Eastern * `US/Hawaii` - US/Hawaii * `US/Indiana-Starke` - US/Indiana-Starke * `US/Michigan` - US/Michigan * `US/Mountain` - US/Mountain * `US/Pacific` - US/Pacific * `US/Samoa` - US/Samoa * `UTC` - UTC * `Universal` - Universal * `W-SU` - W-SU * `WET` - WET * `Zulu` - Zulu */
 export type TimezoneEnum =
@@ -655,8 +1513,7 @@ export type TimezoneEnum =
   | "Universal"
   | "W-SU"
   | "WET"
-  | "Zulu"
-  | (string & {});
+  | "Zulu";
 export const TimezoneEnum = /*@__PURE__*/ S.String;
 
 /** Serializer for `Team` model with minimal attributes to speeed up loading and transfer times. Also used for nested serializers. */
@@ -691,13 +1548,20 @@ export const TeamBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TeamBasic" }) as any as S.Schema<TeamBasic>;
 
+export type EffectiveMembershipLevelEnum = 1 | 8 | 15;
+export const EffectiveMembershipLevelEnum = /*@__PURE__*/ S.Number;
+
+/** * `0` - none * `3` - config * `6` - install * `9` - root */
+export type PluginsAccessLevelEnum = 0 | 3 | 6 | 9;
+export const PluginsAccessLevelEnum = /*@__PURE__*/ S.Number;
+
 export type OrganizationTeamsItemMap = { [key: string]: unknown | undefined };
 export const OrganizationTeamsItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<OrganizationTeamsItemMap>;
 
-export type OrganizationTeamsList = OrganizationTeamsItemMap[];
+export type OrganizationTeamsList = ReadonlyArray<OrganizationTeamsItemMap>;
 export const OrganizationTeamsList = /*@__PURE__*/ S.Array(
   OrganizationTeamsItemMap,
 ) as any as S.Schema<OrganizationTeamsList>;
@@ -710,12 +1574,13 @@ export const OrganizationProjectsItemMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<OrganizationProjectsItemMap>;
 
-export type OrganizationProjectsList = OrganizationProjectsItemMap[];
+export type OrganizationProjectsList =
+  ReadonlyArray<OrganizationProjectsItemMap>;
 export const OrganizationProjectsList = /*@__PURE__*/ S.Array(
   OrganizationProjectsItemMap,
 ) as any as S.Schema<OrganizationProjectsList>;
 
-export type OrganizationAvailableProductFeaturesList = unknown[];
+export type OrganizationAvailableProductFeaturesList = ReadonlyArray<unknown>;
 export const OrganizationAvailableProductFeaturesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<OrganizationAvailableProductFeaturesList>;
@@ -727,10 +1592,7 @@ export const OrganizationMetadataMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OrganizationMetadataMap>;
 
 /** * `bayesian` - Bayesian * `frequentist` - Frequentist */
-export type DefaultExperimentStatsMethodEnum =
-  | "bayesian"
-  | "frequentist"
-  | (string & {});
+export type DefaultExperimentStatsMethodEnum = "bayesian" | "frequentist";
 export const DefaultExperimentStatsMethodEnum = /*@__PURE__*/ S.String;
 
 /** Default statistical method for new experiments in this organization. * `bayesian` - Bayesian * `frequentist` - Frequentist */
@@ -747,8 +1609,8 @@ export interface Organization {
   logo_media_id?: string | null;
   created_at?: string;
   updated_at?: string;
-  membership_level?: number;
-  plugins_access_level?: number;
+  membership_level?: EffectiveMembershipLevelEnum;
+  plugins_access_level?: PluginsAccessLevelEnum;
   teams?: OrganizationTeamsList;
   projects?: OrganizationProjectsList;
   available_product_features?: OrganizationAvailableProductFeaturesList | null;
@@ -794,8 +1656,8 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
     logo_media_id: S.optional(S.NullOr(S.String)),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
-    membership_level: S.optional(S.Number),
-    plugins_access_level: S.optional(S.Number),
+    membership_level: S.optional(EffectiveMembershipLevelEnum),
+    plugins_access_level: S.optional(PluginsAccessLevelEnum),
     teams: S.optional(OrganizationTeamsList),
     projects: S.optional(OrganizationProjectsList),
     available_product_features: S.optional(
@@ -833,7 +1695,7 @@ export interface OrganizationBasic {
   name?: string;
   slug?: string;
   logo_media_id?: string | null;
-  membership_level?: number;
+  membership_level?: EffectiveMembershipLevelEnum;
   members_can_use_personal_api_keys?: boolean;
   /** Set this to 'No' to temporarily disable an organization. */
   is_active?: boolean | null;
@@ -848,7 +1710,7 @@ export const OrganizationBasic = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     slug: S.optional(S.String),
     logo_media_id: S.optional(S.NullOr(S.String)),
-    membership_level: S.optional(S.Number),
+    membership_level: S.optional(EffectiveMembershipLevelEnum),
     members_can_use_personal_api_keys: S.optional(S.Boolean),
     is_active: S.optional(S.NullOr(S.Boolean)),
     is_not_active_reason: S.optional(S.NullOr(S.String)),
@@ -858,12 +1720,10 @@ export const OrganizationBasic = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationBasic",
 }) as any as S.Schema<OrganizationBasic>;
 
-export type UsersCancelEmailChangeRequestPartialUpdateRequestOrganizationsList =
-  OrganizationBasic[];
-export const UsersCancelEmailChangeRequestPartialUpdateRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationBasic,
-  ) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestOrganizationsList>;
+export type UserOutputOrganizationsList = ReadonlyArray<OrganizationBasic>;
+export const UserOutputOrganizationsList = /*@__PURE__*/ S.Array(
+  OrganizationBasic,
+) as any as S.Schema<UserOutputOrganizationsList>;
 
 export interface ScenePersonalisationBasic {
   scene?: string;
@@ -878,62 +1738,35 @@ export const ScenePersonalisationBasic = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScenePersonalisationBasic",
 }) as any as S.Schema<ScenePersonalisationBasic>;
 
-export type UsersCancelEmailChangeRequestPartialUpdateRequestScenePersonalisationList =
-  ScenePersonalisationBasic[];
-export const UsersCancelEmailChangeRequestPartialUpdateRequestScenePersonalisationList =
-  /*@__PURE__*/ S.Array(
-    ScenePersonalisationBasic,
-  ) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestScenePersonalisationList>;
+export type UserOutputScenePersonalisationList =
+  ReadonlyArray<ScenePersonalisationBasic>;
+export const UserOutputScenePersonalisationList = /*@__PURE__*/ S.Array(
+  ScenePersonalisationBasic,
+) as any as S.Schema<UserOutputScenePersonalisationList>;
 
-/** * `light` - Light * `dark` - Dark * `system` - System */
-export type ThemeModeEnum = "light" | "dark" | "system" | (string & {});
-export const ThemeModeEnum = /*@__PURE__*/ S.String;
+export type UserOutputThemeMode = ThemeModeEnum | BlankEnum;
+export const UserOutputThemeMode =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserOutputThemeMode>;
 
-export type UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode =
-  | ThemeModeEnum
-  | BlankEnum;
-export const UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode>;
-
-/** * `above` - Above * `below` - Below * `hidden` - Hidden */
-export type ShortcutPositionEnum = "above" | "below" | "hidden" | (string & {});
-export const ShortcutPositionEnum = /*@__PURE__*/ S.String;
-
-export type UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
-  | ShortcutPositionEnum
-  | BlankEnum;
-export const UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition>;
-
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `other` - Other */
-export type RoleAtOrganizationEnum =
-  | "engineering"
-  | "data"
-  | "product"
-  | "founder"
-  | "leadership"
-  | "marketing"
-  | "sales"
-  | "other"
-  | (string & {});
-export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
+export type UserOutputShortcutPosition = ShortcutPositionEnum | BlankEnum;
+export const UserOutputShortcutPosition =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserOutputShortcutPosition>;
 
 /** * `delegated` - Delegated to teammate * `later` - Skipped for later * `other` - Other * `provisioned` - Account provisioned by a partner */
 export type OnboardingSkippedReasonEnum =
   | "delegated"
   | "later"
   | "other"
-  | "provisioned"
-  | (string & {});
+  | "provisioned";
 export const OnboardingSkippedReasonEnum = /*@__PURE__*/ S.String;
 
 /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UsersCancelEmailChangeRequestPartialUpdateRequestActiveRealtimeNotificationTypesList =
-  string[];
-export const UsersCancelEmailChangeRequestPartialUpdateRequestActiveRealtimeNotificationTypesList =
+export type UserOutputActiveRealtimeNotificationTypesList =
+  ReadonlyArray<string>;
+export const UserOutputActiveRealtimeNotificationTypesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestActiveRealtimeNotificationTypesList>;
+  ) as any as S.Schema<UserOutputActiveRealtimeNotificationTypesList>;
 
 /** Shape of each item in UserSerializer.pending_invites. */
 export interface PendingInvite {
@@ -953,1042 +1786,12 @@ export const PendingInvite = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PendingInvite" }) as any as S.Schema<PendingInvite>;
 
-export type UsersCancelEmailChangeRequestPartialUpdateRequestPendingInvitesList =
-  PendingInvite[];
-export const UsersCancelEmailChangeRequestPartialUpdateRequestPendingInvitesList =
-  /*@__PURE__*/ S.Array(
-    PendingInvite,
-  ) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequestPendingInvitesList>;
-
-export interface UsersCancelEmailChangeRequestPartialUpdateRequest {
-  date_joined?: string;
-  uuid?: string;
-  distinct_id?: string | null;
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-  pending_email?: string | null;
-  is_email_verified?: boolean | null;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
-  notification_settings?: UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap;
-  /** Whether PostHog should anonymize events captured for this user when identified. */
-  anonymize_data?: boolean | null;
-  allow_impersonation?: boolean | null;
-  toolbar_mode?: UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode | null;
-  has_password?: boolean;
-  id?: number;
-  /** Designates whether the user can log into this admin site. */
-  is_staff?: boolean;
-  is_impersonated?: boolean | null;
-  is_impersonated_until?: string | null;
-  is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
-  sensitive_session_expires_at?: string | null;
-  team?: TeamBasic;
-  organization?: Organization;
-  organizations?: UsersCancelEmailChangeRequestPartialUpdateRequestOrganizationsList;
-  set_current_organization?: string;
-  set_current_team?: string;
-  password?: string | Redacted.Redacted<string>;
-  /** The user's current password. Required when changing `password` if the user already has a usable password set. */
-  current_password?: string | Redacted.Redacted<string>;
-  events_column_config?: unknown;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  has_sso_enforcement?: boolean;
-  has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UsersCancelEmailChangeRequestPartialUpdateRequestScenePersonalisationList;
-  theme_mode?: UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode | null;
-  hedgehog_config?: unknown;
-  allow_sidebar_suggestions?: boolean | null;
-  shortcut_position?: UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition | null;
-  role_at_organization?: RoleAtOrganizationEnum;
-  /** Whether passkeys are enabled for 2FA authentication. Users can disable this to use only TOTP for 2FA while keeping passkeys for login. */
-  passkeys_enabled_for_2fa?: boolean | null;
-  /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
-  hide_mcp_hints?: boolean;
-  onboarding_skipped_at?: string | null;
-  onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
-  onboarding_skipped_organization_id?: string | null;
-  onboarding_delegated_to_invite?: string | null;
-  /** Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated. */
-  onboarding_delegated_to_organization_id?: string | null;
-  onboarding_delegation_accepted_at?: string | null;
-  is_organization_first_user?: boolean | null;
-  /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UsersCancelEmailChangeRequestPartialUpdateRequestActiveRealtimeNotificationTypesList;
-  pending_invites?: UsersCancelEmailChangeRequestPartialUpdateRequestPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
-  requires_credential_review?: boolean;
-}
-export const UsersCancelEmailChangeRequestPartialUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      date_joined: S.optional(S.String),
-      uuid: S.optional(S.String),
-      distinct_id: S.optional(S.NullOr(S.String)),
-      first_name: S.optional(S.String),
-      last_name: S.optional(S.String),
-      email: S.optional(S.String),
-      pending_email: S.optional(S.NullOr(S.String)),
-      is_email_verified: S.optional(S.NullOr(S.Boolean)),
-      notification_settings: S.optional(
-        UsersCancelEmailChangeRequestPartialUpdateRequestNotificationSettingsMap,
-      ),
-      anonymize_data: S.optional(S.NullOr(S.Boolean)),
-      allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-      toolbar_mode: S.optional(
-        S.NullOr(UsersCancelEmailChangeRequestPartialUpdateRequestToolbarMode),
-      ),
-      has_password: S.optional(S.Boolean),
-      id: S.optional(S.Number),
-      is_staff: S.optional(S.Boolean),
-      is_impersonated: S.optional(S.NullOr(S.Boolean)),
-      is_impersonated_until: S.optional(S.NullOr(S.String)),
-      is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-      is_impersonated_reason: S.optional(S.NullOr(S.String)),
-      sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-      team: S.optional(TeamBasic),
-      organization: S.optional(Organization),
-      organizations: S.optional(
-        UsersCancelEmailChangeRequestPartialUpdateRequestOrganizationsList,
-      ),
-      set_current_organization: S.optional(S.String),
-      set_current_team: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      events_column_config: S.optional(S.Unknown),
-      is_2fa_enabled: S.optional(S.Boolean),
-      has_social_auth: S.optional(S.Boolean),
-      has_sso_enforcement: S.optional(S.Boolean),
-      has_seen_product_intro_for: S.optional(S.Unknown),
-      scene_personalisation: S.optional(
-        UsersCancelEmailChangeRequestPartialUpdateRequestScenePersonalisationList,
-      ),
-      theme_mode: S.optional(
-        S.NullOr(UsersCancelEmailChangeRequestPartialUpdateRequestThemeMode),
-      ),
-      hedgehog_config: S.optional(S.Unknown),
-      allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-      shortcut_position: S.optional(
-        S.NullOr(
-          UsersCancelEmailChangeRequestPartialUpdateRequestShortcutPosition,
-        ),
-      ),
-      role_at_organization: S.optional(RoleAtOrganizationEnum),
-      passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
-      hide_mcp_hints: S.optional(S.Boolean),
-      onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-      onboarding_skipped_reason: S.optional(
-        S.NullOr(OnboardingSkippedReasonEnum),
-      ),
-      onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-      onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-      onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-      onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-      is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-      active_realtime_notification_types: S.optional(
-        UsersCancelEmailChangeRequestPartialUpdateRequestActiveRealtimeNotificationTypesList,
-      ),
-      pending_invites: S.optional(
-        UsersCancelEmailChangeRequestPartialUpdateRequestPendingInvitesList,
-      ),
-      requires_credential_review: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/users/cancel_email_change_request/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "UsersCancelEmailChangeRequestPartialUpdateRequest",
-  }) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateRequest>;
-
-export interface UsersCancelEmailChangeRequestPartialUpdateResponse {}
-export const UsersCancelEmailChangeRequestPartialUpdateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UsersCancelEmailChangeRequestPartialUpdateResponse",
-  }) as any as S.Schema<UsersCancelEmailChangeRequestPartialUpdateResponse>;
-
-export interface UsersCredentialsReviewCompleteCreateRequest {
-  uuid: string;
-}
-export const UsersCredentialsReviewCompleteCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/users/{uuid}/credentials_review_complete/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "UsersCredentialsReviewCompleteCreateRequest",
-  }) as any as S.Schema<UsersCredentialsReviewCompleteCreateRequest>;
-
-export interface UsersCredentialsReviewCompleteCreateResponse {}
-export const UsersCredentialsReviewCompleteCreateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UsersCredentialsReviewCompleteCreateResponse",
-  }) as any as S.Schema<UsersCredentialsReviewCompleteCreateResponse>;
-
-export interface UsersDestroyRequest {
-  uuid: string;
-}
-export const UsersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "DELETE", uri: "/api/users/{uuid}/", code: 200 })),
-).annotate({
-  identifier: "UsersDestroyRequest",
-}) as any as S.Schema<UsersDestroyRequest>;
-
-export interface UsersDestroyResponse {}
-export const UsersDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UsersDestroyResponse",
-}) as any as S.Schema<UsersDestroyResponse>;
-
-export interface UsersGithubLoginRetrieveRequest {
-  uuid: string;
-}
-export const UsersGithubLoginRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/users/{uuid}/github_login/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UsersGithubLoginRetrieveRequest",
-}) as any as S.Schema<UsersGithubLoginRetrieveRequest>;
-
-export interface UsersGithubLoginRetrieveResponse {}
-export const UsersGithubLoginRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UsersGithubLoginRetrieveResponse",
-}) as any as S.Schema<UsersGithubLoginRetrieveResponse>;
-
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
-export type UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap>;
-
-export type UsersHedgehogConfigPartialUpdateRequestToolbarMode =
-  | ToolbarModeEnum
-  | BlankEnum;
-export const UsersHedgehogConfigPartialUpdateRequestToolbarMode =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestToolbarMode>;
-
-export type UsersHedgehogConfigPartialUpdateRequestOrganizationsList =
-  OrganizationBasic[];
-export const UsersHedgehogConfigPartialUpdateRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationBasic,
-  ) as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestOrganizationsList>;
-
-export type UsersHedgehogConfigPartialUpdateRequestScenePersonalisationList =
-  ScenePersonalisationBasic[];
-export const UsersHedgehogConfigPartialUpdateRequestScenePersonalisationList =
-  /*@__PURE__*/ S.Array(
-    ScenePersonalisationBasic,
-  ) as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestScenePersonalisationList>;
-
-export type UsersHedgehogConfigPartialUpdateRequestThemeMode =
-  | ThemeModeEnum
-  | BlankEnum;
-export const UsersHedgehogConfigPartialUpdateRequestThemeMode =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestThemeMode>;
-
-export type UsersHedgehogConfigPartialUpdateRequestShortcutPosition =
-  | ShortcutPositionEnum
-  | BlankEnum;
-export const UsersHedgehogConfigPartialUpdateRequestShortcutPosition =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestShortcutPosition>;
-
-/** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UsersHedgehogConfigPartialUpdateRequestActiveRealtimeNotificationTypesList =
-  string[];
-export const UsersHedgehogConfigPartialUpdateRequestActiveRealtimeNotificationTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestActiveRealtimeNotificationTypesList>;
-
-export type UsersHedgehogConfigPartialUpdateRequestPendingInvitesList =
-  PendingInvite[];
-export const UsersHedgehogConfigPartialUpdateRequestPendingInvitesList =
-  /*@__PURE__*/ S.Array(
-    PendingInvite,
-  ) as any as S.Schema<UsersHedgehogConfigPartialUpdateRequestPendingInvitesList>;
-
-export interface UsersHedgehogConfigPartialUpdateRequest {
-  uuid: string;
-  date_joined?: string;
-  distinct_id?: string | null;
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-  pending_email?: string | null;
-  is_email_verified?: boolean | null;
-  /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
-  notification_settings?: UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap;
-  /** Whether PostHog should anonymize events captured for this user when identified. */
-  anonymize_data?: boolean | null;
-  allow_impersonation?: boolean | null;
-  toolbar_mode?: UsersHedgehogConfigPartialUpdateRequestToolbarMode | null;
-  has_password?: boolean;
-  id?: number;
-  /** Designates whether the user can log into this admin site. */
-  is_staff?: boolean;
-  is_impersonated?: boolean | null;
-  is_impersonated_until?: string | null;
-  is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
-  sensitive_session_expires_at?: string | null;
-  team?: TeamBasic;
-  organization?: Organization;
-  organizations?: UsersHedgehogConfigPartialUpdateRequestOrganizationsList;
-  set_current_organization?: string;
-  set_current_team?: string;
-  password?: string | Redacted.Redacted<string>;
-  /** The user's current password. Required when changing `password` if the user already has a usable password set. */
-  current_password?: string | Redacted.Redacted<string>;
-  events_column_config?: unknown;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  has_sso_enforcement?: boolean;
-  has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UsersHedgehogConfigPartialUpdateRequestScenePersonalisationList;
-  theme_mode?: UsersHedgehogConfigPartialUpdateRequestThemeMode | null;
-  hedgehog_config?: unknown;
-  allow_sidebar_suggestions?: boolean | null;
-  shortcut_position?: UsersHedgehogConfigPartialUpdateRequestShortcutPosition | null;
-  role_at_organization?: RoleAtOrganizationEnum;
-  /** Whether passkeys are enabled for 2FA authentication. Users can disable this to use only TOTP for 2FA while keeping passkeys for login. */
-  passkeys_enabled_for_2fa?: boolean | null;
-  /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
-  hide_mcp_hints?: boolean;
-  onboarding_skipped_at?: string | null;
-  onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
-  onboarding_skipped_organization_id?: string | null;
-  onboarding_delegated_to_invite?: string | null;
-  /** Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated. */
-  onboarding_delegated_to_organization_id?: string | null;
-  onboarding_delegation_accepted_at?: string | null;
-  is_organization_first_user?: boolean | null;
-  /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UsersHedgehogConfigPartialUpdateRequestActiveRealtimeNotificationTypesList;
-  pending_invites?: UsersHedgehogConfigPartialUpdateRequestPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
-  requires_credential_review?: boolean;
-}
-export const UsersHedgehogConfigPartialUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-      date_joined: S.optional(S.String),
-      distinct_id: S.optional(S.NullOr(S.String)),
-      first_name: S.optional(S.String),
-      last_name: S.optional(S.String),
-      email: S.optional(S.String),
-      pending_email: S.optional(S.NullOr(S.String)),
-      is_email_verified: S.optional(S.NullOr(S.Boolean)),
-      notification_settings: S.optional(
-        UsersHedgehogConfigPartialUpdateRequestNotificationSettingsMap,
-      ),
-      anonymize_data: S.optional(S.NullOr(S.Boolean)),
-      allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-      toolbar_mode: S.optional(
-        S.NullOr(UsersHedgehogConfigPartialUpdateRequestToolbarMode),
-      ),
-      has_password: S.optional(S.Boolean),
-      id: S.optional(S.Number),
-      is_staff: S.optional(S.Boolean),
-      is_impersonated: S.optional(S.NullOr(S.Boolean)),
-      is_impersonated_until: S.optional(S.NullOr(S.String)),
-      is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-      is_impersonated_reason: S.optional(S.NullOr(S.String)),
-      sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-      team: S.optional(TeamBasic),
-      organization: S.optional(Organization),
-      organizations: S.optional(
-        UsersHedgehogConfigPartialUpdateRequestOrganizationsList,
-      ),
-      set_current_organization: S.optional(S.String),
-      set_current_team: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      events_column_config: S.optional(S.Unknown),
-      is_2fa_enabled: S.optional(S.Boolean),
-      has_social_auth: S.optional(S.Boolean),
-      has_sso_enforcement: S.optional(S.Boolean),
-      has_seen_product_intro_for: S.optional(S.Unknown),
-      scene_personalisation: S.optional(
-        UsersHedgehogConfigPartialUpdateRequestScenePersonalisationList,
-      ),
-      theme_mode: S.optional(
-        S.NullOr(UsersHedgehogConfigPartialUpdateRequestThemeMode),
-      ),
-      hedgehog_config: S.optional(S.Unknown),
-      allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-      shortcut_position: S.optional(
-        S.NullOr(UsersHedgehogConfigPartialUpdateRequestShortcutPosition),
-      ),
-      role_at_organization: S.optional(RoleAtOrganizationEnum),
-      passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
-      hide_mcp_hints: S.optional(S.Boolean),
-      onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-      onboarding_skipped_reason: S.optional(
-        S.NullOr(OnboardingSkippedReasonEnum),
-      ),
-      onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-      onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-      onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-      onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-      is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-      active_realtime_notification_types: S.optional(
-        UsersHedgehogConfigPartialUpdateRequestActiveRealtimeNotificationTypesList,
-      ),
-      pending_invites: S.optional(
-        UsersHedgehogConfigPartialUpdateRequestPendingInvitesList,
-      ),
-      requires_credential_review: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/users/{uuid}/hedgehog_config/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "UsersHedgehogConfigPartialUpdateRequest",
-}) as any as S.Schema<UsersHedgehogConfigPartialUpdateRequest>;
-
-export interface UsersHedgehogConfigPartialUpdateResponse {}
-export const UsersHedgehogConfigPartialUpdateResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "UsersHedgehogConfigPartialUpdateResponse",
-}) as any as S.Schema<UsersHedgehogConfigPartialUpdateResponse>;
-
-export interface UsersHedgehogConfigRetrieveRequest {
-  uuid: string;
-}
-export const UsersHedgehogConfigRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/users/{uuid}/hedgehog_config/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UsersHedgehogConfigRetrieveRequest",
-}) as any as S.Schema<UsersHedgehogConfigRetrieveRequest>;
-
-export interface UsersHedgehogConfigRetrieveResponse {}
-export const UsersHedgehogConfigRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UsersHedgehogConfigRetrieveResponse",
-}) as any as S.Schema<UsersHedgehogConfigRetrieveResponse>;
-
-export interface UsersIntegrationsGithubBranchesRetrieveRequest {
-  uuid: string;
-  installation_id: string;
-  /** Maximum number of branches to return */
-  limit?: number;
-  /** Number of branches to skip */
-  offset?: number;
-  /** Repository in owner/repo format */
-  repo: string;
-  /** Optional case-insensitive branch name search query. */
-  search?: string;
-}
-export const UsersIntegrationsGithubBranchesRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-      installation_id: S.String.pipe(T.Label()),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      offset: S.optional(S.Number.pipe(T.Query())),
-      repo: S.String.pipe(T.Query()),
-      search: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/users/{uuid}/integrations/github/{installation_id}/branches/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "UsersIntegrationsGithubBranchesRetrieveRequest",
-  }) as any as S.Schema<UsersIntegrationsGithubBranchesRetrieveRequest>;
-
-/** List of branch names */
-export type GitHubBranchesResponseBranchesList = string[];
-export const GitHubBranchesResponseBranchesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GitHubBranchesResponseBranchesList>;
-
-export interface GitHubBranchesResponse {
-  /** List of branch names */
-  branches?: GitHubBranchesResponseBranchesList;
-  /** The default branch of the repository */
-  default_branch?: string | null;
-  /** Whether more branches exist beyond the returned page */
-  has_more?: boolean;
-}
-export const GitHubBranchesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branches: S.optional(GitHubBranchesResponseBranchesList),
-    default_branch: S.optional(S.NullOr(S.String)),
-    has_more: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GitHubBranchesResponse",
-}) as any as S.Schema<GitHubBranchesResponse>;
-
-export interface UsersIntegrationsGithubDestroyRequest {
-  uuid: string;
-  installation_id: string;
-}
-export const UsersIntegrationsGithubDestroyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-      installation_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/api/users/{uuid}/integrations/github/{installation_id}/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "UsersIntegrationsGithubDestroyRequest",
-}) as any as S.Schema<UsersIntegrationsGithubDestroyRequest>;
-
-export interface UsersIntegrationsGithubDestroyResponse {}
-export const UsersIntegrationsGithubDestroyResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "UsersIntegrationsGithubDestroyResponse",
-}) as any as S.Schema<UsersIntegrationsGithubDestroyResponse>;
-
-export interface UsersIntegrationsGithubPrepareCallbackCreateRequest {
-  uuid: string;
-  /** GitHub App installation id being managed on github.com. */
-  installation_id: string;
-}
-export const UsersIntegrationsGithubPrepareCallbackCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-      installation_id: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/users/{uuid}/integrations/github/prepare_callback/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "UsersIntegrationsGithubPrepareCallbackCreateRequest",
-  }) as any as S.Schema<UsersIntegrationsGithubPrepareCallbackCreateRequest>;
-
-export interface UsersIntegrationsGithubPrepareCallbackCreateResponse {}
-export const UsersIntegrationsGithubPrepareCallbackCreateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UsersIntegrationsGithubPrepareCallbackCreateResponse",
-  }) as any as S.Schema<UsersIntegrationsGithubPrepareCallbackCreateResponse>;
-
-export interface UsersIntegrationsGithubReposRefreshCreateRequest {
-  uuid: string;
-  installation_id: string;
-}
-export const UsersIntegrationsGithubReposRefreshCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-      installation_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/users/{uuid}/integrations/github/{installation_id}/repos/refresh/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "UsersIntegrationsGithubReposRefreshCreateRequest",
-  }) as any as S.Schema<UsersIntegrationsGithubReposRefreshCreateRequest>;
-
-export interface GitHubRepo {
-  /** GitHub repository numeric identifier. */
-  id?: number;
-  /** Repository short name (without the owner prefix). */
-  name?: string;
-  /** Fully-qualified repository name as 'owner/repo'. */
-  full_name?: string;
-  /** Whether the repository is private. */
-  private?: boolean;
-  /** The repository's default branch (e.g. 'main'). */
-  default_branch?: string;
-  /** Primary programming language GitHub detected for the repository. */
-  language?: string;
-  /** ISO 8601 timestamp of the most recent push, useful for sorting by recent activity. */
-  pushed_at?: string;
-  /** Whether the repository is archived. */
-  archived?: boolean;
-  /** Whether the PostHog GitHub App has write access — required to open pull requests. */
-  can_push?: boolean;
-}
-export const GitHubRepo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    full_name: S.optional(S.String),
-    private: S.optional(S.Boolean),
-    default_branch: S.optional(S.String),
-    language: S.optional(S.String),
-    pushed_at: S.optional(S.String),
-    archived: S.optional(S.Boolean),
-    can_push: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GitHubRepo" }) as any as S.Schema<GitHubRepo>;
-
-/** The refreshed repository cache. */
-export type GitHubReposRefreshResponseRepositoriesList = GitHubRepo[];
-export const GitHubReposRefreshResponseRepositoriesList = /*@__PURE__*/ S.Array(
-  GitHubRepo,
-) as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
-
-export interface GitHubReposRefreshResponse {
-  /** The refreshed repository cache. */
-  repositories?: GitHubReposRefreshResponseRepositoriesList;
-}
-export const GitHubReposRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repositories: S.optional(GitHubReposRefreshResponseRepositoriesList),
-  }),
-).annotate({
-  identifier: "GitHubReposRefreshResponse",
-}) as any as S.Schema<GitHubReposRefreshResponse>;
-
-export interface UsersIntegrationsGithubReposRetrieveRequest {
-  uuid: string;
-  installation_id: string;
-  /** Maximum number of repositories to return per request (max 500). */
-  limit?: number;
-  /** Number of repositories to skip before returning results. */
-  offset?: number;
-  /** Optional case-insensitive repository name search query. */
-  search?: string;
-}
-export const UsersIntegrationsGithubReposRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-      installation_id: S.String.pipe(T.Label()),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      offset: S.optional(S.Number.pipe(T.Query())),
-      search: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/users/{uuid}/integrations/github/{installation_id}/repos/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "UsersIntegrationsGithubReposRetrieveRequest",
-  }) as any as S.Schema<UsersIntegrationsGithubReposRetrieveRequest>;
-
-export type GitHubReposResponseRepositoriesList = GitHubRepo[];
-export const GitHubReposResponseRepositoriesList = /*@__PURE__*/ S.Array(
-  GitHubRepo,
-) as any as S.Schema<GitHubReposResponseRepositoriesList>;
-
-export interface GitHubReposResponse {
-  repositories?: GitHubReposResponseRepositoriesList;
-  /** Whether more repositories are available beyond this page. */
-  has_more?: boolean;
-}
-export const GitHubReposResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repositories: S.optional(GitHubReposResponseRepositoriesList),
-    has_more: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GitHubReposResponse",
-}) as any as S.Schema<GitHubReposResponse>;
-
-export interface UsersIntegrationsGithubStartCreateRequest {
-  uuid: string;
-  /** Optional team/project id (e.g. PostHog Code); web UI uses the session's current team. */
-  team_id?: number | null;
-  /** Optional client hint (e.g. posthog_code) for return routing after OAuth. */
-  connect_from?: string;
-}
-export const UsersIntegrationsGithubStartCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-      team_id: S.optional(S.NullOr(S.Number)),
-      connect_from: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/users/{uuid}/integrations/github/start/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "UsersIntegrationsGithubStartCreateRequest",
-  }) as any as S.Schema<UsersIntegrationsGithubStartCreateRequest>;
-
-export interface UserGitHubLinkStartResponse {
-  /** URL to open in the browser to install or authorize the GitHub App for this user. */
-  install_url: string;
-  /** OAuth or install flow used for this GitHub connection. */
-  connect_flow: string;
-}
-export const UserGitHubLinkStartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    install_url: S.String,
-    connect_flow: S.String,
-  }),
-).annotate({
-  identifier: "UserGitHubLinkStartResponse",
-}) as any as S.Schema<UserGitHubLinkStartResponse>;
-
-export type UsersIntegrationsListRequestKind =
-  | "github"
-  | "slack"
-  | (string & {});
-export const UsersIntegrationsListRequestKind = /*@__PURE__*/ S.String;
-
-export interface UsersIntegrationsListRequest {
-  uuid: string;
-  /** Integration kind to list. Defaults to `github` for back-compat with mobile and the Code SDK, which call this endpoint without a query param and expect GitHub-shaped items. */
-  kind?: UsersIntegrationsListRequestKind;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-}
-export const UsersIntegrationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.String.pipe(T.Label()),
-    kind: S.optional(UsersIntegrationsListRequestKind.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/users/{uuid}/integrations/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UsersIntegrationsListRequest",
-}) as any as S.Schema<UsersIntegrationsListRequest>;
-
-export interface UserGitHubAccount {
-  /** GitHub account type for the installation (e.g. User or Organization). */
-  type?: string | null;
-  /** GitHub login or organization name tied to the installation. */
-  name?: string | null;
-}
-export const UserGitHubAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UserGitHubAccount",
-}) as any as S.Schema<UserGitHubAccount>;
-
-export interface UserGitHubIntegrationItem {
-  /** PostHog UserIntegration row id. */
-  id: string;
-  /** Integration kind; always `github` for this API. */
-  kind: string;
-  /** GitHub App installation id. */
-  installation_id: string;
-  /** Repository selection mode from GitHub (e.g. selected or all). */
-  repository_selection?: string | null;
-  /** Installation account metadata from GitHub. */
-  account?: UserGitHubAccount | null;
-  /** True when this installation id matches a team-level GitHub integration on the active project. */
-  uses_shared_installation: boolean;
-  /** When this integration row was created. */
-  created_at: string;
-}
-export const UserGitHubIntegrationItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    kind: S.String,
-    installation_id: S.String,
-    repository_selection: S.optional(S.NullOr(S.String)),
-    account: S.optional(S.NullOr(UserGitHubAccount)),
-    uses_shared_installation: S.Boolean,
-    created_at: S.String,
-  }),
-).annotate({
-  identifier: "UserGitHubIntegrationItem",
-}) as any as S.Schema<UserGitHubIntegrationItem>;
-
-/** GitHub personal integrations for the authenticated user. */
-export type UserGitHubIntegrationListResponseResultsList =
-  UserGitHubIntegrationItem[];
-export const UserGitHubIntegrationListResponseResultsList =
-  /*@__PURE__*/ S.Array(
-    UserGitHubIntegrationItem,
-  ) as any as S.Schema<UserGitHubIntegrationListResponseResultsList>;
-
-export interface UserGitHubIntegrationListResponse {
-  /** GitHub personal integrations for the authenticated user. */
-  results: UserGitHubIntegrationListResponseResultsList;
-}
-export const UserGitHubIntegrationListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: UserGitHubIntegrationListResponseResultsList,
-  }),
-).annotate({
-  identifier: "UserGitHubIntegrationListResponse",
-}) as any as S.Schema<UserGitHubIntegrationListResponse>;
-
-export type PaginatedUserGitHubIntegrationListResponseListResultsList =
-  UserGitHubIntegrationListResponse[];
-export const PaginatedUserGitHubIntegrationListResponseListResultsList =
-  /*@__PURE__*/ S.Array(
-    UserGitHubIntegrationListResponse,
-  ) as any as S.Schema<PaginatedUserGitHubIntegrationListResponseListResultsList>;
-
-export interface PaginatedUserGitHubIntegrationListResponseList {
-  count: number;
-  next?: string | null;
-  previous?: string | null;
-  results: PaginatedUserGitHubIntegrationListResponseListResultsList;
-}
-export const PaginatedUserGitHubIntegrationListResponseList =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      count: S.Number,
-      next: S.optional(S.NullOr(S.String)),
-      previous: S.optional(S.NullOr(S.String)),
-      results: PaginatedUserGitHubIntegrationListResponseListResultsList,
-    }),
-  ).annotate({
-    identifier: "PaginatedUserGitHubIntegrationListResponseList",
-  }) as any as S.Schema<PaginatedUserGitHubIntegrationListResponseList>;
-
-export interface UsersIntegrationsSlackDestroyRequest {
-  uuid: string;
-  slack_user_id: string;
-}
-export const UsersIntegrationsSlackDestroyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-      slack_user_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/api/users/{uuid}/integrations/slack/{slack_user_id}/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "UsersIntegrationsSlackDestroyRequest",
-}) as any as S.Schema<UsersIntegrationsSlackDestroyRequest>;
-
-export interface UsersIntegrationsSlackDestroyResponse {}
-export const UsersIntegrationsSlackDestroyResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "UsersIntegrationsSlackDestroyResponse",
-}) as any as S.Schema<UsersIntegrationsSlackDestroyResponse>;
-
-export interface UsersIntegrationsSlackLinkableWorkspacesRetrieveRequest {
-  uuid: string;
-}
-export const UsersIntegrationsSlackLinkableWorkspacesRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/users/{uuid}/integrations/slack/linkable_workspaces/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "UsersIntegrationsSlackLinkableWorkspacesRetrieveRequest",
-  }) as any as S.Schema<UsersIntegrationsSlackLinkableWorkspacesRetrieveRequest>;
-
-export interface UserSlackLinkableWorkspaceItem {
-  /** PostHog team/project id owning the Slack workspace install. */
-  posthog_team_id: number;
-  /** PostHog team/project name, for display in a picker. */
-  posthog_team_name: string;
-  /** PostHog organization name owning the team, for picker disambiguation. */
-  posthog_organization_name: string;
-  /** Slack workspace (team) id. */
-  slack_team_id: string;
-  /** Slack workspace display name as known by PostHog. */
-  slack_team_name?: string | null;
-}
-export const UserSlackLinkableWorkspaceItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    posthog_team_id: S.Number,
-    posthog_team_name: S.String,
-    posthog_organization_name: S.String,
-    slack_team_id: S.String,
-    slack_team_name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "UserSlackLinkableWorkspaceItem",
-}) as any as S.Schema<UserSlackLinkableWorkspaceItem>;
-
-/** Slack workspaces the user could link to but hasn't yet. */
-export type UserSlackLinkableWorkspaceListResponseResultsList =
-  UserSlackLinkableWorkspaceItem[];
-export const UserSlackLinkableWorkspaceListResponseResultsList =
-  /*@__PURE__*/ S.Array(
-    UserSlackLinkableWorkspaceItem,
-  ) as any as S.Schema<UserSlackLinkableWorkspaceListResponseResultsList>;
-
-export interface UserSlackLinkableWorkspaceListResponse {
-  /** Slack workspaces the user could link to but hasn't yet. */
-  results: UserSlackLinkableWorkspaceListResponseResultsList;
-}
-export const UserSlackLinkableWorkspaceListResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      results: UserSlackLinkableWorkspaceListResponseResultsList,
-    }),
-).annotate({
-  identifier: "UserSlackLinkableWorkspaceListResponse",
-}) as any as S.Schema<UserSlackLinkableWorkspaceListResponse>;
-
-export interface UsersIntegrationsSlackStartCreateRequest {
-  uuid: string;
-  /** Optional team/project id to link against; defaults to the user's current team. */
-  team_id?: number | null;
-  /** Specific Slack workspace id to link against, scoped to the team. Disambiguates when one team has multiple Slack integrations (rare). */
-  slack_team_id?: string | null;
-}
-export const UsersIntegrationsSlackStartCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-      team_id: S.optional(S.NullOr(S.Number)),
-      slack_team_id: S.optional(S.NullOr(S.String)),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/users/{uuid}/integrations/slack/start/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "UsersIntegrationsSlackStartCreateRequest",
-}) as any as S.Schema<UsersIntegrationsSlackStartCreateRequest>;
-
-export interface UserSlackLinkStartResponse {
-  /** URL to open in the browser to start the Sign-in-with-Slack flow. */
-  install_url: string;
-}
-export const UserSlackLinkStartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    install_url: S.String,
-  }),
-).annotate({
-  identifier: "UserSlackLinkStartResponse",
-}) as any as S.Schema<UserSlackLinkStartResponse>;
-
-export interface UsersListRequest {
-  email?: string;
-  is_staff?: boolean;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-}
-export const UsersListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String.pipe(T.Query())),
-    is_staff: S.optional(S.Boolean.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/api/users/", code: 200 })),
-).annotate({
-  identifier: "UsersListRequest",
-}) as any as S.Schema<UsersListRequest>;
-
-/** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
-export type UserNotificationSettingsMap = {
-  [key: string]: unknown | undefined;
-};
-export const UserNotificationSettingsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserNotificationSettingsMap>;
-
-export type UserToolbarMode = ToolbarModeEnum | BlankEnum;
-export const UserToolbarMode =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserToolbarMode>;
-
-export type UserOrganizationsList = OrganizationBasic[];
-export const UserOrganizationsList = /*@__PURE__*/ S.Array(
-  OrganizationBasic,
-) as any as S.Schema<UserOrganizationsList>;
-
-export type UserScenePersonalisationList = ScenePersonalisationBasic[];
-export const UserScenePersonalisationList = /*@__PURE__*/ S.Array(
-  ScenePersonalisationBasic,
-) as any as S.Schema<UserScenePersonalisationList>;
-
-export type UserThemeMode = ThemeModeEnum | BlankEnum;
-export const UserThemeMode =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserThemeMode>;
-
-export type UserShortcutPosition = ShortcutPositionEnum | BlankEnum;
-export const UserShortcutPosition =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserShortcutPosition>;
-
-/** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UserActiveRealtimeNotificationTypesList = string[];
-export const UserActiveRealtimeNotificationTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserActiveRealtimeNotificationTypesList>;
-
-export type UserPendingInvitesList = PendingInvite[];
-export const UserPendingInvitesList = /*@__PURE__*/ S.Array(
+export type UserOutputPendingInvitesList = ReadonlyArray<PendingInvite>;
+export const UserOutputPendingInvitesList = /*@__PURE__*/ S.Array(
   PendingInvite,
-) as any as S.Schema<UserPendingInvitesList>;
+) as any as S.Schema<UserOutputPendingInvitesList>;
 
-export interface User {
+export interface UserOutput {
   date_joined?: string;
   uuid?: string;
   distinct_id?: string | null;
@@ -1998,11 +1801,11 @@ export interface User {
   pending_email?: string | null;
   is_email_verified?: boolean | null;
   /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
-  notification_settings?: UserNotificationSettingsMap;
+  notification_settings?: UserOutputNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
   allow_impersonation?: boolean | null;
-  toolbar_mode?: UserToolbarMode | null;
+  toolbar_mode?: UserOutputToolbarMode | null;
   has_password?: boolean;
   id?: number;
   /** Designates whether the user can log into this admin site. */
@@ -2015,22 +1818,17 @@ export interface User {
   sensitive_session_expires_at?: string | null;
   team?: TeamBasic;
   organization?: Organization;
-  organizations?: UserOrganizationsList;
-  set_current_organization?: string;
-  set_current_team?: string;
-  password?: string | Redacted.Redacted<string>;
-  /** The user's current password. Required when changing `password` if the user already has a usable password set. */
-  current_password?: string | Redacted.Redacted<string>;
+  organizations?: UserOutputOrganizationsList;
   events_column_config?: unknown;
   is_2fa_enabled?: boolean;
   has_social_auth?: boolean;
   has_sso_enforcement?: boolean;
   has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UserScenePersonalisationList;
-  theme_mode?: UserThemeMode | null;
+  scene_personalisation?: UserOutputScenePersonalisationList;
+  theme_mode?: UserOutputThemeMode | null;
   hedgehog_config?: unknown;
   allow_sidebar_suggestions?: boolean | null;
-  shortcut_position?: UserShortcutPosition | null;
+  shortcut_position?: UserOutputShortcutPosition | null;
   role_at_organization?: RoleAtOrganizationEnum;
   /** Whether passkeys are enabled for 2FA authentication. Users can disable this to use only TOTP for 2FA while keeping passkeys for login. */
   passkeys_enabled_for_2fa?: boolean | null;
@@ -2045,12 +1843,12 @@ export interface User {
   onboarding_delegation_accepted_at?: string | null;
   is_organization_first_user?: boolean | null;
   /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UserActiveRealtimeNotificationTypesList;
-  pending_invites?: UserPendingInvitesList;
+  active_realtime_notification_types?: UserOutputActiveRealtimeNotificationTypesList;
+  pending_invites?: UserOutputPendingInvitesList;
   /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
   requires_credential_review?: boolean;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+export const UserOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_joined: S.optional(S.String),
     uuid: S.optional(S.String),
@@ -2060,10 +1858,10 @@ export const User = /*@__PURE__*/ S.suspend(() =>
     email: S.optional(S.String),
     pending_email: S.optional(S.NullOr(S.String)),
     is_email_verified: S.optional(S.NullOr(S.Boolean)),
-    notification_settings: S.optional(UserNotificationSettingsMap),
+    notification_settings: S.optional(UserOutputNotificationSettingsMap),
     anonymize_data: S.optional(S.NullOr(S.Boolean)),
     allow_impersonation: S.optional(S.NullOr(S.Boolean)),
-    toolbar_mode: S.optional(S.NullOr(UserToolbarMode)),
+    toolbar_mode: S.optional(S.NullOr(UserOutputToolbarMode)),
     has_password: S.optional(S.Boolean),
     id: S.optional(S.Number),
     is_staff: S.optional(S.Boolean),
@@ -2074,21 +1872,17 @@ export const User = /*@__PURE__*/ S.suspend(() =>
     sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
     team: S.optional(TeamBasic),
     organization: S.optional(Organization),
-    organizations: S.optional(UserOrganizationsList),
-    set_current_organization: S.optional(S.String),
-    set_current_team: S.optional(S.String),
-    password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    organizations: S.optional(UserOutputOrganizationsList),
     events_column_config: S.optional(S.Unknown),
     is_2fa_enabled: S.optional(S.Boolean),
     has_social_auth: S.optional(S.Boolean),
     has_sso_enforcement: S.optional(S.Boolean),
     has_seen_product_intro_for: S.optional(S.Unknown),
-    scene_personalisation: S.optional(UserScenePersonalisationList),
-    theme_mode: S.optional(S.NullOr(UserThemeMode)),
+    scene_personalisation: S.optional(UserOutputScenePersonalisationList),
+    theme_mode: S.optional(S.NullOr(UserOutputThemeMode)),
     hedgehog_config: S.optional(S.Unknown),
     allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
-    shortcut_position: S.optional(S.NullOr(UserShortcutPosition)),
+    shortcut_position: S.optional(S.NullOr(UserOutputShortcutPosition)),
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
@@ -2102,34 +1896,34 @@ export const User = /*@__PURE__*/ S.suspend(() =>
     onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
     is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
     active_realtime_notification_types: S.optional(
-      UserActiveRealtimeNotificationTypesList,
+      UserOutputActiveRealtimeNotificationTypesList,
     ),
-    pending_invites: S.optional(UserPendingInvitesList),
+    pending_invites: S.optional(UserOutputPendingInvitesList),
     requires_credential_review: S.optional(S.Boolean),
   }),
-).annotate({ identifier: "User" }) as any as S.Schema<User>;
+).annotate({ identifier: "UserOutput" }) as any as S.Schema<UserOutput>;
 
-export type PaginatedUserListResultsList = User[];
-export const PaginatedUserListResultsList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<PaginatedUserListResultsList>;
+export type PaginatedUserListOutputResultsList = ReadonlyArray<UserOutput>;
+export const PaginatedUserListOutputResultsList = /*@__PURE__*/ S.Array(
+  UserOutput,
+) as any as S.Schema<PaginatedUserListOutputResultsList>;
 
-export interface PaginatedUserList {
+export interface PaginatedUserListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
-  results?: PaginatedUserListResultsList;
+  results?: PaginatedUserListOutputResultsList;
 }
-export const PaginatedUserList = /*@__PURE__*/ S.suspend(() =>
+export const PaginatedUserListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedUserListResultsList),
+    results: S.optional(PaginatedUserListOutputResultsList),
   }),
 ).annotate({
-  identifier: "PaginatedUserList",
-}) as any as S.Schema<PaginatedUserList>;
+  identifier: "PaginatedUserListOutput",
+}) as any as S.Schema<PaginatedUserListOutput>;
 
 export interface UsersLoginSessionsDestroyRequest {
   uuid: string;
@@ -2209,7 +2003,8 @@ export const UserAuthSession = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserAuthSession",
 }) as any as S.Schema<UserAuthSession>;
 
-export type UsersLoginSessionsListResponseBodyList = UserAuthSession[];
+export type UsersLoginSessionsListResponseBodyList =
+  ReadonlyArray<UserAuthSession>;
 export const UsersLoginSessionsListResponseBodyList = /*@__PURE__*/ S.Array(
   UserAuthSession,
 ) as any as S.Schema<UsersLoginSessionsListResponseBodyList>;
@@ -2253,7 +2048,7 @@ export const RevokeOtherSessionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeOtherSessionsResponse>;
 
 /** * `later` - Later * `other` - Other */
-export type OnboardingSkipRequestReasonEnum = "later" | "other" | (string & {});
+export type OnboardingSkipRequestReasonEnum = "later" | "other";
 export const OnboardingSkipRequestReasonEnum = /*@__PURE__*/ S.String;
 
 export interface UsersOnboardingSkipCreateRequest {
@@ -2293,18 +2088,6 @@ export type UsersPartialUpdateRequestToolbarMode = ToolbarModeEnum | BlankEnum;
 export const UsersPartialUpdateRequestToolbarMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersPartialUpdateRequestToolbarMode>;
 
-export type UsersPartialUpdateRequestOrganizationsList = OrganizationBasic[];
-export const UsersPartialUpdateRequestOrganizationsList = /*@__PURE__*/ S.Array(
-  OrganizationBasic,
-) as any as S.Schema<UsersPartialUpdateRequestOrganizationsList>;
-
-export type UsersPartialUpdateRequestScenePersonalisationList =
-  ScenePersonalisationBasic[];
-export const UsersPartialUpdateRequestScenePersonalisationList =
-  /*@__PURE__*/ S.Array(
-    ScenePersonalisationBasic,
-  ) as any as S.Schema<UsersPartialUpdateRequestScenePersonalisationList>;
-
 export type UsersPartialUpdateRequestThemeMode = ThemeModeEnum | BlankEnum;
 export const UsersPartialUpdateRequestThemeMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersPartialUpdateRequestThemeMode>;
@@ -2315,59 +2098,26 @@ export type UsersPartialUpdateRequestShortcutPosition =
 export const UsersPartialUpdateRequestShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersPartialUpdateRequestShortcutPosition>;
 
-/** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UsersPartialUpdateRequestActiveRealtimeNotificationTypesList =
-  string[];
-export const UsersPartialUpdateRequestActiveRealtimeNotificationTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UsersPartialUpdateRequestActiveRealtimeNotificationTypesList>;
-
-export type UsersPartialUpdateRequestPendingInvitesList = PendingInvite[];
-export const UsersPartialUpdateRequestPendingInvitesList =
-  /*@__PURE__*/ S.Array(
-    PendingInvite,
-  ) as any as S.Schema<UsersPartialUpdateRequestPendingInvitesList>;
-
 export interface UsersPartialUpdateRequest {
   uuid: string;
-  date_joined?: string;
-  distinct_id?: string | null;
   first_name?: string;
   last_name?: string;
   email?: string;
-  pending_email?: string | null;
-  is_email_verified?: boolean | null;
   /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
   notification_settings?: UsersPartialUpdateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
   allow_impersonation?: boolean | null;
   toolbar_mode?: UsersPartialUpdateRequestToolbarMode | null;
-  has_password?: boolean;
-  id?: number;
   /** Designates whether the user can log into this admin site. */
   is_staff?: boolean;
-  is_impersonated?: boolean | null;
-  is_impersonated_until?: string | null;
-  is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
-  sensitive_session_expires_at?: string | null;
-  team?: TeamBasic;
-  organization?: Organization;
-  organizations?: UsersPartialUpdateRequestOrganizationsList;
   set_current_organization?: string;
   set_current_team?: string;
   password?: string | Redacted.Redacted<string>;
   /** The user's current password. Required when changing `password` if the user already has a usable password set. */
   current_password?: string | Redacted.Redacted<string>;
   events_column_config?: unknown;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  has_sso_enforcement?: boolean;
   has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UsersPartialUpdateRequestScenePersonalisationList;
   theme_mode?: UsersPartialUpdateRequestThemeMode | null;
   hedgehog_config?: unknown;
   allow_sidebar_suggestions?: boolean | null;
@@ -2377,59 +2127,26 @@ export interface UsersPartialUpdateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
-  onboarding_skipped_at?: string | null;
-  onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
-  onboarding_skipped_organization_id?: string | null;
-  onboarding_delegated_to_invite?: string | null;
-  /** Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated. */
-  onboarding_delegated_to_organization_id?: string | null;
-  onboarding_delegation_accepted_at?: string | null;
-  is_organization_first_user?: boolean | null;
-  /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UsersPartialUpdateRequestActiveRealtimeNotificationTypesList;
-  pending_invites?: UsersPartialUpdateRequestPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
-  requires_credential_review?: boolean;
 }
 export const UsersPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
-    date_joined: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
     first_name: S.optional(S.String),
     last_name: S.optional(S.String),
     email: S.optional(S.String),
-    pending_email: S.optional(S.NullOr(S.String)),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
     notification_settings: S.optional(
       UsersPartialUpdateRequestNotificationSettingsMap,
     ),
     anonymize_data: S.optional(S.NullOr(S.Boolean)),
     allow_impersonation: S.optional(S.NullOr(S.Boolean)),
     toolbar_mode: S.optional(S.NullOr(UsersPartialUpdateRequestToolbarMode)),
-    has_password: S.optional(S.Boolean),
-    id: S.optional(S.Number),
     is_staff: S.optional(S.Boolean),
-    is_impersonated: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_until: S.optional(S.NullOr(S.String)),
-    is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_reason: S.optional(S.NullOr(S.String)),
-    sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-    team: S.optional(TeamBasic),
-    organization: S.optional(Organization),
-    organizations: S.optional(UsersPartialUpdateRequestOrganizationsList),
     set_current_organization: S.optional(S.String),
     set_current_team: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     events_column_config: S.optional(S.Unknown),
-    is_2fa_enabled: S.optional(S.Boolean),
-    has_social_auth: S.optional(S.Boolean),
-    has_sso_enforcement: S.optional(S.Boolean),
     has_seen_product_intro_for: S.optional(S.Unknown),
-    scene_personalisation: S.optional(
-      UsersPartialUpdateRequestScenePersonalisationList,
-    ),
     theme_mode: S.optional(S.NullOr(UsersPartialUpdateRequestThemeMode)),
     hedgehog_config: S.optional(S.Unknown),
     allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
@@ -2439,27 +2156,13 @@ export const UsersPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
-    onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-    onboarding_skipped_reason: S.optional(
-      S.NullOr(OnboardingSkippedReasonEnum),
-    ),
-    onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-    is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-    active_realtime_notification_types: S.optional(
-      UsersPartialUpdateRequestActiveRealtimeNotificationTypesList,
-    ),
-    pending_invites: S.optional(UsersPartialUpdateRequestPendingInvitesList),
-    requires_credential_review: S.optional(S.Boolean),
   }).pipe(T.Http({ method: "PATCH", uri: "/api/users/{uuid}/", code: 200 })),
 ).annotate({
   identifier: "UsersPartialUpdateRequest",
 }) as any as S.Schema<UsersPartialUpdateRequest>;
 
 /** * `ios` - iOS * `android` - Android * `web` - Web */
-export type PushTokenPlatformEnum = "ios" | "android" | "web" | (string & {});
+export type PushTokenPlatformEnum = "ios" | "android" | "web";
 export const PushTokenPlatformEnum = /*@__PURE__*/ S.String;
 
 export interface UsersPushTokensCreateRequest {
@@ -2549,20 +2252,6 @@ export type UsersRequestEmailVerificationCreateRequestToolbarMode =
 export const UsersRequestEmailVerificationCreateRequestToolbarMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersRequestEmailVerificationCreateRequestToolbarMode>;
 
-export type UsersRequestEmailVerificationCreateRequestOrganizationsList =
-  OrganizationBasic[];
-export const UsersRequestEmailVerificationCreateRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationBasic,
-  ) as any as S.Schema<UsersRequestEmailVerificationCreateRequestOrganizationsList>;
-
-export type UsersRequestEmailVerificationCreateRequestScenePersonalisationList =
-  ScenePersonalisationBasic[];
-export const UsersRequestEmailVerificationCreateRequestScenePersonalisationList =
-  /*@__PURE__*/ S.Array(
-    ScenePersonalisationBasic,
-  ) as any as S.Schema<UsersRequestEmailVerificationCreateRequestScenePersonalisationList>;
-
 export type UsersRequestEmailVerificationCreateRequestThemeMode =
   | ThemeModeEnum
   | BlankEnum;
@@ -2575,60 +2264,25 @@ export type UsersRequestEmailVerificationCreateRequestShortcutPosition =
 export const UsersRequestEmailVerificationCreateRequestShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersRequestEmailVerificationCreateRequestShortcutPosition>;
 
-/** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UsersRequestEmailVerificationCreateRequestActiveRealtimeNotificationTypesList =
-  string[];
-export const UsersRequestEmailVerificationCreateRequestActiveRealtimeNotificationTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UsersRequestEmailVerificationCreateRequestActiveRealtimeNotificationTypesList>;
-
-export type UsersRequestEmailVerificationCreateRequestPendingInvitesList =
-  PendingInvite[];
-export const UsersRequestEmailVerificationCreateRequestPendingInvitesList =
-  /*@__PURE__*/ S.Array(
-    PendingInvite,
-  ) as any as S.Schema<UsersRequestEmailVerificationCreateRequestPendingInvitesList>;
-
 export interface UsersRequestEmailVerificationCreateRequest {
-  date_joined?: string;
-  uuid?: string;
-  distinct_id?: string | null;
   first_name?: string;
   last_name?: string;
   email?: string;
-  pending_email?: string | null;
-  is_email_verified?: boolean | null;
   /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
   notification_settings?: UsersRequestEmailVerificationCreateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
   allow_impersonation?: boolean | null;
   toolbar_mode?: UsersRequestEmailVerificationCreateRequestToolbarMode | null;
-  has_password?: boolean;
-  id?: number;
   /** Designates whether the user can log into this admin site. */
   is_staff?: boolean;
-  is_impersonated?: boolean | null;
-  is_impersonated_until?: string | null;
-  is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
-  sensitive_session_expires_at?: string | null;
-  team?: TeamBasic;
-  organization?: Organization;
-  organizations?: UsersRequestEmailVerificationCreateRequestOrganizationsList;
   set_current_organization?: string;
   set_current_team?: string;
   password?: string | Redacted.Redacted<string>;
   /** The user's current password. Required when changing `password` if the user already has a usable password set. */
   current_password?: string | Redacted.Redacted<string>;
   events_column_config?: unknown;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  has_sso_enforcement?: boolean;
   has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UsersRequestEmailVerificationCreateRequestScenePersonalisationList;
   theme_mode?: UsersRequestEmailVerificationCreateRequestThemeMode | null;
   hedgehog_config?: unknown;
   allow_sidebar_suggestions?: boolean | null;
@@ -2638,31 +2292,13 @@ export interface UsersRequestEmailVerificationCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
-  onboarding_skipped_at?: string | null;
-  onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
-  onboarding_skipped_organization_id?: string | null;
-  onboarding_delegated_to_invite?: string | null;
-  /** Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated. */
-  onboarding_delegated_to_organization_id?: string | null;
-  onboarding_delegation_accepted_at?: string | null;
-  is_organization_first_user?: boolean | null;
-  /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UsersRequestEmailVerificationCreateRequestActiveRealtimeNotificationTypesList;
-  pending_invites?: UsersRequestEmailVerificationCreateRequestPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
-  requires_credential_review?: boolean;
 }
 export const UsersRequestEmailVerificationCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      date_joined: S.optional(S.String),
-      uuid: S.optional(S.String),
-      distinct_id: S.optional(S.NullOr(S.String)),
       first_name: S.optional(S.String),
       last_name: S.optional(S.String),
       email: S.optional(S.String),
-      pending_email: S.optional(S.NullOr(S.String)),
-      is_email_verified: S.optional(S.NullOr(S.Boolean)),
       notification_settings: S.optional(
         UsersRequestEmailVerificationCreateRequestNotificationSettingsMap,
       ),
@@ -2671,31 +2307,13 @@ export const UsersRequestEmailVerificationCreateRequest =
       toolbar_mode: S.optional(
         S.NullOr(UsersRequestEmailVerificationCreateRequestToolbarMode),
       ),
-      has_password: S.optional(S.Boolean),
-      id: S.optional(S.Number),
       is_staff: S.optional(S.Boolean),
-      is_impersonated: S.optional(S.NullOr(S.Boolean)),
-      is_impersonated_until: S.optional(S.NullOr(S.String)),
-      is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-      is_impersonated_reason: S.optional(S.NullOr(S.String)),
-      sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-      team: S.optional(TeamBasic),
-      organization: S.optional(Organization),
-      organizations: S.optional(
-        UsersRequestEmailVerificationCreateRequestOrganizationsList,
-      ),
       set_current_organization: S.optional(S.String),
       set_current_team: S.optional(S.String),
       password: S.optional(S.String.pipe(T.SensitiveValue({}))),
       current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
       events_column_config: S.optional(S.Unknown),
-      is_2fa_enabled: S.optional(S.Boolean),
-      has_social_auth: S.optional(S.Boolean),
-      has_sso_enforcement: S.optional(S.Boolean),
       has_seen_product_intro_for: S.optional(S.Unknown),
-      scene_personalisation: S.optional(
-        UsersRequestEmailVerificationCreateRequestScenePersonalisationList,
-      ),
       theme_mode: S.optional(
         S.NullOr(UsersRequestEmailVerificationCreateRequestThemeMode),
       ),
@@ -2707,22 +2325,6 @@ export const UsersRequestEmailVerificationCreateRequest =
       role_at_organization: S.optional(RoleAtOrganizationEnum),
       passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
       hide_mcp_hints: S.optional(S.Boolean),
-      onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-      onboarding_skipped_reason: S.optional(
-        S.NullOr(OnboardingSkippedReasonEnum),
-      ),
-      onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-      onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-      onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-      onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-      is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-      active_realtime_notification_types: S.optional(
-        UsersRequestEmailVerificationCreateRequestActiveRealtimeNotificationTypesList,
-      ),
-      pending_invites: S.optional(
-        UsersRequestEmailVerificationCreateRequestPendingInvitesList,
-      ),
-      requires_credential_review: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2767,20 +2369,6 @@ export type UsersScenePersonalisationCreateRequestToolbarMode =
 export const UsersScenePersonalisationCreateRequestToolbarMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersScenePersonalisationCreateRequestToolbarMode>;
 
-export type UsersScenePersonalisationCreateRequestOrganizationsList =
-  OrganizationBasic[];
-export const UsersScenePersonalisationCreateRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationBasic,
-  ) as any as S.Schema<UsersScenePersonalisationCreateRequestOrganizationsList>;
-
-export type UsersScenePersonalisationCreateRequestScenePersonalisationList =
-  ScenePersonalisationBasic[];
-export const UsersScenePersonalisationCreateRequestScenePersonalisationList =
-  /*@__PURE__*/ S.Array(
-    ScenePersonalisationBasic,
-  ) as any as S.Schema<UsersScenePersonalisationCreateRequestScenePersonalisationList>;
-
 export type UsersScenePersonalisationCreateRequestThemeMode =
   | ThemeModeEnum
   | BlankEnum;
@@ -2793,60 +2381,26 @@ export type UsersScenePersonalisationCreateRequestShortcutPosition =
 export const UsersScenePersonalisationCreateRequestShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersScenePersonalisationCreateRequestShortcutPosition>;
 
-/** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UsersScenePersonalisationCreateRequestActiveRealtimeNotificationTypesList =
-  string[];
-export const UsersScenePersonalisationCreateRequestActiveRealtimeNotificationTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UsersScenePersonalisationCreateRequestActiveRealtimeNotificationTypesList>;
-
-export type UsersScenePersonalisationCreateRequestPendingInvitesList =
-  PendingInvite[];
-export const UsersScenePersonalisationCreateRequestPendingInvitesList =
-  /*@__PURE__*/ S.Array(
-    PendingInvite,
-  ) as any as S.Schema<UsersScenePersonalisationCreateRequestPendingInvitesList>;
-
 export interface UsersScenePersonalisationCreateRequest {
   uuid: string;
-  date_joined?: string;
-  distinct_id?: string | null;
   first_name?: string;
   last_name?: string;
   email?: string;
-  pending_email?: string | null;
-  is_email_verified?: boolean | null;
   /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
   notification_settings?: UsersScenePersonalisationCreateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
   allow_impersonation?: boolean | null;
   toolbar_mode?: UsersScenePersonalisationCreateRequestToolbarMode | null;
-  has_password?: boolean;
-  id?: number;
   /** Designates whether the user can log into this admin site. */
   is_staff?: boolean;
-  is_impersonated?: boolean | null;
-  is_impersonated_until?: string | null;
-  is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
-  sensitive_session_expires_at?: string | null;
-  team?: TeamBasic;
-  organization?: Organization;
-  organizations?: UsersScenePersonalisationCreateRequestOrganizationsList;
   set_current_organization?: string;
   set_current_team?: string;
   password?: string | Redacted.Redacted<string>;
   /** The user's current password. Required when changing `password` if the user already has a usable password set. */
   current_password?: string | Redacted.Redacted<string>;
   events_column_config?: unknown;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  has_sso_enforcement?: boolean;
   has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UsersScenePersonalisationCreateRequestScenePersonalisationList;
   theme_mode?: UsersScenePersonalisationCreateRequestThemeMode | null;
   hedgehog_config?: unknown;
   allow_sidebar_suggestions?: boolean | null;
@@ -2856,31 +2410,14 @@ export interface UsersScenePersonalisationCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
-  onboarding_skipped_at?: string | null;
-  onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
-  onboarding_skipped_organization_id?: string | null;
-  onboarding_delegated_to_invite?: string | null;
-  /** Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated. */
-  onboarding_delegated_to_organization_id?: string | null;
-  onboarding_delegation_accepted_at?: string | null;
-  is_organization_first_user?: boolean | null;
-  /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UsersScenePersonalisationCreateRequestActiveRealtimeNotificationTypesList;
-  pending_invites?: UsersScenePersonalisationCreateRequestPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
-  requires_credential_review?: boolean;
 }
 export const UsersScenePersonalisationCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       uuid: S.String.pipe(T.Label()),
-      date_joined: S.optional(S.String),
-      distinct_id: S.optional(S.NullOr(S.String)),
       first_name: S.optional(S.String),
       last_name: S.optional(S.String),
       email: S.optional(S.String),
-      pending_email: S.optional(S.NullOr(S.String)),
-      is_email_verified: S.optional(S.NullOr(S.Boolean)),
       notification_settings: S.optional(
         UsersScenePersonalisationCreateRequestNotificationSettingsMap,
       ),
@@ -2889,31 +2426,13 @@ export const UsersScenePersonalisationCreateRequest = /*@__PURE__*/ S.suspend(
       toolbar_mode: S.optional(
         S.NullOr(UsersScenePersonalisationCreateRequestToolbarMode),
       ),
-      has_password: S.optional(S.Boolean),
-      id: S.optional(S.Number),
       is_staff: S.optional(S.Boolean),
-      is_impersonated: S.optional(S.NullOr(S.Boolean)),
-      is_impersonated_until: S.optional(S.NullOr(S.String)),
-      is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-      is_impersonated_reason: S.optional(S.NullOr(S.String)),
-      sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-      team: S.optional(TeamBasic),
-      organization: S.optional(Organization),
-      organizations: S.optional(
-        UsersScenePersonalisationCreateRequestOrganizationsList,
-      ),
       set_current_organization: S.optional(S.String),
       set_current_team: S.optional(S.String),
       password: S.optional(S.String.pipe(T.SensitiveValue({}))),
       current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
       events_column_config: S.optional(S.Unknown),
-      is_2fa_enabled: S.optional(S.Boolean),
-      has_social_auth: S.optional(S.Boolean),
-      has_sso_enforcement: S.optional(S.Boolean),
       has_seen_product_intro_for: S.optional(S.Unknown),
-      scene_personalisation: S.optional(
-        UsersScenePersonalisationCreateRequestScenePersonalisationList,
-      ),
       theme_mode: S.optional(
         S.NullOr(UsersScenePersonalisationCreateRequestThemeMode),
       ),
@@ -2925,22 +2444,6 @@ export const UsersScenePersonalisationCreateRequest = /*@__PURE__*/ S.suspend(
       role_at_organization: S.optional(RoleAtOrganizationEnum),
       passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
       hide_mcp_hints: S.optional(S.Boolean),
-      onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-      onboarding_skipped_reason: S.optional(
-        S.NullOr(OnboardingSkippedReasonEnum),
-      ),
-      onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-      onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-      onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-      onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-      is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-      active_realtime_notification_types: S.optional(
-        UsersScenePersonalisationCreateRequestActiveRealtimeNotificationTypesList,
-      ),
-      pending_invites: S.optional(
-        UsersScenePersonalisationCreateRequestPendingInvitesList,
-      ),
-      requires_credential_review: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2959,31 +2462,8 @@ export const UsersScenePersonalisationCreateResponse = /*@__PURE__*/ S.suspend(
   identifier: "UsersScenePersonalisationCreateResponse",
 }) as any as S.Schema<UsersScenePersonalisationCreateResponse>;
 
-export interface User2 {
-  id?: number;
-  uuid?: string;
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-}
-export const User2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    uuid: S.optional(S.String),
-    first_name: S.optional(S.String),
-    last_name: S.optional(S.String),
-    email: S.optional(S.String),
-  }),
-).annotate({ identifier: "User2" }) as any as S.Schema<User2>;
-
 /** * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
-export type AutonomyPriorityEnum =
-  | "P0"
-  | "P1"
-  | "P2"
-  | "P3"
-  | "P4"
-  | (string & {});
+export type AutonomyPriorityEnum = "P0" | "P1" | "P2" | "P3" | "P4";
 export const AutonomyPriorityEnum = /*@__PURE__*/ S.String;
 
 export type UsersSignalAutonomyCreateRequestAutostartPriority =
@@ -3001,33 +2481,22 @@ export const UsersSignalAutonomyCreateRequestSlackNotificationMinPriority =
 
 export interface UsersSignalAutonomyCreateRequest {
   user_id: string;
-  id?: string;
-  user?: User2;
   autostart_priority?: UsersSignalAutonomyCreateRequestAutostartPriority | null;
-  /** ID of the Slack Integration to deliver inbox-item notifications through, or null when notifications are disabled. */
-  slack_notification_integration_id?: number | null;
   /** Slack channel target in the same `channel_id|#channel-name` shape PostHog uses elsewhere (only the channel id is required). Null disables Slack notifications. */
   slack_notification_channel?: string | null;
   /** Minimum report priority that triggers a Slack notification. P0 is highest. Null means notify on every priority (and reports without a priority judgment). * `P0` - P0 * `P1` - P1 * `P2` - P2 * `P3` - P3 * `P4` - P4 */
   slack_notification_min_priority?: UsersSignalAutonomyCreateRequestSlackNotificationMinPriority | null;
-  created_at?: string;
-  updated_at?: string;
 }
 export const UsersSignalAutonomyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    user: S.optional(User2),
     autostart_priority: S.optional(
       S.NullOr(UsersSignalAutonomyCreateRequestAutostartPriority),
     ),
-    slack_notification_integration_id: S.optional(S.NullOr(S.Number)),
     slack_notification_channel: S.optional(S.NullOr(S.String)),
     slack_notification_min_priority: S.optional(
       S.NullOr(UsersSignalAutonomyCreateRequestSlackNotificationMinPriority),
     ),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3038,6 +2507,23 @@ export const UsersSignalAutonomyCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UsersSignalAutonomyCreateRequest",
 }) as any as S.Schema<UsersSignalAutonomyCreateRequest>;
+
+export interface User {
+  id?: number;
+  uuid?: string;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+}
+export const User = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    uuid: S.optional(S.String),
+    first_name: S.optional(S.String),
+    last_name: S.optional(S.String),
+    email: S.optional(S.String),
+  }),
+).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export type SignalUserAutonomyConfigAutostartPriority =
   | AutonomyPriorityEnum
@@ -3054,7 +2540,7 @@ export const SignalUserAutonomyConfigSlackNotificationMinPriority =
 
 export interface SignalUserAutonomyConfig {
   id?: string;
-  user?: User2;
+  user?: User;
   autostart_priority?: SignalUserAutonomyConfigAutostartPriority | null;
   /** ID of the Slack Integration to deliver inbox-item notifications through, or null when notifications are disabled. */
   slack_notification_integration_id?: number | null;
@@ -3068,7 +2554,7 @@ export interface SignalUserAutonomyConfig {
 export const SignalUserAutonomyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    user: S.optional(User2),
+    user: S.optional(User),
     autostart_priority: S.optional(
       S.NullOr(SignalUserAutonomyConfigAutostartPriority),
     ),
@@ -3165,20 +2651,6 @@ export type UsersTwoFactorBackupCodesCreateRequestToolbarMode =
 export const UsersTwoFactorBackupCodesCreateRequestToolbarMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersTwoFactorBackupCodesCreateRequestToolbarMode>;
 
-export type UsersTwoFactorBackupCodesCreateRequestOrganizationsList =
-  OrganizationBasic[];
-export const UsersTwoFactorBackupCodesCreateRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationBasic,
-  ) as any as S.Schema<UsersTwoFactorBackupCodesCreateRequestOrganizationsList>;
-
-export type UsersTwoFactorBackupCodesCreateRequestScenePersonalisationList =
-  ScenePersonalisationBasic[];
-export const UsersTwoFactorBackupCodesCreateRequestScenePersonalisationList =
-  /*@__PURE__*/ S.Array(
-    ScenePersonalisationBasic,
-  ) as any as S.Schema<UsersTwoFactorBackupCodesCreateRequestScenePersonalisationList>;
-
 export type UsersTwoFactorBackupCodesCreateRequestThemeMode =
   | ThemeModeEnum
   | BlankEnum;
@@ -3191,60 +2663,26 @@ export type UsersTwoFactorBackupCodesCreateRequestShortcutPosition =
 export const UsersTwoFactorBackupCodesCreateRequestShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersTwoFactorBackupCodesCreateRequestShortcutPosition>;
 
-/** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UsersTwoFactorBackupCodesCreateRequestActiveRealtimeNotificationTypesList =
-  string[];
-export const UsersTwoFactorBackupCodesCreateRequestActiveRealtimeNotificationTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UsersTwoFactorBackupCodesCreateRequestActiveRealtimeNotificationTypesList>;
-
-export type UsersTwoFactorBackupCodesCreateRequestPendingInvitesList =
-  PendingInvite[];
-export const UsersTwoFactorBackupCodesCreateRequestPendingInvitesList =
-  /*@__PURE__*/ S.Array(
-    PendingInvite,
-  ) as any as S.Schema<UsersTwoFactorBackupCodesCreateRequestPendingInvitesList>;
-
 export interface UsersTwoFactorBackupCodesCreateRequest {
   uuid: string;
-  date_joined?: string;
-  distinct_id?: string | null;
   first_name?: string;
   last_name?: string;
   email?: string;
-  pending_email?: string | null;
-  is_email_verified?: boolean | null;
   /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
   notification_settings?: UsersTwoFactorBackupCodesCreateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
   allow_impersonation?: boolean | null;
   toolbar_mode?: UsersTwoFactorBackupCodesCreateRequestToolbarMode | null;
-  has_password?: boolean;
-  id?: number;
   /** Designates whether the user can log into this admin site. */
   is_staff?: boolean;
-  is_impersonated?: boolean | null;
-  is_impersonated_until?: string | null;
-  is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
-  sensitive_session_expires_at?: string | null;
-  team?: TeamBasic;
-  organization?: Organization;
-  organizations?: UsersTwoFactorBackupCodesCreateRequestOrganizationsList;
   set_current_organization?: string;
   set_current_team?: string;
   password?: string | Redacted.Redacted<string>;
   /** The user's current password. Required when changing `password` if the user already has a usable password set. */
   current_password?: string | Redacted.Redacted<string>;
   events_column_config?: unknown;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  has_sso_enforcement?: boolean;
   has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UsersTwoFactorBackupCodesCreateRequestScenePersonalisationList;
   theme_mode?: UsersTwoFactorBackupCodesCreateRequestThemeMode | null;
   hedgehog_config?: unknown;
   allow_sidebar_suggestions?: boolean | null;
@@ -3254,31 +2692,14 @@ export interface UsersTwoFactorBackupCodesCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
-  onboarding_skipped_at?: string | null;
-  onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
-  onboarding_skipped_organization_id?: string | null;
-  onboarding_delegated_to_invite?: string | null;
-  /** Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated. */
-  onboarding_delegated_to_organization_id?: string | null;
-  onboarding_delegation_accepted_at?: string | null;
-  is_organization_first_user?: boolean | null;
-  /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UsersTwoFactorBackupCodesCreateRequestActiveRealtimeNotificationTypesList;
-  pending_invites?: UsersTwoFactorBackupCodesCreateRequestPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
-  requires_credential_review?: boolean;
 }
 export const UsersTwoFactorBackupCodesCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       uuid: S.String.pipe(T.Label()),
-      date_joined: S.optional(S.String),
-      distinct_id: S.optional(S.NullOr(S.String)),
       first_name: S.optional(S.String),
       last_name: S.optional(S.String),
       email: S.optional(S.String),
-      pending_email: S.optional(S.NullOr(S.String)),
-      is_email_verified: S.optional(S.NullOr(S.Boolean)),
       notification_settings: S.optional(
         UsersTwoFactorBackupCodesCreateRequestNotificationSettingsMap,
       ),
@@ -3287,31 +2708,13 @@ export const UsersTwoFactorBackupCodesCreateRequest = /*@__PURE__*/ S.suspend(
       toolbar_mode: S.optional(
         S.NullOr(UsersTwoFactorBackupCodesCreateRequestToolbarMode),
       ),
-      has_password: S.optional(S.Boolean),
-      id: S.optional(S.Number),
       is_staff: S.optional(S.Boolean),
-      is_impersonated: S.optional(S.NullOr(S.Boolean)),
-      is_impersonated_until: S.optional(S.NullOr(S.String)),
-      is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-      is_impersonated_reason: S.optional(S.NullOr(S.String)),
-      sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-      team: S.optional(TeamBasic),
-      organization: S.optional(Organization),
-      organizations: S.optional(
-        UsersTwoFactorBackupCodesCreateRequestOrganizationsList,
-      ),
       set_current_organization: S.optional(S.String),
       set_current_team: S.optional(S.String),
       password: S.optional(S.String.pipe(T.SensitiveValue({}))),
       current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
       events_column_config: S.optional(S.Unknown),
-      is_2fa_enabled: S.optional(S.Boolean),
-      has_social_auth: S.optional(S.Boolean),
-      has_sso_enforcement: S.optional(S.Boolean),
       has_seen_product_intro_for: S.optional(S.Unknown),
-      scene_personalisation: S.optional(
-        UsersTwoFactorBackupCodesCreateRequestScenePersonalisationList,
-      ),
       theme_mode: S.optional(
         S.NullOr(UsersTwoFactorBackupCodesCreateRequestThemeMode),
       ),
@@ -3323,22 +2726,6 @@ export const UsersTwoFactorBackupCodesCreateRequest = /*@__PURE__*/ S.suspend(
       role_at_organization: S.optional(RoleAtOrganizationEnum),
       passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
       hide_mcp_hints: S.optional(S.Boolean),
-      onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-      onboarding_skipped_reason: S.optional(
-        S.NullOr(OnboardingSkippedReasonEnum),
-      ),
-      onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-      onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-      onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-      onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-      is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-      active_realtime_notification_types: S.optional(
-        UsersTwoFactorBackupCodesCreateRequestActiveRealtimeNotificationTypesList,
-      ),
-      pending_invites: S.optional(
-        UsersTwoFactorBackupCodesCreateRequestPendingInvitesList,
-      ),
-      requires_credential_review: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3373,20 +2760,6 @@ export type UsersTwoFactorDisableCreateRequestToolbarMode =
 export const UsersTwoFactorDisableCreateRequestToolbarMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersTwoFactorDisableCreateRequestToolbarMode>;
 
-export type UsersTwoFactorDisableCreateRequestOrganizationsList =
-  OrganizationBasic[];
-export const UsersTwoFactorDisableCreateRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationBasic,
-  ) as any as S.Schema<UsersTwoFactorDisableCreateRequestOrganizationsList>;
-
-export type UsersTwoFactorDisableCreateRequestScenePersonalisationList =
-  ScenePersonalisationBasic[];
-export const UsersTwoFactorDisableCreateRequestScenePersonalisationList =
-  /*@__PURE__*/ S.Array(
-    ScenePersonalisationBasic,
-  ) as any as S.Schema<UsersTwoFactorDisableCreateRequestScenePersonalisationList>;
-
 export type UsersTwoFactorDisableCreateRequestThemeMode =
   | ThemeModeEnum
   | BlankEnum;
@@ -3399,60 +2772,26 @@ export type UsersTwoFactorDisableCreateRequestShortcutPosition =
 export const UsersTwoFactorDisableCreateRequestShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersTwoFactorDisableCreateRequestShortcutPosition>;
 
-/** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UsersTwoFactorDisableCreateRequestActiveRealtimeNotificationTypesList =
-  string[];
-export const UsersTwoFactorDisableCreateRequestActiveRealtimeNotificationTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UsersTwoFactorDisableCreateRequestActiveRealtimeNotificationTypesList>;
-
-export type UsersTwoFactorDisableCreateRequestPendingInvitesList =
-  PendingInvite[];
-export const UsersTwoFactorDisableCreateRequestPendingInvitesList =
-  /*@__PURE__*/ S.Array(
-    PendingInvite,
-  ) as any as S.Schema<UsersTwoFactorDisableCreateRequestPendingInvitesList>;
-
 export interface UsersTwoFactorDisableCreateRequest {
   uuid: string;
-  date_joined?: string;
-  distinct_id?: string | null;
   first_name?: string;
   last_name?: string;
   email?: string;
-  pending_email?: string | null;
-  is_email_verified?: boolean | null;
   /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
   notification_settings?: UsersTwoFactorDisableCreateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
   allow_impersonation?: boolean | null;
   toolbar_mode?: UsersTwoFactorDisableCreateRequestToolbarMode | null;
-  has_password?: boolean;
-  id?: number;
   /** Designates whether the user can log into this admin site. */
   is_staff?: boolean;
-  is_impersonated?: boolean | null;
-  is_impersonated_until?: string | null;
-  is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
-  sensitive_session_expires_at?: string | null;
-  team?: TeamBasic;
-  organization?: Organization;
-  organizations?: UsersTwoFactorDisableCreateRequestOrganizationsList;
   set_current_organization?: string;
   set_current_team?: string;
   password?: string | Redacted.Redacted<string>;
   /** The user's current password. Required when changing `password` if the user already has a usable password set. */
   current_password?: string | Redacted.Redacted<string>;
   events_column_config?: unknown;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  has_sso_enforcement?: boolean;
   has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UsersTwoFactorDisableCreateRequestScenePersonalisationList;
   theme_mode?: UsersTwoFactorDisableCreateRequestThemeMode | null;
   hedgehog_config?: unknown;
   allow_sidebar_suggestions?: boolean | null;
@@ -3462,30 +2801,13 @@ export interface UsersTwoFactorDisableCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
-  onboarding_skipped_at?: string | null;
-  onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
-  onboarding_skipped_organization_id?: string | null;
-  onboarding_delegated_to_invite?: string | null;
-  /** Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated. */
-  onboarding_delegated_to_organization_id?: string | null;
-  onboarding_delegation_accepted_at?: string | null;
-  is_organization_first_user?: boolean | null;
-  /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UsersTwoFactorDisableCreateRequestActiveRealtimeNotificationTypesList;
-  pending_invites?: UsersTwoFactorDisableCreateRequestPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
-  requires_credential_review?: boolean;
 }
 export const UsersTwoFactorDisableCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
-    date_joined: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
     first_name: S.optional(S.String),
     last_name: S.optional(S.String),
     email: S.optional(S.String),
-    pending_email: S.optional(S.NullOr(S.String)),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
     notification_settings: S.optional(
       UsersTwoFactorDisableCreateRequestNotificationSettingsMap,
     ),
@@ -3494,31 +2816,13 @@ export const UsersTwoFactorDisableCreateRequest = /*@__PURE__*/ S.suspend(() =>
     toolbar_mode: S.optional(
       S.NullOr(UsersTwoFactorDisableCreateRequestToolbarMode),
     ),
-    has_password: S.optional(S.Boolean),
-    id: S.optional(S.Number),
     is_staff: S.optional(S.Boolean),
-    is_impersonated: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_until: S.optional(S.NullOr(S.String)),
-    is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_reason: S.optional(S.NullOr(S.String)),
-    sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-    team: S.optional(TeamBasic),
-    organization: S.optional(Organization),
-    organizations: S.optional(
-      UsersTwoFactorDisableCreateRequestOrganizationsList,
-    ),
     set_current_organization: S.optional(S.String),
     set_current_team: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     events_column_config: S.optional(S.Unknown),
-    is_2fa_enabled: S.optional(S.Boolean),
-    has_social_auth: S.optional(S.Boolean),
-    has_sso_enforcement: S.optional(S.Boolean),
     has_seen_product_intro_for: S.optional(S.Unknown),
-    scene_personalisation: S.optional(
-      UsersTwoFactorDisableCreateRequestScenePersonalisationList,
-    ),
     theme_mode: S.optional(
       S.NullOr(UsersTwoFactorDisableCreateRequestThemeMode),
     ),
@@ -3530,22 +2834,6 @@ export const UsersTwoFactorDisableCreateRequest = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
-    onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-    onboarding_skipped_reason: S.optional(
-      S.NullOr(OnboardingSkippedReasonEnum),
-    ),
-    onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-    is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-    active_realtime_notification_types: S.optional(
-      UsersTwoFactorDisableCreateRequestActiveRealtimeNotificationTypesList,
-    ),
-    pending_invites: S.optional(
-      UsersTwoFactorDisableCreateRequestPendingInvitesList,
-    ),
-    requires_credential_review: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3629,20 +2917,6 @@ export type UsersTwoFactorValidateCreateRequestToolbarMode =
 export const UsersTwoFactorValidateCreateRequestToolbarMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersTwoFactorValidateCreateRequestToolbarMode>;
 
-export type UsersTwoFactorValidateCreateRequestOrganizationsList =
-  OrganizationBasic[];
-export const UsersTwoFactorValidateCreateRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationBasic,
-  ) as any as S.Schema<UsersTwoFactorValidateCreateRequestOrganizationsList>;
-
-export type UsersTwoFactorValidateCreateRequestScenePersonalisationList =
-  ScenePersonalisationBasic[];
-export const UsersTwoFactorValidateCreateRequestScenePersonalisationList =
-  /*@__PURE__*/ S.Array(
-    ScenePersonalisationBasic,
-  ) as any as S.Schema<UsersTwoFactorValidateCreateRequestScenePersonalisationList>;
-
 export type UsersTwoFactorValidateCreateRequestThemeMode =
   | ThemeModeEnum
   | BlankEnum;
@@ -3655,60 +2929,26 @@ export type UsersTwoFactorValidateCreateRequestShortcutPosition =
 export const UsersTwoFactorValidateCreateRequestShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersTwoFactorValidateCreateRequestShortcutPosition>;
 
-/** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UsersTwoFactorValidateCreateRequestActiveRealtimeNotificationTypesList =
-  string[];
-export const UsersTwoFactorValidateCreateRequestActiveRealtimeNotificationTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UsersTwoFactorValidateCreateRequestActiveRealtimeNotificationTypesList>;
-
-export type UsersTwoFactorValidateCreateRequestPendingInvitesList =
-  PendingInvite[];
-export const UsersTwoFactorValidateCreateRequestPendingInvitesList =
-  /*@__PURE__*/ S.Array(
-    PendingInvite,
-  ) as any as S.Schema<UsersTwoFactorValidateCreateRequestPendingInvitesList>;
-
 export interface UsersTwoFactorValidateCreateRequest {
   uuid: string;
-  date_joined?: string;
-  distinct_id?: string | null;
   first_name?: string;
   last_name?: string;
   email?: string;
-  pending_email?: string | null;
-  is_email_verified?: boolean | null;
   /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
   notification_settings?: UsersTwoFactorValidateCreateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
   allow_impersonation?: boolean | null;
   toolbar_mode?: UsersTwoFactorValidateCreateRequestToolbarMode | null;
-  has_password?: boolean;
-  id?: number;
   /** Designates whether the user can log into this admin site. */
   is_staff?: boolean;
-  is_impersonated?: boolean | null;
-  is_impersonated_until?: string | null;
-  is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
-  sensitive_session_expires_at?: string | null;
-  team?: TeamBasic;
-  organization?: Organization;
-  organizations?: UsersTwoFactorValidateCreateRequestOrganizationsList;
   set_current_organization?: string;
   set_current_team?: string;
   password?: string | Redacted.Redacted<string>;
   /** The user's current password. Required when changing `password` if the user already has a usable password set. */
   current_password?: string | Redacted.Redacted<string>;
   events_column_config?: unknown;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  has_sso_enforcement?: boolean;
   has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UsersTwoFactorValidateCreateRequestScenePersonalisationList;
   theme_mode?: UsersTwoFactorValidateCreateRequestThemeMode | null;
   hedgehog_config?: unknown;
   allow_sidebar_suggestions?: boolean | null;
@@ -3718,30 +2958,13 @@ export interface UsersTwoFactorValidateCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
-  onboarding_skipped_at?: string | null;
-  onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
-  onboarding_skipped_organization_id?: string | null;
-  onboarding_delegated_to_invite?: string | null;
-  /** Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated. */
-  onboarding_delegated_to_organization_id?: string | null;
-  onboarding_delegation_accepted_at?: string | null;
-  is_organization_first_user?: boolean | null;
-  /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UsersTwoFactorValidateCreateRequestActiveRealtimeNotificationTypesList;
-  pending_invites?: UsersTwoFactorValidateCreateRequestPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
-  requires_credential_review?: boolean;
 }
 export const UsersTwoFactorValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
-    date_joined: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
     first_name: S.optional(S.String),
     last_name: S.optional(S.String),
     email: S.optional(S.String),
-    pending_email: S.optional(S.NullOr(S.String)),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
     notification_settings: S.optional(
       UsersTwoFactorValidateCreateRequestNotificationSettingsMap,
     ),
@@ -3750,31 +2973,13 @@ export const UsersTwoFactorValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
     toolbar_mode: S.optional(
       S.NullOr(UsersTwoFactorValidateCreateRequestToolbarMode),
     ),
-    has_password: S.optional(S.Boolean),
-    id: S.optional(S.Number),
     is_staff: S.optional(S.Boolean),
-    is_impersonated: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_until: S.optional(S.NullOr(S.String)),
-    is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_reason: S.optional(S.NullOr(S.String)),
-    sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-    team: S.optional(TeamBasic),
-    organization: S.optional(Organization),
-    organizations: S.optional(
-      UsersTwoFactorValidateCreateRequestOrganizationsList,
-    ),
     set_current_organization: S.optional(S.String),
     set_current_team: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     events_column_config: S.optional(S.Unknown),
-    is_2fa_enabled: S.optional(S.Boolean),
-    has_social_auth: S.optional(S.Boolean),
-    has_sso_enforcement: S.optional(S.Boolean),
     has_seen_product_intro_for: S.optional(S.Unknown),
-    scene_personalisation: S.optional(
-      UsersTwoFactorValidateCreateRequestScenePersonalisationList,
-    ),
     theme_mode: S.optional(
       S.NullOr(UsersTwoFactorValidateCreateRequestThemeMode),
     ),
@@ -3786,22 +2991,6 @@ export const UsersTwoFactorValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
-    onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-    onboarding_skipped_reason: S.optional(
-      S.NullOr(OnboardingSkippedReasonEnum),
-    ),
-    onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-    is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-    active_realtime_notification_types: S.optional(
-      UsersTwoFactorValidateCreateRequestActiveRealtimeNotificationTypesList,
-    ),
-    pending_invites: S.optional(
-      UsersTwoFactorValidateCreateRequestPendingInvitesList,
-    ),
-    requires_credential_review: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -3833,17 +3022,6 @@ export type UsersUpdateRequestToolbarMode = ToolbarModeEnum | BlankEnum;
 export const UsersUpdateRequestToolbarMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersUpdateRequestToolbarMode>;
 
-export type UsersUpdateRequestOrganizationsList = OrganizationBasic[];
-export const UsersUpdateRequestOrganizationsList = /*@__PURE__*/ S.Array(
-  OrganizationBasic,
-) as any as S.Schema<UsersUpdateRequestOrganizationsList>;
-
-export type UsersUpdateRequestScenePersonalisationList =
-  ScenePersonalisationBasic[];
-export const UsersUpdateRequestScenePersonalisationList = /*@__PURE__*/ S.Array(
-  ScenePersonalisationBasic,
-) as any as S.Schema<UsersUpdateRequestScenePersonalisationList>;
-
 export type UsersUpdateRequestThemeMode = ThemeModeEnum | BlankEnum;
 export const UsersUpdateRequestThemeMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersUpdateRequestThemeMode>;
@@ -3854,57 +3032,26 @@ export type UsersUpdateRequestShortcutPosition =
 export const UsersUpdateRequestShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersUpdateRequestShortcutPosition>;
 
-/** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UsersUpdateRequestActiveRealtimeNotificationTypesList = string[];
-export const UsersUpdateRequestActiveRealtimeNotificationTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UsersUpdateRequestActiveRealtimeNotificationTypesList>;
-
-export type UsersUpdateRequestPendingInvitesList = PendingInvite[];
-export const UsersUpdateRequestPendingInvitesList = /*@__PURE__*/ S.Array(
-  PendingInvite,
-) as any as S.Schema<UsersUpdateRequestPendingInvitesList>;
-
 export interface UsersUpdateRequest {
   uuid: string;
-  date_joined?: string;
-  distinct_id?: string | null;
   first_name?: string;
   last_name?: string;
   email?: string;
-  pending_email?: string | null;
-  is_email_verified?: boolean | null;
   /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
   notification_settings?: UsersUpdateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
   allow_impersonation?: boolean | null;
   toolbar_mode?: UsersUpdateRequestToolbarMode | null;
-  has_password?: boolean;
-  id?: number;
   /** Designates whether the user can log into this admin site. */
   is_staff?: boolean;
-  is_impersonated?: boolean | null;
-  is_impersonated_until?: string | null;
-  is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
-  sensitive_session_expires_at?: string | null;
-  team?: TeamBasic;
-  organization?: Organization;
-  organizations?: UsersUpdateRequestOrganizationsList;
   set_current_organization?: string;
   set_current_team?: string;
   password?: string | Redacted.Redacted<string>;
   /** The user's current password. Required when changing `password` if the user already has a usable password set. */
   current_password?: string | Redacted.Redacted<string>;
   events_column_config?: unknown;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  has_sso_enforcement?: boolean;
   has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UsersUpdateRequestScenePersonalisationList;
   theme_mode?: UsersUpdateRequestThemeMode | null;
   hedgehog_config?: unknown;
   allow_sidebar_suggestions?: boolean | null;
@@ -3914,59 +3061,26 @@ export interface UsersUpdateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
-  onboarding_skipped_at?: string | null;
-  onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
-  onboarding_skipped_organization_id?: string | null;
-  onboarding_delegated_to_invite?: string | null;
-  /** Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated. */
-  onboarding_delegated_to_organization_id?: string | null;
-  onboarding_delegation_accepted_at?: string | null;
-  is_organization_first_user?: boolean | null;
-  /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UsersUpdateRequestActiveRealtimeNotificationTypesList;
-  pending_invites?: UsersUpdateRequestPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
-  requires_credential_review?: boolean;
 }
 export const UsersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
-    date_joined: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
     first_name: S.optional(S.String),
     last_name: S.optional(S.String),
     email: S.optional(S.String),
-    pending_email: S.optional(S.NullOr(S.String)),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
     notification_settings: S.optional(
       UsersUpdateRequestNotificationSettingsMap,
     ),
     anonymize_data: S.optional(S.NullOr(S.Boolean)),
     allow_impersonation: S.optional(S.NullOr(S.Boolean)),
     toolbar_mode: S.optional(S.NullOr(UsersUpdateRequestToolbarMode)),
-    has_password: S.optional(S.Boolean),
-    id: S.optional(S.Number),
     is_staff: S.optional(S.Boolean),
-    is_impersonated: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_until: S.optional(S.NullOr(S.String)),
-    is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_reason: S.optional(S.NullOr(S.String)),
-    sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-    team: S.optional(TeamBasic),
-    organization: S.optional(Organization),
-    organizations: S.optional(UsersUpdateRequestOrganizationsList),
     set_current_organization: S.optional(S.String),
     set_current_team: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     events_column_config: S.optional(S.Unknown),
-    is_2fa_enabled: S.optional(S.Boolean),
-    has_social_auth: S.optional(S.Boolean),
-    has_sso_enforcement: S.optional(S.Boolean),
     has_seen_product_intro_for: S.optional(S.Unknown),
-    scene_personalisation: S.optional(
-      UsersUpdateRequestScenePersonalisationList,
-    ),
     theme_mode: S.optional(S.NullOr(UsersUpdateRequestThemeMode)),
     hedgehog_config: S.optional(S.Unknown),
     allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
@@ -3974,20 +3088,6 @@ export const UsersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
-    onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-    onboarding_skipped_reason: S.optional(
-      S.NullOr(OnboardingSkippedReasonEnum),
-    ),
-    onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-    is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-    active_realtime_notification_types: S.optional(
-      UsersUpdateRequestActiveRealtimeNotificationTypesList,
-    ),
-    pending_invites: S.optional(UsersUpdateRequestPendingInvitesList),
-    requires_credential_review: S.optional(S.Boolean),
   }).pipe(T.Http({ method: "PUT", uri: "/api/users/{uuid}/", code: 200 })),
 ).annotate({
   identifier: "UsersUpdateRequest",
@@ -4009,20 +3109,6 @@ export type UsersValidate2faCreateRequestToolbarMode =
 export const UsersValidate2faCreateRequestToolbarMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersValidate2faCreateRequestToolbarMode>;
 
-export type UsersValidate2faCreateRequestOrganizationsList =
-  OrganizationBasic[];
-export const UsersValidate2faCreateRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationBasic,
-  ) as any as S.Schema<UsersValidate2faCreateRequestOrganizationsList>;
-
-export type UsersValidate2faCreateRequestScenePersonalisationList =
-  ScenePersonalisationBasic[];
-export const UsersValidate2faCreateRequestScenePersonalisationList =
-  /*@__PURE__*/ S.Array(
-    ScenePersonalisationBasic,
-  ) as any as S.Schema<UsersValidate2faCreateRequestScenePersonalisationList>;
-
 export type UsersValidate2faCreateRequestThemeMode = ThemeModeEnum | BlankEnum;
 export const UsersValidate2faCreateRequestThemeMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersValidate2faCreateRequestThemeMode>;
@@ -4033,59 +3119,26 @@ export type UsersValidate2faCreateRequestShortcutPosition =
 export const UsersValidate2faCreateRequestShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersValidate2faCreateRequestShortcutPosition>;
 
-/** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UsersValidate2faCreateRequestActiveRealtimeNotificationTypesList =
-  string[];
-export const UsersValidate2faCreateRequestActiveRealtimeNotificationTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UsersValidate2faCreateRequestActiveRealtimeNotificationTypesList>;
-
-export type UsersValidate2faCreateRequestPendingInvitesList = PendingInvite[];
-export const UsersValidate2faCreateRequestPendingInvitesList =
-  /*@__PURE__*/ S.Array(
-    PendingInvite,
-  ) as any as S.Schema<UsersValidate2faCreateRequestPendingInvitesList>;
-
 export interface UsersValidate2faCreateRequest {
   uuid: string;
-  date_joined?: string;
-  distinct_id?: string | null;
   first_name?: string;
   last_name?: string;
   email?: string;
-  pending_email?: string | null;
-  is_email_verified?: boolean | null;
   /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
   notification_settings?: UsersValidate2faCreateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
   allow_impersonation?: boolean | null;
   toolbar_mode?: UsersValidate2faCreateRequestToolbarMode | null;
-  has_password?: boolean;
-  id?: number;
   /** Designates whether the user can log into this admin site. */
   is_staff?: boolean;
-  is_impersonated?: boolean | null;
-  is_impersonated_until?: string | null;
-  is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
-  sensitive_session_expires_at?: string | null;
-  team?: TeamBasic;
-  organization?: Organization;
-  organizations?: UsersValidate2faCreateRequestOrganizationsList;
   set_current_organization?: string;
   set_current_team?: string;
   password?: string | Redacted.Redacted<string>;
   /** The user's current password. Required when changing `password` if the user already has a usable password set. */
   current_password?: string | Redacted.Redacted<string>;
   events_column_config?: unknown;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  has_sso_enforcement?: boolean;
   has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UsersValidate2faCreateRequestScenePersonalisationList;
   theme_mode?: UsersValidate2faCreateRequestThemeMode | null;
   hedgehog_config?: unknown;
   allow_sidebar_suggestions?: boolean | null;
@@ -4095,30 +3148,13 @@ export interface UsersValidate2faCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
-  onboarding_skipped_at?: string | null;
-  onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
-  onboarding_skipped_organization_id?: string | null;
-  onboarding_delegated_to_invite?: string | null;
-  /** Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated. */
-  onboarding_delegated_to_organization_id?: string | null;
-  onboarding_delegation_accepted_at?: string | null;
-  is_organization_first_user?: boolean | null;
-  /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UsersValidate2faCreateRequestActiveRealtimeNotificationTypesList;
-  pending_invites?: UsersValidate2faCreateRequestPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
-  requires_credential_review?: boolean;
 }
 export const UsersValidate2faCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
-    date_joined: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
     first_name: S.optional(S.String),
     last_name: S.optional(S.String),
     email: S.optional(S.String),
-    pending_email: S.optional(S.NullOr(S.String)),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
     notification_settings: S.optional(
       UsersValidate2faCreateRequestNotificationSettingsMap,
     ),
@@ -4127,29 +3163,13 @@ export const UsersValidate2faCreateRequest = /*@__PURE__*/ S.suspend(() =>
     toolbar_mode: S.optional(
       S.NullOr(UsersValidate2faCreateRequestToolbarMode),
     ),
-    has_password: S.optional(S.Boolean),
-    id: S.optional(S.Number),
     is_staff: S.optional(S.Boolean),
-    is_impersonated: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_until: S.optional(S.NullOr(S.String)),
-    is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_reason: S.optional(S.NullOr(S.String)),
-    sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-    team: S.optional(TeamBasic),
-    organization: S.optional(Organization),
-    organizations: S.optional(UsersValidate2faCreateRequestOrganizationsList),
     set_current_organization: S.optional(S.String),
     set_current_team: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     events_column_config: S.optional(S.Unknown),
-    is_2fa_enabled: S.optional(S.Boolean),
-    has_social_auth: S.optional(S.Boolean),
-    has_sso_enforcement: S.optional(S.Boolean),
     has_seen_product_intro_for: S.optional(S.Unknown),
-    scene_personalisation: S.optional(
-      UsersValidate2faCreateRequestScenePersonalisationList,
-    ),
     theme_mode: S.optional(S.NullOr(UsersValidate2faCreateRequestThemeMode)),
     hedgehog_config: S.optional(S.Unknown),
     allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
@@ -4159,22 +3179,6 @@ export const UsersValidate2faCreateRequest = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
-    onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-    onboarding_skipped_reason: S.optional(
-      S.NullOr(OnboardingSkippedReasonEnum),
-    ),
-    onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-    is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-    active_realtime_notification_types: S.optional(
-      UsersValidate2faCreateRequestActiveRealtimeNotificationTypesList,
-    ),
-    pending_invites: S.optional(
-      UsersValidate2faCreateRequestPendingInvitesList,
-    ),
-    requires_credential_review: S.optional(S.Boolean),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4209,20 +3213,6 @@ export type UsersVerifyEmailCreateRequestToolbarMode =
 export const UsersVerifyEmailCreateRequestToolbarMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersVerifyEmailCreateRequestToolbarMode>;
 
-export type UsersVerifyEmailCreateRequestOrganizationsList =
-  OrganizationBasic[];
-export const UsersVerifyEmailCreateRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    OrganizationBasic,
-  ) as any as S.Schema<UsersVerifyEmailCreateRequestOrganizationsList>;
-
-export type UsersVerifyEmailCreateRequestScenePersonalisationList =
-  ScenePersonalisationBasic[];
-export const UsersVerifyEmailCreateRequestScenePersonalisationList =
-  /*@__PURE__*/ S.Array(
-    ScenePersonalisationBasic,
-  ) as any as S.Schema<UsersVerifyEmailCreateRequestScenePersonalisationList>;
-
 export type UsersVerifyEmailCreateRequestThemeMode = ThemeModeEnum | BlankEnum;
 export const UsersVerifyEmailCreateRequestThemeMode =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersVerifyEmailCreateRequestThemeMode>;
@@ -4233,59 +3223,25 @@ export type UsersVerifyEmailCreateRequestShortcutPosition =
 export const UsersVerifyEmailCreateRequestShortcutPosition =
   /*@__PURE__*/ S.Unknown as any as S.Schema<UsersVerifyEmailCreateRequestShortcutPosition>;
 
-/** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-export type UsersVerifyEmailCreateRequestActiveRealtimeNotificationTypesList =
-  string[];
-export const UsersVerifyEmailCreateRequestActiveRealtimeNotificationTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UsersVerifyEmailCreateRequestActiveRealtimeNotificationTypesList>;
-
-export type UsersVerifyEmailCreateRequestPendingInvitesList = PendingInvite[];
-export const UsersVerifyEmailCreateRequestPendingInvitesList =
-  /*@__PURE__*/ S.Array(
-    PendingInvite,
-  ) as any as S.Schema<UsersVerifyEmailCreateRequestPendingInvitesList>;
-
 export interface UsersVerifyEmailCreateRequest {
-  date_joined?: string;
-  uuid?: string;
-  distinct_id?: string | null;
   first_name?: string;
   last_name?: string;
   email?: string;
-  pending_email?: string | null;
-  is_email_verified?: boolean | null;
   /** Map of notification preferences. Keys include `plugin_disabled`, `all_weekly_report_disabled`, `project_weekly_digest_disabled`, `error_tracking_weekly_digest_project_enabled`, `web_analytics_weekly_digest_project_enabled`, `organization_member_join_email_disabled`, `data_pipeline_error_threshold` (number between 0.0 and 1.0), and other per-topic switches. Values are either booleans, or (for per-project/per-resource keys) a map of IDs to booleans. Only the keys you send are updated — other preferences stay as-is. */
   notification_settings?: UsersVerifyEmailCreateRequestNotificationSettingsMap;
   /** Whether PostHog should anonymize events captured for this user when identified. */
   anonymize_data?: boolean | null;
   allow_impersonation?: boolean | null;
   toolbar_mode?: UsersVerifyEmailCreateRequestToolbarMode | null;
-  has_password?: boolean;
-  id?: number;
   /** Designates whether the user can log into this admin site. */
   is_staff?: boolean;
-  is_impersonated?: boolean | null;
-  is_impersonated_until?: string | null;
-  is_impersonated_read_only?: boolean | null;
-  /** The reason the operator gave when the current impersonation session started (or was last up/downgraded). Null when not impersonating. */
-  is_impersonated_reason?: string | null;
-  sensitive_session_expires_at?: string | null;
-  team?: TeamBasic;
-  organization?: Organization;
-  organizations?: UsersVerifyEmailCreateRequestOrganizationsList;
   set_current_organization?: string;
   set_current_team?: string;
   password?: string | Redacted.Redacted<string>;
   /** The user's current password. Required when changing `password` if the user already has a usable password set. */
   current_password?: string | Redacted.Redacted<string>;
   events_column_config?: unknown;
-  is_2fa_enabled?: boolean;
-  has_social_auth?: boolean;
-  has_sso_enforcement?: boolean;
   has_seen_product_intro_for?: unknown;
-  scene_personalisation?: UsersVerifyEmailCreateRequestScenePersonalisationList;
   theme_mode?: UsersVerifyEmailCreateRequestThemeMode | null;
   hedgehog_config?: unknown;
   allow_sidebar_suggestions?: boolean | null;
@@ -4295,30 +3251,12 @@ export interface UsersVerifyEmailCreateRequest {
   passkeys_enabled_for_2fa?: boolean | null;
   /** When true, the user has opted out of in-app hints promoting the PostHog MCP integration after taking actions. */
   hide_mcp_hints?: boolean;
-  onboarding_skipped_at?: string | null;
-  onboarding_skipped_reason?: OnboardingSkippedReasonEnum | null;
-  onboarding_skipped_organization_id?: string | null;
-  onboarding_delegated_to_invite?: string | null;
-  /** Organization ID of the pending delegation invite, if any. Used by the frontend to scope the 'waiting for teammate' UI to the org where delegation was initiated. */
-  onboarding_delegated_to_organization_id?: string | null;
-  onboarding_delegation_accepted_at?: string | null;
-  is_organization_first_user?: boolean | null;
-  /** Real-time notification types that currently have a live dispatch site. Drives the in-app notifications settings UI. Read-only. */
-  active_realtime_notification_types?: UsersVerifyEmailCreateRequestActiveRealtimeNotificationTypesList;
-  pending_invites?: UsersVerifyEmailCreateRequestPendingInvitesList;
-  /** True if the user has at least one Personal API Key or passkey and has not yet acknowledged their existing credentials. Used to gate a one-shot review screen on first post-provisioning login. Becomes False once the user POSTs to `/api/users/@me/credentials_review_complete/`. Read-only. */
-  requires_credential_review?: boolean;
 }
 export const UsersVerifyEmailCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    date_joined: S.optional(S.String),
-    uuid: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
     first_name: S.optional(S.String),
     last_name: S.optional(S.String),
     email: S.optional(S.String),
-    pending_email: S.optional(S.NullOr(S.String)),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
     notification_settings: S.optional(
       UsersVerifyEmailCreateRequestNotificationSettingsMap,
     ),
@@ -4327,29 +3265,13 @@ export const UsersVerifyEmailCreateRequest = /*@__PURE__*/ S.suspend(() =>
     toolbar_mode: S.optional(
       S.NullOr(UsersVerifyEmailCreateRequestToolbarMode),
     ),
-    has_password: S.optional(S.Boolean),
-    id: S.optional(S.Number),
     is_staff: S.optional(S.Boolean),
-    is_impersonated: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_until: S.optional(S.NullOr(S.String)),
-    is_impersonated_read_only: S.optional(S.NullOr(S.Boolean)),
-    is_impersonated_reason: S.optional(S.NullOr(S.String)),
-    sensitive_session_expires_at: S.optional(S.NullOr(S.String)),
-    team: S.optional(TeamBasic),
-    organization: S.optional(Organization),
-    organizations: S.optional(UsersVerifyEmailCreateRequestOrganizationsList),
     set_current_organization: S.optional(S.String),
     set_current_team: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     current_password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     events_column_config: S.optional(S.Unknown),
-    is_2fa_enabled: S.optional(S.Boolean),
-    has_social_auth: S.optional(S.Boolean),
-    has_sso_enforcement: S.optional(S.Boolean),
     has_seen_product_intro_for: S.optional(S.Unknown),
-    scene_personalisation: S.optional(
-      UsersVerifyEmailCreateRequestScenePersonalisationList,
-    ),
     theme_mode: S.optional(S.NullOr(UsersVerifyEmailCreateRequestThemeMode)),
     hedgehog_config: S.optional(S.Unknown),
     allow_sidebar_suggestions: S.optional(S.NullOr(S.Boolean)),
@@ -4359,22 +3281,6 @@ export const UsersVerifyEmailCreateRequest = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(RoleAtOrganizationEnum),
     passkeys_enabled_for_2fa: S.optional(S.NullOr(S.Boolean)),
     hide_mcp_hints: S.optional(S.Boolean),
-    onboarding_skipped_at: S.optional(S.NullOr(S.String)),
-    onboarding_skipped_reason: S.optional(
-      S.NullOr(OnboardingSkippedReasonEnum),
-    ),
-    onboarding_skipped_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_invite: S.optional(S.NullOr(S.String)),
-    onboarding_delegated_to_organization_id: S.optional(S.NullOr(S.String)),
-    onboarding_delegation_accepted_at: S.optional(S.NullOr(S.String)),
-    is_organization_first_user: S.optional(S.NullOr(S.Boolean)),
-    active_realtime_notification_types: S.optional(
-      UsersVerifyEmailCreateRequestActiveRealtimeNotificationTypesList,
-    ),
-    pending_invites: S.optional(
-      UsersVerifyEmailCreateRequestPendingInvitesList,
-    ),
-    requires_credential_review: S.optional(S.Boolean),
   }).pipe(
     T.Http({ method: "POST", uri: "/api/users/verify_email/", code: 200 }),
   ),
@@ -4641,12 +3547,12 @@ export const usersIntegrationsSlackStartCreate: API.OperationMethod<
 export type UsersListError = BadRequest | Forbidden | PosthogOpError;
 export const usersList: API.OperationMethod<
   UsersListRequest,
-  PaginatedUserList,
+  PaginatedUserListOutput,
   UsersListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UsersListRequest,
-  output: PaginatedUserList,
+  output: PaginatedUserListOutput,
   errors: [BadRequest, Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4701,12 +3607,12 @@ export type UsersOnboardingSkipCreateError = PosthogOpError;
 /** Mark the current user as having exited onboarding with a non-delegated reason. Idempotent: the skip timestamp is only set on the first successful call. Callers wanting to delegate setup to a teammate must use the dedicated /organizations/{id}/invites/delegate/ endpoint, which atomically creates the invite and sets reason="delegated". This endpoint rejects that reason so state can't be faked without a real invite. */
 export const usersOnboardingSkipCreate: API.OperationMethod<
   UsersOnboardingSkipCreateRequest,
-  User,
+  UserOutput,
   UsersOnboardingSkipCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UsersOnboardingSkipCreateRequest,
-  output: User,
+  output: UserOutput,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4720,12 +3626,12 @@ export type UsersPartialUpdateError =
 /** Update one or more of the authenticated user's profile fields or settings. */
 export const usersPartialUpdate: API.OperationMethod<
   UsersPartialUpdateRequest,
-  User,
+  UserOutput,
   UsersPartialUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UsersPartialUpdateRequest,
-  output: User,
+  output: UserOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4782,12 +3688,12 @@ export type UsersRetrieveError = Forbidden | NotFound | PosthogOpError;
 /** Retrieve a user's profile and settings. Pass `@me` as the UUID to fetch the authenticated user; non-staff callers may only access their own account. */
 export const usersRetrieve: API.OperationMethod<
   UsersRetrieveRequest,
-  User,
+  UserOutput,
   UsersRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UsersRetrieveRequest,
-  output: User,
+  output: UserOutput,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -4982,12 +3888,12 @@ export type UsersUpdateError =
 /** Replace the authenticated user's profile and settings. Pass `@me` as the UUID to update the authenticated user. Prefer the PATCH endpoint for partial updates — PUT requires every writable field to be provided. */
 export const usersUpdate: API.OperationMethod<
   UsersUpdateRequest,
-  User,
+  UserOutput,
   UsersUpdateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UsersUpdateRequest,
-  output: User,
+  output: UserOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

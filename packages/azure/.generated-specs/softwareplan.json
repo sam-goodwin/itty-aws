@@ -448,16 +448,29 @@
             "smithy.api#documentation": "This is a unique identifier for a plan. Should be a guid."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.softwareplan#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Hybrid use benefit SKU",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.softwareplan#HybridUseBenefitPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Property bag for a hybrid use benefit response"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.softwareplan#HybridUseBenefitPropertiesInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Hybrid use benefit properties"
       }
     },
     "com.azure.softwareplan#HybridUseBenefitCreate": {
@@ -543,11 +556,17 @@
             "smithy.api#documentation": "This is a unique identifier for a plan. Should be a guid."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "sku": {
+          "target": "com.azure.softwareplan#Sku",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Hybrid use benefit SKU",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.softwareplan#HybridUseBenefitPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Property bag for a hybrid use benefit response"
           }
         }
       },

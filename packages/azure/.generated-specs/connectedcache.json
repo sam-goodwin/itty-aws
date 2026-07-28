@@ -2273,16 +2273,27 @@
             "smithy.api#documentation": "Name of the ConnectedCache resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedcache#IspCacheNodesOperationsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedcache#IspCacheNodesOperationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedcache#IspCacheNodesOperationsCreateOrUpdate": {
@@ -2402,16 +2413,368 @@
             "smithy.api#documentation": "Name of the ConnectedCache resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedcache#IspCacheNodesOperationsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.connectedcache#CacheNodePropertyInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedcache#CacheNodePropertyInput": {
+      "type": "structure",
+      "members": {
+        "cacheNode": {
+          "target": "com.azure.connectedcache#CacheNodeEntityInput",
+          "traits": {
+            "smithy.api#documentation": "Mcc cache node resource (cache node entity)."
+          }
+        },
+        "additionalCacheNodeProperties": {
+          "target": "com.azure.connectedcache#AdditionalCacheNodePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Mcc cache node resource additional properties."
+          }
+        },
+        "statusCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Mcc response status code."
+          }
+        },
+        "statusText": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Mcc response status text as string for retrieving status details."
+          }
+        },
+        "statusDetails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Mcc response status details for retrieving response inner details."
+          }
+        },
+        "error": {
+          "target": "com.azure.connectedcache#CacheNodePropertyInputError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model representing an Mcc cache node connectedCache resource"
+      }
+    },
+    "com.azure.connectedcache#CacheNodePropertyInputError": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.connectedcache#AdditionalCacheNodePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "cacheNodePropertiesDetailsIssuesList": {
+          "target": "com.azure.connectedcache#AdditionalCacheNodePropertiesInputCacheNodePropertiesDetailsIssuesListList",
+          "traits": {
+            "smithy.api#documentation": "issues list to return the issues as part of the additional cache node properties"
+          }
+        },
+        "driveConfiguration": {
+          "target": "com.azure.connectedcache#AdditionalCacheNodePropertiesInputDriveConfigurationList",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource drive configurations."
+          }
+        },
+        "bgpConfiguration": {
+          "target": "com.azure.connectedcache#BgpConfiguration",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource Bgp configuration."
+          }
+        },
+        "proxyUrlConfiguration": {
+          "target": "com.azure.connectedcache#ProxyUrlConfiguration",
+          "traits": {
+            "smithy.api#documentation": "proxyUrl configuration of the cache node"
+          }
+        },
+        "isProxyRequired": {
+          "target": "com.azure.connectedcache#ProxyRequired",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource requires a proxy"
+          }
+        },
+        "osType": {
+          "target": "com.azure.connectedcache#OsType",
+          "traits": {
+            "smithy.api#documentation": "Operating system of the cache node"
+          }
+        },
+        "autoUpdateVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Auto update or fast update version"
+          }
+        },
+        "updateInfoDetails": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Update related information details"
+          }
+        },
+        "updateRequestedDateTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "customer requested date time for mcc install of update cycle"
+          }
+        },
+        "creationMethod": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Resource creation method of mcc cache node resource, cli or portal"
+          }
+        },
+        "optionalProperty1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional property #1 of Mcc response object"
+          }
+        },
+        "optionalProperty2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional property #2 of Mcc response object"
+          }
+        },
+        "optionalProperty3": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional property #3 of Mcc response object"
+          }
+        },
+        "optionalProperty4": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional property #4 of Mcc response object"
+          }
+        },
+        "optionalProperty5": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional property #5 of Mcc response object"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model representing cache node for connected cache resource"
+      }
+    },
+    "com.azure.connectedcache#AdditionalCacheNodePropertiesInputDriveConfigurationList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.connectedcache#CacheNodeDriveConfiguration"
+      },
+      "traits": {
+        "smithy.api#documentation": "Cache node resource drive configurations."
+      }
+    },
+    "com.azure.connectedcache#AdditionalCacheNodePropertiesInputCacheNodePropertiesDetailsIssuesListList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "issues list to return the issues as part of the additional cache node properties"
+      }
+    },
+    "com.azure.connectedcache#CacheNodeEntityInput": {
+      "type": "structure",
+      "members": {
+        "fullyQualifiedResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource Azure fully qualified resource Id."
+          }
+        },
+        "customerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource customer resource name."
+          }
+        },
+        "ipAddress": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource Ip address."
+          }
+        },
+        "customerIndex": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource customer index as string."
+          }
+        },
+        "cacheNodeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource identifier of the cache node"
+          }
+        },
+        "cacheNodeName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource name."
+          }
+        },
+        "customerAsn": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource customer resource Asn (autonomous system number)"
+          }
+        },
+        "isEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource flag for indicating if cache node is enabled."
+          }
+        },
+        "maxAllowableEgressInMbps": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource maximum allowed egress in Mbps."
+          }
+        },
+        "isEnterpriseManaged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource flag for determining if managed by enterprise as boolean."
+          }
+        },
+        "cidrCsv": {
+          "target": "com.azure.connectedcache#CacheNodeEntityInputCidrCsvList",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource comma separated values of Cidrs."
+          }
+        },
+        "bgpNetworkInterface": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource Bgp network interface."
+          }
+        },
+        "shouldMigrate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource flag for determining if customer will be migrated."
+          }
+        },
+        "cidrSelectionType": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Cache node resource current Cidr range precedence selection type."
+          }
+        },
+        "fullyQualifiedDomainName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "FQDN(fully qualified domain name) value of the mcc cache node"
+          }
+        },
+        "autoUpdateRingType": {
+          "target": "com.azure.connectedcache#AutoUpdateRingType",
+          "traits": {
+            "smithy.api#documentation": "Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01."
+          }
+        },
+        "autoUpdateRequestedWeek": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc."
+          }
+        },
+        "autoUpdateRequestedDay": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Customer requested day of week for mcc install of auto update cycle. 0 is default no selection. 1-7 are days of week, 1 is Sunday, 2 is Monday, etc."
+          }
+        },
+        "autoUpdateRequestedTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer requested time of the day for mcc install of auto update cycle, should be hh:mm"
+          }
+        },
+        "openFirewallPort80": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Cache node port firewall rule creation opt-in for port 80 property"
+          }
+        },
+        "openFirewallPort443": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Cache node port firewall rule creation opt-in for port 443 property"
+          }
+        },
+        "openFirewallPort5000": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Cache node port firewall rule creation opt-in for port 5000 property"
+          }
+        },
+        "openFirewallPort5001": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Cache node port firewall rule creation opt-in for port 5001 property"
+          }
+        },
+        "runtimeAccountType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Connected Cache runtime account type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model representing Cache Node for ConnectedCache resource"
+      }
+    },
+    "com.azure.connectedcache#CacheNodeEntityInputCidrCsvList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Cache node resource comma separated values of Cidrs."
+      }
+    },
+    "com.azure.connectedcache#IspCacheNodesOperationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedcache#IspCacheNodesOperationsGet": {
@@ -3282,16 +3645,27 @@
             "smithy.api#documentation": "Name of the Customer resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedcache#IspCustomersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedcache#IspCustomersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedcache#IspCustomersCreateOrUpdate": {
@@ -3403,16 +3777,245 @@
             "smithy.api#documentation": "Name of the Customer resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedcache#IspCustomersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.connectedcache#CustomerPropertyInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedcache#CustomerPropertyInput": {
+      "type": "structure",
+      "members": {
+        "customer": {
+          "target": "com.azure.connectedcache#CustomerEntityInput",
+          "traits": {
+            "smithy.api#documentation": "Mcc customer resource (customer entity)."
+          }
+        },
+        "additionalCustomerProperties": {
+          "target": "com.azure.connectedcache#AdditionalCustomerPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Mcc customer resource additional properties."
+          }
+        },
+        "error": {
+          "target": "com.azure.connectedcache#CustomerPropertyInputError",
+          "traits": {
+            "smithy.api#documentation": "The error detail."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model representing customer for connectedCache resource"
+      }
+    },
+    "com.azure.connectedcache#CustomerPropertyInputError": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The error detail."
+      }
+    },
+    "com.azure.connectedcache#AdditionalCustomerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "customerEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource contact email."
+          }
+        },
+        "customerTransitAsn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource transit Asn (autonomous system number)."
+          }
+        },
+        "customerTransitState": {
+          "target": "com.azure.connectedcache#CustomerTransitState",
+          "traits": {
+            "smithy.api#documentation": "Customer resource transit state."
+          }
+        },
+        "customerAsn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource Asn (autonomous system number)."
+          }
+        },
+        "customerEntitlementSkuId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource entitlement Sku Id."
+          }
+        },
+        "customerEntitlementSkuGuid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource entitlement Sku Guid."
+          }
+        },
+        "customerEntitlementSkuName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource entitlement Sku name."
+          }
+        },
+        "customerEntitlementExpiration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource entitlement expiration date string."
+          }
+        },
+        "optionalProperty1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional property #1 of Mcc response object."
+          }
+        },
+        "optionalProperty2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional property #2 of Mcc response object."
+          }
+        },
+        "optionalProperty3": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional property #3 of Mcc response object."
+          }
+        },
+        "optionalProperty4": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional property #4 of Mcc response object."
+          }
+        },
+        "optionalProperty5": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional property #5 of Mcc response object."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model representing customer for connected cache resource"
+      }
+    },
+    "com.azure.connectedcache#CustomerEntityInput": {
+      "type": "structure",
+      "members": {
+        "fullyQualifiedResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource Azure fully qualified resource Id."
+          }
+        },
+        "customerName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource name."
+          }
+        },
+        "contactEmail": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource contact email."
+          }
+        },
+        "contactPhone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource contact phone."
+          }
+        },
+        "contactName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource contact full name."
+          }
+        },
+        "isEntitled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Customer resource entitlement flag as boolean."
+          }
+        },
+        "releaseVersion": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Customer resource Mcc release version."
+          }
+        },
+        "clientTenantId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource client tenant Id of subscription."
+          }
+        },
+        "isEnterpriseManaged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Customer resource flag for enterprise management as boolean."
+          }
+        },
+        "shouldMigrate": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Customer resource flag for migration."
+          }
+        },
+        "resendSignupCode": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Customer resource flag for resending signup code as boolean."
+          }
+        },
+        "verifySignupCode": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Customer resource flag for requiring verification of signup code as boolean."
+          }
+        },
+        "verifySignupPhrase": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Customer resource phrase for verifying signup."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Model representing Customer resource for ConnectedCache resource"
+      }
+    },
+    "com.azure.connectedcache#IspCustomersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedcache#IspCustomersGet": {
@@ -4364,16 +4967,27 @@
             "smithy.api#documentation": "Name of the ConnectedCache resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsCreateOrUpdate": {
@@ -4493,16 +5107,40 @@
             "smithy.api#documentation": "Name of the ConnectedCache resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.connectedcache#CacheNodePropertyInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGet": {
@@ -4931,16 +5569,27 @@
             "smithy.api#documentation": "Name of the Customer resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedcache#EnterpriseMccCustomersUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Resource tags."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedcache#EnterpriseMccCustomersUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedcache#EnterpriseMccCustomersCreateOrUpdate": {
@@ -5052,16 +5701,40 @@
             "smithy.api#documentation": "Name of the Customer resource"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.connectedcache#EnterpriseMccCustomersCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.connectedcache#CustomerPropertyInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.connectedcache#EnterpriseMccCustomersCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.connectedcache#EnterpriseMccCustomersGet": {

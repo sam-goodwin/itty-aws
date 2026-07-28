@@ -93,7 +93,8 @@
         "identity": {
           "target": "com.azure.digitaltwins#ManagedIdentityReference",
           "traits": {
-            "smithy.api#documentation": "Managed identity properties for the time series database connection resource."
+            "smithy.api#documentation": "Managed identity properties for the time series database connection resource.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -507,16 +508,51 @@
             "smithy.api#documentation": "Name of time series database connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.digitaltwins#TimeSeriesDatabaseConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Properties of a specific time series database connection."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins#TimeSeriesDatabaseConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "connectionType": {
+          "target": "com.azure.digitaltwins#TimeSeriesDatabaseConnectionPropertiesInputConnectionType",
+          "traits": {
+            "smithy.api#documentation": "The type of time series connection resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.digitaltwins#ManagedIdentityReference",
+          "traits": {
+            "smithy.api#documentation": "Managed identity properties for the time series database connection resource.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of a time series database connection resource."
+      }
+    },
+    "com.azure.digitaltwins#TimeSeriesDatabaseConnectionPropertiesInputConnectionType": {
+      "type": "enum",
+      "members": {
+        "AZUREDATAEXPLORER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AzureDataExplorer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of time series connection resource."
       }
     },
     "com.azure.digitaltwins#TimeSeriesDatabaseConnectionsGet": {
@@ -844,7 +880,8 @@
         "systemData": {
           "target": "com.azure.digitaltwins#SystemData",
           "traits": {
-            "smithy.api#documentation": "Metadata pertaining to creation and last modification of the private endpoint connection."
+            "smithy.api#documentation": "Metadata pertaining to creation and last modification of the private endpoint connection.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1035,16 +1072,58 @@
             "smithy.api#documentation": "The name of the private endpoint connection."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.digitaltwins#ConnectionPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The connection properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins#ConnectionPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.digitaltwins#PrivateEndpointInput",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint."
+          }
+        },
+        "groupIds": {
+          "target": "com.azure.digitaltwins#ConnectionPropertiesInputGroupIdsList",
+          "traits": {
+            "smithy.api#documentation": "The list of group ids for the private endpoint connection."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.digitaltwins#ConnectionState",
+          "traits": {
+            "smithy.api#documentation": "The connection state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a private endpoint connection."
+      }
+    },
+    "com.azure.digitaltwins#ConnectionPropertiesInputGroupIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of group ids for the private endpoint connection."
+      }
+    },
+    "com.azure.digitaltwins#PrivateEndpointInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The private endpoint property of a private endpoint connection."
       }
     },
     "com.azure.digitaltwins#PrivateEndpointConnectionsGet": {
@@ -1476,16 +1555,37 @@
             "smithy.api#documentation": "Location of DigitalTwinsInstance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource name.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.azure.digitaltwins#DigitalTwinsCheckNameAvailabilityRequestType",
+          "traits": {
+            "smithy.api#documentation": "The type of resource, for instance Microsoft.DigitalTwins/digitalTwinsInstances.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsCheckNameAvailabilityRequestType": {
+      "type": "enum",
+      "members": {
+        "MICROSOFT_DIGITALTWINS_DIGITALTWINSINSTANCES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Microsoft.DigitalTwins/digitalTwinsInstances"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of resource, for instance Microsoft.DigitalTwins/digitalTwinsInstances."
       }
     },
     "com.azure.digitaltwins#OperationsList": {
@@ -1708,7 +1808,8 @@
         "identity": {
           "target": "com.azure.digitaltwins#DigitalTwinsIdentity",
           "traits": {
-            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance."
+            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "systemData": {
@@ -2153,7 +2254,8 @@
         "identity": {
           "target": "com.azure.digitaltwins#ManagedIdentityReference",
           "traits": {
-            "smithy.api#documentation": "Managed identity properties for the endpoint."
+            "smithy.api#documentation": "Managed identity properties for the endpoint.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -2420,16 +2522,104 @@
             "smithy.api#documentation": "Name of Endpoint Resource."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.digitaltwins#DigitalTwinsEndpointResourcePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "DigitalTwinsInstance endpoint resource properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsEndpointResourcePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "endpointType": {
+          "target": "com.azure.digitaltwins#DigitalTwinsEndpointResourcePropertiesInputEndpointType",
+          "traits": {
+            "smithy.api#documentation": "The type of Digital Twins endpoint",
+            "smithy.api#required": {}
+          }
+        },
+        "authenticationType": {
+          "target": "com.azure.digitaltwins#DigitalTwinsEndpointResourcePropertiesInputAuthenticationType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified."
+          }
+        },
+        "deadLetterSecret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Dead letter storage secret for key-based authentication. Will be obfuscated during read.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deadLetterUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Dead letter storage URL for identity-based authentication.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.digitaltwins#ManagedIdentityReference",
+          "traits": {
+            "smithy.api#documentation": "Managed identity properties for the endpoint.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties related to Digital Twins Endpoint"
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsEndpointResourcePropertiesInputAuthenticationType": {
+      "type": "enum",
+      "members": {
+        "KEYBASED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "KeyBased"
+          }
+        },
+        "IDENTITYBASED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "IdentityBased"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies the authentication type being used for connecting to the endpoint. Defaults to 'KeyBased'. If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string). If 'IdentityBased' is select, the endpointUri and entityPath properties must be specified."
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsEndpointResourcePropertiesInputEndpointType": {
+      "type": "enum",
+      "members": {
+        "EVENTHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventHub"
+          }
+        },
+        "EVENTGRID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "EventGrid"
+          }
+        },
+        "SERVICEBUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ServiceBus"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of Digital Twins endpoint"
       }
     },
     "com.azure.digitaltwins#DigitalTwinsEndpointGet": {
@@ -2707,7 +2897,8 @@
         "identity": {
           "target": "com.azure.digitaltwins#DigitalTwinsIdentity",
           "traits": {
-            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance."
+            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "systemData": {
@@ -2828,7 +3019,8 @@
         "identity": {
           "target": "com.azure.digitaltwins#DigitalTwinsIdentity",
           "traits": {
-            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance."
+            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "systemData": {
@@ -2887,16 +3079,149 @@
             "smithy.api#documentation": "The name of the DigitalTwinsInstance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.digitaltwins#DigitalTwinsUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Instance patch properties",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.digitaltwins#DigitalTwinsIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.digitaltwins#DigitalTwinsPatchProperties",
+          "traits": {
+            "smithy.api#documentation": "Properties for the DigitalTwinsInstance.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsPatchProperties": {
+      "type": "structure",
+      "members": {
+        "publicNetworkAccess": {
+          "target": "com.azure.digitaltwins#DigitalTwinsPatchPropertiesPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Public network access for the DigitalTwinsInstance.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a DigitalTwinsInstance."
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsPatchPropertiesPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Public network access for the DigitalTwinsInstance."
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.digitaltwins#DigitalTwinsIdentityInputType",
+          "traits": {
+            "smithy.api#documentation": "The type of Managed Identity used by the DigitalTwinsInstance."
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.digitaltwins#DigitalTwinsIdentityInputUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:\r\n'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.\r\n.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance."
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsIdentityInputUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.digitaltwins#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:\r\n'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.\r\n."
+      }
+    },
+    "com.azure.digitaltwins#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The information about the user assigned identity."
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsIdentityInputType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        },
+        "SYSTEMASSIGNED_USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned,UserAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of Managed Identity used by the DigitalTwinsInstance."
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Instance patch properties"
       }
     },
     "com.azure.digitaltwins#DigitalTwinsCreateOrUpdate": {
@@ -2956,7 +3281,8 @@
         "identity": {
           "target": "com.azure.digitaltwins#DigitalTwinsIdentity",
           "traits": {
-            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance."
+            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "systemData": {
@@ -3015,16 +3341,114 @@
             "smithy.api#documentation": "The name of the DigitalTwinsInstance."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "location": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The resource location.",
             "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.azure.digitaltwins#DigitalTwinsCreateOrUpdateRequestTagsMap",
+          "traits": {
+            "smithy.api#documentation": "The resource tags.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "identity": {
+          "target": "com.azure.digitaltwins#DigitalTwinsIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.digitaltwins#DigitalTwinsPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "DigitalTwins instance properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpointConnections": {
+          "target": "com.azure.digitaltwins#DigitalTwinsPropertiesInputPrivateEndpointConnectionsList",
+          "traits": {
+            "smithy.api#documentation": "The private endpoint connections.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.digitaltwins#DigitalTwinsPropertiesInputPublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Public network access for the DigitalTwinsInstance.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of a DigitalTwinsInstance."
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsPropertiesInputPublicNetworkAccess": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Disabled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Public network access for the DigitalTwinsInstance."
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsPropertiesInputPrivateEndpointConnectionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.digitaltwins#PrivateEndpointConnectionInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The private endpoint connections."
+      }
+    },
+    "com.azure.digitaltwins#PrivateEndpointConnectionInput": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.azure.digitaltwins#ConnectionPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The connection properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The private endpoint connection of a Digital Twin."
+      }
+    },
+    "com.azure.digitaltwins#DigitalTwinsCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resource tags."
       }
     },
     "com.azure.digitaltwins#DigitalTwinsGet": {
@@ -3084,7 +3508,8 @@
         "identity": {
           "target": "com.azure.digitaltwins#DigitalTwinsIdentity",
           "traits": {
-            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance."
+            "smithy.api#documentation": "The managed identity for the DigitalTwinsInstance.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "systemData": {

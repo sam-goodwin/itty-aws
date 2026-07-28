@@ -49,11 +49,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationDisplay>;
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system" | (string & {});
+export type OperationOrigin = "user" | "system" | "user,system";
 export const OperationOrigin = /*@__PURE__*/ S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal" | (string & {});
+export type OperationActionType = "Internal";
 export const OperationActionType = /*@__PURE__*/ S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
@@ -80,7 +80,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Operation[];
+export type OperationsListResponseValueList = ReadonlyArray<Operation>;
 export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
@@ -100,19 +100,32 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationsListResponse",
 }) as any as S.Schema<OperationsListResponse>;
 
+/** The list of operation ids to cancel operations on */
+export type ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList =
+  ReadonlyArray<string>;
+export const ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList>;
+
 export interface ScheduledActionsVirtualMachinesCancelOperationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  body: unknown;
+  /** The list of operation ids to cancel operations on */
+  operationIds: ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList;
+  /** CorrelationId item */
+  correlationid: string;
 }
 export const ScheduledActionsVirtualMachinesCancelOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      operationIds:
+        ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList,
+      correlationid: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -130,16 +143,14 @@ export type ResourceOperationDetailsOpType =
   | "Unknown"
   | "Start"
   | "Deallocate"
-  | "Hibernate"
-  | (string & {});
+  | "Hibernate";
 export const ResourceOperationDetailsOpType = /*@__PURE__*/ S.String;
 
 /** Type of deadline of the operation */
 export type ResourceOperationDetailsDeadlineType =
   | "Unknown"
   | "InitiateAt"
-  | "CompleteBy"
-  | (string & {});
+  | "CompleteBy";
 export const ResourceOperationDetailsDeadlineType = /*@__PURE__*/ S.String;
 
 /** Current state of the operation */
@@ -152,8 +163,7 @@ export type ResourceOperationDetailsState =
   | "Succeeded"
   | "Failed"
   | "Cancelled"
-  | "Blocked"
-  | (string & {});
+  | "Blocked";
 export const ResourceOperationDetailsState = /*@__PURE__*/ S.String;
 
 /** These describe errors that occur at the resource level */
@@ -255,7 +265,8 @@ export const ResourceOperation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceOperation>;
 
 /** An array of resource operations that were successfully cancelled */
-export type CancelOperationsResponseResultsList = ResourceOperation[];
+export type CancelOperationsResponseResultsList =
+  ReadonlyArray<ResourceOperation>;
 export const CancelOperationsResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<CancelOperationsResponseResultsList>;
@@ -273,19 +284,99 @@ export const CancelOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelOperationsResponse",
 }) as any as S.Schema<CancelOperationsResponse>;
 
+/** Virtual machine profile object that contains VM properties that are common across all VMs in this batch (if you want to create 100 VMs in this request, and they all have same vmSize, then include vmSize in baseProfile) */
+export type ResourceProvisionPayloadBaseProfileMap = {
+  [key: string]: unknown | undefined;
+};
+export const ResourceProvisionPayloadBaseProfileMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ResourceProvisionPayloadBaseProfileMap>;
+
+export type ResourceProvisionPayloadResourceOverridesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const ResourceProvisionPayloadResourceOverridesItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ResourceProvisionPayloadResourceOverridesItemMap>;
+
+/** Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile. */
+export type ResourceProvisionPayloadResourceOverridesList =
+  ReadonlyArray<ResourceProvisionPayloadResourceOverridesItemMap>;
+export const ResourceProvisionPayloadResourceOverridesList =
+  /*@__PURE__*/ S.Array(
+    ResourceProvisionPayloadResourceOverridesItemMap,
+  ) as any as S.Schema<ResourceProvisionPayloadResourceOverridesList>;
+
+/** Resource creation data model */
+export interface ResourceProvisionPayload {
+  /** Virtual machine profile object that contains VM properties that are common across all VMs in this batch (if you want to create 100 VMs in this request, and they all have same vmSize, then include vmSize in baseProfile) */
+  baseProfile?: ResourceProvisionPayloadBaseProfileMap;
+  /** Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile. */
+  resourceOverrides?: ResourceProvisionPayloadResourceOverridesList;
+  /** Number of VMs to be created */
+  resourceCount: number;
+  /** if resourceOverrides doesn't contain "name", service will create name based of prefix and ResourceCount e.g. resourceprefix-0,resourceprefix-1.. */
+  resourcePrefix?: string;
+}
+export const ResourceProvisionPayload = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseProfile: S.optional(ResourceProvisionPayloadBaseProfileMap),
+    resourceOverrides: S.optional(
+      ResourceProvisionPayloadResourceOverridesList,
+    ),
+    resourceCount: S.Number,
+    resourcePrefix: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceProvisionPayload",
+}) as any as S.Schema<ResourceProvisionPayload>;
+
+/** The preferences customers can select to optimize their requests to ScheduledActions */
+export type OptimizationPreference =
+  | "Cost"
+  | "Availability"
+  | "CostAvailabilityBalanced";
+export const OptimizationPreference = /*@__PURE__*/ S.String;
+
+/** Extra details needed to run the user's request */
+export interface ExecutionParameters {
+  /** Details that could optimize the user's request */
+  optimizationPreference?: OptimizationPreference;
+  /** Retry policy the user can pass */
+  retryPolicy?: RetryPolicy;
+}
+export const ExecutionParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    optimizationPreference: S.optional(OptimizationPreference),
+    retryPolicy: S.optional(RetryPolicy),
+  }),
+).annotate({
+  identifier: "ExecutionParameters",
+}) as any as S.Schema<ExecutionParameters>;
+
 export interface ScheduledActionsVirtualMachinesExecuteCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  body: unknown;
+  /** resource creation payload */
+  resourceConfigParameters: ResourceProvisionPayload;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** CorrelationId item */
+  correlationid?: string;
 }
 export const ScheduledActionsVirtualMachinesExecuteCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      resourceConfigParameters: ResourceProvisionPayload,
+      executionParameters: ExecutionParameters,
+      correlationid: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
@@ -299,7 +390,8 @@ export const ScheduledActionsVirtualMachinesExecuteCreateRequest =
   }) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteCreateRequest>;
 
 /** The results from the start request if no errors exist */
-export type CreateResourceOperationResponseResultsList = ResourceOperation[];
+export type CreateResourceOperationResponseResultsList =
+  ReadonlyArray<ResourceOperation>;
 export const CreateResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<CreateResourceOperationResponseResultsList>;
@@ -326,19 +418,43 @@ export const CreateResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateResourceOperationResponse",
 }) as any as S.Schema<CreateResourceOperationResponse>;
 
+/** The resource ids used for the request */
+export type ResourcesIdsList = ReadonlyArray<string>;
+export const ResourcesIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourcesIdsList>;
+
+/** The resources needed for the user request */
+export interface Resources {
+  /** The resource ids used for the request */
+  ids: ResourcesIdsList;
+}
+export const Resources = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ids: ResourcesIdsList,
+  }),
+).annotate({ identifier: "Resources" }) as any as S.Schema<Resources>;
+
 export interface ScheduledActionsVirtualMachinesExecuteDeallocateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  body: unknown;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
+  /** CorrelationId item */
+  correlationid: string;
 }
 export const ScheduledActionsVirtualMachinesExecuteDeallocateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      executionParameters: ExecutionParameters,
+      resources: Resources,
+      correlationid: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -353,7 +469,7 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocateRequest =
 
 /** The results from the deallocate request if no errors exist */
 export type DeallocateResourceOperationResponseResultsList =
-  ResourceOperation[];
+  ReadonlyArray<ResourceOperation>;
 export const DeallocateResourceOperationResponseResultsList =
   /*@__PURE__*/ S.Array(
     ResourceOperation,
@@ -386,14 +502,24 @@ export interface ScheduledActionsVirtualMachinesExecuteDeleteRequest {
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  body: unknown;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
+  /** CorrelationId item */
+  correlationid?: string;
+  /** Forced delete resource item */
+  forceDeletion?: boolean;
 }
 export const ScheduledActionsVirtualMachinesExecuteDeleteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      executionParameters: ExecutionParameters,
+      resources: Resources,
+      correlationid: S.optional(S.String),
+      forceDeletion: S.optional(S.Boolean),
     }).pipe(
       T.Http({
         method: "POST",
@@ -407,7 +533,8 @@ export const ScheduledActionsVirtualMachinesExecuteDeleteRequest =
   }) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteDeleteRequest>;
 
 /** The results from the start request if no errors exist */
-export type DeleteResourceOperationResponseResultsList = ResourceOperation[];
+export type DeleteResourceOperationResponseResultsList =
+  ReadonlyArray<ResourceOperation>;
 export const DeleteResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<DeleteResourceOperationResponseResultsList>;
@@ -439,14 +566,21 @@ export interface ScheduledActionsVirtualMachinesExecuteHibernateRequest {
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  body: unknown;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
+  /** CorrelationId item */
+  correlationid: string;
 }
 export const ScheduledActionsVirtualMachinesExecuteHibernateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      executionParameters: ExecutionParameters,
+      resources: Resources,
+      correlationid: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -460,7 +594,8 @@ export const ScheduledActionsVirtualMachinesExecuteHibernateRequest =
   }) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteHibernateRequest>;
 
 /** The results from the Hibernate request if no errors exist */
-export type HibernateResourceOperationResponseResultsList = ResourceOperation[];
+export type HibernateResourceOperationResponseResultsList =
+  ReadonlyArray<ResourceOperation>;
 export const HibernateResourceOperationResponseResultsList =
   /*@__PURE__*/ S.Array(
     ResourceOperation,
@@ -493,14 +628,21 @@ export interface ScheduledActionsVirtualMachinesExecuteStartRequest {
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  body: unknown;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
+  /** CorrelationId item */
+  correlationid: string;
 }
 export const ScheduledActionsVirtualMachinesExecuteStartRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      executionParameters: ExecutionParameters,
+      resources: Resources,
+      correlationid: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -514,7 +656,8 @@ export const ScheduledActionsVirtualMachinesExecuteStartRequest =
   }) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteStartRequest>;
 
 /** The results from the start request if no errors exist */
-export type StartResourceOperationResponseResultsList = ResourceOperation[];
+export type StartResourceOperationResponseResultsList =
+  ReadonlyArray<ResourceOperation>;
 export const StartResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<StartResourceOperationResponseResultsList>;
@@ -541,19 +684,29 @@ export const StartResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartResourceOperationResponse",
 }) as any as S.Schema<StartResourceOperationResponse>;
 
+/** The list of operation ids to query errors of */
+export type ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
+  ReadonlyArray<string>;
+export const ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList>;
+
 export interface ScheduledActionsVirtualMachinesGetOperationErrorsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  body: unknown;
+  /** The list of operation ids to query errors of */
+  operationIds: ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList;
 }
 export const ScheduledActionsVirtualMachinesGetOperationErrorsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      operationIds:
+        ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList,
     }).pipe(
       T.Http({
         method: "POST",
@@ -595,7 +748,8 @@ export const OperationErrorDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationErrorDetails>;
 
 /** A list of errors associated with the operationid */
-export type OperationErrorsResultOperationErrorsList = OperationErrorDetails[];
+export type OperationErrorsResultOperationErrorsList =
+  ReadonlyArray<OperationErrorDetails>;
 export const OperationErrorsResultOperationErrorsList = /*@__PURE__*/ S.Array(
   OperationErrorDetails,
 ) as any as S.Schema<OperationErrorsResultOperationErrorsList>;
@@ -632,7 +786,8 @@ export const OperationErrorsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationErrorsResult>;
 
 /** An array of operationids and their corresponding errors if any */
-export type GetOperationErrorsResponseResultsList = OperationErrorsResult[];
+export type GetOperationErrorsResponseResultsList =
+  ReadonlyArray<OperationErrorsResult>;
 export const GetOperationErrorsResponseResultsList = /*@__PURE__*/ S.Array(
   OperationErrorsResult,
 ) as any as S.Schema<GetOperationErrorsResponseResultsList>;
@@ -650,19 +805,32 @@ export const GetOperationErrorsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOperationErrorsResponse",
 }) as any as S.Schema<GetOperationErrorsResponse>;
 
+/** The list of operation ids to get the status of */
+export type ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList =
+  ReadonlyArray<string>;
+export const ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList>;
+
 export interface ScheduledActionsVirtualMachinesGetOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  body: unknown;
+  /** The list of operation ids to get the status of */
+  operationIds: ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList;
+  /** CorrelationId item */
+  correlationid: string;
 }
 export const ScheduledActionsVirtualMachinesGetOperationStatusRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      operationIds:
+        ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList,
+      correlationid: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -676,7 +844,8 @@ export const ScheduledActionsVirtualMachinesGetOperationStatusRequest =
   }) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequest>;
 
 /** An array of resource operations based on their operation ids */
-export type GetOperationStatusResponseResultsList = ResourceOperation[];
+export type GetOperationStatusResponseResultsList =
+  ReadonlyArray<ResourceOperation>;
 export const GetOperationStatusResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<GetOperationStatusResponseResultsList>;
@@ -694,19 +863,56 @@ export const GetOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOperationStatusResponse",
 }) as any as S.Schema<GetOperationStatusResponse>;
 
+/** The deadlinetype of the operation, this can either be InitiateAt or CompleteBy */
+export type ScheduleDeadlineType = "Unknown" | "InitiateAt" | "CompleteBy";
+export const ScheduleDeadlineType = /*@__PURE__*/ S.String;
+
+/** The schedule details for the user request */
+export interface Schedule {
+  /** The deadline for the operation */
+  deadline?: string;
+  /** The deadline for the operation */
+  deadLine?: string;
+  /** The timezone for the operation */
+  timezone?: string;
+  /** The timezone for the operation */
+  timeZone?: string;
+  /** The deadlinetype of the operation, this can either be InitiateAt or CompleteBy */
+  deadlineType: ScheduleDeadlineType;
+}
+export const Schedule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadline: S.optional(S.String),
+    deadLine: S.optional(S.String),
+    timezone: S.optional(S.String),
+    timeZone: S.optional(S.String),
+    deadlineType: ScheduleDeadlineType,
+  }),
+).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
+
 export interface ScheduledActionsVirtualMachinesSubmitDeallocateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  body: unknown;
+  /** The schedule for the request */
+  schedule: Schedule;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
+  /** CorrelationId item */
+  correlationid: string;
 }
 export const ScheduledActionsVirtualMachinesSubmitDeallocateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      schedule: Schedule,
+      executionParameters: ExecutionParameters,
+      resources: Resources,
+      correlationid: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -724,14 +930,24 @@ export interface ScheduledActionsVirtualMachinesSubmitHibernateRequest {
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  body: unknown;
+  /** The schedule for the request */
+  schedule: Schedule;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
+  /** CorrelationId item */
+  correlationid: string;
 }
 export const ScheduledActionsVirtualMachinesSubmitHibernateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      schedule: Schedule,
+      executionParameters: ExecutionParameters,
+      resources: Resources,
+      correlationid: S.String,
     }).pipe(
       T.Http({
         method: "POST",
@@ -749,14 +965,24 @@ export interface ScheduledActionsVirtualMachinesSubmitStartRequest {
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  body: unknown;
+  /** The schedule for the request */
+  schedule: Schedule;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
+  /** CorrelationId item */
+  correlationid: string;
 }
 export const ScheduledActionsVirtualMachinesSubmitStartRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      body: S.Unknown.pipe(T.HttpBody()),
+      schedule: Schedule,
+      executionParameters: ExecutionParameters,
+      resources: Resources,
+      correlationid: S.String,
     }).pipe(
       T.Http({
         method: "POST",

@@ -66,11 +66,7 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<StringMap>;
 
-export type CustomClassStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "DELETED"
-  | (string & {});
+export type CustomClassStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
 export const CustomClassStateEnum = /*@__PURE__*/ S.String;
 
 /** An item of the class. */
@@ -84,7 +80,7 @@ export const ClassItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ClassItem" }) as any as S.Schema<ClassItem>;
 
-export type ClassItemList = ClassItem[];
+export type ClassItemList = ReadonlyArray<ClassItem>;
 export const ClassItemList = /*@__PURE__*/ S.Array(
   ClassItem,
 ) as any as S.Schema<ClassItemList>;
@@ -188,16 +184,12 @@ export const Phrase = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Phrase" }) as any as S.Schema<Phrase>;
 
-export type PhraseList = Phrase[];
+export type PhraseList = ReadonlyArray<Phrase>;
 export const PhraseList = /*@__PURE__*/ S.Array(
   Phrase,
 ) as any as S.Schema<PhraseList>;
 
-export type PhraseSetStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ACTIVE"
-  | "DELETED"
-  | (string & {});
+export type PhraseSetStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED";
 export const PhraseSetStateEnum = /*@__PURE__*/ S.String;
 
 /** Provides "hints" to the speech recognizer to favor specific words and phrases in the results. */
@@ -353,7 +345,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -466,12 +458,12 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOperationsRequest",
 }) as any as S.Schema<ListOperationsRequest>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -520,7 +512,7 @@ export const ListProjectsLocationsCustomClassesRequest =
     identifier: "ListProjectsLocationsCustomClassesRequest",
   }) as any as S.Schema<ListProjectsLocationsCustomClassesRequest>;
 
-export type CustomClassList = CustomClass[];
+export type CustomClassList = ReadonlyArray<CustomClass>;
 export const CustomClassList = /*@__PURE__*/ S.Array(
   CustomClass,
 ) as any as S.Schema<CustomClassList>;
@@ -566,7 +558,7 @@ export const ListProjectsLocationsPhraseSetsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsPhraseSetsRequest",
 }) as any as S.Schema<ListProjectsLocationsPhraseSetsRequest>;
 
-export type PhraseSetList = PhraseSet[];
+export type PhraseSetList = ReadonlyArray<PhraseSet>;
 export const PhraseSetList = /*@__PURE__*/ S.Array(
   PhraseSet,
 ) as any as S.Schema<PhraseSetList>;
@@ -598,8 +590,7 @@ export type RecognitionConfigEncodingEnum =
   | "SPEEX_WITH_HEADER_BYTE"
   | "MP3"
   | "WEBM_OPUS"
-  | "ALAW"
-  | (string & {});
+  | "ALAW";
 export const RecognitionConfigEncodingEnum = /*@__PURE__*/ S.String;
 
 /** Provides "hints" to the speech recognizer to favor specific words and phrases in the results. */
@@ -616,7 +607,7 @@ export const SpeechContext = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpeechContext" }) as any as S.Schema<SpeechContext>;
 
-export type SpeechContextList = SpeechContext[];
+export type SpeechContextList = ReadonlyArray<SpeechContext>;
 export const SpeechContextList = /*@__PURE__*/ S.Array(
   SpeechContext,
 ) as any as S.Schema<SpeechContextList>;
@@ -662,23 +653,20 @@ export type RecognitionMetadataInteractionTypeEnum =
   | "PROFESSIONALLY_PRODUCED"
   | "VOICE_SEARCH"
   | "VOICE_COMMAND"
-  | "DICTATION"
-  | (string & {});
+  | "DICTATION";
 export const RecognitionMetadataInteractionTypeEnum = /*@__PURE__*/ S.String;
 
 export type RecognitionMetadataMicrophoneDistanceEnum =
   | "MICROPHONE_DISTANCE_UNSPECIFIED"
   | "NEARFIELD"
   | "MIDFIELD"
-  | "FARFIELD"
-  | (string & {});
+  | "FARFIELD";
 export const RecognitionMetadataMicrophoneDistanceEnum = /*@__PURE__*/ S.String;
 
 export type RecognitionMetadataOriginalMediaTypeEnum =
   | "ORIGINAL_MEDIA_TYPE_UNSPECIFIED"
   | "AUDIO"
-  | "VIDEO"
-  | (string & {});
+  | "VIDEO";
 export const RecognitionMetadataOriginalMediaTypeEnum = /*@__PURE__*/ S.String;
 
 export type RecognitionMetadataRecordingDeviceTypeEnum =
@@ -688,8 +676,7 @@ export type RecognitionMetadataRecordingDeviceTypeEnum =
   | "PHONE_LINE"
   | "VEHICLE"
   | "OTHER_OUTDOOR_DEVICE"
-  | "OTHER_INDOOR_DEVICE"
-  | (string & {});
+  | "OTHER_INDOOR_DEVICE";
 export const RecognitionMetadataRecordingDeviceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -744,7 +731,7 @@ export const Entry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Entry" }) as any as S.Schema<Entry>;
 
-export type EntryList = Entry[];
+export type EntryList = ReadonlyArray<Entry>;
 export const EntryList = /*@__PURE__*/ S.Array(
   Entry,
 ) as any as S.Schema<EntryList>;
@@ -1030,7 +1017,7 @@ export const WordInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WordInfo" }) as any as S.Schema<WordInfo>;
 
-export type WordInfoList = WordInfo[];
+export type WordInfoList = ReadonlyArray<WordInfo>;
 export const WordInfoList = /*@__PURE__*/ S.Array(
   WordInfo,
 ) as any as S.Schema<WordInfoList>;
@@ -1054,7 +1041,8 @@ export const SpeechRecognitionAlternative = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpeechRecognitionAlternative",
 }) as any as S.Schema<SpeechRecognitionAlternative>;
 
-export type SpeechRecognitionAlternativeList = SpeechRecognitionAlternative[];
+export type SpeechRecognitionAlternativeList =
+  ReadonlyArray<SpeechRecognitionAlternative>;
 export const SpeechRecognitionAlternativeList = /*@__PURE__*/ S.Array(
   SpeechRecognitionAlternative,
 ) as any as S.Schema<SpeechRecognitionAlternativeList>;
@@ -1081,7 +1069,8 @@ export const SpeechRecognitionResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SpeechRecognitionResult",
 }) as any as S.Schema<SpeechRecognitionResult>;
 
-export type SpeechRecognitionResultList = SpeechRecognitionResult[];
+export type SpeechRecognitionResultList =
+  ReadonlyArray<SpeechRecognitionResult>;
 export const SpeechRecognitionResultList = /*@__PURE__*/ S.Array(
   SpeechRecognitionResult,
 ) as any as S.Schema<SpeechRecognitionResultList>;

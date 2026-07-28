@@ -60,7 +60,7 @@ export class NotFound extends T.applyErrorMatchers(
   [{ status: 404 }],
 ) {}
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -109,7 +109,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -236,8 +236,7 @@ export type WeeklyMaintenanceWindowDayEnum =
   | "THURSDAY"
   | "FRIDAY"
   | "SATURDAY"
-  | "SUNDAY"
-  | (string & {});
+  | "SUNDAY";
 export const WeeklyMaintenanceWindowDayEnum = /*@__PURE__*/ S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
@@ -279,7 +278,8 @@ export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   identifier: "WeeklyMaintenanceWindow",
 }) as any as S.Schema<WeeklyMaintenanceWindow>;
 
-export type WeeklyMaintenanceWindowList = WeeklyMaintenanceWindow[];
+export type WeeklyMaintenanceWindowList =
+  ReadonlyArray<WeeklyMaintenanceWindow>;
 export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
   WeeklyMaintenanceWindow,
 ) as any as S.Schema<WeeklyMaintenanceWindowList>;
@@ -354,8 +354,7 @@ export type InstanceStateEnum =
   | "UPDATING"
   | "DELETING"
   | "PERFORMING_MAINTENANCE"
-  | "MEMCACHE_VERSION_UPGRADING"
-  | (string & {});
+  | "MEMCACHE_VERSION_UPGRADING";
 export const InstanceStateEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for a Memcached Node. */
@@ -375,8 +374,7 @@ export const NodeConfig = /*@__PURE__*/ S.suspend(() =>
 export type InstanceMemcacheVersionEnum =
   | "MEMCACHE_VERSION_UNSPECIFIED"
   | "MEMCACHE_1_5"
-  | "MEMCACHE_1_6_15"
-  | (string & {});
+  | "MEMCACHE_1_6_15";
 export const InstanceMemcacheVersionEnum = /*@__PURE__*/ S.String;
 
 export type NodeStateEnum =
@@ -384,15 +382,13 @@ export type NodeStateEnum =
   | "CREATING"
   | "READY"
   | "DELETING"
-  | "UPDATING"
-  | (string & {});
+  | "UPDATING";
 export const NodeStateEnum = /*@__PURE__*/ S.String;
 
 export type NodeMemcacheVersionEnum =
   | "MEMCACHE_VERSION_UNSPECIFIED"
   | "MEMCACHE_1_5"
-  | "MEMCACHE_1_6_15"
-  | (string & {});
+  | "MEMCACHE_1_6_15";
 export const NodeMemcacheVersionEnum = /*@__PURE__*/ S.String;
 
 export interface Node {
@@ -429,15 +425,14 @@ export const Node = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Node" }) as any as S.Schema<Node>;
 
-export type NodeList = Node[];
+export type NodeList = ReadonlyArray<Node>;
 export const NodeList = /*@__PURE__*/ S.Array(
   Node,
 ) as any as S.Schema<NodeList>;
 
 export type InstanceMessageCodeEnum =
   | "CODE_UNSPECIFIED"
-  | "ZONE_DISTRIBUTION_UNBALANCED"
-  | (string & {});
+  | "ZONE_DISTRIBUTION_UNBALANCED";
 export const InstanceMessageCodeEnum = /*@__PURE__*/ S.String;
 
 export interface InstanceMessage {
@@ -455,7 +450,7 @@ export const InstanceMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstanceMessage",
 }) as any as S.Schema<InstanceMessage>;
 
-export type InstanceMessageList = InstanceMessage[];
+export type InstanceMessageList = ReadonlyArray<InstanceMessage>;
 export const InstanceMessageList = /*@__PURE__*/ S.Array(
   InstanceMessage,
 ) as any as S.Schema<InstanceMessageList>;
@@ -715,7 +710,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsLocationsRequest",
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -767,7 +762,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsInstancesRequest",
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
-export type InstanceList = Instance[];
+export type InstanceList = ReadonlyArray<Instance>;
 export const InstanceList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceList>;
@@ -822,7 +817,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListProjectsLocationsOperationsRequest",
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
-export type OperationList = Operation[];
+export type OperationList = ReadonlyArray<Operation>;
 export const OperationList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationList>;
@@ -875,8 +870,7 @@ export type RescheduleMaintenanceRequestRescheduleTypeEnum =
   | "RESCHEDULE_TYPE_UNSPECIFIED"
   | "IMMEDIATE"
   | "NEXT_AVAILABLE_WINDOW"
-  | "SPECIFIC_TIME"
-  | (string & {});
+  | "SPECIFIC_TIME";
 export const RescheduleMaintenanceRequestRescheduleTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -957,10 +951,7 @@ export const UpdateParametersProjectsLocationsInstancesRequest =
   }) as any as S.Schema<UpdateParametersProjectsLocationsInstancesRequest>;
 
 export type GoogleCloudMemcacheV1beta2UpgradeInstanceRequestMemcacheVersionEnum =
-    | "MEMCACHE_VERSION_UNSPECIFIED"
-    | "MEMCACHE_1_5"
-    | "MEMCACHE_1_6_15"
-    | (string & {});
+  "MEMCACHE_VERSION_UNSPECIFIED" | "MEMCACHE_1_5" | "MEMCACHE_1_6_15";
 export const GoogleCloudMemcacheV1beta2UpgradeInstanceRequestMemcacheVersionEnum =
   /*@__PURE__*/ S.String;
 

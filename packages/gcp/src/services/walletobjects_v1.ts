@@ -78,7 +78,7 @@ export const TranslatedString = /*@__PURE__*/ S.suspend(() =>
   identifier: "TranslatedString",
 }) as any as S.Schema<TranslatedString>;
 
-export type TranslatedStringList = TranslatedString[];
+export type TranslatedStringList = ReadonlyArray<TranslatedString>;
 export const TranslatedStringList = /*@__PURE__*/ S.Array(
   TranslatedString,
 ) as any as S.Schema<TranslatedStringList>;
@@ -133,8 +133,7 @@ export type MessageMessageTypeEnum =
   | "text"
   | "EXPIRATION_NOTIFICATION"
   | "expirationNotification"
-  | "TEXT_AND_NOTIFY"
-  | (string & {});
+  | "TEXT_AND_NOTIFY";
 export const MessageMessageTypeEnum = /*@__PURE__*/ S.String;
 
 /** A message that will be displayed with a Valuable */
@@ -209,8 +208,7 @@ export type EventTicketClassGateLabelEnum =
   | "DOOR"
   | "door"
   | "ENTRANCE"
-  | "entrance"
-  | (string & {});
+  | "entrance";
 export const EventTicketClassGateLabelEnum = /*@__PURE__*/ S.String;
 
 /** Locations of interest for this class or object. Currently, this location is used for geofenced notifications. When a user is within a set radius of this lat/long, and dwells there, Google will trigger a notification. When a user exits this radius, the notification will be hidden. */
@@ -229,7 +227,7 @@ export const MerchantLocation = /*@__PURE__*/ S.suspend(() =>
   identifier: "MerchantLocation",
 }) as any as S.Schema<MerchantLocation>;
 
-export type MerchantLocationList = MerchantLocation[];
+export type MerchantLocationList = ReadonlyArray<MerchantLocation>;
 export const MerchantLocationList = /*@__PURE__*/ S.Array(
   MerchantLocation,
 ) as any as S.Schema<MerchantLocationList>;
@@ -254,7 +252,7 @@ export const LabelValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LabelValue" }) as any as S.Schema<LabelValue>;
 
-export type LabelValueList = LabelValue[];
+export type LabelValueList = ReadonlyArray<LabelValue>;
 export const LabelValueList = /*@__PURE__*/ S.Array(
   LabelValue,
 ) as any as S.Schema<LabelValueList>;
@@ -269,7 +267,7 @@ export const LabelValueRow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LabelValueRow" }) as any as S.Schema<LabelValueRow>;
 
-export type LabelValueRowList = LabelValueRow[];
+export type LabelValueRowList = ReadonlyArray<LabelValueRow>;
 export const LabelValueRowList = /*@__PURE__*/ S.Array(
   LabelValueRow,
 ) as any as S.Schema<LabelValueRowList>;
@@ -293,8 +291,7 @@ export type EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "ONE_USER_ONE_DEVICE"
   | "multipleHolders"
   | "oneUserAllDevices"
-  | "oneUserOneDevice"
-  | (string & {});
+  | "oneUserOneDevice";
 export const EventTicketClassMultipleDevicesAndHoldersAllowedStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -307,18 +304,16 @@ export type EventTicketClassConfirmationCodeLabelEnum =
   | "ORDER_NUMBER"
   | "orderNumber"
   | "RESERVATION_NUMBER"
-  | "reservationNumber"
-  | (string & {});
+  | "reservationNumber";
 export const EventTicketClassConfirmationCodeLabelEnum = /*@__PURE__*/ S.String;
 
 export type EventTicketClassSeatLabelEnum =
   | "SEAT_LABEL_UNSPECIFIED"
   | "SEAT"
-  | "seat"
-  | (string & {});
+  | "seat";
 export const EventTicketClassSeatLabelEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -378,8 +373,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 export type SecurityAnimationAnimationTypeEnum =
   | "ANIMATION_UNSPECIFIED"
   | "FOIL_SHIMMER"
-  | "foilShimmer"
-  | (string & {});
+  | "foilShimmer";
 export const SecurityAnimationAnimationTypeEnum = /*@__PURE__*/ S.String;
 
 export interface SecurityAnimation {
@@ -409,7 +403,7 @@ export const ImageModuleData = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImageModuleData",
 }) as any as S.Schema<ImageModuleData>;
 
-export type ImageModuleDataList = ImageModuleData[];
+export type ImageModuleDataList = ReadonlyArray<ImageModuleData>;
 export const ImageModuleDataList = /*@__PURE__*/ S.Array(
   ImageModuleData,
 ) as any as S.Schema<ImageModuleDataList>;
@@ -503,8 +497,7 @@ export const Review = /*@__PURE__*/ S.suspend(() =>
 export type EventTicketClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
-  | "UNLOCK_REQUIRED_TO_VIEW"
-  | (string & {});
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const EventTicketClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
 export type FieldReferenceDateFormatEnum =
@@ -520,8 +513,7 @@ export type FieldReferenceDateFormatEnum =
   | "DATE_YEAR"
   | "dateYear"
   | "YEAR_MONTH"
-  | "YEAR_MONTH_DAY"
-  | (string & {});
+  | "YEAR_MONTH_DAY";
 export const FieldReferenceDateFormatEnum = /*@__PURE__*/ S.String;
 
 /** Reference definition to use with field overrides. */
@@ -538,7 +530,7 @@ export const FieldReference = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldReference" }) as any as S.Schema<FieldReference>;
 
-export type FieldReferenceList = FieldReference[];
+export type FieldReferenceList = ReadonlyArray<FieldReference>;
 export const FieldReferenceList = /*@__PURE__*/ S.Array(
   FieldReference,
 ) as any as S.Schema<FieldReferenceList>;
@@ -559,8 +551,7 @@ export type TemplateItemPredefinedItemEnum =
   | "FREQUENT_FLYER_PROGRAM_NAME_AND_NUMBER"
   | "frequentFlyerProgramNameAndNumber"
   | "FLIGHT_NUMBER_AND_OPERATING_FLIGHT_NUMBER"
-  | "flightNumberAndOperatingFlightNumber"
-  | (string & {});
+  | "flightNumberAndOperatingFlightNumber";
 export const TemplateItemPredefinedItemEnum = /*@__PURE__*/ S.String;
 
 export interface TemplateItem {
@@ -640,7 +631,7 @@ export const CardRowTemplateInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "CardRowTemplateInfo",
 }) as any as S.Schema<CardRowTemplateInfo>;
 
-export type CardRowTemplateInfoList = CardRowTemplateInfo[];
+export type CardRowTemplateInfoList = ReadonlyArray<CardRowTemplateInfo>;
 export const CardRowTemplateInfoList = /*@__PURE__*/ S.Array(
   CardRowTemplateInfo,
 ) as any as S.Schema<CardRowTemplateInfoList>;
@@ -664,8 +655,7 @@ export type FirstRowOptionTransitOptionEnum =
   | "ORIGIN_AND_DESTINATION_CODES"
   | "originAndDestinationCodes"
   | "ORIGIN_NAME"
-  | "originName"
-  | (string & {});
+  | "originName";
 export const FirstRowOptionTransitOptionEnum = /*@__PURE__*/ S.String;
 
 export interface FirstRowOption {
@@ -740,7 +730,7 @@ export const DetailsItemInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "DetailsItemInfo",
 }) as any as S.Schema<DetailsItemInfo>;
 
-export type DetailsItemInfoList = DetailsItemInfo[];
+export type DetailsItemInfoList = ReadonlyArray<DetailsItemInfo>;
 export const DetailsItemInfoList = /*@__PURE__*/ S.Array(
   DetailsItemInfo,
 ) as any as S.Schema<DetailsItemInfoList>;
@@ -801,12 +791,12 @@ export const TextModuleData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TextModuleData" }) as any as S.Schema<TextModuleData>;
 
-export type TextModuleDataList = TextModuleData[];
+export type TextModuleDataList = ReadonlyArray<TextModuleData>;
 export const TextModuleDataList = /*@__PURE__*/ S.Array(
   TextModuleData,
 ) as any as S.Schema<TextModuleDataList>;
 
-export type UriList = Uri[];
+export type UriList = ReadonlyArray<Uri>;
 export const UriList = /*@__PURE__*/ S.Array(Uri) as any as S.Schema<UriList>;
 
 export interface LinksModuleData {
@@ -877,7 +867,7 @@ export const ValueAddedModuleData = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValueAddedModuleData",
 }) as any as S.Schema<ValueAddedModuleData>;
 
-export type ValueAddedModuleDataList = ValueAddedModuleData[];
+export type ValueAddedModuleDataList = ReadonlyArray<ValueAddedModuleData>;
 export const ValueAddedModuleDataList = /*@__PURE__*/ S.Array(
   ValueAddedModuleData,
 ) as any as S.Schema<ValueAddedModuleDataList>;
@@ -898,27 +888,25 @@ export const LatLongPoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LatLongPoint" }) as any as S.Schema<LatLongPoint>;
 
-export type LatLongPointList = LatLongPoint[];
+export type LatLongPointList = ReadonlyArray<LatLongPoint>;
 export const LatLongPointList = /*@__PURE__*/ S.Array(
   LatLongPoint,
 ) as any as S.Schema<LatLongPointList>;
 
-export type MessageList = Message[];
+export type MessageList = ReadonlyArray<Message>;
 export const MessageList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<MessageList>;
 
 export type EventTicketClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const EventTicketClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type EventTicketClassRowLabelEnum =
   | "ROW_LABEL_UNSPECIFIED"
   | "ROW"
-  | "row"
-  | (string & {});
+  | "row";
 export const EventTicketClassRowLabelEnum = /*@__PURE__*/ S.String;
 
 export type EventDateTimeDoorsOpenLabelEnum =
@@ -926,8 +914,7 @@ export type EventDateTimeDoorsOpenLabelEnum =
   | "DOORS_OPEN"
   | "doorsOpen"
   | "GATES_OPEN"
-  | "gatesOpen"
-  | (string & {});
+  | "gatesOpen";
 export const EventDateTimeDoorsOpenLabelEnum = /*@__PURE__*/ S.String;
 
 export interface EventDateTime {
@@ -964,8 +951,7 @@ export type EventTicketClassReviewStatusEnum =
   | "REJECTED"
   | "rejected"
   | "DRAFT"
-  | "draft"
-  | (string & {});
+  | "draft";
 export const EventTicketClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
 export type EventTicketClassSectionLabelEnum =
@@ -973,8 +959,7 @@ export type EventTicketClassSectionLabelEnum =
   | "SECTION"
   | "section"
   | "THEATER"
-  | "theater"
-  | (string & {});
+  | "theater";
 export const EventTicketClassSectionLabelEnum = /*@__PURE__*/ S.String;
 
 export interface EventTicketClass {
@@ -1198,12 +1183,11 @@ export const GroupingInfo = /*@__PURE__*/ S.suspend(() =>
 export type PassConstraintsNfcConstraintItemEnum =
   | "NFC_CONSTRAINT_UNSPECIFIED"
   | "BLOCK_PAYMENT"
-  | "BLOCK_CLOSED_LOOP_TRANSIT"
-  | (string & {});
+  | "BLOCK_CLOSED_LOOP_TRANSIT";
 export const PassConstraintsNfcConstraintItemEnum = /*@__PURE__*/ S.String;
 
 export type PassConstraintsNfcConstraintItemEnumList =
-  PassConstraintsNfcConstraintItemEnum[];
+  ReadonlyArray<PassConstraintsNfcConstraintItemEnum>;
 export const PassConstraintsNfcConstraintItemEnumList = /*@__PURE__*/ S.Array(
   PassConstraintsNfcConstraintItemEnum,
 ) as any as S.Schema<PassConstraintsNfcConstraintItemEnumList>;
@@ -1211,8 +1195,7 @@ export const PassConstraintsNfcConstraintItemEnumList = /*@__PURE__*/ S.Array(
 export type PassConstraintsScreenshotEligibilityEnum =
   | "SCREENSHOT_ELIGIBILITY_UNSPECIFIED"
   | "ELIGIBLE"
-  | "INELIGIBLE"
-  | (string & {});
+  | "INELIGIBLE";
 export const PassConstraintsScreenshotEligibilityEnum = /*@__PURE__*/ S.String;
 
 /** Container for any constraints that may be placed on passes. */
@@ -1246,10 +1229,7 @@ export const EventReservationInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventReservationInfo",
 }) as any as S.Schema<EventReservationInfo>;
 
-export type BarcodeRenderEncodingEnum =
-  | "RENDER_ENCODING_UNSPECIFIED"
-  | "UTF_8"
-  | (string & {});
+export type BarcodeRenderEncodingEnum = "RENDER_ENCODING_UNSPECIFIED" | "UTF_8";
 export const BarcodeRenderEncodingEnum = /*@__PURE__*/ S.String;
 
 export type BarcodeTypeEnum =
@@ -1280,8 +1260,7 @@ export type BarcodeTypeEnum =
   | "UPC_A"
   | "upcA"
   | "TEXT_ONLY"
-  | "textOnly"
-  | (string & {});
+  | "textOnly";
 export const BarcodeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface Barcode {
@@ -1318,14 +1297,12 @@ export type EventTicketObjectStateEnum =
   | "EXPIRED"
   | "expired"
   | "INACTIVE"
-  | "inactive"
-  | (string & {});
+  | "inactive";
 export const EventTicketObjectStateEnum = /*@__PURE__*/ S.String;
 
 export type EventTicketObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const EventTicketObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 /** A payload containing many barcode values and start date/time. */
@@ -1349,14 +1326,12 @@ export const RotatingBarcodeValues = /*@__PURE__*/ S.suspend(() =>
 
 export type RotatingBarcodeRenderEncodingEnum =
   | "RENDER_ENCODING_UNSPECIFIED"
-  | "UTF_8"
-  | (string & {});
+  | "UTF_8";
 export const RotatingBarcodeRenderEncodingEnum = /*@__PURE__*/ S.String;
 
 export type RotatingBarcodeTotpDetailsAlgorithmEnum =
   | "TOTP_ALGORITHM_UNSPECIFIED"
-  | "TOTP_SHA1"
-  | (string & {});
+  | "TOTP_SHA1";
 export const RotatingBarcodeTotpDetailsAlgorithmEnum = /*@__PURE__*/ S.String;
 
 /** Configuration for the key and value length. See https://www.rfc-editor.org/rfc/rfc4226#section-5.3 */
@@ -1377,7 +1352,7 @@ export const RotatingBarcodeTotpDetailsTotpParameters = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RotatingBarcodeTotpDetailsTotpParameters>;
 
 export type RotatingBarcodeTotpDetailsTotpParametersList =
-  RotatingBarcodeTotpDetailsTotpParameters[];
+  ReadonlyArray<RotatingBarcodeTotpDetailsTotpParameters>;
 export const RotatingBarcodeTotpDetailsTotpParametersList =
   /*@__PURE__*/ S.Array(
     RotatingBarcodeTotpDetailsTotpParameters,
@@ -1430,8 +1405,7 @@ export type RotatingBarcodeTypeEnum =
   | "UPC_A"
   | "upcA"
   | "TEXT_ONLY"
-  | "textOnly"
-  | (string & {});
+  | "textOnly";
 export const RotatingBarcodeTypeEnum = /*@__PURE__*/ S.String;
 
 export interface RotatingBarcode {
@@ -1658,8 +1632,7 @@ export type FlightClassReviewStatusEnum =
   | "REJECTED"
   | "rejected"
   | "DRAFT"
-  | "draft"
-  | (string & {});
+  | "draft";
 export const FlightClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
 export type BoardingAndSeatingPolicySeatClassPolicyEnum =
@@ -1671,8 +1644,7 @@ export type BoardingAndSeatingPolicySeatClassPolicyEnum =
   | "TIER_BASED"
   | "tierBased"
   | "SEAT_CLASS_POLICY_OTHER"
-  | "seatClassPolicyOther"
-  | (string & {});
+  | "seatClassPolicyOther";
 export const BoardingAndSeatingPolicySeatClassPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1683,8 +1655,7 @@ export type BoardingAndSeatingPolicyBoardingPolicyEnum =
   | "GROUP_BASED"
   | "groupBased"
   | "BOARDING_POLICY_OTHER"
-  | "boardingPolicyOther"
-  | (string & {});
+  | "boardingPolicyOther";
 export const BoardingAndSeatingPolicyBoardingPolicyEnum =
   /*@__PURE__*/ S.String;
 
@@ -1730,15 +1701,13 @@ export const AirportInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type FlightClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const FlightClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type FlightClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
-  | "UNLOCK_REQUIRED_TO_VIEW"
-  | (string & {});
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const FlightClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
 export type FlightClassMultipleDevicesAndHoldersAllowedStatusEnum =
@@ -1748,8 +1717,7 @@ export type FlightClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "ONE_USER_ONE_DEVICE"
   | "multipleHolders"
   | "oneUserAllDevices"
-  | "oneUserOneDevice"
-  | (string & {});
+  | "oneUserOneDevice";
 export const FlightClassMultipleDevicesAndHoldersAllowedStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -1819,8 +1787,7 @@ export type FlightClassFlightStatusEnum =
   | "REDIRECTED"
   | "redirected"
   | "DIVERTED"
-  | "diverted"
-  | (string & {});
+  | "diverted";
 export const FlightClassFlightStatusEnum = /*@__PURE__*/ S.String;
 
 export interface FlightClass {
@@ -1996,8 +1963,7 @@ export type BoardingAndSeatingInfoBoardingDoorEnum =
   | "FRONT"
   | "front"
   | "BACK"
-  | "back"
-  | (string & {});
+  | "back";
 export const BoardingAndSeatingInfoBoardingDoorEnum = /*@__PURE__*/ S.String;
 
 export interface BoardingAndSeatingInfo {
@@ -2038,8 +2004,7 @@ export const BoardingAndSeatingInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type FlightObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const FlightObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type FlightObjectStateEnum =
@@ -2051,8 +2016,7 @@ export type FlightObjectStateEnum =
   | "EXPIRED"
   | "expired"
   | "INACTIVE"
-  | "inactive"
-  | (string & {});
+  | "inactive";
 export const FlightObjectStateEnum = /*@__PURE__*/ S.String;
 
 export interface FrequentFlyerInfo {
@@ -2240,16 +2204,14 @@ export type GenericClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "ONE_USER_ONE_DEVICE"
   | "multipleHolders"
   | "oneUserAllDevices"
-  | "oneUserOneDevice"
-  | (string & {});
+  | "oneUserOneDevice";
 export const GenericClassMultipleDevicesAndHoldersAllowedStatusEnum =
   /*@__PURE__*/ S.String;
 
 export type GenericClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
-  | "UNLOCK_REQUIRED_TO_VIEW"
-  | (string & {});
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const GenericClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
 /** Generic Class */
@@ -2401,8 +2363,7 @@ export type GenericObjectGenericTypeEnum =
   | "GENERIC_STUDENT_CARD"
   | "GENERIC_TRANSIT_PASS"
   | "GENERIC_VEHICLE_REGISTRATION"
-  | "GENERIC_OTHER"
-  | (string & {});
+  | "GENERIC_OTHER";
 export const GenericObjectGenericTypeEnum = /*@__PURE__*/ S.String;
 
 export type GenericObjectStateEnum =
@@ -2414,8 +2375,7 @@ export type GenericObjectStateEnum =
   | "EXPIRED"
   | "expired"
   | "INACTIVE"
-  | "inactive"
-  | (string & {});
+  | "inactive";
 export const GenericObjectStateEnum = /*@__PURE__*/ S.String;
 
 /** Generic Object */
@@ -2551,22 +2511,19 @@ export type GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "ONE_USER_ONE_DEVICE"
   | "multipleHolders"
   | "oneUserAllDevices"
-  | "oneUserOneDevice"
-  | (string & {});
+  | "oneUserOneDevice";
 export const GiftCardClassMultipleDevicesAndHoldersAllowedStatusEnum =
   /*@__PURE__*/ S.String;
 
 export type GiftCardClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
-  | "UNLOCK_REQUIRED_TO_VIEW"
-  | (string & {});
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const GiftCardClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
 export type GiftCardClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const GiftCardClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type GiftCardClassReviewStatusEnum =
@@ -2578,8 +2535,7 @@ export type GiftCardClassReviewStatusEnum =
   | "REJECTED"
   | "rejected"
   | "DRAFT"
-  | "draft"
-  | (string & {});
+  | "draft";
 export const GiftCardClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
 export interface GiftCardClass {
@@ -2756,14 +2712,12 @@ export type GiftCardObjectStateEnum =
   | "EXPIRED"
   | "expired"
   | "INACTIVE"
-  | "inactive"
-  | (string & {});
+  | "inactive";
 export const GiftCardObjectStateEnum = /*@__PURE__*/ S.String;
 
 export type GiftCardObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const GiftCardObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export interface GiftCardObject {
@@ -2908,8 +2862,7 @@ export const AddmessageLoyaltyclassRequest = /*@__PURE__*/ S.suspend(() =>
 export type LoyaltyClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
-  | "UNLOCK_REQUIRED_TO_VIEW"
-  | (string & {});
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const LoyaltyClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
 export type LoyaltyClassReviewStatusEnum =
@@ -2921,14 +2874,12 @@ export type LoyaltyClassReviewStatusEnum =
   | "REJECTED"
   | "rejected"
   | "DRAFT"
-  | "draft"
-  | (string & {});
+  | "draft";
 export const LoyaltyClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
 export type LoyaltyClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const LoyaltyClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum =
@@ -2938,8 +2889,7 @@ export type LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "ONE_USER_ONE_DEVICE"
   | "multipleHolders"
   | "oneUserAllDevices"
-  | "oneUserOneDevice"
-  | (string & {});
+  | "oneUserOneDevice";
 export const LoyaltyClassMultipleDevicesAndHoldersAllowedStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -2956,13 +2906,12 @@ export type DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum =
   | "ZIPCODE"
   | "COUNTRY"
   | "EMAIL"
-  | "PHONE"
-  | (string & {});
+  | "PHONE";
 export const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum =
   /*@__PURE__*/ S.String;
 
 export type DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList =
-  DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum[];
+  ReadonlyArray<DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum>;
 export const DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnumList =
   /*@__PURE__*/ S.Array(
     DiscoverableProgramMerchantSignupInfoSignupSharedDatasItemEnum,
@@ -3008,8 +2957,7 @@ export type DiscoverableProgramStateEnum =
   | "LIVE"
   | "live"
   | "DISABLED"
-  | "disabled"
-  | (string & {});
+  | "disabled";
 export const DiscoverableProgramStateEnum = /*@__PURE__*/ S.String;
 
 /** Information about how a class may be discovered and instantiated from within the Google Wallet app. This is done by searching for a loyalty or gift card program and scanning or manually entering. */
@@ -3216,8 +3164,7 @@ export const AddmessageLoyaltyobjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type LoyaltyObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const LoyaltyObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type LoyaltyObjectStateEnum =
@@ -3229,8 +3176,7 @@ export type LoyaltyObjectStateEnum =
   | "EXPIRED"
   | "expired"
   | "INACTIVE"
-  | "inactive"
-  | (string & {});
+  | "inactive";
 export const LoyaltyObjectStateEnum = /*@__PURE__*/ S.String;
 
 export interface LoyaltyPointsBalance {
@@ -3416,8 +3362,7 @@ export type OfferClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "ONE_USER_ONE_DEVICE"
   | "multipleHolders"
   | "oneUserAllDevices"
-  | "oneUserOneDevice"
-  | (string & {});
+  | "oneUserOneDevice";
 export const OfferClassMultipleDevicesAndHoldersAllowedStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -3430,21 +3375,18 @@ export type OfferClassRedemptionChannelEnum =
   | "BOTH"
   | "both"
   | "TEMPORARY_PRICE_REDUCTION"
-  | "temporaryPriceReduction"
-  | (string & {});
+  | "temporaryPriceReduction";
 export const OfferClassRedemptionChannelEnum = /*@__PURE__*/ S.String;
 
 export type OfferClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
-  | "UNLOCK_REQUIRED_TO_VIEW"
-  | (string & {});
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const OfferClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
 export type OfferClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const OfferClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type OfferClassReviewStatusEnum =
@@ -3456,8 +3398,7 @@ export type OfferClassReviewStatusEnum =
   | "REJECTED"
   | "rejected"
   | "DRAFT"
-  | "draft"
-  | (string & {});
+  | "draft";
 export const OfferClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
 export interface OfferClass {
@@ -3643,14 +3584,12 @@ export type OfferObjectStateEnum =
   | "EXPIRED"
   | "expired"
   | "INACTIVE"
-  | "inactive"
-  | (string & {});
+  | "inactive";
 export const OfferObjectStateEnum = /*@__PURE__*/ S.String;
 
 export type OfferObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const OfferObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export interface OfferObject {
@@ -3788,15 +3727,13 @@ export type TransitClassTransitTypeEnum =
   | "FERRY"
   | "ferry"
   | "OTHER"
-  | "other"
-  | (string & {});
+  | "other";
 export const TransitClassTransitTypeEnum = /*@__PURE__*/ S.String;
 
 export type TransitClassViewUnlockRequirementEnum =
   | "VIEW_UNLOCK_REQUIREMENT_UNSPECIFIED"
   | "UNLOCK_NOT_REQUIRED"
-  | "UNLOCK_REQUIRED_TO_VIEW"
-  | (string & {});
+  | "UNLOCK_REQUIRED_TO_VIEW";
 export const TransitClassViewUnlockRequirementEnum = /*@__PURE__*/ S.String;
 
 export type TransitClassReviewStatusEnum =
@@ -3808,14 +3745,12 @@ export type TransitClassReviewStatusEnum =
   | "REJECTED"
   | "rejected"
   | "DRAFT"
-  | "draft"
-  | (string & {});
+  | "draft";
 export const TransitClassReviewStatusEnum = /*@__PURE__*/ S.String;
 
 export type TransitClassNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const TransitClassNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 export type TransitClassMultipleDevicesAndHoldersAllowedStatusEnum =
@@ -3825,8 +3760,7 @@ export type TransitClassMultipleDevicesAndHoldersAllowedStatusEnum =
   | "ONE_USER_ONE_DEVICE"
   | "multipleHolders"
   | "oneUserAllDevices"
-  | "oneUserOneDevice"
-  | (string & {});
+  | "oneUserOneDevice";
 export const TransitClassMultipleDevicesAndHoldersAllowedStatusEnum =
   /*@__PURE__*/ S.String;
 
@@ -4065,14 +3999,12 @@ export type TransitObjectStateEnum =
   | "EXPIRED"
   | "expired"
   | "INACTIVE"
-  | "inactive"
-  | (string & {});
+  | "inactive";
 export const TransitObjectStateEnum = /*@__PURE__*/ S.String;
 
 export type TransitObjectNotifyPreferenceEnum =
   | "NOTIFICATION_SETTINGS_FOR_UPDATES_UNSPECIFIED"
-  | "NOTIFY_ON_UPDATE"
-  | (string & {});
+  | "NOTIFY_ON_UPDATE";
 export const TransitObjectNotifyPreferenceEnum = /*@__PURE__*/ S.String;
 
 /** Device context associated with the object. */
@@ -4131,8 +4063,7 @@ export type TransitObjectTripTypeEnum =
   | "ROUND_TRIP"
   | "roundTrip"
   | "ONE_WAY"
-  | "oneWay"
-  | (string & {});
+  | "oneWay";
 export const TransitObjectTripTypeEnum = /*@__PURE__*/ S.String;
 
 export type TransitObjectConcessionCategoryEnum =
@@ -4142,8 +4073,7 @@ export type TransitObjectConcessionCategoryEnum =
   | "CHILD"
   | "child"
   | "SENIOR"
-  | "senior"
-  | (string & {});
+  | "senior";
 export const TransitObjectConcessionCategoryEnum = /*@__PURE__*/ S.String;
 
 export type TransitObjectPassengerTypeEnum =
@@ -4151,8 +4081,7 @@ export type TransitObjectPassengerTypeEnum =
   | "SINGLE_PASSENGER"
   | "singlePassenger"
   | "MULTIPLE_PASSENGERS"
-  | "multiplePassengers"
-  | (string & {});
+  | "multiplePassengers";
 export const TransitObjectPassengerTypeEnum = /*@__PURE__*/ S.String;
 
 export type TransitObjectTicketStatusEnum =
@@ -4162,8 +4091,7 @@ export type TransitObjectTicketStatusEnum =
   | "REFUNDED"
   | "refunded"
   | "EXCHANGED"
-  | "exchanged"
-  | (string & {});
+  | "exchanged";
 export const TransitObjectTicketStatusEnum = /*@__PURE__*/ S.String;
 
 export type TicketSeatFareClassEnum =
@@ -4173,8 +4101,7 @@ export type TicketSeatFareClassEnum =
   | "FIRST"
   | "first"
   | "BUSINESS"
-  | "business"
-  | (string & {});
+  | "business";
 export const TicketSeatFareClassEnum = /*@__PURE__*/ S.String;
 
 export interface TicketSeat {
@@ -4199,7 +4126,7 @@ export const TicketSeat = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TicketSeat" }) as any as S.Schema<TicketSeat>;
 
-export type TicketSeatList = TicketSeat[];
+export type TicketSeatList = ReadonlyArray<TicketSeat>;
 export const TicketSeatList = /*@__PURE__*/ S.Array(
   TicketSeat,
 ) as any as S.Schema<TicketSeatList>;
@@ -4253,7 +4180,7 @@ export const TicketLeg = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TicketLeg" }) as any as S.Schema<TicketLeg>;
 
-export type TicketLegList = TicketLeg[];
+export type TicketLegList = ReadonlyArray<TicketLeg>;
 export const TicketLegList = /*@__PURE__*/ S.Array(
   TicketLeg,
 ) as any as S.Schema<TicketLegList>;
@@ -4263,8 +4190,7 @@ export type ActivationStatusStateEnum =
   | "NOT_ACTIVATED"
   | "not_activated"
   | "ACTIVATED"
-  | "activated"
-  | (string & {});
+  | "activated";
 export const ActivationStatusStateEnum = /*@__PURE__*/ S.String;
 
 /** The activation status of the object. This field includes activation status if valuable supports activation. */
@@ -4564,8 +4490,7 @@ export type CompositeMediaReferenceTypeEnum =
   | "BLOB_REF"
   | "INLINE"
   | "BIGSTORE_REF"
-  | "COSMO_BINARY_REFERENCE"
-  | (string & {});
+  | "COSMO_BINARY_REFERENCE";
 export const CompositeMediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** A sequence of media data references representing composite data. Introduced to support Bigstore composite objects. For details, visit http://go/bigstore-composites. */
@@ -4698,7 +4623,7 @@ export const DiffVersionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DiffVersionResponse",
 }) as any as S.Schema<DiffVersionResponse>;
 
-export type CompositeMediaList = CompositeMedia[];
+export type CompositeMediaList = ReadonlyArray<CompositeMedia>;
 export const CompositeMediaList = /*@__PURE__*/ S.Array(
   CompositeMedia,
 ) as any as S.Schema<CompositeMediaList>;
@@ -4716,8 +4641,7 @@ export type MediaReferenceTypeEnum =
   | "DIFF_UPLOAD_REQUEST"
   | "DIFF_UPLOAD_RESPONSE"
   | "COSMO_BINARY_REFERENCE"
-  | "ARBITRARY_BYTES"
-  | (string & {});
+  | "ARBITRARY_BYTES";
 export const MediaReferenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** A reference to data stored on the filesystem, on GFS or in blobstore. */
@@ -4998,7 +4922,7 @@ export const AuthenticationKey = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthenticationKey",
 }) as any as S.Schema<AuthenticationKey>;
 
-export type AuthenticationKeyList = AuthenticationKey[];
+export type AuthenticationKeyList = ReadonlyArray<AuthenticationKey>;
 export const AuthenticationKeyList = /*@__PURE__*/ S.Array(
   AuthenticationKey,
 ) as any as S.Schema<AuthenticationKeyList>;
@@ -5161,8 +5085,7 @@ export type PermissionRoleEnum =
   | "READER"
   | "reader"
   | "WRITER"
-  | "writer"
-  | (string & {});
+  | "writer";
 export const PermissionRoleEnum = /*@__PURE__*/ S.String;
 
 export interface Permission {
@@ -5178,7 +5101,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
-export type PermissionList = Permission[];
+export type PermissionList = ReadonlyArray<Permission>;
 export const PermissionList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<PermissionList>;
@@ -5423,72 +5346,72 @@ export const InsertJwtRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsertJwtRequest",
 }) as any as S.Schema<InsertJwtRequest>;
 
-export type LoyaltyObjectList = LoyaltyObject[];
+export type LoyaltyObjectList = ReadonlyArray<LoyaltyObject>;
 export const LoyaltyObjectList = /*@__PURE__*/ S.Array(
   LoyaltyObject,
 ) as any as S.Schema<LoyaltyObjectList>;
 
-export type EventTicketClassList = EventTicketClass[];
+export type EventTicketClassList = ReadonlyArray<EventTicketClass>;
 export const EventTicketClassList = /*@__PURE__*/ S.Array(
   EventTicketClass,
 ) as any as S.Schema<EventTicketClassList>;
 
-export type GiftCardClassList = GiftCardClass[];
+export type GiftCardClassList = ReadonlyArray<GiftCardClass>;
 export const GiftCardClassList = /*@__PURE__*/ S.Array(
   GiftCardClass,
 ) as any as S.Schema<GiftCardClassList>;
 
-export type GenericClassList = GenericClass[];
+export type GenericClassList = ReadonlyArray<GenericClass>;
 export const GenericClassList = /*@__PURE__*/ S.Array(
   GenericClass,
 ) as any as S.Schema<GenericClassList>;
 
-export type GiftCardObjectList = GiftCardObject[];
+export type GiftCardObjectList = ReadonlyArray<GiftCardObject>;
 export const GiftCardObjectList = /*@__PURE__*/ S.Array(
   GiftCardObject,
 ) as any as S.Schema<GiftCardObjectList>;
 
-export type LoyaltyClassList = LoyaltyClass[];
+export type LoyaltyClassList = ReadonlyArray<LoyaltyClass>;
 export const LoyaltyClassList = /*@__PURE__*/ S.Array(
   LoyaltyClass,
 ) as any as S.Schema<LoyaltyClassList>;
 
-export type OfferClassList = OfferClass[];
+export type OfferClassList = ReadonlyArray<OfferClass>;
 export const OfferClassList = /*@__PURE__*/ S.Array(
   OfferClass,
 ) as any as S.Schema<OfferClassList>;
 
-export type OfferObjectList = OfferObject[];
+export type OfferObjectList = ReadonlyArray<OfferObject>;
 export const OfferObjectList = /*@__PURE__*/ S.Array(
   OfferObject,
 ) as any as S.Schema<OfferObjectList>;
 
-export type GenericObjectList = GenericObject[];
+export type GenericObjectList = ReadonlyArray<GenericObject>;
 export const GenericObjectList = /*@__PURE__*/ S.Array(
   GenericObject,
 ) as any as S.Schema<GenericObjectList>;
 
-export type FlightObjectList = FlightObject[];
+export type FlightObjectList = ReadonlyArray<FlightObject>;
 export const FlightObjectList = /*@__PURE__*/ S.Array(
   FlightObject,
 ) as any as S.Schema<FlightObjectList>;
 
-export type FlightClassList = FlightClass[];
+export type FlightClassList = ReadonlyArray<FlightClass>;
 export const FlightClassList = /*@__PURE__*/ S.Array(
   FlightClass,
 ) as any as S.Schema<FlightClassList>;
 
-export type EventTicketObjectList = EventTicketObject[];
+export type EventTicketObjectList = ReadonlyArray<EventTicketObject>;
 export const EventTicketObjectList = /*@__PURE__*/ S.Array(
   EventTicketObject,
 ) as any as S.Schema<EventTicketObjectList>;
 
-export type TransitClassList = TransitClass[];
+export type TransitClassList = ReadonlyArray<TransitClass>;
 export const TransitClassList = /*@__PURE__*/ S.Array(
   TransitClass,
 ) as any as S.Schema<TransitClassList>;
 
-export type TransitObjectList = TransitObject[];
+export type TransitObjectList = ReadonlyArray<TransitObject>;
 export const TransitObjectList = /*@__PURE__*/ S.Array(
   TransitObject,
 ) as any as S.Schema<TransitObjectList>;
@@ -5644,8 +5567,7 @@ export type IssuerToUserInfoActionEnum =
   | "S2AP"
   | "s2ap"
   | "SIGN_UP"
-  | "signUp"
-  | (string & {});
+  | "signUp";
 export const IssuerToUserInfoActionEnum = /*@__PURE__*/ S.String;
 
 export interface IssuerToUserInfo {
@@ -5667,7 +5589,7 @@ export const IssuerToUserInfo = /*@__PURE__*/ S.suspend(() =>
   identifier: "IssuerToUserInfo",
 }) as any as S.Schema<IssuerToUserInfo>;
 
-export type IssuerToUserInfoList = IssuerToUserInfo[];
+export type IssuerToUserInfoList = ReadonlyArray<IssuerToUserInfo>;
 export const IssuerToUserInfoList = /*@__PURE__*/ S.Array(
   IssuerToUserInfo,
 ) as any as S.Schema<IssuerToUserInfoList>;
@@ -6088,7 +6010,7 @@ export const ListIssuerRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListIssuerRequest",
 }) as any as S.Schema<ListIssuerRequest>;
 
-export type IssuerList = Issuer[];
+export type IssuerList = ReadonlyArray<Issuer>;
 export const IssuerList = /*@__PURE__*/ S.Array(
   Issuer,
 ) as any as S.Schema<IssuerList>;
@@ -7112,8 +7034,7 @@ export type MediaRequestInfoNotificationTypeEnum =
   | "PROGRESS"
   | "END"
   | "RESPONSE_SENT"
-  | "ERROR"
-  | (string & {});
+  | "ERROR";
 export const MediaRequestInfoNotificationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Extra information added to operations that support Scotty media requests. */

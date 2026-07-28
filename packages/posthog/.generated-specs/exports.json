@@ -229,9 +229,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#Integer"
-        },
         "dashboard": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -247,36 +244,8 @@
         "export_format": {
           "target": "com.posthog.exports#ExportFormatEnum"
         },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "has_content": {
-          "target": "smithy.api#Boolean"
-        },
         "export_context": {
           "target": "smithy.api#Document"
-        },
-        "filename": {
-          "target": "smithy.api#String"
-        },
-        "expires_after": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "exception": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
-          }
         }
       },
       "traits": {

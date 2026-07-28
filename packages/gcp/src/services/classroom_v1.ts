@@ -90,8 +90,7 @@ export type CourseCourseStateEnum =
   | "ARCHIVED"
   | "PROVISIONED"
   | "DECLINED"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const CourseCourseStateEnum = /*@__PURE__*/ S.String;
 
 /** Google Forms item. */
@@ -191,7 +190,7 @@ export const CourseMaterial = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CourseMaterial" }) as any as S.Schema<CourseMaterial>;
 
-export type CourseMaterialList = CourseMaterial[];
+export type CourseMaterialList = ReadonlyArray<CourseMaterial>;
 export const CourseMaterialList = /*@__PURE__*/ S.Array(
   CourseMaterial,
 ) as any as S.Schema<CourseMaterialList>;
@@ -212,7 +211,7 @@ export const CourseMaterialSet = /*@__PURE__*/ S.suspend(() =>
   identifier: "CourseMaterialSet",
 }) as any as S.Schema<CourseMaterialSet>;
 
-export type CourseMaterialSetList = CourseMaterialSet[];
+export type CourseMaterialSetList = ReadonlyArray<CourseMaterialSet>;
 export const CourseMaterialSetList = /*@__PURE__*/ S.Array(
   CourseMaterialSet,
 ) as any as S.Schema<CourseMaterialSetList>;
@@ -220,8 +219,7 @@ export const CourseMaterialSetList = /*@__PURE__*/ S.Array(
 export type GradebookSettingsCalculationTypeEnum =
   | "CALCULATION_TYPE_UNSPECIFIED"
   | "TOTAL_POINTS"
-  | "WEIGHTED_CATEGORIES"
-  | (string & {});
+  | "WEIGHTED_CATEGORIES";
 export const GradebookSettingsCalculationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Details for a grade category in a course. Coursework may have zero or one grade category, and the category may be used in computing the overall grade. See the [help center article](https://support.google.com/edu/classroom/answer/9184995) for details. */
@@ -244,7 +242,7 @@ export const GradeCategory = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GradeCategory" }) as any as S.Schema<GradeCategory>;
 
-export type GradeCategoryList = GradeCategory[];
+export type GradeCategoryList = ReadonlyArray<GradeCategory>;
 export const GradeCategoryList = /*@__PURE__*/ S.Array(
   GradeCategory,
 ) as any as S.Schema<GradeCategoryList>;
@@ -253,8 +251,7 @@ export type GradebookSettingsDisplaySettingEnum =
   | "DISPLAY_SETTING_UNSPECIFIED"
   | "SHOW_OVERALL_GRADE"
   | "HIDE_OVERALL_GRADE"
-  | "SHOW_TEACHERS_ONLY"
-  | (string & {});
+  | "SHOW_TEACHERS_ONLY";
 export const GradebookSettingsDisplaySettingEnum = /*@__PURE__*/ S.String;
 
 /** The gradebook settings for a course. See the [help center article](https://support.google.com/edu/classroom/answer/9184995) for details. */
@@ -417,16 +414,14 @@ export const CreateCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
 export type AnnouncementAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
-  | "INDIVIDUAL_STUDENTS"
-  | (string & {});
+  | "INDIVIDUAL_STUDENTS";
 export const AnnouncementAssigneeModeEnum = /*@__PURE__*/ S.String;
 
 export type AnnouncementStateEnum =
   | "ANNOUNCEMENT_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const AnnouncementStateEnum = /*@__PURE__*/ S.String;
 
 /** Gemini Gem link. */
@@ -450,8 +445,7 @@ export type SharedDriveFileShareModeEnum =
   | "UNKNOWN_SHARE_MODE"
   | "VIEW"
   | "EDIT"
-  | "STUDENT_COPY"
-  | (string & {});
+  | "STUDENT_COPY";
 export const SharedDriveFileShareModeEnum = /*@__PURE__*/ S.String;
 
 /** Drive file that is used as material for course work. */
@@ -515,12 +509,12 @@ export const Material = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Material" }) as any as S.Schema<Material>;
 
-export type MaterialList = Material[];
+export type MaterialList = ReadonlyArray<Material>;
 export const MaterialList = /*@__PURE__*/ S.Array(
   Material,
 ) as any as S.Schema<MaterialList>;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -634,7 +628,7 @@ export const CopyHistory = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CopyHistory" }) as any as S.Schema<CopyHistory>;
 
-export type CopyHistoryList = CopyHistory[];
+export type CopyHistoryList = ReadonlyArray<CopyHistory>;
 export const CopyHistoryList = /*@__PURE__*/ S.Array(
   CopyHistory,
 ) as any as S.Schema<CopyHistoryList>;
@@ -757,8 +751,7 @@ export type CourseWorkWorkTypeEnum =
   | "COURSE_WORK_TYPE_UNSPECIFIED"
   | "ASSIGNMENT"
   | "SHORT_ANSWER_QUESTION"
-  | "MULTIPLE_CHOICE_QUESTION"
-  | (string & {});
+  | "MULTIPLE_CHOICE_QUESTION";
 export const CourseWorkWorkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for multiple-choice questions. */
@@ -777,23 +770,20 @@ export const MultipleChoiceQuestion = /*@__PURE__*/ S.suspend(() =>
 export type CourseWorkSubmissionModificationModeEnum =
   | "SUBMISSION_MODIFICATION_MODE_UNSPECIFIED"
   | "MODIFIABLE_UNTIL_TURNED_IN"
-  | "MODIFIABLE"
-  | (string & {});
+  | "MODIFIABLE";
 export const CourseWorkSubmissionModificationModeEnum = /*@__PURE__*/ S.String;
 
 export type CourseWorkStateEnum =
   | "COURSE_WORK_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const CourseWorkStateEnum = /*@__PURE__*/ S.String;
 
 export type CourseWorkAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
-  | "INDIVIDUAL_STUDENTS"
-  | (string & {});
+  | "INDIVIDUAL_STUDENTS";
 export const CourseWorkAssigneeModeEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for assignments. */
@@ -944,16 +934,14 @@ export const CreateCoursesCourseWorkAddOnAttachmentsRequest =
 export type CourseWorkMaterialAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
-  | "INDIVIDUAL_STUDENTS"
-  | (string & {});
+  | "INDIVIDUAL_STUDENTS";
 export const CourseWorkMaterialAssigneeModeEnum = /*@__PURE__*/ S.String;
 
 export type CourseWorkMaterialStateEnum =
   | "COURSEWORK_MATERIAL_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const CourseWorkMaterialStateEnum = /*@__PURE__*/ S.String;
 
 /** Course work material created by a teacher for students of the course */
@@ -1081,7 +1069,7 @@ export const Level = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Level" }) as any as S.Schema<Level>;
 
-export type LevelList = Level[];
+export type LevelList = ReadonlyArray<Level>;
 export const LevelList = /*@__PURE__*/ S.Array(
   Level,
 ) as any as S.Schema<LevelList>;
@@ -1106,7 +1094,7 @@ export const Criterion = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Criterion" }) as any as S.Schema<Criterion>;
 
-export type CriterionList = Criterion[];
+export type CriterionList = ReadonlyArray<Criterion>;
 export const CriterionList = /*@__PURE__*/ S.Array(
   Criterion,
 ) as any as S.Schema<CriterionList>;
@@ -1297,8 +1285,7 @@ export const Name = /*@__PURE__*/ S.suspend(() =>
 
 export type GlobalPermissionPermissionEnum =
   | "PERMISSION_UNSPECIFIED"
-  | "CREATE_COURSE"
-  | (string & {});
+  | "CREATE_COURSE";
 export const GlobalPermissionPermissionEnum = /*@__PURE__*/ S.String;
 
 /** Global user permission description. */
@@ -1314,7 +1301,7 @@ export const GlobalPermission = /*@__PURE__*/ S.suspend(() =>
   identifier: "GlobalPermission",
 }) as any as S.Schema<GlobalPermission>;
 
-export type GlobalPermissionList = GlobalPermission[];
+export type GlobalPermissionList = ReadonlyArray<GlobalPermission>;
 export const GlobalPermissionList = /*@__PURE__*/ S.Array(
   GlobalPermission,
 ) as any as S.Schema<GlobalPermissionList>;
@@ -1472,8 +1459,7 @@ export type InvitationRoleEnum =
   | "COURSE_ROLE_UNSPECIFIED"
   | "STUDENT"
   | "TEACHER"
-  | "OWNER"
-  | (string & {});
+  | "OWNER";
 export const InvitationRoleEnum = /*@__PURE__*/ S.String;
 
 /** An invitation to join a course. */
@@ -1518,8 +1504,7 @@ export type FeedFeedTypeEnum =
   | "FEED_TYPE_UNSPECIFIED"
   | "DOMAIN_ROSTER_CHANGES"
   | "COURSE_ROSTER_CHANGES"
-  | "COURSE_WORK_CHANGES"
-  | (string & {});
+  | "COURSE_WORK_CHANGES";
 export const FeedFeedTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`. */
@@ -1619,8 +1604,7 @@ export const CreateRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GuardianInvitationStateEnum =
   | "GUARDIAN_INVITATION_STATE_UNSPECIFIED"
   | "PENDING"
-  | "COMPLETE"
-  | (string & {});
+  | "COMPLETE";
 export const GuardianInvitationStateEnum = /*@__PURE__*/ S.String;
 
 /** An invitation to become the guardian of a specified user, sent to a specified email address. */
@@ -2395,8 +2379,7 @@ export type AddOnAttachmentStudentSubmissionPostSubmissionStateEnum =
   | "CREATED"
   | "TURNED_IN"
   | "RETURNED"
-  | "RECLAIMED_BY_STUDENT"
-  | (string & {});
+  | "RECLAIMED_BY_STUDENT";
 export const AddOnAttachmentStudentSubmissionPostSubmissionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -2553,8 +2536,7 @@ export type StudentSubmissionCourseWorkTypeEnum =
   | "COURSE_WORK_TYPE_UNSPECIFIED"
   | "ASSIGNMENT"
   | "SHORT_ANSWER_QUESTION"
-  | "MULTIPLE_CHOICE_QUESTION"
-  | (string & {});
+  | "MULTIPLE_CHOICE_QUESTION";
 export const StudentSubmissionCourseWorkTypeEnum = /*@__PURE__*/ S.String;
 
 /** Attachment added to student assignment work. When creating attachments, setting the `form` field is not supported. */
@@ -2577,7 +2559,7 @@ export const Attachment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
-export type AttachmentList = Attachment[];
+export type AttachmentList = ReadonlyArray<Attachment>;
 export const AttachmentList = /*@__PURE__*/ S.Array(
   Attachment,
 ) as any as S.Schema<AttachmentList>;
@@ -2601,8 +2583,7 @@ export type StudentSubmissionStateEnum =
   | "CREATED"
   | "TURNED_IN"
   | "RETURNED"
-  | "RECLAIMED_BY_STUDENT"
-  | (string & {});
+  | "RECLAIMED_BY_STUDENT";
 export const StudentSubmissionStateEnum = /*@__PURE__*/ S.String;
 
 /** Student work for a multiple-choice question. */
@@ -2637,8 +2618,7 @@ export type StateHistoryStateEnum =
   | "TURNED_IN"
   | "RETURNED"
   | "RECLAIMED_BY_STUDENT"
-  | "STUDENT_EDITED_AFTER_TURN_IN"
-  | (string & {});
+  | "STUDENT_EDITED_AFTER_TURN_IN";
 export const StateHistoryStateEnum = /*@__PURE__*/ S.String;
 
 /** The history of each state this submission has been in. */
@@ -2662,8 +2642,7 @@ export type GradeHistoryGradeChangeTypeEnum =
   | "UNKNOWN_GRADE_CHANGE_TYPE"
   | "DRAFT_GRADE_POINTS_EARNED_CHANGE"
   | "ASSIGNED_GRADE_POINTS_EARNED_CHANGE"
-  | "MAX_POINTS_CHANGE"
-  | (string & {});
+  | "MAX_POINTS_CHANGE";
 export const GradeHistoryGradeChangeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The history of each grade on this submission. */
@@ -2705,7 +2684,7 @@ export const SubmissionHistory = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubmissionHistory",
 }) as any as S.Schema<SubmissionHistory>;
 
-export type SubmissionHistoryList = SubmissionHistory[];
+export type SubmissionHistoryList = ReadonlyArray<SubmissionHistory>;
 export const SubmissionHistoryList = /*@__PURE__*/ S.Array(
   SubmissionHistory,
 ) as any as S.Schema<SubmissionHistoryList>;
@@ -2938,7 +2917,7 @@ export const GradingPeriod = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GradingPeriod" }) as any as S.Schema<GradingPeriod>;
 
-export type GradingPeriodList = GradingPeriod[];
+export type GradingPeriodList = ReadonlyArray<GradingPeriod>;
 export const GradingPeriodList = /*@__PURE__*/ S.Array(
   GradingPeriod,
 ) as any as S.Schema<GradingPeriodList>;
@@ -3064,11 +3043,11 @@ export type ListCoursesCourseStatesEnum =
   | "ARCHIVED"
   | "PROVISIONED"
   | "DECLINED"
-  | "SUSPENDED"
-  | (string & {});
+  | "SUSPENDED";
 export const ListCoursesCourseStatesEnum = /*@__PURE__*/ S.String;
 
-export type ListCoursesCourseStatesEnumList = ListCoursesCourseStatesEnum[];
+export type ListCoursesCourseStatesEnumList =
+  ReadonlyArray<ListCoursesCourseStatesEnum>;
 export const ListCoursesCourseStatesEnumList = /*@__PURE__*/ S.Array(
   ListCoursesCourseStatesEnum,
 ) as any as S.Schema<ListCoursesCourseStatesEnumList>;
@@ -3103,7 +3082,7 @@ export const ListCoursesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCoursesRequest",
 }) as any as S.Schema<ListCoursesRequest>;
 
-export type CourseList = Course[];
+export type CourseList = ReadonlyArray<Course>;
 export const CourseList = /*@__PURE__*/ S.Array(
   Course,
 ) as any as S.Schema<CourseList>;
@@ -3148,7 +3127,7 @@ export const ListCoursesAliasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCoursesAliasesRequest",
 }) as any as S.Schema<ListCoursesAliasesRequest>;
 
-export type CourseAliasList = CourseAlias[];
+export type CourseAliasList = ReadonlyArray<CourseAlias>;
 export const CourseAliasList = /*@__PURE__*/ S.Array(
   CourseAlias,
 ) as any as S.Schema<CourseAliasList>;
@@ -3173,13 +3152,12 @@ export type ListCoursesAnnouncementsAnnouncementStatesEnum =
   | "ANNOUNCEMENT_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const ListCoursesAnnouncementsAnnouncementStatesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListCoursesAnnouncementsAnnouncementStatesEnumList =
-  ListCoursesAnnouncementsAnnouncementStatesEnum[];
+  ReadonlyArray<ListCoursesAnnouncementsAnnouncementStatesEnum>;
 export const ListCoursesAnnouncementsAnnouncementStatesEnumList =
   /*@__PURE__*/ S.Array(
     ListCoursesAnnouncementsAnnouncementStatesEnum,
@@ -3217,7 +3195,7 @@ export const ListCoursesAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCoursesAnnouncementsRequest",
 }) as any as S.Schema<ListCoursesAnnouncementsRequest>;
 
-export type AnnouncementList = Announcement[];
+export type AnnouncementList = ReadonlyArray<Announcement>;
 export const AnnouncementList = /*@__PURE__*/ S.Array(
   Announcement,
 ) as any as S.Schema<AnnouncementList>;
@@ -3269,7 +3247,7 @@ export const ListCoursesAnnouncementsAddOnAttachmentsRequest =
     identifier: "ListCoursesAnnouncementsAddOnAttachmentsRequest",
   }) as any as S.Schema<ListCoursesAnnouncementsAddOnAttachmentsRequest>;
 
-export type AddOnAttachmentList = AddOnAttachment[];
+export type AddOnAttachmentList = ReadonlyArray<AddOnAttachment>;
 export const AddOnAttachmentList = /*@__PURE__*/ S.Array(
   AddOnAttachment,
 ) as any as S.Schema<AddOnAttachmentList>;
@@ -3294,12 +3272,11 @@ export type ListCoursesCourseWorkCourseWorkStatesEnum =
   | "COURSE_WORK_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const ListCoursesCourseWorkCourseWorkStatesEnum = /*@__PURE__*/ S.String;
 
 export type ListCoursesCourseWorkCourseWorkStatesEnumList =
-  ListCoursesCourseWorkCourseWorkStatesEnum[];
+  ReadonlyArray<ListCoursesCourseWorkCourseWorkStatesEnum>;
 export const ListCoursesCourseWorkCourseWorkStatesEnumList =
   /*@__PURE__*/ S.Array(
     ListCoursesCourseWorkCourseWorkStatesEnum,
@@ -3337,7 +3314,7 @@ export const ListCoursesCourseWorkRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCoursesCourseWorkRequest",
 }) as any as S.Schema<ListCoursesCourseWorkRequest>;
 
-export type CourseWorkList = CourseWork[];
+export type CourseWorkList = ReadonlyArray<CourseWork>;
 export const CourseWorkList = /*@__PURE__*/ S.Array(
   CourseWork,
 ) as any as S.Schema<CourseWorkList>;
@@ -3393,13 +3370,12 @@ export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum =
   | "COURSEWORK_MATERIAL_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "DRAFT"
-  | "DELETED"
-  | (string & {});
+  | "DELETED";
 export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList =
-  ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum[];
+  ReadonlyArray<ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum>;
 export const ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnumList =
   /*@__PURE__*/ S.Array(
     ListCoursesCourseWorkMaterialsCourseWorkMaterialStatesEnum,
@@ -3446,7 +3422,7 @@ export const ListCoursesCourseWorkMaterialsRequest = /*@__PURE__*/ S.suspend(
   identifier: "ListCoursesCourseWorkMaterialsRequest",
 }) as any as S.Schema<ListCoursesCourseWorkMaterialsRequest>;
 
-export type CourseWorkMaterialList = CourseWorkMaterial[];
+export type CourseWorkMaterialList = ReadonlyArray<CourseWorkMaterial>;
 export const CourseWorkMaterialList = /*@__PURE__*/ S.Array(
   CourseWorkMaterial,
 ) as any as S.Schema<CourseWorkMaterialList>;
@@ -3525,7 +3501,7 @@ export const ListCoursesCourseWorkRubricsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCoursesCourseWorkRubricsRequest",
 }) as any as S.Schema<ListCoursesCourseWorkRubricsRequest>;
 
-export type RubricList = Rubric[];
+export type RubricList = ReadonlyArray<Rubric>;
 export const RubricList = /*@__PURE__*/ S.Array(
   Rubric,
 ) as any as S.Schema<RubricList>;
@@ -3549,8 +3525,7 @@ export const ListRubricsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListCoursesCourseWorkStudentSubmissionsLateEnum =
   | "LATE_VALUES_UNSPECIFIED"
   | "LATE_ONLY"
-  | "NOT_LATE_ONLY"
-  | (string & {});
+  | "NOT_LATE_ONLY";
 export const ListCoursesCourseWorkStudentSubmissionsLateEnum =
   /*@__PURE__*/ S.String;
 
@@ -3560,13 +3535,12 @@ export type ListCoursesCourseWorkStudentSubmissionsStatesEnum =
   | "CREATED"
   | "TURNED_IN"
   | "RETURNED"
-  | "RECLAIMED_BY_STUDENT"
-  | (string & {});
+  | "RECLAIMED_BY_STUDENT";
 export const ListCoursesCourseWorkStudentSubmissionsStatesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListCoursesCourseWorkStudentSubmissionsStatesEnumList =
-  ListCoursesCourseWorkStudentSubmissionsStatesEnum[];
+  ReadonlyArray<ListCoursesCourseWorkStudentSubmissionsStatesEnum>;
 export const ListCoursesCourseWorkStudentSubmissionsStatesEnumList =
   /*@__PURE__*/ S.Array(
     ListCoursesCourseWorkStudentSubmissionsStatesEnum,
@@ -3613,7 +3587,7 @@ export const ListCoursesCourseWorkStudentSubmissionsRequest =
     identifier: "ListCoursesCourseWorkStudentSubmissionsRequest",
   }) as any as S.Schema<ListCoursesCourseWorkStudentSubmissionsRequest>;
 
-export type StudentSubmissionList = StudentSubmission[];
+export type StudentSubmissionList = ReadonlyArray<StudentSubmission>;
 export const StudentSubmissionList = /*@__PURE__*/ S.Array(
   StudentSubmission,
 ) as any as S.Schema<StudentSubmissionList>;
@@ -3689,7 +3663,7 @@ export const ListCoursesStudentGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCoursesStudentGroupsRequest",
 }) as any as S.Schema<ListCoursesStudentGroupsRequest>;
 
-export type StudentGroupList = StudentGroup[];
+export type StudentGroupList = ReadonlyArray<StudentGroup>;
 export const StudentGroupList = /*@__PURE__*/ S.Array(
   StudentGroup,
 ) as any as S.Schema<StudentGroupList>;
@@ -3738,7 +3712,7 @@ export const ListCoursesStudentGroupsStudentGroupMembersRequest =
     identifier: "ListCoursesStudentGroupsStudentGroupMembersRequest",
   }) as any as S.Schema<ListCoursesStudentGroupsStudentGroupMembersRequest>;
 
-export type StudentGroupMemberList = StudentGroupMember[];
+export type StudentGroupMemberList = ReadonlyArray<StudentGroupMember>;
 export const StudentGroupMemberList = /*@__PURE__*/ S.Array(
   StudentGroupMember,
 ) as any as S.Schema<StudentGroupMemberList>;
@@ -3783,7 +3757,7 @@ export const ListCoursesStudentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCoursesStudentsRequest",
 }) as any as S.Schema<ListCoursesStudentsRequest>;
 
-export type StudentList = Student[];
+export type StudentList = ReadonlyArray<Student>;
 export const StudentList = /*@__PURE__*/ S.Array(
   Student,
 ) as any as S.Schema<StudentList>;
@@ -3828,7 +3802,7 @@ export const ListCoursesTeachersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCoursesTeachersRequest",
 }) as any as S.Schema<ListCoursesTeachersRequest>;
 
-export type TeacherList = Teacher[];
+export type TeacherList = ReadonlyArray<Teacher>;
 export const TeacherList = /*@__PURE__*/ S.Array(
   Teacher,
 ) as any as S.Schema<TeacherList>;
@@ -3873,7 +3847,7 @@ export const ListCoursesTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListCoursesTopicsRequest",
 }) as any as S.Schema<ListCoursesTopicsRequest>;
 
-export type TopicList = Topic[];
+export type TopicList = ReadonlyArray<Topic>;
 export const TopicList = /*@__PURE__*/ S.Array(
   Topic,
 ) as any as S.Schema<TopicList>;
@@ -3921,7 +3895,7 @@ export const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListInvitationsRequest",
 }) as any as S.Schema<ListInvitationsRequest>;
 
-export type InvitationList = Invitation[];
+export type InvitationList = ReadonlyArray<Invitation>;
 export const InvitationList = /*@__PURE__*/ S.Array(
   Invitation,
 ) as any as S.Schema<InvitationList>;
@@ -3945,13 +3919,12 @@ export const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
 export type ListUserProfilesGuardianInvitationsStatesEnum =
   | "GUARDIAN_INVITATION_STATE_UNSPECIFIED"
   | "PENDING"
-  | "COMPLETE"
-  | (string & {});
+  | "COMPLETE";
 export const ListUserProfilesGuardianInvitationsStatesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListUserProfilesGuardianInvitationsStatesEnumList =
-  ListUserProfilesGuardianInvitationsStatesEnum[];
+  ReadonlyArray<ListUserProfilesGuardianInvitationsStatesEnum>;
 export const ListUserProfilesGuardianInvitationsStatesEnumList =
   /*@__PURE__*/ S.Array(
     ListUserProfilesGuardianInvitationsStatesEnum,
@@ -3990,7 +3963,7 @@ export const ListUserProfilesGuardianInvitationsRequest =
     identifier: "ListUserProfilesGuardianInvitationsRequest",
   }) as any as S.Schema<ListUserProfilesGuardianInvitationsRequest>;
 
-export type GuardianInvitationList = GuardianInvitation[];
+export type GuardianInvitationList = ReadonlyArray<GuardianInvitation>;
 export const GuardianInvitationList = /*@__PURE__*/ S.Array(
   GuardianInvitation,
 ) as any as S.Schema<GuardianInvitationList>;
@@ -4038,7 +4011,7 @@ export const ListUserProfilesGuardiansRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListUserProfilesGuardiansRequest",
 }) as any as S.Schema<ListUserProfilesGuardiansRequest>;
 
-export type GuardianList = Guardian[];
+export type GuardianList = ReadonlyArray<Guardian>;
 export const GuardianList = /*@__PURE__*/ S.Array(
   Guardian,
 ) as any as S.Schema<GuardianList>;
@@ -4062,8 +4035,7 @@ export const ListGuardiansResponse = /*@__PURE__*/ S.suspend(() =>
 export type ModifyAnnouncementAssigneesRequestAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
-  | "INDIVIDUAL_STUDENTS"
-  | (string & {});
+  | "INDIVIDUAL_STUDENTS";
 export const ModifyAnnouncementAssigneesRequestAssigneeModeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4131,8 +4103,7 @@ export const ModifyAssigneesCoursesAnnouncementsRequest =
 export type ModifyCourseWorkAssigneesRequestAssigneeModeEnum =
   | "ASSIGNEE_MODE_UNSPECIFIED"
   | "ALL_STUDENTS"
-  | "INDIVIDUAL_STUDENTS"
-  | (string & {});
+  | "INDIVIDUAL_STUDENTS";
 export const ModifyCourseWorkAssigneesRequestAssigneeModeEnum =
   /*@__PURE__*/ S.String;
 

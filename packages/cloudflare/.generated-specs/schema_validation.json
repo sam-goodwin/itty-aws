@@ -924,13 +924,47 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.schema_validation#SettingsOperationsBulkEditRequestBodyValueMitigationAction": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.schema_validation#SettingsOperationsBulkEditRequestBodyValue": {
+      "type": "structure",
+      "members": {
+        "mitigation_action": {
+          "target": "com.cloudflare.schema_validation#SettingsOperationsBulkEditRequestBodyValueMitigationAction",
+          "traits": {
+            "smithy.api#documentation": "Mitigation actions are as follows:"
+          }
+        }
+      }
+    },
     "com.cloudflare.schema_validation#SettingsOperationsBulkEditRequestBodyMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.schema_validation#SettingsOperationsBulkEditRequestBodyValue"
       }
     },
     "com.cloudflare.schema_validation#SettingsOperationsBulkEditRequest": {
@@ -956,13 +990,55 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.schema_validation#SettingsOperationsBulkEditResultValueMitigationAction": {
+      "type": "enum",
+      "members": {
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      }
+    },
+    "com.cloudflare.schema_validation#SettingsOperationsBulkEditResultValue": {
+      "type": "structure",
+      "members": {
+        "mitigation_action": {
+          "target": "com.cloudflare.schema_validation#SettingsOperationsBulkEditResultValueMitigationAction",
+          "traits": {
+            "smithy.api#documentation": "When set, this applies a mitigation action to this operation which supersedes a global schema validation setting just for this operation",
+            "smithy.api#required": {}
+          }
+        },
+        "operation_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.schema_validation#SettingsOperationsBulkEditResultMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
       },
       "value": {
-        "target": "smithy.api#Document"
+        "target": "com.cloudflare.schema_validation#SettingsOperationsBulkEditResultValue"
       }
     },
     "com.cloudflare.schema_validation#SettingsOperationsBulkEditResponse": {

@@ -2343,7 +2343,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -2789,6 +2789,42 @@
         },
         "Case6": {
           "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.query#MathGroupTypeIndex": {
+      "type": "intEnum",
+      "members": {
+        "_0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 0
+          }
+        },
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
         }
       },
       "traits": {}
@@ -3857,7 +3893,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -5182,7 +5218,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -5500,7 +5536,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -5812,7 +5848,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -7746,10 +7782,58 @@
       },
       "traits": {}
     },
+    "com.posthog.query#DaysOfWeekEnum": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 2
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_4": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 4
+          }
+        },
+        "_5": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 5
+          }
+        },
+        "_6": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 6
+          }
+        },
+        "_7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 7
+          }
+        }
+      },
+      "traits": {}
+    },
     "com.posthog.query#DateRangeDaysOfWeekList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#Double"
+        "target": "com.posthog.query#DaysOfWeekEnum"
       },
       "traits": {}
     },
@@ -8065,7 +8149,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -9635,7 +9719,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -9955,7 +10039,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -16081,7 +16165,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -20995,7 +21079,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -21340,7 +21424,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -21683,7 +21767,7 @@
           }
         },
         "math_group_type_index": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.query#MathGroupTypeIndex",
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
@@ -61545,11 +61629,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.query#QueryLogRetrieveResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.query#QueryLogRetrieveResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.query#QueryLogRetrieveResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -61649,11 +61743,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.query#QueryCheckAuthForAsyncCreateResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.query#QueryCheckAuthForAsyncCreateResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.query#QueryCheckAuthForAsyncCreateResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -61705,11 +61809,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.posthog.query#QueryDraftSqlRetrieveResponseBodyMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
     "com.posthog.query#QueryDraftSqlRetrieveResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "smithy.api#Document",
+          "target": "com.posthog.query#QueryDraftSqlRetrieveResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}

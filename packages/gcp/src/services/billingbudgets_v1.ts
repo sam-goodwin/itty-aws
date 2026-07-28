@@ -64,12 +64,11 @@ export type GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentEnum =
   | "CREDIT_TYPES_TREATMENT_UNSPECIFIED"
   | "INCLUDE_ALL_CREDITS"
   | "EXCLUDE_ALL_CREDITS"
-  | "INCLUDE_SPECIFIED_CREDITS"
-  | (string & {});
+  | "INCLUDE_SPECIFIED_CREDITS";
 export const GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -78,8 +77,7 @@ export type GoogleCloudBillingBudgetsV1FilterCalendarPeriodEnum =
   | "CALENDAR_PERIOD_UNSPECIFIED"
   | "MONTH"
   | "QUARTER"
-  | "YEAR"
-  | (string & {});
+  | "YEAR";
 export const GoogleCloudBillingBudgetsV1FilterCalendarPeriodEnum =
   /*@__PURE__*/ S.String;
 
@@ -117,7 +115,7 @@ export const GoogleCloudBillingBudgetsV1CustomPeriod = /*@__PURE__*/ S.suspend(
   identifier: "GoogleCloudBillingBudgetsV1CustomPeriod",
 }) as any as S.Schema<GoogleCloudBillingBudgetsV1CustomPeriod>;
 
-export type DocumentList = unknown[];
+export type DocumentList = ReadonlyArray<unknown>;
 export const DocumentList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DocumentList>;
@@ -241,8 +239,7 @@ export const GoogleCloudBillingBudgetsV1BudgetAmount = /*@__PURE__*/ S.suspend(
 export type GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisEnum =
   | "BASIS_UNSPECIFIED"
   | "CURRENT_SPEND"
-  | "FORECASTED_SPEND"
-  | (string & {});
+  | "FORECASTED_SPEND";
 export const GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisEnum =
   /*@__PURE__*/ S.String;
 
@@ -266,7 +263,7 @@ export const GoogleCloudBillingBudgetsV1ThresholdRule = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudBillingBudgetsV1ThresholdRule>;
 
 export type GoogleCloudBillingBudgetsV1ThresholdRuleList =
-  GoogleCloudBillingBudgetsV1ThresholdRule[];
+  ReadonlyArray<GoogleCloudBillingBudgetsV1ThresholdRule>;
 export const GoogleCloudBillingBudgetsV1ThresholdRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudBillingBudgetsV1ThresholdRule,
@@ -275,8 +272,7 @@ export const GoogleCloudBillingBudgetsV1ThresholdRuleList =
 export type GoogleCloudBillingBudgetsV1BudgetOwnershipScopeEnum =
   | "OWNERSHIP_SCOPE_UNSPECIFIED"
   | "ALL_USERS"
-  | "BILLING_ACCOUNT"
-  | (string & {});
+  | "BILLING_ACCOUNT";
 export const GoogleCloudBillingBudgetsV1BudgetOwnershipScopeEnum =
   /*@__PURE__*/ S.String;
 
@@ -408,7 +404,7 @@ export const ListBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBillingAccountsBudgetsRequest>;
 
 export type GoogleCloudBillingBudgetsV1BudgetList =
-  GoogleCloudBillingBudgetsV1Budget[];
+  ReadonlyArray<GoogleCloudBillingBudgetsV1Budget>;
 export const GoogleCloudBillingBudgetsV1BudgetList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingBudgetsV1Budget,
 ) as any as S.Schema<GoogleCloudBillingBudgetsV1BudgetList>;

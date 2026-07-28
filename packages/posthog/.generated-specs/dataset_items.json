@@ -130,7 +130,10 @@
           }
         },
         "created_by": {
-          "target": "com.posthog.dataset_items#UserBasic"
+          "target": "com.posthog.dataset_items#UserBasic",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         },
         "team": {
           "target": "smithy.api#Integer"
@@ -318,9 +321,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String"
-        },
         "dataset": {
           "target": "smithy.api#String"
         },
@@ -356,21 +356,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.dataset_items#UserBasic"
-        },
-        "team": {
-          "target": "smithy.api#Integer"
         }
       },
       "traits": {
@@ -506,21 +491,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.dataset_items#UserBasic"
-        },
-        "team": {
-          "target": "smithy.api#Integer"
         }
       },
       "traits": {
@@ -608,21 +578,6 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.dataset_items#UserBasic"
-        },
-        "team": {
-          "target": "smithy.api#Integer"
         }
       },
       "traits": {

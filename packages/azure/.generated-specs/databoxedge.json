@@ -441,16 +441,37 @@
             "smithy.api#documentation": "The user name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#UserPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The storage account credential properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.databoxedge#UserPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "encryptedPassword": {
+          "target": "com.azure.databoxedge#AsymmetricEncryptedSecret",
+          "traits": {
+            "smithy.api#documentation": "The password details."
+          }
+        },
+        "userType": {
+          "target": "com.azure.databoxedge#UserType",
+          "traits": {
+            "smithy.api#documentation": "Type of the user.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The user properties."
       }
     },
     "com.azure.databoxedge#UsersGet": {
@@ -800,16 +821,37 @@
             "smithy.api#documentation": "The device name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#RawCertificateData",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The Base 64 encoded certificate raw data.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.databoxedge#RawCertificateData": {
+      "type": "structure",
+      "members": {
+        "authenticationType": {
+          "target": "com.azure.databoxedge#AuthenticationType",
+          "traits": {
+            "smithy.api#documentation": "The authentication type."
+          }
+        },
+        "certificate": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The base64 encoded certificate raw data.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Raw Certificate Data."
       }
     },
     "com.azure.databoxedge#DevicesGetUpdateSummary": {
@@ -1729,11 +1771,34 @@
             "smithy.api#documentation": "The device name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "clientSecretStoreId": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The Key Vault ARM Id for client secrets"
+          }
+        },
+        "clientSecretStoreUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The url to access the Client Key Vault"
+          }
+        },
+        "channelIntegrityKeyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name for Channel Integrity Key stored in the Client Key Vault"
+          }
+        },
+        "channelIntegrityKeyVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of Channel Integrity Key stored in the Client Key Vault"
+          }
+        },
+        "syncStatus": {
+          "target": "com.azure.databoxedge#KeyVaultSyncStatus",
+          "traits": {
+            "smithy.api#documentation": "For changing or to initiate the resync to key-vault set the status to KeyVaultSyncPending, rest of the status will not be applicable."
           }
         }
       },
@@ -1913,10 +1978,10 @@
             "smithy.api#documentation": "The trigger name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.databoxedge#TriggerEventType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Trigger Kind.",
             "smithy.api#required": {}
           }
         }
@@ -2196,16 +2261,42 @@
             "smithy.api#documentation": "The device name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#SupportPackageRequestProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The TriggerSupportPackageRequest properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.databoxedge#SupportPackageRequestProperties": {
+      "type": "structure",
+      "members": {
+        "minimumTimeStamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "MinimumTimeStamp from where logs need to be collected"
+          }
+        },
+        "maximumTimeStamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start of the timespan of the log collection"
+          }
+        },
+        "include": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Type of files, which need to be included in the logs\nThis will contain the type of logs (Default/DefaultWithDumps/None/All/DefaultWithArchived)\nor a comma separated list of log types that are required"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The share properties."
       }
     },
     "com.azure.databoxedge#ContainersRefresh": {
@@ -2572,16 +2663,31 @@
             "smithy.api#documentation": "The container Name"
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#ContainerPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The container properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.databoxedge#ContainerPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "dataFormat": {
+          "target": "com.azure.databoxedge#AzureContainerDataFormat",
+          "traits": {
+            "smithy.api#documentation": "DataFormat for Container",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The container properties."
       }
     },
     "com.azure.databoxedge#ContainersGet": {
@@ -3073,16 +3179,49 @@
             "smithy.api#documentation": "The storage account name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#StorageAccountPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The Storage Account properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.databoxedge#StorageAccountPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the storage Account."
+          }
+        },
+        "storageAccountStatus": {
+          "target": "com.azure.databoxedge#StorageAccountStatus",
+          "traits": {
+            "smithy.api#documentation": "Current status of the storage account"
+          }
+        },
+        "dataPolicy": {
+          "target": "com.azure.databoxedge#DataPolicy",
+          "traits": {
+            "smithy.api#documentation": "Data policy of the storage Account.",
+            "smithy.api#required": {}
+          }
+        },
+        "storageAccountCredentialId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Storage Account Credential Id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The storage account properties."
       }
     },
     "com.azure.databoxedge#StorageAccountsGet": {
@@ -3555,10 +3694,10 @@
             "smithy.api#documentation": "The storage account credential name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#StorageAccountCredentialProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The storage account credential properties.",
             "smithy.api#required": {}
           }
         }
@@ -4378,16 +4517,99 @@
             "smithy.api#documentation": "The share name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#SharePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The share properties.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.databoxedge#SharePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description for the share."
+          }
+        },
+        "shareStatus": {
+          "target": "com.azure.databoxedge#ShareStatus",
+          "traits": {
+            "smithy.api#documentation": "Current status of the share.",
+            "smithy.api#required": {}
+          }
+        },
+        "monitoringStatus": {
+          "target": "com.azure.databoxedge#MonitoringStatus",
+          "traits": {
+            "smithy.api#documentation": "Current monitoring status of the share.",
+            "smithy.api#required": {}
+          }
+        },
+        "azureContainerInfo": {
+          "target": "com.azure.databoxedge#AzureContainerInfo",
+          "traits": {
+            "smithy.api#documentation": "Azure container mapping for the share."
+          }
+        },
+        "accessProtocol": {
+          "target": "com.azure.databoxedge#ShareAccessProtocol",
+          "traits": {
+            "smithy.api#documentation": "Access protocol to be used by the share.",
+            "smithy.api#required": {}
+          }
+        },
+        "userAccessRights": {
+          "target": "com.azure.databoxedge#SharePropertiesInputUserAccessRightsList",
+          "traits": {
+            "smithy.api#documentation": "Mapping of users and corresponding access rights on the share (required for SMB protocol)."
+          }
+        },
+        "clientAccessRights": {
+          "target": "com.azure.databoxedge#SharePropertiesInputClientAccessRightsList",
+          "traits": {
+            "smithy.api#documentation": "List of IP addresses and corresponding access rights on the share(required for NFS protocol)."
+          }
+        },
+        "refreshDetails": {
+          "target": "com.azure.databoxedge#RefreshDetails",
+          "traits": {
+            "smithy.api#documentation": "Details of the refresh job on this share."
+          }
+        },
+        "dataPolicy": {
+          "target": "com.azure.databoxedge#DataPolicy",
+          "traits": {
+            "smithy.api#documentation": "Data policy of the share."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The share properties."
+      }
+    },
+    "com.azure.databoxedge#SharePropertiesInputClientAccessRightsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.databoxedge#ClientAccessRight"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of IP addresses and corresponding access rights on the share(required for NFS protocol)."
+      }
+    },
+    "com.azure.databoxedge#SharePropertiesInputUserAccessRightsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.databoxedge#UserAccessRight"
+      },
+      "traits": {
+        "smithy.api#documentation": "Mapping of users and corresponding access rights on the share (required for SMB protocol)."
       }
     },
     "com.azure.databoxedge#SharesGet": {
@@ -4654,16 +4876,31 @@
             "smithy.api#documentation": "The device name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#SecuritySettingsProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the security settings.",
             "smithy.api#required": {}
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.databoxedge#SecuritySettingsProperties": {
+      "type": "structure",
+      "members": {
+        "deviceAdminPassword": {
+          "target": "com.azure.databoxedge#AsymmetricEncryptedSecret",
+          "traits": {
+            "smithy.api#documentation": "Device administrator password as an encrypted string (encrypted using RSA PKCS #1) is used to sign into the  local web UI of the device. The Actual password should have at least 8 characters that are a combination of  uppercase, lowercase, numeric, and special characters.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of security settings."
       }
     },
     "com.azure.databoxedge#DevicesScanForUpdates": {
@@ -5033,10 +5270,10 @@
             "smithy.api#documentation": "The name of the role."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#MonitoringMetricConfigurationProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The metric setting properties.",
             "smithy.api#required": {}
           }
         }
@@ -5459,10 +5696,10 @@
             "smithy.api#documentation": "The name of the addon."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.databoxedge#AddonType",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Addon type.",
             "smithy.api#required": {}
           }
         }
@@ -5857,10 +6094,10 @@
             "smithy.api#documentation": "The role name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "kind": {
+          "target": "com.azure.databoxedge#RoleTypes",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Role type.",
             "smithy.api#required": {}
           }
         }
@@ -6710,16 +6947,42 @@
             "smithy.api#documentation": "The device name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#OrderPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The order properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.databoxedge#OrderPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "contactInformation": {
+          "target": "com.azure.databoxedge#ContactDetails",
+          "traits": {
+            "smithy.api#documentation": "The contact details.",
+            "smithy.api#required": {}
+          }
+        },
+        "shippingAddress": {
+          "target": "com.azure.databoxedge#Address",
+          "traits": {
+            "smithy.api#documentation": "The shipping address."
+          }
+        },
+        "shipmentType": {
+          "target": "com.azure.databoxedge#ShipmentType",
+          "traits": {
+            "smithy.api#documentation": "ShipmentType of the order"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Order properties."
       }
     },
     "com.azure.databoxedge#OrdersGet": {
@@ -8749,10 +9012,10 @@
             "smithy.api#documentation": "The device name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#DiagnosticRemoteSupportSettingsProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the remote support  settings.",
             "smithy.api#required": {}
           }
         }
@@ -8971,10 +9234,10 @@
             "smithy.api#documentation": "The device name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#ProactiveLogCollectionSettingsProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Properties of the diagnostic proactive log collection settings.",
             "smithy.api#required": {}
           }
         }
@@ -9579,10 +9842,10 @@
             "smithy.api#documentation": "The capacity name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#DeviceCapacityRequestInfoProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the Device Capacity Request.",
             "smithy.api#required": {}
           }
         }
@@ -9590,6 +9853,93 @@
       "traits": {
         "smithy.api#input": {}
       }
+    },
+    "com.azure.databoxedge#DeviceCapacityRequestInfoProperties": {
+      "type": "structure",
+      "members": {
+        "vmPlacementQuery": {
+          "target": "com.azure.databoxedge#DeviceCapacityRequestInfoPropertiesVmPlacementQueryList",
+          "traits": {
+            "smithy.api#documentation": "Array containing the sizes of the VMs for checking if its feasible to create them on the appliance.",
+            "smithy.api#required": {}
+          }
+        },
+        "vmPlacementResults": {
+          "target": "com.azure.databoxedge#DeviceCapacityRequestInfoPropertiesVmPlacementResultsList",
+          "traits": {
+            "smithy.api#documentation": "Array of the VMs of the sizes in VmSizes can be provisioned on the appliance."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Properties of Device Capacity Request Info containing VM's to be checked and their corresponding results."
+      }
+    },
+    "com.azure.databoxedge#DeviceCapacityRequestInfoPropertiesVmPlacementResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.databoxedge#VmPlacementRequestResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of the VMs of the sizes in VmSizes can be provisioned on the appliance."
+      }
+    },
+    "com.azure.databoxedge#VmPlacementRequestResult": {
+      "type": "structure",
+      "members": {
+        "vmSize": {
+          "target": "com.azure.databoxedge#VmPlacementRequestResultVmSizeList",
+          "traits": {
+            "smithy.api#documentation": "List of VM sizes being checked."
+          }
+        },
+        "isFeasible": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Boolean value indicating if the VM(s) in VmSize can be created."
+          }
+        },
+        "messageCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "MessageCode indicating reason for success or failure."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Localized message to be displayed to the user to explain the check result."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of VM sizes being checked for creation on appliance along with corresponding result."
+      }
+    },
+    "com.azure.databoxedge#VmPlacementRequestResultVmSizeList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of VM sizes being checked."
+      }
+    },
+    "com.azure.databoxedge#DeviceCapacityRequestInfoPropertiesVmPlacementQueryList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.databoxedge#DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array containing the sizes of the VMs for checking if its feasible to create them on the appliance."
+      }
+    },
+    "com.azure.databoxedge#DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
     },
     "com.azure.databoxedge#BandwidthSchedulesDelete": {
       "type": "operation",
@@ -9836,10 +10186,10 @@
             "smithy.api#documentation": "The bandwidth schedule name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.databoxedge#BandwidthScheduleProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "The properties of the bandwidth schedule.",
             "smithy.api#required": {}
           }
         }
@@ -11385,16 +11735,95 @@
             "smithy.api#documentation": "The device name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.databoxedge#DevicesUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The tags attached to the Data Box Edge/Gateway resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.databoxedge#ResourceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Msi identity of the resource"
+          }
+        },
+        "properties": {
+          "target": "com.azure.databoxedge#DataBoxEdgeDevicePropertiesPatch",
+          "traits": {
+            "smithy.api#documentation": "The properties associated with the Data Box Edge/Gateway resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.databoxedge#DataBoxEdgeDevicePropertiesPatch": {
+      "type": "structure",
+      "members": {
+        "edgeProfile": {
+          "target": "com.azure.databoxedge#EdgeProfilePatch",
+          "traits": {
+            "smithy.api#documentation": "Edge Profile property of the Data Box Edge/Gateway device"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Data Box Edge/Gateway device properties patch."
+      }
+    },
+    "com.azure.databoxedge#EdgeProfilePatch": {
+      "type": "structure",
+      "members": {
+        "subscription": {
+          "target": "com.azure.databoxedge#EdgeProfileSubscriptionPatch",
+          "traits": {
+            "smithy.api#documentation": "The Data Box Edge/Gateway Edge Profile Subscription patch"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Data Box Edge/Gateway Edge Profile patch."
+      }
+    },
+    "com.azure.databoxedge#EdgeProfileSubscriptionPatch": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The path ID that uniquely identifies the subscription of the edge profile."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Data Box Edge/Gateway Edge Profile Subscription patch."
+      }
+    },
+    "com.azure.databoxedge#ResourceIdentityInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.databoxedge#MsiIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Identity type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Msi identity details of the resource"
+      }
+    },
+    "com.azure.databoxedge#DevicesUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The tags attached to the Data Box Edge/Gateway resource."
       }
     },
     "com.azure.databoxedge#DevicesCreateOrUpdate": {
@@ -11530,16 +11959,72 @@
             "smithy.api#documentation": "The device name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.databoxedge#DevicesCreateOrUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.databoxedge#DataBoxEdgeDevicePropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The properties of the Data Box Edge/Gateway device."
+          }
+        },
+        "sku": {
+          "target": "com.azure.databoxedge#Sku",
+          "traits": {
+            "smithy.api#documentation": "The SKU type."
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The etag for the devices."
+          }
+        },
+        "identity": {
+          "target": "com.azure.databoxedge#ResourceIdentityInput",
+          "traits": {
+            "smithy.api#documentation": "Msi identity of the resource"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.databoxedge#DataBoxEdgeDevicePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "dataResidency": {
+          "target": "com.azure.databoxedge#DataResidency",
+          "traits": {
+            "smithy.api#documentation": "The details of data-residency related properties for this resource"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The properties of the Data Box Edge/Gateway device."
+      }
+    },
+    "com.azure.databoxedge#DevicesCreateOrUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.databoxedge#DevicesGet": {

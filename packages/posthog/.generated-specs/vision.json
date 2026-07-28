@@ -409,7 +409,7 @@
           }
         },
         "window_days": {
-          "target": "smithy.api#Double",
+          "target": "com.posthog.vision#WindowDaysEnum",
           "traits": {
             "smithy.api#documentation": "Rolling lookback window for on_breach conditions, ending at each check. Defaults to 1 day. every_match ignores it (each check covers what's new since the previous one).\n\n* `1` - 1 day\n* `3` - 3 days\n* `7` - 7 days\n* `14` - 14 days\n* `30` - 30 days"
           }
@@ -477,6 +477,44 @@
       },
       "traits": {
         "smithy.api#documentation": "* `above` - At or above\n* `below` - At or below"
+      }
+    },
+    "com.posthog.vision#WindowDaysEnum": {
+      "type": "intEnum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 1
+          }
+        },
+        "_3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 3
+          }
+        },
+        "_7": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 7
+          }
+        },
+        "_14": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 14
+          }
+        },
+        "_30": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 30
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "* `1` - 1 day\n* `3` - 3 days\n* `7` - 7 days\n* `14` - 14 days\n* `30` - 30 days"
       }
     },
     "com.posthog.vision#DeliveryTarget": {
@@ -710,12 +748,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -782,50 +814,6 @@
           "target": "com.posthog.vision#VisionActionsCreateRequestDeliveryConfigList",
           "traits": {
             "smithy.api#documentation": "List of delivery destinations the synthesized summary is sent to."
-          }
-        },
-        "next_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Computed next fire time for schedule triggers; the scheduler scans this.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp of the most recent run, or null if it has never run.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "hog_flow_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the delivery flow provisioned for this action. Null until delivery is wired up.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.vision#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "User who created the action.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
           }
         }
       },
@@ -984,40 +972,6 @@
           "traits": {
             "smithy.api#documentation": "List of delivery destinations the synthesized summary is sent to."
           }
-        },
-        "next_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Computed next fire time for schedule triggers; the scheduler scans this.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "last_run_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Timestamp of the most recent run, or null if it has never run.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "hog_flow_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the delivery flow provisioned for this action. Null until delivery is wired up.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.vision#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "User who created the action.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -3147,12 +3101,6 @@
             "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
           }
         },
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -3221,86 +3169,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals."
-          }
-        },
-        "scanner_version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Increments on every config-changing save. Observations snapshot this value.",
-            "smithy.api#required": {}
-          }
-        },
-        "estimated_monthly_observations": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Latest projected observations/month for this scanner. Null until first computed.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "credits_per_observation": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Credits one observation by this scanner costs (1 credit = $0.01), derived from `model`.",
-            "smithy.api#required": {}
-          }
-        },
-        "estimated_monthly_credits": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "`estimated_monthly_observations` priced at `credits_per_observation`. Null until the estimate is first computed.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "credits_this_month": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Credits this scanner's succeeded observations consumed in the current billing period (1 credit = $0.01). Matches the window of the org-wide quota meter.",
-            "smithy.api#required": {}
-          }
-        },
-        "last_swept_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Watermark for the scanner's last scheduled fire. Mirrors Temporal schedule state for recovery.",
-            "smithy.api#required": {}
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "created_by": {
-          "target": "com.posthog.vision#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "User who created the scanner.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "feedback_themes": {
-          "target": "com.posthog.vision#FeedbackThemes",
-          "traits": {
-            "smithy.api#documentation": "AI summary of the team's written thumbs-down feedback into recurring failure modes. Refreshed with prompt recommendations; null until enough feedback accumulates.",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "smithy.api#required": {},
-            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -3449,71 +3317,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, the prompt is augmented with the Signal side mission and the scanner emits PostHog Signals."
-          }
-        },
-        "scanner_version": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Increments on every config-changing save. Observations snapshot this value."
-          }
-        },
-        "estimated_monthly_observations": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Latest projected observations/month for this scanner. Null until first computed.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "credits_per_observation": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Credits one observation by this scanner costs (1 credit = $0.01), derived from `model`."
-          }
-        },
-        "estimated_monthly_credits": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "`estimated_monthly_observations` priced at `credits_per_observation`. Null until the estimate is first computed.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "credits_this_month": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Credits this scanner's succeeded observations consumed in the current billing period (1 credit = $0.01). Matches the window of the org-wide quota meter."
-          }
-        },
-        "last_swept_at": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Watermark for the scanner's last scheduled fire. Mirrors Temporal schedule state for recovery."
-          }
-        },
-        "created_at": {
-          "target": "smithy.api#String"
-        },
-        "created_by": {
-          "target": "com.posthog.vision#UserBasic",
-          "traits": {
-            "smithy.api#documentation": "User who created the scanner.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "updated_at": {
-          "target": "smithy.api#String"
-        },
-        "feedback_themes": {
-          "target": "com.posthog.vision#FeedbackThemes",
-          "traits": {
-            "smithy.api#documentation": "AI summary of the team's written thumbs-down feedback into recurring failure modes. Refreshed with prompt recommendations; null until enough feedback accumulates.",
-            "com.distilled.openapi#nullable": {}
-          }
-        },
-        "user_access_level": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The effective access level the user has for this object",
-            "com.distilled.openapi#nullable": {}
           }
         }
       },

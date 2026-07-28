@@ -99,8 +99,7 @@ export type GoogleCloudContactcenterinsightsV1AssessmentStateEnum =
   | "DRAFT"
   | "PUBLISHED"
   | "APPEALED"
-  | "FINALIZED"
-  | (string & {});
+  | "FINALIZED";
 export const GoogleCloudContactcenterinsightsV1AssessmentStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -109,12 +108,11 @@ export type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentIn
     | "HUMAN_AGENT"
     | "AUTOMATED_AGENT"
     | "END_USER"
-    | "ANY_AGENT"
-    | (string & {});
+    | "ANY_AGENT";
 export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum =
   /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -258,10 +256,7 @@ export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig>;
 
 export type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum =
-    | "SUMMARIZATION_MODEL_UNSPECIFIED"
-    | "BASELINE_MODEL"
-    | "BASELINE_MODEL_V2_0"
-    | (string & {});
+  "SUMMARIZATION_MODEL_UNSPECIFIED" | "BASELINE_MODEL" | "BASELINE_MODEL_V2_0";
 export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum =
   /*@__PURE__*/ S.String;
 
@@ -406,7 +401,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -649,13 +644,12 @@ export type GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestF
     | "FEEDBACK_LABEL_TYPE_UNSPECIFIED"
     | "QUALITY_AI"
     | "TOPIC_MODELING"
-    | "AGENT_ASSIST_SUMMARY"
-    | (string & {});
+    | "AGENT_ASSIST_SUMMARY";
 export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum =
-  "FORMAT_UNSPECIFIED" | "CSV" | "JSON" | (string & {});
+  "FORMAT_UNSPECIFIED" | "CSV" | "JSON";
 export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -783,7 +777,7 @@ export const BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest =
   }) as any as S.Schema<BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSourceFormatEnum =
-  "FORMAT_UNSPECIFIED" | "CSV" | "JSON" | (string & {});
+  "FORMAT_UNSPECIFIED" | "CSV" | "JSON";
 export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSourceFormatEnum =
   /*@__PURE__*/ S.String;
 
@@ -1038,7 +1032,7 @@ export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesI
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>;
 
 export type GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList =
-  GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>;
 export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval,
@@ -1738,14 +1732,14 @@ export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition>;
 
 export type GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList =
-  GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition>;
 export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList>;
 
 export type GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum =
-  "LABEL_KEY_TYPE_UNSPECIFIED" | "LABEL_KEY_TYPE_CUSTOM" | (string & {});
+  "LABEL_KEY_TYPE_UNSPECIFIED" | "LABEL_KEY_TYPE_CUSTOM";
 export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1839,7 +1833,7 @@ export const GoogleCloudContactcenterinsightsV1IssueAssignment =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueAssignment>;
 
 export type GoogleCloudContactcenterinsightsV1IssueAssignmentList =
-  GoogleCloudContactcenterinsightsV1IssueAssignment[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1IssueAssignment>;
 export const GoogleCloudContactcenterinsightsV1IssueAssignmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1IssueAssignment,
@@ -1939,17 +1933,14 @@ export const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList =
-  GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
 export const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList>;
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum =
-    | "SOURCE_TYPE_UNSPECIFIED"
-    | "SYSTEM_GENERATED_ONLY"
-    | "INCLUDES_MANUAL_EDITS"
-    | (string & {});
+  "SOURCE_TYPE_UNSPECIFIED" | "SYSTEM_GENERATED_ONLY" | "INCLUDES_MANUAL_EDITS";
 export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -1985,17 +1976,14 @@ export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>;
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList =
-  GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>;
 export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList>;
 
 export type GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceSourceTypeEnum =
-    | "SOURCE_TYPE_UNSPECIFIED"
-    | "SYSTEM_GENERATED"
-    | "MANUAL_EDIT"
-    | (string & {});
+  "SOURCE_TYPE_UNSPECIFIED" | "SYSTEM_GENERATED" | "MANUAL_EDIT";
 export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceSourceTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2021,7 +2009,7 @@ export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>;
 
 export type GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList =
-  GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>;
 export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource,
@@ -2061,7 +2049,7 @@ export const GoogleCloudContactcenterinsightsV1QaAnswer =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaAnswer>;
 
 export type GoogleCloudContactcenterinsightsV1QaAnswerList =
-  GoogleCloudContactcenterinsightsV1QaAnswer[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1QaAnswer>;
 export const GoogleCloudContactcenterinsightsV1QaAnswerList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1QaAnswer,
@@ -2116,7 +2104,7 @@ export const GoogleCloudContactcenterinsightsV1QaScorecardResult =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResult>;
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultList =
-  GoogleCloudContactcenterinsightsV1QaScorecardResult[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1QaScorecardResult>;
 export const GoogleCloudContactcenterinsightsV1QaScorecardResultList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1QaScorecardResult,
@@ -2159,7 +2147,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationLevelSentiment =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>;
 
 export type GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList =
-  GoogleCloudContactcenterinsightsV1ConversationLevelSentiment[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>;
 export const GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationLevelSentiment,
@@ -2222,8 +2210,7 @@ export const GoogleCloudContactcenterinsightsV1HoldData =
 export type GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum =
   | "MENTION_TYPE_UNSPECIFIED"
   | "PROPER"
-  | "COMMON"
-  | (string & {});
+  | "COMMON";
 export const GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2324,7 +2311,7 @@ export const GoogleCloudContactcenterinsightsV1CallAnnotation =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1CallAnnotation>;
 
 export type GoogleCloudContactcenterinsightsV1CallAnnotationList =
-  GoogleCloudContactcenterinsightsV1CallAnnotation[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1CallAnnotation>;
 export const GoogleCloudContactcenterinsightsV1CallAnnotationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1CallAnnotation,
@@ -2349,8 +2336,7 @@ export type GoogleCloudContactcenterinsightsV1EntityTypeEnum =
   | "ADDRESS"
   | "DATE"
   | "NUMBER"
-  | "PRICE"
-  | (string & {});
+  | "PRICE";
 export const GoogleCloudContactcenterinsightsV1EntityTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -2573,7 +2559,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAu
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
 
 export type GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList =
-  GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
 export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
@@ -2633,8 +2619,7 @@ export type GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum
     | "CORRECTNESS_LEVEL_UNSPECIFIED"
     | "NOT_CORRECT"
     | "PARTIALLY_CORRECT"
-    | "FULLY_CORRECT"
-    | (string & {});
+    | "FULLY_CORRECT";
 export const GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum =
   /*@__PURE__*/ S.String;
 
@@ -2792,10 +2777,7 @@ export const GoogleCloudContactcenterinsightsV1FaqAnswerData =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1FaqAnswerData>;
 
 export type GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum =
-    | "QUERY_SOURCE_UNSPECIFIED"
-    | "AGENT_QUERY"
-    | "SUGGESTED_QUERY"
-    | (string & {});
+  "QUERY_SOURCE_UNSPECIFIED" | "AGENT_QUERY" | "SUGGESTED_QUERY";
 export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -2821,7 +2803,8 @@ export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput =
     identifier: "GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput",
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput>;
 
-export type GoogleCloudCesV1mainSpanList = GoogleCloudCesV1mainSpan[];
+export type GoogleCloudCesV1mainSpanList =
+  ReadonlyArray<GoogleCloudCesV1mainSpan>;
 export const GoogleCloudCesV1mainSpanList = /*@__PURE__*/ S.Array(
   S.suspend(() => GoogleCloudCesV1mainSpan),
 ) as any as S.Schema<GoogleCloudCesV1mainSpanList>;
@@ -3008,7 +2991,8 @@ export const GoogleCloudCesV1mainChunk = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudCesV1mainChunk",
 }) as any as S.Schema<GoogleCloudCesV1mainChunk>;
 
-export type GoogleCloudCesV1mainChunkList = GoogleCloudCesV1mainChunk[];
+export type GoogleCloudCesV1mainChunkList =
+  ReadonlyArray<GoogleCloudCesV1mainChunk>;
 export const GoogleCloudCesV1mainChunkList = /*@__PURE__*/ S.Array(
   GoogleCloudCesV1mainChunk,
 ) as any as S.Schema<GoogleCloudCesV1mainChunkList>;
@@ -3032,7 +3016,8 @@ export const GoogleCloudCesV1mainMessage = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleCloudCesV1mainMessage",
 }) as any as S.Schema<GoogleCloudCesV1mainMessage>;
 
-export type GoogleCloudCesV1mainMessageList = GoogleCloudCesV1mainMessage[];
+export type GoogleCloudCesV1mainMessageList =
+  ReadonlyArray<GoogleCloudCesV1mainMessage>;
 export const GoogleCloudCesV1mainMessageList = /*@__PURE__*/ S.Array(
   GoogleCloudCesV1mainMessage,
 ) as any as S.Schema<GoogleCloudCesV1mainMessageList>;
@@ -3155,7 +3140,7 @@ export const GoogleCloudContactcenterinsightsV1RuntimeAnnotation =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotation>;
 
 export type GoogleCloudContactcenterinsightsV1RuntimeAnnotationList =
-  GoogleCloudContactcenterinsightsV1RuntimeAnnotation[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1RuntimeAnnotation>;
 export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1RuntimeAnnotation,
@@ -3164,23 +3149,17 @@ export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationList =
 export type GoogleCloudContactcenterinsightsV1ConversationMediumEnum =
   | "MEDIUM_UNSPECIFIED"
   | "PHONE_CALL"
-  | "CHAT"
-  | (string & {});
+  | "CHAT";
 export const GoogleCloudContactcenterinsightsV1ConversationMediumEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum =
-    | "CORRELATION_TYPE_UNSPECIFIED"
-    | "SEGMENT"
-    | "PARTIAL"
-    | "FULL"
-    | "SYNTHETIC"
-    | (string & {});
+  "CORRELATION_TYPE_UNSPECIFIED" | "SEGMENT" | "PARTIAL" | "FULL" | "SYNTHETIC";
 export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList =
-  GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum>;
 export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum,
@@ -3209,14 +3188,14 @@ export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo>;
 
 export type GoogleCloudContactcenterinsightsV1FeedbackLabelList =
-  GoogleCloudContactcenterinsightsV1FeedbackLabel[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
 export const GoogleCloudContactcenterinsightsV1FeedbackLabelList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1FeedbackLabel,
   ) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabelList>;
 
 export type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList =
-  GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
 export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo,
@@ -3277,7 +3256,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptS
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
 
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList =
-  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
 export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo,
@@ -3288,8 +3267,7 @@ export type GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum =
   | "HUMAN_AGENT"
   | "AUTOMATED_AGENT"
   | "END_USER"
-  | "ANY_AGENT"
-  | (string & {});
+  | "ANY_AGENT";
 export const GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum =
   /*@__PURE__*/ S.String;
 
@@ -3387,7 +3365,7 @@ export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptS
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
 
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList =
-  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
 export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment,
@@ -3674,13 +3652,7 @@ export const GoogleCloudContactcenterinsightsV1QueryInterval =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryInterval>;
 
 export type GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum =
-    | "TIME_UNIT_UNSPECIFIED"
-    | "DAY"
-    | "WEEK"
-    | "MONTH"
-    | "QUARTER"
-    | "YEAR"
-    | (string & {});
+  "TIME_UNIT_UNSPECIFIED" | "DAY" | "WEEK" | "MONTH" | "QUARTER" | "YEAR";
 export const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum =
   /*@__PURE__*/ S.String;
 
@@ -3736,8 +3708,7 @@ export type GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum =
   | "SCORE_CARD"
   | "SUNBURST"
   | "GAUGE"
-  | "SANKEY"
-  | (string & {});
+  | "SANKEY";
 export const GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3780,8 +3751,7 @@ export const GoogleCloudContactcenterinsightsV1ChartAction =
 export type GoogleCloudContactcenterinsightsV1ChartChartTypeEnum =
   | "CHART_TYPE_UNSPECIFIED"
   | "SYSTEM_DEFINED"
-  | "USER_DEFINED"
-  | (string & {});
+  | "USER_DEFINED";
 export const GoogleCloudContactcenterinsightsV1ChartChartTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3814,11 +3784,7 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversati
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage>;
 
 export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum =
-    | "TYPE_UNSPECIFIED"
-    | "THOUGHT"
-    | "FINAL_RESPONSE"
-    | "PROGRESS"
-    | (string & {});
+  "TYPE_UNSPECIFIED" | "THOUGHT" | "FINAL_RESPONSE" | "PROGRESS";
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -3894,7 +3860,7 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversati
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage>;
 
 export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList =
-  GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage>;
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage,
@@ -3927,7 +3893,7 @@ export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversati
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation>;
 
 export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList =
-  GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation>;
 export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation,
@@ -4083,7 +4049,7 @@ export const GoogleCloudContactcenterinsightsV1Widget = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GoogleCloudContactcenterinsightsV1Widget>;
 
 export type GoogleCloudContactcenterinsightsV1WidgetList =
-  GoogleCloudContactcenterinsightsV1Widget[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1Widget>;
 export const GoogleCloudContactcenterinsightsV1WidgetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1Widget,
@@ -4223,8 +4189,7 @@ export const CreateProjectsLocationsDashboardsChartsRequest =
 export type GoogleCloudContactcenterinsightsV1DatasetTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EVAL"
-  | "LIVE"
-  | (string & {});
+  | "LIVE";
 export const GoogleCloudContactcenterinsightsV1DatasetTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4321,13 +4286,12 @@ export type GoogleCloudContactcenterinsightsV1IssueModelStateEnum =
   | "DEPLOYING"
   | "DEPLOYED"
   | "UNDEPLOYING"
-  | "DELETING"
-  | (string & {});
+  | "DELETING";
 export const GoogleCloudContactcenterinsightsV1IssueModelStateEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum =
-  "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT" | (string & {});
+  "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT";
 export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum =
   /*@__PURE__*/ S.String;
 
@@ -4356,8 +4320,7 @@ export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig =
 export type GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum =
   | "MODEL_TYPE_UNSPECIFIED"
   | "TYPE_V1"
-  | "TYPE_V2"
-  | (string & {});
+  | "TYPE_V2";
 export const GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4488,8 +4451,7 @@ export const CreateProjectsLocationsIssueModelsIssuesRequest =
 export type GoogleCloudContactcenterinsightsV1PhraseMatcherTypeEnum =
   | "PHRASE_MATCHER_TYPE_UNSPECIFIED"
   | "ALL_OF"
-  | "ANY_OF"
-  | (string & {});
+  | "ANY_OF";
 export const GoogleCloudContactcenterinsightsV1PhraseMatcherTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4498,16 +4460,14 @@ export type GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum =
   | "HUMAN_AGENT"
   | "AUTOMATED_AGENT"
   | "END_USER"
-  | "ANY_AGENT"
-  | (string & {});
+  | "ANY_AGENT";
 export const GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeEnum =
   | "PHRASE_MATCH_RULE_GROUP_TYPE_UNSPECIFIED"
   | "ALL_OF"
-  | "ANY_OF"
-  | (string & {});
+  | "ANY_OF";
 export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4576,7 +4536,7 @@ export const GoogleCloudContactcenterinsightsV1PhraseMatchRule =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRule>;
 
 export type GoogleCloudContactcenterinsightsV1PhraseMatchRuleList =
-  GoogleCloudContactcenterinsightsV1PhraseMatchRule[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1PhraseMatchRule>;
 export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1PhraseMatchRule,
@@ -4604,7 +4564,7 @@ export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>;
 
 export type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList =
-  GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>;
 export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup,
@@ -4738,8 +4698,7 @@ export const CreateProjectsLocationsQaQuestionTagsRequest =
 export type GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum =
   | "QA_SCORECARD_SOURCE_UNSPECIFIED"
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
-  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
-  | (string & {});
+  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE";
 export const GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum =
   /*@__PURE__*/ S.String;
 
@@ -4811,8 +4770,7 @@ export type GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum =
   | "TRAINING_FAILED"
   | "READY"
   | "DELETING"
-  | "TRAINING_CANCELLED"
-  | (string & {});
+  | "TRAINING_CANCELLED";
 export const GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum =
   /*@__PURE__*/ S.String;
 
@@ -4903,7 +4861,7 @@ export const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>;
 
 export type GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList =
-  GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>;
 export const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice,
@@ -4912,8 +4870,7 @@ export const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList =
 export type GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfigTypeEnum =
     | "PREDEFINED_QUESTION_TYPE_UNSPECIFIED"
     | "CONVERSATION_OUTCOME"
-    | "CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE"
-    | (string & {});
+    | "CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE";
 export const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfigTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4937,8 +4894,7 @@ export const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfi
 export type GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum =
   | "QA_QUESTION_TYPE_UNSPECIFIED"
   | "CUSTOMIZABLE"
-  | "PREDEFINED"
-  | (string & {});
+  | "PREDEFINED";
 export const GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -4961,13 +4917,12 @@ export type GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetVal
     | "TOO_MANY_INVALID_FEEDBACK_LABELS"
     | "INSUFFICIENT_FEEDBACK_LABELS"
     | "INSUFFICIENT_FEEDBACK_LABELS_PER_ANSWER"
-    | "ALL_FEEDBACK_LABELS_HAVE_THE_SAME_ANSWER"
-    | (string & {});
+    | "ALL_FEEDBACK_LABELS_HAVE_THE_SAME_ANSWER";
 export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum =
   /*@__PURE__*/ S.String;
 
 export type GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList =
-  GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum>;
 export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum,
@@ -5782,10 +5737,7 @@ export const DeployProjectsLocationsQaScorecardsRevisionsRequest =
   }) as any as S.Schema<DeployProjectsLocationsQaScorecardsRevisionsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum =
-    | "WRITE_DISPOSITION_UNSPECIFIED"
-    | "WRITE_TRUNCATE"
-    | "WRITE_APPEND"
-    | (string & {});
+  "WRITE_DISPOSITION_UNSPECIFIED" | "WRITE_TRUNCATE" | "WRITE_APPEND";
 export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum =
   /*@__PURE__*/ S.String;
 
@@ -5808,8 +5760,7 @@ export type GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSch
     | "EXPORT_V15"
     | "EXPORT_V16"
     | "EXPORT_V17"
-    | "EXPORT_VERSION_LATEST_AVAILABLE"
-    | (string & {});
+    | "EXPORT_VERSION_LATEST_AVAILABLE";
 export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum =
   /*@__PURE__*/ S.String;
 
@@ -6273,7 +6224,7 @@ export const GoogleCloudContactcenterinsightsV1CorrelationRule =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1CorrelationRule>;
 
 export type GoogleCloudContactcenterinsightsV1CorrelationRuleList =
-  GoogleCloudContactcenterinsightsV1CorrelationRule[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1CorrelationRule>;
 export const GoogleCloudContactcenterinsightsV1CorrelationRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1CorrelationRule,
@@ -6383,8 +6334,7 @@ export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
-  | "DATA_READ"
-  | (string & {});
+  | "DATA_READ";
 export const GoogleIamV1AuditLogConfigLogTypeEnum = /*@__PURE__*/ S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
@@ -6403,7 +6353,8 @@ export const GoogleIamV1AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditLogConfig",
 }) as any as S.Schema<GoogleIamV1AuditLogConfig>;
 
-export type GoogleIamV1AuditLogConfigList = GoogleIamV1AuditLogConfig[];
+export type GoogleIamV1AuditLogConfigList =
+  ReadonlyArray<GoogleIamV1AuditLogConfig>;
 export const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditLogConfig,
 ) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
@@ -6424,7 +6375,7 @@ export const GoogleIamV1AuditConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1AuditConfig",
 }) as any as S.Schema<GoogleIamV1AuditConfig>;
 
-export type GoogleIamV1AuditConfigList = GoogleIamV1AuditConfig[];
+export type GoogleIamV1AuditConfigList = ReadonlyArray<GoogleIamV1AuditConfig>;
 export const GoogleIamV1AuditConfigList = /*@__PURE__*/ S.Array(
   GoogleIamV1AuditConfig,
 ) as any as S.Schema<GoogleIamV1AuditConfigList>;
@@ -6468,7 +6419,7 @@ export const GoogleIamV1Binding = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleIamV1Binding",
 }) as any as S.Schema<GoogleIamV1Binding>;
 
-export type GoogleIamV1BindingList = GoogleIamV1Binding[];
+export type GoogleIamV1BindingList = ReadonlyArray<GoogleIamV1Binding>;
 export const GoogleIamV1BindingList = /*@__PURE__*/ S.Array(
   GoogleIamV1Binding,
 ) as any as S.Schema<GoogleIamV1BindingList>;
@@ -6572,7 +6523,7 @@ export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   }) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum =
-  "CONVERSATION_VIEW_UNSPECIFIED" | "FULL" | "BASIC" | (string & {});
+  "CONVERSATION_VIEW_UNSPECIFIED" | "FULL" | "BASIC";
 export const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -6685,8 +6636,7 @@ export const GetProjectsLocationsAutoLabelingRulesRequest =
 export type GetProjectsLocationsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
-  | "BASIC"
-  | (string & {});
+  | "BASIC";
 export const GetProjectsLocationsConversationsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetProjectsLocationsConversationsRequest {
@@ -6829,8 +6779,7 @@ export const GetProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetProjectsLocationsDatasetsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
-  | "BASIC"
-  | (string & {});
+  | "BASIC";
 export const GetProjectsLocationsDatasetsConversationsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -7303,7 +7252,7 @@ export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestConvers
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig>;
 
 export type GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfigMediumEnum =
-  "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT" | (string & {});
+  "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT";
 export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfigMediumEnum =
   /*@__PURE__*/ S.String;
 
@@ -7325,7 +7274,7 @@ export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscr
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig>;
 
 export type GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum =
-  "BUCKET_OBJECT_TYPE_UNSPECIFIED" | "TRANSCRIPT" | "AUDIO" | (string & {});
+  "BUCKET_OBJECT_TYPE_UNSPECIFIED" | "TRANSCRIPT" | "AUDIO";
 export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum =
   /*@__PURE__*/ S.String;
 
@@ -7598,7 +7547,7 @@ export const ListProjectsLocationsAnalysisRulesRequest =
   }) as any as S.Schema<ListProjectsLocationsAnalysisRulesRequest>;
 
 export type GoogleCloudContactcenterinsightsV1AnalysisRuleList =
-  GoogleCloudContactcenterinsightsV1AnalysisRule[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1AnalysisRule>;
 export const GoogleCloudContactcenterinsightsV1AnalysisRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1AnalysisRule,
@@ -7649,7 +7598,7 @@ export const ListProjectsLocationsAssessmentRulesRequest =
   }) as any as S.Schema<ListProjectsLocationsAssessmentRulesRequest>;
 
 export type GoogleCloudContactcenterinsightsV1AssessmentRuleList =
-  GoogleCloudContactcenterinsightsV1AssessmentRule[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1AssessmentRule>;
 export const GoogleCloudContactcenterinsightsV1AssessmentRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1AssessmentRule,
@@ -7706,7 +7655,7 @@ export const ListProjectsLocationsAuthorizedViewSetsRequest =
   }) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1AuthorizedViewSetList =
-  GoogleCloudContactcenterinsightsV1AuthorizedViewSet[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>;
 export const GoogleCloudContactcenterinsightsV1AuthorizedViewSetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1AuthorizedViewSet,
@@ -7764,7 +7713,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
   }) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1AuthorizedViewList =
-  GoogleCloudContactcenterinsightsV1AuthorizedView[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1AuthorizedView>;
 export const GoogleCloudContactcenterinsightsV1AuthorizedViewList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1AuthorizedView,
@@ -7790,7 +7739,7 @@ export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse>;
 
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum =
-  "CONVERSATION_VIEW_UNSPECIFIED" | "FULL" | "BASIC" | (string & {});
+  "CONVERSATION_VIEW_UNSPECIFIED" | "FULL" | "BASIC";
 export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -7834,7 +7783,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   }) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1ConversationList =
-  GoogleCloudContactcenterinsightsV1Conversation[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1Conversation>;
 export const GoogleCloudContactcenterinsightsV1ConversationList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1Conversation,
@@ -7889,7 +7838,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   }) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1AssessmentList =
-  GoogleCloudContactcenterinsightsV1Assessment[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1Assessment>;
 export const GoogleCloudContactcenterinsightsV1AssessmentList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1Assessment,
@@ -7939,7 +7888,7 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   }) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
 
 export type GoogleCloudContactcenterinsightsV1NoteList =
-  GoogleCloudContactcenterinsightsV1Note[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1Note>;
 export const GoogleCloudContactcenterinsightsV1NoteList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1Note,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1NoteList>;
@@ -8041,7 +7990,8 @@ export const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsReq
       "ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest",
   }) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
 
-export type GoogleLongrunningOperationList = GoogleLongrunningOperation[];
+export type GoogleLongrunningOperationList =
+  ReadonlyArray<GoogleLongrunningOperation>;
 export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
@@ -8092,7 +8042,7 @@ export const ListProjectsLocationsAutoLabelingRulesRequest =
   }) as any as S.Schema<ListProjectsLocationsAutoLabelingRulesRequest>;
 
 export type GoogleCloudContactcenterinsightsV1AutoLabelingRuleList =
-  GoogleCloudContactcenterinsightsV1AutoLabelingRule[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1AutoLabelingRule>;
 export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1AutoLabelingRule,
@@ -8121,8 +8071,7 @@ export const GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse =
 export type ListProjectsLocationsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
-  | "BASIC"
-  | (string & {});
+  | "BASIC";
 export const ListProjectsLocationsConversationsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -8191,7 +8140,7 @@ export const ListProjectsLocationsConversationsAnalysesRequest =
   }) as any as S.Schema<ListProjectsLocationsConversationsAnalysesRequest>;
 
 export type GoogleCloudContactcenterinsightsV1AnalysisList =
-  GoogleCloudContactcenterinsightsV1Analysis[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1Analysis>;
 export const GoogleCloudContactcenterinsightsV1AnalysisList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1Analysis,
@@ -8327,7 +8276,7 @@ export const ListProjectsLocationsDashboardsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsDashboardsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1DashboardList =
-  GoogleCloudContactcenterinsightsV1Dashboard[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1Dashboard>;
 export const GoogleCloudContactcenterinsightsV1DashboardList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1Dashboard,
@@ -8370,7 +8319,7 @@ export const ListProjectsLocationsDashboardsChartsRequest =
   }) as any as S.Schema<ListProjectsLocationsDashboardsChartsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1ChartList =
-  GoogleCloudContactcenterinsightsV1Chart[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1Chart>;
 export const GoogleCloudContactcenterinsightsV1ChartList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1Chart,
@@ -8422,7 +8371,7 @@ export const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsDatasetsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1DatasetList =
-  GoogleCloudContactcenterinsightsV1Dataset[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1Dataset>;
 export const GoogleCloudContactcenterinsightsV1DatasetList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1Dataset,
@@ -8448,8 +8397,7 @@ export const GoogleCloudContactcenterinsightsV1ListDatasetsResponse =
 export type ListProjectsLocationsDatasetsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
-  | "BASIC"
-  | (string & {});
+  | "BASIC";
 export const ListProjectsLocationsDatasetsConversationsViewEnum =
   /*@__PURE__*/ S.String;
 
@@ -8538,7 +8486,7 @@ export const ListProjectsLocationsIssueModelsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsIssueModelsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1IssueModelList =
-  GoogleCloudContactcenterinsightsV1IssueModel[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1IssueModel>;
 export const GoogleCloudContactcenterinsightsV1IssueModelList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1IssueModel,
@@ -8578,7 +8526,7 @@ export const ListProjectsLocationsIssueModelsIssuesRequest =
   }) as any as S.Schema<ListProjectsLocationsIssueModelsIssuesRequest>;
 
 export type GoogleCloudContactcenterinsightsV1IssueList =
-  GoogleCloudContactcenterinsightsV1Issue[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1Issue>;
 export const GoogleCloudContactcenterinsightsV1IssueList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1Issue,
@@ -8658,7 +8606,7 @@ export const ListProjectsLocationsPhraseMatchersRequest =
   }) as any as S.Schema<ListProjectsLocationsPhraseMatchersRequest>;
 
 export type GoogleCloudContactcenterinsightsV1PhraseMatcherList =
-  GoogleCloudContactcenterinsightsV1PhraseMatcher[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1PhraseMatcher>;
 export const GoogleCloudContactcenterinsightsV1PhraseMatcherList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1PhraseMatcher,
@@ -8706,7 +8654,7 @@ export const ListProjectsLocationsQaQuestionTagsRequest =
   }) as any as S.Schema<ListProjectsLocationsQaQuestionTagsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1QaQuestionTagList =
-  GoogleCloudContactcenterinsightsV1QaQuestionTag[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1QaQuestionTag>;
 export const GoogleCloudContactcenterinsightsV1QaQuestionTagList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1QaQuestionTag,
@@ -8734,13 +8682,12 @@ export const GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse =
 export type ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum =
   | "QA_SCORECARD_SOURCE_UNSPECIFIED"
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
-  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
-  | (string & {});
+  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE";
 export const ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList =
-  ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum[];
+  ReadonlyArray<ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum>;
 export const ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum,
@@ -8779,7 +8726,7 @@ export const ListProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsQaScorecardsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardList =
-  GoogleCloudContactcenterinsightsV1QaScorecard[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1QaScorecard>;
 export const GoogleCloudContactcenterinsightsV1QaScorecardList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1QaScorecard,
@@ -8807,13 +8754,12 @@ export const GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse =
 export type ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum =
   | "QA_SCORECARD_SOURCE_UNSPECIFIED"
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
-  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
-  | (string & {});
+  | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE";
 export const ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum =
   /*@__PURE__*/ S.String;
 
 export type ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList =
-  ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum[];
+  ReadonlyArray<ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum>;
 export const ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum,
@@ -8855,7 +8801,7 @@ export const ListProjectsLocationsQaScorecardsRevisionsRequest =
   }) as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1QaScorecardRevisionList =
-  GoogleCloudContactcenterinsightsV1QaScorecardRevision[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1QaScorecardRevision>;
 export const GoogleCloudContactcenterinsightsV1QaScorecardRevisionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1QaScorecardRevision,
@@ -8907,7 +8853,7 @@ export const ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest =
   }) as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1QaQuestionList =
-  GoogleCloudContactcenterinsightsV1QaQuestion[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1QaQuestion>;
 export const GoogleCloudContactcenterinsightsV1QaQuestionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1QaQuestion,
@@ -8955,7 +8901,7 @@ export const ListProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsViewsRequest>;
 
 export type GoogleCloudContactcenterinsightsV1ViewList =
-  GoogleCloudContactcenterinsightsV1View[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1View>;
 export const GoogleCloudContactcenterinsightsV1ViewList = /*@__PURE__*/ S.Array(
   GoogleCloudContactcenterinsightsV1View,
 ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ViewList>;
@@ -9742,8 +9688,7 @@ export type GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum =
   | "LABEL_KEY"
   | "LABEL_VALUE"
   | "LABEL_KEY_AND_VALUE"
-  | "LAST_TRANSFER_SUB_AGENT_NAME"
-  | (string & {});
+  | "LAST_TRANSFER_SUB_AGENT_NAME";
 export const GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum =
   /*@__PURE__*/ S.String;
 
@@ -9924,7 +9869,7 @@ export const GoogleCloudContactcenterinsightsV1Dimension =
   }) as any as S.Schema<GoogleCloudContactcenterinsightsV1Dimension>;
 
 export type GoogleCloudContactcenterinsightsV1DimensionList =
-  GoogleCloudContactcenterinsightsV1Dimension[];
+  ReadonlyArray<GoogleCloudContactcenterinsightsV1Dimension>;
 export const GoogleCloudContactcenterinsightsV1DimensionList =
   /*@__PURE__*/ S.Array(
     GoogleCloudContactcenterinsightsV1Dimension,
@@ -9937,8 +9882,7 @@ export type GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularity
     | "HOURLY"
     | "PER_MINUTE"
     | "PER_5_MINUTES"
-    | "MONTHLY"
-    | (string & {});
+    | "MONTHLY";
 export const GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum =
   /*@__PURE__*/ S.String;
 

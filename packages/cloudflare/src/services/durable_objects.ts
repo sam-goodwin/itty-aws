@@ -90,7 +90,8 @@ export const NamespacesObjectsListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesObjectsListResultItem",
 }) as any as S.Schema<NamespacesObjectsListResultItem>;
 
-export type NamespacesObjectsListResultList = NamespacesObjectsListResultItem[];
+export type NamespacesObjectsListResultList =
+  ReadonlyArray<NamespacesObjectsListResultItem>;
 export const NamespacesObjectsListResultList = /*@__PURE__*/ S.Array(
   NamespacesObjectsListResultItem,
 ) as any as S.Schema<NamespacesObjectsListResultList>;
@@ -155,7 +156,7 @@ export const NamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "NamespacesListResultItem",
 }) as any as S.Schema<NamespacesListResultItem>;
 
-export type NamespacesListResultList = NamespacesListResultItem[];
+export type NamespacesListResultList = ReadonlyArray<NamespacesListResultItem>;
 export const NamespacesListResultList = /*@__PURE__*/ S.Array(
   NamespacesListResultItem,
 ) as any as S.Schema<NamespacesListResultList>;

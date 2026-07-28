@@ -132,17 +132,11 @@ export type EncryptionMode =
   | "CFB8"
   | "CFB64"
   | "CFB128"
-  | "OFB"
-  | (string & {});
+  | "OFB";
 export const EncryptionMode = /*@__PURE__*/ S.String;
 
 export type InitializationVectorType = string | redacted.Redacted<string>;
-export type PaddingType =
-  | "PKCS1"
-  | "OAEP_SHA1"
-  | "OAEP_SHA256"
-  | "OAEP_SHA512"
-  | (string & {});
+export type PaddingType = "PKCS1" | "OAEP_SHA1" | "OAEP_SHA256" | "OAEP_SHA512";
 export const PaddingType = /*@__PURE__*/ S.String;
 
 export interface SymmetricEncryptionAttributes {
@@ -168,7 +162,7 @@ export const AsymmetricEncryptionAttributes = /*@__PURE__*/ S.suspend(() =>
   identifier: "AsymmetricEncryptionAttributes",
 }) as any as S.Schema<AsymmetricEncryptionAttributes>;
 export type HexLength16Or20Or24 = string;
-export type DukptEncryptionMode = "ECB" | "CBC" | (string & {});
+export type DukptEncryptionMode = "ECB" | "CBC";
 export const DukptEncryptionMode = /*@__PURE__*/ S.String;
 
 export type DukptDerivationType =
@@ -176,15 +170,10 @@ export type DukptDerivationType =
   | "TDES_3KEY"
   | "AES_128"
   | "AES_192"
-  | "AES_256"
-  | (string & {});
+  | "AES_256";
 export const DukptDerivationType = /*@__PURE__*/ S.String;
 
-export type DukptKeyVariant =
-  | "BIDIRECTIONAL"
-  | "REQUEST"
-  | "RESPONSE"
-  | (string & {});
+export type DukptKeyVariant = "BIDIRECTIONAL" | "REQUEST" | "RESPONSE";
 export const DukptKeyVariant = /*@__PURE__*/ S.String;
 
 export interface DukptEncryptionAttributes {
@@ -205,16 +194,13 @@ export const DukptEncryptionAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DukptEncryptionAttributes",
 }) as any as S.Schema<DukptEncryptionAttributes>;
-export type EmvMajorKeyDerivationMode =
-  | "EMV_OPTION_A"
-  | "EMV_OPTION_B"
-  | (string & {});
+export type EmvMajorKeyDerivationMode = "EMV_OPTION_A" | "EMV_OPTION_B";
 export const EmvMajorKeyDerivationMode = /*@__PURE__*/ S.String;
 
 export type PrimaryAccountNumberType = string | redacted.Redacted<string>;
 export type NumberLengthEquals2 = string;
 export type SessionDerivationDataType = string | redacted.Redacted<string>;
-export type EmvEncryptionMode = "ECB" | "CBC" | (string & {});
+export type EmvEncryptionMode = "ECB" | "CBC";
 export const EmvEncryptionMode = /*@__PURE__*/ S.String;
 
 export interface EmvEncryptionAttributes {
@@ -279,18 +265,13 @@ export type SymmetricKeyAlgorithm =
   | "HMAC_SHA256"
   | "HMAC_SHA384"
   | "HMAC_SHA512"
-  | "HMAC_SHA224"
-  | (string & {});
+  | "HMAC_SHA224";
 export const SymmetricKeyAlgorithm = /*@__PURE__*/ S.String;
 
-export type KeyDerivationFunction = "NIST_SP800" | "ANSI_X963" | (string & {});
+export type KeyDerivationFunction = "NIST_SP800" | "ANSI_X963";
 export const KeyDerivationFunction = /*@__PURE__*/ S.String;
 
-export type KeyDerivationHashAlgorithm =
-  | "SHA_256"
-  | "SHA_384"
-  | "SHA_512"
-  | (string & {});
+export type KeyDerivationHashAlgorithm = "SHA_256" | "SHA_384" | "SHA_512";
 export const KeyDerivationHashAlgorithm = /*@__PURE__*/ S.String;
 
 export type SharedInformation = string;
@@ -420,11 +401,7 @@ export const EncryptDataOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptDataOutput",
 }) as any as S.Schema<EncryptDataOutput>;
-export type RandomKeyMaxLength =
-  | "BYTES_8"
-  | "BYTES_16"
-  | "BYTES_24"
-  | (string & {});
+export type RandomKeyMaxLength = "BYTES_8" | "BYTES_16" | "BYTES_24";
 export const RandomKeyMaxLength = /*@__PURE__*/ S.String;
 
 export interface KekValidationRequest {
@@ -461,10 +438,7 @@ export const As2805KekValidationType = /*@__PURE__*/ S.Union([
   S.Struct({ KekValidationRequest: KekValidationRequest }),
   S.Struct({ KekValidationResponse: KekValidationResponse }),
 ]);
-export type RandomKeySendVariantMask =
-  | "VARIANT_MASK_82C0"
-  | "VARIANT_MASK_82"
-  | (string & {});
+export type RandomKeySendVariantMask = "VARIANT_MASK_82C0" | "VARIANT_MASK_82";
 export const RandomKeySendVariantMask = /*@__PURE__*/ S.String;
 
 export interface GenerateAs2805KekValidationInput {
@@ -507,10 +481,7 @@ export const GenerateAs2805KekValidationOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerateAs2805KekValidationOutput",
 }) as any as S.Schema<GenerateAs2805KekValidationOutput>;
 export type TransactionDataType = string | redacted.Redacted<string>;
-export type MajorKeyDerivationMode =
-  | "EMV_OPTION_A"
-  | "EMV_OPTION_B"
-  | (string & {});
+export type MajorKeyDerivationMode = "EMV_OPTION_A" | "EMV_OPTION_B";
 export const MajorKeyDerivationMode = /*@__PURE__*/ S.String;
 
 export type HexLengthEquals4 = string;
@@ -871,8 +842,7 @@ export type MacAlgorithm =
   | "HMAC_SHA256"
   | "HMAC_SHA384"
   | "HMAC_SHA512"
-  | "AS2805_4_1"
-  | (string & {});
+  | "AS2805_4_1";
 export const MacAlgorithm = /*@__PURE__*/ S.String;
 
 export type SessionKeyDerivationMode =
@@ -880,8 +850,7 @@ export type SessionKeyDerivationMode =
   | "EMV2000"
   | "AMEX"
   | "MASTERCARD_SESSION_KEY"
-  | "VISA"
-  | (string & {});
+  | "VISA";
 export const SessionKeyDerivationMode = /*@__PURE__*/ S.String;
 
 export type ApplicationCryptogramType = string | redacted.Redacted<string>;
@@ -1011,21 +980,14 @@ export type PinBlockLengthEquals16 = string | redacted.Redacted<string>;
 export type PinBlockFormatForEmvPinChange =
   | "ISO_FORMAT_0"
   | "ISO_FORMAT_1"
-  | "ISO_FORMAT_3"
-  | (string & {});
+  | "ISO_FORMAT_3";
 export const PinBlockFormatForEmvPinChange = /*@__PURE__*/ S.String;
 
 export type CommandMessageDataType = string | redacted.Redacted<string>;
-export type PinBlockPaddingType =
-  | "NO_PADDING"
-  | "ISO_IEC_7816_4"
-  | (string & {});
+export type PinBlockPaddingType = "NO_PADDING" | "ISO_IEC_7816_4";
 export const PinBlockPaddingType = /*@__PURE__*/ S.String;
 
-export type PinBlockLengthPosition =
-  | "NONE"
-  | "FRONT_OF_PIN_BLOCK"
-  | (string & {});
+export type PinBlockLengthPosition = "NONE" | "FRONT_OF_PIN_BLOCK";
 export const PinBlockLengthPosition = /*@__PURE__*/ S.String;
 
 export interface EmvCommonAttributes {
@@ -1393,8 +1355,7 @@ export type PinBlockFormatForPinData =
   | "ISO_FORMAT_0"
   | "ISO_FORMAT_1"
   | "ISO_FORMAT_3"
-  | "ISO_FORMAT_4"
-  | (string & {});
+  | "ISO_FORMAT_4";
 export const PinBlockFormatForPinData = /*@__PURE__*/ S.String;
 
 export interface GeneratePinDataInput {

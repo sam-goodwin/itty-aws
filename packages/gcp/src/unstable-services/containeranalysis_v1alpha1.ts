@@ -72,11 +72,10 @@ export type FileNoteFileTypeEnum =
   | "VIDEO"
   | "DOCUMENTATION"
   | "SPDX"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const FileNoteFileTypeEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -158,8 +157,7 @@ export type RelationshipNoteTypeEnum =
   | "AMENDS"
   | "PREREQUISITE_FOR"
   | "HAS_PREREQUISITE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const RelationshipNoteTypeEnum = /*@__PURE__*/ S.String;
 
 /** RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/ */
@@ -181,8 +179,7 @@ export type CisBenchmarkSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const CisBenchmarkSeverityEnum = /*@__PURE__*/ S.String;
 
 /** A compliance check that is a CIS benchmark. */
@@ -218,7 +215,7 @@ export const ComplianceVersion = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComplianceVersion",
 }) as any as S.Schema<ComplianceVersion>;
 
-export type ComplianceVersionList = ComplianceVersion[];
+export type ComplianceVersionList = ReadonlyArray<ComplianceVersion>;
 export const ComplianceVersionList = /*@__PURE__*/ S.Array(
   ComplianceVersion,
 ) as any as S.Schema<ComplianceVersionList>;
@@ -274,8 +271,7 @@ export type DiscoveryAnalysisKindEnum =
   | "VULNERABILITY_ASSESSMENT"
   | "SBOM_REFERENCE"
   | "SECRET"
-  | "AI_SKILL_ANALYSIS"
-  | (string & {});
+  | "AI_SKILL_ANALYSIS";
 export const DiscoveryAnalysisKindEnum = /*@__PURE__*/ S.String;
 
 /** A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started. */
@@ -316,8 +312,7 @@ export type ExternalRefCategoryEnum =
   | "SECURITY"
   | "PACKAGE_MANAGER"
   | "PERSISTENT_ID"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const ExternalRefCategoryEnum = /*@__PURE__*/ S.String;
 
 /** An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package */
@@ -340,7 +335,7 @@ export const ExternalRef = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ExternalRef" }) as any as S.Schema<ExternalRef>;
 
-export type ExternalRefList = ExternalRef[];
+export type ExternalRefList = ReadonlyArray<ExternalRef>;
 export const ExternalRefList = /*@__PURE__*/ S.Array(
   ExternalRef,
 ) as any as S.Schema<ExternalRefList>;
@@ -440,7 +435,7 @@ export const RelatedUrl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RelatedUrl" }) as any as S.Schema<RelatedUrl>;
 
-export type RelatedUrlList = RelatedUrl[];
+export type RelatedUrlList = ReadonlyArray<RelatedUrl>;
 export const RelatedUrlList = /*@__PURE__*/ S.Array(
   RelatedUrl,
 ) as any as S.Schema<RelatedUrlList>;
@@ -450,8 +445,7 @@ export type AssessmentStateEnum =
   | "AFFECTED"
   | "NOT_AFFECTED"
   | "FIXED"
-  | "UNDER_INVESTIGATION"
-  | (string & {});
+  | "UNDER_INVESTIGATION";
 export const AssessmentStateEnum = /*@__PURE__*/ S.String;
 
 /** An URI message. */
@@ -468,7 +462,7 @@ export const URI = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "URI" }) as any as S.Schema<URI>;
 
-export type URIList = URI[];
+export type URIList = ReadonlyArray<URI>;
 export const URIList = /*@__PURE__*/ S.Array(URI) as any as S.Schema<URIList>;
 
 export type JustificationJustificationTypeEnum =
@@ -477,8 +471,7 @@ export type JustificationJustificationTypeEnum =
   | "VULNERABLE_CODE_NOT_PRESENT"
   | "VULNERABLE_CODE_NOT_IN_EXECUTE_PATH"
   | "VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY"
-  | "INLINE_MITIGATIONS_ALREADY_EXIST"
-  | (string & {});
+  | "INLINE_MITIGATIONS_ALREADY_EXIST";
 export const JustificationJustificationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Justification provides the justification when the state of the assessment if NOT_AFFECTED. */
@@ -501,8 +494,7 @@ export type RemediationRemediationTypeEnum =
   | "NO_FIX_PLANNED"
   | "NONE_AVAILABLE"
   | "VENDOR_FIX"
-  | "WORKAROUND"
-  | (string & {});
+  | "WORKAROUND";
 export const RemediationRemediationTypeEnum = /*@__PURE__*/ S.String;
 
 /** Specifies details on how to handle (and presumably, fix) a vulnerability. */
@@ -522,7 +514,7 @@ export const Remediation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 
-export type RemediationList = Remediation[];
+export type RemediationList = ReadonlyArray<Remediation>;
 export const RemediationList = /*@__PURE__*/ S.Array(
   Remediation,
 ) as any as S.Schema<RemediationList>;
@@ -581,8 +573,7 @@ export const Publisher = /*@__PURE__*/ S.suspend(() =>
 
 export type IdentifierHelperFieldEnum =
   | "IDENTIFIER_HELPER_FIELD_UNSPECIFIED"
-  | "GENERIC_URI"
-  | (string & {});
+  | "GENERIC_URI";
 export const IdentifierHelperFieldEnum = /*@__PURE__*/ S.String;
 
 /** Helps in identifying the underlying product. This should be treated like a one-of field. Only one field should be set in this proto. This is a workaround because spanner indexes on one-of fields restrict addition and deletion of fields. */
@@ -668,11 +659,10 @@ export type NoteKindEnum =
   | "VULNERABILITY_ASSESSMENT"
   | "SBOM_REFERENCE"
   | "SECRET"
-  | "AI_SKILL_ANALYSIS"
-  | (string & {});
+  | "AI_SKILL_ANALYSIS";
 export const NoteKindEnum = /*@__PURE__*/ S.String;
 
-export type VersionKindEnum = "NORMAL" | "MINIMUM" | "MAXIMUM" | (string & {});
+export type VersionKindEnum = "NORMAL" | "MINIMUM" | "MAXIMUM";
 export const VersionKindEnum = /*@__PURE__*/ S.String;
 
 /** Version contains structured information about the version of the package. For a discussion of this in Debian/Ubuntu: http://serverfault.com/questions/604541/debian-packages-version-convention For a discussion of this in Redhat/Fedora/Centos: http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/ */
@@ -701,8 +691,7 @@ export const Version = /*@__PURE__*/ S.suspend(() =>
 export type DistributionArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "X86"
-  | "X64"
-  | (string & {});
+  | "X64";
 export const DistributionArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** This represents a particular channel of distribution for a given package. e.g. Debian's jessie-backports dpkg mirror */
@@ -731,7 +720,7 @@ export const Distribution = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Distribution" }) as any as S.Schema<Distribution>;
 
-export type DistributionList = Distribution[];
+export type DistributionList = ReadonlyArray<Distribution>;
 export const DistributionList = /*@__PURE__*/ S.Array(
   Distribution,
 ) as any as S.Schema<DistributionList>;
@@ -750,7 +739,7 @@ export const Digest = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Digest" }) as any as S.Schema<Digest>;
 
-export type DigestList = Digest[];
+export type DigestList = ReadonlyArray<Digest>;
 export const DigestList = /*@__PURE__*/ S.Array(
   Digest,
 ) as any as S.Schema<DigestList>;
@@ -758,8 +747,7 @@ export const DigestList = /*@__PURE__*/ S.Array(
 export type PackageArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "X86"
-  | "X64"
-  | (string & {});
+  | "X64";
 export const PackageArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions. */
@@ -842,8 +830,7 @@ export const Deployable = /*@__PURE__*/ S.suspend(() =>
 export type BuildSignatureKeyTypeEnum =
   | "KEY_TYPE_UNSPECIFIED"
   | "PGP_ASCII_ARMORED"
-  | "PKIX_PEM"
-  | (string & {});
+  | "PKIX_PEM";
 export const BuildSignatureKeyTypeEnum = /*@__PURE__*/ S.String;
 
 /** Message encapsulating the signature of the verified build. */
@@ -902,7 +889,7 @@ export const UpgradeDistribution = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpgradeDistribution",
 }) as any as S.Schema<UpgradeDistribution>;
 
-export type UpgradeDistributionList = UpgradeDistribution[];
+export type UpgradeDistributionList = ReadonlyArray<UpgradeDistribution>;
 export const UpgradeDistributionList = /*@__PURE__*/ S.Array(
   UpgradeDistribution,
 ) as any as S.Schema<UpgradeDistributionList>;
@@ -983,8 +970,7 @@ export type VulnerabilityTypeCvssVersionEnum =
   | "CVSS_VERSION_UNSPECIFIED"
   | "CVSS_VERSION_2"
   | "CVSS_VERSION_3"
-  | "CVSS_VERSION_4"
-  | (string & {});
+  | "CVSS_VERSION_4";
 export const VulnerabilityTypeCvssVersionEnum = /*@__PURE__*/ S.String;
 
 export type CVSSIntegrityImpactEnum =
@@ -993,15 +979,13 @@ export type CVSSIntegrityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE"
-  | (string & {});
+  | "IMPACT_COMPLETE";
 export const CVSSIntegrityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "SCOPE_UNCHANGED"
-  | "SCOPE_CHANGED"
-  | (string & {});
+  | "SCOPE_CHANGED";
 export const CVSSScopeEnum = /*@__PURE__*/ S.String;
 
 export type CVSSSubsequentSystemConfidentialityImpactEnum =
@@ -1010,8 +994,7 @@ export type CVSSSubsequentSystemConfidentialityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE"
-  | (string & {});
+  | "IMPACT_COMPLETE";
 export const CVSSSubsequentSystemConfidentialityImpactEnum =
   /*@__PURE__*/ S.String;
 
@@ -1020,8 +1003,7 @@ export type CVSSExploitMaturityEnum =
   | "EXPLOIT_MATURITY_NOT_DEFINED"
   | "EXPLOIT_MATURITY_ATTACKED"
   | "EXPLOIT_MATURITY_POC"
-  | "EXPLOIT_MATURITY_UNREPORTED"
-  | (string & {});
+  | "EXPLOIT_MATURITY_UNREPORTED";
 export const CVSSExploitMaturityEnum = /*@__PURE__*/ S.String;
 
 export type CVSSSubsequentSystemAvailabilityImpactEnum =
@@ -1030,8 +1012,7 @@ export type CVSSSubsequentSystemAvailabilityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE"
-  | (string & {});
+  | "IMPACT_COMPLETE";
 export const CVSSSubsequentSystemAvailabilityImpactEnum =
   /*@__PURE__*/ S.String;
 
@@ -1040,8 +1021,7 @@ export type CVSSAttackVectorEnum =
   | "ATTACK_VECTOR_NETWORK"
   | "ATTACK_VECTOR_ADJACENT"
   | "ATTACK_VECTOR_LOCAL"
-  | "ATTACK_VECTOR_PHYSICAL"
-  | (string & {});
+  | "ATTACK_VECTOR_PHYSICAL";
 export const CVSSAttackVectorEnum = /*@__PURE__*/ S.String;
 
 export type CVSSVulnerableSystemIntegrityImpactEnum =
@@ -1050,8 +1030,7 @@ export type CVSSVulnerableSystemIntegrityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE"
-  | (string & {});
+  | "IMPACT_COMPLETE";
 export const CVSSVulnerableSystemIntegrityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSAvailabilityImpactEnum =
@@ -1060,8 +1039,7 @@ export type CVSSAvailabilityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE"
-  | (string & {});
+  | "IMPACT_COMPLETE";
 export const CVSSAvailabilityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSVulnerableSystemAvailabilityImpactEnum =
@@ -1070,8 +1048,7 @@ export type CVSSVulnerableSystemAvailabilityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE"
-  | (string & {});
+  | "IMPACT_COMPLETE";
 export const CVSSVulnerableSystemAvailabilityImpactEnum =
   /*@__PURE__*/ S.String;
 
@@ -1081,16 +1058,14 @@ export type CVSSSubsequentSystemIntegrityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE"
-  | (string & {});
+  | "IMPACT_COMPLETE";
 export const CVSSSubsequentSystemIntegrityImpactEnum = /*@__PURE__*/ S.String;
 
 export type CVSSAttackComplexityEnum =
   | "ATTACK_COMPLEXITY_UNSPECIFIED"
   | "ATTACK_COMPLEXITY_LOW"
   | "ATTACK_COMPLEXITY_HIGH"
-  | "ATTACK_COMPLEXITY_MEDIUM"
-  | (string & {});
+  | "ATTACK_COMPLEXITY_MEDIUM";
 export const CVSSAttackComplexityEnum = /*@__PURE__*/ S.String;
 
 export type CVSSVulnerableSystemConfidentialityImpactEnum =
@@ -1099,16 +1074,14 @@ export type CVSSVulnerableSystemConfidentialityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE"
-  | (string & {});
+  | "IMPACT_COMPLETE";
 export const CVSSVulnerableSystemConfidentialityImpactEnum =
   /*@__PURE__*/ S.String;
 
 export type CVSSAttackRequirementsEnum =
   | "ATTACK_REQUIREMENTS_UNSPECIFIED"
   | "ATTACK_REQUIREMENTS_NONE"
-  | "ATTACK_REQUIREMENTS_PRESENT"
-  | (string & {});
+  | "ATTACK_REQUIREMENTS_PRESENT";
 export const CVSSAttackRequirementsEnum = /*@__PURE__*/ S.String;
 
 export type CVSSUserInteractionEnum =
@@ -1116,24 +1089,21 @@ export type CVSSUserInteractionEnum =
   | "USER_INTERACTION_NONE"
   | "USER_INTERACTION_REQUIRED"
   | "USER_INTERACTION_PASSIVE"
-  | "USER_INTERACTION_ACTIVE"
-  | (string & {});
+  | "USER_INTERACTION_ACTIVE";
 export const CVSSUserInteractionEnum = /*@__PURE__*/ S.String;
 
 export type CVSSAuthenticationEnum =
   | "AUTHENTICATION_UNSPECIFIED"
   | "AUTHENTICATION_MULTIPLE"
   | "AUTHENTICATION_SINGLE"
-  | "AUTHENTICATION_NONE"
-  | (string & {});
+  | "AUTHENTICATION_NONE";
 export const CVSSAuthenticationEnum = /*@__PURE__*/ S.String;
 
 export type CVSSPrivilegesRequiredEnum =
   | "PRIVILEGES_REQUIRED_UNSPECIFIED"
   | "PRIVILEGES_REQUIRED_NONE"
   | "PRIVILEGES_REQUIRED_LOW"
-  | "PRIVILEGES_REQUIRED_HIGH"
-  | (string & {});
+  | "PRIVILEGES_REQUIRED_HIGH";
 export const CVSSPrivilegesRequiredEnum = /*@__PURE__*/ S.String;
 
 export type CVSSConfidentialityImpactEnum =
@@ -1142,8 +1112,7 @@ export type CVSSConfidentialityImpactEnum =
   | "IMPACT_LOW"
   | "IMPACT_NONE"
   | "IMPACT_PARTIAL"
-  | "IMPACT_COMPLETE"
-  | (string & {});
+  | "IMPACT_COMPLETE";
 export const CVSSConfidentialityImpactEnum = /*@__PURE__*/ S.String;
 
 /** Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator For CVSS v4 details, see https://www.first.org/cvss/v4.0/user-guide CVSS v4 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v4-calculator */
@@ -1230,8 +1199,7 @@ export type VulnerabilityTypeSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const VulnerabilityTypeSeverityEnum = /*@__PURE__*/ S.String;
 
 /** BaseImage describes a base image of a container image. */
@@ -1254,7 +1222,7 @@ export const BaseImage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BaseImage" }) as any as S.Schema<BaseImage>;
 
-export type BaseImageList = BaseImage[];
+export type BaseImageList = ReadonlyArray<BaseImage>;
 export const BaseImageList = /*@__PURE__*/ S.Array(
   BaseImage,
 ) as any as S.Schema<BaseImageList>;
@@ -1299,7 +1267,7 @@ export const FileLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FileLocation" }) as any as S.Schema<FileLocation>;
 
-export type FileLocationList = FileLocation[];
+export type FileLocationList = ReadonlyArray<FileLocation>;
 export const FileLocationList = /*@__PURE__*/ S.Array(
   FileLocation,
 ) as any as S.Schema<FileLocationList>;
@@ -1367,7 +1335,7 @@ export const Detail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Detail" }) as any as S.Schema<Detail>;
 
-export type DetailList = Detail[];
+export type DetailList = ReadonlyArray<Detail>;
 export const DetailList = /*@__PURE__*/ S.Array(
   Detail,
 ) as any as S.Schema<DetailList>;
@@ -1555,8 +1523,7 @@ export type DeploymentPlatformEnum =
   | "PLATFORM_UNSPECIFIED"
   | "GKE"
   | "FLEX"
-  | "CUSTOM"
-  | (string & {});
+  | "CUSTOM";
 export const DeploymentPlatformEnum = /*@__PURE__*/ S.String;
 
 /** The period during which some deployable was active in a runtime. */
@@ -1604,7 +1571,7 @@ export const EnvelopeSignature = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvelopeSignature",
 }) as any as S.Schema<EnvelopeSignature>;
 
-export type EnvelopeSignatureList = EnvelopeSignature[];
+export type EnvelopeSignatureList = ReadonlyArray<EnvelopeSignature>;
 export const EnvelopeSignatureList = /*@__PURE__*/ S.Array(
   EnvelopeSignature,
 ) as any as S.Schema<EnvelopeSignatureList>;
@@ -1626,12 +1593,7 @@ export const Envelope = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Envelope" }) as any as S.Schema<Envelope>;
 
-export type HashTypeEnum =
-  | "NONE"
-  | "SHA256"
-  | "GO_MODULE_H1"
-  | "DIRSUM_SHA256"
-  | (string & {});
+export type HashTypeEnum = "NONE" | "SHA256" | "GO_MODULE_H1" | "DIRSUM_SHA256";
 export const HashTypeEnum = /*@__PURE__*/ S.String;
 
 /** Container message for hash values. */
@@ -1685,7 +1647,7 @@ export const Subject = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Subject" }) as any as S.Schema<Subject>;
 
-export type SubjectList = Subject[];
+export type SubjectList = ReadonlyArray<Subject>;
 export const SubjectList = /*@__PURE__*/ S.Array(
   Subject,
 ) as any as S.Schema<SubjectList>;
@@ -1797,8 +1759,7 @@ export type RelationshipOccurrenceTypeEnum =
   | "AMENDS"
   | "PREREQUISITE_FOR"
   | "HAS_PREREQUISITE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const RelationshipOccurrenceTypeEnum = /*@__PURE__*/ S.String;
 
 /** RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/ */
@@ -1842,7 +1803,7 @@ export const NonCompliantFile = /*@__PURE__*/ S.suspend(() =>
   identifier: "NonCompliantFile",
 }) as any as S.Schema<NonCompliantFile>;
 
-export type NonCompliantFileList = NonCompliantFile[];
+export type NonCompliantFileList = ReadonlyArray<NonCompliantFile>;
 export const NonCompliantFileList = /*@__PURE__*/ S.Array(
   NonCompliantFile,
 ) as any as S.Schema<NonCompliantFileList>;
@@ -1871,8 +1832,7 @@ export type VexAssessmentStateEnum =
   | "AFFECTED"
   | "NOT_AFFECTED"
   | "FIXED"
-  | "UNDER_INVESTIGATION"
-  | (string & {});
+  | "UNDER_INVESTIGATION";
 export const VexAssessmentStateEnum = /*@__PURE__*/ S.String;
 
 /** VexAssessment provides all publisher provided Vex information that is related to this vulnerability. */
@@ -1956,8 +1916,7 @@ export type VulnerabilityDetailsSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const VulnerabilityDetailsSeverityEnum = /*@__PURE__*/ S.String;
 
 export type VulnerabilityDetailsEffectiveSeverityEnum =
@@ -1966,16 +1925,14 @@ export type VulnerabilityDetailsEffectiveSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const VulnerabilityDetailsEffectiveSeverityEnum = /*@__PURE__*/ S.String;
 
 export type VulnerabilityDetailsCvssVersionEnum =
   | "CVSS_VERSION_UNSPECIFIED"
   | "CVSS_VERSION_2"
   | "CVSS_VERSION_3"
-  | "CVSS_VERSION_4"
-  | (string & {});
+  | "CVSS_VERSION_4";
 export const VulnerabilityDetailsCvssVersionEnum = /*@__PURE__*/ S.String;
 
 export type PackageIssueEffectiveSeverityEnum =
@@ -1984,8 +1941,7 @@ export type PackageIssueEffectiveSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const PackageIssueEffectiveSeverityEnum = /*@__PURE__*/ S.String;
 
 /** This message wraps a location affected by a vulnerability and its associated fix (if one is available). */
@@ -2010,7 +1966,7 @@ export const PackageIssue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PackageIssue" }) as any as S.Schema<PackageIssue>;
 
-export type PackageIssueList = PackageIssue[];
+export type PackageIssueList = ReadonlyArray<PackageIssue>;
 export const PackageIssueList = /*@__PURE__*/ S.Array(
   PackageIssue,
 ) as any as S.Schema<PackageIssueList>;
@@ -2112,7 +2068,7 @@ export const File = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
-export type FileList = File[];
+export type FileList = ReadonlyArray<File>;
 export const FileList = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<FileList>;
@@ -2120,8 +2076,7 @@ export const FileList = /*@__PURE__*/ S.Array(
 export type DiscoveredContinuousAnalysisEnum =
   | "CONTINUOUS_ANALYSIS_UNSPECIFIED"
   | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
+  | "INACTIVE";
 export const DiscoveredContinuousAnalysisEnum = /*@__PURE__*/ S.String;
 
 export type DiscoveredAnalysisStatusEnum =
@@ -2131,8 +2086,7 @@ export type DiscoveredAnalysisStatusEnum =
   | "COMPLETE"
   | "FINISHED_SUCCESS"
   | "FINISHED_FAILED"
-  | "FINISHED_UNSUPPORTED"
-  | (string & {});
+  | "FINISHED_UNSUPPORTED";
 export const DiscoveredAnalysisStatusEnum = /*@__PURE__*/ S.String;
 
 /** Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource. */
@@ -2154,7 +2108,7 @@ export const DocumentMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DocumentMap>;
 
-export type DocumentMapList = DocumentMap[];
+export type DocumentMapList = ReadonlyArray<DocumentMap>;
 export const DocumentMapList = /*@__PURE__*/ S.Array(
   DocumentMap,
 ) as any as S.Schema<DocumentMapList>;
@@ -2202,8 +2156,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export type VulnerabilityAttestationStateEnum =
   | "VULNERABILITY_ATTESTATION_STATE_UNSPECIFIED"
   | "SUCCESS"
-  | "FAILURE"
-  | (string & {});
+  | "FAILURE";
 export const VulnerabilityAttestationStateEnum = /*@__PURE__*/ S.String;
 
 /** The status of a vulnerability attestation generation. */
@@ -2228,8 +2181,7 @@ export const VulnerabilityAttestation = /*@__PURE__*/ S.suspend(() =>
 export type SBOMStatusSbomStateEnum =
   | "SBOM_STATE_UNSPECIFIED"
   | "PENDING"
-  | "COMPLETE"
-  | (string & {});
+  | "COMPLETE";
 export const SBOMStatusSbomStateEnum = /*@__PURE__*/ S.String;
 
 /** The status of an SBOM generation. */
@@ -2246,7 +2198,7 @@ export const SBOMStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SBOMStatus" }) as any as S.Schema<SBOMStatus>;
 
-export type StatusList = Status[];
+export type StatusList = ReadonlyArray<Status>;
 export const StatusList = /*@__PURE__*/ S.Array(
   Status,
 ) as any as S.Schema<StatusList>;
@@ -2298,11 +2250,7 @@ export const Discovered = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Discovered" }) as any as S.Schema<Discovered>;
 
-export type FindingSeverityEnum =
-  | "SEVERITY_UNSPECIFIED"
-  | "CRITICAL"
-  | "HIGH"
-  | (string & {});
+export type FindingSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "HIGH";
 export const FindingSeverityEnum = /*@__PURE__*/ S.String;
 
 export type FindingScannerEnum =
@@ -2310,8 +2258,7 @@ export type FindingScannerEnum =
   | "STATIC"
   | "LLM"
   | "WS_POLICY"
-  | "GOOGLE_ANTIVIRUS"
-  | (string & {});
+  | "GOOGLE_ANTIVIRUS";
 export const FindingScannerEnum = /*@__PURE__*/ S.String;
 
 /** Location details with file path and line number. */
@@ -2353,7 +2300,7 @@ export const Finding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
 
-export type FindingList = Finding[];
+export type FindingList = ReadonlyArray<Finding>;
 export const FindingList = /*@__PURE__*/ S.Array(
   Finding,
 ) as any as S.Schema<FindingList>;
@@ -2361,8 +2308,7 @@ export const FindingList = /*@__PURE__*/ S.Array(
 export type AISkillAnalysisOccurrenceMaxSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "CRITICAL"
-  | "HIGH"
-  | (string & {});
+  | "HIGH";
 export const AISkillAnalysisOccurrenceMaxSeverityEnum = /*@__PURE__*/ S.String;
 
 /** AISkillAnalysisOccurrence provides the results of an AI-based skill analysis. */
@@ -2386,8 +2332,7 @@ export const AISkillAnalysisOccurrence = /*@__PURE__*/ S.suspend(() =>
 
 export type PgpSignedAttestationContentTypeEnum =
   | "CONTENT_TYPE_UNSPECIFIED"
-  | "SIMPLE_SIGNING_JSON"
-  | (string & {});
+  | "SIMPLE_SIGNING_JSON";
 export const PgpSignedAttestationContentTypeEnum = /*@__PURE__*/ S.String;
 
 /** An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file. */
@@ -2482,7 +2427,7 @@ export const ResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceDescriptor",
 }) as any as S.Schema<ResourceDescriptor>;
 
-export type ResourceDescriptorList = ResourceDescriptor[];
+export type ResourceDescriptorList = ReadonlyArray<ResourceDescriptor>;
 export const ResourceDescriptorList = /*@__PURE__*/ S.Array(
   ResourceDescriptor,
 ) as any as S.Schema<ResourceDescriptorList>;
@@ -2689,7 +2634,7 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
-export type ArtifactList = Artifact[];
+export type ArtifactList = ReadonlyArray<Artifact>;
 export const ArtifactList = /*@__PURE__*/ S.Array(
   Artifact,
 ) as any as S.Schema<ArtifactList>;
@@ -2720,7 +2665,7 @@ export const Command = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Command" }) as any as S.Schema<Command>;
 
-export type CommandList = Command[];
+export type CommandList = ReadonlyArray<Command>;
 export const CommandList = /*@__PURE__*/ S.Array(
   Command,
 ) as any as S.Schema<CommandList>;
@@ -2782,8 +2727,7 @@ export type GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindEnum =
   | "KIND_UNSPECIFIED"
   | "FIXED"
   | "MOVABLE"
-  | "OTHER"
-  | (string & {});
+  | "OTHER";
 export const GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindEnum =
   /*@__PURE__*/ S.String;
 
@@ -2921,13 +2865,13 @@ export const RepoSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoSource" }) as any as S.Schema<RepoSource>;
 
 export type GoogleDevtoolsContaineranalysisV1alpha1SourceContextList =
-  GoogleDevtoolsContaineranalysisV1alpha1SourceContext[];
+  ReadonlyArray<GoogleDevtoolsContaineranalysisV1alpha1SourceContext>;
 export const GoogleDevtoolsContaineranalysisV1alpha1SourceContextList =
   /*@__PURE__*/ S.Array(
     GoogleDevtoolsContaineranalysisV1alpha1SourceContext,
   ) as any as S.Schema<GoogleDevtoolsContaineranalysisV1alpha1SourceContextList>;
 
-export type HashList = Hash[];
+export type HashList = ReadonlyArray<Hash>;
 export const HashList = /*@__PURE__*/ S.Array(
   Hash,
 ) as any as S.Schema<HashList>;
@@ -3154,7 +3098,7 @@ export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMat
   }) as any as S.Schema<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>;
 
 export type GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialList =
-  GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial[];
+  ReadonlyArray<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial>;
 export const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterialList =
   /*@__PURE__*/ S.Array(
     GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMaterial,
@@ -3244,7 +3188,7 @@ export const Material = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Material" }) as any as S.Schema<Material>;
 
-export type MaterialList = Material[];
+export type MaterialList = ReadonlyArray<Material>;
 export const MaterialList = /*@__PURE__*/ S.Array(
   Material,
 ) as any as S.Schema<MaterialList>;
@@ -3385,16 +3329,14 @@ export type SecretOccurrenceKindEnum =
   | "SECRET_KIND_PERPLEXITY_API_KEY"
   | "SECRET_KIND_STRIPE_SECRET_KEY"
   | "SECRET_KIND_STRIPE_RESTRICTED_KEY"
-  | "SECRET_KIND_STRIPE_WEBHOOK_SECRET"
-  | (string & {});
+  | "SECRET_KIND_STRIPE_WEBHOOK_SECRET";
 export const SecretOccurrenceKindEnum = /*@__PURE__*/ S.String;
 
 export type SecretStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "UNKNOWN"
   | "VALID"
-  | "INVALID"
-  | (string & {});
+  | "INVALID";
 export const SecretStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The status of the secret with a timestamp. */
@@ -3414,7 +3356,7 @@ export const SecretStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretStatus" }) as any as S.Schema<SecretStatus>;
 
-export type SecretStatusList = SecretStatus[];
+export type SecretStatusList = ReadonlyArray<SecretStatus>;
 export const SecretStatusList = /*@__PURE__*/ S.Array(
   SecretStatus,
 ) as any as S.Schema<SecretStatusList>;
@@ -3430,7 +3372,7 @@ export const SecretLocation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SecretLocation" }) as any as S.Schema<SecretLocation>;
 
-export type SecretLocationList = SecretLocation[];
+export type SecretLocationList = ReadonlyArray<SecretLocation>;
 export const SecretLocationList = /*@__PURE__*/ S.Array(
   SecretLocation,
 ) as any as S.Schema<SecretLocationList>;
@@ -3473,8 +3415,7 @@ export type OccurrenceKindEnum =
   | "VULNERABILITY_ASSESSMENT"
   | "SBOM_REFERENCE"
   | "SECRET"
-  | "AI_SKILL_ANALYSIS"
-  | (string & {});
+  | "AI_SKILL_ANALYSIS";
 export const OccurrenceKindEnum = /*@__PURE__*/ S.String;
 
 /** An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability). */
@@ -3514,8 +3455,7 @@ export type LayerDirectiveEnum =
   | "ONBUILD"
   | "STOPSIGNAL"
   | "HEALTHCHECK"
-  | "SHELL"
-  | (string & {});
+  | "SHELL";
 export const LayerDirectiveEnum = /*@__PURE__*/ S.String;
 
 /** Layer holds metadata specific to a layer of a Docker image. */
@@ -3532,7 +3472,7 @@ export const Layer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Layer" }) as any as S.Schema<Layer>;
 
-export type LayerList = Layer[];
+export type LayerList = ReadonlyArray<Layer>;
 export const LayerList = /*@__PURE__*/ S.Array(
   Layer,
 ) as any as S.Schema<LayerList>;
@@ -3574,7 +3514,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
-export type LocationList = Location[];
+export type LocationList = ReadonlyArray<Location>;
 export const LocationList = /*@__PURE__*/ S.Array(
   Location,
 ) as any as S.Schema<LocationList>;
@@ -3582,8 +3522,7 @@ export const LocationList = /*@__PURE__*/ S.Array(
 export type InstallationArchitectureEnum =
   | "ARCHITECTURE_UNSPECIFIED"
   | "X86"
-  | "X64"
-  | (string & {});
+  | "X64";
 export const InstallationArchitectureEnum = /*@__PURE__*/ S.String;
 
 /** This represents how a particular software package may be installed on a system. */
@@ -3948,7 +3887,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
-export type BindingList = Binding[];
+export type BindingList = ReadonlyArray<Binding>;
 export const BindingList = /*@__PURE__*/ S.Array(
   Binding,
 ) as any as S.Schema<BindingList>;
@@ -4154,8 +4093,7 @@ export type SeverityCountSeverityEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
-  | "CRITICAL"
-  | (string & {});
+  | "CRITICAL";
 export const SeverityCountSeverityEnum = /*@__PURE__*/ S.String;
 
 /** The number of occurrences created for a specific severity. */
@@ -4172,7 +4110,7 @@ export const SeverityCount = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SeverityCount" }) as any as S.Schema<SeverityCount>;
 
-export type SeverityCountList = SeverityCount[];
+export type SeverityCountList = ReadonlyArray<SeverityCount>;
 export const SeverityCountList = /*@__PURE__*/ S.Array(
   SeverityCount,
 ) as any as S.Schema<SeverityCountList>;
@@ -4220,7 +4158,7 @@ export const ListProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsNotesRequest",
 }) as any as S.Schema<ListProjectsNotesRequest>;
 
-export type NoteList = Note[];
+export type NoteList = ReadonlyArray<Note>;
 export const NoteList = /*@__PURE__*/ S.Array(
   Note,
 ) as any as S.Schema<NoteList>;
@@ -4268,7 +4206,7 @@ export const ListProjectsNotesOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsNotesOccurrencesRequest",
 }) as any as S.Schema<ListProjectsNotesOccurrencesRequest>;
 
-export type OccurrenceList = Occurrence[];
+export type OccurrenceList = ReadonlyArray<Occurrence>;
 export const OccurrenceList = /*@__PURE__*/ S.Array(
   Occurrence,
 ) as any as S.Schema<OccurrenceList>;
@@ -4308,8 +4246,7 @@ export type ListProjectsOccurrencesKindEnum =
   | "VULNERABILITY_ASSESSMENT"
   | "SBOM_REFERENCE"
   | "SECRET"
-  | "AI_SKILL_ANALYSIS"
-  | (string & {});
+  | "AI_SKILL_ANALYSIS";
 export const ListProjectsOccurrencesKindEnum = /*@__PURE__*/ S.String;
 
 export interface ListProjectsOccurrencesRequest {
@@ -4388,7 +4325,7 @@ export const ListProjectsScanConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListProjectsScanConfigsRequest",
 }) as any as S.Schema<ListProjectsScanConfigsRequest>;
 
-export type ScanConfigList = ScanConfig[];
+export type ScanConfigList = ReadonlyArray<ScanConfig>;
 export const ScanConfigList = /*@__PURE__*/ S.Array(
   ScanConfig,
 ) as any as S.Schema<ScanConfigList>;

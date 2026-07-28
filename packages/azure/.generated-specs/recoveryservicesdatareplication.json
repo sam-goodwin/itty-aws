@@ -362,16 +362,30 @@
             "smithy.api#documentation": "The policy name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#PolicyModelPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#PolicyModelPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "customProperties": {
+          "target": "com.azure.recoveryservicesdatareplication#PolicyModelCustomProperties",
+          "traits": {
+            "smithy.api#documentation": "Policy model custom properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Policy model properties."
       }
     },
     "com.azure.recoveryservicesdatareplication#PolicyGet": {
@@ -777,16 +791,30 @@
             "smithy.api#documentation": "The replication extension name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#ReplicationExtensionModelPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#ReplicationExtensionModelPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "customProperties": {
+          "target": "com.azure.recoveryservicesdatareplication#ReplicationExtensionModelCustomProperties",
+          "traits": {
+            "smithy.api#documentation": "Replication extension model custom properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Replication extension model properties."
       }
     },
     "com.azure.recoveryservicesdatareplication#ReplicationExtensionGet": {
@@ -1406,10 +1434,10 @@
             "smithy.api#documentation": "The protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#PlannedFailoverModelProperties",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Planned failover model properties.",
             "smithy.api#required": {}
           }
         }
@@ -2468,16 +2496,44 @@
             "smithy.api#documentation": "The protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#ProtectedItemModelPropertiesUpdate",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Protected item model properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#ProtectedItemModelPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "customProperties": {
+          "target": "com.azure.recoveryservicesdatareplication#ProtectedItemModelCustomPropertiesUpdate",
+          "traits": {
+            "smithy.api#documentation": "Protected item model custom properties update."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Protected item model properties update."
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#ProtectedItemModelCustomPropertiesUpdate": {
+      "type": "structure",
+      "members": {
+        "instanceType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Discriminator property for ProtectedItemModelCustomPropertiesUpdate.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Protected item model custom properties."
       }
     },
     "com.azure.recoveryservicesdatareplication#ProtectedItemCreate": {
@@ -2572,16 +2628,44 @@
             "smithy.api#documentation": "The protected item name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#ProtectedItemModelPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#ProtectedItemModelPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "policyName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the policy name.",
+            "smithy.api#required": {}
+          }
+        },
+        "replicationExtensionName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the replication extension name.",
+            "smithy.api#required": {}
+          }
+        },
+        "customProperties": {
+          "target": "com.azure.recoveryservicesdatareplication#ProtectedItemModelCustomProperties",
+          "traits": {
+            "smithy.api#documentation": "Protected item model custom properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Protected item model properties."
       }
     },
     "com.azure.recoveryservicesdatareplication#ProtectedItemGet": {
@@ -3336,16 +3420,35 @@
             "smithy.api#documentation": "The private endpoint connection name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#PrivateEndpointConnectionResponsePropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#PrivateEndpointConnectionResponsePropertiesInput": {
+      "type": "structure",
+      "members": {
+        "privateEndpoint": {
+          "target": "com.azure.recoveryservicesdatareplication#PrivateEndpoint",
+          "traits": {
+            "smithy.api#documentation": "Represent private Endpoint network resource that is linked to the Private Endpoint connection."
+          }
+        },
+        "privateLinkServiceConnectionState": {
+          "target": "com.azure.recoveryservicesdatareplication#PrivateLinkServiceConnectionState",
+          "traits": {
+            "smithy.api#documentation": "Represents Private link service connection state."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents Private endpoint connection response properties."
       }
     },
     "com.azure.recoveryservicesdatareplication#PrivateEndpointConnectionsGet": {
@@ -4750,16 +4853,51 @@
             "smithy.api#documentation": "The email configuration name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#EmailConfigurationModelPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#EmailConfigurationModelPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "sendToOwners": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets a value indicating whether to send email to subscription administrator.",
+            "smithy.api#required": {}
+          }
+        },
+        "customEmailAddresses": {
+          "target": "com.azure.recoveryservicesdatareplication#EmailConfigurationModelPropertiesInputCustomEmailAddressesList",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the custom email address for sending emails."
+          }
+        },
+        "locale": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the locale for the email notification."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Email configuration model properties."
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#EmailConfigurationModelPropertiesInputCustomEmailAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the custom email address for sending emails."
       }
     },
     "com.azure.recoveryservicesdatareplication#EmailConfigurationGet": {
@@ -5377,16 +5515,100 @@
             "smithy.api#documentation": "The vault name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.recoveryservicesdatareplication#VaultUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#VaultModelPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Vault properties."
+          }
+        },
+        "identity": {
+          "target": "com.azure.recoveryservicesdatareplication#VaultIdentityModelInput",
+          "traits": {
+            "smithy.api#documentation": "Vault identity."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#VaultIdentityModelInput": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.recoveryservicesdatareplication#VaultIdentityType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the identityType which can be either SystemAssigned or None.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Vault model."
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#VaultIdentityType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "None"
+          }
+        },
+        "SYSTEMASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SystemAssigned"
+          }
+        },
+        "USERASSIGNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UserAssigned"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the identityType which can be either SystemAssigned or None."
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#VaultModelPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "vaultType": {
+          "target": "com.azure.recoveryservicesdatareplication#ReplicationVaultType",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the type of vault."
+          }
+        },
+        "publicNetworkAccess": {
+          "target": "com.azure.recoveryservicesdatareplication#PublicNetworkAccess",
+          "traits": {
+            "smithy.api#documentation": "Property to enable or disable resource provider inbound network traffic from public clients."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Vault properties."
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#VaultUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the resource tags."
       }
     },
     "com.azure.recoveryservicesdatareplication#VaultCreate": {
@@ -5548,16 +5770,85 @@
             "smithy.api#documentation": "The vault name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.recoveryservicesdatareplication#VaultCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#VaultModelPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
+          }
+        },
+        "identity": {
+          "target": "com.azure.recoveryservicesdatareplication#VaultCreateRequestIdentity",
+          "traits": {
+            "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#VaultCreateRequestIdentity": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.azure.recoveryservicesdatareplication#ManagedServiceIdentityType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "userAssignedIdentities": {
+          "target": "com.azure.recoveryservicesdatareplication#VaultCreateRequestIdentityUserAssignedIdentitiesMap",
+          "traits": {
+            "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Managed service identity (system assigned and/or user assigned identities)"
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#VaultCreateRequestIdentityUserAssignedIdentitiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.azure.recoveryservicesdatareplication#UserAssignedIdentityInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#UserAssignedIdentityInput": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "User assigned identity properties"
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#VaultCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.recoveryservicesdatareplication#VaultGet": {
@@ -6214,16 +6505,58 @@
             "smithy.api#documentation": "The fabric agent name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#FabricAgentModelPropertiesInput",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#FabricAgentModelPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "machineId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the machine Id where fabric agent is running.",
+            "smithy.api#required": {}
+          }
+        },
+        "machineName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the machine name where fabric agent is running.",
+            "smithy.api#required": {}
+          }
+        },
+        "authenticationIdentity": {
+          "target": "com.azure.recoveryservicesdatareplication#IdentityModel",
+          "traits": {
+            "smithy.api#documentation": "Identity model.",
+            "smithy.api#required": {}
+          }
+        },
+        "resourceAccessIdentity": {
+          "target": "com.azure.recoveryservicesdatareplication#IdentityModel",
+          "traits": {
+            "smithy.api#documentation": "Identity model.",
+            "smithy.api#required": {}
+          }
+        },
+        "customProperties": {
+          "target": "com.azure.recoveryservicesdatareplication#FabricAgentModelCustomProperties",
+          "traits": {
+            "smithy.api#documentation": "Fabric agent model custom properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Fabric agent model properties."
       }
     },
     "com.azure.recoveryservicesdatareplication#FabricAgentGet": {
@@ -6671,16 +7004,48 @@
             "smithy.api#documentation": "The fabric name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.recoveryservicesdatareplication#FabricUpdateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Gets or sets the resource tags."
+          }
+        },
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#FabricModelPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "Fabric model properties."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#FabricModelPropertiesInput": {
+      "type": "structure",
+      "members": {
+        "customProperties": {
+          "target": "com.azure.recoveryservicesdatareplication#FabricModelCustomProperties",
+          "traits": {
+            "smithy.api#documentation": "Fabric model custom properties.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Fabric model properties."
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#FabricUpdateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the resource tags."
       }
     },
     "com.azure.recoveryservicesdatareplication#FabricCreate": {
@@ -6792,16 +7157,40 @@
             "smithy.api#documentation": "The fabric name."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "tags": {
+          "target": "com.azure.recoveryservicesdatareplication#FabricCreateRequestTagsMap",
           "traits": {
-            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Resource tags."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The geo-location where the resource lives",
             "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.azure.recoveryservicesdatareplication#FabricModelPropertiesInput",
+          "traits": {
+            "smithy.api#documentation": "The resource-specific properties for this resource."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#FabricCreateRequestTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Resource tags."
       }
     },
     "com.azure.recoveryservicesdatareplication#FabricGet": {
@@ -7316,15 +7705,24 @@
             "smithy.api#documentation": "Deployment Id."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "resources": {
+          "target": "com.azure.recoveryservicesdatareplication#DeploymentPreflightPostRequestResourcesList",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets the list of resources."
           }
         }
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.azure.recoveryservicesdatareplication#DeploymentPreflightPostRequestResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.azure.recoveryservicesdatareplication#DeploymentPreflightResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "Gets or sets the list of resources."
       }
     },
     "com.azure.recoveryservicesdatareplication#VaultListBySubscription": {
@@ -7461,10 +7859,16 @@
             "smithy.api#documentation": "The name of the Azure region."
           }
         },
-        "body": {
-          "target": "smithy.api#Document",
+        "name": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "Gets or sets the resource name."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gets or sets the resource type."
           }
         }
       },

@@ -128,11 +128,10 @@ export const GetAccountsLanguagesProductCertificationsRequest =
 export type IssueResolutionEnum =
   | "RESOLUTION_UNSPECIFIED"
   | "USER_ACTION"
-  | "PENDING_PROCESSING"
-  | (string & {});
+  | "PENDING_PROCESSING";
 export const IssueResolutionEnum = /*@__PURE__*/ S.String;
 
-export type StringList = string[];
+export type StringList = ReadonlyArray<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
@@ -141,8 +140,7 @@ export type IssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
-  | "INFO"
-  | (string & {});
+  | "INFO";
 export const IssueSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Product issue. */
@@ -180,7 +178,7 @@ export const Issue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
-export type IssueList = Issue[];
+export type IssueList = ReadonlyArray<Issue>;
 export const IssueList = /*@__PURE__*/ S.Array(
   Issue,
 ) as any as S.Schema<IssueList>;
@@ -214,7 +212,7 @@ export const Certification = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Certification" }) as any as S.Schema<Certification>;
 
-export type CertificationList = Certification[];
+export type CertificationList = ReadonlyArray<Certification>;
 export const CertificationList = /*@__PURE__*/ S.Array(
   Certification,
 ) as any as S.Schema<CertificationList>;
@@ -223,8 +221,7 @@ export type DestinationStatusStatusEnum =
   | "UNKNOWN"
   | "ACTIVE"
   | "PENDING"
-  | "DISAPPROVED"
-  | (string & {});
+  | "DISAPPROVED";
 export const DestinationStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The destination status. */
@@ -252,7 +249,7 @@ export const DestinationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "DestinationStatus",
 }) as any as S.Schema<DestinationStatus>;
 
-export type DestinationStatusList = DestinationStatus[];
+export type DestinationStatusList = ReadonlyArray<DestinationStatus>;
 export const DestinationStatusList = /*@__PURE__*/ S.Array(
   DestinationStatus,
 ) as any as S.Schema<DestinationStatusList>;
@@ -301,12 +298,11 @@ export type GetAccountsProductsIncludeEnum =
   | "UNKNOWN"
   | "ATTRIBUTES"
   | "ISSUES"
-  | "DESTINATION_STATUSES"
-  | (string & {});
+  | "DESTINATION_STATUSES";
 export const GetAccountsProductsIncludeEnum = /*@__PURE__*/ S.String;
 
 export type GetAccountsProductsIncludeEnumList =
-  GetAccountsProductsIncludeEnum[];
+  ReadonlyArray<GetAccountsProductsIncludeEnum>;
 export const GetAccountsProductsIncludeEnumList = /*@__PURE__*/ S.Array(
   GetAccountsProductsIncludeEnum,
 ) as any as S.Schema<GetAccountsProductsIncludeEnumList>;
@@ -396,15 +392,10 @@ export type ImageStatusEnum =
   | "TOO_BIG"
   | "CRAWL_SKIPPED"
   | "HOSTLOADED"
-  | "HTTP_404"
-  | (string & {});
+  | "HTTP_404";
 export const ImageStatusEnum = /*@__PURE__*/ S.String;
 
-export type ImageTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "CRAWLED"
-  | "UPLOADED"
-  | (string & {});
+export type ImageTypeEnum = "TYPE_UNSPECIFIED" | "CRAWLED" | "UPLOADED";
 export const ImageTypeEnum = /*@__PURE__*/ S.String;
 
 /** An image. */
@@ -441,7 +432,7 @@ export const ProductDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductDetail" }) as any as S.Schema<ProductDetail>;
 
-export type ProductDetailList = ProductDetail[];
+export type ProductDetailList = ReadonlyArray<ProductDetail>;
 export const ProductDetailList = /*@__PURE__*/ S.Array(
   ProductDetail,
 ) as any as S.Schema<ProductDetailList>;
@@ -493,7 +484,7 @@ export const GoogleShoppingManufacturersV1ProductCertification =
   }) as any as S.Schema<GoogleShoppingManufacturersV1ProductCertification>;
 
 export type GoogleShoppingManufacturersV1ProductCertificationList =
-  GoogleShoppingManufacturersV1ProductCertification[];
+  ReadonlyArray<GoogleShoppingManufacturersV1ProductCertification>;
 export const GoogleShoppingManufacturersV1ProductCertificationList =
   /*@__PURE__*/ S.Array(
     GoogleShoppingManufacturersV1ProductCertification,
@@ -518,12 +509,12 @@ export const FeatureDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "FeatureDescription",
 }) as any as S.Schema<FeatureDescription>;
 
-export type FeatureDescriptionList = FeatureDescription[];
+export type FeatureDescriptionList = ReadonlyArray<FeatureDescription>;
 export const FeatureDescriptionList = /*@__PURE__*/ S.Array(
   FeatureDescription,
 ) as any as S.Schema<FeatureDescriptionList>;
 
-export type ImageList = Image[];
+export type ImageList = ReadonlyArray<Image>;
 export const ImageList = /*@__PURE__*/ S.Array(
   Image,
 ) as any as S.Schema<ImageList>;
@@ -575,7 +566,7 @@ export const VoluntaryNutritionFact = /*@__PURE__*/ S.suspend(() =>
   identifier: "VoluntaryNutritionFact",
 }) as any as S.Schema<VoluntaryNutritionFact>;
 
-export type VoluntaryNutritionFactList = VoluntaryNutritionFact[];
+export type VoluntaryNutritionFactList = ReadonlyArray<VoluntaryNutritionFact>;
 export const VoluntaryNutritionFactList = /*@__PURE__*/ S.Array(
   VoluntaryNutritionFact,
 ) as any as S.Schema<VoluntaryNutritionFactList>;
@@ -912,7 +903,7 @@ export const ListAccountsLanguagesProductCertificationsRequest =
     identifier: "ListAccountsLanguagesProductCertificationsRequest",
   }) as any as S.Schema<ListAccountsLanguagesProductCertificationsRequest>;
 
-export type ProductCertificationList = ProductCertification[];
+export type ProductCertificationList = ReadonlyArray<ProductCertification>;
 export const ProductCertificationList = /*@__PURE__*/ S.Array(
   ProductCertification,
 ) as any as S.Schema<ProductCertificationList>;
@@ -937,12 +928,11 @@ export type ListAccountsProductsIncludeEnum =
   | "UNKNOWN"
   | "ATTRIBUTES"
   | "ISSUES"
-  | "DESTINATION_STATUSES"
-  | (string & {});
+  | "DESTINATION_STATUSES";
 export const ListAccountsProductsIncludeEnum = /*@__PURE__*/ S.String;
 
 export type ListAccountsProductsIncludeEnumList =
-  ListAccountsProductsIncludeEnum[];
+  ReadonlyArray<ListAccountsProductsIncludeEnum>;
 export const ListAccountsProductsIncludeEnumList = /*@__PURE__*/ S.Array(
   ListAccountsProductsIncludeEnum,
 ) as any as S.Schema<ListAccountsProductsIncludeEnumList>;
@@ -974,7 +964,7 @@ export const ListAccountsProductsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsProductsRequest",
 }) as any as S.Schema<ListAccountsProductsRequest>;
 
-export type ProductList = Product[];
+export type ProductList = ReadonlyArray<Product>;
 export const ProductList = /*@__PURE__*/ S.Array(
   Product,
 ) as any as S.Schema<ProductList>;

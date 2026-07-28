@@ -41,10 +41,59 @@ export type SchemaPropertyGroupPropertyPropertyTypeEnum =
   | "String"
   | "Numeric"
   | "Boolean"
-  | "Object"
-  | (string & {});
+  | "Object";
 export const SchemaPropertyGroupPropertyPropertyTypeEnum =
   /*@__PURE__*/ S.String;
+
+export interface SchemaPropertyGroupPropertyInput {
+  name?: string;
+  property_type?: SchemaPropertyGroupPropertyPropertyTypeEnum;
+  is_required?: boolean;
+  is_optional_in_types?: boolean;
+  description?: string;
+}
+export const SchemaPropertyGroupPropertyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    property_type: S.optional(SchemaPropertyGroupPropertyPropertyTypeEnum),
+    is_required: S.optional(S.Boolean),
+    is_optional_in_types: S.optional(S.Boolean),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SchemaPropertyGroupPropertyInput",
+}) as any as S.Schema<SchemaPropertyGroupPropertyInput>;
+
+export type SchemaPropertyGroupsCreateRequestPropertiesList =
+  ReadonlyArray<SchemaPropertyGroupPropertyInput>;
+export const SchemaPropertyGroupsCreateRequestPropertiesList =
+  /*@__PURE__*/ S.Array(
+    SchemaPropertyGroupPropertyInput,
+  ) as any as S.Schema<SchemaPropertyGroupsCreateRequestPropertiesList>;
+
+export interface SchemaPropertyGroupsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  name?: string;
+  description?: string;
+  properties?: SchemaPropertyGroupsCreateRequestPropertiesList;
+}
+export const SchemaPropertyGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    properties: S.optional(SchemaPropertyGroupsCreateRequestPropertiesList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/schema_property_groups/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SchemaPropertyGroupsCreateRequest",
+}) as any as S.Schema<SchemaPropertyGroupsCreateRequest>;
 
 export interface SchemaPropertyGroupProperty {
   id?: string;
@@ -71,12 +120,11 @@ export const SchemaPropertyGroupProperty = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemaPropertyGroupProperty",
 }) as any as S.Schema<SchemaPropertyGroupProperty>;
 
-export type SchemaPropertyGroupsCreateRequestPropertiesList =
-  SchemaPropertyGroupProperty[];
-export const SchemaPropertyGroupsCreateRequestPropertiesList =
-  /*@__PURE__*/ S.Array(
-    SchemaPropertyGroupProperty,
-  ) as any as S.Schema<SchemaPropertyGroupsCreateRequestPropertiesList>;
+export type SchemaPropertyGroupPropertiesList =
+  ReadonlyArray<SchemaPropertyGroupProperty>;
+export const SchemaPropertyGroupPropertiesList = /*@__PURE__*/ S.Array(
+  SchemaPropertyGroupProperty,
+) as any as S.Schema<SchemaPropertyGroupPropertiesList>;
 
 export interface EventDefinitionBasic {
   id?: string;
@@ -91,12 +139,10 @@ export const EventDefinitionBasic = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventDefinitionBasic",
 }) as any as S.Schema<EventDefinitionBasic>;
 
-export type SchemaPropertyGroupsCreateRequestEventsList =
-  EventDefinitionBasic[];
-export const SchemaPropertyGroupsCreateRequestEventsList =
-  /*@__PURE__*/ S.Array(
-    EventDefinitionBasic,
-  ) as any as S.Schema<SchemaPropertyGroupsCreateRequestEventsList>;
+export type SchemaPropertyGroupEventsList = ReadonlyArray<EventDefinitionBasic>;
+export const SchemaPropertyGroupEventsList = /*@__PURE__*/ S.Array(
+  EventDefinitionBasic,
+) as any as S.Schema<SchemaPropertyGroupEventsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -113,11 +159,10 @@ export type RoleAtOrganizationEnum =
   | "leadership"
   | "marketing"
   | "sales"
-  | "other"
-  | (string & {});
+  | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
 
-export type BlankEnum = "" | (string & {});
+export type BlankEnum = "";
 export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
@@ -149,50 +194,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-export interface SchemaPropertyGroupsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id?: string;
-  name?: string;
-  description?: string;
-  properties?: SchemaPropertyGroupsCreateRequestPropertiesList;
-  events?: SchemaPropertyGroupsCreateRequestEventsList;
-  created_at?: string;
-  updated_at?: string;
-  created_by?: UserBasic;
-}
-export const SchemaPropertyGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    properties: S.optional(SchemaPropertyGroupsCreateRequestPropertiesList),
-    events: S.optional(SchemaPropertyGroupsCreateRequestEventsList),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/schema_property_groups/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SchemaPropertyGroupsCreateRequest",
-}) as any as S.Schema<SchemaPropertyGroupsCreateRequest>;
-
-export type SchemaPropertyGroupPropertiesList = SchemaPropertyGroupProperty[];
-export const SchemaPropertyGroupPropertiesList = /*@__PURE__*/ S.Array(
-  SchemaPropertyGroupProperty,
-) as any as S.Schema<SchemaPropertyGroupPropertiesList>;
-
-export type SchemaPropertyGroupEventsList = EventDefinitionBasic[];
-export const SchemaPropertyGroupEventsList = /*@__PURE__*/ S.Array(
-  EventDefinitionBasic,
-) as any as S.Schema<SchemaPropertyGroupEventsList>;
-
 export interface SchemaPropertyGroup {
   id?: string;
   name?: string;
@@ -201,7 +202,7 @@ export interface SchemaPropertyGroup {
   events?: SchemaPropertyGroupEventsList;
   created_at?: string;
   updated_at?: string;
-  created_by?: UserBasic;
+  created_by?: UserBasic | null;
 }
 export const SchemaPropertyGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -212,7 +213,7 @@ export const SchemaPropertyGroup = /*@__PURE__*/ S.suspend(() =>
     events: S.optional(SchemaPropertyGroupEventsList),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
+    created_by: S.optional(S.NullOr(UserBasic)),
   }),
 ).annotate({
   identifier: "SchemaPropertyGroup",
@@ -270,7 +271,8 @@ export const SchemaPropertyGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SchemaPropertyGroupsListRequest",
 }) as any as S.Schema<SchemaPropertyGroupsListRequest>;
 
-export type PaginatedSchemaPropertyGroupListResultsList = SchemaPropertyGroup[];
+export type PaginatedSchemaPropertyGroupListResultsList =
+  ReadonlyArray<SchemaPropertyGroup>;
 export const PaginatedSchemaPropertyGroupListResultsList =
   /*@__PURE__*/ S.Array(
     SchemaPropertyGroup,
@@ -294,18 +296,11 @@ export const PaginatedSchemaPropertyGroupList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedSchemaPropertyGroupList>;
 
 export type SchemaPropertyGroupsPartialUpdateRequestPropertiesList =
-  SchemaPropertyGroupProperty[];
+  ReadonlyArray<SchemaPropertyGroupPropertyInput>;
 export const SchemaPropertyGroupsPartialUpdateRequestPropertiesList =
   /*@__PURE__*/ S.Array(
-    SchemaPropertyGroupProperty,
+    SchemaPropertyGroupPropertyInput,
   ) as any as S.Schema<SchemaPropertyGroupsPartialUpdateRequestPropertiesList>;
-
-export type SchemaPropertyGroupsPartialUpdateRequestEventsList =
-  EventDefinitionBasic[];
-export const SchemaPropertyGroupsPartialUpdateRequestEventsList =
-  /*@__PURE__*/ S.Array(
-    EventDefinitionBasic,
-  ) as any as S.Schema<SchemaPropertyGroupsPartialUpdateRequestEventsList>;
 
 export interface SchemaPropertyGroupsPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -315,10 +310,6 @@ export interface SchemaPropertyGroupsPartialUpdateRequest {
   name?: string;
   description?: string;
   properties?: SchemaPropertyGroupsPartialUpdateRequestPropertiesList;
-  events?: SchemaPropertyGroupsPartialUpdateRequestEventsList;
-  created_at?: string;
-  updated_at?: string;
-  created_by?: UserBasic;
 }
 export const SchemaPropertyGroupsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -330,10 +321,6 @@ export const SchemaPropertyGroupsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
       properties: S.optional(
         SchemaPropertyGroupsPartialUpdateRequestPropertiesList,
       ),
-      events: S.optional(SchemaPropertyGroupsPartialUpdateRequestEventsList),
-      created_at: S.optional(S.String),
-      updated_at: S.optional(S.String),
-      created_by: S.optional(UserBasic),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -367,18 +354,11 @@ export const SchemaPropertyGroupsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaPropertyGroupsRetrieveRequest>;
 
 export type SchemaPropertyGroupsUpdateRequestPropertiesList =
-  SchemaPropertyGroupProperty[];
+  ReadonlyArray<SchemaPropertyGroupPropertyInput>;
 export const SchemaPropertyGroupsUpdateRequestPropertiesList =
   /*@__PURE__*/ S.Array(
-    SchemaPropertyGroupProperty,
+    SchemaPropertyGroupPropertyInput,
   ) as any as S.Schema<SchemaPropertyGroupsUpdateRequestPropertiesList>;
-
-export type SchemaPropertyGroupsUpdateRequestEventsList =
-  EventDefinitionBasic[];
-export const SchemaPropertyGroupsUpdateRequestEventsList =
-  /*@__PURE__*/ S.Array(
-    EventDefinitionBasic,
-  ) as any as S.Schema<SchemaPropertyGroupsUpdateRequestEventsList>;
 
 export interface SchemaPropertyGroupsUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -388,10 +368,6 @@ export interface SchemaPropertyGroupsUpdateRequest {
   name?: string;
   description?: string;
   properties?: SchemaPropertyGroupsUpdateRequestPropertiesList;
-  events?: SchemaPropertyGroupsUpdateRequestEventsList;
-  created_at?: string;
-  updated_at?: string;
-  created_by?: UserBasic;
 }
 export const SchemaPropertyGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -400,10 +376,6 @@ export const SchemaPropertyGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     description: S.optional(S.String),
     properties: S.optional(SchemaPropertyGroupsUpdateRequestPropertiesList),
-    events: S.optional(SchemaPropertyGroupsUpdateRequestEventsList),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    created_by: S.optional(UserBasic),
   }).pipe(
     T.Http({
       method: "PUT",
